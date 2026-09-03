@@ -35,6 +35,11 @@ export interface Topic {
   title: string
   hint?: string
   pointsPerTask: number
+  /**
+   * Optional search keywords / synonyms (e.g. "Fläche", "m²", "Hektar").
+   * Used by the topic search to broaden matches beyond the visible title.
+   */
+  keywords?: string[]
   generate: (rng: Rng) => Task
 }
 
