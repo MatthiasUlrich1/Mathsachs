@@ -1,16 +1,31 @@
 # Mathsachs
 
-A fast, modern **mental-math practice** web app. Pick a difficulty and the
-operations you want to drill, then answer as many problems as you can before the
-60-second timer runs out. Built with React, TypeScript, and Vite.
+Ein **lehrplanorientiertes Mathematik-Übungsprogramm** für das Gymnasium in
+Sachsen (aktuell **Klasse 6**). Schülerinnen und Schüler wählen aus den
+Lernbereichen des Lehrplans einzelne Themen aus und üben sie entweder direkt am
+Bildschirm oder erzeugen ausdruckbare Übungsblätter. Gebaut mit React,
+TypeScript und Vite.
 
-## Features
+## Funktionen
 
-- Four operations (`+`, `−`, `×`, `÷`) with three difficulty tiers.
-- Clean integer answers only — subtraction never goes negative and division
-  always resolves to a whole number.
-- Live score, streak, accuracy, and a countdown timer.
-- Polished, responsive dark UI.
+- **Lehrplan-Themen** (Gymnasium Sachsen, Klasse 6) in aufklappbaren
+  Lernbereichen:
+  - Arbeiten mit gebrochenen Zahlen (Kürzen, Erweitern, Vergleichen, Grundrechenarten mit Brüchen und Dezimalzahlen, Umwandeln, Runden)
+  - Zuordnungen in der Umwelt (Dreisatz, antiproportional, relative Häufigkeit)
+  - Dreiecke und Vierecke (Winkelsummen, Umfang, Flächeninhalt)
+  - Prismen (Volumen, Oberfläche)
+  - Vernetzung: Anteile (Bruch- und Prozentanteile)
+- **Direkt üben** im Programm mit sofortiger Auswertung.
+- **Erklärung anzeigen** bei falschen Aufgaben (Schritt-für-Schritt-Lösungsweg).
+- **Übungsblätter drucken** (oder als PDF speichern) inklusive Lösungsteil.
+- **Mehrere Benutzer**: Punkte werden pro Name gespeichert.
+- **Punkteprotokoll**: Auswertung je Thema in Prozent und Gesamtpunktzahl,
+  ebenfalls druckbar.
+- **Erweiterbar** für weitere Klassenstufen und Fächer (Datenmodell mit
+  Fach → Klassenstufe → Lernbereich → Thema).
+
+> Fachliche Grundlage: Sächsischer Lehrplan Gymnasium Mathematik. Die Aufgaben
+> werden zufällig generiert und haben stets eindeutige, überprüfbare Lösungen.
 
 ## Requirements
 
@@ -75,9 +90,10 @@ GitHub Release, or run the workflow manually from the Actions tab.
 
 ```
 src/
-  math.ts             # Pure problem-generation + answer-checking logic
-  math.test.ts        # Vitest unit tests for the math engine
-  App.tsx             # Game UI and state
+  lib/                # Reusable engine: rng, fractions, number parsing, storage
+  curriculum/         # Lehrplan data model + Klasse-6 topics & generators
+  components/         # UI: accordion browser, practice, worksheet, protocol
+  App.tsx             # Views, routing and user management
   App.css             # Component styles
   index.css           # Global theme
 electron/
