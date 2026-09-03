@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import type { Grade } from '../curriculum/types'
+import type { Grade, Topic } from '../curriculum/types'
 
 interface Props {
   grade: Grade
-  onPractice: (topicId: string) => void
-  onWorksheet: (topicId: string) => void
+  onPractice: (topic: Topic, areaTitle: string) => void
+  onWorksheet: (topic: Topic, areaTitle: string) => void
 }
 
 export function CurriculumBrowser({ grade, onPractice, onWorksheet }: Props) {
@@ -43,14 +43,14 @@ export function CurriculumBrowser({ grade, onPractice, onWorksheet }: Props) {
                       <button
                         type="button"
                         className="chip-btn chip-btn--primary"
-                        onClick={() => onPractice(topic.id)}
+                        onClick={() => onPractice(topic, area.title)}
                       >
                         Üben
                       </button>
                       <button
                         type="button"
                         className="chip-btn"
-                        onClick={() => onWorksheet(topic.id)}
+                        onClick={() => onWorksheet(topic, area.title)}
                       >
                         Übungsblatt
                       </button>

@@ -1,18 +1,17 @@
 import { useMemo, useState } from 'react'
 import { createRng, timeSeed } from '../lib/rng'
-import { topicIndex } from '../curriculum/math6'
-import type { Task } from '../curriculum/types'
+import type { Task, Topic } from '../curriculum/types'
 
 interface Props {
-  topicId: string
+  topic: Topic
+  areaTitle: string
+  gradeTitle: string
   onExit: () => void
 }
 
 const COUNTS = [10, 15, 20, 30]
 
-export function Worksheet({ topicId, onExit }: Props) {
-  const entry = topicIndex.get(topicId)!
-  const topic = entry.topic
+export function Worksheet({ topic, areaTitle, gradeTitle, onExit }: Props) {
   const [count, setCount] = useState(15)
   const [seed, setSeed] = useState(() => timeSeed())
 
@@ -31,7 +30,7 @@ export function Worksheet({ topicId, onExit }: Props) {
           </button>
         </div>
         <p className="muted small">
-          {topic.title} · {entry.areaTitle}
+          {topic.title} · {areaTitle}
         </p>
         <div className="worksheet-controls__row">
           <label>
@@ -64,7 +63,7 @@ export function Worksheet({ topicId, onExit }: Props) {
         <header className="sheet__head">
           <h1>Mathsachs — Übungsblatt</h1>
           <p>
-            {entry.gradeTitle} · {entry.areaTitle} · <strong>{topic.title}</strong>
+            {gradeTitle} · {areaTitle} · <strong>{topic.title}</strong>
           </p>
           <p className="sheet__line">
             Name: ______________________ Datum: ____________ Punkte: ______

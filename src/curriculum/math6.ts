@@ -12,7 +12,7 @@ import {
 } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
 import { fractionTask, textTask, valueTask } from './taskHelpers'
-import type { Subject, Topic } from './types'
+import type { Grade, Topic } from './types'
 
 // ---------------------------------------------------------------------------
 // Lernbereich 1 — Arbeiten mit gebrochenen Zahlen
@@ -570,93 +570,61 @@ const anteilProzent: Topic = {
 }
 
 // ---------------------------------------------------------------------------
-// Subject tree
+// Grade — Klasse 6 (Gymnasium Mathematik, Sachsen)
 // ---------------------------------------------------------------------------
 
-export const mathematik: Subject = {
-  id: 'mathematik',
-  title: 'Mathematik',
-  grades: [
+export const klasse6: Grade = {
+  id: 'klasse-6',
+  title: 'Klasse 6',
+  areas: [
     {
-      id: 'klasse-6',
-      title: 'Klasse 6',
-      areas: [
-        {
-          id: 'lb1',
-          title: 'Arbeiten mit gebrochenen Zahlen',
-          ustd: 34,
-          topics: [
-            kuerzen,
-            erweitern,
-            vergleichen,
-            addSubBrueche,
-            multBrueche,
-            divBrueche,
-            bruchZuDezimal,
-            prozentUmwandeln,
-            dezAddSub,
-            dezMult,
-            dezDiv,
-            runden,
-          ],
-        },
-        {
-          id: 'lb2',
-          title: 'Zuordnungen in der Umwelt',
-          ustd: 24,
-          topics: [proportional, antiproportional, haeufigkeit],
-        },
-        {
-          id: 'lb3',
-          title: 'Dreiecke und Vierecke',
-          ustd: 30,
-          topics: [
-            winkelDreieck,
-            winkelViereck,
-            umfangRechteck,
-            flaecheRechteck,
-            flaecheDreieck,
-          ],
-        },
-        {
-          id: 'lb4',
-          title: 'Prismen',
-          ustd: 12,
-          topics: [volumenQuader, oberflaecheQuader, volumenPrisma],
-        },
-        {
-          id: 'lb5',
-          title: 'Vernetzung: Anteile',
-          ustd: 4,
-          topics: [anteilVonGroesse, anteilProzent],
-        },
+      id: 'lb1',
+      title: 'Arbeiten mit gebrochenen Zahlen',
+      ustd: 34,
+      topics: [
+        kuerzen,
+        erweitern,
+        vergleichen,
+        addSubBrueche,
+        multBrueche,
+        divBrueche,
+        bruchZuDezimal,
+        prozentUmwandeln,
+        dezAddSub,
+        dezMult,
+        dezDiv,
+        runden,
       ],
+    },
+    {
+      id: 'lb2',
+      title: 'Zuordnungen in der Umwelt',
+      ustd: 24,
+      topics: [proportional, antiproportional, haeufigkeit],
+    },
+    {
+      id: 'lb3',
+      title: 'Dreiecke und Vierecke',
+      ustd: 30,
+      topics: [
+        winkelDreieck,
+        winkelViereck,
+        umfangRechteck,
+        flaecheRechteck,
+        flaecheDreieck,
+      ],
+    },
+    {
+      id: 'lb4',
+      title: 'Prismen',
+      ustd: 12,
+      topics: [volumenQuader, oberflaecheQuader, volumenPrisma],
+    },
+    {
+      id: 'lb5',
+      title: 'Vernetzung: Anteile',
+      ustd: 4,
+      topics: [anteilVonGroesse, anteilProzent],
     },
   ],
 }
-
-export const subjects: Subject[] = [mathematik]
-
-/** Flat lookup of every topic by id, across all subjects/grades/areas. */
-export const topicIndex: Map<string, { topic: Topic; areaTitle: string; gradeTitle: string; subjectTitle: string }> =
-  (() => {
-    const map = new Map<
-      string,
-      { topic: Topic; areaTitle: string; gradeTitle: string; subjectTitle: string }
-    >()
-    for (const subject of subjects) {
-      for (const grade of subject.grades) {
-        for (const area of grade.areas) {
-          for (const topic of area.topics) {
-            map.set(topic.id, {
-              topic,
-              areaTitle: area.title,
-              gradeTitle: grade.title,
-              subjectTitle: subject.title,
-            })
-          }
-        }
-      }
-    }
-    return map
-  })()

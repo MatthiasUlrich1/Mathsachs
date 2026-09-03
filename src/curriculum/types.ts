@@ -46,16 +46,12 @@ export interface TopicArea {
   topics: Topic[]
 }
 
-/** A school year (Klassenstufe). */
+/**
+ * A school year (Klassenstufe). Each grade lives in its own module and is
+ * loaded on demand via the curriculum registry.
+ */
 export interface Grade {
   id: string
   title: string
   areas: TopicArea[]
-}
-
-/** A school subject (Fach) — the top level, ready for future subjects. */
-export interface Subject {
-  id: string
-  title: string
-  grades: Grade[]
 }

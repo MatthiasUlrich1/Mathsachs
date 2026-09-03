@@ -1,27 +1,18 @@
 import { describe, it, expect } from 'vitest'
 import { createRng } from '../lib/rng'
-import { subjects, topicIndex } from './math6'
+import { klasse6 } from './math6'
 
-const allTopics = subjects.flatMap((s) =>
-  s.grades.flatMap((g) => g.areas.flatMap((a) => a.topics)),
-)
+const allTopics = klasse6.areas.flatMap((a) => a.topics)
 
 describe('Klasse 6 curriculum', () => {
   it('exposes topics across all five Lernbereiche', () => {
-    const areas = subjects[0].grades[0].areas
-    expect(areas).toHaveLength(5)
+    expect(klasse6.areas).toHaveLength(5)
     expect(allTopics.length).toBeGreaterThanOrEqual(20)
   })
 
   it('has a unique id for every topic', () => {
     const ids = allTopics.map((t) => t.id)
     expect(new Set(ids).size).toBe(ids.length)
-  })
-
-  it('indexes every topic by id', () => {
-    for (const t of allTopics) {
-      expect(topicIndex.get(t.id)?.topic.id).toBe(t.id)
-    }
   })
 
   it('generates tasks whose own correct answer passes the check', () => {

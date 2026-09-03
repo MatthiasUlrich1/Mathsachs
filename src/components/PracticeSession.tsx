@@ -1,24 +1,21 @@
 import { useEffect, useMemo, useState } from 'react'
 import { createRng, timeSeed } from '../lib/rng'
 import { recordSession } from '../lib/storage'
-import { topicIndex } from '../curriculum/math6'
-import { emptyInput, type Task, type UserInput } from '../curriculum/types'
+import { emptyInput, type Task, type Topic, type UserInput } from '../curriculum/types'
 import { AnswerInput } from './AnswerInput'
 
 const TASKS_PER_ROUND = 10
 
 interface Props {
-  topicId: string
+  topic: Topic
+  areaTitle: string
   user: string
   onExit: () => void
 }
 
 type Phase = 'answering' | 'correct' | 'wrong'
 
-export function PracticeSession({ topicId, user, onExit }: Props) {
-  const entry = topicIndex.get(topicId)!
-  const topic = entry.topic
-
+export function PracticeSession({ topic, areaTitle, user, onExit }: Props) {
   const [rng] = useState(() => createRng(timeSeed()))
   const [task, setTask] = useState<Task>(() => topic.generate(rng))
   const [input, setInput] = useState<UserInput>(() => emptyInput(task.answerKind))
@@ -55,7 +52,7 @@ export function PracticeSession({ topicId, user, onExit }: Props) {
       recordSession(user, {
         topicId: topic.id,
         topicTitle: topic.title,
-        areaTitle: entry.areaTitle,
+        areaTitle,
         attempts: answered,
         correct: correctCount,
         points: pts,
@@ -95,7 +92,7 @@ export function PracticeSession({ topicId, user, onExit }: Props) {
       <div className="card session">
         <h2 className="section-title">Runde beendet</h2>
         <p className="muted">
-          {topic.title} · {entry.areaTitle}
+          {topic.title} · {areaTitle}
         </p>
         <div className="results">
           <div className="result">
@@ -126,7 +123,7 @@ export function PracticeSession({ topicId, user, onExit }: Props) {
       <div className="session__head">
         <div>
           <h2 className="section-title no-margin">{topic.title}</h2>
-          <p className="muted small">{entry.areaTitle}</p>
+          <p className="muted small">{areaTitle}</p>
         </div>
         <button type="button" className="link" onClick={endEarly}>
           Runde beenden
