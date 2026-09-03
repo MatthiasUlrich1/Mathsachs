@@ -17,10 +17,10 @@
     "electron:start": "electron .",
     "electron:dev": "concurrently -k -n vite,electron \"npm:dev\" \"wait-on tcp:127.0.0.1:5173 && electron .\"",
     "electron:pack": "npm run build && electron-builder --dir",
-    "electron:dist": "npm run build && electron-builder",
-    "electron:dist:linux": "npm run build && electron-builder --linux",
-    "electron:dist:win": "npm run build && electron-builder --win",
-    "electron:dist:mac": "npm run build && electron-builder --mac"
+    "electron:dist": "npm run build && electron-builder --publish never",
+    "electron:dist:linux": "npm run build && electron-builder --linux --publish never",
+    "electron:dist:win": "npm run build && electron-builder --win --publish never",
+    "electron:dist:mac": "npm run build && electron-builder --mac --publish never"
   },
   "dependencies": {
     "react": "^18.3.1",
