@@ -2,6 +2,7 @@ import { pick, randInt, type Rng } from '../lib/rng'
 import { gcd, makeFraction } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
 import { fractionTask, textTask, valueTask } from './taskHelpers'
+import { conversionTopic, LAENGE, FLAECHE, VOLUMEN, MASSE, ZEIT } from './units'
 import type { Grade, Topic } from './types'
 
 /** Whether n is a prime number (n ≥ 2). */
@@ -599,6 +600,13 @@ const sachaufgabeTeilen: Topic = {
   },
 }
 
+// Einheiten umrechnen (Größen im Alltag) — Länge, Fläche, Volumen, Masse, Zeit.
+const laengeUmrechnen = conversionTopic('k5', LAENGE)
+const flaecheUmrechnen = conversionTopic('k5', FLAECHE)
+const volumenUmrechnen = conversionTopic('k5', VOLUMEN)
+const masseUmrechnen = conversionTopic('k5', MASSE)
+const zeitUmrechnen = conversionTopic('k5', ZEIT)
+
 // ---------------------------------------------------------------------------
 // Grade — Klasse 5 (Gymnasium Mathematik, Sachsen)
 // ---------------------------------------------------------------------------
@@ -653,7 +661,15 @@ export const klasse5: Grade = {
       id: 'lb5',
       title: 'Vernetzung: Mathematik im Alltag',
       ustd: 6,
-      topics: [sachaufgabeGesamtpreis, sachaufgabeTeilen],
+      topics: [
+        sachaufgabeGesamtpreis,
+        sachaufgabeTeilen,
+        laengeUmrechnen,
+        flaecheUmrechnen,
+        volumenUmrechnen,
+        masseUmrechnen,
+        zeitUmrechnen,
+      ],
     },
   ],
 }

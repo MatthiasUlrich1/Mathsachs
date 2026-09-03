@@ -12,6 +12,7 @@ import {
 } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
 import { fractionTask, textTask, valueTask } from './taskHelpers'
+import { conversionTopic, FLAECHE, LAENGE } from './units'
 import type { Grade, Topic } from './types'
 
 // ---------------------------------------------------------------------------
@@ -569,6 +570,10 @@ const anteilProzent: Topic = {
   },
 }
 
+// Einheiten umrechnen — in Klasse 6 mit Schwerpunkt auf Flächeneinheiten.
+const flaecheUmrechnen = conversionTopic('k6', FLAECHE)
+const laengeUmrechnen = conversionTopic('k6', LAENGE)
+
 // ---------------------------------------------------------------------------
 // Grade — Klasse 6 (Gymnasium Mathematik, Sachsen)
 // ---------------------------------------------------------------------------
@@ -624,7 +629,7 @@ export const klasse6: Grade = {
       id: 'lb5',
       title: 'Vernetzung: Anteile',
       ustd: 4,
-      topics: [anteilVonGroesse, anteilProzent],
+      topics: [anteilVonGroesse, anteilProzent, flaecheUmrechnen, laengeUmrechnen],
     },
   ],
 }
