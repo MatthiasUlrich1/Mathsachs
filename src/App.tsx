@@ -8,11 +8,13 @@ import {
 } from './curriculum/registry'
 import type { Grade, Topic } from './curriculum/types'
 import { addUser, listUsers } from './lib/storage'
+import { searchTopics, searchUnloadedHints } from './curriculum/search'
 import { CurriculumBrowser } from './components/CurriculumBrowser'
 import { CurriculumSetup } from './components/CurriculumSetup'
 import { PracticeSession } from './components/PracticeSession'
 import { Worksheet } from './components/Worksheet'
 import { Protocol } from './components/Protocol'
+import { SearchResults } from './components/SearchResults'
 
 const ACTIVE_KEY = 'mathsachs.activeUser.v1'
 
@@ -42,6 +44,7 @@ export default function App() {
   const [loaded, setLoaded] = useState<LoadedGrade[]>([])
   const [activeId, setActiveId] = useState<string>('')
   const [ready, setReady] = useState(false)
+  const [query, setQuery] = useState('')
 
   useEffect(() => {
     if (activeUser) localStorage.setItem(ACTIVE_KEY, activeUser)
@@ -148,6 +151,17 @@ export default function App() {
     ? getCurriculumModule(activeLoaded.moduleId)
     : undefined
 
+  const trimmedQuery = query.trim()
+  const searchResults = trimmedQuery ? searchTopics(query, loaded) : []
+  const searchHints = trimmedQuery
+    ? searchUnloadedHints(query, loaded.map((l) => l.moduleId))
+    : []
+
+  const openPractice = (topic: Topic, areaTitle: string, gradeTitle: string) =>
+    setView({ name: 'practice', topic, areaTitle, gradeTitle })
+  const openWorksheet = (topic: Topic, areaTitle: string, gradeTitle: string) =>
+    setView({ name: 'worksheet', topic, areaTitle, gradeTitle })
+
   return (
     <main className="app app--wide">
       <header className="topbar">
@@ -222,47 +236,70 @@ export default function App() {
                 </p>
               </div>
 
-              {loaded.length > 1 && (
-                <div className="grade-tabs" role="tablist">
-                  {loaded.map((l) => (
-                    <button
-                      key={l.moduleId}
-                      type="button"
-                      role="tab"
-                      aria-selected={l.moduleId === activeLoaded.moduleId}
-                      className={`grade-tab ${
-                        l.moduleId === activeLoaded.moduleId
-                          ? 'grade-tab--active'
-                          : ''
-                      }`}
-                      onClick={() => setActiveId(l.moduleId)}
-                    >
-                      {l.grade.title}
-                    </button>
-                  ))}
-                </div>
-              )}
+              <div className="topic-search">
+                <input
+                  className="topic-search__field"
+                  type="search"
+                  placeholder="Themen durchsuchen, z. B. „Fläche umrechnen“, „Pythagoras“, „Bruch“ …"
+                  aria-label="Themen durchsuchen"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+                {trimmedQuery && (
+                  <button
+                    type="button"
+                    className="link topic-search__clear"
+                    onClick={() => setQuery('')}
+                  >
+                    Suche zurücksetzen
+                  </button>
+                )}
+              </div>
 
-              <CurriculumBrowser
-                key={activeLoaded.moduleId}
-                grade={activeLoaded.grade}
-                onPractice={(topic, areaTitle) =>
-                  setView({
-                    name: 'practice',
-                    topic,
-                    areaTitle,
-                    gradeTitle: activeLoaded.grade.title,
-                  })
-                }
-                onWorksheet={(topic, areaTitle) =>
-                  setView({
-                    name: 'worksheet',
-                    topic,
-                    areaTitle,
-                    gradeTitle: activeLoaded.grade.title,
-                  })
-                }
-              />
+              {trimmedQuery ? (
+                <SearchResults
+                  query={query}
+                  results={searchResults}
+                  hints={searchHints}
+                  onPractice={openPractice}
+                  onWorksheet={openWorksheet}
+                  onGoToSetup={() => setView({ name: 'setup' })}
+                />
+              ) : (
+                <>
+                  {loaded.length > 1 && (
+                    <div className="grade-tabs" role="tablist">
+                      {loaded.map((l) => (
+                        <button
+                          key={l.moduleId}
+                          type="button"
+                          role="tab"
+                          aria-selected={l.moduleId === activeLoaded.moduleId}
+                          className={`grade-tab ${
+                            l.moduleId === activeLoaded.moduleId
+                              ? 'grade-tab--active'
+                              : ''
+                          }`}
+                          onClick={() => setActiveId(l.moduleId)}
+                        >
+                          {l.grade.title}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  <CurriculumBrowser
+                    key={activeLoaded.moduleId}
+                    grade={activeLoaded.grade}
+                    onPractice={(topic, areaTitle) =>
+                      openPractice(topic, areaTitle, activeLoaded.grade.title)
+                    }
+                    onWorksheet={(topic, areaTitle) =>
+                      openWorksheet(topic, areaTitle, activeLoaded.grade.title)
+                    }
+                  />
+                </>
+              )}
             </>
           )}
         </section>
