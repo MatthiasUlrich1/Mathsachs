@@ -1,20 +1,25 @@
 # Mathsachs
 
 Ein **lehrplanorientiertes Mathematik-Übungsprogramm** für das Gymnasium in
-Sachsen (aktuell **Klasse 6**). Schülerinnen und Schüler wählen aus den
-Lernbereichen des Lehrplans einzelne Themen aus und üben sie entweder direkt am
-Bildschirm oder erzeugen ausdruckbare Übungsblätter. Gebaut mit React,
+Sachsen (**Klasse 5 bis Jahrgangsstufe 11/12**). Schülerinnen und Schüler wählen
+aus den Lernbereichen des Lehrplans einzelne Themen aus und üben sie entweder
+direkt am Bildschirm oder erzeugen ausdruckbare Übungsblätter. Gebaut mit React,
 TypeScript und Vite.
 
 ## Funktionen
 
-- **Lehrplan-Themen** (Gymnasium Sachsen, Klasse 6) in aufklappbaren
-  Lernbereichen:
-  - Arbeiten mit gebrochenen Zahlen (Kürzen, Erweitern, Vergleichen, Grundrechenarten mit Brüchen und Dezimalzahlen, Umwandeln, Runden)
-  - Zuordnungen in der Umwelt (Dreisatz, antiproportional, relative Häufigkeit)
-  - Dreiecke und Vierecke (Winkelsummen, Umfang, Flächeninhalt)
-  - Prismen (Volumen, Oberfläche)
-  - Vernetzung: Anteile (Bruch- und Prozentanteile)
+- **Lehrplan-Themen** (Gymnasium Sachsen) für **Klasse 5, 6, 7, 8, 9, 10 und die
+  Jahrgangsstufe 11/12 (Grundkurs)** als nachladbare Module. Jede Klasse ist in
+  aufklappbaren Lernbereichen organisiert – von natürlichen Zahlen und Brüchen
+  über rationale Zahlen, Terme und Gleichungen, Funktionen, Pythagoras und
+  Trigonometrie bis hin zu Differential-/Integralrechnung, Vektoren und
+  Binomialverteilung.
+- **Themen-Suche**: Stichwortsuche über die geladenen Klassen –
+  case-insensitive, teilstring-basiert und umlaut-tolerant (z. B. „Fläche“ ↔
+  „flaeche“). Passt ein Stichwort zu einer verfügbaren, aber nicht geladenen
+  Klasse, wird ein entsprechender Hinweis angezeigt.
+- **Einheiten umrechnen**: Länge, Flächeninhalt, Volumen, Masse und Zeit mit
+  eindeutiger Lösung und Erklärung des Umrechnungsfaktors.
 - **Direkt üben** im Programm mit sofortiger Auswertung.
 - **Erklärung anzeigen** bei falschen Aufgaben (Schritt-für-Schritt-Lösungsweg).
 - **Übungsblätter drucken** (oder als PDF speichern) inklusive Lösungsteil.
@@ -23,6 +28,8 @@ TypeScript und Vite.
   ebenfalls druckbar.
 - **Erweiterbar** für weitere Klassenstufen und Fächer (Datenmodell mit
   Fach → Klassenstufe → Lernbereich → Thema).
+
+Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md).
 
 > Fachliche Grundlage: Sächsischer Lehrplan Gymnasium Mathematik. Die Aufgaben
 > werden zufällig generiert und haben stets eindeutige, überprüfbare Lösungen.
@@ -91,7 +98,7 @@ GitHub Release, or run the workflow manually from the Actions tab.
 ```
 src/
   lib/                # Reusable engine: rng, fractions, number parsing, storage
-  curriculum/         # Lehrplan data model + Klasse-6 topics & generators
+  curriculum/         # Lehrplan-Datenmodell, Klassen 5–12, Einheiten & Themen-Suche
   components/         # UI: accordion browser, practice, worksheet, protocol
   App.tsx             # Views, routing and user management
   App.css             # Component styles
