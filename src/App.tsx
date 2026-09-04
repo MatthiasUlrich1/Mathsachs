@@ -17,7 +17,9 @@ import { Protocol } from './components/Protocol'
 import { SearchResults } from './components/SearchResults'
 import { ExamBuilder } from './components/ExamBuilder'
 import { ExamRunner } from './components/ExamRunner'
+import { UpdateBanner } from './components/UpdateBanner'
 import { parseExamHash } from './exam/examCode'
+import { useUpdateCheck } from './updates/useUpdateCheck'
 
 const ACTIVE_KEY = 'mathsachs.activeUser.v1'
 
@@ -52,6 +54,26 @@ export default function App() {
   const [activeId, setActiveId] = useState<string>('')
   const [ready, setReady] = useState(false)
   const [query, setQuery] = useState('')
+  const updateCheck = useUpdateCheck()
+  const isDesktop = typeof window !== 'undefined' && Boolean(window.mathsachs?.isDesktop)
+  const hideUpdateBanner =
+    view.name === 'practice' ||
+    view.name === 'worksheet' ||
+    view.name === 'examRun'
+  const updateBanner =
+    updateCheck.update && !hideUpdateBanner ? (
+      <UpdateBanner
+        update={updateCheck.update}
+        status={updateCheck.status}
+        progress={updateCheck.progress}
+        error={updateCheck.error}
+        isDesktop={isDesktop}
+        onDownload={() => void updateCheck.download()}
+        onInstall={() => void updateCheck.install()}
+        onDismiss={updateCheck.dismiss}
+        onIgnore={updateCheck.ignore}
+      />
+    ) : null
 
   useEffect(() => {
     if (activeUser) localStorage.setItem(ACTIVE_KEY, activeUser)
@@ -129,6 +151,7 @@ export default function App() {
   if (!activeUser) {
     return (
       <main className="app">
+        {updateBanner}
         <Brand />
         <section className="card">
           <h2 className="section-title">Wer übt heute?</h2>
@@ -164,7 +187,7 @@ export default function App() {
             </div>
           </div>
         </section>
-        <Foot />
+        <Foot version={updateCheck.currentVersion} />
       </main>
     )
   }
@@ -203,6 +226,7 @@ export default function App() {
 
   return (
     <main className="app app--wide">
+      {updateBanner}
       <header className="topbar">
         <Brand compact />
         <nav className="topbar__nav">
@@ -409,7 +433,7 @@ export default function App() {
         <Protocol user={activeUser} onExit={() => setView({ name: 'browse' })} />
       )}
 
-      <Foot />
+      <Foot version={updateCheck.currentVersion} />
     </main>
   )
 }
@@ -432,11 +456,11 @@ function Brand({ compact }: { compact?: boolean }) {
   )
 }
 
-function Foot() {
+function Foot({ version }: { version: string }) {
   return (
     <footer className="foot">
-      Mathsachs · Übungsprogramm nach sächsischem Lehrplan · erweiterbar für
-      weitere Klassen und Fächer
+      Mathsachs {version} · Übungsprogramm nach sächsischem Lehrplan ·
+      erweiterbar für weitere Klassen und Fächer
     </footer>
   )
 }
