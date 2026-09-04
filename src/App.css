@@ -1257,6 +1257,84 @@ a.ghost.update-banner__link {
   padding-bottom: 8px;
 }
 
+.foot__legal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.foot__sep {
+  color: rgba(148, 163, 184, 0.45);
+}
+
+a.link {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Legal dialogs (Impressum / Lizenz) */
+.dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(2, 6, 23, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+.dialog {
+  width: min(560px, 100%);
+  max-height: min(80vh, 640px);
+  overflow: auto;
+  text-align: left;
+}
+
+.dialog__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.dialog__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.impressum {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-style: normal;
+  line-height: 1.55;
+}
+
+.impressum a {
+  color: var(--accent-2);
+  font-weight: 600;
+}
+
+.license-text {
+  margin: 0;
+  white-space: pre-wrap;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
 /* Print */
 @media print {
   body {
@@ -1265,7 +1343,8 @@ a.ghost.update-banner__link {
   .no-print,
   .topbar,
   .foot,
-  .brand {
+  .brand,
+  .dialog-backdrop {
     display: none !important;
   }
   .app {

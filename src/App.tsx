@@ -18,6 +18,7 @@ import { SearchResults } from './components/SearchResults'
 import { ExamBuilder } from './components/ExamBuilder'
 import { ExamRunner } from './components/ExamRunner'
 import { UpdateBanner } from './components/UpdateBanner'
+import { LegalFooter } from './components/LegalFooter'
 import { parseExamHash } from './exam/examCode'
 import { useUpdateCheck } from './updates/useUpdateCheck'
 
@@ -187,7 +188,7 @@ export default function App() {
             </div>
           </div>
         </section>
-        <Foot version={updateCheck.currentVersion} />
+        <LegalFooter version={updateCheck.currentVersion} />
       </main>
     )
   }
@@ -433,7 +434,7 @@ export default function App() {
         <Protocol user={activeUser} onExit={() => setView({ name: 'browse' })} />
       )}
 
-      <Foot version={updateCheck.currentVersion} />
+      <LegalFooter version={updateCheck.currentVersion} />
     </main>
   )
 }
@@ -456,11 +457,3 @@ function Brand({ compact }: { compact?: boolean }) {
   )
 }
 
-function Foot({ version }: { version: string }) {
-  return (
-    <footer className="foot">
-      Mathsachs {version} · Übungsprogramm nach sächsischem Lehrplan ·
-      erweiterbar für weitere Klassen und Fächer
-    </footer>
-  )
-}

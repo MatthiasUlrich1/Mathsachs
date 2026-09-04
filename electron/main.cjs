@@ -16,6 +16,14 @@ try {
   autoUpdater = null
 }
 
+function isMailtoUrl(url) {
+  return /^mailto:/i.test(url)
+}
+
+function isHttpUrl(url) {
+  return /^https?:/i.test(url)
+}
+
 function sendUpdateEvent(payload) {
   for (const win of BrowserWindow.getAllWindows()) {
     win.webContents.send('updates:event', payload)
@@ -65,10 +73,15 @@ function createWindow() {
 
   win.setMenuBarVisibility(false)
 
-  // Open external links in the user's real browser, not inside the app window.
+  // Open http(s) (new window) and mailto: in the OS, not inside the app window.
   win.webContents.setWindowOpenHandler(({ url }) => {
-    shell.openExternal(url)
+    if (isHttpUrl(url) || isMailtoUrl(url)) void shell.openExternal(url)
     return { action: 'deny' }
+  })
+  win.webContents.on('will-navigate', (event, url) => {
+    if (!isMailtoUrl(url)) return
+    event.preventDefault()
+    void shell.openExternal(url)
   })
 
   if (app.isPackaged) {

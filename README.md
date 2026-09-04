@@ -33,7 +33,8 @@ verteilen. Gebaut mit React, TypeScript und Vite.
 - **Erweiterbar** für weitere Klassenstufen und Fächer (Datenmodell mit
   Fach → Klassenstufe → Lernbereich → Thema).
 
-Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md).
+Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
+(aktuelle Version **0.1.5**).
 
 Die App prüft beim Start die öffentlichen
 [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
@@ -162,8 +163,9 @@ src/
   lib/                # Reusable engine: rng, fractions, number parsing, storage
   curriculum/         # Lehrplan-Datenmodell, Klassen 5–12, Einheiten & Themen-Suche
   exam/               # Klausur-Code (Kodierung, Link, Auflösung der Aufgaben)
+  legal/              # Impressum, MIT-Lizenztext, Ideenmelder-mailto
   updates/            # GitHub-Releases-Updateprüfung (Semver, Assets, Banner)
-  components/         # UI: Browser, Üben, Übungsblatt, Protokoll, Klausur, Update-Hinweis
+  components/         # UI: Browser, Üben, Übungsblatt, Protokoll, Klausur, Update-Hinweis, Rechtliches
   App.tsx             # Views, routing and user management
   App.css             # Component styles
   index.css           # Global theme
@@ -181,3 +183,30 @@ electron-builder.yml  # Desktop packaging config (win / mac / linux targets)
 `.cursor/environment.json` configures the Cursor Cloud Agent environment:
 `npm ci` installs dependencies and the `dev` terminal runs the Vite dev server
 on port 5173.
+
+## Lizenz
+
+Mathsachs steht unter der [MIT-Lizenz](LICENSE).
+Copyright © 2026 Linus und Matthias Ulrich.
+
+Den vollständigen Lizenztext findest du in der Datei [`LICENSE`](LICENSE)
+und in der App unter **Lizenz**.
+
+## Impressum
+
+Linus und Matthias Ulrich  
+Große Wallstraße 42  
+04509 Delitzsch  
+[info@my-smart-home-support.de](mailto:info@my-smart-home-support.de)
+
+In der App ebenfalls unter **Impressum**.
+
+## Idee / Feedback
+
+Über **Idee / Feedback** in der App (oder den folgenden Link) öffnet sich das
+Standard-Mailprogramm mit vorausgefülltem Empfänger und Betreff:
+
+[Idee / Feedback zum Mathsachs Übeungsprogramm.](mailto:info@my-smart-home-support.de?subject=Idee%20%2F%20Feedback%20zum%20Mathsachs%20%C3%9Cbeungsprogramm.)
+
+- An: `info@my-smart-home-support.de`
+- Betreff: `Idee / Feedback zum Mathsachs Übeungsprogramm.`
