@@ -117,6 +117,17 @@ Download the installer for your operating system from the project's
 | Linux   | `Mathsachs-x.y.z.AppImage`    | `chmod +x` then run it — no install needed. |
 | Linux   | `mathsachs_x.y.z_amd64.deb`   | `sudo apt install ./mathsachs_*.deb`        |
 
+**Windows-Hinweis (SmartScreen):** Weil die App von einer Privatperson kommt und
+nicht mit einem kostenpflichtigen Code-Signing-Zertifikat signiert ist, warnt
+Windows oft mit „Windows hat den PC geschützt“ bzw. unbekanntem Herausgeber.
+Das ist bei diesem Setup erwartbar und kein Virenfund.
+
+1. Den Installer **nur** von den offiziellen
+   [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
+   laden – nicht aus unbekannten Quellen.
+2. Bei der Warnung **„Weitere Informationen“** klicken.
+3. Dann **„Trotzdem ausführen“** wählen (manchmal **„Trotzdem installieren“**).
+
 ### Build installers yourself
 
 Installers are produced by [`electron-builder`](https://www.electron.build/).
