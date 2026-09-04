@@ -4,6 +4,7 @@ import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 import {
+  CLASS_CODES_STORAGE_KEY,
   collectLocalStorageSnapshot,
   emptySharedState,
   looksLikeSharedState,
@@ -21,6 +22,11 @@ const store = require('../../electron/sharedStore.cjs') as {
     records: Record<string, unknown>
   }
   mergeSharedState: (base: unknown, incoming: unknown) => {
+    classCodes: {
+      created: Array<{ code: string; name: string; createdAt: number }>
+      activeCode: string | null
+      sendPoints: boolean
+    }
     users: string[]
     records: Record<
       string,
@@ -113,6 +119,7 @@ describe('collectLocalStorageSnapshot', () => {
     const map = new Map<string, string>([
       [USERS_STORAGE_KEY, '["Ada"]'],
       [userRecordKey('Ada'), '{"name":"Ada"}'],
+      [CLASS_CODES_STORAGE_KEY, '{"created":[],"activeCode":null,"sendPoints":false}'],
       ['mathsachs.activeUser.v1', 'Ada'],
       ['mathsachs.curricula.loaded.v1', '["math6"]'],
     ])
@@ -126,6 +133,7 @@ describe('collectLocalStorageSnapshot', () => {
     expect(collectLocalStorageSnapshot(storage)).toEqual({
       [USERS_STORAGE_KEY]: '["Ada"]',
       [userRecordKey('Ada')]: '{"name":"Ada"}',
+      [CLASS_CODES_STORAGE_KEY]: '{"created":[],"activeCode":null,"sendPoints":false}',
     })
   })
 })
@@ -181,6 +189,62 @@ describe('mergeSharedState (TypeScript)', () => {
     expect(merged.users).toEqual(['Ada', 'Ben'])
     expect(merged.records.Ada.stats.brueche.points).toBe(4)
     expect(merged.records.Ben.stats.termine.points).toBe(7)
+  })
+
+  it('unions created class codes and keeps incoming collect settings', () => {
+    const merged = mergeSharedState(
+      {
+        schemaVersion: 1,
+        users: [],
+        records: {},
+        classCodes: {
+          created: [{ code: 'AAAA1111', name: '6a', createdAt: 10 }],
+          activeCode: 'AAAA1111',
+          sendPoints: false,
+        },
+      },
+      {
+        schemaVersion: 1,
+        users: [],
+        records: {},
+        classCodes: {
+          created: [{ code: 'bbbb-2222', name: '6b', createdAt: 20 }],
+          activeCode: 'BBBB2222',
+          sendPoints: true,
+        },
+      },
+    )
+    expect(merged.classCodes?.created.map((row) => row.code)).toEqual([
+      'AAAA1111',
+      'BBBB2222',
+    ])
+    expect(merged.classCodes?.activeCode).toBe('BBBB2222')
+    expect(merged.classCodes?.sendPoints).toBe(true)
+  })
+
+  it('keeps existing class codes when incoming omits them (old tablet)', () => {
+    const merged = mergeSharedState(
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {},
+        classCodes: {
+          created: [{ code: 'AAAA1111', name: '6a', createdAt: 1 }],
+          activeCode: 'AAAA1111',
+          sendPoints: true,
+        },
+      },
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {},
+      },
+    )
+    expect(merged.classCodes).toEqual({
+      created: [{ code: 'AAAA1111', name: '6a', createdAt: 1 }],
+      activeCode: 'AAAA1111',
+      sendPoints: true,
+    })
   })
 })
 
@@ -238,6 +302,35 @@ describe('mergeSharedState (CJS)', () => {
       },
     )
     expect(merged.records.Ada.stats.brueche.points).toBe(9)
+  })
+
+  it('unions created class codes stored on the PC/LAN', () => {
+    const merged = mergeSharedStateCjs(
+      {
+        users: [],
+        records: {},
+        classCodes: {
+          created: [{ code: 'AAAA1111', name: '6a', createdAt: 1 }],
+          activeCode: 'AAAA1111',
+          sendPoints: false,
+        },
+      },
+      {
+        users: [],
+        records: {},
+        classCodes: {
+          created: [{ code: 'BBBB2222', name: '6b', createdAt: 2 }],
+          activeCode: 'BBBB2222',
+          sendPoints: true,
+        },
+      },
+    )
+    expect(merged.classCodes.created.map((row: { code: string }) => row.code)).toEqual([
+      'AAAA1111',
+      'BBBB2222',
+    ])
+    expect(merged.classCodes.activeCode).toBe('BBBB2222')
+    expect(merged.classCodes.sendPoints).toBe(true)
   })
 
   it('unions session history without duplicating identical rows', () => {

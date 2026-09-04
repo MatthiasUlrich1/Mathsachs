@@ -9,6 +9,20 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.10] – 2026-09-04
+
+### Hinzugefügt
+
+- **Online-Klassencodes:** Im Reiter **Klasse** kann ein Klassencode mit
+  Klassennamen erzeugt oder eingetragen werden. Punkte gehen nur nach
+  ausdrücklichem Opt-in an die Klasse, und nur ein Code sammelt gleichzeitig.
+  Stände: Tag / Woche / Monat / Schuljahr (1. Aug.–31. Jul., Zeitzone
+  Europe/Berlin, Serverzeit). Online liegen nur Klassenname und Summen — keine
+  Vornamen, keine Geräte-IDs. Der Code ist das Geheimnis.
+- **Cloudflare Worker** in [`cloudflare/worker.js`](cloudflare/worker.js):
+  einmal in dash.cloudflare.com unter Edit Code einfügen und Deploy klicken
+  (KV-Bindung `CLASSES`). Bis dahin zeigt die App eine deutsche Fehlermeldung.
+
 ## [0.1.9] – 2026-09-04
 
 ### Hinzugefügt
@@ -139,7 +153,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.9...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.10...HEAD
+[0.1.10]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.9...v0.1.10
 [0.1.9]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.8...v0.1.9
 [0.1.8]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.7...v0.1.8
 [0.1.7]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.6...v0.1.7

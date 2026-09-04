@@ -1,18 +1,26 @@
+import { addClassPoints } from '../classCode/api'
+import { normalizeClassCode } from '../classCode/code'
 import {
+  CLASS_CODES_STORAGE_KEY,
   SHARED_STATE_SCHEMA_VERSION,
   USERS_STORAGE_KEY,
   cloneSharedState,
   collectLocalStorageSnapshot,
+  emptyClassCodes,
   emptySharedState,
   looksLikeSharedState,
   mergeSharedState,
+  parseClassCodes,
   sharedStateFingerprint,
   userRecordKey,
+  type ClassCodeSettings,
   type SharedState,
   type UserData,
 } from './sharedState'
 
 export type {
+  ClassCodeSettings,
+  CreatedClassCode,
   SessionRecord,
   SharedState,
   TopicStat,
@@ -58,14 +66,25 @@ const readLocalState = (): SharedState => {
       state.records[name] = freshUser(name)
     }
   }
+  try {
+    const raw = localStorage.getItem(CLASS_CODES_STORAGE_KEY)
+    if (raw) state.classCodes = parseClassCodes(JSON.parse(raw))
+  } catch {
+    state.classCodes = emptyClassCodes()
+  }
   return state
 }
 
 const writeLocalState = (state: SharedState): void => {
   if (!canUseLocalStorage()) return
   localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(state.users))
+  localStorage.setItem(
+    CLASS_CODES_STORAGE_KEY,
+    JSON.stringify(state.classCodes ?? emptyClassCodes()),
+  )
   const keep = new Set(state.users.map((name) => userRecordKey(name)))
   keep.add(USERS_STORAGE_KEY)
+  keep.add(CLASS_CODES_STORAGE_KEY)
   for (let i = localStorage.length - 1; i >= 0; i--) {
     const key = localStorage.key(i)
     if (!key) continue
@@ -112,6 +131,7 @@ const parseStateResponse = async (res: Response): Promise<SharedState | null> =>
         ? data.users.filter((n): n is string => typeof n === 'string')
         : Object.keys(records),
       records,
+      classCodes: parseClassCodes(data.classCodes),
     }
   } catch {
     return null
@@ -138,6 +158,7 @@ const putHttpState = async (state: SharedState): Promise<SharedState | null> => 
       schemaVersion: SHARED_STATE_SCHEMA_VERSION,
       users: state.users,
       records: state.records,
+      classCodes: state.classCodes ?? emptyClassCodes(),
     }),
   })
   return parseStateResponse(res)
@@ -337,6 +358,15 @@ interface SessionInput {
   points: number
 }
 
+const maybePostClassDelta = (delta: number): void => {
+  if (!(delta > 0)) return
+  const settings = cache.classCodes ?? emptyClassCodes()
+  if (!settings.sendPoints || !settings.activeCode) return
+  void addClassPoints(settings.activeCode, delta).catch(() => {
+    // Fire-and-forget: offline / not-yet-deployed Worker must not fail practice.
+  })
+}
+
 /** Record a finished session into the user's aggregated stats and history. */
 export const recordSession = (name: string, input: SessionInput): UserData => {
   const data = loadUser(name)
@@ -359,7 +389,53 @@ export const recordSession = (name: string, input: SessionInput): UserData => {
   }
   if (next.sessions.length > MAX_SESSIONS) next.sessions.length = MAX_SESSIONS
   saveUser(next)
+  maybePostClassDelta(input.points)
   return next
+}
+
+export const getClassCodeSettings = (): ClassCodeSettings =>
+  cache.classCodes ?? emptyClassCodes()
+
+const persistClassCodes = (classCodes: ClassCodeSettings): void => {
+  cache = { ...cache, classCodes }
+  void persistCache()
+  notify()
+}
+
+/** Remember a code this PC/LAN created and make it the single active collect-code. */
+export const rememberCreatedClassCode = (code: string, name: string): void => {
+  const normalized = normalizeClassCode(code)
+  if (!normalized) return
+  const current = getClassCodeSettings()
+  const created = current.created.filter((row) => row.code !== normalized)
+  created.push({
+    code: normalized,
+    name: name.trim().slice(0, 80),
+    createdAt: Date.now(),
+  })
+  persistClassCodes({
+    ...current,
+    created,
+    activeCode: normalized,
+  })
+}
+
+export const setActiveClassCode = (code: string | null): void => {
+  const current = getClassCodeSettings()
+  const normalized = code ? normalizeClassCode(code) : ''
+  persistClassCodes({
+    ...current,
+    activeCode: normalized || null,
+    sendPoints: Boolean(current.sendPoints) && Boolean(normalized),
+  })
+}
+
+export const setSendClassPoints = (send: boolean): void => {
+  const current = getClassCodeSettings()
+  persistClassCodes({
+    ...current,
+    sendPoints: Boolean(send) && Boolean(current.activeCode),
+  })
 }
 
 export interface ProtocolRow {

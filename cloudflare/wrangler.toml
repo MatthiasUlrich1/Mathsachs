@@ -1,0 +1,13 @@
+# Optional. Dashboard paste of worker.js is the supported deploy path.
+# KV binding name MUST remain CLASSES (create the namespace in the dashboard).
+name = "mathsachs-punkte"
+main = "worker.js"
+compatibility_date = "2026-09-04"
+
+# Uncomment and fill the id from dash.cloudflare.com → Workers → mathsachs-punkte
+# → Settings → Bindings → CLASSES, then:
+#   npx wrangler deploy --config cloudflare/wrangler.toml
+#
+# [[kv_namespaces]]
+# binding = "CLASSES"
+# id = "<kv-namespace-id>"

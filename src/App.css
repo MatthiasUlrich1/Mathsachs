@@ -1384,6 +1384,130 @@ a.link {
   padding: 12px 14px;
 }
 
+/* Class codes */
+.class-codes {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.class-codes__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+@media (min-width: 700px) {
+  .class-codes__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.class-codes__block .muted {
+  margin: 0 0 10px;
+}
+
+.class-codes__active {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.class-codes__code {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 4px 0;
+}
+
+.class-codes__active-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.class-codes__optin {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.class-codes__optin input {
+  margin-top: 3px;
+}
+
+.class-codes__list-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.class-codes__list-title {
+  font-size: 16px;
+  margin: 0;
+}
+
+.class-codes__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.class-codes__row {
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.class-codes__row-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.class-codes__row-top code {
+  font-size: 14px;
+  letter-spacing: 0.06em;
+}
+
+.class-codes__stats {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+}
+
+.class-codes__stats dt {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.class-codes__stats dd {
+  margin: 2px 0 0;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+@media (max-width: 560px) {
+  .class-codes__stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 /* Print */
 @media print {
   body {
