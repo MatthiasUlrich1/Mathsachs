@@ -15,6 +15,9 @@ import { PracticeSession } from './components/PracticeSession'
 import { Worksheet } from './components/Worksheet'
 import { Protocol } from './components/Protocol'
 import { SearchResults } from './components/SearchResults'
+import { ExamBuilder } from './components/ExamBuilder'
+import { ExamRunner } from './components/ExamRunner'
+import { parseExamHash } from './exam/examCode'
 
 const ACTIVE_KEY = 'mathsachs.activeUser.v1'
 
@@ -27,6 +30,8 @@ type View =
   | { name: 'browse' }
   | { name: 'setup' }
   | { name: 'protocol' }
+  | { name: 'examBuild' }
+  | { name: 'examRun' }
   | { name: 'practice'; topic: Topic; areaTitle: string; gradeTitle: string }
   | { name: 'worksheet'; topic: Topic; areaTitle: string; gradeTitle: string }
 
@@ -40,6 +45,8 @@ export default function App() {
   )
   const [view, setView] = useState<View>({ name: 'browse' })
   const [newName, setNewName] = useState('')
+  // Exam code taken from a shared link (`#klausur=…`), consumed by ExamRunner.
+  const [examCodeFromLink, setExamCodeFromLink] = useState<string | null>(null)
 
   const [loaded, setLoaded] = useState<LoadedGrade[]>([])
   const [activeId, setActiveId] = useState<string>('')
@@ -49,6 +56,23 @@ export default function App() {
   useEffect(() => {
     if (activeUser) localStorage.setItem(ACTIVE_KEY, activeUser)
   }, [activeUser])
+
+  // A shared "#klausur=…" link opens the exam runner directly. We read the code
+  // once on start, switch to the runner and then clean the hash from the URL so
+  // it is not re-triggered on reload. If nobody is logged in yet, the runner is
+  // shown right after the user picks/creates a profile (the view is preserved).
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const code = parseExamHash(window.location.hash)
+    if (!code) return
+    setExamCodeFromLink(code)
+    setView({ name: 'examRun' })
+    window.history.replaceState(
+      null,
+      '',
+      window.location.pathname + window.location.search,
+    )
+  }, [])
 
   // Load the persisted curricula on start via dynamic import.
   useEffect(() => {
@@ -162,6 +186,21 @@ export default function App() {
   const openWorksheet = (topic: Topic, areaTitle: string, gradeTitle: string) =>
     setView({ name: 'worksheet', topic, areaTitle, gradeTitle })
 
+  // "Ähnliche Aufgabe üben" from the exam evaluation: load the referenced grade
+  // module on demand, locate the topic by id and open a fresh practice round.
+  const openPracticeById = async (moduleId: string, topicId: string) => {
+    const mod = getCurriculumModule(moduleId)
+    if (!mod) return
+    const grade = await mod.load()
+    for (const area of grade.areas) {
+      const topic = area.topics.find((t) => t.id === topicId)
+      if (topic) {
+        openPractice(topic, area.title, grade.title)
+        return
+      }
+    }
+  }
+
   return (
     <main className="app app--wide">
       <header className="topbar">
@@ -180,6 +219,20 @@ export default function App() {
             onClick={() => setView({ name: 'setup' })}
           >
             Lehrpläne
+          </button>
+          <button
+            type="button"
+            className={`tab ${view.name === 'examBuild' ? 'tab--active' : ''}`}
+            onClick={() => setView({ name: 'examBuild' })}
+          >
+            Klausur erstellen
+          </button>
+          <button
+            type="button"
+            className={`tab ${view.name === 'examRun' ? 'tab--active' : ''}`}
+            onClick={() => setView({ name: 'examRun' })}
+          >
+            Klausur schreiben
           </button>
           <button
             type="button"
@@ -329,6 +382,26 @@ export default function App() {
           areaTitle={view.areaTitle}
           gradeTitle={view.gradeTitle}
           onExit={() => setView({ name: 'browse' })}
+        />
+      )}
+
+      {view.name === 'examBuild' && (
+        <ExamBuilder
+          loaded={loaded}
+          onExit={() => setView({ name: 'browse' })}
+        />
+      )}
+
+      {view.name === 'examRun' && (
+        <ExamRunner
+          key={examCodeFromLink ?? 'manual'}
+          user={activeUser}
+          initialCode={examCodeFromLink ?? undefined}
+          onExit={() => {
+            setExamCodeFromLink(null)
+            setView({ name: 'browse' })
+          }}
+          onPracticeTopic={openPracticeById}
         />
       )}
 
