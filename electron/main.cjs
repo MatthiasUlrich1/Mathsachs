@@ -93,9 +93,9 @@ function setupAutoUpdater() {
 function createWindow() {
   const win = new BrowserWindow({
     width: 560,
-    height: 760,
+    height: 860,
     minWidth: 420,
-    minHeight: 640,
+    minHeight: 720,
     backgroundColor: '#0b1120',
     title: 'Mathsachs',
     icon: path.join(__dirname, '..', 'build', 'icon.png'),
