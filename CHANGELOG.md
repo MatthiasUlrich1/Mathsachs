@@ -9,9 +9,24 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
-### Geplant für v0.1.2
+## [0.1.3] – 2026-09-04
 
-#### Hinzugefügt
+### Hinzugefügt
+
+- **Übungsklausur per Code (Variante A)**: Lehrkräfte wählen Themen aus dem
+  Lehrplan voraus, picken konkrete Vorschlagsaufgaben per Checkbox und erzeugen
+  einen kompakten, seed-basierten Klausur-Code plus teilbaren Link
+  (`#klausur=…`) und QR-Code — zum Verteilen z. B. über die Schulwebseite.
+- **Klausur schreiben**: Schülerinnen und Schüler lösen den Code ein (oder
+  öffnen den Link), rechnen die festen Aufgaben durch und erhalten eine
+  automatische Auswertung mit Lösung und Erklärung je Aufgabe.
+- **Ähnliche Aufgabe üben** nach der Auswertung (gleiches Thema, neuer Seed).
+- Das Datenschema ist vorbereitet für eine spätere **Variante B** (eingebetteter
+  Aufgabeninhalt).
+
+## [0.1.2] – 2026-09-03
+
+### Hinzugefügt
 
 - **Lehrpläne Klasse 7 bis Jahrgangsstufe 11/12** als nachladbare Module
   (Gymnasium Mathematik, Sachsen):
@@ -59,6 +74,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.3...HEAD
+[0.1.3]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.2...v0.1.3
+[0.1.2]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/MatthiasUlrich1/Mathsachs/releases/tag/v0.1.0
