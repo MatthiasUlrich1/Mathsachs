@@ -1,6 +1,17 @@
 import type { Grade } from './types'
 
 /**
+ * Version of the curriculum content model. It is embedded into every exam code
+ * (see `src/exam`) so a decoder can warn when a shared code was produced against
+ * a different curriculum revision — seed-based tasks might then differ.
+ *
+ * Bump this whenever a change to a topic's `generate()` would alter the tasks
+ * produced for an existing seed (renaming/removing topics, reordering RNG draws
+ * within a generator, etc.).
+ */
+export const CURRICULUM_VERSION = 1
+
+/**
  * Metadata for a single, on-demand loadable grade curriculum.
  *
  * `load()` uses a dynamic `import(...)` so the actual topic definitions are
