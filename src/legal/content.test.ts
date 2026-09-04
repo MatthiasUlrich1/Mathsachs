@@ -3,11 +3,20 @@ import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import {
   CONTACT_EMAIL,
+  DATENSCHUTZ_NOTE,
   IDEENMELDER_SUBJECT,
   IMPRESSUM_LINES,
   MIT_LICENSE_TEXT,
   buildIdeenmelderMailto,
 } from './content'
+
+describe('Datenschutz', () => {
+  it('mentions anonymous class totals at Cloudflare', () => {
+    expect(DATENSCHUTZ_NOTE).toContain('Cloudflare')
+    expect(DATENSCHUTZ_NOTE).toContain('Klassennamen')
+    expect(DATENSCHUTZ_NOTE).toContain('keine Vornamen')
+  })
+})
 
 describe('Impressum', () => {
   it('lists the publisher address and contact mail', () => {

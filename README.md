@@ -35,11 +35,13 @@ verteilen. Gebaut mit React, TypeScript und Vite.
 - **WLAN-Zugang (Desktop-App)**: Läuft Mathsachs auf einem Rechner, können
   Tablets im selben WLAN die App im Browser öffnen (siehe
   [WLAN-Zugang](#wlan-zugang-desktop-app)).
+- **Klassencode (online)**: Anonyme Klassen-Punktesummen über einen
+  Cloudflare Worker (siehe [Klassencode](#klassencode-online)).
 - **Erweiterbar** für weitere Klassenstufen und Fächer (Datenmodell mit
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.9**).
+(aktuelle Version **0.1.10**).
 
 Die App prüft beim Start die öffentlichen
 [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
@@ -123,6 +125,72 @@ Hinweise:
   setzt Node.js plus Quellcode voraus. Ohne Desktop-App bleiben Benutzer
   dort nur lokal im Browser gespeichert.
 
+## Klassencode (online)
+
+Mathsachs hat **keine Nutzerkonten**. Zugang zur Klassenstatistik ist der
+**Besitz des Codes**. Online liegen nur **Klassenname** und **aggregierte
+Punkte** — keine Vornamen, keine Geräte-IDs. Wer den Code kennt, kann Stände
+lesen und Punkte addieren. **Behandle den Code wie ein Passwort.**
+
+Im Reiter **Klasse**:
+
+1. **Code erstellen** (Schüler oder Lehrkraft): Klassenname eingeben. Der Code
+   trägt den Namen mit. Anzeigen und kopieren.
+2. **Code eintragen** und als einzigen Sammel-Code **aktivieren**.
+3. Optional **Punkte an Klasse senden** (Opt-in). Nur mit aktivem Code und
+   diesem Haken gehen neue Übungspunkte (`recordSession`) zusätzlich als Delta
+   an die Klassensumme. Ohne Netz oder bei noch nicht aktualisiertem Worker
+   schlägt das Üben nicht fehl.
+4. **Eigene Codes** (auf dem PC / im WLAN gespeichert, nicht als Besitz auf
+   dem Server) mit Ständen **Tag / Woche / Monat / Schuljahr**.
+   Schuljahr = 1. August bis 31. Juli, Zeitzone **Europe/Berlin**,
+   **Serverzeit** des Workers.
+
+Öffentliche API (Standard, überschreibbar in `src/classCode/api.ts`):
+
+`https://mathsachs-punkte.broad-heart-ad82.workers.dev`
+
+| Methode | Pfad | Körper | Antwort |
+| ------- | ---- | ------ | ------- |
+| `GET` | `/` | — | `{ ok, service, hasClasses }` |
+| `POST` | `/classes` | `{ name }` | `{ code, name, points, period }` |
+| `GET` | `/classes/:code` | — | Klasse + Aufschlüsselung |
+| `POST` | `/classes/:code/points` | `{ delta }` (1–100) | aktualisierte Klasse |
+
+KV-Wert: `{ name, createdAt, days: { "YYYY-MM-DD": number } }`. Woche/Monat/Jahr
+werden aus den Tages-Buckets in Berlin gerechnet. Die Bindung heißt **`CLASSES`**.
+
+### Worker im Dashboard einfügen (nötig)
+
+Der Worker existiert bereits, antwortet aber mit 404 / Cloudflare-Fehler, bis
+dieser Code einmal deployed ist. Die App zeigt dann eine klare deutsche
+Fehlermeldung.
+
+1. Im Browser [dash.cloudflare.com](https://dash.cloudflare.com) öffnen und
+   einloggen.
+2. **Workers & Pages** → Worker **`mathsachs-punkte`** öffnen.
+3. **Edit Code** (Quick Edit) wählen.
+4. Den gesamten Editorinhalt löschen und durch die Datei
+   [`cloudflare/worker.js`](cloudflare/worker.js) ersetzen (alles kopieren,
+   alles einfügen — eine Datei, keine Imports).
+5. Unter **Settings → Bindings** prüfen, dass die KV-Namespace-Bindung
+   genau **`CLASSES`** heißt.
+6. **Deploy** klicken.
+7. `https://mathsachs-punkte.broad-heart-ad82.workers.dev/` im Browser öffnen.
+   Erwartete Antwort:
+   `{"ok":true,"service":"mathsachs-punkte","hasClasses":true}`.
+
+### Optional: wrangler
+
+Nur wenn Cloudflare-Zugangsdaten lokal liegen (meist nicht):
+
+```bash
+npx wrangler deploy --config cloudflare/wrangler.toml
+```
+
+Die KV-Bindung `CLASSES` muss in der Wrangler-Konfiguration bzw. im Dashboard
+stehen. Ohne Credentials den Dashboard-Weg oben nutzen.
+
 ## Requirements
 
 - Node.js 20+ (developed against Node 22)
@@ -198,20 +266,24 @@ GitHub Release, or run the workflow manually from the Actions tab.
 ```
 src/
   lib/                # Reusable engine: rng, fractions, number parsing, storage
+  classCode/          # Klassencode-API-Client, Code-Normalisierung, Berlin-Buckets
   curriculum/         # Lehrplan-Datenmodell, Klassen 5–12, Einheiten & Themen-Suche
   exam/               # Klausur-Code (Kodierung, Link, Auflösung der Aufgaben)
   lan/                # WLAN-Server-Status in der UI, Tests für den LAN-HTTP-Server
-  legal/              # Impressum, MIT-Lizenztext, Ideenmelder-mailto
+  legal/              # Impressum, Datenschutz-Hinweis, MIT-Lizenztext, Ideenmelder-mailto
   updates/            # GitHub-Releases-Updateprüfung (Semver, Assets, Banner)
-  components/         # UI: Browser, Üben, Übungsblatt, Protokoll, Klausur, Update-Hinweis, Rechtliches
+  components/         # UI: Browser, Üben, Übungsblatt, Protokoll, Klasse, Klausur, Update-Hinweis, Rechtliches
   App.tsx             # Views, routing and user management
   App.css             # Component styles
   index.css           # Global theme
+cloudflare/
+  worker.js           # Copy-paste-ready Worker (Edit Code → Deploy)
+  wrangler.toml       # Optional wrangler deploy (KV-Bindung CLASSES)
 electron/
   main.cjs            # Electron main process (window, update check, LAN-Server, shared store)
   preload.cjs         # Preload bridge (desktop, updates, LAN-Status, shared storage)
   lanServer.cjs       # HTTP-Server für WLAN-Tablets plus /api/state
-  sharedStore.cjs     # Gemeinsame Benutzer/Punkte-Datei (userData)
+  sharedStore.cjs     # Gemeinsame Benutzer/Punkte/Klassencodes-Datei (userData)
   githubUpdate.cjs    # GitHub-Releases-Fallback für Updates
 build/
   icon.svg / icon.png # App icon used by the installers
@@ -240,6 +312,10 @@ Große Wallstraße 42
 [info@my-smart-home-support.de](mailto:info@my-smart-home-support.de)
 
 In der App ebenfalls unter **Impressum**.
+
+Bei aktivem Klassencode speichert Mathsachs online nur den Klassennamen und
+anonyme Punktesummen bei Cloudflare — keine Vornamen und keine Geräte-IDs.
+Der Code ist das Geheimnis. In der App unter **Datenschutz**.
 
 ## Idee / Feedback
 

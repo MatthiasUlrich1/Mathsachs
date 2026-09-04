@@ -1,14 +1,23 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import {
   addUser,
+  getClassCodeSettings,
   getSharedStorageBackendForTests,
   initSharedStorage,
   listUsers,
   loadUser,
   recordSession,
+  rememberCreatedClassCode,
   resetSharedStorageForTests,
+  setSendClassPoints,
 } from './storage'
-import { USERS_STORAGE_KEY, userRecordKey, type SharedState } from './sharedState'
+import { CLASS_POINTS_API } from '../classCode/api'
+import {
+  CLASS_CODES_STORAGE_KEY,
+  USERS_STORAGE_KEY,
+  userRecordKey,
+  type SharedState,
+} from './sharedState'
 
 function memoryStorage(): Storage {
   const map = new Map<string, string>()
@@ -144,6 +153,47 @@ describe('storage adapter', () => {
     expect(loadUser('Ada').stats.brueche.points).toBe(16)
     await vi.waitFor(() => {
       expect(fileState.records.Ada?.stats.brueche.points).toBe(16)
+    })
+  })
+
+  it('POSTs a class-point delta when collect is opted in (does not block)', async () => {
+    const local = memoryStorage()
+    vi.stubGlobal('localStorage', local)
+    const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      expect(String(input)).toBe(`${CLASS_POINTS_API}/classes/ABCD2345/points`)
+      expect(init?.method).toBe('POST')
+      expect(JSON.parse(String(init?.body))).toEqual({ delta: 6 })
+      return jsonResponse({
+        code: 'ABCD2345',
+        name: '6a',
+        points: { today: 6, week: 6, month: 6, year: 6, total: 6 },
+      })
+    })
+    vi.stubGlobal('fetch', fetchMock)
+
+    await initSharedStorage()
+    expect(getSharedStorageBackendForTests()).toBe('local')
+    rememberCreatedClassCode('abcd-2345', 'Klasse 6a')
+    setSendClassPoints(true)
+    expect(getClassCodeSettings()).toMatchObject({
+      activeCode: 'ABCD2345',
+      sendPoints: true,
+    })
+    await vi.waitFor(() => {
+      expect(local.getItem(CLASS_CODES_STORAGE_KEY)).toContain('ABCD2345')
+    })
+
+    recordSession('Ada', {
+      topicId: 'brueche',
+      topicTitle: 'Brüche',
+      areaTitle: 'Zahlen',
+      attempts: 3,
+      correct: 3,
+      points: 6,
+    })
+    expect(loadUser('Ada').stats.brueche.points).toBe(6)
+    await vi.waitFor(() => {
+      expect(fetchMock).toHaveBeenCalled()
     })
   })
 })

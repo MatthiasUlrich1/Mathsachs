@@ -11,7 +11,16 @@ const path = require('node:path')
 const SCHEMA_VERSION = 1
 const MAX_SESSIONS = 200
 const USERS_KEY = 'mathsachs.users.v1'
+const CLASS_CODES_KEY = 'mathsachs.classCodes.v1'
 const USER_KEY_RE = /^mathsachs\.user\.(.+)\.v1$/
+
+function emptyClassCodes() {
+  return {
+    created: [],
+    activeCode: null,
+    sendPoints: false,
+  }
+}
 
 function emptyState() {
   return {
@@ -19,6 +28,7 @@ function emptyState() {
     migratedLocalStorage: false,
     users: [],
     records: {},
+    classCodes: emptyClassCodes(),
   }
 }
 
@@ -87,6 +97,75 @@ function normalizeUserData(name, raw) {
   }
 }
 
+function normalizeCode(raw) {
+  if (typeof raw !== 'string') return ''
+  return raw
+    .trim()
+    .toUpperCase()
+    .replace(/[-_\s]/g, '')
+    .replace(/[IL]/g, '1')
+    .replace(/O/g, '0')
+    .replace(/[^0-9A-HJKMNP-TV-Z]/g, '')
+}
+
+function normalizeCreatedCode(raw) {
+  if (!raw || typeof raw !== 'object') return null
+  const code = normalizeCode(raw.code)
+  if (!code) return null
+  return {
+    code,
+    name: asString(raw.name, '').trim().slice(0, 80),
+    createdAt: asFiniteNumber(raw.createdAt, 0),
+  }
+}
+
+function normalizeClassCodes(raw) {
+  const src = raw && typeof raw === 'object' ? raw : {}
+  const created = []
+  const seen = new Set()
+  const list = Array.isArray(src.created) ? src.created : []
+  for (const item of list) {
+    const row = normalizeCreatedCode(item)
+    if (!row || seen.has(row.code)) continue
+    seen.add(row.code)
+    created.push(row)
+  }
+  created.sort((a, b) => a.createdAt - b.createdAt || a.code.localeCompare(b.code))
+  const active =
+    src.activeCode == null || src.activeCode === ''
+      ? null
+      : normalizeCode(src.activeCode) || null
+  return {
+    created,
+    activeCode: active,
+    sendPoints: Boolean(src.sendPoints) && Boolean(active),
+  }
+}
+
+function mergeClassCodes(base, incoming) {
+  const byCode = new Map()
+  for (const item of [...base.created, ...incoming.created]) {
+    const prev = byCode.get(item.code)
+    if (!prev) {
+      byCode.set(item.code, item)
+      continue
+    }
+    const createdAt = Math.min(prev.createdAt || Infinity, item.createdAt || Infinity)
+    byCode.set(item.code, {
+      code: item.code,
+      name: prev.name || item.name,
+      createdAt: Number.isFinite(createdAt) ? createdAt : 0,
+    })
+  }
+  return {
+    created: [...byCode.values()].sort(
+      (a, b) => a.createdAt - b.createdAt || a.code.localeCompare(b.code),
+    ),
+    activeCode: incoming.activeCode,
+    sendPoints: Boolean(incoming.sendPoints) && Boolean(incoming.activeCode),
+  }
+}
+
 function uniqueNames(names) {
   const out = []
   const seen = new Set()
@@ -120,6 +199,7 @@ function normalizeState(raw) {
     migratedLocalStorage: Boolean(src.migratedLocalStorage),
     users,
     records,
+    classCodes: normalizeClassCodes(src.classCodes),
   }
 }
 
@@ -188,11 +268,16 @@ function mergeSharedState(baseRaw, incomingRaw) {
   for (const name of users) {
     records[name] = mergeUserData(base.records[name], incoming.records[name])
   }
+  const incomingHadCodes =
+    incomingRaw && typeof incomingRaw === 'object' && Object.prototype.hasOwnProperty.call(incomingRaw, 'classCodes')
   return {
     schemaVersion: SCHEMA_VERSION,
     migratedLocalStorage: base.migratedLocalStorage || incoming.migratedLocalStorage,
     users,
     records,
+    classCodes: incomingHadCodes
+      ? mergeClassCodes(base.classCodes, incoming.classCodes)
+      : base.classCodes,
   }
 }
 
@@ -225,7 +310,15 @@ function snapshotToState(snapshot) {
       // skip corrupt records
     }
   }
-  return normalizeState({ users, records })
+  let classCodes
+  if (typeof src[CLASS_CODES_KEY] === 'string') {
+    try {
+      classCodes = JSON.parse(src[CLASS_CODES_KEY])
+    } catch {
+      classCodes = undefined
+    }
+  }
+  return normalizeState({ users, records, classCodes })
 }
 
 function atomicWriteFile(filePath, contents) {
@@ -378,6 +471,7 @@ module.exports = {
   SCHEMA_VERSION,
   MAX_SESSIONS,
   USERS_KEY,
+  CLASS_CODES_KEY,
   emptyState,
   normalizeState,
   mergeSharedState,

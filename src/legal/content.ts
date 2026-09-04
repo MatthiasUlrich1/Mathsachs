@@ -8,6 +8,10 @@ export const IMPRESSUM_LINES = [
   CONTACT_EMAIL,
 ] as const
 
+/** One-liner for Impressum / Datenschutz (anonymous class totals at Cloudflare). */
+export const DATENSCHUTZ_NOTE =
+  'Bei aktivem Klassencode speichert Mathsachs online nur den Klassennamen und anonyme Punktesummen bei Cloudflare — keine Vornamen und keine Geräte-IDs. Der Code ist das Geheimnis.'
+
 /** Exact subject as specified for the Ideenmelder. */
 export const IDEENMELDER_SUBJECT =
   'Idee / Feedback zum Mathsachs Übungsprogramm.'

@@ -20,6 +20,7 @@ import { ExamRunner } from './components/ExamRunner'
 import { UpdateBanner } from './components/UpdateBanner'
 import { LegalFooter } from './components/LegalFooter'
 import { LanAccessCard } from './components/LanAccessCard'
+import { ClassCodes } from './components/ClassCodes'
 import { parseExamHash } from './exam/examCode'
 import { useUpdateCheck } from './updates/useUpdateCheck'
 import { primaryLanOrigin, useLanStatus } from './lan/useLanStatus'
@@ -37,6 +38,7 @@ type View =
   | { name: 'protocol' }
   | { name: 'examBuild' }
   | { name: 'examRun' }
+  | { name: 'class' }
   | { name: 'practice'; topic: Topic; areaTitle: string; gradeTitle: string }
   | { name: 'worksheet'; topic: Topic; areaTitle: string; gradeTitle: string }
 
@@ -304,6 +306,13 @@ export default function App() {
           >
             Punkteprotokoll
           </button>
+          <button
+            type="button"
+            className={`tab ${view.name === 'class' ? 'tab--active' : ''}`}
+            onClick={() => setView({ name: 'class' })}
+          >
+            Klasse
+          </button>
           <div className="user-badge">
             <span className="user-badge__name">{activeUser}</span>
             <button
@@ -472,6 +481,8 @@ export default function App() {
       {view.name === 'protocol' && (
         <Protocol user={activeUser} onExit={() => setView({ name: 'browse' })} />
       )}
+
+      {view.name === 'class' && <ClassCodes />}
 
       {showLanCard && lanStatus && <LanAccessCard status={lanStatus} />}
 

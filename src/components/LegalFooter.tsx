@@ -1,12 +1,13 @@
 import { useEffect, useId, useState, type ReactNode } from 'react'
 import {
   CONTACT_EMAIL,
+  DATENSCHUTZ_NOTE,
   IMPRESSUM_LINES,
   MIT_LICENSE_TEXT,
   buildIdeenmelderMailto,
 } from '../legal/content'
 
-type LegalDialog = 'impressum' | 'lizenz' | null
+type LegalDialog = 'impressum' | 'lizenz' | 'datenschutz' | null
 
 export function LegalFooter({ version }: { version: string }) {
   const [dialog, setDialog] = useState<LegalDialog>(null)
@@ -40,6 +41,16 @@ export function LegalFooter({ version }: { version: string }) {
           <span className="foot__sep" aria-hidden="true">
             ·
           </span>
+          <button
+            type="button"
+            className="link"
+            onClick={() => setDialog('datenschutz')}
+          >
+            Datenschutz
+          </button>
+          <span className="foot__sep" aria-hidden="true">
+            ·
+          </span>
           <a className="link" href={mailto}>
             Idee / Feedback
           </a>
@@ -59,6 +70,17 @@ export function LegalFooter({ version }: { version: string }) {
               ),
             )}
           </address>
+          <p className="muted small">{DATENSCHUTZ_NOTE}</p>
+        </LegalDialog>
+      )}
+
+      {dialog === 'datenschutz' && (
+        <LegalDialog title="Datenschutz" onClose={() => setDialog(null)}>
+          <p>{DATENSCHUTZ_NOTE}</p>
+          <p className="muted small">
+            Benutzerliste und Punkteprotokoll bleiben auf dem Rechner (bzw. im
+            lokalen WLAN). Es gibt keine Nutzerkonten.
+          </p>
         </LegalDialog>
       )}
 
