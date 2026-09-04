@@ -22,8 +22,15 @@ describe('Impressum', () => {
 
 describe('MIT license text', () => {
   it('matches the root LICENSE file', () => {
-    const fromFile = readFileSync(resolve('LICENSE'), 'utf8').trimEnd()
-    expect(MIT_LICENSE_TEXT).toBe(fromFile)
+    const normalize = (text: string) => text.replace(/\r\n/g, '\n').trimEnd()
+    const fromFile = readFileSync(resolve('LICENSE'), 'utf8')
+    expect(normalize(MIT_LICENSE_TEXT)).toBe(normalize(fromFile))
+  })
+
+  it('treats Windows CRLF checkouts as the same MIT text', () => {
+    const normalize = (text: string) => text.replace(/\r\n/g, '\n').trimEnd()
+    const crlfCheckout = `${MIT_LICENSE_TEXT.replace(/\n/g, '\r\n')}\r\n`
+    expect(normalize(MIT_LICENSE_TEXT)).toBe(normalize(crlfCheckout))
   })
 
   it('is the MIT license for Linus und Matthias Ulrich, 2026', () => {
