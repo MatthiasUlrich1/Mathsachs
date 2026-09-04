@@ -1,0 +1,47 @@
+appId: com.mathsachs.app
+productName: Mathsachs
+copyright: Copyright © Mathsachs
+
+directories:
+  output: release
+  buildResources: build
+
+files:
+  - dist/**/*
+  - electron/**/*
+  - build/icon.png
+  - package.json
+
+# Windows: NSIS installer (.exe setup) that lets the user pick the folder.
+win:
+  target:
+    - nsis
+  icon: build/icon.png
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+
+# macOS: .dmg disk image.
+mac:
+  target:
+    - dmg
+  category: public.app-category.education
+  icon: build/icon.png
+
+# Linux: portable AppImage plus a Debian package.
+linux:
+  target:
+    - AppImage
+    - deb
+  category: Education
+  icon: build/icon.png
+  maintainer: Mathsachs
+  synopsis: Fast mental-math practice
+  description: Mathsachs is a fast, modern mental-math practice desktop app.
+  desktop:
+    entry:
+      Name: Mathsachs
+      Comment: Fast mental-math practice
