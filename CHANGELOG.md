@@ -9,6 +9,18 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.8] – 2026-09-04
+
+### Hinzugefügt
+
+- **WLAN-Zugang in der Desktop-App:** Solange Mathsachs auf einem Rechner
+  läuft, startet sie einen lokalen Webserver (Port 4747, bei Belegung der
+  nächste freie Port). Tablets und Handys im **selben WLAN** öffnen die
+  Übungs-App im Browser unter `http://<Rechner-IP>:4747/`. Die Adresse und ein
+  QR-Code stehen in der App. Klausur-Links/QR-Codes nutzen diese WLAN-Adresse,
+  damit sie auf dem Tablet funktionieren. Die App muss geöffnet bleiben;
+  es gibt kein Passwort (nur Geräte im lokalen Netz).
+
 ## [0.1.7] – 2026-09-04
 
 ### Behoben
@@ -117,7 +129,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.7...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.8...HEAD
+[0.1.8]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.7...v0.1.8
 [0.1.7]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.6...v0.1.7
 [0.1.6]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.5...v0.1.6
 [0.1.5]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.4...v0.1.5

@@ -5,6 +5,7 @@ const {
   checkGithubUpdate,
   isNewerVersion,
 } = require('./githubUpdate.cjs')
+const { startLanServer } = require('./lanServer.cjs')
 
 /** Vite dev server URL used during `npm run electron:dev`. */
 const DEV_SERVER_URL = 'http://localhost:5173'
@@ -14,6 +15,40 @@ try {
   ;({ autoUpdater } = require('electron-updater'))
 } catch {
   autoUpdater = null
+}
+
+/** @type {{ running: boolean, port: number | null, urls: string[], lanUrls: string[], error: string | null }} */
+let lanStatus = {
+  running: false,
+  port: null,
+  urls: [],
+  lanUrls: [],
+  error: null,
+}
+let stopLanServer = null
+
+async function startDesktopLanServer() {
+  const rootDir = path.join(__dirname, '..', 'dist')
+  const proxyOrigin = app.isPackaged ? null : DEV_SERVER_URL
+  try {
+    const started = await startLanServer({ rootDir, proxyOrigin })
+    stopLanServer = started.stop
+    lanStatus = {
+      running: true,
+      port: started.port,
+      urls: started.urls,
+      lanUrls: started.lanUrls,
+      error: null,
+    }
+  } catch (err) {
+    lanStatus = {
+      running: false,
+      port: null,
+      urls: [],
+      lanUrls: [],
+      error: err && err.message ? err.message : String(err),
+    }
+  }
 }
 
 function isMailtoUrl(url) {
@@ -170,16 +205,23 @@ function registerUpdateIpc() {
     if (typeof url !== 'string' || !/^https?:\/\//i.test(url)) return
     await shell.openExternal(url)
   })
+
+  ipcMain.handle('lan:status', () => lanStatus)
 }
 
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
   setupAutoUpdater()
   registerUpdateIpc()
+  await startDesktopLanServer()
   createWindow()
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
+})
+
+app.on('before-quit', () => {
+  if (stopLanServer) void stopLanServer()
 })
 
 app.on('window-all-closed', () => {

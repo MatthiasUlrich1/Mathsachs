@@ -14,6 +14,8 @@ interface LoadedGrade {
 interface Props {
   loaded: LoadedGrade[]
   onExit: () => void
+  /** WLAN-URL of the desktop LAN server, used for tablet-friendly Klausur links. */
+  shareOrigin?: string
 }
 
 /** Number of concrete task proposals offered per selected topic in step 2. */
@@ -35,7 +37,7 @@ const selKey = (moduleId: string, topicId: string, seed: number) =>
 
 const randomSeed = () => Math.floor(Math.random() * 0xffffffff) >>> 0
 
-export function ExamBuilder({ loaded, onExit }: Props) {
+export function ExamBuilder({ loaded, onExit, shareOrigin }: Props) {
   const [step, setStep] = useState<1 | 2 | 3>(1)
 
   // Flattened list of every topic across the loaded grades.
@@ -153,7 +155,7 @@ export function ExamBuilder({ loaded, onExit }: Props) {
   }, [selections, title])
 
   const code = useMemo(() => encodeExam(spec), [spec])
-  const link = useMemo(() => buildExamLink(code), [code])
+  const link = useMemo(() => buildExamLink(code, shareOrigin), [code, shareOrigin])
 
   const [copied, setCopied] = useState<'code' | 'link' | null>(null)
   const copy = async (text: string, which: 'code' | 'link') => {
@@ -275,6 +277,7 @@ export function ExamBuilder({ loaded, onExit }: Props) {
           code={code}
           link={link}
           qr={qr}
+          shareOrigin={shareOrigin}
           count={selectedCount}
           totalPoints={totalPoints}
           copied={copied}
@@ -455,6 +458,7 @@ function ExamStepCode({
   code,
   link,
   qr,
+  shareOrigin,
   count,
   totalPoints,
   copied,
@@ -465,6 +469,7 @@ function ExamStepCode({
   code: string
   link: string
   qr: string | null
+  shareOrigin?: string
   count: number
   totalPoints: number
   copied: 'code' | 'link' | null
@@ -534,9 +539,9 @@ function ExamStepCode({
       )}
 
       <p className="muted small">
-        Teile den Code oder Link z. B. auf der Schulwebseite, per E-Mail oder in
-        der Lernplattform. Schüler:innen öffnen den Link (oder fügen den Code im
-        Reiter „Klausur schreiben“ ein) und lösen dieselben Aufgaben.
+        {shareOrigin
+          ? `Der Link zeigt auf den WLAN-Zugang dieses Rechners (${shareOrigin}). Tablets im selben Netz können ihn öffnen, solange Mathsachs hier läuft.`
+          : 'Teile den Code oder Link z. B. auf der Schulwebseite, per E-Mail oder in der Lernplattform. Schüler:innen öffnen den Link (oder fügen den Code im Reiter „Klausur schreiben“ ein) und lösen dieselben Aufgaben.'}
       </p>
     </div>
   )

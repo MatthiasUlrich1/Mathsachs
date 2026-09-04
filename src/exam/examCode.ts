@@ -148,13 +148,18 @@ const isExamSpec = (value: unknown): value is ExamSpec => {
 
 // --- Shareable links -------------------------------------------------------
 
-/** Build a shareable link that auto-loads the exam via the URL hash. */
-export const buildExamLink = (code: string): string => {
-  const base =
+/**
+ * Build a shareable link that auto-loads the exam via the URL hash.
+ * Pass `baseUrl` (e.g. the desktop LAN address) so tablets do not get a
+ * `file://` link from the Electron window.
+ */
+export const buildExamLink = (code: string, baseUrl?: string): string => {
+  const fallback =
     typeof window !== 'undefined' && window.location
       ? window.location.origin + window.location.pathname
       : ''
-  return `${base}#${EXAM_HASH_KEY}=${encodeURIComponent(code)}`
+  const raw = (baseUrl ?? fallback).replace(/#.*$/, '').replace(/\/+$/, '')
+  return `${raw}/#${EXAM_HASH_KEY}=${encodeURIComponent(code)}`
 }
 
 /** Extract an exam code from a location hash, or `null` if none is present. */

@@ -1270,6 +1270,55 @@ a.ghost.update-banner__link {
   color: rgba(148, 163, 184, 0.45);
 }
 
+/* LAN / WLAN access from the desktop app */
+.lan-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lan-card__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.lan-card__urls {
+  flex: 1 1 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lan-card__url {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  word-break: break-all;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.lan-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.lan-card__qr {
+  text-align: center;
+}
+
+.lan-card__qr img {
+  display: block;
+  border-radius: 12px;
+  background: #fff;
+  padding: 8px;
+}
+
 a.link {
   text-decoration: none;
   display: inline-flex;

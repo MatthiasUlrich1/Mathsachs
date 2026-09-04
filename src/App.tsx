@@ -19,8 +19,10 @@ import { ExamBuilder } from './components/ExamBuilder'
 import { ExamRunner } from './components/ExamRunner'
 import { UpdateBanner } from './components/UpdateBanner'
 import { LegalFooter } from './components/LegalFooter'
+import { LanAccessCard } from './components/LanAccessCard'
 import { parseExamHash } from './exam/examCode'
 import { useUpdateCheck } from './updates/useUpdateCheck'
+import { primaryLanOrigin, useLanStatus } from './lan/useLanStatus'
 
 const ACTIVE_KEY = 'mathsachs.activeUser.v1'
 
@@ -56,11 +58,14 @@ export default function App() {
   const [ready, setReady] = useState(false)
   const [query, setQuery] = useState('')
   const updateCheck = useUpdateCheck()
+  const lanStatus = useLanStatus()
+  const shareOrigin = primaryLanOrigin(lanStatus)
   const isDesktop = typeof window !== 'undefined' && Boolean(window.mathsachs?.isDesktop)
   const hideUpdateBanner =
     view.name === 'practice' ||
     view.name === 'worksheet' ||
     view.name === 'examRun'
+  const showLanCard = Boolean(lanStatus) && !hideUpdateBanner
   const updateBanner =
     updateCheck.update && !hideUpdateBanner ? (
       <UpdateBanner
@@ -188,6 +193,7 @@ export default function App() {
             </div>
           </div>
         </section>
+        {showLanCard && lanStatus && <LanAccessCard status={lanStatus} />}
         <LegalFooter version={updateCheck.currentVersion} />
       </main>
     )
@@ -413,6 +419,7 @@ export default function App() {
       {view.name === 'examBuild' && (
         <ExamBuilder
           loaded={loaded}
+          shareOrigin={shareOrigin}
           onExit={() => setView({ name: 'browse' })}
         />
       )}
@@ -433,6 +440,8 @@ export default function App() {
       {view.name === 'protocol' && (
         <Protocol user={activeUser} onExit={() => setView({ name: 'browse' })} />
       )}
+
+      {showLanCard && lanStatus && <LanAccessCard status={lanStatus} />}
 
       <LegalFooter version={updateCheck.currentVersion} />
     </main>

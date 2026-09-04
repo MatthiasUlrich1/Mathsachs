@@ -42,6 +42,17 @@ export interface DesktopDownloadResult {
   error?: string
 }
 
+/** Status of the in-app LAN HTTP server (desktop only). */
+export interface LanServerStatus {
+  running: boolean
+  port: number | null
+  /** Loopback plus RFC1918 URLs, each with a trailing slash. */
+  urls: string[]
+  /** Wi-Fi / LAN URLs only (no 127.0.0.1). */
+  lanUrls: string[]
+  error: string | null
+}
+
 export interface MathsachsDesktop {
   isDesktop: true
   platform: string
@@ -50,5 +61,6 @@ export interface MathsachsDesktop {
   downloadUpdate: () => Promise<DesktopDownloadResult>
   installUpdate: () => Promise<void>
   openExternal: (url: string) => Promise<void>
+  getLanStatus: () => Promise<LanServerStatus>
   onUpdateEvent: (callback: (event: DesktopUpdateEvent) => void) => () => void
 }

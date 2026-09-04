@@ -95,6 +95,13 @@ describe('shareable links', () => {
     expect(decodeExam(parseExamHash(hash)!)).toEqual(sampleSpec)
   })
 
+  it('uses an explicit LAN origin so Electron does not share a file:// link', () => {
+    const code = encodeExam(sampleSpec)
+    const link = buildExamLink(code, 'http://192.168.1.42:4747/')
+    expect(link.startsWith('http://192.168.1.42:4747/#klausur=')).toBe(true)
+    expect(parseExamHash(link.slice(link.indexOf('#')))).toBe(code)
+  })
+
   it('returns null when the hash carries no exam code', () => {
     expect(parseExamHash('#other=1')).toBeNull()
     expect(parseExamHash('')).toBeNull()

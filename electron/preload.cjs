@@ -9,6 +9,7 @@ contextBridge.exposeInMainWorld('mathsachs', {
   downloadUpdate: () => ipcRenderer.invoke('updates:download'),
   installUpdate: () => ipcRenderer.invoke('updates:install'),
   openExternal: (url) => ipcRenderer.invoke('updates:openExternal', url),
+  getLanStatus: () => ipcRenderer.invoke('lan:status'),
   onUpdateEvent: (callback) => {
     const listener = (_event, payload) => callback(payload)
     ipcRenderer.on('updates:event', listener)

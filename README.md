@@ -30,11 +30,14 @@ verteilen. Gebaut mit React, TypeScript und Vite.
 - **Übungsklausur per Code**: Lehrkräfte stellen aus Lehrplan-Themen eine
   Klausur zusammen; Schülerinnen und Schüler lösen denselben Satz Aufgaben über
   einen Code oder Link (siehe [Übungsklausur per Code](#übungsklausur-per-code)).
+- **WLAN-Zugang (Desktop-App)**: Läuft Mathsachs auf einem Rechner, können
+  Tablets im selben WLAN die App im Browser öffnen (siehe
+  [WLAN-Zugang](#wlan-zugang-desktop-app)).
 - **Erweiterbar** für weitere Klassenstufen und Fächer (Datenmodell mit
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.7**).
+(aktuelle Version **0.1.8**).
 
 Die App prüft beim Start die öffentlichen
 [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
@@ -85,6 +88,35 @@ in **Klausur schreiben** mit derselben Aufgabenliste.
 
 > Der Code ist für **Übungsklausuren** gedacht, nicht für benotete Prüfungen:
 > Aufgaben und Lösungen werden lokal erzeugt und sind nicht manipulationssicher.
+
+## WLAN-Zugang (Desktop-App)
+
+Die **installierte** Mathsachs-App startet automatisch einen kleinen Webserver
+auf dem Rechner. Andere Geräte im **selben WLAN** können die Übungsoberfläche
+dann im Browser nutzen — ohne eigene Installation und ohne öffentlichen
+Internet-Host.
+
+1. Mathsachs auf dem Windows-, macOS- oder Linux-Rechner starten und geöffnet
+   lassen.
+2. In der App die Karte **WLAN-Zugang** ansehen: dort stehen die Adresse
+   (typisch `http://192.168.x.x:4747/`) und ein QR-Code.
+3. Auf dem Tablet/Handy im Browser diese Adresse öffnen oder den QR-Code
+   scannen. HTTP, nicht HTTPS.
+4. Beim ersten Start kann die Firewall nachfragen — Zugriff im **privaten**
+   Netz erlauben.
+
+Hinweise:
+
+- Gast-WLANs und viele Schulnetze trennen Clients voneinander
+  (Client-Isolation). Dann sieht das Tablet den Rechner nicht.
+- Es gibt **kein Passwort**. Wer im Netz die Adresse kennt, kann üben.
+  Punkte und Benutzer liegen nur auf dem jeweiligen Gerät (localStorage),
+  nicht auf dem Lehrer-Rechner.
+- Klausur-Links aus der Desktop-App zeigen auf diese WLAN-Adresse, solange
+  eine erkannt wird. Der Klausur**code** (`MSX1:…`) funktioniert unabhängig
+  davon in **Klausur schreiben**.
+- Der Entwicklungsserver `npm run dev` ist ein anderer Weg (Port 5173) und
+  setzt Node.js plus Quellcode voraus.
 
 ## Requirements
 
@@ -163,6 +195,7 @@ src/
   lib/                # Reusable engine: rng, fractions, number parsing, storage
   curriculum/         # Lehrplan-Datenmodell, Klassen 5–12, Einheiten & Themen-Suche
   exam/               # Klausur-Code (Kodierung, Link, Auflösung der Aufgaben)
+  lan/                # WLAN-Server-Status in der UI, Tests für den LAN-HTTP-Server
   legal/              # Impressum, MIT-Lizenztext, Ideenmelder-mailto
   updates/            # GitHub-Releases-Updateprüfung (Semver, Assets, Banner)
   components/         # UI: Browser, Üben, Übungsblatt, Protokoll, Klausur, Update-Hinweis, Rechtliches
@@ -170,8 +203,9 @@ src/
   App.css             # Component styles
   index.css           # Global theme
 electron/
-  main.cjs            # Electron main process (window + update check)
-  preload.cjs         # Preload bridge (desktop + updates)
+  main.cjs            # Electron main process (window, update check, LAN-Server)
+  preload.cjs         # Preload bridge (desktop, updates, LAN-Status)
+  lanServer.cjs       # HTTP-Server für WLAN-Tablets
   githubUpdate.cjs    # GitHub-Releases-Fallback für Updates
 build/
   icon.svg / icon.png # App icon used by the installers
