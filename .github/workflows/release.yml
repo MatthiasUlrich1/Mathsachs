@@ -46,6 +46,24 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # GitHub rewrites spaces in asset names to dots; electron-updater
+      # writes hyphens into latest.yml. Refuse spaced filenames so the
+      # uploaded name matches the updater metadata exactly.
+      - name: Reject installer names with spaces
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -d release ]; then
+            echo "release/ directory missing"
+            exit 1
+          fi
+          spaced="$(find release -maxdepth 1 -name '* *' -print)"
+          if [ -n "$spaced" ]; then
+            echo "Installer filenames must not contain spaces:"
+            echo "$spaced"
+            exit 1
+          fi
+
       - name: Upload installers as build artifacts
         uses: actions/upload-artifact@v4
         with:

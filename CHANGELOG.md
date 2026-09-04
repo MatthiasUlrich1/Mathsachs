@@ -9,6 +9,18 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.6] – 2026-09-04
+
+### Behoben
+
+- **Windows-Auto-Update (HTTP 404):** Der NSIS-Installer hieß bisher
+  `Mathsachs Setup x.y.z.exe` (Leerzeichen). `electron-updater` schreibt in
+  `latest.yml` den Namen mit Bindestrichen (`Mathsachs-Setup-x.y.z.exe`),
+  GitHub macht aus Leerzeichen Punkte (`Mathsachs.Setup.x.y.z.exe`). Der
+  Download schlug deshalb fehl. Die Artefaktnamen sind jetzt fest ohne
+  Leerzeichen, damit Dateiname, `latest.yml` und GitHub-Asset
+  übereinstimmen.
+
 ## [0.1.5] – 2026-09-04
 
 ### Hinzugefügt
@@ -97,7 +109,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.5...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.6...HEAD
+[0.1.6]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.5...v0.1.6
 [0.1.5]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.4...v0.1.5
 [0.1.4]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.2...v0.1.3

@@ -19,12 +19,17 @@ publish:
     owner: MatthiasUlrich1
     repo: Mathsachs
 
-# Windows: NSIS installer (.exe setup) that lets the user pick the folder.
+# Artifact names must contain no spaces. The default NSIS name is
+# "${productName} Setup ${version}.${ext}" (spaces). electron-updater then
+# writes hyphenated names into latest.yml, while GitHub / action-gh-release
+# turn spaces into dots — so Windows auto-update 404s (v0.1.5).
+# Keep these aligned with latest.yml / latest-mac.yml / latest-linux.yml.
 win:
   target:
     - nsis
   icon: build/icon.png
 nsis:
+  artifactName: Mathsachs-Setup-${version}.${ext}
   oneClick: false
   perMachine: false
   allowToChangeInstallationDirectory: true
@@ -37,8 +42,12 @@ mac:
     - dmg
   category: public.app-category.education
   icon: build/icon.png
+dmg:
+  artifactName: Mathsachs-${version}-${arch}.${ext}
 
 # Linux: portable AppImage plus a Debian package.
+# Do not set a platform-wide linux.artifactName — that would rename the
+# Debian package away from mathsachs_${version}_${arch}.deb.
 linux:
   target:
     - AppImage
@@ -52,3 +61,5 @@ linux:
     entry:
       Name: Mathsachs
       Comment: Fast mental-math practice
+appImage:
+  artifactName: Mathsachs-${version}.${ext}

@@ -10,7 +10,7 @@ import type { GithubRelease, GithubReleaseAsset } from './types'
 
 const assets: GithubReleaseAsset[] = [
   {
-    name: 'Mathsachs.Setup.0.1.4.exe',
+    name: 'Mathsachs-Setup-0.1.4.exe',
     browser_download_url: 'https://example.com/setup.exe',
   },
   {
@@ -86,7 +86,7 @@ describe('checkForAppUpdate', () => {
       available: true,
       version: '0.1.4',
       downloadUrl: 'https://example.com/setup.exe',
-      downloadLabel: 'Mathsachs.Setup.0.1.4.exe',
+      downloadLabel: 'Mathsachs-Setup-0.1.4.exe',
     })
     expect(info?.notes).toContain('Klausur-Code')
   })
