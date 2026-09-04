@@ -3,6 +3,7 @@ import {
   CLASS_POINTS_API,
   ClassApiError,
   CLASS_API_NOT_READY_MESSAGE,
+  CLASS_API_NETWORK_MESSAGE,
   addClassPoints,
   checkClassApiHealth,
   classApiUrl,
@@ -108,6 +109,19 @@ describe('class API client', () => {
     await expect(checkClassApiHealth('https://example.test')).rejects.toMatchObject({
       kind: 'not_ready',
       message: CLASS_API_NOT_READY_MESSAGE,
+    })
+  })
+
+  it('maps a failed fetch to the German network / not-ready hint', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => {
+        throw new TypeError('Failed to fetch')
+      }),
+    )
+    await expect(checkClassApiHealth('https://example.test')).rejects.toMatchObject({
+      kind: 'network',
+      message: CLASS_API_NETWORK_MESSAGE,
     })
   })
 

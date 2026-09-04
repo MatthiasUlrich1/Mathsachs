@@ -169,7 +169,7 @@ function publicClass(code, stored, now = Date.now()) {
 
 function corsHeaders(request) {
   const origin = request.headers.get('Origin')
-  const allow = !origin || origin === 'null' ? '*' : origin
+  const allow = !origin || origin === 'null' || origin === 'file://' ? '*' : origin
   return {
     'Access-Control-Allow-Origin': allow,
     'Access-Control-Allow-Methods': ALLOWED_METHODS,

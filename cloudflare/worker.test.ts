@@ -141,4 +141,12 @@ describe('Cloudflare Worker API', () => {
     )
     expect(res.headers.get('Access-Control-Allow-Methods')).toContain('POST')
   })
+
+  it('uses * for file:// / null Origin so Electron can call the API', async () => {
+    const fromFile = await worker.fetch(
+      request('/', { headers: { Origin: 'null' } }),
+      env(),
+    )
+    expect(fromFile.headers.get('Access-Control-Allow-Origin')).toBe('*')
+  })
 })

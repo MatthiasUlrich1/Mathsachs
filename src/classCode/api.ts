@@ -30,6 +30,9 @@ export class ClassApiError extends Error {
 export const CLASS_API_NOT_READY_MESSAGE =
   'Der Klassen-Server ist noch nicht eingerichtet. Bitte in dash.cloudflare.com den Worker „mathsachs-punkte“ öffnen, unter Edit Code den Inhalt von cloudflare/worker.js einfügen und Deploy klicken.'
 
+export const CLASS_API_NETWORK_MESSAGE =
+  'Keine Verbindung zum Klassen-Server. Wenn der Worker noch nicht aktualisiert ist: in dash.cloudflare.com den Worker „mathsachs-punkte“ öffnen, unter Edit Code den Inhalt von cloudflare/worker.js einfügen und Deploy klicken.'
+
 export interface ClassStats {
   code: string
   name: string
@@ -116,7 +119,7 @@ const messageForKind = (kind: ClassApiErrorKind, fallback: string): string => {
   if (kind === 'not_ready') return CLASS_API_NOT_READY_MESSAGE
   if (kind === 'not_found') return 'Diesen Klassencode gibt es nicht.'
   if (kind === 'rate') return 'Zu viele Anfragen. Bitte kurz warten.'
-  if (kind === 'network') return 'Keine Verbindung zum Klassen-Server.'
+  if (kind === 'network') return CLASS_API_NETWORK_MESSAGE
   return fallback
 }
 
