@@ -3,8 +3,9 @@
 Ein **lehrplanorientiertes Mathematik-Übungsprogramm** für das Gymnasium in
 Sachsen (**Klasse 5 bis Jahrgangsstufe 11/12**). Schülerinnen und Schüler wählen
 aus den Lernbereichen des Lehrplans einzelne Themen aus und üben sie entweder
-direkt am Bildschirm oder erzeugen ausdruckbare Übungsblätter. Gebaut mit React,
-TypeScript und Vite.
+direkt am Bildschirm oder erzeugen ausdruckbare Übungsblätter. Lehrkräfte können
+daraus **Übungsklausuren** zusammenstellen und als Code oder Link an eine Klasse
+verteilen. Gebaut mit React, TypeScript und Vite.
 
 ## Funktionen
 
@@ -26,6 +27,9 @@ TypeScript und Vite.
 - **Mehrere Benutzer**: Punkte werden pro Name gespeichert.
 - **Punkteprotokoll**: Auswertung je Thema in Prozent und Gesamtpunktzahl,
   ebenfalls druckbar.
+- **Übungsklausur per Code**: Lehrkräfte stellen aus Lehrplan-Themen eine
+  Klausur zusammen; Schülerinnen und Schüler lösen denselben Satz Aufgaben über
+  einen Code oder Link (siehe [Übungsklausur per Code](#übungsklausur-per-code)).
 - **Erweiterbar** für weitere Klassenstufen und Fächer (Datenmodell mit
   Fach → Klassenstufe → Lernbereich → Thema).
 
@@ -33,6 +37,46 @@ Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md).
 
 > Fachliche Grundlage: Sächsischer Lehrplan Gymnasium Mathematik. Die Aufgaben
 > werden zufällig generiert und haben stets eindeutige, überprüfbare Lösungen.
+
+## Übungsklausur per Code
+
+Lehrkräfte stellen eine Übungsklausur aus konkreten Aufgaben des Lehrplans
+zusammen. Die App erzeugt daraus einen **Klausurcode** (beginnt mit `MSX1:`)
+sowie einen **teilbaren Link** (`…#klausur=…`) und einen **QR-Code**. Es wird
+kein Server benötigt: Der Code enthält nur Verweise auf Thema und Zufalls-Seed,
+die App erzeugt daraus auf jedem Gerät dieselben Aufgaben.
+
+### Als Lehrkraft: Klausur erstellen
+
+1. Im Reiter **Lehrpläne** die gewünschten Klassen laden (z. B. Klasse 6).
+2. Reiter **Klausur erstellen** öffnen.
+3. **Schritt 1 – Themen:** Lernbereiche aufklappen und die Themen per Checkbox
+   vorauswählen.
+4. **Schritt 2 – Aufgaben:** Pro Thema erscheinen fünf konkrete
+   Vorschlagsaufgaben (mit Lösung zur Kontrolle). Per Checkbox die gewünschten
+   Aufgaben auswählen, Punkte ggf. anpassen. „Neue Vorschläge“ erzeugt andere
+   Zahlen zum selben Thema.
+5. **Schritt 3 – Code:** Titel vergeben. Die App zeigt Klausurcode, Link und
+   QR-Code.
+
+### An die Klasse verteilen
+
+Den **Link** (oder den Code bzw. den QR-Code) z. B. auf der **Schulwebseite**,
+in der Lernplattform oder per E-Mail teilen. Wer den Link öffnet, landet direkt
+in **Klausur schreiben** mit derselben Aufgabenliste.
+
+### Als Schülerin oder Schüler: Klausur schreiben
+
+1. Mit dem eigenen Namen anmelden (Punkte werden unter diesem Namen gespeichert).
+2. Den geteilten Link öffnen **oder** den Reiter **Klausur schreiben** wählen und
+   den Code einfügen (beginnt mit `MSX1:`).
+3. Die Aufgaben der Reihe nach bearbeiten und die Klausur **abgeben**.
+4. Die Auswertung zeigt je Aufgabe die eigene Antwort, die richtige Lösung und
+   die Erklärung. Über **Ähnliche Aufgabe üben** kann dasselbe Thema mit neuen
+   Zahlen weiter geübt werden.
+
+> Der Code ist für **Übungsklausuren** gedacht, nicht für benotete Prüfungen:
+> Aufgaben und Lösungen werden lokal erzeugt und sind nicht manipulationssicher.
 
 ## Requirements
 
@@ -99,7 +143,8 @@ GitHub Release, or run the workflow manually from the Actions tab.
 src/
   lib/                # Reusable engine: rng, fractions, number parsing, storage
   curriculum/         # Lehrplan-Datenmodell, Klassen 5–12, Einheiten & Themen-Suche
-  components/         # UI: accordion browser, practice, worksheet, protocol
+  exam/               # Klausur-Code (Kodierung, Link, Auflösung der Aufgaben)
+  components/         # UI: Browser, Üben, Übungsblatt, Protokoll, Klausur erstellen/schreiben
   App.tsx             # Views, routing and user management
   App.css             # Component styles
   index.css           # Global theme
