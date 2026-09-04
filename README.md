@@ -41,7 +41,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.10**).
+(aktuelle Version **0.1.11**).
 
 Die App prüft beim Start die öffentlichen
 [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
@@ -134,15 +134,14 @@ lesen und Punkte addieren. **Behandle den Code wie ein Passwort.**
 
 Im Reiter **Klasse**:
 
-1. **Code erstellen** (Schüler oder Lehrkraft): Klassenname eingeben. Der Code
-   trägt den Namen mit. Anzeigen und kopieren.
+1. **Code erstellen** (Schüler oder Lehrkraft): **in der App** den Klassennamen
+   eingeben. Mathsachs erzeugt den Code selbst — niemand braucht dafür den
+   Cloudflare-Account.
 2. **Code eintragen** und als einzigen Sammel-Code **aktivieren**.
 3. Optional **Punkte an Klasse senden** (Opt-in). Nur mit aktivem Code und
-   diesem Haken gehen neue Übungspunkte (`recordSession`) zusätzlich als Delta
-   an die Klassensumme. Ohne Netz oder bei noch nicht aktualisiertem Worker
-   schlägt das Üben nicht fehl.
-4. **Eigene Codes** (auf dem PC / im WLAN gespeichert, nicht als Besitz auf
-   dem Server) mit Ständen **Tag / Woche / Monat / Schuljahr**.
+   diesem Haken gehen neue Übungspunkte zusätzlich an die Klassensumme.
+4. **Eigene Codes** mit Ständen **Tag / Woche / Monat / Schuljahr** und
+   **Löschen** (entfernt die Klassensummen online).
    Schuljahr = 1. August bis 31. Juli, Zeitzone **Europe/Berlin**,
    **Serverzeit** des Workers.
 
@@ -156,29 +155,31 @@ Im Reiter **Klasse**:
 | `POST` | `/classes` | `{ name }` | `{ code, name, points, period }` |
 | `GET` | `/classes/:code` | — | Klasse + Aufschlüsselung |
 | `POST` | `/classes/:code/points` | `{ delta }` (1–100) | aktualisierte Klasse |
+| `DELETE` | `/classes/:code` | — | `{ ok, deleted }` |
 
 KV-Wert: `{ name, createdAt, days: { "YYYY-MM-DD": number } }`. Woche/Monat/Jahr
 werden aus den Tages-Buckets in Berlin gerechnet. Die Bindung heißt **`CLASSES`**.
 
-### Worker im Dashboard einfügen (nötig)
+### Einmalig für Linus und Matthias (nicht für Schüler)
 
-Der Worker existiert bereits, antwortet aber mit 404 / Cloudflare-Fehler, bis
-dieser Code einmal deployed ist. Die App zeigt dann eine klare deutsche
-Fehlermeldung.
+Der **Klassencode** entsteht in der App. Der **Worker-Code** ist etwas anderes:
+das kleine Server-Programm hinter der URL, das Codes entgegennimmt. Schüler und
+Lehrkräfte haben damit nichts zu tun und brauchen keinen Cloudflare-Account.
 
-1. Im Browser [dash.cloudflare.com](https://dash.cloudflare.com) öffnen und
-   einloggen.
-2. **Workers & Pages** → Worker **`mathsachs-punkte`** öffnen.
-3. **Edit Code** (Quick Edit) wählen.
-4. Den gesamten Editorinhalt löschen und durch die Datei
-   [`cloudflare/worker.js`](cloudflare/worker.js) ersetzen (alles kopieren,
-   alles einfügen — eine Datei, keine Imports).
-5. Unter **Settings → Bindings** prüfen, dass die KV-Namespace-Bindung
-   genau **`CLASSES`** heißt.
-6. **Deploy** klicken.
-7. `https://mathsachs-punkte.broad-heart-ad82.workers.dev/` im Browser öffnen.
-   Erwartete Antwort:
-   `{"ok":true,"service":"mathsachs-punkte","hasClasses":true}`.
+Aktuell antwortet `https://mathsachs-punkte.broad-heart-ad82.workers.dev/` noch
+mit dem **Test-Programm** (jede Anfrage liefert nur `{ ok, service, hasClasses }`).
+Deshalb erzeugt die App noch keine echten Codes, bis ihr **einmal** die echte
+Datei einfügt:
+
+1. [dash.cloudflare.com](https://dash.cloudflare.com) öffnen und einloggen.
+2. **Workers & Pages** → Worker **`mathsachs-punkte`**.
+3. **Edit Code**.
+4. Alles löschen und den **gesamten** Inhalt von
+   [`cloudflare/worker.js`](cloudflare/worker.js) einfügen.
+5. **Settings → Bindings:** KV-Bindung genau **`CLASSES`**.
+6. **Deploy**.
+7. Kontrolle: `POST /classes` mit `{ "name": "Klasse 6a" }` muss einen
+   8-stelligen `code` zurückgeben, nicht dasselbe JSON wie `GET /`.
 
 ### Optional: wrangler
 

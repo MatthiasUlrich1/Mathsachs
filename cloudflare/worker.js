@@ -14,7 +14,7 @@ const MAX_CLASS_NAME_LENGTH = 80
 const SERVICE = 'mathsachs-punkte'
 const DAY_RE = /^\d{4}-\d{2}-\d{2}$/
 
-const ALLOWED_METHODS = 'GET, POST, OPTIONS'
+const ALLOWED_METHODS = 'GET, POST, DELETE, OPTIONS'
 
 export function normalizeClassCode(raw) {
   if (typeof raw !== 'string') return ''
@@ -278,6 +278,24 @@ async function loadClass(env, rawCode) {
   return { code, stored }
 }
 
+async function handleDelete(request, env, rawCode) {
+  if (!rateLimit(`delete:${clientKey(request)}`, 8, 60_000)) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
+  }
+  const loaded = await loadClass(env, rawCode)
+  if (loaded.error === 'BAD_CODE') {
+    return errorJson(request, 400, 'Der Klassencode ist ungültig.', 'BAD_CODE')
+  }
+  if (loaded.error === 'NO_KV') {
+    return errorJson(request, 503, 'KV-Bindung CLASSES fehlt.', 'NO_KV')
+  }
+  if (loaded.error === 'NOT_FOUND') {
+    return errorJson(request, 404, 'Diesen Klassencode gibt es nicht.', 'NOT_FOUND')
+  }
+  await env.CLASSES.delete(loaded.code)
+  return json(request, 200, { ok: true, deleted: loaded.code })
+}
+
 async function handleGet(request, env, rawCode) {
   if (!rateLimit(`get:${clientKey(request)}`, 120, 60_000)) {
     return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
@@ -362,6 +380,9 @@ export async function handleRequest(request, env) {
   const classMatch = /^\/classes\/([^/]+)$/.exec(path)
   if (classMatch && method === 'GET') {
     return handleGet(request, env, decodeURIComponent(classMatch[1]))
+  }
+  if (classMatch && method === 'DELETE') {
+    return handleDelete(request, env, decodeURIComponent(classMatch[1]))
   }
 
   const pointsMatch = /^\/classes\/([^/]+)\/points$/.exec(path)

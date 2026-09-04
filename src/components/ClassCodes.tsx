@@ -4,11 +4,13 @@ import {
   ClassApiError,
   checkClassApiHealth,
   createClass,
+  deleteClass,
   getClass,
   type ClassStats,
 } from '../classCode/api'
 import { formatClassCode, isValidClassCode, normalizeClassCode } from '../classCode/code'
 import {
+  forgetCreatedClassCode,
   getClassCodeSettings,
   rememberCreatedClassCode,
   setActiveClassCode,
@@ -31,6 +33,7 @@ export function ClassCodes() {
   const [creating, setCreating] = useState(false)
   const [joining, setJoining] = useState(false)
   const [refreshing, setRefreshing] = useState(false)
+  const [deleting, setDeleting] = useState<string | null>(null)
   const [formError, setFormError] = useState<string | null>(null)
   const [serverError, setServerError] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
@@ -129,6 +132,34 @@ export function ClassCodes() {
     }
   }
 
+  const onDelete = async (row: CreatedClassCode) => {
+    const label = row.name ? `„${row.name}“ (${formatClassCode(row.code)})` : formatClassCode(row.code)
+    const ok = window.confirm(
+      `Klassencode ${label} wirklich löschen? Die Klassensummen online werden damit gelöscht. Das kann nicht rückgängig gemacht werden.`,
+    )
+    if (!ok) return
+    setDeleting(row.code)
+    setFormError(null)
+    try {
+      await deleteClass(row.code)
+      forgetCreatedClassCode(row.code)
+      setStandings((prev) => {
+        const next = { ...prev }
+        delete next[row.code]
+        return next
+      })
+      setServerError(null)
+    } catch (err) {
+      if (err instanceof ClassApiError && err.kind === 'not_found') {
+        forgetCreatedClassCode(row.code)
+        return
+      }
+      setFormError(errorText(err))
+    } finally {
+      setDeleting(null)
+    }
+  }
+
   const copyActive = async () => {
     if (!settings.activeCode) return
     try {
@@ -157,8 +188,8 @@ export function ClassCodes() {
         <div className="class-codes__block">
           <span className="field__label">Klassencode erstellen</span>
           <p className="muted small">
-            Schüler oder Lehrkraft: Klassenname eingeben. Der Code trägt den
-            Namen mit.
+            In der App einen Namen eingeben — Mathsachs erzeugt den Code
+            automatisch. Niemand braucht dafür Cloudflare.
           </p>
           <div className="inline-form">
             <input
@@ -298,6 +329,14 @@ export function ClassCodes() {
                       Aktivieren
                     </button>
                   )}
+                  <button
+                    type="button"
+                    className="link"
+                    disabled={deleting === row.code}
+                    onClick={() => void onDelete(row)}
+                  >
+                    {deleting === row.code ? 'Lösche …' : 'Löschen'}
+                  </button>
                 </div>
                 {stats ? (
                   <dl className="class-codes__stats">

@@ -420,6 +420,20 @@ export const rememberCreatedClassCode = (code: string, name: string): void => {
   })
 }
 
+/** Drop a code from this PC’s list. Does not call the server. */
+export const forgetCreatedClassCode = (code: string): void => {
+  const normalized = normalizeClassCode(code)
+  if (!normalized) return
+  const current = getClassCodeSettings()
+  persistClassCodes({
+    ...current,
+    created: current.created.filter((row) => row.code !== normalized),
+    activeCode: current.activeCode === normalized ? null : current.activeCode,
+    sendPoints:
+      current.activeCode === normalized ? false : current.sendPoints,
+  })
+}
+
 export const setActiveClassCode = (code: string | null): void => {
   const current = getClassCodeSettings()
   const normalized = code ? normalizeClassCode(code) : ''

@@ -28,10 +28,13 @@ export class ClassApiError extends Error {
 }
 
 export const CLASS_API_NOT_READY_MESSAGE =
-  'Der Klassen-Server ist noch nicht eingerichtet. Bitte in dash.cloudflare.com den Worker „mathsachs-punkte“ öffnen, unter Edit Code den Inhalt von cloudflare/worker.js einfügen und Deploy klicken.'
+  'Klassencodes sind gerade nicht verfügbar. Bitte später erneut versuchen.'
 
 export const CLASS_API_NETWORK_MESSAGE =
-  'Keine Verbindung zum Klassen-Server. Wenn der Worker noch nicht aktualisiert ist: in dash.cloudflare.com den Worker „mathsachs-punkte“ öffnen, unter Edit Code den Inhalt von cloudflare/worker.js einfügen und Deploy klicken.'
+  'Keine Verbindung zum Klassen-Server. Bitte Internet prüfen und später erneut versuchen.'
+
+export const CLASS_API_STUB_MESSAGE =
+  'Der Klassen-Server läuft noch mit dem Test-Programm. Das ist nicht der Klassencode in der App: Linus oder Matthias müssen einmal die Datei cloudflare/worker.js in Cloudflare unter Edit Code einfügen und auf Deploy klicken. Danach erzeugt die App Codes selbst.'
 
 export interface ClassStats {
   code: string
@@ -105,6 +108,12 @@ const parseClassStats = (raw: unknown): ClassStats | null => {
 const looksLikeWorkerHealth = (raw: unknown): boolean => {
   if (!isRecord(raw)) return false
   return raw.ok === true && typeof raw.service === 'string'
+}
+
+const throwIfStubHealth = (json: unknown): void => {
+  if (looksLikeWorkerHealth(json) && !('code' in (json as object) && 'name' in (json as object))) {
+    throw new ClassApiError('not_ready', CLASS_API_STUB_MESSAGE, 200)
+  }
 }
 
 const looksLikeCloudflareBlock = (status: number, text: string): boolean => {
@@ -224,6 +233,7 @@ export async function createClass(
     method: 'POST',
     body: JSON.stringify({ name: trimmed }),
   })
+  throwIfStubHealth(json)
   const stats = parseClassStats(json)
   if (!stats) {
     throw new ClassApiError('not_ready', CLASS_API_NOT_READY_MESSAGE, 200)
@@ -278,6 +288,20 @@ export async function addClassPoints(
     last = parseClassStats(json)
   }
   return last
+}
+
+export async function deleteClass(
+  code: string,
+  base: string = CLASS_POINTS_API,
+): Promise<void> {
+  const normalized = normalizeClassCode(code)
+  if (!isValidClassCode(normalized)) {
+    throw new ClassApiError('invalid', 'Der Klassencode ist ungültig.', 400)
+  }
+  const json = await requestJson(classResourceUrl(normalized, base), {
+    method: 'DELETE',
+  })
+  throwIfStubHealth(json)
 }
 
 export { CLASS_CODE_LENGTH, isValidClassCode, normalizeClassCode }

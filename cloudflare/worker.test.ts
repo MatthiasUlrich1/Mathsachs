@@ -21,6 +21,9 @@ class MemoryKV {
   async put(key: string, value: string): Promise<void> {
     this.map.set(key, value)
   }
+  async delete(key: string): Promise<void> {
+    this.map.delete(key)
+  }
 }
 
 const env = () => ({ CLASSES: new MemoryKV() })
@@ -122,6 +125,11 @@ describe('Cloudflare Worker API', () => {
 
     const missing = await worker.fetch(request('/classes/ZZZZZZZZ'), kv)
     expect(missing.status).toBe(404)
+
+    const removed = await worker.fetch(request(`/classes/${code}`, { method: 'DELETE' }), kv)
+    expect(removed.status).toBe(200)
+    const gone = await worker.fetch(request(`/classes/${code}`), kv)
+    expect(gone.status).toBe(404)
   })
 
   it('answers CORS preflight and echoes allowed methods', async () => {
@@ -140,6 +148,7 @@ describe('Cloudflare Worker API', () => {
       'https://matthiasulrich1.github.io',
     )
     expect(res.headers.get('Access-Control-Allow-Methods')).toContain('POST')
+    expect(res.headers.get('Access-Control-Allow-Methods')).toContain('DELETE')
   })
 
   it('uses * for file:// / null Origin so Electron can call the API', async () => {

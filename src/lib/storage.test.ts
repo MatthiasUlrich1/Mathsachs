@@ -8,6 +8,7 @@ import {
   loadUser,
   recordSession,
   rememberCreatedClassCode,
+  forgetCreatedClassCode,
   resetSharedStorageForTests,
   setSendClassPoints,
 } from './storage'
@@ -173,6 +174,18 @@ describe('storage adapter', () => {
 
     await initSharedStorage()
     expect(getSharedStorageBackendForTests()).toBe('local')
+    rememberCreatedClassCode('abcd-2345', 'Klasse 6a')
+    setSendClassPoints(true)
+    expect(getClassCodeSettings()).toMatchObject({
+      activeCode: 'ABCD2345',
+      sendPoints: true,
+    })
+    forgetCreatedClassCode('ABCD2345')
+    expect(getClassCodeSettings()).toMatchObject({
+      created: [],
+      activeCode: null,
+      sendPoints: false,
+    })
     rememberCreatedClassCode('abcd-2345', 'Klasse 6a')
     setSendClassPoints(true)
     expect(getClassCodeSettings()).toMatchObject({

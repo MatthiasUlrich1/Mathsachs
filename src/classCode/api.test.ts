@@ -4,12 +4,14 @@ import {
   ClassApiError,
   CLASS_API_NOT_READY_MESSAGE,
   CLASS_API_NETWORK_MESSAGE,
+  CLASS_API_STUB_MESSAGE,
   addClassPoints,
   checkClassApiHealth,
   classApiUrl,
   classPointsUrl,
   classResourceUrl,
   createClass,
+  deleteClass,
   getClass,
 } from './api'
 
@@ -79,6 +81,9 @@ describe('class API client', () => {
           points: { today: 4, week: 4, month: 4, year: 4, total: 4 },
         })
       }
+      if (url.endsWith('/classes/ABCD2345') && method === 'DELETE') {
+        return jsonResponse({ ok: true, deleted: 'ABCD2345' })
+      }
       return jsonResponse({ error: 'nope' }, 404)
     })
     vi.stubGlobal('fetch', fetchMock)
@@ -98,6 +103,20 @@ describe('class API client', () => {
     })
     await expect(addClassPoints('abcd-2345', 4, base)).resolves.toMatchObject({
       points: { total: 4 },
+    })
+    await expect(deleteClass('abcd-2345', base)).resolves.toBeUndefined()
+  })
+
+  it('detects the Hello-World stub that ignores POST /classes', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () =>
+        jsonResponse({ ok: true, service: 'mathsachs-punkte', hasClasses: true }),
+      ),
+    )
+    await expect(createClass('Klasse 6a', 'https://example.test')).rejects.toMatchObject({
+      kind: 'not_ready',
+      message: CLASS_API_STUB_MESSAGE,
     })
   })
 

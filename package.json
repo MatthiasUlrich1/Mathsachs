@@ -1,7 +1,7 @@
 {
   "name": "mathsachs",
   "private": true,
-  "version": "0.1.10",
+  "version": "0.1.11",
   "type": "module",
   "description": "Mathsachs — a fast, modern mental-math practice web app.",
   "author": "Linus und Matthias Ulrich",
