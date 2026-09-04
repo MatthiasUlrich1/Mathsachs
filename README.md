@@ -34,7 +34,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.6**).
+(aktuelle Version **0.1.7**).
 
 Die App prüft beim Start die öffentlichen
 [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
@@ -206,7 +206,7 @@ In der App ebenfalls unter **Impressum**.
 Über **Idee / Feedback** in der App (oder den folgenden Link) öffnet sich das
 Standard-Mailprogramm mit vorausgefülltem Empfänger und Betreff:
 
-[Idee / Feedback zum Mathsachs Übeungsprogramm.](mailto:info@my-smart-home-support.de?subject=Idee%20%2F%20Feedback%20zum%20Mathsachs%20%C3%9Cbeungsprogramm.)
+[Idee / Feedback zum Mathsachs Übungsprogramm.](mailto:info@my-smart-home-support.de?subject=Idee%20%2F%20Feedback%20zum%20Mathsachs%20%C3%9Cbungsprogramm.)
 
 - An: `info@my-smart-home-support.de`
-- Betreff: `Idee / Feedback zum Mathsachs Übeungsprogramm.`
+- Betreff: `Idee / Feedback zum Mathsachs Übungsprogramm.`

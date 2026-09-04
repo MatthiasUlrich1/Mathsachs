@@ -8,12 +8,9 @@ export const IMPRESSUM_LINES = [
   CONTACT_EMAIL,
 ] as const
 
-/**
- * Exact subject as specified for the Ideenmelder (including the spelling
- * „Übeungsprogramm“).
- */
+/** Exact subject as specified for the Ideenmelder. */
 export const IDEENMELDER_SUBJECT =
-  'Idee / Feedback zum Mathsachs Übeungsprogramm.'
+  'Idee / Feedback zum Mathsachs Übungsprogramm.'
 
 /** Full MIT license text (must stay in sync with the root LICENSE file). */
 export const MIT_LICENSE_TEXT = `MIT License
