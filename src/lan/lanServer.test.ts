@@ -18,12 +18,22 @@ const lan = require('../../electron/lanServer.cjs') as {
     port?: number
     host?: string
     proxyOrigin?: string
+    store?: {
+      read: () => unknown
+      mergeWrite: (incoming: unknown) => unknown
+    }
   }) => Promise<{
     port: number
     urls: string[]
     lanUrls: string[]
     stop: () => Promise<void>
   }>
+}
+const shared = require('../../electron/sharedStore.cjs') as {
+  createMemoryStore: () => {
+    read: () => unknown
+    mergeWrite: (incoming: unknown) => unknown
+  }
 }
 
 const {
@@ -204,5 +214,165 @@ describe('startLanServer', () => {
     expect(started.port).toBeGreaterThan(18090)
     const home = await get(`http://127.0.0.1:${started.port}/`)
     expect(home.status).toBe(200)
+  })
+
+  const put = (url: string, body: unknown) =>
+    new Promise<{ status: number; body: string; type: string }>((resolve, reject) => {
+      const payload = Buffer.from(JSON.stringify(body))
+      const target = new URL(url)
+      const req = http.request(
+        {
+          hostname: target.hostname,
+          port: target.port,
+          path: target.pathname,
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Content-Length': payload.length,
+          },
+        },
+        (res) => {
+          const chunks: Buffer[] = []
+          res.on('data', (c) => chunks.push(c as Buffer))
+          res.on('end', () =>
+            resolve({
+              status: res.statusCode ?? 0,
+              body: Buffer.concat(chunks).toString('utf8'),
+              type: String(res.headers['content-type'] ?? ''),
+            }),
+          )
+        },
+      )
+      req.on('error', reject)
+      req.end(payload)
+    })
+
+  it('GET/PUT /api/state shares users and scores between sequential clients', async () => {
+    const rootDir = makeDist()
+    const memoryStore = shared.createMemoryStore()
+    const started = await startLanServer({
+      rootDir,
+      host: '127.0.0.1',
+      port: 18100,
+      store: memoryStore,
+    })
+    stops.push(started.stop)
+    const api = `${started.urls[0]}api/state`
+
+    const empty = await get(api)
+    expect(empty.status).toBe(200)
+    expect(empty.type).toContain('application/json')
+    expect(JSON.parse(empty.body).users).toEqual([])
+
+    const ada = {
+      name: 'Ada',
+      created: 1,
+      stats: {
+        brueche: {
+          topicId: 'brueche',
+          topicTitle: 'Brüche',
+          areaTitle: 'Zahlen',
+          attempts: 10,
+          correct: 8,
+          points: 16,
+          lastPracticed: 100,
+        },
+      },
+      sessions: [],
+    }
+    const fromTablet = await put(api, {
+      users: ['Ada'],
+      records: { Ada: ada },
+    })
+    expect(fromTablet.status).toBe(200)
+    expect(JSON.parse(fromTablet.body).users).toEqual(['Ada'])
+    expect(JSON.parse(fromTablet.body).records.Ada.stats.brueche.points).toBe(16)
+
+    const fromDesktop = await get(api)
+    expect(JSON.parse(fromDesktop.body).users).toEqual(['Ada'])
+    expect(JSON.parse(fromDesktop.body).records.Ada.stats.brueche.points).toBe(16)
+
+    const ben = {
+      name: 'Ben',
+      created: 2,
+      stats: {
+        termine: {
+          topicId: 'termine',
+          topicTitle: 'Terme',
+          areaTitle: 'Algebra',
+          attempts: 5,
+          correct: 5,
+          points: 10,
+          lastPracticed: 200,
+        },
+      },
+      sessions: [],
+    }
+    const secondClient = await put(api, {
+      users: ['Ben'],
+      records: { Ben: ben },
+    })
+    const merged = JSON.parse(secondClient.body) as {
+      users: string[]
+      records: { Ada: { stats: { brueche: { points: number } } }; Ben: { stats: { termine: { points: number } } } }
+    }
+    expect(merged.users).toEqual(['Ada', 'Ben'])
+    expect(merged.records.Ada.stats.brueche.points).toBe(16)
+    expect(merged.records.Ben.stats.termine.points).toBe(10)
+
+    const again = await get(api)
+    expect(JSON.parse(again.body).users).toEqual(['Ada', 'Ben'])
+  })
+
+  it('rejects non-JSON PUT, unknown /api paths, and POST', async () => {
+    const rootDir = makeDist()
+    const started = await startLanServer({
+      rootDir,
+      host: '127.0.0.1',
+      port: 18110,
+      store: shared.createMemoryStore(),
+    })
+    stops.push(started.stop)
+
+    const unknown = await get(`${started.urls[0]}api/secret`)
+    expect(unknown.status).toBe(404)
+    expect(unknown.body).not.toContain('LAN_SECRET')
+
+    const post = await new Promise<{ status: number }>((resolve, reject) => {
+      const req = http.request(
+        `http://127.0.0.1:${started.port}/api/state`,
+        { method: 'POST' },
+        (res) => {
+          res.resume()
+          res.on('end', () => resolve({ status: res.statusCode ?? 0 }))
+        },
+      )
+      req.on('error', reject)
+      req.end('{}')
+    })
+    expect(post.status).toBe(405)
+
+    const bad = await new Promise<{ status: number; body: string }>((resolve, reject) => {
+      const req = http.request(
+        `http://127.0.0.1:${started.port}/api/state`,
+        {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+        },
+        (res) => {
+          const chunks: Buffer[] = []
+          res.on('data', (c) => chunks.push(c as Buffer))
+          res.on('end', () =>
+            resolve({
+              status: res.statusCode ?? 0,
+              body: Buffer.concat(chunks).toString('utf8'),
+            }),
+          )
+        },
+      )
+      req.on('error', reject)
+      req.end('not-json')
+    })
+    expect(bad.status).toBe(400)
   })
 })

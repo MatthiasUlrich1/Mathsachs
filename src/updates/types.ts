@@ -1,3 +1,5 @@
+import type { SharedState } from '../lib/sharedState'
+
 export type DesktopPlatform = 'win32' | 'darwin' | 'linux'
 
 export interface GithubReleaseAsset {
@@ -62,5 +64,9 @@ export interface MathsachsDesktop {
   installUpdate: () => Promise<void>
   openExternal: (url: string) => Promise<void>
   getLanStatus: () => Promise<LanServerStatus>
+  loadSharedState: () => Promise<SharedState>
+  saveSharedState: (state: SharedState) => Promise<SharedState>
+  migrateSharedState: (snapshot: Record<string, string>) => Promise<SharedState>
+  onSharedState: (callback: (state: SharedState) => void) => () => void
   onUpdateEvent: (callback: (event: DesktopUpdateEvent) => void) => () => void
 }

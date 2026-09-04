@@ -24,7 +24,9 @@ verteilen. Gebaut mit React, TypeScript und Vite.
 - **Direkt üben** im Programm mit sofortiger Auswertung.
 - **Erklärung anzeigen** bei falschen Aufgaben (Schritt-für-Schritt-Lösungsweg).
 - **Übungsblätter drucken** (oder als PDF speichern) inklusive Lösungsteil.
-- **Mehrere Benutzer**: Punkte werden pro Name gespeichert.
+- **Mehrere Benutzer**: Punkte werden pro Name gespeichert. In der Desktop-App
+  gilt dieselbe Benutzerliste und derselbe Punktestand für den PC und für
+  Tablets im WLAN.
 - **Punkteprotokoll**: Auswertung je Thema in Prozent und Gesamtpunktzahl,
   ebenfalls druckbar.
 - **Übungsklausur per Code**: Lehrkräfte stellen aus Lehrplan-Themen eine
@@ -37,7 +39,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.8**).
+(aktuelle Version **0.1.9**).
 
 Die App prüft beim Start die öffentlichen
 [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
@@ -110,13 +112,16 @@ Hinweise:
 - Gast-WLANs und viele Schulnetze trennen Clients voneinander
   (Client-Isolation). Dann sieht das Tablet den Rechner nicht.
 - Es gibt **kein Passwort**. Wer im Netz die Adresse kennt, kann üben.
-  Punkte und Benutzer liegen nur auf dem jeweiligen Gerät (localStorage),
-  nicht auf dem Lehrer-Rechner.
+- **Benutzer und Punkte liegen auf dem PC** (nicht im localStorage des
+  Tablets). Sobald Mathsachs auf dem Rechner läuft, sehen Tablets dieselbe
+  Benutzerliste und dieselben Punkte; neue Übungen auf dem Tablet erscheinen
+  auf dem Desktop und umgekehrt, ohne die App neu zu starten.
 - Klausur-Links aus der Desktop-App zeigen auf diese WLAN-Adresse, solange
   eine erkannt wird. Der Klausur**code** (`MSX1:…`) funktioniert unabhängig
   davon in **Klausur schreiben**.
 - Der Entwicklungsserver `npm run dev` ist ein anderer Weg (Port 5173) und
-  setzt Node.js plus Quellcode voraus.
+  setzt Node.js plus Quellcode voraus. Ohne Desktop-App bleiben Benutzer
+  dort nur lokal im Browser gespeichert.
 
 ## Requirements
 
@@ -203,9 +208,10 @@ src/
   App.css             # Component styles
   index.css           # Global theme
 electron/
-  main.cjs            # Electron main process (window, update check, LAN-Server)
-  preload.cjs         # Preload bridge (desktop, updates, LAN-Status)
-  lanServer.cjs       # HTTP-Server für WLAN-Tablets
+  main.cjs            # Electron main process (window, update check, LAN-Server, shared store)
+  preload.cjs         # Preload bridge (desktop, updates, LAN-Status, shared storage)
+  lanServer.cjs       # HTTP-Server für WLAN-Tablets plus /api/state
+  sharedStore.cjs     # Gemeinsame Benutzer/Punkte-Datei (userData)
   githubUpdate.cjs    # GitHub-Releases-Fallback für Updates
 build/
   icon.svg / icon.png # App icon used by the installers

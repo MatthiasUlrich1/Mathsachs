@@ -61,7 +61,8 @@ export function LanAccessCard({ status }: { status: LanServerStatus }) {
       <p className="muted small">
         Solange Mathsachs auf diesem Rechner geöffnet ist, können Geräte im
         selben WLAN die Übungs-App im Browser öffnen — ohne Installation. Die
-        App muss laufen bleiben.
+        App muss laufen bleiben. Benutzer und Punkte liegen auf diesem Rechner
+        und werden mit Tablets geteilt.
       </p>
 
       {status.lanUrls.length === 0 && (
@@ -105,8 +106,9 @@ export function LanAccessCard({ status }: { status: LanServerStatus }) {
         Windows/macOS kann beim ersten Start nach der Freigabe in der Firewall
         fragen — bitte für private Netze erlauben. In Schulnetzen mit
         Client-Isolation sehen Tablets den Rechner oft nicht. Es gibt kein
-        Passwort: wer die Adresse kennt und im selben Netz ist, kann üben
-        (Punkte liegen nur auf dem jeweiligen Gerät).
+        Passwort: wer die Adresse kennt und im selben Netz ist, kann üben.
+        Benutzerliste und Punkte sind dieselben wie in der Desktop-App und
+        aktualisieren sich gegenseitig, solange Mathsachs läuft.
       </p>
     </section>
   )

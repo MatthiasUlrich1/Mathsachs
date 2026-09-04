@@ -2,8 +2,9 @@
  * Local LAN HTTP server for the packaged (and Electron-dev) Mathsachs UI.
  *
  * Tablets on the same Wi-Fi can open http://<pc-ip>:<port>/ while the
- * desktop app is running. There is no extra backend: this only serves the
- * static Vite build (or proxies to Vite in development).
+ * desktop app is running. Static files come from the Vite build (or Vite
+ * is proxied in development). `/api/state` reads and writes the shared
+ * users/points store on the PC so tablets and the desktop stay in sync.
  */
 const http = require('node:http')
 const fs = require('node:fs')
@@ -133,6 +134,122 @@ function sendFile(res, filePath) {
   send(res, 200, data, { 'Content-Type': mimeFor(filePath) })
 }
 
+const API_STATE_PATH = '/api/state'
+const MAX_JSON_BODY = 2 * 1024 * 1024
+
+function apiPathname(rawUrl) {
+  try {
+    const pathname = new URL(rawUrl || '/', 'http://mathsachs.local').pathname
+    if (pathname === API_STATE_PATH || pathname === `${API_STATE_PATH}/`) {
+      return API_STATE_PATH
+    }
+    if (pathname === '/api' || pathname.startsWith('/api/')) return pathname
+    return null
+  } catch {
+    return null
+  }
+}
+
+function sendJson(res, status, payload) {
+  send(res, status, `${JSON.stringify(payload)}\n`, {
+    'Content-Type': 'application/json; charset=utf-8',
+    'Cache-Control': 'no-store',
+  })
+}
+
+function readJsonBody(req, maxBytes = MAX_JSON_BODY) {
+  return new Promise((resolve, reject) => {
+    const chunks = []
+    let size = 0
+    req.on('data', (chunk) => {
+      size += chunk.length
+      if (size > maxBytes) {
+        const err = new Error('payload too large')
+        err.code = 'PAYLOAD_TOO_LARGE'
+        reject(err)
+        req.destroy()
+        return
+      }
+      chunks.push(chunk)
+    })
+    req.on('end', () => {
+      if (size === 0) {
+        resolve({})
+        return
+      }
+      try {
+        resolve(JSON.parse(Buffer.concat(chunks).toString('utf8')))
+      } catch {
+        const err = new Error('invalid json')
+        err.code = 'INVALID_JSON'
+        reject(err)
+      }
+    })
+    req.on('error', reject)
+  })
+}
+
+/**
+ * Handle `/api/*`. Returns true if the request was consumed.
+ * Only GET/PUT JSON on `/api/state` — nothing else, no filesystem paths.
+ */
+async function handleApi(req, res, store) {
+  const pathname = apiPathname(req.url)
+  if (!pathname) return false
+
+  if (!store) {
+    send(res, 404, 'Not found', { 'Content-Type': 'text/plain; charset=utf-8' })
+    return true
+  }
+
+  if (pathname !== API_STATE_PATH) {
+    send(res, 404, 'Not found', { 'Content-Type': 'text/plain; charset=utf-8' })
+    return true
+  }
+
+  const method = req.method || 'GET'
+
+  if (method === 'GET' || method === 'HEAD') {
+    const state = store.read()
+    if (method === 'HEAD') {
+      const body = Buffer.from(`${JSON.stringify(state)}\n`)
+      res.writeHead(200, {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Content-Length': body.length,
+        'Cache-Control': 'no-store',
+        'X-Content-Type-Options': 'nosniff',
+      })
+      res.end()
+      return true
+    }
+    sendJson(res, 200, state)
+    return true
+  }
+
+  if (method === 'PUT') {
+    let incoming
+    try {
+      incoming = await readJsonBody(req)
+    } catch (err) {
+      if (err && err.code === 'PAYLOAD_TOO_LARGE') {
+        send(res, 413, 'Payload too large', { 'Content-Type': 'text/plain; charset=utf-8' })
+        return true
+      }
+      sendJson(res, 400, { error: 'Ungültiges JSON' })
+      return true
+    }
+    const merged = store.mergeWrite(incoming)
+    sendJson(res, 200, merged)
+    return true
+  }
+
+  send(res, 405, 'Method not allowed', {
+    Allow: 'GET, HEAD, PUT',
+    'Content-Type': 'text/plain; charset=utf-8',
+  })
+  return true
+}
+
 function handleStatic(req, res, rootDir) {
   if (req.method !== 'GET' && req.method !== 'HEAD') {
     send(res, 405, 'Method not allowed', {
@@ -247,6 +364,7 @@ function listenOnPort(server, host, port) {
  * @param {object} options
  * @param {string} options.rootDir  Vite `dist` directory (packaged app)
  * @param {string} [options.proxyOrigin]  When set (Electron dev), proxy to Vite
+ * @param {{ read: () => object, mergeWrite: (incoming: object) => object }} [options.store]
  * @param {number} [options.port]
  * @param {string} [options.host]
  * @returns {Promise<{ port: number, urls: string[], lanUrls: string[], stop: () => Promise<void> }>}
@@ -254,18 +372,22 @@ function listenOnPort(server, host, port) {
 async function startLanServer(options) {
   const rootDir = options.rootDir
   const proxyOrigin = options.proxyOrigin || null
+  const store = options.store || null
   const host = options.host || '0.0.0.0'
   const preferredPort = options.port ?? DEFAULT_PORT
 
   const server = http.createServer((req, res) => {
-    try {
-      if (proxyOrigin) proxyToVite(req, res, proxyOrigin)
-      else handleStatic(req, res, rootDir)
-    } catch {
-      if (!res.headersSent) {
-        send(res, 500, 'Server error', { 'Content-Type': 'text/plain; charset=utf-8' })
+    void (async () => {
+      try {
+        if (await handleApi(req, res, store)) return
+        if (proxyOrigin) proxyToVite(req, res, proxyOrigin)
+        else handleStatic(req, res, rootDir)
+      } catch {
+        if (!res.headersSent) {
+          send(res, 500, 'Server error', { 'Content-Type': 'text/plain; charset=utf-8' })
+        }
       }
-    }
+    })()
   })
 
   let port = preferredPort
@@ -310,5 +432,7 @@ module.exports = {
   buildLanUrls,
   mimeFor,
   resolveSafeFile,
+  apiPathname,
+  handleApi,
   startLanServer,
 }

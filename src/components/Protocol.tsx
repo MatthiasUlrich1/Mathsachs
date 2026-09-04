@@ -1,5 +1,5 @@
-import { useMemo } from 'react'
-import { buildProtocol, type ProtocolRow } from '../lib/storage'
+import { useEffect, useMemo, useState } from 'react'
+import { buildProtocol, subscribeSharedStorage, type ProtocolRow } from '../lib/storage'
 
 interface Props {
   user: string
@@ -14,7 +14,12 @@ const formatDate = (ms: number) =>
   })
 
 export function Protocol({ user, onExit }: Props) {
-  const protocol = useMemo(() => buildProtocol(user), [user])
+  const [protocol, setProtocol] = useState(() => buildProtocol(user))
+  useEffect(() => {
+    const refresh = () => setProtocol(buildProtocol(user))
+    refresh()
+    return subscribeSharedStorage(refresh)
+  }, [user])
 
   const grouped = useMemo(() => {
     const map = new Map<string, ProtocolRow[]>()

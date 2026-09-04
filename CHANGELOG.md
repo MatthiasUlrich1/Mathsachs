@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.9] – 2026-09-04
+
+### Hinzugefügt
+
+- **Gemeinsame Benutzer und Punkte über WLAN:** Die Desktop-App speichert
+  Benutzerliste und Punkteprotokoll auf dem PC. Tablets, die die App im
+  Browser über den WLAN-Zugang öffnen, sehen dieselben Namen und Punkte.
+  Änderungen (neuer Benutzer, Übung, Klausur) erscheinen auf den anderen
+  Geräten, solange Mathsachs läuft — ohne Neustart.
+
 ## [0.1.8] – 2026-09-04
 
 ### Hinzugefügt
@@ -129,7 +139,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.8...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.9...HEAD
+[0.1.9]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.8...v0.1.9
 [0.1.8]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.7...v0.1.8
 [0.1.7]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.6...v0.1.7
 [0.1.6]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.5...v0.1.6

@@ -10,6 +10,14 @@ contextBridge.exposeInMainWorld('mathsachs', {
   installUpdate: () => ipcRenderer.invoke('updates:install'),
   openExternal: (url) => ipcRenderer.invoke('updates:openExternal', url),
   getLanStatus: () => ipcRenderer.invoke('lan:status'),
+  loadSharedState: () => ipcRenderer.invoke('storage:load'),
+  saveSharedState: (state) => ipcRenderer.invoke('storage:save', state),
+  migrateSharedState: (snapshot) => ipcRenderer.invoke('storage:migrate', snapshot),
+  onSharedState: (callback) => {
+    const listener = (_event, payload) => callback(payload)
+    ipcRenderer.on('storage:changed', listener)
+    return () => ipcRenderer.removeListener('storage:changed', listener)
+  },
   onUpdateEvent: (callback) => {
     const listener = (_event, payload) => callback(payload)
     ipcRenderer.on('updates:event', listener)

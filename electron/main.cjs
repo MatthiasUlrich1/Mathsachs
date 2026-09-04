@@ -6,6 +6,7 @@ const {
   isNewerVersion,
 } = require('./githubUpdate.cjs')
 const { startLanServer } = require('./lanServer.cjs')
+const { createFileStore } = require('./sharedStore.cjs')
 
 /** Vite dev server URL used during `npm run electron:dev`. */
 const DEV_SERVER_URL = 'http://localhost:5173'
@@ -26,12 +27,18 @@ let lanStatus = {
   error: null,
 }
 let stopLanServer = null
+/** @type {ReturnType<typeof createFileStore> | null} */
+let sharedStore = null
 
 async function startDesktopLanServer() {
   const rootDir = path.join(__dirname, '..', 'dist')
   const proxyOrigin = app.isPackaged ? null : DEV_SERVER_URL
   try {
-    const started = await startLanServer({ rootDir, proxyOrigin })
+    const started = await startLanServer({
+      rootDir,
+      proxyOrigin,
+      store: sharedStore,
+    })
     stopLanServer = started.stop
     lanStatus = {
       running: true,
@@ -209,9 +216,35 @@ function registerUpdateIpc() {
   ipcMain.handle('lan:status', () => lanStatus)
 }
 
+function broadcastSharedState(state) {
+  for (const win of BrowserWindow.getAllWindows()) {
+    win.webContents.send('storage:changed', state)
+  }
+}
+
+function registerStorageIpc() {
+  ipcMain.handle('storage:load', () => {
+    if (!sharedStore) return { schemaVersion: 1, users: [], records: {} }
+    return sharedStore.read()
+  })
+
+  ipcMain.handle('storage:save', (_event, incoming) => {
+    if (!sharedStore) return { schemaVersion: 1, users: [], records: {} }
+    return sharedStore.mergeWrite(incoming)
+  })
+
+  ipcMain.handle('storage:migrate', (_event, snapshot) => {
+    if (!sharedStore) return { schemaVersion: 1, users: [], records: {} }
+    return sharedStore.migrateFromSnapshot(snapshot)
+  })
+}
+
 app.whenReady().then(async () => {
+  sharedStore = createFileStore(path.join(app.getPath('userData'), 'mathsachs-state.json'))
+  sharedStore.subscribe((state) => broadcastSharedState(state))
   setupAutoUpdater()
   registerUpdateIpc()
+  registerStorageIpc()
   await startDesktopLanServer()
   createWindow()
 

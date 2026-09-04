@@ -7,7 +7,7 @@ import {
   setLoadedIds,
 } from './curriculum/registry'
 import type { Grade, Topic } from './curriculum/types'
-import { addUser, listUsers } from './lib/storage'
+import { addUser, initSharedStorage, listUsers, subscribeSharedStorage } from './lib/storage'
 import { searchTopics, searchUnloadedHints } from './curriculum/search'
 import { CurriculumBrowser } from './components/CurriculumBrowser'
 import { CurriculumSetup } from './components/CurriculumSetup'
@@ -44,7 +44,8 @@ const registryOrder = (id: string) =>
   availableCurricula.findIndex((m) => m.id === id)
 
 export default function App() {
-  const [users, setUsers] = useState<string[]>(() => listUsers())
+  const [storageReady, setStorageReady] = useState(false)
+  const [users, setUsers] = useState<string[]>([])
   const [activeUser, setActiveUser] = useState<string | null>(
     () => localStorage.getItem(ACTIVE_KEY) || null,
   )
@@ -84,6 +85,22 @@ export default function App() {
   useEffect(() => {
     if (activeUser) localStorage.setItem(ACTIVE_KEY, activeUser)
   }, [activeUser])
+
+  useEffect(() => {
+    let cancelled = false
+    const unsub = subscribeSharedStorage(() => {
+      if (!cancelled) setUsers(listUsers())
+    })
+    void initSharedStorage().then(() => {
+      if (cancelled) return
+      setUsers(listUsers())
+      setStorageReady(true)
+    })
+    return () => {
+      cancelled = true
+      unsub()
+    }
+  }, [])
 
   // A shared "#klausur=…" link opens the exam runner directly. We read the code
   // once on start, switch to the runner and then clean the hash from the URL so
@@ -152,6 +169,21 @@ export default function App() {
     setActiveUser(name)
     setNewName('')
     setView({ name: 'browse' })
+  }
+
+  if (!storageReady) {
+    return (
+      <main className="app">
+        {updateBanner}
+        <Brand />
+        <section className="card">
+          <h2 className="section-title">Wer übt heute?</h2>
+          <p className="muted">Daten werden geladen …</p>
+        </section>
+        {showLanCard && lanStatus && <LanAccessCard status={lanStatus} />}
+        <LegalFooter version={updateCheck.currentVersion} />
+      </main>
+    )
   }
 
   if (!activeUser) {
