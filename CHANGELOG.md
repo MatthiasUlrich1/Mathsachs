@@ -9,12 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.4] – 2026-09-04
+
 ### Hinzugefügt
 
-- **Update-Hinweis**: Die App prüft die öffentlichen GitHub Releases auf eine
-  neuere Version und zeigt Versionsnummer, Release-Notes und einen Download-Link.
-  In der Desktop-App kann das Update heruntergeladen und installiert werden
-  (`electron-updater`, Fallback: Installer-Link der Plattform).
+- **Update-Hinweis aus GitHub Releases**: Die App prüft die öffentlichen GitHub
+  Releases auf eine neuere Version und zeigt ein Banner mit Versionsnummer,
+  Release-Notes und einem Download-Link zur passenden Datei.
+  In der Desktop-App kann das Update über `electron-updater` heruntergeladen
+  und installiert werden (Fallback: Installer-Link der Plattform).
 
 ## [0.1.3] – 2026-09-04
 
@@ -81,7 +84,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.3...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.4...HEAD
+[0.1.4]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.0...v0.1.1
