@@ -1,10 +1,11 @@
 {
   "name": "mathsachs",
   "private": true,
-  "version": "0.1.4",
+  "version": "0.1.5",
   "type": "module",
   "description": "Mathsachs — a fast, modern mental-math practice web app.",
-  "author": "Mathsachs",
+  "author": "Linus und Matthias Ulrich",
+  "license": "MIT",
   "main": "electron/main.cjs",
   "scripts": {
     "dev": "vite",

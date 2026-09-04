@@ -9,6 +9,19 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.5] – 2026-09-04
+
+### Hinzugefügt
+
+- **Impressum** in der App (Fußzeile) und in der README: Linus und Matthias
+  Ulrich, Große Wallstraße 42, 04509 Delitzsch,
+  info@my-smart-home-support.de.
+- **MIT-Lizenz**: Datei [`LICENSE`](LICENSE) (Copyright 2026 Linus und Matthias
+  Ulrich), Abschnitt in der README und vollständiger Lizenztext in der App.
+- **Ideenmelder**: Schaltfläche „Idee / Feedback“ öffnet das Standard-Mailprogramm
+  (`mailto:`) an info@my-smart-home-support.de mit dem Betreff
+  *Idee / Feedback zum Mathsachs Übeungsprogramm.*
+
 ## [0.1.4] – 2026-09-04
 
 ### Hinzugefügt
@@ -84,7 +97,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.4...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.5...HEAD
+[0.1.5]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.4...v0.1.5
 [0.1.4]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.1...v0.1.2
