@@ -35,6 +35,13 @@ verteilen. Gebaut mit React, TypeScript und Vite.
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md).
 
+Die App prüft beim Start die öffentlichen
+[GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
+auf eine neuere Version (ohne Token). Ist ein Update da, erscheint ein
+schließbarer Hinweis mit Versionsnummer, Release-Notes und Download. Im
+Browser öffnet **Download** den passenden Installer bzw. die Releases-Seite;
+die installierte Desktop-App kann das Update herunterladen und einspielen.
+
 > Fachliche Grundlage: Sächsischer Lehrplan Gymnasium Mathematik. Die Aufgaben
 > werden zufällig generiert und haben stets eindeutige, überprüfbare Lösungen.
 
@@ -155,13 +162,15 @@ src/
   lib/                # Reusable engine: rng, fractions, number parsing, storage
   curriculum/         # Lehrplan-Datenmodell, Klassen 5–12, Einheiten & Themen-Suche
   exam/               # Klausur-Code (Kodierung, Link, Auflösung der Aufgaben)
-  components/         # UI: Browser, Üben, Übungsblatt, Protokoll, Klausur erstellen/schreiben
+  updates/            # GitHub-Releases-Updateprüfung (Semver, Assets, Banner)
+  components/         # UI: Browser, Üben, Übungsblatt, Protokoll, Klausur, Update-Hinweis
   App.tsx             # Views, routing and user management
   App.css             # Component styles
   index.css           # Global theme
 electron/
-  main.cjs            # Electron main process (creates the app window)
-  preload.cjs         # Preload bridge
+  main.cjs            # Electron main process (window + update check)
+  preload.cjs         # Preload bridge (desktop + updates)
+  githubUpdate.cjs    # GitHub-Releases-Fallback für Updates
 build/
   icon.svg / icon.png # App icon used by the installers
 electron-builder.yml  # Desktop packaging config (win / mac / linux targets)

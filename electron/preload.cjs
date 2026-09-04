@@ -1,8 +1,17 @@
-const { contextBridge } = require('electron')
+const { contextBridge, ipcRenderer } = require('electron')
 
-// Mathsachs runs fully in the renderer; expose only harmless metadata so the
-// UI can detect that it is running inside the desktop shell if needed.
+// Desktop bridge: metadata plus GitHub/electron-updater update actions.
 contextBridge.exposeInMainWorld('mathsachs', {
   isDesktop: true,
   platform: process.platform,
+  getVersion: () => ipcRenderer.invoke('updates:version'),
+  checkForUpdates: () => ipcRenderer.invoke('updates:check'),
+  downloadUpdate: () => ipcRenderer.invoke('updates:download'),
+  installUpdate: () => ipcRenderer.invoke('updates:install'),
+  openExternal: (url) => ipcRenderer.invoke('updates:openExternal', url),
+  onUpdateEvent: (callback) => {
+    const listener = (_event, payload) => callback(payload)
+    ipcRenderer.on('updates:event', listener)
+    return () => ipcRenderer.removeListener('updates:event', listener)
+  },
 })

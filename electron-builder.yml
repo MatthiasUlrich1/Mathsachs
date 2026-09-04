@@ -12,6 +12,13 @@ files:
   - build/icon.png
   - package.json
 
+# Public GitHub Releases (no token in the repo). electron-updater reads this
+# as app-update.yml inside packaged builds.
+publish:
+  - provider: github
+    owner: MatthiasUlrich1
+    repo: Mathsachs
+
 # Windows: NSIS installer (.exe setup) that lets the user pick the folder.
 win:
   target:

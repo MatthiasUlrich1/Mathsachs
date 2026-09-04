@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+### Hinzugefügt
+
+- **Update-Hinweis**: Die App prüft die öffentlichen GitHub Releases auf eine
+  neuere Version und zeigt Versionsnummer, Release-Notes und einen Download-Link.
+  In der Desktop-App kann das Update heruntergeladen und installiert werden
+  (`electron-updater`, Fallback: Installer-Link der Plattform).
+
 ## [0.1.3] – 2026-09-04
 
 ### Hinzugefügt
