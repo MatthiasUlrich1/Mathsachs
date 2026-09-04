@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState, type MouseEvent } from 'react'
 import {
   CLASS_API_NOT_READY_MESSAGE,
   ClassApiError,
@@ -9,6 +9,14 @@ import {
   type ClassStats,
 } from '../classCode/api'
 import { formatClassCode, isValidClassCode, normalizeClassCode } from '../classCode/code'
+import {
+  canUseWebShare,
+  classCodeMailtoUrl,
+  classCodeShareSubject,
+  classCodeShareText,
+  classCodeWhatsAppUrl,
+  openClassCodeShareUrl,
+} from '../classCode/share'
 import {
   forgetCreatedClassCode,
   getClassCodeSettings,
@@ -37,11 +45,17 @@ export function ClassCodes() {
   const [formError, setFormError] = useState<string | null>(null)
   const [serverError, setServerError] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
+  const [copiedCreated, setCopiedCreated] = useState<string | null>(null)
+  const [webShare, setWebShare] = useState(false)
   const [settings, setSettings] = useState(() => getClassCodeSettings())
   const [standings, setStandings] = useState<Record<string, ClassStats | { error: string }>>({})
 
   useEffect(() => {
     return subscribeSharedStorage(() => setSettings(getClassCodeSettings()))
+  }, [])
+
+  useEffect(() => {
+    setWebShare(canUseWebShare())
   }, [])
 
   const refreshStandings = useCallback(async (rows: CreatedClassCode[]) => {
@@ -168,6 +182,40 @@ export function ClassCodes() {
       setTimeout(() => setCopied(false), 1600)
     } catch {
       setCopied(false)
+    }
+  }
+
+  const copyCreated = async (code: string) => {
+    try {
+      await navigator.clipboard.writeText(formatClassCode(code))
+      setCopiedCreated(code)
+      setTimeout(() => setCopiedCreated(null), 1600)
+    } catch {
+      setCopiedCreated(null)
+    }
+  }
+
+  const shareCreated = async (row: CreatedClassCode) => {
+    if (typeof navigator.share !== 'function') return
+    try {
+      await navigator.share({
+        title: classCodeShareSubject(row.name),
+        text: classCodeShareText(row.name, row.code),
+      })
+    } catch {
+      /* user cancelled or share failed */
+    }
+  }
+
+  const onShareLink = (event: MouseEvent<HTMLAnchorElement>) => {
+    const href = event.currentTarget.getAttribute('href')
+    if (!href) return
+    if (
+      window.mathsachs?.openExternal &&
+      (/^https?:\/\//i.test(href) || /^mailto:/i.test(href))
+    ) {
+      event.preventDefault()
+      openClassCodeShareUrl(href)
     }
   }
 
@@ -337,6 +385,42 @@ export function ClassCodes() {
                   >
                     {deleting === row.code ? 'Lösche …' : 'Löschen'}
                   </button>
+                </div>
+                <div className="class-codes__share">
+                  <button
+                    type="button"
+                    className="link"
+                    onClick={() => void copyCreated(row.code)}
+                  >
+                    {copiedCreated === row.code ? 'Kopiert' : 'Code kopieren'}
+                  </button>
+                  <a
+                    className="link"
+                    href={classCodeWhatsAppUrl(row.name, row.code)}
+                    target="_blank"
+                    rel="noopener"
+                    onClick={onShareLink}
+                  >
+                    WhatsApp
+                  </a>
+                  <a
+                    className="link"
+                    href={classCodeMailtoUrl(row.name, row.code)}
+                    target="_blank"
+                    rel="noopener"
+                    onClick={onShareLink}
+                  >
+                    Mail
+                  </a>
+                  {webShare && (
+                    <button
+                      type="button"
+                      className="link"
+                      onClick={() => void shareCreated(row)}
+                    >
+                      Teilen
+                    </button>
+                  )}
                 </div>
                 {stats ? (
                   <dl className="class-codes__stats">

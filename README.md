@@ -140,8 +140,9 @@ Im Reiter **Klasse**:
 2. **Code eintragen** und als einzigen Sammel-Code **aktivieren**.
 3. Optional **Punkte an Klasse senden** (Opt-in). Nur mit aktivem Code und
    diesem Haken gehen neue Übungspunkte zusätzlich an die Klassensumme.
-4. **Eigene Codes** mit Ständen **Tag / Woche / Monat / Schuljahr** und
-   **Löschen** (entfernt die Klassensummen online).
+4. **Eigene Codes** mit Ständen **Tag / Woche / Monat / Schuljahr**,
+   **Teilen** (Code kopieren, WhatsApp, Mail) und **Löschen** (entfernt die
+   Klassensummen online).
    Schuljahr = 1. August bis 31. Juli, Zeitzone **Europe/Berlin**,
    **Serverzeit** des Workers.
 

@@ -1482,6 +1482,20 @@ a.link {
   letter-spacing: 0.06em;
 }
 
+.class-codes__share {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 8px;
+  margin: -4px 0 8px;
+}
+
+.class-codes__share .link,
+.class-codes__share a.link {
+  font-size: 12px;
+  padding: 2px 4px;
+}
+
 .class-codes__stats {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));

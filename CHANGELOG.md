@@ -16,6 +16,9 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Klassencode löschen** in der App (Reiter Klasse). Löscht die Klassensummen
   online und den Eintrag auf dem Gerät. Schüler und Lehrkräfte brauchen dafür
   keinen Cloudflare-Account.
+- **Klassencode teilen** in der Liste **Eigene Codes**: **Code kopieren**
+  (Zwischenablage, Format `ABCD-2345`), **WhatsApp** und **Mail**. Auf Tablets
+  mit Web Share API zusätzlich **Teilen**.
 
 ### Geändert
 

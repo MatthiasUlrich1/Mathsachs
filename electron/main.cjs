@@ -209,7 +209,8 @@ function registerUpdateIpc() {
   })
 
   ipcMain.handle('updates:openExternal', async (_event, url) => {
-    if (typeof url !== 'string' || !/^https?:\/\//i.test(url)) return
+    if (typeof url !== 'string') return
+    if (!isHttpUrl(url) && !isMailtoUrl(url)) return
     await shell.openExternal(url)
   })
 
