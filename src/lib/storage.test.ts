@@ -9,8 +9,10 @@ import {
   listUsers,
   loadUser,
   recordSession,
+  rememberCreatedChallenge,
   rememberCreatedClassCode,
   rememberCreatedGradeCode,
+  getCreatedChallenges,
   rememberJoinedClassCode,
   rememberJoinedGradeCode,
   forgetCreatedClassCode,
@@ -458,6 +460,33 @@ describe('storage adapter', () => {
     rememberCreatedGradeCode('hhhh-2222', '7. Klasse')
     expect(getGradeCodeSettings().created.map((row) => row.code)).toEqual(['HHHH2222'])
     expect(getGradeCodeSettings().known?.map((row) => row.code)).toEqual(['GGGG1111'])
+  })
+
+  it('persists created challenges on the Lehrer user record', async () => {
+    const local = memoryStorage()
+    vi.stubGlobal('localStorage', local)
+    vi.stubGlobal('fetch', vi.fn(async () => htmlResponse()))
+    await initSharedStorage()
+    addUser('Ada', 'lehrer')
+    setActiveStorageUser('Ada')
+    rememberCreatedChallenge({
+      id: 'CHAL2345',
+      scope: 'class',
+      hostCode: 'ABCD2345',
+      name: 'Woche 36',
+      topicIds: ['n5-add'],
+      topics: [{ id: 'n5-add', title: 'Addieren' }],
+      start: '2026-09-01T08:00',
+      end: '2026-09-11T16:00',
+      prize: { enabled: true, classPrize: true, classThreshold: 100, text: 'Film' },
+      createdAt: 1,
+    })
+    expect(getCreatedChallenges('Ada').map((row) => row.name)).toEqual(['Woche 36'])
+    expect(loadUser('Ada').challenges?.[0]).toMatchObject({
+      id: 'CHAL2345',
+      hostCode: 'ABCD2345',
+      prize: { classThreshold: 100 },
+    })
   })
 
   it('never sends class points for Klassenlehrer even if opt-in is set', async () => {

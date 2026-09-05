@@ -79,7 +79,10 @@ verteilen. Gebaut mit React, TypeScript und Vite.
 - **Challenge**: Lehrer legen eine **Klassen-** oder **Stufenchallenge**
   an (Themen, Start/Ende **Europe/Berlin**, optionale Gewinnchance).
   Klassenlehrer nur Klassenchallenge (mit eingetragenem Klassencode).
-  Schüler üben die Challenge-Themen; Eltern sehen den Tab nur.
+  Lehrer und Klassenlehrer sehen danach ihre **laufenden und angelegten**
+  Challenges (nicht nur das Formular). Schüler üben die Challenge-Themen
+  und sehen Gewinn, **wer gewinnen kann** (Klasse/Schüler bzw. Klasse/Stufe)
+  und das **Klassenziel**; Eltern sehen denselben Stand nur.
   Punkte in den gewählten Themen zählen weiter für Klasse/Stufe **und**
   extra für die Challenge. Online nur anonyme Summen — kein Schülername.
   Nachweis für „bester Schüler“ ist das lokale **Challenge-Protokoll**.
@@ -103,7 +106,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.31**).
+(aktuelle Version **0.1.32**).
 
 Die App prüft beim Start und — solange sie geöffnet bleibt — einmal pro
 Kalendertag (**Europe/Berlin**) die öffentlichen
@@ -242,11 +245,11 @@ Unter **Einstellungen → Klasse**:
 | ------- | ---- | ------ | ------- |
 | `GET` | `/` | — | `{ ok, service, hasClasses }` |
 | `POST` | `/classes` | `{ name }` | `{ code, name, points, period }` |
-| `GET` | `/classes/:code` | — | Klasse + Aufschlüsselung; bei Zuordnung `grade` (Namen + Summen, keine Mitgliedscodes) |
+| `GET` | `/classes/:code` | — | Klasse + Aufschlüsselung; bei Zuordnung `grade` (Namen + Summen, keine Mitgliedscodes); `challenges` = laufend + angelegt |
 | `POST` | `/classes/:code/points` | `{ delta }` (1–100), optional `topicId` | aktualisierte Klasse; Challenge-Punkte nur bei aktivem Fenster und erlaubtem Thema |
 | `DELETE` | `/classes/:code` | — | `{ ok, deleted }` |
 | `POST` | `/grades` | `{ name }` | `{ code, name, … }` (Lehrer-Stufencode) |
-| `GET` | `/grades/:code` | — | Stufe + Klassenstände **ohne** Mitgliedscodes |
+| `GET` | `/grades/:code` | — | Stufe + Klassenstände **ohne** Mitgliedscodes; `challenges` = laufend + angelegt |
 | `PUT` | `/grades/:code/classes` | `{ add?, remove? }` | Zuordnung; jeder `add` muss ein Klassencode sein |
 | `DELETE` | `/grades/:code` | — | Stufe löschen; Klassencodes und ihre Punkte bleiben |
 | `POST` | `/challenges` | `{ scope, classCode?\|gradeCode?, name, topicIds, start, end, prize }` | Challenge anlegen (Geheimnis = Klassen-/Stufencode) |

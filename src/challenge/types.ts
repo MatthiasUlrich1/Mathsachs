@@ -32,6 +32,14 @@ export interface StoredChallenge {
 
 export const NO_ACTIVE_CHALLENGE_MESSAGE = 'Aktuell keine Challenge aktiv.'
 
+export const CHALLENGE_PHASE_LABEL = {
+  upcoming: 'Angelegt',
+  active: 'Laufend',
+  ended: 'Beendet',
+} as const
+
+export const CLASS_GOAL_PREFIX = 'Klassenziel:'
+
 export const MAX_CHALLENGE_NAME_LENGTH = 80
 export const MAX_PRIZE_TEXT_LENGTH = 200
 export const MAX_CHALLENGE_TOPICS = 40

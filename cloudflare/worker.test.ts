@@ -520,6 +520,50 @@ describe('Challenge Worker API', () => {
     expect(body.challenges ?? []).toEqual([])
   })
 
+  it('embeds upcoming class challenges on GET, not only the live window', async () => {
+    const kv = env()
+    const created = await postJson('/classes', { name: 'Klasse 6c' }, kv)
+    const { code } = (await created.json()) as { code: string }
+    const upcoming = await postJson(
+      '/challenges',
+      {
+        scope: 'class',
+        classCode: code,
+        name: 'Nächste Woche',
+        topicIds: ['n5-add'],
+        start: '2035-09-08T08:00',
+        end: '2035-09-12T16:00',
+        prize: {
+          enabled: true,
+          classPrize: true,
+          classThreshold: 100,
+          text: 'Film',
+        },
+      },
+      kv,
+    )
+    expect(upcoming.status).toBe(201)
+
+    const got = await worker.fetch(request(`/classes/${code}`), kv)
+    const body = (await got.json()) as {
+      challenge?: { name: string }
+      challenges: Array<{
+        name: string
+        active?: boolean
+        prize: { classPrize?: boolean; classThreshold?: number; text?: string }
+        classThreshold?: number
+      }>
+    }
+    expect(body.challenge).toBeUndefined()
+    expect(body.challenges).toHaveLength(1)
+    expect(body.challenges[0].name).toBe('Nächste Woche')
+    expect(body.challenges[0].active).toBe(false)
+    expect(body.challenges[0].prize.text).toBe('Film')
+    expect(body.challenges[0].prize.classPrize).toBe(true)
+    expect(body.challenges[0].classThreshold).toBe(100)
+    expect(JSON.stringify(body.challenges[0])).not.toMatch(/vorname|userId|deviceId|schuelername/i)
+  })
+
   it('embeds anonymous grade-challenge standings and never member codes', async () => {
     const kv = env()
     const a = await postJson('/classes', { name: 'Klasse 6a' }, kv)

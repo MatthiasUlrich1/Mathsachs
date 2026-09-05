@@ -3,6 +3,7 @@ import {
   CLASS_API_STUB_MESSAGE,
   ClassApiError,
   createChallenge,
+  getChallenge,
   getClass,
   getGrade,
   type ChallengeSummary,
@@ -12,17 +13,24 @@ import {
   allowedChallengeScopes,
   canOfferClassChallengeCreate,
   canOfferGradeChallengeCreate,
-  classCodesForChallengeCreate,
+  challengePhase,
+  challengePhaseLabel,
+  challengeScopeLabel,
+  challengeThreshold,
+  classCodesForChallengeList,
+  classGoalLine,
   createChallengePayload,
-  gradeCodesForChallengeCreate,
+  gradeCodesForChallengeList,
+  mergeVisibleChallenges,
   NO_ACTIVE_CHALLENGE_MESSAGE,
+  prizeAudienceLine,
 } from '../challenge/logic'
 import { findLoadedTopic, type LoadedGrade } from '../challenge/topics'
 import { defaultBerlinChallengeWindow } from '../challenge/time'
 import type { ChallengePrize, ChallengeScope, StoredChallenge } from '../challenge/types'
-import { parseStoredChallenges } from '../challenge/parse'
 import {
   canCreateChallenge,
+  canCreateGradeChallenge,
   canPracticeFromChallenge,
   type UserRole,
 } from '../lib/roles'
@@ -107,9 +115,12 @@ export function Challenge({ user, role, loaded, onPractice }: Props) {
 
   useEffect(() => {
     let cancelled = false
-    const active = classSettings.activeCode
-    const gradeCodes = gradeCodesForChallengeCreate(gradeSettings)
-    if (!active && gradeCodes.length === 0) {
+    const classCodes = classCodesForChallengeList(classSettings)
+    const gradeCodes = canCreateGradeChallenge(role)
+      ? gradeCodesForChallengeList(gradeSettings)
+      : []
+    const createdIds = created.map((row) => row.id)
+    if (classCodes.length === 0 && gradeCodes.length === 0 && createdIds.length === 0) {
       setRemote([])
       return
     }
@@ -117,29 +128,38 @@ export function Challenge({ user, role, loaded, onPractice }: Props) {
     void (async () => {
       const found: ChallengeSummary[] = []
       const seen = new Set<string>()
-      if (active) {
+      const add = (row: ChallengeSummary) => {
+        if (seen.has(row.id)) return
+        seen.add(row.id)
+        found.push(row)
+      }
+      for (const code of classCodes) {
         try {
-          const stats = await getClass(active)
+          const stats = await getClass(code)
           for (const row of stats.challenges ?? (stats.challenge ? [stats.challenge] : [])) {
-            if (seen.has(row.id)) continue
-            seen.add(row.id)
-            found.push(row)
+            add(row)
           }
         } catch {
           /* offline: local fallback below */
         }
       }
+      for (const code of gradeCodes) {
+        try {
+          const grade = await getGrade(code)
+          for (const row of grade.challenges ?? (grade.challenge ? [grade.challenge] : [])) {
+            add(row)
+          }
+        } catch {
+          /* ignore */
+        }
+      }
       if (canCreateChallenge(role)) {
-        for (const code of gradeCodes) {
+        for (const id of createdIds) {
+          if (seen.has(id)) continue
           try {
-            const grade = await getGrade(code)
-            for (const row of grade.challenges ?? (grade.challenge ? [grade.challenge] : [])) {
-              if (seen.has(row.id)) continue
-              seen.add(row.id)
-              found.push(row)
-            }
+            add(await getChallenge(id))
           } catch {
-            /* ignore */
+            /* keep the local created copy */
           }
         }
       }
@@ -151,30 +171,39 @@ export function Challenge({ user, role, loaded, onPractice }: Props) {
     return () => {
       cancelled = true
     }
-  }, [classSettings.activeCode, gradeSettings, role])
+  }, [classSettings, created, gradeSettings, role])
 
-  const localFallback = useMemo(() => {
-    const active = classSettings.activeCode
-    const byId = new Map<string, StoredChallenge>()
-    for (const challenge of [...listDeviceChallenges(), ...created]) {
-      byId.set(challenge.id, challenge)
-    }
-    return [...byId.values()].filter((challenge) => {
-      if (challenge.scope === 'class') return Boolean(active) && challenge.hostCode === active
-      return gradeCodesForChallengeCreate(gradeSettings).includes(challenge.hostCode)
-    })
-  }, [classSettings.activeCode, created, gradeSettings])
+  const listedChallenges = useMemo(
+    () =>
+      mergeVisibleChallenges({
+        remote,
+        created,
+        device: listDeviceChallenges(),
+        classCodes: classCodesForChallengeList(classSettings),
+        gradeCodes: gradeCodesForChallengeList(gradeSettings),
+        includeCreated: canCreateChallenge(role),
+      }),
+    [classSettings, created, gradeSettings, remote, role],
+  )
 
-  const activeChallenges = useMemo(() => {
-    if (remote.length > 0) return remote
-    return parseStoredChallenges(localFallback).filter((challenge) => challenge)
-  }, [remote, localFallback])
+  const running = useMemo(
+    () => listedChallenges.filter((row) => challengePhase(row.start, row.end) === 'active'),
+    [listedChallenges],
+  )
+  const upcoming = useMemo(
+    () => listedChallenges.filter((row) => challengePhase(row.start, row.end) === 'upcoming'),
+    [listedChallenges],
+  )
 
   const hasClass = Boolean(classSettings.activeCode)
   const showEmpty =
     !loading &&
-    activeChallenges.length === 0 &&
-    (hasClass || role === 'schueler' || role === 'eltern' || role === 'klassenlehrer')
+    listedChallenges.length === 0 &&
+    (hasClass ||
+      created.length > 0 ||
+      role === 'schueler' ||
+      role === 'eltern' ||
+      role === 'klassenlehrer')
 
   const canCreate = canCreateChallenge(role)
   const showClassCreate = canOfferClassChallengeCreate(role, classSettings)
@@ -213,8 +242,8 @@ export function Challenge({ user, role, loaded, onPractice }: Props) {
         <ChallengeCreateForm
           role={role}
           loaded={loaded}
-          classCodes={classCodesForChallengeCreate(classSettings)}
-          gradeCodes={gradeCodesForChallengeCreate(gradeSettings)}
+          classCodes={classCodesForChallengeList(classSettings)}
+          gradeCodes={gradeCodesForChallengeList(gradeSettings)}
           classSettings={classSettings}
           gradeSettings={gradeSettings}
           onCreated={(summary, hostCode) => {
@@ -237,20 +266,33 @@ export function Challenge({ user, role, loaded, onPractice }: Props) {
 
       {loading && <p className="muted">Challenge wird geladen …</p>}
 
-      {activeChallenges.length > 0 &&
-        activeChallenges.map((challenge) => (
-          <ActiveChallenge
-            key={challenge.id}
-            challenge={challenge}
-            loaded={loaded}
-            allowPractice={allowPractice}
-            onPractice={onPractice}
-            onProtocol={() => {
-              setProtocolChallenge(challenge)
-              setMode('protocol')
-            }}
-          />
-        ))}
+      <ChallengeListGroup
+        title="Laufende Challenges"
+        challenges={running}
+        classSettings={classSettings}
+        gradeSettings={gradeSettings}
+        loaded={loaded}
+        allowPractice={allowPractice}
+        onPractice={onPractice}
+        onProtocol={(challenge) => {
+          setProtocolChallenge(challenge)
+          setMode('protocol')
+        }}
+      />
+
+      <ChallengeListGroup
+        title="Angelegte Challenges"
+        challenges={upcoming}
+        classSettings={classSettings}
+        gradeSettings={gradeSettings}
+        loaded={loaded}
+        allowPractice={allowPractice}
+        onPractice={onPractice}
+        onProtocol={(challenge) => {
+          setProtocolChallenge(challenge)
+          setMode('protocol')
+        }}
+      />
 
       {showEmpty && <p className="notice">{NO_ACTIVE_CHALLENGE_MESSAGE}</p>}
     </section>
@@ -581,14 +623,105 @@ function ChallengeCreateForm({
   )
 }
 
+function hostDisplayName(
+  challenge: ChallengeSummary | StoredChallenge,
+  classSettings: ReturnType<typeof getClassCodeSettings>,
+  gradeSettings: ReturnType<typeof getGradeCodeSettings>,
+): string {
+  const kind = challengeScopeLabel(challenge.scope)
+  const host = 'hostCode' in challenge ? challenge.hostCode : ''
+  const remoteName = 'className' in challenge ? challenge.className : undefined
+  if (remoteName?.trim()) return `${kind} ${remoteName.trim()}`
+  if (!host) return kind
+  const rows =
+    challenge.scope === 'grade'
+      ? [...(gradeSettings.created ?? []), ...(gradeSettings.known ?? [])]
+      : [...classSettings.created, ...(classSettings.known ?? [])]
+  const row = rows.find((item) => item.code === host)
+  return row?.name ? `${kind} ${row.name}` : kind
+}
+
+export function ChallengePrizeInfo({
+  prize,
+  scope,
+  classThreshold,
+}: {
+  prize: ChallengePrize
+  scope: ChallengeScope
+  classThreshold?: number
+}) {
+  const audience = prizeAudienceLine(prize, scope)
+  const goal = classGoalLine(challengeThreshold({ prize, classThreshold }))
+  if (!prize.enabled && !goal) return null
+  return (
+    <div className="challenge-prize-info">
+      {prize.enabled && prize.text ? (
+        <p>
+          Gewinn: <strong>{prize.text}</strong>
+        </p>
+      ) : null}
+      {audience ? (
+        <p>
+          Wer gewinnen kann: <strong>{audience.replace(/^Wer gewinnen kann: /, '')}</strong>
+        </p>
+      ) : null}
+      {goal ? (
+        <p className="challenge-class-goal">
+          <strong>{goal}</strong>
+        </p>
+      ) : null}
+    </div>
+  )
+}
+
+function ChallengeListGroup({
+  title,
+  challenges,
+  classSettings,
+  gradeSettings,
+  loaded,
+  allowPractice,
+  onPractice,
+  onProtocol,
+}: {
+  title: string
+  challenges: Array<ChallengeSummary | StoredChallenge>
+  classSettings: ReturnType<typeof getClassCodeSettings>
+  gradeSettings: ReturnType<typeof getGradeCodeSettings>
+  loaded: LoadedGrade[]
+  allowPractice: boolean
+  onPractice: (topic: Topic, areaTitle: string, gradeTitle: string) => void
+  onProtocol: (challenge: ChallengeSummary | StoredChallenge) => void
+}) {
+  if (challenges.length === 0) return null
+  return (
+    <div className="challenge-list-group">
+      <h3 className="class-codes__list-title">{title}</h3>
+      {challenges.map((challenge) => (
+        <ActiveChallenge
+          key={challenge.id}
+          challenge={challenge}
+          hostLabel={hostDisplayName(challenge, classSettings, gradeSettings)}
+          loaded={loaded}
+          allowPractice={allowPractice}
+          onPractice={onPractice}
+          onProtocol={() => onProtocol(challenge)}
+        />
+      ))}
+    </div>
+  )
+}
+
 function ActiveChallenge({
   challenge,
+  hostLabel,
   loaded,
   allowPractice,
   onPractice,
   onProtocol,
 }: {
   challenge: ChallengeSummary | StoredChallenge
+  hostLabel: string
   loaded: LoadedGrade[]
   allowPractice: boolean
   onPractice: (topic: Topic, areaTitle: string, gradeTitle: string) => void
@@ -599,26 +732,29 @@ function ActiveChallenge({
   const summary = 'points' in challenge ? challenge : null
   const classes = 'classes' in challenge ? challenge.classes : undefined
   const className = 'className' in challenge ? challenge.className : undefined
-  const threshold =
-    'classThreshold' in challenge ? challenge.classThreshold : prize.classThreshold
+  const threshold = challengeThreshold(challenge)
   const reached =
     'reachedThreshold' in challenge ? challenge.reachedThreshold : undefined
+  const phase = challengePhase(challenge.start, challenge.end)
 
   return (
     <article className="challenge-active">
+      <p className="challenge-meta muted small">
+        <span className="challenge-phase">{challengePhaseLabel(phase)}</span>
+        {' · '}
+        {hostLabel}
+      </p>
       <h3 className="class-codes__list-title">{challenge.name}</h3>
       <p className="muted small">{formatWindow(challenge.start, challenge.end)}</p>
-      {prize.enabled && prize.text && (
-        <p>
-          Gewinn: <strong>{prize.text}</strong>
-        </p>
-      )}
+      <ChallengePrizeInfo
+        prize={prize}
+        scope={challenge.scope}
+        classThreshold={threshold}
+      />
       {summary?.points && challenge.scope === 'class' && (
         <p className="muted small">
           Klasse{className ? ` ${className}` : ''}: {summary.points.total} Challenge-Punkte
-          {typeof threshold === 'number'
-            ? ` · Schwelle ${threshold}${reached ? ' (erreicht)' : ''}`
-            : ''}
+          {typeof threshold === 'number' && reached ? ' (Klassenziel erreicht)' : ''}
         </p>
       )}
       {classes && classes.length > 0 && (

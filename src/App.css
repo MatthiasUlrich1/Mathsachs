@@ -1970,3 +1970,35 @@ a.link {
 .challenge-active .topics {
   margin: 12px 0 16px;
 }
+
+.challenge-list-group {
+  margin-top: 20px;
+}
+
+.challenge-list-group .challenge-active {
+  margin-top: 12px;
+}
+
+.challenge-meta {
+  margin: 0 0 4px;
+}
+
+.challenge-phase {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.challenge-prize-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 8px 0 12px;
+}
+
+.challenge-prize-info p {
+  margin: 0;
+}
+
+.challenge-class-goal {
+  color: #0f172a;
+}

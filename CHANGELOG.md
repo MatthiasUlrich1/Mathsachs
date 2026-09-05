@@ -9,6 +9,25 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.32] – 2026-09-05
+
+### Geändert
+
+- **Challenge sichtbar:** Lehrer und Klassenlehrer sehen ihre **laufenden**
+  und **angelegten** Challenges (Name, Klasse/Stufe, Zeitraum, Themen,
+  Gewinnchance, Stand). Nicht nur das Anlegeformular und nicht nur die
+  Challenge der gerade aktiven Klasse — auch Challenges an erstellten oder
+  eingetragenen Klassen- und Stufencodes sowie lokal gemerkte eigene
+  Challenges.
+- **Schüler und Eltern** sehen neben dem Gewinntext **wer gewinnen kann**
+  (Klasse und/oder Schüler; bei Stufe: Klasse/Stufe vs. Schüler) und das
+  **Klassenziel** (Punkteschwelle), z. B. `Klassenziel: 100 Punkte`.
+  Keine Personennamen online.
+- Worker: `GET /classes/:code` und `GET /grades/:code` liefern angelegte
+  (noch nicht gestartete) Challenges mit, nicht nur das laufende Fenster.
+  `challenge` bleibt die gerade laufende. **Linus/Matthias:**
+  `cloudflare/worker.js` einfügen und Deploy.
+
 ## [0.1.31] – 2026-09-05
 
 ### Hinzugefügt
@@ -459,7 +478,8 @@ Fixes #11
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.31...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.32...HEAD
+[0.1.32]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.31...v0.1.32
 [0.1.31]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.30...v0.1.31
 [0.1.30]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.29...v0.1.30
 [0.1.29]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.28...v0.1.29

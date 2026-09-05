@@ -3,11 +3,16 @@ import {
   allowedChallengeScopes,
   canOfferClassChallengeCreate,
   canOfferGradeChallengeCreate,
+  challengePhase,
   challengePointsFromSessions,
+  classCodesForChallengeList,
+  classGoalLine,
   classPointsPayload,
   createChallengePayload,
   filterSessionsForChallenge,
+  mergeVisibleChallenges,
   NO_ACTIVE_CHALLENGE_MESSAGE,
+  prizeAudienceLine,
   shouldAttributeChallengePoints,
 } from './logic'
 import { berlinLocalToUtcMs, defaultBerlinChallengeWindow, isInChallengeWindow } from './time'
@@ -92,6 +97,114 @@ describe('Challenge points attribution', () => {
     expect(window.endLocal.endsWith('T16:00')).toBe(true)
     expect(window.startLocal.startsWith('2026-09-07')).toBe(true)
     expect(window.endLocal.startsWith('2026-09-11')).toBe(true)
+  })
+})
+
+describe('Challenge visibility and prize copy', () => {
+  const now = Date.parse('2026-09-08T10:00:00+02:00')
+
+  it('labels Klasse/Schüler and Klasse/Stufe vs Schüler, never a person name', () => {
+    expect(
+      prizeAudienceLine({ enabled: true, classPrize: true, studentPrize: true }, 'class'),
+    ).toBe('Wer gewinnen kann: Klasse und Schüler')
+    expect(prizeAudienceLine({ enabled: true, classPrize: true }, 'class')).toBe(
+      'Wer gewinnen kann: Klasse',
+    )
+    expect(prizeAudienceLine({ enabled: true, studentPrize: true }, 'class')).toBe(
+      'Wer gewinnen kann: Schüler',
+    )
+    expect(
+      prizeAudienceLine({ enabled: true, classPrize: true, studentPrize: true }, 'grade'),
+    ).toBe('Wer gewinnen kann: Klasse/Stufe und Schüler')
+    expect(prizeAudienceLine({ enabled: true, classPrize: true }, 'grade')).toBe(
+      'Wer gewinnen kann: Klasse/Stufe',
+    )
+    expect(prizeAudienceLine({ enabled: false, classPrize: true }, 'class')).toBeNull()
+    expect(JSON.stringify(prizeAudienceLine({ enabled: true, classPrize: true }, 'class'))).not.toMatch(
+      /vorname|schuelername|userId/i,
+    )
+  })
+
+  it('shows Klassenziel with the Punkteschwelle', () => {
+    expect(classGoalLine(100)).toBe('Klassenziel: 100 Punkte')
+    expect(classGoalLine(0)).toBeNull()
+    expect(classGoalLine(undefined)).toBeNull()
+  })
+
+  it('lists Lehrer created + class/grade linked challenges, not only the active class', () => {
+    const created = {
+      id: 'CHAL1111',
+      scope: 'class' as const,
+      hostCode: 'ZZZZ9999',
+      start: '2026-09-14T08:00',
+      end: '2026-09-18T16:00',
+    }
+    const runningOnOtherClass = {
+      id: 'CHAL2222',
+      scope: 'class' as const,
+      hostCode: 'ABCD2345',
+      start: '2026-09-07T08:00',
+      end: '2026-09-11T16:00',
+    }
+    const ended = {
+      id: 'CHAL3333',
+      scope: 'class' as const,
+      hostCode: 'ABCD2345',
+      start: '2026-08-01T08:00',
+      end: '2026-08-05T16:00',
+    }
+    const listed = mergeVisibleChallenges({
+      remote: [runningOnOtherClass],
+      created: [created, ended],
+      classCodes: ['ABCD2345', 'EEEE5555'],
+      gradeCodes: [],
+      includeCreated: true,
+      now,
+    })
+    expect(listed.map((row) => row.id)).toEqual(['CHAL2222', 'CHAL1111'])
+    expect(challengePhase(created.start, created.end, now)).toBe('upcoming')
+    expect(challengePhase(runningOnOtherClass.start, runningOnOtherClass.end, now)).toBe(
+      'active',
+    )
+  })
+
+  it('hides foreign created challenges from Schüler unless the host class matches', () => {
+    const otherClass = {
+      id: 'CHAL4444',
+      scope: 'class' as const,
+      hostCode: 'ZZZZ9999',
+      start: '2026-09-07T08:00',
+      end: '2026-09-11T16:00',
+    }
+    const mine = {
+      id: 'CHAL5555',
+      scope: 'class' as const,
+      hostCode: 'ABCD2345',
+      start: '2026-09-07T08:00',
+      end: '2026-09-11T16:00',
+    }
+    expect(
+      mergeVisibleChallenges({
+        remote: [],
+        created: [otherClass],
+        device: [mine],
+        classCodes: ['ABCD2345'],
+        gradeCodes: [],
+        includeCreated: false,
+        now,
+      }).map((row) => row.id),
+    ).toEqual(['CHAL5555'])
+  })
+
+  it('collects created, entered and active class codes for listing', () => {
+    expect(
+      classCodesForChallengeList({
+        ...emptyClassCodes(),
+        activeCode: 'AAAA1111',
+        created: [{ code: 'BBBB2222', name: '6a', createdAt: 1 }],
+        known: [{ code: 'CCCC3333', name: '6b', createdAt: 2 }],
+      }).sort(),
+    ).toEqual(['AAAA1111', 'BBBB2222', 'CCCC3333'])
   })
 })
 

@@ -221,6 +221,14 @@ export function isInChallengeWindow(start, end, now = Date.now()) {
   return now >= from && now <= to
 }
 
+/** Upcoming or running — used for GET class/grade embeds (not only the live window). */
+export function isChallengeOpen(start, end, now = Date.now()) {
+  const from = parseChallengeInstant(start)
+  const to = parseChallengeInstant(end)
+  if (!Number.isFinite(from) || !Number.isFinite(to) || to < from) return false
+  return now <= to
+}
+
 function parsePrizeStored(raw) {
   if (!raw || typeof raw !== 'object') return { enabled: false }
   const text = typeof raw.text === 'string' ? raw.text.trim().slice(0, MAX_PRIZE_TEXT_LENGTH) : ''
@@ -551,9 +559,10 @@ async function buildGradeView(env, gradeCode, grade, now = Date.now()) {
   }
   classes.sort((a, b) => a.name.localeCompare(b.name, 'de') || a.id.localeCompare(b.id))
   const gradeWithClasses = { ...grade, _classByCode: classByCode }
-  const activeChallenges = Object.values(grade.challenges || {})
-    .filter((ch) => isInChallengeWindow(ch.start, ch.end, now))
+  const listedChallenges = Object.values(grade.challenges || {})
+    .filter((ch) => isChallengeOpen(ch.start, ch.end, now))
     .map((ch) => publicGradeChallenge(ch, gradeWithClasses, now))
+  listedChallenges.sort((a, b) => Number(b.active) - Number(a.active) || a.name.localeCompare(b.name, 'de'))
   const view = {
     id: publicIdFromCode(gradeCode),
     name: grade.name,
@@ -561,9 +570,10 @@ async function buildGradeView(env, gradeCode, grade, now = Date.now()) {
     points,
     period,
   }
-  if (activeChallenges.length) {
-    view.challenges = activeChallenges
-    view.challenge = activeChallenges[0]
+  if (listedChallenges.length) {
+    view.challenges = listedChallenges
+    const live = listedChallenges.find((row) => row.active)
+    if (live) view.challenge = live
   }
   return view
 }
@@ -584,14 +594,16 @@ function publicClass(code, stored, now = Date.now(), gradeView = null) {
     period: summary.period,
   }
   if (gradeView) body.grade = gradeView
-  const classActive = Object.values(stored.challenges || {})
-    .filter((ch) => isInChallengeWindow(ch.start, ch.end, now))
+  const classListed = Object.values(stored.challenges || {})
+    .filter((ch) => isChallengeOpen(ch.start, ch.end, now))
     .map((ch) => publicClassChallenge(ch, stored.name, now))
-  const gradeActive = gradeView && Array.isArray(gradeView.challenges) ? gradeView.challenges : []
-  const all = [...classActive, ...gradeActive]
+  const gradeListed = gradeView && Array.isArray(gradeView.challenges) ? gradeView.challenges : []
+  const all = [...classListed, ...gradeListed]
+  all.sort((a, b) => Number(b.active) - Number(a.active) || a.name.localeCompare(b.name, 'de'))
   if (all.length) {
     body.challenges = all
-    body.challenge = all[0]
+    const live = all.find((row) => row.active)
+    if (live) body.challenge = live
   }
   return body
 }

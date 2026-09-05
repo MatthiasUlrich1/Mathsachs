@@ -80,6 +80,33 @@ export function isInChallengeWindow(
   return now >= from && now <= to
 }
 
+/** Upcoming or currently running — not yet past the end (Europe/Berlin). */
+export function isChallengeOpen(
+  start: unknown,
+  end: unknown,
+  now: number = Date.now(),
+): boolean {
+  const from = parseChallengeInstant(start)
+  const to = parseChallengeInstant(end)
+  if (!Number.isFinite(from) || !Number.isFinite(to) || to < from) return false
+  return now <= to
+}
+
+export type ChallengePhase = 'upcoming' | 'active' | 'ended'
+
+export function challengePhase(
+  start: unknown,
+  end: unknown,
+  now: number = Date.now(),
+): ChallengePhase {
+  const from = parseChallengeInstant(start)
+  const to = parseChallengeInstant(end)
+  if (!Number.isFinite(from) || !Number.isFinite(to) || to < from) return 'ended'
+  if (now < from) return 'upcoming'
+  if (now > to) return 'ended'
+  return 'active'
+}
+
 const WEEKDAY_TO_MONDAY_OFFSET: Record<string, number> = {
   Mon: 0,
   Tue: 1,
