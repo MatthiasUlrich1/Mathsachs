@@ -20,6 +20,23 @@ describe('TaskRequest form', () => {
     }
   })
 
+  it('uses a Themengebiet dropdown that stays disabled until a grade is chosen', () => {
+    const html = renderToStaticMarkup(createElement(TaskRequest))
+    expect(html).toMatch(
+      /<select[^>]*id="task-request-area"[^>]*disabled/,
+    )
+    expect(html).not.toMatch(/<input[^>]*id="task-request-area"/)
+    expect(html).toContain('Zuerst Klassenstufe wählen')
+    expect(html).not.toContain('Arbeiten mit natürlichen Zahlen')
+  })
+
+  it('hints that examples may be attached and offers „siehe Anhang“', () => {
+    const html = renderToStaticMarkup(createElement(TaskRequest))
+    expect(html).toContain('Anhang an die E-Mail hängen')
+    expect(html).toContain('siehe Anhang')
+    expect(html).toContain('siehe Anhang eintragen')
+  })
+
   it('does not mention Worker storage of the request', () => {
     const html = renderToStaticMarkup(createElement(TaskRequest))
     expect(html).toContain('keine Personendaten')

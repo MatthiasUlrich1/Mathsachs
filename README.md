@@ -56,8 +56,10 @@ verteilen. Gebaut mit React, TypeScript und Vite.
 
 - **Aufgaben ergänzen:** Nur **Lehrer** können unter **Einstellungen →
   Aufgaben ergänzen** Vorgaben für neue Übungsaufgaben senden
-  (Klassenstufe, Themengebiet, Titel des Themas, Aufgabenbeispiel). Die
-  Angaben gehen per E-Mail an uns — nicht an den Klassen-Server.
+  (Klassenstufe, Themengebiet aus dem Lehrplan, Titel des Themas,
+  Aufgabenbeispiel). Beispiele dürfen als E-Mail-Anhang mitgehen — im
+  Feld dann **siehe Anhang**. Die Angaben gehen per E-Mail an uns —
+  nicht an den Klassen-Server.
 - **Einstellungen**: Untermenü mit Lehrplänen, Klassencode, **Aufgaben
   ergänzen** (nur Lehrer), WLAN-Zugang (Desktop) und Profil (Rolle und
   Benutzerwechsel). **Auf Updates prüfen** steht direkt auf der
@@ -86,7 +88,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.27**).
+(aktuelle Version **0.1.28**).
 
 Die App prüft beim Start und — solange sie geöffnet bleibt — einmal pro
 Kalendertag (**Europe/Berlin**) die öffentlichen

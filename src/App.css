@@ -517,6 +517,14 @@ a.ghost.update-banner__link {
   line-height: 1.45;
 }
 
+.task-request__hint {
+  margin-top: 8px;
+}
+
+.task-request__attach {
+  margin-top: 8px;
+}
+
 a.task-request__send {
   display: inline-flex;
   align-items: center;

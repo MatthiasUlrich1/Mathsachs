@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.28] – 2026-09-05
+
+### Geändert
+
+- **Aufgaben ergänzen:** Das **Themengebiet** ist eine Auswahlliste der
+  Lernbereiche des gewählten Lehrplans (zum Beispiel Klasse 5 →
+  „Arbeiten mit natürlichen Zahlen“). Wechselt die Klassenstufe, wird
+  ein ungültiges Themengebiet geleert. Unter dem Aufgabenbeispiel steht,
+  dass Beispiele auch als E-Mail-Anhang gehen — dann **siehe Anhang**
+  eintragen.
+
 ## [0.1.27] – 2026-09-05
 
 ### Geändert
@@ -392,7 +403,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.27...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.28...HEAD
+[0.1.28]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.27...v0.1.28
 [0.1.27]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.26...v0.1.27
 [0.1.26]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.25...v0.1.26
 [0.1.25]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.24...v0.1.25

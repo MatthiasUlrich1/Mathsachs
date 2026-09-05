@@ -1,8 +1,11 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import {
+  TASK_REQUEST_ATTACHMENT_NOTE,
   TASK_REQUEST_GRADES,
   buildTaskRequestMailto,
   isTaskRequestComplete,
+  keepValidArea,
+  loadTaskRequestAreas,
 } from '../legal/taskRequest'
 
 export function TaskRequest() {
@@ -10,6 +13,34 @@ export function TaskRequest() {
   const [area, setArea] = useState('')
   const [title, setTitle] = useState('')
   const [example, setExample] = useState('')
+  const [areas, setAreas] = useState<string[]>([])
+  const [areasLoading, setAreasLoading] = useState(false)
+
+  useEffect(() => {
+    if (!grade) {
+      setAreas([])
+      setAreasLoading(false)
+      return
+    }
+    let cancelled = false
+    setAreasLoading(true)
+    void loadTaskRequestAreas(grade)
+      .then((titles) => {
+        if (cancelled) return
+        setAreas(titles)
+        setArea((current) => keepValidArea(current, titles))
+        setAreasLoading(false)
+      })
+      .catch(() => {
+        if (cancelled) return
+        setAreas([])
+        setArea('')
+        setAreasLoading(false)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [grade])
 
   const fields = useMemo(
     () => ({ grade, area, title, example }),
@@ -17,6 +48,7 @@ export function TaskRequest() {
   )
   const complete = isTaskRequestComplete(fields)
   const mailto = complete ? buildTaskRequestMailto(fields) : ''
+  const areaDisabled = !grade || areasLoading || areas.length === 0
 
   return (
     <section className="card" aria-label="Aufgaben ergänzen">
@@ -39,7 +71,10 @@ export function TaskRequest() {
           id="task-request-grade"
           className="answer-input__field"
           value={grade}
-          onChange={(event) => setGrade(event.target.value)}
+          onChange={(event) => {
+            setGrade(event.target.value)
+            setArea('')
+          }}
         >
           <option value="">Klassenstufe wählen</option>
           {TASK_REQUEST_GRADES.map((label) => (
@@ -54,14 +89,26 @@ export function TaskRequest() {
         <label className="field__label" htmlFor="task-request-area">
           Themengebiet
         </label>
-        <input
+        <select
           id="task-request-area"
           className="answer-input__field"
-          type="text"
           value={area}
+          disabled={areaDisabled}
           onChange={(event) => setArea(event.target.value)}
-          placeholder="z. B. Brüche"
-        />
+        >
+          <option value="">
+            {!grade
+              ? 'Zuerst Klassenstufe wählen'
+              : areasLoading
+                ? 'Themengebiete werden geladen …'
+                : 'Themengebiet wählen'}
+          </option>
+          {areas.map((title) => (
+            <option key={title} value={title}>
+              {title}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div className="field">
@@ -90,6 +137,17 @@ export function TaskRequest() {
           onChange={(event) => setExample(event.target.value)}
           placeholder="z. B. Berechne 1/2 + 1/3."
         />
+        <p className="muted small task-request__hint">
+          Du kannst Beispiele auch als Anhang an die E-Mail hängen. Schreibe
+          dann hier <strong>{TASK_REQUEST_ATTACHMENT_NOTE}</strong>.
+        </p>
+        <button
+          type="button"
+          className="chip-btn task-request__attach"
+          onClick={() => setExample(TASK_REQUEST_ATTACHMENT_NOTE)}
+        >
+          {TASK_REQUEST_ATTACHMENT_NOTE} eintragen
+        </button>
       </div>
 
       <div className="field">
