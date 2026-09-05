@@ -508,6 +508,20 @@ a.ghost.update-banner__link {
   width: 100%;
 }
 
+.task-request__example {
+  min-height: 120px;
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.45;
+}
+
+a.task-request__send {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
 .field__label {
   display: block;
   font-size: 12px;
@@ -808,6 +822,11 @@ a.ghost.update-banner__link {
 
 .answer-input__field:focus {
   border-color: var(--accent);
+}
+
+select.answer-input__field {
+  cursor: pointer;
+  appearance: auto;
 }
 
 .answer-input__unit {

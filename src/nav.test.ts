@@ -3,6 +3,7 @@ import {
   SETTINGS_SECTIONS,
   SETTINGS_TOP_TABS,
   TOP_TABS,
+  settingsSectionsForRole,
   topTabsForRole,
   topTabsForView,
 } from './nav'
@@ -83,14 +84,37 @@ describe('top-bar navigation', () => {
     expect(SETTINGS_SECTIONS.map((item) => item.label)).toEqual([
       'Lehrpläne',
       'Klasse',
+      'Aufgaben ergänzen',
       'WLAN-Zugang',
       'Profil',
     ])
     expect(SETTINGS_SECTIONS.map((item) => item.id)).toEqual([
       'curricula',
       'class',
+      'tasks',
       'lan',
       'profile',
     ])
+  })
+
+  it('shows Aufgaben ergänzen only for Lehrer', () => {
+    expect(settingsSectionsForRole('lehrer').map((item) => item.id)).toEqual([
+      'curricula',
+      'class',
+      'tasks',
+      'lan',
+      'profile',
+    ])
+    for (const role of ['schueler', 'eltern', 'klassenlehrer'] as const) {
+      expect(settingsSectionsForRole(role).map((item) => item.id)).toEqual([
+        'curricula',
+        'class',
+        'lan',
+        'profile',
+      ])
+    }
+    expect(settingsSectionsForRole(undefined).map((item) => item.label)).not.toContain(
+      'Aufgaben ergänzen',
+    )
   })
 })

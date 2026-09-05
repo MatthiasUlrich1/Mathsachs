@@ -51,10 +51,16 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   | Stufencode eintragen | — | — | — | ✓ |
   | Klassen auf eingetragener Stufe anlegen | — | — | — | ✓ |
   | Stufen-Wettbewerb sehen | über Klasse | über Klasse | über Klasse | Klasse oder Stufe |
+  | Aufgaben ergänzen | — | — | — | ✓ |
   | Challenge erstellen | — | — | geplant | geplant |
 
-- **Einstellungen**: Untermenü mit Lehrplänen, Klassencode, WLAN-Zugang
-  (Desktop) und Profil (Rolle, Benutzerwechsel und **Auf Updates prüfen**).
+- **Aufgaben ergänzen:** Nur **Lehrer** können unter **Einstellungen →
+  Aufgaben ergänzen** Vorgaben für neue Übungsaufgaben senden
+  (Klassenstufe, Themengebiet, Titel des Themas, Aufgabenbeispiel). Die
+  Angaben gehen per E-Mail an uns — nicht an den Klassen-Server.
+- **Einstellungen**: Untermenü mit Lehrplänen, Klassencode, **Aufgaben
+  ergänzen** (nur Lehrer), WLAN-Zugang (Desktop) und Profil (Rolle,
+  Benutzerwechsel und **Auf Updates prüfen**).
   In den Einstellungen zeigt
   die Leiste **Zum Üben** links neben **Einstellungen** (hervorgehoben) und
   blendet Themen, Klausur und Punkteprotokoll aus. **Zurück** führt zur Liste.
@@ -79,7 +85,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.25**).
+(aktuelle Version **0.1.26**).
 
 Die App prüft beim Start und — solange sie geöffnet bleibt — einmal pro
 Kalendertag (**Europe/Berlin**) die öffentlichen
@@ -343,9 +349,9 @@ src/
   curriculum/         # Lehrplan-Datenmodell, Klassen 5–12, Einheiten & Themen-Suche
   exam/               # Klausur-Code (Kodierung, Link, Auflösung der Aufgaben)
   lan/                # WLAN-Server-Status in der UI, Tests für den LAN-HTTP-Server
-  legal/              # Impressum, Datenschutz-Hinweis, MIT-Lizenztext, Ideenmelder-mailto
+  legal/              # Impressum, Datenschutz-Hinweis, MIT-Lizenztext, Ideenmelder- und Aufgaben-mailto
   updates/            # GitHub-Releases-Updateprüfung (Semver, Assets, Banner)
-  components/         # UI: Browser, Üben, Übungsblatt, Protokoll, Einstellungen (Lehrpläne, Klasse, WLAN, Profil), Klausur, Update-Hinweis, Rechtliches
+  components/         # UI: Browser, Üben, Übungsblatt, Protokoll, Einstellungen (Lehrpläne, Klasse, Aufgaben, WLAN, Profil), Klausur, Update-Hinweis, Rechtliches
   App.tsx             # Views, routing and user management
   App.css             # Component styles
   index.css           # Global theme

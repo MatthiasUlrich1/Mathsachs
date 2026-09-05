@@ -1,4 +1,9 @@
-import { canCreateExam, canWriteExam, type UserRole } from './lib/roles'
+import {
+  canCreateExam,
+  canRequestTasks,
+  canWriteExam,
+  type UserRole,
+} from './lib/roles'
 
 /** Primary top-bar tabs after the settings reorganization. */
 export const TOP_TABS = [
@@ -37,8 +42,16 @@ export function topTabsForView(viewName: string, role?: UserRole | null) {
 export const SETTINGS_SECTIONS = [
   { id: 'curricula', label: 'Lehrpläne' },
   { id: 'class', label: 'Klasse' },
+  { id: 'tasks', label: 'Aufgaben ergänzen' },
   { id: 'lan', label: 'WLAN-Zugang' },
   { id: 'profile', label: 'Profil' },
 ] as const
 
 export type SettingsSectionId = (typeof SETTINGS_SECTIONS)[number]['id']
+
+/** Aufgaben ergänzen is Lehrer-only; other roles keep the existing hub. */
+export function settingsSectionsForRole(role?: UserRole | null) {
+  return SETTINGS_SECTIONS.filter(
+    (item) => item.id !== 'tasks' || canRequestTasks(role),
+  )
+}

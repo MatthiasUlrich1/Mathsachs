@@ -42,7 +42,44 @@ describe('Settings Profil update check', () => {
     expect(lan).not.toContain(MANUAL_CHECK_LABEL)
     const hub = renderToStaticMarkup(createElement(Settings, baseProps))
     expect(hub).toContain('Einstellungen')
+    expect(hub).toContain('Aufgaben ergänzen')
     expect(hub).not.toContain(MANUAL_CHECK_LABEL)
+  })
+
+  it('lists Aufgaben ergänzen only for Lehrer', () => {
+    const lehrer = renderToStaticMarkup(createElement(Settings, baseProps))
+    expect(lehrer).toContain('Aufgaben ergänzen')
+    expect(lehrer).toContain('Vorgaben für neue Übungsaufgaben senden')
+
+    for (const role of ['schueler', 'eltern', 'klassenlehrer'] as const) {
+      const html = renderToStaticMarkup(
+        createElement(Settings, { ...baseProps, role }),
+      )
+      expect(html).not.toContain('Aufgaben ergänzen')
+    }
+  })
+
+  it('renders the Vorgaben form on the tasks section for Lehrer', () => {
+    const html = renderToStaticMarkup(
+      createElement(Settings, { ...baseProps, section: 'tasks' }),
+    )
+    expect(html).toContain('Klassenstufe')
+    expect(html).toContain('Themengebiet')
+    expect(html).toContain('Titel des Themas')
+    expect(html).toContain('Aufgabenbeispiel')
+    expect(html).toContain('Vorgaben senden')
+  })
+
+  it('denies the tasks section to other roles', () => {
+    const html = renderToStaticMarkup(
+      createElement(Settings, {
+        ...baseProps,
+        role: 'schueler',
+        section: 'tasks',
+      }),
+    )
+    expect(html).toContain('Nur Lehrer können Vorgaben für neue Aufgaben senden.')
+    expect(html).not.toContain('Themengebiet')
   })
 
   it('shows checking, current and error texts under the button', () => {

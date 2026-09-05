@@ -39,6 +39,7 @@ describe('Rollen-Rechte-Matrix', () => {
       'Stufencode eintragen',
       'Klassen auf eingetragener Stufe anlegen',
       'Stufen-Wettbewerb sehen',
+      'Aufgaben ergänzen',
       'Challenge erstellen',
     ])
     const byId = Object.fromEntries(ROLE_RIGHT_ROWS.map((row) => [row.id, row.marks]))
@@ -50,6 +51,10 @@ describe('Rollen-Rechte-Matrix', () => {
     expect(byId.gradeCreate.lehrer).toBe('yes')
     expect(byId.gradeEnter.lehrer).toBe('yes')
     expect(byId.gradeEnter.eltern).toBe('no')
+    expect(byId.taskRequest.lehrer).toBe('yes')
+    expect(byId.taskRequest.klassenlehrer).toBe('no')
+    expect(byId.taskRequest.eltern).toBe('no')
+    expect(byId.taskRequest.schueler).toBe('no')
     expect(byId.challenge.lehrer).toBe('planned')
     expect(byId.challenge.klassenlehrer).toBe('planned')
     expect(rightMarkSymbol('planned')).toBe('geplant')

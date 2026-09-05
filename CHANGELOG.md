@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.26] – 2026-09-05
+
+### Hinzugefügt
+
+- **Aufgaben ergänzen:** Lehrer senden unter **Einstellungen → Aufgaben
+  ergänzen** Vorgaben für neue Übungsaufgaben: **Klassenstufe**,
+  **Themengebiet**, **Titel des Themas** und ein **Aufgabenbeispiel**. Die
+  Angaben gehen per E-Mail an uns. Der Klassen-Server speichert nichts
+  davon.
+
 ## [0.1.25] – 2026-09-05
 
 ### Hinzugefügt
@@ -371,7 +381,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.25...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.26...HEAD
+[0.1.26]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.25...v0.1.26
 [0.1.25]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.24...v0.1.25
 [0.1.24]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.23...v0.1.24
 [0.1.23]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.22...v0.1.23

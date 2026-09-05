@@ -2,8 +2,9 @@ import { CurriculumSetup } from './CurriculumSetup'
 import { ClassCodes } from './ClassCodes'
 import { LanAccessCard } from './LanAccessCard'
 import { RoleRightsMatrix } from './RoleRightsMatrix'
+import { TaskRequest } from './TaskRequest'
 import {
-  SETTINGS_SECTIONS,
+  settingsSectionsForRole,
   type SettingsSectionId,
 } from '../nav'
 import {
@@ -11,6 +12,7 @@ import {
   canCreateClassCodes,
   canEnterGradeCodes,
   canManageGradeCodes,
+  canRequestTasks,
   canSendClassPoints,
   roleLabel,
   type UserRole,
@@ -25,6 +27,7 @@ import {
 const SECTION_HINTS: Record<SettingsSectionId, string> = {
   curricula: 'Klassenstufen laden und entfernen',
   class: 'Klassencode erstellen, eintragen oder teilen',
+  tasks: 'Vorgaben für neue Übungsaufgaben senden',
   lan: 'Tablets im selben WLAN verbinden',
   profile: 'Rolle, Rechte, Benutzerwechsel und Updates',
 }
@@ -87,7 +90,7 @@ export function Settings({
         </div>
 
         <ul className="settings-menu">
-          {SETTINGS_SECTIONS.map((item) => {
+          {settingsSectionsForRole(role).map((item) => {
             const lanOnWeb = item.id === 'lan' && !lanAvailable
             return (
               <li key={item.id}>
@@ -142,6 +145,18 @@ export function Settings({
           canSendPoints={canSendClassPoints(role)}
         />
       )}
+
+      {section === 'tasks' &&
+        (canRequestTasks(role) ? (
+          <TaskRequest />
+        ) : (
+          <section className="card" aria-label="Aufgaben ergänzen">
+            <h2 className="section-title no-margin">Aufgaben ergänzen</h2>
+            <p className="muted small">
+              Nur Lehrer können Vorgaben für neue Aufgaben senden.
+            </p>
+          </section>
+        ))}
 
       {section === 'lan' &&
         (lanStatus ? (

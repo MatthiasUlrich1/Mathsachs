@@ -6,6 +6,7 @@ import {
   canCreateExam,
   canEnterGradeCodes,
   canManageGradeCodes,
+  canRequestTasks,
   canSendClassPoints,
   canWriteExam,
   normalizeRole,
@@ -68,6 +69,11 @@ describe('user roles', () => {
     expect(canSendClassPoints('schueler')).toBe(true)
     expect(canCreateChallengeLater('lehrer')).toBe(true)
     expect(canCreateChallengeLater('eltern')).toBe(false)
+    expect(canRequestTasks('lehrer')).toBe(true)
+    expect(canRequestTasks('klassenlehrer')).toBe(false)
+    expect(canRequestTasks('eltern')).toBe(false)
+    expect(canRequestTasks('schueler')).toBe(false)
+    expect(canRequestTasks(undefined)).toBe(false)
   })
 
   it('treats legacy users with created codes as Eltern, never Lehrer', () => {

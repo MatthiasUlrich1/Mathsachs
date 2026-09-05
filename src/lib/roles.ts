@@ -43,6 +43,10 @@ export const canManageGradeCodes = (role?: unknown): boolean =>
 export const canEnterGradeCodes = (role?: unknown): boolean =>
   normalizeRole(role) === 'lehrer'
 
+/** Vorgaben für neue Aufgaben senden — nur Lehrer. */
+export const canRequestTasks = (role?: unknown): boolean =>
+  normalizeRole(role) === 'lehrer'
+
 /** Punkte an die aktive Klasse senden — nicht Klassenlehrer. */
 export const canSendClassPoints = (role?: unknown): boolean =>
   normalizeRole(role) !== 'klassenlehrer'
