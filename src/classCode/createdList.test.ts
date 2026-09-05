@@ -339,6 +339,7 @@ describe('created list + real storage', () => {
       activeCode: null,
       sendPoints: false,
     })
+    expect(getClassCodeSettings().deletedCodes?.map((row) => row.code)).toEqual(['9WATX7XC'])
   })
 
   it('refresh/prune on 404 clears the active collect-code and sendPoints', async () => {

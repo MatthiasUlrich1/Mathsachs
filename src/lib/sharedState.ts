@@ -55,7 +55,7 @@ export interface DeletedClassCode {
 export interface ClassCodeSettings {
   created: CreatedClassCode[]
   /** Tombstones so merge cannot resurrect a code this client just deleted. */
-  deletedCodes: DeletedClassCode[]
+  deletedCodes?: DeletedClassCode[]
   /** Only one collect-code at a time. */
   activeCode: string | null
   /** Opt-in: send newly earned points to `activeCode`. */

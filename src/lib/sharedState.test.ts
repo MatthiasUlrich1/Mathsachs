@@ -24,6 +24,7 @@ const store = require('../../electron/sharedStore.cjs') as {
   mergeSharedState: (base: unknown, incoming: unknown) => {
     classCodes: {
       created: Array<{ code: string; name: string; createdAt: number }>
+      deletedCodes?: Array<{ code: string; deletedAt: number }>
       activeCode: string | null
       sendPoints: boolean
     }
@@ -52,6 +53,12 @@ const store = require('../../electron/sharedStore.cjs') as {
           className: string
           points: number
         }>
+        classCodes?: {
+          created: Array<{ code: string; name: string; createdAt: number }>
+          deletedCodes?: Array<{ code: string; deletedAt: number }>
+          activeCode: string | null
+          sendPoints: boolean
+        }
       }
     >
     migratedLocalStorage: boolean
@@ -419,10 +426,10 @@ describe('mergeSharedState (CJS)', () => {
         },
       },
     )
-    expect(merged.records.Ada.classCodes.created.map((row) => row.code)).toEqual([
+    expect(merged.records.Ada.classCodes?.created.map((row) => row.code)).toEqual([
       'AAAA1111',
     ])
-    expect(merged.records.Ben.classCodes.created.map((row) => row.code)).toEqual([
+    expect(merged.records.Ben.classCodes?.created.map((row) => row.code)).toEqual([
       'BBBB2222',
     ])
     expect(merged.classCodes.created).toEqual([])

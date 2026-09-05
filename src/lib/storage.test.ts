@@ -17,7 +17,6 @@ import {
 } from './storage'
 import { CLASS_POINTS_API } from '../classCode/api'
 import {
-  CLASS_CODES_STORAGE_KEY,
   USERS_STORAGE_KEY,
   userRecordKey,
   type SharedState,
