@@ -9,6 +9,27 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.30] – 2026-09-05
+
+### Geändert
+
+- **Updates:** Eine neuere GitHub-Version gilt erst als verfügbar, wenn der
+  Installer für dieses System wirklich herunterladbar ist (Windows `.exe`,
+  macOS `.dmg`, Linux `.AppImage`/`.deb`). Fehlt die Datei noch — typisch
+  direkt nach dem Tag, solange **Build desktop installers** läuft — zeigt
+  die App keinen Download und keine 404-Meldung, sondern:
+
+  ```
+  Da kommt was neues!
+  Ein Update wird gerade erzeugt.
+  Bitte in 5 Minuten erneut prüfen.
+  ```
+
+  Unter **Einstellungen → Auf Updates prüfen** steht derselbe Text. Die
+  Desktop-App bietet **Update herunterladen** nur an, wenn zusätzlich
+  `latest.yml` / `latest-mac.yml` / `latest-linux.yml` auf dem Release
+  liegt.
+
 ## [0.1.29] – 2026-09-05
 
 ### Hinzugefügt
@@ -414,7 +435,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.29...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.30...HEAD
+[0.1.30]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.29...v0.1.30
 [0.1.29]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.28...v0.1.29
 [0.1.28]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.27...v0.1.28
 [0.1.27]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.26...v0.1.27

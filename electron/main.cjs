@@ -1,9 +1,9 @@
 const { app, BrowserWindow, ipcMain, shell } = require('electron')
 const path = require('node:path')
 const {
-  RELEASES_PAGE,
-  checkGithubUpdate,
   isNewerVersion,
+  probeGithubUpdate,
+  resolveDesktopUpdateCheck,
 } = require('./githubUpdate.cjs')
 const { startLanServer } = require('./lanServer.cjs')
 const { createFileStore } = require('./sharedStore.cjs')
@@ -140,6 +140,7 @@ function registerUpdateIpc() {
     const current = app.getVersion()
     let canAutoInstall = false
     let updaterInfo = null
+    let updaterError = null
     if (autoUpdater && app.isPackaged) {
       try {
         const result = await autoUpdater.checkForUpdates()
@@ -147,43 +148,29 @@ function registerUpdateIpc() {
         canAutoInstall = Boolean(
           updaterInfo && isNewerVersion(updaterInfo.version, current),
         )
-      } catch {
+      } catch (err) {
         canAutoInstall = false
+        updaterError = err
       }
     }
 
+    let github = null
     try {
-      const fromGithub = await checkGithubUpdate(
-        current,
-        process.platform,
+      github = await probeGithubUpdate(current, process.platform, {
         canAutoInstall,
-      )
-      if (fromGithub) return fromGithub
+        verifyUrls: true,
+      })
     } catch {
-      // Fall through to electron-updater metadata when GitHub API is blocked.
+      github = null
     }
 
-    if (
-      updaterInfo &&
-      isNewerVersion(updaterInfo.version, current)
-    ) {
-      const notes =
-        typeof updaterInfo.releaseNotes === 'string'
-          ? updaterInfo.releaseNotes
-          : ''
-      return {
-        available: true,
-        version: updaterInfo.version,
-        title: updaterInfo.releaseName || `Version ${updaterInfo.version}`,
-        notes,
-        htmlUrl: RELEASES_PAGE,
-        downloadUrl: RELEASES_PAGE,
-        downloadLabel: null,
-        canAutoInstall,
-      }
-    }
-
-    return { available: false, current }
+    return resolveDesktopUpdateCheck({
+      current,
+      github,
+      updaterInfo,
+      updaterError,
+      canAutoInstall,
+    })
   })
 
   ipcMain.handle('updates:download', async () => {

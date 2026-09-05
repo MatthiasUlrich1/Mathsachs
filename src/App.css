@@ -357,6 +357,13 @@ a.ghost.update-banner__link {
   margin-top: 8px;
 }
 
+.update-banner__building-copy {
+  margin: 4px 0 0;
+  white-space: pre-line;
+  font-size: 14px;
+  color: var(--muted);
+}
+
 .curriculum-list {
   list-style: none;
   display: flex;
@@ -455,6 +462,13 @@ a.ghost.update-banner__link {
   margin-top: 18px;
   padding-top: 16px;
   border-top: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.settings-updates__building {
+  white-space: pre-line;
+  margin-bottom: 0;
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.32);
 }
 
 .link {

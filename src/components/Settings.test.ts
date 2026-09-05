@@ -2,6 +2,7 @@ import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it, vi } from 'vitest'
 import {
+  MANUAL_CHECK_BUILDING,
   MANUAL_CHECK_CHECKING,
   MANUAL_CHECK_CURRENT,
   MANUAL_CHECK_FAILED,
@@ -97,7 +98,7 @@ describe('Settings hub update check', () => {
     expect(html).not.toContain('Themengebiet')
   })
 
-  it('shows checking, current and error texts under the hub button', () => {
+  it('shows checking, current, building and error texts under the hub button', () => {
     const checking = renderToStaticMarkup(
       createElement(Settings, {
         ...baseProps,
@@ -124,6 +125,22 @@ describe('Settings hub update check', () => {
     )
     expect(failed).toContain(MANUAL_CHECK_FAILED)
     expect(failed).toContain('notice--error')
+
+    const building = renderToStaticMarkup(
+      createElement(Settings, {
+        ...baseProps,
+        manualCheckStatus: 'building',
+      }),
+    )
+    expect(building).toContain('Da kommt was neues!')
+    expect(building).toContain('Ein Update wird gerade erzeugt.')
+    expect(building).toContain('Bitte in 5 Minuten erneut prüfen.')
+    expect(building).toContain(MANUAL_CHECK_BUILDING)
+    expect(building).toContain('settings-updates__building')
+    expect(building).not.toContain('notice--error')
+    expect(building).not.toContain('404')
+    expect(building).not.toContain(MANUAL_CHECK_CURRENT)
+    expect(building).not.toContain(MANUAL_CHECK_FAILED)
 
     const profileCurrent = renderToStaticMarkup(
       createElement(Settings, {

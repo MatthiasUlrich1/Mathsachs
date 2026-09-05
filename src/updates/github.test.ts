@@ -1,12 +1,16 @@
 import { describe, expect, it, vi } from 'vitest'
 import { GITHUB_RELEASES_LATEST_API } from './constants'
 import {
+  UPDATE_BUILDING_HINT,
   UPDATE_CHECK_FAILED,
   checkForAppUpdate,
   detectPlatform,
+  hasUpdaterYaml,
   pickPlatformAsset,
   probeAppUpdate,
+  releaseIsReady,
   releaseToUpdateInfo,
+  updaterYamlName,
 } from './github'
 import type { GithubRelease, GithubReleaseAsset } from './types'
 
@@ -130,6 +134,75 @@ describe('checkForAppUpdate', () => {
     ).toEqual({ status: 'current' })
   })
 
+  it('reports building when a newer tag has no matching installer yet', async () => {
+    const fetchImpl = vi.fn().mockResolvedValue(
+      jsonResponse({ ...newerRelease, assets: [] }),
+    )
+    expect(
+      await probeAppUpdate({
+        currentVersion: '0.1.3',
+        platform: 'win32',
+        fetchImpl,
+      }),
+    ).toEqual({ status: 'building', message: UPDATE_BUILDING_HINT })
+    expect(
+      await checkForAppUpdate({
+        currentVersion: '0.1.3',
+        platform: 'win32',
+        fetchImpl,
+      }),
+    ).toBeNull()
+  })
+
+  it('reports building when only the other platform’s installer is listed', async () => {
+    const fetchImpl = vi.fn().mockResolvedValue(
+      jsonResponse({
+        ...newerRelease,
+        assets: [
+          {
+            name: 'Mathsachs-0.1.4.dmg',
+            browser_download_url: 'https://example.com/app.dmg',
+          },
+        ],
+      }),
+    )
+    expect(
+      await probeAppUpdate({
+        currentVersion: '0.1.3',
+        platform: 'win32',
+        fetchImpl,
+      }),
+    ).toEqual({ status: 'building', message: UPDATE_BUILDING_HINT })
+  })
+
+  it('reports an update when the matching installer is listed', async () => {
+    const fetchImpl = vi.fn().mockResolvedValue(jsonResponse(newerRelease))
+    const probe = await probeAppUpdate({
+      currentVersion: '0.1.3',
+      platform: 'win32',
+      fetchImpl,
+    })
+    expect(probe.status).toBe('update')
+    if (probe.status === 'update') {
+      expect(probe.info.downloadUrl).toBe('https://example.com/setup.exe')
+    }
+  })
+
+  it('reports building when a listed installer URL returns 404', async () => {
+    const fetchImpl = vi.fn(async (url: string | URL | Request, init?: RequestInit) => {
+      if (init?.method === 'HEAD') return new Response(null, { status: 404 })
+      return jsonResponse(newerRelease)
+    })
+    expect(
+      await probeAppUpdate({
+        currentVersion: '0.1.3',
+        platform: 'win32',
+        fetchImpl,
+        verifyDownload: true,
+      }),
+    ).toEqual({ status: 'building', message: UPDATE_BUILDING_HINT })
+  })
+
   it('reports an error when the GitHub API is unavailable', async () => {
     const fetchImpl = vi.fn().mockResolvedValue(jsonResponse({ message: 'nope' }, 404))
     expect(
@@ -169,13 +242,70 @@ describe('releaseToUpdateInfo', () => {
     ).toBeNull()
   })
 
-  it('falls back to the releases page when no matching asset exists', () => {
-    const info = releaseToUpdateInfo(
-      { ...newerRelease, assets: [] },
-      '0.1.3',
-      'win32',
+  it('does not treat a newer release as available when no matching installer exists', () => {
+    expect(
+      releaseToUpdateInfo({ ...newerRelease, assets: [] }, '0.1.3', 'win32'),
+    ).toBeNull()
+    expect(
+      releaseToUpdateInfo(
+        {
+          ...newerRelease,
+          assets: [
+            {
+              name: 'latest.yml',
+              browser_download_url: 'https://example.com/latest.yml',
+            },
+          ],
+        },
+        '0.1.3',
+        'win32',
+      ),
+    ).toBeNull()
+  })
+
+  it('offers Download only when the platform installer is listed', () => {
+    const info = releaseToUpdateInfo(newerRelease, '0.1.3', 'win32')
+    expect(info).toMatchObject({
+      available: true,
+      downloadUrl: 'https://example.com/setup.exe',
+      downloadLabel: 'Mathsachs-Setup-0.1.4.exe',
+      canAutoInstall: false,
+    })
+  })
+
+  it('enables auto-install only when the updater YAML is listed too', () => {
+    const withYaml: GithubRelease = {
+      ...newerRelease,
+      assets: [
+        ...assets,
+        {
+          name: 'latest.yml',
+          browser_download_url: 'https://example.com/latest.yml',
+        },
+      ],
+    }
+    expect(releaseToUpdateInfo(withYaml, '0.1.3', 'win32', true)?.canAutoInstall).toBe(
+      true,
     )
-    expect(info?.downloadUrl).toBe(newerRelease.html_url)
-    expect(info?.downloadLabel).toBeNull()
+    expect(
+      releaseToUpdateInfo(newerRelease, '0.1.3', 'win32', true)?.canAutoInstall,
+    ).toBe(false)
+  })
+})
+
+describe('releaseIsReady / updater YAML', () => {
+  it('requires the platform installer and names the electron-updater YAML', () => {
+    expect(releaseIsReady(newerRelease, 'win32')).toBe(true)
+    expect(releaseIsReady({ ...newerRelease, assets: [] }, 'win32')).toBe(false)
+    expect(updaterYamlName('win32')).toBe('latest.yml')
+    expect(updaterYamlName('darwin')).toBe('latest-mac.yml')
+    expect(updaterYamlName('linux')).toBe('latest-linux.yml')
+    expect(hasUpdaterYaml(assets, 'win32')).toBe(false)
+    expect(
+      hasUpdaterYaml(
+        [...assets, { name: 'latest.yml', browser_download_url: 'https://x/latest.yml' }],
+        'win32',
+      ),
+    ).toBe(true)
   })
 })

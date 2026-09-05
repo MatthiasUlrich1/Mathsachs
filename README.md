@@ -93,17 +93,21 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.29**).
+(aktuelle Version **0.1.30**).
 
 Die App prüft beim Start und — solange sie geöffnet bleibt — einmal pro
 Kalendertag (**Europe/Berlin**) die öffentlichen
 [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
 auf eine neuere Version (ohne Token). Unter **Einstellungen** kannst
 du jederzeit mit **Auf Updates prüfen** nachschauen (die Tages-Sperre gilt
-nur für die automatische Prüfung). Ist ein Update da, erscheint ein
-schließbarer Hinweis mit Versionsnummer, Release-Notes und Download. Im
-Browser öffnet **Download** den passenden Installer bzw. die Releases-Seite;
-die installierte Desktop-App kann das Update herunterladen und einspielen.
+nur für die automatische Prüfung). Ein Update erscheint erst, wenn der
+Installer für dein System auf dem Release liegt. Fehlt die Datei noch
+(CI baut gerade), steht dort „Da kommt was neues!“ statt Download oder
+einer 404-Meldung. Ist alles bereit, erscheint ein schließbarer Hinweis
+mit Versionsnummer, Release-Notes und Download. Im Browser öffnet
+**Download** den passenden Installer; die installierte Desktop-App kann
+das Update herunterladen und einspielen, sobald auch `latest.yml`
+vorliegt.
 
 > Fachliche Grundlage: Sächsischer Lehrplan Gymnasium Mathematik. Die Aufgaben
 > werden zufällig generiert und haben stets eindeutige, überprüfbare Lösungen.

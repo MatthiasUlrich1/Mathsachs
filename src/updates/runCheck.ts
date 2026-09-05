@@ -1,16 +1,27 @@
-import { probeAppUpdate, UPDATE_CHECK_FAILED, type AppUpdateProbe } from './github'
+import {
+  probeAppUpdate,
+  UPDATE_BUILDING_HINT,
+  UPDATE_CHECK_FAILED,
+  type AppUpdateProbe,
+} from './github'
 import {
   shouldCheckForUpdate,
   writeLastUpdateCheckAt,
 } from './schedule'
-import type { UpdateCheckResult } from './types'
+import { isUpdateBuildingResult, type UpdateCheckResult } from './types'
 
-export type ManualCheckStatus = 'idle' | 'checking' | 'current' | 'error'
+export type ManualCheckStatus =
+  | 'idle'
+  | 'checking'
+  | 'current'
+  | 'building'
+  | 'error'
 export type UpdateCheckMode = 'scheduled' | 'forced'
 
 export const MANUAL_CHECK_CHECKING = 'Prüfung …'
 export const MANUAL_CHECK_CURRENT = 'Du hast die aktuelle Version.'
 export const MANUAL_CHECK_FAILED = UPDATE_CHECK_FAILED
+export const MANUAL_CHECK_BUILDING = UPDATE_BUILDING_HINT
 export const MANUAL_CHECK_LABEL = 'Auf Updates prüfen'
 
 export type ResolvedUpdateProbe = AppUpdateProbe & { currentVersion: string }
@@ -26,6 +37,7 @@ export function manualCheckHint(
 ): string | null {
   if (status === 'checking') return MANUAL_CHECK_CHECKING
   if (status === 'current') return MANUAL_CHECK_CURRENT
+  if (status === 'building') return MANUAL_CHECK_BUILDING
   if (status === 'error') return error?.trim() || MANUAL_CHECK_FAILED
   return null
 }
@@ -41,6 +53,13 @@ export async function probeForUpdate(options: {
       const result = await options.desktop.checkForUpdates()
       if (result.available) {
         return { status: 'update', info: result, currentVersion }
+      }
+      if (isUpdateBuildingResult(result)) {
+        return {
+          status: 'building',
+          message: result.message || MANUAL_CHECK_BUILDING,
+          currentVersion: result.current || currentVersion,
+        }
       }
       return {
         status: 'current',

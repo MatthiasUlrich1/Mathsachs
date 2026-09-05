@@ -168,7 +168,9 @@ export function Settings({
               className={
                 manualCheckStatus === 'error'
                   ? 'notice notice--error'
-                  : 'muted small'
+                  : manualCheckStatus === 'building'
+                    ? 'notice settings-updates__building'
+                    : 'muted small'
               }
               aria-live="polite"
             >

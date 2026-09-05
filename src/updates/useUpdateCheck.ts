@@ -18,6 +18,7 @@ export type { ManualCheckStatus }
 
 export function useUpdateCheck() {
   const [update, setUpdate] = useState<AppUpdateInfo | null>(null)
+  const [building, setBuilding] = useState(false)
   const [status, setStatus] = useState<UpdateUiStatus>('idle')
   const [progress, setProgress] = useState(0)
   const [error, setError] = useState<string | null>(null)
@@ -29,12 +30,21 @@ export function useUpdateCheck() {
     (probe: ResolvedUpdateProbe, hideIfIgnored: boolean) => {
       setCurrentVersion(probe.currentVersion)
       if (probe.status === 'update') {
+        setBuilding(false)
         if (!hideIfIgnored || !isUpdateHidden(probe.info.version)) {
           setUpdate(probe.info)
         }
         return
       }
-      if (probe.status === 'current') setUpdate(null)
+      if (probe.status === 'current') {
+        setUpdate(null)
+        setBuilding(false)
+        return
+      }
+      if (probe.status === 'building') {
+        setUpdate(null)
+        setBuilding(true)
+      }
     },
     [],
   )
@@ -115,6 +125,11 @@ export function useUpdateCheck() {
         setManualStatus('current')
         return
       }
+      if (result.probe.status === 'building') {
+        applyProbe(result.probe, false)
+        setManualStatus('building')
+        return
+      }
       setManualStatus('error')
       setManualError(result.probe.message)
     } catch {
@@ -128,6 +143,10 @@ export function useUpdateCheck() {
     dismissUpdateForSession(update.version)
     setUpdate(null)
   }, [update])
+
+  const dismissBuilding = useCallback(() => {
+    setBuilding(false)
+  }, [])
 
   const ignore = useCallback(() => {
     if (!update) return
@@ -161,6 +180,7 @@ export function useUpdateCheck() {
 
   return {
     update,
+    building,
     status,
     progress,
     error,
@@ -169,6 +189,7 @@ export function useUpdateCheck() {
     manualError,
     checkNow,
     dismiss,
+    dismissBuilding,
     ignore,
     download,
     install,

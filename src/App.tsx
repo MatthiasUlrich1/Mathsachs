@@ -41,6 +41,7 @@ import { SearchResults } from './components/SearchResults'
 import { ExamBuilder } from './components/ExamBuilder'
 import { ExamRunner } from './components/ExamRunner'
 import { UpdateBanner } from './components/UpdateBanner'
+import { UpdateBuildingBanner } from './components/UpdateBuildingBanner'
 import { LegalFooter } from './components/LegalFooter'
 import { Settings } from './components/Settings'
 import { parseExamHash } from './exam/examCode'
@@ -96,20 +97,23 @@ export default function App() {
     view.name === 'practice' ||
     view.name === 'worksheet' ||
     view.name === 'examRun'
-  const updateBanner =
-    updateCheck.update && !hideUpdateBanner ? (
-      <UpdateBanner
-        update={updateCheck.update}
-        status={updateCheck.status}
-        progress={updateCheck.progress}
-        error={updateCheck.error}
-        isDesktop={isDesktop}
-        onDownload={() => void updateCheck.download()}
-        onInstall={() => void updateCheck.install()}
-        onDismiss={updateCheck.dismiss}
-        onIgnore={updateCheck.ignore}
-      />
-    ) : null
+  const updateBanner = hideUpdateBanner
+    ? null
+    : updateCheck.update ? (
+        <UpdateBanner
+          update={updateCheck.update}
+          status={updateCheck.status}
+          progress={updateCheck.progress}
+          error={updateCheck.error}
+          isDesktop={isDesktop}
+          onDownload={() => void updateCheck.download()}
+          onInstall={() => void updateCheck.install()}
+          onDismiss={updateCheck.dismiss}
+          onIgnore={updateCheck.ignore}
+        />
+      ) : updateCheck.building ? (
+        <UpdateBuildingBanner onDismiss={updateCheck.dismissBuilding} />
+      ) : null
 
   useEffect(() => {
     if (activeUser) localStorage.setItem(ACTIVE_KEY, activeUser)

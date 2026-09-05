@@ -37,6 +37,49 @@ export function pickPlatformAsset(
   )
 }
 
+/** electron-updater metadata file published next to the installer. */
+export function updaterYamlName(platform: DesktopPlatform): string {
+  if (platform === 'win32') return 'latest.yml'
+  if (platform === 'darwin') return 'latest-mac.yml'
+  return 'latest-linux.yml'
+}
+
+export function hasUpdaterYaml(
+  assets: GithubReleaseAsset[],
+  platform: DesktopPlatform,
+): boolean {
+  const name = updaterYamlName(platform)
+  return assets.some((a) => a.name === name)
+}
+
+/** True when the platform installer is listed on the release. */
+export function releaseIsReady(
+  release: GithubRelease,
+  platform: DesktopPlatform,
+): boolean {
+  return pickPlatformAsset(release.assets ?? [], platform) != null
+}
+
+/**
+ * HEAD the installer URL. 404/410 → not ready. Network / CORS / 405 →
+ * treat the listed asset as enough (do not block the update).
+ */
+export async function urlIsDownloadable(
+  url: string,
+  fetchImpl: typeof fetch = fetch,
+): Promise<boolean> {
+  try {
+    const response = await fetchImpl(url, {
+      method: 'HEAD',
+      redirect: 'follow',
+    })
+    if (response.status === 404 || response.status === 410) return false
+    return true
+  } catch {
+    return true
+  }
+}
+
 export function releaseToUpdateInfo(
   release: GithubRelease,
   currentVersion: string,
@@ -47,23 +90,30 @@ export function releaseToUpdateInfo(
   const version = normalizeVersion(release.tag_name)
   if (!isNewerVersion(version, currentVersion)) return null
   const asset = pickPlatformAsset(release.assets ?? [], platform)
+  if (!asset) return null
   return {
     available: true,
     version,
     title: (release.name || `Version ${version}`).trim(),
     notes: (release.body || '').trim(),
     htmlUrl: release.html_url || GITHUB_RELEASES_PAGE,
-    downloadUrl: asset?.browser_download_url || release.html_url || GITHUB_RELEASES_PAGE,
-    downloadLabel: asset?.name ?? null,
-    canAutoInstall,
+    downloadUrl: asset.browser_download_url,
+    downloadLabel: asset.name,
+    canAutoInstall: Boolean(canAutoInstall && hasUpdaterYaml(release.assets ?? [], platform)),
   }
 }
 
 export const UPDATE_CHECK_FAILED = 'Prüfung fehlgeschlagen.'
 
+export const UPDATE_BUILDING_TITLE = 'Da kommt was neues!'
+export const UPDATE_BUILDING_BODY =
+  'Ein Update wird gerade erzeugt.\nBitte in 5 Minuten erneut prüfen.'
+export const UPDATE_BUILDING_HINT = `${UPDATE_BUILDING_TITLE}\n${UPDATE_BUILDING_BODY}`
+
 export type AppUpdateProbe =
   | { status: 'update'; info: AppUpdateInfo }
   | { status: 'current' }
+  | { status: 'building'; message: string }
   | { status: 'error'; message: string }
 
 export async function fetchLatestRelease(
@@ -86,10 +136,17 @@ export async function probeAppUpdate(options: {
   platform?: DesktopPlatform
   fetchImpl?: typeof fetch
   canAutoInstall?: boolean
+  verifyDownload?: boolean
 }): Promise<AppUpdateProbe> {
   try {
-    const release = await fetchLatestRelease(options.fetchImpl)
+    const fetchImpl = options.fetchImpl ?? fetch
+    const release = await fetchLatestRelease(fetchImpl)
     if (!release) return { status: 'error', message: UPDATE_CHECK_FAILED }
+    if (release.draft || release.prerelease) return { status: 'current' }
+    const version = normalizeVersion(release.tag_name)
+    if (!isNewerVersion(version, options.currentVersion)) {
+      return { status: 'current' }
+    }
     const platform = options.platform ?? detectPlatform()
     const info = releaseToUpdateInfo(
       release,
@@ -97,7 +154,11 @@ export async function probeAppUpdate(options: {
       platform,
       options.canAutoInstall ?? false,
     )
-    if (!info) return { status: 'current' }
+    if (!info) return { status: 'building', message: UPDATE_BUILDING_HINT }
+    if (options.verifyDownload) {
+      const ok = await urlIsDownloadable(info.downloadUrl, fetchImpl)
+      if (!ok) return { status: 'building', message: UPDATE_BUILDING_HINT }
+    }
     return { status: 'update', info }
   } catch {
     return { status: 'error', message: UPDATE_CHECK_FAILED }
@@ -109,6 +170,7 @@ export async function checkForAppUpdate(options: {
   platform?: DesktopPlatform
   fetchImpl?: typeof fetch
   canAutoInstall?: boolean
+  verifyDownload?: boolean
 }): Promise<AppUpdateInfo | null> {
   const probe = await probeAppUpdate(options)
   return probe.status === 'update' ? probe.info : null

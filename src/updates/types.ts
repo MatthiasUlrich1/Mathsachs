@@ -29,9 +29,24 @@ export interface AppUpdateInfo {
   canAutoInstall: boolean
 }
 
+/** GitHub already has a newer tag, but the installer is not downloadable yet. */
+export interface UpdateBuildingInfo {
+  available: false
+  building: true
+  current: string
+  message: string
+}
+
 export type UpdateCheckResult =
   | AppUpdateInfo
-  | { available: false; current: string }
+  | { available: false; current: string; building?: false }
+  | UpdateBuildingInfo
+
+export function isUpdateBuildingResult(
+  result: UpdateCheckResult,
+): result is UpdateBuildingInfo {
+  return !result.available && result.building === true
+}
 
 export type DesktopUpdateEvent =
   | { type: 'progress'; percent: number }

@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { LAST_UPDATE_CHECK_KEY } from './constants'
 import {
+  MANUAL_CHECK_BUILDING,
   MANUAL_CHECK_CHECKING,
   MANUAL_CHECK_CURRENT,
   MANUAL_CHECK_FAILED,
@@ -9,6 +10,7 @@ import {
   probeForUpdate,
   runUpdateCheck,
 } from './runCheck'
+import { UPDATE_BUILDING_HINT } from './github'
 import { readLastUpdateCheckAt } from './schedule'
 import type { AppUpdateInfo } from './types'
 
@@ -51,10 +53,12 @@ const sampleUpdate: AppUpdateInfo = {
 }
 
 describe('manualCheckHint', () => {
-  it('uses the German idle / checking / current / error texts', () => {
+  it('uses the German idle / checking / current / building / error texts', () => {
     expect(manualCheckHint('idle')).toBeNull()
     expect(manualCheckHint('checking')).toBe(MANUAL_CHECK_CHECKING)
     expect(manualCheckHint('current')).toBe(MANUAL_CHECK_CURRENT)
+    expect(manualCheckHint('building')).toBe(MANUAL_CHECK_BUILDING)
+    expect(manualCheckHint('building')).toBe(UPDATE_BUILDING_HINT)
     expect(manualCheckHint('error')).toBe(MANUAL_CHECK_FAILED)
     expect(manualCheckHint('error', 'Netzwerk nicht erreichbar.')).toBe(
       'Netzwerk nicht erreichbar.',
@@ -62,6 +66,9 @@ describe('manualCheckHint', () => {
     expect(MANUAL_CHECK_LABEL).toBe('Auf Updates prüfen')
     expect(MANUAL_CHECK_CHECKING).toBe('Prüfung …')
     expect(MANUAL_CHECK_CURRENT).toBe('Du hast die aktuelle Version.')
+    expect(MANUAL_CHECK_BUILDING).toBe(
+      'Da kommt was neues!\nEin Update wird gerade erzeugt.\nBitte in 5 Minuten erneut prüfen.',
+    )
   })
 })
 
@@ -182,6 +189,30 @@ describe('runUpdateCheck', () => {
     expect(readLastUpdateCheckAt(storage)).toBe(SAT_EVENING)
   })
 
+  it('does not record the timestamp while an update is still being built', async () => {
+    const probe = vi.fn().mockResolvedValue({
+      status: 'building',
+      message: MANUAL_CHECK_BUILDING,
+      currentVersion: '0.1.25',
+    })
+    const storage = memoryStorage()
+    storage.setItem(LAST_UPDATE_CHECK_KEY, String(SAT_MORNING))
+    const result = await runUpdateCheck({
+      mode: 'forced',
+      lastCheckAt: SAT_MORNING,
+      now: SAT_EVENING,
+      currentVersion: '0.1.25',
+      probe,
+      storage,
+    })
+    expect(result).toMatchObject({
+      action: 'checked',
+      recorded: false,
+      probe: { status: 'building' },
+    })
+    expect(readLastUpdateCheckAt(storage)).toBe(SAT_MORNING)
+  })
+
   it('does not record the timestamp when the forced check fails', async () => {
     const probe = vi.fn().mockResolvedValue({
       status: 'error',
@@ -228,6 +259,25 @@ describe('probeForUpdate', () => {
     expect(probe).toEqual({
       status: 'update',
       info: sampleUpdate,
+      currentVersion: '0.1.25',
+    })
+  })
+
+  it('maps a desktop building result to the pending hint', async () => {
+    const probe = await probeForUpdate({
+      currentVersion: '0.1.25',
+      desktop: {
+        checkForUpdates: async () => ({
+          available: false,
+          building: true,
+          current: '0.1.25',
+          message: MANUAL_CHECK_BUILDING,
+        }),
+      },
+    })
+    expect(probe).toEqual({
+      status: 'building',
+      message: MANUAL_CHECK_BUILDING,
       currentVersion: '0.1.25',
     })
   })
