@@ -425,6 +425,30 @@ a.ghost.update-banner__link {
   margin-top: 8px;
 }
 
+.curriculum-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  margin: 16px 0 14px;
+}
+
+.curriculum-filters .field {
+  flex: 1 1 160px;
+  margin-top: 0;
+}
+
+.curriculum-filters .answer-input__field {
+  width: 100%;
+}
+
+.curriculum-grade-group {
+  margin-top: 22px;
+}
+
+.curriculum-grade-group .class-codes__list-title {
+  margin-bottom: 12px;
+}
+
 /* Buttons */
 .primary {
   padding: 13px 18px;

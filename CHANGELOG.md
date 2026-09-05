@@ -9,6 +9,19 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.40] – 2026-09-05
+
+### Geändert
+
+- **Lehrpläne-Filter:** Unter **Einstellungen → Lehrpläne** filterst du den
+  Katalog nach **Bundesland** (z. B. Sachsen) und **Schulform**
+  (Gymnasium, Hauptschule, Realschule). Standard ist alle Schulformen
+  und Sachsen, solange nur dieses Land im Katalog steht.
+- **Klassenstufen-Überschrift:** Die Stufen stehen unter dem jeweiligen
+  installierten Paket, z. B. **Klassenstufen · Gymnasium Sachsen ·
+  Mathematik**. Mehrere installierte Lehrpläne bekommen je eine eigene
+  Gruppe statt einer gemeinsamen, namenlosen Liste.
+
 ## [0.1.39] – 2026-09-05
 
 ### Behoben
@@ -588,7 +601,8 @@ Fixes #11
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.39...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.40...HEAD
+[0.1.40]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.39...v0.1.40
 [0.1.39]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.38...v0.1.39
 [0.1.38]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.37...v0.1.38
 [0.1.37]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.36...v0.1.37
