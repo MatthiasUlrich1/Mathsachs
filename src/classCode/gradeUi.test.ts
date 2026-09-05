@@ -10,14 +10,26 @@ describe('classPageFlags', () => {
     expect(classPageFlags('schueler')).toEqual({
       canCreateClass: false,
       canManageGrades: false,
+      canEnterGrades: false,
+      canSendPoints: true,
     })
     expect(classPageFlags('eltern')).toEqual({
       canCreateClass: true,
       canManageGrades: false,
+      canEnterGrades: false,
+      canSendPoints: true,
+    })
+    expect(classPageFlags('klassenlehrer')).toEqual({
+      canCreateClass: false,
+      canManageGrades: false,
+      canEnterGrades: false,
+      canSendPoints: false,
     })
     expect(classPageFlags('lehrer')).toEqual({
       canCreateClass: true,
       canManageGrades: true,
+      canEnterGrades: true,
+      canSendPoints: true,
     })
     expect(classPageFlags(undefined).canManageGrades).toBe(false)
   })

@@ -263,10 +263,18 @@ describe('per-user class codes', () => {
     rememberCreatedGradeCode('gggg-1111', '6. Klasse')
 
     expect(getGradeCodeSettings('Ada').created.map((row) => row.code)).toEqual(['GGGG1111'])
-    expect(getGradeCodeSettings('Ben')).toEqual({ created: [], deletedCodes: [] })
+    expect(getGradeCodeSettings('Ben')).toEqual({
+      created: [],
+      known: [],
+      deletedCodes: [],
+    })
 
     setActiveStorageUser('Ben')
-    expect(getGradeCodeSettings()).toEqual({ created: [], deletedCodes: [] })
+    expect(getGradeCodeSettings()).toEqual({
+      created: [],
+      known: [],
+      deletedCodes: [],
+    })
     expect(getGradeCodeSettings('Ada').created[0]?.name).toBe('6. Klasse')
   })
 })

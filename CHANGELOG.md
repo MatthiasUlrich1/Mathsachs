@@ -9,6 +9,29 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.24] – 2026-09-05
+
+### Hinzugefügt
+
+- **Rolle Klassenlehrer:** Rechte wie Lehrer beim Mitmachen in der Klasse
+  (Code eintragen, Stufen-Wettbewerb über die eigene Klasse), aber **ohne**
+  Klausur erstellen/schreiben, ohne Klassencode oder Stufencode anzulegen
+  und ohne Punkte an die Klasse zu senden.
+- **Stufencode eintragen:** Andere **Lehrer** derselben Klassenstufe tragen
+  denselben Stufencode ein (wie bisher das Geheimnis). Danach sehen sie den
+  Wettbewerb aller Klassen (nur Namen und Summen) und können Klassencodes
+  dieser Stufe zuordnen oder neu anlegen. Neu erstellte Codes werden nicht
+  automatisch aktiv. Eltern legen weiter nur Klassencodes an, keine Stufe.
+- **Rollen-Rechte-Matrix** unter **Einstellungen → Profil**: Übersicht aller
+  Rechte je Rolle. **Challenge erstellen** ist für Lehrer und Klassenlehrer
+  als **geplant** eingetragen, noch nicht in der App.
+
+### Geändert
+
+- Benutzerwahl und Profil bieten vier Rollen: Schüler, Eltern, Klassenlehrer,
+  Lehrer. Profile ohne Rolle bleiben **Schüler**, mit eigenen Klassencodes
+  **Eltern** — nie automatisch Lehrer.
+
 ## [0.1.23] – 2026-09-05
 
 ### Geändert
@@ -338,7 +361,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.23...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.24...HEAD
+[0.1.24]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.23...v0.1.24
 [0.1.23]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.22...v0.1.23
 [0.1.22]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.21...v0.1.22
 [0.1.21]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.20...v0.1.21

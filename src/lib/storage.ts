@@ -30,7 +30,7 @@ import {
   type UserData,
   type UserRole,
 } from './sharedState'
-import { normalizeRole, roleForUser } from './roles'
+import { canSendClassPoints, normalizeRole, roleForUser } from './roles'
 import {
   summarizeClassTransfers,
   summarizeSessions,
@@ -416,7 +416,15 @@ export const setUserRole = (name: string, role: UserRole): UserRole => {
   const nextRole = normalizeRole(role)
   if (!trimmed) return nextRole
   const current = loadUser(trimmed)
-  saveUser({ ...current, role: nextRole })
+  const classCodes = current.classCodes
+    ? parseClassCodes(current.classCodes)
+    : undefined
+  if (classCodes && !canSendClassPoints(nextRole)) classCodes.sendPoints = false
+  saveUser({
+    ...current,
+    role: nextRole,
+    ...(classCodes ? { classCodes } : {}),
+  })
   return nextRole
 }
 
@@ -445,6 +453,7 @@ const plannedTransfer = (
   at: number,
 ): ClassTransferRecord | null => {
   if (!(points > 0)) return null
+  if (!canSendClassPoints(roleForUser(user))) return null
   const settings = parseClassCodes(user.classCodes)
   if (!settings.sendPoints || !settings.activeCode) return null
   return {
@@ -610,9 +619,12 @@ export const setActiveClassCode = (code: string | null): void => {
 
 export const setSendClassPoints = (send: boolean): void => {
   const current = getClassCodeSettings()
+  const user = activeUserName?.trim()
+  const role = user ? roleForUser(cache.records[user]) : 'schueler'
   persistClassCodes({
     ...current,
-    sendPoints: Boolean(send) && Boolean(current.activeCode),
+    sendPoints:
+      Boolean(send) && Boolean(current.activeCode) && canSendClassPoints(role),
   })
 }
 
@@ -651,7 +663,42 @@ export const rememberCreatedGradeCode = (code: string, name: string): void => {
     createdAt: Date.now(),
   })
   persistGradeCodes({
+    ...current,
     created,
+    known: (current.known ?? []).filter((row) => row.code !== normalized),
+    deletedCodes: (current.deletedCodes ?? []).filter((row) => row.code !== normalized),
+  })
+}
+
+/**
+ * Record a Stufencode this Lehrer entered (same secret as the owner).
+ * Stored as `known`, not `created` ownership.
+ */
+export const rememberJoinedGradeCode = (code: string, name: string): void => {
+  const normalized = normalizeClassCode(code)
+  if (!normalized) return
+  const current = getGradeCodeSettings()
+  const trimmed = name.trim().slice(0, 80)
+  if (current.created.some((row) => row.code === normalized)) {
+    persistGradeCodes({
+      ...current,
+      created: current.created.map((row) =>
+        row.code === normalized ? { ...row, name: trimmed || row.name } : row,
+      ),
+      deletedCodes: (current.deletedCodes ?? []).filter((row) => row.code !== normalized),
+    })
+    return
+  }
+  const prev = current.known?.find((row) => row.code === normalized)
+  const known = (current.known ?? []).filter((row) => row.code !== normalized)
+  known.push({
+    code: normalized,
+    name: trimmed,
+    createdAt: prev?.createdAt || Date.now(),
+  })
+  persistGradeCodes({
+    ...current,
+    known,
     deletedCodes: (current.deletedCodes ?? []).filter((row) => row.code !== normalized),
   })
 }

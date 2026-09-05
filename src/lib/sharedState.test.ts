@@ -61,9 +61,10 @@ const store = require('../../electron/sharedStore.cjs') as {
         }
         gradeCodes?: {
           created: Array<{ code: string; name: string; createdAt: number }>
+          known?: Array<{ code: string; name: string; createdAt: number }>
           deletedCodes?: Array<{ code: string; deletedAt: number }>
         }
-        role?: 'schueler' | 'eltern' | 'lehrer'
+        role?: 'schueler' | 'eltern' | 'klassenlehrer' | 'lehrer'
       }
     >
     migratedLocalStorage: boolean
@@ -362,6 +363,30 @@ describe('mergeSharedState (TypeScript)', () => {
       },
     )
     expect(keepBase.records.Ada.role).toBe('lehrer')
+
+    const keepKlassenlehrer = mergeSharedState(
+      {
+        schemaVersion: 1,
+        users: ['Kim'],
+        records: {
+          Kim: {
+            name: 'Kim',
+            created: 1,
+            stats: {},
+            sessions: [],
+            role: 'klassenlehrer',
+          },
+        },
+      },
+      {
+        schemaVersion: 1,
+        users: ['Kim'],
+        records: {
+          Kim: { name: 'Kim', created: 1, stats: {}, sessions: [] },
+        },
+      },
+    )
+    expect(keepKlassenlehrer.records.Kim.role).toBe('klassenlehrer')
   })
 
   it('preserves and unions Lehrer gradeCodes across WLAN merge', () => {
@@ -431,6 +456,52 @@ describe('mergeSharedState (TypeScript)', () => {
       'GGGG1111',
     ])
     expect(cjsMerged.records.Ben.gradeCodes).toBeUndefined()
+  })
+
+  it('preserves entered Stufencodes (known) across WLAN merge', () => {
+    const merged = mergeSharedState(
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            name: 'Ada',
+            created: 1,
+            stats: {},
+            sessions: [],
+            role: 'lehrer',
+            gradeCodes: {
+              created: [{ code: 'GGGG1111', name: '6. Klasse', createdAt: 10 }],
+              known: [{ code: 'JJJJ3333', name: '8. Klasse', createdAt: 12 }],
+            },
+          },
+        },
+      },
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            name: 'Ada',
+            created: 1,
+            stats: {},
+            sessions: [],
+            role: 'lehrer',
+            gradeCodes: {
+              known: [{ code: 'KKKK4444', name: '9. Klasse', createdAt: 14 }],
+            },
+          },
+        },
+      },
+    )
+    expect(merged.records.Ada.role).toBe('lehrer')
+    expect(merged.records.Ada.gradeCodes?.created.map((row) => row.code)).toEqual([
+      'GGGG1111',
+    ])
+    expect(merged.records.Ada.gradeCodes?.known?.map((row) => row.code)).toEqual([
+      'JJJJ3333',
+      'KKKK4444',
+    ])
   })
 
   it('honors grade-code tombstones so a deleted Stufe stays gone', () => {

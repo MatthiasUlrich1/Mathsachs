@@ -10,8 +10,11 @@ import {
   loadUser,
   recordSession,
   rememberCreatedClassCode,
+  rememberCreatedGradeCode,
   rememberJoinedClassCode,
+  rememberJoinedGradeCode,
   forgetCreatedClassCode,
+  getGradeCodeSettings,
   resetSharedStorageForTests,
   setActiveClassCode,
   setActiveStorageUser,
@@ -437,5 +440,60 @@ describe('storage adapter', () => {
       'BBBB2222',
       'AAAA1111',
     ])
+  })
+
+  it('records an entered Stufencode as known, not created', async () => {
+    const local = memoryStorage()
+    vi.stubGlobal('localStorage', local)
+    vi.stubGlobal('fetch', vi.fn(async () => htmlResponse()))
+    await initSharedStorage()
+    addUser('Ada', 'lehrer')
+    setActiveStorageUser('Ada')
+    rememberJoinedGradeCode('gggg-1111', '6. Klasse')
+
+    expect(getGradeCodeSettings()).toMatchObject({
+      created: [],
+      known: [expect.objectContaining({ code: 'GGGG1111', name: '6. Klasse' })],
+    })
+    rememberCreatedGradeCode('hhhh-2222', '7. Klasse')
+    expect(getGradeCodeSettings().created.map((row) => row.code)).toEqual(['HHHH2222'])
+    expect(getGradeCodeSettings().known?.map((row) => row.code)).toEqual(['GGGG1111'])
+  })
+
+  it('never sends class points for Klassenlehrer even if opt-in is set', async () => {
+    const local = memoryStorage()
+    vi.stubGlobal('localStorage', local)
+    const fetchMock = vi.fn(async () =>
+      jsonResponse({
+        code: 'ABCD2345',
+        name: '6a',
+        points: { today: 6, week: 6, month: 6, year: 6, total: 6 },
+      }),
+    )
+    vi.stubGlobal('fetch', fetchMock)
+    await initSharedStorage()
+    addUser('Kim', 'klassenlehrer')
+    setActiveStorageUser('Kim')
+    rememberJoinedClassCode('abcd-2345', 'Klasse 6a')
+    setSendClassPoints(true)
+    expect(getClassCodeSettings().sendPoints).toBe(false)
+
+    saveUser({
+      ...loadUser('Kim'),
+      classCodes: {
+        ...getClassCodeSettings(),
+        sendPoints: true,
+      },
+    })
+    recordSession('Kim', {
+      topicId: 'brueche',
+      topicTitle: 'Brüche',
+      areaTitle: 'Zahlen',
+      attempts: 3,
+      correct: 3,
+      points: 6,
+    })
+    expect(loadUser('Kim').classTransfers).toEqual([])
+    expect(fetchMock).not.toHaveBeenCalled()
   })
 })

@@ -60,10 +60,14 @@ export function ClassCodes({
   user,
   canCreateCodes = true,
   canManageGrades = false,
+  canEnterGrades = false,
+  canSendPoints = true,
 }: {
   user: string
   canCreateCodes?: boolean
   canManageGrades?: boolean
+  canEnterGrades?: boolean
+  canSendPoints?: boolean
 }) {
   const [className, setClassName] = useState('')
   const [enterCode, setEnterCode] = useState('')
@@ -444,25 +448,34 @@ export function ClassCodes({
         <p className="muted small">Kein Code aktiv — Punkte bleiben nur lokal.</p>
       )}
 
-      <label className="class-codes__optin">
-        <input
-          type="checkbox"
-          checked={settings.sendPoints}
-          disabled={!settings.activeCode}
-          onChange={(e) => setSendClassPoints(e.target.checked)}
-        />
-        <span>
-          Punkte an Klasse senden
-          <span className="muted small">
-            {' '}
-            — nur mit aktivem Code, freiwillig (Opt-in).
+      {canSendPoints ? (
+        <label className="class-codes__optin">
+          <input
+            type="checkbox"
+            checked={settings.sendPoints}
+            disabled={!settings.activeCode}
+            onChange={(e) => setSendClassPoints(e.target.checked)}
+          />
+          <span>
+            Punkte an Klasse senden
+            <span className="muted small">
+              {' '}
+              — nur mit aktivem Code, freiwillig (Opt-in).
+            </span>
           </span>
-        </span>
-      </label>
+        </label>
+      ) : (
+        <p className="muted small">
+          Als Klassenlehrer kannst du Teil der Klasse sein, aber keine Punkte
+          an die Klasse senden.
+        </p>
+      )}
 
       {linkedGrade && <GradeCompetition grade={linkedGrade} />}
 
-      {canManageGrades && <GradeCodes user={user} />}
+      {(canManageGrades || canEnterGrades) && (
+        <GradeCodes user={user} canCreateGrades={canManageGrades} />
+      )}
 
       {canCreateCodes && (
         <>

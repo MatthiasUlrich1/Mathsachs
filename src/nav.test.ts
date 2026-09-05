@@ -45,6 +45,16 @@ describe('top-bar navigation', () => {
     expect(topTabsForRole('lehrer')).toEqual(TOP_TABS)
   })
 
+  it('hides both Klausur tabs for Klassenlehrer', () => {
+    const labels = topTabsForRole('klassenlehrer').map((tab) => tab.label)
+    expect(labels).toEqual(['Themen', 'Punkteprotokoll', 'Einstellungen'])
+    expect(labels).not.toContain('Klausur erstellen')
+    expect(labels).not.toContain('Klausur schreiben')
+    expect(topTabsForView('browse', 'klassenlehrer')).toEqual(
+      topTabsForRole('klassenlehrer'),
+    )
+  })
+
   it('hides Klausur erstellen for Schüler, including a missing role', () => {
     const labels = topTabsForRole('schueler').map((tab) => tab.label)
     expect(labels).toEqual([
@@ -61,7 +71,7 @@ describe('top-bar navigation', () => {
   })
 
   it('keeps the settings top bar the same for every role', () => {
-    for (const role of ['schueler', 'eltern', 'lehrer'] as const) {
+    for (const role of ['schueler', 'eltern', 'klassenlehrer', 'lehrer'] as const) {
       expect(topTabsForView('settings', role).map((tab) => tab.label)).toEqual([
         'Zum Üben',
         'Einstellungen',

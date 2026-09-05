@@ -24,6 +24,7 @@ import {
 import {
   USER_ROLES,
   canCreateExam,
+  canWriteExam,
   roleLabel,
 } from './lib/roles'
 import { searchTopics, searchUnloadedHints } from './curriculum/search'
@@ -172,6 +173,9 @@ export default function App() {
     if (view.name === 'examBuild' && !canCreateExam(userRole)) {
       setView({ name: 'browse' })
     }
+    if (view.name === 'examRun' && !canWriteExam(userRole)) {
+      setView({ name: 'browse' })
+    }
   }, [view.name, userRole])
 
   // Schüler enter a code; persist the Worker class name so the badge
@@ -234,7 +238,10 @@ export default function App() {
     if (!activeUser) return
     setUserRole(activeUser, role)
     setUserRoleState(role)
-    if (view.name === 'examBuild' && !canCreateExam(role)) {
+    if (
+      (view.name === 'examBuild' && !canCreateExam(role)) ||
+      (view.name === 'examRun' && !canWriteExam(role))
+    ) {
       setView({ name: 'browse' })
     }
   }

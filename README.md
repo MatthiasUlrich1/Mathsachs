@@ -28,11 +28,31 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   gilt dieselbe Benutzerliste und derselbe Punktestand für den PC und für
   Tablets im WLAN. **Benutzer wechseln** steht unter **Einstellungen → Profil**.
 - **Benutzerrollen:** Beim Anlegen und unter **Einstellungen → Profil** wählst
-  du **Schüler**, **Eltern** oder **Lehrer**. Schüler sehen kein **Klausur
-  erstellen** und können keine Klassencodes anlegen. Nur **Lehrer** legen
-  einen **Klassenstufencode** an. Eltern erstellen weiter Klassencodes.
-  Fehlt die Rolle (ältere Profile), gilt **Schüler** — außer es gibt bereits
-  eigene Klassencodes, dann **Eltern**.
+  du **Schüler**, **Eltern**, **Klassenlehrer** oder **Lehrer**. Die
+  **Rollen-Rechte-Matrix** im Profil zeigt die Rechte. **Klassenlehrer**
+  können einer Klasse beitreten, aber keine Klausur erstellen/schreiben,
+  keine Codes anlegen und keine Punkte senden. Nur **Lehrer** legen eine
+  Stufe an oder tragen einen Stufencode ein. Eltern erstellen weiter
+  Klassencodes. Fehlt die Rolle (ältere Profile), gilt **Schüler** — außer
+  es gibt bereits eigene Klassencodes, dann **Eltern**. Niemand wird
+  automatisch **Lehrer**.
+
+  | Recht | Schüler | Eltern | Klassenlehrer | Lehrer |
+  | --- | --- | --- | --- | --- |
+  | Themen | ✓ | ✓ | ✓ | ✓ |
+  | Klausur schreiben | ✓ | ✓ | — | ✓ |
+  | Klausur erstellen | — | ✓ | — | ✓ |
+  | Punkteprotokoll | ✓ | ✓ | ✓ | ✓ |
+  | Einstellungen | ✓ | ✓ | ✓ | ✓ |
+  | Klassencode erstellen | — | ✓ | — | ✓ |
+  | Klassencode eintragen / Teil der Klasse | ✓ | ✓ | ✓ | ✓ |
+  | Punkte an Klasse senden | Opt-in | Opt-in | — | Opt-in |
+  | Stufencode erstellen | — | — | — | ✓ |
+  | Stufencode eintragen | — | — | — | ✓ |
+  | Klassen auf eingetragener Stufe anlegen | — | — | — | ✓ |
+  | Stufen-Wettbewerb sehen | über Klasse | über Klasse | über Klasse | Klasse oder Stufe |
+  | Challenge erstellen | — | — | geplant | geplant |
+
 - **Einstellungen**: Untermenü mit Lehrplänen, Klassencode, WLAN-Zugang
   (Desktop) und Profil (Rolle und Benutzerwechsel). In den Einstellungen zeigt
   die Leiste **Zum Üben** links neben **Einstellungen** (hervorgehoben) und
@@ -49,14 +69,16 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   [WLAN-Zugang](#wlan-zugang-desktop-app)).
 - **Klassencode (online)**: Anonyme Klassen-Punktesummen über einen
   Cloudflare Worker (siehe [Klassencode](#klassencode-online)).
-- **Klassenstufencode:** Lehrer ordnen Klassencodes einer Stufe zu. Alle
-  Klassen der Stufe sehen denselben Wettbewerb (Klassennamen + Summen, keine
-  Personendaten). Punkte gehen weiter nur an den eigenen Klassencode.
+- **Klassenstufencode:** Lehrer legen eine Stufe an oder tragen denselben
+  Stufencode ein (mehrere Fachlehrer einer Klassenstufe). Danach können sie
+  Klassencodes zuordnen und den Wettbewerb aller Klassen sehen (Namen +
+  Summen, keine Personendaten, keine fremden Klassencodes). Punkte gehen
+  weiter nur an den eigenen Klassencode.
 - **Erweiterbar** für weitere Klassenstufen und Fächer (Datenmodell mit
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.23**).
+(aktuelle Version **0.1.24**).
 
 Die App prüft beim Start und — solange sie geöffnet bleibt — einmal pro
 Kalendertag (**Europe/Berlin**) die öffentlichen
@@ -158,8 +180,9 @@ Unter **Einstellungen → Klasse**:
    eingeben. Mathsachs erzeugt den Code selbst — niemand braucht dafür den
    Cloudflare-Account. Der neue Code wird **nicht automatisch aktiv**; der
    bisherige Sammel-Code bleibt aktiv, bis du einen anderen aktivierst.
-   **Schüler** sehen diesen Bereich nicht; sie können nur einen bestehenden
-   Code eintragen und aktivieren.
+   **Schüler** und **Klassenlehrer** sehen diesen Bereich nicht; sie können
+   nur einen bestehenden Code eintragen und aktivieren. Klassenlehrer senden
+   keine Punkte.
 2. **Code eintragen** und als einzigen Sammel-Code **aktivieren**.
 3. Optional **Punkte an Klasse senden** (Opt-in). Nur mit aktivem Code und
    diesem Haken gehen neue Übungspunkte zusätzlich an die Klassensumme.
@@ -171,12 +194,14 @@ Unter **Einstellungen → Klasse**:
    aus der Liste (kein **Aktivieren** mehr).
    Schuljahr = 1. August bis 31. Juli, Zeitzone **Europe/Berlin**,
    **Serverzeit** des Workers.
-5. **Klassenstufe** (nur Lehrer): Namen eingeben, Stufencode erzeugen,
-   vorhandene Klassencodes zuordnen oder entfernen, Stufe löschen. Der
-   Stufencode ist das Lehrer-Geheimnis — nicht an Schüler weitergeben.
-6. **Stufen-Wettbewerb:** Sobald der aktive Klassencode einer Stufe
-   zugeordnet ist, zeigt die App die Stände aller Klassen dieser Stufe
-   (Einstellungen und Punkteprotokoll). Nur Klassennamen, keine Personen.
+5. **Klassenstufe** (nur Lehrer): Namen eingeben und Stufencode erzeugen
+   **oder** einen bestehenden Stufencode **eintragen**. Danach Klassencodes
+   zuordnen, neu auf dieser Stufe anlegen (nicht automatisch aktiv) oder
+   entfernen. Selbsterstellte Stufen können gelöscht werden. Der Stufencode
+   ist das Lehrer-Geheimnis — nicht an Schüler weitergeben.
+6. **Stufen-Wettbewerb:** Über den eigenen Klassencode oder (Lehrer) über
+   eine erstellte/eingetragene Stufe. Nur Klassennamen und Summen, keine
+   Personen und keine Mitgliedscodes anderer Klassen.
 
 Öffentliche API (Standard, überschreibbar in `src/classCode/api.ts`):
 

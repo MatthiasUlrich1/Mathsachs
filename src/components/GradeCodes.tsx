@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
   CLASS_API_STUB_MESSAGE,
+  createClass,
   createGrade,
   deleteGrade,
   getClass,
@@ -9,7 +10,11 @@ import {
   type ClassStats,
   type GradeSummary,
 } from '../classCode/api'
-import { formatClassCode, normalizeClassCode } from '../classCode/code'
+import {
+  formatClassCode,
+  isValidClassCode,
+  normalizeClassCode,
+} from '../classCode/code'
 import { assignedLocalClassCodes, GRADE_MANAGE_HINT, GRADE_PRIVACY_COPY } from '../classCode/gradeUi'
 import { publicIdFromCode } from '../classCode/publicId'
 import { standingErrorText } from '../classCode/createdList'
@@ -17,7 +22,9 @@ import {
   forgetCreatedGradeCode,
   getClassCodeSettings,
   getGradeCodeSettings,
+  rememberCreatedClassCode,
   rememberCreatedGradeCode,
+  rememberJoinedGradeCode,
   subscribeSharedStorage,
   type ClassCodeSettings,
   type CreatedClassCode,
@@ -35,14 +42,24 @@ const classLabel = (code: string, settings: ClassCodeSettings): string => {
   return created?.name ? `${created.name} (${formatClassCode(code)})` : formatClassCode(code)
 }
 
-export function GradeCodes({ user }: { user: string }) {
+export function GradeCodes({
+  user,
+  canCreateGrades = true,
+}: {
+  user: string
+  canCreateGrades?: boolean
+}) {
   const [gradeName, setGradeName] = useState('')
+  const [enterCode, setEnterCode] = useState('')
   const [creating, setCreating] = useState(false)
+  const [entering, setEntering] = useState(false)
   const [deleting, setDeleting] = useState<string | null>(null)
   const [assigning, setAssigning] = useState<string | null>(null)
+  const [creatingAssigned, setCreatingAssigned] = useState<string | null>(null)
   const [formError, setFormError] = useState<string | null>(null)
   const [copied, setCopied] = useState<string | null>(null)
   const [pick, setPick] = useState<Record<string, string>>({})
+  const [newClassName, setNewClassName] = useState<Record<string, string>>({})
   const [gradeSettings, setGradeSettings] = useState(() => getGradeCodeSettings(user))
   const [classSettings, setClassSettings] = useState(() => getClassCodeSettings(user))
   const [views, setViews] = useState<Record<string, GradeSummary | { error: string }>>({})
@@ -57,7 +74,16 @@ export function GradeCodes({ user }: { user: string }) {
     return subscribeSharedStorage(refresh)
   }, [user])
 
-  const createdKey = gradeSettings.created.map((row) => row.code).join('\n')
+  const createdRows = gradeSettings.created
+  const enteredRows = useMemo(() => {
+    const owned = new Set(createdRows.map((row) => row.code))
+    return (gradeSettings.known ?? []).filter((row) => !owned.has(row.code))
+  }, [createdRows, gradeSettings.known])
+  const allRows = useMemo(
+    () => [...createdRows, ...enteredRows],
+    [createdRows, enteredRows],
+  )
+  const createdKey = allRows.map((row) => row.code).join('\n')
   const localCodes = useMemo(() => assignableCodes(classSettings), [classSettings])
 
   const refreshViews = useCallback(async (rows: CreatedClassCode[]) => {
@@ -86,7 +112,10 @@ export function GradeCodes({ user }: { user: string }) {
 
   useEffect(() => {
     const handle = window.setTimeout(() => {
-      void refreshViews(getGradeCodeSettings(user).created)
+      const latest = getGradeCodeSettings(user)
+      const owned = new Set(latest.created.map((row) => row.code))
+      const entered = (latest.known ?? []).filter((row) => !owned.has(row.code))
+      void refreshViews([...latest.created, ...entered])
       void refreshClassStandings(assignableCodes(getClassCodeSettings(user)))
     }, 80)
     return () => window.clearTimeout(handle)
@@ -112,6 +141,48 @@ export function GradeCodes({ user }: { user: string }) {
     }
   }
 
+  const onEnter = async () => {
+    const code = normalizeClassCode(enterCode)
+    if (!isValidClassCode(code)) {
+      setFormError('Bitte einen gültigen Stufencode eingeben (8 Zeichen).')
+      return
+    }
+    setEntering(true)
+    setFormError(null)
+    try {
+      const summary = await getGrade(code)
+      rememberJoinedGradeCode(code, summary.name)
+      setViews((prev) => ({ ...prev, [code]: summary }))
+      setEnterCode('')
+    } catch (err) {
+      setFormError(standingErrorText(err))
+    } finally {
+      setEntering(false)
+    }
+  }
+
+  const onCreateAssignedClass = async (gradeCode: string) => {
+    const name = (newClassName[gradeCode] ?? '').trim()
+    if (!name) {
+      setFormError('Bitte einen Klassennamen eingeben.')
+      return
+    }
+    setCreatingAssigned(gradeCode)
+    setFormError(null)
+    try {
+      const stats = await createClass(name)
+      rememberCreatedClassCode(stats.code, stats.name)
+      const view = await updateGradeClasses(gradeCode, { add: [stats.code] })
+      setViews((prev) => ({ ...prev, [gradeCode]: view }))
+      setClassStandings((prev) => ({ ...prev, [stats.code]: stats }))
+      setNewClassName((prev) => ({ ...prev, [gradeCode]: '' }))
+    } catch (err) {
+      setFormError(standingErrorText(err) || CLASS_API_STUB_MESSAGE)
+    } finally {
+      setCreatingAssigned(null)
+    }
+  }
+
   const onAssign = async (gradeCode: string, classCode: string, mode: 'add' | 'remove') => {
     const normalized = normalizeClassCode(classCode)
     if (!normalized) return
@@ -132,19 +203,23 @@ export function GradeCodes({ user }: { user: string }) {
     }
   }
 
-  const onDelete = async (row: CreatedClassCode) => {
+  const onDelete = async (row: CreatedClassCode, owned: boolean) => {
     const label = row.name ? `„${row.name}“ (${formatClassCode(row.code)})` : formatClassCode(row.code)
     const ok = window.confirm(
-      `Klassenstufe ${label} wirklich löschen? Die Zuordnung der Klassen entfällt. Klassencodes und ihre Punkte bleiben.`,
+      owned
+        ? `Klassenstufe ${label} wirklich löschen? Die Zuordnung der Klassen entfällt. Klassencodes und ihre Punkte bleiben.`
+        : `Eingetragenen Stufencode ${label} lokal entfernen? Die Stufe bleibt für andere Lehrer erhalten.`,
     )
     if (!ok) return
     setDeleting(row.code)
     setFormError(null)
     forgetCreatedGradeCode(row.code)
-    try {
-      await deleteGrade(row.code)
-    } catch (err) {
-      setFormError(standingErrorText(err))
+    if (owned) {
+      try {
+        await deleteGrade(row.code)
+      } catch (err) {
+        setFormError(standingErrorText(err))
+      }
     }
     setViews((prev) => {
       const next = { ...prev }
@@ -164,6 +239,118 @@ export function GradeCodes({ user }: { user: string }) {
     }
   }
 
+  const renderGradeRow = (row: CreatedClassCode, owned: boolean) => {
+    const view = views[row.code]
+    const summary = view && !('error' in view) ? view : null
+    const rowError = view && 'error' in view ? view.error : null
+    const gradeId = summary?.id ?? publicIdFromCode(row.code)
+    const assigned = assignedLocalClassCodes(localCodes, gradeId, classStandings)
+    const available = localCodes.filter((code) => !assigned.includes(code))
+    return (
+      <li key={row.code} className="class-codes__row">
+        <div className="class-codes__row-top">
+          <strong>{row.name || 'Klassenstufe'}</strong>
+          <code>{formatClassCode(row.code)}</code>
+          {owned ? (
+            <span className="badge badge--ok">erstellt</span>
+          ) : (
+            <span className="badge">eingetragen</span>
+          )}
+          <button type="button" className="link" onClick={() => void copyCode(row.code)}>
+            {copied === row.code ? 'Kopiert' : 'Stufencode kopieren'}
+          </button>
+          <button
+            type="button"
+            className="link"
+            disabled={deleting === row.code}
+            onClick={() => void onDelete(row, owned)}
+          >
+            {deleting === row.code ? 'Lösche …' : owned ? 'Löschen' : 'Entfernen'}
+          </button>
+        </div>
+        <p className="muted small">
+          {owned
+            ? 'Stufencode nur für Lehrer. Schüler brauchen ihn nicht — sie sehen den Wettbewerb über ihren Klassencode.'
+            : 'Eingetragene Stufe: Wettbewerb aller Klassen und neue Klassencodes dieser Stufe. Keine Mitgliedscodes anderer Klassen.'}
+        </p>
+        {assigned.length > 0 && (
+          <ul className="grade-codes__assigned">
+            {assigned.map((code) => (
+              <li key={code}>
+                {classLabel(code, classSettings)}
+                <button
+                  type="button"
+                  className="link"
+                  disabled={assigning === `${row.code}:${code}:remove`}
+                  onClick={() => void onAssign(row.code, code, 'remove')}
+                >
+                  Entfernen
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+        {available.length > 0 && (
+          <div className="inline-form">
+            <select
+              className="answer-input__field"
+              value={pick[row.code] ?? ''}
+              onChange={(e) =>
+                setPick((prev) => ({ ...prev, [row.code]: e.target.value }))
+              }
+            >
+              <option value="">Klassencode zuordnen …</option>
+              {available.map((code) => (
+                <option key={code} value={code}>
+                  {classLabel(code, classSettings)}
+                </option>
+              ))}
+            </select>
+            <button
+              type="button"
+              className="ghost"
+              disabled={!pick[row.code] || assigning?.startsWith(`${row.code}:`)}
+              onClick={() => void onAssign(row.code, pick[row.code], 'add')}
+            >
+              Zuordnen
+            </button>
+          </div>
+        )}
+        <div className="inline-form">
+          <input
+            className="answer-input__field"
+            type="text"
+            maxLength={80}
+            placeholder="Neue Klasse auf dieser Stufe"
+            value={newClassName[row.code] ?? ''}
+            onChange={(e) =>
+              setNewClassName((prev) => ({ ...prev, [row.code]: e.target.value }))
+            }
+            onKeyDown={(e) => e.key === 'Enter' && void onCreateAssignedClass(row.code)}
+          />
+          <button
+            type="button"
+            className="ghost"
+            disabled={creatingAssigned === row.code}
+            onClick={() => void onCreateAssignedClass(row.code)}
+          >
+            {creatingAssigned === row.code ? '…' : 'Klasse anlegen'}
+          </button>
+        </div>
+        <p className="muted small">
+          Der neue Klassencode wird dieser Stufe zugeordnet und nicht automatisch aktiv.
+        </p>
+        {summary ? (
+          <GradeCompetition grade={summary} title="Stufen-Wettbewerb" />
+        ) : rowError ? (
+          <p className="muted small">{rowError}</p>
+        ) : (
+          <p className="muted small">Stände werden geladen …</p>
+        )}
+      </li>
+    )
+  }
+
   return (
     <div className="class-codes__block grade-codes">
       <div className="session__head">
@@ -172,23 +359,54 @@ export function GradeCodes({ user }: { user: string }) {
       <p className="muted small">{GRADE_PRIVACY_COPY}</p>
       <p className="muted small">{GRADE_MANAGE_HINT}</p>
 
-      <span className="field__label">Klassenstufencode erstellen</span>
+      {canCreateGrades && (
+        <>
+          <span className="field__label">Klassenstufencode erstellen</span>
+          <p className="muted small">
+            Name der Stufe, z. B. 6. Klasse. Mathsachs erzeugt den Stufencode.
+            Teile ihn nur mit anderen Lehrkräften — nicht mit der Klasse.
+          </p>
+          <div className="inline-form">
+            <input
+              className="answer-input__field"
+              type="text"
+              maxLength={80}
+              placeholder="z. B. 6. Klasse"
+              value={gradeName}
+              onChange={(e) => setGradeName(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && void onCreate()}
+            />
+            <button type="button" className="primary" disabled={creating} onClick={() => void onCreate()}>
+              {creating ? '…' : 'Stufe erstellen'}
+            </button>
+          </div>
+        </>
+      )}
+
+      <span className="field__label">Stufencode eintragen</span>
       <p className="muted small">
-        Name der Stufe, z. B. 6. Klasse. Mathsachs erzeugt den Stufencode.
-        Teile ihn nur mit anderen Lehrkräften — nicht mit der Klasse.
+        Denselben Stufencode wie die Kollegin oder der Kollege eintragen.
+        Danach siehst du den Wettbewerb aller Klassen und kannst Klassencodes
+        dieser Stufe zuordnen oder neu anlegen.
       </p>
       <div className="inline-form">
         <input
           className="answer-input__field"
           type="text"
-          maxLength={80}
-          placeholder="z. B. 6. Klasse"
-          value={gradeName}
-          onChange={(e) => setGradeName(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && void onCreate()}
+          autoCapitalize="characters"
+          spellCheck={false}
+          placeholder="z. B. ABCD-2345"
+          value={enterCode}
+          onChange={(e) => setEnterCode(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && void onEnter()}
         />
-        <button type="button" className="primary" disabled={creating} onClick={() => void onCreate()}>
-          {creating ? '…' : 'Stufe erstellen'}
+        <button
+          type="button"
+          className="ghost"
+          disabled={entering}
+          onClick={() => void onEnter()}
+        >
+          {entering ? '…' : 'Stufe eintragen'}
         </button>
       </div>
 
@@ -201,97 +419,22 @@ export function GradeCodes({ user }: { user: string }) {
       <div className="class-codes__list-head">
         <h3 className="class-codes__list-title">Eigene Stufen</h3>
       </div>
-      {gradeSettings.created.length === 0 ? (
+      {createdRows.length === 0 ? (
         <p className="muted">Noch keine Klassenstufe erstellt.</p>
       ) : (
         <ul className="class-codes__list">
-          {gradeSettings.created.map((row) => {
-            const view = views[row.code]
-            const summary = view && !('error' in view) ? view : null
-            const rowError = view && 'error' in view ? view.error : null
-            const gradeId = summary?.id ?? publicIdFromCode(row.code)
-            const assigned = assignedLocalClassCodes(localCodes, gradeId, classStandings)
-            const available = localCodes.filter((code) => !assigned.includes(code))
-            return (
-              <li key={row.code} className="class-codes__row">
-                <div className="class-codes__row-top">
-                  <strong>{row.name || 'Klassenstufe'}</strong>
-                  <code>{formatClassCode(row.code)}</code>
-                  <button type="button" className="link" onClick={() => void copyCode(row.code)}>
-                    {copied === row.code ? 'Kopiert' : 'Stufencode kopieren'}
-                  </button>
-                  <button
-                    type="button"
-                    className="link"
-                    disabled={deleting === row.code}
-                    onClick={() => void onDelete(row)}
-                  >
-                    {deleting === row.code ? 'Lösche …' : 'Löschen'}
-                  </button>
-                </div>
-                <p className="muted small">
-                  Stufencode nur für Lehrer. Schüler brauchen ihn nicht — sie
-                  sehen den Wettbewerb über ihren Klassencode.
-                </p>
-                {assigned.length > 0 && (
-                  <ul className="grade-codes__assigned">
-                    {assigned.map((code) => (
-                      <li key={code}>
-                        {classLabel(code, classSettings)}
-                        <button
-                          type="button"
-                          className="link"
-                          disabled={assigning === `${row.code}:${code}:remove`}
-                          onClick={() => void onAssign(row.code, code, 'remove')}
-                        >
-                          Entfernen
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                {available.length > 0 && (
-                  <div className="inline-form">
-                    <select
-                      className="answer-input__field"
-                      value={pick[row.code] ?? ''}
-                      onChange={(e) =>
-                        setPick((prev) => ({ ...prev, [row.code]: e.target.value }))
-                      }
-                    >
-                      <option value="">Klassencode zuordnen …</option>
-                      {available.map((code) => (
-                        <option key={code} value={code}>
-                          {classLabel(code, classSettings)}
-                        </option>
-                      ))}
-                    </select>
-                    <button
-                      type="button"
-                      className="ghost"
-                      disabled={!pick[row.code] || assigning?.startsWith(`${row.code}:`)}
-                      onClick={() => void onAssign(row.code, pick[row.code], 'add')}
-                    >
-                      Zuordnen
-                    </button>
-                  </div>
-                )}
-                {available.length === 0 && assigned.length === 0 && (
-                  <p className="muted small">
-                    Lege zuerst Klassencodes an oder trage einen ein, dann
-                    ordne sie dieser Stufe zu.
-                  </p>
-                )}
-                {summary ? (
-                  <GradeCompetition grade={summary} title="Stufen-Wettbewerb" />
-                ) : rowError ? (
-                  <p className="muted small">{rowError}</p>
-                ) : (
-                  <p className="muted small">Stände werden geladen …</p>
-                )}
-              </li>
-            )
-          })}
+          {createdRows.map((row) => renderGradeRow(row, true))}
+        </ul>
+      )}
+
+      <div className="class-codes__list-head">
+        <h3 className="class-codes__list-title">Eingetragene Stufen</h3>
+      </div>
+      {enteredRows.length === 0 ? (
+        <p className="muted">Noch keinen Stufencode eingetragen.</p>
+      ) : (
+        <ul className="class-codes__list">
+          {enteredRows.map((row) => renderGradeRow(row, false))}
         </ul>
       )}
     </div>

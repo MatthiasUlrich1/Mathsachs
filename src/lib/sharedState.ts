@@ -29,7 +29,7 @@ export interface ClassTransferRecord {
 }
 
 /** Schüler is the most restricted role. Missing roles normalize to Schüler. */
-export type UserRole = 'schueler' | 'eltern' | 'lehrer'
+export type UserRole = 'schueler' | 'eltern' | 'klassenlehrer' | 'lehrer'
 
 export interface UserData {
   name: string
@@ -39,7 +39,7 @@ export interface UserData {
   classTransfers?: ClassTransferRecord[]
   /** Created / active / send-points for this user only. */
   classCodes?: ClassCodeSettings
-  /** Lehrer-created Stufencodes (local ownership, not sent to the Worker). */
+  /** Lehrer Stufencodes: created locally and/or entered (not Worker ownership). */
   gradeCodes?: GradeCodeSettings
   /** Optional for older records; treat missing as Schüler (see roleForUser). */
   role?: UserRole
@@ -74,9 +74,14 @@ export interface ClassCodeSettings {
   sendPoints: boolean
 }
 
-/** Lehrer-created grade-level codes. Same tombstone rules as class codes. */
+/** Lehrer grade-level codes. Same tombstone rules as class codes. */
 export interface GradeCodeSettings {
   created: CreatedClassCode[]
+  /**
+   * Stufencodes this Lehrer entered (same secret-as-capability), not created.
+   * Kept off `created` so enter is not treated as ownership.
+   */
+  known?: CreatedClassCode[]
   deletedCodes?: DeletedClassCode[]
 }
 
@@ -121,6 +126,7 @@ export const emptyClassCodes = (): ClassCodeSettings => ({
 
 export const emptyGradeCodes = (): GradeCodeSettings => ({
   created: [],
+  known: [],
   deletedCodes: [],
 })
 
@@ -135,7 +141,10 @@ const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === 'object' && value !== null && !Array.isArray(value)
 
 const isUserRole = (value: unknown): value is UserRole =>
-  value === 'schueler' || value === 'eltern' || value === 'lehrer'
+  value === 'schueler' ||
+  value === 'eltern' ||
+  value === 'klassenlehrer' ||
+  value === 'lehrer'
 
 const isCreatedCode = (value: unknown): value is CreatedClassCode => {
   if (!isRecord(value)) return false
@@ -320,13 +329,20 @@ export const parseGradeCodes = (
   now: number = Date.now(),
 ): GradeCodeSettings => {
   if (!isRecord(raw)) return emptyGradeCodes()
-  const applied = applyClassCodeTombstones(
+  const deletedCodes = parseDeletedCodes(raw.deletedCodes, now)
+  const createdApplied = applyClassCodeTombstones(
     parseCreatedCodeList(raw.created),
-    parseDeletedCodes(raw.deletedCodes, now),
+    deletedCodes,
   )
+  const knownApplied = applyClassCodeTombstones(
+    parseCreatedCodeList(raw.known),
+    createdApplied.deletedCodes,
+  )
+  const createdCodes = new Set(createdApplied.created.map((row) => row.code))
   return {
-    created: applied.created,
-    deletedCodes: applied.deletedCodes,
+    created: createdApplied.created,
+    known: knownApplied.created.filter((row) => !createdCodes.has(row.code)),
+    deletedCodes: createdApplied.deletedCodes,
   }
 }
 
@@ -335,26 +351,10 @@ export const mergeGradeCodes = (
   incoming: GradeCodeSettings,
   now: number = Date.now(),
 ): GradeCodeSettings => {
-  const byCode = new Map<string, CreatedClassCode>()
-  for (const item of [...base.created, ...incoming.created]) {
-    const prev = byCode.get(item.code)
-    if (!prev) {
-      byCode.set(item.code, item)
-      continue
-    }
-    const createdAt = Math.min(
-      prev.createdAt || Number.POSITIVE_INFINITY,
-      item.createdAt || Number.POSITIVE_INFINITY,
-    )
-    byCode.set(item.code, {
-      code: item.code,
-      name: prev.name || item.name,
-      createdAt: Number.isFinite(createdAt) ? createdAt : 0,
-    })
-  }
   return parseGradeCodes(
     {
-      created: [...byCode.values()],
+      created: mergeNamedCodeList(base.created, incoming.created),
+      known: mergeNamedCodeList(base.known ?? [], incoming.known ?? []),
       deletedCodes: [...(base.deletedCodes ?? []), ...(incoming.deletedCodes ?? [])],
     },
     now,
@@ -371,6 +371,7 @@ export const withForgottenGradeCode = (
   return parseGradeCodes(
     {
       created: current.created.filter((row) => row.code !== normalized),
+      known: (current.known ?? []).filter((row) => row.code !== normalized),
       deletedCodes: [
         ...(current.deletedCodes ?? []),
         { code: normalized, deletedAt: now },
@@ -384,7 +385,11 @@ export const hasGradeCodeData = (
   settings: GradeCodeSettings | undefined | null,
 ): boolean => {
   if (!settings) return false
-  return settings.created.length > 0 || (settings.deletedCodes?.length ?? 0) > 0
+  return (
+    settings.created.length > 0 ||
+    (settings.known?.length ?? 0) > 0 ||
+    (settings.deletedCodes?.length ?? 0) > 0
+  )
 }
 
 export const pickClassCodeMigrationTarget = (

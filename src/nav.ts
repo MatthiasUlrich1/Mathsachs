@@ -1,4 +1,4 @@
-import { canCreateExam, type UserRole } from './lib/roles'
+import { canCreateExam, canWriteExam, type UserRole } from './lib/roles'
 
 /** Primary top-bar tabs after the settings reorganization. */
 export const TOP_TABS = [
@@ -20,10 +20,13 @@ export const SETTINGS_TOP_TABS = [
   { id: 'settings', label: 'Einstellungen' },
 ] as const
 
-/** Learning tabs for a role. Schüler never see Klausur erstellen. */
+/** Learning tabs for a role. Klassenlehrer see neither Klausur tab. */
 export function topTabsForRole(role?: UserRole | null) {
-  if (canCreateExam(role)) return TOP_TABS
-  return TOP_TABS.filter((tab) => tab.id !== 'examBuild')
+  return TOP_TABS.filter((tab) => {
+    if (tab.id === 'examBuild') return canCreateExam(role)
+    if (tab.id === 'examRun') return canWriteExam(role)
+    return true
+  })
 }
 
 export function topTabsForView(viewName: string, role?: UserRole | null) {

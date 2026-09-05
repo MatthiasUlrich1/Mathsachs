@@ -11,7 +11,7 @@ const path = require('node:path')
 const SCHEMA_VERSION = 1
 const MAX_SESSIONS = 200
 const MAX_TRANSFERS = 200
-const USER_ROLES = new Set(['schueler', 'eltern', 'lehrer'])
+const USER_ROLES = new Set(['schueler', 'eltern', 'klassenlehrer', 'lehrer'])
 const DELETED_CLASS_CODE_TTL_MS = 30 * 24 * 60 * 60 * 1000
 const MAX_DELETED_CLASS_CODES = 200
 const USERS_KEY = 'mathsachs.users.v1'
@@ -31,6 +31,7 @@ function emptyClassCodes() {
 function emptyGradeCodes() {
   return {
     created: [],
+    known: [],
     deletedCodes: [],
   }
 }
@@ -300,36 +301,33 @@ function normalizeGradeCodes(raw, now) {
     seen.add(row.code)
     created.push(row)
   }
-  const applied = applyClassCodeTombstones(
-    created,
-    pruneDeletedCodes(src.deletedCodes, now || Date.now()),
-  )
+  const known = []
+  const knownSeen = new Set()
+  const knownList = Array.isArray(src.known) ? src.known : []
+  for (const item of knownList) {
+    const row = normalizeCreatedCode(item)
+    if (!row || knownSeen.has(row.code)) continue
+    knownSeen.add(row.code)
+    known.push(row)
+  }
+  const deletedCodes = pruneDeletedCodes(src.deletedCodes, now || Date.now())
+  const createdApplied = applyClassCodeTombstones(created, deletedCodes)
+  const knownApplied = applyClassCodeTombstones(known, createdApplied.deletedCodes)
+  const createdCodes = new Set(createdApplied.created.map((row) => row.code))
   return {
-    created: applied.created,
-    deletedCodes: applied.deletedCodes,
+    created: createdApplied.created,
+    known: knownApplied.created.filter((row) => !createdCodes.has(row.code)),
+    deletedCodes: createdApplied.deletedCodes,
   }
 }
 
 function mergeGradeCodes(base, incoming, now) {
-  const byCode = new Map()
   const left = base || emptyGradeCodes()
   const right = incoming || emptyGradeCodes()
-  for (const item of [...left.created, ...right.created]) {
-    const prev = byCode.get(item.code)
-    if (!prev) {
-      byCode.set(item.code, item)
-      continue
-    }
-    const createdAt = Math.min(prev.createdAt || Infinity, item.createdAt || Infinity)
-    byCode.set(item.code, {
-      code: item.code,
-      name: prev.name || item.name,
-      createdAt: Number.isFinite(createdAt) ? createdAt : 0,
-    })
-  }
   return normalizeGradeCodes(
     {
-      created: [...byCode.values()],
+      created: mergeNamedCodeList(left.created, right.created),
+      known: mergeNamedCodeList(left.known || [], right.known || []),
       deletedCodes: [...(left.deletedCodes || []), ...(right.deletedCodes || [])],
     },
     now || Date.now(),
@@ -340,6 +338,7 @@ function hasGradeCodeData(settings) {
   if (!settings) return false
   return (
     settings.created.length > 0 ||
+    (settings.known && settings.known.length > 0) ||
     (settings.deletedCodes && settings.deletedCodes.length > 0)
   )
 }

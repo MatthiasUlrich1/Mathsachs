@@ -1,6 +1,7 @@
 import { CurriculumSetup } from './CurriculumSetup'
 import { ClassCodes } from './ClassCodes'
 import { LanAccessCard } from './LanAccessCard'
+import { RoleRightsMatrix } from './RoleRightsMatrix'
 import {
   SETTINGS_SECTIONS,
   type SettingsSectionId,
@@ -8,7 +9,9 @@ import {
 import {
   USER_ROLES,
   canCreateClassCodes,
+  canEnterGradeCodes,
   canManageGradeCodes,
+  canSendClassPoints,
   roleLabel,
   type UserRole,
 } from '../lib/roles'
@@ -18,7 +21,7 @@ const SECTION_HINTS: Record<SettingsSectionId, string> = {
   curricula: 'Klassenstufen laden und entfernen',
   class: 'Klassencode erstellen, eintragen oder teilen',
   lan: 'Tablets im selben WLAN verbinden',
-  profile: 'Rolle ändern oder Benutzer wechseln',
+  profile: 'Rolle, Rechte und Benutzerwechsel',
 }
 
 interface Props {
@@ -52,7 +55,7 @@ export function Settings({
 }: Props) {
   const lanAvailable = Boolean(lanStatus)
   const sectionHint = (id: SettingsSectionId) => {
-    if (id === 'class' && canManageGradeCodes(role)) {
+    if (id === 'class' && (canManageGradeCodes(role) || canEnterGradeCodes(role))) {
       return 'Klassencode und Klassenstufe'
     }
     if (id === 'class' && !canCreateClassCodes(role)) {
@@ -123,6 +126,8 @@ export function Settings({
           user={user}
           canCreateCodes={canCreateClassCodes(role)}
           canManageGrades={canManageGradeCodes(role)}
+          canEnterGrades={canEnterGradeCodes(role)}
+          canSendPoints={canSendClassPoints(role)}
         />
       )}
 
@@ -141,45 +146,48 @@ export function Settings({
         ))}
 
       {section === 'profile' && (
-        <section className="card" aria-label="Profil">
-          <div className="session__head">
-            <div>
-              <h2 className="section-title no-margin">Profil</h2>
-              <p className="muted small">
-                Angemeldet als <strong>{user}</strong>
-                {` · ${roleLabel(role)}`}
-                {classLabel ? ` · ${classLabel}` : ''}. Die Rolle gilt für die
-                Reiter und für Klassencodes. Benutzer wechseln führt zur
-                Auswahl wie beim Start („Wer übt heute?“).
-              </p>
+        <>
+          <section className="card" aria-label="Profil">
+            <div className="session__head">
+              <div>
+                <h2 className="section-title no-margin">Profil</h2>
+                <p className="muted small">
+                  Angemeldet als <strong>{user}</strong>
+                  {` · ${roleLabel(role)}`}
+                  {classLabel ? ` · ${classLabel}` : ''}. Die Rolle gilt für die
+                  Reiter und für Klassencodes. Benutzer wechseln führt zur
+                  Auswahl wie beim Start („Wer übt heute?“).
+                </p>
+              </div>
             </div>
-          </div>
-          <fieldset className="role-fieldset">
-            <legend className="field__label">Rolle</legend>
-            <div className="role-options">
-              {USER_ROLES.map((entry) => (
-                <label
-                  key={entry.id}
-                  className={`role-option ${
-                    role === entry.id ? 'role-option--active' : ''
-                  }`}
-                >
-                  <input
-                    type="radio"
-                    name="profile-role"
-                    value={entry.id}
-                    checked={role === entry.id}
-                    onChange={() => onChangeRole(entry.id)}
-                  />
-                  {entry.label}
-                </label>
-              ))}
-            </div>
-          </fieldset>
-          <button type="button" className="ghost" onClick={onSwitchUser}>
-            Benutzer wechseln
-          </button>
-        </section>
+            <fieldset className="role-fieldset">
+              <legend className="field__label">Rolle</legend>
+              <div className="role-options">
+                {USER_ROLES.map((entry) => (
+                  <label
+                    key={entry.id}
+                    className={`role-option ${
+                      role === entry.id ? 'role-option--active' : ''
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="profile-role"
+                      value={entry.id}
+                      checked={role === entry.id}
+                      onChange={() => onChangeRole(entry.id)}
+                    />
+                    {entry.label}
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+            <button type="button" className="ghost" onClick={onSwitchUser}>
+              Benutzer wechseln
+            </button>
+          </section>
+          <RoleRightsMatrix />
+        </>
       )}
     </div>
   )
