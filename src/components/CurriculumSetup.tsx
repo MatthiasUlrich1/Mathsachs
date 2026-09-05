@@ -5,10 +5,9 @@ interface Props {
   loadedIds: string[]
   onLoad: (id: string) => Promise<void>
   onRemove: (id: string) => void
-  onExit: () => void
 }
 
-export function CurriculumSetup({ loadedIds, onLoad, onRemove, onExit }: Props) {
+export function CurriculumSetup({ loadedIds, onLoad, onRemove }: Props) {
   const [busyId, setBusyId] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
 
@@ -36,9 +35,6 @@ export function CurriculumSetup({ loadedIds, onLoad, onRemove, onExit }: Props) 
             beim Laden nachgeladen und danach im Themen-Browser auswählbar.
           </p>
         </div>
-        <button type="button" className="link" onClick={onExit}>
-          Zu den Themen
-        </button>
       </div>
 
       {nothingLoaded && (

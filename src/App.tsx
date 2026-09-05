@@ -30,7 +30,7 @@ import { Settings } from './components/Settings'
 import { parseExamHash } from './exam/examCode'
 import { useUpdateCheck } from './updates/useUpdateCheck'
 import { primaryLanOrigin, useLanStatus } from './lan/useLanStatus'
-import { TOP_TABS, type TopTabId } from './nav'
+import { TOP_TABS, type SettingsSectionId, type TopTabId } from './nav'
 
 const ACTIVE_KEY = 'mathsachs.activeUser.v1'
 
@@ -40,7 +40,7 @@ interface LoadedGrade {
 }
 
 type View =
-  | { name: TopTabId }
+  | { name: TopTabId; section?: SettingsSectionId }
   | { name: 'practice'; topic: Topic; areaTitle: string; gradeTitle: string }
   | { name: 'worksheet'; topic: Topic; areaTitle: string; gradeTitle: string }
 
@@ -321,7 +321,9 @@ export default function App() {
               <button
                 type="button"
                 className="primary setup-cta"
-                onClick={() => setView({ name: 'settings' })}
+                onClick={() =>
+                  setView({ name: 'settings', section: 'curricula' })
+                }
               >
                 Zu den Lehrplänen
               </button>
@@ -366,7 +368,9 @@ export default function App() {
                   hints={searchHints}
                   onPractice={openPractice}
                   onWorksheet={openWorksheet}
-                  onGoToSetup={() => setView({ name: 'settings' })}
+                  onGoToSetup={() =>
+                    setView({ name: 'settings', section: 'curricula' })
+                  }
                 />
               ) : (
                 <>
@@ -413,7 +417,10 @@ export default function App() {
           loadedIds={loaded.map((l) => l.moduleId)}
           onLoad={loadCurriculum}
           onRemove={removeCurriculum}
-          onExitToTopics={() => setView({ name: 'browse' })}
+          section={view.section}
+          onOpenSection={(id) => setView({ name: 'settings', section: id })}
+          onBack={() => setView({ name: 'settings' })}
+          onExit={() => setView({ name: 'browse' })}
           user={activeUser}
           classLabel={classLabel}
           lanStatus={lanStatus}

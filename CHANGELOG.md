@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.17] – 2026-09-05
+
+### Geändert
+
+- **Einstellungen-Untermenü:** Die Seite zeigt zuerst eine Liste (Lehrpläne,
+  Klasse, WLAN-Zugang, Profil). Ein Eintrag öffnet nur diesen Bereich;
+  **Zurück** führt zur Liste. **Zum Üben** verlässt die Einstellungen und
+  öffnet die Themen. WLAN-Zugang bleibt auf dem Desktop aktiv; im Browser
+  ein Hinweis. „Zu den Lehrplänen“ öffnet direkt den Lehrplan-Bereich.
+
 ## [0.1.16] – 2026-09-05
 
 ### Geändert
@@ -245,7 +255,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.16...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.17...HEAD
+[0.1.17]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.16...v0.1.17
 [0.1.16]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.15...v0.1.16
 [0.1.15]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.14...v0.1.15
 [0.1.14]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.13...v0.1.14

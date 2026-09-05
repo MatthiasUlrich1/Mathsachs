@@ -137,6 +137,72 @@
   margin-top: 14px;
 }
 
+/* Settings hub / submenu */
+.settings-menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 4px 0 0;
+  padding: 0;
+}
+
+.settings-menu__btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: var(--text);
+  text-align: left;
+}
+
+.settings-menu__btn:hover {
+  border-color: var(--accent);
+  background: rgba(99, 102, 241, 0.08);
+}
+
+.settings-menu__text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.settings-menu__label {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.settings-menu__hint {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.settings-menu__chevron {
+  flex-shrink: 0;
+  color: var(--accent-2);
+  font-size: 22px;
+  line-height: 1;
+}
+
+.settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.settings-section__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
 /* Grade selector tabs (Themen browser) */
 .grade-tabs {
   display: flex;

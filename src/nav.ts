@@ -1,4 +1,4 @@
-/** Primary top-bar tabs after the settings reorganization (v0.1.16). */
+/** Primary top-bar tabs after the settings reorganization. */
 export const TOP_TABS = [
   { id: 'browse', label: 'Themen' },
   { id: 'examBuild', label: 'Klausur erstellen' },
@@ -9,10 +9,12 @@ export const TOP_TABS = [
 
 export type TopTabId = (typeof TOP_TABS)[number]['id']
 
-/** Section headings on the Einstellungen page (no nested router). */
+/** Settings hub entries — one submenu item per setting. */
 export const SETTINGS_SECTIONS = [
-  'Lehrpläne',
-  'Klasse',
-  'WLAN-Zugang',
-  'Profil',
+  { id: 'curricula', label: 'Lehrpläne' },
+  { id: 'class', label: 'Klasse' },
+  { id: 'lan', label: 'WLAN-Zugang' },
+  { id: 'profile', label: 'Profil' },
 ] as const
+
+export type SettingsSectionId = (typeof SETTINGS_SECTIONS)[number]['id']

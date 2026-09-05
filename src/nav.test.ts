@@ -16,7 +16,18 @@ describe('top-bar navigation', () => {
     expect(labels).not.toContain('wechseln')
   })
 
-  it('groups former top-level items as settings sections', () => {
-    expect(SETTINGS_SECTIONS).toEqual(['Lehrpläne', 'Klasse', 'WLAN-Zugang', 'Profil'])
+  it('lists former top-level items as a settings submenu', () => {
+    expect(SETTINGS_SECTIONS.map((item) => item.label)).toEqual([
+      'Lehrpläne',
+      'Klasse',
+      'WLAN-Zugang',
+      'Profil',
+    ])
+    expect(SETTINGS_SECTIONS.map((item) => item.id)).toEqual([
+      'curricula',
+      'class',
+      'lan',
+      'profile',
+    ])
   })
 })

@@ -27,8 +27,9 @@ verteilen. Gebaut mit React, TypeScript und Vite.
 - **Mehrere Benutzer**: Punkte werden pro Name gespeichert. In der Desktop-App
   gilt dieselbe Benutzerliste und derselbe Punktestand für den PC und für
   Tablets im WLAN. **Benutzer wechseln** steht unter **Einstellungen → Profil**.
-- **Einstellungen**: Lehrpläne laden, Klassencode, WLAN-Zugang (Desktop) und
-  Profil. Die Leiste bleibt bei **Themen**, **Klausur erstellen**,
+- **Einstellungen**: Untermenü mit Lehrplänen, Klassencode, WLAN-Zugang
+  (Desktop) und Profil. **Zurück** zur Liste, **Zum Üben** zu den Themen.
+  Die Leiste bleibt bei **Themen**, **Klausur erstellen**,
   **Klausur schreiben**, **Punkteprotokoll** und **Einstellungen**.
 - **Punkteprotokoll**: Auswertung je Thema in Prozent und Gesamtpunktzahl,
   plus Tag / Woche / Monat / Schuljahr aus den lokalen Übungen und den an
@@ -45,7 +46,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.16**).
+(aktuelle Version **0.1.17**).
 
 Die App prüft beim Start die öffentlichen
 [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
@@ -106,7 +107,7 @@ Internet-Host.
 
 1. Mathsachs auf dem Windows-, macOS- oder Linux-Rechner starten und geöffnet
    lassen.
-2. Unter **Einstellungen** die Karte **WLAN-Zugang** ansehen: dort stehen die Adresse
+2. Unter **Einstellungen → WLAN-Zugang** die Adresse ansehen: dort stehen die Adresse
    (typisch `http://192.168.x.x:4747/`) und ein QR-Code.
 3. Auf dem Tablet/Handy im Browser diese Adresse öffnen oder den QR-Code
    scannen. HTTP, nicht HTTPS.
