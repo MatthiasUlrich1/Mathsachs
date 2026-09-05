@@ -84,8 +84,10 @@ describe('class API client', () => {
         })
       }
       if (url.endsWith('/classes/ABCD2345/points') && method === 'POST') {
-        const body = JSON.parse(String(init?.body)) as { delta: number }
+        const body = JSON.parse(String(init?.body)) as { delta: number; topicId?: string }
         expect(body.delta).toBe(4)
+        expect(body).not.toHaveProperty('name')
+        expect(body).not.toHaveProperty('userId')
         return jsonResponse({
           code: 'ABCD2345',
           name: 'Klasse 6a',

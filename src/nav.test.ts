@@ -13,6 +13,7 @@ describe('top-bar navigation', () => {
     const labels: string[] = TOP_TABS.map((tab) => tab.label)
     expect(labels).toEqual([
       'Themen',
+      'Challenge',
       'Klausur erstellen',
       'Klausur schreiben',
       'Punkteprotokoll',
@@ -30,6 +31,7 @@ describe('top-bar navigation', () => {
     expect(labels).not.toContain('Klausur erstellen')
     expect(labels).not.toContain('Klausur schreiben')
     expect(labels).not.toContain('Punkteprotokoll')
+    expect(labels).not.toContain('Challenge')
     expect(SETTINGS_TOP_TABS[0]).toEqual({ id: 'browse', label: 'Zum Üben' })
     expect(SETTINGS_TOP_TABS[1]).toEqual({
       id: 'settings',
@@ -48,7 +50,7 @@ describe('top-bar navigation', () => {
 
   it('hides both Klausur tabs for Klassenlehrer', () => {
     const labels = topTabsForRole('klassenlehrer').map((tab) => tab.label)
-    expect(labels).toEqual(['Themen', 'Punkteprotokoll', 'Einstellungen'])
+    expect(labels).toEqual(['Themen', 'Challenge', 'Punkteprotokoll', 'Einstellungen'])
     expect(labels).not.toContain('Klausur erstellen')
     expect(labels).not.toContain('Klausur schreiben')
     expect(topTabsForView('browse', 'klassenlehrer')).toEqual(
@@ -60,6 +62,7 @@ describe('top-bar navigation', () => {
     const labels = topTabsForRole('schueler').map((tab) => tab.label)
     expect(labels).toEqual([
       'Themen',
+      'Challenge',
       'Klausur schreiben',
       'Punkteprotokoll',
       'Einstellungen',

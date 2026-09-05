@@ -81,14 +81,24 @@ export const ROLE_RIGHT_ROWS: RightRow[] = [
     marks: { schueler: 'no', eltern: 'no', klassenlehrer: 'no', lehrer: 'yes' },
   },
   {
-    id: 'challenge',
-    label: 'Challenge erstellen',
-    marks: {
-      schueler: 'no',
-      eltern: 'no',
-      klassenlehrer: 'planned',
-      lehrer: 'planned',
-    },
+    id: 'challengeCreateClass',
+    label: 'Challenge anlegen (Klasse)',
+    marks: { schueler: 'no', eltern: 'no', klassenlehrer: 'yes', lehrer: 'yes' },
+  },
+  {
+    id: 'challengeCreateGrade',
+    label: 'Challenge anlegen (Stufe)',
+    marks: { schueler: 'no', eltern: 'no', klassenlehrer: 'no', lehrer: 'yes' },
+  },
+  {
+    id: 'challengeView',
+    label: 'Challenge sehen',
+    marks: { schueler: 'yes', eltern: 'yes', klassenlehrer: 'yes', lehrer: 'yes' },
+  },
+  {
+    id: 'challengeJoin',
+    label: 'Challenge mitmachen',
+    marks: { schueler: 'yes', eltern: 'no', klassenlehrer: 'yes', lehrer: 'yes' },
   },
 ]
 

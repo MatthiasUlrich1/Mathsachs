@@ -57,11 +57,29 @@ export const canRequestTasks = (role?: unknown): boolean =>
 export const canSendClassPoints = (role?: unknown): boolean =>
   normalizeRole(role) !== 'klassenlehrer'
 
-/** Geplant: Challenge erstellen — Lehrer und Klassenlehrer. */
-export const canCreateChallengeLater = (role?: unknown): boolean => {
+/** Challenge anlegen — Lehrer (Klasse + Stufe) und Klassenlehrer (nur Klasse). */
+export const canCreateChallenge = (role?: unknown): boolean => {
   const id = normalizeRole(role)
   return id === 'lehrer' || id === 'klassenlehrer'
 }
+
+/** Klassenchallenge anlegen — Lehrer und Klassenlehrer (mit Klassencode). */
+export const canCreateClassChallenge = (role?: unknown): boolean =>
+  canCreateChallenge(role)
+
+/** Stufenchallenge anlegen — nur Lehrer. */
+export const canCreateGradeChallenge = (role?: unknown): boolean =>
+  normalizeRole(role) === 'lehrer'
+
+/**
+ * Challenge-Themen vom Challenge-Tab aus üben (mitmachen).
+ * Eltern sehen den Tab nur lesend und üben weiter unter Themen.
+ */
+export const canPracticeFromChallenge = (role?: unknown): boolean =>
+  normalizeRole(role) !== 'eltern'
+
+/** @deprecated Use canCreateChallenge. Kept so older tests/imports still typecheck during edits. */
+export const canCreateChallengeLater = canCreateChallenge
 
 export const roleLabel = (role?: unknown): string => {
   const id = normalizeRole(role)

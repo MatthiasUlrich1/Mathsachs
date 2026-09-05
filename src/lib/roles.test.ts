@@ -1,7 +1,11 @@
 import { describe, expect, it } from 'vitest'
 import {
   USER_ROLES,
+  canCreateChallenge,
   canCreateChallengeLater,
+  canCreateClassChallenge,
+  canCreateGradeChallenge,
+  canPracticeFromChallenge,
   canCreateClassCodes,
   canCreateExam,
   canEnterGradeCodes,
@@ -62,7 +66,10 @@ describe('user roles', () => {
     expect(canManageGradeCodes('klassenlehrer')).toBe(false)
     expect(canEnterGradeCodes('klassenlehrer')).toBe(false)
     expect(canSendClassPoints('klassenlehrer')).toBe(false)
-    expect(canCreateChallengeLater('klassenlehrer')).toBe(true)
+    expect(canCreateChallenge('klassenlehrer')).toBe(true)
+    expect(canCreateClassChallenge('klassenlehrer')).toBe(true)
+    expect(canCreateGradeChallenge('klassenlehrer')).toBe(false)
+    expect(canPracticeFromChallenge('klassenlehrer')).toBe(true)
   })
 
   it('allows Klassenstufencode create and enter only for Lehrer', () => {
@@ -76,8 +83,16 @@ describe('user roles', () => {
     expect(canSendClassPoints('lehrer')).toBe(true)
     expect(canSendClassPoints('eltern')).toBe(true)
     expect(canSendClassPoints('schueler')).toBe(true)
+    expect(canCreateChallenge('lehrer')).toBe(true)
+    expect(canCreateClassChallenge('lehrer')).toBe(true)
+    expect(canCreateGradeChallenge('lehrer')).toBe(true)
+    expect(canCreateChallenge('eltern')).toBe(false)
+    expect(canCreateClassChallenge('eltern')).toBe(false)
+    expect(canCreateGradeChallenge('eltern')).toBe(false)
+    expect(canCreateChallenge('schueler')).toBe(false)
+    expect(canPracticeFromChallenge('schueler')).toBe(true)
+    expect(canPracticeFromChallenge('eltern')).toBe(false)
     expect(canCreateChallengeLater('lehrer')).toBe(true)
-    expect(canCreateChallengeLater('eltern')).toBe(false)
     expect(canRequestTasks('lehrer')).toBe(true)
     expect(canRequestTasks('klassenlehrer')).toBe(false)
     expect(canRequestTasks('eltern')).toBe(false)

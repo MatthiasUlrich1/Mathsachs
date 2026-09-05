@@ -24,7 +24,7 @@ describe('Rollen-Rechte-Matrix', () => {
     ])
   })
 
-  it('covers the published rights including planned Challenge', () => {
+  it('covers the published rights including Challenge anlegen/sehen/mitmachen', () => {
     const labels = ROLE_RIGHT_ROWS.map((row) => row.label)
     expect(labels).toEqual([
       'Themen',
@@ -40,7 +40,10 @@ describe('Rollen-Rechte-Matrix', () => {
       'Klassen auf eingetragener Stufe anlegen',
       'Stufen-Wettbewerb sehen',
       'Aufgaben ergänzen',
-      'Challenge erstellen',
+      'Challenge anlegen (Klasse)',
+      'Challenge anlegen (Stufe)',
+      'Challenge sehen',
+      'Challenge mitmachen',
     ])
     const byId = Object.fromEntries(ROLE_RIGHT_ROWS.map((row) => [row.id, row.marks]))
     expect(byId.examRun.klassenlehrer).toBe('no')
@@ -55,8 +58,20 @@ describe('Rollen-Rechte-Matrix', () => {
     expect(byId.taskRequest.klassenlehrer).toBe('no')
     expect(byId.taskRequest.eltern).toBe('no')
     expect(byId.taskRequest.schueler).toBe('no')
-    expect(byId.challenge.lehrer).toBe('planned')
-    expect(byId.challenge.klassenlehrer).toBe('planned')
+    expect(byId.challengeCreateClass.lehrer).toBe('yes')
+    expect(byId.challengeCreateClass.klassenlehrer).toBe('yes')
+    expect(byId.challengeCreateClass.eltern).toBe('no')
+    expect(byId.challengeCreateClass.schueler).toBe('no')
+    expect(byId.challengeCreateGrade.lehrer).toBe('yes')
+    expect(byId.challengeCreateGrade.klassenlehrer).toBe('no')
+    expect(byId.challengeView.schueler).toBe('yes')
+    expect(byId.challengeView.eltern).toBe('yes')
+    expect(byId.challengeJoin.schueler).toBe('yes')
+    expect(byId.challengeJoin.eltern).toBe('no')
+    expect(labels).not.toContain('Challenge erstellen')
+    expect(ROLE_RIGHT_ROWS.some((row) => Object.values(row.marks).includes('planned'))).toBe(
+      false,
+    )
     expect(rightMarkSymbol('planned')).toBe('geplant')
     expect(rightMarkLabel('planned')).toBe('Geplant')
   })

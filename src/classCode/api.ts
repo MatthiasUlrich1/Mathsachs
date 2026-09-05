@@ -1,3 +1,5 @@
+import { classPointsPayload } from '../challenge/logic'
+import type { ChallengePrize, ChallengeScope, ChallengeTopicRef } from '../challenge/types'
 import { CLASS_CODE_LENGTH, isValidClassCode, normalizeClassCode } from './code'
 import type { ClassPointBreakdown, ClassPointPeriod } from './buckets'
 
@@ -51,6 +53,31 @@ export interface GradeSummary {
   classes: GradeClassStanding[]
   points: ClassPointBreakdown
   period?: ClassPointPeriod
+  challenge?: ChallengeSummary
+  challenges?: ChallengeSummary[]
+}
+
+export interface ChallengeClassStanding {
+  id: string
+  name: string
+  points: ClassPointBreakdown
+}
+
+export interface ChallengeSummary {
+  id: string
+  name: string
+  scope: ChallengeScope
+  start: string
+  end: string
+  topics: ChallengeTopicRef[]
+  prize: ChallengePrize
+  points?: ClassPointBreakdown
+  className?: string
+  classThreshold?: number
+  reachedThreshold?: boolean
+  classes?: ChallengeClassStanding[]
+  period?: ClassPointPeriod
+  active?: boolean
 }
 
 export interface ClassStats {
@@ -60,6 +87,8 @@ export interface ClassStats {
   points: ClassPointBreakdown
   period?: ClassPointPeriod
   grade?: GradeSummary
+  challenge?: ChallengeSummary
+  challenges?: ChallengeSummary[]
 }
 
 export interface CreatedGrade {
@@ -100,6 +129,15 @@ export function gradeClassesUrl(code: string, base: string = CLASS_POINTS_API): 
   return `${gradeResourceUrl(code, base)}/classes`
 }
 
+export function challengesUrl(base: string = CLASS_POINTS_API): string {
+  return classApiUrl('/challenges', base)
+}
+
+export function challengeResourceUrl(id: string, base: string = CLASS_POINTS_API): string {
+  const normalized = normalizeClassCode(id)
+  return classApiUrl(`/challenges/${encodeURIComponent(normalized)}`, base)
+}
+
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === 'object' && value !== null && !Array.isArray(value)
 
@@ -127,6 +165,76 @@ const parsePeriod = (raw: unknown): ClassPointPeriod | undefined => {
   return { today, week, month, schoolYear }
 }
 
+const parseChallengeClassStanding = (raw: unknown): ChallengeClassStanding | null => {
+  if (!isRecord(raw)) return null
+  const id = typeof raw.id === 'string' ? raw.id.trim() : ''
+  const name = typeof raw.name === 'string' ? raw.name.trim() : ''
+  if (!id || !name) return null
+  return { id, name, points: parsePoints(raw.points) }
+}
+
+const parseChallengeSummary = (raw: unknown): ChallengeSummary | null => {
+  if (!isRecord(raw)) return null
+  const id = typeof raw.id === 'string' ? normalizeClassCode(raw.id) : ''
+  const name = typeof raw.name === 'string' ? raw.name.trim() : ''
+  const scope = raw.scope === 'grade' ? 'grade' : raw.scope === 'class' ? 'class' : ''
+  const start = typeof raw.start === 'string' ? raw.start : ''
+  const end = typeof raw.end === 'string' ? raw.end : ''
+  if (!id || !name || !scope || !start || !end) return null
+  const topics = Array.isArray(raw.topics)
+    ? raw.topics
+        .filter((item): item is Record<string, unknown> => isRecord(item) && typeof item.id === 'string')
+        .map((item) => ({
+          id: String(item.id),
+          ...(typeof item.title === 'string' && item.title.trim()
+            ? { title: item.title.trim() }
+            : {}),
+        }))
+    : []
+  const prizeSrc = isRecord(raw.prize) ? raw.prize : {}
+  const prize: ChallengePrize = {
+    enabled: Boolean(prizeSrc.enabled),
+    ...(prizeSrc.classPrize ? { classPrize: true } : {}),
+    ...(prizeSrc.studentPrize ? { studentPrize: true } : {}),
+    ...(typeof prizeSrc.classThreshold === 'number' && prizeSrc.classThreshold > 0
+      ? { classThreshold: Math.trunc(prizeSrc.classThreshold) }
+      : {}),
+    ...(typeof prizeSrc.text === 'string' && prizeSrc.text.trim()
+      ? { text: prizeSrc.text.trim() }
+      : {}),
+  }
+  const classes = Array.isArray(raw.classes)
+    ? raw.classes
+        .map(parseChallengeClassStanding)
+        .filter((row): row is ChallengeClassStanding => row !== null)
+    : undefined
+  return {
+    id,
+    name,
+    scope,
+    start,
+    end,
+    topics,
+    prize,
+    points: raw.points ? parsePoints(raw.points) : undefined,
+    className: typeof raw.className === 'string' ? raw.className : undefined,
+    classThreshold:
+      typeof raw.classThreshold === 'number' ? raw.classThreshold : prize.classThreshold,
+    reachedThreshold:
+      typeof raw.reachedThreshold === 'boolean' ? raw.reachedThreshold : undefined,
+    ...(classes ? { classes } : {}),
+    period: parsePeriod(raw.period),
+    active: typeof raw.active === 'boolean' ? raw.active : undefined,
+  }
+}
+
+const parseChallengesList = (raw: unknown): ChallengeSummary[] => {
+  if (!Array.isArray(raw)) return []
+  return raw
+    .map(parseChallengeSummary)
+    .filter((row): row is ChallengeSummary => row !== null)
+}
+
 const parseGradeClassStanding = (raw: unknown): GradeClassStanding | null => {
   if (!isRecord(raw)) return null
   const id = typeof raw.id === 'string' ? raw.id.trim() : ''
@@ -148,12 +256,16 @@ const parseGradeSummary = (raw: unknown): GradeSummary | null => {
         .map(parseGradeClassStanding)
         .filter((row): row is GradeClassStanding => row !== null)
     : []
+  const challenges = parseChallengesList(raw.challenges)
+  const challenge = raw.challenge ? parseChallengeSummary(raw.challenge) : challenges[0] ?? null
   return {
     id: typeof raw.id === 'string' ? raw.id : undefined,
     name,
     classes,
     points: parsePoints(raw.points),
     period: parsePeriod(raw.period),
+    ...(challenge ? { challenge } : {}),
+    ...(challenges.length ? { challenges } : {}),
   }
 }
 
@@ -163,6 +275,8 @@ const parseClassStats = (raw: unknown): ClassStats | null => {
   const name = typeof raw.name === 'string' ? raw.name : ''
   if (!code || !name) return null
   const grade = raw.grade ? parseGradeSummary(raw.grade) : null
+  const challenges = parseChallengesList(raw.challenges)
+  const challenge = raw.challenge ? parseChallengeSummary(raw.challenge) : challenges[0] ?? null
   return {
     code,
     name,
@@ -170,6 +284,8 @@ const parseClassStats = (raw: unknown): ClassStats | null => {
     points: parsePoints(raw.points),
     period: parsePeriod(raw.period),
     ...(grade ? { grade } : {}),
+    ...(challenge ? { challenge } : {}),
+    ...(challenges.length ? { challenges } : {}),
   }
 }
 
@@ -354,20 +470,76 @@ export async function addClassPoints(
   code: string,
   delta: number,
   base: string = CLASS_POINTS_API,
+  topicId?: string,
 ): Promise<ClassStats | null> {
+  const api = base || CLASS_POINTS_API
   const normalized = normalizeClassCode(code)
   if (!isValidClassCode(normalized)) return null
   const chunks = chunkDelta(delta)
   if (chunks.length === 0) return null
   let last: ClassStats | null = null
   for (const piece of chunks) {
-    const json = await requestJson(classPointsUrl(normalized, base), {
+    const json = await requestJson(classPointsUrl(normalized, api), {
       method: 'POST',
-      body: JSON.stringify({ delta: piece }),
+      body: JSON.stringify(classPointsPayload(piece, topicId)),
     })
     last = parseClassStats(json)
   }
   return last
+}
+
+export interface CreateChallengeInput {
+  scope: ChallengeScope
+  classCode?: string
+  gradeCode?: string
+  name: string
+  topicIds: string[]
+  topics?: ChallengeTopicRef[]
+  start: string
+  end: string
+  prize: ChallengePrize
+}
+
+export async function createChallenge(
+  input: CreateChallengeInput,
+  base: string = CLASS_POINTS_API,
+): Promise<ChallengeSummary> {
+  const json = await requestJson(challengesUrl(base), {
+    method: 'POST',
+    body: JSON.stringify({
+      scope: input.scope,
+      ...(input.scope === 'class' && input.classCode ? { classCode: input.classCode } : {}),
+      ...(input.scope === 'grade' && input.gradeCode ? { gradeCode: input.gradeCode } : {}),
+      name: input.name.trim(),
+      topicIds: input.topicIds,
+      topics: input.topics ?? [],
+      start: input.start,
+      end: input.end,
+      prize: input.prize,
+    }),
+  })
+  throwIfStubHealth(json)
+  const created = parseChallengeSummary(json)
+  if (!created) {
+    throw new ClassApiError('not_ready', CLASS_API_STUB_MESSAGE, 200)
+  }
+  return created
+}
+
+export async function getChallenge(
+  id: string,
+  base: string = CLASS_POINTS_API,
+): Promise<ChallengeSummary> {
+  const normalized = normalizeClassCode(id)
+  if (!isValidClassCode(normalized)) {
+    throw new ClassApiError('invalid', 'Die Challenge-ID ist ungültig.', 400)
+  }
+  const json = await requestJson(challengeResourceUrl(normalized, base), { method: 'GET' })
+  const summary = parseChallengeSummary(json)
+  if (!summary) {
+    throw new ClassApiError('not_ready', CLASS_API_NOT_READY_MESSAGE, 200)
+  }
+  return summary
 }
 
 export async function deleteClass(

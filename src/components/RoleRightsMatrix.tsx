@@ -12,8 +12,9 @@ export function RoleRightsMatrix() {
         <div>
           <h2 className="section-title no-margin">Rechte</h2>
           <p className="muted small">
-            Welche Rolle darf was? Challenge erstellen kommt später für Lehrer
-            und Klassenlehrer.
+            Welche Rolle darf was? Lehrer legen Klassen- und Stufenchallenges
+            an, Klassenlehrer nur eine Klassenchallenge. Eltern sehen den
+            Challenge-Tab nur, Schüler machen mit.
           </p>
         </div>
       </div>

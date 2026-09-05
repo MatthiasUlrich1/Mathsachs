@@ -133,8 +133,77 @@ function normalizeUserData(name, raw) {
   if (Object.prototype.hasOwnProperty.call(src, 'gradeCodes')) {
     out.gradeCodes = normalizeGradeCodes(src.gradeCodes)
   }
+  if (Object.prototype.hasOwnProperty.call(src, 'challenges')) {
+    out.challenges = normalizeChallenges(src.challenges)
+  }
   if (USER_ROLES.has(src.role)) out.role = src.role
   return out
+}
+
+function normalizeChallenge(raw) {
+  if (!raw || typeof raw !== 'object') return null
+  const id = asString(raw.id, '').trim()
+  const scope = raw.scope === 'grade' ? 'grade' : raw.scope === 'class' ? 'class' : ''
+  const hostCode = normalizeCode(raw.hostCode)
+  const name = asString(raw.name, '').trim().slice(0, 80)
+  const topicIds = Array.isArray(raw.topicIds)
+    ? raw.topicIds.filter((id) => typeof id === 'string' && id.trim()).map((id) => id.trim())
+    : []
+  const start = asString(raw.start, '').trim()
+  const end = asString(raw.end, '').trim()
+  if (!id || !scope || !hostCode || !name || topicIds.length === 0 || !start || !end) return null
+  const topicsIn = Array.isArray(raw.topics) ? raw.topics : []
+  const titleById = new Map()
+  for (const item of topicsIn) {
+    if (!item || typeof item !== 'object' || typeof item.id !== 'string') continue
+    const topicId = item.id.trim()
+    const title = asString(item.title, '').trim().slice(0, 80)
+    if (topicId && title) titleById.set(topicId, title)
+  }
+  const prizeSrc = raw.prize && typeof raw.prize === 'object' ? raw.prize : {}
+  const prize = { enabled: Boolean(prizeSrc.enabled) }
+  if (prizeSrc.classPrize) prize.classPrize = true
+  if (prizeSrc.studentPrize) prize.studentPrize = true
+  if (
+    typeof prizeSrc.classThreshold === 'number' &&
+    Number.isFinite(prizeSrc.classThreshold) &&
+    prizeSrc.classThreshold > 0
+  ) {
+    prize.classThreshold = Math.trunc(prizeSrc.classThreshold)
+  }
+  const prizeText = asString(prizeSrc.text, '').trim().slice(0, 200)
+  if (prizeText) prize.text = prizeText
+  return {
+    id,
+    scope,
+    hostCode,
+    name,
+    topicIds,
+    topics: topicIds.map((topicId) => {
+      const title = titleById.get(topicId)
+      return title ? { id: topicId, title } : { id: topicId }
+    }),
+    start,
+    end,
+    prize,
+    createdAt: asFiniteNumber(raw.createdAt, 0),
+  }
+}
+
+function normalizeChallenges(raw) {
+  const list = Array.isArray(raw) ? raw : []
+  const byId = new Map()
+  for (const item of list) {
+    const parsed = normalizeChallenge(item)
+    if (!parsed) continue
+    const prev = byId.get(parsed.id)
+    if (!prev || parsed.createdAt >= prev.createdAt) byId.set(parsed.id, parsed)
+  }
+  return [...byId.values()].sort((a, b) => b.createdAt - a.createdAt || a.id.localeCompare(b.id))
+}
+
+function mergeChallenges(a, b) {
+  return normalizeChallenges([...(Array.isArray(a) ? a : []), ...(Array.isArray(b) ? b : [])])
 }
 
 function normalizeCode(raw) {
@@ -486,6 +555,7 @@ function mergeUserData(a, b) {
   if (sessions.length > MAX_SESSIONS) sessions.length = MAX_SESSIONS
   const classCodes = mergeUserClassCodes(a.classCodes, b.classCodes)
   const gradeCodes = mergeUserGradeCodes(a.gradeCodes, b.gradeCodes)
+  const challenges = mergeChallenges(a.challenges, b.challenges)
   const out = {
     name: a.name || b.name,
     created: Math.min(a.created, b.created),
@@ -495,6 +565,7 @@ function mergeUserData(a, b) {
   }
   if (classCodes) out.classCodes = classCodes
   if (gradeCodes) out.gradeCodes = gradeCodes
+  if (challenges.length > 0) out.challenges = challenges
   const role = USER_ROLES.has(b.role) ? b.role : USER_ROLES.has(a.role) ? a.role : null
   if (role) out.role = role
   return out

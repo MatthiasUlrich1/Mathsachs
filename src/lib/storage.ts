@@ -1,4 +1,7 @@
 import { addClassPoints } from '../classCode/api'
+import { parseStoredChallenges } from '../challenge/parse'
+import type { StoredChallenge } from '../challenge/types'
+import { filterSessionsForChallenge } from '../challenge/logic'
 import {
   normalizeClassCode,
   publicClassLabel,
@@ -95,6 +98,9 @@ const readLocalState = (): SharedState => {
           ...parsed,
           classCodes: parsed.classCodes ? parseClassCodes(parsed.classCodes) : parsed.classCodes,
           gradeCodes: parsed.gradeCodes ? parseGradeCodes(parsed.gradeCodes) : parsed.gradeCodes,
+          challenges: parsed.challenges
+            ? parseStoredChallenges(parsed.challenges)
+            : parsed.challenges,
         }
       } else state.records[name] = freshUser(name)
     } catch {
@@ -498,9 +504,11 @@ export const recordSession = (name: string, input: SessionInput): UserData => {
   if (next.sessions.length > MAX_SESSIONS) next.sessions.length = MAX_SESSIONS
   saveUser(next)
   if (transfer) {
-    void addClassPoints(transfer.code, transfer.points).catch(() => {
-      // Fire-and-forget: offline / not-yet-deployed Worker must not fail practice.
-    })
+    void addClassPoints(transfer.code, transfer.points, undefined, input.topicId).catch(
+      () => {
+        // Fire-and-forget: offline / not-yet-deployed Worker must not fail practice.
+      },
+    )
   }
   return next
 }
@@ -703,6 +711,32 @@ export const rememberJoinedGradeCode = (code: string, name: string): void => {
   })
 }
 
+/** Remember a challenge this Lehrer/Klassenlehrer created (LAN merge). */
+export const rememberCreatedChallenge = (challenge: StoredChallenge): void => {
+  const user = activeUserName?.trim()
+  if (!user) return
+  const current = cache.records[user] ?? freshUser(user)
+  const next = parseStoredChallenges([...(current.challenges ?? []), challenge])
+  saveUser({ ...current, challenges: next })
+}
+
+export const getCreatedChallenges = (name?: string): StoredChallenge[] => {
+  const user = (name ?? activeUserName)?.trim()
+  if (!user) return []
+  return parseStoredChallenges(loadUser(user).challenges)
+}
+
+/** Created challenges on this PC/LAN — fallback when the Worker is offline. */
+export const listDeviceChallenges = (): StoredChallenge[] => {
+  const byId = new Map<string, StoredChallenge>()
+  for (const name of cache.users) {
+    for (const challenge of parseStoredChallenges(cache.records[name]?.challenges)) {
+      byId.set(challenge.id, challenge)
+    }
+  }
+  return [...byId.values()]
+}
+
 /** Drop a Stufencode locally and tombstone it. Does not call the server. */
 export const forgetCreatedGradeCode = (code: string): void => {
   const normalized = normalizeClassCode(code)
@@ -772,6 +806,70 @@ export const buildProtocol = (
       now,
       [...settings.created, ...(settings.known ?? [])],
     ),
+  }
+}
+
+/** Local Nachweis: sessions in the challenge window on the selected topics. */
+export const buildChallengeProtocol = (
+  name: string,
+  challenge: Pick<StoredChallenge, 'name' | 'topicIds' | 'start' | 'end'>,
+  now: Date | number = Date.now(),
+): Protocol => {
+  const data = loadUser(name)
+  const sessions = filterSessionsForChallenge(data.sessions, challenge)
+  const byTopic = new Map<string, ProtocolRow & { topicId: string }>()
+  for (const session of sessions) {
+    const prev = byTopic.get(session.topicId)
+    if (prev) {
+      prev.attempts += session.attempts
+      prev.correct += session.correct
+      prev.points += session.points
+      prev.percent = prev.attempts ? Math.round((prev.correct / prev.attempts) * 100) : 0
+    } else {
+      byTopic.set(session.topicId, {
+        topicId: session.topicId,
+        areaTitle: session.areaTitle,
+        topicTitle: session.topicTitle,
+        attempts: session.attempts,
+        correct: session.correct,
+        percent: session.attempts ? Math.round((session.correct / session.attempts) * 100) : 0,
+        points: session.points,
+      })
+    }
+  }
+  const rows = [...byTopic.values()]
+    .map((row) => ({
+        areaTitle: row.areaTitle,
+        topicTitle: row.topicTitle,
+        attempts: row.attempts,
+        correct: row.correct,
+        percent: row.percent,
+        points: row.points,
+      }))
+    .sort((a, b) =>
+      a.areaTitle === b.areaTitle
+        ? a.topicTitle.localeCompare(b.topicTitle)
+        : a.areaTitle.localeCompare(b.areaTitle),
+    )
+  const totalPoints = rows.reduce((sum, row) => sum + row.points, 0)
+  const totalAttempts = rows.reduce((sum, row) => sum + row.attempts, 0)
+  const totalCorrect = rows.reduce((sum, row) => sum + row.correct, 0)
+  const settings = parseClassCodes(data.classCodes)
+  return {
+    name,
+    generatedAt: typeof now === 'number' ? now : now.getTime(),
+    totalPoints,
+    totalAttempts,
+    totalCorrect,
+    overallPercent: totalAttempts
+      ? Math.round((totalCorrect / totalAttempts) * 100)
+      : 0,
+    rows,
+    period: summarizeSessions(sessions, now),
+    transfers: summarizeClassTransfers([], now, [
+      ...settings.created,
+      ...(settings.known ?? []),
+    ]),
   }
 }
 

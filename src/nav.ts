@@ -8,6 +8,7 @@ import {
 /** Primary top-bar tabs after the settings reorganization. */
 export const TOP_TABS = [
   { id: 'browse', label: 'Themen' },
+  { id: 'challenge', label: 'Challenge' },
   { id: 'examBuild', label: 'Klausur erstellen' },
   { id: 'examRun', label: 'Klausur schreiben' },
   { id: 'protocol', label: 'Punkteprotokoll' },

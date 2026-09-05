@@ -37,6 +37,7 @@ import { CurriculumBrowser } from './components/CurriculumBrowser'
 import { PracticeSession } from './components/PracticeSession'
 import { Worksheet } from './components/Worksheet'
 import { Protocol } from './components/Protocol'
+import { Challenge } from './components/Challenge'
 import { SearchResults } from './components/SearchResults'
 import { ExamBuilder } from './components/ExamBuilder'
 import { ExamRunner } from './components/ExamRunner'
@@ -62,7 +63,13 @@ interface LoadedGrade {
 
 type View =
   | { name: TopTabId; section?: SettingsSectionId }
-  | { name: 'practice'; topic: Topic; areaTitle: string; gradeTitle: string }
+  | {
+      name: 'practice'
+      topic: Topic
+      areaTitle: string
+      gradeTitle: string
+      returnTo?: TopTabId
+    }
   | { name: 'worksheet'; topic: Topic; areaTitle: string; gradeTitle: string }
 
 const registryOrder = (id: string) =>
@@ -368,8 +375,12 @@ export default function App() {
     ? searchUnloadedHints(query, loaded.map((l) => l.moduleId))
     : []
 
-  const openPractice = (topic: Topic, areaTitle: string, gradeTitle: string) =>
-    setView({ name: 'practice', topic, areaTitle, gradeTitle })
+  const openPractice = (
+    topic: Topic,
+    areaTitle: string,
+    gradeTitle: string,
+    returnTo?: TopTabId,
+  ) => setView({ name: 'practice', topic, areaTitle, gradeTitle, returnTo })
   const openWorksheet = (topic: Topic, areaTitle: string, gradeTitle: string) =>
     setView({ name: 'worksheet', topic, areaTitle, gradeTitle })
 
@@ -546,12 +557,25 @@ export default function App() {
         />
       )}
 
+      {view.name === 'challenge' && (
+        <Challenge
+          user={activeUser}
+          role={userRole}
+          loaded={loaded}
+          onPractice={(topic, areaTitle, gradeTitle) =>
+            openPractice(topic, areaTitle, gradeTitle, 'challenge')
+          }
+        />
+      )}
+
       {view.name === 'practice' && (
         <PracticeSession
           topic={view.topic}
           areaTitle={view.areaTitle}
           user={activeUser}
-          onExit={() => setView({ name: 'browse' })}
+          onExit={() =>
+            setView({ name: view.returnTo === 'challenge' ? 'challenge' : 'browse' })
+          }
         />
       )}
 

@@ -9,6 +9,30 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.31] – 2026-09-05
+
+### Hinzugefügt
+
+- **Challenge-Modus:** Neuer Reiter **Challenge** (in den Einstellungen wie
+  die anderen Übungs-Reiter ausgeblendet). **Lehrer** legen eine Klassen-
+  oder Stufenchallenge an, **Klassenlehrer** nur eine Klassenchallenge
+  (mit eingetragenem Klassencode). Schüler machen mit: nur die gewählten
+  Themen üben und ein lokales **Challenge-Protokoll** drucken. Eltern
+  sehen die Challenge nur — ohne Anlegen und ohne Üben aus diesem Reiter.
+- Start und Ende als Datum/Uhrzeit in **Europe/Berlin**. Optional
+  **Gewinnchance** (Klasse/Stufe und/oder bester Schüler, Gewinn als Text;
+  bei Klassenchallenge eine optionale Punkteschwelle).
+- Punkte in den Challenge-Themen zählen weiter für Klasse und Stufe **und**
+  extra für die Challenge. Online nur anonyme Summen. Keine Schülernamen,
+  Benutzer- oder Geräte-IDs auf dem Worker. „Bester Schüler“ nur über das
+  gedruckte lokale Protokoll.
+- Worker: `POST /challenges`, `GET /challenges/:id`, Challenge-Zusammenfassung
+  in `GET /classes/:code` und `GET /grades/:code`. `POST …/points` nimmt
+  optional `topicId` entgegen; der Server prüft Fenster und Thema.
+  **Linus/Matthias:** `cloudflare/worker.js` einfügen und Deploy.
+
+Fixes #11
+
 ## [0.1.30] – 2026-09-05
 
 ### Geändert
@@ -435,7 +459,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.30...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.31...HEAD
+[0.1.31]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.30...v0.1.31
 [0.1.30]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.29...v0.1.30
 [0.1.29]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.28...v0.1.29
 [0.1.28]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.27...v0.1.28

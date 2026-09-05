@@ -1,3 +1,9 @@
+import {
+  mergeStoredChallenges,
+  parseStoredChallenges,
+} from '../challenge/parse'
+import type { StoredChallenge } from '../challenge/types'
+
 /** Per-topic aggregated statistics for a user. */
 export interface TopicStat {
   topicId: string
@@ -41,6 +47,8 @@ export interface UserData {
   classCodes?: ClassCodeSettings
   /** Lehrer Stufencodes: created locally and/or entered (not Worker ownership). */
   gradeCodes?: GradeCodeSettings
+  /** Challenges this Lehrer/Klassenlehrer created (manage UI + LAN merge). */
+  challenges?: StoredChallenge[]
   /** Optional for older records; treat missing as Schüler (see roleForUser). */
   role?: UserRole
 }
@@ -571,6 +579,10 @@ const mergeUserData = (a: UserData | undefined, b: UserData | undefined): UserDa
   if (sessions.length > MAX_SESSIONS) sessions.length = MAX_SESSIONS
   const classCodes = mergeUserClassCodes(a.classCodes, b.classCodes)
   const gradeCodes = mergeUserGradeCodes(a.gradeCodes, b.gradeCodes)
+  const challenges = mergeStoredChallenges(
+    parseStoredChallenges(a.challenges),
+    parseStoredChallenges(b.challenges),
+  )
   const role = isUserRole(b.role) ? b.role : isUserRole(a.role) ? a.role : undefined
   return {
     name: a.name || b.name,
@@ -580,6 +592,7 @@ const mergeUserData = (a: UserData | undefined, b: UserData | undefined): UserDa
     classTransfers: mergeTransfers(a.classTransfers, b.classTransfers),
     ...(classCodes ? { classCodes } : {}),
     ...(gradeCodes ? { gradeCodes } : {}),
+    ...(challenges.length > 0 ? { challenges } : {}),
     ...(role ? { role } : {}),
   }
 }

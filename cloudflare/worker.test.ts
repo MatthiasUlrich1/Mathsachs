@@ -176,6 +176,7 @@ describe('Cloudflare Worker API', () => {
       points: { limit: 60, windowMs: 60_000 },
       gradeCreate: { limit: 8, windowMs: 60_000 },
       gradeUpdate: { limit: 30, windowMs: 60_000 },
+      challengeCreate: { limit: 8, windowMs: 60_000 },
     })
 
     const kv = env()
@@ -408,5 +409,162 @@ describe('Klassenstufencode Worker API', () => {
     const body = (await stillClass.json()) as { points: { total: number }; grade?: unknown }
     expect(body.points.total).toBe(9)
     expect(body.grade).toBeUndefined()
+  })
+})
+
+describe('Challenge Worker API', () => {
+  const windowNow = { start: '2020-01-01T00:00', end: '2035-12-31T23:59' }
+  const windowPast = { start: '2020-01-01T00:00', end: '2020-01-02T00:00' }
+
+  it('creates a class challenge and attributes only matching in-window topics', async () => {
+    const kv = env()
+    const created = await postJson('/classes', { name: 'Klasse 6a' }, kv)
+    const { code } = (await created.json()) as { code: string }
+
+    const challengeRes = await postJson(
+      '/challenges',
+      {
+        scope: 'class',
+        classCode: code,
+        name: 'Woche 36',
+        topicIds: ['n5-add'],
+        topics: [{ id: 'n5-add', title: 'Addieren' }],
+        ...windowNow,
+        prize: { enabled: true, classPrize: true, classThreshold: 10, text: 'Film' },
+      },
+      kv,
+    )
+    expect(challengeRes.status).toBe(201)
+    const challenge = (await challengeRes.json()) as {
+      id: string
+      name: string
+      points: { total: number }
+      prize: { text?: string }
+    }
+    expect(challenge.name).toBe('Woche 36')
+    expect(challenge.points.total).toBe(0)
+    expect(JSON.stringify(challenge)).not.toMatch(/vorname|userId|deviceId|schueler/i)
+
+    const otherTopic = await worker.fetch(
+      request(`/classes/${code}/points`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ delta: 7, topicId: 'n5-mul' }),
+      }),
+      kv,
+    )
+    expect(otherTopic.status).toBe(200)
+    const afterOther = (await otherTopic.json()) as {
+      points: { total: number }
+      challenge?: { points: { total: number } }
+    }
+    expect(afterOther.points.total).toBe(7)
+    expect(afterOther.challenge?.points.total ?? 0).toBe(0)
+
+    const matching = await worker.fetch(
+      request(`/classes/${code}/points`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ delta: 5, topicId: 'n5-add' }),
+      }),
+      kv,
+    )
+    const afterMatch = (await matching.json()) as {
+      points: { total: number }
+      challenge: {
+        points: { total: number }
+        classThreshold: number
+        prize: { text?: string }
+      }
+    }
+    expect(afterMatch.points.total).toBe(12)
+    expect(afterMatch.challenge.points.total).toBe(5)
+    expect(afterMatch.challenge.prize.text).toBe('Film')
+    expect(afterMatch.challenge.classThreshold).toBe(10)
+    assertPrivacySchema(afterMatch.challenge, [])
+
+    const got = await worker.fetch(request(`/challenges/${challenge.id}`), kv)
+    expect(got.status).toBe(200)
+    const publicCh = (await got.json()) as { points: { total: number }; code?: string }
+    expect(publicCh.points.total).toBe(5)
+    expect(publicCh).not.toHaveProperty('code')
+    expect(JSON.stringify(publicCh)).not.toContain(code)
+  })
+
+  it('does not add challenge points outside the window', async () => {
+    const kv = env()
+    const created = await postJson('/classes', { name: '6b' }, kv)
+    const { code } = (await created.json()) as { code: string }
+    await postJson(
+      '/challenges',
+      {
+        scope: 'class',
+        classCode: code,
+        name: 'Vorbei',
+        topicIds: ['n5-add'],
+        ...windowPast,
+        prize: { enabled: false },
+      },
+      kv,
+    )
+    const posted = await worker.fetch(
+      request(`/classes/${code}/points`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ delta: 4, topicId: 'n5-add' }),
+      }),
+      kv,
+    )
+    const body = (await posted.json()) as { challenge?: unknown; challenges?: unknown[] }
+    expect(body.challenge).toBeUndefined()
+    expect(body.challenges ?? []).toEqual([])
+  })
+
+  it('embeds anonymous grade-challenge standings and never member codes', async () => {
+    const kv = env()
+    const a = await postJson('/classes', { name: 'Klasse 6a' }, kv)
+    const b = await postJson('/classes', { name: 'Klasse 6b' }, kv)
+    const classA = (await a.json()) as { code: string }
+    const classB = (await b.json()) as { code: string }
+    const gradeRes = await postJson('/grades', { name: '6. Klasse' }, kv)
+    const grade = (await gradeRes.json()) as { code: string }
+    await putJson(`/grades/${grade.code}/classes`, { add: [classA.code, classB.code] }, kv)
+
+    const created = await postJson(
+      '/challenges',
+      {
+        scope: 'grade',
+        gradeCode: grade.code,
+        name: 'Stufenwoche',
+        topicIds: ['n5-add'],
+        ...windowNow,
+        prize: { enabled: true, classPrize: true, text: 'Ausflug' },
+      },
+      kv,
+    )
+    expect(created.status).toBe(201)
+
+    await worker.fetch(
+      request(`/classes/${classA.code}/points`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ delta: 6, topicId: 'n5-add' }),
+      }),
+      kv,
+    )
+
+    const gotGrade = await worker.fetch(request(`/grades/${grade.code}`), kv)
+    const view = (await gotGrade.json()) as {
+      challenge: {
+        classes: Array<{ id: string; name: string; points: { total: number } }>
+        points: { total: number }
+      }
+    }
+    expect(view.challenge.points.total).toBe(6)
+    expect(view.challenge.classes.map((row) => row.name).sort()).toEqual([
+      'Klasse 6a',
+      'Klasse 6b',
+    ])
+    assertPrivacySchema(view.challenge, [classA.code, classB.code, grade.code])
   })
 })

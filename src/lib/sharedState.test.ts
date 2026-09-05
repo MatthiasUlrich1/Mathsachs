@@ -222,6 +222,55 @@ describe('mergeSharedState (TypeScript)', () => {
     expect(merged.records.Ben.stats.termine.points).toBe(7)
   })
 
+  it('unions created challenges on Lehrer records for LAN merge', () => {
+    const challenge = {
+      id: 'CHAL2345',
+      scope: 'class' as const,
+      hostCode: 'ABCD2345',
+      name: 'Woche 36',
+      topicIds: ['n5-add'],
+      topics: [{ id: 'n5-add', title: 'Addieren' }],
+      start: '2026-09-07T08:00',
+      end: '2026-09-11T16:00',
+      prize: { enabled: false },
+      createdAt: 10,
+    }
+    const merged = mergeSharedState(
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            name: 'Ada',
+            created: 1,
+            stats: {},
+            sessions: [],
+            role: 'lehrer',
+            challenges: [challenge],
+          },
+        },
+      },
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            name: 'Ada',
+            created: 1,
+            stats: {},
+            sessions: [],
+            role: 'lehrer',
+            challenges: [{ ...challenge, id: 'CHAL9999', name: 'Stufe', scope: 'grade', hostCode: 'GGGG2345' }],
+          },
+        },
+      },
+    )
+    expect(merged.records.Ada.challenges?.map((row) => row.id).sort()).toEqual([
+      'CHAL2345',
+      'CHAL9999',
+    ])
+  })
+
   it('unions created class codes and keeps incoming collect settings', () => {
     const merged = mergeSharedState(
       {

@@ -7,13 +7,14 @@
  *
  * Rate limits per client IP / 60s (classroom-safe listing + a few deletes):
  * GET class/grade 300, DELETE 30, POST /classes 8, POST /grades 8,
- * PUT grade membership 30, POST points 60.
+ * POST /challenges 8, PUT grade membership 30, POST points 60.
  * GET / (health) is not rate-limited. Raise GET/DELETE here if a class page
  * with many Eigene Codes still 429s; keep POST points tight against abuse.
  *
- * Privacy: KV stores class/grade display names and daily point buckets only.
- * No pupil names, user ids or emails. GET /grades never returns member
- * Klassencodes. Points are accepted only on class records.
+ * Privacy: KV stores class/grade display names, daily point buckets and
+ * anonymous challenge sums only. No pupil names, user ids or emails.
+ * GET /grades never returns member Klassencodes. Points are accepted only
+ * on class records. Challenge POST never stores names.
  */
 
 const BERLIN_TZ = 'Europe/Berlin'
@@ -153,6 +154,258 @@ export function summarizeDays(days, now = Date.now()) {
   }
 }
 
+const CHALLENGE_INDEX_PREFIX = 'C:'
+const LOCAL_RE = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2}))?$/
+const MAX_CHALLENGE_TOPICS = 40
+const MAX_PRIZE_TEXT_LENGTH = 200
+
+function berlinDateTimeParts(at) {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: BERLIN_TZ,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  }).formatToParts(new Date(at))
+  const get = (type) => parts.find((part) => part.type === type)?.value ?? ''
+  return {
+    year: get('year'),
+    month: get('month'),
+    day: get('day'),
+    hour: get('hour') === '24' ? '00' : get('hour'),
+    minute: get('minute'),
+    second: get('second'),
+  }
+}
+
+export function berlinLocalToUtcMs(local) {
+  const match = LOCAL_RE.exec(String(local || '').trim())
+  if (!match) return Number.NaN
+  const year = Number(match[1])
+  const month = Number(match[2])
+  const day = Number(match[3])
+  const hour = Number(match[4])
+  const minute = Number(match[5])
+  const second = Number(match[6] ?? 0)
+  let utc = Date.UTC(year, month - 1, day, hour, minute, second)
+  const shown = berlinDateTimeParts(utc)
+  const shownUtc = Date.UTC(
+    Number(shown.year),
+    Number(shown.month) - 1,
+    Number(shown.day),
+    Number(shown.hour),
+    Number(shown.minute),
+    Number(shown.second),
+  )
+  return utc - (shownUtc - utc)
+}
+
+export function parseChallengeInstant(value) {
+  if (typeof value === 'number' && Number.isFinite(value)) return value
+  if (typeof value !== 'string') return Number.NaN
+  const trimmed = value.trim()
+  if (LOCAL_RE.test(trimmed) && !/[zZ]|[+-]\d{2}:?\d{2}$/.test(trimmed)) {
+    return berlinLocalToUtcMs(trimmed)
+  }
+  const parsed = Date.parse(trimmed)
+  return Number.isFinite(parsed) ? parsed : Number.NaN
+}
+
+export function isInChallengeWindow(start, end, now = Date.now()) {
+  const from = parseChallengeInstant(start)
+  const to = parseChallengeInstant(end)
+  if (!Number.isFinite(from) || !Number.isFinite(to) || to < from) return false
+  return now >= from && now <= to
+}
+
+function parsePrizeStored(raw) {
+  if (!raw || typeof raw !== 'object') return { enabled: false }
+  const text = typeof raw.text === 'string' ? raw.text.trim().slice(0, MAX_PRIZE_TEXT_LENGTH) : ''
+  const threshold =
+    typeof raw.classThreshold === 'number' && Number.isFinite(raw.classThreshold) && raw.classThreshold > 0
+      ? Math.trunc(raw.classThreshold)
+      : undefined
+  const prize = { enabled: Boolean(raw.enabled) }
+  if (raw.classPrize) prize.classPrize = true
+  if (raw.studentPrize) prize.studentPrize = true
+  if (threshold != null) prize.classThreshold = threshold
+  if (text) prize.text = text
+  return prize
+}
+
+function parseTopicIdsStored(raw) {
+  const list = Array.isArray(raw) ? raw : []
+  const out = []
+  const seen = new Set()
+  for (const item of list) {
+    if (typeof item !== 'string') continue
+    const id = item.trim()
+    if (!id || seen.has(id)) continue
+    seen.add(id)
+    out.push(id)
+    if (out.length >= MAX_CHALLENGE_TOPICS) break
+  }
+  return out
+}
+
+function parseTopicsStored(raw, topicIds) {
+  const byId = new Map()
+  if (Array.isArray(raw)) {
+    for (const item of raw) {
+      if (!item || typeof item !== 'object' || typeof item.id !== 'string') continue
+      const id = item.id.trim()
+      const title = typeof item.title === 'string' ? item.title.trim().slice(0, 80) : ''
+      if (id && title) byId.set(id, title)
+    }
+  }
+  return topicIds.map((id) => (byId.has(id) ? { id, title: byId.get(id) } : { id }))
+}
+
+function parseChallengeStored(raw) {
+  if (!raw || typeof raw !== 'object') return null
+  const id = typeof raw.id === 'string' ? normalizeClassCode(raw.id) : ''
+  if (!isValidClassCode(id)) return null
+  const name = typeof raw.name === 'string' ? raw.name.trim().slice(0, MAX_CLASS_NAME_LENGTH) : ''
+  const topicIds = parseTopicIdsStored(raw.topicIds)
+  const start = typeof raw.start === 'string' ? raw.start.trim() : ''
+  const end = typeof raw.end === 'string' ? raw.end.trim() : ''
+  if (!name || topicIds.length === 0 || !start || !end) return null
+  if (!Number.isFinite(parseChallengeInstant(start)) || !Number.isFinite(parseChallengeInstant(end))) {
+    return null
+  }
+  const days =
+    raw.days && typeof raw.days === 'object' && !Array.isArray(raw.days) ? raw.days : {}
+  const classDays =
+    raw.classDays && typeof raw.classDays === 'object' && !Array.isArray(raw.classDays)
+      ? raw.classDays
+      : {}
+  return {
+    id,
+    name,
+    topicIds,
+    topics: parseTopicsStored(raw.topics, topicIds),
+    start,
+    end,
+    prize: parsePrizeStored(raw.prize),
+    days,
+    classDays,
+  }
+}
+
+function parseChallengesMap(raw) {
+  const src = raw && typeof raw === 'object' && !Array.isArray(raw) ? raw : {}
+  const out = {}
+  for (const item of Object.values(src)) {
+    const parsed = parseChallengeStored(item)
+    if (parsed) out[parsed.id] = parsed
+  }
+  return out
+}
+
+function serializeChallenge(ch) {
+  const out = {
+    id: ch.id,
+    name: ch.name,
+    topicIds: ch.topicIds,
+    topics: ch.topics,
+    start: ch.start,
+    end: ch.end,
+    prize: ch.prize,
+    days: ch.days || {},
+  }
+  if (ch.classDays && Object.keys(ch.classDays).length) out.classDays = ch.classDays
+  return out
+}
+
+function publicPrize(prize) {
+  return parsePrizeStored(prize)
+}
+
+function publicTopics(ch) {
+  return parseTopicsStored(ch.topics, ch.topicIds)
+}
+
+function publicClassChallenge(ch, className, now) {
+  const summary = summarizeDays(ch.days, now)
+  const prize = publicPrize(ch.prize)
+  const body = {
+    id: ch.id,
+    name: ch.name,
+    scope: 'class',
+    start: ch.start,
+    end: ch.end,
+    topics: publicTopics(ch),
+    prize,
+    points: {
+      today: summary.today,
+      week: summary.week,
+      month: summary.month,
+      year: summary.year,
+      total: summary.total,
+    },
+    className,
+    active: isInChallengeWindow(ch.start, ch.end, now),
+  }
+  if (prize.enabled && prize.classPrize && typeof prize.classThreshold === 'number') {
+    body.classThreshold = prize.classThreshold
+    body.reachedThreshold = summary.total >= prize.classThreshold
+  }
+  return body
+}
+
+function publicGradeChallenge(ch, grade, now) {
+  const prize = publicPrize(ch.prize)
+  const classDays = ch.classDays || {}
+  const classes = []
+  let points = emptyPoints()
+  let period = summarizeDays({}, now).period
+  for (const classCode of grade.classes) {
+    const stored = grade._classByCode && grade._classByCode[classCode]
+    const days = classDays[classCode] || {}
+    const summary = summarizeDays(days, now)
+    period = summary.period
+    const standing = {
+      id: publicIdFromCode(classCode),
+      name: stored ? stored.name : 'Klasse',
+      points: {
+        today: summary.today,
+        week: summary.week,
+        month: summary.month,
+        year: summary.year,
+        total: summary.total,
+      },
+    }
+    classes.push(standing)
+    points = addBreakdown(points, standing.points)
+  }
+  classes.sort((a, b) => b.points.total - a.points.total || a.name.localeCompare(b.name, 'de'))
+  return {
+    id: ch.id,
+    name: ch.name,
+    scope: 'grade',
+    start: ch.start,
+    end: ch.end,
+    topics: publicTopics(ch),
+    prize,
+    classes,
+    points,
+    period,
+    active: isInChallengeWindow(ch.start, ch.end, now),
+  }
+}
+
+function topicAllowed(ch, topicId) {
+  if (typeof topicId !== 'string' || !topicId.trim()) return false
+  return ch.topicIds.includes(topicId.trim())
+}
+
+function challengeIndexKey(id) {
+  return `${CHALLENGE_INDEX_PREFIX}${id}`
+}
+
 function parseRaw(raw) {
   if (!raw) return null
   try {
@@ -198,6 +451,7 @@ function parseClassStored(raw) {
     createdAt,
     days,
     gradeId: isValidClassCode(gradeId) ? gradeId : undefined,
+    challenges: parseChallengesMap(data.challenges),
   }
 }
 
@@ -215,6 +469,7 @@ function parseGradeStored(raw) {
     name,
     createdAt,
     classes: uniqueValidCodes(data.classes),
+    challenges: parseChallengesMap(data.challenges),
   }
 }
 
@@ -225,16 +480,29 @@ function serializeClass(stored) {
     days: stored.days || {},
   }
   if (stored.gradeId) out.gradeId = stored.gradeId
+  const challenges = stored.challenges || {}
+  if (Object.keys(challenges).length) {
+    const packed = {}
+    for (const [id, ch] of Object.entries(challenges)) packed[id] = serializeChallenge(ch)
+    out.challenges = packed
+  }
   return out
 }
 
 function serializeGrade(stored) {
-  return {
+  const out = {
     type: 'grade',
     name: stored.name,
     createdAt: stored.createdAt,
     classes: uniqueValidCodes(stored.classes),
   }
+  const challenges = stored.challenges || {}
+  if (Object.keys(challenges).length) {
+    const packed = {}
+    for (const [id, ch] of Object.entries(challenges)) packed[id] = serializeChallenge(ch)
+    out.challenges = packed
+  }
+  return out
 }
 
 function emptyPoints() {
@@ -268,11 +536,13 @@ function standingFromClass(classCode, stored, now) {
 
 async function buildGradeView(env, gradeCode, grade, now = Date.now()) {
   const classes = []
+  const classByCode = {}
   let points = emptyPoints()
   let period = summarizeDays({}, now).period
   for (const classCode of grade.classes) {
     const stored = parseClassStored(await env.CLASSES.get(classCode))
     if (!stored) continue
+    classByCode[classCode] = stored
     const standing = standingFromClass(classCode, stored, now)
     const summary = summarizeDays(stored.days, now)
     period = summary.period
@@ -280,13 +550,22 @@ async function buildGradeView(env, gradeCode, grade, now = Date.now()) {
     points = addBreakdown(points, standing.points)
   }
   classes.sort((a, b) => a.name.localeCompare(b.name, 'de') || a.id.localeCompare(b.id))
-  return {
+  const gradeWithClasses = { ...grade, _classByCode: classByCode }
+  const activeChallenges = Object.values(grade.challenges || {})
+    .filter((ch) => isInChallengeWindow(ch.start, ch.end, now))
+    .map((ch) => publicGradeChallenge(ch, gradeWithClasses, now))
+  const view = {
     id: publicIdFromCode(gradeCode),
     name: grade.name,
     classes,
     points,
     period,
   }
+  if (activeChallenges.length) {
+    view.challenges = activeChallenges
+    view.challenge = activeChallenges[0]
+  }
+  return view
 }
 
 function publicClass(code, stored, now = Date.now(), gradeView = null) {
@@ -305,17 +584,29 @@ function publicClass(code, stored, now = Date.now(), gradeView = null) {
     period: summary.period,
   }
   if (gradeView) body.grade = gradeView
+  const classActive = Object.values(stored.challenges || {})
+    .filter((ch) => isInChallengeWindow(ch.start, ch.end, now))
+    .map((ch) => publicClassChallenge(ch, stored.name, now))
+  const gradeActive = gradeView && Array.isArray(gradeView.challenges) ? gradeView.challenges : []
+  const all = [...classActive, ...gradeActive]
+  if (all.length) {
+    body.challenges = all
+    body.challenge = all[0]
+  }
   return body
 }
 
 function publicGradeView(view) {
-  return {
+  const body = {
     id: view.id,
     name: view.name,
     classes: view.classes,
     points: view.points,
     period: view.period,
   }
+  if (view.challenges) body.challenges = view.challenges
+  if (view.challenge) body.challenge = view.challenge
+  return body
 }
 
 function corsHeaders(request) {
@@ -352,6 +643,7 @@ export const RATE_LIMITS = {
   points: { limit: 60, windowMs: 60_000 },
   gradeCreate: { limit: 8, windowMs: 60_000 },
   gradeUpdate: { limit: 30, windowMs: 60_000 },
+  challengeCreate: { limit: 8, windowMs: 60_000 },
 }
 
 const hits = new Map()
@@ -557,7 +849,7 @@ async function handlePoints(request, env, rawCode) {
   } catch {
     return errorJson(request, 400, 'Ungültiges JSON.', 'BAD_JSON')
   }
-  const delta = body.delta
+  const delta = Number.isInteger(body.delta) ? body.delta : body.points
   if (!Number.isInteger(delta) || delta < 1 || delta > MAX_POINTS_DELTA) {
     return errorJson(
       request,
@@ -566,15 +858,54 @@ async function handlePoints(request, env, rawCode) {
       'BAD_DELTA',
     )
   }
+  const topicId = typeof body.topicId === 'string' ? body.topicId.trim() : ''
   const loaded = await loadClass(env, rawCode)
   const err = classLoadError(request, loaded, true)
   if (err) return err
-  const day = berlinDayKey()
+  const now = Date.now()
+  const day = berlinDayKey(now)
   const days = { ...loaded.stored.days }
   days[day] = (asPoints(days[day]) || 0) + delta
-  const stored = { ...loaded.stored, days }
+  const stored = { ...loaded.stored, days, challenges: { ...(loaded.stored.challenges || {}) } }
+  if (topicId) {
+    for (const ch of Object.values(stored.challenges)) {
+      if (!isInChallengeWindow(ch.start, ch.end, now)) continue
+      if (!topicAllowed(ch, topicId)) continue
+      const challengeDays = { ...(ch.days || {}) }
+      challengeDays[day] = (asPoints(challengeDays[day]) || 0) + delta
+      ch.days = challengeDays
+    }
+    if (stored.gradeId) {
+      const grade = parseGradeStored(await env.CLASSES.get(stored.gradeId))
+      if (grade) {
+        let gradeChanged = false
+        const gradeChallenges = { ...(grade.challenges || {}) }
+        for (const ch of Object.values(gradeChallenges)) {
+          if (!isInChallengeWindow(ch.start, ch.end, now)) continue
+          if (!topicAllowed(ch, topicId)) continue
+          const classDays = { ...(ch.classDays || {}) }
+          const bucket = { ...(classDays[loaded.code] || {}) }
+          bucket[day] = (asPoints(bucket[day]) || 0) + delta
+          classDays[loaded.code] = bucket
+          ch.classDays = classDays
+          gradeChanged = true
+        }
+        if (gradeChanged) {
+          await env.CLASSES.put(
+            stored.gradeId,
+            JSON.stringify(serializeGrade({ ...grade, challenges: gradeChallenges })),
+          )
+        }
+      }
+    }
+  }
   await putClass(env, loaded.code, stored)
-  return json(request, 200, publicClass(loaded.code, stored))
+  let gradeView = null
+  if (stored.gradeId) {
+    const grade = parseGradeStored(await env.CLASSES.get(stored.gradeId))
+    if (grade) gradeView = await buildGradeView(env, stored.gradeId, grade, now)
+  }
+  return json(request, 200, publicClass(loaded.code, stored, now, gradeView))
 }
 
 async function handleCreateGrade(request, env) {
@@ -706,6 +1037,171 @@ async function handleUpdateGradeClasses(request, env, rawCode) {
   return json(request, 200, publicGradeView(view))
 }
 
+async function allocateChallengeId(env) {
+  for (let attempt = 0; attempt < 8; attempt++) {
+    const id = generateClassCode()
+    const existing = await env.CLASSES.get(challengeIndexKey(id))
+    if (existing) continue
+    return id
+  }
+  return null
+}
+
+function readChallengeCreateBody(body) {
+  const scope = body.scope === 'grade' ? 'grade' : body.scope === 'class' ? 'class' : ''
+  if (!scope) return { error: 'Bitte den Umfang Klasse oder Stufe wählen.', code: 'BAD_SCOPE' }
+  const named = readDisplayName(body, 'Bitte einen Challenge-Namen eingeben.')
+  if (named.error) return { error: named.error, code: 'BAD_NAME' }
+  const topicIds = parseTopicIdsStored(body.topicIds)
+  if (topicIds.length === 0) {
+    return { error: 'Bitte mindestens ein Challenge-Thema wählen.', code: 'BAD_TOPICS' }
+  }
+  const start = typeof body.start === 'string' ? body.start.trim() : ''
+  const end = typeof body.end === 'string' ? body.end.trim() : ''
+  const startMs = parseChallengeInstant(start)
+  const endMs = parseChallengeInstant(end)
+  if (!Number.isFinite(startMs) || !Number.isFinite(endMs) || endMs < startMs) {
+    return { error: 'Bitte Start und Ende (Europe/Berlin) angeben.', code: 'BAD_WINDOW' }
+  }
+  const prize = parsePrizeStored(body.prize)
+  if (scope === 'grade' && prize.classThreshold != null) {
+    delete prize.classThreshold
+  }
+  const hostCode = normalizeClassCode(scope === 'class' ? body.classCode : body.gradeCode)
+  if (!isValidClassCode(hostCode)) {
+    return {
+      error: scope === 'class' ? 'Bitte einen Klassencode senden.' : 'Bitte einen Stufencode senden.',
+      code: 'BAD_HOST',
+    }
+  }
+  return {
+    scope,
+    hostCode,
+    name: named.name,
+    topicIds,
+    topics: parseTopicsStored(body.topics, topicIds),
+    start,
+    end,
+    prize,
+  }
+}
+
+async function handleCreateChallenge(request, env) {
+  if (
+    !rateLimit(
+      `challengeCreate:${clientKey(request)}`,
+      RATE_LIMITS.challengeCreate.limit,
+      RATE_LIMITS.challengeCreate.windowMs,
+    )
+  ) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
+  }
+  if (!env.CLASSES) {
+    return errorJson(request, 503, 'KV-Bindung CLASSES fehlt.', 'NO_KV')
+  }
+  let body
+  try {
+    body = await readJson(request)
+  } catch {
+    return errorJson(request, 400, 'Ungültiges JSON.', 'BAD_JSON')
+  }
+  const parsed = readChallengeCreateBody(body)
+  if (parsed.error) return errorJson(request, 400, parsed.error, parsed.code)
+
+  const id = await allocateChallengeId(env)
+  if (!id) {
+    return errorJson(request, 503, 'Keine freie Challenge-ID. Bitte erneut versuchen.', 'BUSY')
+  }
+
+  const challenge = {
+    id,
+    name: parsed.name,
+    topicIds: parsed.topicIds,
+    topics: parsed.topics,
+    start: parsed.start,
+    end: parsed.end,
+    prize: parsed.prize,
+    days: {},
+    classDays: {},
+  }
+
+  if (parsed.scope === 'class') {
+    const loaded = await loadClass(env, parsed.hostCode)
+    const err = classLoadError(request, loaded)
+    if (err) return err
+    const stored = {
+      ...loaded.stored,
+      challenges: { ...(loaded.stored.challenges || {}), [id]: challenge },
+    }
+    await putClass(env, loaded.code, stored)
+    await env.CLASSES.put(
+      challengeIndexKey(id),
+      JSON.stringify({ scope: 'class', hostCode: loaded.code }),
+    )
+    return json(request, 201, {
+      ...publicClassChallenge(challenge, stored.name, Date.now()),
+      host: 'class',
+    })
+  }
+
+  const loaded = await loadGrade(env, parsed.hostCode)
+  const err = gradeLoadError(request, loaded)
+  if (err) return err
+  const stored = {
+    ...loaded.stored,
+    challenges: { ...(loaded.stored.challenges || {}), [id]: challenge },
+  }
+  await env.CLASSES.put(loaded.code, JSON.stringify(serializeGrade(stored)))
+  await env.CLASSES.put(
+    challengeIndexKey(id),
+    JSON.stringify({ scope: 'grade', hostCode: loaded.code }),
+  )
+  const view = await buildGradeView(env, loaded.code, stored)
+  const publicCh =
+    view.challenge && view.challenge.id === id
+      ? view.challenge
+      : publicGradeChallenge(challenge, { ...stored, _classByCode: {} }, Date.now())
+  return json(request, 201, { ...publicCh, host: 'grade' })
+}
+
+async function handleGetChallenge(request, env, rawId) {
+  if (!rateLimit(`get:${clientKey(request)}`, RATE_LIMITS.get.limit, RATE_LIMITS.get.windowMs)) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
+  }
+  const id = normalizeClassCode(rawId)
+  if (!isValidClassCode(id)) {
+    return errorJson(request, 400, 'Die Challenge-ID ist ungültig.', 'BAD_CODE')
+  }
+  if (!env.CLASSES) {
+    return errorJson(request, 503, 'KV-Bindung CLASSES fehlt.', 'NO_KV')
+  }
+  const index = parseRaw(await env.CLASSES.get(challengeIndexKey(id)))
+  if (!index || typeof index.hostCode !== 'string') {
+    return errorJson(request, 404, 'Diese Challenge gibt es nicht.', 'NOT_FOUND')
+  }
+  const now = Date.now()
+  if (index.scope === 'grade') {
+    const loaded = await loadGrade(env, index.hostCode)
+    const err = gradeLoadError(request, loaded)
+    if (err) return err
+    const ch = (loaded.stored.challenges || {})[id]
+    if (!ch) return errorJson(request, 404, 'Diese Challenge gibt es nicht.', 'NOT_FOUND')
+    const view = await buildGradeView(env, loaded.code, loaded.stored, now)
+    const fromView = (view.challenges || []).find((row) => row.id === id)
+    return json(
+      request,
+      200,
+      fromView || publicGradeChallenge(ch, { ...loaded.stored, _classByCode: {} }, now),
+    )
+  }
+  const loaded = await loadClass(env, index.hostCode)
+  const err = classLoadError(request, loaded)
+  if (err) return err
+  const ch = (loaded.stored.challenges || {})[id]
+  if (!ch) return errorJson(request, 404, 'Diese Challenge gibt es nicht.', 'NOT_FOUND')
+  return json(request, 200, publicClassChallenge(ch, loaded.stored.name, now))
+}
+
 export async function handleRequest(request, env) {
   if (request.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: corsHeaders(request) })
@@ -761,6 +1257,15 @@ export async function handleRequest(request, env) {
   const gradeClassesMatch = /^\/grades\/([^/]+)\/classes$/.exec(path)
   if (gradeClassesMatch && method === 'PUT') {
     return handleUpdateGradeClasses(request, env, decodeURIComponent(gradeClassesMatch[1]))
+  }
+
+  if (path === '/challenges' && method === 'POST') {
+    return handleCreateChallenge(request, env)
+  }
+
+  const challengeMatch = /^\/challenges\/([^/]+)$/.exec(path)
+  if (challengeMatch && method === 'GET') {
+    return handleGetChallenge(request, env, decodeURIComponent(challengeMatch[1]))
   }
 
   return errorJson(request, 404, 'Unbekannter Pfad.', 'NOT_FOUND')

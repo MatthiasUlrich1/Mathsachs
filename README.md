@@ -35,10 +35,10 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   davon landet auf dem Klassen-Server. Im Profil eines Lehrers oder
   Klassenlehrers steht der Code zum Weitergeben an andere Lehrer der Schule.
   Die **Rollen-Rechte-Matrix** im Profil zeigt die Rechte. **Klassenlehrer**
-  können einer Klasse beitreten, aber keine Klausur erstellen/schreiben,
-  keine Codes anlegen und keine Punkte senden. Nur **Lehrer** legen eine
-  Stufe an oder tragen einen Stufencode ein. Eltern erstellen weiter
-  Klassencodes. Fehlt die Rolle (ältere Profile), gilt **Schüler** — außer
+  können einer Klasse beitreten und eine **Klassenchallenge** anlegen, aber
+  keine Klausur erstellen/schreiben, keine Codes anlegen, keine Stufe
+  anlegen und keine Punkte senden. Nur **Lehrer** legen eine Stufe oder
+  eine **Stufenchallenge** an. Eltern erstellen weiter Klassencodes. Fehlt die Rolle (ältere Profile), gilt **Schüler** — außer
   es gibt bereits eigene Klassencodes, dann **Eltern**. Niemand wird
   automatisch **Lehrer**.
 
@@ -57,7 +57,10 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   | Klassen auf eingetragener Stufe anlegen | — | — | — | ✓ |
   | Stufen-Wettbewerb sehen | über Klasse | über Klasse | über Klasse | Klasse oder Stufe |
   | Aufgaben ergänzen | — | — | — | ✓ |
-  | Challenge erstellen | — | — | geplant | geplant |
+  | Challenge anlegen (Klasse) | — | — | ✓ | ✓ |
+  | Challenge anlegen (Stufe) | — | — | — | ✓ |
+  | Challenge sehen | ✓ | ✓ | ✓ | ✓ |
+  | Challenge mitmachen | ✓ | — | ✓ | ✓ |
 
 - **Aufgaben ergänzen:** Nur **Lehrer** können unter **Einstellungen →
   Aufgaben ergänzen** Vorgaben für neue Übungsaufgaben senden
@@ -71,8 +74,15 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Einstellungen-Übersicht.
   In den Einstellungen zeigt
   die Leiste **Zum Üben** links neben **Einstellungen** (hervorgehoben) und
-  blendet Themen, Klausur und Punkteprotokoll aus. **Zurück** führt zur Liste.
+  blendet Themen, Challenge, Klausur und Punkteprotokoll aus. **Zurück** führt zur Liste.
   WLAN-Zugang nur unter Einstellungen, nicht auf der Benutzerauswahl.
+- **Challenge**: Lehrer legen eine **Klassen-** oder **Stufenchallenge**
+  an (Themen, Start/Ende **Europe/Berlin**, optionale Gewinnchance).
+  Klassenlehrer nur Klassenchallenge (mit eingetragenem Klassencode).
+  Schüler üben die Challenge-Themen; Eltern sehen den Tab nur.
+  Punkte in den gewählten Themen zählen weiter für Klasse/Stufe **und**
+  extra für die Challenge. Online nur anonyme Summen — kein Schülername.
+  Nachweis für „bester Schüler“ ist das lokale **Challenge-Protokoll**.
 - **Punkteprotokoll**: Auswertung je Thema in Prozent und Gesamtpunktzahl,
   plus Tag / Woche / Monat / Schuljahr aus den lokalen Übungen und den an
   eine Klasse gesendeten Punkten; ebenfalls druckbar.
@@ -93,7 +103,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.30**).
+(aktuelle Version **0.1.31**).
 
 Die App prüft beim Start und — solange sie geöffnet bleibt — einmal pro
 Kalendertag (**Europe/Berlin**) die öffentlichen
@@ -233,17 +243,20 @@ Unter **Einstellungen → Klasse**:
 | `GET` | `/` | — | `{ ok, service, hasClasses }` |
 | `POST` | `/classes` | `{ name }` | `{ code, name, points, period }` |
 | `GET` | `/classes/:code` | — | Klasse + Aufschlüsselung; bei Zuordnung `grade` (Namen + Summen, keine Mitgliedscodes) |
-| `POST` | `/classes/:code/points` | `{ delta }` (1–100) | aktualisierte Klasse; Stufencode wird abgelehnt |
+| `POST` | `/classes/:code/points` | `{ delta }` (1–100), optional `topicId` | aktualisierte Klasse; Challenge-Punkte nur bei aktivem Fenster und erlaubtem Thema |
 | `DELETE` | `/classes/:code` | — | `{ ok, deleted }` |
 | `POST` | `/grades` | `{ name }` | `{ code, name, … }` (Lehrer-Stufencode) |
 | `GET` | `/grades/:code` | — | Stufe + Klassenstände **ohne** Mitgliedscodes |
 | `PUT` | `/grades/:code/classes` | `{ add?, remove? }` | Zuordnung; jeder `add` muss ein Klassencode sein |
 | `DELETE` | `/grades/:code` | — | Stufe löschen; Klassencodes und ihre Punkte bleiben |
+| `POST` | `/challenges` | `{ scope, classCode?\|gradeCode?, name, topicIds, start, end, prize }` | Challenge anlegen (Geheimnis = Klassen-/Stufencode) |
+| `GET` | `/challenges/:id` | — | anonyme Summen, Themen, Gewinntext — keine Personennamen |
 
-KV-Wert Klasse: `{ name, createdAt, days, gradeId? }`. KV-Wert Stufe:
-`{ type: "grade", name, createdAt, classes }`. Woche/Monat/Jahr werden
+KV-Wert Klasse: `{ name, createdAt, days, gradeId?, challenges? }`. KV-Wert Stufe:
+`{ type: "grade", name, createdAt, classes, challenges? }`. Woche/Monat/Jahr werden
 server-seitig aus den Tages-Buckets der Mitgliedsklassen addiert. Die
-Bindung heißt **`CLASSES`**. Keine Personendaten.
+Bindung heißt **`CLASSES`**. Keine Personendaten. Nach einer Worker-Änderung
+die Datei `cloudflare/worker.js` in Cloudflare einfügen und **Deploy**.
 
 Rate-Limits je Client-IP / 60 s (siehe `cloudflare/worker.js`): **GET**
 Klasse/Stufe 300, **DELETE** 30, **POST** neue Klasse 8, **POST** neue Stufe 8,
