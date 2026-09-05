@@ -2,13 +2,18 @@
  * Mathsachs class-points Worker (KV binding MUST be named CLASSES).
  *
  * Paste this entire file into dash.cloudflare.com → Workers → mathsachs-punkte
- * → Edit Code, then Deploy. Keep in sync with src/classCode/buckets.ts and
- * src/classCode/code.ts.
+ * → Edit Code, then Deploy. Keep in sync with src/classCode/buckets.ts,
+ * src/classCode/code.ts and src/classCode/publicId.ts.
  *
  * Rate limits per client IP / 60s (classroom-safe listing + a few deletes):
- * GET /classes/:code 300, DELETE 30, POST /classes 8, POST points 60.
+ * GET class/grade 300, DELETE 30, POST /classes 8, POST /grades 8,
+ * PUT grade membership 30, POST points 60.
  * GET / (health) is not rate-limited. Raise GET/DELETE here if a class page
  * with many Eigene Codes still 429s; keep POST points tight against abuse.
+ *
+ * Privacy: KV stores class/grade display names and daily point buckets only.
+ * No pupil names, user ids or emails. GET /grades never returns member
+ * Klassencodes. Points are accepted only on class records.
  */
 
 const BERLIN_TZ = 'Europe/Berlin'
@@ -16,10 +21,11 @@ const CLASS_CODE_ALPHABET = '0123456789ABCDEFGHJKMNPQRSTVWXYZ'
 const CLASS_CODE_LENGTH = 8
 const MAX_POINTS_DELTA = 100
 const MAX_CLASS_NAME_LENGTH = 80
+const MAX_GRADE_CLASSES = 40
 const SERVICE = 'mathsachs-punkte'
 const DAY_RE = /^\d{4}-\d{2}-\d{2}$/
 
-const ALLOWED_METHODS = 'GET, POST, DELETE, OPTIONS'
+const ALLOWED_METHODS = 'GET, POST, PUT, DELETE, OPTIONS'
 
 export function normalizeClassCode(raw) {
   if (typeof raw !== 'string') return ''
@@ -45,6 +51,17 @@ export function generateClassCode() {
     out += CLASS_CODE_ALPHABET[bytes[i] % CLASS_CODE_ALPHABET.length]
   }
   return out
+}
+
+/** Anonymous UI key. Prefixed so it is never a valid 8-character Klassencode. */
+export function publicIdFromCode(code) {
+  let hash = 2166136261
+  const text = String(code || '')
+  for (let i = 0; i < text.length; i++) {
+    hash ^= text.charCodeAt(i)
+    hash = Math.imul(hash, 16777619)
+  }
+  return `n${(hash >>> 0).toString(16).padStart(8, '0')}`
 }
 
 function berlinParts(at) {
@@ -136,28 +153,145 @@ export function summarizeDays(days, now = Date.now()) {
   }
 }
 
-function parseStored(raw) {
+function parseRaw(raw) {
   if (!raw) return null
   try {
     const data = typeof raw === 'string' ? JSON.parse(raw) : raw
     if (!data || typeof data !== 'object') return null
-    const name = typeof data.name === 'string' ? data.name.trim() : ''
-    if (!name) return null
-    const days =
-      data.days && typeof data.days === 'object' && !Array.isArray(data.days) ? data.days : {}
-    const createdAt =
-      typeof data.createdAt === 'number' && Number.isFinite(data.createdAt)
-        ? data.createdAt
-        : Date.now()
-    return { name, createdAt, days }
+    return data
   } catch {
     return null
   }
 }
 
-function publicClass(code, stored, now = Date.now()) {
+function isGradeRecord(data) {
+  return Boolean(data && data.type === 'grade')
+}
+
+function uniqueValidCodes(list) {
+  const out = []
+  const seen = new Set()
+  const src = Array.isArray(list) ? list : []
+  for (const item of src) {
+    const code = normalizeClassCode(item)
+    if (!isValidClassCode(code) || seen.has(code)) continue
+    seen.add(code)
+    out.push(code)
+  }
+  return out
+}
+
+function parseClassStored(raw) {
+  const data = parseRaw(raw)
+  if (!data || isGradeRecord(data)) return null
+  const name = typeof data.name === 'string' ? data.name.trim() : ''
+  if (!name) return null
+  const days =
+    data.days && typeof data.days === 'object' && !Array.isArray(data.days) ? data.days : {}
+  const createdAt =
+    typeof data.createdAt === 'number' && Number.isFinite(data.createdAt)
+      ? data.createdAt
+      : Date.now()
+  const gradeId = typeof data.gradeId === 'string' ? normalizeClassCode(data.gradeId) : ''
+  return {
+    name,
+    createdAt,
+    days,
+    gradeId: isValidClassCode(gradeId) ? gradeId : undefined,
+  }
+}
+
+function parseGradeStored(raw) {
+  const data = parseRaw(raw)
+  if (!data || !isGradeRecord(data)) return null
+  const name = typeof data.name === 'string' ? data.name.trim() : ''
+  if (!name) return null
+  const createdAt =
+    typeof data.createdAt === 'number' && Number.isFinite(data.createdAt)
+      ? data.createdAt
+      : Date.now()
+  return {
+    type: 'grade',
+    name,
+    createdAt,
+    classes: uniqueValidCodes(data.classes),
+  }
+}
+
+function serializeClass(stored) {
+  const out = {
+    name: stored.name,
+    createdAt: stored.createdAt,
+    days: stored.days || {},
+  }
+  if (stored.gradeId) out.gradeId = stored.gradeId
+  return out
+}
+
+function serializeGrade(stored) {
+  return {
+    type: 'grade',
+    name: stored.name,
+    createdAt: stored.createdAt,
+    classes: uniqueValidCodes(stored.classes),
+  }
+}
+
+function emptyPoints() {
+  return { today: 0, week: 0, month: 0, year: 0, total: 0 }
+}
+
+function addBreakdown(a, b) {
+  return {
+    today: a.today + b.today,
+    week: a.week + b.week,
+    month: a.month + b.month,
+    year: a.year + b.year,
+    total: a.total + b.total,
+  }
+}
+
+function standingFromClass(classCode, stored, now) {
   const summary = summarizeDays(stored.days, now)
   return {
+    id: publicIdFromCode(classCode),
+    name: stored.name,
+    points: {
+      today: summary.today,
+      week: summary.week,
+      month: summary.month,
+      year: summary.year,
+      total: summary.total,
+    },
+  }
+}
+
+async function buildGradeView(env, gradeCode, grade, now = Date.now()) {
+  const classes = []
+  let points = emptyPoints()
+  let period = summarizeDays({}, now).period
+  for (const classCode of grade.classes) {
+    const stored = parseClassStored(await env.CLASSES.get(classCode))
+    if (!stored) continue
+    const standing = standingFromClass(classCode, stored, now)
+    const summary = summarizeDays(stored.days, now)
+    period = summary.period
+    classes.push(standing)
+    points = addBreakdown(points, standing.points)
+  }
+  classes.sort((a, b) => a.name.localeCompare(b.name, 'de') || a.id.localeCompare(b.id))
+  return {
+    id: publicIdFromCode(gradeCode),
+    name: grade.name,
+    classes,
+    points,
+    period,
+  }
+}
+
+function publicClass(code, stored, now = Date.now(), gradeView = null) {
+  const summary = summarizeDays(stored.days, now)
+  const body = {
     code,
     name: stored.name,
     createdAt: stored.createdAt,
@@ -169,6 +303,18 @@ function publicClass(code, stored, now = Date.now()) {
       total: summary.total,
     },
     period: summary.period,
+  }
+  if (gradeView) body.grade = gradeView
+  return body
+}
+
+function publicGradeView(view) {
+  return {
+    id: view.id,
+    name: view.name,
+    classes: view.classes,
+    points: view.points,
+    period: view.period,
   }
 }
 
@@ -204,6 +350,8 @@ export const RATE_LIMITS = {
   delete: { limit: 30, windowMs: 60_000 },
   get: { limit: 300, windowMs: 60_000 },
   points: { limit: 60, windowMs: 60_000 },
+  gradeCreate: { limit: 8, windowMs: 60_000 },
+  gradeUpdate: { limit: 30, windowMs: 60_000 },
 }
 
 const hits = new Map()
@@ -251,6 +399,27 @@ function pathnameOf(request) {
   }
 }
 
+function readDisplayName(body, emptyMessage) {
+  const name = typeof body.name === 'string' ? body.name.trim() : ''
+  if (!name) return { error: emptyMessage }
+  if (name.length > MAX_CLASS_NAME_LENGTH) {
+    return {
+      error: `Der Name darf höchstens ${MAX_CLASS_NAME_LENGTH} Zeichen haben.`,
+    }
+  }
+  return { name }
+}
+
+async function allocateCode(env) {
+  for (let attempt = 0; attempt < 8; attempt++) {
+    const code = generateClassCode()
+    const existing = await env.CLASSES.get(code)
+    if (existing) continue
+    return code
+  }
+  return null
+}
+
 async function handleCreate(request, env) {
   if (!rateLimit(`create:${clientKey(request)}`, RATE_LIMITS.create.limit, RATE_LIMITS.create.windowMs)) {
     return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
@@ -264,34 +433,91 @@ async function handleCreate(request, env) {
   } catch {
     return errorJson(request, 400, 'Ungültiges JSON.', 'BAD_JSON')
   }
-  const name = typeof body.name === 'string' ? body.name.trim() : ''
-  if (!name) return errorJson(request, 400, 'Bitte einen Klassennamen eingeben.', 'BAD_NAME')
-  if (name.length > MAX_CLASS_NAME_LENGTH) {
-    return errorJson(
-      request,
-      400,
-      `Der Klassenname darf höchstens ${MAX_CLASS_NAME_LENGTH} Zeichen haben.`,
-      'BAD_NAME',
-    )
+  const named = readDisplayName(body, 'Bitte einen Klassennamen eingeben.')
+  if (named.error) return errorJson(request, 400, named.error, 'BAD_NAME')
+  const code = await allocateCode(env)
+  if (!code) {
+    return errorJson(request, 503, 'Kein freier Klassencode. Bitte erneut versuchen.', 'BUSY')
   }
-  for (let attempt = 0; attempt < 8; attempt++) {
-    const code = generateClassCode()
-    const existing = await env.CLASSES.get(code)
-    if (existing) continue
-    const stored = { name, createdAt: Date.now(), days: {} }
-    await env.CLASSES.put(code, JSON.stringify(stored))
-    return json(request, 201, publicClass(code, stored))
-  }
-  return errorJson(request, 503, 'Kein freier Klassencode. Bitte erneut versuchen.', 'BUSY')
+  const stored = { name: named.name, createdAt: Date.now(), days: {} }
+  await env.CLASSES.put(code, JSON.stringify(stored))
+  return json(request, 201, publicClass(code, stored))
 }
 
 async function loadClass(env, rawCode) {
   const code = normalizeClassCode(rawCode)
   if (!isValidClassCode(code)) return { error: 'BAD_CODE' }
   if (!env.CLASSES) return { error: 'NO_KV' }
-  const stored = parseStored(await env.CLASSES.get(code))
+  const raw = await env.CLASSES.get(code)
+  const data = parseRaw(raw)
+  if (isGradeRecord(data)) return { error: 'NOT_CLASS', code }
+  const stored = parseClassStored(raw)
   if (!stored) return { error: 'NOT_FOUND', code }
   return { code, stored }
+}
+
+async function loadGrade(env, rawCode) {
+  const code = normalizeClassCode(rawCode)
+  if (!isValidClassCode(code)) return { error: 'BAD_CODE' }
+  if (!env.CLASSES) return { error: 'NO_KV' }
+  const raw = await env.CLASSES.get(code)
+  const data = parseRaw(raw)
+  if (data && !isGradeRecord(data)) return { error: 'NOT_GRADE', code }
+  const stored = parseGradeStored(raw)
+  if (!stored) return { error: 'NOT_FOUND', code }
+  return { code, stored }
+}
+
+function classLoadError(request, loaded, forPoints = false) {
+  if (loaded.error === 'BAD_CODE') {
+    return errorJson(request, 400, 'Der Klassencode ist ungültig.', 'BAD_CODE')
+  }
+  if (loaded.error === 'NO_KV') {
+    return errorJson(request, 503, 'KV-Bindung CLASSES fehlt.', 'NO_KV')
+  }
+  if (loaded.error === 'NOT_CLASS') {
+    return errorJson(
+      request,
+      400,
+      forPoints
+        ? 'Das ist ein Klassenstufencode. Punkte gehen nur an Klassencodes.'
+        : 'Das ist ein Klassenstufencode, kein Klassencode.',
+      'NOT_CLASS',
+    )
+  }
+  if (loaded.error === 'NOT_FOUND') {
+    return errorJson(request, 404, 'Diesen Klassencode gibt es nicht.', 'NOT_FOUND')
+  }
+  return null
+}
+
+function gradeLoadError(request, loaded) {
+  if (loaded.error === 'BAD_CODE') {
+    return errorJson(request, 400, 'Der Stufencode ist ungültig.', 'BAD_CODE')
+  }
+  if (loaded.error === 'NO_KV') {
+    return errorJson(request, 503, 'KV-Bindung CLASSES fehlt.', 'NO_KV')
+  }
+  if (loaded.error === 'NOT_GRADE') {
+    return errorJson(request, 400, 'Das ist ein Klassencode, kein Stufencode.', 'NOT_GRADE')
+  }
+  if (loaded.error === 'NOT_FOUND') {
+    return errorJson(request, 404, 'Diesen Stufencode gibt es nicht.', 'NOT_FOUND')
+  }
+  return null
+}
+
+async function unlinkClassFromGrade(env, classCode, gradeId) {
+  if (!gradeId) return
+  const grade = parseGradeStored(await env.CLASSES.get(gradeId))
+  if (!grade) return
+  const next = grade.classes.filter((item) => item !== classCode)
+  if (next.length === grade.classes.length) return
+  await env.CLASSES.put(gradeId, JSON.stringify(serializeGrade({ ...grade, classes: next })))
+}
+
+async function putClass(env, code, stored) {
+  await env.CLASSES.put(code, JSON.stringify(serializeClass(stored)))
 }
 
 async function handleDelete(request, env, rawCode) {
@@ -299,15 +525,9 @@ async function handleDelete(request, env, rawCode) {
     return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
   }
   const loaded = await loadClass(env, rawCode)
-  if (loaded.error === 'BAD_CODE') {
-    return errorJson(request, 400, 'Der Klassencode ist ungültig.', 'BAD_CODE')
-  }
-  if (loaded.error === 'NO_KV') {
-    return errorJson(request, 503, 'KV-Bindung CLASSES fehlt.', 'NO_KV')
-  }
-  if (loaded.error === 'NOT_FOUND') {
-    return errorJson(request, 404, 'Diesen Klassencode gibt es nicht.', 'NOT_FOUND')
-  }
+  const err = classLoadError(request, loaded)
+  if (err) return err
+  await unlinkClassFromGrade(env, loaded.code, loaded.stored.gradeId)
   await env.CLASSES.delete(loaded.code)
   return json(request, 200, { ok: true, deleted: loaded.code })
 }
@@ -317,16 +537,14 @@ async function handleGet(request, env, rawCode) {
     return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
   }
   const loaded = await loadClass(env, rawCode)
-  if (loaded.error === 'BAD_CODE') {
-    return errorJson(request, 400, 'Der Klassencode ist ungültig.', 'BAD_CODE')
+  const err = classLoadError(request, loaded)
+  if (err) return err
+  let gradeView = null
+  if (loaded.stored.gradeId) {
+    const grade = parseGradeStored(await env.CLASSES.get(loaded.stored.gradeId))
+    if (grade) gradeView = await buildGradeView(env, loaded.stored.gradeId, grade)
   }
-  if (loaded.error === 'NO_KV') {
-    return errorJson(request, 503, 'KV-Bindung CLASSES fehlt.', 'NO_KV')
-  }
-  if (loaded.error === 'NOT_FOUND') {
-    return errorJson(request, 404, 'Diesen Klassencode gibt es nicht.', 'NOT_FOUND')
-  }
-  return json(request, 200, publicClass(loaded.code, loaded.stored))
+  return json(request, 200, publicClass(loaded.code, loaded.stored, Date.now(), gradeView))
 }
 
 async function handlePoints(request, env, rawCode) {
@@ -349,21 +567,143 @@ async function handlePoints(request, env, rawCode) {
     )
   }
   const loaded = await loadClass(env, rawCode)
-  if (loaded.error === 'BAD_CODE') {
-    return errorJson(request, 400, 'Der Klassencode ist ungültig.', 'BAD_CODE')
-  }
-  if (loaded.error === 'NO_KV') {
-    return errorJson(request, 503, 'KV-Bindung CLASSES fehlt.', 'NO_KV')
-  }
-  if (loaded.error === 'NOT_FOUND') {
-    return errorJson(request, 404, 'Diesen Klassencode gibt es nicht.', 'NOT_FOUND')
-  }
+  const err = classLoadError(request, loaded, true)
+  if (err) return err
   const day = berlinDayKey()
   const days = { ...loaded.stored.days }
   days[day] = (asPoints(days[day]) || 0) + delta
   const stored = { ...loaded.stored, days }
-  await env.CLASSES.put(loaded.code, JSON.stringify(stored))
+  await putClass(env, loaded.code, stored)
   return json(request, 200, publicClass(loaded.code, stored))
+}
+
+async function handleCreateGrade(request, env) {
+  if (
+    !rateLimit(
+      `gradeCreate:${clientKey(request)}`,
+      RATE_LIMITS.gradeCreate.limit,
+      RATE_LIMITS.gradeCreate.windowMs,
+    )
+  ) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
+  }
+  if (!env.CLASSES) {
+    return errorJson(request, 503, 'KV-Bindung CLASSES fehlt.', 'NO_KV')
+  }
+  let body
+  try {
+    body = await readJson(request)
+  } catch {
+    return errorJson(request, 400, 'Ungültiges JSON.', 'BAD_JSON')
+  }
+  const named = readDisplayName(body, 'Bitte einen Namen für die Klassenstufe eingeben.')
+  if (named.error) return errorJson(request, 400, named.error, 'BAD_NAME')
+  const code = await allocateCode(env)
+  if (!code) {
+    return errorJson(request, 503, 'Kein freier Stufencode. Bitte erneut versuchen.', 'BUSY')
+  }
+  const stored = { type: 'grade', name: named.name, createdAt: Date.now(), classes: [] }
+  await env.CLASSES.put(code, JSON.stringify(stored))
+  const view = await buildGradeView(env, code, stored)
+  return json(request, 201, { code, ...publicGradeView(view) })
+}
+
+async function handleGetGrade(request, env, rawCode) {
+  if (!rateLimit(`get:${clientKey(request)}`, RATE_LIMITS.get.limit, RATE_LIMITS.get.windowMs)) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
+  }
+  const loaded = await loadGrade(env, rawCode)
+  const err = gradeLoadError(request, loaded)
+  if (err) return err
+  const view = await buildGradeView(env, loaded.code, loaded.stored)
+  return json(request, 200, publicGradeView(view))
+}
+
+async function handleDeleteGrade(request, env, rawCode) {
+  if (!rateLimit(`delete:${clientKey(request)}`, RATE_LIMITS.delete.limit, RATE_LIMITS.delete.windowMs)) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
+  }
+  const loaded = await loadGrade(env, rawCode)
+  const err = gradeLoadError(request, loaded)
+  if (err) return err
+  for (const classCode of loaded.stored.classes) {
+    const stored = parseClassStored(await env.CLASSES.get(classCode))
+    if (!stored || stored.gradeId !== loaded.code) continue
+    await putClass(env, classCode, { ...stored, gradeId: undefined })
+  }
+  await env.CLASSES.delete(loaded.code)
+  return json(request, 200, { ok: true, deleted: loaded.code })
+}
+
+async function handleUpdateGradeClasses(request, env, rawCode) {
+  if (
+    !rateLimit(
+      `gradeUpdate:${clientKey(request)}`,
+      RATE_LIMITS.gradeUpdate.limit,
+      RATE_LIMITS.gradeUpdate.windowMs,
+    )
+  ) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
+  }
+  let body
+  try {
+    body = await readJson(request)
+  } catch {
+    return errorJson(request, 400, 'Ungültiges JSON.', 'BAD_JSON')
+  }
+  const add = uniqueValidCodes(body.add)
+  const remove = uniqueValidCodes(body.remove)
+  if (add.length === 0 && remove.length === 0) {
+    return errorJson(request, 400, 'Bitte Klassencodes zum Zuordnen oder Entfernen senden.', 'BAD_BODY')
+  }
+  const loaded = await loadGrade(env, rawCode)
+  const err = gradeLoadError(request, loaded)
+  if (err) return err
+
+  const adding = []
+  for (const classCode of add) {
+    const stored = parseClassStored(await env.CLASSES.get(classCode))
+    if (!stored) {
+      return errorJson(
+        request,
+        400,
+        'Einer der Klassencodes existiert nicht oder ist ein Stufencode.',
+        'BAD_CLASS',
+      )
+    }
+    adding.push({ code: classCode, stored })
+  }
+
+  const members = new Set(loaded.stored.classes)
+  for (const classCode of remove) members.delete(classCode)
+  for (const row of adding) members.add(row.code)
+  const nextClasses = [...members]
+  if (nextClasses.length > MAX_GRADE_CLASSES) {
+    return errorJson(
+      request,
+      400,
+      `Eine Stufe darf höchstens ${MAX_GRADE_CLASSES} Klassen haben.`,
+      'TOO_MANY',
+    )
+  }
+
+  for (const classCode of remove) {
+    const stored = parseClassStored(await env.CLASSES.get(classCode))
+    if (stored && stored.gradeId === loaded.code) {
+      await putClass(env, classCode, { ...stored, gradeId: undefined })
+    }
+  }
+  for (const row of adding) {
+    if (row.stored.gradeId && row.stored.gradeId !== loaded.code) {
+      await unlinkClassFromGrade(env, row.code, row.stored.gradeId)
+    }
+    await putClass(env, row.code, { ...row.stored, gradeId: loaded.code })
+  }
+
+  const nextGrade = { ...loaded.stored, classes: nextClasses }
+  await env.CLASSES.put(loaded.code, JSON.stringify(serializeGrade(nextGrade)))
+  const view = await buildGradeView(env, loaded.code, nextGrade)
+  return json(request, 200, publicGradeView(view))
 }
 
 export async function handleRequest(request, env) {
@@ -406,6 +746,23 @@ export async function handleRequest(request, env) {
     return handlePoints(request, env, decodeURIComponent(pointsMatch[1]))
   }
 
+  if (path === '/grades' && method === 'POST') {
+    return handleCreateGrade(request, env)
+  }
+
+  const gradeMatch = /^\/grades\/([^/]+)$/.exec(path)
+  if (gradeMatch && method === 'GET') {
+    return handleGetGrade(request, env, decodeURIComponent(gradeMatch[1]))
+  }
+  if (gradeMatch && method === 'DELETE') {
+    return handleDeleteGrade(request, env, decodeURIComponent(gradeMatch[1]))
+  }
+
+  const gradeClassesMatch = /^\/grades\/([^/]+)\/classes$/.exec(path)
+  if (gradeClassesMatch && method === 'PUT') {
+    return handleUpdateGradeClasses(request, env, decodeURIComponent(gradeClassesMatch[1]))
+  }
+
   return errorJson(request, 404, 'Unbekannter Pfad.', 'NOT_FOUND')
 }
 
@@ -415,4 +772,4 @@ export default {
   },
 }
 
-export { MAX_POINTS_DELTA, CLASS_CODE_LENGTH, SERVICE }
+export { MAX_POINTS_DELTA, CLASS_CODE_LENGTH, SERVICE, MAX_GRADE_CLASSES }

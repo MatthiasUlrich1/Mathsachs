@@ -1708,6 +1708,66 @@ a.link {
   }
 }
 
+.grade-codes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.grade-codes__assigned {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+.grade-codes__assigned li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.grade-comp {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.grade-comp__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.grade-comp__table th,
+.grade-comp__table td {
+  text-align: left;
+  padding: 6px 8px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.grade-comp__table th {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.grade-comp__table tfoot th,
+.grade-comp__table tfoot td {
+  font-weight: 800;
+  border-bottom: none;
+  padding-top: 10px;
+}
+
 /* Print */
 @media print {
   body {

@@ -11,8 +11,13 @@ import {
   classPointsUrl,
   classResourceUrl,
   createClass,
+  createGrade,
   deleteClass,
   getClass,
+  getGrade,
+  gradeClassesUrl,
+  gradeResourceUrl,
+  updateGradeClasses,
 } from './api'
 
 const jsonResponse = (body: unknown, status = 200): Response =>
@@ -43,6 +48,12 @@ describe('class API URL building', () => {
     )
     expect(classPointsUrl('iloUabcd', 'https://example.test')).toBe(
       'https://example.test/classes/110ABCD/points',
+    )
+    expect(gradeResourceUrl(' abcd-2345 ', 'https://example.test')).toBe(
+      'https://example.test/grades/ABCD2345',
+    )
+    expect(gradeClassesUrl('ABCD2345', 'https://example.test')).toBe(
+      'https://example.test/grades/ABCD2345/classes',
     )
   })
 })
@@ -188,5 +199,100 @@ describe('class API client', () => {
     )
     await addClassPoints('ABCD2345', 150, 'https://example.test')
     expect(deltas).toEqual([100, 50])
+  })
+
+  it('creates a grade and reads a competition view without member codes', async () => {
+    const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input)
+      const method = (init?.method ?? 'GET').toUpperCase()
+      if (url.endsWith('/grades') && method === 'POST') {
+        return jsonResponse(
+          {
+            code: 'GRADE001',
+            name: '6. Klasse',
+            id: 'n11111111',
+            classes: [],
+            points: { today: 0, week: 0, month: 0, year: 0, total: 0 },
+          },
+          201,
+        )
+      }
+      if (url.endsWith('/grades/GRADE001') && method === 'GET') {
+        return jsonResponse({
+          name: '6. Klasse',
+          id: 'n11111111',
+          classes: [
+            {
+              id: 'n22222222',
+              name: 'Klasse 6a',
+              points: { today: 3, week: 3, month: 3, year: 3, total: 3 },
+            },
+          ],
+          points: { today: 3, week: 3, month: 3, year: 3, total: 3 },
+        })
+      }
+      if (url.endsWith('/grades/GRADE001/classes') && method === 'PUT') {
+        return jsonResponse({
+          name: '6. Klasse',
+          id: 'n11111111',
+          classes: [
+            {
+              id: 'n22222222',
+              name: 'Klasse 6a',
+              points: { today: 0, week: 0, month: 0, year: 0, total: 0 },
+            },
+          ],
+          points: { today: 0, week: 0, month: 0, year: 0, total: 0 },
+        })
+      }
+      if (url.endsWith('/classes/AAAA1111') && method === 'GET') {
+        return jsonResponse({
+          code: 'AAAA1111',
+          name: 'Klasse 6a',
+          points: { today: 3, week: 3, month: 3, year: 3, total: 3 },
+          grade: {
+            name: '6. Klasse',
+            id: 'n11111111',
+            classes: [
+              {
+                id: 'n22222222',
+                name: 'Klasse 6a',
+                points: { today: 3, week: 3, month: 3, year: 3, total: 3 },
+              },
+            ],
+            points: { today: 3, week: 3, month: 3, year: 3, total: 3 },
+          },
+        })
+      }
+      return jsonResponse({ error: 'nope' }, 404)
+    })
+    vi.stubGlobal('fetch', fetchMock)
+    const base = 'https://example.test'
+    await expect(createGrade('6. Klasse', base)).resolves.toMatchObject({
+      code: 'GRADE001',
+      name: '6. Klasse',
+    })
+    const grade = await getGrade('grade-001', base)
+    expect(grade.classes[0]).toMatchObject({ id: 'n22222222', name: 'Klasse 6a' })
+    expect(grade.classes[0]).not.toHaveProperty('code')
+    await expect(
+      updateGradeClasses('GRADE001', { add: ['AAAA1111'] }, base),
+    ).resolves.toMatchObject({ name: '6. Klasse' })
+    const klass = await getClass('AAAA1111', base)
+    expect(klass.grade?.name).toBe('6. Klasse')
+    expect(JSON.stringify(klass.grade)).not.toContain('AAAA1111')
+  })
+
+  it('detects the Hello-World stub on POST /grades', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () =>
+        jsonResponse({ ok: true, service: 'mathsachs-punkte', hasClasses: true }),
+      ),
+    )
+    await expect(createGrade('6. Klasse', 'https://example.test')).rejects.toMatchObject({
+      kind: 'not_ready',
+      message: CLASS_API_STUB_MESSAGE,
+    })
   })
 })

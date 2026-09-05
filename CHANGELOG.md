@@ -9,6 +9,26 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.20] – 2026-09-05
+
+### Hinzugefügt
+
+- **Klassenstufencode:** Nur **Lehrer** legen unter **Einstellungen → Klasse**
+  eine Klassenstufe an und ordnen ihr Klassencodes zu. Der Stufencode bleibt
+  beim Lehrer (kopieren zum Teilen unter Lehrkräften). **Eltern** erstellen
+  weiter Klassencodes, aber keine Stufe. **Schüler** tragen nur einen
+  Klassencode ein und senden Punkte nur dorthin.
+- **Stufen-Wettbewerb:** Ist eine Klasse einer Stufe zugeordnet, sehen alle
+  mit diesem Klassencode die Punktestände der anderen Klassen derselben Stufe
+  (Tag / Woche / Monat / Schuljahr) — in den Einstellungen und im
+  Punkteprotokoll. Es erscheinen nur **Klassennamen** und Summen, keine
+  Personennamen.
+- **Worker:** `POST /grades`, `GET /grades/:code`, `PUT /grades/:code/classes`,
+  `DELETE /grades/:code`. `GET /classes/:code` liefert bei Zuordnung eine
+  Stufenübersicht ohne Mitgliedscodes. Punkte nur per `POST /classes/:code/points`.
+  Nach dem Update einmal [`cloudflare/worker.js`](cloudflare/worker.js) in
+  Cloudflare einfügen und **Deploy**en.
+
 ## [0.1.19] – 2026-09-05
 
 ### Hinzugefügt
@@ -283,7 +303,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.19...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.20...HEAD
+[0.1.20]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.19...v0.1.20
 [0.1.19]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.18...v0.1.19
 [0.1.18]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.17...v0.1.18
 [0.1.17]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.16...v0.1.17

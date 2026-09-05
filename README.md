@@ -29,9 +29,10 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Tablets im WLAN. **Benutzer wechseln** steht unter **Einstellungen → Profil**.
 - **Benutzerrollen:** Beim Anlegen und unter **Einstellungen → Profil** wählst
   du **Schüler**, **Eltern** oder **Lehrer**. Schüler sehen kein **Klausur
-  erstellen** und können keine Klassencodes anlegen. Eltern und Lehrer haben
-  die volle Oberfläche. Fehlt die Rolle (ältere Profile), gilt **Schüler** —
-  außer es gibt bereits eigene Klassencodes, dann **Eltern**.
+  erstellen** und können keine Klassencodes anlegen. Nur **Lehrer** legen
+  einen **Klassenstufencode** an. Eltern erstellen weiter Klassencodes.
+  Fehlt die Rolle (ältere Profile), gilt **Schüler** — außer es gibt bereits
+  eigene Klassencodes, dann **Eltern**.
 - **Einstellungen**: Untermenü mit Lehrplänen, Klassencode, WLAN-Zugang
   (Desktop) und Profil (Rolle und Benutzerwechsel). In den Einstellungen zeigt
   die Leiste **Zum Üben** links neben **Einstellungen** (hervorgehoben) und
@@ -48,11 +49,14 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   [WLAN-Zugang](#wlan-zugang-desktop-app)).
 - **Klassencode (online)**: Anonyme Klassen-Punktesummen über einen
   Cloudflare Worker (siehe [Klassencode](#klassencode-online)).
+- **Klassenstufencode:** Lehrer ordnen Klassencodes einer Stufe zu. Alle
+  Klassen der Stufe sehen denselben Wettbewerb (Klassennamen + Summen, keine
+  Personendaten). Punkte gehen weiter nur an den eigenen Klassencode.
 - **Erweiterbar** für weitere Klassenstufen und Fächer (Datenmodell mit
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.19**).
+(aktuelle Version **0.1.20**).
 
 Die App prüft beim Start die öffentlichen
 [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
@@ -165,6 +169,12 @@ Unter **Einstellungen → Klasse**:
    aus der Liste (kein **Aktivieren** mehr).
    Schuljahr = 1. August bis 31. Juli, Zeitzone **Europe/Berlin**,
    **Serverzeit** des Workers.
+5. **Klassenstufe** (nur Lehrer): Namen eingeben, Stufencode erzeugen,
+   vorhandene Klassencodes zuordnen oder entfernen, Stufe löschen. Der
+   Stufencode ist das Lehrer-Geheimnis — nicht an Schüler weitergeben.
+6. **Stufen-Wettbewerb:** Sobald der aktive Klassencode einer Stufe
+   zugeordnet ist, zeigt die App die Stände aller Klassen dieser Stufe
+   (Einstellungen und Punkteprotokoll). Nur Klassennamen, keine Personen.
 
 Öffentliche API (Standard, überschreibbar in `src/classCode/api.ts`):
 
@@ -174,17 +184,23 @@ Unter **Einstellungen → Klasse**:
 | ------- | ---- | ------ | ------- |
 | `GET` | `/` | — | `{ ok, service, hasClasses }` |
 | `POST` | `/classes` | `{ name }` | `{ code, name, points, period }` |
-| `GET` | `/classes/:code` | — | Klasse + Aufschlüsselung |
-| `POST` | `/classes/:code/points` | `{ delta }` (1–100) | aktualisierte Klasse |
+| `GET` | `/classes/:code` | — | Klasse + Aufschlüsselung; bei Zuordnung `grade` (Namen + Summen, keine Mitgliedscodes) |
+| `POST` | `/classes/:code/points` | `{ delta }` (1–100) | aktualisierte Klasse; Stufencode wird abgelehnt |
 | `DELETE` | `/classes/:code` | — | `{ ok, deleted }` |
+| `POST` | `/grades` | `{ name }` | `{ code, name, … }` (Lehrer-Stufencode) |
+| `GET` | `/grades/:code` | — | Stufe + Klassenstände **ohne** Mitgliedscodes |
+| `PUT` | `/grades/:code/classes` | `{ add?, remove? }` | Zuordnung; jeder `add` muss ein Klassencode sein |
+| `DELETE` | `/grades/:code` | — | Stufe löschen; Klassencodes und ihre Punkte bleiben |
 
-KV-Wert: `{ name, createdAt, days: { "YYYY-MM-DD": number } }`. Woche/Monat/Jahr
-werden aus den Tages-Buckets in Berlin gerechnet. Die Bindung heißt **`CLASSES`**.
+KV-Wert Klasse: `{ name, createdAt, days, gradeId? }`. KV-Wert Stufe:
+`{ type: "grade", name, createdAt, classes }`. Woche/Monat/Jahr werden
+server-seitig aus den Tages-Buckets der Mitgliedsklassen addiert. Die
+Bindung heißt **`CLASSES`**. Keine Personendaten.
 
-Rate-Limits je Client-IP / 60 s (siehe `cloudflare/worker.js`): **GET** Klasse
-300, **DELETE** 30, **POST** neue Klasse 8, **POST** Punkte 60. `GET /`
-(Health) ist frei. Nach dem Ändern der Worker-Datei einmal in Cloudflare
-**Deploy** klicken.
+Rate-Limits je Client-IP / 60 s (siehe `cloudflare/worker.js`): **GET**
+Klasse/Stufe 300, **DELETE** 30, **POST** neue Klasse 8, **POST** neue Stufe 8,
+**PUT** Zuordnung 30, **POST** Punkte 60. `GET /` (Health) ist frei. Nach dem
+Ändern der Worker-Datei einmal in Cloudflare **Deploy** klicken.
 
 ### Einmalig für Linus und Matthias (nicht für Schüler)
 
@@ -342,6 +358,8 @@ In der App ebenfalls unter **Impressum**.
 
 Bei aktivem Klassencode speichert Mathsachs online nur den Klassennamen und
 anonyme Punktesummen bei Cloudflare — keine Vornamen und keine Geräte-IDs.
+Eine Klassenstufe speichert nur den Stufennamen und die zugeordneten
+Klassencodes; der Wettbewerb zeigt Klassennamen plus Summen, nie Personen.
 Der Code ist das Geheimnis. In der App unter **Datenschutz**.
 
 ## Idee / Feedback

@@ -1,11 +1,14 @@
 import { useEffect, useMemo, useState } from 'react'
+import { getClass, type GradeSummary } from '../classCode/api'
 import { formatClassCode } from '../classCode/code'
 import {
   buildProtocol,
+  getClassCodeSettings,
   subscribeSharedStorage,
   type ProtocolRow,
 } from '../lib/storage'
 import type { ClassPointSummary } from '../lib/protocolStats'
+import { GradeCompetition } from './GradeCompetition'
 
 interface Props {
   user: string
@@ -48,11 +51,31 @@ function PeriodStats({ summary }: { summary: ClassPointSummary }) {
 
 export function Protocol({ user, onExit }: Props) {
   const [protocol, setProtocol] = useState(() => buildProtocol(user))
+  const [grade, setGrade] = useState<GradeSummary | null>(null)
   useEffect(() => {
     const refresh = () => setProtocol(buildProtocol(user))
     refresh()
     return subscribeSharedStorage(refresh)
   }, [user])
+
+  useEffect(() => {
+    let cancelled = false
+    const active = getClassCodeSettings(user).activeCode
+    if (!active) {
+      setGrade(null)
+      return
+    }
+    void getClass(active)
+      .then((stats) => {
+        if (!cancelled) setGrade(stats.grade ?? null)
+      })
+      .catch(() => {
+        if (!cancelled) setGrade(null)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [user, protocol.transfers.summary.total])
 
   const grouped = useMemo(() => {
     const map = new Map<string, ProtocolRow[]>()
@@ -159,6 +182,12 @@ export function Protocol({ user, onExit }: Props) {
             </>
           )}
         </section>
+
+        {grade && (
+          <section className="protocol-grade">
+            <GradeCompetition grade={grade} />
+          </section>
+        )}
 
         {protocol.rows.length === 0 ? (
           <p className="muted">

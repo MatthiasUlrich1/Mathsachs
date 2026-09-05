@@ -3,7 +3,9 @@ import {
   addUser,
   getClassCodeSettings,
   initSharedStorage,
+  getGradeCodeSettings,
   rememberCreatedClassCode,
+  rememberCreatedGradeCode,
   resetSharedStorageForTests,
   setActiveStorageUser,
   setSendClassPoints,
@@ -192,5 +194,22 @@ describe('per-user class codes', () => {
       activeCode: 'AAAA1111',
       sendPoints: true,
     })
+  })
+
+  it('keeps Lehrer grade codes per user and does not leak them', async () => {
+    vi.stubGlobal('localStorage', memoryStorage())
+    vi.stubGlobal('location', { protocol: 'file:' })
+    await initSharedStorage()
+    addUser('Ada')
+    addUser('Ben')
+    setActiveStorageUser('Ada')
+    rememberCreatedGradeCode('gggg-1111', '6. Klasse')
+
+    expect(getGradeCodeSettings('Ada').created.map((row) => row.code)).toEqual(['GGGG1111'])
+    expect(getGradeCodeSettings('Ben')).toEqual({ created: [], deletedCodes: [] })
+
+    setActiveStorageUser('Ben')
+    expect(getGradeCodeSettings()).toEqual({ created: [], deletedCodes: [] })
+    expect(getGradeCodeSettings('Ada').created[0]?.name).toBe('6. Klasse')
   })
 })

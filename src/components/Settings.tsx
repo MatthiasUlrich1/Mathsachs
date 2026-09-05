@@ -8,6 +8,7 @@ import {
 import {
   USER_ROLES,
   canCreateClassCodes,
+  canManageGradeCodes,
   roleLabel,
   type UserRole,
 } from '../lib/roles'
@@ -51,8 +52,11 @@ export function Settings({
 }: Props) {
   const lanAvailable = Boolean(lanStatus)
   const sectionHint = (id: SettingsSectionId) => {
+    if (id === 'class' && canManageGradeCodes(role)) {
+      return 'Klassencode und Klassenstufe'
+    }
     if (id === 'class' && !canCreateClassCodes(role)) {
-      return 'Klassencode eintragen und aktivieren'
+      return 'Klassencode eintragen und Stufen-Wettbewerb'
     }
     return SECTION_HINTS[id]
   }
@@ -118,6 +122,7 @@ export function Settings({
           key={user}
           user={user}
           canCreateCodes={canCreateClassCodes(role)}
+          canManageGrades={canManageGradeCodes(role)}
         />
       )}
 

@@ -22,6 +22,10 @@ export const canCreateExam = (role?: unknown): boolean =>
 export const canCreateClassCodes = (role?: unknown): boolean =>
   normalizeRole(role) !== 'schueler'
 
+/** Klassenstufencode anlegen und Klassencodes zuordnen — nur Lehrer. */
+export const canManageGradeCodes = (role?: unknown): boolean =>
+  normalizeRole(role) === 'lehrer'
+
 export const roleLabel = (role?: unknown): string => {
   const id = normalizeRole(role)
   return USER_ROLES.find((entry) => entry.id === id)?.label ?? 'Schüler'

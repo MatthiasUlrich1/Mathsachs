@@ -5,8 +5,14 @@ import {
   checkClassApiHealth,
   createClass,
   getClass,
+  getGrade,
+  isGradeNotClassError,
   type ClassStats,
+  type GradeSummary,
 } from '../classCode/api'
+import { GRADE_NOT_CLASS_MESSAGE } from '../classCode/gradeUi'
+import { GradeCompetition } from './GradeCompetition'
+import { GradeCodes } from './GradeCodes'
 import {
   activateCreatedClassCode,
   acknowledgeCreatedListKey,
@@ -46,9 +52,11 @@ const PRIVACY_COPY =
 export function ClassCodes({
   user,
   canCreateCodes = true,
+  canManageGrades = false,
 }: {
   user: string
   canCreateCodes?: boolean
+  canManageGrades?: boolean
 }) {
   const [className, setClassName] = useState('')
   const [enterCode, setEnterCode] = useState('')
@@ -64,6 +72,7 @@ export function ClassCodes({
   const [webShare, setWebShare] = useState(false)
   const [settings, setSettings] = useState(() => getClassCodeSettings(user))
   const [standings, setStandings] = useState<Record<string, ClassStats | { error: string }>>({})
+  const [linkedGrade, setLinkedGrade] = useState<GradeSummary | null>(null)
 
   useEffect(() => {
     const refresh = () => setSettings(getClassCodeSettings(user))
@@ -133,6 +142,25 @@ export function ClassCodes({
     }
   }, [])
 
+  useEffect(() => {
+    let cancelled = false
+    const code = settings.activeCode
+    if (!code) {
+      setLinkedGrade(null)
+      return
+    }
+    void getClass(code)
+      .then((stats) => {
+        if (!cancelled) setLinkedGrade(stats.grade ?? null)
+      })
+      .catch(() => {
+        if (!cancelled) setLinkedGrade(null)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [settings.activeCode])
+
   const createdKey = createdCodesKey(
     excludeDeletedCreatedCodes(settings.created, settings.deletedCodes),
   )
@@ -186,13 +214,25 @@ export function ClassCodes({
     try {
       const stats = await getClass(code)
       setActiveClassCode(stats.code)
+      setLinkedGrade(stats.grade ?? null)
       setEnterCode('')
       setServerError(null)
     } catch (err) {
+      if (isGradeNotClassError(err)) {
+        setFormError(GRADE_NOT_CLASS_MESSAGE)
+        return
+      }
       if (isConfirmedMissingClass(err) && settings.created.some((row) => row.code === code)) {
         forgetCreatedClassCode(code)
         setFormError(missingClassCodeNotice(code))
         return
+      }
+      try {
+        await getGrade(code)
+        setFormError(GRADE_NOT_CLASS_MESSAGE)
+        return
+      } catch {
+        /* not a readable Stufencode */
       }
       setFormError(standingErrorText(err))
     } finally {
@@ -405,6 +445,10 @@ export function ClassCodes({
           </span>
         </span>
       </label>
+
+      {linkedGrade && <GradeCompetition grade={linkedGrade} />}
+
+      {canManageGrades && <GradeCodes user={user} />}
 
       {canCreateCodes && (
         <>

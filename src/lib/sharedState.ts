@@ -39,6 +39,8 @@ export interface UserData {
   classTransfers?: ClassTransferRecord[]
   /** Created / active / send-points for this user only. */
   classCodes?: ClassCodeSettings
+  /** Lehrer-created Stufencodes (local ownership, not sent to the Worker). */
+  gradeCodes?: GradeCodeSettings
   /** Optional for older records; treat missing as Schüler (see roleForUser). */
   role?: UserRole
 }
@@ -65,6 +67,12 @@ export interface ClassCodeSettings {
   activeCode: string | null
   /** Opt-in: send newly earned points to `activeCode`. */
   sendPoints: boolean
+}
+
+/** Lehrer-created grade-level codes. Same tombstone rules as class codes. */
+export interface GradeCodeSettings {
+  created: CreatedClassCode[]
+  deletedCodes?: DeletedClassCode[]
 }
 
 export const DELETED_CLASS_CODE_TTL_MS = 30 * 24 * 60 * 60 * 1000
@@ -103,6 +111,11 @@ export const emptyClassCodes = (): ClassCodeSettings => ({
   deletedCodes: [],
   activeCode: null,
   sendPoints: false,
+})
+
+export const emptyGradeCodes = (): GradeCodeSettings => ({
+  created: [],
+  deletedCodes: [],
 })
 
 export const emptySharedState = (): SharedState => ({
@@ -273,6 +286,99 @@ export const hasClassCodeData = (
   )
 }
 
+const parseCreatedCodeList = (raw: unknown): CreatedClassCode[] => {
+  const seen = new Set<string>()
+  const created: CreatedClassCode[] = []
+  const list = Array.isArray(raw) ? raw : []
+  for (const item of list) {
+    if (!isCreatedCode(item)) continue
+    const code = normalizeSharedClassCode(item.code)
+    if (!code || seen.has(code)) continue
+    seen.add(code)
+    created.push({
+      code,
+      name: item.name.trim().slice(0, 80),
+      createdAt:
+        typeof item.createdAt === 'number' && Number.isFinite(item.createdAt)
+          ? item.createdAt
+          : 0,
+    })
+  }
+  return created
+}
+
+export const parseGradeCodes = (
+  raw: unknown,
+  now: number = Date.now(),
+): GradeCodeSettings => {
+  if (!isRecord(raw)) return emptyGradeCodes()
+  const applied = applyClassCodeTombstones(
+    parseCreatedCodeList(raw.created),
+    parseDeletedCodes(raw.deletedCodes, now),
+  )
+  return {
+    created: applied.created,
+    deletedCodes: applied.deletedCodes,
+  }
+}
+
+export const mergeGradeCodes = (
+  base: GradeCodeSettings,
+  incoming: GradeCodeSettings,
+  now: number = Date.now(),
+): GradeCodeSettings => {
+  const byCode = new Map<string, CreatedClassCode>()
+  for (const item of [...base.created, ...incoming.created]) {
+    const prev = byCode.get(item.code)
+    if (!prev) {
+      byCode.set(item.code, item)
+      continue
+    }
+    const createdAt = Math.min(
+      prev.createdAt || Number.POSITIVE_INFINITY,
+      item.createdAt || Number.POSITIVE_INFINITY,
+    )
+    byCode.set(item.code, {
+      code: item.code,
+      name: prev.name || item.name,
+      createdAt: Number.isFinite(createdAt) ? createdAt : 0,
+    })
+  }
+  return parseGradeCodes(
+    {
+      created: [...byCode.values()],
+      deletedCodes: [...(base.deletedCodes ?? []), ...(incoming.deletedCodes ?? [])],
+    },
+    now,
+  )
+}
+
+export const withForgottenGradeCode = (
+  current: GradeCodeSettings,
+  code: string,
+  now: number = Date.now(),
+): GradeCodeSettings => {
+  const normalized = normalizeSharedClassCode(code)
+  if (!normalized) return parseGradeCodes(current, now)
+  return parseGradeCodes(
+    {
+      created: current.created.filter((row) => row.code !== normalized),
+      deletedCodes: [
+        ...(current.deletedCodes ?? []),
+        { code: normalized, deletedAt: now },
+      ],
+    },
+    now,
+  )
+}
+
+export const hasGradeCodeData = (
+  settings: GradeCodeSettings | undefined | null,
+): boolean => {
+  if (!settings) return false
+  return settings.created.length > 0 || (settings.deletedCodes?.length ?? 0) > 0
+}
+
 export const pickClassCodeMigrationTarget = (
   users: string[],
   preferredUser?: string | null,
@@ -330,6 +436,15 @@ const mergeUserClassCodes = (
   if (!hasClassCodeData(incoming)) return base ?? incoming
   if (!hasClassCodeData(base)) return incoming
   return mergeClassCodes(base as ClassCodeSettings, incoming as ClassCodeSettings)
+}
+
+const mergeUserGradeCodes = (
+  base?: GradeCodeSettings,
+  incoming?: GradeCodeSettings,
+): GradeCodeSettings | undefined => {
+  if (!hasGradeCodeData(incoming)) return base ?? incoming
+  if (!hasGradeCodeData(base)) return incoming
+  return mergeGradeCodes(base as GradeCodeSettings, incoming as GradeCodeSettings)
 }
 
 /** True when a GET /api/state body looks like shared app state, not HTML. */
@@ -442,6 +557,7 @@ const mergeUserData = (a: UserData | undefined, b: UserData | undefined): UserDa
   sessions.sort((x, y) => y.date - x.date)
   if (sessions.length > MAX_SESSIONS) sessions.length = MAX_SESSIONS
   const classCodes = mergeUserClassCodes(a.classCodes, b.classCodes)
+  const gradeCodes = mergeUserGradeCodes(a.gradeCodes, b.gradeCodes)
   const role = isUserRole(b.role) ? b.role : isUserRole(a.role) ? a.role : undefined
   return {
     name: a.name || b.name,
@@ -450,6 +566,7 @@ const mergeUserData = (a: UserData | undefined, b: UserData | undefined): UserDa
     sessions,
     classTransfers: mergeTransfers(a.classTransfers, b.classTransfers),
     ...(classCodes ? { classCodes } : {}),
+    ...(gradeCodes ? { gradeCodes } : {}),
     ...(role ? { role } : {}),
   }
 }

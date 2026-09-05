@@ -59,6 +59,10 @@ const store = require('../../electron/sharedStore.cjs') as {
           activeCode: string | null
           sendPoints: boolean
         }
+        gradeCodes?: {
+          created: Array<{ code: string; name: string; createdAt: number }>
+          deletedCodes?: Array<{ code: string; deletedAt: number }>
+        }
         role?: 'schueler' | 'eltern' | 'lehrer'
       }
     >
@@ -355,6 +359,115 @@ describe('mergeSharedState (TypeScript)', () => {
       },
     )
     expect(keepBase.records.Ada.role).toBe('lehrer')
+  })
+
+  it('preserves and unions Lehrer gradeCodes across WLAN merge', () => {
+    const merged = mergeSharedState(
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            name: 'Ada',
+            created: 1,
+            stats: {},
+            sessions: [],
+            role: 'lehrer',
+            gradeCodes: {
+              created: [{ code: 'GGGG1111', name: '6. Klasse', createdAt: 10 }],
+            },
+          },
+        },
+      },
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            name: 'Ada',
+            created: 1,
+            stats: {},
+            sessions: [],
+            role: 'lehrer',
+            gradeCodes: {
+              created: [{ code: 'HHHH2222', name: '7. Klasse', createdAt: 20 }],
+            },
+          },
+        },
+      },
+    )
+    expect(merged.records.Ada.gradeCodes?.created.map((row) => row.code)).toEqual([
+      'GGGG1111',
+      'HHHH2222',
+    ])
+
+    const cjsMerged = mergeSharedStateCjs(
+      {
+        users: ['Ada'],
+        records: {
+          Ada: {
+            ...user('Ada'),
+            role: 'lehrer',
+            gradeCodes: {
+              created: [{ code: 'GGGG1111', name: '6. Klasse', createdAt: 1 }],
+            },
+          },
+        },
+      },
+      {
+        users: ['Ben'],
+        records: {
+          Ben: {
+            ...user('Ben'),
+            role: 'schueler',
+          },
+        },
+      },
+    )
+    expect(cjsMerged.records.Ada.gradeCodes?.created.map((row) => row.code)).toEqual([
+      'GGGG1111',
+    ])
+    expect(cjsMerged.records.Ben.gradeCodes).toBeUndefined()
+  })
+
+  it('honors grade-code tombstones so a deleted Stufe stays gone', () => {
+    const merged = mergeSharedState(
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            name: 'Ada',
+            created: 1,
+            stats: {},
+            sessions: [],
+            gradeCodes: {
+              created: [],
+              deletedCodes: [{ code: 'GGGG1111', deletedAt: 50 }],
+            },
+          },
+        },
+      },
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            name: 'Ada',
+            created: 1,
+            stats: {},
+            sessions: [],
+            gradeCodes: {
+              created: [{ code: 'GGGG1111', name: '6. Klasse', createdAt: 10 }],
+            },
+          },
+        },
+      },
+    )
+    expect(merged.records.Ada.gradeCodes?.created).toEqual([])
+    expect(merged.records.Ada.gradeCodes?.deletedCodes?.some((row) => row.code === 'GGGG1111')).toBe(
+      true,
+    )
   })
 
   it('unions class-transfer logs on the user record', () => {

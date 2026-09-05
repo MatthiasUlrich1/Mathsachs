@@ -27,6 +27,13 @@ function emptyClassCodes() {
   }
 }
 
+function emptyGradeCodes() {
+  return {
+    created: [],
+    deletedCodes: [],
+  }
+}
+
 function emptyState() {
   return {
     schemaVersion: SCHEMA_VERSION,
@@ -120,6 +127,9 @@ function normalizeUserData(name, raw) {
   }
   if (Object.prototype.hasOwnProperty.call(src, 'classCodes')) {
     out.classCodes = normalizeClassCodes(src.classCodes)
+  }
+  if (Object.prototype.hasOwnProperty.call(src, 'gradeCodes')) {
+    out.gradeCodes = normalizeGradeCodes(src.gradeCodes)
   }
   if (USER_ROLES.has(src.role)) out.role = src.role
   return out
@@ -259,6 +269,61 @@ function hasClassCodeData(settings) {
   )
 }
 
+function normalizeGradeCodes(raw, now) {
+  const src = raw && typeof raw === 'object' ? raw : {}
+  const created = []
+  const seen = new Set()
+  const list = Array.isArray(src.created) ? src.created : []
+  for (const item of list) {
+    const row = normalizeCreatedCode(item)
+    if (!row || seen.has(row.code)) continue
+    seen.add(row.code)
+    created.push(row)
+  }
+  const applied = applyClassCodeTombstones(
+    created,
+    pruneDeletedCodes(src.deletedCodes, now || Date.now()),
+  )
+  return {
+    created: applied.created,
+    deletedCodes: applied.deletedCodes,
+  }
+}
+
+function mergeGradeCodes(base, incoming, now) {
+  const byCode = new Map()
+  const left = base || emptyGradeCodes()
+  const right = incoming || emptyGradeCodes()
+  for (const item of [...left.created, ...right.created]) {
+    const prev = byCode.get(item.code)
+    if (!prev) {
+      byCode.set(item.code, item)
+      continue
+    }
+    const createdAt = Math.min(prev.createdAt || Infinity, item.createdAt || Infinity)
+    byCode.set(item.code, {
+      code: item.code,
+      name: prev.name || item.name,
+      createdAt: Number.isFinite(createdAt) ? createdAt : 0,
+    })
+  }
+  return normalizeGradeCodes(
+    {
+      created: [...byCode.values()],
+      deletedCodes: [...(left.deletedCodes || []), ...(right.deletedCodes || [])],
+    },
+    now || Date.now(),
+  )
+}
+
+function hasGradeCodeData(settings) {
+  if (!settings) return false
+  return (
+    settings.created.length > 0 ||
+    (settings.deletedCodes && settings.deletedCodes.length > 0)
+  )
+}
+
 function pickClassCodeMigrationTarget(users, preferredUser) {
   const preferred = typeof preferredUser === 'string' ? preferredUser.trim() : ''
   if (preferred && users.includes(preferred)) return preferred
@@ -293,6 +358,12 @@ function mergeUserClassCodes(base, incoming) {
   if (!hasClassCodeData(incoming)) return base || incoming
   if (!hasClassCodeData(base)) return incoming
   return mergeClassCodes(base, incoming)
+}
+
+function mergeUserGradeCodes(base, incoming) {
+  if (!hasGradeCodeData(incoming)) return base || incoming
+  if (!hasGradeCodeData(base)) return incoming
+  return mergeGradeCodes(base, incoming)
 }
 
 function uniqueNames(names) {
@@ -395,6 +466,7 @@ function mergeUserData(a, b) {
   sessions.sort((x, y) => y.date - x.date)
   if (sessions.length > MAX_SESSIONS) sessions.length = MAX_SESSIONS
   const classCodes = mergeUserClassCodes(a.classCodes, b.classCodes)
+  const gradeCodes = mergeUserGradeCodes(a.gradeCodes, b.gradeCodes)
   const out = {
     name: a.name || b.name,
     created: Math.min(a.created, b.created),
@@ -403,6 +475,7 @@ function mergeUserData(a, b) {
     classTransfers: mergeTransfers(a.classTransfers, b.classTransfers),
   }
   if (classCodes) out.classCodes = classCodes
+  if (gradeCodes) out.gradeCodes = gradeCodes
   const role = USER_ROLES.has(b.role) ? b.role : USER_ROLES.has(a.role) ? a.role : null
   if (role) out.role = role
   return out
@@ -627,6 +700,7 @@ module.exports = {
   mergeSharedState,
   migrateSharedClassCodes,
   hasClassCodeData,
+  hasGradeCodeData,
   snapshotToState,
   isEmptyState,
   createFileStore,

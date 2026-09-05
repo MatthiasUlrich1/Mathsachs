@@ -38,10 +38,35 @@ export const CLASS_API_RATE_MESSAGE = 'Zu viele Anfragen. Bitte kurz warten.'
 export const CLASS_API_STUB_MESSAGE =
   'Der Klassen-Server läuft noch mit dem Test-Programm. Das ist nicht der Klassencode in der App: Linus oder Matthias müssen einmal die Datei cloudflare/worker.js in Cloudflare unter Edit Code einfügen und auf Deploy klicken. Danach erzeugt die App Codes selbst.'
 
+export interface GradeClassStanding {
+  id: string
+  name: string
+  points: ClassPointBreakdown
+}
+
+/** Competition view: class names + totals, never member Klassencodes. */
+export interface GradeSummary {
+  id?: string
+  name: string
+  classes: GradeClassStanding[]
+  points: ClassPointBreakdown
+  period?: ClassPointPeriod
+}
+
 export interface ClassStats {
   code: string
   name: string
   createdAt?: number
+  points: ClassPointBreakdown
+  period?: ClassPointPeriod
+  grade?: GradeSummary
+}
+
+export interface CreatedGrade {
+  code: string
+  name: string
+  id?: string
+  classes: GradeClassStanding[]
   points: ClassPointBreakdown
   period?: ClassPointPeriod
 }
@@ -64,6 +89,15 @@ export function classResourceUrl(code: string, base: string = CLASS_POINTS_API):
 
 export function classPointsUrl(code: string, base: string = CLASS_POINTS_API): string {
   return `${classResourceUrl(code, base)}/points`
+}
+
+export function gradeResourceUrl(code: string, base: string = CLASS_POINTS_API): string {
+  const normalized = normalizeClassCode(code)
+  return classApiUrl(`/grades/${encodeURIComponent(normalized)}`, base)
+}
+
+export function gradeClassesUrl(code: string, base: string = CLASS_POINTS_API): string {
+  return `${gradeResourceUrl(code, base)}/classes`
 }
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
@@ -93,18 +127,58 @@ const parsePeriod = (raw: unknown): ClassPointPeriod | undefined => {
   return { today, week, month, schoolYear }
 }
 
+const parseGradeClassStanding = (raw: unknown): GradeClassStanding | null => {
+  if (!isRecord(raw)) return null
+  const id = typeof raw.id === 'string' ? raw.id.trim() : ''
+  const name = typeof raw.name === 'string' ? raw.name.trim() : ''
+  if (!id || !name) return null
+  return {
+    id,
+    name,
+    points: parsePoints(raw.points),
+  }
+}
+
+const parseGradeSummary = (raw: unknown): GradeSummary | null => {
+  if (!isRecord(raw)) return null
+  const name = typeof raw.name === 'string' ? raw.name.trim() : ''
+  if (!name) return null
+  const classes = Array.isArray(raw.classes)
+    ? raw.classes
+        .map(parseGradeClassStanding)
+        .filter((row): row is GradeClassStanding => row !== null)
+    : []
+  return {
+    id: typeof raw.id === 'string' ? raw.id : undefined,
+    name,
+    classes,
+    points: parsePoints(raw.points),
+    period: parsePeriod(raw.period),
+  }
+}
+
 const parseClassStats = (raw: unknown): ClassStats | null => {
   if (!isRecord(raw)) return null
   const code = typeof raw.code === 'string' ? normalizeClassCode(raw.code) : ''
   const name = typeof raw.name === 'string' ? raw.name : ''
   if (!code || !name) return null
+  const grade = raw.grade ? parseGradeSummary(raw.grade) : null
   return {
     code,
     name,
     createdAt: typeof raw.createdAt === 'number' ? raw.createdAt : undefined,
     points: parsePoints(raw.points),
     period: parsePeriod(raw.period),
+    ...(grade ? { grade } : {}),
   }
+}
+
+const parseCreatedGrade = (raw: unknown): CreatedGrade | null => {
+  const summary = parseGradeSummary(raw)
+  if (!summary || !isRecord(raw)) return null
+  const code = typeof raw.code === 'string' ? normalizeClassCode(raw.code) : ''
+  if (!code) return null
+  return { ...summary, code }
 }
 
 const looksLikeWorkerHealth = (raw: unknown): boolean => {
@@ -156,7 +230,11 @@ const throwForResponse = (res: Response, json: unknown, text: string): never => 
   const serverMessage =
     isRecord(json) && typeof json.error === 'string' ? json.error : ''
   if (res.status === 404) {
-    throw new ClassApiError('not_found', messageForKind('not_found', serverMessage), 404)
+    throw new ClassApiError(
+      'not_found',
+      serverMessage || messageForKind('not_found', serverMessage),
+      404,
+    )
   }
   if (res.status === 429) {
     throw new ClassApiError('rate', messageForKind('rate', serverMessage), 429)
@@ -301,6 +379,90 @@ export async function deleteClass(
     throw new ClassApiError('invalid', 'Der Klassencode ist ungültig.', 400)
   }
   const json = await requestJson(classResourceUrl(normalized, base), {
+    method: 'DELETE',
+  })
+  throwIfStubHealth(json)
+}
+
+export function isGradeNotClassError(err: unknown): boolean {
+  return err instanceof ClassApiError && err.kind === 'invalid' && /stufencode/i.test(err.message)
+}
+
+export async function createGrade(
+  name: string,
+  base: string = CLASS_POINTS_API,
+): Promise<CreatedGrade> {
+  const trimmed = name.trim()
+  if (!trimmed) {
+    throw new ClassApiError('invalid', 'Bitte einen Namen für die Klassenstufe eingeben.', 400)
+  }
+  if (trimmed.length > MAX_CLASS_NAME_LENGTH) {
+    throw new ClassApiError(
+      'invalid',
+      `Der Name darf höchstens ${MAX_CLASS_NAME_LENGTH} Zeichen haben.`,
+      400,
+    )
+  }
+  const json = await requestJson(classApiUrl('/grades', base), {
+    method: 'POST',
+    body: JSON.stringify({ name: trimmed }),
+  })
+  throwIfStubHealth(json)
+  const created = parseCreatedGrade(json)
+  if (!created) {
+    throw new ClassApiError('not_ready', CLASS_API_STUB_MESSAGE, 200)
+  }
+  return created
+}
+
+export async function getGrade(
+  code: string,
+  base: string = CLASS_POINTS_API,
+): Promise<GradeSummary> {
+  const normalized = normalizeClassCode(code)
+  if (!isValidClassCode(normalized)) {
+    throw new ClassApiError('invalid', 'Der Stufencode ist ungültig.', 400)
+  }
+  const json = await requestJson(gradeResourceUrl(normalized, base), { method: 'GET' })
+  const summary = parseGradeSummary(json)
+  if (!summary) {
+    throw new ClassApiError('not_ready', CLASS_API_NOT_READY_MESSAGE, 200)
+  }
+  return summary
+}
+
+export async function updateGradeClasses(
+  code: string,
+  change: { add?: string[]; remove?: string[] },
+  base: string = CLASS_POINTS_API,
+): Promise<GradeSummary> {
+  const normalized = normalizeClassCode(code)
+  if (!isValidClassCode(normalized)) {
+    throw new ClassApiError('invalid', 'Der Stufencode ist ungültig.', 400)
+  }
+  const json = await requestJson(gradeClassesUrl(normalized, base), {
+    method: 'PUT',
+    body: JSON.stringify({
+      add: change.add ?? [],
+      remove: change.remove ?? [],
+    }),
+  })
+  const summary = parseGradeSummary(json)
+  if (!summary) {
+    throw new ClassApiError('not_ready', CLASS_API_NOT_READY_MESSAGE, 200)
+  }
+  return summary
+}
+
+export async function deleteGrade(
+  code: string,
+  base: string = CLASS_POINTS_API,
+): Promise<void> {
+  const normalized = normalizeClassCode(code)
+  if (!isValidClassCode(normalized)) {
+    throw new ClassApiError('invalid', 'Der Stufencode ist ungültig.', 400)
+  }
+  const json = await requestJson(gradeResourceUrl(normalized, base), {
     method: 'DELETE',
   })
   throwIfStubHealth(json)

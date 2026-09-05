@@ -5,11 +5,13 @@ import {
   schoolYearStartYear,
   summarizeDays,
 } from '../src/classCode/buckets'
+import { publicIdFromCode } from '../src/classCode/publicId'
 import worker, {
   MAX_POINTS_DELTA,
   RATE_LIMITS,
   berlinDayKey as workerBerlinDayKey,
   isoWeekKey as workerIsoWeekKey,
+  publicIdFromCode as workerPublicIdFromCode,
   resetRateLimitsForTests,
   schoolYearStartYear as workerSchoolYearStartYear,
   summarizeDays as workerSummarizeDays,
@@ -154,6 +156,7 @@ describe('Cloudflare Worker API', () => {
       'https://matthiasulrich1.github.io',
     )
     expect(res.headers.get('Access-Control-Allow-Methods')).toContain('POST')
+    expect(res.headers.get('Access-Control-Allow-Methods')).toContain('PUT')
     expect(res.headers.get('Access-Control-Allow-Methods')).toContain('DELETE')
   })
 
@@ -171,6 +174,8 @@ describe('Cloudflare Worker API', () => {
       delete: { limit: 30, windowMs: 60_000 },
       get: { limit: 300, windowMs: 60_000 },
       points: { limit: 60, windowMs: 60_000 },
+      gradeCreate: { limit: 8, windowMs: 60_000 },
+      gradeUpdate: { limit: 30, windowMs: 60_000 },
     })
 
     const kv = env()
@@ -205,5 +210,203 @@ describe('Cloudflare Worker API', () => {
       kv,
     )
     expect(deleteBlocked.status).toBe(429)
+  })
+})
+
+const postJson = (path: string, body: unknown, kv: ReturnType<typeof env>) =>
+  worker.fetch(
+    request(path, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    }),
+    kv,
+  )
+
+const putJson = (path: string, body: unknown, kv: ReturnType<typeof env>) =>
+  worker.fetch(
+    request(path, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    }),
+    kv,
+  )
+
+type GradeView = {
+  id?: string
+  name: string
+  classes: Array<{ id: string; name: string; points: { total: number; year: number } }>
+  points: { total: number; today: number }
+  period?: { schoolYear: string }
+  code?: string
+}
+
+const PERSONAL_KEY_RE = /email|userid|user_id|schueler|vorname|nachname|pupil|studentid/i
+
+function assertPrivacySchema(value: unknown, secretCodes: string[]) {
+  const walk = (node: unknown): void => {
+    if (Array.isArray(node)) {
+      node.forEach(walk)
+      return
+    }
+    if (!node || typeof node !== 'object') return
+    for (const [key, child] of Object.entries(node)) {
+      expect(PERSONAL_KEY_RE.test(key)).toBe(false)
+      if (key === 'code' && typeof child === 'string') {
+        expect(secretCodes).not.toContain(child)
+      }
+      if (key === 'classes' && Array.isArray(child)) {
+        for (const item of child) {
+          if (item && typeof item === 'object') {
+            expect(item).not.toHaveProperty('code')
+            expect(item).not.toHaveProperty('gradeId')
+          }
+        }
+      }
+      walk(child)
+    }
+  }
+  walk(value)
+  const text = JSON.stringify(value)
+  expect(text).not.toMatch(/@/)
+  for (const code of secretCodes) {
+    expect(text).not.toContain(code)
+  }
+}
+
+describe('Klassenstufencode Worker API', () => {
+  it('keeps publicIdFromCode in lockstep with the app', () => {
+    expect(workerPublicIdFromCode('AAAA1111')).toBe(publicIdFromCode('AAAA1111'))
+    expect(workerPublicIdFromCode('AAAA1111')).toMatch(/^n[0-9a-f]{8}$/)
+    expect(workerPublicIdFromCode('AAAA1111')).not.toBe('AAAA1111')
+  })
+
+  it('creates a grade, assigns classes, embeds a summary and hides member codes', async () => {
+    const kv = env()
+    const a = await postJson('/classes', { name: 'Klasse 6a' }, kv)
+    const b = await postJson('/classes', { name: 'Klasse 6b' }, kv)
+    const classA = (await a.json()) as { code: string }
+    const classB = (await b.json()) as { code: string }
+
+    await worker.fetch(
+      request(`/classes/${classA.code}/points`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ delta: 5 }),
+      }),
+      kv,
+    )
+
+    const created = await postJson('/grades', { name: '6. Klasse' }, kv)
+    expect(created.status).toBe(201)
+    const grade = (await created.json()) as GradeView & { code: string }
+    expect(grade.name).toBe('6. Klasse')
+    expect(grade.code).toMatch(/^[0-9A-HJKMNP-TV-Z]{8}$/)
+    expect(grade.classes).toEqual([])
+
+    const assigned = await putJson(
+      `/grades/${grade.code}/classes`,
+      { add: [classA.code, classB.code] },
+      kv,
+    )
+    expect(assigned.status).toBe(200)
+    const view = (await assigned.json()) as GradeView
+    expect(view.classes.map((row) => row.name).sort()).toEqual(['Klasse 6a', 'Klasse 6b'])
+    expect(view.points.today).toBe(5)
+    expect(view.points.total).toBe(5)
+    assertPrivacySchema(view, [classA.code, classB.code])
+    expect(JSON.stringify(view)).not.toContain(grade.code)
+
+    const gotGrade = await worker.fetch(request(`/grades/${grade.code}`), kv)
+    expect(gotGrade.status).toBe(200)
+    const publicGrade = (await gotGrade.json()) as GradeView
+    expect(publicGrade).not.toHaveProperty('code')
+    assertPrivacySchema(publicGrade, [classA.code, classB.code, grade.code])
+
+    const gotClass = await worker.fetch(request(`/classes/${classA.code}`), kv)
+    const classBody = (await gotClass.json()) as {
+      code: string
+      name: string
+      grade?: GradeView
+      gradeId?: string
+    }
+    expect(classBody.code).toBe(classA.code)
+    expect(classBody.gradeId).toBeUndefined()
+    expect(classBody.grade?.name).toBe('6. Klasse')
+    expect(classBody.grade?.classes).toHaveLength(2)
+    assertPrivacySchema(classBody.grade, [classB.code, grade.code])
+    expect(classBody.grade?.classes.every((row) => row.id !== classB.code)).toBe(true)
+  })
+
+  it('rejects posting points onto a Stufencode and GET /classes for a grade key', async () => {
+    const kv = env()
+    const created = await postJson('/grades', { name: '7. Klasse' }, kv)
+    const { code } = (await created.json()) as { code: string }
+
+    const points = await worker.fetch(
+      request(`/classes/${code}/points`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ delta: 4 }),
+      }),
+      kv,
+    )
+    expect(points.status).toBe(400)
+    const pointsBody = (await points.json()) as { code: string; error: string }
+    expect(pointsBody.code).toBe('NOT_CLASS')
+    expect(pointsBody.error).toMatch(/Stufencode/)
+
+    const asClass = await worker.fetch(request(`/classes/${code}`), kv)
+    expect(asClass.status).toBe(400)
+    const asClassBody = (await asClass.json()) as { code: string }
+    expect(asClassBody.code).toBe('NOT_CLASS')
+
+    const missingPoints = await worker.fetch(
+      request(`/grades/${code}/points`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ delta: 4 }),
+      }),
+      kv,
+    )
+    expect(missingPoints.status).toBe(404)
+  })
+
+  it('rejects assigning an unknown or grade code and deletes a Stufe without dropping class points', async () => {
+    const kv = env()
+    const createdClass = await postJson('/classes', { name: '8a' }, kv)
+    const { code: classCode } = (await createdClass.json()) as { code: string }
+    await worker.fetch(
+      request(`/classes/${classCode}/points`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ delta: 9 }),
+      }),
+      kv,
+    )
+    const createdGrade = await postJson('/grades', { name: '8. Klasse' }, kv)
+    const { code: gradeCode } = (await createdGrade.json()) as { code: string }
+    const otherGrade = await postJson('/grades', { name: '9. Klasse' }, kv)
+    const { code: otherCode } = (await otherGrade.json()) as { code: string }
+
+    const bad = await putJson(`/grades/${gradeCode}/classes`, { add: ['ZZZZZZZZ'] }, kv)
+    expect(bad.status).toBe(400)
+
+    const asGrade = await putJson(`/grades/${gradeCode}/classes`, { add: [otherCode] }, kv)
+    expect(asGrade.status).toBe(400)
+
+    const ok = await putJson(`/grades/${gradeCode}/classes`, { add: [classCode] }, kv)
+    expect(ok.status).toBe(200)
+
+    const removed = await worker.fetch(request(`/grades/${gradeCode}`, { method: 'DELETE' }), kv)
+    expect(removed.status).toBe(200)
+    const gone = await worker.fetch(request(`/grades/${gradeCode}`), kv)
+    expect(gone.status).toBe(404)
+
+    const stillClass = await worker.fetch(request(`/classes/${classCode}`), kv)
+    const body = (await stillClass.json()) as { points: { total: number }; grade?: unknown }
+    expect(body.points.total).toBe(9)
+    expect(body.grade).toBeUndefined()
   })
 })

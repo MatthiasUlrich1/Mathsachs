@@ -3,6 +3,7 @@ import {
   USER_ROLES,
   canCreateClassCodes,
   canCreateExam,
+  canManageGradeCodes,
   normalizeRole,
   pickMergedRole,
   roleForUser,
@@ -34,6 +35,13 @@ describe('user roles', () => {
     expect(canCreateExam('lehrer')).toBe(true)
     expect(canCreateClassCodes('lehrer')).toBe(true)
     expect(canCreateExam(undefined)).toBe(false)
+  })
+
+  it('allows Klassenstufencode management only for Lehrer', () => {
+    expect(canManageGradeCodes('lehrer')).toBe(true)
+    expect(canManageGradeCodes('eltern')).toBe(false)
+    expect(canManageGradeCodes('schueler')).toBe(false)
+    expect(canManageGradeCodes(undefined)).toBe(false)
   })
 
   it('treats legacy users with created codes as Eltern', () => {

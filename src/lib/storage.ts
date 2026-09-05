@@ -7,16 +7,20 @@ import {
   cloneSharedState,
   collectLocalStorageSnapshot,
   emptyClassCodes,
+  emptyGradeCodes,
   emptySharedState,
   looksLikeSharedState,
   mergeSharedState,
   migrateSharedClassCodes,
   parseClassCodes,
+  parseGradeCodes,
   sharedStateFingerprint,
   userRecordKey,
   withForgottenClassCode,
+  withForgottenGradeCode,
   type ClassCodeSettings,
   type ClassTransferRecord,
+  type GradeCodeSettings,
   type SharedState,
   type UserData,
   type UserRole,
@@ -34,6 +38,7 @@ export type {
   ClassTransferRecord,
   CreatedClassCode,
   DeletedClassCode,
+  GradeCodeSettings,
   SessionRecord,
   SharedState,
   TopicStat,
@@ -84,6 +89,7 @@ const readLocalState = (): SharedState => {
         state.records[name] = {
           ...parsed,
           classCodes: parsed.classCodes ? parseClassCodes(parsed.classCodes) : parsed.classCodes,
+          gradeCodes: parsed.gradeCodes ? parseGradeCodes(parsed.gradeCodes) : parsed.gradeCodes,
         }
       } else state.records[name] = freshUser(name)
     } catch {
@@ -550,6 +556,53 @@ export const setSendClassPoints = (send: boolean): void => {
     ...current,
     sendPoints: Boolean(send) && Boolean(current.activeCode),
   })
+}
+
+const gradeCodesForUser = (name: string | null | undefined): GradeCodeSettings => {
+  const user = name?.trim()
+  if (!user) return emptyGradeCodes()
+  return parseGradeCodes(cache.records[user]?.gradeCodes)
+}
+
+export const getGradeCodeSettings = (name?: string): GradeCodeSettings =>
+  gradeCodesForUser(name ?? activeUserName)
+
+const persistGradeCodes = (gradeCodes: GradeCodeSettings): void => {
+  const user = activeUserName?.trim()
+  if (!user) return
+  const current = cache.records[user] ?? freshUser(user)
+  const users = cache.users.includes(user) ? cache.users : [...cache.users, user]
+  cache = {
+    ...cache,
+    users: [...users],
+    records: { ...cache.records, [user]: { ...current, gradeCodes } },
+  }
+  void persistCache()
+  notify()
+}
+
+/** Remember a Stufencode this Lehrer created. Does not become the class collect-code. */
+export const rememberCreatedGradeCode = (code: string, name: string): void => {
+  const normalized = normalizeClassCode(code)
+  if (!normalized) return
+  const current = getGradeCodeSettings()
+  const created = current.created.filter((row) => row.code !== normalized)
+  created.push({
+    code: normalized,
+    name: name.trim().slice(0, 80),
+    createdAt: Date.now(),
+  })
+  persistGradeCodes({
+    created,
+    deletedCodes: (current.deletedCodes ?? []).filter((row) => row.code !== normalized),
+  })
+}
+
+/** Drop a Stufencode locally and tombstone it. Does not call the server. */
+export const forgetCreatedGradeCode = (code: string): void => {
+  const normalized = normalizeClassCode(code)
+  if (!normalized) return
+  persistGradeCodes(withForgottenGradeCode(getGradeCodeSettings(), normalized))
 }
 
 export interface ProtocolRow {
