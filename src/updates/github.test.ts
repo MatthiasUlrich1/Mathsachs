@@ -189,8 +189,16 @@ describe('checkForAppUpdate', () => {
   })
 
   it('reports building when a listed installer URL returns 404', async () => {
-    const fetchImpl = vi.fn(async (url: string | URL | Request, init?: RequestInit) => {
-      if (init?.method === 'HEAD') return new Response(null, { status: 404 })
+    const fetchImpl = vi.fn(async (input: Parameters<typeof fetch>[0], init?: RequestInit) => {
+      const url =
+        typeof input === 'string'
+          ? input
+          : input instanceof URL
+            ? input.href
+            : input.url
+      if (init?.method === 'HEAD' && /setup\.exe$/i.test(url)) {
+        return new Response(null, { status: 404 })
+      }
       return jsonResponse(newerRelease)
     })
     expect(
