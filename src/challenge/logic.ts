@@ -213,7 +213,66 @@ export function challengeTopicIds(challenge: ChallengeTopicSource): string[] {
 }
 
 export type ChallengeWindowFilter = ChallengeTopicSource &
-  Pick<StoredChallenge, 'start' | 'end'>
+  Pick<StoredChallenge, 'start' | 'end'> & { id?: string }
+
+type DatedChallengeItem = {
+  date: number
+  topicId?: string
+  challengeId?: string
+}
+
+/** Protocol heading: always name the challenge so several challenges stay distinct. */
+export function challengePeriodHeading(name: string): string {
+  const trimmed = name.trim()
+  return trimmed ? `Punkte im Challenge-Zeitraum — ${trimmed}` : 'Punkte im Challenge-Zeitraum'
+}
+
+export function challengeStandHeading(name: string): string {
+  const trimmed = name.trim()
+  return trimmed ? `Challenge-Stand — ${trimmed}` : 'Challenge-Stand'
+}
+
+export function challengeTransferHeading(name: string): string {
+  const trimmed = name.trim()
+  return trimmed ? `An die Klasse übertragen — ${trimmed}` : 'An die Klasse übertragen'
+}
+
+/**
+ * Prefer an explicit challengeId (Challenge tab). Otherwise tag when exactly one
+ * stored challenge is open and lists this topic.
+ */
+export function resolveChallengeIdForRecord(
+  topicId: string | undefined,
+  now: number,
+  challenges: Array<ChallengeWindowFilter & { id: string }>,
+  explicit?: string,
+): string | undefined {
+  const tagged = explicit?.trim()
+  if (tagged) return tagged
+  const topic = topicId?.trim()
+  if (!topic) return undefined
+  const matches = challenges.filter(
+    (challenge) => challenge.id.trim() && shouldAttributeChallengePoints(challenge, topic, now),
+  )
+  return matches.length === 1 ? matches[0].id.trim() : undefined
+}
+
+function challengeWindowBounds(challenge: ChallengeWindowFilter): { from: number; to: number } | null {
+  const from = parseChallengeInstant(challenge.start)
+  const to = parseChallengeInstant(challenge.end)
+  if (!Number.isFinite(from) || !Number.isFinite(to) || to < from) return null
+  return { from, to }
+}
+
+function challengeIdMatches(
+  item: DatedChallengeItem,
+  challenge: ChallengeWindowFilter,
+): boolean {
+  const tagged = item.challengeId?.trim()
+  const want = challenge.id?.trim()
+  if (tagged && want) return tagged === want
+  return true
+}
 
 /** Worker adds points to a challenge only when the window and topic match. */
 export function shouldAttributeChallengePoints(
@@ -227,35 +286,42 @@ export function shouldAttributeChallengePoints(
   return isInChallengeWindow(challenge.start, challenge.end, now)
 }
 
+/**
+ * A row counts for this protocol when it is inside the Berlin window, on a
+ * selected topic, and — if tagged — belongs to this challengeId.
+ * Untagged legacy rows fall back to topic + window; rows tagged for another
+ * challenge never leak in, even when topics and windows overlap.
+ */
+export function belongsToChallenge(
+  item: DatedChallengeItem,
+  challenge: ChallengeWindowFilter,
+  requireTopic: boolean,
+): boolean {
+  const bounds = challengeWindowBounds(challenge)
+  if (!bounds) return false
+  if (item.date < bounds.from || item.date > bounds.to) return false
+  if (!challengeIdMatches(item, challenge)) return false
+  const topics = new Set(challengeTopicIds(challenge))
+  const topic = item.topicId?.trim()
+  if (requireTopic) {
+    return Boolean(topic && topics.size > 0 && topics.has(topic))
+  }
+  if (topic && topics.size > 0) return topics.has(topic)
+  return true
+}
+
 export function filterSessionsForChallenge(
   sessions: SessionRecord[],
   challenge: ChallengeWindowFilter,
 ): SessionRecord[] {
-  const from = parseChallengeInstant(challenge.start)
-  const to = parseChallengeInstant(challenge.end)
-  const topics = new Set(challengeTopicIds(challenge))
-  if (topics.size === 0 || !Number.isFinite(from) || !Number.isFinite(to)) return []
-  return sessions.filter((session) => {
-    if (!topics.has(session.topicId)) return false
-    return session.date >= from && session.date <= to
-  })
+  return sessions.filter((session) => belongsToChallenge(session, challenge, true))
 }
 
 export function filterTransfersForChallenge(
   transfers: ClassTransferRecord[],
   challenge: ChallengeWindowFilter,
 ): ClassTransferRecord[] {
-  const from = parseChallengeInstant(challenge.start)
-  const to = parseChallengeInstant(challenge.end)
-  const topics = new Set(challengeTopicIds(challenge))
-  if (!Number.isFinite(from) || !Number.isFinite(to)) return []
-  return transfers.filter((transfer) => {
-    if (transfer.date < from || transfer.date > to) return false
-    const topic = transfer.topicId?.trim()
-    if (!topic) return true
-    if (topics.size === 0) return true
-    return topics.has(topic)
-  })
+  return transfers.filter((transfer) => belongsToChallenge(transfer, challenge, false))
 }
 
 export function challengePointsFromSessions(

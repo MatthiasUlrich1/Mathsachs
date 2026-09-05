@@ -11,11 +11,12 @@ interface Props {
   areaTitle: string
   user: string
   onExit: () => void
+  challengeId?: string
 }
 
 type Phase = 'answering' | 'correct' | 'wrong'
 
-export function PracticeSession({ topic, areaTitle, user, onExit }: Props) {
+export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }: Props) {
   const [rng] = useState(() => createRng(timeSeed()))
   const [task, setTask] = useState<Task>(() => topic.generate(rng))
   const [input, setInput] = useState<UserInput>(() => emptyInput(task.answerKind))
@@ -56,6 +57,7 @@ export function PracticeSession({ topic, areaTitle, user, onExit }: Props) {
         attempts: answered,
         correct: correctCount,
         points: pts,
+        ...(challengeId?.trim() ? { challengeId: challengeId.trim() } : {}),
       })
     }
     setFinished(true)

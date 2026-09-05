@@ -3,9 +3,12 @@ import {
   allowedChallengeScopes,
   canOfferClassChallengeCreate,
   canOfferGradeChallengeCreate,
+  challengePeriodHeading,
   challengePhase,
   challengePointsFromSessions,
+  challengeStandHeading,
   challengeTopicIds,
+  challengeTransferHeading,
   classCodesForChallengeList,
   classGoalLine,
   classPointsPayload,
@@ -15,6 +18,7 @@ import {
   mergeVisibleChallenges,
   NO_ACTIVE_CHALLENGE_MESSAGE,
   prizeAudienceLine,
+  resolveChallengeIdForRecord,
   shouldAttributeChallengePoints,
 } from './logic'
 import { berlinLocalToUtcMs, defaultBerlinChallengeWindow, isInChallengeWindow } from './time'
@@ -108,6 +112,46 @@ describe('Challenge points attribution', () => {
     ).toBe(true)
   })
 
+  it('keeps two overlapping challenges from sharing tagged sessions', () => {
+    const challengeA = {
+      id: 'CHAL-A',
+      topicIds: ['n5-add'],
+      start: '2026-09-01T08:00',
+      end: '2026-09-11T16:00',
+    }
+    const challengeB = {
+      id: 'CHAL-B',
+      topicIds: ['n5-add'],
+      start: '2026-09-07T08:00',
+      end: '2026-09-11T16:00',
+    }
+    const beforeB = berlinLocalToUtcMs('2026-09-03T10:00')
+    const insideB = berlinLocalToUtcMs('2026-09-08T10:00')
+    const sessions = [
+      { ...session('n5-add', 50, beforeB), challengeId: 'CHAL-A' },
+      { ...session('n5-add', 12, insideB), challengeId: 'CHAL-A' },
+      { ...session('n5-add', 8, insideB), challengeId: 'CHAL-B' },
+      session('n5-add', 4, beforeB),
+    ]
+    expect(challengePointsFromSessions(sessions, challengeB)).toBe(8)
+    expect(filterSessionsForChallenge(sessions, challengeB)).toHaveLength(1)
+    expect(challengePointsFromSessions(sessions, challengeA)).toBe(66)
+    expect(challengePeriodHeading('Testchallenge')).toBe(
+      'Punkte im Challenge-Zeitraum — Testchallenge',
+    )
+    expect(challengeStandHeading('Testchallenge')).toBe('Challenge-Stand — Testchallenge')
+    expect(challengeTransferHeading('Testchallenge')).toBe(
+      'An die Klasse übertragen — Testchallenge',
+    )
+    expect(
+      resolveChallengeIdForRecord('n5-add', insideB, [challengeA, challengeB], 'CHAL-B'),
+    ).toBe('CHAL-B')
+    expect(resolveChallengeIdForRecord('n5-add', insideB, [challengeB])).toBe('CHAL-B')
+    expect(resolveChallengeIdForRecord('n5-add', insideB, [challengeA, challengeB])).toBe(
+      undefined,
+    )
+  })
+
   it('counts transfers in the window and matching topic, including legacy rows without topicId', () => {
     const inside = berlinLocalToUtcMs('2026-09-08T10:00')
     const outside = berlinLocalToUtcMs('2026-09-14T10:00')
@@ -120,6 +164,21 @@ describe('Challenge points attribution', () => {
     expect(filterTransfersForChallenge(transfers, challenge).map((row) => row.points)).toEqual([
       4, 2,
     ])
+    expect(
+      filterTransfersForChallenge(
+        [
+          {
+            date: inside,
+            code: 'ABCD2345',
+            className: '6a',
+            points: 80,
+            topicId: 'n5-add',
+            challengeId: 'CHAL-OLD',
+          },
+        ],
+        { ...challenge, id: 'CHAL-NEW' },
+      ),
+    ).toEqual([])
   })
 
   it('defaults this week to Monday 08:00–Friday 16:00 Berlin', () => {

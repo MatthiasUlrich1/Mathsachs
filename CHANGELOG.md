@@ -9,6 +9,23 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.34] – 2026-09-05
+
+### Behoben
+
+- **Challenge-Protokoll:** Punkte und Übertragungen gehören nur noch zu
+  **dieser** Challenge. Gewertet werden Sitzungen im Berlin-Fenster der
+  Challenge **und** mit einem Thema aus ihrer Themenliste. Neue Übungen
+  aus dem Challenge-Reiter (und Übungen während genau einer passenden
+  laufenden Challenge) merken sich die `challengeId`; das Protokoll
+  bevorzugt diese Zuordnung. Ein neuer Challenge-Zeitraum übernimmt
+  deshalb keine älteren Tests mehr, nur weil dasselbe Thema später
+  wieder vorkommt. Ohne `challengeId` gilt weiter Thema + Zeitraum —
+  aber nichts vor dem Start.
+- Bei mehreren Challenges steht der Name an den Zahlen: **Punkte im
+  Challenge-Zeitraum — …**, **An die Klasse übertragen — …** und
+  **Challenge-Stand — …**.
+
 ## [0.1.33] – 2026-09-05
 
 ### Behoben
@@ -493,7 +510,8 @@ Fixes #11
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.33...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.34...HEAD
+[0.1.34]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.33...v0.1.34
 [0.1.33]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.32...v0.1.33
 [0.1.32]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.31...v0.1.32
 [0.1.31]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.30...v0.1.31

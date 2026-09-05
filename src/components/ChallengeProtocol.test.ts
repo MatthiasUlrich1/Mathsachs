@@ -7,6 +7,7 @@ import {
   addUser,
   initSharedStorage,
   recordSession,
+  rememberCreatedChallenge,
   rememberJoinedClassCode,
   resetSharedStorageForTests,
   setActiveStorageUser,
@@ -96,7 +97,9 @@ describe('ChallengeProtocol', () => {
     expect(html).toContain('An die Klasse übertragen')
     expect(html).toContain('16 Punkte aus dieser Challenge')
     expect(html).toContain('Klasse 6a')
-    expect(html).toContain('Challenge-Stand')
+    expect(html).toContain('Punkte im Challenge-Zeitraum — Woche 36')
+    expect(html).toContain('An die Klasse übertragen — Woche 36')
+    expect(html).toContain('Challenge-Stand — Woche 36')
     expect(html).toContain('Meine Challenge-Punkte')
     expect(html).toContain('Klassenziel: 100 Punkte')
     expect(html).toContain('Film schauen')
@@ -127,5 +130,38 @@ describe('ChallengeProtocol', () => {
     )
     expect(html).toContain('Lob')
     expect(html).not.toContain('Klassenziel:')
+  })
+
+  it('names the current challenge on the period block when several exist', async () => {
+    const local = memoryStorage()
+    vi.stubGlobal('localStorage', local)
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => {
+        throw new Error('offline')
+      }),
+    )
+    await initSharedStorage()
+    addUser('Lea', 'schueler')
+    setActiveStorageUser('Lea')
+    rememberCreatedChallenge({
+      ...stored,
+      id: 'CHAL-OLD',
+      name: 'Alter Test',
+      start: '2026-08-31T08:00',
+      end: '2026-09-04T16:00',
+    })
+    rememberCreatedChallenge(stored)
+    const html = renderToStaticMarkup(
+      createElement(ChallengeProtocol, {
+        user: 'Lea',
+        challenge: { ...stored, name: 'Testchallenge' },
+        onExit: () => undefined,
+      }),
+    )
+    expect(html).toContain('Punkte im Challenge-Zeitraum — Testchallenge')
+    expect(html).toContain('Challenge-Stand — Testchallenge')
+    expect(html).toContain('An die Klasse übertragen — Testchallenge')
+    expect(html).not.toContain('Punkte im Challenge-Zeitraum — Alter Test')
   })
 })

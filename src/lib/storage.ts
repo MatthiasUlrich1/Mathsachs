@@ -6,6 +6,7 @@ import {
   challengeTopicIds,
   filterSessionsForChallenge,
   filterTransfersForChallenge,
+  resolveChallengeIdForRecord,
 } from '../challenge/logic'
 import type { ChallengePrize } from '../challenge/types'
 import {
@@ -457,6 +458,7 @@ interface SessionInput {
   attempts: number
   correct: number
   points: number
+  challengeId?: string
 }
 
 const plannedTransfer = (
@@ -464,12 +466,14 @@ const plannedTransfer = (
   points: number,
   at: number,
   topicId?: string,
+  challengeId?: string,
 ): ClassTransferRecord | null => {
   if (!(points > 0)) return null
   if (!canSendClassPoints(roleForUser(user))) return null
   const settings = parseClassCodes(user.classCodes)
   if (!settings.sendPoints || !settings.activeCode) return null
   const topic = topicId?.trim()
+  const challenge = challengeId?.trim()
   return {
     date: at,
     code: settings.activeCode,
@@ -480,6 +484,7 @@ const plannedTransfer = (
     ),
     points,
     ...(topic ? { topicId: topic } : {}),
+    ...(challenge ? { challengeId: challenge } : {}),
   }
 }
 
@@ -488,11 +493,27 @@ export const recordSession = (name: string, input: SessionInput): UserData => {
   const data = loadUser(name)
   const prev = data.stats[input.topicId]
   const now = Date.now()
-  const transfer = plannedTransfer(data, input.points, now, input.topicId)
+  const challengeId = resolveChallengeIdForRecord(
+    input.topicId,
+    now,
+    listDeviceChallenges(),
+    input.challengeId,
+  )
+  const transfer = plannedTransfer(data, input.points, now, input.topicId, challengeId)
   const classTransfers = transfer
     ? [transfer, ...(data.classTransfers ?? [])]
     : [...(data.classTransfers ?? [])]
   if (classTransfers.length > MAX_TRANSFERS) classTransfers.length = MAX_TRANSFERS
+  const session = {
+    date: now,
+    topicId: input.topicId,
+    topicTitle: input.topicTitle,
+    areaTitle: input.areaTitle,
+    attempts: input.attempts,
+    correct: input.correct,
+    points: input.points,
+    ...(challengeId ? { challengeId } : {}),
+  }
   const next: UserData = {
     ...data,
     stats: {
@@ -507,7 +528,7 @@ export const recordSession = (name: string, input: SessionInput): UserData => {
         lastPracticed: now,
       },
     },
-    sessions: [{ date: now, ...input }, ...data.sessions],
+    sessions: [session, ...data.sessions],
     classTransfers,
   }
   if (next.sessions.length > MAX_SESSIONS) next.sessions.length = MAX_SESSIONS
@@ -824,6 +845,7 @@ export const buildProtocol = (
 }
 
 export type ChallengeProtocolInput = Pick<StoredChallenge, 'name' | 'start' | 'end'> & {
+  id?: string
   topicIds?: string[]
   topics?: Array<{ id: string }>
   prize?: ChallengePrize
@@ -838,6 +860,7 @@ export const buildChallengeProtocol = (
 ): ChallengeProtocolReport => {
   const data = loadUser(name)
   const filter = {
+    ...(challenge.id?.trim() ? { id: challenge.id.trim() } : {}),
     name: challenge.name,
     topicIds: challengeTopicIds(challenge),
     start: challenge.start,

@@ -24,6 +24,8 @@ export interface SessionRecord {
   attempts: number
   correct: number
   points: number
+  /** Set when practiced from a Challenge or during one matching active challenge. */
+  challengeId?: string
 }
 
 /** Local log of points the app decided to POST to a class code. */
@@ -34,6 +36,8 @@ export interface ClassTransferRecord {
   points: number
   /** Set when the session topic is known — used to attribute Challenge transfers. */
   topicId?: string
+  /** Same challenge as the session, when known. */
+  challengeId?: string
 }
 
 /** Schüler is the most restricted role. Missing roles normalize to Schüler. */
@@ -524,10 +528,17 @@ const uniqueNames = (names: string[]): string[] => {
 }
 
 const sessionKey = (session: SessionRecord): string =>
-  [session.date, session.topicId, session.attempts, session.correct, session.points].join('|')
+  [
+    session.date,
+    session.topicId,
+    session.attempts,
+    session.correct,
+    session.points,
+    session.challengeId ?? '',
+  ].join('|')
 
 const transferKey = (transfer: ClassTransferRecord): string =>
-  [transfer.date, transfer.code, transfer.points].join('|')
+  [transfer.date, transfer.code, transfer.points, transfer.challengeId ?? ''].join('|')
 
 const mergeTransfers = (
   a: ClassTransferRecord[] | undefined,

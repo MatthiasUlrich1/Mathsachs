@@ -5,8 +5,11 @@ import {
   type ChallengeSummary,
 } from '../classCode/api'
 import {
+  challengePeriodHeading,
+  challengeStandHeading,
   challengeThreshold,
   challengeTopicIds,
+  challengeTransferHeading,
   classGoalLine,
   prizeAudienceLine,
 } from '../challenge/logic'
@@ -61,6 +64,7 @@ function PeriodStats({ summary }: { summary: ClassPointSummary }) {
 
 function asFilter(challenge: ChallengeSummary | StoredChallenge) {
   return {
+    id: challenge.id,
     name: challenge.name,
     topicIds: challengeTopicIds(challenge),
     start: challenge.start,
@@ -172,12 +176,12 @@ export function ChallengeProtocol({ user, challenge, onExit }: Props) {
         </div>
 
         <section className="protocol-periods">
-          <h3>Punkte im Challenge-Zeitraum</h3>
+          <h3>{challengePeriodHeading(challenge.name)}</h3>
           <PeriodStats summary={protocol.period} />
         </section>
 
         <section className="protocol-transfers">
-          <h3>An die Klasse übertragen</h3>
+          <h3>{challengeTransferHeading(challenge.name)}</h3>
           {transferTotal === 0 ? (
             <p className="muted small">
               In diesem Challenge-Fenster noch keine Punkte an eine Klasse
@@ -211,7 +215,7 @@ export function ChallengeProtocol({ user, challenge, onExit }: Props) {
         </section>
 
         <section className="protocol-grade">
-          <h3>Challenge-Stand</h3>
+          <h3>{challengeStandHeading(challenge.name)}</h3>
           <p className="muted small">
             Online nur anonyme Summen (Klasse/Stufe). Deine Punkte bleiben lokal.
           </p>

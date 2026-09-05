@@ -52,7 +52,7 @@ interface Props {
   user: string
   role: UserRole
   loaded: LoadedGrade[]
-  onPractice: (topic: Topic, areaTitle: string, gradeTitle: string) => void
+  onPractice: (topic: Topic, areaTitle: string, gradeTitle: string, challengeId?: string) => void
 }
 
 type Mode = 'main' | 'protocol'
@@ -690,7 +690,7 @@ function ChallengeListGroup({
   gradeSettings: ReturnType<typeof getGradeCodeSettings>
   loaded: LoadedGrade[]
   allowPractice: boolean
-  onPractice: (topic: Topic, areaTitle: string, gradeTitle: string) => void
+  onPractice: (topic: Topic, areaTitle: string, gradeTitle: string, challengeId?: string) => void
   onProtocol: (challenge: ChallengeSummary | StoredChallenge) => void
 }) {
   if (challenges.length === 0) return null
@@ -724,7 +724,7 @@ function ActiveChallenge({
   hostLabel: string
   loaded: LoadedGrade[]
   allowPractice: boolean
-  onPractice: (topic: Topic, areaTitle: string, gradeTitle: string) => void
+  onPractice: (topic: Topic, areaTitle: string, gradeTitle: string, challengeId?: string) => void
   onProtocol: () => void
 }) {
   const topics = 'topics' in challenge ? challenge.topics : []
@@ -790,7 +790,20 @@ function ActiveChallenge({
                   <button
                     type="button"
                     className="chip-btn chip-btn--primary"
-                    onClick={() => onPractice(found.topic, found.areaTitle, found.gradeTitle)}
+                    onClick={() => {
+                      const host =
+                        'hostCode' in challenge && challenge.hostCode
+                          ? challenge.hostCode
+                          : ''
+                      if (host) {
+                        rememberCreatedChallenge(
+                          'hostCode' in challenge
+                            ? (challenge as StoredChallenge)
+                            : toStored(challenge as ChallengeSummary, host),
+                        )
+                      }
+                      onPractice(found.topic, found.areaTitle, found.gradeTitle, challenge.id)
+                    }}
                   >
                     Üben
                   </button>

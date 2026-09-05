@@ -106,7 +106,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.33**).
+(aktuelle Version **0.1.34**).
 
 Die App prüft beim Start und — solange sie geöffnet bleibt — einmal pro
 Kalendertag (**Europe/Berlin**) die öffentlichen

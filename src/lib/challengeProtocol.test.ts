@@ -6,6 +6,7 @@ import {
   initSharedStorage,
   loadUser,
   recordSession,
+  rememberCreatedChallenge,
   rememberJoinedClassCode,
   resetSharedStorageForTests,
   setActiveStorageUser,
@@ -144,6 +145,89 @@ describe('buildChallengeProtocol', () => {
     expect(protocol.rows[0]?.topicTitle).toBe('Addieren')
     expect(protocol.transferredPoints).toBe(6)
     expect(protocol.classThreshold).toBe(80)
+  })
+
+  it('does not count a previous challenge or sessions before this start', async () => {
+    await setup()
+    const challengeA = {
+      id: 'CHAL-A',
+      name: 'Alter Test',
+      topicIds: ['n5-add'],
+      start: '2026-09-01T08:00',
+      end: '2026-09-11T16:00',
+    }
+    const challengeB = {
+      id: 'CHAL-B',
+      name: 'Testchallenge',
+      topicIds: ['n5-add'],
+      start: '2026-09-07T08:00',
+      end: '2026-09-11T16:00',
+    }
+    const beforeB = berlinLocalToUtcMs('2026-09-03T10:00')
+    vi.setSystemTime(beforeB)
+    recordSession('Lea', {
+      topicId: 'n5-add',
+      topicTitle: 'Addieren',
+      areaTitle: 'Natürliche Zahlen',
+      attempts: 10,
+      correct: 5,
+      points: 50,
+      challengeId: 'CHAL-A',
+    })
+    const emptyB = buildChallengeProtocol('Lea', challengeB, beforeB)
+    expect(emptyB.totalPoints).toBe(0)
+    expect(emptyB.period.total).toBe(0)
+    expect(emptyB.transferredPoints).toBe(0)
+
+    const insideB = berlinLocalToUtcMs('2026-09-08T10:00')
+    vi.setSystemTime(insideB)
+    recordSession('Lea', {
+      topicId: 'n5-add',
+      topicTitle: 'Addieren',
+      areaTitle: 'Natürliche Zahlen',
+      attempts: 4,
+      correct: 3,
+      points: 12,
+      challengeId: 'CHAL-B',
+    })
+    const protocolB = buildChallengeProtocol('Lea', challengeB, insideB)
+    expect(protocolB.totalPoints).toBe(12)
+    expect(protocolB.period.total).toBe(12)
+    expect(protocolB.transferredPoints).toBe(12)
+    expect(buildChallengeProtocol('Lea', challengeA, insideB).totalPoints).toBe(50)
+  })
+
+  it('tags a session with the only matching stored challenge', async () => {
+    await setup()
+    addUser('Lehrer', 'lehrer')
+    setActiveStorageUser('Lehrer')
+    rememberCreatedChallenge({
+      id: 'CHAL-B',
+      scope: 'class',
+      hostCode: 'ABCD2345',
+      name: 'Testchallenge',
+      topicIds: ['n5-add'],
+      topics: [{ id: 'n5-add', title: 'Addieren' }],
+      start: '2026-09-07T08:00',
+      end: '2026-09-11T16:00',
+      prize: { enabled: false },
+      createdAt: 1,
+    })
+    setActiveStorageUser('Lea')
+    const inside = berlinLocalToUtcMs('2026-09-08T10:00')
+    vi.setSystemTime(inside)
+    recordSession('Lea', {
+      topicId: 'n5-add',
+      topicTitle: 'Addieren',
+      areaTitle: 'Natürliche Zahlen',
+      attempts: 2,
+      correct: 2,
+      points: 4,
+    })
+    expect(loadUser('Lea').sessions[0]?.challengeId).toBe('CHAL-B')
+    expect(buildChallengeProtocol('Lea', { ...challenge, id: 'CHAL-B' }, inside).totalPoints).toBe(
+      4,
+    )
   })
 
   it('omits Klassenziel when no threshold is set', async () => {

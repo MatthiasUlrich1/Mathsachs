@@ -69,6 +69,7 @@ type View =
       areaTitle: string
       gradeTitle: string
       returnTo?: TopTabId
+      challengeId?: string
     }
   | { name: 'worksheet'; topic: Topic; areaTitle: string; gradeTitle: string }
 
@@ -380,7 +381,8 @@ export default function App() {
     areaTitle: string,
     gradeTitle: string,
     returnTo?: TopTabId,
-  ) => setView({ name: 'practice', topic, areaTitle, gradeTitle, returnTo })
+    challengeId?: string,
+  ) => setView({ name: 'practice', topic, areaTitle, gradeTitle, returnTo, challengeId })
   const openWorksheet = (topic: Topic, areaTitle: string, gradeTitle: string) =>
     setView({ name: 'worksheet', topic, areaTitle, gradeTitle })
 
@@ -562,8 +564,8 @@ export default function App() {
           user={activeUser}
           role={userRole}
           loaded={loaded}
-          onPractice={(topic, areaTitle, gradeTitle) =>
-            openPractice(topic, areaTitle, gradeTitle, 'challenge')
+          onPractice={(topic, areaTitle, gradeTitle, challengeId) =>
+            openPractice(topic, areaTitle, gradeTitle, 'challenge', challengeId)
           }
         />
       )}
@@ -573,6 +575,7 @@ export default function App() {
           topic={view.topic}
           areaTitle={view.areaTitle}
           user={activeUser}
+          challengeId={view.challengeId}
           onExit={() =>
             setView({ name: view.returnTo === 'challenge' ? 'challenge' : 'browse' })
           }
