@@ -56,9 +56,10 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.22**).
+(aktuelle Version **0.1.23**).
 
-Die App prüft beim Start die öffentlichen
+Die App prüft beim Start und — solange sie geöffnet bleibt — einmal pro
+Kalendertag (**Europe/Berlin**) die öffentlichen
 [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
 auf eine neuere Version (ohne Token). Ist ein Update da, erscheint ein
 schließbarer Hinweis mit Versionsnummer, Release-Notes und Download. Im
@@ -155,8 +156,10 @@ Unter **Einstellungen → Klasse**:
 
 1. **Code erstellen** (Eltern oder Lehrer): **in der App** den Klassennamen
    eingeben. Mathsachs erzeugt den Code selbst — niemand braucht dafür den
-   Cloudflare-Account. **Schüler** sehen diesen Bereich nicht; sie können nur
-   einen bestehenden Code eintragen und aktivieren.
+   Cloudflare-Account. Der neue Code wird **nicht automatisch aktiv**; der
+   bisherige Sammel-Code bleibt aktiv, bis du einen anderen aktivierst.
+   **Schüler** sehen diesen Bereich nicht; sie können nur einen bestehenden
+   Code eintragen und aktivieren.
 2. **Code eintragen** und als einzigen Sammel-Code **aktivieren**.
 3. Optional **Punkte an Klasse senden** (Opt-in). Nur mit aktivem Code und
    diesem Haken gehen neue Übungspunkte zusätzlich an die Klassensumme.

@@ -9,6 +9,22 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.23] – 2026-09-05
+
+### Geändert
+
+- **Klassencode erstellen:** Ein neuer Klassencode wird nicht mehr automatisch
+  aktiv. Der bisher aktive Code bleibt aktiv. Aktivieren bleibt über
+  **Aktivieren** bei den eigenen Codes oder über **Code eintragen**.
+
+### Hinzugefügt
+
+- **Update-Prüfung einmal täglich:** Bleibt Mathsachs über Nacht oder das
+  Wochenende geöffnet, prüft die App nach dem Start erneut am nächsten
+  Kalendertag (**Europe/Berlin**) auf GitHub-Releases. Der vorhandene
+  Update-Hinweis erscheint, wenn eine neue Version da ist. An einem Tag
+  höchstens eine Prüfung (der Zeitpunkt wird lokal gemerkt).
+
 ## [0.1.22] – 2026-09-05
 
 ### Geändert
@@ -322,7 +338,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.22...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.23...HEAD
+[0.1.23]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.22...v0.1.23
 [0.1.22]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.21...v0.1.22
 [0.1.21]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.20...v0.1.21
 [0.1.20]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.19...v0.1.20

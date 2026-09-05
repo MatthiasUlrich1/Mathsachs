@@ -8,3 +8,4 @@ export const GITHUB_RELEASES_PAGE = `https://github.com/${GITHUB_OWNER}/${GITHUB
 
 export const IGNORE_KEY = 'mathsachs.ignoreUpdate.v1'
 export const SESSION_DISMISS_KEY = 'mathsachs.dismissUpdate.session'
+export const LAST_UPDATE_CHECK_KEY = 'mathsachs.updateCheckAt.v1'

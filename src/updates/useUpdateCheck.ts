@@ -5,6 +5,12 @@ import {
   ignoreUpdateVersion,
   isUpdateHidden,
 } from './ignore'
+import {
+  msUntilNextBerlinDay,
+  readLastUpdateCheckAt,
+  shouldCheckForUpdate,
+  writeLastUpdateCheckAt,
+} from './schedule'
 import type { AppUpdateInfo, DesktopDownloadResult } from './types'
 import { APP_VERSION } from './version'
 
@@ -20,6 +26,7 @@ export function useUpdateCheck() {
   useEffect(() => {
     const desktop = window.mathsachs
     let cancelled = false
+    let timer: ReturnType<typeof setTimeout> | null = null
 
     const apply = (info: AppUpdateInfo | null, version = APP_VERSION) => {
       if (cancelled) return
@@ -44,7 +51,23 @@ export function useUpdateCheck() {
       }
     }
 
-    void run()
+    const scheduleNextDay = () => {
+      if (cancelled) return
+      timer = setTimeout(() => {
+        void tick()
+      }, msUntilNextBerlinDay())
+    }
+
+    const tick = async () => {
+      if (cancelled) return
+      if (shouldCheckForUpdate(readLastUpdateCheckAt(), Date.now())) {
+        await run()
+        if (!cancelled) writeLastUpdateCheckAt(Date.now())
+      }
+      scheduleNextDay()
+    }
+
+    void tick()
 
     const unsubscribe = desktop?.onUpdateEvent?.((event) => {
       if (event.type === 'progress') {
@@ -61,6 +84,7 @@ export function useUpdateCheck() {
 
     return () => {
       cancelled = true
+      if (timer) clearTimeout(timer)
       unsubscribe?.()
     }
   }, [])
