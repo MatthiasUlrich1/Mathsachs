@@ -4,6 +4,11 @@
  * Paste this entire file into dash.cloudflare.com → Workers → mathsachs-punkte
  * → Edit Code, then Deploy. Keep in sync with src/classCode/buckets.ts and
  * src/classCode/code.ts.
+ *
+ * Rate limits per client IP / 60s (classroom-safe listing + a few deletes):
+ * GET /classes/:code 300, DELETE 30, POST /classes 8, POST points 60.
+ * GET / (health) is not rate-limited. Raise GET/DELETE here if a class page
+ * with many Eigene Codes still 429s; keep POST points tight against abuse.
  */
 
 const BERLIN_TZ = 'Europe/Berlin'
@@ -194,7 +199,18 @@ function errorJson(request, status, message, code) {
   return json(request, status, { error: message, code })
 }
 
+export const RATE_LIMITS = {
+  create: { limit: 8, windowMs: 60_000 },
+  delete: { limit: 30, windowMs: 60_000 },
+  get: { limit: 300, windowMs: 60_000 },
+  points: { limit: 60, windowMs: 60_000 },
+}
+
 const hits = new Map()
+
+export function resetRateLimitsForTests() {
+  hits.clear()
+}
 
 function rateLimit(key, limit, windowMs) {
   const now = Date.now()
@@ -236,7 +252,7 @@ function pathnameOf(request) {
 }
 
 async function handleCreate(request, env) {
-  if (!rateLimit(`create:${clientKey(request)}`, 8, 60_000)) {
+  if (!rateLimit(`create:${clientKey(request)}`, RATE_LIMITS.create.limit, RATE_LIMITS.create.windowMs)) {
     return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
   }
   if (!env.CLASSES) {
@@ -279,7 +295,7 @@ async function loadClass(env, rawCode) {
 }
 
 async function handleDelete(request, env, rawCode) {
-  if (!rateLimit(`delete:${clientKey(request)}`, 8, 60_000)) {
+  if (!rateLimit(`delete:${clientKey(request)}`, RATE_LIMITS.delete.limit, RATE_LIMITS.delete.windowMs)) {
     return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
   }
   const loaded = await loadClass(env, rawCode)
@@ -297,7 +313,7 @@ async function handleDelete(request, env, rawCode) {
 }
 
 async function handleGet(request, env, rawCode) {
-  if (!rateLimit(`get:${clientKey(request)}`, 120, 60_000)) {
+  if (!rateLimit(`get:${clientKey(request)}`, RATE_LIMITS.get.limit, RATE_LIMITS.get.windowMs)) {
     return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
   }
   const loaded = await loadClass(env, rawCode)
@@ -314,7 +330,7 @@ async function handleGet(request, env, rawCode) {
 }
 
 async function handlePoints(request, env, rawCode) {
-  if (!rateLimit(`points:${clientKey(request)}`, 60, 60_000)) {
+  if (!rateLimit(`points:${clientKey(request)}`, RATE_LIMITS.points.limit, RATE_LIMITS.points.windowMs)) {
     return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
   }
   let body

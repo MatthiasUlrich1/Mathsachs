@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it } from 'vitest'
 import {
   berlinDayKey,
   isoWeekKey,
@@ -7,8 +7,10 @@ import {
 } from '../src/classCode/buckets'
 import worker, {
   MAX_POINTS_DELTA,
+  RATE_LIMITS,
   berlinDayKey as workerBerlinDayKey,
   isoWeekKey as workerIsoWeekKey,
+  resetRateLimitsForTests,
   schoolYearStartYear as workerSchoolYearStartYear,
   summarizeDays as workerSummarizeDays,
 } from './worker.js'
@@ -30,6 +32,10 @@ const env = () => ({ CLASSES: new MemoryKV() })
 
 const request = (path: string, init?: RequestInit) =>
   new Request(`https://mathsachs-punkte.example${path}`, init)
+
+afterEach(() => {
+  resetRateLimitsForTests()
+})
 
 const BEFORE_ROLLOVER = Date.UTC(2026, 6, 31, 21, 59, 0)
 const AFTER_ROLLOVER = Date.UTC(2026, 6, 31, 22, 0, 0)
@@ -157,5 +163,47 @@ describe('Cloudflare Worker API', () => {
       env(),
     )
     expect(fromFile.headers.get('Access-Control-Allow-Origin')).toBe('*')
+  })
+
+  it('allows classroom-sized GET/DELETE bursts and keeps POST points tighter', async () => {
+    expect(RATE_LIMITS).toEqual({
+      create: { limit: 8, windowMs: 60_000 },
+      delete: { limit: 30, windowMs: 60_000 },
+      get: { limit: 300, windowMs: 60_000 },
+      points: { limit: 60, windowMs: 60_000 },
+    })
+
+    const kv = env()
+    const created = await worker.fetch(
+      request('/classes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'CF-Connecting-IP': '203.0.113.8' },
+        body: JSON.stringify({ name: '6a' }),
+      }),
+      kv,
+    )
+    const { code } = (await created.json()) as { code: string }
+    const ip = { 'CF-Connecting-IP': '203.0.113.9' }
+
+    for (let i = 0; i < RATE_LIMITS.get.limit; i++) {
+      const res = await worker.fetch(request(`/classes/${code}`, { headers: ip }), kv)
+      expect(res.status).toBe(200)
+    }
+    const getBlocked = await worker.fetch(request(`/classes/${code}`, { headers: ip }), kv)
+    expect(getBlocked.status).toBe(429)
+
+    const other = { 'CF-Connecting-IP': '203.0.113.10' }
+    for (let i = 0; i < RATE_LIMITS.delete.limit; i++) {
+      const res = await worker.fetch(
+        request(`/classes/${code}`, { method: 'DELETE', headers: other }),
+        kv,
+      )
+      expect([200, 404]).toContain(res.status)
+    }
+    const deleteBlocked = await worker.fetch(
+      request(`/classes/${code}`, { method: 'DELETE', headers: other }),
+      kv,
+    )
+    expect(deleteBlocked.status).toBe(429)
   })
 })

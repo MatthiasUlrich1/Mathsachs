@@ -41,7 +41,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.12**).
+(aktuelle Version **0.1.13**).
 
 Die App prüft beim Start die öffentlichen
 [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
@@ -161,6 +161,11 @@ Im Reiter **Klasse**:
 
 KV-Wert: `{ name, createdAt, days: { "YYYY-MM-DD": number } }`. Woche/Monat/Jahr
 werden aus den Tages-Buckets in Berlin gerechnet. Die Bindung heißt **`CLASSES`**.
+
+Rate-Limits je Client-IP / 60 s (siehe `cloudflare/worker.js`): **GET** Klasse
+300, **DELETE** 30, **POST** neue Klasse 8, **POST** Punkte 60. `GET /`
+(Health) ist frei. Nach dem Ändern der Worker-Datei einmal in Cloudflare
+**Deploy** klicken.
 
 ### Einmalig für Linus und Matthias (nicht für Schüler)
 

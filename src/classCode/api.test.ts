@@ -144,6 +144,19 @@ describe('class API client', () => {
     })
   })
 
+  it('maps JSON 429 to a rate error', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () =>
+        jsonResponse({ error: 'Zu viele Anfragen. Bitte kurz warten.', code: 'RATE' }, 429),
+      ),
+    )
+    await expect(deleteClass('ABCD2345', 'https://example.test')).rejects.toMatchObject({
+      kind: 'rate',
+      status: 429,
+    })
+  })
+
   it('maps JSON 404 to an unknown-code error', async () => {
     vi.stubGlobal(
       'fetch',

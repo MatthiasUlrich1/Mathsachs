@@ -1,10 +1,20 @@
-import { afterEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { CLASS_API_NETWORK_MESSAGE, ClassApiError } from './api'
 import {
+  RATE_COOLDOWN_MS,
   activateCreatedClassCode,
+  acknowledgeCreatedListKey,
+  completeCreatedListRefresh,
+  createdCodesKey,
+  decideCreatedListRefresh,
+  deleteCreatedClassCode,
+  DELETE_STILL_ON_SERVER_NOTICE,
+  emptyCreatedRefreshGate,
   isConfirmedMissingClass,
   loadCreatedClassStandings,
   missingClassCodeNotice,
+  resetCreatedListRefreshGateForTests,
+  takeCreatedListRefresh,
 } from './createdList'
 import {
   getClassCodeSettings,
@@ -105,7 +115,7 @@ describe('loadCreatedClassStandings', () => {
       throw new Error('unexpected')
     })
 
-    const { standings, notices } = await loadCreatedClassStandings(
+    const { standings, notices, rateLimited } = await loadCreatedClassStandings(
       [row('NETW0001'), row('WAIT0001'), row('RATE0001')],
       { getClass },
       { forgetCreatedClassCode: forget, setActiveClassCode: setActive },
@@ -114,13 +124,122 @@ describe('loadCreatedClassStandings', () => {
     expect(forget).not.toHaveBeenCalled()
     expect(setActive).not.toHaveBeenCalled()
     expect(notices).toEqual([])
+    expect(rateLimited).toBe(true)
     expect(standings['NETW0001']).toEqual({ error: CLASS_API_NETWORK_MESSAGE })
     expect(standings['WAIT0001']).toEqual({
       error: 'Klassencodes sind gerade nicht verfügbar.',
     })
-    expect(standings['RATE0001']).toEqual({
-      error: 'Zu viele Anfragen. Bitte kurz warten.',
+    expect(standings['RATE0001']).toBeUndefined()
+  })
+
+  it('refresh 429 does not prune and stops further GETs', async () => {
+    const forget = vi.fn()
+    const setActive = vi.fn()
+    const getClass = vi.fn(async (code: string) => {
+      if (code === 'RATE0001') throw rateErr()
+      return stats(code)
     })
+
+    const { standings, notices, rateLimited } = await loadCreatedClassStandings(
+      [row('RATE0001'), row('ABCD2345'), row('WAIT0001')],
+      { getClass },
+      { forgetCreatedClassCode: forget, setActiveClassCode: setActive },
+    )
+
+    expect(rateLimited).toBe(true)
+    expect(forget).not.toHaveBeenCalled()
+    expect(notices).toEqual([])
+    expect(standings['RATE0001']).toBeUndefined()
+    expect(standings['ABCD2345']).toBeUndefined()
+    expect(getClass).toHaveBeenCalledTimes(1)
+  })
+})
+
+describe('deleteCreatedClassCode', () => {
+  it('removes the row locally even when DELETE returns 429', async () => {
+    const forget = vi.fn()
+    const setActive = vi.fn()
+    const del = vi.fn(async () => {
+      throw rateErr()
+    })
+
+    const result = await deleteCreatedClassCode(
+      '9WATX7XC',
+      { deleteClass: del },
+      { forgetCreatedClassCode: forget, setActiveClassCode: setActive },
+    )
+
+    expect(forget).toHaveBeenCalledWith('9WATX7XC')
+    expect(setActive).not.toHaveBeenCalled()
+    expect(del).toHaveBeenCalledWith('9WATX7XC')
+    expect(result).toEqual({
+      ok: false,
+      keptLocal: false,
+      notice: DELETE_STILL_ON_SERVER_NOTICE,
+    })
+  })
+
+  it('treats Worker 404 as already gone after the local remove', async () => {
+    const forget = vi.fn()
+    const result = await deleteCreatedClassCode(
+      '9WATX7XC',
+      {
+        deleteClass: async () => {
+          throw notFound()
+        },
+      },
+      { forgetCreatedClassCode: forget, setActiveClassCode: vi.fn() },
+    )
+    expect(forget).toHaveBeenCalledWith('9WATX7XC')
+    expect(result).toEqual({ ok: true, alreadyGone: true })
+  })
+})
+
+describe('created list refresh gate', () => {
+  beforeEach(() => {
+    resetCreatedListRefreshGateForTests()
+  })
+
+  it('does not start a new GET loop when storage notifies the same codes', () => {
+    const now = 1_000_000
+    const key = createdCodesKey([row('ABCD2345'), row('9WATX7XC')])
+    expect(takeCreatedListRefresh(key, now)).toBe(true)
+    expect(takeCreatedListRefresh(key, now + 10)).toBe(false)
+    completeCreatedListRefresh(false, now + 20)
+    expect(takeCreatedListRefresh(key, now + 30)).toBe(false)
+    expect(takeCreatedListRefresh(key, now + 40, { force: true })).toBe(true)
+  })
+
+  it('does not refetch when a code is only removed (delete / 404 prune)', () => {
+    const gate = {
+      ...emptyCreatedRefreshGate(),
+      lastKey: createdCodesKey([row('ABCD2345'), row('9WATX7XC')]),
+    }
+    const afterDelete = createdCodesKey([row('ABCD2345')])
+    expect(decideCreatedListRefresh(afterDelete, 1, gate)).toEqual({
+      fetch: false,
+      reason: 'same-codes',
+    })
+  })
+
+  it('blocks further GETs for the cooldown after a 429', () => {
+    const now = 5_000
+    const key = 'ABCD2345'
+    expect(takeCreatedListRefresh(key, now)).toBe(true)
+    completeCreatedListRefresh(true, now)
+    expect(takeCreatedListRefresh(key, now + 100, { force: true })).toBe(false)
+    expect(takeCreatedListRefresh('NEWCODE01', now + 100)).toBe(false)
+    expect(takeCreatedListRefresh('NEWCODE01', now + RATE_COOLDOWN_MS + 1)).toBe(true)
+  })
+
+  it('storage notify after prune does not retrigger a fetch', () => {
+    const keyBoth = createdCodesKey([row('ABCD2345'), row('9WATX7XC')])
+    const keyOne = createdCodesKey([row('ABCD2345')])
+    expect(takeCreatedListRefresh(keyBoth, 1)).toBe(true)
+    completeCreatedListRefresh(false, 2)
+    acknowledgeCreatedListKey(keyOne)
+    expect(takeCreatedListRefresh(keyOne, 3)).toBe(false)
+    expect(takeCreatedListRefresh(keyOne, 4)).toBe(false)
   })
 })
 
@@ -190,6 +309,28 @@ describe('created list + real storage', () => {
   afterEach(() => {
     resetSharedStorageForTests()
     vi.unstubAllGlobals()
+  })
+
+  it('optimistic delete on 429 forgets locally and clears active/sendPoints', async () => {
+    vi.stubGlobal('localStorage', memoryStorage())
+    vi.stubGlobal('location', { protocol: 'file:' })
+    await initSharedStorage()
+    rememberCreatedClassCode('9wat-x7xc', '6a')
+    setSendClassPoints(true)
+
+    const result = await deleteCreatedClassCode('9WATX7XC', {
+      deleteClass: async () => {
+        throw rateErr()
+      },
+    })
+
+    expect(result.ok).toBe(false)
+    expect(result).toMatchObject({ keptLocal: false })
+    expect(getClassCodeSettings()).toMatchObject({
+      created: [],
+      activeCode: null,
+      sendPoints: false,
+    })
   })
 
   it('refresh/prune on 404 clears the active collect-code and sendPoints', async () => {
@@ -262,6 +403,31 @@ describe('created list + real storage', () => {
 
     expect(notices).toEqual([])
     expect(standings['ABCD2345']).toEqual({ error: CLASS_API_NETWORK_MESSAGE })
+    expect(getClassCodeSettings()).toMatchObject({
+      created: [{ code: 'ABCD2345', name: '6a' }],
+      activeCode: 'ABCD2345',
+      sendPoints: true,
+    })
+  })
+
+  it('refresh 429 does not prune the created row', async () => {
+    vi.stubGlobal('localStorage', memoryStorage())
+    vi.stubGlobal('location', { protocol: 'file:' })
+    await initSharedStorage()
+    rememberCreatedClassCode('abcd-2345', '6a')
+    setSendClassPoints(true)
+
+    const { standings, rateLimited } = await loadCreatedClassStandings(
+      getClassCodeSettings().created,
+      {
+        getClass: async () => {
+          throw rateErr()
+        },
+      },
+    )
+
+    expect(rateLimited).toBe(true)
+    expect(standings['ABCD2345']).toBeUndefined()
     expect(getClassCodeSettings()).toMatchObject({
       created: [{ code: 'ABCD2345', name: '6a' }],
       activeCode: 'ABCD2345',

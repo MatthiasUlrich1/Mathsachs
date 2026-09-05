@@ -9,6 +9,24 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.13] – 2026-09-05
+
+### Behoben
+
+- **Löschen** entfernt den Klassencode sofort aus **Eigene Codes** (und
+  deaktiviert ihn lokal), auch wenn der Server mit 429 oder Netzwerkfehler
+  antwortet. Die Liste bleibt nicht mit „Zu viele Anfragen“ und **Löschen**
+  stehen. Ein kurzer Hinweis, falls der Server den Code noch haben kann.
+- **Stände aktualisieren** läuft nicht mehr in einer GET-Schleife bei jeder
+  Speicher-Benachrichtigung. Bei 429 eine Banner-Meldung und Pause, kein
+  Entfernen des Eintrags. Nur bestätigtes `not_found` (404) löscht lokal.
+
+### Geändert
+
+- Cloudflare-Worker: GET-Limit 300/min, DELETE 30/min (vorher 120 / 8).
+  POST-Punkte bleibt 60/min. Nach dem Update einmal `cloudflare/worker.js`
+  in Cloudflare **Deploy**en.
+
 ## [0.1.12] – 2026-09-05
 
 ### Behoben
@@ -180,7 +198,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.12...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.13...HEAD
+[0.1.13]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.12...v0.1.13
 [0.1.12]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.11...v0.1.12
 [0.1.11]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.10...v0.1.11
 [0.1.10]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.9...v0.1.10

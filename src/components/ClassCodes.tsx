@@ -1,18 +1,24 @@
 import { useCallback, useEffect, useState, type MouseEvent } from 'react'
 import {
   CLASS_API_NOT_READY_MESSAGE,
+  CLASS_API_RATE_MESSAGE,
   checkClassApiHealth,
   createClass,
-  deleteClass,
   getClass,
   type ClassStats,
 } from '../classCode/api'
 import {
   activateCreatedClassCode,
+  acknowledgeCreatedListKey,
+  completeCreatedListRefresh,
+  createdCodesKey,
+  deleteCreatedClassCode,
+  getCreatedListRefreshGate,
   isConfirmedMissingClass,
   loadCreatedClassStandings,
   missingClassCodeNotice,
   standingErrorText,
+  takeCreatedListRefresh,
 } from '../classCode/createdList'
 import { formatClassCode, isValidClassCode, normalizeClassCode } from '../classCode/code'
 import {
@@ -60,17 +66,43 @@ export function ClassCodes() {
     setWebShare(canUseWebShare())
   }, [])
 
-  const refreshStandings = useCallback(async (rows: CreatedClassCode[]) => {
-    if (rows.length === 0) {
-      setStandings({})
-      return
-    }
-    setRefreshing(true)
-    const { standings: next, notices } = await loadCreatedClassStandings(rows)
-    setStandings(next)
-    if (notices.length > 0) setFormError(notices.join(' '))
-    setRefreshing(false)
-  }, [])
+  const refreshStandings = useCallback(
+    async (rows: CreatedClassCode[], opts: { force?: boolean } = {}) => {
+      const key = createdCodesKey(rows)
+      if (rows.length === 0) {
+        setStandings({})
+        takeCreatedListRefresh(key)
+        return
+      }
+      if (!takeCreatedListRefresh(key, Date.now(), opts)) {
+        if (opts.force && getCreatedListRefreshGate().cooldownUntil > Date.now()) {
+          setFormError(CLASS_API_RATE_MESSAGE)
+        }
+        return
+      }
+      setRefreshing(true)
+      try {
+        const { standings: next, notices, rateLimited } = await loadCreatedClassStandings(rows)
+        setStandings((prev) => {
+          const merged: Record<string, ClassStats | { error: string }> = { ...prev }
+          for (const [code, value] of Object.entries(next)) merged[code] = value
+          for (const code of Object.keys(merged)) {
+            if (!rows.some((row) => row.code === code)) delete merged[code]
+          }
+          return merged
+        })
+        if (rateLimited) setFormError(CLASS_API_RATE_MESSAGE)
+        else if (notices.length > 0) setFormError(notices.join(' '))
+        completeCreatedListRefresh(rateLimited)
+      } catch (err) {
+        completeCreatedListRefresh(false)
+        setFormError(standingErrorText(err))
+      } finally {
+        setRefreshing(false)
+      }
+    },
+    [],
+  )
 
   useEffect(() => {
     let cancelled = false
@@ -93,7 +125,7 @@ export function ClassCodes() {
 
   useEffect(() => {
     void refreshStandings(settings.created)
-  }, [settings.created, refreshStandings])
+  }, [createdCodesKey(settings.created), refreshStandings])
 
   const createdCode = settings.activeCode
     ? settings.created.find((row) => row.code === settings.activeCode)
@@ -110,6 +142,7 @@ export function ClassCodes() {
     try {
       const stats = await createClass(name)
       rememberCreatedClassCode(stats.code, stats.name)
+      acknowledgeCreatedListKey(createdCodesKey(getClassCodeSettings().created))
       setClassName('')
       setServerError(null)
       setStandings((prev) => ({ ...prev, [stats.code]: stats }))
@@ -173,24 +206,16 @@ export function ClassCodes() {
     if (!ok) return
     setDeleting(row.code)
     setFormError(null)
-    try {
-      await deleteClass(row.code)
-      forgetCreatedClassCode(row.code)
-      setStandings((prev) => {
-        const next = { ...prev }
-        delete next[row.code]
-        return next
-      })
-      setServerError(null)
-    } catch (err) {
-      if (isConfirmedMissingClass(err)) {
-        forgetCreatedClassCode(row.code)
-        return
-      }
-      setFormError(standingErrorText(err))
-    } finally {
-      setDeleting(null)
-    }
+    setStandings((prev) => {
+      const next = { ...prev }
+      delete next[row.code]
+      return next
+    })
+    const result = await deleteCreatedClassCode(row.code)
+    acknowledgeCreatedListKey(createdCodesKey(getClassCodeSettings().created))
+    if (result.ok) setServerError(null)
+    else setFormError(result.notice)
+    setDeleting(null)
   }
 
   const copyActive = async () => {
@@ -362,7 +387,7 @@ export function ClassCodes() {
           type="button"
           className="link"
           disabled={refreshing || settings.created.length === 0}
-          onClick={() => void refreshStandings(settings.created)}
+          onClick={() => void refreshStandings(settings.created, { force: true })}
         >
           {refreshing ? 'Aktualisiere …' : 'Stände aktualisieren'}
         </button>
@@ -387,7 +412,7 @@ export function ClassCodes() {
                   <code>{formatClassCode(row.code)}</code>
                   {settings.activeCode === row.code ? (
                     <span className="badge badge--ok">aktiv</span>
-                  ) : stats ? (
+                  ) : (
                     <button
                       type="button"
                       className="link"
@@ -396,7 +421,7 @@ export function ClassCodes() {
                     >
                       {activating === row.code ? 'Prüfe …' : 'Aktivieren'}
                     </button>
-                  ) : null}
+                  )}
                   <button
                     type="button"
                     className="link"

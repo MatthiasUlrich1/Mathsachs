@@ -33,6 +33,8 @@ export const CLASS_API_NOT_READY_MESSAGE =
 export const CLASS_API_NETWORK_MESSAGE =
   'Keine Verbindung zum Klassen-Server. Bitte Internet prüfen und später erneut versuchen.'
 
+export const CLASS_API_RATE_MESSAGE = 'Zu viele Anfragen. Bitte kurz warten.'
+
 export const CLASS_API_STUB_MESSAGE =
   'Der Klassen-Server läuft noch mit dem Test-Programm. Das ist nicht der Klassencode in der App: Linus oder Matthias müssen einmal die Datei cloudflare/worker.js in Cloudflare unter Edit Code einfügen und auf Deploy klicken. Danach erzeugt die App Codes selbst.'
 
@@ -127,7 +129,7 @@ const looksLikeCloudflareBlock = (status: number, text: string): boolean => {
 const messageForKind = (kind: ClassApiErrorKind, fallback: string): string => {
   if (kind === 'not_ready') return CLASS_API_NOT_READY_MESSAGE
   if (kind === 'not_found') return 'Diesen Klassencode gibt es nicht.'
-  if (kind === 'rate') return 'Zu viele Anfragen. Bitte kurz warten.'
+  if (kind === 'rate') return CLASS_API_RATE_MESSAGE
   if (kind === 'network') return CLASS_API_NETWORK_MESSAGE
   return fallback
 }
