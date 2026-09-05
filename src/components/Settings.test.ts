@@ -8,6 +8,10 @@ import {
   MANUAL_CHECK_LABEL,
 } from '../updates/runCheck'
 import { Settings } from './Settings'
+import {
+  TEACHER_CODE_REQUEST_LABEL,
+  formatTeacherCode,
+} from '../lib/teacherCode'
 
 const baseProps = {
   loadedIds: [] as string[],
@@ -130,5 +134,46 @@ describe('Settings hub update check', () => {
     )
     expect(profileCurrent).not.toContain(MANUAL_CHECK_CURRENT)
     expect(profileCurrent).not.toContain(MANUAL_CHECK_LABEL)
+  })
+})
+
+describe('Settings profile Lehrercode', () => {
+  it('shows the shared code on a Lehrer profile', () => {
+    const html = renderToStaticMarkup(
+      createElement(Settings, { ...baseProps, section: 'profile' }),
+    )
+    expect(html).toContain('Lehrercode')
+    expect(html).toContain(formatTeacherCode())
+    expect(html).toContain('Lehrercode kopieren')
+    expect(html).toContain('andere Lehrer der Schule')
+    expect(html).not.toContain(TEACHER_CODE_REQUEST_LABEL)
+  })
+
+  it('shows the request button for Schüler and hides the secret', () => {
+    const html = renderToStaticMarkup(
+      createElement(Settings, {
+        ...baseProps,
+        role: 'schueler',
+        section: 'profile',
+      }),
+    )
+    expect(html).toContain(TEACHER_CODE_REQUEST_LABEL)
+    expect(html).toContain('mailto:')
+    expect(html).toContain('keine Personendaten')
+    expect(html).toContain('Lehrer und Klassenlehrer nur mit')
+    expect(html).not.toContain(formatTeacherCode())
+    expect(html).not.toContain('Mit Lehrercode übernehmen')
+  })
+
+  it('shows the shared code for Klassenlehrer as well', () => {
+    const html = renderToStaticMarkup(
+      createElement(Settings, {
+        ...baseProps,
+        role: 'klassenlehrer',
+        section: 'profile',
+      }),
+    )
+    expect(html).toContain(formatTeacherCode())
+    expect(html).not.toContain(TEACHER_CODE_REQUEST_LABEL)
   })
 })

@@ -9,6 +9,7 @@ import {
   canRequestTasks,
   canSendClassPoints,
   canWriteExam,
+  isTeacherRole,
   normalizeRole,
   pickMergedRole,
   roleForUser,
@@ -23,6 +24,14 @@ describe('user roles', () => {
       ['klassenlehrer', 'Klassenlehrer'],
       ['lehrer', 'Lehrer'],
     ])
+  })
+
+  it('treats Lehrer and Klassenlehrer as teacher roles', () => {
+    expect(isTeacherRole('lehrer')).toBe(true)
+    expect(isTeacherRole('klassenlehrer')).toBe(true)
+    expect(isTeacherRole('schueler')).toBe(false)
+    expect(isTeacherRole('eltern')).toBe(false)
+    expect(isTeacherRole(undefined)).toBe(false)
   })
 
   it('defaults missing or unknown roles to Schüler', () => {

@@ -1,22 +1,30 @@
+import { useState } from 'react'
 import { CurriculumSetup } from './CurriculumSetup'
 import { ClassCodes } from './ClassCodes'
 import { LanAccessCard } from './LanAccessCard'
 import { RoleRightsMatrix } from './RoleRightsMatrix'
 import { TaskRequest } from './TaskRequest'
 import {
+  RoleOptions,
+  TeacherCodeGate,
+  TeacherCodeRequestButton,
+  TeacherCodeReveal,
+} from './TeacherCodePanel'
+import {
   settingsSectionsForRole,
   type SettingsSectionId,
 } from '../nav'
 import {
-  USER_ROLES,
   canCreateClassCodes,
   canEnterGradeCodes,
   canManageGradeCodes,
   canRequestTasks,
   canSendClassPoints,
+  isTeacherRole,
   roleLabel,
   type UserRole,
 } from '../lib/roles'
+import { applyRoleChange, needsTeacherCode } from '../lib/teacherCode'
 import type { LanServerStatus } from '../updates/types'
 import {
   MANUAL_CHECK_LABEL,
@@ -29,7 +37,7 @@ const SECTION_HINTS: Record<SettingsSectionId, string> = {
   class: 'Klassencode erstellen, eintragen oder teilen',
   tasks: 'Vorgaben für neue Übungsaufgaben senden',
   lan: 'Tablets im selben WLAN verbinden',
-  profile: 'Rolle, Rechte und Benutzerwechsel',
+  profile: 'Rolle, Lehrercode, Rechte und Benutzerwechsel',
 }
 
 interface Props {
@@ -67,8 +75,37 @@ export function Settings({
   manualCheckStatus = 'idle',
   manualCheckError = null,
 }: Props) {
+  const [pendingRole, setPendingRole] = useState<UserRole | null>(null)
+  const [teacherCodeDraft, setTeacherCodeDraft] = useState('')
+  const [teacherCodeError, setTeacherCodeError] = useState<string | null>(null)
+  const selectedRole = pendingRole ?? role
   const lanAvailable = Boolean(lanStatus)
   const updateHint = manualCheckHint(manualCheckStatus, manualCheckError)
+
+  const pickRole = (next: UserRole) => {
+    if (!needsTeacherCode(role, next)) {
+      setPendingRole(null)
+      setTeacherCodeDraft('')
+      setTeacherCodeError(null)
+      if (next !== role) onChangeRole(next)
+      return
+    }
+    setPendingRole(next)
+    setTeacherCodeError(null)
+  }
+
+  const confirmTeacherRole = () => {
+    if (!pendingRole) return
+    const result = applyRoleChange(role, pendingRole, teacherCodeDraft)
+    if (!result.ok) {
+      setTeacherCodeError(result.error)
+      return
+    }
+    onChangeRole(result.role)
+    setPendingRole(null)
+    setTeacherCodeDraft('')
+    setTeacherCodeError(null)
+  }
   const sectionHint = (id: SettingsSectionId) => {
     if (id === 'class' && (canManageGradeCodes(role) || canEnterGradeCodes(role))) {
       return 'Klassencode und Klassenstufe'
@@ -206,33 +243,41 @@ export function Settings({
                   Angemeldet als <strong>{user}</strong>
                   {` · ${roleLabel(role)}`}
                   {classLabel ? ` · ${classLabel}` : ''}. Die Rolle gilt für die
-                  Reiter und für Klassencodes. Benutzer wechseln führt zur
-                  Auswahl wie beim Start („Wer übt heute?“).
+                  Reiter und für Klassencodes. Lehrer und Klassenlehrer nur mit
+                  Lehrercode. Benutzer wechseln führt zur Auswahl wie beim Start
+                  („Wer übt heute?“).
                 </p>
               </div>
             </div>
-            <fieldset className="role-fieldset">
-              <legend className="field__label">Rolle</legend>
-              <div className="role-options">
-                {USER_ROLES.map((entry) => (
-                  <label
-                    key={entry.id}
-                    className={`role-option ${
-                      role === entry.id ? 'role-option--active' : ''
-                    }`}
-                  >
-                    <input
-                      type="radio"
-                      name="profile-role"
-                      value={entry.id}
-                      checked={role === entry.id}
-                      onChange={() => onChangeRole(entry.id)}
-                    />
-                    {entry.label}
-                  </label>
-                ))}
+            <RoleOptions
+              name="profile-role"
+              value={selectedRole}
+              onSelect={pickRole}
+            />
+            {isTeacherRole(role) && !pendingRole ? (
+              <TeacherCodeReveal />
+            ) : pendingRole ? (
+              <TeacherCodeGate
+                id="profile-teacher-code"
+                value={teacherCodeDraft}
+                onChange={(next) => {
+                  setTeacherCodeDraft(next)
+                  setTeacherCodeError(null)
+                }}
+                error={teacherCodeError}
+                confirmLabel="Mit Lehrercode übernehmen"
+                onConfirm={confirmTeacherRole}
+              />
+            ) : (
+              <div className="teacher-code-request">
+                <p className="muted small">
+                  Den gemeinsamen Lehrercode per Mail anfordern — nicht für
+                  Schüler. Auf dem Klassen-Server werden keine Personendaten
+                  gespeichert.
+                </p>
+                <TeacherCodeRequestButton />
               </div>
-            </fieldset>
+            )}
             <button type="button" className="ghost" onClick={onSwitchUser}>
               Benutzer wechseln
             </button>

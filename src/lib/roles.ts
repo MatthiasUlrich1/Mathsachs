@@ -20,6 +20,12 @@ export const isUserRole = (value: unknown): value is UserRole =>
 export const normalizeRole = (role?: unknown): UserRole =>
   isUserRole(role) ? role : 'schueler'
 
+/** Lehrer and Klassenlehrer — both need the shared Lehrercode. */
+export const isTeacherRole = (role?: unknown): boolean => {
+  const id = normalizeRole(role)
+  return id === 'lehrer' || id === 'klassenlehrer'
+}
+
 /** Klausur erstellen — Eltern and Lehrer only. */
 export const canCreateExam = (role?: unknown): boolean => {
   const id = normalizeRole(role)

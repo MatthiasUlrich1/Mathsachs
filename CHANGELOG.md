@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.29] – 2026-09-05
+
+### Hinzugefügt
+
+- **Lehrercode:** Wechsel in **Lehrer** oder **Klassenlehrer** (auch beim
+  Anlegen) nur mit einem gemeinsamen Code. Er verhindert, dass Schüler
+  Stufen oder Klassen anlegen. **Lehrercode anfordern** öffnet eine Mail
+  an uns — auf dem Klassen-Server werden keine Personendaten gespeichert.
+  Im Profil von Lehrer und Klassenlehrer steht derselbe Code zum Teilen
+  mit anderen Lehrern der Schule.
+
 ## [0.1.28] – 2026-09-05
 
 ### Geändert
@@ -403,7 +414,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.28...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.29...HEAD
+[0.1.29]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.28...v0.1.29
 [0.1.28]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.27...v0.1.28
 [0.1.27]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.26...v0.1.27
 [0.1.26]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.25...v0.1.26

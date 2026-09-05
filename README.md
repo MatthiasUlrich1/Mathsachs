@@ -28,8 +28,13 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   gilt dieselbe Benutzerliste und derselbe Punktestand für den PC und für
   Tablets im WLAN. **Benutzer wechseln** steht unter **Einstellungen → Profil**.
 - **Benutzerrollen:** Beim Anlegen und unter **Einstellungen → Profil** wählst
-  du **Schüler**, **Eltern**, **Klassenlehrer** oder **Lehrer**. Die
-  **Rollen-Rechte-Matrix** im Profil zeigt die Rechte. **Klassenlehrer**
+  du **Schüler**, **Eltern**, **Klassenlehrer** oder **Lehrer**. Wechsel in
+  **Lehrer** oder **Klassenlehrer** nur mit dem gemeinsamen **Lehrercode**
+  (ein Code für alle Lehrer, damit Schüler keine Stufen oder Klassen anlegen).
+  Fehlt der Code, **Lehrercode anfordern** sendet eine Mail an uns — nichts
+  davon landet auf dem Klassen-Server. Im Profil eines Lehrers oder
+  Klassenlehrers steht der Code zum Weitergeben an andere Lehrer der Schule.
+  Die **Rollen-Rechte-Matrix** im Profil zeigt die Rechte. **Klassenlehrer**
   können einer Klasse beitreten, aber keine Klausur erstellen/schreiben,
   keine Codes anlegen und keine Punkte senden. Nur **Lehrer** legen eine
   Stufe an oder tragen einen Stufencode ein. Eltern erstellen weiter
@@ -88,7 +93,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.28**).
+(aktuelle Version **0.1.29**).
 
 Die App prüft beim Start und — solange sie geöffnet bleibt — einmal pro
 Kalendertag (**Europe/Berlin**) die öffentlichen

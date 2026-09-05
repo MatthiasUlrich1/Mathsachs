@@ -580,6 +580,25 @@ a.task-request__send {
   accent-color: var(--accent);
 }
 
+.teacher-code,
+.teacher-code-gate,
+.teacher-code-request {
+  margin: 16px 0 0;
+}
+
+.teacher-code-gate,
+.teacher-code-request {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.teacher-code-gate .ghost,
+.teacher-code-gate .primary,
+.teacher-code-request .ghost {
+  align-self: flex-start;
+}
+
 /* Accordion browser */
 .browser {
   display: flex;

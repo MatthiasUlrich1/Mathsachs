@@ -22,11 +22,16 @@ import {
   type UserRole,
 } from './lib/storage'
 import {
-  USER_ROLES,
   canCreateExam,
   canWriteExam,
+  isTeacherRole,
   roleLabel,
 } from './lib/roles'
+import { applyRoleChange } from './lib/teacherCode'
+import {
+  RoleOptions,
+  TeacherCodeGate,
+} from './components/TeacherCodePanel'
 import { searchTopics, searchUnloadedHints } from './curriculum/search'
 import { CurriculumBrowser } from './components/CurriculumBrowser'
 import { PracticeSession } from './components/PracticeSession'
@@ -72,6 +77,10 @@ export default function App() {
   const [view, setView] = useState<View>({ name: 'browse' })
   const [newName, setNewName] = useState('')
   const [newRole, setNewRole] = useState<UserRole | null>(null)
+  const [newTeacherCode, setNewTeacherCode] = useState('')
+  const [newTeacherCodeError, setNewTeacherCodeError] = useState<string | null>(
+    null,
+  )
   const [userRole, setUserRoleState] = useState<UserRole>('schueler')
   // Exam code taken from a shared link (`#klausur=…`), consumed by ExamRunner.
   const [examCodeFromLink, setExamCodeFromLink] = useState<string | null>(null)
@@ -227,11 +236,26 @@ export default function App() {
   const createUser = () => {
     const name = newName.trim()
     if (!name || !newRole) return
-    setUsers(addUser(name, newRole))
+    const result = applyRoleChange(null, newRole, newTeacherCode)
+    if (!result.ok) {
+      setNewTeacherCodeError(result.error)
+      return
+    }
+    setUsers(addUser(name, result.role))
     selectUser(name)
     setNewName('')
     setNewRole(null)
+    setNewTeacherCode('')
+    setNewTeacherCodeError(null)
     setView({ name: 'browse' })
+  }
+
+  const pickNewRole = (role: UserRole) => {
+    setNewRole(role)
+    if (!isTeacherRole(role)) {
+      setNewTeacherCode('')
+      setNewTeacherCodeError(null)
+    }
   }
 
   const changeRole = (role: UserRole) => {
@@ -296,28 +320,22 @@ export default function App() {
               onKeyDown={(e) => e.key === 'Enter' && createUser()}
             />
           </div>
-          <fieldset className="role-fieldset">
-            <legend className="field__label">Rolle</legend>
-            <div className="role-options">
-              {USER_ROLES.map((entry) => (
-                <label
-                  key={entry.id}
-                  className={`role-option ${
-                    newRole === entry.id ? 'role-option--active' : ''
-                  }`}
-                >
-                  <input
-                    type="radio"
-                    name="new-user-role"
-                    value={entry.id}
-                    checked={newRole === entry.id}
-                    onChange={() => setNewRole(entry.id)}
-                  />
-                  {entry.label}
-                </label>
-              ))}
-            </div>
-          </fieldset>
+          <RoleOptions
+            name="new-user-role"
+            value={newRole}
+            onSelect={pickNewRole}
+          />
+          {newRole && isTeacherRole(newRole) && (
+            <TeacherCodeGate
+              id="new-user-teacher-code"
+              value={newTeacherCode}
+              onChange={(next) => {
+                setNewTeacherCode(next)
+                setNewTeacherCodeError(null)
+              }}
+              error={newTeacherCodeError}
+            />
+          )}
           <div className="field">
             <button
               type="button"
