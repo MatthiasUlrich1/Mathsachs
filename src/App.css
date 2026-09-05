@@ -2011,9 +2011,27 @@ a.link {
   color: var(--text);
 }
 
-.challenge-class-goal strong {
+.challenge-class-goal strong,
+.challenge-class-goal__label {
   color: #ecfeff;
   background: rgba(34, 211, 238, 0.18);
   padding: 2px 8px;
   border-radius: 6px;
+}
+
+/* Printable protocol is a white card — dark-theme cyan/white is unreadable there. */
+.sheet .challenge-class-goal,
+.sheet .challenge-class-goal--sheet {
+  color: #1e3a5f;
+}
+
+.sheet .challenge-class-goal strong,
+.sheet .challenge-class-goal__label {
+  color: #0f3d4c;
+  background: #a5f3fc;
+}
+
+.sheet .challenge-class-goal__remaining {
+  color: #1e3a5f;
+  font-weight: 600;
 }

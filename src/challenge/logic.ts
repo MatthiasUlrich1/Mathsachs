@@ -323,11 +323,56 @@ export function belongsToChallenge(
   return true
 }
 
+/**
+ * Same practice row, ignoring challengeId so a tagged copy and an untagged
+ * LAN/legacy copy of the same session are not counted twice.
+ */
+export function challengeSessionIdentity(session: SessionRecord): string {
+  return [
+    session.date,
+    session.topicId,
+    session.attempts,
+    session.correct,
+    session.points,
+  ].join('|')
+}
+
+function preferTaggedSession(
+  current: SessionRecord,
+  incoming: SessionRecord,
+  challengeId?: string,
+): SessionRecord {
+  const want = challengeId?.trim()
+  if (!want) return current
+  const currentTagged = current.challengeId?.trim() === want
+  const incomingTagged = incoming.challengeId?.trim() === want
+  if (incomingTagged && !currentTagged) return incoming
+  return current
+}
+
+/**
+ * Sessions that belong to this challenge, each practice counted once.
+ * Tagged + untagged rows with the same date and score collapse to one.
+ */
+export function uniqueSessionsForChallenge(
+  sessions: SessionRecord[],
+  challenge: ChallengeWindowFilter,
+): SessionRecord[] {
+  const byKey = new Map<string, SessionRecord>()
+  for (const session of sessions) {
+    if (!belongsToChallenge(session, challenge, true)) continue
+    const key = challengeSessionIdentity(session)
+    const prev = byKey.get(key)
+    byKey.set(key, prev ? preferTaggedSession(prev, session, challenge.id) : session)
+  }
+  return [...byKey.values()].sort((a, b) => b.date - a.date)
+}
+
 export function filterSessionsForChallenge(
   sessions: SessionRecord[],
   challenge: ChallengeWindowFilter,
 ): SessionRecord[] {
-  return sessions.filter((session) => belongsToChallenge(session, challenge, true))
+  return uniqueSessionsForChallenge(sessions, challenge)
 }
 
 export function filterTransfersForChallenge(

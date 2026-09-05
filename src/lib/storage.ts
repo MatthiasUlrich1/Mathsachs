@@ -506,6 +506,15 @@ export const recordSession = (name: string, input: SessionInput): UserData => {
     listDeviceChallenges(),
     input.challengeId,
   )
+  const alreadyRecorded = data.sessions.some(
+    (existing) =>
+      existing.topicId === input.topicId &&
+      existing.attempts === input.attempts &&
+      existing.correct === input.correct &&
+      existing.points === input.points &&
+      Math.abs(existing.date - now) <= 1000,
+  )
+  if (alreadyRecorded) return data
   const transfer = plannedTransfer(data, input.points, now, input.topicId, challengeId)
   const classTransfers = transfer
     ? [transfer, ...(data.classTransfers ?? [])]
@@ -990,6 +999,7 @@ export const buildChallengeProtocol = (
       ? Math.round((totalCorrect / totalAttempts) * 100)
       : 0,
     rows,
+    // Zeitraum is sessions only — never add class transfers (same practice, second row).
     period: summarizeSessions(sessions, now),
     transfers,
     transferredPoints: transfers.summary.total,

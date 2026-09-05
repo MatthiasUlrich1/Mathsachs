@@ -9,6 +9,18 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.36] – 2026-09-05
+
+### Behoben
+
+- **Challenge-Protokoll:** Punkte im Challenge-Zeitraum zählen jede Übung nur
+  einmal. Eine Sitzung und ihre Klassenübertragung (oder eine getaggte und
+  eine ungetaggte Kopie derselben Sitzung) werden nicht mehr addiert.
+- Der Block **An die Klasse übertragen** entfällt im Challenge-Protokoll;
+  der anonyme Challenge-Stand der Klasse kommt weiter vom Worker.
+- **Klassenziel** und **noch … Punkte** auf der weißen Protokollkarte sind
+  wieder gut lesbar (dunkler Text, kräftigeres Türkis).
+
 ## [0.1.35] – 2026-09-05
 
 ### Hinzugefügt
@@ -527,7 +539,8 @@ Fixes #11
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.35...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.36...HEAD
+[0.1.36]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.35...v0.1.36
 [0.1.35]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.34...v0.1.35
 [0.1.34]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.33...v0.1.34
 [0.1.33]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.32...v0.1.33

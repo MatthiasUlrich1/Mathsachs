@@ -8,6 +8,7 @@ import {
   recordSession,
   rememberCreatedChallenge,
   rememberJoinedClassCode,
+  saveUser,
   resetSharedStorageForTests,
   setActiveStorageUser,
   setSendClassPoints,
@@ -103,9 +104,69 @@ describe('buildChallengeProtocol', () => {
     expect(protocol.totalPoints).toBe(16)
     expect(protocol.totalAttempts).toBe(10)
     expect(protocol.totalCorrect).toBe(8)
+    expect(protocol.period.total).toBe(16)
+    expect(protocol.period.today).toBe(16)
+    expect(protocol.period.total).not.toBe(32)
     expect(protocol.transferredPoints).toBe(16)
     expect(protocol.transfers.summary.total).toBe(16)
     expect(protocol.classThreshold).toBe(100)
+  })
+
+  it('does not double Zeitraum when a session is stored tagged and untagged', async () => {
+    await setup()
+    const inside = berlinLocalToUtcMs('2026-09-08T10:00')
+    vi.setSystemTime(inside)
+    recordSession('Lea', {
+      topicId: 'n5-add',
+      topicTitle: 'Addieren',
+      areaTitle: 'Natürliche Zahlen',
+      attempts: 5,
+      correct: 5,
+      points: 50,
+      challengeId: 'CHAL-B',
+    })
+    const data = loadUser('Lea')
+    const tagged = data.sessions[0]
+    expect(tagged?.points).toBe(50)
+    if (!tagged) throw new Error('expected recorded session')
+    saveUser({
+      ...data,
+      sessions: [tagged, { ...tagged, challengeId: undefined }],
+    })
+    const protocol = buildChallengeProtocol(
+      'Lea',
+      { ...challenge, id: 'CHAL-B' },
+      inside,
+    )
+    expect(protocol.totalPoints).toBe(50)
+    expect(protocol.period.total).toBe(50)
+    expect(protocol.period.today).toBe(50)
+    expect(protocol.rows[0]?.points).toBe(50)
+  })
+
+  it('records one practice session only once even if finish runs twice', async () => {
+    await setup()
+    const inside = berlinLocalToUtcMs('2026-09-08T10:00')
+    vi.setSystemTime(inside)
+    const input = {
+      topicId: 'n5-add',
+      topicTitle: 'Addieren',
+      areaTitle: 'Natürliche Zahlen',
+      attempts: 10,
+      correct: 5,
+      points: 50,
+      challengeId: 'CHAL-B',
+    }
+    recordSession('Lea', input)
+    recordSession('Lea', input)
+    expect(loadUser('Lea').sessions).toHaveLength(1)
+    const protocol = buildChallengeProtocol(
+      'Lea',
+      { ...challenge, id: 'CHAL-B' },
+      inside,
+    )
+    expect(protocol.period.total).toBe(50)
+    expect(protocol.totalPoints).toBe(50)
   })
 
   it('does not increment challenge protocol for a topic outside the challenge', async () => {

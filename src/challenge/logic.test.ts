@@ -156,6 +156,22 @@ describe('Challenge points attribution', () => {
     )
   })
 
+  it('counts a tagged session and its untagged copy only once', () => {
+    const inside = berlinLocalToUtcMs('2026-09-08T10:00')
+    const challengeB = {
+      id: 'CHAL-B',
+      topicIds: ['n5-add'],
+      start: '2026-09-07T08:00',
+      end: '2026-09-11T16:00',
+    }
+    const sessions = [
+      { ...session('n5-add', 50, inside), challengeId: 'CHAL-B' },
+      session('n5-add', 50, inside),
+    ]
+    expect(challengePointsFromSessions(sessions, challengeB)).toBe(50)
+    expect(filterSessionsForChallenge(sessions, challengeB)).toHaveLength(1)
+  })
+
   it('counts transfers in the window and matching topic, including legacy rows without topicId', () => {
     const inside = berlinLocalToUtcMs('2026-09-08T10:00')
     const outside = berlinLocalToUtcMs('2026-09-14T10:00')

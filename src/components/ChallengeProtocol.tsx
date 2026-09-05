@@ -9,7 +9,6 @@ import {
   challengeStandHeading,
   challengeThreshold,
   challengeTopicIds,
-  challengeTransferHeading,
   classGoalLine,
   prizeAudienceLine,
 } from '../challenge/logic'
@@ -113,8 +112,6 @@ export function ChallengeProtocol({ user, challenge, onExit }: Props) {
     return [...map.entries()]
   }, [protocol.rows])
 
-  const transferGroups = protocol.transfers.byClass
-  const transferTotal = protocol.transferredPoints
   const prize = live?.prize ?? challenge.prize
   const audience = prizeAudienceLine(prize, challenge.scope)
   const threshold = challengeThreshold(live ?? challenge)
@@ -180,40 +177,6 @@ export function ChallengeProtocol({ user, challenge, onExit }: Props) {
           <PeriodStats summary={protocol.period} />
         </section>
 
-        <section className="protocol-transfers">
-          <h3>{challengeTransferHeading(challenge.name)}</h3>
-          {transferTotal === 0 ? (
-            <p className="muted small">
-              In diesem Challenge-Fenster noch keine Punkte an eine Klasse
-              gesendet.
-            </p>
-          ) : (
-            <>
-              <p className="muted small">
-                {transferTotal} Punkt{transferTotal === 1 ? '' : 'e'} aus dieser
-                Challenge an
-                {transferGroups.length === 1 ? (
-                  <>
-                    {' '}
-                    <strong>{transferGroups[0].label}</strong>
-                  </>
-                ) : (
-                  <> {transferGroups.length} Klassen</>
-                )}{' '}
-                übertragen — gezählt beim Senden, auch wenn das Netz später fehlt.
-              </p>
-              <PeriodStats summary={protocol.transfers.summary} />
-              {transferGroups.length > 1 &&
-                transferGroups.map((group) => (
-                  <div key={group.code} className="protocol-transfer">
-                    <p className="protocol-transfer__title">{group.label}</p>
-                    <PeriodStats summary={group.summary} />
-                  </div>
-                ))}
-            </>
-          )}
-        </section>
-
         <section className="protocol-grade">
           <h3>{challengeStandHeading(challenge.name)}</h3>
           <p className="muted small">
@@ -230,11 +193,13 @@ export function ChallengeProtocol({ user, challenge, onExit }: Props) {
             </p>
           )}
           {goal ? (
-            <p className="challenge-class-goal">
-              <strong>{goal}</strong>
-              {remaining != null && remaining > 0
-                ? ` — noch ${remaining} Punkt${remaining === 1 ? '' : 'e'}`
-                : null}
+            <p className="challenge-class-goal challenge-class-goal--sheet">
+              <strong className="challenge-class-goal__label">{goal}</strong>
+              {remaining != null && remaining > 0 ? (
+                <span className="challenge-class-goal__remaining">
+                  {` — noch ${remaining} Punkt${remaining === 1 ? '' : 'e'}`}
+                </span>
+              ) : null}
             </p>
           ) : null}
           {prize.enabled && prize.text ? (

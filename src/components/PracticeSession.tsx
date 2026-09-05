@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { createRng, timeSeed } from '../lib/rng'
 import { recordSession } from '../lib/storage'
 import { emptyInput, type Task, type Topic, type UserInput } from '../curriculum/types'
@@ -32,6 +32,7 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
   const [correct, setCorrect] = useState(0)
   const [points, setPoints] = useState(0)
   const [finished, setFinished] = useState(false)
+  const recorded = useRef(false)
 
   // Reset the input widget whenever a new task with a different kind appears.
   const answerKind = task.answerKind
@@ -49,6 +50,8 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
   }
 
   const finish = (answered: number, correctCount: number, pts: number) => {
+    if (recorded.current) return
+    recorded.current = true
     if (answered > 0) {
       recordSession(user, {
         topicId: topic.id,
