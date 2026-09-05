@@ -195,7 +195,7 @@ describe('storage adapter', () => {
     const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
       expect(String(input)).toBe(`${CLASS_POINTS_API}/classes/ABCD2345/points`)
       expect(init?.method).toBe('POST')
-      expect(JSON.parse(String(init?.body))).toEqual({ delta: 6 })
+      expect(JSON.parse(String(init?.body))).toEqual({ delta: 6, topicId: 'brueche' })
       return jsonResponse({
         code: 'ABCD2345',
         name: '6a',

@@ -1,4 +1,4 @@
-import { classPointsPayload } from '../challenge/logic'
+import { challengeTopicIds, classPointsPayload } from '../challenge/logic'
 import type { ChallengePrize, ChallengeScope, ChallengeTopicRef } from '../challenge/types'
 import { CLASS_CODE_LENGTH, isValidClassCode, normalizeClassCode } from './code'
 import type { ClassPointBreakdown, ClassPointPeriod } from './buckets'
@@ -69,6 +69,7 @@ export interface ChallengeSummary {
   scope: ChallengeScope
   start: string
   end: string
+  topicIds?: string[]
   topics: ChallengeTopicRef[]
   prize: ChallengePrize
   points?: ClassPointBreakdown
@@ -191,6 +192,10 @@ const parseChallengeSummary = (raw: unknown): ChallengeSummary | null => {
             : {}),
         }))
     : []
+  const topicIds = challengeTopicIds({
+    topicIds: Array.isArray(raw.topicIds) ? raw.topicIds.filter((id): id is string => typeof id === 'string') : [],
+    topics,
+  })
   const prizeSrc = isRecord(raw.prize) ? raw.prize : {}
   const prize: ChallengePrize = {
     enabled: Boolean(prizeSrc.enabled),
@@ -214,6 +219,7 @@ const parseChallengeSummary = (raw: unknown): ChallengeSummary | null => {
     scope,
     start,
     end,
+    ...(topicIds.length ? { topicIds } : {}),
     topics,
     prize,
     points: raw.points ? parsePoints(raw.points) : undefined,

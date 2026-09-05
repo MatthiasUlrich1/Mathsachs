@@ -345,6 +345,7 @@ function publicClassChallenge(ch, className, now) {
     scope: 'class',
     start: ch.start,
     end: ch.end,
+    topicIds: ch.topicIds,
     topics: publicTopics(ch),
     prize,
     points: {
@@ -396,6 +397,7 @@ function publicGradeChallenge(ch, grade, now) {
     scope: 'grade',
     start: ch.start,
     end: ch.end,
+    topicIds: ch.topicIds,
     topics: publicTopics(ch),
     prize,
     classes,

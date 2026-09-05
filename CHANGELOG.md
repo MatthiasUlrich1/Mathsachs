@@ -9,6 +9,21 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.33] – 2026-09-05
+
+### Behoben
+
+- **Challenge-Protokoll:** Nach dem Üben in einer laufenden Challenge stehen
+  Themen mit Ergebnis (Aufgaben, richtig, Anteil, Punkte), die **an die Klasse
+  übertragenen** Punkte und der **Challenge-Stand** (eigene lokale Punkte,
+  Klassensumme, bei Stufe die anonymen Klassenstände). Das Protokoll zeigte
+  vorher überall 0, obwohl die Punkte gespeichert und an die Klasse gesendet
+  wurden: Übertragungen wurden nicht eingerechnet, und Worker-Zusammenfassungen
+  ohne `topicIds` fanden die lokalen Sitzungen nicht.
+- **Klassenziel / Gewinnschwellwert** erscheint im Protokoll, wenn für die
+  Challenge eine Punkteschwelle gesetzt ist (`Klassenziel: N Punkte`), sonst
+  nicht. Weiterhin keine Schülernamen online.
+
 ## [0.1.32] – 2026-09-05
 
 ### Geändert
@@ -478,7 +493,8 @@ Fixes #11
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.32...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.33...HEAD
+[0.1.33]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.32...v0.1.33
 [0.1.32]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.31...v0.1.32
 [0.1.31]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.30...v0.1.31
 [0.1.30]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.29...v0.1.30

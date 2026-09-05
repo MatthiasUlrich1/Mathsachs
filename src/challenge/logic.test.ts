@@ -5,11 +5,13 @@ import {
   canOfferGradeChallengeCreate,
   challengePhase,
   challengePointsFromSessions,
+  challengeTopicIds,
   classCodesForChallengeList,
   classGoalLine,
   classPointsPayload,
   createChallengePayload,
   filterSessionsForChallenge,
+  filterTransfersForChallenge,
   mergeVisibleChallenges,
   NO_ACTIVE_CHALLENGE_MESSAGE,
   prizeAudienceLine,
@@ -89,6 +91,35 @@ describe('Challenge points attribution', () => {
     ]
     expect(challengePointsFromSessions(sessions, challenge)).toBe(4)
     expect(filterSessionsForChallenge(sessions, challenge)).toHaveLength(1)
+  })
+
+  it('reads topic ids from Worker summaries that only send topics[]', () => {
+    expect(
+      challengeTopicIds({
+        topics: [{ id: 'n5-add' }, { id: 'n5-sub' }],
+      }),
+    ).toEqual(['n5-add', 'n5-sub'])
+    expect(
+      shouldAttributeChallengePoints(
+        { topics: [{ id: 'n5-add' }], start: challenge.start, end: challenge.end },
+        'n5-add',
+        berlinLocalToUtcMs('2026-09-08T10:00'),
+      ),
+    ).toBe(true)
+  })
+
+  it('counts transfers in the window and matching topic, including legacy rows without topicId', () => {
+    const inside = berlinLocalToUtcMs('2026-09-08T10:00')
+    const outside = berlinLocalToUtcMs('2026-09-14T10:00')
+    const transfers = [
+      { date: inside, code: 'ABCD2345', className: '6a', points: 4, topicId: 'n5-add' },
+      { date: inside, code: 'ABCD2345', className: '6a', points: 9, topicId: 'n5-mul' },
+      { date: outside, code: 'ABCD2345', className: '6a', points: 3, topicId: 'n5-add' },
+      { date: inside, code: 'ABCD2345', className: '6a', points: 2 },
+    ]
+    expect(filterTransfersForChallenge(transfers, challenge).map((row) => row.points)).toEqual([
+      4, 2,
+    ])
   })
 
   it('defaults this week to Monday 08:00–Friday 16:00 Berlin', () => {

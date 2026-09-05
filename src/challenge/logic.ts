@@ -1,4 +1,9 @@
-import type { ClassCodeSettings, GradeCodeSettings, SessionRecord } from '../lib/sharedState'
+import type {
+  ClassCodeSettings,
+  ClassTransferRecord,
+  GradeCodeSettings,
+  SessionRecord,
+} from '../lib/sharedState'
 import { canCreateClassChallenge, canCreateGradeChallenge, type UserRole } from '../lib/roles'
 import {
   mergeStoredChallenges,
@@ -194,35 +199,68 @@ export function mergeVisibleChallenges<T extends ListableChallenge>(input: {
   return [...byId.values()].sort((a, b) => compareListedChallenges(a, b, now))
 }
 
+export type ChallengeTopicSource = {
+  topicIds?: string[]
+  topics?: Array<{ id: string }>
+}
+
+/** Union of stored topicIds and public `topics[].id` (Worker summaries omit topicIds). */
+export function challengeTopicIds(challenge: ChallengeTopicSource): string[] {
+  return parseTopicIds([
+    ...(Array.isArray(challenge.topicIds) ? challenge.topicIds : []),
+    ...(Array.isArray(challenge.topics) ? challenge.topics.map((topic) => topic.id) : []),
+  ])
+}
+
+export type ChallengeWindowFilter = ChallengeTopicSource &
+  Pick<StoredChallenge, 'start' | 'end'>
+
 /** Worker adds points to a challenge only when the window and topic match. */
 export function shouldAttributeChallengePoints(
-  challenge: Pick<StoredChallenge, 'topicIds' | 'start' | 'end'>,
+  challenge: ChallengeWindowFilter,
   topicId: string | undefined,
   now: number = Date.now(),
 ): boolean {
   const topic = topicId?.trim() ?? ''
   if (!topic) return false
-  if (!challenge.topicIds.includes(topic)) return false
+  if (!challengeTopicIds(challenge).includes(topic)) return false
   return isInChallengeWindow(challenge.start, challenge.end, now)
 }
 
 export function filterSessionsForChallenge(
   sessions: SessionRecord[],
-  challenge: Pick<StoredChallenge, 'topicIds' | 'start' | 'end'>,
+  challenge: ChallengeWindowFilter,
 ): SessionRecord[] {
   const from = parseChallengeInstant(challenge.start)
   const to = parseChallengeInstant(challenge.end)
-  const topics = new Set(challenge.topicIds)
+  const topics = new Set(challengeTopicIds(challenge))
+  if (topics.size === 0 || !Number.isFinite(from) || !Number.isFinite(to)) return []
   return sessions.filter((session) => {
     if (!topics.has(session.topicId)) return false
-    if (!Number.isFinite(from) || !Number.isFinite(to)) return false
     return session.date >= from && session.date <= to
+  })
+}
+
+export function filterTransfersForChallenge(
+  transfers: ClassTransferRecord[],
+  challenge: ChallengeWindowFilter,
+): ClassTransferRecord[] {
+  const from = parseChallengeInstant(challenge.start)
+  const to = parseChallengeInstant(challenge.end)
+  const topics = new Set(challengeTopicIds(challenge))
+  if (!Number.isFinite(from) || !Number.isFinite(to)) return []
+  return transfers.filter((transfer) => {
+    if (transfer.date < from || transfer.date > to) return false
+    const topic = transfer.topicId?.trim()
+    if (!topic) return true
+    if (topics.size === 0) return true
+    return topics.has(topic)
   })
 }
 
 export function challengePointsFromSessions(
   sessions: SessionRecord[],
-  challenge: Pick<StoredChallenge, 'topicIds' | 'start' | 'end'>,
+  challenge: ChallengeWindowFilter,
 ): number {
   return filterSessionsForChallenge(sessions, challenge).reduce(
     (sum, session) => sum + (session.points > 0 ? session.points : 0),

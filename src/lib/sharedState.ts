@@ -32,6 +32,8 @@ export interface ClassTransferRecord {
   code: string
   className: string
   points: number
+  /** Set when the session topic is known — used to attribute Challenge transfers. */
+  topicId?: string
 }
 
 /** Schüler is the most restricted role. Missing roles normalize to Schüler. */

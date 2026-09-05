@@ -1,7 +1,13 @@
 import { addClassPoints } from '../classCode/api'
 import { parseStoredChallenges } from '../challenge/parse'
 import type { StoredChallenge } from '../challenge/types'
-import { filterSessionsForChallenge } from '../challenge/logic'
+import {
+  challengeThreshold,
+  challengeTopicIds,
+  filterSessionsForChallenge,
+  filterTransfersForChallenge,
+} from '../challenge/logic'
+import type { ChallengePrize } from '../challenge/types'
 import {
   normalizeClassCode,
   publicClassLabel,
@@ -457,11 +463,13 @@ const plannedTransfer = (
   user: UserData,
   points: number,
   at: number,
+  topicId?: string,
 ): ClassTransferRecord | null => {
   if (!(points > 0)) return null
   if (!canSendClassPoints(roleForUser(user))) return null
   const settings = parseClassCodes(user.classCodes)
   if (!settings.sendPoints || !settings.activeCode) return null
+  const topic = topicId?.trim()
   return {
     date: at,
     code: settings.activeCode,
@@ -471,6 +479,7 @@ const plannedTransfer = (
       settings.activeCode,
     ),
     points,
+    ...(topic ? { topicId: topic } : {}),
   }
 }
 
@@ -479,7 +488,7 @@ export const recordSession = (name: string, input: SessionInput): UserData => {
   const data = loadUser(name)
   const prev = data.stats[input.topicId]
   const now = Date.now()
-  const transfer = plannedTransfer(data, input.points, now)
+  const transfer = plannedTransfer(data, input.points, now, input.topicId)
   const classTransfers = transfer
     ? [transfer, ...(data.classTransfers ?? [])]
     : [...(data.classTransfers ?? [])]
@@ -765,6 +774,11 @@ export interface Protocol {
   transfers: ClassTransferTotals
 }
 
+export interface ChallengeProtocolReport extends Protocol {
+  transferredPoints: number
+  classThreshold?: number
+}
+
 /** Build a points-and-progress report for a user, grouped by topic area. */
 export const buildProtocol = (
   name: string,
@@ -809,14 +823,28 @@ export const buildProtocol = (
   }
 }
 
+export type ChallengeProtocolInput = Pick<StoredChallenge, 'name' | 'start' | 'end'> & {
+  topicIds?: string[]
+  topics?: Array<{ id: string }>
+  prize?: ChallengePrize
+  classThreshold?: number
+}
+
 /** Local Nachweis: sessions in the challenge window on the selected topics. */
 export const buildChallengeProtocol = (
   name: string,
-  challenge: Pick<StoredChallenge, 'name' | 'topicIds' | 'start' | 'end'>,
+  challenge: ChallengeProtocolInput,
   now: Date | number = Date.now(),
-): Protocol => {
+): ChallengeProtocolReport => {
   const data = loadUser(name)
-  const sessions = filterSessionsForChallenge(data.sessions, challenge)
+  const filter = {
+    name: challenge.name,
+    topicIds: challengeTopicIds(challenge),
+    start: challenge.start,
+    end: challenge.end,
+  }
+  const sessions = filterSessionsForChallenge(data.sessions, filter)
+  const challengeTransfers = filterTransfersForChallenge(data.classTransfers ?? [], filter)
   const byTopic = new Map<string, ProtocolRow & { topicId: string }>()
   for (const session of sessions) {
     const prev = byTopic.get(session.topicId)
@@ -855,6 +883,11 @@ export const buildChallengeProtocol = (
   const totalAttempts = rows.reduce((sum, row) => sum + row.attempts, 0)
   const totalCorrect = rows.reduce((sum, row) => sum + row.correct, 0)
   const settings = parseClassCodes(data.classCodes)
+  const transfers = summarizeClassTransfers(challengeTransfers, now, [
+    ...settings.created,
+    ...(settings.known ?? []),
+  ])
+  const threshold = challengeThreshold(challenge)
   return {
     name,
     generatedAt: typeof now === 'number' ? now : now.getTime(),
@@ -866,10 +899,9 @@ export const buildChallengeProtocol = (
       : 0,
     rows,
     period: summarizeSessions(sessions, now),
-    transfers: summarizeClassTransfers([], now, [
-      ...settings.created,
-      ...(settings.known ?? []),
-    ]),
+    transfers,
+    transferredPoints: transfers.summary.total,
+    ...(typeof threshold === 'number' ? { classThreshold: threshold } : {}),
   }
 }
 

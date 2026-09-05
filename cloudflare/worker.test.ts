@@ -438,10 +438,12 @@ describe('Challenge Worker API', () => {
     const challenge = (await challengeRes.json()) as {
       id: string
       name: string
+      topicIds?: string[]
       points: { total: number }
       prize: { text?: string }
     }
     expect(challenge.name).toBe('Woche 36')
+    expect(challenge.topicIds).toEqual(['n5-add'])
     expect(challenge.points.total).toBe(0)
     expect(JSON.stringify(challenge)).not.toMatch(/vorname|userId|deviceId|schueler/i)
 
