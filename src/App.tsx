@@ -25,12 +25,15 @@ import { ExamBuilder } from './components/ExamBuilder'
 import { ExamRunner } from './components/ExamRunner'
 import { UpdateBanner } from './components/UpdateBanner'
 import { LegalFooter } from './components/LegalFooter'
-import { LanAccessCard } from './components/LanAccessCard'
 import { Settings } from './components/Settings'
 import { parseExamHash } from './exam/examCode'
 import { useUpdateCheck } from './updates/useUpdateCheck'
 import { primaryLanOrigin, useLanStatus } from './lan/useLanStatus'
-import { TOP_TABS, type SettingsSectionId, type TopTabId } from './nav'
+import {
+  topTabsForView,
+  type SettingsSectionId,
+  type TopTabId,
+} from './nav'
 
 const ACTIVE_KEY = 'mathsachs.activeUser.v1'
 
@@ -71,8 +74,6 @@ export default function App() {
     view.name === 'practice' ||
     view.name === 'worksheet' ||
     view.name === 'examRun'
-  // Login stays as-is: desktop hosts still see WLAN before a user is picked.
-  const showLanOnLogin = Boolean(lanStatus)
   const updateBanner =
     updateCheck.update && !hideUpdateBanner ? (
       <UpdateBanner
@@ -197,7 +198,6 @@ export default function App() {
           <h2 className="section-title">Wer übt heute?</h2>
           <p className="muted">Daten werden geladen …</p>
         </section>
-        {showLanOnLogin && lanStatus && <LanAccessCard status={lanStatus} />}
         <LegalFooter version={updateCheck.currentVersion} />
       </main>
     )
@@ -242,7 +242,6 @@ export default function App() {
             </div>
           </div>
         </section>
-        {showLanOnLogin && lanStatus && <LanAccessCard status={lanStatus} />}
         <LegalFooter version={updateCheck.currentVersion} />
       </main>
     )
@@ -286,7 +285,7 @@ export default function App() {
       <header className="topbar">
         <Brand compact />
         <nav className="topbar__nav">
-          {TOP_TABS.map((tab) => (
+          {topTabsForView(view.name).map((tab) => (
             <button
               key={tab.id}
               type="button"
@@ -420,7 +419,6 @@ export default function App() {
           section={view.section}
           onOpenSection={(id) => setView({ name: 'settings', section: id })}
           onBack={() => setView({ name: 'settings' })}
-          onExit={() => setView({ name: 'browse' })}
           user={activeUser}
           classLabel={classLabel}
           lanStatus={lanStatus}

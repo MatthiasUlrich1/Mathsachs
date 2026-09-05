@@ -9,6 +9,19 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.18] – 2026-09-05
+
+### Geändert
+
+- **Einstellungen-Leiste:** In den Einstellungen (inkl. Untermenüs) zeigt die
+  Leiste **Zum Üben** links neben **Einstellungen**. Themen, Klausur
+  erstellen, Klausur schreiben und Punkteprotokoll sind dort ausgeblendet.
+  Einstellungen bleibt hervorgehoben. **Zum Üben** in der Leiste öffnet die
+  Themen. Der doppelte Knopf in der Karte entfällt; **Zurück** bleibt in den
+  Untermenüs.
+- **Benutzerauswahl:** WLAN-Zugang steht nicht mehr auf „Wer übt heute?“,
+  sondern nur unter Einstellungen → WLAN-Zugang.
+
 ## [0.1.17] – 2026-09-05
 
 ### Geändert
@@ -255,7 +268,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.17...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.18...HEAD
+[0.1.18]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.17...v0.1.18
 [0.1.17]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.16...v0.1.17
 [0.1.16]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.15...v0.1.16
 [0.1.15]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.14...v0.1.15

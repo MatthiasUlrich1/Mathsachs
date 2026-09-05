@@ -18,7 +18,6 @@ interface Props {
   loadedIds: string[]
   onLoad: (id: string) => Promise<void>
   onRemove: (id: string) => void
-  onExit: () => void
   onBack: () => void
   onOpenSection: (id: SettingsSectionId) => void
   section?: SettingsSectionId | null
@@ -32,7 +31,6 @@ export function Settings({
   loadedIds,
   onLoad,
   onRemove,
-  onExit,
   onBack,
   onOpenSection,
   section = null,
@@ -49,14 +47,8 @@ export function Settings({
         <div className="session__head">
           <div>
             <h2 className="section-title no-margin">Einstellungen</h2>
-            <p className="muted small">
-              Wähle einen Bereich. Über <strong>Zum Üben</strong> kommst du
-              zurück zu den Themen.
-            </p>
+            <p className="muted small">Wähle einen Bereich.</p>
           </div>
-          <button type="button" className="primary" onClick={onExit}>
-            Zum Üben
-          </button>
         </div>
 
         <ul className="settings-menu">
@@ -94,9 +86,6 @@ export function Settings({
       <div className="settings-section__nav no-print">
         <button type="button" className="link" onClick={onBack}>
           Zurück
-        </button>
-        <button type="button" className="ghost" onClick={onExit}>
-          Zum Üben
         </button>
       </div>
 

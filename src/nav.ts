@@ -9,6 +9,19 @@ export const TOP_TABS = [
 
 export type TopTabId = (typeof TOP_TABS)[number]['id']
 
+/**
+ * Settings hub and submenu: hide the learning tabs and put Zum Üben
+ * immediately left of Einstellungen.
+ */
+export const SETTINGS_TOP_TABS = [
+  { id: 'browse', label: 'Zum Üben' },
+  { id: 'settings', label: 'Einstellungen' },
+] as const
+
+export function topTabsForView(viewName: string) {
+  return viewName === 'settings' ? SETTINGS_TOP_TABS : TOP_TABS
+}
+
 /** Settings hub entries — one submenu item per setting. */
 export const SETTINGS_SECTIONS = [
   { id: 'curricula', label: 'Lehrpläne' },

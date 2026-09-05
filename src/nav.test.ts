@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest'
-import { SETTINGS_SECTIONS, TOP_TABS } from './nav'
+import {
+  SETTINGS_SECTIONS,
+  SETTINGS_TOP_TABS,
+  TOP_TABS,
+  topTabsForView,
+} from './nav'
 
 describe('top-bar navigation', () => {
   it('keeps learning tabs plus Einstellungen, without Lehrpläne or Klasse', () => {
@@ -14,6 +19,27 @@ describe('top-bar navigation', () => {
     expect(labels).not.toContain('Lehrpläne')
     expect(labels).not.toContain('Klasse')
     expect(labels).not.toContain('wechseln')
+  })
+
+  it('shows Zum Üben immediately left of Einstellungen while in settings', () => {
+    const labels = topTabsForView('settings').map((tab) => tab.label)
+    expect(labels).toEqual(['Zum Üben', 'Einstellungen'])
+    expect(labels).not.toContain('Themen')
+    expect(labels).not.toContain('Klausur erstellen')
+    expect(labels).not.toContain('Klausur schreiben')
+    expect(labels).not.toContain('Punkteprotokoll')
+    expect(SETTINGS_TOP_TABS[0]).toEqual({ id: 'browse', label: 'Zum Üben' })
+    expect(SETTINGS_TOP_TABS[1]).toEqual({
+      id: 'settings',
+      label: 'Einstellungen',
+    })
+  })
+
+  it('keeps the learning tabs outside settings, including submenu-unrelated views', () => {
+    expect(topTabsForView('browse')).toEqual(TOP_TABS)
+    expect(topTabsForView('examBuild')).toEqual(TOP_TABS)
+    expect(topTabsForView('examRun')).toEqual(TOP_TABS)
+    expect(topTabsForView('protocol')).toEqual(TOP_TABS)
   })
 
   it('lists former top-level items as a settings submenu', () => {

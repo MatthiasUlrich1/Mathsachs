@@ -28,9 +28,10 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   gilt dieselbe Benutzerliste und derselbe Punktestand für den PC und für
   Tablets im WLAN. **Benutzer wechseln** steht unter **Einstellungen → Profil**.
 - **Einstellungen**: Untermenü mit Lehrplänen, Klassencode, WLAN-Zugang
-  (Desktop) und Profil. **Zurück** zur Liste, **Zum Üben** zu den Themen.
-  Die Leiste bleibt bei **Themen**, **Klausur erstellen**,
-  **Klausur schreiben**, **Punkteprotokoll** und **Einstellungen**.
+  (Desktop) und Profil. In den Einstellungen zeigt die Leiste **Zum Üben**
+  links neben **Einstellungen** (hervorgehoben) und blendet Themen, Klausur
+  und Punkteprotokoll aus. **Zurück** führt zur Liste. WLAN-Zugang nur unter
+  Einstellungen, nicht auf der Benutzerauswahl.
 - **Punkteprotokoll**: Auswertung je Thema in Prozent und Gesamtpunktzahl,
   plus Tag / Woche / Monat / Schuljahr aus den lokalen Übungen und den an
   eine Klasse gesendeten Punkten; ebenfalls druckbar.
@@ -46,7 +47,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.17**).
+(aktuelle Version **0.1.18**).
 
 Die App prüft beim Start die öffentlichen
 [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
