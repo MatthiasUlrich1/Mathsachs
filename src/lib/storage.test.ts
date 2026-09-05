@@ -13,6 +13,7 @@ import {
   rememberJoinedClassCode,
   forgetCreatedClassCode,
   resetSharedStorageForTests,
+  setActiveClassCode,
   setActiveStorageUser,
   setSendClassPoints,
   setUserRole,
@@ -203,6 +204,7 @@ describe('storage adapter', () => {
     addUser('Ada')
     setActiveStorageUser('Ada')
     rememberCreatedClassCode('abcd-2345', 'Klasse 6a')
+    setActiveClassCode('ABCD2345')
     setSendClassPoints(true)
     expect(getClassCodeSettings()).toMatchObject({
       activeCode: 'ABCD2345',
@@ -215,6 +217,7 @@ describe('storage adapter', () => {
       sendPoints: false,
     })
     rememberCreatedClassCode('abcd-2345', 'Klasse 6a')
+    setActiveClassCode('ABCD2345')
     setSendClassPoints(true)
     expect(getClassCodeSettings()).toMatchObject({
       activeCode: 'ABCD2345',
@@ -245,6 +248,38 @@ describe('storage adapter', () => {
     })
   })
 
+  it('does not auto-activate a newly created class code', async () => {
+    const local = memoryStorage()
+    vi.stubGlobal('localStorage', local)
+    vi.stubGlobal('fetch', vi.fn(async () => htmlResponse()))
+
+    await initSharedStorage()
+    addUser('Ada')
+    setActiveStorageUser('Ada')
+
+    rememberCreatedClassCode('aaaa-1111', 'Klasse 6a')
+    expect(getClassCodeSettings()).toMatchObject({
+      created: [expect.objectContaining({ code: 'AAAA1111', name: 'Klasse 6a' })],
+      activeCode: null,
+      sendPoints: false,
+    })
+
+    setActiveClassCode('AAAA1111')
+    setSendClassPoints(true)
+    expect(getClassCodeSettings().activeCode).toBe('AAAA1111')
+
+    rememberCreatedClassCode('bbbb-2222', 'Klasse 6b')
+    expect(getClassCodeSettings()).toMatchObject({
+      activeCode: 'AAAA1111',
+      sendPoints: true,
+    })
+    expect(getClassCodeSettings().created.map((row) => row.code)).toEqual([
+      'AAAA1111',
+      'BBBB2222',
+    ])
+    expect(activeClassDisplayName()).toBe('Klasse 6a')
+  })
+
   it('does not log a class transfer when collect is off', async () => {
     const local = memoryStorage()
     vi.stubGlobal('localStorage', local)
@@ -254,6 +289,7 @@ describe('storage adapter', () => {
     addUser('Ada')
     setActiveStorageUser('Ada')
     rememberCreatedClassCode('abcd-2345', 'Klasse 6a')
+    setActiveClassCode('ABCD2345')
     recordSession('Ada', {
       topicId: 'brueche',
       topicTitle: 'Brüche',
@@ -277,6 +313,7 @@ describe('storage adapter', () => {
     addUser('Ada')
     setActiveStorageUser('Ada')
     rememberCreatedClassCode('abcd-2345', 'Klasse 6a')
+    setActiveClassCode('ABCD2345')
     setSendClassPoints(true)
     recordSession('Ada', {
       topicId: 'brueche',

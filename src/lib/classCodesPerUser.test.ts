@@ -8,6 +8,7 @@ import {
   rememberCreatedGradeCode,
   rememberJoinedClassCode,
   resetSharedStorageForTests,
+  setActiveClassCode,
   setActiveStorageUser,
   setSendClassPoints,
   activeClassDisplayName,
@@ -61,6 +62,7 @@ describe('per-user class codes', () => {
     addUser('Ben')
     setActiveStorageUser('Ada')
     rememberCreatedClassCode('abcd-2345', 'Klasse 6a')
+    setActiveClassCode('ABCD2345')
     setSendClassPoints(true)
 
     expect(getClassCodeSettings()).toMatchObject({

@@ -358,7 +358,8 @@ export function ClassCodes({
             <span className="field__label">Klassencode erstellen</span>
             <p className="muted small">
               In der App einen Namen eingeben — Mathsachs erzeugt den Code
-              automatisch. Niemand braucht dafür Cloudflare.
+              automatisch. Niemand braucht dafür Cloudflare. Der neue Code
+              wird nicht automatisch aktiv.
             </p>
             <div className="inline-form">
               <input

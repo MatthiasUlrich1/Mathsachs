@@ -22,6 +22,7 @@ import {
   initSharedStorage,
   rememberCreatedClassCode,
   resetSharedStorageForTests,
+  setActiveClassCode,
   setActiveStorageUser,
   setSendClassPoints,
   type CreatedClassCode,
@@ -324,6 +325,7 @@ describe('created list + real storage', () => {
   it('optimistic delete on 429 forgets locally and clears active/sendPoints', async () => {
     await readyWithUser()
     rememberCreatedClassCode('9wat-x7xc', '6a')
+    setActiveClassCode('9WATX7XC')
     setSendClassPoints(true)
 
     const result = await deleteCreatedClassCode('9WATX7XC', {
@@ -345,6 +347,7 @@ describe('created list + real storage', () => {
   it('refresh/prune on 404 clears the active collect-code and sendPoints', async () => {
     await readyWithUser()
     rememberCreatedClassCode('9wat-x7xc', '6a')
+    setActiveClassCode('9WATX7XC')
     setSendClassPoints(true)
     expect(getClassCodeSettings()).toMatchObject({
       created: [{ code: '9WATX7XC', name: '6a' }],
@@ -373,6 +376,7 @@ describe('created list + real storage', () => {
   it('activate path does not keep a missing code in the created list', async () => {
     await readyWithUser()
     rememberCreatedClassCode('9wat-x7xc', '6a')
+    setActiveClassCode('9WATX7XC')
     setSendClassPoints(true)
 
     const result = await activateCreatedClassCode('9WATX7XC', {
@@ -393,6 +397,7 @@ describe('created list + real storage', () => {
   it('network errors keep the created row and the active collect-code', async () => {
     await readyWithUser()
     rememberCreatedClassCode('abcd-2345', '6a')
+    setActiveClassCode('ABCD2345')
     setSendClassPoints(true)
 
     const { standings, notices } = await loadCreatedClassStandings(
@@ -416,6 +421,7 @@ describe('created list + real storage', () => {
   it('refresh 429 does not prune the created row', async () => {
     await readyWithUser()
     rememberCreatedClassCode('abcd-2345', '6a')
+    setActiveClassCode('ABCD2345')
     setSendClassPoints(true)
 
     const { standings, rateLimited } = await loadCreatedClassStandings(

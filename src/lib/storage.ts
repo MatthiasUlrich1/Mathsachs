@@ -573,7 +573,7 @@ const persistClassCodes = (classCodes: ClassCodeSettings): void => {
   notify()
 }
 
-/** Remember a code this PC/LAN created and make it the single active collect-code. */
+/** Remember a code this PC/LAN created. Does not change the active collect-code. */
 export const rememberCreatedClassCode = (code: string, name: string): void => {
   const normalized = normalizeClassCode(code)
   if (!normalized) return
@@ -588,7 +588,6 @@ export const rememberCreatedClassCode = (code: string, name: string): void => {
     ...current,
     created,
     deletedCodes: (current.deletedCodes ?? []).filter((row) => row.code !== normalized),
-    activeCode: normalized,
   })
 }
 
