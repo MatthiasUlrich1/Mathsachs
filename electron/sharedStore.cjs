@@ -11,6 +11,8 @@ const path = require('node:path')
 const SCHEMA_VERSION = 1
 const MAX_SESSIONS = 200
 const MAX_TRANSFERS = 200
+const DELETED_CLASS_CODE_TTL_MS = 30 * 24 * 60 * 60 * 1000
+const MAX_DELETED_CLASS_CODES = 200
 const USERS_KEY = 'mathsachs.users.v1'
 const CLASS_CODES_KEY = 'mathsachs.classCodes.v1'
 const USER_KEY_RE = /^mathsachs\.user\.(.+)\.v1$/
@@ -18,6 +20,7 @@ const USER_KEY_RE = /^mathsachs\.user\.(.+)\.v1$/
 function emptyClassCodes() {
   return {
     created: [],
+    deletedCodes: [],
     activeCode: null,
     sendPoints: false,
   }
@@ -107,13 +110,17 @@ function normalizeUserData(name, raw) {
   const classTransfers = Array.isArray(src.classTransfers)
     ? src.classTransfers.map(normalizeTransfer).filter(Boolean)
     : []
-  return {
+  const out = {
     name: asString(src.name, name),
     created: asFiniteNumber(src.created, Date.now()),
     stats,
     sessions,
     classTransfers,
   }
+  if (Object.prototype.hasOwnProperty.call(src, 'classCodes')) {
+    out.classCodes = normalizeClassCodes(src.classCodes)
+  }
+  return out
 }
 
 function normalizeCode(raw) {
@@ -138,7 +145,52 @@ function normalizeCreatedCode(raw) {
   }
 }
 
-function normalizeClassCodes(raw) {
+function normalizeDeletedCode(raw) {
+  if (!raw || typeof raw !== 'object') return null
+  const code = normalizeCode(raw.code)
+  if (!code) return null
+  return {
+    code,
+    deletedAt: asFiniteNumber(raw.deletedAt, 0),
+  }
+}
+
+function pruneDeletedCodes(list, now) {
+  const cutoff = now - DELETED_CLASS_CODE_TTL_MS
+  const byCode = new Map()
+  for (const item of list || []) {
+    const row = normalizeDeletedCode(item)
+    if (!row || row.deletedAt < cutoff) continue
+    const prev = byCode.get(row.code)
+    if (!prev || row.deletedAt > prev.deletedAt) byCode.set(row.code, row)
+  }
+  return [...byCode.values()]
+    .sort((a, b) => b.deletedAt - a.deletedAt || a.code.localeCompare(b.code))
+    .slice(0, MAX_DELETED_CLASS_CODES)
+}
+
+function applyClassCodeTombstones(created, deletedCodes) {
+  const deletedAt = new Map(deletedCodes.map((row) => [row.code, row.deletedAt]))
+  const live = []
+  const resurrected = new Set()
+  for (const item of created) {
+    const tomb = deletedAt.get(item.code)
+    if (tomb != null && item.createdAt > tomb) {
+      live.push(item)
+      resurrected.add(item.code)
+      continue
+    }
+    if (tomb != null) continue
+    live.push(item)
+  }
+  live.sort((a, b) => a.createdAt - b.createdAt || a.code.localeCompare(b.code))
+  return {
+    created: live,
+    deletedCodes: deletedCodes.filter((row) => !resurrected.has(row.code)),
+  }
+}
+
+function normalizeClassCodes(raw, now) {
   const src = raw && typeof raw === 'object' ? raw : {}
   const created = []
   const seen = new Set()
@@ -149,21 +201,29 @@ function normalizeClassCodes(raw) {
     seen.add(row.code)
     created.push(row)
   }
-  created.sort((a, b) => a.createdAt - b.createdAt || a.code.localeCompare(b.code))
+  const applied = applyClassCodeTombstones(
+    created,
+    pruneDeletedCodes(src.deletedCodes, now || Date.now()),
+  )
   const active =
     src.activeCode == null || src.activeCode === ''
       ? null
       : normalizeCode(src.activeCode) || null
+  const activeLive =
+    active && applied.deletedCodes.some((row) => row.code === active) ? null : active
   return {
-    created,
-    activeCode: active,
-    sendPoints: Boolean(src.sendPoints) && Boolean(active),
+    created: applied.created,
+    deletedCodes: applied.deletedCodes,
+    activeCode: activeLive,
+    sendPoints: Boolean(src.sendPoints) && Boolean(activeLive),
   }
 }
 
-function mergeClassCodes(base, incoming) {
+function mergeClassCodes(base, incoming, now) {
   const byCode = new Map()
-  for (const item of [...base.created, ...incoming.created]) {
+  const left = base || emptyClassCodes()
+  const right = incoming || emptyClassCodes()
+  for (const item of [...left.created, ...right.created]) {
     const prev = byCode.get(item.code)
     if (!prev) {
       byCode.set(item.code, item)
@@ -176,13 +236,61 @@ function mergeClassCodes(base, incoming) {
       createdAt: Number.isFinite(createdAt) ? createdAt : 0,
     })
   }
-  return {
-    created: [...byCode.values()].sort(
-      (a, b) => a.createdAt - b.createdAt || a.code.localeCompare(b.code),
-    ),
-    activeCode: incoming.activeCode,
-    sendPoints: Boolean(incoming.sendPoints) && Boolean(incoming.activeCode),
+  return normalizeClassCodes(
+    {
+      created: [...byCode.values()],
+      deletedCodes: [...(left.deletedCodes || []), ...(right.deletedCodes || [])],
+      activeCode: right.activeCode,
+      sendPoints: right.sendPoints,
+    },
+    now || Date.now(),
+  )
+}
+
+function hasClassCodeData(settings) {
+  if (!settings) return false
+  return (
+    settings.created.length > 0 ||
+    (settings.deletedCodes && settings.deletedCodes.length > 0) ||
+    Boolean(settings.activeCode) ||
+    Boolean(settings.sendPoints)
+  )
+}
+
+function pickClassCodeMigrationTarget(users, preferredUser) {
+  const preferred = typeof preferredUser === 'string' ? preferredUser.trim() : ''
+  if (preferred && users.includes(preferred)) return preferred
+  return users[0] || null
+}
+
+function migrateSharedClassCodes(state, preferredUser) {
+  const shared = normalizeClassCodes(state.classCodes)
+  if (!hasClassCodeData(shared)) {
+    return { ...state, classCodes: emptyClassCodes() }
   }
+  const target = pickClassCodeMigrationTarget(state.users, preferredUser)
+  if (!target) {
+    return { ...state, classCodes: shared }
+  }
+  const record = state.records[target] || normalizeUserData(target, {})
+  const existing = record.classCodes || emptyClassCodes()
+  return {
+    ...state,
+    classCodes: emptyClassCodes(),
+    records: {
+      ...state.records,
+      [target]: {
+        ...record,
+        classCodes: mergeClassCodes(existing, shared),
+      },
+    },
+  }
+}
+
+function mergeUserClassCodes(base, incoming) {
+  if (!hasClassCodeData(incoming)) return base || incoming
+  if (!hasClassCodeData(base)) return incoming
+  return mergeClassCodes(base, incoming)
 }
 
 function uniqueNames(names) {
@@ -284,13 +392,16 @@ function mergeUserData(a, b) {
   }
   sessions.sort((x, y) => y.date - x.date)
   if (sessions.length > MAX_SESSIONS) sessions.length = MAX_SESSIONS
-  return {
+  const classCodes = mergeUserClassCodes(a.classCodes, b.classCodes)
+  const out = {
     name: a.name || b.name,
     created: Math.min(a.created, b.created),
     stats,
     sessions,
     classTransfers: mergeTransfers(a.classTransfers, b.classTransfers),
   }
+  if (classCodes) out.classCodes = classCodes
+  return out
 }
 
 /**
@@ -299,24 +410,20 @@ function mergeUserData(a, b) {
  * - score records merge by user, then by topicId (newer lastPracticed wins)
  */
 function mergeSharedState(baseRaw, incomingRaw) {
-  const base = normalizeState(baseRaw)
-  const incoming = normalizeState(incomingRaw)
+  const base = migrateSharedClassCodes(normalizeState(baseRaw))
+  const incoming = migrateSharedClassCodes(normalizeState(incomingRaw))
   const users = uniqueNames([...base.users, ...incoming.users])
   const records = {}
   for (const name of users) {
     records[name] = mergeUserData(base.records[name], incoming.records[name])
   }
-  const incomingHadCodes =
-    incomingRaw && typeof incomingRaw === 'object' && Object.prototype.hasOwnProperty.call(incomingRaw, 'classCodes')
-  return {
+  return migrateSharedClassCodes({
     schemaVersion: SCHEMA_VERSION,
     migratedLocalStorage: base.migratedLocalStorage || incoming.migratedLocalStorage,
     users,
     records,
-    classCodes: incomingHadCodes
-      ? mergeClassCodes(base.classCodes, incoming.classCodes)
-      : base.classCodes,
-  }
+    classCodes: mergeClassCodes(base.classCodes, incoming.classCodes),
+  })
 }
 
 function isEmptyState(state) {
@@ -514,6 +621,8 @@ module.exports = {
   emptyState,
   normalizeState,
   mergeSharedState,
+  migrateSharedClassCodes,
+  hasClassCodeData,
   snapshotToState,
   isEmptyState,
   createFileStore,

@@ -13,6 +13,7 @@ import {
   completeCreatedListRefresh,
   createdCodesKey,
   deleteCreatedClassCode,
+  excludeDeletedCreatedCodes,
   getCreatedListRefreshGate,
   isConfirmedMissingClass,
   loadCreatedClassStandings,
@@ -42,7 +43,7 @@ import {
 const PRIVACY_COPY =
   'Online speichert Mathsachs nur den Klassennamen und die Summe der Punkte — keine Vornamen und keine Geräte-IDs. Wer den Code kennt, kann die Stände sehen und Punkte hinzufügen. Behandle den Code wie ein Passwort.'
 
-export function ClassCodes() {
+export function ClassCodes({ user }: { user: string }) {
   const [className, setClassName] = useState('')
   const [enterCode, setEnterCode] = useState('')
   const [creating, setCreating] = useState(false)
@@ -55,12 +56,14 @@ export function ClassCodes() {
   const [copied, setCopied] = useState(false)
   const [copiedCreated, setCopiedCreated] = useState<string | null>(null)
   const [webShare, setWebShare] = useState(false)
-  const [settings, setSettings] = useState(() => getClassCodeSettings())
+  const [settings, setSettings] = useState(() => getClassCodeSettings(user))
   const [standings, setStandings] = useState<Record<string, ClassStats | { error: string }>>({})
 
   useEffect(() => {
-    return subscribeSharedStorage(() => setSettings(getClassCodeSettings()))
-  }, [])
+    const refresh = () => setSettings(getClassCodeSettings(user))
+    refresh()
+    return subscribeSharedStorage(refresh)
+  }, [user])
 
   useEffect(() => {
     setWebShare(canUseWebShare())
@@ -68,8 +71,9 @@ export function ClassCodes() {
 
   const refreshStandings = useCallback(
     async (rows: CreatedClassCode[], opts: { force?: boolean } = {}) => {
-      const key = createdCodesKey(rows)
-      if (rows.length === 0) {
+      const live = excludeDeletedCreatedCodes(rows, getClassCodeSettings(user).deletedCodes)
+      const key = createdCodesKey(live)
+      if (live.length === 0) {
         setStandings({})
         takeCreatedListRefresh(key)
         return
@@ -82,12 +86,12 @@ export function ClassCodes() {
       }
       setRefreshing(true)
       try {
-        const { standings: next, notices, rateLimited } = await loadCreatedClassStandings(rows)
+        const { standings: next, notices, rateLimited } = await loadCreatedClassStandings(live)
         setStandings((prev) => {
           const merged: Record<string, ClassStats | { error: string }> = { ...prev }
           for (const [code, value] of Object.entries(next)) merged[code] = value
           for (const code of Object.keys(merged)) {
-            if (!rows.some((row) => row.code === code)) delete merged[code]
+            if (!live.some((row) => row.code === code)) delete merged[code]
           }
           return merged
         })
@@ -101,7 +105,7 @@ export function ClassCodes() {
         setRefreshing(false)
       }
     },
-    [],
+    [user],
   )
 
   useEffect(() => {
@@ -123,9 +127,19 @@ export function ClassCodes() {
     }
   }, [])
 
+  const createdKey = createdCodesKey(
+    excludeDeletedCreatedCodes(settings.created, settings.deletedCodes),
+  )
+
   useEffect(() => {
-    void refreshStandings(settings.created)
-  }, [createdCodesKey(settings.created), refreshStandings])
+    const handle = window.setTimeout(() => {
+      const latest = getClassCodeSettings(user)
+      void refreshStandings(
+        excludeDeletedCreatedCodes(latest.created, latest.deletedCodes),
+      )
+    }, 80)
+    return () => window.clearTimeout(handle)
+  }, [createdKey, refreshStandings, user])
 
   const createdCode = settings.activeCode
     ? settings.created.find((row) => row.code === settings.activeCode)
@@ -393,8 +407,8 @@ export function ClassCodes() {
         </button>
       </div>
       <p className="muted small">
-        Hier liegen die auf diesem Rechner (und im WLAN) erstellten Codes — nicht
-        als Besitz auf dem Server.
+        Hier liegen deine erstellten Codes — nicht als Besitz auf dem Server.
+        Andere Benutzer auf diesem Gerät sehen sie nicht.
       </p>
 
       {settings.created.length === 0 ? (

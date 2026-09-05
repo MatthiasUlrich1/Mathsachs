@@ -238,13 +238,33 @@ describe('mergeSharedState (TypeScript)', () => {
     ])
     expect(merged.classCodes?.activeCode).toBe('BBBB2222')
     expect(merged.classCodes?.sendPoints).toBe(true)
+
+    const withUsers = mergeSharedState(merged, {
+      schemaVersion: 1,
+      users: ['Ada', 'Ben'],
+      records: {
+        Ada: { name: 'Ada', created: 1, stats: {}, sessions: [] },
+        Ben: { name: 'Ben', created: 2, stats: {}, sessions: [] },
+      },
+    })
+    expect(withUsers.records.Ada.classCodes?.created.map((row) => row.code)).toEqual([
+      'AAAA1111',
+      'BBBB2222',
+    ])
+    expect(withUsers.records.Ben.classCodes).toBeUndefined()
+    expect(withUsers.classCodes).toEqual({
+      created: [],
+      deletedCodes: [],
+      activeCode: null,
+      sendPoints: false,
+    })
   })
 
-  it('keeps existing class codes when incoming omits them (old tablet)', () => {
+  it('migrates leftover shared codes onto the first listed user (old tablet)', () => {
     const merged = mergeSharedState(
       {
         schemaVersion: 1,
-        users: ['Ada'],
+        users: ['Ada', 'Ben'],
         records: {},
         classCodes: {
           created: [{ code: 'AAAA1111', name: '6a', createdAt: 1 }],
@@ -254,14 +274,22 @@ describe('mergeSharedState (TypeScript)', () => {
       },
       {
         schemaVersion: 1,
-        users: ['Ada'],
+        users: ['Ada', 'Ben'],
         records: {},
       },
     )
-    expect(merged.classCodes).toEqual({
+    expect(merged.records.Ada.classCodes).toEqual({
       created: [{ code: 'AAAA1111', name: '6a', createdAt: 1 }],
+      deletedCodes: [],
       activeCode: 'AAAA1111',
       sendPoints: true,
+    })
+    expect(merged.records.Ben?.classCodes).toBeUndefined()
+    expect(merged.classCodes).toEqual({
+      created: [],
+      deletedCodes: [],
+      activeCode: null,
+      sendPoints: false,
     })
   })
 
@@ -362,33 +390,43 @@ describe('mergeSharedState (CJS)', () => {
     expect(merged.records.Ada.stats.brueche.points).toBe(9)
   })
 
-  it('unions created class codes stored on the PC/LAN', () => {
+  it('merges class codes per user and does not leak created lists', () => {
     const merged = mergeSharedStateCjs(
       {
-        users: [],
-        records: {},
-        classCodes: {
-          created: [{ code: 'AAAA1111', name: '6a', createdAt: 1 }],
-          activeCode: 'AAAA1111',
-          sendPoints: false,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            ...user('Ada'),
+            classCodes: {
+              created: [{ code: 'AAAA1111', name: '6a', createdAt: 1 }],
+              activeCode: 'AAAA1111',
+              sendPoints: false,
+            },
+          },
         },
       },
       {
-        users: [],
-        records: {},
-        classCodes: {
-          created: [{ code: 'BBBB2222', name: '6b', createdAt: 2 }],
-          activeCode: 'BBBB2222',
-          sendPoints: true,
+        users: ['Ben'],
+        records: {
+          Ben: {
+            ...user('Ben'),
+            classCodes: {
+              created: [{ code: 'BBBB2222', name: '6b', createdAt: 2 }],
+              activeCode: 'BBBB2222',
+              sendPoints: true,
+            },
+          },
         },
       },
     )
-    expect(merged.classCodes.created.map((row: { code: string }) => row.code)).toEqual([
+    expect(merged.records.Ada.classCodes.created.map((row) => row.code)).toEqual([
       'AAAA1111',
+    ])
+    expect(merged.records.Ben.classCodes.created.map((row) => row.code)).toEqual([
       'BBBB2222',
     ])
-    expect(merged.classCodes.activeCode).toBe('BBBB2222')
-    expect(merged.classCodes.sendPoints).toBe(true)
+    expect(merged.classCodes.created).toEqual([])
+    expect(merged.classCodes.activeCode).toBeNull()
   })
 
   it('unions session history without duplicating identical rows', () => {

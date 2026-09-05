@@ -9,6 +9,32 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.16] – 2026-09-05
+
+### Behoben
+
+- **Löschen** eines Klassencodes bleibt in der Liste: Die App schreibt zuerst
+  einen lokalen Tombstone, speichert, und löscht dann online. WLAN-/PC-Merge
+  darf den Eintrag nicht per Vereinigung der `created`-Listen zurückholen.
+  Tablets, die den Tombstone sehen, entfernen den Code ebenfalls.
+- **Stände aktualisieren** läuft nach dem Löschen nicht in einer GET-Schleife
+  (ein Abruf pro Listenänderung, In-Flight-Sperre, Pause nach 429). Der
+  gelöschte Code wird nicht erneut vom Worker geholt. Bei 429 eine Banner-
+  Meldung, keine weiteren GETs für einige Sekunden.
+
+## [0.1.15] – 2026-09-05
+
+### Hinzugefügt
+
+- **Klassencodes pro Benutzer:** Erstellte Codes, aktiver Code und
+  „Punkte an Klasse senden“ gehören zum angemeldeten Benutzer. User B sieht
+  User A’s Codes nicht; Wechseln lädt den Klasse-Reiter neu. Die Leiste zeigt
+  nur die aktive Klasse des aktuellen Benutzers. Vorhandene gemeinsame Codes
+  wandern einmal zum aktuellen bzw. ersten Benutzer. Die WLAN-Datei speichert
+  weiter alle Benutzer, die Oberfläche nur den eigenen Stand.
+- **Löschen bleibt gelöscht:** Ein lokal gelöschter Klassencode kommt beim
+  WLAN-Abgleich nicht wieder, auch wenn ein anderes Gerät ihn noch hat.
+
 ## [0.1.14] – 2026-09-05
 
 ### Hinzugefügt
@@ -214,7 +240,9 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.14...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.16...HEAD
+[0.1.16]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.15...v0.1.16
+[0.1.15]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.14...v0.1.15
 [0.1.14]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.13...v0.1.14
 [0.1.13]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.12...v0.1.13
 [0.1.12]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.11...v0.1.12

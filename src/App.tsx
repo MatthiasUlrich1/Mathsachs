@@ -12,6 +12,7 @@ import {
   addUser,
   initSharedStorage,
   listUsers,
+  setActiveStorageUser,
   subscribeSharedStorage,
 } from './lib/storage'
 import { searchTopics, searchUnloadedHints } from './curriculum/search'
@@ -104,6 +105,8 @@ export default function App() {
     })
     void initSharedStorage().then(() => {
       if (cancelled) return
+      const stored = localStorage.getItem(ACTIVE_KEY)
+      if (stored) setActiveStorageUser(stored)
       setUsers(listUsers())
       setClassLabel(activeClassDisplayName())
       setStorageReady(true)
@@ -174,11 +177,17 @@ export default function App() {
     if (activeId === id) setActiveId(next[0]?.moduleId ?? '')
   }
 
+  const selectUser = (name: string) => {
+    setActiveStorageUser(name)
+    setActiveUser(name)
+    setClassLabel(activeClassDisplayName())
+  }
+
   const createUser = () => {
     const name = newName.trim()
     if (!name) return
     setUsers(addUser(name))
-    setActiveUser(name)
+    selectUser(name)
     setNewName('')
     setView({ name: 'browse' })
   }
@@ -212,7 +221,7 @@ export default function App() {
                   <button
                     type="button"
                     className="user-list__btn"
-                    onClick={() => setActiveUser(u)}
+                    onClick={() => selectUser(u)}
                   >
                     {u}
                   </button>
@@ -334,7 +343,9 @@ export default function App() {
               type="button"
               className="link"
               onClick={() => {
+                setActiveStorageUser(null)
                 setActiveUser(null)
+                setClassLabel(null)
                 setView({ name: 'browse' })
               }}
             >
@@ -497,7 +508,7 @@ export default function App() {
         <Protocol user={activeUser} onExit={() => setView({ name: 'browse' })} />
       )}
 
-      {view.name === 'class' && <ClassCodes />}
+      {view.name === 'class' && <ClassCodes key={activeUser} user={activeUser} />}
 
       {showLanCard && lanStatus && <LanAccessCard status={lanStatus} />}
 

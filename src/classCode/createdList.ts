@@ -8,6 +8,7 @@ import {
 import { formatClassCode } from './code'
 import {
   forgetCreatedClassCode,
+  getClassCodeSettings,
   setActiveClassCode,
   type CreatedClassCode,
 } from '../lib/storage'
@@ -25,6 +26,7 @@ export type CreatedListDeleteApi = {
 export type CreatedListStorage = {
   forgetCreatedClassCode: typeof forgetCreatedClassCode
   setActiveClassCode: typeof setActiveClassCode
+  getDeletedClassCodes?: () => readonly { code: string }[]
 }
 
 const defaultApi: CreatedListApi = { getClass }
@@ -32,6 +34,17 @@ const defaultDeleteApi: CreatedListDeleteApi = { deleteClass }
 const defaultStorage: CreatedListStorage = {
   forgetCreatedClassCode,
   setActiveClassCode,
+  getDeletedClassCodes: () => getClassCodeSettings().deletedCodes ?? [],
+}
+
+/** Drop tombstoned codes so a stale created list cannot GET them again. */
+export function excludeDeletedCreatedCodes(
+  rows: readonly CreatedClassCode[],
+  deletedCodes: readonly { code: string }[] | undefined,
+): CreatedClassCode[] {
+  if (!deletedCodes?.length) return [...rows]
+  const dead = new Set(deletedCodes.map((row) => row.code))
+  return rows.filter((row) => !dead.has(row.code))
 }
 
 /** Pause further created-list GETs after a 429. */
@@ -158,12 +171,13 @@ export async function loadCreatedClassStandings(
   api: CreatedListApi = defaultApi,
   storage: CreatedListStorage = defaultStorage,
 ): Promise<LoadCreatedStandingsResult> {
-  if (rows.length === 0) return { standings: {}, notices: [], rateLimited: false }
+  const live = excludeDeletedCreatedCodes(rows, storage.getDeletedClassCodes?.())
+  if (live.length === 0) return { standings: {}, notices: [], rateLimited: false }
 
   const notices: string[] = []
   const standings: Record<string, ClassStanding> = {}
   // Sequential: one 429 must not fan out into N parallel GETs.
-  for (const row of rows) {
+  for (const row of live) {
     try {
       standings[row.code] = await api.getClass(row.code)
     } catch (err) {

@@ -42,7 +42,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.14**).
+(aktuelle Version **0.1.16**).
 
 Die App prüft beim Start die öffentlichen
 [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
@@ -132,6 +132,11 @@ Mathsachs hat **keine Nutzerkonten**. Zugang zur Klassenstatistik ist der
 **Besitz des Codes**. Online liegen nur **Klassenname** und **aggregierte
 Punkte** — keine Vornamen, keine Geräte-IDs. Wer den Code kennt, kann Stände
 lesen und Punkte addieren. **Behandle den Code wie ein Passwort.**
+
+Klassencodes, **Eigene Codes**, der aktive Code und das Opt-in **Punkte an
+Klasse senden** gelten **pro angemeldetem Benutzer**. Andere Profile auf
+demselben PC oder im WLAN sehen diese Liste nicht. Die Datei auf dem
+Desktop kann trotzdem alle Benutzer enthalten.
 
 Im Reiter **Klasse**:
 

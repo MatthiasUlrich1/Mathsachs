@@ -34,23 +34,36 @@ export interface UserData {
   stats: Record<string, TopicStat>
   sessions: SessionRecord[]
   classTransfers?: ClassTransferRecord[]
+  /** Created / active / send-points for this user only. */
+  classCodes?: ClassCodeSettings
 }
 
-/** A class code this PC/LAN created. Ownership is local, not on the Worker. */
+/** A class code this user created. Ownership is local, not on the Worker. */
 export interface CreatedClassCode {
   code: string
   name: string
   createdAt: number
 }
 
-/** Local (shared PC/LAN) settings for online class codes. */
+/** A locally deleted class code. Wins over created-list union on WLAN/PC merge. */
+export interface DeletedClassCode {
+  code: string
+  deletedAt: number
+}
+
+/** Per-user settings for online class codes. */
 export interface ClassCodeSettings {
   created: CreatedClassCode[]
+  /** Tombstones so merge cannot resurrect a code this client just deleted. */
+  deletedCodes: DeletedClassCode[]
   /** Only one collect-code at a time. */
   activeCode: string | null
   /** Opt-in: send newly earned points to `activeCode`. */
   sendPoints: boolean
 }
+
+export const DELETED_CLASS_CODE_TTL_MS = 30 * 24 * 60 * 60 * 1000
+export const MAX_DELETED_CLASS_CODES = 200
 
 /** On-disk / API payload for users and per-user scores. */
 export interface SharedState {
@@ -82,6 +95,7 @@ export const normalizeSharedClassCode = (raw: string): string => {
 
 export const emptyClassCodes = (): ClassCodeSettings => ({
   created: [],
+  deletedCodes: [],
   activeCode: null,
   sendPoints: false,
 })
@@ -101,7 +115,55 @@ const isCreatedCode = (value: unknown): value is CreatedClassCode => {
   return typeof value.code === 'string' && typeof value.name === 'string'
 }
 
-export const parseClassCodes = (raw: unknown): ClassCodeSettings => {
+const parseDeletedCodes = (
+  raw: unknown,
+  now: number,
+): DeletedClassCode[] => {
+  const list = Array.isArray(raw) ? raw : []
+  const byCode = new Map<string, DeletedClassCode>()
+  const cutoff = now - DELETED_CLASS_CODE_TTL_MS
+  for (const item of list) {
+    if (!isRecord(item) || typeof item.code !== 'string') continue
+    const code = normalizeSharedClassCode(item.code)
+    if (!code) continue
+    const deletedAt =
+      typeof item.deletedAt === 'number' && Number.isFinite(item.deletedAt)
+        ? item.deletedAt
+        : 0
+    if (deletedAt < cutoff) continue
+    const prev = byCode.get(code)
+    if (!prev || deletedAt > prev.deletedAt) byCode.set(code, { code, deletedAt })
+  }
+  return [...byCode.values()]
+    .sort((a, b) => b.deletedAt - a.deletedAt || a.code.localeCompare(b.code))
+    .slice(0, MAX_DELETED_CLASS_CODES)
+}
+
+/** Drop created rows covered by a tombstone; drop tombstones superseded by a later create. */
+export const applyClassCodeTombstones = (
+  created: CreatedClassCode[],
+  deletedCodes: DeletedClassCode[],
+): { created: CreatedClassCode[]; deletedCodes: DeletedClassCode[] } => {
+  const deletedAt = new Map(deletedCodes.map((row) => [row.code, row.deletedAt]))
+  const live: CreatedClassCode[] = []
+  const resurrected = new Set<string>()
+  for (const item of created) {
+    const tomb = deletedAt.get(item.code)
+    if (tomb != null && item.createdAt > tomb) {
+      live.push(item)
+      resurrected.add(item.code)
+      continue
+    }
+    if (tomb != null) continue
+    live.push(item)
+  }
+  return {
+    created: live.sort((a, b) => a.createdAt - b.createdAt || a.code.localeCompare(b.code)),
+    deletedCodes: deletedCodes.filter((row) => !resurrected.has(row.code)),
+  }
+}
+
+export const parseClassCodes = (raw: unknown, now: number = Date.now()): ClassCodeSettings => {
   if (!isRecord(raw)) return emptyClassCodes()
   const seen = new Set<string>()
   const created: CreatedClassCode[] = []
@@ -120,22 +182,28 @@ export const parseClassCodes = (raw: unknown): ClassCodeSettings => {
           : 0,
     })
   }
-  created.sort((a, b) => a.createdAt - b.createdAt || a.code.localeCompare(b.code))
+  const applied = applyClassCodeTombstones(created, parseDeletedCodes(raw.deletedCodes, now))
   const activeRaw = raw.activeCode
   const activeCode =
     typeof activeRaw === 'string' && activeRaw.trim()
       ? normalizeSharedClassCode(activeRaw) || null
       : null
+  const activeLive =
+    activeCode && applied.deletedCodes.some((row) => row.code === activeCode)
+      ? null
+      : activeCode
   return {
-    created,
-    activeCode,
-    sendPoints: Boolean(raw.sendPoints) && Boolean(activeCode),
+    created: applied.created,
+    deletedCodes: applied.deletedCodes,
+    activeCode: activeLive,
+    sendPoints: Boolean(raw.sendPoints) && Boolean(activeLive),
   }
 }
 
 export const mergeClassCodes = (
   base: ClassCodeSettings,
   incoming: ClassCodeSettings,
+  now: number = Date.now(),
 ): ClassCodeSettings => {
   const byCode = new Map<string, CreatedClassCode>()
   for (const item of [...base.created, ...incoming.created]) {
@@ -151,13 +219,109 @@ export const mergeClassCodes = (
       createdAt: Number.isFinite(createdAt) ? createdAt : 0,
     })
   }
-  return {
-    created: [...byCode.values()].sort(
-      (a, b) => a.createdAt - b.createdAt || a.code.localeCompare(b.code),
-    ),
-    activeCode: incoming.activeCode,
-    sendPoints: Boolean(incoming.sendPoints) && Boolean(incoming.activeCode),
+  return parseClassCodes(
+    {
+      created: [...byCode.values()],
+      deletedCodes: [...(base.deletedCodes ?? []), ...(incoming.deletedCodes ?? [])],
+      activeCode: incoming.activeCode,
+      sendPoints: incoming.sendPoints,
+    },
+    now,
+  )
+}
+
+/** Forget locally: drop the row and write a tombstone that merge must honor. */
+export const withForgottenClassCode = (
+  current: ClassCodeSettings,
+  code: string,
+  now: number = Date.now(),
+): ClassCodeSettings => {
+  const normalized = normalizeSharedClassCode(code)
+  if (!normalized) return parseClassCodes(current, now)
+  return parseClassCodes(
+    {
+      ...current,
+      created: current.created.filter((row) => row.code !== normalized),
+      deletedCodes: [
+        ...(current.deletedCodes ?? []),
+        { code: normalized, deletedAt: now },
+      ],
+      activeCode: current.activeCode === normalized ? null : current.activeCode,
+      sendPoints: current.activeCode === normalized ? false : current.sendPoints,
+    },
+    now,
+  )
+}
+
+export const hasClassCodeData = (
+  settings: ClassCodeSettings | undefined | null,
+): boolean => {
+  if (!settings) return false
+  return (
+    settings.created.length > 0 ||
+    (settings.deletedCodes?.length ?? 0) > 0 ||
+    Boolean(settings.activeCode) ||
+    Boolean(settings.sendPoints)
+  )
+}
+
+export const pickClassCodeMigrationTarget = (
+  users: string[],
+  preferredUser?: string | null,
+): string | null => {
+  const preferred = preferredUser?.trim() ?? ''
+  if (preferred && users.includes(preferred)) return preferred
+  return users[0] ?? null
+}
+
+const emptyUser = (name: string): UserData => ({
+  name,
+  created: Date.now(),
+  stats: {},
+  sessions: [],
+  classTransfers: [],
+})
+
+/**
+ * Move leftover shared `classCodes` onto the preferred / first user once.
+ * Other users stay empty. If nobody exists yet, keep the leftover for later.
+ */
+export const migrateSharedClassCodes = (
+  state: SharedState,
+  preferredUser?: string | null,
+): SharedState => {
+  const shared = parseClassCodes(state.classCodes)
+  if (!hasClassCodeData(shared)) {
+    return { ...state, classCodes: emptyClassCodes() }
   }
+  const target = pickClassCodeMigrationTarget(state.users, preferredUser)
+  if (!target) {
+    return { ...state, classCodes: shared }
+  }
+  const record = state.records[target] ?? emptyUser(target)
+  const existing = record.classCodes
+    ? parseClassCodes(record.classCodes)
+    : emptyClassCodes()
+  return {
+    ...state,
+    classCodes: emptyClassCodes(),
+    records: {
+      ...state.records,
+      [target]: {
+        ...record,
+        classCodes: mergeClassCodes(existing, shared),
+      },
+    },
+  }
+}
+
+const mergeUserClassCodes = (
+  base?: ClassCodeSettings,
+  incoming?: ClassCodeSettings,
+): ClassCodeSettings | undefined => {
+  if (!hasClassCodeData(incoming)) return base ?? incoming
+  if (!hasClassCodeData(base)) return incoming
+  return mergeClassCodes(base as ClassCodeSettings, incoming as ClassCodeSettings)
 }
 
 /** True when a GET /api/state body looks like shared app state, not HTML. */
@@ -269,36 +433,35 @@ const mergeUserData = (a: UserData | undefined, b: UserData | undefined): UserDa
   }
   sessions.sort((x, y) => y.date - x.date)
   if (sessions.length > MAX_SESSIONS) sessions.length = MAX_SESSIONS
+  const classCodes = mergeUserClassCodes(a.classCodes, b.classCodes)
   return {
     name: a.name || b.name,
     created: Math.min(a.created, b.created),
     stats,
     sessions,
     classTransfers: mergeTransfers(a.classTransfers, b.classTransfers),
+    ...(classCodes ? { classCodes } : {}),
   }
 }
 
 /** Union users and merge scores by user/topic. Same rules as electron/sharedStore.cjs. */
 export const mergeSharedState = (base: SharedState, incoming: SharedState): SharedState => {
-  const users = uniqueNames([...base.users, ...incoming.users])
+  const baseM = migrateSharedClassCodes(base)
+  const incomingM = migrateSharedClassCodes(incoming)
+  const users = uniqueNames([...baseM.users, ...incomingM.users])
   const records: Record<string, UserData> = {}
   for (const name of users) {
-    const mergedUser = mergeUserData(base.records[name], incoming.records[name])
-    records[name] = mergedUser ?? {
-      name,
-      created: Date.now(),
-      stats: {},
-      sessions: [],
-      classTransfers: [],
-    }
+    const mergedUser = mergeUserData(baseM.records[name], incomingM.records[name])
+    records[name] = mergedUser ?? emptyUser(name)
   }
-  return {
+  return migrateSharedClassCodes({
     schemaVersion: SHARED_STATE_SCHEMA_VERSION,
     migratedLocalStorage: Boolean(base.migratedLocalStorage || incoming.migratedLocalStorage),
     users,
     records,
-    classCodes: incoming.classCodes
-      ? mergeClassCodes(base.classCodes ?? emptyClassCodes(), parseClassCodes(incoming.classCodes))
-      : (base.classCodes ?? emptyClassCodes()),
-  }
+    classCodes: mergeClassCodes(
+      baseM.classCodes ?? emptyClassCodes(),
+      incomingM.classCodes ?? emptyClassCodes(),
+    ),
+  })
 }

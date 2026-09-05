@@ -17,10 +17,12 @@ import {
   takeCreatedListRefresh,
 } from './createdList'
 import {
+  addUser,
   getClassCodeSettings,
   initSharedStorage,
   rememberCreatedClassCode,
   resetSharedStorageForTests,
+  setActiveStorageUser,
   setSendClassPoints,
   type CreatedClassCode,
 } from '../lib/storage'
@@ -311,10 +313,16 @@ describe('created list + real storage', () => {
     vi.unstubAllGlobals()
   })
 
-  it('optimistic delete on 429 forgets locally and clears active/sendPoints', async () => {
+  async function readyWithUser(name = 'Ada') {
     vi.stubGlobal('localStorage', memoryStorage())
     vi.stubGlobal('location', { protocol: 'file:' })
     await initSharedStorage()
+    addUser(name)
+    setActiveStorageUser(name)
+  }
+
+  it('optimistic delete on 429 forgets locally and clears active/sendPoints', async () => {
+    await readyWithUser()
     rememberCreatedClassCode('9wat-x7xc', '6a')
     setSendClassPoints(true)
 
@@ -334,9 +342,7 @@ describe('created list + real storage', () => {
   })
 
   it('refresh/prune on 404 clears the active collect-code and sendPoints', async () => {
-    vi.stubGlobal('localStorage', memoryStorage())
-    vi.stubGlobal('location', { protocol: 'file:' })
-    await initSharedStorage()
+    await readyWithUser()
     rememberCreatedClassCode('9wat-x7xc', '6a')
     setSendClassPoints(true)
     expect(getClassCodeSettings()).toMatchObject({
@@ -364,9 +370,7 @@ describe('created list + real storage', () => {
   })
 
   it('activate path does not keep a missing code in the created list', async () => {
-    vi.stubGlobal('localStorage', memoryStorage())
-    vi.stubGlobal('location', { protocol: 'file:' })
-    await initSharedStorage()
+    await readyWithUser()
     rememberCreatedClassCode('9wat-x7xc', '6a')
     setSendClassPoints(true)
 
@@ -386,9 +390,7 @@ describe('created list + real storage', () => {
   })
 
   it('network errors keep the created row and the active collect-code', async () => {
-    vi.stubGlobal('localStorage', memoryStorage())
-    vi.stubGlobal('location', { protocol: 'file:' })
-    await initSharedStorage()
+    await readyWithUser()
     rememberCreatedClassCode('abcd-2345', '6a')
     setSendClassPoints(true)
 
@@ -411,9 +413,7 @@ describe('created list + real storage', () => {
   })
 
   it('refresh 429 does not prune the created row', async () => {
-    vi.stubGlobal('localStorage', memoryStorage())
-    vi.stubGlobal('location', { protocol: 'file:' })
-    await initSharedStorage()
+    await readyWithUser()
     rememberCreatedClassCode('abcd-2345', '6a')
     setSendClassPoints(true)
 

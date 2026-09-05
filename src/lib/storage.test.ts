@@ -11,6 +11,7 @@ import {
   rememberCreatedClassCode,
   forgetCreatedClassCode,
   resetSharedStorageForTests,
+  setActiveStorageUser,
   setSendClassPoints,
   saveUser,
 } from './storage'
@@ -176,6 +177,8 @@ describe('storage adapter', () => {
 
     await initSharedStorage()
     expect(getSharedStorageBackendForTests()).toBe('local')
+    addUser('Ada')
+    setActiveStorageUser('Ada')
     rememberCreatedClassCode('abcd-2345', 'Klasse 6a')
     setSendClassPoints(true)
     expect(getClassCodeSettings()).toMatchObject({
@@ -195,7 +198,7 @@ describe('storage adapter', () => {
       sendPoints: true,
     })
     await vi.waitFor(() => {
-      expect(local.getItem(CLASS_CODES_STORAGE_KEY)).toContain('ABCD2345')
+      expect(local.getItem(userRecordKey('Ada'))).toContain('ABCD2345')
     })
 
     recordSession('Ada', {
@@ -225,6 +228,8 @@ describe('storage adapter', () => {
     vi.stubGlobal('fetch', vi.fn(async () => htmlResponse()))
 
     await initSharedStorage()
+    addUser('Ada')
+    setActiveStorageUser('Ada')
     rememberCreatedClassCode('abcd-2345', 'Klasse 6a')
     recordSession('Ada', {
       topicId: 'brueche',
@@ -246,6 +251,8 @@ describe('storage adapter', () => {
     )
 
     await initSharedStorage()
+    addUser('Ada')
+    setActiveStorageUser('Ada')
     rememberCreatedClassCode('abcd-2345', 'Klasse 6a')
     setSendClassPoints(true)
     recordSession('Ada', {
