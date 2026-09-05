@@ -34,7 +34,7 @@ describe('ExamBuilder Klausurerstellung', () => {
     expect(source).toMatch(/Klausurcode/)
     expect(source).toMatch(/Code kopieren/)
     expect(source).toMatch(/WhatsApp/)
-    expect(source).toMatch(/>Mail</)
+    expect(source).toMatch(/>\s*Mail\s*</)
     expect(source).toMatch(/examCodeWhatsAppUrl/)
     expect(source).toMatch(/examCodeMailtoUrl/)
   })
