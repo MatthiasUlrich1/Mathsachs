@@ -28,7 +28,8 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   gilt dieselbe Benutzerliste und derselbe Punktestand für den PC und für
   Tablets im WLAN.
 - **Punkteprotokoll**: Auswertung je Thema in Prozent und Gesamtpunktzahl,
-  ebenfalls druckbar.
+  plus Tag / Woche / Monat / Schuljahr aus den lokalen Übungen und den an
+  eine Klasse gesendeten Punkten; ebenfalls druckbar.
 - **Übungsklausur per Code**: Lehrkräfte stellen aus Lehrplan-Themen eine
   Klausur zusammen; Schülerinnen und Schüler lösen denselben Satz Aufgaben über
   einen Code oder Link (siehe [Übungsklausur per Code](#übungsklausur-per-code)).
@@ -41,7 +42,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.13**).
+(aktuelle Version **0.1.14**).
 
 Die App prüft beim Start die öffentlichen
 [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
@@ -140,6 +141,8 @@ Im Reiter **Klasse**:
 2. **Code eintragen** und als einzigen Sammel-Code **aktivieren**.
 3. Optional **Punkte an Klasse senden** (Opt-in). Nur mit aktivem Code und
    diesem Haken gehen neue Übungspunkte zusätzlich an die Klassensumme.
+   Die App merkt sich das lokal im **Punkteprotokoll** (welche Klasse, wie
+   viele Punkte, nach Zeitraum). Ohne Netz zählt der Eintrag trotzdem.
 4. **Eigene Codes** mit Ständen **Tag / Woche / Monat / Schuljahr**,
    **Teilen** (Code kopieren, WhatsApp, Mail) und **Löschen** (entfernt die
    Klassensummen online). Codes, die der Server nicht mehr kennt, verschwinden

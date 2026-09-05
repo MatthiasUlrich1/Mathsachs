@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import {
   CLASS_CODE_ALPHABET,
   CLASS_CODE_LENGTH,
+  displayClassName,
   formatClassCode,
   generateClassCode,
   isValidClassCode,
@@ -34,6 +35,12 @@ describe('isValidClassCode / formatClassCode', () => {
   it('formats as XXXX-XXXX', () => {
     expect(formatClassCode('abcd2345')).toBe('ABCD-2345')
     expect(formatClassCode('short')).toBe('SH0RT')
+  })
+
+  it('prefers a class name and falls back to the formatted code', () => {
+    expect(displayClassName('Klasse 6a', 'ABCD2345')).toBe('Klasse 6a')
+    expect(displayClassName('  ', 'ABCD2345')).toBe('ABCD-2345')
+    expect(displayClassName(undefined, 'ABCD2345')).toBe('ABCD-2345')
   })
 })
 

@@ -10,6 +10,7 @@ const path = require('node:path')
 
 const SCHEMA_VERSION = 1
 const MAX_SESSIONS = 200
+const MAX_TRANSFERS = 200
 const USERS_KEY = 'mathsachs.users.v1'
 const CLASS_CODES_KEY = 'mathsachs.classCodes.v1'
 const USER_KEY_RE = /^mathsachs\.user\.(.+)\.v1$/
@@ -78,6 +79,20 @@ function normalizeSession(raw) {
   }
 }
 
+function normalizeTransfer(raw) {
+  if (!raw || typeof raw !== 'object') return null
+  const code = normalizeCode(raw.code)
+  if (!code) return null
+  const points = asFiniteNumber(raw.points, 0)
+  if (!(points > 0)) return null
+  return {
+    date: asFiniteNumber(raw.date, 0),
+    code,
+    className: asString(raw.className, '').trim().slice(0, 80),
+    points,
+  }
+}
+
 function normalizeUserData(name, raw) {
   const src = raw && typeof raw === 'object' ? raw : {}
   const statsIn = src.stats && typeof src.stats === 'object' ? src.stats : {}
@@ -89,11 +104,15 @@ function normalizeUserData(name, raw) {
   const sessions = Array.isArray(src.sessions)
     ? src.sessions.map(normalizeSession).filter(Boolean)
     : []
+  const classTransfers = Array.isArray(src.classTransfers)
+    ? src.classTransfers.map(normalizeTransfer).filter(Boolean)
+    : []
   return {
     name: asString(src.name, name),
     created: asFiniteNumber(src.created, Date.now()),
     stats,
     sessions,
+    classTransfers,
   }
 }
 
@@ -213,6 +232,24 @@ function sessionKey(session) {
   ].join('|')
 }
 
+function transferKey(transfer) {
+  return [transfer.date, transfer.code, transfer.points].join('|')
+}
+
+function mergeTransfers(a, b) {
+  const seen = new Set()
+  const transfers = []
+  for (const transfer of [...(a || []), ...(b || [])]) {
+    const key = transferKey(transfer)
+    if (seen.has(key)) continue
+    seen.add(key)
+    transfers.push(transfer)
+  }
+  transfers.sort((x, y) => y.date - x.date)
+  if (transfers.length > MAX_TRANSFERS) transfers.length = MAX_TRANSFERS
+  return transfers
+}
+
 function pickStat(a, b) {
   if (!a) return b
   if (!b) return a
@@ -252,6 +289,7 @@ function mergeUserData(a, b) {
     created: Math.min(a.created, b.created),
     stats,
     sessions,
+    classTransfers: mergeTransfers(a.classTransfers, b.classTransfers),
   }
 }
 
@@ -470,6 +508,7 @@ function createMemoryStore(initial) {
 module.exports = {
   SCHEMA_VERSION,
   MAX_SESSIONS,
+  MAX_TRANSFERS,
   USERS_KEY,
   CLASS_CODES_KEY,
   emptyState,

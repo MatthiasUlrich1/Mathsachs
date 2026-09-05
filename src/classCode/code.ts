@@ -28,6 +28,12 @@ export function formatClassCode(raw: string): string {
   return `${code.slice(0, 4)}-${code.slice(4)}`
 }
 
+/** Prefer a stored class name; otherwise the formatted code. */
+export function displayClassName(name: string | undefined, code: string): string {
+  const trimmed = name?.trim() ?? ''
+  return trimmed || formatClassCode(code)
+}
+
 export function generateClassCode(
   randomBytes: (n: number) => Uint8Array = defaultRandomBytes,
 ): string {

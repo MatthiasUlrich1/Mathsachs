@@ -9,6 +9,22 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.14] – 2026-09-05
+
+### Hinzugefügt
+
+- **Aktive Klasse in der Leiste:** Neben dem Benutzernamen steht der Name der
+  aktiven Klasse (aus den eigenen Codes, sonst der formatierte Klassencode).
+  Ohne aktiven Code bleibt die Zeile leer.
+- **Punkteprotokoll nach Zeitraum:** Tag / Woche / Monat / Schuljahr / Gesamt
+  aus den lokalen Übungen (Europe/Berlin, Schuljahr 1. Aug.–31. Jul.) — unabhängig
+  von der Online-Klassensumme.
+- **Übertragene Klassenpunkte:** Beim Senden an den Klassencode legt Mathsachs
+  ein lokales Protokoll an (Zeit, Code, Klassenname, Punkte). Das Protokoll zeigt
+  die Summe und, wenn mehrere Codes genutzt wurden, die Aufteilung je Klasse —
+  ebenfalls nach Tag / Woche / Monat / Schuljahr. Zählt schon beim Senden; ein
+  späterer Netzfehler ändert die Übung nicht.
+
 ## [0.1.13] – 2026-09-05
 
 ### Behoben
@@ -198,7 +214,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.13...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.14...HEAD
+[0.1.14]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.13...v0.1.14
 [0.1.13]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.12...v0.1.13
 [0.1.12]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.11...v0.1.12
 [0.1.11]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.10...v0.1.11

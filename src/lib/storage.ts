@@ -1,5 +1,5 @@
 import { addClassPoints } from '../classCode/api'
-import { normalizeClassCode } from '../classCode/code'
+import { displayClassName, normalizeClassCode } from '../classCode/code'
 import {
   CLASS_CODES_STORAGE_KEY,
   SHARED_STATE_SCHEMA_VERSION,
@@ -14,12 +14,20 @@ import {
   sharedStateFingerprint,
   userRecordKey,
   type ClassCodeSettings,
+  type ClassTransferRecord,
   type SharedState,
   type UserData,
 } from './sharedState'
+import {
+  summarizeClassTransfers,
+  summarizeSessions,
+  type ClassPointSummary,
+  type ClassTransferTotals,
+} from './protocolStats'
 
 export type {
   ClassCodeSettings,
+  ClassTransferRecord,
   CreatedClassCode,
   SessionRecord,
   SharedState,
@@ -28,6 +36,7 @@ export type {
 } from './sharedState'
 
 const MAX_SESSIONS = 200
+const MAX_TRANSFERS = 200
 const POLL_MS = 1500
 
 type StorageBackend = 'ipc' | 'http' | 'local'
@@ -45,6 +54,7 @@ const freshUser = (name: string): UserData => ({
   created: Date.now(),
   stats: {},
   sessions: [],
+  classTransfers: [],
 })
 
 const readLocalState = (): SharedState => {
@@ -358,19 +368,31 @@ interface SessionInput {
   points: number
 }
 
-const maybePostClassDelta = (delta: number): void => {
-  if (!(delta > 0)) return
+const plannedTransfer = (
+  points: number,
+  at: number,
+): ClassTransferRecord | null => {
+  if (!(points > 0)) return null
   const settings = cache.classCodes ?? emptyClassCodes()
-  if (!settings.sendPoints || !settings.activeCode) return
-  void addClassPoints(settings.activeCode, delta).catch(() => {
-    // Fire-and-forget: offline / not-yet-deployed Worker must not fail practice.
-  })
+  if (!settings.sendPoints || !settings.activeCode) return null
+  const created = settings.created.find((row) => row.code === settings.activeCode)
+  return {
+    date: at,
+    code: settings.activeCode,
+    className: created?.name.trim() ?? '',
+    points,
+  }
 }
 
 /** Record a finished session into the user's aggregated stats and history. */
 export const recordSession = (name: string, input: SessionInput): UserData => {
   const data = loadUser(name)
   const prev = data.stats[input.topicId]
+  const now = Date.now()
+  const transfer = plannedTransfer(input.points, now)
+  const classTransfers = transfer
+    ? [transfer, ...(data.classTransfers ?? [])]
+    : [...(data.classTransfers ?? [])]
   const next: UserData = {
     ...data,
     stats: {
@@ -382,19 +404,35 @@ export const recordSession = (name: string, input: SessionInput): UserData => {
         attempts: (prev?.attempts ?? 0) + input.attempts,
         correct: (prev?.correct ?? 0) + input.correct,
         points: (prev?.points ?? 0) + input.points,
-        lastPracticed: Date.now(),
+        lastPracticed: now,
       },
     },
-    sessions: [{ date: Date.now(), ...input }, ...data.sessions],
+    sessions: [{ date: now, ...input }, ...data.sessions],
+    classTransfers,
   }
   if (next.sessions.length > MAX_SESSIONS) next.sessions.length = MAX_SESSIONS
+  if (next.classTransfers.length > MAX_TRANSFERS) {
+    next.classTransfers.length = MAX_TRANSFERS
+  }
   saveUser(next)
-  maybePostClassDelta(input.points)
+  if (transfer) {
+    void addClassPoints(transfer.code, transfer.points).catch(() => {
+      // Fire-and-forget: offline / not-yet-deployed Worker must not fail practice.
+    })
+  }
   return next
 }
 
 export const getClassCodeSettings = (): ClassCodeSettings =>
   cache.classCodes ?? emptyClassCodes()
+
+/** Active class name for the top bar, or null when no code is collecting. */
+export const activeClassDisplayName = (): string | null => {
+  const settings = getClassCodeSettings()
+  if (!settings.activeCode) return null
+  const created = settings.created.find((row) => row.code === settings.activeCode)
+  return displayClassName(created?.name, settings.activeCode)
+}
 
 const persistClassCodes = (classCodes: ClassCodeSettings): void => {
   cache = { ...cache, classCodes }
@@ -469,10 +507,15 @@ export interface Protocol {
   totalCorrect: number
   overallPercent: number
   rows: ProtocolRow[]
+  period: ClassPointSummary
+  transfers: ClassTransferTotals
 }
 
 /** Build a points-and-progress report for a user, grouped by topic area. */
-export const buildProtocol = (name: string): Protocol => {
+export const buildProtocol = (
+  name: string,
+  now: Date | number = Date.now(),
+): Protocol => {
   const data = loadUser(name)
   const stats = Object.values(data.stats)
   const rows: ProtocolRow[] = stats
@@ -492,9 +535,10 @@ export const buildProtocol = (name: string): Protocol => {
   const totalPoints = stats.reduce((sum, s) => sum + s.points, 0)
   const totalAttempts = stats.reduce((sum, s) => sum + s.attempts, 0)
   const totalCorrect = stats.reduce((sum, s) => sum + s.correct, 0)
+  const settings = getClassCodeSettings()
   return {
     name,
-    generatedAt: Date.now(),
+    generatedAt: typeof now === 'number' ? now : now.getTime(),
     totalPoints,
     totalAttempts,
     totalCorrect,
@@ -502,6 +546,12 @@ export const buildProtocol = (name: string): Protocol => {
       ? Math.round((totalCorrect / totalAttempts) * 100)
       : 0,
     rows,
+    period: summarizeSessions(data.sessions, now),
+    transfers: summarizeClassTransfers(
+      data.classTransfers ?? [],
+      now,
+      settings.created,
+    ),
   }
 }
 

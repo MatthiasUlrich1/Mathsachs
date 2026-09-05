@@ -20,21 +20,22 @@ export interface SessionRecord {
   points: number
 }
 
-export interface UserData {
-  name: string
-  created: number
-  stats: Record<string, TopicStat>
-  sessions: SessionRecord[]
+/** Local log of points the app decided to POST to a class code. */
+export interface ClassTransferRecord {
+  date: number
+  code: string
+  className: string
+  points: number
 }
 
-/** A class code this PC/LAN created. Ownership is local, not on the Worker. */
+/** A class code this user created. Ownership is local, not on the Worker. */
 export interface CreatedClassCode {
   code: string
   name: string
   createdAt: number
 }
 
-/** Local (shared PC/LAN) settings for online class codes. */
+/** Per-user settings for online class codes. */
 export interface ClassCodeSettings {
   created: CreatedClassCode[]
   /** Only one collect-code at a time. */
@@ -43,12 +44,23 @@ export interface ClassCodeSettings {
   sendPoints: boolean
 }
 
+export interface UserData {
+  name: string
+  created: number
+  stats: Record<string, TopicStat>
+  sessions: SessionRecord[]
+  classTransfers?: ClassTransferRecord[]
+  /** Created / active / send-points for this user only. */
+  classCodes?: ClassCodeSettings
+}
+
 /** On-disk / API payload for users and per-user scores. */
 export interface SharedState {
   schemaVersion: number
   migratedLocalStorage?: boolean
   users: string[]
   records: Record<string, UserData>
+  /** Leftover pre-0.1.14 shared codes; migrated onto one user once. */
   classCodes?: ClassCodeSettings
 }
 
@@ -151,6 +163,76 @@ export const mergeClassCodes = (
   }
 }
 
+export const hasClassCodeData = (
+  settings: ClassCodeSettings | undefined | null,
+): boolean => {
+  if (!settings) return false
+  return (
+    settings.created.length > 0 ||
+    Boolean(settings.activeCode) ||
+    Boolean(settings.sendPoints)
+  )
+}
+
+export const pickClassCodeMigrationTarget = (
+  users: string[],
+  preferredUser?: string | null,
+): string | null => {
+  const preferred = preferredUser?.trim() ?? ''
+  if (preferred && users.includes(preferred)) return preferred
+  return users[0] ?? null
+}
+
+const emptyUser = (name: string): UserData => ({
+  name,
+  created: Date.now(),
+  stats: {},
+  sessions: [],
+  classTransfers: [],
+})
+
+/**
+ * Move leftover shared `classCodes` onto the preferred / first user once.
+ * Other users stay empty. If nobody exists yet, keep the leftover for later.
+ */
+export const migrateSharedClassCodes = (
+  state: SharedState,
+  preferredUser?: string | null,
+): SharedState => {
+  const shared = parseClassCodes(state.classCodes)
+  if (!hasClassCodeData(shared)) {
+    return { ...state, classCodes: emptyClassCodes() }
+  }
+  const target = pickClassCodeMigrationTarget(state.users, preferredUser)
+  if (!target) {
+    return { ...state, classCodes: shared }
+  }
+  const record = state.records[target] ?? emptyUser(target)
+  const existing = record.classCodes
+    ? parseClassCodes(record.classCodes)
+    : emptyClassCodes()
+  return {
+    ...state,
+    classCodes: emptyClassCodes(),
+    records: {
+      ...state.records,
+      [target]: {
+        ...record,
+        classCodes: mergeClassCodes(existing, shared),
+      },
+    },
+  }
+}
+
+const mergeUserClassCodes = (
+  base?: ClassCodeSettings,
+  incoming?: ClassCodeSettings,
+): ClassCodeSettings | undefined => {
+  if (!hasClassCodeData(incoming)) return base ?? incoming
+  if (!hasClassCodeData(base)) return incoming
+  return mergeClassCodes(base as ClassCodeSettings, incoming as ClassCodeSettings)
+}
+
 /** True when a GET /api/state body looks like shared app state, not HTML. */
 export const looksLikeSharedState = (value: unknown): value is SharedState => {
   if (!isRecord(value)) return false
@@ -190,6 +272,7 @@ export const sharedStateFingerprint = (state: SharedState): string =>
   })
 
 const MAX_SESSIONS = 200
+const MAX_TRANSFERS = 200
 
 const uniqueNames = (names: string[]): string[] => {
   const out: string[] = []
@@ -205,6 +288,26 @@ const uniqueNames = (names: string[]): string[] => {
 
 const sessionKey = (session: SessionRecord): string =>
   [session.date, session.topicId, session.attempts, session.correct, session.points].join('|')
+
+const transferKey = (transfer: ClassTransferRecord): string =>
+  [transfer.date, transfer.code, transfer.points].join('|')
+
+const mergeTransfers = (
+  a: ClassTransferRecord[] | undefined,
+  b: ClassTransferRecord[] | undefined,
+): ClassTransferRecord[] => {
+  const seen = new Set<string>()
+  const transfers: ClassTransferRecord[] = []
+  for (const transfer of [...(a ?? []), ...(b ?? [])]) {
+    const key = transferKey(transfer)
+    if (seen.has(key)) continue
+    seen.add(key)
+    transfers.push(transfer)
+  }
+  transfers.sort((x, y) => y.date - x.date)
+  if (transfers.length > MAX_TRANSFERS) transfers.length = MAX_TRANSFERS
+  return transfers
+}
 
 const pickStat = (a: TopicStat | undefined, b: TopicStat | undefined): TopicStat => {
   if (!a) return b as TopicStat
@@ -239,34 +342,35 @@ const mergeUserData = (a: UserData | undefined, b: UserData | undefined): UserDa
   }
   sessions.sort((x, y) => y.date - x.date)
   if (sessions.length > MAX_SESSIONS) sessions.length = MAX_SESSIONS
+  const classCodes = mergeUserClassCodes(a.classCodes, b.classCodes)
   return {
     name: a.name || b.name,
     created: Math.min(a.created, b.created),
     stats,
     sessions,
+    classTransfers: mergeTransfers(a.classTransfers, b.classTransfers),
+    ...(classCodes ? { classCodes } : {}),
   }
 }
 
 /** Union users and merge scores by user/topic. Same rules as electron/sharedStore.cjs. */
 export const mergeSharedState = (base: SharedState, incoming: SharedState): SharedState => {
-  const users = uniqueNames([...base.users, ...incoming.users])
+  const baseM = migrateSharedClassCodes(base)
+  const incomingM = migrateSharedClassCodes(incoming)
+  const users = uniqueNames([...baseM.users, ...incomingM.users])
   const records: Record<string, UserData> = {}
   for (const name of users) {
-    const mergedUser = mergeUserData(base.records[name], incoming.records[name])
-    records[name] = mergedUser ?? {
-      name,
-      created: Date.now(),
-      stats: {},
-      sessions: [],
-    }
+    const mergedUser = mergeUserData(baseM.records[name], incomingM.records[name])
+    records[name] = mergedUser ?? emptyUser(name)
   }
-  return {
+  return migrateSharedClassCodes({
     schemaVersion: SHARED_STATE_SCHEMA_VERSION,
     migratedLocalStorage: Boolean(base.migratedLocalStorage || incoming.migratedLocalStorage),
     users,
     records,
-    classCodes: incoming.classCodes
-      ? mergeClassCodes(base.classCodes ?? emptyClassCodes(), parseClassCodes(incoming.classCodes))
-      : (base.classCodes ?? emptyClassCodes()),
-  }
+    classCodes: mergeClassCodes(
+      baseM.classCodes ?? emptyClassCodes(),
+      incomingM.classCodes ?? emptyClassCodes(),
+    ),
+  })
 }

@@ -1,5 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
-import { buildProtocol, subscribeSharedStorage, type ProtocolRow } from '../lib/storage'
+import { formatClassCode } from '../classCode/code'
+import {
+  buildProtocol,
+  subscribeSharedStorage,
+  type ProtocolRow,
+} from '../lib/storage'
+import type { ClassPointSummary } from '../lib/protocolStats'
 
 interface Props {
   user: string
@@ -12,6 +18,33 @@ const formatDate = (ms: number) =>
     month: '2-digit',
     year: 'numeric',
   })
+
+function PeriodStats({ summary }: { summary: ClassPointSummary }) {
+  return (
+    <dl className="protocol-stats">
+      <div>
+        <dt>Tag</dt>
+        <dd>{summary.today}</dd>
+      </div>
+      <div>
+        <dt>Woche</dt>
+        <dd>{summary.week}</dd>
+      </div>
+      <div>
+        <dt>Monat</dt>
+        <dd>{summary.month}</dd>
+      </div>
+      <div>
+        <dt>Schuljahr</dt>
+        <dd>{summary.year}</dd>
+      </div>
+      <div>
+        <dt>Gesamt</dt>
+        <dd>{summary.total}</dd>
+      </div>
+    </dl>
+  )
+}
 
 export function Protocol({ user, onExit }: Props) {
   const [protocol, setProtocol] = useState(() => buildProtocol(user))
@@ -30,6 +63,10 @@ export function Protocol({ user, onExit }: Props) {
     }
     return [...map.entries()]
   }, [protocol.rows])
+
+  const schoolYear = protocol.period.period.schoolYear
+  const transferGroups = protocol.transfers.byClass
+  const transferTotal = protocol.transfers.summary.total
 
   return (
     <div className="protocol-view">
@@ -74,6 +111,54 @@ export function Protocol({ user, onExit }: Props) {
             <span className="muted small">richtige Aufgaben</span>
           </div>
         </div>
+
+        <section className="protocol-periods">
+          <h3>Punkte nach Zeitraum</h3>
+          <p className="muted small">
+            Aus deinen Übungen auf diesem Gerät. Schuljahr {schoolYear} (1.
+            Aug.–31. Jul., Europe/Berlin).
+          </p>
+          <PeriodStats summary={protocol.period} />
+        </section>
+
+        <section className="protocol-transfers">
+          <h3>An die Klasse übertragen</h3>
+          {transferTotal === 0 ? (
+            <p className="muted small">
+              Noch keine Punkte an eine Klasse gesendet. Zählt, sobald beim
+              Üben Punkte an den aktiven Klassencode gehen sollen.
+            </p>
+          ) : (
+            <>
+              <p className="muted small">
+                {transferTotal} Punkt{transferTotal === 1 ? '' : 'e'} an
+                {transferGroups.length === 1 ? (
+                  <>
+                    {' '}
+                    <strong>{transferGroups[0].label}</strong>
+                    {transferGroups[0].className
+                      ? ` (${formatClassCode(transferGroups[0].code)})`
+                      : ''}
+                  </>
+                ) : (
+                  <> {transferGroups.length} Klassen</>
+                )}{' '}
+                — gezählt beim Senden, auch wenn das Netz später fehlt.
+              </p>
+              <PeriodStats summary={protocol.transfers.summary} />
+              {transferGroups.length > 1 &&
+                transferGroups.map((group) => (
+                  <div key={group.code} className="protocol-transfer">
+                    <p className="protocol-transfer__title">
+                      {group.label}
+                      {group.className ? ` · ${formatClassCode(group.code)}` : ''}
+                    </p>
+                    <PeriodStats summary={group.summary} />
+                  </div>
+                ))}
+            </>
+          )}
+        </section>
 
         {protocol.rows.length === 0 ? (
           <p className="muted">

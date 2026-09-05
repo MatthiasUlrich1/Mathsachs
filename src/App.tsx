@@ -7,7 +7,13 @@ import {
   setLoadedIds,
 } from './curriculum/registry'
 import type { Grade, Topic } from './curriculum/types'
-import { addUser, initSharedStorage, listUsers, subscribeSharedStorage } from './lib/storage'
+import {
+  activeClassDisplayName,
+  addUser,
+  initSharedStorage,
+  listUsers,
+  subscribeSharedStorage,
+} from './lib/storage'
 import { searchTopics, searchUnloadedHints } from './curriculum/search'
 import { CurriculumBrowser } from './components/CurriculumBrowser'
 import { CurriculumSetup } from './components/CurriculumSetup'
@@ -48,6 +54,7 @@ const registryOrder = (id: string) =>
 export default function App() {
   const [storageReady, setStorageReady] = useState(false)
   const [users, setUsers] = useState<string[]>([])
+  const [classLabel, setClassLabel] = useState<string | null>(null)
   const [activeUser, setActiveUser] = useState<string | null>(
     () => localStorage.getItem(ACTIVE_KEY) || null,
   )
@@ -91,11 +98,14 @@ export default function App() {
   useEffect(() => {
     let cancelled = false
     const unsub = subscribeSharedStorage(() => {
-      if (!cancelled) setUsers(listUsers())
+      if (cancelled) return
+      setUsers(listUsers())
+      setClassLabel(activeClassDisplayName())
     })
     void initSharedStorage().then(() => {
       if (cancelled) return
       setUsers(listUsers())
+      setClassLabel(activeClassDisplayName())
       setStorageReady(true)
     })
     return () => {
@@ -314,7 +324,12 @@ export default function App() {
             Klasse
           </button>
           <div className="user-badge">
-            <span className="user-badge__name">{activeUser}</span>
+            <div className="user-badge__who">
+              <span className="user-badge__name">{activeUser}</span>
+              {classLabel && (
+                <span className="user-badge__class">{classLabel}</span>
+              )}
+            </div>
             <button
               type="button"
               className="link"

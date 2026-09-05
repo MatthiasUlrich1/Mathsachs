@@ -46,6 +46,12 @@ const store = require('../../electron/sharedStore.cjs') as {
           }
         >
         sessions: Array<{ date: number; topicId: string; points: number }>
+        classTransfers?: Array<{
+          date: number
+          code: string
+          className: string
+          points: number
+        }>
       }
     >
     migratedLocalStorage: boolean
@@ -76,6 +82,12 @@ const user = (
     created?: number
     stats?: Record<string, { topicId: string; points: number; lastPracticed: number; attempts?: number }>
     sessions?: Array<{ date: number; topicId: string; points: number }>
+    classTransfers?: Array<{
+      date: number
+      code: string
+      className?: string
+      points: number
+    }>
   } = {},
 ) => ({
   name,
@@ -102,6 +114,12 @@ const user = (
     attempts: 1,
     correct: 1,
     points: s.points,
+  })),
+  classTransfers: (extra.classTransfers ?? []).map((t) => ({
+    date: t.date,
+    code: t.code,
+    className: t.className ?? '',
+    points: t.points,
   })),
 })
 
@@ -246,6 +264,46 @@ describe('mergeSharedState (TypeScript)', () => {
       sendPoints: true,
     })
   })
+
+  it('unions class-transfer logs on the user record', () => {
+    const merged = mergeSharedState(
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            name: 'Ada',
+            created: 1,
+            stats: {},
+            sessions: [],
+            classTransfers: [
+              { date: 10, code: 'AAAA1111', className: '6a', points: 4 },
+            ],
+          },
+        },
+      },
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            name: 'Ada',
+            created: 1,
+            stats: {},
+            sessions: [],
+            classTransfers: [
+              { date: 10, code: 'AAAA1111', className: '6a', points: 4 },
+              { date: 20, code: 'BBBB2222', className: '6b', points: 2 },
+            ],
+          },
+        },
+      },
+    )
+    expect(merged.records.Ada.classTransfers).toEqual([
+      { date: 20, code: 'BBBB2222', className: '6b', points: 2 },
+      { date: 10, code: 'AAAA1111', className: '6a', points: 4 },
+    ])
+  })
 })
 
 describe('mergeSharedState (CJS)', () => {
@@ -340,6 +398,22 @@ describe('mergeSharedState (CJS)', () => {
       { users: ['Ada'], records: { Ada: user('Ada', { sessions: [session] }) } },
     )
     expect(merged.records.Ada.sessions).toHaveLength(1)
+  })
+
+  it('unions class-transfer logs without duplicating identical rows', () => {
+    const shared = { date: 42, code: 'AAAA1111', className: '6a', points: 3 }
+    const extra = { date: 80, code: 'BBBB2222', className: '6b', points: 5 }
+    const merged = mergeSharedStateCjs(
+      {
+        users: ['Ada'],
+        records: { Ada: user('Ada', { classTransfers: [shared] }) },
+      },
+      {
+        users: ['Ada'],
+        records: { Ada: user('Ada', { classTransfers: [shared, extra] }) },
+      },
+    )
+    expect(merged.records.Ada.classTransfers).toEqual([extra, shared])
   })
 })
 

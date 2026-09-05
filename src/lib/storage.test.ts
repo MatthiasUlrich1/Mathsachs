@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import {
   addUser,
+  buildProtocol,
   getClassCodeSettings,
   getSharedStorageBackendForTests,
   initSharedStorage,
@@ -11,6 +12,7 @@ import {
   forgetCreatedClassCode,
   resetSharedStorageForTests,
   setSendClassPoints,
+  saveUser,
 } from './storage'
 import { CLASS_POINTS_API } from '../classCode/api'
 import {
@@ -205,8 +207,131 @@ describe('storage adapter', () => {
       points: 6,
     })
     expect(loadUser('Ada').stats.brueche.points).toBe(6)
+    const logged = loadUser('Ada').classTransfers ?? []
+    expect(logged).toHaveLength(1)
+    expect(logged[0]).toMatchObject({
+      code: 'ABCD2345',
+      className: 'Klasse 6a',
+      points: 6,
+    })
     await vi.waitFor(() => {
       expect(fetchMock).toHaveBeenCalled()
     })
+  })
+
+  it('does not log a class transfer when collect is off', async () => {
+    const local = memoryStorage()
+    vi.stubGlobal('localStorage', local)
+    vi.stubGlobal('fetch', vi.fn(async () => htmlResponse()))
+
+    await initSharedStorage()
+    rememberCreatedClassCode('abcd-2345', 'Klasse 6a')
+    recordSession('Ada', {
+      topicId: 'brueche',
+      topicTitle: 'Brüche',
+      areaTitle: 'Zahlen',
+      attempts: 3,
+      correct: 3,
+      points: 6,
+    })
+    expect(loadUser('Ada').classTransfers).toEqual([])
+  })
+
+  it('still logs a transfer when the class POST fails later', async () => {
+    const local = memoryStorage()
+    vi.stubGlobal('localStorage', local)
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => jsonResponse({ error: 'offline' }, 503)),
+    )
+
+    await initSharedStorage()
+    rememberCreatedClassCode('abcd-2345', 'Klasse 6a')
+    setSendClassPoints(true)
+    recordSession('Ada', {
+      topicId: 'brueche',
+      topicTitle: 'Brüche',
+      areaTitle: 'Zahlen',
+      attempts: 2,
+      correct: 2,
+      points: 4,
+    })
+    expect(loadUser('Ada').classTransfers?.[0]).toMatchObject({
+      code: 'ABCD2345',
+      points: 4,
+    })
+  })
+
+  it('builds protocol period totals from local sessions and transfers', async () => {
+    const local = memoryStorage()
+    vi.stubGlobal('localStorage', local)
+    vi.stubGlobal('fetch', vi.fn(async () => htmlResponse()))
+    await initSharedStorage()
+
+    const now = Date.UTC(2026, 8, 4, 10, 0, 0)
+    const at = (iso: string) => {
+      const [y, m, d] = iso.split('-').map(Number)
+      return Date.UTC(y, m - 1, d, 10, 0, 0)
+    }
+    saveUser({
+      name: 'Ada',
+      created: 1,
+      stats: {
+        brueche: {
+          topicId: 'brueche',
+          topicTitle: 'Brüche',
+          areaTitle: 'Zahlen',
+          attempts: 2,
+          correct: 2,
+          points: 8,
+          lastPracticed: now,
+        },
+      },
+      sessions: [
+        {
+          date: at('2026-09-04'),
+          topicId: 'brueche',
+          topicTitle: 'Brüche',
+          areaTitle: 'Zahlen',
+          attempts: 1,
+          correct: 1,
+          points: 5,
+        },
+        {
+          date: at('2026-09-01'),
+          topicId: 'brueche',
+          topicTitle: 'Brüche',
+          areaTitle: 'Zahlen',
+          attempts: 1,
+          correct: 1,
+          points: 3,
+        },
+      ],
+      classTransfers: [
+        {
+          date: at('2026-09-04'),
+          code: 'AAAA1111',
+          className: 'Klasse 6a',
+          points: 5,
+        },
+        {
+          date: at('2026-08-20'),
+          code: 'BBBB2222',
+          className: 'Klasse 6b',
+          points: 7,
+        },
+      ],
+    })
+
+    const protocol = buildProtocol('Ada', now)
+    expect(protocol.period.today).toBe(5)
+    expect(protocol.period.week).toBe(8)
+    expect(protocol.period.total).toBe(8)
+    expect(protocol.transfers.summary.total).toBe(12)
+    expect(protocol.transfers.summary.year).toBe(12)
+    expect(protocol.transfers.byClass.map((row) => row.code)).toEqual([
+      'BBBB2222',
+      'AAAA1111',
+    ])
   })
 })

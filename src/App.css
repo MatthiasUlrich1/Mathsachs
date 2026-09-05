@@ -83,9 +83,23 @@
   padding-left: 6px;
 }
 
+.user-badge__who {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+  gap: 2px;
+}
+
 .user-badge__name {
   font-weight: 700;
   color: var(--accent-2);
+}
+
+.user-badge__class {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
 }
 
 /* Card */
@@ -873,6 +887,64 @@ a.ghost.update-banner__link {
 
 .protocol-summary__item .muted {
   color: #6b7280;
+}
+
+.protocol-periods,
+.protocol-transfers {
+  margin-top: 18px;
+}
+
+.protocol-periods h3,
+.protocol-transfers h3 {
+  font-size: 15px;
+  margin-bottom: 4px;
+  color: #111827;
+}
+
+.protocol-periods .muted,
+.protocol-transfers .muted {
+  color: #6b7280;
+}
+
+.protocol-stats {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin: 10px 0 0;
+}
+
+.protocol-stats dt {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b7280;
+}
+
+.protocol-stats dd {
+  margin: 2px 0 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: #4f46e5;
+}
+
+.protocol-transfer {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+}
+
+.protocol-transfer__title {
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: #111827;
+}
+
+@media (max-width: 560px) {
+  .protocol-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .protocol-area {
