@@ -34,6 +34,10 @@ function memoryStorage(): Storage {
 const SAT_MORNING = Date.UTC(2026, 8, 5, 6, 0, 0)
 /** 5 Sep 2026 20:00 UTC = 22:00 in Berlin, same calendar day. */
 const SAT_EVENING = Date.UTC(2026, 8, 5, 20, 0, 0)
+/** 4 Sep 2026 21:59 UTC = 23:59 in Berlin. */
+const FRI_BEFORE_MIDNIGHT = Date.UTC(2026, 8, 4, 21, 59, 0)
+/** 4 Sep 2026 22:00 UTC = 00:00 Saturday in Berlin. */
+const SAT_MIDNIGHT = Date.UTC(2026, 8, 4, 22, 0, 0)
 
 const sampleUpdate: AppUpdateInfo = {
   available: true,
@@ -64,6 +68,54 @@ describe('manualCheckHint', () => {
 describe('runUpdateCheck', () => {
   afterEach(() => {
     vi.unstubAllGlobals()
+  })
+
+  it('runs a scheduled check on first start (no previous timestamp)', async () => {
+    const probe = vi.fn().mockResolvedValue({
+      status: 'current',
+      currentVersion: '0.1.26',
+    })
+    const storage = memoryStorage()
+    const result = await runUpdateCheck({
+      mode: 'scheduled',
+      lastCheckAt: null,
+      now: SAT_MORNING,
+      currentVersion: '0.1.26',
+      probe,
+      storage,
+    })
+    expect(probe).toHaveBeenCalledTimes(1)
+    expect(result).toMatchObject({
+      action: 'checked',
+      recorded: true,
+      checkedAt: SAT_MORNING,
+      probe: { status: 'current', currentVersion: '0.1.26' },
+    })
+    expect(readLastUpdateCheckAt(storage)).toBe(SAT_MORNING)
+  })
+
+  it('runs a scheduled check after Berlin midnight (daily)', async () => {
+    const probe = vi.fn().mockResolvedValue({
+      status: 'current',
+      currentVersion: '0.1.26',
+    })
+    const storage = memoryStorage()
+    storage.setItem(LAST_UPDATE_CHECK_KEY, String(FRI_BEFORE_MIDNIGHT))
+    const result = await runUpdateCheck({
+      mode: 'scheduled',
+      lastCheckAt: FRI_BEFORE_MIDNIGHT,
+      now: SAT_MIDNIGHT,
+      currentVersion: '0.1.26',
+      probe,
+      storage,
+    })
+    expect(probe).toHaveBeenCalledTimes(1)
+    expect(result).toMatchObject({
+      action: 'checked',
+      recorded: true,
+      checkedAt: SAT_MIDNIGHT,
+    })
+    expect(readLastUpdateCheckAt(storage)).toBe(SAT_MIDNIGHT)
   })
 
   it('skips a scheduled check on the same Berlin day', async () => {

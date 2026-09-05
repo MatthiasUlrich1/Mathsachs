@@ -24,26 +24,37 @@ const baseProps = {
   onCheckUpdates: vi.fn(),
 }
 
-describe('Settings Profil update check', () => {
-  it('shows “Auf Updates prüfen” on Profil', () => {
-    const html = renderToStaticMarkup(
-      createElement(Settings, { ...baseProps, section: 'profile' }),
-    )
-    expect(html).toContain(MANUAL_CHECK_LABEL)
+describe('Settings hub update check', () => {
+  it('shows “Auf Updates prüfen” on the Einstellungen hub', () => {
+    const html = renderToStaticMarkup(createElement(Settings, baseProps))
+    expect(html).toContain('Einstellungen')
+    expect(html).toContain('Lehrpläne')
+    expect(html).toContain('Klasse')
+    expect(html).toContain('WLAN-Zugang')
     expect(html).toContain('Profil')
+    expect(html).toContain('Aufgaben ergänzen')
+    expect(html).toContain(MANUAL_CHECK_LABEL)
     expect(html).not.toContain(MANUAL_CHECK_CURRENT)
     expect(html).not.toContain(MANUAL_CHECK_CHECKING)
   })
 
-  it('does not show the button on other settings sections', () => {
+  it('does not show the button on Profil, WLAN or other submenu pages', () => {
+    const profile = renderToStaticMarkup(
+      createElement(Settings, { ...baseProps, section: 'profile' }),
+    )
+    expect(profile).toContain('Profil')
+    expect(profile).toContain('Benutzer wechseln')
+    expect(profile).not.toContain(MANUAL_CHECK_LABEL)
+
     const lan = renderToStaticMarkup(
       createElement(Settings, { ...baseProps, section: 'lan' }),
     )
     expect(lan).not.toContain(MANUAL_CHECK_LABEL)
-    const hub = renderToStaticMarkup(createElement(Settings, baseProps))
-    expect(hub).toContain('Einstellungen')
-    expect(hub).toContain('Aufgaben ergänzen')
-    expect(hub).not.toContain(MANUAL_CHECK_LABEL)
+
+    const curricula = renderToStaticMarkup(
+      createElement(Settings, { ...baseProps, section: 'curricula' }),
+    )
+    expect(curricula).not.toContain(MANUAL_CHECK_LABEL)
   })
 
   it('lists Aufgaben ergänzen only for Lehrer', () => {
@@ -82,11 +93,10 @@ describe('Settings Profil update check', () => {
     expect(html).not.toContain('Themengebiet')
   })
 
-  it('shows checking, current and error texts under the button', () => {
+  it('shows checking, current and error texts under the hub button', () => {
     const checking = renderToStaticMarkup(
       createElement(Settings, {
         ...baseProps,
-        section: 'profile',
         manualCheckStatus: 'checking',
       }),
     )
@@ -96,7 +106,6 @@ describe('Settings Profil update check', () => {
     const current = renderToStaticMarkup(
       createElement(Settings, {
         ...baseProps,
-        section: 'profile',
         manualCheckStatus: 'current',
       }),
     )
@@ -105,12 +114,21 @@ describe('Settings Profil update check', () => {
     const failed = renderToStaticMarkup(
       createElement(Settings, {
         ...baseProps,
-        section: 'profile',
         manualCheckStatus: 'error',
         manualCheckError: MANUAL_CHECK_FAILED,
       }),
     )
     expect(failed).toContain(MANUAL_CHECK_FAILED)
     expect(failed).toContain('notice--error')
+
+    const profileCurrent = renderToStaticMarkup(
+      createElement(Settings, {
+        ...baseProps,
+        section: 'profile',
+        manualCheckStatus: 'current',
+      }),
+    )
+    expect(profileCurrent).not.toContain(MANUAL_CHECK_CURRENT)
+    expect(profileCurrent).not.toContain(MANUAL_CHECK_LABEL)
   })
 })

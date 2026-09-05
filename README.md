@@ -59,8 +59,9 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   (Klassenstufe, Themengebiet, Titel des Themas, Aufgabenbeispiel). Die
   Angaben gehen per E-Mail an uns — nicht an den Klassen-Server.
 - **Einstellungen**: Untermenü mit Lehrplänen, Klassencode, **Aufgaben
-  ergänzen** (nur Lehrer), WLAN-Zugang (Desktop) und Profil (Rolle,
-  Benutzerwechsel und **Auf Updates prüfen**).
+  ergänzen** (nur Lehrer), WLAN-Zugang (Desktop) und Profil (Rolle und
+  Benutzerwechsel). **Auf Updates prüfen** steht direkt auf der
+  Einstellungen-Übersicht.
   In den Einstellungen zeigt
   die Leiste **Zum Üben** links neben **Einstellungen** (hervorgehoben) und
   blendet Themen, Klausur und Punkteprotokoll aus. **Zurück** führt zur Liste.
@@ -85,12 +86,12 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.26**).
+(aktuelle Version **0.1.27**).
 
 Die App prüft beim Start und — solange sie geöffnet bleibt — einmal pro
 Kalendertag (**Europe/Berlin**) die öffentlichen
 [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
-auf eine neuere Version (ohne Token). Unter **Einstellungen → Profil** kannst
+auf eine neuere Version (ohne Token). Unter **Einstellungen** kannst
 du jederzeit mit **Auf Updates prüfen** nachschauen (die Tages-Sperre gilt
 nur für die automatische Prüfung). Ist ein Update da, erscheint ein
 schließbarer Hinweis mit Versionsnummer, Release-Notes und Download. Im

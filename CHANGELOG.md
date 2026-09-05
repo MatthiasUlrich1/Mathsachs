@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.27] – 2026-09-05
+
+### Geändert
+
+- **Auf Updates prüfen:** Der Button sitzt direkt auf der
+  **Einstellungen**-Übersicht (Lehrpläne, Klasse, WLAN-Zugang, Profil,
+  Aufgaben ergänzen), nicht mehr unter **Profil**. Beim Start und einmal
+  am Kalendertag (**Europe/Berlin**) prüft die App weiter automatisch.
+  Der manuelle Button umgeht die Tages-Sperre. Ist ein Update da, erscheint
+  der bekannte Hinweis.
+
 ## [0.1.26] – 2026-09-05
 
 ### Hinzugefügt
@@ -381,7 +392,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.26...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.27...HEAD
+[0.1.27]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.26...v0.1.27
 [0.1.26]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.25...v0.1.26
 [0.1.25]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.24...v0.1.25
 [0.1.24]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.23...v0.1.24

@@ -29,7 +29,7 @@ const SECTION_HINTS: Record<SettingsSectionId, string> = {
   class: 'Klassencode erstellen, eintragen oder teilen',
   tasks: 'Vorgaben für neue Übungsaufgaben senden',
   lan: 'Tablets im selben WLAN verbinden',
-  profile: 'Rolle, Rechte, Benutzerwechsel und Updates',
+  profile: 'Rolle, Rechte und Benutzerwechsel',
 }
 
 interface Props {
@@ -115,6 +115,30 @@ export function Settings({
             )
           })}
         </ul>
+
+        <div className="settings-updates">
+          <button
+            type="button"
+            className="ghost"
+            onClick={onCheckUpdates}
+            disabled={manualCheckStatus === 'checking'}
+            aria-busy={manualCheckStatus === 'checking'}
+          >
+            {MANUAL_CHECK_LABEL}
+          </button>
+          {updateHint && (
+            <p
+              className={
+                manualCheckStatus === 'error'
+                  ? 'notice notice--error'
+                  : 'muted small'
+              }
+              aria-live="polite"
+            >
+              {updateHint}
+            </p>
+          )}
+        </div>
       </section>
     )
   }
@@ -212,29 +236,6 @@ export function Settings({
             <button type="button" className="ghost" onClick={onSwitchUser}>
               Benutzer wechseln
             </button>
-            <div className="profile-updates">
-              <button
-                type="button"
-                className="ghost"
-                onClick={onCheckUpdates}
-                disabled={manualCheckStatus === 'checking'}
-                aria-busy={manualCheckStatus === 'checking'}
-              >
-                {MANUAL_CHECK_LABEL}
-              </button>
-              {updateHint && (
-                <p
-                  className={
-                    manualCheckStatus === 'error'
-                      ? 'notice notice--error'
-                      : 'muted small'
-                  }
-                  aria-live="polite"
-                >
-                  {updateHint}
-                </p>
-              )}
-            </div>
           </section>
           <RoleRightsMatrix />
         </>
