@@ -33,7 +33,8 @@ const store = require('../../electron/sharedStore.cjs') as {
 }
 
 const CODE = '9WATX7XC'
-const settingsWithCode = (createdAt = 1_000): ClassCodeSettings => ({
+const NOW = Date.now()
+const settingsWithCode = (createdAt = NOW - 60_000): ClassCodeSettings => ({
   created: [{ code: CODE, name: '6a', createdAt }],
   deletedCodes: [],
   activeCode: CODE,
@@ -81,24 +82,24 @@ function jsonResponse(body: unknown, status = 200): Response {
 
 describe('merge after class-code delete', () => {
   it('tombstone wins: disk still has the code, incoming delete does not resurrect (TS)', () => {
-    const deleted = withForgottenClassCode(settingsWithCode(), CODE, 2_000)
+    const deleted = withForgottenClassCode(settingsWithCode(), CODE, NOW)
     expect(deleted.created).toEqual([])
-    expect(deleted.deletedCodes.map((row) => row.code)).toEqual([CODE])
+    expect(deleted.deletedCodes?.map((row) => row.code)).toEqual([CODE])
 
-    const merged = mergeClassCodes(settingsWithCode(), deleted, 2_000)
+    const merged = mergeClassCodes(settingsWithCode(), deleted, NOW)
     expect(merged.created).toEqual([])
-    expect(merged.deletedCodes.some((row) => row.code === CODE)).toBe(true)
+    expect(merged.deletedCodes?.some((row) => row.code === CODE)).toBe(true)
     expect(merged.activeCode).toBeNull()
     expect(merged.sendPoints).toBe(false)
   })
 
   it('per-user persist/poll merge does not bring a deleted code back (TS + CJS)', () => {
     const disk = adaState(settingsWithCode())
-    const local = adaState(withForgottenClassCode(settingsWithCode(), CODE, 2_000))
+    const local = adaState(withForgottenClassCode(settingsWithCode(), CODE, NOW))
 
     const persistEcho = mergeSharedState(disk, local)
     expect(persistEcho.records.Ada.classCodes?.created).toEqual([])
-    expect(persistEcho.records.Ada.classCodes?.deletedCodes.some((row) => row.code === CODE)).toBe(
+    expect(persistEcho.records.Ada.classCodes?.deletedCodes?.some((row) => row.code === CODE)).toBe(
       true,
     )
 
@@ -124,15 +125,15 @@ describe('merge after class-code delete', () => {
   })
 
   it('a later recreate (createdAt after deletedAt) drops the tombstone', () => {
-    const deleted = withForgottenClassCode(settingsWithCode(1_000), CODE, 2_000)
+    const deleted = withForgottenClassCode(settingsWithCode(NOW - 60_000), CODE, NOW)
     const recreated: ClassCodeSettings = {
-      created: [{ code: CODE, name: '6a neu', createdAt: 3_000 }],
+      created: [{ code: CODE, name: '6a neu', createdAt: NOW + 1_000 }],
       deletedCodes: [],
       activeCode: CODE,
       sendPoints: true,
     }
-    const merged = mergeClassCodes(deleted, recreated, 3_000)
-    expect(merged.created).toEqual([{ code: CODE, name: '6a neu', createdAt: 3_000 }])
+    const merged = mergeClassCodes(deleted, recreated, NOW + 1_000)
+    expect(merged.created).toEqual([{ code: CODE, name: '6a neu', createdAt: NOW + 1_000 }])
     expect(merged.deletedCodes).toEqual([])
     expect(merged.activeCode).toBe(CODE)
   })
@@ -154,11 +155,11 @@ describe('delete → created empty → no refresh storm', () => {
     expect(takeCreatedListRefresh(before, 1_000)).toBe(true)
     completeCreatedListRefresh(false, 1_010)
 
-    const forgotten = withForgottenClassCode(settingsWithCode(1), CODE, 2_000)
+    const forgotten = withForgottenClassCode(settingsWithCode(), CODE, NOW)
     expect(forgotten.created).toHaveLength(0)
     acknowledgeCreatedListKey(createdCodesKey(forgotten.created))
 
-    const merged = mergeSharedState(adaState(settingsWithCode(1)), adaState(forgotten))
+    const merged = mergeSharedState(adaState(settingsWithCode()), adaState(forgotten))
     const afterKey = createdCodesKey(merged.records.Ada.classCodes?.created ?? [])
     expect(afterKey).toBe('')
 
@@ -223,7 +224,7 @@ describe('delete → created empty → no refresh storm', () => {
     })
     expect(result.ok).toBe(false)
     expect(getClassCodeSettings().created).toHaveLength(0)
-    expect(getClassCodeSettings().deletedCodes.some((row) => row.code === CODE)).toBe(true)
+    expect(getClassCodeSettings().deletedCodes?.some((row) => row.code === CODE)).toBe(true)
 
     await vi.waitFor(() => {
       expect(disk.records.Ada.classCodes?.created).toEqual([])

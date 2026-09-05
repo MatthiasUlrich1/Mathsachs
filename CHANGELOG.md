@@ -9,19 +9,6 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
-## [0.1.16] – 2026-09-05
-
-### Behoben
-
-- **Löschen** eines Klassencodes bleibt in der Liste: Die App schreibt zuerst
-  einen lokalen Tombstone, speichert, und löscht dann online. WLAN-/PC-Merge
-  darf den Eintrag nicht per Vereinigung der `created`-Listen zurückholen.
-  Tablets, die den Tombstone sehen, entfernen den Code ebenfalls.
-- **Stände aktualisieren** läuft nach dem Löschen nicht in einer GET-Schleife
-  (ein Abruf pro Listenänderung, In-Flight-Sperre, Pause nach 429). Der
-  gelöschte Code wird nicht erneut vom Worker geholt. Bei 429 eine Banner-
-  Meldung, keine weiteren GETs für einige Sekunden.
-
 ## [0.1.15] – 2026-09-05
 
 ### Hinzugefügt
@@ -32,8 +19,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
   nur die aktive Klasse des aktuellen Benutzers. Vorhandene gemeinsame Codes
   wandern einmal zum aktuellen bzw. ersten Benutzer. Die WLAN-Datei speichert
   weiter alle Benutzer, die Oberfläche nur den eigenen Stand.
+
+### Behoben
+
 - **Löschen bleibt gelöscht:** Ein lokal gelöschter Klassencode kommt beim
-  WLAN-Abgleich nicht wieder, auch wenn ein anderes Gerät ihn noch hat.
+  WLAN-Abgleich nicht wieder. Die App schreibt einen Tombstone, speichert,
+  und löscht dann online. Tablets, die den Tombstone sehen, entfernen den
+  Code ebenfalls.
+- **Stände aktualisieren** läuft nach dem Löschen nicht in einer GET-Schleife
+  (ein Abruf pro Listenänderung, In-Flight-Sperre, Pause nach 429).
 
 ## [0.1.14] – 2026-09-05
 
@@ -240,8 +234,7 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.16...HEAD
-[0.1.16]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.15...v0.1.16
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.15...HEAD
 [0.1.15]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.14...v0.1.15
 [0.1.14]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.13...v0.1.14
 [0.1.13]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.12...v0.1.13
