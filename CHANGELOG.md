@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.12] – 2026-09-05
+
+### Behoben
+
+- **Eigene Codes:** Gelöschte oder unbekannte Klassencodes (Worker 404 /
+  `not_found`) werden aus der lokalen Liste entfernt. War der Code aktiv,
+  endet das Sammeln. **Aktivieren** prüft den Code zuerst per GET; fehlt er,
+  bleibt kein Aktivieren übrig. Netzwerk-, Rate-Limit- und „nicht bereit“-
+  Fehler lassen den Eintrag stehen.
+
 ## [0.1.11] – 2026-09-04
 
 ### Hinzugefügt
@@ -170,7 +180,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.11...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.12...HEAD
+[0.1.12]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.11...v0.1.12
 [0.1.11]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.10...v0.1.11
 [0.1.10]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.9...v0.1.10
 [0.1.9]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.8...v0.1.9

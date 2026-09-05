@@ -41,7 +41,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.11**).
+(aktuelle Version **0.1.12**).
 
 Die App prüft beim Start die öffentlichen
 [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
@@ -142,7 +142,8 @@ Im Reiter **Klasse**:
    diesem Haken gehen neue Übungspunkte zusätzlich an die Klassensumme.
 4. **Eigene Codes** mit Ständen **Tag / Woche / Monat / Schuljahr**,
    **Teilen** (Code kopieren, WhatsApp, Mail) und **Löschen** (entfernt die
-   Klassensummen online).
+   Klassensummen online). Codes, die der Server nicht mehr kennt, verschwinden
+   aus der Liste (kein **Aktivieren** mehr).
    Schuljahr = 1. August bis 31. Juli, Zeitzone **Europe/Berlin**,
    **Serverzeit** des Workers.
 
