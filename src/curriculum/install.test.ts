@@ -85,7 +85,7 @@ afterEach(() => {
 describe('removePack and shared merge', () => {
   it('keeps a removed pack uninstalled after merging a copy that still has it', () => {
     const kv = memoryKv()
-    const now = 1_000
+    const now = Date.now()
     installPack(osHs(), kv, now)
     expect(isPackInstalled(OS_HS_PACK_ID, kv)).toBe(true)
 
@@ -99,8 +99,8 @@ describe('removePack and shared merge', () => {
       { schemaVersion: 1, users: [], records: {}, ...stillInstalled },
       { schemaVersion: 1, users: [], records: {}, ...afterRemove },
     )
-    expect(merged.curriculumPacks[OS_HS_PACK_ID]).toBeUndefined()
-    expect(merged.installedCurricula.some((row) => row.id === OS_HS_PACK_ID)).toBe(false)
+    expect(merged.curriculumPacks?.[OS_HS_PACK_ID]).toBeUndefined()
+    expect(merged.installedCurricula?.some((row) => row.id === OS_HS_PACK_ID)).toBe(false)
     expect(merged.deletedCurricula?.some((row) => row.id === OS_HS_PACK_ID)).toBe(true)
 
     applySharedPacksToKv(merged, kv)
@@ -111,9 +111,10 @@ describe('removePack and shared merge', () => {
   it('does the same for Gymnasium and Oberschule RS', () => {
     for (const pack of [gym(), osRs()]) {
       const kv = memoryKv()
-      installPack(pack, kv, 10)
+      const now = Date.now()
+      installPack(pack, kv, now)
       const peer = snapshotPacksForSharedState(kv)
-      removePack(pack.id, kv, 20)
+      removePack(pack.id, kv, now + 20)
       applySharedPacksToKv(
         mergeSharedState(
           { schemaVersion: 1, users: [], records: {}, ...peer },
@@ -127,9 +128,10 @@ describe('removePack and shared merge', () => {
 
   it('applies tombstones in the Electron merge the same way', () => {
     const kv = memoryKv()
-    installPack(osHs(), kv, 10)
+    const now = Date.now()
+    installPack(osHs(), kv, now)
     const peer = snapshotPacksForSharedState(kv)
-    removePack(OS_HS_PACK_ID, kv, 20)
+    removePack(OS_HS_PACK_ID, kv, now + 20)
     const merged = store.mergeSharedState(
       { schemaVersion: 1, users: [], records: {}, ...peer },
       { schemaVersion: 1, users: [], records: {}, ...snapshotPacksForSharedState(kv) },
@@ -140,18 +142,20 @@ describe('removePack and shared merge', () => {
 
   it('lets a later reinstall clear the tombstone', () => {
     const kv = memoryKv()
-    installPack(osHs(), kv, 10)
-    removePack(OS_HS_PACK_ID, kv, 20)
-    installPack(osHs(), kv, 30)
+    const now = Date.now()
+    installPack(osHs(), kv, now)
+    removePack(OS_HS_PACK_ID, kv, now + 20)
+    installPack(osHs(), kv, now + 30)
     expect(isPackInstalled(OS_HS_PACK_ID, kv)).toBe(true)
     expect(listDeletedCurricula(kv)).toEqual([])
   })
 
   it('does not auto-reinstall Gymnasium after remove when the migration flag stays', async () => {
     const kv = memoryKv()
+    const now = Date.now()
     markCurriculumMigrated(kv)
-    installPack(gym(), kv, 10)
-    removePack(GYM_SACHSEN_PACK_ID, kv, 20)
+    installPack(gym(), kv, now)
+    removePack(GYM_SACHSEN_PACK_ID, kv, now + 20)
     expect(hasCurriculumMigrationFlag(kv)).toBe(true)
     expect(shouldAutoInstallSeed(kv, true)).toBe(false)
     expect(isPackInstalled(GYM_SACHSEN_PACK_ID, kv)).toBe(false)
@@ -159,8 +163,9 @@ describe('removePack and shared merge', () => {
 
   it('removes a pack even if a Challenge still references its topics', () => {
     const kv = memoryKv()
-    installPack(osHs(), kv, 10)
-    removePack(OS_HS_PACK_ID, kv, 20)
+    const now = Date.now()
+    installPack(osHs(), kv, now)
+    removePack(OS_HS_PACK_ID, kv, now + 20)
     expect(isPackInstalled(OS_HS_PACK_ID, kv)).toBe(false)
   })
 })
