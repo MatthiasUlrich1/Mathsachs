@@ -10,11 +10,19 @@ import type { Grade, Topic } from './curriculum/types'
 import {
   activeClassDisplayName,
   addUser,
+  getUserRole,
   initSharedStorage,
   listUsers,
   setActiveStorageUser,
+  setUserRole,
   subscribeSharedStorage,
+  type UserRole,
 } from './lib/storage'
+import {
+  USER_ROLES,
+  canCreateExam,
+  roleLabel,
+} from './lib/roles'
 import { searchTopics, searchUnloadedHints } from './curriculum/search'
 import { CurriculumBrowser } from './components/CurriculumBrowser'
 import { PracticeSession } from './components/PracticeSession'
@@ -59,6 +67,8 @@ export default function App() {
   )
   const [view, setView] = useState<View>({ name: 'browse' })
   const [newName, setNewName] = useState('')
+  const [newRole, setNewRole] = useState<UserRole | null>(null)
+  const [userRole, setUserRoleState] = useState<UserRole>('schueler')
   // Exam code taken from a shared link (`#klausur=…`), consumed by ExamRunner.
   const [examCodeFromLink, setExamCodeFromLink] = useState<string | null>(null)
 
@@ -99,6 +109,8 @@ export default function App() {
       if (cancelled) return
       setUsers(listUsers())
       setClassLabel(activeClassDisplayName())
+      const current = localStorage.getItem(ACTIVE_KEY)
+      if (current) setUserRoleState(getUserRole(current))
     })
     void initSharedStorage().then(() => {
       if (cancelled) return
@@ -154,6 +166,12 @@ export default function App() {
     }
   }, [])
 
+  useEffect(() => {
+    if (view.name === 'examBuild' && !canCreateExam(userRole)) {
+      setView({ name: 'browse' })
+    }
+  }, [view.name, userRole])
+
   const loadCurriculum = async (id: string) => {
     if (loaded.some((l) => l.moduleId === id)) return
     const mod = getCurriculumModule(id)
@@ -178,15 +196,26 @@ export default function App() {
     setActiveStorageUser(name)
     setActiveUser(name)
     setClassLabel(activeClassDisplayName())
+    setUserRoleState(getUserRole(name))
   }
 
   const createUser = () => {
     const name = newName.trim()
-    if (!name) return
-    setUsers(addUser(name))
+    if (!name || !newRole) return
+    setUsers(addUser(name, newRole))
     selectUser(name)
     setNewName('')
+    setNewRole(null)
     setView({ name: 'browse' })
+  }
+
+  const changeRole = (role: UserRole) => {
+    if (!activeUser) return
+    setUserRole(activeUser, role)
+    setUserRoleState(role)
+    if (view.name === 'examBuild' && !canCreateExam(role)) {
+      setView({ name: 'browse' })
+    }
   }
 
   if (!storageReady) {
@@ -220,6 +249,9 @@ export default function App() {
                     onClick={() => selectUser(u)}
                   >
                     {u}
+                    <span className="user-list__role">
+                      {roleLabel(getUserRole(u))}
+                    </span>
                   </button>
                 </li>
               ))}
@@ -227,19 +259,46 @@ export default function App() {
           )}
           <div className="field">
             <span className="field__label">Neuen Benutzer anlegen</span>
-            <div className="inline-form">
-              <input
-                className="answer-input__field"
-                type="text"
-                placeholder="Vorname"
-                value={newName}
-                onChange={(e) => setNewName(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && createUser()}
-              />
-              <button type="button" className="primary" onClick={createUser}>
-                Anlegen
-              </button>
+            <input
+              className="answer-input__field"
+              type="text"
+              placeholder="Vorname"
+              value={newName}
+              onChange={(e) => setNewName(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && createUser()}
+            />
+          </div>
+          <fieldset className="role-fieldset">
+            <legend className="field__label">Rolle</legend>
+            <div className="role-options">
+              {USER_ROLES.map((entry) => (
+                <label
+                  key={entry.id}
+                  className={`role-option ${
+                    newRole === entry.id ? 'role-option--active' : ''
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    name="new-user-role"
+                    value={entry.id}
+                    checked={newRole === entry.id}
+                    onChange={() => setNewRole(entry.id)}
+                  />
+                  {entry.label}
+                </label>
+              ))}
             </div>
+          </fieldset>
+          <div className="field">
+            <button
+              type="button"
+              className="primary"
+              disabled={!newName.trim() || !newRole}
+              onClick={createUser}
+            >
+              Anlegen
+            </button>
           </div>
         </section>
         <LegalFooter version={updateCheck.currentVersion} />
@@ -285,7 +344,7 @@ export default function App() {
       <header className="topbar">
         <Brand compact />
         <nav className="topbar__nav">
-          {topTabsForView(view.name).map((tab) => (
+          {topTabsForView(view.name, userRole).map((tab) => (
             <button
               key={tab.id}
               type="button"
@@ -298,9 +357,10 @@ export default function App() {
           <div className="user-badge">
             <div className="user-badge__who">
               <span className="user-badge__name">{activeUser}</span>
-              {classLabel && (
-                <span className="user-badge__class">{classLabel}</span>
-              )}
+              <span className="user-badge__class">
+                {roleLabel(userRole)}
+                {classLabel ? ` · ${classLabel}` : ''}
+              </span>
             </div>
           </div>
         </nav>
@@ -420,8 +480,10 @@ export default function App() {
           onOpenSection={(id) => setView({ name: 'settings', section: id })}
           onBack={() => setView({ name: 'settings' })}
           user={activeUser}
+          role={userRole}
           classLabel={classLabel}
           lanStatus={lanStatus}
+          onChangeRole={changeRole}
           onSwitchUser={() => {
             setActiveStorageUser(null)
             setActiveUser(null)

@@ -19,7 +19,9 @@ import {
   type ClassTransferRecord,
   type SharedState,
   type UserData,
+  type UserRole,
 } from './sharedState'
+import { normalizeRole, roleForUser } from './roles'
 import {
   summarizeClassTransfers,
   summarizeSessions,
@@ -36,6 +38,7 @@ export type {
   SharedState,
   TopicStat,
   UserData,
+  UserRole,
 } from './sharedState'
 
 const MAX_SESSIONS = 200
@@ -53,13 +56,14 @@ const canUseLocalStorage = (): boolean => {
   }
 }
 
-const freshUser = (name: string): UserData => ({
+const freshUser = (name: string, role?: UserRole): UserData => ({
   name,
   created: Date.now(),
   stats: {},
   sessions: [],
   classTransfers: [],
   classCodes: emptyClassCodes(),
+  role: normalizeRole(role),
 })
 
 const readLocalState = (): SharedState => {
@@ -369,7 +373,7 @@ export const saveUser = (data: UserData): void => {
 }
 
 /** Add a user if the (trimmed, non-empty) name is new. Returns the user list. */
-export const addUser = (rawName: string): string[] => {
+export const addUser = (rawName: string, role?: UserRole): string[] => {
   const name = rawName.trim()
   if (!name) return listUsers()
   const users = listUsers()
@@ -380,7 +384,7 @@ export const addUser = (rawName: string): string[] => {
       users: [...users],
       records: {
         ...cache.records,
-        [name]: cache.records[name] ?? freshUser(name),
+        [name]: cache.records[name] ?? freshUser(name, role),
       },
     }
     applyClassCodeMigration(name)
@@ -388,6 +392,21 @@ export const addUser = (rawName: string): string[] => {
     notify()
   }
   return users
+}
+
+export const getUserRole = (name: string): UserRole => {
+  const trimmed = name.trim()
+  if (!trimmed) return 'schueler'
+  return roleForUser(loadUser(trimmed))
+}
+
+export const setUserRole = (name: string, role: UserRole): UserRole => {
+  const trimmed = name.trim()
+  const nextRole = normalizeRole(role)
+  if (!trimmed) return nextRole
+  const current = loadUser(trimmed)
+  saveUser({ ...current, role: nextRole })
+  return nextRole
 }
 
 export const deleteUser = (name: string): string[] => {

@@ -1,3 +1,5 @@
+import { canCreateExam, type UserRole } from './lib/roles'
+
 /** Primary top-bar tabs after the settings reorganization. */
 export const TOP_TABS = [
   { id: 'browse', label: 'Themen' },
@@ -18,8 +20,14 @@ export const SETTINGS_TOP_TABS = [
   { id: 'settings', label: 'Einstellungen' },
 ] as const
 
-export function topTabsForView(viewName: string) {
-  return viewName === 'settings' ? SETTINGS_TOP_TABS : TOP_TABS
+/** Learning tabs for a role. Schüler never see Klausur erstellen. */
+export function topTabsForRole(role?: UserRole | null) {
+  if (canCreateExam(role)) return TOP_TABS
+  return TOP_TABS.filter((tab) => tab.id !== 'examBuild')
+}
+
+export function topTabsForView(viewName: string, role?: UserRole | null) {
+  return viewName === 'settings' ? SETTINGS_TOP_TABS : topTabsForRole(role)
 }
 
 /** Settings hub entries — one submenu item per setting. */

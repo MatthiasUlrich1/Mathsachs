@@ -59,6 +59,7 @@ const store = require('../../electron/sharedStore.cjs') as {
           activeCode: string | null
           sendPoints: boolean
         }
+        role?: 'schueler' | 'eltern' | 'lehrer'
       }
     >
     migratedLocalStorage: boolean
@@ -300,6 +301,62 @@ describe('mergeSharedState (TypeScript)', () => {
     })
   })
 
+  it('preserves role on user records (incoming wins if set)', () => {
+    const merged = mergeSharedState(
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            name: 'Ada',
+            created: 1,
+            stats: {},
+            sessions: [],
+            role: 'lehrer',
+          },
+        },
+      },
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            name: 'Ada',
+            created: 1,
+            stats: {},
+            sessions: [],
+            role: 'eltern',
+          },
+        },
+      },
+    )
+    expect(merged.records.Ada.role).toBe('eltern')
+
+    const keepBase = mergeSharedState(
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            name: 'Ada',
+            created: 1,
+            stats: {},
+            sessions: [],
+            role: 'lehrer',
+          },
+        },
+      },
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: { name: 'Ada', created: 1, stats: {}, sessions: [] },
+        },
+      },
+    )
+    expect(keepBase.records.Ada.role).toBe('lehrer')
+  })
+
   it('unions class-transfer logs on the user record', () => {
     const merged = mergeSharedState(
       {
@@ -434,6 +491,14 @@ describe('mergeSharedState (CJS)', () => {
     ])
     expect(merged.classCodes.created).toEqual([])
     expect(merged.classCodes.activeCode).toBeNull()
+  })
+
+  it('preserves a stored role when two devices merge the same user', () => {
+    const merged = mergeSharedStateCjs(
+      { users: ['Ada'], records: { Ada: { ...user('Ada'), role: 'lehrer' } } },
+      { users: ['Ada'], records: { Ada: { ...user('Ada'), role: 'eltern' } } },
+    )
+    expect(merged.records.Ada.role).toBe('eltern')
   })
 
   it('unions session history without duplicating identical rows', () => {

@@ -28,6 +28,9 @@ export interface ClassTransferRecord {
   points: number
 }
 
+/** Schüler is the most restricted role. Missing roles normalize to Schüler. */
+export type UserRole = 'schueler' | 'eltern' | 'lehrer'
+
 export interface UserData {
   name: string
   created: number
@@ -36,6 +39,8 @@ export interface UserData {
   classTransfers?: ClassTransferRecord[]
   /** Created / active / send-points for this user only. */
   classCodes?: ClassCodeSettings
+  /** Optional for older records; treat missing as Schüler (see roleForUser). */
+  role?: UserRole
 }
 
 /** A class code this user created. Ownership is local, not on the Worker. */
@@ -109,6 +114,9 @@ export const emptySharedState = (): SharedState => ({
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === 'object' && value !== null && !Array.isArray(value)
+
+const isUserRole = (value: unknown): value is UserRole =>
+  value === 'schueler' || value === 'eltern' || value === 'lehrer'
 
 const isCreatedCode = (value: unknown): value is CreatedClassCode => {
   if (!isRecord(value)) return false
@@ -434,6 +442,7 @@ const mergeUserData = (a: UserData | undefined, b: UserData | undefined): UserDa
   sessions.sort((x, y) => y.date - x.date)
   if (sessions.length > MAX_SESSIONS) sessions.length = MAX_SESSIONS
   const classCodes = mergeUserClassCodes(a.classCodes, b.classCodes)
+  const role = isUserRole(b.role) ? b.role : isUserRole(a.role) ? a.role : undefined
   return {
     name: a.name || b.name,
     created: Math.min(a.created, b.created),
@@ -441,6 +450,7 @@ const mergeUserData = (a: UserData | undefined, b: UserData | undefined): UserDa
     sessions,
     classTransfers: mergeTransfers(a.classTransfers, b.classTransfers),
     ...(classCodes ? { classCodes } : {}),
+    ...(role ? { role } : {}),
   }
 }
 

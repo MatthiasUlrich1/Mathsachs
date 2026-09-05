@@ -27,11 +27,16 @@ verteilen. Gebaut mit React, TypeScript und Vite.
 - **Mehrere Benutzer**: Punkte werden pro Name gespeichert. In der Desktop-App
   gilt dieselbe Benutzerliste und derselbe Punktestand für den PC und für
   Tablets im WLAN. **Benutzer wechseln** steht unter **Einstellungen → Profil**.
+- **Benutzerrollen:** Beim Anlegen und unter **Einstellungen → Profil** wählst
+  du **Schüler**, **Eltern** oder **Lehrer**. Schüler sehen kein **Klausur
+  erstellen** und können keine Klassencodes anlegen. Eltern und Lehrer haben
+  die volle Oberfläche. Fehlt die Rolle (ältere Profile), gilt **Schüler** —
+  außer es gibt bereits eigene Klassencodes, dann **Eltern**.
 - **Einstellungen**: Untermenü mit Lehrplänen, Klassencode, WLAN-Zugang
-  (Desktop) und Profil. In den Einstellungen zeigt die Leiste **Zum Üben**
-  links neben **Einstellungen** (hervorgehoben) und blendet Themen, Klausur
-  und Punkteprotokoll aus. **Zurück** führt zur Liste. WLAN-Zugang nur unter
-  Einstellungen, nicht auf der Benutzerauswahl.
+  (Desktop) und Profil (Rolle und Benutzerwechsel). In den Einstellungen zeigt
+  die Leiste **Zum Üben** links neben **Einstellungen** (hervorgehoben) und
+  blendet Themen, Klausur und Punkteprotokoll aus. **Zurück** führt zur Liste.
+  WLAN-Zugang nur unter Einstellungen, nicht auf der Benutzerauswahl.
 - **Punkteprotokoll**: Auswertung je Thema in Prozent und Gesamtpunktzahl,
   plus Tag / Woche / Monat / Schuljahr aus den lokalen Übungen und den an
   eine Klasse gesendeten Punkten; ebenfalls druckbar.
@@ -47,7 +52,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.18**).
+(aktuelle Version **0.1.19**).
 
 Die App prüft beim Start die öffentlichen
 [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
@@ -145,9 +150,10 @@ Desktop kann trotzdem alle Benutzer enthalten.
 
 Unter **Einstellungen → Klasse**:
 
-1. **Code erstellen** (Schüler oder Lehrkraft): **in der App** den Klassennamen
+1. **Code erstellen** (Eltern oder Lehrer): **in der App** den Klassennamen
    eingeben. Mathsachs erzeugt den Code selbst — niemand braucht dafür den
-   Cloudflare-Account.
+   Cloudflare-Account. **Schüler** sehen diesen Bereich nicht; sie können nur
+   einen bestehenden Code eintragen und aktivieren.
 2. **Code eintragen** und als einzigen Sammel-Code **aktivieren**.
 3. Optional **Punkte an Klasse senden** (Opt-in). Nur mit aktivem Code und
    diesem Haken gehen neue Übungspunkte zusätzlich an die Klassensumme.

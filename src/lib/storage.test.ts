@@ -4,6 +4,7 @@ import {
   buildProtocol,
   getClassCodeSettings,
   getSharedStorageBackendForTests,
+  getUserRole,
   initSharedStorage,
   listUsers,
   loadUser,
@@ -13,6 +14,7 @@ import {
   resetSharedStorageForTests,
   setActiveStorageUser,
   setSendClassPoints,
+  setUserRole,
   saveUser,
 } from './storage'
 import { CLASS_POINTS_API } from '../classCode/api'
@@ -73,10 +75,30 @@ describe('storage adapter', () => {
     expect(getSharedStorageBackendForTests()).toBe('local')
     addUser('Ada')
     expect(listUsers()).toEqual(['Ada'])
+    expect(loadUser('Ada').role).toBe('schueler')
     await vi.waitFor(() => {
       expect(JSON.parse(local.getItem(USERS_STORAGE_KEY) ?? '[]')).toEqual(['Ada'])
     })
     expect(local.getItem(userRecordKey('Ada'))).toContain('Ada')
+    expect(local.getItem(userRecordKey('Ada'))).toContain('schueler')
+  })
+
+  it('persists the role passed to addUser and setUserRole', async () => {
+    const local = memoryStorage()
+    vi.stubGlobal('localStorage', local)
+    vi.stubGlobal('location', { protocol: 'http:' })
+    vi.stubGlobal('fetch', vi.fn(async () => htmlResponse()))
+
+    await initSharedStorage()
+    addUser('Ben', 'lehrer')
+    expect(loadUser('Ben').role).toBe('lehrer')
+    expect(getUserRole('Ben')).toBe('lehrer')
+    setUserRole('Ben', 'eltern')
+    expect(loadUser('Ben').role).toBe('eltern')
+    expect(getUserRole('Ben')).toBe('eltern')
+    await vi.waitFor(() => {
+      expect(local.getItem(userRecordKey('Ben'))).toContain('eltern')
+    })
   })
 
   it('uses GET/PUT /api/state on an HTTP origin when the API exists', async () => {

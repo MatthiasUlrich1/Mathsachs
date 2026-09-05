@@ -3,6 +3,7 @@ import {
   SETTINGS_SECTIONS,
   SETTINGS_TOP_TABS,
   TOP_TABS,
+  topTabsForRole,
   topTabsForView,
 } from './nav'
 
@@ -35,11 +36,37 @@ describe('top-bar navigation', () => {
     })
   })
 
-  it('keeps the learning tabs outside settings, including submenu-unrelated views', () => {
-    expect(topTabsForView('browse')).toEqual(TOP_TABS)
-    expect(topTabsForView('examBuild')).toEqual(TOP_TABS)
-    expect(topTabsForView('examRun')).toEqual(TOP_TABS)
-    expect(topTabsForView('protocol')).toEqual(TOP_TABS)
+  it('keeps the learning tabs outside settings for Eltern and Lehrer', () => {
+    expect(topTabsForView('browse', 'eltern')).toEqual(TOP_TABS)
+    expect(topTabsForView('examBuild', 'lehrer')).toEqual(TOP_TABS)
+    expect(topTabsForView('examRun', 'eltern')).toEqual(TOP_TABS)
+    expect(topTabsForView('protocol', 'lehrer')).toEqual(TOP_TABS)
+    expect(topTabsForRole('eltern')).toEqual(TOP_TABS)
+    expect(topTabsForRole('lehrer')).toEqual(TOP_TABS)
+  })
+
+  it('hides Klausur erstellen for Schüler, including a missing role', () => {
+    const labels = topTabsForRole('schueler').map((tab) => tab.label)
+    expect(labels).toEqual([
+      'Themen',
+      'Klausur schreiben',
+      'Punkteprotokoll',
+      'Einstellungen',
+    ])
+    expect(labels).not.toContain('Klausur erstellen')
+    expect(topTabsForView('browse', 'schueler')).toEqual(topTabsForRole('schueler'))
+    expect(topTabsForView('examBuild').map((tab) => tab.label)).not.toContain(
+      'Klausur erstellen',
+    )
+  })
+
+  it('keeps the settings top bar the same for every role', () => {
+    for (const role of ['schueler', 'eltern', 'lehrer'] as const) {
+      expect(topTabsForView('settings', role).map((tab) => tab.label)).toEqual([
+        'Zum Üben',
+        'Einstellungen',
+      ])
+    }
   })
 
   it('lists former top-level items as a settings submenu', () => {

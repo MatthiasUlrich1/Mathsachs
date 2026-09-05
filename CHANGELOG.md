@@ -9,6 +9,21 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.19] – 2026-09-05
+
+### Hinzugefügt
+
+- **Benutzerrollen:** Beim Anlegen eines Profils und unter **Einstellungen →
+  Profil** wählst du **Schüler**, **Eltern** oder **Lehrer**.
+  - **Schüler:** Themen, Klausur schreiben, Punkteprotokoll, Einstellungen.
+    Unter Klasse nur einen bestehenden Code eintragen und aktivieren — kein
+    Erstellen, Teilen oder Löschen eigener Codes.
+  - **Eltern** und **Lehrer:** zusätzlich Klausur erstellen und die volle
+    Klassencode-Verwaltung wie bisher.
+  Vorhandene Profile ohne gespeicherte Rolle gelten als **Schüler**. Haben sie
+  bereits eigene Klassencodes, gilt **Eltern**. Die Rolle lässt sich jederzeit
+  im Profil ändern; die Reiter passen sich sofort an.
+
 ## [0.1.18] – 2026-09-05
 
 ### Geändert
@@ -268,7 +283,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.18...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.19...HEAD
+[0.1.19]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.18...v0.1.19
 [0.1.18]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.17...v0.1.18
 [0.1.17]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.16...v0.1.17
 [0.1.16]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.15...v0.1.16
