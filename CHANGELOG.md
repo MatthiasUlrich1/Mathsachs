@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.41] – 2026-09-05
+
+### Behoben
+
+- **Punkteprotokoll nach Klassenwechsel:** Unter **An die Klasse übertragen**
+  zählen nur noch Sendungen an den **aktuellen** Klassencode. Nach
+  **Klasse löschen** verschwinden die alten Überträge, auch wenn die neue
+  Klasse denselben Anzeigenamen hat und noch keine Punkte bekommen hat.
+
 ## [0.1.40] – 2026-09-05
 
 ### Geändert
@@ -601,7 +610,8 @@ Fixes #11
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.40...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.41...HEAD
+[0.1.41]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.40...v0.1.41
 [0.1.40]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.39...v0.1.40
 [0.1.39]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.38...v0.1.39
 [0.1.38]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.37...v0.1.38

@@ -688,6 +688,59 @@ describe('mergeSharedState (TypeScript)', () => {
       { date: 10, code: 'AAAA1111', className: '6a', points: 4 },
     ])
   })
+
+  it('drops class-transfer logs for tombstoned class codes on merge', () => {
+    const merged = mergeSharedState(
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            name: 'Ada',
+            created: 1,
+            stats: {},
+            sessions: [],
+            classTransfers: [
+              { date: 10, code: 'AAAA1111', className: '6a', points: 4 },
+              { date: 20, code: 'BBBB2222', className: '6b', points: 2 },
+            ],
+            classCodes: {
+              created: [{ code: 'BBBB2222', name: '6b', createdAt: 1 }],
+              known: [],
+              deletedCodes: [{ code: 'AAAA1111', deletedAt: Date.now() }],
+              activeCode: 'BBBB2222',
+              sendPoints: false,
+            },
+          },
+        },
+      },
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            name: 'Ada',
+            created: 1,
+            stats: {},
+            sessions: [],
+            classTransfers: [
+              { date: 10, code: 'AAAA1111', className: '6a', points: 4 },
+            ],
+            classCodes: {
+              created: [{ code: 'AAAA1111', name: '6a', createdAt: 1 }],
+              known: [],
+              deletedCodes: [],
+              activeCode: 'AAAA1111',
+              sendPoints: true,
+            },
+          },
+        },
+      },
+    )
+    expect(merged.records.Ada.classTransfers).toEqual([
+      { date: 20, code: 'BBBB2222', className: '6b', points: 2 },
+    ])
+  })
 })
 
 describe('mergeSharedState (CJS)', () => {
@@ -816,6 +869,50 @@ describe('mergeSharedState (CJS)', () => {
       },
     )
     expect(merged.records.Ada.classTransfers).toEqual([extra, shared])
+  })
+
+  it('drops CJS class-transfer logs for tombstoned class codes', () => {
+    const merged = mergeSharedStateCjs(
+      {
+        users: ['Ada'],
+        records: {
+          Ada: {
+            ...user('Ada', {
+              classTransfers: [
+                { date: 10, code: 'AAAA1111', className: '6a', points: 4 },
+                { date: 20, code: 'BBBB2222', className: '6b', points: 2 },
+              ],
+            }),
+            classCodes: {
+              created: [{ code: 'BBBB2222', name: '6b', createdAt: 1 }],
+              deletedCodes: [{ code: 'AAAA1111', deletedAt: Date.now() }],
+              activeCode: 'BBBB2222',
+              sendPoints: false,
+            },
+          },
+        },
+      },
+      {
+        users: ['Ada'],
+        records: {
+          Ada: {
+            ...user('Ada', {
+              classTransfers: [
+                { date: 10, code: 'AAAA1111', className: '6a', points: 4 },
+              ],
+            }),
+            classCodes: {
+              created: [{ code: 'AAAA1111', name: '6a', createdAt: 1 }],
+              activeCode: 'AAAA1111',
+              sendPoints: true,
+            },
+          },
+        },
+      },
+    )
+    expect(merged.records.Ada.classTransfers).toEqual([
+      { date: 20, code: 'BBBB2222', className: '6b', points: 2 },
+    ])
   })
 })
 

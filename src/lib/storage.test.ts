@@ -431,18 +431,56 @@ describe('storage adapter', () => {
           points: 7,
         },
       ],
+      classCodes: {
+        created: [
+          { code: 'AAAA1111', name: 'Klasse 6a', createdAt: 1 },
+          { code: 'BBBB2222', name: 'Klasse 6b', createdAt: 2 },
+        ],
+        known: [],
+        deletedCodes: [],
+        activeCode: 'AAAA1111',
+        sendPoints: true,
+      },
     })
 
     const protocol = buildProtocol('Ada', now)
     expect(protocol.period.today).toBe(5)
     expect(protocol.period.week).toBe(8)
     expect(protocol.period.total).toBe(8)
-    expect(protocol.transfers.summary.total).toBe(12)
-    expect(protocol.transfers.summary.year).toBe(12)
-    expect(protocol.transfers.byClass.map((row) => row.code)).toEqual([
-      'BBBB2222',
-      'AAAA1111',
-    ])
+    expect(protocol.transfers.summary.total).toBe(5)
+    expect(protocol.transfers.summary.year).toBe(5)
+    expect(protocol.transfers.byClass.map((row) => row.code)).toEqual(['AAAA1111'])
+  })
+
+  it('drops deleted-class transfers from the protocol even if a new class is active', async () => {
+    const local = memoryStorage()
+    vi.stubGlobal('localStorage', local)
+    vi.stubGlobal('fetch', vi.fn(async () => htmlResponse()))
+    await initSharedStorage()
+    addUser('Ada', 'lehrer')
+    setActiveStorageUser('Ada')
+    rememberCreatedClassCode('aaaa-1111', '6/6')
+    setActiveClassCode('AAAA1111')
+    setSendClassPoints(true)
+    recordSession('Ada', {
+      topicId: 'brueche',
+      topicTitle: 'Brüche',
+      areaTitle: 'Zahlen',
+      attempts: 2,
+      correct: 2,
+      points: 8,
+    })
+    expect(buildProtocol('Ada').transfers.summary.total).toBe(8)
+
+    forgetCreatedClassCode('AAAA1111')
+    expect(loadUser('Ada').classTransfers).toEqual([])
+    expect(buildProtocol('Ada').transfers.summary.total).toBe(0)
+
+    rememberCreatedClassCode('bbbb-2222', '6/6')
+    setActiveClassCode('BBBB2222')
+    const protocol = buildProtocol('Ada')
+    expect(protocol.transfers.summary.total).toBe(0)
+    expect(protocol.transfers.byClass).toEqual([])
   })
 
   it('records an entered Stufencode as known, not created', async () => {

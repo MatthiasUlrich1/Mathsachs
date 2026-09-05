@@ -49,6 +49,7 @@ import { canSendClassPoints, normalizeRole, roleForUser } from './roles'
 import {
   summarizeClassTransfers,
   summarizeSessions,
+  visibleProtocolTransfers,
   type ClassPointSummary,
   type ClassTransferTotals,
 } from './protocolStats'
@@ -685,7 +686,27 @@ export const rememberCreatedClassCode = (code: string, name: string): void => {
 export const forgetCreatedClassCode = (code: string): void => {
   const normalized = normalizeClassCode(code)
   if (!normalized) return
-  persistClassCodes(withForgottenClassCode(getClassCodeSettings(), normalized))
+  const user = activeUserName?.trim()
+  if (!user) return
+  const current = cache.records[user] ?? freshUser(user)
+  const users = cache.users.includes(user) ? cache.users : [...cache.users, user]
+  cache = {
+    ...cache,
+    users: [...users],
+    records: {
+      ...cache.records,
+      [user]: {
+        ...current,
+        classCodes: withForgottenClassCode(getClassCodeSettings(), normalized),
+        classTransfers: (current.classTransfers ?? []).filter(
+          (row) => row.code.trim().toUpperCase() !== normalized,
+        ),
+      },
+    },
+    classCodes: emptyClassCodes(),
+  }
+  void persistCache()
+  notify()
 }
 
 export const setActiveClassCode = (code: string | null): void => {
@@ -942,7 +963,7 @@ export const buildProtocol = (
     rows,
     period: summarizeSessions(data.sessions, now),
     transfers: summarizeClassTransfers(
-      data.classTransfers ?? [],
+      visibleProtocolTransfers(data.classTransfers, settings),
       now,
       [...settings.created, ...(settings.known ?? [])],
     ),

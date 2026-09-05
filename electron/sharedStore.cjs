@@ -669,6 +669,14 @@ function mergeTransfers(a, b) {
   return transfers
 }
 
+function dropDeletedClassTransfers(transfers, deletedCodes) {
+  const list = transfers || []
+  if (list.length === 0) return list
+  const dead = new Set((deletedCodes || []).map((row) => row.code))
+  if (dead.size === 0) return list
+  return list.filter((row) => !dead.has(String(row.code || '').trim().toUpperCase()))
+}
+
 function pickStat(a, b) {
   if (!a) return b
   if (!b) return a
@@ -715,7 +723,10 @@ function mergeUserData(a, b) {
     created: Math.min(a.created, b.created),
     stats,
     sessions,
-    classTransfers: mergeTransfers(a.classTransfers, b.classTransfers),
+    classTransfers: dropDeletedClassTransfers(
+      mergeTransfers(a.classTransfers, b.classTransfers),
+      classCodes && classCodes.deletedCodes,
+    ),
   }
   if (classCodes) out.classCodes = classCodes
   if (gradeCodes) out.gradeCodes = gradeCodes

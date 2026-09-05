@@ -583,6 +583,18 @@ const mergeTransfers = (
   return transfers
 }
 
+/** Drop local send-logs for tombstoned class codes so WLAN merge cannot resurrect them. */
+export const dropDeletedClassTransfers = (
+  transfers: ClassTransferRecord[] | undefined,
+  deletedCodes: DeletedClassCode[] | undefined,
+): ClassTransferRecord[] => {
+  const list = transfers ?? []
+  if (list.length === 0) return list
+  const dead = new Set((deletedCodes ?? []).map((row) => row.code))
+  if (dead.size === 0) return list
+  return list.filter((row) => !dead.has(row.code.trim().toUpperCase()))
+}
+
 const pickStat = (a: TopicStat | undefined, b: TopicStat | undefined): TopicStat => {
   if (!a) return b as TopicStat
   if (!b) return a
@@ -633,7 +645,10 @@ const mergeUserData = (a: UserData | undefined, b: UserData | undefined): UserDa
     created: Math.min(a.created, b.created),
     stats,
     sessions,
-    classTransfers: mergeTransfers(a.classTransfers, b.classTransfers),
+    classTransfers: dropDeletedClassTransfers(
+      mergeTransfers(a.classTransfers, b.classTransfers),
+      classCodes?.deletedCodes,
+    ),
     ...(classCodes ? { classCodes } : {}),
     ...(gradeCodes ? { gradeCodes } : {}),
     ...(challenges.length > 0 ? { challenges } : {}),

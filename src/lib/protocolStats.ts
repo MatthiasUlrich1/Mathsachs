@@ -5,7 +5,12 @@ import {
   type DayBuckets,
 } from '../classCode/buckets'
 import { publicClassLabel } from '../classCode/code'
-import type { ClassTransferRecord, CreatedClassCode, SessionRecord } from './sharedState'
+import type {
+  ClassCodeSettings,
+  ClassTransferRecord,
+  CreatedClassCode,
+  SessionRecord,
+} from './sharedState'
 
 export type { ClassPointSummary } from '../classCode/buckets'
 
@@ -69,6 +74,27 @@ const latestName = (rows: ClassTransferRecord[]): string => {
     }
   }
   return best
+}
+
+/**
+ * Punkteprotokoll only counts sends to the current, non-deleted class.
+ * Older Klassen remain in storage until delete, but must not look like
+ * they belong to a newly activated class with the same display name.
+ */
+export function visibleProtocolTransfers(
+  transfers: ClassTransferRecord[] | undefined,
+  settings: ClassCodeSettings,
+): ClassTransferRecord[] {
+  const active = settings.activeCode?.trim().toUpperCase() ?? ''
+  if (!active) return []
+  const deleted = new Set(
+    (settings.deletedCodes ?? []).map((row) => row.code.trim().toUpperCase()),
+  )
+  if (deleted.has(active)) return []
+  return (transfers ?? []).filter((row) => {
+    const code = row.code.trim().toUpperCase()
+    return code === active && !deleted.has(code)
+  })
 }
 
 /** Overall and per-class transfer totals using the same Berlin buckets. */

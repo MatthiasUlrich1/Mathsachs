@@ -3,7 +3,9 @@ import {
   itemsToDayBuckets,
   summarizeClassTransfers,
   summarizeSessions,
+  visibleProtocolTransfers,
 } from './protocolStats'
+import { emptyClassCodes } from './sharedState'
 import type { ClassTransferRecord, SessionRecord } from './sharedState'
 
 /** 4 Sep 2026 12:00 Berlin (CEST). Same fixture as buckets.test.ts. */
@@ -94,6 +96,33 @@ describe('summarizeClassTransfers', () => {
     })
     expect(totals.byClass[1].summary.total).toBe(7)
     expect(totals.byClass[1].summary.year).toBe(7)
+  })
+
+  it('keeps only transfers for the active, non-deleted class', () => {
+    const transfers = [
+      transfer('2026-09-04', 5, 'AAAA1111', 'Klasse 6a'),
+      transfer('2026-08-20', 7, 'BBBB2222', 'Klasse 6b'),
+    ]
+    expect(
+      visibleProtocolTransfers(transfers, {
+        ...emptyClassCodes(),
+        activeCode: 'AAAA1111',
+      }).map((row) => row.code),
+    ).toEqual(['AAAA1111'])
+    expect(
+      visibleProtocolTransfers(transfers, {
+        ...emptyClassCodes(),
+        activeCode: 'CCCC3333',
+      }),
+    ).toEqual([])
+    expect(
+      visibleProtocolTransfers(transfers, {
+        ...emptyClassCodes(),
+        activeCode: 'AAAA1111',
+        deletedCodes: [{ code: 'AAAA1111', deletedAt: 1 }],
+      }),
+    ).toEqual([])
+    expect(visibleProtocolTransfers(transfers, emptyClassCodes())).toEqual([])
   })
 
   it('uses a known class name and never the formatted code as the label', () => {
