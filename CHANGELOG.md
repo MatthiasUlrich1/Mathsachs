@@ -9,6 +9,27 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.37] – 2026-09-05
+
+### Hinzugefügt
+
+- **Lehrpläne als Module:** Gymnasium Sachsen Mathematik ist ein
+  versioniertes Paket (`gym-sachsen` 1.0.0). Unter
+  **Einstellungen → Lehrpläne** kannst du Pakete **installieren**,
+  **aktualisieren** und **entfernen**. Der Katalog liegt auf GitHub
+  (`curricula/manifest.json`); installierte Dateien liegen lokal bzw.
+  auf dem PC (WLAN-Tablets nutzen denselben Stand).
+- **Lehrer-Ergänzungen** stehen im Paket getrennt unter `extras` und
+  erscheinen im selben Themengebiet mit dem Badge **Lehrer-Ergänzung**.
+- Klausur und Challenge speichern `curriculumRefs` (Paket-ID + Version).
+  Ist die benötigte Version neuer als die installierte, erscheint die
+  Aufforderung, den Lehrplan zu aktualisieren.
+- Hinweisbanner oben, wenn online eine neuere Lehrplan-Version vorliegt
+  (Prüfung beim Start und einmal täglich, wie bei App-Updates).
+- Bestehende Nutzer mit geladenen Klassen oder Übungen bekommen das
+  bisherige Gymnasium-Sachsen-Paket automatisch als lokale Version 1.0.0.
+  Neue Profile starten leer und sehen den Hinweis zum Installieren.
+
 ## [0.1.36] – 2026-09-05
 
 ### Behoben

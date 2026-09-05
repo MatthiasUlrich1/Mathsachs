@@ -40,6 +40,8 @@ export interface Topic {
    * Used by the topic search to broaden matches beyond the visible title.
    */
   keywords?: string[]
+  source?: 'official' | 'lehrer'
+  extraId?: string
   generate: (rng: Rng) => Task
 }
 
@@ -58,5 +60,6 @@ export interface TopicArea {
 export interface Grade {
   id: string
   title: string
+  packId?: string
   areas: TopicArea[]
 }

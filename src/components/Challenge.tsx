@@ -31,6 +31,8 @@ import {
   updateChallengePayload,
 } from '../challenge/logic'
 import { findLoadedTopic, type LoadedGrade } from '../challenge/topics'
+import { checkCurriculumRefs, refsForGradeModules } from '../curriculum/versionGate'
+import { TeacherExtraBadge } from './TeacherExtraBadge'
 import { defaultBerlinChallengeWindow, msToBerlinLocal, parseChallengeInstant } from '../challenge/time'
 import type { ChallengePrize, ChallengeScope, StoredChallenge } from '../challenge/types'
 import {
@@ -81,6 +83,7 @@ function toStored(
     prize: summary.prize,
     createdAt: Date.now(),
     owned,
+    ...(summary.curriculumRefs?.length ? { curriculumRefs: summary.curriculumRefs } : {}),
   }
 }
 
@@ -531,6 +534,13 @@ function ChallengeCreateForm({
           ...(prizeText.trim() ? { text: prizeText.trim() } : {}),
         }
       : { enabled: false }
+    const curriculumRefs = refsForGradeModules(
+      loaded
+        .filter((row) =>
+          row.grade.areas.some((area) => area.topics.some((topic) => selected.has(topic.id))),
+        )
+        .map((row) => row.moduleId),
+    )
     setSaving(true)
     try {
       if (editing) {
@@ -541,6 +551,7 @@ function ChallengeCreateForm({
           start: startLocal,
           end: endLocal,
           prize,
+          curriculumRefs,
         })
         const updated = await updateChallenge(editing.id, {
           name: String(payload.name),
@@ -549,6 +560,7 @@ function ChallengeCreateForm({
           start: startLocal,
           end: endLocal,
           prize,
+          curriculumRefs,
         })
         onUpdated(updated, listedHostCode(editing) || hostCode)
       } else {
@@ -562,6 +574,7 @@ function ChallengeCreateForm({
           start: startLocal,
           end: endLocal,
           prize,
+          curriculumRefs,
         })
         const created = await createChallenge({
           scope,
@@ -573,6 +586,7 @@ function ChallengeCreateForm({
           start: startLocal,
           end: endLocal,
           prize,
+          curriculumRefs,
         })
         onCreated(created, hostCode)
         setName('')
@@ -712,7 +726,10 @@ function ChallengeCreateForm({
                           checked={selected.has(topic.id)}
                           onChange={() => toggleTopic(topic.id)}
                         />
-                        <span>{topic.title}</span>
+                        <span>
+                          {topic.title}
+                          <TeacherExtraBadge source={topic.source} />
+                        </span>
                       </label>
                     ))}
                   </div>
@@ -1000,6 +1017,13 @@ function ActiveChallenge({
                     type="button"
                     className="chip-btn chip-btn--primary"
                     onClick={() => {
+                      const refs =
+                        'curriculumRefs' in challenge ? challenge.curriculumRefs : undefined
+                      const gate = checkCurriculumRefs(refs)
+                      if (!gate.ok) {
+                        window.alert(gate.message)
+                        return
+                      }
                       const host =
                         'hostCode' in challenge && challenge.hostCode
                           ? challenge.hostCode

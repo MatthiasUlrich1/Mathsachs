@@ -18,6 +18,7 @@ const baseProps = {
   loadedIds: [] as string[],
   onLoad: vi.fn(async () => undefined),
   onRemove: vi.fn(),
+  onPacksChanged: vi.fn(),
   onBack: vi.fn(),
   onOpenSection: vi.fn(),
   user: 'Ada',

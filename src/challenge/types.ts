@@ -1,3 +1,7 @@
+import type { CurriculumRef } from '../curriculum/pack'
+
+export type { CurriculumRef }
+
 /** Class-only or whole grade (Stufe). */
 export type ChallengeScope = 'class' | 'grade'
 
@@ -30,6 +34,7 @@ export interface StoredChallenge {
   createdAt: number
   /** True when this user created the challenge. Practice copies stay false. */
   owned?: boolean
+  curriculumRefs?: CurriculumRef[]
 }
 
 /** Tombstone so LAN merge cannot resurrect a deleted challenge. */

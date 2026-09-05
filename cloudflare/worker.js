@@ -260,6 +260,25 @@ function parseTopicIdsStored(raw) {
   return out
 }
 
+function parseCurriculumRefsStored(raw) {
+  if (!Array.isArray(raw)) return []
+  const out = []
+  const seen = new Set()
+  for (const item of raw) {
+    if (!item || typeof item !== 'object') continue
+    const moduleId = typeof item.moduleId === 'string' ? item.moduleId.trim().slice(0, 80) : ''
+    const version = typeof item.version === 'string' ? item.version.trim().slice(0, 32) : ''
+    if (!moduleId || !version || seen.has(moduleId)) continue
+    seen.add(moduleId)
+    const row = { moduleId, version }
+    if (typeof item.contentHash === 'string' && item.contentHash.trim()) {
+      row.contentHash = item.contentHash.trim().slice(0, 64)
+    }
+    out.push(row)
+  }
+  return out
+}
+
 function parseTopicsStored(raw, topicIds) {
   const byId = new Map()
   if (Array.isArray(raw)) {
@@ -301,6 +320,9 @@ function parseChallengeStored(raw) {
     prize: parsePrizeStored(raw.prize),
     days,
     classDays,
+    ...(parseCurriculumRefsStored(raw.curriculumRefs).length
+      ? { curriculumRefs: parseCurriculumRefsStored(raw.curriculumRefs) }
+      : {}),
   }
 }
 
@@ -326,6 +348,7 @@ function serializeChallenge(ch) {
     days: ch.days || {},
   }
   if (ch.classDays && Object.keys(ch.classDays).length) out.classDays = ch.classDays
+  if (ch.curriculumRefs && ch.curriculumRefs.length) out.curriculumRefs = ch.curriculumRefs
   return out
 }
 
@@ -349,6 +372,7 @@ function publicClassChallenge(ch, className, now) {
     topicIds: ch.topicIds,
     topics: publicTopics(ch),
     prize,
+    ...(ch.curriculumRefs && ch.curriculumRefs.length ? { curriculumRefs: ch.curriculumRefs } : {}),
     points: {
       today: summary.today,
       week: summary.week,
@@ -401,6 +425,7 @@ function publicGradeChallenge(ch, grade, now) {
     topicIds: ch.topicIds,
     topics: publicTopics(ch),
     prize,
+    ...(ch.curriculumRefs && ch.curriculumRefs.length ? { curriculumRefs: ch.curriculumRefs } : {}),
     classes,
     points,
     period,
@@ -1100,6 +1125,7 @@ function readChallengeCreateBody(body) {
     start,
     end,
     prize,
+    curriculumRefs: parseCurriculumRefsStored(body.curriculumRefs),
   }
 }
 
@@ -1128,6 +1154,7 @@ function readChallengeUpdateBody(body, scope) {
     start,
     end,
     prize,
+    curriculumRefs: parseCurriculumRefsStored(body.curriculumRefs),
   }
 }
 
@@ -1168,6 +1195,9 @@ async function handleCreateChallenge(request, env) {
     prize: parsed.prize,
     days: {},
     classDays: {},
+    ...(parsed.curriculumRefs && parsed.curriculumRefs.length
+      ? { curriculumRefs: parsed.curriculumRefs }
+      : {}),
   }
 
   if (parsed.scope === 'class') {
@@ -1303,6 +1333,9 @@ async function handleUpdateChallenge(request, env, rawId) {
       prize: parsed.prize,
       days: existing.days || {},
       classDays: existing.classDays || {},
+      ...(parsed.curriculumRefs && parsed.curriculumRefs.length
+        ? { curriculumRefs: parsed.curriculumRefs }
+        : {}),
     }
     const stored = {
       ...loaded.stored,
@@ -1334,6 +1367,9 @@ async function handleUpdateChallenge(request, env, rawId) {
     prize: parsed.prize,
     days: existing.days || {},
     classDays: existing.classDays || {},
+    ...(parsed.curriculumRefs && parsed.curriculumRefs.length
+      ? { curriculumRefs: parsed.curriculumRefs }
+      : {}),
   }
   const stored = {
     ...loaded.stored,

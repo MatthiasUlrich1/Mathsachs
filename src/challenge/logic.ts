@@ -413,6 +413,7 @@ export function createChallengePayload(input: {
   start: string
   end: string
   prize: ChallengePrize
+  curriculumRefs?: Array<{ moduleId: string; version: string; contentHash?: string }>
 }): Record<string, unknown> {
   const body: Record<string, unknown> = {
     scope: input.scope,
@@ -425,6 +426,7 @@ export function createChallengePayload(input: {
   if (input.scope === 'class' && input.classCode) body.classCode = input.classCode
   if (input.scope === 'grade' && input.gradeCode) body.gradeCode = input.gradeCode
   if (input.topics?.length) body.topics = parseTopicRefs(input.topics, body.topicIds as string[])
+  if (input.curriculumRefs?.length) body.curriculumRefs = input.curriculumRefs
   return body
 }
 
@@ -436,6 +438,7 @@ export function updateChallengePayload(input: {
   start: string
   end: string
   prize: ChallengePrize
+  curriculumRefs?: Array<{ moduleId: string; version: string; contentHash?: string }>
 }): Record<string, unknown> {
   const body: Record<string, unknown> = {
     name: input.name.trim().slice(0, MAX_CHALLENGE_NAME_LENGTH),
@@ -445,6 +448,7 @@ export function updateChallengePayload(input: {
     prize: parsePrize(input.prize),
   }
   if (input.topics?.length) body.topics = parseTopicRefs(input.topics, body.topicIds as string[])
+  if (input.curriculumRefs?.length) body.curriculumRefs = input.curriculumRefs
   return body
 }
 

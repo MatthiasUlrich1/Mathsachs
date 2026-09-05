@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { Grade, Topic } from '../curriculum/types'
+import { TeacherExtraBadge } from './TeacherExtraBadge'
 
 interface Props {
   grade: Grade
@@ -38,7 +39,10 @@ export function CurriculumBrowser({ grade, onPractice, onWorksheet }: Props) {
               <ul className="topics">
                 {area.topics.map((topic) => (
                   <li key={topic.id} className="topic">
-                    <span className="topic__title">{topic.title}</span>
+                    <span className="topic__title">
+                      {topic.title}
+                      <TeacherExtraBadge source={topic.source} />
+                    </span>
                     <span className="topic__actions">
                       <button
                         type="button"

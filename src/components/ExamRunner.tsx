@@ -5,6 +5,7 @@ import { AnswerInput } from './AnswerInput'
 import {
   ExamCodeError,
   decodeExam,
+  examCurriculumGate,
   resolveExam,
   type ResolvedExamTask,
 } from '../exam/examCode'
@@ -75,6 +76,12 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
 
   const start = async () => {
     if (!spec) return
+    const blocked = examCurriculumGate(spec)
+    if (blocked) {
+      setError(blocked)
+      setPhase('ready')
+      return
+    }
     setPhase('loading')
     setError(null)
     try {

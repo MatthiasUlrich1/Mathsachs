@@ -5,6 +5,14 @@ import {
   parseStoredChallenges,
 } from '../challenge/parse'
 import type { DeletedChallenge, StoredChallenge } from '../challenge/types'
+import {
+  mergeInstalledMeta,
+  mergeInstalledPackMaps,
+  parseCurriculumPacksMap,
+  parseInstalledCurricula,
+  type CurriculumPack,
+  type InstalledCurriculum,
+} from '../curriculum/pack'
 
 /** Per-topic aggregated statistics for a user. */
 export interface TopicStat {
@@ -113,6 +121,8 @@ export interface SharedState {
   users: string[]
   records: Record<string, UserData>
   classCodes?: ClassCodeSettings
+  installedCurricula?: InstalledCurriculum[]
+  curriculumPacks?: Record<string, CurriculumPack>
 }
 
 export const SHARED_STATE_SCHEMA_VERSION = 1
@@ -153,6 +163,8 @@ export const emptySharedState = (): SharedState => ({
   users: [],
   records: {},
   classCodes: emptyClassCodes(),
+  installedCurricula: [],
+  curriculumPacks: {},
 })
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
@@ -514,6 +526,8 @@ export const sharedStateFingerprint = (state: SharedState): string =>
     users: state.users,
     records: state.records,
     classCodes: state.classCodes ?? emptyClassCodes(),
+    installedCurricula: parseInstalledCurricula(state.installedCurricula),
+    curriculumPacks: parseCurriculumPacksMap(state.curriculumPacks),
   })
 
 const MAX_SESSIONS = 200
@@ -640,6 +654,14 @@ export const mergeSharedState = (base: SharedState, incoming: SharedState): Shar
     classCodes: mergeClassCodes(
       baseM.classCodes ?? emptyClassCodes(),
       incomingM.classCodes ?? emptyClassCodes(),
+    ),
+    installedCurricula: mergeInstalledMeta(
+      parseInstalledCurricula(baseM.installedCurricula),
+      parseInstalledCurricula(incomingM.installedCurricula),
+    ),
+    curriculumPacks: mergeInstalledPackMaps(
+      parseCurriculumPacksMap(baseM.curriculumPacks),
+      parseCurriculumPacksMap(incomingM.curriculumPacks),
     ),
   })
 }

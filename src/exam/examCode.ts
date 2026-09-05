@@ -1,10 +1,9 @@
 import { createRng } from '../lib/rng'
 import { makeFraction } from '../lib/fraction'
 import { parseNumber } from '../lib/num'
-import {
-  CURRICULUM_VERSION,
-  getCurriculumModule,
-} from '../curriculum/registry'
+import { loadInstalledGrade } from '../curriculum/loadGrade'
+import { CURRICULUM_VERSION } from '../curriculum/registry'
+import { checkCurriculumRefs } from '../curriculum/versionGate'
 import { fractionTask, textTask, valueTask } from '../curriculum/taskHelpers'
 import type { Grade, Task, Topic } from '../curriculum/types'
 import type { ExamSpec, ExamTaskRef } from './types'
@@ -121,6 +120,11 @@ export const decodeExam = (code: string): ExamSpec => {
     )
   }
   return spec
+}
+
+export function examCurriculumGate(spec: ExamSpec): string | null {
+  const gate = checkCurriculumRefs(spec.curriculumRefs)
+  return gate.ok ? null : gate.message
 }
 
 const isTaskRef = (value: unknown): value is ExamTaskRef => {
@@ -248,13 +252,9 @@ export const resolveExam = async (
   const loadGrade = (moduleId: string): Promise<Grade> => {
     let pending = gradeCache.get(moduleId)
     if (!pending) {
-      const mod = getCurriculumModule(moduleId)
-      if (!mod) {
-        return Promise.reject(
-          new ExamCodeError(`Unbekanntes Modul „${moduleId}“ in der Klausur.`),
-        )
-      }
-      pending = mod.load()
+      pending = loadInstalledGrade(moduleId).catch(() => {
+        throw new ExamCodeError(`Unbekanntes Modul „${moduleId}“ in der Klausur.`)
+      })
       gradeCache.set(moduleId, pending)
     }
     return pending

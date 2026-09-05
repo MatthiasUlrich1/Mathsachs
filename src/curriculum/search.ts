@@ -67,9 +67,10 @@ export const searchTopics = (query: string, loaded: LoadedGrade[]): TopicHit[] =
 export const searchUnloadedHints = (
   query: string,
   loadedModuleIds: string[],
+  catalog: CurriculumModule[] = availableCurricula,
 ): CurriculumModule[] => {
   if (normalize(query) === '') return []
-  return availableCurricula.filter((mod) => {
+  return catalog.filter((mod) => {
     if (loadedModuleIds.includes(mod.id)) return false
     const hay = [mod.gradeTitle, mod.subjectTitle, ...(mod.searchHints ?? [])].join(' ')
     return matches(hay, query)

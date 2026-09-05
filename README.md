@@ -9,12 +9,14 @@ verteilen. Gebaut mit React, TypeScript und Vite.
 
 ## Funktionen
 
-- **Lehrplan-Themen** (Gymnasium Sachsen) für **Klasse 5, 6, 7, 8, 9, 10 und die
-  Jahrgangsstufe 11/12 (Grundkurs)** als nachladbare Module. Jede Klasse ist in
-  aufklappbaren Lernbereichen organisiert – von natürlichen Zahlen und Brüchen
-  über rationale Zahlen, Terme und Gleichungen, Funktionen, Pythagoras und
-  Trigonometrie bis hin zu Differential-/Integralrechnung, Vektoren und
-  Binomialverteilung.
+- **Lehrplan-Themen** als **versionierte, nachinstallierbare Pakete**. Das erste
+  Paket ist **Gymnasium Sachsen · Mathematik** (Klasse 5–10 und
+  Jahrgangsstufe 11/12 Grundkurs). Unter **Einstellungen → Lehrpläne**
+  installierst, aktualisierst oder entfernst du Pakete. Der Katalog kommt von
+  GitHub (`curricula/manifest.json`); die Dateien liegen lokal bzw. auf dem
+  PC, nicht im Installer. Lehrer-Ergänzungen bleiben im Paket unter `extras`
+  getrennt und tragen im Themen-/Klausur-/Challenge-Baum das Badge
+  **Lehrer-Ergänzung**.
 - **Themen-Suche**: Stichwortsuche über die geladenen Klassen –
   case-insensitive, teilstring-basiert und umlaut-tolerant (z. B. „Fläche“ ↔
   „flaeche“). Passt ein Stichwort zu einer verfügbaren, aber nicht geladenen
@@ -109,7 +111,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.36**).
+(aktuelle Version **0.1.37**).
 
 Die App prüft beim Start und — solange sie geöffnet bleibt — einmal pro
 Kalendertag (**Europe/Berlin**) die öffentlichen
@@ -138,7 +140,8 @@ Zufalls-Seed, die App erzeugt daraus auf jedem Gerät dieselben Aufgaben.
 
 ### Als Lehrkraft: Klausur erstellen
 
-1. Unter **Einstellungen → Lehrpläne** die gewünschten Klassen laden (z. B. Klasse 6).
+1. Unter **Einstellungen → Lehrpläne** den Lehrplan installieren und die
+   gewünschten Klassen einblenden (z. B. Klasse 6).
 2. Reiter **Klausur erstellen** öffnen.
 3. **Schritt 1 – Themen:** Lernbereiche aufklappen und die Themen per Checkbox
    vorauswählen.
@@ -401,7 +404,40 @@ electron/
 build/
   icon.svg / icon.png # App icon used by the installers
 electron-builder.yml  # Desktop packaging config (win / mac / linux targets)
+curricula/            # Hosted Lehrplan packs + manifest.json
 ```
+
+## Lehrplan-Pakete (Oberschule und andere Länder)
+
+Lehrpläne wachsen nicht mehr im App-Installer. Ein Paket ist eine JSON-Datei
+mit SemVer, offiziellen Lernbereichen und getrennten `extras`:
+
+```
+curricula/manifest.json      # Katalog: id, version, url, size
+curricula/gym-sachsen.json   # Gymnasium Sachsen Mathematik 1.0.0
+```
+
+**Neuen Lehrplan (z. B. Oberschule Sachsen) hinzufügen**
+
+1. Neue Datei `curricula/oberschule-sachsen.json` mit
+   `{ id, title, region, school, subject, version, changelog, official, extras }`.
+   Offizielle Themen bleiben in `official`; Lehrer-Aufgaben nur in `extras`
+   (mit `areaId` des Themengebiets und `source: "lehrer"`).
+2. Eintrag in `curricula/manifest.json` (id, version, url, size, changelog).
+3. Nach dem Merge nach `main` lädt die App den Katalog von GitHub Raw /
+   jsDelivr. Nutzer installieren das Paket unter Einstellungen → Lehrpläne.
+4. Aufgaben-Generatoren für neue Themen: entweder wie bisher im App-Runtime
+   (Gymnasium Sachsen) oder als statische `tasks` im Extra/Thema — dann braucht
+   die App kein Update.
+
+Paket-Update: Version erhöhen (z. B. `1.0.0` → `1.1.0`). Die App ersetzt
+`official` und führt `extras` per id zusammen. Klausuren und Challenges merken
+sich `curriculumRefs`; eine neuere benötigte Version blockiert mit der
+Aufforderung zum Aktualisieren. Eine neuere lokale Version ist in Ordnung.
+
+Worker: Challenge-Definitionen dürfen `curriculumRefs` enthalten (keine
+Personendaten). Dafür `cloudflare/worker.js` einfügen und Deploy, sonst
+bleiben die Refs nur lokal.
 
 ## Cloud Agent environment
 

@@ -4,8 +4,13 @@ import {
   availableCurricula,
   getCurriculumModule,
   getLoadedIds,
+  listVisibleGradeModules,
   setLoadedIds,
 } from './curriculum/registry'
+import { migrateBundledCurriculumIfNeeded } from './curriculum/install'
+import { loadInstalledGrade } from './curriculum/loadGrade'
+import { useCurriculumCatalog } from './curriculum/useCurriculumCatalog'
+import { CurriculumBanner } from './components/CurriculumBanner'
 import type { Grade, Topic } from './curriculum/types'
 import { getClass } from './classCode/api'
 import {
@@ -19,6 +24,7 @@ import {
   setActiveStorageUser,
   setUserRole,
   subscribeSharedStorage,
+  syncCurriculumPacksToShared,
   type UserRole,
 } from './lib/storage'
 import {
@@ -99,12 +105,29 @@ export default function App() {
   const [ready, setReady] = useState(false)
   const [query, setQuery] = useState('')
   const updateCheck = useUpdateCheck()
+  const [packRev, setPackRev] = useState(0)
+  const reloadPacks = () => {
+    syncCurriculumPacksToShared()
+    setPackRev((n) => n + 1)
+  }
+  const curriculumCatalog = useCurriculumCatalog(reloadPacks)
   const lanStatus = useLanStatus()
   const isDesktop = typeof window !== 'undefined' && Boolean(window.mathsachs?.isDesktop)
   const hideUpdateBanner =
     view.name === 'practice' ||
     view.name === 'worksheet' ||
     view.name === 'examRun'
+  const curriculumBanner =
+    hideUpdateBanner || !curriculumCatalog.offer ? null : (
+      <CurriculumBanner
+        pack={curriculumCatalog.offer.remote}
+        localVersion={curriculumCatalog.offer.localVersion}
+        busy={curriculumCatalog.busy}
+        error={curriculumCatalog.error}
+        onUpdate={() => void curriculumCatalog.updateOffer()}
+        onDismiss={curriculumCatalog.dismiss}
+      />
+    )
   const updateBanner = hideUpdateBanner
     ? null
     : updateCheck.update ? (
@@ -167,28 +190,48 @@ export default function App() {
     )
   }, [])
 
-  // Load the persisted curricula on start via dynamic import.
   useEffect(() => {
+    if (!storageReady) return
     let cancelled = false
-    const ids = getLoadedIds()
-    Promise.all(
-      ids.map(async (id): Promise<LoadedGrade | null> => {
-        const mod = getCurriculumModule(id)
-        if (!mod) return null
-        const grade = await mod.load()
-        return { moduleId: id, grade }
-      }),
-    ).then((results) => {
+    const hasPracticeHistory = (): boolean => {
+      try {
+        if (typeof localStorage === 'undefined') return false
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i)
+          if (!key?.startsWith('mathsachs.user.') || !key.endsWith('.v1')) continue
+          const raw = localStorage.getItem(key)
+          if (!raw) continue
+          const data = JSON.parse(raw) as { sessions?: unknown }
+          if (Array.isArray(data.sessions) && data.sessions.length > 0) return true
+        }
+      } catch {
+        return false
+      }
+      return false
+    }
+    void (async () => {
+      await migrateBundledCurriculumIfNeeded(undefined, { hasPracticeHistory: hasPracticeHistory() })
+      if (cancelled) return
+      const ids = getLoadedIds()
+      const results = await Promise.all(
+        ids.map(async (id): Promise<LoadedGrade | null> => {
+          try {
+            return { moduleId: id, grade: await loadInstalledGrade(id) }
+          } catch {
+            return null
+          }
+        }),
+      )
       if (cancelled) return
       const ok = results.filter((r): r is LoadedGrade => r !== null)
       setLoaded(ok)
-      setActiveId(ok[0]?.moduleId ?? '')
+      setActiveId((current) => ok.find((row) => row.moduleId === current)?.moduleId ?? ok[0]?.moduleId ?? '')
       setReady(true)
-    })
+    })()
     return () => {
       cancelled = true
     }
-  }, [])
+  }, [storageReady, packRev])
 
   useEffect(() => {
     if (view.name === 'examBuild' && !canCreateExam(userRole)) {
@@ -220,9 +263,7 @@ export default function App() {
 
   const loadCurriculum = async (id: string) => {
     if (loaded.some((l) => l.moduleId === id)) return
-    const mod = getCurriculumModule(id)
-    if (!mod) return
-    const grade = await mod.load()
+    const grade = await loadInstalledGrade(id)
     const next = [...loaded, { moduleId: id, grade }].sort(
       (a, b) => registryOrder(a.moduleId) - registryOrder(b.moduleId),
     )
@@ -373,7 +414,7 @@ export default function App() {
   const trimmedQuery = query.trim()
   const searchResults = trimmedQuery ? searchTopics(query, loaded) : []
   const searchHints = trimmedQuery
-    ? searchUnloadedHints(query, loaded.map((l) => l.moduleId))
+    ? searchUnloadedHints(query, loaded.map((l) => l.moduleId), listVisibleGradeModules())
     : []
 
   const openPractice = (
@@ -389,9 +430,8 @@ export default function App() {
   // "Ähnliche Aufgabe üben" from the exam evaluation: load the referenced grade
   // module on demand, locate the topic by id and open a fresh practice round.
   const openPracticeById = async (moduleId: string, topicId: string) => {
-    const mod = getCurriculumModule(moduleId)
-    if (!mod) return
-    const grade = await mod.load()
+    const grade = await loadInstalledGrade(moduleId).catch(() => null)
+    if (!grade) return
     for (const area of grade.areas) {
       const topic = area.topics.find((t) => t.id === topicId)
       if (topic) {
@@ -403,6 +443,7 @@ export default function App() {
 
   return (
     <main className="app app--wide">
+      {curriculumBanner}
       {updateBanner}
       <header className="topbar">
         <Brand compact />
@@ -435,10 +476,10 @@ export default function App() {
             <p className="muted">Lehrpläne werden geladen …</p>
           ) : !activeLoaded ? (
             <div className="course-head">
-              <h2 className="section-title no-margin">Kein Lehrplan geladen</h2>
+              <h2 className="section-title no-margin">Kein Lehrplan installiert</h2>
               <p className="muted small">
-                Öffne Einstellungen und lade unter Lehrpläne eine Klasse, um
-                mit dem Üben zu beginnen.
+                Installiere unter Einstellungen → Lehrpläne zuerst
+                „Gymnasium Sachsen · Mathematik“ (oder einen anderen Lehrplan).
               </p>
               <button
                 type="button"
@@ -539,6 +580,7 @@ export default function App() {
           loadedIds={loaded.map((l) => l.moduleId)}
           onLoad={loadCurriculum}
           onRemove={removeCurriculum}
+          onPacksChanged={reloadPacks}
           section={view.section}
           onOpenSection={(id) => setView({ name: 'settings', section: id })}
           onBack={() => setView({ name: 'settings' })}

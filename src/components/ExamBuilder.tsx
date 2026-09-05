@@ -5,7 +5,9 @@ import { encodeExam } from '../exam/examCode'
 import { examCodeMailtoUrl, examCodeWhatsAppUrl } from '../exam/share'
 import { openClassCodeShareUrl } from '../classCode/share'
 import { CURRICULUM_VERSION } from '../curriculum/registry'
+import { refsForGradeModules } from '../curriculum/versionGate'
 import type { ExamSpec, ExamTaskRef } from '../exam/types'
+import { TeacherExtraBadge } from './TeacherExtraBadge'
 
 interface LoadedGrade {
   moduleId: string
@@ -148,6 +150,7 @@ export function ExamBuilder({ loaded, onExit }: Props) {
     return {
       schema: 'A',
       curriculumVersion: CURRICULUM_VERSION,
+      curriculumRefs: refsForGradeModules(aufgaben.map((item) => item.modul)),
       titel: title.trim() || 'Übungsklausur',
       aufgaben,
     }
@@ -349,7 +352,10 @@ function ExamStepThemes({
                         checked={selected.has(key)}
                         onChange={() => onToggle(key)}
                       />
-                      <span>{topic.title}</span>
+                      <span>
+                        {topic.title}
+                        <TeacherExtraBadge source={topic.source} />
+                      </span>
                     </label>
                   )
                 })}

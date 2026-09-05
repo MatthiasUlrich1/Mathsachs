@@ -45,6 +45,8 @@ function emptyState() {
     users: [],
     records: {},
     classCodes: emptyClassCodes(),
+    installedCurricula: [],
+    curriculumPacks: {},
   }
 }
 
@@ -546,6 +548,11 @@ function normalizeState(raw) {
     users,
     records,
     classCodes: normalizeClassCodes(src.classCodes),
+    installedCurricula: Array.isArray(src.installedCurricula) ? src.installedCurricula : [],
+    curriculumPacks:
+      src.curriculumPacks && typeof src.curriculumPacks === 'object' && !Array.isArray(src.curriculumPacks)
+        ? src.curriculumPacks
+        : {},
   }
 }
 
@@ -653,6 +660,16 @@ function mergeSharedState(baseRaw, incomingRaw) {
     users,
     records,
     classCodes: mergeClassCodes(base.classCodes, incoming.classCodes),
+    installedCurricula: [
+      ...(Array.isArray(base.installedCurricula) ? base.installedCurricula : []),
+      ...(Array.isArray(incoming.installedCurricula) ? incoming.installedCurricula : []),
+    ],
+    curriculumPacks: {
+      ...(base.curriculumPacks && typeof base.curriculumPacks === 'object' ? base.curriculumPacks : {}),
+      ...(incoming.curriculumPacks && typeof incoming.curriculumPacks === 'object'
+        ? incoming.curriculumPacks
+        : {}),
+    },
   })
 }
 

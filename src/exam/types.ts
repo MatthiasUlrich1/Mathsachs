@@ -1,3 +1,4 @@
+import type { CurriculumRef } from '../curriculum/pack'
 import type { AnswerKind } from '../curriculum/types'
 
 /**
@@ -49,6 +50,8 @@ export interface ExamSpec {
   schema: ExamSchema
   /** `CURRICULUM_VERSION` the exam was created against. */
   curriculumVersion: number
+  /** Pack id + semver used when the exam was built. */
+  curriculumRefs?: CurriculumRef[]
   /** Human-readable exam title shown to the learner. */
   titel: string
   /** The exam's tasks, in the order they should be presented. */

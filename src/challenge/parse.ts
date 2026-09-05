@@ -1,3 +1,4 @@
+import { parseCurriculumRefs } from '../curriculum/pack'
 import { parseChallengeInstant } from './time'
 import {
   DELETED_CHALLENGE_TTL_MS,
@@ -92,6 +93,9 @@ export function parseStoredChallenge(raw: unknown): StoredChallenge | null {
     createdAt:
       typeof raw.createdAt === 'number' && Number.isFinite(raw.createdAt) ? raw.createdAt : 0,
     ...(raw.owned === true ? { owned: true } : raw.owned === false ? { owned: false } : {}),
+    ...(parseCurriculumRefs(raw.curriculumRefs).length
+      ? { curriculumRefs: parseCurriculumRefs(raw.curriculumRefs) }
+      : {}),
   }
 }
 

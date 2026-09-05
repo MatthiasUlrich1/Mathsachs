@@ -44,6 +44,7 @@ import {
   type UserData,
   type UserRole,
 } from './sharedState'
+import { applySharedPacksToKv, snapshotPacksForSharedState } from '../curriculum/install'
 import { canSendClassPoints, normalizeRole, roleForUser } from './roles'
 import {
   summarizeClassTransfers,
@@ -252,8 +253,20 @@ const applyRemote = (next: SharedState): boolean => {
   const merged = mergeSharedState(cache, next)
   if (sharedStateFingerprint(cache) === sharedStateFingerprint(merged)) return false
   cache = cloneSharedState(merged)
+  applySharedPacksToKv(cache)
   notify()
   return true
+}
+
+export const syncCurriculumPacksToShared = (): void => {
+  const snap = snapshotPacksForSharedState()
+  cache = {
+    ...cache,
+    installedCurricula: snap.installedCurricula,
+    curriculumPacks: snap.curriculumPacks,
+  }
+  void persistCache()
+  notify()
 }
 
 const detectBackend = async (): Promise<StorageBackend> => {

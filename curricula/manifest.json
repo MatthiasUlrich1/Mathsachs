@@ -1,0 +1,16 @@
+{
+  "updatedAt": "2026-09-05T17:39:45.250Z",
+  "packs": [
+    {
+      "id": "gym-sachsen",
+      "title": "Gymnasium Sachsen · Mathematik",
+      "region": "Sachsen",
+      "school": "Gymnasium",
+      "subject": "Mathematik",
+      "version": "1.0.0",
+      "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen.json",
+      "size": 53255,
+      "changelog": "Erstfassung: Klassen 5–10 und Jahrgangsstufe 11/12 (Grundkurs), plus getrennte Lehrer-Ergänzungen."
+    }
+  ]
+}

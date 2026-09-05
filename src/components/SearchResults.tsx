@@ -1,6 +1,7 @@
 import type { CurriculumModule } from '../curriculum/registry'
 import type { TopicHit } from '../curriculum/search'
 import type { Topic } from '../curriculum/types'
+import { TeacherExtraBadge } from './TeacherExtraBadge'
 
 interface Props {
   query: string
@@ -34,7 +35,10 @@ export function SearchResults({
           {results.map((hit) => (
             <li key={`${hit.moduleId}:${hit.topic.id}`} className="topic">
               <span className="topic__info">
-                <span className="topic__title">{hit.topic.title}</span>
+                <span className="topic__title">
+                  {hit.topic.title}
+                  <TeacherExtraBadge source={hit.topic.source} />
+                </span>
                 <span className="topic__meta">
                   {hit.gradeTitle} · {hit.areaTitle}
                 </span>

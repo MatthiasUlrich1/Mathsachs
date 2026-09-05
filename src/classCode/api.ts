@@ -1,5 +1,6 @@
 import { challengeTopicIds, classPointsPayload, updateChallengePayload } from '../challenge/logic'
-import type { ChallengePrize, ChallengeScope, ChallengeTopicRef } from '../challenge/types'
+import type { ChallengePrize, ChallengeScope, ChallengeTopicRef, CurriculumRef } from '../challenge/types'
+import { parseCurriculumRefs } from '../curriculum/pack'
 import { CLASS_CODE_LENGTH, isValidClassCode, normalizeClassCode } from './code'
 import type { ClassPointBreakdown, ClassPointPeriod } from './buckets'
 
@@ -72,6 +73,7 @@ export interface ChallengeSummary {
   topicIds?: string[]
   topics: ChallengeTopicRef[]
   prize: ChallengePrize
+  curriculumRefs?: CurriculumRef[]
   points?: ClassPointBreakdown
   className?: string
   classThreshold?: number
@@ -231,6 +233,9 @@ const parseChallengeSummary = (raw: unknown): ChallengeSummary | null => {
     ...(classes ? { classes } : {}),
     period: parsePeriod(raw.period),
     active: typeof raw.active === 'boolean' ? raw.active : undefined,
+    ...(parseCurriculumRefs(raw.curriculumRefs).length
+      ? { curriculumRefs: parseCurriculumRefs(raw.curriculumRefs) }
+      : {}),
   }
 }
 
@@ -504,6 +509,7 @@ export interface CreateChallengeInput {
   start: string
   end: string
   prize: ChallengePrize
+  curriculumRefs?: CurriculumRef[]
 }
 
 export async function createChallenge(
@@ -522,6 +528,7 @@ export async function createChallenge(
       start: input.start,
       end: input.end,
       prize: input.prize,
+      ...(input.curriculumRefs?.length ? { curriculumRefs: input.curriculumRefs } : {}),
     }),
   })
   throwIfStubHealth(json)
@@ -555,6 +562,7 @@ export interface UpdateChallengeInput {
   start: string
   end: string
   prize: ChallengePrize
+  curriculumRefs?: CurriculumRef[]
 }
 
 export async function updateChallenge(

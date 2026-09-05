@@ -33,7 +33,7 @@ import {
 } from '../updates/runCheck'
 
 const SECTION_HINTS: Record<SettingsSectionId, string> = {
-  curricula: 'Klassenstufen laden und entfernen',
+  curricula: 'Lehrpläne installieren, aktualisieren oder entfernen',
   class: 'Klassencode erstellen, eintragen oder teilen',
   tasks: 'Vorgaben für neue Übungsaufgaben senden',
   lan: 'Tablets im selben WLAN verbinden',
@@ -44,6 +44,7 @@ interface Props {
   loadedIds: string[]
   onLoad: (id: string) => Promise<void>
   onRemove: (id: string) => void
+  onPacksChanged: () => void
   onBack: () => void
   onOpenSection: (id: SettingsSectionId) => void
   section?: SettingsSectionId | null
@@ -62,6 +63,7 @@ export function Settings({
   loadedIds,
   onLoad,
   onRemove,
+  onPacksChanged,
   onBack,
   onOpenSection,
   section = null,
@@ -195,6 +197,7 @@ export function Settings({
           loadedIds={loadedIds}
           onLoad={onLoad}
           onRemove={onRemove}
+          onPacksChanged={onPacksChanged}
         />
       )}
 

@@ -524,6 +524,32 @@ describe('Challenge Worker API', () => {
     expect(body.challenges ?? []).toEqual([])
   })
 
+  it('stores curriculumRefs on a challenge without personal data', async () => {
+    const kv = env()
+    const created = await postJson('/classes', { name: 'Klasse 6a' }, kv)
+    const { code } = (await created.json()) as { code: string }
+    const challengeRes = await postJson(
+      '/challenges',
+      {
+        scope: 'class',
+        classCode: code,
+        name: 'Lehrplan-Version',
+        topicIds: ['n5-add'],
+        topics: [{ id: 'n5-add', title: 'Addieren' }],
+        ...windowNow,
+        prize: { enabled: false },
+        curriculumRefs: [{ moduleId: 'gym-sachsen', version: '1.0.0' }],
+      },
+      kv,
+    )
+    expect(challengeRes.status).toBe(201)
+    const challenge = (await challengeRes.json()) as {
+      curriculumRefs?: Array<{ moduleId: string; version: string }>
+    }
+    expect(challenge.curriculumRefs).toEqual([{ moduleId: 'gym-sachsen', version: '1.0.0' }])
+    expect(JSON.stringify(challenge)).not.toMatch(/vorname|userId|deviceId|schueler/i)
+  })
+
   it('embeds upcoming class challenges on GET, not only the live window', async () => {
     const kv = env()
     const created = await postJson('/classes', { name: 'Klasse 6c' }, kv)
