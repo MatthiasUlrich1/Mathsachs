@@ -7,6 +7,8 @@ import {
   generateClassCode,
   isValidClassCode,
   normalizeClassCode,
+  publicClassLabel,
+  resolveKnownClassName,
 } from './code'
 
 describe('normalizeClassCode', () => {
@@ -41,6 +43,39 @@ describe('isValidClassCode / formatClassCode', () => {
     expect(displayClassName('Klasse 6a', 'ABCD2345')).toBe('Klasse 6a')
     expect(displayClassName('  ', 'ABCD2345')).toBe('ABCD-2345')
     expect(displayClassName(undefined, 'ABCD2345')).toBe('ABCD-2345')
+  })
+})
+
+describe('publicClassLabel / resolveKnownClassName', () => {
+  it('returns the class name for badge and protocol, never the formatted code', () => {
+    expect(publicClassLabel('6/6')).toBe('6/6')
+    expect(publicClassLabel('  Klasse 6a  ')).toBe('Klasse 6a')
+    expect(publicClassLabel('')).toBeNull()
+    expect(publicClassLabel('   ')).toBeNull()
+    expect(publicClassLabel(undefined)).toBeNull()
+    expect(publicClassLabel(null)).toBeNull()
+  })
+
+  it('resolves a Worker name cached on an entered (joined) class', () => {
+    const name = resolveKnownClassName(
+      [],
+      [{ code: '8G4Y0CV6', name: '6/6' }],
+      '8G4Y-0CV6',
+    )
+    expect(name).toBe('6/6')
+    expect(publicClassLabel(name)).toBe('6/6')
+    expect(name).not.toContain('8G4Y')
+    expect(publicClassLabel(name)).not.toBe(formatClassCode('8G4Y0CV6'))
+  })
+
+  it('prefers a created-list name over the joined cache', () => {
+    expect(
+      resolveKnownClassName(
+        [{ code: '8G4Y0CV6', name: '6/6' }],
+        [{ code: '8G4Y0CV6', name: 'alt' }],
+        '8G4Y0CV6',
+      ),
+    ).toBe('6/6')
   })
 })
 

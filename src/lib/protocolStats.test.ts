@@ -96,15 +96,16 @@ describe('summarizeClassTransfers', () => {
     expect(totals.byClass[1].summary.year).toBe(7)
   })
 
-  it('falls back to a created class name or the formatted code', () => {
-    const transfers = [transfer('2026-09-04', 4, 'ABCD2345')]
+  it('uses a known class name and never the formatted code as the label', () => {
+    const transfers = [transfer('2026-09-04', 4, '8G4Y0CV6')]
     const unnamed = summarizeClassTransfers(transfers, NOW)
-    expect(unnamed.byClass[0].label).toBe('ABCD-2345')
+    expect(unnamed.byClass[0].label).toBe('Klasse')
+    expect(unnamed.byClass[0].label).not.toBe('8G4Y-0CV6')
 
     const named = summarizeClassTransfers(transfers, NOW, [
-      { code: 'ABCD2345', name: 'Klasse 6a', createdAt: 1 },
+      { code: '8G4Y0CV6', name: '6/6', createdAt: 1 },
     ])
-    expect(named.byClass[0].label).toBe('Klasse 6a')
-    expect(named.byClass[0].className).toBe('Klasse 6a')
+    expect(named.byClass[0].label).toBe('6/6')
+    expect(named.byClass[0].className).toBe('6/6')
   })
 })

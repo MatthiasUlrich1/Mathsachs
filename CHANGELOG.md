@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.21] – 2026-09-05
+
+### Behoben
+
+- **Klassenname statt Klassencode:** In der Leiste neben dem Namen und im
+  Punkteprotokoll („Punkte an …“) erscheint wieder der **Klassenname**
+  (z. B. `6/6`), nicht der geheime Klassencode. Schüler tragen den Code nur
+  ein; der Name kommt vom Klassen-Server und wird lokal gemerkt. Der
+  Stufen-Wettbewerb zeigte die Namen bereits richtig.
+
 ## [0.1.20] – 2026-09-05
 
 ### Hinzugefügt
@@ -303,7 +313,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.20...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.21...HEAD
+[0.1.21]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.20...v0.1.21
 [0.1.20]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.19...v0.1.20
 [0.1.19]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.18...v0.1.19
 [0.1.18]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.17...v0.1.18

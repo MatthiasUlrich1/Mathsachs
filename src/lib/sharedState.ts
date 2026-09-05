@@ -61,6 +61,11 @@ export interface DeletedClassCode {
 /** Per-user settings for online class codes. */
 export interface ClassCodeSettings {
   created: CreatedClassCode[]
+  /**
+   * Worker class names for codes this user entered (joined), not created.
+   * Kept off `created` so Schüler are not promoted to Eltern.
+   */
+  known?: CreatedClassCode[]
   /** Tombstones so merge cannot resurrect a code this client just deleted. */
   deletedCodes?: DeletedClassCode[]
   /** Only one collect-code at a time. */
@@ -108,6 +113,7 @@ export const normalizeSharedClassCode = (raw: string): string => {
 
 export const emptyClassCodes = (): ClassCodeSettings => ({
   created: [],
+  known: [],
   deletedCodes: [],
   activeCode: null,
   sendPoints: false,
@@ -184,11 +190,10 @@ export const applyClassCodeTombstones = (
   }
 }
 
-export const parseClassCodes = (raw: unknown, now: number = Date.now()): ClassCodeSettings => {
-  if (!isRecord(raw)) return emptyClassCodes()
+const parseCreatedCodeList = (raw: unknown): CreatedClassCode[] => {
   const seen = new Set<string>()
   const created: CreatedClassCode[] = []
-  const list = Array.isArray(raw.created) ? raw.created : []
+  const list = Array.isArray(raw) ? raw : []
   for (const item of list) {
     if (!isCreatedCode(item)) continue
     const code = normalizeSharedClassCode(item.code)
@@ -203,7 +208,39 @@ export const parseClassCodes = (raw: unknown, now: number = Date.now()): ClassCo
           : 0,
     })
   }
+  return created
+}
+
+const mergeNamedCodeList = (
+  base: CreatedClassCode[],
+  incoming: CreatedClassCode[],
+): CreatedClassCode[] => {
+  const byCode = new Map<string, CreatedClassCode>()
+  for (const item of [...base, ...incoming]) {
+    const prev = byCode.get(item.code)
+    if (!prev) {
+      byCode.set(item.code, item)
+      continue
+    }
+    const createdAt = Math.min(
+      prev.createdAt || Number.POSITIVE_INFINITY,
+      item.createdAt || Number.POSITIVE_INFINITY,
+    )
+    byCode.set(item.code, {
+      code: item.code,
+      name: prev.name || item.name,
+      createdAt: Number.isFinite(createdAt) ? createdAt : 0,
+    })
+  }
+  return [...byCode.values()]
+}
+
+export const parseClassCodes = (raw: unknown, now: number = Date.now()): ClassCodeSettings => {
+  if (!isRecord(raw)) return emptyClassCodes()
+  const created = parseCreatedCodeList(raw.created)
+  const known = parseCreatedCodeList(raw.known)
   const applied = applyClassCodeTombstones(created, parseDeletedCodes(raw.deletedCodes, now))
+  const dead = new Set(applied.deletedCodes.map((row) => row.code))
   const activeRaw = raw.activeCode
   const activeCode =
     typeof activeRaw === 'string' && activeRaw.trim()
@@ -215,6 +252,9 @@ export const parseClassCodes = (raw: unknown, now: number = Date.now()): ClassCo
       : activeCode
   return {
     created: applied.created,
+    known: known
+      .filter((row) => !dead.has(row.code))
+      .sort((a, b) => a.createdAt - b.createdAt || a.code.localeCompare(b.code)),
     deletedCodes: applied.deletedCodes,
     activeCode: activeLive,
     sendPoints: Boolean(raw.sendPoints) && Boolean(activeLive),
@@ -226,23 +266,10 @@ export const mergeClassCodes = (
   incoming: ClassCodeSettings,
   now: number = Date.now(),
 ): ClassCodeSettings => {
-  const byCode = new Map<string, CreatedClassCode>()
-  for (const item of [...base.created, ...incoming.created]) {
-    const prev = byCode.get(item.code)
-    if (!prev) {
-      byCode.set(item.code, item)
-      continue
-    }
-    const createdAt = Math.min(prev.createdAt || Number.POSITIVE_INFINITY, item.createdAt || Number.POSITIVE_INFINITY)
-    byCode.set(item.code, {
-      code: item.code,
-      name: prev.name || item.name,
-      createdAt: Number.isFinite(createdAt) ? createdAt : 0,
-    })
-  }
   return parseClassCodes(
     {
-      created: [...byCode.values()],
+      created: mergeNamedCodeList(base.created, incoming.created),
+      known: mergeNamedCodeList(base.known ?? [], incoming.known ?? []),
       deletedCodes: [...(base.deletedCodes ?? []), ...(incoming.deletedCodes ?? [])],
       activeCode: incoming.activeCode,
       sendPoints: incoming.sendPoints,
@@ -263,6 +290,7 @@ export const withForgottenClassCode = (
     {
       ...current,
       created: current.created.filter((row) => row.code !== normalized),
+      known: (current.known ?? []).filter((row) => row.code !== normalized),
       deletedCodes: [
         ...(current.deletedCodes ?? []),
         { code: normalized, deletedAt: now },
@@ -280,31 +308,11 @@ export const hasClassCodeData = (
   if (!settings) return false
   return (
     settings.created.length > 0 ||
+    (settings.known?.length ?? 0) > 0 ||
     (settings.deletedCodes?.length ?? 0) > 0 ||
     Boolean(settings.activeCode) ||
     Boolean(settings.sendPoints)
   )
-}
-
-const parseCreatedCodeList = (raw: unknown): CreatedClassCode[] => {
-  const seen = new Set<string>()
-  const created: CreatedClassCode[] = []
-  const list = Array.isArray(raw) ? raw : []
-  for (const item of list) {
-    if (!isCreatedCode(item)) continue
-    const code = normalizeSharedClassCode(item.code)
-    if (!code || seen.has(code)) continue
-    seen.add(code)
-    created.push({
-      code,
-      name: item.name.trim().slice(0, 80),
-      createdAt:
-        typeof item.createdAt === 'number' && Number.isFinite(item.createdAt)
-          ? item.createdAt
-          : 0,
-    })
-  }
-  return created
 }
 
 export const parseGradeCodes = (

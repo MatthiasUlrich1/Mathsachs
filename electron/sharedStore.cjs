@@ -21,6 +21,7 @@ const USER_KEY_RE = /^mathsachs\.user\.(.+)\.v1$/
 function emptyClassCodes() {
   return {
     created: [],
+    known: [],
     deletedCodes: [],
     activeCode: null,
     sendPoints: false,
@@ -223,19 +224,30 @@ function normalizeClassCodes(raw, now) {
       : normalizeCode(src.activeCode) || null
   const activeLive =
     active && applied.deletedCodes.some((row) => row.code === active) ? null : active
+  const known = []
+  const knownSeen = new Set()
+  const knownList = Array.isArray(src.known) ? src.known : []
+  for (const item of knownList) {
+    const row = normalizeCreatedCode(item)
+    if (!row || knownSeen.has(row.code)) continue
+    knownSeen.add(row.code)
+    known.push(row)
+  }
+  const dead = new Set(applied.deletedCodes.map((row) => row.code))
   return {
     created: applied.created,
+    known: known
+      .filter((row) => !dead.has(row.code))
+      .sort((a, b) => a.createdAt - b.createdAt || a.code.localeCompare(b.code)),
     deletedCodes: applied.deletedCodes,
     activeCode: activeLive,
     sendPoints: Boolean(src.sendPoints) && Boolean(activeLive),
   }
 }
 
-function mergeClassCodes(base, incoming, now) {
+function mergeNamedCodeList(left, right) {
   const byCode = new Map()
-  const left = base || emptyClassCodes()
-  const right = incoming || emptyClassCodes()
-  for (const item of [...left.created, ...right.created]) {
+  for (const item of [...(left || []), ...(right || [])]) {
     const prev = byCode.get(item.code)
     if (!prev) {
       byCode.set(item.code, item)
@@ -248,9 +260,16 @@ function mergeClassCodes(base, incoming, now) {
       createdAt: Number.isFinite(createdAt) ? createdAt : 0,
     })
   }
+  return [...byCode.values()]
+}
+
+function mergeClassCodes(base, incoming, now) {
+  const left = base || emptyClassCodes()
+  const right = incoming || emptyClassCodes()
   return normalizeClassCodes(
     {
-      created: [...byCode.values()],
+      created: mergeNamedCodeList(left.created, right.created),
+      known: mergeNamedCodeList(left.known, right.known),
       deletedCodes: [...(left.deletedCodes || []), ...(right.deletedCodes || [])],
       activeCode: right.activeCode,
       sendPoints: right.sendPoints,
@@ -263,6 +282,7 @@ function hasClassCodeData(settings) {
   if (!settings) return false
   return (
     settings.created.length > 0 ||
+    (settings.known && settings.known.length > 0) ||
     (settings.deletedCodes && settings.deletedCodes.length > 0) ||
     Boolean(settings.activeCode) ||
     Boolean(settings.sendPoints)

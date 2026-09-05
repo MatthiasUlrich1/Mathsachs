@@ -4,7 +4,7 @@ import {
   type ClassPointSummary,
   type DayBuckets,
 } from '../classCode/buckets'
-import { displayClassName } from '../classCode/code'
+import { publicClassLabel } from '../classCode/code'
 import type { ClassTransferRecord, CreatedClassCode, SessionRecord } from './sharedState'
 
 export type { ClassPointSummary } from '../classCode/buckets'
@@ -87,12 +87,12 @@ export function summarizeClassTransfers(
   const byClass = [...byCode.entries()]
     .map(([code, rows]) => {
       const stored = latestName(rows)
-      const known = created.find((row) => row.code === code)?.name
+      const known = created.find((row) => row.code === code && row.name.trim())?.name
       const className = stored || known?.trim() || ''
       return {
         code,
         className,
-        label: displayClassName(className, code),
+        label: publicClassLabel(className) ?? 'Klasse',
         summary: summarizePointItems(rows, now),
       }
     })

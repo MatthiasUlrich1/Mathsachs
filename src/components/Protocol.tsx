@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { getClass, type GradeSummary } from '../classCode/api'
-import { formatClassCode } from '../classCode/code'
 import {
   buildProtocol,
+  cacheKnownClassName,
   getClassCodeSettings,
   subscribeSharedStorage,
   type ProtocolRow,
@@ -67,7 +67,9 @@ export function Protocol({ user, onExit }: Props) {
     }
     void getClass(active)
       .then((stats) => {
-        if (!cancelled) setGrade(stats.grade ?? null)
+        if (cancelled) return
+        cacheKnownClassName(stats.code, stats.name)
+        setGrade(stats.grade ?? null)
       })
       .catch(() => {
         if (!cancelled) setGrade(null)
@@ -159,9 +161,6 @@ export function Protocol({ user, onExit }: Props) {
                   <>
                     {' '}
                     <strong>{transferGroups[0].label}</strong>
-                    {transferGroups[0].className
-                      ? ` (${formatClassCode(transferGroups[0].code)})`
-                      : ''}
                   </>
                 ) : (
                   <> {transferGroups.length} Klassen</>
@@ -172,10 +171,7 @@ export function Protocol({ user, onExit }: Props) {
               {transferGroups.length > 1 &&
                 transferGroups.map((group) => (
                   <div key={group.code} className="protocol-transfer">
-                    <p className="protocol-transfer__title">
-                      {group.label}
-                      {group.className ? ` · ${formatClassCode(group.code)}` : ''}
-                    </p>
+                    <p className="protocol-transfer__title">{group.label}</p>
                     <PeriodStats summary={group.summary} />
                   </div>
                 ))}
