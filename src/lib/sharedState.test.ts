@@ -488,6 +488,7 @@ describe('mergeSharedState (TypeScript)', () => {
             sessions: [],
             role: 'lehrer',
             gradeCodes: {
+              created: [],
               known: [{ code: 'KKKK4444', name: '9. Klasse', createdAt: 14 }],
             },
           },

@@ -326,7 +326,7 @@ function mergeGradeCodes(base, incoming, now) {
   const right = incoming || emptyGradeCodes()
   return normalizeGradeCodes(
     {
-      created: mergeNamedCodeList(left.created, right.created),
+      created: mergeNamedCodeList(left.created || [], right.created || []),
       known: mergeNamedCodeList(left.known || [], right.known || []),
       deletedCodes: [...(left.deletedCodes || []), ...(right.deletedCodes || [])],
     },
@@ -337,7 +337,7 @@ function mergeGradeCodes(base, incoming, now) {
 function hasGradeCodeData(settings) {
   if (!settings) return false
   return (
-    settings.created.length > 0 ||
+    (settings.created && settings.created.length > 0) ||
     (settings.known && settings.known.length > 0) ||
     (settings.deletedCodes && settings.deletedCodes.length > 0)
   )

@@ -353,7 +353,7 @@ export const mergeGradeCodes = (
 ): GradeCodeSettings => {
   return parseGradeCodes(
     {
-      created: mergeNamedCodeList(base.created, incoming.created),
+      created: mergeNamedCodeList(base.created ?? [], incoming.created ?? []),
       known: mergeNamedCodeList(base.known ?? [], incoming.known ?? []),
       deletedCodes: [...(base.deletedCodes ?? []), ...(incoming.deletedCodes ?? [])],
     },
@@ -386,7 +386,7 @@ export const hasGradeCodeData = (
 ): boolean => {
   if (!settings) return false
   return (
-    settings.created.length > 0 ||
+    (settings.created?.length ?? 0) > 0 ||
     (settings.known?.length ?? 0) > 0 ||
     (settings.deletedCodes?.length ?? 0) > 0
   )
