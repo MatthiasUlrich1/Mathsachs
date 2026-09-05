@@ -15,6 +15,7 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
+    "docs:lehrercode-pdf": "node scripts/build-lehrercode-pdf.mjs",
     "electron:start": "electron .",
     "electron:dev": "concurrently -k -n vite,electron \"npm:dev\" \"wait-on tcp:127.0.0.1:5173 && electron .\"",
     "electron:pack": "npm run build && electron-builder --dir",

@@ -34,6 +34,9 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fehlt der Code, **Lehrercode anfordern** sendet eine Mail an uns — nichts
   davon landet auf dem Klassen-Server. Im Profil eines Lehrers oder
   Klassenlehrers steht der Code zum Weitergeben an andere Lehrer der Schule.
+  Zum Versand per Mail oder Ausdruck gibt es
+  [`docs/Lehrercode-Mathsachs.pdf`](docs/Lehrercode-Mathsachs.pdf)
+  (`npm run docs:lehrercode-pdf`).
   Die **Rollen-Rechte-Matrix** im Profil zeigt die Rechte. **Klassenlehrer**
   können einer Klasse beitreten, aber keine Klausur erstellen/schreiben,
   keine Codes anlegen und keine Punkte senden. Nur **Lehrer** legen eine

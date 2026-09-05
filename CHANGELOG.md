@@ -9,6 +9,10 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+- **Lehrercode-PDF:** Eine DIN-A4-Seite zum Versand an Lehrkräfte liegt unter
+  [`docs/Lehrercode-Mathsachs.pdf`](docs/Lehrercode-Mathsachs.pdf). Neu bauen
+  mit `npm run docs:lehrercode-pdf`.
+
 ## [0.1.29] – 2026-09-05
 
 ### Hinzugefügt
