@@ -9,6 +9,18 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.22] – 2026-09-05
+
+`0.1.21` ist die parallele Änderung „Klassenname statt Klassencode“
+(`cursor/class-display-name-752f`) und noch nicht in `main`.
+
+### Geändert
+
+- **Klausurerstellung:** Der WLAN-/Teilen-Link und der QR-Code entfallen —
+  Schüler können den Link nur im selben Netz wie der Klausurersteller nutzen.
+  Beim **Klausurcode** gibt es dafür **WhatsApp** und **Mail** (wie beim
+  Klassencode). Kopieren bleibt. WLAN-Zugang unter den Einstellungen bleibt.
+
 ## [0.1.20] – 2026-09-05
 
 ### Hinzugefügt
@@ -303,7 +315,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.20...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.22...HEAD
+[0.1.22]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.20...v0.1.22
 [0.1.20]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.19...v0.1.20
 [0.1.19]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.18...v0.1.19
 [0.1.18]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.17...v0.1.18

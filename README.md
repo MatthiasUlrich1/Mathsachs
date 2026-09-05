@@ -56,7 +56,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.20**).
+(aktuelle Version **0.1.22**).
 
 Die App prüft beim Start die öffentlichen
 [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
@@ -71,10 +71,10 @@ die installierte Desktop-App kann das Update herunterladen und einspielen.
 ## Übungsklausur per Code
 
 Lehrkräfte stellen eine Übungsklausur aus konkreten Aufgaben des Lehrplans
-zusammen. Die App erzeugt daraus einen **Klausurcode** (beginnt mit `MSX1:`)
-sowie einen **teilbaren Link** (`…#klausur=…`) und einen **QR-Code**. Es wird
-kein Server benötigt: Der Code enthält nur Verweise auf Thema und Zufalls-Seed,
-die App erzeugt daraus auf jedem Gerät dieselben Aufgaben.
+zusammen. Die App erzeugt daraus einen **Klausurcode** (beginnt mit `MSX1:`).
+Den Code kannst du kopieren oder per **E-Mail** bzw. **WhatsApp** versenden.
+Es wird kein Server benötigt: Der Code enthält nur Verweise auf Thema und
+Zufalls-Seed, die App erzeugt daraus auf jedem Gerät dieselben Aufgaben.
 
 ### Als Lehrkraft: Klausur erstellen
 
@@ -86,20 +86,20 @@ die App erzeugt daraus auf jedem Gerät dieselben Aufgaben.
    Vorschlagsaufgaben (mit Lösung zur Kontrolle). Per Checkbox die gewünschten
    Aufgaben auswählen, Punkte ggf. anpassen. „Neue Vorschläge“ erzeugt andere
    Zahlen zum selben Thema.
-5. **Schritt 3 – Code:** Titel vergeben. Die App zeigt Klausurcode, Link und
-   QR-Code.
+5. **Schritt 3 – Code:** Titel vergeben. Die App zeigt den Klausurcode zum
+   Kopieren sowie **WhatsApp** und **Mail**.
 
 ### An die Klasse verteilen
 
-Den **Link** (oder den Code bzw. den QR-Code) z. B. auf der **Schulwebseite**,
-in der Lernplattform oder per E-Mail teilen. Wer den Link öffnet, landet direkt
-in **Klausur schreiben** mit derselben Aufgabenliste.
+Den **Klausurcode** kopieren oder per **E-Mail** bzw. **WhatsApp** teilen.
+Schüler:innen öffnen die App, wählen **Klausur schreiben** und geben den Code
+ein. Ein WLAN-Link wäre nur im selben Netz nutzbar und entfällt deshalb.
 
 ### Als Schülerin oder Schüler: Klausur schreiben
 
 1. Mit dem eigenen Namen anmelden (Punkte werden unter diesem Namen gespeichert).
-2. Den geteilten Link öffnen **oder** den Reiter **Klausur schreiben** wählen und
-   den Code einfügen (beginnt mit `MSX1:`).
+2. Den Reiter **Klausur schreiben** wählen und den Code einfügen (beginnt mit
+   `MSX1:`).
 3. Die Aufgaben der Reihe nach bearbeiten und die Klausur **abgeben**.
 4. Die Auswertung zeigt je Aufgabe die eigene Antwort, die richtige Lösung und
    die Erklärung. Über **Ähnliche Aufgabe üben** kann dasselbe Thema mit neuen
@@ -133,9 +133,8 @@ Hinweise:
   Tablets). Sobald Mathsachs auf dem Rechner läuft, sehen Tablets dieselbe
   Benutzerliste und dieselben Punkte; neue Übungen auf dem Tablet erscheinen
   auf dem Desktop und umgekehrt, ohne die App neu zu starten.
-- Klausur-Links aus der Desktop-App zeigen auf diese WLAN-Adresse, solange
-  eine erkannt wird. Der Klausur**code** (`MSX1:…`) funktioniert unabhängig
-  davon in **Klausur schreiben**.
+- Der Klausur**code** (`MSX1:…`) funktioniert in **Klausur schreiben** unabhängig
+  vom WLAN-Zugang. Teile ihn per E-Mail oder WhatsApp, nicht als WLAN-Link.
 - Der Entwicklungsserver `npm run dev` ist ein anderer Weg (Port 5173) und
   setzt Node.js plus Quellcode voraus. Ohne Desktop-App bleiben Benutzer
   dort nur lokal im Browser gespeichert.

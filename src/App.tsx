@@ -36,7 +36,7 @@ import { LegalFooter } from './components/LegalFooter'
 import { Settings } from './components/Settings'
 import { parseExamHash } from './exam/examCode'
 import { useUpdateCheck } from './updates/useUpdateCheck'
-import { primaryLanOrigin, useLanStatus } from './lan/useLanStatus'
+import { useLanStatus } from './lan/useLanStatus'
 import {
   topTabsForView,
   type SettingsSectionId,
@@ -78,7 +78,6 @@ export default function App() {
   const [query, setQuery] = useState('')
   const updateCheck = useUpdateCheck()
   const lanStatus = useLanStatus()
-  const shareOrigin = primaryLanOrigin(lanStatus)
   const isDesktop = typeof window !== 'undefined' && Boolean(window.mathsachs?.isDesktop)
   const hideUpdateBanner =
     view.name === 'practice' ||
@@ -514,7 +513,6 @@ export default function App() {
       {view.name === 'examBuild' && (
         <ExamBuilder
           loaded={loaded}
-          shareOrigin={shareOrigin}
           onExit={() => setView({ name: 'browse' })}
         />
       )}

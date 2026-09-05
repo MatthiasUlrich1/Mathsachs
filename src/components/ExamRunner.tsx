@@ -147,7 +147,7 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
           <div>
             <h2 className="section-title no-margin">Klausur schreiben</h2>
             <p className="muted small">
-              Füge den Klausurcode ein oder öffne einen geteilten Link.
+              Füge den Klausurcode ein (beginnt mit „MSX1:“).
             </p>
           </div>
           <button type="button" className="link" onClick={onExit}>

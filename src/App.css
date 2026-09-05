@@ -1347,7 +1347,19 @@ a.ghost.update-banner__link {
 
 .exam-copy {
   align-self: flex-start;
+}
+
+.exam-code__share {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
   margin-top: 8px;
+}
+
+.exam-code__share .link,
+.exam-code__share a.link {
+  font-size: 13px;
 }
 
 .exam-summary {
@@ -1369,20 +1381,6 @@ a.ghost.update-banner__link {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-.exam-qr {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  margin: 10px 0 16px;
-}
-
-.exam-qr img {
-  border-radius: 12px;
-  background: #fff;
-  padding: 8px;
 }
 
 .exam-review {

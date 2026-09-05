@@ -19,7 +19,7 @@ export function useLanStatus(): LanServerStatus | null {
   return status
 }
 
-/** Preferred origin for shareable Klausur links (WLAN URL only). */
+/** Preferred origin of the desktop LAN server (WLAN URL only). */
 export function primaryLanOrigin(status: LanServerStatus | null): string | undefined {
   if (!status?.running) return undefined
   return status.lanUrls[0]
