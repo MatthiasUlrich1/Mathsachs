@@ -1,13 +1,19 @@
 import { useCallback, useEffect, useState, type MouseEvent } from 'react'
 import {
   CLASS_API_NOT_READY_MESSAGE,
-  ClassApiError,
   checkClassApiHealth,
   createClass,
   deleteClass,
   getClass,
   type ClassStats,
 } from '../classCode/api'
+import {
+  activateCreatedClassCode,
+  isConfirmedMissingClass,
+  loadCreatedClassStandings,
+  missingClassCodeNotice,
+  standingErrorText,
+} from '../classCode/createdList'
 import { formatClassCode, isValidClassCode, normalizeClassCode } from '../classCode/code'
 import {
   canUseWebShare,
@@ -30,11 +36,6 @@ import {
 const PRIVACY_COPY =
   'Online speichert Mathsachs nur den Klassennamen und die Summe der Punkte — keine Vornamen und keine Geräte-IDs. Wer den Code kennt, kann die Stände sehen und Punkte hinzufügen. Behandle den Code wie ein Passwort.'
 
-function errorText(err: unknown): string {
-  if (err instanceof ClassApiError) return err.message
-  return CLASS_API_NOT_READY_MESSAGE
-}
-
 export function ClassCodes() {
   const [className, setClassName] = useState('')
   const [enterCode, setEnterCode] = useState('')
@@ -42,6 +43,7 @@ export function ClassCodes() {
   const [joining, setJoining] = useState(false)
   const [refreshing, setRefreshing] = useState(false)
   const [deleting, setDeleting] = useState<string | null>(null)
+  const [activating, setActivating] = useState<string | null>(null)
   const [formError, setFormError] = useState<string | null>(null)
   const [serverError, setServerError] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
@@ -64,17 +66,9 @@ export function ClassCodes() {
       return
     }
     setRefreshing(true)
-    const entries = await Promise.all(
-      rows.map(async (row) => {
-        try {
-          const stats = await getClass(row.code)
-          return [row.code, stats] as const
-        } catch (err) {
-          return [row.code, { error: errorText(err) }] as const
-        }
-      }),
-    )
-    setStandings(Object.fromEntries(entries))
+    const { standings: next, notices } = await loadCreatedClassStandings(rows)
+    setStandings(next)
+    if (notices.length > 0) setFormError(notices.join(' '))
     setRefreshing(false)
   }, [])
 
@@ -90,7 +84,7 @@ export function ClassCodes() {
         setServerError(null)
       })
       .catch((err: unknown) => {
-        if (!cancelled) setServerError(errorText(err))
+        if (!cancelled) setServerError(standingErrorText(err))
       })
     return () => {
       cancelled = true
@@ -120,7 +114,7 @@ export function ClassCodes() {
       setServerError(null)
       setStandings((prev) => ({ ...prev, [stats.code]: stats }))
     } catch (err) {
-      setFormError(errorText(err))
+      setFormError(standingErrorText(err))
     } finally {
       setCreating(false)
     }
@@ -140,10 +134,35 @@ export function ClassCodes() {
       setEnterCode('')
       setServerError(null)
     } catch (err) {
-      setFormError(errorText(err))
+      if (isConfirmedMissingClass(err) && settings.created.some((row) => row.code === code)) {
+        forgetCreatedClassCode(code)
+        setFormError(missingClassCodeNotice(code))
+        return
+      }
+      setFormError(standingErrorText(err))
     } finally {
       setJoining(false)
     }
+  }
+
+  const onActivateCreated = async (code: string) => {
+    setActivating(code)
+    setFormError(null)
+    const result = await activateCreatedClassCode(code)
+    if (result.ok) {
+      setServerError(null)
+      setStandings((prev) => ({ ...prev, [result.stats.code]: result.stats }))
+    } else if (result.pruned) {
+      setFormError(result.notice)
+      setStandings((prev) => {
+        const next = { ...prev }
+        delete next[code]
+        return next
+      })
+    } else {
+      setFormError(result.error)
+    }
+    setActivating(null)
   }
 
   const onDelete = async (row: CreatedClassCode) => {
@@ -164,11 +183,11 @@ export function ClassCodes() {
       })
       setServerError(null)
     } catch (err) {
-      if (err instanceof ClassApiError && err.kind === 'not_found') {
+      if (isConfirmedMissingClass(err)) {
         forgetCreatedClassCode(row.code)
         return
       }
-      setFormError(errorText(err))
+      setFormError(standingErrorText(err))
     } finally {
       setDeleting(null)
     }
@@ -368,15 +387,16 @@ export function ClassCodes() {
                   <code>{formatClassCode(row.code)}</code>
                   {settings.activeCode === row.code ? (
                     <span className="badge badge--ok">aktiv</span>
-                  ) : (
+                  ) : stats ? (
                     <button
                       type="button"
                       className="link"
-                      onClick={() => setActiveClassCode(row.code)}
+                      disabled={activating === row.code}
+                      onClick={() => void onActivateCreated(row.code)}
                     >
-                      Aktivieren
+                      {activating === row.code ? 'Prüfe …' : 'Aktivieren'}
                     </button>
-                  )}
+                  ) : null}
                   <button
                     type="button"
                     className="link"
