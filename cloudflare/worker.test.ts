@@ -355,7 +355,7 @@ describe('Klassenstufencode Worker API', () => {
     expect(points.status).toBe(400)
     const pointsBody = (await points.json()) as { code: string; error: string }
     expect(pointsBody.code).toBe('NOT_CLASS')
-    expect(pointsBody.error).toMatch(/Stufencode/)
+    expect(pointsBody.error).toMatch(/stufencode/i)
 
     const asClass = await worker.fetch(request(`/classes/${code}`), kv)
     expect(asClass.status).toBe(400)

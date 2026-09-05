@@ -431,6 +431,7 @@ describe('mergeSharedState (TypeScript)', () => {
   })
 
   it('honors grade-code tombstones so a deleted Stufe stays gone', () => {
+    const now = Date.now()
     const merged = mergeSharedState(
       {
         schemaVersion: 1,
@@ -443,7 +444,7 @@ describe('mergeSharedState (TypeScript)', () => {
             sessions: [],
             gradeCodes: {
               created: [],
-              deletedCodes: [{ code: 'GGGG1111', deletedAt: 50 }],
+              deletedCodes: [{ code: 'GGGG1111', deletedAt: now }],
             },
           },
         },
@@ -458,7 +459,7 @@ describe('mergeSharedState (TypeScript)', () => {
             stats: {},
             sessions: [],
             gradeCodes: {
-              created: [{ code: 'GGGG1111', name: '6. Klasse', createdAt: 10 }],
+              created: [{ code: 'GGGG1111', name: '6. Klasse', createdAt: now - 1000 }],
             },
           },
         },
