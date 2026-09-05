@@ -28,9 +28,25 @@ export interface StoredChallenge {
   end: string
   prize: ChallengePrize
   createdAt: number
+  /** True when this user created the challenge. Practice copies stay false. */
+  owned?: boolean
+}
+
+/** Tombstone so LAN merge cannot resurrect a deleted challenge. */
+export interface DeletedChallenge {
+  id: string
+  deletedAt: number
 }
 
 export const NO_ACTIVE_CHALLENGE_MESSAGE = 'Aktuell keine Challenge aktiv.'
+
+export const DELETED_CHALLENGE_TTL_MS = 30 * 24 * 60 * 60 * 1000
+export const MAX_DELETED_CHALLENGES = 200
+
+export function deleteChallengeConfirm(name: string): string {
+  const trimmed = name.trim() || 'diese Challenge'
+  return `Challenge „${trimmed}“ wirklich löschen? Die Challenge wird entfernt. Die Klassensummen bleiben. Das kann nicht rückgängig gemacht werden.`
+}
 
 export const CHALLENGE_PHASE_LABEL = {
   upcoming: 'Angelegt',

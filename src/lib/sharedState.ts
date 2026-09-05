@@ -1,8 +1,10 @@
 import {
+  applyChallengeTombstones,
+  mergeDeletedChallenges,
   mergeStoredChallenges,
   parseStoredChallenges,
 } from '../challenge/parse'
-import type { StoredChallenge } from '../challenge/types'
+import type { DeletedChallenge, StoredChallenge } from '../challenge/types'
 
 /** Per-topic aggregated statistics for a user. */
 export interface TopicStat {
@@ -55,6 +57,8 @@ export interface UserData {
   gradeCodes?: GradeCodeSettings
   /** Challenges this Lehrer/Klassenlehrer created (manage UI + LAN merge). */
   challenges?: StoredChallenge[]
+  /** Tombstones so WLAN/PC merge cannot resurrect a deleted challenge. */
+  deletedChallenges?: DeletedChallenge[]
   /** Optional for older records; treat missing as Schüler (see roleForUser). */
   role?: UserRole
 }
@@ -592,10 +596,15 @@ const mergeUserData = (a: UserData | undefined, b: UserData | undefined): UserDa
   if (sessions.length > MAX_SESSIONS) sessions.length = MAX_SESSIONS
   const classCodes = mergeUserClassCodes(a.classCodes, b.classCodes)
   const gradeCodes = mergeUserGradeCodes(a.gradeCodes, b.gradeCodes)
-  const challenges = mergeStoredChallenges(
-    parseStoredChallenges(a.challenges),
-    parseStoredChallenges(b.challenges),
+  const deletedChallenges = mergeDeletedChallenges(a.deletedChallenges, b.deletedChallenges)
+  const applied = applyChallengeTombstones(
+    mergeStoredChallenges(
+      parseStoredChallenges(a.challenges),
+      parseStoredChallenges(b.challenges),
+    ),
+    deletedChallenges,
   )
+  const challenges = applied.challenges
   const role = isUserRole(b.role) ? b.role : isUserRole(a.role) ? a.role : undefined
   return {
     name: a.name || b.name,
@@ -606,6 +615,9 @@ const mergeUserData = (a: UserData | undefined, b: UserData | undefined): UserDa
     ...(classCodes ? { classCodes } : {}),
     ...(gradeCodes ? { gradeCodes } : {}),
     ...(challenges.length > 0 ? { challenges } : {}),
+    ...(applied.deletedChallenges.length > 0
+      ? { deletedChallenges: applied.deletedChallenges }
+      : {}),
     ...(role ? { role } : {}),
   }
 }

@@ -3,14 +3,17 @@ import {
   CLASS_API_STUB_MESSAGE,
   ClassApiError,
   createChallenge,
+  deleteChallenge,
   getChallenge,
   getClass,
   getGrade,
+  updateChallenge,
   type ChallengeSummary,
 } from '../classCode/api'
 import { GradeCompetition } from './GradeCompetition'
 import {
   allowedChallengeScopes,
+  canManageListedChallenge,
   canOfferClassChallengeCreate,
   canOfferGradeChallengeCreate,
   challengePhase,
@@ -20,13 +23,15 @@ import {
   classCodesForChallengeList,
   classGoalLine,
   createChallengePayload,
+  deleteChallengeConfirm,
   gradeCodesForChallengeList,
   mergeVisibleChallenges,
   NO_ACTIVE_CHALLENGE_MESSAGE,
   prizeAudienceLine,
+  updateChallengePayload,
 } from '../challenge/logic'
 import { findLoadedTopic, type LoadedGrade } from '../challenge/topics'
-import { defaultBerlinChallengeWindow } from '../challenge/time'
+import { defaultBerlinChallengeWindow, msToBerlinLocal, parseChallengeInstant } from '../challenge/time'
 import type { ChallengePrize, ChallengeScope, StoredChallenge } from '../challenge/types'
 import {
   canCreateChallenge,
@@ -35,10 +40,12 @@ import {
   type UserRole,
 } from '../lib/roles'
 import {
+  forgetCreatedChallenge,
   getClassCodeSettings,
   getCreatedChallenges,
   getGradeCodeSettings,
   listDeviceChallenges,
+  listDeviceDeletedChallengeIds,
   rememberCreatedChallenge,
   subscribeSharedStorage,
 } from '../lib/storage'
@@ -57,19 +64,37 @@ interface Props {
 
 type Mode = 'main' | 'protocol'
 
-function toStored(summary: ChallengeSummary, hostCode: string): StoredChallenge {
+function toStored(
+  summary: ChallengeSummary,
+  hostCode: string,
+  owned = true,
+): StoredChallenge {
   return {
     id: summary.id,
     scope: summary.scope,
     hostCode,
     name: summary.name,
-    topicIds: summary.topics.map((topic) => topic.id),
+    topicIds: summary.topicIds ?? summary.topics.map((topic) => topic.id),
     topics: summary.topics,
     start: summary.start,
     end: summary.end,
     prize: summary.prize,
     createdAt: Date.now(),
+    owned,
   }
+}
+
+function berlinLocalInput(value: string): string {
+  const trimmed = value.trim()
+  if (/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(trimmed) && !/[zZ]|[+-]\d{2}:?\d{2}$/.test(trimmed)) {
+    return trimmed.slice(0, 16)
+  }
+  const ms = parseChallengeInstant(trimmed)
+  return Number.isFinite(ms) ? msToBerlinLocal(ms) : trimmed.slice(0, 16)
+}
+
+function listedHostCode(challenge: ChallengeSummary | StoredChallenge): string {
+  return 'hostCode' in challenge ? challenge.hostCode : ''
 }
 
 function formatWindow(start: string, end: string): string {
@@ -102,6 +127,8 @@ export function Challenge({ user, role, loaded, onPractice }: Props) {
   const [protocolChallenge, setProtocolChallenge] = useState<ChallengeSummary | StoredChallenge | null>(
     null,
   )
+  const [editing, setEditing] = useState<ChallengeSummary | StoredChallenge | null>(null)
+  const [deletingId, setDeletingId] = useState<string | null>(null)
 
   useEffect(() => {
     const refresh = () => {
@@ -182,6 +209,7 @@ export function Challenge({ user, role, loaded, onPractice }: Props) {
         classCodes: classCodesForChallengeList(classSettings),
         gradeCodes: gradeCodesForChallengeList(gradeSettings),
         includeCreated: canCreateChallenge(role),
+        excludeIds: listDeviceDeletedChallengeIds(),
       }),
     [classSettings, created, gradeSettings, remote, role],
   )
@@ -210,6 +238,39 @@ export function Challenge({ user, role, loaded, onPractice }: Props) {
   const showGradeCreate = canOfferGradeChallengeCreate(role, gradeSettings)
   const showCreate = canCreate && (showClassCreate || showGradeCreate)
   const allowPractice = canPracticeFromChallenge(role)
+
+  const persistChallenge = (summary: ChallengeSummary, hostCode: string) => {
+    rememberCreatedChallenge(toStored(summary, hostCode, true))
+    setCreated(getCreatedChallenges(user))
+    setRemote((prev) => [summary, ...prev.filter((row) => row.id !== summary.id)])
+    setError(null)
+  }
+
+  const onDeleteOwned = (challenge: ChallengeSummary | StoredChallenge) => {
+    void (async () => {
+      if (!canManageListedChallenge(role, challenge, created)) return
+      if (!window.confirm(deleteChallengeConfirm(challenge.name))) return
+      setDeletingId(challenge.id)
+      forgetCreatedChallenge(challenge.id)
+      setCreated(getCreatedChallenges(user))
+      setRemote((prev) => prev.filter((row) => row.id !== challenge.id))
+      if (editing?.id === challenge.id) setEditing(null)
+      try {
+        await deleteChallenge(challenge.id)
+        setError(null)
+      } catch (err) {
+        const message =
+          err instanceof ClassApiError
+            ? err.kind === 'not_ready'
+              ? CLASS_API_STUB_MESSAGE
+              : err.message
+            : CLASS_API_STUB_MESSAGE
+        setError(message)
+      } finally {
+        setDeletingId(null)
+      }
+    })()
+  }
 
   if (mode === 'protocol' && protocolChallenge) {
     return (
@@ -246,13 +307,33 @@ export function Challenge({ user, role, loaded, onPractice }: Props) {
           gradeCodes={gradeCodesForChallengeList(gradeSettings)}
           classSettings={classSettings}
           gradeSettings={gradeSettings}
-          onCreated={(summary, hostCode) => {
-            rememberCreatedChallenge(toStored(summary, hostCode))
-            setCreated(getCreatedChallenges(user))
-            setRemote((prev) => [summary, ...prev.filter((row) => row.id !== summary.id)])
-            setError(null)
+          onCreated={persistChallenge}
+          onUpdated={(summary, hostCode) => {
+            persistChallenge(summary, hostCode)
+            setEditing(null)
           }}
           onError={setError}
+          editing={editing}
+          onCancelEdit={() => setEditing(null)}
+        />
+      )}
+
+      {editing && !showCreate && canCreate && (
+        <ChallengeCreateForm
+          role={role}
+          loaded={loaded}
+          classCodes={classCodesForChallengeList(classSettings)}
+          gradeCodes={gradeCodesForChallengeList(gradeSettings)}
+          classSettings={classSettings}
+          gradeSettings={gradeSettings}
+          onCreated={persistChallenge}
+          onUpdated={(summary, hostCode) => {
+            persistChallenge(summary, hostCode)
+            setEditing(null)
+          }}
+          onError={setError}
+          editing={editing}
+          onCancelEdit={() => setEditing(null)}
         />
       )}
 
@@ -273,11 +354,19 @@ export function Challenge({ user, role, loaded, onPractice }: Props) {
         gradeSettings={gradeSettings}
         loaded={loaded}
         allowPractice={allowPractice}
+        created={created}
+        role={role}
+        deletingId={deletingId}
         onPractice={onPractice}
         onProtocol={(challenge) => {
           setProtocolChallenge(challenge)
           setMode('protocol')
         }}
+        onEdit={(challenge) => {
+          setEditing(challenge)
+          setError(null)
+        }}
+        onDelete={onDeleteOwned}
       />
 
       <ChallengeListGroup
@@ -287,11 +376,19 @@ export function Challenge({ user, role, loaded, onPractice }: Props) {
         gradeSettings={gradeSettings}
         loaded={loaded}
         allowPractice={allowPractice}
+        created={created}
+        role={role}
+        deletingId={deletingId}
         onPractice={onPractice}
         onProtocol={(challenge) => {
           setProtocolChallenge(challenge)
           setMode('protocol')
         }}
+        onEdit={(challenge) => {
+          setEditing(challenge)
+          setError(null)
+        }}
+        onDelete={onDeleteOwned}
       />
 
       {showEmpty && <p className="notice">{NO_ACTIVE_CHALLENGE_MESSAGE}</p>}
@@ -307,7 +404,10 @@ function ChallengeCreateForm({
   classSettings,
   gradeSettings,
   onCreated,
+  onUpdated,
   onError,
+  editing,
+  onCancelEdit,
 }: {
   role: UserRole
   loaded: LoadedGrade[]
@@ -316,28 +416,51 @@ function ChallengeCreateForm({
   classSettings: ReturnType<typeof getClassCodeSettings>
   gradeSettings: ReturnType<typeof getGradeCodeSettings>
   onCreated: (summary: ChallengeSummary, hostCode: string) => void
+  onUpdated: (summary: ChallengeSummary, hostCode: string) => void
   onError: (message: string) => void
+  editing: ChallengeSummary | StoredChallenge | null
+  onCancelEdit: () => void
 }) {
   const scopes = allowedChallengeScopes(role)
   const defaults = defaultBerlinChallengeWindow()
-  const [scope, setScope] = useState<ChallengeScope>(scopes[0] ?? 'class')
-  const [hostCode, setHostCode] = useState(() =>
-    scope === 'class'
-      ? classSettings.activeCode || classCodes[0] || ''
-      : gradeCodes[0] || '',
+  const editingHost = editing ? listedHostCode(editing) : ''
+  const [scope, setScope] = useState<ChallengeScope>(editing?.scope ?? scopes[0] ?? 'class')
+  const [hostCode, setHostCode] = useState(
+    () =>
+      editingHost ||
+      (scope === 'class'
+        ? classSettings.activeCode || classCodes[0] || ''
+        : gradeCodes[0] || ''),
   )
-  const [name, setName] = useState('')
-  const [startLocal, setStartLocal] = useState(defaults.startLocal)
-  const [endLocal, setEndLocal] = useState(defaults.endLocal)
-  const [selected, setSelected] = useState<Set<string>>(new Set())
-  const [prizeEnabled, setPrizeEnabled] = useState(false)
-  const [classPrize, setClassPrize] = useState(false)
-  const [studentPrize, setStudentPrize] = useState(false)
-  const [threshold, setThreshold] = useState('')
-  const [prizeText, setPrizeText] = useState('')
+  const [name, setName] = useState(editing?.name ?? '')
+  const [startLocal, setStartLocal] = useState(
+    editing ? berlinLocalInput(editing.start) : defaults.startLocal,
+  )
+  const [endLocal, setEndLocal] = useState(
+    editing ? berlinLocalInput(editing.end) : defaults.endLocal,
+  )
+  const [selected, setSelected] = useState<Set<string>>(
+    () =>
+      new Set(
+        editing
+          ? editing.topicIds?.length
+            ? editing.topicIds
+            : editing.topics.map((topic) => topic.id)
+          : [],
+      ),
+  )
+  const [prizeEnabled, setPrizeEnabled] = useState(Boolean(editing?.prize.enabled))
+  const [classPrize, setClassPrize] = useState(Boolean(editing?.prize.classPrize))
+  const [studentPrize, setStudentPrize] = useState(Boolean(editing?.prize.studentPrize))
+  const [threshold, setThreshold] = useState(
+    editing?.prize.classThreshold ? String(editing.prize.classThreshold) : '',
+  )
+  const [prizeText, setPrizeText] = useState(editing?.prize.text ?? '')
   const [saving, setSaving] = useState(false)
+  const isEditing = Boolean(editing)
 
   useEffect(() => {
+    if (isEditing) return
     if (scope === 'class') {
       setHostCode((current) =>
         classCodes.includes(current) ? current : classSettings.activeCode || classCodes[0] || '',
@@ -345,7 +468,28 @@ function ChallengeCreateForm({
     } else {
       setHostCode((current) => (gradeCodes.includes(current) ? current : gradeCodes[0] || ''))
     }
-  }, [scope, classCodes, gradeCodes, classSettings.activeCode])
+  }, [isEditing, scope, classCodes, gradeCodes, classSettings.activeCode])
+
+  useEffect(() => {
+    if (!editing) return
+    setScope(editing.scope)
+    setHostCode(listedHostCode(editing))
+    setName(editing.name)
+    setStartLocal(berlinLocalInput(editing.start))
+    setEndLocal(berlinLocalInput(editing.end))
+    setSelected(
+      new Set(
+        editing.topicIds?.length
+          ? editing.topicIds
+          : editing.topics.map((topic) => topic.id),
+      ),
+    )
+    setPrizeEnabled(Boolean(editing.prize.enabled))
+    setClassPrize(Boolean(editing.prize.classPrize))
+    setStudentPrize(Boolean(editing.prize.studentPrize))
+    setThreshold(editing.prize.classThreshold ? String(editing.prize.classThreshold) : '')
+    setPrizeText(editing.prize.text ?? '')
+  }, [editing])
 
   const hostOptions =
     scope === 'class'
@@ -387,33 +531,53 @@ function ChallengeCreateForm({
           ...(prizeText.trim() ? { text: prizeText.trim() } : {}),
         }
       : { enabled: false }
-    const payload = createChallengePayload({
-      scope,
-      classCode: scope === 'class' ? hostCode : undefined,
-      gradeCode: scope === 'grade' ? hostCode : undefined,
-      name: name.trim(),
-      topicIds: [...selected],
-      topics,
-      start: startLocal,
-      end: endLocal,
-      prize,
-    })
     setSaving(true)
     try {
-      const created = await createChallenge({
-        scope,
-        classCode: typeof payload.classCode === 'string' ? payload.classCode : undefined,
-        gradeCode: typeof payload.gradeCode === 'string' ? payload.gradeCode : undefined,
-        name: String(payload.name),
-        topicIds: payload.topicIds as string[],
-        topics: topics,
-        start: startLocal,
-        end: endLocal,
-        prize,
-      })
-      onCreated(created, hostCode)
-      setName('')
-      setSelected(new Set())
+      if (editing) {
+        const payload = updateChallengePayload({
+          name: name.trim(),
+          topicIds: [...selected],
+          topics,
+          start: startLocal,
+          end: endLocal,
+          prize,
+        })
+        const updated = await updateChallenge(editing.id, {
+          name: String(payload.name),
+          topicIds: payload.topicIds as string[],
+          topics,
+          start: startLocal,
+          end: endLocal,
+          prize,
+        })
+        onUpdated(updated, listedHostCode(editing) || hostCode)
+      } else {
+        const payload = createChallengePayload({
+          scope,
+          classCode: scope === 'class' ? hostCode : undefined,
+          gradeCode: scope === 'grade' ? hostCode : undefined,
+          name: name.trim(),
+          topicIds: [...selected],
+          topics,
+          start: startLocal,
+          end: endLocal,
+          prize,
+        })
+        const created = await createChallenge({
+          scope,
+          classCode: typeof payload.classCode === 'string' ? payload.classCode : undefined,
+          gradeCode: typeof payload.gradeCode === 'string' ? payload.gradeCode : undefined,
+          name: String(payload.name),
+          topicIds: payload.topicIds as string[],
+          topics: topics,
+          start: startLocal,
+          end: endLocal,
+          prize,
+        })
+        onCreated(created, hostCode)
+        setName('')
+        setSelected(new Set())
+      }
     } catch (err) {
       const message =
         err instanceof ClassApiError
@@ -435,31 +599,41 @@ function ChallengeCreateForm({
         void submit()
       }}
     >
-      <h3 className="class-codes__list-title">Challenge anlegen</h3>
-      {scopes.length > 1 && (
-        <fieldset className="challenge-scope">
-          <legend className="field__label">Umfang</legend>
-          <label className="exam-check">
-            <input
-              type="radio"
-              name="challenge-scope"
-              checked={scope === 'class'}
-              onChange={() => setScope('class')}
-            />
-            Klasse
-          </label>
-          <label className="exam-check">
-            <input
-              type="radio"
-              name="challenge-scope"
-              checked={scope === 'grade'}
-              onChange={() => setScope('grade')}
-            />
-            Stufe
-          </label>
-        </fieldset>
+      <h3 className="class-codes__list-title">
+        {isEditing ? 'Challenge ändern' : 'Challenge anlegen'}
+      </h3>
+      {isEditing ? (
+        <p className="muted small">
+          Umfang bleibt {scope === 'grade' ? 'Stufe' : 'Klasse'}
+          {hostCode ? ` (${hostCode})` : ''}. Klasse oder Stufe lassen sich
+          nach dem Anlegen nicht ändern.
+        </p>
+      ) : (
+        scopes.length > 1 && (
+          <fieldset className="challenge-scope">
+            <legend className="field__label">Umfang</legend>
+            <label className="exam-check">
+              <input
+                type="radio"
+                name="challenge-scope"
+                checked={scope === 'class'}
+                onChange={() => setScope('class')}
+              />
+              Klasse
+            </label>
+            <label className="exam-check">
+              <input
+                type="radio"
+                name="challenge-scope"
+                checked={scope === 'grade'}
+                onChange={() => setScope('grade')}
+              />
+              Stufe
+            </label>
+          </fieldset>
+        )
       )}
-      {hostOptions.length > 0 && (
+      {!isEditing && hostOptions.length > 0 && (
         <label className="field">
           <span className="field__label">
             {scope === 'class' ? 'Klassencode' : 'Stufencode'}
@@ -612,13 +786,26 @@ function ChallengeCreateForm({
         )}
       </fieldset>
 
-      <button
-        type="submit"
-        className="primary"
-        disabled={saving || !name.trim() || selected.size === 0 || !hostCode}
-      >
-        {saving ? 'Wird angelegt …' : 'Challenge starten'}
-      </button>
+      <div className="challenge-manage">
+        <button
+          type="submit"
+          className="primary"
+          disabled={saving || !name.trim() || selected.size === 0 || !hostCode}
+        >
+          {saving
+            ? isEditing
+              ? 'Wird gespeichert …'
+              : 'Wird angelegt …'
+            : isEditing
+              ? 'Änderungen speichern'
+              : 'Challenge starten'}
+        </button>
+        {isEditing && (
+          <button type="button" className="link" onClick={onCancelEdit} disabled={saving}>
+            Abbrechen
+          </button>
+        )}
+      </div>
     </form>
   )
 }
@@ -681,8 +868,13 @@ function ChallengeListGroup({
   gradeSettings,
   loaded,
   allowPractice,
+  created,
+  role,
+  deletingId,
   onPractice,
   onProtocol,
+  onEdit,
+  onDelete,
 }: {
   title: string
   challenges: Array<ChallengeSummary | StoredChallenge>
@@ -690,8 +882,13 @@ function ChallengeListGroup({
   gradeSettings: ReturnType<typeof getGradeCodeSettings>
   loaded: LoadedGrade[]
   allowPractice: boolean
+  created: StoredChallenge[]
+  role: UserRole
+  deletingId: string | null
   onPractice: (topic: Topic, areaTitle: string, gradeTitle: string, challengeId?: string) => void
   onProtocol: (challenge: ChallengeSummary | StoredChallenge) => void
+  onEdit: (challenge: ChallengeSummary | StoredChallenge) => void
+  onDelete: (challenge: ChallengeSummary | StoredChallenge) => void
 }) {
   if (challenges.length === 0) return null
   return (
@@ -704,8 +901,12 @@ function ChallengeListGroup({
           hostLabel={hostDisplayName(challenge, classSettings, gradeSettings)}
           loaded={loaded}
           allowPractice={allowPractice}
+          canManage={canManageListedChallenge(role, challenge, created)}
+          deleting={deletingId === challenge.id}
           onPractice={onPractice}
           onProtocol={() => onProtocol(challenge)}
+          onEdit={() => onEdit(challenge)}
+          onDelete={() => onDelete(challenge)}
         />
       ))}
     </div>
@@ -717,15 +918,23 @@ function ActiveChallenge({
   hostLabel,
   loaded,
   allowPractice,
+  canManage,
+  deleting,
   onPractice,
   onProtocol,
+  onEdit,
+  onDelete,
 }: {
   challenge: ChallengeSummary | StoredChallenge
   hostLabel: string
   loaded: LoadedGrade[]
   allowPractice: boolean
+  canManage: boolean
+  deleting: boolean
   onPractice: (topic: Topic, areaTitle: string, gradeTitle: string, challengeId?: string) => void
   onProtocol: () => void
+  onEdit: () => void
+  onDelete: () => void
 }) {
   const topics = 'topics' in challenge ? challenge.topics : []
   const prize = challenge.prize
@@ -798,8 +1007,8 @@ function ActiveChallenge({
                       if (host) {
                         rememberCreatedChallenge(
                           'hostCode' in challenge
-                            ? (challenge as StoredChallenge)
-                            : toStored(challenge as ChallengeSummary, host),
+                            ? { ...(challenge as StoredChallenge), owned: false }
+                            : toStored(challenge as ChallengeSummary, host, false),
                         )
                       }
                       onPractice(found.topic, found.areaTitle, found.gradeTitle, challenge.id)
@@ -813,6 +1022,16 @@ function ActiveChallenge({
           )
         })}
       </ul>
+      {canManage && (
+        <div className="challenge-manage">
+          <button type="button" className="link" onClick={onEdit} disabled={deleting}>
+            Ändern
+          </button>
+          <button type="button" className="link" onClick={onDelete} disabled={deleting}>
+            {deleting ? 'Lösche …' : 'Löschen'}
+          </button>
+        </div>
+      )}
       <button type="button" className="primary" onClick={onProtocol}>
         Challenge-Protokoll
       </button>

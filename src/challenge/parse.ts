@@ -1,10 +1,13 @@
 import { parseChallengeInstant } from './time'
 import {
+  DELETED_CHALLENGE_TTL_MS,
   MAX_CHALLENGE_NAME_LENGTH,
   MAX_CHALLENGE_TOPICS,
+  MAX_DELETED_CHALLENGES,
   MAX_PRIZE_TEXT_LENGTH,
   type ChallengePrize,
   type ChallengeTopicRef,
+  type DeletedChallenge,
   type StoredChallenge,
 } from './types'
 
@@ -88,6 +91,21 @@ export function parseStoredChallenge(raw: unknown): StoredChallenge | null {
     prize: parsePrize(raw.prize),
     createdAt:
       typeof raw.createdAt === 'number' && Number.isFinite(raw.createdAt) ? raw.createdAt : 0,
+    ...(raw.owned === true ? { owned: true } : raw.owned === false ? { owned: false } : {}),
+  }
+}
+
+function pickMergedChallenge(prev: StoredChallenge, next: StoredChallenge): StoredChallenge {
+  const newer = next.createdAt >= prev.createdAt ? next : prev
+  const older = newer === next ? prev : next
+  const owned = newer.owned === true || older.owned === true
+  return {
+    ...newer,
+    ...(owned
+      ? { owned: true }
+      : newer.owned === false || older.owned === false
+        ? { owned: false }
+        : {}),
   }
 }
 
@@ -98,11 +116,56 @@ export function parseStoredChallenges(raw: unknown): StoredChallenge[] {
     const parsed = parseStoredChallenge(item)
     if (!parsed) continue
     const prev = byId.get(parsed.id)
-    if (!prev || parsed.createdAt >= prev.createdAt) byId.set(parsed.id, parsed)
+    byId.set(parsed.id, prev ? pickMergedChallenge(prev, parsed) : parsed)
   }
   return [...byId.values()].sort(
     (a, b) => b.createdAt - a.createdAt || a.id.localeCompare(b.id),
   )
+}
+
+export function parseDeletedChallenges(
+  raw: unknown,
+  now: number = Date.now(),
+): DeletedChallenge[] {
+  const list = Array.isArray(raw) ? raw : []
+  const byId = new Map<string, DeletedChallenge>()
+  const cutoff = now - DELETED_CHALLENGE_TTL_MS
+  for (const item of list) {
+    if (!isRecord(item) || typeof item.id !== 'string') continue
+    const id = item.id.trim()
+    if (!id) continue
+    const deletedAt =
+      typeof item.deletedAt === 'number' && Number.isFinite(item.deletedAt) ? item.deletedAt : 0
+    if (deletedAt < cutoff) continue
+    const prev = byId.get(id)
+    if (!prev || deletedAt > prev.deletedAt) byId.set(id, { id, deletedAt })
+  }
+  return [...byId.values()]
+    .sort((a, b) => b.deletedAt - a.deletedAt || a.id.localeCompare(b.id))
+    .slice(0, MAX_DELETED_CHALLENGES)
+}
+
+export function applyChallengeTombstones(
+  challenges: StoredChallenge[],
+  deleted: DeletedChallenge[],
+): { challenges: StoredChallenge[]; deletedChallenges: DeletedChallenge[] } {
+  const deletedAt = new Map(deleted.map((row) => [row.id, row.deletedAt]))
+  const live: StoredChallenge[] = []
+  const resurrected = new Set<string>()
+  for (const item of challenges) {
+    const tomb = deletedAt.get(item.id)
+    if (tomb != null && item.createdAt > tomb) {
+      live.push(item)
+      resurrected.add(item.id)
+      continue
+    }
+    if (tomb != null) continue
+    live.push(item)
+  }
+  return {
+    challenges: live,
+    deletedChallenges: deleted.filter((row) => !resurrected.has(row.id)),
+  }
 }
 
 export function mergeStoredChallenges(
@@ -110,4 +173,12 @@ export function mergeStoredChallenges(
   incoming: StoredChallenge[] | undefined,
 ): StoredChallenge[] {
   return parseStoredChallenges([...(base ?? []), ...(incoming ?? [])])
+}
+
+export function mergeDeletedChallenges(
+  base: DeletedChallenge[] | undefined,
+  incoming: DeletedChallenge[] | undefined,
+  now: number = Date.now(),
+): DeletedChallenge[] {
+  return parseDeletedChallenges([...(base ?? []), ...(incoming ?? [])], now)
 }

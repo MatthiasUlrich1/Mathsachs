@@ -9,6 +9,7 @@ import {
   listUsers,
   loadUser,
   recordSession,
+  forgetCreatedChallenge,
   rememberCreatedChallenge,
   rememberCreatedClassCode,
   rememberCreatedGradeCode,
@@ -487,6 +488,45 @@ describe('storage adapter', () => {
       hostCode: 'ABCD2345',
       prize: { classThreshold: 100 },
     })
+  })
+
+  it('updates a remembered challenge and tombstones a deleted one against LAN merge', async () => {
+    const local = memoryStorage()
+    vi.stubGlobal('localStorage', local)
+    vi.stubGlobal('fetch', vi.fn(async () => htmlResponse()))
+    await initSharedStorage()
+    addUser('Ada', 'lehrer')
+    setActiveStorageUser('Ada')
+    const challenge = {
+      id: 'CHAL2345',
+      scope: 'class' as const,
+      hostCode: 'ABCD2345',
+      name: 'Woche 36',
+      topicIds: ['n5-add'],
+      topics: [{ id: 'n5-add', title: 'Addieren' }],
+      start: '2026-09-01T08:00',
+      end: '2026-09-11T16:00',
+      prize: { enabled: true, classPrize: true, classThreshold: 100, text: 'Film' },
+      createdAt: 1,
+      owned: true,
+    }
+    rememberCreatedChallenge(challenge)
+    rememberCreatedChallenge({
+      ...challenge,
+      name: 'Woche 37',
+      topicIds: ['n5-sub'],
+      prize: { enabled: true, classPrize: true, classThreshold: 80, text: 'Eis' },
+      createdAt: 2,
+      owned: true,
+    })
+    expect(getCreatedChallenges('Ada')).toMatchObject([
+      { id: 'CHAL2345', name: 'Woche 37', topicIds: ['n5-sub'], prize: { classThreshold: 80 } },
+    ])
+    const deletedAt = Date.now()
+    forgetCreatedChallenge('CHAL2345', deletedAt)
+    expect(getCreatedChallenges('Ada')).toEqual([])
+    rememberCreatedChallenge({ ...challenge, createdAt: deletedAt - 1000, owned: true })
+    expect(getCreatedChallenges('Ada')).toEqual([])
   })
 
   it('never sends class points for Klassenlehrer even if opt-in is set', async () => {

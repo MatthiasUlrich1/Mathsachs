@@ -4,7 +4,12 @@ import type {
   GradeCodeSettings,
   SessionRecord,
 } from '../lib/sharedState'
-import { canCreateClassChallenge, canCreateGradeChallenge, type UserRole } from '../lib/roles'
+import {
+  canCreateClassChallenge,
+  canCreateGradeChallenge,
+  canManageChallenge,
+  type UserRole,
+} from '../lib/roles'
 import {
   mergeStoredChallenges,
   parsePrize,
@@ -24,14 +29,18 @@ import {
   CHALLENGE_PHASE_LABEL,
   CLASS_GOAL_PREFIX,
   MAX_CHALLENGE_NAME_LENGTH,
-  NO_ACTIVE_CHALLENGE_MESSAGE,
   type ChallengePrize,
   type ChallengeScope,
   type ChallengeTopicRef,
   type StoredChallenge,
 } from './types'
 
-export { NO_ACTIVE_CHALLENGE_MESSAGE, CHALLENGE_PHASE_LABEL, CLASS_GOAL_PREFIX }
+export {
+  NO_ACTIVE_CHALLENGE_MESSAGE,
+  CHALLENGE_PHASE_LABEL,
+  CLASS_GOAL_PREFIX,
+  deleteChallengeConfirm,
+} from './types'
 export {
   mergeStoredChallenges,
   parsePrize,
@@ -179,12 +188,16 @@ export function mergeVisibleChallenges<T extends ListableChallenge>(input: {
   classCodes: string[]
   gradeCodes: string[]
   includeCreated: boolean
+  excludeIds?: Iterable<string>
   now?: number
 }): T[] {
   const now = input.now ?? Date.now()
+  const excluded = new Set(
+    [...(input.excludeIds ?? [])].map((id) => id.trim()).filter(Boolean),
+  )
   const byId = new Map<string, T>()
   const consider = (row: T, allowWithoutHost: boolean) => {
-    if (byId.has(row.id)) return
+    if (byId.has(row.id) || excluded.has(row.id)) return
     if (challengePhase(row.start, row.end, now) === 'ended') return
     if (
       allowWithoutHost ||
@@ -368,4 +381,41 @@ export function createChallengePayload(input: {
   if (input.scope === 'grade' && input.gradeCode) body.gradeCode = input.gradeCode
   if (input.topics?.length) body.topics = parseTopicRefs(input.topics, body.topicIds as string[])
   return body
+}
+
+/** PUT body: name, times, topics, prize — no scope/host and no personal data. */
+export function updateChallengePayload(input: {
+  name: string
+  topicIds: string[]
+  topics?: ChallengeTopicRef[]
+  start: string
+  end: string
+  prize: ChallengePrize
+}): Record<string, unknown> {
+  const body: Record<string, unknown> = {
+    name: input.name.trim().slice(0, MAX_CHALLENGE_NAME_LENGTH),
+    topicIds: parseTopicIds(input.topicIds),
+    start: input.start,
+    end: input.end,
+    prize: parsePrize(input.prize),
+  }
+  if (input.topics?.length) body.topics = parseTopicRefs(input.topics, body.topicIds as string[])
+  return body
+}
+
+export function isOwnedStoredChallenge(challenge: StoredChallenge): boolean {
+  return challenge.owned !== false
+}
+
+/** Lehrer/Klassenlehrer may edit/delete only challenges they created. KL: class only. */
+export function canManageListedChallenge(
+  role: UserRole | unknown,
+  challenge: { id: string; scope: ChallengeScope },
+  created: StoredChallenge[],
+): boolean {
+  if (!canManageChallenge(role)) return false
+  if (challenge.scope === 'grade' && !canCreateGradeChallenge(role)) return false
+  const local = created.find((row) => row.id === challenge.id)
+  if (!local) return false
+  return isOwnedStoredChallenge(local)
 }

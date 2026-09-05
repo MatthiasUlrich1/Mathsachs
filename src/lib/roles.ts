@@ -71,6 +71,13 @@ export const canCreateClassChallenge = (role?: unknown): boolean =>
 export const canCreateGradeChallenge = (role?: unknown): boolean =>
   normalizeRole(role) === 'lehrer'
 
+/** Challenge ändern / löschen — dieselben Rollen wie Anlegen. */
+export const canManageChallenge = (role?: unknown): boolean => canCreateChallenge(role)
+
+/** Stufenchallenge ändern / löschen — nur Lehrer. */
+export const canManageGradeChallenge = (role?: unknown): boolean =>
+  canCreateGradeChallenge(role)
+
 /**
  * Challenge-Themen vom Challenge-Tab aus üben (mitmachen).
  * Eltern sehen den Tab nur lesend und üben weiter unter Themen.

@@ -177,6 +177,8 @@ describe('Cloudflare Worker API', () => {
       gradeCreate: { limit: 8, windowMs: 60_000 },
       gradeUpdate: { limit: 30, windowMs: 60_000 },
       challengeCreate: { limit: 8, windowMs: 60_000 },
+      challengeUpdate: { limit: 30, windowMs: 60_000 },
+      challengeDelete: { limit: 30, windowMs: 60_000 },
     })
 
     const kv = env()
@@ -612,5 +614,108 @@ describe('Challenge Worker API', () => {
       'Klasse 6b',
     ])
     assertPrivacySchema(view.challenge, [classA.code, classB.code, grade.code])
+  })
+
+  it('updates name, topics and threshold and keeps recorded challenge points', async () => {
+    const kv = env()
+    const created = await postJson('/classes', { name: 'Klasse 6a' }, kv)
+    const { code } = (await created.json()) as { code: string }
+    const challengeRes = await postJson(
+      '/challenges',
+      {
+        scope: 'class',
+        classCode: code,
+        name: 'Woche 36',
+        topicIds: ['n5-add'],
+        ...windowNow,
+        prize: { enabled: true, classPrize: true, classThreshold: 10, text: 'Film' },
+      },
+      kv,
+    )
+    const challenge = (await challengeRes.json()) as { id: string }
+    await worker.fetch(
+      request(`/classes/${code}/points`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ delta: 5, topicId: 'n5-add' }),
+      }),
+      kv,
+    )
+
+    const updated = await putJson(
+      `/challenges/${challenge.id}`,
+      {
+        name: 'Woche 37',
+        topicIds: ['n5-add', 'n5-sub'],
+        topics: [
+          { id: 'n5-add', title: 'Addieren' },
+          { id: 'n5-sub', title: 'Subtrahieren' },
+        ],
+        ...windowNow,
+        prize: { enabled: true, classPrize: true, classThreshold: 80, text: 'Eis' },
+      },
+      kv,
+    )
+    expect(updated.status).toBe(200)
+    const body = (await updated.json()) as {
+      name: string
+      topicIds: string[]
+      classThreshold: number
+      prize: { text?: string }
+      points: { total: number }
+    }
+    expect(body.name).toBe('Woche 37')
+    expect(body.topicIds).toEqual(['n5-add', 'n5-sub'])
+    expect(body.classThreshold).toBe(80)
+    expect(body.prize.text).toBe('Eis')
+    expect(body.points.total).toBe(5)
+    expect(JSON.stringify(body)).not.toMatch(/vorname|userId|deviceId|schuelername/i)
+  })
+
+  it('deletes a challenge and keeps class point history', async () => {
+    const kv = env()
+    const created = await postJson('/classes', { name: 'Klasse 6a' }, kv)
+    const { code } = (await created.json()) as { code: string }
+    const challengeRes = await postJson(
+      '/challenges',
+      {
+        scope: 'class',
+        classCode: code,
+        name: 'Woche 36',
+        topicIds: ['n5-add'],
+        ...windowNow,
+        prize: { enabled: false },
+      },
+      kv,
+    )
+    const challenge = (await challengeRes.json()) as { id: string }
+    await worker.fetch(
+      request(`/classes/${code}/points`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ delta: 9, topicId: 'n5-add' }),
+      }),
+      kv,
+    )
+
+    const removed = await worker.fetch(
+      request(`/challenges/${challenge.id}`, { method: 'DELETE' }),
+      kv,
+    )
+    expect(removed.status).toBe(200)
+    await expect(removed.json()).resolves.toEqual({ ok: true, deleted: challenge.id })
+
+    const gone = await worker.fetch(request(`/challenges/${challenge.id}`), kv)
+    expect(gone.status).toBe(404)
+
+    const klass = await worker.fetch(request(`/classes/${code}`), kv)
+    const body = (await klass.json()) as {
+      points: { total: number }
+      challenge?: unknown
+      challenges?: unknown[]
+    }
+    expect(body.points.total).toBe(9)
+    expect(body.challenge).toBeUndefined()
+    expect(body.challenges ?? []).toEqual([])
   })
 })

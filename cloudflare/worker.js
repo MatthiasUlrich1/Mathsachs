@@ -7,7 +7,8 @@
  *
  * Rate limits per client IP / 60s (classroom-safe listing + a few deletes):
  * GET class/grade 300, DELETE 30, POST /classes 8, POST /grades 8,
- * POST /challenges 8, PUT grade membership 30, POST points 60.
+ * POST /challenges 8, PUT /challenges/:id 30, DELETE /challenges/:id 30,
+ * PUT grade membership 30, POST points 60.
  * GET / (health) is not rate-limited. Raise GET/DELETE here if a class page
  * with many Eigene Codes still 429s; keep POST points tight against abuse.
  *
@@ -658,6 +659,8 @@ export const RATE_LIMITS = {
   gradeCreate: { limit: 8, windowMs: 60_000 },
   gradeUpdate: { limit: 30, windowMs: 60_000 },
   challengeCreate: { limit: 8, windowMs: 60_000 },
+  challengeUpdate: { limit: 30, windowMs: 60_000 },
+  challengeDelete: { limit: 30, windowMs: 60_000 },
 }
 
 const hits = new Map()
@@ -1100,6 +1103,34 @@ function readChallengeCreateBody(body) {
   }
 }
 
+function readChallengeUpdateBody(body, scope) {
+  const named = readDisplayName(body, 'Bitte einen Challenge-Namen eingeben.')
+  if (named.error) return { error: named.error, code: 'BAD_NAME' }
+  const topicIds = parseTopicIdsStored(body.topicIds)
+  if (topicIds.length === 0) {
+    return { error: 'Bitte mindestens ein Challenge-Thema wählen.', code: 'BAD_TOPICS' }
+  }
+  const start = typeof body.start === 'string' ? body.start.trim() : ''
+  const end = typeof body.end === 'string' ? body.end.trim() : ''
+  const startMs = parseChallengeInstant(start)
+  const endMs = parseChallengeInstant(end)
+  if (!Number.isFinite(startMs) || !Number.isFinite(endMs) || endMs < startMs) {
+    return { error: 'Bitte Start und Ende (Europe/Berlin) angeben.', code: 'BAD_WINDOW' }
+  }
+  const prize = parsePrizeStored(body.prize)
+  if (scope === 'grade' && prize.classThreshold != null) {
+    delete prize.classThreshold
+  }
+  return {
+    name: named.name,
+    topicIds,
+    topics: parseTopicsStored(body.topics, topicIds),
+    start,
+    end,
+    prize,
+  }
+}
+
 async function handleCreateChallenge(request, env) {
   if (
     !rateLimit(
@@ -1216,6 +1247,139 @@ async function handleGetChallenge(request, env, rawId) {
   return json(request, 200, publicClassChallenge(ch, loaded.stored.name, now))
 }
 
+async function loadChallengeHost(env, rawId) {
+  const id = normalizeClassCode(rawId)
+  if (!isValidClassCode(id)) {
+    return { error: { status: 400, message: 'Die Challenge-ID ist ungültig.', code: 'BAD_CODE' } }
+  }
+  if (!env.CLASSES) {
+    return { error: { status: 503, message: 'KV-Bindung CLASSES fehlt.', code: 'NO_KV' } }
+  }
+  const index = parseRaw(await env.CLASSES.get(challengeIndexKey(id)))
+  if (!index || typeof index.hostCode !== 'string') {
+    return { error: { status: 404, message: 'Diese Challenge gibt es nicht.', code: 'NOT_FOUND' } }
+  }
+  return { id, index }
+}
+
+async function handleUpdateChallenge(request, env, rawId) {
+  if (
+    !rateLimit(
+      `challengeUpdate:${clientKey(request)}`,
+      RATE_LIMITS.challengeUpdate.limit,
+      RATE_LIMITS.challengeUpdate.windowMs,
+    )
+  ) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
+  }
+  const found = await loadChallengeHost(env, rawId)
+  if (found.error) {
+    return errorJson(request, found.error.status, found.error.message, found.error.code)
+  }
+  let body
+  try {
+    body = await readJson(request)
+  } catch {
+    return errorJson(request, 400, 'Ungültiges JSON.', 'BAD_JSON')
+  }
+  const parsed = readChallengeUpdateBody(body, found.index.scope)
+  if (parsed.error) return errorJson(request, 400, parsed.error, parsed.code)
+
+  const now = Date.now()
+  if (found.index.scope === 'grade') {
+    const loaded = await loadGrade(env, found.index.hostCode)
+    const err = gradeLoadError(request, loaded)
+    if (err) return err
+    const existing = (loaded.stored.challenges || {})[found.id]
+    if (!existing) return errorJson(request, 404, 'Diese Challenge gibt es nicht.', 'NOT_FOUND')
+    const challenge = {
+      ...existing,
+      id: found.id,
+      name: parsed.name,
+      topicIds: parsed.topicIds,
+      topics: parsed.topics,
+      start: parsed.start,
+      end: parsed.end,
+      prize: parsed.prize,
+      days: existing.days || {},
+      classDays: existing.classDays || {},
+    }
+    const stored = {
+      ...loaded.stored,
+      challenges: { ...(loaded.stored.challenges || {}), [found.id]: challenge },
+    }
+    await env.CLASSES.put(loaded.code, JSON.stringify(serializeGrade(stored)))
+    const view = await buildGradeView(env, loaded.code, stored, now)
+    const fromView = (view.challenges || []).find((row) => row.id === found.id)
+    return json(
+      request,
+      200,
+      fromView || publicGradeChallenge(challenge, { ...stored, _classByCode: {} }, now),
+    )
+  }
+
+  const loaded = await loadClass(env, found.index.hostCode)
+  const err = classLoadError(request, loaded)
+  if (err) return err
+  const existing = (loaded.stored.challenges || {})[found.id]
+  if (!existing) return errorJson(request, 404, 'Diese Challenge gibt es nicht.', 'NOT_FOUND')
+  const challenge = {
+    ...existing,
+    id: found.id,
+    name: parsed.name,
+    topicIds: parsed.topicIds,
+    topics: parsed.topics,
+    start: parsed.start,
+    end: parsed.end,
+    prize: parsed.prize,
+    days: existing.days || {},
+    classDays: existing.classDays || {},
+  }
+  const stored = {
+    ...loaded.stored,
+    challenges: { ...(loaded.stored.challenges || {}), [found.id]: challenge },
+  }
+  await putClass(env, loaded.code, stored)
+  return json(request, 200, publicClassChallenge(challenge, stored.name, now))
+}
+
+async function handleDeleteChallenge(request, env, rawId) {
+  if (
+    !rateLimit(
+      `challengeDelete:${clientKey(request)}`,
+      RATE_LIMITS.challengeDelete.limit,
+      RATE_LIMITS.challengeDelete.windowMs,
+    )
+  ) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
+  }
+  const found = await loadChallengeHost(env, rawId)
+  if (found.error) {
+    return errorJson(request, found.error.status, found.error.message, found.error.code)
+  }
+
+  if (found.index.scope === 'grade') {
+    const loaded = await loadGrade(env, found.index.hostCode)
+    const err = gradeLoadError(request, loaded)
+    if (err) return err
+    const challenges = { ...(loaded.stored.challenges || {}) }
+    delete challenges[found.id]
+    await env.CLASSES.put(
+      loaded.code,
+      JSON.stringify(serializeGrade({ ...loaded.stored, challenges })),
+    )
+  } else {
+    const loaded = await loadClass(env, found.index.hostCode)
+    const err = classLoadError(request, loaded)
+    if (err) return err
+    const challenges = { ...(loaded.stored.challenges || {}) }
+    delete challenges[found.id]
+    await putClass(env, loaded.code, { ...loaded.stored, challenges })
+  }
+  await env.CLASSES.delete(challengeIndexKey(found.id))
+  return json(request, 200, { ok: true, deleted: found.id })
+}
+
 export async function handleRequest(request, env) {
   if (request.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: corsHeaders(request) })
@@ -1280,6 +1444,12 @@ export async function handleRequest(request, env) {
   const challengeMatch = /^\/challenges\/([^/]+)$/.exec(path)
   if (challengeMatch && method === 'GET') {
     return handleGetChallenge(request, env, decodeURIComponent(challengeMatch[1]))
+  }
+  if (challengeMatch && method === 'PUT') {
+    return handleUpdateChallenge(request, env, decodeURIComponent(challengeMatch[1]))
+  }
+  if (challengeMatch && method === 'DELETE') {
+    return handleDeleteChallenge(request, env, decodeURIComponent(challengeMatch[1]))
   }
 
   return errorJson(request, 404, 'Unbekannter Pfad.', 'NOT_FOUND')

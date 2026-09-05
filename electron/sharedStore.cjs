@@ -14,6 +14,8 @@ const MAX_TRANSFERS = 200
 const USER_ROLES = new Set(['schueler', 'eltern', 'klassenlehrer', 'lehrer'])
 const DELETED_CLASS_CODE_TTL_MS = 30 * 24 * 60 * 60 * 1000
 const MAX_DELETED_CLASS_CODES = 200
+const DELETED_CHALLENGE_TTL_MS = DELETED_CLASS_CODE_TTL_MS
+const MAX_DELETED_CHALLENGES = 200
 const USERS_KEY = 'mathsachs.users.v1'
 const CLASS_CODES_KEY = 'mathsachs.classCodes.v1'
 const USER_KEY_RE = /^mathsachs\.user\.(.+)\.v1$/
@@ -136,6 +138,9 @@ function normalizeUserData(name, raw) {
   if (Object.prototype.hasOwnProperty.call(src, 'challenges')) {
     out.challenges = normalizeChallenges(src.challenges)
   }
+  if (Object.prototype.hasOwnProperty.call(src, 'deletedChallenges')) {
+    out.deletedChallenges = normalizeDeletedChallenges(src.deletedChallenges)
+  }
   if (USER_ROLES.has(src.role)) out.role = src.role
   return out
 }
@@ -187,6 +192,21 @@ function normalizeChallenge(raw) {
     end,
     prize,
     createdAt: asFiniteNumber(raw.createdAt, 0),
+    ...(raw.owned === true ? { owned: true } : raw.owned === false ? { owned: false } : {}),
+  }
+}
+
+function pickMergedChallenge(prev, next) {
+  const newer = next.createdAt >= prev.createdAt ? next : prev
+  const older = newer === next ? prev : next
+  const owned = newer.owned === true || older.owned === true
+  return {
+    ...newer,
+    ...(owned
+      ? { owned: true }
+      : newer.owned === false || older.owned === false
+        ? { owned: false }
+        : {}),
   }
 }
 
@@ -197,9 +217,47 @@ function normalizeChallenges(raw) {
     const parsed = normalizeChallenge(item)
     if (!parsed) continue
     const prev = byId.get(parsed.id)
-    if (!prev || parsed.createdAt >= prev.createdAt) byId.set(parsed.id, parsed)
+    byId.set(parsed.id, prev ? pickMergedChallenge(prev, parsed) : parsed)
   }
   return [...byId.values()].sort((a, b) => b.createdAt - a.createdAt || a.id.localeCompare(b.id))
+}
+
+function normalizeDeletedChallenges(raw, now) {
+  const list = Array.isArray(raw) ? raw : []
+  const byId = new Map()
+  const cutoff = (now || Date.now()) - DELETED_CHALLENGE_TTL_MS
+  for (const item of list) {
+    if (!item || typeof item !== 'object' || typeof item.id !== 'string') continue
+    const id = item.id.trim()
+    if (!id) continue
+    const deletedAt = asFiniteNumber(item.deletedAt, 0)
+    if (deletedAt < cutoff) continue
+    const prev = byId.get(id)
+    if (!prev || deletedAt > prev.deletedAt) byId.set(id, { id, deletedAt })
+  }
+  return [...byId.values()]
+    .sort((a, b) => b.deletedAt - a.deletedAt || a.id.localeCompare(b.id))
+    .slice(0, MAX_DELETED_CHALLENGES)
+}
+
+function applyChallengeTombstones(challenges, deleted) {
+  const deletedAt = new Map(deleted.map((row) => [row.id, row.deletedAt]))
+  const live = []
+  const resurrected = new Set()
+  for (const item of challenges) {
+    const tomb = deletedAt.get(item.id)
+    if (tomb != null && item.createdAt > tomb) {
+      live.push(item)
+      resurrected.add(item.id)
+      continue
+    }
+    if (tomb != null) continue
+    live.push(item)
+  }
+  return {
+    challenges: live,
+    deletedChallenges: deleted.filter((row) => !resurrected.has(row.id)),
+  }
 }
 
 function mergeChallenges(a, b) {
@@ -555,7 +613,11 @@ function mergeUserData(a, b) {
   if (sessions.length > MAX_SESSIONS) sessions.length = MAX_SESSIONS
   const classCodes = mergeUserClassCodes(a.classCodes, b.classCodes)
   const gradeCodes = mergeUserGradeCodes(a.gradeCodes, b.gradeCodes)
-  const challenges = mergeChallenges(a.challenges, b.challenges)
+  const deletedChallenges = normalizeDeletedChallenges([
+    ...(Array.isArray(a.deletedChallenges) ? a.deletedChallenges : []),
+    ...(Array.isArray(b.deletedChallenges) ? b.deletedChallenges : []),
+  ])
+  const applied = applyChallengeTombstones(mergeChallenges(a.challenges, b.challenges), deletedChallenges)
   const out = {
     name: a.name || b.name,
     created: Math.min(a.created, b.created),
@@ -565,7 +627,8 @@ function mergeUserData(a, b) {
   }
   if (classCodes) out.classCodes = classCodes
   if (gradeCodes) out.gradeCodes = gradeCodes
-  if (challenges.length > 0) out.challenges = challenges
+  if (applied.challenges.length > 0) out.challenges = applied.challenges
+  if (applied.deletedChallenges.length > 0) out.deletedChallenges = applied.deletedChallenges
   const role = USER_ROLES.has(b.role) ? b.role : USER_ROLES.has(a.role) ? a.role : null
   if (role) out.role = role
   return out

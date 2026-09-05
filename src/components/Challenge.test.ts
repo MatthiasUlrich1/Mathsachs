@@ -12,8 +12,10 @@ import { canCreateChallenge, canPracticeFromChallenge } from '../lib/roles'
 import { emptyClassCodes, emptyGradeCodes } from '../lib/sharedState'
 import { SETTINGS_TOP_TABS, TOP_TABS, topTabsForRole, topTabsForView } from '../nav'
 import {
+  forgetCreatedChallenge,
   resetSharedStorageForTests,
   saveUser,
+  setActiveStorageUser,
 } from '../lib/storage'
 import type { StoredChallenge } from '../challenge/types'
 
@@ -120,6 +122,7 @@ const sampleChallenge = (overrides: Partial<StoredChallenge> = {}): StoredChalle
     text: 'Film schauen',
   },
   createdAt: 1,
+  owned: true,
   ...overrides,
 })
 
@@ -329,5 +332,177 @@ describe('Challenge visibility for Lehrer, Schüler and Eltern', () => {
     expect(html).toContain('Nächste Woche')
     expect(html).toContain('Angelegt')
     expect(html).toContain('Klassenziel: 100 Punkte')
+  })
+})
+
+describe('Challenge edit and delete in the Lehrer UI', () => {
+  afterEach(() => {
+    resetSharedStorageForTests()
+    vi.unstubAllGlobals()
+  })
+
+  const offlineFetch = () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => {
+        throw new Error('offline')
+      }),
+    )
+  }
+
+  it('shows Ändern and Löschen on a Lehrer-created running challenge', () => {
+    offlineFetch()
+    saveUser({
+      name: 'Lehrer',
+      created: 1,
+      stats: {},
+      sessions: [],
+      role: 'lehrer',
+      classCodes: {
+        ...emptyClassCodes(),
+        created: [{ code: 'ABCD2345', name: '6a', createdAt: 1 }],
+        activeCode: 'ABCD2345',
+      },
+      challenges: [sampleChallenge({ owned: true })],
+    })
+    const html = renderToStaticMarkup(
+      createElement(Challenge, {
+        user: 'Lehrer',
+        role: 'lehrer',
+        loaded: [],
+        onPractice: () => undefined,
+      }),
+    )
+    expect(html).toContain('Ändern')
+    expect(html).toContain('Löschen')
+    expect(html).toContain('Woche 36')
+  })
+
+  it('does not let Klassenlehrer delete a Stufe challenge', () => {
+    offlineFetch()
+    saveUser({
+      name: 'KL',
+      created: 1,
+      stats: {},
+      sessions: [],
+      role: 'klassenlehrer',
+      classCodes: {
+        ...emptyClassCodes(),
+        known: [{ code: 'ABCD2345', name: '6a', createdAt: 1 }],
+        activeCode: 'ABCD2345',
+      },
+      challenges: [
+        sampleChallenge({
+          id: 'CHAL9999',
+          scope: 'grade',
+          hostCode: 'GGGG2345',
+          name: 'Stufenwoche',
+          owned: true,
+        }),
+      ],
+    })
+    const html = renderToStaticMarkup(
+      createElement(Challenge, {
+        user: 'KL',
+        role: 'klassenlehrer',
+        loaded: [],
+        onPractice: () => undefined,
+      }),
+    )
+    expect(html).toContain('Stufenwoche')
+    expect(html).not.toContain('Ändern')
+    expect(html).not.toContain('Löschen')
+  })
+
+  it('hides Ändern and Löschen from Schüler', () => {
+    offlineFetch()
+    saveUser({
+      name: 'Lea',
+      created: 1,
+      stats: {},
+      sessions: [],
+      role: 'schueler',
+      classCodes: {
+        ...emptyClassCodes(),
+        known: [{ code: 'ABCD2345', name: '6a', createdAt: 1 }],
+        activeCode: 'ABCD2345',
+      },
+    })
+    saveUser({
+      name: 'Lehrer',
+      created: 1,
+      stats: {},
+      sessions: [],
+      role: 'lehrer',
+      challenges: [sampleChallenge({ owned: true })],
+    })
+    const html = renderToStaticMarkup(
+      createElement(Challenge, {
+        user: 'Lea',
+        role: 'schueler',
+        loaded: [],
+        onPractice: () => undefined,
+      }),
+    )
+    expect(html).toContain('Woche 36')
+    expect(html).not.toContain('Ändern')
+    expect(html).not.toContain('Löschen')
+    expect(html).not.toContain('Challenge anlegen')
+  })
+
+  it('removes a deleted challenge from the list and shows the empty copy', () => {
+    offlineFetch()
+    saveUser({
+      name: 'Lehrer',
+      created: 1,
+      stats: {},
+      sessions: [],
+      role: 'lehrer',
+      classCodes: {
+        ...emptyClassCodes(),
+        created: [{ code: 'ABCD2345', name: '6a', createdAt: 1 }],
+        activeCode: 'ABCD2345',
+      },
+      challenges: [sampleChallenge({ owned: true })],
+    })
+    setActiveStorageUser('Lehrer')
+    forgetCreatedChallenge('CHAL2345')
+    const lehrer = renderToStaticMarkup(
+      createElement(Challenge, {
+        user: 'Lehrer',
+        role: 'lehrer',
+        loaded: [],
+        onPractice: () => undefined,
+      }),
+    )
+    expect(lehrer).not.toContain('Laufende Challenges')
+    expect(lehrer).not.toContain('Angelegte Challenges')
+    expect(lehrer).not.toContain('Ändern')
+    expect(lehrer).not.toContain('Löschen')
+
+    saveUser({
+      name: 'Lea',
+      created: 1,
+      stats: {},
+      sessions: [],
+      role: 'schueler',
+      classCodes: {
+        ...emptyClassCodes(),
+        known: [{ code: 'ABCD2345', name: '6a', createdAt: 1 }],
+        activeCode: 'ABCD2345',
+      },
+    })
+    const schueler = renderToStaticMarkup(
+      createElement(Challenge, {
+        user: 'Lea',
+        role: 'schueler',
+        loaded: [],
+        onPractice: () => undefined,
+      }),
+    )
+    expect(schueler).toContain(NO_ACTIVE_CHALLENGE_MESSAGE)
+    expect(schueler).not.toContain('Woche 36')
+    expect(schueler).not.toContain('Ändern')
+    expect(schueler).not.toContain('Löschen')
   })
 })

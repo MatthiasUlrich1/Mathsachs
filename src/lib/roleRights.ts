@@ -91,6 +91,16 @@ export const ROLE_RIGHT_ROWS: RightRow[] = [
     marks: { schueler: 'no', eltern: 'no', klassenlehrer: 'no', lehrer: 'yes' },
   },
   {
+    id: 'challengeManageClass',
+    label: 'Challenge ändern / löschen (Klasse)',
+    marks: { schueler: 'no', eltern: 'no', klassenlehrer: 'yes', lehrer: 'yes' },
+  },
+  {
+    id: 'challengeManageGrade',
+    label: 'Challenge ändern / löschen (Stufe)',
+    marks: { schueler: 'no', eltern: 'no', klassenlehrer: 'no', lehrer: 'yes' },
+  },
+  {
     id: 'challengeView',
     label: 'Challenge sehen',
     marks: { schueler: 'yes', eltern: 'yes', klassenlehrer: 'yes', lehrer: 'yes' },

@@ -1,5 +1,9 @@
 import { addClassPoints } from '../classCode/api'
-import { parseStoredChallenges } from '../challenge/parse'
+import {
+  applyChallengeTombstones,
+  parseDeletedChallenges,
+  parseStoredChallenges,
+} from '../challenge/parse'
 import type { StoredChallenge } from '../challenge/types'
 import {
   challengeThreshold,
@@ -108,6 +112,9 @@ const readLocalState = (): SharedState => {
           challenges: parsed.challenges
             ? parseStoredChallenges(parsed.challenges)
             : parsed.challenges,
+          deletedChallenges: parsed.deletedChallenges
+            ? parseDeletedChallenges(parsed.deletedChallenges)
+            : parsed.deletedChallenges,
         }
       } else state.records[name] = freshUser(name)
     } catch {
@@ -746,21 +753,83 @@ export const rememberCreatedChallenge = (challenge: StoredChallenge): void => {
   const user = activeUserName?.trim()
   if (!user) return
   const current = cache.records[user] ?? freshUser(user)
-  const next = parseStoredChallenges([...(current.challenges ?? []), challenge])
-  saveUser({ ...current, challenges: next })
+  const prev = (current.challenges ?? []).find((row) => row.id === challenge.id)
+  const owned = challenge.owned === true || prev?.owned === true
+  const next = parseStoredChallenges([
+    {
+      ...challenge,
+      ...(owned ? { owned: true } : challenge.owned === false ? { owned: false } : {}),
+    },
+    ...(current.challenges ?? []),
+  ])
+  const deletedChallenges = parseDeletedChallenges(current.deletedChallenges)
+  const applied = applyChallengeTombstones(next, deletedChallenges)
+  saveUser({
+    ...current,
+    challenges: applied.challenges,
+    ...(applied.deletedChallenges.length > 0
+      ? { deletedChallenges: applied.deletedChallenges }
+      : { deletedChallenges: undefined }),
+  })
 }
 
 export const getCreatedChallenges = (name?: string): StoredChallenge[] => {
   const user = (name ?? activeUserName)?.trim()
   if (!user) return []
-  return parseStoredChallenges(loadUser(user).challenges)
+  const record = loadUser(user)
+  return applyChallengeTombstones(
+    parseStoredChallenges(record.challenges),
+    parseDeletedChallenges(record.deletedChallenges),
+  ).challenges
+}
+
+export const getDeletedChallengeIds = (name?: string): string[] => {
+  const user = (name ?? activeUserName)?.trim()
+  if (!user) return []
+  return parseDeletedChallenges(loadUser(user).deletedChallenges).map((row) => row.id)
+}
+
+/** Tombstones from every user on this PC — hide deleted challenges after LAN merge. */
+export const listDeviceDeletedChallengeIds = (): string[] => {
+  const ids = new Set<string>()
+  for (const name of cache.users) {
+    for (const row of parseDeletedChallenges(cache.records[name]?.deletedChallenges)) {
+      ids.add(row.id)
+    }
+  }
+  return [...ids]
+}
+
+/** Drop a locally created challenge and tombstone it. Does not call the server. */
+export const forgetCreatedChallenge = (id: string, now: number = Date.now()): void => {
+  const user = activeUserName?.trim()
+  const trimmed = id.trim()
+  if (!user || !trimmed) return
+  const current = cache.records[user] ?? freshUser(user)
+  const applied = applyChallengeTombstones(parseStoredChallenges(current.challenges), [
+    ...parseDeletedChallenges(current.deletedChallenges, now),
+    { id: trimmed, deletedAt: now },
+  ])
+  saveUser({
+    ...current,
+    challenges: applied.challenges,
+    ...(applied.deletedChallenges.length > 0
+      ? { deletedChallenges: applied.deletedChallenges }
+      : { deletedChallenges: undefined }),
+  })
 }
 
 /** Created challenges on this PC/LAN — fallback when the Worker is offline. */
 export const listDeviceChallenges = (): StoredChallenge[] => {
+  const dead = new Set(listDeviceDeletedChallengeIds())
   const byId = new Map<string, StoredChallenge>()
   for (const name of cache.users) {
-    for (const challenge of parseStoredChallenges(cache.records[name]?.challenges)) {
+    const applied = applyChallengeTombstones(
+      parseStoredChallenges(cache.records[name]?.challenges),
+      parseDeletedChallenges(cache.records[name]?.deletedChallenges),
+    )
+    for (const challenge of applied.challenges) {
+      if (dead.has(challenge.id)) continue
       byId.set(challenge.id, challenge)
     }
   }

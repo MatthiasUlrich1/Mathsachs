@@ -59,6 +59,8 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   | Aufgaben ergänzen | — | — | — | ✓ |
   | Challenge anlegen (Klasse) | — | — | ✓ | ✓ |
   | Challenge anlegen (Stufe) | — | — | — | ✓ |
+  | Challenge ändern / löschen (Klasse) | — | — | ✓ | ✓ |
+  | Challenge ändern / löschen (Stufe) | — | — | — | ✓ |
   | Challenge sehen | ✓ | ✓ | ✓ | ✓ |
   | Challenge mitmachen | ✓ | — | ✓ | ✓ |
 
@@ -80,7 +82,8 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   an (Themen, Start/Ende **Europe/Berlin**, optionale Gewinnchance).
   Klassenlehrer nur Klassenchallenge (mit eingetragenem Klassencode).
   Lehrer und Klassenlehrer sehen danach ihre **laufenden und angelegten**
-  Challenges (nicht nur das Formular). Schüler üben die Challenge-Themen
+  Challenges und können die von ihnen angelegten **ändern oder löschen**
+  (Umfang Klasse/Stufe bleibt). Schüler üben die Challenge-Themen
   und sehen Gewinn, **wer gewinnen kann** (Klasse/Schüler bzw. Klasse/Stufe)
   und das **Klassenziel**; Eltern sehen denselben Stand nur.
   Punkte in den gewählten Themen zählen weiter für Klasse/Stufe **und**
@@ -106,7 +109,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.34**).
+(aktuelle Version **0.1.35**).
 
 Die App prüft beim Start und — solange sie geöffnet bleibt — einmal pro
 Kalendertag (**Europe/Berlin**) die öffentlichen
@@ -254,6 +257,8 @@ Unter **Einstellungen → Klasse**:
 | `DELETE` | `/grades/:code` | — | Stufe löschen; Klassencodes und ihre Punkte bleiben |
 | `POST` | `/challenges` | `{ scope, classCode?\|gradeCode?, name, topicIds, start, end, prize }` | Challenge anlegen (Geheimnis = Klassen-/Stufencode) |
 | `GET` | `/challenges/:id` | — | anonyme Summen, Themen, Gewinntext — keine Personennamen |
+| `PUT` | `/challenges/:id` | `{ name, topicIds, start, end, prize }` | Challenge ändern (Geheimnis = Challenge-ID); Umfang bleibt; keine Personendaten |
+| `DELETE` | `/challenges/:id` | — | Challenge löschen; Klassensummen bleiben |
 
 KV-Wert Klasse: `{ name, createdAt, days, gradeId?, challenges? }`. KV-Wert Stufe:
 `{ type: "grade", name, createdAt, classes, challenges? }`. Woche/Monat/Jahr werden
@@ -263,8 +268,9 @@ die Datei `cloudflare/worker.js` in Cloudflare einfügen und **Deploy**.
 
 Rate-Limits je Client-IP / 60 s (siehe `cloudflare/worker.js`): **GET**
 Klasse/Stufe 300, **DELETE** 30, **POST** neue Klasse 8, **POST** neue Stufe 8,
-**PUT** Zuordnung 30, **POST** Punkte 60. `GET /` (Health) ist frei. Nach dem
-Ändern der Worker-Datei einmal in Cloudflare **Deploy** klicken.
+**PUT** Zuordnung 30, **PUT/DELETE** Challenge 30, **POST** Punkte 60. `GET /`
+(Health) ist frei. Nach dem Ändern der Worker-Datei einmal in Cloudflare
+**Deploy** klicken.
 
 ### Einmalig für Linus und Matthias (nicht für Schüler)
 

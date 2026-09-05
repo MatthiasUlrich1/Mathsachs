@@ -9,6 +9,23 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.35] – 2026-09-05
+
+### Hinzugefügt
+
+- **Challenge ändern / löschen:** Lehrer und Klassenlehrer können eine von
+  ihnen angelegte, laufende oder angelegte Challenge **ändern** (Name,
+  Zeiten, Themen, Gewinnchance, Klassenziel) oder nach Rückfrage **löschen**.
+  Umfang (Klasse/Stufe) und die Bindung an den Code bleiben. Klassenlehrer
+  können keine Stufenchallenge ändern oder löschen. Schüler und Eltern
+  sehen keine solchen Knöpfe. Nach dem Löschen gilt wieder
+  „Aktuell keine Challenge aktiv.“, wenn keine Challenge mehr da ist.
+  Bereits gespeicherte Übungen bleiben; das Protokoll nutzt danach das
+  neue Fenster und die neuen Themen.
+- Worker: `PUT /challenges/:id` und `DELETE /challenges/:id` (Geheimnis =
+  Challenge-ID). Klassensummen bleiben. Keine Personendaten. **Linus/
+  Matthias:** `cloudflare/worker.js` einfügen und Deploy.
+
 ## [0.1.34] – 2026-09-05
 
 ### Behoben
@@ -510,7 +527,8 @@ Fixes #11
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.34...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.35...HEAD
+[0.1.35]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.34...v0.1.35
 [0.1.34]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.33...v0.1.34
 [0.1.33]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.32...v0.1.33
 [0.1.32]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.31...v0.1.32

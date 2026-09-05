@@ -42,6 +42,8 @@ describe('Rollen-Rechte-Matrix', () => {
       'Aufgaben ergänzen',
       'Challenge anlegen (Klasse)',
       'Challenge anlegen (Stufe)',
+      'Challenge ändern / löschen (Klasse)',
+      'Challenge ändern / löschen (Stufe)',
       'Challenge sehen',
       'Challenge mitmachen',
     ])
@@ -64,6 +66,11 @@ describe('Rollen-Rechte-Matrix', () => {
     expect(byId.challengeCreateClass.schueler).toBe('no')
     expect(byId.challengeCreateGrade.lehrer).toBe('yes')
     expect(byId.challengeCreateGrade.klassenlehrer).toBe('no')
+    expect(byId.challengeManageClass.lehrer).toBe('yes')
+    expect(byId.challengeManageClass.klassenlehrer).toBe('yes')
+    expect(byId.challengeManageClass.schueler).toBe('no')
+    expect(byId.challengeManageGrade.lehrer).toBe('yes')
+    expect(byId.challengeManageGrade.klassenlehrer).toBe('no')
     expect(byId.challengeView.schueler).toBe('yes')
     expect(byId.challengeView.eltern).toBe('yes')
     expect(byId.challengeJoin.schueler).toBe('yes')

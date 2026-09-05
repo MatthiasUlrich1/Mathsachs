@@ -12,7 +12,9 @@ import {
   classCodesForChallengeList,
   classGoalLine,
   classPointsPayload,
+  canManageListedChallenge,
   createChallengePayload,
+  deleteChallengeConfirm,
   filterSessionsForChallenge,
   filterTransfersForChallenge,
   mergeVisibleChallenges,
@@ -20,7 +22,9 @@ import {
   prizeAudienceLine,
   resolveChallengeIdForRecord,
   shouldAttributeChallengePoints,
+  updateChallengePayload,
 } from './logic'
+import type { StoredChallenge } from './types'
 import { berlinLocalToUtcMs, defaultBerlinChallengeWindow, isInChallengeWindow } from './time'
 import { emptyClassCodes, emptyGradeCodes } from '../lib/sharedState'
 import type { SessionRecord } from '../lib/sharedState'
@@ -329,5 +333,92 @@ describe('online payloads have no name fields', () => {
     expect(Object.keys(body)).not.toContain('userId')
     expect(Object.keys(body)).not.toContain('deviceId')
     expect(JSON.stringify(body)).not.toMatch(/userId|deviceId|vorname|schuelername/i)
+  })
+
+  it('updates a challenge without scope, host or pupil fields', () => {
+    const body = updateChallengePayload({
+      name: 'Woche 37',
+      topicIds: ['n5-add', 'n5-sub'],
+      start: '2026-09-07T09:00',
+      end: '2026-09-11T17:00',
+      prize: { enabled: true, classPrize: true, classThreshold: 150, text: 'Eis' },
+    })
+    expect(body).toEqual({
+      name: 'Woche 37',
+      topicIds: ['n5-add', 'n5-sub'],
+      start: '2026-09-07T09:00',
+      end: '2026-09-11T17:00',
+      prize: { enabled: true, classPrize: true, classThreshold: 150, text: 'Eis' },
+    })
+    expect(body).not.toHaveProperty('scope')
+    expect(body).not.toHaveProperty('classCode')
+    expect(JSON.stringify(body)).not.toMatch(/userId|deviceId|vorname|schuelername/i)
+  })
+})
+
+const ownedChallenge = (overrides: Partial<StoredChallenge> = {}): StoredChallenge => ({
+  id: 'CHAL2345',
+  scope: 'class',
+  hostCode: 'ABCD2345',
+  name: 'Woche 36',
+  topicIds: ['n5-add'],
+  topics: [{ id: 'n5-add' }],
+  start: '2026-09-07T08:00',
+  end: '2026-09-11T16:00',
+  prize: { enabled: false },
+  createdAt: 1,
+  owned: true,
+  ...overrides,
+})
+
+describe('Challenge edit and delete rights', () => {
+  const now = Date.parse('2026-09-08T10:00:00+02:00')
+
+  it('lets Lehrer manage an owned class challenge and update name, topics, threshold', () => {
+    const created = [ownedChallenge()]
+    expect(canManageListedChallenge('lehrer', created[0], created)).toBe(true)
+    const updated = updateChallengePayload({
+      name: 'Neue Woche',
+      topicIds: ['n5-mul'],
+      start: created[0].start,
+      end: created[0].end,
+      prize: { enabled: true, classPrize: true, classThreshold: 80 },
+    })
+    expect(updated.name).toBe('Neue Woche')
+    expect(updated.topicIds).toEqual(['n5-mul'])
+    expect((updated.prize as { classThreshold?: number }).classThreshold).toBe(80)
+  })
+
+  it('blocks Klassenlehrer from deleting a Stufe challenge they could not create', () => {
+    const grade = ownedChallenge({ id: 'CHAL9999', scope: 'grade', hostCode: 'GGGG2345' })
+    expect(canManageListedChallenge('klassenlehrer', grade, [grade])).toBe(false)
+    expect(canManageListedChallenge('lehrer', grade, [grade])).toBe(true)
+  })
+
+  it('hides a deleted challenge from the visible list', () => {
+    const row = {
+      id: 'CHAL2345',
+      scope: 'class' as const,
+      hostCode: 'ABCD2345',
+      start: '2026-09-07T08:00',
+      end: '2026-09-11T16:00',
+    }
+    expect(
+      mergeVisibleChallenges({
+        remote: [row],
+        created: [row],
+        classCodes: ['ABCD2345'],
+        gradeCodes: [],
+        includeCreated: true,
+        excludeIds: ['CHAL2345'],
+        now,
+      }),
+    ).toEqual([])
+  })
+
+  it('asks for a German delete confirmation without touching class points copy', () => {
+    expect(deleteChallengeConfirm('Woche 36')).toBe(
+      'Challenge „Woche 36“ wirklich löschen? Die Challenge wird entfernt. Die Klassensummen bleiben. Das kann nicht rückgängig gemacht werden.',
+    )
   })
 })

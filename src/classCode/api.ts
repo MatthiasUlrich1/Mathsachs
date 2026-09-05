@@ -1,4 +1,4 @@
-import { challengeTopicIds, classPointsPayload } from '../challenge/logic'
+import { challengeTopicIds, classPointsPayload, updateChallengePayload } from '../challenge/logic'
 import type { ChallengePrize, ChallengeScope, ChallengeTopicRef } from '../challenge/types'
 import { CLASS_CODE_LENGTH, isValidClassCode, normalizeClassCode } from './code'
 import type { ClassPointBreakdown, ClassPointPeriod } from './buckets'
@@ -546,6 +546,50 @@ export async function getChallenge(
     throw new ClassApiError('not_ready', CLASS_API_NOT_READY_MESSAGE, 200)
   }
   return summary
+}
+
+export interface UpdateChallengeInput {
+  name: string
+  topicIds: string[]
+  topics?: ChallengeTopicRef[]
+  start: string
+  end: string
+  prize: ChallengePrize
+}
+
+export async function updateChallenge(
+  id: string,
+  input: UpdateChallengeInput,
+  base: string = CLASS_POINTS_API,
+): Promise<ChallengeSummary> {
+  const normalized = normalizeClassCode(id)
+  if (!isValidClassCode(normalized)) {
+    throw new ClassApiError('invalid', 'Die Challenge-ID ist ungültig.', 400)
+  }
+  const json = await requestJson(challengeResourceUrl(normalized, base), {
+    method: 'PUT',
+    body: JSON.stringify(updateChallengePayload(input)),
+  })
+  throwIfStubHealth(json)
+  const updated = parseChallengeSummary(json)
+  if (!updated) {
+    throw new ClassApiError('not_ready', CLASS_API_STUB_MESSAGE, 200)
+  }
+  return updated
+}
+
+export async function deleteChallenge(
+  id: string,
+  base: string = CLASS_POINTS_API,
+): Promise<void> {
+  const normalized = normalizeClassCode(id)
+  if (!isValidClassCode(normalized)) {
+    throw new ClassApiError('invalid', 'Die Challenge-ID ist ungültig.', 400)
+  }
+  const json = await requestJson(challengeResourceUrl(normalized, base), {
+    method: 'DELETE',
+  })
+  throwIfStubHealth(json)
 }
 
 export async function deleteClass(

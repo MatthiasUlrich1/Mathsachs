@@ -554,6 +554,60 @@ describe('mergeSharedState (TypeScript)', () => {
     ])
   })
 
+  it('honors challenge tombstones so a deleted challenge stays gone', () => {
+    const now = Date.now()
+    const challenge = {
+      id: 'CHAL2345',
+      scope: 'class' as const,
+      hostCode: 'ABCD2345',
+      name: 'Woche 36',
+      topicIds: ['n5-add'],
+      topics: [{ id: 'n5-add' }],
+      start: '2026-09-07T08:00',
+      end: '2026-09-11T16:00',
+      prize: { enabled: false },
+      createdAt: now - 1000,
+      owned: true,
+    }
+    const merged = mergeSharedState(
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            name: 'Ada',
+            created: 1,
+            stats: {},
+            sessions: [],
+            deletedChallenges: [{ id: 'CHAL2345', deletedAt: now }],
+          },
+        },
+      },
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            name: 'Ada',
+            created: 1,
+            stats: {},
+            sessions: [],
+            challenges: [challenge],
+          },
+        },
+      },
+    )
+    expect(merged.records.Ada.challenges ?? []).toEqual([])
+    expect(merged.records.Ada.deletedChallenges?.some((row) => row.id === 'CHAL2345')).toBe(true)
+    const electronMerged = store.mergeSharedState(
+      { schemaVersion: 1, users: ['Ada'], records: { Ada: { name: 'Ada', created: 1, stats: {}, sessions: [], deletedChallenges: [{ id: 'CHAL2345', deletedAt: now }] } } },
+      { schemaVersion: 1, users: ['Ada'], records: { Ada: { name: 'Ada', created: 1, stats: {}, sessions: [], challenges: [challenge] } } },
+    )
+    expect(
+      (electronMerged.records.Ada as { challenges?: unknown[] }).challenges ?? [],
+    ).toEqual([])
+  })
+
   it('honors grade-code tombstones so a deleted Stufe stays gone', () => {
     const now = Date.now()
     const merged = mergeSharedState(
