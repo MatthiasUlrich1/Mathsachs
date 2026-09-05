@@ -10,6 +10,7 @@ import {
 } from './parse'
 import {
   challengePhase,
+  isChallengeOpen,
   isInChallengeWindow,
   parseChallengeInstant,
   type ChallengePhase,
