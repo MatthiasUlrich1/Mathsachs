@@ -7,9 +7,12 @@ import {
   setLoadedIds,
 } from './curriculum/registry'
 import type { Grade, Topic } from './curriculum/types'
+import { getClass } from './classCode/api'
 import {
   activeClassDisplayName,
   addUser,
+  cacheKnownClassName,
+  getClassCodeSettings,
   getUserRole,
   initSharedStorage,
   listUsers,
@@ -170,6 +173,25 @@ export default function App() {
       setView({ name: 'browse' })
     }
   }, [view.name, userRole])
+
+  // Schüler enter a code; persist the Worker class name so the badge
+  // never falls back to the secret Klassencode.
+  useEffect(() => {
+    if (!storageReady || !activeUser) return
+    const code = getClassCodeSettings().activeCode
+    if (!code || activeClassDisplayName()) return
+    let cancelled = false
+    void getClass(code)
+      .then((stats) => {
+        if (!cancelled) cacheKnownClassName(stats.code, stats.name)
+      })
+      .catch(() => {
+        /* offline: leave the class slot empty rather than showing the code */
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [storageReady, activeUser, classLabel])
 
   const loadCurriculum = async (id: string) => {
     if (loaded.some((l) => l.moduleId === id)) return

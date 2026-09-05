@@ -266,6 +266,7 @@ describe('mergeSharedState (TypeScript)', () => {
     expect(withUsers.records.Ben.classCodes).toBeUndefined()
     expect(withUsers.classCodes).toEqual({
       created: [],
+      known: [],
       deletedCodes: [],
       activeCode: null,
       sendPoints: false,
@@ -292,6 +293,7 @@ describe('mergeSharedState (TypeScript)', () => {
     )
     expect(merged.records.Ada.classCodes).toEqual({
       created: [{ code: 'AAAA1111', name: '6a', createdAt: 1 }],
+      known: [],
       deletedCodes: [],
       activeCode: 'AAAA1111',
       sendPoints: true,
@@ -299,6 +301,7 @@ describe('mergeSharedState (TypeScript)', () => {
     expect(merged.records.Ben?.classCodes).toBeUndefined()
     expect(merged.classCodes).toEqual({
       created: [],
+      known: [],
       deletedCodes: [],
       activeCode: null,
       sendPoints: false,

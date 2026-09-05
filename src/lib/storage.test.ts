@@ -10,12 +10,14 @@ import {
   loadUser,
   recordSession,
   rememberCreatedClassCode,
+  rememberJoinedClassCode,
   forgetCreatedClassCode,
   resetSharedStorageForTests,
   setActiveStorageUser,
   setSendClassPoints,
   setUserRole,
   saveUser,
+  activeClassDisplayName,
 } from './storage'
 import { CLASS_POINTS_API } from '../classCode/api'
 import {
@@ -288,6 +290,43 @@ describe('storage adapter', () => {
       code: 'ABCD2345',
       points: 4,
     })
+  })
+
+  it('shows a joined Worker class name in the badge and protocol, not the code', async () => {
+    const local = memoryStorage()
+    vi.stubGlobal('localStorage', local)
+    vi.stubGlobal('fetch', vi.fn(async () => htmlResponse()))
+
+    await initSharedStorage()
+    addUser('Test', 'schueler')
+    setActiveStorageUser('Test')
+    rememberJoinedClassCode('8G4Y-0CV6', '6/6')
+    setSendClassPoints(true)
+
+    expect(getUserRole('Test')).toBe('schueler')
+    expect(getClassCodeSettings().created).toEqual([])
+    expect(getClassCodeSettings().known).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: '8G4Y0CV6', name: '6/6' })]),
+    )
+    expect(activeClassDisplayName()).toBe('6/6')
+    expect(activeClassDisplayName()).not.toContain('8G4Y')
+
+    recordSession('Test', {
+      topicId: 'brueche',
+      topicTitle: 'Brüche',
+      areaTitle: 'Zahlen',
+      attempts: 3,
+      correct: 3,
+      points: 30,
+    })
+    expect(loadUser('Test').classTransfers?.[0]).toMatchObject({
+      code: '8G4Y0CV6',
+      className: '6/6',
+      points: 30,
+    })
+    const protocol = buildProtocol('Test')
+    expect(protocol.transfers.byClass[0].label).toBe('6/6')
+    expect(protocol.transfers.byClass[0].label).not.toBe('8G4Y-0CV6')
   })
 
   it('builds protocol period totals from local sessions and transfers', async () => {

@@ -6,9 +6,11 @@ import {
   getGradeCodeSettings,
   rememberCreatedClassCode,
   rememberCreatedGradeCode,
+  rememberJoinedClassCode,
   resetSharedStorageForTests,
   setActiveStorageUser,
   setSendClassPoints,
+  activeClassDisplayName,
 } from './storage'
 import {
   CLASS_CODES_STORAGE_KEY,
@@ -193,6 +195,59 @@ describe('per-user class codes', () => {
       created: [{ code: 'AAAA1111', name: '6a' }],
       activeCode: 'AAAA1111',
       sendPoints: true,
+    })
+  })
+
+  it('caches a joined Worker name without putting the code on created', async () => {
+    vi.stubGlobal('localStorage', memoryStorage())
+    vi.stubGlobal('location', { protocol: 'file:' })
+    await initSharedStorage()
+    addUser('Test', 'schueler')
+    addUser('Ben')
+    setActiveStorageUser('Test')
+    rememberJoinedClassCode('8G4Y-0CV6', '6/6')
+
+    expect(getClassCodeSettings('Test')).toMatchObject({
+      created: [],
+      known: [expect.objectContaining({ code: '8G4Y0CV6', name: '6/6' })],
+      activeCode: '8G4Y0CV6',
+    })
+    expect(activeClassDisplayName()).toBe('6/6')
+    expect(getClassCodeSettings('Ben').known).toEqual([])
+    expect(getClassCodeSettings('Ben').activeCode).toBeNull()
+  })
+
+  it('merges joined class names across WLAN copies', () => {
+    const merged = mergeSharedState(
+      {
+        schemaVersion: 1,
+        users: ['Test'],
+        records: {
+          Test: {
+            ...emptyUser('Test'),
+            classCodes: {
+              created: [],
+              known: [{ code: '8G4Y0CV6', name: '6/6', createdAt: 1 }],
+              activeCode: '8G4Y0CV6',
+              sendPoints: true,
+            },
+          },
+        },
+      },
+      {
+        schemaVersion: 1,
+        users: ['Test'],
+        records: {
+          Test: {
+            ...emptyUser('Test'),
+            classCodes: emptyClassCodes(),
+          },
+        },
+      },
+    )
+    expect(merged.records.Test.classCodes).toMatchObject({
+      known: [expect.objectContaining({ code: '8G4Y0CV6', name: '6/6' })],
+      activeCode: '8G4Y0CV6',
     })
   })
 

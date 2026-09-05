@@ -1,5 +1,9 @@
 import { addClassPoints } from '../classCode/api'
-import { displayClassName, normalizeClassCode } from '../classCode/code'
+import {
+  normalizeClassCode,
+  publicClassLabel,
+  resolveKnownClassName,
+} from '../classCode/code'
 import {
   CLASS_CODES_STORAGE_KEY,
   SHARED_STATE_SCHEMA_VERSION,
@@ -20,6 +24,7 @@ import {
   withForgottenGradeCode,
   type ClassCodeSettings,
   type ClassTransferRecord,
+  type CreatedClassCode,
   type GradeCodeSettings,
   type SharedState,
   type UserData,
@@ -442,11 +447,14 @@ const plannedTransfer = (
   if (!(points > 0)) return null
   const settings = parseClassCodes(user.classCodes)
   if (!settings.sendPoints || !settings.activeCode) return null
-  const created = settings.created.find((row) => row.code === settings.activeCode)
   return {
     date: at,
     code: settings.activeCode,
-    className: created?.name.trim() ?? '',
+    className: resolveKnownClassName(
+      settings.created,
+      settings.known ?? [],
+      settings.activeCode,
+    ),
     points,
   }
 }
@@ -491,12 +499,63 @@ export const recordSession = (name: string, input: SessionInput): UserData => {
 export const getClassCodeSettings = (name?: string): ClassCodeSettings =>
   classCodesForUser(name ?? activeUserName)
 
-/** Active class name for the top bar, or null when no code is collecting. */
+/** Active class name for the top bar, or null when no human name is known. */
 export const activeClassDisplayName = (): string | null => {
   const settings = getClassCodeSettings()
   if (!settings.activeCode) return null
-  const created = settings.created.find((row) => row.code === settings.activeCode)
-  return displayClassName(created?.name, settings.activeCode)
+  return publicClassLabel(
+    resolveKnownClassName(settings.created, settings.known ?? [], settings.activeCode),
+  )
+}
+
+const withKnownClassName = (
+  current: ClassCodeSettings,
+  code: string,
+  name: string,
+): CreatedClassCode[] => {
+  const trimmed = name.trim().slice(0, 80)
+  const known = (current.known ?? []).filter((row) => row.code !== code)
+  if (!trimmed) return known
+  const created = current.created.find((row) => row.code === code)
+  if (created?.name.trim() === trimmed) return known
+  const prev = current.known?.find((row) => row.code === code)
+  known.push({
+    code,
+    name: trimmed,
+    createdAt: prev?.createdAt || Date.now(),
+  })
+  return known
+}
+
+/** Cache a Worker class name for an entered (joined) code without owning it. */
+export const cacheKnownClassName = (code: string, name: string): void => {
+  const normalized = normalizeClassCode(code)
+  const trimmed = name.trim().slice(0, 80)
+  if (!normalized || !trimmed) return
+  const current = getClassCodeSettings()
+  const existing = resolveKnownClassName(
+    current.created,
+    current.known ?? [],
+    normalized,
+  )
+  if (existing === trimmed) return
+  persistClassCodes({
+    ...current,
+    known: withKnownClassName(current, normalized, trimmed),
+  })
+}
+
+/** Activate an entered code and persist the Worker class name locally. */
+export const rememberJoinedClassCode = (code: string, name: string): void => {
+  const normalized = normalizeClassCode(code)
+  if (!normalized) return
+  const current = getClassCodeSettings()
+  persistClassCodes({
+    ...current,
+    known: withKnownClassName(current, normalized, name),
+    deletedCodes: (current.deletedCodes ?? []).filter((row) => row.code !== normalized),
+    activeCode: normalized,
+  })
 }
 
 const persistClassCodes = (classCodes: ClassCodeSettings): void => {
@@ -665,7 +724,7 @@ export const buildProtocol = (
     transfers: summarizeClassTransfers(
       data.classTransfers ?? [],
       now,
-      settings.created,
+      [...settings.created, ...(settings.known ?? [])],
     ),
   }
 }

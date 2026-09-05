@@ -27,7 +27,12 @@ import {
   standingErrorText,
   takeCreatedListRefresh,
 } from '../classCode/createdList'
-import { formatClassCode, isValidClassCode, normalizeClassCode } from '../classCode/code'
+import {
+  formatClassCode,
+  isValidClassCode,
+  normalizeClassCode,
+  resolveKnownClassName,
+} from '../classCode/code'
 import {
   canUseWebShare,
   classCodeMailtoUrl,
@@ -37,9 +42,11 @@ import {
   openClassCodeShareUrl,
 } from '../classCode/share'
 import {
+  cacheKnownClassName,
   forgetCreatedClassCode,
   getClassCodeSettings,
   rememberCreatedClassCode,
+  rememberJoinedClassCode,
   setActiveClassCode,
   setSendClassPoints,
   subscribeSharedStorage,
@@ -151,7 +158,9 @@ export function ClassCodes({
     }
     void getClass(code)
       .then((stats) => {
-        if (!cancelled) setLinkedGrade(stats.grade ?? null)
+        if (cancelled) return
+        cacheKnownClassName(stats.code, stats.name)
+        setLinkedGrade(stats.grade ?? null)
       })
       .catch(() => {
         if (!cancelled) setLinkedGrade(null)
@@ -176,9 +185,13 @@ export function ClassCodes({
     return () => window.clearTimeout(handle)
   }, [canCreateCodes, createdKey, refreshStandings, user])
 
-  const createdCode = settings.activeCode
-    ? settings.created.find((row) => row.code === settings.activeCode)
-    : null
+  const activeClassName = settings.activeCode
+    ? resolveKnownClassName(
+        settings.created,
+        settings.known ?? [],
+        settings.activeCode,
+      )
+    : ''
 
   const onCreate = async () => {
     if (!canCreateCodes) return
@@ -213,7 +226,7 @@ export function ClassCodes({
     setFormError(null)
     try {
       const stats = await getClass(code)
-      setActiveClassCode(stats.code)
+      rememberJoinedClassCode(stats.code, stats.name)
       setLinkedGrade(stats.grade ?? null)
       setEnterCode('')
       setServerError(null)
@@ -410,7 +423,7 @@ export function ClassCodes({
             <span className="field__label">Aktiver Code</span>
             <p className="class-codes__code">{formatClassCode(settings.activeCode)}</p>
             <p className="muted small">
-              {createdCode?.name || 'Eingetragener Klassencode'}
+              {activeClassName || 'Eingetragener Klassencode'}
             </p>
           </div>
           <div className="class-codes__active-actions">
