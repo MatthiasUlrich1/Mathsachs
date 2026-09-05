@@ -1985,7 +1985,7 @@ a.link {
 
 .challenge-phase {
   font-weight: 600;
-  color: #0f172a;
+  color: var(--accent-2);
 }
 
 .challenge-prize-info {
@@ -2000,5 +2000,12 @@ a.link {
 }
 
 .challenge-class-goal {
-  color: #0f172a;
+  color: var(--text);
+}
+
+.challenge-class-goal strong {
+  color: #ecfeff;
+  background: rgba(34, 211, 238, 0.18);
+  padding: 2px 8px;
+  border-radius: 6px;
 }
