@@ -79,6 +79,15 @@ export interface InstalledCurriculum {
   contentHash?: string
 }
 
+/** Tombstone so LAN/PC merge cannot resurrect a locally removed pack. */
+export interface DeletedCurriculum {
+  id: string
+  deletedAt: number
+}
+
+export const DELETED_CURRICULUM_TTL_MS = 30 * 24 * 60 * 60 * 1000
+export const MAX_DELETED_CURRICULA = 200
+
 export interface ManifestPack {
   id: string
   title: string
@@ -356,6 +365,84 @@ export function mergeInstalledMeta(
     }
   }
   return [...byId.values()].sort((a, b) => a.id.localeCompare(b.id))
+}
+
+export function parseDeletedCurricula(
+  raw: unknown,
+  now: number = Date.now(),
+): DeletedCurriculum[] {
+  if (!Array.isArray(raw)) return []
+  const byId = new Map<string, DeletedCurriculum>()
+  const cutoff = now - DELETED_CURRICULUM_TTL_MS
+  for (const item of raw) {
+    if (!isRecord(item)) continue
+    const id = asString(item.id).trim()
+    if (!id) continue
+    const deletedAt = asNumber(item.deletedAt, 0)
+    if (deletedAt < cutoff) continue
+    const prev = byId.get(id)
+    if (!prev || deletedAt > prev.deletedAt) byId.set(id, { id, deletedAt })
+  }
+  return [...byId.values()]
+    .sort((a, b) => b.deletedAt - a.deletedAt || a.id.localeCompare(b.id))
+    .slice(0, MAX_DELETED_CURRICULA)
+}
+
+export function mergeDeletedCurricula(
+  base: DeletedCurriculum[] | undefined,
+  incoming: DeletedCurriculum[] | undefined,
+  now: number = Date.now(),
+): DeletedCurriculum[] {
+  return parseDeletedCurricula([...(base ?? []), ...(incoming ?? [])], now)
+}
+
+/**
+ * Drop packs whose tombstone is newer than `installedAt`.
+ * A later reinstall (`installedAt` > `deletedAt`) clears that tombstone.
+ */
+export function applyCurriculumTombstones(
+  packs: Record<string, CurriculumPack>,
+  meta: InstalledCurriculum[],
+  deleted: DeletedCurriculum[],
+): {
+  packs: Record<string, CurriculumPack>
+  meta: InstalledCurriculum[]
+  deleted: DeletedCurriculum[]
+} {
+  const deletedAt = new Map(deleted.map((row) => [row.id, row.deletedAt]))
+  const metaById = new Map(meta.map((row) => [row.id, row]))
+  const livePacks: Record<string, CurriculumPack> = {}
+  const resurrected = new Set<string>()
+
+  for (const [id, pack] of Object.entries(packs)) {
+    const tomb = deletedAt.get(id)
+    const installedAt = metaById.get(id)?.installedAt ?? 0
+    if (tomb != null && installedAt > tomb) {
+      livePacks[id] = pack
+      resurrected.add(id)
+      continue
+    }
+    if (tomb != null) continue
+    livePacks[id] = pack
+  }
+
+  const liveMeta: InstalledCurriculum[] = []
+  for (const row of meta) {
+    const tomb = deletedAt.get(row.id)
+    if (tomb != null && row.installedAt > tomb) {
+      liveMeta.push(row)
+      resurrected.add(row.id)
+      continue
+    }
+    if (tomb != null) continue
+    liveMeta.push(row)
+  }
+
+  return {
+    packs: livePacks,
+    meta: liveMeta.sort((a, b) => a.id.localeCompare(b.id)),
+    deleted: deleted.filter((row) => !resurrected.has(row.id)),
+  }
 }
 
 export function packNeedsUpdate(localVersion: string, remoteVersion: string): boolean {

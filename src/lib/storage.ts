@@ -189,6 +189,16 @@ const parseStateResponse = async (res: Response): Promise<SharedState | null> =>
           : Object.keys(records),
         records,
         classCodes: parseClassCodes(data.classCodes),
+        installedCurricula: Array.isArray(data.installedCurricula)
+          ? data.installedCurricula
+          : [],
+        curriculumPacks:
+          data.curriculumPacks &&
+          typeof data.curriculumPacks === 'object' &&
+          !Array.isArray(data.curriculumPacks)
+            ? data.curriculumPacks
+            : {},
+        deletedCurricula: Array.isArray(data.deletedCurricula) ? data.deletedCurricula : [],
       },
       activeUserName,
     )
@@ -218,6 +228,9 @@ const putHttpState = async (state: SharedState): Promise<SharedState | null> => 
       users: state.users,
       records: state.records,
       classCodes: state.classCodes ?? emptyClassCodes(),
+      installedCurricula: state.installedCurricula ?? [],
+      curriculumPacks: state.curriculumPacks ?? {},
+      deletedCurricula: state.deletedCurricula ?? [],
     }),
   })
   return parseStateResponse(res)
@@ -264,6 +277,7 @@ export const syncCurriculumPacksToShared = (): void => {
     ...cache,
     installedCurricula: snap.installedCurricula,
     curriculumPacks: snap.curriculumPacks,
+    deletedCurricula: snap.deletedCurricula,
   }
   void persistCache()
   notify()

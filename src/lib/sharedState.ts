@@ -6,11 +6,15 @@ import {
 } from '../challenge/parse'
 import type { DeletedChallenge, StoredChallenge } from '../challenge/types'
 import {
+  applyCurriculumTombstones,
+  mergeDeletedCurricula,
   mergeInstalledMeta,
   mergeInstalledPackMaps,
   parseCurriculumPacksMap,
+  parseDeletedCurricula,
   parseInstalledCurricula,
   type CurriculumPack,
+  type DeletedCurriculum,
   type InstalledCurriculum,
 } from '../curriculum/pack'
 
@@ -123,6 +127,8 @@ export interface SharedState {
   classCodes?: ClassCodeSettings
   installedCurricula?: InstalledCurriculum[]
   curriculumPacks?: Record<string, CurriculumPack>
+  /** Tombstones so merge cannot resurrect a pack this device just removed. */
+  deletedCurricula?: DeletedCurriculum[]
 }
 
 export const SHARED_STATE_SCHEMA_VERSION = 1
@@ -165,6 +171,7 @@ export const emptySharedState = (): SharedState => ({
   classCodes: emptyClassCodes(),
   installedCurricula: [],
   curriculumPacks: {},
+  deletedCurricula: [],
 })
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
@@ -528,6 +535,7 @@ export const sharedStateFingerprint = (state: SharedState): string =>
     classCodes: state.classCodes ?? emptyClassCodes(),
     installedCurricula: parseInstalledCurricula(state.installedCurricula),
     curriculumPacks: parseCurriculumPacksMap(state.curriculumPacks),
+    deletedCurricula: parseDeletedCurricula(state.deletedCurricula),
   })
 
 const MAX_SESSIONS = 200
@@ -646,6 +654,20 @@ export const mergeSharedState = (base: SharedState, incoming: SharedState): Shar
     const mergedUser = mergeUserData(baseM.records[name], incomingM.records[name])
     records[name] = mergedUser ?? emptyUser(name)
   }
+  const curricula = applyCurriculumTombstones(
+    mergeInstalledPackMaps(
+      parseCurriculumPacksMap(baseM.curriculumPacks),
+      parseCurriculumPacksMap(incomingM.curriculumPacks),
+    ),
+    mergeInstalledMeta(
+      parseInstalledCurricula(baseM.installedCurricula),
+      parseInstalledCurricula(incomingM.installedCurricula),
+    ),
+    mergeDeletedCurricula(
+      parseDeletedCurricula(baseM.deletedCurricula),
+      parseDeletedCurricula(incomingM.deletedCurricula),
+    ),
+  )
   return migrateSharedClassCodes({
     schemaVersion: SHARED_STATE_SCHEMA_VERSION,
     migratedLocalStorage: Boolean(base.migratedLocalStorage || incoming.migratedLocalStorage),
@@ -655,13 +677,8 @@ export const mergeSharedState = (base: SharedState, incoming: SharedState): Shar
       baseM.classCodes ?? emptyClassCodes(),
       incomingM.classCodes ?? emptyClassCodes(),
     ),
-    installedCurricula: mergeInstalledMeta(
-      parseInstalledCurricula(baseM.installedCurricula),
-      parseInstalledCurricula(incomingM.installedCurricula),
-    ),
-    curriculumPacks: mergeInstalledPackMaps(
-      parseCurriculumPacksMap(baseM.curriculumPacks),
-      parseCurriculumPacksMap(incomingM.curriculumPacks),
-    ),
+    installedCurricula: curricula.meta,
+    curriculumPacks: curricula.packs,
+    deletedCurricula: curricula.deleted,
   })
 }

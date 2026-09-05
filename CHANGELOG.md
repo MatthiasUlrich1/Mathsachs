@@ -9,6 +9,18 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.39] – 2026-09-05
+
+### Behoben
+
+- **Lehrplan entfernen:** Nach **Entfernen** (Gymnasium oder Oberschule)
+  bleibt das Paket auf diesem Gerät weg. Die gemeinsame WLAN-/PC-Zusammenführung
+  hat gelöschte Lehrpläne bisher wiederhergestellt (Vereinigung ohne
+  Löschmarker). Jetzt merkt sich das Gerät entfernte Paket-IDs
+  (`deletedCurricula`, nur ID und Zeitpunkt, keine Personendaten) und
+  spielt sie nicht erneut ein. Erneutes **Installieren** ist weiter möglich.
+  Eine Challenge blockiert das Entfernen nicht.
+
 ## [0.1.38] – 2026-09-05
 
 ### Hinzugefügt
@@ -576,7 +588,10 @@ Fixes #11
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.36...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.39...HEAD
+[0.1.39]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.38...v0.1.39
+[0.1.38]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.37...v0.1.38
+[0.1.37]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.36...v0.1.37
 [0.1.36]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.35...v0.1.36
 [0.1.35]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.34...v0.1.35
 [0.1.34]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.33...v0.1.34

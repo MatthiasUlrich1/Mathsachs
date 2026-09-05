@@ -16,6 +16,8 @@ const DELETED_CLASS_CODE_TTL_MS = 30 * 24 * 60 * 60 * 1000
 const MAX_DELETED_CLASS_CODES = 200
 const DELETED_CHALLENGE_TTL_MS = DELETED_CLASS_CODE_TTL_MS
 const MAX_DELETED_CHALLENGES = 200
+const DELETED_CURRICULUM_TTL_MS = DELETED_CLASS_CODE_TTL_MS
+const MAX_DELETED_CURRICULA = 200
 const USERS_KEY = 'mathsachs.users.v1'
 const CLASS_CODES_KEY = 'mathsachs.classCodes.v1'
 const USER_KEY_RE = /^mathsachs\.user\.(.+)\.v1$/
@@ -47,6 +49,7 @@ function emptyState() {
     classCodes: emptyClassCodes(),
     installedCurricula: [],
     curriculumPacks: {},
+    deletedCurricula: [],
   }
 }
 
@@ -240,6 +243,90 @@ function normalizeDeletedChallenges(raw, now) {
   return [...byId.values()]
     .sort((a, b) => b.deletedAt - a.deletedAt || a.id.localeCompare(b.id))
     .slice(0, MAX_DELETED_CHALLENGES)
+}
+
+function normalizeDeletedCurricula(raw, now) {
+  const list = Array.isArray(raw) ? raw : []
+  const byId = new Map()
+  const cutoff = (now || Date.now()) - DELETED_CURRICULUM_TTL_MS
+  for (const item of list) {
+    if (!item || typeof item !== 'object' || typeof item.id !== 'string') continue
+    const id = item.id.trim()
+    if (!id) continue
+    const deletedAt = asFiniteNumber(item.deletedAt, 0)
+    if (deletedAt < cutoff) continue
+    const prev = byId.get(id)
+    if (!prev || deletedAt > prev.deletedAt) byId.set(id, { id, deletedAt })
+  }
+  return [...byId.values()]
+    .sort((a, b) => b.deletedAt - a.deletedAt || a.id.localeCompare(b.id))
+    .slice(0, MAX_DELETED_CURRICULA)
+}
+
+function normalizeInstalledMeta(raw) {
+  const list = Array.isArray(raw) ? raw : []
+  const byId = new Map()
+  for (const item of list) {
+    if (!item || typeof item !== 'object' || typeof item.id !== 'string') continue
+    const id = item.id.trim()
+    const version = asString(item.version).trim()
+    if (!id || !version) continue
+    const row = {
+      id,
+      version,
+      installedAt: asFiniteNumber(item.installedAt, 0),
+      contentHash: asString(item.contentHash) || undefined,
+    }
+    const prev = byId.get(id)
+    if (!prev || row.installedAt > prev.installedAt) byId.set(id, row)
+  }
+  return [...byId.values()].sort((a, b) => a.id.localeCompare(b.id))
+}
+
+function normalizeCurriculumPacks(raw) {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return {}
+  const out = {}
+  for (const [key, value] of Object.entries(raw)) {
+    if (!value || typeof value !== 'object') continue
+    const id = asString(value.id, key).trim() || key
+    if (!id) continue
+    out[id] = value
+  }
+  return out
+}
+
+function applyCurriculumTombstones(packs, meta, deleted) {
+  const deletedAt = new Map(deleted.map((row) => [row.id, row.deletedAt]))
+  const metaById = new Map(meta.map((row) => [row.id, row]))
+  const livePacks = {}
+  const resurrected = new Set()
+  for (const [id, pack] of Object.entries(packs)) {
+    const tomb = deletedAt.get(id)
+    const installedAt = metaById.get(id) ? metaById.get(id).installedAt : 0
+    if (tomb != null && installedAt > tomb) {
+      livePacks[id] = pack
+      resurrected.add(id)
+      continue
+    }
+    if (tomb != null) continue
+    livePacks[id] = pack
+  }
+  const liveMeta = []
+  for (const row of meta) {
+    const tomb = deletedAt.get(row.id)
+    if (tomb != null && row.installedAt > tomb) {
+      liveMeta.push(row)
+      resurrected.add(row.id)
+      continue
+    }
+    if (tomb != null) continue
+    liveMeta.push(row)
+  }
+  return {
+    packs: livePacks,
+    meta: liveMeta.sort((a, b) => a.id.localeCompare(b.id)),
+    deleted: deleted.filter((row) => !resurrected.has(row.id)),
+  }
 }
 
 function applyChallengeTombstones(challenges, deleted) {
@@ -548,11 +635,9 @@ function normalizeState(raw) {
     users,
     records,
     classCodes: normalizeClassCodes(src.classCodes),
-    installedCurricula: Array.isArray(src.installedCurricula) ? src.installedCurricula : [],
-    curriculumPacks:
-      src.curriculumPacks && typeof src.curriculumPacks === 'object' && !Array.isArray(src.curriculumPacks)
-        ? src.curriculumPacks
-        : {},
+    installedCurricula: normalizeInstalledMeta(src.installedCurricula),
+    curriculumPacks: normalizeCurriculumPacks(src.curriculumPacks),
+    deletedCurricula: normalizeDeletedCurricula(src.deletedCurricula),
   }
 }
 
@@ -654,22 +739,33 @@ function mergeSharedState(baseRaw, incomingRaw) {
   for (const name of users) {
     records[name] = mergeUserData(base.records[name], incoming.records[name])
   }
+  const curricula = applyCurriculumTombstones(
+    {
+      ...(base.curriculumPacks && typeof base.curriculumPacks === 'object'
+        ? base.curriculumPacks
+        : {}),
+      ...(incoming.curriculumPacks && typeof incoming.curriculumPacks === 'object'
+        ? incoming.curriculumPacks
+        : {}),
+    },
+    normalizeInstalledMeta([
+      ...(Array.isArray(base.installedCurricula) ? base.installedCurricula : []),
+      ...(Array.isArray(incoming.installedCurricula) ? incoming.installedCurricula : []),
+    ]),
+    normalizeDeletedCurricula([
+      ...(Array.isArray(base.deletedCurricula) ? base.deletedCurricula : []),
+      ...(Array.isArray(incoming.deletedCurricula) ? incoming.deletedCurricula : []),
+    ]),
+  )
   return migrateSharedClassCodes({
     schemaVersion: SCHEMA_VERSION,
     migratedLocalStorage: base.migratedLocalStorage || incoming.migratedLocalStorage,
     users,
     records,
     classCodes: mergeClassCodes(base.classCodes, incoming.classCodes),
-    installedCurricula: [
-      ...(Array.isArray(base.installedCurricula) ? base.installedCurricula : []),
-      ...(Array.isArray(incoming.installedCurricula) ? incoming.installedCurricula : []),
-    ],
-    curriculumPacks: {
-      ...(base.curriculumPacks && typeof base.curriculumPacks === 'object' ? base.curriculumPacks : {}),
-      ...(incoming.curriculumPacks && typeof incoming.curriculumPacks === 'object'
-        ? incoming.curriculumPacks
-        : {}),
-    },
+    installedCurricula: curricula.meta,
+    curriculumPacks: curricula.packs,
+    deletedCurricula: curricula.deleted,
   })
 }
 

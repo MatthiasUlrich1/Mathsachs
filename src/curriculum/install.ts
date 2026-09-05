@@ -2,17 +2,22 @@ import {
   GYM_SACHSEN_PACK_ID,
   OS_HS_PACK_ID,
   OS_RS_PACK_ID,
+  applyCurriculumTombstones,
+  mergeDeletedCurricula,
   mergePackUpdate,
   parseCurriculumPack,
   parseCurriculumPacksMap,
+  parseDeletedCurricula,
   parseInstalledCurricula,
   type CurriculumPack,
+  type DeletedCurriculum,
   type InstalledCurriculum,
 } from './pack'
 import { buildOberschuleHsPack, buildOberschuleRsPack } from './oberschulePacks'
 import { buildGymSachsenSeed } from './seed'
 
 export const INSTALLED_KEY = 'mathsachs.installedCurricula.v1'
+export const DELETED_PACKS_KEY = 'mathsachs.deletedCurricula.v1'
 export const packStorageKey = (id: string) => `mathsachs.curriculumPack.${id}.v1`
 export const MIGRATED_KEY = 'mathsachs.curriculumMigrated.v1'
 export const LOADED_KEY = 'mathsachs.loadedGrades.v1'
@@ -75,6 +80,23 @@ export function listInstalledPacks(kv: CurriculumKv = defaultCurriculumKv()): Cu
     .filter((pack): pack is CurriculumPack => pack !== null)
 }
 
+export function listDeletedCurricula(
+  kv: CurriculumKv = defaultCurriculumKv(),
+): DeletedCurriculum[] {
+  return parseDeletedCurricula(readJson(kv, DELETED_PACKS_KEY))
+}
+
+export function writeDeletedCurricula(
+  rows: DeletedCurriculum[],
+  kv: CurriculumKv = defaultCurriculumKv(),
+): void {
+  if (rows.length === 0) {
+    kv.removeItem(DELETED_PACKS_KEY)
+    return
+  }
+  kv.setItem(DELETED_PACKS_KEY, JSON.stringify(rows))
+}
+
 export function isPackInstalled(id: string, kv: CurriculumKv = defaultCurriculumKv()): boolean {
   return listInstalledMeta(kv).some((row) => row.id === id)
 }
@@ -108,6 +130,10 @@ export function installPack(
   if (!parsed) throw new Error('Ungültiges Lehrplan-Paket.')
   const existing = getInstalledPack(parsed.id, kv)
   const next = existing ? mergePackUpdate(existing, parsed) : parsed
+  writeDeletedCurricula(
+    listDeletedCurricula(kv).filter((row) => row.id !== next.id),
+    kv,
+  )
   writeInstalledState(
     [...listInstalledPacks(kv).filter((item) => item.id !== next.id), next],
     kv,
@@ -116,9 +142,17 @@ export function installPack(
   return next
 }
 
-export function removePack(id: string, kv: CurriculumKv = defaultCurriculumKv()): void {
+export function removePack(
+  id: string,
+  kv: CurriculumKv = defaultCurriculumKv(),
+  now: number = Date.now(),
+): void {
   writeInstalledState(
     listInstalledPacks(kv).filter((item) => item.id !== id),
+    kv,
+  )
+  writeDeletedCurricula(
+    mergeDeletedCurricula(listDeletedCurricula(kv), [{ id, deletedAt: now }], now),
     kv,
   )
 }
@@ -187,20 +221,35 @@ export async function migrateBundledCurriculumIfNeeded(
 }
 
 export function applySharedPacksToKv(
-  state: { installedCurricula?: unknown; curriculumPacks?: unknown },
+  state: {
+    installedCurricula?: unknown
+    curriculumPacks?: unknown
+    deletedCurricula?: unknown
+  },
   kv: CurriculumKv = defaultCurriculumKv(),
 ): void {
-  const packs = Object.values(parseCurriculumPacksMap(state.curriculumPacks))
-  if (packs.length > 0) writeInstalledState(packs, kv)
+  const incomingPacks = parseCurriculumPacksMap(state.curriculumPacks)
+  const incomingMeta = parseInstalledCurricula(state.installedCurricula)
+  const applied = applyCurriculumTombstones(
+    incomingPacks,
+    incomingMeta,
+    mergeDeletedCurricula(listDeletedCurricula(kv), parseDeletedCurricula(state.deletedCurricula)),
+  )
+  writeDeletedCurricula(applied.deleted, kv)
+  const hadIncoming = Object.keys(incomingPacks).length > 0 || incomingMeta.length > 0
+  if (!hadIncoming) return
+  writeInstalledState(Object.values(applied.packs), kv)
 }
 
 export function snapshotPacksForSharedState(kv: CurriculumKv = defaultCurriculumKv()): {
   installedCurricula: InstalledCurriculum[]
   curriculumPacks: Record<string, CurriculumPack>
+  deletedCurricula: DeletedCurriculum[]
 } {
   const packs = listInstalledPacks(kv)
   return {
     installedCurricula: listInstalledMeta(kv),
     curriculumPacks: Object.fromEntries(packs.map((pack) => [pack.id, pack])),
+    deletedCurricula: listDeletedCurricula(kv),
   }
 }
