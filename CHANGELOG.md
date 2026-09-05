@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.16] – 2026-09-05
+
+### Geändert
+
+- **Einstellungen:** Lehrpläne, Klasse/Klassencode, WLAN-Zugang und Profil
+  liegen auf einer Seite. Die Leiste zeigt Themen, Klausur erstellen,
+  Klausur schreiben, Punkteprotokoll und **Einstellungen**. Der Name und die
+  aktive Klasse bleiben in der Leiste; **Benutzer wechseln** steht nur noch
+  unter Profil (keine Benutzerrollen). WLAN-Zugang nur, wenn die Desktop-App
+  den LAN-Status liefert — im Browser ein kurzer Hinweis.
+
 ## [0.1.15] – 2026-09-05
 
 ### Hinzugefügt
@@ -234,7 +245,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.15...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.16...HEAD
+[0.1.16]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.15...v0.1.16
 [0.1.15]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.14...v0.1.15
 [0.1.14]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.13...v0.1.14
 [0.1.13]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.12...v0.1.13

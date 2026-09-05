@@ -61,8 +61,8 @@ export const searchTopics = (query: string, loaded: LoadedGrade[]): TopicHit[] =
 
 /**
  * Registry modules that are NOT currently loaded but whose static search hints
- * match the query — used to show "In Klasse X verfügbar – im Reiter ‚Lehrpläne'
- * laden" without importing the ungeladenen grade's topics.
+ * match the query — used to show "In Klasse X verfügbar – unter Einstellungen →
+ * Lehrpläne laden" without importing the ungeladenen grade's topics.
  */
 export const searchUnloadedHints = (
   query: string,

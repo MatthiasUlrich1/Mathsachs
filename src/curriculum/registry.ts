@@ -16,7 +16,7 @@ export const CURRICULUM_VERSION = 1
  *
  * `load()` uses a dynamic `import(...)` so the actual topic definitions are
  * only fetched (as a separate code-split chunk) once a grade is activated in
- * the "Lehrpläne" setup screen — that is the "Nachladen" mechanism.
+ * the Lehrpläne section under Einstellungen — that is the "Nachladen" mechanism.
  */
 export interface CurriculumModule {
   id: string

@@ -69,8 +69,8 @@ export function SearchResults({
             {hints.map((mod) => (
               <li key={mod.id} className="search-hint">
                 <span>
-                  In <strong>{mod.gradeTitle}</strong> verfügbar – im Reiter „Lehrpläne“
-                  laden.
+                  In <strong>{mod.gradeTitle}</strong> verfügbar – unter
+                  Einstellungen → Lehrpläne laden.
                 </span>
                 <button type="button" className="chip-btn" onClick={onGoToSetup}>
                   Zu den Lehrplänen

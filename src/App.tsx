@@ -17,7 +17,6 @@ import {
 } from './lib/storage'
 import { searchTopics, searchUnloadedHints } from './curriculum/search'
 import { CurriculumBrowser } from './components/CurriculumBrowser'
-import { CurriculumSetup } from './components/CurriculumSetup'
 import { PracticeSession } from './components/PracticeSession'
 import { Worksheet } from './components/Worksheet'
 import { Protocol } from './components/Protocol'
@@ -27,10 +26,11 @@ import { ExamRunner } from './components/ExamRunner'
 import { UpdateBanner } from './components/UpdateBanner'
 import { LegalFooter } from './components/LegalFooter'
 import { LanAccessCard } from './components/LanAccessCard'
-import { ClassCodes } from './components/ClassCodes'
+import { Settings } from './components/Settings'
 import { parseExamHash } from './exam/examCode'
 import { useUpdateCheck } from './updates/useUpdateCheck'
 import { primaryLanOrigin, useLanStatus } from './lan/useLanStatus'
+import { TOP_TABS, type TopTabId } from './nav'
 
 const ACTIVE_KEY = 'mathsachs.activeUser.v1'
 
@@ -40,12 +40,7 @@ interface LoadedGrade {
 }
 
 type View =
-  | { name: 'browse' }
-  | { name: 'setup' }
-  | { name: 'protocol' }
-  | { name: 'examBuild' }
-  | { name: 'examRun' }
-  | { name: 'class' }
+  | { name: TopTabId }
   | { name: 'practice'; topic: Topic; areaTitle: string; gradeTitle: string }
   | { name: 'worksheet'; topic: Topic; areaTitle: string; gradeTitle: string }
 
@@ -76,7 +71,8 @@ export default function App() {
     view.name === 'practice' ||
     view.name === 'worksheet' ||
     view.name === 'examRun'
-  const showLanCard = Boolean(lanStatus) && !hideUpdateBanner
+  // Login stays as-is: desktop hosts still see WLAN before a user is picked.
+  const showLanOnLogin = Boolean(lanStatus)
   const updateBanner =
     updateCheck.update && !hideUpdateBanner ? (
       <UpdateBanner
@@ -201,7 +197,7 @@ export default function App() {
           <h2 className="section-title">Wer übt heute?</h2>
           <p className="muted">Daten werden geladen …</p>
         </section>
-        {showLanCard && lanStatus && <LanAccessCard status={lanStatus} />}
+        {showLanOnLogin && lanStatus && <LanAccessCard status={lanStatus} />}
         <LegalFooter version={updateCheck.currentVersion} />
       </main>
     )
@@ -246,7 +242,7 @@ export default function App() {
             </div>
           </div>
         </section>
-        {showLanCard && lanStatus && <LanAccessCard status={lanStatus} />}
+        {showLanOnLogin && lanStatus && <LanAccessCard status={lanStatus} />}
         <LegalFooter version={updateCheck.currentVersion} />
       </main>
     )
@@ -290,48 +286,16 @@ export default function App() {
       <header className="topbar">
         <Brand compact />
         <nav className="topbar__nav">
-          <button
-            type="button"
-            className={`tab ${view.name === 'browse' ? 'tab--active' : ''}`}
-            onClick={() => setView({ name: 'browse' })}
-          >
-            Themen
-          </button>
-          <button
-            type="button"
-            className={`tab ${view.name === 'setup' ? 'tab--active' : ''}`}
-            onClick={() => setView({ name: 'setup' })}
-          >
-            Lehrpläne
-          </button>
-          <button
-            type="button"
-            className={`tab ${view.name === 'examBuild' ? 'tab--active' : ''}`}
-            onClick={() => setView({ name: 'examBuild' })}
-          >
-            Klausur erstellen
-          </button>
-          <button
-            type="button"
-            className={`tab ${view.name === 'examRun' ? 'tab--active' : ''}`}
-            onClick={() => setView({ name: 'examRun' })}
-          >
-            Klausur schreiben
-          </button>
-          <button
-            type="button"
-            className={`tab ${view.name === 'protocol' ? 'tab--active' : ''}`}
-            onClick={() => setView({ name: 'protocol' })}
-          >
-            Punkteprotokoll
-          </button>
-          <button
-            type="button"
-            className={`tab ${view.name === 'class' ? 'tab--active' : ''}`}
-            onClick={() => setView({ name: 'class' })}
-          >
-            Klasse
-          </button>
+          {TOP_TABS.map((tab) => (
+            <button
+              key={tab.id}
+              type="button"
+              className={`tab ${view.name === tab.id ? 'tab--active' : ''}`}
+              onClick={() => setView({ name: tab.id })}
+            >
+              {tab.label}
+            </button>
+          ))}
           <div className="user-badge">
             <div className="user-badge__who">
               <span className="user-badge__name">{activeUser}</span>
@@ -339,18 +303,6 @@ export default function App() {
                 <span className="user-badge__class">{classLabel}</span>
               )}
             </div>
-            <button
-              type="button"
-              className="link"
-              onClick={() => {
-                setActiveStorageUser(null)
-                setActiveUser(null)
-                setClassLabel(null)
-                setView({ name: 'browse' })
-              }}
-            >
-              wechseln
-            </button>
           </div>
         </nav>
       </header>
@@ -363,13 +315,13 @@ export default function App() {
             <div className="course-head">
               <h2 className="section-title no-margin">Kein Lehrplan geladen</h2>
               <p className="muted small">
-                Öffne den Bereich „Lehrpläne" und lade eine Klasse, um mit dem
-                Üben zu beginnen.
+                Öffne Einstellungen und lade unter Lehrpläne eine Klasse, um
+                mit dem Üben zu beginnen.
               </p>
               <button
                 type="button"
                 className="primary setup-cta"
-                onClick={() => setView({ name: 'setup' })}
+                onClick={() => setView({ name: 'settings' })}
               >
                 Zu den Lehrplänen
               </button>
@@ -414,7 +366,7 @@ export default function App() {
                   hints={searchHints}
                   onPractice={openPractice}
                   onWorksheet={openWorksheet}
-                  onGoToSetup={() => setView({ name: 'setup' })}
+                  onGoToSetup={() => setView({ name: 'settings' })}
                 />
               ) : (
                 <>
@@ -456,12 +408,21 @@ export default function App() {
         </section>
       )}
 
-      {view.name === 'setup' && (
-        <CurriculumSetup
+      {view.name === 'settings' && (
+        <Settings
           loadedIds={loaded.map((l) => l.moduleId)}
           onLoad={loadCurriculum}
           onRemove={removeCurriculum}
-          onExit={() => setView({ name: 'browse' })}
+          onExitToTopics={() => setView({ name: 'browse' })}
+          user={activeUser}
+          classLabel={classLabel}
+          lanStatus={lanStatus}
+          onSwitchUser={() => {
+            setActiveStorageUser(null)
+            setActiveUser(null)
+            setClassLabel(null)
+            setView({ name: 'browse' })
+          }}
         />
       )}
 
@@ -507,10 +468,6 @@ export default function App() {
       {view.name === 'protocol' && (
         <Protocol user={activeUser} onExit={() => setView({ name: 'browse' })} />
       )}
-
-      {view.name === 'class' && <ClassCodes key={activeUser} user={activeUser} />}
-
-      {showLanCard && lanStatus && <LanAccessCard status={lanStatus} />}
 
       <LegalFooter version={updateCheck.currentVersion} />
     </main>

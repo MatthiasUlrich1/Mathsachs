@@ -26,7 +26,10 @@ verteilen. Gebaut mit React, TypeScript und Vite.
 - **Übungsblätter drucken** (oder als PDF speichern) inklusive Lösungsteil.
 - **Mehrere Benutzer**: Punkte werden pro Name gespeichert. In der Desktop-App
   gilt dieselbe Benutzerliste und derselbe Punktestand für den PC und für
-  Tablets im WLAN.
+  Tablets im WLAN. **Benutzer wechseln** steht unter **Einstellungen → Profil**.
+- **Einstellungen**: Lehrpläne laden, Klassencode, WLAN-Zugang (Desktop) und
+  Profil. Die Leiste bleibt bei **Themen**, **Klausur erstellen**,
+  **Klausur schreiben**, **Punkteprotokoll** und **Einstellungen**.
 - **Punkteprotokoll**: Auswertung je Thema in Prozent und Gesamtpunktzahl,
   plus Tag / Woche / Monat / Schuljahr aus den lokalen Übungen und den an
   eine Klasse gesendeten Punkten; ebenfalls druckbar.
@@ -42,7 +45,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.15**).
+(aktuelle Version **0.1.16**).
 
 Die App prüft beim Start die öffentlichen
 [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
@@ -64,7 +67,7 @@ die App erzeugt daraus auf jedem Gerät dieselben Aufgaben.
 
 ### Als Lehrkraft: Klausur erstellen
 
-1. Im Reiter **Lehrpläne** die gewünschten Klassen laden (z. B. Klasse 6).
+1. Unter **Einstellungen → Lehrpläne** die gewünschten Klassen laden (z. B. Klasse 6).
 2. Reiter **Klausur erstellen** öffnen.
 3. **Schritt 1 – Themen:** Lernbereiche aufklappen und die Themen per Checkbox
    vorauswählen.
@@ -103,7 +106,7 @@ Internet-Host.
 
 1. Mathsachs auf dem Windows-, macOS- oder Linux-Rechner starten und geöffnet
    lassen.
-2. In der App die Karte **WLAN-Zugang** ansehen: dort stehen die Adresse
+2. Unter **Einstellungen** die Karte **WLAN-Zugang** ansehen: dort stehen die Adresse
    (typisch `http://192.168.x.x:4747/`) und ein QR-Code.
 3. Auf dem Tablet/Handy im Browser diese Adresse öffnen oder den QR-Code
    scannen. HTTP, nicht HTTPS.
@@ -138,7 +141,7 @@ Klasse senden** gelten **pro angemeldetem Benutzer**. Andere Profile auf
 demselben PC oder im WLAN sehen diese Liste nicht. Die Datei auf dem
 Desktop kann trotzdem alle Benutzer enthalten.
 
-Im Reiter **Klasse**:
+Unter **Einstellungen → Klasse**:
 
 1. **Code erstellen** (Schüler oder Lehrkraft): **in der App** den Klassennamen
    eingeben. Mathsachs erzeugt den Code selbst — niemand braucht dafür den
@@ -288,7 +291,7 @@ src/
   lan/                # WLAN-Server-Status in der UI, Tests für den LAN-HTTP-Server
   legal/              # Impressum, Datenschutz-Hinweis, MIT-Lizenztext, Ideenmelder-mailto
   updates/            # GitHub-Releases-Updateprüfung (Semver, Assets, Banner)
-  components/         # UI: Browser, Üben, Übungsblatt, Protokoll, Klasse, Klausur, Update-Hinweis, Rechtliches
+  components/         # UI: Browser, Üben, Übungsblatt, Protokoll, Einstellungen (Lehrpläne, Klasse, WLAN, Profil), Klausur, Update-Hinweis, Rechtliches
   App.tsx             # Views, routing and user management
   App.css             # Component styles
   index.css           # Global theme

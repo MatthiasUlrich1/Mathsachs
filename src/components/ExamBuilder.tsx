@@ -198,8 +198,8 @@ export function ExamBuilder({ loaded, onExit, shareOrigin }: Props) {
           </button>
         </div>
         <p className="notice notice--warn">
-          Es ist kein Lehrplan geladen. Lade zuerst im Reiter „Lehrpläne“ eine
-          Klasse, um Themen für eine Klausur auswählen zu können.
+          Es ist kein Lehrplan geladen. Lade zuerst unter Einstellungen →
+          Lehrpläne eine Klasse, um Themen für eine Klausur auswählen zu können.
         </p>
       </section>
     )
