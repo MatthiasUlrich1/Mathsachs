@@ -1,14 +1,19 @@
 import { useEffect, useState } from 'react'
 import { fetchCurriculumManifest, fetchCurriculumPack } from '../curriculum/catalog'
 import {
-  installBundledGymSachsen,
+  bundledPackById,
   installPack,
   listInstalledMeta,
   listInstalledPacks,
   removePack,
 } from '../curriculum/install'
 import { packNeedsUpdate, type ManifestPack } from '../curriculum/pack'
-import { GYM_SACHSEN_PACK_ID, listVisibleGradeModules } from '../curriculum/registry'
+import {
+  GYM_SACHSEN_PACK_ID,
+  OS_HS_PACK_ID,
+  OS_RS_PACK_ID,
+  listVisibleGradeModules,
+} from '../curriculum/registry'
 
 interface Props {
   loadedIds: string[]
@@ -65,6 +70,26 @@ export function CurriculumSetup({ loadedIds, onLoad, onRemove, onPacksChanged }:
             url: '',
             changelog: 'Mitgeliefert: Klassen 5–12 GK. Ohne Netz wird die lokale Fassung installiert.',
           },
+          {
+            id: OS_HS_PACK_ID,
+            title: 'Oberschule Sachsen · Mathematik · Hauptschulbildungsgang',
+            region: 'Sachsen',
+            school: 'Oberschule',
+            subject: 'Mathematik',
+            version: '1.0.0',
+            url: '',
+            changelog: 'Mitgeliefert: Klassen 5–9. Ohne Netz wird die lokale Fassung installiert.',
+          },
+          {
+            id: OS_RS_PACK_ID,
+            title: 'Oberschule Sachsen · Mathematik · Realschulbildungsgang',
+            region: 'Sachsen',
+            school: 'Oberschule',
+            subject: 'Mathematik',
+            version: '1.0.0',
+            url: '',
+            changelog: 'Mitgeliefert: Klassen 5–10. Ohne Netz wird die lokale Fassung installiert.',
+          },
         ]
 
   return (
@@ -82,8 +107,9 @@ export function CurriculumSetup({ loadedIds, onLoad, onRemove, onPacksChanged }:
       {installed.length === 0 && (
         <p className="notice notice--warn">
           Es ist noch kein Lehrplan installiert. Installiere zuerst
-          „Gymnasium Sachsen · Mathematik“, um Themen, Klausur und Challenge
-          nutzen zu können.
+          „Gymnasium Sachsen · Mathematik“ oder einen Oberschule-Lehrplan
+          (Hauptschul- oder Realschulbildungsgang), um Themen, Klausur und
+          Challenge nutzen zu können.
         </p>
       )}
       {error && <p className="notice notice--error">{error}</p>}
@@ -125,8 +151,9 @@ export function CurriculumSetup({ loadedIds, onLoad, onRemove, onPacksChanged }:
                         onClick={() =>
                           void run(entry.id, async () => {
                             const downloaded = entry.url ? await fetchCurriculumPack(entry.url) : null
-                            if (downloaded) installPack(downloaded)
-                            else await installBundledGymSachsen()
+                            const fallback = downloaded ?? (await bundledPackById(entry.id))
+                            if (!fallback) throw new Error('Lehrplan nicht verfügbar.')
+                            installPack(fallback)
                           })
                         }
                       >
@@ -145,8 +172,9 @@ export function CurriculumSetup({ loadedIds, onLoad, onRemove, onPacksChanged }:
                     onClick={() =>
                       void run(entry.id, async () => {
                         const downloaded = entry.url ? await fetchCurriculumPack(entry.url) : null
-                        if (downloaded) installPack(downloaded)
-                        else await installBundledGymSachsen()
+                        const fallback = downloaded ?? (await bundledPackById(entry.id))
+                        if (!fallback) throw new Error('Lehrplan nicht verfügbar.')
+                        installPack(fallback)
                       })
                     }
                   >

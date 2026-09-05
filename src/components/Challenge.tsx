@@ -715,11 +715,14 @@ function ChallengeCreateForm({
           loaded.map(({ moduleId, grade }) => (
             <div key={moduleId} className="exam-grade">
               <h3 className="exam-grade__title">{grade.title}</h3>
-              {grade.areas.map((area) => (
+              {grade.areas.map((area) => {
+                const playable = area.topics.filter((topic) => !topic.outlineOnly)
+                if (playable.length === 0) return null
+                return (
                 <fieldset key={area.id} className="exam-area">
                   <legend className="exam-area__legend">{area.title}</legend>
                   <div className="exam-area__topics">
-                    {area.topics.map((topic) => (
+                    {playable.map((topic) => (
                       <label key={topic.id} className="exam-check">
                         <input
                           type="checkbox"
@@ -734,7 +737,8 @@ function ChallengeCreateForm({
                     ))}
                   </div>
                 </fieldset>
-              ))}
+                )
+              })}
             </div>
           ))
         )}

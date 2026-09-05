@@ -2,6 +2,8 @@ import { compareSemver, isNewerVersion } from '../updates/semver'
 import type { AnswerKind } from './types'
 
 export const GYM_SACHSEN_PACK_ID = 'gym-sachsen'
+export const OS_HS_PACK_ID = 'oberschule-sachsen-hs'
+export const OS_RS_PACK_ID = 'oberschule-sachsen-rs'
 export type ExtraSource = 'lehrer'
 
 export interface PackTask {

@@ -42,6 +42,8 @@ export interface Topic {
   keywords?: string[]
   source?: 'official' | 'lehrer'
   extraId?: string
+  /** Official Lerninhalt without a practice generator yet. */
+  outlineOnly?: boolean
   generate: (rng: Rng) => Task
 }
 

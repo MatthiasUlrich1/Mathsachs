@@ -47,6 +47,7 @@ export function ExamBuilder({ loaded, onExit }: Props) {
     for (const { moduleId, grade } of loaded) {
       for (const area of grade.areas) {
         for (const topic of area.topics) {
+          if (topic.outlineOnly) continue
           list.push({
             key: themeKey(moduleId, topic.id),
             moduleId,
@@ -339,11 +340,14 @@ function ExamStepThemes({
       {loaded.map(({ moduleId, grade }) => (
         <div key={moduleId} className="exam-grade">
           <h3 className="exam-grade__title">{grade.title}</h3>
-          {grade.areas.map((area) => (
+          {grade.areas.map((area) => {
+            const playable = area.topics.filter((topic) => !topic.outlineOnly)
+            if (playable.length === 0) return null
+            return (
             <fieldset key={area.id} className="exam-area">
               <legend className="exam-area__legend">{area.title}</legend>
               <div className="exam-area__topics">
-                {area.topics.map((topic) => {
+                {playable.map((topic) => {
                   const key = themeKey(moduleId, topic.id)
                   return (
                     <label key={key} className="exam-check">
@@ -361,7 +365,8 @@ function ExamStepThemes({
                 })}
               </div>
             </fieldset>
-          ))}
+            )
+          })}
         </div>
       ))}
     </div>

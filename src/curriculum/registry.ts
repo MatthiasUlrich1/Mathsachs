@@ -7,29 +7,78 @@ import {
   LOADED_KEY,
   type CurriculumKv,
 } from './install'
-import { GYM_SACHSEN_PACK_ID } from './pack'
+import { loadInstalledGrade } from './loadGrade'
+import { GYM_SACHSEN_PACK_ID, OS_HS_PACK_ID, OS_RS_PACK_ID } from './pack'
 
 export const CURRICULUM_VERSION = 1
 export type { CurriculumModule }
-export { bundledCurricula, GYM_SACHSEN_PACK_ID }
+export { bundledCurricula, GYM_SACHSEN_PACK_ID, OS_HS_PACK_ID, OS_RS_PACK_ID }
 
 export const availableCurricula: CurriculumModule[] = bundledCurricula
 
-export const getCurriculumModule = (id: string): CurriculumModule | undefined =>
-  getBundledModule(id)
+export const getCurriculumModule = (
+  id: string,
+  kv: CurriculumKv = defaultCurriculumKv(),
+): CurriculumModule | undefined =>
+  getBundledModule(id) ?? listVisibleGradeModules(kv).find((mod) => mod.id === id)
 
 export const DEFAULT_LOADED_IDS = ['mathematik-klasse-6']
+
+const packGradeModule = (
+  packId: string,
+  grade: {
+    id: string
+    subjectTitle: string
+    gradeTitle: string
+    description: string
+    searchHints?: string[]
+  },
+  kv: CurriculumKv,
+): CurriculumModule => ({
+  id: grade.id,
+  packId,
+  subjectTitle: grade.subjectTitle,
+  gradeTitle: grade.gradeTitle,
+  description: grade.description,
+  searchHints: grade.searchHints,
+  load: () => loadInstalledGrade(grade.id, kv),
+})
 
 export function listVisibleGradeModules(
   kv: CurriculumKv = defaultCurriculumKv(),
 ): CurriculumModule[] {
   const installed = new Set(listInstalledMeta(kv).map((row) => row.id))
   if (installed.size === 0) return []
-  return bundledCurricula.filter((mod) => installed.has(mod.packId))
+  const out: CurriculumModule[] = []
+  const seen = new Set<string>()
+  if (installed.has(GYM_SACHSEN_PACK_ID)) {
+    for (const mod of bundledCurricula) {
+      if (seen.has(mod.id)) continue
+      seen.add(mod.id)
+      out.push(mod)
+    }
+  }
+  for (const pack of listInstalledPacks(kv)) {
+    if (pack.id === GYM_SACHSEN_PACK_ID) continue
+    for (const grade of pack.official) {
+      if (seen.has(grade.id)) continue
+      seen.add(grade.id)
+      out.push(packGradeModule(pack.id, grade, kv))
+    }
+  }
+  return out
 }
 
-export function packIdForGradeModule(gradeId: string): string {
-  return getBundledModule(gradeId)?.packId ?? GYM_SACHSEN_PACK_ID
+export function packIdForGradeModule(
+  gradeId: string,
+  kv: CurriculumKv = defaultCurriculumKv(),
+): string {
+  const bundled = getBundledModule(gradeId)
+  if (bundled) return bundled.packId
+  for (const pack of listInstalledPacks(kv)) {
+    if (pack.official.some((grade) => grade.id === gradeId)) return pack.id
+  }
+  return GYM_SACHSEN_PACK_ID
 }
 
 export const getLoadedIds = (kv: CurriculumKv = defaultCurriculumKv()): string[] => {
@@ -48,7 +97,7 @@ export const getLoadedIds = (kv: CurriculumKv = defaultCurriculumKv()): string[]
       : visible.slice(0, 1).map((m) => m.id)
   }
   const allowed = new Set(visible.map((m) => m.id))
-  return bundledCurricula.map((m) => m.id).filter((id) => stored!.includes(id) && allowed.has(id))
+  return visible.map((m) => m.id).filter((id) => stored!.includes(id) && allowed.has(id))
 }
 
 export const setLoadedIds = (
@@ -66,5 +115,10 @@ export function installedPackVersion(
 }
 
 export function hasAnyInstalledPack(kv: CurriculumKv = defaultCurriculumKv()): boolean {
-  return listInstalledPacks(kv).length > 0 || isPackInstalled(GYM_SACHSEN_PACK_ID, kv)
+  return (
+    listInstalledPacks(kv).length > 0 ||
+    isPackInstalled(GYM_SACHSEN_PACK_ID, kv) ||
+    isPackInstalled(OS_HS_PACK_ID, kv) ||
+    isPackInstalled(OS_RS_PACK_ID, kv)
+  )
 }

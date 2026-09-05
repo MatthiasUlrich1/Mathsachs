@@ -1,7 +1,9 @@
 # Mathsachs
 
-Ein **lehrplanorientiertes Mathematik-Übungsprogramm** für das Gymnasium in
-Sachsen (**Klasse 5 bis Jahrgangsstufe 11/12**). Schülerinnen und Schüler wählen
+Ein **lehrplanorientiertes Mathematik-Übungsprogramm** für Gymnasium und
+Oberschule in Sachsen (**Gymnasium Klasse 5 bis Jahrgangsstufe 11/12**,
+**Oberschule Hauptschulbildungsgang 5–9** und **Realschulbildungsgang 5–10**).
+Schülerinnen und Schüler wählen
 aus den Lernbereichen des Lehrplans einzelne Themen aus und üben sie entweder
 direkt am Bildschirm oder erzeugen ausdruckbare Übungsblätter. Lehrkräfte können
 daraus **Übungsklausuren** zusammenstellen und als Code oder Link an eine Klasse
@@ -9,10 +11,12 @@ verteilen. Gebaut mit React, TypeScript und Vite.
 
 ## Funktionen
 
-- **Lehrplan-Themen** als **versionierte, nachinstallierbare Pakete**. Das erste
-  Paket ist **Gymnasium Sachsen · Mathematik** (Klasse 5–10 und
-  Jahrgangsstufe 11/12 Grundkurs). Unter **Einstellungen → Lehrpläne**
-  installierst, aktualisierst oder entfernst du Pakete. Der Katalog kommt von
+- **Lehrplan-Themen** als **versionierte, nachinstallierbare Pakete**.
+  Der Katalog enthält **Gymnasium Sachsen · Mathematik** (Klasse 5–10 und
+  Jahrgangsstufe 11/12 Grundkurs) sowie **Oberschule Sachsen · Mathematik**
+  als **Hauptschulbildungsgang** (Klassen 5–9) und **Realschulbildungsgang**
+  (Klassen 5–10). Unter **Einstellungen → Lehrpläne** installierst,
+  aktualisierst oder entfernst du Pakete. Der Katalog kommt von
   GitHub (`curricula/manifest.json`); die Dateien liegen lokal bzw. auf dem
   PC, nicht im Installer. Lehrer-Ergänzungen bleiben im Paket unter `extras`
   getrennt und tragen im Themen-/Klausur-/Challenge-Baum das Badge
@@ -111,7 +115,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.37**).
+(aktuelle Version **0.1.38**).
 
 Die App prüft beim Start und — solange sie geöffnet bleibt — einmal pro
 Kalendertag (**Europe/Berlin**) die öffentlichen
@@ -127,7 +131,8 @@ mit Versionsnummer, Release-Notes und Download. Im Browser öffnet
 das Update herunterladen und einspielen, sobald auch `latest.yml`
 vorliegt.
 
-> Fachliche Grundlage: Sächsischer Lehrplan Gymnasium Mathematik. Die Aufgaben
+> Fachliche Grundlage: Sächsische Lehrpläne Gymnasium Mathematik und
+> Oberschule Mathematik (Hauptschul- und Realschulbildungsgang). Die Aufgaben
 > werden zufällig generiert und haben stets eindeutige, überprüfbare Lösungen.
 
 ## Übungsklausur per Code
@@ -413,13 +418,24 @@ Lehrpläne wachsen nicht mehr im App-Installer. Ein Paket ist eine JSON-Datei
 mit SemVer, offiziellen Lernbereichen und getrennten `extras`:
 
 ```
-curricula/manifest.json      # Katalog: id, version, url, size
-curricula/gym-sachsen.json   # Gymnasium Sachsen Mathematik 1.0.0
+curricula/manifest.json                 # Katalog: id, version, url, size
+curricula/gym-sachsen.json              # Gymnasium Sachsen Mathematik 1.0.0
+curricula/oberschule-sachsen-hs.json    # Oberschule HS 1.0.0 (Klassen 5–9)
+curricula/oberschule-sachsen-rs.json    # Oberschule RS 1.0.0 (Klassen 5–10)
 ```
 
-**Neuen Lehrplan (z. B. Oberschule Sachsen) hinzufügen**
+**Oberschule installieren**
 
-1. Neue Datei `curricula/oberschule-sachsen.json` mit
+1. Unter **Einstellungen → Lehrpläne** das gewünschte Paket wählen:
+   **Oberschule Sachsen · Mathematik · Hauptschulbildungsgang** oder
+   **… · Realschulbildungsgang**.
+2. **Installieren**. Danach die Klassenstufen **einblenden**.
+3. Beide Bildungsgänge dürfen parallel installiert sein; die Klassen 5–6
+   sind in jedem Paket enthalten, damit HS oder RS allein reicht.
+
+**Neuen Lehrplan hinzufügen**
+
+1. Neue Datei `curricula/<id>.json` mit
    `{ id, title, region, school, subject, version, changelog, official, extras }`.
    Offizielle Themen bleiben in `official`; Lehrer-Aufgaben nur in `extras`
    (mit `areaId` des Themengebiets und `source: "lehrer"`).

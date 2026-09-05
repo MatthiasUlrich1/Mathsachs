@@ -701,6 +701,12 @@ a.task-request__send {
   flex-shrink: 0;
 }
 
+.topic__outline {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted, #94a3b8);
+}
+
 .chip-btn {
   padding: 7px 12px;
   border-radius: 9px;

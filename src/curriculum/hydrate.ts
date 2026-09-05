@@ -1,6 +1,11 @@
 import { makeFraction } from '../lib/fraction'
 import { pick, type Rng } from '../lib/rng'
 import { getBundledModule } from './bundled'
+import {
+  generatorIdForTopic,
+  gymGeneratorCatalog,
+  topicFromPack,
+} from './oberschuleGenerators'
 import type { CurriculumPack, PackExtra, PackTask } from './pack'
 import { fractionTask, textTask, valueTask } from './taskHelpers'
 import type { Grade, Task, Topic, TopicArea } from './types'
@@ -91,12 +96,14 @@ const markOfficial = (grade: Grade): Grade => ({
 
 export async function hydratePackGrades(pack: CurriculumPack): Promise<Grade[]> {
   const grades: Grade[] = []
+  let generators: Map<string, Topic['generate']> | null = null
   for (const official of pack.official) {
     const runtime = getBundledModule(official.id)
     let grade: Grade
     if (runtime) {
       grade = await runtime.load()
     } else {
+      generators ??= await gymGeneratorCatalog()
       grade = {
         id: official.id,
         title: official.title,
@@ -105,15 +112,11 @@ export async function hydratePackGrades(pack: CurriculumPack): Promise<Grade[]> 
           id: area.id,
           title: area.title,
           ustd: area.ustd,
-          topics: area.topics.map((topic) =>
-            extraTopic({
-              id: topic.id,
-              gradeId: official.id,
-              areaId: area.id,
-              source: 'lehrer',
-              topic,
-            }),
-          ),
+          topics: area.topics.map((topic) => {
+            const mapped = generatorIdForTopic(topic.id)
+            const generate = mapped ? generators!.get(mapped) : undefined
+            return topicFromPack(topic, generate)
+          }),
         })),
       }
     }

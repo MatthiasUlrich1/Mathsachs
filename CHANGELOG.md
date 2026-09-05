@@ -9,6 +9,22 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.38] – 2026-09-05
+
+### Hinzugefügt
+
+- **Oberschule Sachsen Mathematik** als zwei downloadbare Lehrplan-Pakete
+  (`oberschule-sachsen-hs` und `oberschule-sachsen-rs`, je 1.0.0).
+  Unter **Einstellungen → Lehrpläne** installierst du
+  **Hauptschulbildungsgang** (Klassen 5–9) und/oder
+  **Realschulbildungsgang** (Klassen 5–10). Die Klassen 5–6 stehen in
+  beiden Paketen, damit jedes für sich vollständig ist.
+- Lernbereiche und Themen folgen dem offiziellen Lehrplan Oberschule
+  Mathematik (Sachsen, 2004/2009/2019, lplanid=67). Themen mit gleichem
+  Rechenstoff nutzen die vorhandenen Generatoren; die übrigen bleiben
+  im Lehrplan sichtbar mit dem Hinweis **noch keine Aufgaben**.
+  Lehrer-Ergänzungen bleiben getrennt (`extras: []`).
+
 ## [0.1.37] – 2026-09-05
 
 ### Hinzugefügt

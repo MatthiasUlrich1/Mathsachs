@@ -44,20 +44,26 @@ export function CurriculumBrowser({ grade, onPractice, onWorksheet }: Props) {
                       <TeacherExtraBadge source={topic.source} />
                     </span>
                     <span className="topic__actions">
-                      <button
-                        type="button"
-                        className="chip-btn chip-btn--primary"
-                        onClick={() => onPractice(topic, area.title)}
-                      >
-                        Üben
-                      </button>
-                      <button
-                        type="button"
-                        className="chip-btn"
-                        onClick={() => onWorksheet(topic, area.title)}
-                      >
-                        Übungsblatt
-                      </button>
+                      {topic.outlineOnly ? (
+                        <span className="topic__outline">noch keine Aufgaben</span>
+                      ) : (
+                        <>
+                          <button
+                            type="button"
+                            className="chip-btn chip-btn--primary"
+                            onClick={() => onPractice(topic, area.title)}
+                          >
+                            Üben
+                          </button>
+                          <button
+                            type="button"
+                            className="chip-btn"
+                            onClick={() => onWorksheet(topic, area.title)}
+                          >
+                            Übungsblatt
+                          </button>
+                        </>
+                      )}
                     </span>
                   </li>
                 ))}

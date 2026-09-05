@@ -1,5 +1,7 @@
 import {
   GYM_SACHSEN_PACK_ID,
+  OS_HS_PACK_ID,
+  OS_RS_PACK_ID,
   mergePackUpdate,
   parseCurriculumPack,
   parseCurriculumPacksMap,
@@ -7,6 +9,7 @@ import {
   type CurriculumPack,
   type InstalledCurriculum,
 } from './pack'
+import { buildOberschuleHsPack, buildOberschuleRsPack } from './oberschulePacks'
 import { buildGymSachsenSeed } from './seed'
 
 export const INSTALLED_KEY = 'mathsachs.installedCurricula.v1'
@@ -120,11 +123,28 @@ export function removePack(id: string, kv: CurriculumKv = defaultCurriculumKv())
   )
 }
 
+export async function bundledPackById(id: string): Promise<CurriculumPack | null> {
+  if (id === GYM_SACHSEN_PACK_ID) return buildGymSachsenSeed()
+  if (id === OS_HS_PACK_ID) return buildOberschuleHsPack()
+  if (id === OS_RS_PACK_ID) return buildOberschuleRsPack()
+  return null
+}
+
 export async function installBundledGymSachsen(
   kv: CurriculumKv = defaultCurriculumKv(),
   now: number = Date.now(),
 ): Promise<CurriculumPack> {
   return installPack(await buildGymSachsenSeed(), kv, now)
+}
+
+export async function installBundledPack(
+  id: string,
+  kv: CurriculumKv = defaultCurriculumKv(),
+  now: number = Date.now(),
+): Promise<CurriculumPack> {
+  const pack = await bundledPackById(id)
+  if (!pack) throw new Error(`Unbekanntes Lehrplan-Paket „${id}“.`)
+  return installPack(pack, kv, now)
 }
 
 export function readRawLoadedIds(kv: CurriculumKv = defaultCurriculumKv()): string[] | null {

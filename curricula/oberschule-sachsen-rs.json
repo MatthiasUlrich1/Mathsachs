@@ -1,0 +1,1834 @@
+{
+  "id": "oberschule-sachsen-rs",
+  "title": "Oberschule Sachsen · Mathematik · Realschulbildungsgang",
+  "region": "Sachsen",
+  "school": "Oberschule",
+  "subject": "Mathematik",
+  "version": "1.0.0",
+  "changelog": "Erstfassung Klassen 5–10 (Realschulbildungsgang). Pflicht-Lernbereiche und Wahlbereiche nach dem offiziellen Lehrplan. Lehrplan Oberschule Mathematik (Sachsen) 2004/2009/2019, lplanid=67, https://www.schulportal.sachsen.de/lplandb/",
+  "contentHash": "1e6ec07f",
+  "official": [
+    {
+      "id": "os-rs-klasse-5",
+      "title": "Klasse 5 · Realschulbildungsgang",
+      "subjectTitle": "Mathematik",
+      "gradeTitle": "Klasse 5 · Realschulbildungsgang",
+      "description": "Natürliche Zahlen, gemeine Brüche, Dezimalzahlen und Größen, geometrische Grundformen sowie Symmetrie.",
+      "searchHints": [
+        "natürliche Zahlen",
+        "runden",
+        "Addition",
+        "Subtraktion",
+        "Multiplikation",
+        "Division",
+        "Teilbarkeit",
+        "Primzahlen",
+        "Brüche",
+        "Dezimalzahlen",
+        "Winkel",
+        "Rechteck",
+        "Würfel",
+        "Umfang",
+        "Fläche",
+        "Volumen",
+        "Einheiten",
+        "Länge",
+        "Masse",
+        "Zeit"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Natürliche Zahlen",
+          "ustd": 34,
+          "topics": [
+            {
+              "id": "os-k5-lb1-runden",
+              "title": "Veranschaulichen, Schätzen, Runden, Vergleichen und Ordnen natürlicher Zahlen",
+              "hint": "Schau auf die Ziffer rechts von der Rundungsstelle.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "runden",
+                "Zahlenstrahl"
+              ]
+            },
+            {
+              "id": "os-k5-lb1-potenz",
+              "title": "Potenzschreibweise und Zehnerpotenzen",
+              "hint": "a² = a · a; 10ⁿ ist eine 1 mit n Nullen.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Potenz",
+                "Zehnerpotenz"
+              ]
+            },
+            {
+              "id": "os-k5-lb1-addition",
+              "title": "Addieren natürlicher Zahlen",
+              "hint": "Rechne Stelle für Stelle.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Addition"
+              ]
+            },
+            {
+              "id": "os-k5-lb1-subtraktion",
+              "title": "Subtrahieren natürlicher Zahlen",
+              "hint": "Der Minuend (vorne) ist immer größer.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Subtraktion"
+              ]
+            },
+            {
+              "id": "os-k5-lb1-multiplikation",
+              "title": "Multiplizieren natürlicher Zahlen",
+              "hint": "Zerlege den zweiten Faktor in Zehner und Einer.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Multiplikation"
+              ]
+            },
+            {
+              "id": "os-k5-lb1-division",
+              "title": "Schriftliche Division durch einstelligen Divisor",
+              "hint": "Antwortformat: „q R r“ (Quotient, dann Rest).",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Division"
+              ]
+            },
+            {
+              "id": "os-k5-lb1-quadrat",
+              "title": "Quadratzahl und Quadratwurzel",
+              "hint": "Die Quadratwurzel ist die Umkehrung des Quadrierens.",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k5-lb1-gleichung",
+              "title": "Einfache Gleichungen und Ungleichungen inhaltlich lösen",
+              "hint": "Nutze die Umkehroperation oder systematisches Probieren.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Gleichung"
+              ]
+            },
+            {
+              "id": "os-k5-lb1-teilbarkeit",
+              "title": "Teilbarkeit, Vielfache und Teiler",
+              "hint": "Antworte mit „ja“ oder „nein“.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Teiler",
+                "Vielfache"
+              ]
+            },
+            {
+              "id": "os-k5-lb1-primzahl",
+              "title": "Teilbarkeitsregeln und Primzahlen",
+              "hint": "Eine Primzahl hat genau zwei Teiler: 1 und sich selbst.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Primzahl",
+                "Sieb des Eratosthenes"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Gemeine Brüche, Dezimalzahlen und Größen",
+          "ustd": 34,
+          "topics": [
+            {
+              "id": "os-k5-lb2-anteil",
+              "title": "Erkennen und Darstellen gemeiner Brüche und Dezimalzahlen",
+              "hint": "Gib den vollständig gekürzten Bruch ein.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Bruch",
+                "Anteil"
+              ]
+            },
+            {
+              "id": "os-k5-lb2-kuerzen",
+              "title": "Echte und unechte Brüche, Kürzen",
+              "hint": "Gib den vollständig gekürzten Bruch ein.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "kürzen"
+              ]
+            },
+            {
+              "id": "os-k5-lb2-erweitern",
+              "title": "Erweitern und Umwandeln von Zehnerbrüchen und Dezimalzahlen",
+              "hint": "Gib den gesuchten Zähler ein.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "erweitern",
+                "Zehnerbruch"
+              ]
+            },
+            {
+              "id": "os-k5-lb2-vergleichen",
+              "title": "Vergleichen, Ordnen und Abschätzen gemeiner Brüche",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k5-lb2-runden-dez",
+              "title": "Runden von Dezimalzahlen",
+              "hint": "Ist die nächste Ziffer 5 oder größer, wird aufgerundet.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "runden"
+              ]
+            },
+            {
+              "id": "os-k5-lb2-dez-add-sub",
+              "title": "Dezimalzahlen addieren und subtrahieren",
+              "hint": "Achte auf die Ausrichtung des Kommas.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Dezimalzahl"
+              ]
+            },
+            {
+              "id": "os-k5-lb2-dez-mult",
+              "title": "Vervielfachen mit einstelligen natürlichen Zahlen und Zehnerpotenzen",
+              "hint": "Mit einstelliger Zahl oder Zehnerpotenz.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Dezimalzahl"
+              ]
+            },
+            {
+              "id": "os-k5-lb2-dez-div",
+              "title": "Teilen durch einstellige natürliche Zahlen und Zehnerpotenzen",
+              "hint": "Durch einstellige Zahl oder Zehnerpotenz.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Dezimalzahl"
+              ]
+            },
+            {
+              "id": "os-k5-lb2-prozent",
+              "title": "Prozentschreibweise für bequeme Anteile",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k5-lb2-mittelwert",
+              "title": "Arithmetisches Mittel",
+              "hint": "Mittelwert = Summe : Anzahl.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Mittelwert",
+                "Durchschnitt"
+              ]
+            },
+            {
+              "id": "os-k5-lb2-laenge",
+              "title": "Einheiten umrechnen: Länge",
+              "hint": "Vorsätze Dezi, Zenti, Milli.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "cm",
+                "m",
+                "km"
+              ]
+            },
+            {
+              "id": "os-k5-lb2-masse",
+              "title": "Einheiten umrechnen: Masse",
+              "pointsPerTask": 10,
+              "keywords": [
+                "g",
+                "kg",
+                "t"
+              ]
+            },
+            {
+              "id": "os-k5-lb2-zeit",
+              "title": "Einheiten umrechnen: Zeit",
+              "pointsPerTask": 10,
+              "keywords": [
+                "min",
+                "h",
+                "s"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Geometrische Grundformen",
+          "ustd": 20,
+          "topics": [
+            {
+              "id": "os-k5-lb3-koordinaten",
+              "title": "Koordinaten und Koordinatensystem (erster Quadrant)",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k5-lb3-lage",
+              "title": "Lagebeziehungen: parallel, senkrecht, schneiden einander",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k5-lb3-winkelarten",
+              "title": "Messen und Zeichnen von Winkeln, Winkelarten",
+              "hint": "spitz, recht, stumpf, gestreckt oder überstumpf.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Winkel"
+              ]
+            },
+            {
+              "id": "os-k5-lb3-winkel-erg",
+              "title": "Winkel zu 90° oder 180° ergänzen",
+              "hint": "Ziehe den gegebenen Winkel von 90° bzw. 180° ab.",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k5-lb3-wuerfel",
+              "title": "Würfel skizzieren, Körpernetze und Schrägbild",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k5-lb3-umfang",
+              "title": "Umfang als Summe von Seitenlängen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Umfang",
+                "Rechteck"
+              ]
+            },
+            {
+              "id": "os-k5-lb3-flaeche",
+              "title": "Flächeninhaltsformel für das Rechteck",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Fläche",
+                "Quadrat"
+              ]
+            },
+            {
+              "id": "os-k5-lb3-flaeche-eh",
+              "title": "Einheiten umrechnen: Flächeninhalt",
+              "pointsPerTask": 10,
+              "keywords": [
+                "cm²",
+                "m²",
+                "Hektar"
+              ]
+            },
+            {
+              "id": "os-k5-lb3-oberflaeche",
+              "title": "Oberfläche als zusammengesetzte Fläche",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Oberfläche",
+                "Würfel"
+              ]
+            },
+            {
+              "id": "os-k5-lb3-volumen-wuerfel",
+              "title": "Volumenformel für den Würfel",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Volumen",
+                "Würfel"
+              ]
+            },
+            {
+              "id": "os-k5-lb3-volumen-eh",
+              "title": "Einheiten umrechnen: Volumen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "cm³",
+                "dm³",
+                "l"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Symmetrie und deckungsgleiche Figuren",
+          "ustd": 12,
+          "topics": [
+            {
+              "id": "os-k5-lb4-spiegelung",
+              "title": "Spiegelungen und Verschiebungen, Symmetrieachse",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k5-lb4-deckung",
+              "title": "Zeichnen und Analysieren symmetrischer sowie deckungsgleicher Figuren",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lbw1",
+          "title": "Wahlbereich 1: Wie die Menschen Zählen und Rechnen lernten",
+          "topics": [
+            {
+              "id": "os-k5-lbw1-zahlzeichen",
+              "title": "Zahlzeichen verschiedener Epochen und Kulturkreise",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k5-lbw1-abakus",
+              "title": "Darstellung und Rechnen mit Abakus oder Rechenpfennigen",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lbw2",
+          "title": "Wahlbereich 2: Meine neue Klasse",
+          "topics": [
+            {
+              "id": "os-k5-lbw2-daten",
+              "title": "Erfassen und Darstellen von Daten (Urliste, Tabelle, Säulendiagramm)",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k5-lbw2-kombinatorik",
+              "title": "Einfache kombinatorische Zählstrategien",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lbw3",
+          "title": "Wahlbereich 3: Planen einer Klassenfahrt",
+          "topics": [
+            {
+              "id": "os-k5-lbw3-angebote",
+              "title": "Angebote vergleichen, Zeitpläne und Fahrtkosten",
+              "pointsPerTask": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "os-rs-klasse-6",
+      "title": "Klasse 6 · Realschulbildungsgang",
+      "subjectTitle": "Mathematik",
+      "gradeTitle": "Klasse 6 · Realschulbildungsgang",
+      "description": "Gebrochene Zahlen, Zuordnungen in der Umwelt, Geometrie in der Ebene, geometrische Körper und Mathematik im Alltag.",
+      "searchHints": [
+        "Brüche",
+        "erweitern",
+        "kürzen",
+        "Dezimalzahlen",
+        "Dreisatz",
+        "proportional",
+        "Dreieck",
+        "Viereck",
+        "Winkelsumme",
+        "Prisma",
+        "Volumen",
+        "Häufigkeit",
+        "Anteil"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Gebrochene Zahlen",
+          "ustd": 35,
+          "topics": [
+            {
+              "id": "os-k6-lb1-erweiterung",
+              "title": "Notwendigkeit einer Zahlenbereichserweiterung, Mengenbegriff",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k6-lb1-kuerzen",
+              "title": "Erweitern und Kürzen",
+              "hint": "Gib den vollständig gekürzten Bruch ein.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "kürzen"
+              ]
+            },
+            {
+              "id": "os-k6-lb1-erweitern",
+              "title": "Erweitern gemeiner Brüche",
+              "pointsPerTask": 10,
+              "keywords": [
+                "erweitern"
+              ]
+            },
+            {
+              "id": "os-k6-lb1-bruch-dez",
+              "title": "Umwandeln gemeiner Brüche in Dezimalzahlen und umgekehrt",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Dezimalzahl",
+                "periodisch"
+              ]
+            },
+            {
+              "id": "os-k6-lb1-vergleichen",
+              "title": "Vergleichen und Ordnen gebrochener Zahlen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "vergleichen"
+              ]
+            },
+            {
+              "id": "os-k6-lb1-add-sub",
+              "title": "Addieren und Subtrahieren gebrochener Zahlen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Brüche"
+              ]
+            },
+            {
+              "id": "os-k6-lb1-mult",
+              "title": "Multiplizieren gebrochener Zahlen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Brüche"
+              ]
+            },
+            {
+              "id": "os-k6-lb1-div",
+              "title": "Dividieren gebrochener Zahlen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Brüche"
+              ]
+            },
+            {
+              "id": "os-k6-lb1-dez-add-sub",
+              "title": "Dezimalzahlen addieren und subtrahieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k6-lb1-dez-mult",
+              "title": "Dezimalzahlen multiplizieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k6-lb1-dez-div",
+              "title": "Dezimalzahlen dividieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k6-lb1-runden",
+              "title": "Überschlagen, Abschätzen und Runden",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k6-lb1-mittelwert",
+              "title": "Arithmetisches Mittel",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Mittelwert"
+              ]
+            },
+            {
+              "id": "os-k6-lb1-verhaeltnis",
+              "title": "Verhältnisgleichungen",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Zuordnungen in der Umwelt",
+          "ustd": 25,
+          "topics": [
+            {
+              "id": "os-k6-lb2-arten",
+              "title": "Eindeutige, eineindeutige und mehrdeutige Zuordnungen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k6-lb2-prop",
+              "title": "Direkt proportionale Zuordnung (Dreisatz)",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Dreisatz",
+                "proportional"
+              ]
+            },
+            {
+              "id": "os-k6-lb2-antiprop",
+              "title": "Indirekt proportionale Zuordnung",
+              "pointsPerTask": 10,
+              "keywords": [
+                "antiproportional",
+                "Dreisatz"
+              ]
+            },
+            {
+              "id": "os-k6-lb2-anteil",
+              "title": "Anteil einer Größe berechnen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Anteil"
+              ]
+            },
+            {
+              "id": "os-k6-lb2-darstellung",
+              "title": "Darstellung in Wort, Tabelle, Koordinatensystem und Gleichung",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Geometrie in der Ebene",
+          "ustd": 30,
+          "topics": [
+            {
+              "id": "os-k6-lb3-nebenwinkel",
+              "title": "Nebenwinkelsatz",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Nebenwinkel"
+              ]
+            },
+            {
+              "id": "os-k6-lb3-scheitel",
+              "title": "Scheitelwinkelsatz und Stufen- bzw. Wechselwinkel",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Scheitelwinkel",
+                "Stufenwinkel"
+              ]
+            },
+            {
+              "id": "os-k6-lb3-innenwinkel",
+              "title": "Innenwinkelsatz für Dreiecke",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Dreieck",
+                "Winkelsumme"
+              ]
+            },
+            {
+              "id": "os-k6-lb3-einteilung",
+              "title": "Einteilung der Dreiecke nach Seiten und Winkeln",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k6-lb3-kongruenz",
+              "title": "Kongruenzsätze, Seiten-Winkel-Relation und Dreiecksungleichung",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k6-lb3-flaeche-dreieck",
+              "title": "Flächeninhalt von Dreiecken (Grundseite und Höhe)",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Dreieck"
+              ]
+            },
+            {
+              "id": "os-k6-lb3-parallelogramm",
+              "title": "Flächeninhalt von Parallelogramm, Drachenviereck und Trapez",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k6-lb3-umfang",
+              "title": "Umfangsberechnung",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Umfang"
+              ]
+            },
+            {
+              "id": "os-k6-lb3-flaeche-rechteck",
+              "title": "Flächeninhalt von Rechteck und Quadrat",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k6-lb3-winkelsumme-viereck",
+              "title": "Winkelsumme im Viereck",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Geometrische Körper",
+          "ustd": 20,
+          "topics": [
+            {
+              "id": "os-k6-lb4-darstellen",
+              "title": "Grundriss, Seitenansichten, Schrägbild und Körpernetz",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k6-lb4-volumen-quader",
+              "title": "Volumen von Quader und Würfel",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Volumen"
+              ]
+            },
+            {
+              "id": "os-k6-lb4-oberflaeche",
+              "title": "Oberfläche als zusammengesetzte Fläche",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Oberfläche"
+              ]
+            },
+            {
+              "id": "os-k6-lb4-volumen-prisma",
+              "title": "Volumen gerader Prismen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Prisma"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb5",
+          "title": "Mathematik im Alltag",
+          "ustd": 15,
+          "topics": [
+            {
+              "id": "os-k6-lb5-probieren",
+              "title": "Problemlösestrategien: systematisches Probieren, Zurückführen auf Bekanntes",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-k6-lb5-haeufigkeit",
+              "title": "Zufallsversuche: absolute und relative Häufigkeit",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Häufigkeit",
+                "Zufall"
+              ]
+            },
+            {
+              "id": "os-k6-lb5-anteil-prozent",
+              "title": "Anteile in Prozent",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Prozent"
+              ]
+            },
+            {
+              "id": "os-k6-lb5-praesentation",
+              "title": "Präsentation zu geometrischen Figuren und Körpern in der Umwelt",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lbw1",
+          "title": "Wahlbereich 1: Dynamisieren geometrischer Objekte",
+          "topics": [
+            {
+              "id": "os-k6-lbw1-dgs",
+              "title": "Geometrische Objekte mit dynamischer Geometriesoftware",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lbw2",
+          "title": "Wahlbereich 2: Mathematische Spiele",
+          "topics": [
+            {
+              "id": "os-k6-lbw2-spiele",
+              "title": "Spiele zur Problemlösefähigkeit, Raumanschauung und Stochastik",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lbw3",
+          "title": "Wahlbereich 3: Erfassen und Auswerten von Daten",
+          "topics": [
+            {
+              "id": "os-k6-lbw3-mittelwert",
+              "title": "Arithmetisches Mittel bei Datenerhebungen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Mittelwert"
+              ]
+            },
+            {
+              "id": "os-k6-lbw3-modal",
+              "title": "Modalwert, Maximum und Minimum",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Modalwert"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "os-rs-klasse-7",
+      "title": "Klasse 7 · Realschulbildungsgang",
+      "subjectTitle": "Mathematik",
+      "gradeTitle": "Klasse 7 · Realschulbildungsgang",
+      "description": "Prozent- und Zinsrechnung, Elemente der Stochastik, rationale Zahlen und Gleichungen sowie Vielecke und Prismen.",
+      "searchHints": [
+        "Prozent",
+        "Zinsen",
+        "Zinseszins",
+        "Wahrscheinlichkeit",
+        "Häufigkeit",
+        "rationale Zahlen",
+        "Gleichung",
+        "Prisma",
+        "Vieleck"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Prozent- und Zinsrechnung",
+          "ustd": 28,
+          "topics": [
+            {
+              "id": "os-rs-k7-lb1-dreisatz",
+              "title": "Dreisatz auf Grundaufgaben der Prozentrechnung",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Dreisatz"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb1-prozent",
+              "title": "Bequeme Prozentsätze, Prozentwert, Prozentsatz, Grundwert",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Prozent"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb1-kreisdiagramm",
+              "title": "Darstellung im Kreisdiagramm",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k7-lb1-preisaenderung",
+              "title": "Preiserhöhung und Preissenkung",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Prozent"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb1-zinsen",
+              "title": "Zinssatz, Zinsen, Kapital",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Zinsen"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb1-zinseszins",
+              "title": "Tageszins und Zinseszins",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Zinseszins"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Elemente der Stochastik",
+          "ustd": 12,
+          "topics": [
+            {
+              "id": "os-rs-k7-lb2-versuch",
+              "title": "Zufallsversuche: Ergebnis, Ergebnismenge, Ereignis",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k7-lb2-haeufigkeit",
+              "title": "Urliste, absolute und relative Häufigkeit",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Häufigkeit"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb2-laplace",
+              "title": "Wahrscheinlichkeit als Bruch",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Laplace",
+                "Wahrscheinlichkeit"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb2-laplace-pct",
+              "title": "Wahrscheinlichkeit in Prozent",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Wahrscheinlichkeit"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Rationale Zahlen und Gleichungen",
+          "ustd": 28,
+          "topics": [
+            {
+              "id": "os-rs-k7-lb3-ordnen",
+              "title": "Veranschaulichen, Vergleichen und Ordnen rationaler Zahlen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k7-lb3-add",
+              "title": "Rationale Zahlen addieren",
+              "pointsPerTask": 10,
+              "keywords": [
+                "negative Zahlen"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb3-sub",
+              "title": "Rationale Zahlen subtrahieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k7-lb3-mul",
+              "title": "Rationale Zahlen multiplizieren und potenzieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k7-lb3-div",
+              "title": "Rationale Zahlen dividieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k7-lb3-term",
+              "title": "Rechengesetze und Termwerte",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Term"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb3-gleichung",
+              "title": "Gleichungen der Form a·x+b = c",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Gleichung"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb3-gleichung-beid",
+              "title": "Gleichungen der Form a·x+b = c·x+d",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Gleichung"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb3-zahlenraetsel",
+              "title": "Aufstellen von Gleichungen, Zahlenrätsel",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Zahlenrätsel"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb3-koordinaten",
+              "title": "Punktkoordinaten in vier Quadranten",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Vielecke und Prismen",
+          "ustd": 32,
+          "topics": [
+            {
+              "id": "os-rs-k7-lb4-konstruieren",
+              "title": "Konstruktion von Parallelogramm, Drachenviereck und Trapez",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k7-lb4-flaeche-dreieck",
+              "title": "Flächeninhalt von Dreiecken",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Dreieck"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb4-umfang",
+              "title": "Umfang von Dreiecken und Vierecken",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k7-lb4-winkelsumme",
+              "title": "Innenwinkelsumme im Vieleck",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Vieleck"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb4-vieleck-flaeche",
+              "title": "Flächeninhalt und Umfang von Vielecken",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k7-lb4-darstellen",
+              "title": "Körpernetze, Schrägbilder und senkrechte Zweitafelbilder",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k7-lb4-volumen-prisma",
+              "title": "Volumen gerader Prismen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Prisma"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb4-mantel",
+              "title": "Mantelfläche eines Prismas",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k7-lb4-oberflaeche",
+              "title": "Oberflächeninhalt von Prismen und Quadern",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Oberfläche"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb4-masse",
+              "title": "Masse unter Einbeziehung der Dichte",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lbw1",
+          "title": "Wahlbereich 1: Technisches Zeichnen",
+          "topics": [
+            {
+              "id": "os-rs-k7-lbw1-zeichnen",
+              "title": "Lesen technischer Zeichnungen, Schnitte und Bemaßung",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lbw2",
+          "title": "Wahlbereich 2: Unterhaltungsmathematik und Rechenverfahren",
+          "topics": [
+            {
+              "id": "os-rs-k7-lbw2-knobel",
+              "title": "Andere Rechenverfahren und Unterhaltungsmathematik",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lbw3",
+          "title": "Wahlbereich 3: Parkettierungen",
+          "topics": [
+            {
+              "id": "os-rs-k7-lbw3-parkett",
+              "title": "Parkettierung der Ebene",
+              "pointsPerTask": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "os-rs-klasse-8",
+      "title": "Klasse 8 · Realschulbildungsgang",
+      "subjectTitle": "Mathematik",
+      "gradeTitle": "Klasse 8 · Realschulbildungsgang",
+      "description": "Lineare Gleichungen, lineare Funktionen und Gleichungssysteme, Kreis und Kreiszylinder, Ähnlichkeit, zufällige Ereignisse.",
+      "searchHints": [
+        "Terme",
+        "lineare Gleichung",
+        "lineare Funktion",
+        "LGS",
+        "Steigung",
+        "Kreis",
+        "Zylinder",
+        "Ähnlichkeit",
+        "Strahlensatz",
+        "Wahrscheinlichkeit"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Lineare Gleichungen",
+          "ustd": 16,
+          "topics": [
+            {
+              "id": "os-rs-k8-lb1-term",
+              "title": "Termwertberechnung",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Term"
+              ]
+            },
+            {
+              "id": "os-rs-k8-lb1-zusammenfassen",
+              "title": "Addition und Subtraktion von Summen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Term"
+              ]
+            },
+            {
+              "id": "os-rs-k8-lb1-ausmult",
+              "title": "Multiplikation eines Faktors mit einer Summe",
+              "pointsPerTask": 10,
+              "keywords": [
+                "ausmultiplizieren"
+              ]
+            },
+            {
+              "id": "os-rs-k8-lb1-ausklammern",
+              "title": "Ausklammern eines Faktors",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k8-lb1-gleichung",
+              "title": "Kalkülmäßiges Lösen linearer Gleichungen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Gleichung"
+              ]
+            },
+            {
+              "id": "os-rs-k8-lb1-gleichung-beid",
+              "title": "Gleichung mit x auf beiden Seiten",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Gleichung"
+              ]
+            },
+            {
+              "id": "os-rs-k8-lb1-formel",
+              "title": "Umstellen von Formeln",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Lineare Funktionen und Gleichungssysteme",
+          "ustd": 26,
+          "topics": [
+            {
+              "id": "os-rs-k8-lb2-funktion",
+              "title": "Funktion als eindeutige Zuordnung",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k8-lb2-funktionswert",
+              "title": "Funktionswert einer linearen Funktion",
+              "pointsPerTask": 10,
+              "keywords": [
+                "lineare Funktion"
+              ]
+            },
+            {
+              "id": "os-rs-k8-lb2-steigung",
+              "title": "Steigung aus zwei Punkten",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Steigung"
+              ]
+            },
+            {
+              "id": "os-rs-k8-lb2-achsen",
+              "title": "y-Achsenabschnitt bestimmen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k8-lb2-nullstelle",
+              "title": "Zeichnerisches und rechnerisches Ermitteln von Nullstellen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k8-lb2-lgs",
+              "title": "Lineares Gleichungssystem",
+              "pointsPerTask": 10,
+              "keywords": [
+                "LGS",
+                "Gleichungssystem"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Kreis und Kreiszylinder",
+          "ustd": 18,
+          "topics": [
+            {
+              "id": "os-rs-k8-lb3-lage",
+              "title": "Lagebeziehungen von Kreis und Gerade, Satz des Thales",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k8-lb3-kreis-umfang",
+              "title": "Umfang eines Kreises",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Kreis",
+                "Pi"
+              ]
+            },
+            {
+              "id": "os-rs-k8-lb3-kreis-flaeche",
+              "title": "Flächeninhalt eines Kreises und Kreisrings",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Kreis"
+              ]
+            },
+            {
+              "id": "os-rs-k8-lb3-darstellen",
+              "title": "Netz, Ansichten und Schrägbild von Kreis- und Hohlzylinder",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k8-lb3-zylinder",
+              "title": "Volumen von Kreis- und Hohlzylindern",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Zylinder"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Ähnlichkeit",
+          "ustd": 14,
+          "topics": [
+            {
+              "id": "os-rs-k8-lb4-streckfaktor",
+              "title": "Zentrische Streckung, Streckfaktor",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Streckfaktor",
+                "Maßstab"
+              ]
+            },
+            {
+              "id": "os-rs-k8-lb4-strahlensatz",
+              "title": "Strahlensatz: fehlende Länge",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Strahlensatz"
+              ]
+            },
+            {
+              "id": "os-rs-k8-lb4-aehnlich",
+              "title": "Ähnliche Figuren: Seitenlänge, Flächen und Volumen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Ähnlichkeit"
+              ]
+            },
+            {
+              "id": "os-rs-k8-lb4-kongruenz",
+              "title": "Kongruenz als Spezialfall der Ähnlichkeit",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lb5",
+          "title": "Zufällige Ereignisse",
+          "ustd": 14,
+          "topics": [
+            {
+              "id": "os-rs-k8-lb5-simulation",
+              "title": "Simulation von Zufallsversuchen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k8-lb5-laplace",
+              "title": "Wahrscheinlichkeiten und kombinatorisches Zählen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Wahrscheinlichkeit"
+              ]
+            },
+            {
+              "id": "os-rs-k8-lb5-gegen",
+              "title": "Gegenwahrscheinlichkeit",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Gegenwahrscheinlichkeit"
+              ]
+            },
+            {
+              "id": "os-rs-k8-lb5-baum",
+              "title": "Mehrstufige Zufallsversuche, Baumdiagramm und Pfadregeln",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lb6",
+          "title": "Mathematik im Alltag",
+          "ustd": 12,
+          "topics": [
+            {
+              "id": "os-rs-k8-lb6-kosten",
+              "title": "Lebenshaltungs- und Baukosten",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k8-lb6-zinsen",
+              "title": "Vergleich von Angeboten, Sparanlagen und Ratenzahlungen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Zinsen"
+              ]
+            },
+            {
+              "id": "os-rs-k8-lb6-prozent",
+              "title": "Prozentrechnung in Alltagsbezügen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Prozent"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw1",
+          "title": "Wahlbereich 1: Das Fahrrad",
+          "topics": [
+            {
+              "id": "os-rs-k8-lbw1-fahrrad",
+              "title": "Kenndaten, Wegstrecken und Geschwindigkeiten am Fahrrad",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lbw2",
+          "title": "Wahlbereich 2: Modellbau",
+          "topics": [
+            {
+              "id": "os-rs-k8-lbw2-modell",
+              "title": "Maßstäbliches Vergrößern und Verkleinern im Modellbau",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lbw3",
+          "title": "Wahlbereich 3: Polyeder",
+          "topics": [
+            {
+              "id": "os-rs-k8-lbw3-polyeder",
+              "title": "Reguläre und halbreguläre Polyeder",
+              "pointsPerTask": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "os-rs-klasse-9",
+      "title": "Klasse 9 · Realschulbildungsgang",
+      "subjectTitle": "Mathematik",
+      "gradeTitle": "Klasse 9 · Realschulbildungsgang",
+      "description": "Rechtwinklige Dreiecke, Pyramide, Kreiskegel und Kugel, quadratische Funktionen und Gleichungen, beschreibende Statistik.",
+      "searchHints": [
+        "Pythagoras",
+        "Sinus",
+        "Kosinus",
+        "Tangens",
+        "Pyramide",
+        "Kugel",
+        "quadratische Funktion",
+        "Scheitelpunkt",
+        "Median",
+        "Modalwert"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Rechtwinklige Dreiecke",
+          "ustd": 28,
+          "topics": [
+            {
+              "id": "os-rs-k9-lb1-hyp",
+              "title": "Satz des Pythagoras: Hypotenuse",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Pythagoras"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb1-kathete",
+              "title": "Satz des Pythagoras: fehlende Kathete",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Pythagoras"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb1-trig",
+              "title": "Sinus, Kosinus und Tangens im rechtwinkligen Dreieck",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Sinus",
+                "Kosinus",
+                "Tangens"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb1-umkehrung",
+              "title": "Umkehrung des Satzes des Pythagoras",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k9-lb1-sach",
+              "title": "Seitenlängen, Höhen und Winkel in Sachaufgaben",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Dachstuhl"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Pyramide, Kreiskegel, Kugel",
+          "ustd": 28,
+          "topics": [
+            {
+              "id": "os-rs-k9-lb2-darstellen",
+              "title": "Schrägbild, Netz und Zweitafelbild von Pyramide und Kreiskegel",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k9-lb2-pyramide",
+              "title": "Volumen und Oberfläche von Pyramiden",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Pyramide"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb2-kegel",
+              "title": "Mantellinie, Mantel und Volumen von Kreiskegeln",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k9-lb2-zylinder",
+              "title": "Volumen eines Kreiszylinders",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Zylinder"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb2-kugel",
+              "title": "Oberflächeninhalt und Volumen der Kugel",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Kugel"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb2-zusammengesetzt",
+              "title": "Zusammengesetzte Körper",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Quadratische Funktionen und quadratische Gleichungen",
+          "ustd": 28,
+          "topics": [
+            {
+              "id": "os-rs-k9-lb3-quadrat",
+              "title": "Wert einer quadratischen Funktion",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Parabel"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb3-scheitel",
+              "title": "Scheitelpunkt aus der Scheitelform",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Scheitelpunkt"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb3-gleichung",
+              "title": "Quadratische Gleichungen lösen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "quadratische Gleichung"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb3-potenz-prod",
+              "title": "Potenzgesetz: Produkt gleicher Basis",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Potenz"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb3-potenz-quot",
+              "title": "Potenzgesetz: Quotient und Potenz einer Potenz",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k9-lb3-nullstellen",
+              "title": "Nullstellen und Schnittpunktkoordinaten",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k9-lb3-fall",
+              "title": "Prinzip der Fallunterscheidung",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Beschreibende Statistik",
+          "ustd": 16,
+          "topics": [
+            {
+              "id": "os-rs-k9-lb4-medien",
+              "title": "Darstellungen und Inhalte von Datenerhebungen beurteilen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k9-lb4-mittelwert",
+              "title": "Arithmetisches Mittel",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Mittelwert"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb4-median",
+              "title": "Zentralwert (Median)",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Median"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb4-modal",
+              "title": "Modalwert",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Modalwert"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb4-spannweite",
+              "title": "Maximum, Minimum und Spannweite",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Spannweite"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw1",
+          "title": "Wahlbereich 1: Goldener Schnitt",
+          "topics": [
+            {
+              "id": "os-rs-k9-lbw1-gold",
+              "title": "Goldener Schnitt als Streckenverhältnis",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lbw2",
+          "title": "Wahlbereich 2: Wahre Größe und Gestalt",
+          "topics": [
+            {
+              "id": "os-rs-k9-lbw2-laenge",
+              "title": "Wahre Länge von Kanten und wahre Gestalt von Schnittflächen",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lbw3",
+          "title": "Wahlbereich 3: Sportfest",
+          "topics": [
+            {
+              "id": "os-rs-k9-lbw3-sport",
+              "title": "Wettkampfsysteme und Auswertung eines Sportfestes",
+              "pointsPerTask": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "os-rs-klasse-10",
+      "title": "Klasse 10 · Realschulbildungsgang",
+      "subjectTitle": "Mathematik",
+      "gradeTitle": "Klasse 10 · Realschulbildungsgang",
+      "description": "Dreiecke und Vielecke, funktionale Zusammenhänge und Wachstum, Zufallsgrößen sowie Mathematik im Alltag.",
+      "searchHints": [
+        "Sinussatz",
+        "Kosinussatz",
+        "Exponentialfunktion",
+        "Wachstum",
+        "Zinseszins",
+        "Erwartungswert",
+        "Zufallsgröße",
+        "Pyramide",
+        "Kugel"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Dreiecke und Vielecke",
+          "ustd": 20,
+          "topics": [
+            {
+              "id": "os-rs-k10-lb1-system",
+              "title": "Systematisieren der Dreiecke und Vierecke",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k10-lb1-trig",
+              "title": "Trigonometrische Beziehungen in beliebigen Dreiecken",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Sinussatz",
+                "Kosinussatz"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lb1-hyp",
+              "title": "Seitenlängen mit dem Satz des Pythagoras",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Pythagoras"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lb1-winkelsumme",
+              "title": "Winkelgrößen in Vielecken",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Vieleck"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lb1-flaeche-dreieck",
+              "title": "Flächeninhalte in Dreiecken und Vielecken",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Fläche"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Funktionale Zusammenhänge",
+          "ustd": 20,
+          "topics": [
+            {
+              "id": "os-rs-k10-lb2-potenz",
+              "title": "Potenzfunktionen y = a·xⁿ",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k10-lb2-quadrat",
+              "title": "Quadratische Zusammenhänge",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Parabel"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lb2-exp",
+              "title": "Exponentialfunktionen und Wachstumsvorgänge",
+              "pointsPerTask": 10,
+              "keywords": [
+                "exponentiell",
+                "Wachstum"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lb2-zinseszins",
+              "title": "Zinseszins: Endkapital",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Zinseszins"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lb2-zunahme",
+              "title": "Prozentuale Zunahme",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Prozent"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lb2-sinus",
+              "title": "Sinusfunktion, Periodizität, Grad- und Bogenmaß",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Zufallsgrößen",
+          "ustd": 12,
+          "topics": [
+            {
+              "id": "os-rs-k10-lb3-zufall",
+              "title": "Verwenden von Zufallsgrößen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k10-lb3-erwartung",
+              "title": "Erwartungswert einer Zufallsgröße",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Erwartungswert"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lb3-laplace",
+              "title": "Wahrscheinlichkeiten bei Zufallsversuchen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Wahrscheinlichkeit"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lb3-simulation",
+              "title": "Simulation von Zufallsversuchen",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Mathematik im Alltag",
+          "ustd": 28,
+          "topics": [
+            {
+              "id": "os-rs-k10-lb4-wirtschaft",
+              "title": "Probleme aus Umwelt und Wirtschaft, Sparen und Kredit",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "os-rs-k10-lb4-zinsen",
+              "title": "Zinsen und Kapital",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Zinsen"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lb4-pyramide",
+              "title": "Körper einschließlich Pyramiden- und Kegelstumpf",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Pyramide"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lb4-kugel",
+              "title": "Volumen der Kugel",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Kugel"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lb4-erwartung",
+              "title": "Wahrscheinlichkeiten und Erwartungswerte",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lbw1",
+          "title": "Wahlbereich 1: Dynamisieren geometrischer Objekte",
+          "topics": [
+            {
+              "id": "os-rs-k10-lbw1-dgs",
+              "title": "Zentralperspektive, Ortskurven und Makros",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lbw2",
+          "title": "Wahlbereich 2: Optimierung",
+          "topics": [
+            {
+              "id": "os-rs-k10-lbw2-opt",
+              "title": "Optimierungsprobleme und lineare Ungleichungen",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "lbw3",
+          "title": "Wahlbereich 3: Vermessungsprobleme",
+          "topics": [
+            {
+              "id": "os-rs-k10-lbw3-pythagoras",
+              "title": "Vermessung mit dem Satz des Pythagoras",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Pythagoras"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lbw3-strahlensatz",
+              "title": "Vermessung mit Strahlensätzen und ähnlichen Figuren",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Strahlensatz"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "extras": []
+}

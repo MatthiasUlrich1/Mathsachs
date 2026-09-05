@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import {
-  availableCurricula,
   getCurriculumModule,
   getLoadedIds,
   listVisibleGradeModules,
   setLoadedIds,
 } from './curriculum/registry'
+import { listInstalledPacks } from './curriculum/install'
 import { migrateBundledCurriculumIfNeeded } from './curriculum/install'
 import { loadInstalledGrade } from './curriculum/loadGrade'
 import { useCurriculumCatalog } from './curriculum/useCurriculumCatalog'
@@ -79,8 +79,10 @@ type View =
     }
   | { name: 'worksheet'; topic: Topic; areaTitle: string; gradeTitle: string }
 
-const registryOrder = (id: string) =>
-  availableCurricula.findIndex((m) => m.id === id)
+const registryOrder = (id: string) => {
+  const idx = listVisibleGradeModules().findIndex((m) => m.id === id)
+  return idx === -1 ? 999 : idx
+}
 
 export default function App() {
   const [storageReady, setStorageReady] = useState(false)
@@ -499,8 +501,10 @@ export default function App() {
                   {activeLoaded.grade.title}
                 </h2>
                 <p className="muted small">
-                  Lehrplan Gymnasium (Sachsen). Klappe einen Lernbereich auf,
-                  wähle ein Thema und übe direkt oder erstelle ein Übungsblatt.
+                  {listInstalledPacks().find((pack) => pack.id === activeLoaded.grade.packId)
+                    ?.title ?? 'Lehrplan Mathematik (Sachsen)'}
+                  . Klappe einen Lernbereich auf, wähle ein Thema und übe direkt
+                  oder erstelle ein Übungsblatt.
                 </p>
               </div>
 

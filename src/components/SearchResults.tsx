@@ -44,20 +44,26 @@ export function SearchResults({
                 </span>
               </span>
               <span className="topic__actions">
-                <button
-                  type="button"
-                  className="chip-btn chip-btn--primary"
-                  onClick={() => onPractice(hit.topic, hit.areaTitle, hit.gradeTitle)}
-                >
-                  Üben
-                </button>
-                <button
-                  type="button"
-                  className="chip-btn"
-                  onClick={() => onWorksheet(hit.topic, hit.areaTitle, hit.gradeTitle)}
-                >
-                  Übungsblatt
-                </button>
+                {hit.topic.outlineOnly ? (
+                  <span className="topic__outline">noch keine Aufgaben</span>
+                ) : (
+                  <>
+                    <button
+                      type="button"
+                      className="chip-btn chip-btn--primary"
+                      onClick={() => onPractice(hit.topic, hit.areaTitle, hit.gradeTitle)}
+                    >
+                      Üben
+                    </button>
+                    <button
+                      type="button"
+                      className="chip-btn"
+                      onClick={() => onWorksheet(hit.topic, hit.areaTitle, hit.gradeTitle)}
+                    >
+                      Übungsblatt
+                    </button>
+                  </>
+                )}
               </span>
             </li>
           ))}
