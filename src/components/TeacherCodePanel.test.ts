@@ -5,7 +5,6 @@ import { CONTACT_EMAIL } from '../legal/content'
 import {
   TEACHER_CODE_REQUEST_LABEL,
   TEACHER_CODE_WRONG,
-  buildTeacherCodeRequestMailto,
   formatTeacherCode,
 } from '../lib/teacherCode'
 import {
@@ -19,8 +18,8 @@ describe('TeacherCodePanel', () => {
   it('offers a mailto request without the secret', () => {
     const html = renderToStaticMarkup(createElement(TeacherCodeRequestButton))
     expect(html).toContain(TEACHER_CODE_REQUEST_LABEL)
-    expect(html).toContain(`href="${buildTeacherCodeRequestMailto()}"`)
     expect(html).toContain(`mailto:${CONTACT_EMAIL}`)
+    expect(html).toContain('Lehrercode%20f%C3%BCr')
     expect(html).not.toContain(formatTeacherCode())
   })
 
@@ -30,7 +29,8 @@ describe('TeacherCodePanel', () => {
     expect(html).toContain(formatTeacherCode())
     expect(html).toContain('Lehrercode kopieren')
     expect(html).toContain('andere Lehrer der Schule')
-    expect(html).toContain('keine')
+    expect(html).toContain('nicht an Schüler')
+    expect(html).toContain('nichts dazu gespeichert')
     expect(html).not.toContain(TEACHER_CODE_REQUEST_LABEL)
   })
 
