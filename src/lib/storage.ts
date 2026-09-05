@@ -10,6 +10,7 @@ import {
   emptySharedState,
   looksLikeSharedState,
   mergeSharedState,
+  migrateSharedClassCodes,
   parseClassCodes,
   sharedStateFingerprint,
   userRecordKey,
@@ -38,6 +39,7 @@ export type {
 const MAX_SESSIONS = 200
 const MAX_TRANSFERS = 200
 const POLL_MS = 1500
+let activeUserName: string | null = null
 
 type StorageBackend = 'ipc' | 'http' | 'local'
 
@@ -55,6 +57,7 @@ const freshUser = (name: string): UserData => ({
   stats: {},
   sessions: [],
   classTransfers: [],
+  classCodes: emptyClassCodes(),
 })
 
 const readLocalState = (): SharedState => {
@@ -70,8 +73,13 @@ const readLocalState = (): SharedState => {
   for (const name of state.users) {
     try {
       const raw = localStorage.getItem(userRecordKey(name))
-      if (raw) state.records[name] = JSON.parse(raw) as UserData
-      else state.records[name] = freshUser(name)
+      if (raw) {
+        const parsed = JSON.parse(raw) as UserData
+        state.records[name] = {
+          ...parsed,
+          classCodes: parsed.classCodes ? parseClassCodes(parsed.classCodes) : parsed.classCodes,
+        }
+      } else state.records[name] = freshUser(name)
     } catch {
       state.records[name] = freshUser(name)
     }
@@ -82,7 +90,7 @@ const readLocalState = (): SharedState => {
   } catch {
     state.classCodes = emptyClassCodes()
   }
-  return state
+  return migrateSharedClassCodes(state, activeUserName)
 }
 
 const writeLocalState = (state: SharedState): void => {
@@ -131,7 +139,7 @@ const parseStateResponse = async (res: Response): Promise<SharedState | null> =>
     const data: unknown = await res.json()
     if (!looksLikeSharedState(data)) return null
     const records = isRecordMap(data.records) ? data.records : {}
-    return {
+    return migrateSharedClassCodes({
       schemaVersion:
         typeof data.schemaVersion === 'number'
           ? data.schemaVersion
@@ -142,7 +150,7 @@ const parseStateResponse = async (res: Response): Promise<SharedState | null> =>
         : Object.keys(records),
       records,
       classCodes: parseClassCodes(data.classCodes),
-    }
+    })
   } catch {
     return null
   }
@@ -182,6 +190,19 @@ let pollTimer: ReturnType<typeof setInterval> | null = null
 let persistChain: Promise<void> = Promise.resolve()
 let unsubIpc: (() => void) | null = null
 const listeners = new Set<() => void>()
+
+const classCodesForUser = (name: string | null | undefined): ClassCodeSettings => {
+  const user = name?.trim()
+  if (!user) return emptyClassCodes()
+  return parseClassCodes(cache.records[user]?.classCodes)
+}
+
+const applyClassCodeMigration = (preferred?: string | null): boolean => {
+  const migrated = migrateSharedClassCodes(cache, preferred ?? activeUserName)
+  if (sharedStateFingerprint(cache) === sharedStateFingerprint(migrated)) return false
+  cache = cloneSharedState(migrated)
+  return true
+}
 
 const notify = (): void => {
   for (const listener of listeners) listener()
@@ -281,6 +302,7 @@ export const initSharedStorage = (): Promise<void> => {
   initPromise = (async () => {
     backend = await detectBackend()
     cache = await loadFromBackend()
+    applyClassCodeMigration(activeUserName)
     if (backend === 'ipc') {
       const desktop = desktopBridge()
       if (desktop) {
@@ -288,6 +310,7 @@ export const initSharedStorage = (): Promise<void> => {
           canUseLocalStorage() ? localStorage : undefined,
         )
         cache = await desktop.migrateSharedState(snapshot)
+        applyClassCodeMigration(activeUserName)
         unsubIpc = desktop.onSharedState((next) => {
           applyRemote(next)
         })
@@ -305,6 +328,18 @@ export const isSharedStorageReady = (): boolean => ready
 export const subscribeSharedStorage = (listener: () => void): (() => void) => {
   listeners.add(listener)
   return () => listeners.delete(listener)
+}
+
+export const getActiveStorageUser = (): string | null => activeUserName
+
+/** Scope class-code UI/settings to the logged-in user and migrate leftover shared codes. */
+export const setActiveStorageUser = (name: string | null): void => {
+  const next = name?.trim() || null
+  const changed = activeUserName !== next
+  activeUserName = next
+  const migrated = applyClassCodeMigration(activeUserName)
+  if (migrated) void persistCache()
+  if (changed || migrated) notify()
 }
 
 export const listUsers = (): string[] => [...cache.users]
@@ -343,6 +378,7 @@ export const addUser = (rawName: string): string[] => {
         [name]: cache.records[name] ?? freshUser(name),
       },
     }
+    applyClassCodeMigration(name)
     void persistCache()
     notify()
   }
@@ -369,11 +405,12 @@ interface SessionInput {
 }
 
 const plannedTransfer = (
+  user: UserData,
   points: number,
   at: number,
 ): ClassTransferRecord | null => {
   if (!(points > 0)) return null
-  const settings = cache.classCodes ?? emptyClassCodes()
+  const settings = parseClassCodes(user.classCodes)
   if (!settings.sendPoints || !settings.activeCode) return null
   const created = settings.created.find((row) => row.code === settings.activeCode)
   return {
@@ -389,7 +426,7 @@ export const recordSession = (name: string, input: SessionInput): UserData => {
   const data = loadUser(name)
   const prev = data.stats[input.topicId]
   const now = Date.now()
-  const transfer = plannedTransfer(input.points, now)
+  const transfer = plannedTransfer(data, input.points, now)
   const classTransfers = transfer
     ? [transfer, ...(data.classTransfers ?? [])]
     : [...(data.classTransfers ?? [])]
@@ -423,8 +460,8 @@ export const recordSession = (name: string, input: SessionInput): UserData => {
   return next
 }
 
-export const getClassCodeSettings = (): ClassCodeSettings =>
-  cache.classCodes ?? emptyClassCodes()
+export const getClassCodeSettings = (name?: string): ClassCodeSettings =>
+  classCodesForUser(name ?? activeUserName)
 
 /** Active class name for the top bar, or null when no code is collecting. */
 export const activeClassDisplayName = (): string | null => {
@@ -435,12 +472,21 @@ export const activeClassDisplayName = (): string | null => {
 }
 
 const persistClassCodes = (classCodes: ClassCodeSettings): void => {
-  cache = { ...cache, classCodes }
+  const user = activeUserName?.trim()
+  if (!user) return
+  const current = cache.records[user] ?? freshUser(user)
+  const users = cache.users.includes(user) ? cache.users : [...cache.users, user]
+  cache = {
+    ...cache,
+    users: [...users],
+    records: { ...cache.records, [user]: { ...current, classCodes } },
+    classCodes: emptyClassCodes(),
+  }
   void persistCache()
   notify()
 }
 
-/** Remember a code this PC/LAN created and make it the single active collect-code. */
+/** Remember a code this user created and make it the single active collect-code. */
 export const rememberCreatedClassCode = (code: string, name: string): void => {
   const normalized = normalizeClassCode(code)
   if (!normalized) return
@@ -458,7 +504,7 @@ export const rememberCreatedClassCode = (code: string, name: string): void => {
   })
 }
 
-/** Drop a code from this PC’s list. Does not call the server. */
+/** Drop a code from this user's list. Does not call the server. */
 export const forgetCreatedClassCode = (code: string): void => {
   const normalized = normalizeClassCode(code)
   if (!normalized) return
@@ -535,7 +581,7 @@ export const buildProtocol = (
   const totalPoints = stats.reduce((sum, s) => sum + s.points, 0)
   const totalAttempts = stats.reduce((sum, s) => sum + s.attempts, 0)
   const totalCorrect = stats.reduce((sum, s) => sum + s.correct, 0)
-  const settings = getClassCodeSettings()
+  const settings = parseClassCodes(data.classCodes)
   return {
     name,
     generatedAt: typeof now === 'number' ? now : now.getTime(),
@@ -566,6 +612,7 @@ export const resetSharedStorageForTests = (): void => {
   backend = 'local'
   initPromise = null
   persistChain = Promise.resolve()
+  activeUserName = null
   listeners.clear()
 }
 
