@@ -1,20 +1,20 @@
 import { useCallback, useEffect, useState } from 'react'
-import { checkForAppUpdate } from './github'
-import {
-  dismissUpdateForSession,
-  ignoreUpdateVersion,
-  isUpdateHidden,
-} from './ignore'
+import { isUpdateHidden, dismissUpdateForSession, ignoreUpdateVersion } from './ignore'
 import {
   msUntilNextBerlinDay,
   readLastUpdateCheckAt,
-  shouldCheckForUpdate,
-  writeLastUpdateCheckAt,
 } from './schedule'
 import type { AppUpdateInfo, DesktopDownloadResult } from './types'
+import {
+  MANUAL_CHECK_FAILED,
+  runUpdateCheck,
+  type ManualCheckStatus,
+  type ResolvedUpdateProbe,
+} from './runCheck'
 import { APP_VERSION } from './version'
 
 export type UpdateUiStatus = 'idle' | 'downloading' | 'downloaded' | 'error'
+export type { ManualCheckStatus }
 
 export function useUpdateCheck() {
   const [update, setUpdate] = useState<AppUpdateInfo | null>(null)
@@ -22,34 +22,27 @@ export function useUpdateCheck() {
   const [progress, setProgress] = useState(0)
   const [error, setError] = useState<string | null>(null)
   const [currentVersion, setCurrentVersion] = useState(APP_VERSION)
+  const [manualStatus, setManualStatus] = useState<ManualCheckStatus>('idle')
+  const [manualError, setManualError] = useState<string | null>(null)
+
+  const applyProbe = useCallback(
+    (probe: ResolvedUpdateProbe, hideIfIgnored: boolean) => {
+      setCurrentVersion(probe.currentVersion)
+      if (probe.status === 'update') {
+        if (!hideIfIgnored || !isUpdateHidden(probe.info.version)) {
+          setUpdate(probe.info)
+        }
+        return
+      }
+      if (probe.status === 'current') setUpdate(null)
+    },
+    [],
+  )
 
   useEffect(() => {
     const desktop = window.mathsachs
     let cancelled = false
     let timer: ReturnType<typeof setTimeout> | null = null
-
-    const apply = (info: AppUpdateInfo | null, version = APP_VERSION) => {
-      if (cancelled) return
-      setCurrentVersion(version)
-      if (info && !isUpdateHidden(info.version)) setUpdate(info)
-    }
-
-    const run = async () => {
-      try {
-        if (desktop?.checkForUpdates) {
-          const result = await desktop.checkForUpdates()
-          const version = result.available
-            ? undefined
-            : result.current
-          const fromDesktop = result.available ? result : null
-          apply(fromDesktop, version ?? (await desktop.getVersion?.()) ?? APP_VERSION)
-          return
-        }
-        apply(await checkForAppUpdate({ currentVersion: APP_VERSION }))
-      } catch {
-        // Offline / rate-limited GitHub: stay quiet.
-      }
-    }
 
     const scheduleNextDay = () => {
       if (cancelled) return
@@ -60,9 +53,16 @@ export function useUpdateCheck() {
 
     const tick = async () => {
       if (cancelled) return
-      if (shouldCheckForUpdate(readLastUpdateCheckAt(), Date.now())) {
-        await run()
-        if (!cancelled) writeLastUpdateCheckAt(Date.now())
+      const result = await runUpdateCheck({
+        mode: 'scheduled',
+        lastCheckAt: readLastUpdateCheckAt(),
+        now: Date.now(),
+        currentVersion: APP_VERSION,
+        desktop: desktop?.checkForUpdates ? desktop : null,
+      })
+      if (cancelled) return
+      if (result.action === 'checked' && result.probe.status !== 'error') {
+        applyProbe(result.probe, true)
       }
       scheduleNextDay()
     }
@@ -87,7 +87,41 @@ export function useUpdateCheck() {
       if (timer) clearTimeout(timer)
       unsubscribe?.()
     }
-  }, [])
+  }, [applyProbe])
+
+  const checkNow = useCallback(async () => {
+    setManualStatus('checking')
+    setManualError(null)
+    try {
+      const desktop = window.mathsachs
+      const result = await runUpdateCheck({
+        mode: 'forced',
+        lastCheckAt: readLastUpdateCheckAt(),
+        now: Date.now(),
+        currentVersion: APP_VERSION,
+        desktop: desktop?.checkForUpdates ? desktop : null,
+      })
+      if (result.action === 'skipped') {
+        setManualStatus('idle')
+        return
+      }
+      if (result.probe.status === 'update') {
+        applyProbe(result.probe, false)
+        setManualStatus('idle')
+        return
+      }
+      if (result.probe.status === 'current') {
+        applyProbe(result.probe, false)
+        setManualStatus('current')
+        return
+      }
+      setManualStatus('error')
+      setManualError(result.probe.message)
+    } catch {
+      setManualStatus('error')
+      setManualError(MANUAL_CHECK_FAILED)
+    }
+  }, [applyProbe])
 
   const dismiss = useCallback(() => {
     if (!update) return
@@ -131,6 +165,9 @@ export function useUpdateCheck() {
     progress,
     error,
     currentVersion,
+    manualStatus,
+    manualError,
+    checkNow,
     dismiss,
     ignore,
     download,

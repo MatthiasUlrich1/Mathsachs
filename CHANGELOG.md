@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.25] – 2026-09-05
+
+### Hinzugefügt
+
+- **Auf Updates prüfen:** Unter **Einstellungen → Profil** prüft ein Button
+  jederzeit auf eine neue Version. Die Sperre „schon heute geprüft“ gilt nur
+  für die automatische Prüfung. Ist ein Update da, erscheint der bekannte
+  Hinweis. Sonst steht unter dem Button, dass du die aktuelle Version hast
+  (oder dass die Prüfung fehlgeschlagen ist).
+
 ## [0.1.24] – 2026-09-05
 
 ### Hinzugefügt
@@ -361,7 +371,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.24...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.25...HEAD
+[0.1.25]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.24...v0.1.25
 [0.1.24]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.23...v0.1.24
 [0.1.23]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.22...v0.1.23
 [0.1.22]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.21...v0.1.22

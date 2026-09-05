@@ -1,9 +1,11 @@
 import { describe, expect, it, vi } from 'vitest'
 import { GITHUB_RELEASES_LATEST_API } from './constants'
 import {
+  UPDATE_CHECK_FAILED,
   checkForAppUpdate,
   detectPlatform,
   pickPlatformAsset,
+  probeAppUpdate,
   releaseToUpdateInfo,
 } from './github'
 import type { GithubRelease, GithubReleaseAsset } from './types'
@@ -113,6 +115,31 @@ describe('checkForAppUpdate', () => {
       fetchImpl,
     })
     expect(info).toBeNull()
+  })
+
+  it('reports current when the latest tag is not newer', async () => {
+    const fetchImpl = vi.fn().mockResolvedValue(
+      jsonResponse({ ...newerRelease, tag_name: 'v0.1.3' }),
+    )
+    expect(
+      await probeAppUpdate({
+        currentVersion: '0.1.3',
+        platform: 'linux',
+        fetchImpl,
+      }),
+    ).toEqual({ status: 'current' })
+  })
+
+  it('reports an error when the GitHub API is unavailable', async () => {
+    const fetchImpl = vi.fn().mockResolvedValue(jsonResponse({ message: 'nope' }, 404))
+    expect(
+      await probeAppUpdate({ currentVersion: '0.1.3', fetchImpl }),
+    ).toEqual({ status: 'error', message: UPDATE_CHECK_FAILED })
+
+    const failing = vi.fn().mockRejectedValue(new Error('network'))
+    expect(
+      await probeAppUpdate({ currentVersion: '0.1.3', fetchImpl: failing }),
+    ).toEqual({ status: 'error', message: UPDATE_CHECK_FAILED })
   })
 
   it('returns null when the GitHub API is unavailable', async () => {

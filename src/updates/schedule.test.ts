@@ -54,6 +54,15 @@ describe('shouldCheckForUpdate', () => {
   it('does not treat a 15-hour same-day gap as a new check', () => {
     expect(shouldCheckForUpdate(SAT_MORNING, SAT_EVENING)).toBe(false)
   })
+
+  it('runs when force is set, even on the same Berlin day', () => {
+    expect(shouldCheckForUpdate(SAT_MORNING, SAT_EVENING, { force: true })).toBe(
+      true,
+    )
+    expect(shouldCheckForUpdate(SAT_MORNING, SAT_MORNING, { force: true })).toBe(
+      true,
+    )
+  })
 })
 
 describe('msUntilNextBerlinDay', () => {

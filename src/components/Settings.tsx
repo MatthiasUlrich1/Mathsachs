@@ -16,12 +16,17 @@ import {
   type UserRole,
 } from '../lib/roles'
 import type { LanServerStatus } from '../updates/types'
+import {
+  MANUAL_CHECK_LABEL,
+  manualCheckHint,
+  type ManualCheckStatus,
+} from '../updates/runCheck'
 
 const SECTION_HINTS: Record<SettingsSectionId, string> = {
   curricula: 'Klassenstufen laden und entfernen',
   class: 'Klassencode erstellen, eintragen oder teilen',
   lan: 'Tablets im selben WLAN verbinden',
-  profile: 'Rolle, Rechte und Benutzerwechsel',
+  profile: 'Rolle, Rechte, Benutzerwechsel und Updates',
 }
 
 interface Props {
@@ -37,6 +42,9 @@ interface Props {
   lanStatus: LanServerStatus | null
   onChangeRole: (role: UserRole) => void
   onSwitchUser: () => void
+  onCheckUpdates: () => void
+  manualCheckStatus?: ManualCheckStatus
+  manualCheckError?: string | null
 }
 
 export function Settings({
@@ -52,8 +60,12 @@ export function Settings({
   lanStatus,
   onChangeRole,
   onSwitchUser,
+  onCheckUpdates,
+  manualCheckStatus = 'idle',
+  manualCheckError = null,
 }: Props) {
   const lanAvailable = Boolean(lanStatus)
+  const updateHint = manualCheckHint(manualCheckStatus, manualCheckError)
   const sectionHint = (id: SettingsSectionId) => {
     if (id === 'class' && (canManageGradeCodes(role) || canEnterGradeCodes(role))) {
       return 'Klassencode und Klassenstufe'
@@ -185,6 +197,29 @@ export function Settings({
             <button type="button" className="ghost" onClick={onSwitchUser}>
               Benutzer wechseln
             </button>
+            <div className="profile-updates">
+              <button
+                type="button"
+                className="ghost"
+                onClick={onCheckUpdates}
+                disabled={manualCheckStatus === 'checking'}
+                aria-busy={manualCheckStatus === 'checking'}
+              >
+                {MANUAL_CHECK_LABEL}
+              </button>
+              {updateHint && (
+                <p
+                  className={
+                    manualCheckStatus === 'error'
+                      ? 'notice notice--error'
+                      : 'muted small'
+                  }
+                  aria-live="polite"
+                >
+                  {updateHint}
+                </p>
+              )}
+            </div>
           </section>
           <RoleRightsMatrix />
         </>

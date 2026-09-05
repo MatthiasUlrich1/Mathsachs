@@ -54,7 +54,8 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   | Challenge erstellen | — | — | geplant | geplant |
 
 - **Einstellungen**: Untermenü mit Lehrplänen, Klassencode, WLAN-Zugang
-  (Desktop) und Profil (Rolle und Benutzerwechsel). In den Einstellungen zeigt
+  (Desktop) und Profil (Rolle, Benutzerwechsel und **Auf Updates prüfen**).
+  In den Einstellungen zeigt
   die Leiste **Zum Üben** links neben **Einstellungen** (hervorgehoben) und
   blendet Themen, Klausur und Punkteprotokoll aus. **Zurück** führt zur Liste.
   WLAN-Zugang nur unter Einstellungen, nicht auf der Benutzerauswahl.
@@ -78,12 +79,14 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.24**).
+(aktuelle Version **0.1.25**).
 
 Die App prüft beim Start und — solange sie geöffnet bleibt — einmal pro
 Kalendertag (**Europe/Berlin**) die öffentlichen
 [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
-auf eine neuere Version (ohne Token). Ist ein Update da, erscheint ein
+auf eine neuere Version (ohne Token). Unter **Einstellungen → Profil** kannst
+du jederzeit mit **Auf Updates prüfen** nachschauen (die Tages-Sperre gilt
+nur für die automatische Prüfung). Ist ein Update da, erscheint ein
 schließbarer Hinweis mit Versionsnummer, Release-Notes und Download. Im
 Browser öffnet **Download** den passenden Installer bzw. die Releases-Seite;
 die installierte Desktop-App kann das Update herunterladen und einspielen.

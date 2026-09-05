@@ -59,6 +59,13 @@ export function releaseToUpdateInfo(
   }
 }
 
+export const UPDATE_CHECK_FAILED = 'Prüfung fehlgeschlagen.'
+
+export type AppUpdateProbe =
+  | { status: 'update'; info: AppUpdateInfo }
+  | { status: 'current' }
+  | { status: 'error'; message: string }
+
 export async function fetchLatestRelease(
   fetchImpl: typeof fetch = fetch,
 ): Promise<GithubRelease | null> {
@@ -74,23 +81,35 @@ export async function fetchLatestRelease(
   return data
 }
 
+export async function probeAppUpdate(options: {
+  currentVersion: string
+  platform?: DesktopPlatform
+  fetchImpl?: typeof fetch
+  canAutoInstall?: boolean
+}): Promise<AppUpdateProbe> {
+  try {
+    const release = await fetchLatestRelease(options.fetchImpl)
+    if (!release) return { status: 'error', message: UPDATE_CHECK_FAILED }
+    const platform = options.platform ?? detectPlatform()
+    const info = releaseToUpdateInfo(
+      release,
+      options.currentVersion,
+      platform,
+      options.canAutoInstall ?? false,
+    )
+    if (!info) return { status: 'current' }
+    return { status: 'update', info }
+  } catch {
+    return { status: 'error', message: UPDATE_CHECK_FAILED }
+  }
+}
+
 export async function checkForAppUpdate(options: {
   currentVersion: string
   platform?: DesktopPlatform
   fetchImpl?: typeof fetch
   canAutoInstall?: boolean
 }): Promise<AppUpdateInfo | null> {
-  try {
-    const release = await fetchLatestRelease(options.fetchImpl)
-    if (!release) return null
-    const platform = options.platform ?? detectPlatform()
-    return releaseToUpdateInfo(
-      release,
-      options.currentVersion,
-      platform,
-      options.canAutoInstall ?? false,
-    )
-  } catch {
-    return null
-  }
+  const probe = await probeAppUpdate(options)
+  return probe.status === 'update' ? probe.info : null
 }

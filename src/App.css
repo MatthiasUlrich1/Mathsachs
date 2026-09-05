@@ -438,8 +438,21 @@ a.ghost.update-banner__link {
   border: 1px solid rgba(148, 163, 184, 0.3);
 }
 
-.ghost:hover {
+.ghost:hover:not(:disabled) {
   border-color: rgba(148, 163, 184, 0.6);
+}
+
+.ghost:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.profile-updates {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 16px;
 }
 
 .link {

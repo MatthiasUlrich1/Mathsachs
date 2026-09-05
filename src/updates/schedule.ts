@@ -11,7 +11,9 @@ const SEARCH_STEP_MS = 250
 export function shouldCheckForUpdate(
   lastCheckAt: number | null | undefined,
   now: number = Date.now(),
+  options?: { force?: boolean },
 ): boolean {
+  if (options?.force) return true
   if (lastCheckAt == null || !Number.isFinite(lastCheckAt) || lastCheckAt <= 0) {
     return true
   }

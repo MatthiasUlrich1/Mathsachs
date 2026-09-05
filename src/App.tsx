@@ -518,6 +518,9 @@ export default function App() {
             setClassLabel(null)
             setView({ name: 'browse' })
           }}
+          onCheckUpdates={() => void updateCheck.checkNow()}
+          manualCheckStatus={updateCheck.manualStatus}
+          manualCheckError={updateCheck.manualError}
         />
       )}
 
