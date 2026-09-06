@@ -38,6 +38,7 @@ describe('Settings hub update check', () => {
     expect(html).toContain('Klasse')
     expect(html).toContain('WLAN-Zugang')
     expect(html).toContain('Profil')
+    expect(html).toContain('Unterstützer')
     expect(html).toContain('Aufgaben ergänzen')
     expect(html).toContain(MANUAL_CHECK_LABEL)
     expect(html).not.toContain(MANUAL_CHECK_CURRENT)
@@ -85,6 +86,18 @@ describe('Settings hub update check', () => {
     expect(html).toContain('Titel des Themas')
     expect(html).toContain('Aufgabenbeispiel')
     expect(html).toContain('Vorgaben senden')
+  })
+
+  it('lists the Bürgerinitiative on the Unterstützer page', () => {
+    const html = renderToStaticMarkup(
+      createElement(Settings, { ...baseProps, section: 'supporters' }),
+    )
+    expect(html).toContain('Unterstützer')
+    expect(html).toContain('Bürgerinitiative Menschenskinder Delitzsch! e.V.')
+    expect(html).toContain('https://www.bi-menschenskinder-delitzsch.de/')
+    expect(html).toContain('logo-bi-menschenskinder.png')
+    expect(html).not.toContain('Mein Delitzsch')
+    expect(html).not.toContain(MANUAL_CHECK_LABEL)
   })
 
   it('denies the tasks section to other roles', () => {

@@ -6,16 +6,49 @@ import {
   MIT_LICENSE_TEXT,
   buildIdeenmelderMailto,
 } from '../legal/content'
+import { footerSupporters } from '../legal/supporters'
 
 type LegalDialog = 'impressum' | 'lizenz' | 'datenschutz' | null
 
 export function LegalFooter({ version }: { version: string }) {
   const [dialog, setDialog] = useState<LegalDialog>(null)
   const mailto = buildIdeenmelderMailto()
+  const logos = footerSupporters()
 
   return (
     <>
       <footer className="foot">
+        {logos.length > 0 && (
+          <nav className="foot__supporters" aria-label="Unterstützer">
+            {logos.map((row) => {
+              const image = (
+                <img
+                  className="foot__supporter-logo"
+                  src={row.logoSrc}
+                  alt={row.logoAlt ?? row.name}
+                />
+              )
+              const className = row.logoOnDark
+                ? 'foot__supporter foot__supporter--on-dark'
+                : 'foot__supporter'
+              return row.url ? (
+                <a
+                  key={row.id}
+                  className={className}
+                  href={row.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {image}
+                </a>
+              ) : (
+                <span key={row.id} className={className}>
+                  {image}
+                </span>
+              )
+            })}
+          </nav>
+        )}
         <p>
           Mathsachs {version} · Übungsprogramm nach sächsischem Lehrplan ·
           erweiterbar für weitere Klassen und Fächer

@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.42] – 2026-09-06
+
+### Hinzugefügt
+
+- **Unterstützer:** In der Fußzeile stehen die Logos der
+  **Bürgerinitiative Menschenskinder Delitzsch! e.V.** und von
+  **Mein Delitzsch**. Unter **Einstellungen → Unterstützer** ist die
+  Bürgerinitiative mit Website aufgeführt. Weitere Unterstützer werden
+  in einer gemeinsamen Liste ergänzt.
+
 ## [0.1.41] – 2026-09-05
 
 ### Behoben
@@ -610,7 +620,8 @@ Fixes #11
 - **Desktop-App** (Electron) mit Installern für Windows, macOS und Linux.
 - **Cloud-Agent-Umgebung** (`.cursor/environment.json`) für die Entwicklung.
 
-[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.41...HEAD
+[Unreleased]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.42...HEAD
+[0.1.42]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.41...v0.1.42
 [0.1.41]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.40...v0.1.41
 [0.1.40]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.39...v0.1.40
 [0.1.39]: https://github.com/MatthiasUlrich1/Mathsachs/compare/v0.1.38...v0.1.39

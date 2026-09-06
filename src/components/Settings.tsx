@@ -3,6 +3,7 @@ import { CurriculumSetup } from './CurriculumSetup'
 import { ClassCodes } from './ClassCodes'
 import { LanAccessCard } from './LanAccessCard'
 import { RoleRightsMatrix } from './RoleRightsMatrix'
+import { Supporters } from './Supporters'
 import { TaskRequest } from './TaskRequest'
 import {
   RoleOptions,
@@ -38,6 +39,7 @@ const SECTION_HINTS: Record<SettingsSectionId, string> = {
   tasks: 'Vorgaben für neue Übungsaufgaben senden',
   lan: 'Tablets im selben WLAN verbinden',
   profile: 'Rolle, Lehrercode, Rechte und Benutzerwechsel',
+  supporters: 'Organisationen, die Mathsachs unterstützen',
 }
 
 interface Props {
@@ -290,6 +292,8 @@ export function Settings({
           <RoleRightsMatrix />
         </>
       )}
+
+      {section === 'supporters' && <Supporters />}
     </div>
   )
 }

@@ -46,6 +46,7 @@ export const SETTINGS_SECTIONS = [
   { id: 'tasks', label: 'Aufgaben ergänzen' },
   { id: 'lan', label: 'WLAN-Zugang' },
   { id: 'profile', label: 'Profil' },
+  { id: 'supporters', label: 'Unterstützer' },
 ] as const
 
 export type SettingsSectionId = (typeof SETTINGS_SECTIONS)[number]['id']

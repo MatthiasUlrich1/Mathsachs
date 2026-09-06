@@ -77,8 +77,8 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Feld dann **siehe Anhang**. Die Angaben gehen per E-Mail an uns —
   nicht an den Klassen-Server.
 - **Einstellungen**: Untermenü mit Lehrplänen, Klassencode, **Aufgaben
-  ergänzen** (nur Lehrer), WLAN-Zugang (Desktop) und Profil (Rolle und
-  Benutzerwechsel). **Auf Updates prüfen** steht direkt auf der
+  ergänzen** (nur Lehrer), WLAN-Zugang (Desktop), Profil (Rolle und
+  Benutzerwechsel) und **Unterstützer**. **Auf Updates prüfen** steht direkt auf der
   Einstellungen-Übersicht.
   In den Einstellungen zeigt
   die Leiste **Zum Üben** links neben **Einstellungen** (hervorgehoben) und
@@ -115,7 +115,7 @@ verteilen. Gebaut mit React, TypeScript und Vite.
   Fach → Klassenstufe → Lernbereich → Thema).
 
 Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.41**).
+(aktuelle Version **0.1.42**).
 
 Die App prüft beim Start und — solange sie geöffnet bleibt — einmal pro
 Kalendertag (**Europe/Berlin**) die öffentlichen
@@ -393,7 +393,7 @@ src/
   lan/                # WLAN-Server-Status in der UI, Tests für den LAN-HTTP-Server
   legal/              # Impressum, Datenschutz-Hinweis, MIT-Lizenztext, Ideenmelder- und Aufgaben-mailto
   updates/            # GitHub-Releases-Updateprüfung (Semver, Assets, Banner)
-  components/         # UI: Browser, Üben, Übungsblatt, Protokoll, Einstellungen (Lehrpläne, Klasse, Aufgaben, WLAN, Profil), Klausur, Update-Hinweis, Rechtliches
+  components/         # UI: Browser, Üben, Übungsblatt, Protokoll, Einstellungen (Lehrpläne, Klasse, Aufgaben, WLAN, Profil, Unterstützer), Klausur, Update-Hinweis, Rechtliches
   App.tsx             # Views, routing and user management
   App.css             # Component styles
   index.css           # Global theme

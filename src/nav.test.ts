@@ -90,6 +90,7 @@ describe('top-bar navigation', () => {
       'Aufgaben ergänzen',
       'WLAN-Zugang',
       'Profil',
+      'Unterstützer',
     ])
     expect(SETTINGS_SECTIONS.map((item) => item.id)).toEqual([
       'curricula',
@@ -97,6 +98,7 @@ describe('top-bar navigation', () => {
       'tasks',
       'lan',
       'profile',
+      'supporters',
     ])
   })
 
@@ -107,6 +109,7 @@ describe('top-bar navigation', () => {
       'tasks',
       'lan',
       'profile',
+      'supporters',
     ])
     for (const role of ['schueler', 'eltern', 'klassenlehrer'] as const) {
       expect(settingsSectionsForRole(role).map((item) => item.id)).toEqual([
@@ -114,6 +117,7 @@ describe('top-bar navigation', () => {
         'class',
         'lan',
         'profile',
+        'supporters',
       ])
     }
     expect(settingsSectionsForRole(undefined).map((item) => item.label)).not.toContain(
