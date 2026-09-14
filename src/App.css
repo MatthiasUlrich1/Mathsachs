@@ -856,6 +856,28 @@ a.task-request__send {
   background: rgba(99, 102, 241, 0.28);
 }
 
+/* Task Visual Content (SVG) */
+.task-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.task-visual svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Task Interactive Components */
+.task-interactive {
+  margin: 20px 0;
+}
+
 .chip-btn {
   padding: 7px 12px;
   border-radius: 9px;
