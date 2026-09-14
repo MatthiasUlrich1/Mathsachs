@@ -79,7 +79,7 @@ export function AnswerInput({
         type="text"
         inputMode={isText ? 'text' : 'decimal'}
         aria-label="Antwort"
-        placeholder={isText ? '<, > oder =' : 'Deine Antwort'}
+        placeholder="Deine Antwort"
         value={val}
         disabled={disabled}
         onKeyDown={handleKey}
