@@ -136,21 +136,30 @@ function createWindow() {
 function registerUpdateIpc() {
   ipcMain.handle('updates:version', () => app.getVersion())
 
+  // Tracks whether electron-updater has successfully found an update to download.
+  // Set to true when checkForUpdates() returns a newer version, reset when the app starts.
+  let updaterFoundUpdate = false
+
   ipcMain.handle('updates:check', async () => {
     const current = app.getVersion()
     let canAutoInstall = false
     let updaterInfo = null
     let updaterError = null
-    if (autoUpdater && app.isPackaged) {
+    const canUseAutoUpdater = Boolean(autoUpdater && app.isPackaged)
+
+    if (canUseAutoUpdater) {
       try {
         const result = await autoUpdater.checkForUpdates()
         updaterInfo = result && result.updateInfo
-        canAutoInstall = Boolean(
-          updaterInfo && isNewerVersion(updaterInfo.version, current),
-        )
+        const hasNewer = Boolean(updaterInfo && isNewerVersion(updaterInfo.version, current))
+        canAutoInstall = hasNewer
+        updaterFoundUpdate = hasNewer
       } catch (err) {
-        canAutoInstall = false
         updaterError = err
+        // Do NOT permanently block auto-install on a transient check failure.
+        // If the app is packaged, electron-updater is available — the download
+        // handler will retry checkForUpdates() when the user clicks "Download".
+        canAutoInstall = canUseAutoUpdater
       }
     }
 
@@ -176,6 +185,17 @@ function registerUpdateIpc() {
   ipcMain.handle('updates:download', async () => {
     if (autoUpdater && app.isPackaged) {
       try {
+        // If the initial checkForUpdates() failed or was skipped, retry now so
+        // that electron-updater knows which version to download.
+        if (!updaterFoundUpdate) {
+          const result = await autoUpdater.checkForUpdates()
+          const info = result && result.updateInfo
+          if (!info || !isNewerVersion(info.version, app.getVersion())) {
+            // No update available via electron-updater → fall through to external.
+            return { ok: false, mode: 'external' }
+          }
+          updaterFoundUpdate = true
+        }
         await autoUpdater.downloadUpdate()
         return { ok: true, mode: 'auto' }
       } catch (err) {

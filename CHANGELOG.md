@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.45] – 2026-09-14
+
+### Behoben
+- **In-App-Update robuster**: Wenn `electron-updater` beim Updatecheck wegen eines
+  kurzzeitigen Netzwerkfehlers oder GitHub-Rate-Limits einen Fehler warf, wurde
+  `canAutoInstall` dauerhaft auf `false` gesetzt und der Download öffnete den
+  Browser statt den In-App-Fortschrittsbalken zu zeigen. Jetzt wird beim Klick auf
+  „Update herunterladen" ein erneuter Check durchgeführt, sodass der In-App-Download
+  und der „Jetzt installieren"-Button wieder zuverlässig erscheinen.
+
 ## [0.1.44] – 2026-09-14
 
 ### Hinzugefügt
