@@ -16,6 +16,10 @@ import {
   generateSymmetryShapeSvg,
   generateReflectionSvg,
   generatePointReflectionSvg,
+  generateSegmentSvg,
+  generateSegmentsOnGridSvg,
+  generateRayOrLineSvg,
+  segmentLength,
   reflectPointAcross,
   pointReflectAcross,
   symmetryAxisCount,
@@ -386,6 +390,81 @@ describe('geometrySvg', () => {
       expect(svg).toContain('>S</text>')
       expect(svg).toContain('>A</text>')
       expect(svg).not.toContain("F'")
+    })
+  })
+
+  describe('generateSegmentSvg', () => {
+    it('draws labeled segments with scale bar and length label', () => {
+      const svg = generateSegmentSvg({
+        segments: [{ a: [0, 0], b: [5, 0], labelA: 'A', labelB: 'B' }],
+        showLabel: true,
+        showScaleBar: true,
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('>A</text>')
+      expect(svg).toContain('>B</text>')
+      expect(svg).toContain('5 cm')
+      expect(svg).toContain('1 cm')
+      expect(svg).toContain('<line')
+      expect(segmentLength([0, 0], [5, 0])).toBe(5)
+    })
+
+    it('hides length labels when measuring', () => {
+      const svg = generateSegmentSvg({
+        segments: [
+          { a: [0, 0], b: [4, 0], labelA: 'A', labelB: 'B' },
+          { a: [0, 2], b: [3, 2], labelA: 'C', labelB: 'D' },
+        ],
+        showLabel: false,
+      })
+      expect(svg).toContain('>A</text>')
+      expect(svg).toContain('>C</text>')
+      expect(svg).not.toContain('4 cm')
+      expect(svg).not.toContain('3 cm')
+    })
+  })
+
+  describe('generateSegmentsOnGridSvg', () => {
+    it('draws segments on a coordinate grid', () => {
+      const svg = generateSegmentsOnGridSvg({
+        segments: [{ a: [1, 1], b: [5, 1], labelA: 'A', labelB: 'B' }],
+        showSegments: true,
+        xRange: [-1, 7],
+        yRange: [-1, 5],
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('>A</text>')
+      expect(svg).toContain('>B</text>')
+      expect(svg).toContain('>x</text>')
+      expect(svg).toContain('<line')
+      expect(segmentLength([1, 1], [4, 5])).toBe(5) // 3-4-5
+    })
+
+    it('can show only points without segment lines', () => {
+      const svg = generateSegmentsOnGridSvg({
+        segments: [{ a: [2, 2], b: [2, 6], labelA: 'A', labelB: 'B' }],
+        showSegments: false,
+        xRange: [-1, 8],
+        yRange: [-1, 8],
+      })
+      expect(svg).toContain('>A</text>')
+      expect(svg).toContain('<circle')
+      // No blue segment stroke when hidden
+      expect(svg).not.toContain('stroke="#1565c0"')
+    })
+  })
+
+  describe('generateRayOrLineSvg', () => {
+    it('distinguishes Strecke, Halbgerade and Gerade', () => {
+      const strecke = generateRayOrLineSvg({ kind: 'strecke' })
+      const ray = generateRayOrLineSvg({ kind: 'halbgerade' })
+      const line = generateRayOrLineSvg({ kind: 'gerade' })
+      expect(strecke).toContain('<svg')
+      expect(strecke).toContain('>A</text>')
+      expect(strecke).not.toContain('rayArrow')
+      expect(ray).toContain('rayArrow')
+      expect(line).toContain('rayArrow')
+      expect((line.match(/marker-end/g) ?? []).length).toBeGreaterThanOrEqual(2)
     })
   })
 })

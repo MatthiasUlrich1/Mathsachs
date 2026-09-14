@@ -1956,3 +1956,332 @@ export function generatePointReflectionSvg({
 
   return base.replace('</svg>', `  ${guides}\n  ${ring}\n</svg>`)
 }
+
+// ---------------------------------------------------------------------------
+// Strecken (line segments), rays, lines
+// ---------------------------------------------------------------------------
+
+export interface StandaloneSegment {
+  /** Endpoint A in cm-like units (x right, y up) */
+  a: [number, number]
+  /** Endpoint B in cm-like units */
+  b: [number, number]
+  /** Label for first endpoint (default "A") */
+  labelA?: string
+  /** Label for second endpoint (default "B") */
+  labelB?: string
+  /** Explicit length text near the segment (e.g. "5 cm"); auto-computed if omitted when showLabel */
+  lengthLabel?: string
+}
+
+export interface SegmentSvgProps {
+  /** One or more segments (e.g. AB and CD) */
+  segments: StandaloneSegment[]
+  /** Show length labels on/near segments (default true; false when student must measure) */
+  showLabel?: boolean
+  /** Draw a 1 cm / 1 unit scale bar (default true) */
+  showScaleBar?: boolean
+  /** Pixels per unit; 1 unit ≈ 1 cm (default 40) */
+  unitPx?: number
+  stroke?: string
+}
+
+/** Euclidean length of a segment in the same units as its endpoints. */
+export function segmentLength(a: [number, number], b: [number, number]): number {
+  const dx = b[0] - a[0]
+  const dy = b[1] - a[1]
+  return Math.sqrt(dx * dx + dy * dy)
+}
+
+/**
+ * Standalone diagram of labeled segments with optional length labels and scale bar.
+ * Coordinates use math convention (y up); 1 unit maps to unitPx pixels (≈ 1 cm).
+ */
+export function generateSegmentSvg({
+  segments,
+  showLabel = true,
+  showScaleBar = true,
+  unitPx = 40,
+  stroke = '#1565c0',
+}: SegmentSvgProps): string {
+  if (segments.length === 0) {
+    return `<svg width="120" height="80" xmlns="http://www.w3.org/2000/svg"></svg>`
+  }
+
+  const allX = segments.flatMap((s) => [s.a[0], s.b[0]])
+  const allY = segments.flatMap((s) => [s.a[1], s.b[1]])
+  const minX = Math.min(...allX)
+  const maxX = Math.max(...allX)
+  const minY = Math.min(...allY)
+  const maxY = Math.max(...allY)
+
+  const pad = 48
+  const scaleBarH = showScaleBar ? 36 : 0
+  const contentW = Math.max((maxX - minX) * unitPx, unitPx)
+  const contentH = Math.max((maxY - minY) * unitPx, unitPx)
+  const totalW = contentW + 2 * pad
+  const totalH = contentH + 2 * pad + scaleBarH
+
+  // Math y-up → SVG y-down
+  const toSvg = (mx: number, my: number): [number, number] => [
+    pad + (mx - minX) * unitPx,
+    pad + (maxY - my) * unitPx,
+  ]
+
+  const defaultLabels = [
+    ['A', 'B'],
+    ['C', 'D'],
+    ['E', 'F'],
+    ['G', 'H'],
+  ]
+
+  const body = segments
+    .map((seg, i) => {
+      const [x1, y1] = toSvg(seg.a[0], seg.a[1])
+      const [x2, y2] = toSvg(seg.b[0], seg.b[1])
+      const la = seg.labelA ?? defaultLabels[i]?.[0] ?? `P${i * 2}`
+      const lb = seg.labelB ?? defaultLabels[i]?.[1] ?? `P${i * 2 + 1}`
+      const mx = (x1 + x2) / 2
+      const my = (y1 + y2) / 2
+      // Offset label perpendicular to segment
+      const dx = x2 - x1
+      const dy = y2 - y1
+      const len = Math.hypot(dx, dy) || 1
+      const ox = (-dy / len) * 14
+      const oy = (dx / len) * 14
+      const lenVal = segmentLength(seg.a, seg.b)
+      const lenText =
+        seg.lengthLabel ??
+        `${Number.isInteger(lenVal) ? String(lenVal) : lenVal.toFixed(1).replace('.', ',')} cm`
+      const lengthSvg = showLabel
+        ? `<text x="${mx + ox}" y="${my + oy}" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">${lenText}</text>`
+        : ''
+      // Cross markers at endpoints
+      const cross = (cx: number, cy: number) =>
+        `<g>
+          <line x1="${cx - 5}" y1="${cy}" x2="${cx + 5}" y2="${cy}" stroke="#222" stroke-width="1.5" />
+          <line x1="${cx}" y1="${cy - 5}" x2="${cx}" y2="${cy + 5}" stroke="#222" stroke-width="1.5" />
+          <circle cx="${cx}" cy="${cy}" r="3" fill="#222" />
+        </g>`
+      const labelOff = (cx: number, cy: number, otherX: number, otherY: number, text: string) => {
+        const awayX = cx - otherX
+        const awayY = cy - otherY
+        const al = Math.hypot(awayX, awayY) || 1
+        const lx = cx + (awayX / al) * 14
+        const ly = cy + (awayY / al) * 14 - 2
+        return `<text x="${lx}" y="${ly}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${text}</text>`
+      }
+      return `
+  <line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${stroke}" stroke-width="2.5" />
+  ${cross(x1, y1)}
+  ${cross(x2, y2)}
+  ${labelOff(x1, y1, x2, y2, la)}
+  ${labelOff(x2, y2, x1, y1, lb)}
+  ${lengthSvg}`
+    })
+    .join('\n')
+
+  const scaleBar = showScaleBar
+    ? (() => {
+        const bx = pad
+        const by = totalH - 18
+        return `
+  <line x1="${bx}" y1="${by}" x2="${bx + unitPx}" y2="${by}" stroke="#444" stroke-width="2" />
+  <line x1="${bx}" y1="${by - 5}" x2="${bx}" y2="${by + 5}" stroke="#444" stroke-width="2" />
+  <line x1="${bx + unitPx}" y1="${by - 5}" x2="${bx + unitPx}" y2="${by + 5}" stroke="#444" stroke-width="2" />
+  <text x="${bx + unitPx / 2}" y="${by - 8}" text-anchor="middle" font-size="11" fill="#444">1 cm</text>`
+      })()
+    : ''
+
+  return `
+<svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="${totalW}" height="${totalH}" fill="#fafafa" />
+  ${body}
+  ${scaleBar}
+</svg>`.trim()
+}
+
+export interface GridSegmentDef {
+  a: [number, number]
+  b: [number, number]
+  labelA?: string
+  labelB?: string
+  /** Length label near midpoint (shown only if showLengthLabels) */
+  lengthLabel?: string
+}
+
+export interface SegmentsOnGridSvgProps {
+  segments: GridSegmentDef[]
+  /** Draw segment lines (default true; false = only endpoints) */
+  showSegments?: boolean
+  /** Show length labels on segments (default false) */
+  showLengthLabels?: boolean
+  xRange?: [number, number]
+  yRange?: [number, number]
+  cellSize?: number
+  stroke?: string
+}
+
+/**
+ * One or more segments on a coordinate grid (math y-up).
+ * Length in grid units = Euclidean distance.
+ */
+export function generateSegmentsOnGridSvg({
+  segments,
+  showSegments = true,
+  showLengthLabels = false,
+  xRange,
+  yRange,
+  cellSize = 36,
+  stroke = '#1565c0',
+}: SegmentsOnGridSvgProps): string {
+  const allPts = segments.flatMap((s) => [s.a, s.b])
+  const xs = allPts.map((p) => p[0])
+  const ys = allPts.map((p) => p[1])
+  const autoXMin = Math.min(0, ...xs) - 1
+  const autoXMax = Math.max(0, ...xs) + 1
+  const autoYMin = Math.min(0, ...ys) - 1
+  const autoYMax = Math.max(0, ...ys) + 1
+  const xr: [number, number] = xRange ?? [autoXMin, autoXMax]
+  const yr: [number, number] = yRange ?? [autoYMin, autoYMax]
+
+  const defaultLabels = [
+    ['A', 'B'],
+    ['C', 'D'],
+    ['E', 'F'],
+  ]
+  const labeled: GridLabeledPoint[] = []
+  for (let i = 0; i < segments.length; i++) {
+    const s = segments[i]
+    labeled.push({
+      x: s.a[0],
+      y: s.a[1],
+      label: s.labelA ?? defaultLabels[i]?.[0] ?? `P${i * 2}`,
+    })
+    labeled.push({
+      x: s.b[0],
+      y: s.b[1],
+      label: s.labelB ?? defaultLabels[i]?.[1] ?? `P${i * 2 + 1}`,
+    })
+  }
+
+  const base = generateCoordinateGridSvg({
+    xRange: xr,
+    yRange: yr,
+    points: labeled,
+    cellSize,
+  })
+
+  if (!showSegments && !showLengthLabels) return base
+
+  const { xMin, yMax } = gridBounds(xr, yr)
+  const padL = 36
+  const padT = 28
+  const toSvg = (mx: number, my: number): [number, number] => [
+    padL + (mx - xMin) * cellSize,
+    padT + (yMax - my) * cellSize,
+  ]
+
+  const extras = segments
+    .map((s) => {
+      const [x1, y1] = toSvg(s.a[0], s.a[1])
+      const [x2, y2] = toSvg(s.b[0], s.b[1])
+      const line = showSegments
+        ? `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${stroke}" stroke-width="2.5" />`
+        : ''
+      let label = ''
+      if (showLengthLabels) {
+        const len = segmentLength(s.a, s.b)
+        const text =
+          s.lengthLabel ??
+          (Number.isInteger(len) ? String(len) : len.toFixed(1).replace('.', ','))
+        const mx = (x1 + x2) / 2
+        const my = (y1 + y2) / 2
+        const dx = x2 - x1
+        const dy = y2 - y1
+        const L = Math.hypot(dx, dy) || 1
+        const ox = (-dy / L) * 12
+        const oy = (dx / L) * 12
+        label = `<text x="${mx + ox}" y="${my + oy}" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">${text}</text>`
+      }
+      return `${line}\n  ${label}`
+    })
+    .join('\n  ')
+
+  return base.replace('</svg>', `  ${extras}\n</svg>`)
+}
+
+export type LineFigureKind = 'strecke' | 'halbgerade' | 'gerade'
+
+export interface RayOrLineSvgProps {
+  /** Strecke (segment), Halbgerade (ray), or Gerade (line) */
+  kind: LineFigureKind
+  labelA?: string
+  labelB?: string
+  stroke?: string
+}
+
+/**
+ * Diagram distinguishing Strecke / Halbgerade / Gerade for identification tasks.
+ * - Strecke: solid segment AB with endpoints
+ * - Halbgerade: starts at A, through B, arrow beyond B
+ * - Gerade: extends both ways through A and B with arrows
+ */
+export function generateRayOrLineSvg({
+  kind,
+  labelA = 'A',
+  labelB = 'B',
+  stroke = '#1565c0',
+}: RayOrLineSvgProps): string {
+  const W = 320
+  const H = 140
+  // Place A left, B right on a horizontal figure
+  const ay = H / 2
+  const ax = 110
+  const bx = 210
+
+  // Extension length beyond endpoints for ray/line
+  const ext = 55
+
+  const cross = (cx: number, cy: number) =>
+    `<g>
+      <line x1="${cx - 5}" y1="${cy}" x2="${cx + 5}" y2="${cy}" stroke="#222" stroke-width="1.5" />
+      <line x1="${cx}" y1="${cy - 5}" x2="${cx}" y2="${cy + 5}" stroke="#222" stroke-width="1.5" />
+      <circle cx="${cx}" cy="${cy}" r="3.5" fill="#222" />
+    </g>`
+
+  const markerDefs =
+    kind === 'strecke'
+      ? ''
+      : `
+  <defs>
+    <marker id="rayArrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <polygon points="0,0 9,4.5 0,9" fill="${stroke}" />
+    </marker>
+  </defs>`
+
+  let lineSvg = ''
+  if (kind === 'strecke') {
+    lineSvg = `<line x1="${ax}" y1="${ay}" x2="${bx}" y2="${ay}" stroke="${stroke}" stroke-width="2.5" />`
+  } else if (kind === 'halbgerade') {
+    lineSvg = `<line x1="${ax}" y1="${ay}" x2="${bx + ext}" y2="${ay}" stroke="${stroke}" stroke-width="2.5" marker-end="url(#rayArrow)" />`
+  } else {
+    // Two half-lines with marker-end so both arrows point outward
+    const mid = (ax + bx) / 2
+    lineSvg = `
+  <line x1="${mid}" y1="${ay}" x2="${ax - ext}" y2="${ay}" stroke="${stroke}" stroke-width="2.5" marker-end="url(#rayArrow)" />
+  <line x1="${mid}" y1="${ay}" x2="${bx + ext}" y2="${ay}" stroke="${stroke}" stroke-width="2.5" marker-end="url(#rayArrow)" />`
+  }
+
+  return `
+<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="${W}" height="${H}" fill="#fafafa" />
+  ${markerDefs}
+  ${lineSvg}
+  ${cross(ax, ay)}
+  ${cross(bx, ay)}
+  <text x="${ax}" y="${ay - 14}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${labelA}</text>
+  <text x="${bx}" y="${ay - 14}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${labelB}</text>
+</svg>`.trim()
+}
+

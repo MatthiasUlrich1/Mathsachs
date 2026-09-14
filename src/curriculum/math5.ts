@@ -17,12 +17,16 @@ import {
   generateSymmetryShapeSvg,
   generateReflectionSvg,
   generatePointReflectionSvg,
+  generateSegmentSvg,
+  generateSegmentsOnGridSvg,
+  generateRayOrLineSvg,
   reflectPointAcross,
   pointReflectAcross,
   symmetryAxisCount,
   symmetryShapeLabel,
   type SymmetryShapeKind,
   type MirrorLineKind,
+  type LineFigureKind,
 } from '../lib/geometrySvg'
 import type { Grade, Topic } from './types'
 
@@ -1354,6 +1358,250 @@ const symmetriePunkt: Topic = {
   ),
 }
 
+/** Integer grid lengths and clean 3-4-5 diagonals for Strecken tasks. */
+const pickIntegerSegment = (
+  rng: Rng,
+): { a: [number, number]; b: [number, number]; len: number } => {
+  const kind = pick(rng, ['h', 'v', '345'] as const)
+  const ax = randInt(rng, 1, 3)
+  const ay = randInt(rng, 1, 3)
+  if (kind === 'h') {
+    const len = randInt(rng, 2, 6)
+    return { a: [ax, ay], b: [ax + len, ay], len }
+  }
+  if (kind === 'v') {
+    const len = randInt(rng, 2, 6)
+    return { a: [ax, ay], b: [ax, ay + len], len }
+  }
+  // 3-4-5 triangle leg orientation
+  const flip = rng() < 0.5
+  const dx = flip ? 3 : 4
+  const dy = flip ? 4 : 3
+  return { a: [ax, ay], b: [ax + dx, ay + dy], len: 5 }
+}
+
+const streckenLaenge: Topic = {
+  id: 'lb3-strecken-laenge',
+  title: 'Länge von Strecken',
+  hint: '1 Kästchen = 1 Längeneinheit (cm). Länge = Abstand der Endpunkte.',
+  pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Eine Strecke ist die kürzeste Verbindung zweier Punkte und hat eine bestimmte Länge. Die Länge einer Strecke AB ist der Abstand der Endpunkte A und B. Auf einem Koordinatenraster mit Kästchenlänge 1 cm misst man horizontale und vertikale Strecken durch Abzählen der Kästchen; bei schrägen Strecken gilt der Satz des Pythagoras (z. B. 3–4–5). Geraden und Halbgeraden sind unbegrenzt und haben keine endliche Länge.',
+    quelle: 'Wikipedia: Strecke (Geometrie)',
+    url: 'https://de.wikipedia.org/wiki/Strecke_(Geometrie)',
+  },
+  generate: mixedVariants(
+    // Variant 1: Visual segment without length label — measure in cm
+    (rng: Rng) => {
+      const { a, b, len } = pickIntegerSegment(rng)
+      const onGrid = rng() < 0.55
+      const svg = onGrid
+        ? generateSegmentsOnGridSvg({
+            segments: [{ a, b, labelA: 'A', labelB: 'B' }],
+            showSegments: true,
+            showLengthLabels: false,
+            xRange: [-1, 9],
+            yRange: [-1, 9],
+          })
+        : generateSegmentSvg({
+            segments: [{ a: [0, 0], b: [len, 0], labelA: 'A', labelB: 'B' }],
+            showLabel: false,
+            showScaleBar: true,
+          })
+      return {
+        ...valueTask({
+          question: onGrid
+            ? 'Wie lang ist die Strecke AB? (1 Kästchen = 1 cm)'
+            : 'Wie lang ist die Strecke AB in cm? Nutze den Maßstab.',
+          unit: 'cm',
+          answerKind: 'integer',
+          value: len,
+          solution: `${len} cm`,
+          explanation: onGrid
+            ? `Die Endpunkte sind A(${a[0]}|${a[1]}) und B(${b[0]}|${b[1]}). Länge = √((${b[0]}−${a[0]})² + (${b[1]}−${a[1]})²) = ${len} cm.`
+            : `Mit dem Maßstab (1 Einheit = 1 cm) misst man die Strecke AB: Länge = ${len} cm.`,
+        }),
+        visualContent: svg,
+      }
+    },
+    // Variant 2: Two segments — which is longer?
+    (rng: Rng) => {
+      let lenAB = randInt(rng, 2, 6)
+      let lenCD = randInt(rng, 2, 6)
+      if (lenAB === lenCD) lenCD = lenAB === 6 ? 5 : lenAB + 1
+      const longer = lenAB > lenCD ? 'AB' : 'CD'
+      const svg = generateSegmentSvg({
+        segments: [
+          { a: [0, 2], b: [lenAB, 2], labelA: 'A', labelB: 'B' },
+          { a: [0, 0], b: [lenCD, 0], labelA: 'C', labelB: 'D' },
+        ],
+        showLabel: false,
+        showScaleBar: true,
+      })
+      return {
+        ...textTask({
+          question: 'Welche Strecke ist länger: AB oder CD?',
+          accepted: [longer, longer.toLowerCase()],
+          solution: longer,
+          explanation: `AB ist ${lenAB} cm lang, CD ist ${lenCD} cm lang. Also ist ${longer} länger.`,
+        }),
+        visualContent: svg,
+      }
+    },
+    // Variant 3: Text — horizontal/vertical distance described in words
+    (rng: Rng) => {
+      const horizontal = rng() < 0.5
+      const ax = randInt(rng, 0, 4)
+      const ay = randInt(rng, 0, 4)
+      const len = randInt(rng, 2, 7)
+      const bx = horizontal ? ax + len : ax
+      const by = horizontal ? ay : ay + len
+      const dir = horizontal
+        ? `${len} Einheiten nach rechts`
+        : `${len} Einheiten nach oben`
+      return valueTask({
+        question: `Punkt A liegt bei (${ax}|${ay}). Punkt B liegt ${dir} von A entfernt. Wie lang ist die Strecke AB?`,
+        unit: 'LE',
+        answerKind: 'integer',
+        value: len,
+        solution: `${len}`,
+        explanation: `B liegt bei (${bx}|${by}). Bei einer ${
+          horizontal ? 'waagerechten' : 'senkrechten'
+        } Strecke ist die Länge der Abstand der ${horizontal ? 'x' : 'y'}-Koordinaten: |${
+          horizontal ? `${bx} − ${ax}` : `${by} − ${ay}`
+        }| = ${len}.`,
+      })
+    },
+  ),
+}
+
+const streckenMittelpunkt: Topic = {
+  id: 'lb3-strecken-mittelpunkt',
+  title: 'Mittelpunkt einer Strecke',
+  hint: 'Mittelpunkt M = ((x₁+x₂)/2 ; (y₁+y₂)/2). Antwortformat: x; y.',
+  pointsPerTask: 10,
+  difficulty: 2,
+  fachwissen: {
+    text: 'Der Mittelpunkt M einer Strecke AB ist der Punkt, der von A und B denselben Abstand hat und auf der Strecke liegt. In Koordinaten gilt: M = ((x_A + x_B) : 2 | (y_A + y_B) : 2). Der Mittelpunkt halbiert die Strecke: AM = MB = ½ · AB.',
+    quelle: 'Wikipedia: Mittelpunkt',
+    url: 'https://de.wikipedia.org/wiki/Mittelpunkt',
+  },
+  generate: mixedVariants(
+    // Variant 1: Visual — A,B on grid, midpoint unmarked
+    (rng: Rng) => {
+      // Prefer even sums so midpoint has integer coords
+      const ax = randInt(rng, 0, 4)
+      const ay = randInt(rng, 0, 4)
+      const bx = ax + 2 * randInt(rng, 1, 3)
+      const by = ay + (rng() < 0.4 ? 0 : 2 * randInt(rng, 0, 2))
+      const mx = (ax + bx) / 2
+      const my = (ay + by) / 2
+      const svg = generateSegmentsOnGridSvg({
+        segments: [{ a: [ax, ay], b: [bx, by], labelA: 'A', labelB: 'B' }],
+        showSegments: true,
+        showLengthLabels: false,
+        xRange: [-1, 9],
+        yRange: [-1, 9],
+      })
+      const accepted = pairAnswerAccepted(mx, my)
+      return {
+        ...textTask({
+          question:
+            'Welchen Mittelpunkt hat die Strecke AB? Gib die Koordinaten als x; y an.',
+          accepted,
+          solution: `${mx}; ${my}`,
+          explanation: `M = ((${ax}+${bx})/2 | (${ay}+${by})/2) = (${mx}|${my}).`,
+        }),
+        visualContent: svg,
+      }
+    },
+    // Variant 2: Text only — given coordinates
+    (rng: Rng) => {
+      const ax = randInt(rng, -2, 4)
+      const ay = randInt(rng, -2, 4)
+      const bx = ax + 2 * randInt(rng, 1, 3)
+      const by = ay + 2 * randInt(rng, -2, 2)
+      const mx = (ax + bx) / 2
+      const my = (ay + by) / 2
+      const accepted = pairAnswerAccepted(mx, my)
+      return textTask({
+        question: `A = (${ax}|${ay}), B = (${bx}|${by}). Wie lautet der Mittelpunkt der Strecke AB? Gib x; y an.`,
+        accepted,
+        solution: `${mx}; ${my}`,
+        explanation: `M = ((${ax}+${bx})/2 | (${ay}+${by})/2) = (${mx}|${my}).`,
+      })
+    },
+  ),
+}
+
+const LINE_KIND_LABEL: Record<LineFigureKind, string> = {
+  strecke: 'Strecke',
+  halbgerade: 'Halbgerade',
+  gerade: 'Gerade',
+}
+
+const streckenBezeichnung: Topic = {
+  id: 'lb3-strecken-bezeichnung',
+  title: 'Strecke, Gerade und Halbgerade',
+  hint: 'Strecke: begrenzt; Halbgerade: ein Endpunkt; Gerade: unbegrenzt in beide Richtungen.',
+  pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Eine Strecke ist durch zwei Endpunkte begrenzt und hat eine endliche Länge. Eine Halbgerade (Strahl) hat genau einen Anfangspunkt und verläuft von dort unbegrenzt in eine Richtung. Eine Gerade verläuft in beide Richtungen unbegrenzt und hat weder Anfang noch Ende. Zwei Punkte bestimmen eindeutig eine Gerade; die Verbindungsstrecke ist der begrenzte Teil dazwischen.',
+    quelle: 'Wikipedia: Gerade',
+    url: 'https://de.wikipedia.org/wiki/Gerade',
+  },
+  generate: mixedVariants(
+    // Variant 1: Identify from diagram
+    (rng: Rng) => {
+      const kind = pick(rng, ['strecke', 'halbgerade', 'gerade'] as LineFigureKind[])
+      const svg = generateRayOrLineSvg({ kind })
+      const solution = LINE_KIND_LABEL[kind]
+      const accepted =
+        kind === 'halbgerade'
+          ? ['halbgerade', 'strahl', 'halb-gerade']
+          : [solution.toLowerCase()]
+      return {
+        ...textTask({
+          question:
+            'Was zeigt die Abbildung? Antworte mit Strecke, Gerade oder Halbgerade.',
+          accepted,
+          solution,
+          explanation:
+            kind === 'strecke'
+              ? 'Die Figur ist zwischen A und B begrenzt — das ist eine Strecke.'
+              : kind === 'halbgerade'
+                ? 'Die Figur beginnt bei A und geht durch B mit Pfeil weiter — das ist eine Halbgerade (Strahl).'
+                : 'Die Figur geht in beide Richtungen mit Pfeilen weiter — das ist eine Gerade.',
+        }),
+        visualContent: svg,
+      }
+    },
+    // Variant 2: Text definition
+    (rng: Rng) => {
+      const kind = pick(rng, ['strecke', 'halbgerade', 'gerade'] as LineFigureKind[])
+      const question =
+        kind === 'strecke'
+          ? 'Wie heißt die Verbindung zweier Punkte, die durch die beiden Endpunkte begrenzt ist und eine Länge hat?'
+          : kind === 'halbgerade'
+            ? 'Wie heißt eine Linie, die bei einem Punkt beginnt und in eine Richtung unbegrenzt weitergeht?'
+            : 'Wie heißt eine Linie, die in beide Richtungen unbegrenzt verläuft?'
+      const solution = LINE_KIND_LABEL[kind]
+      const accepted =
+        kind === 'halbgerade'
+          ? ['halbgerade', 'strahl', 'halb-gerade']
+          : [solution.toLowerCase()]
+      return textTask({
+        question,
+        accepted,
+        solution,
+        explanation: `Die gesuchte Bezeichnung ist: ${solution}.`,
+      })
+    },
+  ),
+}
+
 // ---------------------------------------------------------------------------
 // Lernbereich 4 — Rechtecke und Quader
 // ---------------------------------------------------------------------------
@@ -2117,7 +2365,16 @@ export const klasse5: Grade = {
       id: 'lb3',
       title: 'Lagebeziehungen geometrischer Objekte',
       ustd: 22,
-      topics: [winkelarten, winkelErgaenzung, verschiebungFormen, symmetrieAchsen, symmetriePunkt],
+      topics: [
+        winkelarten,
+        winkelErgaenzung,
+        streckenLaenge,
+        streckenMittelpunkt,
+        streckenBezeichnung,
+        verschiebungFormen,
+        symmetrieAchsen,
+        symmetriePunkt,
+      ],
     },
     {
       id: 'lb4',
