@@ -13,6 +13,7 @@ import {
   generateLShapeSvg,
   generateUShapeSvg,
   generateCompositeCuboidSvg,
+  generatePointsOnGridSvg,
   generateTranslationSvg,
   generateSymmetryShapeSvg,
   generateReflectionSvg,
@@ -1008,6 +1009,282 @@ const pairAnswerAccepted = (a: number, b: number): string[] => {
     `(${a},${b})`,
   ]
   return [...new Set(raw)]
+}
+
+const COORD_X_RANGE: [number, number] = [-5, 8]
+const COORD_Y_RANGE: [number, number] = [-5, 8]
+const POINT_LABELS = ['A', 'B', 'C'] as const
+
+/** Distinct integer grid points, preferably off the origin. */
+const distinctGridPoints = (
+  rng: Rng,
+  count: number,
+  opts?: { avoidAxes?: boolean },
+): Array<{ x: number; y: number }> => {
+  const pts: Array<{ x: number; y: number }> = []
+  const used = new Set<string>()
+  let guard = 0
+  while (pts.length < count && guard < 200) {
+    guard++
+    const x = randInt(rng, -4, 7)
+    const y = randInt(rng, -4, 7)
+    if (opts?.avoidAxes && (x === 0 || y === 0)) continue
+    const key = `${x},${y}`
+    if (used.has(key)) continue
+    used.add(key)
+    pts.push({ x, y })
+  }
+  return pts
+}
+
+const quadrantOf = (x: number, y: number): 'I' | 'II' | 'III' | 'IV' => {
+  if (x > 0 && y > 0) return 'I'
+  if (x < 0 && y > 0) return 'II'
+  if (x < 0 && y < 0) return 'III'
+  return 'IV'
+}
+
+const QUADRANT_ACCEPTED: Record<'I' | 'II' | 'III' | 'IV', string[]> = {
+  I: ['I', '1', 'i', 'quadrant i', '1. quadrant', 'erster', '1.'],
+  II: ['II', '2', 'ii', 'quadrant ii', '2. quadrant', 'zweiter', '2.'],
+  III: ['III', '3', 'iii', 'quadrant iii', '3. quadrant', 'dritter', '3.'],
+  IV: ['IV', '4', 'iv', 'quadrant iv', '4. quadrant', 'vierter', '4.'],
+}
+
+/** Integer axis-aligned or 3-4-5 distances for coordinate distance tasks. */
+const pickCoordinateDistance = (
+  rng: Rng,
+): { a: { x: number; y: number }; b: { x: number; y: number }; dist: number } => {
+  const kind = pick(rng, ['h', 'v', '345'] as const)
+  // Keep both endpoints inside roughly [-4, 7] for the -5..8 display grid
+  if (kind === 'h') {
+    const dist = randInt(rng, 2, 6)
+    const ax = randInt(rng, -4, 7 - dist)
+    const ay = randInt(rng, -4, 7)
+    return { a: { x: ax, y: ay }, b: { x: ax + dist, y: ay }, dist }
+  }
+  if (kind === 'v') {
+    const dist = randInt(rng, 2, 6)
+    const ax = randInt(rng, -4, 7)
+    const ay = randInt(rng, -4, 7 - dist)
+    return { a: { x: ax, y: ay }, b: { x: ax, y: ay + dist }, dist }
+  }
+  const flip = rng() < 0.5
+  const dx = flip ? 3 : 4
+  const dy = flip ? 4 : 3
+  const ax = randInt(rng, -4, 7 - dx)
+  const ay = randInt(rng, -4, 7 - dy)
+  return {
+    a: { x: ax, y: ay },
+    b: { x: ax + dx, y: ay + dy },
+    dist: 5,
+  }
+}
+
+const koordinatenAblesen: Topic = {
+  id: 'lb3-koordinaten-ablesen',
+  title: 'Koordinaten ablesen',
+  hint: 'Antwortformat: x; y (auch Komma oder (x|y) sind ok).',
+  pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Ein kartesisches Koordinatensystem besteht aus zwei senkrecht aufeinander stehenden Zahlengeraden (x-Achse waagerecht, y-Achse senkrecht), die sich im Ursprung (0|0) schneiden. Jeder Punkt der Ebene wird durch ein geordnetes Paar (x|y) beschrieben: x gibt die Lage parallel zur x-Achse an, y parallel zur y-Achse. Positive x-Werte liegen rechts vom Ursprung, positive y-Werte oberhalb.',
+    quelle: 'Wikipedia: Kartesisches Koordinatensystem',
+    url: 'https://de.wikipedia.org/wiki/Kartesisches_Koordinatensystem',
+  },
+  generate: mixedVariants(
+    // Variant 1: Single labeled point — read coordinates of A
+    (rng: Rng) => {
+      const [p] = distinctGridPoints(rng, 1)
+      const svg = generatePointsOnGridSvg({
+        points: [{ ...p, label: 'A' }],
+        xRange: COORD_X_RANGE,
+        yRange: COORD_Y_RANGE,
+      })
+      const accepted = pairAnswerAccepted(p.x, p.y)
+      return {
+        ...textTask({
+          question: 'Lies die Koordinaten von Punkt A ab. Gib x; y an.',
+          accepted,
+          solution: `${p.x}; ${p.y}`,
+          explanation: `Punkt A liegt ${p.x} Einheiten ${
+            p.x >= 0 ? 'rechts' : 'links'
+          } und ${p.y} Einheiten ${p.y >= 0 ? 'oberhalb' : 'unterhalb'} des Ursprungs. Also A = (${p.x}|${p.y}).`,
+        }),
+        visualContent: svg,
+      }
+    },
+    // Variant 2: 2–3 labeled points — ask for one of them
+    (rng: Rng) => {
+      const n = randInt(rng, 2, 3)
+      const pts = distinctGridPoints(rng, n)
+      const labeled = pts.map((p, i) => ({ ...p, label: POINT_LABELS[i] }))
+      const askIdx = randInt(rng, 0, n - 1)
+      const target = labeled[askIdx]
+      const svg = generatePointsOnGridSvg({
+        points: labeled,
+        xRange: COORD_X_RANGE,
+        yRange: COORD_Y_RANGE,
+      })
+      const accepted = pairAnswerAccepted(target.x, target.y)
+      return {
+        ...textTask({
+          question: `Lies die Koordinaten von Punkt ${target.label} ab. Gib x; y an.`,
+          accepted,
+          solution: `${target.x}; ${target.y}`,
+          explanation: `Punkt ${target.label} liegt bei (${target.x}|${target.y}).`,
+        }),
+        visualContent: svg,
+      }
+    },
+  ),
+}
+
+const koordinatenEintragen: Topic = {
+  id: 'lb3-koordinaten-eintragen',
+  title: 'Punkte im Koordinatensystem zuordnen',
+  hint: 'Bei Buchstaben: A, B oder C. Bei Quadranten: I, II, III oder IV.',
+  pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Um einen Punkt mit gegebenen Koordinaten (x|y) im Koordinatensystem zu finden, geht man vom Ursprung x Einheiten waagerecht und y Einheiten senkrecht. Die vier Quadranten werden gegen den Uhrzeigersinn nummeriert: I (rechts oben, x>0, y>0), II (links oben, x<0, y>0), III (links unten, x<0, y<0), IV (rechts unten, x>0, y<0). Punkte auf den Achsen liegen in keinem Quadranten.',
+    quelle: 'Wikipedia: Kartesisches Koordinatensystem',
+    url: 'https://de.wikipedia.org/wiki/Kartesisches_Koordinatensystem',
+  },
+  generate: mixedVariants(
+    // Variant 1: Which labeled point lies at (x|y)?
+    (rng: Rng) => {
+      const pts = distinctGridPoints(rng, 3)
+      const labeled = pts.map((p, i) => ({ ...p, label: POINT_LABELS[i] }))
+      const askIdx = randInt(rng, 0, 2)
+      const target = labeled[askIdx]
+      const svg = generatePointsOnGridSvg({
+        points: labeled,
+        xRange: COORD_X_RANGE,
+        yRange: COORD_Y_RANGE,
+      })
+      return {
+        ...textTask({
+          question: `Welcher Punkt liegt bei (${target.x}|${target.y})? Antworte mit A, B oder C.`,
+          accepted: [target.label, target.label.toLowerCase()],
+          solution: target.label,
+          explanation: `Punkt ${target.label} hat die Koordinaten (${target.x}|${target.y}).`,
+        }),
+        visualContent: svg,
+      }
+    },
+    // Variant 2: In which quadrant is P?
+    (rng: Rng) => {
+      const [p] = distinctGridPoints(rng, 1, { avoidAxes: true })
+      const q = quadrantOf(p.x, p.y)
+      const svg = generatePointsOnGridSvg({
+        points: [{ ...p, label: 'P' }],
+        xRange: COORD_X_RANGE,
+        yRange: COORD_Y_RANGE,
+      })
+      return {
+        ...textTask({
+          question: `Punkt P hat die Koordinaten (${p.x}|${p.y}). In welchem Quadranten liegt P? Antworte mit I, II, III oder IV.`,
+          accepted: QUADRANT_ACCEPTED[q],
+          solution: q,
+          explanation: `x = ${p.x} (${p.x > 0 ? 'positiv' : 'negativ'}), y = ${p.y} (${
+            p.y > 0 ? 'positiv' : 'negativ'
+          }) → Quadrant ${q}.`,
+        }),
+        visualContent: svg,
+      }
+    },
+    // Variant 3: Text-only quadrant without diagram
+    (rng: Rng) => {
+      const [p] = distinctGridPoints(rng, 1, { avoidAxes: true })
+      const q = quadrantOf(p.x, p.y)
+      return textTask({
+        question: `Punkt P hat die Koordinaten (${p.x}|${p.y}). In welchem Quadranten liegt P? Antworte mit I, II, III oder IV.`,
+        accepted: QUADRANT_ACCEPTED[q],
+        solution: q,
+        explanation: `x = ${p.x}, y = ${p.y} → Quadrant ${q}.`,
+      })
+    },
+  ),
+}
+
+const koordinatenAbstand: Topic = {
+  id: 'lb3-koordinaten-abstand',
+  title: 'Abstand zwischen Punkten',
+  hint: 'Waagerecht/senkrecht: |Δx| bzw. |Δy|. Schräg: Pythagoras (z. B. 3–4–5).',
+  pointsPerTask: 10,
+  difficulty: 2,
+  fachwissen: {
+    text: 'Der Abstand zweier Punkte A(x₁|y₁) und B(x₂|y₂) im kartesischen Koordinatensystem ist die Länge der Strecke AB. Bei gleicher y-Koordinate ist der Abstand |x₂ − x₁|, bei gleicher x-Koordinate |y₂ − y₁|. Allgemein gilt d = √((x₂ − x₁)² + (y₂ − y₁)²) (Satz des Pythagoras). Die Einheit auf dem Raster heißt oft Längeneinheit (LE).',
+    quelle: 'Wikipedia: Kartesisches Koordinatensystem',
+    url: 'https://de.wikipedia.org/wiki/Kartesisches_Koordinatensystem',
+  },
+  generate: mixedVariants(
+    // Variant 1: Visual A,B with connecting segment
+    (rng: Rng) => {
+      const { a, b, dist } = pickCoordinateDistance(rng)
+      const svg = generatePointsOnGridSvg({
+        points: [
+          { ...a, label: 'A' },
+          { ...b, label: 'B' },
+        ],
+        connectLabels: [['A', 'B']],
+        xRange: COORD_X_RANGE,
+        yRange: COORD_Y_RANGE,
+      })
+      return {
+        ...valueTask({
+          question: 'Wie groß ist der Abstand zwischen A und B? (1 Kästchen = 1 LE)',
+          unit: 'LE',
+          answerKind: 'integer',
+          value: dist,
+          solution: `${dist}`,
+          explanation: `A(${a.x}|${a.y}), B(${b.x}|${b.y}): d = √((${b.x}−${a.x})² + (${b.y}−${a.y})²) = ${dist} LE.`,
+        }),
+        visualContent: svg,
+      }
+    },
+    // Variant 2: Same visual without drawn segment (points only)
+    (rng: Rng) => {
+      const { a, b, dist } = pickCoordinateDistance(rng)
+      const svg = generatePointsOnGridSvg({
+        points: [
+          { ...a, label: 'A' },
+          { ...b, label: 'B' },
+        ],
+        xRange: COORD_X_RANGE,
+        yRange: COORD_Y_RANGE,
+      })
+      return {
+        ...valueTask({
+          question: 'Wie groß ist der Abstand der Punkte A und B in Längeneinheiten?',
+          unit: 'LE',
+          answerKind: 'integer',
+          value: dist,
+          solution: `${dist} LE`,
+          explanation: `A(${a.x}|${a.y}), B(${b.x}|${b.y}): Abstand = ${dist} LE.`,
+        }),
+        visualContent: svg,
+      }
+    },
+    // Variant 3: Text — given coordinates
+    (rng: Rng) => {
+      const { a, b, dist } = pickCoordinateDistance(rng)
+      const axisAligned = a.x === b.x || a.y === b.y
+      return valueTask({
+        question: `A = (${a.x}|${a.y}), B = (${b.x}|${b.y}). Wie groß ist der Abstand AB?`,
+        unit: 'LE',
+        answerKind: 'integer',
+        value: dist,
+        solution: `${dist}`,
+        explanation: axisAligned
+          ? a.y === b.y
+            ? `Gleiche y-Koordinate: Abstand = |${b.x} − ${a.x}| = ${dist} LE.`
+            : `Gleiche x-Koordinate: Abstand = |${b.y} − ${a.y}| = ${dist} LE.`
+          : `d = √((${b.x}−${a.x})² + (${b.y}−${a.y})²) = ${dist} LE.`,
+      })
+    },
+  ),
 }
 
 const sampleTriangle = (): Array<[number, number]> => [
@@ -2366,6 +2643,9 @@ export const klasse5: Grade = {
       title: 'Lagebeziehungen geometrischer Objekte',
       ustd: 22,
       topics: [
+        koordinatenAblesen,
+        koordinatenEintragen,
+        koordinatenAbstand,
         winkelarten,
         winkelErgaenzung,
         streckenLaenge,

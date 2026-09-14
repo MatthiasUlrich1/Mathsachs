@@ -1291,8 +1291,24 @@ export function generateCoordinateGridSvg({
   const pointSvg = points
     .map((p) => {
       const [sx, sy] = toSvg(p.x, p.y)
+      // Place labels inward from grid edges so they are not clipped
+      let lx = sx + 8
+      let ly = sy - 8
+      let anchor = 'start'
+      if (p.x >= xMax - 0.5) {
+        lx = sx - 8
+        anchor = 'end'
+      } else if (p.x <= xMin + 0.5) {
+        lx = sx + 8
+        anchor = 'start'
+      }
+      if (p.y >= yMax - 0.5) {
+        ly = sy + 16
+      } else if (p.y <= yMin + 0.5) {
+        ly = sy - 8
+      }
       const lab = p.label
-        ? `<text x="${sx + 8}" y="${sy - 8}" font-size="13" font-weight="bold" fill="#333">${p.label}</text>`
+        ? `<text x="${lx}" y="${ly}" text-anchor="${anchor}" font-size="13" font-weight="bold" fill="#333">${p.label}</text>`
         : ''
       return `<circle cx="${sx}" cy="${sy}" r="4.5" fill="#333" />${lab}`
     })
@@ -1324,6 +1340,64 @@ export function generateCoordinateGridSvg({
   ${polySvg}
   ${pointSvg}
 </svg>`.trim()
+}
+
+export interface PointsOnGridSvgProps {
+  /** Labeled points in grid coordinates (e.g. A, B, C) */
+  points: Array<{ x: number; y: number; label: string }>
+  /** Inclusive x range (default [-5, 8]) */
+  xRange?: [number, number]
+  /** Inclusive y range (default [-5, 8]) */
+  yRange?: [number, number]
+  cellSize?: number
+  /** Optional connections between point labels, e.g. [['A','B']] */
+  connectLabels?: Array<[string, string]>
+  stroke?: string
+}
+
+/**
+ * Convenience wrapper: labeled points on a coordinate grid.
+ * Optionally draws segments between named points (distance tasks).
+ */
+export function generatePointsOnGridSvg({
+  points,
+  xRange = [-5, 8],
+  yRange = [-5, 8],
+  cellSize = 36,
+  connectLabels = [],
+  stroke = '#1565c0',
+}: PointsOnGridSvgProps): string {
+  const base = generateCoordinateGridSvg({
+    xRange,
+    yRange,
+    points,
+    cellSize,
+  })
+
+  if (connectLabels.length === 0) return base
+
+  const byLabel = new Map(points.map((p) => [p.label, p]))
+  const { xMin, yMax } = gridBounds(xRange, yRange)
+  const padL = 36
+  const padT = 28
+  const toSvg = (mx: number, my: number): [number, number] => [
+    padL + (mx - xMin) * cellSize,
+    padT + (yMax - my) * cellSize,
+  ]
+
+  const lines = connectLabels
+    .map(([la, lb]) => {
+      const a = byLabel.get(la)
+      const b = byLabel.get(lb)
+      if (!a || !b) return ''
+      const [x1, y1] = toSvg(a.x, a.y)
+      const [x2, y2] = toSvg(b.x, b.y)
+      return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${stroke}" stroke-width="2.5" />`
+    })
+    .filter(Boolean)
+    .join('\n  ')
+
+  return lines ? base.replace('</svg>', `  ${lines}\n</svg>`) : base
 }
 
 export interface TranslationSvgProps {

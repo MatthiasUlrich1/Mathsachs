@@ -12,6 +12,7 @@ import {
   generateUShapeSvg,
   generateCompositeCuboidSvg,
   generateCoordinateGridSvg,
+  generatePointsOnGridSvg,
   generateTranslationSvg,
   generateSymmetryShapeSvg,
   generateReflectionSvg,
@@ -262,6 +263,55 @@ describe('geometrySvg', () => {
       expect(svg).toContain('>1</text>')
       expect(svg).toContain('>2</text>')
       expect(svg).toContain('>3</text>')
+    })
+
+    it('places edge-point labels inward to avoid clipping', () => {
+      const svg = generateCoordinateGridSvg({
+        xRange: [-2, 4],
+        yRange: [-2, 4],
+        points: [
+          { x: 4, y: 2, label: 'R' },
+          { x: 1, y: 4, label: 'T' },
+        ],
+      })
+      expect(svg).toContain('>R</text>')
+      expect(svg).toContain('>T</text>')
+      expect(svg).toContain('text-anchor="end"')
+    })
+  })
+
+  describe('generatePointsOnGridSvg', () => {
+    it('renders labeled points A, B, C on a grid', () => {
+      const svg = generatePointsOnGridSvg({
+        points: [
+          { x: 2, y: 3, label: 'A' },
+          { x: -1, y: 1, label: 'B' },
+          { x: 3, y: -2, label: 'C' },
+        ],
+        xRange: [-5, 8],
+        yRange: [-5, 8],
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('>A</text>')
+      expect(svg).toContain('>B</text>')
+      expect(svg).toContain('>C</text>')
+      expect(svg).toContain('>x</text>')
+      expect((svg.match(/<circle/g) ?? []).length).toBe(3)
+    })
+
+    it('can connect labeled points with a segment', () => {
+      const svg = generatePointsOnGridSvg({
+        points: [
+          { x: 1, y: 1, label: 'A' },
+          { x: 5, y: 1, label: 'B' },
+        ],
+        connectLabels: [['A', 'B']],
+        xRange: [-5, 8],
+        yRange: [-5, 8],
+      })
+      expect(svg).toContain('>A</text>')
+      expect(svg).toContain('>B</text>')
+      expect(svg).toContain('stroke="#1565c0"')
     })
   })
 
