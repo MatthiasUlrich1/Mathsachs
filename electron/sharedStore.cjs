@@ -18,8 +18,11 @@ const DELETED_CHALLENGE_TTL_MS = DELETED_CLASS_CODE_TTL_MS
 const MAX_DELETED_CHALLENGES = 200
 const DELETED_CURRICULUM_TTL_MS = DELETED_CLASS_CODE_TTL_MS
 const MAX_DELETED_CURRICULA = 200
+const DELETED_USER_TTL_MS = 30 * 24 * 60 * 60 * 1000
+const MAX_DELETED_USERS = 50
 const USERS_KEY = 'mathsachs.users.v1'
 const CLASS_CODES_KEY = 'mathsachs.classCodes.v1'
+const DELETED_USERS_KEY = 'mathsachs.deletedUsers.v1'
 const USER_KEY_RE = /^mathsachs\.user\.(.+)\.v1$/
 
 function emptyClassCodes() {
@@ -50,6 +53,7 @@ function emptyState() {
     installedCurricula: [],
     curriculumPacks: {},
     deletedCurricula: [],
+    deletedUsers: [],
   }
 }
 
@@ -263,6 +267,24 @@ function normalizeDeletedCurricula(raw, now) {
     .slice(0, MAX_DELETED_CURRICULA)
 }
 
+function normalizeDeletedUsers(raw, now) {
+  const list = Array.isArray(raw) ? raw : []
+  const byName = new Map()
+  const cutoff = (now || Date.now()) - DELETED_USER_TTL_MS
+  for (const item of list) {
+    if (!item || typeof item !== 'object' || typeof item.name !== 'string') continue
+    const name = item.name.trim()
+    if (!name) continue
+    const deletedAt = asFiniteNumber(item.deletedAt, 0)
+    if (deletedAt < cutoff) continue
+    const prev = byName.get(name)
+    if (!prev || deletedAt > prev.deletedAt) byName.set(name, { name, deletedAt })
+  }
+  return [...byName.values()]
+    .sort((a, b) => b.deletedAt - a.deletedAt || a.name.localeCompare(b.name))
+    .slice(0, MAX_DELETED_USERS)
+}
+
 function normalizeInstalledMeta(raw) {
   const list = Array.isArray(raw) ? raw : []
   const byId = new Map()
@@ -346,6 +368,32 @@ function applyChallengeTombstones(challenges, deleted) {
   return {
     challenges: live,
     deletedChallenges: deleted.filter((row) => !resurrected.has(row.id)),
+  }
+}
+
+function applyUserTombstones(users, records, deletedUsers) {
+  const deletedAt = new Map(deletedUsers.map((row) => [row.name, row.deletedAt]))
+  const liveUsers = []
+  const liveRecords = {}
+  const resurrected = new Set()
+  for (const name of users) {
+    const tomb = deletedAt.get(name)
+    const record = records[name]
+    const createdAt = record ? record.created : 0
+    if (tomb != null && createdAt > tomb) {
+      liveUsers.push(name)
+      if (record) liveRecords[name] = record
+      resurrected.add(name)
+      continue
+    }
+    if (tomb != null) continue
+    liveUsers.push(name)
+    if (record) liveRecords[name] = record
+  }
+  return {
+    users: liveUsers,
+    records: liveRecords,
+    deletedUsers: deletedUsers.filter((row) => !resurrected.has(row.name)),
   }
 }
 
@@ -638,6 +686,7 @@ function normalizeState(raw) {
     installedCurricula: normalizeInstalledMeta(src.installedCurricula),
     curriculumPacks: normalizeCurriculumPacks(src.curriculumPacks),
     deletedCurricula: normalizeDeletedCurricula(src.deletedCurricula),
+    deletedUsers: normalizeDeletedUsers(src.deletedUsers),
   }
 }
 
@@ -768,15 +817,21 @@ function mergeSharedState(baseRaw, incomingRaw) {
       ...(Array.isArray(incoming.deletedCurricula) ? incoming.deletedCurricula : []),
     ]),
   )
+  const deletedUsers = normalizeDeletedUsers([
+    ...(Array.isArray(base.deletedUsers) ? base.deletedUsers : []),
+    ...(Array.isArray(incoming.deletedUsers) ? incoming.deletedUsers : []),
+  ])
+  const usersTombstoned = applyUserTombstones(users, records, deletedUsers)
   return migrateSharedClassCodes({
     schemaVersion: SCHEMA_VERSION,
     migratedLocalStorage: base.migratedLocalStorage || incoming.migratedLocalStorage,
-    users,
-    records,
+    users: usersTombstoned.users,
+    records: usersTombstoned.records,
     classCodes: mergeClassCodes(base.classCodes, incoming.classCodes),
     installedCurricula: curricula.meta,
     curriculumPacks: curricula.packs,
     deletedCurricula: curricula.deleted,
+    deletedUsers: usersTombstoned.deletedUsers,
   })
 }
 
@@ -817,7 +872,15 @@ function snapshotToState(snapshot) {
       classCodes = undefined
     }
   }
-  return normalizeState({ users, records, classCodes })
+  let deletedUsers
+  if (typeof src[DELETED_USERS_KEY] === 'string') {
+    try {
+      deletedUsers = JSON.parse(src[DELETED_USERS_KEY])
+    } catch {
+      deletedUsers = undefined
+    }
+  }
+  return normalizeState({ users, records, classCodes, deletedUsers })
 }
 
 function atomicWriteFile(filePath, contents) {
@@ -972,6 +1035,7 @@ module.exports = {
   MAX_TRANSFERS,
   USERS_KEY,
   CLASS_CODES_KEY,
+  DELETED_USERS_KEY,
   emptyState,
   normalizeState,
   mergeSharedState,
