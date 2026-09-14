@@ -12,6 +12,7 @@ import {
   generateFractionGridSvg,
   generateLShapeSvg,
   generateUShapeSvg,
+  generateCompositeCuboidSvg,
 } from '../lib/geometrySvg'
 import type { Grade, Topic } from './types'
 
@@ -1335,6 +1336,103 @@ const umfangZusammengesetzt: Topic = {
   ),
 }
 
+/** Dimensions for an L-shaped solid (constant height). */
+const randomCompositeCuboid = (rng: Rng) => {
+  const length = randInt(rng, 6, 12)
+  const width = randInt(rng, 4, 10)
+  const height = randInt(rng, 2, 6)
+  const cutLength = randInt(rng, 2, length - 2)
+  const cutWidth = randInt(rng, 2, width - 2)
+  const stemLength = length - cutLength
+  const footWidth = width - cutWidth
+  const volume = (length * width - cutLength * cutWidth) * height
+  // Two-cuboid decomposition volumes
+  const v1 = stemLength * width * height
+  const v2 = cutLength * footWidth * height
+  return { length, width, height, cutLength, cutWidth, stemLength, footWidth, volume, v1, v2 }
+}
+
+const volumenZusammengesetzt: Topic = {
+  id: 'lb4-volumen-zusammengesetzt',
+  title: 'Zusammengesetzte Quader: Volumen',
+  hint: 'Zerlege in zwei Quader und addiere die Volumina – oder ziehe die Aussparung ab.',
+  pointsPerTask: 12,
+  difficulty: 2,
+  fachwissen: {
+    text: 'Zusammengesetzte Körper aus Quadern berechnet man analog zu zusammengesetzten Flächen: Entweder zerlegt man den Körper in Quader und addiert die Volumina (V = V₁ + V₂), oder man zieht von einem großen Quader eine Aussparung ab (V = V_groß − V_Aussparung). Das Volumen eines Quaders ist V = Länge · Breite · Höhe.',
+    quelle: 'Wikipedia: Quader',
+    url: 'https://de.wikipedia.org/wiki/Quader',
+  },
+  generate: mixedVariants(
+    // Text: Summe zweier Quader
+    (rng: Rng) => {
+      const d = randomCompositeCuboid(rng)
+      return valueTask({
+        question: `Ein L-förmiger Körper besteht aus zwei Quadern: ${d.stemLength} cm × ${d.width} cm × ${d.height} cm und ${d.cutLength} cm × ${d.footWidth} cm × ${d.height} cm. Berechne das Volumen.`,
+        unit: 'cm³',
+        answerKind: 'integer',
+        value: d.volume,
+        solution: `${d.volume} cm³`,
+        explanation: `V = ${d.stemLength}·${d.width}·${d.height} + ${d.cutLength}·${d.footWidth}·${d.height} = ${d.v1} + ${d.v2} = ${d.volume} cm³.`,
+      })
+    },
+    // Text: großer Quader minus Aussparung
+    (rng: Rng) => {
+      const d = randomCompositeCuboid(rng)
+      return valueTask({
+        question: `Von einem Quader ${d.length} cm × ${d.width} cm × ${d.height} cm wird ein Quader ${d.cutLength} cm × ${d.cutWidth} cm × ${d.height} cm abgeschnitten. Wie groß ist das verbleibende Volumen?`,
+        unit: 'cm³',
+        answerKind: 'integer',
+        value: d.volume,
+        solution: `${d.volume} cm³`,
+        explanation: `V = ${d.length}·${d.width}·${d.height} − ${d.cutLength}·${d.cutWidth}·${d.height} = ${d.length * d.width * d.height} − ${d.cutLength * d.cutWidth * d.height} = ${d.volume} cm³.`,
+      })
+    },
+    // Visual: L-Körper
+    (rng: Rng) => {
+      const d = randomCompositeCuboid(rng)
+      const svg = generateCompositeCuboidSvg({
+        length: d.length,
+        width: d.width,
+        height: d.height,
+        cutLength: d.cutLength,
+        cutWidth: d.cutWidth,
+        lengthLabel: `${d.length} cm`,
+        widthLabel: `${d.width} cm`,
+        heightLabel: `${d.height} cm`,
+        cutLengthLabel: `${d.cutLength} cm`,
+        cutWidthLabel: `${d.cutWidth} cm`,
+      })
+      return visualTask({
+        question: 'Berechne das Volumen des abgebildeten L-förmigen Körpers.',
+        unit: 'cm³',
+        answerKind: 'integer',
+        value: d.volume,
+        solution: `${d.volume} cm³`,
+        explanation: `Zerlegung: V = ${d.stemLength}·${d.width}·${d.height} + ${d.cutLength}·${d.footWidth}·${d.height} = ${d.volume} cm³.\nOder: V = ${d.length}·${d.width}·${d.height} − ${d.cutLength}·${d.cutWidth}·${d.height} = ${d.volume} cm³.`,
+        visualContent: svg,
+      })
+    },
+    // Text: zwei Quader nebeneinander (unterschiedliche Maße, gleiche Höhe)
+    (rng: Rng) => {
+      const a = randInt(rng, 3, 8)
+      const b = randInt(rng, 2, 6)
+      const h = randInt(rng, 2, 5)
+      const c = randInt(rng, 2, 7)
+      const d = randInt(rng, 2, 6)
+      const volume = a * b * h + c * d * h
+      return valueTask({
+        question: `Zwei Quader stehen nebeneinander. Der erste misst ${a} dm × ${b} dm × ${h} dm, der zweite ${c} dm × ${d} dm × ${h} dm. Wie groß ist das Gesamtvolumen?`,
+        unit: 'dm³',
+        answerKind: 'integer',
+        value: volume,
+        solution: `${volume} dm³`,
+        explanation: `V = ${a}·${b}·${h} + ${c}·${d}·${h} = ${a * b * h} + ${c * d * h} = ${volume} dm³.`,
+      })
+    },
+  ),
+}
+
 // ---------------------------------------------------------------------------
 // Lernbereich 5 — Vernetzung: Mathematik im Alltag
 // ---------------------------------------------------------------------------
@@ -1539,7 +1637,15 @@ export const klasse5: Grade = {
       id: 'lb4',
       title: 'Rechtecke und Quader',
       ustd: 24,
-      topics: [umfangRechteck, flaecheRechteck, volumenQuader, oberflaecheQuader, flaecheZusammengesetzt, umfangZusammengesetzt],
+      topics: [
+        umfangRechteck,
+        flaecheRechteck,
+        volumenQuader,
+        oberflaecheQuader,
+        flaecheZusammengesetzt,
+        umfangZusammengesetzt,
+        volumenZusammengesetzt,
+      ],
     },
     {
       id: 'lb5',

@@ -10,6 +10,7 @@ import {
   generateFractionGridSvg,
   generateLShapeSvg,
   generateUShapeSvg,
+  generateCompositeCuboidSvg,
 } from './geometrySvg'
 
 describe('geometrySvg', () => {
@@ -199,6 +200,29 @@ describe('geometrySvg', () => {
       expect(svg).toContain('<polygon')
       expect(svg).toContain('10 m')
       expect(svg).toContain('6 m')
+    })
+  })
+
+  describe('generateCompositeCuboidSvg', () => {
+    it('generates L-shaped solid with dimension labels', () => {
+      const svg = generateCompositeCuboidSvg({
+        length: 10,
+        width: 6,
+        height: 4,
+        cutLength: 4,
+        cutWidth: 3,
+        lengthLabel: '10 cm',
+        widthLabel: '6 cm',
+        heightLabel: '4 cm',
+        cutLengthLabel: '4 cm',
+        cutWidthLabel: '3 cm',
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('<polygon')
+      expect(svg).toContain('10 cm')
+      expect(svg).toContain('6 cm')
+      expect(svg).toContain('4 cm')
+      expect(svg).toContain('3 cm')
     })
   })
 })

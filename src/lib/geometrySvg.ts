@@ -1020,3 +1020,142 @@ export function generateUShapeSvg({
   ${label(x0 + side + nW + side / 2, y0 - 12, topRightLabel)}
 </svg>`.trim()
 }
+
+export interface CompositeCuboidSvgProps {
+  /**
+   * L-shaped solid (constant height): outer base length × width with a
+   * rectangular cutout from the far-right corner of the base, extruded by height.
+   * Numeric values control proportions; labels are display strings.
+   */
+  length: number
+  width: number
+  height: number
+  cutLength: number
+  cutWidth: number
+  lengthLabel?: string
+  widthLabel?: string
+  heightLabel?: string
+  cutLengthLabel?: string
+  cutWidthLabel?: string
+  fill?: string
+  stroke?: string
+}
+
+/**
+ * Generate an isometric SVG of an L-shaped composite cuboid (two joined cuboids).
+ */
+export function generateCompositeCuboidSvg({
+  length,
+  width,
+  height,
+  cutLength,
+  cutWidth,
+  lengthLabel,
+  widthLabel,
+  heightLabel,
+  cutLengthLabel,
+  cutWidthLabel,
+  fill = '#e3f2fd',
+  stroke = '#1565c0',
+}: CompositeCuboidSvgProps): string {
+  const pad = 50
+  const scale = Math.min(140 / length, 90 / width, 80 / height)
+  const L = length * scale
+  const W = width * scale
+  const H = height * scale
+  const cL = cutLength * scale
+  const cW = cutWidth * scale
+
+  // Isometric offsets (same style as generateCuboidSvg)
+  const dx = W * 0.55
+  const dy = W * 0.45
+
+  const x0 = pad + 20
+  const y0 = pad + dy + 10
+
+  // Helper: isometric point from (x along length, y along width, z up)
+  const iso = (x: number, y: number, z: number): [number, number] => [
+    x0 + x + y * 0.55,
+    y0 + H - z - y * 0.45,
+  ]
+
+  const poly = (...pts: Array<[number, number]>) =>
+    pts.map(([x, y]) => `${x},${y}`).join(' ')
+
+  // Key corners of the L solid
+  // Base L (z=0) and top L (z=H)
+  // Stem occupies x in [0, L-cL], full width [0,W]
+  // Foot occupies x in [L-cL, L], width [0, W-cW]
+
+  const stemTop = L - cL
+
+  // Visible faces (approx.):
+  // 1) Front foot face (y=0, x from 0 to L)
+  // 2) Front stem-right step
+  // 3) Top L face
+  // 4) Right faces
+
+  const f = (x: number, y: number, z: number) => iso(x, y, z)
+
+  // Front vertical face of full length at y=0 (only up to foot height region — full front)
+  // Actually at y=0 the solid spans full length L and full height H
+  const frontFace = poly(f(0, 0, 0), f(L, 0, 0), f(L, 0, H), f(0, 0, H))
+
+  // Top face of L (z=H)
+  const topFace = poly(
+    f(0, 0, H),
+    f(L, 0, H),
+    f(L, W - cW, H),
+    f(stemTop, W - cW, H),
+    f(stemTop, W, H),
+    f(0, W, H),
+  )
+
+  // Right face of foot (x=L, y from 0 to W-cW)
+  const rightFoot = poly(f(L, 0, 0), f(L, W - cW, 0), f(L, W - cW, H), f(L, 0, H))
+
+  // Inner vertical step (x=stemTop, y from W-cW to W)
+  const stepFace = poly(
+    f(stemTop, W - cW, 0),
+    f(stemTop, W, 0),
+    f(stemTop, W, H),
+    f(stemTop, W - cW, H),
+  )
+
+  // Back-left top edge region face (y=W, x from 0 to stemTop)
+  const backStem = poly(f(0, W, 0), f(stemTop, W, 0), f(stemTop, W, H), f(0, W, H))
+
+  const totalW = pad * 2 + L + dx + 80
+  const totalH = pad * 2 + H + dy + 60
+
+  const label = (x: number, y: number, text: string | undefined, anchor = 'middle') =>
+    text
+      ? `<text x="${x}" y="${y}" text-anchor="${anchor}" font-size="13" font-weight="bold" fill="#333">${text}</text>`
+      : ''
+
+  const mid = (p: [number, number], q: [number, number]): [number, number] => [
+    (p[0] + q[0]) / 2,
+    (p[1] + q[1]) / 2,
+  ]
+
+  const bottomMid = mid(f(0, 0, 0), f(L, 0, 0))
+  const heightMid = mid(f(0, 0, 0), f(0, 0, H))
+  const widthMid = mid(f(L, 0, 0), f(L, W - cW, 0))
+  const cutLenMid = mid(f(stemTop, W - cW, H), f(L, W - cW, H))
+  const cutWidMid = mid(f(stemTop, W - cW, H), f(stemTop, W, H))
+
+  return `
+<svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg">
+  <!-- L-shaped composite cuboid (isometric) -->
+  <polygon points="${backStem}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.75" />
+  <polygon points="${stepFace}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.85" />
+  <polygon points="${rightFoot}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.9" />
+  <polygon points="${frontFace}" fill="${fill}" stroke="${stroke}" stroke-width="2" />
+  <polygon points="${topFace}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.95" />
+  ${label(bottomMid[0], bottomMid[1] + 22, lengthLabel)}
+  ${label(heightMid[0] - 18, heightMid[1] + 4, heightLabel, 'end')}
+  ${label(widthMid[0] + 22, widthMid[1] + 4, widthLabel, 'start')}
+  ${label(cutLenMid[0], cutLenMid[1] - 8, cutLengthLabel)}
+  ${label(cutWidMid[0] - 10, cutWidMid[1] + 4, cutWidthLabel, 'end')}
+</svg>`.trim()
+}
