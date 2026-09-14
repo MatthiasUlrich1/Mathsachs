@@ -1448,3 +1448,511 @@ export function generateTranslationSvg({
 
   return base.replace('</svg>', `${marker}\n  ${arrows}\n</svg>`)
 }
+
+// ---------------------------------------------------------------------------
+// Symmetry (Achsen- / Punktsymmetrie)
+// ---------------------------------------------------------------------------
+
+export type SymmetryShapeKind =
+  | 'square'
+  | 'rectangle'
+  | 'kite'
+  | 'isoscelesTrapezoid'
+  | 'equilateralTriangle'
+  | 'isoscelesTriangle'
+  | 'scaleneTriangle'
+  | 'parallelogram'
+
+export interface SymmetryShapeSvgProps {
+  shape: SymmetryShapeKind
+  /** Draw correct axes of symmetry as green solid lines */
+  showAxes?: boolean
+  /** Draw a black center/point-of-symmetry marker */
+  showPointOfSymmetry?: boolean
+  /** Draw one incorrect axis (red dashed) as a distractor */
+  showWrongAxis?: boolean
+  fill?: string
+  stroke?: string
+}
+
+/** Number of reflection axes for a given shape kind. */
+export function symmetryAxisCount(shape: SymmetryShapeKind): number {
+  switch (shape) {
+    case 'square':
+      return 4
+    case 'rectangle':
+      return 2
+    case 'equilateralTriangle':
+      return 3
+    case 'kite':
+    case 'isoscelesTrapezoid':
+    case 'isoscelesTriangle':
+      return 1
+    case 'scaleneTriangle':
+    case 'parallelogram':
+      return 0
+  }
+}
+
+/** German display name for shape kinds used in questions. */
+export function symmetryShapeLabel(shape: SymmetryShapeKind): string {
+  switch (shape) {
+    case 'square':
+      return 'Quadrat'
+    case 'rectangle':
+      return 'Rechteck'
+    case 'kite':
+      return 'Drachenviereck'
+    case 'isoscelesTrapezoid':
+      return 'gleichschenkliges Trapez'
+    case 'equilateralTriangle':
+      return 'gleichseitiges Dreieck'
+    case 'isoscelesTriangle':
+      return 'gleichschenkliges Dreieck'
+    case 'scaleneTriangle':
+      return 'ungleichseitiges Dreieck'
+    case 'parallelogram':
+      return 'Parallelogramm'
+  }
+}
+
+type Pt = [number, number]
+
+function shapeGeometry(shape: SymmetryShapeKind): {
+  vertices: Pt[]
+  axes: Array<[Pt, Pt]>
+  center: Pt
+  wrongAxis: [Pt, Pt]
+} {
+  // Canvas-ish coordinates; positive y downward in SVG (standalone, not math grid).
+  const cx = 160
+  const cy = 145
+  switch (shape) {
+    case 'square': {
+      const s = 55
+      const vertices: Pt[] = [
+        [cx - s, cy - s],
+        [cx + s, cy - s],
+        [cx + s, cy + s],
+        [cx - s, cy + s],
+      ]
+      return {
+        vertices,
+        axes: [
+          [[cx - s - 12, cy], [cx + s + 12, cy]],
+          [[cx, cy - s - 12], [cx, cy + s + 12]],
+          [[cx - s - 8, cy - s - 8], [cx + s + 8, cy + s + 8]],
+          [[cx - s - 8, cy + s + 8], [cx + s + 8, cy - s - 8]],
+        ],
+        center: [cx, cy],
+        wrongAxis: [[cx - s - 10, cy - s / 2], [cx + s + 10, cy + s / 2]],
+      }
+    }
+    case 'rectangle': {
+      const w = 80
+      const h = 45
+      const vertices: Pt[] = [
+        [cx - w, cy - h],
+        [cx + w, cy - h],
+        [cx + w, cy + h],
+        [cx - w, cy + h],
+      ]
+      return {
+        vertices,
+        axes: [
+          [[cx - w - 12, cy], [cx + w + 12, cy]],
+          [[cx, cy - h - 12], [cx, cy + h + 12]],
+        ],
+        center: [cx, cy],
+        wrongAxis: [
+          [cx - w - 8, cy - h - 8],
+          [cx + w + 8, cy + h + 8],
+        ],
+      }
+    }
+    case 'kite': {
+      const vertices: Pt[] = [
+        [cx, cy - 70],
+        [cx + 55, cy],
+        [cx, cy + 50],
+        [cx - 55, cy],
+      ]
+      return {
+        vertices,
+        axes: [[[cx, cy - 82], [cx, cy + 62]]],
+        center: [cx, cy],
+        wrongAxis: [[cx - 70, cy], [cx + 70, cy]],
+      }
+    }
+    case 'isoscelesTrapezoid': {
+      const vertices: Pt[] = [
+        [cx - 45, cy - 40],
+        [cx + 45, cy - 40],
+        [cx + 75, cy + 45],
+        [cx - 75, cy + 45],
+      ]
+      return {
+        vertices,
+        axes: [[[cx, cy - 55], [cx, cy + 60]]],
+        center: [cx, cy + 2],
+        wrongAxis: [[cx - 80, cy], [cx + 80, cy]],
+      }
+    }
+    case 'equilateralTriangle': {
+      const r = 72
+      const vertices: Pt[] = [0, 1, 2].map((i) => {
+        const a = -Math.PI / 2 + (i * 2 * Math.PI) / 3
+        return [cx + r * Math.cos(a), cy + r * Math.sin(a)] as Pt
+      })
+      const mid = (a: Pt, b: Pt): Pt => [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2]
+      const axes: Array<[Pt, Pt]> = [
+        [vertices[0], mid(vertices[1], vertices[2])],
+        [vertices[1], mid(vertices[0], vertices[2])],
+        [vertices[2], mid(vertices[0], vertices[1])],
+      ].map(([p, q]) => {
+        const dx = q[0] - p[0]
+        const dy = q[1] - p[1]
+        const len = Math.hypot(dx, dy) || 1
+        const ux = dx / len
+        const uy = dy / len
+        return [
+          [p[0] - ux * 14, p[1] - uy * 14],
+          [q[0] + ux * 14, q[1] + uy * 14],
+        ]
+      })
+      return {
+        vertices,
+        axes,
+        center: [cx, cy],
+        wrongAxis: [[cx - 90, cy + 10], [cx + 90, cy + 10]],
+      }
+    }
+    case 'isoscelesTriangle': {
+      const vertices: Pt[] = [
+        [cx, cy - 70],
+        [cx + 70, cy + 55],
+        [cx - 70, cy + 55],
+      ]
+      return {
+        vertices,
+        axes: [[[cx, cy - 82], [cx, cy + 68]]],
+        center: [cx, cy + 10],
+        wrongAxis: [[cx - 80, cy], [cx + 80, cy]],
+      }
+    }
+    case 'scaleneTriangle': {
+      const vertices: Pt[] = [
+        [cx - 60, cy + 50],
+        [cx + 80, cy + 40],
+        [cx - 10, cy - 65],
+      ]
+      return {
+        vertices,
+        axes: [],
+        center: [cx, cy],
+        wrongAxis: [[cx, cy - 80], [cx, cy + 70]],
+      }
+    }
+    case 'parallelogram': {
+      const vertices: Pt[] = [
+        [cx - 70, cy + 40],
+        [cx + 30, cy + 40],
+        [cx + 70, cy - 40],
+        [cx - 30, cy - 40],
+      ]
+      return {
+        vertices,
+        axes: [],
+        center: [cx, cy],
+        wrongAxis: [[cx, cy - 70], [cx, cy + 70]],
+      }
+    }
+  }
+}
+
+/**
+ * Standalone shape for axis-/point-symmetry recognition (worksheet style).
+ * Axes (green), optional center point, optional wrong (red dashed) axis.
+ */
+export function generateSymmetryShapeSvg({
+  shape,
+  showAxes = false,
+  showPointOfSymmetry = false,
+  showWrongAxis = false,
+  fill = '#90caf9',
+  stroke = '#1565c0',
+}: SymmetryShapeSvgProps): string {
+  const { vertices, axes, center, wrongAxis } = shapeGeometry(shape)
+  const pts = vertices.map(([x, y]) => `${x},${y}`).join(' ')
+  const axisLines = showAxes
+    ? axes
+        .map(
+          ([[x1, y1], [x2, y2]]) =>
+            `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#2e7d32" stroke-width="2.5" />`,
+        )
+        .join('\n  ')
+    : ''
+  const wrong = showWrongAxis
+    ? `<line x1="${wrongAxis[0][0]}" y1="${wrongAxis[0][1]}" x2="${wrongAxis[1][0]}" y2="${wrongAxis[1][1]}" stroke="#c62828" stroke-width="2" stroke-dasharray="8 5" />`
+    : ''
+  const centerDot = showPointOfSymmetry
+    ? `<circle cx="${center[0]}" cy="${center[1]}" r="5" fill="#111" />`
+    : ''
+
+  return `
+<svg width="320" height="290" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="320" height="290" fill="#fafafa" />
+  <polygon points="${pts}" fill="${fill}" fill-opacity="0.5" stroke="${stroke}" stroke-width="2.5" />
+  ${wrong}
+  ${axisLines}
+  ${centerDot}
+</svg>`.trim()
+}
+
+export type MirrorLineKind =
+  | 'x-axis'
+  | 'y-axis'
+  | 'y=x'
+  | { type: 'vertical'; x: number }
+  | { type: 'horizontal'; y: number }
+
+export interface ReflectionSvgProps {
+  /** Original polygon vertices (math y-up) */
+  points: Array<[number, number]>
+  /** Mirror line s */
+  mirror: MirrorLineKind
+  /** Draw the reflected image (default true) */
+  showImage?: boolean
+  xRange?: [number, number]
+  yRange?: [number, number]
+  labelVertices?: boolean
+  /** Label for the mirror line (default "s") */
+  mirrorLabel?: string
+}
+
+/** Reflect a point across the given mirror line. */
+export function reflectPointAcross(
+  point: [number, number],
+  mirror: MirrorLineKind,
+): [number, number] {
+  const [x, y] = point
+  if (mirror === 'x-axis') return [x, -y]
+  if (mirror === 'y-axis') return [-x, y]
+  if (mirror === 'y=x') return [y, x]
+  if (mirror.type === 'vertical') return [2 * mirror.x - x, y]
+  return [x, 2 * mirror.y - y]
+}
+
+function mirrorSegment(
+  mirror: MirrorLineKind,
+  xMin: number,
+  xMax: number,
+  yMin: number,
+  yMax: number,
+): { a: [number, number]; b: [number, number]; labelAt: [number, number] } {
+  if (mirror === 'x-axis') {
+    return { a: [xMin, 0], b: [xMax, 0], labelAt: [xMax - 0.6, 0.55] }
+  }
+  if (mirror === 'y-axis') {
+    return { a: [0, yMin], b: [0, yMax], labelAt: [0.55, yMax - 0.4] }
+  }
+  if (mirror === 'y=x') {
+    const lo = Math.max(xMin, yMin)
+    const hi = Math.min(xMax, yMax)
+    return { a: [lo, lo], b: [hi, hi], labelAt: [hi - 0.5, hi + 0.55] }
+  }
+  if (mirror.type === 'vertical') {
+    const x = mirror.x
+    return { a: [x, yMin], b: [x, yMax], labelAt: [x + 0.45, yMax - 0.4] }
+  }
+  const y = mirror.y
+  return { a: [xMin, y], b: [xMax, y], labelAt: [xMax - 0.6, y + 0.55] }
+}
+
+/**
+ * Coordinate grid with a figure, mirror line s, and optional reflected image.
+ */
+export function generateReflectionSvg({
+  points,
+  mirror,
+  showImage = true,
+  xRange,
+  yRange,
+  labelVertices = true,
+  mirrorLabel = 's',
+}: ReflectionSvgProps): string {
+  const reflected = points.map((p) => reflectPointAcross(p, mirror))
+  const allPts = showImage ? [...points, ...reflected] : [...points]
+  const xs = allPts.map((p) => p[0])
+  const ys = allPts.map((p) => p[1])
+  const autoXMin = Math.min(0, ...xs) - 1
+  const autoXMax = Math.max(0, ...xs) + 1
+  const autoYMin = Math.min(0, ...ys) - 1
+  const autoYMax = Math.max(0, ...ys) + 1
+  const xr: [number, number] = xRange ?? [autoXMin, autoXMax]
+  const yr: [number, number] = yRange ?? [autoYMin, autoYMax]
+  const { xMin, xMax, yMin, yMax } = gridBounds(xr, yr)
+
+  const polygons: GridPolygon[] = [
+    {
+      points,
+      fill: '#90caf9',
+      stroke: '#1565c0',
+      opacity: 0.5,
+      label: showImage ? 'F' : undefined,
+    },
+  ]
+  if (showImage) {
+    polygons.push({
+      points: reflected,
+      fill: '#a5d6a7',
+      stroke: '#2e7d32',
+      opacity: 0.5,
+      label: "F'",
+    })
+  }
+
+  const labeled: GridLabeledPoint[] = []
+  if (labelVertices && points.length > 0) {
+    labeled.push({ x: points[0][0], y: points[0][1], label: 'A' })
+    if (showImage) {
+      labeled.push({ x: reflected[0][0], y: reflected[0][1], label: "A'" })
+    }
+  }
+
+  const base = generateCoordinateGridSvg({
+    xRange: xr,
+    yRange: yr,
+    points: labeled,
+    polygons,
+  })
+
+  const cellSize = 36
+  const padL = 36
+  const padT = 28
+  const toSvg = (mx: number, my: number): [number, number] => [
+    padL + (mx - xMin) * cellSize,
+    padT + (yMax - my) * cellSize,
+  ]
+
+  const seg = mirrorSegment(mirror, xMin, xMax, yMin, yMax)
+  const [ax, ay] = toSvg(seg.a[0], seg.a[1])
+  const [bx, by] = toSvg(seg.b[0], seg.b[1])
+  const [lx, ly] = toSvg(seg.labelAt[0], seg.labelAt[1])
+  const mirrorSvg = `
+  <line x1="${ax}" y1="${ay}" x2="${bx}" y2="${by}" stroke="#6a1b9a" stroke-width="2.5" stroke-dasharray="7 4" />
+  <text x="${lx}" y="${ly}" font-size="15" font-weight="bold" fill="#6a1b9a">${mirrorLabel}</text>`
+
+  return base.replace('</svg>', `${mirrorSvg}\n</svg>`)
+}
+
+export interface PointReflectionSvgProps {
+  /** Original polygon vertices */
+  points: Array<[number, number]>
+  /** Center of point reflection S */
+  center: [number, number]
+  /** Draw the image after 180° rotation around S (default true) */
+  showImage?: boolean
+  xRange?: [number, number]
+  yRange?: [number, number]
+  labelVertices?: boolean
+  /** Label for the center (default "S") */
+  centerLabel?: string
+}
+
+/** Point reflection (180°) of a point across center S. */
+export function pointReflectAcross(
+  point: [number, number],
+  center: [number, number],
+): [number, number] {
+  return [2 * center[0] - point[0], 2 * center[1] - point[1]]
+}
+
+/**
+ * Coordinate grid with original figure, center S, and optional point-reflected image.
+ */
+export function generatePointReflectionSvg({
+  points,
+  center,
+  showImage = true,
+  xRange,
+  yRange,
+  labelVertices = true,
+  centerLabel = 'S',
+}: PointReflectionSvgProps): string {
+  const reflected = points.map((p) => pointReflectAcross(p, center))
+  const allPts: Array<[number, number]> = showImage
+    ? [...points, ...reflected, center]
+    : [...points, center]
+  const allX = allPts.map((p) => p[0])
+  const allY = allPts.map((p) => p[1])
+  const autoXMin = Math.min(0, ...allX) - 1
+  const autoXMax = Math.max(0, ...allX) + 1
+  const autoYMin = Math.min(0, ...allY) - 1
+  const autoYMax = Math.max(0, ...allY) + 1
+  const xr: [number, number] = xRange ?? [autoXMin, autoXMax]
+  const yr: [number, number] = yRange ?? [autoYMin, autoYMax]
+
+  const polygons: GridPolygon[] = [
+    {
+      points,
+      fill: '#90caf9',
+      stroke: '#1565c0',
+      opacity: 0.5,
+      label: showImage ? 'F' : undefined,
+    },
+  ]
+  if (showImage) {
+    polygons.push({
+      points: reflected,
+      fill: '#ce93d8',
+      stroke: '#6a1b9a',
+      opacity: 0.5,
+      label: "F'",
+    })
+  }
+
+  const labeled: GridLabeledPoint[] = [
+    { x: center[0], y: center[1], label: centerLabel },
+  ]
+  if (labelVertices && points.length > 0) {
+    labeled.push({ x: points[0][0], y: points[0][1], label: 'A' })
+    if (showImage) {
+      labeled.push({ x: reflected[0][0], y: reflected[0][1], label: "A'" })
+    }
+  }
+
+  const base = generateCoordinateGridSvg({
+    xRange: xr,
+    yRange: yr,
+    points: labeled,
+    polygons,
+  })
+
+  // Emphasize S with a slightly larger ring (injected)
+  const { xMin, yMax } = gridBounds(xr, yr)
+  const cellSize = 36
+  const padL = 36
+  const padT = 28
+  const [sx, sy] = [
+    padL + (center[0] - xMin) * cellSize,
+    padT + (yMax - center[1]) * cellSize,
+  ]
+  const ring = `<circle cx="${sx}" cy="${sy}" r="7" fill="none" stroke="#111" stroke-width="2" />`
+
+  // Optional guide segments A–S–A' when image is shown
+  let guides = ''
+  if (showImage && points.length > 0) {
+    const [ax, ay] = [
+      padL + (points[0][0] - xMin) * cellSize,
+      padT + (yMax - points[0][1]) * cellSize,
+    ]
+    const [apx, apy] = [
+      padL + (reflected[0][0] - xMin) * cellSize,
+      padT + (yMax - reflected[0][1]) * cellSize,
+    ]
+    guides = `<line x1="${ax}" y1="${ay}" x2="${apx}" y2="${apy}" stroke="#888" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.8" />`
+  }
+
+  return base.replace('</svg>', `  ${guides}\n  ${ring}\n</svg>`)
+}

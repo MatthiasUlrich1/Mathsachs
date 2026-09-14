@@ -14,6 +14,15 @@ import {
   generateUShapeSvg,
   generateCompositeCuboidSvg,
   generateTranslationSvg,
+  generateSymmetryShapeSvg,
+  generateReflectionSvg,
+  generatePointReflectionSvg,
+  reflectPointAcross,
+  pointReflectAcross,
+  symmetryAxisCount,
+  symmetryShapeLabel,
+  type SymmetryShapeKind,
+  type MirrorLineKind,
 } from '../lib/geometrySvg'
 import type { Grade, Topic } from './types'
 
@@ -1121,6 +1130,230 @@ const verschiebungFormen: Topic = {
   ),
 }
 
+const AXIS_SHAPES: SymmetryShapeKind[] = [
+  'square',
+  'rectangle',
+  'kite',
+  'isoscelesTrapezoid',
+  'equilateralTriangle',
+  'isoscelesTriangle',
+  'scaleneTriangle',
+  'parallelogram',
+]
+
+const pickMirror = (rng: Rng): MirrorLineKind => {
+  const kind = pick(rng, ['x-axis', 'y-axis', 'y=x', 'vertical', 'horizontal'] as const)
+  if (kind === 'vertical') return { type: 'vertical', x: pick(rng, [0, 1, 2]) }
+  if (kind === 'horizontal') return { type: 'horizontal', y: pick(rng, [0, 1, 2]) }
+  return kind
+}
+
+const mirrorDescribe = (mirror: MirrorLineKind): string => {
+  if (mirror === 'x-axis') return 'die x-Achse (Gerade s)'
+  if (mirror === 'y-axis') return 'die y-Achse (Gerade s)'
+  if (mirror === 'y=x') return 'die Gerade s mit y = x'
+  if (mirror.type === 'vertical') return `die Gerade s mit x = ${mirror.x}`
+  return `die Gerade s mit y = ${mirror.y}`
+}
+
+const symmetrieAchsen: Topic = {
+  id: 'lb3-achsensymmetrie',
+  title: 'Achsensymmetrie erkennen',
+  hint: 'Eine Figur ist achsensymmetrisch, wenn sie an einer Geraden gespiegelt auf sich selbst fällt. Bildpunkt: x; y.',
+  pointsPerTask: 10,
+  difficulty: 2,
+  fachwissen: {
+    text: 'Eine Figur heißt achsensymmetrisch, wenn es eine Gerade (Symmetrieachse) gibt, sodass die Figur durch Spiegelung an dieser Geraden auf sich selbst abgebildet wird. Jeder Punkt und sein Bildpunkt liegen spiegelbildlich zur Achse: die Verbindungsstrecke steht senkrecht auf der Achse und der Schnittpunkt ist der Mittelpunkt der Strecke. Viele bekannte Figuren besitzen eine oder mehrere Symmetrieachsen (z. B. Quadrat: 4, gleichseitiges Dreieck: 3, gleichschenkliges Trapez: 1).',
+    quelle: 'Wikipedia: Achsensymmetrie',
+    url: 'https://de.wikipedia.org/wiki/Achsensymmetrie',
+  },
+  generate: mixedVariants(
+    // Variant 1: How many axes of symmetry?
+    (rng: Rng) => {
+      const shape = pick(rng, AXIS_SHAPES)
+      const value = symmetryAxisCount(shape)
+      const showAxes = rng() < 0.45 && value > 0
+      const svg = generateSymmetryShapeSvg({
+        shape,
+        showAxes,
+        showPointOfSymmetry: false,
+        showWrongAxis: false,
+      })
+      return {
+        ...valueTask({
+          question: showAxes
+            ? 'Wie viele Symmetrieachsen hat die Figur? (Die eingezeichneten grünen Geraden sind die Symmetrieachsen.)'
+            : 'Wie viele Symmetrieachsen hat die Figur?',
+          answerKind: 'integer',
+          value,
+          solution: `${value}`,
+          explanation: `Die Figur ist ein ${symmetryShapeLabel(shape)}. Sie besitzt ${value} Symmetrieachse${value === 1 ? '' : 'n'}.`,
+        }),
+        visualContent: svg,
+      }
+    },
+    // Variant 2: Is the figure axis-symmetric? (ja/nein)
+    (rng: Rng) => {
+      const shape = pick(rng, AXIS_SHAPES)
+      const yes = symmetryAxisCount(shape) > 0
+      const svg = generateSymmetryShapeSvg({ shape, showAxes: false })
+      const askByName = rng() < 0.4
+      const task = textTask({
+        question: askByName
+          ? `Ist ein ${symmetryShapeLabel(shape)} achsensymmetrisch? Antworte mit ja oder nein.`
+          : 'Ist die Figur achsensymmetrisch? Antworte mit ja oder nein.',
+        accepted: yes ? ['ja'] : ['nein'],
+        solution: yes ? 'ja' : 'nein',
+        explanation: yes
+          ? `Ja. Ein ${symmetryShapeLabel(shape)} besitzt ${symmetryAxisCount(shape)} Symmetrieachse${symmetryAxisCount(shape) === 1 ? '' : 'n'}.`
+          : `Nein. Ein ${symmetryShapeLabel(shape)} besitzt keine Spiegelachse (keine Achsensymmetrie).`,
+      })
+      if (askByName) return task
+      return { ...task, visualContent: svg }
+    },
+    // Variant 3: Reflect point A across mirror line s
+    (rng: Rng) => {
+      const mirror = pickMirror(rng)
+      const ax = randInt(rng, 1, 4)
+      const ay = randInt(rng, 1, 4)
+      // Keep A off the mirror when possible
+      let A: [number, number] = [ax, ay]
+      if (mirror === 'x-axis') A = [ax, Math.max(1, ay)]
+      if (mirror === 'y-axis') A = [Math.max(1, ax), ay]
+      if (mirror === 'y=x' && ax === ay) A = [ax, ay + 1]
+      if (typeof mirror === 'object' && mirror.type === 'vertical' && A[0] === mirror.x) {
+        A = [A[0] + 1, A[1]]
+      }
+      if (typeof mirror === 'object' && mirror.type === 'horizontal' && A[1] === mirror.y) {
+        A = [A[0], A[1] + 1]
+      }
+      const [tx, ty] = reflectPointAcross(A, mirror)
+      // Small triangle for context; first vertex is A
+      const points: Array<[number, number]> = [A, [A[0] + 2, A[1]], [A[0] + 1, A[1] + 2]]
+      const svg = generateReflectionSvg({
+        points,
+        mirror,
+        showImage: false,
+        xRange: [-5, 8],
+        yRange: [-5, 8],
+        labelVertices: true,
+      })
+      const accepted = pairAnswerAccepted(tx, ty)
+      return {
+        ...textTask({
+          question: `Spiegle Punkt A an ${mirrorDescribe(mirror)}. Gib die Koordinaten von A' als x; y an.`,
+          accepted,
+          solution: `${tx}; ${ty}`,
+          explanation: `A liegt bei (${A[0]}|${A[1]}). Spiegelung an ${mirrorDescribe(mirror)} liefert A' = (${tx}|${ty}).`,
+        }),
+        visualContent: svg,
+      }
+    },
+  ),
+}
+
+const symmetriePunkt: Topic = {
+  id: 'lb3-punktsymmetrie',
+  title: 'Punktsymmetrie / Punktspiegelung',
+  hint: 'Punktspiegelung an S: A\' = 2S − A. Antwortformat x; y (auch Komma oder (x|y)).',
+  pointsPerTask: 10,
+  difficulty: 2,
+  fachwissen: {
+    text: 'Punktsymmetrie (Punktspiegelung) ist eine Kongruenzabbildung: Jeder Punkt A wird so auf A\' abgebildet, dass der Punkt S der Mittelpunkt der Strecke AA\' ist. Rechnerisch gilt A\' = 2S − A, also x\' = 2·sx − x und y\' = 2·sy − y. Eine Punktspiegelung entspricht einer Drehung um 180° um S. Figuren, die durch Punktspiegelung an einem inneren Punkt auf sich selbst fallen, heißen punktsymmetrisch.',
+    quelle: 'Wikipedia: Punktsymmetrie',
+    url: 'https://de.wikipedia.org/wiki/Punktsymmetrie',
+  },
+  generate: mixedVariants(
+    // Variant 1: Visual — A and S given, find A' (image hidden)
+    (rng: Rng) => {
+      const sx = randInt(rng, 0, 2)
+      const sy = randInt(rng, 0, 2)
+      const ax = randInt(rng, 1, 4)
+      const ay = randInt(rng, 1, 4)
+      const A: [number, number] = ax === sx && ay === sy ? [ax + 1, ay + 1] : [ax, ay]
+      const S: [number, number] = [sx, sy]
+      const [tx, ty] = pointReflectAcross(A, S)
+      const points: Array<[number, number]> = [A, [A[0] + 2, A[1]], [A[0] + 1, A[1] + 2]]
+      const svg = generatePointReflectionSvg({
+        points,
+        center: S,
+        showImage: false,
+        xRange: [-5, 8],
+        yRange: [-5, 8],
+        labelVertices: true,
+      })
+      const accepted = pairAnswerAccepted(tx, ty)
+      return {
+        ...textTask({
+          question: `Spiegle Punkt A am Punkt S. Gib die Koordinaten von A' als x; y an.`,
+          accepted,
+          solution: `${tx}; ${ty}`,
+          explanation: `S = (${sx}|${sy}), A = (${A[0]}|${A[1]}). A' = 2S − A = (${2 * sx} − ${A[0]}|${2 * sy} − ${A[1]}) = (${tx}|${ty}).`,
+        }),
+        visualContent: svg,
+      }
+    },
+    // Variant 2: Show original + image, ask for S or for A'
+    (rng: Rng) => {
+      const sx = randInt(rng, 0, 2)
+      const sy = randInt(rng, 0, 2)
+      const A: [number, number] = [randInt(rng, 1, 4), randInt(rng, 1, 4)]
+      if (A[0] === sx && A[1] === sy) A[0] += 1
+      const S: [number, number] = [sx, sy]
+      const [apx, apy] = pointReflectAcross(A, S)
+      const points: Array<[number, number]> = [A, [A[0] + 2, A[1]], [A[0] + 1, A[1] + 2]]
+      const askS = rng() < 0.5
+      const svg = generatePointReflectionSvg({
+        points,
+        center: S,
+        showImage: true,
+        xRange: [-5, 8],
+        yRange: [-5, 8],
+        labelVertices: true,
+        // When asking for S, still show S label — students read from figure.
+        // For variety: when asking A', S is labeled; when asking S, both A and A' shown.
+      })
+      if (askS) {
+        const accepted = pairAnswerAccepted(sx, sy)
+        return {
+          ...textTask({
+            question: `Die Figur F wird durch Punktspiegelung auf F' abgebildet. Lies die Koordinaten des Symmetriezentrums S ab (x; y).`,
+            accepted,
+            solution: `${sx}; ${sy}`,
+            explanation: `S ist der Mittelpunkt von A und A': ((${A[0]}+${apx})/2 | (${A[1]}+${apy})/2) = (${sx}|${sy}).`,
+          }),
+          visualContent: svg,
+        }
+      }
+      const accepted = pairAnswerAccepted(apx, apy)
+      return {
+        ...textTask({
+          question: `Die Figur wird am Punkt S punktgespiegelt. Welche Koordinaten hat A'? Gib x; y an.`,
+          accepted,
+          solution: `${apx}; ${apy}`,
+          explanation: `A' = 2S − A = (${2 * sx} − ${A[0]}|${2 * sy} − ${A[1]}) = (${apx}|${apy}).`,
+        }),
+        visualContent: svg,
+      }
+    },
+    // Variant 3: Text only — mirror a point across another point
+    (rng: Rng) => {
+      const ax = randInt(rng, -3, 4)
+      const ay = randInt(rng, -3, 4)
+      const sx = randInt(rng, -2, 2)
+      const sy = randInt(rng, -2, 2)
+      const [tx, ty] = pointReflectAcross([ax, ay], [sx, sy])
+      const accepted = pairAnswerAccepted(tx, ty)
+      return textTask({
+        question: `Spiegle (${ax}|${ay}) am Punkt (${sx}|${sy}). Gib x; y an.`,
+        accepted,
+        solution: `${tx}; ${ty}`,
+        explanation: `Punktspiegelung: x' = 2·${sx} − ${ax} = ${tx}, y' = 2·${sy} − ${ay} = ${ty}. Also (${tx}|${ty}).`,
+      })
+    },
+  ),
+}
+
 // ---------------------------------------------------------------------------
 // Lernbereich 4 — Rechtecke und Quader
 // ---------------------------------------------------------------------------
@@ -1884,7 +2117,7 @@ export const klasse5: Grade = {
       id: 'lb3',
       title: 'Lagebeziehungen geometrischer Objekte',
       ustd: 22,
-      topics: [winkelarten, winkelErgaenzung, verschiebungFormen],
+      topics: [winkelarten, winkelErgaenzung, verschiebungFormen, symmetrieAchsen, symmetriePunkt],
     },
     {
       id: 'lb4',

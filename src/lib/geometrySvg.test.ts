@@ -13,6 +13,12 @@ import {
   generateCompositeCuboidSvg,
   generateCoordinateGridSvg,
   generateTranslationSvg,
+  generateSymmetryShapeSvg,
+  generateReflectionSvg,
+  generatePointReflectionSvg,
+  reflectPointAcross,
+  pointReflectAcross,
+  symmetryAxisCount,
 } from './geometrySvg'
 
 describe('geometrySvg', () => {
@@ -287,6 +293,99 @@ describe('geometrySvg', () => {
       expect(svg).toContain('<svg')
       expect(svg).not.toContain("F'")
       expect(svg).toContain('transArrow')
+    })
+  })
+
+  describe('generateSymmetryShapeSvg', () => {
+    it('draws a square with four green axes when requested', () => {
+      const svg = generateSymmetryShapeSvg({
+        shape: 'square',
+        showAxes: true,
+        showPointOfSymmetry: true,
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('<polygon')
+      expect(svg).toContain('#2e7d32')
+      expect(svg).toContain('<circle')
+      expect(symmetryAxisCount('square')).toBe(4)
+      expect((svg.match(/stroke="#2e7d32"/g) ?? []).length).toBe(4)
+    })
+
+    it('can show a wrong dashed axis without correct axes', () => {
+      const svg = generateSymmetryShapeSvg({
+        shape: 'rectangle',
+        showAxes: false,
+        showWrongAxis: true,
+      })
+      expect(svg).toContain('stroke-dasharray')
+      expect(svg).toContain('#c62828')
+      expect(svg).not.toContain('#2e7d32')
+      expect(symmetryAxisCount('rectangle')).toBe(2)
+      expect(symmetryAxisCount('scaleneTriangle')).toBe(0)
+    })
+  })
+
+  describe('generateReflectionSvg', () => {
+    it('shows original, mirror line s, and image', () => {
+      const svg = generateReflectionSvg({
+        points: [[1, 1], [3, 1], [2, 3]],
+        mirror: 'x-axis',
+        showImage: true,
+        xRange: [-5, 8],
+        yRange: [-5, 8],
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('>s</text>')
+      expect((svg.match(/<polygon/g) ?? []).length).toBeGreaterThanOrEqual(2)
+      expect(svg).toContain("F'")
+      expect(reflectPointAcross([2, 3], 'x-axis')).toEqual([2, -3])
+      expect(reflectPointAcross([2, 3], 'y-axis')).toEqual([-2, 3])
+      expect(reflectPointAcross([2, 3], 'y=x')).toEqual([3, 2])
+    })
+
+    it('can hide the reflected image for find-A tasks', () => {
+      const svg = generateReflectionSvg({
+        points: [[2, 1], [4, 1], [3, 3]],
+        mirror: { type: 'vertical', x: 1 },
+        showImage: false,
+        xRange: [-5, 8],
+        yRange: [-5, 8],
+      })
+      expect(svg).toContain('>s</text>')
+      expect(svg).not.toContain("F'")
+      expect(svg).toContain('>A</text>')
+      expect(reflectPointAcross([4, 2], { type: 'vertical', x: 1 })).toEqual([-2, 2])
+    })
+  })
+
+  describe('generatePointReflectionSvg', () => {
+    it('shows original, center S, and image', () => {
+      const svg = generatePointReflectionSvg({
+        points: [[1, 1], [3, 1], [2, 3]],
+        center: [0, 0],
+        showImage: true,
+        xRange: [-5, 8],
+        yRange: [-5, 8],
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('>S</text>')
+      expect(svg).toContain("F'")
+      expect(svg).toContain("A'")
+      expect(pointReflectAcross([2, 3], [0, 0])).toEqual([-2, -3])
+      expect(pointReflectAcross([1, 2], [2, 1])).toEqual([3, 0])
+    })
+
+    it('can hide the image when students must construct it', () => {
+      const svg = generatePointReflectionSvg({
+        points: [[2, 1], [4, 2], [3, 4]],
+        center: [1, 1],
+        showImage: false,
+        xRange: [-5, 8],
+        yRange: [-5, 8],
+      })
+      expect(svg).toContain('>S</text>')
+      expect(svg).toContain('>A</text>')
+      expect(svg).not.toContain("F'")
     })
   })
 })
