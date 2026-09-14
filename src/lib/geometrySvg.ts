@@ -1159,3 +1159,292 @@ export function generateCompositeCuboidSvg({
   ${label(cutWidMid[0] - 10, cutWidMid[1] + 4, cutWidthLabel, 'end')}
 </svg>`.trim()
 }
+
+// ---------------------------------------------------------------------------
+// Coordinate grid & translation (Verschiebung)
+// ---------------------------------------------------------------------------
+
+export interface GridLabeledPoint {
+  x: number
+  y: number
+  label?: string
+}
+
+export interface GridPolygon {
+  points: Array<[number, number]>
+  fill?: string
+  stroke?: string
+  opacity?: number
+  label?: string
+}
+
+export interface CoordinateGridSvgProps {
+  /** Inclusive x range (default [-1, 8]) */
+  xRange?: [number, number]
+  /** Inclusive y range (default [-1, 8]) */
+  yRange?: [number, number]
+  /** Optional labeled points in grid coordinates */
+  points?: GridLabeledPoint[]
+  /** Optional filled polygons in grid coordinates */
+  polygons?: GridPolygon[]
+  /** Pixels per grid unit (default 36) */
+  cellSize?: number
+}
+
+function gridBounds(xRange: [number, number], yRange: [number, number]) {
+  const xMin = Math.min(xRange[0], xRange[1])
+  const xMax = Math.max(xRange[0], xRange[1])
+  const yMin = Math.min(yRange[0], yRange[1])
+  const yMax = Math.max(yRange[0], yRange[1])
+  return { xMin, xMax, yMin, yMax }
+}
+
+/**
+ * Square coordinate grid (graph paper) with math convention: positive y upward.
+ * Axes, unit ticks, optional points and polygons. Labels get enough padding.
+ */
+export function generateCoordinateGridSvg({
+  xRange = [-1, 8],
+  yRange = [-1, 8],
+  points = [],
+  polygons = [],
+  cellSize = 36,
+}: CoordinateGridSvgProps): string {
+  const { xMin, xMax, yMin, yMax } = gridBounds(xRange, yRange)
+  const padL = 36
+  const padR = 44
+  const padT = 28
+  const padB = 36
+  const gridW = (xMax - xMin) * cellSize
+  const gridH = (yMax - yMin) * cellSize
+  const totalW = padL + gridW + padR
+  const totalH = padT + gridH + padB
+
+  const toSvg = (mx: number, my: number): [number, number] => [
+    padL + (mx - xMin) * cellSize,
+    padT + (yMax - my) * cellSize,
+  ]
+
+  const [ox, oy] = toSvg(0, 0)
+
+  const gridLines: string[] = []
+  for (let x = xMin; x <= xMax; x++) {
+    const [sx] = toSvg(x, 0)
+    const isAxis = x === 0
+    gridLines.push(
+      `<line x1="${sx}" y1="${padT}" x2="${sx}" y2="${padT + gridH}" stroke="${
+        isAxis ? '#555' : '#c8c8c8'
+      }" stroke-width="${isAxis ? 2 : 1}" />`,
+    )
+  }
+  for (let y = yMin; y <= yMax; y++) {
+    const [, sy] = toSvg(0, y)
+    const isAxis = y === 0
+    gridLines.push(
+      `<line x1="${padL}" y1="${sy}" x2="${padL + gridW}" y2="${sy}" stroke="${
+        isAxis ? '#555' : '#c8c8c8'
+      }" stroke-width="${isAxis ? 2 : 1}" />`,
+    )
+  }
+
+  const tickLabels: string[] = []
+  for (let x = xMin; x <= xMax; x++) {
+    if (x === 0) continue
+    const [sx] = toSvg(x, 0)
+    tickLabels.push(
+      `<text x="${sx}" y="${oy + 16}" text-anchor="middle" font-size="11" fill="#444">${x}</text>`,
+    )
+  }
+  for (let y = yMin; y <= yMax; y++) {
+    if (y === 0) continue
+    const [, sy] = toSvg(0, y)
+    tickLabels.push(
+      `<text x="${ox - 10}" y="${sy + 4}" text-anchor="end" font-size="11" fill="#444">${y}</text>`,
+    )
+  }
+  // Origin label
+  if (xMin <= 0 && xMax >= 0 && yMin <= 0 && yMax >= 0) {
+    tickLabels.push(
+      `<text x="${ox - 8}" y="${oy + 14}" text-anchor="end" font-size="11" fill="#444">0</text>`,
+    )
+  }
+
+  const polySvg = polygons
+    .map((poly) => {
+      const pts = poly.points.map(([x, y]) => toSvg(x, y).join(',')).join(' ')
+      const fill = poly.fill ?? '#90caf9'
+      const stroke = poly.stroke ?? '#1565c0'
+      const opacity = poly.opacity ?? 0.45
+      const labelSvg =
+        poly.label && poly.points.length > 0
+          ? (() => {
+              const cx = poly.points.reduce((s, p) => s + p[0], 0) / poly.points.length
+              const cy = poly.points.reduce((s, p) => s + p[1], 0) / poly.points.length
+              const [lx, ly] = toSvg(cx, cy)
+              return `<text x="${lx}" y="${ly + 4}" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">${poly.label}</text>`
+            })()
+          : ''
+      return `<polygon points="${pts}" fill="${fill}" fill-opacity="${opacity}" stroke="${stroke}" stroke-width="2" />${labelSvg}`
+    })
+    .join('\n  ')
+
+  const pointSvg = points
+    .map((p) => {
+      const [sx, sy] = toSvg(p.x, p.y)
+      const lab = p.label
+        ? `<text x="${sx + 8}" y="${sy - 8}" font-size="13" font-weight="bold" fill="#333">${p.label}</text>`
+        : ''
+      return `<circle cx="${sx}" cy="${sy}" r="4.5" fill="#333" />${lab}`
+    })
+    .join('\n  ')
+
+  // Axis arrow tips (beyond last grid line slightly clipped into pad)
+  const xArrowEnd = padL + gridW + 10
+  const yArrowEnd = padT - 10
+
+  return `
+<svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="gridArrowX" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <polygon points="0,0 8,4 0,8" fill="#555" />
+    </marker>
+    <marker id="gridArrowY" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <polygon points="0,0 8,4 0,8" fill="#555" />
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="${totalW}" height="${totalH}" fill="#fafafa" />
+  ${gridLines.join('\n  ')}
+  <!-- x-axis arrow -->
+  <line x1="${padL}" y1="${oy}" x2="${xArrowEnd}" y2="${oy}" stroke="#555" stroke-width="2" marker-end="url(#gridArrowX)" />
+  <!-- y-axis arrow -->
+  <line x1="${ox}" y1="${padT + gridH}" x2="${ox}" y2="${yArrowEnd}" stroke="#555" stroke-width="2" marker-end="url(#gridArrowY)" />
+  <text x="${xArrowEnd + 4}" y="${oy + 4}" font-size="14" font-weight="bold" fill="#333">x</text>
+  <text x="${ox + 8}" y="${yArrowEnd + 4}" font-size="14" font-weight="bold" fill="#333">y</text>
+  ${tickLabels.join('\n  ')}
+  ${polySvg}
+  ${pointSvg}
+</svg>`.trim()
+}
+
+export interface TranslationSvgProps {
+  /** Original polygon vertices in grid coordinates */
+  points: Array<[number, number]>
+  /** Translation in x (positive = right) */
+  dx: number
+  /** Translation in y (positive = up) */
+  dy: number
+  /** Draw arrows from original to translated vertices (default true) */
+  showArrows?: boolean
+  /** Draw the translated polygon (default true; false when student must find it) */
+  showTranslated?: boolean
+  /** Inclusive x range */
+  xRange?: [number, number]
+  /** Inclusive y range */
+  yRange?: [number, number]
+  /** Label the first vertex as A / A' when useful */
+  labelVertices?: boolean
+  /** Draw a single clear vector arrow from centroid instead of per-vertex */
+  singleVectorArrow?: boolean
+}
+
+/**
+ * Coordinate grid showing an original polygon, optional translated copy,
+ * and translation arrows. Positive y is upward (math convention).
+ */
+export function generateTranslationSvg({
+  points,
+  dx,
+  dy,
+  showArrows = true,
+  showTranslated = true,
+  xRange,
+  yRange,
+  labelVertices = true,
+  singleVectorArrow = false,
+}: TranslationSvgProps): string {
+  const translated = points.map(([x, y]): [number, number] => [x + dx, y + dy])
+
+  const allPts = showTranslated ? [...points, ...translated] : [...points]
+  const xs = allPts.map((p) => p[0])
+  const ys = allPts.map((p) => p[1])
+  const autoXMin = Math.min(0, ...xs) - 1
+  const autoXMax = Math.max(0, ...xs) + 1
+  const autoYMin = Math.min(0, ...ys) - 1
+  const autoYMax = Math.max(0, ...ys) + 1
+
+  const xr: [number, number] = xRange ?? [autoXMin, autoXMax]
+  const yr: [number, number] = yRange ?? [autoYMin, autoYMax]
+
+  const polygons: GridPolygon[] = [
+    {
+      points,
+      fill: '#90caf9',
+      stroke: '#1565c0',
+      opacity: 0.5,
+      label: showTranslated ? 'F' : undefined,
+    },
+  ]
+  if (showTranslated) {
+    polygons.push({
+      points: translated,
+      fill: '#a5d6a7',
+      stroke: '#2e7d32',
+      opacity: 0.5,
+      label: "F'",
+    })
+  }
+
+  const labeled: GridLabeledPoint[] = []
+  if (labelVertices && points.length > 0) {
+    labeled.push({ x: points[0][0], y: points[0][1], label: 'A' })
+    if (showTranslated) {
+      labeled.push({ x: translated[0][0], y: translated[0][1], label: "A'" })
+    }
+  }
+
+  // Build base grid, then inject arrows before closing </svg>
+  const base = generateCoordinateGridSvg({
+    xRange: xr,
+    yRange: yr,
+    points: labeled,
+    polygons,
+  })
+
+  if (!showArrows || (dx === 0 && dy === 0)) return base
+
+  const { xMin, yMax } = gridBounds(xr, yr)
+  const cellSize = 36
+  const padL = 36
+  const padT = 28
+  const toSvg = (mx: number, my: number): [number, number] => [
+    padL + (mx - xMin) * cellSize,
+    padT + (yMax - my) * cellSize,
+  ]
+
+  const arrowColor = '#c62828'
+  let arrows = ''
+  if (singleVectorArrow || !showTranslated) {
+    const cx = points.reduce((s, p) => s + p[0], 0) / points.length
+    const cy = points.reduce((s, p) => s + p[1], 0) / points.length
+    const [x1, y1] = toSvg(cx, cy)
+    const [x2, y2] = toSvg(cx + dx, cy + dy)
+    arrows = `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${arrowColor}" stroke-width="2.5" marker-end="url(#transArrow)" />`
+  } else {
+    arrows = points
+      .map((p, i) => {
+        const [x1, y1] = toSvg(p[0], p[1])
+        const [x2, y2] = toSvg(translated[i][0], translated[i][1])
+        return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${arrowColor}" stroke-width="2" marker-end="url(#transArrow)" opacity="0.85" />`
+      })
+      .join('\n  ')
+  }
+
+  const marker = `
+  <defs>
+    <marker id="transArrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <polygon points="0,0 8,4 0,8" fill="${arrowColor}" />
+    </marker>
+  </defs>`
+
+  return base.replace('</svg>', `${marker}\n  ${arrows}\n</svg>`)
+}

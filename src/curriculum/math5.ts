@@ -13,6 +13,7 @@ import {
   generateLShapeSvg,
   generateUShapeSvg,
   generateCompositeCuboidSvg,
+  generateTranslationSvg,
 } from '../lib/geometrySvg'
 import type { Grade, Topic } from './types'
 
@@ -976,6 +977,150 @@ const winkelErgaenzung: Topic = {
   ),
 }
 
+/** Flexible accepted formats for a pair (a; b) — spaces, comma/semicolon, optional parentheses/pipe. */
+const pairAnswerAccepted = (a: number, b: number): string[] => {
+  const raw = [
+    `${a}; ${b}`,
+    `${a};${b}`,
+    `${a}, ${b}`,
+    `${a},${b}`,
+    `${a} ; ${b}`,
+    `${a}|${b}`,
+    `${a} | ${b}`,
+    `(${a}|${b})`,
+    `(${a} | ${b})`,
+    `(${a}; ${b})`,
+    `(${a};${b})`,
+    `(${a}, ${b})`,
+    `(${a},${b})`,
+  ]
+  return [...new Set(raw)]
+}
+
+const sampleTriangle = (): Array<[number, number]> => [
+  [1, 1],
+  [3, 1],
+  [2, 3],
+]
+
+const sampleQuad = (): Array<[number, number]> => [
+  [1, 1],
+  [3, 1],
+  [3, 2],
+  [1, 3],
+]
+
+const verschiebungFormen: Topic = {
+  id: 'lb3-verschiebung',
+  title: 'Verschiebung von Figuren',
+  hint: 'Antwortformat für Vektor und Punkt: dx; dy bzw. x; y (positiv = rechts / oben). Auch Komma oder (x|y) sind ok.',
+  pointsPerTask: 10,
+  difficulty: 2,
+  fachwissen: {
+    text: 'Eine Verschiebung (Translation) ist eine Kongruenzabbildung, bei der jeder Punkt der Figur um denselben Vektor verschoben wird. Der Verschiebungsvektor gibt an, um wie viele Einheiten nach rechts (positive x-Richtung) bzw. nach oben (positive y-Richtung) verschoben wird; negative Werte bedeuten nach links bzw. nach unten. Die Bildfigur ist deckungsgleich zur Ausgangsfigur und gleich orientiert.',
+    quelle: 'Wikipedia: Verschiebung (Geometrie)',
+    url: 'https://de.wikipedia.org/wiki/Verschiebung_(Geometrie)',
+  },
+  generate: mixedVariants(
+    // Variant 1: Visual — figure + vector, ask where point A goes
+    (rng: Rng) => {
+      const useTri = rng() < 0.6
+      const points = useTri ? sampleTriangle() : sampleQuad()
+      let dx = randInt(rng, 1, 4)
+      let dy = randInt(rng, 1, 3)
+      if (rng() < 0.35) dx = -dx
+      if (rng() < 0.35) dy = -dy
+      // Keep image inside a small grid
+      const ax = points[0][0]
+      const ay = points[0][1]
+      const bx = ax + dx
+      const by = ay + dy
+      if (bx < -4 || bx > 7 || by < -4 || by > 7) {
+        dx = Math.abs(dx)
+        dy = Math.abs(dy)
+      }
+      const tx = ax + dx
+      const ty = ay + dy
+      const describe =
+        rng() < 0.5
+          ? `um ${Math.abs(dx)} nach ${dx >= 0 ? 'rechts' : 'links'} und ${Math.abs(dy)} nach ${
+              dy >= 0 ? 'oben' : 'unten'
+            }`
+          : `mit dem Vektor (${dx}|${dy})`
+      const svg = generateTranslationSvg({
+        points,
+        dx,
+        dy,
+        showTranslated: false,
+        showArrows: describe.includes('Vektor'),
+        singleVectorArrow: true,
+        xRange: [-5, 8],
+        yRange: [-5, 8],
+        labelVertices: true,
+      })
+      const accepted = pairAnswerAccepted(tx, ty)
+      return {
+        ...textTask({
+          question: `Die Figur wird ${describe} verschoben. Wohin wandert Punkt A? Gib die Koordinaten als x; y an.`,
+          accepted,
+          solution: `${tx}; ${ty}`,
+          explanation: `Punkt A liegt bei (${ax}|${ay}). Verschiebung um (${dx}|${dy}): neues x = ${ax} + (${dx}) = ${tx}, neues y = ${ay} + (${dy}) = ${ty}. Also (${tx}|${ty}).`,
+        }),
+        visualContent: svg,
+      }
+    },
+    // Variant 2: Visual — original + image, ask for Verschiebungsvektor
+    (rng: Rng) => {
+      const useTri = rng() < 0.55
+      const points = useTri ? sampleTriangle() : sampleQuad()
+      let dx = randInt(rng, 1, 4)
+      let dy = randInt(rng, 0, 3)
+      if (rng() < 0.4) dx = -dx
+      if (rng() < 0.4 && dy !== 0) dy = -dy
+      const svg = generateTranslationSvg({
+        points,
+        dx,
+        dy,
+        showTranslated: true,
+        showArrows: true,
+        xRange: [-5, 8],
+        yRange: [-5, 8],
+        labelVertices: true,
+      })
+      const accepted = pairAnswerAccepted(dx, dy)
+      return {
+        ...textTask({
+          question: `Die Figur F wird auf F' verschoben. Wie lautet der Verschiebungsvektor? Gib dx; dy an (positiv = rechts / oben).`,
+          accepted,
+          solution: `${dx}; ${dy}`,
+          explanation: `Von A nach A' ändert sich x um ${dx} und y um ${dy}. Der Verschiebungsvektor ist also (${dx}|${dy}) bzw. ${dx}; ${dy}.`,
+        }),
+        visualContent: svg,
+      }
+    },
+    // Variant 3: Text only — describe shift, ask for image of a point
+    (rng: Rng) => {
+      const x = randInt(rng, 0, 4)
+      const y = randInt(rng, 0, 4)
+      let dx = randInt(rng, 1, 4)
+      let dy = randInt(rng, 1, 3)
+      if (rng() < 0.3) dx = -dx
+      if (rng() < 0.3) dy = -dy
+      const tx = x + dx
+      const ty = y + dy
+      const rechtsLinks = dx >= 0 ? `${dx} nach rechts` : `${-dx} nach links`
+      const obenUnten = dy >= 0 ? `${dy} nach oben` : `${-dy} nach unten`
+      const accepted = pairAnswerAccepted(tx, ty)
+      return textTask({
+        question: `Eine Figur wird um ${rechtsLinks} und ${obenUnten} verschoben. Wohin gelangt der Punkt (${x}|${y})? Gib x; y an.`,
+        accepted,
+        solution: `${tx}; ${ty}`,
+        explanation: `Neues x = ${x} + (${dx}) = ${tx}, neues y = ${y} + (${dy}) = ${ty}. Der Bildpunkt ist (${tx}|${ty}).`,
+      })
+    },
+  ),
+}
+
 // ---------------------------------------------------------------------------
 // Lernbereich 4 — Rechtecke und Quader
 // ---------------------------------------------------------------------------
@@ -1739,7 +1884,7 @@ export const klasse5: Grade = {
       id: 'lb3',
       title: 'Lagebeziehungen geometrischer Objekte',
       ustd: 22,
-      topics: [winkelarten, winkelErgaenzung],
+      topics: [winkelarten, winkelErgaenzung, verschiebungFormen],
     },
     {
       id: 'lb4',

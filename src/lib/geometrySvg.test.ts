@@ -11,6 +11,8 @@ import {
   generateLShapeSvg,
   generateUShapeSvg,
   generateCompositeCuboidSvg,
+  generateCoordinateGridSvg,
+  generateTranslationSvg,
 } from './geometrySvg'
 
 describe('geometrySvg', () => {
@@ -223,6 +225,68 @@ describe('geometrySvg', () => {
       expect(svg).toContain('6 cm')
       expect(svg).toContain('4 cm')
       expect(svg).toContain('3 cm')
+    })
+  })
+
+  describe('generateCoordinateGridSvg', () => {
+    it('generates a labeled grid with axes and points', () => {
+      const svg = generateCoordinateGridSvg({
+        xRange: [-1, 5],
+        yRange: [-1, 5],
+        points: [{ x: 2, y: 3, label: 'P' }],
+        polygons: [{ points: [[1, 1], [3, 1], [2, 3]], fill: '#90caf9', stroke: '#1565c0' }],
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('>x</text>')
+      expect(svg).toContain('>y</text>')
+      expect(svg).toContain('>P</text>')
+      expect(svg).toContain('<polygon')
+      expect(svg).toContain('<circle')
+    })
+
+    it('draws unit tick labels', () => {
+      const svg = generateCoordinateGridSvg({
+        xRange: [0, 3],
+        yRange: [0, 3],
+      })
+      expect(svg).toContain('>1</text>')
+      expect(svg).toContain('>2</text>')
+      expect(svg).toContain('>3</text>')
+    })
+  })
+
+  describe('generateTranslationSvg', () => {
+    it('shows original and translated polygons with arrows', () => {
+      const svg = generateTranslationSvg({
+        points: [[1, 1], [3, 1], [2, 3]],
+        dx: 2,
+        dy: 1,
+        showArrows: true,
+        showTranslated: true,
+        xRange: [-1, 7],
+        yRange: [-1, 6],
+      })
+      expect(svg).toContain('<svg')
+      expect((svg.match(/<polygon/g) ?? []).length).toBeGreaterThanOrEqual(2)
+      expect(svg).toContain("F'")
+      expect(svg).toContain('transArrow')
+      expect(svg).toContain('<line')
+    })
+
+    it('can hide the translated figure', () => {
+      const svg = generateTranslationSvg({
+        points: [[0, 0], [2, 0], [1, 2]],
+        dx: 3,
+        dy: 2,
+        showTranslated: false,
+        showArrows: true,
+        singleVectorArrow: true,
+        xRange: [-1, 6],
+        yRange: [-1, 5],
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).not.toContain("F'")
+      expect(svg).toContain('transArrow')
     })
   })
 })
