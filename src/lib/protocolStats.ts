@@ -14,6 +14,12 @@ import type {
 
 export type { ClassPointSummary } from '../classCode/buckets'
 
+export interface MonthlyBreakdown {
+  month: string // YYYY-MM
+  label: string // z.B. "Januar 2026"
+  points: number
+}
+
 const asPoints = (value: unknown): number =>
   typeof value === 'number' && Number.isFinite(value) && value > 0 ? value : 0
 
@@ -48,6 +54,50 @@ export function summarizeSessions(
   now: Date | number = Date.now(),
 ): ClassPointSummary {
   return summarizePointItems(sessions, now)
+}
+
+const MONTH_NAMES_DE = [
+  'Januar',
+  'Februar',
+  'März',
+  'April',
+  'Mai',
+  'Juni',
+  'Juli',
+  'August',
+  'September',
+  'Oktober',
+  'November',
+  'Dezember',
+]
+
+function monthLabel(monthKey: string): string {
+  const [year, month] = monthKey.split('-')
+  const monthNum = parseInt(month, 10)
+  if (!year || !monthNum || monthNum < 1 || monthNum > 12) return monthKey
+  return `${MONTH_NAMES_DE[monthNum - 1]} ${year}`
+}
+
+/** Build monthly history from sessions, sorted newest first. */
+export function buildMonthlyHistory(
+  items: Array<{ date: number; points: number }>,
+): MonthlyBreakdown[] {
+  const byMonth = new Map<string, number>()
+  for (const item of items) {
+    const date = asDate(item.date)
+    const points = asPoints(item.points)
+    if (date == null || !points) continue
+    const dayKey = berlinDayKey(date)
+    const month = dayKey.slice(0, 7) // YYYY-MM
+    byMonth.set(month, (byMonth.get(month) ?? 0) + points)
+  }
+  return [...byMonth.entries()]
+    .map(([month, points]) => ({
+      month,
+      label: monthLabel(month),
+      points,
+    }))
+    .sort((a, b) => b.month.localeCompare(a.month))
 }
 
 export interface ClassTransferGroup {

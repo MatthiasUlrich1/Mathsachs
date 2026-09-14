@@ -52,8 +52,10 @@ import {
   summarizeClassTransfers,
   summarizeSessions,
   visibleProtocolTransfers,
+  buildMonthlyHistory,
   type ClassPointSummary,
   type ClassTransferTotals,
+  type MonthlyBreakdown,
 } from './protocolStats'
 
 export type {
@@ -999,6 +1001,7 @@ export interface Protocol {
   rows: ProtocolRow[]
   period: ClassPointSummary
   transfers: ClassTransferTotals
+  monthlyHistory: MonthlyBreakdown[]
 }
 
 export interface ChallengeProtocolReport extends Protocol {
@@ -1047,6 +1050,7 @@ export const buildProtocol = (
       now,
       [...settings.created, ...(settings.known ?? [])],
     ),
+    monthlyHistory: buildMonthlyHistory(data.sessions),
   }
 }
 
@@ -1130,6 +1134,7 @@ export const buildChallengeProtocol = (
     // Zeitraum is sessions only — never add class transfers (same practice, second row).
     period: summarizeSessions(sessions, now),
     transfers,
+    monthlyHistory: buildMonthlyHistory(sessions),
     transferredPoints: transfers.summary.total,
     ...(typeof threshold === 'number' ? { classThreshold: threshold } : {}),
   }

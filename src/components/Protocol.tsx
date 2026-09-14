@@ -146,6 +146,31 @@ export function Protocol({ user, onExit }: Props) {
           <PeriodStats summary={protocol.period} />
         </section>
 
+        {protocol.monthlyHistory.length > 0 && (
+          <section className="protocol-monthly">
+            <h3>Punkte pro Monat</h3>
+            <p className="muted small">
+              Historische Übersicht deiner monatlichen Punkte auf diesem Gerät.
+            </p>
+            <table className="protocol-table">
+              <thead>
+                <tr>
+                  <th>Monat</th>
+                  <th>Punkte</th>
+                </tr>
+              </thead>
+              <tbody>
+                {protocol.monthlyHistory.map((month) => (
+                  <tr key={month.month}>
+                    <td>{month.label}</td>
+                    <td>{month.points}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </section>
+        )}
+
         <section className="protocol-transfers">
           <h3>An die Klasse übertragen</h3>
           {transferTotal === 0 ? (
