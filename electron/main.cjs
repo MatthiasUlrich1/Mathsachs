@@ -224,6 +224,32 @@ function registerUpdateIpc() {
   ipcMain.handle('lan:status', () => lanStatus)
 }
 
+/**
+ * Registers the print IPC handler.
+ * Opens a standalone BrowserWindow from the main process so that it works even
+ * when window.open() is blocked by the renderer's setWindowOpenHandler.
+ */
+function registerPrintIpc() {
+  ipcMain.handle('print:openWindow', async (_event, html) => {
+    if (typeof html !== 'string') return
+    const printWin = new BrowserWindow({
+      width: 860,
+      height: 700,
+      title: 'Mathsachs – Drucken',
+      backgroundColor: '#ffffff',
+      webPreferences: {
+        contextIsolation: true,
+        nodeIntegration: false,
+      },
+    })
+    printWin.setMenuBarVisibility(false)
+    // Load the HTML via a data URI so no file-system access is needed.
+    await printWin.loadURL(
+      `data:text/html;charset=utf-8,${encodeURIComponent(html)}`,
+    )
+  })
+}
+
 function broadcastSharedState(state) {
   for (const win of BrowserWindow.getAllWindows()) {
     win.webContents.send('storage:changed', state)
@@ -253,6 +279,7 @@ app.whenReady().then(async () => {
   setupAutoUpdater()
   registerUpdateIpc()
   registerStorageIpc()
+  registerPrintIpc()
   await startDesktopLanServer()
   createWindow()
 

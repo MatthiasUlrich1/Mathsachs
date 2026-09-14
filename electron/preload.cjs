@@ -9,6 +9,7 @@ contextBridge.exposeInMainWorld('mathsachs', {
   downloadUpdate: () => ipcRenderer.invoke('updates:download'),
   installUpdate: () => ipcRenderer.invoke('updates:install'),
   openExternal: (url) => ipcRenderer.invoke('updates:openExternal', url),
+  openPrintWindow: (html) => ipcRenderer.invoke('print:openWindow', html),
   getLanStatus: () => ipcRenderer.invoke('lan:status'),
   loadSharedState: () => ipcRenderer.invoke('storage:load'),
   saveSharedState: (state) => ipcRenderer.invoke('storage:save', state),

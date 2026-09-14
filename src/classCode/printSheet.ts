@@ -4,11 +4,33 @@ import { formatClassCode } from './code'
  * Öffnet ein neues Fenster mit einem druckfertigen Blatt mit 30 Code-Zetteln.
  * Jede Zeile in `rows` erzeugt eine eigene Seite mit 30 Kopien dieses Codes.
  * Das Blatt ist zum Ausschneiden gedacht – jeder Schüler bekommt einen Zettel.
+ *
+ * In der Electron-Desktop-App wird ein neues BrowserWindow über den IPC-Kanal
+ * `print:openWindow` geöffnet, weil `window.open()` dort durch den
+ * `setWindowOpenHandler` blockiert wird.
+ * Im Browser wird wie gewohnt `window.open` + `document.write` verwendet.
  */
 export function openCodePrintWindow(rows: { code: string; name: string }[]): void {
+  const html = buildHtml(rows)
+
+  // Electron-Pfad: window.mathsachs ist die IPC-Bridge aus preload.cjs
+  if (window.mathsachs?.openPrintWindow) {
+    void window.mathsachs.openPrintWindow(html)
+    return
+  }
+
+  // Browser-Fallback
   const win = window.open('', '_blank', 'width=860,height=700')
   if (!win) return
+  win.document.write(html)
+  win.document.close()
+}
 
+// ---------------------------------------------------------------------------
+// HTML-Generierung
+// ---------------------------------------------------------------------------
+
+function buildHtml(rows: { code: string; name: string }[]): string {
   const pages = rows
     .map((row, i) => {
       const page = buildPage(row.code, row.name)
@@ -19,11 +41,11 @@ export function openCodePrintWindow(rows: { code: string; name: string }[]): voi
     })
     .join('\n')
 
-  win.document.write(`<!DOCTYPE html>
+  return `<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <title>Mathsachs – Klassencode drucken</title>
+  <title>Mathsachs \u2013 Klassencode drucken</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: Arial, Helvetica, sans-serif; background: #fff; color: #000; }
@@ -122,18 +144,13 @@ export function openCodePrintWindow(rows: { code: string; name: string }[]): voi
 </head>
 <body>
 <div class="toolbar">
-  <button onclick="window.print()">🖨️&nbsp; Drucken</button>
-  <span>Tipp: Seitenränder auf „Keine" setzen und Hochformat wählen für das beste Ergebnis.</span>
+  <button onclick="window.print()">\uD83D\uDDA8\uFE0F&nbsp; Drucken</button>
+  <span>Tipp: Seitenr\u00e4nder auf \u201eKeine\u201c setzen und Hochformat w\u00e4hlen f\u00fcr das beste Ergebnis.</span>
 </div>
 ${pages}
 </body>
-</html>`)
-  win.document.close()
+</html>`
 }
-
-// ---------------------------------------------------------------------------
-// Hilfsfunktionen
-// ---------------------------------------------------------------------------
 
 function buildPage(code: string, name: string): string {
   const formatted = formatClassCode(code)

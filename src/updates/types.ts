@@ -78,6 +78,8 @@ export interface MathsachsDesktop {
   downloadUpdate: () => Promise<DesktopDownloadResult>
   installUpdate: () => Promise<void>
   openExternal: (url: string) => Promise<void>
+  /** Opens an HTML string in a new Electron BrowserWindow (for print preview). */
+  openPrintWindow: (html: string) => Promise<void>
   getLanStatus: () => Promise<LanServerStatus>
   loadSharedState: () => Promise<SharedState>
   saveSharedState: (state: SharedState) => Promise<SharedState>

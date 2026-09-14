@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.46] – 2026-09-14
+
+### Behoben
+- **Klassencode-Druck und Stufendruck funktionieren wieder** in der Desktop-App.
+  `window.open()` wird in Electron durch den `setWindowOpenHandler` blockiert –
+  das Druckfenster öffnete sich deshalb gar nicht. Der Druck wird jetzt über
+  einen eigenen IPC-Kanal (`print:openWindow`) als neues `BrowserWindow` aus
+  dem Main-Prozess heraus geöffnet. Der Browser-Fallback (z. B. im Web) nutzt
+  weiterhin `window.open`.
+
 ## [0.1.45] – 2026-09-14
 
 ### Behoben
