@@ -372,13 +372,13 @@ const sachaufgabeBruch: Topic = {
     const gesamt = d * randInt(rng, 3, 10)
     const value = (n / d) * gesamt
     const ctx = pick(rng, [
-      { text: (g: number, nn: number, dd: number, v: number) =>
+      { text: (g: number, nn: number, dd: number) =>
           `Eine Klasse hat ${g} Schüler. ${nn}/${dd} der Klasse nehmen am Chor teil. Wie viele Schüler singen im Chor?`,
         unit: '' },
-      { text: (g: number, nn: number, dd: number, v: number) =>
+      { text: (g: number, nn: number, dd: number) =>
           `In einem Behälter sind ${g} Liter Wasser. ${nn}/${dd} davon werden verbraucht. Wie viele Liter wurden verbraucht?`,
         unit: 'Liter' },
-      { text: (g: number, nn: number, dd: number, v: number) =>
+      { text: (g: number, nn: number, dd: number) =>
           `Ein Weg ist ${g} km lang. ${nn}/${dd} des Weges wurden bereits zurückgelegt. Wie viele km wurden zurückgelegt?`,
         unit: 'km' },
     ])
