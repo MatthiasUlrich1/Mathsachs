@@ -2,6 +2,26 @@ import type { Rng } from '../lib/rng'
 
 export type AnswerKind = 'integer' | 'decimal' | 'fraction' | 'text'
 
+/**
+ * Fachliches Basiswissen zu einem Thema.
+ * Text ist eine eigene Formulierung (mathematische Fakten unterliegen
+ * keinem Urheberrecht). Quellenangaben verweisen auf weiterführende Literatur.
+ */
+export interface Fachwissen {
+  /** Kompakte Erklärung des mathematischen Themas (2–5 Sätze). */
+  text: string
+  /**
+   * Titel der zitierten Quelle, z. B. „Wikipedia: Bruchrechnung".
+   * Wird in der Benutzeroberfläche als „Quelle" angezeigt.
+   */
+  quelle?: string
+  /**
+   * URL zu einer weiterführenden Quelle (z. B. Wikipedia CC BY-SA 4.0).
+   * Der Link öffnet sich in einem neuen Tab.
+   */
+  url?: string
+}
+
 /** What the learner typed, depending on the input widget shown. */
 export type UserInput =
   | { kind: 'value'; value: string }
@@ -44,6 +64,16 @@ export interface Topic {
   extraId?: string
   /** Official Lerninhalt without a practice generator yet. */
   outlineOnly?: boolean
+  /**
+   * Fachliches Basiswissen zu diesem Thema (eigene Formulierung).
+   * Wird dem Lernenden als Wissensbox angezeigt.
+   */
+  fachwissen?: Fachwissen
+  /**
+   * Schwierigkeitsgrad: 1 = Basis, 2 = Standard, 3 = Erweiterung.
+   * Gibt einen Hinweis auf die Komplexität der erzeugten Aufgaben.
+   */
+  difficulty?: 1 | 2 | 3
   generate: (rng: Rng) => Task
 }
 

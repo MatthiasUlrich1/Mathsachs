@@ -12,7 +12,13 @@ const zinsen: Topic = {
   title: 'Jahreszinsen berechnen',
   hint: 'Z = K · p : 100.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['Zinsen', 'Zinsrechnung', 'Kapital', 'Prozent', 'Prozentsatz'],
+  fachwissen: {
+    text: 'Zinsen sind die Vergütung für das Verleihen von Kapital. Die Jahreszinsen berechnen sich als Z = K · p / 100, wobei K das Kapital und p der Zinssatz in Prozent ist. In der Praxis spielen Zinsen bei Sparguthaben, Krediten und Anleihen eine zentrale Rolle.',
+    quelle: 'Wikipedia: Zinsrechnung',
+    url: 'https://de.wikipedia.org/wiki/Zinsrechnung',
+  },
   generate: (rng: Rng) => {
     const k = randInt(rng, 2, 40) * 100
     const p = pick(rng, [1, 2, 3, 4, 5, 8, 10])
@@ -33,7 +39,13 @@ const zinseszins: Topic = {
   title: 'Zinseszins: Endkapital',
   hint: 'Kₙ = K₀ · (1 + p/100)ⁿ.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Zinseszins', 'Endkapital', 'Zinsrechnung', 'exponentiell', 'Kapital'],
+  fachwissen: {
+    text: 'Beim Zinseszins werden die Zinsen zum Kapital hinzugefügt und im nächsten Jahr mitverzinst. Das führt zu exponentiellem Wachstum: Kₙ = K₀ · (1 + p/100)ⁿ. Einstein soll den Zinseszins als „achtes Weltwunder" bezeichnet haben – schon kleine Zinssätze führen über lange Zeiträume zu erheblichem Wachstum.',
+    quelle: 'Wikipedia: Zinseszins',
+    url: 'https://de.wikipedia.org/wiki/Zinseszins',
+  },
   generate: (rng: Rng) => {
     const k0 = randInt(rng, 5, 50) * 100
     const p = pick(rng, [2, 3, 4, 5])
@@ -57,7 +69,13 @@ const prozentualeZunahme: Topic = {
   title: 'Prozentuale Zunahme',
   hint: 'Neuer Wert = alter Wert · (1 + p/100).',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['prozentuale Zunahme', 'Wachstum', 'Prozent', 'Erhöhung', 'Zunahme'],
+  fachwissen: {
+    text: 'Eine prozentuale Zunahme um p% bedeutet: neuer Wert = alter Wert · (1 + p/100). Entsprechend gilt bei einer Abnahme: neuer Wert = alter Wert · (1 − p/100). Wichtig: 20% Rabatt und dann 20% Aufschlag ergibt nicht wieder den Ausgangspreis – Prozentrechnung ist nicht einfach umkehrbar.',
+    quelle: 'Wikipedia: Prozentrechnung',
+    url: 'https://de.wikipedia.org/wiki/Prozentrechnung',
+  },
   generate: (rng: Rng) => {
     const start = randInt(rng, 2, 40) * 50
     const p = pick(rng, [10, 20, 25, 50])
@@ -78,7 +96,13 @@ const expWachstum: Topic = {
   title: 'Exponentielles Wachstum',
   hint: 'Bestand = Anfang · Faktorⁿ.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['exponentielles Wachstum', 'Verdopplung', 'Wachstumsfaktor', 'Bakterien'],
+  fachwissen: {
+    text: 'Exponentielles Wachstum liegt vor, wenn eine Größe in gleichen Zeitabständen mit einem konstanten Faktor q multipliziert wird: f(n) = a · qⁿ. Bei q > 1 wächst sie, bei 0 < q < 1 nimmt sie ab (exponentieller Zerfall). Beispiele: Bakterienwachstum, Radioaktivität, Bevölkerungswachstum, Zinseszins.',
+    quelle: 'Wikipedia: Exponentielles Wachstum',
+    url: 'https://de.wikipedia.org/wiki/Exponentielles_Wachstum',
+  },
   generate: (rng: Rng) => {
     const start = randInt(rng, 2, 20)
     const factor = pick(rng, [2, 3])
@@ -103,7 +127,13 @@ const erwartungswert: Topic = {
   title: 'Erwartungswert eines Glücksrads',
   hint: 'E(X) = Σ Auszahlung · Wahrscheinlichkeit.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Erwartungswert', 'Zufallsgröße', 'Glücksrad', 'Wahrscheinlichkeit', 'E(X)'],
+  fachwissen: {
+    text: 'Der Erwartungswert E(X) einer diskreten Zufallsgröße X ist der gewichtete Mittelwert aller möglichen Werte: E(X) = Σ xᵢ · P(X=xᵢ). Er gibt an, welchen Wert man im Durchschnitt bei vielen Wiederholungen des Zufallsexperiments erwartet. Ein faires Spiel hat E(X) = 0.',
+    quelle: 'Wikipedia: Erwartungswert',
+    url: 'https://de.wikipedia.org/wiki/Erwartungswert',
+  },
   generate: (rng: Rng) => {
     const n = pick(rng, [4, 5, 8, 10])
     const payoffs: number[] = []
@@ -131,7 +161,13 @@ const erwartungswertWuerfel: Topic = {
   title: 'Erwartungswert beim Würfel',
   hint: 'Multipliziere jede Augenzahl mit 1/6 und addiere.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Erwartungswert', 'Würfel', 'Zufallsgröße', 'Gewinn', 'Wahrscheinlichkeit'],
+  fachwissen: {
+    text: 'Beim Würfel sind alle sechs Augenzahlen gleichwahrscheinlich (P = 1/6 je). Der Erwartungswert der Augenzahl ist E(X) = (1+2+3+4+5+6)/6 = 3,5. Das Ergebnis 3,5 kann beim einmaligen Würfeln nie auftreten – der Erwartungswert ist ein theoretischer Mittelwert bei sehr vielen Wiederholungen.',
+    quelle: 'Wikipedia: Erwartungswert',
+    url: 'https://de.wikipedia.org/wiki/Erwartungswert',
+  },
   generate: (rng: Rng) => {
     // Payoff = augenzahl · faktor; E = faktor · 3,5 → keep clean by faktor even.
     const faktor = pick(rng, [2, 4, 6])
@@ -156,7 +192,13 @@ const rechteckBreite: Topic = {
   title: 'Rechteck: Breite aus Fläche',
   hint: 'b = A : a.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Rechteck', 'Flächeninhalt', 'algebraisch', 'Gleichung', 'Seite'],
+  fachwissen: {
+    text: 'Geometrische Probleme lassen sich algebraisch lösen, indem man eine Gleichung aufstellt und nach der gesuchten Größe auflöst. Bei Flächenproblemen wird aus der Flächenformel A = a · b die Breite b = A / a berechnet. Dieses Vorgehen – Formel aufstellen, umformen, Wert einsetzen – ist ein Grundmuster in der angewandten Mathematik.',
+    quelle: 'Wikipedia: Flächeninhalt',
+    url: 'https://de.wikipedia.org/wiki/Fl%C3%A4cheninhalt',
+  },
   generate: (rng: Rng) => {
     const a = randInt(rng, 3, 20)
     const b = randInt(rng, 3, 20)
@@ -177,7 +219,13 @@ const quadratSeite: Topic = {
   title: 'Quadrat: Seitenlänge aus Fläche',
   hint: 'a = √A.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['Quadrat', 'Flächeninhalt', 'Wurzel', 'Seitenlänge', 'algebraisch'],
+  fachwissen: {
+    text: 'Die Quadratwurzel √a ist die nicht-negative Zahl, deren Quadrat gleich a ist. Sie ist die Umkehrfunktion des Quadrierens (für nichtnegative Zahlen). In Geometrie: Seitenlänge eines Quadrats mit Fläche A ist a = √A. Die Quadratwurzel ist für negative Zahlen in den reellen Zahlen nicht definiert.',
+    quelle: 'Wikipedia: Quadratwurzel',
+    url: 'https://de.wikipedia.org/wiki/Quadratwurzel',
+  },
   generate: (rng: Rng) => {
     const a = randInt(rng, 2, 25)
     const area = a * a
@@ -197,7 +245,13 @@ const rechteckBreiteUmfang: Topic = {
   title: 'Rechteck: Breite aus Umfang',
   hint: 'b = U : 2 − a.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Rechteck', 'Umfang', 'algebraisch', 'Gleichung', 'Seite'],
+  fachwissen: {
+    text: 'Aus der Umfangsformel U = 2·(a+b) kann man die Breite b bestimmen, wenn Umfang und Länge bekannt sind: b = U/2 − a. Diese Art von Aufgaben – eine geometrische Größe aus einer Formel berechnen – ist ein grundlegendes algebraisches Denkmuster: Formel umformen, dann Werte einsetzen.',
+    quelle: 'Wikipedia: Umfang (Geometrie)',
+    url: 'https://de.wikipedia.org/wiki/Umfang_(Geometrie)',
+  },
   generate: (rng: Rng) => {
     const a = randInt(rng, 3, 20)
     const b = randInt(rng, 3, 20)
@@ -222,7 +276,13 @@ const reinquadratisch: Topic = {
   title: 'Reinquadratische Gleichung x² = a',
   hint: 'Positive Lösung: x = √a.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['quadratische Gleichung', 'Wurzel', 'x²', 'lösen', 'reinquadratisch'],
+  fachwissen: {
+    text: 'Eine reinquadratische Gleichung hat die Form x² = a. Sie hat für a > 0 zwei Lösungen: x = +√a und x = −√a. Für a = 0 ist x = 0 die einzige Lösung. Für a < 0 gibt es keine reellen Lösungen. In geometrischen Aufgaben ist oft nur die positive Lösung sinnvoll.',
+    quelle: 'Wikipedia: Quadratische Gleichung',
+    url: 'https://de.wikipedia.org/wiki/Quadratische_Gleichung',
+  },
   generate: (rng: Rng) => {
     const x = randInt(rng, 2, 20)
     const a = x * x
@@ -241,7 +301,13 @@ const quadratischGleichung: Topic = {
   title: 'Quadratische Gleichung (größere Lösung)',
   hint: 'Faktorisiere: (x − x₁)(x − x₂) = 0.',
   pointsPerTask: 10,
+  difficulty: 3,
   keywords: ['quadratische Gleichung', 'Nullstellen', 'faktorisieren', 'Satz von Vieta', 'lösen'],
+  fachwissen: {
+    text: 'Eine quadratische Gleichung x² + px + q = 0 hat (nach dem Satz von Vieta) bis zu zwei Lösungen x₁ und x₂ mit x₁ + x₂ = −p und x₁ · x₂ = q. Lösungsformeln: Mitternachtsformel x = (−p ± √(p²−4q)) / 2, oder Faktorisierung (x−x₁)(x−x₂) = 0, oder quadratische Ergänzung.',
+    quelle: 'Wikipedia: Quadratische Gleichung',
+    url: 'https://de.wikipedia.org/wiki/Quadratische_Gleichung',
+  },
   generate: (rng: Rng) => {
     let r1 = randInt(rng, -8, 8)
     let r2 = randInt(rng, -8, 8)
@@ -266,7 +332,13 @@ const parabelWert: Topic = {
   title: 'Funktionswert einer Parabel',
   hint: 'Setze x in f(x) = a·x² + c ein.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Parabel', 'quadratische Funktion', 'Funktionswert', 'einsetzen'],
+  fachwissen: {
+    text: 'Die einfachste Parabel ist f(x) = x² (Normalparabel). Durch den Faktor a wird sie gestreckt (|a|>1) oder gestaucht (|a|<1), bei negativem a gespiegelt. Der Parameter c verschiebt die Parabel vertikal. Parabeln beschreiben z. B. den Wurfparabel (ohne Luftwiderstand) und optische Reflektoren.',
+    quelle: 'Wikipedia: Parabel (Mathematik)',
+    url: 'https://de.wikipedia.org/wiki/Parabel_(Mathematik)',
+  },
   generate: (rng: Rng) => {
     const a = pick(rng, [-2, -1, 1, 2, 3])
     const c = randInt(rng, -8, 8)
@@ -292,7 +364,13 @@ const kapitalAusZinsen: Topic = {
   title: 'Kapital aus Zinsen bestimmen',
   hint: 'K = Z · 100 : p.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Zinsrechnung', 'Kapital', 'Zinsen', 'Prozentsatz', 'Grundwert'],
+  fachwissen: {
+    text: 'In der Zinsrechnung gibt es drei Grundgrößen: Kapital K, Zinssatz p (%) und Zinsen Z. Aus Z = K · p / 100 lassen sich die anderen Größen ableiten: K = Z · 100 / p und p = Z · 100 / K. Dieses Dreieck aus Grundwert, Prozentwert und Prozentsatz ist ein fundamentales Muster der Prozentrechnung.',
+    quelle: 'Wikipedia: Zinsrechnung',
+    url: 'https://de.wikipedia.org/wiki/Zinsrechnung',
+  },
   generate: (rng: Rng) => {
     const k = randInt(rng, 2, 40) * 100
     const p = pick(rng, [1, 2, 4, 5, 10])
@@ -313,7 +391,13 @@ const zinssatz: Topic = {
   title: 'Zinssatz bestimmen',
   hint: 'p = Z · 100 : K.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Zinsrechnung', 'Zinssatz', 'Prozentsatz', 'Zinsen', 'Kapital'],
+  fachwissen: {
+    text: 'Den Zinssatz ermittelt man aus bekanntem Kapital und bekannten Zinsen: p = Z · 100 / K. Diese Umkehrung der Zinsformel ist im Alltag wichtig, wenn man Konditionen von Geldanlagen oder Krediten vergleichen möchte. Ein höherer Zinssatz bedeutet pro Kapitaleinheit mehr Zinsen.',
+    quelle: 'Wikipedia: Zinsrechnung',
+    url: 'https://de.wikipedia.org/wiki/Zinsrechnung',
+  },
   generate: (rng: Rng) => {
     const k = randInt(rng, 2, 40) * 100
     const p = pick(rng, [1, 2, 3, 4, 5, 8, 10])

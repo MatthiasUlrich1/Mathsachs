@@ -24,6 +24,12 @@ const kuerzen: Topic = {
   title: 'Brüche kürzen',
   hint: 'Gib den vollständig gekürzten Bruch ein.',
   pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Einen Bruch kürzen bedeutet, Zähler und Nenner durch denselben Teiler zu dividieren, ohne den Wert zu ändern. Ein Bruch ist vollständig gekürzt, wenn Zähler und Nenner keinen gemeinsamen Teiler außer 1 mehr besitzen. Den größten gemeinsamen Teiler (ggT) bestimmt man durch sukzessives Teilen oder Primfaktorzerlegung.',
+    quelle: 'Wikipedia: Bruchrechnung',
+    url: 'https://de.wikipedia.org/wiki/Bruchrechnung',
+  },
   generate: (rng: Rng) => {
     const base = makeFraction(randInt(rng, 1, 8), randInt(rng, 2, 9))
     const k = randInt(rng, 2, 6)
@@ -45,6 +51,12 @@ const erweitern: Topic = {
   title: 'Brüche erweitern',
   hint: 'Gib den gesuchten Zähler ein.',
   pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Einen Bruch erweitern bedeutet, Zähler und Nenner mit derselben Zahl (≠ 0) zu multiplizieren. Der Wert des Bruchs ändert sich dabei nicht (man multipliziert mit k/k = 1). Erweitern wird benötigt, um Brüche auf einen gemeinsamen Nenner zu bringen und sie dadurch addieren oder vergleichen zu können.',
+    quelle: 'Wikipedia: Bruchrechnung',
+    url: 'https://de.wikipedia.org/wiki/Bruchrechnung',
+  },
   generate: (rng: Rng) => {
     const n = randInt(rng, 1, 6)
     const d = randInt(rng, 2, 8)
@@ -64,6 +76,12 @@ const vergleichen: Topic = {
   title: 'Brüche vergleichen',
   hint: 'Gib <, > oder = ein.',
   pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Um zwei Brüche zu vergleichen, bringt man sie auf einen gemeinsamen Nenner und vergleicht dann die Zähler. Das kleinste gemeinsame Vielfache (kgV) der Nenner ist der günstigste gemeinsame Nenner. Alternativ kann man beide Brüche in Dezimalzahlen umwandeln und dann vergleichen.',
+    quelle: 'Wikipedia: Bruchrechnung',
+    url: 'https://de.wikipedia.org/wiki/Bruchrechnung',
+  },
   generate: (rng: Rng) => {
     const a = makeFraction(randInt(rng, 1, 9), randInt(rng, 2, 9))
     const b = makeFraction(randInt(rng, 1, 9), randInt(rng, 2, 9))
@@ -85,6 +103,12 @@ const addSubBrueche: Topic = {
   title: 'Brüche addieren und subtrahieren',
   hint: 'Gib das Ergebnis als gekürzten Bruch ein.',
   pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Brüche addiert und subtrahiert man, indem man sie zuerst auf einen gemeinsamen Nenner bringt (Erweitern). Dann werden nur die Zähler addiert oder subtrahiert; der gemeinsame Nenner bleibt unverändert. Das Ergebnis wird anschließend vollständig gekürzt.',
+    quelle: 'Wikipedia: Bruchrechnung',
+    url: 'https://de.wikipedia.org/wiki/Bruchrechnung',
+  },
   generate: (rng: Rng) => {
     const a = makeFraction(randInt(rng, 1, 6), randInt(rng, 2, 8))
     const b = makeFraction(randInt(rng, 1, 6), randInt(rng, 2, 8))
@@ -108,6 +132,12 @@ const multBrueche: Topic = {
   title: 'Brüche multiplizieren',
   hint: 'Gib das Ergebnis als gekürzten Bruch ein.',
   pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Brüche multipliziert man, indem man Zähler mal Zähler und Nenner mal Nenner rechnet. Es lohnt sich, vor dem Multiplizieren zu kürzen (kreuzweise Kürzung), um mit kleineren Zahlen zu arbeiten. Das Produkt zweier Brüche ist kleiner als beide Faktoren (wenn beide echte Brüche sind).',
+    quelle: 'Wikipedia: Bruchrechnung',
+    url: 'https://de.wikipedia.org/wiki/Bruchrechnung',
+  },
   generate: (rng: Rng) => {
     const a = makeFraction(randInt(rng, 1, 7), randInt(rng, 2, 8))
     const b = makeFraction(randInt(rng, 1, 7), randInt(rng, 2, 8))
@@ -126,6 +156,12 @@ const divBrueche: Topic = {
   title: 'Brüche dividieren',
   hint: 'Dividieren heißt mit dem Kehrwert multiplizieren.',
   pointsPerTask: 10,
+  difficulty: 2,
+  fachwissen: {
+    text: 'Durch einen Bruch dividieren bedeutet, mit dem Kehrwert dieses Bruchs zu multiplizieren: a/b ÷ c/d = a/b · d/c. Den Kehrwert erhält man durch Vertauschen von Zähler und Nenner. Diese Regel folgt daraus, dass das Produkt eines Bruchs mit seinem Kehrwert stets 1 ergibt.',
+    quelle: 'Wikipedia: Kehrwert',
+    url: 'https://de.wikipedia.org/wiki/Kehrwert',
+  },
   generate: (rng: Rng) => {
     const a = makeFraction(randInt(rng, 1, 7), randInt(rng, 2, 8))
     const b = makeFraction(randInt(rng, 1, 7), randInt(rng, 2, 8))
@@ -144,6 +180,12 @@ const bruchZuDezimal: Topic = {
   title: 'Brüche in Dezimalzahlen umwandeln',
   hint: 'Nutze das Komma als Dezimaltrennzeichen.',
   pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Jeden Bruch p/q kann man in eine Dezimalzahl umwandeln, indem man p durch q dividiert. Enthält der gekürzte Nenner nur die Primfaktoren 2 und 5, entsteht eine endliche Dezimalzahl (z. B. 3/4 = 0,75). Andernfalls entsteht eine periodische Dezimalzahl mit einem sich wiederholenden Block.',
+    quelle: 'Wikipedia: Dezimalbruch',
+    url: 'https://de.wikipedia.org/wiki/Dezimalbruch',
+  },
   generate: (rng: Rng) => {
     const denom = pick(rng, [2, 4, 5, 8, 10, 20, 25])
     const n = randInt(rng, 1, denom - 1)
@@ -164,6 +206,12 @@ const prozentUmwandeln: Topic = {
   title: 'In Prozent umwandeln',
   hint: 'Gib nur die Zahl vor dem Prozentzeichen ein.',
   pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Prozent bedeutet „von Hundert" (lateinisch: per centum). Der Prozentsatz p% entspricht dem Bruch p/100 oder der Dezimalzahl p/100. Zur Umwandlung eines Bruchs in Prozent erweitert man auf den Nenner 100 oder multipliziert den Dezimalwert mit 100. Beispiel: 3/4 = 75/100 = 75 %.',
+    quelle: 'Wikipedia: Prozentrechnung',
+    url: 'https://de.wikipedia.org/wiki/Prozentrechnung',
+  },
   generate: (rng: Rng) => {
     if (rng() < 0.5) {
       const denom = pick(rng, [2, 4, 5, 10, 20, 25, 50])
@@ -197,6 +245,12 @@ const dezAddSub: Topic = {
   title: 'Dezimalzahlen addieren und subtrahieren',
   hint: 'Achte auf die Ausrichtung des Kommas.',
   pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Dezimalzahlen werden addiert und subtrahiert, indem man sie kommagerecht untereinanderschreibt und stellenweise rechnet. Stellen hinter dem Komma (Zehntel, Hundertstel, …) folgen dem gleichen Prinzip wie ganze Stellen. Fehlende Dezimalstellen kann man mit Nullen auffüllen, ohne den Wert zu ändern.',
+    quelle: 'Wikipedia: Dezimalzahl',
+    url: 'https://de.wikipedia.org/wiki/Dezimalzahl',
+  },
   generate: (rng: Rng) => {
     const a = randInt(rng, 10, 999) / 10
     const b = randInt(rng, 10, 999) / 10
@@ -218,6 +272,12 @@ const dezMult: Topic = {
   title: 'Dezimalzahlen multiplizieren',
   hint: 'Mit natürlichen Zahlen oder Zehnerpotenzen.',
   pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Dezimalzahlen werden wie natürliche Zahlen multipliziert; anschließend wird das Komma so gesetzt, dass die Gesamtanzahl der Nachkommastellen beider Faktoren stimmt. Beim Multiplizieren mit 10, 100, 1000 … verschiebt sich das Komma um 1, 2, 3 … Stellen nach rechts.',
+    quelle: 'Wikipedia: Dezimalzahl',
+    url: 'https://de.wikipedia.org/wiki/Dezimalzahl',
+  },
   generate: (rng: Rng) => {
     const a = randInt(rng, 11, 249) / 10
     const factor = pick(rng, [2, 3, 4, 5, 6, 10, 100])
@@ -241,6 +301,12 @@ const dezDiv: Topic = {
   title: 'Dezimalzahlen dividieren',
   hint: 'Durch natürliche Zahlen oder Zehnerpotenzen.',
   pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Beim Dividieren einer Dezimalzahl durch eine natürliche Zahl teilt man wie bei ganzen Zahlen und setzt das Komma im Ergebnis korrekt. Beim Dividieren durch 10, 100, 1000 … verschiebt sich das Komma um 1, 2, 3 … Stellen nach links.',
+    quelle: 'Wikipedia: Dezimalzahl',
+    url: 'https://de.wikipedia.org/wiki/Dezimalzahl',
+  },
   generate: (rng: Rng) => {
     const divisor = pick(rng, [2, 4, 5, 10, 100])
     const quotient = randInt(rng, 11, 199) / 10
@@ -264,6 +330,12 @@ const runden: Topic = {
   title: 'Dezimalzahlen runden',
   hint: 'Ist die nächste Ziffer 5 oder größer, wird aufgerundet.',
   pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Dezimalzahlen rundet man auf eine bestimmte Anzahl von Nachkommastellen. Entscheidend ist die Ziffer rechts der Rundungsstelle: Ist sie 0–4, bleibt die Rundungsstelle gleich; ist sie 5–9, wird aufgerundet. Runden auf zwei Dezimalstellen entspricht dem kaufmännischen Runden auf Cent-Beträge.',
+    quelle: 'Wikipedia: Runden (Mathematik)',
+    url: 'https://de.wikipedia.org/wiki/Runden_(Mathematik)',
+  },
   generate: (rng: Rng) => {
     const value = randInt(rng, 1000, 99999) / 1000
     const places = pick(rng, [0, 1, 2])
@@ -280,6 +352,48 @@ const runden: Topic = {
   },
 }
 
+// --- NEW: Sachaufgabe Bruchrechnung ------------------------------------------
+
+const sachaufgabeBruch: Topic = {
+  id: 'lb1-sachaufgabe-bruch',
+  title: 'Sachaufgabe: Bruchrechnung im Alltag',
+  hint: 'Lies die Aufgabe genau. Welcher Bruch wird gesucht? Dann rechne.',
+  pointsPerTask: 10,
+  difficulty: 2,
+  keywords: ['Sachaufgabe', 'Bruch', 'Anteil', 'Alltag'],
+  fachwissen: {
+    text: 'In Sachaufgaben zur Bruchrechnung muss man den Kontext verstehen und die passende Rechenoperation auswählen. Geht es um einen Anteil eines Ganzen, wird mit dem Bruch multipliziert. Geht es um den Vergleich zweier Mengen, werden Brüche auf einen gemeinsamen Nenner gebracht. Das Ergebnis muss stets auf seine Plausibilität geprüft werden.',
+    quelle: 'Wikipedia: Bruchrechnung',
+    url: 'https://de.wikipedia.org/wiki/Bruchrechnung',
+  },
+  generate: (rng: Rng) => {
+    const d = pick(rng, [2, 3, 4, 5, 8])
+    const n = randInt(rng, 1, d - 1)
+    const gesamt = d * randInt(rng, 3, 10)
+    const value = (n / d) * gesamt
+    const context = pick(rng, [
+      { text: (g: number, nn: number, dd: number, v: number) =>
+          `Eine Klasse hat ${g} Schüler. ${nn}/${dd} der Klasse nehmen am Chor teil. Wie viele Schüler singen im Chor?`,
+        unit: '' },
+      { text: (g: number, nn: number, dd: number, v: number) =>
+          `In einem Behälter sind ${g} Liter Wasser. ${nn}/${dd} davon werden verbraucht. Wie viele Liter wurden verbraucht?`,
+        unit: 'Liter' },
+      { text: (g: number, nn: number, dd: number, v: number) =>
+          `Ein Weg ist ${g} km lang. ${nn}/${dd} des Weges wurden bereits zurückgelegt. Wie viele km wurden zurückgelegt?`,
+        unit: 'km' },
+    ])
+    const ctx = pick(rng, context)
+    return valueTask({
+      question: ctx.text(gesamt, n, d, value),
+      unit: ctx.unit || undefined,
+      answerKind: 'decimal',
+      value,
+      solution: `${formatDe(value)}${ctx.unit ? ' ' + ctx.unit : ''}`,
+      explanation: `${n}/${d} von ${gesamt}: Teile durch ${d}: ${gesamt} : ${d} = ${gesamt / d}. Dann multipliziere mit ${n}: ${gesamt / d} · ${n} = ${formatDe(value)}.`,
+    })
+  },
+}
+
 // ---------------------------------------------------------------------------
 // Lernbereich 2 — Zuordnungen in der Umwelt
 // ---------------------------------------------------------------------------
@@ -289,6 +403,12 @@ const proportional: Topic = {
   title: 'Proportionale Zuordnung (Dreisatz)',
   hint: 'Erst auf eine Einheit zurückrechnen.',
   pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Bei einer proportionalen Zuordnung wächst y proportional zu x: y = k · x (k = Proportionalitätsfaktor). Im Dreisatz rechnet man erst auf die Einheit zurück (Division) und dann zur gesuchten Menge hoch (Multiplikation). Typische Beispiele: Preisberechnung, Mengenzuordnungen, Geschwindigkeit.',
+    quelle: 'Wikipedia: Dreisatz',
+    url: 'https://de.wikipedia.org/wiki/Dreisatz',
+  },
   generate: (rng: Rng) => {
     const unit = pick(rng, ['Brötchen', 'Hefte', 'Äpfel', 'Stifte'])
     const pricePer = randInt(rng, 2, 9) / 2
@@ -312,6 +432,12 @@ const antiproportional: Topic = {
   title: 'Antiproportionale Zuordnung',
   hint: 'Mehr Personen → weniger Zeit. Produktgleichheit nutzen.',
   pointsPerTask: 10,
+  difficulty: 2,
+  fachwissen: {
+    text: 'Bei einer antiproportionalen Zuordnung sinkt eine Größe, wenn die andere steigt, so dass ihr Produkt konstant bleibt: x · y = k. Je mehr Arbeiter an einer Aufgabe arbeiten, desto weniger Zeit wird benötigt. Im Dreisatz: Gesamtarbeit = Arbeiter · Zeit = konstant.',
+    quelle: 'Wikipedia: Antiproportionalität',
+    url: 'https://de.wikipedia.org/wiki/Antiproportionalit%C3%A4t',
+  },
   generate: (rng: Rng) => {
     const workers1 = randInt(rng, 2, 6)
     const perWorker = randInt(rng, 2, 9)
@@ -337,6 +463,12 @@ const haeufigkeit: Topic = {
   title: 'Relative Häufigkeit in Prozent',
   hint: 'Relative Häufigkeit = Anzahl : Gesamt.',
   pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Die relative Häufigkeit eines Ereignisses ist der Quotient aus der Anzahl der Eintritte und der Gesamtanzahl aller Versuche. Als Prozentzahl: relative Häufigkeit × 100. Je größer die Stichprobe, desto stabiler (und vorhersagbarer) wird die relative Häufigkeit – dieses Gesetz heißt Gesetz der großen Zahlen.',
+    quelle: 'Wikipedia: Relative Häufigkeit',
+    url: 'https://de.wikipedia.org/wiki/Relative_H%C3%A4ufigkeit',
+  },
   generate: (rng: Rng) => {
     const total = pick(rng, [10, 20, 25, 40, 50, 100])
     const k = randInt(rng, 1, total - 1)
@@ -352,6 +484,35 @@ const haeufigkeit: Topic = {
   },
 }
 
+/** Mehrstufiger Dreisatz / Alltagsproblem */
+const sachaufgabeDreisatz: Topic = {
+  id: 'lb2-sachaufgabe-dreisatz',
+  title: 'Sachaufgabe: Dreisatz mit Einheiten',
+  hint: 'Zuerst den Einheitspreis oder -wert bestimmen, dann umrechnen.',
+  pointsPerTask: 10,
+  difficulty: 2,
+  keywords: ['Sachaufgabe', 'Dreisatz', 'proportional', 'Einheiten'],
+  fachwissen: {
+    text: 'Der Dreisatz löst proportionale Zusammenhänge in drei Schritten: (1) den gegebenen Wert auf die Einheit reduzieren, (2) mit der gesuchten Menge multiplizieren. Oft müssen beim Dreisatz auch Einheiten umgerechnet werden. Das Aufschreiben der Einheiten in jedem Schritt verhindert Fehler.',
+    quelle: 'Wikipedia: Dreisatz',
+    url: 'https://de.wikipedia.org/wiki/Dreisatz',
+  },
+  generate: (rng: Rng) => {
+    const preis100 = randInt(rng, 40, 200) // Preis für 100g
+    const menge = pick(rng, [250, 500, 750, 1000, 150, 300]) // in g
+    const value = roundTo((preis100 / 100) * menge, 2)
+    const artikel = pick(rng, ['Käse', 'Aufschnitt', 'Nüsse', 'Schokolade'])
+    return valueTask({
+      question: `100 g ${artikel} kosten ${preis100} Cent. Was kosten ${menge} g?`,
+      unit: 'Cent',
+      answerKind: 'decimal',
+      value,
+      solution: `${formatDe(value)} Cent`,
+      explanation: `Dreisatz: 1 g kostet ${preis100} : 100 = ${formatDe(preis100 / 100)} Cent. ${menge} g kosten ${formatDe(preis100 / 100)} · ${menge} = ${formatDe(value)} Cent.`,
+    })
+  },
+}
+
 // ---------------------------------------------------------------------------
 // Lernbereich 3 — Dreiecke und Vierecke
 // ---------------------------------------------------------------------------
@@ -361,6 +522,12 @@ const winkelDreieck: Topic = {
   title: 'Innenwinkelsatz im Dreieck',
   hint: 'Die Innenwinkel im Dreieck ergeben zusammen 180°.',
   pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Die Summe der Innenwinkel in jedem Dreieck beträgt genau 180°. Dieser Satz gilt für alle Dreiecke – spitzwinklige, rechtwinklige und stumpfwinklige. Er folgt aus der Parallelentransversalen-Eigenschaft. Mit ihm lässt sich aus zwei bekannten Winkeln stets der dritte berechnen: γ = 180° − α − β.',
+    quelle: 'Wikipedia: Dreieck',
+    url: 'https://de.wikipedia.org/wiki/Dreieck',
+  },
   generate: (rng: Rng) => {
     const a = randInt(rng, 30, 100)
     const b = randInt(rng, 20, 150 - a)
@@ -381,6 +548,12 @@ const winkelViereck: Topic = {
   title: 'Winkelsumme im Viereck',
   hint: 'Die Innenwinkel im Viereck ergeben zusammen 360°.',
   pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Die Summe der Innenwinkel in jedem (konvexen) Viereck beträgt 360°. Das lässt sich zeigen, indem man das Viereck durch eine Diagonale in zwei Dreiecke aufteilt: 2 × 180° = 360°. Für ein allgemeines n-Eck gilt: Winkelsumme = (n − 2) · 180°.',
+    quelle: 'Wikipedia: Viereck',
+    url: 'https://de.wikipedia.org/wiki/Viereck',
+  },
   generate: (rng: Rng) => {
     const a = randInt(rng, 60, 120)
     const b = randInt(rng, 60, 120)
@@ -402,6 +575,12 @@ const umfangRechteck: Topic = {
   title: 'Umfang von Rechteck und Quadrat',
   hint: 'U = 2 · (a + b).',
   pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Der Umfang eines Vielecks ist die Länge seiner Begrenzungslinie, also die Summe aller Seiten. Beim Rechteck: U = 2 · (a + b). Beim Quadrat: U = 4 · a. Der Umfang hat dieselbe Einheit wie die Seiten. Im Alltag wird der Umfang z. B. für Zaun- oder Rahmenlängen benötigt.',
+    quelle: 'Wikipedia: Umfang (Geometrie)',
+    url: 'https://de.wikipedia.org/wiki/Umfang_(Geometrie)',
+  },
   generate: (rng: Rng) => {
     const a = randInt(rng, 2, 20)
     const b = randInt(rng, 2, 20)
@@ -422,6 +601,12 @@ const flaecheRechteck: Topic = {
   title: 'Flächeninhalt von Rechteck und Quadrat',
   hint: 'A = a · b.',
   pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Der Flächeninhalt eines Rechtecks ist das Produkt aus Länge und Breite: A = a · b. Beim Quadrat gilt A = a². Flächeneinheiten sind Quadrate der Längeneinheiten: 1 m² = 10 000 cm². Der Flächeninhalt gibt an, wie viele Einheitsquadrate in eine Figur passen.',
+    quelle: 'Wikipedia: Flächeninhalt',
+    url: 'https://de.wikipedia.org/wiki/Fl%C3%A4cheninhalt',
+  },
   generate: (rng: Rng) => {
     const a = randInt(rng, 2, 20)
     const b = randInt(rng, 2, 20)
@@ -442,6 +627,12 @@ const flaecheDreieck: Topic = {
   title: 'Flächeninhalt von Dreiecken',
   hint: 'A = (g · h) : 2.',
   pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Der Flächeninhalt eines Dreiecks ist halb so groß wie der des umschriebenen Rechtecks mit gleicher Grundlinie und Höhe: A = (g · h) / 2. Die Höhe h steht senkrecht auf der Grundlinie g. Dieser Zusammenhang gilt für alle Dreiecke, unabhängig von ihrer Form.',
+    quelle: 'Wikipedia: Dreieck',
+    url: 'https://de.wikipedia.org/wiki/Dreieck',
+  },
   generate: (rng: Rng) => {
     const g = randInt(rng, 2, 20)
     const h = randInt(rng, 2, 20)
@@ -457,6 +648,61 @@ const flaecheDreieck: Topic = {
   },
 }
 
+/** Sachaufgabe Geometrie: Kombiniertes Flächen-/Umfang-Problem im Alltag. */
+const sachaufgabeGeometrie: Topic = {
+  id: 'lb3-sachaufgabe-geometrie',
+  title: 'Sachaufgabe: Fläche und Umfang im Alltag',
+  hint: 'Welche Formel passt? Umfang für Strecken, Fläche für Belag/Tapete.',
+  pointsPerTask: 10,
+  difficulty: 2,
+  keywords: ['Sachaufgabe', 'Fläche', 'Umfang', 'Dreieck', 'Rechteck', 'Alltag'],
+  fachwissen: {
+    text: 'Bei Sachaufgaben zur Geometrie ist es wichtig, zwischen Umfang (Länge der Begrenzung) und Flächeninhalt (Größe der Fläche) zu unterscheiden. Für zusammengesetzte Figuren addiert man Teilflächen oder Teilstrecken. Beim Lösen: zuerst die Skizze, dann die passende Formel, dann die Rechnung mit Einheiten.',
+    quelle: 'Wikipedia: Flächeninhalt',
+    url: 'https://de.wikipedia.org/wiki/Fl%C3%A4cheninhalt',
+  },
+  generate: (rng: Rng) => {
+    const a = randInt(rng, 4, 18)
+    const b = randInt(rng, 4, 18)
+    const type = pick(rng, ['zaun', 'boden', 'dreieck-garten'])
+
+    if (type === 'zaun') {
+      const wert = 2 * (a + b)
+      return valueTask({
+        question: `Ein rechteckiges Blumenbeet ist ${a} m lang und ${b} m breit. Wie viel Meter Beeteinfassung wird benötigt?`,
+        unit: 'm',
+        answerKind: 'integer',
+        value: wert,
+        solution: `${wert} m`,
+        explanation: `Umfang = 2 · (${a} + ${b}) = 2 · ${a + b} = ${wert} m.`,
+      })
+    }
+    if (type === 'boden') {
+      const wert = a * b
+      return valueTask({
+        question: `Ein Zimmer ist ${a} m lang und ${b} m breit. Wie viele m² Laminat werden benötigt?`,
+        unit: 'm²',
+        answerKind: 'integer',
+        value: wert,
+        solution: `${wert} m²`,
+        explanation: `Fläche = ${a} · ${b} = ${wert} m².`,
+      })
+    }
+    // Dreieck: Grundlinie und Höhe im Alltag
+    const g2 = a
+    const h2 = b
+    const flaeche = roundTo((g2 * h2) / 2, 1)
+    return valueTask({
+      question: `Ein dreieckiges Rabatten-Beet hat die Grundseite ${g2} m und die Höhe ${h2} m. Wie groß ist seine Fläche?`,
+      unit: 'm²',
+      answerKind: 'decimal',
+      value: flaeche,
+      solution: `${formatDe(flaeche)} m²`,
+      explanation: `Dreiecks-Fläche = (Grundseite · Höhe) : 2 = (${g2} · ${h2}) : 2 = ${formatDe(flaeche)} m².`,
+    })
+  },
+}
+
 // ---------------------------------------------------------------------------
 // Lernbereich 4 — Prismen
 // ---------------------------------------------------------------------------
@@ -466,6 +712,12 @@ const volumenQuader: Topic = {
   title: 'Volumen von Quader und Würfel',
   hint: 'V = a · b · c.',
   pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Das Volumen eines Quaders berechnet sich als Produkt der drei Kantenlängen: V = a · b · c. Ein Würfel ist ein Sonderfall des Quaders mit a = b = c, daher V = a³. Volumeneinheiten: 1 m³ = 1 000 dm³ (Liter) = 1 000 000 cm³.',
+    quelle: 'Wikipedia: Quader',
+    url: 'https://de.wikipedia.org/wiki/Quader',
+  },
   generate: (rng: Rng) => {
     const a = randInt(rng, 2, 12)
     const b = randInt(rng, 2, 12)
@@ -487,6 +739,12 @@ const oberflaecheQuader: Topic = {
   title: 'Oberflächeninhalt von Quadern',
   hint: 'O = 2 · (a·b + a·c + b·c).',
   pointsPerTask: 10,
+  difficulty: 2,
+  fachwissen: {
+    text: 'Die Oberfläche eines Quaders ist die Summe aller sechs Seitenflächen. Ein Quader hat drei Paare gleich großer Flächen: 2 · (a · b + a · c + b · c). Die Oberfläche gibt an, wie viel Material man für eine Verpackung oder eine Holzkiste benötigt.',
+    quelle: 'Wikipedia: Quader',
+    url: 'https://de.wikipedia.org/wiki/Quader',
+  },
   generate: (rng: Rng) => {
     const a = randInt(rng, 2, 12)
     const b = randInt(rng, 2, 12)
@@ -508,6 +766,12 @@ const volumenPrisma: Topic = {
   title: 'Volumen gerader Prismen',
   hint: 'V = Grundfläche · Höhe.',
   pointsPerTask: 10,
+  difficulty: 2,
+  fachwissen: {
+    text: 'Das Volumen eines geraden Prismas (und damit auch eines Zylinders) berechnet sich als V = G · h, wobei G der Flächeninhalt der Grundfläche und h die Höhe des Prismas ist. Diese Formel gilt für alle Prismen, unabhängig von der Form der Grundfläche (Dreieck, Viereck, Sechseck …).',
+    quelle: 'Wikipedia: Prisma (Geometrie)',
+    url: 'https://de.wikipedia.org/wiki/Prisma_(Geometrie)',
+  },
   generate: (rng: Rng) => {
     const grund = randInt(rng, 6, 40)
     const hoehe = randInt(rng, 2, 15)
@@ -532,6 +796,12 @@ const anteilVonGroesse: Topic = {
   title: 'Anteil einer Größe berechnen',
   hint: 'Anteil = Bruch · Ganzes.',
   pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Den Anteil p/q von einer Größe G berechnet man als (p/q) · G. Praktisch: erst durch den Nenner teilen (ein Teil = G/q), dann mit dem Zähler multiplizieren (p Teile). Beispiel: 3/4 von 120 € = 120 € ÷ 4 · 3 = 30 € · 3 = 90 €. Das Ergebnis ist immer kleiner als G (wenn p < q).',
+    quelle: 'Wikipedia: Bruchrechnung',
+    url: 'https://de.wikipedia.org/wiki/Bruchrechnung',
+  },
   generate: (rng: Rng) => {
     const d = pick(rng, [2, 3, 4, 5, 6, 8])
     const n = randInt(rng, 1, d - 1)
@@ -554,6 +824,12 @@ const anteilProzent: Topic = {
   title: 'Prozent einer Größe berechnen',
   hint: 'Prozent bedeutet „von hundert".',
   pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Den prozentualen Anteil eines Grundwerts berechnet man: Prozentwert W = Grundwert G × Prozentsatz p / 100. Zur Berechnung des Prozentsatzes aus Prozentwert und Grundwert gilt: p = (W / G) × 100. Prozentrechnung wird im Alltag ständig benötigt – für Rabatte, Zinsen, Noten, Steuern.',
+    quelle: 'Wikipedia: Prozentrechnung',
+    url: 'https://de.wikipedia.org/wiki/Prozentrechnung',
+  },
   generate: (rng: Rng) => {
     const percent = pick(rng, [10, 20, 25, 50, 75, 5])
     const unit = pick(rng, ['€', 'kg', 'm', 'Liter'])
@@ -599,13 +875,14 @@ export const klasse6: Grade = {
         dezMult,
         dezDiv,
         runden,
+        sachaufgabeBruch,
       ],
     },
     {
       id: 'lb2',
       title: 'Zuordnungen in der Umwelt',
       ustd: 24,
-      topics: [proportional, antiproportional, haeufigkeit],
+      topics: [proportional, antiproportional, haeufigkeit, sachaufgabeDreisatz],
     },
     {
       id: 'lb3',
@@ -617,6 +894,7 @@ export const klasse6: Grade = {
         umfangRechteck,
         flaecheRechteck,
         flaecheDreieck,
+        sachaufgabeGeometrie,
       ],
     },
     {

@@ -9,6 +9,25 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.43] – 2026-09-14
+
+### Hinzugefügt
+
+- **Fachwissen:** Jedes Thema in den Klassen 5–12 enthält jetzt eine kompakte
+  mathematische Erklärung (eigene Formulierung) mit Quellenangabe und Link zu
+  Wikipedia (CC BY-SA 4.0). Die Wissensbox lässt sich im Lehrplan-Browser
+  (Schaltfläche „Wissen ▼") und direkt in der Übe-Session (💡 Fachwissen)
+  auf- und zuklappen.
+- **Schwierigkeitsgrad:** Jedes Thema trägt nun ein Schwierigkeits-Badge
+  (★ Basis · ★★ Standard · ★★★ Erweiterung), das im Lehrplan-Browser sichtbar
+  ist.
+- **Neue Anwendungsaufgaben (Klasse 5 & 6):** Dezimalzahlen auf dem
+  Zahlenstrahl einordnen, Größen mit verschiedenen Einheiten der Größe nach
+  ordnen (z. B. 1,5 kg vs. 1 200 g), mehrstufige Sachaufgaben mit
+  Alltagsbezug sowie Flächenaufgaben als Textaufgaben.
+- **Difficulty-Badge & Fachwissen-Karte:** Neue CSS-Komponenten in `App.css`
+  und neue React-Unterkomponente `TopicRow` im `CurriculumBrowser`.
+
 ## [0.1.42] – 2026-09-06
 
 ### Hinzugefügt

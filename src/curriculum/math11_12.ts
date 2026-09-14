@@ -48,7 +48,13 @@ const ableitungStelle: Topic = {
   title: 'Ableitung eines Polynoms an einer Stelle',
   hint: "Leite mit der Potenzregel ab und setze x₀ ein.",
   pointsPerTask: 10,
+  difficulty: 3,
   keywords: ['Ableitung', 'Differentialrechnung', 'Steigung', 'Polynom', "f'(x)", 'Potenzregel'],
+  fachwissen: {
+    text: 'Die Ableitung f\'(x₀) gibt die momentane Änderungsrate (Steigung der Tangente) an der Stelle x₀ an. Für Polynome gilt die Potenzregel: (xⁿ)\' = n·xⁿ⁻¹. Die Ableitung ist die Grundlage der Differentialrechnung und beschreibt z. B. Geschwindigkeiten, Wachstumsraten oder Optimierungsprobleme.',
+    quelle: 'Wikipedia: Ableitung (Mathematik)',
+    url: 'https://de.wikipedia.org/wiki/Ableitung_(Mathematik)',
+  },
   generate: (rng: Rng) => {
     const a = nonZero(rng, -3, 3)
     const b = nonZero(rng, -4, 4)
@@ -73,7 +79,13 @@ const nullstelleLinear: Topic = {
   title: 'Nullstelle einer linearen Funktion',
   hint: 'Setze f(x) = 0 und löse nach x.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Nullstelle', 'lineare Funktion', 'Gleichung', 'x-Achse', 'Schnittpunkt'],
+  fachwissen: {
+    text: 'Nullstellen sind die x-Werte, bei denen der Graph einer Funktion die x-Achse schneidet (f(x) = 0). Bei linearen Funktionen gibt es genau eine Nullstelle (wenn m ≠ 0). Bei quadratischen Funktionen bis zu zwei. Nullstellen sind in der Anwendung oft die gesuchten Gleichgewichtspunkte oder Schnittpunkte.',
+    quelle: 'Wikipedia: Nullstelle',
+    url: 'https://de.wikipedia.org/wiki/Nullstelle',
+  },
   generate: (rng: Rng) => {
     const m = nonZero(rng, -6, 6)
     const x0 = nonZero(rng, -8, 8)
@@ -93,7 +105,13 @@ const bestimmtesIntegral: Topic = {
   title: 'Bestimmtes Integral eines Polynoms',
   hint: 'Bilde die Stammfunktion und setze die Grenzen ein.',
   pointsPerTask: 10,
+  difficulty: 3,
   keywords: ['Integral', 'bestimmtes Integral', 'Stammfunktion', 'Integralrechnung', 'Fläche'],
+  fachwissen: {
+    text: 'Das bestimmte Integral ∫ₐᵇ f(x) dx gibt den orientierten Flächeninhalt zwischen dem Graphen von f und der x-Achse von a bis b an. Es berechnet sich mit dem Hauptsatz der Differential- und Integralrechnung: ∫ₐᵇ f(x) dx = F(b) − F(a), wobei F die Stammfunktion von f ist.',
+    quelle: 'Wikipedia: Bestimmtes Integral',
+    url: 'https://de.wikipedia.org/wiki/Integral#Bestimmtes_Integral',
+  },
   generate: (rng: Rng) => {
     // f(x) = a x² + b x + c with a multiple of 3 and b even → integer result.
     const a = pick(rng, [-3, 3, 6])
@@ -123,7 +141,13 @@ const skalarprodukt: Topic = {
   title: 'Skalarprodukt zweier Vektoren',
   hint: 'Multipliziere komponentenweise und addiere.',
   pointsPerTask: 10,
+  difficulty: 3,
   keywords: ['Skalarprodukt', 'Vektoren', 'Vektor', 'komponentenweise', 'analytische Geometrie'],
+  fachwissen: {
+    text: 'Das Skalarprodukt zweier Vektoren a und b ergibt eine Zahl: a · b = a₁b₁ + a₂b₂ + a₃b₃ = |a|·|b|·cos(α). Es ist null, genau dann wenn die Vektoren senkrecht zueinander stehen (Orthogonalitätsbedingung). Das Skalarprodukt ist zentral in Physik (Arbeit = Kraft · Weg) und Informatik (z. B. Empfehlungsalgorithmen).',
+    quelle: 'Wikipedia: Skalarprodukt',
+    url: 'https://de.wikipedia.org/wiki/Skalarprodukt',
+  },
   generate: (rng: Rng) => {
     const a = [nonZero(rng, -6, 6), nonZero(rng, -6, 6), nonZero(rng, -6, 6)]
     const b = [nonZero(rng, -6, 6), nonZero(rng, -6, 6), nonZero(rng, -6, 6)]
@@ -154,7 +178,13 @@ const betragVektor: Topic = {
   title: 'Betrag eines Vektors',
   hint: '|v| = √(x² + y² + z²).',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Betrag', 'Länge', 'Vektor', 'Vektoren', 'Norm', 'analytische Geometrie'],
+  fachwissen: {
+    text: 'Der Betrag |v| eines Vektors gibt seine Länge an: |v| = √(v₁² + v₂² + v₃²). Dies ist die Verallgemeinerung des Satzes des Pythagoras auf den Raum. In der Physik entspricht der Betrag z. B. der Geschwindigkeit bei einem Geschwindigkeitsvektor oder der Kraft bei einem Kraftvektor.',
+    quelle: 'Wikipedia: Euklidische Norm',
+    url: 'https://de.wikipedia.org/wiki/Euklidische_Norm',
+  },
   generate: (rng: Rng) => {
     const [x, y, z, mag] = pick(rng, VEC3)
     const sx = rng() < 0.5 ? -x : x
@@ -185,7 +215,13 @@ const binomialverteilung: Topic = {
   title: 'Binomialverteilung: P(X = k)',
   hint: 'P(X = k) = C(n, k) · pᵏ · (1 − p)ⁿ⁻ᵏ.',
   pointsPerTask: 10,
+  difficulty: 3,
   keywords: ['Binomialverteilung', 'Wahrscheinlichkeit', 'Bernoulli', 'P(X=k)', 'Stochastik'],
+  fachwissen: {
+    text: 'Die Binomialverteilung B(n, p) beschreibt die Wahrscheinlichkeit, bei n unabhängigen Versuchen (mit je Trefferwahrscheinlichkeit p) genau k Treffer zu erzielen: P(X=k) = C(n,k)·pᵏ·(1−p)ⁿ⁻ᵏ. Voraussetzung: Die Versuche sind unabhängig und die Trefferwahrscheinlichkeit bleibt konstant. Der Erwartungswert ist E(X) = n·p.',
+    quelle: 'Wikipedia: Binomialverteilung',
+    url: 'https://de.wikipedia.org/wiki/Binomialverteilung',
+  },
   generate: (rng: Rng) => {
     const n = pick(rng, [4, 5, 6])
     const p = pick(rng, [0.1, 0.2, 0.25, 0.5])
@@ -210,7 +246,13 @@ const erwartungswertBinom: Topic = {
   title: 'Erwartungswert der Binomialverteilung',
   hint: 'E(X) = n · p.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Binomialverteilung', 'Erwartungswert', 'E(X)', 'Stochastik', 'n mal p'],
+  fachwissen: {
+    text: 'Der Erwartungswert der Binomialverteilung B(n, p) ist E(X) = n·p. Er gibt an, wie viele Treffer man im Mittel erwartet. Beispiel: Wirft man einen fairen Würfel 60-mal, erwartet man E = 60·(1/6) = 10 Sechsen. Die Standardabweichung beträgt σ = √(n·p·(1−p)).',
+    quelle: 'Wikipedia: Binomialverteilung',
+    url: 'https://de.wikipedia.org/wiki/Binomialverteilung',
+  },
   generate: (rng: Rng) => {
     const n = randInt(rng, 5, 50)
     const p = pick(rng, [0.1, 0.2, 0.25, 0.5])
