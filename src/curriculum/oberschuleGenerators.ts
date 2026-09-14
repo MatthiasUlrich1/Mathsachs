@@ -1,7 +1,80 @@
+import { generatePointsOnGridSvg } from '../lib/geometrySvg'
+import { randInt, type Rng } from '../lib/rng'
 import { bundledCurricula } from './bundled'
 import { textTask } from './taskHelpers'
 import type { PackTopic } from './pack'
 import type { Topic } from './types'
+
+/** Flexible accepted formats for a coordinate pair (a; b). */
+const pairAnswerAccepted = (a: number, b: number): string[] => {
+  const raw = [
+    `${a}; ${b}`,
+    `${a};${b}`,
+    `${a}, ${b}`,
+    `${a},${b}`,
+    `${a} ; ${b}`,
+    `${a}|${b}`,
+    `${a} | ${b}`,
+    `(${a}|${b})`,
+    `(${a} | ${b})`,
+    `(${a}; ${b})`,
+    `(${a};${b})`,
+    `(${a}, ${b})`,
+    `(${a},${b})`,
+  ]
+  return [...new Set(raw)]
+}
+
+/** First-quadrant points only (Lehrplan K5: erster Quadrant). */
+const q1Points = (rng: Rng, count: number, max = 6): Array<{ x: number; y: number }> => {
+  const pts: Array<{ x: number; y: number }> = []
+  const used = new Set<string>()
+  let guard = 0
+  while (pts.length < count && guard < 200) {
+    guard++
+    const x = randInt(rng, 0, max)
+    const y = randInt(rng, 0, max)
+    if (x === 0 && y === 0 && pts.length === 0) continue
+    const key = `${x},${y}`
+    if (used.has(key)) continue
+    used.add(key)
+    pts.push({ x, y })
+  }
+  return pts
+}
+
+/**
+ * OS-specific generators that adapt Gymnasium tasks (ranges / variants)
+ * without changing the Gym curriculum.
+ */
+export const OS_CUSTOM_GENERATORS: Record<string, Topic['generate']> = {
+  /** Klasse 5: Koordinaten nur im 1. Quadranten. */
+  'os-k5-lb3-koordinaten': (rng: Rng) => {
+    const labels = ['A', 'B', 'C'] as const
+    const n = rng() < 0.55 ? 1 : randInt(rng, 2, 3)
+    const pts = q1Points(rng, n, 6)
+    const labeled = pts.map((p, i) => ({ ...p, label: labels[i] }))
+    const askIdx = randInt(rng, 0, labeled.length - 1)
+    const target = labeled[askIdx]
+    const svg = generatePointsOnGridSvg({
+      points: labeled,
+      xRange: [0, 7],
+      yRange: [0, 7],
+    })
+    return {
+      ...textTask({
+        question:
+          labeled.length === 1
+            ? 'Lies die Koordinaten von Punkt A ab (erster Quadrant). Gib x; y an.'
+            : `Lies die Koordinaten von Punkt ${target.label} ab (erster Quadrant). Gib x; y an.`,
+        accepted: pairAnswerAccepted(target.x, target.y),
+        solution: `${target.x}; ${target.y}`,
+        explanation: `Punkt ${target.label} liegt bei (${target.x}|${target.y}) im ersten Quadranten (x ≥ 0, y ≥ 0).`,
+      }),
+      visualContent: svg,
+    }
+  },
+}
 
 /** Oberschule topic id → existing Gymnasium generator topic id. */
 export const OS_GENERATOR_MAP: Record<string, string> = {
@@ -15,7 +88,7 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-k5-lb1-gleichung': 'k7-lb2-gleichung-add',
   'os-k5-lb1-teilbarkeit': 'lb1-teilbarkeit',
   'os-k5-lb1-primzahl': 'lb1-primzahl',
-  'os-k5-lb2-anteil': 'lb2-anteil-bruch',
+  'os-k5-lb2-anteil': 'lb2-grafische-brueche',
   'os-k5-lb2-kuerzen': 'lb2-kuerzen',
   'os-k5-lb2-erweitern': 'lb2-erweitern',
   'os-k5-lb2-runden-dez': 'lb2-runden-dezimal',
@@ -34,6 +107,7 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-k5-lb3-oberflaeche': 'lb4-oberflaeche-quader',
   'os-k5-lb3-flaeche-eh': 'k5-umrechnen-flaeche',
   'os-k5-lb3-volumen-eh': 'k5-umrechnen-volumen',
+  'os-k5-lb4-spiegelung': 'lb3-achsensymmetrie',
 
   // Klasse 6 (gemeinsam)
   'os-k6-lb1-kuerzen': 'lb1-kuerzen',
@@ -67,25 +141,28 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-k6-lbw3-modal': 'k9-lb4-modalwert',
 
   // HS Klasse 7
-  'os-hs-k7-lb1-flaeche': 'lb3-flaeche-rechteck',
-  'os-hs-k7-lb1-volumen': 'lb4-volumen-quader',
+  'os-hs-k7-lb1-flaeche': 'lb4-flaeche-zusammengesetzt',
+  'os-hs-k7-lb1-volumen': 'lb4-volumen-zusammengesetzt',
   'os-hs-k7-lb2-anteil-bruch': 'lb2-anteil-bruch',
   'os-hs-k7-lb2-anteil-groesse': 'lb5-anteil-groesse',
   'os-hs-k7-lb2-prozent': 'lb5-anteil-prozent',
   'os-hs-k7-lb2-dreisatz': 'lb2-proportional',
   'os-hs-k7-lb2-haeufigkeit': 'k7-lb4-rel-haeufigkeit',
+  'os-hs-k7-lb2-kreisdiagramm': 'lb2-grafische-brueche',
   'os-hs-k7-lb3-add': 'k7-lb2-add-rational',
   'os-hs-k7-lb3-sub': 'k7-lb2-sub-rational',
   'os-hs-k7-lb3-mul': 'k7-lb2-mul-rational',
   'os-hs-k7-lb3-div': 'k7-lb2-div-rational',
   'os-hs-k7-lb3-term': 'k7-lb2-term-vorrang',
   'os-hs-k7-lb3-gleichung': 'k7-lb2-gleichung-add',
+  'os-hs-k7-lb3-koordinaten': 'lb3-koordinaten-eintragen',
   'os-hs-k7-lb4-flaeche-dreieck': 'lb3-flaeche-dreieck',
   'os-hs-k7-lb4-umfang': 'lb3-umfang-rechteck',
   'os-hs-k7-lb4-winkelsumme': 'k7-lb1-winkelsumme-vieleck',
   'os-hs-k7-lb4-volumen-prisma': 'k7-lb3-volumen-prisma',
   'os-hs-k7-lb4-mantel': 'k7-lb3-mantel-prisma',
   'os-hs-k7-lb4-oberflaeche': 'k7-lb3-oberflaeche-quader',
+  'os-hs-k7-lb4-zerlegen': 'lb4-flaeche-zusammengesetzt',
 
   // HS Klasse 8
   'os-hs-k8-lb1-prozent': 'lb5-anteil-prozent',
@@ -98,6 +175,7 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-hs-k8-lb3-kreis-umfang': 'k9-lb2-kreis-umfang',
   'os-hs-k8-lb3-kreis-flaeche': 'k9-lb2-kreis-flaeche',
   'os-hs-k8-lb3-winkelsumme': 'k7-lb1-winkelsumme-vieleck',
+  'os-hs-k8-lb3-vieleck': 'lb3-achsensymmetrie',
   'os-hs-k8-lb4-zylinder': 'k9-lb2-zylinder-volumen',
   'os-hs-k8-lb5-zinsen': 'k10-lb1-zinsen',
   'os-hs-k8-lb5-streckfaktor': 'k8-lb4-streckfaktor',
@@ -109,6 +187,7 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-hs-k9-lb1-sach': 'k9-lb5-leiter',
   'os-hs-k9-lb2-pyramide': 'k7-lb3-volumen-pyramide',
   'os-hs-k9-lb2-zylinder': 'k9-lb2-zylinder-volumen',
+  'os-hs-k9-lb2-zusammengesetzt': 'lb4-volumen-zusammengesetzt',
   'os-hs-k9-lb3-funktionswert': 'k8-lb3-funktionswert',
   'os-hs-k9-lb3-steigung': 'k8-lb3-steigung',
   'os-hs-k9-lb3-achsen': 'k8-lb3-achsenabschnitt',
@@ -124,6 +203,7 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-rs-k7-lb1-zinsen': 'k10-lb1-zinsen',
   'os-rs-k7-lb1-zinseszins': 'k10-lb1-zinseszins',
   'os-rs-k7-lb1-preisaenderung': 'k10-lb1-prozentuale-zunahme',
+  'os-rs-k7-lb1-kreisdiagramm': 'lb2-grafische-brueche',
   'os-rs-k7-lb2-haeufigkeit': 'k7-lb4-rel-haeufigkeit',
   'os-rs-k7-lb2-laplace': 'k8-lb2-laplace-bruch',
   'os-rs-k7-lb2-laplace-pct': 'k8-lb2-laplace-prozent',
@@ -135,12 +215,14 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-rs-k7-lb3-gleichung': 'k8-lb1-gleichung-linear',
   'os-rs-k7-lb3-gleichung-beid': 'k8-lb1-gleichung-beidseitig',
   'os-rs-k7-lb3-zahlenraetsel': 'k8-lb5-zahlenraetsel',
+  'os-rs-k7-lb3-koordinaten': 'lb3-koordinaten-eintragen',
   'os-rs-k7-lb4-flaeche-dreieck': 'lb3-flaeche-dreieck',
   'os-rs-k7-lb4-umfang': 'lb3-umfang-rechteck',
   'os-rs-k7-lb4-winkelsumme': 'k7-lb1-winkelsumme-vieleck',
   'os-rs-k7-lb4-volumen-prisma': 'k7-lb3-volumen-prisma',
   'os-rs-k7-lb4-mantel': 'k7-lb3-mantel-prisma',
   'os-rs-k7-lb4-oberflaeche': 'k7-lb3-oberflaeche-quader',
+  'os-rs-k7-lb4-vieleck-flaeche': 'lb4-flaeche-zusammengesetzt',
 
   // RS Klasse 8
   'os-rs-k8-lb1-term': 'k8-lb1-term-auswerten',
@@ -171,6 +253,7 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-rs-k9-lb2-pyramide': 'k7-lb3-volumen-pyramide',
   'os-rs-k9-lb2-zylinder': 'k9-lb2-zylinder-volumen',
   'os-rs-k9-lb2-kugel': 'k9-lb2-kugel-volumen',
+  'os-rs-k9-lb2-zusammengesetzt': 'lb4-volumen-zusammengesetzt',
   'os-rs-k9-lb3-quadrat': 'k9-lb1-quadrat-wert',
   'os-rs-k9-lb3-scheitel': 'k9-lb1-scheitel',
   'os-rs-k9-lb3-gleichung': 'k10-lb4-quadratische-gleichung',
@@ -220,8 +303,19 @@ export function generatorIdForTopic(topicId: string): string | undefined {
   return OS_GENERATOR_MAP[topicId]
 }
 
+/** Resolve a playable OS topic generator (custom wrapper or Gymnasium map). */
+export function resolveOsGenerate(
+  topicId: string,
+  gymCatalog: Map<string, Topic['generate']>,
+): Topic['generate'] | undefined {
+  const custom = OS_CUSTOM_GENERATORS[topicId]
+  if (custom) return custom
+  const mapped = OS_GENERATOR_MAP[topicId]
+  return mapped ? gymCatalog.get(mapped) : undefined
+}
+
 export function isPlayableOfficialTopic(topicId: string): boolean {
-  return Boolean(OS_GENERATOR_MAP[topicId])
+  return Boolean(OS_CUSTOM_GENERATORS[topicId] || OS_GENERATOR_MAP[topicId])
 }
 
 export function outlineGenerate(title: string): Topic['generate'] {

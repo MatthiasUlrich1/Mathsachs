@@ -2,8 +2,8 @@ import { makeFraction } from '../lib/fraction'
 import { pick, type Rng } from '../lib/rng'
 import { getBundledModule } from './bundled'
 import {
-  generatorIdForTopic,
   gymGeneratorCatalog,
+  resolveOsGenerate,
   topicFromPack,
 } from './oberschuleGenerators'
 import type { CurriculumPack, PackExtra, PackTask } from './pack'
@@ -113,8 +113,7 @@ export async function hydratePackGrades(pack: CurriculumPack): Promise<Grade[]> 
           title: area.title,
           ustd: area.ustd,
           topics: area.topics.map((topic) => {
-            const mapped = generatorIdForTopic(topic.id)
-            const generate = mapped ? generators!.get(mapped) : undefined
+            const generate = resolveOsGenerate(topic.id, generators!)
             return topicFromPack(topic, generate)
           }),
         })),

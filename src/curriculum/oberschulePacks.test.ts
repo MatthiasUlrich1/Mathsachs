@@ -13,6 +13,7 @@ import {
 import {
   gymGeneratorCatalog,
   isPlayableOfficialTopic,
+  OS_CUSTOM_GENERATORS,
   OS_GENERATOR_MAP,
 } from './oberschuleGenerators'
 import {
@@ -123,6 +124,39 @@ describe('Oberschule Sachsen Lehrplan packs', () => {
     const rsIds = new Set(allOfficialTopics(rs).map((t) => t.id))
     for (const osId of Object.keys(OS_GENERATOR_MAP)) {
       expect(hsIds.has(osId) || rsIds.has(osId), `mapped id ${osId} missing from packs`).toBe(true)
+    }
+    for (const osId of Object.keys(OS_CUSTOM_GENERATORS)) {
+      expect(hsIds.has(osId) || rsIds.has(osId), `custom id ${osId} missing from packs`).toBe(true)
+      expect(isPlayableOfficialTopic(osId)).toBe(true)
+    }
+  })
+
+  it('uses first-quadrant coordinates for OS Klasse 5', async () => {
+    const gen = OS_CUSTOM_GENERATORS['os-k5-lb3-koordinaten']
+    expect(gen).toBeDefined()
+    for (let seed = 1; seed <= 20; seed++) {
+      const task = gen!(createRng(seed))
+      expect(task.check(task.sampleAnswer)).toBe(true)
+      expect(task.visualContent).toBeTruthy()
+      expect(task.question).toMatch(/erster Quadrant/)
+    }
+  })
+
+  it('wires composite geometry and graphical fractions into both tracks', async () => {
+    const catalog = await gymGeneratorCatalog()
+    expect(OS_GENERATOR_MAP['os-hs-k7-lb1-flaeche']).toBe('lb4-flaeche-zusammengesetzt')
+    expect(OS_GENERATOR_MAP['os-hs-k7-lb1-volumen']).toBe('lb4-volumen-zusammengesetzt')
+    expect(OS_GENERATOR_MAP['os-k5-lb2-anteil']).toBe('lb2-grafische-brueche')
+    expect(OS_GENERATOR_MAP['os-k5-lb4-spiegelung']).toBe('lb3-achsensymmetrie')
+    expect(OS_GENERATOR_MAP['os-rs-k7-lb4-vieleck-flaeche']).toBe('lb4-flaeche-zusammengesetzt')
+    for (const id of [
+      'lb4-flaeche-zusammengesetzt',
+      'lb4-volumen-zusammengesetzt',
+      'lb2-grafische-brueche',
+      'lb3-achsensymmetrie',
+      'lb3-koordinaten-eintragen',
+    ]) {
+      expect(catalog.has(id), id).toBe(true)
     }
   })
 
