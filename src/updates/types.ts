@@ -80,6 +80,17 @@ export interface MathsachsDesktop {
   openExternal: (url: string) => Promise<void>
   /** Opens an HTML string in a new Electron BrowserWindow (for print preview). */
   openPrintWindow: (html: string) => Promise<void>
+  /**
+   * Renders HTML to PDF via printToPDF and shows a Speichern-unter dialog.
+   * Returns `{ ok: true, filePath }` or `{ ok: false, cancelled?, error? }`.
+   */
+  savePdf: (
+    html: string,
+    suggestedName?: string,
+  ) => Promise<
+    | { ok: true; filePath?: string }
+    | { ok: false; cancelled?: boolean; error?: string }
+  >
   getLanStatus: () => Promise<LanServerStatus>
   loadSharedState: () => Promise<SharedState>
   saveSharedState: (state: SharedState) => Promise<SharedState>

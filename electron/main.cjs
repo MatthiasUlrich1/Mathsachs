@@ -1,4 +1,5 @@
-const { app, BrowserWindow, ipcMain, shell } = require('electron')
+const { app, BrowserWindow, dialog, ipcMain, shell } = require('electron')
+const fs = require('node:fs/promises')
 const path = require('node:path')
 const {
   isNewerVersion,
@@ -225,7 +226,7 @@ function registerUpdateIpc() {
 }
 
 /**
- * Registers the print IPC handler.
+ * Registers the print / PDF IPC handlers.
  * Opens a standalone BrowserWindow from the main process so that it works even
  * when window.open() is blocked by the renderer's setWindowOpenHandler.
  */
@@ -247,6 +248,58 @@ function registerPrintIpc() {
     await printWin.loadURL(
       `data:text/html;charset=utf-8,${encodeURIComponent(html)}`,
     )
+  })
+
+  ipcMain.handle('print:savePdf', async (_event, html, suggestedName) => {
+    if (typeof html !== 'string') {
+      return { ok: false, error: 'Ungültiger Inhalt.' }
+    }
+    const defaultPath =
+      typeof suggestedName === 'string' && suggestedName.trim()
+        ? suggestedName.trim()
+        : 'Klausurprotokoll.pdf'
+
+    const pdfWin = new BrowserWindow({
+      show: false,
+      width: 900,
+      height: 1200,
+      backgroundColor: '#ffffff',
+      webPreferences: {
+        contextIsolation: true,
+        nodeIntegration: false,
+      },
+    })
+
+    try {
+      await pdfWin.loadURL(
+        `data:text/html;charset=utf-8,${encodeURIComponent(html)}`,
+      )
+      // Let layout settle before rasterizing to PDF.
+      await new Promise((resolve) => setTimeout(resolve, 250))
+      const pdf = await pdfWin.webContents.printToPDF({
+        printBackground: true,
+        pageSize: 'A4',
+        margins: { marginType: 'default' },
+      })
+
+      const { canceled, filePath } = await dialog.showSaveDialog({
+        title: 'Klausurprotokoll als PDF speichern',
+        defaultPath,
+        filters: [{ name: 'PDF', extensions: ['pdf'] }],
+      })
+      if (canceled || !filePath) {
+        return { ok: false, cancelled: true }
+      }
+      await fs.writeFile(filePath, pdf)
+      return { ok: true, filePath }
+    } catch (err) {
+      return {
+        ok: false,
+        error: err instanceof Error ? err.message : 'PDF-Export fehlgeschlagen.',
+      }
+    } finally {
+      if (!pdfWin.isDestroyed()) pdfWin.destroy()
+    }
   })
 }
 

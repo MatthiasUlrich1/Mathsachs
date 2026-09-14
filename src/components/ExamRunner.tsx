@@ -5,6 +5,11 @@ import { AnswerInput } from './AnswerInput'
 import { ExamProtocolSheet, formatExamAnswer } from './ExamProtocolSheet'
 import { initTaskInput, TaskInteractive, TaskVisual } from './TaskMedia'
 import {
+  printExamProtocol,
+  saveExamProtocolPdf,
+  type ExamProtocolExportInput,
+} from '../exam/examProtocolExport'
+import {
   ExamCodeError,
   decodeExam,
   examCurriculumGate,
@@ -41,6 +46,14 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
   const [answers, setAnswers] = useState<UserInput[]>([])
   const [current, setCurrent] = useState(0)
   const [results, setResults] = useState<TaskResult[]>([])
+
+  const [pdfBusy, setPdfBusy] = useState(false)
+  const [pdfNotice, setPdfNotice] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (phase !== 'done') return
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [phase])
 
   // Auto-decode a code handed in via a shared link.
   useEffect(() => {
@@ -301,6 +314,53 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
     month: '2-digit',
     year: 'numeric',
   })
+  const exportInput: ExamProtocolExportInput = {
+    user,
+    title: spec?.titel ?? 'Übungsklausur',
+    results,
+    totalPoints,
+    printedAt,
+  }
+
+  const exportActions = (
+    <div className="exam-export-actions">
+      <button
+        type="button"
+        className="primary"
+        onClick={() => printExamProtocol(exportInput)}
+      >
+        Drucken
+      </button>
+      <button
+        type="button"
+        className="ghost"
+        disabled={pdfBusy}
+        onClick={() => {
+          setPdfBusy(true)
+          setPdfNotice(null)
+          void saveExamProtocolPdf(exportInput).then((result) => {
+            setPdfBusy(false)
+            if (result.ok) {
+              setPdfNotice(
+                result.filePath
+                  ? `PDF gespeichert: ${result.filePath}`
+                  : 'Druckfenster geöffnet — dort „Als PDF speichern“ wählen.',
+              )
+              return
+            }
+            if (result.cancelled) {
+              setPdfNotice(null)
+              return
+            }
+            setPdfNotice(result.error ?? 'PDF konnte nicht erstellt werden.')
+          })
+        }}
+      >
+        {pdfBusy ? 'PDF wird erstellt …' : 'Als PDF speichern'}
+      </button>
+    </div>
+  )
+
   return (
     <div className="protocol-view">
       <section className="card no-print">
@@ -335,9 +395,8 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
           </div>
         </div>
 
-        <button type="button" className="primary" onClick={() => window.print()}>
-          Drucken / als PDF speichern
-        </button>
+        {exportActions}
+        {pdfNotice && <p className="muted small">{pdfNotice}</p>}
 
         <ol className="exam-review">
           {results.map((r, i) => (
@@ -379,6 +438,9 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
             </li>
           ))}
         </ol>
+
+        {exportActions}
+        {pdfNotice && <p className="muted small">{pdfNotice}</p>}
       </section>
 
       <ExamProtocolSheet
