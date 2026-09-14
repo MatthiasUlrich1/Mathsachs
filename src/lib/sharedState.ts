@@ -691,7 +691,7 @@ const pickStat = (a: TopicStat | undefined, b: TopicStat | undefined): TopicStat
   }
 }
 
-const mergeUserData = (a: UserData | undefined, b: UserData | undefined): UserData => {
+export const mergeUserData = (a: UserData | undefined, b: UserData | undefined): UserData => {
   if (!a) return b as UserData
   if (!b) return a
   const stats: Record<string, TopicStat> = {}

@@ -30,6 +30,7 @@ import {
   emptySharedState,
   looksLikeSharedState,
   mergeSharedState,
+  mergeUserData,
   migrateSharedClassCodes,
   parseClassCodes,
   parseGradeCodes,
@@ -543,15 +544,23 @@ export const importUserData = (data: UserData, asName?: string): string[] => {
   if (!name) return listUsers()
   const now = Date.now()
   const normalized: UserData = { ...data, name, created: now }
+  
   // Remove any tombstone for this user so it can be re-imported
   const deletedUsers = (cache.deletedUsers ?? []).filter((tomb) => tomb.name !== name)
-  // Build a minimal temporary state and merge it into the cache.
-  const tempState = emptySharedState()
-  tempState.users = [name]
-  tempState.records = { [name]: normalized }
-  tempState.deletedUsers = []
-  const merged = mergeSharedState({ ...cache, deletedUsers }, tempState)
-  cache = cloneSharedState(merged)
+  
+  // Merge with existing user data if present, or add as new user
+  const existing = cache.records[name]
+  const merged = existing ? mergeUserData(existing, normalized) : normalized
+  
+  // Update cache: add/update the user, remove tombstone
+  const users = cache.users.includes(name) ? cache.users : [...cache.users, name]
+  cache = {
+    ...cache,
+    users,
+    records: { ...cache.records, [name]: merged },
+    deletedUsers,
+  }
+  
   void persistCache()
   notify()
   return listUsers()
