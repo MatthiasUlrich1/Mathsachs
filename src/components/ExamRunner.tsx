@@ -36,6 +36,12 @@ const formatInput = (input: UserInput): string => {
     const den = input.den.trim()
     return num || den ? `${num || '?'}/${den || '?'}` : '—'
   }
+  if (input.kind === 'numberLine') {
+    return input.value.toString()
+  }
+  if (input.kind === 'dragDropSort') {
+    return input.order.join(', ')
+  }
   return input.value.trim() || '—'
 }
 

@@ -493,7 +493,7 @@ const zahlenstrahl: Topic = {
     url: 'https://de.wikipedia.org/wiki/Zahlenstrahl',
   },
   generate: mixedVariants(
-    // Variant 1: Einfach - Text mit ganzen Zahlen
+    // Variant 1: Text mit ganzen Zahlen
     (rng: Rng) => {
       const a = randInt(rng, 5, 20)
       const b = a + randInt(rng, 2, 10)
@@ -506,7 +506,7 @@ const zahlenstrahl: Topic = {
         explanation: `Die Mitte berechnet man als Durchschnitt: (${a} + ${b}) : 2 = ${a + b} : 2 = ${formatDe(mid)}.`,
       })
     },
-    // Variant 2: Mittel - Interaktiver Zahlenstrahl mit Dezimalzahlen
+    // Variant 2: Interaktiver Zahlenstrahl mit Dezimalzahlen
     (rng: Rng) => {
       const a = randInt(rng, 10, 89) / 10
       const step = randInt(rng, 1, 8) / 10
@@ -524,7 +524,7 @@ const zahlenstrahl: Topic = {
         eps: 0.05,
       })
     },
-    // Variant 3: Schwer - Mit negativen Zahlen
+    // Variant 3: Mit negativen Zahlen
     (rng: Rng) => {
       const a = randInt(rng, -15, -5)
       const b = randInt(rng, 5, 15)
@@ -554,7 +554,7 @@ const ordnenMitEinheiten: Topic = {
     url: 'https://de.wikipedia.org/wiki/Ma%C3%9Feinheit',
   },
   generate: (rng: Rng) => {
-    type Scenario = { items: { label: string; valueInBase: number }[]; unitName: string }
+    type Scenario = { items: { label: string; value: number }[]; unitName: string }
     
     // Generate 30+ different scenarios with varying values
     const lengthScenarios: Scenario[] = []
@@ -566,17 +566,17 @@ const ordnenMitEinheiten: Topic = {
       lengthScenarios.push({
         unitName: 'cm',
         items: [
-          { label: `${formatDe(m1)} m`, valueInBase: m1 * 100 },
-          { label: `${cm1} cm`, valueInBase: cm1 },
-          { label: `${dm1} dm`, valueInBase: dm1 * 10 },
+          { label: `${formatDe(m1)} m`, value: m1 * 100 },
+          { label: `${cm1} cm`, value: cm1 },
+          { label: `${dm1} dm`, value: dm1 * 10 },
         ],
       })
       lengthScenarios.push({
         unitName: 'mm',
         items: [
-          { label: `${cm1} cm`, valueInBase: cm1 * 10 },
-          { label: `${mm1} mm`, valueInBase: mm1 },
-          { label: `${dm1} dm`, valueInBase: dm1 * 100 },
+          { label: `${cm1} cm`, value: cm1 * 10 },
+          { label: `${mm1} mm`, value: mm1 },
+          { label: `${dm1} dm`, value: dm1 * 100 },
         ],
       })
     }
@@ -589,9 +589,9 @@ const ordnenMitEinheiten: Topic = {
       massScenarios.push({
         unitName: 'g',
         items: [
-          { label: `${formatDe(kg1)} kg`, valueInBase: kg1 * 1000 },
-          { label: `${g1} g`, valueInBase: g1 },
-          { label: `${g2} g`, valueInBase: g2 },
+          { label: `${formatDe(kg1)} kg`, value: kg1 * 1000 },
+          { label: `${g1} g`, value: g1 },
+          { label: `${g2} g`, value: g2 },
         ],
       })
     }
@@ -604,18 +604,18 @@ const ordnenMitEinheiten: Topic = {
       volumeScenarios.push({
         unitName: 'ml',
         items: [
-          { label: `${formatDe(l1)} l`, valueInBase: l1 * 1000 },
-          { label: `${ml1} ml`, valueInBase: ml1 },
-          { label: `${formatDe(ml2 / 1000)} l`, valueInBase: ml2 },
+          { label: `${formatDe(l1)} l`, value: l1 * 1000 },
+          { label: `${ml1} ml`, value: ml1 },
+          { label: `${formatDe(ml2 / 1000)} l`, value: ml2 },
         ],
       })
     }
     
     const allScenarios = [...lengthScenarios, ...massScenarios, ...volumeScenarios]
     const sc = pick(rng, allScenarios)
-    const sorted = [...sc.items].sort((a, b) => a.valueInBase - b.valueInBase)
+    const sorted = [...sc.items].sort((a, b) => a.value - b.value)
     const correctOrder = sorted.map((sortedItem) => 
-      sc.items.findIndex((item) => item.valueInBase === sortedItem.valueInBase)
+      sc.items.findIndex((item) => item.value === sortedItem.value)
     )
     
     return dragDropSortTask({
@@ -623,7 +623,7 @@ const ordnenMitEinheiten: Topic = {
       items: sc.items,
       correctOrder,
       solution: sorted.map((i) => i.label).join(' < '),
-      explanation: `Rechne alle Angaben in ${sc.unitName} um:\n${sc.items.map((i) => `${i.label} = ${formatDe(i.valueInBase)} ${sc.unitName}`).join('\n')}.\n\nSortiert von klein nach groß: ${sorted.map((i) => i.label).join(' < ')}.`,
+      explanation: `Rechne alle Angaben in ${sc.unitName} um:\n${sc.items.map((i) => `${i.label} = ${formatDe(i.value)} ${sc.unitName}`).join('\n')}.\n\nSortiert von klein nach groß: ${sorted.map((i) => i.label).join(' < ')}.`,
     })
   },
 }
