@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.50] – 2026-09-14
+
+### Behoben
+- **Gelöschte Benutzer bleiben nun wirklich gelöscht**: Der `ACTIVE_KEY` in localStorage
+  wurde beim Löschen nicht entfernt und beim Reload wieder gelesen – dadurch wurde der
+  gelöschte User quasi wiederbelebt. Jetzt wird der Key korrekt entfernt und beim Init
+  geprüft ob der User aus dem Key überhaupt noch in der User-Liste existiert. Stale Keys
+  werden automatisch bereinigt.
+
 ## [0.1.49] – 2026-09-14
 
 ### Behoben

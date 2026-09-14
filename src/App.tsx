@@ -151,7 +151,11 @@ export default function App() {
       ) : null
 
   useEffect(() => {
-    if (activeUser) localStorage.setItem(ACTIVE_KEY, activeUser)
+    if (activeUser) {
+      localStorage.setItem(ACTIVE_KEY, activeUser)
+    } else {
+      localStorage.removeItem(ACTIVE_KEY)
+    }
   }, [activeUser])
 
   useEffect(() => {
@@ -161,13 +165,23 @@ export default function App() {
       setUsers(listUsers())
       setClassLabel(activeClassDisplayName())
       const current = localStorage.getItem(ACTIVE_KEY)
-      if (current) setUserRoleState(getUserRole(current))
+      // Only restore role if the user still exists
+      if (current && listUsers().includes(current)) {
+        setUserRoleState(getUserRole(current))
+      }
     })
     void initSharedStorage().then(() => {
       if (cancelled) return
       const stored = localStorage.getItem(ACTIVE_KEY)
-      if (stored) setActiveStorageUser(stored)
-      setUsers(listUsers())
+      const users = listUsers()
+      // Only restore active user if they still exist in the users list
+      if (stored && users.includes(stored)) {
+        setActiveStorageUser(stored)
+      } else if (stored) {
+        // Clean up stale ACTIVE_KEY
+        localStorage.removeItem(ACTIVE_KEY)
+      }
+      setUsers(users)
       setClassLabel(activeClassDisplayName())
       setStorageReady(true)
     })
