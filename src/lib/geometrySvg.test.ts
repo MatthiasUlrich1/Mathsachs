@@ -5,6 +5,9 @@ import {
   generateCircleSvg,
   generateCuboidSvg,
   generateAngleSvg,
+  generateFractionCircleSvg,
+  generateFractionBarSvg,
+  generateFractionGridSvg,
 } from './geometrySvg'
 
 describe('geometrySvg', () => {
@@ -90,6 +93,72 @@ describe('geometrySvg', () => {
       })
       expect(svg).toContain('<svg')
       expect(svg).not.toContain('<path')
+    })
+  })
+
+  describe('generateFractionCircleSvg', () => {
+    it('generates valid fraction circle SVG without label by default', () => {
+      const svg = generateFractionCircleSvg({
+        numerator: 3,
+        denominator: 4,
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('<path')
+      expect(svg).not.toContain('3/4')
+    })
+
+    it('shows label when showLabel is true', () => {
+      const svg = generateFractionCircleSvg({
+        numerator: 3,
+        denominator: 4,
+        showLabel: true,
+      })
+      expect(svg).toContain('3/4')
+    })
+  })
+
+  describe('generateFractionBarSvg', () => {
+    it('generates valid fraction bar SVG without label by default', () => {
+      const svg = generateFractionBarSvg({
+        numerator: 2,
+        denominator: 5,
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('<rect')
+      expect(svg).not.toContain('2/5')
+    })
+
+    it('shows label when showLabel is true', () => {
+      const svg = generateFractionBarSvg({
+        numerator: 2,
+        denominator: 5,
+        showLabel: true,
+      })
+      expect(svg).toContain('2/5')
+    })
+  })
+
+  describe('generateFractionGridSvg', () => {
+    it('generates valid fraction grid SVG without label by default', () => {
+      const svg = generateFractionGridSvg({
+        numerator: 3,
+        denominator: 6,
+        cols: 3,
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('<rect')
+      expect(svg).not.toContain('3/6')
+      // 6 cells
+      expect((svg.match(/<rect/g) ?? []).length).toBe(6)
+    })
+
+    it('shows label when showLabel is true', () => {
+      const svg = generateFractionGridSvg({
+        numerator: 2,
+        denominator: 8,
+        showLabel: true,
+      })
+      expect(svg).toContain('2/8')
     })
   })
 })

@@ -603,3 +603,235 @@ export function generateAngleSvg({
   }
 </svg>`.trim()
 }
+
+export interface FractionCircleSvgProps {
+  /** Numerator (Zähler) */
+  numerator: number
+  /** Denominator (Nenner) */
+  denominator: number
+  /** Show fraction label (default false — too easy for "read the fraction" tasks) */
+  showLabel?: boolean
+  /** Optional fill color for filled parts */
+  fillColor?: string
+  /** Optional fill color for empty parts */
+  emptyColor?: string
+  /** Optional stroke color */
+  stroke?: string
+}
+
+/**
+ * Generate SVG for a fraction shown as a pie chart / circle.
+ * Filled slices represent the numerator, empty slices the rest.
+ */
+export function generateFractionCircleSvg({
+  numerator,
+  denominator,
+  showLabel = false,
+  fillColor = '#3498db',
+  emptyColor = '#ecf0f1',
+  stroke = '#2c3e50',
+}: FractionCircleSvgProps): string {
+  const size = 200
+  const cx = size / 2
+  const cy = size / 2
+  const radius = 70
+
+  const slices: string[] = []
+  const anglePerSlice = (2 * Math.PI) / denominator
+
+  for (let i = 0; i < denominator; i++) {
+    const startAngle = i * anglePerSlice - Math.PI / 2
+    const endAngle = (i + 1) * anglePerSlice - Math.PI / 2
+
+    const x1 = cx + radius * Math.cos(startAngle)
+    const y1 = cy + radius * Math.sin(startAngle)
+    const x2 = cx + radius * Math.cos(endAngle)
+    const y2 = cy + radius * Math.sin(endAngle)
+
+    const largeArc = anglePerSlice > Math.PI ? 1 : 0
+    const fill = i < numerator ? fillColor : emptyColor
+
+    slices.push(`
+    <path
+      d="M ${cx},${cy} L ${x1},${y1} A ${radius},${radius} 0 ${largeArc},1 ${x2},${y2} Z"
+      fill="${fill}"
+      stroke="${stroke}"
+      stroke-width="2"
+    />`)
+  }
+
+  const label = showLabel
+    ? `
+  <text
+    x="${cx}"
+    y="${cy + 8}"
+    text-anchor="middle"
+    font-size="24"
+    font-weight="bold"
+    fill="#333"
+  >
+    ${numerator}/${denominator}
+  </text>`
+    : ''
+
+  return `
+<svg width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fraction Circle (Pie Chart) -->
+  ${slices.join('\n  ')}
+  ${label}
+</svg>`.trim()
+}
+
+export interface FractionBarSvgProps {
+  /** Numerator (Zähler) */
+  numerator: number
+  /** Denominator (Nenner) */
+  denominator: number
+  /** Show fraction label (default false) */
+  showLabel?: boolean
+  /** Optional fill color for filled parts */
+  fillColor?: string
+  /** Optional fill color for empty parts */
+  emptyColor?: string
+  /** Optional stroke color */
+  stroke?: string
+}
+
+/**
+ * Generate SVG for a fraction shown as a horizontal bar.
+ * Filled sections represent the numerator.
+ */
+export function generateFractionBarSvg({
+  numerator,
+  denominator,
+  showLabel = false,
+  fillColor = '#2ecc71',
+  emptyColor = '#ecf0f1',
+  stroke = '#27ae60',
+}: FractionBarSvgProps): string {
+  const totalWidth = 300
+  const padding = 20
+  const barHeight = 40
+  const height = showLabel ? 80 : padding + barHeight + padding
+  const barWidth = totalWidth - 2 * padding
+  const sectionWidth = barWidth / denominator
+
+  const sections: string[] = []
+  for (let i = 0; i < denominator; i++) {
+    const x = padding + i * sectionWidth
+    const fill = i < numerator ? fillColor : emptyColor
+    sections.push(`
+    <rect
+      x="${x}"
+      y="${padding}"
+      width="${sectionWidth}"
+      height="${barHeight}"
+      fill="${fill}"
+      stroke="${stroke}"
+      stroke-width="2"
+    />`)
+  }
+
+  const label = showLabel
+    ? `
+  <text
+    x="${totalWidth / 2}"
+    y="${padding + barHeight + 22}"
+    text-anchor="middle"
+    font-size="18"
+    font-weight="bold"
+    fill="#333"
+  >
+    ${numerator}/${denominator}
+  </text>`
+    : ''
+
+  return `
+<svg width="${totalWidth}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fraction Bar -->
+  ${sections.join('\n  ')}
+  ${label}
+</svg>`.trim()
+}
+
+export interface FractionGridSvgProps {
+  /** Numerator (Zähler) — number of filled cells */
+  numerator: number
+  /** Denominator (Nenner) — total number of cells */
+  denominator: number
+  /** Number of columns (default: auto, roughly square) */
+  cols?: number
+  /** Show fraction label (default false) */
+  showLabel?: boolean
+  /** Optional fill color for filled cells */
+  fillColor?: string
+  /** Optional fill color for empty cells */
+  emptyColor?: string
+  /** Optional stroke color */
+  stroke?: string
+}
+
+/**
+ * Generate SVG for a fraction shown as a rectangle divided into equal cells.
+ * Filled cells represent the numerator.
+ */
+export function generateFractionGridSvg({
+  numerator,
+  denominator,
+  cols,
+  showLabel = false,
+  fillColor = '#e74c3c',
+  emptyColor = '#ecf0f1',
+  stroke = '#c0392b',
+}: FractionGridSvgProps): string {
+  const columns = cols ?? Math.ceil(Math.sqrt(denominator))
+  const rows = Math.ceil(denominator / columns)
+  const cellSize = 40
+  const gap = 2
+  const padding = 16
+  const gridW = columns * cellSize + (columns - 1) * gap
+  const gridH = rows * cellSize + (rows - 1) * gap
+  const totalW = gridW + 2 * padding
+  const totalH = gridH + 2 * padding + (showLabel ? 28 : 0)
+
+  const cells: string[] = []
+  for (let i = 0; i < denominator; i++) {
+    const col = i % columns
+    const row = Math.floor(i / columns)
+    const x = padding + col * (cellSize + gap)
+    const y = padding + row * (cellSize + gap)
+    const fill = i < numerator ? fillColor : emptyColor
+    cells.push(`
+    <rect
+      x="${x}"
+      y="${y}"
+      width="${cellSize}"
+      height="${cellSize}"
+      fill="${fill}"
+      stroke="${stroke}"
+      stroke-width="2"
+      rx="2"
+    />`)
+  }
+
+  const label = showLabel
+    ? `
+  <text
+    x="${totalW / 2}"
+    y="${padding + gridH + 22}"
+    text-anchor="middle"
+    font-size="18"
+    font-weight="bold"
+    fill="#333"
+  >
+    ${numerator}/${denominator}
+  </text>`
+    : ''
+
+  return `
+<svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fraction Grid -->
+  ${cells.join('\n  ')}
+  ${label}
+</svg>`.trim()
+}

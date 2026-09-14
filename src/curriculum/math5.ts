@@ -3,7 +3,14 @@ import { gcd, makeFraction } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
 import { fractionTask, dragDropSortTask, mixedVariants, numberLineTask, textTask, valueTask, visualTask } from './taskHelpers'
 import { conversionTopic, LAENGE, FLAECHE, VOLUMEN, MASSE, ZEIT } from './units'
-import { generateRectangleSvg, generateCuboidSvg, generateAngleSvg } from '../lib/geometrySvg'
+import {
+  generateRectangleSvg,
+  generateCuboidSvg,
+  generateAngleSvg,
+  generateFractionCircleSvg,
+  generateFractionBarSvg,
+  generateFractionGridSvg,
+} from '../lib/geometrySvg'
 import type { Grade, Topic } from './types'
 
 /** Whether n is a prime number (n ≥ 2). */
@@ -326,6 +333,73 @@ const anteilAlsBruch: Topic = {
       explanation: `Der Anteil ist ${k} von ${total}, also ${k}/${total}. Vollständig gekürzt ergibt das ${value.n}/${value.d}.`,
     })
   },
+}
+
+const grafischeBrueche: Topic = {
+  id: 'lb2-grafische-brueche',
+  title: 'Brüche grafisch ablesen',
+  hint: 'Zähle die eingefärbten Teile und die Gesamtanzahl. Gib den gekürzten Bruch an.',
+  pointsPerTask: 10,
+  difficulty: 1,
+  fachwissen: {
+    text: 'Brüche lassen sich grafisch darstellen: als Kreisdiagramm (Tortendiagramm), als Rechteckstreifen (Balken) oder als Raster aus gleich großen Feldern. Der Zähler entspricht der Anzahl der eingefärbten Teile, der Nenner der Gesamtanzahl aller gleich großen Teile. Anschließend wird der Bruch vollständig gekürzt.',
+    quelle: 'Wikipedia: Bruch (Mathematik)',
+    url: 'https://de.wikipedia.org/wiki/Bruch_(Mathematik)',
+  },
+  generate: mixedVariants(
+    // Variant: Kreisdiagramm
+    (rng: Rng) => {
+      const denominator = pick(rng, [3, 4, 5, 6, 8])
+      const numerator = randInt(rng, 1, denominator - 1)
+      const value = makeFraction(numerator, denominator)
+      const svg = generateFractionCircleSvg({ numerator, denominator })
+      return {
+        ...fractionTask({
+          question: 'Welcher Bruchanteil ist im Kreisdiagramm eingefärbt? Gib den gekürzten Bruch an.',
+          value,
+          requireReduced: true,
+          solution: `${value.n}/${value.d}`,
+          explanation: `${numerator} von ${denominator} Teilen sind eingefärbt, also ${numerator}/${denominator}. Vollständig gekürzt: ${value.n}/${value.d}.`,
+        }),
+        visualContent: svg,
+      }
+    },
+    // Variant: Balken
+    (rng: Rng) => {
+      const denominator = pick(rng, [3, 4, 5, 6, 8, 10])
+      const numerator = randInt(rng, 1, denominator - 1)
+      const value = makeFraction(numerator, denominator)
+      const svg = generateFractionBarSvg({ numerator, denominator })
+      return {
+        ...fractionTask({
+          question: 'Welcher Bruchanteil ist im Balken eingefärbt? Gib den gekürzten Bruch an.',
+          value,
+          requireReduced: true,
+          solution: `${value.n}/${value.d}`,
+          explanation: `${numerator} von ${denominator} Abschnitten sind eingefärbt, also ${numerator}/${denominator}. Vollständig gekürzt: ${value.n}/${value.d}.`,
+        }),
+        visualContent: svg,
+      }
+    },
+    // Variant: Raster
+    (rng: Rng) => {
+      const denominator = pick(rng, [4, 6, 8, 9, 12])
+      const numerator = randInt(rng, 1, denominator - 1)
+      const value = makeFraction(numerator, denominator)
+      const cols = denominator === 9 ? 3 : denominator === 12 ? 4 : denominator === 6 ? 3 : 4
+      const svg = generateFractionGridSvg({ numerator, denominator, cols })
+      return {
+        ...fractionTask({
+          question: 'Welcher Bruchanteil ist im Raster eingefärbt? Gib den gekürzten Bruch an.',
+          value,
+          requireReduced: true,
+          solution: `${value.n}/${value.d}`,
+          explanation: `${numerator} von ${denominator} Feldern sind eingefärbt, also ${numerator}/${denominator}. Vollständig gekürzt: ${value.n}/${value.d}.`,
+        }),
+        visualContent: svg,
+      }
+    },
+  ),
 }
 
 const dezAddSub: Topic = {
@@ -786,7 +860,7 @@ const winkelErgaenzung: Topic = {
         value,
         solution: `${value}°`,
         explanation: `Ergänzungswinkel = ${gesamt}° − ${a}° = ${value}°.`,
-        svg,
+        visualContent: svg,
       })
     },
   ),
@@ -997,7 +1071,7 @@ const volumenQuader: Topic = {
         value,
         solution: `${value} cm³`,
         explanation: `Volumen = Länge · Breite · Höhe = ${a} · ${b} · ${c} cm³ = ${value} cm³.`,
-        svg,
+        visualContent: svg,
       })
     },
     // Variant 3: Sachaufgabe
@@ -1072,7 +1146,7 @@ const oberflaecheQuader: Topic = {
         value,
         solution: `${value} dm²`,
         explanation: `Oberfläche = 2 · (a·b + a·c + b·c) = 2 · (${a * b} + ${a * c} + ${b * c}) dm² = ${value} dm².`,
-        svg,
+        visualContent: svg,
       })
     },
     // Variant 3: Sachaufgabe
@@ -1286,6 +1360,7 @@ export const klasse5: Grade = {
         kuerzen,
         erweitern,
         anteilAlsBruch,
+        grafischeBrueche,
         dezAddSub,
         dezMult,
         dezDiv,
