@@ -20,6 +20,7 @@ import {
 } from '../classCode/code'
 import {
   CLASS_CODES_STORAGE_KEY,
+  DELETED_USERS_STORAGE_KEY,
   SHARED_STATE_SCHEMA_VERSION,
   USERS_STORAGE_KEY,
   cloneSharedState,
@@ -129,6 +130,15 @@ const readLocalState = (): SharedState => {
   } catch {
     state.classCodes = emptyClassCodes()
   }
+  try {
+    const raw = localStorage.getItem(DELETED_USERS_STORAGE_KEY)
+    if (raw) {
+      const parsed = JSON.parse(raw)
+      state.deletedUsers = Array.isArray(parsed) ? parsed : []
+    }
+  } catch {
+    state.deletedUsers = []
+  }
   return migrateSharedClassCodes(state, activeUserName)
 }
 
@@ -139,9 +149,14 @@ const writeLocalState = (state: SharedState): void => {
     CLASS_CODES_STORAGE_KEY,
     JSON.stringify(state.classCodes ?? emptyClassCodes()),
   )
+  localStorage.setItem(
+    DELETED_USERS_STORAGE_KEY,
+    JSON.stringify(state.deletedUsers ?? []),
+  )
   const keep = new Set(state.users.map((name) => userRecordKey(name)))
   keep.add(USERS_STORAGE_KEY)
   keep.add(CLASS_CODES_STORAGE_KEY)
+  keep.add(DELETED_USERS_STORAGE_KEY)
   for (let i = localStorage.length - 1; i >= 0; i--) {
     const key = localStorage.key(i)
     if (!key) continue
@@ -200,6 +215,7 @@ const parseStateResponse = async (res: Response): Promise<SharedState | null> =>
             ? data.curriculumPacks
             : {},
         deletedCurricula: Array.isArray(data.deletedCurricula) ? data.deletedCurricula : [],
+        deletedUsers: Array.isArray(data.deletedUsers) ? data.deletedUsers : [],
       },
       activeUserName,
     )
@@ -232,6 +248,7 @@ const putHttpState = async (state: SharedState): Promise<SharedState | null> => 
       installedCurricula: state.installedCurricula ?? [],
       curriculumPacks: state.curriculumPacks ?? {},
       deletedCurricula: state.deletedCurricula ?? [],
+      deletedUsers: state.deletedUsers ?? [],
     }),
   })
   return parseStateResponse(res)
@@ -480,7 +497,11 @@ export const deleteUser = async (name: string): Promise<string[]> => {
   const users = listUsers().filter((n) => n !== name)
   const records = { ...cache.records }
   delete records[name]
-  cache = { ...cache, users, records }
+  const deletedUsers = [
+    ...(cache.deletedUsers ?? []),
+    { name, deletedAt: Date.now() },
+  ]
+  cache = { ...cache, users, records, deletedUsers }
   await persistCache()
   notify()
   return users
@@ -500,7 +521,11 @@ export const renameUser = async (oldName: string, newName: string): Promise<stri
   const records = { ...cache.records }
   delete records[oldTrimmed]
   records[newTrimmed] = renamedData
-  cache = { ...cache, users, records }
+  const deletedUsers = [
+    ...(cache.deletedUsers ?? []),
+    { name: oldTrimmed, deletedAt: Date.now() },
+  ]
+  cache = { ...cache, users, records, deletedUsers }
   await persistCache()
   notify()
   return users

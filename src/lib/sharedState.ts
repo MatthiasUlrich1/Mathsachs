@@ -118,6 +118,15 @@ export interface GradeCodeSettings {
 export const DELETED_CLASS_CODE_TTL_MS = 30 * 24 * 60 * 60 * 1000
 export const MAX_DELETED_CLASS_CODES = 200
 
+/** A locally deleted user. Wins over user list union on WLAN/PC merge. */
+export interface DeletedUser {
+  name: string
+  deletedAt: number
+}
+
+export const DELETED_USER_TTL_MS = 30 * 24 * 60 * 60 * 1000
+export const MAX_DELETED_USERS = 50
+
 /** On-disk / API payload for users and per-user scores. */
 export interface SharedState {
   schemaVersion: number
@@ -129,11 +138,14 @@ export interface SharedState {
   curriculumPacks?: Record<string, CurriculumPack>
   /** Tombstones so merge cannot resurrect a pack this device just removed. */
   deletedCurricula?: DeletedCurriculum[]
+  /** Tombstones so merge cannot resurrect a user this device just removed/renamed. */
+  deletedUsers?: DeletedUser[]
 }
 
 export const SHARED_STATE_SCHEMA_VERSION = 1
 export const USERS_STORAGE_KEY = 'mathsachs.users.v1'
 export const CLASS_CODES_STORAGE_KEY = 'mathsachs.classCodes.v1'
+export const DELETED_USERS_STORAGE_KEY = 'mathsachs.deletedUsers.v1'
 export const userRecordKey = (name: string) => `mathsachs.user.${name}.v1`
 
 const CLASS_CODE_CLEAN_RE = /[^0-9A-HJKMNP-TV-Z]/g
@@ -172,6 +184,7 @@ export const emptySharedState = (): SharedState => ({
   installedCurricula: [],
   curriculumPacks: {},
   deletedCurricula: [],
+  deletedUsers: [],
 })
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
@@ -429,6 +442,72 @@ export const hasGradeCodeData = (
   )
 }
 
+const parseDeletedUsers = (raw: unknown, now: number = Date.now()): DeletedUser[] => {
+  const list = Array.isArray(raw) ? raw : []
+  const byName = new Map<string, DeletedUser>()
+  const cutoff = now - DELETED_USER_TTL_MS
+  for (const item of list) {
+    if (!isRecord(item) || typeof item.name !== 'string') continue
+    const name = item.name.trim()
+    if (!name) continue
+    const deletedAt =
+      typeof item.deletedAt === 'number' && Number.isFinite(item.deletedAt)
+        ? item.deletedAt
+        : 0
+    if (deletedAt < cutoff) continue
+    const prev = byName.get(name)
+    if (!prev || deletedAt > prev.deletedAt) byName.set(name, { name, deletedAt })
+  }
+  return [...byName.values()]
+    .sort((a, b) => b.deletedAt - a.deletedAt || a.name.localeCompare(b.name))
+    .slice(0, MAX_DELETED_USERS)
+}
+
+const mergeDeletedUsers = (
+  a: DeletedUser[] | undefined,
+  b: DeletedUser[] | undefined,
+  now: number = Date.now(),
+): DeletedUser[] => {
+  return parseDeletedUsers([...(a ?? []), ...(b ?? [])], now)
+}
+
+/** Apply tombstones: remove users covered by deletedUsers, drop tombstones superseded by later adds. */
+const applyUserTombstones = (
+  users: string[],
+  records: Record<string, UserData>,
+  deletedUsers: DeletedUser[],
+): { users: string[]; records: Record<string, UserData>; deletedUsers: DeletedUser[] } => {
+  const deletedAt = new Map(deletedUsers.map((row) => [row.name, row.deletedAt]))
+  const liveUsers: string[] = []
+  const liveRecords: Record<string, UserData> = {}
+  const resurrected = new Set<string>()
+  
+  for (const name of users) {
+    const tomb = deletedAt.get(name)
+    const record = records[name]
+    const createdAt = record?.created ?? 0
+    
+    // If user was created after deletion, they're resurrected
+    if (tomb != null && createdAt > tomb) {
+      liveUsers.push(name)
+      if (record) liveRecords[name] = record
+      resurrected.add(name)
+      continue
+    }
+    // If user has a tombstone and wasn't resurrected, skip them
+    if (tomb != null) continue
+    
+    liveUsers.push(name)
+    if (record) liveRecords[name] = record
+  }
+  
+  return {
+    users: liveUsers,
+    records: liveRecords,
+    deletedUsers: deletedUsers.filter((row) => !resurrected.has(row.name)),
+  }
+}
+
 export const pickClassCodeMigrationTarget = (
   users: string[],
   preferredUser?: string | null,
@@ -514,6 +593,7 @@ export const collectLocalStorageSnapshot = (
     if (
       key !== USERS_STORAGE_KEY &&
       key !== CLASS_CODES_STORAGE_KEY &&
+      key !== DELETED_USERS_STORAGE_KEY &&
       !key.startsWith('mathsachs.user.')
     ) {
       continue
@@ -683,11 +763,13 @@ export const mergeSharedState = (base: SharedState, incoming: SharedState): Shar
       parseDeletedCurricula(incomingM.deletedCurricula),
     ),
   )
+  const deletedUsers = mergeDeletedUsers(baseM.deletedUsers, incomingM.deletedUsers)
+  const usersTombstoned = applyUserTombstones(users, records, deletedUsers)
   return migrateSharedClassCodes({
     schemaVersion: SHARED_STATE_SCHEMA_VERSION,
     migratedLocalStorage: Boolean(base.migratedLocalStorage || incoming.migratedLocalStorage),
-    users,
-    records,
+    users: usersTombstoned.users,
+    records: usersTombstoned.records,
     classCodes: mergeClassCodes(
       baseM.classCodes ?? emptyClassCodes(),
       incomingM.classCodes ?? emptyClassCodes(),
@@ -695,5 +777,6 @@ export const mergeSharedState = (base: SharedState, incoming: SharedState): Shar
     installedCurricula: curricula.meta,
     curriculumPacks: curricula.packs,
     deletedCurricula: curricula.deleted,
+    deletedUsers: usersTombstoned.deletedUsers,
   })
 }
