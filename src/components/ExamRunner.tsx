@@ -42,6 +42,10 @@ const formatInput = (input: UserInput): string => {
   if (input.kind === 'dragDropSort') {
     return input.order.join(', ')
   }
+  if (input.kind === 'digitGrid') {
+    const joined = input.digits.join('').replace(/\D/g, '')
+    return joined || '—'
+  }
   return input.value.trim() || '—'
 }
 

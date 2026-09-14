@@ -208,6 +208,75 @@ export const visualTask = (input: VisualTaskInput): Task => ({
   },
 })
 
+interface DigitGridTaskInput {
+  question: string
+  /** First operand. */
+  a: number
+  /** Second operand. */
+  b: number
+  /** Operator shown on the second row. */
+  operator: '+' | '−' | '·'
+  /** Correct numeric result. */
+  value: number
+  solution: string
+  explanation: string
+}
+
+/** Right-align digit strings into a fixed-width cell array. */
+const padDigits = (n: number, width: number): string[] => {
+  const s = String(Math.abs(n))
+  const cells = Array.from({ length: width }, () => '')
+  const offset = width - s.length
+  for (let i = 0; i < s.length; i++) cells[offset + i] = s[i]
+  return cells
+}
+
+/** Parse digit-grid cells into an integer (leading empty cells ignored). */
+export const parseDigitGrid = (digits: string[]): number | null => {
+  const joined = digits.join('').replace(/\D/g, '')
+  if (!joined) return null
+  return parseInteger(joined)
+}
+
+/** Build a written-arithmetic task with a digit grid (Kästchenpapier). */
+export const digitGridTask = (input: DigitGridTaskInput): Task => {
+  const width = Math.max(
+    String(Math.abs(input.a)).length,
+    String(Math.abs(input.b)).length,
+    String(Math.abs(input.value)).length,
+  )
+  const sampleDigits = padDigits(input.value, width)
+  return {
+    question: input.question,
+    answerKind: 'integer',
+    solution: input.solution,
+    explanation: input.explanation,
+    sampleAnswer: { kind: 'digitGrid', digits: sampleDigits },
+    interactive: {
+      type: 'digitGrid',
+      props: {
+        rows: [
+          { digits: padDigits(input.a, width) },
+          { prefix: input.operator, digits: padDigits(input.b, width) },
+          { editable: true, digits: Array.from({ length: width }, () => '') },
+        ],
+        answerLength: width,
+      },
+    },
+    check: (answer: UserInput) => {
+      if (answer.kind === 'digitGrid') {
+        const parsed = parseDigitGrid(answer.digits)
+        return parsed !== null && parsed === input.value
+      }
+      if (answer.kind === 'value') {
+        const parsed = parseInteger(answer.value)
+        return parsed !== null && parsed === input.value
+      }
+      return false
+    },
+  }
+}
+
 /**
  * Combine multiple task generators into one, randomly selecting a variant each time.
  * Use this to add variety to a topic (text, visual, interactive).

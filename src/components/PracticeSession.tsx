@@ -5,6 +5,7 @@ import { emptyInput, type Task, type Topic, type UserInput } from '../curriculum
 import { AnswerInput } from './AnswerInput'
 import { NumberLineSlider } from './NumberLineSlider'
 import { DragDropSort } from './DragDropSort'
+import { DigitGrid } from './DigitGrid'
 
 const TASKS_PER_ROUND = 10
 
@@ -29,6 +30,10 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
     }
     if (t.interactive?.type === 'dragDropSort') {
       return { kind: 'dragDropSort', order: t.interactive.props.items.map((_: any, i: number) => i) }
+    }
+    if (t.interactive?.type === 'digitGrid') {
+      const len = t.interactive.props.answerLength ?? 4
+      return { kind: 'digitGrid', digits: Array.from({ length: len }, () => '') }
     }
     return emptyInput(t.answerKind)
   }
@@ -198,6 +203,19 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
               }
               onChange={(order) => setInput({ kind: 'dragDropSort', order })}
               instruction="Ziehe die Elemente in die richtige Reihenfolge:"
+            />
+          )}
+          {task.interactive.type === 'digitGrid' && (
+            <DigitGrid
+              rows={task.interactive.props.rows}
+              digits={
+                input.kind === 'digitGrid'
+                  ? input.digits
+                  : Array.from({ length: task.interactive.props.answerLength ?? 4 }, () => '')
+              }
+              onChange={(digits) => setInput({ kind: 'digitGrid', digits })}
+              instruction="Trage das Ergebnis ziffernweise in die Kästchen ein:"
+              disabled={false}
             />
           )}
         </div>

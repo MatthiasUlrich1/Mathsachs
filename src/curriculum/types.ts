@@ -28,12 +28,16 @@ export type UserInput =
   | { kind: 'fraction'; num: string; den: string }
   | { kind: 'numberLine'; value: number }
   | { kind: 'dragDropSort'; order: number[] }
+  | { kind: 'digitGrid'; digits: string[] }
 
 /** A blank input matching the widget for a given answer kind. */
-export const emptyInput = (kind: AnswerKind | 'numberLine' | 'dragDropSort'): UserInput => {
+export const emptyInput = (
+  kind: AnswerKind | 'numberLine' | 'dragDropSort' | 'digitGrid',
+): UserInput => {
   if (kind === 'fraction') return { kind: 'fraction', num: '', den: '' }
   if (kind === 'numberLine') return { kind: 'numberLine', value: 0 }
   if (kind === 'dragDropSort') return { kind: 'dragDropSort', order: [] }
+  if (kind === 'digitGrid') return { kind: 'digitGrid', digits: [] }
   return { kind: 'value', value: '' }
 }
 
@@ -41,7 +45,7 @@ export const emptyInput = (kind: AnswerKind | 'numberLine' | 'dragDropSort'): Us
  * Interactive component configuration for tasks.
  */
 export interface InteractiveConfig {
-  type: 'numberLine' | 'dragDropSort'
+  type: 'numberLine' | 'dragDropSort' | 'digitGrid'
   props: Record<string, any> // Component-specific props
 }
 

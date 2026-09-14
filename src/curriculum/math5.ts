@@ -1,7 +1,7 @@
 import { pick, randInt, type Rng } from '../lib/rng'
 import { gcd, makeFraction } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
-import { fractionTask, dragDropSortTask, mixedVariants, numberLineTask, textTask, valueTask, visualTask } from './taskHelpers'
+import { fractionTask, dragDropSortTask, digitGridTask, mixedVariants, numberLineTask, textTask, valueTask, visualTask } from './taskHelpers'
 import { conversionTopic, LAENGE, FLAECHE, VOLUMEN, MASSE, ZEIT } from './units'
 import {
   generateRectangleSvg,
@@ -64,18 +64,34 @@ const addition: Topic = {
     quelle: 'Wikipedia: Addition',
     url: 'https://de.wikipedia.org/wiki/Addition',
   },
-  generate: (rng: Rng) => {
-    const a = randInt(rng, 124, 8999)
-    const b = randInt(rng, 124, 8999)
-    const value = a + b
-    return valueTask({
-      question: `Berechne: ${formatDe(a)} + ${formatDe(b)}`,
-      answerKind: 'integer',
-      value,
-      solution: formatDe(value),
-      explanation: `Addiere die Zahlen stellenweise (mit Übertrag): ${formatDe(a)} + ${formatDe(b)} = ${formatDe(value)}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const a = randInt(rng, 124, 8999)
+      const b = randInt(rng, 124, 8999)
+      const value = a + b
+      return valueTask({
+        question: `Berechne: ${formatDe(a)} + ${formatDe(b)}`,
+        answerKind: 'integer',
+        value,
+        solution: formatDe(value),
+        explanation: `Addiere die Zahlen stellenweise (mit Übertrag): ${formatDe(a)} + ${formatDe(b)} = ${formatDe(value)}.`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 124, 8999)
+      const b = randInt(rng, 124, 8999)
+      const value = a + b
+      return digitGridTask({
+        question: 'Addiere schriftlich. Trage die Summe in die Kästchen ein:',
+        a,
+        b,
+        operator: '+',
+        value,
+        solution: formatDe(value),
+        explanation: `Addiere stellenweise (mit Übertrag): ${formatDe(a)} + ${formatDe(b)} = ${formatDe(value)}.`,
+      })
+    },
+  ),
 }
 
 const subtraktion: Topic = {
@@ -89,18 +105,34 @@ const subtraktion: Topic = {
     quelle: 'Wikipedia: Subtraktion',
     url: 'https://de.wikipedia.org/wiki/Subtraktion',
   },
-  generate: (rng: Rng) => {
-    const a = randInt(rng, 2000, 9999)
-    const b = randInt(rng, 100, a - 1)
-    const value = a - b
-    return valueTask({
-      question: `Berechne: ${formatDe(a)} − ${formatDe(b)}`,
-      answerKind: 'integer',
-      value,
-      solution: formatDe(value),
-      explanation: `Subtrahiere stellenweise (mit Entbündeln): ${formatDe(a)} − ${formatDe(b)} = ${formatDe(value)}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const a = randInt(rng, 2000, 9999)
+      const b = randInt(rng, 100, a - 1)
+      const value = a - b
+      return valueTask({
+        question: `Berechne: ${formatDe(a)} − ${formatDe(b)}`,
+        answerKind: 'integer',
+        value,
+        solution: formatDe(value),
+        explanation: `Subtrahiere stellenweise (mit Entbündeln): ${formatDe(a)} − ${formatDe(b)} = ${formatDe(value)}.`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 2000, 9999)
+      const b = randInt(rng, 100, a - 1)
+      const value = a - b
+      return digitGridTask({
+        question: 'Subtrahiere schriftlich. Trage die Differenz in die Kästchen ein:',
+        a,
+        b,
+        operator: '−',
+        value,
+        solution: formatDe(value),
+        explanation: `Subtrahiere stellenweise (mit Entbündeln): ${formatDe(a)} − ${formatDe(b)} = ${formatDe(value)}.`,
+      })
+    },
+  ),
 }
 
 const multiplikation: Topic = {
@@ -114,18 +146,93 @@ const multiplikation: Topic = {
     quelle: 'Wikipedia: Multiplikation',
     url: 'https://de.wikipedia.org/wiki/Multiplikation',
   },
-  generate: (rng: Rng) => {
-    const a = randInt(rng, 12, 99)
-    const b = randInt(rng, 3, 19)
-    const value = a * b
-    return valueTask({
-      question: `Berechne: ${a} · ${b}`,
-      answerKind: 'integer',
-      value,
-      solution: formatDe(value),
-      explanation: `Multipliziere schriftlich: ${a} · ${b} = ${formatDe(value)}.`,
-    })
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const a = randInt(rng, 12, 99)
+      const b = randInt(rng, 3, 19)
+      const value = a * b
+      return valueTask({
+        question: `Berechne: ${a} · ${b}`,
+        answerKind: 'integer',
+        value,
+        solution: formatDe(value),
+        explanation: `Multipliziere schriftlich: ${a} · ${b} = ${formatDe(value)}.`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 12, 99)
+      const b = randInt(rng, 3, 19)
+      const value = a * b
+      return digitGridTask({
+        question: 'Multipliziere schriftlich. Trage das Produkt in die Kästchen ein:',
+        a,
+        b,
+        operator: '·',
+        value,
+        solution: formatDe(value),
+        explanation: `Multipliziere schriftlich: ${a} · ${b} = ${formatDe(value)}.`,
+      })
+    },
+  ),
+}
+
+/** Dediziertes Thema: immer Kästchenpapier für schriftliches Rechnen. */
+const schriftlichesRechnen: Topic = {
+  id: 'lb1-schriftliches-rechnen',
+  title: 'Schriftliches Rechnen (Kästchenpapier)',
+  hint: 'Schreibe stellenrichtig untereinander und trage jede Ziffer in ein Kästchen.',
+  pointsPerTask: 10,
+  difficulty: 2,
+  keywords: ['schriftlich', 'Kästchen', 'Übertrag', 'Stellenwert'],
+  fachwissen: {
+    text: 'Beim schriftlichen Rechnen werden Zahlen stellenrichtig untereinander geschrieben. Man rechnet von rechts (Einer) nach links und notiert Überträge bzw. Entbündelungen. Das Kästchenpapier hilft, jede Ziffer einem Stellenwert zuzuordnen und Rechenfehler zu vermeiden.',
+    quelle: 'Wikipedia: Schriftliches Rechnen',
+    url: 'https://de.wikipedia.org/wiki/Schriftliches_Rechnen',
   },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const a = randInt(rng, 125, 8999)
+      const b = randInt(rng, 125, 8999)
+      const value = a + b
+      return digitGridTask({
+        question: 'Addiere schriftlich auf dem Kästchenpapier:',
+        a,
+        b,
+        operator: '+',
+        value,
+        solution: formatDe(value),
+        explanation: `${formatDe(a)} + ${formatDe(b)} = ${formatDe(value)}.`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 2000, 9999)
+      const b = randInt(rng, 100, a - 1)
+      const value = a - b
+      return digitGridTask({
+        question: 'Subtrahiere schriftlich auf dem Kästchenpapier:',
+        a,
+        b,
+        operator: '−',
+        value,
+        solution: formatDe(value),
+        explanation: `${formatDe(a)} − ${formatDe(b)} = ${formatDe(value)}.`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 12, 99)
+      const b = randInt(rng, 3, 19)
+      const value = a * b
+      return digitGridTask({
+        question: 'Multipliziere schriftlich auf dem Kästchenpapier:',
+        a,
+        b,
+        operator: '·',
+        value,
+        solution: formatDe(value),
+        explanation: `${a} · ${b} = ${formatDe(value)}.`,
+      })
+    },
+  ),
 }
 
 const divisionMitRest: Topic = {
@@ -1603,6 +1710,7 @@ export const klasse5: Grade = {
         addition,
         subtraktion,
         multiplikation,
+        schriftlichesRechnen,
         divisionMitRest,
         potenzieren,
         teilbarkeit,
