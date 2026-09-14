@@ -493,29 +493,16 @@ const zahlenstrahl: Topic = {
     url: 'https://de.wikipedia.org/wiki/Zahlenstrahl',
   },
   generate: mixedVariants(
-    // Variant 1: Text mit ganzen Zahlen
-    (rng: Rng) => {
-      const a = randInt(rng, 5, 20)
-      const b = a + randInt(rng, 2, 10)
-      const mid = (a + b) / 2
-      return valueTask({
-        question: `Welche Zahl liegt genau in der Mitte zwischen ${a} und ${b}?`,
-        answerKind: mid % 1 === 0 ? 'integer' : 'decimal',
-        value: mid,
-        solution: formatDe(mid),
-        explanation: `Die Mitte berechnet man als Durchschnitt: (${a} + ${b}) : 2 = ${a + b} : 2 = ${formatDe(mid)}.`,
-      })
-    },
-    // Variant 2: Interaktiver Zahlenstrahl mit Dezimalzahlen
+    // Variant 1: Interaktiv - Zwei Dezimalzahlen, Mitte finden
     (rng: Rng) => {
       const a = randInt(rng, 10, 89) / 10
-      const step = randInt(rng, 1, 8) / 10
+      const step = randInt(rng, 2, 10) / 10
       const b = roundTo(a + step * 2, 1)
-      const mid = roundTo((a + b) / 2, 2)
+      const mid = roundTo((a + b) / 2, 1)
       return numberLineTask({
-        question: `Auf dem Zahlenstrahl liegen ${formatDe(a)} und ${formatDe(b)}. Wo liegt die Mitte?`,
-        min: Math.floor(a) - 1,
-        max: Math.ceil(b) + 1,
+        question: `Zwei Zahlen sind auf dem Zahlenstrahl markiert: ${formatDe(a)} und ${formatDe(b)}.\nWo liegt die Mitte?`,
+        min: Math.floor(a) - 0.5,
+        max: Math.ceil(b) + 0.5,
         step: 0.1,
         value: mid,
         decimals: 1,
@@ -524,17 +511,54 @@ const zahlenstrahl: Topic = {
         eps: 0.05,
       })
     },
-    // Variant 3: Mit negativen Zahlen
+    // Variant 2: Interaktiv - Dezimalzahl zwischen zwei ganzen Zahlen platzieren
     (rng: Rng) => {
-      const a = randInt(rng, -15, -5)
-      const b = randInt(rng, 5, 15)
-      const mid = (a + b) / 2
-      return valueTask({
-        question: `Bestimme die Mitte zwischen ${a} und ${b}.`,
-        answerKind: mid % 1 === 0 ? 'integer' : 'decimal',
+      const a = randInt(rng, 2, 8)
+      const b = a + 1
+      const target = roundTo(a + randInt(rng, 2, 8) / 10, 1)
+      return numberLineTask({
+        question: `Wo liegt die Zahl ${formatDe(target)} auf dem Zahlenstrahl zwischen ${a} und ${b}?`,
+        min: a - 0.5,
+        max: b + 0.5,
+        step: 0.1,
+        value: target,
+        decimals: 1,
+        solution: formatDe(target),
+        explanation: `Die Zahl ${formatDe(target)} liegt zwischen ${a} und ${b} auf dem Zahlenstrahl.`,
+        eps: 0.05,
+      })
+    },
+    // Variant 3: Interaktiv - Drei Dezimalzahlen, mittlere Position finden
+    (rng: Rng) => {
+      const a = randInt(rng, 15, 35) / 10
+      const mid = roundTo(a + randInt(rng, 3, 8) / 10, 1)
+      const b = roundTo(mid + (mid - a), 1)
+      return numberLineTask({
+        question: `${formatDe(a)} und ${formatDe(b)} sind gegeben.\nMarkiere die Mitte zwischen ihnen auf dem Zahlenstrahl.`,
+        min: Math.floor(a) - 0.5,
+        max: Math.ceil(b) + 0.5,
+        step: 0.1,
         value: mid,
+        decimals: 1,
         solution: formatDe(mid),
-        explanation: `Mitte = (${a} + ${b}) : 2 = ${a + b} : 2 = ${formatDe(mid)}. Bei negativen und positiven Zahlen ist die Mitte oft näher an 0.`,
+        explanation: `Die Mitte zwischen ${formatDe(a)} und ${formatDe(b)} liegt bei ${formatDe(mid)}. Das ist genau in der Mitte, weil ${formatDe(mid)} - ${formatDe(a)} = ${formatDe(b)} - ${formatDe(mid)}.`,
+        eps: 0.05,
+      })
+    },
+    // Variant 4: Interaktiv - Feiner Zahlenstrahl mit kleineren Schritten
+    (rng: Rng) => {
+      const base = randInt(rng, 10, 40) / 10
+      const target = roundTo(base + randInt(rng, 1, 5) / 20, 2)
+      return numberLineTask({
+        question: `Wo liegt ${formatDe(target)} auf diesem feinen Zahlenstrahl?`,
+        min: Math.floor(base) - 0.2,
+        max: Math.ceil(base + 0.5) + 0.2,
+        step: 0.05,
+        value: target,
+        decimals: 2,
+        solution: formatDe(target),
+        explanation: `Die Zahl ${formatDe(target)} liegt genau dort auf dem Zahlenstrahl.`,
+        eps: 0.03,
       })
     },
   ),
