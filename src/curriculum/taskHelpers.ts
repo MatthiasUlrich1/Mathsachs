@@ -5,6 +5,7 @@ import {
   type Fraction,
 } from '../lib/fraction'
 import type { AnswerKind, Task, UserInput } from './types'
+import type { Rng } from '../lib/rng'
 
 interface ValueTaskInput {
   question: string
@@ -206,3 +207,15 @@ export const visualTask = (input: VisualTaskInput): Task => ({
     return parsed !== null && approxEqual(parsed, input.value, input.eps ?? 1e-6)
   },
 })
+
+/**
+ * Combine multiple task generators into one, randomly selecting a variant each time.
+ * Use this to add variety to a topic (text, visual, interactive).
+ */
+export const mixedVariants = (...generators: Array<(rng: Rng) => Task>) => {
+  return (rng: Rng): Task => {
+    const pick = (arr: any[]) => arr[Math.floor(rng() * arr.length)]
+    const generator = pick(generators)
+    return generator(rng)
+  }
+}

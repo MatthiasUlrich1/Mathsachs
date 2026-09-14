@@ -1,7 +1,7 @@
 import { pick, randInt, type Rng } from '../lib/rng'
 import { gcd, makeFraction } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
-import { fractionTask, dragDropSortTask, numberLineTask, textTask, valueTask, visualTask } from './taskHelpers'
+import { fractionTask, dragDropSortTask, mixedVariants, numberLineTask, textTask, valueTask, visualTask } from './taskHelpers'
 import { conversionTopic, LAENGE, FLAECHE, VOLUMEN, MASSE, ZEIT } from './units'
 import { generateRectangleSvg } from '../lib/geometrySvg'
 import type { Grade, Topic } from './types'
@@ -492,24 +492,52 @@ const zahlenstrahl: Topic = {
     quelle: 'Wikipedia: Zahlenstrahl',
     url: 'https://de.wikipedia.org/wiki/Zahlenstrahl',
   },
-  generate: (rng: Rng) => {
-    // Generate two decimals (1 decimal place) whose midpoint is also clean.
-    const a = randInt(rng, 10, 89) / 10
-    const step = randInt(rng, 1, 8) / 10
-    const b = roundTo(a + step * 2, 1) // ensures midpoint is exactly halfway
-    const mid = roundTo((a + b) / 2, 2)
-    return numberLineTask({
-      question: `Auf dem Zahlenstrahl liegen die Zahlen ${formatDe(a)} und ${formatDe(b)}. Welche Dezimalzahl befindet sich genau in der Mitte zwischen ihnen?`,
-      min: Math.floor(a) - 1,
-      max: Math.ceil(b) + 1,
-      step: 0.1,
-      value: mid,
-      decimals: 1,
-      solution: formatDe(mid),
-      explanation: `Die Mitte zweier Zahlen berechnet man als Durchschnitt: (${formatDe(a)} + ${formatDe(b)}) : 2 = ${formatDe(a + b)} : 2 = ${formatDe(mid)}.`,
-      eps: 0.05,
-    })
-  },
+  generate: mixedVariants(
+    // Variant 1: Einfach - Text mit ganzen Zahlen
+    (rng: Rng) => {
+      const a = randInt(rng, 5, 20)
+      const b = a + randInt(rng, 2, 10)
+      const mid = (a + b) / 2
+      return valueTask({
+        question: `Welche Zahl liegt genau in der Mitte zwischen ${a} und ${b}?`,
+        answerKind: mid % 1 === 0 ? 'integer' : 'decimal',
+        value: mid,
+        solution: formatDe(mid),
+        explanation: `Die Mitte berechnet man als Durchschnitt: (${a} + ${b}) : 2 = ${a + b} : 2 = ${formatDe(mid)}.`,
+      })
+    },
+    // Variant 2: Mittel - Interaktiver Zahlenstrahl mit Dezimalzahlen
+    (rng: Rng) => {
+      const a = randInt(rng, 10, 89) / 10
+      const step = randInt(rng, 1, 8) / 10
+      const b = roundTo(a + step * 2, 1)
+      const mid = roundTo((a + b) / 2, 2)
+      return numberLineTask({
+        question: `Auf dem Zahlenstrahl liegen ${formatDe(a)} und ${formatDe(b)}. Wo liegt die Mitte?`,
+        min: Math.floor(a) - 1,
+        max: Math.ceil(b) + 1,
+        step: 0.1,
+        value: mid,
+        decimals: 1,
+        solution: formatDe(mid),
+        explanation: `Die Mitte: (${formatDe(a)} + ${formatDe(b)}) : 2 = ${formatDe(a + b)} : 2 = ${formatDe(mid)}.`,
+        eps: 0.05,
+      })
+    },
+    // Variant 3: Schwer - Mit negativen Zahlen
+    (rng: Rng) => {
+      const a = randInt(rng, -15, -5)
+      const b = randInt(rng, 5, 15)
+      const mid = (a + b) / 2
+      return valueTask({
+        question: `Bestimme die Mitte zwischen ${a} und ${b}.`,
+        answerKind: mid % 1 === 0 ? 'integer' : 'decimal',
+        value: mid,
+        solution: formatDe(mid),
+        explanation: `Mitte = (${a} + ${b}) : 2 = ${a + b} : 2 = ${formatDe(mid)}. Bei negativen und positiven Zahlen ist die Mitte oft näher an 0.`,
+      })
+    },
+  ),
 }
 
 /** Größen verschiedener Einheiten vergleichen — Sachkompetenz. */
@@ -699,24 +727,72 @@ const umfangRechteck: Topic = {
     quelle: 'Wikipedia: Umfang (Geometrie)',
     url: 'https://de.wikipedia.org/wiki/Umfang_(Geometrie)',
   },
-  generate: (rng: Rng) => {
-    const square = rng() < 0.4
-    const a = randInt(rng, 2, 25)
-    const b = square ? a : randInt(rng, 2, 25)
-    const value = 2 * (a + b)
-    return valueTask({
-      question: square
-        ? `Ein Quadrat hat die Seitenlänge ${a} cm. Berechne den Umfang.`
-        : `Ein Rechteck ist ${a} cm lang und ${b} cm breit. Berechne den Umfang.`,
-      unit: 'cm',
-      answerKind: 'integer',
-      value,
-      solution: `${value} cm`,
-      explanation: square
-        ? `Umfang eines Quadrats = 4 · Seite = 4 · ${a} cm = ${value} cm.`
-        : `Umfang = 2 · (Länge + Breite) = 2 · (${a} + ${b}) cm = 2 · ${a + b} cm = ${value} cm.`,
-    })
-  },
+  generate: mixedVariants(
+    // Variant 1: Text-only
+    (rng: Rng) => {
+      const square = rng() < 0.4
+      const a = randInt(rng, 2, 20)
+      const b = square ? a : randInt(rng, 2, 20)
+      const value = 2 * (a + b)
+      return valueTask({
+        question: square
+          ? `Ein Quadrat hat die Seitenlänge ${a} cm. Berechne den Umfang.`
+          : `Ein Rechteck ist ${a} cm lang und ${b} cm breit. Berechne den Umfang.`,
+        unit: 'cm',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm`,
+        explanation: square
+          ? `Umfang eines Quadrats = 4 · Seite = 4 · ${a} cm = ${value} cm.`
+          : `Umfang = 2 · (Länge + Breite) = 2 · (${a} + ${b}) cm = 2 · ${a + b} cm = ${value} cm.`,
+      })
+    },
+    // Variant 2: Mit SVG
+    (rng: Rng) => {
+      const square = rng() < 0.4
+      const a = randInt(rng, 3, 18)
+      const b = square ? a : randInt(rng, 3, 18)
+      const value = 2 * (a + b)
+      const svg = generateRectangleSvg({
+        widthLabel: `${a} m`,
+        heightLabel: `${b} m`,
+      })
+      return visualTask({
+        question: square
+          ? 'Berechne den Umfang des abgebildeten Quadrats:'
+          : 'Berechne den Umfang des abgebildeten Rechtecks:',
+        unit: 'm',
+        answerKind: 'integer',
+        value,
+        visualContent: svg,
+        solution: `${value} m`,
+        explanation: square
+          ? `Umfang = 4 · ${a} m = ${value} m.`
+          : `Umfang = 2 · (${a} + ${b}) m = ${value} m.`,
+      })
+    },
+    // Variant 3: Sachaufgabe mit Zaun/Rahmen
+    (rng: Rng) => {
+      const a = randInt(rng, 4, 15)
+      const b = randInt(rng, 4, 15)
+      const value = 2 * (a + b)
+      const contexts = [
+        'Du möchtest einen rechteckigen Garten ({a} m × {b} m) einzäunen. Wie viel Meter Zaun brauchst du?',
+        'Ein Bilderrahmen für ein Foto ({a} cm × {b} cm) soll gebaut werden. Wie lang muss die Leiste insgesamt sein?',
+        'Ein rechteckiges Grundstück ({a} m × {b} m) soll mit einer Hecke umrandet werden. Wie viele Meter Hecke brauchst du?',
+      ]
+      const q = pick(rng, contexts).replace('{a}', String(a)).replace('{b}', String(b))
+      const unit = q.includes('cm') ? 'cm' : 'm'
+      return valueTask({
+        question: q,
+        unit,
+        answerKind: 'integer',
+        value,
+        solution: `${value} ${unit}`,
+        explanation: `Umfang = 2 · (${a} + ${b}) = ${value} ${unit}.`,
+      })
+    },
+  ),
 }
 
 const flaecheRechteck: Topic = {
@@ -730,31 +806,72 @@ const flaecheRechteck: Topic = {
     quelle: 'Wikipedia: Flächeninhalt',
     url: 'https://de.wikipedia.org/wiki/Fl%C3%A4cheninhalt',
   },
-  generate: (rng: Rng) => {
-    const square = rng() < 0.4
-    const a = randInt(rng, 2, 25)
-    const b = square ? a : randInt(rng, 2, 25)
-    const value = a * b
-    
-    const svg = generateRectangleSvg({
-      widthLabel: `${a} cm`,
-      heightLabel: `${b} cm`,
-    })
-    
-    return visualTask({
-      question: square
-        ? `Ein Quadrat hat die Seitenlänge ${a} cm. Berechne den Flächeninhalt.`
-        : `Ein Rechteck ist ${a} cm lang und ${b} cm breit. Berechne den Flächeninhalt.`,
-      unit: 'cm²',
-      answerKind: 'integer',
-      value,
-      visualContent: svg,
-      solution: `${value} cm²`,
-      explanation: square
-        ? `Flächeninhalt eines Quadrats = Seite · Seite = ${a} · ${a} cm² = ${value} cm².`
-        : `Flächeninhalt = Länge · Breite = ${a} cm · ${b} cm = ${value} cm².`,
-    })
-  },
+  generate: mixedVariants(
+    // Variant 1: Text-only (einfach)
+    (rng: Rng) => {
+      const square = rng() < 0.4
+      const a = randInt(rng, 2, 15)
+      const b = square ? a : randInt(rng, 2, 15)
+      const value = a * b
+      return valueTask({
+        question: square
+          ? `Ein Quadrat hat die Seitenlänge ${a} cm. Berechne den Flächeninhalt.`
+          : `Ein Rechteck ist ${a} cm lang und ${b} cm breit. Berechne den Flächeninhalt.`,
+        unit: 'cm²',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm²`,
+        explanation: square
+          ? `Flächeninhalt eines Quadrats = Seite · Seite = ${a} · ${a} cm² = ${value} cm².`
+          : `Flächeninhalt = Länge · Breite = ${a} cm · ${b} cm = ${value} cm².`,
+      })
+    },
+    // Variant 2: Mit SVG-Diagramm
+    (rng: Rng) => {
+      const square = rng() < 0.4
+      const a = randInt(rng, 3, 20)
+      const b = square ? a : randInt(rng, 3, 20)
+      const value = a * b
+      const svg = generateRectangleSvg({
+        widthLabel: `${a} cm`,
+        heightLabel: `${b} cm`,
+      })
+      return visualTask({
+        question: square
+          ? `Berechne den Flächeninhalt des abgebildeten Quadrats:`
+          : `Berechne den Flächeninhalt des abgebildeten Rechtecks:`,
+        unit: 'cm²',
+        answerKind: 'integer',
+        value,
+        visualContent: svg,
+        solution: `${value} cm²`,
+        explanation: square
+          ? `Flächeninhalt = ${a} · ${a} cm² = ${value} cm².`
+          : `Flächeninhalt = ${a} · ${b} cm² = ${value} cm².`,
+      })
+    },
+    // Variant 3: Sachaufgabe
+    (rng: Rng) => {
+      const a = randInt(rng, 3, 12)
+      const b = randInt(rng, 3, 12)
+      const value = a * b
+      const contexts = [
+        { noun: 'Zimmer', verb: 'streichen', unit: 'm²' },
+        { noun: 'Garten', verb: 'bepflanzen', unit: 'm²' },
+        { noun: 'Teppich', verb: 'verlegen', unit: 'm²' },
+        { noun: 'Wandfläche', verb: 'tapezieren', unit: 'm²' },
+      ]
+      const ctx = pick(rng, contexts)
+      return valueTask({
+        question: `Ein rechteckiges ${ctx.noun} ist ${a} m lang und ${b} m breit. Wie groß ist die Fläche, die man ${ctx.verb} muss?`,
+        unit: ctx.unit,
+        answerKind: 'integer',
+        value,
+        solution: `${value} ${ctx.unit}`,
+        explanation: `Fläche = Länge · Breite = ${a} m · ${b} m = ${value} m².`,
+      })
+    },
+  ),
 }
 
 const volumenQuader: Topic = {
