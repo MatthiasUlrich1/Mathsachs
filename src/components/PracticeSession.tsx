@@ -1,12 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { createRng, timeSeed } from '../lib/rng'
 import { recordSession } from '../lib/storage'
-import { emptyInput, type Task, type Topic, type UserInput } from '../curriculum/types'
+import type { Topic, UserInput } from '../curriculum/types'
 import { buildUniqueTaskRound } from '../curriculum/uniqueRound'
 import { AnswerInput } from './AnswerInput'
-import { NumberLineSlider } from './NumberLineSlider'
-import { DragDropSort } from './DragDropSort'
-import { DigitGrid } from './DigitGrid'
+import { initTaskInput, TaskInteractive, TaskVisual } from './TaskMedia'
 
 const TARGET_TASKS_PER_ROUND = 10
 
@@ -29,29 +27,14 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
   const [index, setIndex] = useState(1)
   const task = tasks[index - 1]
 
-  // Initialize input based on task type
-  const initInput = (t: Task): UserInput => {
-    if (t.interactive?.type === 'numberLine') {
-      return { kind: 'numberLine', value: t.interactive.props.min }
-    }
-    if (t.interactive?.type === 'dragDropSort') {
-      return { kind: 'dragDropSort', order: t.interactive.props.items.map((_: any, i: number) => i) }
-    }
-    if (t.interactive?.type === 'digitGrid') {
-      const len = t.interactive.props.answerLength ?? 4
-      return { kind: 'digitGrid', digits: Array.from({ length: len }, () => '') }
-    }
-    return emptyInput(t.answerKind)
-  }
-
-  const [input, setInput] = useState<UserInput>(() => initInput(task))
+  const [input, setInput] = useState<UserInput>(() => initTaskInput(task))
   const [phase, setPhase] = useState<Phase>('answering')
   const [showExplanation, setShowExplanation] = useState(false)
   const [showFachwissen, setShowFachwissen] = useState(false)
 
   // Reset the answer widget whenever a fresh task appears.
   useEffect(() => {
-    setInput(initInput(task))
+    setInput(initTaskInput(task))
   }, [task])
 
   const [correct, setCorrect] = useState(0)
@@ -171,52 +154,10 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
 
       <div className={`prompt prompt--${phase}`}>{task.question}</div>
 
-      {task.visualContent && (
-        <div
-          className="task-visual"
-          dangerouslySetInnerHTML={{ __html: task.visualContent }}
-        />
-      )}
+      <TaskVisual html={task.visualContent} />
 
-      {task.interactive && phase === 'answering' && (
-        <div className="task-interactive">
-          {task.interactive.type === 'numberLine' && (
-            <NumberLineSlider
-              min={task.interactive.props.min}
-              max={task.interactive.props.max}
-              step={task.interactive.props.step}
-              decimals={task.interactive.props.decimals}
-              value={input.kind === 'numberLine' ? input.value : null}
-              onChange={(value) => setInput({ kind: 'numberLine', value })}
-              label="Ziehe den Punkt an die richtige Stelle:"
-            />
-          )}
-          {task.interactive.type === 'dragDropSort' && (
-            <DragDropSort
-              items={task.interactive.props.items}
-              userOrder={
-                input.kind === 'dragDropSort'
-                  ? input.order
-                  : task.interactive.props.items.map((_: any, i: number) => i)
-              }
-              onChange={(order) => setInput({ kind: 'dragDropSort', order })}
-              instruction="Ziehe die Elemente in die richtige Reihenfolge:"
-            />
-          )}
-          {task.interactive.type === 'digitGrid' && (
-            <DigitGrid
-              rows={task.interactive.props.rows}
-              digits={
-                input.kind === 'digitGrid'
-                  ? input.digits
-                  : Array.from({ length: task.interactive.props.answerLength ?? 4 }, () => '')
-              }
-              onChange={(digits) => setInput({ kind: 'digitGrid', digits })}
-              instruction="Trage das Ergebnis ziffernweise in die Kästchen ein:"
-              disabled={false}
-            />
-          )}
-        </div>
+      {phase === 'answering' && (
+        <TaskInteractive task={task} value={input} onChange={setInput} />
       )}
 
       {topic.hint && phase === 'answering' && (

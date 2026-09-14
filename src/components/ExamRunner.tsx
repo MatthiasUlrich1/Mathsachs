@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { emptyInput, type UserInput } from '../curriculum/types'
 import { recordSession } from '../lib/storage'
 import { AnswerInput } from './AnswerInput'
+import { initTaskInput, TaskInteractive, TaskVisual } from './TaskMedia'
 import {
   ExamCodeError,
   decodeExam,
@@ -97,7 +98,7 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
     try {
       const tasks = await resolveExam(spec)
       setResolved(tasks)
-      setAnswers(tasks.map((t) => emptyInput(t.task.answerKind)))
+      setAnswers(tasks.map((t) => initTaskInput(t.task)))
       setCurrent(0)
       setPhase('running')
     } catch (e) {
@@ -120,7 +121,7 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
 
   const submit = () => {
     const computed: TaskResult[] = resolved.map((r, i) => {
-      const answer = answers[i] ?? emptyInput(r.task.answerKind)
+      const answer = answers[i] ?? initTaskInput(r.task)
       const correct = r.task.check(answer)
       return { resolved: r, answer, correct, earned: correct ? r.punkte : 0 }
     })
@@ -264,13 +265,23 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
 
         <div className="prompt">{task.question}</div>
 
-        <AnswerInput
-          answerKind={task.answerKind}
-          unit={task.unit}
-          value={answers[current] ?? emptyInput(task.answerKind)}
+        <TaskVisual html={task.visualContent} />
+
+        <TaskInteractive
+          task={task}
+          value={answers[current] ?? initTaskInput(task)}
           onChange={setAnswer}
-          onSubmit={() => (isLast ? undefined : setCurrent((c) => c + 1))}
         />
+
+        {!task.interactive && (
+          <AnswerInput
+            answerKind={task.answerKind}
+            unit={task.unit}
+            value={answers[current] ?? emptyInput(task.answerKind)}
+            onChange={setAnswer}
+            onSubmit={() => (isLast ? undefined : setCurrent((c) => c + 1))}
+          />
+        )}
 
         <div className="exam-nav">
           {current > 0 && (
@@ -351,6 +362,7 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
                 {r.correct ? `+${r.earned}` : '0'} / {r.resolved.punkte} P.
               </span>
             </div>
+            <TaskVisual html={r.resolved.task.visualContent} />
             <p className="exam-review__line">
               Deine Antwort: <strong>{formatInput(r.answer)}</strong>
               {r.resolved.task.unit ? ` ${r.resolved.task.unit}` : ''}

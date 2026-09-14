@@ -85,4 +85,44 @@ describe('exam builder → runner flow', () => {
         picks[2].topic.pointsPerTask,
     )
   })
+
+  it('keeps visualContent when resolving a graphical Klasse-5 exam task', async () => {
+    const moduleId = 'mathematik-klasse-5'
+    const grade = await getCurriculumModule(moduleId)!.load()
+    const topic = grade.areas
+      .flatMap((a) => a.topics)
+      .find((t) => t.id === 'lb4-volumen-quader')
+    expect(topic).toBeTruthy()
+
+    let seed = 0
+    let previewVisual = ''
+    for (let s = 1; s <= 40; s++) {
+      const task = topic!.generate(createRng(s))
+      if (task.visualContent) {
+        seed = s
+        previewVisual = task.visualContent
+        break
+      }
+    }
+    expect(seed).toBeGreaterThan(0)
+
+    const spec: ExamSpec = {
+      schema: 'A',
+      curriculumVersion: CURRICULUM_VERSION,
+      titel: 'Grafik-Klausur',
+      aufgaben: [
+        {
+          modul: moduleId,
+          thema: topic!.id,
+          seed,
+          punkte: topic!.pointsPerTask,
+        },
+      ],
+    }
+
+    const resolved = await resolveExam(decodeExam(encodeExam(spec)))
+    expect(resolved).toHaveLength(1)
+    expect(resolved[0].task.visualContent).toBe(previewVisual)
+    expect(resolved[0].task.visualContent).toMatch(/<svg[\s>]/i)
+  })
 })

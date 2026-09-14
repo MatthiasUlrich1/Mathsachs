@@ -868,6 +868,16 @@ a.task-request__send {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.exam-task .task-visual {
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.exam-review .task-visual {
+  margin: 12px 0;
+  padding: 12px;
+}
+
 .task-visual svg {
   max-width: 100%;
   height: auto;

@@ -8,6 +8,7 @@ import { CURRICULUM_VERSION } from '../curriculum/registry'
 import { refsForGradeModules } from '../curriculum/versionGate'
 import type { ExamSpec, ExamTaskRef } from '../exam/types'
 import { TeacherExtraBadge } from './TeacherExtraBadge'
+import { TaskVisual } from './TaskMedia'
 
 interface LoadedGrade {
   moduleId: string
@@ -422,6 +423,7 @@ function ProposalPool({
                 />
                 <span className="exam-task__body">
                   <span className="exam-task__q">{task.question}</span>
+                  <TaskVisual html={task.visualContent} />
                   <span className="exam-task__sol">
                     Lösung: {task.solution}
                     {task.unit ? ` ${task.unit}` : ''}
