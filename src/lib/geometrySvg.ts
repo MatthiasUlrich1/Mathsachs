@@ -17,6 +17,7 @@ export interface RectangleSvgProps {
 /**
  * Generate an SVG string for a labeled rectangle.
  * Used for area/perimeter problems.
+ * Automatically detects squares and renders them with equal sides.
  */
 export function generateRectangleSvg({
   widthLabel,
@@ -24,15 +25,39 @@ export function generateRectangleSvg({
   fill = '#e3f2fd',
   stroke = '#1976d2',
 }: RectangleSvgProps): string {
-  const rectW = 200
-  const rectH = 120
+  // Extract numeric values to determine if it's a square
+  const widthNum = parseFloat(widthLabel)
+  const heightNum = parseFloat(heightLabel)
+  const isSquare = !isNaN(widthNum) && !isNaN(heightNum) && widthNum === heightNum
+  
+  // Base dimensions
+  let rectW: number
+  let rectH: number
+  
+  if (isSquare) {
+    // Square: equal sides
+    rectW = 160
+    rectH = 160
+  } else {
+    // Rectangle: proportional to actual values
+    const ratio = isNaN(widthNum) || isNaN(heightNum) ? 1.67 : widthNum / heightNum
+    if (ratio > 1) {
+      rectW = 200
+      rectH = 200 / ratio
+    } else {
+      rectH = 160
+      rectW = 160 * ratio
+    }
+  }
+  
   const padding = 40
-  const totalW = rectW + 2 * padding
-  const totalH = rectH + 2 * padding + 20
+  const labelSpaceRight = 70 // Extra space for right label
+  const totalW = rectW + 2 * padding + labelSpaceRight
+  const totalH = rectH + 2 * padding + 40
 
   return `
 <svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg">
-  <!-- Rectangle -->
+  <!-- Rectangle ${isSquare ? '(Square)' : ''} -->
   <rect
     x="${padding}"
     y="${padding}"
@@ -79,7 +104,7 @@ export function generateRectangleSvg({
   <text
     x="${padding + rectW + 30}"
     y="${padding + rectH / 2 + 5}"
-    text-anchor="middle"
+    text-anchor="start"
     font-size="16"
     font-weight="bold"
     fill="#333"

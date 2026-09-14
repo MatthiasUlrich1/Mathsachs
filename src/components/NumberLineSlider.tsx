@@ -153,28 +153,30 @@ export const NumberLineSlider: React.FC<NumberLineSliderProps> = ({
           )
         })}
 
-        {/* User's marker */}
+        {/* User's marker with vertical line (no number shown) */}
         {value !== null && (
           <g>
+            {/* Vertical line from marker to number line */}
+            <line
+              x1={valueToX(value)}
+              y1={lineY - 30}
+              x2={valueToX(value)}
+              y2={lineY}
+              stroke="#007bff"
+              strokeWidth={2}
+              className={isDragging ? 'dragging' : ''}
+            />
+            {/* Draggable marker circle above the line */}
             <circle
               cx={valueToX(value)}
-              cy={lineY}
-              r={8}
+              cy={lineY - 30}
+              r={10}
               fill="#007bff"
               stroke="#fff"
               strokeWidth={2}
               className={isDragging ? 'dragging' : ''}
+              style={{ cursor: 'grab' }}
             />
-            <text
-              x={valueToX(value)}
-              y={lineY - 20}
-              textAnchor="middle"
-              fontSize="16"
-              fontWeight="bold"
-              fill="#007bff"
-            >
-              {formatNumber(value)}
-            </text>
           </g>
         )}
       </svg>
