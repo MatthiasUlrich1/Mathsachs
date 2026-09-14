@@ -486,3 +486,120 @@ export function generateCuboidSvg({
   </defs>
 </svg>`.trim()
 }
+
+export interface AngleSvgProps {
+  /** Angle value in degrees */
+  angle: number
+  /** Optional angle label (e.g., "α", "β", "45°") */
+  label?: string
+  /** Show the angle arc */
+  showArc?: boolean
+  /** Optional fill color for arc */
+  fill?: string
+  /** Optional stroke color */
+  stroke?: string
+}
+
+/**
+ * Generate an SVG string for an angle visualization.
+ * Shows two rays meeting at a vertex with an optional arc.
+ */
+export function generateAngleSvg({
+  angle,
+  label,
+  showArc = true,
+  fill = '#fff3e0',
+  stroke = '#f57c00',
+}: AngleSvgProps): string {
+  const padding = 40
+  const rayLength = 180
+  const totalSize = rayLength + 2 * padding
+  
+  const cx = padding + 30
+  const cy = padding + rayLength - 30
+  
+  // First ray (horizontal to the right)
+  const ray1End = [cx + rayLength, cy]
+  
+  // Second ray (at given angle)
+  const angleRad = (angle * Math.PI) / 180
+  const ray2End = [
+    cx + rayLength * Math.cos(angleRad),
+    cy - rayLength * Math.sin(angleRad),
+  ]
+  
+  // Arc path for the angle
+  const arcRadius = 60
+  const largeArcFlag = angle > 180 ? 1 : 0
+  const arcPath = `M ${cx + arcRadius},${cy} A ${arcRadius},${arcRadius} 0 ${largeArcFlag},1 ${
+    cx + arcRadius * Math.cos(angleRad)
+  },${cy - arcRadius * Math.sin(angleRad)}`
+
+  return `
+<svg width="${totalSize}" height="${totalSize}" xmlns="http://www.w3.org/2000/svg">
+  <!-- Angle visualization -->
+  
+  <!-- Ray 1 (horizontal) -->
+  <line
+    x1="${cx}"
+    y1="${cy}"
+    x2="${ray1End[0]}"
+    y2="${ray1End[1]}"
+    stroke="${stroke}"
+    stroke-width="3"
+  />
+  
+  <!-- Ray 2 (at angle) -->
+  <line
+    x1="${cx}"
+    y1="${cy}"
+    x2="${ray2End[0]}"
+    y2="${ray2End[1]}"
+    stroke="${stroke}"
+    stroke-width="3"
+  />
+  
+  ${
+    showArc
+      ? `
+  <!-- Angle arc -->
+  <path
+    d="${arcPath}"
+    fill="none"
+    stroke="${stroke}"
+    stroke-width="2"
+  />
+  <path
+    d="${arcPath} L ${cx},${cy} Z"
+    fill="${fill}"
+    opacity="0.3"
+  />`
+      : ''
+  }
+  
+  <!-- Vertex dot -->
+  <circle
+    cx="${cx}"
+    cy="${cy}"
+    r="4"
+    fill="${stroke}"
+  />
+  
+  ${
+    label
+      ? `
+  <!-- Label -->
+  <text
+    x="${cx + arcRadius / 2 + 15}"
+    y="${cy - arcRadius / 2 + 15}"
+    text-anchor="middle"
+    font-size="18"
+    font-weight="bold"
+    fill="#333"
+  >
+    ${label}
+  </text>`
+      : ''
+  }
+</svg>`.trim()
+}

@@ -3,7 +3,7 @@ import { gcd, makeFraction } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
 import { fractionTask, dragDropSortTask, mixedVariants, numberLineTask, textTask, valueTask, visualTask } from './taskHelpers'
 import { conversionTopic, LAENGE, FLAECHE, VOLUMEN, MASSE, ZEIT } from './units'
-import { generateRectangleSvg, generateCuboidSvg } from '../lib/geometrySvg'
+import { generateRectangleSvg, generateCuboidSvg, generateAngleSvg } from '../lib/geometrySvg'
 import type { Grade, Topic } from './types'
 
 /** Whether n is a prime number (n ≥ 2). */
@@ -667,44 +667,77 @@ const winkelarten: Topic = {
     quelle: 'Wikipedia: Winkel',
     url: 'https://de.wikipedia.org/wiki/Winkel',
   },
-  generate: (rng: Rng) => {
-    const kind = pick(rng, ['spitz', 'recht', 'stumpf', 'gestreckt', 'überstumpf'])
-    let deg: number
-    switch (kind) {
-      case 'spitz':
-        deg = randInt(rng, 1, 89)
-        break
-      case 'recht':
-        deg = 90
-        break
-      case 'stumpf':
-        deg = randInt(rng, 91, 179)
-        break
-      case 'gestreckt':
-        deg = 180
-        break
-      default:
-        deg = randInt(rng, 181, 359)
-    }
-    const accepted =
-      kind === 'überstumpf' ? ['überstumpf', 'ueberstumpf'] : [kind]
-    return textTask({
-      question: `Welche Winkelart hat ein Winkel von ${deg}°?`,
-      accepted,
-      solution: kind,
-      explanation: `Ein Winkel von ${deg}° ist ${
-        kind === 'recht'
-          ? 'genau 90° groß, also ein rechter Winkel'
-          : kind === 'gestreckt'
-            ? 'genau 180° groß, also ein gestreckter Winkel'
-            : kind === 'spitz'
-              ? 'kleiner als 90°, also spitz'
-              : kind === 'stumpf'
-                ? 'zwischen 90° und 180°, also stumpf'
-                : 'größer als 180°, also überstumpf'
-      }.`,
-    })
-  },
+  generate: mixedVariants(
+    // Variant 1: Text only
+    (rng: Rng) => {
+      const kind = pick(rng, ['spitz', 'recht', 'stumpf', 'gestreckt', 'überstumpf'])
+      let deg: number
+      switch (kind) {
+        case 'spitz':
+          deg = randInt(rng, 1, 89)
+          break
+        case 'recht':
+          deg = 90
+          break
+        case 'stumpf':
+          deg = randInt(rng, 91, 179)
+          break
+        case 'gestreckt':
+          deg = 180
+          break
+        default:
+          deg = randInt(rng, 181, 359)
+      }
+      const accepted = kind === 'überstumpf' ? ['überstumpf', 'ueberstumpf'] : [kind]
+      return textTask({
+        question: `Welche Winkelart hat ein Winkel von ${deg}°?`,
+        accepted,
+        solution: kind,
+        explanation: `Ein Winkel von ${deg}° ist ${
+          kind === 'recht'
+            ? 'genau 90° groß, also ein rechter Winkel'
+            : kind === 'gestreckt'
+              ? 'genau 180° groß, also ein gestreckter Winkel'
+              : kind === 'spitz'
+                ? 'kleiner als 90°, also spitz'
+                : kind === 'stumpf'
+                  ? 'zwischen 90° und 180°, also stumpf'
+                  : 'größer als 180°, also überstumpf'
+        }.`,
+      })
+    },
+    // Variant 2: Grafisch
+    (rng: Rng) => {
+      const kind = pick(rng, ['spitz', 'recht', 'stumpf'])
+      let deg: number
+      switch (kind) {
+        case 'spitz':
+          deg = randInt(rng, 30, 70)
+          break
+        case 'recht':
+          deg = 90
+          break
+        default:
+          deg = randInt(rng, 100, 150)
+      }
+      const svg = generateAngleSvg({
+        angle: deg,
+        label: '?',
+      })
+      const accepted = [kind]
+      return {
+        ...textTask({
+          question: `Welche Winkelart hat dieser Winkel?`,
+          accepted,
+          solution: kind,
+          explanation: `Der Winkel ist ${
+            kind === 'recht' ? 'genau 90°' : kind === 'spitz' ? 'kleiner als 90°' : 'größer als 90°'
+          }, also ${kind}.`,
+        }),
+        visualContent: svg,
+      }
+    },
+  ),
 }
 
 const winkelErgaenzung: Topic = {
@@ -718,22 +751,45 @@ const winkelErgaenzung: Topic = {
     quelle: 'Wikipedia: Winkel',
     url: 'https://de.wikipedia.org/wiki/Winkel',
   },
-  generate: (rng: Rng) => {
-    const toStraight = rng() < 0.5
-    const gesamt = toStraight ? 180 : 90
-    const a = randInt(rng, 10, gesamt - 10)
-    const value = gesamt - a
-    return valueTask({
-      question: `Zwei Winkel ergänzen sich zu ${gesamt}° (${
-        toStraight ? 'gestreckter' : 'rechter'
-      } Winkel). Ein Winkel ist ${a}°. Wie groß ist der andere?`,
-      unit: '°',
-      answerKind: 'integer',
-      value,
-      solution: `${value}°`,
-      explanation: `Die beiden Winkel ergeben zusammen ${gesamt}°. Also: ${gesamt}° − ${a}° = ${value}°.`,
-    })
-  },
+  generate: mixedVariants(
+    // Variant 1: Text
+    (rng: Rng) => {
+      const toStraight = rng() < 0.5
+      const gesamt = toStraight ? 180 : 90
+      const a = randInt(rng, 10, gesamt - 10)
+      const value = gesamt - a
+      return valueTask({
+        question: `Zwei Winkel ergänzen sich zu ${gesamt}° (${
+          toStraight ? 'gestreckter' : 'rechter'
+        } Winkel). Ein Winkel ist ${a}°. Wie groß ist der andere?`,
+        unit: '°',
+        answerKind: 'integer',
+        value,
+        solution: `${value}°`,
+        explanation: `Die beiden Winkel ergeben zusammen ${gesamt}°. Also: ${gesamt}° − ${a}° = ${value}°.`,
+      })
+    },
+    // Variant 2: Grafisch
+    (rng: Rng) => {
+      const toStraight = rng() < 0.6
+      const gesamt = toStraight ? 180 : 90
+      const a = randInt(rng, 20, gesamt - 20)
+      const value = gesamt - a
+      const svg = generateAngleSvg({
+        angle: a,
+        label: `${a}°`,
+      })
+      return visualTask({
+        question: `Der Winkel soll zu ${gesamt}° ergänzt werden. Wie groß ist der Ergänzungswinkel?`,
+        unit: '°',
+        answerKind: 'integer',
+        value,
+        solution: `${value}°`,
+        explanation: `Ergänzungswinkel = ${gesamt}° − ${a}° = ${value}°.`,
+        svg,
+      })
+    },
+  ),
 }
 
 // ---------------------------------------------------------------------------

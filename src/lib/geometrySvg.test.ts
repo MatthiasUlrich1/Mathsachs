@@ -1,5 +1,11 @@
 import { describe, it, expect } from 'vitest'
-import { generateRectangleSvg, generateTriangleSvg, generateCircleSvg, generateCuboidSvg } from './geometrySvg'
+import {
+  generateRectangleSvg,
+  generateTriangleSvg,
+  generateCircleSvg,
+  generateCuboidSvg,
+  generateAngleSvg,
+} from './geometrySvg'
 
 describe('geometrySvg', () => {
   describe('generateRectangleSvg', () => {
@@ -62,6 +68,28 @@ describe('geometrySvg', () => {
       expect(svg).toContain('6 cm')
       expect(svg).toContain('8 cm')
       expect(svg).toContain('<polygon')
+    })
+  })
+
+  describe('generateAngleSvg', () => {
+    it('generates valid angle SVG with arc and label', () => {
+      const svg = generateAngleSvg({
+        angle: 45,
+        label: '45°',
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('45°')
+      expect(svg).toContain('<path') // Arc
+      expect(svg).toContain('<line') // Rays
+    })
+
+    it('generates angle without arc when showArc is false', () => {
+      const svg = generateAngleSvg({
+        angle: 90,
+        showArc: false,
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).not.toContain('<path')
     })
   })
 })
