@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { generateRectangleSvg, generateTriangleSvg, generateCircleSvg } from './geometrySvg'
+import { generateRectangleSvg, generateTriangleSvg, generateCircleSvg, generateCuboidSvg } from './geometrySvg'
 
 describe('geometrySvg', () => {
   describe('generateRectangleSvg', () => {
@@ -47,6 +47,21 @@ describe('geometrySvg', () => {
       expect(svg).toContain('<svg')
       expect(svg).toContain('r = 4 cm')
       expect(svg).toContain('<circle')
+    })
+  })
+
+  describe('generateCuboidSvg', () => {
+    it('generates valid 3D cuboid SVG with all dimensions', () => {
+      const svg = generateCuboidSvg({
+        lengthLabel: '10 cm',
+        widthLabel: '6 cm',
+        heightLabel: '8 cm',
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('10 cm')
+      expect(svg).toContain('6 cm')
+      expect(svg).toContain('8 cm')
+      expect(svg).toContain('<polygon')
     })
   })
 })

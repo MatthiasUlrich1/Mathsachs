@@ -3,7 +3,7 @@ import { gcd, makeFraction } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
 import { fractionTask, dragDropSortTask, mixedVariants, numberLineTask, textTask, valueTask, visualTask } from './taskHelpers'
 import { conversionTopic, LAENGE, FLAECHE, VOLUMEN, MASSE, ZEIT } from './units'
-import { generateRectangleSvg } from '../lib/geometrySvg'
+import { generateRectangleSvg, generateCuboidSvg } from '../lib/geometrySvg'
 import type { Grade, Topic } from './types'
 
 /** Whether n is a prime number (n ≥ 2). */
@@ -909,25 +909,64 @@ const volumenQuader: Topic = {
     quelle: 'Wikipedia: Volumen',
     url: 'https://de.wikipedia.org/wiki/Volumen',
   },
-  generate: (rng: Rng) => {
-    const cube = rng() < 0.4
-    const a = randInt(rng, 2, 12)
-    const b = cube ? a : randInt(rng, 2, 12)
-    const c = cube ? a : randInt(rng, 2, 12)
-    const value = a * b * c
-    return valueTask({
-      question: cube
-        ? `Ein Würfel hat die Kantenlänge ${a} cm. Berechne sein Volumen.`
-        : `Ein Quader ist ${a} cm, ${b} cm und ${c} cm groß. Berechne sein Volumen.`,
-      unit: 'cm³',
-      answerKind: 'integer',
-      value,
-      solution: `${value} cm³`,
-      explanation: cube
-        ? `Volumen eines Würfels = Kante · Kante · Kante = ${a} · ${a} · ${a} cm³ = ${value} cm³.`
-        : `Volumen = Länge · Breite · Höhe = ${a} · ${b} · ${c} cm³ = ${value} cm³.`,
-    })
-  },
+  generate: mixedVariants(
+    // Variant 1: Text only - Würfel
+    (rng: Rng) => {
+      const a = randInt(rng, 2, 12)
+      const value = a * a * a
+      return valueTask({
+        question: `Ein Würfel hat die Kantenlänge ${a} cm. Berechne sein Volumen.`,
+        unit: 'cm³',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm³`,
+        explanation: `Volumen eines Würfels = Kante · Kante · Kante = ${a} · ${a} · ${a} cm³ = ${value} cm³.`,
+      })
+    },
+    // Variant 2: Grafisch - Quader mit 3D-SVG
+    (rng: Rng) => {
+      const a = randInt(rng, 3, 12)
+      const b = randInt(rng, 3, 12)
+      const c = randInt(rng, 3, 12)
+      const value = a * b * c
+      const svg = generateCuboidSvg({
+        lengthLabel: `${a} cm`,
+        widthLabel: `${b} cm`,
+        heightLabel: `${c} cm`,
+      })
+      return visualTask({
+        question: `Berechne das Volumen des abgebildeten Quaders:`,
+        unit: 'cm³',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm³`,
+        explanation: `Volumen = Länge · Breite · Höhe = ${a} · ${b} · ${c} cm³ = ${value} cm³.`,
+        svg,
+      })
+    },
+    // Variant 3: Sachaufgabe
+    (rng: Rng) => {
+      const a = randInt(rng, 2, 8)
+      const b = randInt(rng, 2, 8)
+      const c = randInt(rng, 2, 8)
+      const value = a * b * c
+      const contexts = [
+        { item: 'Aquarium', unit: 'dm', volUnit: 'Liter' },
+        { item: 'Karton', unit: 'dm', volUnit: 'Liter' },
+        { item: 'Schuhkarton', unit: 'cm', volUnit: 'cm³' },
+        { item: 'Kiste', unit: 'dm', volUnit: 'Liter' },
+      ]
+      const ctx = pick(rng, contexts)
+      return valueTask({
+        question: `Ein ${ctx.item} ist ${a} ${ctx.unit}, ${b} ${ctx.unit} und ${c} ${ctx.unit} groß. Wie viel ${ctx.volUnit} passen hinein?`,
+        unit: ctx.volUnit,
+        answerKind: 'integer',
+        value,
+        solution: `${value} ${ctx.volUnit}`,
+        explanation: `Volumen = ${a} · ${b} · ${c} ${ctx.unit}³ = ${value} ${ctx.volUnit}.`,
+      })
+    },
+  ),
 }
 
 const oberflaecheQuader: Topic = {
@@ -941,22 +980,70 @@ const oberflaecheQuader: Topic = {
     quelle: 'Wikipedia: Quader',
     url: 'https://de.wikipedia.org/wiki/Quader',
   },
-  generate: (rng: Rng) => {
-    const a = randInt(rng, 2, 12)
-    const b = randInt(rng, 2, 12)
-    const c = randInt(rng, 2, 12)
-    const value = 2 * (a * b + a * c + b * c)
-    return valueTask({
-      question: `Ein Quader ist ${a} cm, ${b} cm und ${c} cm groß. Berechne seinen Oberflächeninhalt.`,
-      unit: 'cm²',
-      answerKind: 'integer',
-      value,
-      solution: `${value} cm²`,
-      explanation: `Oberfläche = 2 · (a·b + a·c + b·c) = 2 · (${a * b} + ${a * c} + ${b * c}) cm² = 2 · ${
-        a * b + a * c + b * c
-      } cm² = ${value} cm².`,
-    })
-  },
+  generate: mixedVariants(
+    // Variant 1: Text only
+    (rng: Rng) => {
+      const a = randInt(rng, 2, 12)
+      const b = randInt(rng, 2, 12)
+      const c = randInt(rng, 2, 12)
+      const value = 2 * (a * b + a * c + b * c)
+      return valueTask({
+        question: `Ein Quader ist ${a} cm, ${b} cm und ${c} cm groß. Berechne seinen Oberflächeninhalt.`,
+        unit: 'cm²',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm²`,
+        explanation: `Oberfläche = 2 · (a·b + a·c + b·c) = 2 · (${a * b} + ${a * c} + ${b * c}) cm² = 2 · ${
+          a * b + a * c + b * c
+        } cm² = ${value} cm².`,
+      })
+    },
+    // Variant 2: Grafisch - mit 3D-SVG
+    (rng: Rng) => {
+      const a = randInt(rng, 3, 10)
+      const b = randInt(rng, 3, 10)
+      const c = randInt(rng, 3, 10)
+      const value = 2 * (a * b + a * c + b * c)
+      const svg = generateCuboidSvg({
+        lengthLabel: `${a} dm`,
+        widthLabel: `${b} dm`,
+        heightLabel: `${c} dm`,
+      })
+      return visualTask({
+        question: `Berechne die Oberfläche des abgebildeten Quaders:`,
+        unit: 'dm²',
+        answerKind: 'integer',
+        value,
+        solution: `${value} dm²`,
+        explanation: `Oberfläche = 2 · (a·b + a·c + b·c) = 2 · (${a * b} + ${a * c} + ${b * c}) dm² = ${value} dm².`,
+        svg,
+      })
+    },
+    // Variant 3: Sachaufgabe
+    (rng: Rng) => {
+      const a = randInt(rng, 3, 12)
+      const b = randInt(rng, 3, 12)
+      const c = randInt(rng, 3, 12)
+      const value = 2 * (a * b + a * c + b * c)
+      const contexts = [
+        'Du willst einen Karton',
+        'Eine Geschenkbox',
+        'Ein Aquarium',
+        'Eine Kiste',
+      ]
+      const ctx = pick(rng, contexts)
+      return valueTask({
+        question: `${ctx} (${a} cm × ${b} cm × ${c} cm) soll komplett mit Papier beklebt werden. Wie viel cm² Papier brauchst du?`,
+        unit: 'cm²',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm²`,
+        explanation: `Oberfläche = 2 · (${a}·${b} + ${a}·${c} + ${b}·${c}) cm² = 2 · ${
+          a * b + a * c + b * c
+        } cm² = ${value} cm².`,
+      })
+    },
+  ),
 }
 
 // ---------------------------------------------------------------------------
