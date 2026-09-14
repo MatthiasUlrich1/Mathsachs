@@ -522,48 +522,114 @@ const ordnenMitEinheiten: Topic = {
     url: 'https://de.wikipedia.org/wiki/Ma%C3%9Feinheit',
   },
   generate: (rng: Rng) => {
-    type Scenario = { items: { label: string; valueInBase: number }[]; unitName: string; baseUnit: string; factor: number }
-    const scenarios: Scenario[] = [
-      {
+    type Scenario = { items: { label: string; valueInBase: number }[]; unitName: string }
+    
+    // Generate 30+ different scenarios with varying values
+    const lengthScenarios: Scenario[] = []
+    for (let i = 0; i < 12; i++) {
+      const mm1 = randInt(rng, 5, 15) * 100
+      const cm1 = randInt(rng, 80, 180)
+      const dm1 = randInt(rng, 8, 18)
+      const m1 = randInt(rng, 10, 25) / 10
+      lengthScenarios.push({
         unitName: 'cm',
-        baseUnit: 'cm',
-        factor: 1,
         items: [
-          { label: '1,5 m',   valueInBase: 150 },
-          { label: '130 cm',  valueInBase: 130 },
-          { label: '14 dm',   valueInBase: 140 },
+          { label: `${formatDe(m1)} m`, valueInBase: m1 * 100 },
+          { label: `${cm1} cm`, valueInBase: cm1 },
+          { label: `${dm1} dm`, valueInBase: dm1 * 10 },
         ],
-      },
-      {
+      })
+      lengthScenarios.push({
+        unitName: 'mm',
+        items: [
+          { label: `${cm1} cm`, valueInBase: cm1 * 10 },
+          { label: `${mm1} mm`, valueInBase: mm1 },
+          { label: `${dm1} dm`, valueInBase: dm1 * 100 },
+        ],
+      })
+    }
+    
+    const massScenarios: Scenario[] = []
+    for (let i = 0; i < 12; i++) {
+      const g1 = randInt(rng, 700, 1500)
+      const kg1 = randInt(rng, 8, 18) / 10
+      const g2 = randInt(rng, 500, 2000)
+      massScenarios.push({
         unitName: 'g',
-        baseUnit: 'g',
-        factor: 1,
         items: [
-          { label: '1,2 kg',  valueInBase: 1200 },
-          { label: '950 g',   valueInBase: 950 },
-          { label: '1050 g',  valueInBase: 1050 },
+          { label: `${formatDe(kg1)} kg`, valueInBase: kg1 * 1000 },
+          { label: `${g1} g`, valueInBase: g1 },
+          { label: `${g2} g`, valueInBase: g2 },
         ],
-      },
-      {
+      })
+    }
+    
+    const volumeScenarios: Scenario[] = []
+    for (let i = 0; i < 12; i++) {
+      const ml1 = randInt(rng, 500, 1800)
+      const l1 = randInt(rng, 8, 18) / 10
+      const ml2 = randInt(rng, 700, 2500)
+      volumeScenarios.push({
         unitName: 'ml',
-        baseUnit: 'ml',
-        factor: 1,
         items: [
-          { label: '1,5 l',   valueInBase: 1500 },
-          { label: '1200 ml', valueInBase: 1200 },
-          { label: '0,9 l',   valueInBase: 900 },
+          { label: `${formatDe(l1)} l`, valueInBase: l1 * 1000 },
+          { label: `${ml1} ml`, valueInBase: ml1 },
+          { label: `${formatDe(ml2 / 1000)} l`, valueInBase: ml2 },
         ],
-      },
-    ]
-    const sc = pick(rng, scenarios)
+      })
+    }
+    
+    const allScenarios = [...lengthScenarios, ...massScenarios, ...volumeScenarios]
+    const sc = pick(rng, allScenarios)
     const sorted = [...sc.items].sort((a, b) => a.valueInBase - b.valueInBase)
     const smallest = sorted[0]
     const labels = sc.items.map((i) => i.label)
+    
+    // Build flexible accepted answers: allow variations with/without space, different units
+    const accepted: string[] = []
+    accepted.push(smallest.label) // original
+    accepted.push(smallest.label.replace(/\s+/g, '')) // without space
+    accepted.push(smallest.label.replace(',', '.')) // with dot instead of comma
+    accepted.push(smallest.label.replace(/\s+/g, '').replace(',', '.')) // both
+    
+    // Add base unit representation
+    const baseValue = smallest.valueInBase
+    if (sc.unitName === 'cm' || sc.unitName === 'mm') {
+      // Accept m, dm, cm, mm
+      if (baseValue % 1000 === 0) {
+        const m = baseValue / 1000
+        accepted.push(`${m}m`, `${m} m`, `${formatDe(m)}m`, `${formatDe(m)} m`)
+      }
+      if (baseValue % 100 === 0) {
+        const dm = baseValue / 100
+        accepted.push(`${dm}dm`, `${dm} dm`, `${formatDe(dm)}dm`, `${formatDe(dm)} dm`)
+      }
+      if (baseValue % 10 === 0) {
+        const cm = baseValue / 10
+        accepted.push(`${cm}cm`, `${cm} cm`, `${formatDe(cm)}cm`, `${formatDe(cm)} cm`)
+      }
+      accepted.push(`${baseValue}mm`, `${baseValue} mm`)
+    } else if (sc.unitName === 'g') {
+      // Accept kg, g
+      if (baseValue % 1000 === 0) {
+        const kg = baseValue / 1000
+        accepted.push(`${kg}kg`, `${kg} kg`, `${formatDe(kg)}kg`, `${formatDe(kg)} kg`)
+      }
+      accepted.push(`${baseValue}g`, `${baseValue} g`, `${formatDe(baseValue)}g`, `${formatDe(baseValue)} g`)
+    } else if (sc.unitName === 'ml') {
+      // Accept l, ml
+      if (baseValue % 1000 === 0) {
+        const l = baseValue / 1000
+        accepted.push(`${l}l`, `${l} l`, `${formatDe(l)}l`, `${formatDe(l)} l`)
+      }
+      accepted.push(`${baseValue}ml`, `${baseValue} ml`, `${formatDe(baseValue)}ml`, `${formatDe(baseValue)} ml`)
+    }
+    
     return textTask({
-      question: `Ordne der Größe nach. Welche Angabe ist am kleinsten?\n${labels.join(' | ')}`,
-      accepted: [smallest.label],
+      question: `Welche der folgenden Angaben ist die kleinste?\n\n${labels.join('   |   ')}`,
+      accepted: [...new Set(accepted)], // deduplicate
       solution: smallest.label,
-      explanation: `Rechne alle Angaben in ${sc.unitName} um:\n${sc.items.map((i) => `${i.label} = ${i.valueInBase} ${sc.unitName}`).join('; ')}.\nDie kleinste Zahl ist ${smallest.valueInBase} ${sc.unitName} → ${smallest.label}.`,
+      explanation: `Rechne alle Angaben in ${sc.unitName} um:\n${sc.items.map((i) => `${i.label} = ${formatDe(i.valueInBase)} ${sc.unitName}`).join('\n')}.\n\nDie kleinste Zahl ist ${formatDe(smallest.valueInBase)} ${sc.unitName}, also ${smallest.label}.`,
     })
   },
 }
@@ -853,7 +919,11 @@ const sachaufgabeMehrstufig: Topic = {
     const anzahl = randInt(rng, 2, 6)
     const stk = randInt(rng, 1, 8)
     const total = anzahl * stk
-    const bezahlt = total + randInt(rng, 1, 5) * 10
+    // Use only realistic Euro bills: 5, 10, 20, 50
+    const realBills = [5, 10, 20, 50]
+    const availableBills = realBills.filter((bill) => bill > total)
+    if (availableBills.length === 0) availableBills.push(50) // fallback
+    const bezahlt = pick(rng, availableBills)
     const rest = bezahlt - total
     const artikel = pick(rng, ['Äpfel', 'Brötchen', 'Hefte', 'Stifte'])
     return valueTask({
