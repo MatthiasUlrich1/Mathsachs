@@ -194,7 +194,7 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
               userOrder={
                 input.kind === 'dragDropSort' 
                   ? input.order 
-                  : task.interactive.props.items.map((_, i) => i)
+                  : task.interactive.props.items.map((_: any, i: number) => i)
               }
               onChange={(order) => setInput({ kind: 'dragDropSort', order })}
               instruction="Ziehe die Elemente in die richtige Reihenfolge:"
