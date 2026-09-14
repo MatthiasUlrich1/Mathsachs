@@ -10,6 +10,8 @@ import {
   generateFractionCircleSvg,
   generateFractionBarSvg,
   generateFractionGridSvg,
+  generateLShapeSvg,
+  generateUShapeSvg,
 } from '../lib/geometrySvg'
 import type { Grade, Topic } from './types'
 
@@ -1176,6 +1178,163 @@ const oberflaecheQuader: Topic = {
   ),
 }
 
+/** Pick L-shape dimensions so the cutout fits strictly inside. */
+const randomLDims = (rng: Rng) => {
+  const outerWidth = randInt(rng, 6, 14)
+  const outerHeight = randInt(rng, 5, 12)
+  const cutWidth = randInt(rng, 2, outerWidth - 2)
+  const cutHeight = randInt(rng, 2, outerHeight - 2)
+  const stemWidth = outerWidth - cutWidth
+  const footHeight = outerHeight - cutHeight
+  const area = outerWidth * outerHeight - cutWidth * cutHeight
+  // L-perimeter equals bounding rectangle perimeter when cut from a corner
+  const perimeter = 2 * (outerWidth + outerHeight)
+  return { outerWidth, outerHeight, cutWidth, cutHeight, stemWidth, footHeight, area, perimeter }
+}
+
+const flaecheZusammengesetzt: Topic = {
+  id: 'lb4-flaeche-zusammengesetzt',
+  title: 'Zusammengesetzte Flächen: Fläche berechnen',
+  hint: 'Zerlege die Figur in Rechtecke oder ziehe die Aussparung ab.',
+  pointsPerTask: 12,
+  difficulty: 2,
+  fachwissen: {
+    text: 'Zusammengesetzte Flächen (z. B. L-Formen) berechnet man, indem man die Figur in bekannte Teilflächen zerlegt und deren Flächeninhalte addiert – oder indem man von einem großen Rechteck eine Aussparung abzieht. Beide Wege führen zum gleichen Ergebnis: A = A₁ + A₂ bzw. A = A_groß − A_Aussparung.',
+    quelle: 'Wikipedia: Flächeninhalt',
+    url: 'https://de.wikipedia.org/wiki/Fl%C3%A4cheninhalt',
+  },
+  generate: mixedVariants(
+    // Text: L als Summe zweier Rechtecke
+    (rng: Rng) => {
+      const d = randomLDims(rng)
+      const a1 = d.stemWidth * d.outerHeight
+      const a2 = d.cutWidth * d.footHeight
+      return valueTask({
+        question: `Eine L-förmige Figur besteht aus zwei Rechtecken: ${d.stemWidth} m × ${d.outerHeight} m und ${d.cutWidth} m × ${d.footHeight} m. Berechne den Flächeninhalt.`,
+        unit: 'm²',
+        answerKind: 'integer',
+        value: d.area,
+        solution: `${d.area} m²`,
+        explanation: `A = ${d.stemWidth}·${d.outerHeight} + ${d.cutWidth}·${d.footHeight} = ${a1} + ${a2} = ${d.area} m².`,
+      })
+    },
+    // Text: großes Rechteck minus Aussparung
+    (rng: Rng) => {
+      const d = randomLDims(rng)
+      return valueTask({
+        question: `Von einem Rechteck ${d.outerWidth} m × ${d.outerHeight} m wird oben rechts ein Rechteck ${d.cutWidth} m × ${d.cutHeight} m ausgeschnitten. Wie groß ist die verbleibende Fläche?`,
+        unit: 'm²',
+        answerKind: 'integer',
+        value: d.area,
+        solution: `${d.area} m²`,
+        explanation: `A = ${d.outerWidth}·${d.outerHeight} − ${d.cutWidth}·${d.cutHeight} = ${d.outerWidth * d.outerHeight} − ${d.cutWidth * d.cutHeight} = ${d.area} m².`,
+      })
+    },
+    // Visual: L-Form
+    (rng: Rng) => {
+      const d = randomLDims(rng)
+      const svg = generateLShapeSvg({
+        outerWidth: d.outerWidth,
+        outerHeight: d.outerHeight,
+        cutWidth: d.cutWidth,
+        cutHeight: d.cutHeight,
+        bottomLabel: `${d.outerWidth} m`,
+        leftLabel: `${d.outerHeight} m`,
+        topLabel: `${d.stemWidth} m`,
+        rightLabel: `${d.footHeight} m`,
+      })
+      return visualTask({
+        question: 'Berechne den Flächeninhalt der abgebildeten L-Form.',
+        unit: 'm²',
+        answerKind: 'integer',
+        value: d.area,
+        solution: `${d.area} m²`,
+        explanation: `Zerlegung: A = ${d.stemWidth}·${d.outerHeight} + ${d.cutWidth}·${d.footHeight} = ${d.area} m².\nOder: A = ${d.outerWidth}·${d.outerHeight} − ${d.cutWidth}·${d.cutHeight} = ${d.area} m².`,
+        visualContent: svg,
+      })
+    },
+    // Visual: U-Form
+    (rng: Rng) => {
+      const outerWidth = pick(rng, [8, 10, 12])
+      const outerHeight = randInt(rng, 5, 9)
+      const notchWidth = pick(rng, [2, 4].filter((n) => n <= outerWidth / 2))
+      const notchHeight = randInt(rng, 2, outerHeight - 2)
+      const side = (outerWidth - notchWidth) / 2
+      const area = outerWidth * outerHeight - notchWidth * notchHeight
+      const svg = generateUShapeSvg({
+        outerWidth,
+        outerHeight,
+        notchWidth,
+        notchHeight,
+        bottomLabel: `${outerWidth} m`,
+        leftLabel: `${outerHeight} m`,
+        rightLabel: `${outerHeight} m`,
+        topLeftLabel: `${side} m`,
+        topRightLabel: `${side} m`,
+      })
+      return visualTask({
+        question: 'Berechne den Flächeninhalt der abgebildeten U-Form.',
+        unit: 'm²',
+        answerKind: 'integer',
+        value: area,
+        solution: `${area} m²`,
+        explanation: `A = ${outerWidth}·${outerHeight} − ${notchWidth}·${notchHeight} = ${outerWidth * outerHeight} − ${notchWidth * notchHeight} = ${area} m².`,
+        visualContent: svg,
+      })
+    },
+  ),
+}
+
+const umfangZusammengesetzt: Topic = {
+  id: 'lb4-umfang-zusammengesetzt',
+  title: 'Zusammengesetzte Flächen: Umfang berechnen',
+  hint: 'Addiere alle äußeren Kanten. Bei einer Eckaussparung gilt: U = 2 · (Länge + Breite).',
+  pointsPerTask: 12,
+  difficulty: 2,
+  fachwissen: {
+    text: 'Der Umfang einer zusammengesetzten Figur ist die Länge ihrer äußeren Begrenzungslinie. Wird aus einem Rechteck an einer Ecke ein kleineres Rechteck ausgeschnitten, bleibt der Umfang gleich dem des Ausgangsrechtecks: U = 2 · (a + b). Die beiden entfernten Außenkanten werden durch zwei gleich lange Innenkanten ersetzt.',
+    quelle: 'Wikipedia: Umfang (Geometrie)',
+    url: 'https://de.wikipedia.org/wiki/Umfang_(Geometrie)',
+  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const d = randomLDims(rng)
+      return valueTask({
+        question: `Eine L-Form entsteht, indem man aus einem Rechteck ${d.outerWidth} m × ${d.outerHeight} m oben rechts ein Rechteck ${d.cutWidth} m × ${d.cutHeight} m ausschneidet. Berechne den Umfang der L-Form.`,
+        unit: 'm',
+        answerKind: 'integer',
+        value: d.perimeter,
+        solution: `${d.perimeter} m`,
+        explanation: `Bei einer Eckaussparung bleibt der Umfang gleich dem des großen Rechtecks: U = 2 · (${d.outerWidth} + ${d.outerHeight}) = ${d.perimeter} m.`,
+      })
+    },
+    (rng: Rng) => {
+      const d = randomLDims(rng)
+      const svg = generateLShapeSvg({
+        outerWidth: d.outerWidth,
+        outerHeight: d.outerHeight,
+        cutWidth: d.cutWidth,
+        cutHeight: d.cutHeight,
+        bottomLabel: `${d.outerWidth} m`,
+        leftLabel: `${d.outerHeight} m`,
+        topLabel: `${d.stemWidth} m`,
+        rightLabel: `${d.footHeight} m`,
+        innerHorizontalLabel: `${d.cutWidth} m`,
+        innerVerticalLabel: `${d.cutHeight} m`,
+      })
+      return visualTask({
+        question: 'Berechne den Umfang der abgebildeten L-Form.',
+        unit: 'm',
+        answerKind: 'integer',
+        value: d.perimeter,
+        solution: `${d.perimeter} m`,
+        explanation: `Alle äußeren Kanten: U = 2 · (${d.outerWidth} + ${d.outerHeight}) = ${d.perimeter} m.`,
+        visualContent: svg,
+      })
+    },
+  ),
+}
+
 // ---------------------------------------------------------------------------
 // Lernbereich 5 — Vernetzung: Mathematik im Alltag
 // ---------------------------------------------------------------------------
@@ -1380,7 +1539,7 @@ export const klasse5: Grade = {
       id: 'lb4',
       title: 'Rechtecke und Quader',
       ustd: 24,
-      topics: [umfangRechteck, flaecheRechteck, volumenQuader, oberflaecheQuader],
+      topics: [umfangRechteck, flaecheRechteck, volumenQuader, oberflaecheQuader, flaecheZusammengesetzt, umfangZusammengesetzt],
     },
     {
       id: 'lb5',

@@ -835,3 +835,188 @@ export function generateFractionGridSvg({
   ${label}
 </svg>`.trim()
 }
+
+export interface LShapeSvgProps {
+  /**
+   * Outer bottom edge length (full width of L).
+   * Geometry: cutout is top-right, so L looks like:
+   *   +----+
+   *   |    |
+   *   |    +----+
+   *   |         |
+   *   +---------+
+   */
+  outerWidth: number
+  /** Outer left edge length (full height of L) */
+  outerHeight: number
+  /** Width of the top-right cutout */
+  cutWidth: number
+  /** Height of the top-right cutout */
+  cutHeight: number
+  /** Labels for outer edges (omit or empty to hide) */
+  bottomLabel?: string
+  leftLabel?: string
+  topLabel?: string
+  rightLabel?: string
+  /** Optional inner-corner labels (cut edges) */
+  innerHorizontalLabel?: string
+  innerVerticalLabel?: string
+  fill?: string
+  stroke?: string
+}
+
+/**
+ * Generate SVG for a labeled L-shape (rectangle with top-right cutout).
+ * Dimensions are used for proportions; labels are display strings (e.g. "8 m").
+ */
+export function generateLShapeSvg({
+  outerWidth,
+  outerHeight,
+  cutWidth,
+  cutHeight,
+  bottomLabel,
+  leftLabel,
+  topLabel,
+  rightLabel,
+  innerHorizontalLabel,
+  innerVerticalLabel,
+  fill = '#e8f5e9',
+  stroke = '#2e7d32',
+}: LShapeSvgProps): string {
+  const padL = 55
+  const padR = 70
+  const padT = 40
+  const padB = 50
+  const maxDrawW = 220
+  const maxDrawH = 180
+  const scale = Math.min(maxDrawW / outerWidth, maxDrawH / outerHeight)
+  const W = outerWidth * scale
+  const H = outerHeight * scale
+  const cW = cutWidth * scale
+  const cH = cutHeight * scale
+
+  const x0 = padL
+  const y0 = padT
+  // Polygon points (clockwise from top-left)
+  // TL -> top of stem TR -> inner corner top -> inner corner -> BR -> BL
+  const points = [
+    [x0, y0],
+    [x0 + W - cW, y0],
+    [x0 + W - cW, y0 + cH],
+    [x0 + W, y0 + cH],
+    [x0 + W, y0 + H],
+    [x0, y0 + H],
+  ]
+    .map(([x, y]) => `${x},${y}`)
+    .join(' ')
+
+  const totalW = padL + W + padR
+  const totalH = padT + H + padB
+
+  const label = (x: number, y: number, text: string | undefined, anchor = 'middle') =>
+    text
+      ? `<text x="${x}" y="${y}" text-anchor="${anchor}" font-size="14" font-weight="bold" fill="#333">${text}</text>`
+      : ''
+
+  return `
+<svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg">
+  <polygon
+    points="${points}"
+    fill="${fill}"
+    stroke="${stroke}"
+    stroke-width="2"
+  />
+  ${label(x0 + W / 2, y0 + H + 28, bottomLabel)}
+  ${label(x0 - 18, y0 + H / 2 + 5, leftLabel, 'end')}
+  ${label(x0 + (W - cW) / 2, y0 - 12, topLabel)}
+  ${label(x0 + W + 18, y0 + cH + (H - cH) / 2 + 5, rightLabel, 'start')}
+  ${label(x0 + W - cW / 2, y0 + cH - 8, innerHorizontalLabel)}
+  ${label(x0 + W - cW - 10, y0 + cH / 2 + 5, innerVerticalLabel, 'end')}
+</svg>`.trim()
+}
+
+export interface UShapeSvgProps {
+  /** Outer width */
+  outerWidth: number
+  /** Outer height */
+  outerHeight: number
+  /** Width of the inner notch (opening) */
+  notchWidth: number
+  /** Height of the inner notch from the top */
+  notchHeight: number
+  bottomLabel?: string
+  leftLabel?: string
+  rightLabel?: string
+  topLeftLabel?: string
+  topRightLabel?: string
+  fill?: string
+  stroke?: string
+}
+
+/**
+ * Generate SVG for a U-shape (rectangle with a top-center notch).
+ */
+export function generateUShapeSvg({
+  outerWidth,
+  outerHeight,
+  notchWidth,
+  notchHeight,
+  bottomLabel,
+  leftLabel,
+  rightLabel,
+  topLeftLabel,
+  topRightLabel,
+  fill = '#e3f2fd',
+  stroke = '#1565c0',
+}: UShapeSvgProps): string {
+  const padL = 55
+  const padR = 70
+  const padT = 40
+  const padB = 50
+  const maxDrawW = 240
+  const maxDrawH = 160
+  const scale = Math.min(maxDrawW / outerWidth, maxDrawH / outerHeight)
+  const W = outerWidth * scale
+  const H = outerHeight * scale
+  const nW = notchWidth * scale
+  const nH = notchHeight * scale
+  const side = (W - nW) / 2
+
+  const x0 = padL
+  const y0 = padT
+  const points = [
+    [x0, y0],
+    [x0 + side, y0],
+    [x0 + side, y0 + nH],
+    [x0 + side + nW, y0 + nH],
+    [x0 + side + nW, y0],
+    [x0 + W, y0],
+    [x0 + W, y0 + H],
+    [x0, y0 + H],
+  ]
+    .map(([x, y]) => `${x},${y}`)
+    .join(' ')
+
+  const totalW = padL + W + padR
+  const totalH = padT + H + padB
+
+  const label = (x: number, y: number, text: string | undefined, anchor = 'middle') =>
+    text
+      ? `<text x="${x}" y="${y}" text-anchor="${anchor}" font-size="14" font-weight="bold" fill="#333">${text}</text>`
+      : ''
+
+  return `
+<svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg">
+  <polygon
+    points="${points}"
+    fill="${fill}"
+    stroke="${stroke}"
+    stroke-width="2"
+  />
+  ${label(x0 + W / 2, y0 + H + 28, bottomLabel)}
+  ${label(x0 - 18, y0 + H / 2 + 5, leftLabel, 'end')}
+  ${label(x0 + W + 18, y0 + H / 2 + 5, rightLabel, 'start')}
+  ${label(x0 + side / 2, y0 - 12, topLeftLabel)}
+  ${label(x0 + side + nW + side / 2, y0 - 12, topRightLabel)}
+</svg>`.trim()
+}

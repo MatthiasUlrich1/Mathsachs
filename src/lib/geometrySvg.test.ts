@@ -8,6 +8,8 @@ import {
   generateFractionCircleSvg,
   generateFractionBarSvg,
   generateFractionGridSvg,
+  generateLShapeSvg,
+  generateUShapeSvg,
 } from './geometrySvg'
 
 describe('geometrySvg', () => {
@@ -159,6 +161,44 @@ describe('geometrySvg', () => {
         showLabel: true,
       })
       expect(svg).toContain('2/8')
+    })
+  })
+
+  describe('generateLShapeSvg', () => {
+    it('generates L-shape with dimension labels', () => {
+      const svg = generateLShapeSvg({
+        outerWidth: 8,
+        outerHeight: 6,
+        cutWidth: 3,
+        cutHeight: 4,
+        bottomLabel: '8 m',
+        leftLabel: '6 m',
+        topLabel: '5 m',
+        rightLabel: '2 m',
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('<polygon')
+      expect(svg).toContain('8 m')
+      expect(svg).toContain('6 m')
+      expect(svg).toContain('5 m')
+      expect(svg).toContain('2 m')
+    })
+  })
+
+  describe('generateUShapeSvg', () => {
+    it('generates U-shape with dimension labels', () => {
+      const svg = generateUShapeSvg({
+        outerWidth: 10,
+        outerHeight: 6,
+        notchWidth: 4,
+        notchHeight: 3,
+        bottomLabel: '10 m',
+        leftLabel: '6 m',
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('<polygon')
+      expect(svg).toContain('10 m')
+      expect(svg).toContain('6 m')
     })
   })
 })
