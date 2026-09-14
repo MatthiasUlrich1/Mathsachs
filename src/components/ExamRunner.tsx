@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { emptyInput, type UserInput } from '../curriculum/types'
 import { recordSession } from '../lib/storage'
 import { AnswerInput } from './AnswerInput'
+import { ExamProtocolSheet, formatExamAnswer } from './ExamProtocolSheet'
 import { initTaskInput, TaskInteractive, TaskVisual } from './TaskMedia'
 import {
   ExamCodeError,
@@ -28,26 +29,6 @@ interface TaskResult {
   answer: UserInput
   correct: boolean
   earned: number
-}
-
-/** Render a learner's answer for the evaluation screen. */
-const formatInput = (input: UserInput): string => {
-  if (input.kind === 'fraction') {
-    const num = input.num.trim()
-    const den = input.den.trim()
-    return num || den ? `${num || '?'}/${den || '?'}` : '—'
-  }
-  if (input.kind === 'numberLine') {
-    return input.value.toString()
-  }
-  if (input.kind === 'dragDropSort') {
-    return input.order.join(', ')
-  }
-  if (input.kind === 'digitGrid') {
-    const joined = input.digits.join('').replace(/\D/g, '')
-    return joined || '—'
-  }
-  return input.value.trim() || '—'
 }
 
 export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props) {
@@ -315,79 +296,98 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
   const earned = results.reduce((s, r) => s + r.earned, 0)
   const correctCount = results.filter((r) => r.correct).length
   const pct = totalPoints > 0 ? Math.round((earned / totalPoints) * 100) : 0
+  const printedAt = new Date().toLocaleDateString('de-DE', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  })
   return (
-    <section className="card">
-      <div className="session__head">
-        <div>
-          <h2 className="section-title no-margin">Auswertung: {spec?.titel}</h2>
-          <p className="muted small">
-            Ergebnis für <strong>{user}</strong> — im Punkteprotokoll gespeichert.
-          </p>
-        </div>
-        <button type="button" className="link" onClick={onExit}>
-          Fertig
-        </button>
-      </div>
-
-      <div className="results">
-        <div className="result">
-          <span className="result__value">
-            {earned}/{totalPoints}
-          </span>
-          <span className="result__label">Punkte</span>
-        </div>
-        <div className="result">
-          <span className="result__value">{pct}%</span>
-          <span className="result__label">Erreicht</span>
-        </div>
-        <div className="result">
-          <span className="result__value">
-            {correctCount}/{results.length}
-          </span>
-          <span className="result__label">Richtig</span>
-        </div>
-      </div>
-
-      <ol className="exam-review">
-        {results.map((r, i) => (
-          <li
-            key={i}
-            className={`exam-review__item ${
-              r.correct ? 'exam-review__item--ok' : 'exam-review__item--bad'
-            }`}
-          >
-            <div className="exam-review__head">
-              <span className="exam-review__q">{r.resolved.task.question}</span>
-              <span className="exam-review__badge">
-                {r.correct ? `+${r.earned}` : '0'} / {r.resolved.punkte} P.
-              </span>
-            </div>
-            <TaskVisual html={r.resolved.task.visualContent} />
-            <p className="exam-review__line">
-              Deine Antwort: <strong>{formatInput(r.answer)}</strong>
-              {r.resolved.task.unit ? ` ${r.resolved.task.unit}` : ''}
-              {r.correct ? ' ✓' : ' ✗'}
+    <div className="protocol-view">
+      <section className="card no-print">
+        <div className="session__head">
+          <div>
+            <h2 className="section-title no-margin">Auswertung: {spec?.titel}</h2>
+            <p className="muted small">
+              Ergebnis für <strong>{user}</strong> — im Punkteprotokoll gespeichert.
             </p>
-            {!r.correct && (
-              <p className="exam-review__line">
-                Richtige Lösung:{' '}
-                <span className="solution">{r.resolved.task.solution}</span>
-                {r.resolved.task.unit ? ` ${r.resolved.task.unit}` : ''}
-              </p>
-            )}
-            <p className="explanation">{r.resolved.task.explanation}</p>
-            <button
-              type="button"
-              className="ghost"
-              onClick={() =>
-                onPracticeTopic(r.resolved.moduleId, r.resolved.topicId)
-              }
+          </div>
+          <button type="button" className="link" onClick={onExit}>
+            Fertig
+          </button>
+        </div>
+
+        <div className="results">
+          <div className="result">
+            <span className="result__value">
+              {earned}/{totalPoints}
+            </span>
+            <span className="result__label">Punkte</span>
+          </div>
+          <div className="result">
+            <span className="result__value">{pct}%</span>
+            <span className="result__label">Erreicht</span>
+          </div>
+          <div className="result">
+            <span className="result__value">
+              {correctCount}/{results.length}
+            </span>
+            <span className="result__label">Richtig</span>
+          </div>
+        </div>
+
+        <button type="button" className="primary" onClick={() => window.print()}>
+          Drucken / als PDF speichern
+        </button>
+
+        <ol className="exam-review">
+          {results.map((r, i) => (
+            <li
+              key={i}
+              className={`exam-review__item ${
+                r.correct ? 'exam-review__item--ok' : 'exam-review__item--bad'
+              }`}
             >
-              Ähnliche Aufgabe üben
-            </button>
-          </li>
-        ))}
-      </ol>
-    </section>
+              <div className="exam-review__head">
+                <span className="exam-review__q">{r.resolved.task.question}</span>
+                <span className="exam-review__badge">
+                  {r.correct ? `+${r.earned}` : '0'} / {r.resolved.punkte} P.
+                </span>
+              </div>
+              <TaskVisual html={r.resolved.task.visualContent} />
+              <p className="exam-review__line">
+                Deine Antwort: <strong>{formatExamAnswer(r.answer)}</strong>
+                {r.resolved.task.unit ? ` ${r.resolved.task.unit}` : ''}
+                {r.correct ? ' ✓' : ' ✗'}
+              </p>
+              {!r.correct && (
+                <p className="exam-review__line">
+                  Richtige Lösung:{' '}
+                  <span className="solution">{r.resolved.task.solution}</span>
+                  {r.resolved.task.unit ? ` ${r.resolved.task.unit}` : ''}
+                </p>
+              )}
+              <p className="explanation">{r.resolved.task.explanation}</p>
+              <button
+                type="button"
+                className="ghost"
+                onClick={() =>
+                  onPracticeTopic(r.resolved.moduleId, r.resolved.topicId)
+                }
+              >
+                Ähnliche Aufgabe üben
+              </button>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <ExamProtocolSheet
+        user={user}
+        title={spec?.titel ?? 'Übungsklausur'}
+        results={results}
+        totalPoints={totalPoints}
+        printedAt={printedAt}
+      />
+    </div>
   )
 }

@@ -2206,6 +2206,9 @@ a.link {
   .dialog-backdrop {
     display: none !important;
   }
+  .exam-protocol-print {
+    display: block !important;
+  }
   .app {
     max-width: none;
     gap: 0;
@@ -2219,6 +2222,11 @@ a.link {
   .bar {
     border: 1px solid #cbd5e1;
   }
+}
+
+/* Klausurprotokoll: only for print (screen keeps the interactive review). */
+.exam-protocol-print {
+  display: none;
 }
 
 .challenge-create,
