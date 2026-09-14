@@ -94,3 +94,115 @@ export const fractionTask = (input: FractionTaskInput): Task => ({
     return true
   },
 })
+
+interface NumberLineTaskInput {
+  question: string
+  min: number
+  max: number
+  step: number
+  /** The correct value on the number line. */
+  value: number
+  solution: string
+  explanation: string
+  /** Number of decimal places for display. */
+  decimals?: number
+  /** Tolerance for comparison. */
+  eps?: number
+}
+
+/** Build an interactive number line task. */
+export const numberLineTask = (input: NumberLineTaskInput): Task => ({
+  question: input.question,
+  answerKind: 'integer', // Fallback for non-interactive mode
+  solution: input.solution,
+  explanation: input.explanation,
+  sampleAnswer: { kind: 'numberLine', value: input.value },
+  interactive: {
+    type: 'numberLine',
+    props: {
+      min: input.min,
+      max: input.max,
+      step: input.step,
+      decimals: input.decimals ?? 0,
+    },
+  },
+  check: (answer: UserInput) => {
+    if (answer.kind === 'numberLine') {
+      return approxEqual(answer.value, input.value, input.eps ?? input.step / 2)
+    }
+    if (answer.kind === 'value') {
+      const parsed = parseNumber(answer.value)
+      return parsed !== null && approxEqual(parsed, input.value, input.eps ?? input.step / 2)
+    }
+    return false
+  },
+})
+
+interface DragDropSortTaskInput {
+  question: string
+  /** Items with labels and values. */
+  items: Array<{ label: string; value: number }>
+  /** Correct order (indices of items, sorted). */
+  correctOrder: number[]
+  solution: string
+  explanation: string
+}
+
+/** Build a drag-drop sorting task. */
+export const dragDropSortTask = (input: DragDropSortTaskInput): Task => ({
+  question: input.question,
+  answerKind: 'text', // Fallback for non-interactive mode
+  solution: input.solution,
+  explanation: input.explanation,
+  sampleAnswer: { kind: 'dragDropSort', order: input.correctOrder },
+  interactive: {
+    type: 'dragDropSort',
+    props: {
+      items: input.items,
+    },
+  },
+  check: (answer: UserInput) => {
+    if (answer.kind === 'dragDropSort') {
+      if (answer.order.length !== input.correctOrder.length) return false
+      return answer.order.every((idx, i) => idx === input.correctOrder[i])
+    }
+    // Fallback: accept text answer (e.g., "1,5 m")
+    if (answer.kind === 'value') {
+      const expected = input.items[input.correctOrder[0]].label
+      return answer.value.trim().toLowerCase() === expected.trim().toLowerCase()
+    }
+    return false
+  },
+})
+
+interface VisualTaskInput {
+  question: string
+  unit?: string
+  answerKind: Exclude<AnswerKind, 'fraction'>
+  value: number
+  solution: string
+  explanation: string
+  /** SVG visual content (e.g., geometry diagram). */
+  visualContent: string
+  eps?: number
+}
+
+/** Build a task with visual SVG content (e.g., geometry diagrams). */
+export const visualTask = (input: VisualTaskInput): Task => ({
+  question: input.question,
+  unit: input.unit,
+  answerKind: input.answerKind,
+  solution: input.solution,
+  explanation: input.explanation,
+  visualContent: input.visualContent,
+  sampleAnswer: { kind: 'value', value: String(input.value) },
+  check: (answer: UserInput) => {
+    if (answer.kind !== 'value') return false
+    if (input.answerKind === 'integer') {
+      const parsed = parseInteger(answer.value)
+      return parsed !== null && parsed === input.value
+    }
+    const parsed = parseNumber(answer.value)
+    return parsed !== null && approxEqual(parsed, input.value, input.eps ?? 1e-6)
+  },
+})

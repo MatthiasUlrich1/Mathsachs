@@ -26,12 +26,24 @@ export interface Fachwissen {
 export type UserInput =
   | { kind: 'value'; value: string }
   | { kind: 'fraction'; num: string; den: string }
+  | { kind: 'numberLine'; value: number }
+  | { kind: 'dragDropSort'; order: number[] }
 
 /** A blank input matching the widget for a given answer kind. */
-export const emptyInput = (kind: AnswerKind): UserInput =>
-  kind === 'fraction'
-    ? { kind: 'fraction', num: '', den: '' }
-    : { kind: 'value', value: '' }
+export const emptyInput = (kind: AnswerKind | 'numberLine' | 'dragDropSort'): UserInput => {
+  if (kind === 'fraction') return { kind: 'fraction', num: '', den: '' }
+  if (kind === 'numberLine') return { kind: 'numberLine', value: 0 }
+  if (kind === 'dragDropSort') return { kind: 'dragDropSort', order: [] }
+  return { kind: 'value', value: '' }
+}
+
+/**
+ * Interactive component configuration for tasks.
+ */
+export interface InteractiveConfig {
+  type: 'numberLine' | 'dragDropSort'
+  props: Record<string, any> // Component-specific props
+}
 
 export interface Task {
   /** Question text. Fractions are written inline as "a/b". */
@@ -47,6 +59,10 @@ export interface Task {
   check: (input: UserInput) => boolean
   /** The canonical correct input (used for answer keys and tests). */
   sampleAnswer: UserInput
+  /** Optional SVG visual content (e.g., geometry diagrams). */
+  visualContent?: string
+  /** Optional interactive component configuration. */
+  interactive?: InteractiveConfig
 }
 
 /** A single, selectable curriculum topic (Einzelthema). */

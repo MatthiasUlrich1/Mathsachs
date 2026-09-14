@@ -1,8 +1,9 @@
 import { pick, randInt, type Rng } from '../lib/rng'
 import { gcd, makeFraction } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
-import { fractionTask, textTask, valueTask } from './taskHelpers'
+import { fractionTask, dragDropSortTask, numberLineTask, textTask, valueTask, visualTask } from './taskHelpers'
 import { conversionTopic, LAENGE, FLAECHE, VOLUMEN, MASSE, ZEIT } from './units'
+import { generateRectangleSvg } from '../lib/geometrySvg'
 import type { Grade, Topic } from './types'
 
 /** Whether n is a prime number (n ≥ 2). */
@@ -497,13 +498,16 @@ const zahlenstrahl: Topic = {
     const step = randInt(rng, 1, 8) / 10
     const b = roundTo(a + step * 2, 1) // ensures midpoint is exactly halfway
     const mid = roundTo((a + b) / 2, 2)
-    return valueTask({
+    return numberLineTask({
       question: `Auf dem Zahlenstrahl liegen die Zahlen ${formatDe(a)} und ${formatDe(b)}. Welche Dezimalzahl befindet sich genau in der Mitte zwischen ihnen?`,
-      answerKind: 'decimal',
+      min: Math.floor(a) - 1,
+      max: Math.ceil(b) + 1,
+      step: 0.1,
       value: mid,
-      eps: 1e-9,
+      decimals: 1,
       solution: formatDe(mid),
       explanation: `Die Mitte zweier Zahlen berechnet man als Durchschnitt: (${formatDe(a)} + ${formatDe(b)}) : 2 = ${formatDe(a + b)} : 2 = ${formatDe(mid)}.`,
+      eps: 0.05,
     })
   },
 }
@@ -582,54 +586,16 @@ const ordnenMitEinheiten: Topic = {
     const allScenarios = [...lengthScenarios, ...massScenarios, ...volumeScenarios]
     const sc = pick(rng, allScenarios)
     const sorted = [...sc.items].sort((a, b) => a.valueInBase - b.valueInBase)
-    const smallest = sorted[0]
-    const labels = sc.items.map((i) => i.label)
+    const correctOrder = sorted.map((sortedItem) => 
+      sc.items.findIndex((item) => item.valueInBase === sortedItem.valueInBase)
+    )
     
-    // Build flexible accepted answers: allow variations with/without space, different units
-    const accepted: string[] = []
-    accepted.push(smallest.label) // original
-    accepted.push(smallest.label.replace(/\s+/g, '')) // without space
-    accepted.push(smallest.label.replace(',', '.')) // with dot instead of comma
-    accepted.push(smallest.label.replace(/\s+/g, '').replace(',', '.')) // both
-    
-    // Add base unit representation
-    const baseValue = smallest.valueInBase
-    if (sc.unitName === 'cm' || sc.unitName === 'mm') {
-      // Accept m, dm, cm, mm
-      if (baseValue % 1000 === 0) {
-        const m = baseValue / 1000
-        accepted.push(`${m}m`, `${m} m`, `${formatDe(m)}m`, `${formatDe(m)} m`)
-      }
-      if (baseValue % 100 === 0) {
-        const dm = baseValue / 100
-        accepted.push(`${dm}dm`, `${dm} dm`, `${formatDe(dm)}dm`, `${formatDe(dm)} dm`)
-      }
-      if (baseValue % 10 === 0) {
-        const cm = baseValue / 10
-        accepted.push(`${cm}cm`, `${cm} cm`, `${formatDe(cm)}cm`, `${formatDe(cm)} cm`)
-      }
-      accepted.push(`${baseValue}mm`, `${baseValue} mm`)
-    } else if (sc.unitName === 'g') {
-      // Accept kg, g
-      if (baseValue % 1000 === 0) {
-        const kg = baseValue / 1000
-        accepted.push(`${kg}kg`, `${kg} kg`, `${formatDe(kg)}kg`, `${formatDe(kg)} kg`)
-      }
-      accepted.push(`${baseValue}g`, `${baseValue} g`, `${formatDe(baseValue)}g`, `${formatDe(baseValue)} g`)
-    } else if (sc.unitName === 'ml') {
-      // Accept l, ml
-      if (baseValue % 1000 === 0) {
-        const l = baseValue / 1000
-        accepted.push(`${l}l`, `${l} l`, `${formatDe(l)}l`, `${formatDe(l)} l`)
-      }
-      accepted.push(`${baseValue}ml`, `${baseValue} ml`, `${formatDe(baseValue)}ml`, `${formatDe(baseValue)} ml`)
-    }
-    
-    return textTask({
-      question: `Welche der folgenden Angaben ist die kleinste?\n\n${labels.join('   |   ')}`,
-      accepted: [...new Set(accepted)], // deduplicate
-      solution: smallest.label,
-      explanation: `Rechne alle Angaben in ${sc.unitName} um:\n${sc.items.map((i) => `${i.label} = ${formatDe(i.valueInBase)} ${sc.unitName}`).join('\n')}.\n\nDie kleinste Zahl ist ${formatDe(smallest.valueInBase)} ${sc.unitName}, also ${smallest.label}.`,
+    return dragDropSortTask({
+      question: 'Sortiere die Größen von klein nach groß (kleinste zuerst):',
+      items: sc.items,
+      correctOrder,
+      solution: sorted.map((i) => i.label).join(' < '),
+      explanation: `Rechne alle Angaben in ${sc.unitName} um:\n${sc.items.map((i) => `${i.label} = ${formatDe(i.valueInBase)} ${sc.unitName}`).join('\n')}.\n\nSortiert von klein nach groß: ${sorted.map((i) => i.label).join(' < ')}.`,
     })
   },
 }
@@ -769,13 +735,20 @@ const flaecheRechteck: Topic = {
     const a = randInt(rng, 2, 25)
     const b = square ? a : randInt(rng, 2, 25)
     const value = a * b
-    return valueTask({
+    
+    const svg = generateRectangleSvg({
+      widthLabel: `${a} cm`,
+      heightLabel: `${b} cm`,
+    })
+    
+    return visualTask({
       question: square
         ? `Ein Quadrat hat die Seitenlänge ${a} cm. Berechne den Flächeninhalt.`
         : `Ein Rechteck ist ${a} cm lang und ${b} cm breit. Berechne den Flächeninhalt.`,
       unit: 'cm²',
       answerKind: 'integer',
       value,
+      visualContent: svg,
       solution: `${value} cm²`,
       explanation: square
         ? `Flächeninhalt eines Quadrats = Seite · Seite = ${a} · ${a} cm² = ${value} cm².`
