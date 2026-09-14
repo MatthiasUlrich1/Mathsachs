@@ -715,6 +715,24 @@ a.task-request__send {
   background: rgba(30, 41, 59, 0.5);
 }
 
+/* Override for the new Fachwissen-aware layout */
+.topic {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(30, 41, 59, 0.5);
+}
+
+.topic__header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
 .topic__title {
   font-size: 15px;
 }
@@ -723,12 +741,119 @@ a.task-request__send {
   display: flex;
   gap: 8px;
   flex-shrink: 0;
+  flex-wrap: wrap;
 }
 
 .topic__outline {
   font-size: 13px;
   font-weight: 600;
   color: var(--muted, #94a3b8);
+}
+
+/* Difficulty badges */
+.difficulty-badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 1px 6px;
+  border-radius: 6px;
+  margin-left: 6px;
+  font-weight: 700;
+  vertical-align: middle;
+  letter-spacing: 0.04em;
+}
+
+.difficulty-badge--1 {
+  background: rgba(34, 197, 94, 0.18);
+  color: #86efac;
+  border: 1px solid rgba(34, 197, 94, 0.35);
+}
+
+.difficulty-badge--2 {
+  background: rgba(234, 179, 8, 0.18);
+  color: #fde68a;
+  border: 1px solid rgba(234, 179, 8, 0.35);
+}
+
+.difficulty-badge--3 {
+  background: rgba(239, 68, 68, 0.18);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+}
+
+/* info-chip for Fachwissen toggle */
+.chip-btn--info {
+  background: rgba(99, 102, 241, 0.18);
+  border-color: rgba(99, 102, 241, 0.35);
+  color: #a5b4fc;
+}
+
+.chip-btn--info:hover {
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* Fachwissen card (browser + session) */
+.fachwissen-card {
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fachwissen-card--session {
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.fachwissen-card__text {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--text);
+}
+
+.fachwissen-card__source {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.fachwissen-card__source a {
+  color: #a5b4fc;
+  text-decoration: underline;
+}
+
+.fachwissen-card__license {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* Fachwissen toggle inside session */
+.session__fachwissen {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6px;
+}
+
+.session__fachwissen-toggle {
+  align-self: flex-start;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #a5b4fc;
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  cursor: pointer;
+}
+
+.session__fachwissen-toggle:hover {
+  background: rgba(99, 102, 241, 0.28);
 }
 
 .chip-btn {

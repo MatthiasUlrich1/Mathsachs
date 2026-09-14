@@ -113,7 +113,7 @@ const sampleChallenge = (overrides: Partial<StoredChallenge> = {}): StoredChalle
   topicIds: ['n5-add'],
   topics: [{ id: 'n5-add', title: 'Addieren' }],
   start: '2026-09-01T08:00',
-  end: '2026-09-11T16:00',
+  end: '2035-09-11T16:00',
   prize: {
     enabled: true,
     classPrize: true,

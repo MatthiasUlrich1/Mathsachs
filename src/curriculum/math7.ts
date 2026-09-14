@@ -22,7 +22,13 @@ const nebenwinkel: Topic = {
   title: 'Nebenwinkel berechnen',
   hint: 'Nebenwinkel ergänzen sich zu 180°.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['Winkel', 'Nebenwinkel', 'Geraden', '180 Grad', 'supplementär'],
+  fachwissen: {
+    text: 'Nebenwinkel liegen auf einer gemeinsamen Seite eines Schenkels und zusammen an einer Geraden: sie ergänzen sich stets zu 180°. Werden zwei Geraden von einer dritten (Transversalen) geschnitten, entstehen Neben-, Scheitel- und Stufenwinkel mit festen Größenbeziehungen.',
+    quelle: 'Wikipedia: Winkel',
+    url: 'https://de.wikipedia.org/wiki/Winkel',
+  },
   generate: (rng: Rng) => {
     const a = randInt(rng, 20, 160)
     const value = 180 - a
@@ -42,7 +48,13 @@ const scheitelwinkel: Topic = {
   title: 'Scheitel- und Stufenwinkel',
   hint: 'Scheitelwinkel und Stufenwinkel sind gleich groß.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['Winkel', 'Scheitelwinkel', 'Stufenwinkel', 'Wechselwinkel', 'Parallelen'],
+  fachwissen: {
+    text: 'Scheitelwinkel entstehen, wenn zwei Geraden sich kreuzen: sie liegen sich gegenüber und sind gleich groß. Stufenwinkel (F-Winkel) und Wechselwinkel (Z-Winkel) entstehen, wenn eine Transversale zwei parallele Geraden schneidet – Stufen- und Wechselwinkel sind ebenfalls gleich groß.',
+    quelle: 'Wikipedia: Scheitelwinkel',
+    url: 'https://de.wikipedia.org/wiki/Scheitelwinkel',
+  },
   generate: (rng: Rng) => {
     const a = randInt(rng, 20, 160)
     const art = pick(rng, ['Scheitelwinkel', 'Stufenwinkel', 'Wechselwinkel'])
@@ -66,7 +78,13 @@ const winkelsummeVieleck: Topic = {
   title: 'Innenwinkelsumme im Vieleck',
   hint: 'Winkelsumme = (n − 2) · 180°.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Vieleck', 'Polygon', 'Innenwinkelsumme', 'Winkelsumme', 'n-Eck'],
+  fachwissen: {
+    text: 'Jedes konvexe n-Eck lässt sich durch Diagonalen von einem Eckpunkt aus in (n−2) Dreiecke zerlegen. Da jedes Dreieck eine Winkelsumme von 180° hat, ergibt sich für das n-Eck: Winkelsumme = (n−2) · 180°. Beispiele: Dreieck (n=3): 180°, Viereck: 360°, Fünfeck: 540°, Sechseck: 720°.',
+    quelle: 'Wikipedia: Vieleck',
+    url: 'https://de.wikipedia.org/wiki/Vieleck',
+  },
   generate: (rng: Rng) => {
     const n = randInt(rng, 3, 12)
     const value = (n - 2) * 180
@@ -86,7 +104,13 @@ const basiswinkel: Topic = {
   title: 'Basiswinkel im gleichschenkligen Dreieck',
   hint: 'Die beiden Basiswinkel sind gleich groß.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Dreieck', 'gleichschenklig', 'Basiswinkel', 'Winkel'],
+  fachwissen: {
+    text: 'In einem gleichschenkligen Dreieck sind die beiden Schenkel gleich lang. Die Winkel an der Basis (gegenüber den gleichen Schenkeln) sind deshalb gleich groß. Aus der Winkelsumme (180°) folgt: Jeder Basiswinkel = (180° − Spitzenwinkel) / 2.',
+    quelle: 'Wikipedia: Gleichschenkliges Dreieck',
+    url: 'https://de.wikipedia.org/wiki/Gleichschenkliges_Dreieck',
+  },
   generate: (rng: Rng) => {
     const spitze = randInt(rng, 20, 140) * 1
     // Ensure the apex angle keeps base angles positive and integer.
@@ -112,7 +136,13 @@ const addRational: Topic = {
   title: 'Rationale Zahlen addieren',
   hint: 'Achte auf die Vorzeichen.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['rationale Zahlen', 'Vorzeichen', 'negative Zahlen', 'addieren', 'Addition'],
+  fachwissen: {
+    text: 'Rationale Zahlen (ℚ) umfassen alle ganzen Zahlen und Brüche, auch negative. Beim Addieren zweier Zahlen mit gleichem Vorzeichen addiert man die Beträge und behält das Vorzeichen. Bei verschiedenen Vorzeichen subtrahiert man die kleineren Betrag vom größeren und übernimmt das Vorzeichen der betragsmäßig größeren Zahl.',
+    quelle: 'Wikipedia: Rationale Zahl',
+    url: 'https://de.wikipedia.org/wiki/Rationale_Zahl',
+  },
   generate: (rng: Rng) => {
     const a = nonZero(rng, -20, 20)
     const b = nonZero(rng, -20, 20)
@@ -132,7 +162,13 @@ const subRational: Topic = {
   title: 'Rationale Zahlen subtrahieren',
   hint: 'Minus einer negativen Zahl heißt plus.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['rationale Zahlen', 'Vorzeichen', 'negative Zahlen', 'subtrahieren', 'Subtraktion'],
+  fachwissen: {
+    text: 'Subtrahieren heißt die Gegenzahl addieren: a − b = a + (−b). Die Gegenzahl einer negativen Zahl ist positiv. Beispiel: 3 − (−5) = 3 + 5 = 8. Diese Umformung macht klar, warum „Minus mal Minus Plus ergibt" und erleichtert das Rechnen mit negativen Zahlen.',
+    quelle: 'Wikipedia: Rationale Zahl',
+    url: 'https://de.wikipedia.org/wiki/Rationale_Zahl',
+  },
   generate: (rng: Rng) => {
     const a = nonZero(rng, -20, 20)
     const b = nonZero(rng, -20, 20)
@@ -152,7 +188,13 @@ const mulRational: Topic = {
   title: 'Rationale Zahlen multiplizieren',
   hint: 'Gleiche Vorzeichen → plus, verschiedene → minus.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['rationale Zahlen', 'Vorzeichenregel', 'multiplizieren', 'Multiplikation', 'mal'],
+  fachwissen: {
+    text: 'Die Vorzeichenregel bei der Multiplikation: Gleiches Vorzeichen ergibt positives Ergebnis (+·+ = + und −·− = +), verschiedene Vorzeichen ergeben ein negatives Ergebnis (+·− = − und −·+ = −). Den Betrag des Produkts bestimmt man durch normale Multiplikation der Beträge.',
+    quelle: 'Wikipedia: Vorzeichenregel',
+    url: 'https://de.wikipedia.org/wiki/Vorzeichenregel',
+  },
   generate: (rng: Rng) => {
     const a = nonZero(rng, -12, 12)
     const b = nonZero(rng, -12, 12)
@@ -173,7 +215,13 @@ const divRational: Topic = {
   title: 'Rationale Zahlen dividieren',
   hint: 'Gleiche Vorzeichen → plus, verschiedene → minus.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['rationale Zahlen', 'Vorzeichenregel', 'dividieren', 'Division', 'teilen'],
+  fachwissen: {
+    text: 'Bei der Division rationaler Zahlen gelten dieselben Vorzeichenregeln wie bei der Multiplikation: a : b = a · (1/b). Das Vorzeichen ergibt sich aus der Vorzeichenregel; der Betrag wird durch normale Division der Beträge berechnet. Division durch 0 ist nicht definiert.',
+    quelle: 'Wikipedia: Vorzeichenregel',
+    url: 'https://de.wikipedia.org/wiki/Vorzeichenregel',
+  },
   generate: (rng: Rng) => {
     const b = nonZero(rng, -12, 12)
     const q = nonZero(rng, -12, 12)
@@ -193,7 +241,13 @@ const betrag: Topic = {
   title: 'Betrag einer Zahl',
   hint: 'Der Betrag ist immer nicht negativ.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['Betrag', 'Absolutbetrag', 'Betragsstriche', 'Abstand'],
+  fachwissen: {
+    text: 'Der Betrag (Absolutbetrag) |a| einer Zahl a ist ihr Abstand von 0 auf dem Zahlenstrahl. Er ist stets nicht negativ: |a| = a wenn a ≥ 0, und |a| = −a wenn a < 0. Der Betrag ermöglicht den Vergleich von Zahlen unabhängig vom Vorzeichen und ist wichtig für Abstands- und Fehlerberechnungen.',
+    quelle: 'Wikipedia: Betrag (Mathematik)',
+    url: 'https://de.wikipedia.org/wiki/Betrag_(Mathematik)',
+  },
   generate: (rng: Rng) => {
     const a = nonZero(rng, -99, 99)
     const value = Math.abs(a)
@@ -212,7 +266,13 @@ const termVorrang: Topic = {
   title: 'Term mit Rechengesetzen auswerten',
   hint: 'Punkt- vor Strichrechnung, Klammern zuerst.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['Term', 'Rechengesetze', 'Punkt vor Strich', 'Klammer', 'auswerten'],
+  fachwissen: {
+    text: 'Beim Auswerten von Termen gilt die Operatorrangfolge: Klammern zuerst, dann Potenzierung, dann Multiplikation/Division (Punktrechnung), zuletzt Addition/Subtraktion (Strichrechnung). Diese Regeln sind verbindlich und müssen bei gemischten Termen streng eingehalten werden, um eindeutige Ergebnisse zu sichern.',
+    quelle: 'Wikipedia: Rechenregeln',
+    url: 'https://de.wikipedia.org/wiki/Punkt-vor-Strich-Rechnung',
+  },
   generate: (rng: Rng) => {
     const a = nonZero(rng, -9, 9)
     const b = nonZero(rng, -9, 9)
@@ -233,7 +293,13 @@ const gleichungAdd: Topic = {
   title: 'Einfache Gleichung: x + a = b',
   hint: 'Bringe die Zahl auf die andere Seite.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['Gleichung', 'lösen', 'x', 'Äquivalenzumformung'],
+  fachwissen: {
+    text: 'Eine Gleichung ist eine Aussage der Form linke Seite = rechte Seite. Sie wird gelöst, indem man beide Seiten durch Äquivalenzumformungen vereinfacht, ohne die Gleichheit zu verletzen. Bei x + a = b: subtrahiere a auf beiden Seiten → x = b − a.',
+    quelle: 'Wikipedia: Gleichung',
+    url: 'https://de.wikipedia.org/wiki/Gleichung',
+  },
   generate: (rng: Rng) => {
     const x = nonZero(rng, -15, 15)
     const a = nonZero(rng, -15, 15)
@@ -253,7 +319,13 @@ const gleichungMul: Topic = {
   title: 'Einfache Gleichung: a · x = b',
   hint: 'Teile durch den Faktor vor x.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['Gleichung', 'lösen', 'x', 'Faktor', 'Division'],
+  fachwissen: {
+    text: 'Gleichungen der Form a · x = b werden gelöst, indem man beide Seiten durch a dividiert (Voraussetzung: a ≠ 0): x = b / a. Diese Äquivalenzumformung verändert die Lösungsmenge nicht. Solche linearen Gleichungen mit einer Unbekannten haben genau eine Lösung.',
+    quelle: 'Wikipedia: Lineare Gleichung',
+    url: 'https://de.wikipedia.org/wiki/Lineare_Gleichung',
+  },
   generate: (rng: Rng) => {
     const a = nonZero(rng, -9, 9)
     const x = nonZero(rng, -12, 12)
@@ -277,7 +349,13 @@ const volumenPrisma: Topic = {
   title: 'Volumen gerader Prismen',
   hint: 'V = Grundfläche · Höhe.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['Prisma', 'Volumen', 'Grundfläche', 'Körper'],
+  fachwissen: {
+    text: 'Das Volumen eines geraden Prismas berechnet sich als V = G · h, wobei G der Flächeninhalt der Grundfläche und h die Höhe des Prismas ist. Diese Formel gilt unabhängig von der Form der Grundfläche (Dreieck, Rechteck, Sechseck …). Ein Zylinder kann als Prisma mit kreisförmiger Grundfläche verstanden werden.',
+    quelle: 'Wikipedia: Prisma (Geometrie)',
+    url: 'https://de.wikipedia.org/wiki/Prisma_(Geometrie)',
+  },
   generate: (rng: Rng) => {
     const g = randInt(rng, 6, 60)
     const h = randInt(rng, 2, 20)
@@ -298,7 +376,13 @@ const mantelPrisma: Topic = {
   title: 'Mantelfläche eines Prismas',
   hint: 'M = Umfang der Grundfläche · Höhe.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Prisma', 'Mantelfläche', 'Mantel', 'Oberfläche', 'Umfang'],
+  fachwissen: {
+    text: 'Die Mantelfläche eines geraden Prismas ist die Summe aller Seitenflächen (ohne Grundflächen). Da jede Seitenfläche ein Rechteck mit der Breite einer Grundkante und der Höhe h ist, ergibt sich: Mantelfläche M = Umfang der Grundfläche × Höhe. Die Oberfläche = Mantelfläche + 2 × Grundfläche.',
+    quelle: 'Wikipedia: Prisma (Geometrie)',
+    url: 'https://de.wikipedia.org/wiki/Prisma_(Geometrie)',
+  },
   generate: (rng: Rng) => {
     const u = randInt(rng, 8, 40)
     const h = randInt(rng, 2, 20)
@@ -319,7 +403,13 @@ const volumenPyramide: Topic = {
   title: 'Volumen einer Pyramide',
   hint: 'V = (1/3) · Grundfläche · Höhe.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Pyramide', 'Volumen', 'Grundfläche', 'ein Drittel'],
+  fachwissen: {
+    text: 'Das Volumen einer Pyramide beträgt ein Drittel des zugehörigen Prismas gleicher Grundfläche und Höhe: V = (1/3) · G · h. Diese Formel gilt für alle Pyramiden, unabhängig von der Form der Grundfläche. Anschaulich lassen sich drei Pyramiden zu einem Prisma zusammensetzen.',
+    quelle: 'Wikipedia: Pyramide (Geometrie)',
+    url: 'https://de.wikipedia.org/wiki/Pyramide_(Geometrie)',
+  },
   generate: (rng: Rng) => {
     // Keep the base area a multiple of 3 so the volume stays an integer.
     const g = 3 * randInt(rng, 2, 40)
@@ -341,7 +431,13 @@ const oberflaechePrisma: Topic = {
   title: 'Oberfläche eines Quaders',
   hint: 'O = 2 · (a·b + a·c + b·c).',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Quader', 'Oberfläche', 'Oberflächeninhalt', 'Prisma'],
+  fachwissen: {
+    text: 'Die Oberfläche eines Quaders ist die Summe aller sechs Seitenflächen. Da ein Quader drei Paare gleicher Flächen hat, gilt: O = 2 · (a·b + a·c + b·c). Im Alltag wird die Oberfläche benötigt, wenn man wissen will, wie viel Material für eine Verpackung oder eine Holzkiste gebraucht wird.',
+    quelle: 'Wikipedia: Quader',
+    url: 'https://de.wikipedia.org/wiki/Quader',
+  },
   generate: (rng: Rng) => {
     const a = randInt(rng, 2, 14)
     const b = randInt(rng, 2, 14)
@@ -367,7 +463,13 @@ const mittelwert: Topic = {
   title: 'Arithmetisches Mittel',
   hint: 'Mittelwert = Summe : Anzahl.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['Mittelwert', 'arithmetisches Mittel', 'Durchschnitt', 'Daten', 'Statistik'],
+  fachwissen: {
+    text: 'Das arithmetische Mittel (Durchschnitt) x̄ = (x₁ + … + xₙ) / n ist ein Lagemaß in der Statistik. Es beschreibt die typische Mitte eines Datensatzes, ist aber anfällig für Ausreißer. In Ergänzung zum Mittelwert werden Median und Spannweite für eine vollständigere Datenanalyse eingesetzt.',
+    quelle: 'Wikipedia: Arithmetisches Mittel',
+    url: 'https://de.wikipedia.org/wiki/Arithmetisches_Mittel',
+  },
   generate: (rng: Rng) => {
     const count = randInt(rng, 4, 6)
     const numbers: number[] = []
@@ -394,7 +496,13 @@ const median: Topic = {
   title: 'Median (Zentralwert)',
   hint: 'Ordne die Werte und nimm den mittleren.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Median', 'Zentralwert', 'Daten', 'Statistik', 'ordnen'],
+  fachwissen: {
+    text: 'Der Median (Zentralwert) ist der mittlere Wert einer geordneten Datenreihe. Bei ungerader Anzahl n ist er der Wert an Position (n+1)/2. Bei gerader Anzahl ist er der Durchschnitt der beiden mittleren Werte. Der Median reagiert im Gegensatz zum Mittelwert weniger empfindlich auf Ausreißer.',
+    quelle: 'Wikipedia: Median',
+    url: 'https://de.wikipedia.org/wiki/Median',
+  },
   generate: (rng: Rng) => {
     const count = pick(rng, [5, 7])
     const set = new Set<number>()
@@ -417,7 +525,13 @@ const spannweite: Topic = {
   title: 'Spannweite berechnen',
   hint: 'Spannweite = größter − kleinster Wert.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['Spannweite', 'Maximum', 'Minimum', 'Daten', 'Statistik'],
+  fachwissen: {
+    text: 'Die Spannweite R = x_max − x_min ist ein einfaches Streuungsmaß: Sie gibt den Abstand zwischen dem größten und dem kleinsten Wert einer Datenreihe an. Eine große Spannweite zeigt eine große Streuung der Daten. Nachteil: Ein einziger Ausreißer kann die Spannweite stark vergrößern.',
+    quelle: 'Wikipedia: Spannweite (Statistik)',
+    url: 'https://de.wikipedia.org/wiki/Spannweite_(Statistik)',
+  },
   generate: (rng: Rng) => {
     const count = randInt(rng, 4, 6)
     const numbers: number[] = []
@@ -440,7 +554,13 @@ const relativeHaeufigkeit: Topic = {
   title: 'Relative Häufigkeit in Prozent',
   hint: 'Relative Häufigkeit = Anzahl : Gesamt.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['relative Häufigkeit', 'Häufigkeit', 'Prozent', 'Daten', 'Statistik'],
+  fachwissen: {
+    text: 'Die relative Häufigkeit h(A) eines Ereignisses A ist der Quotient aus der absoluten Häufigkeit (Anzahl der Eintritte) und der Gesamtanzahl der Versuche. Sie liegt immer zwischen 0 und 1. Als Prozentzahl: h(A) · 100. Mit wachsender Versuchsanzahl nähert sich h(A) der theoretischen Wahrscheinlichkeit P(A) an.',
+    quelle: 'Wikipedia: Relative Häufigkeit',
+    url: 'https://de.wikipedia.org/wiki/Relative_H%C3%A4ufigkeit',
+  },
   generate: (rng: Rng) => {
     const total = pick(rng, [10, 20, 25, 40, 50, 100])
     const k = randInt(rng, 1, total - 1)

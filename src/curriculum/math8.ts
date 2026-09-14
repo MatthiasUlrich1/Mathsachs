@@ -20,7 +20,13 @@ const zusammenfassen: Topic = {
   title: 'Terme zusammenfassen (Zahl vor x)',
   hint: 'Fasse nur die x-Glieder zusammen.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['Term', 'zusammenfassen', 'gleichartige Glieder', 'Variable', 'x'],
+  fachwissen: {
+    text: 'Gleichartige Glieder in einem Term (Glieder mit derselben Variable und demselben Exponenten) dürfen zusammengefasst (addiert oder subtrahiert) werden. Ungleiche Glieder (z. B. x-Glieder und Zahlen) können nicht zusammengefasst werden. Beispiel: 3x + 5 + 2x − 1 = 5x + 4.',
+    quelle: 'Wikipedia: Algebraischer Term',
+    url: 'https://de.wikipedia.org/wiki/Algebraischer_Term',
+  },
   generate: (rng: Rng) => {
     const a = nonZero(rng, -9, 9)
     const c = nonZero(rng, -9, 9)
@@ -42,7 +48,13 @@ const termAuswerten: Topic = {
   title: 'Term auswerten (x einsetzen)',
   hint: 'Setze den Wert für x ein und rechne aus.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['Term', 'einsetzen', 'auswerten', 'Wert', 'x'],
+  fachwissen: {
+    text: 'Ein Term ist ein mathematischer Ausdruck mit Variablen, Zahlen und Operationen. Einen Term auswerten bedeutet, die Variable durch einen konkreten Zahlenwert zu ersetzen (einzusetzen) und dann den Term zu berechnen. Die Variable steht als Platzhalter für beliebige Zahlen.',
+    quelle: 'Wikipedia: Algebraischer Term',
+    url: 'https://de.wikipedia.org/wiki/Algebraischer_Term',
+  },
   generate: (rng: Rng) => {
     const a = nonZero(rng, -6, 6)
     const b = nonZero(rng, -12, 12)
@@ -63,7 +75,13 @@ const gleichungLinear: Topic = {
   title: 'Lineare Gleichung a·x + b = c',
   hint: 'Erst b, dann den Faktor a beseitigen.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['Gleichung', 'linear', 'lösen', 'x', 'Äquivalenzumformung'],
+  fachwissen: {
+    text: 'Eine lineare Gleichung der Form a·x + b = c wird durch zwei Äquivalenzumformungen gelöst: (1) Subtrahiere b auf beiden Seiten → a·x = c − b. (2) Dividiere durch a → x = (c − b) / a. Eine lineare Gleichung hat genau eine Lösung (wenn a ≠ 0).',
+    quelle: 'Wikipedia: Lineare Gleichung',
+    url: 'https://de.wikipedia.org/wiki/Lineare_Gleichung',
+  },
   generate: (rng: Rng) => {
     const a = nonZero(rng, -9, 9)
     const x = nonZero(rng, -10, 10)
@@ -84,7 +102,13 @@ const gleichungBeidseitig: Topic = {
   title: 'Gleichung mit x auf beiden Seiten',
   hint: 'Bringe alle x auf eine Seite.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Gleichung', 'beide Seiten', 'lösen', 'x', 'linear'],
+  fachwissen: {
+    text: 'Erscheint die Unbekannte x auf beiden Seiten der Gleichung, bringt man alle x-Glieder durch Äquivalenzumformung auf eine Seite und alle Zahlen auf die andere. Dann löst man wie bei einer Gleichung der Form a·x = b. Beispiel: 3x + 2 = x + 8 → 2x = 6 → x = 3.',
+    quelle: 'Wikipedia: Lineare Gleichung',
+    url: 'https://de.wikipedia.org/wiki/Lineare_Gleichung',
+  },
   generate: (rng: Rng) => {
     const a = nonZero(rng, -8, 8)
     let c = nonZero(rng, -8, 8)
@@ -108,7 +132,13 @@ const ausmultiplizieren: Topic = {
   title: 'Klammer ausmultiplizieren (Wert bei x)',
   hint: 'Distributivgesetz: a·(bx + c) = ab·x + ac.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Distributivgesetz', 'ausmultiplizieren', 'Klammer', 'Term'],
+  fachwissen: {
+    text: 'Das Distributivgesetz erlaubt das Ausmultiplizieren von Klammern: a · (b + c) = a · b + a · c. Beim Ausmultiplizieren mit negativen Faktoren ändern sich alle Vorzeichen innerhalb der Klammer. Umgekehrt können gemeinsame Faktoren ausgeklammert (faktorisiert) werden.',
+    quelle: 'Wikipedia: Distributivgesetz',
+    url: 'https://de.wikipedia.org/wiki/Distributivgesetz',
+  },
   generate: (rng: Rng) => {
     const a = nonZero(rng, -6, 6)
     const b = nonZero(rng, -6, 6)
@@ -134,7 +164,13 @@ const laplaceBruch: Topic = {
   title: 'Laplace-Wahrscheinlichkeit als Bruch',
   hint: 'P = günstige : mögliche Ergebnisse.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['Wahrscheinlichkeit', 'Laplace', 'Zufall', 'Bruch', 'günstige Ergebnisse'],
+  fachwissen: {
+    text: 'Bei einem Laplace-Zufallsexperiment sind alle möglichen Ergebnisse gleich wahrscheinlich. Die Wahrscheinlichkeit eines Ereignisses A ergibt sich dann als P(A) = (Anzahl günstiger Ergebnisse) / (Anzahl aller möglichen Ergebnisse). Dieser Ansatz geht auf Pierre-Simon Laplace zurück.',
+    quelle: 'Wikipedia: Laplace-Experiment',
+    url: 'https://de.wikipedia.org/wiki/Laplace-Experiment',
+  },
   generate: (rng: Rng) => {
     const rot = randInt(rng, 1, 6)
     const blau = randInt(rng, 1, 6)
@@ -161,7 +197,13 @@ const laplaceProzent: Topic = {
   title: 'Laplace-Wahrscheinlichkeit in Prozent',
   hint: 'P = günstige : mögliche, dann · 100.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['Wahrscheinlichkeit', 'Laplace', 'Prozent', 'Zufall', 'Würfel'],
+  fachwissen: {
+    text: 'Die Laplace-Wahrscheinlichkeit kann als Dezimalzahl (zwischen 0 und 1) oder als Prozentzahl (P · 100) ausgedrückt werden. P = 0 bedeutet unmögliches Ereignis, P = 1 (100 %) sicheres Ereignis. Im Alltag ist die Prozentdarstellung oft anschaulicher (z. B. „30 % Regenwahrscheinlichkeit").',
+    quelle: 'Wikipedia: Wahrscheinlichkeit',
+    url: 'https://de.wikipedia.org/wiki/Wahrscheinlichkeit',
+  },
   generate: (rng: Rng) => {
     const total = pick(rng, [4, 5, 8, 10, 20, 25])
     const k = randInt(rng, 1, total - 1)
@@ -182,7 +224,13 @@ const gegenwahrscheinlichkeit: Topic = {
   title: 'Gegenwahrscheinlichkeit',
   hint: 'P(nicht A) = 1 − P(A).',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['Gegenwahrscheinlichkeit', 'Gegenereignis', 'Wahrscheinlichkeit', 'Komplement'],
+  fachwissen: {
+    text: 'Das Gegenereignis Ā zu A umfasst alle Ergebnisse, die nicht zu A gehören. Die Summe der Wahrscheinlichkeiten von A und Ā beträgt immer 1: P(A) + P(Ā) = 1. Daraus folgt: P(Ā) = 1 − P(A). Diese Beziehung ist nützlich, wenn die Wahrscheinlichkeit des Gegenereignisses einfacher zu berechnen ist.',
+    quelle: 'Wikipedia: Gegenereignis',
+    url: 'https://de.wikipedia.org/wiki/Gegenereignis',
+  },
   generate: (rng: Rng) => {
     const total = pick(rng, [4, 5, 6, 8, 10, 12])
     const k = randInt(rng, 1, total - 1)
@@ -207,7 +255,13 @@ const funktionswert: Topic = {
   title: 'Funktionswert einer linearen Funktion',
   hint: 'Setze x in f(x) = m·x + n ein.',
   pointsPerTask: 10,
+  difficulty: 1,
   keywords: ['lineare Funktion', 'Funktionswert', 'einsetzen', 'Gerade', 'f(x)'],
+  fachwissen: {
+    text: 'Eine lineare Funktion hat die Form f(x) = m·x + n, wobei m die Steigung und n der y-Achsenabschnitt ist. Ihr Graph ist eine Gerade. Den Funktionswert f(x₀) berechnet man, indem man x₀ für x einsetzt. Lineare Funktionen sind in der Natur und Technik häufig als einfache Modelle (proportionale/lineare Zusammenhänge) anzutreffen.',
+    quelle: 'Wikipedia: Lineare Funktion',
+    url: 'https://de.wikipedia.org/wiki/Lineare_Funktion',
+  },
   generate: (rng: Rng) => {
     const m = nonZero(rng, -6, 6)
     const n = nonZero(rng, -10, 10)
@@ -228,7 +282,13 @@ const steigung: Topic = {
   title: 'Steigung aus zwei Punkten',
   hint: 'm = (y₂ − y₁) : (x₂ − x₁).',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Steigung', 'lineare Funktion', 'Gerade', 'Punkte', 'Differenzenquotient'],
+  fachwissen: {
+    text: 'Die Steigung m einer Geraden durch P₁(x₁|y₁) und P₂(x₂|y₂) berechnet sich als m = (y₂ − y₁) / (x₂ − x₁). Sie gibt an, um wie viele Einheiten y steigt (positiv) oder fällt (negativ), wenn x um 1 zunimmt. Eine Steigung von 0 bedeutet eine waagerechte Gerade.',
+    quelle: 'Wikipedia: Steigung (Mathematik)',
+    url: 'https://de.wikipedia.org/wiki/Steigung_(Mathematik)',
+  },
   generate: (rng: Rng) => {
     const x1 = nonZero(rng, -8, 8)
     let x2 = nonZero(rng, -8, 8)
@@ -251,7 +311,13 @@ const achsenabschnitt: Topic = {
   title: 'y-Achsenabschnitt bestimmen',
   hint: 'n = y − m·x.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['y-Achsenabschnitt', 'lineare Funktion', 'Gerade', 'n'],
+  fachwissen: {
+    text: 'Der y-Achsenabschnitt n einer linearen Funktion f(x) = m·x + n ist der y-Wert, bei dem die Gerade die y-Achse schneidet (d. h. bei x = 0). Kennt man die Steigung m und einen Punkt P(x₀|y₀), berechnet man n = y₀ − m·x₀.',
+    quelle: 'Wikipedia: Lineare Funktion',
+    url: 'https://de.wikipedia.org/wiki/Lineare_Funktion',
+  },
   generate: (rng: Rng) => {
     const m = nonZero(rng, -5, 5)
     const x = nonZero(rng, -6, 6)
@@ -272,7 +338,13 @@ const lgs: Topic = {
   title: 'Lineares Gleichungssystem (x bestimmen)',
   hint: 'Additions- oder Einsetzungsverfahren.',
   pointsPerTask: 10,
+  difficulty: 3,
   keywords: ['LGS', 'Gleichungssystem', 'zwei Gleichungen', 'lösen', 'x und y'],
+  fachwissen: {
+    text: 'Ein lineares Gleichungssystem (LGS) mit zwei Unbekannten x und y hat im Regelfall genau eine Lösung. Lösungsverfahren: Einsetzungsverfahren (eine Variable aus einer Gleichung ausdrücken, einsetzen), Additionsverfahren (Gleichungen so addieren, dass eine Variable wegfällt), Graphisches Verfahren (Schnittpunkt zweier Geraden).',
+    quelle: 'Wikipedia: Lineares Gleichungssystem',
+    url: 'https://de.wikipedia.org/wiki/Lineares_Gleichungssystem',
+  },
   generate: (rng: Rng) => {
     const x = nonZero(rng, -6, 6)
     const y = nonZero(rng, -6, 6)
@@ -303,7 +375,13 @@ const streckfaktor: Topic = {
   title: 'Streckfaktor bestimmen',
   hint: 'k = Bildlänge : Originallänge.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Ähnlichkeit', 'Streckfaktor', 'zentrische Streckung', 'Maßstab'],
+  fachwissen: {
+    text: 'Bei der zentrischen Streckung wird jede Strecke mit dem Streckfaktor k multipliziert. Der Streckfaktor k = Bildlänge / Originallänge. Bei k > 1 entsteht eine Vergrößerung, bei 0 < k < 1 eine Verkleinerung, bei k < 0 eine Streckung mit Richtungsumkehr. Maßstäbe in Karten sind ein alltägliches Beispiel.',
+    quelle: 'Wikipedia: Zentrische Streckung',
+    url: 'https://de.wikipedia.org/wiki/Zentrische_Streckung',
+  },
   generate: (rng: Rng) => {
     const orig = randInt(rng, 2, 12)
     const k = randInt(rng, 2, 6)
@@ -323,7 +401,13 @@ const strahlensatz: Topic = {
   title: 'Strahlensatz: fehlende Länge',
   hint: 'Gleiche Verhältnisse: a : b = c : x.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Strahlensatz', 'Ähnlichkeit', 'Verhältnis', 'Streckenlänge'],
+  fachwissen: {
+    text: 'Der Strahlensatz beschreibt die Verhältnisse paralleler Strecken beim Schnitt zweier Strahlen: Geht man von einem Punkt S aus, und schneidet eine Gerade parallel zu einer anderen beiden Strahlen, so teilen die Schnittpunkte die Strahlen im gleichen Verhältnis. Damit lassen sich unbekannte Längen berechnen.',
+    quelle: 'Wikipedia: Strahlensatz',
+    url: 'https://de.wikipedia.org/wiki/Strahlensatz',
+  },
   generate: (rng: Rng) => {
     const a = randInt(rng, 2, 8)
     const k = randInt(rng, 2, 6)
@@ -346,7 +430,13 @@ const aehnlicheSeite: Topic = {
   title: 'Ähnliche Figuren: Seitenlänge',
   hint: 'Multipliziere mit dem Ähnlichkeitsfaktor.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Ähnlichkeit', 'ähnliche Dreiecke', 'Seitenverhältnis', 'Faktor'],
+  fachwissen: {
+    text: 'Zwei Figuren sind ähnlich, wenn sie die gleiche Form, aber unterschiedliche Größe haben. Entsprechende Seiten stehen im gleichen Verhältnis k (Ähnlichkeitsfaktor). Entsprechende Winkel sind gleich groß. Ähnliche Dreiecke entstehen z. B. durch zentrische Streckung, Spiegelung oder Schatten in der Sonne.',
+    quelle: 'Wikipedia: Ähnlichkeit (Geometrie)',
+    url: 'https://de.wikipedia.org/wiki/%C3%84hnlichkeit_(Geometrie)',
+  },
   generate: (rng: Rng) => {
     const seite = randInt(rng, 3, 12)
     const k = randInt(rng, 2, 5)
@@ -371,7 +461,13 @@ const zahlenraetsel: Topic = {
   title: 'Zahlenrätsel (Gleichung aufstellen)',
   hint: 'Übersetze in eine Gleichung und löse.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Zahlenrätsel', 'Gleichung', 'heuristisch', 'Textaufgabe', 'Rückwärtsrechnen'],
+  fachwissen: {
+    text: 'Beim Lösen von Zahlenrätseln wird der Sachtext in eine mathematische Gleichung übersetzt. Schlüssel: unbekannte Zahl = x, dann die beschriebenen Operationen in Gleichungsform bringen. Diese heuristische Strategie – Übersetzen in Algebra – ist eine der wichtigsten Problemlösemethoden in der Mathematik.',
+    quelle: 'Wikipedia: Gleichung',
+    url: 'https://de.wikipedia.org/wiki/Gleichung',
+  },
   generate: (rng: Rng) => {
     const a = randInt(rng, 2, 6)
     const b = nonZero(rng, -12, 12)
@@ -393,7 +489,13 @@ const rueckwaerts: Topic = {
   title: 'Rückwärtsrechnen',
   hint: 'Kehre die Rechenschritte um.',
   pointsPerTask: 10,
+  difficulty: 2,
   keywords: ['Rückwärtsrechnen', 'Umkehroperation', 'heuristisch', 'Strategie'],
+  fachwissen: {
+    text: 'Rückwärtsrechnen (auch: Vorwärtsstrategie umkehren) ist eine heuristische Problemlösestrategie: Man beginnt beim bekannten Endwert und kehrt alle Rechenschritte in umgekehrter Reihenfolge und mit der jeweils inversen Operation um. Diese Strategie eignet sich besonders, wenn der Ausgangswert gesucht ist.',
+    quelle: 'Wikipedia: Heuristik',
+    url: 'https://de.wikipedia.org/wiki/Heuristik',
+  },
   generate: (rng: Rng) => {
     const start = randInt(rng, 2, 20)
     const add = randInt(rng, 1, 15)

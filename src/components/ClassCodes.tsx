@@ -41,6 +41,7 @@ import {
   classCodeWhatsAppUrl,
   openClassCodeShareUrl,
 } from '../classCode/share'
+import { openCodePrintWindow } from '../classCode/printSheet'
 import {
   cacheKnownClassName,
   forgetCreatedClassCode,
@@ -536,6 +537,16 @@ export function ClassCodes({
                         onClick={() => void copyCreated(row.code)}
                       >
                         {copiedCreated === row.code ? 'Kopiert' : 'Code kopieren'}
+                      </button>
+                      <button
+                        type="button"
+                        className="link"
+                        title="30 Code-Zettel auf einem A4-Blatt drucken (zum Ausschneiden und Verteilen)"
+                        onClick={() =>
+                          openCodePrintWindow([{ code: row.code, name: row.name || 'Klasse' }])
+                        }
+                      >
+                        Drucken (30 Zettel)
                       </button>
                       <a
                         className="link"

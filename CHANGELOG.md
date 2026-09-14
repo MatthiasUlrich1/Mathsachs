@@ -9,6 +9,41 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.44] – 2026-09-14
+
+### Hinzugefügt
+
+- **Klassencode drucken (30 Zettel):** In der Liste der eigenen Klasscodes
+  gibt es den neuen Link **„Drucken (30 Zettel)"**. Er öffnet ein
+  druckfertiges A4-Blatt mit 30 Kopien des Klassencodes (3 Spalten × 10
+  Zeilen) und gestrichelten Schnittlinien. Die Zettel können ausgeschnitten
+  und an die Schüler verteilt werden.
+- **Stufendruck:** Im Bereich „Klassenstufe" erscheint der Link
+  **„Stufendruck"**, sobald mindestens eine Klasse der Stufe zugeordnet ist.
+  Er druckt für jede zugeordnete Klasse eine eigene Seite mit 30
+  Code-Zetteln – alles in einem einzigen Druckauftrag.
+- Neues Modul `src/classCode/printSheet.ts` mit der Funktion
+  `openCodePrintWindow`.
+
+## [0.1.43] – 2026-09-14
+
+### Hinzugefügt
+
+- **Fachwissen:** Jedes Thema in den Klassen 5–12 enthält jetzt eine kompakte
+  mathematische Erklärung (eigene Formulierung) mit Quellenangabe und Link zu
+  Wikipedia (CC BY-SA 4.0). Die Wissensbox lässt sich im Lehrplan-Browser
+  (Schaltfläche „Wissen ▼") und direkt in der Übe-Session (💡 Fachwissen)
+  auf- und zuklappen.
+- **Schwierigkeitsgrad:** Jedes Thema trägt nun ein Schwierigkeits-Badge
+  (★ Basis · ★★ Standard · ★★★ Erweiterung), das im Lehrplan-Browser sichtbar
+  ist.
+- **Neue Anwendungsaufgaben (Klasse 5 & 6):** Dezimalzahlen auf dem
+  Zahlenstrahl einordnen, Größen mit verschiedenen Einheiten der Größe nach
+  ordnen (z. B. 1,5 kg vs. 1 200 g), mehrstufige Sachaufgaben mit
+  Alltagsbezug sowie Flächenaufgaben als Textaufgaben.
+- **Difficulty-Badge & Fachwissen-Karte:** Neue CSS-Komponenten in `App.css`
+  und neue React-Unterkomponente `TopicRow` im `CurriculumBrowser`.
+
 ## [0.1.42] – 2026-09-06
 
 ### Hinzugefügt

@@ -22,6 +22,7 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
   const [input, setInput] = useState<UserInput>(() => emptyInput(task.answerKind))
   const [phase, setPhase] = useState<Phase>('answering')
   const [showExplanation, setShowExplanation] = useState(false)
+  const [showFachwissen, setShowFachwissen] = useState(false)
 
   // Reset the answer widget whenever a fresh task appears.
   useEffect(() => {
@@ -152,6 +153,39 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
       <div className={`prompt prompt--${phase}`}>{task.question}</div>
       {topic.hint && phase === 'answering' && (
         <p className="muted small hint">{topic.hint}</p>
+      )}
+
+      {topic.fachwissen && (
+        <div className="session__fachwissen">
+          <button
+            type="button"
+            className="session__fachwissen-toggle"
+            aria-expanded={showFachwissen}
+            onClick={() => setShowFachwissen((v) => !v)}
+          >
+            💡 Fachwissen {showFachwissen ? '▲' : '▼'}
+          </button>
+          {showFachwissen && (
+            <div className="fachwissen-card fachwissen-card--session">
+              <p className="fachwissen-card__text">{topic.fachwissen.text}</p>
+              {topic.fachwissen.quelle && (
+                <p className="fachwissen-card__source">
+                  Quelle:{' '}
+                  {topic.fachwissen.url ? (
+                    <a href={topic.fachwissen.url} target="_blank" rel="noopener noreferrer">
+                      {topic.fachwissen.quelle}
+                    </a>
+                  ) : (
+                    topic.fachwissen.quelle
+                  )}
+                  {topic.fachwissen.url && (
+                    <span className="fachwissen-card__license"> (CC BY-SA 4.0)</span>
+                  )}
+                </p>
+              )}
+            </div>
+          )}
+        </div>
       )}
 
       <AnswerInput

@@ -18,6 +18,7 @@ import {
 import { assignedLocalClassCodes, GRADE_MANAGE_HINT, GRADE_PRIVACY_COPY } from '../classCode/gradeUi'
 import { publicIdFromCode } from '../classCode/publicId'
 import { standingErrorText } from '../classCode/createdList'
+import { openCodePrintWindow } from '../classCode/printSheet'
 import {
   forgetCreatedGradeCode,
   getClassCodeSettings,
@@ -259,6 +260,20 @@ export function GradeCodes({
           <button type="button" className="link" onClick={() => void copyCode(row.code)}>
             {copied === row.code ? 'Kopiert' : 'Stufencode kopieren'}
           </button>
+          {assigned.length > 0 && (
+            <button
+              type="button"
+              className="link"
+              title="Für jede Klasse dieser Stufe ein Blatt mit 30 Code-Zetteln drucken"
+              onClick={() =>
+                openCodePrintWindow(
+                  assigned.map((code) => ({ code, name: classLabel(code, classSettings) })),
+                )
+              }
+            >
+              Stufendruck
+            </button>
+          )}
           <button
             type="button"
             className="link"
