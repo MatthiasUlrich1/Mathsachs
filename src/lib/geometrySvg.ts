@@ -1,0 +1,296 @@
+/**
+ * SVG generators for geometry tasks.
+ * Provides functions to create visual representations of geometric shapes.
+ */
+
+export interface RectangleSvgProps {
+  /** Width label (e.g., "5 cm") */
+  widthLabel: string
+  /** Height label (e.g., "3 cm") */
+  heightLabel: string
+  /** Optional fill color */
+  fill?: string
+  /** Optional stroke color */
+  stroke?: string
+}
+
+/**
+ * Generate an SVG string for a labeled rectangle.
+ * Used for area/perimeter problems.
+ */
+export function generateRectangleSvg({
+  widthLabel,
+  heightLabel,
+  fill = '#e3f2fd',
+  stroke = '#1976d2',
+}: RectangleSvgProps): string {
+  const rectW = 200
+  const rectH = 120
+  const padding = 40
+  const totalW = rectW + 2 * padding
+  const totalH = rectH + 2 * padding + 20
+
+  return `
+<svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rectangle -->
+  <rect
+    x="${padding}"
+    y="${padding}"
+    width="${rectW}"
+    height="${rectH}"
+    fill="${fill}"
+    stroke="${stroke}"
+    stroke-width="2"
+  />
+  
+  <!-- Width label (bottom) -->
+  <line
+    x1="${padding}"
+    y1="${padding + rectH + 15}"
+    x2="${padding + rectW}"
+    y2="${padding + rectH + 15}"
+    stroke="${stroke}"
+    stroke-width="1"
+    marker-start="url(#arrowStart)"
+    marker-end="url(#arrowEnd)"
+  />
+  <text
+    x="${padding + rectW / 2}"
+    y="${padding + rectH + 35}"
+    text-anchor="middle"
+    font-size="16"
+    font-weight="bold"
+    fill="#333"
+  >
+    ${widthLabel}
+  </text>
+  
+  <!-- Height label (right) -->
+  <line
+    x1="${padding + rectW + 15}"
+    y1="${padding}"
+    x2="${padding + rectW + 15}"
+    y2="${padding + rectH}"
+    stroke="${stroke}"
+    stroke-width="1"
+    marker-start="url(#arrowStart)"
+    marker-end="url(#arrowEnd)"
+  />
+  <text
+    x="${padding + rectW + 30}"
+    y="${padding + rectH / 2 + 5}"
+    text-anchor="middle"
+    font-size="16"
+    font-weight="bold"
+    fill="#333"
+  >
+    ${heightLabel}
+  </text>
+  
+  <!-- Arrow markers -->
+  <defs>
+    <marker
+      id="arrowStart"
+      markerWidth="10"
+      markerHeight="10"
+      refX="5"
+      refY="5"
+      orient="auto-start-reverse"
+    >
+      <polygon points="10,5 0,10 0,0" fill="${stroke}" />
+    </marker>
+    <marker
+      id="arrowEnd"
+      markerWidth="10"
+      markerHeight="10"
+      refX="5"
+      refY="5"
+      orient="auto"
+    >
+      <polygon points="0,5 10,10 10,0" fill="${stroke}" />
+    </marker>
+  </defs>
+</svg>`.trim()
+}
+
+export interface TriangleSvgProps {
+  /** Base label */
+  baseLabel: string
+  /** Height label */
+  heightLabel: string
+  /** Optional fill color */
+  fill?: string
+  /** Optional stroke color */
+  stroke?: string
+}
+
+/**
+ * Generate an SVG string for a labeled triangle (base + height).
+ */
+export function generateTriangleSvg({
+  baseLabel,
+  heightLabel,
+  fill = '#fff3e0',
+  stroke = '#f57c00',
+}: TriangleSvgProps): string {
+  const base = 200
+  const height = 140
+  const padding = 40
+  const totalW = base + 2 * padding
+  const totalH = height + 2 * padding + 20
+
+  const x1 = padding
+  const y1 = padding + height
+  const x2 = padding + base
+  const y2 = padding + height
+  const x3 = padding + base / 2
+  const y3 = padding
+
+  return `
+<svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg">
+  <!-- Triangle -->
+  <polygon
+    points="${x1},${y1} ${x2},${y2} ${x3},${y3}"
+    fill="${fill}"
+    stroke="${stroke}"
+    stroke-width="2"
+  />
+  
+  <!-- Height line (dashed) -->
+  <line
+    x1="${x3}"
+    y1="${y3}"
+    x2="${x3}"
+    y2="${y1}"
+    stroke="${stroke}"
+    stroke-width="1"
+    stroke-dasharray="4"
+  />
+  
+  <!-- Base label (bottom) -->
+  <line
+    x1="${x1}"
+    y1="${y1 + 15}"
+    x2="${x2}"
+    y2="${y1 + 15}"
+    stroke="${stroke}"
+    stroke-width="1"
+    marker-start="url(#arrowStart)"
+    marker-end="url(#arrowEnd)"
+  />
+  <text
+    x="${x1 + base / 2}"
+    y="${y1 + 35}"
+    text-anchor="middle"
+    font-size="16"
+    font-weight="bold"
+    fill="#333"
+  >
+    ${baseLabel}
+  </text>
+  
+  <!-- Height label (right of dashed line) -->
+  <text
+    x="${x3 + 15}"
+    y="${y3 + height / 2}"
+    text-anchor="start"
+    font-size="16"
+    font-weight="bold"
+    fill="#333"
+  >
+    ${heightLabel}
+  </text>
+  
+  <!-- Arrow markers -->
+  <defs>
+    <marker
+      id="arrowStart"
+      markerWidth="10"
+      markerHeight="10"
+      refX="5"
+      refY="5"
+      orient="auto-start-reverse"
+    >
+      <polygon points="10,5 0,10 0,0" fill="${stroke}" />
+    </marker>
+    <marker
+      id="arrowEnd"
+      markerWidth="10"
+      markerHeight="10"
+      refX="5"
+      refY="5"
+      orient="auto"
+    >
+      <polygon points="0,5 10,10 10,0" fill="${stroke}" />
+    </marker>
+  </defs>
+</svg>`.trim()
+}
+
+export interface CircleSvgProps {
+  /** Radius label */
+  radiusLabel: string
+  /** Optional fill color */
+  fill?: string
+  /** Optional stroke color */
+  stroke?: string
+}
+
+/**
+ * Generate an SVG string for a labeled circle (radius).
+ */
+export function generateCircleSvg({
+  radiusLabel,
+  fill = '#f3e5f5',
+  stroke = '#7b1fa2',
+}: CircleSvgProps): string {
+  const radius = 80
+  const padding = 40
+  const totalSize = 2 * (radius + padding)
+
+  const cx = padding + radius
+  const cy = padding + radius
+
+  return `
+<svg width="${totalSize}" height="${totalSize}" xmlns="http://www.w3.org/2000/svg">
+  <!-- Circle -->
+  <circle
+    cx="${cx}"
+    cy="${cy}"
+    r="${radius}"
+    fill="${fill}"
+    stroke="${stroke}"
+    stroke-width="2"
+  />
+  
+  <!-- Radius line -->
+  <line
+    x1="${cx}"
+    y1="${cy}"
+    x2="${cx + radius}"
+    y2="${cy}"
+    stroke="${stroke}"
+    stroke-width="2"
+  />
+  
+  <!-- Center dot -->
+  <circle
+    cx="${cx}"
+    cy="${cy}"
+    r="3"
+    fill="${stroke}"
+  />
+  
+  <!-- Radius label -->
+  <text
+    x="${cx + radius / 2}"
+    y="${cy - 10}"
+    text-anchor="middle"
+    font-size="16"
+    font-weight="bold"
+    fill="#333"
+  >
+    ${radiusLabel}
+  </text>
+</svg>`.trim()
+}

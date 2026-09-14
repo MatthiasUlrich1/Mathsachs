@@ -1,0 +1,28 @@
+.number-line-slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.number-line-label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.number-line-svg {
+  cursor: pointer;
+  user-select: none;
+}
+
+.number-line-svg circle.dragging {
+  cursor: grabbing;
+  r: 10;
+}
+
+.number-line-svg circle:hover {
+  r: 10;
+  cursor: grab;
+}
