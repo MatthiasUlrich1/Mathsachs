@@ -383,7 +383,7 @@ const sachaufgabeBruch: Topic = {
         unit: 'km' },
     ])
     return valueTask({
-      question: ctx.text(gesamt, n, d, value),
+      question: ctx.text(gesamt, n, d),
       unit: ctx.unit || undefined,
       answerKind: 'decimal',
       value,
