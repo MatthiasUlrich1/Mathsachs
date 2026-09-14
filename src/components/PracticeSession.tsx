@@ -2,12 +2,13 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { createRng, timeSeed } from '../lib/rng'
 import { recordSession } from '../lib/storage'
 import { emptyInput, type Task, type Topic, type UserInput } from '../curriculum/types'
+import { buildUniqueTaskRound } from '../curriculum/uniqueRound'
 import { AnswerInput } from './AnswerInput'
 import { NumberLineSlider } from './NumberLineSlider'
 import { DragDropSort } from './DragDropSort'
 import { DigitGrid } from './DigitGrid'
 
-const TASKS_PER_ROUND = 10
+const TARGET_TASKS_PER_ROUND = 10
 
 interface Props {
   topic: Topic
@@ -21,8 +22,13 @@ type Phase = 'answering' | 'correct' | 'wrong'
 
 export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }: Props) {
   const [rng] = useState(() => createRng(timeSeed()))
-  const [task, setTask] = useState<Task>(() => topic.generate(rng))
-  
+  const [tasks] = useState(() =>
+    buildUniqueTaskRound(topic.generate, rng, TARGET_TASKS_PER_ROUND),
+  )
+  const totalTasks = tasks.length
+  const [index, setIndex] = useState(1)
+  const task = tasks[index - 1]
+
   // Initialize input based on task type
   const initInput = (t: Task): UserInput => {
     if (t.interactive?.type === 'numberLine') {
@@ -37,7 +43,7 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
     }
     return emptyInput(t.answerKind)
   }
-  
+
   const [input, setInput] = useState<UserInput>(() => initInput(task))
   const [phase, setPhase] = useState<Phase>('answering')
   const [showExplanation, setShowExplanation] = useState(false)
@@ -48,13 +54,11 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
     setInput(initInput(task))
   }, [task])
 
-  const [index, setIndex] = useState(1)
   const [correct, setCorrect] = useState(0)
   const [points, setPoints] = useState(0)
   const [finished, setFinished] = useState(false)
   const recorded = useRef(false)
 
-  // Reset the input widget whenever a new task with a different kind appears.
   const answerKind = task.answerKind
 
   const submit = () => {
@@ -87,20 +91,16 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
   }
 
   const next = () => {
-    if (index >= TASKS_PER_ROUND) {
+    if (index >= totalTasks) {
       finish(index, correct, points)
       return
     }
-    const newTask = topic.generate(rng)
-    setTask(newTask)
-    setInput(initInput(newTask))
     setPhase('answering')
     setShowExplanation(false)
     setIndex((i) => i + 1)
   }
 
   const endEarly = () => {
-    // Count the current task only if it was already answered.
     const answered = phase === 'answering' ? index - 1 : index
     finish(answered, correct, points)
   }
@@ -157,7 +157,7 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
 
       <div className="session__meta">
         <span>
-          Aufgabe {index} von {TASKS_PER_ROUND}
+          Aufgabe {index} von {totalTasks}
         </span>
         <span>Punkte: {points}</span>
         <span>{accuracy}%</span>
@@ -165,21 +165,19 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
       <div className="progress">
         <div
           className="progress__fill"
-          style={{ width: `${((index - 1) / TASKS_PER_ROUND) * 100}%` }}
+          style={{ width: `${((index - 1) / totalTasks) * 100}%` }}
         />
       </div>
 
       <div className={`prompt prompt--${phase}`}>{task.question}</div>
-      
-      {/* SVG Visual Content */}
+
       {task.visualContent && (
-        <div 
+        <div
           className="task-visual"
           dangerouslySetInnerHTML={{ __html: task.visualContent }}
         />
       )}
-      
-      {/* Interactive Components */}
+
       {task.interactive && phase === 'answering' && (
         <div className="task-interactive">
           {task.interactive.type === 'numberLine' && (
@@ -197,8 +195,8 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
             <DragDropSort
               items={task.interactive.props.items}
               userOrder={
-                input.kind === 'dragDropSort' 
-                  ? input.order 
+                input.kind === 'dragDropSort'
+                  ? input.order
                   : task.interactive.props.items.map((_: any, i: number) => i)
               }
               onChange={(order) => setInput({ kind: 'dragDropSort', order })}
@@ -220,7 +218,7 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
           )}
         </div>
       )}
-      
+
       {topic.hint && phase === 'answering' && (
         <p className="muted small hint">{topic.hint}</p>
       )}
@@ -258,7 +256,6 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
         </div>
       )}
 
-      {/* Standard Answer Input (nur wenn nicht interaktiv) */}
       {!task.interactive && (
         <AnswerInput
           answerKind={answerKind}
@@ -280,7 +277,7 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
         <div className="feedback feedback--good">
           <strong>Richtig! +{topic.pointsPerTask} Punkte</strong>
           <button type="button" className="primary" onClick={next}>
-            {index >= TASKS_PER_ROUND ? 'Runde abschließen' : 'Nächste Aufgabe'}
+            {index >= totalTasks ? 'Runde abschließen' : 'Nächste Aufgabe'}
           </button>
         </div>
       )}
@@ -303,7 +300,7 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
             <p className="explanation">{task.explanation}</p>
           )}
           <button type="button" className="primary" onClick={next}>
-            {index >= TASKS_PER_ROUND ? 'Runde abschließen' : 'Nächste Aufgabe'}
+            {index >= totalTasks ? 'Runde abschließen' : 'Nächste Aufgabe'}
           </button>
         </div>
       )}
