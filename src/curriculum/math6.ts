@@ -371,7 +371,7 @@ const sachaufgabeBruch: Topic = {
     const n = randInt(rng, 1, d - 1)
     const gesamt = d * randInt(rng, 3, 10)
     const value = (n / d) * gesamt
-    const context = pick(rng, [
+    const ctx = pick(rng, [
       { text: (g: number, nn: number, dd: number, v: number) =>
           `Eine Klasse hat ${g} Schüler. ${nn}/${dd} der Klasse nehmen am Chor teil. Wie viele Schüler singen im Chor?`,
         unit: '' },
@@ -382,7 +382,6 @@ const sachaufgabeBruch: Topic = {
           `Ein Weg ist ${g} km lang. ${nn}/${dd} des Weges wurden bereits zurückgelegt. Wie viele km wurden zurückgelegt?`,
         unit: 'km' },
     ])
-    const ctx = pick(rng, context)
     return valueTask({
       question: ctx.text(gesamt, n, d, value),
       unit: ctx.unit || undefined,
