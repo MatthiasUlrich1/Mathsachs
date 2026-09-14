@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.51] – 2026-09-14
+
+### Behoben
+- **ACTIVE_KEY-Bereinigung verbessert**: Der gelöschte User wird nun aus dem Active-Key
+  entfernt und beim Init wird validiert ob der User noch existiert. Stale Keys werden
+  automatisch bereinigt. **Bekanntes Problem**: In der Electron-Desktop-App mit IPC-Backend
+  kann durch den Merge-Mechanismus (LAN-Sync) ein gelöschter User wiederhergestellt werden.
+  Lösung: Tombstone-System für User (kommt in nächster Version) oder Browser-Version nutzen.
+
 ## [0.1.50] – 2026-09-14
 
 ### Behoben
