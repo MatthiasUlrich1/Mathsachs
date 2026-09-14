@@ -9,6 +9,22 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.44] – 2026-09-14
+
+### Hinzugefügt
+
+- **Klassencode drucken (30 Zettel):** In der Liste der eigenen Klasscodes
+  gibt es den neuen Link **„Drucken (30 Zettel)"**. Er öffnet ein
+  druckfertiges A4-Blatt mit 30 Kopien des Klassencodes (3 Spalten × 10
+  Zeilen) und gestrichelten Schnittlinien. Die Zettel können ausgeschnitten
+  und an die Schüler verteilt werden.
+- **Stufendruck:** Im Bereich „Klassenstufe" erscheint der Link
+  **„Stufendruck"**, sobald mindestens eine Klasse der Stufe zugeordnet ist.
+  Er druckt für jede zugeordnete Klasse eine eigene Seite mit 30
+  Code-Zetteln – alles in einem einzigen Druckauftrag.
+- Neues Modul `src/classCode/printSheet.ts` mit der Funktion
+  `openCodePrintWindow`.
+
 ## [0.1.43] – 2026-09-14
 
 ### Hinzugefügt
