@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.48] – 2026-09-14
+
+### Behoben
+- **Benutzer löschen funktioniert jetzt korrekt**: Race Condition zwischen manuellem
+  State-Update und Storage-Subscription behoben. Nach dem Löschen wird der Benutzer
+  nun zuverlässig aus der Auswahlliste entfernt. Gleiches gilt für Umbenennen.
+
 ## [0.1.47] – 2026-09-14
 
 ### Neu (Issue #38 + #42)

@@ -335,17 +335,17 @@ export default function App() {
     setActiveStorageUser(next)
     setActiveUser(next)
     setUserRoleState(getUserRole(next))
-    setUsers(listUsers())
+    // users list is updated automatically via subscribeSharedStorage callback
   }
 
   const deleteCurrentUser = () => {
     if (!activeUser) return
-    const remaining = deleteUser(activeUser)
+    deleteUser(activeUser)
     setActiveStorageUser(null)
     setActiveUser(null)
     setClassLabel(null)
-    setUsers(remaining)
     setView({ name: 'browse' })
+    // users list is updated automatically via subscribeSharedStorage callback
   }
 
   if (!storageReady) {
