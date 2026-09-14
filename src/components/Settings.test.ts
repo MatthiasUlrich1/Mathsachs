@@ -27,6 +27,8 @@ const baseProps = {
   lanStatus: null,
   onChangeRole: vi.fn(),
   onSwitchUser: vi.fn(),
+  onRenameUser: vi.fn(),
+  onDeleteUser: vi.fn(),
   onCheckUpdates: vi.fn(),
 }
 

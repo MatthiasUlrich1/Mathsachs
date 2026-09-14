@@ -5,6 +5,7 @@ import { LanAccessCard } from './LanAccessCard'
 import { RoleRightsMatrix } from './RoleRightsMatrix'
 import { Supporters } from './Supporters'
 import { TaskRequest } from './TaskRequest'
+import { UserManagement } from './UserManagement'
 import {
   RoleOptions,
   TeacherCodeGate,
@@ -56,6 +57,8 @@ interface Props {
   lanStatus: LanServerStatus | null
   onChangeRole: (role: UserRole) => void
   onSwitchUser: () => void
+  onRenameUser: (newName: string) => void
+  onDeleteUser: () => void
   onCheckUpdates: () => void
   manualCheckStatus?: ManualCheckStatus
   manualCheckError?: string | null
@@ -75,6 +78,8 @@ export function Settings({
   lanStatus,
   onChangeRole,
   onSwitchUser,
+  onRenameUser,
+  onDeleteUser,
   onCheckUpdates,
   manualCheckStatus = 'idle',
   manualCheckError = null,
@@ -290,6 +295,11 @@ export function Settings({
             </button>
           </section>
           <RoleRightsMatrix />
+          <UserManagement
+            user={user}
+            onRename={onRenameUser}
+            onDelete={onDeleteUser}
+          />
         </>
       )}
 

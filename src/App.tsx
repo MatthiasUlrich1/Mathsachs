@@ -16,6 +16,8 @@ import { getClass } from './classCode/api'
 import {
   activeClassDisplayName,
   addUser,
+  deleteUser,
+  renameUser,
   cacheKnownClassName,
   getClassCodeSettings,
   getUserRole,
@@ -325,6 +327,27 @@ export default function App() {
     }
   }
 
+  const renameCurrentUser = (newName: string) => {
+    if (!activeUser) return
+    const next = newName.trim()
+    if (!next || next === activeUser) return
+    renameUser(activeUser, next)
+    setActiveStorageUser(next)
+    setActiveUser(next)
+    setUserRoleState(getUserRole(next))
+    setUsers(listUsers())
+  }
+
+  const deleteCurrentUser = () => {
+    if (!activeUser) return
+    const remaining = deleteUser(activeUser)
+    setActiveStorageUser(null)
+    setActiveUser(null)
+    setClassLabel(null)
+    setUsers(remaining)
+    setView({ name: 'browse' })
+  }
+
   if (!storageReady) {
     return (
       <main className="app">
@@ -599,6 +622,8 @@ export default function App() {
             setClassLabel(null)
             setView({ name: 'browse' })
           }}
+          onRenameUser={renameCurrentUser}
+          onDeleteUser={deleteCurrentUser}
           onCheckUpdates={() => void updateCheck.checkNow()}
           manualCheckStatus={updateCheck.manualStatus}
           manualCheckError={updateCheck.manualError}

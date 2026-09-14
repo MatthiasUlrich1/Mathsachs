@@ -486,6 +486,47 @@ export const deleteUser = (name: string): string[] => {
   return users
 }
 
+/** Rename a user. The new name must not already exist. Returns the updated user list. */
+export const renameUser = (oldName: string, newName: string): string[] => {
+  const oldTrimmed = oldName.trim()
+  const newTrimmed = newName.trim()
+  if (!oldTrimmed || !newTrimmed || oldTrimmed === newTrimmed) return listUsers()
+  if (!cache.users.includes(oldTrimmed)) return listUsers()
+  // Don't clobber an existing user
+  if (cache.users.includes(newTrimmed)) return listUsers()
+  const data = cache.records[oldTrimmed] ?? freshUser(oldTrimmed)
+  const renamedData: UserData = { ...data, name: newTrimmed }
+  const users = cache.users.map((u) => (u === oldTrimmed ? newTrimmed : u))
+  const records = { ...cache.records }
+  delete records[oldTrimmed]
+  records[newTrimmed] = renamedData
+  cache = { ...cache, users, records }
+  void persistCache()
+  notify()
+  return users
+}
+
+/**
+ * Import a UserData snapshot into the shared state.
+ * If a user with the same name already exists, sessions and stats are merged.
+ * If the name is new, the user is created.
+ * Returns the updated user list.
+ */
+export const importUserData = (data: UserData, asName?: string): string[] => {
+  const name = (asName?.trim() || data.name?.trim()) || ''
+  if (!name) return listUsers()
+  const normalized: UserData = { ...data, name }
+  // Build a minimal temporary state and merge it into the cache.
+  const tempState = emptySharedState()
+  tempState.users = [name]
+  tempState.records = { [name]: normalized }
+  const merged = mergeSharedState(cache, tempState)
+  cache = cloneSharedState(merged)
+  void persistCache()
+  notify()
+  return listUsers()
+}
+
 interface SessionInput {
   topicId: string
   topicTitle: string

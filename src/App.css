@@ -2280,3 +2280,42 @@ a.link {
   color: #1e3a5f;
   font-weight: 600;
 }
+
+/* -- User Management (Issue #38/#42) ------------------------------------- */
+
+/* Row layout for input + button pairs (rename, confirm delete) */
+.user-mgmt__row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.user-mgmt__row .answer-input__field {
+  flex: 1 1 180px;
+  min-width: 120px;
+}
+
+/* Success notice (green) */
+.notice--ok {
+  background: rgba(34, 197, 94, 0.14);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  color: inherit;
+}
+
+/* Danger (destructive) ghost button */
+.user-mgmt__danger {
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.45);
+}
+
+.user-mgmt__danger:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.7);
+}
+
+.user-mgmt__delete-confirm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

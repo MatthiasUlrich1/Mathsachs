@@ -9,6 +9,20 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.47] – 2026-09-14
+
+### Neu (Issue #38 + #42)
+- **Benutzer umbenennen**: Im Bereich Einstellungen → Profil → Benutzerverwaltung
+  kann der aktive Benutzer umbenannt werden. Alle Übungsdaten bleiben erhalten.
+- **Benutzer löschen**: Zweistufige Bestätigung verhindert versehentliches Löschen.
+  Vorher exportieren wird empfohlen.
+- **Übungsdaten exportieren**: Speichert alle Ergebnisse, Punkte und Einstellungen
+  eines Benutzers als JSON-Datei – funktioniert im Browser und in der Desktop-App.
+- **Daten importieren**: Lädt eine exportierte JSON-Datei ein. Vorhandene Daten
+  werden zusammengeführt (Sessions, Stats). Ist der Benutzername neu, wird
+  automatisch ein neuer Benutzer angelegt – damit lassen sich Übungsdaten von
+  einem Gerät auf ein anderes übertragen.
+
 ## [0.1.46] – 2026-09-14
 
 ### Behoben
