@@ -603,4 +603,50 @@ describe('storage adapter', () => {
     expect(loadUser('Kim').classTransfers).toEqual([])
     expect(fetchMock).not.toHaveBeenCalled()
   })
+
+  it('allows re-importing a previously deleted user', async () => {
+    const local = memoryStorage()
+    vi.stubGlobal('localStorage', local)
+    vi.stubGlobal('fetch', vi.fn(async () => htmlResponse()))
+    const { deleteUser, importUserData } = await import('./storage')
+
+    await initSharedStorage()
+    addUser('Max')
+    recordSession('Max', {
+      topicId: 'brueche',
+      topicTitle: 'Brüche',
+      areaTitle: 'Zahlen',
+      attempts: 5,
+      correct: 4,
+      points: 10,
+    })
+    expect(listUsers()).toEqual(['Max'])
+    expect(loadUser('Max').stats.brueche.points).toBe(10)
+
+    await deleteUser('Max')
+    expect(listUsers()).toEqual([])
+
+    // Re-import the deleted user
+    importUserData({
+      name: 'Max',
+      created: 1,
+      stats: {
+        brueche: {
+          topicId: 'brueche',
+          topicTitle: 'Brüche',
+          areaTitle: 'Zahlen',
+          attempts: 5,
+          correct: 4,
+          points: 10,
+          lastPracticed: Date.now(),
+        },
+      },
+      sessions: [],
+    })
+
+    await vi.waitFor(() => {
+      expect(listUsers()).toEqual(['Max'])
+    })
+    expect(loadUser('Max').stats.brueche.points).toBe(10)
+  })
 })

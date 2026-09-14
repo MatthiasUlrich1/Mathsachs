@@ -535,17 +535,22 @@ export const renameUser = async (oldName: string, newName: string): Promise<stri
  * Import a UserData snapshot into the shared state.
  * If a user with the same name already exists, sessions and stats are merged.
  * If the name is new, the user is created.
+ * Removes any tombstone for this user (allows re-importing deleted users).
  * Returns the updated user list.
  */
 export const importUserData = (data: UserData, asName?: string): string[] => {
   const name = (asName?.trim() || data.name?.trim()) || ''
   if (!name) return listUsers()
-  const normalized: UserData = { ...data, name }
+  const now = Date.now()
+  const normalized: UserData = { ...data, name, created: now }
+  // Remove any tombstone for this user so it can be re-imported
+  const deletedUsers = (cache.deletedUsers ?? []).filter((tomb) => tomb.name !== name)
   // Build a minimal temporary state and merge it into the cache.
   const tempState = emptySharedState()
   tempState.users = [name]
   tempState.records = { [name]: normalized }
-  const merged = mergeSharedState(cache, tempState)
+  tempState.deletedUsers = []
+  const merged = mergeSharedState({ ...cache, deletedUsers }, tempState)
   cache = cloneSharedState(merged)
   void persistCache()
   notify()
