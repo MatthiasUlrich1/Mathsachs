@@ -18,12 +18,14 @@ interface Props {
 export function UserManagement({ user, onRename, onDelete }: Props) {
   const [renameDraft, setRenameDraft] = useState('')
   const [renameError, setRenameError] = useState<string | null>(null)
+  const [renameInProgress, setRenameInProgress] = useState(false)
   const [confirmDelete, setConfirmDelete] = useState(false)
+  const [deleteInProgress, setDeleteInProgress] = useState(false)
   const [importError, setImportError] = useState<string | null>(null)
   const [importSuccess, setImportSuccess] = useState<string | null>(null)
   const fileRef = useRef<HTMLInputElement>(null)
 
-  const submitRename = () => {
+  const submitRename = async () => {
     const name = renameDraft.trim()
     if (!name) {
       setRenameError('Name darf nicht leer sein.')
@@ -34,8 +36,23 @@ export function UserManagement({ user, onRename, onDelete }: Props) {
       return
     }
     setRenameError(null)
-    onRename(name)
-    setRenameDraft('')
+    setRenameInProgress(true)
+    try {
+      onRename(name)
+      setRenameDraft('')
+    } finally {
+      setRenameInProgress(false)
+    }
+  }
+
+  const handleDelete = async () => {
+    setDeleteInProgress(true)
+    try {
+      onDelete()
+    } finally {
+      // Component will unmount after delete, so this won't actually run
+      setDeleteInProgress(false)
+    }
   }
 
   const handleExport = () => {
@@ -100,9 +117,9 @@ export function UserManagement({ user, onRename, onDelete }: Props) {
             type="button"
             className="ghost"
             onClick={submitRename}
-            disabled={!renameDraft.trim() || renameDraft.trim() === user}
+            disabled={!renameDraft.trim() || renameDraft.trim() === user || renameInProgress}
           >
-            Übernehmen
+            {renameInProgress ? 'Wird umbenannt…' : 'Übernehmen'}
           </button>
         </div>
         {renameError && (
@@ -167,14 +184,16 @@ export function UserManagement({ user, onRename, onDelete }: Props) {
               <button
                 type="button"
                 className="ghost user-mgmt__danger"
-                onClick={onDelete}
+                onClick={handleDelete}
+                disabled={deleteInProgress}
               >
-                Ja, löschen
+                {deleteInProgress ? 'Wird gelöscht…' : 'Ja, löschen'}
               </button>
               <button
                 type="button"
                 className="ghost"
                 onClick={() => setConfirmDelete(false)}
+                disabled={deleteInProgress}
               >
                 Abbrechen
               </button>

@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.1.49] – 2026-09-14
+
+### Behoben
+- **Benutzer löschen/umbenennen jetzt garantiert persistent**: `deleteUser()` und
+  `renameUser()` warten jetzt auf die vollständige Persistierung bevor sie zurückkehren.
+  Vorher war die Speicherung asynchron im Hintergrund – bei schnellem Neuladen
+  (F5) oder Schließen der App waren die Änderungen verloren. Jetzt sind Lösch- und
+  Umbenennvorgänge garantiert auf Disk/IPC/HTTP geschrieben bevor die UI aktualisiert
+  wird. Die Buttons zeigen während der Operation „Wird gelöscht…" bzw. „Wird umbenannt…".
+
 ## [0.1.48] – 2026-09-14
 
 ### Behoben

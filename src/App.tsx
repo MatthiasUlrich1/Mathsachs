@@ -327,20 +327,20 @@ export default function App() {
     }
   }
 
-  const renameCurrentUser = (newName: string) => {
+  const renameCurrentUser = async (newName: string) => {
     if (!activeUser) return
     const next = newName.trim()
     if (!next || next === activeUser) return
-    renameUser(activeUser, next)
+    await renameUser(activeUser, next)
     setActiveStorageUser(next)
     setActiveUser(next)
     setUserRoleState(getUserRole(next))
     // users list is updated automatically via subscribeSharedStorage callback
   }
 
-  const deleteCurrentUser = () => {
+  const deleteCurrentUser = async () => {
     if (!activeUser) return
-    deleteUser(activeUser)
+    await deleteUser(activeUser)
     setActiveStorageUser(null)
     setActiveUser(null)
     setClassLabel(null)

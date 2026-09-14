@@ -476,18 +476,18 @@ export const setUserRole = (name: string, role: UserRole): UserRole => {
   return nextRole
 }
 
-export const deleteUser = (name: string): string[] => {
+export const deleteUser = async (name: string): Promise<string[]> => {
   const users = listUsers().filter((n) => n !== name)
   const records = { ...cache.records }
   delete records[name]
   cache = { ...cache, users, records }
-  void persistCache()
+  await persistCache()
   notify()
   return users
 }
 
 /** Rename a user. The new name must not already exist. Returns the updated user list. */
-export const renameUser = (oldName: string, newName: string): string[] => {
+export const renameUser = async (oldName: string, newName: string): Promise<string[]> => {
   const oldTrimmed = oldName.trim()
   const newTrimmed = newName.trim()
   if (!oldTrimmed || !newTrimmed || oldTrimmed === newTrimmed) return listUsers()
@@ -501,7 +501,7 @@ export const renameUser = (oldName: string, newName: string): string[] => {
   delete records[oldTrimmed]
   records[newTrimmed] = renamedData
   cache = { ...cache, users, records }
-  void persistCache()
+  await persistCache()
   notify()
   return users
 }
