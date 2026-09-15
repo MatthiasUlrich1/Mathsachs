@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.19.0] – 2026-09-15
+
+### Geändert
+- **Oberschule-Remaps (Phase 3)**: Häufigkeit, Prisma-Volumen und Quader-Oberfläche
+  in HS/RS K7 zeigen auf die grafischen K6-Generatoren statt textbasierter K7-Fallbacks.
+
 ## [0.18.0] – 2026-09-15
 
 ### Neu

@@ -147,7 +147,7 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-hs-k7-lb2-anteil-groesse': 'lb5-anteil-groesse',
   'os-hs-k7-lb2-prozent': 'lb5-anteil-prozent',
   'os-hs-k7-lb2-dreisatz': 'lb2-proportional',
-  'os-hs-k7-lb2-haeufigkeit': 'k7-lb4-rel-haeufigkeit',
+  'os-hs-k7-lb2-haeufigkeit': 'lb2-haeufigkeit',
   'os-hs-k7-lb2-kreisdiagramm': 'lb2-grafische-brueche',
   'os-hs-k7-lb3-add': 'k7-lb2-add-rational',
   'os-hs-k7-lb3-sub': 'k7-lb2-sub-rational',
@@ -159,9 +159,9 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-hs-k7-lb4-flaeche-dreieck': 'lb3-flaeche-dreieck',
   'os-hs-k7-lb4-umfang': 'lb3-umfang-rechteck',
   'os-hs-k7-lb4-winkelsumme': 'k7-lb1-winkelsumme-vieleck',
-  'os-hs-k7-lb4-volumen-prisma': 'k7-lb3-volumen-prisma',
+  'os-hs-k7-lb4-volumen-prisma': 'lb4-volumen-prisma',
   'os-hs-k7-lb4-mantel': 'k7-lb3-mantel-prisma',
-  'os-hs-k7-lb4-oberflaeche': 'k7-lb3-oberflaeche-quader',
+  'os-hs-k7-lb4-oberflaeche': 'lb4-oberflaeche-quader',
   'os-hs-k7-lb4-zerlegen': 'lb4-flaeche-zusammengesetzt',
 
   // HS Klasse 8
@@ -204,7 +204,7 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-rs-k7-lb1-zinseszins': 'k10-lb1-zinseszins',
   'os-rs-k7-lb1-preisaenderung': 'k10-lb1-prozentuale-zunahme',
   'os-rs-k7-lb1-kreisdiagramm': 'lb2-grafische-brueche',
-  'os-rs-k7-lb2-haeufigkeit': 'k7-lb4-rel-haeufigkeit',
+  'os-rs-k7-lb2-haeufigkeit': 'lb2-haeufigkeit',
   'os-rs-k7-lb2-laplace': 'k8-lb2-laplace-bruch',
   'os-rs-k7-lb2-laplace-pct': 'k8-lb2-laplace-prozent',
   'os-rs-k7-lb3-add': 'k7-lb2-add-rational',
@@ -219,9 +219,9 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-rs-k7-lb4-flaeche-dreieck': 'lb3-flaeche-dreieck',
   'os-rs-k7-lb4-umfang': 'lb3-umfang-rechteck',
   'os-rs-k7-lb4-winkelsumme': 'k7-lb1-winkelsumme-vieleck',
-  'os-rs-k7-lb4-volumen-prisma': 'k7-lb3-volumen-prisma',
+  'os-rs-k7-lb4-volumen-prisma': 'lb4-volumen-prisma',
   'os-rs-k7-lb4-mantel': 'k7-lb3-mantel-prisma',
-  'os-rs-k7-lb4-oberflaeche': 'k7-lb3-oberflaeche-quader',
+  'os-rs-k7-lb4-oberflaeche': 'lb4-oberflaeche-quader',
   'os-rs-k7-lb4-vieleck-flaeche': 'lb4-flaeche-zusammengesetzt',
 
   // RS Klasse 8

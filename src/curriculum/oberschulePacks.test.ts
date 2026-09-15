@@ -149,12 +149,22 @@ describe('Oberschule Sachsen Lehrplan packs', () => {
     expect(OS_GENERATOR_MAP['os-k5-lb2-anteil']).toBe('lb2-grafische-brueche')
     expect(OS_GENERATOR_MAP['os-k5-lb4-spiegelung']).toBe('lb3-achsensymmetrie')
     expect(OS_GENERATOR_MAP['os-rs-k7-lb4-vieleck-flaeche']).toBe('lb4-flaeche-zusammengesetzt')
+    // Prefer visual K6 generators where OS previously fell back to text-only K7
+    expect(OS_GENERATOR_MAP['os-hs-k7-lb2-haeufigkeit']).toBe('lb2-haeufigkeit')
+    expect(OS_GENERATOR_MAP['os-rs-k7-lb2-haeufigkeit']).toBe('lb2-haeufigkeit')
+    expect(OS_GENERATOR_MAP['os-hs-k7-lb4-volumen-prisma']).toBe('lb4-volumen-prisma')
+    expect(OS_GENERATOR_MAP['os-rs-k7-lb4-volumen-prisma']).toBe('lb4-volumen-prisma')
+    expect(OS_GENERATOR_MAP['os-hs-k7-lb4-oberflaeche']).toBe('lb4-oberflaeche-quader')
+    expect(OS_GENERATOR_MAP['os-rs-k7-lb4-oberflaeche']).toBe('lb4-oberflaeche-quader')
     for (const id of [
       'lb4-flaeche-zusammengesetzt',
       'lb4-volumen-zusammengesetzt',
       'lb2-grafische-brueche',
       'lb3-achsensymmetrie',
       'lb3-koordinaten-eintragen',
+      'lb2-haeufigkeit',
+      'lb4-volumen-prisma',
+      'lb4-oberflaeche-quader',
     ]) {
       expect(catalog.has(id), id).toBe(true)
     }
