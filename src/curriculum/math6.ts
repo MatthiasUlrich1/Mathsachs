@@ -1,5 +1,6 @@
 import { pick, randInt, type Rng } from '../lib/rng'
 import {
+  generateAssignmentGraphSvg,
   generateCuboidSvg,
   generateFractionBarSvg,
   generateFractionCircleSvg,
@@ -9,6 +10,7 @@ import {
   generateRectangleSvg,
   generateTriangleAnglesSvg,
   generateTriangleSvg,
+  generateValueTableSvg,
 } from '../lib/geometrySvg'
 import {
   add,
@@ -285,8 +287,8 @@ const multBrueche: Topic = {
     url: 'https://de.wikipedia.org/wiki/Bruchrechnung',
   },
   generate: (rng: Rng) => {
-    const a = makeFraction(randInt(rng, 1, 7), randInt(rng, 2, 8))
-    const b = makeFraction(randInt(rng, 1, 7), randInt(rng, 2, 8))
+    const a = makeFraction(randInt(rng, 1, 11), randInt(rng, 2, 12))
+    const b = makeFraction(randInt(rng, 1, 11), randInt(rng, 2, 12))
     const result = multiply(a, b)
     return fractionTask({
       question: `Berechne: ${format(a)} · ${format(b)}`,
@@ -619,22 +621,111 @@ const proportional: Topic = {
     quelle: 'Wikipedia: Dreisatz',
     url: 'https://de.wikipedia.org/wiki/Dreisatz',
   },
-  generate: (rng: Rng) => {
-    const unit = pick(rng, ['Brötchen', 'Hefte', 'Äpfel', 'Stifte'])
-    const pricePer = randInt(rng, 2, 9) / 2
-    const a = randInt(rng, 2, 6)
-    const b = randInt(rng, 2, 12)
-    const total = roundTo(pricePer * a, 2)
-    const value = roundTo(pricePer * b, 2)
-    return valueTask({
-      question: `${a} ${unit} kosten ${formatDe(total)} €. Was kosten ${b} ${unit}?`,
-      unit: '€',
-      answerKind: 'decimal',
-      value,
-      solution: `${formatDe(value)} €`,
-      explanation: `Dreisatz: 1 ${unit} kostet ${formatDe(total)} € : ${a} = ${formatDe(pricePer)} €. Dann ${b} · ${formatDe(pricePer)} € = ${formatDe(value)} €.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const unit = pick(rng, ['Brötchen', 'Hefte', 'Äpfel', 'Stifte', 'Flaschen', 'Ticket'])
+      const pricePer = pick(rng, [0.5, 0.75, 1.25, 1.5, 2.5, 3.5, 4.25])
+      const a = randInt(rng, 3, 12)
+      const b = randInt(rng, 4, 24)
+      const total = roundTo(pricePer * a, 2)
+      const value = roundTo(pricePer * b, 2)
+      return valueTask({
+        question: `${a} ${unit} kosten ${formatDe(total)} €. Was kosten ${b} ${unit}?`,
+        unit: '€',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} €`,
+        explanation: `Dreisatz: 1 ${unit} kostet ${formatDe(total)} € : ${a} = ${formatDe(pricePer)} €. Dann ${b} · ${formatDe(pricePer)} € = ${formatDe(value)} €.`,
+      })
+    },
+    (rng: Rng) => {
+      const k = pick(rng, [1.5, 2, 2.5, 3, 4, 5])
+      const xs = [2, 4, 6, 8].map((x) => Math.min(x, Math.floor(20 / k) || 2))
+      const uniqueXs = [...new Set(xs.filter((x) => x >= 1))].slice(0, 4)
+      while (uniqueXs.length < 3) uniqueXs.push(uniqueXs.length + 1)
+      const missIdx = randInt(rng, 1, uniqueXs.length - 1)
+      const cells = uniqueXs.map((x, i) => ({
+        x,
+        y: i === missIdx ? null : roundTo(k * x, 2),
+      }))
+      const value = roundTo(k * uniqueXs[missIdx], 2)
+      const arrow = Number.isInteger(k) ? `· ${k}` : `· ${formatDe(k)}`
+      return visualTask({
+        question: 'Die Zuordnung ist proportional. Welche Zahl gehört in die Zelle mit dem Fragezeichen?',
+        answerKind: 'decimal',
+        value,
+        solution: formatDe(value),
+        explanation: `Proportionalitätsfaktor k = ${formatDe(k)}. Fehlender Wert: ${uniqueXs[missIdx]} · ${formatDe(k)} = ${formatDe(value)}.`,
+        visualContent: generateValueTableSvg({
+          cells,
+          xLabel: 'x',
+          yLabel: 'y',
+          arrowHint: arrow,
+        }),
+      })
+    },
+    (rng: Rng) => {
+      const k = pick(rng, [1, 2, 3, 4])
+      const xs = [1, 2, 3, pick(rng, [4, 5])]
+      const pts = xs.map((x) => ({ x, y: k * x }))
+      const ask = pick(rng, pts)
+      return {
+        ...valueTask({
+          question: `Die Punkte liegen auf einer Ursprungsgeraden (proportional). Lies die y-Koordinate von Punkt (${ask.x}|?) ab.`,
+          answerKind: 'integer',
+          value: ask.y,
+          solution: `${ask.y}`,
+          explanation: `y = ${k} · x, also bei x = ${ask.x}: y = ${ask.y}.`,
+        }),
+        visualContent: generateAssignmentGraphSvg({
+          points: pts.map((p, i) => ({
+            ...p,
+            label: p.x === ask.x ? '?' : String.fromCharCode(65 + i),
+          })),
+          showRay: true,
+          xMax: Math.max(6, ...xs) + 1,
+          yMax: Math.max(6, ...pts.map((p) => p.y)) + 1,
+        }),
+      }
+    },
+    (rng: Rng) => {
+      // Gerade (proportional) vs. Hyperbel-Skizze (antiproportional)
+      const kProp = pick(rng, [1, 2, 3])
+      const kAnti = pick(rng, [12, 24, 36])
+      const propPts = [1, 2, 3].map((x) => ({ x, y: kProp * x }))
+      const antiXs = [2, 3, 4, 6].filter((x) => kAnti % x === 0).slice(0, 3)
+      const antiPts = antiXs.map((x) => ({ x, y: kAnti / x }))
+      const propFirst = rng() < 0.5
+      const left = propFirst
+        ? generateAssignmentGraphSvg({ points: propPts, showRay: true, xMax: 6, yMax: 8, cellSize: 26 })
+        : generateAssignmentGraphSvg({
+            points: antiPts,
+            productK: kAnti,
+            xMax: 8,
+            yMax: Math.max(8, ...antiPts.map((p) => p.y)) + 1,
+            cellSize: 26,
+          })
+      const right = propFirst
+        ? generateAssignmentGraphSvg({
+            points: antiPts,
+            productK: kAnti,
+            xMax: 8,
+            yMax: Math.max(8, ...antiPts.map((p) => p.y)) + 1,
+            cellSize: 26,
+          })
+        : generateAssignmentGraphSvg({ points: propPts, showRay: true, xMax: 6, yMax: 8, cellSize: 26 })
+      const answer = propFirst ? 'A' : 'B'
+      return {
+        ...textTask({
+          question: 'Welche Zuordnung ist proportional (Ursprungsgerade)? Gib A oder B ein.',
+          accepted: [answer, answer.toLowerCase()],
+          solution: answer,
+          explanation: `Proportional: Punkte auf einer Geraden durch den Ursprung (Diagramm ${answer}). Antiproportional: Produkt x·y konstant (Hyperbel-Skizze).`,
+        }),
+        visualContent: `<div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:flex-start"><div><div style="text-align:center;font-weight:700;margin-bottom:4px">A</div>${left}</div><div><div style="text-align:center;font-weight:700;margin-bottom:4px">B</div>${right}</div></div>`,
+      }
+    },
+  ),
 }
 
 const antiproportional: Topic = {
@@ -648,24 +739,73 @@ const antiproportional: Topic = {
     quelle: 'Wikipedia: Antiproportionalität',
     url: 'https://de.wikipedia.org/wiki/Antiproportionalit%C3%A4t',
   },
-  generate: (rng: Rng) => {
-    const workers1 = randInt(rng, 2, 6)
-    const perWorker = randInt(rng, 2, 9)
-    const total = workers1 * perWorker
-    const divisors: number[] = []
-    for (let w = 2; w <= 12; w++) if (total % w === 0 && w !== workers1) divisors.push(w)
-    const workers2 = divisors.length ? pick(rng, divisors) : workers1
-    const hours1 = perWorker
-    const hours2 = total / workers2
-    return valueTask({
-      question: `${workers1} Arbeiter brauchen für eine Aufgabe ${hours1} Stunden. Wie lange brauchen ${workers2} Arbeiter?`,
-      unit: 'Stunden',
-      answerKind: 'decimal',
-      value: hours2,
-      solution: `${formatDe(hours2)} Stunden`,
-      explanation: `Die Gesamtarbeit bleibt gleich: ${workers1} · ${hours1} = ${total} Arbeiterstunden. Bei ${workers2} Arbeitern: ${total} : ${workers2} = ${formatDe(hours2)} Stunden.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const workers1 = randInt(rng, 3, 12)
+      const perWorker = randInt(rng, 4, 18)
+      const total = workers1 * perWorker
+      const divisors: number[] = []
+      for (let w = 2; w <= 24; w++) if (total % w === 0 && w !== workers1) divisors.push(w)
+      const workers2 = divisors.length ? pick(rng, divisors) : workers1
+      const hours1 = perWorker
+      const hours2 = total / workers2
+      return valueTask({
+        question: `${workers1} Arbeiter brauchen für eine Aufgabe ${hours1} Stunden. Wie lange brauchen ${workers2} Arbeiter?`,
+        unit: 'Stunden',
+        answerKind: 'decimal',
+        value: hours2,
+        solution: `${formatDe(hours2)} Stunden`,
+        explanation: `Die Gesamtarbeit bleibt gleich: ${workers1} · ${hours1} = ${total} Arbeiterstunden. Bei ${workers2} Arbeitern: ${total} : ${workers2} = ${formatDe(hours2)} Stunden.`,
+      })
+    },
+    (rng: Rng) => {
+      const product = pick(rng, [24, 36, 48, 60, 72])
+      const xs = [2, 3, 4, 6, 8, 9, 12].filter((x) => product % x === 0).slice(0, 4)
+      const missIdx = randInt(rng, 1, xs.length - 1)
+      const cells = xs.map((x, i) => ({
+        x,
+        y: i === missIdx ? null : product / x,
+      }))
+      const value = product / xs[missIdx]
+      return visualTask({
+        question: 'Die Zuordnung ist antiproportional (x · y konstant). Welche Zahl gehört an die Stelle mit dem Fragezeichen?',
+        answerKind: 'decimal',
+        value,
+        solution: formatDe(value),
+        explanation: `Produkt k = ${product}. Fehlender Wert: ${product} : ${xs[missIdx]} = ${formatDe(value)}.`,
+        visualContent: generateValueTableSvg({
+          cells,
+          xLabel: 'x',
+          yLabel: 'y',
+          arrowHint: `k=${product}`,
+        }),
+      })
+    },
+    (rng: Rng) => {
+      const product = pick(rng, [24, 36, 48])
+      const xs = [2, 3, 4, 6].filter((x) => product % x === 0)
+      const pts = xs.map((x) => ({ x, y: product / x }))
+      const ask = pick(rng, pts)
+      return {
+        ...valueTask({
+          question: `Antiproportional mit x · y = ${product}. Lies y für x = ${ask.x} ab.`,
+          answerKind: 'integer',
+          value: ask.y,
+          solution: `${ask.y}`,
+          explanation: `y = ${product} : ${ask.x} = ${ask.y}.`,
+        }),
+        visualContent: generateAssignmentGraphSvg({
+          points: pts.map((p) => ({
+            ...p,
+            label: p.x === ask.x ? `(${p.x}|?)` : `(${p.x}|${p.y})`,
+          })),
+          productK: product,
+          xMax: Math.max(8, ...xs) + 1,
+          yMax: Math.max(8, ...pts.map((p) => p.y)) + 1,
+        }),
+      }
+    },
+  ),
 }
 
 const haeufigkeit: Topic = {
@@ -681,7 +821,7 @@ const haeufigkeit: Topic = {
   },
   generate: mixedVariants(
     (rng: Rng) => {
-      const total = pick(rng, [10, 20, 25, 40, 50, 100])
+      const total = pick(rng, [20, 25, 40, 50, 80, 100, 200])
       const k = randInt(rng, 1, total - 1)
       const value = roundTo((k / total) * 100, 2)
       return valueTask({
@@ -694,7 +834,7 @@ const haeufigkeit: Topic = {
       })
     },
     (rng: Rng) => {
-      const total = pick(rng, [4, 5, 8, 10, 20])
+      const total = pick(rng, [5, 8, 10, 20])
       const k = randInt(rng, 1, total - 1)
       const value = roundTo((k / total) * 100, 2)
       return visualTask({
@@ -737,20 +877,69 @@ const sachaufgabeDreisatz: Topic = {
     quelle: 'Wikipedia: Dreisatz',
     url: 'https://de.wikipedia.org/wiki/Dreisatz',
   },
-  generate: (rng: Rng) => {
-    const preis100 = randInt(rng, 40, 200) // Preis für 100g
-    const menge = pick(rng, [250, 500, 750, 1000, 150, 300]) // in g
-    const value = roundTo((preis100 / 100) * menge, 2)
-    const artikel = pick(rng, ['Käse', 'Aufschnitt', 'Nüsse', 'Schokolade'])
-    return valueTask({
-      question: `100 g ${artikel} kosten ${preis100} Cent. Was kosten ${menge} g?`,
-      unit: 'Cent',
-      answerKind: 'decimal',
-      value,
-      solution: `${formatDe(value)} Cent`,
-      explanation: `Dreisatz: 1 g kostet ${preis100} : 100 = ${formatDe(preis100 / 100)} Cent. ${menge} g kosten ${formatDe(preis100 / 100)} · ${menge} = ${formatDe(value)} Cent.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const preis100 = randInt(rng, 45, 350)
+      const menge = pick(rng, [150, 250, 300, 450, 500, 750, 1000, 1250])
+      const value = roundTo((preis100 / 100) * menge, 2)
+      const artikel = pick(rng, ['Käse', 'Aufschnitt', 'Nüsse', 'Schokolade', 'Kaffee'])
+      return valueTask({
+        question: `100 g ${artikel} kosten ${preis100} Cent. Was kosten ${menge} g?`,
+        unit: 'Cent',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} Cent`,
+        explanation: `Dreisatz: 1 g kostet ${preis100} : 100 = ${formatDe(preis100 / 100)} Cent. ${menge} g kosten ${formatDe(preis100 / 100)} · ${menge} = ${formatDe(value)} Cent.`,
+      })
+    },
+    (rng: Rng) => {
+      const preisProKg = pick(rng, [2.4, 3.5, 4.8, 5.25, 6.5, 8.75])
+      const gram = pick(rng, [200, 250, 400, 600, 750])
+      const value = roundTo(preisProKg * (gram / 1000), 2)
+      const artikel = pick(rng, ['Äpfel', 'Kartoffeln', 'Mehl', 'Reis'])
+      const cells = [
+        { x: '1000 g', y: formatDe(preisProKg) },
+        { x: `${gram} g`, y: null },
+      ]
+      return visualTask({
+        question: `1 kg ${artikel} kostet ${formatDe(preisProKg)} €. Was kosten ${gram} g? Nutze die Wertetabelle.`,
+        unit: '€',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} €`,
+        explanation: `${gram} g = ${formatDe(gram / 1000)} kg → ${formatDe(preisProKg)} · ${formatDe(gram / 1000)} = ${formatDe(value)} €.`,
+        visualContent: generateValueTableSvg({
+          cells,
+          xLabel: 'Masse',
+          yLabel: 'Preis',
+          arrowHint: `· ${formatDe(gram / 1000)}`,
+        }),
+      })
+    },
+    (rng: Rng) => {
+      const km = pick(rng, [12, 15, 18, 24, 30])
+      const min = pick(rng, [20, 24, 30, 40, 45])
+      const speed = roundTo(km / (min / 60), 2)
+      const askMin = pick(rng, [10, 15, 25, 35, 50].filter((m) => m !== min))
+      const value = roundTo(speed * (askMin / 60), 2)
+      return visualTask({
+        question: `Ein Radfahrer schafft ${km} km in ${min} min (proportional). Welche Strecke in km in ${askMin} min?`,
+        unit: 'km',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} km`,
+        explanation: `Geschwindigkeit = ${km} : (${min}/60) = ${formatDe(speed)} km/h. In ${askMin} min: ${formatDe(speed)} · ${formatDe(askMin / 60)} = ${formatDe(value)} km.`,
+        visualContent: generateValueTableSvg({
+          cells: [
+            { x: min, y: km },
+            { x: askMin, y: null },
+          ],
+          xLabel: 'min',
+          yLabel: 'km',
+        }),
+      })
+    },
+  ),
 }
 
 // ---------------------------------------------------------------------------
@@ -881,8 +1070,8 @@ const umfangRechteck: Topic = {
   generate: mixedVariants(
     (rng: Rng) => {
       const square = rng() < 0.35
-      const a = randInt(rng, 3, 22)
-      const b = square ? a : randInt(rng, 3, 22)
+      const a = randInt(rng, 4, 28)
+      const b = square ? a : randInt(rng, 4, 28)
       const value = 2 * (a + b)
       return valueTask({
         question: square
@@ -936,8 +1125,8 @@ const flaecheRechteck: Topic = {
   generate: mixedVariants(
     (rng: Rng) => {
       const square = rng() < 0.35
-      const a = randInt(rng, 3, 22)
-      const b = square ? a : randInt(rng, 3, 22)
+      const a = randInt(rng, 4, 28)
+      const b = square ? a : randInt(rng, 4, 28)
       const value = a * b
       return valueTask({
         question: square
@@ -990,8 +1179,8 @@ const flaecheDreieck: Topic = {
   },
   generate: mixedVariants(
     (rng: Rng) => {
-      const g = randInt(rng, 4, 24)
-      const h = randInt(rng, 4, 24)
+      const g = randInt(rng, 6, 36)
+      const h = randInt(rng, 5, 32)
       const value = roundTo((g * h) / 2, 2)
       return valueTask({
         question: `Ein Dreieck hat die Grundseite ${g} cm und die Höhe ${h} cm. Berechne den Flächeninhalt.`,
@@ -1095,10 +1284,10 @@ const volumenQuader: Topic = {
   },
   generate: mixedVariants(
     (rng: Rng) => {
-      const cube = rng() < 0.35
-      const a = randInt(rng, 2, 12)
-      const b = cube ? a : randInt(rng, 2, 12)
-      const c = cube ? a : randInt(rng, 2, 12)
+      const cube = rng() < 0.3
+      const a = randInt(rng, 4, 25)
+      const b = cube ? a : randInt(rng, 3, 20)
+      const c = cube ? a : randInt(rng, 3, 18)
       const value = a * b * c
       return valueTask({
         question: cube
@@ -1114,9 +1303,9 @@ const volumenQuader: Topic = {
       })
     },
     (rng: Rng) => {
-      const a = randInt(rng, 3, 12)
-      const b = randInt(rng, 3, 12)
-      const c = randInt(rng, 3, 12)
+      const a = randInt(rng, 5, 18)
+      const b = randInt(rng, 4, 16)
+      const c = randInt(rng, 3, 14)
       const value = a * b * c
       return visualTask({
         question: 'Berechne das Volumen des abgebildeten Quaders:',
@@ -1130,6 +1319,21 @@ const volumenQuader: Topic = {
           widthLabel: `${b} cm`,
           heightLabel: `${c} cm`,
         }),
+      })
+    },
+    (rng: Rng) => {
+      // Decimal edge lengths (K6 vs K5)
+      const a = pick(rng, [2.5, 3.5, 4.5, 5.5, 6.5])
+      const b = pick(rng, [2, 2.5, 3, 3.5, 4])
+      const c = pick(rng, [1.5, 2, 2.5, 3])
+      const value = roundTo(a * b * c, 2)
+      return valueTask({
+        question: `Ein Quader ist ${formatDe(a)} dm, ${formatDe(b)} dm und ${formatDe(c)} dm groß. Berechne sein Volumen in dm³.`,
+        unit: 'dm³',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} dm³`,
+        explanation: `V = ${formatDe(a)} · ${formatDe(b)} · ${formatDe(c)} = ${formatDe(value)} dm³.`,
       })
     },
   ),
@@ -1148,9 +1352,9 @@ const oberflaecheQuader: Topic = {
   },
   generate: mixedVariants(
     (rng: Rng) => {
-      const a = randInt(rng, 2, 12)
-      const b = randInt(rng, 2, 12)
-      const c = randInt(rng, 2, 12)
+      const a = randInt(rng, 4, 20)
+      const b = randInt(rng, 3, 18)
+      const c = randInt(rng, 2, 15)
       const value = 2 * (a * b + a * c + b * c)
       return valueTask({
         question: `Ein Quader ist ${a} cm, ${b} cm und ${c} cm groß. Berechne seinen Oberflächeninhalt.`,
@@ -1164,9 +1368,9 @@ const oberflaecheQuader: Topic = {
       })
     },
     (rng: Rng) => {
-      const a = randInt(rng, 3, 10)
-      const b = randInt(rng, 3, 10)
-      const c = randInt(rng, 3, 10)
+      const a = randInt(rng, 4, 14)
+      const b = randInt(rng, 3, 12)
+      const c = randInt(rng, 3, 12)
       const value = 2 * (a * b + a * c + b * c)
       return visualTask({
         question: 'Berechne die Oberfläche des abgebildeten Quaders:',
@@ -1198,8 +1402,8 @@ const volumenPrisma: Topic = {
   },
   generate: mixedVariants(
     (rng: Rng) => {
-      const grund = randInt(rng, 6, 40)
-      const hoehe = randInt(rng, 2, 15)
+      const grund = randInt(rng, 12, 96)
+      const hoehe = randInt(rng, 4, 28)
       const value = grund * hoehe
       return valueTask({
         question: `Ein gerades Prisma hat die Grundfläche ${grund} cm² und die Höhe ${hoehe} cm. Berechne sein Volumen.`,
@@ -1211,11 +1415,11 @@ const volumenPrisma: Topic = {
       })
     },
     (rng: Rng) => {
-      const grund = randInt(rng, 8, 36)
-      const hoehe = randInt(rng, 3, 14)
+      const grund = randInt(rng, 15, 80)
+      const hoehe = randInt(rng, 5, 24)
       const value = grund * hoehe
       return visualTask({
-        question: 'Berechne das Volumen des abgebildeten Prismas:',
+        question: 'Berechne das Volumen des abgebildeten Prismas (Grundfläche gegeben):',
         unit: 'cm³',
         answerKind: 'integer',
         value,
@@ -1224,6 +1428,23 @@ const volumenPrisma: Topic = {
         visualContent: generatePrismVolumeSvg({
           baseAreaLabel: `${grund} cm²`,
           heightLabel: `${hoehe} cm`,
+        }),
+      })
+    },
+    (rng: Rng) => {
+      const grund = pick(rng, [12.5, 18.5, 24.5, 32.5, 45.5])
+      const hoehe = pick(rng, [3.5, 4.5, 5.5, 6.5, 8])
+      const value = roundTo(grund * hoehe, 2)
+      return visualTask({
+        question: 'Berechne das Volumen (Dezimalmaße, Grundfläche gegeben):',
+        unit: 'cm³',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} cm³`,
+        explanation: `V = ${formatDe(grund)} · ${formatDe(hoehe)} = ${formatDe(value)} cm³.`,
+        visualContent: generatePrismVolumeSvg({
+          baseAreaLabel: `${formatDe(grund)} cm²`,
+          heightLabel: `${formatDe(hoehe)} cm`,
         }),
       })
     },

@@ -104,4 +104,21 @@ describe('Klasse 6 curriculum', () => {
       expect(saw, `${id} should produce visual/interactive for some seeds`).toBe(true)
     }
   })
+
+  it('emits tables/graphs for Plan C assignment topics', () => {
+    const visualIds = ['lb2-proportional', 'lb2-antiproportional', 'lb2-sachaufgabe-dreisatz']
+    for (const id of visualIds) {
+      const topic = allTopics.find((t) => t.id === id)
+      expect(topic, id).toBeTruthy()
+      let saw = false
+      for (let seed = 1; seed <= 120; seed++) {
+        const task = topic!.generate(createRng(seed))
+        if (task.visualContent?.includes('<svg')) {
+          saw = true
+          break
+        }
+      }
+      expect(saw, `${id} should produce SVG for some seeds`).toBe(true)
+    }
+  })
 })

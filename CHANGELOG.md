@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.16.0] – 2026-09-15
+
+### Neu
+- **Klasse 6 Zuordnungen grafisch (Plan C)**: LB2 proportional / antiproportional /
+  Dreisatz-Sachaufgaben mit Wertetabelle (fehlende Zelle, ·k-Pfeil), Punkten im
+  1. Quadranten und Gerade-vs.-Hyperbel-Erkennen.
+
+### Geändert
+- **Schwierigkeit Klasse 6 vs. K5**: größere Zahlenräume, Dezimalmaße bei Quader/
+  Prisma, stärkere Antiproportional-Varianten; Prisma betont gegebene Grundfläche.
+
 ## [0.15.0] – 2026-09-15
 
 ### Neu

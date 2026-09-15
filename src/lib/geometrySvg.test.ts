@@ -7,6 +7,8 @@ import {
   generateCircleSvg,
   generateCuboidSvg,
   generatePrismVolumeSvg,
+  generateValueTableSvg,
+  generateAssignmentGraphSvg,
   generateAngleSvg,
   generateFractionCircleSvg,
   generateFractionBarSvg,
@@ -135,6 +137,51 @@ describe('geometrySvg', () => {
       expect(svg).toContain('G = 12 cm²')
       expect(svg).toContain('h = 5 cm')
       expect(svg).toContain('<polygon')
+    })
+  })
+
+  describe('generateValueTableSvg', () => {
+    it('renders cells and marks missing y with ?', () => {
+      const svg = generateValueTableSvg({
+        cells: [
+          { x: 2, y: 6 },
+          { x: 4, y: null },
+        ],
+        arrowHint: '· 3',
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('2')
+      expect(svg).toContain('6')
+      expect(svg).toContain('?')
+      expect(svg).toContain('· 3')
+    })
+  })
+
+  describe('generateAssignmentGraphSvg', () => {
+    it('draws proportional ray and points', () => {
+      const svg = generateAssignmentGraphSvg({
+        points: [
+          { x: 1, y: 2 },
+          { x: 2, y: 4 },
+        ],
+        showRay: true,
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('<circle')
+      expect(svg).toContain('<line')
+    })
+
+    it('draws antiproportional curve guide', () => {
+      const svg = generateAssignmentGraphSvg({
+        points: [
+          { x: 2, y: 12 },
+          { x: 3, y: 8 },
+          { x: 4, y: 6 },
+        ],
+        productK: 24,
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('<polyline')
     })
   })
 

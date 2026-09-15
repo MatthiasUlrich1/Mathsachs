@@ -2470,3 +2470,160 @@ export function generateRayOrLineSvg({
 </svg>`.trim()
 }
 
+// ---------------------------------------------------------------------------
+// Zuordnungen (Klasse 6 Plan C): Wertetabelle + Graphen 1. Quadrant
+// ---------------------------------------------------------------------------
+
+export interface ValueTableCell {
+  x: string | number
+  /** Use null for the missing cell (shown as „?“). */
+  y: string | number | null
+}
+
+export interface ValueTableSvgProps {
+  cells: ValueTableCell[]
+  xLabel?: string
+  yLabel?: string
+  /** Optional factor arrow, e.g. "· 3" or ": 2" shown beside the table. */
+  arrowHint?: string
+}
+
+/** Compact 2-row value table (x / y) with optional ·k / :k arrow hint. */
+export function generateValueTableSvg({
+  cells,
+  xLabel = 'x',
+  yLabel = 'y',
+  arrowHint,
+}: ValueTableSvgProps): string {
+  const colW = 64
+  const rowH = 36
+  const labelW = 48
+  const pad = 12
+  const tableW = labelW + cells.length * colW
+  const tableH = 2 * rowH
+  const arrowW = arrowHint ? 90 : 0
+  const totalW = pad * 2 + tableW + arrowW
+  const totalH = pad * 2 + tableH
+
+  const cell = (
+    cx: number,
+    cy: number,
+    w: number,
+    h: number,
+    text: string,
+    bold = false,
+  ) => `
+  <rect x="${cx}" y="${cy}" width="${w}" height="${h}" fill="#fff" stroke="#455a64" stroke-width="1.5"/>
+  <text x="${cx + w / 2}" y="${cy + h / 2 + 5}" text-anchor="middle" font-size="15" font-weight="${
+    bold ? 'bold' : 'normal'
+  }" fill="#333">${text}</text>`
+
+  const xRow = cells
+    .map((c, i) => cell(pad + labelW + i * colW, pad, colW, rowH, String(c.x)))
+    .join('')
+  const yRow = cells
+    .map((c, i) =>
+      cell(pad + labelW + i * colW, pad + rowH, colW, rowH, c.y === null ? '?' : String(c.y), c.y === null),
+    )
+    .join('')
+
+  const arrow =
+    arrowHint != null
+      ? `
+  <defs>
+    <marker id="tableArrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <polygon points="0,0 8,4 0,8" fill="#1565c0"/>
+    </marker>
+  </defs>
+  <line x1="${pad + tableW + 8}" y1="${pad + rowH}" x2="${pad + tableW + 48}" y2="${pad + rowH}" stroke="#1565c0" stroke-width="2.5" marker-end="url(#tableArrow)"/>
+  <text x="${pad + tableW + 54}" y="${pad + rowH + 5}" font-size="14" font-weight="bold" fill="#1565c0">${arrowHint}</text>`
+      : ''
+
+  return `
+<svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="${totalW}" height="${totalH}" fill="#fafafa"/>
+  ${cell(pad, pad, labelW, rowH, xLabel, true)}
+  ${cell(pad, pad + rowH, labelW, rowH, yLabel, true)}
+  ${xRow}
+  ${yRow}
+  ${arrow}
+</svg>`.trim()
+}
+
+export interface AssignmentGraphSvgProps {
+  /** Discrete points in the first quadrant (positive x,y). */
+  points: Array<{ x: number; y: number; label?: string }>
+  /** Draw a ray from origin through the first point (proportional). */
+  showRay?: boolean
+  /** Draw a light hyperbola guide for product ≈ k (antiproportional). */
+  productK?: number
+  xMax?: number
+  yMax?: number
+  cellSize?: number
+}
+
+/** First-quadrant assignment graph: points, optional origin ray or hyperbola sketch. */
+export function generateAssignmentGraphSvg({
+  points,
+  showRay = false,
+  productK,
+  xMax,
+  yMax,
+  cellSize = 32,
+}: AssignmentGraphSvgProps): string {
+  const xs = points.map((p) => p.x)
+  const ys = points.map((p) => p.y)
+  const maxX = xMax ?? Math.max(6, ...xs) + 1
+  const maxY = yMax ?? Math.max(6, ...ys) + 1
+  const xRange: [number, number] = [0, maxX]
+  const yRange: [number, number] = [0, maxY]
+
+  let base = generateCoordinateGridSvg({
+    xRange,
+    yRange,
+    points: points.map((p, i) => ({
+      x: p.x,
+      y: p.y,
+      label: p.label ?? String.fromCharCode(65 + i),
+    })),
+    cellSize,
+  })
+
+  const { xMin, yMax: yTop } = gridBounds(xRange, yRange)
+  const padL = 36
+  const padT = 28
+  const toSvg = (mx: number, my: number): [number, number] => [
+    padL + (mx - xMin) * cellSize,
+    padT + (yTop - my) * cellSize,
+  ]
+
+  const extras: string[] = []
+  if (showRay && points.length > 0) {
+    const p = points[0]
+    const t = Math.min(maxX / p.x, maxY / p.y)
+    const [x1, y1] = toSvg(0, 0)
+    const [x2, y2] = toSvg(p.x * t, p.y * t)
+    extras.push(
+      `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#1565c0" stroke-width="2" stroke-dasharray="5 4" opacity="0.85"/>`,
+    )
+  }
+  if (productK != null && productK > 0) {
+    const curvePts: string[] = []
+    for (let i = 0; i <= 24; i++) {
+      const x = 0.4 + (i / 24) * (maxX - 0.4)
+      const y = productK / x
+      if (y < 0.3 || y > maxY) continue
+      const [sx, sy] = toSvg(x, y)
+      curvePts.push(`${sx},${sy}`)
+    }
+    if (curvePts.length >= 2) {
+      extras.push(
+        `<polyline points="${curvePts.join(' ')}" fill="none" stroke="#c62828" stroke-width="2" stroke-dasharray="5 4" opacity="0.8"/>`,
+      )
+    }
+  }
+
+  if (extras.length === 0) return base
+  return base.replace('</svg>', `  ${extras.join('\n  ')}\n</svg>`)
+}
+
