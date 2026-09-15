@@ -35,6 +35,9 @@ export function parseStoredClassExam(raw: unknown): StoredClassExam | null {
     ...(isFiniteNumber(row.totalPoints)
       ? { totalPoints: Math.max(0, Math.floor(row.totalPoints)) }
       : {}),
+    ...(isFiniteNumber(row.solveCount)
+      ? { solveCount: Math.max(0, Math.floor(row.solveCount)) }
+      : {}),
     ...(row.owned === true ? { owned: true } : row.owned === false ? { owned: false } : {}),
     ...(Array.isArray(row.curriculumRefs) ? { curriculumRefs: row.curriculumRefs as StoredClassExam['curriculumRefs'] } : {}),
   }
@@ -43,11 +46,15 @@ export function parseStoredClassExam(raw: unknown): StoredClassExam | null {
 function pickMerged(prev: StoredClassExam, next: StoredClassExam): StoredClassExam {
   const newer = next.createdAt >= prev.createdAt ? next : prev
   const older = newer === next ? prev : next
+  const solveCount = Math.max(prev.solveCount ?? 0, next.solveCount ?? 0)
   return {
     ...older,
     ...newer,
     owned: prev.owned === true || next.owned === true ? true : newer.owned,
     className: newer.className || older.className,
+    ...(solveCount > 0 || prev.solveCount != null || next.solveCount != null
+      ? { solveCount }
+      : {}),
   }
 }
 

@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.25.0] – 2026-09-15
+
+### Neu
+- **Klassenklausuren im Lehrermodus (#44)**: Code erneut zeigen/kopieren (WhatsApp/Mail),
+  Klausur bearbeiten und speichern, einer anderen Klasse zuordnen (wie bisher),
+  anonymes „× gelöst“ über Worker (`POST /exams/:id/complete`).
+
 ## [0.24.1] – 2026-09-15
 
 ### Behoben

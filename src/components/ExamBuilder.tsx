@@ -1,16 +1,24 @@
 import { useMemo, useState, type MouseEvent } from 'react'
 import { createRng } from '../lib/rng'
 import type { Grade, Task, Topic } from '../curriculum/types'
-import { encodeExam } from '../exam/examCode'
+import { encodeExam, decodeExam } from '../exam/examCode'
+import {
+  EXAM_POOL_SIZE,
+  examSelKey,
+  examThemeKey,
+  hydrateExamBuilderFromSpec,
+} from '../exam/examBuilderState'
 import { examCodeMailtoUrl, examCodeWhatsAppUrl } from '../exam/share'
 import { openClassCodeShareUrl } from '../classCode/share'
 import {
   ClassApiError,
   createClassExam,
+  updateClassExam,
 } from '../classCode/api'
 import { CURRICULUM_VERSION } from '../curriculum/registry'
 import { refsForGradeModules } from '../curriculum/versionGate'
 import type { ExamSpec, ExamTaskRef } from '../exam/types'
+import type { StoredClassExam } from '../exam/classExamTypes'
 import { canAssignClassExam } from '../lib/roles'
 import {
   getClassCodeSettings,
@@ -32,9 +40,6 @@ interface Props {
   role?: string
 }
 
-/** Number of concrete task proposals offered per selected topic in step 2. */
-const POOL_SIZE = 5
-
 /** A single selectable topic, flattened out of the loaded grades. */
 interface TopicEntry {
   key: string
@@ -45,9 +50,13 @@ interface TopicEntry {
   topic: Topic
 }
 
-const themeKey = (moduleId: string, topicId: string) => `${moduleId}::${topicId}`
-const selKey = (moduleId: string, topicId: string, seed: number) =>
-  `${moduleId}::${topicId}::${seed}`
+interface EditingExam {
+  id: string
+  hostCode: string
+  className?: string
+  createdAt: number
+  solveCount?: number
+}
 
 const randomSeed = () => Math.floor(Math.random() * 0xffffffff) >>> 0
 
@@ -55,8 +64,8 @@ export function ExamBuilder({ loaded, onExit, role }: Props) {
   const [step, setStep] = useState<1 | 2 | 3>(1)
   const assignEnabled = canAssignClassExam(role)
   const [listRefresh, setListRefresh] = useState(0)
+  const [editing, setEditing] = useState<EditingExam | null>(null)
 
-  // Flattened list of every topic across the loaded grades.
   const entries = useMemo<TopicEntry[]>(() => {
     const list: TopicEntry[] = []
     for (const { moduleId, grade } of loaded) {
@@ -64,7 +73,7 @@ export function ExamBuilder({ loaded, onExit, role }: Props) {
         for (const topic of area.topics) {
           if (topic.outlineOnly) continue
           list.push({
-            key: themeKey(moduleId, topic.id),
+            key: examThemeKey(moduleId, topic.id),
             moduleId,
             topicId: topic.id,
             gradeTitle: grade.title,
@@ -83,13 +92,30 @@ export function ExamBuilder({ loaded, onExit, role }: Props) {
     return map
   }, [entries])
 
-  // Step 1 — which topics feed the proposal pools.
   const [selectedThemes, setSelectedThemes] = useState<Set<string>>(new Set())
-  // Step 2 — proposal seeds per topic, and the concrete selected tasks.
   const [pools, setPools] = useState<Record<string, number[]>>({})
   const [selections, setSelections] = useState<Record<string, number>>({})
-  // Step 3 — exam title.
   const [title, setTitle] = useState('Übungsklausur')
+
+  const loadExamForEdit = (exam: StoredClassExam) => {
+    const spec = decodeExam(exam.examCode)
+    const hydrated = hydrateExamBuilderFromSpec(spec)
+    const known = hydrated.selectedThemes.filter((k) => entryByKey.has(k))
+    setSelectedThemes(new Set(known.length ? known : hydrated.selectedThemes))
+    setPools(hydrated.pools)
+    setSelections(hydrated.selections)
+    setTitle(hydrated.title)
+    setEditing({
+      id: exam.id,
+      hostCode: exam.hostCode,
+      className: exam.className,
+      createdAt: exam.createdAt,
+      solveCount: exam.solveCount,
+    })
+    setStep(2)
+  }
+
+  const clearEditing = () => setEditing(null)
 
   const toggleTheme = (key: string) =>
     setSelectedThemes((prev) => {
@@ -99,14 +125,12 @@ export function ExamBuilder({ loaded, onExit, role }: Props) {
       return next
     })
 
-  // Build proposal pools when advancing to step 2, keeping any pools/selections
-  // of topics that are still selected and dropping the rest.
   const goToProposals = () => {
     setPools((prev) => {
       const next: Record<string, number[]> = {}
       for (const key of selectedThemes) {
         next[key] =
-          prev[key] ?? Array.from({ length: POOL_SIZE }, () => randomSeed())
+          prev[key] ?? Array.from({ length: EXAM_POOL_SIZE }, () => randomSeed())
       }
       return next
     })
@@ -124,9 +148,8 @@ export function ExamBuilder({ loaded, onExit, role }: Props) {
   const refreshPool = (key: string) => {
     setPools((prev) => ({
       ...prev,
-      [key]: Array.from({ length: POOL_SIZE }, () => randomSeed()),
+      [key]: Array.from({ length: EXAM_POOL_SIZE }, () => randomSeed()),
     }))
-    // Drop selections that belonged to this topic's previous proposals.
     setSelections((prev) => {
       const next: Record<string, number> = {}
       for (const [sk, punkte] of Object.entries(prev)) {
@@ -137,7 +160,7 @@ export function ExamBuilder({ loaded, onExit, role }: Props) {
   }
 
   const toggleSelection = (entry: TopicEntry, seed: number) => {
-    const sk = selKey(entry.moduleId, entry.topicId, seed)
+    const sk = examSelKey(entry.moduleId, entry.topicId, seed)
     setSelections((prev) => {
       const next = { ...prev }
       if (sk in next) delete next[sk]
@@ -152,7 +175,6 @@ export function ExamBuilder({ loaded, onExit, role }: Props) {
   const selectedCount = Object.keys(selections).length
   const totalPoints = Object.values(selections).reduce((s, p) => s + p, 0)
 
-  // Assemble the exam spec + code once we reach step 3.
   const spec = useMemo<ExamSpec>(() => {
     const aufgaben: ExamTaskRef[] = Object.entries(selections).map(
       ([sk, punkte]) => {
@@ -218,11 +240,15 @@ export function ExamBuilder({ loaded, onExit, role }: Props) {
     <section className="card">
       <div className="session__head">
         <div>
-          <h2 className="section-title no-margin">Klausur erstellen</h2>
+          <h2 className="section-title no-margin">
+            {editing ? 'Klausur bearbeiten' : 'Klausur erstellen'}
+          </h2>
           <p className="muted small">
-            {assignEnabled
-              ? 'Stelle eine Übungsklausur zusammen, teile den Code oder ordne sie einer Klasse zu.'
-              : 'Stelle eine Übungsklausur zusammen und teile den Klausurcode per E-Mail oder WhatsApp — ganz ohne Server.'}
+            {editing
+              ? 'Änderungen speichern die Klausur für dieselbe Klasse (gleicher Eintrag). Schüler sehen den aktualisierten Code.'
+              : assignEnabled
+                ? 'Stelle eine Übungsklausur zusammen, teile den Code oder ordne sie einer Klasse zu.'
+                : 'Stelle eine Übungsklausur zusammen und teile den Klausurcode per E-Mail oder WhatsApp — ganz ohne Server.'}
           </p>
         </div>
         <button type="button" className="link" onClick={onExit}>
@@ -230,7 +256,18 @@ export function ExamBuilder({ loaded, onExit, role }: Props) {
         </button>
       </div>
 
-      {assignEnabled && <ClassExamManager refreshKey={listRefresh} />}
+      {assignEnabled && (
+        <ClassExamManager refreshKey={listRefresh} onEdit={loadExamForEdit} />
+      )}
+
+      {editing && (
+        <p className="notice">
+          Bearbeite „{title}“.{' '}
+          <button type="button" className="link" onClick={clearEditing}>
+            Bearbeitung abbrechen (neue Klausur)
+          </button>
+        </p>
+      )}
 
       <ol className="exam-steps">
         {(['Themen', 'Aufgaben', 'Code'] as const).map((label, i) => {
@@ -265,7 +302,13 @@ export function ExamBuilder({ loaded, onExit, role }: Props) {
           ) : (
             [...selectedThemes].map((key) => {
               const entry = entryByKey.get(key)
-              if (!entry) return null
+              if (!entry) {
+                return (
+                  <p key={key} className="notice notice--warn">
+                    Thema „{key}“ ist im geladenen Lehrplan nicht verfügbar.
+                  </p>
+                )
+              }
               return (
                 <ProposalPool
                   key={key}
@@ -284,6 +327,7 @@ export function ExamBuilder({ loaded, onExit, role }: Props) {
 
       {step === 3 && (
         <ExamStepCode
+          key={editing ? `edit-${editing.id}` : 'new'}
           title={title}
           onTitleChange={setTitle}
           code={code}
@@ -293,7 +337,17 @@ export function ExamBuilder({ loaded, onExit, role }: Props) {
           onCopy={copyCode}
           onShareLink={onShareLink}
           assignEnabled={assignEnabled}
+          editing={editing}
           onAssigned={() => setListRefresh((n) => n + 1)}
+          onSavedEdit={() => {
+            setListRefresh((n) => n + 1)
+            setEditing(null)
+            setStep(1)
+            setSelectedThemes(new Set())
+            setPools({})
+            setSelections({})
+            setTitle('Übungsklausur')
+          }}
         />
       )}
 
@@ -332,8 +386,6 @@ export function ExamBuilder({ loaded, onExit, role }: Props) {
   )
 }
 
-// --- Step 1: choose topics --------------------------------------------------
-
 function ExamStepThemes({
   loaded,
   selected,
@@ -364,27 +416,27 @@ function ExamStepThemes({
             const playable = area.topics.filter((topic) => !topic.outlineOnly)
             if (playable.length === 0) return null
             return (
-            <fieldset key={area.id} className="exam-area">
-              <legend className="exam-area__legend">{area.title}</legend>
-              <div className="exam-area__topics">
-                {playable.map((topic) => {
-                  const key = themeKey(moduleId, topic.id)
-                  return (
-                    <label key={key} className="exam-check">
-                      <input
-                        type="checkbox"
-                        checked={selected.has(key)}
-                        onChange={() => onToggle(key)}
-                      />
-                      <span>
-                        {topic.title}
-                        <TeacherExtraBadge source={topic.source} />
-                      </span>
-                    </label>
-                  )
-                })}
-              </div>
-            </fieldset>
+              <fieldset key={area.id} className="exam-area">
+                <legend className="exam-area__legend">{area.title}</legend>
+                <div className="exam-area__topics">
+                  {playable.map((topic) => {
+                    const key = examThemeKey(moduleId, topic.id)
+                    return (
+                      <label key={key} className="exam-check">
+                        <input
+                          type="checkbox"
+                          checked={selected.has(key)}
+                          onChange={() => onToggle(key)}
+                        />
+                        <span>
+                          {topic.title}
+                          <TeacherExtraBadge source={topic.source} />
+                        </span>
+                      </label>
+                    )
+                  })}
+                </div>
+              </fieldset>
             )
           })}
         </div>
@@ -392,8 +444,6 @@ function ExamStepThemes({
     </div>
   )
 }
-
-// --- Step 2: pick concrete tasks -------------------------------------------
 
 function ProposalPool({
   entry,
@@ -430,7 +480,7 @@ function ProposalPool({
       </div>
       <ul className="exam-pool__list">
         {proposals.map(({ seed, task }) => {
-          const sk = selKey(entry.moduleId, entry.topicId, seed)
+          const sk = examSelKey(entry.moduleId, entry.topicId, seed)
           const checked = sk in selections
           return (
             <li key={seed} className={`exam-task ${checked ? 'exam-task--on' : ''}`}>
@@ -470,8 +520,6 @@ function ProposalPool({
   )
 }
 
-// --- Step 3: Klausurcode + Mail / WhatsApp ----------------------------------
-
 function ExamStepCode({
   title,
   onTitleChange,
@@ -482,7 +530,9 @@ function ExamStepCode({
   onCopy,
   onShareLink,
   assignEnabled,
+  editing,
   onAssigned,
+  onSavedEdit,
 }: {
   title: string
   onTitleChange: (v: string) => void
@@ -493,10 +543,14 @@ function ExamStepCode({
   onCopy: () => void
   onShareLink: (event: MouseEvent<HTMLAnchorElement>) => void
   assignEnabled: boolean
+  editing: EditingExam | null
   onAssigned: () => void
+  onSavedEdit: () => void
 }) {
   const createdClasses = getClassCodeSettings().created
-  const [classCode, setClassCode] = useState(createdClasses[0]?.code ?? '')
+  const [classCode, setClassCode] = useState(
+    editing?.hostCode ?? createdClasses[0]?.code ?? '',
+  )
   const [assignBusy, setAssignBusy] = useState(false)
   const [assignNotice, setAssignNotice] = useState<string | null>(null)
 
@@ -532,7 +586,76 @@ function ExamStepCode({
         </div>
       </div>
 
-      {assignEnabled && (
+      {assignEnabled && editing && (
+        <div className="field exam-assign">
+          <span className="field__label">Änderungen speichern</span>
+          <p className="muted small">
+            Speichert Titel und Aufgaben für die Klasse{' '}
+            {editing.className || classCode}. Optional andere Klasse wählen.
+          </p>
+          {createdClasses.length > 0 && (
+            <select
+              className="answer-input__field"
+              value={classCode}
+              onChange={(e) => setClassCode(e.target.value)}
+            >
+              {createdClasses.map((row) => (
+                <option key={row.code} value={row.code}>
+                  {row.name}
+                </option>
+              ))}
+            </select>
+          )}
+          <button
+            type="button"
+            className="primary"
+            disabled={assignBusy || !classCode}
+            onClick={() => {
+              setAssignBusy(true)
+              setAssignNotice(null)
+              void updateClassExam(editing.id, {
+                classCode,
+                name: title.trim() || 'Übungsklausur',
+                examCode: code,
+                taskCount: count,
+                totalPoints,
+              })
+                .then((updated) => {
+                  rememberCreatedClassExam({
+                    id: updated.id,
+                    hostCode: classCode,
+                    className:
+                      updated.className ??
+                      createdClasses.find((c) => c.code === classCode)?.name ??
+                      editing.className,
+                    name: updated.name,
+                    examCode: updated.examCode,
+                    createdAt: editing.createdAt,
+                    owned: true,
+                    taskCount: updated.taskCount ?? count,
+                    totalPoints: updated.totalPoints ?? totalPoints,
+                    solveCount: updated.solveCount ?? editing.solveCount,
+                  })
+                  setAssignNotice(`Klausur „${updated.name}“ gespeichert.`)
+                  onSavedEdit()
+                })
+                .catch((e: unknown) => {
+                  setAssignNotice(
+                    e instanceof ClassApiError
+                      ? e.message
+                      : 'Speichern fehlgeschlagen. Prüfe die Internetverbindung.',
+                  )
+                })
+                .finally(() => setAssignBusy(false))
+            }}
+          >
+            {assignBusy ? 'Wird gespeichert …' : 'Änderungen speichern'}
+          </button>
+          {assignNotice && <p className="muted small">{assignNotice}</p>}
+        </div>
+      )}
+
+      {assignEnabled && !editing && (
         <div className="field exam-assign">
           <span className="field__label">Klasse zuordnen (Lehrer)</span>
           {createdClasses.length === 0 ? (
@@ -579,6 +702,7 @@ function ExamStepCode({
                         owned: true,
                         taskCount: created.taskCount ?? count,
                         totalPoints: created.totalPoints ?? totalPoints,
+                        solveCount: created.solveCount ?? 0,
                       })
                       setAssignNotice(
                         `Klausur „${created.name}“ der Klasse zugeordnet.`,
@@ -632,9 +756,8 @@ function ExamStepCode({
       </div>
 
       <p className="muted small">
-        {assignEnabled
-          ? 'Nach der Zuordnung sehen Schüler:innen der Klasse die Klausur unter „Klausur schreiben“. Zusätzlich kannst du den Code wie bisher teilen.'
-          : 'Teile den Klausurcode per E-Mail oder WhatsApp. Schüler:innen öffnen die App, wählen „Klausur schreiben“ und geben den Code ein.'}
+        Schüler:innen fügen den Code unter „Klausur schreiben“ ein — oder du
+        ordnest die Klausur einer Klasse zu.
       </p>
     </div>
   )

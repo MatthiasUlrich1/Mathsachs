@@ -103,6 +103,8 @@ export interface ClassExamSummary {
   createdAt: number
   taskCount?: number
   totalPoints?: number
+  /** How often learners submitted this class exam. */
+  solveCount?: number
   className?: string
 }
 
@@ -339,6 +341,9 @@ const parseClassExamSummary = (raw: unknown): ClassExamSummary | null => {
     createdAt,
     ...(typeof raw.taskCount === 'number' ? { taskCount: Math.floor(raw.taskCount) } : {}),
     ...(typeof raw.totalPoints === 'number' ? { totalPoints: Math.floor(raw.totalPoints) } : {}),
+    ...(typeof raw.solveCount === 'number' && Number.isFinite(raw.solveCount)
+      ? { solveCount: Math.max(0, Math.floor(raw.solveCount)) }
+      : {}),
     ...(typeof raw.className === 'string' && raw.className.trim()
       ? { className: raw.className.trim() }
       : {}),
@@ -827,6 +832,27 @@ export async function deleteClassExam(
     method: 'DELETE',
   })
   throwIfStubHealth(json)
+}
+
+/** Record that a learner submitted/completed a class exam (increments solveCount). */
+export async function completeClassExam(
+  id: string,
+  base: string = CLASS_POINTS_API,
+): Promise<ClassExamSummary> {
+  const normalized = normalizeClassCode(id)
+  if (!isValidClassCode(normalized)) {
+    throw new ClassApiError('invalid', 'Die Klausur-ID ist ungültig.', 400)
+  }
+  const json = await requestJson(
+    classApiUrl(`/exams/${encodeURIComponent(normalized)}/complete`, base),
+    { method: 'POST', body: '{}' },
+  )
+  throwIfStubHealth(json)
+  const updated = parseClassExamSummary(json)
+  if (!updated) {
+    throw new ClassApiError('not_ready', CLASS_API_STUB_MESSAGE, 200)
+  }
+  return updated
 }
 
 export { CLASS_CODE_LENGTH, isValidClassCode, normalizeClassCode }

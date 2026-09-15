@@ -130,6 +130,20 @@
   align-items: center;
 }
 
+.class-exam-manager__meta {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.class-exam-manager__code {
+  margin-top: 8px;
+  width: 100%;
+  max-width: 100%;
+  font-size: 0.8rem;
+}
+  align-items: center;
+}
+
 .class-exam-inbox__new {
   color: #f87171;
   font-weight: 700;

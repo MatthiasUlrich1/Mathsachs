@@ -6,7 +6,7 @@ import {
   markClassExamCompleted,
   recordSession,
 } from '../lib/storage'
-import { getClass, type ClassExamSummary } from '../classCode/api'
+import { getClass, completeClassExam, type ClassExamSummary } from '../classCode/api'
 import { AnswerInput } from './AnswerInput'
 import { ExamProtocolSheet, formatExamAnswer } from './ExamProtocolSheet'
 import { initTaskInput, TaskInteractive, TaskVisual } from './TaskMedia'
@@ -166,6 +166,9 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
     if (activeClassExamId) {
       markClassExamCompleted(activeClassExamId)
       setCompletedIds(new Set(getCompletedClassExamIds()))
+      void completeClassExam(activeClassExamId).catch(() => {
+        // Offline / stub — local completion still recorded.
+      })
     }
     setPhase('done')
   }

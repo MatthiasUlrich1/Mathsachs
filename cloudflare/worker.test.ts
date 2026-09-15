@@ -182,6 +182,7 @@ describe('Cloudflare Worker API', () => {
       examCreate: { limit: 8, windowMs: 60_000 },
       examUpdate: { limit: 30, windowMs: 60_000 },
       examDelete: { limit: 30, windowMs: 60_000 },
+      examComplete: { limit: 60, windowMs: 60_000 },
     })
 
     const kv = env()
@@ -746,5 +747,49 @@ describe('Challenge Worker API', () => {
     expect(body.points.total).toBe(9)
     expect(body.challenge).toBeUndefined()
     expect(body.challenges ?? []).toEqual([])
+  })
+
+  it('creates class exams and increments anonymous solveCount on complete', async () => {
+    const kv = env()
+    const created = await postJson('/classes', { name: 'Klasse 8a' }, kv)
+    const { code } = (await created.json()) as { code: string }
+    const examCode = 'MSX1:TESTPAYLOAD'
+    const examRes = await postJson(
+      '/exams',
+      {
+        classCode: code,
+        name: 'Probeklausur',
+        examCode,
+        taskCount: 3,
+        totalPoints: 15,
+      },
+      kv,
+    )
+    expect(examRes.status).toBe(201)
+    const exam = (await examRes.json()) as {
+      id: string
+      name: string
+      solveCount: number
+      examCode: string
+    }
+    expect(exam.name).toBe('Probeklausur')
+    expect(exam.solveCount).toBe(0)
+    expect(exam.examCode).toBe(examCode)
+
+    const once = await postJson(`/exams/${exam.id}/complete`, {}, kv)
+    expect(once.status).toBe(200)
+    await expect(once.json()).resolves.toMatchObject({ id: exam.id, solveCount: 1 })
+
+    const twice = await postJson(`/exams/${exam.id}/complete`, {}, kv)
+    expect(twice.status).toBe(200)
+    await expect(twice.json()).resolves.toMatchObject({ solveCount: 2 })
+
+    const klass = await worker.fetch(request(`/classes/${code}`), kv)
+    const body = (await klass.json()) as {
+      exams: Array<{ id: string; solveCount: number }>
+    }
+    expect(body.exams).toEqual(
+      expect.arrayContaining([expect.objectContaining({ id: exam.id, solveCount: 2 })]),
+    )
   })
 })

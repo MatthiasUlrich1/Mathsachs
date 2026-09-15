@@ -39,6 +39,14 @@ describe('ExamBuilder Klausurerstellung', () => {
     expect(source).toMatch(/examCodeMailtoUrl/)
   })
 
+  it('supports reopening class exams for edit and save', () => {
+    expect(source).toMatch(/Klausur bearbeiten/)
+    expect(source).toMatch(/loadExamForEdit/)
+    expect(source).toMatch(/Änderungen speichern/)
+    expect(source).toMatch(/updateClassExam/)
+    expect(source).toMatch(/hydrateExamBuilderFromSpec/)
+  })
+
   it('mail and WhatsApp hrefs contain the exam code and no LAN URL', () => {
     const code = encodeExam(sampleSpec)
     const whatsapp = examCodeWhatsAppUrl(code, sampleSpec.titel)

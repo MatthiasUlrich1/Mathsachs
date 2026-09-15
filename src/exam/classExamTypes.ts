@@ -13,6 +13,8 @@ export interface StoredClassExam {
   createdAt: number
   taskCount?: number
   totalPoints?: number
+  /** How often learners submitted this class exam (Worker counter). */
+  solveCount?: number
   /** True when this user created/assigned the exam. */
   owned?: boolean
   curriculumRefs?: CurriculumRef[]

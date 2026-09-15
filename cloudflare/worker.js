@@ -9,12 +9,14 @@
  * GET class/grade 300, DELETE 30, POST /classes 8, POST /grades 8,
  * POST /challenges 8, PUT /challenges/:id 30, DELETE /challenges/:id 30,
  * POST /exams 8, PUT /exams/:id 30, DELETE /exams/:id 30,
+ * POST /exams/:id/complete 60,
  * PUT grade membership 30, POST points 60.
  * GET / (health) is not rate-limited. Raise GET/DELETE here if a class page
  * with many Eigene Codes still 429s; keep POST points tight against abuse.
  *
  * Privacy: KV stores class/grade display names, daily point buckets,
- * anonymous challenge sums and class exam assignments (name + MSX1 code) only.
+ * anonymous challenge sums and class exam assignments (name + MSX1 code +
+ * anonymous solve counts) only.
  * No pupil names, user ids or emails.
  * GET /grades never returns member Klassencodes. Points are accepted only
  * on class records. Challenge POST never stores names.
@@ -469,6 +471,10 @@ function parseExamStored(raw) {
     typeof raw.totalPoints === 'number' && Number.isFinite(raw.totalPoints)
       ? Math.max(0, Math.floor(raw.totalPoints))
       : undefined
+  const solveCount =
+    typeof raw.solveCount === 'number' && Number.isFinite(raw.solveCount)
+      ? Math.max(0, Math.floor(raw.solveCount))
+      : 0
   return {
     id,
     name,
@@ -476,6 +482,7 @@ function parseExamStored(raw) {
     createdAt,
     ...(taskCount != null ? { taskCount } : {}),
     ...(totalPoints != null ? { totalPoints } : {}),
+    solveCount,
   }
 }
 
@@ -495,6 +502,7 @@ function serializeExam(exam) {
     name: exam.name,
     examCode: exam.examCode,
     createdAt: exam.createdAt,
+    solveCount: typeof exam.solveCount === 'number' ? exam.solveCount : 0,
   }
   if (exam.taskCount != null) out.taskCount = exam.taskCount
   if (exam.totalPoints != null) out.totalPoints = exam.totalPoints
@@ -507,6 +515,7 @@ function publicClassExam(exam, className) {
     name: exam.name,
     examCode: exam.examCode,
     createdAt: exam.createdAt,
+    solveCount: typeof exam.solveCount === 'number' ? exam.solveCount : 0,
     ...(exam.taskCount != null ? { taskCount: exam.taskCount } : {}),
     ...(exam.totalPoints != null ? { totalPoints: exam.totalPoints } : {}),
     ...(className ? { className } : {}),
@@ -771,6 +780,7 @@ export const RATE_LIMITS = {
   examCreate: { limit: 8, windowMs: 60_000 },
   examUpdate: { limit: 30, windowMs: 60_000 },
   examDelete: { limit: 30, windowMs: 60_000 },
+  examComplete: { limit: 60, windowMs: 60_000 },
 }
 
 const hits = new Map()
@@ -1575,6 +1585,7 @@ async function handleCreateExam(request, env) {
     name: parsed.name,
     examCode: parsed.examCode,
     createdAt: Date.now(),
+    solveCount: 0,
     ...(parsed.taskCount != null ? { taskCount: parsed.taskCount } : {}),
     ...(parsed.totalPoints != null ? { totalPoints: parsed.totalPoints } : {}),
   }
@@ -1723,6 +1734,39 @@ async function handleDeleteExam(request, env, rawId) {
   return json(request, 200, { ok: true, deleted: found.id })
 }
 
+/** Anonymous completion counter — no pupil identity stored. */
+async function handleCompleteExam(request, env, rawId) {
+  if (
+    !rateLimit(
+      `examComplete:${clientKey(request)}`,
+      RATE_LIMITS.examComplete.limit,
+      RATE_LIMITS.examComplete.windowMs,
+    )
+  ) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
+  }
+  const found = await loadExamHost(env, rawId)
+  if (found.error) {
+    return errorJson(request, found.error.status, found.error.message, found.error.code)
+  }
+  const loaded = await loadClass(env, found.index.hostCode)
+  const err = classLoadError(request, loaded)
+  if (err) return err
+  const existing = (loaded.stored.exams || {})[found.id]
+  if (!existing) return errorJson(request, 404, 'Diese Klausur gibt es nicht.', 'NOT_FOUND')
+  const prev =
+    typeof existing.solveCount === 'number' && Number.isFinite(existing.solveCount)
+      ? Math.max(0, Math.floor(existing.solveCount))
+      : 0
+  const exam = { ...existing, solveCount: prev + 1 }
+  const stored = {
+    ...loaded.stored,
+    exams: { ...(loaded.stored.exams || {}), [found.id]: exam },
+  }
+  await putClass(env, loaded.code, stored)
+  return json(request, 200, publicClassExam(exam, stored.name))
+}
+
 export async function handleRequest(request, env) {
   if (request.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: corsHeaders(request) })
@@ -1808,6 +1852,11 @@ export async function handleRequest(request, env) {
   }
   if (examMatch && method === 'DELETE') {
     return handleDeleteExam(request, env, decodeURIComponent(examMatch[1]))
+  }
+
+  const examCompleteMatch = /^\/exams\/([^/]+)\/complete$/.exec(path)
+  if (examCompleteMatch && method === 'POST') {
+    return handleCompleteExam(request, env, decodeURIComponent(examCompleteMatch[1]))
   }
 
   return errorJson(request, 404, 'Unbekannter Pfad.', 'NOT_FOUND')
