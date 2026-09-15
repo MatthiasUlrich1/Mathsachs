@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.26.1] – 2026-09-15
+
+### Behoben
+- **Update-Prüfung**: Bei GitHub-API-Rate-Limit wurde fälschlich „aktuell“ gemeldet und
+  electron-updater unterdrückt. Fallback über `latest.yml` (ohne REST-Quota); Desktop
+  vertraut wieder einem neueren Updater-Treffer.
+- **Klassenklausuren (#44)**: Zuordnung blieb lokal nicht haften; Liste zeigt jetzt eine
+  Klausur mit allen Klassen, weitere zuordenbar / entfernbar; Speichern aktualisiert alle
+  Zuordnungen.
+
 ## [0.26.0] – 2026-09-15
 
 ### Neu

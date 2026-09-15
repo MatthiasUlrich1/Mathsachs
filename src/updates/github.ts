@@ -1,4 +1,8 @@
-import { GITHUB_RELEASES_LATEST_API, GITHUB_RELEASES_PAGE } from './constants'
+import {
+  GITHUB_RELEASES_LATEST_API,
+  GITHUB_RELEASES_PAGE,
+  githubLatestYamlUrl,
+} from './constants'
 import { isNewerVersion, normalizeVersion } from './semver'
 import type {
   AppUpdateInfo,
@@ -116,6 +120,70 @@ export type AppUpdateProbe =
   | { status: 'building'; message: string }
   | { status: 'error'; message: string }
 
+/** Parse `version:` / `path:` from electron-updater latest.yml (minimal). */
+export function parseUpdaterYaml(text: string): { version: string; path: string | null } | null {
+  const versionMatch = text.match(/^\s*version:\s*['"]?([^\s'"]+)/m)
+  if (!versionMatch) return null
+  const version = normalizeVersion(versionMatch[1])
+  if (!version) return null
+  const pathMatch = text.match(/^\s*path:\s*['"]?([^\s'"]+)/m)
+  return { version, path: pathMatch ? pathMatch[1] : null }
+}
+
+export function installerDownloadUrl(version: string, fileName: string): string {
+  return `https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v${normalizeVersion(version)}/${fileName}`
+}
+
+/**
+ * Fallback when the GitHub Releases API is rate-limited: read electron-updater
+ * YAML via /releases/latest/download/ (no REST API quota).
+ */
+export async function probeFromUpdaterYaml(options: {
+  currentVersion: string
+  platform: DesktopPlatform
+  fetchImpl?: typeof fetch
+  canAutoInstall?: boolean
+}): Promise<AppUpdateProbe | null> {
+  const fetchImpl = options.fetchImpl ?? fetch
+  const yamlName = updaterYamlName(options.platform)
+  try {
+    const response = await fetchImpl(githubLatestYamlUrl(yamlName), {
+      headers: { Accept: 'text/yaml,*/*', 'User-Agent': 'Mathsachs' },
+      redirect: 'follow',
+    })
+    if (!response.ok) return null
+    const text = await response.text()
+    const parsed = parseUpdaterYaml(text)
+    if (!parsed) return null
+    if (!isNewerVersion(parsed.version, options.currentVersion)) {
+      return { status: 'current' }
+    }
+    const fileName =
+      parsed.path ||
+      (options.platform === 'win32'
+        ? `Mathsachs-Setup-${parsed.version}.exe`
+        : options.platform === 'darwin'
+          ? `Mathsachs-${parsed.version}-arm64.dmg`
+          : `Mathsachs-${parsed.version}.AppImage`)
+    const downloadUrl = installerDownloadUrl(parsed.version, fileName)
+    return {
+      status: 'update',
+      info: {
+        available: true,
+        version: parsed.version,
+        title: `Version ${parsed.version}`,
+        notes: '',
+        htmlUrl: `${GITHUB_RELEASES_PAGE}/tag/v${parsed.version}`,
+        downloadUrl,
+        downloadLabel: fileName,
+        canAutoInstall: Boolean(options.canAutoInstall),
+      },
+    }
+  } catch {
+    return null
+  }
+}
+
 export async function fetchLatestRelease(
   fetchImpl: typeof fetch = fetch,
 ): Promise<GithubRelease | null> {
@@ -138,29 +206,46 @@ export async function probeAppUpdate(options: {
   canAutoInstall?: boolean
   verifyDownload?: boolean
 }): Promise<AppUpdateProbe> {
+  const fetchImpl = options.fetchImpl ?? fetch
+  const platform = options.platform ?? detectPlatform()
   try {
-    const fetchImpl = options.fetchImpl ?? fetch
     const release = await fetchLatestRelease(fetchImpl)
-    if (!release) return { status: 'error', message: UPDATE_CHECK_FAILED }
-    if (release.draft || release.prerelease) return { status: 'current' }
-    const version = normalizeVersion(release.tag_name)
-    if (!isNewerVersion(version, options.currentVersion)) {
-      return { status: 'current' }
+    if (release && !release.draft && !release.prerelease) {
+      const version = normalizeVersion(release.tag_name)
+      if (!isNewerVersion(version, options.currentVersion)) {
+        return { status: 'current' }
+      }
+      const info = releaseToUpdateInfo(
+        release,
+        options.currentVersion,
+        platform,
+        options.canAutoInstall ?? false,
+      )
+      if (!info) return { status: 'building', message: UPDATE_BUILDING_HINT }
+      if (options.verifyDownload) {
+        const ok = await urlIsDownloadable(info.downloadUrl, fetchImpl)
+        if (!ok) return { status: 'building', message: UPDATE_BUILDING_HINT }
+      }
+      return { status: 'update', info }
     }
-    const platform = options.platform ?? detectPlatform()
-    const info = releaseToUpdateInfo(
-      release,
-      options.currentVersion,
+
+    // API failed / empty — fall back to latest.yml (avoids REST rate limits).
+    const fromYaml = await probeFromUpdaterYaml({
+      currentVersion: options.currentVersion,
       platform,
-      options.canAutoInstall ?? false,
-    )
-    if (!info) return { status: 'building', message: UPDATE_BUILDING_HINT }
-    if (options.verifyDownload) {
-      const ok = await urlIsDownloadable(info.downloadUrl, fetchImpl)
-      if (!ok) return { status: 'building', message: UPDATE_BUILDING_HINT }
-    }
-    return { status: 'update', info }
+      fetchImpl,
+      canAutoInstall: options.canAutoInstall,
+    })
+    if (fromYaml) return fromYaml
+    return { status: 'error', message: UPDATE_CHECK_FAILED }
   } catch {
+    const fromYaml = await probeFromUpdaterYaml({
+      currentVersion: options.currentVersion,
+      platform,
+      fetchImpl,
+      canAutoInstall: options.canAutoInstall,
+    })
+    if (fromYaml) return fromYaml
     return { status: 'error', message: UPDATE_CHECK_FAILED }
   }
 }

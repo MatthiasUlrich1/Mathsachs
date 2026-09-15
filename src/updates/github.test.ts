@@ -211,7 +211,39 @@ describe('checkForAppUpdate', () => {
     ).toEqual({ status: 'building', message: UPDATE_BUILDING_HINT })
   })
 
-  it('reports an error when the GitHub API is unavailable', async () => {
+  it('falls back to latest.yml when the GitHub API is rate-limited', async () => {
+    const yaml = [
+      'version: 0.1.4',
+      'files:',
+      '  - url: Mathsachs-Setup-0.1.4.exe',
+      'path: Mathsachs-Setup-0.1.4.exe',
+    ].join('\n')
+    const fetchImpl = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input)
+      if (url.includes('/repos/') && url.includes('/releases/latest')) {
+        return jsonResponse({ message: 'API rate limit exceeded' }, 403)
+      }
+      if (url.includes('latest.yml')) {
+        return new Response(yaml, { status: 200, headers: { 'Content-Type': 'text/yaml' } })
+      }
+      return jsonResponse({ message: 'nope' }, 404)
+    })
+    const probe = await probeAppUpdate({
+      currentVersion: '0.1.3',
+      platform: 'win32',
+      fetchImpl,
+    })
+    expect(probe).toMatchObject({
+      status: 'update',
+      info: {
+        available: true,
+        version: '0.1.4',
+        downloadLabel: 'Mathsachs-Setup-0.1.4.exe',
+      },
+    })
+  })
+
+  it('reports an error when the GitHub API and YAML fallback both fail', async () => {
     const fetchImpl = vi.fn().mockResolvedValue(jsonResponse({ message: 'nope' }, 404))
     expect(
       await probeAppUpdate({ currentVersion: '0.1.3', fetchImpl }),
@@ -223,7 +255,7 @@ describe('checkForAppUpdate', () => {
     ).toEqual({ status: 'error', message: UPDATE_CHECK_FAILED })
   })
 
-  it('returns null when the GitHub API is unavailable', async () => {
+  it('returns null when the GitHub API and YAML fallback both fail', async () => {
     const fetchImpl = vi.fn().mockResolvedValue(jsonResponse({ message: 'nope' }, 404))
     expect(
       await checkForAppUpdate({ currentVersion: '0.1.3', fetchImpl }),

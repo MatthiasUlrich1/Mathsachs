@@ -1,13 +1,13 @@
-import { useEffect, useState, type MouseEvent } from 'react'
+import { useEffect, useMemo, useState, type MouseEvent } from 'react'
 import {
   ClassApiError,
+  createClassExam,
   deleteClassExam,
   getClass,
-  updateClassExam,
-  type ClassExamSummary,
 } from '../classCode/api'
 import { formatClassCode } from '../classCode/code'
 import { openClassCodeShareUrl } from '../classCode/share'
+import { groupClassExamsByCode } from '../exam/classExamParse'
 import { deleteClassExamConfirm, type StoredClassExam } from '../exam/classExamTypes'
 import { decodeExam } from '../exam/examCode'
 import { examCodeMailtoUrl, examCodeWhatsAppUrl } from '../exam/share'
@@ -22,17 +22,19 @@ import {
 interface Props {
   /** Refresh token from parent after a new assign. */
   refreshKey?: number
-  /** Load this exam into ExamBuilder for editing. */
+  /** Load this exam into ExamBuilder for editing (any assignment of the group). */
   onEdit?: (exam: StoredClassExam) => void
 }
 
 export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
   const [exams, setExams] = useState<StoredClassExam[]>(() => getCreatedClassExams())
-  const [busyId, setBusyId] = useState<string | null>(null)
+  const [busyKey, setBusyKey] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
-  const [copiedId, setCopiedId] = useState<string | null>(null)
-  const [expandedId, setExpandedId] = useState<string | null>(null)
+  const [copiedKey, setCopiedKey] = useState<string | null>(null)
+  const [expandedKey, setExpandedKey] = useState<string | null>(null)
+  const [addClassFor, setAddClassFor] = useState<Record<string, string>>({})
   const createdClasses = getClassCodeSettings().created
+  const groups = useMemo(() => groupClassExamsByCode(exams), [exams])
 
   useEffect(() => {
     const refresh = () => setExams(getCreatedClassExams())
@@ -74,44 +76,52 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
     }
   }, [refreshKey])
 
-  const onReassign = async (exam: StoredClassExam, classCode: string) => {
-    setBusyId(exam.id)
+  const onAddClass = async (seed: StoredClassExam, classCode: string) => {
+    if (!classCode) return
+    const key = seed.examCode
+    setBusyKey(key)
     setError(null)
     try {
-      const updated: ClassExamSummary = await updateClassExam(exam.id, {
-        name: exam.name,
-        examCode: exam.examCode,
+      const created = await createClassExam({
         classCode,
-        taskCount: exam.taskCount,
-        totalPoints: exam.totalPoints,
+        name: seed.name,
+        examCode: seed.examCode,
+        taskCount: seed.taskCount,
+        totalPoints: seed.totalPoints,
       })
       rememberCreatedClassExam({
-        ...exam,
-        id: updated.id,
+        id: created.id,
         hostCode: classCode,
-        className: updated.className ?? createdClasses.find((c) => c.code === classCode)?.name,
-        name: updated.name,
-        examCode: updated.examCode,
+        className:
+          created.className ?? createdClasses.find((c) => c.code === classCode)?.name,
+        name: created.name,
+        examCode: created.examCode,
+        createdAt: created.createdAt,
         owned: true,
-        taskCount: updated.taskCount ?? exam.taskCount,
-        totalPoints: updated.totalPoints ?? exam.totalPoints,
-        solveCount: updated.solveCount ?? exam.solveCount,
+        taskCount: created.taskCount ?? seed.taskCount,
+        totalPoints: created.totalPoints ?? seed.totalPoints,
+        solveCount: created.solveCount ?? 0,
       })
       setExams(getCreatedClassExams())
+      setAddClassFor((prev) => ({ ...prev, [key]: '' }))
     } catch (e) {
       setError(
         e instanceof ClassApiError
           ? e.message
-          : 'Zuordnung konnte nicht geändert werden.',
+          : 'Klasse konnte nicht zugeordnet werden.',
       )
     } finally {
-      setBusyId(null)
+      setBusyKey(null)
     }
   }
 
-  const onDelete = async (exam: StoredClassExam) => {
-    if (!window.confirm(deleteClassExamConfirm(exam.name))) return
-    setBusyId(exam.id)
+  const onRemoveAssignment = async (exam: StoredClassExam, alone: boolean) => {
+    const label = exam.className || formatClassCode(exam.hostCode)
+    const msg = alone
+      ? deleteClassExamConfirm(exam.name)
+      : `Zuordnung zur Klasse „${label}“ entfernen? Die Klausur bleibt in den anderen Klassen.`
+    if (!window.confirm(msg)) return
+    setBusyKey(exam.examCode)
     setError(null)
     try {
       await deleteClassExam(exam.id)
@@ -119,18 +129,41 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
       setExams(getCreatedClassExams())
     } catch (e) {
       setError(
-        e instanceof ClassApiError ? e.message : 'Klausur konnte nicht gelöscht werden.',
+        e instanceof ClassApiError ? e.message : 'Zuordnung konnte nicht entfernt werden.',
       )
     } finally {
-      setBusyId(null)
+      setBusyKey(null)
     }
   }
 
-  const onCopy = async (exam: StoredClassExam) => {
+  const onDeleteAll = async (assignments: StoredClassExam[]) => {
+    if (!window.confirm(deleteClassExamConfirm(assignments[0]?.name ?? 'diese Klausur'))) {
+      return
+    }
+    const key = assignments[0]?.examCode ?? null
+    setBusyKey(key)
+    setError(null)
     try {
-      await navigator.clipboard.writeText(exam.examCode)
-      setCopiedId(exam.id)
-      setTimeout(() => setCopiedId((id) => (id === exam.id ? null : id)), 1600)
+      for (const exam of assignments) {
+        await deleteClassExam(exam.id)
+        forgetCreatedClassExam(exam.id)
+      }
+      setExams(getCreatedClassExams())
+    } catch (e) {
+      setError(
+        e instanceof ClassApiError ? e.message : 'Klausur konnte nicht gelöscht werden.',
+      )
+      setExams(getCreatedClassExams())
+    } finally {
+      setBusyKey(null)
+    }
+  }
+
+  const onCopy = async (examCode: string) => {
+    try {
+      await navigator.clipboard.writeText(examCode)
+      setCopiedKey(examCode)
+      setTimeout(() => setCopiedKey((k) => (k === examCode ? null : k)), 1600)
     } catch {
       setError('Code konnte nicht kopiert werden.')
     }
@@ -151,14 +184,14 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
   const onEditClick = (exam: StoredClassExam) => {
     setError(null)
     try {
-      decodeExam(exam.examCode) // validate before handing to builder
+      decodeExam(exam.examCode)
       onEdit?.(exam)
     } catch {
       setError('Klausurcode ist ungültig und kann nicht bearbeitet werden.')
     }
   }
 
-  if (exams.length === 0 && !error) {
+  if (groups.length === 0 && !error) {
     return (
       <div className="class-exam-manager">
         <h3 className="exam-pool__title">Meine Klassenklausuren</h3>
@@ -174,70 +207,108 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
     <div className="class-exam-manager">
       <h3 className="exam-pool__title">Meine Klassenklausuren</h3>
       <p className="muted small">
-        Zugewiesene Klausuren erscheinen bei Schüler:innen unter „Klausur schreiben“.
-        Code erneut kopieren, bearbeiten oder einer anderen Klasse zuordnen.
+        Pro Klausur ein Eintrag: zugeordnete Klassen sehen, weitere Klassen hinzufügen
+        oder Zuordnungen entfernen. Code erneut kopieren oder Inhalte bearbeiten.
       </p>
       {error && <p className="notice notice--error">{error}</p>}
       <ul className="class-exam-manager__list">
-        {exams.map((exam) => {
-          const expanded = expandedId === exam.id
-          const solves = exam.solveCount ?? 0
+        {groups.map((group) => {
+          const expanded = expandedKey === group.examCode
+          const busy = busyKey === group.examCode
+          const seed = group.assignments[0]
+          const assignedCodes = new Set(group.assignments.map((a) => a.hostCode))
+          const availableClasses = createdClasses.filter((c) => !assignedCodes.has(c.code))
+          const addValue = addClassFor[group.examCode] ?? availableClasses[0]?.code ?? ''
           return (
-            <li key={exam.id} className="class-exam-manager__item">
+            <li key={group.examCode} className="class-exam-manager__item">
               <div className="class-exam-manager__meta">
-                <strong>{exam.name}</strong>
+                <strong>{group.name}</strong>
                 <p className="muted small">
-                  {exam.className || formatClassCode(exam.hostCode)}
-                  {exam.taskCount != null ? ` · ${exam.taskCount} Aufgaben` : ''}
-                  {exam.totalPoints != null ? ` · ${exam.totalPoints} P.` : ''}
-                  {` · ${solves}× gelöst`}
+                  {group.taskCount != null ? `${group.taskCount} Aufgaben` : 'Klausur'}
+                  {group.totalPoints != null ? ` · ${group.totalPoints} P.` : ''}
+                  {` · ${group.solveCount}× gelöst`}
                 </p>
+                <ul className="class-exam-manager__classes">
+                  {group.assignments.map((row) => (
+                    <li key={row.id} className="class-exam-manager__class-chip">
+                      <span>{row.className || formatClassCode(row.hostCode)}</span>
+                      {(row.solveCount ?? 0) > 0 && (
+                        <span className="muted small"> · {row.solveCount}×</span>
+                      )}
+                      <button
+                        type="button"
+                        className="ghost class-exam-manager__chip-remove"
+                        disabled={busy}
+                        title="Zuordnung entfernen"
+                        onClick={() =>
+                          void onRemoveAssignment(row, group.assignments.length === 1)
+                        }
+                      >
+                        ×
+                      </button>
+                    </li>
+                  ))}
+                </ul>
                 {expanded && (
                   <textarea
                     className="exam-code__field class-exam-manager__code"
                     readOnly
                     rows={2}
-                    value={exam.examCode}
+                    value={group.examCode}
                   />
                 )}
               </div>
               <div className="class-exam-manager__actions">
-                <label className="muted small">
-                  Klasse{' '}
-                  <select
-                    value={exam.hostCode}
-                    disabled={busyId === exam.id || createdClasses.length === 0}
-                    onChange={(e) => void onReassign(exam, e.target.value)}
-                  >
-                    {createdClasses.map((row) => (
-                      <option key={row.code} value={row.code}>
-                        {row.name}
-                      </option>
-                    ))}
-                    {!createdClasses.some((row) => row.code === exam.hostCode) && (
-                      <option value={exam.hostCode}>{formatClassCode(exam.hostCode)}</option>
-                    )}
-                  </select>
-                </label>
+                {availableClasses.length > 0 && (
+                  <label className="muted small class-exam-manager__add">
+                    Weitere Klasse{' '}
+                    <select
+                      value={addValue}
+                      disabled={busy}
+                      onChange={(e) =>
+                        setAddClassFor((prev) => ({
+                          ...prev,
+                          [group.examCode]: e.target.value,
+                        }))
+                      }
+                    >
+                      {availableClasses.map((row) => (
+                        <option key={row.code} value={row.code}>
+                          {row.name}
+                        </option>
+                      ))}
+                    </select>
+                    <button
+                      type="button"
+                      className="ghost"
+                      disabled={busy || !addValue}
+                      onClick={() => void onAddClass(seed, addValue)}
+                    >
+                      Zuordnen
+                    </button>
+                  </label>
+                )}
                 <button
                   type="button"
                   className="ghost"
-                  disabled={busyId === exam.id}
-                  onClick={() => setExpandedId(expanded ? null : exam.id)}
+                  disabled={busy}
+                  onClick={() =>
+                    setExpandedKey(expanded ? null : group.examCode)
+                  }
                 >
                   {expanded ? 'Code ausblenden' : 'Code zeigen'}
                 </button>
                 <button
                   type="button"
                   className="ghost"
-                  disabled={busyId === exam.id}
-                  onClick={() => void onCopy(exam)}
+                  disabled={busy}
+                  onClick={() => void onCopy(group.examCode)}
                 >
-                  {copiedId === exam.id ? 'Kopiert ✓' : 'Code kopieren'}
+                  {copiedKey === group.examCode ? 'Kopiert ✓' : 'Code kopieren'}
                 </button>
                 <a
                   className="link"
-                  href={examCodeWhatsAppUrl(exam.examCode, exam.name)}
+                  href={examCodeWhatsAppUrl(group.examCode, group.name)}
                   target="_blank"
                   rel="noopener"
                   onClick={onShareLink}
@@ -246,7 +317,7 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
                 </a>
                 <a
                   className="link"
-                  href={examCodeMailtoUrl(exam.examCode, exam.name)}
+                  href={examCodeMailtoUrl(group.examCode, group.name)}
                   target="_blank"
                   rel="noopener"
                   onClick={onShareLink}
@@ -257,8 +328,8 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
                   <button
                     type="button"
                     className="ghost"
-                    disabled={busyId === exam.id}
-                    onClick={() => onEditClick(exam)}
+                    disabled={busy}
+                    onClick={() => onEditClick(seed)}
                   >
                     Bearbeiten
                   </button>
@@ -266,8 +337,8 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
                 <button
                   type="button"
                   className="ghost"
-                  disabled={busyId === exam.id}
-                  onClick={() => void onDelete(exam)}
+                  disabled={busy}
+                  onClick={() => void onDeleteAll(group.assignments)}
                 >
                   Löschen
                 </button>

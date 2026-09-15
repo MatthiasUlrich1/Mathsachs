@@ -22,6 +22,7 @@ import type { StoredClassExam } from '../exam/classExamTypes'
 import { canAssignClassExam } from '../lib/roles'
 import {
   getClassCodeSettings,
+  getCreatedClassExams,
   rememberCreatedClassExam,
 } from '../lib/storage'
 import { TeacherExtraBadge } from './TeacherExtraBadge'
@@ -56,6 +57,8 @@ interface EditingExam {
   className?: string
   createdAt: number
   solveCount?: number
+  /** Original MSX1 — used to find sibling class assignments. */
+  examCode: string
 }
 
 const randomSeed = () => Math.floor(Math.random() * 0xffffffff) >>> 0
@@ -111,6 +114,7 @@ export function ExamBuilder({ loaded, onExit, role }: Props) {
       className: exam.className,
       createdAt: exam.createdAt,
       solveCount: exam.solveCount,
+      examCode: exam.examCode,
     })
     setStep(2)
   }
@@ -590,63 +594,76 @@ function ExamStepCode({
         <div className="field exam-assign">
           <span className="field__label">Änderungen speichern</span>
           <p className="muted small">
-            Speichert Titel und Aufgaben für die Klasse{' '}
-            {editing.className || classCode}. Optional andere Klasse wählen.
+            Speichert Titel und Aufgaben für alle Klassen, denen diese Klausur
+            zugeordnet ist. Weitere Klassen zuordnen oder entfernen kannst du in
+            der Liste „Meine Klassenklausuren“.
           </p>
-          {createdClasses.length > 0 && (
-            <select
-              className="answer-input__field"
-              value={classCode}
-              onChange={(e) => setClassCode(e.target.value)}
-            >
-              {createdClasses.map((row) => (
-                <option key={row.code} value={row.code}>
-                  {row.name}
-                </option>
-              ))}
-            </select>
-          )}
           <button
             type="button"
             className="primary"
-            disabled={assignBusy || !classCode}
+            disabled={assignBusy}
             onClick={() => {
               setAssignBusy(true)
               setAssignNotice(null)
-              void updateClassExam(editing.id, {
-                classCode,
-                name: title.trim() || 'Übungsklausur',
-                examCode: code,
-                taskCount: count,
-                totalPoints,
-              })
-                .then((updated) => {
-                  rememberCreatedClassExam({
-                    id: updated.id,
-                    hostCode: classCode,
-                    className:
-                      updated.className ??
-                      createdClasses.find((c) => c.code === classCode)?.name ??
-                      editing.className,
-                    name: updated.name,
-                    examCode: updated.examCode,
-                    createdAt: editing.createdAt,
-                    owned: true,
-                    taskCount: updated.taskCount ?? count,
-                    totalPoints: updated.totalPoints ?? totalPoints,
-                    solveCount: updated.solveCount ?? editing.solveCount,
-                  })
-                  setAssignNotice(`Klausur „${updated.name}“ gespeichert.`)
+              const siblings = getCreatedClassExams().filter(
+                (row) =>
+                  row.examCode === editing.examCode || row.id === editing.id,
+              )
+              const targets = siblings.length > 0 ? siblings : [
+                {
+                  id: editing.id,
+                  hostCode: editing.hostCode,
+                  className: editing.className,
+                  name: title.trim() || 'Übungsklausur',
+                  examCode: editing.examCode,
+                  createdAt: editing.createdAt,
+                  solveCount: editing.solveCount,
+                },
+              ]
+              void (async () => {
+                try {
+                  let lastName = title.trim() || 'Übungsklausur'
+                  for (const row of targets) {
+                    const updated = await updateClassExam(row.id, {
+                      classCode: row.hostCode,
+                      name: title.trim() || 'Übungsklausur',
+                      examCode: code,
+                      taskCount: count,
+                      totalPoints,
+                    })
+                    lastName = updated.name
+                    rememberCreatedClassExam({
+                      id: updated.id,
+                      hostCode: row.hostCode,
+                      className:
+                        updated.className ??
+                        row.className ??
+                        createdClasses.find((c) => c.code === row.hostCode)?.name,
+                      name: updated.name,
+                      examCode: updated.examCode,
+                      createdAt: row.createdAt,
+                      owned: true,
+                      taskCount: updated.taskCount ?? count,
+                      totalPoints: updated.totalPoints ?? totalPoints,
+                      solveCount: updated.solveCount ?? row.solveCount,
+                    })
+                  }
+                  setAssignNotice(
+                    targets.length > 1
+                      ? `Klausur „${lastName}“ in ${targets.length} Klassen gespeichert.`
+                      : `Klausur „${lastName}“ gespeichert.`,
+                  )
                   onSavedEdit()
-                })
-                .catch((e: unknown) => {
+                } catch (e: unknown) {
                   setAssignNotice(
                     e instanceof ClassApiError
                       ? e.message
                       : 'Speichern fehlgeschlagen. Prüfe die Internetverbindung.',
                   )
-                })
-                .finally(() => setAssignBusy(false))
+                } finally {
+                  setAssignBusy(false)
+                }
+              })()
             }}
           >
             {assignBusy ? 'Wird gespeichert …' : 'Änderungen speichern'}

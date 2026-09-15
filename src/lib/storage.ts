@@ -998,12 +998,14 @@ export const rememberCreatedClassExam = (exam: StoredClassExam): void => {
   const current = cache.records[user] ?? freshUser(user)
   const prev = (current.classExams ?? []).find((row) => row.id === exam.id)
   const owned = exam.owned === true || prev?.owned === true
+  // Put the update last so pickMerged keeps hostCode / payload on equal createdAt.
+  const others = (current.classExams ?? []).filter((row) => row.id !== exam.id)
   const next = parseStoredClassExams([
+    ...others,
     {
       ...exam,
       ...(owned ? { owned: true } : exam.owned === false ? { owned: false } : {}),
     },
-    ...(current.classExams ?? []),
   ])
   const deletedClassExams = parseDeletedClassExams(current.deletedClassExams)
   const applied = applyClassExamTombstones(next, deletedClassExams)

@@ -138,6 +138,45 @@
 .class-exam-manager__code {
   margin-top: 8px;
   width: 100%;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+}
+
+.class-exam-manager__classes {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.class-exam-manager__class-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 6px 3px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(30, 41, 59, 0.65);
+  font-size: 0.88rem;
+}
+
+.class-exam-manager__chip-remove {
+  padding: 0 4px;
+  min-width: 1.4rem;
+  line-height: 1;
+  font-size: 1.05rem;
+  opacity: 0.75;
+}
+
+.class-exam-manager__add {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+  width: 100%;
   max-width: 100%;
   font-size: 0.8rem;
 }

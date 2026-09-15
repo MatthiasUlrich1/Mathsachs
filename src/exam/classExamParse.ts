@@ -44,6 +44,9 @@ export function parseStoredClassExam(raw: unknown): StoredClassExam | null {
 }
 
 function pickMerged(prev: StoredClassExam, next: StoredClassExam): StoredClassExam {
+  // Prefer the newer createdAt; on a tie prefer `next` (later in the merge list =
+  // last write wins). That lets rememberCreatedClassExam([…old, updated]) stick
+  // hostCode / name / examCode changes after a reassignment.
   const newer = next.createdAt >= prev.createdAt ? next : prev
   const older = newer === next ? prev : next
   const solveCount = Math.max(prev.solveCount ?? 0, next.solveCount ?? 0)
@@ -52,6 +55,9 @@ function pickMerged(prev: StoredClassExam, next: StoredClassExam): StoredClassEx
     ...newer,
     owned: prev.owned === true || next.owned === true ? true : newer.owned,
     className: newer.className || older.className,
+    // Always take hostCode from the preferred (newer/last) row — never keep the
+    // older class after an intentional reassignment with equal createdAt.
+    hostCode: newer.hostCode,
     ...(solveCount > 0 || prev.solveCount != null || next.solveCount != null
       ? { solveCount }
       : {}),
@@ -138,3 +144,51 @@ export function mergeCompletedClassExamIds(
 ): string[] {
   return parseCompletedClassExamIds([...(a ?? []), ...(b ?? [])])
 }
+
+/** One Klausur (MSX1) with all class assignments listed together. */
+export interface ClassExamGroup {
+  /** Shared MSX1 payload (grouping key). */
+  examCode: string
+  name: string
+  createdAt: number
+  taskCount?: number
+  totalPoints?: number
+  /** Sum of Worker solveCounts across assignments. */
+  solveCount: number
+  assignments: StoredClassExam[]
+}
+
+/** Group local exams by MSX1 code — one UI row per Klausur. */
+export function groupClassExamsByCode(exams: StoredClassExam[]): ClassExamGroup[] {
+  const byCode = new Map<string, StoredClassExam[]>()
+  for (const exam of exams) {
+    const key = exam.examCode
+    const list = byCode.get(key)
+    if (list) list.push(exam)
+    else byCode.set(key, [exam])
+  }
+  const groups: ClassExamGroup[] = []
+  for (const [examCode, assignments] of byCode) {
+    const sorted = [...assignments].sort(
+      (a, b) =>
+        (a.className || a.hostCode).localeCompare(b.className || b.hostCode, 'de') ||
+        a.id.localeCompare(b.id),
+    )
+    const head = sorted.reduce((best, row) =>
+      row.createdAt >= best.createdAt ? row : best,
+    )
+    groups.push({
+      examCode,
+      name: head.name,
+      createdAt: Math.max(...sorted.map((r) => r.createdAt)),
+      taskCount: head.taskCount,
+      totalPoints: head.totalPoints,
+      solveCount: sorted.reduce((sum, r) => sum + (r.solveCount ?? 0), 0),
+      assignments: sorted,
+    })
+  }
+  return groups.sort(
+    (a, b) => b.createdAt - a.createdAt || a.name.localeCompare(b.name, 'de'),
+  )
+}
+

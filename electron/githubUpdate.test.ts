@@ -155,4 +155,47 @@ describe('electron githubUpdate', () => {
     expect(result).toEqual({ available: false, current: '0.1.29' })
     expect(JSON.stringify(result)).not.toMatch(/404/)
   })
+
+  it('trusts electron-updater even when GitHub API falsely reports current', () => {
+    const result = githubUpdate.resolveDesktopUpdateCheck({
+      current: '0.25.0',
+      github: { status: 'current' },
+      updaterInfo: { version: '0.26.0', releaseName: 'v0.26.0' },
+      updaterError: null,
+      canAutoInstall: true,
+    })
+    expect(result).toMatchObject({
+      available: true,
+      version: '0.26.0',
+      canAutoInstall: true,
+    })
+  })
+
+  it('falls back to latest.yml when the releases API is rate-limited', async () => {
+    const yaml = [
+      'version: 0.26.0',
+      'path: Mathsachs-Setup-0.26.0.exe',
+    ].join('\n')
+    const fetchImpl = async (input: RequestInfo | URL) => {
+      const url = String(input)
+      if (url.includes('/repos/') && url.includes('/releases/latest')) {
+        return new Response(JSON.stringify({ message: 'API rate limit exceeded' }), {
+          status: 403,
+        })
+      }
+      if (url.includes('latest.yml')) {
+        return new Response(yaml, { status: 200 })
+      }
+      return new Response('nope', { status: 404 })
+    }
+    const probe = await githubUpdate.probeGithubUpdate('0.25.0', 'win32', {
+      fetchImpl,
+      canAutoInstall: true,
+    })
+    expect(probe).toMatchObject({
+      status: 'update',
+      yamlReady: true,
+      info: { version: '0.26.0', downloadLabel: 'Mathsachs-Setup-0.26.0.exe' },
+    })
+  })
 })

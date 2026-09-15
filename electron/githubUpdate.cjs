@@ -59,6 +59,10 @@ function updaterYamlName(platform) {
   return 'latest-linux.yml'
 }
 
+function latestYamlUrl(platform) {
+  return `https://github.com/${OWNER}/${REPO}/releases/latest/download/${updaterYamlName(platform)}`
+}
+
 function hasUpdaterYaml(assets, platform) {
   const name = updaterYamlName(platform)
   return (assets || []).some((a) => a && a.name === name)
@@ -81,6 +85,60 @@ async function urlIsDownloadable(url, fetchImpl) {
     return true
   } catch {
     return true
+  }
+}
+
+function parseUpdaterYaml(text) {
+  const versionMatch = String(text || '').match(/^\s*version:\s*['"]?([^\s'"]+)/m)
+  if (!versionMatch) return null
+  const version = normalizeVersion(versionMatch[1])
+  if (!version) return null
+  const pathMatch = String(text || '').match(/^\s*path:\s*['"]?([^\s'"]+)/m)
+  return { version, path: pathMatch ? pathMatch[1] : null }
+}
+
+function installerDownloadUrl(version, fileName) {
+  return `https://github.com/${OWNER}/${REPO}/releases/download/v${normalizeVersion(version)}/${fileName}`
+}
+
+async function probeFromUpdaterYaml(currentVersion, platform, options) {
+  const opts = options || {}
+  const fetchFn = opts.fetchImpl || fetch
+  try {
+    const response = await fetchFn(latestYamlUrl(platform), {
+      headers: { Accept: 'text/yaml,*/*', 'User-Agent': 'Mathsachs' },
+      redirect: 'follow',
+    })
+    if (!response.ok) return null
+    const text = await response.text()
+    const parsed = parseUpdaterYaml(text)
+    if (!parsed) return null
+    if (!isNewerVersion(parsed.version, currentVersion)) {
+      return { status: 'current' }
+    }
+    const fileName =
+      parsed.path ||
+      (platform === 'win32'
+        ? `Mathsachs-Setup-${parsed.version}.exe`
+        : platform === 'darwin'
+          ? `Mathsachs-${parsed.version}-arm64.dmg`
+          : `Mathsachs-${parsed.version}.AppImage`)
+    return {
+      status: 'update',
+      yamlReady: true,
+      info: {
+        available: true,
+        version: parsed.version,
+        title: `Version ${parsed.version}`,
+        notes: '',
+        htmlUrl: `${RELEASES_PAGE}/tag/v${parsed.version}`,
+        downloadUrl: installerDownloadUrl(parsed.version, fileName),
+        downloadLabel: fileName,
+        canAutoInstall: Boolean(opts.canAutoInstall),
+      },
+    }
+  } catch {
+    return null
   }
 }
 
@@ -111,37 +169,41 @@ async function probeGithubUpdate(currentVersion, platform, options) {
   const opts = options || {}
   const fetchImpl = opts.fetchImpl
   const release = await fetchLatestRelease(fetchImpl)
-  if (!release || release.draft || release.prerelease) {
-    return { status: 'current' }
-  }
-  const version = normalizeVersion(release.tag_name)
-  if (!isNewerVersion(version, currentVersion)) return { status: 'current' }
-  const asset = pickPlatformAsset(release.assets, platform)
-  if (!asset) {
-    return { status: 'building', message: UPDATE_BUILDING_HINT, version }
-  }
-  if (opts.verifyUrls) {
-    const ok = await urlIsDownloadable(asset.browser_download_url, fetchImpl)
-    if (!ok) {
+  if (release && !release.draft && !release.prerelease) {
+    const version = normalizeVersion(release.tag_name)
+    if (!isNewerVersion(version, currentVersion)) return { status: 'current' }
+    const asset = pickPlatformAsset(release.assets, platform)
+    if (!asset) {
       return { status: 'building', message: UPDATE_BUILDING_HINT, version }
     }
+    if (opts.verifyUrls) {
+      const ok = await urlIsDownloadable(asset.browser_download_url, fetchImpl)
+      if (!ok) {
+        return { status: 'building', message: UPDATE_BUILDING_HINT, version }
+      }
+    }
+    const yamlReady = hasUpdaterYaml(release.assets, platform)
+    const canAutoInstall = Boolean(opts.canAutoInstall && yamlReady)
+    return {
+      status: 'update',
+      yamlReady,
+      info: {
+        available: true,
+        version,
+        title: (release.name || `Version ${version}`).trim(),
+        notes: (release.body || '').trim(),
+        htmlUrl: release.html_url || RELEASES_PAGE,
+        downloadUrl: asset.browser_download_url,
+        downloadLabel: asset.name,
+        canAutoInstall,
+      },
+    }
   }
-  const yamlReady = hasUpdaterYaml(release.assets, platform)
-  const canAutoInstall = Boolean(opts.canAutoInstall && yamlReady)
-  return {
-    status: 'update',
-    yamlReady,
-    info: {
-      available: true,
-      version,
-      title: (release.name || `Version ${version}`).trim(),
-      notes: (release.body || '').trim(),
-      htmlUrl: release.html_url || RELEASES_PAGE,
-      downloadUrl: asset.browser_download_url,
-      downloadLabel: asset.name,
-      canAutoInstall,
-    },
-  }
+
+  // API rate-limit / failure — do NOT report "current". Fall back to latest.yml.
+  const fromYaml = await probeFromUpdaterYaml(currentVersion, platform, opts)
+  if (fromYaml) return fromYaml
+  return { status: 'error', message: 'Prüfung fehlgeschlagen.' }
 }
 
 function resolveDesktopUpdateCheck({
@@ -167,9 +229,11 @@ function resolveDesktopUpdateCheck({
     }
   }
 
+  // Trust electron-updater when it found a newer version — even if the GitHub
+  // REST API failed or previously returned a false "current" (rate limit).
   const updaterHasNewer =
     updaterInfo && isNewerVersion(updaterInfo.version, current)
-  if (updaterHasNewer && (!github || github.status !== 'current')) {
+  if (updaterHasNewer) {
     const notes =
       typeof updaterInfo.releaseNotes === 'string'
         ? updaterInfo.releaseNotes
@@ -206,7 +270,9 @@ module.exports = {
   isMissingUpdateArtifactError,
   isNewerVersion,
   normalizeVersion,
+  parseUpdaterYaml,
   pickPlatformAsset,
+  probeFromUpdaterYaml,
   probeGithubUpdate,
   releaseIsReady,
   resolveDesktopUpdateCheck,

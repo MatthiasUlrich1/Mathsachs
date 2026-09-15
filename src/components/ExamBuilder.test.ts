@@ -45,6 +45,8 @@ describe('ExamBuilder Klausurerstellung', () => {
     expect(source).toMatch(/Änderungen speichern/)
     expect(source).toMatch(/updateClassExam/)
     expect(source).toMatch(/hydrateExamBuilderFromSpec/)
+    expect(source).toMatch(/getCreatedClassExams/)
+    expect(source).toMatch(/alle Klassen/)
   })
 
   it('mail and WhatsApp hrefs contain the exam code and no LAN URL', () => {
