@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.17.0] – 2026-09-15
+
+### Geändert
+- **Winkel-Darstellungen lehrerkonform**: Dreiecks-/Vierecksfiguren werden aus den
+  Winkelmaßen konstruiert; Innenwinkel mit **Bögen**, rechte Winkel mit
+  **Quadratmarkierung**. Gilt auch für einzelne Winkel-SVGs (K5).
+
 ## [0.16.0] – 2026-09-15
 
 ### Neu

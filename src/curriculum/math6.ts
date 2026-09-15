@@ -991,6 +991,7 @@ const winkelDreieck: Topic = {
           aLabel: order.a,
           bLabel: order.b,
           cLabel: order.c,
+          anglesDeg: [a, b, c],
         }),
       })
     },
@@ -1050,6 +1051,7 @@ const winkelViereck: Topic = {
           bLabel: `${b}°`,
           cLabel: `${c}°`,
           dLabel: '?',
+          anglesDeg: [a, b, c, d],
         }),
       })
     },

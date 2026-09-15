@@ -70,27 +70,41 @@ describe('geometrySvg', () => {
   })
 
   describe('generateTriangleAnglesSvg', () => {
-    it('labels all three interior angles', () => {
+    it('labels angles and draws arcs for a constructed triangle', () => {
       const svg = generateTriangleAnglesSvg({
         aLabel: '50°',
         bLabel: '60°',
         cLabel: '?',
+        anglesDeg: [50, 60, 70],
       })
       expect(svg).toContain('<svg')
       expect(svg).toContain('50°')
       expect(svg).toContain('60°')
       expect(svg).toContain('?')
       expect(svg).toContain('<polygon')
+      expect(svg).toMatch(/<path|<polyline/)
+    })
+
+    it('uses a right-angle square at 90°', () => {
+      const svg = generateTriangleAnglesSvg({
+        aLabel: '90°',
+        bLabel: '45°',
+        cLabel: '45°',
+        anglesDeg: [90, 45, 45],
+      })
+      expect(svg).toContain('<polyline')
+      expect(svg).toContain('90°')
     })
   })
 
   describe('generateQuadAnglesSvg', () => {
-    it('labels all four interior angles', () => {
+    it('labels all four interior angles with arcs', () => {
       const svg = generateQuadAnglesSvg({
         aLabel: '80°',
         bLabel: '100°',
         cLabel: '90°',
         dLabel: '?',
+        anglesDeg: [80, 100, 90, 90],
       })
       expect(svg).toContain('<svg')
       expect(svg).toContain('80°')
@@ -98,6 +112,7 @@ describe('geometrySvg', () => {
       expect(svg).toContain('90°')
       expect(svg).toContain('?')
       expect(svg).toContain('<polygon')
+      expect(svg).toMatch(/<path|<polyline/)
     })
   })
 
@@ -204,6 +219,16 @@ describe('geometrySvg', () => {
       })
       expect(svg).toContain('<svg')
       expect(svg).not.toContain('<path')
+      expect(svg).not.toContain('<polyline')
+    })
+
+    it('marks a right angle with a square instead of an arc', () => {
+      const svg = generateAngleSvg({
+        angle: 90,
+        label: '90°',
+      })
+      expect(svg).toContain('<polyline')
+      expect(svg).toContain('90°')
     })
   })
 

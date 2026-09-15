@@ -257,33 +257,177 @@ export interface TriangleAnglesSvgProps {
   aLabel: string
   bLabel: string
   cLabel: string
+  /**
+   * Interior angles in degrees at vertices A, B, C (must sum to 180).
+   * When set, the triangle is constructed so drawn angles match the numbers.
+   */
+  anglesDeg?: [number, number, number]
   fill?: string
   stroke?: string
+  /** Arc radius in px (default 28). */
+  arcRadius?: number
 }
 
-/** Isosceles-looking triangle with interior-angle labels at the vertices. */
+/** Unit vector from `from` toward `to`. */
+function unitToward(
+  from: [number, number],
+  to: [number, number],
+): [number, number] {
+  const dx = to[0] - from[0]
+  const dy = to[1] - from[1]
+  const len = Math.hypot(dx, dy) || 1
+  return [dx / len, dy / len]
+}
+
+/**
+ * Interior-angle mark at a polygon vertex: arc (or right-angle square if ≈90°)
+ * plus label. Directions `u` and `v` are unit vectors along the two edges
+ * leaving the vertex (order should span the interior).
+ */
+export function angleMarkSvg(
+  vertex: [number, number],
+  u: [number, number],
+  v: [number, number],
+  label: string,
+  {
+    radius = 28,
+    stroke = '#f57c00',
+    fill = '#fff3e0',
+  }: { radius?: number; stroke?: string; fill?: string } = {},
+): string {
+  const [vx, vy] = vertex
+  const cross = u[0] * v[1] - u[1] * v[0]
+  const dot = Math.max(-1, Math.min(1, u[0] * v[0] + u[1] * v[1]))
+  const ang = Math.acos(dot)
+  const deg = (ang * 180) / Math.PI
+  const isRight = Math.abs(deg - 90) < 1.5
+
+  // Bisector for label placement (inward)
+  let bx = u[0] + v[0]
+  let by = u[1] + v[1]
+  const bl = Math.hypot(bx, by) || 1
+  bx /= bl
+  by /= bl
+
+  const labelR = radius + 14
+  const lx = vx + bx * labelR
+  const ly = vy + by * labelR
+
+  if (isRight) {
+    // Right-angle square: from vertex along u and v by `s`
+    const s = Math.min(radius, 22)
+    const p1: [number, number] = [vx + u[0] * s, vy + u[1] * s]
+    const p2: [number, number] = [vx + u[0] * s + v[0] * s, vy + u[1] * s + v[1] * s]
+    const p3: [number, number] = [vx + v[0] * s, vy + v[1] * s]
+    return `
+  <polyline points="${p1[0]},${p1[1]} ${p2[0]},${p2[1]} ${p3[0]},${p3[1]}" fill="none" stroke="${stroke}" stroke-width="2"/>
+  <text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" font-size="15" font-weight="bold" fill="#333">${label}</text>`
+  }
+
+  const sweep = cross < 0 ? 1 : 0 // SVG y-down: cross sign for CCW in screen space
+  const large = deg > 180 ? 1 : 0
+  const a0x = vx + u[0] * radius
+  const a0y = vy + u[1] * radius
+  const a1x = vx + v[0] * radius
+  const a1y = vy + v[1] * radius
+  const arc = `M ${a0x},${a0y} A ${radius},${radius} 0 ${large},${sweep} ${a1x},${a1y}`
+  return `
+  <path d="${arc} L ${vx},${vy} Z" fill="${fill}" fill-opacity="0.35" stroke="none"/>
+  <path d="${arc}" fill="none" stroke="${stroke}" stroke-width="2"/>
+  <text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" font-size="15" font-weight="bold" fill="#333">${label}</text>`
+}
+
+function fitPolygon(
+  pts: Array<[number, number]>,
+  width: number,
+  height: number,
+  pad: number,
+): Array<[number, number]> {
+  const xs = pts.map((p) => p[0])
+  const ys = pts.map((p) => p[1])
+  const minX = Math.min(...xs)
+  const maxX = Math.max(...xs)
+  const minY = Math.min(...ys)
+  const maxY = Math.max(...ys)
+  const bw = maxX - minX || 1
+  const bh = maxY - minY || 1
+  const scale = Math.min((width - 2 * pad) / bw, (height - 2 * pad) / bh)
+  return pts.map(([x, y]) => [
+    pad + (x - minX) * scale,
+    pad + (y - minY) * scale,
+  ])
+}
+
+/** Triangle from interior angles (law of sines), math y-up then flipped for SVG. */
+function trianglePointsFromAngles(
+  A: number,
+  B: number,
+  C: number,
+): [[number, number], [number, number], [number, number]] {
+  const toRad = (d: number) => (d * Math.PI) / 180
+  const scale = 200
+  const sideC = scale // AB
+  const sideB = (scale * Math.sin(toRad(B))) / Math.sin(toRad(C)) // AC
+  const Ax = 0
+  const Ay = 0
+  const Bx = sideC
+  const By = 0
+  const Cx = sideB * Math.cos(toRad(A))
+  const Cy = sideB * Math.sin(toRad(A))
+  // Flip y for SVG
+  return [
+    [Ax, -Ay],
+    [Bx, -By],
+    [Cx, -Cy],
+  ]
+}
+
+/**
+ * Triangle with geometrically correct interior angles, angle arcs (or
+ * right-angle squares), and labels at the vertices.
+ */
 export function generateTriangleAnglesSvg({
   aLabel,
   bLabel,
   cLabel,
+  anglesDeg,
   fill = '#fff3e0',
   stroke = '#f57c00',
+  arcRadius = 28,
 }: TriangleAnglesSvgProps): string {
-  const w = 280
-  const h = 220
-  const pad = 36
-  const x1 = pad
-  const y1 = h - pad
-  const x2 = w - pad
-  const y2 = h - pad
-  const x3 = w / 2
-  const y3 = pad
+  const w = 300
+  const h = 240
+  const pad = 44
+  const angles: [number, number, number] = anglesDeg ?? [50, 60, 70]
+  const raw = trianglePointsFromAngles(angles[0], angles[1], angles[2])
+  const [A, B, C] = fitPolygon(raw, w, h, pad) as [
+    [number, number],
+    [number, number],
+    [number, number],
+  ]
+
+  const markA = angleMarkSvg(A, unitToward(A, B), unitToward(A, C), aLabel, {
+    radius: arcRadius,
+    stroke,
+    fill,
+  })
+  const markB = angleMarkSvg(B, unitToward(B, A), unitToward(B, C), bLabel, {
+    radius: arcRadius,
+    stroke,
+    fill,
+  })
+  const markC = angleMarkSvg(C, unitToward(C, A), unitToward(C, B), cLabel, {
+    radius: arcRadius,
+    stroke,
+    fill,
+  })
+
   return `
 <svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">
-  <polygon points="${x1},${y1} ${x2},${y2} ${x3},${y3}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
-  <text x="${x1 + 18}" y="${y1 - 12}" font-size="16" font-weight="bold" fill="#333">${aLabel}</text>
-  <text x="${x2 - 18}" y="${y2 - 12}" text-anchor="end" font-size="16" font-weight="bold" fill="#333">${bLabel}</text>
-  <text x="${x3}" y="${y3 + 28}" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">${cLabel}</text>
+  <polygon points="${A[0]},${A[1]} ${B[0]},${B[1]} ${C[0]},${C[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
+  ${markA}
+  ${markB}
+  ${markC}
 </svg>`.trim()
 }
 
@@ -292,34 +436,73 @@ export interface QuadAnglesSvgProps {
   bLabel: string
   cLabel: string
   dLabel: string
+  /** Interior angles in degrees (must sum to 360). Enables correct corner marks. */
+  anglesDeg?: [number, number, number, number]
   fill?: string
   stroke?: string
+  arcRadius?: number
 }
 
-/** Convex quadrilateral with interior-angle labels at the corners. */
+/** Equal-side convex polygon from interior angles (turtle construction). */
+function polygonFromInteriorAngles(angles: number[], side = 90): Array<[number, number]> {
+  let x = 0
+  let y = 0
+  let heading = 0
+  const pts: Array<[number, number]> = []
+  const n = angles.length
+  for (let i = 0; i < n; i++) {
+    pts.push([x, y])
+    x += side * Math.cos(heading)
+    y += side * Math.sin(heading)
+    const nextInterior = angles[(i + 1) % n]
+    const exterior = Math.PI - (nextInterior * Math.PI) / 180
+    heading += exterior
+  }
+  // Flip y for SVG
+  return pts.map(([px, py]) => [px, -py])
+}
+
+/**
+ * Convex quadrilateral with correct interior-angle arcs / right-angle squares.
+ */
 export function generateQuadAnglesSvg({
   aLabel,
   bLabel,
   cLabel,
   dLabel,
+  anglesDeg,
   fill = '#e8f5e9',
   stroke = '#2e7d32',
+  arcRadius = 26,
 }: QuadAnglesSvgProps): string {
-  const w = 300
-  const h = 220
-  const pts = [
-    [40, 50],
-    [260, 40],
-    [270, 180],
-    [50, 190],
-  ] as const
+  const w = 320
+  const h = 260
+  const pad = 44
+  const angles: [number, number, number, number] = anglesDeg ?? [80, 100, 90, 90]
+  const raw = polygonFromInteriorAngles(angles)
+  const pts = fitPolygon(raw, w, h, pad) as [
+    [number, number],
+    [number, number],
+    [number, number],
+    [number, number],
+  ]
+  const labels = [aLabel, bLabel, cLabel, dLabel]
+  const marks = pts
+    .map((p, i) => {
+      const prev = pts[(i + 3) % 4]
+      const next = pts[(i + 1) % 4]
+      return angleMarkSvg(p, unitToward(p, prev), unitToward(p, next), labels[i], {
+        radius: arcRadius,
+        stroke,
+        fill,
+      })
+    })
+    .join('\n')
+
   return `
 <svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">
   <polygon points="${pts.map((p) => p.join(',')).join(' ')}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
-  <text x="${pts[0][0] + 14}" y="${pts[0][1] + 22}" font-size="15" font-weight="bold" fill="#333">${aLabel}</text>
-  <text x="${pts[1][0] - 14}" y="${pts[1][1] + 22}" text-anchor="end" font-size="15" font-weight="bold" fill="#333">${bLabel}</text>
-  <text x="${pts[2][0] - 14}" y="${pts[2][1] - 10}" text-anchor="end" font-size="15" font-weight="bold" fill="#333">${cLabel}</text>
-  <text x="${pts[3][0] + 14}" y="${pts[3][1] - 10}" font-size="15" font-weight="bold" fill="#333">${dLabel}</text>
+  ${marks}
 </svg>`.trim()
 }
 
@@ -613,7 +796,8 @@ export interface AngleSvgProps {
 
 /**
  * Generate an SVG string for an angle visualization.
- * Shows two rays meeting at a vertex with an optional arc.
+ * Shows two rays meeting at a vertex with an angle arc, or a right-angle
+ * square when the angle is 90°.
  */
 export function generateAngleSvg({
   angle,
@@ -625,91 +809,55 @@ export function generateAngleSvg({
   const padding = 40
   const rayLength = 180
   const totalSize = rayLength + 2 * padding
-  
+
   const cx = padding + 30
   const cy = padding + rayLength - 30
-  
-  // First ray (horizontal to the right)
+
   const ray1End = [cx + rayLength, cy]
-  
-  // Second ray (at given angle)
   const angleRad = (angle * Math.PI) / 180
   const ray2End = [
     cx + rayLength * Math.cos(angleRad),
     cy - rayLength * Math.sin(angleRad),
   ]
-  
-  // Arc path for the angle
+
+  const isRight = Math.abs(angle - 90) < 0.5
   const arcRadius = 60
-  const largeArcFlag = angle > 180 ? 1 : 0
-  const arcPath = `M ${cx + arcRadius},${cy} A ${arcRadius},${arcRadius} 0 ${largeArcFlag},1 ${
-    cx + arcRadius * Math.cos(angleRad)
-  },${cy - arcRadius * Math.sin(angleRad)}`
+  const markSize = 28
+
+  let markSvg = ''
+  if (showArc) {
+    if (isRight) {
+      const p1 = [cx + markSize, cy]
+      const p2 = [cx + markSize, cy - markSize]
+      const p3 = [cx, cy - markSize]
+      markSvg = `
+  <polyline points="${p1[0]},${p1[1]} ${p2[0]},${p2[1]} ${p3[0]},${p3[1]}" fill="none" stroke="${stroke}" stroke-width="2"/>`
+    } else {
+      const largeArcFlag = angle > 180 ? 1 : 0
+      const arcPath = `M ${cx + arcRadius},${cy} A ${arcRadius},${arcRadius} 0 ${largeArcFlag},1 ${
+        cx + arcRadius * Math.cos(angleRad)
+      },${cy - arcRadius * Math.sin(angleRad)}`
+      // sweep=1 matches screen y-down with mathematical positive angles
+      markSvg = `
+  <path d="${arcPath}" fill="none" stroke="${stroke}" stroke-width="2"/>
+  <path d="${arcPath} L ${cx},${cy} Z" fill="${fill}" opacity="0.3"/>`
+    }
+  }
+
+  const labelX = isRight
+    ? cx + markSize + 18
+    : cx + arcRadius / 2 + 15
+  const labelY = isRight ? cy - markSize - 8 : cy - arcRadius / 2 + 15
 
   return `
 <svg width="${totalSize}" height="${totalSize}" xmlns="http://www.w3.org/2000/svg">
-  <!-- Angle visualization -->
-  
-  <!-- Ray 1 (horizontal) -->
-  <line
-    x1="${cx}"
-    y1="${cy}"
-    x2="${ray1End[0]}"
-    y2="${ray1End[1]}"
-    stroke="${stroke}"
-    stroke-width="3"
-  />
-  
-  <!-- Ray 2 (at angle) -->
-  <line
-    x1="${cx}"
-    y1="${cy}"
-    x2="${ray2End[0]}"
-    y2="${ray2End[1]}"
-    stroke="${stroke}"
-    stroke-width="3"
-  />
-  
-  ${
-    showArc
-      ? `
-  <!-- Angle arc -->
-  <path
-    d="${arcPath}"
-    fill="none"
-    stroke="${stroke}"
-    stroke-width="2"
-  />
-  <path
-    d="${arcPath} L ${cx},${cy} Z"
-    fill="${fill}"
-    opacity="0.3"
-  />`
-      : ''
-  }
-  
-  <!-- Vertex dot -->
-  <circle
-    cx="${cx}"
-    cy="${cy}"
-    r="4"
-    fill="${stroke}"
-  />
-  
+  <line x1="${cx}" y1="${cy}" x2="${ray1End[0]}" y2="${ray1End[1]}" stroke="${stroke}" stroke-width="3"/>
+  <line x1="${cx}" y1="${cy}" x2="${ray2End[0]}" y2="${ray2End[1]}" stroke="${stroke}" stroke-width="3"/>
+  ${markSvg}
+  <circle cx="${cx}" cy="${cy}" r="4" fill="${stroke}"/>
   ${
     label
-      ? `
-  <!-- Label -->
-  <text
-    x="${cx + arcRadius / 2 + 15}"
-    y="${cy - arcRadius / 2 + 15}"
-    text-anchor="middle"
-    font-size="18"
-    font-weight="bold"
-    fill="#333"
-  >
-    ${label}
-  </text>`
+      ? `<text x="${labelX}" y="${labelY}" text-anchor="middle" font-size="18" font-weight="bold" fill="#333">${label}</text>`
       : ''
   }
 </svg>`.trim()
