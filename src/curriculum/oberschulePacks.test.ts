@@ -137,8 +137,8 @@ describe('Oberschule Sachsen Lehrplan packs', () => {
     for (let seed = 1; seed <= 20; seed++) {
       const task = gen!(createRng(seed))
       expect(task.check(task.sampleAnswer)).toBe(true)
-      expect(task.visualContent).toBeTruthy()
-      expect(task.question).toMatch(/erster Quadrant/)
+      expect(task.visualContent || task.interactive).toBeTruthy()
+      expect(task.question).toMatch(/erste[rn] Quadrant/)
     }
   })
 
@@ -156,6 +156,10 @@ describe('Oberschule Sachsen Lehrplan packs', () => {
     expect(OS_GENERATOR_MAP['os-rs-k7-lb4-volumen-prisma']).toBe('lb4-volumen-prisma')
     expect(OS_GENERATOR_MAP['os-hs-k7-lb4-oberflaeche']).toBe('lb4-oberflaeche-quader')
     expect(OS_GENERATOR_MAP['os-rs-k7-lb4-oberflaeche']).toBe('lb4-oberflaeche-quader')
+    expect(OS_GENERATOR_MAP['os-k6-lb3-kongruenz']).toBe('lb3-kongruenzsatz')
+    expect(OS_GENERATOR_MAP['os-k5-lb3-wuerfel']).toBe('lb4-wuerfelnetz')
+    expect(OS_CUSTOM_GENERATORS['os-hs-k9-lb3-steigung']).toBeDefined()
+    expect(OS_CUSTOM_GENERATORS['os-hs-k7-lb3-koordinaten']).toBeDefined()
     for (const id of [
       'lb4-flaeche-zusammengesetzt',
       'lb4-volumen-zusammengesetzt',
@@ -165,6 +169,8 @@ describe('Oberschule Sachsen Lehrplan packs', () => {
       'lb2-haeufigkeit',
       'lb4-volumen-prisma',
       'lb4-oberflaeche-quader',
+      'lb3-kongruenzsatz',
+      'lb4-wuerfelnetz',
     ]) {
       expect(catalog.has(id), id).toBe(true)
     }

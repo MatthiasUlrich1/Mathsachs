@@ -1,7 +1,7 @@
 import { pick, randInt, type Rng } from '../lib/rng'
 import { gcd, makeFraction } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
-import { fractionTask, dragDropSortTask, digitGridTask, mixedVariants, numberLineTask, textTask, valueTask, visualTask } from './taskHelpers'
+import { fractionTask, dragDropSortTask, digitGridTask, mixedVariants, numberLineTask, textTask, valueTask, visualTask, choicePickTask, coordinateClickTask } from './taskHelpers'
 import { conversionTopic, LAENGE, FLAECHE, VOLUMEN, MASSE, ZEIT } from './units'
 import {
   generateRectangleSvg,
@@ -905,9 +905,9 @@ const winkelarten: Topic = {
         }.`,
       })
     },
-    // Variant 2: Grafisch
+    // Variant 2: Grafisch + Tippen
     (rng: Rng) => {
-      const kind = pick(rng, ['spitz', 'recht', 'stumpf'])
+      const kind = pick(rng, ['spitz', 'recht', 'stumpf'] as const)
       let deg: number
       switch (kind) {
         case 'spitz':
@@ -919,22 +919,17 @@ const winkelarten: Topic = {
         default:
           deg = randInt(rng, 100, 150)
       }
-      const svg = generateAngleSvg({
-        angle: deg,
-        label: '?',
+      return choicePickTask({
+        question: 'Welche Winkelart hat dieser Winkel?',
+        choices: ['spitz', 'recht', 'stumpf'],
+        correct: kind,
+        solution: kind,
+        explanation: `Der Winkel ist ${
+          kind === 'recht' ? 'genau 90°' : kind === 'spitz' ? 'kleiner als 90°' : 'größer als 90°'
+        }, also ${kind}.`,
+        visualContent: generateAngleSvg({ angle: deg, label: '?' }),
+        instruction: 'Tippe die passende Winkelart:',
       })
-      const accepted = [kind]
-      return {
-        ...textTask({
-          question: `Welche Winkelart hat dieser Winkel?`,
-          accepted,
-          solution: kind,
-          explanation: `Der Winkel ist ${
-            kind === 'recht' ? 'genau 90°' : kind === 'spitz' ? 'kleiner als 90°' : 'größer als 90°'
-          }, also ${kind}.`,
-        }),
-        visualContent: svg,
-      }
     },
   ),
 }
@@ -1152,49 +1147,61 @@ const koordinatenEintragen: Topic = {
     url: 'https://de.wikipedia.org/wiki/Kartesisches_Koordinatensystem',
   },
   generate: mixedVariants(
-    // Variant 1: Which labeled point lies at (x|y)?
+    // Variant 1: Which labeled point — tippen A/B/C
     (rng: Rng) => {
       const pts = distinctGridPoints(rng, 3)
       const labeled = pts.map((p, i) => ({ ...p, label: POINT_LABELS[i] }))
       const askIdx = randInt(rng, 0, 2)
       const target = labeled[askIdx]
-      const svg = generatePointsOnGridSvg({
-        points: labeled,
-        xRange: COORD_X_RANGE,
-        yRange: COORD_Y_RANGE,
-      })
-      return {
-        ...textTask({
-          question: `Welcher Punkt liegt bei (${target.x}|${target.y})? Antworte mit A, B oder C.`,
-          accepted: [target.label, target.label.toLowerCase()],
-          solution: target.label,
-          explanation: `Punkt ${target.label} hat die Koordinaten (${target.x}|${target.y}).`,
+      return choicePickTask({
+        question: `Welcher Punkt liegt bei (${target.x}|${target.y})?`,
+        choices: ['A', 'B', 'C'],
+        correct: target.label,
+        solution: target.label,
+        explanation: `Punkt ${target.label} hat die Koordinaten (${target.x}|${target.y}).`,
+        visualContent: generatePointsOnGridSvg({
+          points: labeled,
+          xRange: COORD_X_RANGE,
+          yRange: COORD_Y_RANGE,
         }),
-        visualContent: svg,
-      }
+        instruction: 'Tippe den richtigen Punkt:',
+      })
     },
-    // Variant 2: In which quadrant is P?
+    // Variant 2: Quadrant tippen
     (rng: Rng) => {
       const [p] = distinctGridPoints(rng, 1, { avoidAxes: true })
       const q = quadrantOf(p.x, p.y)
-      const svg = generatePointsOnGridSvg({
-        points: [{ ...p, label: 'P' }],
+      return choicePickTask({
+        question: `Punkt P hat die Koordinaten (${p.x}|${p.y}). In welchem Quadranten liegt P?`,
+        choices: ['I', 'II', 'III', 'IV'],
+        correct: q,
+        solution: q,
+        explanation: `x = ${p.x} (${p.x > 0 ? 'positiv' : 'negativ'}), y = ${p.y} (${
+          p.y > 0 ? 'positiv' : 'negativ'
+        }) → Quadrant ${q}.`,
+        visualContent: generatePointsOnGridSvg({
+          points: [{ ...p, label: 'P' }],
+          xRange: COORD_X_RANGE,
+          yRange: COORD_Y_RANGE,
+        }),
+        instruction: 'Tippe den Quadranten:',
+      })
+    },
+    // Variant 3: Punkt setzen (klicken)
+    (rng: Rng) => {
+      const [p] = distinctGridPoints(rng, 1)
+      return coordinateClickTask({
+        question: `Setze den Punkt P(${p.x}|${p.y}) im Koordinatensystem.`,
+        x: p.x,
+        y: p.y,
+        solution: `(${p.x}|${p.y})`,
+        explanation: `Vom Ursprung ${p.x} Einheiten waagerecht und ${p.y} Einheiten senkrecht → P(${p.x}|${p.y}).`,
         xRange: COORD_X_RANGE,
         yRange: COORD_Y_RANGE,
+        instruction: 'Tippe auf die richtige Gitterstelle:',
       })
-      return {
-        ...textTask({
-          question: `Punkt P hat die Koordinaten (${p.x}|${p.y}). In welchem Quadranten liegt P? Antworte mit I, II, III oder IV.`,
-          accepted: QUADRANT_ACCEPTED[q],
-          solution: q,
-          explanation: `x = ${p.x} (${p.x > 0 ? 'positiv' : 'negativ'}), y = ${p.y} (${
-            p.y > 0 ? 'positiv' : 'negativ'
-          }) → Quadrant ${q}.`,
-        }),
-        visualContent: svg,
-      }
     },
-    // Variant 3: Text-only quadrant without diagram
+    // Variant 4: Text-only quadrant
     (rng: Rng) => {
       const [p] = distinctGridPoints(rng, 1, { avoidAxes: true })
       const q = quadrantOf(p.x, p.y)

@@ -1,7 +1,18 @@
-import { generatePointsOnGridSvg } from '../lib/geometrySvg'
+import {
+  generateLinearFunctionSvg,
+  generatePointsOnGridSvg,
+} from '../lib/geometrySvg'
 import { randInt, type Rng } from '../lib/rng'
 import { bundledCurricula } from './bundled'
-import { textTask } from './taskHelpers'
+import {
+  choicePickTask,
+  coordinateClickTask,
+  mixedVariants,
+  paramSliderTask,
+  textTask,
+  valueTask,
+  visualTask,
+} from './taskHelpers'
 import type { PackTopic } from './pack'
 import type { Topic } from './types'
 
@@ -43,40 +54,230 @@ const q1Points = (rng: Rng, count: number, max = 6): Array<{ x: number; y: numbe
   return pts
 }
 
+const nonZero = (rng: Rng, min: number, max: number): number => {
+  let v = 0
+  while (v === 0) v = randInt(rng, min, max)
+  return v
+}
+
+const num = (n: number): string => (n < 0 ? `(âˆ’${Math.abs(n)})` : `${n}`)
+
+/** HS: smaller slope / intercept ranges (easier than Gym/RS). */
+const hsLinearSteigung: Topic['generate'] = mixedVariants(
+  (rng: Rng) => {
+    const x1 = randInt(rng, 0, 4)
+    let x2 = randInt(rng, 1, 5)
+    while (x2 === x1) x2 = randInt(rng, 1, 5)
+    const m = nonZero(rng, -3, 3)
+    const y1 = randInt(rng, 0, 6)
+    const y2 = y1 + m * (x2 - x1)
+    return valueTask({
+      question: `Eine Gerade verlÃ¤uft durch P(${x1} | ${y1}) und Q(${x2} | ${y2}). Berechne die Steigung m.`,
+      answerKind: 'integer',
+      value: m,
+      solution: `m = ${m}`,
+      explanation: `m = (${y2} âˆ’ ${y1}) : (${x2} âˆ’ ${x1}) = ${m}.`,
+    })
+  },
+  (rng: Rng) => {
+    const m = nonZero(rng, -3, 3)
+    const n = randInt(rng, 0, 4)
+    return visualTask({
+      question: 'Lies die Steigung m am Steigungsdreieck ab.',
+      answerKind: 'integer',
+      value: m,
+      solution: `m = ${m}`,
+      explanation: `m = Î”y : Î”x = ${m}.`,
+      visualContent: generateLinearFunctionSvg({
+        m,
+        n,
+        interceptLabel: false,
+        slopeTriangle: { fromX: 0, run: 1, showLabels: true },
+        xRange: [-1, 6],
+        yRange: [-2, 8],
+      }),
+    })
+  },
+)
+
+const hsLinearAchsen: Topic['generate'] = mixedVariants(
+  (rng: Rng) => {
+    const m = nonZero(rng, -3, 3)
+    const x = nonZero(rng, 1, 4)
+    const n = randInt(rng, 0, 5)
+    const y = m * x + n
+    return valueTask({
+      question: `Eine Gerade mit Steigung m = ${m} geht durch P(${x} | ${y}). Bestimme n.`,
+      answerKind: 'integer',
+      value: n,
+      solution: `n = ${n}`,
+      explanation: `n = y âˆ’ mÂ·x = ${y} âˆ’ ${m}Â·${x} = ${n}.`,
+    })
+  },
+  (rng: Rng) => {
+    const m = nonZero(rng, -2, 2)
+    const n = randInt(rng, 1, 5)
+    return visualTask({
+      question: `Die Gerade hat Steigung m = ${m}. Lies den y-Achsenabschnitt n ab.`,
+      answerKind: 'integer',
+      value: n,
+      solution: `n = ${n}`,
+      explanation: `Schnitt mit der y-Achse bei (0|${n}).`,
+      visualContent: generateLinearFunctionSvg({
+        m,
+        n,
+        interceptLabel: '?',
+        xRange: [-1, 5],
+        yRange: [-1, 7],
+      }),
+    })
+  },
+)
+
+const hsLinearFunktionswert: Topic['generate'] = mixedVariants(
+  (rng: Rng) => {
+    const m = nonZero(rng, -3, 3)
+    const n = randInt(rng, 0, 5)
+    const x = randInt(rng, 1, 5)
+    const value = m * x + n
+    return valueTask({
+      question: `Gegeben ist f(x) = ${num(m)}Â·x + ${num(n)}. Berechne f(${x}).`,
+      answerKind: 'integer',
+      value,
+      solution: String(value),
+      explanation: `f(${x}) = ${num(m)}Â·${x} + ${num(n)} = ${value}.`,
+    })
+  },
+  (rng: Rng) => {
+    const m = nonZero(rng, -2, 2)
+    const n = randInt(rng, 0, 4)
+    return paramSliderTask({
+      question: `Stelle m und n so ein, dass f(x) = ${num(m)}Â·x + ${num(n)} entsteht.`,
+      params: [
+        { id: 'm', label: 'Steigung m', min: -3, max: 3, step: 1, start: 0 },
+        { id: 'n', label: 'Achsenabschnitt n', min: 0, max: 5, step: 1, start: 0 },
+      ],
+      correct: { m, n },
+      solution: `m = ${m}, n = ${n}`,
+      explanation: `m = ${m}, n = ${n}.`,
+      preview: 'linear',
+      instruction: 'Kleine Wertebereiche â€” stelle beide Regler ein:',
+    })
+  },
+)
+
+/** RS K7 / HS K7: Punkt setzen, aber nur 1. Quadrant (einfacher). */
+const osQ1CoordinatePlace: Topic['generate'] = mixedVariants(
+  (rng: Rng) => {
+    const [p] = q1Points(rng, 1, 6)
+    return coordinateClickTask({
+      question: `Setze den Punkt P(${p.x}|${p.y}) (erster Quadrant).`,
+      x: p.x,
+      y: p.y,
+      solution: `(${p.x}|${p.y})`,
+      explanation: `P liegt bei (${p.x}|${p.y}) im ersten Quadranten.`,
+      xRange: [0, 7],
+      yRange: [0, 7],
+      instruction: 'Tippe auf die richtige Gitterstelle:',
+    })
+  },
+  (rng: Rng) => {
+    const pts = q1Points(rng, 3, 6)
+    const labels = ['A', 'B', 'C'] as const
+    const labeled = pts.map((p, i) => ({ ...p, label: labels[i] }))
+    const askIdx = randInt(rng, 0, 2)
+    const target = labeled[askIdx]
+    return choicePickTask({
+      question: `Welcher Punkt liegt bei (${target.x}|${target.y})?`,
+      choices: ['A', 'B', 'C'],
+      correct: target.label,
+      solution: target.label,
+      explanation: `Punkt ${target.label} = (${target.x}|${target.y}).`,
+      visualContent: generatePointsOnGridSvg({
+        points: labeled,
+        xRange: [0, 7],
+        yRange: [0, 7],
+      }),
+      instruction: 'Tippe den richtigen Punkt:',
+    })
+  },
+)
+
 /**
  * OS-specific generators that adapt Gymnasium tasks (ranges / variants)
  * without changing the Gym curriculum.
  */
 export const OS_CUSTOM_GENERATORS: Record<string, Topic['generate']> = {
-  /** Klasse 5: Koordinaten nur im 1. Quadranten. */
-  'os-k5-lb3-koordinaten': (rng: Rng) => {
-    const labels = ['A', 'B', 'C'] as const
-    const n = rng() < 0.55 ? 1 : randInt(rng, 2, 3)
-    const pts = q1Points(rng, n, 6)
-    const labeled = pts.map((p, i) => ({ ...p, label: labels[i] }))
-    const askIdx = randInt(rng, 0, labeled.length - 1)
-    const target = labeled[askIdx]
-    const svg = generatePointsOnGridSvg({
-      points: labeled,
-      xRange: [0, 7],
-      yRange: [0, 7],
-    })
-    return {
-      ...textTask({
-        question:
-          labeled.length === 1
-            ? 'Lies die Koordinaten von Punkt A ab (erster Quadrant). Gib x; y an.'
-            : `Lies die Koordinaten von Punkt ${target.label} ab (erster Quadrant). Gib x; y an.`,
-        accepted: pairAnswerAccepted(target.x, target.y),
-        solution: `${target.x}; ${target.y}`,
-        explanation: `Punkt ${target.label} liegt bei (${target.x}|${target.y}) im ersten Quadranten (x ≥ 0, y ≥ 0).`,
-      }),
-      visualContent: svg,
-    }
-  },
+  /** Klasse 5: Koordinaten nur im 1. Quadranten (lesen + tippen + setzen). */
+  'os-k5-lb3-koordinaten': mixedVariants(
+    (rng: Rng) => {
+      const labels = ['A', 'B', 'C'] as const
+      const n = rng() < 0.55 ? 1 : randInt(rng, 2, 3)
+      const pts = q1Points(rng, n, 6)
+      const labeled = pts.map((p, i) => ({ ...p, label: labels[i] }))
+      const askIdx = randInt(rng, 0, labeled.length - 1)
+      const target = labeled[askIdx]
+      return {
+        ...textTask({
+          question:
+            labeled.length === 1
+              ? 'Lies die Koordinaten von Punkt A ab (erster Quadrant). Gib x; y an.'
+              : `Lies die Koordinaten von Punkt ${target.label} ab (erster Quadrant). Gib x; y an.`,
+          accepted: pairAnswerAccepted(target.x, target.y),
+          solution: `${target.x}; ${target.y}`,
+          explanation: `Punkt ${target.label} liegt bei (${target.x}|${target.y}) im ersten Quadranten.`,
+        }),
+        visualContent: generatePointsOnGridSvg({
+          points: labeled,
+          xRange: [0, 7],
+          yRange: [0, 7],
+        }),
+      }
+    },
+    (rng: Rng) => {
+      const [p] = q1Points(rng, 1, 6)
+      return coordinateClickTask({
+        question: `Setze den Punkt P(${p.x}|${p.y}) im ersten Quadranten.`,
+        x: p.x,
+        y: p.y,
+        solution: `(${p.x}|${p.y})`,
+        explanation: `P(${p.x}|${p.y}) liegt im ersten Quadranten.`,
+        xRange: [0, 7],
+        yRange: [0, 7],
+      })
+    },
+    (rng: Rng) => {
+      const pts = q1Points(rng, 3, 6)
+      const labels = ['A', 'B', 'C'] as const
+      const labeled = pts.map((p, i) => ({ ...p, label: labels[i] }))
+      const askIdx = randInt(rng, 0, 2)
+      const target = labeled[askIdx]
+      return choicePickTask({
+        question: `Welcher Punkt liegt bei (${target.x}|${target.y}) (erster Quadrant)?`,
+        choices: ['A', 'B', 'C'],
+        correct: target.label,
+        solution: target.label,
+        explanation: `Punkt ${target.label} = (${target.x}|${target.y}).`,
+        visualContent: generatePointsOnGridSvg({
+          points: labeled,
+          xRange: [0, 7],
+          yRange: [0, 7],
+        }),
+      })
+    },
+  ),
+
+  // HS: Funktionen mit kleinerem Zahlenraum
+  'os-hs-k9-lb3-funktionswert': hsLinearFunktionswert,
+  'os-hs-k9-lb3-steigung': hsLinearSteigung,
+  'os-hs-k9-lb3-achsen': hsLinearAchsen,
+
+  // HS/RS K7 Koordinaten: 1. Quadrant + Tippen/Setzen (leichter als Gym 4Q)
+  'os-hs-k7-lb3-koordinaten': osQ1CoordinatePlace,
+  'os-rs-k7-lb3-koordinaten': osQ1CoordinatePlace,
 }
 
-/** Oberschule topic id → existing Gymnasium generator topic id. */
+/** Oberschule topic id ÔåÆ existing Gymnasium generator topic id. */
 export const OS_GENERATOR_MAP: Record<string, string> = {
   // Klasse 5 (gemeinsam)
   'os-k5-lb1-runden': 'lb1-runden-natuerlich',
@@ -104,6 +305,7 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-k5-lb3-umfang': 'lb4-umfang-rechteck',
   'os-k5-lb3-flaeche': 'lb4-flaeche-rechteck',
   'os-k5-lb3-volumen-wuerfel': 'lb4-volumen-quader',
+  'os-k5-lb3-wuerfel': 'lb4-wuerfelnetz',
   'os-k5-lb3-oberflaeche': 'lb4-oberflaeche-quader',
   'os-k5-lb3-flaeche-eh': 'k5-umrechnen-flaeche',
   'os-k5-lb3-volumen-eh': 'k5-umrechnen-volumen',
@@ -128,6 +330,7 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-k6-lb3-nebenwinkel': 'k7-lb1-nebenwinkel',
   'os-k6-lb3-scheitel': 'k7-lb1-scheitelwinkel',
   'os-k6-lb3-innenwinkel': 'lb3-winkel-dreieck',
+  'os-k6-lb3-kongruenz': 'lb3-kongruenzsatz',
   'os-k6-lb3-winkelsumme-viereck': 'lb3-winkel-viereck',
   'os-k6-lb3-flaeche-dreieck': 'lb3-flaeche-dreieck',
   'os-k6-lb3-umfang': 'lb3-umfang-rechteck',
@@ -135,6 +338,7 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-k6-lb4-volumen-quader': 'lb4-volumen-quader',
   'os-k6-lb4-oberflaeche': 'lb4-oberflaeche-quader',
   'os-k6-lb4-volumen-prisma': 'lb4-volumen-prisma',
+  'os-k6-lb4-darstellen': 'lb4-wuerfelnetz',
   'os-k6-lb5-haeufigkeit': 'lb2-haeufigkeit',
   'os-k6-lb5-anteil-prozent': 'lb5-anteil-prozent',
   'os-k6-lbw3-mittelwert': 'lb2-mittelwert',
@@ -143,6 +347,7 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   // HS Klasse 7
   'os-hs-k7-lb1-flaeche': 'lb4-flaeche-zusammengesetzt',
   'os-hs-k7-lb1-volumen': 'lb4-volumen-zusammengesetzt',
+  'os-hs-k7-lb1-netze': 'lb4-wuerfelnetz',
   'os-hs-k7-lb2-anteil-bruch': 'lb2-anteil-bruch',
   'os-hs-k7-lb2-anteil-groesse': 'lb5-anteil-groesse',
   'os-hs-k7-lb2-prozent': 'lb5-anteil-prozent',
@@ -163,6 +368,7 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-hs-k7-lb4-mantel': 'k7-lb3-mantel-prisma',
   'os-hs-k7-lb4-oberflaeche': 'lb4-oberflaeche-quader',
   'os-hs-k7-lb4-zerlegen': 'lb4-flaeche-zusammengesetzt',
+  'os-hs-k7-lb4-netze': 'lb4-wuerfelnetz',
 
   // HS Klasse 8
   'os-hs-k8-lb1-prozent': 'lb5-anteil-prozent',
@@ -223,6 +429,7 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-rs-k7-lb4-mantel': 'k7-lb3-mantel-prisma',
   'os-rs-k7-lb4-oberflaeche': 'lb4-oberflaeche-quader',
   'os-rs-k7-lb4-vieleck-flaeche': 'lb4-flaeche-zusammengesetzt',
+  'os-rs-k7-lb4-darstellen': 'lb4-wuerfelnetz',
 
   // RS Klasse 8
   'os-rs-k8-lb1-term': 'k8-lb1-term-auswerten',
@@ -233,6 +440,7 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-rs-k8-lb2-funktionswert': 'k8-lb3-funktionswert',
   'os-rs-k8-lb2-steigung': 'k8-lb3-steigung',
   'os-rs-k8-lb2-achsen': 'k8-lb3-achsenabschnitt',
+  'os-rs-k8-lb4-kongruenz': 'lb3-kongruenzsatz',
   'os-rs-k8-lb2-lgs': 'k8-lb3-lgs',
   'os-rs-k8-lb3-kreis-umfang': 'k9-lb2-kreis-umfang',
   'os-rs-k8-lb3-kreis-flaeche': 'k9-lb2-kreis-flaeche',

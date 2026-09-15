@@ -2,15 +2,18 @@ import { pick, randInt, type Rng } from '../lib/rng'
 import {
   generateAssignmentGraphSvg,
   generateCuboidSvg,
+  generateCubeNetChoicesSvg,
   generateFractionBarSvg,
   generateFractionCircleSvg,
   generateFractionGridSvg,
   generatePrismVolumeSvg,
   generateQuadAnglesSvg,
   generateRectangleSvg,
+  generateRightTriangleSvg,
   generateTriangleAnglesSvg,
   generateTriangleSvg,
   generateValueTableSvg,
+  type CubeNetKind,
 } from '../lib/geometrySvg'
 import {
   add,
@@ -25,6 +28,7 @@ import {
 } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
 import {
+  choicePickTask,
   dragDropSortTask,
   fractionTask,
   mixedVariants,
@@ -1214,6 +1218,115 @@ const flaecheDreieck: Topic = {
   ),
 }
 
+const kongruenzSatz: Topic = {
+  id: 'lb3-kongruenzsatz',
+  title: 'Kongruenzsatz wählen',
+  hint: 'SSS, SWS, WSW oder SsW – welche Angabe reicht?',
+  pointsPerTask: 10,
+  difficulty: 2,
+  keywords: ['Kongruenz', 'SSS', 'SWS', 'WSW', 'SsW', 'Dreieck'],
+  fachwissen: {
+    text: 'Zwei Dreiecke sind kongruent, wenn sie in Form und Größe übereinstimmen. Die Kongruenzsätze SSS, SWS, WSW und SsW (zwei Seiten und der Gegenwinkel der größeren Seite) geben an, welche Maße ausreichen, um ein Dreieck eindeutig festzulegen.',
+    quelle: 'Wikipedia: Kongruenzsatz',
+    url: 'https://de.wikipedia.org/wiki/Kongruenzsatz',
+  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const cases = [
+        {
+          correct: 'SSS',
+          desc: 'Alle drei Seitenlängen a, b, c sind bekannt.',
+          why: 'Drei Seiten bestimmen ein Dreieck eindeutig (SSS).',
+        },
+        {
+          correct: 'SWS',
+          desc: 'Zwei Seiten und der eingeschlossene Winkel sind bekannt.',
+          why: 'Zwei Seiten mit dem Winkel dazwischen reichen (SWS).',
+        },
+        {
+          correct: 'WSW',
+          desc: 'Eine Seite und die beiden anliegenden Winkel sind bekannt.',
+          why: 'Seite mit beiden anliegenden Winkeln reicht (WSW).',
+        },
+        {
+          correct: 'SsW',
+          desc: 'Zwei Seiten und der Gegenwinkel der längeren Seite sind bekannt.',
+          why: 'Zwei Seiten und der Winkel gegenüber der größeren Seite (SsW).',
+        },
+      ] as const
+      const c = pick(rng, [...cases])
+      return choicePickTask({
+        question: `Welcher Kongruenzsatz passt? ${c.desc}`,
+        choices: ['SSS', 'SWS', 'WSW', 'SsW'],
+        correct: c.correct,
+        solution: c.correct,
+        explanation: c.why,
+        instruction: 'Tippe den passenden Kongruenzsatz:',
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 3, 8)
+      const b = randInt(rng, 3, 8)
+      return choicePickTask({
+        question: 'Im rechtwinkligen Dreieck sind beide Katheten gegeben. Welcher Kongruenzsatz greift (inkl. rechter Winkel)?',
+        choices: ['SSS', 'SWS', 'WSW', 'SsW'],
+        correct: 'SWS',
+        solution: 'SWS',
+        explanation: `Zwei Seiten (Katheten a=${a}, b=${b}) und der eingeschlossene rechte Winkel → SWS.`,
+        visualContent: generateRightTriangleSvg({
+          aLabel: `a=${a}`,
+          bLabel: `b=${b}`,
+          cLabel: 'c',
+        }),
+        instruction: 'Tippe den Kongruenzsatz:',
+      })
+    },
+  ),
+}
+
+const wuerfelNetz: Topic = {
+  id: 'lb4-wuerfelnetz',
+  title: 'Würfelnetz erkennen',
+  hint: 'Ein faltbares Netz hat sechs Quadrate ohne Überlappung beim Falten.',
+  pointsPerTask: 10,
+  difficulty: 1,
+  keywords: ['Würfel', 'Körpernetz', 'Netz', 'falten'],
+  fachwissen: {
+    text: 'Ein Körpernetz ist eine Abwicklung der Oberfläche in die Ebene. Für den Würfel gibt es 11 verschiedene Netze aus sechs Quadraten. Nicht jede Anordnung aus sechs Quadraten ist faltbar — z. B. ein 2×3-Rechteck oder sechs Quadrate in einer Reihe lassen sich nicht zum Würfel falten.',
+    quelle: 'Wikipedia: Netz (Geometrie)',
+    url: 'https://de.wikipedia.org/wiki/Netz_(Geometrie)',
+  },
+  generate: (rng: Rng) => {
+    const valid = pick(rng, ['cross', 'zigzag'] as const)
+    const invalid = pick(rng, ['invalid-row', 'invalid-block'] as const)
+    const otherInvalid =
+      invalid === 'invalid-row' ? ('invalid-block' as const) : ('invalid-row' as const)
+    const options: Array<{ kind: CubeNetKind; label: string }> = [
+      { kind: valid, label: 'A' },
+      { kind: invalid, label: 'B' },
+      { kind: otherInvalid, label: 'C' },
+    ]
+    // Shuffle labels while tracking correct letter
+    for (let i = options.length - 1; i > 0; i--) {
+      const j = randInt(rng, 0, i)
+      ;[options[i], options[j]] = [options[j], options[i]]
+    }
+    options.forEach((o, i) => {
+      o.label = String.fromCharCode(65 + i)
+    })
+    const correct = options.find((o) => o.kind === valid)!.label
+    return choicePickTask({
+      question: 'Welches der drei Netze lässt sich zu einem Würfel falten?',
+      choices: ['A', 'B', 'C'],
+      correct,
+      solution: correct,
+      explanation: `Nur Netz ${correct} ist ein gültiges Würfelnetz. Die anderen Anordnungen überlappen oder schließen sich nicht.`,
+      visualContent: generateCubeNetChoicesSvg(options),
+      instruction: 'Tippe den Buchstaben des faltbaren Netzes:',
+    })
+  },
+}
+
 /** Sachaufgabe Geometrie: Kombiniertes Flächen-/Umfang-Problem im Alltag. */
 const sachaufgabeGeometrie: Topic = {
   id: 'lb3-sachaufgabe-geometrie',
@@ -1647,6 +1760,7 @@ export const klasse6: Grade = {
         umfangRechteck,
         flaecheRechteck,
         flaecheDreieck,
+        kongruenzSatz,
         sachaufgabeGeometrie,
       ],
     },
@@ -1654,7 +1768,7 @@ export const klasse6: Grade = {
       id: 'lb4',
       title: 'Prismen',
       ustd: 12,
-      topics: [volumenQuader, oberflaecheQuader, volumenPrisma],
+      topics: [volumenQuader, oberflaecheQuader, volumenPrisma, wuerfelNetz],
     },
     {
       id: 'lb5',

@@ -5,7 +5,7 @@ import {
 } from '../lib/geometrySvg'
 import { makeFraction, subtract, format, type Fraction } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
-import { fractionTask, mixedVariants, valueTask, visualTask } from './taskHelpers'
+import { fractionTask, mixedVariants, valueTask, visualTask, paramSliderTask } from './taskHelpers'
 import type { Grade, Topic } from './types'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
@@ -407,6 +407,22 @@ const steigung: Topic = {
           ],
           slopeTriangle: { fromX: x1, run: x2 - x1, showLabels: true },
         }),
+      })
+    },
+    (rng: Rng) => {
+      const m = nonZero(rng, -4, 4)
+      const n = randInt(rng, -3, 3)
+      return paramSliderTask({
+        question: `Stelle m und n so ein, dass f(x) = ${num(m)}·x + ${num(n)} entsteht.`,
+        params: [
+          { id: 'm', label: 'Steigung m', min: -5, max: 5, step: 1, start: 0 },
+          { id: 'n', label: 'Achsenabschnitt n', min: -5, max: 5, step: 1, start: 0 },
+        ],
+        correct: { m, n },
+        solution: `m = ${m}, n = ${n}`,
+        explanation: `Die Gerade y = ${num(m)}x + ${num(n)} hat Steigung m = ${m} und Achsenabschnitt n = ${n}.`,
+        preview: 'linear',
+        instruction: 'Stelle beide Parameter am Schieberegler ein:',
       })
     },
   ),

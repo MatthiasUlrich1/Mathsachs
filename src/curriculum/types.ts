@@ -29,15 +29,28 @@ export type UserInput =
   | { kind: 'numberLine'; value: number }
   | { kind: 'dragDropSort'; order: number[] }
   | { kind: 'digitGrid'; digits: string[] }
+  | { kind: 'choicePick'; choice: string }
+  | { kind: 'coordinateClick'; x: number; y: number }
+  | { kind: 'paramSlider'; values: Record<string, number> }
 
 /** A blank input matching the widget for a given answer kind. */
 export const emptyInput = (
-  kind: AnswerKind | 'numberLine' | 'dragDropSort' | 'digitGrid',
+  kind:
+    | AnswerKind
+    | 'numberLine'
+    | 'dragDropSort'
+    | 'digitGrid'
+    | 'choicePick'
+    | 'coordinateClick'
+    | 'paramSlider',
 ): UserInput => {
   if (kind === 'fraction') return { kind: 'fraction', num: '', den: '' }
   if (kind === 'numberLine') return { kind: 'numberLine', value: 0 }
   if (kind === 'dragDropSort') return { kind: 'dragDropSort', order: [] }
   if (kind === 'digitGrid') return { kind: 'digitGrid', digits: [] }
+  if (kind === 'choicePick') return { kind: 'choicePick', choice: '' }
+  if (kind === 'coordinateClick') return { kind: 'coordinateClick', x: 0, y: 0 }
+  if (kind === 'paramSlider') return { kind: 'paramSlider', values: {} }
   return { kind: 'value', value: '' }
 }
 
@@ -45,7 +58,13 @@ export const emptyInput = (
  * Interactive component configuration for tasks.
  */
 export interface InteractiveConfig {
-  type: 'numberLine' | 'dragDropSort' | 'digitGrid'
+  type:
+    | 'numberLine'
+    | 'dragDropSort'
+    | 'digitGrid'
+    | 'choicePick'
+    | 'coordinateClick'
+    | 'paramSlider'
   props: Record<string, any> // Component-specific props
 }
 

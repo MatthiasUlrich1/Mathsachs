@@ -277,6 +277,155 @@ export const digitGridTask = (input: DigitGridTaskInput): Task => {
   }
 }
 
+interface ChoicePickTaskInput {
+  question: string
+  /** Visible choice labels (also used as answer ids unless `ids` is set). */
+  choices: string[]
+  /** Correct choice label (or id if `ids` provided). */
+  correct: string
+  solution: string
+  explanation: string
+  visualContent?: string
+  /** Optional instruction above the buttons. */
+  instruction?: string
+}
+
+/** Multiple-choice via tappable buttons (A/B/C, Winkelart, Kongruenzsatz, …). */
+export const choicePickTask = (input: ChoicePickTaskInput): Task => {
+  const accepted = [input.correct, input.correct.toLowerCase()]
+  return {
+    question: input.question,
+    answerKind: 'text',
+    solution: input.solution,
+    explanation: input.explanation,
+    visualContent: input.visualContent,
+    sampleAnswer: { kind: 'choicePick', choice: input.correct },
+    interactive: {
+      type: 'choicePick',
+      props: {
+        choices: input.choices,
+        instruction: input.instruction ?? 'Wähle die richtige Antwort:',
+      },
+    },
+    check: (answer: UserInput) => {
+      if (answer.kind === 'choicePick') {
+        return accepted.includes(answer.choice.trim().toLowerCase()) ||
+          answer.choice.trim() === input.correct
+      }
+      if (answer.kind === 'value') {
+        return accepted.includes(answer.value.trim().toLowerCase())
+      }
+      return false
+    },
+  }
+}
+
+interface CoordinateClickTaskInput {
+  question: string
+  x: number
+  y: number
+  solution: string
+  explanation: string
+  xRange?: [number, number]
+  yRange?: [number, number]
+  cellSize?: number
+  /** Optional instruction above the grid. */
+  instruction?: string
+}
+
+/** Place a point on a coordinate grid by clicking (snaps to lattice). */
+export const coordinateClickTask = (input: CoordinateClickTaskInput): Task => {
+  const xRange = input.xRange ?? [-5, 8]
+  const yRange = input.yRange ?? [-5, 8]
+  return {
+    question: input.question,
+    answerKind: 'text',
+    solution: input.solution,
+    explanation: input.explanation,
+    sampleAnswer: { kind: 'coordinateClick', x: input.x, y: input.y },
+    interactive: {
+      type: 'coordinateClick',
+      props: {
+        xRange,
+        yRange,
+        cellSize: input.cellSize ?? 32,
+        instruction: input.instruction ?? 'Tippe auf den gesuchten Punkt im Koordinatensystem:',
+      },
+    },
+    check: (answer: UserInput) => {
+      if (answer.kind === 'coordinateClick') {
+        return answer.x === input.x && answer.y === input.y
+      }
+      if (answer.kind === 'value') {
+        const raw = answer.value.trim().toLowerCase()
+        const m = raw.match(/(-?\d+)\s*[;|,]\s*(-?\d+)/) ||
+          raw.match(/\(\s*(-?\d+)\s*[|;,]\s*(-?\d+)\s*\)/)
+        if (!m) return false
+        return +m[1] === input.x && +m[2] === input.y
+      }
+      return false
+    },
+  }
+}
+
+export interface ParamSliderSpec {
+  id: string
+  label: string
+  min: number
+  max: number
+  step?: number
+  /** Starting value before the learner moves the slider. */
+  start?: number
+}
+
+interface ParamSliderTaskInput {
+  question: string
+  params: ParamSliderSpec[]
+  /** Correct values keyed by param id. */
+  correct: Record<string, number>
+  solution: string
+  explanation: string
+  visualContent?: string
+  /** Optional live preview: 'linear' draws y = m·x + n from params m,n. */
+  preview?: 'linear'
+  instruction?: string
+}
+
+/** One or more numeric sliders (e.g. Steigung m, Achsenabschnitt n). */
+export const paramSliderTask = (input: ParamSliderTaskInput): Task => ({
+  question: input.question,
+  answerKind: 'integer',
+  solution: input.solution,
+  explanation: input.explanation,
+  visualContent: input.visualContent,
+  sampleAnswer: { kind: 'paramSlider', values: { ...input.correct } },
+  interactive: {
+    type: 'paramSlider',
+    props: {
+      params: input.params,
+      preview: input.preview,
+      instruction: input.instruction ?? 'Stelle die Parameter ein:',
+    },
+  },
+  check: (answer: UserInput) => {
+    if (answer.kind === 'paramSlider') {
+      return input.params.every((p) => {
+        const got = answer.values[p.id]
+        const want = input.correct[p.id]
+        if (got === undefined || want === undefined) return false
+        const tol = (p.step ?? 1) / 2
+        return Math.abs(got - want) <= tol + 1e-9
+      })
+    }
+    if (answer.kind === 'value' && input.params.length === 1) {
+      const parsed = parseNumber(answer.value)
+      const want = input.correct[input.params[0].id]
+      return parsed !== null && want !== undefined && approxEqual(parsed, want, 1e-6)
+    }
+    return false
+  },
+})
+
 /**
  * Combine multiple task generators into one, randomly selecting a variant each time.
  * Use this to add variety to a topic (text, visual, interactive).

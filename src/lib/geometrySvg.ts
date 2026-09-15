@@ -3392,4 +3392,90 @@ export function generateCylinderSvg({
 </svg>`.trim()
 }
 
+// ---------------------------------------------------------------------------
+// Körpernetze (Würfel) für Interaktionsaufgaben
+// ---------------------------------------------------------------------------
+
+export type CubeNetKind = 'cross' | 'zigzag' | 'invalid-row' | 'invalid-block'
+
+/** Draw a cube-net option as a small labeled grid of unit squares. */
+export function generateCubeNetSvg(
+  kind: CubeNetKind,
+  {
+    label,
+    cell = 28,
+    fill = '#bbdefb',
+    stroke = '#1565c0',
+  }: { label?: string; cell?: number; fill?: string; stroke?: string } = {},
+): string {
+  // Relative cell positions [col, row]
+  const layouts: Record<CubeNetKind, Array<[number, number]>> = {
+    // Valid latin-cross net
+    cross: [
+      [1, 0],
+      [0, 1],
+      [1, 1],
+      [2, 1],
+      [1, 2],
+      [1, 3],
+    ],
+    // Valid Z / zigzag net
+    zigzag: [
+      [0, 0],
+      [0, 1],
+      [1, 1],
+      [1, 2],
+      [2, 2],
+      [2, 3],
+    ],
+    // Invalid: six squares in a row
+    'invalid-row': [
+      [0, 0],
+      [1, 0],
+      [2, 0],
+      [3, 0],
+      [4, 0],
+      [5, 0],
+    ],
+    // Invalid: 2×3 rectangle
+    'invalid-block': [
+      [0, 0],
+      [1, 0],
+      [2, 0],
+      [0, 1],
+      [1, 1],
+      [2, 1],
+    ],
+  }
+  const cells = layouts[kind]
+  const maxC = Math.max(...cells.map((c) => c[0]))
+  const maxR = Math.max(...cells.map((c) => c[1]))
+  const pad = 10
+  const labelH = label ? 22 : 0
+  const w = pad * 2 + (maxC + 1) * cell
+  const h = pad * 2 + (maxR + 1) * cell + labelH
+  const rects = cells
+    .map(
+      ([c, r]) =>
+        `<rect x="${pad + c * cell}" y="${pad + r * cell}" width="${cell}" height="${cell}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>`,
+    )
+    .join('\n  ')
+  const lab = label
+    ? `<text x="${w / 2}" y="${h - 6}" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">${label}</text>`
+    : ''
+  return `
+<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">
+  ${rects}
+  ${lab}
+</svg>`.trim()
+}
+
+/** Side-by-side net choices A/B/C for „Welches Netz faltbar?“. */
+export function generateCubeNetChoicesSvg(
+  options: Array<{ kind: CubeNetKind; label: string }>,
+): string {
+  const parts = options.map((o) => generateCubeNetSvg(o.kind, { label: o.label }))
+  return `<div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:flex-end">${parts.join('')}</div>`
+}
+
 

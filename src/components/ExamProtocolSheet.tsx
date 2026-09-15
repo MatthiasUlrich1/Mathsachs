@@ -25,6 +25,17 @@ export const formatExamAnswer = (input: UserInput): string => {
     const joined = input.digits.join('').replace(/\D/g, '')
     return joined || '—'
   }
+  if (input.kind === 'choicePick') {
+    return input.choice.trim() || '—'
+  }
+  if (input.kind === 'coordinateClick') {
+    if (!Number.isFinite(input.x) || !Number.isFinite(input.y)) return '—'
+    return `(${input.x}|${input.y})`
+  }
+  if (input.kind === 'paramSlider') {
+    const parts = Object.entries(input.values).map(([k, v]) => `${k}=${v}`)
+    return parts.length ? parts.join(', ') : '—'
+  }
   return input.value.trim() || '—'
 }
 

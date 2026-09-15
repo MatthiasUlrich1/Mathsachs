@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.22.0] – 2026-09-15
+
+### Neu
+- **Interaktions-Widgets (Phase 6)**: Tippen (choicePick), Punkt im Koordinatensystem
+  setzen (coordinateClick), Parameter-Slider für y = mx + n; Kongruenzsatz wählen;
+  Würfelnetz erkennen.
+- **Oberschule**: Kongruenz/Netze auf neue Generatoren; HS-Funktionen mit kleinerem
+  Zahlenraum; K5/K7-Koordinaten interaktiv im 1. Quadranten (HS/RS).
+
 ## [0.21.1] – 2026-09-15
 
 ### Behoben
