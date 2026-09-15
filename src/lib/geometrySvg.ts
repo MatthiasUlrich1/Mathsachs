@@ -2961,3 +2961,363 @@ export function generatePyramidVolumeSvg({
 </svg>`.trim()
 }
 
+// ---------------------------------------------------------------------------
+// Klasse 8: lineare Funktionen (Graph + Steigungsdreieck)
+// ---------------------------------------------------------------------------
+
+export interface LinearFunctionSvgProps {
+  /** Slope m of y = m·x + n */
+  m: number
+  /** y-intercept n */
+  n: number
+  /** Extra labeled points (grid coordinates) */
+  points?: Array<{ x: number; y: number; label?: string }>
+  /**
+   * Draw a slope triangle starting at grid x = fromX with horizontal run
+   * (default 1). Labels Δx / Δy when showLabels is true.
+   */
+  slopeTriangle?: {
+    fromX: number
+    run?: number
+    showLabels?: boolean
+    dxLabel?: string
+    dyLabel?: string
+  }
+  /** Mark y-intercept; string replaces the numeric label (e.g. „?“). */
+  interceptLabel?: string | false
+  xRange?: [number, number]
+  yRange?: [number, number]
+  cellSize?: number
+  stroke?: string
+  /** Optional second line (LGS graph). */
+  second?: { m: number; n: number; stroke?: string }
+}
+
+function clipLineToRect(
+  m: number,
+  n: number,
+  xMin: number,
+  xMax: number,
+  yMin: number,
+  yMax: number,
+): [[number, number], [number, number]] | null {
+  const candidates: Array<[number, number]> = []
+  const push = (x: number, y: number) => {
+    if (x >= xMin - 1e-9 && x <= xMax + 1e-9 && y >= yMin - 1e-9 && y <= yMax + 1e-9) {
+      candidates.push([
+        Math.max(xMin, Math.min(xMax, x)),
+        Math.max(yMin, Math.min(yMax, y)),
+      ])
+    }
+  }
+  // Vertical edges
+  push(xMin, m * xMin + n)
+  push(xMax, m * xMax + n)
+  // Horizontal edges (if not horizontal line)
+  if (Math.abs(m) > 1e-9) {
+    push((yMin - n) / m, yMin)
+    push((yMax - n) / m, yMax)
+  } else if (n >= yMin && n <= yMax) {
+    push(xMin, n)
+    push(xMax, n)
+  }
+  // Deduplicate near-equal points
+  const uniq: Array<[number, number]> = []
+  for (const p of candidates) {
+    if (!uniq.some((q) => Math.hypot(q[0] - p[0], q[1] - p[1]) < 1e-6)) uniq.push(p)
+  }
+  if (uniq.length < 2) return null
+  // Furthest pair
+  let best: [[number, number], [number, number]] = [uniq[0], uniq[1]]
+  let bestD = -1
+  for (let i = 0; i < uniq.length; i++) {
+    for (let j = i + 1; j < uniq.length; j++) {
+      const d = Math.hypot(uniq[i][0] - uniq[j][0], uniq[i][1] - uniq[j][1])
+      if (d > bestD) {
+        bestD = d
+        best = [uniq[i], uniq[j]]
+      }
+    }
+  }
+  return best
+}
+
+/**
+ * Coordinate grid with the graph of y = m·x + n, optional slope triangle,
+ * intercept mark, points, and a second line for LGS.
+ */
+export function generateLinearFunctionSvg({
+  m,
+  n,
+  points = [],
+  slopeTriangle,
+  interceptLabel,
+  xRange,
+  yRange,
+  cellSize = 32,
+  stroke = '#1565c0',
+  second,
+}: LinearFunctionSvgProps): string {
+  const xs = [0, ...points.map((p) => p.x)]
+  const ys = [n, ...points.map((p) => p.y)]
+  if (slopeTriangle) {
+    const run = slopeTriangle.run ?? 1
+    const x0 = slopeTriangle.fromX
+    xs.push(x0, x0 + run)
+    ys.push(m * x0 + n, m * (x0 + run) + n)
+  }
+  if (second) {
+    ys.push(second.n)
+  }
+  const autoXMax = Math.max(5, ...xs.map(Math.abs)) + 1
+  const autoYMax = Math.max(5, ...ys.map(Math.abs)) + 1
+  const xr: [number, number] = xRange ?? [-autoXMax, autoXMax]
+  const yr: [number, number] = yRange ?? [-autoYMax, autoYMax]
+  const { xMin, xMax, yMin, yMax } = gridBounds(xr, yr)
+
+  const marked = [...points]
+  if (interceptLabel !== false) {
+    const lab = interceptLabel === undefined ? `n=${n}` : interceptLabel
+    if (!marked.some((p) => p.x === 0 && p.y === n)) {
+      marked.push({ x: 0, y: n, label: lab })
+    }
+  }
+
+  let base = generateCoordinateGridSvg({
+    xRange: xr,
+    yRange: yr,
+    points: marked,
+    cellSize,
+  })
+
+  const padL = 36
+  const padT = 28
+  const toSvg = (mx: number, my: number): [number, number] => [
+    padL + (mx - xMin) * cellSize,
+    padT + (yMax - my) * cellSize,
+  ]
+
+  const extras: string[] = []
+
+  const drawLine = (mm: number, nn: number, color: string, width = 2.5) => {
+    const seg = clipLineToRect(mm, nn, xMin, xMax, yMin, yMax)
+    if (!seg) return
+    const [a, b] = seg
+    const [x1, y1] = toSvg(a[0], a[1])
+    const [x2, y2] = toSvg(b[0], b[1])
+    extras.push(
+      `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="${width}"/>`,
+    )
+  }
+
+  drawLine(m, n, stroke)
+  if (second) drawLine(second.m, second.n, second.stroke ?? '#c62828')
+
+  if (slopeTriangle) {
+    const run = slopeTriangle.run ?? 1
+    const x0 = slopeTriangle.fromX
+    const y0 = m * x0 + n
+    const x1 = x0 + run
+    const y1 = m * x1 + n
+    const [sx0, sy0] = toSvg(x0, y0)
+    const [sx1, sy1] = toSvg(x1, y0) // horizontal corner
+    const [sx2, sy2] = toSvg(x1, y1)
+    extras.push(
+      `<polyline points="${sx0},${sy0} ${sx1},${sy1} ${sx2},${sy2}" fill="none" stroke="#e65100" stroke-width="2"/>`,
+    )
+    // Right-angle mark at the corner (x1, y0)
+    const s = Math.min(10, cellSize * 0.35)
+    const [rx, ry] = toSvg(x1, y0)
+    const up = y1 >= y0 ? -1 : 1 // SVG y decreases upward in math → screen
+    const left = run >= 0 ? -1 : 1
+    extras.push(
+      `<polyline points="${rx + left * s},${ry} ${rx + left * s},${ry + up * s} ${rx},${ry + up * s}" fill="none" stroke="#e65100" stroke-width="1.5"/>`,
+    )
+    if (slopeTriangle.showLabels !== false) {
+      const dxLab = slopeTriangle.dxLabel ?? `Δx=${run}`
+      const dyLab = slopeTriangle.dyLabel ?? `Δy=${y1 - y0}`
+      const [mx, my] = toSvg((x0 + x1) / 2, y0)
+      extras.push(
+        `<text x="${mx}" y="${my + (y1 >= y0 ? 16 : -8)}" text-anchor="middle" font-size="12" font-weight="bold" fill="#e65100">${dxLab}</text>`,
+      )
+      const [nx, ny] = toSvg(x1, (y0 + y1) / 2)
+      extras.push(
+        `<text x="${nx + (run >= 0 ? 8 : -8)}" y="${ny + 4}" text-anchor="${
+          run >= 0 ? 'start' : 'end'
+        }" font-size="12" font-weight="bold" fill="#e65100">${dyLab}</text>`,
+      )
+    }
+  }
+
+  if (extras.length === 0) return base
+  return base.replace('</svg>', `  ${extras.join('\n  ')}\n</svg>`)
+}
+
+// ---------------------------------------------------------------------------
+// Klasse 9: rechtwinkliges Dreieck / Trig / Kreis mit Durchmesser
+// ---------------------------------------------------------------------------
+
+export interface RightTriangleSvgProps {
+  /** Horizontal leg label (a) */
+  aLabel: string
+  /** Vertical leg label (b) */
+  bLabel: string
+  /** Hypotenuse label (c); omit or null to hide */
+  cLabel?: string | null
+  /** Angle at the left base vertex (degrees), drawn with arc if set */
+  angleDeg?: number
+  /** Label for that angle (default α or the degree) */
+  angleLabel?: string
+  /** Which side is unknown / marked with emphasis */
+  ask?: 'a' | 'b' | 'c' | 'angle'
+  fill?: string
+  stroke?: string
+}
+
+/**
+ * Right triangle with legs a (base), b (height), hypotenuse c, right-angle
+ * square at the origin corner. Optional acute angle at the left base.
+ */
+export function generateRightTriangleSvg({
+  aLabel,
+  bLabel,
+  cLabel = null,
+  angleDeg,
+  angleLabel,
+  ask,
+  fill = '#e3f2fd',
+  stroke = '#1565c0',
+}: RightTriangleSvgProps): string {
+  const w = 320
+  const h = 260
+  const pad = 36
+  // Proportions: prefer ~3:4 look unless angle suggests otherwise
+  let base = 180
+  let height = 120
+  if (angleDeg != null && angleDeg > 5 && angleDeg < 85) {
+    const t = Math.tan((angleDeg * Math.PI) / 180)
+    height = Math.min(160, Math.max(70, base * t))
+    if (height > 160) {
+      height = 160
+      base = height / t
+    }
+  }
+  const ox = pad + 20
+  const oy = h - pad
+  const A: [number, number] = [ox, oy]
+  const B: [number, number] = [ox + base, oy]
+  const C: [number, number] = [ox, oy - height]
+
+  const rightMark = angleMarkSvg(A, [1, 0], [0, -1], '', { radius: 18, stroke: '#f57c00' })
+
+  let angleMark = ''
+  if (angleDeg != null) {
+    const lab = angleLabel ?? (ask === 'angle' ? '?' : `${angleDeg}°`)
+    angleMark = angleMarkSvg(B, [-1, 0], unitToward(B, C), lab, {
+      radius: 34,
+      stroke: ask === 'angle' ? '#2e7d32' : '#f57c00',
+      fill: ask === 'angle' ? '#e8f5e9' : '#fff3e0',
+    })
+  }
+
+  const mid = (p: [number, number], q: [number, number]): [number, number] => [
+    (p[0] + q[0]) / 2,
+    (p[1] + q[1]) / 2,
+  ]
+  const [abx, aby] = mid(A, B)
+  const [acx, acy] = mid(A, C)
+  const [bcx, bcy] = mid(B, C)
+
+  const sideText = (x: number, y: number, lab: string, emphasize: boolean) =>
+    lab
+      ? `<text x="${x}" y="${y}" text-anchor="middle" font-size="15" font-weight="bold" fill="${
+          emphasize ? '#c62828' : '#333'
+        }">${lab}</text>`
+      : ''
+
+  return `
+<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="${A[0]},${A[1]} ${B[0]},${B[1]} ${C[0]},${C[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2.5"/>
+  ${rightMark}
+  ${angleMark}
+  ${sideText(abx, aby + 22, aLabel, ask === 'a')}
+  ${sideText(acx - 18, acy + 5, bLabel, ask === 'b')}
+  ${cLabel != null ? sideText(bcx + 14, bcy - 8, cLabel, ask === 'c') : ''}
+</svg>`.trim()
+}
+
+export interface CircleMeasureSvgProps {
+  radiusLabel: string
+  /** Show diameter instead of / in addition to radius */
+  showDiameter?: boolean
+  diameterLabel?: string
+  fill?: string
+  stroke?: string
+}
+
+/** Circle with radius (and optional diameter) for Umfang/Fläche tasks. */
+export function generateCircleMeasureSvg({
+  radiusLabel,
+  showDiameter = false,
+  diameterLabel,
+  fill = '#f3e5f5',
+  stroke = '#7b1fa2',
+}: CircleMeasureSvgProps): string {
+  const r = 80
+  const pad = 44
+  const size = 2 * (r + pad)
+  const cx = pad + r
+  const cy = pad + r
+  const diam =
+    showDiameter
+      ? `
+  <line x1="${cx - r}" y1="${cy}" x2="${cx + r}" y2="${cy}" stroke="${stroke}" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="${cx}" y="${cy + 28}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${
+          diameterLabel ?? `d = ${radiusLabel}`
+        }</text>`
+      : ''
+  return `
+<svg width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
+  <line x1="${cx}" y1="${cy}" x2="${cx + r}" y2="${cy}" stroke="${stroke}" stroke-width="2"/>
+  <circle cx="${cx}" cy="${cy}" r="3" fill="${stroke}"/>
+  <text x="${cx + r / 2}" y="${cy - 10}" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">${radiusLabel}</text>
+  ${diam}
+</svg>`.trim()
+}
+
+export interface CylinderSvgProps {
+  radiusLabel: string
+  heightLabel: string
+  fill?: string
+  stroke?: string
+}
+
+/** Simple isometric cylinder with r and h labels. */
+export function generateCylinderSvg({
+  radiusLabel,
+  heightLabel,
+  fill = '#e8f5e9',
+  stroke = '#2e7d32',
+}: CylinderSvgProps): string {
+  const w = 280
+  const h = 260
+  const cx = 140
+  const topY = 70
+  const botY = 190
+  const rx = 70
+  const ry = 28
+  return `
+<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="${cx}" cy="${botY}" rx="${rx}" ry="${ry}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
+  <rect x="${cx - rx}" y="${topY}" width="${2 * rx}" height="${botY - topY}" fill="${fill}" stroke="none"/>
+  <line x1="${cx - rx}" y1="${topY}" x2="${cx - rx}" y2="${botY}" stroke="${stroke}" stroke-width="2"/>
+  <line x1="${cx + rx}" y1="${topY}" x2="${cx + rx}" y2="${botY}" stroke="${stroke}" stroke-width="2"/>
+  <ellipse cx="${cx}" cy="${topY}" rx="${rx}" ry="${ry}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
+  <line x1="${cx}" y1="${topY}" x2="${cx + rx}" y2="${topY}" stroke="${stroke}" stroke-width="1.5"/>
+  <text x="${cx + rx / 2}" y="${topY - 10}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">r = ${radiusLabel}</text>
+  <text x="${cx + rx + 16}" y="${(topY + botY) / 2 + 5}" font-size="14" font-weight="bold" fill="#333">h = ${heightLabel}</text>
+</svg>`.trim()
+}
+
+

@@ -1,7 +1,11 @@
 import { pick, randInt, type Rng } from '../lib/rng'
+import {
+  generateLinearFunctionSvg,
+  generateValueTableSvg,
+} from '../lib/geometrySvg'
 import { makeFraction, subtract, format, type Fraction } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
-import { fractionTask, valueTask } from './taskHelpers'
+import { fractionTask, mixedVariants, valueTask, visualTask } from './taskHelpers'
 import type { Grade, Topic } from './types'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
@@ -262,19 +266,64 @@ const funktionswert: Topic = {
     quelle: 'Wikipedia: Lineare Funktion',
     url: 'https://de.wikipedia.org/wiki/Lineare_Funktion',
   },
-  generate: (rng: Rng) => {
-    const m = nonZero(rng, -6, 6)
-    const n = nonZero(rng, -10, 10)
-    const x = nonZero(rng, -8, 8)
-    const value = m * x + n
-    return valueTask({
-      question: `Gegeben ist f(x) = ${num(m)}·x + ${num(n)}. Berechne f(${x}).`,
-      answerKind: 'integer',
-      value,
-      solution: formatDe(value),
-      explanation: `Setze x = ${x} ein: f(${x}) = ${num(m)} · ${num(x)} + ${num(n)} = ${m * x} + ${num(n)} = ${value}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const m = nonZero(rng, -6, 6)
+      const n = nonZero(rng, -10, 10)
+      const x = nonZero(rng, -8, 8)
+      const value = m * x + n
+      return valueTask({
+        question: `Gegeben ist f(x) = ${num(m)}·x + ${num(n)}. Berechne f(${x}).`,
+        answerKind: 'integer',
+        value,
+        solution: formatDe(value),
+        explanation: `Setze x = ${x} ein: f(${x}) = ${num(m)} · ${num(x)} + ${num(n)} = ${m * x} + ${num(n)} = ${value}.`,
+      })
+    },
+    (rng: Rng) => {
+      const m = nonZero(rng, -4, 4)
+      const n = nonZero(rng, -6, 6)
+      const x = nonZero(rng, -4, 4)
+      const value = m * x + n
+      return visualTask({
+        question: `Am Graphen von f(x) = ${num(m)}·x + ${num(n)}: Lies f(${x}) ab bzw. berechne den Funktionswert.`,
+        answerKind: 'integer',
+        value,
+        solution: formatDe(value),
+        explanation: `f(${x}) = ${num(m)} · ${num(x)} + ${num(n)} = ${value}. Am Graphen liegt der Punkt (${x} | ${value}).`,
+        visualContent: generateLinearFunctionSvg({
+          m,
+          n,
+          points: [{ x, y: value, label: `(${x}|?)` }],
+          interceptLabel: false,
+          slopeTriangle: { fromX: 0, run: m >= 0 ? 1 : -1, showLabels: false },
+        }),
+      })
+    },
+    (rng: Rng) => {
+      const m = nonZero(rng, -5, 5)
+      const n = nonZero(rng, -8, 8)
+      const xs = [-2, -1, 0, 1, 2].map((x) => ({ x, y: m * x + n as number | null }))
+      const hideIdx = pick(rng, [0, 1, 3, 4] as const)
+      const value = xs[hideIdx].y as number
+      const cells = xs.map((c, i) => ({
+        x: c.x,
+        y: i === hideIdx ? null : c.y,
+      }))
+      return visualTask({
+        question: `Zur linearen Funktion f(x) = ${num(m)}·x + ${num(n)} fehlt ein Wert in der Tabelle. Welcher y-Wert gehört in die Zelle mit ?`,
+        answerKind: 'integer',
+        value,
+        solution: formatDe(value),
+        explanation: `f(${xs[hideIdx].x}) = ${num(m)} · ${num(xs[hideIdx].x)} + ${num(n)} = ${value}.`,
+        visualContent: generateValueTableSvg({
+          cells,
+          xLabel: 'x',
+          yLabel: 'f(x)',
+        }),
+      })
+    },
+  ),
 }
 
 const steigung: Topic = {
@@ -289,21 +338,78 @@ const steigung: Topic = {
     quelle: 'Wikipedia: Steigung (Mathematik)',
     url: 'https://de.wikipedia.org/wiki/Steigung_(Mathematik)',
   },
-  generate: (rng: Rng) => {
-    const x1 = nonZero(rng, -8, 8)
-    let x2 = nonZero(rng, -8, 8)
-    while (x2 === x1) x2 = nonZero(rng, -8, 8)
-    const m = nonZero(rng, -5, 5)
-    const y1 = randInt(rng, -10, 10)
-    const y2 = y1 + m * (x2 - x1)
-    return valueTask({
-      question: `Eine Gerade verläuft durch P(${x1} | ${y1}) und Q(${x2} | ${y2}). Berechne die Steigung m.`,
-      answerKind: 'integer',
-      value: m,
-      solution: `m = ${m}`,
-      explanation: `m = (y₂ − y₁) : (x₂ − x₁) = (${y2} − ${y1}) : (${x2} − ${x1}) = ${y2 - y1} : ${x2 - x1} = ${m}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const x1 = nonZero(rng, -8, 8)
+      let x2 = nonZero(rng, -8, 8)
+      while (x2 === x1) x2 = nonZero(rng, -8, 8)
+      const m = nonZero(rng, -5, 5)
+      const y1 = randInt(rng, -10, 10)
+      const y2 = y1 + m * (x2 - x1)
+      return valueTask({
+        question: `Eine Gerade verläuft durch P(${x1} | ${y1}) und Q(${x2} | ${y2}). Berechne die Steigung m.`,
+        answerKind: 'integer',
+        value: m,
+        solution: `m = ${m}`,
+        explanation: `m = (y₂ − y₁) : (x₂ − x₁) = (${y2} − ${y1}) : (${x2} − ${x1}) = ${y2 - y1} : ${x2 - x1} = ${m}.`,
+      })
+    },
+    (rng: Rng) => {
+      const m = nonZero(rng, -4, 4)
+      const n = nonZero(rng, -5, 5)
+      const fromX = randInt(rng, -3, 2)
+      const run = pick(rng, [1, 2] as const)
+      const y0 = m * fromX + n
+      const y1 = m * (fromX + run) + n
+      return visualTask({
+        question: 'Lies die Steigung m am Steigungsdreieck ab (m = Δy : Δx).',
+        answerKind: 'integer',
+        value: m,
+        solution: `m = ${m}`,
+        explanation: `m = Δy : Δx = (${y1} − ${y0}) : ${run} = ${y1 - y0} : ${run} = ${m}.`,
+        visualContent: generateLinearFunctionSvg({
+          m,
+          n,
+          interceptLabel: false,
+          points: [
+            { x: fromX, y: y0, label: 'P' },
+            { x: fromX + run, y: y1, label: 'Q' },
+          ],
+          slopeTriangle: {
+            fromX,
+            run,
+            dxLabel: `Δx=${run}`,
+            dyLabel: `Δy=${y1 - y0}`,
+          },
+        }),
+      })
+    },
+    (rng: Rng) => {
+      const m = nonZero(rng, -3, 3)
+      const n = randInt(rng, -4, 4)
+      const x1 = -2
+      const x2 = 2
+      const y1 = m * x1 + n
+      const y2 = m * x2 + n
+      return visualTask({
+        question: `Die Gerade geht durch P(${x1} | ${y1}) und Q(${x2} | ${y2}). Bestimme m.`,
+        answerKind: 'integer',
+        value: m,
+        solution: `m = ${m}`,
+        explanation: `m = (${y2} − ${y1}) : (${x2} − ${x1}) = ${y2 - y1} : ${x2 - x1} = ${m}.`,
+        visualContent: generateLinearFunctionSvg({
+          m,
+          n,
+          interceptLabel: false,
+          points: [
+            { x: x1, y: y1, label: 'P' },
+            { x: x2, y: y2, label: 'Q' },
+          ],
+          slopeTriangle: { fromX: x1, run: x2 - x1, showLabels: true },
+        }),
+      })
+    },
+  ),
 }
 
 const achsenabschnitt: Topic = {
@@ -318,19 +424,41 @@ const achsenabschnitt: Topic = {
     quelle: 'Wikipedia: Lineare Funktion',
     url: 'https://de.wikipedia.org/wiki/Lineare_Funktion',
   },
-  generate: (rng: Rng) => {
-    const m = nonZero(rng, -5, 5)
-    const x = nonZero(rng, -6, 6)
-    const n = nonZero(rng, -10, 10)
-    const y = m * x + n
-    return valueTask({
-      question: `Eine Gerade mit der Steigung m = ${m} geht durch den Punkt P(${x} | ${y}). Bestimme den y-Achsenabschnitt n.`,
-      answerKind: 'integer',
-      value: n,
-      solution: `n = ${n}`,
-      explanation: `Aus y = m·x + n folgt n = y − m·x = ${y} − ${m} · ${num(x)} = ${y} − ${m * x} = ${n}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const m = nonZero(rng, -5, 5)
+      const x = nonZero(rng, -6, 6)
+      const n = nonZero(rng, -10, 10)
+      const y = m * x + n
+      return valueTask({
+        question: `Eine Gerade mit der Steigung m = ${m} geht durch den Punkt P(${x} | ${y}). Bestimme den y-Achsenabschnitt n.`,
+        answerKind: 'integer',
+        value: n,
+        solution: `n = ${n}`,
+        explanation: `Aus y = m·x + n folgt n = y − m·x = ${y} − ${m} · ${num(x)} = ${y} − ${m * x} = ${n}.`,
+      })
+    },
+    (rng: Rng) => {
+      const m = nonZero(rng, -3, 3)
+      const n = nonZero(rng, -5, 5)
+      const x = nonZero(rng, -3, 3)
+      const y = m * x + n
+      return visualTask({
+        question: `Die Gerade mit Steigung m = ${m} geht durch P(${x} | ${y}). Lies den y-Achsenabschnitt n am Graphen ab.`,
+        answerKind: 'integer',
+        value: n,
+        solution: `n = ${n}`,
+        explanation: `Schnittpunkt mit der y-Achse: (0 | ${n}), also n = ${n}. Rechnung: n = ${y} − ${m} · ${num(x)} = ${n}.`,
+        visualContent: generateLinearFunctionSvg({
+          m,
+          n,
+          points: [{ x, y, label: 'P' }],
+          interceptLabel: '?',
+          slopeTriangle: { fromX: 0, run: m >= 0 ? 1 : -1, showLabels: false },
+        }),
+      })
+    },
+  ),
 }
 
 const lgs: Topic = {
@@ -345,25 +473,52 @@ const lgs: Topic = {
     quelle: 'Wikipedia: Lineares Gleichungssystem',
     url: 'https://de.wikipedia.org/wiki/Lineares_Gleichungssystem',
   },
-  generate: (rng: Rng) => {
-    const x = nonZero(rng, -6, 6)
-    const y = nonZero(rng, -6, 6)
-    const a = nonZero(rng, -4, 4)
-    const b = nonZero(rng, -4, 4)
-    const c = nonZero(rng, -4, 4)
-    let d = nonZero(rng, -4, 4)
-    // Ensure a unique solution: determinant a*d - b*c != 0.
-    while (a * d - b * c === 0) d = nonZero(rng, -4, 4)
-    const e = a * x + b * y
-    const f = c * x + d * y
-    return valueTask({
-      question: `Löse das Gleichungssystem und gib x an:  ${num(a)}x + ${num(b)}y = ${e}  und  ${num(c)}x + ${num(d)}y = ${f}.`,
-      answerKind: 'integer',
-      value: x,
-      solution: `x = ${x}`,
-      explanation: `Mit dem Additionsverfahren erhält man die eindeutige Lösung x = ${x} (und y = ${y}), da die Determinante ${a}·${d} − ${b}·${c} = ${a * d - b * c} ≠ 0 ist.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const x = nonZero(rng, -6, 6)
+      const y = nonZero(rng, -6, 6)
+      const a = nonZero(rng, -4, 4)
+      const b = nonZero(rng, -4, 4)
+      const c = nonZero(rng, -4, 4)
+      let d = nonZero(rng, -4, 4)
+      while (a * d - b * c === 0) d = nonZero(rng, -4, 4)
+      const e = a * x + b * y
+      const f = c * x + d * y
+      return valueTask({
+        question: `Löse das Gleichungssystem und gib x an:  ${num(a)}x + ${num(b)}y = ${e}  und  ${num(c)}x + ${num(d)}y = ${f}.`,
+        answerKind: 'integer',
+        value: x,
+        solution: `x = ${x}`,
+        explanation: `Mit dem Additionsverfahren erhält man die eindeutige Lösung x = ${x} (und y = ${y}), da die Determinante ${a}·${d} − ${b}·${c} = ${a * d - b * c} ≠ 0 ist.`,
+      })
+    },
+    (rng: Rng) => {
+      // Slope-intercept form for a clean graph: y = m1 x + n1, y = m2 x + n2
+      const x = nonZero(rng, -4, 4)
+      const y = nonZero(rng, -4, 4)
+      const m1 = nonZero(rng, -3, 3)
+      let m2 = nonZero(rng, -3, 3)
+      while (m2 === m1) m2 = nonZero(rng, -3, 3)
+      const n1 = y - m1 * x
+      const n2 = y - m2 * x
+      return visualTask({
+        question: `Die Geraden g: y = ${num(m1)}x + ${num(n1)} und h: y = ${num(m2)}x + ${num(n2)} schneiden sich. Gib die x-Koordinate des Schnittpunkts an.`,
+        answerKind: 'integer',
+        value: x,
+        solution: `x = ${x}`,
+        explanation: `Schnittpunkt S(${x} | ${y}): setze ${num(m1)}x + ${num(n1)} = ${num(m2)}x + ${num(n2)} → x = ${x}.`,
+        visualContent: generateLinearFunctionSvg({
+          m: m1,
+          n: n1,
+          interceptLabel: false,
+          points: [{ x, y, label: 'S' }],
+          second: { m: m2, n: n2 },
+          xRange: [-6, 6],
+          yRange: [-6, 6],
+        }),
+      })
+    },
+  ),
 }
 
 // ---------------------------------------------------------------------------

@@ -28,6 +28,10 @@ import {
   generateSegmentSvg,
   generateSegmentsOnGridSvg,
   generateRayOrLineSvg,
+  generateLinearFunctionSvg,
+  generateRightTriangleSvg,
+  generateCircleMeasureSvg,
+  generateCylinderSvg,
   segmentLength,
   reflectPointAcross,
   pointReflectAcross,
@@ -668,6 +672,86 @@ describe('geometrySvg', () => {
       expect(ray).toContain('rayArrow')
       expect(line).toContain('rayArrow')
       expect((line.match(/marker-end/g) ?? []).length).toBeGreaterThanOrEqual(2)
+    })
+  })
+
+  describe('generateLinearFunctionSvg', () => {
+    it('draws the line, slope triangle and intercept', () => {
+      const svg = generateLinearFunctionSvg({
+        m: 2,
+        n: 1,
+        points: [{ x: 1, y: 3, label: 'P' }],
+        slopeTriangle: { fromX: 0, run: 1, dxLabel: 'Δx=1', dyLabel: 'Δy=2' },
+        interceptLabel: 'n=1',
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('>P</text>')
+      expect(svg).toContain('Δx=1')
+      expect(svg).toContain('Δy=2')
+      expect(svg).toContain('n=1')
+      expect(svg).toContain('stroke="#1565c0"')
+    })
+
+    it('can draw a second line for LGS', () => {
+      const svg = generateLinearFunctionSvg({
+        m: 1,
+        n: 0,
+        second: { m: -1, n: 4 },
+        interceptLabel: false,
+        points: [{ x: 2, y: 2, label: 'S' }],
+        xRange: [-5, 5],
+        yRange: [-5, 5],
+      })
+      expect(svg).toContain('>S</text>')
+      expect(svg).toContain('stroke="#c62828"')
+    })
+  })
+
+  describe('generateRightTriangleSvg', () => {
+    it('labels legs and hypotenuse with a right-angle mark', () => {
+      const svg = generateRightTriangleSvg({
+        aLabel: 'a=3',
+        bLabel: 'b=4',
+        cLabel: 'c=?',
+        ask: 'c',
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('a=3')
+      expect(svg).toContain('b=4')
+      expect(svg).toContain('c=?')
+      expect(svg).toContain('<polyline') // right-angle square
+    })
+
+    it('marks an acute angle for trig tasks', () => {
+      const svg = generateRightTriangleSvg({
+        aLabel: 'Ank.',
+        bLabel: 'Geg.',
+        cLabel: 'Hyp.',
+        angleDeg: 35,
+        angleLabel: 'α',
+        ask: 'angle',
+      })
+      expect(svg).toContain('α')
+      expect(svg).toContain('<path') // angle arc
+    })
+  })
+
+  describe('generateCircleMeasureSvg / generateCylinderSvg', () => {
+    it('shows radius and optional diameter', () => {
+      const svg = generateCircleMeasureSvg({
+        radiusLabel: 'r = 5 cm',
+        showDiameter: true,
+        diameterLabel: 'd = 10 cm',
+      })
+      expect(svg).toContain('r = 5 cm')
+      expect(svg).toContain('d = 10 cm')
+    })
+
+    it('draws a cylinder with r and h', () => {
+      const svg = generateCylinderSvg({ radiusLabel: '3 cm', heightLabel: '8 cm' })
+      expect(svg).toContain('r = 3 cm')
+      expect(svg).toContain('h = 8 cm')
+      expect(svg).toContain('<ellipse')
     })
   })
 })

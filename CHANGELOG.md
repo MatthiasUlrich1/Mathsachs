@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.20.0] – 2026-09-15
+
+### Neu
+- **Klasse 8 lineare Funktionen grafisch (Phase 4)**: Funktionswert, Steigung,
+  y-Achsenabschnitt und LGS mischen Text mit Graph (Steigungsdreieck),
+  Wertetabelle und Schnittpunkt zweier Geraden.
+
 ## [0.19.0] – 2026-09-15
 
 ### Geändert
