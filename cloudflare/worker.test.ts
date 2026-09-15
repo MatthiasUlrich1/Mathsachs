@@ -179,6 +179,9 @@ describe('Cloudflare Worker API', () => {
       challengeCreate: { limit: 8, windowMs: 60_000 },
       challengeUpdate: { limit: 30, windowMs: 60_000 },
       challengeDelete: { limit: 30, windowMs: 60_000 },
+      examCreate: { limit: 8, windowMs: 60_000 },
+      examUpdate: { limit: 30, windowMs: 60_000 },
+      examDelete: { limit: 30, windowMs: 60_000 },
     })
 
     const kv = env()
