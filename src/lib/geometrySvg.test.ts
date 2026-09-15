@@ -89,18 +89,97 @@ describe('geometrySvg', () => {
       expect(svg).toContain('60°')
       expect(svg).toContain('?')
       expect(svg).toContain('<polygon')
-      expect(svg).toMatch(/<path|<polyline/)
+      expect(svg).toContain('<path')
     })
 
-    it('uses a right-angle square at 90°', () => {
+    it('uses a German right-angle mark (arc + dot) at 90°', () => {
       const svg = generateTriangleAnglesSvg({
         aLabel: '90°',
         bLabel: '45°',
         cLabel: '45°',
         anglesDeg: [90, 45, 45],
       })
-      expect(svg).toContain('<polyline')
+      expect(svg).toContain('<path')
+      expect(svg).toContain('<circle')
+      expect(svg).not.toContain('<polyline')
       expect(svg).toContain('90°')
+    })
+
+    it('keeps every angle-arc midpoint inside the triangle', () => {
+      const pointInTriangle = (
+        p: [number, number],
+        a: [number, number],
+        b: [number, number],
+        c: [number, number],
+      ) => {
+        const sign = (p1: [number, number], p2: [number, number], p3: [number, number]) =>
+          (p1[0] - p3[0]) * (p2[1] - p3[1]) - (p2[0] - p3[0]) * (p1[1] - p3[1])
+        const b1 = sign(p, a, b) < 0
+        const b2 = sign(p, b, c) < 0
+        const b3 = sign(p, c, a) < 0
+        return b1 === b2 && b2 === b3
+      }
+
+      const cases: Array<[number, number, number]> = [
+        [50, 60, 70],
+        [37, 26, 117],
+        [43, 47, 90],
+        [90, 45, 45],
+        [120, 30, 30],
+        [40, 110, 30],
+      ]
+
+      for (const anglesDeg of cases) {
+        const svg = generateTriangleAnglesSvg({
+          aLabel: 'A',
+          bLabel: 'B',
+          cLabel: 'C',
+          anglesDeg,
+        })
+        const poly = svg.match(/<polygon points="([^"]+)"/)?.[1]
+        expect(poly).toBeTruthy()
+        const [A, B, C] = poly!
+          .split(' ')
+          .map((s) => s.split(',').map(Number) as [number, number])
+
+        const arcs = [
+          ...svg.matchAll(
+            /M ([\d.-]+),([\d.-]+) A ([\d.-]+),([\d.-]+) 0 ([01]),([01]) ([\d.-]+),([\d.-]+)/g,
+          ),
+        ]
+        const seen = new Set<string>()
+        for (const m of arcs) {
+          if (seen.has(m[0])) continue
+          seen.add(m[0])
+          const x0 = +m[1]
+          const y0 = +m[2]
+          const r = +m[3]
+          const sweep = +m[6]
+          const x1 = +m[7]
+          const y1 = +m[8]
+          const vertex = [A, B, C].find(
+            (v) =>
+              Math.abs(Math.hypot(x0 - v[0], y0 - v[1]) - r) < 0.5 &&
+              Math.abs(Math.hypot(x1 - v[0], y1 - v[1]) - r) < 0.5,
+          )
+          expect(vertex).toBeTruthy()
+          const a0 = Math.atan2(y0 - vertex![1], x0 - vertex![0])
+          const a1 = Math.atan2(y1 - vertex![1], x1 - vertex![0])
+          let delta = a1 - a0
+          // y-down: atan2 increases clockwise; SVG sweep=1 is clockwise
+          if (sweep === 1) {
+            while (delta < 0) delta += 2 * Math.PI
+            while (delta >= 2 * Math.PI) delta -= 2 * Math.PI
+          } else {
+            while (delta > 0) delta -= 2 * Math.PI
+            while (delta <= -2 * Math.PI) delta += 2 * Math.PI
+          }
+          const mid = a0 + delta / 2
+          const mx = vertex![0] + r * Math.cos(mid)
+          const my = vertex![1] + r * Math.sin(mid)
+          expect(pointInTriangle([mx, my], A, B, C)).toBe(true)
+        }
+      }
     })
   })
 
@@ -119,7 +198,7 @@ describe('geometrySvg', () => {
       expect(svg).toContain('90°')
       expect(svg).toContain('?')
       expect(svg).toContain('<polygon')
-      expect(svg).toMatch(/<path|<polyline/)
+      expect(svg).toContain('<path')
     })
   })
 
@@ -229,12 +308,14 @@ describe('geometrySvg', () => {
       expect(svg).not.toContain('<polyline')
     })
 
-    it('marks a right angle with a square instead of an arc', () => {
+    it('marks a right angle with Viertelkreis and dot', () => {
       const svg = generateAngleSvg({
         angle: 90,
         label: '90°',
       })
-      expect(svg).toContain('<polyline')
+      expect(svg).toContain('<path')
+      expect(svg).toContain('<circle')
+      expect(svg).not.toContain('<polyline')
       expect(svg).toContain('90°')
     })
   })
@@ -245,7 +326,7 @@ describe('geometrySvg', () => {
       expect(svg).toContain('<svg')
       expect(svg).toContain('70°')
       expect(svg).toContain('?')
-      expect(svg).toMatch(/<path|<polyline/)
+      expect(svg).toContain('<path')
     })
   })
 
@@ -719,7 +800,8 @@ describe('geometrySvg', () => {
       expect(svg).toContain('a=3')
       expect(svg).toContain('b=4')
       expect(svg).toContain('c=?')
-      expect(svg).toContain('<polyline') // right-angle square
+      expect(svg).toContain('<path') // Viertelkreis
+      expect(svg).toContain('<circle') // Punkt im rechten Winkel
     })
 
     it('marks an acute angle for trig tasks', () => {

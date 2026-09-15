@@ -279,62 +279,111 @@ function unitToward(
   return [dx / len, dy / len]
 }
 
+function normalize2(v: [number, number]): [number, number] {
+  const len = Math.hypot(v[0], v[1]) || 1
+  return [v[0] / len, v[1] / len]
+}
+
 /**
- * Interior-angle mark at a polygon vertex: arc (or right-angle square if ≈90°)
- * plus label. Directions `u` and `v` are unit vectors along the two edges
- * leaving the vertex (order should span the interior).
+ * Interior-angle mark at a polygon vertex.
+ *
+ * German school convention:
+ * - normal angle: circular arc (sector) on the **interior** side
+ * - right angle (≈90°): Viertelkreis **with a dot** (not a US-style square)
+ *
+ * `u` and `v` are unit vectors along the two edges leaving the vertex.
+ * Optional `interior` (e.g. polygon centroid) forces the wedge that contains
+ * that point — critical for obtuse angles.
  */
 export function angleMarkSvg(
   vertex: [number, number],
-  u: [number, number],
-  v: [number, number],
+  uIn: [number, number],
+  vIn: [number, number],
   label: string,
   {
     radius = 28,
     stroke = '#f57c00',
     fill = '#fff3e0',
-  }: { radius?: number; stroke?: string; fill?: string } = {},
+    interior,
+  }: {
+    radius?: number
+    stroke?: string
+    fill?: string
+    /** A point known to lie inside the marked angle (e.g. centroid). */
+    interior?: [number, number]
+  } = {},
 ): string {
   const [vx, vy] = vertex
+  let u = normalize2(uIn)
+  let v = normalize2(vIn)
+
+  if (interior) {
+    const w = unitToward(vertex, interior)
+    // Direct wedge u→v contains w if both partial crosses share the turn sense.
+    const crossUV = u[0] * v[1] - u[1] * v[0]
+    const crossUW = u[0] * w[1] - u[1] * w[0]
+    const crossWV = w[0] * v[1] - w[1] * v[0]
+    const inWedge =
+      Math.abs(crossUV) < 1e-12 ||
+      (crossUW * crossUV >= -1e-12 && crossWV * crossUV >= -1e-12)
+    if (!inWedge) {
+      ;[u, v] = [v, u]
+    }
+  }
+
   const cross = u[0] * v[1] - u[1] * v[0]
   const dot = Math.max(-1, Math.min(1, u[0] * v[0] + u[1] * v[1]))
   const ang = Math.acos(dot)
   const deg = (ang * 180) / Math.PI
   const isRight = Math.abs(deg - 90) < 1.5
 
-  // Bisector for label placement (inward)
+  // Bisector of the marked wedge (points into the interior for convex polygons)
   let bx = u[0] + v[0]
   let by = u[1] + v[1]
   const bl = Math.hypot(bx, by) || 1
   bx /= bl
   by /= bl
-
-  const labelR = radius + 14
-  const lx = vx + bx * labelR
-  const ly = vy + by * labelR
-
-  if (isRight) {
-    // Right-angle square: from vertex along u and v by `s`
-    const s = Math.min(radius, 22)
-    const p1: [number, number] = [vx + u[0] * s, vy + u[1] * s]
-    const p2: [number, number] = [vx + u[0] * s + v[0] * s, vy + u[1] * s + v[1] * s]
-    const p3: [number, number] = [vx + v[0] * s, vy + v[1] * s]
-    return `
-  <polyline points="${p1[0]},${p1[1]} ${p2[0]},${p2[1]} ${p3[0]},${p3[1]}" fill="none" stroke="${stroke}" stroke-width="2"/>
-  <text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" font-size="15" font-weight="bold" fill="#333">${label}</text>`
+  if (interior) {
+    const w = unitToward(vertex, interior)
+    if (bx * w[0] + by * w[1] < 0) {
+      bx = -bx
+      by = -by
+    }
   }
 
-  const sweep = cross < 0 ? 1 : 0 // SVG y-down: cross sign for CCW in screen space
+  // SVG y-down: cross > 0 ⇒ clockwise from u to v ⇒ sweep-flag 1
+  const sweep = cross > 0 ? 1 : 0
   const large = deg > 180 ? 1 : 0
+
   const a0x = vx + u[0] * radius
   const a0y = vy + u[1] * radius
   const a1x = vx + v[0] * radius
   const a1y = vy + v[1] * radius
   const arc = `M ${a0x},${a0y} A ${radius},${radius} 0 ${large},${sweep} ${a1x},${a1y}`
+
+  const labelR = radius + 14
+  const lx = vx + bx * labelR
+  const ly = vy + by * labelR
+  const labelSvg = label
+    ? `<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" font-size="15" font-weight="bold" fill="#333">${label}</text>`
+    : ''
+
+  if (isRight) {
+    // German: Viertelkreis mit Punkt (not a US square)
+    const dotR = radius * 0.42
+    const dx = vx + bx * dotR
+    const dy = vy + by * dotR
+    return `
+  <path d="${arc} L ${vx},${vy} Z" fill="${fill}" fill-opacity="0.45" stroke="none"/>
+  <path d="${arc}" fill="none" stroke="${stroke}" stroke-width="2"/>
+  <circle cx="${dx}" cy="${dy}" r="3.2" fill="${stroke}"/>
+  ${labelSvg}`
+  }
+
   return `
   <path d="${arc} L ${vx},${vy} Z" fill="${fill}" fill-opacity="0.35" stroke="none"/>
   <path d="${arc}" fill="none" stroke="${stroke}" stroke-width="2"/>
-  <text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" font-size="15" font-weight="bold" fill="#333">${label}</text>`
+  ${labelSvg}`
 }
 
 function fitPolygon(
@@ -384,7 +433,7 @@ function trianglePointsFromAngles(
 
 /**
  * Triangle with geometrically correct interior angles, angle arcs (or
- * right-angle squares), and labels at the vertices.
+ * German right-angle marks), and labels at the vertices.
  */
 export function generateTriangleAnglesSvg({
   aLabel,
@@ -405,21 +454,28 @@ export function generateTriangleAnglesSvg({
     [number, number],
     [number, number],
   ]
+  const interior: [number, number] = [
+    (A[0] + B[0] + C[0]) / 3,
+    (A[1] + B[1] + C[1]) / 3,
+  ]
 
   const markA = angleMarkSvg(A, unitToward(A, B), unitToward(A, C), aLabel, {
     radius: arcRadius,
     stroke,
     fill,
+    interior,
   })
   const markB = angleMarkSvg(B, unitToward(B, A), unitToward(B, C), bLabel, {
     radius: arcRadius,
     stroke,
     fill,
+    interior,
   })
   const markC = angleMarkSvg(C, unitToward(C, A), unitToward(C, B), cLabel, {
     radius: arcRadius,
     stroke,
     fill,
+    interior,
   })
 
   return `
@@ -463,7 +519,7 @@ function polygonFromInteriorAngles(angles: number[], side = 90): Array<[number, 
 }
 
 /**
- * Convex quadrilateral with correct interior-angle arcs / right-angle squares.
+ * Convex quadrilateral with correct interior-angle arcs / German right-angle marks.
  */
 export function generateQuadAnglesSvg({
   aLabel,
@@ -486,6 +542,10 @@ export function generateQuadAnglesSvg({
     [number, number],
     [number, number],
   ]
+  const interior: [number, number] = [
+    pts.reduce((s, p) => s + p[0], 0) / 4,
+    pts.reduce((s, p) => s + p[1], 0) / 4,
+  ]
   const labels = [aLabel, bLabel, cLabel, dLabel]
   const marks = pts
     .map((p, i) => {
@@ -495,6 +555,7 @@ export function generateQuadAnglesSvg({
         radius: arcRadius,
         stroke,
         fill,
+        interior,
       })
     })
     .join('\n')
@@ -796,8 +857,7 @@ export interface AngleSvgProps {
 
 /**
  * Generate an SVG string for an angle visualization.
- * Shows two rays meeting at a vertex with an angle arc, or a right-angle
- * square when the angle is 90°.
+ * Two rays with an interior arc; 90° uses the German Viertelkreis-mit-Punkt.
  */
 export function generateAngleSvg({
   angle,
@@ -820,34 +880,25 @@ export function generateAngleSvg({
     cy - rayLength * Math.sin(angleRad),
   ]
 
-  const isRight = Math.abs(angle - 90) < 0.5
-  const arcRadius = 60
-  const markSize = 28
+  const u: [number, number] = [1, 0]
+  const v: [number, number] = [Math.cos(angleRad), -Math.sin(angleRad)]
+  // Point inside the drawn angle (along the bisector)
+  const interior: [number, number] = [
+    cx + Math.cos(angleRad / 2) * 40,
+    cy - Math.sin(angleRad / 2) * 40,
+  ]
 
-  let markSvg = ''
-  if (showArc) {
-    if (isRight) {
-      const p1 = [cx + markSize, cy]
-      const p2 = [cx + markSize, cy - markSize]
-      const p3 = [cx, cy - markSize]
-      markSvg = `
-  <polyline points="${p1[0]},${p1[1]} ${p2[0]},${p2[1]} ${p3[0]},${p3[1]}" fill="none" stroke="${stroke}" stroke-width="2"/>`
-    } else {
-      const largeArcFlag = angle > 180 ? 1 : 0
-      const arcPath = `M ${cx + arcRadius},${cy} A ${arcRadius},${arcRadius} 0 ${largeArcFlag},1 ${
-        cx + arcRadius * Math.cos(angleRad)
-      },${cy - arcRadius * Math.sin(angleRad)}`
-      // sweep=1 matches screen y-down with mathematical positive angles
-      markSvg = `
-  <path d="${arcPath}" fill="none" stroke="${stroke}" stroke-width="2"/>
-  <path d="${arcPath} L ${cx},${cy} Z" fill="${fill}" opacity="0.3"/>`
-    }
-  }
+  const markSvg = showArc
+    ? angleMarkSvg([cx, cy], u, v, '', {
+        radius: Math.abs(angle - 90) < 0.5 ? 36 : 60,
+        stroke,
+        fill,
+        interior,
+      })
+    : ''
 
-  const labelX = isRight
-    ? cx + markSize + 18
-    : cx + arcRadius / 2 + 15
-  const labelY = isRight ? cy - markSize - 8 : cy - arcRadius / 2 + 15
+  const labelX = cx + Math.cos(angleRad / 2) * 78
+  const labelY = cy - Math.sin(angleRad / 2) * 78
 
   return `
 <svg width="${totalSize}" height="${totalSize}" xmlns="http://www.w3.org/2000/svg">
@@ -2817,32 +2868,46 @@ export function generateCrossingLinesSvg({
   // Given angle: between +x and the upper direction of line 2 (screen: -sin)
   const uGiven: [number, number] = [1, 0]
   const vGiven: [number, number] = [Math.cos(a), -Math.sin(a)]
+  const givenInterior: [number, number] = [
+    cx + Math.cos(a / 2) * 40,
+    cy - Math.sin(a / 2) * 40,
+  ]
   const givenMark = angleMarkSvg([cx, cy], uGiven, vGiven, given, {
     radius: 34,
     stroke: '#e65100',
     fill: '#fff3e0',
+    interior: givenInterior,
   })
 
   let askMark = ''
   if (ask === 'neben') {
-    // Adjacent on the straight line: from +x to the other side of line 2? 
-    // Neben to the given: from -direction of horizontal to vGiven? 
-    // Given is between +x and line2. Adjacent on the line is between line2 and -x.
+    // Adjacent on the straight line: from line2 to -x
     const uAsk: [number, number] = [Math.cos(a), -Math.sin(a)]
     const vAsk: [number, number] = [-1, 0]
+    const nebenDeg = Math.PI - a
+    const askInterior: [number, number] = [
+      cx + Math.cos(a + nebenDeg / 2) * 40,
+      cy - Math.sin(a + nebenDeg / 2) * 40,
+    ]
     askMark = angleMarkSvg([cx, cy], uAsk, vAsk, askLabel, {
       radius: 42,
       stroke: '#2e7d32',
       fill: '#e8f5e9',
+      interior: askInterior,
     })
   } else {
     // Scheitel: opposite = between -x and opposite ray of line2
     const uAsk: [number, number] = [-1, 0]
     const vAsk: [number, number] = [-Math.cos(a), Math.sin(a)]
+    const askInterior: [number, number] = [
+      cx - Math.cos(a / 2) * 40,
+      cy + Math.sin(a / 2) * 40,
+    ]
     askMark = angleMarkSvg([cx, cy], uAsk, vAsk, askLabel, {
       radius: 42,
       stroke: '#2e7d32',
       fill: '#e8f5e9',
+      interior: askInterior,
     })
   }
 
@@ -3208,15 +3273,22 @@ export function generateRightTriangleSvg({
   const B: [number, number] = [ox + base, oy]
   const C: [number, number] = [ox, oy - height]
 
-  const rightMark = angleMarkSvg(A, [1, 0], [0, -1], '', { radius: 18, stroke: '#f57c00' })
+  const interiorA: [number, number] = [ox + 20, oy - 20]
+  const rightMark = angleMarkSvg(A, [1, 0], [0, -1], '', {
+    radius: 18,
+    stroke: '#f57c00',
+    interior: interiorA,
+  })
 
   let angleMark = ''
   if (angleDeg != null) {
     const lab = angleLabel ?? (ask === 'angle' ? '?' : `${angleDeg}°`)
+    const midTri: [number, number] = [(A[0] + B[0] + C[0]) / 3, (A[1] + B[1] + C[1]) / 3]
     angleMark = angleMarkSvg(B, [-1, 0], unitToward(B, C), lab, {
       radius: 34,
       stroke: ask === 'angle' ? '#2e7d32' : '#f57c00',
       fill: ask === 'angle' ? '#e8f5e9' : '#fff3e0',
+      interior: midTri,
     })
   }
 

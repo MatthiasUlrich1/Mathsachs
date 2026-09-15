@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.21.1] – 2026-09-15
+
+### Behoben
+- **Winkelbögen lehrerkonform**: SVG-Sweep korrigiert (Bögen liegen im Innenwinkel,
+  auch bei stumpfen Winkeln); rechter Winkel als **Viertelkreis mit Punkt** statt
+  US-Quadrat; Orientierung über Flächenschwerpunkt abgesichert.
+
 ## [0.21.0] – 2026-09-15
 
 ### Neu
