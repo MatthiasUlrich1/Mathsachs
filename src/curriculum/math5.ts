@@ -18,7 +18,6 @@ import {
   generateSymmetryShapeSvg,
   generateReflectionSvg,
   generatePointReflectionSvg,
-  generateSegmentSvg,
   generateSegmentsOnGridSvg,
   generateRayOrLineSvg,
   reflectPointAcross,
@@ -962,7 +961,7 @@ const ordnenMitEinheiten: Topic = {
 const winkelarten: Topic = {
   id: 'lb3-winkelarten',
   title: 'Winkelarten erkennen',
-  hint: 'spitz, recht, stumpf, gestreckt oder überstumpf.',
+  hint: 'spitz (<90°), recht (90°), stumpf (90°–180°), gestreckt (180°) oder überstumpf (>180°).',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -971,25 +970,25 @@ const winkelarten: Topic = {
     url: 'https://de.wikipedia.org/wiki/Winkel',
   },
   generate: mixedVariants(
-    // Variant 1: Text only
+    // Variant 1: Text only — varied degrees so fingerprints differ
     (rng: Rng) => {
       const kind = pick(rng, ['spitz', 'recht', 'stumpf', 'gestreckt', 'überstumpf'])
       let deg: number
       switch (kind) {
         case 'spitz':
-          deg = randInt(rng, 1, 89)
+          deg = randInt(rng, 5, 85)
           break
         case 'recht':
           deg = 90
           break
         case 'stumpf':
-          deg = randInt(rng, 91, 179)
+          deg = randInt(rng, 95, 175)
           break
         case 'gestreckt':
           deg = 180
           break
         default:
-          deg = randInt(rng, 181, 359)
+          deg = randInt(rng, 185, 350)
       }
       const accepted = kind === 'überstumpf' ? ['überstumpf', 'ueberstumpf'] : [kind]
       return textTask({
@@ -1009,29 +1008,46 @@ const winkelarten: Topic = {
         }.`,
       })
     },
-    // Variant 2: Grafisch + Tippen
+    // Variant 2: Grafisch + Tippen — rotate figure so same kind ≠ same image
     (rng: Rng) => {
-      const kind = pick(rng, ['spitz', 'recht', 'stumpf'] as const)
+      const kind = pick(rng, ['spitz', 'recht', 'stumpf', 'gestreckt'] as const)
       let deg: number
       switch (kind) {
         case 'spitz':
-          deg = randInt(rng, 30, 70)
+          deg = randInt(rng, 25, 75)
           break
         case 'recht':
           deg = 90
           break
+        case 'stumpf':
+          deg = randInt(rng, 100, 155)
+          break
         default:
-          deg = randInt(rng, 100, 150)
+          deg = 180
+      }
+      const startAngle = pick(rng, [0, 20, 35, 45, 60, 90, 120, 150, 180, 210, 240, 270])
+      const choices = ['spitz', 'recht', 'stumpf', 'gestreckt']
+      // Shuffle choice order for variety
+      const shuffled = [...choices]
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(rng() * (i + 1))
+        ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
       }
       return choicePickTask({
         question: 'Welche Winkelart hat dieser Winkel?',
-        choices: ['spitz', 'recht', 'stumpf'],
+        choices: shuffled,
         correct: kind,
         solution: kind,
         explanation: `Der Winkel ist ${
-          kind === 'recht' ? 'genau 90°' : kind === 'spitz' ? 'kleiner als 90°' : 'größer als 90°'
+          kind === 'recht'
+            ? 'genau 90°'
+            : kind === 'gestreckt'
+              ? 'genau 180°'
+              : kind === 'spitz'
+                ? 'kleiner als 90°'
+                : 'zwischen 90° und 180°'
         }, also ${kind}.`,
-        visualContent: generateAngleSvg({ angle: deg, label: '?' }),
+        visualContent: generateAngleSvg({ angle: deg, label: '?', startAngle }),
         instruction: 'Tippe die passende Winkelart:',
       })
     },
@@ -1041,7 +1057,7 @@ const winkelarten: Topic = {
 const winkelErgaenzung: Topic = {
   id: 'lb3-winkel-ergaenzung',
   title: 'Winkel zu 90° oder 180° ergänzen',
-  hint: 'Ziehe den gegebenen Winkel von 90° bzw. 180° ab.',
+  hint: 'Vom Zielwert (90° oder 180°) den gegebenen Winkel abziehen.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -1056,15 +1072,14 @@ const winkelErgaenzung: Topic = {
       const gesamt = toStraight ? 180 : 90
       const a = randInt(rng, 10, gesamt - 10)
       const value = gesamt - a
+      const zielName = toStraight ? 'gestreckten Winkel (180°)' : 'rechten Winkel (90°)'
       return valueTask({
-        question: `Zwei Winkel ergänzen sich zu ${gesamt}° (${
-          toStraight ? 'gestreckter' : 'rechter'
-        } Winkel). Ein Winkel ist ${a}°. Wie groß ist der andere?`,
+        question: `Zwei Winkel sollen zusammen einen ${zielName} ergeben. Ein Winkel ist ${a}°. Wie groß ist der andere?\n\nRechne: ${gesamt}° − ${a}° = ?`,
         unit: '°',
         answerKind: 'integer',
         value,
         solution: `${value}°`,
-        explanation: `Die beiden Winkel ergeben zusammen ${gesamt}°. Also: ${gesamt}° − ${a}° = ${value}°.`,
+        explanation: `Ziel: ${gesamt}°. Gegeben: ${a}°. Ergänzungswinkel = ${gesamt}° − ${a}° = ${value}°.`,
       })
     },
     // Variant 2: Grafisch
@@ -1073,17 +1088,20 @@ const winkelErgaenzung: Topic = {
       const gesamt = toStraight ? 180 : 90
       const a = randInt(rng, 20, gesamt - 20)
       const value = gesamt - a
+      const startAngle = pick(rng, [0, 15, 30, 45, 60, 90, 120])
+      const zielName = toStraight ? 'gestreckten Winkel (180°)' : 'rechten Winkel (90°)'
       const svg = generateAngleSvg({
         angle: a,
         label: `${a}°`,
+        startAngle,
       })
       return visualTask({
-        question: `Der Winkel soll zu ${gesamt}° ergänzt werden. Wie groß ist der Ergänzungswinkel?`,
+        question: `Der abgebildete Winkel misst ${a}°. Ergänze ihn zu einem ${zielName}. Wie groß ist der Ergänzungswinkel?\n\nRechne: ${gesamt}° − ${a}° = ?`,
         unit: '°',
         answerKind: 'integer',
         value,
         solution: `${value}°`,
-        explanation: `Ergänzungswinkel = ${gesamt}° − ${a}° = ${value}°.`,
+        explanation: `Vom Zielwert ${gesamt}° den gegebenen Winkel abziehen: ${gesamt}° − ${a}° = ${value}°.`,
         visualContent: svg,
       })
     },
@@ -1749,22 +1767,27 @@ const symmetriePunkt: Topic = {
 /** Integer grid lengths and clean 3-4-5 diagonals for Strecken tasks. */
 const pickIntegerSegment = (
   rng: Rng,
+  bounds: { xMax: number; yMax: number } = { xMax: 8, yMax: 8 },
 ): { a: [number, number]; b: [number, number]; len: number } => {
   const kind = pick(rng, ['h', 'v', '345'] as const)
-  const ax = randInt(rng, 1, 3)
-  const ay = randInt(rng, 1, 3)
   if (kind === 'h') {
-    const len = randInt(rng, 2, 6)
+    const len = randInt(rng, 2, Math.min(6, bounds.xMax - 1))
+    const ax = randInt(rng, 1, Math.max(1, bounds.xMax - len - 1))
+    const ay = randInt(rng, 1, bounds.yMax - 1)
     return { a: [ax, ay], b: [ax + len, ay], len }
   }
   if (kind === 'v') {
-    const len = randInt(rng, 2, 6)
+    const len = randInt(rng, 2, Math.min(6, bounds.yMax - 1))
+    const ax = randInt(rng, 1, bounds.xMax - 1)
+    const ay = randInt(rng, 1, Math.max(1, bounds.yMax - len - 1))
     return { a: [ax, ay], b: [ax, ay + len], len }
   }
-  // 3-4-5 triangle leg orientation
+  // 3-4-5 triangle — keep both ends inside [1, bounds]
   const flip = rng() < 0.5
   const dx = flip ? 3 : 4
   const dy = flip ? 4 : 3
+  const ax = randInt(rng, 1, Math.max(1, bounds.xMax - dx - 1))
+  const ay = randInt(rng, 1, Math.max(1, bounds.yMax - dy - 1))
   return { a: [ax, ay], b: [ax + dx, ay + dy], len: 5 }
 }
 
@@ -1780,62 +1803,55 @@ const streckenLaenge: Topic = {
     url: 'https://de.wikipedia.org/wiki/Strecke_(Geometrie)',
   },
   generate: mixedVariants(
-    // Variant 1: Visual segment without length label — measure in cm
+    // Variant 1: Always on Kästchenpapier
     (rng: Rng) => {
       const { a, b, len } = pickIntegerSegment(rng)
-      const onGrid = rng() < 0.55
-      const svg = onGrid
-        ? generateSegmentsOnGridSvg({
-            segments: [{ a, b, labelA: 'A', labelB: 'B' }],
-            showSegments: true,
-            showLengthLabels: false,
-            xRange: [-1, 9],
-            yRange: [-1, 9],
-          })
-        : generateSegmentSvg({
-            segments: [{ a: [0, 0], b: [len, 0], labelA: 'A', labelB: 'B' }],
-            showLabel: false,
-            showScaleBar: true,
-          })
+      const svg = generateSegmentsOnGridSvg({
+        segments: [{ a, b, labelA: 'A', labelB: 'B' }],
+        showSegments: true,
+        showLengthLabels: false,
+        xRange: [-1, 9],
+        yRange: [-1, 9],
+      })
       return {
         ...valueTask({
-          question: onGrid
-            ? 'Wie lang ist die Strecke AB? (1 Kästchen = 1 cm)'
-            : 'Wie lang ist die Strecke AB in cm? Nutze den Maßstab.',
+          question: 'Wie lang ist die Strecke AB? (1 Kästchen = 1 cm)',
           unit: 'cm',
           answerKind: 'integer',
           value: len,
           solution: `${len} cm`,
-          explanation: onGrid
-            ? `Die Endpunkte sind A(${a[0]}|${a[1]}) und B(${b[0]}|${b[1]}). Länge = √((${b[0]}−${a[0]})² + (${b[1]}−${a[1]})²) = ${len} cm.`
-            : `Mit dem Maßstab (1 Einheit = 1 cm) misst man die Strecke AB: Länge = ${len} cm.`,
+          explanation: `Die Endpunkte sind A(${a[0]}|${a[1]}) und B(${b[0]}|${b[1]}). Länge = √((${b[0]}−${a[0]})² + (${b[1]}−${a[1]})²) = ${len} cm.`,
         }),
         visualContent: svg,
       }
     },
-    // Variant 2: Two segments — which is longer?
+    // Variant 2: Two segments on grid — which is longer?
     (rng: Rng) => {
       let lenAB = randInt(rng, 2, 6)
       let lenCD = randInt(rng, 2, 6)
       if (lenAB === lenCD) lenCD = lenAB === 6 ? 5 : lenAB + 1
       const longer = lenAB > lenCD ? 'AB' : 'CD'
-      const svg = generateSegmentSvg({
+      const ay = randInt(rng, 5, 7)
+      const cy = randInt(rng, 1, 3)
+      const svg = generateSegmentsOnGridSvg({
         segments: [
-          { a: [0, 2], b: [lenAB, 2], labelA: 'A', labelB: 'B' },
-          { a: [0, 0], b: [lenCD, 0], labelA: 'C', labelB: 'D' },
+          { a: [1, ay], b: [1 + lenAB, ay], labelA: 'A', labelB: 'B' },
+          { a: [1, cy], b: [1 + lenCD, cy], labelA: 'C', labelB: 'D' },
         ],
-        showLabel: false,
-        showScaleBar: true,
+        showSegments: true,
+        showLengthLabels: false,
+        xRange: [-1, 9],
+        yRange: [-1, 9],
       })
-      return {
-        ...textTask({
-          question: 'Welche Strecke ist länger: AB oder CD?',
-          accepted: [longer, longer.toLowerCase()],
-          solution: longer,
-          explanation: `AB ist ${lenAB} cm lang, CD ist ${lenCD} cm lang. Also ist ${longer} länger.`,
-        }),
+      return choicePickTask({
+        question: 'Welche Strecke ist länger? (1 Kästchen = 1 cm)',
+        choices: ['AB', 'CD'],
+        correct: longer,
+        solution: longer,
+        explanation: `AB ist ${lenAB} cm lang, CD ist ${lenCD} cm lang. Also ist ${longer} länger.`,
         visualContent: svg,
-      }
+        instruction: 'Tippe die längere Strecke:',
+      })
     },
     // Variant 3: Text — horizontal/vertical distance described in words
     (rng: Rng) => {
@@ -1876,13 +1892,16 @@ const streckenMittelpunkt: Topic = {
     url: 'https://de.wikipedia.org/wiki/Mittelpunkt',
   },
   generate: mixedVariants(
-    // Variant 1: Visual — A,B on grid, midpoint unmarked
+    // Variant 1: Visual — keep both endpoints inside the drawn grid
     (rng: Rng) => {
-      // Prefer even sums so midpoint has integer coords
-      const ax = randInt(rng, 0, 4)
-      const ay = randInt(rng, 0, 4)
-      const bx = ax + 2 * randInt(rng, 1, 3)
-      const by = ay + (rng() < 0.4 ? 0 : 2 * randInt(rng, 0, 2))
+      const xMax = 8
+      const yMax = 8
+      const halfDx = randInt(rng, 1, 3)
+      const halfDy = rng() < 0.4 ? 0 : randInt(rng, 0, 2)
+      const ax = randInt(rng, 0, xMax - 2 * halfDx)
+      const ay = randInt(rng, 0, yMax - 2 * halfDy)
+      const bx = ax + 2 * halfDx
+      const by = ay + 2 * halfDy
       const mx = (ax + bx) / 2
       const my = (ay + by) / 2
       const svg = generateSegmentsOnGridSvg({
@@ -1929,6 +1948,8 @@ const LINE_KIND_LABEL: Record<LineFigureKind, string> = {
   gerade: 'Gerade',
 }
 
+const LINE_KIND_CHOICES = ['Strecke', 'Halbgerade', 'Gerade']
+
 const streckenBezeichnung: Topic = {
   id: 'lb3-strecken-bezeichnung',
   title: 'Strecke, Gerade und Halbgerade',
@@ -1941,32 +1962,27 @@ const streckenBezeichnung: Topic = {
     url: 'https://de.wikipedia.org/wiki/Gerade',
   },
   generate: mixedVariants(
-    // Variant 1: Identify from diagram
+    // Variant 1: Identify from diagram — tippen
     (rng: Rng) => {
       const kind = pick(rng, ['strecke', 'halbgerade', 'gerade'] as LineFigureKind[])
       const svg = generateRayOrLineSvg({ kind })
       const solution = LINE_KIND_LABEL[kind]
-      const accepted =
-        kind === 'halbgerade'
-          ? ['halbgerade', 'strahl', 'halb-gerade']
-          : [solution.toLowerCase()]
-      return {
-        ...textTask({
-          question:
-            'Was zeigt die Abbildung? Antworte mit Strecke, Gerade oder Halbgerade.',
-          accepted,
-          solution,
-          explanation:
-            kind === 'strecke'
-              ? 'Die Figur ist zwischen A und B begrenzt — das ist eine Strecke.'
-              : kind === 'halbgerade'
-                ? 'Die Figur beginnt bei A und geht durch B mit Pfeil weiter — das ist eine Halbgerade (Strahl).'
-                : 'Die Figur geht in beide Richtungen mit Pfeilen weiter — das ist eine Gerade.',
-        }),
+      return choicePickTask({
+        question: 'Was zeigt die Abbildung?',
+        choices: LINE_KIND_CHOICES,
+        correct: solution,
+        solution,
+        explanation:
+          kind === 'strecke'
+            ? 'Die Figur ist zwischen A und B begrenzt — das ist eine Strecke.'
+            : kind === 'halbgerade'
+              ? 'Die Figur beginnt bei A und geht durch B mit Pfeil weiter — das ist eine Halbgerade (Strahl).'
+              : 'Die Figur geht in beide Richtungen mit Pfeilen weiter — das ist eine Gerade.',
         visualContent: svg,
-      }
+        instruction: 'Tippe die passende Bezeichnung:',
+      })
     },
-    // Variant 2: Text definition
+    // Variant 2: Text definition — tippen
     (rng: Rng) => {
       const kind = pick(rng, ['strecke', 'halbgerade', 'gerade'] as LineFigureKind[])
       const question =
@@ -1976,15 +1992,13 @@ const streckenBezeichnung: Topic = {
             ? 'Wie heißt eine Linie, die bei einem Punkt beginnt und in eine Richtung unbegrenzt weitergeht?'
             : 'Wie heißt eine Linie, die in beide Richtungen unbegrenzt verläuft?'
       const solution = LINE_KIND_LABEL[kind]
-      const accepted =
-        kind === 'halbgerade'
-          ? ['halbgerade', 'strahl', 'halb-gerade']
-          : [solution.toLowerCase()]
-      return textTask({
+      return choicePickTask({
         question,
-        accepted,
+        choices: LINE_KIND_CHOICES,
+        correct: solution,
         solution,
         explanation: `Die gesuchte Bezeichnung ist: ${solution}.`,
+        instruction: 'Tippe die passende Bezeichnung:',
       })
     },
   ),

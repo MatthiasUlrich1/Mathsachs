@@ -327,6 +327,12 @@ describe('geometrySvg', () => {
       expect(svg).not.toContain('<polyline')
       expect(svg).toContain('90°')
     })
+
+    it('rotates the figure when startAngle is set', () => {
+      const a = generateAngleSvg({ angle: 90, startAngle: 0 })
+      const b = generateAngleSvg({ angle: 90, startAngle: 45 })
+      expect(a).not.toBe(b)
+    })
   })
 
   describe('generateCrossingLinesSvg', () => {

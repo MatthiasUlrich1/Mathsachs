@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { createRng, timeSeed } from '../lib/rng'
 import type { Task, Topic } from '../curriculum/types'
+import { buildUniqueTaskRound } from '../curriculum/uniqueRound'
 
 interface Props {
   topic: Topic
@@ -17,7 +18,7 @@ export function Worksheet({ topic, areaTitle, gradeTitle, onExit }: Props) {
 
   const tasks = useMemo<Task[]>(() => {
     const rng = createRng(seed)
-    return Array.from({ length: count }, () => topic.generate(rng))
+    return buildUniqueTaskRound(topic.generate, rng, count)
   }, [topic, count, seed])
 
   return (

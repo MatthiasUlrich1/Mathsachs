@@ -1,6 +1,6 @@
 # Testcheckliste: Grafische & interaktive Aufgaben
 
-Stand: v0.26.1 — Klasse für Klasse abhaken. Kommentarzeile für Notizen.
+Stand: v0.26.2 — Klasse für Klasse abhaken. Kommentarzeile für Notizen.
 
 Legende: **SVG/Grafik** = Diagramm; Widgets: Zahlenstrahl, Drag&Drop, DigitGrid, Auswahl tippen, Mehrfachauswahl, Punkt setzen, Schieberegler.
 
@@ -68,23 +68,23 @@ Legende: **SVG/Grafik** = Diagramm; Widgets: Zahlenstrahl, Drag&Drop, DigitGrid,
 
 - [ ] **Winkelarten erkennen**  
   *Lagebeziehungen geometrischer Objekte* · `lb3-winkelarten` · SVG/Grafik · Auswahl tippen  
-  Kommentar: oft gleiche aufgeaben hintereinander__bitte verhindern!_____________________________________________
+  Kommentar: [behoben] Rotation + Unique-Round / Übungsblatt ohne Duplikate
 
 - [ ] **Winkel zu 90° oder 180° ergänzen**  
   *Lagebeziehungen geometrischer Objekte* · `lb3-winkel-ergaenzung` · SVG/Grafik  
-  Kommentar: _______________________Klarere Aufgabenstellung ! von 90 oder 180 abziehen???________________________
+  Kommentar: [behoben] Klare Rechnung „90°/180° − … = ?“
 
 - [ ] **Länge von Strecken**  
   *Lagebeziehungen geometrischer Objekte* · `lb3-strecken-laenge` · SVG/Grafik  
-  Kommentar: machmal fehlt kästchen papier! _______________________________________________
+  Kommentar: [behoben] Immer Kästchenpapier
 
 - [ ] **Mittelpunkt einer Strecke**  
   *Lagebeziehungen geometrischer Objekte* · `lb3-strecken-mittelpunkt` · SVG/Grafik  
-  Kommentar: Strecke geht machmal über Koordiatensystemrand hinaus!_______________________________________________
+  Kommentar: [behoben] Endpunkte bleiben im Raster
 
 - [ ] **Strecke, Gerade und Halbgerade**  
-  *Lagebeziehungen geometrischer Objekte* · `lb3-strecken-bezeichnung` · SVG/Grafik  
-  Kommentar: B_______________________________________________
+  *Lagebeziehungen geometrischer Objekte* · `lb3-strecken-bezeichnung` · SVG/Grafik · Auswahl tippen  
+  Kommentar: [behoben] Lösung tippbar
 
 - [ ] **Verschiebung von Figuren**  
   *Lagebeziehungen geometrischer Objekte* · `lb3-verschiebung` · SVG/Grafik  

@@ -853,6 +853,11 @@ export interface AngleSvgProps {
   fill?: string
   /** Optional stroke color */
   stroke?: string
+  /**
+   * Direction of the first ray in degrees (0 = east, counter-clockwise).
+   * Rotates the figure so identical angles look different.
+   */
+  startAngle?: number
 }
 
 /**
@@ -865,27 +870,34 @@ export function generateAngleSvg({
   showArc = true,
   fill = '#fff3e0',
   stroke = '#f57c00',
+  startAngle = 0,
 }: AngleSvgProps): string {
   const padding = 40
-  const rayLength = 180
+  const rayLength = 160
   const totalSize = rayLength + 2 * padding
 
-  const cx = padding + 30
-  const cy = padding + rayLength - 30
+  const cx = totalSize / 2
+  const cy = totalSize / 2
 
-  const ray1End = [cx + rayLength, cy]
+  const startRad = (startAngle * Math.PI) / 180
   const angleRad = (angle * Math.PI) / 180
+  const endRad = startRad + angleRad
+
+  const ray1End = [
+    cx + rayLength * Math.cos(startRad),
+    cy - rayLength * Math.sin(startRad),
+  ]
   const ray2End = [
-    cx + rayLength * Math.cos(angleRad),
-    cy - rayLength * Math.sin(angleRad),
+    cx + rayLength * Math.cos(endRad),
+    cy - rayLength * Math.sin(endRad),
   ]
 
-  const u: [number, number] = [1, 0]
-  const v: [number, number] = [Math.cos(angleRad), -Math.sin(angleRad)]
-  // Point inside the drawn angle (along the bisector)
+  const u: [number, number] = [Math.cos(startRad), -Math.sin(startRad)]
+  const v: [number, number] = [Math.cos(endRad), -Math.sin(endRad)]
+  const midRad = startRad + angleRad / 2
   const interior: [number, number] = [
-    cx + Math.cos(angleRad / 2) * 40,
-    cy - Math.sin(angleRad / 2) * 40,
+    cx + Math.cos(midRad) * 40,
+    cy - Math.sin(midRad) * 40,
   ]
 
   const markSvg = showArc
@@ -897,8 +909,8 @@ export function generateAngleSvg({
       })
     : ''
 
-  const labelX = cx + Math.cos(angleRad / 2) * 78
-  const labelY = cy - Math.sin(angleRad / 2) * 78
+  const labelX = cx + Math.cos(midRad) * 78
+  const labelY = cy - Math.sin(midRad) * 78
 
   return `
 <svg width="${totalSize}" height="${totalSize}" xmlns="http://www.w3.org/2000/svg">

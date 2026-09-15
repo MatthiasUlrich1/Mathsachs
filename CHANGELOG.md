@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.26.2] – 2026-09-15
+
+### Behoben
+- **K5 Lagebeziehungen**: Winkelarten ohne Wiederholungen (Rotation + Unique-Round im
+  Übungsblatt); Ergänzungswinkel mit klarer Rechnung „90°/180° − …“; Streckenlänge immer
+  auf Kästchenpapier; Mittelpunkt-Strecken bleiben im Raster; Strecke/Gerade/Halbgerade
+  per Tippen wählbar.
+
 ## [0.26.1] – 2026-09-15
 
 ### Behoben
