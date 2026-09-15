@@ -1,6 +1,9 @@
 import { pick, randInt, type Rng } from '../lib/rng'
 import {
   generateCuboidSvg,
+  generateFractionBarSvg,
+  generateFractionCircleSvg,
+  generateFractionGridSvg,
   generatePrismVolumeSvg,
   generateQuadAnglesSvg,
   generateRectangleSvg,
@@ -19,9 +22,30 @@ import {
   type Fraction,
 } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
-import { fractionTask, mixedVariants, textTask, valueTask, visualTask } from './taskHelpers'
+import {
+  dragDropSortTask,
+  fractionTask,
+  mixedVariants,
+  numberLineTask,
+  textTask,
+  valueTask,
+  visualTask,
+} from './taskHelpers'
 import { conversionTopic, FLAECHE, LAENGE } from './units'
 import type { Grade, Topic } from './types'
+
+/** Side-by-side fraction diagrams for comparison tasks. */
+function twoFractionVisual(a: Fraction, b: Fraction, kind: 'circle' | 'bar'): string {
+  const left =
+    kind === 'circle'
+      ? generateFractionCircleSvg({ numerator: a.n, denominator: a.d })
+      : generateFractionBarSvg({ numerator: a.n, denominator: a.d })
+  const right =
+    kind === 'circle'
+      ? generateFractionCircleSvg({ numerator: b.n, denominator: b.d, fillColor: '#e67e22' })
+      : generateFractionBarSvg({ numerator: b.n, denominator: b.d, fillColor: '#e67e22' })
+  return `<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center">${left}<span style="font-size:1.6rem;font-weight:700;color:#64748b">?</span>${right}</div>`
+}
 
 // ---------------------------------------------------------------------------
 // Lernbereich 1 — Arbeiten mit gebrochenen Zahlen
@@ -38,20 +62,56 @@ const kuerzen: Topic = {
     quelle: 'Wikipedia: Bruchrechnung',
     url: 'https://de.wikipedia.org/wiki/Bruchrechnung',
   },
-  generate: (rng: Rng) => {
-    const base = makeFraction(randInt(rng, 1, 8), randInt(rng, 2, 9))
-    const k = randInt(rng, 2, 6)
-    const n = base.n * k
-    const d = base.d * k
-    const g = gcd(n, d)
-    return fractionTask({
-      question: `Kürze den Bruch ${n}/${d} vollständig.`,
-      value: base,
-      requireReduced: true,
-      solution: `${base.n}/${base.d}`,
-      explanation: `Zähler und Nenner haben den größten gemeinsamen Teiler ${g}. Teile beide durch ${g}: ${n} : ${g} = ${base.n} und ${d} : ${g} = ${base.d}, also ${base.n}/${base.d}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const base = makeFraction(randInt(rng, 1, 8), randInt(rng, 2, 9))
+      const k = randInt(rng, 2, 6)
+      const n = base.n * k
+      const d = base.d * k
+      const g = gcd(n, d)
+      return fractionTask({
+        question: `Kürze den Bruch ${n}/${d} vollständig.`,
+        value: base,
+        requireReduced: true,
+        solution: `${base.n}/${base.d}`,
+        explanation: `Zähler und Nenner haben den größten gemeinsamen Teiler ${g}. Teile beide durch ${g}: ${n} : ${g} = ${base.n} und ${d} : ${g} = ${base.d}, also ${base.n}/${base.d}.`,
+      })
+    },
+    (rng: Rng) => {
+      const base = makeFraction(randInt(rng, 1, 5), randInt(rng, 2, 8))
+      const k = randInt(rng, 2, 4)
+      const n = base.n * k
+      const d = base.d * k
+      const g = gcd(n, d)
+      return {
+        ...fractionTask({
+          question: 'Welcher gekürzte Bruchanteil ist im Kreisdiagramm eingefärbt?',
+          value: base,
+          requireReduced: true,
+          solution: `${base.n}/${base.d}`,
+          explanation: `${n} von ${d} Teilen sind eingefärbt (= ${n}/${d}). Mit ggT ${g} gekürzt: ${base.n}/${base.d}.`,
+        }),
+        visualContent: generateFractionCircleSvg({ numerator: n, denominator: d }),
+      }
+    },
+    (rng: Rng) => {
+      const base = makeFraction(randInt(rng, 1, 5), randInt(rng, 2, 8))
+      const k = randInt(rng, 2, 4)
+      const n = base.n * k
+      const d = base.d * k
+      const g = gcd(n, d)
+      return {
+        ...fractionTask({
+          question: 'Welcher gekürzte Bruchanteil ist im Balken eingefärbt?',
+          value: base,
+          requireReduced: true,
+          solution: `${base.n}/${base.d}`,
+          explanation: `${n} von ${d} Abschnitten sind eingefärbt (= ${n}/${d}). Mit ggT ${g} gekürzt: ${base.n}/${base.d}.`,
+        }),
+        visualContent: generateFractionBarSvg({ numerator: n, denominator: d }),
+      }
+    },
+  ),
 }
 
 const erweitern: Topic = {
@@ -90,20 +150,61 @@ const vergleichen: Topic = {
     quelle: 'Wikipedia: Bruchrechnung',
     url: 'https://de.wikipedia.org/wiki/Bruchrechnung',
   },
-  generate: (rng: Rng) => {
-    const a = makeFraction(randInt(rng, 1, 9), randInt(rng, 2, 9))
-    const b = makeFraction(randInt(rng, 1, 9), randInt(rng, 2, 9))
-    const cmp = a.n * b.d - b.n * a.d
-    const symbol = cmp < 0 ? '<' : cmp > 0 ? '>' : '='
-    const left = a.n * b.d
-    const right = b.n * a.d
-    return textTask({
-      question: `Vergleiche: ${format(a)} ___ ${format(b)}`,
-      accepted: [symbol],
-      solution: symbol,
-      explanation: `Bringe beide Brüche auf den gemeinsamen Nenner ${a.d * b.d}: ${format(a)} = ${left}/${a.d * b.d} und ${format(b)} = ${right}/${a.d * b.d}. Da ${left} ${symbol} ${right}, gilt ${format(a)} ${symbol} ${format(b)}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const a = makeFraction(randInt(rng, 1, 9), randInt(rng, 2, 9))
+      const b = makeFraction(randInt(rng, 1, 9), randInt(rng, 2, 9))
+      const cmp = a.n * b.d - b.n * a.d
+      const symbol = cmp < 0 ? '<' : cmp > 0 ? '>' : '='
+      const left = a.n * b.d
+      const right = b.n * a.d
+      return textTask({
+        question: `Vergleiche: ${format(a)} ___ ${format(b)}`,
+        accepted: [symbol],
+        solution: symbol,
+        explanation: `Bringe beide Brüche auf den gemeinsamen Nenner ${a.d * b.d}: ${format(a)} = ${left}/${a.d * b.d} und ${format(b)} = ${right}/${a.d * b.d}. Da ${left} ${symbol} ${right}, gilt ${format(a)} ${symbol} ${format(b)}.`,
+      })
+    },
+    (rng: Rng) => {
+      const a = makeFraction(randInt(rng, 1, 7), randInt(rng, 2, 8))
+      const b = makeFraction(randInt(rng, 1, 7), randInt(rng, 2, 8))
+      const cmp = a.n * b.d - b.n * a.d
+      const symbol = cmp < 0 ? '<' : cmp > 0 ? '>' : '='
+      return {
+        ...textTask({
+          question: 'Vergleiche die beiden dargestellten Bruchanteile. Gib <, > oder = ein.',
+          accepted: [symbol],
+          solution: symbol,
+          explanation: `${format(a)} ${symbol} ${format(b)}, weil ${a.n * b.d} ${symbol} ${b.n * a.d} bei gemeinsamem Nenner ${a.d * b.d}.`,
+        }),
+        visualContent: twoFractionVisual(a, b, pick(rng, ['circle', 'bar'] as const)),
+      }
+    },
+    (rng: Rng) => {
+      const items = [
+        makeFraction(randInt(rng, 1, 5), randInt(rng, 2, 8)),
+        makeFraction(randInt(rng, 1, 5), randInt(rng, 2, 8)),
+        makeFraction(randInt(rng, 1, 5), randInt(rng, 2, 8)),
+      ].map((f) => ({ label: format(f), value: toDecimal(f) }))
+      // Ensure distinct labels for drag-drop UX
+      const unique = new Map<string, { label: string; value: number }>()
+      for (const item of items) unique.set(item.label, item)
+      while (unique.size < 3) {
+        const f = makeFraction(randInt(rng, 1, 6), randInt(rng, 2, 9))
+        unique.set(format(f), { label: format(f), value: toDecimal(f) })
+      }
+      const list = [...unique.values()].slice(0, 3)
+      const sorted = [...list].sort((x, y) => x.value - y.value)
+      const correctOrder = sorted.map((s) => list.findIndex((i) => i.label === s.label))
+      return dragDropSortTask({
+        question: 'Ordne die Brüche der Größe nach (kleinster zuerst):',
+        items: list,
+        correctOrder,
+        solution: sorted.map((i) => i.label).join(' < '),
+        explanation: `Als Dezimalzahlen: ${list.map((i) => `${i.label} ≈ ${formatDe(roundTo(i.value, 3))}`).join(', ')}. Sortiert: ${sorted.map((i) => i.label).join(' < ')}.`,
+      })
+    },
+  ),
 }
 
 const addSubBrueche: Topic = {
@@ -117,22 +218,59 @@ const addSubBrueche: Topic = {
     quelle: 'Wikipedia: Bruchrechnung',
     url: 'https://de.wikipedia.org/wiki/Bruchrechnung',
   },
-  generate: (rng: Rng) => {
-    const a = makeFraction(randInt(rng, 1, 6), randInt(rng, 2, 8))
-    const b = makeFraction(randInt(rng, 1, 6), randInt(rng, 2, 8))
-    // Subtract only when a >= b, otherwise add — keeps results non-negative.
-    const doAdd = rng() < 0.5 || a.n * b.d < b.n * a.d
-    const result: Fraction = doAdd ? add(a, b) : subtract(a, b)
-    const op = doAdd ? '+' : '−'
-    const common = a.d * b.d
-    const numResult = doAdd ? a.n * b.d + b.n * a.d : a.n * b.d - b.n * a.d
-    return fractionTask({
-      question: `Berechne: ${format(a)} ${op} ${format(b)}`,
-      value: result,
-      solution: format(result),
-      explanation: `Gemeinsamer Nenner ist ${common}: ${format(a)} = ${a.n * b.d}/${common} und ${format(b)} = ${b.n * a.d}/${common}. Dann ${op === '+' ? 'addiere' : 'subtrahiere'} die Zähler: ${a.n * b.d} ${op} ${b.n * a.d} = ${numResult}. Ergebnis gekürzt: ${format(result)}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const a = makeFraction(randInt(rng, 1, 6), randInt(rng, 2, 8))
+      const b = makeFraction(randInt(rng, 1, 6), randInt(rng, 2, 8))
+      const doAdd = rng() < 0.5 || a.n * b.d < b.n * a.d
+      const result: Fraction = doAdd ? add(a, b) : subtract(a, b)
+      const op = doAdd ? '+' : '−'
+      const common = a.d * b.d
+      const numResult = doAdd ? a.n * b.d + b.n * a.d : a.n * b.d - b.n * a.d
+      return fractionTask({
+        question: `Berechne: ${format(a)} ${op} ${format(b)}`,
+        value: result,
+        solution: format(result),
+        explanation: `Gemeinsamer Nenner ist ${common}: ${format(a)} = ${a.n * b.d}/${common} und ${format(b)} = ${b.n * a.d}/${common}. Dann ${op === '+' ? 'addiere' : 'subtrahiere'} die Zähler: ${a.n * b.d} ${op} ${b.n * a.d} = ${numResult}. Ergebnis gekürzt: ${format(result)}.`,
+      })
+    },
+    (rng: Rng) => {
+      // Same denominator so visual bars/grid are easy to combine mentally
+      const d = pick(rng, [4, 5, 6, 8, 10])
+      const aN = randInt(rng, 1, d - 2)
+      const bN = randInt(rng, 1, d - aN)
+      const a = makeFraction(aN, d)
+      const b = makeFraction(bN, d)
+      const result = add(a, b)
+      return {
+        ...fractionTask({
+          question: 'Addiere die beiden dargestellten Bruchanteile. Gib den gekürzten Bruch an.',
+          value: result,
+          solution: format(result),
+          explanation: `Gleicher Nenner ${d}: ${format(a)} + ${format(b)} = ${aN + bN}/${d}. Gekürzt: ${format(result)}.`,
+        }),
+        visualContent: twoFractionVisual(a, b, pick(rng, ['bar', 'circle'] as const)),
+      }
+    },
+    (rng: Rng) => {
+      const d = pick(rng, [4, 6, 8, 10, 12])
+      const aN = randInt(rng, 2, d - 1)
+      const bN = randInt(rng, 1, aN - 1)
+      const a = makeFraction(aN, d)
+      const b = makeFraction(bN, d)
+      const result = subtract(a, b)
+      const cols = d === 12 ? 4 : d === 6 ? 3 : 4
+      return {
+        ...fractionTask({
+          question: 'Subtrahiere: linker Anteil minus rechter Anteil. Gib den gekürzten Bruch an.',
+          value: result,
+          solution: format(result),
+          explanation: `${format(a)} − ${format(b)} = ${aN - bN}/${d}. Gekürzt: ${format(result)}.`,
+        }),
+        visualContent: `<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center">${generateFractionGridSvg({ numerator: aN, denominator: d, cols })}<span style="font-size:1.6rem;font-weight:700;color:#64748b">−</span>${generateFractionGridSvg({ numerator: bN, denominator: d, cols, fillColor: '#e67e22' })}</div>`,
+      }
+    },
+  ),
 }
 
 const multBrueche: Topic = {
@@ -194,19 +332,54 @@ const bruchZuDezimal: Topic = {
     quelle: 'Wikipedia: Dezimalbruch',
     url: 'https://de.wikipedia.org/wiki/Dezimalbruch',
   },
-  generate: (rng: Rng) => {
-    const denom = pick(rng, [2, 4, 5, 8, 10, 20, 25])
-    const n = randInt(rng, 1, denom - 1)
-    const f = makeFraction(n, denom)
-    const value = toDecimal(f)
-    return valueTask({
-      question: `Wandle den Bruch ${format(f)} in eine Dezimalzahl um.`,
-      answerKind: 'decimal',
-      value,
-      solution: formatDe(value),
-      explanation: `${format(f)} bedeutet ${f.n} : ${f.d}. Erweitere auf einen Zehnerbruch oder dividiere: ${f.n} : ${f.d} = ${formatDe(value)}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const denom = pick(rng, [2, 4, 5, 8, 10, 20, 25])
+      const n = randInt(rng, 1, denom - 1)
+      const f = makeFraction(n, denom)
+      const value = toDecimal(f)
+      return valueTask({
+        question: `Wandle den Bruch ${format(f)} in eine Dezimalzahl um.`,
+        answerKind: 'decimal',
+        value,
+        solution: formatDe(value),
+        explanation: `${format(f)} bedeutet ${f.n} : ${f.d}. Erweitere auf einen Zehnerbruch oder dividiere: ${f.n} : ${f.d} = ${formatDe(value)}.`,
+      })
+    },
+    (rng: Rng) => {
+      const denom = pick(rng, [2, 4, 5, 8, 10])
+      const n = randInt(rng, 1, denom - 1)
+      const f = makeFraction(n, denom)
+      const value = toDecimal(f)
+      return numberLineTask({
+        question: `Markiere den Wert von ${format(f)} auf dem Zahlenstrahl.`,
+        min: 0,
+        max: 1,
+        step: 0.05,
+        value,
+        decimals: 2,
+        solution: formatDe(value),
+        explanation: `${format(f)} = ${f.n} : ${f.d} = ${formatDe(value)}.`,
+        eps: 0.03,
+      })
+    },
+    (rng: Rng) => {
+      const denom = pick(rng, [4, 5, 8, 10])
+      const n = randInt(rng, 1, denom - 1)
+      const f = makeFraction(n, denom)
+      const value = toDecimal(f)
+      return {
+        ...valueTask({
+          question: 'Welcher Dezimalwert entspricht dem eingefärbten Anteil?',
+          answerKind: 'decimal',
+          value,
+          solution: formatDe(value),
+          explanation: `${n}/${denom} = ${formatDe(value)}.`,
+        }),
+        visualContent: generateFractionBarSvg({ numerator: n, denominator: denom }),
+      }
+    },
+  ),
 }
 
 const prozentUmwandeln: Topic = {
@@ -220,8 +393,8 @@ const prozentUmwandeln: Topic = {
     quelle: 'Wikipedia: Prozentrechnung',
     url: 'https://de.wikipedia.org/wiki/Prozentrechnung',
   },
-  generate: (rng: Rng) => {
-    if (rng() < 0.5) {
+  generate: mixedVariants(
+    (rng: Rng) => {
       const denom = pick(rng, [2, 4, 5, 10, 20, 25, 50])
       const n = randInt(rng, 1, denom - 1)
       const f = makeFraction(n, denom)
@@ -234,18 +407,48 @@ const prozentUmwandeln: Topic = {
         solution: `${formatDe(value)} %`,
         explanation: `Prozent bedeutet „von hundert". Erweitere ${format(f)} so, dass der Nenner 100 wird, oder rechne ${format(f)} · 100 = ${formatDe(value)} %.`,
       })
-    }
-    const value = randInt(rng, 1, 99)
-    const dec = value / 100
-    return valueTask({
-      question: `Wie viel Prozent ist die Dezimalzahl ${formatDe(dec)}?`,
-      unit: '%',
-      answerKind: 'decimal',
-      value,
-      solution: `${value} %`,
-      explanation: `Multipliziere die Dezimalzahl mit 100: ${formatDe(dec)} · 100 = ${value} %.`,
-    })
-  },
+    },
+    (rng: Rng) => {
+      const value = randInt(rng, 1, 99)
+      const dec = value / 100
+      return valueTask({
+        question: `Wie viel Prozent ist die Dezimalzahl ${formatDe(dec)}?`,
+        unit: '%',
+        answerKind: 'decimal',
+        value,
+        solution: `${value} %`,
+        explanation: `Multipliziere die Dezimalzahl mit 100: ${formatDe(dec)} · 100 = ${value} %.`,
+      })
+    },
+    (rng: Rng) => {
+      const denom = pick(rng, [4, 5, 8, 10, 20])
+      const n = randInt(rng, 1, denom - 1)
+      const value = roundTo((n / denom) * 100, 2)
+      return visualTask({
+        question: 'Wie viel Prozent des Kreises sind eingefärbt?',
+        unit: '%',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} %`,
+        explanation: `${n} von ${denom} Sektoren = ${n}/${denom} = ${formatDe(value)} %.`,
+        visualContent: generateFractionCircleSvg({ numerator: n, denominator: denom }),
+      })
+    },
+    (rng: Rng) => {
+      const denom = pick(rng, [4, 5, 8, 10, 20])
+      const n = randInt(rng, 1, denom - 1)
+      const value = roundTo((n / denom) * 100, 2)
+      return visualTask({
+        question: 'Wie viel Prozent des Streifens sind eingefärbt?',
+        unit: '%',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} %`,
+        explanation: `${n} von ${denom} Abschnitten = ${formatDe(value)} %.`,
+        visualContent: generateFractionBarSvg({ numerator: n, denominator: denom }),
+      })
+    },
+  ),
 }
 
 const dezAddSub: Topic = {
@@ -476,19 +679,49 @@ const haeufigkeit: Topic = {
     quelle: 'Wikipedia: Relative Häufigkeit',
     url: 'https://de.wikipedia.org/wiki/Relative_H%C3%A4ufigkeit',
   },
-  generate: (rng: Rng) => {
-    const total = pick(rng, [10, 20, 25, 40, 50, 100])
-    const k = randInt(rng, 1, total - 1)
-    const value = roundTo((k / total) * 100, 2)
-    return valueTask({
-      question: `Bei ${total} Würfen fiel ${k}-mal eine gerade Zahl. Wie groß ist die relative Häufigkeit in Prozent?`,
-      unit: '%',
-      answerKind: 'decimal',
-      value,
-      solution: `${formatDe(value)} %`,
-      explanation: `Relative Häufigkeit = ${k} : ${total} = ${formatDe(k / total)}. In Prozent: · 100 = ${formatDe(value)} %.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const total = pick(rng, [10, 20, 25, 40, 50, 100])
+      const k = randInt(rng, 1, total - 1)
+      const value = roundTo((k / total) * 100, 2)
+      return valueTask({
+        question: `Bei ${total} Würfen fiel ${k}-mal eine gerade Zahl. Wie groß ist die relative Häufigkeit in Prozent?`,
+        unit: '%',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} %`,
+        explanation: `Relative Häufigkeit = ${k} : ${total} = ${formatDe(k / total)}. In Prozent: · 100 = ${formatDe(value)} %.`,
+      })
+    },
+    (rng: Rng) => {
+      const total = pick(rng, [4, 5, 8, 10, 20])
+      const k = randInt(rng, 1, total - 1)
+      const value = roundTo((k / total) * 100, 2)
+      return visualTask({
+        question: 'Wie groß ist die relative Häufigkeit (in %) des eingefärbten Anteils im Kreisdiagramm?',
+        unit: '%',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} %`,
+        explanation: `${k} von ${total} Sektoren → ${k}/${total} · 100 = ${formatDe(value)} %.`,
+        visualContent: generateFractionCircleSvg({ numerator: k, denominator: total }),
+      })
+    },
+    (rng: Rng) => {
+      const total = pick(rng, [5, 8, 10, 20])
+      const k = randInt(rng, 1, total - 1)
+      const value = roundTo((k / total) * 100, 2)
+      return visualTask({
+        question: 'Wie groß ist die relative Häufigkeit (in %) des eingefärbten Anteils im Streifendiagramm?',
+        unit: '%',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} %`,
+        explanation: `${k} von ${total} Abschnitten → ${formatDe(value)} %.`,
+        visualContent: generateFractionBarSvg({ numerator: k, denominator: total }),
+      })
+    },
+  ),
 }
 
 /** Mehrstufiger Dreisatz / Alltagsproblem */
@@ -1012,21 +1245,63 @@ const anteilVonGroesse: Topic = {
     quelle: 'Wikipedia: Bruchrechnung',
     url: 'https://de.wikipedia.org/wiki/Bruchrechnung',
   },
-  generate: (rng: Rng) => {
-    const d = pick(rng, [2, 3, 4, 5, 6, 8])
-    const n = randInt(rng, 1, d - 1)
-    const unit = pick(rng, ['kg', 'm', '€', 'Liter'])
-    const whole = d * randInt(rng, 2, 12)
-    const value = (n / d) * whole
-    return valueTask({
-      question: `Berechne ${n}/${d} von ${whole} ${unit}.`,
-      unit,
-      answerKind: 'decimal',
-      value,
-      solution: `${formatDe(value)} ${unit}`,
-      explanation: `Teile durch den Nenner und multipliziere mit dem Zähler: ${whole} : ${d} = ${whole / d}, dann · ${n} = ${formatDe(value)} ${unit}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const d = pick(rng, [2, 3, 4, 5, 6, 8])
+      const n = randInt(rng, 1, d - 1)
+      const unit = pick(rng, ['kg', 'm', '€', 'Liter'])
+      const whole = d * randInt(rng, 2, 12)
+      const value = (n / d) * whole
+      return valueTask({
+        question: `Berechne ${n}/${d} von ${whole} ${unit}.`,
+        unit,
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} ${unit}`,
+        explanation: `Teile durch den Nenner und multipliziere mit dem Zähler: ${whole} : ${d} = ${whole / d}, dann · ${n} = ${formatDe(value)} ${unit}.`,
+      })
+    },
+    (rng: Rng) => {
+      const d = pick(rng, [2, 4, 5, 8, 10])
+      const n = randInt(rng, 1, d - 1)
+      const unit = pick(rng, ['kg', 'm', '€', 'Liter'])
+      const whole = d * randInt(rng, 2, 10)
+      const value = (n / d) * whole
+      return visualTask({
+        question: `Der Streifen zeigt den Anteil von ${whole} ${unit}. Wie groß ist der eingefärbte Anteil?`,
+        unit,
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} ${unit}`,
+        explanation: `${n}/${d} von ${whole} ${unit} = ${formatDe(value)} ${unit}.`,
+        visualContent: generateFractionBarSvg({
+          numerator: n,
+          denominator: d,
+          showLabel: true,
+        }),
+      })
+    },
+    (rng: Rng) => {
+      const d = pick(rng, [4, 5, 8, 10])
+      const n = randInt(rng, 1, d - 1)
+      const unit = pick(rng, ['kg', '€', 'Liter'])
+      const whole = d * randInt(rng, 3, 12)
+      const value = (n / d) * whole
+      return visualTask({
+        question: `Das Kreisdiagramm zeigt den Anteil von ${whole} ${unit}. Wie groß ist der eingefärbte Anteil?`,
+        unit,
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} ${unit}`,
+        explanation: `${n}/${d} · ${whole} = ${formatDe(value)} ${unit}.`,
+        visualContent: generateFractionCircleSvg({
+          numerator: n,
+          denominator: d,
+          showLabel: true,
+        }),
+      })
+    },
+  ),
 }
 
 const anteilProzent: Topic = {
@@ -1040,20 +1315,65 @@ const anteilProzent: Topic = {
     quelle: 'Wikipedia: Prozentrechnung',
     url: 'https://de.wikipedia.org/wiki/Prozentrechnung',
   },
-  generate: (rng: Rng) => {
-    const percent = pick(rng, [10, 20, 25, 50, 75, 5])
-    const unit = pick(rng, ['€', 'kg', 'm', 'Liter'])
-    const whole = pick(rng, [20, 40, 50, 60, 80, 100, 200])
-    const value = roundTo((percent / 100) * whole, 2)
-    return valueTask({
-      question: `Wie viel sind ${percent} % von ${whole} ${unit}?`,
-      unit,
-      answerKind: 'decimal',
-      value,
-      solution: `${formatDe(value)} ${unit}`,
-      explanation: `${percent} % = ${formatDe(percent / 100)}. Also ${formatDe(percent / 100)} · ${whole} ${unit} = ${formatDe(value)} ${unit}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const percent = pick(rng, [10, 20, 25, 50, 75, 5])
+      const unit = pick(rng, ['€', 'kg', 'm', 'Liter'])
+      const whole = pick(rng, [20, 40, 50, 60, 80, 100, 200])
+      const value = roundTo((percent / 100) * whole, 2)
+      return valueTask({
+        question: `Wie viel sind ${percent} % von ${whole} ${unit}?`,
+        unit,
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} ${unit}`,
+        explanation: `${percent} % = ${formatDe(percent / 100)}. Also ${formatDe(percent / 100)} · ${whole} ${unit} = ${formatDe(value)} ${unit}.`,
+      })
+    },
+    (rng: Rng) => {
+      const percent = pick(rng, [10, 20, 25, 50, 75])
+      const unit = pick(rng, ['€', 'kg', 'Liter'])
+      const whole = pick(rng, [40, 50, 80, 100, 200])
+      const value = roundTo((percent / 100) * whole, 2)
+      // Represent percent as fraction of 10 or 20 slices for a clean bar
+      const denom = percent % 10 === 0 ? 10 : 4
+      const num = Math.round((percent / 100) * denom)
+      return visualTask({
+        question: `Der Streifen zeigt ${percent} % von ${whole} ${unit}. Wie groß ist der eingefärbte Anteil?`,
+        unit,
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} ${unit}`,
+        explanation: `${percent} % von ${whole} ${unit} = ${formatDe(value)} ${unit}.`,
+        visualContent: generateFractionBarSvg({
+          numerator: num,
+          denominator: denom,
+          showLabel: true,
+        }),
+      })
+    },
+    (rng: Rng) => {
+      const percent = pick(rng, [25, 50, 75])
+      const unit = pick(rng, ['€', 'kg', 'Liter'])
+      const whole = pick(rng, [40, 80, 100, 200])
+      const value = roundTo((percent / 100) * whole, 2)
+      const denom = 4
+      const num = percent / 25
+      return visualTask({
+        question: `Das Kreisdiagramm zeigt ${percent} % von ${whole} ${unit}. Wie groß ist der eingefärbte Anteil?`,
+        unit,
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} ${unit}`,
+        explanation: `${percent} % · ${whole} = ${formatDe(value)} ${unit}.`,
+        visualContent: generateFractionCircleSvg({
+          numerator: num,
+          denominator: denom,
+          showLabel: true,
+        }),
+      })
+    },
+  ),
 }
 
 // Einheiten umrechnen — in Klasse 6 mit Schwerpunkt auf Flächeneinheiten.

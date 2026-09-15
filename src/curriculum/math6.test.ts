@@ -74,4 +74,34 @@ describe('Klasse 6 curriculum', () => {
       expect(sawVisual, `${id} should produce SVG for some seeds`).toBe(true)
     }
   })
+
+  it('emits graphics or number-line for Plan B fraction/share topics', () => {
+    const visualIds = [
+      'lb1-kuerzen',
+      'lb1-vergleichen',
+      'lb1-add-sub-brueche',
+      'lb1-bruch-dezimal',
+      'lb1-prozent',
+      'lb2-haeufigkeit',
+      'lb5-anteil-groesse',
+      'lb5-anteil-prozent',
+    ]
+    for (const id of visualIds) {
+      const topic = allTopics.find((t) => t.id === id)
+      expect(topic, id).toBeTruthy()
+      let saw = false
+      for (let seed = 1; seed <= 100; seed++) {
+        const task = topic!.generate(createRng(seed))
+        if (
+          task.visualContent?.includes('<svg') ||
+          task.interactive?.type === 'numberLine' ||
+          task.interactive?.type === 'dragDropSort'
+        ) {
+          saw = true
+          break
+        }
+      }
+      expect(saw, `${id} should produce visual/interactive for some seeds`).toBe(true)
+    }
+  })
 })

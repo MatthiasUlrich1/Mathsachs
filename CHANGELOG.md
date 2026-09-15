@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.15.0] – 2026-09-15
+
+### Neu
+- **Klasse 6 Brüche/Anteile grafisch (Plan B)**: LB1 (Kürzen, Vergleichen,
+  Add/Sub, Bruch↔Dezimal, Prozent), LB2 relative Häufigkeit und LB5 Anteile
+  mischen Text mit Kreis-/Balken-/Rasterdiagrammen, Zahlenstrahl und Drag&Drop.
+
 ## [0.14.0] – 2026-09-15
 
 ### Neu
