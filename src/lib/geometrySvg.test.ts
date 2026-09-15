@@ -10,6 +10,9 @@ import {
   generateValueTableSvg,
   generateAssignmentGraphSvg,
   generateAngleSvg,
+  generateCrossingLinesSvg,
+  generateParallelTransversalSvg,
+  generatePyramidVolumeSvg,
   generateFractionCircleSvg,
   generateFractionBarSvg,
   generateFractionGridSvg,
@@ -229,6 +232,36 @@ describe('geometrySvg', () => {
       })
       expect(svg).toContain('<polyline')
       expect(svg).toContain('90°')
+    })
+  })
+
+  describe('generateCrossingLinesSvg', () => {
+    it('marks nebenwinkel with arcs', () => {
+      const svg = generateCrossingLinesSvg({ angleDeg: 70, ask: 'neben' })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('70°')
+      expect(svg).toContain('?')
+      expect(svg).toMatch(/<path|<polyline/)
+    })
+  })
+
+  describe('generateParallelTransversalSvg', () => {
+    it('draws parallels and stufen marks', () => {
+      const svg = generateParallelTransversalSvg({ angleDeg: 55, kind: 'stufen' })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('55°')
+      expect(svg).toContain('?')
+    })
+  })
+
+  describe('generatePyramidVolumeSvg', () => {
+    it('labels base area and height', () => {
+      const svg = generatePyramidVolumeSvg({
+        baseAreaLabel: '36 cm²',
+        heightLabel: '9 cm',
+      })
+      expect(svg).toContain('G = 36 cm²')
+      expect(svg).toContain('h = 9 cm')
     })
   })
 

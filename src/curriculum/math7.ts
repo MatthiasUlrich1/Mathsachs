@@ -1,6 +1,14 @@
 import { pick, randInt, type Rng } from '../lib/rng'
+import {
+  generateCrossingLinesSvg,
+  generateCuboidSvg,
+  generateParallelTransversalSvg,
+  generatePrismVolumeSvg,
+  generatePyramidVolumeSvg,
+  generateTriangleAnglesSvg,
+} from '../lib/geometrySvg'
 import { formatDe, roundTo } from '../lib/num'
-import { valueTask } from './taskHelpers'
+import { mixedVariants, valueTask, visualTask } from './taskHelpers'
 import type { Grade, Topic } from './types'
 
 /** Format a signed integer, wrapping negatives in parentheses with a real minus. */
@@ -29,18 +37,37 @@ const nebenwinkel: Topic = {
     quelle: 'Wikipedia: Winkel',
     url: 'https://de.wikipedia.org/wiki/Winkel',
   },
-  generate: (rng: Rng) => {
-    const a = randInt(rng, 20, 160)
-    const value = 180 - a
-    return valueTask({
-      question: `Ein Winkel misst ${a}°. Wie groß ist sein Nebenwinkel?`,
-      unit: '°',
-      answerKind: 'integer',
-      value,
-      solution: `${value}°`,
-      explanation: `Nebenwinkel ergänzen sich zu 180°. Also: 180° − ${a}° = ${value}°.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const a = randInt(rng, 20, 160)
+      const value = 180 - a
+      return valueTask({
+        question: `Ein Winkel misst ${a}°. Wie groß ist sein Nebenwinkel?`,
+        unit: '°',
+        answerKind: 'integer',
+        value,
+        solution: `${value}°`,
+        explanation: `Nebenwinkel ergänzen sich zu 180°. Also: 180° − ${a}° = ${value}°.`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 25, 155)
+      const value = 180 - a
+      return visualTask({
+        question: 'Wie groß ist der mit ? markierte Nebenwinkel?',
+        unit: '°',
+        answerKind: 'integer',
+        value,
+        solution: `${value}°`,
+        explanation: `Nebenwinkel an einer Geraden: 180° − ${a}° = ${value}°.`,
+        visualContent: generateCrossingLinesSvg({
+          angleDeg: a,
+          ask: 'neben',
+          givenLabel: `${a}°`,
+        }),
+      })
+    },
+  ),
 }
 
 const scheitelwinkel: Topic = {
@@ -55,22 +82,58 @@ const scheitelwinkel: Topic = {
     quelle: 'Wikipedia: Scheitelwinkel',
     url: 'https://de.wikipedia.org/wiki/Scheitelwinkel',
   },
-  generate: (rng: Rng) => {
-    const a = randInt(rng, 20, 160)
-    const art = pick(rng, ['Scheitelwinkel', 'Stufenwinkel', 'Wechselwinkel'])
-    const zusatz =
-      art === 'Scheitelwinkel'
-        ? 'Scheitelwinkel entstehen an sich kreuzenden Geraden'
-        : `${art} entstehen an einer Geraden, die zwei Parallelen schneidet`
-    return valueTask({
-      question: `Zwei ${art} liegen vor. Der eine Winkel misst ${a}°. Wie groß ist der andere?`,
-      unit: '°',
-      answerKind: 'integer',
-      value: a,
-      solution: `${a}°`,
-      explanation: `${zusatz} und sind gleich groß. Also beträgt der gesuchte Winkel ebenfalls ${a}°.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const a = randInt(rng, 20, 160)
+      const art = pick(rng, ['Scheitelwinkel', 'Stufenwinkel', 'Wechselwinkel'])
+      const zusatz =
+        art === 'Scheitelwinkel'
+          ? 'Scheitelwinkel entstehen an sich kreuzenden Geraden'
+          : `${art} entstehen an einer Geraden, die zwei Parallelen schneidet`
+      return valueTask({
+        question: `Zwei ${art} liegen vor. Der eine Winkel misst ${a}°. Wie groß ist der andere?`,
+        unit: '°',
+        answerKind: 'integer',
+        value: a,
+        solution: `${a}°`,
+        explanation: `${zusatz} und sind gleich groß. Also beträgt der gesuchte Winkel ebenfalls ${a}°.`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 30, 150)
+      return visualTask({
+        question: 'Wie groß ist der mit ? markierte Scheitelwinkel?',
+        unit: '°',
+        answerKind: 'integer',
+        value: a,
+        solution: `${a}°`,
+        explanation: `Scheitelwinkel sind gleich groß: ${a}°.`,
+        visualContent: generateCrossingLinesSvg({
+          angleDeg: a,
+          ask: 'scheitel',
+          givenLabel: `${a}°`,
+        }),
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 35, 145)
+      const kind = pick(rng, ['stufen', 'wechsel'] as const)
+      const title = kind === 'stufen' ? 'Stufenwinkel' : 'Wechselwinkel'
+      return visualTask({
+        question: `Die Geraden g und h sind parallel. Wie groß ist der mit ? markierte ${title}?`,
+        unit: '°',
+        answerKind: 'integer',
+        value: a,
+        solution: `${a}°`,
+        explanation: `${title} an Parallelen sind gleich groß: ${a}°.`,
+        visualContent: generateParallelTransversalSvg({
+          angleDeg: a,
+          kind,
+          givenLabel: `${a}°`,
+        }),
+      })
+    },
+  ),
 }
 
 const winkelsummeVieleck: Topic = {
@@ -111,20 +174,39 @@ const basiswinkel: Topic = {
     quelle: 'Wikipedia: Gleichschenkliges Dreieck',
     url: 'https://de.wikipedia.org/wiki/Gleichschenkliges_Dreieck',
   },
-  generate: (rng: Rng) => {
-    const spitze = randInt(rng, 20, 140) * 1
-    // Ensure the apex angle keeps base angles positive and integer.
-    const apex = spitze % 2 === 0 ? spitze : spitze + 1
-    const value = (180 - apex) / 2
-    return valueTask({
-      question: `In einem gleichschenkligen Dreieck ist der Winkel an der Spitze ${apex}°. Wie groß ist jeder Basiswinkel?`,
-      unit: '°',
-      answerKind: 'integer',
-      value,
-      solution: `${value}°`,
-      explanation: `Die Winkelsumme ist 180°. Die beiden gleich großen Basiswinkel teilen sich 180° − ${apex}° = ${180 - apex}° auf: (${180 - apex}°) : 2 = ${value}°.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const spitze = randInt(rng, 20, 140) * 1
+      const apex = spitze % 2 === 0 ? spitze : spitze + 1
+      const value = (180 - apex) / 2
+      return valueTask({
+        question: `In einem gleichschenkligen Dreieck ist der Winkel an der Spitze ${apex}°. Wie groß ist jeder Basiswinkel?`,
+        unit: '°',
+        answerKind: 'integer',
+        value,
+        solution: `${value}°`,
+        explanation: `Die Winkelsumme ist 180°. Die beiden gleich großen Basiswinkel teilen sich 180° − ${apex}° = ${180 - apex}° auf: (${180 - apex}°) : 2 = ${value}°.`,
+      })
+    },
+    (rng: Rng) => {
+      const apex = pick(rng, [40, 50, 60, 70, 80, 100, 120])
+      const base = (180 - apex) / 2
+      return visualTask({
+        question: 'Gleichschenkliges Dreieck: Wie groß ist jeder Basiswinkel (markiert mit ?)?',
+        unit: '°',
+        answerKind: 'integer',
+        value: base,
+        solution: `${base}°`,
+        explanation: `Basiswinkel = (180° − ${apex}°) : 2 = ${base}°.`,
+        visualContent: generateTriangleAnglesSvg({
+          aLabel: '?',
+          bLabel: '?',
+          cLabel: `${apex}°`,
+          anglesDeg: [base, base, apex],
+        }),
+      })
+    },
+  ),
 }
 
 // ---------------------------------------------------------------------------
@@ -356,19 +438,38 @@ const volumenPrisma: Topic = {
     quelle: 'Wikipedia: Prisma (Geometrie)',
     url: 'https://de.wikipedia.org/wiki/Prisma_(Geometrie)',
   },
-  generate: (rng: Rng) => {
-    const g = randInt(rng, 6, 60)
-    const h = randInt(rng, 2, 20)
-    const value = g * h
-    return valueTask({
-      question: `Ein gerades Prisma hat die Grundfläche ${g} cm² und die Höhe ${h} cm. Berechne sein Volumen.`,
-      unit: 'cm³',
-      answerKind: 'integer',
-      value,
-      solution: `${value} cm³`,
-      explanation: `Volumen eines Prismas = Grundfläche · Höhe = ${g} cm² · ${h} cm = ${value} cm³.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const g = randInt(rng, 6, 60)
+      const h = randInt(rng, 2, 20)
+      const value = g * h
+      return valueTask({
+        question: `Ein gerades Prisma hat die Grundfläche ${g} cm² und die Höhe ${h} cm. Berechne sein Volumen.`,
+        unit: 'cm³',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm³`,
+        explanation: `Volumen eines Prismas = Grundfläche · Höhe = ${g} cm² · ${h} cm = ${value} cm³.`,
+      })
+    },
+    (rng: Rng) => {
+      const g = randInt(rng, 12, 72)
+      const h = randInt(rng, 4, 22)
+      const value = g * h
+      return visualTask({
+        question: 'Berechne das Volumen des abgebildeten Prismas (Grundfläche gegeben):',
+        unit: 'cm³',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm³`,
+        explanation: `V = G · h = ${g} · ${h} = ${value} cm³.`,
+        visualContent: generatePrismVolumeSvg({
+          baseAreaLabel: `${g} cm²`,
+          heightLabel: `${h} cm`,
+        }),
+      })
+    },
+  ),
 }
 
 const mantelPrisma: Topic = {
@@ -410,20 +511,38 @@ const volumenPyramide: Topic = {
     quelle: 'Wikipedia: Pyramide (Geometrie)',
     url: 'https://de.wikipedia.org/wiki/Pyramide_(Geometrie)',
   },
-  generate: (rng: Rng) => {
-    // Keep the base area a multiple of 3 so the volume stays an integer.
-    const g = 3 * randInt(rng, 2, 40)
-    const h = randInt(rng, 2, 18)
-    const value = (g * h) / 3
-    return valueTask({
-      question: `Eine Pyramide hat die Grundfläche ${g} cm² und die Höhe ${h} cm. Berechne ihr Volumen.`,
-      unit: 'cm³',
-      answerKind: 'integer',
-      value,
-      solution: `${value} cm³`,
-      explanation: `Volumen einer Pyramide = (1/3) · Grundfläche · Höhe = (1/3) · ${g} cm² · ${h} cm = ${g / 3} · ${h} cm³ = ${value} cm³.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const g = 3 * randInt(rng, 2, 40)
+      const h = randInt(rng, 2, 18)
+      const value = (g * h) / 3
+      return valueTask({
+        question: `Eine Pyramide hat die Grundfläche ${g} cm² und die Höhe ${h} cm. Berechne ihr Volumen.`,
+        unit: 'cm³',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm³`,
+        explanation: `Volumen einer Pyramide = (1/3) · Grundfläche · Höhe = (1/3) · ${g} cm² · ${h} cm = ${g / 3} · ${h} cm³ = ${value} cm³.`,
+      })
+    },
+    (rng: Rng) => {
+      const g = 3 * randInt(rng, 4, 30)
+      const h = randInt(rng, 3, 18)
+      const value = (g * h) / 3
+      return visualTask({
+        question: 'Berechne das Volumen der abgebildeten Pyramide:',
+        unit: 'cm³',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm³`,
+        explanation: `V = (1/3) · ${g} · ${h} = ${value} cm³.`,
+        visualContent: generatePyramidVolumeSvg({
+          baseAreaLabel: `${g} cm²`,
+          heightLabel: `${h} cm`,
+        }),
+      })
+    },
+  ),
 }
 
 const oberflaechePrisma: Topic = {
@@ -438,20 +557,41 @@ const oberflaechePrisma: Topic = {
     quelle: 'Wikipedia: Quader',
     url: 'https://de.wikipedia.org/wiki/Quader',
   },
-  generate: (rng: Rng) => {
-    const a = randInt(rng, 2, 14)
-    const b = randInt(rng, 2, 14)
-    const c = randInt(rng, 2, 14)
-    const value = 2 * (a * b + a * c + b * c)
-    return valueTask({
-      question: `Ein Quader ist ${a} cm, ${b} cm und ${c} cm groß. Berechne seinen Oberflächeninhalt.`,
-      unit: 'cm²',
-      answerKind: 'integer',
-      value,
-      solution: `${value} cm²`,
-      explanation: `Oberfläche = 2 · (a·b + a·c + b·c) = 2 · (${a * b} + ${a * c} + ${b * c}) cm² = ${value} cm².`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const a = randInt(rng, 2, 14)
+      const b = randInt(rng, 2, 14)
+      const c = randInt(rng, 2, 14)
+      const value = 2 * (a * b + a * c + b * c)
+      return valueTask({
+        question: `Ein Quader ist ${a} cm, ${b} cm und ${c} cm groß. Berechne seinen Oberflächeninhalt.`,
+        unit: 'cm²',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm²`,
+        explanation: `Oberfläche = 2 · (a·b + a·c + b·c) = 2 · (${a * b} + ${a * c} + ${b * c}) cm² = ${value} cm².`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 3, 12)
+      const b = randInt(rng, 3, 12)
+      const c = randInt(rng, 3, 12)
+      const value = 2 * (a * b + a * c + b * c)
+      return visualTask({
+        question: 'Berechne die Oberfläche des abgebildeten Quaders:',
+        unit: 'cm²',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm²`,
+        explanation: `O = 2 · (${a * b} + ${a * c} + ${b * c}) = ${value} cm².`,
+        visualContent: generateCuboidSvg({
+          lengthLabel: `${a} cm`,
+          widthLabel: `${b} cm`,
+          heightLabel: `${c} cm`,
+        }),
+      })
+    },
+  ),
 }
 
 // ---------------------------------------------------------------------------

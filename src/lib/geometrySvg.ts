@@ -2775,3 +2775,189 @@ export function generateAssignmentGraphSvg({
   return base.replace('</svg>', `  ${extras.join('\n  ')}\n</svg>`)
 }
 
+// ---------------------------------------------------------------------------
+// Klasse 7: Winkel an Geraden / Parallelen + Pyramide
+// ---------------------------------------------------------------------------
+
+export interface CrossingLinesSvgProps {
+  /** One angle at the intersection (degrees, 20–160). */
+  angleDeg: number
+  /** Which related angle is asked (?). */
+  ask: 'neben' | 'scheitel'
+  givenLabel?: string
+  askLabel?: string
+  stroke?: string
+}
+
+/**
+ * Two intersecting lines with a given angle and either the adjacent
+ * (Nebenwinkel) or opposite (Scheitelwinkel) marked with „?“.
+ * Always draws proper angle arcs.
+ */
+export function generateCrossingLinesSvg({
+  angleDeg,
+  ask,
+  givenLabel,
+  askLabel = '?',
+  stroke = '#1565c0',
+}: CrossingLinesSvgProps): string {
+  const w = 320
+  const h = 280
+  const cx = w / 2
+  const cy = h / 2
+  const len = 130
+  const a = (angleDeg * Math.PI) / 180
+  // Line 1: horizontal. Line 2: at angleDeg from +x
+  const h1 = [cx - len, cy]
+  const h2 = [cx + len, cy]
+  const d1 = [cx - len * Math.cos(a), cy + len * Math.sin(a)]
+  const d2 = [cx + len * Math.cos(a), cy - len * Math.sin(a)]
+
+  const given = givenLabel ?? `${angleDeg}°`
+  // Given angle: between +x and the upper direction of line 2 (screen: -sin)
+  const uGiven: [number, number] = [1, 0]
+  const vGiven: [number, number] = [Math.cos(a), -Math.sin(a)]
+  const givenMark = angleMarkSvg([cx, cy], uGiven, vGiven, given, {
+    radius: 34,
+    stroke: '#e65100',
+    fill: '#fff3e0',
+  })
+
+  let askMark = ''
+  if (ask === 'neben') {
+    // Adjacent on the straight line: from +x to the other side of line 2? 
+    // Neben to the given: from -direction of horizontal to vGiven? 
+    // Given is between +x and line2. Adjacent on the line is between line2 and -x.
+    const uAsk: [number, number] = [Math.cos(a), -Math.sin(a)]
+    const vAsk: [number, number] = [-1, 0]
+    askMark = angleMarkSvg([cx, cy], uAsk, vAsk, askLabel, {
+      radius: 42,
+      stroke: '#2e7d32',
+      fill: '#e8f5e9',
+    })
+  } else {
+    // Scheitel: opposite = between -x and opposite ray of line2
+    const uAsk: [number, number] = [-1, 0]
+    const vAsk: [number, number] = [-Math.cos(a), Math.sin(a)]
+    askMark = angleMarkSvg([cx, cy], uAsk, vAsk, askLabel, {
+      radius: 42,
+      stroke: '#2e7d32',
+      fill: '#e8f5e9',
+    })
+  }
+
+  return `
+<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">
+  <line x1="${h1[0]}" y1="${h1[1]}" x2="${h2[0]}" y2="${h2[1]}" stroke="${stroke}" stroke-width="2.5"/>
+  <line x1="${d1[0]}" y1="${d1[1]}" x2="${d2[0]}" y2="${d2[1]}" stroke="${stroke}" stroke-width="2.5"/>
+  <circle cx="${cx}" cy="${cy}" r="3.5" fill="${stroke}"/>
+  ${givenMark}
+  ${askMark}
+</svg>`.trim()
+}
+
+export interface ParallelTransversalSvgProps {
+  angleDeg: number
+  /** Stufen (corresponding/F) or Wechsel (alternate/Z). */
+  kind: 'stufen' | 'wechsel'
+  givenLabel?: string
+  askLabel?: string
+  stroke?: string
+}
+
+/** Two parallels cut by a transversal; mark given angle and equal Stufen/Wechsel. */
+export function generateParallelTransversalSvg({
+  angleDeg,
+  kind,
+  givenLabel,
+  askLabel = '?',
+  stroke = '#455a64',
+}: ParallelTransversalSvgProps): string {
+  const w = 340
+  const h = 300
+  const y1 = 80
+  const y2 = 220
+  const a = (Math.min(160, Math.max(20, angleDeg)) * Math.PI) / 180
+  // Direction of transversal in SVG (math angle from +x, positive = up)
+  const ux = Math.cos(a)
+  const uy = -Math.sin(a)
+  const bx = 130
+  const by = y2
+  const tx1 = bx - 170 * ux
+  const ty1 = by - 170 * uy
+  const tx2 = bx + 170 * ux
+  const ty2 = by + 170 * uy
+  // Intersection with top parallel
+  const tTop = (y1 - by) / uy
+  const tTopX = bx + tTop * ux
+
+  const given = givenLabel ?? `${angleDeg}°`
+  const uPar: [number, number] = [1, 0]
+  const uTrans: [number, number] = [ux, uy]
+  const givenMark = angleMarkSvg([bx, by], uPar, uTrans, given, {
+    radius: 32,
+    stroke: '#e65100',
+    fill: '#fff3e0',
+  })
+
+  let askMark = ''
+  if (kind === 'stufen') {
+    askMark = angleMarkSvg([tTopX, y1], [1, 0], [ux, uy], askLabel, {
+      radius: 32,
+      stroke: '#2e7d32',
+      fill: '#e8f5e9',
+    })
+  } else {
+    askMark = angleMarkSvg([tTopX, y1], [-1, 0], [-ux, -uy], askLabel, {
+      radius: 32,
+      stroke: '#2e7d32',
+      fill: '#e8f5e9',
+    })
+  }
+
+  return `
+<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">
+  <line x1="20" y1="${y1}" x2="${w - 20}" y2="${y1}" stroke="${stroke}" stroke-width="2.5"/>
+  <line x1="20" y1="${y2}" x2="${w - 20}" y2="${y2}" stroke="${stroke}" stroke-width="2.5"/>
+  <line x1="${tx1}" y1="${ty1}" x2="${tx2}" y2="${ty2}" stroke="#1565c0" stroke-width="2.5"/>
+  <text x="${w - 28}" y="${y1 - 8}" font-size="13" fill="#666">g</text>
+  <text x="${w - 28}" y="${y2 - 8}" font-size="13" fill="#666">h</text>
+  ${givenMark}
+  ${askMark}
+</svg>`.trim()
+}
+
+export interface PyramidVolumeSvgProps {
+  baseAreaLabel: string
+  heightLabel: string
+  fill?: string
+  stroke?: string
+}
+
+/** Isometric-ish square pyramid with G and h labels. */
+export function generatePyramidVolumeSvg({
+  baseAreaLabel,
+  heightLabel,
+  fill = '#fce4ec',
+  stroke = '#ad1457',
+}: PyramidVolumeSvgProps): string {
+  const w = 300
+  const h = 260
+  // Base quad (isometric)
+  const b1 = [60, 200]
+  const b2 = [200, 200]
+  const b3 = [240, 160]
+  const b4 = [100, 160]
+  const apex = [150, 40]
+  return `
+<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="${b4[0]},${b4[1]} ${b3[0]},${b3[1]} ${apex[0]},${apex[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.75"/>
+  <polygon points="${b2[0]},${b2[1]} ${b3[0]},${b3[1]} ${apex[0]},${apex[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.9"/>
+  <polygon points="${b1[0]},${b1[1]} ${b2[0]},${b2[1]} ${apex[0]},${apex[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
+  <polygon points="${b1[0]},${b1[1]} ${b2[0]},${b2[1]} ${b3[0]},${b3[1]} ${b4[0]},${b4[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.55"/>
+  <line x1="${apex[0]}" y1="${apex[1]}" x2="150" y2="180" stroke="${stroke}" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="150" y="230" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">G = ${baseAreaLabel}</text>
+  <text x="168" y="120" font-size="14" font-weight="bold" fill="#333">h = ${heightLabel}</text>
+</svg>`.trim()
+}
+

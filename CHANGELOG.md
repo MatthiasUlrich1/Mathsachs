@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.18.0] – 2026-09-15
+
+### Neu
+- **Klasse 7 Geometrie grafisch (Phase 2)**: Neben-/Scheitel-/Stufen-/Wechselwinkel
+  mit Bögen; Basiswinkel am gleichschenkligen Dreieck; Prisma, Pyramide und
+  Quader-Oberfläche mit SVG.
+
 ## [0.17.0] – 2026-09-15
 
 ### Geändert
