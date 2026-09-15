@@ -48,4 +48,30 @@ describe('Klasse 6 curriculum', () => {
       expect(a.solution).toBe(b.solution)
     }
   })
+
+  it('emits SVG visuals for LB3/LB4 geometry topics', () => {
+    const visualIds = [
+      'lb3-winkel-dreieck',
+      'lb3-winkel-viereck',
+      'lb3-umfang-rechteck',
+      'lb3-flaeche-rechteck',
+      'lb3-flaeche-dreieck',
+      'lb4-volumen-quader',
+      'lb4-oberflaeche-quader',
+      'lb4-volumen-prisma',
+    ]
+    for (const id of visualIds) {
+      const topic = allTopics.find((t) => t.id === id)
+      expect(topic, id).toBeTruthy()
+      let sawVisual = false
+      for (let seed = 1; seed <= 80; seed++) {
+        const task = topic!.generate(createRng(seed))
+        if (task.visualContent?.includes('<svg')) {
+          sawVisual = true
+          break
+        }
+      }
+      expect(sawVisual, `${id} should produce SVG for some seeds`).toBe(true)
+    }
+  })
 })

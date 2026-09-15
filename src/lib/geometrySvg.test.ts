@@ -2,8 +2,11 @@ import { describe, it, expect } from 'vitest'
 import {
   generateRectangleSvg,
   generateTriangleSvg,
+  generateTriangleAnglesSvg,
+  generateQuadAnglesSvg,
   generateCircleSvg,
   generateCuboidSvg,
+  generatePrismVolumeSvg,
   generateAngleSvg,
   generateFractionCircleSvg,
   generateFractionBarSvg,
@@ -64,6 +67,38 @@ describe('geometrySvg', () => {
     })
   })
 
+  describe('generateTriangleAnglesSvg', () => {
+    it('labels all three interior angles', () => {
+      const svg = generateTriangleAnglesSvg({
+        aLabel: '50°',
+        bLabel: '60°',
+        cLabel: '?',
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('50°')
+      expect(svg).toContain('60°')
+      expect(svg).toContain('?')
+      expect(svg).toContain('<polygon')
+    })
+  })
+
+  describe('generateQuadAnglesSvg', () => {
+    it('labels all four interior angles', () => {
+      const svg = generateQuadAnglesSvg({
+        aLabel: '80°',
+        bLabel: '100°',
+        cLabel: '90°',
+        dLabel: '?',
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('80°')
+      expect(svg).toContain('100°')
+      expect(svg).toContain('90°')
+      expect(svg).toContain('?')
+      expect(svg).toContain('<polygon')
+    })
+  })
+
   describe('generateCircleSvg', () => {
     it('generates valid SVG with radius', () => {
       const svg = generateCircleSvg({
@@ -86,6 +121,19 @@ describe('geometrySvg', () => {
       expect(svg).toContain('10 cm')
       expect(svg).toContain('6 cm')
       expect(svg).toContain('8 cm')
+      expect(svg).toContain('<polygon')
+    })
+  })
+
+  describe('generatePrismVolumeSvg', () => {
+    it('shows base area and height labels', () => {
+      const svg = generatePrismVolumeSvg({
+        baseAreaLabel: '12 cm²',
+        heightLabel: '5 cm',
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('G = 12 cm²')
+      expect(svg).toContain('h = 5 cm')
       expect(svg).toContain('<polygon')
     })
   })

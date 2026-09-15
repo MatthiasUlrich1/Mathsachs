@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.14.0] – 2026-09-15
+
+### Neu
+- **Klasse 6 Geometrie mit Grafiken (Plan A)**: LB3 (Winkel im Dreieck/Viereck,
+  Umfang und Fläche von Rechteck/Quadrat/Dreieck) und LB4 (Volumen/Oberfläche
+  Quader, Volumen Prisma) mischen Text- und SVG-Aufgaben wie in Klasse 5.
+
 ## [0.1.51] – 2026-09-14
 
 ### Behoben

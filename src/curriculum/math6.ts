@@ -1,5 +1,13 @@
 import { pick, randInt, type Rng } from '../lib/rng'
 import {
+  generateCuboidSvg,
+  generatePrismVolumeSvg,
+  generateQuadAnglesSvg,
+  generateRectangleSvg,
+  generateTriangleAnglesSvg,
+  generateTriangleSvg,
+} from '../lib/geometrySvg'
+import {
   add,
   divide,
   format,
@@ -11,7 +19,7 @@ import {
   type Fraction,
 } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
-import { fractionTask, textTask, valueTask } from './taskHelpers'
+import { fractionTask, mixedVariants, textTask, valueTask, visualTask } from './taskHelpers'
 import { conversionTopic, FLAECHE, LAENGE } from './units'
 import type { Grade, Topic } from './types'
 
@@ -527,19 +535,44 @@ const winkelDreieck: Topic = {
     quelle: 'Wikipedia: Dreieck',
     url: 'https://de.wikipedia.org/wiki/Dreieck',
   },
-  generate: (rng: Rng) => {
-    const a = randInt(rng, 30, 100)
-    const b = randInt(rng, 20, 150 - a)
-    const c = 180 - a - b
-    return valueTask({
-      question: `In einem Dreieck sind zwei Winkel ${a}° und ${b}° groß. Wie groß ist der dritte Winkel?`,
-      unit: '°',
-      answerKind: 'integer',
-      value: c,
-      solution: `${c}°`,
-      explanation: `Die Winkelsumme im Dreieck beträgt 180°. Also: 180° − ${a}° − ${b}° = ${c}°.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const a = randInt(rng, 30, 100)
+      const b = randInt(rng, 20, 150 - a)
+      const c = 180 - a - b
+      return valueTask({
+        question: `In einem Dreieck sind zwei Winkel ${a}° und ${b}° groß. Wie groß ist der dritte Winkel?`,
+        unit: '°',
+        answerKind: 'integer',
+        value: c,
+        solution: `${c}°`,
+        explanation: `Die Winkelsumme im Dreieck beträgt 180°. Also: 180° − ${a}° − ${b}° = ${c}°.`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 35, 90)
+      const b = randInt(rng, 25, 140 - a)
+      const c = 180 - a - b
+      const order = pick(rng, [
+        { a: `${a}°`, b: `${b}°`, c: '?', value: c },
+        { a: `${a}°`, b: '?', c: `${c}°`, value: b },
+        { a: '?', b: `${b}°`, c: `${c}°`, value: a },
+      ])
+      return visualTask({
+        question: 'Wie groß ist der fehlende Innenwinkel im Dreieck?',
+        unit: '°',
+        answerKind: 'integer',
+        value: order.value,
+        solution: `${order.value}°`,
+        explanation: `Winkelsumme im Dreieck = 180°. Fehlender Winkel = 180° − (bekannte Winkel) = ${order.value}°.`,
+        visualContent: generateTriangleAnglesSvg({
+          aLabel: order.a,
+          bLabel: order.b,
+          cLabel: order.c,
+        }),
+      })
+    },
+  ),
 }
 
 const winkelViereck: Topic = {
@@ -553,20 +586,52 @@ const winkelViereck: Topic = {
     quelle: 'Wikipedia: Viereck',
     url: 'https://de.wikipedia.org/wiki/Viereck',
   },
-  generate: (rng: Rng) => {
-    const a = randInt(rng, 60, 120)
-    const b = randInt(rng, 60, 120)
-    const c = randInt(rng, 40, 120)
-    const d = 360 - a - b - c
-    return valueTask({
-      question: `In einem Viereck sind drei Winkel ${a}°, ${b}° und ${c}° groß. Wie groß ist der vierte Winkel?`,
-      unit: '°',
-      answerKind: 'integer',
-      value: d,
-      solution: `${d}°`,
-      explanation: `Die Winkelsumme im Viereck beträgt 360°. Also: 360° − ${a}° − ${b}° − ${c}° = ${d}°.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const a = randInt(rng, 60, 120)
+      const b = randInt(rng, 60, 120)
+      const c = randInt(rng, 40, 120)
+      const d = 360 - a - b - c
+      return valueTask({
+        question: `In einem Viereck sind drei Winkel ${a}°, ${b}° und ${c}° groß. Wie groß ist der vierte Winkel?`,
+        unit: '°',
+        answerKind: 'integer',
+        value: d,
+        solution: `${d}°`,
+        explanation: `Die Winkelsumme im Viereck beträgt 360°. Also: 360° − ${a}° − ${b}° − ${c}° = ${d}°.`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 70, 110)
+      const b = randInt(rng, 70, 110)
+      const c = randInt(rng, 50, 110)
+      const d = 360 - a - b - c
+      if (d < 40 || d > 140) {
+        return valueTask({
+          question: `In einem Viereck sind drei Winkel ${a}°, ${b}° und ${c}° groß. Wie groß ist der vierte Winkel?`,
+          unit: '°',
+          answerKind: 'integer',
+          value: d,
+          solution: `${d}°`,
+          explanation: `Winkelsumme = 360°. 360° − ${a}° − ${b}° − ${c}° = ${d}°.`,
+        })
+      }
+      return visualTask({
+        question: 'Wie groß ist der fehlende Innenwinkel im Viereck?',
+        unit: '°',
+        answerKind: 'integer',
+        value: d,
+        solution: `${d}°`,
+        explanation: `Winkelsumme im Viereck = 360°. Fehlender Winkel = 360° − ${a}° − ${b}° − ${c}° = ${d}°.`,
+        visualContent: generateQuadAnglesSvg({
+          aLabel: `${a}°`,
+          bLabel: `${b}°`,
+          cLabel: `${c}°`,
+          dLabel: '?',
+        }),
+      })
+    },
+  ),
 }
 
 const umfangRechteck: Topic = {
@@ -580,19 +645,48 @@ const umfangRechteck: Topic = {
     quelle: 'Wikipedia: Umfang (Geometrie)',
     url: 'https://de.wikipedia.org/wiki/Umfang_(Geometrie)',
   },
-  generate: (rng: Rng) => {
-    const a = randInt(rng, 2, 20)
-    const b = randInt(rng, 2, 20)
-    const value = 2 * (a + b)
-    return valueTask({
-      question: `Ein Rechteck ist ${a} cm lang und ${b} cm breit. Berechne den Umfang.`,
-      unit: 'cm',
-      answerKind: 'integer',
-      value,
-      solution: `${value} cm`,
-      explanation: `Umfang = 2 · (Länge + Breite) = 2 · (${a} + ${b}) cm = 2 · ${a + b} cm = ${value} cm.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const square = rng() < 0.35
+      const a = randInt(rng, 3, 22)
+      const b = square ? a : randInt(rng, 3, 22)
+      const value = 2 * (a + b)
+      return valueTask({
+        question: square
+          ? `Ein Quadrat hat die Seitenlänge ${a} cm. Berechne den Umfang.`
+          : `Ein Rechteck ist ${a} cm lang und ${b} cm breit. Berechne den Umfang.`,
+        unit: 'cm',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm`,
+        explanation: square
+          ? `Umfang = 4 · ${a} cm = ${value} cm.`
+          : `Umfang = 2 · (${a} + ${b}) cm = ${value} cm.`,
+      })
+    },
+    (rng: Rng) => {
+      const square = rng() < 0.35
+      const a = randInt(rng, 4, 20)
+      const b = square ? a : randInt(rng, 4, 20)
+      const value = 2 * (a + b)
+      return visualTask({
+        question: square
+          ? 'Berechne den Umfang des abgebildeten Quadrats:'
+          : 'Berechne den Umfang des abgebildeten Rechtecks:',
+        unit: 'cm',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm`,
+        explanation: square
+          ? `Umfang = 4 · ${a} cm = ${value} cm.`
+          : `Umfang = 2 · (${a} + ${b}) cm = ${value} cm.`,
+        visualContent: generateRectangleSvg({
+          widthLabel: `${a} cm`,
+          heightLabel: `${b} cm`,
+        }),
+      })
+    },
+  ),
 }
 
 const flaecheRechteck: Topic = {
@@ -606,19 +700,48 @@ const flaecheRechteck: Topic = {
     quelle: 'Wikipedia: Flächeninhalt',
     url: 'https://de.wikipedia.org/wiki/Fl%C3%A4cheninhalt',
   },
-  generate: (rng: Rng) => {
-    const a = randInt(rng, 2, 20)
-    const b = randInt(rng, 2, 20)
-    const value = a * b
-    return valueTask({
-      question: `Ein Rechteck ist ${a} cm lang und ${b} cm breit. Berechne den Flächeninhalt.`,
-      unit: 'cm²',
-      answerKind: 'integer',
-      value,
-      solution: `${value} cm²`,
-      explanation: `Flächeninhalt = Länge · Breite = ${a} cm · ${b} cm = ${value} cm².`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const square = rng() < 0.35
+      const a = randInt(rng, 3, 22)
+      const b = square ? a : randInt(rng, 3, 22)
+      const value = a * b
+      return valueTask({
+        question: square
+          ? `Ein Quadrat hat die Seitenlänge ${a} cm. Berechne den Flächeninhalt.`
+          : `Ein Rechteck ist ${a} cm lang und ${b} cm breit. Berechne den Flächeninhalt.`,
+        unit: 'cm²',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm²`,
+        explanation: square
+          ? `Fläche = ${a} · ${a} = ${value} cm².`
+          : `Fläche = ${a} · ${b} = ${value} cm².`,
+      })
+    },
+    (rng: Rng) => {
+      const square = rng() < 0.35
+      const a = randInt(rng, 4, 18)
+      const b = square ? a : randInt(rng, 4, 18)
+      const value = a * b
+      return visualTask({
+        question: square
+          ? 'Berechne den Flächeninhalt des abgebildeten Quadrats:'
+          : 'Berechne den Flächeninhalt des abgebildeten Rechtecks:',
+        unit: 'cm²',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm²`,
+        explanation: square
+          ? `Fläche = ${a} · ${a} = ${value} cm².`
+          : `Fläche = ${a} · ${b} = ${value} cm².`,
+        visualContent: generateRectangleSvg({
+          widthLabel: `${a} cm`,
+          heightLabel: `${b} cm`,
+        }),
+      })
+    },
+  ),
 }
 
 const flaecheDreieck: Topic = {
@@ -632,19 +755,39 @@ const flaecheDreieck: Topic = {
     quelle: 'Wikipedia: Dreieck',
     url: 'https://de.wikipedia.org/wiki/Dreieck',
   },
-  generate: (rng: Rng) => {
-    const g = randInt(rng, 2, 20)
-    const h = randInt(rng, 2, 20)
-    const value = roundTo((g * h) / 2, 2)
-    return valueTask({
-      question: `Ein Dreieck hat die Grundseite ${g} cm und die Höhe ${h} cm. Berechne den Flächeninhalt.`,
-      unit: 'cm²',
-      answerKind: 'decimal',
-      value,
-      solution: `${formatDe(value)} cm²`,
-      explanation: `Flächeninhalt = (Grundseite · Höhe) : 2 = (${g} · ${h}) : 2 = ${g * h} : 2 = ${formatDe(value)} cm².`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const g = randInt(rng, 4, 24)
+      const h = randInt(rng, 4, 24)
+      const value = roundTo((g * h) / 2, 2)
+      return valueTask({
+        question: `Ein Dreieck hat die Grundseite ${g} cm und die Höhe ${h} cm. Berechne den Flächeninhalt.`,
+        unit: 'cm²',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} cm²`,
+        explanation: `A = (g · h) : 2 = (${g} · ${h}) : 2 = ${formatDe(value)} cm².`,
+      })
+    },
+    (rng: Rng) => {
+      const g = randInt(rng, 6, 20)
+      const h = randInt(rng, 4, 18)
+      // Prefer even products so answers stay clean integers often
+      const value = roundTo((g * h) / 2, 2)
+      return visualTask({
+        question: 'Berechne den Flächeninhalt des abgebildeten Dreiecks:',
+        unit: 'cm²',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} cm²`,
+        explanation: `A = (g · h) : 2 = (${g} · ${h}) : 2 = ${formatDe(value)} cm².`,
+        visualContent: generateTriangleSvg({
+          baseLabel: `${g} cm`,
+          heightLabel: `${h} cm`,
+        }),
+      })
+    },
+  ),
 }
 
 /** Sachaufgabe Geometrie: Kombiniertes Flächen-/Umfang-Problem im Alltag. */
@@ -717,20 +860,46 @@ const volumenQuader: Topic = {
     quelle: 'Wikipedia: Quader',
     url: 'https://de.wikipedia.org/wiki/Quader',
   },
-  generate: (rng: Rng) => {
-    const a = randInt(rng, 2, 12)
-    const b = randInt(rng, 2, 12)
-    const c = randInt(rng, 2, 12)
-    const value = a * b * c
-    return valueTask({
-      question: `Ein Quader ist ${a} cm, ${b} cm und ${c} cm groß. Berechne sein Volumen.`,
-      unit: 'cm³',
-      answerKind: 'integer',
-      value,
-      solution: `${value} cm³`,
-      explanation: `Volumen = Länge · Breite · Höhe = ${a} · ${b} · ${c} cm³ = ${value} cm³.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const cube = rng() < 0.35
+      const a = randInt(rng, 2, 12)
+      const b = cube ? a : randInt(rng, 2, 12)
+      const c = cube ? a : randInt(rng, 2, 12)
+      const value = a * b * c
+      return valueTask({
+        question: cube
+          ? `Ein Würfel hat die Kantenlänge ${a} cm. Berechne sein Volumen.`
+          : `Ein Quader ist ${a} cm, ${b} cm und ${c} cm groß. Berechne sein Volumen.`,
+        unit: 'cm³',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm³`,
+        explanation: cube
+          ? `Volumen = ${a} · ${a} · ${a} = ${value} cm³.`
+          : `Volumen = Länge · Breite · Höhe = ${a} · ${b} · ${c} cm³ = ${value} cm³.`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 3, 12)
+      const b = randInt(rng, 3, 12)
+      const c = randInt(rng, 3, 12)
+      const value = a * b * c
+      return visualTask({
+        question: 'Berechne das Volumen des abgebildeten Quaders:',
+        unit: 'cm³',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm³`,
+        explanation: `Volumen = Länge · Breite · Höhe = ${a} · ${b} · ${c} cm³ = ${value} cm³.`,
+        visualContent: generateCuboidSvg({
+          lengthLabel: `${a} cm`,
+          widthLabel: `${b} cm`,
+          heightLabel: `${c} cm`,
+        }),
+      })
+    },
+  ),
 }
 
 const oberflaecheQuader: Topic = {
@@ -744,20 +913,43 @@ const oberflaecheQuader: Topic = {
     quelle: 'Wikipedia: Quader',
     url: 'https://de.wikipedia.org/wiki/Quader',
   },
-  generate: (rng: Rng) => {
-    const a = randInt(rng, 2, 12)
-    const b = randInt(rng, 2, 12)
-    const c = randInt(rng, 2, 12)
-    const value = 2 * (a * b + a * c + b * c)
-    return valueTask({
-      question: `Ein Quader ist ${a} cm, ${b} cm und ${c} cm groß. Berechne seinen Oberflächeninhalt.`,
-      unit: 'cm²',
-      answerKind: 'integer',
-      value,
-      solution: `${value} cm²`,
-      explanation: `Oberfläche = 2 · (a·b + a·c + b·c) = 2 · (${a * b} + ${a * c} + ${b * c}) cm² = 2 · ${a * b + a * c + b * c} cm² = ${value} cm².`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const a = randInt(rng, 2, 12)
+      const b = randInt(rng, 2, 12)
+      const c = randInt(rng, 2, 12)
+      const value = 2 * (a * b + a * c + b * c)
+      return valueTask({
+        question: `Ein Quader ist ${a} cm, ${b} cm und ${c} cm groß. Berechne seinen Oberflächeninhalt.`,
+        unit: 'cm²',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm²`,
+        explanation: `Oberfläche = 2 · (a·b + a·c + b·c) = 2 · (${a * b} + ${a * c} + ${b * c}) cm² = 2 · ${
+          a * b + a * c + b * c
+        } cm² = ${value} cm².`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 3, 10)
+      const b = randInt(rng, 3, 10)
+      const c = randInt(rng, 3, 10)
+      const value = 2 * (a * b + a * c + b * c)
+      return visualTask({
+        question: 'Berechne die Oberfläche des abgebildeten Quaders:',
+        unit: 'cm²',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm²`,
+        explanation: `Oberfläche = 2 · (a·b + a·c + b·c) = 2 · (${a * b} + ${a * c} + ${b * c}) cm² = ${value} cm².`,
+        visualContent: generateCuboidSvg({
+          lengthLabel: `${a} cm`,
+          widthLabel: `${b} cm`,
+          heightLabel: `${c} cm`,
+        }),
+      })
+    },
+  ),
 }
 
 const volumenPrisma: Topic = {
@@ -771,19 +963,38 @@ const volumenPrisma: Topic = {
     quelle: 'Wikipedia: Prisma (Geometrie)',
     url: 'https://de.wikipedia.org/wiki/Prisma_(Geometrie)',
   },
-  generate: (rng: Rng) => {
-    const grund = randInt(rng, 6, 40)
-    const hoehe = randInt(rng, 2, 15)
-    const value = grund * hoehe
-    return valueTask({
-      question: `Ein gerades Prisma hat die Grundfläche ${grund} cm² und die Höhe ${hoehe} cm. Berechne sein Volumen.`,
-      unit: 'cm³',
-      answerKind: 'integer',
-      value,
-      solution: `${value} cm³`,
-      explanation: `Volumen eines Prismas = Grundfläche · Höhe = ${grund} cm² · ${hoehe} cm = ${value} cm³.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const grund = randInt(rng, 6, 40)
+      const hoehe = randInt(rng, 2, 15)
+      const value = grund * hoehe
+      return valueTask({
+        question: `Ein gerades Prisma hat die Grundfläche ${grund} cm² und die Höhe ${hoehe} cm. Berechne sein Volumen.`,
+        unit: 'cm³',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm³`,
+        explanation: `Volumen eines Prismas = Grundfläche · Höhe = ${grund} cm² · ${hoehe} cm = ${value} cm³.`,
+      })
+    },
+    (rng: Rng) => {
+      const grund = randInt(rng, 8, 36)
+      const hoehe = randInt(rng, 3, 14)
+      const value = grund * hoehe
+      return visualTask({
+        question: 'Berechne das Volumen des abgebildeten Prismas:',
+        unit: 'cm³',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm³`,
+        explanation: `Volumen = Grundfläche · Höhe = ${grund} cm² · ${hoehe} cm = ${value} cm³.`,
+        visualContent: generatePrismVolumeSvg({
+          baseAreaLabel: `${grund} cm²`,
+          heightLabel: `${hoehe} cm`,
+        }),
+      })
+    },
+  ),
 }
 
 // ---------------------------------------------------------------------------

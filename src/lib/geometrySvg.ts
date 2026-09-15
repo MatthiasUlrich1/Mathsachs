@@ -252,6 +252,77 @@ export function generateTriangleSvg({
 </svg>`.trim()
 }
 
+export interface TriangleAnglesSvgProps {
+  /** Labels for the three interior angles (e.g. "70°", "?"). */
+  aLabel: string
+  bLabel: string
+  cLabel: string
+  fill?: string
+  stroke?: string
+}
+
+/** Isosceles-looking triangle with interior-angle labels at the vertices. */
+export function generateTriangleAnglesSvg({
+  aLabel,
+  bLabel,
+  cLabel,
+  fill = '#fff3e0',
+  stroke = '#f57c00',
+}: TriangleAnglesSvgProps): string {
+  const w = 280
+  const h = 220
+  const pad = 36
+  const x1 = pad
+  const y1 = h - pad
+  const x2 = w - pad
+  const y2 = h - pad
+  const x3 = w / 2
+  const y3 = pad
+  return `
+<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="${x1},${y1} ${x2},${y2} ${x3},${y3}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
+  <text x="${x1 + 18}" y="${y1 - 12}" font-size="16" font-weight="bold" fill="#333">${aLabel}</text>
+  <text x="${x2 - 18}" y="${y2 - 12}" text-anchor="end" font-size="16" font-weight="bold" fill="#333">${bLabel}</text>
+  <text x="${x3}" y="${y3 + 28}" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">${cLabel}</text>
+</svg>`.trim()
+}
+
+export interface QuadAnglesSvgProps {
+  aLabel: string
+  bLabel: string
+  cLabel: string
+  dLabel: string
+  fill?: string
+  stroke?: string
+}
+
+/** Convex quadrilateral with interior-angle labels at the corners. */
+export function generateQuadAnglesSvg({
+  aLabel,
+  bLabel,
+  cLabel,
+  dLabel,
+  fill = '#e8f5e9',
+  stroke = '#2e7d32',
+}: QuadAnglesSvgProps): string {
+  const w = 300
+  const h = 220
+  const pts = [
+    [40, 50],
+    [260, 40],
+    [270, 180],
+    [50, 190],
+  ] as const
+  return `
+<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="${pts.map((p) => p.join(',')).join(' ')}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
+  <text x="${pts[0][0] + 14}" y="${pts[0][1] + 22}" font-size="15" font-weight="bold" fill="#333">${aLabel}</text>
+  <text x="${pts[1][0] - 14}" y="${pts[1][1] + 22}" text-anchor="end" font-size="15" font-weight="bold" fill="#333">${bLabel}</text>
+  <text x="${pts[2][0] - 14}" y="${pts[2][1] - 10}" text-anchor="end" font-size="15" font-weight="bold" fill="#333">${cLabel}</text>
+  <text x="${pts[3][0] + 14}" y="${pts[3][1] - 10}" font-size="15" font-weight="bold" fill="#333">${dLabel}</text>
+</svg>`.trim()
+}
+
 export interface CircleSvgProps {
   /** Radius label */
   radiusLabel: string
@@ -484,6 +555,46 @@ export function generateCuboidSvg({
       <polygon points="0,5 10,10 10,0" fill="${stroke}" />
     </marker>
   </defs>
+</svg>`.trim()
+}
+
+export interface PrismVolumeSvgProps {
+  /** Label for the base area G, e.g. "24 cm²". */
+  baseAreaLabel: string
+  /** Label for the prism height h, e.g. "8 cm". */
+  heightLabel: string
+  fill?: string
+  stroke?: string
+}
+
+/** Simple triangular prism (isometric) with Grundfläche G and Höhe h labeled. */
+export function generatePrismVolumeSvg({
+  baseAreaLabel,
+  heightLabel,
+  fill = '#e8eaf6',
+  stroke = '#3949ab',
+}: PrismVolumeSvgProps): string {
+  const w = 320
+  const h = 240
+  // Front triangle
+  const f1 = [60, 180]
+  const f2 = [200, 180]
+  const f3 = [130, 90]
+  // Back triangle (offset)
+  const dx = 70
+  const dy = -45
+  const b1 = [f1[0] + dx, f1[1] + dy]
+  const b2 = [f2[0] + dx, f2[1] + dy]
+  const b3 = [f3[0] + dx, f3[1] + dy]
+  return `
+<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="${b1[0]},${b1[1]} ${b2[0]},${b2[1]} ${b3[0]},${b3[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.7"/>
+  <polygon points="${f1[0]},${f1[1]} ${f2[0]},${f2[1]} ${b2[0]},${b2[1]} ${b1[0]},${b1[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.85"/>
+  <polygon points="${f2[0]},${f2[1]} ${f3[0]},${f3[1]} ${b3[0]},${b3[1]} ${b2[0]},${b2[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.9"/>
+  <polygon points="${f1[0]},${f1[1]} ${f2[0]},${f2[1]} ${f3[0]},${f3[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
+  <text x="130" y="205" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">G = ${baseAreaLabel}</text>
+  <text x="250" y="120" font-size="14" font-weight="bold" fill="#333">h = ${heightLabel}</text>
+  <line x1="210" y1="175" x2="255" y2="145" stroke="${stroke}" stroke-width="1" stroke-dasharray="3"/>
 </svg>`.trim()
 }
 
