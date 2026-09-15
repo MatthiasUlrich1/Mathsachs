@@ -1,14 +1,25 @@
 import { pick, randInt, type Rng } from '../lib/rng'
 import {
+  generateAnglePickSvg,
   generateCrossingLinesSvg,
   generateCuboidSvg,
+  generateLabeledPrismNetSvg,
   generateParallelTransversalSvg,
   generatePrismVolumeSvg,
   generatePyramidVolumeSvg,
+  generateSpinnerSvg,
   generateTriangleAnglesSvg,
 } from '../lib/geometrySvg'
 import { formatDe, roundTo } from '../lib/num'
-import { mixedVariants, valueTask, visualTask } from './taskHelpers'
+import {
+  choicePickTask,
+  dragDropSortTask,
+  mixedVariants,
+  multiSelectTask,
+  numberLineTask,
+  valueTask,
+  visualTask,
+} from './taskHelpers'
 import type { Grade, Topic } from './types'
 
 /** Format a signed integer, wrapping negatives in parentheses with a real minus. */
@@ -65,6 +76,19 @@ const nebenwinkel: Topic = {
           ask: 'neben',
           givenLabel: `${a}°`,
         }),
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 30, 140)
+      return choicePickTask({
+        question: `Der orangefarbene Winkel misst ${a}°. Welcher Winkel ist ein Nebenwinkel dazu?`,
+        choices: ['A', 'B', 'C'],
+        correct: 'A',
+        solution: 'A',
+        explanation:
+          'Nebenwinkel liegen nebeneinander an einer Geraden. Winkel A grenzt direkt an den orangefarbenen Winkel. B ist der Scheitelwinkel; C ist der andere Nebenwinkel auf der gegenüberliegenden Geradenseite.',
+        visualContent: generateAnglePickSvg({ angleDeg: a }),
+        instruction: 'Tippe den Nebenwinkel A (neben dem orangefarbenen Winkel):',
       })
     },
   ),
@@ -131,6 +155,19 @@ const scheitelwinkel: Topic = {
           kind,
           givenLabel: `${a}°`,
         }),
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 30, 140)
+      return choicePickTask({
+        question: `Der orangefarbene Winkel misst ${a}°. Welcher Winkel ist der Scheitelwinkel dazu?`,
+        choices: ['A', 'B', 'C'],
+        correct: 'B',
+        solution: 'B',
+        explanation:
+          'Scheitelwinkel liegen sich gegenüber. Winkel B liegt dem orangefarbenen Winkel gegenüber und ist gleich groß.',
+        visualContent: generateAnglePickSvg({ angleDeg: a }),
+        instruction: 'Tippe den Scheitelwinkel:',
       })
     },
   ),
@@ -330,17 +367,53 @@ const betrag: Topic = {
     quelle: 'Wikipedia: Betrag (Mathematik)',
     url: 'https://de.wikipedia.org/wiki/Betrag_(Mathematik)',
   },
-  generate: (rng: Rng) => {
-    const a = nonZero(rng, -99, 99)
-    const value = Math.abs(a)
-    return valueTask({
-      question: `Berechne den Betrag: |${a}|`,
-      answerKind: 'integer',
-      value,
-      solution: `${value}`,
-      explanation: `Der Betrag ist der Abstand der Zahl von 0 auf dem Zahlenstrahl und daher nie negativ: |${a}| = ${value}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const a = nonZero(rng, -99, 99)
+      const value = Math.abs(a)
+      return valueTask({
+        question: `Berechne den Betrag: |${a}|`,
+        answerKind: 'integer',
+        value,
+        solution: `${value}`,
+        explanation: `Der Betrag ist der Abstand der Zahl von 0 auf dem Zahlenstrahl und daher nie negativ: |${a}| = ${value}.`,
+      })
+    },
+    (rng: Rng) => {
+      const a = nonZero(rng, -8, 8)
+      const value = Math.abs(a)
+      return numberLineTask({
+        question: `Markiere den Betrag |${a}| auf dem Zahlenstrahl.`,
+        min: 0,
+        max: 10,
+        step: 1,
+        value,
+        solution: `${value}`,
+        explanation: `|${a}| = ${value} (Abstand von 0).`,
+      })
+    },
+    (rng: Rng) => {
+      const used = new Set<number>()
+      const nums: number[] = []
+      while (nums.length < 4) {
+        const n = nonZero(rng, -9, 9)
+        if (used.has(n)) continue
+        used.add(n)
+        nums.push(n)
+      }
+      const items = nums.map((n) => ({ label: String(n), value: n }))
+      const correctOrder = items
+        .map((_, i) => i)
+        .sort((i, j) => items[i].value - items[j].value)
+      return dragDropSortTask({
+        question: 'Ordne die Zahlen der Größe nach (kleinste zuerst).',
+        items,
+        correctOrder,
+        solution: correctOrder.map((i) => items[i].label).join(' < '),
+        explanation: `Auf dem Zahlenstrahl von links nach rechts: ${correctOrder.map((i) => items[i].label).join(' < ')}.`,
+      })
+    },
+  ),
 }
 
 const termVorrang: Topic = {
@@ -484,19 +557,37 @@ const mantelPrisma: Topic = {
     quelle: 'Wikipedia: Prisma (Geometrie)',
     url: 'https://de.wikipedia.org/wiki/Prisma_(Geometrie)',
   },
-  generate: (rng: Rng) => {
-    const u = randInt(rng, 8, 40)
-    const h = randInt(rng, 2, 20)
-    const value = u * h
-    return valueTask({
-      question: `Ein Prisma hat eine Grundfläche mit dem Umfang ${u} cm und die Höhe ${h} cm. Berechne die Mantelfläche.`,
-      unit: 'cm²',
-      answerKind: 'integer',
-      value,
-      solution: `${value} cm²`,
-      explanation: `Die Mantelfläche ist Umfang der Grundfläche · Höhe = ${u} cm · ${h} cm = ${value} cm².`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const u = randInt(rng, 8, 40)
+      const h = randInt(rng, 2, 20)
+      const value = u * h
+      return valueTask({
+        question: `Ein Prisma hat eine Grundfläche mit dem Umfang ${u} cm und die Höhe ${h} cm. Berechne die Mantelfläche.`,
+        unit: 'cm²',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm²`,
+        explanation: `Die Mantelfläche ist Umfang der Grundfläche · Höhe = ${u} cm · ${h} cm = ${value} cm².`,
+      })
+    },
+    (rng: Rng) => {
+      const labels = ['A', 'B', 'C', 'D', 'E']
+      // Fixed layout: A top base, B/C/D mantel, E bottom base
+      const mantel = ['B', 'C', 'D']
+      return multiSelectTask({
+        question:
+          'Welches Netz zeigt ein dreiseitiges Prisma. Welche Flächen gehören zum Mantel (Seitenflächen, ohne Deckel/Boden)?',
+        choices: labels,
+        correct: mantel,
+        solution: mantel.join(', '),
+        explanation:
+          'Beim Prisma sind die drei seitlichen Rechtecke der Mantel (B, C, D). A und E sind die beiden Grundflächen.',
+        visualContent: generateLabeledPrismNetSvg({ faceLabels: labels }),
+        instruction: 'Tippe alle Mantelflächen (Mehrfachauswahl):',
+      })
+    },
+  ),
 }
 
 const volumenPyramide: Topic = {
@@ -701,17 +792,79 @@ const relativeHaeufigkeit: Topic = {
     quelle: 'Wikipedia: Relative Häufigkeit',
     url: 'https://de.wikipedia.org/wiki/Relative_H%C3%A4ufigkeit',
   },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const total = pick(rng, [10, 20, 25, 40, 50, 100])
+      const k = randInt(rng, 1, total - 1)
+      const value = roundTo((k / total) * 100, 2)
+      return valueTask({
+        question: `Von ${total} befragten Personen antworteten ${k} mit „ja". Wie groß ist die relative Häufigkeit in Prozent?`,
+        unit: '%',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} %`,
+        explanation: `Relative Häufigkeit = ${k} : ${total} = ${formatDe(k / total)}. In Prozent: · 100 = ${formatDe(value)} %.`,
+      })
+    },
+    (rng: Rng) => {
+      const n = pick(rng, [4, 5, 6])
+      const colors = ['Rot', 'Blau', 'Grün', 'Gelb', 'Lila', 'Orange']
+      const sectors = colors.slice(0, n)
+      const askIdx = randInt(rng, 0, n - 1)
+      const pct = roundTo((1 / n) * 100, 2)
+      return choicePickTask({
+        question: `Das Glücksrad hat ${n} gleich große Sektoren. Tippe den Sektor „${sectors[askIdx]}“ — relative Häufigkeit = ${formatDe(pct)} %.`,
+        choices: sectors,
+        correct: sectors[askIdx],
+        solution: `${sectors[askIdx]} (${formatDe(pct)} %)`,
+        explanation: `Sektor „${sectors[askIdx]}“ hat bei gleichen Feldern die relative Häufigkeit 1/${n} = ${formatDe(pct)} %.`,
+        visualContent: generateSpinnerSvg({
+          payoffs: sectors,
+          highlightIndex: askIdx,
+        }),
+        instruction: 'Tippe den gesuchten Sektor:',
+      })
+    },
+  ),
+}
+
+const mittelsenkrechteSchritte: Topic = {
+  id: 'k7-lb1-mittelsenkrechte-schritte',
+  title: 'Mittelsenkrechte: Konstruktionsschritte',
+  hint: 'Ordne die Schritte einer Mittelsenkrechten.',
+  pointsPerTask: 10,
+  difficulty: 2,
+  keywords: ['Mittelsenkrechte', 'Konstruktion', 'Zirkel', 'Lot', 'Mittelpunkt'],
+  fachwissen: {
+    text: 'Die Mittelsenkrechte einer Strecke AB ist die Gerade durch den Mittelpunkt von AB, die senkrecht auf AB steht. Konstruktion: Kreise um A und B mit gleichem Radius (>½|AB|); die beiden Schnittpunkte verbinden — das ist die Mittelsenkrechte.',
+    quelle: 'Wikipedia: Mittelsenkrechte',
+    url: 'https://de.wikipedia.org/wiki/Mittelsenkrechte',
+  },
   generate: (rng: Rng) => {
-    const total = pick(rng, [10, 20, 25, 40, 50, 100])
-    const k = randInt(rng, 1, total - 1)
-    const value = roundTo((k / total) * 100, 2)
-    return valueTask({
-      question: `Von ${total} befragten Personen antworteten ${k} mit „ja". Wie groß ist die relative Häufigkeit in Prozent?`,
-      unit: '%',
-      answerKind: 'decimal',
-      value,
-      solution: `${formatDe(value)} %`,
-      explanation: `Relative Häufigkeit = ${k} : ${total} = ${formatDe(k / total)}. In Prozent: · 100 = ${formatDe(value)} %.`,
+    const steps = [
+      { label: 'Strecke AB zeichnen', value: 1 },
+      { label: 'Kreis um A (Radius > ½|AB|)', value: 2 },
+      { label: 'Gleicher Kreis um B', value: 3 },
+      { label: 'Schnittpunkte P und Q markieren', value: 4 },
+      { label: 'Gerade durch P und Q zeichnen', value: 5 },
+    ]
+    // Shuffle display order
+    const order = steps.map((_, i) => i)
+    for (let i = order.length - 1; i > 0; i--) {
+      const j = randInt(rng, 0, i)
+      ;[order[i], order[j]] = [order[j], order[i]]
+    }
+    const items = order.map((i) => steps[i])
+    const correctOrder = items
+      .map((_, i) => i)
+      .sort((i, j) => items[i].value - items[j].value)
+    return dragDropSortTask({
+      question: 'Ordne die Konstruktionsschritte der Mittelsenkrechten von AB.',
+      items,
+      correctOrder,
+      solution: steps.map((s) => s.label).join(' → '),
+      explanation:
+        'Zuerst AB, dann gleiche Kreise um A und B, Schnittpunkte verbinden: das ist die Mittelsenkrechte.',
     })
   },
 }
@@ -728,7 +881,7 @@ export const klasse7: Grade = {
       id: 'lb1',
       title: 'Geometrie in der Ebene',
       ustd: 24,
-      topics: [nebenwinkel, scheitelwinkel, winkelsummeVieleck, basiswinkel],
+      topics: [nebenwinkel, scheitelwinkel, winkelsummeVieleck, basiswinkel, mittelsenkrechteSchritte],
     },
     {
       id: 'lb2',

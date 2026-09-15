@@ -39,6 +39,8 @@ import {
   generateVectorArrowsSvg,
   generateGridRectSvg,
   generatePrismNetChoicesSvg,
+  generateAnglePickSvg,
+  generateLabeledPrismNetSvg,
   segmentLength,
   reflectPointAcross,
   pointReflectAcross,
@@ -918,6 +920,19 @@ describe('geometrySvg', () => {
       expect(html).toContain('>A</text>')
       expect(html).toContain('>B</text>')
       expect(html).toContain('<rect')
+    })
+
+    it('labels crossing angles A/B/C for pick tasks', () => {
+      const svg = generateAnglePickSvg({ angleDeg: 55 })
+      expect(svg).toContain('>A</text>')
+      expect(svg).toContain('>B</text>')
+      expect(svg).toContain('>C</text>')
+    })
+
+    it('draws labeled prism net for mantel multi-select', () => {
+      const svg = generateLabeledPrismNetSvg({})
+      expect(svg).toContain('>A</text>')
+      expect(svg).toContain('>E</text>')
     })
   })
 })

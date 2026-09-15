@@ -5,7 +5,7 @@ import {
   generateSpinnerSvg,
 } from '../lib/geometrySvg'
 import { formatDe, roundTo } from '../lib/num'
-import { mixedVariants, valueTask, visualTask } from './taskHelpers'
+import { mixedVariants, valueTask, visualTask, choicePickTask } from './taskHelpers'
 import type { Grade, Topic } from './types'
 
 // ---------------------------------------------------------------------------
@@ -181,6 +181,25 @@ const erwartungswert: Topic = {
         visualContent: generateSpinnerSvg({
           payoffs: payoffs.map((p) => `${p}€`),
         }),
+      })
+    },
+    (rng: Rng) => {
+      const n = pick(rng, [4, 5, 6])
+      const payoffs: number[] = []
+      for (let i = 0; i < n; i++) payoffs.push(randInt(rng, 1, 8))
+      const askIdx = randInt(rng, 0, n - 1)
+      const letter = String.fromCharCode(65 + askIdx)
+      return choicePickTask({
+        question: `Tippe den Sektor mit der Auszahlung ${payoffs[askIdx]} €. (Alle Sektoren sind gleich groß.)`,
+        choices: Array.from({ length: n }, (_, i) => String.fromCharCode(65 + i)),
+        correct: letter,
+        solution: `${letter} (${payoffs[askIdx]} €)`,
+        explanation: `Sektor ${letter} zeigt ${payoffs[askIdx]} €. E(X) = (${payoffs.join(' + ')}) : ${n}.`,
+        visualContent: generateSpinnerSvg({
+          payoffs: payoffs.map((p, i) => `${String.fromCharCode(65 + i)}:${p}€`),
+          highlightIndex: askIdx,
+        }),
+        instruction: 'Tippe den gesuchten Sektor:',
       })
     },
   ),

@@ -5,7 +5,7 @@ import {
 } from '../lib/geometrySvg'
 import { makeFraction, subtract, format, type Fraction } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
-import { fractionTask, mixedVariants, valueTask, visualTask, paramSliderTask } from './taskHelpers'
+import { fractionTask, mixedVariants, valueTask, visualTask, paramSliderTask, choicePickTask, coordinateClickTask } from './taskHelpers'
 import type { Grade, Topic } from './types'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
@@ -323,6 +323,22 @@ const funktionswert: Topic = {
         }),
       })
     },
+    (rng: Rng) => {
+      const m = nonZero(rng, -3, 3)
+      const n = randInt(rng, -4, 4)
+      return paramSliderTask({
+        question: `Stelle m und n so ein, dass f(x) = ${num(m)}·x + ${num(n)} entsteht.`,
+        params: [
+          { id: 'm', label: 'Steigung m', min: -4, max: 4, step: 1, start: 0 },
+          { id: 'n', label: 'Achsenabschnitt n', min: -5, max: 5, step: 1, start: 0 },
+        ],
+        correct: { m, n },
+        solution: `m = ${m}, n = ${n}`,
+        explanation: `f(x) = ${num(m)}x + ${num(n)}.`,
+        preview: 'linear',
+        instruction: 'Stelle beide Parameter am Schieberegler ein:',
+      })
+    },
   ),
 }
 
@@ -425,6 +441,34 @@ const steigung: Topic = {
         instruction: 'Stelle beide Parameter am Schieberegler ein:',
       })
     },
+    (rng: Rng) => {
+      const mTarget = nonZero(rng, -3, 3)
+      let mOther = nonZero(rng, -3, 3)
+      while (mOther === mTarget) mOther = nonZero(rng, -3, 3)
+      const nA = randInt(rng, -2, 3)
+      const nB = randInt(rng, -2, 3)
+      const targetIsA = rng() < 0.5
+      const mA = targetIsA ? mTarget : mOther
+      const mB = targetIsA ? mOther : mTarget
+      const correct = targetIsA ? 'A' : 'B'
+      return choicePickTask({
+        question: `Welche Gerade hat die Steigung m = ${mTarget}?`,
+        choices: ['A', 'B'],
+        correct,
+        solution: correct,
+        explanation: `Gerade A: m = ${mA}, Gerade B: m = ${mB}. Gesucht war m = ${mTarget} → ${correct}.`,
+        visualContent: generateLinearFunctionSvg({
+          m: mA,
+          n: nA,
+          lineLabel: 'A',
+          interceptLabel: false,
+          second: { m: mB, n: nB, stroke: '#c62828', label: 'B' },
+          xRange: [-5, 5],
+          yRange: [-6, 6],
+        }),
+        instruction: 'Tippe die Gerade mit der gesuchten Steigung:',
+      })
+    },
   ),
 }
 
@@ -472,6 +516,38 @@ const achsenabschnitt: Topic = {
           interceptLabel: '?',
           slopeTriangle: { fromX: 0, run: m >= 0 ? 1 : -1, showLabels: false },
         }),
+      })
+    },
+    (rng: Rng) => {
+      const m = nonZero(rng, -3, 3)
+      const n = nonZero(rng, -4, 4)
+      return paramSliderTask({
+        question: `Stelle n so ein, dass die Gerade Steigung m = ${m} und Achsenabschnitt n = ${n} hat.`,
+        params: [
+          { id: 'm', label: 'Steigung m', min: -4, max: 4, step: 1, start: m },
+          { id: 'n', label: 'Achsenabschnitt n', min: -5, max: 5, step: 1, start: 0 },
+        ],
+        correct: { m, n },
+        solution: `n = ${n}`,
+        explanation: `y-Achsenabschnitt n = ${n} (Schnitt bei (0|${n})).`,
+        preview: 'linear',
+        instruction: 'm ist schon richtig — stelle n ein:',
+      })
+    },
+    (rng: Rng) => {
+      // Nullstelle: click the x-intercept of y = m x + n
+      const m = nonZero(rng, -3, 3)
+      const x0 = nonZero(rng, -4, 4)
+      const n = -m * x0
+      return coordinateClickTask({
+        question: `Die Gerade f(x) = ${num(m)}·x + ${num(n)} ist gegeben. Setze den Punkt der Nullstelle (Schnitt mit der x-Achse).`,
+        x: x0,
+        y: 0,
+        solution: `(${x0}|0)`,
+        explanation: `Nullstelle: ${num(m)}x + ${num(n)} = 0 ⇒ x = ${x0}. Punkt (${x0}|0).`,
+        xRange: [-6, 6],
+        yRange: [-6, 6],
+        instruction: 'Tippe die Nullstelle auf der x-Achse:',
       })
     },
   ),

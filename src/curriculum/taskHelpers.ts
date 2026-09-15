@@ -320,6 +320,53 @@ export const choicePickTask = (input: ChoicePickTaskInput): Task => {
   }
 }
 
+interface MultiSelectTaskInput {
+  question: string
+  choices: string[]
+  /** Correct subset (order ignored). */
+  correct: string[]
+  solution: string
+  explanation: string
+  visualContent?: string
+  instruction?: string
+}
+
+const sameSet = (a: string[], b: string[]): boolean => {
+  if (a.length !== b.length) return false
+  const want = new Set(b.map((x) => x.trim()))
+  return a.every((x) => want.has(x.trim()))
+}
+
+/** Multi-select buttons (Mantel-Flächen, mehrere Sektoren, …). */
+export const multiSelectTask = (input: MultiSelectTaskInput): Task => ({
+  question: input.question,
+  answerKind: 'text',
+  solution: input.solution,
+  explanation: input.explanation,
+  visualContent: input.visualContent,
+  sampleAnswer: { kind: 'multiSelect', selected: [...input.correct] },
+  interactive: {
+    type: 'multiSelect',
+    props: {
+      choices: input.choices,
+      instruction: input.instruction ?? 'Tippe alle zutreffenden Flächen / Optionen:',
+    },
+  },
+  check: (answer: UserInput) => {
+    if (answer.kind === 'multiSelect') {
+      return sameSet(answer.selected, input.correct)
+    }
+    if (answer.kind === 'value') {
+      const parts = answer.value
+        .split(/[,;+/]|und/i)
+        .map((s) => s.trim())
+        .filter(Boolean)
+      return sameSet(parts, input.correct)
+    }
+    return false
+  },
+})
+
 interface CoordinateClickTaskInput {
   question: string
   x: number

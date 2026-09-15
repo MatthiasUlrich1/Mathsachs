@@ -28,6 +28,9 @@ export const formatExamAnswer = (input: UserInput): string => {
   if (input.kind === 'choicePick') {
     return input.choice.trim() || '—'
   }
+  if (input.kind === 'multiSelect') {
+    return input.selected.length ? input.selected.join(', ') : '—'
+  }
   if (input.kind === 'coordinateClick') {
     if (!Number.isFinite(input.x) || !Number.isFinite(input.y)) return '—'
     return `(${input.x}|${input.y})`

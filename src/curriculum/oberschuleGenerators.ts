@@ -100,6 +100,32 @@ const hsLinearSteigung: Topic['generate'] = mixedVariants(
       }),
     })
   },
+  (rng: Rng) => {
+    const mTarget = nonZero(rng, -3, 3)
+    let mOther = nonZero(rng, -3, 3)
+    while (mOther === mTarget) mOther = nonZero(rng, -3, 3)
+    const targetIsA = rng() < 0.5
+    const mA = targetIsA ? mTarget : mOther
+    const mB = targetIsA ? mOther : mTarget
+    const correct = targetIsA ? 'A' : 'B'
+    return choicePickTask({
+      question: `Welche Gerade hat die Steigung m = ${mTarget}?`,
+      choices: ['A', 'B'],
+      correct,
+      solution: correct,
+      explanation: `A: m=${mA}, B: m=${mB} → ${correct}.`,
+      visualContent: generateLinearFunctionSvg({
+        m: mA,
+        n: randInt(rng, 0, 3),
+        lineLabel: 'A',
+        interceptLabel: false,
+        second: { m: mB, n: randInt(rng, 0, 3), stroke: '#c62828', label: 'B' },
+        xRange: [-2, 5],
+        yRange: [-3, 7],
+      }),
+      instruction: 'Tippe A oder B:',
+    })
+  },
 )
 
 const hsLinearAchsen: Topic['generate'] = mixedVariants(
@@ -444,6 +470,10 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-hs-k7-lb4-zerlegen': 'lb4-flaeche-zusammengesetzt',
   'os-hs-k7-lb4-netze': 'lb4-wuerfelnetz',
 
+  // HS Klasse 7 — interactive remaps
+  'os-hs-k7-lb3-zahlengerade': 'k7-lb2-betrag',
+  'os-hs-k7-lb4-konstruieren': 'k7-lb1-mittelsenkrechte-schritte',
+
   // HS Klasse 8
   'os-hs-k8-lb1-prozent': 'lb5-anteil-prozent',
   'os-hs-k8-lb1-zinsen': 'k10-lb1-zinsen',
@@ -504,6 +534,8 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-rs-k7-lb4-oberflaeche': 'lb4-oberflaeche-quader',
   'os-rs-k7-lb4-vieleck-flaeche': 'lb4-flaeche-zusammengesetzt',
   'os-rs-k7-lb4-darstellen': 'lb4-wuerfelnetz',
+  'os-rs-k7-lb3-ordnen': 'k7-lb2-betrag',
+  'os-rs-k7-lb4-konstruieren': 'k7-lb1-mittelsenkrechte-schritte',
 
   // RS Klasse 8
   'os-rs-k8-lb1-term': 'k8-lb1-term-auswerten',

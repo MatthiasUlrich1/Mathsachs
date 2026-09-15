@@ -4,6 +4,7 @@ import { NumberLineSlider } from './NumberLineSlider'
 import { DragDropSort } from './DragDropSort'
 import { DigitGrid } from './DigitGrid'
 import { ChoicePick } from './ChoicePick'
+import { MultiSelect } from './MultiSelect'
 import { CoordinateClick } from './CoordinateClick'
 import { ParamSlider } from './ParamSlider'
 import type { ParamSliderSpec } from '../curriculum/taskHelpers'
@@ -23,6 +24,9 @@ export const initTaskInput = (task: Task): UserInput => {
   }
   if (task.interactive?.type === 'choicePick') {
     return { kind: 'choicePick', choice: '' }
+  }
+  if (task.interactive?.type === 'multiSelect') {
+    return { kind: 'multiSelect', selected: [] }
   }
   if (task.interactive?.type === 'coordinateClick') {
     return { kind: 'coordinateClick', x: Number.NaN, y: Number.NaN }
@@ -112,6 +116,15 @@ export function TaskInteractive({
           choices={interactive.props.choices}
           value={value.kind === 'choicePick' ? value.choice || null : null}
           onChange={(choice) => onChange({ kind: 'choicePick', choice })}
+          instruction={interactive.props.instruction}
+          disabled={disabled}
+        />
+      )}
+      {interactive.type === 'multiSelect' && (
+        <MultiSelect
+          choices={interactive.props.choices}
+          value={value.kind === 'multiSelect' ? value.selected : []}
+          onChange={(selected) => onChange({ kind: 'multiSelect', selected })}
           instruction={interactive.props.instruction}
           disabled={disabled}
         />

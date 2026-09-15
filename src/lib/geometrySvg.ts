@@ -3054,8 +3054,10 @@ export interface LinearFunctionSvgProps {
   yRange?: [number, number]
   cellSize?: number
   stroke?: string
-  /** Optional second line (LGS graph). */
-  second?: { m: number; n: number; stroke?: string }
+  /** Optional label near the primary line (e.g. „A“). */
+  lineLabel?: string
+  /** Optional second line (LGS / compare graphs). */
+  second?: { m: number; n: number; stroke?: string; label?: string }
 }
 
 function clipLineToRect(
@@ -3121,6 +3123,7 @@ export function generateLinearFunctionSvg({
   yRange,
   cellSize = 32,
   stroke = '#1565c0',
+  lineLabel,
   second,
 }: LinearFunctionSvgProps): string {
   const xs = [0, ...points.map((p) => p.x)]
@@ -3177,6 +3180,18 @@ export function generateLinearFunctionSvg({
 
   drawLine(m, n, stroke)
   if (second) drawLine(second.m, second.n, second.stroke ?? '#c62828')
+
+  const placeLineLabel = (mm: number, nn: number, lab: string, color: string) => {
+    const x = Math.min(xMax - 0.5, Math.max(xMin + 0.5, 3))
+    const y = mm * x + nn
+    if (y < yMin || y > yMax) return
+    const [sx, sy] = toSvg(x, y)
+    extras.push(
+      `<text x="${sx + 6}" y="${sy - 6}" font-size="14" font-weight="bold" fill="${color}">${lab}</text>`,
+    )
+  }
+  if (lineLabel) placeLineLabel(m, n, lineLabel, stroke)
+  if (second?.label) placeLineLabel(second.m, second.n, second.label, second.stroke ?? '#c62828')
 
   if (slopeTriangle) {
     const run = slopeTriangle.run ?? 1
@@ -3920,4 +3935,127 @@ export function generatePrismNetChoicesSvg(
   return `<div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:flex-end">${parts.join('')}</div>`
 }
 
+/**
+ * Crossing lines with three labeled angles A/B/C so learners can mark
+ * Nebenwinkel vs. Scheitelwinkel by letter.
+ * Given angle is the orange one; A = Neben, B = Scheitel, C = other Neben.
+ */
+export function generateAnglePickSvg({
+  angleDeg,
+  stroke = '#1565c0',
+}: {
+  angleDeg: number
+  stroke?: string
+}): string {
+  const w = 340
+  const h = 300
+  const cx = w / 2
+  const cy = h / 2
+  const len = 130
+  const a = (angleDeg * Math.PI) / 180
+  const h1 = [cx - len, cy]
+  const h2 = [cx + len, cy]
+  const d1 = [cx - len * Math.cos(a), cy + len * Math.sin(a)]
+  const d2 = [cx + len * Math.cos(a), cy - len * Math.sin(a)]
 
+  const givenInterior: [number, number] = [
+    cx + Math.cos(a / 2) * 40,
+    cy - Math.sin(a / 2) * 40,
+  ]
+  const givenMark = angleMarkSvg([cx, cy], [1, 0], [Math.cos(a), -Math.sin(a)], `${angleDeg}°`, {
+    radius: 32,
+    stroke: '#e65100',
+    fill: '#fff3e0',
+    interior: givenInterior,
+  })
+
+  const nebenDeg = Math.PI - a
+  const nebenInterior: [number, number] = [
+    cx + Math.cos(a + nebenDeg / 2) * 48,
+    cy - Math.sin(a + nebenDeg / 2) * 48,
+  ]
+  const markA = angleMarkSvg(
+    [cx, cy],
+    [Math.cos(a), -Math.sin(a)],
+    [-1, 0],
+    'A',
+    { radius: 44, stroke: '#2e7d32', fill: '#e8f5e9', interior: nebenInterior },
+  )
+
+  const scheitelInterior: [number, number] = [
+    cx - Math.cos(a / 2) * 48,
+    cy + Math.sin(a / 2) * 48,
+  ]
+  const markB = angleMarkSvg(
+    [cx, cy],
+    [-1, 0],
+    [-Math.cos(a), Math.sin(a)],
+    'B',
+    { radius: 44, stroke: '#1565c0', fill: '#e3f2fd', interior: scheitelInterior },
+  )
+
+  const otherNebenInterior: [number, number] = [
+    cx + Math.cos(a / 2 + Math.PI) * 48,
+    cy - Math.sin(a / 2 + Math.PI) * 48,
+  ]
+  // C: the other adjacent on the straight line (from -line2 to +x)
+  const markC = angleMarkSvg(
+    [cx, cy],
+    [-Math.cos(a), Math.sin(a)],
+    [1, 0],
+    'C',
+    { radius: 50, stroke: '#6a1b9a', fill: '#f3e5f5', interior: otherNebenInterior },
+  )
+
+  return `
+<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">
+  <line x1="${h1[0]}" y1="${h1[1]}" x2="${h2[0]}" y2="${h2[1]}" stroke="${stroke}" stroke-width="2.5"/>
+  <line x1="${d1[0]}" y1="${d1[1]}" x2="${d2[0]}" y2="${d2[1]}" stroke="${stroke}" stroke-width="2.5"/>
+  <circle cx="${cx}" cy="${cy}" r="3.5" fill="${stroke}"/>
+  ${givenMark}
+  ${markA}
+  ${markB}
+  ${markC}
+</svg>`.trim()
+}
+
+/**
+ * Labeled rectangular prism net: faces A–E (three Mantel + two bases).
+ * Layout: top base A, middle row B–C–D (Mantel), bottom base E.
+ * All faces look the same — learners must identify the Mantel.
+ */
+export function generateLabeledPrismNetSvg({
+  faceLabels = ['A', 'B', 'C', 'D', 'E'],
+  cell = 36,
+}: {
+  faceLabels?: string[]
+  cell?: number
+} = {}): string {
+  const [la, lb, lc, ld, le] = faceLabels
+  const boxes: Array<{ c: number; r: number; w: number; h: number; lab: string }> = [
+    { c: 1, r: 0, w: 2, h: 1, lab: la },
+    { c: 0, r: 1, w: 1, h: 2, lab: lb },
+    { c: 1, r: 1, w: 2, h: 2, lab: lc },
+    { c: 3, r: 1, w: 1, h: 2, lab: ld },
+    { c: 1, r: 3, w: 2, h: 1, lab: le },
+  ]
+  const maxC = 4
+  const maxR = 4
+  const pad = 12
+  const w = pad * 2 + maxC * cell
+  const h = pad * 2 + maxR * cell + 28
+  const rects = boxes
+    .map(({ c, r, w: bw, h: bh, lab }) => {
+      const x = pad + c * cell
+      const y = pad + r * cell
+      const tw = bw * cell
+      const th = bh * cell
+      return `<rect x="${x}" y="${y}" width="${tw}" height="${th}" fill="#fff8e1" stroke="#f57c00" stroke-width="2"/>
+  <text x="${x + tw / 2}" y="${y + th / 2 + 5}" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">${lab}</text>`
+    })
+    .join('\n  ')
+  return `<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">
+  ${rects}
+  <text x="${w / 2}" y="${h - 8}" text-anchor="middle" font-size="11" fill="#666">Netz eines dreiseitigen Prismas</text>
+</svg>`
+}

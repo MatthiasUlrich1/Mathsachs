@@ -4,7 +4,7 @@ import {
   generateVectorArrowsSvg,
 } from '../lib/geometrySvg'
 import { formatDe, roundTo } from '../lib/num'
-import { mixedVariants, valueTask, visualTask } from './taskHelpers'
+import { mixedVariants, valueTask, visualTask, coordinateClickTask } from './taskHelpers'
 import type { Grade, Topic } from './types'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
@@ -117,18 +117,35 @@ const nullstelleLinear: Topic = {
     quelle: 'Wikipedia: Nullstelle',
     url: 'https://de.wikipedia.org/wiki/Nullstelle',
   },
-  generate: (rng: Rng) => {
-    const m = nonZero(rng, -6, 6)
-    const x0 = nonZero(rng, -8, 8)
-    const n = -m * x0 // ensures the zero is the integer x0
-    return valueTask({
-      question: `Bestimme die Nullstelle der Funktion f(x) = ${m}x ${n < 0 ? `− ${Math.abs(n)}` : `+ ${n}`}.`,
-      answerKind: 'integer',
-      value: x0,
-      solution: `x = ${x0}`,
-      explanation: `Setze f(x) = 0: ${m}x ${n < 0 ? `− ${Math.abs(n)}` : `+ ${n}`} = 0, also ${m}x = ${-n}, x = ${-n} : ${m} = ${x0}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const m = nonZero(rng, -6, 6)
+      const x0 = nonZero(rng, -8, 8)
+      const n = -m * x0 // ensures the zero is the integer x0
+      return valueTask({
+        question: `Bestimme die Nullstelle der Funktion f(x) = ${m}x ${n < 0 ? `− ${Math.abs(n)}` : `+ ${n}`}.`,
+        answerKind: 'integer',
+        value: x0,
+        solution: `x = ${x0}`,
+        explanation: `Setze f(x) = 0: ${m}x ${n < 0 ? `− ${Math.abs(n)}` : `+ ${n}`} = 0, also ${m}x = ${-n}, x = ${-n} : ${m} = ${x0}.`,
+      })
+    },
+    (rng: Rng) => {
+      const m = nonZero(rng, -3, 3)
+      const x0 = nonZero(rng, -4, 4)
+      const n = -m * x0
+      return coordinateClickTask({
+        question: `Setze die Nullstelle von f(x) = ${num(m)}·x + ${num(n)} im Koordinatensystem.`,
+        x: x0,
+        y: 0,
+        solution: `(${x0}|0)`,
+        explanation: `f(x) = 0 ⇒ x = ${x0}. Die Nullstelle liegt bei (${x0}|0).`,
+        xRange: [-6, 6],
+        yRange: [-6, 6],
+        instruction: 'Tippe den Schnittpunkt mit der x-Achse:',
+      })
+    },
+  ),
 }
 
 const bestimmtesIntegral: Topic = {

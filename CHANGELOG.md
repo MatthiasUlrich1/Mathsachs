@@ -9,6 +9,21 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.24.0] – 2026-09-15
+
+### Neu
+- **Interaktionen nachgezogen**: Winkel A/B/C tippen (Neben/Scheitel); zwei Graphen
+  vergleichen (Steigung A/B); Nullstelle per Punkt setzen; Mantelflächen-Mehrfachauswahl
+  am Prisma-Netz; Mittelsenkrechte-Schritte per Drag&Drop; Glücksrad-Sektor tippen;
+  Betrag/Ordnen auf Zahlenstrahl (K7+); Schieberegler auch bei Funktionswert/Achsenabschnitt.
+- **Widget `multiSelect`**: mehrere Flächen/Optionen tippen.
+- **Testcheckliste**: `docs/TESTCHECKLISTE-grafik-interaktiv.md` (Checkbox + Kommentar,
+  Klasse für Klasse, Gym + OS HS/RS).
+
+### Geändert
+- OS: Zahlengerade/Ordnen → Betrag-Generator; Konstruieren → Mittelsenkrechte-Schritte;
+  HS-Steigung mit A/B-Graphenvergleich.
+
 ## [0.23.0] – 2026-09-15
 
 ### Neu
