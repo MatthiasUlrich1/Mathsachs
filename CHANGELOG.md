@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.23.0] – 2026-09-15
+
+### Neu
+- **Klasse 10 grafisch**: Parabel-Skizze mit Punkten, Rechteck/Quadrat im Koordinatensystem,
+  Glücksrad mit Sektoren zum Erwartungswert.
+- **Klasse 11/12 grafisch**: Ableitung als Tangente am Graphen, Integral als Flächenfüllung,
+  Vektoren als Pfeile.
+- **Oberschule-Diagramme**: echte Kreisdiagramme mit Anteilen (statt Bruch-Torten);
+  Prisma-Netze für Körpernetze/Darstellen; Remaps für Kreis/Zylinder, lineare Funktionen
+  und rechtwinklige Dreiecke bleiben auf die grafischen Gym-Generatoren.
+
 ## [0.22.0] – 2026-09-15
 
 ### Neu

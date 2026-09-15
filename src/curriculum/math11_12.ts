@@ -1,6 +1,10 @@
 import { pick, randInt, type Rng } from '../lib/rng'
+import {
+  generateFunctionGraphSvg,
+  generateVectorArrowsSvg,
+} from '../lib/geometrySvg'
 import { formatDe, roundTo } from '../lib/num'
-import { valueTask } from './taskHelpers'
+import { mixedVariants, valueTask, visualTask } from './taskHelpers'
 import type { Grade, Topic } from './types'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
@@ -55,23 +59,50 @@ const ableitungStelle: Topic = {
     quelle: 'Wikipedia: Ableitung (Mathematik)',
     url: 'https://de.wikipedia.org/wiki/Ableitung_(Mathematik)',
   },
-  generate: (rng: Rng) => {
-    const a = nonZero(rng, -3, 3)
-    const b = nonZero(rng, -4, 4)
-    const c = nonZero(rng, -5, 5)
-    const x0 = nonZero(rng, -3, 3)
-    // f(x) = a x³ + b x² + c x + d  →  f'(x) = 3a x² + 2b x + c
-    const value = 3 * a * x0 * x0 + 2 * b * x0 + c
-    const fStr = `f(x) = ${firstTerm(a, 'x³')}${term(b, 'x²')}${term(c, 'x')} + d`
-    const derivStr = `${firstTerm(3 * a, 'x²')}${term(2 * b, 'x')}${term(c, '')}`
-    return valueTask({
-      question: `Gegeben ist ${fStr}. Berechne die Ableitung an der Stelle x₀ = ${x0}, also f'(${x0}).`,
-      answerKind: 'integer',
-      value,
-      solution: `f'(${x0}) = ${value}`,
-      explanation: `Ableiten mit der Potenzregel: f'(x) = ${derivStr}. Einsetzen von x₀ = ${x0}: f'(${x0}) = ${sumOf([3 * a * x0 * x0, 2 * b * x0, c])} = ${value}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const a = nonZero(rng, -3, 3)
+      const b = nonZero(rng, -4, 4)
+      const c = nonZero(rng, -5, 5)
+      const x0 = nonZero(rng, -3, 3)
+      const value = 3 * a * x0 * x0 + 2 * b * x0 + c
+      const fStr = `f(x) = ${firstTerm(a, 'x³')}${term(b, 'x²')}${term(c, 'x')} + d`
+      const derivStr = `${firstTerm(3 * a, 'x²')}${term(2 * b, 'x')}${term(c, '')}`
+      return valueTask({
+        question: `Gegeben ist ${fStr}. Berechne die Ableitung an der Stelle x₀ = ${x0}, also f'(${x0}).`,
+        answerKind: 'integer',
+        value,
+        solution: `f'(${x0}) = ${value}`,
+        explanation: `Ableiten mit der Potenzregel: f'(x) = ${derivStr}. Einsetzen von x₀ = ${x0}: f'(${x0}) = ${sumOf([3 * a * x0 * x0, 2 * b * x0, c])} = ${value}.`,
+      })
+    },
+    (rng: Rng) => {
+      // Visual: quadratic f(x)=a x² + b x + c with readable tangent
+      const a = pick(rng, [-1, 1, 2])
+      const b = nonZero(rng, -3, 3)
+      const c = randInt(rng, -2, 3)
+      const x0 = randInt(rng, -2, 2)
+      const m = 2 * a * x0 + b
+      const y0 = a * x0 * x0 + b * x0 + c
+      return visualTask({
+        question: `Die rote Gerade ist die Tangente an f(x) = ${firstTerm(a, 'x²')}${term(b, 'x')}${term(c, '')} bei x₀ = ${x0}. Lies die Steigung f'(${x0}) ab bzw. berechne sie.`,
+        answerKind: 'integer',
+        value: m,
+        solution: `f'(${x0}) = ${m}`,
+        explanation: `f'(x) = ${firstTerm(2 * a, 'x')}${term(b, '')}. f'(${x0}) = ${m}. Die Tangente hat Steigung ${m}.`,
+        visualContent: generateFunctionGraphSvg({
+          f: (x) => a * x * x + b * x + c,
+          tangent: { x0, m, label: `m=${m}` },
+          points: [{ x: x0, y: y0, label: 'P' }],
+          xRange: [-4, 4],
+          yRange: [
+            Math.min(-5, y0 - 3, c - 2),
+            Math.max(6, y0 + 3, c + 4),
+          ],
+        }),
+      })
+    },
+  ),
 }
 
 const nullstelleLinear: Topic = {
@@ -112,24 +143,47 @@ const bestimmtesIntegral: Topic = {
     quelle: 'Wikipedia: Bestimmtes Integral',
     url: 'https://de.wikipedia.org/wiki/Integral#Bestimmtes_Integral',
   },
-  generate: (rng: Rng) => {
-    // f(x) = a x² + b x + c with a multiple of 3 and b even → integer result.
-    const a = pick(rng, [-3, 3, 6])
-    const b = pick(rng, [-4, -2, 2, 4])
-    const c = nonZero(rng, -3, 3)
-    const q = randInt(rng, 2, 5)
-    // ∫₀^q f dx = a/3 q³ + b/2 q² + c q
-    const value = Math.round((a / 3) * q ** 3 + (b / 2) * q ** 2 + c * q)
-    const fStr = `${firstTerm(a, 'x²')}${term(b, 'x')}${term(c, '')}`
-    const fatF = `${firstTerm(a / 3, 'x³')}${term(b / 2, 'x²')}${term(c, 'x')}`
-    return valueTask({
-      question: `Berechne das bestimmte Integral ∫₀^${q} (${fStr}) dx.`,
-      answerKind: 'integer',
-      value,
-      solution: `${value}`,
-      explanation: `Stammfunktion: F(x) = ${fatF}. F(${q}) − F(0) = ${sumOf([(a / 3) * q ** 3, (b / 2) * q ** 2, c * q])} = ${value}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const a = pick(rng, [-3, 3, 6])
+      const b = pick(rng, [-4, -2, 2, 4])
+      const c = nonZero(rng, -3, 3)
+      const q = randInt(rng, 2, 5)
+      const value = Math.round((a / 3) * q ** 3 + (b / 2) * q ** 2 + c * q)
+      const fStr = `${firstTerm(a, 'x²')}${term(b, 'x')}${term(c, '')}`
+      const fatF = `${firstTerm(a / 3, 'x³')}${term(b / 2, 'x²')}${term(c, 'x')}`
+      return valueTask({
+        question: `Berechne das bestimmte Integral ∫₀^${q} (${fStr}) dx.`,
+        answerKind: 'integer',
+        value,
+        solution: `${value}`,
+        explanation: `Stammfunktion: F(x) = ${fatF}. F(${q}) − F(0) = ${sumOf([(a / 3) * q ** 3, (b / 2) * q ** 2, c * q])} = ${value}.`,
+      })
+    },
+    (rng: Rng) => {
+      // Simple positive area under f(x)=k (constant) or linear for clear shading
+      const k = randInt(rng, 2, 5)
+      const q = randInt(rng, 2, 5)
+      const value = k * q
+      return visualTask({
+        question: `Die Fläche unter der Geraden f(x) = ${k} von 0 bis ${q} ist markiert. Berechne ∫₀^${q} ${k} dx.`,
+        answerKind: 'integer',
+        value,
+        solution: `${value}`,
+        explanation: `∫₀^${q} ${k} dx = ${k} · x |₀^${q} = ${k}·${q} = ${value} (Rechteckfläche).`,
+        visualContent: generateFunctionGraphSvg({
+          f: () => k,
+          shade: { a: 0, b: q },
+          xRange: [-1, q + 2],
+          yRange: [-1, k + 3],
+          points: [
+            { x: 0, y: 0, label: '0' },
+            { x: q, y: 0, label: String(q) },
+          ],
+        }),
+      })
+    },
+  ),
 }
 
 // ---------------------------------------------------------------------------
@@ -148,19 +202,40 @@ const skalarprodukt: Topic = {
     quelle: 'Wikipedia: Skalarprodukt',
     url: 'https://de.wikipedia.org/wiki/Skalarprodukt',
   },
-  generate: (rng: Rng) => {
-    const a = [nonZero(rng, -6, 6), nonZero(rng, -6, 6), nonZero(rng, -6, 6)]
-    const b = [nonZero(rng, -6, 6), nonZero(rng, -6, 6), nonZero(rng, -6, 6)]
-    const value = a[0] * b[0] + a[1] * b[1] + a[2] * b[2]
-    const products = [a[0] * b[0], a[1] * b[1], a[2] * b[2]]
-    return valueTask({
-      question: `Berechne das Skalarprodukt der Vektoren a = ${vec(a)} und b = ${vec(b)}.`,
-      answerKind: 'integer',
-      value,
-      solution: `${value}`,
-      explanation: `a · b = ${num(a[0])}·${num(b[0])} + ${num(a[1])}·${num(b[1])} + ${num(a[2])}·${num(b[2])} = ${sumOf(products)} = ${value}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const a = [nonZero(rng, -6, 6), nonZero(rng, -6, 6), nonZero(rng, -6, 6)]
+      const b = [nonZero(rng, -6, 6), nonZero(rng, -6, 6), nonZero(rng, -6, 6)]
+      const value = a[0] * b[0] + a[1] * b[1] + a[2] * b[2]
+      const products = [a[0] * b[0], a[1] * b[1], a[2] * b[2]]
+      return valueTask({
+        question: `Berechne das Skalarprodukt der Vektoren a = ${vec(a)} und b = ${vec(b)}.`,
+        answerKind: 'integer',
+        value,
+        solution: `${value}`,
+        explanation: `a · b = ${num(a[0])}·${num(b[0])} + ${num(a[1])}·${num(b[1])} + ${num(a[2])}·${num(b[2])} = ${sumOf(products)} = ${value}.`,
+      })
+    },
+    (rng: Rng) => {
+      // 2D sketch: a·b = a1 b1 + a2 b2
+      const a = [nonZero(rng, -4, 4), nonZero(rng, -4, 4)]
+      const b = [nonZero(rng, -4, 4), nonZero(rng, -4, 4)]
+      const value = a[0] * b[0] + a[1] * b[1]
+      return visualTask({
+        question: `Die Vektoren a = (${minus(a[0])}; ${minus(a[1])}) und b = (${minus(b[0])}; ${minus(b[1])}) sind skizziert. Berechne a · b.`,
+        answerKind: 'integer',
+        value,
+        solution: `${value}`,
+        explanation: `a · b = ${num(a[0])}·${num(b[0])} + ${num(a[1])}·${num(b[1])} = ${value}.`,
+        visualContent: generateVectorArrowsSvg({
+          vectors: [
+            { x: a[0], y: a[1], label: 'a' },
+            { x: b[0], y: b[1], label: 'b' },
+          ],
+        }),
+      })
+    },
+  ),
 }
 
 // 3D vectors with integer magnitude, to keep the answer exact.
@@ -185,19 +260,43 @@ const betragVektor: Topic = {
     quelle: 'Wikipedia: Euklidische Norm',
     url: 'https://de.wikipedia.org/wiki/Euklidische_Norm',
   },
-  generate: (rng: Rng) => {
-    const [x, y, z, mag] = pick(rng, VEC3)
-    const sx = rng() < 0.5 ? -x : x
-    const sy = rng() < 0.5 ? -y : y
-    const sz = rng() < 0.5 ? -z : z
-    return valueTask({
-      question: `Berechne den Betrag (die Länge) des Vektors v = ${vec([sx, sy, sz])}.`,
-      answerKind: 'integer',
-      value: mag,
-      solution: `${mag}`,
-      explanation: `|v| = √(${sq(sx)} + ${sq(sy)} + ${sq(sz)}) = √(${sx * sx} + ${sy * sy} + ${sz * sz}) = √${sx * sx + sy * sy + sz * sz} = ${mag}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const [x, y, z, mag] = pick(rng, VEC3)
+      const sx = rng() < 0.5 ? -x : x
+      const sy = rng() < 0.5 ? -y : y
+      const sz = rng() < 0.5 ? -z : z
+      return valueTask({
+        question: `Berechne den Betrag (die Länge) des Vektors v = ${vec([sx, sy, sz])}.`,
+        answerKind: 'integer',
+        value: mag,
+        solution: `${mag}`,
+        explanation: `|v| = √(${sq(sx)} + ${sq(sy)} + ${sq(sz)}) = √(${sx * sx} + ${sy * sy} + ${sz * sz}) = √${sx * sx + sy * sy + sz * sz} = ${mag}.`,
+      })
+    },
+    (rng: Rng) => {
+      // 2D Pythagorean triples for a clear arrow sketch
+      const triples: Array<[number, number, number]> = [
+        [3, 4, 5],
+        [5, 12, 13],
+        [6, 8, 10],
+        [8, 15, 17],
+      ]
+      const [x, y, mag] = pick(rng, triples)
+      const sx = rng() < 0.5 ? -x : x
+      const sy = rng() < 0.5 ? -y : y
+      return visualTask({
+        question: `Der Vektor v = (${minus(sx)}; ${minus(sy)}) ist skizziert. Berechne |v|.`,
+        answerKind: 'integer',
+        value: mag,
+        solution: `${mag}`,
+        explanation: `|v| = √(${sq(sx)} + ${sq(sy)}) = ${mag}.`,
+        visualContent: generateVectorArrowsSvg({
+          vectors: [{ x: sx, y: sy, label: 'v' }],
+        }),
+      })
+    },
+  ),
 }
 
 // ---------------------------------------------------------------------------

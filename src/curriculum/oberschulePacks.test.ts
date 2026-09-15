@@ -142,6 +142,28 @@ describe('Oberschule Sachsen Lehrplan packs', () => {
     }
   })
 
+  it('uses real pie charts for Kreisdiagramm (not fraction pies)', () => {
+    const gen = OS_CUSTOM_GENERATORS['os-hs-k7-lb2-kreisdiagramm']
+    expect(gen).toBeDefined()
+    for (let seed = 1; seed <= 15; seed++) {
+      const task = gen!(createRng(seed))
+      expect(task.check(task.sampleAnswer)).toBe(true)
+      expect(task.visualContent).toMatch(/Sport:|Musik:|Bus:|Bahn:|Rot:|Blau:|[ABC]:/)
+      expect(task.question).toMatch(/Kreisdiagramm|Anteil/)
+    }
+  })
+
+  it('uses prism-net choices for Körpernetze', () => {
+    const gen = OS_CUSTOM_GENERATORS['os-hs-k7-lb4-netze']
+    expect(gen).toBeDefined()
+    for (let seed = 1; seed <= 12; seed++) {
+      const task = gen!(createRng(seed))
+      expect(task.check(task.sampleAnswer)).toBe(true)
+      expect(task.visualContent).toContain('<rect')
+      expect(task.interactive?.type).toBe('choicePick')
+    }
+  })
+
   it('wires composite geometry and graphical fractions into both tracks', async () => {
     const catalog = await gymGeneratorCatalog()
     expect(OS_GENERATOR_MAP['os-hs-k7-lb1-flaeche']).toBe('lb4-flaeche-zusammengesetzt')
@@ -160,6 +182,10 @@ describe('Oberschule Sachsen Lehrplan packs', () => {
     expect(OS_GENERATOR_MAP['os-k5-lb3-wuerfel']).toBe('lb4-wuerfelnetz')
     expect(OS_CUSTOM_GENERATORS['os-hs-k9-lb3-steigung']).toBeDefined()
     expect(OS_CUSTOM_GENERATORS['os-hs-k7-lb3-koordinaten']).toBeDefined()
+    expect(OS_CUSTOM_GENERATORS['os-hs-k7-lb2-kreisdiagramm']).toBeDefined()
+    expect(OS_CUSTOM_GENERATORS['os-rs-k7-lb1-kreisdiagramm']).toBeDefined()
+    expect(OS_CUSTOM_GENERATORS['os-hs-k7-lb1-netze']).toBeDefined()
+    expect(OS_CUSTOM_GENERATORS['os-rs-k7-lb4-darstellen']).toBeDefined()
     for (const id of [
       'lb4-flaeche-zusammengesetzt',
       'lb4-volumen-zusammengesetzt',

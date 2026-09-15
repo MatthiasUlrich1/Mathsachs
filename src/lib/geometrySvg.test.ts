@@ -32,6 +32,13 @@ import {
   generateRightTriangleSvg,
   generateCircleMeasureSvg,
   generateCylinderSvg,
+  generateParabolaSvg,
+  generateSpinnerSvg,
+  generatePieChartSvg,
+  generateFunctionGraphSvg,
+  generateVectorArrowsSvg,
+  generateGridRectSvg,
+  generatePrismNetChoicesSvg,
   segmentLength,
   reflectPointAcross,
   pointReflectAcross,
@@ -834,6 +841,83 @@ describe('geometrySvg', () => {
       expect(svg).toContain('r = 3 cm')
       expect(svg).toContain('h = 8 cm')
       expect(svg).toContain('<ellipse')
+    })
+  })
+
+  describe('Gym 10–12 / OS diagram helpers', () => {
+    it('draws a parabola with labeled points', () => {
+      const svg = generateParabolaSvg({
+        a: 1,
+        c: 0,
+        points: [{ x: 2, y: 4, label: 'P' }],
+      })
+      expect(svg).toContain('<polyline')
+      expect(svg).toContain('>P</text>')
+    })
+
+    it('draws a Glücksrad with sector labels', () => {
+      const svg = generateSpinnerSvg({ payoffs: ['1€', '2€', '3€', '4€'] })
+      expect(svg).toContain('1€')
+      expect(svg).toContain('<path')
+    })
+
+    it('draws a labeled pie chart with percentages', () => {
+      const svg = generatePieChartSvg({
+        slices: [
+          { value: 40, label: 'Sport' },
+          { value: 35, label: 'Musik' },
+          { value: 25, label: 'Lesen' },
+        ],
+      })
+      expect(svg).toContain('Sport: 40%')
+      expect(svg).toContain('Musik: 35%')
+      expect(svg).toContain('<path')
+    })
+
+    it('draws a function graph with tangent and shade', () => {
+      const svg = generateFunctionGraphSvg({
+        f: (x) => x * x,
+        tangent: { x0: 1, m: 2, label: 'm=2' },
+        shade: { a: 0, b: 2 },
+        points: [{ x: 1, y: 1, label: 'P' }],
+      })
+      expect(svg).toContain('stroke-dasharray')
+      expect(svg).toContain('<polygon')
+      expect(svg).toContain('m=2')
+    })
+
+    it('draws vector arrows', () => {
+      const svg = generateVectorArrowsSvg({
+        vectors: [
+          { x: 3, y: 1, label: 'a' },
+          { x: 1, y: 2, label: 'b' },
+        ],
+      })
+      expect(svg).toContain('marker-end')
+      expect(svg).toContain('>a</text>')
+    })
+
+    it('draws a rectangle on the grid', () => {
+      const svg = generateGridRectSvg({
+        x: 1,
+        y: 1,
+        width: 4,
+        height: 3,
+        widthLabel: 'a=4',
+        heightLabel: 'b=3',
+      })
+      expect(svg).toContain('<polygon')
+      expect(svg).toContain('a=4')
+    })
+
+    it('builds prism-net choice SVGs', () => {
+      const html = generatePrismNetChoicesSvg([
+        { kind: 'valid', label: 'A' },
+        { kind: 'invalid', label: 'B' },
+      ])
+      expect(html).toContain('>A</text>')
+      expect(html).toContain('>B</text>')
+      expect(html).toContain('<rect')
     })
   })
 })

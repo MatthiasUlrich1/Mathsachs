@@ -3478,4 +3478,446 @@ export function generateCubeNetChoicesSvg(
   return `<div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:flex-end">${parts.join('')}</div>`
 }
 
+// ---------------------------------------------------------------------------
+// Gym 10–12 + OS: Parabel, Glücksrad, Pie, Tangente, Integral, Vektoren
+// ---------------------------------------------------------------------------
+
+export interface ParabolaSvgProps {
+  /** Coefficient a in f(x) = a·x² + c */
+  a: number
+  /** Vertical shift c */
+  c?: number
+  /** Optional points on the curve */
+  points?: Array<{ x: number; y: number; label?: string }>
+  xRange?: [number, number]
+  yRange?: [number, number]
+  cellSize?: number
+  stroke?: string
+}
+
+/** Graph of f(x) = a·x² + c on a coordinate grid with optional points. */
+export function generateParabolaSvg({
+  a,
+  c = 0,
+  points = [],
+  xRange,
+  yRange,
+  cellSize = 28,
+  stroke = '#1565c0',
+}: ParabolaSvgProps): string {
+  const xs = points.map((p) => p.x)
+  const ys = [c, ...points.map((p) => p.y)]
+  for (let x = -4; x <= 4; x++) ys.push(a * x * x + c)
+  const autoX = Math.max(5, ...xs.map(Math.abs), 4) + 1
+  const autoY = Math.max(5, ...ys.map((y) => Math.abs(y))) + 1
+  const xr: [number, number] = xRange ?? [-autoX, autoX]
+  const yr: [number, number] = yRange ?? [-autoY, autoY]
+  const { xMin, xMax, yMin, yMax } = gridBounds(xr, yr)
+
+  let base = generateCoordinateGridSvg({
+    xRange: xr,
+    yRange: yr,
+    points,
+    cellSize,
+  })
+
+  const padL = 36
+  const padT = 28
+  const toSvg = (mx: number, my: number): [number, number] => [
+    padL + (mx - xMin) * cellSize,
+    padT + (yMax - my) * cellSize,
+  ]
+
+  const curve: string[] = []
+  const steps = Math.max(40, (xMax - xMin) * 8)
+  for (let i = 0; i <= steps; i++) {
+    const x = xMin + (i / steps) * (xMax - xMin)
+    const y = a * x * x + c
+    if (y < yMin - 0.5 || y > yMax + 0.5) continue
+    const [sx, sy] = toSvg(x, Math.max(yMin, Math.min(yMax, y)))
+    curve.push(`${sx},${sy}`)
+  }
+  if (curve.length >= 2) {
+    base = base.replace(
+      '</svg>',
+      `  <polyline points="${curve.join(' ')}" fill="none" stroke="${stroke}" stroke-width="2.5"/>\n</svg>`,
+    )
+  }
+  return base
+}
+
+export interface SpinnerSvgProps {
+  /** Payoff label per equal sector (clockwise from +x). */
+  payoffs: Array<string | number>
+  /** Optional highlight index */
+  highlightIndex?: number
+  size?: number
+}
+
+/** Glücksrad with equal sectors and payoff labels. */
+export function generateSpinnerSvg({
+  payoffs,
+  highlightIndex,
+  size = 260,
+}: SpinnerSvgProps): string {
+  const n = Math.max(2, payoffs.length)
+  const cx = size / 2
+  const cy = size / 2
+  const r = size * 0.38
+  const colors = ['#bbdefb', '#c8e6c9', '#ffe0b2', '#f8bbd0', '#d1c4e9', '#b2ebf2', '#fff9c4', '#ffccbc']
+  const slices: string[] = []
+  for (let i = 0; i < n; i++) {
+    const a0 = (i / n) * 2 * Math.PI - Math.PI / 2
+    const a1 = ((i + 1) / n) * 2 * Math.PI - Math.PI / 2
+    const x0 = cx + r * Math.cos(a0)
+    const y0 = cy + r * Math.sin(a0)
+    const x1 = cx + r * Math.cos(a1)
+    const y1 = cy + r * Math.sin(a1)
+    const large = 2 * Math.PI / n > Math.PI ? 1 : 0
+    const fill = colors[i % colors.length]
+    const stroke = highlightIndex === i ? '#c62828' : '#455a64'
+    const sw = highlightIndex === i ? 3 : 1.5
+    slices.push(
+      `<path d="M ${cx},${cy} L ${x0},${y0} A ${r},${r} 0 ${large},1 ${x1},${y1} Z" fill="${fill}" stroke="${stroke}" stroke-width="${sw}"/>`,
+    )
+    const am = (a0 + a1) / 2
+    const lx = cx + r * 0.62 * Math.cos(am)
+    const ly = cy + r * 0.62 * Math.sin(am)
+    slices.push(
+      `<text x="${lx}" y="${ly + 5}" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">${payoffs[i]}</text>`,
+    )
+  }
+  return `
+<svg width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg">
+  ${slices.join('\n  ')}
+  <circle cx="${cx}" cy="${cy}" r="6" fill="#37474f"/>
+</svg>`.trim()
+}
+
+export interface PieChartSvgProps {
+  /** Slices with value (relative) and label */
+  slices: Array<{ value: number; label: string; color?: string }>
+  size?: number
+}
+
+/** Labeled pie chart for Anteile / Kreisdiagramm (not equal-slice fraction pies). */
+export function generatePieChartSvg({ slices, size = 280 }: PieChartSvgProps): string {
+  const total = slices.reduce((s, x) => s + x.value, 0) || 1
+  const cx = size / 2
+  const cy = size / 2 - 8
+  const r = size * 0.34
+  const defaults = ['#42a5f5', '#66bb6a', '#ffa726', '#ab47bc', '#ef5350', '#26c6da']
+  let angle = -Math.PI / 2
+  const parts: string[] = []
+  slices.forEach((sl, i) => {
+    const frac = sl.value / total
+    const a0 = angle
+    const a1 = angle + frac * 2 * Math.PI
+    angle = a1
+    const x0 = cx + r * Math.cos(a0)
+    const y0 = cy + r * Math.sin(a0)
+    const x1 = cx + r * Math.cos(a1)
+    const y1 = cy + r * Math.sin(a1)
+    const large = frac > 0.5 ? 1 : 0
+    const fill = sl.color ?? defaults[i % defaults.length]
+    if (frac >= 1 - 1e-9) {
+      parts.push(`<circle cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" stroke="#455a64" stroke-width="1.5"/>`)
+    } else if (frac > 1e-9) {
+      parts.push(
+        `<path d="M ${cx},${cy} L ${x0},${y0} A ${r},${r} 0 ${large},1 ${x1},${y1} Z" fill="${fill}" stroke="#455a64" stroke-width="1.5"/>`,
+      )
+    }
+  })
+  const legendSvg = slices
+    .map((sl, i) => {
+      const pct = Math.round((sl.value / total) * 100)
+      const fill = sl.color ?? defaults[i % defaults.length]
+      const y = size - 8 - (slices.length - 1 - i) * 15
+      return `<rect x="14" y="${y - 10}" width="10" height="10" fill="${fill}"/><text x="30" y="${y}" font-size="12" fill="#333">${sl.label}: ${pct}%</text>`
+    })
+    .join('\n  ')
+  return `
+<svg width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg">
+  ${parts.join('\n  ')}
+  ${legendSvg}
+</svg>`.trim()
+}
+
+export interface FunctionGraphSvgProps {
+  /** Sampled y = f(x) */
+  f: (x: number) => number
+  xRange?: [number, number]
+  yRange?: [number, number]
+  cellSize?: number
+  stroke?: string
+  /** Optional tangent at x0 with slope m */
+  tangent?: { x0: number; m: number; label?: string }
+  /** Optional shaded area between a and b under the curve (and x-axis) */
+  shade?: { a: number; b: number; fill?: string }
+  points?: Array<{ x: number; y: number; label?: string }>
+}
+
+/** Smooth function graph with optional tangent and integral shading. */
+export function generateFunctionGraphSvg({
+  f,
+  xRange = [-4, 6],
+  yRange = [-4, 8],
+  cellSize = 28,
+  stroke = '#1565c0',
+  tangent,
+  shade,
+  points = [],
+}: FunctionGraphSvgProps): string {
+  const { xMin, xMax, yMin, yMax } = gridBounds(xRange, yRange)
+  let base = generateCoordinateGridSvg({
+    xRange,
+    yRange,
+    points,
+    cellSize,
+  })
+  const padL = 36
+  const padT = 28
+  const toSvg = (mx: number, my: number): [number, number] => [
+    padL + (mx - xMin) * cellSize,
+    padT + (yMax - my) * cellSize,
+  ]
+
+  const extras: string[] = []
+
+  if (shade) {
+    const a = Math.max(xMin, shade.a)
+    const b = Math.min(xMax, shade.b)
+    const poly: string[] = []
+    const [ax0, ay0] = toSvg(a, 0)
+    poly.push(`${ax0},${ay0}`)
+    const steps = 32
+    for (let i = 0; i <= steps; i++) {
+      const x = a + (i / steps) * (b - a)
+      const y = Math.max(yMin, Math.min(yMax, f(x)))
+      const [sx, sy] = toSvg(x, y)
+      poly.push(`${sx},${sy}`)
+    }
+    const [bx0, by0] = toSvg(b, 0)
+    poly.push(`${bx0},${by0}`)
+    extras.push(
+      `<polygon points="${poly.join(' ')}" fill="${shade.fill ?? '#90caf9'}" fill-opacity="0.45" stroke="none"/>`,
+    )
+  }
+
+  const curve: string[] = []
+  const steps = Math.max(48, (xMax - xMin) * 10)
+  for (let i = 0; i <= steps; i++) {
+    const x = xMin + (i / steps) * (xMax - xMin)
+    const y = f(x)
+    if (y < yMin - 1 || y > yMax + 1) {
+      if (curve.length >= 2) {
+        extras.push(
+          `<polyline points="${curve.join(' ')}" fill="none" stroke="${stroke}" stroke-width="2.5"/>`,
+        )
+        curve.length = 0
+      }
+      continue
+    }
+    const [sx, sy] = toSvg(x, Math.max(yMin, Math.min(yMax, y)))
+    curve.push(`${sx},${sy}`)
+  }
+  if (curve.length >= 2) {
+    extras.push(
+      `<polyline points="${curve.join(' ')}" fill="none" stroke="${stroke}" stroke-width="2.5"/>`,
+    )
+  }
+
+  if (tangent) {
+    const { x0, m } = tangent
+    const y0 = f(x0)
+    const seg = clipLineToRect(m, y0 - m * x0, xMin, xMax, yMin, yMax)
+    if (seg) {
+      const [p, q] = seg
+      const [x1, y1] = toSvg(p[0], p[1])
+      const [x2, y2] = toSvg(q[0], q[1])
+      extras.push(
+        `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#c62828" stroke-width="2" stroke-dasharray="6 4"/>`,
+      )
+    }
+    const [tx, ty] = toSvg(x0, y0)
+    extras.push(`<circle cx="${tx}" cy="${ty}" r="4.5" fill="#c62828"/>`)
+    if (tangent.label) {
+      extras.push(
+        `<text x="${tx + 8}" y="${ty - 8}" font-size="12" font-weight="bold" fill="#c62828">${tangent.label}</text>`,
+      )
+    }
+  }
+
+  if (extras.length === 0) return base
+  return base.replace('</svg>', `  ${extras.join('\n  ')}\n</svg>`)
+}
+
+export interface VectorArrowsSvgProps {
+  /** Vectors from origin (or from optional `from`) */
+  vectors: Array<{
+    x: number
+    y: number
+    label?: string
+    stroke?: string
+    from?: [number, number]
+  }>
+  xRange?: [number, number]
+  yRange?: [number, number]
+  cellSize?: number
+}
+
+/** 2D vector arrows on a coordinate grid (for Betrag / Skalarprodukt sketches). */
+export function generateVectorArrowsSvg({
+  vectors,
+  xRange,
+  yRange,
+  cellSize = 32,
+}: VectorArrowsSvgProps): string {
+  const xs = vectors.flatMap((v) => [v.from?.[0] ?? 0, (v.from?.[0] ?? 0) + v.x])
+  const ys = vectors.flatMap((v) => [v.from?.[1] ?? 0, (v.from?.[1] ?? 0) + v.y])
+  const auto = Math.max(4, ...xs.map(Math.abs), ...ys.map(Math.abs)) + 1
+  const xr: [number, number] = xRange ?? [-auto, auto]
+  const yr: [number, number] = yRange ?? [-auto, auto]
+  const { xMin, yMax } = gridBounds(xr, yr)
+  let base = generateCoordinateGridSvg({ xRange: xr, yRange: yr, cellSize })
+  const padL = 36
+  const padT = 28
+  const toSvg = (mx: number, my: number): [number, number] => [
+    padL + (mx - xMin) * cellSize,
+    padT + (yMax - my) * cellSize,
+  ]
+  const colors = ['#1565c0', '#c62828', '#2e7d32']
+  const extras: string[] = [
+    `<defs>
+    <marker id="vecArrow0" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="#1565c0"/></marker>
+    <marker id="vecArrow1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="#c62828"/></marker>
+    <marker id="vecArrow2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="#2e7d32"/></marker>
+  </defs>`,
+  ]
+  vectors.forEach((v, i) => {
+    const ox = v.from?.[0] ?? 0
+    const oy = v.from?.[1] ?? 0
+    const [x1, y1] = toSvg(ox, oy)
+    const [x2, y2] = toSvg(ox + v.x, oy + v.y)
+    const color = v.stroke ?? colors[i % colors.length]
+    const marker = `vecArrow${i % 3}`
+    extras.push(
+      `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="2.5" marker-end="url(#${marker})"/>`,
+    )
+    if (v.label) {
+      extras.push(
+        `<text x="${(x1 + x2) / 2 + 8}" y="${(y1 + y2) / 2 - 6}" font-size="13" font-weight="bold" fill="${color}">${v.label}</text>`,
+      )
+    }
+  })
+  return base.replace('</svg>', `  ${extras.join('\n  ')}\n</svg>`)
+}
+
+export interface GridRectSvgProps {
+  /** Bottom-left corner in grid coords */
+  x: number
+  y: number
+  width: number
+  height: number
+  widthLabel?: string
+  heightLabel?: string
+  xRange?: [number, number]
+  yRange?: [number, number]
+  cellSize?: number
+}
+
+/** Axis-aligned rectangle (or square) on the coordinate grid. */
+export function generateGridRectSvg({
+  x,
+  y,
+  width,
+  height,
+  widthLabel,
+  heightLabel,
+  xRange,
+  yRange,
+  cellSize = 32,
+}: GridRectSvgProps): string {
+  const maxX = x + width
+  const maxY = y + height
+  const xr: [number, number] = xRange ?? [Math.min(-1, x - 1), Math.max(8, maxX + 1)]
+  const yr: [number, number] = yRange ?? [Math.min(-1, y - 1), Math.max(8, maxY + 1)]
+  return generateCoordinateGridSvg({
+    xRange: xr,
+    yRange: yr,
+    cellSize,
+    polygons: [
+      {
+        points: [
+          [x, y],
+          [x + width, y],
+          [x + width, y + height],
+          [x, y + height],
+        ],
+        fill: '#fff3e0',
+        stroke: '#f57c00',
+        opacity: 0.55,
+        label: widthLabel && heightLabel ? undefined : undefined,
+      },
+    ],
+    points: [
+      ...(widthLabel
+        ? [{ x: x + width / 2, y: y - 0.35, label: widthLabel }]
+        : []),
+      ...(heightLabel
+        ? [{ x: x + width + 0.35, y: y + height / 2, label: heightLabel }]
+        : []),
+    ],
+  })
+}
+
+/** Simple triangular prism net (2 triangles + 3 rectangles) as choice option. */
+export function generatePrismNetSvg(
+  kind: 'valid' | 'invalid',
+  { label, cell = 22 }: { label?: string; cell?: number } = {},
+): string {
+  // valid: triangle - rect - triangle row with two side rects; simplified strip
+  const layouts: Record<'valid' | 'invalid', Array<[number, number, number, number]>> = {
+    // [col, row, w, h] in cell units — rectangles only approximation of net
+    valid: [
+      [1, 0, 2, 1],
+      [0, 1, 1, 2],
+      [1, 1, 2, 2],
+      [3, 1, 1, 2],
+      [1, 3, 2, 1],
+    ],
+    invalid: [
+      [0, 0, 2, 2],
+      [2, 0, 2, 2],
+      [0, 2, 2, 2],
+    ],
+  }
+  const boxes = layouts[kind]
+  const maxC = Math.max(...boxes.map(([c, , w]) => c + w))
+  const maxR = Math.max(...boxes.map(([, r, , h]) => r + h))
+  const pad = 10
+  const labelH = label ? 20 : 0
+  const w = pad * 2 + maxC * cell
+  const h = pad * 2 + maxR * cell + labelH
+  const fill = kind === 'valid' ? '#c8e6c9' : '#ffcdd2'
+  const stroke = kind === 'valid' ? '#2e7d32' : '#c62828'
+  const rects = boxes
+    .map(
+      ([c, r, bw, bh]) =>
+        `<rect x="${pad + c * cell}" y="${pad + r * cell}" width="${bw * cell}" height="${bh * cell}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>`,
+    )
+    .join('\n  ')
+  const lab = label
+    ? `<text x="${w / 2}" y="${h - 4}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${label}</text>`
+    : ''
+  return `<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">${rects}${lab}</svg>`
+}
+
+export function generatePrismNetChoicesSvg(
+  options: Array<{ kind: 'valid' | 'invalid'; label: string }>,
+): string {
+  const parts = options.map((o) => generatePrismNetSvg(o.kind, { label: o.label }))
+  return `<div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:flex-end">${parts.join('')}</div>`
+}
+
 

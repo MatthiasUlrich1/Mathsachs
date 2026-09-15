@@ -1,8 +1,10 @@
 import {
   generateLinearFunctionSvg,
+  generatePieChartSvg,
   generatePointsOnGridSvg,
+  generatePrismNetChoicesSvg,
 } from '../lib/geometrySvg'
-import { randInt, type Rng } from '../lib/rng'
+import { pick, randInt, type Rng } from '../lib/rng'
 import { bundledCurricula } from './bundled'
 import {
   choicePickTask,
@@ -60,7 +62,7 @@ const nonZero = (rng: Rng, min: number, max: number): number => {
   return v
 }
 
-const num = (n: number): string => (n < 0 ? `(âˆ’${Math.abs(n)})` : `${n}`)
+const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
 
 /** HS: smaller slope / intercept ranges (easier than Gym/RS). */
 const hsLinearSteigung: Topic['generate'] = mixedVariants(
@@ -72,11 +74,11 @@ const hsLinearSteigung: Topic['generate'] = mixedVariants(
     const y1 = randInt(rng, 0, 6)
     const y2 = y1 + m * (x2 - x1)
     return valueTask({
-      question: `Eine Gerade verlÃ¤uft durch P(${x1} | ${y1}) und Q(${x2} | ${y2}). Berechne die Steigung m.`,
+      question: `Eine Gerade verläuft durch P(${x1} | ${y1}) und Q(${x2} | ${y2}). Berechne die Steigung m.`,
       answerKind: 'integer',
       value: m,
       solution: `m = ${m}`,
-      explanation: `m = (${y2} âˆ’ ${y1}) : (${x2} âˆ’ ${x1}) = ${m}.`,
+      explanation: `m = (${y2} − ${y1}) : (${x2} − ${x1}) = ${m}.`,
     })
   },
   (rng: Rng) => {
@@ -87,7 +89,7 @@ const hsLinearSteigung: Topic['generate'] = mixedVariants(
       answerKind: 'integer',
       value: m,
       solution: `m = ${m}`,
-      explanation: `m = Î”y : Î”x = ${m}.`,
+      explanation: `m = Δy : Δx = ${m}.`,
       visualContent: generateLinearFunctionSvg({
         m,
         n,
@@ -111,7 +113,7 @@ const hsLinearAchsen: Topic['generate'] = mixedVariants(
       answerKind: 'integer',
       value: n,
       solution: `n = ${n}`,
-      explanation: `n = y âˆ’ mÂ·x = ${y} âˆ’ ${m}Â·${x} = ${n}.`,
+      explanation: `n = y − m·x = ${y} − ${m}·${x} = ${n}.`,
     })
   },
   (rng: Rng) => {
@@ -141,18 +143,18 @@ const hsLinearFunktionswert: Topic['generate'] = mixedVariants(
     const x = randInt(rng, 1, 5)
     const value = m * x + n
     return valueTask({
-      question: `Gegeben ist f(x) = ${num(m)}Â·x + ${num(n)}. Berechne f(${x}).`,
+      question: `Gegeben ist f(x) = ${num(m)}·x + ${num(n)}. Berechne f(${x}).`,
       answerKind: 'integer',
       value,
       solution: String(value),
-      explanation: `f(${x}) = ${num(m)}Â·${x} + ${num(n)} = ${value}.`,
+      explanation: `f(${x}) = ${num(m)}·${x} + ${num(n)} = ${value}.`,
     })
   },
   (rng: Rng) => {
     const m = nonZero(rng, -2, 2)
     const n = randInt(rng, 0, 4)
     return paramSliderTask({
-      question: `Stelle m und n so ein, dass f(x) = ${num(m)}Â·x + ${num(n)} entsteht.`,
+      question: `Stelle m und n so ein, dass f(x) = ${num(m)}·x + ${num(n)} entsteht.`,
       params: [
         { id: 'm', label: 'Steigung m', min: -3, max: 3, step: 1, start: 0 },
         { id: 'n', label: 'Achsenabschnitt n', min: 0, max: 5, step: 1, start: 0 },
@@ -161,7 +163,7 @@ const hsLinearFunktionswert: Topic['generate'] = mixedVariants(
       solution: `m = ${m}, n = ${n}`,
       explanation: `m = ${m}, n = ${n}.`,
       preview: 'linear',
-      instruction: 'Kleine Wertebereiche â€” stelle beide Regler ein:',
+      instruction: 'Kleine Wertebereiche — stelle beide Regler ein:',
     })
   },
 )
@@ -202,6 +204,68 @@ const osQ1CoordinatePlace: Topic['generate'] = mixedVariants(
     })
   },
 )
+
+/** Kreisdiagramm mit echten Anteilen / Prozenten. */
+const osPieAnteil: Topic['generate'] = (rng: Rng) => {
+  const labels = pick(rng, [
+    ['Sport', 'Musik', 'Lesen'],
+    ['Bus', 'Bahn', 'Auto'],
+    ['Rot', 'Blau', 'Grün'],
+    ['A', 'B', 'C'],
+  ])
+  // Parts that sum to 100
+  const p1 = pick(rng, [20, 25, 30, 40])
+  const p2 = pick(rng, [20, 25, 30, 40])
+  let p3 = 100 - p1 - p2
+  if (p3 <= 0) {
+    p3 = 20
+  }
+  // renormalize if needed
+  const raw = [p1, p2, Math.max(10, p3)]
+  const sum = raw.reduce((s, x) => s + x, 0)
+  const parts = raw.map((x) => Math.round((x / sum) * 100))
+  // fix rounding drift
+  parts[2] = 100 - parts[0] - parts[1]
+  const askIdx = randInt(rng, 0, 2)
+  const value = parts[askIdx]
+  return visualTask({
+    question: `Im Kreisdiagramm: Wie groß ist der Anteil von „${labels[askIdx]}“ in Prozent?`,
+    unit: '%',
+    answerKind: 'integer',
+    value,
+    solution: `${value} %`,
+    explanation: `Die Anteile sind ${labels.map((l, i) => `${l}=${parts[i]}%`).join(', ')}.`,
+    visualContent: generatePieChartSvg({
+      slices: labels.map((label, i) => ({ value: parts[i], label })),
+    }),
+  })
+}
+
+/** Prisma-Netz erkennen (gültig vs. ungültig). */
+const osPrismNetz: Topic['generate'] = (rng: Rng) => {
+  const options: Array<{ kind: 'valid' | 'invalid'; label: string }> = [
+    { kind: 'valid', label: 'A' },
+    { kind: 'invalid', label: 'B' },
+    { kind: 'invalid', label: 'C' },
+  ]
+  for (let i = options.length - 1; i > 0; i--) {
+    const j = randInt(rng, 0, i)
+    ;[options[i], options[j]] = [options[j], options[i]]
+  }
+  options.forEach((o, i) => {
+    o.label = String.fromCharCode(65 + i)
+  })
+  const correct = options.find((o) => o.kind === 'valid')!.label
+  return choicePickTask({
+    question: 'Welches Netz lässt sich zu einem dreiseitigen Prisma falten?',
+    choices: ['A', 'B', 'C'],
+    correct,
+    solution: correct,
+    explanation: `Nur Netz ${correct} ist ein gültiges Prisma-Netz.`,
+    visualContent: generatePrismNetChoicesSvg(options),
+    instruction: 'Tippe den Buchstaben des faltbaren Netzes:',
+  })
+}
 
 /**
  * OS-specific generators that adapt Gymnasium tasks (ranges / variants)
@@ -275,9 +339,19 @@ export const OS_CUSTOM_GENERATORS: Record<string, Topic['generate']> = {
   // HS/RS K7 Koordinaten: 1. Quadrant + Tippen/Setzen (leichter als Gym 4Q)
   'os-hs-k7-lb3-koordinaten': osQ1CoordinatePlace,
   'os-rs-k7-lb3-koordinaten': osQ1CoordinatePlace,
+
+  /** Echte Kreisdiagramme mit Anteilen (nicht Bruch-Torten). */
+  'os-hs-k7-lb2-kreisdiagramm': osPieAnteil,
+  'os-rs-k7-lb1-kreisdiagramm': osPieAnteil,
+
+  /** Prismen-Netze (nicht nur Würfel). */
+  'os-hs-k7-lb1-netze': osPrismNetz,
+  'os-hs-k7-lb4-netze': osPrismNetz,
+  'os-rs-k7-lb4-darstellen': osPrismNetz,
+  'os-k6-lb4-darstellen': osPrismNetz,
 }
 
-/** Oberschule topic id ÔåÆ existing Gymnasium generator topic id. */
+/** Oberschule topic id → existing Gymnasium generator topic id. */
 export const OS_GENERATOR_MAP: Record<string, string> = {
   // Klasse 5 (gemeinsam)
   'os-k5-lb1-runden': 'lb1-runden-natuerlich',

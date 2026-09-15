@@ -1,6 +1,11 @@
 import { pick, randInt, type Rng } from '../lib/rng'
+import {
+  generateGridRectSvg,
+  generateParabolaSvg,
+  generateSpinnerSvg,
+} from '../lib/geometrySvg'
 import { formatDe, roundTo } from '../lib/num'
-import { valueTask } from './taskHelpers'
+import { mixedVariants, valueTask, visualTask } from './taskHelpers'
 import type { Grade, Topic } from './types'
 
 // ---------------------------------------------------------------------------
@@ -134,26 +139,51 @@ const erwartungswert: Topic = {
     quelle: 'Wikipedia: Erwartungswert',
     url: 'https://de.wikipedia.org/wiki/Erwartungswert',
   },
-  generate: (rng: Rng) => {
-    const n = pick(rng, [4, 5, 8, 10])
-    const payoffs: number[] = []
-    for (let i = 0; i < n; i++) payoffs.push(randInt(rng, 0, 10))
-    let sum = payoffs.reduce((s, x) => s + x, 0)
-    const rem = sum % n
-    if (rem !== 0) {
-      payoffs[n - 1] += n - rem
-      sum += n - rem
-    }
-    const value = sum / n
-    return valueTask({
-      question: `Ein Glücksrad hat ${n} gleich große Felder mit den Auszahlungen ${payoffs.join(', ')} €. Berechne den Erwartungswert.`,
-      unit: '€',
-      answerKind: 'decimal',
-      value,
-      solution: `${formatDe(value)} €`,
-      explanation: `Jedes Feld hat die Wahrscheinlichkeit 1/${n}. E(X) = (${payoffs.join(' + ')}) : ${n} = ${sum} : ${n} = ${formatDe(value)} €.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const n = pick(rng, [4, 5, 8, 10])
+      const payoffs: number[] = []
+      for (let i = 0; i < n; i++) payoffs.push(randInt(rng, 0, 10))
+      let sum = payoffs.reduce((s, x) => s + x, 0)
+      const rem = sum % n
+      if (rem !== 0) {
+        payoffs[n - 1] += n - rem
+        sum += n - rem
+      }
+      const value = sum / n
+      return valueTask({
+        question: `Ein Glücksrad hat ${n} gleich große Felder mit den Auszahlungen ${payoffs.join(', ')} €. Berechne den Erwartungswert.`,
+        unit: '€',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} €`,
+        explanation: `Jedes Feld hat die Wahrscheinlichkeit 1/${n}. E(X) = (${payoffs.join(' + ')}) : ${n} = ${sum} : ${n} = ${formatDe(value)} €.`,
+      })
+    },
+    (rng: Rng) => {
+      const n = pick(rng, [4, 5, 6, 8])
+      const payoffs: number[] = []
+      for (let i = 0; i < n; i++) payoffs.push(randInt(rng, 0, 8))
+      let sum = payoffs.reduce((s, x) => s + x, 0)
+      const rem = sum % n
+      if (rem !== 0) {
+        payoffs[n - 1] += n - rem
+        sum += n - rem
+      }
+      const value = sum / n
+      return visualTask({
+        question: `Das Glücksrad hat ${n} gleich große Felder. Berechne den Erwartungswert der Auszahlung.`,
+        unit: '€',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} €`,
+        explanation: `E(X) = (${payoffs.join(' + ')}) : ${n} = ${formatDe(value)} €.`,
+        visualContent: generateSpinnerSvg({
+          payoffs: payoffs.map((p) => `${p}€`),
+        }),
+      })
+    },
+  ),
 }
 
 const erwartungswertWuerfel: Topic = {
@@ -199,19 +229,45 @@ const rechteckBreite: Topic = {
     quelle: 'Wikipedia: Flächeninhalt',
     url: 'https://de.wikipedia.org/wiki/Fl%C3%A4cheninhalt',
   },
-  generate: (rng: Rng) => {
-    const a = randInt(rng, 3, 20)
-    const b = randInt(rng, 3, 20)
-    const area = a * b
-    return valueTask({
-      question: `Ein Rechteck hat den Flächeninhalt ${area} cm² und die Länge a = ${a} cm. Berechne die Breite b.`,
-      unit: 'cm',
-      answerKind: 'integer',
-      value: b,
-      solution: `${b} cm`,
-      explanation: `Aus A = a · b folgt b = A : a = ${area} cm² : ${a} cm = ${b} cm.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const a = randInt(rng, 3, 20)
+      const b = randInt(rng, 3, 20)
+      const area = a * b
+      return valueTask({
+        question: `Ein Rechteck hat den Flächeninhalt ${area} cm² und die Länge a = ${a} cm. Berechne die Breite b.`,
+        unit: 'cm',
+        answerKind: 'integer',
+        value: b,
+        solution: `${b} cm`,
+        explanation: `Aus A = a · b folgt b = A : a = ${area} cm² : ${a} cm = ${b} cm.`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 3, 8)
+      const b = randInt(rng, 2, 6)
+      const area = a * b
+      return visualTask({
+        question: `Das Rechteck im Koordinatensystem hat die Länge a = ${a}. Der Flächeninhalt ist ${area}. Berechne die Breite b.`,
+        unit: '',
+        answerKind: 'integer',
+        value: b,
+        solution: `${b}`,
+        explanation: `b = A : a = ${area} : ${a} = ${b}.`,
+        visualContent: generateGridRectSvg({
+          x: 1,
+          y: 1,
+          width: a,
+          height: b,
+          widthLabel: `a=${a}`,
+          heightLabel: 'b=?',
+          xRange: [-1, Math.max(10, a + 2)],
+          yRange: [-1, Math.max(8, b + 2)],
+          cellSize: 26,
+        }),
+      })
+    },
+  ),
 }
 
 const quadratSeite: Topic = {
@@ -226,18 +282,43 @@ const quadratSeite: Topic = {
     quelle: 'Wikipedia: Quadratwurzel',
     url: 'https://de.wikipedia.org/wiki/Quadratwurzel',
   },
-  generate: (rng: Rng) => {
-    const a = randInt(rng, 2, 25)
-    const area = a * a
-    return valueTask({
-      question: `Ein Quadrat hat den Flächeninhalt ${area} cm². Berechne seine Seitenlänge.`,
-      unit: 'cm',
-      answerKind: 'integer',
-      value: a,
-      solution: `${a} cm`,
-      explanation: `Aus A = a² folgt a = √A = √${area} cm² = ${a} cm.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const a = randInt(rng, 2, 25)
+      const area = a * a
+      return valueTask({
+        question: `Ein Quadrat hat den Flächeninhalt ${area} cm². Berechne seine Seitenlänge.`,
+        unit: 'cm',
+        answerKind: 'integer',
+        value: a,
+        solution: `${a} cm`,
+        explanation: `Aus A = a² folgt a = √A = √${area} cm² = ${a} cm.`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 2, 6)
+      const area = a * a
+      return visualTask({
+        question: `Das Quadrat im Koordinatensystem hat den Flächeninhalt ${area}. Berechne die Seitenlänge a.`,
+        unit: '',
+        answerKind: 'integer',
+        value: a,
+        solution: `${a}`,
+        explanation: `a = √${area} = ${a}.`,
+        visualContent: generateGridRectSvg({
+          x: 1,
+          y: 1,
+          width: a,
+          height: a,
+          widthLabel: 'a=?',
+          heightLabel: 'a',
+          xRange: [-1, Math.max(8, a + 2)],
+          yRange: [-1, Math.max(8, a + 2)],
+          cellSize: 28,
+        }),
+      })
+    },
+  ),
 }
 
 const rechteckBreiteUmfang: Topic = {
@@ -339,20 +420,46 @@ const parabelWert: Topic = {
     quelle: 'Wikipedia: Parabel (Mathematik)',
     url: 'https://de.wikipedia.org/wiki/Parabel_(Mathematik)',
   },
-  generate: (rng: Rng) => {
-    const a = pick(rng, [-2, -1, 1, 2, 3])
-    const c = randInt(rng, -8, 8)
-    const x = randInt(rng, -6, 6)
-    const value = a * x * x + c
-    const cStr = c < 0 ? `− ${Math.abs(c)}` : `+ ${c}`
-    return valueTask({
-      question: `Gegeben ist f(x) = ${a}·x² ${cStr}. Berechne f(${x}).`,
-      answerKind: 'integer',
-      value,
-      solution: formatDe(value),
-      explanation: `Setze x = ${x} ein: ${a} · ${x}² ${cStr} = ${a} · ${x * x} ${cStr} = ${a * x * x} ${cStr} = ${value}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const a = pick(rng, [-2, -1, 1, 2, 3])
+      const c = randInt(rng, -8, 8)
+      const x = randInt(rng, -6, 6)
+      const value = a * x * x + c
+      const cStr = c < 0 ? `− ${Math.abs(c)}` : `+ ${c}`
+      return valueTask({
+        question: `Gegeben ist f(x) = ${a}·x² ${cStr}. Berechne f(${x}).`,
+        answerKind: 'integer',
+        value,
+        solution: formatDe(value),
+        explanation: `Setze x = ${x} ein: ${a} · ${x}² ${cStr} = ${a} · ${x * x} ${cStr} = ${a * x * x} ${cStr} = ${value}.`,
+      })
+    },
+    (rng: Rng) => {
+      const a = pick(rng, [-2, -1, 1, 2])
+      const c = randInt(rng, -3, 3)
+      const x = randInt(rng, -3, 3)
+      const value = a * x * x + c
+      const cStr = c < 0 ? `− ${Math.abs(c)}` : `+ ${c}`
+      return visualTask({
+        question: `Am Graphen von f(x) = ${a}·x² ${cStr}: Lies bzw. berechne f(${x}).`,
+        answerKind: 'integer',
+        value,
+        solution: formatDe(value),
+        explanation: `f(${x}) = ${a} · ${x}² ${cStr} = ${value}.`,
+        visualContent: generateParabolaSvg({
+          a,
+          c,
+          points: [{ x, y: value, label: `(${x}|?)` }],
+          xRange: [-5, 5],
+          yRange: [
+            Math.min(-6, value - 2, c - 2),
+            Math.max(8, value + 2, c + 2),
+          ],
+        }),
+      })
+    },
+  ),
 }
 
 // ---------------------------------------------------------------------------
