@@ -1,6 +1,11 @@
 import { pick, randInt, type Rng } from '../lib/rng'
+import {
+  generateCircleMeasureSvg,
+  generateCylinderSvg,
+  generateRightTriangleSvg,
+} from '../lib/geometrySvg'
 import { formatDe, roundTo } from '../lib/num'
-import { valueTask } from './taskHelpers'
+import { mixedVariants, valueTask, visualTask } from './taskHelpers'
 import type { Grade, Topic } from './types'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
@@ -161,19 +166,39 @@ const kreisUmfang: Topic = {
     quelle: 'Wikipedia: Kreisumfang',
     url: 'https://de.wikipedia.org/wiki/Kreisumfang',
   },
-  generate: (rng: Rng) => {
-    const r = randInt(rng, 2, 20)
-    const value = roundTo(2 * PI * r, 2)
-    return valueTask({
-      question: `Ein Kreis hat den Radius r = ${r} cm. Berechne den Umfang (auf zwei Nachkommastellen, π ≈ 3,14159).`,
-      unit: 'cm',
-      answerKind: 'decimal',
-      value,
-      eps: 0.05,
-      solution: `${formatDe(value)} cm`,
-      explanation: `U = 2 · π · r = 2 · π · ${r} cm ≈ ${formatDe(value)} cm.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const r = randInt(rng, 2, 20)
+      const value = roundTo(2 * PI * r, 2)
+      return valueTask({
+        question: `Ein Kreis hat den Radius r = ${r} cm. Berechne den Umfang (auf zwei Nachkommastellen, π ≈ 3,14159).`,
+        unit: 'cm',
+        answerKind: 'decimal',
+        value,
+        eps: 0.05,
+        solution: `${formatDe(value)} cm`,
+        explanation: `U = 2 · π · r = 2 · π · ${r} cm ≈ ${formatDe(value)} cm.`,
+      })
+    },
+    (rng: Rng) => {
+      const r = randInt(rng, 3, 15)
+      const value = roundTo(2 * PI * r, 2)
+      return visualTask({
+        question: 'Berechne den Umfang dieses Kreises (zwei Nachkommastellen, π ≈ 3,14159).',
+        unit: 'cm',
+        answerKind: 'decimal',
+        value,
+        eps: 0.05,
+        solution: `${formatDe(value)} cm`,
+        explanation: `U = 2 · π · r = 2 · π · ${r} cm ≈ ${formatDe(value)} cm.`,
+        visualContent: generateCircleMeasureSvg({
+          radiusLabel: `r = ${r} cm`,
+          showDiameter: true,
+          diameterLabel: `d = ${2 * r} cm`,
+        }),
+      })
+    },
+  ),
 }
 
 const kreisFlaeche: Topic = {
@@ -188,19 +213,35 @@ const kreisFlaeche: Topic = {
     quelle: 'Wikipedia: Kreisfläche',
     url: 'https://de.wikipedia.org/wiki/Kreisfl%C3%A4che',
   },
-  generate: (rng: Rng) => {
-    const r = randInt(rng, 2, 20)
-    const value = roundTo(PI * r * r, 2)
-    return valueTask({
-      question: `Ein Kreis hat den Radius r = ${r} cm. Berechne den Flächeninhalt (auf zwei Nachkommastellen, π ≈ 3,14159).`,
-      unit: 'cm²',
-      answerKind: 'decimal',
-      value,
-      eps: 0.05,
-      solution: `${formatDe(value)} cm²`,
-      explanation: `A = π · r² = π · ${r}² cm² = π · ${r * r} cm² ≈ ${formatDe(value)} cm².`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const r = randInt(rng, 2, 20)
+      const value = roundTo(PI * r * r, 2)
+      return valueTask({
+        question: `Ein Kreis hat den Radius r = ${r} cm. Berechne den Flächeninhalt (auf zwei Nachkommastellen, π ≈ 3,14159).`,
+        unit: 'cm²',
+        answerKind: 'decimal',
+        value,
+        eps: 0.05,
+        solution: `${formatDe(value)} cm²`,
+        explanation: `A = π · r² = π · ${r}² cm² = π · ${r * r} cm² ≈ ${formatDe(value)} cm².`,
+      })
+    },
+    (rng: Rng) => {
+      const r = randInt(rng, 3, 14)
+      const value = roundTo(PI * r * r, 2)
+      return visualTask({
+        question: 'Berechne den Flächeninhalt dieses Kreises (zwei Nachkommastellen, π ≈ 3,14159).',
+        unit: 'cm²',
+        answerKind: 'decimal',
+        value,
+        eps: 0.05,
+        solution: `${formatDe(value)} cm²`,
+        explanation: `A = π · r² = π · ${r}² ≈ ${formatDe(value)} cm².`,
+        visualContent: generateCircleMeasureSvg({ radiusLabel: `r = ${r} cm` }),
+      })
+    },
+  ),
 }
 
 const zylinderVolumen: Topic = {
@@ -215,20 +256,40 @@ const zylinderVolumen: Topic = {
     quelle: 'Wikipedia: Zylinder (Geometrie)',
     url: 'https://de.wikipedia.org/wiki/Zylinder_(Geometrie)',
   },
-  generate: (rng: Rng) => {
-    const r = randInt(rng, 2, 12)
-    const h = randInt(rng, 2, 20)
-    const value = roundTo(PI * r * r * h, 2)
-    return valueTask({
-      question: `Ein Kreiszylinder hat den Radius r = ${r} cm und die Höhe h = ${h} cm. Berechne sein Volumen (auf zwei Nachkommastellen, π ≈ 3,14159).`,
-      unit: 'cm³',
-      answerKind: 'decimal',
-      value,
-      eps: 0.1,
-      solution: `${formatDe(value)} cm³`,
-      explanation: `V = π · r² · h = π · ${r}² · ${h} cm³ = π · ${r * r * h} cm³ ≈ ${formatDe(value)} cm³.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const r = randInt(rng, 2, 12)
+      const h = randInt(rng, 2, 20)
+      const value = roundTo(PI * r * r * h, 2)
+      return valueTask({
+        question: `Ein Kreiszylinder hat den Radius r = ${r} cm und die Höhe h = ${h} cm. Berechne sein Volumen (auf zwei Nachkommastellen, π ≈ 3,14159).`,
+        unit: 'cm³',
+        answerKind: 'decimal',
+        value,
+        eps: 0.1,
+        solution: `${formatDe(value)} cm³`,
+        explanation: `V = π · r² · h = π · ${r}² · ${h} cm³ = π · ${r * r * h} cm³ ≈ ${formatDe(value)} cm³.`,
+      })
+    },
+    (rng: Rng) => {
+      const r = randInt(rng, 2, 10)
+      const h = randInt(rng, 3, 16)
+      const value = roundTo(PI * r * r * h, 2)
+      return visualTask({
+        question: 'Berechne das Volumen dieses Kreiszylinders (zwei Nachkommastellen, π ≈ 3,14159).',
+        unit: 'cm³',
+        answerKind: 'decimal',
+        value,
+        eps: 0.1,
+        solution: `${formatDe(value)} cm³`,
+        explanation: `V = π · r² · h = π · ${r}² · ${h} ≈ ${formatDe(value)} cm³.`,
+        visualContent: generateCylinderSvg({
+          radiusLabel: `${r} cm`,
+          heightLabel: `${h} cm`,
+        }),
+      })
+    },
+  ),
 }
 
 const kugelVolumen: Topic = {
@@ -243,19 +304,39 @@ const kugelVolumen: Topic = {
     quelle: 'Wikipedia: Kugel (Geometrie)',
     url: 'https://de.wikipedia.org/wiki/Kugel_(Geometrie)',
   },
-  generate: (rng: Rng) => {
-    const r = randInt(rng, 2, 12)
-    const value = roundTo((4 / 3) * PI * r * r * r, 2)
-    return valueTask({
-      question: `Eine Kugel hat den Radius r = ${r} cm. Berechne ihr Volumen (auf zwei Nachkommastellen, π ≈ 3,14159).`,
-      unit: 'cm³',
-      answerKind: 'decimal',
-      value,
-      eps: 0.1,
-      solution: `${formatDe(value)} cm³`,
-      explanation: `V = (4/3) · π · r³ = (4/3) · π · ${r}³ cm³ = (4/3) · π · ${r * r * r} cm³ ≈ ${formatDe(value)} cm³.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const r = randInt(rng, 2, 12)
+      const value = roundTo((4 / 3) * PI * r * r * r, 2)
+      return valueTask({
+        question: `Eine Kugel hat den Radius r = ${r} cm. Berechne ihr Volumen (auf zwei Nachkommastellen, π ≈ 3,14159).`,
+        unit: 'cm³',
+        answerKind: 'decimal',
+        value,
+        eps: 0.1,
+        solution: `${formatDe(value)} cm³`,
+        explanation: `V = (4/3) · π · r³ = (4/3) · π · ${r}³ cm³ = (4/3) · π · ${r * r * r} cm³ ≈ ${formatDe(value)} cm³.`,
+      })
+    },
+    (rng: Rng) => {
+      const r = randInt(rng, 2, 10)
+      const value = roundTo((4 / 3) * PI * r * r * r, 2)
+      return visualTask({
+        question: 'Die Skizze zeigt den Querschnitt (Großkreis) einer Kugel. Berechne das Kugelvolumen (zwei Nachkommastellen, π ≈ 3,14159).',
+        unit: 'cm³',
+        answerKind: 'decimal',
+        value,
+        eps: 0.1,
+        solution: `${formatDe(value)} cm³`,
+        explanation: `V = (4/3) · π · r³ = (4/3) · π · ${r}³ ≈ ${formatDe(value)} cm³.`,
+        visualContent: generateCircleMeasureSvg({
+          radiusLabel: `r = ${r} cm`,
+          fill: '#e3f2fd',
+          stroke: '#1565c0',
+        }),
+      })
+    },
+  ),
 }
 
 // ---------------------------------------------------------------------------
@@ -274,21 +355,44 @@ const pythagorasHypotenuse: Topic = {
     quelle: 'Wikipedia: Satz des Pythagoras',
     url: 'https://de.wikipedia.org/wiki/Satz_des_Pythagoras',
   },
-  generate: (rng: Rng) => {
-    const [a, b, c] = pick(rng, TRIPLES)
-    const k = randInt(rng, 1, 3)
-    const ca = a * k
-    const cb = b * k
-    const cc = c * k
-    return valueTask({
-      question: `In einem rechtwinkligen Dreieck sind die Katheten a = ${ca} cm und b = ${cb} cm. Berechne die Hypotenuse c.`,
-      unit: 'cm',
-      answerKind: 'integer',
-      value: cc,
-      solution: `${cc} cm`,
-      explanation: `c = √(a² + b²) = √(${ca}² + ${cb}²) = √(${ca * ca} + ${cb * cb}) = √${ca * ca + cb * cb} = ${cc} cm.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const [a, b, c] = pick(rng, TRIPLES)
+      const k = randInt(rng, 1, 3)
+      const ca = a * k
+      const cb = b * k
+      const cc = c * k
+      return valueTask({
+        question: `In einem rechtwinkligen Dreieck sind die Katheten a = ${ca} cm und b = ${cb} cm. Berechne die Hypotenuse c.`,
+        unit: 'cm',
+        answerKind: 'integer',
+        value: cc,
+        solution: `${cc} cm`,
+        explanation: `c = √(a² + b²) = √(${ca}² + ${cb}²) = √(${ca * ca} + ${cb * cb}) = √${ca * ca + cb * cb} = ${cc} cm.`,
+      })
+    },
+    (rng: Rng) => {
+      const [a, b, c] = pick(rng, TRIPLES)
+      const k = randInt(rng, 1, 3)
+      const ca = a * k
+      const cb = b * k
+      const cc = c * k
+      return visualTask({
+        question: 'Berechne die mit ? markierte Hypotenuse c.',
+        unit: 'cm',
+        answerKind: 'integer',
+        value: cc,
+        solution: `${cc} cm`,
+        explanation: `c = √(a² + b²) = √(${ca}² + ${cb}²) = ${cc} cm.`,
+        visualContent: generateRightTriangleSvg({
+          aLabel: `a=${ca}`,
+          bLabel: `b=${cb}`,
+          cLabel: 'c=?',
+          ask: 'c',
+        }),
+      })
+    },
+  ),
 }
 
 const pythagorasKathete: Topic = {
@@ -303,21 +407,49 @@ const pythagorasKathete: Topic = {
     quelle: 'Wikipedia: Satz des Pythagoras',
     url: 'https://de.wikipedia.org/wiki/Satz_des_Pythagoras',
   },
-  generate: (rng: Rng) => {
-    const [a, b, c] = pick(rng, TRIPLES)
-    const k = randInt(rng, 1, 3)
-    const ca = a * k
-    const cb = b * k
-    const cc = c * k
-    return valueTask({
-      question: `In einem rechtwinkligen Dreieck ist die Hypotenuse c = ${cc} cm und eine Kathete b = ${cb} cm. Berechne die andere Kathete a.`,
-      unit: 'cm',
-      answerKind: 'integer',
-      value: ca,
-      solution: `${ca} cm`,
-      explanation: `a = √(c² − b²) = √(${cc}² − ${cb}²) = √(${cc * cc} − ${cb * cb}) = √${cc * cc - cb * cb} = ${ca} cm.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const [a, b, c] = pick(rng, TRIPLES)
+      const k = randInt(rng, 1, 3)
+      const ca = a * k
+      const cb = b * k
+      const cc = c * k
+      return valueTask({
+        question: `In einem rechtwinkligen Dreieck ist die Hypotenuse c = ${cc} cm und eine Kathete b = ${cb} cm. Berechne die andere Kathete a.`,
+        unit: 'cm',
+        answerKind: 'integer',
+        value: ca,
+        solution: `${ca} cm`,
+        explanation: `a = √(c² − b²) = √(${cc}² − ${cb}²) = √(${cc * cc} − ${cb * cb}) = √${cc * cc - cb * cb} = ${ca} cm.`,
+      })
+    },
+    (rng: Rng) => {
+      const [a, b, c] = pick(rng, TRIPLES)
+      const k = randInt(rng, 1, 3)
+      const ca = a * k
+      const cb = b * k
+      const cc = c * k
+      const askA = rng() < 0.5
+      return visualTask({
+        question: askA
+          ? 'Berechne die mit ? markierte Kathete a.'
+          : 'Berechne die mit ? markierte Kathete b.',
+        unit: 'cm',
+        answerKind: 'integer',
+        value: askA ? ca : cb,
+        solution: `${askA ? ca : cb} cm`,
+        explanation: askA
+          ? `a = √(c² − b²) = √(${cc}² − ${cb}²) = ${ca} cm.`
+          : `b = √(c² − a²) = √(${cc}² − ${ca}²) = ${cb} cm.`,
+        visualContent: generateRightTriangleSvg({
+          aLabel: askA ? 'a=?' : `a=${ca}`,
+          bLabel: askA ? `b=${cb}` : 'b=?',
+          cLabel: `c=${cc}`,
+          ask: askA ? 'a' : 'b',
+        }),
+      })
+    },
+  ),
 }
 
 const trigWert: Topic = {
@@ -332,21 +464,51 @@ const trigWert: Topic = {
     quelle: 'Wikipedia: Trigonometrie',
     url: 'https://de.wikipedia.org/wiki/Trigonometrie',
   },
-  generate: (rng: Rng) => {
-    const winkel = pick(rng, [30, 45, 60])
-    const fn = pick(rng, ['sin', 'cos', 'tan'] as const)
-    const rad = (winkel * PI) / 180
-    const raw = fn === 'sin' ? Math.sin(rad) : fn === 'cos' ? Math.cos(rad) : Math.tan(rad)
-    const value = roundTo(raw, 4)
-    return valueTask({
-      question: `Berechne ${fn}(${winkel}°) und runde auf vier Nachkommastellen.`,
-      answerKind: 'decimal',
-      value,
-      eps: 0.001,
-      solution: formatDe(value),
-      explanation: `${fn}(${winkel}°) ≈ ${formatDe(value)} (mit dem Taschenrechner bestimmt, auf vier Nachkommastellen gerundet).`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const winkel = pick(rng, [30, 45, 60])
+      const fn = pick(rng, ['sin', 'cos', 'tan'] as const)
+      const rad = (winkel * PI) / 180
+      const raw = fn === 'sin' ? Math.sin(rad) : fn === 'cos' ? Math.cos(rad) : Math.tan(rad)
+      const value = roundTo(raw, 4)
+      return valueTask({
+        question: `Berechne ${fn}(${winkel}°) und runde auf vier Nachkommastellen.`,
+        answerKind: 'decimal',
+        value,
+        eps: 0.001,
+        solution: formatDe(value),
+        explanation: `${fn}(${winkel}°) ≈ ${formatDe(value)} (mit dem Taschenrechner bestimmt, auf vier Nachkommastellen gerundet).`,
+      })
+    },
+    (rng: Rng) => {
+      const winkel = pick(rng, [30, 35, 40, 45, 50, 55, 60])
+      const fn = pick(rng, ['sin', 'cos', 'tan'] as const)
+      const rad = (winkel * PI) / 180
+      const raw = fn === 'sin' ? Math.sin(rad) : fn === 'cos' ? Math.cos(rad) : Math.tan(rad)
+      const value = roundTo(raw, 4)
+      const sideHint =
+        fn === 'sin'
+          ? 'sin(α) = Gegenkathete / Hypotenuse'
+          : fn === 'cos'
+            ? 'cos(α) = Ankathete / Hypotenuse'
+            : 'tan(α) = Gegenkathete / Ankathete'
+      return visualTask({
+        question: `Im rechtwinkligen Dreieck ist α = ${winkel}°. Berechne ${fn}(α) auf vier Nachkommastellen.`,
+        answerKind: 'decimal',
+        value,
+        eps: 0.001,
+        solution: formatDe(value),
+        explanation: `${sideHint}. ${fn}(${winkel}°) ≈ ${formatDe(value)}.`,
+        visualContent: generateRightTriangleSvg({
+          aLabel: 'Ank.',
+          bLabel: 'Geg.',
+          cLabel: 'Hyp.',
+          angleDeg: winkel,
+          angleLabel: `α=${winkel}°`,
+        }),
+      })
+    },
+  ),
 }
 
 // ---------------------------------------------------------------------------
@@ -466,21 +628,44 @@ const leiterProblem: Topic = {
     quelle: 'Wikipedia: Satz des Pythagoras',
     url: 'https://de.wikipedia.org/wiki/Satz_des_Pythagoras',
   },
-  generate: (rng: Rng) => {
-    const [a, b, c] = pick(rng, TRIPLES)
-    const k = randInt(rng, 1, 2)
-    const boden = a * k
-    const laenge = c * k
-    const value = b * k
-    return valueTask({
-      question: `Eine ${laenge} m lange Leiter steht ${boden} m von einer Wand entfernt. Wie hoch reicht sie an der Wand (rechtwinklig zum Boden)?`,
-      unit: 'm',
-      answerKind: 'integer',
-      value,
-      solution: `${value} m`,
-      explanation: `Die Wandhöhe ist eine Kathete: h = √(${laenge}² − ${boden}²) = √(${laenge * laenge} − ${boden * boden}) = √${laenge * laenge - boden * boden} = ${value} m.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const [a, b, c] = pick(rng, TRIPLES)
+      const k = randInt(rng, 1, 2)
+      const boden = a * k
+      const laenge = c * k
+      const value = b * k
+      return valueTask({
+        question: `Eine ${laenge} m lange Leiter steht ${boden} m von einer Wand entfernt. Wie hoch reicht sie an der Wand (rechtwinklig zum Boden)?`,
+        unit: 'm',
+        answerKind: 'integer',
+        value,
+        solution: `${value} m`,
+        explanation: `Die Wandhöhe ist eine Kathete: h = √(${laenge}² − ${boden}²) = √(${laenge * laenge} − ${boden * boden}) = √${laenge * laenge - boden * boden} = ${value} m.`,
+      })
+    },
+    (rng: Rng) => {
+      const [a, b, c] = pick(rng, TRIPLES)
+      const k = randInt(rng, 1, 2)
+      const boden = a * k
+      const laenge = c * k
+      const value = b * k
+      return visualTask({
+        question: `Skizze: Leiter (= Hypotenuse) ${laenge} m, Abstand zur Wand ${boden} m. Wie hoch reicht die Leiter?`,
+        unit: 'm',
+        answerKind: 'integer',
+        value,
+        solution: `${value} m`,
+        explanation: `h = √(${laenge}² − ${boden}²) = ${value} m.`,
+        visualContent: generateRightTriangleSvg({
+          aLabel: `${boden} m`,
+          bLabel: 'h=?',
+          cLabel: `${laenge} m`,
+          ask: 'b',
+        }),
+      })
+    },
+  ),
 }
 
 // ---------------------------------------------------------------------------

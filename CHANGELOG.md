@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.21.0] – 2026-09-15
+
+### Neu
+- **Klasse 9 Pythagoras / Kreis / Trig grafisch (Phase 5)**: Kreisumfang/-fläche,
+  Zylinder, Kugelquerschnitt, rechtwinklige Dreiecke (Hypotenuse/Kathete),
+  Trigonometrie mit Winkelbogen und Leiter-Sachaufgabe mit Skizze.
+
 ## [0.20.0] – 2026-09-15
 
 ### Neu
