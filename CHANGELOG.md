@@ -9,6 +9,11 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.24.1] – 2026-09-15
+
+### Behoben
+- TypeScript-Build: ungenutzter `rng`-Parameter in Mantelflächen-Variante (K7).
+
 ## [0.24.0] – 2026-09-15
 
 ### Neu

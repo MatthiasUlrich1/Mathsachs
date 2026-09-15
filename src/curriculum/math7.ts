@@ -571,7 +571,7 @@ const mantelPrisma: Topic = {
         explanation: `Die Mantelfläche ist Umfang der Grundfläche · Höhe = ${u} cm · ${h} cm = ${value} cm².`,
       })
     },
-    (rng: Rng) => {
+    (_rng: Rng) => {
       const labels = ['A', 'B', 'C', 'D', 'E']
       // Fixed layout: A top base, B/C/D mantel, E bottom base
       const mantel = ['B', 'C', 'D']
