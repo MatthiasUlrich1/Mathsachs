@@ -36,4 +36,35 @@ describe('DigitGrid', () => {
     expect(html).toContain('value="7"')
     expect(html).toContain('value="9"')
   })
+
+  it('renders multi-row multiplication with labels and cell tones', () => {
+    const html = renderToStaticMarkup(
+      createElement(DigitGrid, {
+        rows: [
+          {
+            digits: ['2', '3', '·', '3', '6'],
+            cellTones: ['green', 'green', 'default', 'blue', 'blue'],
+          },
+          { rule: true, digits: ['', '', ''] },
+          { editable: true, digits: ['', '', '', '', ''], label: '= 23 · 30' },
+          { editable: true, digits: ['', '', '', '', ''], label: '= 23 · 6' },
+          { rule: true, digits: ['', '', ''] },
+          { editable: true, digits: ['', '', '', '', ''], tone: 'red' },
+        ],
+        digits: [],
+        answerRows: [
+          ['', '', '', '', ''],
+          ['', '', '', '', ''],
+          ['', '', '', '', ''],
+        ],
+        onChange: () => {},
+        onChangeRows: () => {},
+      }),
+    )
+    expect(html).toContain('digit-grid__cell--green')
+    expect(html).toContain('digit-grid__cell--blue')
+    expect(html).toContain('= 23 · 30')
+    expect(html).toContain('digit-grid__rule')
+    expect(html.match(/data-edit-row="/g)?.length).toBe(15) // 3 rows × 5 cells
+  })
 })

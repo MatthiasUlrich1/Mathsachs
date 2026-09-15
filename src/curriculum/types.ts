@@ -28,7 +28,7 @@ export type UserInput =
   | { kind: 'fraction'; num: string; den: string }
   | { kind: 'numberLine'; value: number }
   | { kind: 'dragDropSort'; order: number[] }
-  | { kind: 'digitGrid'; digits: string[] }
+  | { kind: 'digitGrid'; digits: string[]; answerRows?: string[][] }
   | { kind: 'choicePick'; choice: string }
   | { kind: 'multiSelect'; selected: string[] }
   | { kind: 'coordinateClick'; x: number; y: number }

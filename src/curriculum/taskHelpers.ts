@@ -223,7 +223,7 @@ interface DigitGridTaskInput {
 }
 
 /** Right-align digit strings into a fixed-width cell array. */
-const padDigits = (n: number, width: number): string[] => {
+export const padDigits = (n: number, width: number): string[] => {
   const s = String(Math.abs(n))
   const cells = Array.from({ length: width }, () => '')
   const offset = width - s.length
@@ -238,7 +238,9 @@ export const parseDigitGrid = (digits: string[]): number | null => {
   return parseInteger(joined)
 }
 
-/** Build a written-arithmetic task with a digit grid (Kästchenpapier). */
+const emptyCells = (width: number): string[] => Array.from({ length: width }, () => '')
+
+/** Build a written-arithmetic task with a digit grid (Kästchenpapier) for + / −. */
 export const digitGridTask = (input: DigitGridTaskInput): Task => {
   const width = Math.max(
     String(Math.abs(input.a)).length,
@@ -258,9 +260,11 @@ export const digitGridTask = (input: DigitGridTaskInput): Task => {
         rows: [
           { digits: padDigits(input.a, width) },
           { prefix: input.operator, digits: padDigits(input.b, width) },
-          { editable: true, digits: Array.from({ length: width }, () => '') },
+          { rule: true, digits: emptyCells(width) },
+          { editable: true, digits: emptyCells(width), tone: 'red' },
         ],
         answerLength: width,
+        layout: 'stack',
       },
     },
     check: (answer: UserInput) => {
@@ -276,6 +280,8 @@ export const digitGridTask = (input: DigitGridTaskInput): Task => {
     },
   }
 }
+
+export { digitGridMultiplyTask, digitGridDivideTask } from './digitGridTasks'
 
 interface ChoicePickTaskInput {
   question: string

@@ -6,7 +6,7 @@
   "subject": "Mathematik",
   "version": "1.0.0",
   "changelog": "Erstfassung: Klassen 5–10 und Jahrgangsstufe 11/12 (Grundkurs), plus getrennte Lehrer-Ergänzungen.",
-  "contentHash": "c5d4fe0b",
+  "contentHash": "a254684a",
   "official": [
     {
       "id": "klasse-5",
@@ -41,14 +41,40 @@
             {
               "id": "lb1-multiplikation",
               "title": "Multiplikation natürlicher Zahlen",
-              "hint": "Zerlege den zweiten Faktor in Zehner und Einer.",
+              "hint": "Zerlege den zweiten Faktor nach Stellenwerten (Zehner, Einer, …) von links.",
               "pointsPerTask": 10
+            },
+            {
+              "id": "lb1-schriftliches-rechnen",
+              "title": "Schriftliches Rechnen (Kästchenpapier)",
+              "hint": "Schreibe stellenrichtig untereinander und trage jede Ziffer in ein Kästchen.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "schriftlich",
+                "Kästchen",
+                "Übertrag",
+                "Stellenwert"
+              ]
             },
             {
               "id": "lb1-division-rest",
               "title": "Division mit Rest",
               "hint": "Antwortformat: „q R r\" (Quotient, dann Rest).",
               "pointsPerTask": 10
+            },
+            {
+              "id": "lb1-schriftliche-division",
+              "title": "Schriftliche Division",
+              "hint": "Schreibe Dividend : Divisor = und trage den Quotienten ziffernweise ein. Bei Rest zusätzlich die Rest-Zeile füllen.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "schriftlich",
+                "Division",
+                "Quotient",
+                "Rest",
+                "Kästchen",
+                "Nullen"
+              ]
             },
             {
               "id": "lb1-potenzieren",
@@ -94,6 +120,12 @@
               "pointsPerTask": 10
             },
             {
+              "id": "lb2-grafische-brueche",
+              "title": "Brüche grafisch ablesen",
+              "hint": "Zähle die eingefärbten Teile und die Gesamtanzahl. Gib den gekürzten Bruch an.",
+              "pointsPerTask": 10
+            },
+            {
               "id": "lb2-dez-add-sub",
               "title": "Dezimalzahlen addieren und subtrahieren",
               "hint": "Achte auf die Ausrichtung des Kommas.",
@@ -122,6 +154,33 @@
               "title": "Arithmetisches Mittel",
               "hint": "Mittelwert = Summe : Anzahl.",
               "pointsPerTask": 10
+            },
+            {
+              "id": "lb2-zahlenstrahl",
+              "title": "Dezimalzahlen auf dem Zahlenstrahl: Mitte finden",
+              "hint": "Die Mitte zwischen zwei Zahlen ist ihr Durchschnitt: (a + b) : 2.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Zahlenstrahl",
+                "Mitte",
+                "einordnen",
+                "Mittelwert",
+                "Dezimalzahl"
+              ]
+            },
+            {
+              "id": "lb2-ordnen-einheiten",
+              "title": "Größen mit verschiedenen Einheiten ordnen",
+              "hint": "Rechne alle Angaben in dieselbe Einheit um, dann vergleiche.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "ordnen",
+                "vergleichen",
+                "Einheiten",
+                "umrechnen",
+                "Länge",
+                "Masse"
+              ]
             }
           ]
         },
@@ -130,6 +189,24 @@
           "title": "Lagebeziehungen geometrischer Objekte",
           "ustd": 22,
           "topics": [
+            {
+              "id": "lb3-koordinaten-ablesen",
+              "title": "Koordinaten ablesen",
+              "hint": "Antwortformat: x; y (auch Komma oder (x|y) sind ok).",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "lb3-koordinaten-eintragen",
+              "title": "Punkte im Koordinatensystem zuordnen",
+              "hint": "Bei Buchstaben: A, B oder C. Bei Quadranten: I, II, III oder IV.",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "lb3-koordinaten-abstand",
+              "title": "Abstand zwischen Punkten",
+              "hint": "Waagerecht/senkrecht: |Δx| bzw. |Δy|. Schräg: Pythagoras (z. B. 3–4–5).",
+              "pointsPerTask": 10
+            },
             {
               "id": "lb3-winkelarten",
               "title": "Winkelarten erkennen",
@@ -140,6 +217,42 @@
               "id": "lb3-winkel-ergaenzung",
               "title": "Winkel zu 90° oder 180° ergänzen",
               "hint": "Ziehe den gegebenen Winkel von 90° bzw. 180° ab.",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "lb3-strecken-laenge",
+              "title": "Länge von Strecken",
+              "hint": "1 Kästchen = 1 Längeneinheit (cm). Länge = Abstand der Endpunkte.",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "lb3-strecken-mittelpunkt",
+              "title": "Mittelpunkt einer Strecke",
+              "hint": "Mittelpunkt M = ((x₁+x₂)/2 ; (y₁+y₂)/2). Antwortformat: x; y.",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "lb3-strecken-bezeichnung",
+              "title": "Strecke, Gerade und Halbgerade",
+              "hint": "Strecke: begrenzt; Halbgerade: ein Endpunkt; Gerade: unbegrenzt in beide Richtungen.",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "lb3-verschiebung",
+              "title": "Verschiebung von Figuren",
+              "hint": "Antwortformat für Vektor und Punkt: dx; dy bzw. x; y (positiv = rechts / oben). Auch Komma oder (x|y) sind ok.",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "lb3-achsensymmetrie",
+              "title": "Achsensymmetrie erkennen",
+              "hint": "Eine Figur ist achsensymmetrisch, wenn sie an einer Geraden gespiegelt auf sich selbst fällt. Bildpunkt: x; y.",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "lb3-punktsymmetrie",
+              "title": "Punktsymmetrie / Punktspiegelung",
+              "hint": "Punktspiegelung an S: A' = 2S − A. Antwortformat x; y (auch Komma oder (x|y)).",
               "pointsPerTask": 10
             }
           ]
@@ -172,6 +285,24 @@
               "title": "Oberflächeninhalt von Quadern",
               "hint": "O = 2 · (a·b + a·c + b·c).",
               "pointsPerTask": 10
+            },
+            {
+              "id": "lb4-flaeche-zusammengesetzt",
+              "title": "Zusammengesetzte Flächen: Fläche berechnen",
+              "hint": "Zerlege die Figur in Rechtecke oder ziehe die Aussparung ab.",
+              "pointsPerTask": 12
+            },
+            {
+              "id": "lb4-umfang-zusammengesetzt",
+              "title": "Zusammengesetzte Flächen: Umfang berechnen",
+              "hint": "Addiere alle äußeren Kanten. Bei einer Eckaussparung gilt: U = 2 · (Länge + Breite).",
+              "pointsPerTask": 12
+            },
+            {
+              "id": "lb4-volumen-zusammengesetzt",
+              "title": "Zusammengesetzte Quader: Volumen",
+              "hint": "Zerlege in zwei Quader und addiere die Volumina – oder ziehe die Aussparung ab.",
+              "pointsPerTask": 12
             }
           ]
         },
@@ -191,6 +322,31 @@
               "title": "Sachaufgabe: Gerecht aufteilen",
               "hint": "Teile die Gesamtmenge durch die Anzahl.",
               "pointsPerTask": 10
+            },
+            {
+              "id": "lb5-mehrstufig",
+              "title": "Sachaufgabe: Mehrstufige Alltagsrechnung",
+              "hint": "Löse Schritt für Schritt: Zuerst den Gesamtpreis, dann das Wechselgeld.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Sachaufgabe",
+                "Wechselgeld",
+                "Alltag",
+                "mehrstufig"
+              ]
+            },
+            {
+              "id": "lb5-sachaufgabe-flaeche",
+              "title": "Sachaufgabe: Fläche und Umfang im Alltag",
+              "hint": "Entscheide, ob Umfang oder Fläche gefragt ist.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Sachaufgabe",
+                "Fläche",
+                "Umfang",
+                "Garten",
+                "Zimmer"
+              ]
             },
             {
               "id": "k5-umrechnen-laenge",
@@ -392,6 +548,18 @@
               "title": "Dezimalzahlen runden",
               "hint": "Ist die nächste Ziffer 5 oder größer, wird aufgerundet.",
               "pointsPerTask": 10
+            },
+            {
+              "id": "lb1-sachaufgabe-bruch",
+              "title": "Sachaufgabe: Bruchrechnung im Alltag",
+              "hint": "Lies die Aufgabe genau. Welcher Bruch wird gesucht? Dann rechne.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Sachaufgabe",
+                "Bruch",
+                "Anteil",
+                "Alltag"
+              ]
             }
           ]
         },
@@ -417,6 +585,18 @@
               "title": "Relative Häufigkeit in Prozent",
               "hint": "Relative Häufigkeit = Anzahl : Gesamt.",
               "pointsPerTask": 10
+            },
+            {
+              "id": "lb2-sachaufgabe-dreisatz",
+              "title": "Sachaufgabe: Dreisatz mit Einheiten",
+              "hint": "Zuerst den Einheitspreis oder -wert bestimmen, dann umrechnen.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Sachaufgabe",
+                "Dreisatz",
+                "proportional",
+                "Einheiten"
+              ]
             }
           ]
         },
@@ -454,6 +634,34 @@
               "title": "Flächeninhalt von Dreiecken",
               "hint": "A = (g · h) : 2.",
               "pointsPerTask": 10
+            },
+            {
+              "id": "lb3-kongruenzsatz",
+              "title": "Kongruenzsatz wählen",
+              "hint": "SSS, SWS, WSW oder SsW – welche Angabe reicht?",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Kongruenz",
+                "SSS",
+                "SWS",
+                "WSW",
+                "SsW",
+                "Dreieck"
+              ]
+            },
+            {
+              "id": "lb3-sachaufgabe-geometrie",
+              "title": "Sachaufgabe: Fläche und Umfang im Alltag",
+              "hint": "Welche Formel passt? Umfang für Strecken, Fläche für Belag/Tapete.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Sachaufgabe",
+                "Fläche",
+                "Umfang",
+                "Dreieck",
+                "Rechteck",
+                "Alltag"
+              ]
             }
           ]
         },
@@ -479,6 +687,18 @@
               "title": "Volumen gerader Prismen",
               "hint": "V = Grundfläche · Höhe.",
               "pointsPerTask": 10
+            },
+            {
+              "id": "lb4-wuerfelnetz",
+              "title": "Würfelnetz erkennen",
+              "hint": "Ein faltbares Netz hat sechs Quadrate ohne Überlappung beim Falten.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Würfel",
+                "Körpernetz",
+                "Netz",
+                "falten"
+              ]
             }
           ]
         },
@@ -612,6 +832,19 @@
                 "gleichschenklig",
                 "Basiswinkel",
                 "Winkel"
+              ]
+            },
+            {
+              "id": "k7-lb1-mittelsenkrechte-schritte",
+              "title": "Mittelsenkrechte: Konstruktionsschritte",
+              "hint": "Ordne die Schritte einer Mittelsenkrechten.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Mittelsenkrechte",
+                "Konstruktion",
+                "Zirkel",
+                "Lot",
+                "Mittelpunkt"
               ]
             }
           ]

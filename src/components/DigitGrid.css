@@ -30,9 +30,14 @@
 }
 
 .digit-grid__row--answer {
-  margin-top: 6px;
-  padding-top: 8px;
-  border-top: 2px solid rgba(255, 255, 255, 0.35);
+  /* partial / sum rows stay on the grid without extra top border */
+}
+
+.digit-grid__rule {
+  height: 0;
+  margin: 4px 0 4px 2rem;
+  border-top: 2px solid rgba(255, 255, 255, 0.55);
+  max-width: 100%;
 }
 
 .digit-grid__prefix {
@@ -47,6 +52,14 @@
 .digit-grid__cells {
   display: flex;
   gap: 4px;
+}
+
+.digit-grid__label {
+  margin-left: 10px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.55);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 
 .digit-grid__cell {
@@ -70,6 +83,20 @@
   background: transparent;
 }
 
+.digit-grid__cell--green {
+  color: #86efac;
+  border-color: rgba(134, 239, 172, 0.35);
+}
+
+.digit-grid__cell--blue {
+  color: #93c5fd;
+  border-color: rgba(147, 197, 253, 0.35);
+}
+
+.digit-grid__cell--red {
+  color: #fca5a5;
+}
+
 .digit-grid__cell--input {
   padding: 0;
   text-align: center;
@@ -77,6 +104,12 @@
   border-color: rgba(125, 211, 252, 0.45);
   background: rgba(14, 70, 110, 0.45);
   outline: none;
+}
+
+.digit-grid__cell--input.digit-grid__cell--red {
+  color: #fecaca;
+  border-color: rgba(248, 113, 113, 0.55);
+  background: rgba(127, 29, 29, 0.35);
 }
 
 .digit-grid__cell--input:focus {

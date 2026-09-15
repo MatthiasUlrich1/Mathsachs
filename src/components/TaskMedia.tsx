@@ -19,6 +19,12 @@ export const initTaskInput = (task: Task): UserInput => {
     return { kind: 'dragDropSort', order: items.map((_: unknown, i: number) => i) }
   }
   if (task.interactive?.type === 'digitGrid') {
+    const lengths = task.interactive.props.answerRowLengths as number[] | undefined
+    if (lengths && lengths.length > 0) {
+      const answerRows = lengths.map((n) => Array.from({ length: n }, () => ''))
+      const last = answerRows[answerRows.length - 1] ?? []
+      return { kind: 'digitGrid', digits: [...last], answerRows }
+    }
     const len = task.interactive.props.answerLength ?? 4
     return { kind: 'digitGrid', digits: Array.from({ length: len }, () => '') }
   }
@@ -106,8 +112,33 @@ export function TaskInteractive({
                   () => '',
                 )
           }
-          onChange={(digits) => onChange({ kind: 'digitGrid', digits })}
-          instruction="Trage das Ergebnis ziffernweise in die Kästchen ein:"
+          answerRows={
+            value.kind === 'digitGrid' && value.answerRows
+              ? value.answerRows
+              : interactive.props.answerRowLengths
+                ? (interactive.props.answerRowLengths as number[]).map((n) =>
+                    Array.from({ length: n }, () => ''),
+                  )
+                : undefined
+          }
+          onChange={(digits) => {
+            if (value.kind === 'digitGrid' && value.answerRows) {
+              onChange({ kind: 'digitGrid', digits, answerRows: value.answerRows })
+            } else {
+              onChange({ kind: 'digitGrid', digits })
+            }
+          }}
+          onChangeRows={(answerRows) => {
+            const last = answerRows[answerRows.length - 1] ?? []
+            onChange({ kind: 'digitGrid', digits: last, answerRows })
+          }}
+          instruction={
+            interactive.props.layout === 'multiply'
+              ? 'Trage die Teilprodukte und die Summe ziffernweise ein:'
+              : interactive.props.layout === 'divide'
+                ? 'Trage den Quotienten (und ggf. den Rest) ziffernweise ein:'
+                : 'Trage das Ergebnis ziffernweise in die Kästchen ein:'
+          }
           disabled={disabled}
         />
       )}

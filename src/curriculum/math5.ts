@@ -1,7 +1,7 @@
 import { pick, randInt, type Rng } from '../lib/rng'
 import { gcd, makeFraction } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
-import { fractionTask, dragDropSortTask, digitGridTask, mixedVariants, numberLineTask, textTask, valueTask, visualTask, choicePickTask, coordinateClickTask } from './taskHelpers'
+import { fractionTask, dragDropSortTask, digitGridTask, digitGridMultiplyTask, digitGridDivideTask, mixedVariants, numberLineTask, textTask, valueTask, visualTask, choicePickTask, coordinateClickTask } from './taskHelpers'
 import { conversionTopic, LAENGE, FLAECHE, VOLUMEN, MASSE, ZEIT } from './units'
 import {
   generateRectangleSvg,
@@ -153,18 +153,18 @@ const subtraktion: Topic = {
 const multiplikation: Topic = {
   id: 'lb1-multiplikation',
   title: 'Multiplikation natürlicher Zahlen',
-  hint: 'Zerlege den zweiten Faktor in Zehner und Einer.',
+  hint: 'Zerlege den zweiten Faktor nach Stellenwerten (Zehner, Einer, …) von links.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
-    text: 'Die Multiplikation ist eine verkürzte Addition: a · b bedeutet, a genau b-mal zu addieren. Bei der schriftlichen Multiplikation wird der erste Faktor schrittweise mit jeder Ziffer des zweiten Faktors (von rechts) multipliziert; die Teilprodukte werden stellenrichtig aufaddiert.',
+    text: 'Die Multiplikation ist eine verkürzte Addition: a · b bedeutet, a genau b-mal zu addieren. Beim Stellenwertverfahren multipliziert man den ersten Faktor nacheinander mit den Stellenwerten des zweiten Faktors (von links: Hunderter, Zehner, Einer) und addiert die Teilprodukte.',
     quelle: 'Wikipedia: Multiplikation',
     url: 'https://de.wikipedia.org/wiki/Multiplikation',
   },
   generate: mixedVariants(
     (rng: Rng) => {
       const a = randInt(rng, 12, 99)
-      const b = randInt(rng, 3, 19)
+      const b = randInt(rng, 12, 99)
       const value = a * b
       return valueTask({
         question: `Berechne: ${a} · ${b}`,
@@ -176,16 +176,14 @@ const multiplikation: Topic = {
     },
     (rng: Rng) => {
       const a = randInt(rng, 12, 99)
-      const b = randInt(rng, 3, 19)
+      const b = randInt(rng, 12, 99)
       const value = a * b
-      return digitGridTask({
-        question: 'Multipliziere schriftlich. Trage das Produkt in die Kästchen ein:',
+      return digitGridMultiplyTask({
+        question: 'Multipliziere schriftlich. Trage Teilprodukte und Summe in die Kästchen ein:',
         a,
         b,
-        operator: '·',
-        value,
         solution: formatDe(value),
-        explanation: `Multipliziere schriftlich: ${a} · ${b} = ${formatDe(value)}.`,
+        explanation: `Stellenwertverfahren: ${a} · ${b} = ${formatDe(value)}.`,
       })
     },
   ),
@@ -235,16 +233,32 @@ const schriftlichesRechnen: Topic = {
     },
     (rng: Rng) => {
       const a = randInt(rng, 12, 99)
-      const b = randInt(rng, 3, 19)
+      const b = randInt(rng, 12, 99)
       const value = a * b
-      return digitGridTask({
-        question: 'Multipliziere schriftlich auf dem Kästchenpapier:',
+      return digitGridMultiplyTask({
+        question: 'Multipliziere schriftlich auf dem Kästchenpapier (Teilprodukte + Summe):',
         a,
         b,
-        operator: '·',
-        value,
         solution: formatDe(value),
         explanation: `${a} · ${b} = ${formatDe(value)}.`,
+      })
+    },
+    (rng: Rng) => {
+      const divisor = randInt(rng, 3, 9)
+      const q = randInt(rng, 25, 999)
+      const r = randInt(rng, 0, divisor - 1)
+      const dividend = q * divisor + r
+      return digitGridDivideTask({
+        question: 'Dividiere schriftlich. Trage den Quotienten (und ggf. den Rest) ein:',
+        dividend,
+        divisor,
+        quotient: q,
+        rest: r,
+        solution: r > 0 ? `${q} R ${r}` : String(q),
+        explanation:
+          r > 0
+            ? `${dividend} : ${divisor} = ${q} Rest ${r}.`
+            : `${dividend} : ${divisor} = ${q}.`,
       })
     },
   ),
@@ -261,18 +275,108 @@ const divisionMitRest: Topic = {
     quelle: 'Wikipedia: Division (Mathematik)',
     url: 'https://de.wikipedia.org/wiki/Division_(Mathematik)',
   },
-  generate: (rng: Rng) => {
-    const divisor = randInt(rng, 3, 9)
-    const q = randInt(rng, 11, 120)
-    const r = randInt(rng, 1, divisor - 1)
-    const dividend = q * divisor + r
-    return textTask({
-      question: `Berechne mit Rest: ${dividend} : ${divisor}`,
-      accepted: [`${q} R ${r}`, `${q}R${r}`, `${q} Rest ${r}`],
-      solution: `${q} R ${r}`,
-      explanation: `${divisor} passt ${q}-mal in ${dividend} (${divisor} · ${q} = ${q * divisor}). Es bleibt der Rest ${dividend} − ${q * divisor} = ${r}. Also ${q} R ${r}.`,
-    })
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const divisor = randInt(rng, 3, 9)
+      const q = randInt(rng, 11, 120)
+      const r = randInt(rng, 1, divisor - 1)
+      const dividend = q * divisor + r
+      return textTask({
+        question: `Berechne mit Rest: ${dividend} : ${divisor}`,
+        accepted: [`${q} R ${r}`, `${q}R${r}`, `${q} Rest ${r}`],
+        solution: `${q} R ${r}`,
+        explanation: `${divisor} passt ${q}-mal in ${dividend} (${divisor} · ${q} = ${q * divisor}). Es bleibt der Rest ${dividend} − ${q * divisor} = ${r}. Also ${q} R ${r}.`,
+      })
+    },
+    (rng: Rng) => {
+      const divisor = randInt(rng, 3, 9)
+      const q = randInt(rng, 11, 120)
+      const r = randInt(rng, 1, divisor - 1)
+      const dividend = q * divisor + r
+      return digitGridDivideTask({
+        question: 'Dividiere schriftlich mit Rest. Trage Quotient und Rest ein:',
+        dividend,
+        divisor,
+        quotient: q,
+        rest: r,
+        solution: `${q} R ${r}`,
+        explanation: `${dividend} : ${divisor} = ${q} Rest ${r}.`,
+      })
+    },
+  ),
+}
+
+/** Dediziertes Thema: schriftliche Division auf dem Kästchenpapier. */
+const schriftlicheDivision: Topic = {
+  id: 'lb1-schriftliche-division',
+  title: 'Schriftliche Division',
+  hint: 'Schreibe Dividend : Divisor = und trage den Quotienten ziffernweise ein. Bei Rest zusätzlich die Rest-Zeile füllen.',
+  pointsPerTask: 10,
+  difficulty: 2,
+  keywords: ['schriftlich', 'Division', 'Quotient', 'Rest', 'Kästchen', 'Nullen'],
+  fachwissen: {
+    text: 'Bei der schriftlichen Division bestimmt man den Quotienten ziffernweise von links. Man multipliziert die Quotientenziffer mit dem Divisor, subtrahiert vom jeweiligen Teil des Dividenden und zieht die nächste Ziffer herunter. Passt der Divisor nicht, schreibt man eine Null in den Quotienten.',
+    quelle: 'Wikipedia: Schriftliches Rechnen',
+    url: 'https://de.wikipedia.org/wiki/Schriftliches_Rechnen',
   },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      // Exact division (no remainder)
+      const divisor = randInt(rng, 2, 9)
+      const q = randInt(rng, 15, 850)
+      const dividend = q * divisor
+      return digitGridDivideTask({
+        question: 'Dividiere schriftlich. Trage den Quotienten in die Kästchen ein:',
+        dividend,
+        divisor,
+        quotient: q,
+        rest: 0,
+        solution: String(q),
+        explanation: `${dividend} : ${divisor} = ${q}.`,
+      })
+    },
+    (rng: Rng) => {
+      // With remainder
+      const divisor = randInt(rng, 3, 9)
+      const q = randInt(rng, 15, 850)
+      const r = randInt(rng, 1, divisor - 1)
+      const dividend = q * divisor + r
+      return digitGridDivideTask({
+        question: 'Dividiere schriftlich mit Rest. Trage Quotient und Rest ein:',
+        dividend,
+        divisor,
+        quotient: q,
+        rest: r,
+        solution: `${q} R ${r}`,
+        explanation: `${dividend} : ${divisor} = ${q} Rest ${r}.`,
+      })
+    },
+    (rng: Rng) => {
+      // Prefer a zero in the quotient (like 59535:7 = 8505)
+      const divisor = randInt(rng, 3, 9)
+      let q = randInt(rng, 100, 9999)
+      // Force at least one zero digit in the middle
+      const qDigits = String(q).split('')
+      if (!qDigits.includes('0') && qDigits.length >= 3) {
+        qDigits[randInt(rng, 1, qDigits.length - 2)] = '0'
+        q = Number(qDigits.join(''))
+      }
+      const r = randInt(rng, 0, divisor - 1)
+      const dividend = q * divisor + r
+      return digitGridDivideTask({
+        question: 'Dividiere schriftlich (Achtung auf Nullen im Quotienten):',
+        dividend,
+        divisor,
+        quotient: q,
+        rest: r,
+        solution: r > 0 ? `${q} R ${r}` : String(q),
+        explanation:
+          r > 0
+            ? `${dividend} : ${divisor} = ${q} Rest ${r}. Nullen im Quotienten nicht vergessen.`
+            : `${dividend} : ${divisor} = ${q}. Nullen im Quotienten nicht vergessen.`,
+      })
+    },
+  ),
 }
 
 const potenzieren: Topic = {
@@ -2622,6 +2726,7 @@ export const klasse5: Grade = {
         multiplikation,
         schriftlichesRechnen,
         divisionMitRest,
+        schriftlicheDivision,
         potenzieren,
         teilbarkeit,
         primzahl,

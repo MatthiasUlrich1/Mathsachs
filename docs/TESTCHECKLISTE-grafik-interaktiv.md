@@ -1,6 +1,6 @@
 # Testcheckliste: Grafische & interaktive Aufgaben
 
-Stand: v0.24.0 — Klasse für Klasse abhaken. Kommentarzeile für Notizen.
+Stand: v0.26.0 — Klasse für Klasse abhaken. Kommentarzeile für Notizen.
 
 Legende: **SVG/Grafik** = Diagramm; Widgets: Zahlenstrahl, Drag&Drop, DigitGrid, Auswahl tippen, Mehrfachauswahl, Punkt setzen, Schieberegler.
 
@@ -19,11 +19,19 @@ Legende: **SVG/Grafik** = Diagramm; Widgets: Zahlenstrahl, Drag&Drop, DigitGrid,
   Kommentar: _______________________________________________
 
 - [ ] **Multiplikation natürlicher Zahlen**  
-  _Arbeiten mit natürlichen Zahlen_ · `lb1-multiplikation` · DigitGrid  
+  _Arbeiten mit natürlichen Zahlen_ · `lb1-multiplikation` · DigitGrid (Teilprodukte + Summe)  
   Kommentar: _______________________________________________
 
 - [ ] **Schriftliches Rechnen (Kästchenpapier)**  
   _Arbeiten mit natürlichen Zahlen_ · `lb1-schriftliches-rechnen` · DigitGrid  
+  Kommentar: _______________________________________________
+
+- [ ] **Division mit Rest**  
+  _Arbeiten mit natürlichen Zahlen_ · `lb1-division-rest` · DigitGrid / Text  
+  Kommentar: _______________________________________________
+
+- [ ] **Schriftliche Division**  
+  _Arbeiten mit natürlichen Zahlen_ · `lb1-schriftliche-division` · DigitGrid  
   Kommentar: _______________________________________________
 
 ### Lernbereich: Gemeine Brüche und Dezimalzahlen
@@ -401,7 +409,11 @@ Legende: **SVG/Grafik** = Diagramm; Widgets: Zahlenstrahl, Drag&Drop, DigitGrid,
   Kommentar: _______________________________________________
 
 - [ ] **Multiplizieren natürlicher Zahlen**  
-  _Natürliche Zahlen_ · `os-k5-lb1-multiplikation` · DigitGrid  
+  _Natürliche Zahlen_ · `os-k5-lb1-multiplikation` · DigitGrid (Teilprodukte + Summe)  
+  Kommentar: _______________________________________________
+
+- [ ] **Schriftliche Division durch einstelligen Divisor**  
+  _Natürliche Zahlen_ · `os-k5-lb1-division` · DigitGrid  
   Kommentar: _______________________________________________
 
 #### Gemeine Brüche, Dezimalzahlen und Größen
@@ -721,7 +733,11 @@ Legende: **SVG/Grafik** = Diagramm; Widgets: Zahlenstrahl, Drag&Drop, DigitGrid,
   Kommentar: _______________________________________________
 
 - [ ] **Multiplizieren natürlicher Zahlen**  
-  _Natürliche Zahlen_ · `os-k5-lb1-multiplikation` · DigitGrid  
+  _Natürliche Zahlen_ · `os-k5-lb1-multiplikation` · DigitGrid (Teilprodukte + Summe)  
+  Kommentar: _______________________________________________
+
+- [ ] **Schriftliche Division durch einstelligen Divisor**  
+  _Natürliche Zahlen_ · `os-k5-lb1-division` · DigitGrid  
   Kommentar: _______________________________________________
 
 #### Gemeine Brüche, Dezimalzahlen und Größen

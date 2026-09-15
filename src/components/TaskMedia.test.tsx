@@ -2,7 +2,7 @@ import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it } from 'vitest'
 import { createRng } from '../lib/rng'
-import { visualTask } from '../curriculum/taskHelpers'
+import { digitGridMultiplyTask, visualTask } from '../curriculum/taskHelpers'
 import { TaskVisual, initTaskInput } from './TaskMedia'
 
 describe('TaskMedia', () => {
@@ -32,6 +32,21 @@ describe('TaskMedia', () => {
     })
     expect(initTaskInput(task)).toEqual({ kind: 'value', value: '' })
     expect(task.visualContent).toContain('svg')
+  })
+
+  it('initTaskInput seeds multi-row digit grids from answerRowLengths', () => {
+    const task = digitGridMultiplyTask({
+      question: 'Multipliziere',
+      a: 23,
+      b: 36,
+      solution: '828',
+      explanation: '23 · 36 = 828',
+    })
+    const input = initTaskInput(task)
+    expect(input.kind).toBe('digitGrid')
+    if (input.kind !== 'digitGrid') return
+    expect(input.answerRows).toHaveLength(3)
+    expect(input.answerRows![0]).toHaveLength(task.interactive!.props.answerLength as number)
   })
 })
 

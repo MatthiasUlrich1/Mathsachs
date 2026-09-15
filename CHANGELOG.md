@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.26.0] – 2026-09-15
+
+### Neu
+- **Schriftliche Multiplikation** auf dem Kästchenpapier wie Stellenwertverfahren von links:
+  Teilprodukte je Ziffer des zweiten Faktors plus Summe (mehrere Antwortzeilen).
+- **Schriftliche Division** als DigitGrid-Thema (`lb1-schriftliche-division`): Quotient
+  ziffernweise, optional Rest; Varianten mit Nullen im Quotienten.
+- Gym K5 und Oberschule K5 auf die neuen Multiplikations-/Divisions-Widgets umgestellt;
+  Testcheckliste ergänzt.
+
 ## [0.25.0] – 2026-09-15
 
 ### Neu

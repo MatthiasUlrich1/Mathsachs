@@ -22,6 +22,12 @@ export const formatExamAnswer = (input: UserInput): string => {
     return input.order.join(', ')
   }
   if (input.kind === 'digitGrid') {
+    if (input.answerRows && input.answerRows.length > 0) {
+      const parts = input.answerRows
+        .map((row) => row.join('').replace(/\D/g, ''))
+        .filter(Boolean)
+      return parts.length ? parts.join(' | ') : '—'
+    }
     const joined = input.digits.join('').replace(/\D/g, '')
     return joined || '—'
   }

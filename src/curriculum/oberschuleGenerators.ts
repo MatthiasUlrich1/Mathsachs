@@ -384,7 +384,7 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-k5-lb1-addition': 'lb1-addition',
   'os-k5-lb1-subtraktion': 'lb1-subtraktion',
   'os-k5-lb1-multiplikation': 'lb1-multiplikation',
-  'os-k5-lb1-division': 'lb1-division-rest',
+  'os-k5-lb1-division': 'lb1-schriftliche-division',
   'os-k5-lb1-potenz': 'lb1-potenzieren',
   'os-k5-lb1-gleichung': 'k7-lb2-gleichung-add',
   'os-k5-lb1-teilbarkeit': 'lb1-teilbarkeit',

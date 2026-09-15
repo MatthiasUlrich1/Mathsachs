@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-05T17:55:03.906Z",
+  "updatedAt": "2026-09-15T19:26:55.201Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -9,7 +9,7 @@
       "subject": "Mathematik",
       "version": "1.0.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen.json",
-      "size": 53255,
+      "size": 62132,
       "changelog": "Erstfassung: Klassen 5–10 und Jahrgangsstufe 11/12 (Grundkurs), plus getrennte Lehrer-Ergänzungen."
     },
     {
@@ -20,7 +20,7 @@
       "subject": "Mathematik",
       "version": "1.0.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/oberschule-sachsen-hs.json",
-      "size": 46694,
+      "size": 46763,
       "changelog": "Erstfassung Klassen 5–9 (Hauptschulbildungsgang). Pflicht-Lernbereiche und Wahlbereiche nach dem offiziellen Lehrplan. Lehrplan Oberschule Mathematik (Sachsen) 2004/2009/2019, lplanid=67, https://www.schulportal.sachsen.de/lplandb/"
     },
     {
@@ -31,7 +31,7 @@
       "subject": "Mathematik",
       "version": "1.0.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/oberschule-sachsen-rs.json",
-      "size": 55816,
+      "size": 55885,
       "changelog": "Erstfassung Klassen 5–10 (Realschulbildungsgang). Pflicht-Lernbereiche und Wahlbereiche nach dem offiziellen Lehrplan. Lehrplan Oberschule Mathematik (Sachsen) 2004/2009/2019, lplanid=67, https://www.schulportal.sachsen.de/lplandb/"
     }
   ]

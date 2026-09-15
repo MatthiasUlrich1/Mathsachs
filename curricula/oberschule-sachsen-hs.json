@@ -6,7 +6,7 @@
   "subject": "Mathematik",
   "version": "1.0.0",
   "changelog": "Erstfassung Klassen 5–9 (Hauptschulbildungsgang). Pflicht-Lernbereiche und Wahlbereiche nach dem offiziellen Lehrplan. Lehrplan Oberschule Mathematik (Sachsen) 2004/2009/2019, lplanid=67, https://www.schulportal.sachsen.de/lplandb/",
-  "contentHash": "380ab258",
+  "contentHash": "a321f773",
   "official": [
     {
       "id": "os-hs-klasse-5",
@@ -83,7 +83,7 @@
             {
               "id": "os-k5-lb1-multiplikation",
               "title": "Multiplizieren natürlicher Zahlen",
-              "hint": "Zerlege den zweiten Faktor in Zehner und Einer.",
+              "hint": "Zerlege den zweiten Faktor nach Stellenwerten von links; trage Teilprodukte und Summe ein.",
               "pointsPerTask": 10,
               "keywords": [
                 "Multiplikation"
@@ -92,7 +92,7 @@
             {
               "id": "os-k5-lb1-division",
               "title": "Schriftliche Division durch einstelligen Divisor",
-              "hint": "Antwortformat: „q R r“ (Quotient, dann Rest).",
+              "hint": "Trage den Quotienten ziffernweise ein; bei Rest zusätzlich die Rest-Zeile.",
               "pointsPerTask": 10,
               "keywords": [
                 "Division"
