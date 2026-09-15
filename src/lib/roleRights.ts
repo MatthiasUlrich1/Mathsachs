@@ -26,6 +26,11 @@ export const ROLE_RIGHT_ROWS: RightRow[] = [
     marks: { schueler: 'no', eltern: 'yes', klassenlehrer: 'no', lehrer: 'yes' },
   },
   {
+    id: 'examAssign',
+    label: 'Klausur Klasse zuordnen',
+    marks: { schueler: 'no', eltern: 'no', klassenlehrer: 'no', lehrer: 'yes' },
+  },
+  {
     id: 'protocol',
     label: 'Punkteprotokoll',
     marks: { schueler: 'yes', eltern: 'yes', klassenlehrer: 'yes', lehrer: 'yes' },

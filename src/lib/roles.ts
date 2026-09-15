@@ -32,6 +32,10 @@ export const canCreateExam = (role?: unknown): boolean => {
   return id === 'eltern' || id === 'lehrer'
 }
 
+/** Klausur einer Klasse zuordnen / verwalten — nur Lehrer. */
+export const canAssignClassExam = (role?: unknown): boolean =>
+  normalizeRole(role) === 'lehrer'
+
 /** Klausur schreiben — everyone except Klassenlehrer. */
 export const canWriteExam = (role?: unknown): boolean =>
   normalizeRole(role) !== 'klassenlehrer'

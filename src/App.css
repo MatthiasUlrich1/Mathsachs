@@ -76,6 +76,76 @@
   border-color: transparent;
 }
 
+.tab__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  margin-left: 6px;
+  padding: 0 5px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  background: #dc2626;
+  vertical-align: middle;
+}
+
+.class-exam-manager,
+.class-exam-inbox {
+  margin: 16px 0 20px;
+  padding: 14px 0 4px;
+  border-top: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.class-exam-manager__list,
+.class-exam-inbox__list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.class-exam-manager__item,
+.class-exam-inbox__item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.35);
+}
+
+.class-exam-manager__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.class-exam-inbox__new {
+  color: #f87171;
+  font-weight: 700;
+}
+
+.class-exam-inbox__done {
+  margin-top: 12px;
+}
+
+.exam-assign {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
 .user-badge {
   display: flex;
   align-items: center;

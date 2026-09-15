@@ -30,6 +30,7 @@ describe('Rollen-Rechte-Matrix', () => {
       'Themen',
       'Klausur schreiben',
       'Klausur erstellen',
+      'Klausur Klasse zuordnen',
       'Punkteprotokoll',
       'Einstellungen',
       'Klassencode erstellen',

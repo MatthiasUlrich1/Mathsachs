@@ -4,7 +4,14 @@ import {
   parseDeletedChallenges,
   parseStoredChallenges,
 } from '../challenge/parse'
+import {
+  applyClassExamTombstones,
+  parseCompletedClassExamIds,
+  parseDeletedClassExams,
+  parseStoredClassExams,
+} from '../exam/classExamParse'
 import type { StoredChallenge } from '../challenge/types'
+import type { StoredClassExam } from '../exam/classExamTypes'
 import {
   challengeThreshold,
   challengeTopicIds,
@@ -121,6 +128,15 @@ const readLocalState = (): SharedState => {
           deletedChallenges: parsed.deletedChallenges
             ? parseDeletedChallenges(parsed.deletedChallenges)
             : parsed.deletedChallenges,
+          classExams: parsed.classExams
+            ? parseStoredClassExams(parsed.classExams)
+            : parsed.classExams,
+          deletedClassExams: parsed.deletedClassExams
+            ? parseDeletedClassExams(parsed.deletedClassExams)
+            : parsed.deletedClassExams,
+          completedClassExamIds: parsed.completedClassExamIds
+            ? parseCompletedClassExamIds(parsed.completedClassExamIds)
+            : parsed.completedClassExamIds,
         }
       } else state.records[name] = freshUser(name)
     } catch {
@@ -973,6 +989,77 @@ export const listDeviceChallenges = (): StoredChallenge[] => {
     }
   }
   return [...byId.values()]
+}
+
+/** Remember a class exam this Lehrer assigned (LAN merge). */
+export const rememberCreatedClassExam = (exam: StoredClassExam): void => {
+  const user = activeUserName?.trim()
+  if (!user) return
+  const current = cache.records[user] ?? freshUser(user)
+  const prev = (current.classExams ?? []).find((row) => row.id === exam.id)
+  const owned = exam.owned === true || prev?.owned === true
+  const next = parseStoredClassExams([
+    {
+      ...exam,
+      ...(owned ? { owned: true } : exam.owned === false ? { owned: false } : {}),
+    },
+    ...(current.classExams ?? []),
+  ])
+  const deletedClassExams = parseDeletedClassExams(current.deletedClassExams)
+  const applied = applyClassExamTombstones(next, deletedClassExams)
+  saveUser({
+    ...current,
+    classExams: applied.classExams,
+    ...(applied.deletedClassExams.length > 0
+      ? { deletedClassExams: applied.deletedClassExams }
+      : { deletedClassExams: undefined }),
+  })
+}
+
+export const getCreatedClassExams = (name?: string): StoredClassExam[] => {
+  const user = (name ?? activeUserName)?.trim()
+  if (!user) return []
+  const record = loadUser(user)
+  return applyClassExamTombstones(
+    parseStoredClassExams(record.classExams),
+    parseDeletedClassExams(record.deletedClassExams),
+  ).classExams
+}
+
+export const forgetCreatedClassExam = (id: string, now: number = Date.now()): void => {
+  const user = activeUserName?.trim()
+  const trimmed = id.trim().toUpperCase()
+  if (!user || !trimmed) return
+  const current = cache.records[user] ?? freshUser(user)
+  const applied = applyClassExamTombstones(parseStoredClassExams(current.classExams), [
+    ...parseDeletedClassExams(current.deletedClassExams, now),
+    { id: trimmed, deletedAt: now },
+  ])
+  saveUser({
+    ...current,
+    classExams: applied.classExams,
+    ...(applied.deletedClassExams.length > 0
+      ? { deletedClassExams: applied.deletedClassExams }
+      : { deletedClassExams: undefined }),
+  })
+}
+
+export const getCompletedClassExamIds = (name?: string): string[] => {
+  const user = (name ?? activeUserName)?.trim()
+  if (!user) return []
+  return parseCompletedClassExamIds(loadUser(user).completedClassExamIds)
+}
+
+export const markClassExamCompleted = (id: string): void => {
+  const user = activeUserName?.trim()
+  const trimmed = id.trim().toUpperCase()
+  if (!user || !trimmed) return
+  const current = cache.records[user] ?? freshUser(user)
+  const next = parseCompletedClassExamIds([
+    ...(current.completedClassExamIds ?? []),
+    trimmed,
+  ])
+  saveUser({ ...current, completedClassExamIds: next })
 }
 
 /** Drop a Stufencode locally and tombstone it. Does not call the server. */

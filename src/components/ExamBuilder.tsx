@@ -4,11 +4,21 @@ import type { Grade, Task, Topic } from '../curriculum/types'
 import { encodeExam } from '../exam/examCode'
 import { examCodeMailtoUrl, examCodeWhatsAppUrl } from '../exam/share'
 import { openClassCodeShareUrl } from '../classCode/share'
+import {
+  ClassApiError,
+  createClassExam,
+} from '../classCode/api'
 import { CURRICULUM_VERSION } from '../curriculum/registry'
 import { refsForGradeModules } from '../curriculum/versionGate'
 import type { ExamSpec, ExamTaskRef } from '../exam/types'
+import { canAssignClassExam } from '../lib/roles'
+import {
+  getClassCodeSettings,
+  rememberCreatedClassExam,
+} from '../lib/storage'
 import { TeacherExtraBadge } from './TeacherExtraBadge'
 import { TaskVisual } from './TaskMedia'
+import { ClassExamManager } from './ClassExamManager'
 
 interface LoadedGrade {
   moduleId: string
@@ -18,6 +28,8 @@ interface LoadedGrade {
 interface Props {
   loaded: LoadedGrade[]
   onExit: () => void
+  /** Current user role — Lehrer get class assignment. */
+  role?: string
 }
 
 /** Number of concrete task proposals offered per selected topic in step 2. */
@@ -39,8 +51,10 @@ const selKey = (moduleId: string, topicId: string, seed: number) =>
 
 const randomSeed = () => Math.floor(Math.random() * 0xffffffff) >>> 0
 
-export function ExamBuilder({ loaded, onExit }: Props) {
+export function ExamBuilder({ loaded, onExit, role }: Props) {
   const [step, setStep] = useState<1 | 2 | 3>(1)
+  const assignEnabled = canAssignClassExam(role)
+  const [listRefresh, setListRefresh] = useState(0)
 
   // Flattened list of every topic across the loaded grades.
   const entries = useMemo<TopicEntry[]>(() => {
@@ -206,14 +220,17 @@ export function ExamBuilder({ loaded, onExit }: Props) {
         <div>
           <h2 className="section-title no-margin">Klausur erstellen</h2>
           <p className="muted small">
-            Stelle eine Übungsklausur zusammen und teile den Klausurcode per
-            E-Mail oder WhatsApp — ganz ohne Server.
+            {assignEnabled
+              ? 'Stelle eine Übungsklausur zusammen, teile den Code oder ordne sie einer Klasse zu.'
+              : 'Stelle eine Übungsklausur zusammen und teile den Klausurcode per E-Mail oder WhatsApp — ganz ohne Server.'}
           </p>
         </div>
         <button type="button" className="link" onClick={onExit}>
           Zurück
         </button>
       </div>
+
+      {assignEnabled && <ClassExamManager refreshKey={listRefresh} />}
 
       <ol className="exam-steps">
         {(['Themen', 'Aufgaben', 'Code'] as const).map((label, i) => {
@@ -275,6 +292,8 @@ export function ExamBuilder({ loaded, onExit }: Props) {
           copied={copied}
           onCopy={copyCode}
           onShareLink={onShareLink}
+          assignEnabled={assignEnabled}
+          onAssigned={() => setListRefresh((n) => n + 1)}
         />
       )}
 
@@ -462,6 +481,8 @@ function ExamStepCode({
   copied,
   onCopy,
   onShareLink,
+  assignEnabled,
+  onAssigned,
 }: {
   title: string
   onTitleChange: (v: string) => void
@@ -471,7 +492,14 @@ function ExamStepCode({
   copied: boolean
   onCopy: () => void
   onShareLink: (event: MouseEvent<HTMLAnchorElement>) => void
+  assignEnabled: boolean
+  onAssigned: () => void
 }) {
+  const createdClasses = getClassCodeSettings().created
+  const [classCode, setClassCode] = useState(createdClasses[0]?.code ?? '')
+  const [assignBusy, setAssignBusy] = useState(false)
+  const [assignNotice, setAssignNotice] = useState<string | null>(null)
+
   if (count === 0) {
     return (
       <p className="notice notice--warn">
@@ -504,6 +532,77 @@ function ExamStepCode({
         </div>
       </div>
 
+      {assignEnabled && (
+        <div className="field exam-assign">
+          <span className="field__label">Klasse zuordnen (Lehrer)</span>
+          {createdClasses.length === 0 ? (
+            <p className="muted small">
+              Lege zuerst unter Einstellungen → Klasse einen Klassencode an.
+            </p>
+          ) : (
+            <>
+              <select
+                className="answer-input__field"
+                value={classCode}
+                onChange={(e) => setClassCode(e.target.value)}
+              >
+                {createdClasses.map((row) => (
+                  <option key={row.code} value={row.code}>
+                    {row.name}
+                  </option>
+                ))}
+              </select>
+              <button
+                type="button"
+                className="primary"
+                disabled={assignBusy || !classCode}
+                onClick={() => {
+                  setAssignBusy(true)
+                  setAssignNotice(null)
+                  void createClassExam({
+                    classCode,
+                    name: title.trim() || 'Übungsklausur',
+                    examCode: code,
+                    taskCount: count,
+                    totalPoints,
+                  })
+                    .then((created) => {
+                      rememberCreatedClassExam({
+                        id: created.id,
+                        hostCode: classCode,
+                        className:
+                          created.className ??
+                          createdClasses.find((c) => c.code === classCode)?.name,
+                        name: created.name,
+                        examCode: created.examCode,
+                        createdAt: created.createdAt,
+                        owned: true,
+                        taskCount: created.taskCount ?? count,
+                        totalPoints: created.totalPoints ?? totalPoints,
+                      })
+                      setAssignNotice(
+                        `Klausur „${created.name}“ der Klasse zugeordnet.`,
+                      )
+                      onAssigned()
+                    })
+                    .catch((e: unknown) => {
+                      setAssignNotice(
+                        e instanceof ClassApiError
+                          ? e.message
+                          : 'Zuordnung fehlgeschlagen. Prüfe die Internetverbindung.',
+                      )
+                    })
+                    .finally(() => setAssignBusy(false))
+                }}
+              >
+                {assignBusy ? 'Wird zugeordnet …' : 'Der Klasse zuordnen'}
+              </button>
+              {assignNotice && <p className="muted small">{assignNotice}</p>}
+            </>
+          )}
+        </div>
+      )}
+
       <div className="field">
         <span className="field__label">Klausurcode</span>
         <textarea className="exam-code__field" readOnly rows={3} value={code} />
@@ -533,8 +632,9 @@ function ExamStepCode({
       </div>
 
       <p className="muted small">
-        Teile den Klausurcode per E-Mail oder WhatsApp. Schüler:innen öffnen die
-        App, wählen „Klausur schreiben“ und geben den Code ein.
+        {assignEnabled
+          ? 'Nach der Zuordnung sehen Schüler:innen der Klasse die Klausur unter „Klausur schreiben“. Zusätzlich kannst du den Code wie bisher teilen.'
+          : 'Teile den Klausurcode per E-Mail oder WhatsApp. Schüler:innen öffnen die App, wählen „Klausur schreiben“ und geben den Code ein.'}
       </p>
     </div>
   )

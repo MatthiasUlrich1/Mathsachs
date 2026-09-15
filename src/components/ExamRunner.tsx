@@ -1,6 +1,12 @@
 import { useEffect, useMemo, useState } from 'react'
 import { emptyInput, type UserInput } from '../curriculum/types'
-import { recordSession } from '../lib/storage'
+import {
+  getClassCodeSettings,
+  getCompletedClassExamIds,
+  markClassExamCompleted,
+  recordSession,
+} from '../lib/storage'
+import { getClass, type ClassExamSummary } from '../classCode/api'
 import { AnswerInput } from './AnswerInput'
 import { ExamProtocolSheet, formatExamAnswer } from './ExamProtocolSheet'
 import { initTaskInput, TaskInteractive, TaskVisual } from './TaskMedia'
@@ -49,11 +55,33 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
 
   const [pdfBusy, setPdfBusy] = useState(false)
   const [pdfNotice, setPdfNotice] = useState<string | null>(null)
+  const [classExams, setClassExams] = useState<ClassExamSummary[]>([])
+  const [completedIds, setCompletedIds] = useState(() => new Set(getCompletedClassExamIds()))
+  const [activeClassExamId, setActiveClassExamId] = useState<string | null>(null)
 
   useEffect(() => {
     if (phase !== 'done') return
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [phase])
+
+  useEffect(() => {
+    const code = getClassCodeSettings().activeCode
+    if (!code) {
+      setClassExams([])
+      return
+    }
+    let cancelled = false
+    void getClass(code)
+      .then((stats) => {
+        if (!cancelled) setClassExams(stats.exams ?? [])
+      })
+      .catch(() => {
+        if (!cancelled) setClassExams([])
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [user, phase])
 
   // Auto-decode a code handed in via a shared link.
   useEffect(() => {
@@ -72,10 +100,24 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
       const decoded = decodeExam(codeText)
       setSpec(decoded)
       setError(null)
+      setActiveClassExamId(null)
       setPhase('ready')
     } catch (e) {
       setSpec(null)
       setError(e instanceof ExamCodeError ? e.message : 'Der Code ist ungültig.')
+    }
+  }
+
+  const startClassExam = (exam: ClassExamSummary) => {
+    try {
+      const decoded = decodeExam(exam.examCode)
+      setSpec(decoded)
+      setCodeText(exam.examCode)
+      setError(null)
+      setActiveClassExamId(exam.id)
+      setPhase('ready')
+    } catch (e) {
+      setError(e instanceof ExamCodeError ? e.message : 'Die Klassenklausur ist ungültig.')
     }
   }
 
@@ -121,6 +163,10 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
     })
     setResults(computed)
     persist(computed)
+    if (activeClassExamId) {
+      markClassExamCompleted(activeClassExamId)
+      setCompletedIds(new Set(getCompletedClassExamIds()))
+    }
     setPhase('done')
   }
 
@@ -153,13 +199,16 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
   // ---- Render ----
 
   if (phase === 'input') {
+    const openExams = classExams.filter((exam) => !completedIds.has(exam.id))
+    const doneExams = classExams.filter((exam) => completedIds.has(exam.id))
     return (
       <section className="card">
         <div className="session__head">
           <div>
             <h2 className="section-title no-margin">Klausur schreiben</h2>
             <p className="muted small">
-              Füge den Klausurcode ein (beginnt mit „MSX1:“).
+              Füge den Klausurcode ein (beginnt mit „MSX1:“) oder starte eine
+              Klassenklausur.
             </p>
           </div>
           <button type="button" className="link" onClick={onExit}>
@@ -167,6 +216,62 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
           </button>
         </div>
         {error && <p className="notice notice--error">{error}</p>}
+
+        {classExams.length > 0 && (
+          <div className="class-exam-inbox">
+            <h3 className="exam-pool__title">Klausuren deiner Klasse</h3>
+            {openExams.length === 0 ? (
+              <p className="muted small">Keine offenen Klassenklausuren.</p>
+            ) : (
+              <ul className="class-exam-inbox__list">
+                {openExams.map((exam) => (
+                  <li key={exam.id} className="class-exam-inbox__item">
+                    <div>
+                      <strong>{exam.name}</strong>
+                      <p className="muted small">
+                        {exam.taskCount != null ? `${exam.taskCount} Aufgaben` : 'Klausur'}
+                        {exam.totalPoints != null ? ` · ${exam.totalPoints} P.` : ''}
+                        <span className="class-exam-inbox__new"> · offen</span>
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      className="primary"
+                      onClick={() => startClassExam(exam)}
+                    >
+                      Starten
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+            {doneExams.length > 0 && (
+              <details className="class-exam-inbox__done">
+                <summary className="muted small">
+                  Bereits geschrieben ({doneExams.length})
+                </summary>
+                <ul className="class-exam-inbox__list">
+                  {doneExams.map((exam) => (
+                    <li key={exam.id} className="class-exam-inbox__item">
+                      <div>
+                        <strong>{exam.name}</strong>
+                        <p className="muted small">Erneut schreiben möglich</p>
+                      </div>
+                      <button
+                        type="button"
+                        className="ghost"
+                        onClick={() => startClassExam(exam)}
+                      >
+                        Nochmal
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            )}
+          </div>
+        )}
+
         <div className="field">
           <span className="field__label">Klausurcode (beginnt mit „MSX1:“)</span>
           <textarea

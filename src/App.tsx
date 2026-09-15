@@ -54,6 +54,7 @@ import { UpdateBuildingBanner } from './components/UpdateBuildingBanner'
 import { LegalFooter } from './components/LegalFooter'
 import { Settings } from './components/Settings'
 import { parseExamHash } from './exam/examCode'
+import { countOpenClassExams } from './exam/openClassExams'
 import { useUpdateCheck } from './updates/useUpdateCheck'
 import { useLanStatus } from './lan/useLanStatus'
 import {
@@ -103,6 +104,7 @@ export default function App() {
   const [userRole, setUserRoleState] = useState<UserRole>('schueler')
   // Exam code taken from a shared link (`#klausur=…`), consumed by ExamRunner.
   const [examCodeFromLink, setExamCodeFromLink] = useState<string | null>(null)
+  const [openExamCount, setOpenExamCount] = useState(0)
 
   const [loaded, setLoaded] = useState<LoadedGrade[]>([])
   const [activeId, setActiveId] = useState<string>('')
@@ -278,6 +280,27 @@ export default function App() {
       cancelled = true
     }
   }, [storageReady, activeUser, classLabel])
+
+  useEffect(() => {
+    if (!storageReady || !activeUser || !canWriteExam(userRole)) {
+      setOpenExamCount(0)
+      return
+    }
+    let cancelled = false
+    const refresh = () => {
+      void countOpenClassExams().then((n) => {
+        if (!cancelled) setOpenExamCount(n)
+      })
+    }
+    refresh()
+    const unsub = subscribeSharedStorage(refresh)
+    const timer = window.setInterval(refresh, 60_000)
+    return () => {
+      cancelled = true
+      unsub()
+      window.clearInterval(timer)
+    }
+  }, [storageReady, activeUser, userRole, classLabel, view.name])
 
   const loadCurriculum = async (id: string) => {
     if (loaded.some((l) => l.moduleId === id)) return
@@ -495,6 +518,14 @@ export default function App() {
               onClick={() => setView({ name: tab.id })}
             >
               {tab.label}
+              {tab.id === 'examRun' && openExamCount > 0 && (
+                <span
+                  className="tab__badge"
+                  aria-label={`${openExamCount} offene Klassenklausuren`}
+                >
+                  {openExamCount}
+                </span>
+              )}
             </button>
           ))}
           <div className="user-badge">
@@ -679,6 +710,7 @@ export default function App() {
       {view.name === 'examBuild' && (
         <ExamBuilder
           loaded={loaded}
+          role={userRole}
           onExit={() => setView({ name: 'browse' })}
         />
       )}

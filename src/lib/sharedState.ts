@@ -4,7 +4,16 @@ import {
   mergeStoredChallenges,
   parseStoredChallenges,
 } from '../challenge/parse'
+import {
+  applyClassExamTombstones,
+  mergeCompletedClassExamIds,
+  mergeDeletedClassExams,
+  mergeStoredClassExams,
+  parseCompletedClassExamIds,
+  parseStoredClassExams,
+} from '../exam/classExamParse'
 import type { DeletedChallenge, StoredChallenge } from '../challenge/types'
+import type { DeletedClassExam, StoredClassExam } from '../exam/classExamTypes'
 import {
   applyCurriculumTombstones,
   mergeDeletedCurricula,
@@ -71,6 +80,12 @@ export interface UserData {
   challenges?: StoredChallenge[]
   /** Tombstones so WLAN/PC merge cannot resurrect a deleted challenge. */
   deletedChallenges?: DeletedChallenge[]
+  /** Class exams this Lehrer assigned (manage UI + LAN merge). */
+  classExams?: StoredClassExam[]
+  /** Tombstones so WLAN/PC merge cannot resurrect a deleted class exam. */
+  deletedClassExams?: DeletedClassExam[]
+  /** Locally completed class-exam ids (badge / unsolved list). */
+  completedClassExamIds?: string[]
   /** Optional for older records; treat missing as Schüler (see roleForUser). */
   role?: UserRole
 }
@@ -719,6 +734,18 @@ export const mergeUserData = (a: UserData | undefined, b: UserData | undefined):
     deletedChallenges,
   )
   const challenges = applied.challenges
+  const deletedClassExams = mergeDeletedClassExams(a.deletedClassExams, b.deletedClassExams)
+  const appliedExams = applyClassExamTombstones(
+    mergeStoredClassExams(
+      parseStoredClassExams(a.classExams),
+      parseStoredClassExams(b.classExams),
+    ),
+    deletedClassExams,
+  )
+  const completedClassExamIds = mergeCompletedClassExamIds(
+    parseCompletedClassExamIds(a.completedClassExamIds),
+    parseCompletedClassExamIds(b.completedClassExamIds),
+  )
   const role = isUserRole(b.role) ? b.role : isUserRole(a.role) ? a.role : undefined
   return {
     name: a.name || b.name,
@@ -735,6 +762,11 @@ export const mergeUserData = (a: UserData | undefined, b: UserData | undefined):
     ...(applied.deletedChallenges.length > 0
       ? { deletedChallenges: applied.deletedChallenges }
       : {}),
+    ...(appliedExams.classExams.length > 0 ? { classExams: appliedExams.classExams } : {}),
+    ...(appliedExams.deletedClassExams.length > 0
+      ? { deletedClassExams: appliedExams.deletedClassExams }
+      : {}),
+    ...(completedClassExamIds.length > 0 ? { completedClassExamIds } : {}),
     ...(role ? { role } : {}),
   }
 }

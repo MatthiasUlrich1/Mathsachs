@@ -8,12 +8,14 @@
  * Rate limits per client IP / 60s (classroom-safe listing + a few deletes):
  * GET class/grade 300, DELETE 30, POST /classes 8, POST /grades 8,
  * POST /challenges 8, PUT /challenges/:id 30, DELETE /challenges/:id 30,
+ * POST /exams 8, PUT /exams/:id 30, DELETE /exams/:id 30,
  * PUT grade membership 30, POST points 60.
  * GET / (health) is not rate-limited. Raise GET/DELETE here if a class page
  * with many Eigene Codes still 429s; keep POST points tight against abuse.
  *
- * Privacy: KV stores class/grade display names, daily point buckets and
- * anonymous challenge sums only. No pupil names, user ids or emails.
+ * Privacy: KV stores class/grade display names, daily point buckets,
+ * anonymous challenge sums and class exam assignments (name + MSX1 code) only.
+ * No pupil names, user ids or emails.
  * GET /grades never returns member Klassencodes. Points are accepted only
  * on class records. Challenge POST never stores names.
  */
@@ -442,6 +444,75 @@ function challengeIndexKey(id) {
   return `${CHALLENGE_INDEX_PREFIX}${id}`
 }
 
+const EXAM_INDEX_PREFIX = 'E:'
+const MAX_EXAM_CODE_PAYLOAD = 50_000
+
+function examIndexKey(id) {
+  return `${EXAM_INDEX_PREFIX}${id}`
+}
+
+function parseExamStored(raw) {
+  if (!raw || typeof raw !== 'object') return null
+  const id = normalizeClassCode(raw.id)
+  if (!isValidClassCode(id)) return null
+  const name = typeof raw.name === 'string' ? raw.name.trim() : ''
+  if (!name || name.length > MAX_CLASS_NAME_LENGTH) return null
+  const examCode = typeof raw.examCode === 'string' ? raw.examCode.trim() : ''
+  if (!examCode.startsWith('MSX1:') || examCode.length > MAX_EXAM_CODE_PAYLOAD) return null
+  const createdAt =
+    typeof raw.createdAt === 'number' && Number.isFinite(raw.createdAt) ? raw.createdAt : Date.now()
+  const taskCount =
+    typeof raw.taskCount === 'number' && Number.isFinite(raw.taskCount)
+      ? Math.max(0, Math.floor(raw.taskCount))
+      : undefined
+  const totalPoints =
+    typeof raw.totalPoints === 'number' && Number.isFinite(raw.totalPoints)
+      ? Math.max(0, Math.floor(raw.totalPoints))
+      : undefined
+  return {
+    id,
+    name,
+    examCode,
+    createdAt,
+    ...(taskCount != null ? { taskCount } : {}),
+    ...(totalPoints != null ? { totalPoints } : {}),
+  }
+}
+
+function parseExamsMap(raw) {
+  const src = raw && typeof raw === 'object' && !Array.isArray(raw) ? raw : {}
+  const out = {}
+  for (const item of Object.values(src)) {
+    const parsed = parseExamStored(item)
+    if (parsed) out[parsed.id] = parsed
+  }
+  return out
+}
+
+function serializeExam(exam) {
+  const out = {
+    id: exam.id,
+    name: exam.name,
+    examCode: exam.examCode,
+    createdAt: exam.createdAt,
+  }
+  if (exam.taskCount != null) out.taskCount = exam.taskCount
+  if (exam.totalPoints != null) out.totalPoints = exam.totalPoints
+  return out
+}
+
+function publicClassExam(exam, className) {
+  return {
+    id: exam.id,
+    name: exam.name,
+    examCode: exam.examCode,
+    createdAt: exam.createdAt,
+    ...(exam.taskCount != null ? { taskCount: exam.taskCount } : {}),
+    ...(exam.totalPoints != null ? { totalPoints: exam.totalPoints } : {}),
+    ...(className ? { className } : {}),
+  }
+}
+
 function parseRaw(raw) {
   if (!raw) return null
   try {
@@ -488,6 +559,7 @@ function parseClassStored(raw) {
     days,
     gradeId: isValidClassCode(gradeId) ? gradeId : undefined,
     challenges: parseChallengesMap(data.challenges),
+    exams: parseExamsMap(data.exams),
   }
 }
 
@@ -521,6 +593,12 @@ function serializeClass(stored) {
     const packed = {}
     for (const [id, ch] of Object.entries(challenges)) packed[id] = serializeChallenge(ch)
     out.challenges = packed
+  }
+  const exams = stored.exams || {}
+  if (Object.keys(exams).length) {
+    const packed = {}
+    for (const [id, exam] of Object.entries(exams)) packed[id] = serializeExam(exam)
+    out.exams = packed
   }
   return out
 }
@@ -633,6 +711,10 @@ function publicClass(code, stored, now = Date.now(), gradeView = null) {
     const live = all.find((row) => row.active)
     if (live) body.challenge = live
   }
+  const listedExams = Object.values(stored.exams || {})
+    .map((exam) => publicClassExam(exam, stored.name))
+    .sort((a, b) => b.createdAt - a.createdAt || a.name.localeCompare(b.name, 'de'))
+  if (listedExams.length) body.exams = listedExams
   return body
 }
 
@@ -686,6 +768,9 @@ export const RATE_LIMITS = {
   challengeCreate: { limit: 8, windowMs: 60_000 },
   challengeUpdate: { limit: 30, windowMs: 60_000 },
   challengeDelete: { limit: 30, windowMs: 60_000 },
+  examCreate: { limit: 8, windowMs: 60_000 },
+  examUpdate: { limit: 30, windowMs: 60_000 },
+  examDelete: { limit: 30, windowMs: 60_000 },
 }
 
 const hits = new Map()
@@ -1416,6 +1501,228 @@ async function handleDeleteChallenge(request, env, rawId) {
   return json(request, 200, { ok: true, deleted: found.id })
 }
 
+async function allocateExamId(env) {
+  for (let attempt = 0; attempt < 8; attempt++) {
+    const id = generateClassCode()
+    const existing = await env.CLASSES.get(examIndexKey(id))
+    if (existing) continue
+    return id
+  }
+  return null
+}
+
+function readExamCreateBody(body) {
+  const named = readDisplayName(body, 'Bitte einen Klausur-Namen eingeben.')
+  if (named.error) return { error: named.error, code: 'BAD_NAME' }
+  const hostCode = normalizeClassCode(body.classCode)
+  if (!isValidClassCode(hostCode)) {
+    return { error: 'Bitte einen Klassencode senden.', code: 'BAD_HOST' }
+  }
+  const examCode = typeof body.examCode === 'string' ? body.examCode.trim() : ''
+  if (!examCode.startsWith('MSX1:') || examCode.length > MAX_EXAM_CODE_PAYLOAD) {
+    return { error: 'Bitte einen gültigen Klausurcode (MSX1:…) senden.', code: 'BAD_EXAM' }
+  }
+  const taskCount =
+    typeof body.taskCount === 'number' && Number.isFinite(body.taskCount)
+      ? Math.max(0, Math.floor(body.taskCount))
+      : undefined
+  const totalPoints =
+    typeof body.totalPoints === 'number' && Number.isFinite(body.totalPoints)
+      ? Math.max(0, Math.floor(body.totalPoints))
+      : undefined
+  return {
+    hostCode,
+    name: named.name,
+    examCode,
+    ...(taskCount != null ? { taskCount } : {}),
+    ...(totalPoints != null ? { totalPoints } : {}),
+  }
+}
+
+async function handleCreateExam(request, env) {
+  if (
+    !rateLimit(
+      `examCreate:${clientKey(request)}`,
+      RATE_LIMITS.examCreate.limit,
+      RATE_LIMITS.examCreate.windowMs,
+    )
+  ) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
+  }
+  if (!env.CLASSES) {
+    return errorJson(request, 503, 'KV-Bindung CLASSES fehlt.', 'NO_KV')
+  }
+  let body
+  try {
+    body = await readJson(request)
+  } catch {
+    return errorJson(request, 400, 'Ungültiges JSON.', 'BAD_JSON')
+  }
+  const parsed = readExamCreateBody(body)
+  if (parsed.error) return errorJson(request, 400, parsed.error, parsed.code)
+
+  const id = await allocateExamId(env)
+  if (!id) {
+    return errorJson(request, 503, 'Keine freie Klausur-ID. Bitte erneut versuchen.', 'BUSY')
+  }
+
+  const loaded = await loadClass(env, parsed.hostCode)
+  const err = classLoadError(request, loaded)
+  if (err) return err
+
+  const exam = {
+    id,
+    name: parsed.name,
+    examCode: parsed.examCode,
+    createdAt: Date.now(),
+    ...(parsed.taskCount != null ? { taskCount: parsed.taskCount } : {}),
+    ...(parsed.totalPoints != null ? { totalPoints: parsed.totalPoints } : {}),
+  }
+  const stored = {
+    ...loaded.stored,
+    exams: { ...(loaded.stored.exams || {}), [id]: exam },
+  }
+  await putClass(env, loaded.code, stored)
+  await env.CLASSES.put(examIndexKey(id), JSON.stringify({ hostCode: loaded.code }))
+  return json(request, 201, publicClassExam(exam, stored.name))
+}
+
+async function loadExamHost(env, rawId) {
+  const id = normalizeClassCode(rawId)
+  if (!isValidClassCode(id)) {
+    return { error: { status: 400, message: 'Die Klausur-ID ist ungültig.', code: 'BAD_CODE' } }
+  }
+  if (!env.CLASSES) {
+    return { error: { status: 503, message: 'KV-Bindung CLASSES fehlt.', code: 'NO_KV' } }
+  }
+  const index = parseRaw(await env.CLASSES.get(examIndexKey(id)))
+  if (!index || typeof index.hostCode !== 'string') {
+    return { error: { status: 404, message: 'Diese Klausur gibt es nicht.', code: 'NOT_FOUND' } }
+  }
+  return { id, index: { hostCode: normalizeClassCode(index.hostCode) } }
+}
+
+async function handleGetExam(request, env, rawId) {
+  if (!rateLimit(`get:${clientKey(request)}`, RATE_LIMITS.get.limit, RATE_LIMITS.get.windowMs)) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
+  }
+  const found = await loadExamHost(env, rawId)
+  if (found.error) {
+    return errorJson(request, found.error.status, found.error.message, found.error.code)
+  }
+  const loaded = await loadClass(env, found.index.hostCode)
+  const err = classLoadError(request, loaded)
+  if (err) return err
+  const exam = (loaded.stored.exams || {})[found.id]
+  if (!exam) return errorJson(request, 404, 'Diese Klausur gibt es nicht.', 'NOT_FOUND')
+  return json(request, 200, publicClassExam(exam, loaded.stored.name))
+}
+
+async function handleUpdateExam(request, env, rawId) {
+  if (
+    !rateLimit(
+      `examUpdate:${clientKey(request)}`,
+      RATE_LIMITS.examUpdate.limit,
+      RATE_LIMITS.examUpdate.windowMs,
+    )
+  ) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
+  }
+  const found = await loadExamHost(env, rawId)
+  if (found.error) {
+    return errorJson(request, found.error.status, found.error.message, found.error.code)
+  }
+  let body
+  try {
+    body = await readJson(request)
+  } catch {
+    return errorJson(request, 400, 'Ungültiges JSON.', 'BAD_JSON')
+  }
+  const named = readDisplayName(body, 'Bitte einen Klausur-Namen eingeben.')
+  if (named.error) return errorJson(request, 400, named.error, 'BAD_NAME')
+  const examCode = typeof body.examCode === 'string' ? body.examCode.trim() : ''
+  if (!examCode.startsWith('MSX1:') || examCode.length > MAX_EXAM_CODE_PAYLOAD) {
+    return errorJson(request, 400, 'Bitte einen gültigen Klausurcode (MSX1:…) senden.', 'BAD_EXAM')
+  }
+  const nextHost = normalizeClassCode(body.classCode || found.index.hostCode)
+  if (!isValidClassCode(nextHost)) {
+    return errorJson(request, 400, 'Bitte einen Klassencode senden.', 'BAD_HOST')
+  }
+  const taskCount =
+    typeof body.taskCount === 'number' && Number.isFinite(body.taskCount)
+      ? Math.max(0, Math.floor(body.taskCount))
+      : undefined
+  const totalPoints =
+    typeof body.totalPoints === 'number' && Number.isFinite(body.totalPoints)
+      ? Math.max(0, Math.floor(body.totalPoints))
+      : undefined
+
+  const oldLoaded = await loadClass(env, found.index.hostCode)
+  const oldErr = classLoadError(request, oldLoaded)
+  if (oldErr) return oldErr
+  const existing = (oldLoaded.stored.exams || {})[found.id]
+  if (!existing) return errorJson(request, 404, 'Diese Klausur gibt es nicht.', 'NOT_FOUND')
+
+  const exam = {
+    ...existing,
+    id: found.id,
+    name: named.name,
+    examCode,
+    createdAt: existing.createdAt || Date.now(),
+    ...(taskCount != null ? { taskCount } : {}),
+    ...(totalPoints != null ? { totalPoints } : {}),
+  }
+
+  if (nextHost === oldLoaded.code) {
+    const stored = {
+      ...oldLoaded.stored,
+      exams: { ...(oldLoaded.stored.exams || {}), [found.id]: exam },
+    }
+    await putClass(env, oldLoaded.code, stored)
+    return json(request, 200, publicClassExam(exam, stored.name))
+  }
+
+  const newLoaded = await loadClass(env, nextHost)
+  const newErr = classLoadError(request, newLoaded)
+  if (newErr) return newErr
+
+  const oldExams = { ...(oldLoaded.stored.exams || {}) }
+  delete oldExams[found.id]
+  await putClass(env, oldLoaded.code, { ...oldLoaded.stored, exams: oldExams })
+
+  const stored = {
+    ...newLoaded.stored,
+    exams: { ...(newLoaded.stored.exams || {}), [found.id]: exam },
+  }
+  await putClass(env, newLoaded.code, stored)
+  await env.CLASSES.put(examIndexKey(found.id), JSON.stringify({ hostCode: newLoaded.code }))
+  return json(request, 200, publicClassExam(exam, stored.name))
+}
+
+async function handleDeleteExam(request, env, rawId) {
+  if (
+    !rateLimit(
+      `examDelete:${clientKey(request)}`,
+      RATE_LIMITS.examDelete.limit,
+      RATE_LIMITS.examDelete.windowMs,
+    )
+  ) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
+  }
+  const found = await loadExamHost(env, rawId)
+  if (found.error) {
+    return errorJson(request, found.error.status, found.error.message, found.error.code)
+  }
+  const loaded = await loadClass(env, found.index.hostCode)
+  const err = classLoadError(request, loaded)
+  if (err) return err
+  const exams = { ...(loaded.stored.exams || {}) }
+  delete exams[found.id]
+  await putClass(env, loaded.code, { ...loaded.stored, exams })
+  await env.CLASSES.delete(examIndexKey(found.id))
+  return json(request, 200, { ok: true, deleted: found.id })
+}
+
 export async function handleRequest(request, env) {
   if (request.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: corsHeaders(request) })
@@ -1486,6 +1793,21 @@ export async function handleRequest(request, env) {
   }
   if (challengeMatch && method === 'DELETE') {
     return handleDeleteChallenge(request, env, decodeURIComponent(challengeMatch[1]))
+  }
+
+  if (path === '/exams' && method === 'POST') {
+    return handleCreateExam(request, env)
+  }
+
+  const examMatch = /^\/exams\/([^/]+)$/.exec(path)
+  if (examMatch && method === 'GET') {
+    return handleGetExam(request, env, decodeURIComponent(examMatch[1]))
+  }
+  if (examMatch && method === 'PUT') {
+    return handleUpdateExam(request, env, decodeURIComponent(examMatch[1]))
+  }
+  if (examMatch && method === 'DELETE') {
+    return handleDeleteExam(request, env, decodeURIComponent(examMatch[1]))
   }
 
   return errorJson(request, 404, 'Unbekannter Pfad.', 'NOT_FOUND')

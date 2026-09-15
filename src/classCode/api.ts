@@ -92,6 +92,18 @@ export interface ClassStats {
   grade?: GradeSummary
   challenge?: ChallengeSummary
   challenges?: ChallengeSummary[]
+  exams?: ClassExamSummary[]
+}
+
+/** Assigned Übungsklausur visible to everyone who joined the class. */
+export interface ClassExamSummary {
+  id: string
+  name: string
+  examCode: string
+  createdAt: number
+  taskCount?: number
+  totalPoints?: number
+  className?: string
 }
 
 export interface CreatedGrade {
@@ -139,6 +151,15 @@ export function challengesUrl(base: string = CLASS_POINTS_API): string {
 export function challengeResourceUrl(id: string, base: string = CLASS_POINTS_API): string {
   const normalized = normalizeClassCode(id)
   return classApiUrl(`/challenges/${encodeURIComponent(normalized)}`, base)
+}
+
+export function examsUrl(base: string = CLASS_POINTS_API): string {
+  return classApiUrl('/exams', base)
+}
+
+export function examResourceUrl(id: string, base: string = CLASS_POINTS_API): string {
+  const normalized = normalizeClassCode(id)
+  return classApiUrl(`/exams/${encodeURIComponent(normalized)}`, base)
 }
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
@@ -288,6 +309,7 @@ const parseClassStats = (raw: unknown): ClassStats | null => {
   const grade = raw.grade ? parseGradeSummary(raw.grade) : null
   const challenges = parseChallengesList(raw.challenges)
   const challenge = raw.challenge ? parseChallengeSummary(raw.challenge) : challenges[0] ?? null
+  const exams = parseClassExamsList(raw.exams)
   return {
     code,
     name,
@@ -297,7 +319,37 @@ const parseClassStats = (raw: unknown): ClassStats | null => {
     ...(grade ? { grade } : {}),
     ...(challenge ? { challenge } : {}),
     ...(challenges.length ? { challenges } : {}),
+    ...(exams.length ? { exams } : {}),
   }
+}
+
+const parseClassExamSummary = (raw: unknown): ClassExamSummary | null => {
+  if (!isRecord(raw)) return null
+  const id = typeof raw.id === 'string' ? normalizeClassCode(raw.id) : ''
+  const name = typeof raw.name === 'string' ? raw.name.trim() : ''
+  const examCode = typeof raw.examCode === 'string' ? raw.examCode.trim() : ''
+  const createdAt = typeof raw.createdAt === 'number' && Number.isFinite(raw.createdAt)
+    ? raw.createdAt
+    : 0
+  if (!id || !name || !examCode.startsWith('MSX1:') || !createdAt) return null
+  return {
+    id,
+    name,
+    examCode,
+    createdAt,
+    ...(typeof raw.taskCount === 'number' ? { taskCount: Math.floor(raw.taskCount) } : {}),
+    ...(typeof raw.totalPoints === 'number' ? { totalPoints: Math.floor(raw.totalPoints) } : {}),
+    ...(typeof raw.className === 'string' && raw.className.trim()
+      ? { className: raw.className.trim() }
+      : {}),
+  }
+}
+
+const parseClassExamsList = (raw: unknown): ClassExamSummary[] => {
+  if (!Array.isArray(raw)) return []
+  return raw
+    .map(parseClassExamSummary)
+    .filter((row): row is ClassExamSummary => row !== null)
 }
 
 const parseCreatedGrade = (raw: unknown): CreatedGrade | null => {
@@ -693,6 +745,85 @@ export async function deleteGrade(
     throw new ClassApiError('invalid', 'Der Stufencode ist ungültig.', 400)
   }
   const json = await requestJson(gradeResourceUrl(normalized, base), {
+    method: 'DELETE',
+  })
+  throwIfStubHealth(json)
+}
+
+export interface CreateClassExamInput {
+  classCode: string
+  name: string
+  examCode: string
+  taskCount?: number
+  totalPoints?: number
+}
+
+export async function createClassExam(
+  input: CreateClassExamInput,
+  base: string = CLASS_POINTS_API,
+): Promise<ClassExamSummary> {
+  const json = await requestJson(examsUrl(base), {
+    method: 'POST',
+    body: JSON.stringify({
+      classCode: input.classCode,
+      name: input.name.trim(),
+      examCode: input.examCode.trim(),
+      ...(input.taskCount != null ? { taskCount: input.taskCount } : {}),
+      ...(input.totalPoints != null ? { totalPoints: input.totalPoints } : {}),
+    }),
+  })
+  throwIfStubHealth(json)
+  const created = parseClassExamSummary(json)
+  if (!created) {
+    throw new ClassApiError('not_ready', CLASS_API_STUB_MESSAGE, 200)
+  }
+  return created
+}
+
+export interface UpdateClassExamInput {
+  name: string
+  examCode: string
+  classCode: string
+  taskCount?: number
+  totalPoints?: number
+}
+
+export async function updateClassExam(
+  id: string,
+  input: UpdateClassExamInput,
+  base: string = CLASS_POINTS_API,
+): Promise<ClassExamSummary> {
+  const normalized = normalizeClassCode(id)
+  if (!isValidClassCode(normalized)) {
+    throw new ClassApiError('invalid', 'Die Klausur-ID ist ungültig.', 400)
+  }
+  const json = await requestJson(examResourceUrl(normalized, base), {
+    method: 'PUT',
+    body: JSON.stringify({
+      name: input.name.trim(),
+      examCode: input.examCode.trim(),
+      classCode: input.classCode,
+      ...(input.taskCount != null ? { taskCount: input.taskCount } : {}),
+      ...(input.totalPoints != null ? { totalPoints: input.totalPoints } : {}),
+    }),
+  })
+  throwIfStubHealth(json)
+  const updated = parseClassExamSummary(json)
+  if (!updated) {
+    throw new ClassApiError('not_ready', CLASS_API_STUB_MESSAGE, 200)
+  }
+  return updated
+}
+
+export async function deleteClassExam(
+  id: string,
+  base: string = CLASS_POINTS_API,
+): Promise<void> {
+  const normalized = normalizeClassCode(id)
+  if (!isValidClassCode(normalized)) {
+    throw new ClassApiError('invalid', 'Die Klausur-ID ist ungültig.', 400)
+  }
+  const json = await requestJson(examResourceUrl(normalized, base), {
     method: 'DELETE',
   })
   throwIfStubHealth(json)

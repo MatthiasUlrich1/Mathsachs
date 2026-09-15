@@ -8,6 +8,7 @@ import {
   canPracticeFromChallenge,
   canCreateClassCodes,
   canCreateExam,
+  canAssignClassExam,
   canEnterGradeCodes,
   canManageGradeCodes,
   canRequestTasks,
@@ -55,12 +56,15 @@ describe('user roles', () => {
     expect(canCreateExam('eltern')).toBe(true)
     expect(canCreateClassCodes('eltern')).toBe(true)
     expect(canCreateExam('lehrer')).toBe(true)
+    expect(canAssignClassExam('lehrer')).toBe(true)
+    expect(canAssignClassExam('eltern')).toBe(false)
     expect(canCreateClassCodes('lehrer')).toBe(true)
     expect(canCreateExam(undefined)).toBe(false)
   })
 
   it('gives Klassenlehrer Lehrer-like class membership without exams or create', () => {
     expect(canCreateExam('klassenlehrer')).toBe(false)
+    expect(canAssignClassExam('klassenlehrer')).toBe(false)
     expect(canWriteExam('klassenlehrer')).toBe(false)
     expect(canCreateClassCodes('klassenlehrer')).toBe(false)
     expect(canManageGradeCodes('klassenlehrer')).toBe(false)
