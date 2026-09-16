@@ -8,7 +8,7 @@ import {
   topicFromPack,
 } from './oberschuleGenerators'
 import { resolvePhysikGenerate } from './physikGenerators'
-import type { CurriculumPack, PackExtra, PackTask } from './pack'
+import type { CurriculumPack, PackExtra, PackGrade, PackTask, PackTopic } from './pack'
 import { fractionTask, textTask, valueTask } from './taskHelpers'
 import type { Grade, Task, Topic, TopicArea } from './types'
 
@@ -99,6 +99,36 @@ const markOfficial = (grade: Grade): Grade => ({
   })),
 })
 
+/**
+ * Bundled Math grades load generators from the app, but Freigabe lives in the pack.
+ * Overlay pack topic meta (released, tasksPerRound) onto matching bundled topics.
+ */
+export function applyPackTopicMeta(grade: Grade, packGrade: PackGrade): Grade {
+  const byId = new Map<string, PackTopic>()
+  for (const area of packGrade.areas) {
+    for (const topic of area.topics) byId.set(topic.id, topic)
+  }
+  if (byId.size === 0) return grade
+  return {
+    ...grade,
+    areas: grade.areas.map((area) => ({
+      ...area,
+      topics: area.topics.map((topic) => {
+        const meta = byId.get(topic.id)
+        if (!meta) return topic
+        return {
+          ...topic,
+          // Pack is source of truth: omit released ⇒ freigegeben
+          released: meta.released === false ? false : true,
+          ...(typeof meta.tasksPerRound === 'number'
+            ? { tasksPerRound: meta.tasksPerRound }
+            : {}),
+        }
+      }),
+    })),
+  }
+}
+
 export async function hydratePackGrades(pack: CurriculumPack): Promise<Grade[]> {
   const grades: Grade[] = []
   let generators: Map<string, Topic['generate']> | null = null
@@ -106,7 +136,7 @@ export async function hydratePackGrades(pack: CurriculumPack): Promise<Grade[]> 
     const runtime = getBundledModule(official.id)
     let grade: Grade
     if (runtime) {
-      grade = await runtime.load()
+      grade = applyPackTopicMeta(await runtime.load(), official)
     } else {
       generators ??= await gymGeneratorCatalog()
       grade = {

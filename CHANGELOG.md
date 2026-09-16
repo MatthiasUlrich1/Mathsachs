@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.20] – 2026-09-16
+
+### Behoben
+- Mathe-Freigabe über Lehrplan-Update wirkte nicht: gebündelte Generatoren
+  ignorierten `released` aus dem Pack. Pack-Freigabe (z. B. ID 2101) gilt jetzt.
+
 ## [0.27.19] – 2026-09-16
 
 ### Freigabe

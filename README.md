@@ -5,7 +5,7 @@ sächsischen Schulen. Schülerinnen und Schüler wählen Themen aus dem Lehrplan
 üben am Bildschirm oder drucken Übungsblätter. Lehrkräfte stellen
 **Übungsklausuren** zusammen und verteilen sie per Code oder Link.
 
-Aktuelle Version: **0.27.19** · [Changelog](CHANGELOG.md) ·
+Aktuelle Version: **0.27.20** · [Changelog](CHANGELOG.md) ·
 [Alle Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
 
 ## Download
@@ -13,13 +13,13 @@ Aktuelle Version: **0.27.19** · [Changelog](CHANGELOG.md) ·
 Installer der aktuellen Version:
 
 - **Windows-Installer:**
-  [Mathsachs-Setup-0.27.19.exe](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.27.19/Mathsachs-Setup-0.27.19.exe)
+  [Mathsachs-Setup-0.27.20.exe](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.27.20/Mathsachs-Setup-0.27.20.exe)
 - **macOS-Installer (Apple Silicon):**
-  [Mathsachs-0.27.19-arm64.dmg](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.27.19/Mathsachs-0.27.19-arm64.dmg)
+  [Mathsachs-0.27.20-arm64.dmg](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.27.20/Mathsachs-0.27.20-arm64.dmg)
 - **Linux (AppImage):**
-  [Mathsachs-0.27.19.AppImage](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.27.19/Mathsachs-0.27.19.AppImage)
+  [Mathsachs-0.27.20.AppImage](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.27.20/Mathsachs-0.27.20.AppImage)
 - **Linux (Debian/Ubuntu):**
-  [mathsachs_0.27.19_amd64.deb](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.27.19/mathsachs_0.27.19_amd64.deb)
+  [mathsachs_0.27.20_amd64.deb](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.27.20/mathsachs_0.27.20_amd64.deb)
 
 **Windows-Hinweis (SmartScreen):** Weil die App von einer Privatperson kommt und
 nicht mit einem Code-Signing-Zertifikat signiert ist, warnt Windows oft mit
