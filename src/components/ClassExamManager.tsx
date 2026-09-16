@@ -7,6 +7,7 @@ import {
 } from '../classCode/api'
 import { formatClassCode } from '../classCode/code'
 import { openClassCodeShareUrl } from '../classCode/share'
+import { resolveAddClassValue } from '../exam/classExamAddValue'
 import { groupClassExamsByCode } from '../exam/classExamParse'
 import { deleteClassExamConfirm, type StoredClassExam } from '../exam/classExamTypes'
 import { decodeExam } from '../exam/examCode'
@@ -32,6 +33,7 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
   const [error, setError] = useState<string | null>(null)
   const [copiedKey, setCopiedKey] = useState<string | null>(null)
   const [expandedKey, setExpandedKey] = useState<string | null>(null)
+  /** Preferred class code per MSX1 group — only kept while still available. */
   const [addClassFor, setAddClassFor] = useState<Record<string, string>>({})
   const createdClasses = getClassCodeSettings().created
   const groups = useMemo(() => groupClassExamsByCode(exams), [exams])
@@ -41,6 +43,28 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
     refresh()
     return subscribeSharedStorage(refresh)
   }, [refreshKey])
+
+  // Drop stale dropdown picks when assignments change (assign / remove / sync).
+  useEffect(() => {
+    setAddClassFor((prev) => {
+      let changed = false
+      const next = { ...prev }
+      for (const group of groups) {
+        const assigned = new Set(group.assignments.map((a) => a.hostCode))
+        const available = createdClasses
+          .filter((c) => !assigned.has(c.code))
+          .map((c) => c.code)
+        const stored = next[group.examCode]
+        const resolved = resolveAddClassValue(stored, available)
+        if (stored !== resolved) {
+          if (resolved) next[group.examCode] = resolved
+          else delete next[group.examCode]
+          changed = true
+        }
+      }
+      return changed ? next : prev
+    })
+  }, [groups, createdClasses])
 
   // Pull solveCount (and metadata) from the Worker for each host class.
   useEffect(() => {
@@ -103,7 +127,13 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
         solveCount: created.solveCount ?? 0,
       })
       setExams(getCreatedClassExams())
-      setAddClassFor((prev) => ({ ...prev, [key]: '' }))
+      // Clear pick so the next available class becomes the select value
+      // (empty string would break <select> — no matching option).
+      setAddClassFor((prev) => {
+        const next = { ...prev }
+        delete next[key]
+        return next
+      })
     } catch (e) {
       setError(
         e instanceof ClassApiError
@@ -127,6 +157,11 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
       await deleteClassExam(exam.id)
       forgetCreatedClassExam(exam.id)
       setExams(getCreatedClassExams())
+      setAddClassFor((prev) => {
+        const next = { ...prev }
+        delete next[exam.examCode]
+        return next
+      })
     } catch (e) {
       setError(
         e instanceof ClassApiError ? e.message : 'Zuordnung konnte nicht entfernt werden.',
@@ -149,6 +184,13 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
         forgetCreatedClassExam(exam.id)
       }
       setExams(getCreatedClassExams())
+      if (key) {
+        setAddClassFor((prev) => {
+          const next = { ...prev }
+          delete next[key]
+          return next
+        })
+      }
     } catch (e) {
       setError(
         e instanceof ClassApiError ? e.message : 'Klausur konnte nicht gelöscht werden.',
@@ -218,7 +260,11 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
           const seed = group.assignments[0]
           const assignedCodes = new Set(group.assignments.map((a) => a.hostCode))
           const availableClasses = createdClasses.filter((c) => !assignedCodes.has(c.code))
-          const addValue = addClassFor[group.examCode] ?? availableClasses[0]?.code ?? ''
+          const availableCodes = availableClasses.map((c) => c.code)
+          const addValue = resolveAddClassValue(
+            addClassFor[group.examCode],
+            availableCodes,
+          )
           return (
             <li key={group.examCode} className="class-exam-manager__item">
               <div className="class-exam-manager__meta">
@@ -263,6 +309,7 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
                   <label className="muted small class-exam-manager__add">
                     Weitere Klasse{' '}
                     <select
+                      key={`${group.examCode}:${availableCodes.join(',')}`}
                       value={addValue}
                       disabled={busy}
                       onChange={(e) =>

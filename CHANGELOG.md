@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.26.3] – 2026-09-16
+
+### Behoben
+- **Klassenklausuren (#44)**: Dropdown „Weitere Klasse“ öffnete nach Zuordnen/Entfernen
+  nicht mehr (leerer `value` ohne passende Option). Auswahl wird wieder gültig gesetzt.
+
 ## [0.26.2] – 2026-09-15
 
 ### Behoben
