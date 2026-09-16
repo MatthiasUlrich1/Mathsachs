@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.1.0',
+    version: '2.2.0',
     changelog:
-      'Lernbereiche mit 5–9 Übungsthemen (ähnlich Mathe); Inhalte an Lehrplan Gym Sachsen und typische Aufgabentypen (LEIFI, Olympiade) angelehnt.',
+      'Schulübliche Physik-Aufgaben statt Meta-Fragen; K6 Licht/Schatten interaktiv (Lampe zum Schatten, Lichtstrahl auf Kästchenpapier).',
     official,
     extras: [],
   }

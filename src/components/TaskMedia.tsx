@@ -160,7 +160,7 @@ export function TaskInteractive({
           disabled={disabled}
         />
       )}
-      {interactive.type === 'coordinateClick' && !disabled && (
+      {interactive.type === 'coordinateClick' && (
         <CoordinateClick
           xRange={interactive.props.xRange}
           yRange={interactive.props.yRange}
@@ -172,6 +172,11 @@ export function TaskInteractive({
           }
           onChange={(p) => onChange({ kind: 'coordinateClick', x: p.x, y: p.y })}
           instruction={interactive.props.instruction}
+          disabled={disabled}
+          markers={interactive.props.markers}
+          guide={interactive.props.guide}
+          solutionRay={interactive.props.solutionRay}
+          showSolution={disabled}
         />
       )}
       {interactive.type === 'paramSlider' && (
@@ -181,6 +186,7 @@ export function TaskInteractive({
           onChange={(values) => onChange({ kind: 'paramSlider', values })}
           instruction={interactive.props.instruction}
           preview={interactive.props.preview}
+          fixedShadowSide={interactive.props.fixedShadowSide}
           disabled={disabled}
         />
       )}

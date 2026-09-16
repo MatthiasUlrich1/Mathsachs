@@ -295,89 +295,324 @@ export function makePhysikTopicGenerate(topicId: string, title: string): Topic['
     )
   }
 
-  // Generic conceptual bank from title keywords
-  const cases = buildConceptCases(title, topicId)
+  // Domain banks — echte Schulphysik, keine Meta-Fragen zu „Idee/Anwendung“.
+  const bank = resolvePhysicsBank(topicId, title)
   return mixedVariants(
     (rng) => {
-      const c = pick(rng, cases)
+      const c = pick(rng, bank.cases)
       return choicePickTask({
         question: c.q,
         choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
         correct: c.correct,
         solution: c.correct,
-        explanation: `Thema „${title}“: ${c.correct}`,
+        explanation: c.explanation ?? `Thema „${title}“: ${c.correct}`,
         instruction: 'Tippe die passende Aussage:',
       })
     },
+    ...(bank.calc
+      ? [
+          (rng: Rng) => {
+            const t = bank.calc!(rng)
+            return valueTask({
+              question: t.q,
+              answerKind: t.answerKind,
+              unit: t.unit,
+              value: t.value,
+              solution: t.solution,
+              explanation: t.explanation,
+            })
+          },
+        ]
+      : []),
     (rng) => {
-      const c = pick(rng, cases)
-      const extras = cases.filter((x) => x.correct !== c.correct).slice(0, 2)
-      const correctList = [c.correct, ...extras.map((e) => e.correct)].slice(0, 3)
-      const wrongList = c.wrong.slice(0, 2)
-      return multiSelectTask({
-        question: `Welche Aussagen passen zu „${title}?“ (mehrere möglich)`,
-        choices: [...correctList, ...wrongList],
-        correct: correctList,
-        solution: correctList.join('; '),
-        explanation: `Kernaussagen zu „${title}“.`,
-        instruction: 'Tippe alle zutreffenden Aussagen:',
-      })
-    },
-    (rng) => {
-      const items = [
-        { label: `${title}: Grundidee`, value: 1 },
-        { label: `${title}: Anwendung`, value: 2 },
-        { label: `${title}: Kontrolle/Messung`, value: 3 },
-      ]
-      const ordered = [...items]
-      for (let i = items.length - 1; i > 0; i--) {
+      const items = bank.sortItems
+      const ordered = items.map((label, i) => ({ label, value: i + 1 }))
+      const shuffled = [...ordered]
+      for (let i = shuffled.length - 1; i > 0; i--) {
         const j = randInt(rng, 0, i)
-        ;[items[i], items[j]] = [items[j]!, items[i]!]
+        ;[shuffled[i], shuffled[j]] = [shuffled[j]!, shuffled[i]!]
       }
-      const correctOrder = ordered.map((row) => items.findIndex((it) => it.value === row.value))
+      const correctOrder = ordered.map((row) => shuffled.findIndex((it) => it.value === row.value))
       return dragDropSortTask({
-        question: `Ordne die Schritte zu „${title}“ (Idee → Anwendung → Kontrolle).`,
-        items,
+        question: bank.sortQuestion,
+        items: shuffled,
         correctOrder,
         solution: ordered.map((r) => r.label).join(' → '),
-        explanation: 'Zuerst Konzept, dann Anwendung, dann Kontrolle.',
+        explanation: bank.sortExplanation,
       })
     },
   )
 }
 
-function buildConceptCases(title: string, _topicId: string): Case[] {
-  const t = title
-  return [
-    {
-      q: `Was ist der zentrale Inhalt von „${t}“?`,
-      correct: `physikalische Zusammenhänge zu ${t}`,
-      wrong: ['nur historische Daten ohne Physik', 'reine Mathematik ohne Größen', 'Chemie der Kunststoffe'],
+type CalcTask = {
+  q: string
+  answerKind: 'integer' | 'decimal'
+  unit: string
+  value: number
+  solution: string
+  explanation: string
+}
+
+type PhysicsBank = {
+  cases: Array<Case & { explanation?: string }>
+  calc?: (rng: Rng) => CalcTask
+  sortItems: string[]
+  sortQuestion: string
+  sortExplanation: string
+}
+
+function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
+  const lower = `${topicId} ${title}`.toLowerCase()
+
+  if (/licht|optik|schatten|spiegel|strahl|auge|farbe|linse|brechung/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Wie breitet sich Licht in Luft aus?',
+          correct: 'geradlinig und nach allen Seiten',
+          wrong: ['nur im Kreis', 'nur nach oben', 'gar nicht'],
+          explanation: 'Licht breitet sich geradlinig und allseitig aus.',
+        },
+        {
+          q: 'Was ist eine Lichtquelle?',
+          correct: 'ein Körper, der selbst Licht aussendet',
+          wrong: [
+            'jeder Körper, den man sieht',
+            'nur der Mond',
+            'nur undurchsichtige Körper',
+          ],
+          explanation: 'Lichtquellen senden selbst Licht aus (Sonne, Kerze, Lampe).',
+        },
+        {
+          q: 'Warum sehen wir den Mond?',
+          correct: 'Er reflektiert Sonnenlicht',
+          wrong: ['Er leuchtet selbst wie die Sonne', 'Er ist eine Wärmequelle', 'Er ist durchsichtig'],
+          explanation: 'Der Mond ist ein beleuchteter Körper.',
+        },
+        {
+          q: 'Kernschatten bedeutet:',
+          correct: 'Bereich, in den von keiner Lampe Licht gelangt',
+          wrong: [
+            'Bereich mit Licht von allen Lampen',
+            'nur der Schatten bei einer Kerze',
+            'der hellste Bereich hinter dem Körper',
+          ],
+        },
+        {
+          q: 'Einfallswinkel = Ausfallswinkel gilt für …',
+          correct: 'Reflexion am ebenen Spiegel',
+          wrong: ['nur für Linsen', 'nur im Vakuum', 'nur bei Faraday'],
+        },
+      ],
+      calc: (rng) => {
+        const a = pick(rng, [20, 30, 40, 45, 50, 60])
+        return {
+          q: `Einfallswinkel am ebenen Spiegel: ${a}°. Wie groß ist der Ausfallswinkel?`,
+          answerKind: 'integer',
+          unit: '°',
+          value: a,
+          solution: `${a}°`,
+          explanation: 'Reflexionsgesetz: Einfallswinkel = Ausfallswinkel.',
+        }
+      },
+      sortItems: ['Lichtquelle', 'Gegenstand', 'Schirm/Schatten'],
+      sortQuestion: 'Ordne den Weg des Lichts bei der Schattenentstehung.',
+      sortExplanation: 'Licht kommt von der Quelle, trifft den Gegenstand, Schatten erscheint am Schirm.',
+    }
+  }
+
+  if (/strom|elektr|spannung|widerstand|ladung|magnet|induktion|spule|kondensator/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Welche Formel gilt für den ohmschen Widerstand?',
+          correct: 'R = U / I',
+          wrong: ['R = U · I', 'R = I / U', 'R = U + I'],
+        },
+        {
+          q: 'Einheit der elektrischen Spannung?',
+          correct: 'Volt (V)',
+          wrong: ['Ampere (A)', 'Ohm (Ω)', 'Watt (W)'],
+        },
+        {
+          q: 'In einer Reihenschaltung ist der Strom …',
+          correct: 'überall gleich groß',
+          wrong: ['an jedem Widerstand anders', 'immer null', 'nur an der Batterie messbar'],
+        },
+        {
+          q: 'Ein geschlossener Stromkreis braucht …',
+          correct: 'Spannungsquelle und durchgehenden Leiterweg',
+          wrong: ['nur eine Lampe ohne Batterie', 'nur Luft als Leiter', 'keinen Schalterweg'],
+        },
+      ],
+      calc: (rng) => {
+        const u = pick(rng, [3, 6, 9, 12])
+        const r = pick(rng, [2, 3, 4, 6])
+        const i = u / r
+        return {
+          q: `U = ${u} V, R = ${r} Ω. Berechne I = U/R.`,
+          answerKind: i % 1 === 0 ? 'integer' : 'decimal',
+          unit: 'A',
+          value: i,
+          solution: `${i} A`,
+          explanation: `I = ${u}/${r} = ${i} A.`,
+        }
+      },
+      sortItems: ['Batterie', 'Schalter', 'Verbraucher (Lampe)'],
+      sortQuestion: 'Ordne typische Bauteile eines einfachen Stromkreises (Quelle → Schalter → Verbraucher).',
+      sortExplanation: 'Spannung kommt von der Quelle; der Schalter unterbricht; die Lampe ist Verbraucher.',
+    }
+  }
+
+  if (/kraft|druck|energie|arbeit|leistung|impuls|newton|reibung|hebel|dichte|masse|bewegung|geschwindigkeit|beschleunigung|fall|wärme|temperatur|aggregat/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Welche Einheit hat die Kraft?',
+          correct: 'Newton (N)',
+          wrong: ['Joule (J)', 'Watt (W)', 'Pascal (Pa)'],
+        },
+        {
+          q: 'Druck p = F/A. Einheit?',
+          correct: 'Pascal (Pa)',
+          wrong: ['Newton (N)', 'Joule (J)', 'Ampere (A)'],
+        },
+        {
+          q: 'Gewichtskraft näherungsweise (g ≈ 10 N/kg): F_G = …',
+          correct: 'm · g',
+          wrong: ['m / g', 'm + g', 'g / m'],
+        },
+        {
+          q: 'Dichte ρ = …',
+          correct: 'm / V',
+          wrong: ['m · V', 'V / m', 'm + V'],
+        },
+      ],
+      calc: (rng) => {
+        const kind = pick(rng, ['dichte', 'kraft', 'druck'] as const)
+        if (kind === 'dichte') {
+          const m = pick(rng, [20, 40, 50, 80, 100])
+          const v = pick(rng, [2, 4, 5, 10])
+          const rho = m / v
+          return {
+            q: `m = ${m} g, V = ${v} cm³. Berechne ρ = m/V.`,
+            answerKind: rho % 1 === 0 ? 'integer' : 'decimal',
+            unit: 'g/cm³',
+            value: rho,
+            solution: `${rho} g/cm³`,
+            explanation: `ρ = ${m}/${v} = ${rho} g/cm³.`,
+          }
+        }
+        if (kind === 'kraft') {
+          const m = pick(rng, [2, 3, 5, 8, 10])
+          const F = m * 10
+          return {
+            q: `m = ${m} kg, g ≈ 10 N/kg. Berechne F_G = m·g.`,
+            answerKind: 'integer',
+            unit: 'N',
+            value: F,
+            solution: `${F} N`,
+            explanation: `F_G = ${m}·10 = ${F} N.`,
+          }
+        }
+        const f = pick(rng, [20, 40, 50, 100])
+        const a = pick(rng, [2, 4, 5, 10])
+        const p = f / a
+        return {
+          q: `F = ${f} N, A = ${a} m². Berechne p = F/A.`,
+          answerKind: p % 1 === 0 ? 'integer' : 'decimal',
+          unit: 'Pa',
+          value: p,
+          solution: `${p} Pa`,
+          explanation: `p = ${f}/${a} = ${p} Pa.`,
+        }
+      },
+      sortItems: ['Masse m', 'Volumen V', 'Dichte ρ = m/V'],
+      sortQuestion: 'Ordne die Größen zur Dichtebestimmung.',
+      sortExplanation: 'Zuerst Masse und Volumen messen, dann ρ = m/V berechnen.',
+    }
+  }
+
+  if (/welle|schall|frequenz|periode|atom|kern|radioaktiv|photon|quant|feld|relativ/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Schall braucht zum Ausbreiten …',
+          correct: 'ein Medium (z. B. Luft)',
+          wrong: ['kein Medium', 'nur Vakuum', 'nur Licht'],
+        },
+        {
+          q: 'Frequenz f und Periodendauer T hängen zusammen durch …',
+          correct: 'f = 1 / T',
+          wrong: ['f = T', 'f = T²', 'f = 1 · T'],
+        },
+        {
+          q: 'Lichtgeschwindigkeit im Vakuum (Näherung)?',
+          correct: '3·10⁸ m/s',
+          wrong: ['3 m/s', '340 m/s', '3·10⁶ m/s'],
+        },
+      ],
+      calc: (rng) => {
+        const T = pick(rng, [0.2, 0.5, 1, 2])
+        const f = 1 / T
+        return {
+          q: `Periodendauer T = ${T} s. Berechne f = 1/T.`,
+          answerKind: f % 1 === 0 ? 'integer' : 'decimal',
+          unit: 'Hz',
+          value: f,
+          solution: `${f} Hz`,
+          explanation: `f = 1/${T} = ${f} Hz.`,
+        }
+      },
+      sortItems: ['Schwingung anregen', 'Welle ausbreiten', 'Frequenz messen'],
+      sortQuestion: 'Ordne einen typischen Versuchsablauf zur Frequenzmessung.',
+      sortExplanation: 'Erst anregen, dann Ausbreitung beobachten, dann Frequenz bestimmen.',
+    }
+  }
+
+  // Fallback: Rechen-/Formelaufgaben statt Philosophie
+  return {
+    cases: [
+      {
+        q: `Welche physikalische Größe gehört typischerweise zum Thema „${title}“?`,
+        correct: pickDomainQuantity(lower),
+        wrong: ['Kunststil', 'Lateinische Deklination', 'Musiktempo'],
+        explanation: 'Physik-Themen arbeiten mit messbaren Größen und Einheiten.',
+      },
+      {
+        q: 'Was gehört zu einer sinnvollen physikalischen Messung?',
+        correct: 'Messwert mit Einheit angeben',
+        wrong: ['nur raten', 'Einheit weglassen', 'Messgerät ignorieren'],
+      },
+      {
+        q: 'Eine Formel in der Physik verknüpft …',
+        correct: 'physikalische Größen miteinander',
+        wrong: ['nur Wörter ohne Zahlen', 'nur Farben', 'nur historische Daten'],
+      },
+    ],
+    calc: (rng) => {
+      const v = pick(rng, [2, 3, 4, 5])
+      const t = pick(rng, [2, 3, 4, 5])
+      const s = v * t
+      return {
+        q: `Gleichförmige Bewegung: v = ${v} m/s, t = ${t} s. Berechne s = v·t.`,
+        answerKind: 'integer',
+        unit: 'm',
+        value: s,
+        solution: `${s} m`,
+        explanation: `s = ${v}·${t} = ${s} m.`,
+      }
     },
-    {
-      q: `Welche Herangehensweise passt zu „${t}“?`,
-      correct: 'Beobachten, Messen, Schlussfolgern',
-      wrong: ['raten ohne Messung', 'nur auswendig ohne Verständnis', 'Ergebnisse verwerfen'],
-    },
-    {
-      q: `Wozu übt man „${t}“?`,
-      correct: 'Alltags- und Technikphänomene erklären',
-      wrong: ['Physik vermeiden', 'nur Kunst betrachten', 'ohne Größen arbeiten'],
-    },
-    {
-      q: `Welche Aussage zu „${t}“ ist sinnvoll?`,
-      correct: 'Fachbegriffe und Einheiten sorgfältig verwenden',
-      wrong: ['Einheiten sind egal', 'Fachsprache stört nur', 'Messwerte braucht man nie'],
-    },
-    {
-      q: `Beim Thema „${t}“ sollte man …`,
-      correct: 'Größen, Einheiten und Zusammenhänge prüfen',
-      wrong: ['Zahlen ohne Einheit nennen', 'Diagramme ignorieren', 'Hypothesen nie testen'],
-    },
-    {
-      q: `„${t}“ gehört im Lehrplan vor allem zu …`,
-      correct: 'Physik Gymnasium Sachsen',
-      wrong: ['nur Sporttheorie', 'nur Kunstgeschichte', 'nur Latein'],
-    },
-  ]
+    sortItems: ['Größe messen', 'Formel anwenden', 'Ergebnis mit Einheit prüfen'],
+    sortQuestion: 'Ordne die Schritte beim Lösen einer Rechenaufgabe in der Physik.',
+    sortExplanation: 'Messen bzw. gegebene Werte nutzen, Formel anwenden, Einheit prüfen.',
+  }
+}
+
+function pickDomainQuantity(lower: string): string {
+  if (/licht|optik/.test(lower)) return 'Winkel / Weg des Lichts'
+  if (/strom|elektr/.test(lower)) return 'Spannung / Stromstärke'
+  if (/wärme|temperatur/.test(lower)) return 'Temperatur / Wärmeenergie'
+  if (/kraft|druck/.test(lower)) return 'Kraft / Druck'
+  return 'messbare Größen mit Einheiten'
 }

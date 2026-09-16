@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.8] – 2026-09-16
+
+### Verbessert
+- **Physik-Aufgaben**: Meta-Fragen („Idee → Anwendung → Kontrolle“, „Wozu übt
+  man …“) entfernt; Factory erzeugt schulübliche Rechen-/Konzeptaufgaben
+  (Optik, Strom, Mechanik, Wellen).
+- **K6 Licht/Schatten**: Lampe per Schieberegler zum Schatten passend
+  positionieren (ohne x-Anzeige); Lichtstrahl auf Kästchenpapier mit Lampe/Spalt
+  und Auflösung als eingezeichneter Strahl; Kern-/Halbschatten und Lichtquellen.
+- **Physik Pack 2.2.0** (automatische Aktualisierung installierter Lehrpläne).
+
 ## [0.27.7] – 2026-09-16
 
 ### Verbessert

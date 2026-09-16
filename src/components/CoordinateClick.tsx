@@ -1,6 +1,13 @@
 import { useCallback, useRef, useState } from 'react'
 import './CoordinateClick.css'
 
+export interface CoordinateMarker {
+  x: number
+  y: number
+  label?: string
+  color?: string
+}
+
 export interface CoordinateClickProps {
   xRange: [number, number]
   yRange: [number, number]
@@ -9,10 +16,16 @@ export interface CoordinateClickProps {
   onChange: (point: { x: number; y: number }) => void
   instruction?: string
   disabled?: boolean
+  markers?: CoordinateMarker[]
+  guide?: { from: { x: number; y: number }; to: { x: number; y: number } }
+  /** Drawn when disabled (Auflösung). */
+  solutionRay?: { from: { x: number; y: number }; to: { x: number; y: number } }
+  showSolution?: boolean
 }
 
 /**
  * Interactive coordinate grid: click/tap snaps to the nearest lattice point.
+ * Optional markers (Taschenlampe/Spalt) and solution ray after checking.
  */
 export const CoordinateClick: React.FC<CoordinateClickProps> = ({
   xRange,
@@ -22,6 +35,10 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
   onChange,
   instruction,
   disabled = false,
+  markers = [],
+  guide,
+  solutionRay,
+  showSolution = false,
 }) => {
   const svgRef = useRef<SVGSVGElement>(null)
   const [hover, setHover] = useState<{ x: number; y: number } | null>(null)
@@ -106,6 +123,10 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
 
   const mark = value ?? hover
   const markPos = mark ? toSvg(mark.x, mark.y) : null
+  const guideFrom = guide ? toSvg(guide.from.x, guide.from.y) : null
+  const guideTo = guide ? toSvg(guide.to.x, guide.to.y) : null
+  const rayFrom = showSolution && solutionRay ? toSvg(solutionRay.from.x, solutionRay.from.y) : null
+  const rayTo = showSolution && solutionRay ? toSvg(solutionRay.to.x, solutionRay.to.y) : null
 
   return (
     <div className="coordinate-click">
@@ -127,7 +148,7 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
         }}
         onMouseLeave={() => setHover(null)}
         role="img"
-        aria-label="Koordinatensystem – Punkt setzen"
+        aria-label="Kästchenpapier – Lichtstrahl zeichnen"
       >
         <rect x={0} y={0} width={totalW} height={totalH} fill="#fafafa" />
         <g dangerouslySetInnerHTML={{ __html: gridLines.join('') }} />
@@ -154,6 +175,43 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
           y
         </text>
         {tickLabels}
+        {guideFrom && guideTo && (
+          <line
+            x1={guideFrom[0]}
+            y1={guideFrom[1]}
+            x2={guideTo[0]}
+            y2={guideTo[1]}
+            stroke="#f59e0b"
+            strokeWidth={3}
+            strokeDasharray="6 4"
+            pointerEvents="none"
+          />
+        )}
+        {rayFrom && rayTo && (
+          <line
+            x1={rayFrom[0]}
+            y1={rayFrom[1]}
+            x2={rayTo[0]}
+            y2={rayTo[1]}
+            stroke="#2563eb"
+            strokeWidth={3.5}
+            pointerEvents="none"
+          />
+        )}
+        {markers.map((m, i) => {
+          const [sx, sy] = toSvg(m.x, m.y)
+          const fill = m.color ?? '#f59e0b'
+          return (
+            <g key={`m${i}`} pointerEvents="none">
+              <circle cx={sx} cy={sy} r={8} fill={fill} stroke="#92400e" strokeWidth={2} />
+              {m.label && (
+                <text x={sx} y={sy - 12} textAnchor="middle" fontSize={11} fill="#334155" fontWeight={600}>
+                  {m.label}
+                </text>
+              )}
+            </g>
+          )
+        })}
         {markPos && (
           <circle
             cx={markPos[0]}
@@ -166,9 +224,14 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
           />
         )}
       </svg>
-      {value && (
+      {value && !showSolution && (
         <p className="coordinate-click__readout">
           Gewählt: ({value.x}|{value.y})
+        </p>
+      )}
+      {showSolution && solutionRay && (
+        <p className="coordinate-click__readout">
+          Auflösung: Lichtstrahl eingezeichnet
         </p>
       )}
     </div>

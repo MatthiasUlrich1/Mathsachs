@@ -1,6 +1,7 @@
 import { pick, randInt, type Rng } from '../lib/rng'
 import {
   circuitSvg,
+  kernHalbschattenSvg,
   lightRayHintSvg,
   lightShadowSvg,
   mirrorAngleSvg,
@@ -48,28 +49,111 @@ const schatten: Topic['generate'] = mixedVariants(
     })
   },
   (rng) => {
-    const wantRight = pick(rng, [true, false])
-    const lamp = wantRight ? pick(rng, [-5, -4, -3, -2, -1]) : pick(rng, [1, 2, 3, 4, 5])
-    const side = wantRight ? 'rechts' : 'links'
-    const start = wantRight ? 3 : -3
+    // Schatten fest zeigen — Lampe ohne Zahlenanzeige so einstellen, dass es passt.
+    const shadowSide = pick(rng, ['left', 'right'] as const)
+    const lampCorrect = shadowSide === 'left' ? pick(rng, [2, 3, 4, 5]) : pick(rng, [-5, -4, -3, -2])
+    const start = shadowSide === 'left' ? -3 : 3
     return paramSliderTask({
-      question: `Der Körper steht bei x = 0. Stelle die Lampe auf x = ${lamp}, damit der Schatten ${side} liegt.`,
+      question:
+        'Der Schatten liegt schon fest. Stelle die Lampe so ein, dass sie zum gezeigten Schatten passt (Licht und Schatten liegen auf gegenüberliegenden Seiten des Körpers).',
       params: [
         {
           id: 'lamp',
-          label: 'Lampenposition x',
+          label: 'Lampe verschieben',
           min: -5,
           max: 5,
           step: 1,
           start,
+          hideValue: true,
         },
       ],
-      correct: { lamp },
-      solution: `x = ${lamp}`,
+      correct: { lamp: lampCorrect },
+      match: 'sign',
+      fixedShadowSide: shadowSide,
+      solution:
+        shadowSide === 'left'
+          ? 'Lampe rechts vom Körper → Schatten links'
+          : 'Lampe links vom Körper → Schatten rechts',
       explanation:
-        'Lampe und Schatten liegen auf gegenüberliegenden Seiten des Körpers (geradlinige Ausbreitung).',
+        'Licht breitet sich geradlinig aus. Der Schatten entsteht auf der dem Licht abgewandten Seite.',
       preview: 'shadow',
-      instruction: 'Schieberegler auf den geforderten Wert:',
+      instruction: 'Schiebe die Lampe, bis sie zum Schatten passt (ohne Zahlenangabe):',
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Zwei Lampen beleuchten einen undurchsichtigen Körper. Welche Schattenarten entstehen?',
+        correct: 'Kernschatten und Halbschatten',
+        wrong: ['nur Kernschatten', 'nur Lichtkegel', 'keine Schatten'],
+      },
+      {
+        q: 'Im Kernschatten hinter dem Körper …',
+        correct: 'kommt von keiner der Lampen Licht an',
+        wrong: [
+          'kommt Licht von allen Lampen an',
+          'gibt es immer mehr Licht als davor',
+          'entsteht nur bei durchsichtigen Körpern',
+        ],
+      },
+      {
+        q: 'Im Halbschatten …',
+        correct: 'kommt Licht von mindestens einer Lampe nicht an',
+        wrong: [
+          'kommt nie Licht an',
+          'gibt es immer volles Licht aller Lampen',
+          'gibt es nur bei einer einzigen Lampe Schatten',
+        ],
+      },
+      {
+        q: 'Eine punktförmige Lampe erzeugt hinter einem undurchsichtigen Körper vor allem …',
+        correct: 'einen scharfen Schatten',
+        wrong: ['gar keinen Schatten', 'nur Halbschatten ohne Kern', 'einen Lichtkegel ohne Schatten'],
+      },
+      {
+        q: 'Je näher die Lampe am Körper steht, desto …',
+        correct: 'größer wird (bei festem Schirm) der Schatten',
+        wrong: [
+          'kleiner wird immer der Schatten',
+          'verschwindet der Schatten',
+          'wird der Körper durchsichtig',
+        ],
+      },
+      {
+        q: 'Welche Körper werfen einen Schatten?',
+        correct: 'undurchsichtige (opake) Körper',
+        wrong: ['nur durchsichtige Körper', 'nur Gase', 'nur Spiegel'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation:
+        'Bei mehreren Lichtquellen: Kernschatten = von keiner Lampe erreicht; Halbschatten = nur von einem Teil der Lampen erreicht.',
+      visualContent: kernHalbschattenSvg(),
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (rng) => {
+    const correct = pick(rng, [
+      ['Sonne', 'brennende Kerze', 'Autoscheinwerfer'],
+      ['Sonne', 'Kerze', 'Stern'],
+    ])
+    const pool =
+      correct[2] === 'Autoscheinwerfer'
+        ? ['Sonne', 'brennende Kerze', 'Autoscheinwerfer', 'Mond', 'Fahrrad-Rückstrahler', 'Tisch']
+        : ['Sonne', 'Kerze', 'Stern', 'Mond', 'Wand', 'Buch']
+    return multiSelectTask({
+      question: 'Welche sind echte Lichtquellen (senden selbst Licht aus)? (mehrere möglich)',
+      choices: pool,
+      correct,
+      solution: correct.join('; '),
+      explanation:
+        'Lichtquellen senden selbst Licht aus. Mond und Rückstrahler sind beleuchtete Körper.',
+      instruction: 'Tippe alle Lichtquellen:',
     })
   },
 )
@@ -188,35 +272,32 @@ const ausbreitung: Topic['generate'] = mixedVariants(
     })
   },
   (rng) => {
-    const x = randInt(rng, 0, 3)
-    const y = randInt(rng, 0, 2)
+    // Taschenlampe auf Kästchenpapier: zwei Punkte vorgegeben, Strahl verlängern — ohne Antwortkoordinaten in der Frage.
+    const y = randInt(rng, 1, 3)
+    const ax = randInt(rng, 0, 2)
     const dx = pick(rng, [1, 2])
-    const cx = x + 2 * dx
-    const cy = y
-    if (cx > 6) {
-      return coordinateClickTask({
-        question: `Licht geht von (${x}|${y}) waagerecht nach rechts. Tippe den Punkt (${x + 1}|${y}) auf dem Strahl.`,
-        x: x + 1,
-        y,
-        xRange: [0, 6],
-        yRange: [0, 5],
-        solution: `(${x + 1}|${y})`,
-        explanation: 'Geradlinig: y bleibt gleich, x nimmt zu.',
-        instruction: 'Tippe einen Punkt auf dem Lichtstrahl:',
-      })
-    }
+    const throughX = ax + dx
+    const targetX = Math.min(6, throughX + dx)
+    // Ensure target is strictly beyond the slit
+    const tx = targetX > throughX ? targetX : Math.min(6, throughX + 1)
+    const through = { x: throughX, y }
+    const target = { x: tx, y }
     return coordinateClickTask({
-      question: `Licht geht von (${x}|${y}) waagerecht durch (${x + dx}|${y}). Tippe (${cx}|${cy}) auf dem verlängerten Strahl.`,
-      x: cx,
-      y: cy,
+      question:
+        'Taschenlampe und Spalt sind markiert. Zeichne den Lichtstrahl weiter: Tippe einen Gitterpunkt auf der geraden Verlängerung.',
+      x: target.x,
+      y: target.y,
       xRange: [0, 6],
       yRange: [0, 5],
-      solution: `(${cx}|${cy})`,
-      explanation: `Geradlinige Ausbreitung: verlängere um denselben Schritt → (${cx}|${cy}).`,
-      visualContent: lightRayHintSvg({
-        from: { x, y },
-        through: { x: x + dx, y },
-      }),
+      solution: `(${target.x}|${target.y})`,
+      explanation: `Geradlinige Ausbreitung: von (${ax}|${y}) über (${through.x}|${through.y}) nach (${target.x}|${target.y}).`,
+      visualContent: lightRayHintSvg({ from: { x: ax, y }, through }),
+      markers: [
+        { x: ax, y, label: 'Lampe', color: '#f59e0b' },
+        { x: through.x, y: through.y, label: 'Spalt', color: '#64748b' },
+      ],
+      guide: { from: { x: ax, y }, to: through },
+      solutionRay: { from: { x: ax, y }, to: target },
       instruction: 'Tippe einen Punkt auf dem Lichtstrahl:',
     })
   },
@@ -224,19 +305,34 @@ const ausbreitung: Topic['generate'] = mixedVariants(
 
 const lampenposition: Topic['generate'] = mixedVariants(
   (rng) => {
-    const lamp = pick(rng, [-5, -4, -3, -2, -1, 1, 2, 3, 4, 5])
-    const start = lamp > 0 ? -2 : 2
+    const shadowSide = pick(rng, ['left', 'right'] as const)
+    const lampCorrect = shadowSide === 'left' ? pick(rng, [2, 3, 4, 5]) : pick(rng, [-5, -4, -3, -2])
+    const start = shadowSide === 'left' ? -4 : 4
     return paramSliderTask({
-      question: `Stelle die Lampe genau auf x = ${lamp} (Körper bei x = 0). Beobachte, wohin der Schatten wandert.`,
-      params: [{ id: 'lamp', label: 'Lampenposition x', min: -5, max: 5, step: 1, start }],
-      correct: { lamp },
-      solution: `x = ${lamp}`,
+      question:
+        'Schatten und Körper sind gegeben. Positioniere die Lampe so, dass der Schatten zur Lampenstellung passt.',
+      params: [
+        {
+          id: 'lamp',
+          label: 'Lampe',
+          min: -5,
+          max: 5,
+          step: 1,
+          start,
+          hideValue: true,
+        },
+      ],
+      correct: { lamp: lampCorrect },
+      match: 'sign',
+      fixedShadowSide: shadowSide,
+      solution:
+        shadowSide === 'left'
+          ? 'Lampe rechts → Schatten links'
+          : 'Lampe links → Schatten rechts',
       explanation:
-        lamp < 0
-          ? 'Lampe links vom Körper → Schatten rechts.'
-          : 'Lampe rechts vom Körper → Schatten links.',
+        'Ohne Zahlenangabe: Entscheide anhand der Abbildung, auf welcher Seite die Lampe stehen muss.',
       preview: 'shadow',
-      instruction: 'Schieberegler auf den geforderten Wert:',
+      instruction: 'Schiebe die Lampe, bis sie zum Schatten passt:',
     })
   },
   (rng) => {
@@ -252,7 +348,54 @@ const lampenposition: Topic['generate'] = mixedVariants(
       correct,
       solution: correct,
       explanation: 'Schatten entsteht auf der dem Licht abgewandten Seite.',
+      visualContent: lightShadowSvg({
+        lampLeft,
+        shadowSide: lampLeft ? 'right' : 'left',
+      }),
       instruction: 'Tippe die Schattenseite:',
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Die Lampe rückt näher an den Körper (Schirm fest). Was passiert mit dem Schatten?',
+        correct: 'Er wird größer',
+        wrong: ['Er wird kleiner', 'Er verschwindet', 'Er wandert auf die Lampenseite'],
+      },
+      {
+        q: 'Die Lampe rückt weiter vom Körper weg (Schirm fest). Was passiert mit dem Schatten?',
+        correct: 'Er wird kleiner',
+        wrong: ['Er wird größer', 'Er wird zum Kernschatten ohne Halbschatten', 'Er wechselt die Seite ohne Lampenwechsel'],
+      },
+      {
+        q: 'Wohin musst du die Lampe stellen, damit der Schatten rechts vom Körper liegt?',
+        correct: 'links vom Körper',
+        wrong: ['rechts vom Körper', 'genau über dem Körper', 'unter dem Körper'],
+      },
+      {
+        q: 'Wohin musst du die Lampe stellen, damit der Schatten links vom Körper liegt?',
+        correct: 'rechts vom Körper',
+        wrong: ['links vom Körper', 'genau über dem Körper', 'unter dem Körper'],
+      },
+      {
+        q: 'Bei einer Mondfinsternis steht der Mond im …',
+        correct: 'Schatten der Erde',
+        wrong: ['Schatten der Sonne', 'Lichtkegel der Venus', 'Halbschatten ohne Erde'],
+      },
+      {
+        q: 'Bei einer Sonnenfinsternis steht der Mond …',
+        correct: 'zwischen Sonne und Erde',
+        wrong: ['hinter der Erde', 'neben der Sonne ohne Erde', 'zwischen Erde und Mars'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Lampenposition und Abstände bestimmen Seite und Größe des Schattens; Finsternisse sind Schattenphänomene.',
+      instruction: 'Tippe die passende Aussage:',
     })
   },
 )
@@ -260,82 +403,89 @@ const lampenposition: Topic['generate'] = mixedVariants(
 const lichtstrahl: Topic['generate'] = mixedVariants(
   (rng) => {
     const ax = randInt(rng, 0, 2)
-    const ay = randInt(rng, 0, 2)
+    const ay = randInt(rng, 1, 3)
     const dx = pick(rng, [1, 2])
     const dy = pick(rng, [0, 1])
     const bx = ax + dx
-    const by = ay + dy
+    const by = Math.min(5, ay + dy)
     let cx = bx + dx
-    let cy = by + dy
-    if (cx > 6 || cy > 5) {
-      cx = bx
-      cy = by + 1
-      if (cy > 5) {
-        cx = bx + 1
-        cy = by
-      }
+    let cy = Math.min(5, by + dy)
+    if (cx > 6) {
+      cx = bx + 1
+      cy = by
     }
     return coordinateClickTask({
-      question: `Licht geht von (${ax}|${ay}) durch den Spalt (${bx}|${by}). Tippe den Punkt (${cx}|${cy}) auf dem verlängerten Strahl.`,
+      question:
+        'Taschenlampe und Spalt sind auf dem Kästchenpapier markiert. Verlängere den Lichtstrahl geradlinig — tippe einen weiteren Punkt auf dem Strahl.',
       x: cx,
       y: cy,
       xRange: [0, 6],
       yRange: [0, 5],
       solution: `(${cx}|${cy})`,
-      explanation: `Geradlinige Ausbreitung: verlängere den Weg von (${ax}|${ay}) über (${bx}|${by}) nach (${cx}|${cy}).`,
-      visualContent: lightRayHintSvg({
-        from: { x: ax, y: ay },
-        through: { x: bx, y: by },
-      }),
+      explanation: `Geradlinige Ausbreitung: von (${ax}|${ay}) über (${bx}|${by}) nach (${cx}|${cy}).`,
+      visualContent: lightRayHintSvg({ from: { x: ax, y: ay }, through: { x: bx, y: by } }),
+      markers: [
+        { x: ax, y: ay, label: 'Lampe', color: '#f59e0b' },
+        { x: bx, y: by, label: 'Spalt', color: '#64748b' },
+      ],
+      guide: { from: { x: ax, y: ay }, to: { x: bx, y: by } },
+      solutionRay: { from: { x: ax, y: ay }, to: { x: cx, y: cy } },
       instruction: 'Tippe einen Punkt auf dem Lichtstrahl:',
     })
   },
   (rng) => {
     const x = randInt(rng, 1, 5)
+    const ay = pick(rng, [4, 5])
     return coordinateClickTask({
-      question: `Ein Lichtstrahl kommt von (${x}|5) senkrecht auf den Spiegel in der x-Achse. Tippe den Auftreffpunkt.`,
+      question:
+        'Ein Lichtstrahl trifft senkrecht von oben auf den Spiegel in der x-Achse. Tippe den Auftreffpunkt auf dem Spiegel.',
       x,
       y: 0,
       xRange: [0, 6],
       yRange: [0, 5],
       solution: `(${x}|0)`,
       explanation: `Senkrecht nach unten: Auftreffpunkt (${x}|0) auf dem Spiegel.`,
+      markers: [{ x, y: ay, label: 'Lampe', color: '#f59e0b' }],
+      guide: { from: { x, y: ay }, to: { x, y: 1 } },
+      solutionRay: { from: { x, y: ay }, to: { x, y: 0 } },
       instruction: 'Tippe den Punkt auf dem Spiegel:',
     })
   },
   (rng) => {
-    // Spiegelweg: Einfall = Ausfall. Spiegel = x-Achse. Tippe den Auftreffpunkt.
     const hitX = randInt(rng, 2, 4)
     const ax = pick(rng, [0, 1])
     const ay = pick(rng, [3, 4, 5])
     const rx = 2 * hitX - ax
     const ry = ay
     if (rx < 0 || rx > 6) {
-      // Fallback: senkrechter Auftreffpunkt
       return coordinateClickTask({
-        question: `Ein Lichtstrahl kommt von (${hitX}|${ay}) senkrecht auf den Spiegel (x-Achse). Tippe den Auftreffpunkt.`,
+        question:
+          'Licht kommt senkrecht von oben auf den Spiegel (x-Achse). Tippe den Auftreffpunkt.',
         x: hitX,
         y: 0,
         xRange: [0, 6],
         yRange: [0, 5],
         solution: `(${hitX}|0)`,
         explanation: `Senkrecht: Auftreffpunkt (${hitX}|0).`,
+        markers: [{ x: hitX, y: ay, label: 'Lampe', color: '#f59e0b' }],
+        solutionRay: { from: { x: hitX, y: ay }, to: { x: hitX, y: 0 } },
         instruction: 'Tippe den Punkt auf dem Spiegel:',
       })
     }
     return coordinateClickTask({
-      question: `Spiegel in der x-Achse. Licht geht von (${ax}|${ay}) zum Spiegel und wird nach (${rx}|${ry}) reflektiert (Einfall = Ausfall). Tippe den Auftreffpunkt.`,
+      question:
+        'Spiegel in der x-Achse. Einfallswinkel = Ausfallswinkel. Lampe und reflektierter Strahl sind markiert — tippe den Auftreffpunkt auf dem Spiegel.',
       x: hitX,
       y: 0,
       xRange: [0, 6],
       yRange: [0, 5],
       solution: `(${hitX}|0)`,
-      explanation: `Mittelpunkt auf dem Spiegel zwischen Lampe und Bild: x = (${ax} + ${rx}) / 2 = ${hitX}. Auftreffpunkt (${hitX}|0).`,
-      visualContent: lightRayHintSvg({
-        from: { x: ax, y: ay },
-        through: { x: hitX, y: 0 },
-        label: `Spiegelweg: (${ax}|${ay}) → Spiegel → (${rx}|${ry}). Tippe den Auftreffpunkt.`,
-      }),
+      explanation: `Mittelpunkt auf dem Spiegel: x = (${ax} + ${rx}) / 2 = ${hitX}.`,
+      markers: [
+        { x: ax, y: ay, label: 'Lampe', color: '#f59e0b' },
+        { x: rx, y: ry, label: 'Reflektion', color: '#dc2626' },
+      ],
+      solutionRay: { from: { x: ax, y: ay }, to: { x: hitX, y: 0 } },
       instruction: 'Tippe den Auftreffpunkt auf dem Spiegel:',
     })
   },

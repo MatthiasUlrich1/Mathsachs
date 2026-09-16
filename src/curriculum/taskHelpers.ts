@@ -385,6 +385,12 @@ interface CoordinateClickTaskInput {
   /** Optional instruction above the grid. */
   instruction?: string
   visualContent?: string
+  /** Fixed markers on the grid (e.g. Taschenlampe, Spalt). */
+  markers?: Array<{ x: number; y: number; label?: string; color?: string }>
+  /** Guide segment shown while answering (e.g. Lampe → Spalt). */
+  guide?: { from: { x: number; y: number }; to: { x: number; y: number } }
+  /** Ray drawn after checking (Auflösung). */
+  solutionRay?: { from: { x: number; y: number }; to: { x: number; y: number } }
 }
 
 /** Place a point on a coordinate grid by clicking (snaps to lattice). */
@@ -405,6 +411,9 @@ export const coordinateClickTask = (input: CoordinateClickTaskInput): Task => {
         yRange,
         cellSize: input.cellSize ?? 32,
         instruction: input.instruction ?? 'Tippe auf den gesuchten Punkt im Koordinatensystem:',
+        markers: input.markers,
+        guide: input.guide,
+        solutionRay: input.solutionRay,
       },
     },
     check: (answer: UserInput) => {
@@ -431,6 +440,8 @@ export interface ParamSliderSpec {
   step?: number
   /** Starting value before the learner moves the slider. */
   start?: number
+  /** Hide the live numeric readout (e.g. Schatten: Lampe ohne x-Anzeige). */
+  hideValue?: boolean
 }
 
 interface ParamSliderTaskInput {
@@ -443,6 +454,14 @@ interface ParamSliderTaskInput {
   visualContent?: string
   /** Optional live preview: 'linear' or Physik 'shadow' (lamp x). */
   preview?: 'linear' | 'shadow'
+  /** With preview=shadow: keep this shadow side fixed while the lamp moves. */
+  fixedShadowSide?: 'left' | 'right'
+  /**
+   * 'exact' (default): each param must match.
+   * 'sign': for each param, any non-zero value with the same sign as correct passes
+   * (used for Schatten: Lampe auf die passende Seite stellen).
+   */
+  match?: 'exact' | 'sign'
   instruction?: string
 }
 
@@ -459,23 +478,36 @@ export const paramSliderTask = (input: ParamSliderTaskInput): Task => ({
     props: {
       params: input.params,
       preview: input.preview,
+      fixedShadowSide: input.fixedShadowSide,
       instruction: input.instruction ?? 'Stelle die Parameter ein:',
     },
   },
   check: (answer: UserInput) => {
+    const match = input.match ?? 'exact'
     if (answer.kind === 'paramSlider') {
       return input.params.every((p) => {
         const got = answer.values[p.id]
         const want = input.correct[p.id]
         if (got === undefined || want === undefined) return false
+        if (match === 'sign') {
+          if (got === 0 || want === 0) return false
+          return Math.sign(got) === Math.sign(want)
+        }
         const tol = (p.step ?? 1) / 2
         return Math.abs(got - want) <= tol + 1e-9
       })
     }
     if (answer.kind === 'value' && input.params.length === 1) {
-      const parsed = parseNumber(answer.value)
-      const want = input.correct[input.params[0].id]
-      return parsed !== null && want !== undefined && approxEqual(parsed, want, 1e-6)
+      const id = input.params[0]!.id
+      const want = input.correct[id]
+      const got = Number(String(answer.value).replace(',', '.'))
+      if (!Number.isFinite(got) || want === undefined) return false
+      if (match === 'sign') {
+        if (got === 0 || want === 0) return false
+        return Math.sign(got) === Math.sign(want)
+      }
+      const tol = (input.params[0]!.step ?? 1) / 2
+      return Math.abs(got - want) <= tol + 1e-9
     }
     return false
   },

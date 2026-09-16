@@ -5,26 +5,34 @@ export function lightShadowSvg(opts: {
   /** Shadow side relative to object: 'left' | 'right' */
   shadowSide: 'left' | 'right'
 }): string {
-  const lampX = opts.lampLeft ? 40 : 260
-  const objX = 150
-  const shadowX = opts.shadowSide === 'left' ? 70 : 175
+  const lampX = opts.lampLeft ? 70 : 410
+  const objX = 240
+  const shadowX = opts.shadowSide === 'left' ? 120 : 360
   return lightShadowSceneSvg({ lampX, objX, shadowX })
 }
 
 /** Live preview for lamp-position slider (object fixed at center). */
-export function lightShadowFromLampParam(lampX: number): string {
+export function lightShadowFromLampParam(
+  lampX: number,
+  opts?: {
+    /** Keep Schatten fixed (match-the-shadow tasks). */
+    fixedShadowSide?: 'left' | 'right'
+    showLampCaption?: boolean
+  },
+): string {
   const obj = 0
   const lampLeft = lampX < obj
-  const shadowSide: 'left' | 'right' = lampLeft ? 'right' : 'left'
-  // Map math x (−5…5) onto SVG coordinates.
-  const toSvg = (x: number) => 150 + x * 22
+  const shadowSide: 'left' | 'right' =
+    opts?.fixedShadowSide ?? (lampLeft ? 'right' : 'left')
+  // Map math x (−5…5) onto a wider SVG.
+  const toSvg = (x: number) => 240 + x * 36
   const lampSvg = toSvg(lampX)
-  const shadowSvg = shadowSide === 'left' ? toSvg(-3.2) : toSvg(3.2)
+  const shadowSvg = shadowSide === 'left' ? toSvg(-3.5) : toSvg(3.5)
   return lightShadowSceneSvg({
     lampX: lampSvg,
-    objX: toSvg(0) - 14,
+    objX: toSvg(0) - 16,
     shadowX: shadowSvg,
-    caption: `Lampe x = ${String(lampX).replace('.', ',')}`,
+    caption: opts?.showLampCaption ? `Lampe x = ${String(lampX).replace('.', ',')}` : undefined,
   })
 }
 
@@ -35,31 +43,50 @@ function lightShadowSceneSvg(opts: {
   caption?: string
 }): string {
   const { lampX, objX, shadowX, caption } = opts
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 160" width="300" height="160" role="img" aria-label="Lampe, Gegenstand und Schatten">
-  <rect x="0" y="0" width="300" height="160" fill="#0f172a"/>
-  <line x1="20" y1="130" x2="280" y2="130" stroke="#64748b" stroke-width="2"/>
-  <circle cx="${lampX}" cy="45" r="14" fill="#fbbf24" stroke="#f59e0b" stroke-width="2"/>
-  <text x="${lampX}" y="28" text-anchor="middle" fill="#fde68a" font-size="11" font-family="system-ui,sans-serif">Lampe</text>
-  <rect x="${objX}" y="70" width="28" height="60" rx="3" fill="#94a3b8" stroke="#e2e8f0" stroke-width="1.5"/>
-  <text x="${objX + 14}" y="150" text-anchor="middle" fill="#cbd5e1" font-size="11" font-family="system-ui,sans-serif">Körper</text>
-  <ellipse cx="${shadowX}" cy="128" rx="42" ry="10" fill="#020617" opacity="0.85"/>
-  <text x="${shadowX}" y="118" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui,sans-serif">Schatten</text>
-  ${caption ? `<text x="150" y="18" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="system-ui,sans-serif">${caption}</text>` : ''}
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 180" width="480" height="180" role="img" aria-label="Lampe, Gegenstand und Schatten">
+  <rect x="0" y="0" width="480" height="180" fill="#0f172a"/>
+  <line x1="24" y1="142" x2="456" y2="142" stroke="#64748b" stroke-width="2"/>
+  <circle cx="${lampX}" cy="48" r="16" fill="#fbbf24" stroke="#f59e0b" stroke-width="2"/>
+  <text x="${lampX}" y="28" text-anchor="middle" fill="#fde68a" font-size="12" font-family="system-ui,sans-serif">Lampe</text>
+  <rect x="${objX}" y="78" width="32" height="64" rx="3" fill="#94a3b8" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="${objX + 16}" y="164" text-anchor="middle" fill="#cbd5e1" font-size="12" font-family="system-ui,sans-serif">Körper</text>
+  <ellipse cx="${shadowX}" cy="140" rx="52" ry="12" fill="#020617" opacity="0.9"/>
+  <text x="${shadowX}" y="126" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="system-ui,sans-serif">Schatten</text>
+  ${caption ? `<text x="240" y="18" text-anchor="middle" fill="#94a3b8" font-size="12" font-family="system-ui,sans-serif">${caption}</text>` : ''}
 </svg>`
 }
 
-/** Grid hint for a light ray through a slit (for questions; click UI is separate). */
+/** Grid hint for a light ray (Taschenlampe → Spalt); click UI is separate. */
 export function lightRayHintSvg(opts: {
   from: { x: number; y: number }
   through: { x: number; y: number }
   label?: string
 }): string {
   const { from, through, label } = opts
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" width="280" height="80" role="img" aria-label="Lichtstrahl-Hinweis">
-  <rect width="280" height="80" fill="#f8fafc"/>
-  <text x="12" y="24" fill="#334155" font-size="12" font-family="system-ui,sans-serif">${label ?? 'Licht läuft geradlinig durch den Spalt.'}</text>
-  <text x="12" y="48" fill="#2563eb" font-size="12" font-family="system-ui,sans-serif">Lampe (${from.x}|${from.y}) → Spalt (${through.x}|${through.y}) → ?</text>
-  <text x="12" y="68" fill="#64748b" font-size="11" font-family="system-ui,sans-serif">Tippe einen weiteren Gitterpunkt auf derselben Geraden.</text>
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 72" width="320" height="72" role="img" aria-label="Lichtstrahl-Hinweis">
+  <rect width="320" height="72" fill="#f8fafc"/>
+  <text x="12" y="22" fill="#334155" font-size="12" font-family="system-ui,sans-serif">${label ?? 'Taschenlampe auf Kästchenpapier: Licht läuft geradlinig.'}</text>
+  <text x="12" y="44" fill="#2563eb" font-size="12" font-family="system-ui,sans-serif">Lampe (${from.x}|${from.y}) → Spalt (${through.x}|${through.y}) → verlängern</text>
+  <text x="12" y="64" fill="#64748b" font-size="11" font-family="system-ui,sans-serif">Tippe einen weiteren Gitterpunkt auf dem Strahl. Bei Auflösung wird der Strahl eingezeichnet.</text>
+</svg>`
+}
+
+/** Kern-/Halbschatten sketch (two lamps + obstacle) for MC questions. */
+export function kernHalbschattenSvg(): string {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 160" width="360" height="160" role="img" aria-label="Kernschatten und Halbschatten">
+  <rect width="360" height="160" fill="#e0f2fe"/>
+  <circle cx="40" cy="40" r="10" fill="#fbbf24" stroke="#b45309" stroke-width="1.5"/>
+  <circle cx="40" cy="120" r="10" fill="#fbbf24" stroke="#b45309" stroke-width="1.5"/>
+  <text x="40" y="24" text-anchor="middle" font-size="10" fill="#334155">L1</text>
+  <text x="40" y="148" text-anchor="middle" font-size="10" fill="#334155">L2</text>
+  <rect x="150" y="55" width="28" height="50" fill="#1e3a8a"/>
+  <text x="164" y="148" text-anchor="middle" font-size="10" fill="#334155">Hindernis</text>
+  <polygon points="178,55 280,20 280,70" fill="#93c5fd" opacity="0.7"/>
+  <polygon points="178,105 280,90 280,140" fill="#93c5fd" opacity="0.7"/>
+  <polygon points="178,55 178,105 250,80" fill="#1e40af" opacity="0.85"/>
+  <text x="300" y="45" font-size="11" fill="#1e3a8a">1 Halbschatten</text>
+  <text x="300" y="85" font-size="11" fill="#1e3a8a">3 Kernschatten</text>
+  <text x="300" y="125" font-size="11" fill="#1e3a8a">2 Halbschatten</text>
 </svg>`
 }
 

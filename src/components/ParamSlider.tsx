@@ -10,6 +10,8 @@ export interface ParamSliderProps {
   onChange: (values: Record<string, number>) => void
   instruction?: string
   preview?: 'linear' | 'shadow'
+  /** When set with preview=shadow: Schatten bleibt fest, nur die Lampe wandert. */
+  fixedShadowSide?: 'left' | 'right'
   disabled?: boolean
 }
 
@@ -20,6 +22,7 @@ export const ParamSlider: React.FC<ParamSliderProps> = ({
   onChange,
   instruction,
   preview,
+  fixedShadowSide,
   disabled = false,
 }) => {
   const setParam = (id: string, raw: number) => {
@@ -44,10 +47,13 @@ export const ParamSlider: React.FC<ParamSliderProps> = ({
     if (preview === 'shadow') {
       const lamp = values.lamp
       if (lamp === undefined) return null
-      return lightShadowFromLampParam(lamp)
+      return lightShadowFromLampParam(lamp, {
+        fixedShadowSide,
+        showLampCaption: false,
+      })
     }
     return null
-  }, [preview, values.m, values.n, values.lamp])
+  }, [preview, values.m, values.n, values.lamp, fixedShadowSide])
 
   return (
     <div className="param-slider">
@@ -65,7 +71,12 @@ export const ParamSlider: React.FC<ParamSliderProps> = ({
           return (
             <label key={p.id} className="param-slider__row">
               <span className="param-slider__label">
-                {p.label}: <strong>{String(val).replace('.', ',')}</strong>
+                {p.label}
+                {!p.hideValue && (
+                  <>
+                    : <strong>{String(val).replace('.', ',')}</strong>
+                  </>
+                )}
               </span>
               <input
                 type="range"
