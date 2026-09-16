@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.18] – 2026-09-16
+
+### Behoben
+- Würfel/Quader in **Kavalierperspektive**: Tiefenkanten exakt **halb so lang**
+  wie die Bezugskante und im **45°-Winkel** (Schulbuch-Darstellung).
+- Gesuchte Länge orange **auf der senkrechten Kante** (nicht als schwebende Maßlinie).
+
+### Verbessert
+- Thema „Fläche und senkrechte Seitenlänge“: wechselnde Flächen (oben / vorne /
+  rechts), damit V = A · a an unterschiedlichen Seiten klar wird.
+
 ## [0.27.17] – 2026-09-16
 
 ### Behoben

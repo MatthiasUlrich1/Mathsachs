@@ -251,17 +251,46 @@ describe('geometrySvg', () => {
       expect(svg).toContain('G = ?')
     })
 
+    it('draws Würfel in Kavalierperspektive: 45° depth exactly half front edge', () => {
+      const svg = generateCuboidSvg({
+        lengthLabel: '',
+        widthLabel: '',
+        heightLabel: '',
+        cube: true,
+        areaFace: 'top',
+        areaLabel: 'A = 100 cm²',
+        perpendicularLabel: '?',
+      })
+      const polys = [...svg.matchAll(/<polygon points="([^"]+)"/g)].map((m) =>
+        m[1]!.split(' ').map((p) => p.split(',').map(Number) as [number, number]),
+      )
+      // Order: top, right, front
+      const front = polys[2]!
+      const frontW = front[1]![0]! - front[0]![0]!
+      const frontH = front[2]![1]! - front[1]![1]!
+      expect(Math.abs(frontW - frontH)).toBeLessThan(1)
+      const top = polys[0]!
+      // frontTL → backTL is depth
+      const ddx = top[3]![0]! - top[0]![0]!
+      const ddy = top[0]![1]! - top[3]![1]!
+      const depthLen = Math.hypot(ddx, ddy)
+      expect(Math.abs(depthLen - frontW / 2)).toBeLessThan(1.5)
+      expect(Math.abs(ddx - ddy)).toBeLessThan(1) // 45°
+      expect(svg).toContain('stroke="#e65100"') // perp on the edge
+    })
+
     it('keeps multi-digit height labels fully inside the viewBox', () => {
       const svg = generateCuboidSvg({
         lengthLabel: '',
         widthLabel: '',
-        heightLabel: '10 cm',
-        topFaceLabel: 'G = ?',
+        heightLabel: '',
+        areaFace: 'top',
+        areaLabel: 'G = ?',
+        perpendicularLabel: '10 cm',
       })
       expect(svg).toContain('>10 cm<')
       const vb = svg.match(/viewBox="0 0 (\d+) (\d+)"/)
       expect(vb).toBeTruthy()
-      // Height text uses text-anchor=end at x ≈ pad; must not sit near x=0 middle-clipped.
       expect(svg).toContain('text-anchor="end"')
       expect(Number(vb![1])).toBeGreaterThan(200)
     })

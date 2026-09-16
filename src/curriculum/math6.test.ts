@@ -23,8 +23,11 @@ describe('Klasse 6 curriculum', () => {
     expect(topic).toBeTruthy()
     let sawQuader = false
     let sawWuerfel = false
+    let sawFront = false
+    let sawRight = false
+    let sawTop = false
     let volumeFocus = 0
-    for (let seed = 1; seed <= 80; seed++) {
+    for (let seed = 1; seed <= 120; seed++) {
       const task = topic!.generate(createRng(seed))
       const svg = task.visualContent ?? ''
       if (/V = |Volumen|Grundfläche|senkrechte Kante/.test(task.question)) {
@@ -34,17 +37,15 @@ describe('Klasse 6 curriculum', () => {
         sawQuader = true
         expect(svg).toMatch(/aria-label="Quader/)
         expect(svg).not.toContain('polygon points="60,180')
-        const h = task.question.match(/beträgt (\d+) cm/)?.[1]
-        if (h) expect(svg).toContain(`>${h} cm<`)
       }
       if (task.question.includes('Ein Würfel')) {
         sawWuerfel = true
-        expect(svg).toMatch(/aria-label="Würfel"/)
+        expect(svg).toMatch(/aria-label="Würfel/)
         expect(svg).toContain('stroke-dasharray')
-        // Senkrechte Kante = vertikale Höhenbeschriftung (links), Fläche oben
-        expect(svg).toContain('text-anchor="end"')
-        expect(svg).toMatch(/A = /)
       }
+      if (/Vorderfläche/.test(task.question)) sawFront = true
+      if (/rechte Seitenfläche/.test(task.question)) sawRight = true
+      if (/obere Seitenfläche|Grundfläche/.test(task.question)) sawTop = true
       if (task.question.includes('Ein Prisma')) {
         expect(svg).toContain('h =')
         expect(svg).toContain('G =')
@@ -53,6 +54,9 @@ describe('Klasse 6 curriculum', () => {
     }
     expect(sawQuader).toBe(true)
     expect(sawWuerfel).toBe(true)
+    expect(sawFront).toBe(true)
+    expect(sawRight).toBe(true)
+    expect(sawTop).toBe(true)
     expect(volumeFocus).toBeGreaterThan(50)
   })
 

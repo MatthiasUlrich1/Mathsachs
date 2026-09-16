@@ -635,46 +635,56 @@ export function generateCircleSvg({
 </svg>`.trim()
 }
 
+export type CuboidFace = 'top' | 'front' | 'right'
+
 export interface CuboidSvgProps {
   /** Length (Länge) label */
   lengthLabel: string
   /** Width (Breite) label */
   widthLabel: string
-  /** Height (Höhe) label */
+  /** Height (Höhe) label — vertical edge; ignored when perpendicularLabel+areaFace set */
   heightLabel: string
   /** Optional fill color */
   fill?: string
   /** Optional stroke color */
   stroke?: string
-  /** Equal edge look (Würfel). */
+  /** Equal edge look (Würfel) in Kavalierperspektive. */
   cube?: boolean
-  /** Optional label on the top face, e.g. "G = 24 cm²". */
+  /** Optional label on the top face, e.g. "G = 24 cm²". Alias for areaFace='top'. */
   topFaceLabel?: string
+  /** Which face shows the area (G/A). Default: top when topFaceLabel/areaLabel set. */
+  areaFace?: CuboidFace
+  /** Area label on areaFace, e.g. "A = 100 cm²" or "G = ?". */
+  areaLabel?: string
+  /**
+   * Label drawn on the edge perpendicular to areaFace
+   * (top→vertical, front→depth, right→length).
+   */
+  perpendicularLabel?: string
 }
 
 type CuboidPt = [number, number]
 
 /**
- * Isometric Quader/Würfel. For cubes, all three edge directions use the same
- * screen length so the solid reads as a Würfel (not a stretched Quader).
+ * Kavalierperspektive (Schulbuch): Vorderfläche unverzerrt;
+ * Tiefenkanten genau halb so lang wie die Bezugskante, im 45°-Winkel.
  */
 function cuboidIsoGeometry(opts?: { cube?: boolean; padding?: number }) {
   const cube = Boolean(opts?.cube)
-  // Extra left padding so height labels (text-anchor=end) are not clipped.
-  const padL = (opts?.padding ?? 48) + 36
-  const padR = (opts?.padding ?? 48) + 24
-  const padT = (opts?.padding ?? 48) + 12
-  const padB = (opts?.padding ?? 48) + 32
-  // Unit edge length on screen (same for cube in all directions).
-  const s = cube ? 108 : 96
-  const L = cube ? s : s * 1.55 // length along x
-  const H = cube ? s : s * 1.05 // height along y
-  // Isometric depth: same screen length `s` (or scaled width for Quader).
-  const depthLen = cube ? s : s * 0.95
-  const cos30 = Math.sqrt(3) / 2
-  const sin30 = 0.5
-  const depX = depthLen * cos30
-  const depY = depthLen * sin30
+  const padL = (opts?.padding ?? 48) + 28
+  const padR = (opts?.padding ?? 48) + 40
+  const padT = (opts?.padding ?? 48) + 16
+  const padB = (opts?.padding ?? 48) + 40
+  const s = cube ? 120 : 96
+  // Front face: Würfel → Quadrat; Quader → Rechteck (länger als hoch)
+  const L = cube ? s : s * 1.65
+  const H = cube ? s : s * 1.0
+  // Wahre Tiefe vor Verkürzung; auf dem Papier genau halb so lang
+  const depthTrue = cube ? s : s * 1.2
+  const depthLen = depthTrue / 2
+  const angle = Math.PI / 4 // 45°
+  const depX = depthLen * Math.cos(angle)
+  const depY = depthLen * Math.sin(angle)
   const x0 = padL
   const y0 = padT + depY
   const frontBL: CuboidPt = [x0, y0 + H]
@@ -692,6 +702,11 @@ function cuboidIsoGeometry(opts?: { cube?: boolean; padding?: number }) {
   return {
     totalW,
     totalH,
+    L,
+    H,
+    depthLen,
+    depX,
+    depY,
     frontBL,
     frontBR,
     frontTR,
@@ -708,7 +723,8 @@ function cuboidSolidFaces(
   g: ReturnType<typeof cuboidIsoGeometry>,
   fill: string,
   stroke: string,
-  frontFill?: string,
+  highlightFace?: CuboidFace,
+  highlight = '#fff3cd',
 ): string {
   const {
     frontBL,
@@ -721,21 +737,29 @@ function cuboidSolidFaces(
     backTL,
     poly,
   } = g
+  const topFill = highlightFace === 'top' ? highlight : fill
+  const rightFill = highlightFace === 'right' ? highlight : fill
+  const frontFill = highlightFace === 'front' ? highlight : fill
   return `
   <g stroke="${stroke}" stroke-width="1.6" fill="none" stroke-dasharray="5 4" opacity="0.85">
     <line x1="${frontBL[0]}" y1="${frontBL[1]}" x2="${backBL[0]}" y2="${backBL[1]}"/>
     <line x1="${backBL[0]}" y1="${backBL[1]}" x2="${backBR[0]}" y2="${backBR[1]}"/>
     <line x1="${backBL[0]}" y1="${backBL[1]}" x2="${backTL[0]}" y2="${backTL[1]}"/>
   </g>
-  <polygon points="${poly(frontTL, frontTR, backTR, backTL)}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.92"/>
-  <polygon points="${poly(frontTR, frontBR, backBR, backTR)}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.8"/>
-  <polygon points="${poly(frontTL, frontTR, frontBR, frontBL)}" fill="${frontFill ?? fill}" stroke="${stroke}" stroke-width="2"/>
+  <polygon points="${poly(frontTL, frontTR, backTR, backTL)}" fill="${topFill}" stroke="${stroke}" stroke-width="2" opacity="0.92"/>
+  <polygon points="${poly(frontTR, frontBR, backBR, backTR)}" fill="${rightFill}" stroke="${stroke}" stroke-width="2" opacity="0.8"/>
+  <polygon points="${poly(frontTL, frontTR, frontBR, frontBL)}" fill="${frontFill}" stroke="${stroke}" stroke-width="2"/>
 `.trim()
+}
+
+/** Midpoint of two points */
+function midPt(a: CuboidPt, b: CuboidPt): CuboidPt {
+  return [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2]
 }
 
 /**
  * Generate an SVG string for a labeled 3D cuboid (Quader) or cube (Würfel).
- * Shows front, top and right faces plus dashed hidden edges for the other three sides.
+ * Kavalierperspektive: 45°-Tiefenkanten, halb so lang wie die Bezugskante.
  */
 export function generateCuboidSvg({
   lengthLabel,
@@ -745,6 +769,9 @@ export function generateCuboidSvg({
   stroke = '#1976d2',
   cube = false,
   topFaceLabel,
+  areaFace,
+  areaLabel,
+  perpendicularLabel,
 }: CuboidSvgProps): string {
   const g = cuboidIsoGeometry({ cube })
   const {
@@ -758,20 +785,61 @@ export function generateCuboidSvg({
     backTR,
     backTL,
   } = g
-  const topMidX = (frontTL[0] + frontTR[0] + backTR[0] + backTL[0]) / 4
-  const topMidY = (frontTL[1] + frontTR[1] + backTR[1] + backTL[1]) / 4
-  const showLength = Boolean(lengthLabel.trim())
-  const showWidth = Boolean(widthLabel.trim())
-  const showHeight = Boolean(heightLabel.trim())
+  const resolvedArea =
+    areaLabel ?? topFaceLabel ?? ''
+  const face: CuboidFace | undefined = resolvedArea
+    ? (areaFace ?? 'top')
+    : areaFace
+  const perp =
+    perpendicularLabel ??
+    (face === 'top' || (!face && heightLabel.trim()) ? heightLabel : '')
+
+  const topMid = midPt(midPt(frontTL, frontTR), midPt(backTL, backTR))
+  const frontMid = midPt(midPt(frontTL, frontTR), midPt(frontBL, frontBR))
+  const rightMid = midPt(midPt(frontTR, frontBR), midPt(backTR, backBR))
+
+  const showLength = Boolean(lengthLabel.trim()) && face !== 'right'
+  const showWidth = Boolean(widthLabel.trim()) && face !== 'front'
+  // Classic dimension arrows only when no area/perp pedagogy labels
+  const showHeightArrow =
+    Boolean(heightLabel.trim()) && !face && !perpendicularLabel
+
+  let areaText = ''
+  if (resolvedArea && face === 'top') {
+    areaText = `<text x="${topMid[0]}" y="${topMid[1] + 5}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${resolvedArea}</text>`
+  } else if (resolvedArea && face === 'front') {
+    areaText = `<text x="${frontMid[0]}" y="${frontMid[1] + 5}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${resolvedArea}</text>`
+  } else if (resolvedArea && face === 'right') {
+    areaText = `<text x="${rightMid[0] + 4}" y="${rightMid[1] + 5}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${resolvedArea}</text>`
+  }
+
+  // Perpendicular edge: draw ON the edge (highlighted), label next to it
+  let perpMarkup = ''
+  if (perp.trim() && face === 'top') {
+    // vertical front-left edge
+    const m = midPt(frontTL, frontBL)
+    perpMarkup = `
+  <line x1="${frontTL[0]}" y1="${frontTL[1]}" x2="${frontBL[0]}" y2="${frontBL[1]}" stroke="#e65100" stroke-width="3.2"/>
+  <text x="${m[0] - 10}" y="${m[1] + 5}" text-anchor="end" font-size="15" font-weight="bold" fill="#e65100">${perp}</text>`
+  } else if (perp.trim() && face === 'front') {
+    // depth edge from front-bottom-right
+    const m = midPt(frontBR, backBR)
+    perpMarkup = `
+  <line x1="${frontBR[0]}" y1="${frontBR[1]}" x2="${backBR[0]}" y2="${backBR[1]}" stroke="#e65100" stroke-width="3.2"/>
+  <text x="${m[0] + 14}" y="${m[1] + 4}" text-anchor="start" font-size="15" font-weight="bold" fill="#e65100">${perp}</text>`
+  } else if (perp.trim() && face === 'right') {
+    // length edge along front bottom
+    const m = midPt(frontBL, frontBR)
+    perpMarkup = `
+  <line x1="${frontBL[0]}" y1="${frontBL[1]}" x2="${frontBR[0]}" y2="${frontBR[1]}" stroke="#e65100" stroke-width="3.2"/>
+  <text x="${m[0]}" y="${m[1] + 22}" text-anchor="middle" font-size="15" font-weight="bold" fill="#e65100">${perp}</text>`
+  }
 
   return `
 <svg width="${totalW}" height="${totalH}" viewBox="0 0 ${totalW} ${totalH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${cube ? 'Würfel' : 'Quader'}">
-  ${cuboidSolidFaces(g, fill, stroke)}
-  ${
-    topFaceLabel
-      ? `<text x="${topMidX}" y="${topMidY + 5}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${topFaceLabel}</text>`
-      : ''
-  }
+  ${cuboidSolidFaces(g, fill, stroke, face)}
+  ${areaText}
+  ${perpMarkup}
   ${
     showLength
       ? `<line x1="${frontBL[0]}" y1="${frontBL[1] + 18}" x2="${frontBR[0]}" y2="${frontBR[1] + 18}" stroke="${stroke}" stroke-width="1" marker-start="url(#cuboidArrowStart)" marker-end="url(#cuboidArrowEnd)"/>
@@ -785,9 +853,9 @@ export function generateCuboidSvg({
       : ''
   }
   ${
-    showHeight
-      ? `<line x1="${frontTL[0] - 12}" y1="${frontTL[1]}" x2="${frontBL[0] - 12}" y2="${frontBL[1]}" stroke="${stroke}" stroke-width="1" marker-start="url(#cuboidArrowStart)" marker-end="url(#cuboidArrowEnd)"/>
-  <text x="${frontTL[0] - 16}" y="${(frontTL[1] + frontBL[1]) / 2 + 5}" text-anchor="end" font-size="14" font-weight="bold" fill="#333">${heightLabel}</text>`
+    showHeightArrow
+      ? `<line x1="${frontTL[0]}" y1="${frontTL[1]}" x2="${frontBL[0]}" y2="${frontBL[1]}" stroke="#e65100" stroke-width="3.2"/>
+  <text x="${frontTL[0] - 10}" y="${(frontTL[1] + frontBL[1]) / 2 + 5}" text-anchor="end" font-size="14" font-weight="bold" fill="#e65100">${heightLabel}</text>`
       : ''
   }
   <defs>
@@ -817,11 +885,13 @@ export interface CuboidFaceEdgeSvgProps {
   cube?: boolean
   /** Optional face kind label above the highlighted face. */
   faceKindLabel?: string
+  /** Which face is highlighted (default: front). */
+  highlightFace?: CuboidFace
 }
 
 /**
  * Quader/Würfel with one face highlighted: Fläche ↔ senkrechte Seitenlänge.
- * Complete solid (front/top/right + dashed hidden edges).
+ * Kavalierperspektive; senkrechte Kante orange auf der Kante selbst.
  */
 export function generateCuboidFaceEdgeSvg({
   faceAreaLabel,
@@ -833,25 +903,65 @@ export function generateCuboidFaceEdgeSvg({
   highlight = '#fff3cd',
   cube = false,
   faceKindLabel,
+  highlightFace = 'front',
 }: CuboidFaceEdgeSvgProps): string {
   const g = cuboidIsoGeometry({ cube, padding: 40 })
-  const { totalW, totalH, frontBL, frontBR, frontTR, frontTL, backBR } = g
-  const midX = (frontTL[0] + frontTR[0]) / 2
-  const midY = (frontTL[1] + frontBL[1]) / 2
+  const {
+    totalW,
+    totalH,
+    frontBL,
+    frontBR,
+    frontTR,
+    frontTL,
+    backBR,
+    backTR,
+    backTL,
+  } = g
   const kind =
     faceKindLabel ?? (cube ? 'Seitenfläche (Quadrat)' : 'Seitenfläche (Rechteck)')
-  // For Würfel: unknown edge is the depth (senkrecht zur Fläche), shown on the right face.
-  const perpX = (frontBR[0] + backBR[0]) / 2 + 22
-  const perpY = (frontBR[1] + backBR[1]) / 2 + 4
+
+  let areaXY: CuboidPt
+  let edgeLine: string
+  let edgeLabel: string
+  let perpLine: string
+  let perpLabelMarkup: string
+
+  if (highlightFace === 'front') {
+    const mid = midPt(midPt(frontTL, frontTR), midPt(frontBL, frontBR))
+    areaXY = mid
+    edgeLine = `<line x1="${frontBL[0]}" y1="${frontBL[1]}" x2="${frontBR[0]}" y2="${frontBR[1]}" stroke="${stroke}" stroke-width="2"/>`
+    edgeLabel = `<text x="${midPt(frontBL, frontBR)[0]}" y="${frontBL[1] + 22}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${faceEdgeLabel}</text>`
+    const pm = midPt(frontBR, backBR)
+    perpLine = `<line x1="${frontBR[0]}" y1="${frontBR[1]}" x2="${backBR[0]}" y2="${backBR[1]}" stroke="#e65100" stroke-width="3.2"/>`
+    perpLabelMarkup = `<text x="${pm[0] + 12}" y="${pm[1] + 4}" text-anchor="start" font-size="15" font-weight="bold" fill="#e65100">${perpendicularLabel}</text>`
+  } else if (highlightFace === 'top') {
+    const mid = midPt(midPt(frontTL, frontTR), midPt(backTL, backTR))
+    areaXY = mid
+    edgeLine = `<line x1="${frontTL[0]}" y1="${frontTL[1]}" x2="${frontTR[0]}" y2="${frontTR[1]}" stroke="${stroke}" stroke-width="2"/>`
+    edgeLabel = `<text x="${midPt(frontTL, frontTR)[0]}" y="${frontTL[1] - 8}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${faceEdgeLabel}</text>`
+    const pm = midPt(frontTL, frontBL)
+    perpLine = `<line x1="${frontTL[0]}" y1="${frontTL[1]}" x2="${frontBL[0]}" y2="${frontBL[1]}" stroke="#e65100" stroke-width="3.2"/>`
+    perpLabelMarkup = `<text x="${pm[0] - 10}" y="${pm[1] + 5}" text-anchor="end" font-size="15" font-weight="bold" fill="#e65100">${perpendicularLabel}</text>`
+  } else {
+    // right face: perp = length (front bottom)
+    const mid = midPt(midPt(frontTR, frontBR), midPt(backTR, backBR))
+    areaXY = [mid[0] + 4, mid[1]]
+    edgeLine = `<line x1="${frontTR[0]}" y1="${frontTR[1]}" x2="${frontBR[0]}" y2="${frontBR[1]}" stroke="${stroke}" stroke-width="2"/>`
+    edgeLabel = `<text x="${frontTR[0] + 14}" y="${midPt(frontTR, frontBR)[1] + 5}" text-anchor="start" font-size="14" font-weight="bold" fill="#333">${faceEdgeLabel}</text>`
+    const pm = midPt(frontBL, frontBR)
+    perpLine = `<line x1="${frontBL[0]}" y1="${frontBL[1]}" x2="${frontBR[0]}" y2="${frontBR[1]}" stroke="#e65100" stroke-width="3.2"/>`
+    perpLabelMarkup = `<text x="${pm[0]}" y="${pm[1] + 22}" text-anchor="middle" font-size="15" font-weight="bold" fill="#e65100">${perpendicularLabel}</text>`
+  }
+
   return `
 <svg width="${totalW}" height="${totalH}" viewBox="0 0 ${totalW} ${totalH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${cube ? 'Würfel' : 'Quader'} mit hervorgehobener Seitenfläche">
-  ${cuboidSolidFaces(g, fill, stroke, highlight)}
-  <text x="${midX}" y="${midY + 5}" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">A = ${faceAreaLabel}</text>
-  <line x1="${frontBL[0]}" y1="${frontBL[1] + 16}" x2="${frontBR[0]}" y2="${frontBR[1] + 16}" stroke="${stroke}" stroke-width="1.5"/>
-  <text x="${midX}" y="${frontBL[1] + 34}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${faceEdgeLabel}</text>
-  <line x1="${frontBR[0] + 10}" y1="${frontBR[1]}" x2="${backBR[0] + 10}" y2="${backBR[1]}" stroke="${stroke}" stroke-width="1.5"/>
-  <text x="${perpX}" y="${perpY}" text-anchor="start" font-size="14" font-weight="bold" fill="#333">${perpendicularLabel}</text>
-  <text x="${midX}" y="${Math.max(16, frontTL[1] - 10)}" text-anchor="middle" font-size="12" fill="#555">${kind}</text>
+  ${cuboidSolidFaces(g, fill, stroke, highlightFace, highlight)}
+  <text x="${areaXY[0]}" y="${areaXY[1] + 5}" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">A = ${faceAreaLabel}</text>
+  ${edgeLine}
+  ${edgeLabel}
+  ${perpLine}
+  ${perpLabelMarkup}
+  <text x="${totalW / 2}" y="18" text-anchor="middle" font-size="12" fill="#555">${kind}</text>
   ${
     caption
       ? `<text x="${totalW / 2}" y="${totalH - 10}" text-anchor="middle" font-size="12" fill="#444">${caption}</text>`
@@ -906,16 +1016,8 @@ export function generatePrismVolumeSvg({
   <polygon points="${bL[0]},${bL[1]} ${bR[0]},${bR[1]} ${bBack[0]},${bBack[1]}" fill="#fff3cd" stroke="${stroke}" stroke-width="2.5"/>
   <text x="${gCx}" y="${gCy}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">G = ${baseAreaLabel}</text>
   <!-- Höhe senkrecht zur Grundfläche (linke vertikale Kante) -->
-  <line x1="${bL[0] - 18}" y1="${bL[1]}" x2="${tL[0] - 18}" y2="${tL[1]}" stroke="${stroke}" stroke-width="1.5" marker-start="url(#prismArrowStart)" marker-end="url(#prismArrowEnd)"/>
-  <text x="${bL[0] - 24}" y="${Math.round((bL[1] + tL[1]) / 2) + 5}" text-anchor="end" font-size="14" font-weight="bold" fill="#333">h = ${heightLabel}</text>
-  <defs>
-    <marker id="prismArrowStart" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse">
-      <polygon points="8,4 0,8 0,0" fill="${stroke}" />
-    </marker>
-    <marker id="prismArrowEnd" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
-      <polygon points="0,4 8,8 8,0" fill="${stroke}" />
-    </marker>
-  </defs>
+  <line x1="${bL[0]}" y1="${bL[1]}" x2="${tL[0]}" y2="${tL[1]}" stroke="#e65100" stroke-width="3.2"/>
+  <text x="${bL[0] - 10}" y="${Math.round((bL[1] + tL[1]) / 2) + 5}" text-anchor="end" font-size="15" font-weight="bold" fill="#e65100">h = ${heightLabel}</text>
 </svg>`.trim()
 }
 
