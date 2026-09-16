@@ -296,7 +296,7 @@ describe('geometrySvg', () => {
   })
 
   describe('generatePrismVolumeSvg', () => {
-    it('shows base area and height labels', () => {
+    it('shows base area on the bottom and height on a vertical edge', () => {
       const svg = generatePrismVolumeSvg({
         baseAreaLabel: '12 cm²',
         heightLabel: '5 cm',
@@ -304,6 +304,8 @@ describe('geometrySvg', () => {
       expect(svg).toContain('<svg')
       expect(svg).toContain('G = 12 cm²')
       expect(svg).toContain('h = 5 cm')
+      expect(svg).toContain('aria-label="Prisma"')
+      expect(svg).toContain('text-anchor="end"')
       expect(svg).toContain('<polygon')
     })
   })

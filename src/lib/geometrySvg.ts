@@ -660,10 +660,11 @@ type CuboidPt = [number, number]
  */
 function cuboidIsoGeometry(opts?: { cube?: boolean; padding?: number }) {
   const cube = Boolean(opts?.cube)
-  const padL = (opts?.padding ?? 48) + 28 // room for height label
-  const padR = (opts?.padding ?? 48) + 20
-  const padT = (opts?.padding ?? 48) + 8
-  const padB = (opts?.padding ?? 48) + 28
+  // Extra left padding so height labels (text-anchor=end) are not clipped.
+  const padL = (opts?.padding ?? 48) + 36
+  const padR = (opts?.padding ?? 48) + 24
+  const padT = (opts?.padding ?? 48) + 12
+  const padB = (opts?.padding ?? 48) + 32
   // Unit edge length on screen (same for cube in all directions).
   const s = cube ? 108 : 96
   const L = cube ? s : s * 1.55 // length along x
@@ -686,7 +687,8 @@ function cuboidIsoGeometry(opts?: { cube?: boolean; padding?: number }) {
   const backTL: CuboidPt = [x0 + depX, y0 - depY]
   const totalW = Math.ceil(L + depX + padL + padR)
   const totalH = Math.ceil(H + depY + padT + padB)
-  const poly = (...pts: CuboidPt[]) => pts.map(([x, y]) => `${x},${y}`).join(' ')
+  const poly = (...pts: CuboidPt[]) =>
+    pts.map(([x, y]) => `${Math.round(x)},${Math.round(y)}`).join(' ')
   return {
     totalW,
     totalH,
@@ -867,34 +869,53 @@ export interface PrismVolumeSvgProps {
   stroke?: string
 }
 
-/** Simple triangular prism (isometric) with Grundfläche G and Höhe h labeled. */
+/**
+ * Upright triangular prism: Grundfläche G at the bottom, Höhe h on a vertical edge
+ * (senkrecht zur Grundfläche).
+ */
 export function generatePrismVolumeSvg({
   baseAreaLabel,
   heightLabel,
   fill = '#e8eaf6',
   stroke = '#3949ab',
 }: PrismVolumeSvgProps): string {
-  const w = 320
-  const h = 240
-  // Front triangle
-  const f1 = [60, 180]
-  const f2 = [200, 180]
-  const f3 = [130, 90]
-  // Back triangle (offset)
-  const dx = 70
-  const dy = -45
-  const b1 = [f1[0] + dx, f1[1] + dy]
-  const b2 = [f2[0] + dx, f2[1] + dy]
-  const b3 = [f3[0] + dx, f3[1] + dy]
+  const w = 340
+  const h = 280
+  const H = 110 // vertical prism height in px
+  // Bottom triangle (Grundfläche), isometric
+  const bL: CuboidPt = [70, 220]
+  const bR: CuboidPt = [210, 220]
+  const bBack: CuboidPt = [170, 175]
+  // Top triangle = bottom shifted up
+  const tL: CuboidPt = [bL[0], bL[1] - H]
+  const tR: CuboidPt = [bR[0], bR[1] - H]
+  const tBack: CuboidPt = [bBack[0], bBack[1] - H]
+  const gCx = Math.round((bL[0] + bR[0] + bBack[0]) / 3)
+  const gCy = Math.round((bL[1] + bR[1] + bBack[1]) / 3) + 8
   return `
-<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">
-  <polygon points="${b1[0]},${b1[1]} ${b2[0]},${b2[1]} ${b3[0]},${b3[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.7"/>
-  <polygon points="${f1[0]},${f1[1]} ${f2[0]},${f2[1]} ${b2[0]},${b2[1]} ${b1[0]},${b1[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.85"/>
-  <polygon points="${f2[0]},${f2[1]} ${f3[0]},${f3[1]} ${b3[0]},${b3[1]} ${b2[0]},${b2[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.9"/>
-  <polygon points="${f1[0]},${f1[1]} ${f2[0]},${f2[1]} ${f3[0]},${f3[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
-  <text x="130" y="205" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">G = ${baseAreaLabel}</text>
-  <text x="250" y="120" font-size="14" font-weight="bold" fill="#333">h = ${heightLabel}</text>
-  <line x1="210" y1="175" x2="255" y2="145" stroke="${stroke}" stroke-width="1" stroke-dasharray="3"/>
+<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Prisma">
+  <!-- hidden back vertical -->
+  <line x1="${bBack[0]}" y1="${bBack[1]}" x2="${tBack[0]}" y2="${tBack[1]}" stroke="${stroke}" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.8"/>
+  <!-- side faces -->
+  <polygon points="${bL[0]},${bL[1]} ${bBack[0]},${bBack[1]} ${tBack[0]},${tBack[1]} ${tL[0]},${tL[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.75"/>
+  <polygon points="${bR[0]},${bR[1]} ${bBack[0]},${bBack[1]} ${tBack[0]},${tBack[1]} ${tR[0]},${tR[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.85"/>
+  <polygon points="${bL[0]},${bL[1]} ${bR[0]},${bR[1]} ${tR[0]},${tR[1]} ${tL[0]},${tL[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.9"/>
+  <!-- top face -->
+  <polygon points="${tL[0]},${tL[1]} ${tR[0]},${tR[1]} ${tBack[0]},${tBack[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
+  <!-- bottom Grundfläche -->
+  <polygon points="${bL[0]},${bL[1]} ${bR[0]},${bR[1]} ${bBack[0]},${bBack[1]}" fill="#fff3cd" stroke="${stroke}" stroke-width="2.5"/>
+  <text x="${gCx}" y="${gCy}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">G = ${baseAreaLabel}</text>
+  <!-- Höhe senkrecht zur Grundfläche (linke vertikale Kante) -->
+  <line x1="${bL[0] - 18}" y1="${bL[1]}" x2="${tL[0] - 18}" y2="${tL[1]}" stroke="${stroke}" stroke-width="1.5" marker-start="url(#prismArrowStart)" marker-end="url(#prismArrowEnd)"/>
+  <text x="${bL[0] - 24}" y="${Math.round((bL[1] + tL[1]) / 2) + 5}" text-anchor="end" font-size="14" font-weight="bold" fill="#333">h = ${heightLabel}</text>
+  <defs>
+    <marker id="prismArrowStart" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse">
+      <polygon points="8,4 0,8 0,0" fill="${stroke}" />
+    </marker>
+    <marker id="prismArrowEnd" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <polygon points="0,4 8,8 8,0" fill="${stroke}" />
+    </marker>
+  </defs>
 </svg>`.trim()
 }
 

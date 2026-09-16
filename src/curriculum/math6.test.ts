@@ -39,8 +39,16 @@ describe('Klasse 6 curriculum', () => {
       }
       if (task.question.includes('Ein Würfel')) {
         sawWuerfel = true
-        expect(svg).toMatch(/aria-label="Würfel/)
+        expect(svg).toMatch(/aria-label="Würfel"/)
         expect(svg).toContain('stroke-dasharray')
+        // Senkrechte Kante = vertikale Höhenbeschriftung (links), Fläche oben
+        expect(svg).toContain('text-anchor="end"')
+        expect(svg).toMatch(/A = /)
+      }
+      if (task.question.includes('Ein Prisma')) {
+        expect(svg).toContain('h =')
+        expect(svg).toContain('G =')
+        expect(svg).toContain('text-anchor="end"')
       }
     }
     expect(sawQuader).toBe(true)

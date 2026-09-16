@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.17] – 2026-09-16
+
+### Behoben
+- Würfel-Aufgaben: Abbildung ist ein Würfel (Isometrie); Fläche oben, gesuchte
+  Kante als **vertikale** Höhe senkrecht zur Fläche (nicht Tiefenkante).
+- Prisma-Aufgaben: aufrechtes Prisma mit Grundfläche unten und **h** an der
+  senkrechten Kante (nicht an einer schrägen Verbindungskante).
+
 ## [0.27.16] – 2026-09-16
 
 ### Verbessert

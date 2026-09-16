@@ -1656,7 +1656,7 @@ const flaecheKanteQuader: Topic = {
       })
     },
     (rng: Rng) => {
-      // Würfel: a = V : A
+      // Würfel: a = V : A  — Fläche oben, Höhe senkrecht dazu
       const a = randInt(rng, 3, 12)
       const face = a * a
       const volume = a * a * a
@@ -1667,11 +1667,11 @@ const flaecheKanteQuader: Topic = {
         value: a,
         solution: `${a} cm`,
         explanation: `Beim Würfel: V = A · a (2D · 1D = 3D). Also a = V : A = ${volume} : ${face} = ${a} cm.`,
-        visualContent: generateCuboidFaceEdgeSvg({
-          faceAreaLabel: `${face} cm²`,
-          faceEdgeLabel: 'a',
-          perpendicularLabel: '?',
-          caption: `V = ${volume} cm³ · Würfel`,
+        visualContent: generateCuboidSvg({
+          lengthLabel: '',
+          widthLabel: '',
+          heightLabel: '?',
+          topFaceLabel: `A = ${face} cm²`,
           cube: true,
         }),
       })
@@ -1688,11 +1688,11 @@ const flaecheKanteQuader: Topic = {
         value: face,
         solution: `${face} cm²`,
         explanation: `V = A · a ⇒ A = V : a = ${volume} : ${a} = ${face} cm².`,
-        visualContent: generateCuboidFaceEdgeSvg({
-          faceAreaLabel: '?',
-          faceEdgeLabel: `${a} cm`,
-          perpendicularLabel: `${a} cm`,
-          caption: `V = ${volume} cm³ · Würfel`,
+        visualContent: generateCuboidSvg({
+          lengthLabel: '',
+          widthLabel: '',
+          heightLabel: `${a} cm`,
+          topFaceLabel: 'A = ?',
           cube: true,
         }),
       })
