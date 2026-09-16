@@ -88,6 +88,11 @@ export interface Task {
   sampleAnswer: UserInput
   /** Optional SVG visual content (e.g., geometry diagrams). */
   visualContent?: string
+  /**
+   * Optional SVG shown after the answer is checked (Auflösung),
+   * e.g. Schatten erst nach dem Prüfen einblenden.
+   */
+  solutionVisualContent?: string
   /** Optional interactive component configuration. */
   interactive?: InteractiveConfig
 }
@@ -114,6 +119,8 @@ export interface Topic {
   released?: boolean
   /** Stable numeric ID for Freigabe-Feedback (z. B. „ID 8545“). */
   contentId?: number
+  /** Tasks per practice round (pack-driven; default depends on subject). */
+  tasksPerRound?: number
   /**
    * Fachliches Basiswissen zu diesem Thema (eigene Formulierung).
    * Wird dem Lernenden als Wissensbox angezeigt.

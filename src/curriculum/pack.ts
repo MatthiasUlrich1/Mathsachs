@@ -31,6 +31,8 @@ export interface PackTopic {
    * Fehlend/undefined = freigegeben (Mathe-Kompatibilität).
    */
   released?: boolean
+  /** Practice round length; omitted = app default (Physik 5, sonst 10). */
+  tasksPerRound?: number
 }
 
 export interface PackArea {
@@ -145,6 +147,11 @@ const parseTopic = (raw: unknown): PackTopic | null => {
     pointsPerTask: Math.max(1, Math.trunc(asNumber(raw.pointsPerTask, 10))),
     ...(keywords?.length ? { keywords } : {}),
     ...(raw.released === false ? { released: false } : raw.released === true ? { released: true } : {}),
+    ...(typeof raw.tasksPerRound === 'number' &&
+    Number.isFinite(raw.tasksPerRound) &&
+    raw.tasksPerRound >= 1
+      ? { tasksPerRound: Math.min(30, Math.trunc(raw.tasksPerRound)) }
+      : {}),
   }
 }
 

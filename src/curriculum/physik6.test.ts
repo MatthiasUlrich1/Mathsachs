@@ -31,14 +31,30 @@ describe('Physik Klasse 6 generators', () => {
     }
   })
 
-  it('hydrates Klasse 6 with content IDs and unreleased Physik topics', async () => {
+  it('hydrates Klasse 6 with content IDs; LB1 Licht is released', async () => {
     const grades = await hydratePackGrades(buildGymSachsenPhysikPack())
     const k6 = grades.find((g) => g.id === 'physik-klasse-6')
     expect(k6).toBeTruthy()
     const topics = k6!.areas.flatMap((a) => a.topics)
-    expect(topics.every((t) => t.released === false)).toBe(true)
     expect(topics.every((t) => typeof t.contentId === 'number')).toBe(true)
-    expect(topics.some((t) => t.id === 'ph-k6-lb1-schatten')).toBe(true)
+    const lb1 = k6!.areas.find((a) => a.id === 'lb1')!.topics
+    expect(lb1.every((t) => t.released === true)).toBe(true)
+    expect(lb1.find((t) => t.id === 'ph-k6-lb1-spiegel')?.tasksPerRound).toBe(5)
+    expect(lb1.find((t) => t.id === 'ph-k6-lb1-brechung')?.tasksPerRound).toBe(10)
+    expect(topics.filter((t) => t.released === false).length).toBeGreaterThan(0)
+  })
+
+  it('hides Schatten in lampenposition MC until Auflösung', () => {
+    const gen = PHYSIK_K6_GENERATORS['ph-k6-lb1-lampenposition']!
+    let found = false
+    for (let seed = 1; seed <= 40; seed++) {
+      const task = gen(createRng(seed))
+      if (!task.question.includes('Wohin fällt der Schatten')) continue
+      found = true
+      expect(task.visualContent).not.toContain('>Schatten<')
+      expect(task.solutionVisualContent).toContain('>Schatten<')
+    }
+    expect(found).toBe(true)
   })
 
   it('uses interactive variants for Dichte, Stromkreis, Farben, Lichtstrahl and Aggregate', () => {

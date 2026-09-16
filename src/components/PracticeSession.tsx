@@ -9,6 +9,13 @@ import { initTaskInput, TaskInteractive, TaskVisual } from './TaskMedia'
 const TARGET_TASKS_PER_ROUND = 10
 const PHYSIK_TASKS_PER_ROUND = 5
 
+function tasksPerRoundFor(topic: Topic): number {
+  if (typeof topic.tasksPerRound === 'number' && topic.tasksPerRound >= 1) {
+    return Math.min(30, Math.trunc(topic.tasksPerRound))
+  }
+  return topic.id.startsWith('ph-') ? PHYSIK_TASKS_PER_ROUND : TARGET_TASKS_PER_ROUND
+}
+
 interface Props {
   topic: Topic
   areaTitle: string
@@ -21,7 +28,7 @@ type Phase = 'answering' | 'correct' | 'wrong'
 
 export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }: Props) {
   const [rng] = useState(() => createRng(timeSeed()))
-  const targetTasks = topic.id.startsWith('ph-') ? PHYSIK_TASKS_PER_ROUND : TARGET_TASKS_PER_ROUND
+  const targetTasks = tasksPerRoundFor(topic)
   const [tasks] = useState(() => buildUniqueTaskRound(topic.generate, rng, targetTasks))
   const totalTasks = tasks.length
   const [index, setIndex] = useState(1)
@@ -154,7 +161,13 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
 
       <div className={`prompt prompt--${phase}`}>{task.question}</div>
 
-      <TaskVisual html={task.visualContent} />
+      <TaskVisual
+        html={
+          phase === 'answering'
+            ? task.visualContent
+            : (task.solutionVisualContent ?? task.visualContent)
+        }
+      />
 
       {phase === 'answering' && (
         <TaskInteractive task={task} value={input} onChange={setInput} />

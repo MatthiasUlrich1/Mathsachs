@@ -94,6 +94,7 @@ const markOfficial = (grade: Grade): Grade => ({
       ...(topic.source ? topic : { ...topic, source: 'official' as const }),
       contentId: topic.contentId ?? topicContentId(topic.id),
       released: topic.released ?? true,
+      ...(topic.tasksPerRound ? { tasksPerRound: topic.tasksPerRound } : {}),
     })),
   })),
 })

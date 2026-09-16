@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.13] – 2026-09-16
+
+### Neu
+- Physik-Pack **2.4.0**: LB1 Licht-Themen freigegeben (IDs 2910, 3625, 6162,
+  9806, 2610, 7298, 6991, 1992); Rundenlänge je Thema über Pack
+  (`tasksPerRound`, z. B. Spiegel 5, sonst 10).
+
+### Behoben
+- Schatten-MC (Lampenposition): Schatten erst nach dem Prüfen in der Abbildung
+  (kein Spoiler mehr).
+
 ## [0.27.12] – 2026-09-16
 
 ### Behoben

@@ -292,6 +292,8 @@ interface ChoicePickTaskInput {
   solution: string
   explanation: string
   visualContent?: string
+  /** SVG for the Auflösung (after Prüfen), if different from visualContent. */
+  solutionVisualContent?: string
   /** Optional instruction above the buttons. */
   instruction?: string
 }
@@ -305,6 +307,7 @@ export const choicePickTask = (input: ChoicePickTaskInput): Task => {
     solution: input.solution,
     explanation: input.explanation,
     visualContent: input.visualContent,
+    solutionVisualContent: input.solutionVisualContent,
     sampleAnswer: { kind: 'choicePick', choice: input.correct },
     interactive: {
       type: 'choicePick',

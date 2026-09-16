@@ -45,6 +45,7 @@ const schatten: Topic['generate'] = mixedVariants(
       explanation:
         'Licht breitet sich geradlinig aus. Der Schatten liegt auf der dem Licht abgewandten Seite des Körpers.',
       visualContent: lightShadowSvg({ lampLeft, shadowSide, showShadow: false }),
+      solutionVisualContent: lightShadowSvg({ lampLeft, shadowSide, showShadow: true }),
       instruction: 'Tippe die Schattenseite:',
     })
   },
@@ -236,6 +237,51 @@ const brechung: Topic['generate'] = mixedVariants(
           'Licht ist immer schneller',
           'Es gibt keine Grenzfläche',
           'Nur bei Spiegeln relevant',
+        ],
+      },
+      {
+        q: 'Beim Übergang Luft → Wasser wird der Strahl …',
+        correct: 'zum Lot hin gebrochen',
+        wrong: [
+          'vom Lot weg gebrochen',
+          'nie gebrochen',
+          'nur reflektiert wie am Spiegel',
+        ],
+      },
+      {
+        q: 'Beim Übergang Wasser → Luft wird der Strahl …',
+        correct: 'vom Lot weg gebrochen',
+        wrong: [
+          'immer zum Lot hin gebrochen',
+          'zu Schall',
+          'ohne Richtungsänderung',
+        ],
+      },
+      {
+        q: 'Welche Farbe wird in Glas typischerweise am stärksten gebrochen?',
+        correct: 'Violett / Blau stärker als Rot',
+        wrong: [
+          'Rot stärker als Violett',
+          'Alle Farben gleich ohne Dispersion',
+          'Nur Grün wird gebrochen',
+        ],
+      },
+      {
+        q: 'Ein Lichtstrahl trifft senkrecht (0° zum Lot) auf Glas. Was passiert?',
+        correct: 'Er geht ohne Richtungsänderung weiter (kein Brechungswinkel)',
+        wrong: [
+          'Er wird maximal vom Lot weg gebrochen',
+          'Er wird immer totalreflektiert',
+          'Er bleibt im Glas stecken',
+        ],
+      },
+      {
+        q: 'Totalreflexion kann auftreten, wenn Licht …',
+        correct: 'vom dichteren ins dünnere Medium kommt und der Winkel groß genug ist',
+        wrong: [
+          'nur von Luft nach Glas geht',
+          'nur bei Spiegeln vorkommt',
+          'bei jedem Einfallswinkel 0° passiert',
         ],
       },
     ] as const
@@ -443,6 +489,7 @@ const lampenposition: Topic['generate'] = mixedVariants(
   },
   (rng) => {
     const lampLeft = pick(rng, [true, false])
+    const shadowSide: 'left' | 'right' = lampLeft ? 'right' : 'left'
     const correct = lampLeft ? 'rechts vom Körper' : 'links vom Körper'
     return choicePickTask({
       question: `Die Lampe steht ${lampLeft ? 'links' : 'rechts'} vom Körper. Wohin fällt der Schatten?`,
@@ -456,7 +503,13 @@ const lampenposition: Topic['generate'] = mixedVariants(
       explanation: 'Schatten entsteht auf der dem Licht abgewandten Seite.',
       visualContent: lightShadowSvg({
         lampLeft,
-        shadowSide: lampLeft ? 'right' : 'left',
+        shadowSide,
+        showShadow: false,
+      }),
+      solutionVisualContent: lightShadowSvg({
+        lampLeft,
+        shadowSide,
+        showShadow: true,
       }),
       instruction: 'Tippe die Schattenseite:',
     })

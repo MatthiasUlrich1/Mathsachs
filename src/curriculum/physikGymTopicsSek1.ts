@@ -5,12 +5,18 @@
  */
 import type { PackArea, PackGrade, PackTopic } from './pack'
 
-const topic = (id: string, title: string, keywords?: string[]): PackTopic => ({
+const topic = (
+  id: string,
+  title: string,
+  keywords?: string[],
+  opts?: { released?: boolean; tasksPerRound?: number },
+): PackTopic => ({
   id,
   title,
   pointsPerTask: 10,
   hint: 'Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.',
-  released: false,
+  released: opts?.released ?? false,
+  ...(opts?.tasksPerRound ? { tasksPerRound: opts.tasksPerRound } : {}),
   ...(keywords?.length ? { keywords } : {}),
 })
 
@@ -49,14 +55,38 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
       ['Licht', 'Körper', 'Temperatur', 'Stromkreis', 'Wärme'],
       [
         area('lb1', 'Licht und seine Eigenschaften', 17, [
-          topic('ph-k6-lb1-lichtquellen', 'Lichtquellen und beleuchtete Körper', ['Lichtquelle']),
-          topic('ph-k6-lb1-ausbreitung', 'Geradlinige Ausbreitung', ['Licht', 'Strahl']),
-          topic('ph-k6-lb1-schatten', 'Schatten und Lichtquelle', ['Licht', 'Schatten']),
-          topic('ph-k6-lb1-kernschatten', 'Kern- und Halbschatten', ['Kernschatten', 'Halbschatten']),
-          topic('ph-k6-lb1-lampenposition', 'Lampenposition einstellen', ['Schatten', 'Schieberegler']),
-          topic('ph-k6-lb1-lichtstrahl', 'Lichtstrahl tippen', ['Strahl', 'Gitter']),
-          topic('ph-k6-lb1-spiegel', 'Spiegelung am ebenen Spiegel', ['Spiegel', 'Reflexion']),
-          topic('ph-k6-lb1-brechung', 'Brechung und Prisma', ['Brechung', 'Prisma']),
+          topic('ph-k6-lb1-lichtquellen', 'Lichtquellen und beleuchtete Körper', ['Lichtquelle'], {
+            released: true,
+            tasksPerRound: 10,
+          }),
+          topic('ph-k6-lb1-ausbreitung', 'Geradlinige Ausbreitung', ['Licht', 'Strahl'], {
+            released: true,
+            tasksPerRound: 10,
+          }),
+          topic('ph-k6-lb1-schatten', 'Schatten und Lichtquelle', ['Licht', 'Schatten'], {
+            released: true,
+            tasksPerRound: 10,
+          }),
+          topic('ph-k6-lb1-kernschatten', 'Kern- und Halbschatten', ['Kernschatten', 'Halbschatten'], {
+            released: true,
+            tasksPerRound: 10,
+          }),
+          topic('ph-k6-lb1-lampenposition', 'Lampenposition einstellen', ['Schatten', 'Schieberegler'], {
+            released: true,
+            tasksPerRound: 10,
+          }),
+          topic('ph-k6-lb1-lichtstrahl', 'Lichtstrahl tippen', ['Strahl', 'Gitter'], {
+            released: true,
+            tasksPerRound: 10,
+          }),
+          topic('ph-k6-lb1-spiegel', 'Spiegelung am ebenen Spiegel', ['Spiegel', 'Reflexion'], {
+            released: true,
+            tasksPerRound: 5,
+          }),
+          topic('ph-k6-lb1-brechung', 'Brechung und Prisma', ['Brechung', 'Prisma'], {
+            released: true,
+            tasksPerRound: 10,
+          }),
         ]),
         area('lb2', 'Eigenschaften und Bewegungen von Körpern', 14, [
           topic('ph-k6-lb2-volumen', 'Volumen bestimmen', ['Volumen']),

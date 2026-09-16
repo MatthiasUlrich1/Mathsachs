@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.3.0',
+    version: '2.4.0',
     changelog:
-      'Alle Themen vorerst gesperrt (released:false); Freigabe über Pack-Update. Schulübliche Optik-Fixes.',
+      'LB1 Licht freigegeben (IDs 2910–1992); Rundenlänge je Thema; Schatten-MC ohne Spoiler in der Abbildung.',
     official,
     extras: [],
   }

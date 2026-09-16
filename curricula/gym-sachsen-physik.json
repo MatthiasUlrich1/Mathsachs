@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "2.3.0",
-  "changelog": "Alle Themen vorerst gesperrt (released:false); Freigabe über Pack-Update. Schulübliche Optik-Fixes.",
+  "version": "2.4.0",
+  "changelog": "LB1 Licht freigegeben (IDs 2910–1992); Rundenlänge je Thema; Schatten-MC ohne Spoiler in der Abbildung.",
   "official": [
     {
       "id": "physik-klasse-6",
@@ -31,7 +31,8 @@
               "title": "Lichtquellen und beleuchtete Körper",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
+              "tasksPerRound": 10,
               "keywords": [
                 "Lichtquelle"
               ]
@@ -41,7 +42,8 @@
               "title": "Geradlinige Ausbreitung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
+              "tasksPerRound": 10,
               "keywords": [
                 "Licht",
                 "Strahl"
@@ -52,7 +54,8 @@
               "title": "Schatten und Lichtquelle",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
+              "tasksPerRound": 10,
               "keywords": [
                 "Licht",
                 "Schatten"
@@ -63,7 +66,8 @@
               "title": "Kern- und Halbschatten",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kernschatten",
                 "Halbschatten"
@@ -74,7 +78,8 @@
               "title": "Lampenposition einstellen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
+              "tasksPerRound": 10,
               "keywords": [
                 "Schatten",
                 "Schieberegler"
@@ -85,7 +90,8 @@
               "title": "Lichtstrahl tippen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
+              "tasksPerRound": 10,
               "keywords": [
                 "Strahl",
                 "Gitter"
@@ -96,7 +102,8 @@
               "title": "Spiegelung am ebenen Spiegel",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
+              "tasksPerRound": 5,
               "keywords": [
                 "Spiegel",
                 "Reflexion"
@@ -107,7 +114,8 @@
               "title": "Brechung und Prisma",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
+              "tasksPerRound": 10,
               "keywords": [
                 "Brechung",
                 "Prisma"
@@ -3671,5 +3679,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "7f073df0"
+  "contentHash": "cd4b4fb6"
 }

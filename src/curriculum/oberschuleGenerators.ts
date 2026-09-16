@@ -659,6 +659,7 @@ export function topicFromPack(
     outlineOnly: playable ? undefined : true,
     released: topic.released ?? true,
     contentId: topicContentId(topic.id),
+    ...(topic.tasksPerRound ? { tasksPerRound: topic.tasksPerRound } : {}),
     generate: generate ?? outlineGenerate(topic.title),
   }
 }

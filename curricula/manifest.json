@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-16T16:44:07.874Z",
+  "updatedAt": "2026-09-16T17:46:42.039Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -18,10 +18,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "2.3.0",
+      "version": "2.4.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 123018,
-      "changelog": "Alle Themen vorerst gesperrt (released:false); Freigabe über Pack-Update. Schulübliche Optik-Fixes."
+      "size": 123294,
+      "changelog": "LB1 Licht freigegeben (IDs 2910–1992); Rundenlänge je Thema; Schatten-MC ohne Spoiler in der Abbildung."
     },
     {
       "id": "oberschule-sachsen-hs",

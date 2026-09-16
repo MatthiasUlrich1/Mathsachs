@@ -49,7 +49,7 @@ describe('Physik Gym generators (all grades)', () => {
     }
   })
 
-  it('hydrates the full pack with generators and unreleased topics', async () => {
+  it('hydrates the full pack with generators; only freigegebene topics are released', async () => {
     const grades = await hydratePackGrades(buildGymSachsenPhysikPack())
     expect(grades.length).toBe(9)
     for (const grade of grades) {
@@ -59,10 +59,15 @@ describe('Physik Gym generators (all grades)', () => {
         topics.every((t) => !t.outlineOnly),
         `${grade.id} still has outlineOnly`,
       ).toBe(true)
-      expect(
-        topics.every((t) => t.released === false),
-        `${grade.id} should be unreleased`,
-      ).toBe(true)
     }
+    const k6 = grades.find((g) => g.id === 'physik-klasse-6')!
+    const lb1 = k6.areas.find((a) => a.id === 'lb1')!.topics
+    expect(lb1.every((t) => t.released === true)).toBe(true)
+    expect(
+      k6.areas
+        .filter((a) => a.id !== 'lb1')
+        .flatMap((a) => a.topics)
+        .every((t) => t.released === false),
+    ).toBe(true)
   })
 })
