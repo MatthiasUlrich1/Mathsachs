@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "1.0.0",
-  "changelog": "Lehrplan Physik Gymnasium Sachsen (Klassen 6–10, JGS 11/12 Gk/Lk). Themenstruktur laut Lehrplan; Übungsaufgaben folgen schrittweise.",
+  "version": "1.2.0",
+  "changelog": "Klasse 6 Licht: Schatten-Slider (Live-Vorschau), Lichtstrahl tippen, Mehrfachauswahl; weitere interaktive Themen. Lehrplan Physik Gymnasium Sachsen.",
   "official": [
     {
       "id": "physik-klasse-6",
@@ -27,14 +27,53 @@
           "ustd": 17,
           "topics": [
             {
-              "id": "ph-k6-lb1-licht",
-              "title": "Licht und seine Eigenschaften",
+              "id": "ph-k6-lb1-schatten",
+              "title": "Schatten und Lichtquelle",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Licht",
+                "Schatten"
+              ]
+            },
+            {
+              "id": "ph-k6-lb1-lampenposition",
+              "title": "Lampenposition einstellen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
                 "Schatten",
-                "Spiegel"
+                "Schieberegler"
+              ]
+            },
+            {
+              "id": "ph-k6-lb1-lichtstrahl",
+              "title": "Lichtstrahl tippen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Strahl",
+                "Gitter"
+              ]
+            },
+            {
+              "id": "ph-k6-lb1-spiegel",
+              "title": "Spiegelung am ebenen Spiegel",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Spiegel",
+                "Reflexion"
+              ]
+            },
+            {
+              "id": "ph-k6-lb1-ausbreitung",
+              "title": "Geradlinige Ausbreitung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Licht",
+                "Strahl"
               ]
             }
           ]
@@ -45,14 +84,34 @@
           "ustd": 14,
           "topics": [
             {
-              "id": "ph-k6-lb2-koerper",
-              "title": "Eigenschaften und Bewegungen von Körpern",
+              "id": "ph-k6-lb2-masse",
+              "title": "Masse vergleichen",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
-                "Körper",
-                "Bewegung",
-                "Masse"
+                "Masse",
+                "Körper"
+              ]
+            },
+            {
+              "id": "ph-k6-lb2-dichte",
+              "title": "Dichte berechnen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Dichte",
+                "Masse",
+                "Volumen"
+              ]
+            },
+            {
+              "id": "ph-k6-lb2-geschwindigkeit",
+              "title": "Gleichförmige Bewegung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Geschwindigkeit",
+                "Strecke"
               ]
             }
           ]
@@ -63,13 +122,33 @@
           "ustd": 14,
           "topics": [
             {
-              "id": "ph-k6-lb3-temperatur",
-              "title": "Temperatur und Zustand von Körpern",
+              "id": "ph-k6-lb3-thermometer",
+              "title": "Temperatur ablesen",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Temperatur",
-                "Aggregatzustand"
+                "Thermometer"
+              ]
+            },
+            {
+              "id": "ph-k6-lb3-kelvin",
+              "title": "Celsius und Kelvin",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Kelvin",
+                "Celsius"
+              ]
+            },
+            {
+              "id": "ph-k6-lb3-aggregate",
+              "title": "Aggregatzustände",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Aggregatzustand",
+                "Schmelzen"
               ]
             }
           ]
@@ -81,12 +160,22 @@
           "topics": [
             {
               "id": "ph-k6-lb4-stromkreis",
-              "title": "Elektrische Stromkreise",
+              "title": "Offener und geschlossener Stromkreis",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Stromkreis",
-                "Elektrizität"
+                "Schalter"
+              ]
+            },
+            {
+              "id": "ph-k6-lb4-leiter",
+              "title": "Leiter und Nichtleiter",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Leiter",
+                "Isolator"
               ]
             }
           ]
@@ -99,7 +188,7 @@
               "id": "ph-k6-lbw-sehen",
               "title": "Sehen und Fotografieren",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Sehen",
                 "Fotografie"
@@ -109,7 +198,7 @@
               "id": "ph-k6-lbw-daemmung",
               "title": "Wärmedämmung",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Wärmedämmung"
               ]
@@ -118,7 +207,7 @@
               "id": "ph-k6-lbw-farben",
               "title": "Farben",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Farben"
               ]
@@ -149,7 +238,7 @@
               "id": "ph-k7-lb1-kraefte",
               "title": "Kräfte",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Kraft",
                 "Gewichtskraft"
@@ -166,7 +255,7 @@
               "id": "ph-k7-lb2-strom",
               "title": "Stromstärke und Spannung in Stromkreisen",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Stromstärke",
                 "Spannung"
@@ -183,7 +272,7 @@
               "id": "ph-k7-lb3-energie",
               "title": "Energiewandler",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Energie",
                 "Wandler"
@@ -199,7 +288,7 @@
               "id": "ph-k7-lbw-kraftwandler",
               "title": "Kraftwandler – früher und heute",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Kraftwandler"
               ]
@@ -208,7 +297,7 @@
               "id": "ph-k7-lbw-schaltungen",
               "title": "Elektrische Schaltungen",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Schaltung"
               ]
@@ -217,7 +306,7 @@
               "id": "ph-k7-lbw-fliegen",
               "title": "Vom Fliegen",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Fliegen"
               ]
@@ -248,7 +337,7 @@
               "id": "ph-k8-lb1-fluide",
               "title": "Mechanik der Flüssigkeiten und Gase",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Druck",
                 "Auftrieb"
@@ -265,7 +354,7 @@
               "id": "ph-k8-lb2-thermisch",
               "title": "Thermische Energie",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Wärme",
                 "thermische Energie"
@@ -282,7 +371,7 @@
               "id": "ph-k8-lb3-bauelemente",
               "title": "Eigenschaften elektrischer Bauelemente",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Widerstand",
                 "Bauelemente"
@@ -299,7 +388,7 @@
               "id": "ph-k8-lb4-experiment",
               "title": "Selbstständiges Experimentieren",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Experiment",
                 "Praktikum"
@@ -315,7 +404,7 @@
               "id": "ph-k8-lbw-ballon",
               "title": "Vom Ballonfahren",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Ballon"
               ]
@@ -324,7 +413,7 @@
               "id": "ph-k8-lbw-kuehlschrank",
               "title": "Kühlschrank und Wärmepumpe",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Wärmepumpe"
               ]
@@ -333,7 +422,7 @@
               "id": "ph-k8-lbw-messen",
               "title": "Elektrisches Messen nichtelektrischer Größen",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Messen"
               ]
@@ -364,7 +453,7 @@
               "id": "ph-k9-lb1-elektronik",
               "title": "Grundlagen der Elektronik",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Elektronik",
                 "Diode"
@@ -381,7 +470,7 @@
               "id": "ph-k9-lb2-versorgung",
               "title": "Energieversorgung",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Energieversorgung",
                 "Kraftwerk"
@@ -398,7 +487,7 @@
               "id": "ph-k9-lb3-bewegung",
               "title": "Bewegungsgesetze",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Geschwindigkeit",
                 "Beschleunigung"
@@ -415,7 +504,7 @@
               "id": "ph-k9-lb4-praktikum",
               "title": "Physikalisches Praktikum",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Praktikum"
               ]
@@ -430,7 +519,7 @@
               "id": "ph-k9-lbw-radioaktivitaet",
               "title": "Natürliche Radioaktivität",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Radioaktivität"
               ]
@@ -439,7 +528,7 @@
               "id": "ph-k9-lbw-wind-sonne",
               "title": "Energie von Wind und Sonne",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Wind",
                 "Sonne"
@@ -449,7 +538,7 @@
               "id": "ph-k9-lbw-kurven",
               "title": "Bewegungen auf gekrümmten Bahnen",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Kreisbewegung"
               ]
@@ -481,7 +570,7 @@
               "id": "ph-k10-lb1-schwingung",
               "title": "Mechanische Schwingungen und Wellen",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Schwingung",
                 "Welle"
@@ -498,7 +587,7 @@
               "id": "ph-k10-lb2-kosmos",
               "title": "Kosmos, Erde und Mensch",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Astronomie",
                 "Kosmos"
@@ -515,7 +604,7 @@
               "id": "ph-k10-lb3-licht",
               "title": "Licht als Strahl und Welle",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Optik",
                 "Licht"
@@ -532,7 +621,7 @@
               "id": "ph-k10-lb4-hertz",
               "title": "Hertzsche Wellen",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Elektromagnetische Wellen"
               ]
@@ -548,7 +637,7 @@
               "id": "ph-k10-lb5-praktikum",
               "title": "Physikalisches Praktikum",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Praktikum"
               ]
@@ -563,7 +652,7 @@
               "id": "ph-k10-lbw-fernrohr",
               "title": "Fernrohre",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Fernrohr"
               ]
@@ -572,7 +661,7 @@
               "id": "ph-k10-lbw-medien",
               "title": "Kommunikation mit elektronischen Medien",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Medien"
               ]
@@ -581,7 +670,7 @@
               "id": "ph-k10-lbw-fernsehen",
               "title": "Fernsehbildtechnik",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Fernsehen"
               ]
@@ -612,7 +701,7 @@
               "id": "ph-j11gk-lb1-energie",
               "title": "Erhaltung der Energie",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Energieerhaltung"
               ]
@@ -628,7 +717,7 @@
               "id": "ph-j11gk-lb2-mechanik",
               "title": "Anwendung der Kinematik und Dynamik",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Kinematik",
                 "Dynamik"
@@ -645,7 +734,7 @@
               "id": "ph-j11gk-lb3-praktikum",
               "title": "Kondensator und Spule – Praktikum",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Kondensator",
                 "Spule"
@@ -662,7 +751,7 @@
               "id": "ph-j11gk-lb4-felder",
               "title": "Geladene Teilchen in Feldern",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Feld",
                 "Ladung"
@@ -678,7 +767,7 @@
               "id": "ph-j11gk-lbw-konstanten",
               "title": "Bestimmung elementarer Naturkonstanten",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Naturkonstante"
               ]
@@ -687,7 +776,7 @@
               "id": "ph-j11gk-lbw-exkursion",
               "title": "Physikalisch-technische Exkursion",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Exkursion"
               ]
@@ -696,7 +785,7 @@
               "id": "ph-j11gk-lbw-anwendungen",
               "title": "Technische Anwendungen von Spulen und Kondensatoren",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Anwendung"
               ]
@@ -705,7 +794,7 @@
               "id": "ph-j11gk-lbw-relativitaet",
               "title": "Relativität von Zeit und Raum",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Relativität"
               ]
@@ -736,7 +825,7 @@
               "id": "ph-j12gk-lb1-licht",
               "title": "Welleneigenschaften des Lichts",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Lichtwelle"
               ]
@@ -752,7 +841,7 @@
               "id": "ph-j12gk-lb2-optik",
               "title": "Praktikum Optik",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Optik",
                 "Praktikum"
@@ -769,7 +858,7 @@
               "id": "ph-j12gk-lb3-quanten",
               "title": "Grundlagen der Quantenphysik",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Quantenphysik"
               ]
@@ -785,7 +874,7 @@
               "id": "ph-j12gk-lb4-strahlung",
               "title": "Strahlung aus Atomhülle und Atomkern",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Atom",
                 "Kernstrahlung"
@@ -801,7 +890,7 @@
               "id": "ph-j12gk-lbw-anwendungen",
               "title": "Anwendungen der Physik",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Anwendung"
               ]
@@ -810,7 +899,7 @@
               "id": "ph-j12gk-lbw-optik",
               "title": "Optische Phänomene",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Optik"
               ]
@@ -819,7 +908,7 @@
               "id": "ph-j12gk-lbw-akustik",
               "title": "Akustik",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Akustik"
               ]
@@ -850,7 +939,7 @@
               "id": "ph-j11lk-lb1-erhaltung",
               "title": "Erhaltungssätze und ihre Anwendungen",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Impuls",
                 "Energie"
@@ -867,7 +956,7 @@
               "id": "ph-j11lk-lb2-kinematik",
               "title": "Kinematik geradliniger Bewegungen",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Kinematik"
               ]
@@ -883,7 +972,7 @@
               "id": "ph-j11lk-lb3-newton",
               "title": "Newtonsche Gesetze und deren Anwendungen",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Newton"
               ]
@@ -899,7 +988,7 @@
               "id": "ph-j11lk-lb4-modell",
               "title": "Modellbildung und Simulation",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Modell",
                 "Simulation"
@@ -916,7 +1005,7 @@
               "id": "ph-j11lk-lb5-kurven",
               "title": "Krummlinige Bewegungen",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Kreisbewegung"
               ]
@@ -932,7 +1021,7 @@
               "id": "ph-j11lk-lb6-relativitaet",
               "title": "Einblick in die Relativitätstheorie",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Relativität"
               ]
@@ -948,7 +1037,7 @@
               "id": "ph-j11lk-lb7-efeld",
               "title": "Elektrisches Feld",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Elektrisches Feld"
               ]
@@ -964,7 +1053,7 @@
               "id": "ph-j11lk-lb8-mfeld",
               "title": "Magnetisches Feld",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Magnetisches Feld"
               ]
@@ -980,7 +1069,7 @@
               "id": "ph-j11lk-lb9-teilchen",
               "title": "Geladene Teilchen in Feldern",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Lorentzkraft"
               ]
@@ -996,7 +1085,7 @@
               "id": "ph-j11lk-lb10-induktion",
               "title": "Elektromagnetische Induktion",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Induktion"
               ]
@@ -1012,7 +1101,7 @@
               "id": "ph-j11lk-lb11-praktikum",
               "title": "Physikalisches Praktikum",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Praktikum"
               ]
@@ -1027,7 +1116,7 @@
               "id": "ph-j11lk-lbw-fahren",
               "title": "Physik des Fahrens",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Fahren"
               ]
@@ -1036,7 +1125,7 @@
               "id": "ph-j11lk-lbw-halbleiter",
               "title": "Leitungsvorgänge in Halbleitern",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Halbleiter"
               ]
@@ -1045,7 +1134,7 @@
               "id": "ph-j11lk-lbw-messen",
               "title": "Messen und Modellieren",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Messen"
               ]
@@ -1077,7 +1166,7 @@
               "id": "ph-j12lk-lb1-schwingung",
               "title": "Mechanische und elektromagnetische Schwingungen",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Schwingung"
               ]
@@ -1093,7 +1182,7 @@
               "id": "ph-j12lk-lb2-wellen",
               "title": "Wellen als vielschichtige Naturerscheinung",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Welle"
               ]
@@ -1109,7 +1198,7 @@
               "id": "ph-j12lk-lb4-quanten",
               "title": "Grundlagen der Quantenphysik",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Quantenphysik"
               ]
@@ -1125,7 +1214,7 @@
               "id": "ph-j12lk-lb5-atom",
               "title": "Grundlagen der Atomphysik",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Atomphysik"
               ]
@@ -1141,7 +1230,7 @@
               "id": "ph-j12lk-lb6-kerne",
               "title": "Eigenschaften der Atomkerne",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Kernphysik"
               ]
@@ -1157,7 +1246,7 @@
               "id": "ph-j12lk-lb7-thermo",
               "title": "Thermodynamik",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Thermodynamik"
               ]
@@ -1172,7 +1261,7 @@
               "id": "ph-j12lk-lbw-chaos",
               "title": "Deterministisches Chaos",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Chaos"
               ]
@@ -1181,7 +1270,7 @@
               "id": "ph-j12lk-lbw-gas",
               "title": "Kinetische Gastheorie",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Gastheorie"
               ]
@@ -1190,7 +1279,7 @@
               "id": "ph-j12lk-lbw-anwendungen",
               "title": "Anwendungen der Physik",
               "pointsPerTask": 10,
-              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Anwendung"
               ]
@@ -1201,5 +1290,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "57e11924"
+  "contentHash": "c831998c"
 }

@@ -41,7 +41,10 @@ describe('Gymnasium Sachsen Physik pack', () => {
     expect(visible.map((m) => m.id)).toContain('physik-klasse-6')
     expect(visible.every((m) => m.subjectTitle === 'Physik')).toBe(true)
     const grade = await visible.find((m) => m.id === 'physik-klasse-6')!.load()
-    expect(grade.areas[0]?.topics[0]?.outlineOnly).toBe(true)
+    expect(grade.areas[0]?.topics[0]?.outlineOnly).toBeFalsy()
+    expect(grade.areas.some((a) => a.topics.some((t) => t.id === 'ph-k6-lb1-schatten'))).toBe(
+      true,
+    )
   })
 
   it('matches the exported JSON and is listed in the manifest', () => {
@@ -56,6 +59,9 @@ describe('Gymnasium Sachsen Physik pack', () => {
     expect(manifest?.packs.map((p) => p.id)).toContain(GYM_SACHSEN_PHYSIK_PACK_ID)
     expect(manifest?.packs.find((p) => p.id === GYM_SACHSEN_PHYSIK_PACK_ID)?.subject).toBe(
       'Physik',
+    )
+    expect(manifest?.packs.find((p) => p.id === GYM_SACHSEN_PHYSIK_PACK_ID)?.version).toBe(
+      pack.version,
     )
   })
 })

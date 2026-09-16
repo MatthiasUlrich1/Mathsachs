@@ -384,6 +384,7 @@ interface CoordinateClickTaskInput {
   cellSize?: number
   /** Optional instruction above the grid. */
   instruction?: string
+  visualContent?: string
 }
 
 /** Place a point on a coordinate grid by clicking (snaps to lattice). */
@@ -395,6 +396,7 @@ export const coordinateClickTask = (input: CoordinateClickTaskInput): Task => {
     answerKind: 'text',
     solution: input.solution,
     explanation: input.explanation,
+    visualContent: input.visualContent,
     sampleAnswer: { kind: 'coordinateClick', x: input.x, y: input.y },
     interactive: {
       type: 'coordinateClick',
@@ -439,8 +441,8 @@ interface ParamSliderTaskInput {
   solution: string
   explanation: string
   visualContent?: string
-  /** Optional live preview: 'linear' draws y = m·x + n from params m,n. */
-  preview?: 'linear'
+  /** Optional live preview: 'linear' or Physik 'shadow' (lamp x). */
+  preview?: 'linear' | 'shadow'
   instruction?: string
 }
 

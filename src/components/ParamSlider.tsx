@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { generateLinearFunctionSvg } from '../lib/geometrySvg'
+import { lightShadowFromLampParam } from '../lib/physikSvg'
 import type { ParamSliderSpec } from '../curriculum/taskHelpers'
 import './ParamSlider.css'
 
@@ -8,11 +9,11 @@ export interface ParamSliderProps {
   values: Record<string, number>
   onChange: (values: Record<string, number>) => void
   instruction?: string
-  preview?: 'linear'
+  preview?: 'linear' | 'shadow'
   disabled?: boolean
 }
 
-/** Numeric parameter sliders with optional live linear-function preview. */
+/** Numeric parameter sliders with optional live preview (linear / Schatten). */
 export const ParamSlider: React.FC<ParamSliderProps> = ({
   params,
   values,
@@ -26,20 +27,27 @@ export const ParamSlider: React.FC<ParamSliderProps> = ({
   }
 
   const previewSvg = useMemo(() => {
-    if (preview !== 'linear') return null
-    const m = values.m
-    const n = values.n
-    if (m === undefined || n === undefined) return null
-    return generateLinearFunctionSvg({
-      m,
-      n,
-      interceptLabel: `n=${n}`,
-      slopeTriangle: { fromX: 0, run: m >= 0 ? 1 : -1, showLabels: true },
-      xRange: [-5, 5],
-      yRange: [-6, 6],
-      cellSize: 28,
-    })
-  }, [preview, values.m, values.n])
+    if (preview === 'linear') {
+      const m = values.m
+      const n = values.n
+      if (m === undefined || n === undefined) return null
+      return generateLinearFunctionSvg({
+        m,
+        n,
+        interceptLabel: `n=${n}`,
+        slopeTriangle: { fromX: 0, run: m >= 0 ? 1 : -1, showLabels: true },
+        xRange: [-5, 5],
+        yRange: [-6, 6],
+        cellSize: 28,
+      })
+    }
+    if (preview === 'shadow') {
+      const lamp = values.lamp
+      if (lamp === undefined) return null
+      return lightShadowFromLampParam(lamp)
+    }
+    return null
+  }, [preview, values.m, values.n, values.lamp])
 
   return (
     <div className="param-slider">

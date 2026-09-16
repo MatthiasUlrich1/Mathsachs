@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.2] – 2026-09-16
+
+### Neu
+- **Physik Klasse 6 · Licht**: interaktive Übungen zu Schatten und Lichtquelle
+  (Schieberegler mit Live-Schattenvorschau), Lampenposition, Lichtstrahl tippen
+  (Koordinatengitter), Mehrfachauswahl zur geradlinigen Ausbreitung; Pack 1.2.0.
+
 ## [0.27.1] – 2026-09-16
 
 ### Neu

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-16T13:29:52.714Z",
+  "updatedAt": "2026-09-16T13:55:55.120Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -18,10 +18,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "1.0.0",
+      "version": "1.2.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 35882,
-      "changelog": "Lehrplan Physik Gymnasium Sachsen (Klassen 6–10, JGS 11/12 Gk/Lk). Themenstruktur laut Lehrplan; Übungsaufgaben folgen schrittweise."
+      "size": 39566,
+      "changelog": "Klasse 6 Licht: Schatten-Slider (Live-Vorschau), Lichtstrahl tippen, Mehrfachauswahl; weitere interaktive Themen. Lehrplan Physik Gymnasium Sachsen."
     },
     {
       "id": "oberschule-sachsen-hs",

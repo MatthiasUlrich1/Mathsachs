@@ -11,7 +11,7 @@ const topic = (id: string, title: string, keywords?: string[]): PackTopic => ({
   id,
   title,
   pointsPerTask: 10,
-  hint: 'Übungsaufgaben für Physik folgen in einer späteren Version.',
+  hint: 'Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.',
   ...(keywords?.length ? { keywords } : {}),
 })
 
@@ -50,16 +50,28 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
       ['Licht', 'Körper', 'Temperatur', 'Stromkreis', 'Wärme'],
       [
         area('lb1', 'Licht und seine Eigenschaften', 17, [
-          topic('ph-k6-lb1-licht', 'Licht und seine Eigenschaften', ['Licht', 'Schatten', 'Spiegel']),
+          topic('ph-k6-lb1-schatten', 'Schatten und Lichtquelle', ['Licht', 'Schatten']),
+          topic('ph-k6-lb1-lampenposition', 'Lampenposition einstellen', [
+            'Schatten',
+            'Schieberegler',
+          ]),
+          topic('ph-k6-lb1-lichtstrahl', 'Lichtstrahl tippen', ['Strahl', 'Gitter']),
+          topic('ph-k6-lb1-spiegel', 'Spiegelung am ebenen Spiegel', ['Spiegel', 'Reflexion']),
+          topic('ph-k6-lb1-ausbreitung', 'Geradlinige Ausbreitung', ['Licht', 'Strahl']),
         ]),
         area('lb2', 'Eigenschaften und Bewegungen von Körpern', 14, [
-          topic('ph-k6-lb2-koerper', 'Eigenschaften und Bewegungen von Körpern', ['Körper', 'Bewegung', 'Masse']),
+          topic('ph-k6-lb2-masse', 'Masse vergleichen', ['Masse', 'Körper']),
+          topic('ph-k6-lb2-dichte', 'Dichte berechnen', ['Dichte', 'Masse', 'Volumen']),
+          topic('ph-k6-lb2-geschwindigkeit', 'Gleichförmige Bewegung', ['Geschwindigkeit', 'Strecke']),
         ]),
         area('lb3', 'Temperatur und Zustand von Körpern', 14, [
-          topic('ph-k6-lb3-temperatur', 'Temperatur und Zustand von Körpern', ['Temperatur', 'Aggregatzustand']),
+          topic('ph-k6-lb3-thermometer', 'Temperatur ablesen', ['Temperatur', 'Thermometer']),
+          topic('ph-k6-lb3-kelvin', 'Celsius und Kelvin', ['Kelvin', 'Celsius']),
+          topic('ph-k6-lb3-aggregate', 'Aggregatzustände', ['Aggregatzustand', 'Schmelzen']),
         ]),
         area('lb4', 'Elektrische Stromkreise', 5, [
-          topic('ph-k6-lb4-stromkreis', 'Elektrische Stromkreise', ['Stromkreis', 'Elektrizität']),
+          topic('ph-k6-lb4-stromkreis', 'Offener und geschlossener Stromkreis', ['Stromkreis', 'Schalter']),
+          topic('ph-k6-lb4-leiter', 'Leiter und Nichtleiter', ['Leiter', 'Isolator']),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
           topic('ph-k6-lbw-sehen', 'Sehen und Fotografieren', ['Sehen', 'Fotografie']),
@@ -315,9 +327,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '1.0.0',
+    version: '1.2.0',
     changelog:
-      'Lehrplan Physik Gymnasium Sachsen (Klassen 6–10, JGS 11/12 Gk/Lk). Themenstruktur laut Lehrplan; Übungsaufgaben folgen schrittweise.',
+      'Klasse 6 Licht: Schatten-Slider (Live-Vorschau), Lichtstrahl tippen, Mehrfachauswahl; weitere interaktive Themen. Lehrplan Physik Gymnasium Sachsen.',
     official,
     extras: [],
   }
