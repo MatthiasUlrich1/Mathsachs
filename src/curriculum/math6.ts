@@ -3,6 +3,7 @@ import {
   generateAssignmentGraphSvg,
   generateCuboidSvg,
   generateCubeNetChoicesSvg,
+  generateCuboidFaceEdgeSvg,
   generateFractionBarSvg,
   generateFractionCircleSvg,
   generateFractionGridSvg,
@@ -1566,6 +1567,129 @@ const volumenPrisma: Topic = {
   ),
 }
 
+/** Fläche einer Seitenfläche ↔ dazu senkrechte Kante (Division). Nur für Entwickler-Freigabe. */
+const flaecheKanteQuader: Topic = {
+  id: 'lb4-flaeche-kante-quader',
+  title: 'Fläche und senkrechte Seitenlänge',
+  hint: 'Fläche und die dazu senkrechte Kante gehören zusammen: A = a · b bzw. a = A : b (bzw. V = G · h).',
+  pointsPerTask: 10,
+  difficulty: 2,
+  released: false,
+  keywords: ['Quader', 'Würfel', 'Flächeninhalt', 'Seitenlänge', 'senkrecht', 'Prisma'],
+  fachwissen: {
+    text: 'Bei einem Rechteck (Seitenfläche eines Quaders) stehen die beiden Kanten senkrecht zueinander. Es gilt A = a · b, also a = A : b und b = A : a. Beim Prisma/Quader stehen Grundfläche G und Höhe h senkrecht zueinander: V = G · h, also G = V : h und h = V : G.',
+    quelle: 'Wikipedia: Quader',
+    url: 'https://de.wikipedia.org/wiki/Quader',
+  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      // Seitenfläche: A und eine Kante → andere Kante (senkrecht)
+      const a = randInt(rng, 3, 12)
+      const b = randInt(rng, 3, 12)
+      const area = a * b
+      const askA = rng() < 0.5
+      const value = askA ? a : b
+      const knownEdge = askA ? b : a
+      const knownLabel = askA ? `${b} cm` : `${a} cm`
+      const unknownLabel = '?'
+      return visualTask({
+        question: askA
+          ? `Die gelb markierte Seitenfläche hat den Flächeninhalt ${area} cm². Die untere Kante misst ${knownEdge} cm. Wie lang ist die dazu senkrechte Kante?`
+          : `Die gelb markierte Seitenfläche hat den Flächeninhalt ${area} cm². Die senkrechte Kante misst ${knownEdge} cm. Wie lang ist die untere Kante?`,
+        unit: 'cm',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm`,
+        explanation: askA
+          ? `Auf der Rechtecksfläche stehen die Kanten senkrecht zueinander. A = a · b ⇒ a = A : b = ${area} : ${knownEdge} = ${value} cm.`
+          : `Auf der Rechtecksfläche stehen die Kanten senkrecht zueinander. A = a · b ⇒ b = A : a = ${area} : ${knownEdge} = ${value} cm.`,
+        visualContent: generateCuboidFaceEdgeSvg({
+          faceAreaLabel: `${area} cm²`,
+          faceEdgeLabel: askA ? knownLabel : unknownLabel,
+          perpendicularLabel: askA ? unknownLabel : knownLabel,
+          caption: 'Gelb = betrachtete Seitenfläche',
+        }),
+      })
+    },
+    (rng: Rng) => {
+      // Zwei Kanten der Fläche → Flächeninhalt
+      const a = randInt(rng, 4, 14)
+      const b = randInt(rng, 3, 12)
+      const area = a * b
+      return visualTask({
+        question: `Die gelb markierte Seitenfläche ist ein Rechteck mit den Kanten ${a} cm und ${b} cm (senkrecht zueinander). Berechne ihren Flächeninhalt.`,
+        unit: 'cm²',
+        answerKind: 'integer',
+        value: area,
+        solution: `${area} cm²`,
+        explanation: `Flächeninhalt = Produkt der zueinander senkrechten Kanten: A = ${a} · ${b} = ${area} cm².`,
+        visualContent: generateCuboidFaceEdgeSvg({
+          faceAreaLabel: '?',
+          faceEdgeLabel: `${a} cm`,
+          perpendicularLabel: `${b} cm`,
+          caption: 'Gelb = betrachtete Seitenfläche',
+        }),
+      })
+    },
+    (rng: Rng) => {
+      // Volumen und Höhe → Grundfläche G = V : h
+      const g = randInt(rng, 12, 60)
+      const h = randInt(rng, 3, 15)
+      const v = g * h
+      return visualTask({
+        question: `Ein Quader hat das Volumen ${v} cm³. Die Höhe (senkrecht zur Grundfläche) beträgt ${h} cm. Wie groß ist der Flächeninhalt der Grundfläche?`,
+        unit: 'cm²',
+        answerKind: 'integer',
+        value: g,
+        solution: `${g} cm²`,
+        explanation: `Grundfläche und Höhe stehen senkrecht zueinander: V = G · h ⇒ G = V : h = ${v} : ${h} = ${g} cm².`,
+        visualContent: generatePrismVolumeSvg({
+          baseAreaLabel: '?',
+          heightLabel: `${h} cm`,
+        }),
+      })
+    },
+    (rng: Rng) => {
+      // Volumen und Grundfläche → Höhe h = V : G
+      const g = randInt(rng, 10, 48)
+      const h = randInt(rng, 4, 16)
+      const v = g * h
+      return visualTask({
+        question: `Ein Prisma hat das Volumen ${v} cm³ und die Grundfläche ${g} cm². Wie groß ist die Höhe (senkrecht zur Grundfläche)?`,
+        unit: 'cm',
+        answerKind: 'integer',
+        value: h,
+        solution: `${h} cm`,
+        explanation: `V = G · h ⇒ h = V : G = ${v} : ${g} = ${h} cm. Die Höhe steht senkrecht auf der Grundfläche.`,
+        visualContent: generatePrismVolumeSvg({
+          baseAreaLabel: `${g} cm²`,
+          heightLabel: '?',
+        }),
+      })
+    },
+    (rng: Rng) => {
+      // Würfel: Kante aus Volumen und Flächeninhalt einer Seite a = V : A
+      const a = randInt(rng, 3, 12)
+      const face = a * a
+      const volume = a * a * a
+      return visualTask({
+        question: `Ein Würfel hat das Volumen ${volume} cm³. Eine Seitenfläche misst ${face} cm². Wie lang ist eine Kante?`,
+        unit: 'cm',
+        answerKind: 'integer',
+        value: a,
+        solution: `${a} cm`,
+        explanation: `Beim Würfel gilt V = A · a (Fläche mal dazu senkrechte Kante). Also a = V : A = ${volume} : ${face} = ${a} cm.`,
+        visualContent: generateCuboidFaceEdgeSvg({
+          faceAreaLabel: `${face} cm²`,
+          faceEdgeLabel: '?',
+          perpendicularLabel: '?',
+          caption: `V = ${volume} cm³ (Würfel)`,
+        }),
+      })
+    },
+  ),
+}
+
 // ---------------------------------------------------------------------------
 // Lernbereich 5 — Vernetzung: Anteile
 // ---------------------------------------------------------------------------
@@ -1768,7 +1892,7 @@ export const klasse6: Grade = {
       id: 'lb4',
       title: 'Prismen',
       ustd: 12,
-      topics: [volumenQuader, oberflaecheQuader, volumenPrisma, wuerfelNetz],
+      topics: [volumenQuader, oberflaecheQuader, volumenPrisma, flaecheKanteQuader, wuerfelNetz],
     },
     {
       id: 'lb5',

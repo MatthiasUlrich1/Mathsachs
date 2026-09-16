@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.14] – 2026-09-16
+
+### Neu
+- Mathe Klasse 6 LB Prismen: Thema **Fläche und senkrechte Seitenlänge**
+  (ID 2101) — grafisch, Division Fläche↔Kante bzw. Volumen↔Grundfläche/Höhe.
+  Vorerst **gesperrt** (nur Entwickler-Vorschau); übrige Themen unverändert.
+
 ## [0.27.13] – 2026-09-16
 
 ### Neu

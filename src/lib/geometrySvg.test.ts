@@ -6,6 +6,7 @@ import {
   generateQuadAnglesSvg,
   generateCircleSvg,
   generateCuboidSvg,
+  generateCuboidFaceEdgeSvg,
   generatePrismVolumeSvg,
   generateValueTableSvg,
   generateAssignmentGraphSvg,
@@ -234,6 +235,22 @@ describe('geometrySvg', () => {
       expect(svg).toContain('6 cm')
       expect(svg).toContain('8 cm')
       expect(svg).toContain('<polygon')
+    })
+  })
+
+  describe('generateCuboidFaceEdgeSvg', () => {
+    it('highlights the face and labels area plus edges', () => {
+      const svg = generateCuboidFaceEdgeSvg({
+        faceAreaLabel: '24 cm²',
+        faceEdgeLabel: '6 cm',
+        perpendicularLabel: '?',
+        caption: 'Test',
+      })
+      expect(svg).toContain('<svg')
+      expect(svg).toContain('A = 24 cm²')
+      expect(svg).toContain('6 cm')
+      expect(svg).toContain('?')
+      expect(svg).toContain('Test')
     })
   })
 

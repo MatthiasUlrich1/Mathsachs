@@ -802,6 +802,70 @@ export function generateCuboidSvg({
 </svg>`.trim()
 }
 
+export interface CuboidFaceEdgeSvgProps {
+  /** Highlighted face area label, e.g. "24 cm²" or "?" */
+  faceAreaLabel: string
+  /** Edge on the face (horizontal), e.g. "6 cm" or "?" */
+  faceEdgeLabel: string
+  /** Edge perpendicular to that face edge (height of face / body), e.g. "4 cm" or "?" */
+  perpendicularLabel: string
+  /** Caption under the figure */
+  caption?: string
+  fill?: string
+  stroke?: string
+  highlight?: string
+}
+
+/**
+ * Quader with one face highlighted: Fläche ↔ senkrechte Seitenlänge.
+ * Front face shows the area; bottom edge and vertical edge are labeled.
+ */
+export function generateCuboidFaceEdgeSvg({
+  faceAreaLabel,
+  faceEdgeLabel,
+  perpendicularLabel,
+  caption,
+  fill = '#e3f2fd',
+  stroke = '#1976d2',
+  highlight = '#fff3cd',
+}: CuboidFaceEdgeSvgProps): string {
+  const padding = 36
+  const baseW = 170
+  const baseH = 110
+  const depth = 70
+  const totalW = baseW + depth + 2 * padding + 30
+  const totalH = baseH + depth + 2 * padding + (caption ? 56 : 40)
+  const x0 = padding
+  const y0 = padding + depth
+  const frontBL = [x0, y0 + baseH]
+  const frontBR = [x0 + baseW, y0 + baseH]
+  const frontTR = [x0 + baseW, y0]
+  const frontTL = [x0, y0]
+  const backBL = [x0 + depth, y0 + baseH - depth]
+  const backBR = [x0 + baseW + depth, y0 + baseH - depth]
+  const backTR = [x0 + baseW + depth, y0 - depth]
+  const backTL = [x0 + depth, y0 - depth]
+  const midX = (frontTL[0]! + frontTR[0]!) / 2
+  const midY = (frontTL[1]! + frontBL[1]!) / 2
+  return `
+<svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Quader mit hervorgehobener Seitenfläche">
+  <polygon points="${backTL[0]},${backTL[1]} ${backTR[0]},${backTR[1]} ${backBR[0]},${backBR[1]} ${backBL[0]},${backBL[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.55"/>
+  <polygon points="${backTR[0]},${backTR[1]} ${frontTR[0]},${frontTR[1]} ${frontBR[0]},${frontBR[1]} ${backBR[0]},${backBR[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.7"/>
+  <polygon points="${frontTL[0]},${frontTL[1]} ${frontTR[0]},${frontTR[1]} ${frontBR[0]},${frontBR[1]} ${frontBL[0]},${frontBL[1]}" fill="${highlight}" stroke="${stroke}" stroke-width="2.5"/>
+  <text x="${midX}" y="${midY + 5}" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">A = ${faceAreaLabel}</text>
+  <line x1="${frontBL[0]}" y1="${frontBL[1]! + 18}" x2="${frontBR[0]}" y2="${frontBR[1]! + 18}" stroke="${stroke}" stroke-width="1.5"/>
+  <text x="${midX}" y="${frontBL[1]! + 36}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${faceEdgeLabel}</text>
+  <line x1="${frontBR[0]! + 14}" y1="${frontBR[1]}" x2="${frontTR[0]! + 14}" y2="${frontTR[1]}" stroke="${stroke}" stroke-width="1.5"/>
+  <text x="${frontBR[0]! + 28}" y="${midY + 5}" text-anchor="start" font-size="14" font-weight="bold" fill="#333">${perpendicularLabel}</text>
+  <text x="${midX}" y="${frontTL[1]! - 12}" text-anchor="middle" font-size="12" fill="#555">Seitenfläche (Rechteck)</text>
+  ${
+    caption
+      ? `<text x="${totalW / 2}" y="${totalH - 12}" text-anchor="middle" font-size="12" fill="#444">${caption}</text>`
+      : ''
+  }
+</svg>`.trim()
+}
+
 export interface PrismVolumeSvgProps {
   /** Label for the base area G, e.g. "24 cm²". */
   baseAreaLabel: string

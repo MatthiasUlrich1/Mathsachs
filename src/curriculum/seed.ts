@@ -28,12 +28,14 @@ const topicMeta = (topic: {
   hint?: string
   pointsPerTask: number
   keywords?: string[]
+  released?: boolean
 }): PackTopic => ({
   id: topic.id,
   title: topic.title,
   hint: topic.hint,
   pointsPerTask: topic.pointsPerTask,
   ...(topic.keywords?.length ? { keywords: topic.keywords } : {}),
+  ...(topic.released === false ? { released: false } : {}),
 })
 
 export function gradeToPackGrade(
@@ -104,13 +106,13 @@ export async function buildGymSachsenSeed(): Promise<CurriculumPack> {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Mathematik',
-    version: '1.0.0',
+    version: '1.1.0',
     changelog:
-      'Erstfassung: Klassen 5–10 und Jahrgangsstufe 11/12 (Grundkurs), plus getrennte Lehrer-Ergänzungen.',
+      'Klasse 6 LB Prismen: neues Thema „Fläche und senkrechte Seitenlänge“ (vorerst gesperrt).',
     contentHash: packContentHash(official, extras),
     official,
     extras,
   }
 }
 
-export const GYM_SACHSEN_PACK_VERSION = '1.0.0'
+export const GYM_SACHSEN_PACK_VERSION = '1.1.0'
