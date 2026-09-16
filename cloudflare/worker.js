@@ -10,16 +10,20 @@
  * POST /challenges 8, PUT /challenges/:id 30, DELETE /challenges/:id 30,
  * POST /exams 8, PUT /exams/:id 30, DELETE /exams/:id 30,
  * POST /exams/:id/complete 60,
+ * POST /stats/install 5 / 24h (anonymous install ping),
+ * GET /stats/install 60,
  * PUT grade membership 30, POST points 60.
  * GET / (health) is not rate-limited. Raise GET/DELETE here if a class page
  * with many Eigene Codes still 429s; keep POST points tight against abuse.
  *
  * Privacy: KV stores class/grade display names, daily point buckets,
- * anonymous challenge sums and class exam assignments (name + MSX1 code +
- * anonymous solve counts) only.
- * No pupil names, user ids or emails.
+ * anonymous challenge sums, class exam assignments (name + MSX1 code +
+ * anonymous solve counts) and a single anonymous install counter only.
+ * No pupil names, user ids, emails or device identifiers.
  * GET /grades never returns member Klassencodes. Points are accepted only
  * on class records. Challenge POST never stores names.
+ * POST /stats/install stores only `{ count }` — no IP persistence beyond
+ * the short-lived rate-limit map in Worker memory.
  */
 
 const BERLIN_TZ = 'Europe/Berlin'
@@ -453,6 +457,10 @@ function examIndexKey(id) {
   return `${EXAM_INDEX_PREFIX}${id}`
 }
 
+function installStatsKey() {
+  return 'stats:installs'
+}
+
 function parseExamStored(raw) {
   if (!raw || typeof raw !== 'object') return null
   const id = normalizeClassCode(raw.id)
@@ -781,6 +789,9 @@ export const RATE_LIMITS = {
   examUpdate: { limit: 30, windowMs: 60_000 },
   examDelete: { limit: 30, windowMs: 60_000 },
   examComplete: { limit: 60, windowMs: 60_000 },
+  /** One ping per first install; keep daily IP cap low against inflation. */
+  installPing: { limit: 5, windowMs: 24 * 60 * 60 * 1000 },
+  installGet: { limit: 60, windowMs: 60_000 },
 }
 
 const hits = new Map()
@@ -1859,7 +1870,59 @@ export async function handleRequest(request, env) {
     return handleCompleteExam(request, env, decodeURIComponent(examCompleteMatch[1]))
   }
 
+  if (path === '/stats/install' && method === 'GET') {
+    return handleGetInstallCount(request, env)
+  }
+  if (path === '/stats/install' && method === 'POST') {
+    return handlePingInstall(request, env)
+  }
+
   return errorJson(request, 404, 'Unbekannter Pfad.', 'NOT_FOUND')
+}
+
+/** Anonymous install counter — no device id, no user payload. */
+async function handleGetInstallCount(request, env) {
+  if (
+    !rateLimit(
+      `installGet:${clientKey(request)}`,
+      RATE_LIMITS.installGet.limit,
+      RATE_LIMITS.installGet.windowMs,
+    )
+  ) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE_LIMIT')
+  }
+  if (!env.CLASSES) {
+    return errorJson(request, 503, 'KV-Bindung CLASSES fehlt.', 'NO_KV')
+  }
+  const raw = parseRaw(await env.CLASSES.get(installStatsKey()))
+  const count =
+    raw && typeof raw.count === 'number' && Number.isFinite(raw.count)
+      ? Math.max(0, Math.floor(raw.count))
+      : 0
+  return json(request, 200, { count })
+}
+
+async function handlePingInstall(request, env) {
+  if (
+    !rateLimit(
+      `installPing:${clientKey(request)}`,
+      RATE_LIMITS.installPing.limit,
+      RATE_LIMITS.installPing.windowMs,
+    )
+  ) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE_LIMIT')
+  }
+  if (!env.CLASSES) {
+    return errorJson(request, 503, 'KV-Bindung CLASSES fehlt.', 'NO_KV')
+  }
+  const raw = parseRaw(await env.CLASSES.get(installStatsKey()))
+  const prev =
+    raw && typeof raw.count === 'number' && Number.isFinite(raw.count)
+      ? Math.max(0, Math.floor(raw.count))
+      : 0
+  const count = prev + 1
+  await env.CLASSES.put(installStatsKey(), JSON.stringify({ count }))
+  return json(request, 200, { count })
 }
 
 export default {

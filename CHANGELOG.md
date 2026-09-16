@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.1] – 2026-09-16
+
+### Neu
+- **Anonymer Installationszähler**: Beim ersten Start einmal +1 an Cloudflare
+  (`POST /stats/install`); Anzeige in der Fußzeile. Keine Geräte-ID, kein Name.
+
+### Behoben
+- **Klassenklausuren (#44)**: Desktop-`sharedStore` verwarf `classExams` beim
+  Speichern — Klausuren fehlten nach Neustart. Persistenz + Wiederherstellung
+  über eigene Klassencodes vom Worker.
+
 ## [0.27.0] – 2026-09-16
 
 ### Neu

@@ -183,6 +183,8 @@ describe('Cloudflare Worker API', () => {
       examUpdate: { limit: 30, windowMs: 60_000 },
       examDelete: { limit: 30, windowMs: 60_000 },
       examComplete: { limit: 60, windowMs: 60_000 },
+      installPing: { limit: 5, windowMs: 24 * 60 * 60 * 1000 },
+      installGet: { limit: 60, windowMs: 60_000 },
     })
 
     const kv = env()
@@ -791,5 +793,37 @@ describe('Challenge Worker API', () => {
     expect(body.exams).toEqual(
       expect.arrayContaining([expect.objectContaining({ id: exam.id, solveCount: 2 })]),
     )
+  })
+
+  it('counts anonymous installs without storing a payload', async () => {
+    const kv = env()
+    const empty = await worker.fetch(request('/stats/install'), kv)
+    expect(empty.status).toBe(200)
+    await expect(empty.json()).resolves.toEqual({ count: 0 })
+
+    const once = await worker.fetch(
+      request('/stats/install', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: '{}',
+      }),
+      kv,
+    )
+    expect(once.status).toBe(200)
+    await expect(once.json()).resolves.toEqual({ count: 1 })
+
+    const twice = await worker.fetch(
+      request('/stats/install', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: '{}',
+      }),
+      kv,
+    )
+    expect(twice.status).toBe(200)
+    await expect(twice.json()).resolves.toEqual({ count: 2 })
+
+    const got = await worker.fetch(request('/stats/install'), kv)
+    await expect(got.json()).resolves.toEqual({ count: 2 })
   })
 })

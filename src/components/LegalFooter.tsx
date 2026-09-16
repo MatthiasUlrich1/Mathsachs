@@ -10,7 +10,14 @@ import { footerSupporters } from '../legal/supporters'
 
 type LegalDialog = 'impressum' | 'lizenz' | 'datenschutz' | null
 
-export function LegalFooter({ version }: { version: string }) {
+export function LegalFooter({
+  version,
+  installCount = null,
+}: {
+  version: string
+  /** Anonymous Cloudflare install total; null while unknown / offline. */
+  installCount?: number | null
+}) {
   const [dialog, setDialog] = useState<LegalDialog>(null)
   const mailto = buildIdeenmelderMailto()
   const logos = footerSupporters()
@@ -52,6 +59,9 @@ export function LegalFooter({ version }: { version: string }) {
         <p>
           Mathsachs {version} · Übungsprogramm nach sächsischem Lehrplan ·
           erweiterbar für weitere Klassen und Fächer
+          {installCount != null && installCount > 0
+            ? ` · ${installCount.toLocaleString('de-DE')} Installationen`
+            : ''}
         </p>
         <nav className="foot__legal" aria-label="Rechtliches und Feedback">
           <button
@@ -112,7 +122,9 @@ export function LegalFooter({ version }: { version: string }) {
           <p>{DATENSCHUTZ_NOTE}</p>
           <p className="muted small">
             Benutzerliste und Punkteprotokoll bleiben auf dem Rechner (bzw. im
-            lokalen WLAN). Es gibt keine Nutzerkonten.
+            lokalen WLAN). Es gibt keine Nutzerkonten. Ein anonymer Zähler
+            speichert bei Cloudflare nur, wie oft Mathsachs erstmals gestartet
+            wurde — ohne Geräte-ID und ohne Namen.
           </p>
         </LegalDialog>
       )}

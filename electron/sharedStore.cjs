@@ -16,6 +16,10 @@ const DELETED_CLASS_CODE_TTL_MS = 30 * 24 * 60 * 60 * 1000
 const MAX_DELETED_CLASS_CODES = 200
 const DELETED_CHALLENGE_TTL_MS = DELETED_CLASS_CODE_TTL_MS
 const MAX_DELETED_CHALLENGES = 200
+const DELETED_CLASS_EXAM_TTL_MS = DELETED_CLASS_CODE_TTL_MS
+const MAX_DELETED_CLASS_EXAMS = 200
+const MAX_CLASS_EXAM_NAME_LENGTH = 80
+const MAX_EXAM_CODE_PAYLOAD = 50_000
 const DELETED_CURRICULUM_TTL_MS = DELETED_CLASS_CODE_TTL_MS
 const MAX_DELETED_CURRICULA = 200
 const DELETED_USER_TTL_MS = 30 * 24 * 60 * 60 * 1000
@@ -150,7 +154,19 @@ function normalizeUserData(name, raw) {
   if (Object.prototype.hasOwnProperty.call(src, 'deletedChallenges')) {
     out.deletedChallenges = normalizeDeletedChallenges(src.deletedChallenges)
   }
+  if (Object.prototype.hasOwnProperty.call(src, 'classExams')) {
+    out.classExams = normalizeClassExams(src.classExams)
+  }
+  if (Object.prototype.hasOwnProperty.call(src, 'deletedClassExams')) {
+    out.deletedClassExams = normalizeDeletedClassExams(src.deletedClassExams)
+  }
+  if (Object.prototype.hasOwnProperty.call(src, 'completedClassExamIds')) {
+    out.completedClassExamIds = normalizeCompletedClassExamIds(src.completedClassExamIds)
+  }
   if (USER_ROLES.has(src.role)) out.role = src.role
+  if (typeof src.preferredSubject === 'string' && src.preferredSubject.trim()) {
+    out.preferredSubject = src.preferredSubject.trim().slice(0, 40)
+  }
   return out
 }
 
@@ -247,6 +263,111 @@ function normalizeDeletedChallenges(raw, now) {
   return [...byId.values()]
     .sort((a, b) => b.deletedAt - a.deletedAt || a.id.localeCompare(b.id))
     .slice(0, MAX_DELETED_CHALLENGES)
+}
+
+function normalizeClassExam(raw) {
+  if (!raw || typeof raw !== 'object') return null
+  const id = asString(raw.id, '').trim().toUpperCase()
+  const hostCode = normalizeCode(raw.hostCode)
+  const name = asString(raw.name, '').trim().slice(0, MAX_CLASS_EXAM_NAME_LENGTH)
+  const examCode = asString(raw.examCode, '').trim()
+  if (!id || !hostCode || !name || !examCode) return null
+  if (examCode.length > MAX_EXAM_CODE_PAYLOAD) return null
+  if (!examCode.startsWith('MSX1:')) return null
+  const out = {
+    id,
+    hostCode,
+    name,
+    examCode,
+    createdAt: asFiniteNumber(raw.createdAt, Date.now()),
+  }
+  const className = asString(raw.className, '').trim().slice(0, MAX_CLASS_EXAM_NAME_LENGTH)
+  if (className) out.className = className
+  if (typeof raw.taskCount === 'number' && Number.isFinite(raw.taskCount)) {
+    out.taskCount = Math.max(0, Math.floor(raw.taskCount))
+  }
+  if (typeof raw.totalPoints === 'number' && Number.isFinite(raw.totalPoints)) {
+    out.totalPoints = Math.max(0, Math.floor(raw.totalPoints))
+  }
+  if (typeof raw.solveCount === 'number' && Number.isFinite(raw.solveCount)) {
+    out.solveCount = Math.max(0, Math.floor(raw.solveCount))
+  }
+  if (raw.owned === true) out.owned = true
+  else if (raw.owned === false) out.owned = false
+  if (Array.isArray(raw.curriculumRefs)) out.curriculumRefs = raw.curriculumRefs
+  return out
+}
+
+function pickMergedClassExam(prev, next) {
+  const newer = next.createdAt >= prev.createdAt ? next : prev
+  const older = newer === next ? prev : next
+  const solveCount = Math.max(prev.solveCount || 0, next.solveCount || 0)
+  const out = {
+    ...older,
+    ...newer,
+    owned: prev.owned === true || next.owned === true ? true : newer.owned,
+    className: newer.className || older.className,
+    hostCode: newer.hostCode,
+  }
+  if (solveCount > 0 || prev.solveCount != null || next.solveCount != null) {
+    out.solveCount = solveCount
+  }
+  return out
+}
+
+function normalizeClassExams(raw) {
+  const list = Array.isArray(raw) ? raw : []
+  const byId = new Map()
+  for (const item of list) {
+    const parsed = normalizeClassExam(item)
+    if (!parsed) continue
+    const prev = byId.get(parsed.id)
+    byId.set(parsed.id, prev ? pickMergedClassExam(prev, parsed) : parsed)
+  }
+  return [...byId.values()].sort(
+    (a, b) => b.createdAt - a.createdAt || a.name.localeCompare(b.name, 'de'),
+  )
+}
+
+function normalizeDeletedClassExams(raw, now) {
+  const list = Array.isArray(raw) ? raw : []
+  const byId = new Map()
+  const cutoff = (now || Date.now()) - DELETED_CLASS_EXAM_TTL_MS
+  for (const item of list) {
+    if (!item || typeof item !== 'object' || typeof item.id !== 'string') continue
+    const id = item.id.trim().toUpperCase()
+    if (!id) continue
+    const deletedAt = asFiniteNumber(item.deletedAt, 0)
+    if (deletedAt < cutoff) continue
+    const prev = byId.get(id)
+    if (!prev || deletedAt > prev.deletedAt) byId.set(id, { id, deletedAt })
+  }
+  return [...byId.values()]
+    .sort((a, b) => b.deletedAt - a.deletedAt || a.id.localeCompare(b.id))
+    .slice(0, MAX_DELETED_CLASS_EXAMS)
+}
+
+function applyClassExamTombstones(exams, deleted) {
+  const dead = new Set((deleted || []).map((row) => row.id))
+  const live = (exams || []).filter((row) => !dead.has(row.id))
+  return {
+    classExams: live,
+    deletedClassExams: normalizeDeletedClassExams(deleted),
+  }
+}
+
+function normalizeCompletedClassExamIds(raw) {
+  const list = Array.isArray(raw) ? raw : []
+  const out = []
+  const seen = new Set()
+  for (const item of list) {
+    if (typeof item !== 'string') continue
+    const id = item.trim().toUpperCase()
+    if (!id || seen.has(id)) continue
+    seen.add(id)
+    out.push(id)
+  }
+  return out.slice(0, 500)
 }
 
 function normalizeDeletedCurricula(raw, now) {
@@ -767,6 +888,21 @@ function mergeUserData(a, b) {
     ...(Array.isArray(b.deletedChallenges) ? b.deletedChallenges : []),
   ])
   const applied = applyChallengeTombstones(mergeChallenges(a.challenges, b.challenges), deletedChallenges)
+  const deletedClassExams = normalizeDeletedClassExams([
+    ...(Array.isArray(a.deletedClassExams) ? a.deletedClassExams : []),
+    ...(Array.isArray(b.deletedClassExams) ? b.deletedClassExams : []),
+  ])
+  const appliedExams = applyClassExamTombstones(
+    normalizeClassExams([
+      ...(Array.isArray(a.classExams) ? a.classExams : []),
+      ...(Array.isArray(b.classExams) ? b.classExams : []),
+    ]),
+    deletedClassExams,
+  )
+  const completedClassExamIds = normalizeCompletedClassExamIds([
+    ...(Array.isArray(a.completedClassExamIds) ? a.completedClassExamIds : []),
+    ...(Array.isArray(b.completedClassExamIds) ? b.completedClassExamIds : []),
+  ])
   const out = {
     name: a.name || b.name,
     created: Math.min(a.created, b.created),
@@ -781,6 +917,11 @@ function mergeUserData(a, b) {
   if (gradeCodes) out.gradeCodes = gradeCodes
   if (applied.challenges.length > 0) out.challenges = applied.challenges
   if (applied.deletedChallenges.length > 0) out.deletedChallenges = applied.deletedChallenges
+  if (appliedExams.classExams.length > 0) out.classExams = appliedExams.classExams
+  if (appliedExams.deletedClassExams.length > 0) {
+    out.deletedClassExams = appliedExams.deletedClassExams
+  }
+  if (completedClassExamIds.length > 0) out.completedClassExamIds = completedClassExamIds
   const role = USER_ROLES.has(b.role) ? b.role : USER_ROLES.has(a.role) ? a.role : null
   if (role) out.role = role
   const preferredSubject =

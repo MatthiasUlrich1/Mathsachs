@@ -846,6 +846,40 @@ describe('mergeSharedState (CJS)', () => {
     expect(merged.records.Ada.role).toBe('eltern')
   })
 
+  it('keeps Klassenklausuren on the Lehrer through desktop normalize/merge', () => {
+    const exam = {
+      id: 'ABCDEFGH',
+      hostCode: 'AAAA1111',
+      className: '6a',
+      name: 'Probe',
+      examCode: 'MSX1:PAYLOAD',
+      createdAt: 100,
+      owned: true as const,
+      solveCount: 2,
+    }
+    const merged = mergeSharedStateCjs(
+      {
+        users: ['Ada'],
+        records: { Ada: { ...user('Ada'), role: 'lehrer', classExams: [exam] } },
+      },
+      {
+        users: ['Ada'],
+        records: { Ada: { ...user('Ada'), role: 'lehrer' } },
+      },
+    ) as unknown as {
+      records: {
+        Ada: { classExams?: Array<{ id: string; hostCode: string; examCode: string }> }
+      }
+    }
+    expect(merged.records.Ada.classExams).toEqual([
+      expect.objectContaining({
+        id: 'ABCDEFGH',
+        hostCode: 'AAAA1111',
+        examCode: 'MSX1:PAYLOAD',
+      }),
+    ])
+  })
+
   it('unions session history without duplicating identical rows', () => {
     const session = { date: 42, topicId: 'brueche', points: 3 }
     const merged = mergeSharedStateCjs(

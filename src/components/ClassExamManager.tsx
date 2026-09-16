@@ -66,27 +66,39 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
     })
   }, [groups, createdClasses])
 
-  // Pull solveCount (and metadata) from the Worker for each host class.
+  // Pull exams (and solveCount) from the Worker for every Klassencode this
+  // Lehrer owns — recovers the list if local storage was wiped (e.g. older
+  // desktop builds that dropped classExams on save).
   useEffect(() => {
     let cancelled = false
-    const hosts = [...new Set(getCreatedClassExams().map((e) => e.hostCode))]
+    const created = getClassCodeSettings().created
+    const hosts = [
+      ...new Set([
+        ...getCreatedClassExams().map((e) => e.hostCode),
+        ...created.map((c) => c.code),
+      ]),
+    ]
     if (hosts.length === 0) return
     void (async () => {
       for (const host of hosts) {
         try {
           const stats = await getClass(host)
           if (cancelled) return
+          const className =
+            stats.name || created.find((c) => c.code === host)?.name
           for (const remote of stats.exams ?? []) {
             const local = getCreatedClassExams().find((e) => e.id === remote.id)
-            if (!local) continue
             rememberCreatedClassExam({
-              ...local,
+              id: remote.id,
+              hostCode: host,
+              className: remote.className ?? local?.className ?? className,
               name: remote.name,
               examCode: remote.examCode,
-              taskCount: remote.taskCount ?? local.taskCount,
-              totalPoints: remote.totalPoints ?? local.totalPoints,
-              solveCount: remote.solveCount ?? local.solveCount ?? 0,
-              className: remote.className ?? local.className,
+              createdAt: remote.createdAt ?? local?.createdAt ?? Date.now(),
+              owned: true,
+              taskCount: remote.taskCount ?? local?.taskCount,
+              totalPoints: remote.totalPoints ?? local?.totalPoints,
+              solveCount: remote.solveCount ?? local?.solveCount ?? 0,
             })
           }
           if (!cancelled) setExams(getCreatedClassExams())

@@ -59,6 +59,7 @@ import { LegalFooter } from './components/LegalFooter'
 import { Settings } from './components/Settings'
 import { parseExamHash } from './exam/examCode'
 import { countOpenClassExams } from './exam/openClassExams'
+import { fetchInstallCount, reportFirstInstall } from './lib/installStats'
 import { useUpdateCheck } from './updates/useUpdateCheck'
 import { useLanStatus } from './lan/useLanStatus'
 import {
@@ -111,6 +112,7 @@ export default function App() {
   // Exam code taken from a shared link (`#klausur=…`), consumed by ExamRunner.
   const [examCodeFromLink, setExamCodeFromLink] = useState<string | null>(null)
   const [openExamCount, setOpenExamCount] = useState(0)
+  const [installCount, setInstallCount] = useState<number | null>(null)
 
   const [loaded, setLoaded] = useState<LoadedGrade[]>([])
   const [activeId, setActiveId] = useState<string>('')
@@ -199,6 +201,19 @@ export default function App() {
       unsub()
     }
   }, [])
+
+  useEffect(() => {
+    if (!storageReady) return
+    let cancelled = false
+    void (async () => {
+      const afterPing = await reportFirstInstall().catch(() => null)
+      const count = afterPing ?? (await fetchInstallCount())
+      if (!cancelled && count != null) setInstallCount(count)
+    })()
+    return () => {
+      cancelled = true
+    }
+  }, [storageReady])
 
   // A shared "#klausur=…" link opens the exam runner directly. We read the code
   // once on start, switch to the runner and then clean the hash from the URL so
@@ -444,7 +459,7 @@ export default function App() {
           <h2 className="section-title">Wer übt heute?</h2>
           <p className="muted">Daten werden geladen …</p>
         </section>
-        <LegalFooter version={updateCheck.currentVersion} />
+        <LegalFooter version={updateCheck.currentVersion} installCount={installCount} />
       </main>
     )
   }
@@ -512,7 +527,7 @@ export default function App() {
             </button>
           </div>
         </section>
-        <LegalFooter version={updateCheck.currentVersion} />
+        <LegalFooter version={updateCheck.currentVersion} installCount={installCount} />
       </main>
     )
   }
@@ -849,7 +864,7 @@ export default function App() {
         <Protocol user={activeUser} onExit={() => setView({ name: 'browse' })} />
       )}
 
-      <LegalFooter version={updateCheck.currentVersion} />
+      <LegalFooter version={updateCheck.currentVersion} installCount={installCount} />
     </main>
   )
 }
