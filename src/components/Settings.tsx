@@ -9,7 +9,6 @@ import { UserManagement } from './UserManagement'
 import {
   RoleOptions,
   TeacherCodeGate,
-  TeacherCodeRequestButton,
   TeacherCodeReveal,
 } from './TeacherCodePanel'
 import {
@@ -308,16 +307,7 @@ export function Settings({
               />
             ) : role === 'entwickler' ? null : isTeacherRole(role) ? (
               <TeacherCodeReveal />
-            ) : (
-              <div className="teacher-code-request">
-                <p className="muted small">
-                  Den gemeinsamen Lehrercode per Mail anfordern — nicht für
-                  Schüler. Auf dem Klassen-Server werden keine Personendaten
-                  gespeichert.
-                </p>
-                <TeacherCodeRequestButton />
-              </div>
-            )}
+            ) : null}
             <button type="button" className="ghost" onClick={onSwitchUser}>
               Benutzer wechseln
             </button>

@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.12] – 2026-09-16
+
+### Behoben
+- Rolle **Entwickler** bleibt in der Desktop-/WLAN-Speicherung erhalten (wurde
+  zuvor verworfen und als Schüler angezeigt).
+- Hinweis und Button „Lehrercode anfordern“ bei Schüler/Eltern entfernt.
+
 ## [0.27.11] – 2026-09-16
 
 ### Neu

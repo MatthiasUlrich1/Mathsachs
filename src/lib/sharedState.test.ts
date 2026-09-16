@@ -64,7 +64,7 @@ const store = require('../../electron/sharedStore.cjs') as {
           known?: Array<{ code: string; name: string; createdAt: number }>
           deletedCodes?: Array<{ code: string; deletedAt: number }>
         }
-        role?: 'schueler' | 'eltern' | 'klassenlehrer' | 'lehrer'
+        role?: 'schueler' | 'eltern' | 'klassenlehrer' | 'lehrer' | 'entwickler'
         preferredSubject?: string
         preferredSubjectAt?: number
       }
@@ -914,6 +914,14 @@ describe('mergeSharedState (CJS)', () => {
       { users: ['Ada'], records: { Ada: { ...user('Ada'), role: 'eltern' } } },
     )
     expect(merged.records.Ada.role).toBe('eltern')
+  })
+
+  it('preserves Entwickler through the desktop shared store', () => {
+    const merged = mergeSharedStateCjs(
+      { users: ['Dev'], records: { Dev: { ...user('Dev'), role: 'entwickler' } } },
+      { users: ['Dev'], records: { Dev: { ...user('Dev') } } },
+    )
+    expect(merged.records.Dev.role).toBe('entwickler')
   })
 
   it('keeps newer preferredSubject by preferredSubjectAt (CJS LWW)', () => {

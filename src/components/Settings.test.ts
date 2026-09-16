@@ -184,20 +184,21 @@ describe('Settings profile Lehrercode', () => {
     expect(html).not.toContain(TEACHER_CODE_REQUEST_LABEL)
   })
 
-  it('shows the request button for Schüler and hides the secret', () => {
-    const html = renderToStaticMarkup(
-      createElement(Settings, {
-        ...baseProps,
-        role: 'schueler',
-        section: 'profile',
-      }),
-    )
-    expect(html).toContain(TEACHER_CODE_REQUEST_LABEL)
-    expect(html).toContain('mailto:')
-    expect(html).toContain('keine Personendaten')
-    expect(html).toContain('Lehrer und Klassenlehrer nur mit')
-    expect(html).not.toContain(formatTeacherCode())
-    expect(html).not.toContain('Mit Lehrercode übernehmen')
+  it('hides Lehrercode request and secret for Schüler and Eltern', () => {
+    for (const role of ['schueler', 'eltern'] as const) {
+      const html = renderToStaticMarkup(
+        createElement(Settings, {
+          ...baseProps,
+          role,
+          section: 'profile',
+        }),
+      )
+      expect(html).not.toContain(TEACHER_CODE_REQUEST_LABEL)
+      expect(html).not.toContain('Den gemeinsamen Lehrercode per Mail')
+      expect(html).not.toContain(formatTeacherCode())
+      expect(html).not.toContain('Mit Lehrercode übernehmen')
+      expect(html).toContain('Lehrer und Klassenlehrer nur mit')
+    }
   })
 
   it('shows the shared code for Klassenlehrer as well', () => {

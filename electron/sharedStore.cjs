@@ -11,7 +11,13 @@ const path = require('node:path')
 const SCHEMA_VERSION = 1
 const MAX_SESSIONS = 200
 const MAX_TRANSFERS = 200
-const USER_ROLES = new Set(['schueler', 'eltern', 'klassenlehrer', 'lehrer'])
+const USER_ROLES = new Set([
+  'schueler',
+  'eltern',
+  'klassenlehrer',
+  'lehrer',
+  'entwickler',
+])
 const DELETED_CLASS_CODE_TTL_MS = 30 * 24 * 60 * 60 * 1000
 const MAX_DELETED_CLASS_CODES = 200
 const DELETED_CHALLENGE_TTL_MS = DELETED_CLASS_CODE_TTL_MS
