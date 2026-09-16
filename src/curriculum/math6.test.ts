@@ -5,12 +5,40 @@ import { klasse6 } from './math6'
 const allTopics = klasse6.areas.flatMap((a) => a.topics)
 
 describe('Klasse 6 curriculum', () => {
+  it('exposes topics across all five Lernbereiche', () => {
+    expect(klasse6.areas).toHaveLength(5)
+    expect(allTopics.length).toBeGreaterThanOrEqual(20)
+  })
+
   it('keeps Fläche-Kante topic locked for Freigabe', () => {
     const topic = allTopics.find((t) => t.id === 'lb4-flaeche-kante-quader')
     expect(topic?.released).toBe(false)
     expect(
       allTopics.filter((t) => t.id !== 'lb4-flaeche-kante-quader').every((t) => t.released !== false),
     ).toBe(true)
+  })
+
+  it('matches Quader/Würfel wording to the matching solid SVG', () => {
+    const topic = allTopics.find((t) => t.id === 'lb4-flaeche-kante-quader')
+    expect(topic).toBeTruthy()
+    let sawQuader = false
+    let sawWuerfel = false
+    for (let seed = 1; seed <= 80; seed++) {
+      const task = topic!.generate(createRng(seed))
+      const svg = task.visualContent ?? ''
+      if (task.question.includes('Ein Quader')) {
+        sawQuader = true
+        expect(svg).toContain('aria-label="Quader"')
+        expect(svg).not.toContain('polygon points="60,180')
+      }
+      if (task.question.includes('Ein Würfel')) {
+        sawWuerfel = true
+        expect(svg).toContain('Würfel')
+        expect(svg).toContain('stroke-dasharray')
+      }
+    }
+    expect(sawQuader).toBe(true)
+    expect(sawWuerfel).toBe(true)
   })
 
   it('has a unique id for every topic', () => {

@@ -235,6 +235,20 @@ describe('geometrySvg', () => {
       expect(svg).toContain('6 cm')
       expect(svg).toContain('8 cm')
       expect(svg).toContain('<polygon')
+      expect(svg).toContain('stroke-dasharray')
+      expect((svg.match(/<polygon/g) ?? []).length).toBeGreaterThanOrEqual(3)
+    })
+
+    it('can look like a Würfel and label the top face', () => {
+      const svg = generateCuboidSvg({
+        lengthLabel: 'a',
+        widthLabel: 'a',
+        heightLabel: 'a',
+        cube: true,
+        topFaceLabel: 'G = ?',
+      })
+      expect(svg).toContain('aria-label="Würfel"')
+      expect(svg).toContain('G = ?')
     })
   })
 
@@ -251,6 +265,18 @@ describe('geometrySvg', () => {
       expect(svg).toContain('6 cm')
       expect(svg).toContain('?')
       expect(svg).toContain('Test')
+      expect(svg).toContain('stroke-dasharray')
+    })
+
+    it('draws a cube when cube=true', () => {
+      const svg = generateCuboidFaceEdgeSvg({
+        faceAreaLabel: '81 cm²',
+        faceEdgeLabel: '?',
+        perpendicularLabel: '?',
+        cube: true,
+      })
+      expect(svg).toContain('Würfel')
+      expect(svg).toContain('Quadrat')
     })
   })
 

@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.15] – 2026-09-16
+
+### Behoben
+- Quader-/Würfel-Abbildungen: fehlende Seiten und verdeckte Kanten (gestrichelt);
+  Würfel mit quadratischen Proportionen.
+- Thema „Fläche und senkrechte Seitenlänge“: Quader-Aufgabe zeigt Quader (nicht
+  Dreiecksprisma), Würfel-Aufgabe zeigt Würfel.
+
 ## [0.27.14] – 2026-09-16
 
 ### Neu

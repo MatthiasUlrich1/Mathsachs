@@ -1632,7 +1632,7 @@ const flaecheKanteQuader: Topic = {
       })
     },
     (rng: Rng) => {
-      // Volumen und Höhe → Grundfläche G = V : h
+      // Volumen und Höhe → Grundfläche G = V : h (Quader-Abbildung)
       const g = randInt(rng, 12, 60)
       const h = randInt(rng, 3, 15)
       const v = g * h
@@ -1643,14 +1643,16 @@ const flaecheKanteQuader: Topic = {
         value: g,
         solution: `${g} cm²`,
         explanation: `Grundfläche und Höhe stehen senkrecht zueinander: V = G · h ⇒ G = V : h = ${v} : ${h} = ${g} cm².`,
-        visualContent: generatePrismVolumeSvg({
-          baseAreaLabel: '?',
+        visualContent: generateCuboidSvg({
+          lengthLabel: '',
+          widthLabel: '',
           heightLabel: `${h} cm`,
+          topFaceLabel: 'G = ?',
         }),
       })
     },
     (rng: Rng) => {
-      // Volumen und Grundfläche → Höhe h = V : G
+      // Volumen und Grundfläche → Höhe h = V : G (Prisma mit Dreiecksgrundfläche bleibt Dreiecksprisma)
       const g = randInt(rng, 10, 48)
       const h = randInt(rng, 4, 16)
       const v = g * h
@@ -1684,6 +1686,7 @@ const flaecheKanteQuader: Topic = {
           faceEdgeLabel: '?',
           perpendicularLabel: '?',
           caption: `V = ${volume} cm³ (Würfel)`,
+          cube: true,
         }),
       })
     },
