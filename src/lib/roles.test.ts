@@ -31,6 +31,14 @@ describe('user roles', () => {
     ])
   })
 
+  it('treats Entwickler like Lehrer for rights and labels it', () => {
+    expect(isTeacherRole('entwickler')).toBe(true)
+    expect(canCreateExam('entwickler')).toBe(true)
+    expect(canManageGradeCodes('entwickler')).toBe(true)
+    expect(roleLabel('entwickler')).toBe('Entwickler')
+    expect(USER_ROLES.map((e) => e.id)).not.toContain('entwickler')
+  })
+
   it('treats Lehrer and Klassenlehrer as teacher roles', () => {
     expect(isTeacherRole('lehrer')).toBe(true)
     expect(isTeacherRole('klassenlehrer')).toBe(true)

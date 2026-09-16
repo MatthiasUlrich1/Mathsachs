@@ -25,7 +25,6 @@ const baseProps = {
   role: 'lehrer' as const,
   preferredSubject: 'Mathematik',
   onChangePreferredSubject: vi.fn(),
-  onChangeCurriculumDevPreview: vi.fn(),
   classLabel: '6/6',
   lanStatus: null,
   onChangeRole: vi.fn(),
@@ -210,6 +209,21 @@ describe('Settings profile Lehrercode', () => {
       }),
     )
     expect(html).toContain(formatTeacherCode())
+    expect(html).not.toContain(TEACHER_CODE_REQUEST_LABEL)
+  })
+
+  it('shows Entwickler in role options but hides the shared Lehrercode', () => {
+    const html = renderToStaticMarkup(
+      createElement(Settings, {
+        ...baseProps,
+        role: 'entwickler',
+        section: 'profile',
+      }),
+    )
+    expect(html).toContain('Entwickler')
+    expect(html).toContain('Fach')
+    expect(html).not.toContain(formatTeacherCode())
+    expect(html).not.toContain('Lehrercode kopieren')
     expect(html).not.toContain(TEACHER_CODE_REQUEST_LABEL)
   })
 

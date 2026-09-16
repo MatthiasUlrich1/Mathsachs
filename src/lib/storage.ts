@@ -492,7 +492,14 @@ export const addUser = (rawName: string, role?: UserRole): string[] => {
 export const getUserRole = (name: string): UserRole => {
   const trimmed = name.trim()
   if (!trimmed) return 'schueler'
-  return roleForUser(loadUser(trimmed))
+  const user = loadUser(trimmed)
+  const role = roleForUser(user)
+  // Migrate silent preview flag → Entwickler role
+  if (user.curriculumDevPreview && role === 'lehrer') {
+    saveUser({ ...user, role: 'entwickler', curriculumDevPreview: undefined })
+    return 'entwickler'
+  }
+  return role
 }
 
 export const setUserRole = (name: string, role: UserRole): UserRole => {
@@ -507,6 +514,7 @@ export const setUserRole = (name: string, role: UserRole): UserRole => {
   saveUser({
     ...current,
     role: nextRole,
+    curriculumDevPreview: undefined,
     ...(classCodes ? { classCodes } : {}),
   })
   return nextRole

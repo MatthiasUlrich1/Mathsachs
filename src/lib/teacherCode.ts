@@ -75,7 +75,7 @@ export function needsTeacherCode(
 }
 
 export type RoleChangeResult =
-  | { ok: true; role: UserRole; curriculumPreview?: boolean }
+  | { ok: true; role: UserRole }
   | { ok: false; error: string }
 
 export function applyRoleChange(
@@ -86,11 +86,15 @@ export function applyRoleChange(
   if (!needsTeacherCode(from, to)) return { ok: true, role: to }
   const access = resolveTeacherCodeAccess(code)
   if (!access) return { ok: false, error: TEACHER_CODE_WRONG }
-  return {
-    ok: true,
-    role: to,
-    ...(access === 'extended' ? { curriculumPreview: true as const } : {}),
-  }
+  return { ok: true, role: roleForTeacherAccess(to, access) }
+}
+
+/** Extended Lehrercode unlocks the hidden Entwickler role (preview + Lehrer rights). */
+export function roleForTeacherAccess(
+  requested: UserRole,
+  access: 'standard' | 'extended',
+): UserRole {
+  return access === 'extended' ? 'entwickler' : requested
 }
 
 /** mailto to the Impressum address — nothing is stored on the Worker. */

@@ -64,7 +64,12 @@ export interface ClassTransferRecord {
 }
 
 /** Schüler is the most restricted role. Missing roles normalize to Schüler. */
-export type UserRole = 'schueler' | 'eltern' | 'klassenlehrer' | 'lehrer'
+export type UserRole =
+  | 'schueler'
+  | 'eltern'
+  | 'klassenlehrer'
+  | 'lehrer'
+  | 'entwickler'
 
 export interface UserData {
   name: string
@@ -218,7 +223,8 @@ const isUserRole = (value: unknown): value is UserRole =>
   value === 'schueler' ||
   value === 'eltern' ||
   value === 'klassenlehrer' ||
-  value === 'lehrer'
+  value === 'lehrer' ||
+  value === 'entwickler'
 
 const isCreatedCode = (value: unknown): value is CreatedClassCode => {
   if (!isRecord(value)) return false

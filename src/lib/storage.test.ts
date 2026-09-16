@@ -23,6 +23,7 @@ import {
   setActiveStorageUser,
   setSendClassPoints,
   setUserRole,
+  setCurriculumDevPreview,
   saveUser,
   activeClassDisplayName,
 } from './storage'
@@ -108,6 +109,20 @@ describe('storage adapter', () => {
     await vi.waitFor(() => {
       expect(local.getItem(userRecordKey('Ben'))).toContain('eltern')
     })
+  })
+
+  it('migrates silent curriculum preview on Lehrer to Entwickler', async () => {
+    const local = memoryStorage()
+    vi.stubGlobal('localStorage', local)
+    vi.stubGlobal('location', { protocol: 'http:' })
+    vi.stubGlobal('fetch', vi.fn(async () => htmlResponse()))
+
+    await initSharedStorage()
+    addUser('Dev', 'lehrer')
+    setCurriculumDevPreview('Dev', true)
+    expect(getUserRole('Dev')).toBe('entwickler')
+    expect(loadUser('Dev').role).toBe('entwickler')
+    expect(loadUser('Dev').curriculumDevPreview).toBeUndefined()
   })
 
   it('uses GET/PUT /api/state on an HTTP origin when the API exists', async () => {

@@ -56,7 +56,6 @@ interface Props {
   role: UserRole
   preferredSubject: string
   onChangePreferredSubject: (subject: string) => void
-  onChangeCurriculumDevPreview: (enabled: boolean) => void
   classLabel: string | null
   lanStatus: LanServerStatus | null
   onChangeRole: (role: UserRole) => void
@@ -80,7 +79,6 @@ export function Settings({
   role,
   preferredSubject,
   onChangePreferredSubject,
-  onChangeCurriculumDevPreview,
   classLabel,
   lanStatus,
   onChangeRole,
@@ -103,10 +101,7 @@ export function Settings({
       setPendingRole(null)
       setTeacherCodeDraft('')
       setTeacherCodeError(null)
-      if (next !== role) {
-        onChangeRole(next)
-        if (!isTeacherRole(next)) onChangeCurriculumDevPreview(false)
-      }
+      if (next !== role) onChangeRole(next)
       return
     }
     setPendingRole(next)
@@ -121,7 +116,6 @@ export function Settings({
       return
     }
     onChangeRole(result.role)
-    onChangeCurriculumDevPreview(Boolean(result.curriculumPreview))
     setPendingRole(null)
     setTeacherCodeDraft('')
     setTeacherCodeError(null)
@@ -300,9 +294,7 @@ export function Settings({
                 </p>
               </div>
             )}
-            {isTeacherRole(role) && !pendingRole ? (
-              <TeacherCodeReveal />
-            ) : pendingRole ? (
+            {pendingRole ? (
               <TeacherCodeGate
                 id="profile-teacher-code"
                 value={teacherCodeDraft}
@@ -314,6 +306,8 @@ export function Settings({
                 confirmLabel="Mit Lehrercode übernehmen"
                 onConfirm={confirmTeacherRole}
               />
+            ) : role === 'entwickler' ? null : isTeacherRole(role) ? (
+              <TeacherCodeReveal />
             ) : (
               <div className="teacher-code-request">
                 <p className="muted small">

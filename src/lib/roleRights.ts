@@ -2,10 +2,13 @@ import { USER_ROLES, type UserRole } from './roles'
 
 export type RightMark = 'yes' | 'no' | 'optin' | 'viaClass' | 'viaClassOrGrade' | 'planned'
 
+/** Columns in the rights matrix (no hidden roles). */
+export type MatrixRole = Exclude<UserRole, 'entwickler'>
+
 export interface RightRow {
   id: string
   label: string
-  marks: Record<UserRole, RightMark>
+  marks: Record<MatrixRole, RightMark>
 }
 
 /** In-app and README matrix: rows = features, columns = the four roles. */
@@ -117,7 +120,10 @@ export const ROLE_RIGHT_ROWS: RightRow[] = [
   },
 ]
 
-export const ROLE_RIGHT_COLUMNS = USER_ROLES
+export const ROLE_RIGHT_COLUMNS = USER_ROLES as ReadonlyArray<{
+  id: MatrixRole
+  label: string
+}>
 
 export const rightMarkLabel = (mark: RightMark): string => {
   if (mark === 'yes') return 'Ja'

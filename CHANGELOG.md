@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.11] – 2026-09-16
+
+### Neu
+- Versteckte Rolle **Entwickler** (nicht bei der Profilerstellung wählbar):
+  Lehrerrechte plus Lehrplan-Vorschau für gesperrte Themen. Aktivierung über den
+  alternativen Lehrercode; im Profilwechsel und in den Einstellungen sichtbar,
+  damit man zwischen Testprofilen wechseln kann.
+
 ## [0.27.10] – 2026-09-16
 
 ### Behoben

@@ -22,13 +22,11 @@ import {
   renameUser,
   cacheKnownClassName,
   getClassCodeSettings,
-  getCurriculumDevPreview,
   getPreferredSubject,
   getUserRole,
   initSharedStorage,
   listUsers,
   setActiveStorageUser,
-  setCurriculumDevPreview,
   setPreferredSubject,
   setUserRole,
   subscribeSharedStorage,
@@ -38,6 +36,7 @@ import {
 import {
   canCreateExam,
   canWriteExam,
+  isCurriculumPreviewRole,
   isTeacherRole,
   roleLabel,
 } from './lib/roles'
@@ -110,7 +109,6 @@ export default function App() {
   )
   const [userRole, setUserRoleState] = useState<UserRole>('schueler')
   const [preferredSubject, setPreferredSubjectState] = useState('Mathematik')
-  const [curriculumDevPreview, setCurriculumDevPreviewState] = useState(false)
   const [browseSubject, setBrowseSubject] = useState<string | null>(null)
   // Exam code taken from a shared link (`#klausur=…`), consumed by ExamRunner.
   const [examCodeFromLink, setExamCodeFromLink] = useState<string | null>(null)
@@ -182,7 +180,6 @@ export default function App() {
       if (current && listUsers().includes(current)) {
         setUserRoleState(getUserRole(current))
         setPreferredSubjectState(getPreferredSubject(current))
-        setCurriculumDevPreviewState(getCurriculumDevPreview(current))
       }
     })
     void initSharedStorage().then(() => {
@@ -213,7 +210,6 @@ export default function App() {
     setUserRoleState(getUserRole(activeUser))
     const subject = getPreferredSubject(activeUser)
     setPreferredSubjectState(subject)
-    setCurriculumDevPreviewState(getCurriculumDevPreview(activeUser))
     setBrowseSubject(subject)
   }, [storageReady, activeUser])
 
@@ -366,7 +362,6 @@ export default function App() {
     setUserRoleState(getUserRole(name))
     const subject = getPreferredSubject(name)
     setPreferredSubjectState(subject)
-    setCurriculumDevPreviewState(getCurriculumDevPreview(name))
     setBrowseSubject(subject)
   }
 
@@ -375,12 +370,6 @@ export default function App() {
     const next = setPreferredSubject(activeUser, subject)
     setPreferredSubjectState(next)
     setBrowseSubject(next)
-  }
-
-  const changeCurriculumDevPreview = (enabled: boolean) => {
-    if (!activeUser) return
-    const next = setCurriculumDevPreview(activeUser, enabled)
-    setCurriculumDevPreviewState(next)
   }
 
   const subjectOf = (moduleId: string) => normalizeSubject(subjectTitleForModule(moduleId))
@@ -426,10 +415,6 @@ export default function App() {
     }
     setUsers(addUser(name, result.role))
     selectUser(name)
-    if (typeof result.curriculumPreview === 'boolean') {
-      setCurriculumDevPreview(name, result.curriculumPreview)
-      setCurriculumDevPreviewState(result.curriculumPreview)
-    }
     setNewName('')
     setNewRole(null)
     setNewTeacherCode('')
@@ -449,10 +434,6 @@ export default function App() {
     if (!activeUser) return
     setUserRole(activeUser, role)
     setUserRoleState(role)
-    if (!isTeacherRole(role)) {
-      setCurriculumDevPreview(activeUser, false)
-      setCurriculumDevPreviewState(false)
-    }
     if (
       (view.name === 'examBuild' && !canCreateExam(role)) ||
       (view.name === 'examRun' && !canWriteExam(role))
@@ -795,9 +776,7 @@ export default function App() {
                   <CurriculumBrowser
                     key={activeLoaded.moduleId}
                     grade={activeLoaded.grade}
-                    curriculumDevPreview={
-                      isTeacherRole(userRole) && curriculumDevPreview
-                    }
+                    curriculumDevPreview={isCurriculumPreviewRole(userRole)}
                     onPractice={(topic, areaTitle) =>
                       openPractice(topic, areaTitle, activeLoaded.grade.title)
                     }
@@ -825,7 +804,6 @@ export default function App() {
           role={userRole}
           preferredSubject={preferredSubject}
           onChangePreferredSubject={changePreferredSubject}
-          onChangeCurriculumDevPreview={changeCurriculumDevPreview}
           classLabel={classLabel}
           lanStatus={lanStatus}
           onChangeRole={changeRole}

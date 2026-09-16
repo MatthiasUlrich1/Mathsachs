@@ -11,6 +11,7 @@ import {
   matchesTeacherCode,
   needsTeacherCode,
   normalizeTeacherCode,
+  roleForTeacherAccess,
 } from './teacherCode'
 
 describe('Lehrercode', () => {
@@ -50,6 +51,10 @@ describe('Lehrercode', () => {
       ok: true,
       role: 'klassenlehrer',
     })
+    expect(applyRoleChange(null, 'lehrer', TEACHER_CODE)).toEqual({
+      ok: true,
+      role: 'lehrer',
+    })
     expect(applyRoleChange('lehrer', 'klassenlehrer', '')).toEqual({
       ok: true,
       role: 'klassenlehrer',
@@ -58,6 +63,19 @@ describe('Lehrercode', () => {
       ok: true,
       role: 'eltern',
     })
+    expect(applyRoleChange('entwickler', 'lehrer', '')).toEqual({
+      ok: true,
+      role: 'lehrer',
+    })
+  })
+
+  it('maps extended Lehrercode access to Entwickler', () => {
+    expect(roleForTeacherAccess('lehrer', 'standard')).toBe('lehrer')
+    expect(roleForTeacherAccess('klassenlehrer', 'standard')).toBe(
+      'klassenlehrer',
+    )
+    expect(roleForTeacherAccess('lehrer', 'extended')).toBe('entwickler')
+    expect(roleForTeacherAccess('klassenlehrer', 'extended')).toBe('entwickler')
   })
 
   it('builds a mailto without person data or the secret code', () => {
