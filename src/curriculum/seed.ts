@@ -106,13 +106,13 @@ export async function buildGymSachsenSeed(): Promise<CurriculumPack> {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Mathematik',
-    version: '1.1.0',
+    version: '1.2.0',
     changelog:
-      'Klasse 6 LB Prismen: neues Thema „Fläche und senkrechte Seitenlänge“ (vorerst gesperrt).',
+      'ID 2101 freigegeben: Fläche und senkrechte Seitenlänge (Klasse 6 Prismen).',
     contentHash: packContentHash(official, extras),
     official,
     extras,
   }
 }
 
-export const GYM_SACHSEN_PACK_VERSION = '1.1.0'
+export const GYM_SACHSEN_PACK_VERSION = '1.2.0'

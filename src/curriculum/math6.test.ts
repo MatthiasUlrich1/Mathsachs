@@ -10,12 +10,10 @@ describe('Klasse 6 curriculum', () => {
     expect(allTopics.length).toBeGreaterThanOrEqual(20)
   })
 
-  it('keeps Fläche-Kante topic locked for Freigabe', () => {
+  it('exposes Fläche-Kante topic as released (ID 2101)', () => {
     const topic = allTopics.find((t) => t.id === 'lb4-flaeche-kante-quader')
-    expect(topic?.released).toBe(false)
-    expect(
-      allTopics.filter((t) => t.id !== 'lb4-flaeche-kante-quader').every((t) => t.released !== false),
-    ).toBe(true)
+    expect(topic?.released).not.toBe(false)
+    expect(allTopics.every((t) => t.released !== false)).toBe(true)
   })
 
   it('matches Quader/Würfel wording to the matching solid SVG', () => {

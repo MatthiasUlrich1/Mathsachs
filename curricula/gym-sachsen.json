@@ -4,9 +4,9 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Mathematik",
-  "version": "1.1.0",
-  "changelog": "Klasse 6 LB Prismen: neues Thema „Fläche und senkrechte Seitenlänge“ (vorerst gesperrt).",
-  "contentHash": "acab442d",
+  "version": "1.2.0",
+  "changelog": "ID 2101 freigegeben: Fläche und senkrechte Seitenlänge (Klasse 6 Prismen).",
+  "contentHash": "e5f81131",
   "official": [
     {
       "id": "klasse-5",
@@ -691,17 +691,17 @@
             {
               "id": "lb4-flaeche-kante-quader",
               "title": "Fläche und senkrechte Seitenlänge",
-              "hint": "Fläche und die dazu senkrechte Kante gehören zusammen: A = a · b bzw. a = A : b (bzw. V = G · h).",
+              "hint": "Volumen = Fläche · dazu senkrechte Länge (2D · 1D = 3D): V = G · h, also G = V : h und h = V : G.",
               "pointsPerTask": 10,
               "keywords": [
                 "Quader",
                 "Würfel",
-                "Flächeninhalt",
-                "Seitenlänge",
-                "senkrecht",
+                "Volumen",
+                "Grundfläche",
+                "Höhe",
+                "Dimension",
                 "Prisma"
-              ],
-              "released": false
+              ]
             },
             {
               "id": "lb4-wuerfelnetz",

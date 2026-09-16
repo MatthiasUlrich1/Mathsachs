@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.19] – 2026-09-16
+
+### Freigabe
+- Mathe-Pack **1.2.0**: **ID 2101** „Fläche und senkrechte Seitenlänge“ freigegeben
+  (Klasse 6 Prismen).
+
 ## [0.27.18] – 2026-09-16
 
 ### Behoben

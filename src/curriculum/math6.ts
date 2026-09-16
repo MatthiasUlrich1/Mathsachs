@@ -1574,7 +1574,6 @@ const flaecheKanteQuader: Topic = {
   hint: 'Volumen = Fläche · dazu senkrechte Länge (2D · 1D = 3D): V = G · h, also G = V : h und h = V : G.',
   pointsPerTask: 10,
   difficulty: 2,
-  released: false,
   keywords: ['Quader', 'Würfel', 'Volumen', 'Grundfläche', 'Höhe', 'Dimension', 'Prisma'],
   fachwissen: {
     text: 'Beim Quader, Würfel und Prisma gilt: Volumen (3D) = Flächeninhalt (2D) · dazu senkrechte Länge (1D). Schreibweise V = G · h. Deshalb: G = V : h und h = V : G. Beim Würfel ist jede Seitenfläche A = a² und V = A · a, also a = V : A.',
