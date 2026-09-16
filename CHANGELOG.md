@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.4] – 2026-09-16
+
+### Neu
+- **Physik Gym Sachsen 2.0.0**: Übungsaufgaben für **alle** Themen Klassen 6–10 und
+  JGS 11/12 Gk/Lk (je Thema mehrere Varianten wie in Mathe).
+
+### Verbessert
+- **Physik Klasse 6**: mehr Aufgaben-Varianten je Thema (Pack-Inhalte 1.1–1.3
+  ausgebaut), damit Übungsrunden wieder ~10 verschiedene Aufgaben schaffen.
+
 ## [0.27.3] – 2026-09-16
 
 ### Behoben

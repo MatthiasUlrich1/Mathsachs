@@ -327,9 +327,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '1.3.0',
+    version: '2.0.0',
     changelog:
-      'Klasse 6: Spiegelweg tippen, Messreihe sortieren, Dichte-Slider, Stromkreis-/Farbfilter-Mehrfachauswahl, Licht interaktiv.',
+      'Alle Klassen 6–10 und JGS 11/12 Gk/Lk spielbar: interaktive und Rechenaufgaben je Thema (ähnlich Mathe-Variantenvielfalt).',
     official,
     extras: [],
   }

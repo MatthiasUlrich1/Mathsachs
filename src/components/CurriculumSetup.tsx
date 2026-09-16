@@ -57,10 +57,10 @@ const FALLBACK_CATALOG: ManifestPack[] = [
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '1.3.0',
+    version: '2.0.0',
     url: '',
     changelog:
-      'Klasse 6 interaktiv (Licht, Dichte-Slider, Stromkreis, Farben). Ohne Netz lokale Fassung.',
+      'Klassen 6–10 und JGS 11/12 Gk/Lk mit Übungsaufgaben. Ohne Netz lokale Fassung.',
   },
   {
     id: OS_HS_PACK_ID,

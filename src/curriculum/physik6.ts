@@ -107,56 +107,155 @@ const spiegel: Topic['generate'] = mixedVariants(
 
 const ausbreitung: Topic['generate'] = mixedVariants(
   (rng) => {
-    const correct = 'geradlinig'
+    const cases = [
+      {
+        q: 'Wie breitet sich Licht in Luft (ohne Spiegel/Linse) aus?',
+        correct: 'geradlinig',
+        wrong: ['kreisrund', 'nur nach oben', 'zufällig'],
+      },
+      {
+        q: 'Warum entstehen bei einer Punktlichtquelle scharfe Schatten?',
+        correct: 'weil Licht sich geradlinig ausbreitet',
+        wrong: [
+          'weil Licht nur nach oben läuft',
+          'weil Schatten ohne Licht entsteht',
+          'weil Luft das Licht kreisförmig streut',
+        ],
+      },
+      {
+        q: 'Ein Lichtstrahl durch zwei Löcher hintereinander zeigt vor allem …',
+        correct: 'geradlinige Ausbreitung',
+        wrong: ['kreisförmige Ausbreitung', 'Ausbreitung nur nach unten', 'keine Ausbreitung'],
+      },
+      {
+        q: 'Was gilt für Licht in homogenen Medien (z. B. Luft)?',
+        correct: 'Es läuft geradlinig.',
+        wrong: ['Es läuft nur im Kreis.', 'Es bleibt stehen.', 'Es läuft nur nach links.'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
     return choicePickTask({
-      question: 'Wie breitet sich Licht in Luft (ohne Spiegel/Linse) aus?',
-      choices: shuffleChoices(rng, [correct, 'kreisrund', 'nur nach oben', 'zufällig'], correct),
-      correct,
-      solution: correct,
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
       explanation:
         'In homogenen Medien breitet sich Licht geradlinig aus — deshalb entstehen scharfe Schatten.',
       instruction: 'Tippe die passende Aussage:',
     })
   },
-  (_rng) =>
-    multiSelectTask({
-      question: 'Welche Aussagen zum Licht stimmen? (mehrere möglich)',
-      choices: [
-        'Licht breitet sich geradlinig aus',
-        'Schatten entsteht hinter dem Körper',
-        'Zum Sehen braucht es Licht vom Gegenstand zum Auge',
-        'Licht läuft nur nach oben',
-        'Ohne Lichtquelle gibt es trotzdem Schatten',
-      ],
-      correct: [
-        'Licht breitet sich geradlinig aus',
-        'Schatten entsteht hinter dem Körper',
-        'Zum Sehen braucht es Licht vom Gegenstand zum Auge',
-      ],
-      solution:
-        'Geradlinige Ausbreitung; Schatten hinter dem Körper; Sehen braucht Licht zum Auge.',
-      explanation:
-        'Falsch sind „nur nach oben“ und „Schatten ohne Lichtquelle“. Schatten setzt eine Lichtquelle voraus.',
+  (rng) => {
+    const pools = [
+      {
+        question: 'Welche Aussagen zum Licht stimmen? (mehrere möglich)',
+        choices: [
+          'Licht breitet sich geradlinig aus',
+          'Schatten entsteht hinter dem Körper',
+          'Zum Sehen braucht es Licht vom Gegenstand zum Auge',
+          'Licht läuft nur nach oben',
+          'Ohne Lichtquelle gibt es trotzdem Schatten',
+        ],
+        correct: [
+          'Licht breitet sich geradlinig aus',
+          'Schatten entsteht hinter dem Körper',
+          'Zum Sehen braucht es Licht vom Gegenstand zum Auge',
+        ],
+      },
+      {
+        question: 'Welche Beobachtungen passen zur geradlinigen Ausbreitung? (mehrere möglich)',
+        choices: [
+          'scharfe Schatten hinter undurchsichtigen Körpern',
+          'Lichtfleck hinter zwei hintereinanderliegenden Löchern',
+          'Licht läuft nur im Kreis um die Lampe',
+          'Sonnenstrahlen als „Strahlenbüschel“ im Staub',
+          'Schatten ohne jede Lichtquelle',
+        ],
+        correct: [
+          'scharfe Schatten hinter undurchsichtigen Körpern',
+          'Lichtfleck hinter zwei hintereinanderliegenden Löchern',
+          'Sonnenstrahlen als „Strahlenbüschel“ im Staub',
+        ],
+      },
+    ] as const
+    const p = pick(rng, [...pools])
+    return multiSelectTask({
+      question: p.question,
+      choices: [...p.choices],
+      correct: [...p.correct],
+      solution: p.correct.join('; '),
+      explanation: 'Falsch sind Aussagen, die Licht nur nach oben oder Schatten ohne Lichtquelle behaupten.',
       instruction: 'Tippe alle richtigen Aussagen:',
-    }),
+    })
+  },
+  (rng) => {
+    const x = randInt(rng, 0, 3)
+    const y = randInt(rng, 0, 2)
+    const dx = pick(rng, [1, 2])
+    const cx = x + 2 * dx
+    const cy = y
+    if (cx > 6) {
+      return coordinateClickTask({
+        question: `Licht geht von (${x}|${y}) waagerecht nach rechts. Tippe den Punkt (${x + 1}|${y}) auf dem Strahl.`,
+        x: x + 1,
+        y,
+        xRange: [0, 6],
+        yRange: [0, 5],
+        solution: `(${x + 1}|${y})`,
+        explanation: 'Geradlinig: y bleibt gleich, x nimmt zu.',
+        instruction: 'Tippe einen Punkt auf dem Lichtstrahl:',
+      })
+    }
+    return coordinateClickTask({
+      question: `Licht geht von (${x}|${y}) waagerecht durch (${x + dx}|${y}). Tippe (${cx}|${cy}) auf dem verlängerten Strahl.`,
+      x: cx,
+      y: cy,
+      xRange: [0, 6],
+      yRange: [0, 5],
+      solution: `(${cx}|${cy})`,
+      explanation: `Geradlinige Ausbreitung: verlängere um denselben Schritt → (${cx}|${cy}).`,
+      visualContent: lightRayHintSvg({
+        from: { x, y },
+        through: { x: x + dx, y },
+      }),
+      instruction: 'Tippe einen Punkt auf dem Lichtstrahl:',
+    })
+  },
 )
 
-const lampenposition: Topic['generate'] = (rng) => {
-  const lamp = pick(rng, [-5, -4, -3, -2, -1, 1, 2, 3, 4, 5])
-  const start = lamp > 0 ? -2 : 2
-  return paramSliderTask({
-    question: `Stelle die Lampe genau auf x = ${lamp} (Körper bei x = 0). Beobachte, wohin der Schatten wandert.`,
-    params: [{ id: 'lamp', label: 'Lampenposition x', min: -5, max: 5, step: 1, start }],
-    correct: { lamp },
-    solution: `x = ${lamp}`,
-    explanation:
-      lamp < 0
-        ? 'Lampe links vom Körper → Schatten rechts.'
-        : 'Lampe rechts vom Körper → Schatten links.',
-    preview: 'shadow',
-    instruction: 'Schieberegler auf den geforderten Wert:',
-  })
-}
+const lampenposition: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const lamp = pick(rng, [-5, -4, -3, -2, -1, 1, 2, 3, 4, 5])
+    const start = lamp > 0 ? -2 : 2
+    return paramSliderTask({
+      question: `Stelle die Lampe genau auf x = ${lamp} (Körper bei x = 0). Beobachte, wohin der Schatten wandert.`,
+      params: [{ id: 'lamp', label: 'Lampenposition x', min: -5, max: 5, step: 1, start }],
+      correct: { lamp },
+      solution: `x = ${lamp}`,
+      explanation:
+        lamp < 0
+          ? 'Lampe links vom Körper → Schatten rechts.'
+          : 'Lampe rechts vom Körper → Schatten links.',
+      preview: 'shadow',
+      instruction: 'Schieberegler auf den geforderten Wert:',
+    })
+  },
+  (rng) => {
+    const lampLeft = pick(rng, [true, false])
+    const correct = lampLeft ? 'rechts vom Körper' : 'links vom Körper'
+    return choicePickTask({
+      question: `Die Lampe steht ${lampLeft ? 'links' : 'rechts'} vom Körper. Wohin fällt der Schatten?`,
+      choices: shuffleChoices(
+        rng,
+        [correct, lampLeft ? 'links vom Körper' : 'rechts vom Körper', 'über dem Körper', 'unter dem Körper'],
+        correct,
+      ),
+      correct,
+      solution: correct,
+      explanation: 'Schatten entsteht auf der dem Licht abgewandten Seite.',
+      instruction: 'Tippe die Schattenseite:',
+    })
+  },
+)
 
 const lichtstrahl: Topic['generate'] = mixedVariants(
   (rng) => {
@@ -310,29 +409,51 @@ const geschwindigkeit: Topic['generate'] = (rng) => {
   )(rng)
 }
 
-const masseVergleich: Topic['generate'] = (rng) => {
-  const a = randInt(rng, 2, 9)
-  const b = randInt(rng, 2, 9)
-  if (a === b) {
+const masseVergleich: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const a = randInt(rng, 2, 9)
+    const b = randInt(rng, 2, 9)
+    if (a === b) {
+      return choicePickTask({
+        question: `Zwei Körper haben jeweils die Masse ${a} kg. Was gilt?`,
+        choices: ['A ist schwerer', 'B ist schwerer', 'beide gleich schwer'],
+        correct: 'beide gleich schwer',
+        solution: 'beide gleich schwer',
+        explanation: 'Gleiche Masse → gleiche Schwere (am selben Ort).',
+        instruction: 'Tippe den Vergleich:',
+      })
+    }
+    const correct = a > b ? 'A ist schwerer' : 'B ist schwerer'
     return choicePickTask({
-      question: `Zwei Körper haben jeweils die Masse ${a} kg. Was gilt?`,
-      choices: ['A ist schwerer', 'B ist schwerer', 'beide gleich schwer'],
-      correct: 'beide gleich schwer',
-      solution: 'beide gleich schwer',
-      explanation: 'Gleiche Masse → gleiche Schwere (am selben Ort).',
+      question: `Körper A hat die Masse ${a} kg, Körper B ${b} kg. Was gilt?`,
+      choices: shuffleChoices(rng, ['A ist schwerer', 'B ist schwerer', 'beide gleich schwer'], correct),
+      correct,
+      solution: correct,
+      explanation: `Vergleiche die Massen: ${a} kg ${a > b ? '>' : '<'} ${b} kg.`,
       instruction: 'Tippe den Vergleich:',
     })
-  }
-  const correct = a > b ? 'A ist schwerer' : 'B ist schwerer'
-  return choicePickTask({
-    question: `Körper A hat die Masse ${a} kg, Körper B ${b} kg. Was gilt?`,
-    choices: shuffleChoices(rng, ['A ist schwerer', 'B ist schwerer', 'beide gleich schwer'], correct),
-    correct,
-    solution: correct,
-    explanation: `Vergleiche die Massen: ${a} kg ${a > b ? '>' : '<'} ${b} kg.`,
-    instruction: 'Tippe den Vergleich:',
-  })
-}
+  },
+  (rng) => {
+    const items = [
+      { label: 'Federwaage: 2 kg', value: 2 },
+      { label: 'Federwaage: 5 kg', value: 5 },
+      { label: 'Federwaage: 8 kg', value: 8 },
+    ]
+    const ordered = [...items]
+    for (let i = items.length - 1; i > 0; i--) {
+      const j = randInt(rng, 0, i)
+      ;[items[i], items[j]] = [items[j]!, items[i]!]
+    }
+    const correctOrder = ordered.map((row) => items.findIndex((it) => it.value === row.value))
+    return dragDropSortTask({
+      question: 'Ordne die Körper nach steigender Masse (leicht → schwer).',
+      items,
+      correctOrder,
+      solution: '2 kg → 5 kg → 8 kg',
+      explanation: 'Größere Masse bedeutet bei gleicher g größere Gewichtskraft.',
+    })
+  },
+)
 
 /** LB3 — Temperatur */
 const thermometer: Topic['generate'] = mixedVariants(
@@ -366,18 +487,44 @@ const thermometer: Topic['generate'] = mixedVariants(
   },
 )
 
-const kelvin: Topic['generate'] = (rng) => {
-  const c = pick(rng, [-20, -10, 0, 20, 27, 37, 100])
-  const k = c + 273
-  return valueTask({
-    question: `Wandle ${c} °C in Kelvin um (T/K = ϑ/°C + 273).`,
-    answerKind: 'integer',
-    unit: 'K',
-    value: k,
-    solution: `${k} K`,
-    explanation: `T = ${c} + 273 = ${k} K.`,
-  })
-}
+const kelvin: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const c = pick(rng, [-20, -10, 0, 20, 27, 37, 100])
+    const k = c + 273
+    return valueTask({
+      question: `Wandle ${c} °C in Kelvin um (T/K = ϑ/°C + 273).`,
+      answerKind: 'integer',
+      unit: 'K',
+      value: k,
+      solution: `${k} K`,
+      explanation: `T = ${c} + 273 = ${k} K.`,
+    })
+  },
+  (rng) => {
+    const c = pick(rng, [-20, -10, 0, 20, 27, 37, 100])
+    const k = c + 273
+    return valueTask({
+      question: `Wandle ${k} K in °C um (ϑ/°C = T/K − 273).`,
+      answerKind: 'integer',
+      unit: '°C',
+      value: c,
+      solution: `${c} °C`,
+      explanation: `ϑ = ${k} − 273 = ${c} °C.`,
+    })
+  },
+  (rng) => {
+    const c = pick(rng, [0, 20, 37, 100])
+    return numberLineTask({
+      question: `Stelle ${c} °C auf dem Zahlenstrahl ein (nur zur Orientierung; Lösung in °C).`,
+      min: -20,
+      max: 120,
+      step: 1,
+      value: c,
+      solution: `${c} °C`,
+      explanation: `${c} °C entspricht ${c + 273} K.`,
+    })
+  },
+)
 
 const aggregate: Topic['generate'] = mixedVariants(
   (rng) => {
@@ -421,23 +568,15 @@ const aggregate: Topic['generate'] = mixedVariants(
       explanation: '0 °C (Schmelzen) < ~20 °C < 100 °C (Sieden).',
     }),
   (rng) => {
-    const ordered = pick(rng, [
-      [
-        { label: 't = 0 min: 18 °C', value: 0 },
-        { label: 't = 4 min: 32 °C', value: 4 },
-        { label: 't = 8 min: 45 °C', value: 8 },
-      ],
-      [
-        { label: 't = 0 min: 5 °C', value: 0 },
-        { label: 't = 3 min: 12 °C', value: 3 },
-        { label: 't = 6 min: 20 °C', value: 6 },
-      ],
-      [
-        { label: 't = 1 min: 22 °C', value: 1 },
-        { label: 't = 5 min: 35 °C', value: 5 },
-        { label: 't = 9 min: 48 °C', value: 9 },
-      ],
-    ])
+    const t0 = pick(rng, [0, 1, 2])
+    const dt = pick(rng, [3, 4, 5])
+    const temp0 = pick(rng, [5, 10, 18, 20, 22])
+    const dT = pick(rng, [8, 10, 12, 14])
+    const ordered = [
+      { label: `t = ${t0} min: ${temp0} °C`, value: t0 },
+      { label: `t = ${t0 + dt} min: ${temp0 + dT} °C`, value: t0 + dt },
+      { label: `t = ${t0 + 2 * dt} min: ${temp0 + 2 * dT} °C`, value: t0 + 2 * dt },
+    ]
     const items = [...ordered]
     for (let i = items.length - 1; i > 0; i--) {
       const j = randInt(rng, 0, i)
@@ -458,10 +597,11 @@ const aggregate: Topic['generate'] = mixedVariants(
 const stromkreis: Topic['generate'] = mixedVariants(
   (rng) => {
     const closed = pick(rng, [true, false])
-    const correct = closed ? 'Die Lampe leuchtet.' : 'Die Lampe leuchtet nicht.'
-    const wrong = closed ? 'Die Lampe leuchtet nicht.' : 'Die Lampe leuchtet.'
+    const device = pick(rng, ['Lampe', 'Summer', 'LED'])
+    const correct = closed ? `Die ${device} ist an.` : `Die ${device} ist aus.`
+    const wrong = closed ? `Die ${device} ist aus.` : `Die ${device} ist an.`
     return choicePickTask({
-      question: 'Was passiert in diesem einfachen Stromkreis?',
+      question: `Einfacher Stromkreis mit ${device}: Schalter ist ${closed ? 'geschlossen' : 'offen'}. Was gilt?`,
       choices: shuffleChoices(
         rng,
         [correct, wrong, 'Die Batterie verschwindet.', 'Nur der Schalter leuchtet.'],
@@ -470,137 +610,495 @@ const stromkreis: Topic['generate'] = mixedVariants(
       correct,
       solution: correct,
       explanation: closed
-        ? 'Geschlossener Stromkreis: Ladung fließt, die Lampe leuchtet.'
-        : 'Offener Stromkreis: kein geschlossener Weg, die Lampe bleibt aus.',
+        ? 'Geschlossener Stromkreis: Ladung fließt, der Verbraucher arbeitet.'
+        : 'Offener Stromkreis: kein geschlossener Weg, der Verbraucher bleibt aus.',
       visualContent: circuitSvg(closed),
       instruction: 'Tippe die richtige Aussage:',
     })
   },
-  (_rng) =>
-    multiSelectTask({
-      question: 'Welche Teile braucht ein einfacher Stromkreis, damit die Lampe leuchten kann?',
-      choices: [
-        'Spannungsquelle (Batterie)',
-        'geschlossener Schalter',
-        'Leiter (Drähte)',
-        'offener Schalter',
-        'nur Isolierband ohne Leiter',
-      ],
-      correct: [
-        'Spannungsquelle (Batterie)',
-        'geschlossener Schalter',
-        'Leiter (Drähte)',
-      ],
-      solution: 'Batterie, geschlossener Schalter und Leiter (Drähte).',
-      explanation:
-        'Ohne Spannungsquelle und geschlossenen Leitungsweg fließt kein Strom. Ein offener Schalter oder nur Isolierband reicht nicht.',
+  (rng) => {
+    const pools = [
+      {
+        question: 'Welche Teile braucht ein einfacher Stromkreis, damit die Lampe leuchten kann?',
+        choices: [
+          'Spannungsquelle (Batterie)',
+          'geschlossener Schalter',
+          'Leiter (Drähte)',
+          'offener Schalter',
+          'nur Isolierband ohne Leiter',
+        ],
+        correct: [
+          'Spannungsquelle (Batterie)',
+          'geschlossener Schalter',
+          'Leiter (Drähte)',
+        ],
+      },
+      {
+        question: 'Was gehört zu einem geschlossenen Stromkreis? (mehrere möglich)',
+        choices: [
+          'Spannungsquelle',
+          'geschlossener Leitungsweg',
+          'Verbraucher (z. B. Lampe)',
+          'unterbrochene Leitung',
+          'nur ein einzelner Draht ohne Rückweg',
+        ],
+        correct: ['Spannungsquelle', 'geschlossener Leitungsweg', 'Verbraucher (z. B. Lampe)'],
+      },
+    ] as const
+    const p = pick(rng, [...pools])
+    return multiSelectTask({
+      question: p.question,
+      choices: [...p.choices],
+      correct: [...p.correct],
+      solution: p.correct.join('; '),
+      explanation: 'Ohne Spannungsquelle und geschlossenen Weg fließt kein Strom.',
       instruction: 'Tippe alle nötigen Teile:',
       visualContent: circuitSvg(true),
-    }),
+    })
+  },
+  (rng) => {
+    const closed = pick(rng, [true, false])
+    const correct = closed ? 'geschlossen' : 'offen'
+    return choicePickTask({
+      question: `Die Lampe ${closed ? 'leuchtet' : 'leuchtet nicht'}. Ist der Stromkreis eher offen oder geschlossen?`,
+      choices: shuffleChoices(rng, ['offen', 'geschlossen', 'weder noch', 'nur die Batterie'], correct),
+      correct,
+      solution: correct,
+      explanation: closed
+        ? 'Leuchtet die Lampe, ist der Kreis geschlossen.'
+        : 'Leuchtet die Lampe nicht (bei intakter Lampe/Batterie), ist der Kreis oft offen.',
+      visualContent: circuitSvg(closed),
+      instruction: 'Tippe den Zustand:',
+    })
+  },
 )
 
-const leiter: Topic['generate'] = (rng) => {
-  const cases = [
-    { material: 'Kupferdraht', correct: 'Leiter' },
-    { material: 'Silberblech', correct: 'Leiter' },
-    { material: 'Gummi', correct: 'Nichtleiter' },
-    { material: 'Kunststoffhülle', correct: 'Nichtleiter' },
-    { material: 'Holz (trocken)', correct: 'Nichtleiter' },
-    { material: 'Eisennagel', correct: 'Leiter' },
-  ] as const
-  const c = pick(rng, [...cases])
-  return choicePickTask({
-    question: `Ist „${c.material}“ eher ein elektrischer Leiter oder ein Nichtleiter?`,
-    choices: ['Leiter', 'Nichtleiter'],
-    correct: c.correct,
-    solution: c.correct,
-    explanation:
-      'Metalle leiten den Strom gut; Gummi, Kunststoff und trockenes Holz isolieren.',
-    instruction: 'Tippe die Einordnung:',
-  })
-}
+const leiter: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      { material: 'Kupferdraht', correct: 'Leiter' },
+      { material: 'Silberblech', correct: 'Leiter' },
+      { material: 'Gummi', correct: 'Nichtleiter' },
+      { material: 'Kunststoffhülle', correct: 'Nichtleiter' },
+      { material: 'Holz (trocken)', correct: 'Nichtleiter' },
+      { material: 'Eisennagel', correct: 'Leiter' },
+      { material: 'Alufolie', correct: 'Leiter' },
+      { material: 'Porzellantasse', correct: 'Nichtleiter' },
+      { material: 'Goldring', correct: 'Leiter' },
+      { material: 'Papier (trocken)', correct: 'Nichtleiter' },
+      { material: 'Graphitmine', correct: 'Leiter' },
+      { material: 'Glasscheibe', correct: 'Nichtleiter' },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: `Ist „${c.material}“ eher ein elektrischer Leiter oder ein Nichtleiter?`,
+      choices: ['Leiter', 'Nichtleiter'],
+      correct: c.correct,
+      solution: c.correct,
+      explanation:
+        'Metalle und Graphit leiten gut; Gummi, Kunststoff, Glas, Porzellan und trockenes Holz isolieren.',
+      instruction: 'Tippe die Einordnung:',
+    })
+  },
+  (rng) => {
+    const pools = [
+      {
+        choices: ['Kupfer', 'Eisen', 'Gummi', 'Silber', 'trockenes Holz'],
+        correct: ['Kupfer', 'Eisen', 'Silber'],
+      },
+      {
+        choices: ['Aluminium', 'Gold', 'Kunststoff', 'Graphit', 'Porzellan'],
+        correct: ['Aluminium', 'Gold', 'Graphit'],
+      },
+    ] as const
+    const p = pick(rng, [...pools])
+    return multiSelectTask({
+      question: 'Welche Stoffe sind typische elektrische Leiter? (mehrere möglich)',
+      choices: [...p.choices],
+      correct: [...p.correct],
+      solution: p.correct.join(', '),
+      explanation: 'Metalle und Graphit leiten; Isolatoren nicht.',
+      instruction: 'Tippe alle Leiter:',
+    })
+  },
+)
 
 /** Wahlbereiche */
-const sehen: Topic['generate'] = (rng) => {
-  const correct = 'Gegenstand → Auge (über Licht)'
-  return choicePickTask({
-    question: 'Damit wir einen Gegenstand sehen, muss Licht …',
-    choices: shuffleChoices(
-      rng,
-      [
-        correct,
-        'vom Auge zum Gegenstand und zurück ohne Lichtquelle',
-        'nur im Dunkeln wirken',
-        'nur durch den Schatten gehen',
-      ],
-      correct,
-    ),
-    correct,
-    solution: correct,
-    explanation:
-      'Sehen erfordert Licht: Es kommt von einer Quelle, trifft den Gegenstand und gelangt (reflektiert) ins Auge.',
-    instruction: 'Tippe die passende Aussage:',
-  })
-}
+const sehen: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      {
+        q: 'Damit wir einen Gegenstand sehen, muss Licht …',
+        correct: 'Gegenstand → Auge (über Licht)',
+        wrong: [
+          'vom Auge zum Gegenstand und zurück ohne Lichtquelle',
+          'nur im Dunkeln wirken',
+          'nur durch den Schatten gehen',
+        ],
+      },
+      {
+        q: 'Warum sieht man einen Baum bei Tag?',
+        correct: 'Sonnenlicht wird am Baum reflektiert und gelangt ins Auge',
+        wrong: [
+          'das Auge strahlt selbst Licht zum Baum',
+          'der Baum leuchtet ohne jede Lichtquelle',
+          'Licht läuft nur durch den Schatten',
+        ],
+      },
+      {
+        q: 'Eine Taschenlampe leuchtet auf ein Buch. Du siehst das Buch, weil …',
+        correct: 'reflektiertes Licht ins Auge fällt',
+        wrong: [
+          'das Buch Licht zum Auge saugt ohne Reflexion',
+          'Licht nur im Schatten sichtbar ist',
+          'das Auge ohne Licht auskommt',
+        ],
+      },
+      {
+        q: 'Im völlig dunklen Raum ohne Lichtquelle …',
+        correct: 'sieht man keine Gegenstände',
+        wrong: [
+          'sieht man alles besonders scharf',
+          'braucht man kein Auge',
+          'gibt es trotzdem bunte Farben ohne Licht',
+        ],
+      },
+      {
+        q: 'Eine Kerzenflamme sieht man auch im Dunkeln, weil …',
+        correct: 'sie selbst leuchtet (Licht aussendet)',
+        wrong: [
+          'das Auge Licht zur Kerze schickt',
+          'Schatten die Flamme erzeugt',
+          'Luft ohne Licht leuchtet',
+        ],
+      },
+      {
+        q: 'Ein Spiegelbild entsteht, weil …',
+        correct: 'Licht am Spiegel reflektiert und ins Auge gelangt',
+        wrong: [
+          'Licht im Spiegel verschwindet',
+          'das Auge den Spiegel berührt',
+          'ohne Licht Farben entstehen',
+        ],
+      },
+      {
+        q: 'Fotografie braucht …',
+        correct: 'Licht, das auf den Sensor/Film trifft',
+        wrong: [
+          'einen völlig dunklen Raum ohne jedes Licht',
+          'nur Schatten ohne Objektiv',
+          'dass das Auge Strahlen aussendet',
+        ],
+      },
+      {
+        q: 'Welche Reihenfolge beschreibt das Sehen richtig?',
+        correct: 'Lichtquelle → Gegenstand → Auge',
+        wrong: [
+          'Auge → Gegenstand → Lichtquelle ohne Licht',
+          'Schatten → Auge → Lichtquelle',
+          'Gegenstand → Schatten → ohne Auge',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation:
+        'Sehen braucht Licht vom Gegenstand (oder einer Quelle) zum Auge.',
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (rng) => {
+    const pools = [
+      {
+        question: 'Was braucht man, um einen Gegenstand zu sehen? (mehrere möglich)',
+        choices: [
+          'Lichtquelle oder beleuchteten Gegenstand',
+          'Lichtweg zum Auge',
+          'völlig dunklen Raum ohne Licht',
+          'reflektierendes oder selbstleuchtendes Objekt',
+        ],
+        correct: [
+          'Lichtquelle oder beleuchteten Gegenstand',
+          'Lichtweg zum Auge',
+          'reflektierendes oder selbstleuchtendes Objekt',
+        ],
+      },
+      {
+        question: 'Welche Aussagen zum Sehen stimmen? (mehrere möglich)',
+        choices: [
+          'Ohne Licht sieht man nichts',
+          'Reflektiertes Licht kann ins Auge gelangen',
+          'Das Auge sendet unsichtbare Strahlen zum Gegenstand',
+          'Selbstleuchtende Körper (z. B. Lampe) kann man sehen',
+          'Schatten allein reicht zum Sehen aus',
+        ],
+        correct: [
+          'Ohne Licht sieht man nichts',
+          'Reflektiertes Licht kann ins Auge gelangen',
+          'Selbstleuchtende Körper (z. B. Lampe) kann man sehen',
+        ],
+      },
+    ] as const
+    const p = pick(rng, [...pools])
+    return multiSelectTask({
+      question: p.question,
+      choices: [...p.choices],
+      correct: [...p.correct],
+      solution: p.correct.join('; '),
+      explanation: 'Ohne Licht und ohne Weg zum Auge sieht man nichts.',
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+    })
+  },
+)
 
-const daemmung: Topic['generate'] = (rng) => {
-  const correct = 'Luftschicht / Dämmstoff'
-  return choicePickTask({
-    question: 'Was verringert die Wärmeleitung durch eine Wand besonders gut?',
-    choices: shuffleChoices(
-      rng,
-      [correct, 'dünnes Kupferblech', 'eine große Öffnung', 'feuchter Putz ohne Luft'],
-      correct,
-    ),
-    correct,
-    solution: correct,
-    explanation: 'Stillstehende Luft und Dämmstoffe leiten Wärme schlecht — deshalb dämmen sie.',
-    instruction: 'Tippe die beste Antwort:',
-  })
-}
+const daemmung: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      {
+        q: 'Was verringert die Wärmeleitung durch eine Wand besonders gut?',
+        correct: 'Luftschicht / Dämmstoff',
+        wrong: ['dünnes Kupferblech', 'eine große Öffnung', 'feuchter Putz ohne Luft'],
+      },
+      {
+        q: 'Warum dämmt Styropor gut?',
+        correct: 'viel stillstehende Luft in kleinen Poren',
+        wrong: [
+          'es leitet Wärme besser als Metall',
+          'es erzeugt eigene Wärme',
+          'es ist vollständig durchsichtig für Wärme',
+        ],
+      },
+      {
+        q: 'Eine Wärmebrücke in der Wand …',
+        correct: 'leitet Wärme besonders gut und verschlechtert die Dämmung',
+        wrong: [
+          'verbessert immer die Dämmung',
+          'stoppt jede Wärmeleitung',
+          'hat keinen Einfluss',
+        ],
+      },
+      {
+        q: 'Welches Fenster dämmt typischerweise besser?',
+        correct: 'Dreifachverglasung mit Luft-/Gaszwischenräumen',
+        wrong: [
+          'einfache Einfachscheibe',
+          'offenes Fenster',
+          'Metallrahmen ohne Unterbrechung',
+        ],
+      },
+      {
+        q: 'Wozu dient eine Dämmstoffschicht in der Außenwand?',
+        correct: 'Wärmeverlust zu verringern',
+        wrong: [
+          'die Wand elektrisch leitend zu machen',
+          'Lichtstrahlen zu speichern',
+          'Schatten zu erzeugen',
+        ],
+      },
+      {
+        q: 'Stillstehende Luft dämmt gut, weil sie …',
+        correct: 'Wärme schlecht leitet',
+        wrong: [
+          'Wärme besser leitet als Kupfer',
+          'Strom leitet',
+          'Licht erzeugt',
+        ],
+      },
+      {
+        q: 'Ein ungedämmtes Dachfenster im Winter …',
+        correct: 'lässt viel Wärme entweichen',
+        wrong: [
+          'dämmt besser als eine dicke Wand',
+          'erzeugt eigene Wärme',
+          'stoppt jede Wärmeleitung',
+        ],
+      },
+      {
+        q: 'Welche Materialwahl dämmt eher schlecht?',
+        correct: 'durchgehende Metallbrücke',
+        wrong: [
+          'Mineralwolle zwischen Holzbalken',
+          'Luftpolster in Isolierglas',
+          'dicke Styroporschicht',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Stillstehende Luft und Dämmstoffe leiten Wärme schlecht.',
+      instruction: 'Tippe die beste Antwort:',
+    })
+  },
+  (rng) => {
+    const pools = [
+      {
+        question: 'Welche Maßnahmen verbessern die Wärmedämmung? (mehrere möglich)',
+        choices: [
+          'dicke Dämmschicht',
+          'stillstehende Luftpolster',
+          'große Fenster ohne Isolierglas',
+          'Metallbrücke durch die Wand',
+          'Zweifach- oder Dreifachverglasung',
+        ],
+        correct: [
+          'dicke Dämmschicht',
+          'stillstehende Luftpolster',
+          'Zweifach- oder Dreifachverglasung',
+        ],
+      },
+      {
+        question: 'Was gehört zur guten Gebäudedämmung? (mehrere möglich)',
+        choices: [
+          'Dämmstoffe in der Wand',
+          'vermeiden von Wärmebrücken',
+          'möglichst viele ungedämmte Öffnungen',
+          'dichte Fenster und Türen',
+          'durchgehende Metallstäbe ohne Trennung',
+        ],
+        correct: ['Dämmstoffe in der Wand', 'vermeiden von Wärmebrücken', 'dichte Fenster und Türen'],
+      },
+    ] as const
+    const p = pick(rng, [...pools])
+    return multiSelectTask({
+      question: p.question,
+      choices: [...p.choices],
+      correct: [...p.correct],
+      solution: p.correct.join('; '),
+      explanation: 'Wärmebrücken und ungedämmte Öffnungen verschlechtern die Dämmung.',
+      instruction: 'Tippe alle passenden Maßnahmen:',
+    })
+  },
+)
 
 const farben: Topic['generate'] = mixedVariants(
   (rng) => {
-    const correct = 'weißes Licht enthält viele Farben'
-    return choicePickTask({
-      question: 'Was stimmt für weißes Licht (z. B. Sonnenlicht)?',
-      choices: shuffleChoices(
-        rng,
-        [
-          correct,
+    const cases = [
+      {
+        q: 'Was stimmt für weißes Licht (z. B. Sonnenlicht)?',
+        correct: 'weißes Licht enthält viele Farben',
+        wrong: [
           'weißes Licht hat keine Farbe und kann nicht zerlegt werden',
           'weißes Licht ist nur rot',
           'Farben entstehen nur ohne Licht',
         ],
-        correct,
-      ),
-      correct,
-      solution: correct,
-      explanation: 'Weißes Licht lässt sich (z. B. am Prisma) in Spektralfarben zerlegen.',
+      },
+      {
+        q: 'Ein Prisma zerlegt weißes Licht …',
+        correct: 'in Spektralfarben',
+        wrong: ['in nur eine Farbe Grün', 'in Schatten', 'in Ultraschall'],
+      },
+      {
+        q: 'Ein roter Filter lässt vor allem …',
+        correct: 'rotes Licht durch',
+        wrong: ['alle Farben gleich stark durch', 'nur blaues Licht durch', 'kein Licht durch'],
+      },
+      {
+        q: 'Ohne Licht …',
+        correct: 'sieht man keine Farben',
+        wrong: [
+          'sieht man alle Farben besonders intensiv',
+          'entstehen Farben von selbst',
+          'braucht man keinen Filter',
+        ],
+      },
+      {
+        q: 'Ein blauer Filter …',
+        correct: 'lässt vor allem blaues Licht durch',
+        wrong: [
+          'lässt nur rotes Licht durch',
+          'erzeugt Ultraschall',
+          'macht weißes Licht zu Schatten',
+        ],
+      },
+      {
+        q: 'Regenbogenfarben entstehen, weil …',
+        correct: 'weißes Licht zerlegt wird (Dispersion)',
+        wrong: [
+          'Licht nur nach oben läuft',
+          'ohne Sonne Farben entstehen',
+          'Schatten Spektren speichern',
+        ],
+      },
+      {
+        q: 'Mischt man spektrale Farben geeignet, kann …',
+        correct: 'wieder der Eindruck von weißem Licht entstehen',
+        wrong: [
+          'nur Schatten entstehen',
+          'Licht verschwinden',
+          'Ultraschall entstehen',
+        ],
+      },
+      {
+        q: 'Welche Aussage ist richtig?',
+        correct: 'Farbfilter schwächen andere Spektralanteile',
+        wrong: [
+          'Filter erzeugen Licht aus dem Nichts',
+          'Farben gibt es nur ohne Lichtquelle',
+          'Weißes Licht besteht nur aus einer Wellenlänge',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Weißes Licht lässt sich zerlegen; Filter lassen „ihre“ Farbe durch.',
       instruction: 'Tippe die passende Aussage:',
     })
   },
-  (_rng) =>
-    multiSelectTask({
-      question: 'Welche Aussagen zu Farben und Filtern stimmen? (mehrere möglich)',
-      choices: [
-        'Ein Farbfilter lässt vor allem „seine“ Farbe durch',
-        'Weißes Licht lässt sich in Spektralfarben zerlegen',
-        'Ohne Licht sieht man trotzdem alle Farben',
-        'Ein roter Filter lässt vor allem Rot durch und hält andere Farben zurück',
-        'Farben entstehen nur im Dunkeln',
-      ],
-      correct: [
-        'Ein Farbfilter lässt vor allem „seine“ Farbe durch',
-        'Weißes Licht lässt sich in Spektralfarben zerlegen',
-        'Ein roter Filter lässt vor allem Rot durch und hält andere Farben zurück',
-      ],
-      solution:
-        'Filter lassen „ihre“ Farbe durch; weißes Licht ist zerlegbar; ohne Licht keine Farben.',
-      explanation:
-        'Falsch sind „Farben ohne Licht“ und „Farben nur im Dunkeln“. Filter schwächen andere Spektralanteile.',
+  (rng) => {
+    const pools = [
+      {
+        question: 'Welche Aussagen zu Farben und Filtern stimmen? (mehrere möglich)',
+        choices: [
+          'Ein Farbfilter lässt vor allem „seine“ Farbe durch',
+          'Weißes Licht lässt sich in Spektralfarben zerlegen',
+          'Ohne Licht sieht man trotzdem alle Farben',
+          'Ein roter Filter lässt vor allem Rot durch und hält andere Farben zurück',
+          'Farben entstehen nur im Dunkeln',
+        ],
+        correct: [
+          'Ein Farbfilter lässt vor allem „seine“ Farbe durch',
+          'Weißes Licht lässt sich in Spektralfarben zerlegen',
+          'Ein roter Filter lässt vor allem Rot durch und hält andere Farben zurück',
+        ],
+      },
+      {
+        question: 'Was gehört zur Zerlegung von weißem Licht? (mehrere möglich)',
+        choices: [
+          'Prisma oder Gitter',
+          'Spektralfarben (z. B. rot bis violett)',
+          'dass weißes Licht nur aus einer Wellenlänge besteht',
+          'Dispersion / unterschiedliche Brechung',
+          'dass Farben nur ohne Lichtquelle existieren',
+        ],
+        correct: [
+          'Prisma oder Gitter',
+          'Spektralfarben (z. B. rot bis violett)',
+          'Dispersion / unterschiedliche Brechung',
+        ],
+      },
+    ] as const
+    const p = pick(rng, [...pools])
+    return multiSelectTask({
+      question: p.question,
+      choices: [...p.choices],
+      correct: [...p.correct],
+      solution: p.correct.join('; '),
+      explanation: 'Filter und Spektrum gehören zu Farbe und Licht; ohne Licht keine Farben.',
       instruction: 'Tippe alle richtigen Aussagen:',
-    }),
+    })
+  },
 )
 
 export const PHYSIK_K6_GENERATORS: Record<string, Topic['generate']> = {
