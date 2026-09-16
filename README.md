@@ -1,473 +1,180 @@
 # Mathsachs
 
-Ein **lehrplanorientiertes Mathematik-Übungsprogramm** für Gymnasium und
-Oberschule in Sachsen (**Gymnasium Klasse 5 bis Jahrgangsstufe 11/12**,
-**Oberschule Hauptschulbildungsgang 5–9** und **Realschulbildungsgang 5–10**).
-Schülerinnen und Schüler wählen
-aus den Lernbereichen des Lehrplans einzelne Themen aus und üben sie entweder
-direkt am Bildschirm oder erzeugen ausdruckbare Übungsblätter. Lehrkräfte können
-daraus **Übungsklausuren** zusammenstellen und als Code oder Link an eine Klasse
-verteilen. Gebaut mit React, TypeScript und Vite.
+**Lehrplanorientiertes Übungsprogramm** für Mathematik und Physik an
+sächsischen Schulen. Schülerinnen und Schüler wählen Themen aus dem Lehrplan,
+üben am Bildschirm oder drucken Übungsblätter. Lehrkräfte stellen
+**Übungsklausuren** zusammen und verteilen sie per Code oder Link.
+
+Aktuelle Version: **0.27.6** · [Changelog](CHANGELOG.md) ·
+[Alle Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
+
+## Download
+
+Installer der aktuellen Version:
+
+- **Windows-Installer:**
+  [Mathsachs-Setup-0.27.6.exe](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.27.6/Mathsachs-Setup-0.27.6.exe)
+- **macOS-Installer (Apple Silicon):**
+  [Mathsachs-0.27.6-arm64.dmg](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.27.6/Mathsachs-0.27.6-arm64.dmg)
+- **Linux (AppImage):**
+  [Mathsachs-0.27.6.AppImage](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.27.6/Mathsachs-0.27.6.AppImage)
+- **Linux (Debian/Ubuntu):**
+  [mathsachs_0.27.6_amd64.deb](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.27.6/mathsachs_0.27.6_amd64.deb)
+
+**Windows-Hinweis (SmartScreen):** Weil die App von einer Privatperson kommt und
+nicht mit einem Code-Signing-Zertifikat signiert ist, warnt Windows oft mit
+„Windows hat den PC geschützt“. Das ist erwartbar und kein Virenfund.
+
+1. Den Installer **nur** von den offiziellen GitHub-Releases laden.
+2. Bei der Warnung **„Weitere Informationen“** wählen.
+3. Dann **„Trotzdem ausführen“** (manchmal **„Trotzdem installieren“**).
+
+Unter **Einstellungen → Auf Updates prüfen** meldet die App, wenn eine neuere
+Version bereitsteht.
+
+## Lehrpläne
+
+Unter **Einstellungen → Lehrpläne** installierst, aktualisierst oder entfernst
+du Pakete. Danach blendest du die gewünschten Klassenstufen ein.
+
+Aktuell verfügbar:
+
+| Paket | Inhalt |
+| --- | --- |
+| **Gymnasium Sachsen · Mathematik** | Klasse 5–10 und Jahrgangsstufe 11/12 (Grundkurs) |
+| **Gymnasium Sachsen · Physik** | Klasse 6–10 und Jahrgangsstufe 11/12 (Grundkurs und Leistungskurs) |
+| **Oberschule Sachsen · Mathematik · Hauptschulbildungsgang** | Klassen 5–9 |
+| **Oberschule Sachsen · Mathematik · Realschulbildungsgang** | Klassen 5–10 |
+
+Die Lernbereiche und Themen folgen den sächsischen Lehrplänen. Aufgaben werden
+zufällig erzeugt und haben stets eindeutige, überprüfbare Lösungen. Ergänzungen
+von Lehrkräften erscheinen mit dem Badge **Lehrer-Ergänzung**.
 
 ## Funktionen
 
-- **Lehrplan-Themen** als **versionierte, nachinstallierbare Pakete**.
-  Der Katalog enthält **Gymnasium Sachsen · Mathematik** (Klasse 5–10 und
-  Jahrgangsstufe 11/12 Grundkurs) sowie **Oberschule Sachsen · Mathematik**
-  als **Hauptschulbildungsgang** (Klassen 5–9) und **Realschulbildungsgang**
-  (Klassen 5–10). Unter **Einstellungen → Lehrpläne** installierst,
-  aktualisierst oder entfernst du Pakete. Der Katalog kommt von
-  GitHub (`curricula/manifest.json`); die Dateien liegen lokal bzw. auf dem
-  PC, nicht im Installer. Lehrer-Ergänzungen bleiben im Paket unter `extras`
-  getrennt und tragen im Themen-/Klausur-/Challenge-Baum das Badge
-  **Lehrer-Ergänzung**.
-- **Themen-Suche**: Stichwortsuche über die geladenen Klassen –
-  case-insensitive, teilstring-basiert und umlaut-tolerant (z. B. „Fläche“ ↔
-  „flaeche“). Passt ein Stichwort zu einer verfügbaren, aber nicht geladenen
-  Klasse, wird ein entsprechender Hinweis angezeigt.
-- **Einheiten umrechnen**: Länge, Flächeninhalt, Volumen, Masse und Zeit mit
+### Üben und Erklären
+
+- **Themen auswählen** und **direkt üben** — Auswertung sofort nach der Antwort.
+- **Erklärung anzeigen** bei falschen Aufgaben: Schritt-für-Schritt-Lösungsweg.
+- **Themen-Suche** über die geladenen Klassen (auch umlaut-tolerant, z. B.
+  „Fläche“ ↔ „flaeche“).
+- **Einheiten umrechnen** (Länge, Flächeninhalt, Volumen, Masse, Zeit) mit
   eindeutiger Lösung und Erklärung des Umrechnungsfaktors.
-- **Direkt üben** im Programm mit sofortiger Auswertung.
-- **Erklärung anzeigen** bei falschen Aufgaben (Schritt-für-Schritt-Lösungsweg).
 - **Übungsblätter drucken** (oder als PDF speichern) inklusive Lösungsteil.
-- **Mehrere Benutzer**: Punkte werden pro Name gespeichert. In der Desktop-App
-  gilt dieselbe Benutzerliste und derselbe Punktestand für den PC und für
-  Tablets im WLAN. **Benutzer wechseln** steht unter **Einstellungen → Profil**.
-- **Benutzerrollen:** Beim Anlegen und unter **Einstellungen → Profil** wählst
-  du **Schüler**, **Eltern**, **Klassenlehrer** oder **Lehrer**. Wechsel in
-  **Lehrer** oder **Klassenlehrer** nur mit dem gemeinsamen **Lehrercode**
-  (ein Code für alle Lehrer, damit Schüler keine Stufen oder Klassen anlegen).
-  Fehlt der Code, **Lehrercode anfordern** sendet eine Mail an uns — nichts
-  davon landet auf dem Klassen-Server. Im Profil eines Lehrers oder
-  Klassenlehrers steht der Code zum Weitergeben an andere Lehrer der Schule.
-  Die **Rollen-Rechte-Matrix** im Profil zeigt die Rechte. **Klassenlehrer**
-  können einer Klasse beitreten und eine **Klassenchallenge** anlegen, aber
-  keine Klausur erstellen/schreiben, keine Codes anlegen, keine Stufe
-  anlegen und keine Punkte senden. Nur **Lehrer** legen eine Stufe oder
-  eine **Stufenchallenge** an. Eltern erstellen weiter Klassencodes. Fehlt die Rolle (ältere Profile), gilt **Schüler** — außer
-  es gibt bereits eigene Klassencodes, dann **Eltern**. Niemand wird
-  automatisch **Lehrer**.
+- In Physik und Mathematik gibt es je nach Thema auch **interaktive Aufgaben**
+  (z. B. Schieberegler, Sortieren, Anklicken in einer Abbildung).
 
-  | Recht | Schüler | Eltern | Klassenlehrer | Lehrer |
-  | --- | --- | --- | --- | --- |
-  | Themen | ✓ | ✓ | ✓ | ✓ |
-  | Klausur schreiben | ✓ | ✓ | — | ✓ |
-  | Klausur erstellen | — | ✓ | — | ✓ |
-  | Punkteprotokoll | ✓ | ✓ | ✓ | ✓ |
-  | Einstellungen | ✓ | ✓ | ✓ | ✓ |
-  | Klassencode erstellen | — | ✓ | — | ✓ |
-  | Klassencode eintragen / Teil der Klasse | ✓ | ✓ | ✓ | ✓ |
-  | Punkte an Klasse senden | Opt-in | Opt-in | — | Opt-in |
-  | Stufencode erstellen | — | — | — | ✓ |
-  | Stufencode eintragen | — | — | — | ✓ |
-  | Klassen auf eingetragener Stufe anlegen | — | — | — | ✓ |
-  | Stufen-Wettbewerb sehen | über Klasse | über Klasse | über Klasse | Klasse oder Stufe |
-  | Aufgaben ergänzen | — | — | — | ✓ |
-  | Challenge anlegen (Klasse) | — | — | ✓ | ✓ |
-  | Challenge anlegen (Stufe) | — | — | — | ✓ |
-  | Challenge ändern / löschen (Klasse) | — | — | ✓ | ✓ |
-  | Challenge ändern / löschen (Stufe) | — | — | — | ✓ |
-  | Challenge sehen | ✓ | ✓ | ✓ | ✓ |
-  | Challenge mitmachen | ✓ | — | ✓ | ✓ |
+### Mehrere Benutzer und Rollen
 
-- **Aufgaben ergänzen:** Nur **Lehrer** können unter **Einstellungen →
-  Aufgaben ergänzen** Vorgaben für neue Übungsaufgaben senden
-  (Klassenstufe, Themengebiet aus dem Lehrplan, Titel des Themas,
-  Aufgabenbeispiel). Beispiele dürfen als E-Mail-Anhang mitgehen — im
-  Feld dann **siehe Anhang**. Die Angaben gehen per E-Mail an uns —
-  nicht an den Klassen-Server.
-- **Einstellungen**: Untermenü mit Lehrplänen, Klassencode, **Aufgaben
-  ergänzen** (nur Lehrer), WLAN-Zugang (Desktop), Profil (Rolle und
-  Benutzerwechsel) und **Unterstützer**. **Auf Updates prüfen** steht direkt auf der
-  Einstellungen-Übersicht.
-  In den Einstellungen zeigt
-  die Leiste **Zum Üben** links neben **Einstellungen** (hervorgehoben) und
-  blendet Themen, Challenge, Klausur und Punkteprotokoll aus. **Zurück** führt zur Liste.
-  WLAN-Zugang nur unter Einstellungen, nicht auf der Benutzerauswahl.
-- **Challenge**: Lehrer legen eine **Klassen-** oder **Stufenchallenge**
-  an (Themen, Start/Ende **Europe/Berlin**, optionale Gewinnchance).
-  Klassenlehrer nur Klassenchallenge (mit eingetragenem Klassencode).
-  Lehrer und Klassenlehrer sehen danach ihre **laufenden und angelegten**
-  Challenges und können die von ihnen angelegten **ändern oder löschen**
-  (Umfang Klasse/Stufe bleibt). Schüler üben die Challenge-Themen
-  und sehen Gewinn, **wer gewinnen kann** (Klasse/Schüler bzw. Klasse/Stufe)
-  und das **Klassenziel**; Eltern sehen denselben Stand nur.
-  Punkte in den gewählten Themen zählen weiter für Klasse/Stufe **und**
-  extra für die Challenge. Online nur anonyme Summen — kein Schülername.
-  Nachweis für „bester Schüler“ ist das lokale **Challenge-Protokoll**.
-- **Punkteprotokoll**: Auswertung je Thema in Prozent und Gesamtpunktzahl,
-  plus Tag / Woche / Monat / Schuljahr aus den lokalen Übungen und den an
-  eine Klasse gesendeten Punkten; ebenfalls druckbar.
-- **Übungsklausur per Code**: Lehrkräfte stellen aus Lehrplan-Themen eine
-  Klausur zusammen; Schülerinnen und Schüler lösen denselben Satz Aufgaben über
-  einen Code oder Link (siehe [Übungsklausur per Code](#übungsklausur-per-code)).
-- **WLAN-Zugang (Desktop-App)**: Läuft Mathsachs auf einem Rechner, können
-  Tablets im selben WLAN die App im Browser öffnen (siehe
-  [WLAN-Zugang](#wlan-zugang-desktop-app)).
-- **Klassencode (online)**: Anonyme Klassen-Punktesummen über einen
-  Cloudflare Worker (siehe [Klassencode](#klassencode-online)).
-- **Klassenstufencode:** Lehrer legen eine Stufe an oder tragen denselben
-  Stufencode ein (mehrere Fachlehrer einer Klassenstufe). Danach können sie
-  Klassencodes zuordnen und den Wettbewerb aller Klassen sehen (Namen +
-  Summen, keine Personendaten, keine fremden Klassencodes). Punkte gehen
-  weiter nur an den eigenen Klassencode.
-- **Erweiterbar** für weitere Klassenstufen und Fächer (Datenmodell mit
-  Fach → Klassenstufe → Lernbereich → Thema).
+Punkte werden **pro Name** gespeichert. Unter **Einstellungen → Profil** kannst
+du Benutzer wechseln und die Rolle wählen: **Schüler**, **Eltern**,
+**Klassenlehrer** oder **Lehrer**.
 
-Eine Übersicht aller Änderungen findet sich im [Changelog](CHANGELOG.md)
-(aktuelle Version **0.1.42**).
+Wechsel in **Lehrer** oder **Klassenlehrer** nur mit dem gemeinsamen
+**Lehrercode** (ein Code für die Schule). Fehlt der Code, kannst du ihn in der
+App anfordern — die Anfrage geht per E-Mail an uns.
 
-Die App prüft beim Start und — solange sie geöffnet bleibt — einmal pro
-Kalendertag (**Europe/Berlin**) die öffentlichen
-[GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
-auf eine neuere Version (ohne Token). Unter **Einstellungen** kannst
-du jederzeit mit **Auf Updates prüfen** nachschauen (die Tages-Sperre gilt
-nur für die automatische Prüfung). Ein Update erscheint erst, wenn der
-Installer für dein System auf dem Release liegt. Fehlt die Datei noch
-(CI baut gerade), steht dort „Da kommt was neues!“ statt Download oder
-einer 404-Meldung. Ist alles bereit, erscheint ein schließbarer Hinweis
-mit Versionsnummer, Release-Notes und Download. Im Browser öffnet
-**Download** den passenden Installer; die installierte Desktop-App kann
-das Update herunterladen und einspielen, sobald auch `latest.yml`
-vorliegt.
+Kurzüberblick der Rechte:
 
-> Fachliche Grundlage: Sächsische Lehrpläne Gymnasium Mathematik und
-> Oberschule Mathematik (Hauptschul- und Realschulbildungsgang). Die Aufgaben
-> werden zufällig generiert und haben stets eindeutige, überprüfbare Lösungen.
+| | Schüler | Eltern | Klassenlehrer | Lehrer |
+| --- | --- | --- | --- | --- |
+| Themen üben | ✓ | ✓ | ✓ | ✓ |
+| Klausur schreiben | ✓ | ✓ | — | ✓ |
+| Klausur erstellen | — | ✓ | — | ✓ |
+| Klassencode erstellen | — | ✓ | — | ✓ |
+| Klassencode eintragen | ✓ | ✓ | ✓ | ✓ |
+| Stufencode / Stufenchallenge | — | — | — | ✓ |
+| Klassenchallenge anlegen | — | — | ✓ | ✓ |
+| Aufgaben ergänzen | — | — | — | ✓ |
+
+Die vollständige Rechte-Matrix steht in der App unter **Einstellungen → Profil**.
+
+### Challenge
+
+Lehrer legen eine **Klassen-** oder **Stufenchallenge** an (Themen, Zeitraum,
+optionaler Gewinn). Klassenlehrer nur Klassenchallenge. Schüler üben die
+Challenge-Themen; Punkte zählen für Klasse/Stufe **und** extra für die
+Challenge. Online liegen nur anonyme Summen — keine Schülernamen.
+
+### Punkteprotokoll
+
+Auswertung je Thema in Prozent und Gesamtpunktzahl, plus Tag / Woche / Monat /
+Schuljahr — aus lokalen Übungen und an die Klasse gesendeten Punkten; ebenfalls
+druckbar.
+
+### Aufgaben ergänzen
+
+Nur **Lehrer** können unter **Einstellungen → Aufgaben ergänzen** Vorgaben für
+neue Übungsaufgaben senden (Klassenstufe, Themengebiet, Titel, Beispiel). Die
+Angaben gehen per E-Mail an uns.
 
 ## Übungsklausur per Code
 
 Lehrkräfte stellen eine Übungsklausur aus konkreten Aufgaben des Lehrplans
-zusammen. Die App erzeugt daraus einen **Klausurcode** (beginnt mit `MSX1:`).
-Den Code kannst du kopieren oder per **E-Mail** bzw. **WhatsApp** versenden.
-Es wird kein Server benötigt: Der Code enthält nur Verweise auf Thema und
-Zufalls-Seed, die App erzeugt daraus auf jedem Gerät dieselben Aufgaben.
+zusammen. Die App erzeugt einen **Klausurcode** (beginnt mit `MSX1:`). Den Code
+kannst du kopieren oder per E-Mail bzw. WhatsApp versenden. Es wird kein Server
+benötigt: Der Code enthält Verweise auf Thema und Zufalls-Seed — auf jedem Gerät
+entstehen dieselben Aufgaben.
 
 ### Als Lehrkraft: Klausur erstellen
 
 1. Unter **Einstellungen → Lehrpläne** den Lehrplan installieren und die
-   gewünschten Klassen einblenden (z. B. Klasse 6).
+   gewünschten Klassen einblenden.
 2. Reiter **Klausur erstellen** öffnen.
-3. **Schritt 1 – Themen:** Lernbereiche aufklappen und die Themen per Checkbox
-   vorauswählen.
-4. **Schritt 2 – Aufgaben:** Pro Thema erscheinen fünf konkrete
-   Vorschlagsaufgaben (mit Lösung zur Kontrolle). Per Checkbox die gewünschten
-   Aufgaben auswählen, Punkte ggf. anpassen. „Neue Vorschläge“ erzeugt andere
-   Zahlen zum selben Thema.
-5. **Schritt 3 – Code:** Titel vergeben. Die App zeigt den Klausurcode zum
-   Kopieren sowie **WhatsApp** und **Mail**.
-
-### An die Klasse verteilen
-
-Den **Klausurcode** kopieren oder per **E-Mail** bzw. **WhatsApp** teilen.
-Schüler:innen öffnen die App, wählen **Klausur schreiben** und geben den Code
-ein. Ein WLAN-Link wäre nur im selben Netz nutzbar und entfällt deshalb.
+3. Themen vorauswählen, konkrete Aufgaben auswählen (fünf Vorschläge je Thema,
+   Punkte anpassbar), Titel vergeben.
+4. Klausurcode kopieren oder per WhatsApp / Mail teilen.
 
 ### Als Schülerin oder Schüler: Klausur schreiben
 
-1. Mit dem eigenen Namen anmelden (Punkte werden unter diesem Namen gespeichert).
-2. Den Reiter **Klausur schreiben** wählen und den Code einfügen (beginnt mit
-   `MSX1:`).
-3. Die Aufgaben der Reihe nach bearbeiten und die Klausur **abgeben**.
-4. Die Auswertung zeigt je Aufgabe die eigene Antwort, die richtige Lösung und
-   die Erklärung. Über **Ähnliche Aufgabe üben** kann dasselbe Thema mit neuen
-   Zahlen weiter geübt werden.
+1. Mit dem eigenen Namen anmelden.
+2. Reiter **Klausur schreiben** wählen und den Code einfügen.
+3. Aufgaben bearbeiten und abgeben.
+4. Auswertung zeigt Antwort, richtige Lösung und Erklärung. Über **Ähnliche
+   Aufgabe üben** geht es mit neuen Zahlen weiter.
 
 > Der Code ist für **Übungsklausuren** gedacht, nicht für benotete Prüfungen:
 > Aufgaben und Lösungen werden lokal erzeugt und sind nicht manipulationssicher.
 
 ## WLAN-Zugang (Desktop-App)
 
-Die **installierte** Mathsachs-App startet automatisch einen kleinen Webserver
-auf dem Rechner. Andere Geräte im **selben WLAN** können die Übungsoberfläche
-dann im Browser nutzen — ohne eigene Installation und ohne öffentlichen
-Internet-Host.
+Läuft Mathsachs auf einem Rechner, können Tablets im **selben WLAN** die App im
+Browser öffnen — ohne eigene Installation.
 
 1. Mathsachs auf dem Windows-, macOS- oder Linux-Rechner starten und geöffnet
    lassen.
-2. Unter **Einstellungen → WLAN-Zugang** die Adresse ansehen: dort stehen die Adresse
-   (typisch `http://192.168.x.x:4747/`) und ein QR-Code.
-3. Auf dem Tablet/Handy im Browser diese Adresse öffnen oder den QR-Code
-   scannen. HTTP, nicht HTTPS.
-4. Beim ersten Start kann die Firewall nachfragen — Zugriff im **privaten**
-   Netz erlauben.
+2. Unter **Einstellungen → WLAN-Zugang** Adresse und QR-Code ansehen.
+3. Auf dem Tablet die Adresse öffnen oder den QR-Code scannen.
 
-Hinweise:
-
-- Gast-WLANs und viele Schulnetze trennen Clients voneinander
-  (Client-Isolation). Dann sieht das Tablet den Rechner nicht.
-- Es gibt **kein Passwort**. Wer im Netz die Adresse kennt, kann üben.
-- **Benutzer und Punkte liegen auf dem PC** (nicht im localStorage des
-  Tablets). Sobald Mathsachs auf dem Rechner läuft, sehen Tablets dieselbe
-  Benutzerliste und dieselben Punkte; neue Übungen auf dem Tablet erscheinen
-  auf dem Desktop und umgekehrt, ohne die App neu zu starten.
-- Der Klausur**code** (`MSX1:…`) funktioniert in **Klausur schreiben** unabhängig
-  vom WLAN-Zugang. Teile ihn per E-Mail oder WhatsApp, nicht als WLAN-Link.
-- Der Entwicklungsserver `npm run dev` ist ein anderer Weg (Port 5173) und
-  setzt Node.js plus Quellcode voraus. Ohne Desktop-App bleiben Benutzer
-  dort nur lokal im Browser gespeichert.
+Benutzer und Punkte liegen auf dem PC: Tablets sehen dieselbe Benutzerliste und
+denselben Stand. In vielen Schul- oder Gast-WLANs trennt Client-Isolation die
+Geräte — dann funktioniert der Zugang nicht.
 
 ## Klassencode (online)
 
-Mathsachs hat **keine Nutzerkonten**. Zugang zur Klassenstatistik ist der
-**Besitz des Codes**. Online liegen nur **Klassenname** und **aggregierte
-Punkte** — keine Vornamen, keine Geräte-IDs. Wer den Code kennt, kann Stände
-lesen und Punkte addieren. **Behandle den Code wie ein Passwort.**
-
-Klassencodes, **Eigene Codes**, der aktive Code und das Opt-in **Punkte an
-Klasse senden** gelten **pro angemeldetem Benutzer**. Andere Profile auf
-demselben PC oder im WLAN sehen diese Liste nicht. Die Datei auf dem
-Desktop kann trotzdem alle Benutzer enthalten.
+Ohne Nutzerkonten: Zugang zur Klassenstatistik ist der **Besitz des Codes**.
+Online liegen nur **Klassenname** und **aggregierte Punkte** — keine Vornamen,
+keine Geräte-IDs. **Behandle den Code wie ein Passwort.**
 
 Unter **Einstellungen → Klasse**:
 
-1. **Code erstellen** (Eltern oder Lehrer): **in der App** den Klassennamen
-   eingeben. Mathsachs erzeugt den Code selbst — niemand braucht dafür den
-   Cloudflare-Account. Der neue Code wird **nicht automatisch aktiv**; der
-   bisherige Sammel-Code bleibt aktiv, bis du einen anderen aktivierst.
-   **Schüler** und **Klassenlehrer** sehen diesen Bereich nicht; sie können
-   nur einen bestehenden Code eintragen und aktivieren. Klassenlehrer senden
-   keine Punkte.
-2. **Code eintragen** und als einzigen Sammel-Code **aktivieren**.
-3. Optional **Punkte an Klasse senden** (Opt-in). Nur mit aktivem Code und
-   diesem Haken gehen neue Übungspunkte zusätzlich an die Klassensumme.
-   Die App merkt sich das lokal im **Punkteprotokoll** (welche Klasse, wie
-   viele Punkte, nach Zeitraum). Ohne Netz zählt der Eintrag trotzdem.
-4. **Eigene Codes** mit Ständen **Tag / Woche / Monat / Schuljahr**,
-   **Teilen** (Code kopieren, WhatsApp, Mail) und **Löschen** (entfernt die
-   Klassensummen online). Codes, die der Server nicht mehr kennt, verschwinden
-   aus der Liste (kein **Aktivieren** mehr).
-   Schuljahr = 1. August bis 31. Juli, Zeitzone **Europe/Berlin**,
-   **Serverzeit** des Workers.
-5. **Klassenstufe** (nur Lehrer): Namen eingeben und Stufencode erzeugen
-   **oder** einen bestehenden Stufencode **eintragen**. Danach Klassencodes
-   zuordnen, neu auf dieser Stufe anlegen (nicht automatisch aktiv) oder
-   entfernen. Selbsterstellte Stufen können gelöscht werden. Der Stufencode
-   ist das Lehrer-Geheimnis — nicht an Schüler weitergeben.
-6. **Stufen-Wettbewerb:** Über den eigenen Klassencode oder (Lehrer) über
-   eine erstellte/eingetragene Stufe. Nur Klassennamen und Summen, keine
-   Personen und keine Mitgliedscodes anderer Klassen.
+1. **Code erstellen** (Eltern oder Lehrer) oder bestehenden Code **eintragen**
+   und aktivieren.
+2. Optional **Punkte an Klasse senden** (Opt-in).
+3. **Klassenstufe** (nur Lehrer): Stufencode erzeugen oder eintragen, Klassen
+   zuordnen und den **Stufen-Wettbewerb** sehen (Klassennamen und Summen, keine
+   Personendaten).
 
-Öffentliche API (Standard, überschreibbar in `src/classCode/api.ts`):
+## Idee / Feedback
 
-`https://mathsachs-punkte.broad-heart-ad82.workers.dev`
+Über **Idee / Feedback** in der App oder per Mail:
 
-| Methode | Pfad | Körper | Antwort |
-| ------- | ---- | ------ | ------- |
-| `GET` | `/` | — | `{ ok, service, hasClasses }` |
-| `POST` | `/classes` | `{ name }` | `{ code, name, points, period }` |
-| `GET` | `/classes/:code` | — | Klasse + Aufschlüsselung; bei Zuordnung `grade` (Namen + Summen, keine Mitgliedscodes); `challenges` = laufend + angelegt |
-| `POST` | `/classes/:code/points` | `{ delta }` (1–100), optional `topicId` | aktualisierte Klasse; Challenge-Punkte nur bei aktivem Fenster und erlaubtem Thema |
-| `DELETE` | `/classes/:code` | — | `{ ok, deleted }` |
-| `POST` | `/grades` | `{ name }` | `{ code, name, … }` (Lehrer-Stufencode) |
-| `GET` | `/grades/:code` | — | Stufe + Klassenstände **ohne** Mitgliedscodes; `challenges` = laufend + angelegt |
-| `PUT` | `/grades/:code/classes` | `{ add?, remove? }` | Zuordnung; jeder `add` muss ein Klassencode sein |
-| `DELETE` | `/grades/:code` | — | Stufe löschen; Klassencodes und ihre Punkte bleiben |
-| `POST` | `/challenges` | `{ scope, classCode?\|gradeCode?, name, topicIds, start, end, prize }` | Challenge anlegen (Geheimnis = Klassen-/Stufencode) |
-| `GET` | `/challenges/:id` | — | anonyme Summen, Themen, Gewinntext — keine Personennamen |
-| `PUT` | `/challenges/:id` | `{ name, topicIds, start, end, prize }` | Challenge ändern (Geheimnis = Challenge-ID); Umfang bleibt; keine Personendaten |
-| `DELETE` | `/challenges/:id` | — | Challenge löschen; Klassensummen bleiben |
-
-KV-Wert Klasse: `{ name, createdAt, days, gradeId?, challenges? }`. KV-Wert Stufe:
-`{ type: "grade", name, createdAt, classes, challenges? }`. Woche/Monat/Jahr werden
-server-seitig aus den Tages-Buckets der Mitgliedsklassen addiert. Die
-Bindung heißt **`CLASSES`**. Keine Personendaten. Nach einer Worker-Änderung
-die Datei `cloudflare/worker.js` in Cloudflare einfügen und **Deploy**.
-
-Rate-Limits je Client-IP / 60 s (siehe `cloudflare/worker.js`): **GET**
-Klasse/Stufe 300, **DELETE** 30, **POST** neue Klasse 8, **POST** neue Stufe 8,
-**PUT** Zuordnung 30, **PUT/DELETE** Challenge 30, **POST** Punkte 60. `GET /`
-(Health) ist frei. Nach dem Ändern der Worker-Datei einmal in Cloudflare
-**Deploy** klicken.
-
-### Einmalig für Linus und Matthias (nicht für Schüler)
-
-Der **Klassencode** entsteht in der App. Der **Worker-Code** ist etwas anderes:
-das kleine Server-Programm hinter der URL, das Codes entgegennimmt. Schüler und
-Lehrkräfte haben damit nichts zu tun und brauchen keinen Cloudflare-Account.
-
-Aktuell antwortet `https://mathsachs-punkte.broad-heart-ad82.workers.dev/` noch
-mit dem **Test-Programm** (jede Anfrage liefert nur `{ ok, service, hasClasses }`).
-Deshalb erzeugt die App noch keine echten Codes, bis ihr **einmal** die echte
-Datei einfügt:
-
-1. [dash.cloudflare.com](https://dash.cloudflare.com) öffnen und einloggen.
-2. **Workers & Pages** → Worker **`mathsachs-punkte`**.
-3. **Edit Code**.
-4. Alles löschen und den **gesamten** Inhalt von
-   [`cloudflare/worker.js`](cloudflare/worker.js) einfügen.
-5. **Settings → Bindings:** KV-Bindung genau **`CLASSES`**.
-6. **Deploy**.
-7. Kontrolle: `POST /classes` mit `{ "name": "Klasse 6a" }` muss einen
-   8-stelligen `code` zurückgeben, nicht dasselbe JSON wie `GET /`.
-
-### Optional: wrangler
-
-Nur wenn Cloudflare-Zugangsdaten lokal liegen (meist nicht):
-
-```bash
-npx wrangler deploy --config cloudflare/wrangler.toml
-```
-
-Die KV-Bindung `CLASSES` muss in der Wrangler-Konfiguration bzw. im Dashboard
-stehen. Ohne Credentials den Dashboard-Weg oben nutzen.
-
-## Requirements
-
-- Node.js 20+ (developed against Node 22)
-- npm 10+
-
-## Getting started
-
-```bash
-npm ci          # install exact, locked dependencies
-npm run dev     # start the Vite dev server at http://localhost:5173
-```
-
-## Scripts
-
-| Command             | Description                                  |
-| ------------------- | -------------------------------------------- |
-| `npm run dev`       | Start the dev server with hot reload.        |
-| `npm run build`     | Type-check and produce a production build.    |
-| `npm run preview`   | Preview the production build locally.         |
-| `npm run typecheck` | Run the TypeScript compiler (no emit).        |
-| `npm run lint`      | Lint the project with ESLint.                 |
-| `npm run test`      | Run the Vitest unit suite once.              |
-
-## Desktop app (installable setup)
-
-Mathsachs can also be installed as a native desktop application via **Electron**.
-
-### Install (end users)
-
-Download the installer for your operating system from the project's
-[GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases) and run it:
-
-| OS      | File                          | How to install                              |
-| ------- | ----------------------------- | ------------------------------------------- |
-| Windows | `Mathsachs-Setup-x.y.z.exe`   | Double-click and follow the setup wizard.   |
-| macOS   | `Mathsachs-x.y.z.dmg`         | Open the `.dmg` and drag Mathsachs to Apps. |
-| Linux   | `Mathsachs-x.y.z.AppImage`    | `chmod +x` then run it — no install needed. |
-| Linux   | `mathsachs_x.y.z_amd64.deb`   | `sudo apt install ./mathsachs_*.deb`        |
-
-**Windows-Hinweis (SmartScreen):** Weil die App von einer Privatperson kommt und
-nicht mit einem kostenpflichtigen Code-Signing-Zertifikat signiert ist, warnt
-Windows oft mit „Windows hat den PC geschützt“ bzw. unbekanntem Herausgeber.
-Das ist bei diesem Setup erwartbar und kein Virenfund.
-
-1. Den Installer **nur** von den offiziellen
-   [GitHub Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
-   laden – nicht aus unbekannten Quellen.
-2. Bei der Warnung **„Weitere Informationen“** klicken.
-3. Dann **„Trotzdem ausführen“** wählen (manchmal **„Trotzdem installieren“**).
-
-### Build installers yourself
-
-Installers are produced by [`electron-builder`](https://www.electron.build/).
-Each installer is built on its matching operating system:
-
-```bash
-npm run electron:dev          # run the desktop app in development
-npm run electron:dist:linux   # build .AppImage + .deb   (run on Linux)
-npm run electron:dist:win     # build .exe setup         (run on Windows)
-npm run electron:dist:mac     # build .dmg               (run on macOS)
-```
-
-Output is written to the `release/` directory. Building the Debian package on
-Linux requires `fakeroot` (`sudo apt-get install fakeroot`).
-
-The cross-platform installers are produced automatically by the
-[`release` GitHub Actions workflow](.github/workflows/release.yml), which builds
-Windows, macOS, and Linux artifacts. Push a `v*` tag to attach them to a
-GitHub Release, or run the workflow manually from the Actions tab.
-
-## Project structure
-
-```
-src/
-  lib/                # Reusable engine: rng, fractions, number parsing, storage
-  classCode/          # Klassencode-API-Client, Code-Normalisierung, Berlin-Buckets
-  curriculum/         # Lehrplan-Datenmodell, Klassen 5–12, Einheiten & Themen-Suche
-  exam/               # Klausur-Code (Kodierung, Link, Auflösung der Aufgaben)
-  lan/                # WLAN-Server-Status in der UI, Tests für den LAN-HTTP-Server
-  legal/              # Impressum, Datenschutz-Hinweis, MIT-Lizenztext, Ideenmelder- und Aufgaben-mailto
-  updates/            # GitHub-Releases-Updateprüfung (Semver, Assets, Banner)
-  components/         # UI: Browser, Üben, Übungsblatt, Protokoll, Einstellungen (Lehrpläne, Klasse, Aufgaben, WLAN, Profil, Unterstützer), Klausur, Update-Hinweis, Rechtliches
-  App.tsx             # Views, routing and user management
-  App.css             # Component styles
-  index.css           # Global theme
-cloudflare/
-  worker.js           # Copy-paste-ready Worker (Edit Code → Deploy)
-  wrangler.toml       # Optional wrangler deploy (KV-Bindung CLASSES)
-electron/
-  main.cjs            # Electron main process (window, update check, LAN-Server, shared store)
-  preload.cjs         # Preload bridge (desktop, updates, LAN-Status, shared storage)
-  lanServer.cjs       # HTTP-Server für WLAN-Tablets plus /api/state
-  sharedStore.cjs     # Gemeinsame Benutzer/Punkte/Klassencodes-Datei (userData)
-  githubUpdate.cjs    # GitHub-Releases-Fallback für Updates
-build/
-  icon.svg / icon.png # App icon used by the installers
-electron-builder.yml  # Desktop packaging config (win / mac / linux targets)
-curricula/            # Hosted Lehrplan packs + manifest.json
-```
-
-## Lehrplan-Pakete (Oberschule und andere Länder)
-
-Lehrpläne wachsen nicht mehr im App-Installer. Ein Paket ist eine JSON-Datei
-mit SemVer, offiziellen Lernbereichen und getrennten `extras`:
-
-```
-curricula/manifest.json                 # Katalog: id, version, url, size
-curricula/gym-sachsen.json              # Gymnasium Sachsen Mathematik 1.0.0
-curricula/oberschule-sachsen-hs.json    # Oberschule HS 1.0.0 (Klassen 5–9)
-curricula/oberschule-sachsen-rs.json    # Oberschule RS 1.0.0 (Klassen 5–10)
-```
-
-**Oberschule installieren**
-
-1. Unter **Einstellungen → Lehrpläne** das gewünschte Paket wählen:
-   **Oberschule Sachsen · Mathematik · Hauptschulbildungsgang** oder
-   **… · Realschulbildungsgang**.
-2. **Installieren**. Danach die Klassenstufen **einblenden**.
-3. Beide Bildungsgänge dürfen parallel installiert sein; die Klassen 5–6
-   sind in jedem Paket enthalten, damit HS oder RS allein reicht.
-
-**Neuen Lehrplan hinzufügen**
-
-1. Neue Datei `curricula/<id>.json` mit
-   `{ id, title, region, school, subject, version, changelog, official, extras }`.
-   Offizielle Themen bleiben in `official`; Lehrer-Aufgaben nur in `extras`
-   (mit `areaId` des Themengebiets und `source: "lehrer"`).
-2. Eintrag in `curricula/manifest.json` (id, version, url, size, changelog).
-3. Nach dem Merge nach `main` lädt die App den Katalog von GitHub Raw /
-   jsDelivr. Nutzer installieren das Paket unter Einstellungen → Lehrpläne.
-4. Aufgaben-Generatoren für neue Themen: entweder wie bisher im App-Runtime
-   (Gymnasium Sachsen) oder als statische `tasks` im Extra/Thema — dann braucht
-   die App kein Update.
-
-Paket-Update: Version erhöhen (z. B. `1.0.0` → `1.1.0`). Die App ersetzt
-`official` und führt `extras` per id zusammen. Klausuren und Challenges merken
-sich `curriculumRefs`; eine neuere benötigte Version blockiert mit der
-Aufforderung zum Aktualisieren. Eine neuere lokale Version ist in Ordnung.
-
-Worker: Challenge-Definitionen dürfen `curriculumRefs` enthalten (keine
-Personendaten). Dafür `cloudflare/worker.js` einfügen und Deploy, sonst
-bleiben die Refs nur lokal.
-
-## Cloud Agent environment
-
-`.cursor/environment.json` configures the Cursor Cloud Agent environment:
-`npm ci` installs dependencies and the `dev` terminal runs the Vite dev server
-on port 5173.
+[Idee / Feedback zum Mathsachs Übungsprogramm.](mailto:info@my-smart-home-support.de?subject=Idee%20%2F%20Feedback%20zum%20Mathsachs%20%C3%9Cbungsprogramm.)
 
 ## Lizenz
 
 Mathsachs steht unter der [MIT-Lizenz](LICENSE).
 Copyright © 2026 Linus und Matthias Ulrich.
-
-Den vollständigen Lizenztext findest du in der Datei [`LICENSE`](LICENSE)
-und in der App unter **Lizenz**.
 
 ## Impressum
 
@@ -476,20 +183,4 @@ Große Wallstraße 42
 04509 Delitzsch  
 [info@my-smart-home-support.de](mailto:info@my-smart-home-support.de)
 
-In der App ebenfalls unter **Impressum**.
-
-Bei aktivem Klassencode speichert Mathsachs online nur den Klassennamen und
-anonyme Punktesummen bei Cloudflare — keine Vornamen und keine Geräte-IDs.
-Eine Klassenstufe speichert nur den Stufennamen und die zugeordneten
-Klassencodes; der Wettbewerb zeigt Klassennamen plus Summen, nie Personen.
-Der Code ist das Geheimnis. In der App unter **Datenschutz**.
-
-## Idee / Feedback
-
-Über **Idee / Feedback** in der App (oder den folgenden Link) öffnet sich das
-Standard-Mailprogramm mit vorausgefülltem Empfänger und Betreff:
-
-[Idee / Feedback zum Mathsachs Übungsprogramm.](mailto:info@my-smart-home-support.de?subject=Idee%20%2F%20Feedback%20zum%20Mathsachs%20%C3%9Cbungsprogramm.)
-
-- An: `info@my-smart-home-support.de`
-- Betreff: `Idee / Feedback zum Mathsachs Übungsprogramm.`
+In der App ebenfalls unter **Impressum** und **Datenschutz**.
