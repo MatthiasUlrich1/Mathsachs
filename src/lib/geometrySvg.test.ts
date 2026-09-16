@@ -250,6 +250,21 @@ describe('geometrySvg', () => {
       expect(svg).toContain('aria-label="Würfel"')
       expect(svg).toContain('G = ?')
     })
+
+    it('keeps multi-digit height labels fully inside the viewBox', () => {
+      const svg = generateCuboidSvg({
+        lengthLabel: '',
+        widthLabel: '',
+        heightLabel: '10 cm',
+        topFaceLabel: 'G = ?',
+      })
+      expect(svg).toContain('>10 cm<')
+      const vb = svg.match(/viewBox="0 0 (\d+) (\d+)"/)
+      expect(vb).toBeTruthy()
+      // Height text uses text-anchor=end at x ≈ pad; must not sit near x=0 middle-clipped.
+      expect(svg).toContain('text-anchor="end"')
+      expect(Number(vb![1])).toBeGreaterThan(200)
+    })
   })
 
   describe('generateCuboidFaceEdgeSvg', () => {

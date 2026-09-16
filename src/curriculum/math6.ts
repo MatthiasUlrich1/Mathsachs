@@ -1567,74 +1567,25 @@ const volumenPrisma: Topic = {
   ),
 }
 
-/** Fläche einer Seitenfläche ↔ dazu senkrechte Kante (Division). Nur für Entwickler-Freigabe. */
+/** Volumen ↔ Fläche × Höhe (2D + 1D = 3D). Nur für Entwickler-Freigabe. */
 const flaecheKanteQuader: Topic = {
   id: 'lb4-flaeche-kante-quader',
   title: 'Fläche und senkrechte Seitenlänge',
-  hint: 'Fläche und die dazu senkrechte Kante gehören zusammen: A = a · b bzw. a = A : b (bzw. V = G · h).',
+  hint: 'Volumen = Fläche · dazu senkrechte Länge (2D · 1D = 3D): V = G · h, also G = V : h und h = V : G.',
   pointsPerTask: 10,
   difficulty: 2,
   released: false,
-  keywords: ['Quader', 'Würfel', 'Flächeninhalt', 'Seitenlänge', 'senkrecht', 'Prisma'],
+  keywords: ['Quader', 'Würfel', 'Volumen', 'Grundfläche', 'Höhe', 'Dimension', 'Prisma'],
   fachwissen: {
-    text: 'Bei einem Rechteck (Seitenfläche eines Quaders) stehen die beiden Kanten senkrecht zueinander. Es gilt A = a · b, also a = A : b und b = A : a. Beim Prisma/Quader stehen Grundfläche G und Höhe h senkrecht zueinander: V = G · h, also G = V : h und h = V : G.',
+    text: 'Beim Quader, Würfel und Prisma gilt: Volumen (3D) = Flächeninhalt (2D) · dazu senkrechte Länge (1D). Schreibweise V = G · h. Deshalb: G = V : h und h = V : G. Beim Würfel ist jede Seitenfläche A = a² und V = A · a, also a = V : A.',
     quelle: 'Wikipedia: Quader',
     url: 'https://de.wikipedia.org/wiki/Quader',
   },
   generate: mixedVariants(
+    // --- Hauptfokus: V ↔ G · h (mehrfach, damit häufig) ---
     (rng: Rng) => {
-      // Seitenfläche: A und eine Kante → andere Kante (senkrecht)
-      const a = randInt(rng, 3, 12)
-      const b = randInt(rng, 3, 12)
-      const area = a * b
-      const askA = rng() < 0.5
-      const value = askA ? a : b
-      const knownEdge = askA ? b : a
-      const knownLabel = askA ? `${b} cm` : `${a} cm`
-      const unknownLabel = '?'
-      return visualTask({
-        question: askA
-          ? `Die gelb markierte Seitenfläche hat den Flächeninhalt ${area} cm². Die untere Kante misst ${knownEdge} cm. Wie lang ist die dazu senkrechte Kante?`
-          : `Die gelb markierte Seitenfläche hat den Flächeninhalt ${area} cm². Die senkrechte Kante misst ${knownEdge} cm. Wie lang ist die untere Kante?`,
-        unit: 'cm',
-        answerKind: 'integer',
-        value,
-        solution: `${value} cm`,
-        explanation: askA
-          ? `Auf der Rechtecksfläche stehen die Kanten senkrecht zueinander. A = a · b ⇒ a = A : b = ${area} : ${knownEdge} = ${value} cm.`
-          : `Auf der Rechtecksfläche stehen die Kanten senkrecht zueinander. A = a · b ⇒ b = A : a = ${area} : ${knownEdge} = ${value} cm.`,
-        visualContent: generateCuboidFaceEdgeSvg({
-          faceAreaLabel: `${area} cm²`,
-          faceEdgeLabel: askA ? knownLabel : unknownLabel,
-          perpendicularLabel: askA ? unknownLabel : knownLabel,
-          caption: 'Gelb = betrachtete Seitenfläche',
-        }),
-      })
-    },
-    (rng: Rng) => {
-      // Zwei Kanten der Fläche → Flächeninhalt
-      const a = randInt(rng, 4, 14)
-      const b = randInt(rng, 3, 12)
-      const area = a * b
-      return visualTask({
-        question: `Die gelb markierte Seitenfläche ist ein Rechteck mit den Kanten ${a} cm und ${b} cm (senkrecht zueinander). Berechne ihren Flächeninhalt.`,
-        unit: 'cm²',
-        answerKind: 'integer',
-        value: area,
-        solution: `${area} cm²`,
-        explanation: `Flächeninhalt = Produkt der zueinander senkrechten Kanten: A = ${a} · ${b} = ${area} cm².`,
-        visualContent: generateCuboidFaceEdgeSvg({
-          faceAreaLabel: '?',
-          faceEdgeLabel: `${a} cm`,
-          perpendicularLabel: `${b} cm`,
-          caption: 'Gelb = betrachtete Seitenfläche',
-        }),
-      })
-    },
-    (rng: Rng) => {
-      // Volumen und Höhe → Grundfläche G = V : h (Quader-Abbildung)
-      const g = randInt(rng, 12, 60)
-      const h = randInt(rng, 3, 15)
+      const g = randInt(rng, 12, 80)
+      const h = randInt(rng, 3, 18)
       const v = g * h
       return visualTask({
         question: `Ein Quader hat das Volumen ${v} cm³. Die Höhe (senkrecht zur Grundfläche) beträgt ${h} cm. Wie groß ist der Flächeninhalt der Grundfläche?`,
@@ -1642,7 +1593,7 @@ const flaecheKanteQuader: Topic = {
         answerKind: 'integer',
         value: g,
         solution: `${g} cm²`,
-        explanation: `Grundfläche und Höhe stehen senkrecht zueinander: V = G · h ⇒ G = V : h = ${v} : ${h} = ${g} cm².`,
+        explanation: `2D · 1D = 3D: V = G · h ⇒ G = V : h = ${v} : ${h} = ${g} cm².`,
         visualContent: generateCuboidSvg({
           lengthLabel: '',
           widthLabel: '',
@@ -1652,17 +1603,52 @@ const flaecheKanteQuader: Topic = {
       })
     },
     (rng: Rng) => {
-      // Volumen und Grundfläche → Höhe h = V : G (Prisma mit Dreiecksgrundfläche bleibt Dreiecksprisma)
-      const g = randInt(rng, 10, 48)
+      const g = randInt(rng, 10, 72)
       const h = randInt(rng, 4, 16)
       const v = g * h
       return visualTask({
-        question: `Ein Prisma hat das Volumen ${v} cm³ und die Grundfläche ${g} cm². Wie groß ist die Höhe (senkrecht zur Grundfläche)?`,
+        question: `Ein Quader hat das Volumen ${v} cm³ und die Grundfläche ${g} cm². Wie groß ist die Höhe (senkrecht zur Grundfläche)?`,
         unit: 'cm',
         answerKind: 'integer',
         value: h,
         solution: `${h} cm`,
-        explanation: `V = G · h ⇒ h = V : G = ${v} : ${g} = ${h} cm. Die Höhe steht senkrecht auf der Grundfläche.`,
+        explanation: `2D · 1D = 3D: V = G · h ⇒ h = V : G = ${v} : ${g} = ${h} cm.`,
+        visualContent: generateCuboidSvg({
+          lengthLabel: '',
+          widthLabel: '',
+          heightLabel: '?',
+          topFaceLabel: `G = ${g} cm²`,
+        }),
+      })
+    },
+    (rng: Rng) => {
+      const g = randInt(rng, 15, 60)
+      const h = randInt(rng, 5, 20)
+      const v = g * h
+      return visualTask({
+        question: `Ein Prisma hat das Volumen ${v} cm³. Die Höhe senkrecht zur Grundfläche ist ${h} cm. Berechne den Flächeninhalt der Grundfläche.`,
+        unit: 'cm²',
+        answerKind: 'integer',
+        value: g,
+        solution: `${g} cm²`,
+        explanation: `V = G · h ⇒ G = V : h = ${v} : ${h} = ${g} cm² (Fläche ⊥ Höhe).`,
+        visualContent: generatePrismVolumeSvg({
+          baseAreaLabel: '?',
+          heightLabel: `${h} cm`,
+        }),
+      })
+    },
+    (rng: Rng) => {
+      const g = randInt(rng, 12, 54)
+      const h = randInt(rng, 4, 15)
+      const v = g * h
+      return visualTask({
+        question: `Ein Prisma hat das Volumen ${v} cm³ und die Grundfläche ${g} cm². Wie groß ist die Höhe?`,
+        unit: 'cm',
+        answerKind: 'integer',
+        value: h,
+        solution: `${h} cm`,
+        explanation: `V = G · h ⇒ h = V : G = ${v} : ${g} = ${h} cm.`,
         visualContent: generatePrismVolumeSvg({
           baseAreaLabel: `${g} cm²`,
           heightLabel: '?',
@@ -1670,23 +1656,87 @@ const flaecheKanteQuader: Topic = {
       })
     },
     (rng: Rng) => {
-      // Würfel: Kante aus Volumen und Flächeninhalt einer Seite a = V : A
+      // Würfel: a = V : A
       const a = randInt(rng, 3, 12)
       const face = a * a
       const volume = a * a * a
       return visualTask({
-        question: `Ein Würfel hat das Volumen ${volume} cm³. Eine Seitenfläche misst ${face} cm². Wie lang ist eine Kante?`,
+        question: `Ein Würfel hat das Volumen ${volume} cm³. Eine Seitenfläche misst ${face} cm². Wie lang ist die dazu senkrechte Kante?`,
         unit: 'cm',
         answerKind: 'integer',
         value: a,
         solution: `${a} cm`,
-        explanation: `Beim Würfel gilt V = A · a (Fläche mal dazu senkrechte Kante). Also a = V : A = ${volume} : ${face} = ${a} cm.`,
+        explanation: `Beim Würfel: V = A · a (2D · 1D = 3D). Also a = V : A = ${volume} : ${face} = ${a} cm.`,
         visualContent: generateCuboidFaceEdgeSvg({
           faceAreaLabel: `${face} cm²`,
-          faceEdgeLabel: '?',
+          faceEdgeLabel: 'a',
           perpendicularLabel: '?',
-          caption: `V = ${volume} cm³ (Würfel)`,
+          caption: `V = ${volume} cm³ · Würfel`,
           cube: true,
+        }),
+      })
+    },
+    (rng: Rng) => {
+      // Würfel: A = V : a
+      const a = randInt(rng, 3, 12)
+      const face = a * a
+      const volume = a * a * a
+      return visualTask({
+        question: `Ein Würfel hat das Volumen ${volume} cm³. Eine Kante misst ${a} cm. Wie groß ist der Flächeninhalt einer Seitenfläche (senkrecht zu dieser Kante)?`,
+        unit: 'cm²',
+        answerKind: 'integer',
+        value: face,
+        solution: `${face} cm²`,
+        explanation: `V = A · a ⇒ A = V : a = ${volume} : ${a} = ${face} cm².`,
+        visualContent: generateCuboidFaceEdgeSvg({
+          faceAreaLabel: '?',
+          faceEdgeLabel: `${a} cm`,
+          perpendicularLabel: `${a} cm`,
+          caption: `V = ${volume} cm³ · Würfel`,
+          cube: true,
+        }),
+      })
+    },
+    (rng: Rng) => {
+      // Quader: Seitenfläche A und dazu senkrechte Kante c mit V = A · c
+      const a = randInt(rng, 3, 10)
+      const b = randInt(rng, 3, 10)
+      const c = randInt(rng, 3, 12)
+      const face = a * b
+      const v = face * c
+      return visualTask({
+        question: `Ein Quader hat das Volumen ${v} cm³. Die gelb markierte Seitenfläche misst ${face} cm². Wie lang ist die dazu senkrechte Kante?`,
+        unit: 'cm',
+        answerKind: 'integer',
+        value: c,
+        solution: `${c} cm`,
+        explanation: `V = A · c (Fläche · senkrechte Länge) ⇒ c = V : A = ${v} : ${face} = ${c} cm.`,
+        visualContent: generateCuboidFaceEdgeSvg({
+          faceAreaLabel: `${face} cm²`,
+          faceEdgeLabel: `${a} cm`,
+          perpendicularLabel: '?',
+          caption: `V = ${v} cm³`,
+        }),
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 3, 10)
+      const b = randInt(rng, 3, 10)
+      const c = randInt(rng, 4, 14)
+      const face = a * b
+      const v = face * c
+      return visualTask({
+        question: `Ein Quader hat das Volumen ${v} cm³. Die Kante senkrecht zur gelb markierten Seitenfläche misst ${c} cm. Wie groß ist der Flächeninhalt dieser Seitenfläche?`,
+        unit: 'cm²',
+        answerKind: 'integer',
+        value: face,
+        solution: `${face} cm²`,
+        explanation: `V = A · c ⇒ A = V : c = ${v} : ${c} = ${face} cm².`,
+        visualContent: generateCuboidFaceEdgeSvg({
+          faceAreaLabel: '?',
+          faceEdgeLabel: '?',
+          perpendicularLabel: `${c} cm`,
+          caption: `V = ${v} cm³`,
         }),
       })
     },

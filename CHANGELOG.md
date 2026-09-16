@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.16] – 2026-09-16
+
+### Verbessert
+- Thema „Fläche und senkrechte Seitenlänge“: Fokus auf **V = G · h**
+  (2D · 1D = 3D); mehr Aufgaben Volumen↔Fläche/Höhe bzw. Würfel V↔A.
+
+### Behoben
+- Würfel-Abbildung mit echter Isometrie (gleiche Kantenlängen).
+- Höhenbeschriftung (z. B. „10 cm“) nicht mehr abgeschnitten.
+
 ## [0.27.15] – 2026-09-16
 
 ### Behoben

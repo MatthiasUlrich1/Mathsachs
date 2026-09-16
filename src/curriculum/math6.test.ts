@@ -23,22 +23,29 @@ describe('Klasse 6 curriculum', () => {
     expect(topic).toBeTruthy()
     let sawQuader = false
     let sawWuerfel = false
+    let volumeFocus = 0
     for (let seed = 1; seed <= 80; seed++) {
       const task = topic!.generate(createRng(seed))
       const svg = task.visualContent ?? ''
+      if (/V = |Volumen|Grundfläche|senkrechte Kante/.test(task.question)) {
+        volumeFocus++
+      }
       if (task.question.includes('Ein Quader')) {
         sawQuader = true
-        expect(svg).toContain('aria-label="Quader"')
+        expect(svg).toMatch(/aria-label="Quader/)
         expect(svg).not.toContain('polygon points="60,180')
+        const h = task.question.match(/beträgt (\d+) cm/)?.[1]
+        if (h) expect(svg).toContain(`>${h} cm<`)
       }
       if (task.question.includes('Ein Würfel')) {
         sawWuerfel = true
-        expect(svg).toContain('Würfel')
+        expect(svg).toMatch(/aria-label="Würfel/)
         expect(svg).toContain('stroke-dasharray')
       }
     }
     expect(sawQuader).toBe(true)
     expect(sawWuerfel).toBe(true)
+    expect(volumeFocus).toBeGreaterThan(50)
   })
 
   it('has a unique id for every topic', () => {

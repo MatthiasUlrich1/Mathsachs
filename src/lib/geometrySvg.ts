@@ -654,31 +654,40 @@ export interface CuboidSvgProps {
 
 type CuboidPt = [number, number]
 
-/** Shared isometric Quader/Würfel geometry (visible faces + dashed hidden edges). */
+/**
+ * Isometric Quader/Würfel. For cubes, all three edge directions use the same
+ * screen length so the solid reads as a Würfel (not a stretched Quader).
+ */
 function cuboidIsoGeometry(opts?: { cube?: boolean; padding?: number }) {
   const cube = Boolean(opts?.cube)
-  const padding = opts?.padding ?? 40
-  const baseW = cube ? 120 : 180
-  const baseH = cube ? 120 : 100
-  const depth = cube ? 70 : 80
-  const totalW = baseW + depth + 2 * padding + 36
-  const totalH = baseH + depth + 2 * padding + 48
-  const x0 = padding
-  const y0 = padding + depth
-  const frontBL: CuboidPt = [x0, y0 + baseH]
-  const frontBR: CuboidPt = [x0 + baseW, y0 + baseH]
-  const frontTR: CuboidPt = [x0 + baseW, y0]
+  const padL = (opts?.padding ?? 48) + 28 // room for height label
+  const padR = (opts?.padding ?? 48) + 20
+  const padT = (opts?.padding ?? 48) + 8
+  const padB = (opts?.padding ?? 48) + 28
+  // Unit edge length on screen (same for cube in all directions).
+  const s = cube ? 108 : 96
+  const L = cube ? s : s * 1.55 // length along x
+  const H = cube ? s : s * 1.05 // height along y
+  // Isometric depth: same screen length `s` (or scaled width for Quader).
+  const depthLen = cube ? s : s * 0.95
+  const cos30 = Math.sqrt(3) / 2
+  const sin30 = 0.5
+  const depX = depthLen * cos30
+  const depY = depthLen * sin30
+  const x0 = padL
+  const y0 = padT + depY
+  const frontBL: CuboidPt = [x0, y0 + H]
+  const frontBR: CuboidPt = [x0 + L, y0 + H]
+  const frontTR: CuboidPt = [x0 + L, y0]
   const frontTL: CuboidPt = [x0, y0]
-  const backBL: CuboidPt = [x0 + depth, y0 + baseH - depth]
-  const backBR: CuboidPt = [x0 + baseW + depth, y0 + baseH - depth]
-  const backTR: CuboidPt = [x0 + baseW + depth, y0 - depth]
-  const backTL: CuboidPt = [x0 + depth, y0 - depth]
+  const backBL: CuboidPt = [x0 + depX, y0 + H - depY]
+  const backBR: CuboidPt = [x0 + L + depX, y0 + H - depY]
+  const backTR: CuboidPt = [x0 + L + depX, y0 - depY]
+  const backTL: CuboidPt = [x0 + depX, y0 - depY]
+  const totalW = Math.ceil(L + depX + padL + padR)
+  const totalH = Math.ceil(H + depY + padT + padB)
   const poly = (...pts: CuboidPt[]) => pts.map(([x, y]) => `${x},${y}`).join(' ')
   return {
-    padding,
-    baseW,
-    baseH,
-    depth,
     totalW,
     totalH,
     frontBL,
@@ -710,7 +719,6 @@ function cuboidSolidFaces(
     backTL,
     poly,
   } = g
-  // Hidden edges (the three occluded sides), then visible faces: top, right, front.
   return `
   <g stroke="${stroke}" stroke-width="1.6" fill="none" stroke-dasharray="5 4" opacity="0.85">
     <line x1="${frontBL[0]}" y1="${frontBL[1]}" x2="${backBL[0]}" y2="${backBL[1]}"/>
@@ -750,21 +758,36 @@ export function generateCuboidSvg({
   } = g
   const topMidX = (frontTL[0] + frontTR[0] + backTR[0] + backTL[0]) / 4
   const topMidY = (frontTL[1] + frontTR[1] + backTR[1] + backTL[1]) / 4
+  const showLength = Boolean(lengthLabel.trim())
+  const showWidth = Boolean(widthLabel.trim())
+  const showHeight = Boolean(heightLabel.trim())
 
   return `
-<svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${cube ? 'Würfel' : 'Quader'}">
+<svg width="${totalW}" height="${totalH}" viewBox="0 0 ${totalW} ${totalH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${cube ? 'Würfel' : 'Quader'}">
   ${cuboidSolidFaces(g, fill, stroke)}
   ${
     topFaceLabel
       ? `<text x="${topMidX}" y="${topMidY + 5}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${topFaceLabel}</text>`
       : ''
   }
-  <line x1="${frontBL[0]}" y1="${frontBL[1] + 20}" x2="${frontBR[0]}" y2="${frontBR[1] + 20}" stroke="${stroke}" stroke-width="1" marker-start="url(#cuboidArrowStart)" marker-end="url(#cuboidArrowEnd)"/>
-  <text x="${(frontBL[0] + frontBR[0]) / 2}" y="${frontBL[1] + 38}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${lengthLabel}</text>
-  <line x1="${frontBR[0] + 10}" y1="${frontBR[1]}" x2="${backBR[0] + 10}" y2="${backBR[1]}" stroke="${stroke}" stroke-width="1" marker-start="url(#cuboidArrowStart)" marker-end="url(#cuboidArrowEnd)"/>
-  <text x="${(frontBR[0] + backBR[0]) / 2 + 25}" y="${(frontBR[1] + backBR[1]) / 2 + 5}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${widthLabel}</text>
-  <line x1="${frontTL[0] - 15}" y1="${frontTL[1]}" x2="${frontBL[0] - 15}" y2="${frontBL[1]}" stroke="${stroke}" stroke-width="1" marker-start="url(#cuboidArrowStart)" marker-end="url(#cuboidArrowEnd)"/>
-  <text x="${frontTL[0] - 28}" y="${(frontTL[1] + frontBL[1]) / 2 + 5}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${heightLabel}</text>
+  ${
+    showLength
+      ? `<line x1="${frontBL[0]}" y1="${frontBL[1] + 18}" x2="${frontBR[0]}" y2="${frontBR[1] + 18}" stroke="${stroke}" stroke-width="1" marker-start="url(#cuboidArrowStart)" marker-end="url(#cuboidArrowEnd)"/>
+  <text x="${(frontBL[0] + frontBR[0]) / 2}" y="${frontBL[1] + 36}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${lengthLabel}</text>`
+      : ''
+  }
+  ${
+    showWidth
+      ? `<line x1="${frontBR[0] + 12}" y1="${frontBR[1]}" x2="${backBR[0] + 12}" y2="${backBR[1]}" stroke="${stroke}" stroke-width="1" marker-start="url(#cuboidArrowStart)" marker-end="url(#cuboidArrowEnd)"/>
+  <text x="${(frontBR[0] + backBR[0]) / 2 + 28}" y="${(frontBR[1] + backBR[1]) / 2 + 5}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${widthLabel}</text>`
+      : ''
+  }
+  ${
+    showHeight
+      ? `<line x1="${frontTL[0] - 12}" y1="${frontTL[1]}" x2="${frontBL[0] - 12}" y2="${frontBL[1]}" stroke="${stroke}" stroke-width="1" marker-start="url(#cuboidArrowStart)" marker-end="url(#cuboidArrowEnd)"/>
+  <text x="${frontTL[0] - 16}" y="${(frontTL[1] + frontBL[1]) / 2 + 5}" text-anchor="end" font-size="14" font-weight="bold" fill="#333">${heightLabel}</text>`
+      : ''
+  }
   <defs>
     <marker id="cuboidArrowStart" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse">
       <polygon points="10,5 0,10 0,0" fill="${stroke}" />
@@ -809,24 +832,27 @@ export function generateCuboidFaceEdgeSvg({
   cube = false,
   faceKindLabel,
 }: CuboidFaceEdgeSvgProps): string {
-  const g = cuboidIsoGeometry({ cube, padding: 36 })
-  const { totalW, totalH, frontBL, frontBR, frontTR, frontTL } = g
+  const g = cuboidIsoGeometry({ cube, padding: 40 })
+  const { totalW, totalH, frontBL, frontBR, frontTR, frontTL, backBR } = g
   const midX = (frontTL[0] + frontTR[0]) / 2
   const midY = (frontTL[1] + frontBL[1]) / 2
   const kind =
     faceKindLabel ?? (cube ? 'Seitenfläche (Quadrat)' : 'Seitenfläche (Rechteck)')
+  // For Würfel: unknown edge is the depth (senkrecht zur Fläche), shown on the right face.
+  const perpX = (frontBR[0] + backBR[0]) / 2 + 22
+  const perpY = (frontBR[1] + backBR[1]) / 2 + 4
   return `
-<svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${cube ? 'Würfel' : 'Quader'} mit hervorgehobener Seitenfläche">
+<svg width="${totalW}" height="${totalH}" viewBox="0 0 ${totalW} ${totalH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${cube ? 'Würfel' : 'Quader'} mit hervorgehobener Seitenfläche">
   ${cuboidSolidFaces(g, fill, stroke, highlight)}
   <text x="${midX}" y="${midY + 5}" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">A = ${faceAreaLabel}</text>
-  <line x1="${frontBL[0]}" y1="${frontBL[1] + 18}" x2="${frontBR[0]}" y2="${frontBR[1] + 18}" stroke="${stroke}" stroke-width="1.5"/>
-  <text x="${midX}" y="${frontBL[1] + 36}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${faceEdgeLabel}</text>
-  <line x1="${frontBR[0] + 14}" y1="${frontBR[1]}" x2="${frontTR[0] + 14}" y2="${frontTR[1]}" stroke="${stroke}" stroke-width="1.5"/>
-  <text x="${frontBR[0] + 28}" y="${midY + 5}" text-anchor="start" font-size="14" font-weight="bold" fill="#333">${perpendicularLabel}</text>
-  <text x="${midX}" y="${frontTL[1] - 12}" text-anchor="middle" font-size="12" fill="#555">${kind}</text>
+  <line x1="${frontBL[0]}" y1="${frontBL[1] + 16}" x2="${frontBR[0]}" y2="${frontBR[1] + 16}" stroke="${stroke}" stroke-width="1.5"/>
+  <text x="${midX}" y="${frontBL[1] + 34}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${faceEdgeLabel}</text>
+  <line x1="${frontBR[0] + 10}" y1="${frontBR[1]}" x2="${backBR[0] + 10}" y2="${backBR[1]}" stroke="${stroke}" stroke-width="1.5"/>
+  <text x="${perpX}" y="${perpY}" text-anchor="start" font-size="14" font-weight="bold" fill="#333">${perpendicularLabel}</text>
+  <text x="${midX}" y="${Math.max(16, frontTL[1] - 10)}" text-anchor="middle" font-size="12" fill="#555">${kind}</text>
   ${
     caption
-      ? `<text x="${totalW / 2}" y="${totalH - 12}" text-anchor="middle" font-size="12" fill="#444">${caption}</text>`
+      ? `<text x="${totalW / 2}" y="${totalH - 10}" text-anchor="middle" font-size="12" fill="#444">${caption}</text>`
       : ''
   }
 </svg>`.trim()
