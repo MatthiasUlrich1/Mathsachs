@@ -6,6 +6,7 @@ import {
   applyCurriculumTombstones,
   mergeDeletedCurricula,
   mergePackUpdate,
+  packNeedsUpdate,
   parseCurriculumPack,
   parseCurriculumPacksMap,
   parseDeletedCurricula,
@@ -182,6 +183,25 @@ export async function installBundledPack(
   const pack = await bundledPackById(id)
   if (!pack) throw new Error(`Unbekanntes Lehrplan-Paket „${id}“.`)
   return installPack(pack, kv, now)
+}
+
+/**
+ * After an app update the installer still holds the previous pack JSON.
+ * Replace installed packs with newer bundled copies (extras stay via merge).
+ */
+export async function upgradeInstalledPacksFromBundled(
+  kv: CurriculumKv = defaultCurriculumKv(),
+  now: number = Date.now(),
+  resolveBundled: (id: string) => Promise<CurriculumPack | null> = bundledPackById,
+): Promise<CurriculumPack[]> {
+  const upgraded: CurriculumPack[] = []
+  for (const meta of listInstalledMeta(kv)) {
+    const bundled = await resolveBundled(meta.id)
+    if (!bundled) continue
+    if (!packNeedsUpdate(meta.version, bundled.version)) continue
+    upgraded.push(installPack(bundled, kv, now))
+  }
+  return upgraded
 }
 
 export function readRawLoadedIds(kv: CurriculumKv = defaultCurriculumKv()): string[] | null {

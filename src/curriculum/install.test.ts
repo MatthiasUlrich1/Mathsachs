@@ -12,6 +12,7 @@ import {
   resetCurriculumMemory,
   shouldAutoInstallSeed,
   snapshotPacksForSharedState,
+  upgradeInstalledPacksFromBundled,
   type CurriculumKv,
 } from './install'
 import {
@@ -167,5 +168,67 @@ describe('removePack and shared merge', () => {
     installPack(osHs(), kv, now)
     removePack(OS_HS_PACK_ID, kv, now + 20)
     expect(isPackInstalled(OS_HS_PACK_ID, kv)).toBe(false)
+  })
+})
+
+describe('upgradeInstalledPacksFromBundled', () => {
+  it('upgrades installed packs when the bundled version is newer', async () => {
+    const kv = memoryKv()
+    installPack(osHs(), kv, 1)
+    const newer = { ...osHs(), version: '1.1.0', changelog: 'Mehr Themen' }
+    const upgraded = await upgradeInstalledPacksFromBundled(kv, 2, async (id) =>
+      id === OS_HS_PACK_ID ? newer : null,
+    )
+    expect(upgraded).toHaveLength(1)
+    expect(listInstalledPacks(kv)[0]?.version).toBe('1.1.0')
+  })
+
+  it('keeps Lehrer-extras when upgrading official content', async () => {
+    const kv = memoryKv()
+    const withExtra = {
+      ...osHs(),
+      extras: [
+        {
+          id: 'lehrer-extra-1',
+          gradeId: `${OS_HS_PACK_ID}-klasse-5`,
+          areaId: 'lb1',
+          source: 'lehrer' as const,
+          topic: { id: 'extra-topic', title: 'Extra', pointsPerTask: 10 },
+        },
+      ],
+    }
+    installPack(withExtra, kv, 1)
+    const newer = {
+      ...osHs(),
+      version: '2.0.0',
+      official: [
+        {
+          ...osHs().official[0]!,
+          areas: [
+            {
+              id: 'lb1',
+              title: 'Zahlen',
+              topics: [
+                { id: `${OS_HS_PACK_ID}-add`, title: 'Addition', pointsPerTask: 10 },
+                { id: `${OS_HS_PACK_ID}-sub`, title: 'Subtraktion', pointsPerTask: 10 },
+              ],
+            },
+          ],
+        },
+      ],
+    }
+    await upgradeInstalledPacksFromBundled(kv, 2, async () => newer)
+    const pack = listInstalledPacks(kv)[0]!
+    expect(pack.version).toBe('2.0.0')
+    expect(pack.official[0]!.areas[0]!.topics).toHaveLength(2)
+    expect(pack.extras.map((e) => e.id)).toEqual(['lehrer-extra-1'])
+  })
+
+  it('does nothing when bundled is not newer', async () => {
+    const kv = memoryKv()
+    installPack(osHs(), kv, 1)
+    const upgraded = await upgradeInstalledPacksFromBundled(kv, 2, async () => osHs())
+    expect(upgraded).toEqual([])
+    expect(listInstalledPacks(kv)[0]?.version).toBe('1.0.0')
   })
 })

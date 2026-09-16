@@ -8,7 +8,7 @@ import {
   subjectTitleForModule,
 } from './curriculum/registry'
 import { listInstalledPacks } from './curriculum/install'
-import { migrateBundledCurriculumIfNeeded } from './curriculum/install'
+import { migrateBundledCurriculumIfNeeded, upgradeInstalledPacksFromBundled } from './curriculum/install'
 import { loadInstalledGrade } from './curriculum/loadGrade'
 import { normalizeSubject } from './curriculum/packFilters'
 import { useCurriculumCatalog } from './curriculum/useCurriculumCatalog'
@@ -263,6 +263,8 @@ export default function App() {
     }
     void (async () => {
       await migrateBundledCurriculumIfNeeded(undefined, { hasPracticeHistory: hasPracticeHistory() })
+      if (cancelled) return
+      await upgradeInstalledPacksFromBundled()
       if (cancelled) return
       const ids = getLoadedIds()
       const results = await Promise.all(

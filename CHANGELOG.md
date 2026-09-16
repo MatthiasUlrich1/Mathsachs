@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.7] – 2026-09-16
+
+### Verbessert
+- **Lehrpläne:** Installierte Pakete werden beim App-Start automatisch auf die
+  mitgelieferte Version aktualisiert (z. B. Physik 2.1.0 nach App-Update).
+  Online-Katalog-Updates werden ebenfalls automatisch eingespielt — kein
+  manuelles „Lehrplan aktualisieren“ mehr nötig.
+
 ## [0.27.6] – 2026-09-16
 
 ### Behoben
