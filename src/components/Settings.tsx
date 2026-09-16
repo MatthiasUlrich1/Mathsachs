@@ -27,6 +27,7 @@ import {
   type UserRole,
 } from '../lib/roles'
 import { applyRoleChange, needsTeacherCode } from '../lib/teacherCode'
+import { SUBJECT_OPTIONS } from '../curriculum/packFilters'
 import type { LanServerStatus } from '../updates/types'
 import {
   MANUAL_CHECK_LABEL,
@@ -53,6 +54,8 @@ interface Props {
   section?: SettingsSectionId | null
   user: string
   role: UserRole
+  preferredSubject: string
+  onChangePreferredSubject: (subject: string) => void
   classLabel: string | null
   lanStatus: LanServerStatus | null
   onChangeRole: (role: UserRole) => void
@@ -74,6 +77,8 @@ export function Settings({
   section = null,
   user,
   role,
+  preferredSubject,
+  onChangePreferredSubject,
   classLabel,
   lanStatus,
   onChangeRole,
@@ -205,6 +210,7 @@ export function Settings({
           onLoad={onLoad}
           onRemove={onRemove}
           onPacksChanged={onPacksChanged}
+          initialSubject={isTeacherRole(role) ? preferredSubject : undefined}
         />
       )}
 
@@ -266,6 +272,28 @@ export function Settings({
               value={selectedRole}
               onSelect={pickRole}
             />
+            {isTeacherRole(role) && !pendingRole && (
+              <div className="field">
+                <label className="field__label" htmlFor="profile-preferred-subject">
+                  Fach
+                </label>
+                <select
+                  id="profile-preferred-subject"
+                  className="answer-input__field"
+                  value={preferredSubject}
+                  onChange={(event) => onChangePreferredSubject(event.target.value)}
+                >
+                  {SUBJECT_OPTIONS.map((label) => (
+                    <option key={label} value={label}>
+                      {label}
+                    </option>
+                  ))}
+                </select>
+                <p className="muted small">
+                  Lehrpläne, Themen und Klausur erstellen zeigen zuerst dieses Fach.
+                </p>
+              </div>
+            )}
             {isTeacherRole(role) && !pendingRole ? (
               <TeacherCodeReveal />
             ) : pendingRole ? (

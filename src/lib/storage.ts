@@ -512,6 +512,22 @@ export const setUserRole = (name: string, role: UserRole): UserRole => {
   return nextRole
 }
 
+export const getPreferredSubject = (name: string): string => {
+  const trimmed = name.trim()
+  if (!trimmed) return 'Mathematik'
+  const value = loadUser(trimmed).preferredSubject
+  return typeof value === 'string' && value.trim() ? value.trim() : 'Mathematik'
+}
+
+export const setPreferredSubject = (name: string, subject: string): string => {
+  const trimmed = name.trim()
+  const next = subject.trim() || 'Mathematik'
+  if (!trimmed) return next
+  const current = loadUser(trimmed)
+  saveUser({ ...current, preferredSubject: next })
+  return next
+}
+
 export const deleteUser = async (name: string): Promise<string[]> => {
   const users = listUsers().filter((n) => n !== name)
   const records = { ...cache.records }

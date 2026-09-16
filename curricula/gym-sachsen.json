@@ -6,7 +6,7 @@
   "subject": "Mathematik",
   "version": "1.0.0",
   "changelog": "Erstfassung: Klassen 5–10 und Jahrgangsstufe 11/12 (Grundkurs), plus getrennte Lehrer-Ergänzungen.",
-  "contentHash": "a254684a",
+  "contentHash": "e4fc8aef",
   "official": [
     {
       "id": "klasse-5",
@@ -210,13 +210,13 @@
             {
               "id": "lb3-winkelarten",
               "title": "Winkelarten erkennen",
-              "hint": "spitz, recht, stumpf, gestreckt oder überstumpf.",
+              "hint": "spitz (<90°), recht (90°), stumpf (90°–180°), gestreckt (180°) oder überstumpf (>180°).",
               "pointsPerTask": 10
             },
             {
               "id": "lb3-winkel-ergaenzung",
               "title": "Winkel zu 90° oder 180° ergänzen",
-              "hint": "Ziehe den gegebenen Winkel von 90° bzw. 180° ab.",
+              "hint": "Vom Zielwert (90° oder 180°) den gegebenen Winkel abziehen.",
               "pointsPerTask": 10
             },
             {

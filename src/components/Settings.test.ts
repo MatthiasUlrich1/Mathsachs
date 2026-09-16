@@ -23,6 +23,8 @@ const baseProps = {
   onOpenSection: vi.fn(),
   user: 'Ada',
   role: 'lehrer' as const,
+  preferredSubject: 'Mathematik',
+  onChangePreferredSubject: vi.fn(),
   classLabel: '6/6',
   lanStatus: null,
   onChangeRole: vi.fn(),
@@ -208,5 +210,26 @@ describe('Settings profile Lehrercode', () => {
     )
     expect(html).toContain(formatTeacherCode())
     expect(html).not.toContain(TEACHER_CODE_REQUEST_LABEL)
+  })
+
+  it('shows Fach selection on Profil for Lehrer', () => {
+    const html = renderToStaticMarkup(
+      createElement(Settings, { ...baseProps, section: 'profile' }),
+    )
+    expect(html).toContain('Fach')
+    expect(html).toContain('profile-preferred-subject')
+    expect(html).toContain('Mathematik')
+    expect(html).toContain('Physik')
+  })
+
+  it('hides Fach selection on Profil for Schüler', () => {
+    const html = renderToStaticMarkup(
+      createElement(Settings, {
+        ...baseProps,
+        role: 'schueler',
+        section: 'profile',
+      }),
+    )
+    expect(html).not.toContain('profile-preferred-subject')
   })
 })

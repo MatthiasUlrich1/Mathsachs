@@ -1,0 +1,1205 @@
+{
+  "id": "gym-sachsen-physik",
+  "title": "Gymnasium Sachsen · Physik",
+  "region": "Sachsen",
+  "school": "Gymnasium",
+  "subject": "Physik",
+  "version": "1.0.0",
+  "changelog": "Lehrplan Physik Gymnasium Sachsen (Klassen 6–10, JGS 11/12 Gk/Lk). Themenstruktur laut Lehrplan; Übungsaufgaben folgen schrittweise.",
+  "official": [
+    {
+      "id": "physik-klasse-6",
+      "title": "Klasse 6",
+      "subjectTitle": "Physik",
+      "gradeTitle": "Klasse 6",
+      "description": "Licht, Körper und Bewegung, Temperatur, einfache Stromkreise.",
+      "searchHints": [
+        "Licht",
+        "Körper",
+        "Temperatur",
+        "Stromkreis",
+        "Wärme"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Licht und seine Eigenschaften",
+          "ustd": 17,
+          "topics": [
+            {
+              "id": "ph-k6-lb1-licht",
+              "title": "Licht und seine Eigenschaften",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Licht",
+                "Schatten",
+                "Spiegel"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Eigenschaften und Bewegungen von Körpern",
+          "ustd": 14,
+          "topics": [
+            {
+              "id": "ph-k6-lb2-koerper",
+              "title": "Eigenschaften und Bewegungen von Körpern",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Körper",
+                "Bewegung",
+                "Masse"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Temperatur und Zustand von Körpern",
+          "ustd": 14,
+          "topics": [
+            {
+              "id": "ph-k6-lb3-temperatur",
+              "title": "Temperatur und Zustand von Körpern",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Temperatur",
+                "Aggregatzustand"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Elektrische Stromkreise",
+          "ustd": 5,
+          "topics": [
+            {
+              "id": "ph-k6-lb4-stromkreis",
+              "title": "Elektrische Stromkreise",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Stromkreis",
+                "Elektrizität"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "ph-k6-lbw-sehen",
+              "title": "Sehen und Fotografieren",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Sehen",
+                "Fotografie"
+              ]
+            },
+            {
+              "id": "ph-k6-lbw-daemmung",
+              "title": "Wärmedämmung",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Wärmedämmung"
+              ]
+            },
+            {
+              "id": "ph-k6-lbw-farben",
+              "title": "Farben",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Farben"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "physik-klasse-7",
+      "title": "Klasse 7",
+      "subjectTitle": "Physik",
+      "gradeTitle": "Klasse 7",
+      "description": "Kräfte, Stromstärke und Spannung, Energiewandler.",
+      "searchHints": [
+        "Kraft",
+        "Stromstärke",
+        "Spannung",
+        "Energie"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Kräfte",
+          "ustd": 22,
+          "topics": [
+            {
+              "id": "ph-k7-lb1-kraefte",
+              "title": "Kräfte",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Kraft",
+                "Gewichtskraft"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Stromstärke und Spannung in Stromkreisen",
+          "ustd": 18,
+          "topics": [
+            {
+              "id": "ph-k7-lb2-strom",
+              "title": "Stromstärke und Spannung in Stromkreisen",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Stromstärke",
+                "Spannung"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Energiewandler",
+          "ustd": 10,
+          "topics": [
+            {
+              "id": "ph-k7-lb3-energie",
+              "title": "Energiewandler",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Energie",
+                "Wandler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "ph-k7-lbw-kraftwandler",
+              "title": "Kraftwandler – früher und heute",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Kraftwandler"
+              ]
+            },
+            {
+              "id": "ph-k7-lbw-schaltungen",
+              "title": "Elektrische Schaltungen",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Schaltung"
+              ]
+            },
+            {
+              "id": "ph-k7-lbw-fliegen",
+              "title": "Vom Fliegen",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Fliegen"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "physik-klasse-8",
+      "title": "Klasse 8",
+      "subjectTitle": "Physik",
+      "gradeTitle": "Klasse 8",
+      "description": "Mechanik der Fluide, thermische Energie, elektrische Bauelemente, Experimentieren.",
+      "searchHints": [
+        "Druck",
+        "Wärme",
+        "Widerstand",
+        "Experiment"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Mechanik der Flüssigkeiten und Gase",
+          "ustd": 12,
+          "topics": [
+            {
+              "id": "ph-k8-lb1-fluide",
+              "title": "Mechanik der Flüssigkeiten und Gase",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Druck",
+                "Auftrieb"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Thermische Energie",
+          "ustd": 15,
+          "topics": [
+            {
+              "id": "ph-k8-lb2-thermisch",
+              "title": "Thermische Energie",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Wärme",
+                "thermische Energie"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Eigenschaften elektrischer Bauelemente",
+          "ustd": 15,
+          "topics": [
+            {
+              "id": "ph-k8-lb3-bauelemente",
+              "title": "Eigenschaften elektrischer Bauelemente",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Widerstand",
+                "Bauelemente"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Selbstständiges Experimentieren",
+          "ustd": 8,
+          "topics": [
+            {
+              "id": "ph-k8-lb4-experiment",
+              "title": "Selbstständiges Experimentieren",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Experiment",
+                "Praktikum"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "ph-k8-lbw-ballon",
+              "title": "Vom Ballonfahren",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Ballon"
+              ]
+            },
+            {
+              "id": "ph-k8-lbw-kuehlschrank",
+              "title": "Kühlschrank und Wärmepumpe",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Wärmepumpe"
+              ]
+            },
+            {
+              "id": "ph-k8-lbw-messen",
+              "title": "Elektrisches Messen nichtelektrischer Größen",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Messen"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "physik-klasse-9",
+      "title": "Klasse 9",
+      "subjectTitle": "Physik",
+      "gradeTitle": "Klasse 9",
+      "description": "Elektronik, Energieversorgung, Bewegungsgesetze, Praktikum.",
+      "searchHints": [
+        "Elektronik",
+        "Energieversorgung",
+        "Bewegung",
+        "Praktikum"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Grundlagen der Elektronik",
+          "ustd": 9,
+          "topics": [
+            {
+              "id": "ph-k9-lb1-elektronik",
+              "title": "Grundlagen der Elektronik",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Elektronik",
+                "Diode"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Energieversorgung",
+          "ustd": 18,
+          "topics": [
+            {
+              "id": "ph-k9-lb2-versorgung",
+              "title": "Energieversorgung",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Energieversorgung",
+                "Kraftwerk"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Bewegungsgesetze",
+          "ustd": 16,
+          "topics": [
+            {
+              "id": "ph-k9-lb3-bewegung",
+              "title": "Bewegungsgesetze",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Geschwindigkeit",
+                "Beschleunigung"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Physikalisches Praktikum",
+          "ustd": 7,
+          "topics": [
+            {
+              "id": "ph-k9-lb4-praktikum",
+              "title": "Physikalisches Praktikum",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Praktikum"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "ph-k9-lbw-radioaktivitaet",
+              "title": "Natürliche Radioaktivität",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Radioaktivität"
+              ]
+            },
+            {
+              "id": "ph-k9-lbw-wind-sonne",
+              "title": "Energie von Wind und Sonne",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Wind",
+                "Sonne"
+              ]
+            },
+            {
+              "id": "ph-k9-lbw-kurven",
+              "title": "Bewegungen auf gekrümmten Bahnen",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Kreisbewegung"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "physik-klasse-10",
+      "title": "Klasse 10",
+      "subjectTitle": "Physik",
+      "gradeTitle": "Klasse 10",
+      "description": "Schwingungen und Wellen, Kosmos, Optik, Hertzsche Wellen, Praktikum.",
+      "searchHints": [
+        "Schwingung",
+        "Welle",
+        "Astronomie",
+        "Licht",
+        "Hertz"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Mechanische Schwingungen und Wellen",
+          "ustd": 10,
+          "topics": [
+            {
+              "id": "ph-k10-lb1-schwingung",
+              "title": "Mechanische Schwingungen und Wellen",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Schwingung",
+                "Welle"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Kosmos, Erde und Mensch",
+          "ustd": 18,
+          "topics": [
+            {
+              "id": "ph-k10-lb2-kosmos",
+              "title": "Kosmos, Erde und Mensch",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Astronomie",
+                "Kosmos"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Licht als Strahl und Welle",
+          "ustd": 9,
+          "topics": [
+            {
+              "id": "ph-k10-lb3-licht",
+              "title": "Licht als Strahl und Welle",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Optik",
+                "Licht"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Hertzsche Wellen",
+          "ustd": 7,
+          "topics": [
+            {
+              "id": "ph-k10-lb4-hertz",
+              "title": "Hertzsche Wellen",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Elektromagnetische Wellen"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb5",
+          "title": "Physikalisches Praktikum",
+          "ustd": 6,
+          "topics": [
+            {
+              "id": "ph-k10-lb5-praktikum",
+              "title": "Physikalisches Praktikum",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Praktikum"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "ph-k10-lbw-fernrohr",
+              "title": "Fernrohre",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Fernrohr"
+              ]
+            },
+            {
+              "id": "ph-k10-lbw-medien",
+              "title": "Kommunikation mit elektronischen Medien",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Medien"
+              ]
+            },
+            {
+              "id": "ph-k10-lbw-fernsehen",
+              "title": "Fernsehbildtechnik",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Fernsehen"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "physik-jgs-11-gk",
+      "title": "Jahrgangsstufe 11 · Grundkurs",
+      "subjectTitle": "Physik",
+      "gradeTitle": "JGS 11 · Grundkurs",
+      "description": "Energieerhaltung, Kinematik/Dynamik, Kondensator und Spule, geladene Teilchen in Feldern.",
+      "searchHints": [
+        "Energie",
+        "Kinematik",
+        "Kondensator",
+        "Feld"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Erhaltung der Energie",
+          "ustd": 10,
+          "topics": [
+            {
+              "id": "ph-j11gk-lb1-energie",
+              "title": "Erhaltung der Energie",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Energieerhaltung"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Anwendung der Kinematik und Dynamik",
+          "ustd": 14,
+          "topics": [
+            {
+              "id": "ph-j11gk-lb2-mechanik",
+              "title": "Anwendung der Kinematik und Dynamik",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Kinematik",
+                "Dynamik"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Kondensator und Spule – Praktikum",
+          "ustd": 10,
+          "topics": [
+            {
+              "id": "ph-j11gk-lb3-praktikum",
+              "title": "Kondensator und Spule – Praktikum",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Kondensator",
+                "Spule"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Geladene Teilchen in elektrischen und magnetischen Feldern",
+          "ustd": 18,
+          "topics": [
+            {
+              "id": "ph-j11gk-lb4-felder",
+              "title": "Geladene Teilchen in Feldern",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Feld",
+                "Ladung"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "ph-j11gk-lbw-konstanten",
+              "title": "Bestimmung elementarer Naturkonstanten",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Naturkonstante"
+              ]
+            },
+            {
+              "id": "ph-j11gk-lbw-exkursion",
+              "title": "Physikalisch-technische Exkursion",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Exkursion"
+              ]
+            },
+            {
+              "id": "ph-j11gk-lbw-anwendungen",
+              "title": "Technische Anwendungen von Spulen und Kondensatoren",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Anwendung"
+              ]
+            },
+            {
+              "id": "ph-j11gk-lbw-relativitaet",
+              "title": "Relativität von Zeit und Raum",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Relativität"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "physik-jgs-12-gk",
+      "title": "Jahrgangsstufe 12 · Grundkurs",
+      "subjectTitle": "Physik",
+      "gradeTitle": "JGS 12 · Grundkurs",
+      "description": "Optik, Quantenphysik, Strahlung aus Atomhülle und Atomkern.",
+      "searchHints": [
+        "Optik",
+        "Quantenphysik",
+        "Atom",
+        "Strahlung"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Welleneigenschaften des Lichts",
+          "ustd": 8,
+          "topics": [
+            {
+              "id": "ph-j12gk-lb1-licht",
+              "title": "Welleneigenschaften des Lichts",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Lichtwelle"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Praktikum Optik",
+          "ustd": 6,
+          "topics": [
+            {
+              "id": "ph-j12gk-lb2-optik",
+              "title": "Praktikum Optik",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Optik",
+                "Praktikum"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Grundlagen der Quantenphysik",
+          "ustd": 10,
+          "topics": [
+            {
+              "id": "ph-j12gk-lb3-quanten",
+              "title": "Grundlagen der Quantenphysik",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Quantenphysik"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Strahlung aus Atomhülle und Atomkern",
+          "ustd": 20,
+          "topics": [
+            {
+              "id": "ph-j12gk-lb4-strahlung",
+              "title": "Strahlung aus Atomhülle und Atomkern",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Atom",
+                "Kernstrahlung"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "ph-j12gk-lbw-anwendungen",
+              "title": "Anwendungen der Physik",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Anwendung"
+              ]
+            },
+            {
+              "id": "ph-j12gk-lbw-optik",
+              "title": "Optische Phänomene",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Optik"
+              ]
+            },
+            {
+              "id": "ph-j12gk-lbw-akustik",
+              "title": "Akustik",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Akustik"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "physik-jgs-11-lk",
+      "title": "Jahrgangsstufe 11 · Leistungskurs",
+      "subjectTitle": "Physik",
+      "gradeTitle": "JGS 11 · Leistungskurs",
+      "description": "Erhaltungssätze, Mechanik, Felder, Induktion, Praktikum.",
+      "searchHints": [
+        "Erhaltungssatz",
+        "Newton",
+        "Feld",
+        "Induktion"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Erhaltungssätze und ihre Anwendungen",
+          "ustd": 20,
+          "topics": [
+            {
+              "id": "ph-j11lk-lb1-erhaltung",
+              "title": "Erhaltungssätze und ihre Anwendungen",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Impuls",
+                "Energie"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Kinematik geradliniger Bewegungen",
+          "ustd": 12,
+          "topics": [
+            {
+              "id": "ph-j11lk-lb2-kinematik",
+              "title": "Kinematik geradliniger Bewegungen",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Kinematik"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Newtonsche Gesetze und deren Anwendungen",
+          "ustd": 8,
+          "topics": [
+            {
+              "id": "ph-j11lk-lb3-newton",
+              "title": "Newtonsche Gesetze und deren Anwendungen",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Newton"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Modellbildung und Simulation",
+          "ustd": 8,
+          "topics": [
+            {
+              "id": "ph-j11lk-lb4-modell",
+              "title": "Modellbildung und Simulation",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Modell",
+                "Simulation"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb5",
+          "title": "Krummlinige Bewegungen",
+          "ustd": 10,
+          "topics": [
+            {
+              "id": "ph-j11lk-lb5-kurven",
+              "title": "Krummlinige Bewegungen",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Kreisbewegung"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb6",
+          "title": "Einblick in die Relativitätstheorie",
+          "ustd": 8,
+          "topics": [
+            {
+              "id": "ph-j11lk-lb6-relativitaet",
+              "title": "Einblick in die Relativitätstheorie",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Relativität"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb7",
+          "title": "Elektrisches Feld",
+          "ustd": 14,
+          "topics": [
+            {
+              "id": "ph-j11lk-lb7-efeld",
+              "title": "Elektrisches Feld",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Elektrisches Feld"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb8",
+          "title": "Magnetisches Feld",
+          "ustd": 10,
+          "topics": [
+            {
+              "id": "ph-j11lk-lb8-mfeld",
+              "title": "Magnetisches Feld",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Magnetisches Feld"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb9",
+          "title": "Geladene Teilchen in Feldern",
+          "ustd": 12,
+          "topics": [
+            {
+              "id": "ph-j11lk-lb9-teilchen",
+              "title": "Geladene Teilchen in Feldern",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Lorentzkraft"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb10",
+          "title": "Elektromagnetische Induktion",
+          "ustd": 15,
+          "topics": [
+            {
+              "id": "ph-j11lk-lb10-induktion",
+              "title": "Elektromagnetische Induktion",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Induktion"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb11",
+          "title": "Physikalisches Praktikum",
+          "ustd": 13,
+          "topics": [
+            {
+              "id": "ph-j11lk-lb11-praktikum",
+              "title": "Physikalisches Praktikum",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Praktikum"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "ph-j11lk-lbw-fahren",
+              "title": "Physik des Fahrens",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Fahren"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lbw-halbleiter",
+              "title": "Leitungsvorgänge in Halbleitern",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Halbleiter"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lbw-messen",
+              "title": "Messen und Modellieren",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Messen"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "physik-jgs-12-lk",
+      "title": "Jahrgangsstufe 12 · Leistungskurs",
+      "subjectTitle": "Physik",
+      "gradeTitle": "JGS 12 · Leistungskurs",
+      "description": "Schwingungen und Wellen, Quanten- und Atomphysik, Thermodynamik.",
+      "searchHints": [
+        "Schwingung",
+        "Welle",
+        "Quanten",
+        "Atomkern",
+        "Thermodynamik"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Mechanische und elektromagnetische Schwingungen",
+          "ustd": 22,
+          "topics": [
+            {
+              "id": "ph-j12lk-lb1-schwingung",
+              "title": "Mechanische und elektromagnetische Schwingungen",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Schwingung"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Wellen als vielschichtige Naturerscheinung",
+          "ustd": 15,
+          "topics": [
+            {
+              "id": "ph-j12lk-lb2-wellen",
+              "title": "Wellen als vielschichtige Naturerscheinung",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Welle"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Grundlagen der Quantenphysik",
+          "ustd": 15,
+          "topics": [
+            {
+              "id": "ph-j12lk-lb4-quanten",
+              "title": "Grundlagen der Quantenphysik",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Quantenphysik"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb5",
+          "title": "Grundlagen der Atomphysik",
+          "ustd": 18,
+          "topics": [
+            {
+              "id": "ph-j12lk-lb5-atom",
+              "title": "Grundlagen der Atomphysik",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Atomphysik"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb6",
+          "title": "Eigenschaften der Atomkerne",
+          "ustd": 17,
+          "topics": [
+            {
+              "id": "ph-j12lk-lb6-kerne",
+              "title": "Eigenschaften der Atomkerne",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Kernphysik"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb7",
+          "title": "Thermodynamik",
+          "ustd": 15,
+          "topics": [
+            {
+              "id": "ph-j12lk-lb7-thermo",
+              "title": "Thermodynamik",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Thermodynamik"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "ph-j12lk-lbw-chaos",
+              "title": "Deterministisches Chaos",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Chaos"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lbw-gas",
+              "title": "Kinetische Gastheorie",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Gastheorie"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lbw-anwendungen",
+              "title": "Anwendungen der Physik",
+              "pointsPerTask": 10,
+              "hint": "Übungsaufgaben für Physik folgen in einer späteren Version.",
+              "keywords": [
+                "Anwendung"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "extras": [],
+  "contentHash": "57e11924"
+}

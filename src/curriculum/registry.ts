@@ -8,11 +8,22 @@ import {
   type CurriculumKv,
 } from './install'
 import { loadInstalledGrade } from './loadGrade'
-import { GYM_SACHSEN_PACK_ID, OS_HS_PACK_ID, OS_RS_PACK_ID } from './pack'
+import {
+  GYM_SACHSEN_PACK_ID,
+  GYM_SACHSEN_PHYSIK_PACK_ID,
+  OS_HS_PACK_ID,
+  OS_RS_PACK_ID,
+} from './pack'
 
 export const CURRICULUM_VERSION = 1
 export type { CurriculumModule }
-export { bundledCurricula, GYM_SACHSEN_PACK_ID, OS_HS_PACK_ID, OS_RS_PACK_ID }
+export {
+  bundledCurricula,
+  GYM_SACHSEN_PACK_ID,
+  GYM_SACHSEN_PHYSIK_PACK_ID,
+  OS_HS_PACK_ID,
+  OS_RS_PACK_ID,
+}
 
 export const availableCurricula: CurriculumModule[] = bundledCurricula
 
@@ -118,7 +129,18 @@ export function hasAnyInstalledPack(kv: CurriculumKv = defaultCurriculumKv()): b
   return (
     listInstalledPacks(kv).length > 0 ||
     isPackInstalled(GYM_SACHSEN_PACK_ID, kv) ||
+    isPackInstalled(GYM_SACHSEN_PHYSIK_PACK_ID, kv) ||
     isPackInstalled(OS_HS_PACK_ID, kv) ||
     isPackInstalled(OS_RS_PACK_ID, kv)
   )
+}
+
+/** Subject title for a grade module id (Mathematik / Physik / …). */
+export function subjectTitleForModule(
+  moduleId: string,
+  kv: CurriculumKv = defaultCurriculumKv(),
+): string {
+  const mod = getCurriculumModule(moduleId, kv)
+  const title = mod?.subjectTitle?.trim()
+  return title || 'Mathematik'
 }

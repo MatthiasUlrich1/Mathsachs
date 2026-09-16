@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-15T19:26:55.201Z",
+  "updatedAt": "2026-09-16T13:29:52.714Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -9,8 +9,19 @@
       "subject": "Mathematik",
       "version": "1.0.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen.json",
-      "size": 62132,
+      "size": 62190,
       "changelog": "Erstfassung: Klassen 5–10 und Jahrgangsstufe 11/12 (Grundkurs), plus getrennte Lehrer-Ergänzungen."
+    },
+    {
+      "id": "gym-sachsen-physik",
+      "title": "Gymnasium Sachsen · Physik",
+      "region": "Sachsen",
+      "school": "Gymnasium",
+      "subject": "Physik",
+      "version": "1.0.0",
+      "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
+      "size": 35882,
+      "changelog": "Lehrplan Physik Gymnasium Sachsen (Klassen 6–10, JGS 11/12 Gk/Lk). Themenstruktur laut Lehrplan; Übungsaufgaben folgen schrittweise."
     },
     {
       "id": "oberschule-sachsen-hs",

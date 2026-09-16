@@ -11,14 +11,18 @@ import { packNeedsUpdate, type ManifestPack } from '../curriculum/pack'
 import {
   ALL_FILTER,
   defaultRegionFilter,
+  defaultSubjectFilter,
   filterPacks,
   gradeSectionHeading,
+  normalizeSubject,
   packMatchesFilters,
   SCHULFORM_OPTIONS,
   uniqueRegions,
+  uniqueSubjects,
 } from '../curriculum/packFilters'
 import {
   GYM_SACHSEN_PACK_ID,
+  GYM_SACHSEN_PHYSIK_PACK_ID,
   OS_HS_PACK_ID,
   OS_RS_PACK_ID,
   listVisibleGradeModules,
@@ -32,6 +36,8 @@ interface Props {
   onPacksChanged: () => void
   initialRegion?: string
   initialSchulform?: string
+  /** Preferred subject from Lehrerprofil — defaults the Fach filter. */
+  initialSubject?: string
 }
 
 const FALLBACK_CATALOG: ManifestPack[] = [
@@ -44,6 +50,17 @@ const FALLBACK_CATALOG: ManifestPack[] = [
     version: '1.0.0',
     url: '',
     changelog: 'Mitgeliefert: Klassen 5–12 GK. Ohne Netz wird die lokale Fassung installiert.',
+  },
+  {
+    id: GYM_SACHSEN_PHYSIK_PACK_ID,
+    title: 'Gymnasium Sachsen · Physik',
+    region: 'Sachsen',
+    school: 'Gymnasium',
+    subject: 'Physik',
+    version: '1.0.0',
+    url: '',
+    changelog:
+      'Mitgeliefert: Klassen 6–10 und JGS 11/12 Gk/Lk (Lehrplanstruktur). Ohne Netz wird die lokale Fassung installiert.',
   },
   {
     id: OS_HS_PACK_ID,
@@ -74,6 +91,7 @@ export function CurriculumSetup({
   onPacksChanged,
   initialRegion,
   initialSchulform,
+  initialSubject,
 }: Props) {
   const [busyId, setBusyId] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -81,6 +99,9 @@ export function CurriculumSetup({
   const [rev, setRev] = useState(0)
   const [region, setRegion] = useState<string | undefined>(initialRegion)
   const [schulform, setSchulform] = useState(initialSchulform ?? ALL_FILTER)
+  const [subject, setSubject] = useState<string | undefined>(
+    initialSubject ? normalizeSubject(initialSubject) : undefined,
+  )
 
   useEffect(() => {
     let cancelled = false
@@ -92,14 +113,20 @@ export function CurriculumSetup({
     }
   }, [rev])
 
+  useEffect(() => {
+    if (initialSubject) setSubject(normalizeSubject(initialSubject))
+  }, [initialSubject])
+
   const installed = listInstalledMeta()
   const installedPacks = listInstalledPacks()
   const visibleGrades = listVisibleGradeModules()
 
   const catalog: ManifestPack[] = remote.length > 0 ? remote : FALLBACK_CATALOG
   const activeRegion = region ?? defaultRegionFilter(catalog)
-  const visibleCatalog = filterPacks(catalog, activeRegion, schulform)
+  const activeSubject = subject ?? defaultSubjectFilter(catalog, initialSubject)
+  const visibleCatalog = filterPacks(catalog, activeRegion, schulform, activeSubject)
   const regions = uniqueRegions(catalog)
+  const subjects = uniqueSubjects(catalog)
 
   const gradesByPack = new Map<string, CurriculumModule[]>()
   for (const mod of visibleGrades) {
@@ -118,7 +145,7 @@ export function CurriculumSetup({
   for (const entry of catalog) {
     const grades = gradesByPack.get(entry.id)
     if (!grades?.length) continue
-    if (!packMatchesFilters(entry, activeRegion, schulform)) continue
+    if (!packMatchesFilters(entry, activeRegion, schulform, activeSubject)) continue
     seenPacks.add(entry.id)
     gradeSections.push({ id: entry.id, title: entry.title, grades })
   }
@@ -126,7 +153,7 @@ export function CurriculumSetup({
     if (seenPacks.has(packId) || grades.length === 0) continue
     const pack = installedPacks.find((item) => item.id === packId)
     const meta = pack ?? catalog.find((entry) => entry.id === packId)
-    if (meta && !packMatchesFilters(meta, activeRegion, schulform)) continue
+    if (meta && !packMatchesFilters(meta, activeRegion, schulform, activeSubject)) continue
     gradeSections.push({ id: packId, title: packTitle(packId), grades })
   }
 
@@ -159,9 +186,9 @@ export function CurriculumSetup({
       {installed.length === 0 && (
         <p className="notice notice--warn">
           Es ist noch kein Lehrplan installiert. Installiere zuerst
-          „Gymnasium Sachsen · Mathematik“ oder einen Oberschule-Lehrplan
-          (Hauptschul- oder Realschulbildungsgang), um Themen, Klausur und
-          Challenge nutzen zu können.
+          „Gymnasium Sachsen · Mathematik“, „Gymnasium Sachsen · Physik“ oder einen
+          Oberschule-Lehrplan (Hauptschul- oder Realschulbildungsgang), um Themen,
+          Klausur und Challenge nutzen zu können.
         </p>
       )}
       {error && <p className="notice notice--error">{error}</p>}
@@ -203,10 +230,28 @@ export function CurriculumSetup({
             ))}
           </select>
         </div>
+        <div className="field">
+          <label className="field__label" htmlFor="curriculum-filter-subject">
+            Fach
+          </label>
+          <select
+            id="curriculum-filter-subject"
+            className="answer-input__field"
+            value={activeSubject}
+            onChange={(event) => setSubject(event.target.value)}
+          >
+            <option value={ALL_FILTER}>Alle</option>
+            {subjects.map((label) => (
+              <option key={label} value={label}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       {visibleCatalog.length === 0 ? (
-        <p className="muted small">Kein Lehrplan passt zu Bundesland und Schulform.</p>
+        <p className="muted small">Kein Lehrplan passt zu Bundesland, Schulform und Fach.</p>
       ) : (
         <ul className="curriculum-list">
           {visibleCatalog.map((entry) => {

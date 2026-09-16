@@ -783,6 +783,13 @@ function mergeUserData(a, b) {
   if (applied.deletedChallenges.length > 0) out.deletedChallenges = applied.deletedChallenges
   const role = USER_ROLES.has(b.role) ? b.role : USER_ROLES.has(a.role) ? a.role : null
   if (role) out.role = role
+  const preferredSubject =
+    typeof b.preferredSubject === 'string' && b.preferredSubject.trim()
+      ? b.preferredSubject.trim()
+      : typeof a.preferredSubject === 'string' && a.preferredSubject.trim()
+        ? a.preferredSubject.trim()
+        : null
+  if (preferredSubject) out.preferredSubject = preferredSubject
   return out
 }
 

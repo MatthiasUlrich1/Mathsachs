@@ -5,10 +5,12 @@ import {
   getLoadedIds,
   listVisibleGradeModules,
   setLoadedIds,
+  subjectTitleForModule,
 } from './curriculum/registry'
 import { listInstalledPacks } from './curriculum/install'
 import { migrateBundledCurriculumIfNeeded } from './curriculum/install'
 import { loadInstalledGrade } from './curriculum/loadGrade'
+import { normalizeSubject } from './curriculum/packFilters'
 import { useCurriculumCatalog } from './curriculum/useCurriculumCatalog'
 import { CurriculumBanner } from './components/CurriculumBanner'
 import type { Grade, Topic } from './curriculum/types'
@@ -20,10 +22,12 @@ import {
   renameUser,
   cacheKnownClassName,
   getClassCodeSettings,
+  getPreferredSubject,
   getUserRole,
   initSharedStorage,
   listUsers,
   setActiveStorageUser,
+  setPreferredSubject,
   setUserRole,
   subscribeSharedStorage,
   syncCurriculumPacksToShared,
@@ -102,6 +106,8 @@ export default function App() {
     null,
   )
   const [userRole, setUserRoleState] = useState<UserRole>('schueler')
+  const [preferredSubject, setPreferredSubjectState] = useState('Mathematik')
+  const [browseSubject, setBrowseSubject] = useState<string | null>(null)
   // Exam code taken from a shared link (`#klausur=…`), consumed by ExamRunner.
   const [examCodeFromLink, setExamCodeFromLink] = useState<string | null>(null)
   const [openExamCount, setOpenExamCount] = useState(0)
@@ -170,6 +176,7 @@ export default function App() {
       // Only restore role if the user still exists
       if (current && listUsers().includes(current)) {
         setUserRoleState(getUserRole(current))
+        setPreferredSubjectState(getPreferredSubject(current))
       }
     })
     void initSharedStorage().then(() => {
@@ -325,7 +332,50 @@ export default function App() {
     setActiveUser(name)
     setClassLabel(activeClassDisplayName())
     setUserRoleState(getUserRole(name))
+    const subject = getPreferredSubject(name)
+    setPreferredSubjectState(subject)
+    setBrowseSubject(subject)
   }
+
+  const changePreferredSubject = (subject: string) => {
+    if (!activeUser) return
+    const next = setPreferredSubject(activeUser, subject)
+    setPreferredSubjectState(next)
+    setBrowseSubject(next)
+  }
+
+  const subjectOf = (moduleId: string) => normalizeSubject(subjectTitleForModule(moduleId))
+
+  const loadedSubjects = (() => {
+    const seen = new Set<string>()
+    const out: string[] = []
+    for (const row of loaded) {
+      const subject = subjectOf(row.moduleId)
+      if (seen.has(subject.toLowerCase())) continue
+      seen.add(subject.toLowerCase())
+      out.push(subject)
+    }
+    return out
+  })()
+
+  const activeBrowseSubject =
+    browseSubject &&
+    loadedSubjects.some((s) => s.toLowerCase() === browseSubject.toLowerCase())
+      ? browseSubject
+      : isTeacherRole(userRole) &&
+          loadedSubjects.some((s) => s.toLowerCase() === preferredSubject.toLowerCase())
+        ? preferredSubject
+        : (loadedSubjects[0] ?? preferredSubject)
+
+  const browseLoaded = loaded.filter(
+    (row) => subjectOf(row.moduleId).toLowerCase() === activeBrowseSubject.toLowerCase(),
+  )
+
+  const examLoaded = isTeacherRole(userRole)
+    ? loaded.filter(
+        (row) => subjectOf(row.moduleId).toLowerCase() === preferredSubject.toLowerCase(),
+      )
+    : loaded
 
   const createUser = () => {
     const name = newName.trim()
@@ -468,15 +518,24 @@ export default function App() {
   }
 
   const activeLoaded =
-    loaded.find((l) => l.moduleId === activeId) ?? loaded[0] ?? null
+    browseLoaded.find((l) => l.moduleId === activeId) ?? browseLoaded[0] ?? null
   const activeModule = activeLoaded
     ? getCurriculumModule(activeLoaded.moduleId)
     : undefined
 
   const trimmedQuery = query.trim()
-  const searchResults = trimmedQuery ? searchTopics(query, loaded) : []
+  const searchScope = browseLoaded.length > 0 ? browseLoaded : loaded
+  const searchResults = trimmedQuery ? searchTopics(query, searchScope) : []
   const searchHints = trimmedQuery
-    ? searchUnloadedHints(query, loaded.map((l) => l.moduleId), listVisibleGradeModules())
+    ? searchUnloadedHints(
+        query,
+        searchScope.map((l) => l.moduleId),
+        listVisibleGradeModules().filter(
+          (mod) =>
+            normalizeSubject(mod.subjectTitle).toLowerCase() ===
+            activeBrowseSubject.toLowerCase(),
+        ),
+      )
     : []
 
   const openPractice = (
@@ -544,12 +603,13 @@ export default function App() {
         <section className="card">
           {!ready ? (
             <p className="muted">Lehrpläne werden geladen …</p>
-          ) : !activeLoaded ? (
+          ) : loaded.length === 0 ? (
             <div className="course-head">
               <h2 className="section-title no-margin">Kein Lehrplan installiert</h2>
               <p className="muted small">
                 Installiere unter Einstellungen → Lehrpläne zuerst
-                „Gymnasium Sachsen · Mathematik“ (oder einen anderen Lehrplan).
+                „Gymnasium Sachsen · Mathematik“, „Gymnasium Sachsen · Physik“
+                oder einen anderen Lehrplan.
               </p>
               <button
                 type="button"
@@ -561,20 +621,75 @@ export default function App() {
                 Zu den Lehrplänen
               </button>
             </div>
+          ) : !activeLoaded ? (
+            <div className="course-head">
+              <h2 className="section-title no-margin">
+                Keine Klassenstufe für {activeBrowseSubject}
+              </h2>
+              <p className="muted small">
+                Blende unter Einstellungen → Lehrpläne eine Klassenstufe für
+                dieses Fach ein, oder wähle ein anderes Fach.
+              </p>
+              {loadedSubjects.length > 1 && (
+                <div className="grade-tabs" role="tablist" aria-label="Fach">
+                  {loadedSubjects.map((subject) => (
+                    <button
+                      key={subject}
+                      type="button"
+                      role="tab"
+                      aria-selected={subject === activeBrowseSubject}
+                      className={`grade-tab ${
+                        subject === activeBrowseSubject ? 'grade-tab--active' : ''
+                      }`}
+                      onClick={() => setBrowseSubject(subject)}
+                    >
+                      {subject}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           ) : (
             <>
               <div className="course-head">
                 <h2 className="section-title no-margin">
-                  {activeModule?.subjectTitle ?? 'Mathematik'} ·{' '}
+                  {activeModule?.subjectTitle ?? activeBrowseSubject} ·{' '}
                   {activeLoaded.grade.title}
                 </h2>
                 <p className="muted small">
                   {listInstalledPacks().find((pack) => pack.id === activeLoaded.grade.packId)
-                    ?.title ?? 'Lehrplan Mathematik (Sachsen)'}
+                    ?.title ?? `Lehrplan ${activeBrowseSubject} (Sachsen)`}
                   . Klappe einen Lernbereich auf, wähle ein Thema und übe direkt
                   oder erstelle ein Übungsblatt.
                 </p>
               </div>
+
+              {loadedSubjects.length > 1 && (
+                <div className="grade-tabs" role="tablist" aria-label="Fach">
+                  {loadedSubjects.map((subject) => (
+                    <button
+                      key={subject}
+                      type="button"
+                      role="tab"
+                      aria-selected={subject === activeBrowseSubject}
+                      className={`grade-tab ${
+                        subject === activeBrowseSubject ? 'grade-tab--active' : ''
+                      }`}
+                      onClick={() => {
+                        setBrowseSubject(subject)
+                        const first = loaded.find(
+                          (row) =>
+                            subjectOf(row.moduleId).toLowerCase() ===
+                            subject.toLowerCase(),
+                        )
+                        if (first) setActiveId(first.moduleId)
+                      }}
+                    >
+                      {subject}
+                    </button>
+                  ))}
+                </div>
+              )}
 
               <div className="topic-search">
                 <input
@@ -609,9 +724,9 @@ export default function App() {
                 />
               ) : (
                 <>
-                  {loaded.length > 1 && (
-                    <div className="grade-tabs" role="tablist">
-                      {loaded.map((l) => (
+                  {browseLoaded.length > 1 && (
+                    <div className="grade-tabs" role="tablist" aria-label="Klassenstufe">
+                      {browseLoaded.map((l) => (
                         <button
                           key={l.moduleId}
                           type="button"
@@ -658,6 +773,8 @@ export default function App() {
           onBack={() => setView({ name: 'settings' })}
           user={activeUser}
           role={userRole}
+          preferredSubject={preferredSubject}
+          onChangePreferredSubject={changePreferredSubject}
           classLabel={classLabel}
           lanStatus={lanStatus}
           onChangeRole={changeRole}
@@ -709,7 +826,7 @@ export default function App() {
 
       {view.name === 'examBuild' && (
         <ExamBuilder
-          loaded={loaded}
+          loaded={examLoaded}
           role={userRole}
           onExit={() => setView({ name: 'browse' })}
         />

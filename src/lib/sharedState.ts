@@ -88,6 +88,11 @@ export interface UserData {
   completedClassExamIds?: string[]
   /** Optional for older records; treat missing as Schüler (see roleForUser). */
   role?: UserRole
+  /**
+   * Lehrer preferred subject (e.g. Mathematik, Physik).
+   * Filters Lehrpläne / Themen / Klausur erstellen to that Fach.
+   */
+  preferredSubject?: string
 }
 
 /** A class code this user created. Ownership is local, not on the Worker. */
@@ -747,6 +752,12 @@ export const mergeUserData = (a: UserData | undefined, b: UserData | undefined):
     parseCompletedClassExamIds(b.completedClassExamIds),
   )
   const role = isUserRole(b.role) ? b.role : isUserRole(a.role) ? a.role : undefined
+  const preferredSubject =
+    typeof b.preferredSubject === 'string' && b.preferredSubject.trim()
+      ? b.preferredSubject.trim()
+      : typeof a.preferredSubject === 'string' && a.preferredSubject.trim()
+        ? a.preferredSubject.trim()
+        : undefined
   return {
     name: a.name || b.name,
     created: Math.min(a.created, b.created),
@@ -768,6 +779,7 @@ export const mergeUserData = (a: UserData | undefined, b: UserData | undefined):
       : {}),
     ...(completedClassExamIds.length > 0 ? { completedClassExamIds } : {}),
     ...(role ? { role } : {}),
+    ...(preferredSubject ? { preferredSubject } : {}),
   }
 }
 

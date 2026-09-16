@@ -1,5 +1,6 @@
 import {
   GYM_SACHSEN_PACK_ID,
+  GYM_SACHSEN_PHYSIK_PACK_ID,
   OS_HS_PACK_ID,
   OS_RS_PACK_ID,
   applyCurriculumTombstones,
@@ -14,6 +15,7 @@ import {
   type InstalledCurriculum,
 } from './pack'
 import { buildOberschuleHsPack, buildOberschuleRsPack } from './oberschulePacks'
+import { buildGymSachsenPhysikPack } from './physikGymPack'
 import { buildGymSachsenSeed } from './seed'
 
 export const INSTALLED_KEY = 'mathsachs.installedCurricula.v1'
@@ -159,6 +161,7 @@ export function removePack(
 
 export async function bundledPackById(id: string): Promise<CurriculumPack | null> {
   if (id === GYM_SACHSEN_PACK_ID) return buildGymSachsenSeed()
+  if (id === GYM_SACHSEN_PHYSIK_PACK_ID) return buildGymSachsenPhysikPack()
   if (id === OS_HS_PACK_ID) return buildOberschuleHsPack()
   if (id === OS_RS_PACK_ID) return buildOberschuleRsPack()
   return null

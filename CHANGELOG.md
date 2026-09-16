@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.0] – 2026-09-16
+
+### Neu
+- **Mehrere Fächer**: Lehrpläne nach Fach filtern; Fach-Buttons unter Themen;
+  bevorzugtes Fach im Lehrerprofil (Lehrpläne und Klausur erstellen).
+- **Gymnasium Sachsen · Physik** als installierbares Lehrplan-Paket (Klassen 6–10,
+  JGS 11/12 Gk/Lk, Themenstruktur laut Lehrplan; Übungsaufgaben folgen schrittweise).
+
 ## [0.26.3] – 2026-09-16
 
 ### Behoben
