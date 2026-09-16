@@ -15,12 +15,23 @@ describe('Physik Gym generators (all grades)', () => {
     const ids = pack.official.flatMap((g) =>
       g.areas.flatMap((a) => a.topics.map((t) => t.id)),
     )
-    expect(ids.length).toBe(82)
+    expect(ids.length).toBeGreaterThan(150)
     for (const id of ids) {
       expect(isPlayablePhysikTopic(id), id).toBe(true)
       expect(resolvePhysikGenerate(id), id).toBeTypeOf('function')
     }
     expect(listPhysikGeneratorIds().length).toBe(ids.length)
+  })
+
+  it('gives each Lernbereich about 5–9 practice topics (like Math)', () => {
+    const pack = buildGymSachsenPhysikPack()
+    for (const grade of pack.official) {
+      for (const area of grade.areas) {
+        const n = area.topics.length
+        expect(n, `${grade.id}/${area.id}`).toBeGreaterThanOrEqual(5)
+        expect(n, `${grade.id}/${area.id}`).toBeLessThanOrEqual(9)
+      }
+    }
   })
 
   it('produces tasks whose sample answers pass check (40 seeds per topic)', () => {

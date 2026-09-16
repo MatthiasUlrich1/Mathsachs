@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-16T14:44:50.356Z",
+  "updatedAt": "2026-09-16T15:09:05.705Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -18,10 +18,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "2.0.0",
+      "version": "2.1.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 39543,
-      "changelog": "Alle Klassen 6–10 und JGS 11/12 Gk/Lk spielbar: interaktive und Rechenaufgaben je Thema (ähnlich Mathe-Variantenvielfalt)."
+      "size": 112863,
+      "changelog": "Lernbereiche mit 5–9 Übungsthemen (ähnlich Mathe); Inhalte an Lehrplan Gym Sachsen und typische Aufgabentypen (LEIFI, Olympiade) angelehnt."
     },
     {
       "id": "oberschule-sachsen-hs",

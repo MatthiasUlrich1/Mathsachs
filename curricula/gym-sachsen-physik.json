@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "2.0.0",
-  "changelog": "Alle Klassen 6–10 und JGS 11/12 Gk/Lk spielbar: interaktive und Rechenaufgaben je Thema (ähnlich Mathe-Variantenvielfalt).",
+  "version": "2.1.0",
+  "changelog": "Lernbereiche mit 5–9 Übungsthemen (ähnlich Mathe); Inhalte an Lehrplan Gym Sachsen und typische Aufgabentypen (LEIFI, Olympiade) angelehnt.",
   "official": [
     {
       "id": "physik-klasse-6",
@@ -27,6 +27,25 @@
           "ustd": 17,
           "topics": [
             {
+              "id": "ph-k6-lb1-lichtquellen",
+              "title": "Lichtquellen und beleuchtete Körper",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Lichtquelle"
+              ]
+            },
+            {
+              "id": "ph-k6-lb1-ausbreitung",
+              "title": "Geradlinige Ausbreitung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Licht",
+                "Strahl"
+              ]
+            },
+            {
               "id": "ph-k6-lb1-schatten",
               "title": "Schatten und Lichtquelle",
               "pointsPerTask": 10,
@@ -34,6 +53,16 @@
               "keywords": [
                 "Licht",
                 "Schatten"
+              ]
+            },
+            {
+              "id": "ph-k6-lb1-kernschatten",
+              "title": "Kern- und Halbschatten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Kernschatten",
+                "Halbschatten"
               ]
             },
             {
@@ -67,13 +96,13 @@
               ]
             },
             {
-              "id": "ph-k6-lb1-ausbreitung",
-              "title": "Geradlinige Ausbreitung",
+              "id": "ph-k6-lb1-brechung",
+              "title": "Brechung und Prisma",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
-                "Licht",
-                "Strahl"
+                "Brechung",
+                "Prisma"
               ]
             }
           ]
@@ -83,6 +112,15 @@
           "title": "Eigenschaften und Bewegungen von Körpern",
           "ustd": 14,
           "topics": [
+            {
+              "id": "ph-k6-lb2-volumen",
+              "title": "Volumen bestimmen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Volumen"
+              ]
+            },
             {
               "id": "ph-k6-lb2-masse",
               "title": "Masse vergleichen",
@@ -105,6 +143,16 @@
               ]
             },
             {
+              "id": "ph-k6-lb2-dichtestoffe",
+              "title": "Dichte von Stoffen vergleichen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Dichte",
+                "Stoff"
+              ]
+            },
+            {
               "id": "ph-k6-lb2-geschwindigkeit",
               "title": "Gleichförmige Bewegung",
               "pointsPerTask": 10,
@@ -112,6 +160,26 @@
               "keywords": [
                 "Geschwindigkeit",
                 "Strecke"
+              ]
+            },
+            {
+              "id": "ph-k6-lb2-wegzeit",
+              "title": "Weg-Zeit-Diagramm",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Diagramm",
+                "Bewegung"
+              ]
+            },
+            {
+              "id": "ph-k6-lb2-einheiten",
+              "title": "Einheiten von v, s und t",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Einheit",
+                "Geschwindigkeit"
               ]
             }
           ]
@@ -142,6 +210,16 @@
               ]
             },
             {
+              "id": "ph-k6-lb3-ausdehnung",
+              "title": "Wärmeausdehnung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Ausdehnung",
+                "Wärme"
+              ]
+            },
+            {
               "id": "ph-k6-lb3-aggregate",
               "title": "Aggregatzustände",
               "pointsPerTask": 10,
@@ -149,6 +227,26 @@
               "keywords": [
                 "Aggregatzustand",
                 "Schmelzen"
+              ]
+            },
+            {
+              "id": "ph-k6-lb3-schmelzen",
+              "title": "Schmelzen und Sieden",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Schmelzen",
+                "Sieden"
+              ]
+            },
+            {
+              "id": "ph-k6-lb3-messreihe",
+              "title": "Temperatur-Messreihe",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Messreihe",
+                "Temperatur"
               ]
             }
           ]
@@ -177,6 +275,35 @@
                 "Leiter",
                 "Isolator"
               ]
+            },
+            {
+              "id": "ph-k6-lb4-symbole",
+              "title": "Schaltsymbole",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Schaltbild"
+              ]
+            },
+            {
+              "id": "ph-k6-lb4-reiheparallel",
+              "title": "Reihe und Parallel (einfach)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Reihe",
+                "Parallel"
+              ]
+            },
+            {
+              "id": "ph-k6-lb4-gefahren",
+              "title": "Gefahren und Kurzschluss",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Kurzschluss",
+                "Sicherheit"
+              ]
             }
           ]
         },
@@ -195,6 +322,25 @@
               ]
             },
             {
+              "id": "ph-k6-lbw-lochkamera",
+              "title": "Lochkamera",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Lochkamera",
+                "Bild"
+              ]
+            },
+            {
+              "id": "ph-k6-lbw-auge",
+              "title": "Auge und Sehvorgang",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Auge"
+              ]
+            },
+            {
               "id": "ph-k6-lbw-daemmung",
               "title": "Wärmedämmung",
               "pointsPerTask": 10,
@@ -204,12 +350,41 @@
               ]
             },
             {
+              "id": "ph-k6-lbw-daemmstoff",
+              "title": "Dämmstoffe vergleichen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Dämmstoff"
+              ]
+            },
+            {
               "id": "ph-k6-lbw-farben",
               "title": "Farben",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Farben"
+              ]
+            },
+            {
+              "id": "ph-k6-lbw-filter",
+              "title": "Farbfilter",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Filter",
+                "Spektrum"
+              ]
+            },
+            {
+              "id": "ph-k6-lbw-spektrum",
+              "title": "Spektrum und Prisma",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Spektrum",
+                "Prisma"
               ]
             }
           ]
@@ -235,13 +410,69 @@
           "ustd": 22,
           "topics": [
             {
+              "id": "ph-k7-lb1-kraftbegriff",
+              "title": "Kraft als physikalische Größe",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Kraft",
+                "Newton"
+              ]
+            },
+            {
+              "id": "ph-k7-lb1-gewichtskraft",
+              "title": "Gewichtskraft F = m·g",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Gewichtskraft"
+              ]
+            },
+            {
               "id": "ph-k7-lb1-kraefte",
-              "title": "Kräfte",
+              "title": "Kräfte vergleichen und addieren",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Kraft",
                 "Gewichtskraft"
+              ]
+            },
+            {
+              "id": "ph-k7-lb1-feder",
+              "title": "Federkraft und Hooke",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Feder",
+                "Hooke"
+              ]
+            },
+            {
+              "id": "ph-k7-lb1-reibung",
+              "title": "Reibung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Reibung"
+              ]
+            },
+            {
+              "id": "ph-k7-lb1-magnet",
+              "title": "Magnetische Kräfte",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Magnet"
+              ]
+            },
+            {
+              "id": "ph-k7-lb1-elektrostatik",
+              "title": "Elektrostatische Kräfte",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Elektrostatik"
               ]
             }
           ]
@@ -252,6 +483,26 @@
           "ustd": 18,
           "topics": [
             {
+              "id": "ph-k7-lb2-stromstaerke",
+              "title": "Stromstärke I",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Stromstärke",
+                "Ampere"
+              ]
+            },
+            {
+              "id": "ph-k7-lb2-spannung",
+              "title": "Spannung U",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Spannung",
+                "Volt"
+              ]
+            },
+            {
               "id": "ph-k7-lb2-strom",
               "title": "Stromstärke und Spannung in Stromkreisen",
               "pointsPerTask": 10,
@@ -259,6 +510,44 @@
               "keywords": [
                 "Stromstärke",
                 "Spannung"
+              ]
+            },
+            {
+              "id": "ph-k7-lb2-ohm",
+              "title": "Ohmsches Gesetz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Ohm",
+                "Widerstand"
+              ]
+            },
+            {
+              "id": "ph-k7-lb2-reihe",
+              "title": "Reihenschaltung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Reihe"
+              ]
+            },
+            {
+              "id": "ph-k7-lb2-parallel",
+              "title": "Parallelschaltung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Parallel"
+              ]
+            },
+            {
+              "id": "ph-k7-lb2-messen",
+              "title": "Strom und Spannung messen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Amperemeter",
+                "Voltmeter"
               ]
             }
           ]
@@ -269,6 +558,15 @@
           "ustd": 10,
           "topics": [
             {
+              "id": "ph-k7-lb3-energieformen",
+              "title": "Energieformen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Energie"
+              ]
+            },
+            {
               "id": "ph-k7-lb3-energie",
               "title": "Energiewandler",
               "pointsPerTask": 10,
@@ -276,6 +574,42 @@
               "keywords": [
                 "Energie",
                 "Wandler"
+              ]
+            },
+            {
+              "id": "ph-k7-lb3-umwandlung",
+              "title": "Energieumwandlungsketten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Umwandlung"
+              ]
+            },
+            {
+              "id": "ph-k7-lb3-wirkungsgrad",
+              "title": "Wirkungsgrad",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Wirkungsgrad"
+              ]
+            },
+            {
+              "id": "ph-k7-lb3-leistung",
+              "title": "Leistung P = E/t",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Leistung"
+              ]
+            },
+            {
+              "id": "ph-k7-lb3-sparen",
+              "title": "Energie sparen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Energieeinsparung"
               ]
             }
           ]
@@ -294,6 +628,24 @@
               ]
             },
             {
+              "id": "ph-k7-lbw-hebel",
+              "title": "Hebelgesetz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Hebel"
+              ]
+            },
+            {
+              "id": "ph-k7-lbw-flasche",
+              "title": "Flaschenzug",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Flaschenzug"
+              ]
+            },
+            {
               "id": "ph-k7-lbw-schaltungen",
               "title": "Elektrische Schaltungen",
               "pointsPerTask": 10,
@@ -303,12 +655,31 @@
               ]
             },
             {
+              "id": "ph-k7-lbw-klingel",
+              "title": "Klingel und Wechselschaltung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Klingel"
+              ]
+            },
+            {
               "id": "ph-k7-lbw-fliegen",
               "title": "Vom Fliegen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Fliegen"
+              ]
+            },
+            {
+              "id": "ph-k7-lbw-auftrieb-dyn",
+              "title": "Dynamischer Auftrieb",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Auftrieb",
+                "Tragfläche"
               ]
             }
           ]
@@ -334,6 +705,24 @@
           "ustd": 12,
           "topics": [
             {
+              "id": "ph-k8-lb1-druck",
+              "title": "Druck p = F/A",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Druck"
+              ]
+            },
+            {
+              "id": "ph-k8-lb1-schweredruck",
+              "title": "Schweredruck in Flüssigkeiten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Schweredruck"
+              ]
+            },
+            {
               "id": "ph-k8-lb1-fluide",
               "title": "Mechanik der Flüssigkeiten und Gase",
               "pointsPerTask": 10,
@@ -341,6 +730,34 @@
               "keywords": [
                 "Druck",
                 "Auftrieb"
+              ]
+            },
+            {
+              "id": "ph-k8-lb1-auftrieb",
+              "title": "Statischer Auftrieb",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Auftrieb",
+                "Archimedes"
+              ]
+            },
+            {
+              "id": "ph-k8-lb1-schwimmen",
+              "title": "Sinken, Schweben, Schwimmen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Schwimmen"
+              ]
+            },
+            {
+              "id": "ph-k8-lb1-luftdruck",
+              "title": "Luftdruck",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Luftdruck"
               ]
             }
           ]
@@ -351,6 +768,15 @@
           "ustd": 15,
           "topics": [
             {
+              "id": "ph-k8-lb2-waerme",
+              "title": "Wärme und thermische Energie",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Wärme"
+              ]
+            },
+            {
               "id": "ph-k8-lb2-thermisch",
               "title": "Thermische Energie",
               "pointsPerTask": 10,
@@ -358,6 +784,42 @@
               "keywords": [
                 "Wärme",
                 "thermische Energie"
+              ]
+            },
+            {
+              "id": "ph-k8-lb2-spezwaerme",
+              "title": "Spezifische Wärmekapazität",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Wärmekapazität"
+              ]
+            },
+            {
+              "id": "ph-k8-lb2-leitung",
+              "title": "Wärmeleitung, Strömung, Strahlung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Wärmeleitung"
+              ]
+            },
+            {
+              "id": "ph-k8-lb2-mischen",
+              "title": "Mischungstemperatur",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Mischung"
+              ]
+            },
+            {
+              "id": "ph-k8-lb2-klima",
+              "title": "Wärme und Klima (Einblick)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Klima"
               ]
             }
           ]
@@ -368,6 +830,15 @@
           "ustd": 15,
           "topics": [
             {
+              "id": "ph-k8-lb3-widerstand",
+              "title": "Elektrischer Widerstand",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Widerstand"
+              ]
+            },
+            {
               "id": "ph-k8-lb3-bauelemente",
               "title": "Eigenschaften elektrischer Bauelemente",
               "pointsPerTask": 10,
@@ -375,6 +846,44 @@
               "keywords": [
                 "Widerstand",
                 "Bauelemente"
+              ]
+            },
+            {
+              "id": "ph-k8-lb3-kennlinie",
+              "title": "U-I-Kennlinie",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Kennlinie"
+              ]
+            },
+            {
+              "id": "ph-k8-lb3-ohmgesetz",
+              "title": "Ohmsches Gesetz anwenden",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Ohm"
+              ]
+            },
+            {
+              "id": "ph-k8-lb3-reihenschaltung",
+              "title": "Widerstände in Reihe",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Reihe",
+                "Widerstand"
+              ]
+            },
+            {
+              "id": "ph-k8-lb3-parallelschaltung",
+              "title": "Widerstände parallel",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Parallel",
+                "Widerstand"
               ]
             }
           ]
@@ -385,6 +894,15 @@
           "ustd": 8,
           "topics": [
             {
+              "id": "ph-k8-lb4-frage",
+              "title": "Forschungsfrage und Hypothese",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Hypothese"
+              ]
+            },
+            {
               "id": "ph-k8-lb4-experiment",
               "title": "Selbstständiges Experimentieren",
               "pointsPerTask": 10,
@@ -392,6 +910,33 @@
               "keywords": [
                 "Experiment",
                 "Praktikum"
+              ]
+            },
+            {
+              "id": "ph-k8-lb4-variablen",
+              "title": "Unabhängige und abhängige Variable",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Variable"
+              ]
+            },
+            {
+              "id": "ph-k8-lb4-messreihe",
+              "title": "Messreihe auswerten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Messreihe"
+              ]
+            },
+            {
+              "id": "ph-k8-lb4-fehler",
+              "title": "Messunsicherheit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Messfehler"
               ]
             }
           ]
@@ -410,8 +955,27 @@
               ]
             },
             {
+              "id": "ph-k8-lbw-ballondichte",
+              "title": "Dichte von heißer Luft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Dichte",
+                "Ballon"
+              ]
+            },
+            {
               "id": "ph-k8-lbw-kuehlschrank",
               "title": "Kühlschrank und Wärmepumpe",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Wärmepumpe"
+              ]
+            },
+            {
+              "id": "ph-k8-lbw-kaeltemaschine",
+              "title": "Wärmefluss und Arbeit",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
@@ -425,6 +989,15 @@
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Messen"
+              ]
+            },
+            {
+              "id": "ph-k8-lbw-sensor",
+              "title": "Sensoren",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Sensor"
               ]
             }
           ]
@@ -450,6 +1023,15 @@
           "ustd": 9,
           "topics": [
             {
+              "id": "ph-k9-lb1-diode",
+              "title": "Diode",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Diode"
+              ]
+            },
+            {
               "id": "ph-k9-lb1-elektronik",
               "title": "Grundlagen der Elektronik",
               "pointsPerTask": 10,
@@ -457,6 +1039,33 @@
               "keywords": [
                 "Elektronik",
                 "Diode"
+              ]
+            },
+            {
+              "id": "ph-k9-lb1-transistor",
+              "title": "Transistor (Einblick)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Transistor"
+              ]
+            },
+            {
+              "id": "ph-k9-lb1-led",
+              "title": "LED",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "LED"
+              ]
+            },
+            {
+              "id": "ph-k9-lb1-digital",
+              "title": "Digitale Grundschaltungen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Digital"
               ]
             }
           ]
@@ -467,6 +1076,15 @@
           "ustd": 18,
           "topics": [
             {
+              "id": "ph-k9-lb2-kraftwerk",
+              "title": "Kraftwerkskette",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Kraftwerk"
+              ]
+            },
+            {
               "id": "ph-k9-lb2-versorgung",
               "title": "Energieversorgung",
               "pointsPerTask": 10,
@@ -474,6 +1092,42 @@
               "keywords": [
                 "Energieversorgung",
                 "Kraftwerk"
+              ]
+            },
+            {
+              "id": "ph-k9-lb2-wirkungsgrad",
+              "title": "Wirkungsgrad von Anlagen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Wirkungsgrad"
+              ]
+            },
+            {
+              "id": "ph-k9-lb2-generator",
+              "title": "Generatorprinzip",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Generator"
+              ]
+            },
+            {
+              "id": "ph-k9-lb2-netz",
+              "title": "Energieverteilung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Netz"
+              ]
+            },
+            {
+              "id": "ph-k9-lb2-erneuerbar",
+              "title": "Erneuerbare Energien",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Erneuerbar"
               ]
             }
           ]
@@ -484,6 +1138,15 @@
           "ustd": 16,
           "topics": [
             {
+              "id": "ph-k9-lb3-gleichfoermig",
+              "title": "Gleichförmige Bewegung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Geschwindigkeit"
+              ]
+            },
+            {
               "id": "ph-k9-lb3-bewegung",
               "title": "Bewegungsgesetze",
               "pointsPerTask": 10,
@@ -491,6 +1154,42 @@
               "keywords": [
                 "Geschwindigkeit",
                 "Beschleunigung"
+              ]
+            },
+            {
+              "id": "ph-k9-lb3-beschleunigung",
+              "title": "Beschleunigung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Beschleunigung"
+              ]
+            },
+            {
+              "id": "ph-k9-lb3-freiefall",
+              "title": "Freier Fall",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Fall"
+              ]
+            },
+            {
+              "id": "ph-k9-lb3-diagramme",
+              "title": "s-t- und v-t-Diagramme",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Diagramm"
+              ]
+            },
+            {
+              "id": "ph-k9-lb3-newton",
+              "title": "Kraft und Bewegung (Einblick)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Newton"
               ]
             }
           ]
@@ -501,12 +1200,48 @@
           "ustd": 7,
           "topics": [
             {
+              "id": "ph-k9-lb4-planung",
+              "title": "Versuch planen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Versuch"
+              ]
+            },
+            {
               "id": "ph-k9-lb4-praktikum",
               "title": "Physikalisches Praktikum",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Praktikum"
+              ]
+            },
+            {
+              "id": "ph-k9-lb4-protokoll",
+              "title": "Protokollieren",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Protokoll"
+              ]
+            },
+            {
+              "id": "ph-k9-lb4-auswertung",
+              "title": "Auswertung und Fehler",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Auswertung"
+              ]
+            },
+            {
+              "id": "ph-k9-lb4-diagramm",
+              "title": "Diagramm aus Messwerten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Diagramm"
               ]
             }
           ]
@@ -525,6 +1260,15 @@
               ]
             },
             {
+              "id": "ph-k9-lbw-strahlung",
+              "title": "Alpha, Beta, Gamma",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Strahlung"
+              ]
+            },
+            {
               "id": "ph-k9-lbw-wind-sonne",
               "title": "Energie von Wind und Sonne",
               "pointsPerTask": 10,
@@ -535,12 +1279,31 @@
               ]
             },
             {
+              "id": "ph-k9-lbw-solar",
+              "title": "Solarzelle und Windrad",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Solar",
+                "Wind"
+              ]
+            },
+            {
               "id": "ph-k9-lbw-kurven",
               "title": "Bewegungen auf gekrümmten Bahnen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Kreisbewegung"
+              ]
+            },
+            {
+              "id": "ph-k9-lbw-zentrifugal",
+              "title": "Zentripetalkraft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Zentripetalkraft"
               ]
             }
           ]
@@ -567,12 +1330,58 @@
           "ustd": 10,
           "topics": [
             {
+              "id": "ph-k10-lb1-amplitude",
+              "title": "Amplitude und Periodendauer",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Amplitude",
+                "Periode"
+              ]
+            },
+            {
               "id": "ph-k10-lb1-schwingung",
               "title": "Mechanische Schwingungen und Wellen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Schwingung",
+                "Welle"
+              ]
+            },
+            {
+              "id": "ph-k10-lb1-frequenz",
+              "title": "Frequenz f = 1/T",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Frequenz"
+              ]
+            },
+            {
+              "id": "ph-k10-lb1-pendel",
+              "title": "Fadenpendel",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Pendel"
+              ]
+            },
+            {
+              "id": "ph-k10-lb1-feder",
+              "title": "Federschwinger",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Feder"
+              ]
+            },
+            {
+              "id": "ph-k10-lb1-welle",
+              "title": "Wellengeschwindigkeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
                 "Welle"
               ]
             }
@@ -584,6 +1393,16 @@
           "ustd": 18,
           "topics": [
             {
+              "id": "ph-k10-lb2-sonnensystem",
+              "title": "Sonnensystem",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Planet",
+                "Sonne"
+              ]
+            },
+            {
               "id": "ph-k10-lb2-kosmos",
               "title": "Kosmos, Erde und Mensch",
               "pointsPerTask": 10,
@@ -591,6 +1410,43 @@
               "keywords": [
                 "Astronomie",
                 "Kosmos"
+              ]
+            },
+            {
+              "id": "ph-k10-lb2-mond",
+              "title": "Mond und Finsternisse",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Mond",
+                "Finsternis"
+              ]
+            },
+            {
+              "id": "ph-k10-lb2-jahreszeiten",
+              "title": "Jahreszeiten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Jahreszeiten"
+              ]
+            },
+            {
+              "id": "ph-k10-lb2-lichtjahr",
+              "title": "Entfernungen und Lichtjahr",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Lichtjahr"
+              ]
+            },
+            {
+              "id": "ph-k10-lb2-beobachtung",
+              "title": "Astronomische Beobachtung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Beobachtung"
               ]
             }
           ]
@@ -601,6 +1457,15 @@
           "ustd": 9,
           "topics": [
             {
+              "id": "ph-k10-lb3-strahl",
+              "title": "Licht als Strahl",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Strahloptik"
+              ]
+            },
+            {
               "id": "ph-k10-lb3-licht",
               "title": "Licht als Strahl und Welle",
               "pointsPerTask": 10,
@@ -608,6 +1473,43 @@
               "keywords": [
                 "Optik",
                 "Licht"
+              ]
+            },
+            {
+              "id": "ph-k10-lb3-brechung",
+              "title": "Brechung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Brechung"
+              ]
+            },
+            {
+              "id": "ph-k10-lb3-linse",
+              "title": "Sammellinse",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Linse"
+              ]
+            },
+            {
+              "id": "ph-k10-lb3-interferenz",
+              "title": "Interferenz (Einblick)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Interferenz"
+              ]
+            },
+            {
+              "id": "ph-k10-lb3-cf",
+              "title": "c = λ·f",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Wellenlänge",
+                "Frequenz"
               ]
             }
           ]
@@ -618,12 +1520,48 @@
           "ustd": 7,
           "topics": [
             {
+              "id": "ph-k10-lb4-em",
+              "title": "Elektromagnetische Wellen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "EM-Welle"
+              ]
+            },
+            {
               "id": "ph-k10-lb4-hertz",
               "title": "Hertzsche Wellen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Elektromagnetische Wellen"
+              ]
+            },
+            {
+              "id": "ph-k10-lb4-spektrum",
+              "title": "EM-Spektrum",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Spektrum"
+              ]
+            },
+            {
+              "id": "ph-k10-lb4-radio",
+              "title": "Radio und Modulation (Einblick)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Radio"
+              ]
+            },
+            {
+              "id": "ph-k10-lb4-antennen",
+              "title": "Sender und Empfänger",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Antenne"
               ]
             }
           ]
@@ -634,12 +1572,48 @@
           "ustd": 6,
           "topics": [
             {
+              "id": "ph-k10-lb5-planung",
+              "title": "Versuch planen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Versuch"
+              ]
+            },
+            {
               "id": "ph-k10-lb5-praktikum",
               "title": "Physikalisches Praktikum",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Praktikum"
+              ]
+            },
+            {
+              "id": "ph-k10-lb5-messung",
+              "title": "Messen und protokollieren",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Messung"
+              ]
+            },
+            {
+              "id": "ph-k10-lb5-auswertung",
+              "title": "Auswertung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Auswertung"
+              ]
+            },
+            {
+              "id": "ph-k10-lb5-fehler",
+              "title": "Fehlerabschätzung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Fehler"
               ]
             }
           ]
@@ -658,6 +1632,15 @@
               ]
             },
             {
+              "id": "ph-k10-lbw-teleskop",
+              "title": "Fernrohrtypen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Teleskop"
+              ]
+            },
+            {
               "id": "ph-k10-lbw-medien",
               "title": "Kommunikation mit elektronischen Medien",
               "pointsPerTask": 10,
@@ -667,12 +1650,30 @@
               ]
             },
             {
+              "id": "ph-k10-lbw-digital",
+              "title": "Analog und digital",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Digital"
+              ]
+            },
+            {
               "id": "ph-k10-lbw-fernsehen",
               "title": "Fernsehbildtechnik",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Fernsehen"
+              ]
+            },
+            {
+              "id": "ph-k10-lbw-pixel",
+              "title": "Bildpunkte und Auflösung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Pixel"
               ]
             }
           ]
@@ -698,12 +1699,48 @@
           "ustd": 10,
           "topics": [
             {
+              "id": "ph-j11gk-lb1-ekin",
+              "title": "Kinetische Energie",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Ekin"
+              ]
+            },
+            {
+              "id": "ph-j11gk-lb1-epot",
+              "title": "Potentielle Energie",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Epot"
+              ]
+            },
+            {
               "id": "ph-j11gk-lb1-energie",
               "title": "Erhaltung der Energie",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Energieerhaltung"
+              ]
+            },
+            {
+              "id": "ph-j11gk-lb1-bilanz",
+              "title": "Energiebilanz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Bilanz"
+              ]
+            },
+            {
+              "id": "ph-j11gk-lb1-reibung",
+              "title": "Energie und Reibung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Reibung"
               ]
             }
           ]
@@ -714,6 +1751,15 @@
           "ustd": 14,
           "topics": [
             {
+              "id": "ph-j11gk-lb2-gleichfoermig",
+              "title": "Gleichförmige Bewegung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "v"
+              ]
+            },
+            {
               "id": "ph-j11gk-lb2-mechanik",
               "title": "Anwendung der Kinematik und Dynamik",
               "pointsPerTask": 10,
@@ -721,6 +1767,42 @@
               "keywords": [
                 "Kinematik",
                 "Dynamik"
+              ]
+            },
+            {
+              "id": "ph-j11gk-lb2-beschleunigung",
+              "title": "Beschleunigte Bewegung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "a"
+              ]
+            },
+            {
+              "id": "ph-j11gk-lb2-kraft",
+              "title": "F = m·a",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Newton"
+              ]
+            },
+            {
+              "id": "ph-j11gk-lb2-diagramme",
+              "title": "Bewegungsdiagramme",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Diagramm"
+              ]
+            },
+            {
+              "id": "ph-j11gk-lb2-wurf",
+              "title": "Senkrechter Wurf (Einblick)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Wurf"
               ]
             }
           ]
@@ -731,6 +1813,15 @@
           "ustd": 10,
           "topics": [
             {
+              "id": "ph-j11gk-lb3-kondensator",
+              "title": "Kondensator C = Q/U",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Kondensator"
+              ]
+            },
+            {
               "id": "ph-j11gk-lb3-praktikum",
               "title": "Kondensator und Spule – Praktikum",
               "pointsPerTask": 10,
@@ -738,6 +1829,33 @@
               "keywords": [
                 "Kondensator",
                 "Spule"
+              ]
+            },
+            {
+              "id": "ph-j11gk-lb3-laden",
+              "title": "Laden und Entladen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "RC"
+              ]
+            },
+            {
+              "id": "ph-j11gk-lb3-spule",
+              "title": "Spule und Induktion (Einblick)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Spule"
+              ]
+            },
+            {
+              "id": "ph-j11gk-lb3-messung",
+              "title": "Messung am Kondensator",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Messung"
               ]
             }
           ]
@@ -748,6 +1866,15 @@
           "ustd": 18,
           "topics": [
             {
+              "id": "ph-j11gk-lb4-efeld",
+              "title": "Elektrisches Feld",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "E-Feld"
+              ]
+            },
+            {
               "id": "ph-j11gk-lb4-felder",
               "title": "Geladene Teilchen in Feldern",
               "pointsPerTask": 10,
@@ -755,6 +1882,42 @@
               "keywords": [
                 "Feld",
                 "Ladung"
+              ]
+            },
+            {
+              "id": "ph-j11gk-lb4-kraft",
+              "title": "F = q·E",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Kraft"
+              ]
+            },
+            {
+              "id": "ph-j11gk-lb4-lorentz",
+              "title": "Lorentzkraft (Einblick)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Lorentz"
+              ]
+            },
+            {
+              "id": "ph-j11gk-lb4-bahn",
+              "title": "Bahnformen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Bahn"
+              ]
+            },
+            {
+              "id": "ph-j11gk-lb4-anwendung",
+              "title": "Technische Anwendungen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Anwendung"
               ]
             }
           ]
@@ -773,12 +1936,30 @@
               ]
             },
             {
+              "id": "ph-j11gk-lbw-e",
+              "title": "Elementarladung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "e"
+              ]
+            },
+            {
               "id": "ph-j11gk-lbw-exkursion",
               "title": "Physikalisch-technische Exkursion",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Exkursion"
+              ]
+            },
+            {
+              "id": "ph-j11gk-lbw-sicherheit",
+              "title": "Sicherheit bei Exkursionen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Sicherheit"
               ]
             },
             {
@@ -791,12 +1972,30 @@
               ]
             },
             {
+              "id": "ph-j11gk-lbw-filter",
+              "title": "Filter und Schwingkreise (Einblick)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Filter"
+              ]
+            },
+            {
               "id": "ph-j11gk-lbw-relativitaet",
               "title": "Relativität von Zeit und Raum",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Relativität"
+              ]
+            },
+            {
+              "id": "ph-j11gk-lbw-lichtgeschwindigkeit",
+              "title": "Lichtgeschwindigkeit als Grenze",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "c"
               ]
             }
           ]
@@ -822,12 +2021,48 @@
           "ustd": 8,
           "topics": [
             {
+              "id": "ph-j12gk-lb1-welle",
+              "title": "Licht als Welle",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Lichtwelle"
+              ]
+            },
+            {
               "id": "ph-j12gk-lb1-licht",
               "title": "Welleneigenschaften des Lichts",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Lichtwelle"
+              ]
+            },
+            {
+              "id": "ph-j12gk-lb1-interferenz",
+              "title": "Interferenz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Interferenz"
+              ]
+            },
+            {
+              "id": "ph-j12gk-lb1-beugung",
+              "title": "Beugung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Beugung"
+              ]
+            },
+            {
+              "id": "ph-j12gk-lb1-cf",
+              "title": "c = λ·f",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Wellenlänge"
               ]
             }
           ]
@@ -838,6 +2073,15 @@
           "ustd": 6,
           "topics": [
             {
+              "id": "ph-j12gk-lb2-linse",
+              "title": "Linsenexperiment",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Linse"
+              ]
+            },
+            {
               "id": "ph-j12gk-lb2-optik",
               "title": "Praktikum Optik",
               "pointsPerTask": 10,
@@ -845,6 +2089,33 @@
               "keywords": [
                 "Optik",
                 "Praktikum"
+              ]
+            },
+            {
+              "id": "ph-j12gk-lb2-brennweite",
+              "title": "Brennweite bestimmen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Brennweite"
+              ]
+            },
+            {
+              "id": "ph-j12gk-lb2-bild",
+              "title": "reelle und virtuelle Bilder",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Bild"
+              ]
+            },
+            {
+              "id": "ph-j12gk-lb2-fehler",
+              "title": "Messunsicherheit Optik",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Fehler"
               ]
             }
           ]
@@ -855,12 +2126,48 @@
           "ustd": 10,
           "topics": [
             {
+              "id": "ph-j12gk-lb3-photo",
+              "title": "Photoeffekt",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Photoeffekt"
+              ]
+            },
+            {
               "id": "ph-j12gk-lb3-quanten",
               "title": "Grundlagen der Quantenphysik",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Quantenphysik"
+              ]
+            },
+            {
+              "id": "ph-j12gk-lb3-photon",
+              "title": "Photon E = h·f",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Photon"
+              ]
+            },
+            {
+              "id": "ph-j12gk-lb3-dualismus",
+              "title": "Welle-Teilchen-Dualismus",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Dualismus"
+              ]
+            },
+            {
+              "id": "ph-j12gk-lb3-grenze",
+              "title": "Klassische Grenzen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Klassik"
               ]
             }
           ]
@@ -871,6 +2178,15 @@
           "ustd": 20,
           "topics": [
             {
+              "id": "ph-j12gk-lb4-atomhuelle",
+              "title": "Strahlung der Atomhülle",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Atom"
+              ]
+            },
+            {
               "id": "ph-j12gk-lb4-strahlung",
               "title": "Strahlung aus Atomhülle und Atomkern",
               "pointsPerTask": 10,
@@ -878,6 +2194,42 @@
               "keywords": [
                 "Atom",
                 "Kernstrahlung"
+              ]
+            },
+            {
+              "id": "ph-j12gk-lb4-zerfall",
+              "title": "Radioaktiver Zerfall",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Zerfall"
+              ]
+            },
+            {
+              "id": "ph-j12gk-lb4-halbwert",
+              "title": "Halbwertszeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Halbwertszeit"
+              ]
+            },
+            {
+              "id": "ph-j12gk-lb4-arten",
+              "title": "Alpha, Beta, Gamma",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Strahlung"
+              ]
+            },
+            {
+              "id": "ph-j12gk-lb4-spaltung",
+              "title": "Kernspaltung und Fusion (Einblick)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Kernspaltung"
               ]
             }
           ]
@@ -896,6 +2248,15 @@
               ]
             },
             {
+              "id": "ph-j12gk-lbw-medizin",
+              "title": "Strahlung in der Medizin",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Medizin"
+              ]
+            },
+            {
               "id": "ph-j12gk-lbw-optik",
               "title": "Optische Phänomene",
               "pointsPerTask": 10,
@@ -905,12 +2266,30 @@
               ]
             },
             {
+              "id": "ph-j12gk-lbw-regenbogen",
+              "title": "Regenbogen und Dispersion",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Regenbogen"
+              ]
+            },
+            {
               "id": "ph-j12gk-lbw-akustik",
               "title": "Akustik",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Akustik"
+              ]
+            },
+            {
+              "id": "ph-j12gk-lbw-schall",
+              "title": "Schallgeschwindigkeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Schall"
               ]
             }
           ]
@@ -936,6 +2315,15 @@
           "ustd": 20,
           "topics": [
             {
+              "id": "ph-j11lk-lb1-impuls",
+              "title": "Impuls",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Impuls"
+              ]
+            },
+            {
               "id": "ph-j11lk-lb1-erhaltung",
               "title": "Erhaltungssätze und ihre Anwendungen",
               "pointsPerTask": 10,
@@ -943,6 +2331,33 @@
               "keywords": [
                 "Impuls",
                 "Energie"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb1-energie",
+              "title": "Energieerhaltung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Energie"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb1-stoss",
+              "title": "Stoßprozesse",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Stoß"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb1-drehimpuls",
+              "title": "Drehimpuls (Einblick)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Drehimpuls"
               ]
             }
           ]
@@ -953,12 +2368,48 @@
           "ustd": 12,
           "topics": [
             {
+              "id": "ph-j11lk-lb2-ort",
+              "title": "Ort und Zeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Ort"
+              ]
+            },
+            {
               "id": "ph-j11lk-lb2-kinematik",
               "title": "Kinematik geradliniger Bewegungen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Kinematik"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb2-geschwindigkeit",
+              "title": "Geschwindigkeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "v"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb2-beschleunigung",
+              "title": "Beschleunigung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "a"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb2-gleichungen",
+              "title": "Bewegungsgleichungen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Gleichung"
               ]
             }
           ]
@@ -969,12 +2420,48 @@
           "ustd": 8,
           "topics": [
             {
+              "id": "ph-j11lk-lb3-traegheit",
+              "title": "Trägheitsgesetz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Trägheit"
+              ]
+            },
+            {
               "id": "ph-j11lk-lb3-newton",
               "title": "Newtonsche Gesetze und deren Anwendungen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Newton"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb3-kraft",
+              "title": "F = m·a",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Kraft"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb3-wechselwirkung",
+              "title": "Wechselwirkungsgesetz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Aktion"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb3-anwendung",
+              "title": "Anwendungen im Alltag",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Anwendung"
               ]
             }
           ]
@@ -993,6 +2480,42 @@
                 "Modell",
                 "Simulation"
               ]
+            },
+            {
+              "id": "ph-j11lk-lb4-annahmen",
+              "title": "Modellannahmen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Annahme"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb4-grenzen",
+              "title": "Grenzen von Modellen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Grenze"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb4-simulation",
+              "title": "Simulation vs. Experiment",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Simulation"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb4-numerisch",
+              "title": "Numerische Schritte (Einblick)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Numerik"
+              ]
             }
           ]
         },
@@ -1002,12 +2525,48 @@
           "ustd": 10,
           "topics": [
             {
+              "id": "ph-j11lk-lb5-kreis",
+              "title": "Gleichförmige Kreisbewegung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Kreis"
+              ]
+            },
+            {
               "id": "ph-j11lk-lb5-kurven",
               "title": "Krummlinige Bewegungen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Kreisbewegung"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb5-zentripetal",
+              "title": "Zentripetalkraft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Zentripetal"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb5-wurf",
+              "title": "Schräger Wurf",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Wurf"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb5-bahn",
+              "title": "Bahnkurven",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Bahn"
               ]
             }
           ]
@@ -1018,12 +2577,48 @@
           "ustd": 8,
           "topics": [
             {
+              "id": "ph-j11lk-lb6-postulate",
+              "title": "Postulate",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Relativität"
+              ]
+            },
+            {
               "id": "ph-j11lk-lb6-relativitaet",
               "title": "Einblick in die Relativitätstheorie",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Relativität"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb6-zeit",
+              "title": "Zeitdilatation",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Zeit"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb6-laenge",
+              "title": "Längenkontraktion (Einblick)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Länge"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb6-c",
+              "title": "c als Grenzgeschwindigkeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "c"
               ]
             }
           ]
@@ -1034,12 +2629,48 @@
           "ustd": 14,
           "topics": [
             {
+              "id": "ph-j11lk-lb7-ladung",
+              "title": "Ladung und Feld",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Ladung"
+              ]
+            },
+            {
               "id": "ph-j11lk-lb7-efeld",
               "title": "Elektrisches Feld",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Elektrisches Feld"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb7-feldstaerke",
+              "title": "Feldstärke E = F/q",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "E"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb7-linien",
+              "title": "Feldlinien",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Feldlinien"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb7-potential",
+              "title": "Potential und Spannung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Potential"
               ]
             }
           ]
@@ -1050,12 +2681,48 @@
           "ustd": 10,
           "topics": [
             {
+              "id": "ph-j11lk-lb8-magnet",
+              "title": "Magnetfeldquellen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Magnet"
+              ]
+            },
+            {
               "id": "ph-j11lk-lb8-mfeld",
               "title": "Magnetisches Feld",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Magnetisches Feld"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb8-linien",
+              "title": "Feldlinien Magnet",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Feldlinien"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb8-strom",
+              "title": "Magnetfeld um Leiter",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Strom"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb8-spule",
+              "title": "Spulenfeld",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Spule"
               ]
             }
           ]
@@ -1066,12 +2733,48 @@
           "ustd": 12,
           "topics": [
             {
+              "id": "ph-j11lk-lb9-efeld",
+              "title": "Teilchen im E-Feld",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "E-Feld"
+              ]
+            },
+            {
               "id": "ph-j11lk-lb9-teilchen",
               "title": "Geladene Teilchen in Feldern",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Lorentzkraft"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb9-lorentz",
+              "title": "Lorentzkraft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Lorentz"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb9-bahn",
+              "title": "Kreisbahn im B-Feld",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Bahn"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb9-anwendung",
+              "title": "Massenspektrometer (Einblick)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Anwendung"
               ]
             }
           ]
@@ -1082,12 +2785,48 @@
           "ustd": 15,
           "topics": [
             {
+              "id": "ph-j11lk-lb10-fluss",
+              "title": "Magnetischer Fluss",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Fluss"
+              ]
+            },
+            {
               "id": "ph-j11lk-lb10-induktion",
               "title": "Elektromagnetische Induktion",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Induktion"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb10-lenz",
+              "title": "Lenzsche Regel",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Lenz"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb10-generator",
+              "title": "Generator",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Generator"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb10-transformator",
+              "title": "Transformator (Einblick)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Transformator"
               ]
             }
           ]
@@ -1098,12 +2837,48 @@
           "ustd": 13,
           "topics": [
             {
+              "id": "ph-j11lk-lb11-planung",
+              "title": "Versuch planen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Versuch"
+              ]
+            },
+            {
               "id": "ph-j11lk-lb11-praktikum",
               "title": "Physikalisches Praktikum",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Praktikum"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb11-messung",
+              "title": "Messen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Messung"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb11-auswertung",
+              "title": "Auswertung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Auswertung"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb11-unsicherheit",
+              "title": "Messunsicherheit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Unsicherheit"
               ]
             }
           ]
@@ -1122,6 +2897,15 @@
               ]
             },
             {
+              "id": "ph-j11lk-lbw-bremsen",
+              "title": "Bremsweg",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Bremsweg"
+              ]
+            },
+            {
               "id": "ph-j11lk-lbw-halbleiter",
               "title": "Leitungsvorgänge in Halbleitern",
               "pointsPerTask": 10,
@@ -1131,12 +2915,30 @@
               ]
             },
             {
+              "id": "ph-j11lk-lbw-diode",
+              "title": "pn-Übergang",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Diode"
+              ]
+            },
+            {
               "id": "ph-j11lk-lbw-messen",
               "title": "Messen und Modellieren",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Messen"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lbw-kalibrierung",
+              "title": "Kalibrierung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Kalibrierung"
               ]
             }
           ]
@@ -1163,12 +2965,57 @@
           "ustd": 22,
           "topics": [
             {
+              "id": "ph-j12lk-lb1-harmonisch",
+              "title": "Harmonische Schwingung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Schwingung"
+              ]
+            },
+            {
               "id": "ph-j12lk-lb1-schwingung",
               "title": "Mechanische und elektromagnetische Schwingungen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Schwingung"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb1-pendel",
+              "title": "Pendel und Feder",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Pendel"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb1-lc",
+              "title": "LC-Schwingkreis",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "LC"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb1-energie",
+              "title": "Energie in Schwingungen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Energie"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb1-resonanz",
+              "title": "Resonanz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Resonanz"
               ]
             }
           ]
@@ -1179,12 +3026,57 @@
           "ustd": 15,
           "topics": [
             {
+              "id": "ph-j12lk-lb2-typen",
+              "title": "Longitudinal und transversal",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Welle"
+              ]
+            },
+            {
               "id": "ph-j12lk-lb2-wellen",
               "title": "Wellen als vielschichtige Naturerscheinung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Welle"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb2-cf",
+              "title": "c = λ·f",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Wellenlänge"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb2-interferenz",
+              "title": "Interferenz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Interferenz"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb2-beugung",
+              "title": "Beugung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Beugung"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb2-stehend",
+              "title": "Stehende Wellen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Stehende Welle"
               ]
             }
           ]
@@ -1195,12 +3087,48 @@
           "ustd": 15,
           "topics": [
             {
+              "id": "ph-j12lk-lb4-photo",
+              "title": "Photoeffekt",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Photoeffekt"
+              ]
+            },
+            {
               "id": "ph-j12lk-lb4-quanten",
               "title": "Grundlagen der Quantenphysik",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Quantenphysik"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb4-photon",
+              "title": "Photonen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Photon"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb4-unschaerfe",
+              "title": "Unschärferelation (Einblick)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Unschärfe"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb4-dualismus",
+              "title": "Dualismus",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Dualismus"
               ]
             }
           ]
@@ -1211,12 +3139,48 @@
           "ustd": 18,
           "topics": [
             {
+              "id": "ph-j12lk-lb5-bohr",
+              "title": "Bohrsches Atommodell",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Bohr"
+              ]
+            },
+            {
               "id": "ph-j12lk-lb5-atom",
               "title": "Grundlagen der Atomphysik",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Atomphysik"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb5-spektrum",
+              "title": "Spektrallinien",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Spektrum"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb5-niveaus",
+              "title": "Energieniveaus",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Niveau"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb5-anregung",
+              "title": "Anregung und Emission",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Emission"
               ]
             }
           ]
@@ -1227,12 +3191,57 @@
           "ustd": 17,
           "topics": [
             {
+              "id": "ph-j12lk-lb6-aufbau",
+              "title": "Aufbau der Kerne",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Kern"
+              ]
+            },
+            {
               "id": "ph-j12lk-lb6-kerne",
               "title": "Eigenschaften der Atomkerne",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Kernphysik"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb6-zerfall",
+              "title": "Zerfallsarten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Zerfall"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb6-halbwert",
+              "title": "Halbwertszeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Halbwertszeit"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb6-bindung",
+              "title": "Bindungsenergie (Einblick)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Bindung"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb6-spaltung",
+              "title": "Spaltung und Fusion",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Spaltung"
               ]
             }
           ]
@@ -1243,12 +3252,48 @@
           "ustd": 15,
           "topics": [
             {
+              "id": "ph-j12lk-lb7-gas",
+              "title": "Ideales Gas",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Gas"
+              ]
+            },
+            {
               "id": "ph-j12lk-lb7-thermo",
               "title": "Thermodynamik",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Thermodynamik"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb7-hs1",
+              "title": "1. Hauptsatz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Hauptsatz"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb7-hs2",
+              "title": "2. Hauptsatz (Einblick)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Entropie"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb7-prozess",
+              "title": "Zustandsänderungen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Prozess"
               ]
             }
           ]
@@ -1267,12 +3312,30 @@
               ]
             },
             {
+              "id": "ph-j12lk-lbw-anfang",
+              "title": "Anfangsbedingungen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Chaos"
+              ]
+            },
+            {
               "id": "ph-j12lk-lbw-gas",
               "title": "Kinetische Gastheorie",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "keywords": [
                 "Gastheorie"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lbw-druck",
+              "title": "Druck aus Teilchenmodell",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Druck"
               ]
             },
             {
@@ -1283,6 +3346,15 @@
               "keywords": [
                 "Anwendung"
               ]
+            },
+            {
+              "id": "ph-j12lk-lbw-technik",
+              "title": "Technische Beispiele",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "keywords": [
+                "Technik"
+              ]
             }
           ]
         }
@@ -1290,5 +3362,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "c831998c"
+  "contentHash": "6e4b5022"
 }

@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.5] – 2026-09-16
+
+### Neu
+- **Physik Pack 2.1.0**: Lernbereiche mit **5–9 Übungsthemen** (ähnlich Mathe),
+  Themen an Lehrplan Gym Sachsen und typische Aufgaben (LEIFI, Olympiade,
+  Schulaufgaben) angelehnt — Klassen 6–10 und JGS 11/12 Gk/Lk (~309 Themen).
+
 ## [0.27.4] – 2026-09-16
 
 ### Neu
