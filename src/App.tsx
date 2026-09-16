@@ -426,6 +426,10 @@ export default function App() {
     }
     setUsers(addUser(name, result.role))
     selectUser(name)
+    if (typeof result.curriculumPreview === 'boolean') {
+      setCurriculumDevPreview(name, result.curriculumPreview)
+      setCurriculumDevPreviewState(result.curriculumPreview)
+    }
     setNewName('')
     setNewRole(null)
     setNewTeacherCode('')
@@ -445,6 +449,10 @@ export default function App() {
     if (!activeUser) return
     setUserRole(activeUser, role)
     setUserRoleState(role)
+    if (!isTeacherRole(role)) {
+      setCurriculumDevPreview(activeUser, false)
+      setCurriculumDevPreviewState(false)
+    }
     if (
       (view.name === 'examBuild' && !canCreateExam(role)) ||
       (view.name === 'examRun' && !canWriteExam(role))
@@ -817,7 +825,6 @@ export default function App() {
           role={userRole}
           preferredSubject={preferredSubject}
           onChangePreferredSubject={changePreferredSubject}
-          curriculumDevPreview={curriculumDevPreview}
           onChangeCurriculumDevPreview={changeCurriculumDevPreview}
           classLabel={classLabel}
           lanStatus={lanStatus}

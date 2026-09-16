@@ -109,7 +109,7 @@ export interface Topic {
   outlineOnly?: boolean
   /**
    * Freigabe für Schüler/Eltern. false = vorbereitet, aber gesperrt
-   * („Noch keine Aufgaben enthalten“), außer Entwickler-Vorschau.
+   * („Noch keine Aufgaben enthalten“), außer bei stiller Pack-Vorschau.
    */
   released?: boolean
   /** Stable numeric ID for Freigabe-Feedback (z. B. „ID 8545“). */

@@ -9,13 +9,18 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.10] – 2026-09-16
+
+### Behoben
+- Lehrplan-Vorschau für gesperrte Themen nur noch still über den Lehrercode-Dialog
+  (keine eigene UI, kein Hinweis in den Einstellungen).
+
 ## [0.27.9] – 2026-09-16
 
 ### Neu
 - **Physik-Freigabe:** Alle Physik-Themen starten als **gesperrt** (`released: false`).
   Schüler sehen „Noch keine Aufgaben enthalten“. Freigabe später per Pack-Update
-  ohne App-Build. Lehrer mit **Entwicklercode** sehen gesperrte Themen inkl.
-  Themen-ID (z. B. ID 6991) und Status freigegeben/gesperrt.
+  ohne App-Build.
 
 ### Verbessert
 - Schatten-MC ohne vorgezeichneten Schatten; Lichtstrahl akzeptiert jeden Punkt

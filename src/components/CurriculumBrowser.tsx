@@ -5,7 +5,7 @@ import { TeacherExtraBadge } from './TeacherExtraBadge'
 
 interface Props {
   grade: Grade
-  /** Lehrer mit Entwicklercode: auch gesperrte Themen üben + ID sehen. */
+  /** Lehrer mit stiller Lehrercode-Variante: auch gesperrte Themen prüfen. */
   curriculumDevPreview?: boolean
   onPractice: (topic: Topic, areaTitle: string) => void
   onWorksheet: (topic: Topic, areaTitle: string) => void

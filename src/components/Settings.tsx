@@ -26,7 +26,7 @@ import {
   roleLabel,
   type UserRole,
 } from '../lib/roles'
-import { applyRoleChange, matchesDeveloperCode, needsTeacherCode, DEVELOPER_CODE_WRONG } from '../lib/teacherCode'
+import { applyRoleChange, needsTeacherCode } from '../lib/teacherCode'
 import { SUBJECT_OPTIONS } from '../curriculum/packFilters'
 import type { LanServerStatus } from '../updates/types'
 import {
@@ -56,7 +56,6 @@ interface Props {
   role: UserRole
   preferredSubject: string
   onChangePreferredSubject: (subject: string) => void
-  curriculumDevPreview: boolean
   onChangeCurriculumDevPreview: (enabled: boolean) => void
   classLabel: string | null
   lanStatus: LanServerStatus | null
@@ -81,7 +80,6 @@ export function Settings({
   role,
   preferredSubject,
   onChangePreferredSubject,
-  curriculumDevPreview,
   onChangeCurriculumDevPreview,
   classLabel,
   lanStatus,
@@ -96,8 +94,6 @@ export function Settings({
   const [pendingRole, setPendingRole] = useState<UserRole | null>(null)
   const [teacherCodeDraft, setTeacherCodeDraft] = useState('')
   const [teacherCodeError, setTeacherCodeError] = useState<string | null>(null)
-  const [devCodeDraft, setDevCodeDraft] = useState('')
-  const [devCodeError, setDevCodeError] = useState<string | null>(null)
   const selectedRole = pendingRole ?? role
   const lanAvailable = Boolean(lanStatus)
   const updateHint = manualCheckHint(manualCheckStatus, manualCheckError)
@@ -107,7 +103,10 @@ export function Settings({
       setPendingRole(null)
       setTeacherCodeDraft('')
       setTeacherCodeError(null)
-      if (next !== role) onChangeRole(next)
+      if (next !== role) {
+        onChangeRole(next)
+        if (!isTeacherRole(next)) onChangeCurriculumDevPreview(false)
+      }
       return
     }
     setPendingRole(next)
@@ -122,6 +121,7 @@ export function Settings({
       return
     }
     onChangeRole(result.role)
+    onChangeCurriculumDevPreview(Boolean(result.curriculumPreview))
     setPendingRole(null)
     setTeacherCodeDraft('')
     setTeacherCodeError(null)
@@ -301,57 +301,7 @@ export function Settings({
               </div>
             )}
             {isTeacherRole(role) && !pendingRole ? (
-              <>
-                <TeacherCodeReveal />
-                <div className="field" style={{ marginTop: '1rem' }}>
-                  <p className="field__label">Entwickler-Vorschau (Curriculum)</p>
-                  <p className="muted small">
-                    Zeigt auch noch nicht freigegebene Themen mit Themen-ID und Status
-                    freigegeben/gesperrt — zum Prüfen vor der Veröffentlichung.
-                  </p>
-                  {curriculumDevPreview ? (
-                    <button
-                      type="button"
-                      className="ghost"
-                      onClick={() => onChangeCurriculumDevPreview(false)}
-                    >
-                      Vorschau beenden
-                    </button>
-                  ) : (
-                    <>
-                      <input
-                        className="answer-input__field"
-                        value={devCodeDraft}
-                        onChange={(e) => {
-                          setDevCodeDraft(e.target.value)
-                          setDevCodeError(null)
-                        }}
-                        placeholder="Entwicklercode"
-                        autoComplete="off"
-                      />
-                      {devCodeError && (
-                        <p className="notice notice--error">{devCodeError}</p>
-                      )}
-                      <button
-                        type="button"
-                        className="primary"
-                        style={{ marginTop: '0.5rem' }}
-                        onClick={() => {
-                          if (!matchesDeveloperCode(devCodeDraft)) {
-                            setDevCodeError(DEVELOPER_CODE_WRONG)
-                            return
-                          }
-                          onChangeCurriculumDevPreview(true)
-                          setDevCodeDraft('')
-                          setDevCodeError(null)
-                        }}
-                      >
-                        Vorschau aktivieren
-                      </button>
-                    </>
-                  )}
-                </div>
-              </>
+              <TeacherCodeReveal />
             ) : pendingRole ? (
               <TeacherCodeGate
                 id="profile-teacher-code"

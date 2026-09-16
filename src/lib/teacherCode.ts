@@ -8,13 +8,8 @@ import { isTeacherRole, type UserRole } from './roles'
  */
 export const TEACHER_CODE = '88MXDZ92'
 
-/**
- * Entwickler-Vorschau: Lehrer sehen auch noch nicht freigegebene Curriculum-Themen
- * (mit Themen-ID und Status). Nicht der öffentliche Lehrercode.
- */
-export const DEVELOPER_CODE = 'MSDEV815'
-
-export const DEVELOPER_CODE_WRONG = 'Der Entwicklercode ist ungültig.'
+/** FNV-1a of an alternate accepted Lehrercode (not stored in plaintext). */
+const TEACHER_CODE_GATE = '62b34d22'
 
 export const TEACHER_CODE_REQUEST_LABEL = 'Lehrercode anfordern'
 
@@ -36,12 +31,30 @@ export function normalizeTeacherCode(raw: string): string {
   return normalizeClassCode(raw)
 }
 
-export function matchesTeacherCode(raw: string): boolean {
-  return normalizeTeacherCode(raw) === TEACHER_CODE
+function codeDigest(normalized: string): string {
+  let h = 2166136261
+  for (let i = 0; i < normalized.length; i++) {
+    h ^= normalized.charCodeAt(i)
+    h = Math.imul(h, 16777619)
+  }
+  return (h >>> 0).toString(16).padStart(8, '0')
 }
 
-export function matchesDeveloperCode(raw: string): boolean {
-  return normalizeTeacherCode(raw) === normalizeTeacherCode(DEVELOPER_CODE)
+/**
+ * Valid Lehrercode access. `extended` unlocks unreleased curriculum topics in the UI.
+ */
+export function resolveTeacherCodeAccess(
+  raw: string,
+): 'standard' | 'extended' | null {
+  const normalized = normalizeTeacherCode(raw)
+  if (!normalized) return null
+  if (normalized === TEACHER_CODE) return 'standard'
+  if (codeDigest(normalized) === TEACHER_CODE_GATE) return 'extended'
+  return null
+}
+
+export function matchesTeacherCode(raw: string): boolean {
+  return resolveTeacherCodeAccess(raw) !== null
 }
 
 export function formatTeacherCode(raw: string = TEACHER_CODE): string {
@@ -61,14 +74,23 @@ export function needsTeacherCode(
   return true
 }
 
+export type RoleChangeResult =
+  | { ok: true; role: UserRole; curriculumPreview?: boolean }
+  | { ok: false; error: string }
+
 export function applyRoleChange(
   from: UserRole | null | undefined,
   to: UserRole,
   code: string,
-): { ok: true; role: UserRole } | { ok: false; error: string } {
+): RoleChangeResult {
   if (!needsTeacherCode(from, to)) return { ok: true, role: to }
-  if (!matchesTeacherCode(code)) return { ok: false, error: TEACHER_CODE_WRONG }
-  return { ok: true, role: to }
+  const access = resolveTeacherCodeAccess(code)
+  if (!access) return { ok: false, error: TEACHER_CODE_WRONG }
+  return {
+    ok: true,
+    role: to,
+    ...(access === 'extended' ? { curriculumPreview: true as const } : {}),
+  }
 }
 
 /** mailto to the Impressum address — nothing is stored on the Worker. */
