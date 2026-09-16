@@ -870,6 +870,32 @@ a.task-request__send {
   color: var(--muted, #94a3b8);
 }
 
+.topic__content-id {
+  margin-left: 0.45rem;
+  font-size: 0.78rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--accent, #818cf8);
+  font-weight: 600;
+}
+
+.topic__release-badge {
+  margin-left: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.08rem 0.35rem;
+  border-radius: 4px;
+}
+
+.topic__release-badge--ok {
+  background: rgba(34, 197, 94, 0.2);
+  color: #86efac;
+}
+
+.topic__release-badge--locked {
+  background: rgba(248, 113, 113, 0.2);
+  color: #fca5a5;
+}
+
 /* Difficulty badges */
 .difficulty-badge {
   display: inline-block;

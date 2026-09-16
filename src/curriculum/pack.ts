@@ -26,6 +26,11 @@ export interface PackTopic {
   hint?: string
   pointsPerTask: number
   keywords?: string[]
+  /**
+   * Wenn false: Thema ist vorbereitet, aber noch nicht freigegeben.
+   * Fehlend/undefined = freigegeben (Mathe-Kompatibilität).
+   */
+  released?: boolean
 }
 
 export interface PackArea {
@@ -139,6 +144,7 @@ const parseTopic = (raw: unknown): PackTopic | null => {
     hint: asString(raw.hint) || undefined,
     pointsPerTask: Math.max(1, Math.trunc(asNumber(raw.pointsPerTask, 10))),
     ...(keywords?.length ? { keywords } : {}),
+    ...(raw.released === false ? { released: false } : raw.released === true ? { released: true } : {}),
   }
 }
 

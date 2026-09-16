@@ -1,6 +1,7 @@
 import { makeFraction } from '../lib/fraction'
 import { pick, type Rng } from '../lib/rng'
 import { getBundledModule } from './bundled'
+import { topicContentId } from './contentId'
 import {
   gymGeneratorCatalog,
   resolveOsGenerate,
@@ -89,9 +90,11 @@ const markOfficial = (grade: Grade): Grade => ({
   ...grade,
   areas: grade.areas.map((area) => ({
     ...area,
-    topics: area.topics.map((topic) =>
-      topic.source ? topic : { ...topic, source: 'official' as const },
-    ),
+    topics: area.topics.map((topic) => ({
+      ...(topic.source ? topic : { ...topic, source: 'official' as const }),
+      contentId: topic.contentId ?? topicContentId(topic.id),
+      released: topic.released ?? true,
+    })),
   })),
 })
 

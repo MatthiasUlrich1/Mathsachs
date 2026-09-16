@@ -25,6 +25,8 @@ const baseProps = {
   role: 'lehrer' as const,
   preferredSubject: 'Mathematik',
   onChangePreferredSubject: vi.fn(),
+  curriculumDevPreview: false,
+  onChangeCurriculumDevPreview: vi.fn(),
   classLabel: '6/6',
   lanStatus: null,
   onChangeRole: vi.fn(),

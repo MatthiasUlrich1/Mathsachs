@@ -532,6 +532,23 @@ export const setPreferredSubject = (name: string, subject: string): string => {
   return next
 }
 
+export const getCurriculumDevPreview = (name: string): boolean => {
+  const trimmed = name.trim()
+  if (!trimmed) return false
+  return Boolean(loadUser(trimmed).curriculumDevPreview)
+}
+
+export const setCurriculumDevPreview = (name: string, enabled: boolean): boolean => {
+  const trimmed = name.trim()
+  if (!trimmed) return false
+  const current = loadUser(trimmed)
+  saveUser({
+    ...current,
+    curriculumDevPreview: enabled || undefined,
+  })
+  return enabled
+}
+
 export const deleteUser = async (name: string): Promise<string[]> => {
   const users = listUsers().filter((n) => n !== name)
   const records = { ...cache.records }

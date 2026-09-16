@@ -4,11 +4,18 @@ export function lightShadowSvg(opts: {
   lampLeft: boolean
   /** Shadow side relative to object: 'left' | 'right' */
   shadowSide: 'left' | 'right'
+  /** When false, only lamp + Körper (for „wo liegt der Schatten?“). */
+  showShadow?: boolean
 }): string {
   const lampX = opts.lampLeft ? 70 : 410
   const objX = 240
   const shadowX = opts.shadowSide === 'left' ? 120 : 360
-  return lightShadowSceneSvg({ lampX, objX, shadowX })
+  return lightShadowSceneSvg({
+    lampX,
+    objX,
+    shadowX,
+    showShadow: opts.showShadow !== false,
+  })
 }
 
 /** Live preview for lamp-position slider (object fixed at center). */
@@ -41,17 +48,21 @@ function lightShadowSceneSvg(opts: {
   objX: number
   shadowX: number
   caption?: string
+  showShadow?: boolean
 }): string {
-  const { lampX, objX, shadowX, caption } = opts
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 180" width="480" height="180" role="img" aria-label="Lampe, Gegenstand und Schatten">
+  const { lampX, objX, shadowX, caption, showShadow = true } = opts
+  const shadow = showShadow
+    ? `<ellipse cx="${shadowX}" cy="140" rx="52" ry="12" fill="#020617" opacity="0.9"/>
+  <text x="${shadowX}" y="126" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="system-ui,sans-serif">Schatten</text>`
+    : ''
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 180" width="480" height="180" role="img" aria-label="Lampe und Gegenstand">
   <rect x="0" y="0" width="480" height="180" fill="#0f172a"/>
   <line x1="24" y1="142" x2="456" y2="142" stroke="#64748b" stroke-width="2"/>
   <circle cx="${lampX}" cy="48" r="16" fill="#fbbf24" stroke="#f59e0b" stroke-width="2"/>
   <text x="${lampX}" y="28" text-anchor="middle" fill="#fde68a" font-size="12" font-family="system-ui,sans-serif">Lampe</text>
   <rect x="${objX}" y="78" width="32" height="64" rx="3" fill="#94a3b8" stroke="#e2e8f0" stroke-width="1.5"/>
   <text x="${objX + 16}" y="164" text-anchor="middle" fill="#cbd5e1" font-size="12" font-family="system-ui,sans-serif">Körper</text>
-  <ellipse cx="${shadowX}" cy="140" rx="52" ry="12" fill="#020617" opacity="0.9"/>
-  <text x="${shadowX}" y="126" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="system-ui,sans-serif">Schatten</text>
+  ${shadow}
   ${caption ? `<text x="240" y="18" text-anchor="middle" fill="#94a3b8" font-size="12" font-family="system-ui,sans-serif">${caption}</text>` : ''}
 </svg>`
 }

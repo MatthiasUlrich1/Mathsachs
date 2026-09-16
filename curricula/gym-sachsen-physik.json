@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "2.2.0",
-  "changelog": "Schulübliche Physik-Aufgaben statt Meta-Fragen; K6 Licht/Schatten interaktiv (Lampe zum Schatten, Lichtstrahl auf Kästchenpapier).",
+  "version": "2.3.0",
+  "changelog": "Alle Themen vorerst gesperrt (released:false); Freigabe über Pack-Update. Schulübliche Optik-Fixes.",
   "official": [
     {
       "id": "physik-klasse-6",
@@ -31,6 +31,7 @@
               "title": "Lichtquellen und beleuchtete Körper",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Lichtquelle"
               ]
@@ -40,6 +41,7 @@
               "title": "Geradlinige Ausbreitung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Licht",
                 "Strahl"
@@ -50,6 +52,7 @@
               "title": "Schatten und Lichtquelle",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Licht",
                 "Schatten"
@@ -60,6 +63,7 @@
               "title": "Kern- und Halbschatten",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Kernschatten",
                 "Halbschatten"
@@ -70,6 +74,7 @@
               "title": "Lampenposition einstellen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Schatten",
                 "Schieberegler"
@@ -80,6 +85,7 @@
               "title": "Lichtstrahl tippen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Strahl",
                 "Gitter"
@@ -90,6 +96,7 @@
               "title": "Spiegelung am ebenen Spiegel",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Spiegel",
                 "Reflexion"
@@ -100,6 +107,7 @@
               "title": "Brechung und Prisma",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Brechung",
                 "Prisma"
@@ -117,6 +125,7 @@
               "title": "Volumen bestimmen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Volumen"
               ]
@@ -126,6 +135,7 @@
               "title": "Masse vergleichen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Masse",
                 "Körper"
@@ -136,6 +146,7 @@
               "title": "Dichte berechnen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Dichte",
                 "Masse",
@@ -147,6 +158,7 @@
               "title": "Dichte von Stoffen vergleichen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Dichte",
                 "Stoff"
@@ -157,6 +169,7 @@
               "title": "Gleichförmige Bewegung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Geschwindigkeit",
                 "Strecke"
@@ -167,6 +180,7 @@
               "title": "Weg-Zeit-Diagramm",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Diagramm",
                 "Bewegung"
@@ -177,6 +191,7 @@
               "title": "Einheiten von v, s und t",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Einheit",
                 "Geschwindigkeit"
@@ -194,6 +209,7 @@
               "title": "Temperatur ablesen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Temperatur",
                 "Thermometer"
@@ -204,6 +220,7 @@
               "title": "Celsius und Kelvin",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Kelvin",
                 "Celsius"
@@ -214,6 +231,7 @@
               "title": "Wärmeausdehnung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Ausdehnung",
                 "Wärme"
@@ -224,6 +242,7 @@
               "title": "Aggregatzustände",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Aggregatzustand",
                 "Schmelzen"
@@ -234,6 +253,7 @@
               "title": "Schmelzen und Sieden",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Schmelzen",
                 "Sieden"
@@ -244,6 +264,7 @@
               "title": "Temperatur-Messreihe",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Messreihe",
                 "Temperatur"
@@ -261,6 +282,7 @@
               "title": "Offener und geschlossener Stromkreis",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Stromkreis",
                 "Schalter"
@@ -271,6 +293,7 @@
               "title": "Leiter und Nichtleiter",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Leiter",
                 "Isolator"
@@ -281,6 +304,7 @@
               "title": "Schaltsymbole",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Schaltbild"
               ]
@@ -290,6 +314,7 @@
               "title": "Reihe und Parallel (einfach)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Reihe",
                 "Parallel"
@@ -300,6 +325,7 @@
               "title": "Gefahren und Kurzschluss",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Kurzschluss",
                 "Sicherheit"
@@ -316,6 +342,7 @@
               "title": "Sehen und Fotografieren",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Sehen",
                 "Fotografie"
@@ -326,6 +353,7 @@
               "title": "Lochkamera",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Lochkamera",
                 "Bild"
@@ -336,6 +364,7 @@
               "title": "Auge und Sehvorgang",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Auge"
               ]
@@ -345,6 +374,7 @@
               "title": "Wärmedämmung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Wärmedämmung"
               ]
@@ -354,6 +384,7 @@
               "title": "Dämmstoffe vergleichen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Dämmstoff"
               ]
@@ -363,6 +394,7 @@
               "title": "Farben",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Farben"
               ]
@@ -372,6 +404,7 @@
               "title": "Farbfilter",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Filter",
                 "Spektrum"
@@ -382,6 +415,7 @@
               "title": "Spektrum und Prisma",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Spektrum",
                 "Prisma"
@@ -414,6 +448,7 @@
               "title": "Kraft als physikalische Größe",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Kraft",
                 "Newton"
@@ -424,6 +459,7 @@
               "title": "Gewichtskraft F = m·g",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Gewichtskraft"
               ]
@@ -433,6 +469,7 @@
               "title": "Kräfte vergleichen und addieren",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Kraft",
                 "Gewichtskraft"
@@ -443,6 +480,7 @@
               "title": "Federkraft und Hooke",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Feder",
                 "Hooke"
@@ -453,6 +491,7 @@
               "title": "Reibung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Reibung"
               ]
@@ -462,6 +501,7 @@
               "title": "Magnetische Kräfte",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Magnet"
               ]
@@ -471,6 +511,7 @@
               "title": "Elektrostatische Kräfte",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Elektrostatik"
               ]
@@ -487,6 +528,7 @@
               "title": "Stromstärke I",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Stromstärke",
                 "Ampere"
@@ -497,6 +539,7 @@
               "title": "Spannung U",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Spannung",
                 "Volt"
@@ -507,6 +550,7 @@
               "title": "Stromstärke und Spannung in Stromkreisen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Stromstärke",
                 "Spannung"
@@ -517,6 +561,7 @@
               "title": "Ohmsches Gesetz",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Ohm",
                 "Widerstand"
@@ -527,6 +572,7 @@
               "title": "Reihenschaltung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Reihe"
               ]
@@ -536,6 +582,7 @@
               "title": "Parallelschaltung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Parallel"
               ]
@@ -545,6 +592,7 @@
               "title": "Strom und Spannung messen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Amperemeter",
                 "Voltmeter"
@@ -562,6 +610,7 @@
               "title": "Energieformen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Energie"
               ]
@@ -571,6 +620,7 @@
               "title": "Energiewandler",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Energie",
                 "Wandler"
@@ -581,6 +631,7 @@
               "title": "Energieumwandlungsketten",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Umwandlung"
               ]
@@ -590,6 +641,7 @@
               "title": "Wirkungsgrad",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Wirkungsgrad"
               ]
@@ -599,6 +651,7 @@
               "title": "Leistung P = E/t",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Leistung"
               ]
@@ -608,6 +661,7 @@
               "title": "Energie sparen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Energieeinsparung"
               ]
@@ -623,6 +677,7 @@
               "title": "Kraftwandler – früher und heute",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Kraftwandler"
               ]
@@ -632,6 +687,7 @@
               "title": "Hebelgesetz",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Hebel"
               ]
@@ -641,6 +697,7 @@
               "title": "Flaschenzug",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Flaschenzug"
               ]
@@ -650,6 +707,7 @@
               "title": "Elektrische Schaltungen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Schaltung"
               ]
@@ -659,6 +717,7 @@
               "title": "Klingel und Wechselschaltung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Klingel"
               ]
@@ -668,6 +727,7 @@
               "title": "Vom Fliegen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Fliegen"
               ]
@@ -677,6 +737,7 @@
               "title": "Dynamischer Auftrieb",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Auftrieb",
                 "Tragfläche"
@@ -709,6 +770,7 @@
               "title": "Druck p = F/A",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Druck"
               ]
@@ -718,6 +780,7 @@
               "title": "Schweredruck in Flüssigkeiten",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Schweredruck"
               ]
@@ -727,6 +790,7 @@
               "title": "Mechanik der Flüssigkeiten und Gase",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Druck",
                 "Auftrieb"
@@ -737,6 +801,7 @@
               "title": "Statischer Auftrieb",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Auftrieb",
                 "Archimedes"
@@ -747,6 +812,7 @@
               "title": "Sinken, Schweben, Schwimmen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Schwimmen"
               ]
@@ -756,6 +822,7 @@
               "title": "Luftdruck",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Luftdruck"
               ]
@@ -772,6 +839,7 @@
               "title": "Wärme und thermische Energie",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Wärme"
               ]
@@ -781,6 +849,7 @@
               "title": "Thermische Energie",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Wärme",
                 "thermische Energie"
@@ -791,6 +860,7 @@
               "title": "Spezifische Wärmekapazität",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Wärmekapazität"
               ]
@@ -800,6 +870,7 @@
               "title": "Wärmeleitung, Strömung, Strahlung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Wärmeleitung"
               ]
@@ -809,6 +880,7 @@
               "title": "Mischungstemperatur",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Mischung"
               ]
@@ -818,6 +890,7 @@
               "title": "Wärme und Klima (Einblick)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Klima"
               ]
@@ -834,6 +907,7 @@
               "title": "Elektrischer Widerstand",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Widerstand"
               ]
@@ -843,6 +917,7 @@
               "title": "Eigenschaften elektrischer Bauelemente",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Widerstand",
                 "Bauelemente"
@@ -853,6 +928,7 @@
               "title": "U-I-Kennlinie",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Kennlinie"
               ]
@@ -862,6 +938,7 @@
               "title": "Ohmsches Gesetz anwenden",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Ohm"
               ]
@@ -871,6 +948,7 @@
               "title": "Widerstände in Reihe",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Reihe",
                 "Widerstand"
@@ -881,6 +959,7 @@
               "title": "Widerstände parallel",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Parallel",
                 "Widerstand"
@@ -898,6 +977,7 @@
               "title": "Forschungsfrage und Hypothese",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Hypothese"
               ]
@@ -907,6 +987,7 @@
               "title": "Selbstständiges Experimentieren",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Experiment",
                 "Praktikum"
@@ -917,6 +998,7 @@
               "title": "Unabhängige und abhängige Variable",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Variable"
               ]
@@ -926,6 +1008,7 @@
               "title": "Messreihe auswerten",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Messreihe"
               ]
@@ -935,6 +1018,7 @@
               "title": "Messunsicherheit",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Messfehler"
               ]
@@ -950,6 +1034,7 @@
               "title": "Vom Ballonfahren",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Ballon"
               ]
@@ -959,6 +1044,7 @@
               "title": "Dichte von heißer Luft",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Dichte",
                 "Ballon"
@@ -969,6 +1055,7 @@
               "title": "Kühlschrank und Wärmepumpe",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Wärmepumpe"
               ]
@@ -978,6 +1065,7 @@
               "title": "Wärmefluss und Arbeit",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Wärmepumpe"
               ]
@@ -987,6 +1075,7 @@
               "title": "Elektrisches Messen nichtelektrischer Größen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Messen"
               ]
@@ -996,6 +1085,7 @@
               "title": "Sensoren",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Sensor"
               ]
@@ -1027,6 +1117,7 @@
               "title": "Diode",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Diode"
               ]
@@ -1036,6 +1127,7 @@
               "title": "Grundlagen der Elektronik",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Elektronik",
                 "Diode"
@@ -1046,6 +1138,7 @@
               "title": "Transistor (Einblick)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Transistor"
               ]
@@ -1055,6 +1148,7 @@
               "title": "LED",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "LED"
               ]
@@ -1064,6 +1158,7 @@
               "title": "Digitale Grundschaltungen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Digital"
               ]
@@ -1080,6 +1175,7 @@
               "title": "Kraftwerkskette",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Kraftwerk"
               ]
@@ -1089,6 +1185,7 @@
               "title": "Energieversorgung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Energieversorgung",
                 "Kraftwerk"
@@ -1099,6 +1196,7 @@
               "title": "Wirkungsgrad von Anlagen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Wirkungsgrad"
               ]
@@ -1108,6 +1206,7 @@
               "title": "Generatorprinzip",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Generator"
               ]
@@ -1117,6 +1216,7 @@
               "title": "Energieverteilung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Netz"
               ]
@@ -1126,6 +1226,7 @@
               "title": "Erneuerbare Energien",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Erneuerbar"
               ]
@@ -1142,6 +1243,7 @@
               "title": "Gleichförmige Bewegung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Geschwindigkeit"
               ]
@@ -1151,6 +1253,7 @@
               "title": "Bewegungsgesetze",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Geschwindigkeit",
                 "Beschleunigung"
@@ -1161,6 +1264,7 @@
               "title": "Beschleunigung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Beschleunigung"
               ]
@@ -1170,6 +1274,7 @@
               "title": "Freier Fall",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Fall"
               ]
@@ -1179,6 +1284,7 @@
               "title": "s-t- und v-t-Diagramme",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Diagramm"
               ]
@@ -1188,6 +1294,7 @@
               "title": "Kraft und Bewegung (Einblick)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Newton"
               ]
@@ -1204,6 +1311,7 @@
               "title": "Versuch planen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Versuch"
               ]
@@ -1213,6 +1321,7 @@
               "title": "Physikalisches Praktikum",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Praktikum"
               ]
@@ -1222,6 +1331,7 @@
               "title": "Protokollieren",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Protokoll"
               ]
@@ -1231,6 +1341,7 @@
               "title": "Auswertung und Fehler",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Auswertung"
               ]
@@ -1240,6 +1351,7 @@
               "title": "Diagramm aus Messwerten",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Diagramm"
               ]
@@ -1255,6 +1367,7 @@
               "title": "Natürliche Radioaktivität",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Radioaktivität"
               ]
@@ -1264,6 +1377,7 @@
               "title": "Alpha, Beta, Gamma",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Strahlung"
               ]
@@ -1273,6 +1387,7 @@
               "title": "Energie von Wind und Sonne",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Wind",
                 "Sonne"
@@ -1283,6 +1398,7 @@
               "title": "Solarzelle und Windrad",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Solar",
                 "Wind"
@@ -1293,6 +1409,7 @@
               "title": "Bewegungen auf gekrümmten Bahnen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Kreisbewegung"
               ]
@@ -1302,6 +1419,7 @@
               "title": "Zentripetalkraft",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Zentripetalkraft"
               ]
@@ -1334,6 +1452,7 @@
               "title": "Amplitude und Periodendauer",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Amplitude",
                 "Periode"
@@ -1344,6 +1463,7 @@
               "title": "Mechanische Schwingungen und Wellen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Schwingung",
                 "Welle"
@@ -1354,6 +1474,7 @@
               "title": "Frequenz f = 1/T",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Frequenz"
               ]
@@ -1363,6 +1484,7 @@
               "title": "Fadenpendel",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Pendel"
               ]
@@ -1372,6 +1494,7 @@
               "title": "Federschwinger",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Feder"
               ]
@@ -1381,6 +1504,7 @@
               "title": "Wellengeschwindigkeit",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Welle"
               ]
@@ -1397,6 +1521,7 @@
               "title": "Sonnensystem",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Planet",
                 "Sonne"
@@ -1407,6 +1532,7 @@
               "title": "Kosmos, Erde und Mensch",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Astronomie",
                 "Kosmos"
@@ -1417,6 +1543,7 @@
               "title": "Mond und Finsternisse",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Mond",
                 "Finsternis"
@@ -1427,6 +1554,7 @@
               "title": "Jahreszeiten",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Jahreszeiten"
               ]
@@ -1436,6 +1564,7 @@
               "title": "Entfernungen und Lichtjahr",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Lichtjahr"
               ]
@@ -1445,6 +1574,7 @@
               "title": "Astronomische Beobachtung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Beobachtung"
               ]
@@ -1461,6 +1591,7 @@
               "title": "Licht als Strahl",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Strahloptik"
               ]
@@ -1470,6 +1601,7 @@
               "title": "Licht als Strahl und Welle",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Optik",
                 "Licht"
@@ -1480,6 +1612,7 @@
               "title": "Brechung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Brechung"
               ]
@@ -1489,6 +1622,7 @@
               "title": "Sammellinse",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Linse"
               ]
@@ -1498,6 +1632,7 @@
               "title": "Interferenz (Einblick)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Interferenz"
               ]
@@ -1507,6 +1642,7 @@
               "title": "c = λ·f",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Wellenlänge",
                 "Frequenz"
@@ -1524,6 +1660,7 @@
               "title": "Elektromagnetische Wellen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "EM-Welle"
               ]
@@ -1533,6 +1670,7 @@
               "title": "Hertzsche Wellen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Elektromagnetische Wellen"
               ]
@@ -1542,6 +1680,7 @@
               "title": "EM-Spektrum",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Spektrum"
               ]
@@ -1551,6 +1690,7 @@
               "title": "Radio und Modulation (Einblick)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Radio"
               ]
@@ -1560,6 +1700,7 @@
               "title": "Sender und Empfänger",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Antenne"
               ]
@@ -1576,6 +1717,7 @@
               "title": "Versuch planen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Versuch"
               ]
@@ -1585,6 +1727,7 @@
               "title": "Physikalisches Praktikum",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Praktikum"
               ]
@@ -1594,6 +1737,7 @@
               "title": "Messen und protokollieren",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Messung"
               ]
@@ -1603,6 +1747,7 @@
               "title": "Auswertung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Auswertung"
               ]
@@ -1612,6 +1757,7 @@
               "title": "Fehlerabschätzung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Fehler"
               ]
@@ -1627,6 +1773,7 @@
               "title": "Fernrohre",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Fernrohr"
               ]
@@ -1636,6 +1783,7 @@
               "title": "Fernrohrtypen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Teleskop"
               ]
@@ -1645,6 +1793,7 @@
               "title": "Kommunikation mit elektronischen Medien",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Medien"
               ]
@@ -1654,6 +1803,7 @@
               "title": "Analog und digital",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Digital"
               ]
@@ -1663,6 +1813,7 @@
               "title": "Fernsehbildtechnik",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Fernsehen"
               ]
@@ -1672,6 +1823,7 @@
               "title": "Bildpunkte und Auflösung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Pixel"
               ]
@@ -1703,6 +1855,7 @@
               "title": "Kinetische Energie",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Ekin"
               ]
@@ -1712,6 +1865,7 @@
               "title": "Potentielle Energie",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Epot"
               ]
@@ -1721,6 +1875,7 @@
               "title": "Erhaltung der Energie",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Energieerhaltung"
               ]
@@ -1730,6 +1885,7 @@
               "title": "Energiebilanz",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Bilanz"
               ]
@@ -1739,6 +1895,7 @@
               "title": "Energie und Reibung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Reibung"
               ]
@@ -1755,6 +1912,7 @@
               "title": "Gleichförmige Bewegung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "v"
               ]
@@ -1764,6 +1922,7 @@
               "title": "Anwendung der Kinematik und Dynamik",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Kinematik",
                 "Dynamik"
@@ -1774,6 +1933,7 @@
               "title": "Beschleunigte Bewegung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "a"
               ]
@@ -1783,6 +1943,7 @@
               "title": "F = m·a",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Newton"
               ]
@@ -1792,6 +1953,7 @@
               "title": "Bewegungsdiagramme",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Diagramm"
               ]
@@ -1801,6 +1963,7 @@
               "title": "Senkrechter Wurf (Einblick)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Wurf"
               ]
@@ -1817,6 +1980,7 @@
               "title": "Kondensator C = Q/U",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Kondensator"
               ]
@@ -1826,6 +1990,7 @@
               "title": "Kondensator und Spule – Praktikum",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Kondensator",
                 "Spule"
@@ -1836,6 +2001,7 @@
               "title": "Laden und Entladen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "RC"
               ]
@@ -1845,6 +2011,7 @@
               "title": "Spule und Induktion (Einblick)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Spule"
               ]
@@ -1854,6 +2021,7 @@
               "title": "Messung am Kondensator",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Messung"
               ]
@@ -1870,6 +2038,7 @@
               "title": "Elektrisches Feld",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "E-Feld"
               ]
@@ -1879,6 +2048,7 @@
               "title": "Geladene Teilchen in Feldern",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Feld",
                 "Ladung"
@@ -1889,6 +2059,7 @@
               "title": "F = q·E",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Kraft"
               ]
@@ -1898,6 +2069,7 @@
               "title": "Lorentzkraft (Einblick)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Lorentz"
               ]
@@ -1907,6 +2079,7 @@
               "title": "Bahnformen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Bahn"
               ]
@@ -1916,6 +2089,7 @@
               "title": "Technische Anwendungen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Anwendung"
               ]
@@ -1931,6 +2105,7 @@
               "title": "Bestimmung elementarer Naturkonstanten",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Naturkonstante"
               ]
@@ -1940,6 +2115,7 @@
               "title": "Elementarladung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "e"
               ]
@@ -1949,6 +2125,7 @@
               "title": "Physikalisch-technische Exkursion",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Exkursion"
               ]
@@ -1958,6 +2135,7 @@
               "title": "Sicherheit bei Exkursionen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Sicherheit"
               ]
@@ -1967,6 +2145,7 @@
               "title": "Technische Anwendungen von Spulen und Kondensatoren",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Anwendung"
               ]
@@ -1976,6 +2155,7 @@
               "title": "Filter und Schwingkreise (Einblick)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Filter"
               ]
@@ -1985,6 +2165,7 @@
               "title": "Relativität von Zeit und Raum",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Relativität"
               ]
@@ -1994,6 +2175,7 @@
               "title": "Lichtgeschwindigkeit als Grenze",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "c"
               ]
@@ -2025,6 +2207,7 @@
               "title": "Licht als Welle",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Lichtwelle"
               ]
@@ -2034,6 +2217,7 @@
               "title": "Welleneigenschaften des Lichts",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Lichtwelle"
               ]
@@ -2043,6 +2227,7 @@
               "title": "Interferenz",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Interferenz"
               ]
@@ -2052,6 +2237,7 @@
               "title": "Beugung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Beugung"
               ]
@@ -2061,6 +2247,7 @@
               "title": "c = λ·f",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Wellenlänge"
               ]
@@ -2077,6 +2264,7 @@
               "title": "Linsenexperiment",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Linse"
               ]
@@ -2086,6 +2274,7 @@
               "title": "Praktikum Optik",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Optik",
                 "Praktikum"
@@ -2096,6 +2285,7 @@
               "title": "Brennweite bestimmen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Brennweite"
               ]
@@ -2105,6 +2295,7 @@
               "title": "reelle und virtuelle Bilder",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Bild"
               ]
@@ -2114,6 +2305,7 @@
               "title": "Messunsicherheit Optik",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Fehler"
               ]
@@ -2130,6 +2322,7 @@
               "title": "Photoeffekt",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Photoeffekt"
               ]
@@ -2139,6 +2332,7 @@
               "title": "Grundlagen der Quantenphysik",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Quantenphysik"
               ]
@@ -2148,6 +2342,7 @@
               "title": "Photon E = h·f",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Photon"
               ]
@@ -2157,6 +2352,7 @@
               "title": "Welle-Teilchen-Dualismus",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Dualismus"
               ]
@@ -2166,6 +2362,7 @@
               "title": "Klassische Grenzen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Klassik"
               ]
@@ -2182,6 +2379,7 @@
               "title": "Strahlung der Atomhülle",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Atom"
               ]
@@ -2191,6 +2389,7 @@
               "title": "Strahlung aus Atomhülle und Atomkern",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Atom",
                 "Kernstrahlung"
@@ -2201,6 +2400,7 @@
               "title": "Radioaktiver Zerfall",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Zerfall"
               ]
@@ -2210,6 +2410,7 @@
               "title": "Halbwertszeit",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Halbwertszeit"
               ]
@@ -2219,6 +2420,7 @@
               "title": "Alpha, Beta, Gamma",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Strahlung"
               ]
@@ -2228,6 +2430,7 @@
               "title": "Kernspaltung und Fusion (Einblick)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Kernspaltung"
               ]
@@ -2243,6 +2446,7 @@
               "title": "Anwendungen der Physik",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Anwendung"
               ]
@@ -2252,6 +2456,7 @@
               "title": "Strahlung in der Medizin",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Medizin"
               ]
@@ -2261,6 +2466,7 @@
               "title": "Optische Phänomene",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Optik"
               ]
@@ -2270,6 +2476,7 @@
               "title": "Regenbogen und Dispersion",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Regenbogen"
               ]
@@ -2279,6 +2486,7 @@
               "title": "Akustik",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Akustik"
               ]
@@ -2288,6 +2496,7 @@
               "title": "Schallgeschwindigkeit",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Schall"
               ]
@@ -2319,6 +2528,7 @@
               "title": "Impuls",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Impuls"
               ]
@@ -2328,6 +2538,7 @@
               "title": "Erhaltungssätze und ihre Anwendungen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Impuls",
                 "Energie"
@@ -2338,6 +2549,7 @@
               "title": "Energieerhaltung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Energie"
               ]
@@ -2347,6 +2559,7 @@
               "title": "Stoßprozesse",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Stoß"
               ]
@@ -2356,6 +2569,7 @@
               "title": "Drehimpuls (Einblick)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Drehimpuls"
               ]
@@ -2372,6 +2586,7 @@
               "title": "Ort und Zeit",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Ort"
               ]
@@ -2381,6 +2596,7 @@
               "title": "Kinematik geradliniger Bewegungen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Kinematik"
               ]
@@ -2390,6 +2606,7 @@
               "title": "Geschwindigkeit",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "v"
               ]
@@ -2399,6 +2616,7 @@
               "title": "Beschleunigung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "a"
               ]
@@ -2408,6 +2626,7 @@
               "title": "Bewegungsgleichungen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Gleichung"
               ]
@@ -2424,6 +2643,7 @@
               "title": "Trägheitsgesetz",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Trägheit"
               ]
@@ -2433,6 +2653,7 @@
               "title": "Newtonsche Gesetze und deren Anwendungen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Newton"
               ]
@@ -2442,6 +2663,7 @@
               "title": "F = m·a",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Kraft"
               ]
@@ -2451,6 +2673,7 @@
               "title": "Wechselwirkungsgesetz",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Aktion"
               ]
@@ -2460,6 +2683,7 @@
               "title": "Anwendungen im Alltag",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Anwendung"
               ]
@@ -2476,6 +2700,7 @@
               "title": "Modellbildung und Simulation",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Modell",
                 "Simulation"
@@ -2486,6 +2711,7 @@
               "title": "Modellannahmen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Annahme"
               ]
@@ -2495,6 +2721,7 @@
               "title": "Grenzen von Modellen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Grenze"
               ]
@@ -2504,6 +2731,7 @@
               "title": "Simulation vs. Experiment",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Simulation"
               ]
@@ -2513,6 +2741,7 @@
               "title": "Numerische Schritte (Einblick)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Numerik"
               ]
@@ -2529,6 +2758,7 @@
               "title": "Gleichförmige Kreisbewegung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Kreis"
               ]
@@ -2538,6 +2768,7 @@
               "title": "Krummlinige Bewegungen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Kreisbewegung"
               ]
@@ -2547,6 +2778,7 @@
               "title": "Zentripetalkraft",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Zentripetal"
               ]
@@ -2556,6 +2788,7 @@
               "title": "Schräger Wurf",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Wurf"
               ]
@@ -2565,6 +2798,7 @@
               "title": "Bahnkurven",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Bahn"
               ]
@@ -2581,6 +2815,7 @@
               "title": "Postulate",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Relativität"
               ]
@@ -2590,6 +2825,7 @@
               "title": "Einblick in die Relativitätstheorie",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Relativität"
               ]
@@ -2599,6 +2835,7 @@
               "title": "Zeitdilatation",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Zeit"
               ]
@@ -2608,6 +2845,7 @@
               "title": "Längenkontraktion (Einblick)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Länge"
               ]
@@ -2617,6 +2855,7 @@
               "title": "c als Grenzgeschwindigkeit",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "c"
               ]
@@ -2633,6 +2872,7 @@
               "title": "Ladung und Feld",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Ladung"
               ]
@@ -2642,6 +2882,7 @@
               "title": "Elektrisches Feld",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Elektrisches Feld"
               ]
@@ -2651,6 +2892,7 @@
               "title": "Feldstärke E = F/q",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "E"
               ]
@@ -2660,6 +2902,7 @@
               "title": "Feldlinien",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Feldlinien"
               ]
@@ -2669,6 +2912,7 @@
               "title": "Potential und Spannung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Potential"
               ]
@@ -2685,6 +2929,7 @@
               "title": "Magnetfeldquellen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Magnet"
               ]
@@ -2694,6 +2939,7 @@
               "title": "Magnetisches Feld",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Magnetisches Feld"
               ]
@@ -2703,6 +2949,7 @@
               "title": "Feldlinien Magnet",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Feldlinien"
               ]
@@ -2712,6 +2959,7 @@
               "title": "Magnetfeld um Leiter",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Strom"
               ]
@@ -2721,6 +2969,7 @@
               "title": "Spulenfeld",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Spule"
               ]
@@ -2737,6 +2986,7 @@
               "title": "Teilchen im E-Feld",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "E-Feld"
               ]
@@ -2746,6 +2996,7 @@
               "title": "Geladene Teilchen in Feldern",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Lorentzkraft"
               ]
@@ -2755,6 +3006,7 @@
               "title": "Lorentzkraft",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Lorentz"
               ]
@@ -2764,6 +3016,7 @@
               "title": "Kreisbahn im B-Feld",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Bahn"
               ]
@@ -2773,6 +3026,7 @@
               "title": "Massenspektrometer (Einblick)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Anwendung"
               ]
@@ -2789,6 +3043,7 @@
               "title": "Magnetischer Fluss",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Fluss"
               ]
@@ -2798,6 +3053,7 @@
               "title": "Elektromagnetische Induktion",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Induktion"
               ]
@@ -2807,6 +3063,7 @@
               "title": "Lenzsche Regel",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Lenz"
               ]
@@ -2816,6 +3073,7 @@
               "title": "Generator",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Generator"
               ]
@@ -2825,6 +3083,7 @@
               "title": "Transformator (Einblick)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Transformator"
               ]
@@ -2841,6 +3100,7 @@
               "title": "Versuch planen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Versuch"
               ]
@@ -2850,6 +3110,7 @@
               "title": "Physikalisches Praktikum",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Praktikum"
               ]
@@ -2859,6 +3120,7 @@
               "title": "Messen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Messung"
               ]
@@ -2868,6 +3130,7 @@
               "title": "Auswertung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Auswertung"
               ]
@@ -2877,6 +3140,7 @@
               "title": "Messunsicherheit",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Unsicherheit"
               ]
@@ -2892,6 +3156,7 @@
               "title": "Physik des Fahrens",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Fahren"
               ]
@@ -2901,6 +3166,7 @@
               "title": "Bremsweg",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Bremsweg"
               ]
@@ -2910,6 +3176,7 @@
               "title": "Leitungsvorgänge in Halbleitern",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Halbleiter"
               ]
@@ -2919,6 +3186,7 @@
               "title": "pn-Übergang",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Diode"
               ]
@@ -2928,6 +3196,7 @@
               "title": "Messen und Modellieren",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Messen"
               ]
@@ -2937,6 +3206,7 @@
               "title": "Kalibrierung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Kalibrierung"
               ]
@@ -2969,6 +3239,7 @@
               "title": "Harmonische Schwingung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Schwingung"
               ]
@@ -2978,6 +3249,7 @@
               "title": "Mechanische und elektromagnetische Schwingungen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Schwingung"
               ]
@@ -2987,6 +3259,7 @@
               "title": "Pendel und Feder",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Pendel"
               ]
@@ -2996,6 +3269,7 @@
               "title": "LC-Schwingkreis",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "LC"
               ]
@@ -3005,6 +3279,7 @@
               "title": "Energie in Schwingungen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Energie"
               ]
@@ -3014,6 +3289,7 @@
               "title": "Resonanz",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Resonanz"
               ]
@@ -3030,6 +3306,7 @@
               "title": "Longitudinal und transversal",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Welle"
               ]
@@ -3039,6 +3316,7 @@
               "title": "Wellen als vielschichtige Naturerscheinung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Welle"
               ]
@@ -3048,6 +3326,7 @@
               "title": "c = λ·f",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Wellenlänge"
               ]
@@ -3057,6 +3336,7 @@
               "title": "Interferenz",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Interferenz"
               ]
@@ -3066,6 +3346,7 @@
               "title": "Beugung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Beugung"
               ]
@@ -3075,6 +3356,7 @@
               "title": "Stehende Wellen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Stehende Welle"
               ]
@@ -3091,6 +3373,7 @@
               "title": "Photoeffekt",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Photoeffekt"
               ]
@@ -3100,6 +3383,7 @@
               "title": "Grundlagen der Quantenphysik",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Quantenphysik"
               ]
@@ -3109,6 +3393,7 @@
               "title": "Photonen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Photon"
               ]
@@ -3118,6 +3403,7 @@
               "title": "Unschärferelation (Einblick)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Unschärfe"
               ]
@@ -3127,6 +3413,7 @@
               "title": "Dualismus",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Dualismus"
               ]
@@ -3143,6 +3430,7 @@
               "title": "Bohrsches Atommodell",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Bohr"
               ]
@@ -3152,6 +3440,7 @@
               "title": "Grundlagen der Atomphysik",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Atomphysik"
               ]
@@ -3161,6 +3450,7 @@
               "title": "Spektrallinien",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Spektrum"
               ]
@@ -3170,6 +3460,7 @@
               "title": "Energieniveaus",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Niveau"
               ]
@@ -3179,6 +3470,7 @@
               "title": "Anregung und Emission",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Emission"
               ]
@@ -3195,6 +3487,7 @@
               "title": "Aufbau der Kerne",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Kern"
               ]
@@ -3204,6 +3497,7 @@
               "title": "Eigenschaften der Atomkerne",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Kernphysik"
               ]
@@ -3213,6 +3507,7 @@
               "title": "Zerfallsarten",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Zerfall"
               ]
@@ -3222,6 +3517,7 @@
               "title": "Halbwertszeit",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Halbwertszeit"
               ]
@@ -3231,6 +3527,7 @@
               "title": "Bindungsenergie (Einblick)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Bindung"
               ]
@@ -3240,6 +3537,7 @@
               "title": "Spaltung und Fusion",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Spaltung"
               ]
@@ -3256,6 +3554,7 @@
               "title": "Ideales Gas",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Gas"
               ]
@@ -3265,6 +3564,7 @@
               "title": "Thermodynamik",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Thermodynamik"
               ]
@@ -3274,6 +3574,7 @@
               "title": "1. Hauptsatz",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Hauptsatz"
               ]
@@ -3283,6 +3584,7 @@
               "title": "2. Hauptsatz (Einblick)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Entropie"
               ]
@@ -3292,6 +3594,7 @@
               "title": "Zustandsänderungen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Prozess"
               ]
@@ -3307,6 +3610,7 @@
               "title": "Deterministisches Chaos",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Chaos"
               ]
@@ -3316,6 +3620,7 @@
               "title": "Anfangsbedingungen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Chaos"
               ]
@@ -3325,6 +3630,7 @@
               "title": "Kinetische Gastheorie",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Gastheorie"
               ]
@@ -3334,6 +3640,7 @@
               "title": "Druck aus Teilchenmodell",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Druck"
               ]
@@ -3343,6 +3650,7 @@
               "title": "Anwendungen der Physik",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Anwendung"
               ]
@@ -3352,6 +3660,7 @@
               "title": "Technische Beispiele",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
               "keywords": [
                 "Technik"
               ]
@@ -3362,5 +3671,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "6e4b5022"
+  "contentHash": "7f073df0"
 }

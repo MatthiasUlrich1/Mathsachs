@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.2.0',
+    version: '2.3.0',
     changelog:
-      'Schulübliche Physik-Aufgaben statt Meta-Fragen; K6 Licht/Schatten interaktiv (Lampe zum Schatten, Lichtstrahl auf Kästchenpapier).',
+      'Alle Themen vorerst gesperrt (released:false); Freigabe über Pack-Update. Schulübliche Optik-Fixes.',
     official,
     extras: [],
   }

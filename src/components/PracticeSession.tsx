@@ -7,6 +7,7 @@ import { AnswerInput } from './AnswerInput'
 import { initTaskInput, TaskInteractive, TaskVisual } from './TaskMedia'
 
 const TARGET_TASKS_PER_ROUND = 10
+const PHYSIK_TASKS_PER_ROUND = 5
 
 interface Props {
   topic: Topic
@@ -20,9 +21,8 @@ type Phase = 'answering' | 'correct' | 'wrong'
 
 export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }: Props) {
   const [rng] = useState(() => createRng(timeSeed()))
-  const [tasks] = useState(() =>
-    buildUniqueTaskRound(topic.generate, rng, TARGET_TASKS_PER_ROUND),
-  )
+  const targetTasks = topic.id.startsWith('ph-') ? PHYSIK_TASKS_PER_ROUND : TARGET_TASKS_PER_ROUND
+  const [tasks] = useState(() => buildUniqueTaskRound(topic.generate, rng, targetTasks))
   const totalTasks = tasks.length
   const [index, setIndex] = useState(1)
   const task = tasks[index - 1]

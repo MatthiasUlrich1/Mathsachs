@@ -44,7 +44,7 @@ const schatten: Topic['generate'] = mixedVariants(
       solution: correct,
       explanation:
         'Licht breitet sich geradlinig aus. Der Schatten liegt auf der dem Licht abgewandten Seite des Körpers.',
-      visualContent: lightShadowSvg({ lampLeft, shadowSide }),
+      visualContent: lightShadowSvg({ lampLeft, shadowSide, showShadow: false }),
       instruction: 'Tippe die Schattenseite:',
     })
   },
@@ -189,6 +189,111 @@ const spiegel: Topic['generate'] = mixedVariants(
   },
 )
 
+/** LB1 — Brechung und Prisma (nicht Spiegelung!) */
+const brechung: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      {
+        q: 'Licht geht von Luft in Glas. Was passiert mit dem Strahl am Lot?',
+        correct: 'Er wird zum Lot hin gebrochen',
+        wrong: [
+          'Er wird vom Lot weg gebrochen',
+          'Einfallswinkel = Ausfallswinkel wie am Spiegel',
+          'Er wird immer totalreflektiert',
+        ],
+      },
+      {
+        q: 'Licht geht von Glas in Luft. Was passiert typischerweise?',
+        correct: 'Der Strahl wird vom Lot weg gebrochen',
+        wrong: [
+          'Der Strahl wird immer zum Lot hin gebrochen',
+          'Es gibt nie Brechung',
+          'Nur Spiegelung ohne Brechung',
+        ],
+      },
+      {
+        q: 'Wozu dient das Lot bei der Brechung?',
+        correct: 'Winkel werden gegen die Senkrechte zur Grenzfläche gemessen',
+        wrong: [
+          'Es ist der Lichtstrahl selbst',
+          'Es misst nur die Temperatur',
+          'Es ersetzt das Prisma',
+        ],
+      },
+      {
+        q: 'Ein Prisma aus Glas lenkt weißes Licht ab und …',
+        correct: 'kann Spektralfarben erzeugen (Dispersion)',
+        wrong: [
+          'löscht immer alles Licht',
+          'wirkt nur wie ein ebener Spiegel',
+          'ändert die Lichtgeschwindigkeit nicht relativ zu Luft',
+        ],
+      },
+      {
+        q: 'Optisch dichteres Medium bedeutet (qualitativ):',
+        correct: 'Licht ist dort langsamer, Brechung zum Lot beim Eintritt',
+        wrong: [
+          'Licht ist immer schneller',
+          'Es gibt keine Grenzfläche',
+          'Nur bei Spiegeln relevant',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation:
+        'Brechung: Übergang zwischen Medien. Luft→Glas: zum Lot; Glas→Luft: vom Lot. Prisma: Ablenkung + oft Dispersion.',
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (_rng) => {
+    return multiSelectTask({
+      question: 'Was gehört zur Brechung am Prisma? (mehrere möglich)',
+      choices: [
+        'Strahl wird an den Grenzflächen gebrochen',
+        'Ablenkung hängt vom Prismenwinkel ab',
+        'Weißes Licht kann in Farben zerlegt werden',
+        'Einfallswinkel = Ausfallswinkel wie am Spiegel',
+        'Licht braucht kein Lot zur Winkelmessung',
+      ],
+      correct: [
+        'Strahl wird an den Grenzflächen gebrochen',
+        'Ablenkung hängt vom Prismenwinkel ab',
+        'Weißes Licht kann in Farben zerlegt werden',
+      ],
+      solution: 'Brechung an Grenzflächen, Ablenkung, Dispersion',
+      explanation:
+        'Am Prisma gilt Brechung (nicht das Spiegelgesetz Einfall = Ausfall).',
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+    })
+  },
+  (rng) => {
+    const items = [
+      { label: 'Luft (dünner)', value: 1 },
+      { label: 'Grenzfläche mit Lot', value: 2 },
+      { label: 'Glas (dichter), zum Lot gebrochen', value: 3 },
+    ]
+    const ordered = [...items]
+    const shuffled = [...items]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = randInt(rng, 0, i)
+      ;[shuffled[i], shuffled[j]] = [shuffled[j]!, shuffled[i]!]
+    }
+    const correctOrder = ordered.map((row) => shuffled.findIndex((it) => it.value === row.value))
+    return dragDropSortTask({
+      question: 'Ordne den Weg bei Brechung Luft → Glas.',
+      items: shuffled,
+      correctOrder,
+      solution: ordered.map((r) => r.label).join(' → '),
+      explanation: 'Vom dünneren Medium zur Grenzfläche, dann im dichteren Medium zum Lot hin.',
+    })
+  },
+)
+
 const ausbreitung: Topic['generate'] = mixedVariants(
   (rng) => {
     const cases = [
@@ -289,15 +394,16 @@ const ausbreitung: Topic['generate'] = mixedVariants(
       y: target.y,
       xRange: [0, 6],
       yRange: [0, 5],
-      solution: `(${target.x}|${target.y})`,
-      explanation: `Geradlinige Ausbreitung: von (${ax}|${y}) über (${through.x}|${through.y}) nach (${target.x}|${target.y}).`,
+      solution: 'Jeder Gitterpunkt auf der Verlängerung hinter dem Spalt (gleiche Richtung)',
+      explanation: `Geradlinige Ausbreitung: von (${ax}|${y}) durch (${through.x}|${through.y}) weiter in dieselbe Richtung — Abstand egal.`,
       visualContent: lightRayHintSvg({ from: { x: ax, y }, through }),
       markers: [
         { x: ax, y, label: 'Lampe', color: '#f59e0b' },
         { x: through.x, y: through.y, label: 'Spalt', color: '#64748b' },
       ],
       guide: { from: { x: ax, y }, to: through },
-      solutionRay: { from: { x: ax, y }, to: target },
+      solutionRay: { from: { x: ax, y }, to: { x: 6, y } },
+      acceptForwardRay: { from: { x: ax, y }, through },
       instruction: 'Tippe einen Punkt auf dem Lichtstrahl:',
     })
   },
@@ -421,15 +527,22 @@ const lichtstrahl: Topic['generate'] = mixedVariants(
       y: cy,
       xRange: [0, 6],
       yRange: [0, 5],
-      solution: `(${cx}|${cy})`,
-      explanation: `Geradlinige Ausbreitung: von (${ax}|${ay}) über (${bx}|${by}) nach (${cx}|${cy}).`,
+      solution: 'Jeder Gitterpunkt hinter dem Spalt in derselben Richtung',
+      explanation: `Geradlinig von (${ax}|${ay}) durch (${bx}|${by}) — jeder Punkt auf der Verlängerung zählt.`,
       visualContent: lightRayHintSvg({ from: { x: ax, y: ay }, through: { x: bx, y: by } }),
       markers: [
         { x: ax, y: ay, label: 'Lampe', color: '#f59e0b' },
         { x: bx, y: by, label: 'Spalt', color: '#64748b' },
       ],
       guide: { from: { x: ax, y: ay }, to: { x: bx, y: by } },
-      solutionRay: { from: { x: ax, y: ay }, to: { x: cx, y: cy } },
+      solutionRay: {
+        from: { x: ax, y: ay },
+        to: {
+          x: Math.min(6, bx + 3 * Math.sign(dx || 1)),
+          y: Math.min(5, Math.max(0, by + 3 * Math.sign(dy))),
+        },
+      },
+      acceptForwardRay: { from: { x: ax, y: ay }, through: { x: bx, y: by } },
       instruction: 'Tippe einen Punkt auf dem Lichtstrahl:',
     })
   },
@@ -1256,6 +1369,7 @@ export const PHYSIK_K6_GENERATORS: Record<string, Topic['generate']> = {
   'ph-k6-lb1-lampenposition': lampenposition,
   'ph-k6-lb1-lichtstrahl': lichtstrahl,
   'ph-k6-lb1-spiegel': spiegel,
+  'ph-k6-lb1-brechung': brechung,
   'ph-k6-lb1-ausbreitung': ausbreitung,
   'ph-k6-lb2-dichte': dichte,
   'ph-k6-lb2-geschwindigkeit': geschwindigkeit,

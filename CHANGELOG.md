@@ -9,6 +9,19 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.9] – 2026-09-16
+
+### Neu
+- **Physik-Freigabe:** Alle Physik-Themen starten als **gesperrt** (`released: false`).
+  Schüler sehen „Noch keine Aufgaben enthalten“. Freigabe später per Pack-Update
+  ohne App-Build. Lehrer mit **Entwicklercode** sehen gesperrte Themen inkl.
+  Themen-ID (z. B. ID 6991) und Status freigegeben/gesperrt.
+
+### Verbessert
+- Schatten-MC ohne vorgezeichneten Schatten; Lichtstrahl akzeptiert jeden Punkt
+  in der richtigen Richtung; Brechung/Prisma mit eigenen Aufgaben; Physik-Runden
+  max. 5 Aufgaben. Pack **2.3.0**.
+
 ## [0.27.8] – 2026-09-16
 
 ### Verbessert

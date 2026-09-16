@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import type { Grade, Topic } from '../curriculum/types'
+import { formatTopicContentId } from '../curriculum/contentId'
 import { TeacherExtraBadge } from './TeacherExtraBadge'
 
 interface Props {
   grade: Grade
+  /** Lehrer mit Entwicklercode: auch gesperrte Themen üben + ID sehen. */
+  curriculumDevPreview?: boolean
   onPractice: (topic: Topic, areaTitle: string) => void
   onWorksheet: (topic: Topic, areaTitle: string) => void
 }
@@ -22,18 +25,28 @@ function DifficultyBadge({ level }: { level: 1 | 2 | 3 }) {
   )
 }
 
+function topicUnavailable(topic: Topic, curriculumDevPreview: boolean): boolean {
+  if (topic.outlineOnly) return true
+  if (topic.released === false && !curriculumDevPreview) return true
+  return false
+}
+
 function TopicRow({
   topic,
   areaTitle,
+  curriculumDevPreview = false,
   onPractice,
   onWorksheet,
 }: {
   topic: Topic
   areaTitle: string
+  curriculumDevPreview?: boolean
   onPractice: (topic: Topic, areaTitle: string) => void
   onWorksheet: (topic: Topic, areaTitle: string) => void
 }) {
   const [fwOpen, setFwOpen] = useState(false)
+  const unavailable = topicUnavailable(topic, curriculumDevPreview)
+  const released = topic.released !== false
 
   return (
     <li className="topic">
@@ -42,10 +55,22 @@ function TopicRow({
           {topic.title}
           <TeacherExtraBadge source={topic.source} />
           {topic.difficulty != null && <DifficultyBadge level={topic.difficulty} />}
+          {curriculumDevPreview && (
+            <>
+              <span className="topic__content-id" title={topic.id}>
+                {formatTopicContentId(topic.id)}
+              </span>
+              <span
+                className={`topic__release-badge topic__release-badge--${released ? 'ok' : 'locked'}`}
+              >
+                {released ? 'freigegeben' : 'gesperrt'}
+              </span>
+            </>
+          )}
         </span>
         <span className="topic__actions">
-          {topic.outlineOnly ? (
-            <span className="topic__outline">noch keine Aufgaben</span>
+          {unavailable ? (
+            <span className="topic__outline">Noch keine Aufgaben enthalten</span>
           ) : (
             <>
               <button
@@ -105,7 +130,12 @@ function TopicRow({
   )
 }
 
-export function CurriculumBrowser({ grade, onPractice, onWorksheet }: Props) {
+export function CurriculumBrowser({
+  grade,
+  curriculumDevPreview = false,
+  onPractice,
+  onWorksheet,
+}: Props) {
   const [open, setOpen] = useState<Record<string, boolean>>({
     [grade.areas[0]?.id ?? '']: true,
   })
@@ -139,6 +169,7 @@ export function CurriculumBrowser({ grade, onPractice, onWorksheet }: Props) {
                     key={topic.id}
                     topic={topic}
                     areaTitle={area.title}
+                    curriculumDevPreview={curriculumDevPreview}
                     onPractice={onPractice}
                     onWorksheet={onWorksheet}
                   />

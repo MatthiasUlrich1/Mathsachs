@@ -95,6 +95,10 @@ export interface UserData {
   preferredSubject?: string
   /** Epoch ms when preferredSubject was last set (last-write-wins on merge). */
   preferredSubjectAt?: number
+  /**
+   * Lehrer: Entwickler-Vorschau für noch nicht freigegebene Lehrplan-Themen.
+   */
+  curriculumDevPreview?: boolean
 }
 
 /** A class code this user created. Ownership is local, not on the Worker. */

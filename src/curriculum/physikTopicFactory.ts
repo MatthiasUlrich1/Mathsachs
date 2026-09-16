@@ -364,7 +364,32 @@ type PhysicsBank = {
 function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
   const lower = `${topicId} ${title}`.toLowerCase()
 
-  if (/licht|optik|schatten|spiegel|strahl|auge|farbe|linse|brechung/.test(lower)) {
+  if (/brechung|prisma|linse|optische.?dichte|snell/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Luft → Glas: Der Lichtstrahl wird …',
+          correct: 'zum Lot hin gebrochen',
+          wrong: ['vom Lot weg gebrochen', 'nie gebrochen', 'nur reflektiert wie am Spiegel'],
+        },
+        {
+          q: 'Glas → Luft: Der Lichtstrahl wird …',
+          correct: 'vom Lot weg gebrochen',
+          wrong: ['immer zum Lot hin gebrochen', 'immer total absorbiert', 'zu Schall'],
+        },
+        {
+          q: 'Ein Prisma kann weißes Licht …',
+          correct: 'in Spektralfarben zerlegen (Dispersion)',
+          wrong: ['nur spiegeln wie ein ebener Spiegel', 'löschen', 'in Strom umwandeln'],
+        },
+      ],
+      sortItems: ['Einfall in Luft', 'Brechung an Grenzfläche', 'Verlauf im dichteren Medium'],
+      sortQuestion: 'Ordne den Ablauf bei Brechung Luft → Glas.',
+      sortExplanation: 'Einfall, Brechung am Lot, Weiterlaufen im Glas.',
+    }
+  }
+
+  if (/licht|optik|schatten|spiegel|strahl|auge|farbe/.test(lower)) {
     return {
       cases: [
         {

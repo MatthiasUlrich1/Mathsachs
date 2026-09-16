@@ -5,6 +5,7 @@ const topic = (id: string, title: string, keywords?: string[]): PackTopic => ({
   title,
   pointsPerTask: 10,
   hint: 'Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.',
+  released: false,
   ...(keywords?.length ? { keywords } : {}),
 })
 

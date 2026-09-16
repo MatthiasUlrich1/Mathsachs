@@ -31,12 +31,13 @@ describe('Physik Klasse 6 generators', () => {
     }
   })
 
-  it('hydrates Klasse 6 without outlineOnly topics', async () => {
+  it('hydrates Klasse 6 with content IDs and unreleased Physik topics', async () => {
     const grades = await hydratePackGrades(buildGymSachsenPhysikPack())
     const k6 = grades.find((g) => g.id === 'physik-klasse-6')
     expect(k6).toBeTruthy()
     const topics = k6!.areas.flatMap((a) => a.topics)
-    expect(topics.every((t) => !t.outlineOnly)).toBe(true)
+    expect(topics.every((t) => t.released === false)).toBe(true)
+    expect(topics.every((t) => typeof t.contentId === 'number')).toBe(true)
     expect(topics.some((t) => t.id === 'ph-k6-lb1-schatten')).toBe(true)
   })
 

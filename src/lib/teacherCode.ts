@@ -8,6 +8,14 @@ import { isTeacherRole, type UserRole } from './roles'
  */
 export const TEACHER_CODE = '88MXDZ92'
 
+/**
+ * Entwickler-Vorschau: Lehrer sehen auch noch nicht freigegebene Curriculum-Themen
+ * (mit Themen-ID und Status). Nicht der öffentliche Lehrercode.
+ */
+export const DEVELOPER_CODE = 'MSDEV815'
+
+export const DEVELOPER_CODE_WRONG = 'Der Entwicklercode ist ungültig.'
+
 export const TEACHER_CODE_REQUEST_LABEL = 'Lehrercode anfordern'
 
 export const TEACHER_CODE_REQUEST_SUBJECT =
@@ -30,6 +38,10 @@ export function normalizeTeacherCode(raw: string): string {
 
 export function matchesTeacherCode(raw: string): boolean {
   return normalizeTeacherCode(raw) === TEACHER_CODE
+}
+
+export function matchesDeveloperCode(raw: string): boolean {
+  return normalizeTeacherCode(raw) === normalizeTeacherCode(DEVELOPER_CODE)
 }
 
 export function formatTeacherCode(raw: string = TEACHER_CODE): string {

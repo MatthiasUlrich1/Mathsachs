@@ -108,6 +108,13 @@ export interface Topic {
   /** Official Lerninhalt without a practice generator yet. */
   outlineOnly?: boolean
   /**
+   * Freigabe für Schüler/Eltern. false = vorbereitet, aber gesperrt
+   * („Noch keine Aufgaben enthalten“), außer Entwickler-Vorschau.
+   */
+  released?: boolean
+  /** Stable numeric ID for Freigabe-Feedback (z. B. „ID 8545“). */
+  contentId?: number
+  /**
    * Fachliches Basiswissen zu diesem Thema (eigene Formulierung).
    * Wird dem Lernenden als Wissensbox angezeigt.
    */

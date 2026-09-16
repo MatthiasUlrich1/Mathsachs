@@ -6,6 +6,7 @@ import {
 } from '../lib/geometrySvg'
 import { pick, randInt, type Rng } from '../lib/rng'
 import { bundledCurricula } from './bundled'
+import { topicContentId } from './contentId'
 import {
   choicePickTask,
   coordinateClickTask,
@@ -656,6 +657,8 @@ export function topicFromPack(
     keywords: topic.keywords,
     source: 'official',
     outlineOnly: playable ? undefined : true,
+    released: topic.released ?? true,
+    contentId: topicContentId(topic.id),
     generate: generate ?? outlineGenerate(topic.title),
   }
 }

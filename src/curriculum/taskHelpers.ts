@@ -391,6 +391,27 @@ interface CoordinateClickTaskInput {
   guide?: { from: { x: number; y: number }; to: { x: number; y: number } }
   /** Ray drawn after checking (Auflösung). */
   solutionRay?: { from: { x: number; y: number }; to: { x: number; y: number } }
+  /**
+   * If set, any lattice point on the forward ray from→through (t ≥ 1) is correct,
+   * not only the sample point (x|y).
+   */
+  acceptForwardRay?: { from: { x: number; y: number }; through: { x: number; y: number } }
+}
+
+/** True if p lies on the half-line starting at through, in direction from→through (incl. through). */
+export function isOnForwardRay(
+  from: { x: number; y: number },
+  through: { x: number; y: number },
+  p: { x: number; y: number },
+): boolean {
+  const dx = through.x - from.x
+  const dy = through.y - from.y
+  if (dx === 0 && dy === 0) return p.x === from.x && p.y === from.y
+  const px = p.x - from.x
+  const py = p.y - from.y
+  if (dx * py - dy * px !== 0) return false
+  const t = Math.abs(dx) >= Math.abs(dy) ? px / dx : py / dy
+  return Number.isFinite(t) && t >= 1 - 1e-9
 }
 
 /** Place a point on a coordinate grid by clicking (snaps to lattice). */
@@ -417,17 +438,23 @@ export const coordinateClickTask = (input: CoordinateClickTaskInput): Task => {
       },
     },
     check: (answer: UserInput) => {
-      if (answer.kind === 'coordinateClick') {
-        return answer.x === input.x && answer.y === input.y
+      const point =
+        answer.kind === 'coordinateClick'
+          ? { x: answer.x, y: answer.y }
+          : answer.kind === 'value'
+            ? (() => {
+                const raw = answer.value.trim().toLowerCase()
+                const m =
+                  raw.match(/(-?\d+)\s*[;|,]\s*(-?\d+)/) ||
+                  raw.match(/\(\s*(-?\d+)\s*[|;,]\s*(-?\d+)\s*\)/)
+                return m ? { x: +m[1]!, y: +m[2]! } : null
+              })()
+            : null
+      if (!point || !Number.isFinite(point.x) || !Number.isFinite(point.y)) return false
+      if (input.acceptForwardRay) {
+        return isOnForwardRay(input.acceptForwardRay.from, input.acceptForwardRay.through, point)
       }
-      if (answer.kind === 'value') {
-        const raw = answer.value.trim().toLowerCase()
-        const m = raw.match(/(-?\d+)\s*[;|,]\s*(-?\d+)/) ||
-          raw.match(/\(\s*(-?\d+)\s*[|;,]\s*(-?\d+)\s*\)/)
-        if (!m) return false
-        return +m[1] === input.x && +m[2] === input.y
-      }
-      return false
+      return point.x === input.x && point.y === input.y
     },
   }
 }
