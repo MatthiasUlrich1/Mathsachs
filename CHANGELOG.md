@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.6] – 2026-09-16
+
+### Behoben
+- **Physik K6-Tests**: Generator-Registrierung prüft jetzt Factory-Themen
+  (`resolvePhysikGenerate`) statt nur handgeschriebene `PHYSIK_K6_GENERATORS`
+  — behebt CI-Fehler der Pre-Release 0.27.5.
+
 ## [0.27.5] – 2026-09-16
 
 ### Neu

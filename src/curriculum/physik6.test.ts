@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { createRng } from '../lib/rng'
 import { emptyInput } from './types'
 import { PHYSIK_K6_GENERATORS } from './physik6'
-import { isPlayablePhysikTopic } from './physikGenerators'
+import { isPlayablePhysikTopic, resolvePhysikGenerate } from './physikGenerators'
 import { buildGymSachsenPhysikPack } from './physikGymPack'
 import { hydratePackGrades } from './hydrate'
 
@@ -11,10 +11,10 @@ describe('Physik Klasse 6 generators', () => {
     const k6 = buildGymSachsenPhysikPack().official.find((g) => g.id === 'physik-klasse-6')
     expect(k6).toBeTruthy()
     const ids = k6!.areas.flatMap((a) => a.topics.map((t) => t.id))
-    expect(ids.length).toBeGreaterThan(8)
+    expect(ids.length).toBeGreaterThan(20)
     for (const id of ids) {
       expect(isPlayablePhysikTopic(id), id).toBe(true)
-      expect(PHYSIK_K6_GENERATORS[id]).toBeTypeOf('function')
+      expect(resolvePhysikGenerate(id), id).toBeTypeOf('function')
     }
   })
 
