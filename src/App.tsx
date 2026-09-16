@@ -202,6 +202,16 @@ export default function App() {
     }
   }, [])
 
+  // Hydrate role + preferred Fach once storage is ready (subscribe alone can miss StrictMode).
+  useEffect(() => {
+    if (!storageReady || !activeUser) return
+    if (!listUsers().includes(activeUser)) return
+    setUserRoleState(getUserRole(activeUser))
+    const subject = getPreferredSubject(activeUser)
+    setPreferredSubjectState(subject)
+    setBrowseSubject(subject)
+  }, [storageReady, activeUser])
+
   useEffect(() => {
     if (!storageReady) return
     let cancelled = false

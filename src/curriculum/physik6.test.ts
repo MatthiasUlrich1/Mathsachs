@@ -39,4 +39,24 @@ describe('Physik Klasse 6 generators', () => {
     expect(topics.every((t) => !t.outlineOnly)).toBe(true)
     expect(topics.some((t) => t.id === 'ph-k6-lb1-schatten')).toBe(true)
   })
+
+  it('uses interactive variants for Dichte, Stromkreis, Farben, Lichtstrahl and Aggregate', () => {
+    const need = {
+      'ph-k6-lb2-dichte': new Set(['paramSlider']),
+      'ph-k6-lb4-stromkreis': new Set(['multiSelect']),
+      'ph-k6-lbw-farben': new Set(['multiSelect']),
+      'ph-k6-lb1-lichtstrahl': new Set(['coordinateClick']),
+      'ph-k6-lb3-aggregate': new Set(['dragDropSort']),
+    } as const
+    for (const [id, kinds] of Object.entries(need)) {
+      const found = new Set<string>()
+      for (let seed = 1; seed <= 80; seed++) {
+        const task = PHYSIK_K6_GENERATORS[id]!(createRng(seed))
+        if (task.interactive?.type) found.add(task.interactive.type)
+      }
+      for (const kind of kinds) {
+        expect(found.has(kind), `${id} missing ${kind}`).toBe(true)
+      }
+    }
+  })
 })

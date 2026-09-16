@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.3] – 2026-09-16
+
+### Behoben
+- **Bevorzugtes Fach im Lehrerprofil**: wird nach Neustart wiederhergestellt; erneutes
+  Umstellen bleibt erhalten (Last-Write-Wins mit Zeitstempel).
+- **CSS**: verwaiste Regeln bei Klassenklausur-UI (Build-Warnung).
+
+### Neu
+- **Physik K6**: Spiegelweg tippen; Messreihe (Zeiten/Temperaturen) sortieren;
+  Dichte-Schieberegler; Stromkreis- und Farbfilter-Mehrfachauswahl (Pack 1.3.0).
+
 ## [0.27.2] – 2026-09-16
 
 ### Neu

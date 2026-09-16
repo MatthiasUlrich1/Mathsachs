@@ -93,6 +93,8 @@ export interface UserData {
    * Filters Lehrpläne / Themen / Klausur erstellen to that Fach.
    */
   preferredSubject?: string
+  /** Epoch ms when preferredSubject was last set (last-write-wins on merge). */
+  preferredSubjectAt?: number
 }
 
 /** A class code this user created. Ownership is local, not on the Worker. */
@@ -752,12 +754,7 @@ export const mergeUserData = (a: UserData | undefined, b: UserData | undefined):
     parseCompletedClassExamIds(b.completedClassExamIds),
   )
   const role = isUserRole(b.role) ? b.role : isUserRole(a.role) ? a.role : undefined
-  const preferredSubject =
-    typeof b.preferredSubject === 'string' && b.preferredSubject.trim()
-      ? b.preferredSubject.trim()
-      : typeof a.preferredSubject === 'string' && a.preferredSubject.trim()
-        ? a.preferredSubject.trim()
-        : undefined
+  const preferred = mergePreferredSubject(a, b)
   return {
     name: a.name || b.name,
     created: Math.min(a.created, b.created),
@@ -779,8 +776,32 @@ export const mergeUserData = (a: UserData | undefined, b: UserData | undefined):
       : {}),
     ...(completedClassExamIds.length > 0 ? { completedClassExamIds } : {}),
     ...(role ? { role } : {}),
-    ...(preferredSubject ? { preferredSubject } : {}),
+    ...preferred,
   }
+}
+
+/** Last-write-wins for preferred Fach (timestamp; equal/missing → incoming `b`). */
+export const mergePreferredSubject = (
+  a: UserData | undefined,
+  b: UserData | undefined,
+): Pick<UserData, 'preferredSubject' | 'preferredSubjectAt'> => {
+  const trim = (v: unknown) =>
+    typeof v === 'string' && v.trim() ? v.trim() : undefined
+  const at = (v: unknown) =>
+    typeof v === 'number' && Number.isFinite(v) ? v : 0
+  const aSub = trim(a?.preferredSubject)
+  const bSub = trim(b?.preferredSubject)
+  const aAt = at(a?.preferredSubjectAt)
+  const bAt = at(b?.preferredSubjectAt)
+  if (aSub && bSub) {
+    if (aAt > bAt) {
+      return { preferredSubject: aSub, ...(aAt ? { preferredSubjectAt: aAt } : {}) }
+    }
+    return { preferredSubject: bSub, ...(bAt ? { preferredSubjectAt: bAt } : {}) }
+  }
+  if (bSub) return { preferredSubject: bSub, ...(bAt ? { preferredSubjectAt: bAt } : {}) }
+  if (aSub) return { preferredSubject: aSub, ...(aAt ? { preferredSubjectAt: aAt } : {}) }
+  return {}
 }
 
 /** Union users and merge scores by user/topic. Same rules as electron/sharedStore.cjs. */

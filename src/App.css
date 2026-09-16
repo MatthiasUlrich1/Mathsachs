@@ -175,12 +175,9 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 6px;
-}
   width: 100%;
   max-width: 100%;
   font-size: 0.8rem;
-}
-  align-items: center;
 }
 
 .class-exam-inbox__new {

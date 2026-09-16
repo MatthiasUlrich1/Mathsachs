@@ -204,22 +204,85 @@ const lichtstrahl: Topic['generate'] = mixedVariants(
       instruction: 'Tippe den Punkt auf dem Spiegel:',
     })
   },
+  (rng) => {
+    // Spiegelweg: Einfall = Ausfall. Spiegel = x-Achse. Tippe den Auftreffpunkt.
+    const hitX = randInt(rng, 2, 4)
+    const ax = pick(rng, [0, 1])
+    const ay = pick(rng, [3, 4, 5])
+    const rx = 2 * hitX - ax
+    const ry = ay
+    if (rx < 0 || rx > 6) {
+      // Fallback: senkrechter Auftreffpunkt
+      return coordinateClickTask({
+        question: `Ein Lichtstrahl kommt von (${hitX}|${ay}) senkrecht auf den Spiegel (x-Achse). Tippe den Auftreffpunkt.`,
+        x: hitX,
+        y: 0,
+        xRange: [0, 6],
+        yRange: [0, 5],
+        solution: `(${hitX}|0)`,
+        explanation: `Senkrecht: Auftreffpunkt (${hitX}|0).`,
+        instruction: 'Tippe den Punkt auf dem Spiegel:',
+      })
+    }
+    return coordinateClickTask({
+      question: `Spiegel in der x-Achse. Licht geht von (${ax}|${ay}) zum Spiegel und wird nach (${rx}|${ry}) reflektiert (Einfall = Ausfall). Tippe den Auftreffpunkt.`,
+      x: hitX,
+      y: 0,
+      xRange: [0, 6],
+      yRange: [0, 5],
+      solution: `(${hitX}|0)`,
+      explanation: `Mittelpunkt auf dem Spiegel zwischen Lampe und Bild: x = (${ax} + ${rx}) / 2 = ${hitX}. Auftreffpunkt (${hitX}|0).`,
+      visualContent: lightRayHintSvg({
+        from: { x: ax, y: ay },
+        through: { x: hitX, y: 0 },
+        label: `Spiegelweg: (${ax}|${ay}) → Spiegel → (${rx}|${ry}). Tippe den Auftreffpunkt.`,
+      }),
+      instruction: 'Tippe den Auftreffpunkt auf dem Spiegel:',
+    })
+  },
 )
 
 /** LB2 — Körper, Masse, Bewegung */
-const dichte: Topic['generate'] = (rng) => {
-  const m = pick(rng, [20, 40, 50, 60, 80, 100])
-  const v = pick(rng, [2, 4, 5, 8, 10])
-  const rho = m / v
-  return valueTask({
-    question: `Ein Körper hat die Masse m = ${m} g und das Volumen V = ${v} cm³. Berechne die Dichte ρ = m / V.`,
-    answerKind: rho % 1 === 0 ? 'integer' : 'decimal',
-    unit: 'g/cm³',
-    value: rho,
-    solution: `${rho} g/cm³`,
-    explanation: `ρ = m / V = ${m} / ${v} = ${rho} g/cm³.`,
-  })
-}
+const dichte: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const m = pick(rng, [20, 40, 50, 60, 80, 100])
+    const v = pick(rng, [2, 4, 5, 8, 10])
+    const rho = m / v
+    return valueTask({
+      question: `Ein Körper hat die Masse m = ${m} g und das Volumen V = ${v} cm³. Berechne die Dichte ρ = m / V.`,
+      answerKind: rho % 1 === 0 ? 'integer' : 'decimal',
+      unit: 'g/cm³',
+      value: rho,
+      solution: `${rho} g/cm³`,
+      explanation: `ρ = m / V = ${m} / ${v} = ${rho} g/cm³.`,
+    })
+  },
+  (rng) => {
+    const pairs = [
+      { m: 40, v: 5 },
+      { m: 60, v: 5 },
+      { m: 80, v: 4 },
+      { m: 100, v: 5 },
+      { m: 50, v: 2 },
+      { m: 20, v: 4 },
+    ] as const
+    const { m, v } = pick(rng, [...pairs])
+    const rho = m / v
+    const startM = m === 40 ? 60 : 40
+    const startV = v === 5 ? 2 : 5
+    return paramSliderTask({
+      question: `Stelle Masse und Volumen so ein, dass ρ = m / V = ${rho} g/cm³ gilt (m = ${m} g, V = ${v} cm³).`,
+      params: [
+        { id: 'm', label: 'Masse m (g)', min: 10, max: 100, step: 10, start: startM },
+        { id: 'v', label: 'Volumen V (cm³)', min: 1, max: 10, step: 1, start: startV },
+      ],
+      correct: { m, v },
+      solution: `m = ${m} g, V = ${v} cm³ → ρ = ${rho} g/cm³`,
+      explanation: `ρ = m / V = ${m} / ${v} = ${rho} g/cm³. Beide Werte müssen passen.`,
+      instruction: 'Schieberegler auf die geforderten Werte:',
+    })
+  },
+)
 
 const geschwindigkeit: Topic['generate'] = (rng) => {
   const v = pick(rng, [2, 3, 4, 5, 6, 8, 10])
@@ -357,29 +420,84 @@ const aggregate: Topic['generate'] = mixedVariants(
       solution: 'Eis schmilzt → Raumtemperatur → Wasser kocht',
       explanation: '0 °C (Schmelzen) < ~20 °C < 100 °C (Sieden).',
     }),
+  (rng) => {
+    const ordered = pick(rng, [
+      [
+        { label: 't = 0 min: 18 °C', value: 0 },
+        { label: 't = 4 min: 32 °C', value: 4 },
+        { label: 't = 8 min: 45 °C', value: 8 },
+      ],
+      [
+        { label: 't = 0 min: 5 °C', value: 0 },
+        { label: 't = 3 min: 12 °C', value: 3 },
+        { label: 't = 6 min: 20 °C', value: 6 },
+      ],
+      [
+        { label: 't = 1 min: 22 °C', value: 1 },
+        { label: 't = 5 min: 35 °C', value: 5 },
+        { label: 't = 9 min: 48 °C', value: 9 },
+      ],
+    ])
+    const items = [...ordered]
+    for (let i = items.length - 1; i > 0; i--) {
+      const j = randInt(rng, 0, i)
+      ;[items[i], items[j]] = [items[j]!, items[i]!]
+    }
+    const correctOrder = ordered.map((row) => items.findIndex((it) => it.value === row.value))
+    return dragDropSortTask({
+      question: 'Ordne die Messreihe nach der Zeit (früh → spät).',
+      items,
+      correctOrder,
+      solution: ordered.map((row) => row.label).join(' → '),
+      explanation: 'Bei einer Messreihe sortiert man nach der Zeitachse von früh nach spät.',
+    })
+  },
 )
 
 /** LB4 — Stromkreis */
-const stromkreis: Topic['generate'] = (rng) => {
-  const closed = pick(rng, [true, false])
-  const correct = closed ? 'Die Lampe leuchtet.' : 'Die Lampe leuchtet nicht.'
-  const wrong = closed ? 'Die Lampe leuchtet nicht.' : 'Die Lampe leuchtet.'
-  return choicePickTask({
-    question: 'Was passiert in diesem einfachen Stromkreis?',
-    choices: shuffleChoices(
-      rng,
-      [correct, wrong, 'Die Batterie verschwindet.', 'Nur der Schalter leuchtet.'],
+const stromkreis: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const closed = pick(rng, [true, false])
+    const correct = closed ? 'Die Lampe leuchtet.' : 'Die Lampe leuchtet nicht.'
+    const wrong = closed ? 'Die Lampe leuchtet nicht.' : 'Die Lampe leuchtet.'
+    return choicePickTask({
+      question: 'Was passiert in diesem einfachen Stromkreis?',
+      choices: shuffleChoices(
+        rng,
+        [correct, wrong, 'Die Batterie verschwindet.', 'Nur der Schalter leuchtet.'],
+        correct,
+      ),
       correct,
-    ),
-    correct,
-    solution: correct,
-    explanation: closed
-      ? 'Geschlossener Stromkreis: Ladung fließt, die Lampe leuchtet.'
-      : 'Offener Stromkreis: kein geschlossener Weg, die Lampe bleibt aus.',
-    visualContent: circuitSvg(closed),
-    instruction: 'Tippe die richtige Aussage:',
-  })
-}
+      solution: correct,
+      explanation: closed
+        ? 'Geschlossener Stromkreis: Ladung fließt, die Lampe leuchtet.'
+        : 'Offener Stromkreis: kein geschlossener Weg, die Lampe bleibt aus.',
+      visualContent: circuitSvg(closed),
+      instruction: 'Tippe die richtige Aussage:',
+    })
+  },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Welche Teile braucht ein einfacher Stromkreis, damit die Lampe leuchten kann?',
+      choices: [
+        'Spannungsquelle (Batterie)',
+        'geschlossener Schalter',
+        'Leiter (Drähte)',
+        'offener Schalter',
+        'nur Isolierband ohne Leiter',
+      ],
+      correct: [
+        'Spannungsquelle (Batterie)',
+        'geschlossener Schalter',
+        'Leiter (Drähte)',
+      ],
+      solution: 'Batterie, geschlossener Schalter und Leiter (Drähte).',
+      explanation:
+        'Ohne Spannungsquelle und geschlossenen Leitungsweg fließt kein Strom. Ein offener Schalter oder nur Isolierband reicht nicht.',
+      instruction: 'Tippe alle nötigen Teile:',
+      visualContent: circuitSvg(true),
+    }),
+)
 
 const leiter: Topic['generate'] = (rng) => {
   const cases = [
@@ -441,26 +559,49 @@ const daemmung: Topic['generate'] = (rng) => {
   })
 }
 
-const farben: Topic['generate'] = (rng) => {
-  const correct = 'weißes Licht enthält viele Farben'
-  return choicePickTask({
-    question: 'Was stimmt für weißes Licht (z. B. Sonnenlicht)?',
-    choices: shuffleChoices(
-      rng,
-      [
+const farben: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const correct = 'weißes Licht enthält viele Farben'
+    return choicePickTask({
+      question: 'Was stimmt für weißes Licht (z. B. Sonnenlicht)?',
+      choices: shuffleChoices(
+        rng,
+        [
+          correct,
+          'weißes Licht hat keine Farbe und kann nicht zerlegt werden',
+          'weißes Licht ist nur rot',
+          'Farben entstehen nur ohne Licht',
+        ],
         correct,
-        'weißes Licht hat keine Farbe und kann nicht zerlegt werden',
-        'weißes Licht ist nur rot',
-        'Farben entstehen nur ohne Licht',
-      ],
+      ),
       correct,
-    ),
-    correct,
-    solution: correct,
-    explanation: 'Weißes Licht lässt sich (z. B. am Prisma) in Spektralfarben zerlegen.',
-    instruction: 'Tippe die passende Aussage:',
-  })
-}
+      solution: correct,
+      explanation: 'Weißes Licht lässt sich (z. B. am Prisma) in Spektralfarben zerlegen.',
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Welche Aussagen zu Farben und Filtern stimmen? (mehrere möglich)',
+      choices: [
+        'Ein Farbfilter lässt vor allem „seine“ Farbe durch',
+        'Weißes Licht lässt sich in Spektralfarben zerlegen',
+        'Ohne Licht sieht man trotzdem alle Farben',
+        'Ein roter Filter lässt vor allem Rot durch und hält andere Farben zurück',
+        'Farben entstehen nur im Dunkeln',
+      ],
+      correct: [
+        'Ein Farbfilter lässt vor allem „seine“ Farbe durch',
+        'Weißes Licht lässt sich in Spektralfarben zerlegen',
+        'Ein roter Filter lässt vor allem Rot durch und hält andere Farben zurück',
+      ],
+      solution:
+        'Filter lassen „ihre“ Farbe durch; weißes Licht ist zerlegbar; ohne Licht keine Farben.',
+      explanation:
+        'Falsch sind „Farben ohne Licht“ und „Farben nur im Dunkeln“. Filter schwächen andere Spektralanteile.',
+      instruction: 'Tippe alle richtigen Aussagen:',
+    }),
+)
 
 export const PHYSIK_K6_GENERATORS: Record<string, Topic['generate']> = {
   'ph-k6-lb1-schatten': schatten,

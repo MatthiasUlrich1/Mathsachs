@@ -327,9 +327,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '1.2.0',
+    version: '1.3.0',
     changelog:
-      'Klasse 6 Licht: Schatten-Slider (Live-Vorschau), Lichtstrahl tippen, Mehrfachauswahl; weitere interaktive Themen. Lehrplan Physik Gymnasium Sachsen.',
+      'Klasse 6: Spiegelweg tippen, Messreihe sortieren, Dichte-Slider, Stromkreis-/Farbfilter-Mehrfachauswahl, Licht interaktiv.',
     official,
     extras: [],
   }

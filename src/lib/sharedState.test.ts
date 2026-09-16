@@ -65,6 +65,8 @@ const store = require('../../electron/sharedStore.cjs') as {
           deletedCodes?: Array<{ code: string; deletedAt: number }>
         }
         role?: 'schueler' | 'eltern' | 'klassenlehrer' | 'lehrer'
+        preferredSubject?: string
+        preferredSubjectAt?: number
       }
     >
     migratedLocalStorage: boolean
@@ -436,6 +438,74 @@ describe('mergeSharedState (TypeScript)', () => {
       },
     )
     expect(keepKlassenlehrer.records.Kim.role).toBe('klassenlehrer')
+  })
+
+  it('keeps newer preferredSubject by preferredSubjectAt (LWW)', () => {
+    const olderPhysik = mergeSharedState(
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            name: 'Ada',
+            created: 1,
+            stats: {},
+            sessions: [],
+            preferredSubject: 'Mathematik',
+            preferredSubjectAt: 2000,
+          },
+        },
+      },
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            name: 'Ada',
+            created: 1,
+            stats: {},
+            sessions: [],
+            preferredSubject: 'Physik',
+            preferredSubjectAt: 1000,
+          },
+        },
+      },
+    )
+    expect(olderPhysik.records.Ada.preferredSubject).toBe('Mathematik')
+    expect(olderPhysik.records.Ada.preferredSubjectAt).toBe(2000)
+
+    const newerMathe = mergeSharedState(
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            name: 'Ada',
+            created: 1,
+            stats: {},
+            sessions: [],
+            preferredSubject: 'Physik',
+            preferredSubjectAt: 1000,
+          },
+        },
+      },
+      {
+        schemaVersion: 1,
+        users: ['Ada'],
+        records: {
+          Ada: {
+            name: 'Ada',
+            created: 1,
+            stats: {},
+            sessions: [],
+            preferredSubject: 'Mathematik',
+            preferredSubjectAt: 3000,
+          },
+        },
+      },
+    )
+    expect(newerMathe.records.Ada.preferredSubject).toBe('Mathematik')
+    expect(newerMathe.records.Ada.preferredSubjectAt).toBe(3000)
   })
 
   it('preserves and unions Lehrer gradeCodes across WLAN merge', () => {
@@ -844,6 +914,33 @@ describe('mergeSharedState (CJS)', () => {
       { users: ['Ada'], records: { Ada: { ...user('Ada'), role: 'eltern' } } },
     )
     expect(merged.records.Ada.role).toBe('eltern')
+  })
+
+  it('keeps newer preferredSubject by preferredSubjectAt (CJS LWW)', () => {
+    const merged = mergeSharedStateCjs(
+      {
+        users: ['Ada'],
+        records: {
+          Ada: {
+            ...user('Ada'),
+            preferredSubject: 'Mathematik',
+            preferredSubjectAt: 5000,
+          },
+        },
+      },
+      {
+        users: ['Ada'],
+        records: {
+          Ada: {
+            ...user('Ada'),
+            preferredSubject: 'Physik',
+            preferredSubjectAt: 1000,
+          },
+        },
+      },
+    )
+    expect(merged.records.Ada.preferredSubject).toBe('Mathematik')
+    expect(merged.records.Ada.preferredSubjectAt).toBe(5000)
   })
 
   it('keeps Klassenklausuren on the Lehrer through desktop normalize/merge', () => {

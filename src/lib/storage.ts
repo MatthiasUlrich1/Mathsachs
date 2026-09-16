@@ -524,7 +524,11 @@ export const setPreferredSubject = (name: string, subject: string): string => {
   const next = subject.trim() || 'Mathematik'
   if (!trimmed) return next
   const current = loadUser(trimmed)
-  saveUser({ ...current, preferredSubject: next })
+  saveUser({
+    ...current,
+    preferredSubject: next,
+    preferredSubjectAt: Date.now(),
+  })
   return next
 }
 

@@ -167,6 +167,13 @@ function normalizeUserData(name, raw) {
   if (typeof src.preferredSubject === 'string' && src.preferredSubject.trim()) {
     out.preferredSubject = src.preferredSubject.trim().slice(0, 40)
   }
+  if (
+    typeof src.preferredSubjectAt === 'number' &&
+    Number.isFinite(src.preferredSubjectAt) &&
+    src.preferredSubjectAt > 0
+  ) {
+    out.preferredSubjectAt = Math.trunc(src.preferredSubjectAt)
+  }
   return out
 }
 
@@ -924,14 +931,29 @@ function mergeUserData(a, b) {
   if (completedClassExamIds.length > 0) out.completedClassExamIds = completedClassExamIds
   const role = USER_ROLES.has(b.role) ? b.role : USER_ROLES.has(a.role) ? a.role : null
   if (role) out.role = role
-  const preferredSubject =
-    typeof b.preferredSubject === 'string' && b.preferredSubject.trim()
-      ? b.preferredSubject.trim()
-      : typeof a.preferredSubject === 'string' && a.preferredSubject.trim()
-        ? a.preferredSubject.trim()
-        : null
-  if (preferredSubject) out.preferredSubject = preferredSubject
+  const preferred = mergePreferredSubject(a, b)
+  if (preferred.preferredSubject) out.preferredSubject = preferred.preferredSubject
+  if (preferred.preferredSubjectAt) out.preferredSubjectAt = preferred.preferredSubjectAt
   return out
+}
+
+/** Last-write-wins for preferred Fach (timestamp; equal/missing → incoming `b`). */
+function mergePreferredSubject(a, b) {
+  const trim = (v) => (typeof v === 'string' && v.trim() ? v.trim() : null)
+  const at = (v) => (typeof v === 'number' && Number.isFinite(v) ? v : 0)
+  const aSub = trim(a && a.preferredSubject)
+  const bSub = trim(b && b.preferredSubject)
+  const aAt = at(a && a.preferredSubjectAt)
+  const bAt = at(b && b.preferredSubjectAt)
+  if (aSub && bSub) {
+    if (aAt > bAt) {
+      return aAt ? { preferredSubject: aSub, preferredSubjectAt: aAt } : { preferredSubject: aSub }
+    }
+    return bAt ? { preferredSubject: bSub, preferredSubjectAt: bAt } : { preferredSubject: bSub }
+  }
+  if (bSub) return bAt ? { preferredSubject: bSub, preferredSubjectAt: bAt } : { preferredSubject: bSub }
+  if (aSub) return aAt ? { preferredSubject: aSub, preferredSubjectAt: aAt } : { preferredSubject: aSub }
+  return {}
 }
 
 /**

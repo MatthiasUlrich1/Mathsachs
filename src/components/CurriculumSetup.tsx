@@ -57,10 +57,10 @@ const FALLBACK_CATALOG: ManifestPack[] = [
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '1.2.0',
+    version: '1.3.0',
     url: '',
     changelog:
-      'Klasse 6 Licht interaktiv (Schatten-Slider, Strahl tippen). Ohne Netz lokale Fassung.',
+      'Klasse 6 interaktiv (Licht, Dichte-Slider, Stromkreis, Farben). Ohne Netz lokale Fassung.',
   },
   {
     id: OS_HS_PACK_ID,
