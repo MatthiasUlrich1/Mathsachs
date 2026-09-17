@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.23] – 2026-09-17
+
+### Behoben
+- Installer-CI: HTTP-State-Test stubbt wieder `hostname` (LAN), damit der
+  Klassencode-Lösch-Merge nach dem Pages-Fix nicht fehlschlägt.
+
 ## [0.27.22] – 2026-09-17
 
 ### Behoben

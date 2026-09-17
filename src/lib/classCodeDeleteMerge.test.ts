@@ -206,7 +206,7 @@ describe('delete → created empty → no refresh storm', () => {
       }
       return jsonResponse({ error: 'nope' }, 405)
     })
-    vi.stubGlobal('location', { protocol: 'http:' })
+    vi.stubGlobal('location', { protocol: 'http:', hostname: '127.0.0.1' })
     vi.stubGlobal('fetch', fetchMock)
 
     await initSharedStorage()
