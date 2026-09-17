@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.24] – 2026-09-17
+
+### Behoben
+- Installer-Release: Assets werden in einem Job angehängt (kein paralleler
+  softprops-Race mehr, der Drafts mit unvollständigen Dateien hinterließ).
+
 ## [0.27.23] – 2026-09-17
 
 ### Behoben
