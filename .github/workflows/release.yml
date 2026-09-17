@@ -97,5 +97,5 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           draft: false
-          files: release-assets/*
+          files: release-assets/**
           fail_on_unmatched_files: true
