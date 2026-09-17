@@ -54,6 +54,7 @@ import {
   type UserRole,
 } from './sharedState'
 import { applySharedPacksToKv, snapshotPacksForSharedState } from '../curriculum/install'
+import { normalizePreferredSubjects } from '../curriculum/packFilters'
 import { canSendClassPoints, normalizeRole, roleForUser } from './roles'
 import {
   summarizeClassTransfers,
@@ -541,21 +542,36 @@ export const setUserRole = (name: string, role: UserRole): UserRole => {
   return nextRole
 }
 
-export const getPreferredSubject = (name: string): string => {
+export const getPreferredSubject = (name: string): string =>
+  getPreferredSubjects(name)[0] ?? 'Mathematik'
+
+export const getPreferredSubjects = (name: string): string[] => {
   const trimmed = name.trim()
-  if (!trimmed) return 'Mathematik'
-  const value = loadUser(trimmed).preferredSubject
-  return typeof value === 'string' && value.trim() ? value.trim() : 'Mathematik'
+  if (!trimmed) return ['Mathematik']
+  const user = loadUser(trimmed)
+  if (Array.isArray(user.preferredSubjects) && user.preferredSubjects.length > 0) {
+    return normalizePreferredSubjects(user.preferredSubjects)
+  }
+  if (typeof user.preferredSubject === 'string' && user.preferredSubject.trim()) {
+    return normalizePreferredSubjects([user.preferredSubject])
+  }
+  return ['Mathematik']
 }
 
 export const setPreferredSubject = (name: string, subject: string): string => {
+  const next = setPreferredSubjects(name, [subject])
+  return next[0] ?? 'Mathematik'
+}
+
+export const setPreferredSubjects = (name: string, subjects: string[]): string[] => {
   const trimmed = name.trim()
-  const next = subject.trim() || 'Mathematik'
+  const next = normalizePreferredSubjects(subjects)
   if (!trimmed) return next
   const current = loadUser(trimmed)
   saveUser({
     ...current,
-    preferredSubject: next,
+    preferredSubjects: next,
+    preferredSubject: next[0],
     preferredSubjectAt: Date.now(),
   })
   return next

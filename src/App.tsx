@@ -10,7 +10,7 @@ import {
 import { listInstalledPacks } from './curriculum/install'
 import { migrateBundledCurriculumIfNeeded, upgradeInstalledPacksFromBundled } from './curriculum/install'
 import { loadInstalledGrade } from './curriculum/loadGrade'
-import { normalizeSubject } from './curriculum/packFilters'
+import { isPreferredSubject, normalizeSubject } from './curriculum/packFilters'
 import { useCurriculumCatalog } from './curriculum/useCurriculumCatalog'
 import { CurriculumBanner } from './components/CurriculumBanner'
 import type { Grade, Topic } from './curriculum/types'
@@ -22,12 +22,12 @@ import {
   renameUser,
   cacheKnownClassName,
   getClassCodeSettings,
-  getPreferredSubject,
+  getPreferredSubjects,
   getUserRole,
   initSharedStorage,
   listUsers,
   setActiveStorageUser,
-  setPreferredSubject,
+  setPreferredSubjects,
   setUserRole,
   subscribeSharedStorage,
   syncCurriculumPacksToShared,
@@ -109,6 +109,9 @@ export default function App() {
   )
   const [userRole, setUserRoleState] = useState<UserRole>('schueler')
   const [preferredSubject, setPreferredSubjectState] = useState('Mathematik')
+  const [preferredSubjects, setPreferredSubjectsState] = useState<string[]>([
+    'Mathematik',
+  ])
   const [browseSubject, setBrowseSubject] = useState<string | null>(null)
   // Exam code taken from a shared link (`#klausur=…`), consumed by ExamRunner.
   const [examCodeFromLink, setExamCodeFromLink] = useState<string | null>(null)
@@ -179,7 +182,9 @@ export default function App() {
       // Only restore role if the user still exists
       if (current && listUsers().includes(current)) {
         setUserRoleState(getUserRole(current))
-        setPreferredSubjectState(getPreferredSubject(current))
+        const subjects = getPreferredSubjects(current)
+        setPreferredSubjectsState(subjects)
+        setPreferredSubjectState(subjects[0] ?? 'Mathematik')
       }
     })
     void initSharedStorage().then(() => {
@@ -203,14 +208,15 @@ export default function App() {
     }
   }, [])
 
-  // Hydrate role + preferred Fach once storage is ready (subscribe alone can miss StrictMode).
+  // Hydrate role + preferred Fächer once storage is ready (subscribe alone can miss StrictMode).
   useEffect(() => {
     if (!storageReady || !activeUser) return
     if (!listUsers().includes(activeUser)) return
     setUserRoleState(getUserRole(activeUser))
-    const subject = getPreferredSubject(activeUser)
-    setPreferredSubjectState(subject)
-    setBrowseSubject(subject)
+    const subjects = getPreferredSubjects(activeUser)
+    setPreferredSubjectsState(subjects)
+    setPreferredSubjectState(subjects[0] ?? 'Mathematik')
+    setBrowseSubject(subjects[0] ?? 'Mathematik')
   }, [storageReady, activeUser])
 
   useEffect(() => {
@@ -360,16 +366,23 @@ export default function App() {
     setActiveUser(name)
     setClassLabel(activeClassDisplayName())
     setUserRoleState(getUserRole(name))
-    const subject = getPreferredSubject(name)
-    setPreferredSubjectState(subject)
-    setBrowseSubject(subject)
+    const subjects = getPreferredSubjects(name)
+    setPreferredSubjectsState(subjects)
+    setPreferredSubjectState(subjects[0] ?? 'Mathematik')
+    setBrowseSubject(subjects[0] ?? 'Mathematik')
   }
 
-  const changePreferredSubject = (subject: string) => {
+  const changePreferredSubjects = (subjects: string[]) => {
     if (!activeUser) return
-    const next = setPreferredSubject(activeUser, subject)
-    setPreferredSubjectState(next)
-    setBrowseSubject(next)
+    const next = setPreferredSubjects(activeUser, subjects)
+    setPreferredSubjectsState(next)
+    setPreferredSubjectState(next[0] ?? 'Mathematik')
+    if (
+      !browseSubject ||
+      !next.some((s) => s.toLowerCase() === browseSubject.toLowerCase())
+    ) {
+      setBrowseSubject(next[0] ?? 'Mathematik')
+    }
   }
 
   const subjectOf = (moduleId: string) => normalizeSubject(subjectTitleForModule(moduleId))
@@ -386,21 +399,25 @@ export default function App() {
     return out
   })()
 
+  const browseSubjects = isTeacherRole(userRole)
+    ? loadedSubjects.filter((s) => isPreferredSubject(s, preferredSubjects))
+    : loadedSubjects
+
   const activeBrowseSubject =
     browseSubject &&
-    loadedSubjects.some((s) => s.toLowerCase() === browseSubject.toLowerCase())
+    browseSubjects.some((s) => s.toLowerCase() === browseSubject.toLowerCase())
       ? browseSubject
       : isTeacherRole(userRole) &&
-          loadedSubjects.some((s) => s.toLowerCase() === preferredSubject.toLowerCase())
+          browseSubjects.some((s) => s.toLowerCase() === preferredSubject.toLowerCase())
         ? preferredSubject
-        : (loadedSubjects[0] ?? preferredSubject)
+        : (browseSubjects[0] ?? preferredSubject)
 
   const browseLoaded = loaded.filter(
     (row) => subjectOf(row.moduleId).toLowerCase() === activeBrowseSubject.toLowerCase(),
   )
 
-  // All loaded modules — editing a Physik-Klausur must work even if preferred
-  // subject is Mathematik (and vice versa).
+  // ExamBuilder filters create themes by preferredSubjects; pass all loaded so
+  // editing a Klausur from another Fach still works after onEnsureModules.
   const examLoaded = loaded
 
   const createUser = () => {
@@ -656,9 +673,9 @@ export default function App() {
                 Blende unter Einstellungen → Lehrpläne eine Klassenstufe für
                 dieses Fach ein, oder wähle ein anderes Fach.
               </p>
-              {loadedSubjects.length > 1 && (
+              {browseSubjects.length > 1 && (
                 <div className="grade-tabs" role="tablist" aria-label="Fach">
-                  {loadedSubjects.map((subject) => (
+                  {browseSubjects.map((subject) => (
                     <button
                       key={subject}
                       type="button"
@@ -690,9 +707,9 @@ export default function App() {
                 </p>
               </div>
 
-              {loadedSubjects.length > 1 && (
+              {browseSubjects.length > 1 && (
                 <div className="grade-tabs" role="tablist" aria-label="Fach">
-                  {loadedSubjects.map((subject) => (
+                  {browseSubjects.map((subject) => (
                     <button
                       key={subject}
                       type="button"
@@ -801,7 +818,8 @@ export default function App() {
           user={activeUser}
           role={userRole}
           preferredSubject={preferredSubject}
-          onChangePreferredSubject={changePreferredSubject}
+          preferredSubjects={preferredSubjects}
+          onChangePreferredSubjects={changePreferredSubjects}
           classLabel={classLabel}
           lanStatus={lanStatus}
           onChangeRole={changeRole}
@@ -854,6 +872,7 @@ export default function App() {
       {view.name === 'examBuild' && (
         <ExamBuilder
           loaded={examLoaded}
+          preferredSubjects={preferredSubjects}
           role={userRole}
           onEnsureModules={async (ids) => {
             for (const id of ids) await loadCurriculum(id)

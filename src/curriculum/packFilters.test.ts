@@ -3,6 +3,8 @@ import {
   ALL_FILTER,
   defaultSubjectFilter,
   filterPacks,
+  isPreferredSubject,
+  normalizePreferredSubjects,
   normalizeSubject,
   uniqueSubjects,
 } from './packFilters'
@@ -28,6 +30,17 @@ describe('packFilters subject', () => {
   it('defaults missing subject to Mathematik', () => {
     expect(normalizeSubject(undefined)).toBe('Mathematik')
     expect(normalizeSubject('  Physik ')).toBe('Physik')
+  })
+
+  it('normalizes preferred subject lists', () => {
+    expect(normalizePreferredSubjects(undefined)).toEqual(['Mathematik'])
+    expect(normalizePreferredSubjects('Physik')).toEqual(['Physik'])
+    expect(normalizePreferredSubjects(['Physik', 'Mathematik', 'physik'])).toEqual([
+      'Mathematik',
+      'Physik',
+    ])
+    expect(isPreferredSubject('Physik', ['Mathematik'])).toBe(false)
+    expect(isPreferredSubject('Physik', ['Mathematik', 'Physik'])).toBe(true)
   })
 
   it('lists Mathematik before Physik', () => {

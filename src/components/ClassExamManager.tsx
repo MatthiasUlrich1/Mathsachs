@@ -131,15 +131,15 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
   // desktop builds that dropped classExams on save).
   useEffect(() => {
     let cancelled = false
-    const created = getClassCodeSettings().created
-    const hosts = [
-      ...new Set([
-        ...getCreatedClassExams().map((e) => e.hostCode),
-        ...created.map((c) => c.code),
-      ]),
-    ]
-    if (hosts.length === 0) return
-    void (async () => {
+    const syncSolveCounts = async () => {
+      const created = getClassCodeSettings().created
+      const hosts = [
+        ...new Set([
+          ...getCreatedClassExams().map((e) => e.hostCode),
+          ...created.map((c) => c.code),
+        ]),
+      ]
+      if (hosts.length === 0) return
       for (const host of hosts) {
         try {
           const stats = await getClass(host)
@@ -158,7 +158,10 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
               owned: true,
               taskCount: remote.taskCount ?? local?.taskCount,
               totalPoints: remote.totalPoints ?? local?.totalPoints,
-              solveCount: remote.solveCount ?? local?.solveCount ?? 0,
+              solveCount: Math.max(
+                remote.solveCount ?? 0,
+                local?.solveCount ?? 0,
+              ),
             })
           }
           if (!cancelled) setExams(getCreatedClassExams())
@@ -166,9 +169,19 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
           // Offline / stub — keep local list.
         }
       }
-    })()
+    }
+    void syncSolveCounts()
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') void syncSolveCounts()
+    }
+    document.addEventListener('visibilitychange', onVisible)
+    const timer = window.setInterval(() => {
+      void syncSolveCounts()
+    }, 30_000)
     return () => {
       cancelled = true
+      document.removeEventListener('visibilitychange', onVisible)
+      window.clearInterval(timer)
     }
   }, [refreshKey])
 

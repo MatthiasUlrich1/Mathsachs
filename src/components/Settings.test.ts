@@ -24,7 +24,8 @@ const baseProps = {
   user: 'Ada',
   role: 'lehrer' as const,
   preferredSubject: 'Mathematik',
-  onChangePreferredSubject: vi.fn(),
+  preferredSubjects: ['Mathematik'],
+  onChangePreferredSubjects: vi.fn(),
   classLabel: '6/6',
   lanStatus: null,
   onChangeRole: vi.fn(),
@@ -222,23 +223,23 @@ describe('Settings profile Lehrercode', () => {
       }),
     )
     expect(html).toContain('Entwickler')
-    expect(html).toContain('Fach')
+    expect(html).toContain('Fächer')
     expect(html).not.toContain(formatTeacherCode())
     expect(html).not.toContain('Lehrercode kopieren')
     expect(html).not.toContain(TEACHER_CODE_REQUEST_LABEL)
   })
 
-  it('shows Fach selection on Profil for Lehrer', () => {
+  it('shows Fächer checkboxes on Profil for Lehrer', () => {
     const html = renderToStaticMarkup(
       createElement(Settings, { ...baseProps, section: 'profile' }),
     )
-    expect(html).toContain('Fach')
-    expect(html).toContain('profile-preferred-subject')
+    expect(html).toContain('Fächer')
+    expect(html).toContain('profile-preferred-subjects-label')
     expect(html).toContain('Mathematik')
     expect(html).toContain('Physik')
   })
 
-  it('hides Fach selection on Profil for Schüler', () => {
+  it('hides Fächer selection on Profil for Schüler', () => {
     const html = renderToStaticMarkup(
       createElement(Settings, {
         ...baseProps,
@@ -246,6 +247,6 @@ describe('Settings profile Lehrercode', () => {
         section: 'profile',
       }),
     )
-    expect(html).not.toContain('profile-preferred-subject')
+    expect(html).not.toContain('profile-preferred-subjects-label')
   })
 })

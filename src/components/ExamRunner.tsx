@@ -59,6 +59,12 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
   const [completedIds, setCompletedIds] = useState(() => new Set(getCompletedClassExamIds()))
   const [activeClassExamId, setActiveClassExamId] = useState<string | null>(null)
 
+  const matchClassExamId = (examCode: string): string | null => {
+    const trimmed = examCode.trim()
+    if (!trimmed) return null
+    return classExams.find((exam) => exam.examCode.trim() === trimmed)?.id ?? null
+  }
+
   useEffect(() => {
     if (phase !== 'done') return
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -83,12 +89,23 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
     }
   }, [user, phase])
 
+  // Bind pasted / shared MSX1 codes to the Klassenklausur so complete increments solveCount.
+  useEffect(() => {
+    if (activeClassExamId) return
+    const code = codeText.trim() || initialCode?.trim() || ''
+    const matched = matchClassExamId(code)
+    if (matched) setActiveClassExamId(matched)
+  }, [classExams, codeText, initialCode, activeClassExamId])
+
   // Auto-decode a code handed in via a shared link.
   useEffect(() => {
     if (!initialCode) return
     try {
       setSpec(decodeExam(initialCode))
+      setCodeText(initialCode)
       setError(null)
+      const matched = matchClassExamId(initialCode)
+      if (matched) setActiveClassExamId(matched)
     } catch (e) {
       setError(e instanceof ExamCodeError ? e.message : 'Der Code ist ungültig.')
       setPhase('input')
@@ -100,7 +117,7 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
       const decoded = decodeExam(codeText)
       setSpec(decoded)
       setError(null)
-      setActiveClassExamId(null)
+      setActiveClassExamId(matchClassExamId(codeText))
       setPhase('ready')
     } catch (e) {
       setSpec(null)
@@ -163,10 +180,11 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
     })
     setResults(computed)
     persist(computed)
-    if (activeClassExamId) {
-      markClassExamCompleted(activeClassExamId)
+    const examId = activeClassExamId || matchClassExamId(codeText)
+    if (examId) {
+      markClassExamCompleted(examId)
       setCompletedIds(new Set(getCompletedClassExamIds()))
-      void completeClassExam(activeClassExamId).catch(() => {
+      void completeClassExam(examId).catch(() => {
         // Offline / stub — local completion still recorded.
       })
     }
@@ -350,13 +368,13 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
                 : 'Aufgabe'}
             </p>
           </div>
-          <span className="muted small">{r.punkte} P.</span>
+          <span className="muted small">Wert {r.punkte} P.</span>
         </div>
         <div className="session__meta">
           <span>
             Aufgabe {current + 1} von {resolved.length}
           </span>
-          <span>Punkte gesamt: {totalPoints}</span>
+          <span>Punkte: 0 / {totalPoints}</span>
         </div>
         <div className="progress">
           <div

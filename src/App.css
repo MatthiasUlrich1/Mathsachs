@@ -1598,6 +1598,17 @@ select.answer-input__field {
   flex-wrap: wrap;
 }
 
+.exam-themes__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.exam-subject + .exam-subject {
+  margin-top: 18px;
+}
+
 .exam-grade {
   margin-top: 14px;
 }

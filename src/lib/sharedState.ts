@@ -26,6 +26,7 @@ import {
   type DeletedCurriculum,
   type InstalledCurriculum,
 } from '../curriculum/pack'
+import { normalizePreferredSubjects } from '../curriculum/packFilters'
 
 /** Per-topic aggregated statistics for a user. */
 export interface TopicStat {
@@ -94,11 +95,14 @@ export interface UserData {
   /** Optional for older records; treat missing as Schüler (see roleForUser). */
   role?: UserRole
   /**
-   * Lehrer preferred subject (e.g. Mathematik, Physik).
-   * Filters Lehrpläne / Themen / Klausur erstellen to that Fach.
+   * Lehrer preferred subjects (e.g. Mathematik, Physik).
+   * Filters Lehrpläne / Themen / Klausur erstellen to those Fächer.
+   * Legacy single `preferredSubject` is migrated on read.
    */
+  preferredSubjects?: string[]
+  /** @deprecated Prefer preferredSubjects; kept as first selected Fach for older clients. */
   preferredSubject?: string
-  /** Epoch ms when preferredSubject was last set (last-write-wins on merge). */
+  /** Epoch ms when preferred subjects were last set (last-write-wins on merge). */
   preferredSubjectAt?: number
   /** Silent pack-review flag (set via alternate Lehrercode). */
   curriculumDevPreview?: boolean
@@ -788,27 +792,40 @@ export const mergeUserData = (a: UserData | undefined, b: UserData | undefined):
   }
 }
 
-/** Last-write-wins for preferred Fach (timestamp; equal/missing → incoming `b`). */
+/** Last-write-wins for preferred Fächer (timestamp; equal/missing → incoming `b`). */
 export const mergePreferredSubject = (
   a: UserData | undefined,
   b: UserData | undefined,
-): Pick<UserData, 'preferredSubject' | 'preferredSubjectAt'> => {
-  const trim = (v: unknown) =>
-    typeof v === 'string' && v.trim() ? v.trim() : undefined
+): Pick<UserData, 'preferredSubject' | 'preferredSubjects' | 'preferredSubjectAt'> => {
   const at = (v: unknown) =>
     typeof v === 'number' && Number.isFinite(v) ? v : 0
-  const aSub = trim(a?.preferredSubject)
-  const bSub = trim(b?.preferredSubject)
+  const subjectsOf = (u: UserData | undefined): string[] => {
+    if (!u) return []
+    if (Array.isArray(u.preferredSubjects) && u.preferredSubjects.length > 0) {
+      return normalizePreferredSubjects(u.preferredSubjects)
+    }
+    if (typeof u.preferredSubject === 'string' && u.preferredSubject.trim()) {
+      return normalizePreferredSubjects([u.preferredSubject])
+    }
+    return []
+  }
+  const aSubs = subjectsOf(a)
+  const bSubs = subjectsOf(b)
   const aAt = at(a?.preferredSubjectAt)
   const bAt = at(b?.preferredSubjectAt)
-  if (aSub && bSub) {
-    if (aAt > bAt) {
-      return { preferredSubject: aSub, ...(aAt ? { preferredSubjectAt: aAt } : {}) }
+  const pick = (subs: string[], stamp: number) => {
+    if (subs.length === 0) return {}
+    return {
+      preferredSubjects: subs,
+      preferredSubject: subs[0],
+      ...(stamp ? { preferredSubjectAt: stamp } : {}),
     }
-    return { preferredSubject: bSub, ...(bAt ? { preferredSubjectAt: bAt } : {}) }
   }
-  if (bSub) return { preferredSubject: bSub, ...(bAt ? { preferredSubjectAt: bAt } : {}) }
-  if (aSub) return { preferredSubject: aSub, ...(aAt ? { preferredSubjectAt: aAt } : {}) }
+  if (aSubs.length > 0 && bSubs.length > 0) {
+    return aAt > bAt ? pick(aSubs, aAt) : pick(bSubs, bAt)
+  }
+  if (bSubs.length > 0) return pick(bSubs, bAt)
+  if (aSubs.length > 0) return pick(aSubs, aAt)
   return {}
 }
 

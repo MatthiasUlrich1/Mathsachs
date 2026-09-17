@@ -54,7 +54,8 @@ interface Props {
   user: string
   role: UserRole
   preferredSubject: string
-  onChangePreferredSubject: (subject: string) => void
+  preferredSubjects: string[]
+  onChangePreferredSubjects: (subjects: string[]) => void
   classLabel: string | null
   lanStatus: LanServerStatus | null
   onChangeRole: (role: UserRole) => void
@@ -77,7 +78,8 @@ export function Settings({
   user,
   role,
   preferredSubject,
-  onChangePreferredSubject,
+  preferredSubjects,
+  onChangePreferredSubjects,
   classLabel,
   lanStatus,
   onChangeRole,
@@ -273,23 +275,44 @@ export function Settings({
             />
             {isTeacherRole(role) && !pendingRole && (
               <div className="field">
-                <label className="field__label" htmlFor="profile-preferred-subject">
-                  Fach
-                </label>
-                <select
-                  id="profile-preferred-subject"
-                  className="answer-input__field"
-                  value={preferredSubject}
-                  onChange={(event) => onChangePreferredSubject(event.target.value)}
+                <span className="field__label" id="profile-preferred-subjects-label">
+                  Fächer
+                </span>
+                <div
+                  className="exam-area__topics"
+                  role="group"
+                  aria-labelledby="profile-preferred-subjects-label"
                 >
-                  {SUBJECT_OPTIONS.map((label) => (
-                    <option key={label} value={label}>
-                      {label}
-                    </option>
-                  ))}
-                </select>
+                  {SUBJECT_OPTIONS.map((label) => {
+                    const checked = preferredSubjects.some(
+                      (s) => s.toLowerCase() === label.toLowerCase(),
+                    )
+                    return (
+                      <label key={label} className="exam-check">
+                        <input
+                          type="checkbox"
+                          checked={checked}
+                          onChange={() => {
+                            if (checked) {
+                              if (preferredSubjects.length <= 1) return
+                              onChangePreferredSubjects(
+                                preferredSubjects.filter(
+                                  (s) => s.toLowerCase() !== label.toLowerCase(),
+                                ),
+                              )
+                            } else {
+                              onChangePreferredSubjects([...preferredSubjects, label])
+                            }
+                          }}
+                        />
+                        <span>{label}</span>
+                      </label>
+                    )
+                  })}
+                </div>
                 <p className="muted small">
-                  Lehrpläne, Themen und Klausur erstellen zeigen zuerst dieses Fach.
+                  Lehrpläne, Themen und Klausur erstellen zeigen nur die
+                  ausgewählten Fächer. Mindestens eines muss aktiv bleiben.
                 </p>
               </div>
             )}

@@ -173,6 +173,22 @@ function normalizeUserData(name, raw) {
   if (typeof src.preferredSubject === 'string' && src.preferredSubject.trim()) {
     out.preferredSubject = src.preferredSubject.trim().slice(0, 40)
   }
+  if (Array.isArray(src.preferredSubjects)) {
+    const subjects = []
+    const seen = new Set()
+    for (const item of src.preferredSubjects) {
+      if (typeof item !== 'string' || !item.trim()) continue
+      const label = item.trim().slice(0, 40)
+      const key = label.toLowerCase()
+      if (seen.has(key)) continue
+      seen.add(key)
+      subjects.push(label)
+    }
+    if (subjects.length > 0) {
+      out.preferredSubjects = subjects
+      if (!out.preferredSubject) out.preferredSubject = subjects[0]
+    }
+  }
   if (
     typeof src.preferredSubjectAt === 'number' &&
     Number.isFinite(src.preferredSubjectAt) &&
@@ -939,27 +955,55 @@ function mergeUserData(a, b) {
   if (role) out.role = role
   const preferred = mergePreferredSubject(a, b)
   if (preferred.preferredSubject) out.preferredSubject = preferred.preferredSubject
+  if (preferred.preferredSubjects) out.preferredSubjects = preferred.preferredSubjects
   if (preferred.preferredSubjectAt) out.preferredSubjectAt = preferred.preferredSubjectAt
   return out
 }
 
-/** Last-write-wins for preferred Fach (timestamp; equal/missing → incoming `b`). */
+/** Last-write-wins for preferred Fächer (timestamp; equal/missing → incoming `b`). */
 function mergePreferredSubject(a, b) {
-  const trim = (v) => (typeof v === 'string' && v.trim() ? v.trim() : null)
   const at = (v) => (typeof v === 'number' && Number.isFinite(v) ? v : 0)
-  const aSub = trim(a && a.preferredSubject)
-  const bSub = trim(b && b.preferredSubject)
+  const subjectsOf = (u) => {
+    if (!u) return []
+    if (Array.isArray(u.preferredSubjects) && u.preferredSubjects.length > 0) {
+      return normalizePreferredSubjectsList(u.preferredSubjects)
+    }
+    if (typeof u.preferredSubject === 'string' && u.preferredSubject.trim()) {
+      return normalizePreferredSubjectsList([u.preferredSubject])
+    }
+    return []
+  }
+  const aSubs = subjectsOf(a)
+  const bSubs = subjectsOf(b)
   const aAt = at(a && a.preferredSubjectAt)
   const bAt = at(b && b.preferredSubjectAt)
-  if (aSub && bSub) {
-    if (aAt > bAt) {
-      return aAt ? { preferredSubject: aSub, preferredSubjectAt: aAt } : { preferredSubject: aSub }
-    }
-    return bAt ? { preferredSubject: bSub, preferredSubjectAt: bAt } : { preferredSubject: bSub }
+  const pick = (subs, stamp) => {
+    if (subs.length === 0) return {}
+    const out = { preferredSubjects: subs, preferredSubject: subs[0] }
+    if (stamp) out.preferredSubjectAt = stamp
+    return out
   }
-  if (bSub) return bAt ? { preferredSubject: bSub, preferredSubjectAt: bAt } : { preferredSubject: bSub }
-  if (aSub) return aAt ? { preferredSubject: aSub, preferredSubjectAt: aAt } : { preferredSubject: aSub }
+  if (aSubs.length > 0 && bSubs.length > 0) {
+    return aAt > bAt ? pick(aSubs, aAt) : pick(bSubs, bAt)
+  }
+  if (bSubs.length > 0) return pick(bSubs, bAt)
+  if (aSubs.length > 0) return pick(aSubs, aAt)
   return {}
+}
+
+function normalizePreferredSubjectsList(raw) {
+  const list = Array.isArray(raw) ? raw : []
+  const seen = new Set()
+  const out = []
+  for (const item of list) {
+    if (typeof item !== 'string' || !item.trim()) continue
+    const label = item.trim().slice(0, 40)
+    const key = label.toLowerCase()
+    if (seen.has(key)) continue
+    seen.add(key)
+    out.push(label)
+  }
+  return out.length > 0 ? out : ['Mathematik']
 }
 
 /**

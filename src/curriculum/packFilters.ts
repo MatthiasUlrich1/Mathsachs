@@ -19,6 +19,46 @@ export const SCHULFORM_OPTIONS: { id: SchulformId; label: string }[] = [
 export const SUBJECT_OPTIONS = ['Mathematik', 'Physik'] as const
 export type SubjectId = (typeof SUBJECT_OPTIONS)[number]
 
+export function normalizeSubject(subject: string | undefined | null): string {
+  const trimmed = (subject ?? '').trim()
+  if (!trimmed) return 'Mathematik'
+  const known = SUBJECT_OPTIONS.find((s) => s.toLowerCase() === trimmed.toLowerCase())
+  return known ?? trimmed
+}
+
+/** At least one Fach; unknown labels kept; preferred order follows SUBJECT_OPTIONS. */
+export function normalizePreferredSubjects(raw: unknown): string[] {
+  const fromList = Array.isArray(raw)
+    ? raw
+        .filter((item): item is string => typeof item === 'string')
+        .map((item) => normalizeSubject(item))
+    : typeof raw === 'string' && raw.trim()
+      ? [normalizeSubject(raw)]
+      : []
+  const seen = new Set<string>()
+  const out: string[] = []
+  for (const label of fromList) {
+    const key = label.toLowerCase()
+    if (seen.has(key)) continue
+    seen.add(key)
+    out.push(label)
+  }
+  if (out.length === 0) return ['Mathematik']
+  const known = SUBJECT_OPTIONS.filter((s) => seen.has(s.toLowerCase()))
+  const extras = out.filter(
+    (s) => !SUBJECT_OPTIONS.some((k) => k.toLowerCase() === s.toLowerCase()),
+  )
+  return [...known, ...extras]
+}
+
+export function isPreferredSubject(
+  subject: string | undefined | null,
+  preferred: readonly string[],
+): boolean {
+  const label = normalizeSubject(subject).toLowerCase()
+  return preferred.some((p) => normalizeSubject(p).toLowerCase() === label)
+}
+
 const REGION_LABELS: Record<string, string> = {
   sachsen: 'Sachsen',
 }
@@ -27,12 +67,6 @@ export function regionLabel(region: string): string {
   const trimmed = region.trim()
   if (!trimmed) return ''
   return REGION_LABELS[trimmed.toLowerCase()] ?? trimmed
-}
-
-export function normalizeSubject(subject: string | undefined | null): string {
-  const trimmed = (subject ?? '').trim()
-  if (!trimmed) return 'Mathematik'
-  return trimmed
 }
 
 export function schulformIdForPack(pack: PackFilterMeta): SchulformId | null {

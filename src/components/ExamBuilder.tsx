@@ -20,7 +20,11 @@ import {
   getGrade,
   updateClassExam,
 } from '../classCode/api'
-import { CURRICULUM_VERSION } from '../curriculum/registry'
+import { CURRICULUM_VERSION, subjectTitleForModule } from '../curriculum/registry'
+import {
+  isPreferredSubject,
+  normalizeSubject,
+} from '../curriculum/packFilters'
 import { refsForGradeModules } from '../curriculum/versionGate'
 import type { ExamSpec, ExamTaskRef } from '../exam/types'
 import type { StoredClassExam } from '../exam/classExamTypes'
@@ -47,6 +51,8 @@ interface Props {
   onExit: () => void
   /** Current user role — Lehrer get class assignment. */
   role?: string
+  /** Lehrer profile Fächer — theme picker only shows these. */
+  preferredSubjects?: string[]
   /** Load curriculum modules needed to edit an exam (e.g. Physik while Mathe is preferred). */
   onEnsureModules?: (moduleIds: string[]) => Promise<void>
 }
@@ -56,6 +62,7 @@ interface TopicEntry {
   key: string
   moduleId: string
   topicId: string
+  subject: string
   gradeTitle: string
   areaTitle: string
   topic: Topic
@@ -73,7 +80,13 @@ interface EditingExam {
 
 const randomSeed = () => Math.floor(Math.random() * 0xffffffff) >>> 0
 
-export function ExamBuilder({ loaded, onExit, role, onEnsureModules }: Props) {
+export function ExamBuilder({
+  loaded,
+  onExit,
+  role,
+  preferredSubjects = ['Mathematik'],
+  onEnsureModules,
+}: Props) {
   const [step, setStep] = useState<1 | 2 | 3>(1)
   const assignEnabled = canAssignClassExam(role)
   const [listRefresh, setListRefresh] = useState(0)
@@ -81,9 +94,20 @@ export function ExamBuilder({ loaded, onExit, role, onEnsureModules }: Props) {
   const [pendingEdit, setPendingEdit] = useState<StoredClassExam | null>(null)
   const [editError, setEditError] = useState<string | null>(null)
 
+  const themeLoaded = useMemo(() => {
+    if (editing || pendingEdit) return loaded
+    return loaded.filter((row) =>
+      isPreferredSubject(
+        normalizeSubject(subjectTitleForModule(row.moduleId)),
+        preferredSubjects,
+      ),
+    )
+  }, [loaded, preferredSubjects, editing, pendingEdit])
+
   const entries = useMemo<TopicEntry[]>(() => {
     const list: TopicEntry[] = []
-    for (const { moduleId, grade } of loaded) {
+    for (const { moduleId, grade } of themeLoaded) {
+      const subject = normalizeSubject(subjectTitleForModule(moduleId))
       for (const area of grade.areas) {
         for (const topic of area.topics) {
           if (topic.outlineOnly) continue
@@ -91,6 +115,7 @@ export function ExamBuilder({ loaded, onExit, role, onEnsureModules }: Props) {
             key: examThemeKey(moduleId, topic.id),
             moduleId,
             topicId: topic.id,
+            subject,
             gradeTitle: grade.title,
             areaTitle: area.title,
             topic,
@@ -99,7 +124,7 @@ export function ExamBuilder({ loaded, onExit, role, onEnsureModules }: Props) {
       }
     }
     return list
-  }, [loaded])
+  }, [themeLoaded])
 
   const entryByKey = useMemo(() => {
     const map = new Map<string, TopicEntry>()
@@ -227,6 +252,17 @@ export function ExamBuilder({ loaded, onExit, role, onEnsureModules }: Props) {
     })
   }
 
+  const selectAllInPool = (entry: TopicEntry, seeds: number[]) => {
+    setSelections((prev) => {
+      const next = { ...prev }
+      for (const seed of seeds) {
+        const sk = examSelKey(entry.moduleId, entry.topicId, seed)
+        if (!(sk in next)) next[sk] = entry.topic.pointsPerTask
+      }
+      return next
+    })
+  }
+
   const toggleSelection = (entry: TopicEntry, seed: number) => {
     const sk = examSelKey(entry.moduleId, entry.topicId, seed)
     setSelections((prev) => {
@@ -287,7 +323,7 @@ export function ExamBuilder({ loaded, onExit, role, onEnsureModules }: Props) {
     }
   }
 
-  if (loaded.length === 0) {
+  if (themeLoaded.length === 0) {
     return (
       <section className="card">
         <div className="session__head">
@@ -297,8 +333,9 @@ export function ExamBuilder({ loaded, onExit, role, onEnsureModules }: Props) {
           </button>
         </div>
         <p className="notice notice--warn">
-          Es ist kein Lehrplan geladen. Lade zuerst unter Einstellungen →
-          Lehrpläne eine Klasse, um Themen für eine Klausur auswählen zu können.
+          {loaded.length === 0
+            ? 'Es ist kein Lehrplan geladen. Lade zuerst unter Einstellungen → Lehrpläne eine Klasse, um Themen für eine Klausur auswählen zu können.'
+            : 'Für die im Profil ausgewählten Fächer ist keine Klassenstufe eingeblendet. Bitte unter Einstellungen → Lehrpläne nachladen oder weitere Fächer im Profil aktivieren.'}
         </p>
       </section>
     )
@@ -361,9 +398,12 @@ export function ExamBuilder({ loaded, onExit, role, onEnsureModules }: Props) {
 
       {step === 1 && (
         <ExamStepThemes
-          loaded={loaded}
+          loaded={themeLoaded}
           selected={selectedThemes}
           onToggle={toggleTheme}
+          onSelectAll={() =>
+            setSelectedThemes(new Set(entries.map((e) => e.key)))
+          }
           onClear={() => setSelectedThemes(new Set())}
         />
       )}
@@ -389,6 +429,7 @@ export function ExamBuilder({ loaded, onExit, role, onEnsureModules }: Props) {
                   seeds={pools[key] ?? []}
                   selections={selections}
                   onToggle={toggleSelection}
+                  onSelectAll={() => selectAllInPool(entry, pools[key] ?? [])}
                   onSetPunkte={setPunkte}
                   onRefresh={() => refreshPool(key)}
                 />
@@ -463,55 +504,97 @@ function ExamStepThemes({
   loaded,
   selected,
   onToggle,
+  onSelectAll,
   onClear,
 }: {
   loaded: LoadedGrade[]
   selected: Set<string>
   onToggle: (key: string) => void
+  onSelectAll: () => void
   onClear: () => void
 }) {
+  const bySubject = useMemo(() => {
+    const map = new Map<string, LoadedGrade[]>()
+    for (const row of loaded) {
+      const subject = normalizeSubject(subjectTitleForModule(row.moduleId))
+      const list = map.get(subject) ?? []
+      list.push(row)
+      map.set(subject, list)
+    }
+    return [...map.entries()]
+  }, [loaded])
+
+  const selectableCount = useMemo(() => {
+    let n = 0
+    for (const { grade } of loaded) {
+      for (const area of grade.areas) {
+        for (const topic of area.topics) {
+          if (!topic.outlineOnly) n += 1
+        }
+      }
+    }
+    return n
+  }, [loaded])
+
   return (
     <div className="exam-themes">
       <div className="exam-themes__head">
         <p className="muted small">
           Wähle die Themen, aus denen Aufgaben vorgeschlagen werden sollen.
+          {bySubject.length > 1
+            ? ' Die Themen sind nach Fach getrennt.'
+            : ''}
         </p>
-        {selected.size > 0 && (
-          <button type="button" className="link" onClick={onClear}>
-            Auswahl zurücksetzen ({selected.size})
-          </button>
-        )}
+        <div className="exam-themes__actions">
+          {selectableCount > 0 && selected.size < selectableCount && (
+            <button type="button" className="link" onClick={onSelectAll}>
+              Alle auswählen
+            </button>
+          )}
+          {selected.size > 0 && (
+            <button type="button" className="link" onClick={onClear}>
+              Auswahl zurücksetzen ({selected.size})
+            </button>
+          )}
+        </div>
       </div>
-      {loaded.map(({ moduleId, grade }) => (
-        <div key={moduleId} className="exam-grade">
-          <h3 className="exam-grade__title">{grade.title}</h3>
-          {grade.areas.map((area) => {
-            const playable = area.topics.filter((topic) => !topic.outlineOnly)
-            if (playable.length === 0) return null
-            return (
-              <fieldset key={area.id} className="exam-area">
-                <legend className="exam-area__legend">{area.title}</legend>
-                <div className="exam-area__topics">
-                  {playable.map((topic) => {
-                    const key = examThemeKey(moduleId, topic.id)
-                    return (
-                      <label key={key} className="exam-check">
-                        <input
-                          type="checkbox"
-                          checked={selected.has(key)}
-                          onChange={() => onToggle(key)}
-                        />
-                        <span>
-                          {topic.title}
-                          <TeacherExtraBadge source={topic.source} />
-                        </span>
-                      </label>
-                    )
-                  })}
-                </div>
-              </fieldset>
-            )
-          })}
+      {bySubject.map(([subject, grades]) => (
+        <div key={subject} className="exam-subject">
+          {bySubject.length > 1 && (
+            <h3 className="exam-grade__title">{subject}</h3>
+          )}
+          {grades.map(({ moduleId, grade }) => (
+            <div key={moduleId} className="exam-grade">
+              <h4 className="exam-pool__title">{grade.title}</h4>
+              {grade.areas.map((area) => {
+                const playable = area.topics.filter((topic) => !topic.outlineOnly)
+                if (playable.length === 0) return null
+                return (
+                  <fieldset key={area.id} className="exam-area">
+                    <legend className="exam-area__legend">{area.title}</legend>
+                    <div className="exam-area__topics">
+                      {playable.map((topic) => {
+                        const key = examThemeKey(moduleId, topic.id)
+                        return (
+                          <label key={key} className="exam-check">
+                            <input
+                              type="checkbox"
+                              checked={selected.has(key)}
+                              onChange={() => onToggle(key)}
+                            />
+                            <span>
+                              {topic.title}
+                              <TeacherExtraBadge source={topic.source} />
+                            </span>
+                          </label>
+                        )
+                      })}
+                    </div>
+                  </fieldset>
+                )
+              })}
+            </div>
+          ))}
         </div>
       ))}
     </div>
@@ -523,6 +606,7 @@ function ProposalPool({
   seeds,
   selections,
   onToggle,
+  onSelectAll,
   onSetPunkte,
   onRefresh,
 }: {
@@ -530,6 +614,7 @@ function ProposalPool({
   seeds: number[]
   selections: Record<string, number>
   onToggle: (entry: TopicEntry, seed: number) => void
+  onSelectAll: () => void
   onSetPunkte: (sk: string, punkte: number) => void
   onRefresh: () => void
 }) {
@@ -537,6 +622,9 @@ function ProposalPool({
     () => seeds.map((seed) => ({ seed, task: entry.topic.generate(createRng(seed)) })),
     [seeds, entry.topic],
   )
+  const selectedInPool = proposals.filter(
+    ({ seed }) => examSelKey(entry.moduleId, entry.topicId, seed) in selections,
+  ).length
 
   return (
     <div className="exam-pool">
@@ -544,12 +632,19 @@ function ProposalPool({
         <div>
           <h3 className="exam-pool__title">{entry.topic.title}</h3>
           <p className="muted small">
-            {entry.gradeTitle} · {entry.areaTitle}
+            {entry.subject} · {entry.gradeTitle} · {entry.areaTitle}
           </p>
         </div>
-        <button type="button" className="ghost" onClick={onRefresh}>
-          Neue Vorschläge
-        </button>
+        <div className="exam-themes__actions">
+          {selectedInPool < proposals.length && (
+            <button type="button" className="link" onClick={onSelectAll}>
+              Alle auswählen
+            </button>
+          )}
+          <button type="button" className="ghost" onClick={onRefresh}>
+            Neue Vorschläge
+          </button>
+        </div>
       </div>
       <ul className="exam-pool__list">
         {proposals.map(({ seed, task }) => {

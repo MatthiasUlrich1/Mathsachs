@@ -9,6 +9,21 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.25] – 2026-09-17
+
+### Neu
+- Lehrer-Profil: mehrere **Fächer per Checkbox**; Themen und Klausur erstellen
+  zeigen nur die ausgewählten Fächer (auch in der Web-App).
+- Klausur erstellen: Themen nach Fach getrennt; **Alle auswählen** bei Themen
+  und bei den Aufgabenvorschlägen.
+
+### Behoben
+- Klausur schreiben: während des Lösens steht die Punktanzeige auf
+  `0 / Gesamt` (nicht mehr die Maximalpunkte wie schon erreicht).
+- **Gelöst-Zähler:** Eingefügter MSX1-Code wird wieder der Klassenklausur
+  zugeordnet (`POST …/complete`); Lehreransicht aktualisiert den Zähler
+  regelmäßig und beim Zurückkehren in den Tab.
+
 ## [0.27.24] – 2026-09-17
 
 ### Behoben
