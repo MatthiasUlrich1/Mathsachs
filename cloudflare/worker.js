@@ -25,6 +25,7 @@
  * POST /stats/install stores only `{ count }` — no IP persistence beyond
  * the short-lived rate-limit map in Worker memory.
  */
+// @ts-nocheck — plain Worker JS; Cloudflare editor checkJs unions are noisy.
 
 const BERLIN_TZ = 'Europe/Berlin'
 const CLASS_CODE_ALPHABET = '0123456789ABCDEFGHJKMNPQRSTVWXYZ'
@@ -1560,10 +1561,14 @@ async function allocateExamId(env) {
 
 function readExamCreateBody(body) {
   const named = readDisplayName(body, 'Bitte einen Klausur-Namen eingeben.')
-  if (named.error) return { error: named.error, code: 'BAD_NAME' }
+  if (named.error) return { ok: false, error: named.error, code: 'BAD_NAME' }
   const examCode = typeof body.examCode === 'string' ? body.examCode.trim() : ''
   if (!examCode.startsWith('MSX1:') || examCode.length > MAX_EXAM_CODE_PAYLOAD) {
-    return { error: 'Bitte einen gültigen Klausurcode (MSX1:…) senden.', code: 'BAD_EXAM' }
+    return {
+      ok: false,
+      error: 'Bitte einen gültigen Klausurcode (MSX1:…) senden.',
+      code: 'BAD_EXAM',
+    }
   }
   const taskCount =
     typeof body.taskCount === 'number' && Number.isFinite(body.taskCount)
@@ -1578,33 +1583,36 @@ function readExamCreateBody(body) {
   const classId = typeof body.classId === 'string' ? body.classId.trim() : ''
   if (isValidClassCode(hostCode)) {
     return {
+      ok: true,
       hostCode,
       name: named.name,
       examCode,
-      ...(taskCount != null ? { taskCount } : {}),
-      ...(totalPoints != null ? { totalPoints } : {}),
+      taskCount,
+      totalPoints,
     }
   }
   if (isValidClassCode(gradeCode) && classId) {
     return {
+      ok: true,
       gradeCode,
       classId,
       name: named.name,
       examCode,
-      ...(taskCount != null ? { taskCount } : {}),
-      ...(totalPoints != null ? { totalPoints } : {}),
+      taskCount,
+      totalPoints,
     }
   }
   return {
+    ok: false,
     error:
       'Bitte einen Klassencode senden — oder Stufencode plus Klassen-ID (aus der Stufe).',
     code: 'BAD_HOST',
   }
 }
 
-async function resolveExamHostCode(env, parsed) {
-  if (parsed.hostCode) return { hostCode: parsed.hostCode }
-  const loadedGrade = await loadGrade(env, parsed.gradeCode)
+async function resolveExamHostCode(env, input) {
+  if (input.hostCode) return { hostCode: input.hostCode }
+  const loadedGrade = await loadGrade(env, input.gradeCode)
   if (loadedGrade.error) {
     const status =
       loadedGrade.error === 'BAD_CODE' || loadedGrade.error === 'NOT_GRADE'
@@ -1623,7 +1631,7 @@ async function resolveExamHostCode(env, parsed) {
     return { error: { status, message, code: loadedGrade.error } }
   }
   const match = (loadedGrade.stored.classes || []).find(
-    (code) => publicIdFromCode(code) === parsed.classId,
+    (code) => publicIdFromCode(code) === input.classId,
   )
   if (!match) {
     return {
@@ -1657,20 +1665,11 @@ async function handleCreateExam(request, env) {
     return errorJson(request, 400, 'Ungültiges JSON.', 'BAD_JSON')
   }
   const parsed = readExamCreateBody(body)
-  if (parsed.error) return errorJson(request, 400, parsed.error, parsed.code)
-  const examName = typeof parsed.name === 'string' ? parsed.name : ''
-  const examCode = typeof parsed.examCode === 'string' ? parsed.examCode : ''
-  const examTaskCount =
-    typeof parsed.taskCount === 'number' && Number.isFinite(parsed.taskCount)
-      ? parsed.taskCount
-      : undefined
-  const examTotalPoints =
-    typeof parsed.totalPoints === 'number' && Number.isFinite(parsed.totalPoints)
-      ? parsed.totalPoints
-      : undefined
-  if (!examName || !examCode.startsWith('MSX1:')) {
-    return errorJson(request, 400, 'Bitte einen gültigen Klausurcode (MSX1:…) senden.', 'BAD_EXAM')
-  }
+  if (!parsed.ok) return errorJson(request, 400, parsed.error, parsed.code)
+  const examName = parsed.name
+  const examCode = parsed.examCode
+  const examTaskCount = parsed.taskCount
+  const examTotalPoints = parsed.totalPoints
 
   const resolved = await resolveExamHostCode(env, parsed)
   if (resolved.error) {
