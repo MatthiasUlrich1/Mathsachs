@@ -963,6 +963,22 @@ async function putClass(env, code, stored) {
   await env.CLASSES.put(code, JSON.stringify(serializeClass(stored)))
 }
 
+/** Per-class write gate inside one Worker isolate (limits lost updates under burst POSTs). */
+const classWriteTails = new Map()
+
+function withClassWriteLock(code, work) {
+  const prev = classWriteTails.get(code) || Promise.resolve()
+  const run = prev.then(work, work)
+  classWriteTails.set(
+    code,
+    run.then(
+      () => undefined,
+      () => undefined,
+    ),
+  )
+  return run
+}
+
 async function handleDelete(request, env, rawCode) {
   if (!rateLimit(`delete:${clientKey(request)}`, RATE_LIMITS.delete.limit, RATE_LIMITS.delete.windowMs)) {
     return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
@@ -1010,53 +1026,60 @@ async function handlePoints(request, env, rawCode) {
     )
   }
   const topicId = typeof body.topicId === 'string' ? body.topicId.trim() : ''
-  const loaded = await loadClass(env, rawCode)
-  const err = classLoadError(request, loaded, true)
-  if (err) return err
-  const now = Date.now()
-  const day = berlinDayKey(now)
-  const days = { ...loaded.stored.days }
-  days[day] = (asPoints(days[day]) || 0) + delta
-  const stored = { ...loaded.stored, days, challenges: { ...(loaded.stored.challenges || {}) } }
-  if (topicId) {
-    for (const ch of Object.values(stored.challenges)) {
-      if (!isInChallengeWindow(ch.start, ch.end, now)) continue
-      if (!topicAllowed(ch, topicId)) continue
-      const challengeDays = { ...(ch.days || {}) }
-      challengeDays[day] = (asPoints(challengeDays[day]) || 0) + delta
-      ch.days = challengeDays
-    }
-    if (stored.gradeId) {
-      const grade = parseGradeStored(await env.CLASSES.get(stored.gradeId))
-      if (grade) {
-        let gradeChanged = false
-        const gradeChallenges = { ...(grade.challenges || {}) }
-        for (const ch of Object.values(gradeChallenges)) {
-          if (!isInChallengeWindow(ch.start, ch.end, now)) continue
-          if (!topicAllowed(ch, topicId)) continue
-          const classDays = { ...(ch.classDays || {}) }
-          const bucket = { ...(classDays[loaded.code] || {}) }
-          bucket[day] = (asPoints(bucket[day]) || 0) + delta
-          classDays[loaded.code] = bucket
-          ch.classDays = classDays
-          gradeChanged = true
-        }
-        if (gradeChanged) {
-          await env.CLASSES.put(
-            stored.gradeId,
-            JSON.stringify(serializeGrade({ ...grade, challenges: gradeChallenges })),
-          )
+  const codeHint = normalizeClassCode(rawCode)
+  if (!isValidClassCode(codeHint)) {
+    return errorJson(request, 400, 'Der Klassencode ist ungültig.', 'BAD_CODE')
+  }
+
+  return withClassWriteLock(codeHint, async () => {
+    const loaded = await loadClass(env, rawCode)
+    const err = classLoadError(request, loaded, true)
+    if (err) return err
+    const now = Date.now()
+    const day = berlinDayKey(now)
+    const days = { ...loaded.stored.days }
+    days[day] = (asPoints(days[day]) || 0) + delta
+    const stored = { ...loaded.stored, days, challenges: { ...(loaded.stored.challenges || {}) } }
+    if (topicId) {
+      for (const ch of Object.values(stored.challenges)) {
+        if (!isInChallengeWindow(ch.start, ch.end, now)) continue
+        if (!topicAllowed(ch, topicId)) continue
+        const challengeDays = { ...(ch.days || {}) }
+        challengeDays[day] = (asPoints(challengeDays[day]) || 0) + delta
+        ch.days = challengeDays
+      }
+      if (stored.gradeId) {
+        const grade = parseGradeStored(await env.CLASSES.get(stored.gradeId))
+        if (grade) {
+          let gradeChanged = false
+          const gradeChallenges = { ...(grade.challenges || {}) }
+          for (const ch of Object.values(gradeChallenges)) {
+            if (!isInChallengeWindow(ch.start, ch.end, now)) continue
+            if (!topicAllowed(ch, topicId)) continue
+            const classDays = { ...(ch.classDays || {}) }
+            const bucket = { ...(classDays[loaded.code] || {}) }
+            bucket[day] = (asPoints(bucket[day]) || 0) + delta
+            classDays[loaded.code] = bucket
+            ch.classDays = classDays
+            gradeChanged = true
+          }
+          if (gradeChanged) {
+            await env.CLASSES.put(
+              stored.gradeId,
+              JSON.stringify(serializeGrade({ ...grade, challenges: gradeChallenges })),
+            )
+          }
         }
       }
     }
-  }
-  await putClass(env, loaded.code, stored)
-  let gradeView = null
-  if (stored.gradeId) {
-    const grade = parseGradeStored(await env.CLASSES.get(stored.gradeId))
-    if (grade) gradeView = await buildGradeView(env, stored.gradeId, grade, now)
-  }
-  return json(request, 200, publicClass(loaded.code, stored, now, gradeView))
+    await putClass(env, loaded.code, stored)
+    let gradeView = null
+    if (stored.gradeId) {
+      const grade = parseGradeStored(await env.CLASSES.get(stored.gradeId))
+      if (grade) gradeView = await buildGradeView(env, stored.gradeId, grade, now)
+    }
+    return json(request, 200, publicClass(loaded.code, stored, now, gradeView))
+  })
 }
 
 async function handleCreateGrade(request, env) {

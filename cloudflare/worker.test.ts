@@ -140,6 +140,30 @@ describe('Cloudflare Worker API', () => {
     expect(gone.status).toBe(404)
   })
 
+  it('keeps all concurrent point deltas for the same class', async () => {
+    const kv = env()
+    const created = await postJson('/classes', { name: '6a' }, kv)
+    const { code } = (await created.json()) as { code: string }
+
+    const posts = [11, 22, 33, 44].map((delta) =>
+      worker.fetch(
+        request(`/classes/${code}/points`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ delta }),
+        }),
+        kv,
+      ),
+    )
+    const results = await Promise.all(posts)
+    expect(results.every((res) => res.status === 200)).toBe(true)
+
+    const got = await worker.fetch(request(`/classes/${code}`), kv)
+    const body = (await got.json()) as { points: { total: number; today: number } }
+    expect(body.points.total).toBe(110)
+    expect(body.points.today).toBe(110)
+  })
+
   it('answers CORS preflight and echoes allowed methods', async () => {
     const res = await worker.fetch(
       request('/classes', {

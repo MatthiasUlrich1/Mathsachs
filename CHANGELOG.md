@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.28] – 2026-09-17
+
+### Behoben
+- **Stufen-Wettbewerb:** Punkte-Übertragungen laufen nacheinander (Client + Worker),
+  damit parallele POSTs in KV sich nicht mehr gegenseitig überschreiben.
+- Punkteprotokoll zeigt zusätzlich den **Online-Stand** der Klasse neben dem
+  lokalen Vormerken. Worker bitte aktualisieren (`cloudflare/worker.js`).
+
 ## [0.27.27] – 2026-09-17
 
 ### Behoben

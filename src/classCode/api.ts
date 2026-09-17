@@ -534,6 +534,22 @@ const chunkDelta = (delta: number): number[] => {
   return chunks
 }
 
+/** Serialize POSTs so concurrent sessions/topics cannot overwrite KV day buckets. */
+const pointsPostTailByCode = new Map<string, Promise<unknown>>()
+
+const enqueuePointsPost = <T>(code: string, work: () => Promise<T>): Promise<T> => {
+  const prev = pointsPostTailByCode.get(code) ?? Promise.resolve()
+  const next = prev.then(work, work)
+  pointsPostTailByCode.set(
+    code,
+    next.then(
+      () => undefined,
+      () => undefined,
+    ),
+  )
+  return next
+}
+
 export async function addClassPoints(
   code: string,
   delta: number,
@@ -545,15 +561,17 @@ export async function addClassPoints(
   if (!isValidClassCode(normalized)) return null
   const chunks = chunkDelta(delta)
   if (chunks.length === 0) return null
-  let last: ClassStats | null = null
-  for (const piece of chunks) {
-    const json = await requestJson(classPointsUrl(normalized, api), {
-      method: 'POST',
-      body: JSON.stringify(classPointsPayload(piece, topicId)),
-    })
-    last = parseClassStats(json)
-  }
-  return last
+  return enqueuePointsPost(normalized, async () => {
+    let last: ClassStats | null = null
+    for (const piece of chunks) {
+      const json = await requestJson(classPointsUrl(normalized, api), {
+        method: 'POST',
+        body: JSON.stringify(classPointsPayload(piece, topicId)),
+      })
+      last = parseClassStats(json)
+    }
+    return last
+  })
 }
 
 export interface CreateChallengeInput {

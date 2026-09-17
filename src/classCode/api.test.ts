@@ -203,6 +203,35 @@ describe('class API client', () => {
     expect(deltas).toEqual([100, 50])
   })
 
+  it('serializes concurrent point posts for the same class', async () => {
+    let inflight = 0
+    let maxInflight = 0
+    const order: number[] = []
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (_input: RequestInfo | URL, init?: RequestInit) => {
+        const body = JSON.parse(String(init?.body)) as { delta: number }
+        inflight += 1
+        maxInflight = Math.max(maxInflight, inflight)
+        await new Promise((r) => setTimeout(r, 20))
+        order.push(body.delta)
+        inflight -= 1
+        return jsonResponse({
+          code: 'ABCD2345',
+          name: '6a',
+          points: { today: body.delta, week: 0, month: 0, year: 0, total: body.delta },
+        })
+      }),
+    )
+    await Promise.all([
+      addClassPoints('ABCD2345', 3, 'https://example.test'),
+      addClassPoints('ABCD2345', 5, 'https://example.test'),
+      addClassPoints('ABCD2345', 7, 'https://example.test'),
+    ])
+    expect(maxInflight).toBe(1)
+    expect(order).toEqual([3, 5, 7])
+  })
+
   it('creates a grade and reads a competition view without member codes', async () => {
     const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
       const url = String(input)

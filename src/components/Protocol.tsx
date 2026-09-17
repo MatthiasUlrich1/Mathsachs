@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { getClass, type GradeSummary } from '../classCode/api'
+import type { ClassPointBreakdown } from '../classCode/buckets'
 import {
   buildProtocol,
   cacheKnownClassName,
@@ -52,6 +53,8 @@ function PeriodStats({ summary }: { summary: ClassPointSummary }) {
 export function Protocol({ user, onExit }: Props) {
   const [protocol, setProtocol] = useState(() => buildProtocol(user))
   const [grade, setGrade] = useState<GradeSummary | null>(null)
+  const [onlineClassPoints, setOnlineClassPoints] = useState<ClassPointBreakdown | null>(null)
+  const [onlineClassName, setOnlineClassName] = useState<string | null>(null)
   useEffect(() => {
     const refresh = () => setProtocol(buildProtocol(user))
     refresh()
@@ -63,6 +66,8 @@ export function Protocol({ user, onExit }: Props) {
     const active = getClassCodeSettings(user).activeCode
     if (!active) {
       setGrade(null)
+      setOnlineClassPoints(null)
+      setOnlineClassName(null)
       return
     }
     void getClass(active)
@@ -70,9 +75,15 @@ export function Protocol({ user, onExit }: Props) {
         if (cancelled) return
         cacheKnownClassName(stats.code, stats.name)
         setGrade(stats.grade ?? null)
+        setOnlineClassName(stats.name)
+        setOnlineClassPoints(stats.points)
       })
       .catch(() => {
-        if (!cancelled) setGrade(null)
+        if (!cancelled) {
+          setGrade(null)
+          setOnlineClassPoints(null)
+          setOnlineClassName(null)
+        }
       })
     return () => {
       cancelled = true
@@ -190,9 +201,24 @@ export function Protocol({ user, onExit }: Props) {
                 ) : (
                   <> {transferGroups.length} Klassen</>
                 )}{' '}
-                — gezählt beim Senden, auch wenn das Netz später fehlt.
+                — lokal vorgemerkt. Die Stufenliste zeigt den Online-Stand der Klasse.
               </p>
               <PeriodStats summary={protocol.transfers.summary} />
+              {onlineClassPoints && (
+                <p className="muted small">
+                  Online
+                  {onlineClassName ? (
+                    <>
+                      {' '}
+                      (<strong>{onlineClassName}</strong>)
+                    </>
+                  ) : null}
+                  : {onlineClassPoints.total} Gesamt · Tag {onlineClassPoints.today}
+                  {onlineClassPoints.total < transferTotal
+                    ? ' — niedriger als lokal: frühere parallele Übertragungen können verloren gegangen sein; neue Punkte werden ab jetzt nacheinander gesendet.'
+                    : ''}
+                </p>
+              )}
               {transferGroups.length > 1 &&
                 transferGroups.map((group) => (
                   <div key={group.code} className="protocol-transfer">
