@@ -9,6 +9,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.22] – 2026-09-17
+
 ### Behoben
 - **Klausur bearbeiten (Physik):** Themen aller geladenen Lehrpläne sind
   verfügbar; fehlende Module werden beim Bearbeiten nachgeladen (#44).
