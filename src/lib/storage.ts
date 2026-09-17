@@ -201,6 +201,27 @@ const isHttpOrigin = (): boolean => {
   }
 }
 
+/** LAN Electron server only — static hosts (GitHub Pages) have no /api/state. */
+const shouldTryHttpState = (): boolean => {
+  if (!isHttpOrigin()) return false
+  try {
+    const host = String(location.hostname || '').toLowerCase()
+    if (!host) return false
+    if (
+      host === 'localhost' ||
+      host === '127.0.0.1' ||
+      host.endsWith('.local') ||
+      /^\d{1,3}(\.\d{1,3}){3}$/.test(host)
+    ) {
+      return true
+    }
+    // github.io / other static CDNs → browser localStorage only
+    return false
+  } catch {
+    return false
+  }
+}
+
 const isRecordMap = (value: unknown): value is Record<string, UserData> =>
   typeof value === 'object' && value !== null && !Array.isArray(value)
 
@@ -323,7 +344,7 @@ export const syncCurriculumPacksToShared = (): void => {
 const detectBackend = async (): Promise<StorageBackend> => {
   const desktop = desktopBridge()
   if (desktop) return 'ipc'
-  if (!isHttpOrigin()) return 'local'
+  if (!shouldTryHttpState()) return 'local'
   try {
     const remote = await fetchHttpState()
     if (remote) return 'http'

@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.21] – 2026-09-17
+
+### Neu
+- **GitHub Pages Web-App:** Build/Deploy-Workflow; Site unter
+  https://matthiasulrich1.github.io/Mathsachs/ (Browser-localStorage,
+  Export/Import der Benutzerdaten wie bisher).
+
+### Behoben
+- Weiße Seite auf Pages: Quellcode statt Vite-Build wurde ausgeliefert.
+- Auf github.io kein Versuch mehr, `/api/state` zu laden (nur LAN/Desktop).
+
 ## [0.27.20] – 2026-09-16
 
 ### Behoben

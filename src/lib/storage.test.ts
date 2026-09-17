@@ -144,7 +144,7 @@ describe('storage adapter', () => {
       }
       return jsonResponse({ error: 'nope' }, 405)
     })
-    vi.stubGlobal('location', { protocol: 'http:' })
+    vi.stubGlobal('location', { protocol: 'http:', hostname: '127.0.0.1' })
     vi.stubGlobal('fetch', fetchMock)
 
     await initSharedStorage()
@@ -161,6 +161,25 @@ describe('storage adapter', () => {
         (call) => String(call[0]).includes('/api/state') && call[1]?.method === 'PUT',
       ),
     ).toBe(true)
+  })
+
+  it('uses localStorage on GitHub Pages (no /api/state)', async () => {
+    const local = memoryStorage()
+    const fetchMock = vi.fn(async () => htmlResponse())
+    vi.stubGlobal('localStorage', local)
+    vi.stubGlobal('location', {
+      protocol: 'https:',
+      hostname: 'matthiasulrich1.github.io',
+    })
+    vi.stubGlobal('fetch', fetchMock)
+
+    await initSharedStorage()
+    expect(getSharedStorageBackendForTests()).toBe('local')
+    expect(fetchMock).not.toHaveBeenCalled()
+    addUser('Ada')
+    await vi.waitFor(() => {
+      expect(JSON.parse(local.getItem(USERS_STORAGE_KEY) ?? '[]')).toEqual(['Ada'])
+    })
   })
 
   it('uses the desktop IPC bridge when preload is present', async () => {
