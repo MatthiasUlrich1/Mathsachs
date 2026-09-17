@@ -9,7 +9,7 @@
  * GET class/grade 300, DELETE 30, POST /classes 8, POST /grades 8,
  * POST /challenges 8, PUT /challenges/:id 30, DELETE /challenges/:id 30,
  * POST /exams 8, PUT /exams/:id 30, DELETE /exams/:id 30,
- * POST /exams/:id/complete 60,
+ * POST /exams/complete 60, POST /exams/:id/complete 60,
  * POST /stats/install 5 / 24h (anonymous install ping),
  * GET /stats/install 60,
  * PUT grade membership 30, POST points 60.
@@ -371,7 +371,11 @@ function publicTopics(ch) {
 function publicClassChallenge(ch, className, now) {
   const summary = summarizeDays(ch.days, now)
   const prize = publicPrize(ch.prize)
-  const body = {
+  const threshold =
+    prize.enabled && prize.classPrize && typeof prize.classThreshold === 'number'
+      ? prize.classThreshold
+      : null
+  return {
     id: ch.id,
     name: ch.name,
     scope: 'class',
@@ -390,12 +394,13 @@ function publicClassChallenge(ch, className, now) {
     },
     className,
     active: isInChallengeWindow(ch.start, ch.end, now),
+    ...(threshold != null
+      ? {
+          classThreshold: threshold,
+          reachedThreshold: summary.total >= threshold,
+        }
+      : {}),
   }
-  if (prize.enabled && prize.classPrize && typeof prize.classThreshold === 'number') {
-    body.classThreshold = prize.classThreshold
-    body.reachedThreshold = summary.total >= prize.classThreshold
-  }
-  return body
 }
 
 function publicGradeChallenge(ch, grade, now) {
@@ -825,9 +830,7 @@ async function readJson(request) {
   try {
     return JSON.parse(text)
   } catch {
-    const err = new Error('invalid json')
-    err.code = 'INVALID_JSON'
-    throw err
+    throw Object.assign(new Error('invalid json'), { code: 'INVALID_JSON' })
   }
 }
 
@@ -1632,6 +1635,19 @@ async function handleCreateExam(request, env) {
   }
   const parsed = readExamCreateBody(body)
   if (parsed.error) return errorJson(request, 400, parsed.error, parsed.code)
+  const examName = typeof parsed.name === 'string' ? parsed.name : ''
+  const examCode = typeof parsed.examCode === 'string' ? parsed.examCode : ''
+  const examTaskCount =
+    typeof parsed.taskCount === 'number' && Number.isFinite(parsed.taskCount)
+      ? parsed.taskCount
+      : undefined
+  const examTotalPoints =
+    typeof parsed.totalPoints === 'number' && Number.isFinite(parsed.totalPoints)
+      ? parsed.totalPoints
+      : undefined
+  if (!examName || !examCode.startsWith('MSX1:')) {
+    return errorJson(request, 400, 'Bitte einen gültigen Klausurcode (MSX1:…) senden.', 'BAD_EXAM')
+  }
 
   const resolved = await resolveExamHostCode(env, parsed)
   if (resolved.error) {
@@ -1654,12 +1670,12 @@ async function handleCreateExam(request, env) {
 
   const exam = {
     id,
-    name: parsed.name,
-    examCode: parsed.examCode,
+    name: examName,
+    examCode,
     createdAt: Date.now(),
     solveCount: 0,
-    ...(parsed.taskCount != null ? { taskCount: parsed.taskCount } : {}),
-    ...(parsed.totalPoints != null ? { totalPoints: parsed.totalPoints } : {}),
+    ...(examTaskCount != null ? { taskCount: examTaskCount } : {}),
+    ...(examTotalPoints != null ? { totalPoints: examTotalPoints } : {}),
   }
   const stored = {
     ...loaded.stored,
@@ -1809,6 +1825,29 @@ async function handleDeleteExam(request, env, rawId) {
   return json(request, 200, { ok: true, deleted: found.id })
 }
 
+function normalizeExamCodeKey(raw) {
+  return String(raw || '')
+    .trim()
+    .replace(/\s+/g, '')
+}
+
+/** Bump anonymous solveCount for an exam already loaded on its host class. */
+async function bumpExamSolveCount(env, loaded, examId) {
+  const existing = (loaded.stored.exams || {})[examId]
+  if (!existing) return null
+  const prev =
+    typeof existing.solveCount === 'number' && Number.isFinite(existing.solveCount)
+      ? Math.max(0, Math.floor(existing.solveCount))
+      : 0
+  const exam = { ...existing, solveCount: prev + 1 }
+  const stored = {
+    ...loaded.stored,
+    exams: { ...(loaded.stored.exams || {}), [examId]: exam },
+  }
+  await putClass(env, loaded.code, stored)
+  return { exam, stored }
+}
+
 /** Anonymous completion counter — no pupil identity stored. */
 async function handleCompleteExam(request, env, rawId) {
   if (
@@ -1827,19 +1866,56 @@ async function handleCompleteExam(request, env, rawId) {
   const loaded = await loadClass(env, found.index.hostCode)
   const err = classLoadError(request, loaded)
   if (err) return err
-  const existing = (loaded.stored.exams || {})[found.id]
-  if (!existing) return errorJson(request, 404, 'Diese Klausur gibt es nicht.', 'NOT_FOUND')
-  const prev =
-    typeof existing.solveCount === 'number' && Number.isFinite(existing.solveCount)
-      ? Math.max(0, Math.floor(existing.solveCount))
-      : 0
-  const exam = { ...existing, solveCount: prev + 1 }
-  const stored = {
-    ...loaded.stored,
-    exams: { ...(loaded.stored.exams || {}), [found.id]: exam },
+  const bumped = await bumpExamSolveCount(env, loaded, found.id)
+  if (!bumped) return errorJson(request, 404, 'Diese Klausur gibt es nicht.', 'NOT_FOUND')
+  return json(request, 200, publicClassExam(bumped.exam, bumped.stored.name))
+}
+
+/**
+ * Complete by Klassencode + MSX1 payload — clients that only have the share
+ * code (no local exam id) can still increment the Lehrer solveCount.
+ */
+async function handleCompleteExamByCode(request, env) {
+  if (
+    !rateLimit(
+      `examComplete:${clientKey(request)}`,
+      RATE_LIMITS.examComplete.limit,
+      RATE_LIMITS.examComplete.windowMs,
+    )
+  ) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE')
   }
-  await putClass(env, loaded.code, stored)
-  return json(request, 200, publicClassExam(exam, stored.name))
+  let body
+  try {
+    body = await readJson(request)
+  } catch {
+    return errorJson(request, 400, 'Ungültiges JSON.', 'BAD_JSON')
+  }
+  const classCode = normalizeClassCode(body && body.classCode)
+  const examCode = normalizeExamCodeKey(body && body.examCode)
+  if (!isValidClassCode(classCode)) {
+    return errorJson(request, 400, 'Der Klassencode ist ungültig.', 'BAD_CODE')
+  }
+  if (!examCode.startsWith('MSX1:')) {
+    return errorJson(request, 400, 'Der Klausurcode ist ungültig.', 'BAD_EXAM')
+  }
+  const loaded = await loadClass(env, classCode)
+  const err = classLoadError(request, loaded)
+  if (err) return err
+  const match = Object.values(loaded.stored.exams || {}).find(
+    (exam) => normalizeExamCodeKey(exam.examCode) === examCode,
+  )
+  if (!match) {
+    return errorJson(
+      request,
+      404,
+      'Diese Klausur ist der Klasse nicht zugeordnet.',
+      'NOT_FOUND',
+    )
+  }
+  const bumped = await bumpExamSolveCount(env, loaded, match.id)
+  if (!bumped) return errorJson(request, 404, 'Diese Klausur gibt es nicht.', 'NOT_FOUND')
+  return json(request, 200, publicClassExam(bumped.exam, bumped.stored.name))
 }
 
 export async function handleRequest(request, env) {
@@ -1916,6 +1992,10 @@ export async function handleRequest(request, env) {
 
   if (path === '/exams' && method === 'POST') {
     return handleCreateExam(request, env)
+  }
+
+  if (path === '/exams/complete' && method === 'POST') {
+    return handleCompleteExamByCode(request, env)
   }
 
   const examMatch = /^\/exams\/([^/]+)$/.exec(path)

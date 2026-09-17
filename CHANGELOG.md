@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.27] – 2026-09-17
+
+### Behoben
+- Klausur: Antworten und Endpunktzahl zuverlässiger (kein verlorenes Ergebnis
+  beim Abgeben); Anzeige „Bisher X / Y P.“ während des Schreibens.
+- **Gelöst-Zähler:** Abgabe auch über Klassencode + MSX1-Code
+  (`POST /exams/complete`); Hinweis nach erfolgreicher Meldung.
+- Worker: TypeScript-Warnungen im Cloudflare-Editor (Prize/JSON/Exam-Create)
+  bereinigt. Bitte `cloudflare/worker.js` neu deployen.
+
 ## [0.27.26] – 2026-09-17
 
 ### Behoben

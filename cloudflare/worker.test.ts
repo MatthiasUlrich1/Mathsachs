@@ -786,12 +786,20 @@ describe('Challenge Worker API', () => {
     expect(twice.status).toBe(200)
     await expect(twice.json()).resolves.toMatchObject({ solveCount: 2 })
 
+    const byCode = await postJson(
+      '/exams/complete',
+      { classCode: code, examCode },
+      kv,
+    )
+    expect(byCode.status).toBe(200)
+    await expect(byCode.json()).resolves.toMatchObject({ id: exam.id, solveCount: 3 })
+
     const klass = await worker.fetch(request(`/classes/${code}`), kv)
     const body = (await klass.json()) as {
       exams: Array<{ id: string; solveCount: number }>
     }
     expect(body.exams).toEqual(
-      expect.arrayContaining([expect.objectContaining({ id: exam.id, solveCount: 2 })]),
+      expect.arrayContaining([expect.objectContaining({ id: exam.id, solveCount: 3 })]),
     )
   })
 

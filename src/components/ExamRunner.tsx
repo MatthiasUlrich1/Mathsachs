@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { emptyInput, type UserInput } from '../curriculum/types'
 import {
   getClassCodeSettings,
@@ -6,7 +6,12 @@ import {
   markClassExamCompleted,
   recordSession,
 } from '../lib/storage'
-import { getClass, completeClassExam, type ClassExamSummary } from '../classCode/api'
+import {
+  getClass,
+  completeClassExam,
+  completeClassExamByCode,
+  type ClassExamSummary,
+} from '../classCode/api'
 import { AnswerInput } from './AnswerInput'
 import { ExamProtocolSheet, formatExamAnswer } from './ExamProtocolSheet'
 import { initTaskInput, TaskInteractive, TaskVisual } from './TaskMedia'
@@ -43,6 +48,8 @@ interface TaskResult {
   earned: number
 }
 
+const normalizeExamCodeKey = (raw: string): string => raw.trim().replace(/\s+/g, '')
+
 export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props) {
   const [phase, setPhase] = useState<Phase>(initialCode ? 'ready' : 'input')
   const [codeText, setCodeText] = useState(initialCode ?? '')
@@ -51,6 +58,8 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
 
   const [resolved, setResolved] = useState<ResolvedExamTask[]>([])
   const [answers, setAnswers] = useState<UserInput[]>([])
+  const answersRef = useRef<UserInput[]>([])
+  const resolvedRef = useRef<ResolvedExamTask[]>([])
   const [current, setCurrent] = useState(0)
   /** Points locked when leaving a task (index → earned). */
   const [lockedEarned, setLockedEarned] = useState<Record<number, number>>({})
@@ -63,10 +72,15 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
   const [completedIds, setCompletedIds] = useState(() => new Set(getCompletedClassExamIds()))
   const [activeClassExamId, setActiveClassExamId] = useState<string | null>(null)
 
+  answersRef.current = answers
+  resolvedRef.current = resolved
+
   const matchClassExamId = (examCode: string): string | null => {
-    const trimmed = examCode.trim()
+    const trimmed = normalizeExamCodeKey(examCode)
     if (!trimmed) return null
-    return classExams.find((exam) => exam.examCode.trim() === trimmed)?.id ?? null
+    return (
+      classExams.find((exam) => normalizeExamCodeKey(exam.examCode) === trimmed)?.id ?? null
+    )
   }
 
   useEffect(() => {
@@ -154,12 +168,33 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
     setError(null)
     try {
       const tasks = await resolveExam(spec)
+      const initialAnswers = tasks.map((t) => initTaskInput(t.task))
       setResolved(tasks)
-      setAnswers(tasks.map((t) => initTaskInput(t.task)))
+      resolvedRef.current = tasks
+      setAnswers(initialAnswers)
+      answersRef.current = initialAnswers
       setLockedEarned({})
+      setResults([])
       setCompleteNotice(null)
       setCurrent(0)
       setPhase('running')
+      // Resolve Klassenklausur-ID early so Abgabe can update the Lehrer-Zähler.
+      const examCode = codeText.trim() || initialCode?.trim() || ''
+      const classCode = getClassCodeSettings().activeCode
+      if (!activeClassExamId && classCode && examCode) {
+        void getClass(classCode)
+          .then((stats) => {
+            setClassExams(stats.exams ?? [])
+            const id =
+              stats.exams?.find(
+                (exam) => normalizeExamCodeKey(exam.examCode) === normalizeExamCodeKey(examCode),
+              )?.id ?? null
+            if (id) setActiveClassExamId(id)
+          })
+          .catch(() => {
+            /* offline */
+          })
+      }
     } catch (e) {
       setError(
         e instanceof ExamCodeError
@@ -175,12 +210,17 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
     [spec],
   )
 
-  const lockTaskEarned = (index: number, answerList: UserInput[] = answers) => {
-    const row = resolved[index]
-    if (!row) return
+  const scoreTask = (index: number, answerList: UserInput[], rows: ResolvedExamTask[]) => {
+    const row = rows[index]
+    if (!row) return { answer: emptyInput('text'), correct: false, earned: 0 }
     const answer = answerList[index] ?? initTaskInput(row.task)
     const earned = examTaskEarned(row.task, answer, row.punkte, { requireAttempt: false })
-    setLockedEarned((prev) => ({ ...prev, [index]: earned }))
+    return { answer, correct: earned > 0, earned }
+  }
+
+  const lockTaskEarned = (index: number, answerList: UserInput[] = answersRef.current) => {
+    const scored = scoreTask(index, answerList, resolvedRef.current)
+    setLockedEarned((prev) => ({ ...prev, [index]: scored.earned }))
   }
 
   const liveEarned = useMemo(() => {
@@ -198,55 +238,84 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
     return sum
   }, [resolved, answers, lockedEarned, current])
 
-  const setAnswer = (input: UserInput) =>
-    setAnswers((prev) => prev.map((a, i) => (i === current ? input : a)))
+  const setAnswer = (input: UserInput) => {
+    setAnswers((prev) => {
+      const next = prev.map((a, i) => (i === current ? input : a))
+      answersRef.current = next
+      return next
+    })
+  }
 
   const goToTask = (next: number) => {
-    lockTaskEarned(current)
+    lockTaskEarned(current, answersRef.current)
     setCurrent(next)
   }
 
   const reportClassExamComplete = async () => {
-    const examCode = codeText.trim()
+    const examCode = normalizeExamCodeKey(codeText)
     let examId = activeClassExamId || matchClassExamId(examCode)
     const classCode = getClassCodeSettings().activeCode
     if (!examId && classCode && examCode) {
       try {
         const stats = await getClass(classCode)
         examId =
-          stats.exams?.find((exam) => exam.examCode.trim() === examCode)?.id ?? null
+          stats.exams?.find(
+            (exam) => normalizeExamCodeKey(exam.examCode) === examCode,
+          )?.id ?? null
         if (examId) setActiveClassExamId(examId)
         setClassExams(stats.exams ?? [])
       } catch {
         /* offline */
       }
     }
-    if (!examId) {
-      setCompleteNotice(
-        classCode
-          ? 'Klausur abgegeben. Der Klassen-Zähler konnte nicht aktualisiert werden (Klausur nicht in dieser Klasse gefunden).'
-          : 'Klausur abgegeben. Für den Lehrer-Zähler bitte den Klassencode aktivieren und die Klausur über die Klassenliste starten — oder denselben Code erneut mit aktivem Klassencode abgeben.',
-      )
-      return
-    }
-    markClassExamCompleted(examId)
-    setCompletedIds(new Set(getCompletedClassExamIds()))
     try {
-      await completeClassExam(examId)
-      setCompleteNotice(null)
-    } catch {
+      let updated: ClassExamSummary | null = null
+      if (examId) {
+        updated = await completeClassExam(examId)
+      } else if (classCode && examCode) {
+        updated = await completeClassExamByCode(classCode, examCode)
+        examId = updated.id
+        setActiveClassExamId(updated.id)
+      } else {
+        setCompleteNotice(
+          classCode
+            ? 'Klausur abgegeben. Der Klassen-Zähler konnte nicht aktualisiert werden (Klausur nicht in dieser Klasse gefunden).'
+            : 'Klausur abgegeben. Für den Lehrer-Zähler bitte den Klassencode aktivieren und die Klausur über die Klassenliste starten — oder denselben Code erneut mit aktivem Klassencode abgeben.',
+        )
+        return
+      }
+      if (examId) {
+        markClassExamCompleted(examId)
+        setCompletedIds(new Set(getCompletedClassExamIds()))
+      }
       setCompleteNotice(
-        'Klausur lokal gespeichert. Der Klassen-Zähler konnte online nicht erhöht werden — Internet/Worker prüfen.',
+        updated
+          ? `Für die Klasse gezählt: jetzt ${updated.solveCount ?? 0}× gelöst.`
+          : null,
+      )
+    } catch {
+      if (examId) {
+        markClassExamCompleted(examId)
+        setCompletedIds(new Set(getCompletedClassExamIds()))
+      }
+      setCompleteNotice(
+        'Klausur lokal gespeichert. Der Klassen-Zähler konnte online nicht erhöht werden — Internet/Worker prüfen (Datei cloudflare/worker.js neu deployen).',
       )
     }
   }
 
   const submit = () => {
-    lockTaskEarned(current)
-    const computed: TaskResult[] = resolved.map((r, i) => {
-      const answer = answers[i] ?? initTaskInput(r.task)
-      const correct = r.task.check(answer)
-      return { resolved: r, answer, correct, earned: correct ? r.punkte : 0 }
+    const answerList = answersRef.current
+    const rows = resolvedRef.current
+    lockTaskEarned(current, answerList)
+    const computed: TaskResult[] = rows.map((r, i) => {
+      const scored = scoreTask(i, answerList, rows)
+      return {
+        resolved: r,
+        answer: scored.answer,
+        correct: scored.correct,
+        earned: scored.earned,
+      }
     })
     setResults(computed)
     persist(computed)
@@ -438,7 +507,7 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
             Aufgabe {current + 1} von {resolved.length}
           </span>
           <span>
-            Punkte: {liveEarned} / {totalPoints}
+            Bisher {liveEarned} / {totalPoints} P.
           </span>
         </div>
         <div className="progress">
@@ -588,7 +657,15 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
 
         {exportActions}
         {pdfNotice && <p className="muted small">{pdfNotice}</p>}
-        {completeNotice && <p className="notice notice--warn">{completeNotice}</p>}
+        {completeNotice && (
+          <p
+            className={`notice ${
+              completeNotice.includes('gezählt') ? 'notice--ok' : 'notice--warn'
+            }`}
+          >
+            {completeNotice}
+          </p>
+        )}
 
         <ol className="exam-review">
           {results.map((r, i) => (

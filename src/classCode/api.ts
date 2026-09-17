@@ -866,4 +866,33 @@ export async function completeClassExam(
   return updated
 }
 
+/**
+ * Increment solveCount when the client knows Klassencode + MSX1 code but not
+ * the Worker exam id (pasted share code with active class).
+ */
+export async function completeClassExamByCode(
+  classCode: string,
+  examCode: string,
+  base: string = CLASS_POINTS_API,
+): Promise<ClassExamSummary> {
+  const normalizedClass = normalizeClassCode(classCode)
+  const normalizedExam = examCode.trim().replace(/\s+/g, '')
+  if (!isValidClassCode(normalizedClass)) {
+    throw new ClassApiError('invalid', 'Der Klassencode ist ungültig.', 400)
+  }
+  if (!normalizedExam.startsWith('MSX1:')) {
+    throw new ClassApiError('invalid', 'Der Klausurcode ist ungültig.', 400)
+  }
+  const json = await requestJson(classApiUrl('/exams/complete', base), {
+    method: 'POST',
+    body: JSON.stringify({ classCode: normalizedClass, examCode: normalizedExam }),
+  })
+  throwIfStubHealth(json)
+  const updated = parseClassExamSummary(json)
+  if (!updated) {
+    throw new ClassApiError('not_ready', CLASS_API_STUB_MESSAGE, 200)
+  }
+  return updated
+}
+
 export { CLASS_CODE_LENGTH, isValidClassCode, normalizeClassCode }
