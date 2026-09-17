@@ -756,7 +756,12 @@ export async function deleteGrade(
 }
 
 export interface CreateClassExamInput {
-  classCode: string
+  /** Klassencode — or omit when using gradeCode + classId. */
+  classCode?: string
+  /** Stufencode — assign without knowing the Klassencode. */
+  gradeCode?: string
+  /** Anonymous class id from getGrade (n…). */
+  classId?: string
   name: string
   examCode: string
   taskCount?: number
@@ -766,11 +771,13 @@ export interface CreateClassExamInput {
 export async function createClassExam(
   input: CreateClassExamInput,
   base: string = CLASS_POINTS_API,
-): Promise<ClassExamSummary> {
+): Promise<ClassExamSummary & { hostCode?: string }> {
   const json = await requestJson(examsUrl(base), {
     method: 'POST',
     body: JSON.stringify({
-      classCode: input.classCode,
+      ...(input.classCode ? { classCode: input.classCode } : {}),
+      ...(input.gradeCode ? { gradeCode: input.gradeCode } : {}),
+      ...(input.classId ? { classId: input.classId } : {}),
       name: input.name.trim(),
       examCode: input.examCode.trim(),
       ...(input.taskCount != null ? { taskCount: input.taskCount } : {}),
@@ -782,7 +789,11 @@ export async function createClassExam(
   if (!created) {
     throw new ClassApiError('not_ready', CLASS_API_STUB_MESSAGE, 200)
   }
-  return created
+  const hostCode =
+    isRecord(json) && typeof json.hostCode === 'string'
+      ? normalizeClassCode(json.hostCode)
+      : undefined
+  return hostCode && isValidClassCode(hostCode) ? { ...created, hostCode } : created
 }
 
 export interface UpdateClassExamInput {

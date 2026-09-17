@@ -4,18 +4,26 @@ import {
   createClassExam,
   deleteClassExam,
   getClass,
+  getGrade,
 } from '../classCode/api'
 import { formatClassCode } from '../classCode/code'
+import { publicIdFromCode } from '../classCode/publicId'
 import { openClassCodeShareUrl } from '../classCode/share'
+import { gradeCodesForChallengeList } from '../challenge/logic'
 import { resolveAddClassValue } from '../exam/classExamAddValue'
 import { groupClassExamsByCode } from '../exam/classExamParse'
 import { deleteClassExamConfirm, type StoredClassExam } from '../exam/classExamTypes'
+import {
+  mergeExamAssignableClasses,
+  parseExamAssignableValue,
+} from '../exam/examAssignableClasses'
 import { decodeExam } from '../exam/examCode'
 import { examCodeMailtoUrl, examCodeWhatsAppUrl } from '../exam/share'
 import {
   forgetCreatedClassExam,
   getClassCodeSettings,
   getCreatedClassExams,
+  getGradeCodeSettings,
   rememberCreatedClassExam,
   subscribeSharedStorage,
 } from '../lib/storage'
@@ -33,16 +41,60 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
   const [error, setError] = useState<string | null>(null)
   const [copiedKey, setCopiedKey] = useState<string | null>(null)
   const [expandedKey, setExpandedKey] = useState<string | null>(null)
-  /** Preferred class code per MSX1 group — only kept while still available. */
+  /** Preferred assignable value per MSX1 group — only kept while still available. */
   const [addClassFor, setAddClassFor] = useState<Record<string, string>>({})
-  const createdClasses = getClassCodeSettings().created
+  const [classSettings, setClassSettings] = useState(() => getClassCodeSettings())
+  const [gradeSettings, setGradeSettings] = useState(() => getGradeCodeSettings())
+  const [gradeClasses, setGradeClasses] = useState<
+    Record<string, Array<{ id: string; name: string }>>
+  >({})
   const groups = useMemo(() => groupClassExamsByCode(exams), [exams])
+  const assignable = useMemo(
+    () =>
+      mergeExamAssignableClasses({
+        classSettings,
+        gradeSettings,
+        gradeClasses,
+      }),
+    [classSettings, gradeSettings, gradeClasses],
+  )
 
   useEffect(() => {
-    const refresh = () => setExams(getCreatedClassExams())
+    const refresh = () => {
+      setExams(getCreatedClassExams())
+      setClassSettings(getClassCodeSettings())
+      setGradeSettings(getGradeCodeSettings())
+    }
     refresh()
     return subscribeSharedStorage(refresh)
   }, [refreshKey])
+
+  useEffect(() => {
+    let cancelled = false
+    const codes = gradeCodesForChallengeList(gradeSettings)
+    if (codes.length === 0) {
+      setGradeClasses({})
+      return
+    }
+    void (async () => {
+      const next: Record<string, Array<{ id: string; name: string }>> = {}
+      for (const gradeCode of codes) {
+        try {
+          const view = await getGrade(gradeCode)
+          next[gradeCode] = (view.classes ?? []).map((c) => ({
+            id: c.id,
+            name: c.name,
+          }))
+        } catch {
+          /* offline */
+        }
+      }
+      if (!cancelled) setGradeClasses(next)
+    })()
+    return () => {
+      cancelled = true
+    }
+  }, [gradeSettings, refreshKey])
 
   // Drop stale dropdown picks when assignments change (assign / remove / sync).
   useEffect(() => {
@@ -51,9 +103,17 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
       const next = { ...prev }
       for (const group of groups) {
         const assigned = new Set(group.assignments.map((a) => a.hostCode))
-        const available = createdClasses
-          .filter((c) => !assigned.has(c.code))
-          .map((c) => c.code)
+        const available = assignable
+          .filter((row) => {
+            if (row.code && assigned.has(row.code)) return false
+            if (row.classId) {
+              for (const host of assigned) {
+                if (publicIdFromCode(host) === row.classId) return false
+              }
+            }
+            return true
+          })
+          .map((c) => c.value)
         const stored = next[group.examCode]
         const resolved = resolveAddClassValue(stored, available)
         if (stored !== resolved) {
@@ -64,7 +124,7 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
       }
       return changed ? next : prev
     })
-  }, [groups, createdClasses])
+  }, [groups, assignable])
 
   // Pull exams (and solveCount) from the Worker for every Klassencode this
   // Lehrer owns — recovers the list if local storage was wiped (e.g. older
@@ -112,24 +172,33 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
     }
   }, [refreshKey])
 
-  const onAddClass = async (seed: StoredClassExam, classCode: string) => {
-    if (!classCode) return
+  const onAddClass = async (seed: StoredClassExam, value: string) => {
+    if (!value) return
     const key = seed.examCode
     setBusyKey(key)
     setError(null)
     try {
+      const parsed = parseExamAssignableValue(value)
+      const label = assignable.find((r) => r.value === value)?.name
       const created = await createClassExam({
-        classCode,
+        ...parsed,
         name: seed.name,
         examCode: seed.examCode,
         taskCount: seed.taskCount,
         totalPoints: seed.totalPoints,
       })
+      const hostCode = created.hostCode || parsed.classCode || ''
+      if (!hostCode) {
+        throw new ClassApiError(
+          'not_ready',
+          'Zuordnung ok, aber der Klassencode fehlt in der Antwort. Bitte Worker aktualisieren.',
+          200,
+        )
+      }
       rememberCreatedClassExam({
         id: created.id,
-        hostCode: classCode,
-        className:
-          created.className ?? createdClasses.find((c) => c.code === classCode)?.name,
+        hostCode,
+        className: created.className ?? label,
         name: created.name,
         examCode: created.examCode,
         createdAt: created.createdAt,
@@ -271,11 +340,19 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
           const busy = busyKey === group.examCode
           const seed = group.assignments[0]
           const assignedCodes = new Set(group.assignments.map((a) => a.hostCode))
-          const availableClasses = createdClasses.filter((c) => !assignedCodes.has(c.code))
-          const availableCodes = availableClasses.map((c) => c.code)
+          const availableClasses = assignable.filter((row) => {
+            if (row.code && assignedCodes.has(row.code)) return false
+            if (row.classId) {
+              for (const host of assignedCodes) {
+                if (publicIdFromCode(host) === row.classId) return false
+              }
+            }
+            return true
+          })
+          const availableValues = availableClasses.map((c) => c.value)
           const addValue = resolveAddClassValue(
             addClassFor[group.examCode],
-            availableCodes,
+            availableValues,
           )
           return (
             <li key={group.examCode} className="class-exam-manager__item">
@@ -321,7 +398,7 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
                   <label className="muted small class-exam-manager__add">
                     Weitere Klasse{' '}
                     <select
-                      key={`${group.examCode}:${availableCodes.join(',')}`}
+                      key={`${group.examCode}:${availableValues.join(',')}`}
                       value={addValue}
                       disabled={busy}
                       onChange={(e) =>
@@ -332,8 +409,9 @@ export function ClassExamManager({ refreshKey = 0, onEdit }: Props) {
                       }
                     >
                       {availableClasses.map((row) => (
-                        <option key={row.code} value={row.code}>
+                        <option key={row.value} value={row.value}>
                           {row.name}
+                          {!row.code && row.gradeCode ? ' (Stufe)' : ''}
                         </option>
                       ))}
                     </select>

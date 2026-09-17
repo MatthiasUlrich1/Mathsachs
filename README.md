@@ -133,7 +133,9 @@ entstehen dieselben Aufgaben.
 2. Reiter **Klausur erstellen** öffnen.
 3. Themen vorauswählen, konkrete Aufgaben auswählen (fünf Vorschläge je Thema,
    Punkte anpassbar), Titel vergeben.
-4. Klausurcode kopieren oder per WhatsApp / Mail teilen.
+4. Optional einer **Klasse zuordnen** (eigener Klassencode oder Klasse einer
+   eingetragenen **Stufe** — nur Codes/IDs, keine Personendaten).
+5. Klausurcode kopieren oder per WhatsApp / Mail teilen.
 
 ### Als Schülerin oder Schüler: Klausur schreiben
 
@@ -173,7 +175,8 @@ Unter **Einstellungen → Klasse**:
 2. Optional **Punkte an Klasse senden** (Opt-in).
 3. **Klassenstufe** (nur Lehrer): Stufencode erzeugen oder eintragen, Klassen
    zuordnen und den **Stufen-Wettbewerb** sehen (Klassennamen und Summen, keine
-   Personendaten).
+   Personendaten). Mit eingetragenem Stufencode kannst du Übungsklausuren auch
+   den Klassen dieser Stufe zuordnen.
 
 ## Idee / Feedback
 

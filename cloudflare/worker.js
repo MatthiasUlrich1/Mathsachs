@@ -1535,10 +1535,6 @@ async function allocateExamId(env) {
 function readExamCreateBody(body) {
   const named = readDisplayName(body, 'Bitte einen Klausur-Namen eingeben.')
   if (named.error) return { error: named.error, code: 'BAD_NAME' }
-  const hostCode = normalizeClassCode(body.classCode)
-  if (!isValidClassCode(hostCode)) {
-    return { error: 'Bitte einen Klassencode senden.', code: 'BAD_HOST' }
-  }
   const examCode = typeof body.examCode === 'string' ? body.examCode.trim() : ''
   if (!examCode.startsWith('MSX1:') || examCode.length > MAX_EXAM_CODE_PAYLOAD) {
     return { error: 'Bitte einen gültigen Klausurcode (MSX1:…) senden.', code: 'BAD_EXAM' }
@@ -1551,13 +1547,68 @@ function readExamCreateBody(body) {
     typeof body.totalPoints === 'number' && Number.isFinite(body.totalPoints)
       ? Math.max(0, Math.floor(body.totalPoints))
       : undefined
-  return {
-    hostCode,
-    name: named.name,
-    examCode,
-    ...(taskCount != null ? { taskCount } : {}),
-    ...(totalPoints != null ? { totalPoints } : {}),
+  const hostCode = normalizeClassCode(body.classCode)
+  const gradeCode = normalizeClassCode(body.gradeCode)
+  const classId = typeof body.classId === 'string' ? body.classId.trim() : ''
+  if (isValidClassCode(hostCode)) {
+    return {
+      hostCode,
+      name: named.name,
+      examCode,
+      ...(taskCount != null ? { taskCount } : {}),
+      ...(totalPoints != null ? { totalPoints } : {}),
+    }
   }
+  if (isValidClassCode(gradeCode) && classId) {
+    return {
+      gradeCode,
+      classId,
+      name: named.name,
+      examCode,
+      ...(taskCount != null ? { taskCount } : {}),
+      ...(totalPoints != null ? { totalPoints } : {}),
+    }
+  }
+  return {
+    error:
+      'Bitte einen Klassencode senden — oder Stufencode plus Klassen-ID (aus der Stufe).',
+    code: 'BAD_HOST',
+  }
+}
+
+async function resolveExamHostCode(env, parsed) {
+  if (parsed.hostCode) return { hostCode: parsed.hostCode }
+  const loadedGrade = await loadGrade(env, parsed.gradeCode)
+  if (loadedGrade.error) {
+    const status =
+      loadedGrade.error === 'BAD_CODE' || loadedGrade.error === 'NOT_GRADE'
+        ? 400
+        : loadedGrade.error === 'NO_KV'
+          ? 503
+          : 404
+    const message =
+      loadedGrade.error === 'BAD_CODE'
+        ? 'Der Stufencode ist ungültig.'
+        : loadedGrade.error === 'NOT_GRADE'
+          ? 'Das ist ein Klassencode, kein Stufencode.'
+          : loadedGrade.error === 'NO_KV'
+            ? 'KV-Bindung CLASSES fehlt.'
+            : 'Diesen Stufencode gibt es nicht.'
+    return { error: { status, message, code: loadedGrade.error } }
+  }
+  const match = (loadedGrade.stored.classes || []).find(
+    (code) => publicIdFromCode(code) === parsed.classId,
+  )
+  if (!match) {
+    return {
+      error: {
+        status: 404,
+        message: 'Diese Klasse gehört nicht zur Stufe (oder die ID ist ungültig).',
+        code: 'NOT_FOUND',
+      },
+    }
+  }
+  return { hostCode: match }
 }
 
 async function handleCreateExam(request, env) {
@@ -1582,12 +1633,22 @@ async function handleCreateExam(request, env) {
   const parsed = readExamCreateBody(body)
   if (parsed.error) return errorJson(request, 400, parsed.error, parsed.code)
 
+  const resolved = await resolveExamHostCode(env, parsed)
+  if (resolved.error) {
+    return errorJson(
+      request,
+      resolved.error.status,
+      resolved.error.message,
+      resolved.error.code,
+    )
+  }
+
   const id = await allocateExamId(env)
   if (!id) {
     return errorJson(request, 503, 'Keine freie Klausur-ID. Bitte erneut versuchen.', 'BUSY')
   }
 
-  const loaded = await loadClass(env, parsed.hostCode)
+  const loaded = await loadClass(env, resolved.hostCode)
   const err = classLoadError(request, loaded)
   if (err) return err
 
@@ -1606,7 +1667,10 @@ async function handleCreateExam(request, env) {
   }
   await putClass(env, loaded.code, stored)
   await env.CLASSES.put(examIndexKey(id), JSON.stringify({ hostCode: loaded.code }))
-  return json(request, 201, publicClassExam(exam, stored.name))
+  return json(request, 201, {
+    ...publicClassExam(exam, stored.name),
+    hostCode: loaded.code,
+  })
 }
 
 async function loadExamHost(env, rawId) {

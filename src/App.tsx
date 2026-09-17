@@ -399,11 +399,9 @@ export default function App() {
     (row) => subjectOf(row.moduleId).toLowerCase() === activeBrowseSubject.toLowerCase(),
   )
 
-  const examLoaded = isTeacherRole(userRole)
-    ? loaded.filter(
-        (row) => subjectOf(row.moduleId).toLowerCase() === preferredSubject.toLowerCase(),
-      )
-    : loaded
+  // All loaded modules — editing a Physik-Klausur must work even if preferred
+  // subject is Mathematik (and vice versa).
+  const examLoaded = loaded
 
   const createUser = () => {
     const name = newName.trim()
@@ -857,6 +855,9 @@ export default function App() {
         <ExamBuilder
           loaded={examLoaded}
           role={userRole}
+          onEnsureModules={async (ids) => {
+            for (const id of ids) await loadCurriculum(id)
+          }}
           onExit={() => setView({ name: 'browse' })}
         />
       )}

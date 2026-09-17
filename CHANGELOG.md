@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+### Behoben
+- **Klausur bearbeiten (Physik):** Themen aller geladenen Lehrpläne sind
+  verfügbar; fehlende Module werden beim Bearbeiten nachgeladen (#44).
+- **Klausur + Stufencode:** Mit eingetragenem Stufencode lassen sich Klausuren
+  auch Klassen der Stufe zuordnen (ohne lokalen Klassencode; nur Codes/IDs)
+  (#46). Worker bitte aktualisieren (`POST /exams` mit `gradeCode` + `classId`).
+
 ## [0.27.21] – 2026-09-17
 
 ### Neu

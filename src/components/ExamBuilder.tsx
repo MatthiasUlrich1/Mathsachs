@@ -1,4 +1,4 @@
-import { useMemo, useState, type MouseEvent } from 'react'
+import { useEffect, useMemo, useState, type MouseEvent } from 'react'
 import { createRng } from '../lib/rng'
 import type { Grade, Task, Topic } from '../curriculum/types'
 import { encodeExam, decodeExam } from '../exam/examCode'
@@ -8,22 +8,30 @@ import {
   examThemeKey,
   hydrateExamBuilderFromSpec,
 } from '../exam/examBuilderState'
+import {
+  mergeExamAssignableClasses,
+  parseExamAssignableValue,
+} from '../exam/examAssignableClasses'
 import { examCodeMailtoUrl, examCodeWhatsAppUrl } from '../exam/share'
 import { openClassCodeShareUrl } from '../classCode/share'
 import {
   ClassApiError,
   createClassExam,
+  getGrade,
   updateClassExam,
 } from '../classCode/api'
 import { CURRICULUM_VERSION } from '../curriculum/registry'
 import { refsForGradeModules } from '../curriculum/versionGate'
 import type { ExamSpec, ExamTaskRef } from '../exam/types'
 import type { StoredClassExam } from '../exam/classExamTypes'
+import { gradeCodesForChallengeList } from '../challenge/logic'
 import { canAssignClassExam } from '../lib/roles'
 import {
   getClassCodeSettings,
   getCreatedClassExams,
+  getGradeCodeSettings,
   rememberCreatedClassExam,
+  subscribeSharedStorage,
 } from '../lib/storage'
 import { TeacherExtraBadge } from './TeacherExtraBadge'
 import { TaskVisual } from './TaskMedia'
@@ -39,6 +47,8 @@ interface Props {
   onExit: () => void
   /** Current user role — Lehrer get class assignment. */
   role?: string
+  /** Load curriculum modules needed to edit an exam (e.g. Physik while Mathe is preferred). */
+  onEnsureModules?: (moduleIds: string[]) => Promise<void>
 }
 
 /** A single selectable topic, flattened out of the loaded grades. */
@@ -63,11 +73,13 @@ interface EditingExam {
 
 const randomSeed = () => Math.floor(Math.random() * 0xffffffff) >>> 0
 
-export function ExamBuilder({ loaded, onExit, role }: Props) {
+export function ExamBuilder({ loaded, onExit, role, onEnsureModules }: Props) {
   const [step, setStep] = useState<1 | 2 | 3>(1)
   const assignEnabled = canAssignClassExam(role)
   const [listRefresh, setListRefresh] = useState(0)
   const [editing, setEditing] = useState<EditingExam | null>(null)
+  const [pendingEdit, setPendingEdit] = useState<StoredClassExam | null>(null)
+  const [editError, setEditError] = useState<string | null>(null)
 
   const entries = useMemo<TopicEntry[]>(() => {
     const list: TopicEntry[] = []
@@ -100,7 +112,7 @@ export function ExamBuilder({ loaded, onExit, role }: Props) {
   const [selections, setSelections] = useState<Record<string, number>>({})
   const [title, setTitle] = useState('Übungsklausur')
 
-  const loadExamForEdit = (exam: StoredClassExam) => {
+  const applyExamEdit = (exam: StoredClassExam) => {
     const spec = decodeExam(exam.examCode)
     const hydrated = hydrateExamBuilderFromSpec(spec)
     const known = hydrated.selectedThemes.filter((k) => entryByKey.has(k))
@@ -116,8 +128,60 @@ export function ExamBuilder({ loaded, onExit, role }: Props) {
       solveCount: exam.solveCount,
       examCode: exam.examCode,
     })
+    setPendingEdit(null)
+    setEditError(null)
     setStep(2)
   }
+
+  const loadExamForEdit = (exam: StoredClassExam) => {
+    setEditError(null)
+    try {
+      const spec = decodeExam(exam.examCode)
+      const needed = [...new Set(spec.aufgaben.map((a) => a.modul))]
+      const missing = needed.filter((id) => !loaded.some((row) => row.moduleId === id))
+      if (missing.length > 0) {
+        if (!onEnsureModules) {
+          setEditError(
+            'Lehrpläne dieser Klausur sind nicht geladen. Bitte unter Einstellungen einblenden.',
+          )
+          return
+        }
+        setPendingEdit(exam)
+        void onEnsureModules(missing).catch(() => {
+          setPendingEdit(null)
+          setEditError(
+            'Lehrpläne dieser Klausur konnten nicht geladen werden. Bitte unter Einstellungen prüfen.',
+          )
+        })
+        return
+      }
+      applyExamEdit(exam)
+    } catch {
+      setEditError('Klausurcode ist ungültig und kann nicht bearbeitet werden.')
+    }
+  }
+
+  useEffect(() => {
+    if (!pendingEdit) return
+    let cancelled = false
+    try {
+      const spec = decodeExam(pendingEdit.examCode)
+      const needed = [...new Set(spec.aufgaben.map((a) => a.modul))]
+      if (needed.every((id) => loaded.some((row) => row.moduleId === id))) {
+        if (!cancelled) applyExamEdit(pendingEdit)
+      }
+    } catch {
+      if (!cancelled) {
+        setPendingEdit(null)
+        setEditError('Klausurcode ist ungültig und kann nicht bearbeitet werden.')
+      }
+    }
+    return () => {
+      cancelled = true
+    }
+    // Apply once required modules appear in `loaded`.
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- keyed on loaded + pendingEdit
+  }, [loaded, pendingEdit])
 
   const clearEditing = () => setEditing(null)
 
@@ -263,6 +327,11 @@ export function ExamBuilder({ loaded, onExit, role }: Props) {
       {assignEnabled && (
         <ClassExamManager refreshKey={listRefresh} onEdit={loadExamForEdit} />
       )}
+
+      {pendingEdit && (
+        <p className="muted small">Klausur wird geladen …</p>
+      )}
+      {editError && <p className="notice notice--error">{editError}</p>}
 
       {editing && (
         <p className="notice">
@@ -551,12 +620,73 @@ function ExamStepCode({
   onAssigned: () => void
   onSavedEdit: () => void
 }) {
-  const createdClasses = getClassCodeSettings().created
-  const [classCode, setClassCode] = useState(
-    editing?.hostCode ?? createdClasses[0]?.code ?? '',
+  const [classSettings, setClassSettings] = useState(() => getClassCodeSettings())
+  const [gradeSettings, setGradeSettings] = useState(() => getGradeCodeSettings())
+  const [gradeClasses, setGradeClasses] = useState<
+    Record<string, Array<{ id: string; name: string }>>
+  >({})
+  const assignable = useMemo(
+    () =>
+      mergeExamAssignableClasses({
+        classSettings,
+        gradeSettings,
+        gradeClasses,
+      }),
+    [classSettings, gradeSettings, gradeClasses],
+  )
+  const [assignValue, setAssignValue] = useState(
+    () => editing?.hostCode ?? assignable[0]?.value ?? '',
   )
   const [assignBusy, setAssignBusy] = useState(false)
   const [assignNotice, setAssignNotice] = useState<string | null>(null)
+
+  useEffect(() => {
+    const refresh = () => {
+      setClassSettings(getClassCodeSettings())
+      setGradeSettings(getGradeCodeSettings())
+    }
+    refresh()
+    return subscribeSharedStorage(refresh)
+  }, [])
+
+  useEffect(() => {
+    let cancelled = false
+    const codes = gradeCodesForChallengeList(gradeSettings)
+    if (codes.length === 0) {
+      setGradeClasses({})
+      return
+    }
+    void (async () => {
+      const next: Record<string, Array<{ id: string; name: string }>> = {}
+      for (const gradeCode of codes) {
+        try {
+          const view = await getGrade(gradeCode)
+          next[gradeCode] = (view.classes ?? []).map((c) => ({
+            id: c.id,
+            name: c.name,
+          }))
+        } catch {
+          /* offline */
+        }
+      }
+      if (!cancelled) setGradeClasses(next)
+    })()
+    return () => {
+      cancelled = true
+    }
+  }, [gradeSettings])
+
+  useEffect(() => {
+    if (editing?.hostCode) {
+      setAssignValue(editing.hostCode)
+      return
+    }
+    setAssignValue((prev) =>
+      assignable.some((row) => row.value === prev)
+        ? prev
+        : (assignable[0]?.value ?? ''),
+    )
+  }, [assignable, editing?.hostCode])
 
   if (count === 0) {
     return (
@@ -638,7 +768,7 @@ function ExamStepCode({
                       className:
                         updated.className ??
                         row.className ??
-                        createdClasses.find((c) => c.code === row.hostCode)?.name,
+                        classSettings.created.find((c) => c.code === row.hostCode)?.name,
                       name: updated.name,
                       examCode: updated.examCode,
                       createdAt: row.createdAt,
@@ -675,44 +805,56 @@ function ExamStepCode({
       {assignEnabled && !editing && (
         <div className="field exam-assign">
           <span className="field__label">Klasse zuordnen (Lehrer)</span>
-          {createdClasses.length === 0 ? (
+          {assignable.length === 0 ? (
             <p className="muted small">
-              Lege zuerst unter Einstellungen → Klasse einen Klassencode an.
+              Lege unter Einstellungen → Klasse einen Klassencode an — oder trage
+              einen Stufencode ein, dem bereits Klassen zugeordnet sind.
             </p>
           ) : (
             <>
               <select
                 className="answer-input__field"
-                value={classCode}
-                onChange={(e) => setClassCode(e.target.value)}
+                value={assignValue}
+                onChange={(e) => setAssignValue(e.target.value)}
               >
-                {createdClasses.map((row) => (
-                  <option key={row.code} value={row.code}>
+                {assignable.map((row) => (
+                  <option key={row.value} value={row.value}>
                     {row.name}
+                    {!row.code && row.gradeCode ? ' (Stufe)' : ''}
                   </option>
                 ))}
               </select>
               <button
                 type="button"
                 className="primary"
-                disabled={assignBusy || !classCode}
+                disabled={assignBusy || !assignValue}
                 onClick={() => {
                   setAssignBusy(true)
                   setAssignNotice(null)
+                  const parsed = parseExamAssignableValue(assignValue)
+                  const label =
+                    assignable.find((r) => r.value === assignValue)?.name
                   void createClassExam({
-                    classCode,
+                    ...parsed,
                     name: title.trim() || 'Übungsklausur',
                     examCode: code,
                     taskCount: count,
                     totalPoints,
                   })
                     .then((created) => {
+                      const hostCode =
+                        created.hostCode || parsed.classCode || ''
+                      if (!hostCode) {
+                        setAssignNotice(
+                          'Zuordnung ok, aber der Klassencode fehlt in der Antwort. Bitte Worker aktualisieren.',
+                        )
+                        onAssigned()
+                        return
+                      }
                       rememberCreatedClassExam({
                         id: created.id,
-                        hostCode: classCode,
-                        className:
-                          created.className ??
-                          createdClasses.find((c) => c.code === classCode)?.name,
+                        hostCode,
+                        className: created.className ?? label,
                         name: created.name,
                         examCode: created.examCode,
                         createdAt: created.createdAt,
