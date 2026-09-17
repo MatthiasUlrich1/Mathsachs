@@ -15,6 +15,7 @@ import {
   saveExamProtocolPdf,
   type ExamProtocolExportInput,
 } from '../exam/examProtocolExport'
+import { examTaskEarned } from '../exam/examAnswerAttempted'
 import {
   ExamCodeError,
   decodeExam,
@@ -51,7 +52,10 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
   const [resolved, setResolved] = useState<ResolvedExamTask[]>([])
   const [answers, setAnswers] = useState<UserInput[]>([])
   const [current, setCurrent] = useState(0)
+  /** Points locked when leaving a task (index → earned). */
+  const [lockedEarned, setLockedEarned] = useState<Record<number, number>>({})
   const [results, setResults] = useState<TaskResult[]>([])
+  const [completeNotice, setCompleteNotice] = useState<string | null>(null)
 
   const [pdfBusy, setPdfBusy] = useState(false)
   const [pdfNotice, setPdfNotice] = useState<string | null>(null)
@@ -152,6 +156,8 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
       const tasks = await resolveExam(spec)
       setResolved(tasks)
       setAnswers(tasks.map((t) => initTaskInput(t.task)))
+      setLockedEarned({})
+      setCompleteNotice(null)
       setCurrent(0)
       setPhase('running')
     } catch (e) {
@@ -169,10 +175,74 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
     [spec],
   )
 
+  const lockTaskEarned = (index: number, answerList: UserInput[] = answers) => {
+    const row = resolved[index]
+    if (!row) return
+    const answer = answerList[index] ?? initTaskInput(row.task)
+    const earned = examTaskEarned(row.task, answer, row.punkte, { requireAttempt: false })
+    setLockedEarned((prev) => ({ ...prev, [index]: earned }))
+  }
+
+  const liveEarned = useMemo(() => {
+    let sum = 0
+    for (let i = 0; i < resolved.length; i++) {
+      if (lockedEarned[i] != null) {
+        sum += lockedEarned[i]
+        continue
+      }
+      if (i !== current) continue
+      const row = resolved[i]
+      const answer = answers[i] ?? initTaskInput(row.task)
+      sum += examTaskEarned(row.task, answer, row.punkte)
+    }
+    return sum
+  }, [resolved, answers, lockedEarned, current])
+
   const setAnswer = (input: UserInput) =>
     setAnswers((prev) => prev.map((a, i) => (i === current ? input : a)))
 
+  const goToTask = (next: number) => {
+    lockTaskEarned(current)
+    setCurrent(next)
+  }
+
+  const reportClassExamComplete = async () => {
+    const examCode = codeText.trim()
+    let examId = activeClassExamId || matchClassExamId(examCode)
+    const classCode = getClassCodeSettings().activeCode
+    if (!examId && classCode && examCode) {
+      try {
+        const stats = await getClass(classCode)
+        examId =
+          stats.exams?.find((exam) => exam.examCode.trim() === examCode)?.id ?? null
+        if (examId) setActiveClassExamId(examId)
+        setClassExams(stats.exams ?? [])
+      } catch {
+        /* offline */
+      }
+    }
+    if (!examId) {
+      setCompleteNotice(
+        classCode
+          ? 'Klausur abgegeben. Der Klassen-Zähler konnte nicht aktualisiert werden (Klausur nicht in dieser Klasse gefunden).'
+          : 'Klausur abgegeben. Für den Lehrer-Zähler bitte den Klassencode aktivieren und die Klausur über die Klassenliste starten — oder denselben Code erneut mit aktivem Klassencode abgeben.',
+      )
+      return
+    }
+    markClassExamCompleted(examId)
+    setCompletedIds(new Set(getCompletedClassExamIds()))
+    try {
+      await completeClassExam(examId)
+      setCompleteNotice(null)
+    } catch {
+      setCompleteNotice(
+        'Klausur lokal gespeichert. Der Klassen-Zähler konnte online nicht erhöht werden — Internet/Worker prüfen.',
+      )
+    }
+  }
+
   const submit = () => {
+    lockTaskEarned(current)
     const computed: TaskResult[] = resolved.map((r, i) => {
       const answer = answers[i] ?? initTaskInput(r.task)
       const correct = r.task.check(answer)
@@ -180,15 +250,8 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
     })
     setResults(computed)
     persist(computed)
-    const examId = activeClassExamId || matchClassExamId(codeText)
-    if (examId) {
-      markClassExamCompleted(examId)
-      setCompletedIds(new Set(getCompletedClassExamIds()))
-      void completeClassExam(examId).catch(() => {
-        // Offline / stub — local completion still recorded.
-      })
-    }
     setPhase('done')
+    void reportClassExamComplete()
   }
 
   // Aggregate per topic and store into the points protocol, consistent with
@@ -374,7 +437,9 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
           <span>
             Aufgabe {current + 1} von {resolved.length}
           </span>
-          <span>Punkte: 0 / {totalPoints}</span>
+          <span>
+            Punkte: {liveEarned} / {totalPoints}
+          </span>
         </div>
         <div className="progress">
           <div
@@ -399,7 +464,7 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
             unit={task.unit}
             value={answers[current] ?? emptyInput(task.answerKind)}
             onChange={setAnswer}
-            onSubmit={() => (isLast ? undefined : setCurrent((c) => c + 1))}
+            onSubmit={() => (isLast ? undefined : goToTask(current + 1))}
           />
         )}
 
@@ -408,7 +473,7 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
             <button
               type="button"
               className="ghost"
-              onClick={() => setCurrent((c) => c - 1)}
+              onClick={() => goToTask(current - 1)}
             >
               Zurück
             </button>
@@ -417,7 +482,7 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
             <button
               type="button"
               className="primary"
-              onClick={() => setCurrent((c) => c + 1)}
+              onClick={() => goToTask(current + 1)}
             >
               Nächste Aufgabe
             </button>
@@ -523,6 +588,7 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
 
         {exportActions}
         {pdfNotice && <p className="muted small">{pdfNotice}</p>}
+        {completeNotice && <p className="notice notice--warn">{completeNotice}</p>}
 
         <ol className="exam-review">
           {results.map((r, i) => (

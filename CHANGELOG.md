@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.26] – 2026-09-17
+
+### Behoben
+- Klausur schreiben: Punkte werden während des Lösens mitgezählt (bei richtiger
+  Antwort / beim Weitergehen); Anzeige `erreicht / gesamt`.
+- **Gelöst-Zähler:** Abgabe meldet den Zähler zuverlässiger (frischer Klassenabruf);
+  Hinweis, wenn kein Klassencode aktiv ist. Worker bitte aktuell halten
+  (`POST /exams/:id/complete`).
+
 ## [0.27.25] – 2026-09-17
 
 ### Neu
