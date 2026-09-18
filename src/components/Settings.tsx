@@ -35,6 +35,7 @@ import {
   manualCheckHint,
   type ManualCheckStatus,
 } from '../updates/runCheck'
+import type { TaskReport } from '../lib/taskReports'
 
 const SECTION_HINTS: Record<SettingsSectionId, string> = {
   curricula: 'Lehrpläne installieren, aktualisieren oder entfernen',
@@ -53,6 +54,7 @@ interface Props {
   onPacksChanged: () => void
   onBack: () => void
   onOpenSection: (id: SettingsSectionId) => void
+  onShowFaultyTask?: (report: TaskReport) => void | Promise<void>
   section?: SettingsSectionId | null
   user: string
   role: UserRole
@@ -77,6 +79,7 @@ export function Settings({
   onPacksChanged,
   onBack,
   onOpenSection,
+  onShowFaultyTask,
   section = null,
   user,
   role,
@@ -243,7 +246,11 @@ export function Settings({
 
       {section === 'faulty' &&
         (canViewFaultyReports(role) ? (
-          <FaultyTasksPanel />
+          <FaultyTasksPanel
+            onShowTask={(report) => {
+              void onShowFaultyTask?.(report)
+            }}
+          />
         ) : (
           <section className="card" aria-label="Fehlerhafte Aufgaben">
             <h2 className="section-title no-margin">Fehlerhafte Aufgaben</h2>

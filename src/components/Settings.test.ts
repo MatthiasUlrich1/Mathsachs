@@ -86,6 +86,7 @@ describe('Settings hub update check', () => {
     const html = renderToStaticMarkup(
       createElement(Settings, { ...baseProps, section: 'tasks' }),
     )
+    expect(html).toContain('Lehrplan')
     expect(html).toContain('Klassenstufe')
     expect(html).toContain('Themengebiet')
     expect(html).toContain('Titel des Themas')

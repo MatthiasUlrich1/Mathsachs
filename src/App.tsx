@@ -46,6 +46,7 @@ import {
   TeacherCodeGate,
 } from './components/TeacherCodePanel'
 import { searchTopics, searchUnloadedHints } from './curriculum/search'
+import { resolveFaultyTask } from './curriculum/resolveFaultyTask'
 import { CurriculumBrowser } from './components/CurriculumBrowser'
 import { PracticeSession } from './components/PracticeSession'
 import { Worksheet } from './components/Worksheet'
@@ -605,6 +606,20 @@ export default function App() {
     }
   }
 
+  const openFaultyTask = async (report: {
+    contentId: number
+    topicId?: string
+  }) => {
+    const found = await resolveFaultyTask(report)
+    if (!found) {
+      window.alert(
+        'Aufgabe nicht gefunden. Ist der zugehörige Lehrplan installiert und geladen?',
+      )
+      return
+    }
+    openPractice(found.topic, found.areaTitle, found.gradeTitle)
+  }
+
   return (
     <main className="app app--wide">
       {curriculumBanner}
@@ -815,6 +830,7 @@ export default function App() {
           section={view.section}
           onOpenSection={(id) => setView({ name: 'settings', section: id })}
           onBack={() => setView({ name: 'settings' })}
+          onShowFaultyTask={openFaultyTask}
           user={activeUser}
           role={userRole}
           preferredSubject={preferredSubject}

@@ -1,15 +1,21 @@
 import { useEffect, useMemo, useState } from 'react'
 import {
   TASK_REQUEST_ATTACHMENT_NOTE,
-  TASK_REQUEST_GRADES,
   buildTaskRequestMailto,
+  getTaskRequestGrade,
+  getTaskRequestPack,
   isTaskRequestComplete,
   keepValidArea,
   loadTaskRequestAreas,
+  loadTaskRequestPacks,
+  type TaskRequestPackOption,
 } from '../legal/taskRequest'
 
 export function TaskRequest() {
-  const [grade, setGrade] = useState('')
+  const [packs, setPacks] = useState<TaskRequestPackOption[]>([])
+  const [packsLoading, setPacksLoading] = useState(true)
+  const [packId, setPackId] = useState('')
+  const [gradeId, setGradeId] = useState('')
   const [area, setArea] = useState('')
   const [title, setTitle] = useState('')
   const [example, setExample] = useState('')
@@ -17,14 +23,37 @@ export function TaskRequest() {
   const [areasLoading, setAreasLoading] = useState(false)
 
   useEffect(() => {
-    if (!grade) {
+    let cancelled = false
+    setPacksLoading(true)
+    void loadTaskRequestPacks()
+      .then((next) => {
+        if (cancelled) return
+        setPacks(next)
+        setPacksLoading(false)
+      })
+      .catch(() => {
+        if (cancelled) return
+        setPacks([])
+        setPacksLoading(false)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  const selectedPack = getTaskRequestPack(packs, packId)
+  const selectedGrade = getTaskRequestGrade(selectedPack, gradeId)
+  const grades = selectedPack?.grades ?? []
+
+  useEffect(() => {
+    if (!gradeId) {
       setAreas([])
       setAreasLoading(false)
       return
     }
     let cancelled = false
     setAreasLoading(true)
-    void loadTaskRequestAreas(grade)
+    void loadTaskRequestAreas(gradeId, packId)
       .then((titles) => {
         if (cancelled) return
         setAreas(titles)
@@ -40,15 +69,24 @@ export function TaskRequest() {
     return () => {
       cancelled = true
     }
-  }, [grade])
+  }, [gradeId, packId])
 
   const fields = useMemo(
-    () => ({ grade, area, title, example }),
-    [grade, area, title, example],
+    () => ({
+      packId,
+      packTitle: selectedPack?.title ?? '',
+      gradeId,
+      grade: selectedGrade?.gradeTitle ?? '',
+      area,
+      title,
+      example,
+    }),
+    [packId, selectedPack?.title, gradeId, selectedGrade?.gradeTitle, area, title, example],
   )
   const complete = isTaskRequestComplete(fields)
   const mailto = complete ? buildTaskRequestMailto(fields) : ''
-  const areaDisabled = !grade || areasLoading || areas.length === 0
+  const gradeDisabled = !packId || packsLoading || grades.length === 0
+  const areaDisabled = !gradeId || areasLoading || areas.length === 0
 
   return (
     <section className="card" aria-label="Aufgaben ergänzen">
@@ -64,22 +102,53 @@ export function TaskRequest() {
       </div>
 
       <div className="field">
+        <label className="field__label" htmlFor="task-request-pack">
+          Lehrplan
+        </label>
+        <select
+          id="task-request-pack"
+          className="answer-input__field"
+          value={packId}
+          disabled={packsLoading || packs.length === 0}
+          onChange={(event) => {
+            setPackId(event.target.value)
+            setGradeId('')
+            setArea('')
+          }}
+        >
+          <option value="">
+            {packsLoading ? 'Lehrpläne werden geladen …' : 'Lehrplan wählen'}
+          </option>
+          {packs.map((pack) => (
+            <option key={pack.id} value={pack.id}>
+              {pack.title}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className="field">
         <label className="field__label" htmlFor="task-request-grade">
           Klassenstufe
         </label>
         <select
           id="task-request-grade"
           className="answer-input__field"
-          value={grade}
+          value={gradeId}
+          disabled={gradeDisabled}
           onChange={(event) => {
-            setGrade(event.target.value)
+            setGradeId(event.target.value)
             setArea('')
           }}
         >
-          <option value="">Klassenstufe wählen</option>
-          {TASK_REQUEST_GRADES.map((label) => (
-            <option key={label} value={label}>
-              {label}
+          <option value="">
+            {!packId
+              ? 'Zuerst Lehrplan wählen'
+              : 'Klassenstufe wählen'}
+          </option>
+          {grades.map((grade) => (
+            <option key={grade.id} value={grade.id}>
+              {grade.gradeTitle}
             </option>
           ))}
         </select>
@@ -97,15 +166,15 @@ export function TaskRequest() {
           onChange={(event) => setArea(event.target.value)}
         >
           <option value="">
-            {!grade
+            {!gradeId
               ? 'Zuerst Klassenstufe wählen'
               : areasLoading
                 ? 'Themengebiete werden geladen …'
                 : 'Themengebiet wählen'}
           </option>
-          {areas.map((title) => (
-            <option key={title} value={title}>
-              {title}
+          {areas.map((areaTitle) => (
+            <option key={areaTitle} value={areaTitle}>
+              {areaTitle}
             </option>
           ))}
         </select>

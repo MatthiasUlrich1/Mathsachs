@@ -211,6 +211,8 @@ describe('Cloudflare Worker API', () => {
       installGet: { limit: 60, windowMs: 60_000 },
       reportPost: { limit: 10, windowMs: 60 * 60 * 1000 },
       reportGet: { limit: 60, windowMs: 60_000 },
+      reportPatch: { limit: 60, windowMs: 60_000 },
+      reportDelete: { limit: 30, windowMs: 60_000 },
     })
 
     const kv = env()
@@ -922,6 +924,62 @@ describe('Challenge Worker API', () => {
       comment: 'Falsche Lösung bei Volumen',
       topicId: 'ph-k6-lb2-volumen',
       question: 'Wie groß ist das Volumen?',
+      status: 'open',
     })
+
+    const patched = await worker.fetch(
+      request(`/reports/tasks/${createdBody.id}`, {
+        method: 'PATCH',
+        headers: {
+          Authorization: 'Bearer test-reports-token',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status: 'erledigt' }),
+      }),
+      kv,
+    )
+    expect(patched.status).toBe(200)
+    const patchedBody = (await patched.json()) as {
+      ok: boolean
+      report: { id: string; status: string }
+    }
+    expect(patchedBody.ok).toBe(true)
+    expect(patchedBody.report).toMatchObject({ id: createdBody.id, status: 'done' })
+
+    const listedDone = await worker.fetch(
+      request('/reports/tasks', {
+        headers: { Authorization: 'Bearer test-reports-token' },
+      }),
+      kv,
+    )
+    const doneBody = (await listedDone.json()) as {
+      reports: Array<{ id: string; status: string }>
+    }
+    expect(doneBody.reports[0]).toMatchObject({ id: createdBody.id, status: 'done' })
+
+    const deniedDelete = await worker.fetch(
+      request(`/reports/tasks/${createdBody.id}`, { method: 'DELETE' }),
+      kv,
+    )
+    expect(deniedDelete.status).toBe(401)
+
+    const deleted = await worker.fetch(
+      request(`/reports/tasks/${createdBody.id}`, {
+        method: 'DELETE',
+        headers: { Authorization: 'Bearer test-reports-token' },
+      }),
+      kv,
+    )
+    expect(deleted.status).toBe(200)
+    await expect(deleted.json()).resolves.toEqual({ ok: true, id: createdBody.id })
+
+    const listedEmpty = await worker.fetch(
+      request('/reports/tasks', {
+        headers: { Authorization: 'Bearer test-reports-token' },
+      }),
+      kv,
+    )
+    const emptyBody = (await listedEmpty.json()) as { reports: unknown[] }
+    expect(emptyBody.reports).toHaveLength(0)
   })
 })

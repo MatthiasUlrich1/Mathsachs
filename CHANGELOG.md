@@ -9,6 +9,21 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.44] – 2026-09-19
+
+### Hinzugefügt
+- **Fehlerhafte Aufgaben (Entwickler):** Buttons **Fehlerhafte Aufgabe anzeigen**
+  (springt zur gemeldeten Übung über topicId/Content-ID), **Erledigt** (Status
+  bleibt in der Liste) und bei erledigten Meldungen **Löschen** (entfernt den
+  Eintrag dauerhaft auf Cloudflare).
+- **Aufgaben ergänzen:** Lehrplan-Auswahl für alle mitgelieferten Packs
+  (Gymnasium Mathematik/Physik, Oberschule HS/RS), nicht nur Mathematik Gym.
+
+### Geändert
+- **Cloudflare Worker:** `PATCH /reports/tasks/:id` (Status `open`/`done`) und
+  `DELETE /reports/tasks/:id` (Auth wie GET über `REPORTS_TOKEN`). Öffentliches
+  `POST /reports/tasks` unverändert. **Worker muss neu deployed werden.**
+
 ## [0.27.43] – 2026-09-18
 
 ### Behoben
