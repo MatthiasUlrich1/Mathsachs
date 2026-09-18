@@ -100,7 +100,7 @@ const fluide: Topic['generate'] = mixedVariants(
       })
     }
     return paramSliderTask({
-      question: `Stelle Fläche und Kraft so ein, dass der Druck ${p} Pa beträgt (Ziel: F = ${F} N, A = ${A} m²).`,
+      question: `Stelle Fläche und Kraft so ein, dass der Druck ${p} Pa beträgt.`,
       params: [
         { id: 'F', label: 'Kraft F (N)', min: 20, max: 160, step: 20, start: F === 80 ? 40 : 80 },
         { id: 'A', label: 'Fläche A (m²)', min: 1, max: 8, step: 1, start: A === 2 ? 4 : 2 },

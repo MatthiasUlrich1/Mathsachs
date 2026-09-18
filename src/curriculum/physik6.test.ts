@@ -41,6 +41,10 @@ describe('Physik Klasse 6 generators', () => {
     expect(lb1.every((t) => t.released === true)).toBe(true)
     expect(lb1.find((t) => t.id === 'ph-k6-lb1-spiegel')?.tasksPerRound).toBe(5)
     expect(lb1.find((t) => t.id === 'ph-k6-lb1-brechung')?.tasksPerRound).toBe(10)
+    const lb2 = k6!.areas.find((a) => a.id === 'lb2')!.topics
+    expect(lb2.find((t) => t.id === 'ph-k6-lb2-dichte')?.released).toBe(true)
+    expect(lb2.find((t) => t.id === 'ph-k6-lb2-wegzeit')?.released).toBe(true)
+    expect(lb2.find((t) => t.id === 'ph-k6-lb2-einheiten')?.released).toBe(true)
     expect(topics.filter((t) => t.released === false).length).toBeGreaterThan(0)
   })
 
@@ -59,7 +63,7 @@ describe('Physik Klasse 6 generators', () => {
 
   it('uses interactive variants for Dichte, Stromkreis, Farben, Lichtstrahl and Aggregate', () => {
     const need = {
-      'ph-k6-lb2-dichte': new Set(['paramSlider']),
+      'ph-k6-lb2-dichte': new Set(['paramSlider', 'dragDropSlots']),
       'ph-k6-lb4-stromkreis': new Set(['multiSelect']),
       'ph-k6-lbw-farben': new Set(['multiSelect']),
       'ph-k6-lb1-lichtstrahl': new Set(['coordinateClick']),
@@ -75,5 +79,29 @@ describe('Physik Klasse 6 generators', () => {
         expect(found.has(kind), `${id} missing ${kind}`).toBe(true)
       }
     }
+  })
+
+  it('Weg-Zeit tasks include an s–t diagram SVG', () => {
+    const gen = PHYSIK_K6_GENERATORS['ph-k6-lb2-wegzeit']!
+    let withSvg = 0
+    for (let seed = 1; seed <= 40; seed++) {
+      const task = gen(createRng(seed))
+      if (task.visualContent?.includes('Weg-Zeit')) withSvg++
+      expect(task.check(task.sampleAnswer), `seed ${seed}`).toBe(true)
+    }
+    expect(withSvg).toBeGreaterThan(10)
+  })
+
+  it('Dichte paramSlider questions do not spoiler Ziel m/V', () => {
+    const gen = PHYSIK_K6_GENERATORS['ph-k6-lb2-dichte']!
+    let slider = 0
+    for (let seed = 1; seed <= 60; seed++) {
+      const task = gen(createRng(seed))
+      if (task.interactive?.type !== 'paramSlider') continue
+      slider++
+      expect(task.question).not.toMatch(/Ziel:/)
+      expect(task.question).not.toMatch(/m\s*=\s*\d+\s*g/)
+    }
+    expect(slider).toBeGreaterThan(0)
   })
 })

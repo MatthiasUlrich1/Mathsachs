@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.35] – 2026-09-18
+
+### Hinzugefügt
+- **Physik Klasse 6 LB2:** Freigabe für Dichte, Stoffvergleich, Masse,
+  gleichförmige Bewegung, Weg-Zeit-Diagramm und Einheiten (je 10 Aufgaben/Runde).
+- **Dichte:** Formel-Drag&Drop ρ = m / V (Division streng); Slider ohne Ziel-Spoiler.
+- **Weg-Zeit-Diagramm:** echte s–t-SVG-Grafiken (Weg ablesen, Steigung/v, Vergleich).
+
+### Behoben
+- **Druck-Slider (Klasse 8):** Ziel-Werte nicht mehr im Aufgabentext verraten.
+
 ## [0.27.34] – 2026-09-18
 
 ### Behoben

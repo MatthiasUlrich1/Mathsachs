@@ -569,8 +569,11 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
     }
   }
 
-  // --- Bewegung / Geschwindigkeit / Weg-Zeit ---
-  if (/geschwindigkeit|gleichförmig|weg.?zeit|bewegung|einheiten.*v|v, s und t/.test(lower)) {
+  // --- Bewegung / Geschwindigkeit (nicht Weg-Zeit-Diagramm / reine Einheiten) ---
+  if (
+    /geschwindigkeit|gleichförmig/.test(lower) ||
+    (/bewegung/.test(lower) && !/weg.?zeit|einheiten/.test(lower))
+  ) {
     return {
       cases: [
         {

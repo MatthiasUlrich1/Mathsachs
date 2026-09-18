@@ -6,16 +6,20 @@ import {
   lightShadowSvg,
   mirrorAngleSvg,
   thermometerSvg,
+  wegZeitCompareSvg,
+  wegZeitDiagramSvg,
 } from '../lib/physikSvg'
 import {
   choicePickTask,
   coordinateClickTask,
+  dragDropSlotsTask,
   dragDropSortTask,
   mixedVariants,
   multiSelectTask,
   numberLineTask,
   paramSliderTask,
   valueTask,
+  visualTask,
 } from './taskHelpers'
 import type { Topic } from './types'
 
@@ -686,7 +690,7 @@ const dichte: Topic['generate'] = mixedVariants(
     const startM = m === 40 ? 60 : 40
     const startV = v === 5 ? 2 : 5
     return paramSliderTask({
-      question: `Stelle Masse und Volumen so ein, dass die Dichte ${rho} g/cm³ beträgt (Ziel: m = ${m} g und V = ${v} cm³).`,
+      question: `Stelle Masse und Volumen so ein, dass die Dichte ${rho} g/cm³ beträgt.`,
       params: [
         { id: 'm', label: 'Masse m (g)', min: 10, max: 100, step: 10, start: startM },
         { id: 'v', label: 'Volumen V (cm³)', min: 1, max: 10, step: 1, start: startV },
@@ -697,33 +701,256 @@ const dichte: Topic['generate'] = mixedVariants(
       instruction: 'Schieberegler auf die geforderten Werte:',
     })
   },
+  (rng) => {
+    const parts = ['ρ', '=', 'm', '/', 'V']
+    const distractor = '× V'
+    const labels = [...parts, distractor]
+    const items = labels.map((label, i) => ({ label, value: i + 1 }))
+    const shuffled = [...items]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = randInt(rng, 0, i)
+      ;[shuffled[i], shuffled[j]] = [shuffled[j]!, shuffled[i]!]
+    }
+    const correctSlots = parts.map((label) => shuffled.findIndex((it) => it.label === label))
+    return dragDropSlotsTask({
+      question: 'Baue die Formel für die Dichte. Einen Block brauchst du nicht.',
+      items: shuffled,
+      correctSlots,
+      solution: 'ρ = m / V',
+      explanation: 'Die Dichte ist Masse durch Volumen: ρ = m / V (Reihenfolge der Division ist fest).',
+      instruction: 'Ziehe die richtigen Blöcke in die Formelplätze. Einen Block brauchst du nicht.',
+      checkMode: 'strict',
+    })
+  },
 )
 
-const geschwindigkeit: Topic['generate'] = (rng) => {
-  const v = pick(rng, [2, 3, 4, 5, 6, 8, 10])
-  const t = pick(rng, [2, 3, 4, 5, 6])
-  const s = v * t
-  return mixedVariants(
-    () =>
-      valueTask({
-        question: `Ein Körper bewegt sich gleichförmig mit v = ${v} m/s für t = ${t} s. Welche Strecke legt er zurück?`,
-        answerKind: 'integer',
-        unit: 'm',
-        value: s,
-        solution: `${s} m`,
-        explanation: `s = v · t = ${v} · ${t} = ${s} m.`,
-      }),
-    () =>
-      valueTask({
-        question: `Ein Körper legt s = ${s} m in t = ${t} s gleichförmig zurück. Berechne die Geschwindigkeit.`,
-        answerKind: 'integer',
-        unit: 'm/s',
-        value: v,
-        solution: `${v} m/s`,
-        explanation: `v = s / t = ${s} / ${t} = ${v} m/s.`,
-      }),
-  )(rng)
-}
+const geschwindigkeit: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const v = pick(rng, [2, 3, 4, 5, 6, 8, 10])
+    const t = pick(rng, [2, 3, 4, 5, 6])
+    const s = v * t
+    return valueTask({
+      question: `Ein Körper bewegt sich gleichförmig mit v = ${v} m/s für t = ${t} s. Welche Strecke legt er zurück?`,
+      answerKind: 'integer',
+      unit: 'm',
+      value: s,
+      solution: `${s} m`,
+      explanation: `s = v · t = ${v} · ${t} = ${s} m.`,
+    })
+  },
+  (rng) => {
+    const v = pick(rng, [2, 3, 4, 5, 6, 8, 10])
+    const t = pick(rng, [2, 3, 4, 5, 6])
+    const s = v * t
+    return valueTask({
+      question: `Ein Körper legt s = ${s} m in t = ${t} s gleichförmig zurück. Berechne die Geschwindigkeit.`,
+      answerKind: 'integer',
+      unit: 'm/s',
+      value: v,
+      solution: `${v} m/s`,
+      explanation: `v = s / t = ${s} / ${t} = ${v} m/s.`,
+    })
+  },
+  (rng) => {
+    const v = pick(rng, [2, 3, 4, 5, 6, 8, 10])
+    const t = pick(rng, [2, 3, 4, 5, 6])
+    const s = v * t
+    return valueTask({
+      question: `Gleichförmige Bewegung: s = ${s} m, v = ${v} m/s. Wie lange dauert die Bewegung?`,
+      answerKind: 'integer',
+      unit: 's',
+      value: t,
+      solution: `${t} s`,
+      explanation: `t = s / v = ${s} / ${v} = ${t} s.`,
+    })
+  },
+  (rng) => {
+    const parts = ['s', '=', 'v', '× t']
+    const distractor = '× m'
+    const labels = [...parts, distractor]
+    const items = labels.map((label, i) => ({ label, value: i + 1 }))
+    const shuffled = [...items]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = randInt(rng, 0, i)
+      ;[shuffled[i], shuffled[j]] = [shuffled[j]!, shuffled[i]!]
+    }
+    const correctSlots = parts.map((label) => shuffled.findIndex((it) => it.label === label))
+    return dragDropSlotsTask({
+      question: 'Baue die Formel für die Strecke bei gleichförmiger Bewegung. Einen Block brauchst du nicht.',
+      items: shuffled,
+      correctSlots,
+      solution: 's = v × t',
+      explanation: 'Bei gleichförmiger Bewegung gilt s = v × t (Faktoren nach = dürfen getauscht werden).',
+      instruction: 'Ziehe die richtigen Blöcke in die Formelplätze. Einen Block brauchst du nicht.',
+      checkMode: 'commutativeFactors',
+    })
+  },
+)
+
+/** Weg-Zeit-Diagramm: echte s–t-Grafik ablesen (Steigung / Weg zu Zeitpunkt). */
+const wegzeit: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const v = pick(rng, [2, 3, 4, 5])
+    const tMax = pick(rng, [4, 5, 6])
+    const markT = pick(
+      rng,
+      Array.from({ length: tMax - 1 }, (_, i) => i + 1).filter((t) => (v * t) % 1 === 0),
+    )
+    const s = v * markT
+    return visualTask({
+      question: `Im Weg-Zeit-Diagramm bewegt sich ein Körper gleichförmig. Lies den Weg s zum Zeitpunkt t = ${markT} s ab.`,
+      answerKind: 'integer',
+      unit: 'm',
+      value: s,
+      solution: `${s} m`,
+      explanation: `Die Gerade geht durch den Ursprung mit Steigung v = ${v} m/s. Bei t = ${markT} s ist s = v·t = ${v}·${markT} = ${s} m.`,
+      visualContent: wegZeitDiagramSvg({ v, tMax, markT, showEndLabels: true }),
+    })
+  },
+  (rng) => {
+    const v = pick(rng, [2, 3, 4, 5])
+    const tMax = pick(rng, [4, 5, 6])
+    return visualTask({
+      question:
+        'Im Weg-Zeit-Diagramm ist die Bewegung gleichförmig (Gerade durch den Ursprung). Welche Geschwindigkeit hat der Körper?',
+      answerKind: 'integer',
+      unit: 'm/s',
+      value: v,
+      solution: `${v} m/s`,
+      explanation: `v = Δs / Δt = ${v * tMax} m / ${tMax} s = ${v} m/s (Steigung der Geraden).`,
+      visualContent: wegZeitDiagramSvg({ v, tMax, showEndLabels: true }),
+    })
+  },
+  (rng) => {
+    const v = pick(rng, [2, 3, 4, 5])
+    const tMax = pick(rng, [4, 5, 6])
+    const sEnd = v * tMax
+    return visualTask({
+      question: `Welchen Weg hat der Körper nach t = ${tMax} s zurückgelegt? (Endpunkt der Geraden)`,
+      answerKind: 'integer',
+      unit: 'm',
+      value: sEnd,
+      solution: `${sEnd} m`,
+      explanation: `Am rechten Ende der Geraden: s(${tMax} s) = ${sEnd} m.`,
+      visualContent: wegZeitDiagramSvg({ v, tMax, showEndLabels: true }),
+    })
+  },
+  (rng) => {
+    const kind = pick(rng, ['rest', 'uniform', 'accel'] as const)
+    const correct = kind === 'rest' ? 'A' : kind === 'uniform' ? 'B' : 'C'
+    const what =
+      kind === 'rest'
+        ? 'Ruhe (s bleibt konstant)'
+        : kind === 'uniform'
+          ? 'gleichförmige Bewegung (konstante Geschwindigkeit)'
+          : 'beschleunigte Bewegung (Geschwindigkeit nimmt zu)'
+    return choicePickTask({
+      question: `Welches Weg-Zeit-Diagramm zeigt ${what}?`,
+      choices: shuffleChoices(rng, ['A', 'B', 'C'], correct),
+      correct,
+      solution: correct,
+      explanation:
+        kind === 'rest'
+          ? 'Bei Ruhe ist s konstant → horizontale Gerade (Diagramm A).'
+          : kind === 'uniform'
+            ? 'Gleichförmig: s steigt linear mit t → Gerade mit konstanter Steigung (Diagramm B).'
+            : 'Beschleunigt: die Steigung nimmt zu → gekrümmte Kurve (Diagramm C).',
+      visualContent: wegZeitCompareSvg(kind),
+      instruction: 'Tippe den Buchstaben:',
+    })
+  },
+  (rng) => {
+    const correct = 'die Steigung der Geraden'
+    return choicePickTask({
+      question: 'Was liest man im Weg-Zeit-Diagramm einer gleichförmigen Bewegung als Geschwindigkeit ab?',
+      choices: shuffleChoices(
+        rng,
+        [correct, 'den Achsenabschnitt auf der s-Achse', 'nur die Zeitdauer', 'die Fläche unter der Kurve als Masse'],
+        correct,
+      ),
+      correct,
+      solution: correct,
+      explanation: 'Bei gleichförmiger Bewegung ist v = Δs/Δt die Steigung der Geraden im s–t-Diagramm.',
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+)
+
+/** Einheiten von Geschwindigkeit, Weg und Zeit. */
+const einheiten: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const correct = 'm/s (oder km/h)'
+    return choicePickTask({
+      question: 'Welche Einheit hat die Geschwindigkeit v?',
+      choices: shuffleChoices(rng, [correct, 'nur m', 'nur s', 'Newton (N)'], correct),
+      correct,
+      solution: correct,
+      explanation: 'Geschwindigkeit ist Weg durch Zeit: typisch m/s oder km/h.',
+      instruction: 'Tippe die Einheit:',
+    })
+  },
+  (rng) => {
+    const correct = 'Meter (m)'
+    return choicePickTask({
+      question: 'Welche Einheit hat die Strecke s?',
+      choices: shuffleChoices(rng, [correct, 'Sekunde (s)', 'm/s', 'Kilogramm (kg)'], correct),
+      correct,
+      solution: correct,
+      explanation: 'Die Strecke (Weg) wird in Metern (m) gemessen — oder km, cm, …',
+      instruction: 'Tippe die Einheit:',
+    })
+  },
+  (rng) => {
+    const correct = 'Sekunde (s)'
+    return choicePickTask({
+      question: 'Welche Einheit hat die Zeit t?',
+      choices: shuffleChoices(rng, [correct, 'Meter (m)', 'm/s', 'Gramm (g)'], correct),
+      correct,
+      solution: correct,
+      explanation: 'Die Zeit wird in Sekunden (s) gemessen — oder min, h, …',
+      instruction: 'Tippe die Einheit:',
+    })
+  },
+  (rng) => {
+    const kmh = pick(rng, [36, 54, 72, 90])
+    const ms = kmh / 3.6
+    return valueTask({
+      question: `${kmh} km/h entsprechen wie vielen m/s? (1 m/s = 3,6 km/h)`,
+      answerKind: ms % 1 === 0 ? 'integer' : 'decimal',
+      unit: 'm/s',
+      value: ms,
+      solution: `${ms} m/s`,
+      explanation: `v = ${kmh} / 3,6 = ${ms} m/s.`,
+    })
+  },
+  (rng) => {
+    const ms = pick(rng, [5, 10, 15, 20])
+    const kmh = ms * 3.6
+    return valueTask({
+      question: `${ms} m/s entsprechen wie vielen km/h? (1 m/s = 3,6 km/h)`,
+      answerKind: kmh % 1 === 0 ? 'integer' : 'decimal',
+      unit: 'km/h',
+      value: kmh,
+      solution: `${kmh} km/h`,
+      explanation: `v = ${ms} · 3,6 = ${kmh} km/h.`,
+    })
+  },
+  (rng) => {
+    const correct = 'v = s / t'
+    return choicePickTask({
+      question: 'Welche Größen und Einheiten passen zusammen: Geschwindigkeit = …?',
+      choices: shuffleChoices(
+        rng,
+        [correct, 'v = s · t', 'v = t / s', 'v = s + t'],
+        correct,
+      ),
+      correct,
+      solution: correct,
+      explanation: 'v = s / t → Einheit z. B. m/s = Meter / Sekunde.',
+      instruction: 'Tippe die Formel:',
+    })
+  },
+)
 
 const masseVergleich: Topic['generate'] = mixedVariants(
   (rng) => {
@@ -1454,6 +1681,8 @@ export const PHYSIK_K6_GENERATORS: Record<string, Topic['generate']> = {
   'ph-k6-lb1-ausbreitung': ausbreitung,
   'ph-k6-lb2-dichte': dichte,
   'ph-k6-lb2-geschwindigkeit': geschwindigkeit,
+  'ph-k6-lb2-wegzeit': wegzeit,
+  'ph-k6-lb2-einheiten': einheiten,
   'ph-k6-lb2-masse': masseVergleich,
   'ph-k6-lb3-thermometer': thermometer,
   'ph-k6-lb3-kelvin': kelvin,

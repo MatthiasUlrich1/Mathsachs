@@ -146,6 +146,107 @@ export function thermometerSvg(celsius: number): string {
 </svg>`
 }
 
+/**
+ * Weg-Zeit-Diagramm (s–t): gleichförmige Bewegung als Gerade vom Ursprung,
+ * optional mit Hilfslinie bei einer Ablesezeit `markT`.
+ */
+export function wegZeitDiagramSvg(opts: {
+  /** Geschwindigkeit in m/s (Steigung). */
+  v: number
+  /** Zeitachse bis tMax (s). */
+  tMax: number
+  /** Optional: vertikale Hilfslinie bei dieser Zeit (s). */
+  markT?: number
+  /** Optional: Beschriftung der Endpunkt-Koordinaten. */
+  showEndLabels?: boolean
+}): string {
+  const { v, tMax } = opts
+  const sMax = v * tMax
+  const W = 340
+  const H = 240
+  const padL = 48
+  const padR = 28
+  const padT = 24
+  const padB = 40
+  const plotW = W - padL - padR
+  const plotH = H - padT - padB
+  const toX = (t: number) => padL + (t / tMax) * plotW
+  const toY = (s: number) => padT + plotH - (s / sMax) * plotH
+  const x0 = toX(0)
+  const y0 = toY(0)
+  const x1 = toX(tMax)
+  const y1 = toY(sMax)
+  const ticks: string[] = []
+  for (let t = 0; t <= tMax; t++) {
+    const x = toX(t)
+    ticks.push(
+      `<line x1="${x}" y1="${y0}" x2="${x}" y2="${y0 + 5}" stroke="#64748b" stroke-width="1"/>`,
+      `<text x="${x}" y="${y0 + 18}" text-anchor="middle" fill="#475569" font-size="11" font-family="system-ui,sans-serif">${t}</text>`,
+    )
+  }
+  const sStep = sMax <= 10 ? 2 : sMax <= 20 ? 5 : 10
+  for (let s = 0; s <= sMax; s += sStep) {
+    const y = toY(s)
+    ticks.push(
+      `<line x1="${x0 - 5}" y1="${y}" x2="${x0}" y2="${y}" stroke="#64748b" stroke-width="1"/>`,
+      `<text x="${x0 - 8}" y="${y + 4}" text-anchor="end" fill="#475569" font-size="11" font-family="system-ui,sans-serif">${s}</text>`,
+    )
+  }
+  let mark = ''
+  if (opts.markT != null && opts.markT > 0 && opts.markT <= tMax) {
+    const mx = toX(opts.markT)
+    const my = toY(v * opts.markT)
+    mark = `
+  <line x1="${mx}" y1="${y0}" x2="${mx}" y2="${my}" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="${x0}" y1="${my}" x2="${mx}" y2="${my}" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <circle cx="${mx}" cy="${my}" r="4" fill="#2563eb"/>`
+  }
+  const endLabels = opts.showEndLabels
+    ? `<text x="${x1 + 4}" y="${y1 + 4}" fill="#1e40af" font-size="11" font-family="system-ui,sans-serif">(${tMax}|${sMax})</text>`
+    : ''
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Weg-Zeit-Diagramm">
+  <rect width="${W}" height="${H}" fill="#f8fafc"/>
+  <line x1="${x0}" y1="${padT}" x2="${x0}" y2="${y0}" stroke="#334155" stroke-width="2"/>
+  <line x1="${x0}" y1="${y0}" x2="${W - padR}" y2="${y0}" stroke="#334155" stroke-width="2"/>
+  <polygon points="${x0},${padT} ${x0 - 5},${padT + 10} ${x0 + 5},${padT + 10}" fill="#334155"/>
+  <polygon points="${W - padR},${y0} ${W - padR - 10},${y0 - 5} ${W - padR - 10},${y0 + 5}" fill="#334155"/>
+  <text x="${x0 - 14}" y="${padT + 8}" text-anchor="middle" fill="#0f172a" font-size="13" font-family="system-ui,sans-serif" font-weight="600">s (m)</text>
+  <text x="${W - padR}" y="${y0 + 32}" text-anchor="end" fill="#0f172a" font-size="13" font-family="system-ui,sans-serif" font-weight="600">t (s)</text>
+  ${ticks.join('\n  ')}
+  <line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y1}" stroke="#2563eb" stroke-width="3"/>
+  <circle cx="${x1}" cy="${y1}" r="3.5" fill="#1d4ed8"/>
+  ${endLabels}${mark}
+</svg>`
+}
+
+/** Vergleich: Ruhe / gleichförmig / beschleunigt (drei Mini-Diagramme). */
+export function wegZeitCompareSvg(highlight: 'rest' | 'uniform' | 'accel'): string {
+  const box = (x: number, kind: 'rest' | 'uniform' | 'accel', label: string) => {
+    const on = kind === highlight
+    const stroke = on ? '#2563eb' : '#94a3b8'
+    const sw = on ? 3 : 1.5
+    const path =
+      kind === 'rest'
+        ? 'M20 70 H100'
+        : kind === 'uniform'
+          ? 'M20 90 L100 20'
+          : 'M20 90 Q60 70 100 15'
+    return `<g transform="translate(${x},0)">
+  <rect x="4" y="4" width="112" height="112" rx="8" fill="#fff" stroke="${on ? '#93c5fd' : '#e2e8f0'}" stroke-width="2"/>
+  <line x1="20" y1="20" x2="20" y2="90" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="20" y1="90" x2="100" y2="90" stroke="#64748b" stroke-width="1.5"/>
+  <path d="${path}" fill="none" stroke="${stroke}" stroke-width="${sw}"/>
+  <text x="60" y="128" text-anchor="middle" fill="#334155" font-size="12" font-family="system-ui,sans-serif">${label}</text>
+</g>`
+  }
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 140" width="360" height="140" role="img" aria-label="Weg-Zeit-Vergleich">
+  <rect width="360" height="140" fill="#f8fafc"/>
+  ${box(8, 'rest', 'A')}
+  ${box(124, 'uniform', 'B')}
+  ${box(240, 'accel', 'C')}
+</svg>`
+}
+
 export function circuitSvg(closed: boolean): string {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 140" width="280" height="140" role="img" aria-label="Einfacher Stromkreis">
   <rect width="280" height="140" fill="#f8fafc"/>

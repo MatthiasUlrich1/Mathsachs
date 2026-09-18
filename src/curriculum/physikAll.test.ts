@@ -63,9 +63,26 @@ describe('Physik Gym generators (all grades)', () => {
     const k6 = grades.find((g) => g.id === 'physik-klasse-6')!
     const lb1 = k6.areas.find((a) => a.id === 'lb1')!.topics
     expect(lb1.every((t) => t.released === true)).toBe(true)
+    const lb2 = k6.areas.find((a) => a.id === 'lb2')!.topics
+    const releasedLb2 = new Set([
+      'ph-k6-lb2-dichte',
+      'ph-k6-lb2-dichtestoffe',
+      'ph-k6-lb2-masse',
+      'ph-k6-lb2-geschwindigkeit',
+      'ph-k6-lb2-wegzeit',
+      'ph-k6-lb2-einheiten',
+    ])
+    for (const t of lb2) {
+      if (releasedLb2.has(t.id)) {
+        expect(t.released, t.id).toBe(true)
+        expect(t.tasksPerRound, t.id).toBe(10)
+      } else {
+        expect(t.released, t.id).toBe(false)
+      }
+    }
     expect(
       k6.areas
-        .filter((a) => a.id !== 'lb1')
+        .filter((a) => a.id !== 'lb1' && a.id !== 'lb2')
         .flatMap((a) => a.topics)
         .every((t) => t.released === false),
     ).toBe(true)
