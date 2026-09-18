@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.4.0',
+    version: '2.5.0',
     changelog:
-      'LB1 Licht freigegeben (IDs 2910–1992); Rundenlänge je Thema; Schatten-MC ohne Spoiler in der Abbildung.',
+      'Klasse 6 LB2 freigegeben: Dichte (Formel-Slots), Stoffvergleich, Masse, Bewegung, Weg-Zeit-Diagramm, Einheiten; je 10 Aufgaben/Runde.',
     official,
     extras: [],
   }

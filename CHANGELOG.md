@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.36] – 2026-09-18
+
+### Behoben
+- **Physik-Lehrplanmodul:** Export/`contentHash` für Pack 2.5.0 nachgezogen
+  (Release-Build-Test `physikGymPack`).
+
 ## [0.27.35] – 2026-09-18
 
 ### Hinzugefügt

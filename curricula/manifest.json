@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-16T21:00:52.913Z",
+  "updatedAt": "2026-09-18T20:41:41.831Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -18,10 +18,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "2.4.0",
+      "version": "2.5.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 123294,
-      "changelog": "LB1 Licht freigegeben (IDs 2910–1992); Rundenlänge je Thema; Schatten-MC ohne Spoiler in der Abbildung."
+      "size": 123629,
+      "changelog": "Klasse 6 LB2 freigegeben: Dichte (Formel-Slots), Stoffvergleich, Masse, Bewegung, Weg-Zeit-Diagramm, Einheiten; je 10 Aufgaben/Runde."
     },
     {
       "id": "oberschule-sachsen-hs",

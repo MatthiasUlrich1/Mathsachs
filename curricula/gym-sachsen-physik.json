@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "2.4.0",
-  "changelog": "LB1 Licht freigegeben (IDs 2910–1992); Rundenlänge je Thema; Schatten-MC ohne Spoiler in der Abbildung.",
+  "version": "2.5.0",
+  "changelog": "Klasse 6 LB2 freigegeben: Dichte (Formel-Slots), Stoffvergleich, Masse, Bewegung, Weg-Zeit-Diagramm, Einheiten; je 10 Aufgaben/Runde.",
   "official": [
     {
       "id": "physik-klasse-6",
@@ -134,19 +134,9 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Volumen"
-              ]
-            },
-            {
-              "id": "ph-k6-lb2-masse",
-              "title": "Masse vergleichen",
-              "pointsPerTask": 10,
-              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
-              "keywords": [
-                "Masse",
-                "Körper"
               ]
             },
             {
@@ -154,7 +144,8 @@
               "title": "Dichte berechnen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
+              "tasksPerRound": 10,
               "keywords": [
                 "Dichte",
                 "Masse",
@@ -166,10 +157,26 @@
               "title": "Dichte von Stoffen vergleichen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
+              "tasksPerRound": 10,
               "keywords": [
                 "Dichte",
                 "Stoff"
+              ]
+            },
+            {
+              "id": "ph-k6-lb2-masse",
+              "title": "Masse",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": true,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Masse",
+                "Einheit",
+                "Körper",
+                "Gramm",
+                "Kilogramm"
               ]
             },
             {
@@ -177,7 +184,8 @@
               "title": "Gleichförmige Bewegung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
+              "tasksPerRound": 10,
               "keywords": [
                 "Geschwindigkeit",
                 "Strecke"
@@ -188,7 +196,8 @@
               "title": "Weg-Zeit-Diagramm",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
+              "tasksPerRound": 10,
               "keywords": [
                 "Diagramm",
                 "Bewegung"
@@ -199,7 +208,8 @@
               "title": "Einheiten von v, s und t",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
+              "tasksPerRound": 10,
               "keywords": [
                 "Einheit",
                 "Geschwindigkeit"
@@ -3679,5 +3689,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "cd4b4fb6"
+  "contentHash": "280b5433"
 }
