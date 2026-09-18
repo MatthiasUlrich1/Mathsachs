@@ -5,6 +5,7 @@ import type { Topic, UserInput } from '../curriculum/types'
 import { isFormulaLikeHint } from '../curriculum/types'
 import { buildUniqueTaskRound } from '../curriculum/uniqueRound'
 import { AnswerInput } from './AnswerInput'
+import { ReportFaultyTask } from './ReportFaultyTask'
 import { initTaskInput, TaskInteractive, TaskVisual } from './TaskMedia'
 
 const TARGET_TASKS_PER_ROUND = 10
@@ -259,6 +260,15 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
           </button>
         </div>
       )}
+
+      <ReportFaultyTask
+        key={`${topic.id}-${index}-${task.question.slice(0, 40)}`}
+        topicId={topic.id}
+        topicTitle={topic.title}
+        areaTitle={areaTitle}
+        contentId={topic.contentId}
+        question={task.question}
+      />
     </div>
   )
 }

@@ -312,7 +312,7 @@ describe('upgradeInstalledPacksFromBundled', () => {
       id === GYM_SACHSEN_PHYSIK_PACK_ID ? current : null,
     )
     expect(upgraded).toHaveLength(1)
-    expect(listInstalledPacks(kv)[0]?.version).toBe('2.5.1')
+    expect(listInstalledPacks(kv)[0]?.version).toBe('2.5.2')
     const grades = await hydratePackGrades(listInstalledPacks(kv)[0]!)
     const topic = grades
       .flatMap((g) => g.areas)

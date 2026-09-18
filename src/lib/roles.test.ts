@@ -13,6 +13,7 @@ import {
   canManageGradeCodes,
   canRequestTasks,
   canSendClassPoints,
+  canViewFaultyReports,
   canWriteExam,
   isTeacherRole,
   normalizeRole,
@@ -35,6 +36,8 @@ describe('user roles', () => {
     expect(isTeacherRole('entwickler')).toBe(true)
     expect(canCreateExam('entwickler')).toBe(true)
     expect(canManageGradeCodes('entwickler')).toBe(true)
+    expect(canViewFaultyReports('entwickler')).toBe(true)
+    expect(canViewFaultyReports('lehrer')).toBe(false)
     expect(roleLabel('entwickler')).toBe('Entwickler')
     expect(USER_ROLES.map((e) => e.id)).not.toContain('entwickler')
   })

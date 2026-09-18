@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-18T21:16:52.648Z",
+  "updatedAt": "2026-09-18T21:41:14.063Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -9,7 +9,7 @@
       "subject": "Mathematik",
       "version": "1.2.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen.json",
-      "size": 62702,
+      "size": 59742,
       "changelog": "ID 2101 freigegeben: Fläche und senkrechte Seitenlänge (Klasse 6 Prismen)."
     },
     {
@@ -18,10 +18,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "2.5.1",
+      "version": "2.5.2",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 123686,
-      "changelog": "Pack-Update: Volumen bestimmen (ID 6453) freigegeben; installierte 2.5.0-Kopien mit gesperrtem Volumen werden ersetzt. LB2 sonst: Dichte, Stoffvergleich, Masse, Bewegung, Weg-Zeit, Einheiten."
+      "size": 124051,
+      "changelog": "Pack-Update: Schaltsymbole (ID 6148) mit echten Symbol-Aufgaben; neues Thema Elektrischer Widerstand (ID 6936) in LB4; Factory-Zuordnung für gesperrte Themen nachgebessert."
     },
     {
       "id": "oberschule-sachsen-hs",

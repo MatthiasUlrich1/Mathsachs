@@ -12,8 +12,10 @@ import {
   completeClassExamByCode,
   type ClassExamSummary,
 } from '../classCode/api'
+import { topicContentId } from '../curriculum/contentId'
 import { AnswerInput } from './AnswerInput'
 import { ExamProtocolSheet, formatExamAnswer } from './ExamProtocolSheet'
+import { ReportFaultyTask } from './ReportFaultyTask'
 import { initTaskInput, TaskInteractive, TaskVisual } from './TaskMedia'
 import {
   printExamProtocol,
@@ -561,6 +563,15 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
             </button>
           )}
         </div>
+
+        <ReportFaultyTask
+          key={`${r.topicId}-${current}-${task.question.slice(0, 40)}`}
+          topicId={r.topicId}
+          topicTitle={r.topicTitle}
+          areaTitle={r.areaTitle}
+          contentId={topicContentId(r.topicId)}
+          question={task.question}
+        />
       </section>
     )
   }

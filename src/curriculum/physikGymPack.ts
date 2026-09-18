@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.1',
+    version: '2.5.2',
     changelog:
-      'Pack-Update: Volumen bestimmen (ID 6453) freigegeben; installierte 2.5.0-Kopien mit gesperrtem Volumen werden ersetzt. LB2 sonst: Dichte, Stoffvergleich, Masse, Bewegung, Weg-Zeit, Einheiten.',
+      'Pack-Update: Schaltsymbole (ID 6148) mit echten Symbol-Aufgaben; neues Thema Elektrischer Widerstand (ID 6936) in LB4; Factory-Zuordnung für gesperrte Themen nachgebessert.',
     official,
     extras: [],
   }

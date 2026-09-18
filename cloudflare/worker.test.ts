@@ -209,6 +209,8 @@ describe('Cloudflare Worker API', () => {
       examComplete: { limit: 60, windowMs: 60_000 },
       installPing: { limit: 5, windowMs: 24 * 60 * 60 * 1000 },
       installGet: { limit: 60, windowMs: 60_000 },
+      reportPost: { limit: 10, windowMs: 60 * 60 * 1000 },
+      reportGet: { limit: 60, windowMs: 60_000 },
     })
 
     const kv = env()
@@ -857,5 +859,69 @@ describe('Challenge Worker API', () => {
 
     const got = await worker.fetch(request('/stats/install'), kv)
     await expect(got.json()).resolves.toEqual({ count: 2 })
+  })
+
+  it('stores faulty-task reports and lists them with REPORTS_TOKEN', async () => {
+    const kv = { ...env(), REPORTS_TOKEN: 'test-reports-token' }
+    const denied = await worker.fetch(request('/reports/tasks'), kv)
+    expect(denied.status).toBe(401)
+
+    const missingSecret = await worker.fetch(request('/reports/tasks'), env())
+    expect(missingSecret.status).toBe(503)
+
+    const bad = await worker.fetch(
+      request('/reports/tasks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contentId: 42, comment: 'kaputt' }),
+      }),
+      kv,
+    )
+    expect(bad.status).toBe(400)
+
+    const created = await worker.fetch(
+      request('/reports/tasks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contentId: 6453,
+          comment: 'Falsche Lösung bei Volumen',
+          topicId: 'ph-k6-lb2-volumen',
+          topicTitle: 'Volumen bestimmen',
+          question: 'Wie groß ist das Volumen?',
+          appVersion: '0.27.43',
+        }),
+      }),
+      kv,
+    )
+    expect(created.status).toBe(201)
+    const createdBody = (await created.json()) as { ok: boolean; id: string }
+    expect(createdBody.ok).toBe(true)
+    expect(createdBody.id).toMatch(/^[0-9A-HJKMNP-TV-Z]{8}$/)
+
+    const listed = await worker.fetch(
+      request('/reports/tasks', {
+        headers: { Authorization: 'Bearer test-reports-token' },
+      }),
+      kv,
+    )
+    expect(listed.status).toBe(200)
+    const body = (await listed.json()) as {
+      reports: Array<{
+        id: string
+        contentId: number
+        comment: string
+        topicId?: string
+        question?: string
+      }>
+    }
+    expect(body.reports).toHaveLength(1)
+    expect(body.reports[0]).toMatchObject({
+      id: createdBody.id,
+      contentId: 6453,
+      comment: 'Falsche Lösung bei Volumen',
+      topicId: 'ph-k6-lb2-volumen',
+      question: 'Wie groß ist das Volumen?',
+    })
   })
 })

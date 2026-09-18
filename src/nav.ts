@@ -1,6 +1,7 @@
 import {
   canCreateExam,
   canRequestTasks,
+  canViewFaultyReports,
   canWriteExam,
   type UserRole,
 } from './lib/roles'
@@ -44,6 +45,7 @@ export const SETTINGS_SECTIONS = [
   { id: 'curricula', label: 'Lehrpläne' },
   { id: 'class', label: 'Klasse' },
   { id: 'tasks', label: 'Aufgaben ergänzen' },
+  { id: 'faulty', label: 'Fehlerhafte Aufgaben' },
   { id: 'lan', label: 'WLAN-Zugang' },
   { id: 'profile', label: 'Profil' },
   { id: 'supporters', label: 'Unterstützer' },
@@ -51,9 +53,14 @@ export const SETTINGS_SECTIONS = [
 
 export type SettingsSectionId = (typeof SETTINGS_SECTIONS)[number]['id']
 
-/** Aufgaben ergänzen is Lehrer-only; other roles keep the existing hub. */
+/**
+ * Aufgaben ergänzen: Lehrer/Entwickler.
+ * Fehlerhafte Aufgaben: nur Entwickleransicht.
+ */
 export function settingsSectionsForRole(role?: UserRole | null) {
-  return SETTINGS_SECTIONS.filter(
-    (item) => item.id !== 'tasks' || canRequestTasks(role),
-  )
+  return SETTINGS_SECTIONS.filter((item) => {
+    if (item.id === 'tasks') return canRequestTasks(role)
+    if (item.id === 'faulty') return canViewFaultyReports(role)
+    return true
+  })
 }

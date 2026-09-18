@@ -31,6 +31,10 @@ export const isTeacherRole = (role?: unknown): boolean => {
 export const isCurriculumPreviewRole = (role?: unknown): boolean =>
   normalizeRole(role) === 'entwickler'
 
+/** Fehlerhafte-Aufgaben-Liste in den Einstellungen. */
+export const canViewFaultyReports = (role?: unknown): boolean =>
+  isCurriculumPreviewRole(role)
+
 /** Klausur erstellen — Eltern, Lehrer und Entwickler. */
 export const canCreateExam = (role?: unknown): boolean => {
   const id = normalizeRole(role)

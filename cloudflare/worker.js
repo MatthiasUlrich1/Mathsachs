@@ -12,18 +12,23 @@
  * POST /exams/complete 60, POST /exams/:id/complete 60,
  * POST /stats/install 5 / 24h (anonymous install ping),
  * GET /stats/install 60,
+ * POST /reports/tasks 10 / 1h (faulty-task reports),
+ * GET /reports/tasks 60 (requires Bearer REPORTS_TOKEN),
  * PUT grade membership 30, POST points 60.
  * GET / (health) is not rate-limited. Raise GET/DELETE here if a class page
  * with many Eigene Codes still 429s; keep POST points tight against abuse.
  *
  * Privacy: KV stores class/grade display names, daily point buckets,
  * anonymous challenge sums, class exam assignments (name + MSX1 code +
- * anonymous solve counts) and a single anonymous install counter only.
- * No pupil names, user ids, emails or device identifiers.
+ * anonymous solve counts), a single anonymous install counter, and
+ * faulty-task reports (contentId + short comment + optional topic/question
+ * snippets — never pupil names, user ids, emails or device identifiers).
  * GET /grades never returns member Klassencodes. Points are accepted only
  * on class records. Challenge POST never stores names.
  * POST /stats/install stores only `{ count }` — no IP persistence beyond
  * the short-lived rate-limit map in Worker memory.
+ * GET /reports/tasks requires Worker secret REPORTS_TOKEN (Authorization:
+ * Bearer … or X-Reports-Token). Must match the app’s REPORTS_READ_TOKEN.
  */
 // @ts-nocheck — plain Worker JS; Cloudflare editor checkJs unions are noisy.
 
@@ -467,6 +472,72 @@ function installStatsKey() {
   return 'stats:installs'
 }
 
+function taskReportsKey() {
+  return 'reports:tasks'
+}
+
+const MAX_TASK_REPORTS = 500
+const MAX_REPORT_COMMENT = 500
+const MAX_REPORT_QUESTION = 280
+const MAX_REPORT_TITLE = 120
+const MAX_REPORT_TOPIC_ID = 80
+const MAX_REPORT_VERSION = 32
+
+function trimReportText(value, max) {
+  if (typeof value !== 'string') return ''
+  const trimmed = value.trim().replace(/\s+/g, ' ')
+  if (!trimmed) return ''
+  return trimmed.length > max ? trimmed.slice(0, max) : trimmed
+}
+
+function parseTaskReports(raw) {
+  const list = raw && Array.isArray(raw.reports) ? raw.reports : Array.isArray(raw) ? raw : []
+  const out = []
+  for (const item of list) {
+    if (!item || typeof item !== 'object') continue
+    const id = typeof item.id === 'string' ? item.id.trim() : ''
+    const comment = trimReportText(item.comment, MAX_REPORT_COMMENT)
+    const contentId =
+      typeof item.contentId === 'number' && Number.isFinite(item.contentId)
+        ? Math.floor(item.contentId)
+        : typeof item.contentId === 'string' && /^\d{4}$/.test(item.contentId.trim())
+          ? Number.parseInt(item.contentId.trim(), 10)
+          : NaN
+    if (!id || !comment || !Number.isFinite(contentId) || contentId < 1000 || contentId > 9999) {
+      continue
+    }
+    const at =
+      typeof item.at === 'number' && Number.isFinite(item.at) ? Math.floor(item.at) : Date.now()
+    const topicId = trimReportText(item.topicId, MAX_REPORT_TOPIC_ID)
+    const topicTitle = trimReportText(item.topicTitle, MAX_REPORT_TITLE)
+    const areaTitle = trimReportText(item.areaTitle, MAX_REPORT_TITLE)
+    const question = trimReportText(item.question, MAX_REPORT_QUESTION)
+    const appVersion = trimReportText(item.appVersion, MAX_REPORT_VERSION)
+    out.push({
+      id,
+      at,
+      contentId,
+      comment,
+      ...(topicId ? { topicId } : {}),
+      ...(topicTitle ? { topicTitle } : {}),
+      ...(areaTitle ? { areaTitle } : {}),
+      ...(question ? { question } : {}),
+      ...(appVersion ? { appVersion } : {}),
+    })
+  }
+  return out
+}
+
+function reportsAuthorized(request, env) {
+  const expected = typeof env?.REPORTS_TOKEN === 'string' ? env.REPORTS_TOKEN.trim() : ''
+  if (!expected) return false
+  const auth = request.headers.get('Authorization') || ''
+  const bearer = /^Bearer\s+(\S+)/i.exec(auth)
+  const headerToken = (request.headers.get('X-Reports-Token') || '').trim()
+  const token = bearer ? bearer[1].trim() : headerToken
+  return token.length > 0 && token === expected
+}
+
 function parseExamStored(raw) {
   if (!raw || typeof raw !== 'object') return null
   const id = normalizeClassCode(raw.id)
@@ -760,7 +831,7 @@ function corsHeaders(request) {
   return {
     'Access-Control-Allow-Origin': allow,
     'Access-Control-Allow-Methods': ALLOWED_METHODS,
-    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Reports-Token',
     'Access-Control-Max-Age': '86400',
     Vary: 'Origin',
   }
@@ -798,6 +869,9 @@ export const RATE_LIMITS = {
   /** One ping per first install; keep daily IP cap low against inflation. */
   installPing: { limit: 5, windowMs: 24 * 60 * 60 * 1000 },
   installGet: { limit: 60, windowMs: 60_000 },
+  /** Faulty-task reports — low hourly cap against spam. */
+  reportPost: { limit: 10, windowMs: 60 * 60 * 1000 },
+  reportGet: { limit: 60, windowMs: 60_000 },
 }
 
 const hits = new Map()
@@ -2043,6 +2117,13 @@ export async function handleRequest(request, env) {
     return handlePingInstall(request, env)
   }
 
+  if (path === '/reports/tasks' && method === 'POST') {
+    return handleCreateTaskReport(request, env)
+  }
+  if (path === '/reports/tasks' && method === 'GET') {
+    return handleListTaskReports(request, env)
+  }
+
   return errorJson(request, 404, 'Unbekannter Pfad.', 'NOT_FOUND')
 }
 
@@ -2089,6 +2170,96 @@ async function handlePingInstall(request, env) {
   const count = prev + 1
   await env.CLASSES.put(installStatsKey(), JSON.stringify({ count }))
   return json(request, 200, { count })
+}
+
+async function handleCreateTaskReport(request, env) {
+  if (
+    !rateLimit(
+      `reportPost:${clientKey(request)}`,
+      RATE_LIMITS.reportPost.limit,
+      RATE_LIMITS.reportPost.windowMs,
+    )
+  ) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE_LIMIT')
+  }
+  if (!env.CLASSES) {
+    return errorJson(request, 503, 'KV-Bindung CLASSES fehlt.', 'NO_KV')
+  }
+
+  let body
+  try {
+    body = await readJson(request)
+  } catch {
+    return errorJson(request, 400, 'Ungültiges JSON.', 'INVALID_JSON')
+  }
+
+  const contentIdRaw = body.contentId
+  const contentId =
+    typeof contentIdRaw === 'number' && Number.isFinite(contentIdRaw)
+      ? Math.floor(contentIdRaw)
+      : typeof contentIdRaw === 'string' && /^\d{4}$/.test(contentIdRaw.trim())
+        ? Number.parseInt(contentIdRaw.trim(), 10)
+        : NaN
+  if (!Number.isFinite(contentId) || contentId < 1000 || contentId > 9999) {
+    return errorJson(request, 400, 'Ungültige Content-ID.', 'INVALID_CONTENT_ID')
+  }
+
+  const comment = trimReportText(body.comment, MAX_REPORT_COMMENT)
+  if (!comment) {
+    return errorJson(request, 400, 'Bitte einen kurzen Kommentar eingeben.', 'INVALID_COMMENT')
+  }
+
+  const topicId = trimReportText(body.topicId, MAX_REPORT_TOPIC_ID)
+  const topicTitle = trimReportText(body.topicTitle, MAX_REPORT_TITLE)
+  const areaTitle = trimReportText(body.areaTitle, MAX_REPORT_TITLE)
+  const question = trimReportText(body.question, MAX_REPORT_QUESTION)
+  const appVersion = trimReportText(body.appVersion, MAX_REPORT_VERSION)
+
+  const report = {
+    id: generateClassCode(),
+    at: Date.now(),
+    contentId,
+    comment,
+    ...(topicId ? { topicId } : {}),
+    ...(topicTitle ? { topicTitle } : {}),
+    ...(areaTitle ? { areaTitle } : {}),
+    ...(question ? { question } : {}),
+    ...(appVersion ? { appVersion } : {}),
+  }
+
+  const existing = parseTaskReports(parseRaw(await env.CLASSES.get(taskReportsKey())))
+  const next = [report, ...existing].slice(0, MAX_TASK_REPORTS)
+  await env.CLASSES.put(taskReportsKey(), JSON.stringify({ reports: next }))
+  return json(request, 201, { ok: true, id: report.id })
+}
+
+async function handleListTaskReports(request, env) {
+  if (
+    !rateLimit(
+      `reportGet:${clientKey(request)}`,
+      RATE_LIMITS.reportGet.limit,
+      RATE_LIMITS.reportGet.windowMs,
+    )
+  ) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE_LIMIT')
+  }
+  const expected = typeof env?.REPORTS_TOKEN === 'string' ? env.REPORTS_TOKEN.trim() : ''
+  if (!expected) {
+    return errorJson(
+      request,
+      503,
+      'REPORTS_TOKEN ist nicht konfiguriert.',
+      'NO_REPORTS_TOKEN',
+    )
+  }
+  if (!reportsAuthorized(request, env)) {
+    return errorJson(request, 401, 'Nicht autorisiert.', 'UNAUTHORIZED')
+  }
+  if (!env.CLASSES) {
+    return errorJson(request, 503, 'KV-Bindung CLASSES fehlt.', 'NO_KV')
+  }
+  const reports = parseTaskReports(parseRaw(await env.CLASSES.get(taskReportsKey())))
+  return json(request, 200, { reports })
 }
 
 export default {

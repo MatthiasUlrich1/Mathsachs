@@ -92,6 +92,36 @@ describe('Physik Klasse 6 generators', () => {
     expect(withSvg).toBeGreaterThan(10)
   })
 
+  it('Schaltsymbole (ID 6148) asks for symbols, not Ohm calculations', () => {
+    const gen = PHYSIK_K6_GENERATORS['ph-k6-lb4-symbole']!
+    for (let seed = 1; seed <= 40; seed++) {
+      const task = gen(createRng(seed))
+      expect(task.question, `seed ${seed}`).not.toMatch(/U\s*=\s*\d+\s*V/)
+      expect(task.question, `seed ${seed}`).not.toMatch(/ohmschen Widerstand/)
+      expect(task.question, `seed ${seed}`).not.toMatch(/Berechne die Stromstärke/)
+      const blob = `${task.question}\n${task.solution}`
+      expect(blob, `seed ${seed}`).toMatch(/Schaltsymbol|Bauteil|Symbol|Amperemeter|Voltmeter|Lampe|Widerstand|Batterie|Motor|Schalter/i)
+    }
+    let withSvg = 0
+    for (let seed = 1; seed <= 40; seed++) {
+      if (PHYSIK_K6_GENERATORS['ph-k6-lb4-symbole']!(createRng(seed)).visualContent) withSvg++
+    }
+    expect(withSvg).toBeGreaterThan(20)
+  })
+
+  it('Elektrischer Widerstand topic keeps Ohm-style tasks', () => {
+    const gen = PHYSIK_K6_GENERATORS['ph-k6-lb4-widerstand']!
+    const kinds = new Set<string>()
+    for (let seed = 1; seed <= 50; seed++) {
+      const task = gen(createRng(seed))
+      expect(task.check(task.sampleAnswer), `seed ${seed}`).toBe(true)
+      if (task.unit === 'A' || /Stromstärke/.test(task.question)) kinds.add('calc')
+      if (/R\s*=\s*U/.test(task.question) || /ohmschen Widerstand/.test(task.question)) kinds.add('ohm')
+      if (task.interactive?.type === 'dragDropSlots') kinds.add('slots')
+    }
+    expect(kinds.has('calc') || kinds.has('ohm')).toBe(true)
+  })
+
   it('Dichte paramSlider questions do not spoiler Ziel m/V', () => {
     const gen = PHYSIK_K6_GENERATORS['ph-k6-lb2-dichte']!
     let slider = 0

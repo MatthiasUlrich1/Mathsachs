@@ -9,6 +9,24 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.42] – 2026-09-18
+
+### Hinzugefügt
+- **Aufgabe als fehlerhaft melden:** Button in Übung und Klausur — kurzer Kommentar
+  wird mit Content-ID und Kontext an Cloudflare gesendet (`POST /reports/tasks`).
+- **Entwickleransicht:** Einstellungsrubrik „Fehlerhafte Aufgaben“ listet Meldungen
+  (`GET /reports/tasks`, Auth über Worker-Secret `REPORTS_TOKEN`).
+
+### Behoben
+- **Physik Schaltsymbole (ID 6148):** Fälschlich Ohm-/Widerstandsaufgaben; jetzt
+  echte Schaltsymbol-Erkennung mit SVG. Neues Thema **Elektrischer Widerstand**
+  (`ph-k6-lb4-widerstand`, ID 6936) im selben Lernbereich mit den bisherigen
+  Ohm-Aufgaben. Dazu passende Generatoren für Reihe/Parallel und Gefahren.
+- **Physik Factory (gesperrte Themen):** Keyword-Buckets Lernbereich-für-Lernbereich
+  geschärft (Magnet, Reihe/Parallel, Spannung, Dämmung, Hebel, Induktion,
+  Astronomie, Quanten, Impuls, Strahlung u. a.); generischer Fallback ohne
+  themenfremde Gewichtskraft. Pack **2.5.2**.
+
 ## [0.27.41] – 2026-09-18
 
 ### Hinzugefügt

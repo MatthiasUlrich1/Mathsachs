@@ -1,10 +1,14 @@
 import { pick, randInt, type Rng } from '../lib/rng'
 import {
   circuitSvg,
+  circuitSymbolLabel,
+  circuitSymbolSvg,
+  type CircuitSymbolKind,
   kernHalbschattenSvg,
   lightRayHintSvg,
   lightShadowSvg,
   mirrorAngleSvg,
+  seriesParallelSvg,
   thermometerSvg,
   wegZeitCompareSvg,
   wegZeitDiagramSvg,
@@ -1294,6 +1298,349 @@ const leiter: Topic['generate'] = mixedVariants(
   },
 )
 
+const CIRCUIT_SYMBOLS: CircuitSymbolKind[] = [
+  'battery',
+  'lamp',
+  'switchOpen',
+  'switchClosed',
+  'resistor',
+  'motor',
+  'buzzer',
+  'ammeter',
+  'voltmeter',
+]
+
+/** LB4 — Schaltsymbole (ID 6148): Symbol erkennen, nicht Ohm-Rechnung. */
+const schaltsymbole: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const kind = pick(rng, CIRCUIT_SYMBOLS)
+    const correct = circuitSymbolLabel(kind)
+    const otherLabels = CIRCUIT_SYMBOLS.filter((k) => k !== kind).map(circuitSymbolLabel)
+    const w1 = pick(rng, otherLabels)
+    const w2 = pick(
+      rng,
+      otherLabels.filter((w) => w !== w1),
+    )
+    const w3 = pick(rng, ['Trafo', 'Kondensator', 'Diode', 'Lautsprecher'])
+    return choicePickTask({
+      question: 'Welches Bauteil zeigt dieses Schaltsymbol?',
+      choices: shuffleChoices(rng, [correct, w1, w2, w3], correct),
+      correct,
+      solution: correct,
+      explanation: `Das gezeigte Schaltsymbol steht für: ${correct}.`,
+      visualContent: circuitSymbolSvg(kind),
+      instruction: 'Tippe den Namen des Symbols:',
+    })
+  },
+  (rng) => {
+    const kind = pick(rng, ['battery', 'lamp', 'resistor', 'switchOpen', 'motor'] as const)
+    const correct = circuitSymbolLabel(kind)
+    return choicePickTask({
+      question: `Welches Schaltsymbol gehört zu „${correct}“? (Name → Symbol in der Abbildung)`,
+      choices: shuffleChoices(
+        rng,
+        [
+          correct,
+          'Das Symbol zeigt etwas anderes',
+          'Es gibt keine Schaltsymbole',
+          'Nur Text ohne Zeichnung',
+        ],
+        correct,
+      ),
+      correct,
+      solution: correct,
+      explanation: `Zur Beschriftung „${correct}“ gehört genau das abgebildete Symbol.`,
+      visualContent: circuitSymbolSvg(kind),
+      instruction: 'Tippe die passende Zuordnung:',
+    })
+  },
+  (rng) => {
+    const pools = [
+      {
+        question: 'Welche Aussagen zu Schaltsymbolen stimmen? (mehrere möglich)',
+        choices: [
+          'Schaltsymbole sind genormte Zeichen in Schaltplänen',
+          'Ein Rechteck zwischen Leitungen steht oft für einen Widerstand',
+          'Ein Kreis mit X steht typischerweise für eine Lampe',
+          'Schaltsymbole sind immer Fotos der Bauteile',
+          'Ohne Schaltsymbole kann man keinen Stromkreis zeichnen',
+        ],
+        correct: [
+          'Schaltsymbole sind genormte Zeichen in Schaltplänen',
+          'Ein Rechteck zwischen Leitungen steht oft für einen Widerstand',
+          'Ein Kreis mit X steht typischerweise für eine Lampe',
+        ],
+      },
+      {
+        question: 'Was erkennst du an Messgeräte-Symbolen? (mehrere möglich)',
+        choices: [
+          'Kreis mit A = Amperemeter',
+          'Kreis mit V = Voltmeter',
+          'Kreis mit M = Motor',
+          'Kreis mit A = immer nur eine Batterie',
+          'Voltmeter und Amperemeter haben dasselbe Symbol',
+        ],
+        correct: ['Kreis mit A = Amperemeter', 'Kreis mit V = Voltmeter', 'Kreis mit M = Motor'],
+      },
+    ] as const
+    const p = pick(rng, [...pools])
+    return multiSelectTask({
+      question: p.question,
+      choices: [...p.choices],
+      correct: [...p.correct],
+      solution: p.correct.join('; '),
+      explanation: 'Schaltsymbole sind genormte Zeichnungen — keine Fotos der Bauteile.',
+      instruction: 'Tippe alle richtigen Aussagen:',
+      visualContent: circuitSymbolSvg(pick(rng, ['lamp', 'resistor', 'ammeter', 'voltmeter'] as const)),
+    })
+  },
+)
+
+/** LB4 — Elektrischer Widerstand: bisher fälschlich unter Schaltsymbole (Ohm-Aufgaben). */
+const widerstand: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const u = pick(rng, [2, 3, 4, 6, 8, 9, 12])
+    const r = pick(rng, [2, 3, 4, 6])
+    const i = u / r
+    return valueTask({
+      question: `U = ${u} V, R = ${r} Ω. Berechne die Stromstärke.`,
+      answerKind: i % 1 === 0 ? 'integer' : 'decimal',
+      unit: 'A',
+      value: i,
+      solution: `${i} A`,
+      explanation: `I = U/R = ${u}/${r} = ${i} A.`,
+    })
+  },
+  (rng) => {
+    const correct = 'R = U / I'
+    return choicePickTask({
+      question: 'Welche Formel gilt für den ohmschen Widerstand?',
+      choices: shuffleChoices(rng, [correct, 'R = U · I', 'R = I / U', 'R = U + I'], correct),
+      correct,
+      solution: correct,
+      explanation: 'Widerstand = Spannung geteilt durch Stromstärke.',
+      instruction: 'Tippe die Formel:',
+      visualContent: circuitSymbolSvg('resistor'),
+    })
+  },
+  (rng) => {
+    const correct = 'Ohm (Ω)'
+    return choicePickTask({
+      question: 'Welche Einheit hat der elektrische Widerstand?',
+      choices: shuffleChoices(rng, [correct, 'Ampere (A)', 'Volt (V)', 'Watt (W)'], correct),
+      correct,
+      solution: correct,
+      explanation: 'Der elektrische Widerstand wird in Ohm (Ω) angegeben.',
+      instruction: 'Tippe die Einheit:',
+    })
+  },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was gehört zum ohmschen Widerstand? (mehrere möglich)',
+      choices: [
+        'U und I sind proportional',
+        'R ist (näherungsweise) konstant',
+        'Kennlinie ist eine Gerade durch den Ursprung',
+        'Strom fließt nur ohne Spannung',
+        'Widerstand wächst immer mit der Zeit von allein',
+      ],
+      correct: [
+        'U und I sind proportional',
+        'R ist (näherungsweise) konstant',
+        'Kennlinie ist eine Gerade durch den Ursprung',
+      ],
+      solution: 'Proportionalität U–I, konstantes R, lineare Kennlinie',
+      explanation: 'Ohmsches Verhalten: I ~ U bei konstantem R.',
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+    }),
+  (rng) => {
+    const parts = ['R', '=', 'U', '/', 'I']
+    const distractor = '· I'
+    const labels = [...parts, distractor]
+    const items = labels.map((label, i) => ({ label, value: i + 1 }))
+    const shuffled = [...items]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = randInt(rng, 0, i)
+      ;[shuffled[i], shuffled[j]] = [shuffled[j]!, shuffled[i]!]
+    }
+    const correctSlots = parts.map((label) => shuffled.findIndex((it) => it.label === label))
+    return dragDropSlotsTask({
+      question: 'Baue die Formel für den ohmschen Widerstand. Einen Block brauchst du nicht.',
+      items: shuffled,
+      correctSlots,
+      solution: 'R = U / I',
+      explanation: 'Richtige Formel: R = U / I. „· I“ gehört nicht dazu.',
+      instruction: 'Ziehe die richtigen Blöcke in die Formelplätze. Einen Block brauchst du nicht.',
+    })
+  },
+)
+
+/** LB4 — Reihe und Parallel (einfach) */
+const reiheparallel: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const series = pick(rng, [true, false])
+    const correct = series
+      ? 'Beide Lampen liegen hintereinander im selben Weg'
+      : 'Jede Lampe hat einen eigenen Zweig'
+    const wrong = series
+      ? 'Jede Lampe hat einen eigenen Zweig'
+      : 'Beide Lampen liegen hintereinander im selben Weg'
+    return choicePickTask({
+      question: series
+        ? 'Was gilt in der abgebildeten Reihenschaltung?'
+        : 'Was gilt in der abgebildeten Parallelschaltung?',
+      choices: shuffleChoices(
+        rng,
+        [correct, wrong, 'Es gibt keine Batterie', 'Lampen brauchen keinen Leiter'],
+        correct,
+      ),
+      correct,
+      solution: correct,
+      explanation: series
+        ? 'In Reihe teilen sich die Verbraucher einen gemeinsamen Stromweg.'
+        : 'Parallel haben die Verbraucher eigene Zweige an derselben Spannung.',
+      visualContent: seriesParallelSvg(series ? 'series' : 'parallel'),
+      instruction: 'Tippe die passende Beschreibung:',
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Zwei gleiche Lampen in Reihe: eine Lampe brennt durch (Unterbrechung). Was passiert typischerweise?',
+        correct: 'Beide Lampen gehen aus',
+        wrong: ['Nur die andere leuchtet weiter', 'Die Batterie wird zum Isolator', 'Der Strom verdoppelt sich'],
+      },
+      {
+        q: 'Zwei gleiche Lampen parallel: eine Lampe brennt durch. Was passiert typischerweise?',
+        correct: 'Die andere Lampe kann weiter leuchten',
+        wrong: ['Beide müssen ausgehen', 'Die Spannung wird immer null', 'Es gibt keinen Stromweg mehr'],
+      },
+      {
+        q: 'Woran erkennst du eine Parallelschaltung zweier Lampen?',
+        correct: 'Jede Lampe hat einen eigenen Zweig',
+        wrong: [
+          'Beide Lampen liegen nur hintereinander',
+          'Es gibt keine Spannungsquelle',
+          'Nur ein Draht ohne Rückweg',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Reihe = ein Weg; Parallel = eigene Zweige.',
+      instruction: 'Tippe die richtige Aussage:',
+      visualContent: seriesParallelSvg(/parallel/i.test(c.q) ? 'parallel' : 'series'),
+    })
+  },
+  () =>
+    dragDropSortTask({
+      question: 'Ordne: zuerst typisch für Reihenschaltung, dann für Parallelschaltung.',
+      items: [
+        { label: 'Reihe: ein gemeinsamer Stromweg', value: 0 },
+        { label: 'Parallel: eigene Zweige', value: 1 },
+      ],
+      correctOrder: [0, 1],
+      solution: 'Reihe (gemeinsamer Weg) → Parallel (eigene Zweige)',
+      explanation: 'Zuerst Reihe (gemeinsamer Weg), dann Parallel (eigene Zweige).',
+    }),
+)
+
+/** LB4 — Gefahren und Kurzschluss */
+const gefahren: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      {
+        q: 'Was ist ein Kurzschluss?',
+        correct: 'ein sehr niederohmiger Nebenweg an der Spannungsquelle',
+        wrong: [
+          'ein ausdrücklich geöffneter Schalter',
+          'eine Lampe mit besonders großem Widerstand',
+          'nur ein Symbol im Schaltplan ohne Wirkung',
+        ],
+      },
+      {
+        q: 'Warum ist ein Kurzschluss gefährlich?',
+        correct: 'Es kann ein sehr großer Strom fließen (Hitze, Brandgefahr)',
+        wrong: [
+          'Der Strom wird immer genau null',
+          'Die Spannung verschwindet immer spurlos',
+          'Isolatoren beginnen zu leuchten',
+        ],
+      },
+      {
+        q: 'Welche Regel gilt für den Umgang mit Strom zu Hause?',
+        correct: 'Keine nassen Hände an Steckdosen / beschädigte Kabel meiden',
+        wrong: [
+          'Kabel mit Metallschere prüfen',
+          'Sicherungen immer überbrücken',
+          'Wasser leitet nie',
+        ],
+      },
+      {
+        q: 'Wozu dient eine Sicherung im Stromkreis?',
+        correct: 'Sie unterbricht bei zu großem Strom den Kreis',
+        wrong: [
+          'Sie erhöht die Spannung dauerhaft',
+          'Sie speichert chemische Energie wie eine Batterie',
+          'Sie ersetzt den Schalter im Alltag immer',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Kurzschluss und Überstrom sind gefährlich — Sicherungen und Isolierung schützen.',
+      instruction: 'Tippe die sichere / richtige Aussage:',
+    })
+  },
+  (rng) => {
+    const pools = [
+      {
+        question: 'Was gehört zu sicherem Verhalten mit Strom? (mehrere möglich)',
+        choices: [
+          'Beschädigte Isolierung melden / nicht benutzen',
+          'Nasse Hände von Steckdosen fernhalten',
+          'Sicherungen nicht überbrücken',
+          'Kabel mit Metallgegenständen „testen“',
+          'Wasser in offene Geräte gießen',
+        ],
+        correct: [
+          'Beschädigte Isolierung melden / nicht benutzen',
+          'Nasse Hände von Steckdosen fernhalten',
+          'Sicherungen nicht überbrücken',
+        ],
+      },
+      {
+        question: 'Was kann bei einem Kurzschluss passieren? (mehrere möglich)',
+        choices: [
+          'sehr großer Strom',
+          'starke Erwärmung der Leitung',
+          'Auslösen der Sicherung',
+          'die Leitung wird zum Isolator aus Gummi',
+          'Strom fließt nur ohne Spannungsquelle',
+        ],
+        correct: ['sehr großer Strom', 'starke Erwärmung der Leitung', 'Auslösen der Sicherung'],
+      },
+    ] as const
+    const p = pick(rng, [...pools])
+    return multiSelectTask({
+      question: p.question,
+      choices: [...p.choices],
+      correct: [...p.correct],
+      solution: p.correct.join('; '),
+      explanation: 'Sicherheit geht vor: Isolierung, trockene Hände, intakte Sicherungen.',
+      instruction: 'Tippe alle zutreffenden Punkte:',
+    })
+  },
+)
+
 /** Wahlbereiche */
 const sehen: Topic['generate'] = mixedVariants(
   (rng) => {
@@ -1689,6 +2036,10 @@ export const PHYSIK_K6_GENERATORS: Record<string, Topic['generate']> = {
   'ph-k6-lb3-aggregate': aggregate,
   'ph-k6-lb4-stromkreis': stromkreis,
   'ph-k6-lb4-leiter': leiter,
+  'ph-k6-lb4-symbole': schaltsymbole,
+  'ph-k6-lb4-widerstand': widerstand,
+  'ph-k6-lb4-reiheparallel': reiheparallel,
+  'ph-k6-lb4-gefahren': gefahren,
   'ph-k6-lbw-sehen': sehen,
   'ph-k6-lbw-daemmung': daemmung,
   'ph-k6-lbw-farben': farben,

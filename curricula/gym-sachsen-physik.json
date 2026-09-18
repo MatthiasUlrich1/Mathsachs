@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "2.5.1",
-  "changelog": "Pack-Update: Volumen bestimmen (ID 6453) freigegeben; installierte 2.5.0-Kopien mit gesperrtem Volumen werden ersetzt. LB2 sonst: Dichte, Stoffvergleich, Masse, Bewegung, Weg-Zeit, Einheiten.",
+  "version": "2.5.2",
+  "changelog": "Pack-Update: Schaltsymbole (ID 6148) mit echten Symbol-Aufgaben; neues Thema Elektrischer Widerstand (ID 6936) in LB4; Factory-Zuordnung für gesperrte Themen nachgebessert.",
   "official": [
     {
       "id": "physik-klasse-6",
@@ -325,6 +325,17 @@
               "released": false,
               "keywords": [
                 "Schaltbild"
+              ]
+            },
+            {
+              "id": "ph-k6-lb4-widerstand",
+              "title": "Elektrischer Widerstand",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "keywords": [
+                "Widerstand",
+                "Ohm"
               ]
             },
             {
@@ -3689,5 +3700,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "d60d8228"
+  "contentHash": "20b862fd"
 }

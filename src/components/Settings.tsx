@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { CurriculumSetup } from './CurriculumSetup'
 import { ClassCodes } from './ClassCodes'
+import { FaultyTasksPanel } from './FaultyTasksPanel'
 import { LanAccessCard } from './LanAccessCard'
 import { RoleRightsMatrix } from './RoleRightsMatrix'
 import { Supporters } from './Supporters'
@@ -21,6 +22,7 @@ import {
   canManageGradeCodes,
   canRequestTasks,
   canSendClassPoints,
+  canViewFaultyReports,
   isTeacherRole,
   roleLabel,
   type UserRole,
@@ -38,6 +40,7 @@ const SECTION_HINTS: Record<SettingsSectionId, string> = {
   curricula: 'Lehrpläne installieren, aktualisieren oder entfernen',
   class: 'Klassencode erstellen, eintragen oder teilen',
   tasks: 'Vorgaben für neue Übungsaufgaben senden',
+  faulty: 'Gemeldete fehlerhafte Aufgaben einsehen',
   lan: 'Tablets im selben WLAN verbinden',
   profile: 'Rolle, Lehrercode, Rechte und Benutzerwechsel',
   supporters: 'Organisationen, die Mathsachs unterstützen',
@@ -235,6 +238,16 @@ export function Settings({
             <p className="muted small">
               Nur Lehrer können Vorgaben für neue Aufgaben senden.
             </p>
+          </section>
+        ))}
+
+      {section === 'faulty' &&
+        (canViewFaultyReports(role) ? (
+          <FaultyTasksPanel />
+        ) : (
+          <section className="card" aria-label="Fehlerhafte Aufgaben">
+            <h2 className="section-title no-margin">Fehlerhafte Aufgaben</h2>
+            <p className="muted small">Nur in der Entwickleransicht verfügbar.</p>
           </section>
         ))}
 

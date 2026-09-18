@@ -6,7 +6,7 @@
   "subject": "Mathematik",
   "version": "1.2.0",
   "changelog": "ID 2101 freigegeben: Fläche und senkrechte Seitenlänge (Klasse 6 Prismen).",
-  "contentHash": "e5f81131",
+  "contentHash": "e9be709f",
   "official": [
     {
       "id": "klasse-5",
@@ -79,7 +79,6 @@
             {
               "id": "lb1-potenzieren",
               "title": "Potenzieren (Quadrat- und Zehnerpotenzen)",
-              "hint": "a² = a · a; 10ⁿ ist eine 1 mit n Nullen.",
               "pointsPerTask": 10
             },
             {
@@ -152,7 +151,6 @@
             {
               "id": "lb2-mittelwert",
               "title": "Arithmetisches Mittel",
-              "hint": "Mittelwert = Summe : Anzahl.",
               "pointsPerTask": 10
             },
             {
@@ -222,7 +220,7 @@
             {
               "id": "lb3-strecken-laenge",
               "title": "Länge von Strecken",
-              "hint": "1 Kästchen = 1 Längeneinheit (cm). Länge = Abstand der Endpunkte.",
+              "hint": "1 Kästchen = 1 Längeneinheit (cm).",
               "pointsPerTask": 10
             },
             {
@@ -265,25 +263,21 @@
             {
               "id": "lb4-umfang-rechteck",
               "title": "Umfang von Rechteck und Quadrat",
-              "hint": "U = 2 · (a + b), beim Quadrat U = 4 · a.",
               "pointsPerTask": 10
             },
             {
               "id": "lb4-flaeche-rechteck",
               "title": "Flächeninhalt von Rechteck und Quadrat",
-              "hint": "A = a · b, beim Quadrat A = a · a.",
               "pointsPerTask": 10
             },
             {
               "id": "lb4-volumen-quader",
               "title": "Volumen von Quader und Würfel",
-              "hint": "V = a · b · c, beim Würfel V = a · a · a.",
               "pointsPerTask": 10
             },
             {
               "id": "lb4-oberflaeche-quader",
               "title": "Oberflächeninhalt von Quadern",
-              "hint": "O = 2 · (a·b + a·c + b·c).",
               "pointsPerTask": 10
             },
             {
@@ -295,7 +289,7 @@
             {
               "id": "lb4-umfang-zusammengesetzt",
               "title": "Zusammengesetzte Flächen: Umfang berechnen",
-              "hint": "Addiere alle äußeren Kanten. Bei einer Eckaussparung gilt: U = 2 · (Länge + Breite).",
+              "hint": "Addiere alle äußeren Kanten.",
               "pointsPerTask": 12
             },
             {
@@ -314,7 +308,6 @@
             {
               "id": "lb5-gesamtpreis",
               "title": "Sachaufgabe: Gesamtpreis",
-              "hint": "Gesamtpreis = Anzahl · Stückpreis.",
               "pointsPerTask": 10
             },
             {
@@ -583,7 +576,6 @@
             {
               "id": "lb2-haeufigkeit",
               "title": "Relative Häufigkeit in Prozent",
-              "hint": "Relative Häufigkeit = Anzahl : Gesamt.",
               "pointsPerTask": 10
             },
             {
@@ -620,19 +612,16 @@
             {
               "id": "lb3-umfang-rechteck",
               "title": "Umfang von Rechteck und Quadrat",
-              "hint": "U = 2 · (a + b).",
               "pointsPerTask": 10
             },
             {
               "id": "lb3-flaeche-rechteck",
               "title": "Flächeninhalt von Rechteck und Quadrat",
-              "hint": "A = a · b.",
               "pointsPerTask": 10
             },
             {
               "id": "lb3-flaeche-dreieck",
               "title": "Flächeninhalt von Dreiecken",
-              "hint": "A = (g · h) : 2.",
               "pointsPerTask": 10
             },
             {
@@ -673,25 +662,21 @@
             {
               "id": "lb4-volumen-quader",
               "title": "Volumen von Quader und Würfel",
-              "hint": "V = a · b · c.",
               "pointsPerTask": 10
             },
             {
               "id": "lb4-oberflaeche-quader",
               "title": "Oberflächeninhalt von Quadern",
-              "hint": "O = 2 · (a·b + a·c + b·c).",
               "pointsPerTask": 10
             },
             {
               "id": "lb4-volumen-prisma",
               "title": "Volumen gerader Prismen",
-              "hint": "V = Grundfläche · Höhe.",
               "pointsPerTask": 10
             },
             {
               "id": "lb4-flaeche-kante-quader",
               "title": "Fläche und senkrechte Seitenlänge",
-              "hint": "Volumen = Fläche · dazu senkrechte Länge (2D · 1D = 3D): V = G · h, also G = V : h und h = V : G.",
               "pointsPerTask": 10,
               "keywords": [
                 "Quader",
@@ -725,7 +710,6 @@
             {
               "id": "lb5-anteil-groesse",
               "title": "Anteil einer Größe berechnen",
-              "hint": "Anteil = Bruch · Ganzes.",
               "pointsPerTask": 10
             },
             {
@@ -827,7 +811,6 @@
             {
               "id": "k7-lb1-winkelsumme-vieleck",
               "title": "Innenwinkelsumme im Vieleck",
-              "hint": "Winkelsumme = (n − 2) · 180°.",
               "pointsPerTask": 10,
               "keywords": [
                 "Vieleck",
@@ -981,7 +964,6 @@
             {
               "id": "k7-lb3-volumen-prisma",
               "title": "Volumen gerader Prismen",
-              "hint": "V = Grundfläche · Höhe.",
               "pointsPerTask": 10,
               "keywords": [
                 "Prisma",
@@ -993,7 +975,6 @@
             {
               "id": "k7-lb3-mantel-prisma",
               "title": "Mantelfläche eines Prismas",
-              "hint": "M = Umfang der Grundfläche · Höhe.",
               "pointsPerTask": 10,
               "keywords": [
                 "Prisma",
@@ -1006,7 +987,6 @@
             {
               "id": "k7-lb3-volumen-pyramide",
               "title": "Volumen einer Pyramide",
-              "hint": "V = (1/3) · Grundfläche · Höhe.",
               "pointsPerTask": 10,
               "keywords": [
                 "Pyramide",
@@ -1018,7 +998,6 @@
             {
               "id": "k7-lb3-oberflaeche-quader",
               "title": "Oberfläche eines Quaders",
-              "hint": "O = 2 · (a·b + a·c + b·c).",
               "pointsPerTask": 10,
               "keywords": [
                 "Quader",
@@ -1037,7 +1016,6 @@
             {
               "id": "k7-lb4-mittelwert",
               "title": "Arithmetisches Mittel",
-              "hint": "Mittelwert = Summe : Anzahl.",
               "pointsPerTask": 10,
               "keywords": [
                 "Mittelwert",
@@ -1063,7 +1041,6 @@
             {
               "id": "k7-lb4-spannweite",
               "title": "Spannweite berechnen",
-              "hint": "Spannweite = größter − kleinster Wert.",
               "pointsPerTask": 10,
               "keywords": [
                 "Spannweite",
@@ -1076,7 +1053,6 @@
             {
               "id": "k7-lb4-rel-haeufigkeit",
               "title": "Relative Häufigkeit in Prozent",
-              "hint": "Relative Häufigkeit = Anzahl : Gesamt.",
               "pointsPerTask": 10,
               "keywords": [
                 "relative Häufigkeit",
@@ -1157,7 +1133,7 @@
             {
               "id": "k8-lb1-ausmultiplizieren",
               "title": "Klammer ausmultiplizieren (Wert bei x)",
-              "hint": "Distributivgesetz: a·(bx + c) = ab·x + ac.",
+              "hint": "Wende das Distributivgesetz an.",
               "pointsPerTask": 10,
               "keywords": [
                 "Distributivgesetz",
@@ -1176,7 +1152,6 @@
             {
               "id": "k8-lb2-laplace-bruch",
               "title": "Laplace-Wahrscheinlichkeit als Bruch",
-              "hint": "P = günstige : mögliche Ergebnisse.",
               "pointsPerTask": 10,
               "keywords": [
                 "Wahrscheinlichkeit",
@@ -1189,7 +1164,6 @@
             {
               "id": "k8-lb2-laplace-prozent",
               "title": "Laplace-Wahrscheinlichkeit in Prozent",
-              "hint": "P = günstige : mögliche, dann · 100.",
               "pointsPerTask": 10,
               "keywords": [
                 "Wahrscheinlichkeit",
@@ -1202,7 +1176,6 @@
             {
               "id": "k8-lb2-gegenwahrscheinlichkeit",
               "title": "Gegenwahrscheinlichkeit",
-              "hint": "P(nicht A) = 1 − P(A).",
               "pointsPerTask": 10,
               "keywords": [
                 "Gegenwahrscheinlichkeit",
@@ -1221,7 +1194,7 @@
             {
               "id": "k8-lb3-funktionswert",
               "title": "Funktionswert einer linearen Funktion",
-              "hint": "Setze x in f(x) = m·x + n ein.",
+              "hint": "Setze den gegebenen x-Wert in die Funktion ein.",
               "pointsPerTask": 10,
               "keywords": [
                 "lineare Funktion",
@@ -1234,7 +1207,6 @@
             {
               "id": "k8-lb3-steigung",
               "title": "Steigung aus zwei Punkten",
-              "hint": "m = (y₂ − y₁) : (x₂ − x₁).",
               "pointsPerTask": 10,
               "keywords": [
                 "Steigung",
@@ -1247,7 +1219,6 @@
             {
               "id": "k8-lb3-achsenabschnitt",
               "title": "y-Achsenabschnitt bestimmen",
-              "hint": "n = y − m·x.",
               "pointsPerTask": 10,
               "keywords": [
                 "y-Achsenabschnitt",
@@ -1279,7 +1250,6 @@
             {
               "id": "k8-lb4-streckfaktor",
               "title": "Streckfaktor bestimmen",
-              "hint": "k = Bildlänge : Originallänge.",
               "pointsPerTask": 10,
               "keywords": [
                 "Ähnlichkeit",
@@ -1291,7 +1261,7 @@
             {
               "id": "k8-lb4-strahlensatz",
               "title": "Strahlensatz: fehlende Länge",
-              "hint": "Gleiche Verhältnisse: a : b = c : x.",
+              "hint": "Stelle die Proportion auf und löse nach x.",
               "pointsPerTask": 10,
               "keywords": [
                 "Strahlensatz",
@@ -1363,7 +1333,6 @@
             {
               "id": "k9-lb1-potenz-produkt",
               "title": "Potenzgesetz: Produkt gleicher Basis",
-              "hint": "aᵐ · aⁿ = aᵐ⁺ⁿ — die Exponenten werden addiert.",
               "pointsPerTask": 10,
               "keywords": [
                 "Potenz",
@@ -1376,7 +1345,6 @@
             {
               "id": "k9-lb1-potenz-quotient",
               "title": "Potenzgesetz: Quotient und Potenz einer Potenz",
-              "hint": "aᵐ : aⁿ = aᵐ⁻ⁿ und (aᵐ)ⁿ = aᵐ·ⁿ.",
               "pointsPerTask": 10,
               "keywords": [
                 "Potenz",
@@ -1389,7 +1357,7 @@
             {
               "id": "k9-lb1-quadrat-wert",
               "title": "Wert einer quadratischen Funktion",
-              "hint": "Setze x in f(x) = x² + b·x + c ein.",
+              "hint": "Setze den gegebenen x-Wert in die Funktion ein.",
               "pointsPerTask": 10,
               "keywords": [
                 "quadratische Funktion",
@@ -1401,7 +1369,7 @@
             {
               "id": "k9-lb1-scheitel",
               "title": "Scheitelpunkt aus der Scheitelform",
-              "hint": "f(x) = (x − d)² + e hat den Scheitel S(d | e).",
+              "hint": "Lies den Scheitel aus der Scheitelform ab.",
               "pointsPerTask": 10,
               "keywords": [
                 "Scheitelpunkt",
@@ -1421,7 +1389,6 @@
             {
               "id": "k9-lb2-kreis-umfang",
               "title": "Umfang eines Kreises",
-              "hint": "U = 2 · π · r.",
               "pointsPerTask": 10,
               "keywords": [
                 "Kreis",
@@ -1434,7 +1401,6 @@
             {
               "id": "k9-lb2-kreis-flaeche",
               "title": "Flächeninhalt eines Kreises",
-              "hint": "A = π · r².",
               "pointsPerTask": 10,
               "keywords": [
                 "Kreis",
@@ -1448,7 +1414,6 @@
             {
               "id": "k9-lb2-zylinder-volumen",
               "title": "Volumen eines Kreiszylinders",
-              "hint": "V = π · r² · h.",
               "pointsPerTask": 10,
               "keywords": [
                 "Zylinder",
@@ -1462,7 +1427,6 @@
             {
               "id": "k9-lb2-kugel-volumen",
               "title": "Volumen einer Kugel",
-              "hint": "V = (4/3) · π · r³.",
               "pointsPerTask": 10,
               "keywords": [
                 "Kugel",
@@ -1482,7 +1446,6 @@
             {
               "id": "k9-lb3-pythagoras-hypotenuse",
               "title": "Satz des Pythagoras: Hypotenuse",
-              "hint": "c = √(a² + b²).",
               "pointsPerTask": 10,
               "keywords": [
                 "Pythagoras",
@@ -1494,7 +1457,6 @@
             {
               "id": "k9-lb3-pythagoras-kathete",
               "title": "Satz des Pythagoras: fehlende Kathete",
-              "hint": "a = √(c² − b²).",
               "pointsPerTask": 10,
               "keywords": [
                 "Pythagoras",
@@ -1529,7 +1491,6 @@
             {
               "id": "k9-lb4-mittelwert",
               "title": "Arithmetisches Mittel",
-              "hint": "Mittelwert = Summe : Anzahl.",
               "pointsPerTask": 10,
               "keywords": [
                 "Mittelwert",
@@ -1604,7 +1565,6 @@
             {
               "id": "k10-lb1-zinsen",
               "title": "Jahreszinsen berechnen",
-              "hint": "Z = K · p : 100.",
               "pointsPerTask": 10,
               "keywords": [
                 "Zinsen",
@@ -1617,7 +1577,6 @@
             {
               "id": "k10-lb1-zinseszins",
               "title": "Zinseszins: Endkapital",
-              "hint": "Kₙ = K₀ · (1 + p/100)ⁿ.",
               "pointsPerTask": 10,
               "keywords": [
                 "Zinseszins",
@@ -1630,7 +1589,6 @@
             {
               "id": "k10-lb1-prozentuale-zunahme",
               "title": "Prozentuale Zunahme",
-              "hint": "Neuer Wert = alter Wert · (1 + p/100).",
               "pointsPerTask": 10,
               "keywords": [
                 "prozentuale Zunahme",
@@ -1643,7 +1601,6 @@
             {
               "id": "k10-lb1-exp-wachstum",
               "title": "Exponentielles Wachstum",
-              "hint": "Bestand = Anfang · Faktorⁿ.",
               "pointsPerTask": 10,
               "keywords": [
                 "exponentielles Wachstum",
@@ -1662,7 +1619,6 @@
             {
               "id": "k10-lb2-erwartungswert",
               "title": "Erwartungswert eines Glücksrads",
-              "hint": "E(X) = Σ Auszahlung · Wahrscheinlichkeit.",
               "pointsPerTask": 10,
               "keywords": [
                 "Erwartungswert",
@@ -1695,7 +1651,6 @@
             {
               "id": "k10-lb3-rechteck-breite",
               "title": "Rechteck: Breite aus Fläche",
-              "hint": "b = A : a.",
               "pointsPerTask": 10,
               "keywords": [
                 "Rechteck",
@@ -1708,7 +1663,6 @@
             {
               "id": "k10-lb3-quadrat-seite",
               "title": "Quadrat: Seitenlänge aus Fläche",
-              "hint": "a = √A.",
               "pointsPerTask": 10,
               "keywords": [
                 "Quadrat",
@@ -1721,7 +1675,6 @@
             {
               "id": "k10-lb3-rechteck-umfang",
               "title": "Rechteck: Breite aus Umfang",
-              "hint": "b = U : 2 − a.",
               "pointsPerTask": 10,
               "keywords": [
                 "Rechteck",
@@ -1741,7 +1694,7 @@
             {
               "id": "k10-lb4-reinquadratisch",
               "title": "Reinquadratische Gleichung x² = a",
-              "hint": "Positive Lösung: x = √a.",
+              "hint": "Nimm die positive Quadratwurzel.",
               "pointsPerTask": 10,
               "keywords": [
                 "quadratische Gleichung",
@@ -1754,7 +1707,7 @@
             {
               "id": "k10-lb4-quadratische-gleichung",
               "title": "Quadratische Gleichung (größere Lösung)",
-              "hint": "Faktorisiere: (x − x₁)(x − x₂) = 0.",
+              "hint": "Faktorisiere und nutze den Satz vom Nullprodukt.",
               "pointsPerTask": 10,
               "keywords": [
                 "quadratische Gleichung",
@@ -1767,7 +1720,7 @@
             {
               "id": "k10-lb4-parabel-wert",
               "title": "Funktionswert einer Parabel",
-              "hint": "Setze x in f(x) = a·x² + c ein.",
+              "hint": "Setze den gegebenen x-Wert in die Funktion ein.",
               "pointsPerTask": 10,
               "keywords": [
                 "Parabel",
@@ -1786,7 +1739,6 @@
             {
               "id": "k10-lb5-kapital",
               "title": "Kapital aus Zinsen bestimmen",
-              "hint": "K = Z · 100 : p.",
               "pointsPerTask": 10,
               "keywords": [
                 "Zinsrechnung",
@@ -1799,7 +1751,6 @@
             {
               "id": "k10-lb5-zinssatz",
               "title": "Zinssatz bestimmen",
-              "hint": "p = Z · 100 : K.",
               "pointsPerTask": 10,
               "keywords": [
                 "Zinsrechnung",
@@ -1842,7 +1793,7 @@
             {
               "id": "k1112-lb1-nullstelle-linear",
               "title": "Nullstelle einer linearen Funktion",
-              "hint": "Setze f(x) = 0 und löse nach x.",
+              "hint": "Setze die Funktion gleich null und löse nach x.",
               "pointsPerTask": 10,
               "keywords": [
                 "Nullstelle",
@@ -1888,7 +1839,6 @@
             {
               "id": "k1112-lb2-betrag-vektor",
               "title": "Betrag eines Vektors",
-              "hint": "|v| = √(x² + y² + z²).",
               "pointsPerTask": 10,
               "keywords": [
                 "Betrag",
@@ -1909,7 +1859,6 @@
             {
               "id": "k1112-lb3-binomialverteilung",
               "title": "Binomialverteilung: P(X = k)",
-              "hint": "P(X = k) = C(n, k) · pᵏ · (1 − p)ⁿ⁻ᵏ.",
               "pointsPerTask": 10,
               "keywords": [
                 "Binomialverteilung",
@@ -1922,7 +1871,6 @@
             {
               "id": "k1112-lb3-erwartungswert-binom",
               "title": "Erwartungswert der Binomialverteilung",
-              "hint": "E(X) = n · p.",
               "pointsPerTask": 10,
               "keywords": [
                 "Binomialverteilung",

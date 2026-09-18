@@ -268,3 +268,120 @@ export function circuitSvg(closed: boolean): string {
   }
 </svg>`
 }
+
+/** School-style Schaltsymbole (IEC-like, original line art — no textbook scans). */
+export type CircuitSymbolKind =
+  | 'battery'
+  | 'lamp'
+  | 'switchOpen'
+  | 'switchClosed'
+  | 'resistor'
+  | 'motor'
+  | 'buzzer'
+  | 'ammeter'
+  | 'voltmeter'
+
+const SYMBOL_LABEL: Record<CircuitSymbolKind, string> = {
+  battery: 'Batterie / Spannungsquelle',
+  lamp: 'Lampe',
+  switchOpen: 'Schalter (offen)',
+  switchClosed: 'Schalter (geschlossen)',
+  resistor: 'Widerstand',
+  motor: 'Motor',
+  buzzer: 'Summer / Klingel',
+  ammeter: 'Amperemeter',
+  voltmeter: 'Voltmeter',
+}
+
+export function circuitSymbolLabel(kind: CircuitSymbolKind): string {
+  return SYMBOL_LABEL[kind]
+}
+
+export function circuitSymbolSvg(kind: CircuitSymbolKind): string {
+  const body = (() => {
+    switch (kind) {
+      case 'battery':
+        return `
+  <path d="M40 80 H90" stroke="#334155" stroke-width="3" fill="none"/>
+  <path d="M90 55 V105" stroke="#334155" stroke-width="4" fill="none"/>
+  <path d="M105 65 V95" stroke="#334155" stroke-width="3" fill="none"/>
+  <path d="M105 80 H160" stroke="#334155" stroke-width="3" fill="none"/>
+  <text x="100" y="42" text-anchor="middle" fill="#64748b" font-size="12" font-family="system-ui,sans-serif">+</text>
+  <text x="78" y="128" text-anchor="middle" fill="#64748b" font-size="12" font-family="system-ui,sans-serif">−</text>`
+      case 'lamp':
+        return `
+  <path d="M40 80 H70" stroke="#334155" stroke-width="3" fill="none"/>
+  <circle cx="100" cy="80" r="28" fill="#fffbeb" stroke="#334155" stroke-width="3"/>
+  <path d="M82 62 L118 98 M118 62 L82 98" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <path d="M130 80 H160" stroke="#334155" stroke-width="3" fill="none"/>`
+      case 'switchOpen':
+        return `
+  <path d="M40 80 H80" stroke="#334155" stroke-width="3" fill="none"/>
+  <circle cx="80" cy="80" r="5" fill="#334155"/>
+  <path d="M80 80 L130 55" stroke="#334155" stroke-width="3" fill="none"/>
+  <circle cx="140" cy="80" r="5" fill="#334155"/>
+  <path d="M140 80 H160" stroke="#334155" stroke-width="3" fill="none"/>`
+      case 'switchClosed':
+        return `
+  <path d="M40 80 H80" stroke="#334155" stroke-width="3" fill="none"/>
+  <circle cx="80" cy="80" r="5" fill="#334155"/>
+  <path d="M80 80 H140" stroke="#334155" stroke-width="3" fill="none"/>
+  <circle cx="140" cy="80" r="5" fill="#334155"/>
+  <path d="M140 80 H160" stroke="#334155" stroke-width="3" fill="none"/>`
+      case 'resistor':
+        return `
+  <path d="M40 80 H60" stroke="#334155" stroke-width="3" fill="none"/>
+  <rect x="60" y="62" width="80" height="36" fill="#f8fafc" stroke="#334155" stroke-width="3"/>
+  <path d="M140 80 H160" stroke="#334155" stroke-width="3" fill="none"/>`
+      case 'motor':
+        return `
+  <path d="M40 80 H70" stroke="#334155" stroke-width="3" fill="none"/>
+  <circle cx="100" cy="80" r="28" fill="#eff6ff" stroke="#334155" stroke-width="3"/>
+  <text x="100" y="86" text-anchor="middle" fill="#1e3a8a" font-size="22" font-family="system-ui,sans-serif" font-weight="700">M</text>
+  <path d="M130 80 H160" stroke="#334155" stroke-width="3" fill="none"/>`
+      case 'buzzer':
+        return `
+  <path d="M40 80 H70" stroke="#334155" stroke-width="3" fill="none"/>
+  <path d="M70 55 H110 L130 80 L110 105 H70 Z" fill="#fef3c7" stroke="#334155" stroke-width="3"/>
+  <path d="M130 80 H160" stroke="#334155" stroke-width="3" fill="none"/>`
+      case 'ammeter':
+        return `
+  <path d="M40 80 H70" stroke="#334155" stroke-width="3" fill="none"/>
+  <circle cx="100" cy="80" r="28" fill="#ecfdf5" stroke="#334155" stroke-width="3"/>
+  <text x="100" y="88" text-anchor="middle" fill="#065f46" font-size="24" font-family="system-ui,sans-serif" font-weight="700">A</text>
+  <path d="M130 80 H160" stroke="#334155" stroke-width="3" fill="none"/>`
+      case 'voltmeter':
+        return `
+  <path d="M40 80 H70" stroke="#334155" stroke-width="3" fill="none"/>
+  <circle cx="100" cy="80" r="28" fill="#f5f3ff" stroke="#334155" stroke-width="3"/>
+  <text x="100" y="88" text-anchor="middle" fill="#5b21b6" font-size="24" font-family="system-ui,sans-serif" font-weight="700">V</text>
+  <path d="M130 80 H160" stroke="#334155" stroke-width="3" fill="none"/>`
+    }
+  })()
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" width="200" height="160" role="img" aria-label="Schaltsymbol">
+  <rect width="200" height="160" fill="#f8fafc"/>
+  ${body}
+</svg>`
+}
+
+/** Side-by-side Reihe vs Parallel sketch for Klasse-6 intro. */
+export function seriesParallelSvg(kind: 'series' | 'parallel'): string {
+  if (kind === 'series') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140" width="320" height="140" role="img" aria-label="Reihenschaltung">
+  <rect width="320" height="140" fill="#f8fafc"/>
+  <rect x="30" y="55" width="28" height="24" rx="3" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
+  <circle cx="120" cy="67" r="14" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+  <circle cx="190" cy="67" r="14" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+  <path d="M58 67 H106 M134 67 H176 M204 67 H280 V100 H30 V79" stroke="#334155" stroke-width="3" fill="none"/>
+  <text x="160" y="128" text-anchor="middle" fill="#475569" font-size="13" font-family="system-ui,sans-serif">Reihe: ein gemeinsamer Weg</text>
+</svg>`
+  }
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 150" width="320" height="150" role="img" aria-label="Parallelschaltung">
+  <rect width="320" height="150" fill="#f8fafc"/>
+  <rect x="30" y="60" width="28" height="24" rx="3" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
+  <circle cx="170" cy="40" r="12" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+  <circle cx="170" cy="105" r="12" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+  <path d="M58 72 H110 V40 H158 M182 40 H240 V72 H290 V95 H240 V105 H182 M158 105 H110 V72 M30 84 V95 H110" stroke="#334155" stroke-width="3" fill="none"/>
+  <text x="160" y="140" text-anchor="middle" fill="#475569" font-size="13" font-family="system-ui,sans-serif">Parallel: eigene Zweige</text>
+</svg>`
+}

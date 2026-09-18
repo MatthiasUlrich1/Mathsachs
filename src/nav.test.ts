@@ -88,6 +88,7 @@ describe('top-bar navigation', () => {
       'Lehrpläne',
       'Klasse',
       'Aufgaben ergänzen',
+      'Fehlerhafte Aufgaben',
       'WLAN-Zugang',
       'Profil',
       'Unterstützer',
@@ -96,6 +97,7 @@ describe('top-bar navigation', () => {
       'curricula',
       'class',
       'tasks',
+      'faulty',
       'lan',
       'profile',
       'supporters',
@@ -123,5 +125,18 @@ describe('top-bar navigation', () => {
     expect(settingsSectionsForRole(undefined).map((item) => item.label)).not.toContain(
       'Aufgaben ergänzen',
     )
+  })
+
+  it('shows Fehlerhafte Aufgaben only for Entwickler', () => {
+    expect(settingsSectionsForRole('entwickler').map((item) => item.id)).toEqual([
+      'curricula',
+      'class',
+      'tasks',
+      'faulty',
+      'lan',
+      'profile',
+      'supporters',
+    ])
+    expect(settingsSectionsForRole('lehrer').map((item) => item.id)).not.toContain('faulty')
   })
 })
