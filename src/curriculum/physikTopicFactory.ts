@@ -361,8 +361,215 @@ type PhysicsBank = {
   sortExplanation: string
 }
 
+/** Formula blocks for drag&drop; optional distractor is sorted last. */
+function formulaSort(
+  parts: string[],
+  formula: string,
+  distractor?: string,
+): Pick<PhysicsBank, 'sortItems' | 'sortQuestion' | 'sortExplanation'> {
+  const items = distractor ? [...parts, distractor] : parts
+  return {
+    sortItems: items,
+    sortQuestion: distractor
+      ? `Ordne die Formelblöcke zu ${formula}. Den falschen Block ans Ende.`
+      : `Ordne die Formelblöcke zu ${formula} (von links nach rechts).`,
+    sortExplanation: distractor
+      ? `Richtige Reihenfolge: ${parts.join(' ')}. „${distractor}“ gehört nicht zur Formel.`
+      : `Die Formel lautet ${formula}.`,
+  }
+}
+
 function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
   const lower = `${topicId} ${title}`.toLowerCase()
+
+  // --- Volumen (Klasse 6 u. a.) ---
+  if (/volumen/.test(lower) && !/dichte/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Formel für das Volumen eines Quaders?',
+          correct: 'V = l · b · h',
+          wrong: ['V = l + b + h', 'V = l · b', 'V = m / ρ'],
+        },
+        {
+          q: 'Welche Einheit passt zum Volumen?',
+          correct: 'cm³ (oder m³, Liter)',
+          wrong: ['cm²', 'm/s', 'Newton (N)'],
+        },
+        {
+          q: 'Welche Größen braucht man für V = l · b · h?',
+          correct: 'Länge, Breite und Höhe',
+          wrong: ['nur die Masse', 'nur die Zeit', 'Spannung und Strom'],
+        },
+        {
+          q: '1 Liter entspricht …',
+          correct: '1 dm³',
+          wrong: ['1 cm³', '1 m³', '1 mm³'],
+        },
+      ],
+      calc: (rng) => {
+        const l = pick(rng, [2, 3, 4, 5, 6])
+        const b = pick(rng, [2, 3, 4, 5])
+        const h = pick(rng, [2, 3, 4, 5])
+        const V = l * b * h
+        return {
+          q: `Quader: l = ${l} cm, b = ${b} cm, h = ${h} cm. Berechne V = l·b·h.`,
+          answerKind: 'integer',
+          unit: 'cm³',
+          value: V,
+          solution: `${V} cm³`,
+          explanation: `V = ${l}·${b}·${h} = ${V} cm³.`,
+        }
+      },
+      ...formulaSort(['V =', 'l', '× b', '× h'], 'V = l × b × h', '× m'),
+    }
+  }
+
+  // --- Masse ---
+  if (/masse/.test(lower) && !/dichte|gewichtskraft|energie/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Welche Einheit hat die Masse?',
+          correct: 'Kilogramm (kg) bzw. Gramm (g)',
+          wrong: ['Newton (N)', 'Meter (m)', 'Sekunde (s)'],
+        },
+        {
+          q: 'Womit misst man die Masse?',
+          correct: 'mit einer Waage',
+          wrong: ['mit dem Lineal', 'mit dem Thermometer', 'mit dem Amperemeter'],
+        },
+        {
+          q: '1 kg entspricht …',
+          correct: '1000 g',
+          wrong: ['100 g', '10 g', '1 g'],
+        },
+      ],
+      calc: (rng) => {
+        const kg = pick(rng, [1, 2, 3, 4, 5])
+        const g = kg * 1000
+        return {
+          q: `${kg} kg in Gramm umrechnen.`,
+          answerKind: 'integer',
+          unit: 'g',
+          value: g,
+          solution: `${g} g`,
+          explanation: `1 kg = 1000 g → ${kg} kg = ${g} g.`,
+        }
+      },
+      ...formulaSort(['1 kg', '=', '1000', 'g'], '1 kg = 1000 g', 'N'),
+    }
+  }
+
+  // --- Dichte (ohne „Stoffe vergleichen“, das hat eigenen Generator oben) ---
+  if (/dichte/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Dichte ρ = …',
+          correct: 'm / V',
+          wrong: ['m · V', 'V / m', 'm + V'],
+        },
+        {
+          q: 'Einheit der Dichte (Beispiel)?',
+          correct: 'g/cm³ oder kg/m³',
+          wrong: ['nur cm', 'nur N', 'nur s'],
+        },
+        {
+          q: 'Wasser hat näherungsweise die Dichte …',
+          correct: '1 g/cm³',
+          wrong: ['0 g/cm³', '10 g/cm³', '100 g/cm³'],
+        },
+      ],
+      calc: (rng) => {
+        const m = pick(rng, [20, 40, 50, 80, 100])
+        const v = pick(rng, [2, 4, 5, 10])
+        const rho = m / v
+        return {
+          q: `m = ${m} g, V = ${v} cm³. Berechne ρ = m/V.`,
+          answerKind: rho % 1 === 0 ? 'integer' : 'decimal',
+          unit: 'g/cm³',
+          value: rho,
+          solution: `${rho} g/cm³`,
+          explanation: `ρ = ${m}/${v} = ${rho} g/cm³.`,
+        }
+      },
+      ...formulaSort(['ρ', '=', 'm', '/', 'V'], 'ρ = m / V', '+ t'),
+    }
+  }
+
+  // --- Bewegung / Geschwindigkeit / Weg-Zeit ---
+  if (/geschwindigkeit|gleichförmig|weg.?zeit|bewegung|einheiten.*v|v, s und t/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Formel für gleichförmige Bewegung?',
+          correct: 's = v · t',
+          wrong: ['s = v / t', 's = v + t', 's = t / v'],
+        },
+        {
+          q: 'Einheit der Geschwindigkeit?',
+          correct: 'm/s (oder km/h)',
+          wrong: ['nur m', 'nur s', 'Newton (N)'],
+        },
+        {
+          q: 'v = s / t. Welche Größe ist t?',
+          correct: 'Zeit',
+          wrong: ['Strecke', 'Masse', 'Volumen'],
+        },
+      ],
+      calc: (rng) => {
+        const v = pick(rng, [2, 3, 4, 5, 6])
+        const t = pick(rng, [2, 3, 4, 5])
+        const s = v * t
+        return {
+          q: `Gleichförmige Bewegung: v = ${v} m/s, t = ${t} s. Berechne s = v·t.`,
+          answerKind: 'integer',
+          unit: 'm',
+          value: s,
+          solution: `${s} m`,
+          explanation: `s = ${v}·${t} = ${s} m.`,
+        }
+      },
+      ...formulaSort(['s', '=', 'v', '× t'], 's = v × t', '× m'),
+    }
+  }
+
+  // --- Temperatur / Wärme / Aggregate ---
+  if (/temperatur|thermometer|kelvin|celsius|wärme|aggregat|schmelzen|sieden|ausdehnung/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Umwandlung Celsius → Kelvin?',
+          correct: 'T(K) = ϑ(°C) + 273',
+          wrong: ['T(K) = ϑ(°C) − 273', 'T(K) = ϑ(°C) · 273', 'T(K) = 273 / ϑ'],
+        },
+        {
+          q: 'Einheit der Temperatur (SI)?',
+          correct: 'Kelvin (K)',
+          wrong: ['Newton (N)', 'Ampere (A)', 'Ohm (Ω)'],
+        },
+        {
+          q: 'Beim Schmelzen ändert sich der Aggregatzustand von …',
+          correct: 'fest → flüssig',
+          wrong: ['flüssig → fest', 'flüssig → gasförmig', 'gasförmig → fest'],
+        },
+      ],
+      calc: (rng) => {
+        const c = pick(rng, [0, 20, 27, 100])
+        const k = c + 273
+        return {
+          q: `${c} °C in Kelvin: T = ϑ + 273.`,
+          answerKind: 'integer',
+          unit: 'K',
+          value: k,
+          solution: `${k} K`,
+          explanation: `T = ${c} + 273 = ${k} K.`,
+        }
+      },
+      ...formulaSort(['T', '=', 'ϑ', '+ 273'], 'T = ϑ + 273', '× 273'),
+    }
+  }
 
   if (/brechung|prisma|linse|optische.?dichte|snell/.test(lower)) {
     return {
@@ -383,13 +590,11 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           wrong: ['nur spiegeln wie ein ebener Spiegel', 'löschen', 'in Strom umwandeln'],
         },
       ],
-      sortItems: ['Einfall in Luft', 'Brechung an Grenzfläche', 'Verlauf im dichteren Medium'],
-      sortQuestion: 'Ordne den Ablauf bei Brechung Luft → Glas.',
-      sortExplanation: 'Einfall, Brechung am Lot, Weiterlaufen im Glas.',
+      ...formulaSort(['n₁', '· sin α₁', '=', 'n₂', '· sin α₂'], 'n₁·sin α₁ = n₂·sin α₂', '+ c'),
     }
   }
 
-  if (/licht|optik|schatten|spiegel|strahl|auge|farbe/.test(lower)) {
+  if (/licht|optik|schatten|spiegel|strahl|auge|farbe|spektrum|filter|lochkamera|sehen/.test(lower)) {
     return {
       cases: [
         {
@@ -440,13 +645,11 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           explanation: 'Reflexionsgesetz: Einfallswinkel = Ausfallswinkel.',
         }
       },
-      sortItems: ['Lichtquelle', 'Gegenstand', 'Schirm/Schatten'],
-      sortQuestion: 'Ordne den Weg des Lichts bei der Schattenentstehung.',
-      sortExplanation: 'Licht kommt von der Quelle, trifft den Gegenstand, Schatten erscheint am Schirm.',
+      ...formulaSort(['αₑ', '=', 'αₐ'], 'αₑ = αₐ (Reflexion)', 'αₑ + αₐ'),
     }
   }
 
-  if (/strom|elektr|spannung|widerstand|ladung|magnet|induktion|spule|kondensator/.test(lower)) {
+  if (/strom|elektr|spannung|widerstand|ladung|magnet|induktion|spule|kondensator|leiter|kurzschluss|schalt|diode|led|transistor/.test(lower)) {
     return {
       cases: [
         {
@@ -483,13 +686,47 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           explanation: `I = ${u}/${r} = ${i} A.`,
         }
       },
-      sortItems: ['Batterie', 'Schalter', 'Verbraucher (Lampe)'],
-      sortQuestion: 'Ordne typische Bauteile eines einfachen Stromkreises (Quelle → Schalter → Verbraucher).',
-      sortExplanation: 'Spannung kommt von der Quelle; der Schalter unterbricht; die Lampe ist Verbraucher.',
+      ...formulaSort(['R', '=', 'U', '/', 'I'], 'R = U / I', '· I'),
     }
   }
 
-  if (/kraft|druck|energie|arbeit|leistung|impuls|newton|reibung|hebel|dichte|masse|bewegung|geschwindigkeit|beschleunigung|fall|wärme|temperatur|aggregat/.test(lower)) {
+  if (/leistung|arbeit|energie/.test(lower) && !/dichte|volumen/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Leistung P = …',
+          correct: 'E / t',
+          wrong: ['E · t', 't / E', 'E + t'],
+        },
+        {
+          q: 'Einheit der Energie?',
+          correct: 'Joule (J)',
+          wrong: ['Newton (N)', 'Ampere (A)', 'Pascal (Pa)'],
+        },
+        {
+          q: 'Einheit der Leistung?',
+          correct: 'Watt (W)',
+          wrong: ['Joule (J)', 'Volt (V)', 'Ohm (Ω)'],
+        },
+      ],
+      calc: (rng) => {
+        const e = pick(rng, [20, 40, 60, 100])
+        const t = pick(rng, [2, 4, 5, 10])
+        const p = e / t
+        return {
+          q: `E = ${e} J, t = ${t} s. Berechne P = E/t.`,
+          answerKind: p % 1 === 0 ? 'integer' : 'decimal',
+          unit: 'W',
+          value: p,
+          solution: `${p} W`,
+          explanation: `P = ${e}/${t} = ${p} W.`,
+        }
+      },
+      ...formulaSort(['P', '=', 'E', '/', 't'], 'P = E / t', '· t'),
+    }
+  }
+
+  if (/kraft|druck|impuls|newton|reibung|hebel|auftrieb|feder|hooke/.test(lower)) {
     return {
       cases: [
         {
@@ -507,54 +744,35 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           correct: 'm · g',
           wrong: ['m / g', 'm + g', 'g / m'],
         },
-        {
-          q: 'Dichte ρ = …',
-          correct: 'm / V',
-          wrong: ['m · V', 'V / m', 'm + V'],
-        },
       ],
       calc: (rng) => {
-        const kind = pick(rng, ['dichte', 'kraft', 'druck'] as const)
-        if (kind === 'dichte') {
-          const m = pick(rng, [20, 40, 50, 80, 100])
-          const v = pick(rng, [2, 4, 5, 10])
-          const rho = m / v
+        if (/druck/.test(lower)) {
+          const f = pick(rng, [20, 40, 50, 100])
+          const a = pick(rng, [2, 4, 5, 10])
+          const p = f / a
           return {
-            q: `m = ${m} g, V = ${v} cm³. Berechne ρ = m/V.`,
-            answerKind: rho % 1 === 0 ? 'integer' : 'decimal',
-            unit: 'g/cm³',
-            value: rho,
-            solution: `${rho} g/cm³`,
-            explanation: `ρ = ${m}/${v} = ${rho} g/cm³.`,
+            q: `F = ${f} N, A = ${a} m². Berechne p = F/A.`,
+            answerKind: p % 1 === 0 ? 'integer' : 'decimal',
+            unit: 'Pa',
+            value: p,
+            solution: `${p} Pa`,
+            explanation: `p = ${f}/${a} = ${p} Pa.`,
           }
         }
-        if (kind === 'kraft') {
-          const m = pick(rng, [2, 3, 5, 8, 10])
-          const F = m * 10
-          return {
-            q: `m = ${m} kg, g ≈ 10 N/kg. Berechne F_G = m·g.`,
-            answerKind: 'integer',
-            unit: 'N',
-            value: F,
-            solution: `${F} N`,
-            explanation: `F_G = ${m}·10 = ${F} N.`,
-          }
-        }
-        const f = pick(rng, [20, 40, 50, 100])
-        const a = pick(rng, [2, 4, 5, 10])
-        const p = f / a
+        const m = pick(rng, [2, 3, 5, 8, 10])
+        const F = m * 10
         return {
-          q: `F = ${f} N, A = ${a} m². Berechne p = F/A.`,
-          answerKind: p % 1 === 0 ? 'integer' : 'decimal',
-          unit: 'Pa',
-          value: p,
-          solution: `${p} Pa`,
-          explanation: `p = ${f}/${a} = ${p} Pa.`,
+          q: `m = ${m} kg, g ≈ 10 N/kg. Berechne F_G = m·g.`,
+          answerKind: 'integer',
+          unit: 'N',
+          value: F,
+          solution: `${F} N`,
+          explanation: `F_G = ${m}·10 = ${F} N.`,
         }
       },
-      sortItems: ['Masse m', 'Volumen V', 'Dichte ρ = m/V'],
-      sortQuestion: 'Ordne die Größen zur Dichtebestimmung.',
-      sortExplanation: 'Zuerst Masse und Volumen messen, dann ρ = m/V berechnen.',
+      ...(/druck/.test(lower)
+        ? formulaSort(['p', '=', 'F', '/', 'A'], 'p = F / A', '· A')
+        : formulaSort(['F_G', '=', 'm', '· g'], 'F_G = m · g', '/ g')),
     }
   }
 
@@ -589,55 +807,85 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           explanation: `f = 1/${T} = ${f} Hz.`,
         }
       },
-      sortItems: ['Schwingung anregen', 'Welle ausbreiten', 'Frequenz messen'],
-      sortQuestion: 'Ordne einen typischen Versuchsablauf zur Frequenzmessung.',
-      sortExplanation: 'Erst anregen, dann Ausbreitung beobachten, dann Frequenz bestimmen.',
+      ...formulaSort(['f', '=', '1', '/', 'T'], 'f = 1 / T', '· T'),
     }
   }
 
-  // Fallback: Rechen-/Formelaufgaben statt Philosophie
+  // Fallback: themennahe Formel/Rechnung — nie Philosophie, nie themenfremde s=v·t
+  return topicAwareFallback(title, lower)
+}
+
+function topicAwareFallback(title: string, lower: string): PhysicsBank {
+  if (/hypothese|forschungsfrage|experiment|variable|messunsicherheit|messreihe|praktikum/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Was ist eine Hypothese im Physikunterricht?',
+          correct: 'eine begründete Vermutung, die man prüfen kann',
+          wrong: ['das fertige Messergebnis', 'eine Rechenformel ohne Größen', 'ein Zufallswert'],
+        },
+        {
+          q: 'Unabhängige Variable bedeutet …',
+          correct: 'die Größe, die man bewusst verändert',
+          wrong: ['die Größe, die man nur abliest', 'immer die Zeit', 'immer die Temperatur'],
+        },
+        {
+          q: 'Messunsicherheit beschreibt …',
+          correct: 'wie genau ein Messwert bestimmt ist',
+          wrong: ['nur die Farbe des Messgeräts', 'ob die Formel stimmt', 'nur den Mittelwert'],
+        },
+      ],
+      calc: (rng) => {
+        const values = pick(rng, [
+          [2, 4, 6],
+          [3, 5, 7],
+          [10, 12, 14],
+        ])
+        const mean = (values[0]! + values[1]! + values[2]!) / 3
+        return {
+          q: `Messwerte ${values.join(' · ')}. Berechne den Mittelwert.`,
+          answerKind: mean % 1 === 0 ? 'integer' : 'decimal',
+          unit: '',
+          value: mean,
+          solution: String(mean),
+          explanation: `Mittelwert = (${values.join(' + ')}) / 3 = ${mean}.`,
+        }
+      },
+      ...formulaSort(['Mittelwert', '=', 'Summe', '/', 'Anzahl'], 'Mittelwert = Summe / Anzahl', '· Anzahl'),
+    }
+  }
+
+  // Generischer, aber fachlicher Fallback aus dem Titel
   return {
     cases: [
       {
-        q: `Welche physikalische Größe gehört typischerweise zum Thema „${title}“?`,
-        correct: pickDomainQuantity(lower),
-        wrong: ['Kunststil', 'Lateinische Deklination', 'Musiktempo'],
-        explanation: 'Physik-Themen arbeiten mit messbaren Größen und Einheiten.',
+        q: `Welche Einheit passt typischerweise zu physikalischen Messungen bei „${title}“?`,
+        correct: 'eine SI-Einheit (z. B. m, s, kg, N, J)',
+        wrong: ['nur eine Farbe', 'nur ein Ortsname', 'nur eine Jahreszahl'],
       },
       {
-        q: 'Was gehört zu einer sinnvollen physikalischen Messung?',
-        correct: 'Messwert mit Einheit angeben',
-        wrong: ['nur raten', 'Einheit weglassen', 'Messgerät ignorieren'],
+        q: 'Ein physikalisches Ergebnis sollte …',
+        correct: 'Zahl und passende Einheit enthalten',
+        wrong: ['nur eine Zahl ohne Einheit', 'nur eine Einheit ohne Zahl', 'ohne Begründung geraten werden'],
       },
       {
-        q: 'Eine Formel in der Physik verknüpft …',
-        correct: 'physikalische Größen miteinander',
-        wrong: ['nur Wörter ohne Zahlen', 'nur Farben', 'nur historische Daten'],
+        q: 'Formeln in der Physik verknüpfen …',
+        correct: 'physikalische Größen',
+        wrong: ['nur Farben', 'nur Jahreszahlen', 'nur Ortsnamen'],
       },
     ],
     calc: (rng) => {
-      const v = pick(rng, [2, 3, 4, 5])
-      const t = pick(rng, [2, 3, 4, 5])
-      const s = v * t
+      const m = pick(rng, [2, 3, 4, 5, 6])
+      const F = m * 10
       return {
-        q: `Gleichförmige Bewegung: v = ${v} m/s, t = ${t} s. Berechne s = v·t.`,
+        q: `m = ${m} kg, g ≈ 10 N/kg. Berechne F_G = m·g.`,
         answerKind: 'integer',
-        unit: 'm',
-        value: s,
-        solution: `${s} m`,
-        explanation: `s = ${v}·${t} = ${s} m.`,
+        unit: 'N',
+        value: F,
+        solution: `${F} N`,
+        explanation: `F_G = ${m}·10 = ${F} N.`,
       }
     },
-    sortItems: ['Größe messen', 'Formel anwenden', 'Ergebnis mit Einheit prüfen'],
-    sortQuestion: 'Ordne die Schritte beim Lösen einer Rechenaufgabe in der Physik.',
-    sortExplanation: 'Messen bzw. gegebene Werte nutzen, Formel anwenden, Einheit prüfen.',
+    ...formulaSort(['F_G', '=', 'm', '· g'], 'F_G = m · g', '/ g'),
   }
-}
-
-function pickDomainQuantity(lower: string): string {
-  if (/licht|optik/.test(lower)) return 'Winkel / Weg des Lichts'
-  if (/strom|elektr/.test(lower)) return 'Spannung / Stromstärke'
-  if (/wärme|temperatur/.test(lower)) return 'Temperatur / Wärmeenergie'
-  if (/kraft|druck/.test(lower)) return 'Kraft / Druck'
-  return 'messbare Größen mit Einheiten'
 }

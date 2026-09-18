@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.30] – 2026-09-18
+
+### Behoben
+- **Physik-Aufgaben (Factory):** Keine philosophischen/themenfremden Fragen mehr
+  (z. B. Kunststil-Distraktoren, s=v·t unter „Volumen“, Prozess-Sortierung).
+  Stattdessen Formel, Einheiten, Rechnung und Drag&Drop-Formelblöcke
+  (z. B. V = l × b × h mit optionalem Falschblock) — themenbezogen für alle
+  Factory-Themen.
+
 ## [0.27.29] – 2026-09-18
 
 ### Behoben
