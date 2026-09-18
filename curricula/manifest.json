@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-18T21:00:37.130Z",
+  "updatedAt": "2026-09-18T21:16:52.648Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -18,10 +18,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "2.5.0",
+      "version": "2.5.1",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 123647,
-      "changelog": "Klasse 6 LB2 freigegeben: Volumen bestimmen, Dichte (Formel-Slots), Stoffvergleich, Masse, Bewegung, Weg-Zeit-Diagramm, Einheiten; je 10 Aufgaben/Runde."
+      "size": 123686,
+      "changelog": "Pack-Update: Volumen bestimmen (ID 6453) freigegeben; installierte 2.5.0-Kopien mit gesperrtem Volumen werden ersetzt. LB2 sonst: Dichte, Stoffvergleich, Masse, Bewegung, Weg-Zeit, Einheiten."
     },
     {
       "id": "oberschule-sachsen-hs",

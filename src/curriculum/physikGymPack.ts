@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.0',
+    version: '2.5.1',
     changelog:
-      'Klasse 6 LB2 freigegeben: Volumen bestimmen, Dichte (Formel-Slots), Stoffvergleich, Masse, Bewegung, Weg-Zeit-Diagramm, Einheiten; je 10 Aufgaben/Runde.',
+      'Pack-Update: Volumen bestimmen (ID 6453) freigegeben; installierte 2.5.0-Kopien mit gesperrtem Volumen werden ersetzt. LB2 sonst: Dichte, Stoffvergleich, Masse, Bewegung, Weg-Zeit, Einheiten.',
     official,
     extras: [],
   }

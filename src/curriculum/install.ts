@@ -5,6 +5,7 @@ import {
   OS_RS_PACK_ID,
   applyCurriculumTombstones,
   mergeDeletedCurricula,
+  compareSemver,
   mergePackUpdate,
   packNeedsUpdate,
   parseCurriculumPack,
@@ -188,6 +189,10 @@ export async function installBundledPack(
 /**
  * After an app update the installer still holds the previous pack JSON.
  * Replace installed packs with newer bundled copies (extras stay via merge).
+ *
+ * Also refreshes when the pack version is unchanged but contentHash drifted
+ * (e.g. freigabe flip shipped without a version bump — users would otherwise
+ * keep an old installed copy with released:false forever).
  */
 export async function upgradeInstalledPacksFromBundled(
   kv: CurriculumKv = defaultCurriculumKv(),
@@ -198,8 +203,16 @@ export async function upgradeInstalledPacksFromBundled(
   for (const meta of listInstalledMeta(kv)) {
     const bundled = await resolveBundled(meta.id)
     if (!bundled) continue
-    if (!packNeedsUpdate(meta.version, bundled.version)) continue
-    upgraded.push(installPack(bundled, kv, now))
+    if (compareSemver(meta.version, bundled.version) > 0) continue
+    if (packNeedsUpdate(meta.version, bundled.version)) {
+      upgraded.push(installPack(bundled, kv, now))
+      continue
+    }
+    const installed = getInstalledPack(meta.id, kv)
+    const localHash = meta.contentHash ?? installed?.contentHash
+    if (localHash && localHash !== bundled.contentHash) {
+      upgraded.push(installPack(bundled, kv, now))
+    }
   }
   return upgraded
 }

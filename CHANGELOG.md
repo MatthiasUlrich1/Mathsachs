@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.40] – 2026-09-18
+
+### Behoben
+- **Volumen bestimmen (ID 6453) blieb „gesperrt“:** Pack-Version 2.5.0 war
+  ohne Semver-Bump freigegeben worden — installierte Kopien behielten
+  `released: false`. Physik-Pack jetzt **2.5.1**; App-Upgrade ersetzt auch
+  bei gleichem Pack-Stand abweichende `contentHash`-Inhalte.
+
 ## [0.27.39] – 2026-09-18
 
 ### Behoben

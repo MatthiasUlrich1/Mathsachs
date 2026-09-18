@@ -231,4 +231,93 @@ describe('upgradeInstalledPacksFromBundled', () => {
     expect(upgraded).toEqual([])
     expect(listInstalledPacks(kv)[0]?.version).toBe('1.0.0')
   })
+
+  it('upgrades same-version packs when contentHash drifted (freigabe fix)', async () => {
+    const kv = memoryKv()
+    const stale = {
+      ...osHs(),
+      version: '2.5.0',
+      contentHash: '280b5433',
+      official: [
+        {
+          ...osHs().official[0]!,
+          areas: [
+            {
+              id: 'lb2',
+              title: 'Körper',
+              topics: [
+                {
+                  id: 'ph-k6-lb2-volumen',
+                  title: 'Volumen bestimmen',
+                  pointsPerTask: 10,
+                  released: false,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    }
+    installPack(stale, kv, 1)
+    const fixed = {
+      ...stale,
+      contentHash: 'd60d8228',
+      official: [
+        {
+          ...stale.official[0]!,
+          areas: [
+            {
+              id: 'lb2',
+              title: 'Körper',
+              topics: [
+                {
+                  id: 'ph-k6-lb2-volumen',
+                  title: 'Volumen bestimmen',
+                  pointsPerTask: 10,
+                  released: true,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    }
+    const upgraded = await upgradeInstalledPacksFromBundled(kv, 2, async () => fixed)
+    expect(upgraded).toHaveLength(1)
+    const topic = listInstalledPacks(kv)[0]!.official[0]!.areas[0]!.topics[0]!
+    expect(topic.released).toBe(true)
+    expect(listInstalledPacks(kv)[0]?.contentHash).toBe('d60d8228')
+  })
+
+  it('upgrades installed 2.5.0 Physik pack so Volumen becomes freigegeben', async () => {
+    const kv = memoryKv()
+    const { buildGymSachsenPhysikPack } = await import('./physikGymPack')
+    const { GYM_SACHSEN_PHYSIK_PACK_ID } = await import('./pack')
+    const { hydratePackGrades } = await import('./hydrate')
+    const current = buildGymSachsenPhysikPack()
+    const staleOfficial = structuredClone(current.official)
+    const volumen = staleOfficial
+      .flatMap((g) => g.areas)
+      .flatMap((a) => a.topics)
+      .find((t) => t.id === 'ph-k6-lb2-volumen')!
+    volumen.released = false
+    const stale = {
+      ...current,
+      version: '2.5.0',
+      contentHash: '280b5433',
+      official: staleOfficial,
+    }
+    installPack(stale, kv, 1)
+    const upgraded = await upgradeInstalledPacksFromBundled(kv, 2, async (id) =>
+      id === GYM_SACHSEN_PHYSIK_PACK_ID ? current : null,
+    )
+    expect(upgraded).toHaveLength(1)
+    expect(listInstalledPacks(kv)[0]?.version).toBe('2.5.1')
+    const grades = await hydratePackGrades(listInstalledPacks(kv)[0]!)
+    const topic = grades
+      .flatMap((g) => g.areas)
+      .flatMap((a) => a.topics)
+      .find((t) => t.id === 'ph-k6-lb2-volumen')
+    expect(topic?.released).toBe(true)
+  })
 })
