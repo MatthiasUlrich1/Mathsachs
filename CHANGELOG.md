@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.39] – 2026-09-18
+
+### Behoben
+- **Desktop-Release-CI:** Freigabe-Allowlist in `physikAll.test` um
+  „Volumen bestimmen“ (`ph-k6-lb2-volumen`) ergänzt, damit Installer-Builds
+  nach ID-6453-Freigabe wieder grün werden.
+
 ## [0.27.38] – 2026-09-18
 
 ### Behoben

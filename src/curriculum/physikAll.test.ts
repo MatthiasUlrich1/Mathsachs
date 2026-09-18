@@ -65,6 +65,7 @@ describe('Physik Gym generators (all grades)', () => {
     expect(lb1.every((t) => t.released === true)).toBe(true)
     const lb2 = k6.areas.find((a) => a.id === 'lb2')!.topics
     const releasedLb2 = new Set([
+      'ph-k6-lb2-volumen',
       'ph-k6-lb2-dichte',
       'ph-k6-lb2-dichtestoffe',
       'ph-k6-lb2-masse',
