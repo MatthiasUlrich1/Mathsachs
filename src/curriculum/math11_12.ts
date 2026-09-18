@@ -108,7 +108,7 @@ const ableitungStelle: Topic = {
 const nullstelleLinear: Topic = {
   id: 'k1112-lb1-nullstelle-linear',
   title: 'Nullstelle einer linearen Funktion',
-  hint: 'Setze f(x) = 0 und löse nach x.',
+  hint: 'Setze die Funktion gleich null und löse nach x.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Nullstelle', 'lineare Funktion', 'Gleichung', 'x-Achse', 'Schnittpunkt'],
@@ -268,7 +268,6 @@ const VEC3: ReadonlyArray<readonly [number, number, number, number]> = [
 const betragVektor: Topic = {
   id: 'k1112-lb2-betrag-vektor',
   title: 'Betrag eines Vektors',
-  hint: '|v| = √(x² + y² + z²).',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Betrag', 'Länge', 'Vektor', 'Vektoren', 'Norm', 'analytische Geometrie'],
@@ -329,7 +328,6 @@ const binom = (n: number, k: number): number => {
 const binomialverteilung: Topic = {
   id: 'k1112-lb3-binomialverteilung',
   title: 'Binomialverteilung: P(X = k)',
-  hint: 'P(X = k) = C(n, k) · pᵏ · (1 − p)ⁿ⁻ᵏ.',
   pointsPerTask: 10,
   difficulty: 3,
   keywords: ['Binomialverteilung', 'Wahrscheinlichkeit', 'Bernoulli', 'P(X=k)', 'Stochastik'],
@@ -360,7 +358,6 @@ const binomialverteilung: Topic = {
 const erwartungswertBinom: Topic = {
   id: 'k1112-lb3-erwartungswert-binom',
   title: 'Erwartungswert der Binomialverteilung',
-  hint: 'E(X) = n · p.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Binomialverteilung', 'Erwartungswert', 'E(X)', 'Stochastik', 'n mal p'],

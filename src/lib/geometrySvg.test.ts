@@ -305,10 +305,14 @@ describe('geometrySvg', () => {
       expect(svg).toContain('8 cm')
       expect(svg).toContain(GEO_LABEL_FILL)
       expect(svg).not.toContain('#e65100')
-      const heightLine = svg.match(
-        /<line[^>]*stroke-width="2\.4"[^>]*\/>/,
-      )
-      expect(heightLine?.[0]).toContain('stroke="#1976d2"')
+      // Height uses the same outward arrow markers as length/width
+      expect(svg).toContain('marker-start="url(#cuboidStart)"')
+      expect(svg).toContain('marker-end="url(#cuboidEnd)"')
+      const dimLines = [...svg.matchAll(/<line[^>]*marker-start="url\(#cuboidStart\)"[^>]*\/>/g)]
+      expect(dimLines.length).toBe(3)
+      for (const m of dimLines) {
+        expect(m[0]).toContain('stroke="#1976d2"')
+      }
     })
   })
 
@@ -559,6 +563,9 @@ describe('geometrySvg', () => {
       expect(svg).toContain('3 m')
       expect(svg).toContain('4 m')
       expect(svg).toContain(GEO_LABEL_FILL)
+      expect(svg).toContain('marker-start="url(#lshapeStart)"')
+      const dimLines = [...svg.matchAll(/<line[^>]*marker-start="url\(#lshapeStart\)"[^>]*\/>/g)]
+      expect(dimLines.length).toBe(6)
     })
 
     it('places inner cut labels in the cutout, not inside the L fill', () => {
@@ -602,17 +609,21 @@ describe('geometrySvg', () => {
         notchHeight: 3,
         bottomLabel: '10 m',
         leftLabel: '6 m',
-        notchBottomLabel: '4 m',
+        topLeftLabel: '3 m',
+        topRightLabel: '3 m',
         notchLeftLabel: '3 m',
-        notchRightLabel: '3 m',
       })
       expect(svg).toContain('<svg')
       expect(svg).toContain('<polygon')
       expect(svg).toContain('10 m')
       expect(svg).toContain('6 m')
-      expect(svg).toContain('4 m')
       expect(svg).toContain('3 m')
       expect(svg).toContain(GEO_LABEL_FILL)
+      expect(svg).toContain('marker-start="url(#ushapeStart)"')
+      // No redundant right / notch-bottom / double height
+      expect(svg).not.toContain('notchBottom')
+      const dimLines = [...svg.matchAll(/<line[^>]*marker-start="url\(#ushapeStart\)"[^>]*\/>/g)]
+      expect(dimLines.length).toBe(5)
     })
   })
 
@@ -621,12 +632,12 @@ describe('geometrySvg', () => {
       const svg = generateCompositeCuboidSvg({
         length: 10,
         width: 6,
-        height: 4,
+        height: 5,
         cutLength: 4,
         cutWidth: 3,
         lengthLabel: '10 cm',
         widthLabel: '6 cm',
-        heightLabel: '4 cm',
+        heightLabel: '5 cm',
         cutLengthLabel: '4 cm',
         cutWidthLabel: '3 cm',
       })
@@ -634,10 +645,20 @@ describe('geometrySvg', () => {
       expect(svg).toContain('<polygon')
       expect(svg).toContain('10 cm')
       expect(svg).toContain('6 cm')
+      expect(svg).toContain('5 cm')
       expect(svg).toContain('4 cm')
       expect(svg).toContain('3 cm')
       expect(svg).toContain(GEO_LABEL_FILL)
       expect(svg).toContain('stroke-dasharray')
+      expect(svg).toContain('marker-start="url(#compositeCuboidStart)"')
+      // Height and width labels are far apart (not stacked near the front-left)
+      const heightText = svg.match(/<text x="([^"]+)" y="([^"]+)"[^>]*>5 cm<\/text>/)
+      const widthText = svg.match(/<text x="([^"]+)" y="([^"]+)"[^>]*>6 cm<\/text>/)
+      expect(heightText).toBeTruthy()
+      expect(widthText).toBeTruthy()
+      const dy = Math.abs(Number(heightText![2]) - Number(widthText![2]))
+      const dx = Math.abs(Number(heightText![1]) - Number(widthText![1]))
+      expect(dy + dx).toBeGreaterThan(30)
     })
   })
 

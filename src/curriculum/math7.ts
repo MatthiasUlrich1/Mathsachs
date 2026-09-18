@@ -176,7 +176,6 @@ const scheitelwinkel: Topic = {
 const winkelsummeVieleck: Topic = {
   id: 'k7-lb1-winkelsumme-vieleck',
   title: 'Innenwinkelsumme im Vieleck',
-  hint: 'Winkelsumme = (n − 2) · 180°.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Vieleck', 'Polygon', 'Innenwinkelsumme', 'Winkelsumme', 'n-Eck'],
@@ -502,7 +501,6 @@ const gleichungMul: Topic = {
 const volumenPrisma: Topic = {
   id: 'k7-lb3-volumen-prisma',
   title: 'Volumen gerader Prismen',
-  hint: 'V = Grundfläche · Höhe.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['Prisma', 'Volumen', 'Grundfläche', 'Körper'],
@@ -548,7 +546,6 @@ const volumenPrisma: Topic = {
 const mantelPrisma: Topic = {
   id: 'k7-lb3-mantel-prisma',
   title: 'Mantelfläche eines Prismas',
-  hint: 'M = Umfang der Grundfläche · Höhe.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Prisma', 'Mantelfläche', 'Mantel', 'Oberfläche', 'Umfang'],
@@ -593,7 +590,6 @@ const mantelPrisma: Topic = {
 const volumenPyramide: Topic = {
   id: 'k7-lb3-volumen-pyramide',
   title: 'Volumen einer Pyramide',
-  hint: 'V = (1/3) · Grundfläche · Höhe.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Pyramide', 'Volumen', 'Grundfläche', 'ein Drittel'],
@@ -639,7 +635,6 @@ const volumenPyramide: Topic = {
 const oberflaechePrisma: Topic = {
   id: 'k7-lb3-oberflaeche-quader',
   title: 'Oberfläche eines Quaders',
-  hint: 'O = 2 · (a·b + a·c + b·c).',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Quader', 'Oberfläche', 'Oberflächeninhalt', 'Prisma'],
@@ -692,7 +687,6 @@ const oberflaechePrisma: Topic = {
 const mittelwert: Topic = {
   id: 'k7-lb4-mittelwert',
   title: 'Arithmetisches Mittel',
-  hint: 'Mittelwert = Summe : Anzahl.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['Mittelwert', 'arithmetisches Mittel', 'Durchschnitt', 'Daten', 'Statistik'],
@@ -754,7 +748,6 @@ const median: Topic = {
 const spannweite: Topic = {
   id: 'k7-lb4-spannweite',
   title: 'Spannweite berechnen',
-  hint: 'Spannweite = größter − kleinster Wert.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['Spannweite', 'Maximum', 'Minimum', 'Daten', 'Statistik'],
@@ -783,7 +776,6 @@ const spannweite: Topic = {
 const relativeHaeufigkeit: Topic = {
   id: 'k7-lb4-rel-haeufigkeit',
   title: 'Relative Häufigkeit in Prozent',
-  hint: 'Relative Häufigkeit = Anzahl : Gesamt.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['relative Häufigkeit', 'Häufigkeit', 'Prozent', 'Daten', 'Statistik'],

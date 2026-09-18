@@ -22,6 +22,63 @@ export function geoDimLabel(
   return `<text x="${x}" y="${y}" text-anchor="${anchor}" font-size="${size}" font-weight="bold" ${GEO_LABEL_STYLE}>${text}</text>`
 }
 
+/** Shared arrowhead defs for outward-pointing dimension lines (Strecken). */
+function geoDimArrowDefs(idPrefix: string, stroke: string): string {
+  return `<defs>
+    <marker id="${idPrefix}Start" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse">
+      <polygon points="10,5 0,10 0,0" fill="${stroke}" />
+    </marker>
+    <marker id="${idPrefix}End" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <polygon points="0,5 10,10 10,0" fill="${stroke}" />
+    </marker>
+  </defs>`
+}
+
+/**
+ * Dimension line with outward arrows + label. Empty `label` yields nothing.
+ * Place the line slightly offset from the measured edge (caller chooses coords).
+ * Optional `leaderFrom` draws a thin extension from the edge toward the label.
+ */
+function geoDimArrowSegment(
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+  label: string | undefined,
+  opts: {
+    stroke: string
+    markerId: string
+    labelX: number
+    labelY: number
+    anchor?: 'start' | 'middle' | 'end'
+    /** Edge midpoint (or attach point) for a small leader toward the label. */
+    leaderFrom?: [number, number]
+  },
+): string {
+  if (!label?.trim()) return ''
+  const { stroke, markerId, labelX, labelY, anchor, leaderFrom } = opts
+  const leader = leaderFrom
+    ? `<line x1="${leaderFrom[0]}" y1="${leaderFrom[1]}" x2="${labelX}" y2="${labelY - 4}" stroke="${stroke}" stroke-width="1" opacity="0.55"/>`
+    : ''
+  return `${leader}<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${stroke}" stroke-width="1" marker-start="url(#${markerId}Start)" marker-end="url(#${markerId}End)"/>
+  ${geoDimLabel(labelX, labelY, label, { anchor })}`
+}
+
+/** Thin leader from an edge point to a far-away label (no dimension arrows). */
+function geoDimLeaderLabel(
+  fromX: number,
+  fromY: number,
+  labelX: number,
+  labelY: number,
+  label: string | undefined,
+  opts: { stroke: string; anchor?: 'start' | 'middle' | 'end' },
+): string {
+  if (!label?.trim()) return ''
+  const { stroke, anchor } = opts
+  return `<line x1="${fromX}" y1="${fromY}" x2="${labelX}" y2="${labelY - 4}" stroke="${stroke}" stroke-width="1" opacity="0.55"/>
+  ${geoDimLabel(labelX, labelY, label, { anchor })}`
+}
+
 export interface RectangleSvgProps {
   /** Width label (e.g., "5 cm") */
   widthLabel: string
@@ -861,30 +918,60 @@ export function generateCuboidSvg({
   ${perpMarkup}
   ${
     showLength
-      ? `<line x1="${frontBL[0]}" y1="${frontBL[1] + 18}" x2="${frontBR[0]}" y2="${frontBR[1] + 18}" stroke="${stroke}" stroke-width="1" marker-start="url(#cuboidArrowStart)" marker-end="url(#cuboidArrowEnd)"/>
-  ${geoDimLabel((frontBL[0] + frontBR[0]) / 2, frontBL[1] + 36, lengthLabel)}`
+      ? geoDimArrowSegment(
+          frontBL[0],
+          frontBL[1] + 18,
+          frontBR[0],
+          frontBR[1] + 18,
+          lengthLabel,
+          {
+            stroke,
+            markerId: 'cuboid',
+            labelX: (frontBL[0] + frontBR[0]) / 2,
+            labelY: frontBL[1] + 36,
+            leaderFrom: [(frontBL[0] + frontBR[0]) / 2, frontBL[1]],
+          },
+        )
       : ''
   }
   ${
     showWidth
-      ? `<line x1="${frontBR[0] + 12}" y1="${frontBR[1]}" x2="${backBR[0] + 12}" y2="${backBR[1]}" stroke="${stroke}" stroke-width="1" marker-start="url(#cuboidArrowStart)" marker-end="url(#cuboidArrowEnd)"/>
-  ${geoDimLabel((frontBR[0] + backBR[0]) / 2 + 28, (frontBR[1] + backBR[1]) / 2 + 5, widthLabel)}`
+      ? geoDimArrowSegment(
+          frontBR[0] + 12,
+          frontBR[1],
+          backBR[0] + 12,
+          backBR[1],
+          widthLabel,
+          {
+            stroke,
+            markerId: 'cuboid',
+            labelX: (frontBR[0] + backBR[0]) / 2 + 28,
+            labelY: (frontBR[1] + backBR[1]) / 2 + 5,
+            leaderFrom: [(frontBR[0] + backBR[0]) / 2, (frontBR[1] + backBR[1]) / 2],
+          },
+        )
       : ''
   }
   ${
     showHeightArrow
-      ? `<line x1="${frontTL[0]}" y1="${frontTL[1]}" x2="${frontBL[0]}" y2="${frontBL[1]}" stroke="${stroke}" stroke-width="2.4"/>
-  ${geoDimLabel(frontTL[0] - 10, (frontTL[1] + frontBL[1]) / 2 + 5, heightLabel, { anchor: 'end' })}`
+      ? geoDimArrowSegment(
+          frontTL[0] - 14,
+          frontTL[1],
+          frontBL[0] - 14,
+          frontBL[1],
+          heightLabel,
+          {
+            stroke,
+            markerId: 'cuboid',
+            labelX: frontTL[0] - 28,
+            labelY: (frontTL[1] + frontBL[1]) / 2 + 5,
+            anchor: 'end',
+            leaderFrom: [frontTL[0], (frontTL[1] + frontBL[1]) / 2],
+          },
+        )
       : ''
   }
-  <defs>
-    <marker id="cuboidArrowStart" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse">
-      <polygon points="10,5 0,10 0,0" fill="${stroke}" />
-    </marker>
-    <marker id="cuboidArrowEnd" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
-      <polygon points="0,5 10,10 10,0" fill="${stroke}" />
-    </marker>
-  </defs>
+  ${geoDimArrowDefs('cuboid', stroke)}
 </svg>`.trim()
 }
 
@@ -1388,6 +1475,7 @@ export interface LShapeSvgProps {
 /**
  * Generate SVG for a labeled L-shape (rectangle with top-right cutout).
  * Dimensions are used for proportions; labels are display strings (e.g. "8 m").
+ * Each provided label gets an offset dimension line with outward arrows.
  */
 export function generateLShapeSvg({
   outerWidth,
@@ -1432,8 +1520,19 @@ export function generateLShapeSvg({
 
   const totalW = padL + W + padR
   const totalH = padT + H + padB
+  const mid = 'lshape'
+  const stemR = x0 + W - cW
+  const stepY = y0 + cH
 
-  // Inner cut edges: labels sit in the empty cutout (never inside the filled L).
+  // Inner labels stay in the empty cutout, offset from edges so they don't stack.
+  const showInnerH = Boolean(innerHorizontalLabel?.trim())
+  // Stagger: horizontal near top of cutout edge; vertical mid-right of stem edge
+  const innerHLabelY = stepY - 18
+  const innerVLabelX = stemR + Math.min(28, Math.max(16, cW * 0.35))
+  const innerVLabelY = showInnerH
+    ? y0 + cH * 0.55 + 5
+    : y0 + cH / 2 + 5
+
   return `
 <svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="L-Form">
   <polygon
@@ -1442,12 +1541,46 @@ export function generateLShapeSvg({
     stroke="${stroke}"
     stroke-width="2"
   />
-  ${geoDimLabel(x0 + W / 2, y0 + H + 28, bottomLabel)}
-  ${geoDimLabel(x0 - 18, y0 + H / 2 + 5, leftLabel, { anchor: 'end' })}
-  ${geoDimLabel(x0 + (W - cW) / 2, y0 - 12, topLabel)}
-  ${geoDimLabel(x0 + W + 18, y0 + cH + (H - cH) / 2 + 5, rightLabel, { anchor: 'start' })}
-  ${geoDimLabel(x0 + W - cW / 2, y0 + cH - 12, innerHorizontalLabel)}
-  ${geoDimLabel(x0 + W - cW + 16, y0 + cH / 2 + 5, innerVerticalLabel, { anchor: 'start' })}
+  ${geoDimArrowSegment(x0, y0 + H + 16, x0 + W, y0 + H + 16, bottomLabel, {
+    stroke,
+    markerId: mid,
+    labelX: x0 + W / 2,
+    labelY: y0 + H + 36,
+  })}
+  ${geoDimArrowSegment(x0 - 16, y0, x0 - 16, y0 + H, leftLabel, {
+    stroke,
+    markerId: mid,
+    labelX: x0 - 28,
+    labelY: y0 + H / 2 + 5,
+    anchor: 'end',
+  })}
+  ${geoDimArrowSegment(x0, y0 - 14, stemR, y0 - 14, topLabel, {
+    stroke,
+    markerId: mid,
+    labelX: x0 + (W - cW) / 2,
+    labelY: y0 - 26,
+  })}
+  ${geoDimArrowSegment(x0 + W + 16, stepY, x0 + W + 16, y0 + H, rightLabel, {
+    stroke,
+    markerId: mid,
+    labelX: x0 + W + 28,
+    labelY: stepY + (H - cH) / 2 + 5,
+    anchor: 'start',
+  })}
+  ${geoDimArrowSegment(stemR, stepY - 12, x0 + W, stepY - 12, innerHorizontalLabel, {
+    stroke,
+    markerId: mid,
+    labelX: stemR + cW / 2,
+    labelY: innerHLabelY,
+  })}
+  ${geoDimArrowSegment(stemR + 12, y0, stemR + 12, stepY, innerVerticalLabel, {
+    stroke,
+    markerId: mid,
+    labelX: innerVLabelX,
+    labelY: innerVLabelY,
+    anchor: 'start',
+  })}
+  ${geoDimArrowDefs(mid, stroke)}
 </svg>`.trim()
 }
 
@@ -1477,6 +1610,7 @@ export interface UShapeSvgProps {
 
 /**
  * Generate SVG for a U-shape (rectangle with a top-center notch).
+ * Each provided label gets an offset dimension line with outward arrows.
  */
 export function generateUShapeSvg({
   outerWidth,
@@ -1524,6 +1658,39 @@ export function generateUShapeSvg({
 
   const totalW = padL + W + padR
   const totalH = padT + H + padB
+  const mid = 'ushape'
+  const notchL = x0 + side
+  const notchR = x0 + side + nW
+  const notchBot = y0 + nH
+  const showNotchBottom = Boolean(notchBottomLabel?.trim())
+  const showNotchLeft = Boolean(notchLeftLabel?.trim())
+  const showNotchRight = Boolean(notchRightLabel?.trim())
+
+  // Keep notch measures from stacking: bottom above the floor; side heights
+  // mid-wall. When only one side height is shown, pull the label into the
+  // notch center with a leader so it stays unambiguous.
+  const notchBottomLabelY = showNotchBottom ? notchBot - 18 : notchBot
+  const notchSideMidY = showNotchBottom ? y0 + nH * 0.42 + 5 : y0 + nH / 2 + 5
+  const notchLeftLabelX =
+    showNotchLeft && !showNotchRight
+      ? notchL + nW * 0.45
+      : showNotchRight
+        ? notchL + Math.min(22, nW * 0.28)
+        : notchL + Math.min(28, nW * 0.4)
+  const notchRightLabelX =
+    showNotchRight && !showNotchLeft
+      ? notchR - nW * 0.45
+      : showNotchLeft
+        ? notchR - Math.min(22, nW * 0.28)
+        : notchR - Math.min(28, nW * 0.4)
+  const notchLeftLeader: [number, number] | undefined =
+    showNotchLeft && !showNotchRight
+      ? [notchL, y0 + nH / 2]
+      : undefined
+  const notchRightLeader: [number, number] | undefined =
+    showNotchRight && !showNotchLeft
+      ? [notchR, y0 + nH / 2]
+      : undefined
 
   return `
 <svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="U-Form">
@@ -1533,14 +1700,61 @@ export function generateUShapeSvg({
     stroke="${stroke}"
     stroke-width="2"
   />
-  ${geoDimLabel(x0 + W / 2, y0 + H + 28, bottomLabel)}
-  ${geoDimLabel(x0 - 18, y0 + H / 2 + 5, leftLabel, { anchor: 'end' })}
-  ${geoDimLabel(x0 + W + 18, y0 + H / 2 + 5, rightLabel, { anchor: 'start' })}
-  ${geoDimLabel(x0 + side / 2, y0 - 12, topLeftLabel)}
-  ${geoDimLabel(x0 + side + nW + side / 2, y0 - 12, topRightLabel)}
-  ${geoDimLabel(x0 + side + nW / 2, y0 + nH - 14, notchBottomLabel)}
-  ${geoDimLabel(x0 + side + 14, y0 + nH / 2 + 5, notchLeftLabel, { anchor: 'start' })}
-  ${geoDimLabel(x0 + side + nW - 14, y0 + nH / 2 + 5, notchRightLabel, { anchor: 'end' })}
+  ${geoDimArrowSegment(x0, y0 + H + 16, x0 + W, y0 + H + 16, bottomLabel, {
+    stroke,
+    markerId: mid,
+    labelX: x0 + W / 2,
+    labelY: y0 + H + 36,
+  })}
+  ${geoDimArrowSegment(x0 - 16, y0, x0 - 16, y0 + H, leftLabel, {
+    stroke,
+    markerId: mid,
+    labelX: x0 - 28,
+    labelY: y0 + H / 2 + 5,
+    anchor: 'end',
+  })}
+  ${geoDimArrowSegment(x0 + W + 16, y0, x0 + W + 16, y0 + H, rightLabel, {
+    stroke,
+    markerId: mid,
+    labelX: x0 + W + 28,
+    labelY: y0 + H / 2 + 5,
+    anchor: 'start',
+  })}
+  ${geoDimArrowSegment(x0, y0 - 14, notchL, y0 - 14, topLeftLabel, {
+    stroke,
+    markerId: mid,
+    labelX: x0 + side / 2,
+    labelY: y0 - 26,
+  })}
+  ${geoDimArrowSegment(notchR, y0 - 14, x0 + W, y0 - 14, topRightLabel, {
+    stroke,
+    markerId: mid,
+    labelX: notchR + side / 2,
+    labelY: y0 - 26,
+  })}
+  ${geoDimArrowSegment(notchL, notchBot - 12, notchR, notchBot - 12, notchBottomLabel, {
+    stroke,
+    markerId: mid,
+    labelX: notchL + nW / 2,
+    labelY: notchBottomLabelY,
+  })}
+  ${geoDimArrowSegment(notchL + 12, y0, notchL + 12, notchBot, notchLeftLabel, {
+    stroke,
+    markerId: mid,
+    labelX: notchLeftLabelX,
+    labelY: notchSideMidY,
+    anchor: showNotchRight ? 'start' : 'middle',
+    leaderFrom: notchLeftLeader,
+  })}
+  ${geoDimArrowSegment(notchR - 12, y0, notchR - 12, notchBot, notchRightLabel, {
+    stroke,
+    markerId: mid,
+    labelX: notchRightLabelX,
+    labelY: notchSideMidY,
+    anchor: showNotchLeft ? 'end' : 'middle',
+    leaderFrom: notchRightLeader,
+  })}
+  ${geoDimArrowDefs(mid, stroke)}
 </svg>`.trim()
 }
 
@@ -1648,18 +1862,24 @@ export function generateCompositeCuboidSvg({
   // Back-left top edge region face (y=W, x from 0 to stemTop)
   const backStem = poly(f(0, W, 0), f(stemTop, W, 0), f(stemTop, W, H), f(0, W, H))
 
-  const totalW = pad * 2 + L + dx + 80
-  const totalH = pad * 2 + H + dy + 60
+  const totalW = Math.ceil(pad * 2 + L + dx + 110)
+  const totalH = Math.ceil(pad * 2 + H + dy + 80)
 
   const mid = (p: [number, number], q: [number, number]): [number, number] => [
     (p[0] + q[0]) / 2,
     (p[1] + q[1]) / 2,
   ]
 
-  const bottomMid = mid(f(0, 0, 0), f(L, 0, 0))
-  const heightMid = mid(f(0, 0, 0), f(0, 0, H))
+  const lenA = f(0, 0, 0)
+  const lenB = f(L, 0, 0)
+  const heightA = f(0, 0, H)
+  const heightB = f(0, 0, 0)
   // Full depth along the left side (y: 0 → W), not the short foot edge
-  const widthMid = mid(f(0, 0, 0), f(0, W, 0))
+  const widthA = f(0, 0, 0)
+  const widthB = f(0, W, 0)
+  const bottomMid = mid(lenA, lenB)
+  const heightMid = mid(heightA, heightB)
+  const widthMid = mid(widthA, widthB)
   // Cut length = top edge of the foot step (along length, at y = W-cW)
   const cutLenA = f(stemTop, W - cW, H)
   const cutLenB = f(L, W - cW, H)
@@ -1668,23 +1888,100 @@ export function generateCompositeCuboidSvg({
   const cutWidA = f(stemTop, W - cW, H)
   const cutWidB = f(stemTop, W, H)
   const cutWidMid = mid(cutWidA, cutWidB)
-  // Offset cut labels into the empty corner so they don't sit on the same vertex
+
+  // Place labels far from the solid so height/width and the two cut measures never stack.
+  // Height sits left of the front vertical edge; width sits further back-left of the depth edge.
+  const heightDimX = heightA[0] - 22
+  const heightLabelPos: [number, number] = [heightMid[0] - 44, heightMid[1] + 5]
+  const widthOff = 18
+  // Offset depth dim line "outside" (roughly opposite to +length)
+  const widthDimA: [number, number] = [widthA[0] - widthOff, widthA[1] + 6]
+  const widthDimB: [number, number] = [widthB[0] - widthOff, widthB[1] + 6]
+  const widthDimMid = mid(widthDimA, widthDimB)
+  // Pull width label toward the back half so it clears the height label near the front
+  const widthLabelPos: [number, number] = [
+    widthDimMid[0] - 36,
+    widthDimMid[1] + 18,
+  ]
+
+  // Cut length → up into the void; cut width → further back-left into the void
   const cutLenLabelPos: [number, number] = [
-    cutLenMid[0] + 6,
-    cutLenMid[1] - 20,
+    cutLenMid[0] + 8,
+    cutLenMid[1] - 36,
   ]
   const cutWidLabelPos: [number, number] = [
-    cutWidMid[0] + 28,
-    cutWidMid[1] - 6,
+    cutWidMid[0] + 42,
+    cutWidMid[1] + 8,
   ]
-  const cutGuides =
+
+  const cutEdgeMarks =
     cutLengthLabel || cutWidthLabel
       ? `
   <line x1="${cutLenA[0]}" y1="${cutLenA[1]}" x2="${cutLenB[0]}" y2="${cutLenB[1]}" stroke="${stroke}" stroke-width="2.2" stroke-dasharray="5 3"/>
-  <line x1="${cutWidA[0]}" y1="${cutWidA[1]}" x2="${cutWidB[0]}" y2="${cutWidB[1]}" stroke="${stroke}" stroke-width="2.2" stroke-dasharray="5 3"/>
-  <line x1="${cutLenMid[0]}" y1="${cutLenMid[1]}" x2="${cutLenLabelPos[0]}" y2="${cutLenLabelPos[1] + 8}" stroke="${stroke}" stroke-width="1" opacity="0.55"/>
-  <line x1="${cutWidMid[0]}" y1="${cutWidMid[1]}" x2="${cutWidLabelPos[0] - 8}" y2="${cutWidLabelPos[1]}" stroke="${stroke}" stroke-width="1" opacity="0.55"/>`
+  <line x1="${cutWidA[0]}" y1="${cutWidA[1]}" x2="${cutWidB[0]}" y2="${cutWidB[1]}" stroke="${stroke}" stroke-width="2.2" stroke-dasharray="5 3"/>`
       : ''
+
+  const markerId = 'compositeCuboid'
+  const lengthDim = geoDimArrowSegment(
+    lenA[0],
+    lenA[1] + 18,
+    lenB[0],
+    lenB[1] + 18,
+    lengthLabel,
+    {
+      stroke,
+      markerId,
+      labelX: bottomMid[0],
+      labelY: bottomMid[1] + 38,
+      leaderFrom: [bottomMid[0], bottomMid[1]],
+    },
+  )
+  const heightDim = geoDimArrowSegment(
+    heightDimX,
+    heightA[1],
+    heightDimX,
+    heightB[1],
+    heightLabel,
+    {
+      stroke,
+      markerId,
+      labelX: heightLabelPos[0],
+      labelY: heightLabelPos[1],
+      anchor: 'end',
+      leaderFrom: [heightMid[0], heightMid[1]],
+    },
+  )
+  const widthDim = geoDimArrowSegment(
+    widthDimA[0],
+    widthDimA[1],
+    widthDimB[0],
+    widthDimB[1],
+    widthLabel,
+    {
+      stroke,
+      markerId,
+      labelX: widthLabelPos[0],
+      labelY: widthLabelPos[1],
+      anchor: 'end',
+      leaderFrom: [widthMid[0], widthMid[1]],
+    },
+  )
+  const cutLenDim = geoDimLeaderLabel(
+    cutLenMid[0],
+    cutLenMid[1],
+    cutLenLabelPos[0],
+    cutLenLabelPos[1],
+    cutLengthLabel,
+    { stroke },
+  )
+  const cutWidDim = geoDimLeaderLabel(
+    cutWidMid[0],
+    cutWidMid[1],
+    cutWidLabelPos[0],
+    cutWidLabelPos[1],
+    cutWidthLabel,
+    { stroke, anchor: 'start' },
+  )
 
   return `
 <svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="L-förmiger Körper">
@@ -1694,12 +1991,13 @@ export function generateCompositeCuboidSvg({
   <polygon points="${rightFoot}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.9" />
   <polygon points="${frontFace}" fill="${fill}" stroke="${stroke}" stroke-width="2" />
   <polygon points="${topFace}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.95" />
-  ${cutGuides}
-  ${geoDimLabel(bottomMid[0], bottomMid[1] + 22, lengthLabel)}
-  ${geoDimLabel(heightMid[0] - 18, heightMid[1] + 4, heightLabel, { anchor: 'end' })}
-  ${geoDimLabel(widthMid[0] - 16, widthMid[1] + 4, widthLabel, { anchor: 'end' })}
-  ${geoDimLabel(cutLenLabelPos[0], cutLenLabelPos[1], cutLengthLabel)}
-  ${geoDimLabel(cutWidLabelPos[0], cutWidLabelPos[1], cutWidthLabel, { anchor: 'start' })}
+  ${cutEdgeMarks}
+  ${lengthDim}
+  ${heightDim}
+  ${widthDim}
+  ${cutLenDim}
+  ${cutWidDim}
+  ${geoDimArrowDefs(markerId, stroke)}
 </svg>`.trim()
 }
 

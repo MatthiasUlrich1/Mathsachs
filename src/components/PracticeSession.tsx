@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { createRng, timeSeed } from '../lib/rng'
 import { recordSession } from '../lib/storage'
 import type { Topic, UserInput } from '../curriculum/types'
+import { isFormulaLikeHint } from '../curriculum/types'
 import { buildUniqueTaskRound } from '../curriculum/uniqueRound'
 import { AnswerInput } from './AnswerInput'
 import { initTaskInput, TaskInteractive, TaskVisual } from './TaskMedia'
@@ -173,7 +174,7 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
         <TaskInteractive task={task} value={input} onChange={setInput} />
       )}
 
-      {topic.hint && phase === 'answering' && (
+      {topic.hint && phase === 'answering' && !isFormulaLikeHint(topic.hint) && (
         <p className="muted small hint">{topic.hint}</p>
       )}
 

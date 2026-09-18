@@ -134,7 +134,7 @@ const gleichungBeidseitig: Topic = {
 const ausmultiplizieren: Topic = {
   id: 'k8-lb1-ausmultiplizieren',
   title: 'Klammer ausmultiplizieren (Wert bei x)',
-  hint: 'Distributivgesetz: a·(bx + c) = ab·x + ac.',
+  hint: 'Wende das Distributivgesetz an.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Distributivgesetz', 'ausmultiplizieren', 'Klammer', 'Term'],
@@ -166,7 +166,6 @@ const ausmultiplizieren: Topic = {
 const laplaceBruch: Topic = {
   id: 'k8-lb2-laplace-bruch',
   title: 'Laplace-Wahrscheinlichkeit als Bruch',
-  hint: 'P = günstige : mögliche Ergebnisse.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['Wahrscheinlichkeit', 'Laplace', 'Zufall', 'Bruch', 'günstige Ergebnisse'],
@@ -199,7 +198,6 @@ const laplaceBruch: Topic = {
 const laplaceProzent: Topic = {
   id: 'k8-lb2-laplace-prozent',
   title: 'Laplace-Wahrscheinlichkeit in Prozent',
-  hint: 'P = günstige : mögliche, dann · 100.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['Wahrscheinlichkeit', 'Laplace', 'Prozent', 'Zufall', 'Würfel'],
@@ -226,7 +224,6 @@ const laplaceProzent: Topic = {
 const gegenwahrscheinlichkeit: Topic = {
   id: 'k8-lb2-gegenwahrscheinlichkeit',
   title: 'Gegenwahrscheinlichkeit',
-  hint: 'P(nicht A) = 1 − P(A).',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['Gegenwahrscheinlichkeit', 'Gegenereignis', 'Wahrscheinlichkeit', 'Komplement'],
@@ -257,7 +254,7 @@ const gegenwahrscheinlichkeit: Topic = {
 const funktionswert: Topic = {
   id: 'k8-lb3-funktionswert',
   title: 'Funktionswert einer linearen Funktion',
-  hint: 'Setze x in f(x) = m·x + n ein.',
+  hint: 'Setze den gegebenen x-Wert in die Funktion ein.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['lineare Funktion', 'Funktionswert', 'einsetzen', 'Gerade', 'f(x)'],
@@ -345,7 +342,6 @@ const funktionswert: Topic = {
 const steigung: Topic = {
   id: 'k8-lb3-steigung',
   title: 'Steigung aus zwei Punkten',
-  hint: 'm = (y₂ − y₁) : (x₂ − x₁).',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Steigung', 'lineare Funktion', 'Gerade', 'Punkte', 'Differenzenquotient'],
@@ -475,7 +471,6 @@ const steigung: Topic = {
 const achsenabschnitt: Topic = {
   id: 'k8-lb3-achsenabschnitt',
   title: 'y-Achsenabschnitt bestimmen',
-  hint: 'n = y − m·x.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['y-Achsenabschnitt', 'lineare Funktion', 'Gerade', 'n'],
@@ -620,7 +615,6 @@ const lgs: Topic = {
 const streckfaktor: Topic = {
   id: 'k8-lb4-streckfaktor',
   title: 'Streckfaktor bestimmen',
-  hint: 'k = Bildlänge : Originallänge.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Ähnlichkeit', 'Streckfaktor', 'zentrische Streckung', 'Maßstab'],
@@ -646,7 +640,7 @@ const streckfaktor: Topic = {
 const strahlensatz: Topic = {
   id: 'k8-lb4-strahlensatz',
   title: 'Strahlensatz: fehlende Länge',
-  hint: 'Gleiche Verhältnisse: a : b = c : x.',
+  hint: 'Stelle die Proportion auf und löse nach x.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Strahlensatz', 'Ähnlichkeit', 'Verhältnis', 'Streckenlänge'],

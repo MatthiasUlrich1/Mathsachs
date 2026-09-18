@@ -34,7 +34,6 @@ const TRIPLES: ReadonlyArray<readonly [number, number, number]> = [
 const potenzProdukt: Topic = {
   id: 'k9-lb1-potenz-produkt',
   title: 'Potenzgesetz: Produkt gleicher Basis',
-  hint: 'aᵐ · aⁿ = aᵐ⁺ⁿ — die Exponenten werden addiert.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Potenz', 'Potenzgesetze', 'Exponent', 'multiplizieren', 'Basis'],
@@ -61,7 +60,6 @@ const potenzProdukt: Topic = {
 const potenzQuotient: Topic = {
   id: 'k9-lb1-potenz-quotient',
   title: 'Potenzgesetz: Quotient und Potenz einer Potenz',
-  hint: 'aᵐ : aⁿ = aᵐ⁻ⁿ und (aᵐ)ⁿ = aᵐ·ⁿ.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Potenz', 'Potenzgesetze', 'Exponent', 'dividieren', 'Potenz einer Potenz'],
@@ -100,7 +98,7 @@ const potenzQuotient: Topic = {
 const quadratWert: Topic = {
   id: 'k9-lb1-quadrat-wert',
   title: 'Wert einer quadratischen Funktion',
-  hint: 'Setze x in f(x) = x² + b·x + c ein.',
+  hint: 'Setze den gegebenen x-Wert in die Funktion ein.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['quadratische Funktion', 'Parabel', 'Funktionswert', 'einsetzen'],
@@ -127,7 +125,7 @@ const quadratWert: Topic = {
 const scheitel: Topic = {
   id: 'k9-lb1-scheitel',
   title: 'Scheitelpunkt aus der Scheitelform',
-  hint: 'f(x) = (x − d)² + e hat den Scheitel S(d | e).',
+  hint: 'Lies den Scheitel aus der Scheitelform ab.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Scheitelpunkt', 'Scheitelform', 'Parabel', 'quadratische Funktion', 'Extrempunkt'],
@@ -157,7 +155,6 @@ const scheitel: Topic = {
 const kreisUmfang: Topic = {
   id: 'k9-lb2-kreis-umfang',
   title: 'Umfang eines Kreises',
-  hint: 'U = 2 · π · r.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['Kreis', 'Umfang', 'Pi', 'Radius', 'Kreisumfang'],
@@ -204,7 +201,6 @@ const kreisUmfang: Topic = {
 const kreisFlaeche: Topic = {
   id: 'k9-lb2-kreis-flaeche',
   title: 'Flächeninhalt eines Kreises',
-  hint: 'A = π · r².',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['Kreis', 'Flächeninhalt', 'Fläche', 'Pi', 'Radius', 'Kreisfläche'],
@@ -247,7 +243,6 @@ const kreisFlaeche: Topic = {
 const zylinderVolumen: Topic = {
   id: 'k9-lb2-zylinder-volumen',
   title: 'Volumen eines Kreiszylinders',
-  hint: 'V = π · r² · h.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Zylinder', 'Kreiszylinder', 'Volumen', 'Pi', 'Radius', 'Höhe'],
@@ -295,7 +290,6 @@ const zylinderVolumen: Topic = {
 const kugelVolumen: Topic = {
   id: 'k9-lb2-kugel-volumen',
   title: 'Volumen einer Kugel',
-  hint: 'V = (4/3) · π · r³.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Kugel', 'Volumen', 'Pi', 'Radius', 'Kugelvolumen'],
@@ -346,7 +340,6 @@ const kugelVolumen: Topic = {
 const pythagorasHypotenuse: Topic = {
   id: 'k9-lb3-pythagoras-hypotenuse',
   title: 'Satz des Pythagoras: Hypotenuse',
-  hint: 'c = √(a² + b²).',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['Pythagoras', 'Hypotenuse', 'rechtwinkliges Dreieck', 'Kathete'],
@@ -398,7 +391,6 @@ const pythagorasHypotenuse: Topic = {
 const pythagorasKathete: Topic = {
   id: 'k9-lb3-pythagoras-kathete',
   title: 'Satz des Pythagoras: fehlende Kathete',
-  hint: 'a = √(c² − b²).',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Pythagoras', 'Kathete', 'rechtwinkliges Dreieck', 'Hypotenuse'],
@@ -518,7 +510,6 @@ const trigWert: Topic = {
 const mittelwert: Topic = {
   id: 'k9-lb4-mittelwert',
   title: 'Arithmetisches Mittel',
-  hint: 'Mittelwert = Summe : Anzahl.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['Mittelwert', 'Durchschnitt', 'arithmetisches Mittel', 'Kennwert', 'Daten'],

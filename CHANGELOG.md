@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.33] – 2026-09-18
+
+### Behoben
+- **Maßpfeile & Beschriftung:** Quader-Höhe mit denselben auswärtigen
+  Dimensionstpfeilen wie Länge/Breite; U-/L-Form und L-Körper ohne
+  übereinanderliegende Maße (weniger redundante Labels, Hilfslinien zu
+  abgesetzten Beschriftungen).
+- **Formeln nur im Fachwissen:** Formel-Hints nicht mehr dauerhaft unter der
+  Aufgabe; gehören in die aufklappbare Fachwissen-Box.
+
 ## [0.27.32] – 2026-09-18
 
 ### Behoben

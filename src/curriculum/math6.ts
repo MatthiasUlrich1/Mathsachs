@@ -816,7 +816,6 @@ const antiproportional: Topic = {
 const haeufigkeit: Topic = {
   id: 'lb2-haeufigkeit',
   title: 'Relative Häufigkeit in Prozent',
-  hint: 'Relative Häufigkeit = Anzahl : Gesamt.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -1066,7 +1065,6 @@ const winkelViereck: Topic = {
 const umfangRechteck: Topic = {
   id: 'lb3-umfang-rechteck',
   title: 'Umfang von Rechteck und Quadrat',
-  hint: 'U = 2 · (a + b).',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -1121,7 +1119,6 @@ const umfangRechteck: Topic = {
 const flaecheRechteck: Topic = {
   id: 'lb3-flaeche-rechteck',
   title: 'Flächeninhalt von Rechteck und Quadrat',
-  hint: 'A = a · b.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -1176,7 +1173,6 @@ const flaecheRechteck: Topic = {
 const flaecheDreieck: Topic = {
   id: 'lb3-flaeche-dreieck',
   title: 'Flächeninhalt von Dreiecken',
-  hint: 'A = (g · h) : 2.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -1390,7 +1386,6 @@ const sachaufgabeGeometrie: Topic = {
 const volumenQuader: Topic = {
   id: 'lb4-volumen-quader',
   title: 'Volumen von Quader und Würfel',
-  hint: 'V = a · b · c.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -1458,7 +1453,6 @@ const volumenQuader: Topic = {
 const oberflaecheQuader: Topic = {
   id: 'lb4-oberflaeche-quader',
   title: 'Oberflächeninhalt von Quadern',
-  hint: 'O = 2 · (a·b + a·c + b·c).',
   pointsPerTask: 10,
   difficulty: 2,
   fachwissen: {
@@ -1508,7 +1502,6 @@ const oberflaecheQuader: Topic = {
 const volumenPrisma: Topic = {
   id: 'lb4-volumen-prisma',
   title: 'Volumen gerader Prismen',
-  hint: 'V = Grundfläche · Höhe.',
   pointsPerTask: 10,
   difficulty: 2,
   fachwissen: {
@@ -1571,7 +1564,6 @@ const volumenPrisma: Topic = {
 const flaecheKanteQuader: Topic = {
   id: 'lb4-flaeche-kante-quader',
   title: 'Fläche und senkrechte Seitenlänge',
-  hint: 'Volumen = Fläche · dazu senkrechte Länge (2D · 1D = 3D): V = G · h, also G = V : h und h = V : G.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Quader', 'Würfel', 'Volumen', 'Grundfläche', 'Höhe', 'Dimension', 'Prisma'],
@@ -1863,7 +1855,6 @@ const flaecheKanteQuader: Topic = {
 const anteilVonGroesse: Topic = {
   id: 'lb5-anteil-groesse',
   title: 'Anteil einer Größe berechnen',
-  hint: 'Anteil = Bruch · Ganzes.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {

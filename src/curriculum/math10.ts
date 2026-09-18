@@ -15,7 +15,6 @@ import type { Grade, Topic } from './types'
 const zinsen: Topic = {
   id: 'k10-lb1-zinsen',
   title: 'Jahreszinsen berechnen',
-  hint: 'Z = K · p : 100.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['Zinsen', 'Zinsrechnung', 'Kapital', 'Prozent', 'Prozentsatz'],
@@ -42,7 +41,6 @@ const zinsen: Topic = {
 const zinseszins: Topic = {
   id: 'k10-lb1-zinseszins',
   title: 'Zinseszins: Endkapital',
-  hint: 'Kₙ = K₀ · (1 + p/100)ⁿ.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Zinseszins', 'Endkapital', 'Zinsrechnung', 'exponentiell', 'Kapital'],
@@ -72,7 +70,6 @@ const zinseszins: Topic = {
 const prozentualeZunahme: Topic = {
   id: 'k10-lb1-prozentuale-zunahme',
   title: 'Prozentuale Zunahme',
-  hint: 'Neuer Wert = alter Wert · (1 + p/100).',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['prozentuale Zunahme', 'Wachstum', 'Prozent', 'Erhöhung', 'Zunahme'],
@@ -99,7 +96,6 @@ const prozentualeZunahme: Topic = {
 const expWachstum: Topic = {
   id: 'k10-lb1-exp-wachstum',
   title: 'Exponentielles Wachstum',
-  hint: 'Bestand = Anfang · Faktorⁿ.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['exponentielles Wachstum', 'Verdopplung', 'Wachstumsfaktor', 'Bakterien'],
@@ -130,7 +126,6 @@ const expWachstum: Topic = {
 const erwartungswert: Topic = {
   id: 'k10-lb2-erwartungswert',
   title: 'Erwartungswert eines Glücksrads',
-  hint: 'E(X) = Σ Auszahlung · Wahrscheinlichkeit.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Erwartungswert', 'Zufallsgröße', 'Glücksrad', 'Wahrscheinlichkeit', 'E(X)'],
@@ -239,7 +234,6 @@ const erwartungswertWuerfel: Topic = {
 const rechteckBreite: Topic = {
   id: 'k10-lb3-rechteck-breite',
   title: 'Rechteck: Breite aus Fläche',
-  hint: 'b = A : a.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Rechteck', 'Flächeninhalt', 'algebraisch', 'Gleichung', 'Seite'],
@@ -292,7 +286,6 @@ const rechteckBreite: Topic = {
 const quadratSeite: Topic = {
   id: 'k10-lb3-quadrat-seite',
   title: 'Quadrat: Seitenlänge aus Fläche',
-  hint: 'a = √A.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['Quadrat', 'Flächeninhalt', 'Wurzel', 'Seitenlänge', 'algebraisch'],
@@ -343,7 +336,6 @@ const quadratSeite: Topic = {
 const rechteckBreiteUmfang: Topic = {
   id: 'k10-lb3-rechteck-umfang',
   title: 'Rechteck: Breite aus Umfang',
-  hint: 'b = U : 2 − a.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Rechteck', 'Umfang', 'algebraisch', 'Gleichung', 'Seite'],
@@ -374,7 +366,7 @@ const rechteckBreiteUmfang: Topic = {
 const reinquadratisch: Topic = {
   id: 'k10-lb4-reinquadratisch',
   title: 'Reinquadratische Gleichung x² = a',
-  hint: 'Positive Lösung: x = √a.',
+  hint: 'Nimm die positive Quadratwurzel.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['quadratische Gleichung', 'Wurzel', 'x²', 'lösen', 'reinquadratisch'],
@@ -399,7 +391,7 @@ const reinquadratisch: Topic = {
 const quadratischGleichung: Topic = {
   id: 'k10-lb4-quadratische-gleichung',
   title: 'Quadratische Gleichung (größere Lösung)',
-  hint: 'Faktorisiere: (x − x₁)(x − x₂) = 0.',
+  hint: 'Faktorisiere und nutze den Satz vom Nullprodukt.',
   pointsPerTask: 10,
   difficulty: 3,
   keywords: ['quadratische Gleichung', 'Nullstellen', 'faktorisieren', 'Satz von Vieta', 'lösen'],
@@ -430,7 +422,7 @@ const quadratischGleichung: Topic = {
 const parabelWert: Topic = {
   id: 'k10-lb4-parabel-wert',
   title: 'Funktionswert einer Parabel',
-  hint: 'Setze x in f(x) = a·x² + c ein.',
+  hint: 'Setze den gegebenen x-Wert in die Funktion ein.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Parabel', 'quadratische Funktion', 'Funktionswert', 'einsetzen'],
@@ -488,7 +480,6 @@ const parabelWert: Topic = {
 const kapitalAusZinsen: Topic = {
   id: 'k10-lb5-kapital',
   title: 'Kapital aus Zinsen bestimmen',
-  hint: 'K = Z · 100 : p.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Zinsrechnung', 'Kapital', 'Zinsen', 'Prozentsatz', 'Grundwert'],
@@ -515,7 +506,6 @@ const kapitalAusZinsen: Topic = {
 const zinssatz: Topic = {
   id: 'k10-lb5-zinssatz',
   title: 'Zinssatz bestimmen',
-  hint: 'p = Z · 100 : K.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Zinsrechnung', 'Zinssatz', 'Prozentsatz', 'Zinsen', 'Kapital'],

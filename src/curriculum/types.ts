@@ -1,4 +1,4 @@
-﻿import type { Rng } from '../lib/rng'
+import type { Rng } from '../lib/rng'
 
 export type AnswerKind = 'integer' | 'decimal' | 'fraction' | 'text'
 
@@ -105,6 +105,10 @@ export interface Task {
 export interface Topic {
   id: string
   title: string
+  /**
+   * Short under-task tip (answer format, strategy). Never put formulas here —
+   * formulas belong in `fachwissen` (expandable panel only).
+   */
   hint?: string
   pointsPerTask: number
   /**
@@ -157,4 +161,22 @@ export interface Grade {
   areas: TopicArea[]
 }
 
-
+/**
+ * True when a topic `hint` looks like a formula (belongs in Fachwissen, not
+ * sticky under-task text). Used as a safety net while rendering.
+ */
+export function isFormulaLikeHint(hint: string): boolean {
+  const t = hint.trim()
+  if (!t) return false
+  // Strategy / format tips that may contain "=" but are not formulas
+  if (/Antwortformat|Schreibe Dividend|Gib <|Tippe oder|Antworte mit|1 Kästchen/.test(t)) {
+    return false
+  }
+  return (
+    /^(?:[A-Za-z|ρπ√μσλΔδ]\S{0,12}|Mittelwert|Winkelsumme|Relative Häufigkeit|Gesamtpreis|Spannweite|Anteil|Volumen|Neuer Wert|Bestand)\s*=/.test(
+      t,
+    ) ||
+    /\b[VAUOGPZKmnabcfhρ]\s*=\s/.test(t) ||
+    /aᵐ|π\s*·|√\(/.test(t)
+  )
+}

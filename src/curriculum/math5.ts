@@ -381,7 +381,6 @@ const schriftlicheDivision: Topic = {
 const potenzieren: Topic = {
   id: 'lb1-potenzieren',
   title: 'Potenzieren (Quadrat- und Zehnerpotenzen)',
-  hint: 'a² = a · a; 10ⁿ ist eine 1 mit n Nullen.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -750,7 +749,6 @@ const rundenDezimal: Topic = {
 const mittelwert: Topic = {
   id: 'lb2-mittelwert',
   title: 'Arithmetisches Mittel',
-  hint: 'Mittelwert = Summe : Anzahl.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -1794,7 +1792,7 @@ const pickIntegerSegment = (
 const streckenLaenge: Topic = {
   id: 'lb3-strecken-laenge',
   title: 'Länge von Strecken',
-  hint: '1 Kästchen = 1 Längeneinheit (cm). Länge = Abstand der Endpunkte.',
+  hint: '1 Kästchen = 1 Längeneinheit (cm).',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -2011,7 +2009,6 @@ const streckenBezeichnung: Topic = {
 const umfangRechteck: Topic = {
   id: 'lb4-umfang-rechteck',
   title: 'Umfang von Rechteck und Quadrat',
-  hint: 'U = 2 · (a + b), beim Quadrat U = 4 · a.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -2090,7 +2087,6 @@ const umfangRechteck: Topic = {
 const flaecheRechteck: Topic = {
   id: 'lb4-flaeche-rechteck',
   title: 'Flächeninhalt von Rechteck und Quadrat',
-  hint: 'A = a · b, beim Quadrat A = a · a.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -2169,7 +2165,6 @@ const flaecheRechteck: Topic = {
 const volumenQuader: Topic = {
   id: 'lb4-volumen-quader',
   title: 'Volumen von Quader und Würfel',
-  hint: 'V = a · b · c, beim Würfel V = a · a · a.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -2240,7 +2235,6 @@ const volumenQuader: Topic = {
 const oberflaecheQuader: Topic = {
   id: 'lb4-oberflaeche-quader',
   title: 'Oberflächeninhalt von Quadern',
-  hint: 'O = 2 · (a·b + a·c + b·c).',
   pointsPerTask: 10,
   difficulty: 2,
   fachwissen: {
@@ -2378,8 +2372,7 @@ const flaecheZusammengesetzt: Topic = {
         leftLabel: `${d.outerHeight} m`,
         topLabel: `${d.stemWidth} m`,
         rightLabel: `${d.footHeight} m`,
-        innerHorizontalLabel: `${d.cutWidth} m`,
-        innerVerticalLabel: `${d.cutHeight} m`,
+        // Cut size is derivable from outer − stem/foot; omit to avoid stacked notch labels
       })
       return visualTask({
         question: 'Berechne den Flächeninhalt der abgebildeten L-Form.',
@@ -2406,12 +2399,10 @@ const flaecheZusammengesetzt: Topic = {
         notchHeight,
         bottomLabel: `${outerWidth} m`,
         leftLabel: `${outerHeight} m`,
-        rightLabel: `${outerHeight} m`,
         topLeftLabel: `${side} m`,
         topRightLabel: `${side} m`,
-        notchBottomLabel: `${notchWidth} m`,
+        // Notch width = outer − arms; one notch height is enough (omit duplicates)
         notchLeftLabel: `${notchHeight} m`,
-        notchRightLabel: `${notchHeight} m`,
       })
       return visualTask({
         question: 'Berechne den Flächeninhalt der abgebildeten U-Form.',
@@ -2429,7 +2420,7 @@ const flaecheZusammengesetzt: Topic = {
 const umfangZusammengesetzt: Topic = {
   id: 'lb4-umfang-zusammengesetzt',
   title: 'Zusammengesetzte Flächen: Umfang berechnen',
-  hint: 'Addiere alle äußeren Kanten. Bei einer Eckaussparung gilt: U = 2 · (Länge + Breite).',
+  hint: 'Addiere alle äußeren Kanten.',
   pointsPerTask: 12,
   difficulty: 2,
   fachwissen: {
@@ -2460,8 +2451,7 @@ const umfangZusammengesetzt: Topic = {
         leftLabel: `${d.outerHeight} m`,
         topLabel: `${d.stemWidth} m`,
         rightLabel: `${d.footHeight} m`,
-        innerHorizontalLabel: `${d.cutWidth} m`,
-        innerVerticalLabel: `${d.cutHeight} m`,
+        // Cut size is derivable from outer − stem/foot; omit to avoid stacked notch labels
       })
       return visualTask({
         question: 'Berechne den Umfang der abgebildeten L-Form.',
@@ -2580,7 +2570,6 @@ const volumenZusammengesetzt: Topic = {
 const sachaufgabeGesamtpreis: Topic = {
   id: 'lb5-gesamtpreis',
   title: 'Sachaufgabe: Gesamtpreis',
-  hint: 'Gesamtpreis = Anzahl · Stückpreis.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
