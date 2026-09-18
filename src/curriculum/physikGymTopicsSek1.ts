@@ -90,6 +90,7 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
         ]),
         area('lb2', 'Eigenschaften und Bewegungen von Körpern', 14, [
           topic('ph-k6-lb2-volumen', 'Volumen bestimmen', ['Volumen'], {
+            released: true,
             tasksPerRound: 10,
           }),
           topic('ph-k6-lb2-dichte', 'Dichte berechnen', ['Dichte', 'Masse', 'Volumen'], {

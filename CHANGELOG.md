@@ -9,6 +9,11 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.37] – 2026-09-18
+
+### Hinzugefügt
+- **Physik Klasse 6 LB2:** Freigabe „Volumen bestimmen“ (ID 6453, 10 Aufgaben/Runde).
+
 ## [0.27.36] – 2026-09-18
 
 ### Behoben

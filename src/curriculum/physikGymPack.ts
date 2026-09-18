@@ -21,7 +21,7 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     subject: 'Physik',
     version: '2.5.0',
     changelog:
-      'Klasse 6 LB2 freigegeben: Dichte (Formel-Slots), Stoffvergleich, Masse, Bewegung, Weg-Zeit-Diagramm, Einheiten; je 10 Aufgaben/Runde.',
+      'Klasse 6 LB2 freigegeben: Volumen bestimmen, Dichte (Formel-Slots), Stoffvergleich, Masse, Bewegung, Weg-Zeit-Diagramm, Einheiten; je 10 Aufgaben/Runde.',
     official,
     extras: [],
   }
