@@ -7,6 +7,7 @@ import {
 import { pick, randInt, type Rng } from '../lib/rng'
 import { bundledCurricula } from './bundled'
 import { topicContentId } from './contentId'
+import { ensureTopicFachwissen } from './fachwissen'
 import {
   choicePickTask,
   coordinateClickTask,
@@ -647,19 +648,24 @@ export function outlineGenerate(title: string): Topic['generate'] {
 export function topicFromPack(
   topic: PackTopic,
   generate: Topic['generate'] | undefined,
+  opts?: { subject?: string },
 ): Topic {
   const playable = Boolean(generate)
-  return {
-    id: topic.id,
-    title: topic.title,
-    hint: topic.hint,
-    pointsPerTask: topic.pointsPerTask,
-    keywords: topic.keywords,
-    source: 'official',
-    outlineOnly: playable ? undefined : true,
-    released: topic.released ?? true,
-    contentId: topicContentId(topic.id),
-    ...(topic.tasksPerRound ? { tasksPerRound: topic.tasksPerRound } : {}),
-    generate: generate ?? outlineGenerate(topic.title),
-  }
+  return ensureTopicFachwissen(
+    {
+      id: topic.id,
+      title: topic.title,
+      hint: topic.hint,
+      pointsPerTask: topic.pointsPerTask,
+      keywords: topic.keywords,
+      source: 'official',
+      outlineOnly: playable ? undefined : true,
+      released: topic.released ?? true,
+      contentId: topicContentId(topic.id),
+      ...(topic.tasksPerRound ? { tasksPerRound: topic.tasksPerRound } : {}),
+      ...(topic.excludeFachwissen ? { excludeFachwissen: true } : {}),
+      generate: generate ?? outlineGenerate(topic.title),
+    },
+    { subject: opts?.subject },
+  )
 }

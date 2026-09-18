@@ -33,6 +33,11 @@ export interface PackTopic {
   released?: boolean
   /** Practice round length; omitted = app default (Physik 5, sonst 10). */
   tasksPerRound?: number
+  /**
+   * Opt-out der Wissens-Rubrik. Standard: Wissen immer vorhanden
+   * (wird beim Hydrieren ergänzt, falls nicht authored).
+   */
+  excludeFachwissen?: boolean
 }
 
 export interface PackArea {
@@ -152,6 +157,7 @@ const parseTopic = (raw: unknown): PackTopic | null => {
     raw.tasksPerRound >= 1
       ? { tasksPerRound: Math.min(30, Math.trunc(raw.tasksPerRound)) }
       : {}),
+    ...(raw.excludeFachwissen === true ? { excludeFachwissen: true } : {}),
   }
 }
 

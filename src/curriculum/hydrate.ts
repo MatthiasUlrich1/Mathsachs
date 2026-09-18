@@ -2,6 +2,7 @@ import { makeFraction } from '../lib/fraction'
 import { pick, type Rng } from '../lib/rng'
 import { getBundledModule } from './bundled'
 import { topicContentId } from './contentId'
+import { ensureGradeFachwissen, ensureTopicFachwissen } from './fachwissen'
 import {
   gymGeneratorCatalog,
   resolveOsGenerate,
@@ -45,7 +46,7 @@ const taskFromPack = (spec: PackTask): Task => {
 
 const extraTopic = (extra: PackExtra, fallback?: Topic): Topic => {
   const tasks = extra.tasks ?? []
-  return {
+  return ensureTopicFachwissen({
     id: extra.topic.id,
     title: extra.topic.title,
     hint: extra.topic.hint,
@@ -63,7 +64,7 @@ const extraTopic = (extra: PackExtra, fallback?: Topic): Topic => {
         explanation: 'Lehrer-Ergänzung ohne hinterlegte Aufgabe.',
       })
     },
-  }
+  })
 }
 
 const attachExtras = (grade: Grade, extras: PackExtra[], packGradeId: string): Grade => {
@@ -86,18 +87,22 @@ const attachExtras = (grade: Grade, extras: PackExtra[], packGradeId: string): G
   return { ...grade, areas }
 }
 
-const markOfficial = (grade: Grade): Grade => ({
-  ...grade,
-  areas: grade.areas.map((area) => ({
-    ...area,
-    topics: area.topics.map((topic) => ({
-      ...(topic.source ? topic : { ...topic, source: 'official' as const }),
-      contentId: topic.contentId ?? topicContentId(topic.id),
-      released: topic.released ?? true,
-      ...(topic.tasksPerRound ? { tasksPerRound: topic.tasksPerRound } : {}),
-    })),
-  })),
-})
+const markOfficial = (grade: Grade, subject?: string): Grade =>
+  ensureGradeFachwissen(
+    {
+      ...grade,
+      areas: grade.areas.map((area) => ({
+        ...area,
+        topics: area.topics.map((topic) => ({
+          ...(topic.source ? topic : { ...topic, source: 'official' as const }),
+          contentId: topic.contentId ?? topicContentId(topic.id),
+          released: topic.released ?? true,
+          ...(topic.tasksPerRound ? { tasksPerRound: topic.tasksPerRound } : {}),
+        })),
+      })),
+    },
+    { subject },
+  )
 
 /**
  * Bundled Math grades load generators from the app, but Freigabe lives in the pack.
@@ -123,6 +128,7 @@ export function applyPackTopicMeta(grade: Grade, packGrade: PackGrade): Grade {
           ...(typeof meta.tasksPerRound === 'number'
             ? { tasksPerRound: meta.tasksPerRound }
             : {}),
+          ...(meta.excludeFachwissen ? { excludeFachwissen: true } : {}),
         }
       }),
     })),
@@ -132,6 +138,7 @@ export function applyPackTopicMeta(grade: Grade, packGrade: PackGrade): Grade {
 export async function hydratePackGrades(pack: CurriculumPack): Promise<Grade[]> {
   const grades: Grade[] = []
   let generators: Map<string, Topic['generate']> | null = null
+  const subject = pack.subject
   for (const official of pack.official) {
     const runtime = getBundledModule(official.id)
     let grade: Grade
@@ -150,7 +157,7 @@ export async function hydratePackGrades(pack: CurriculumPack): Promise<Grade[]> 
           topics: area.topics.map((topic) => {
             const generate =
               resolvePhysikGenerate(topic.id) ?? resolveOsGenerate(topic.id, generators!)
-            return topicFromPack(topic, generate)
+            return topicFromPack(topic, generate, { subject })
           }),
         })),
       }
@@ -159,7 +166,10 @@ export async function hydratePackGrades(pack: CurriculumPack): Promise<Grade[]> 
       (item) => item.gradeId === official.id || item.gradeId === grade.id,
     )
     grades.push(
-      markOfficial({ ...attachExtras(grade, extras, official.id), packId: pack.id }),
+      markOfficial(
+        { ...attachExtras(grade, extras, official.id), packId: pack.id },
+        subject,
+      ),
     )
   }
   return grades

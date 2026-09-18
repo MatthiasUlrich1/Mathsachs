@@ -88,4 +88,13 @@ describe('Physik Gym generators (all grades)', () => {
         .every((t) => t.released === false),
     ).toBe(true)
   })
+
+  it('attaches Wissen (Fachwissen) to every hydrated Physik topic', async () => {
+    const grades = await hydratePackGrades(buildGymSachsenPhysikPack())
+    for (const grade of grades) {
+      for (const topic of grade.areas.flatMap((a) => a.topics)) {
+        expect(topic.fachwissen?.text.trim().length, `${grade.id}/${topic.id}`).toBeGreaterThan(40)
+      }
+    }
+  })
 })

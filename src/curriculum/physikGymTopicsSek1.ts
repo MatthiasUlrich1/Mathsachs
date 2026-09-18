@@ -9,7 +9,7 @@ const topic = (
   id: string,
   title: string,
   keywords?: string[],
-  opts?: { released?: boolean; tasksPerRound?: number },
+  opts?: { released?: boolean; tasksPerRound?: number; excludeFachwissen?: boolean },
 ): PackTopic => ({
   id,
   title,
@@ -18,6 +18,9 @@ const topic = (
   released: opts?.released ?? false,
   ...(opts?.tasksPerRound ? { tasksPerRound: opts.tasksPerRound } : {}),
   ...(keywords?.length ? { keywords } : {}),
+  // Wissen is the default for every curriculum topic (Issue #45); only pass
+  // excludeFachwissen: true to opt out intentionally.
+  ...(opts?.excludeFachwissen ? { excludeFachwissen: true } : {}),
 })
 
 const area = (id: string, title: string, ustd: number | undefined, topics: PackTopic[]): PackArea => ({

@@ -1,6 +1,7 @@
 import { gcd } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
 import { randInt, type Rng } from '../lib/rng'
+import { conversionFachwissen } from './fachwissen'
 import { valueTask } from './taskHelpers'
 import type { Task, Topic } from './types'
 
@@ -215,5 +216,6 @@ export const conversionTopic = (idPrefix: string, q: Quantity): Topic => ({
   hint: `Nutze den Umrechnungsfaktor zwischen den ${q.label === 'Zeit' ? 'Zeiteinheiten' : 'Einheiten'}.`,
   pointsPerTask: 10,
   keywords: keywordsFor[q.label] ?? [...commonKeywords, q.label],
+  fachwissen: conversionFachwissen(q.label),
   generate: (rng: Rng) => generateConversion(rng, q),
 })

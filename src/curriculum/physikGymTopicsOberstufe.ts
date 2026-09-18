@@ -7,6 +7,7 @@ const topic = (id: string, title: string, keywords?: string[]): PackTopic => ({
   hint: 'Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.',
   released: false,
   ...(keywords?.length ? { keywords } : {}),
+  // Wissen default via hydrate/ensureTopicFachwissen (Issue #45)
 })
 
 const area = (id: string, title: string, ustd: number | undefined, topics: PackTopic[]): PackArea => ({

@@ -3,12 +3,14 @@ import type { Rng } from '../lib/rng'
 export type AnswerKind = 'integer' | 'decimal' | 'fraction' | 'text'
 
 /**
- * Fachliches Basiswissen zu einem Thema.
- * Text ist eine eigene Formulierung (mathematische Fakten unterliegen
- * keinem Urheberrecht). Quellenangaben verweisen auf weiterführende Literatur.
+ * Fachliches Basiswissen zu einem Thema (Rubrik „Wissen“ / „Fachwissen“).
+ * Erklärt, *wie* man diesen Aufgabentyp löst und welches Prinzip dahintersteckt
+ * (Issue #45) — nicht nur eine allgemeine Definition.
+ * Text ist eine eigene Formulierung (Fakten unterliegen keinem Urheberrecht).
+ * Quellenangaben verweisen auf weiterführende Literatur.
  */
 export interface Fachwissen {
-  /** Kompakte Erklärung des mathematischen Themas (2–5 Sätze). */
+  /** How-to-Erklärung des Themas (Prinzip + Lösungsweg, typisch 3–6 Sätze). */
   text: string
   /**
    * Titel der zitierten Quelle, z. B. „Wikipedia: Bruchrechnung".
@@ -130,10 +132,15 @@ export interface Topic {
   /** Tasks per practice round (pack-driven; default depends on subject). */
   tasksPerRound?: number
   /**
-   * Fachliches Basiswissen zu diesem Thema (eigene Formulierung).
-   * Wird dem Lernenden als Wissensbox angezeigt.
+   * Fachliches Basiswissen (Rubrik „Wissen“). Standard: immer gesetzt
+   * (authored oder per `ensureTopicFachwissen` / Hydrate-Default).
    */
   fachwissen?: Fachwissen
+  /**
+   * Opt-out: keine Wissens-Rubrik für dieses Thema.
+   * Ohne dieses Flag gehört „Wissen“ zu jedem Thema in jedem Lehrplan.
+   */
+  excludeFachwissen?: boolean
   /**
    * Schwierigkeitsgrad: 1 = Basis, 2 = Standard, 3 = Erweiterung.
    * Gibt einen Hinweis auf die Komplexität der erzeugten Aufgaben.

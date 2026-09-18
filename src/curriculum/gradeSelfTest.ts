@@ -1,5 +1,6 @@
 import { expect, it } from 'vitest'
 import { createRng } from '../lib/rng'
+import { ensureGradeFachwissen } from './fachwissen'
 import type { Grade } from './types'
 
 /**
@@ -7,16 +8,25 @@ import type { Grade } from './types'
  * over many seeds every generated task must self-check, carry a non-empty
  * question/explanation, have a class-unique id, be deterministic per seed and
  * reject an obviously wrong answer.
+ *
+ * Wissen is ensured like in production hydrate (Issue #45 default).
  */
 export const runGradeSelfTest = (
   grade: Grade,
-  opts: { idPrefix: string; areaCount: number; minTopics: number; seeds?: number },
+  opts: {
+    idPrefix: string
+    areaCount: number
+    minTopics: number
+    seeds?: number
+    subject?: string
+  },
 ): void => {
-  const allTopics = grade.areas.flatMap((a) => a.topics)
+  const ensured = ensureGradeFachwissen(grade, { subject: opts.subject ?? 'Mathematik' })
+  const allTopics = ensured.areas.flatMap((a) => a.topics)
   const seeds = opts.seeds ?? 120
 
   it(`exposes ${opts.areaCount} Lernbereiche with enough topics`, () => {
-    expect(grade.areas).toHaveLength(opts.areaCount)
+    expect(ensured.areas).toHaveLength(opts.areaCount)
     expect(allTopics.length).toBeGreaterThanOrEqual(opts.minTopics)
   })
 
@@ -24,6 +34,16 @@ export const runGradeSelfTest = (
     const ids = allTopics.map((t) => t.id)
     expect(new Set(ids).size).toBe(ids.length)
     for (const id of ids) expect(id.startsWith(opts.idPrefix)).toBe(true)
+  })
+
+  it('includes Wissen (Fachwissen) for every topic unless excluded', () => {
+    for (const topic of allTopics) {
+      if (topic.excludeFachwissen) {
+        expect(topic.fachwissen, topic.id).toBeUndefined()
+        continue
+      }
+      expect(topic.fachwissen?.text?.trim().length, topic.id).toBeGreaterThan(40)
+    }
   })
 
   it('generates tasks whose own correct answer passes the check', () => {

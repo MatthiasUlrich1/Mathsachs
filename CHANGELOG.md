@@ -9,6 +9,18 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.41] – 2026-09-18
+
+### Hinzugefügt
+- **Wissen-Rubrik standardmäßig in jedem Lehrplan:** Jedes Thema erhält
+  Fachwissen (How-to/Prinzip), sofern nicht explizit mit
+  `excludeFachwissen` ausgenommen — gilt für Mathe, Physik, Oberschule und
+  künftige Packs (Hydrate-/Factory-Default, Issue #45).
+- **Einheiten umrechnen:** detailliertes Wissensfeld (Faktoren; Fläche
+  Faktor² / m×m; Volumen Faktor³ / m×m×m; Länge, Masse, Zeit).
+- **Physik Fachwissen:** themennahe Erklärungen inkl. Formeln (z. B. ρ=m/V,
+  s=v·t, V=l·b·h) für alle Physik-Themen.
+
 ## [0.27.40] – 2026-09-18
 
 ### Behoben

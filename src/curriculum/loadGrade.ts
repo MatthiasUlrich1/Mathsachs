@@ -1,4 +1,5 @@
 import { getBundledModule } from './bundled'
+import { ensureGradeFachwissen } from './fachwissen'
 import { hydratePackGrades } from './hydrate'
 import { defaultCurriculumKv, listInstalledPacks, type CurriculumKv } from './install'
 import type { Grade } from './types'
@@ -26,7 +27,9 @@ export async function loadInstalledGrade(
     }
     const bundled = getBundledModule(moduleId)
     if (!bundled) throw new Error(`Unbekanntes Modul „${moduleId}“.`)
-    return bundled.load()
+    return ensureGradeFachwissen(await bundled.load(), {
+      subject: bundled.subjectTitle,
+    })
   })()
   cache.set(key, pending)
   return pending
