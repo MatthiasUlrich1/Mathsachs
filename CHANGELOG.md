@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.34] – 2026-09-18
+
+### Behoben
+- **Geometrie-Maßbeschriftung:** Auswärtige Strecken-Pfeile zuverlässig
+  (zwei Halbgeraden mit `marker-end`, kein `auto-start-reverse`); nie
+  Strecke und Leader gemischt; L-Körper mit getrennter Höhe/Tiefe ohne
+  Kreuzung/Clipping; Innenmaße nur als kurze Leader in der Aussparung.
+- **Formel-Drag&Drop:** Reine Produkte nach `=` (z. B. V = l × b × h,
+  s = v × t) akzeptieren Faktorreihenfolge; Division bleibt streng.
+
 ## [0.27.33] – 2026-09-18
 
 ### Behoben

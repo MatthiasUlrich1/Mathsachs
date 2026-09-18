@@ -57,6 +57,19 @@ describe('Physik topic factory — schulische Aufgaben', () => {
         expect(labels).toContain('× m')
         expect(task.sampleAnswer.kind).toBe('dragDropSlots')
         expect(task.check(task.sampleAnswer)).toBe(true)
+        if (task.sampleAnswer.kind === 'dragDropSlots') {
+          const slots = [...task.sampleAnswer.slots] as number[]
+          // Permute factors after "V =" — still correct (product order free).
+          const permuted = [slots[0]!, slots[2]!, slots[1]!, slots[3]!]
+          expect(task.check({ kind: 'dragDropSlots', slots: permuted })).toBe(true)
+          const distractorIdx = labels.findIndex((l) => l === '× m')
+          expect(
+            task.check({
+              kind: 'dragDropSlots',
+              slots: [slots[0]!, slots[1]!, slots[2]!, distractorIdx],
+            }),
+          ).toBe(false)
+        }
       } else if (task.unit === 'cm³' || /Berechne das Volumen/.test(task.question)) {
         kinds.add('calc')
         expect(task.question).not.toMatch(/V\s*=\s*l/)

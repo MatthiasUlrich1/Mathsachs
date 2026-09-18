@@ -2,6 +2,7 @@ import { pick, randInt, type Rng } from '../lib/rng'
 import {
   choicePickTask,
   dragDropSlotsTask,
+  type DragDropSlotsCheckMode,
   mixedVariants,
   multiSelectTask,
   valueTask,
@@ -385,6 +386,7 @@ export function makePhysikTopicGenerate(topicId: string, title: string): Topic['
         instruction: distractor
           ? 'Ziehe die richtigen Blöcke in die Formelplätze. Einen Block brauchst du nicht.'
           : 'Ziehe die Blöcke in die Formelplätze (von links nach rechts).',
+        ...(bank.formulaCheckMode ? { checkMode: bank.formulaCheckMode } : {}),
       })
     },
   )
@@ -406,6 +408,8 @@ type PhysicsBank = {
   formulaParts: string[]
   /** Optional wrong block that must stay unused in the pool. */
   formulaDistractor?: string
+  /** Pure products (V = l×b×h) allow any factor order after `=`. */
+  formulaCheckMode?: DragDropSlotsCheckMode
   sortQuestion: string
   sortExplanation: string
 }
@@ -418,10 +422,19 @@ function formulaSort(
   /** Full formula only for explanation. */
   formula: string,
   distractor?: string,
-): Pick<PhysicsBank, 'formulaParts' | 'formulaDistractor' | 'sortQuestion' | 'sortExplanation'> {
+  checkMode?: DragDropSlotsCheckMode,
+): Pick<
+  PhysicsBank,
+  | 'formulaParts'
+  | 'formulaDistractor'
+  | 'formulaCheckMode'
+  | 'sortQuestion'
+  | 'sortExplanation'
+> {
   return {
     formulaParts: parts,
     ...(distractor ? { formulaDistractor: distractor } : {}),
+    ...(checkMode ? { formulaCheckMode: checkMode } : {}),
     sortQuestion: distractor
       ? `Baue die Formel für ${what}. Einen Block brauchst du nicht.`
       : `Baue die Formel für ${what} aus den Blöcken.`,
@@ -473,7 +486,13 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           explanation: `V = ${l}·${b}·${h} = ${V} cm³.`,
         }
       },
-      ...formulaSort(['V =', 'l', '× b', '× h'], 'das Quader-Volumen', 'V = l × b × h', '× m'),
+      ...formulaSort(
+        ['V =', 'l', '× b', '× h'],
+        'das Quader-Volumen',
+        'V = l × b × h',
+        '× m',
+        'commutativeFactors',
+      ),
     }
   }
 
@@ -583,7 +602,13 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           explanation: `s = ${v}·${t} = ${s} m.`,
         }
       },
-      ...formulaSort(['s', '=', 'v', '× t'], 'die gleichförmige Bewegung (Strecke)', 's = v × t', '× m'),
+      ...formulaSort(
+        ['s', '=', 'v', '× t'],
+        'die gleichförmige Bewegung (Strecke)',
+        's = v × t',
+        '× m',
+        'commutativeFactors',
+      ),
     }
   }
 
@@ -824,7 +849,13 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
       },
       ...(/druck/.test(lower)
         ? formulaSort(['p', '=', 'F', '/', 'A'], 'den Druck', 'p = F / A', '· A')
-        : formulaSort(['F_G', '=', 'm', '· g'], 'die Gewichtskraft', 'F_G = m · g', '/ g')),
+        : formulaSort(
+            ['F_G', '=', 'm', '· g'],
+            'die Gewichtskraft',
+            'F_G = m · g',
+            '/ g',
+            'commutativeFactors',
+          )),
     }
   }
 
@@ -938,6 +969,12 @@ function topicAwareFallback(title: string, lower: string): PhysicsBank {
         explanation: `F_G = ${m}·10 = ${F} N.`,
       }
     },
-    ...formulaSort(['F_G', '=', 'm', '· g'], 'die Gewichtskraft', 'F_G = m · g', '/ g'),
+    ...formulaSort(
+      ['F_G', '=', 'm', '· g'],
+      'die Gewichtskraft',
+      'F_G = m · g',
+      '/ g',
+      'commutativeFactors',
+    ),
   }
 }

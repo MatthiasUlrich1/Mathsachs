@@ -176,6 +176,9 @@ export const dragDropSortTask = (input: DragDropSortTaskInput): Task => ({
   },
 })
 
+/** How formula slot answers are compared. */
+export type DragDropSlotsCheckMode = 'strict' | 'commutativeFactors'
+
 interface DragDropSlotsTaskInput {
   question: string
   /** All chips in the pool (may include unused distractors). */
@@ -185,38 +188,147 @@ interface DragDropSlotsTaskInput {
   solution: string
   explanation: string
   instruction?: string
+  /**
+   * `strict`: slots must match left→right.
+   * `commutativeFactors`: left of `=` stays fixed; multiplied factors after `=` may be any order.
+   * When omitted, pure multiplication products after `=` are detected automatically.
+   */
+  checkMode?: DragDropSlotsCheckMode
+}
+
+const MULT_OP = /^[×·*]$/
+const NONCOMM_OP = /^[+\-/÷]$/
+/** Chip like `× b`, `· g`, `/ V`, `+ 273` (operator glued to the factor). */
+const LEADING_OP = /^([×·*+\-/÷])\s+/
+
+/** Index of the first RHS slot (after a chip that is or ends with `=`). */
+export function formulaEqualsRhsStart(
+  items: Array<{ label: string }>,
+  slots: number[],
+): number {
+  for (let i = 0; i < slots.length; i++) {
+    const label = items[slots[i]!]?.label?.trim() ?? ''
+    if (label === '=' || /=\s*$/.test(label)) return i + 1
+  }
+  return 0
+}
+
+function rhsChipKind(
+  label: string,
+): 'factor' | 'multOp' | 'noncommOp' | 'multPrefixed' | 'noncommPrefixed' {
+  const t = label.trim()
+  if (MULT_OP.test(t)) return 'multOp'
+  if (NONCOMM_OP.test(t)) return 'noncommOp'
+  const m = LEADING_OP.exec(t)
+  if (m) {
+    return MULT_OP.test(m[1]!) ? 'multPrefixed' : 'noncommPrefixed'
+  }
+  return 'factor'
+}
+
+/**
+ * True when slots after `=` form a multiplication-only product
+ * (factors may be reordered without changing meaning).
+ */
+export function isCommutativeProductFormula(
+  items: Array<{ label: string }>,
+  correctSlots: number[],
+): boolean {
+  const rhsStart = formulaEqualsRhsStart(items, correctSlots)
+  const rhs = correctSlots.slice(rhsStart)
+  if (rhs.length < 2) return false
+
+  let sawMult = false
+  for (let i = 0; i < rhs.length; i++) {
+    const kind = rhsChipKind(items[rhs[i]!]?.label ?? '')
+    if (kind === 'noncommOp' || kind === 'noncommPrefixed') return false
+    if (kind === 'multOp' || kind === 'multPrefixed') sawMult = true
+    // Standalone mult op must not be last and must precede a bare factor.
+    if (kind === 'multOp') {
+      if (i === rhs.length - 1) return false
+      const next = rhsChipKind(items[rhs[i + 1]!]?.label ?? '')
+      if (next !== 'factor') return false
+    }
+  }
+  // Need an actual ×/· product, not juxtaposition like `1000` `g`.
+  return sawMult
+}
+
+function sameIndexMultiset(a: number[], b: number[]): boolean {
+  if (a.length !== b.length) return false
+  const sa = [...a].sort((x, y) => x - y)
+  const sb = [...b].sort((x, y) => x - y)
+  return sa.every((v, i) => v === sb[i])
+}
+
+/** Compare slot answers; optionally allow any order of multiplied factors after `=`. */
+export function checkDragDropSlotsAnswer(
+  answerSlots: Array<number | null>,
+  correctSlots: number[],
+  items: Array<{ label: string }>,
+  checkMode: DragDropSlotsCheckMode,
+): boolean {
+  if (answerSlots.length !== correctSlots.length) return false
+  if (answerSlots.some((idx) => idx === null || !Number.isInteger(idx))) return false
+  const filled = answerSlots as number[]
+
+  if (checkMode === 'strict') {
+    return filled.every((idx, i) => idx === correctSlots[i])
+  }
+
+  const rhsStart = formulaEqualsRhsStart(items, correctSlots)
+  for (let i = 0; i < rhsStart; i++) {
+    if (filled[i] !== correctSlots[i]) return false
+  }
+  return sameIndexMultiset(filled.slice(rhsStart), correctSlots.slice(rhsStart))
+}
+
+function resolveSlotsCheckMode(
+  input: DragDropSlotsTaskInput,
+): DragDropSlotsCheckMode {
+  if (input.checkMode) return input.checkMode
+  return isCommutativeProductFormula(input.items, input.correctSlots)
+    ? 'commutativeFactors'
+    : 'strict'
 }
 
 /** Formula builder: drag chips into slots; extra blocks stay unused. */
-export const dragDropSlotsTask = (input: DragDropSlotsTaskInput): Task => ({
-  question: input.question,
-  answerKind: 'text',
-  solution: input.solution,
-  explanation: input.explanation,
-  sampleAnswer: { kind: 'dragDropSlots', slots: input.correctSlots },
-  interactive: {
-    type: 'dragDropSlots',
-    props: {
-      items: input.items,
-      slotCount: input.correctSlots.length,
-      instruction:
-        input.instruction ??
-        'Ziehe die richtigen Blöcke in die Formelplätze (einen brauchst du ggf. nicht):',
+export const dragDropSlotsTask = (input: DragDropSlotsTaskInput): Task => {
+  const checkMode = resolveSlotsCheckMode(input)
+  return {
+    question: input.question,
+    answerKind: 'text',
+    solution: input.solution,
+    explanation: input.explanation,
+    sampleAnswer: { kind: 'dragDropSlots', slots: input.correctSlots },
+    interactive: {
+      type: 'dragDropSlots',
+      props: {
+        items: input.items,
+        slotCount: input.correctSlots.length,
+        instruction:
+          input.instruction ??
+          'Ziehe die richtigen Blöcke in die Formelplätze (einen brauchst du ggf. nicht):',
+      },
     },
-  },
-  check: (answer: UserInput) => {
-    if (answer.kind === 'dragDropSlots') {
-      if (answer.slots.length !== input.correctSlots.length) return false
-      return answer.slots.every((idx, i) => idx === input.correctSlots[i])
-    }
-    if (answer.kind === 'value') {
-      return (
-        answer.value.trim().toLowerCase() === input.solution.trim().toLowerCase()
-      )
-    }
-    return false
-  },
-})
+    check: (answer: UserInput) => {
+      if (answer.kind === 'dragDropSlots') {
+        return checkDragDropSlotsAnswer(
+          answer.slots,
+          input.correctSlots,
+          input.items,
+          checkMode,
+        )
+      }
+      if (answer.kind === 'value') {
+        return (
+          answer.value.trim().toLowerCase() === input.solution.trim().toLowerCase()
+        )
+      }
+      return false
+    },
+  }
+}
 
 interface VisualTaskInput {
   question: string
