@@ -35,6 +35,7 @@ import {
 } from './lib/storage'
 import {
   canCreateExam,
+  canViewFaultyReports,
   canWriteExam,
   isCurriculumPreviewRole,
   isTeacherRole,
@@ -61,6 +62,11 @@ import { LegalFooter } from './components/LegalFooter'
 import { Settings } from './components/Settings'
 import { parseExamHash } from './exam/examCode'
 import { countOpenClassExams } from './exam/openClassExams'
+import {
+  countOpenTaskReports,
+  fetchOpenTaskReportCount,
+  type TaskReport,
+} from './lib/taskReports'
 import { fetchInstallCount, reportFirstInstall } from './lib/installStats'
 import { useUpdateCheck } from './updates/useUpdateCheck'
 import { useLanStatus } from './lan/useLanStatus'
@@ -117,6 +123,7 @@ export default function App() {
   // Exam code taken from a shared link (`#klausur=…`), consumed by ExamRunner.
   const [examCodeFromLink, setExamCodeFromLink] = useState<string | null>(null)
   const [openExamCount, setOpenExamCount] = useState(0)
+  const [openFaultyReportCount, setOpenFaultyReportCount] = useState(0)
   const [installCount, setInstallCount] = useState<number | null>(null)
 
   const [loaded, setLoaded] = useState<LoadedGrade[]>([])
@@ -343,6 +350,33 @@ export default function App() {
       window.clearInterval(timer)
     }
   }, [storageReady, activeUser, userRole, classLabel, view.name])
+
+  useEffect(() => {
+    if (!storageReady || !activeUser || !canViewFaultyReports(userRole)) {
+      setOpenFaultyReportCount(0)
+      return
+    }
+    let cancelled = false
+    const refresh = () => {
+      void fetchOpenTaskReportCount()
+        .then((n) => {
+          if (!cancelled) setOpenFaultyReportCount(n)
+        })
+        .catch(() => {
+          /* offline / token — keep last known count */
+        })
+    }
+    refresh()
+    const timer = window.setInterval(refresh, 60_000)
+    return () => {
+      cancelled = true
+      window.clearInterval(timer)
+    }
+  }, [storageReady, activeUser, userRole, view.name])
+
+  const applyFaultyReports = (reports: TaskReport[]) => {
+    setOpenFaultyReportCount(countOpenTaskReports(reports))
+  }
 
   const loadCurriculum = async (id: string) => {
     if (loaded.some((l) => l.moduleId === id)) return
@@ -643,6 +677,16 @@ export default function App() {
                   {openExamCount}
                 </span>
               )}
+              {tab.id === 'settings' &&
+                canViewFaultyReports(userRole) &&
+                openFaultyReportCount > 0 && (
+                  <span
+                    className="tab__badge"
+                    aria-label={`${openFaultyReportCount} offene Fehlermeldungen`}
+                  >
+                    {openFaultyReportCount}
+                  </span>
+                )}
             </button>
           ))}
           <div className="user-badge">
@@ -831,6 +875,8 @@ export default function App() {
           onOpenSection={(id) => setView({ name: 'settings', section: id })}
           onBack={() => setView({ name: 'settings' })}
           onShowFaultyTask={openFaultyTask}
+          openFaultyReportCount={openFaultyReportCount}
+          onFaultyReportsChanged={applyFaultyReports}
           user={activeUser}
           role={userRole}
           preferredSubject={preferredSubject}

@@ -55,6 +55,9 @@ interface Props {
   onBack: () => void
   onOpenSection: (id: SettingsSectionId) => void
   onShowFaultyTask?: (report: TaskReport) => void | Promise<void>
+  /** Open (not done) faulty-task reports — Entwickler badge only. */
+  openFaultyReportCount?: number
+  onFaultyReportsChanged?: (reports: TaskReport[]) => void
   section?: SettingsSectionId | null
   user: string
   role: UserRole
@@ -80,6 +83,8 @@ export function Settings({
   onBack,
   onOpenSection,
   onShowFaultyTask,
+  openFaultyReportCount = 0,
+  onFaultyReportsChanged,
   section = null,
   user,
   role,
@@ -158,7 +163,19 @@ export function Settings({
                   onClick={() => onOpenSection(item.id)}
                 >
                   <span className="settings-menu__text">
-                    <span className="settings-menu__label">{item.label}</span>
+                    <span className="settings-menu__label">
+                      {item.label}
+                      {item.id === 'faulty' &&
+                        canViewFaultyReports(role) &&
+                        openFaultyReportCount > 0 && (
+                          <span
+                            className="tab__badge"
+                            aria-label={`${openFaultyReportCount} offene Fehlermeldungen`}
+                          >
+                            {openFaultyReportCount}
+                          </span>
+                        )}
+                    </span>
                     <span className="settings-menu__hint">
                       {lanOnWeb
                         ? 'Nur in der Desktop-App — hier ein Hinweis'
@@ -250,6 +267,7 @@ export function Settings({
             onShowTask={(report) => {
               void onShowFaultyTask?.(report)
             }}
+            onReportsChanged={onFaultyReportsChanged}
           />
         ) : (
           <section className="card" aria-label="Fehlerhafte Aufgaben">

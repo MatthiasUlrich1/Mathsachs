@@ -82,6 +82,40 @@ describe('Settings hub update check', () => {
     }
   })
 
+  it('shows an open-report badge on Fehlerhafte Aufgaben for Entwickler', () => {
+    const withBadge = renderToStaticMarkup(
+      createElement(Settings, {
+        ...baseProps,
+        role: 'entwickler',
+        openFaultyReportCount: 3,
+      }),
+    )
+    expect(withBadge).toContain('Fehlerhafte Aufgaben')
+    expect(withBadge).toContain('tab__badge')
+    expect(withBadge).toContain('3 offene Fehlermeldungen')
+    expect(withBadge).toContain('>3<')
+
+    const zero = renderToStaticMarkup(
+      createElement(Settings, {
+        ...baseProps,
+        role: 'entwickler',
+        openFaultyReportCount: 0,
+      }),
+    )
+    expect(zero).toContain('Fehlerhafte Aufgaben')
+    expect(zero).not.toContain('tab__badge')
+
+    const lehrer = renderToStaticMarkup(
+      createElement(Settings, {
+        ...baseProps,
+        role: 'lehrer',
+        openFaultyReportCount: 5,
+      }),
+    )
+    expect(lehrer).not.toContain('Fehlerhafte Aufgaben')
+    expect(lehrer).not.toContain('tab__badge')
+  })
+
   it('renders the Vorgaben form on the tasks section for Lehrer', () => {
     const html = renderToStaticMarkup(
       createElement(Settings, { ...baseProps, section: 'tasks' }),

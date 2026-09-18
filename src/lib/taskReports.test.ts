@@ -1,7 +1,9 @@
 import { describe, expect, it, vi } from 'vitest'
 import { CLASS_POINTS_API, ClassApiError } from '../classCode/api'
 import {
+  countOpenTaskReports,
   deleteTaskReport,
+  fetchOpenTaskReportCount,
   fetchTaskReports,
   isReportCommentValid,
   markTaskReportDone,
@@ -79,6 +81,27 @@ describe('taskReports helpers', () => {
       cache: 'no-store',
       headers: { Authorization: `Bearer ${REPORTS_READ_TOKEN}` },
     })
+  })
+
+  it('counts only open reports for badges', async () => {
+    expect(
+      countOpenTaskReports([
+        { id: 'a', at: 1, contentId: 1, comment: 'x', status: 'open' },
+        { id: 'b', at: 2, contentId: 2, comment: 'y', status: 'done' },
+        { id: 'c', at: 3, contentId: 3, comment: 'z', status: 'open' },
+      ]),
+    ).toBe(2)
+    expect(countOpenTaskReports([])).toBe(0)
+
+    const fetchImpl = vi.fn(async () =>
+      Response.json({
+        reports: [
+          { id: 'a', at: 1, contentId: 1, comment: 'x', status: 'open' },
+          { id: 'b', at: 2, contentId: 2, comment: 'y', status: 'done' },
+        ],
+      }),
+    ) as unknown as typeof fetch
+    await expect(fetchOpenTaskReportCount({ fetchImpl })).resolves.toBe(1)
   })
 
   it('marks a report done via PATCH', async () => {

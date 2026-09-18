@@ -294,6 +294,10 @@
 }
 
 .settings-menu__label {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px 0;
   font-weight: 700;
   font-size: 16px;
 }

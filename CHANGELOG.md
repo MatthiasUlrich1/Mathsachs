@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.45] – 2026-09-19
+
+### Hinzugefügt
+- **Entwickler-Badges:** Offene (nicht erledigte) Fehlermeldungen als Zahlenbadge
+  am Reiter **Einstellungen** und am Einstellungs-Eintrag **Fehlerhafte Aufgaben**.
+  Zähler wird periodisch aktualisiert und nach Erledigt/Löschen in der Liste sofort
+  angepasst; bei Zähler 0 oder anderen Rollen kein Badge.
+
 ## [0.27.44] – 2026-09-19
 
 ### Hinzugefügt

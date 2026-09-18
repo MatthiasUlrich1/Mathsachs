@@ -23,9 +23,11 @@ function formatReportTime(at: number): string {
 
 interface Props {
   onShowTask: (report: TaskReport) => void | Promise<void>
+  /** Fired after list load / status / delete so nav badges stay in sync. */
+  onReportsChanged?: (reports: TaskReport[]) => void
 }
 
-export function FaultyTasksPanel({ onShowTask }: Props) {
+export function FaultyTasksPanel({ onShowTask, onReportsChanged }: Props) {
   const [reports, setReports] = useState<TaskReport[] | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
@@ -39,6 +41,7 @@ export function FaultyTasksPanel({ onShowTask }: Props) {
     try {
       const next = await fetchTaskReports()
       setReports(next)
+      onReportsChanged?.(next)
     } catch (err) {
       setReports(null)
       setError(
@@ -49,7 +52,7 @@ export function FaultyTasksPanel({ onShowTask }: Props) {
     } finally {
       setLoading(false)
     }
-  }, [])
+  }, [onReportsChanged])
 
   useEffect(() => {
     void load()
@@ -61,9 +64,13 @@ export function FaultyTasksPanel({ onShowTask }: Props) {
     setActionError(null)
     try {
       const updated = await markTaskReportDone(id)
-      setReports((prev) =>
-        prev ? prev.map((row) => (row.id === id ? updated : row)) : prev,
-      )
+      setReports((prev) => {
+        const next = prev
+          ? prev.map((row) => (row.id === id ? updated : row))
+          : prev
+        if (next) onReportsChanged?.(next)
+        return next
+      })
     } catch (err) {
       setActionError(
         err instanceof ClassApiError
@@ -81,7 +88,11 @@ export function FaultyTasksPanel({ onShowTask }: Props) {
     setActionError(null)
     try {
       await deleteTaskReport(id)
-      setReports((prev) => (prev ? prev.filter((row) => row.id !== id) : prev))
+      setReports((prev) => {
+        const next = prev ? prev.filter((row) => row.id !== id) : prev
+        if (next) onReportsChanged?.(next)
+        return next
+      })
     } catch (err) {
       setActionError(
         err instanceof ClassApiError

@@ -226,6 +226,19 @@ export async function fetchTaskReports(options?: {
   }
 }
 
+/** Open (not erledigt) reports — used for Entwickler nav/settings badges. */
+export function countOpenTaskReports(reports: TaskReport[]): number {
+  return reports.reduce((n, row) => (row.status === 'open' ? n + 1 : n), 0)
+}
+
+export async function fetchOpenTaskReportCount(options?: {
+  fetchImpl?: typeof fetch
+  baseUrl?: string
+  token?: string
+}): Promise<number> {
+  return countOpenTaskReports(await fetchTaskReports(options))
+}
+
 /** Mark a report as done (erledigt) — still listed until deleted. */
 export async function markTaskReportDone(
   id: string,
