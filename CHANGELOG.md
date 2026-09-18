@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.43] – 2026-09-18
+
+### Behoben
+- **Release-CI / Pages:** Thema `ph-k6-lb1-kernschatten` hatte zu wenig unique
+  Aufgaben für Rundenlänge 10 — eigener Generator mit ausreichend Stämmen.
+  Unused `r1`/`r2` in der Physik-Factory blockierten den TypeScript-Build
+  (GitHub Pages). (v0.27.42 war getaggt, aber Build/Release fehlgeschlagen.)
+
 ## [0.27.42] – 2026-09-18
 
 ### Hinzugefügt

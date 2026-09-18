@@ -536,8 +536,6 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
       ],
       calc: (rng) => {
         if (parallel || /parallel/.test(lower)) {
-          const r1 = pick(rng, [2, 3, 4, 6])
-          const r2 = pick(rng, [2, 3, 4, 6])
           // 1/R = 1/R1 + 1/R2 → R = R1*R2/(R1+R2); keep integer when possible
           const pairs = [
             [2, 2, 1],

@@ -167,6 +167,166 @@ const schatten: Topic['generate'] = mixedVariants(
   },
 )
 
+/** LB1 — Kern- und Halbschatten (eigenes Thema; ≥10 unique stems) */
+const kernschatten: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      {
+        q: 'Zwei Lampen beleuchten einen undurchsichtigen Körper. Welche Schattenarten entstehen?',
+        correct: 'Kernschatten und Halbschatten',
+        wrong: ['nur Kernschatten', 'nur Lichtkegel', 'keine Schatten'],
+      },
+      {
+        q: 'Im Kernschatten hinter dem Körper …',
+        correct: 'kommt von keiner der Lampen Licht an',
+        wrong: [
+          'kommt Licht von allen Lampen an',
+          'gibt es immer mehr Licht als davor',
+          'entsteht nur bei durchsichtigen Körpern',
+        ],
+      },
+      {
+        q: 'Im Halbschatten …',
+        correct: 'kommt Licht von mindestens einer Lampe nicht an',
+        wrong: [
+          'kommt nie Licht an',
+          'gibt es immer volles Licht aller Lampen',
+          'gibt es nur bei einer einzigen Lampe Schatten',
+        ],
+      },
+      {
+        q: 'Eine punktförmige Lampe erzeugt hinter einem undurchsichtigen Körper vor allem …',
+        correct: 'einen scharfen Schatten',
+        wrong: ['gar keinen Schatten', 'nur Halbschatten ohne Kern', 'einen Lichtkegel ohne Schatten'],
+      },
+      {
+        q: 'Wann entsteht hinter einem Körper ein Halbschatten?',
+        correct: 'wenn mehrere ausgedehnte Lichtquellen den Körper beleuchten',
+        wrong: [
+          'nur bei einer einzigen Punktlichtquelle',
+          'nur ohne jede Lichtquelle',
+          'nur bei durchsichtigen Körpern',
+        ],
+      },
+      {
+        q: 'Der Kernschatten ist der Bereich …',
+        correct: 'der von keiner Lichtquelle erreicht wird',
+        wrong: [
+          'der von allen Lampen voll beleuchtet wird',
+          'der immer heller als die Umgebung ist',
+          'ohne Bezug zur Lampenzahl',
+        ],
+      },
+      {
+        q: 'Der Halbschatten ist der Bereich …',
+        correct: 'der nur von einem Teil der Lampen beleuchtet wird',
+        wrong: [
+          'in den nie Licht gelangt',
+          'der nur bei einer Lampe existiert',
+          'ohne Schattenwirkung',
+        ],
+      },
+      {
+        q: 'Bei nur einer punktförmigen Lichtquelle gibt es typischerweise …',
+        correct: 'einen scharfen Schatten ohne ausgeprägten Halbschatten',
+        wrong: [
+          'nur Halbschatten ohne Kern',
+          'gar keinen Schatten',
+          'immer Kern- und Halbschatten wie bei vielen Lampen',
+        ],
+      },
+      {
+        q: 'Zwei Lampen, Körper und Schirm: Wo ist es am dunkelsten?',
+        correct: 'im Kernschatten',
+        wrong: ['im Halbschatten', 'direkt vor dem Körper zur Lampe hin', 'überall gleich hell'],
+      },
+      {
+        q: 'Was beschreibt die Abbildung mit Kern- und Halbschatten richtig?',
+        correct: 'Kernschatten dunkler, Halbschatten nur teilweise verdunkelt',
+        wrong: [
+          'Halbschatten dunkler als Kernschatten',
+          'beide Bereiche gleich hell',
+          'es gibt nur Lichtkegel ohne Schatten',
+        ],
+      },
+      {
+        q: 'Mehrere Lampen → der Übergang vom Kern- zum Halbschatten …',
+        correct: 'zeigt, welche Lampen den Ort noch erreichen',
+        wrong: [
+          'bedeutet, dass Licht kreisförmig läuft',
+          'entsteht nur ohne Schirm',
+          'gilt nur für Spiegel',
+        ],
+      },
+      {
+        q: 'Ein undurchsichtiger Körper wirft Kern-/Halbschatten, weil …',
+        correct: 'er Licht abschirmt und die Lampen unterschiedliche Bereiche erreichen',
+        wrong: [
+          'er selbst Licht aussendet wie die Sonne',
+          'Luft das Licht immer löscht',
+          'Schatten ohne Lichtquellen entstehen',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation:
+        'Bei mehreren Lichtquellen: Kernschatten = von keiner Lampe erreicht; Halbschatten = nur von einem Teil der Lampen erreicht.',
+      visualContent: kernHalbschattenSvg(),
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (rng) => {
+    const pools = [
+      {
+        question: 'Welche Aussagen zu Kern- und Halbschatten stimmen? (mehrere möglich)',
+        choices: [
+          'Im Kernschatten kommt von keiner Lampe Licht an',
+          'Im Halbschatten fehlt Licht von mindestens einer Lampe',
+          'Eine punktförmige Lampe erzeugt vor allem einen scharfen Schatten',
+          'Halbschatten entsteht nur ohne jede Lichtquelle',
+          'Kernschatten ist der hellste Bereich hinter dem Körper',
+        ],
+        correct: [
+          'Im Kernschatten kommt von keiner Lampe Licht an',
+          'Im Halbschatten fehlt Licht von mindestens einer Lampe',
+          'Eine punktförmige Lampe erzeugt vor allem einen scharfen Schatten',
+        ],
+      },
+      {
+        question: 'Welche Beobachtungen passen zu mehreren Lampen? (mehrere möglich)',
+        choices: [
+          'Es kann Kernschatten und Halbschatten geben',
+          'Bereiche, die von allen Lampen erreicht werden, sind hell',
+          'Der Kernschatten ist von keiner Lampe beleuchtet',
+          'Schatten entstehen nur bei durchsichtigen Körpern',
+          'Ohne Körper gibt es trotzdem Kernschatten',
+        ],
+        correct: [
+          'Es kann Kernschatten und Halbschatten geben',
+          'Bereiche, die von allen Lampen erreicht werden, sind hell',
+          'Der Kernschatten ist von keiner Lampe beleuchtet',
+        ],
+      },
+    ] as const
+    const p = pick(rng, [...pools])
+    return multiSelectTask({
+      question: p.question,
+      choices: [...p.choices],
+      correct: [...p.correct],
+      solution: p.correct.join('; '),
+      explanation:
+        'Kernschatten: keine Lampe erreicht den Ort. Halbschatten: nur ein Teil der Lampen. Punktlampe → scharfer Schatten.',
+      visualContent: kernHalbschattenSvg(),
+      instruction: 'Tippe alle richtigen Aussagen:',
+    })
+  },
+)
+
 const spiegel: Topic['generate'] = mixedVariants(
   (rng) => {
     const alpha = pick(rng, [20, 30, 35, 40, 45, 50, 55, 60])
@@ -2021,6 +2181,7 @@ const farben: Topic['generate'] = mixedVariants(
 
 export const PHYSIK_K6_GENERATORS: Record<string, Topic['generate']> = {
   'ph-k6-lb1-schatten': schatten,
+  'ph-k6-lb1-kernschatten': kernschatten,
   'ph-k6-lb1-lampenposition': lampenposition,
   'ph-k6-lb1-lichtstrahl': lichtstrahl,
   'ph-k6-lb1-spiegel': spiegel,
