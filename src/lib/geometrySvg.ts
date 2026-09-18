@@ -3,6 +3,25 @@
  * Provides functions to create visual representations of geometric shapes.
  */
 
+/** Light label + dark halo — readable on dark TaskVisual panels and light fills. */
+export const GEO_LABEL_FILL = '#f8fafc'
+export const GEO_LABEL_HALO = '#0f172a'
+
+const GEO_LABEL_STYLE = `fill="${GEO_LABEL_FILL}" stroke="${GEO_LABEL_HALO}" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round"`
+
+/** Dimension / measure text for geometry figures. */
+export function geoDimLabel(
+  x: number,
+  y: number,
+  text: string | undefined,
+  opts?: { anchor?: 'start' | 'middle' | 'end'; size?: number },
+): string {
+  if (!text) return ''
+  const anchor = opts?.anchor ?? 'middle'
+  const size = opts?.size ?? 14
+  return `<text x="${x}" y="${y}" text-anchor="${anchor}" font-size="${size}" font-weight="bold" ${GEO_LABEL_STYLE}>${text}</text>`
+}
+
 export interface RectangleSvgProps {
   /** Width label (e.g., "5 cm") */
   widthLabel: string
@@ -85,7 +104,7 @@ export function generateRectangleSvg({
     text-anchor="middle"
     font-size="16"
     font-weight="bold"
-    fill="#333"
+    fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round"
   >
     ${widthLabel}
   </text>
@@ -107,7 +126,7 @@ export function generateRectangleSvg({
     text-anchor="start"
     font-size="16"
     font-weight="bold"
-    fill="#333"
+    fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round"
   >
     ${heightLabel}
   </text>
@@ -209,7 +228,7 @@ export function generateTriangleSvg({
     text-anchor="middle"
     font-size="16"
     font-weight="bold"
-    fill="#333"
+    fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round"
   >
     ${baseLabel}
   </text>
@@ -221,7 +240,7 @@ export function generateTriangleSvg({
     text-anchor="start"
     font-size="16"
     font-weight="bold"
-    fill="#333"
+    fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round"
   >
     ${heightLabel}
   </text>
@@ -365,7 +384,7 @@ export function angleMarkSvg(
   const lx = vx + bx * labelR
   const ly = vy + by * labelR
   const labelSvg = label
-    ? `<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" font-size="15" font-weight="bold" fill="#333">${label}</text>`
+    ? `<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" font-size="15" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">${label}</text>`
     : ''
 
   if (isRight) {
@@ -628,7 +647,7 @@ export function generateCircleSvg({
     text-anchor="middle"
     font-size="16"
     font-weight="bold"
-    fill="#333"
+    fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round"
   >
     ${radiusLabel}
   </text>
@@ -806,11 +825,11 @@ export function generateCuboidSvg({
 
   let areaText = ''
   if (resolvedArea && face === 'top') {
-    areaText = `<text x="${topMid[0]}" y="${topMid[1] + 5}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${resolvedArea}</text>`
+    areaText = `<text x="${topMid[0]}" y="${topMid[1] + 5}" text-anchor="middle" font-size="14" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">${resolvedArea}</text>`
   } else if (resolvedArea && face === 'front') {
-    areaText = `<text x="${frontMid[0]}" y="${frontMid[1] + 5}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${resolvedArea}</text>`
+    areaText = `<text x="${frontMid[0]}" y="${frontMid[1] + 5}" text-anchor="middle" font-size="14" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">${resolvedArea}</text>`
   } else if (resolvedArea && face === 'right') {
-    areaText = `<text x="${rightMid[0] + 4}" y="${rightMid[1] + 5}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${resolvedArea}</text>`
+    areaText = `<text x="${rightMid[0] + 4}" y="${rightMid[1] + 5}" text-anchor="middle" font-size="14" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">${resolvedArea}</text>`
   }
 
   // Perpendicular edge: draw ON the edge (highlighted), label next to it
@@ -843,19 +862,19 @@ export function generateCuboidSvg({
   ${
     showLength
       ? `<line x1="${frontBL[0]}" y1="${frontBL[1] + 18}" x2="${frontBR[0]}" y2="${frontBR[1] + 18}" stroke="${stroke}" stroke-width="1" marker-start="url(#cuboidArrowStart)" marker-end="url(#cuboidArrowEnd)"/>
-  <text x="${(frontBL[0] + frontBR[0]) / 2}" y="${frontBL[1] + 36}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${lengthLabel}</text>`
+  ${geoDimLabel((frontBL[0] + frontBR[0]) / 2, frontBL[1] + 36, lengthLabel)}`
       : ''
   }
   ${
     showWidth
       ? `<line x1="${frontBR[0] + 12}" y1="${frontBR[1]}" x2="${backBR[0] + 12}" y2="${backBR[1]}" stroke="${stroke}" stroke-width="1" marker-start="url(#cuboidArrowStart)" marker-end="url(#cuboidArrowEnd)"/>
-  <text x="${(frontBR[0] + backBR[0]) / 2 + 28}" y="${(frontBR[1] + backBR[1]) / 2 + 5}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${widthLabel}</text>`
+  ${geoDimLabel((frontBR[0] + backBR[0]) / 2 + 28, (frontBR[1] + backBR[1]) / 2 + 5, widthLabel)}`
       : ''
   }
   ${
     showHeightArrow
-      ? `<line x1="${frontTL[0]}" y1="${frontTL[1]}" x2="${frontBL[0]}" y2="${frontBL[1]}" stroke="#e65100" stroke-width="3.2"/>
-  <text x="${frontTL[0] - 10}" y="${(frontTL[1] + frontBL[1]) / 2 + 5}" text-anchor="end" font-size="14" font-weight="bold" fill="#e65100">${heightLabel}</text>`
+      ? `<line x1="${frontTL[0]}" y1="${frontTL[1]}" x2="${frontBL[0]}" y2="${frontBL[1]}" stroke="${stroke}" stroke-width="2.4"/>
+  ${geoDimLabel(frontTL[0] - 10, (frontTL[1] + frontBL[1]) / 2 + 5, heightLabel, { anchor: 'end' })}`
       : ''
   }
   <defs>
@@ -930,7 +949,7 @@ export function generateCuboidFaceEdgeSvg({
     const mid = midPt(midPt(frontTL, frontTR), midPt(frontBL, frontBR))
     areaXY = mid
     edgeLine = `<line x1="${frontBL[0]}" y1="${frontBL[1]}" x2="${frontBR[0]}" y2="${frontBR[1]}" stroke="${stroke}" stroke-width="2"/>`
-    edgeLabel = `<text x="${midPt(frontBL, frontBR)[0]}" y="${frontBL[1] + 22}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${faceEdgeLabel}</text>`
+    edgeLabel = `<text x="${midPt(frontBL, frontBR)[0]}" y="${frontBL[1] + 22}" text-anchor="middle" font-size="14" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">${faceEdgeLabel}</text>`
     const pm = midPt(frontBR, backBR)
     perpLine = `<line x1="${frontBR[0]}" y1="${frontBR[1]}" x2="${backBR[0]}" y2="${backBR[1]}" stroke="#e65100" stroke-width="3.2"/>`
     perpLabelMarkup = `<text x="${pm[0] + 12}" y="${pm[1] + 4}" text-anchor="start" font-size="15" font-weight="bold" fill="#e65100">${perpendicularLabel}</text>`
@@ -938,7 +957,7 @@ export function generateCuboidFaceEdgeSvg({
     const mid = midPt(midPt(frontTL, frontTR), midPt(backTL, backTR))
     areaXY = mid
     edgeLine = `<line x1="${frontTL[0]}" y1="${frontTL[1]}" x2="${frontTR[0]}" y2="${frontTR[1]}" stroke="${stroke}" stroke-width="2"/>`
-    edgeLabel = `<text x="${midPt(frontTL, frontTR)[0]}" y="${frontTL[1] - 8}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${faceEdgeLabel}</text>`
+    edgeLabel = `<text x="${midPt(frontTL, frontTR)[0]}" y="${frontTL[1] - 8}" text-anchor="middle" font-size="14" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">${faceEdgeLabel}</text>`
     const pm = midPt(frontTL, frontBL)
     perpLine = `<line x1="${frontTL[0]}" y1="${frontTL[1]}" x2="${frontBL[0]}" y2="${frontBL[1]}" stroke="#e65100" stroke-width="3.2"/>`
     perpLabelMarkup = `<text x="${pm[0] - 10}" y="${pm[1] + 5}" text-anchor="end" font-size="15" font-weight="bold" fill="#e65100">${perpendicularLabel}</text>`
@@ -947,7 +966,7 @@ export function generateCuboidFaceEdgeSvg({
     const mid = midPt(midPt(frontTR, frontBR), midPt(backTR, backBR))
     areaXY = [mid[0] + 4, mid[1]]
     edgeLine = `<line x1="${frontTR[0]}" y1="${frontTR[1]}" x2="${frontBR[0]}" y2="${frontBR[1]}" stroke="${stroke}" stroke-width="2"/>`
-    edgeLabel = `<text x="${frontTR[0] + 14}" y="${midPt(frontTR, frontBR)[1] + 5}" text-anchor="start" font-size="14" font-weight="bold" fill="#333">${faceEdgeLabel}</text>`
+    edgeLabel = `<text x="${frontTR[0] + 14}" y="${midPt(frontTR, frontBR)[1] + 5}" text-anchor="start" font-size="14" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">${faceEdgeLabel}</text>`
     const pm = midPt(frontBL, frontBR)
     perpLine = `<line x1="${frontBL[0]}" y1="${frontBL[1]}" x2="${frontBR[0]}" y2="${frontBR[1]}" stroke="#e65100" stroke-width="3.2"/>`
     perpLabelMarkup = `<text x="${pm[0]}" y="${pm[1] + 22}" text-anchor="middle" font-size="15" font-weight="bold" fill="#e65100">${perpendicularLabel}</text>`
@@ -956,7 +975,7 @@ export function generateCuboidFaceEdgeSvg({
   return `
 <svg width="${totalW}" height="${totalH}" viewBox="0 0 ${totalW} ${totalH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${cube ? 'Würfel' : 'Quader'} mit hervorgehobener Seitenfläche">
   ${cuboidSolidFaces(g, fill, stroke, highlightFace, highlight)}
-  <text x="${areaXY[0]}" y="${areaXY[1] + 5}" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">A = ${faceAreaLabel}</text>
+  <text x="${areaXY[0]}" y="${areaXY[1] + 5}" text-anchor="middle" font-size="15" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">A = ${faceAreaLabel}</text>
   ${edgeLine}
   ${edgeLabel}
   ${perpLine}
@@ -1014,7 +1033,7 @@ export function generatePrismVolumeSvg({
   <polygon points="${tL[0]},${tL[1]} ${tR[0]},${tR[1]} ${tBack[0]},${tBack[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
   <!-- bottom Grundfläche -->
   <polygon points="${bL[0]},${bL[1]} ${bR[0]},${bR[1]} ${bBack[0]},${bBack[1]}" fill="#fff3cd" stroke="${stroke}" stroke-width="2.5"/>
-  <text x="${gCx}" y="${gCy}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">G = ${baseAreaLabel}</text>
+  <text x="${gCx}" y="${gCy}" text-anchor="middle" font-size="14" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">G = ${baseAreaLabel}</text>
   <!-- Höhe senkrecht zur Grundfläche (linke vertikale Kante) -->
   <line x1="${bL[0]}" y1="${bL[1]}" x2="${tL[0]}" y2="${tL[1]}" stroke="#e65100" stroke-width="3.2"/>
   <text x="${bL[0] - 10}" y="${Math.round((bL[1] + tL[1]) / 2) + 5}" text-anchor="end" font-size="15" font-weight="bold" fill="#e65100">h = ${heightLabel}</text>
@@ -1099,7 +1118,7 @@ export function generateAngleSvg({
   <circle cx="${cx}" cy="${cy}" r="4" fill="${stroke}"/>
   ${
     label
-      ? `<text x="${labelX}" y="${labelY}" text-anchor="middle" font-size="18" font-weight="bold" fill="#333">${label}</text>`
+      ? `<text x="${labelX}" y="${labelY}" text-anchor="middle" font-size="18" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">${label}</text>`
       : ''
   }
 </svg>`.trim()
@@ -1169,7 +1188,7 @@ export function generateFractionCircleSvg({
     text-anchor="middle"
     font-size="24"
     font-weight="bold"
-    fill="#333"
+    fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round"
   >
     ${numerator}/${denominator}
   </text>`
@@ -1241,7 +1260,7 @@ export function generateFractionBarSvg({
     text-anchor="middle"
     font-size="18"
     font-weight="bold"
-    fill="#333"
+    fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round"
   >
     ${numerator}/${denominator}
   </text>`
@@ -1323,7 +1342,7 @@ export function generateFractionGridSvg({
     text-anchor="middle"
     font-size="18"
     font-weight="bold"
-    fill="#333"
+    fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round"
   >
     ${numerator}/${denominator}
   </text>`
@@ -1385,7 +1404,7 @@ export function generateLShapeSvg({
   stroke = '#2e7d32',
 }: LShapeSvgProps): string {
   const padL = 55
-  const padR = 70
+  const padR = 78
   const padT = 40
   const padB = 50
   const maxDrawW = 220
@@ -1414,25 +1433,21 @@ export function generateLShapeSvg({
   const totalW = padL + W + padR
   const totalH = padT + H + padB
 
-  const label = (x: number, y: number, text: string | undefined, anchor = 'middle') =>
-    text
-      ? `<text x="${x}" y="${y}" text-anchor="${anchor}" font-size="14" font-weight="bold" fill="#333">${text}</text>`
-      : ''
-
+  // Inner cut edges: labels sit in the empty cutout (never inside the filled L).
   return `
-<svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg">
+<svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="L-Form">
   <polygon
     points="${points}"
     fill="${fill}"
     stroke="${stroke}"
     stroke-width="2"
   />
-  ${label(x0 + W / 2, y0 + H + 28, bottomLabel)}
-  ${label(x0 - 18, y0 + H / 2 + 5, leftLabel, 'end')}
-  ${label(x0 + (W - cW) / 2, y0 - 12, topLabel)}
-  ${label(x0 + W + 18, y0 + cH + (H - cH) / 2 + 5, rightLabel, 'start')}
-  ${label(x0 + W - cW / 2, y0 + cH - 8, innerHorizontalLabel)}
-  ${label(x0 + W - cW - 10, y0 + cH / 2 + 5, innerVerticalLabel, 'end')}
+  ${geoDimLabel(x0 + W / 2, y0 + H + 28, bottomLabel)}
+  ${geoDimLabel(x0 - 18, y0 + H / 2 + 5, leftLabel, { anchor: 'end' })}
+  ${geoDimLabel(x0 + (W - cW) / 2, y0 - 12, topLabel)}
+  ${geoDimLabel(x0 + W + 18, y0 + cH + (H - cH) / 2 + 5, rightLabel, { anchor: 'start' })}
+  ${geoDimLabel(x0 + W - cW / 2, y0 + cH - 12, innerHorizontalLabel)}
+  ${geoDimLabel(x0 + W - cW + 16, y0 + cH / 2 + 5, innerVerticalLabel, { anchor: 'start' })}
 </svg>`.trim()
 }
 
@@ -1450,6 +1465,12 @@ export interface UShapeSvgProps {
   rightLabel?: string
   topLeftLabel?: string
   topRightLabel?: string
+  /** Bottom of the notch (inner horizontal) */
+  notchBottomLabel?: string
+  /** Left inner wall of the notch */
+  notchLeftLabel?: string
+  /** Right inner wall of the notch */
+  notchRightLabel?: string
   fill?: string
   stroke?: string
 }
@@ -1467,6 +1488,9 @@ export function generateUShapeSvg({
   rightLabel,
   topLeftLabel,
   topRightLabel,
+  notchBottomLabel,
+  notchLeftLabel,
+  notchRightLabel,
   fill = '#e3f2fd',
   stroke = '#1565c0',
 }: UShapeSvgProps): string {
@@ -1501,24 +1525,22 @@ export function generateUShapeSvg({
   const totalW = padL + W + padR
   const totalH = padT + H + padB
 
-  const label = (x: number, y: number, text: string | undefined, anchor = 'middle') =>
-    text
-      ? `<text x="${x}" y="${y}" text-anchor="${anchor}" font-size="14" font-weight="bold" fill="#333">${text}</text>`
-      : ''
-
   return `
-<svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg">
+<svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="U-Form">
   <polygon
     points="${points}"
     fill="${fill}"
     stroke="${stroke}"
     stroke-width="2"
   />
-  ${label(x0 + W / 2, y0 + H + 28, bottomLabel)}
-  ${label(x0 - 18, y0 + H / 2 + 5, leftLabel, 'end')}
-  ${label(x0 + W + 18, y0 + H / 2 + 5, rightLabel, 'start')}
-  ${label(x0 + side / 2, y0 - 12, topLeftLabel)}
-  ${label(x0 + side + nW + side / 2, y0 - 12, topRightLabel)}
+  ${geoDimLabel(x0 + W / 2, y0 + H + 28, bottomLabel)}
+  ${geoDimLabel(x0 - 18, y0 + H / 2 + 5, leftLabel, { anchor: 'end' })}
+  ${geoDimLabel(x0 + W + 18, y0 + H / 2 + 5, rightLabel, { anchor: 'start' })}
+  ${geoDimLabel(x0 + side / 2, y0 - 12, topLeftLabel)}
+  ${geoDimLabel(x0 + side + nW + side / 2, y0 - 12, topRightLabel)}
+  ${geoDimLabel(x0 + side + nW / 2, y0 + nH - 14, notchBottomLabel)}
+  ${geoDimLabel(x0 + side + 14, y0 + nH / 2 + 5, notchLeftLabel, { anchor: 'start' })}
+  ${geoDimLabel(x0 + side + nW - 14, y0 + nH / 2 + 5, notchRightLabel, { anchor: 'end' })}
 </svg>`.trim()
 }
 
@@ -1629,11 +1651,6 @@ export function generateCompositeCuboidSvg({
   const totalW = pad * 2 + L + dx + 80
   const totalH = pad * 2 + H + dy + 60
 
-  const label = (x: number, y: number, text: string | undefined, anchor = 'middle') =>
-    text
-      ? `<text x="${x}" y="${y}" text-anchor="${anchor}" font-size="13" font-weight="bold" fill="#333">${text}</text>`
-      : ''
-
   const mid = (p: [number, number], q: [number, number]): [number, number] => [
     (p[0] + q[0]) / 2,
     (p[1] + q[1]) / 2,
@@ -1641,23 +1658,48 @@ export function generateCompositeCuboidSvg({
 
   const bottomMid = mid(f(0, 0, 0), f(L, 0, 0))
   const heightMid = mid(f(0, 0, 0), f(0, 0, H))
-  const widthMid = mid(f(L, 0, 0), f(L, W - cW, 0))
-  const cutLenMid = mid(f(stemTop, W - cW, H), f(L, W - cW, H))
-  const cutWidMid = mid(f(stemTop, W - cW, H), f(stemTop, W, H))
+  // Full depth along the left side (y: 0 → W), not the short foot edge
+  const widthMid = mid(f(0, 0, 0), f(0, W, 0))
+  // Cut length = top edge of the foot step (along length, at y = W-cW)
+  const cutLenA = f(stemTop, W - cW, H)
+  const cutLenB = f(L, W - cW, H)
+  const cutLenMid = mid(cutLenA, cutLenB)
+  // Cut width = inner step edge into the void (along width, at x = stemTop)
+  const cutWidA = f(stemTop, W - cW, H)
+  const cutWidB = f(stemTop, W, H)
+  const cutWidMid = mid(cutWidA, cutWidB)
+  // Offset cut labels into the empty corner so they don't sit on the same vertex
+  const cutLenLabelPos: [number, number] = [
+    cutLenMid[0] + 6,
+    cutLenMid[1] - 20,
+  ]
+  const cutWidLabelPos: [number, number] = [
+    cutWidMid[0] + 28,
+    cutWidMid[1] - 6,
+  ]
+  const cutGuides =
+    cutLengthLabel || cutWidthLabel
+      ? `
+  <line x1="${cutLenA[0]}" y1="${cutLenA[1]}" x2="${cutLenB[0]}" y2="${cutLenB[1]}" stroke="${stroke}" stroke-width="2.2" stroke-dasharray="5 3"/>
+  <line x1="${cutWidA[0]}" y1="${cutWidA[1]}" x2="${cutWidB[0]}" y2="${cutWidB[1]}" stroke="${stroke}" stroke-width="2.2" stroke-dasharray="5 3"/>
+  <line x1="${cutLenMid[0]}" y1="${cutLenMid[1]}" x2="${cutLenLabelPos[0]}" y2="${cutLenLabelPos[1] + 8}" stroke="${stroke}" stroke-width="1" opacity="0.55"/>
+  <line x1="${cutWidMid[0]}" y1="${cutWidMid[1]}" x2="${cutWidLabelPos[0] - 8}" y2="${cutWidLabelPos[1]}" stroke="${stroke}" stroke-width="1" opacity="0.55"/>`
+      : ''
 
   return `
-<svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg">
+<svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="L-förmiger Körper">
   <!-- L-shaped composite cuboid (isometric) -->
   <polygon points="${backStem}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.75" />
   <polygon points="${stepFace}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.85" />
   <polygon points="${rightFoot}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.9" />
   <polygon points="${frontFace}" fill="${fill}" stroke="${stroke}" stroke-width="2" />
   <polygon points="${topFace}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.95" />
-  ${label(bottomMid[0], bottomMid[1] + 22, lengthLabel)}
-  ${label(heightMid[0] - 18, heightMid[1] + 4, heightLabel, 'end')}
-  ${label(widthMid[0] + 22, widthMid[1] + 4, widthLabel, 'start')}
-  ${label(cutLenMid[0], cutLenMid[1] - 8, cutLengthLabel)}
-  ${label(cutWidMid[0] - 10, cutWidMid[1] + 4, cutWidthLabel, 'end')}
+  ${cutGuides}
+  ${geoDimLabel(bottomMid[0], bottomMid[1] + 22, lengthLabel)}
+  ${geoDimLabel(heightMid[0] - 18, heightMid[1] + 4, heightLabel, { anchor: 'end' })}
+  ${geoDimLabel(widthMid[0] - 16, widthMid[1] + 4, widthLabel, { anchor: 'end' })}
+  ${geoDimLabel(cutLenLabelPos[0], cutLenLabelPos[1], cutLengthLabel)}
+  ${geoDimLabel(cutWidLabelPos[0], cutWidLabelPos[1], cutWidthLabel, { anchor: 'start' })}
 </svg>`.trim()
 }
 
@@ -1782,7 +1824,7 @@ export function generateCoordinateGridSvg({
               const cx = poly.points.reduce((s, p) => s + p[0], 0) / poly.points.length
               const cy = poly.points.reduce((s, p) => s + p[1], 0) / poly.points.length
               const [lx, ly] = toSvg(cx, cy)
-              return `<text x="${lx}" y="${ly + 4}" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">${poly.label}</text>`
+              return `<text x="${lx}" y="${ly + 4}" text-anchor="middle" font-size="13" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">${poly.label}</text>`
             })()
           : ''
       return `<polygon points="${pts}" fill="${fill}" fill-opacity="${opacity}" stroke="${stroke}" stroke-width="2" />${labelSvg}`
@@ -1809,7 +1851,7 @@ export function generateCoordinateGridSvg({
         ly = sy - 8
       }
       const lab = p.label
-        ? `<text x="${lx}" y="${ly}" text-anchor="${anchor}" font-size="13" font-weight="bold" fill="#333">${p.label}</text>`
+        ? `<text x="${lx}" y="${ly}" text-anchor="${anchor}" font-size="13" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">${p.label}</text>`
         : ''
       return `<circle cx="${sx}" cy="${sy}" r="4.5" fill="#333" />${lab}`
     })
@@ -1835,8 +1877,8 @@ export function generateCoordinateGridSvg({
   <line x1="${padL}" y1="${oy}" x2="${xArrowEnd}" y2="${oy}" stroke="#555" stroke-width="2" marker-end="url(#gridArrowX)" />
   <!-- y-axis arrow -->
   <line x1="${ox}" y1="${padT + gridH}" x2="${ox}" y2="${yArrowEnd}" stroke="#555" stroke-width="2" marker-end="url(#gridArrowY)" />
-  <text x="${xArrowEnd + 4}" y="${oy + 4}" font-size="14" font-weight="bold" fill="#333">x</text>
-  <text x="${ox + 8}" y="${yArrowEnd + 4}" font-size="14" font-weight="bold" fill="#333">y</text>
+  <text x="${xArrowEnd + 4}" y="${oy + 4}" font-size="14" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">x</text>
+  <text x="${ox + 8}" y="${yArrowEnd + 4}" font-size="14" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">y</text>
   ${tickLabels.join('\n  ')}
   ${polySvg}
   ${pointSvg}
@@ -2629,7 +2671,7 @@ export function generateSegmentSvg({
         seg.lengthLabel ??
         `${Number.isInteger(lenVal) ? String(lenVal) : lenVal.toFixed(1).replace('.', ',')} cm`
       const lengthSvg = showLabel
-        ? `<text x="${mx + ox}" y="${my + oy}" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">${lenText}</text>`
+        ? `<text x="${mx + ox}" y="${my + oy}" text-anchor="middle" font-size="13" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">${lenText}</text>`
         : ''
       // Cross markers at endpoints
       const cross = (cx: number, cy: number) =>
@@ -2644,7 +2686,7 @@ export function generateSegmentSvg({
         const al = Math.hypot(awayX, awayY) || 1
         const lx = cx + (awayX / al) * 14
         const ly = cy + (awayY / al) * 14 - 2
-        return `<text x="${lx}" y="${ly}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${text}</text>`
+        return `<text x="${lx}" y="${ly}" text-anchor="middle" font-size="14" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">${text}</text>`
       }
       return `
   <line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${stroke}" stroke-width="2.5" />
@@ -2777,7 +2819,7 @@ export function generateSegmentsOnGridSvg({
         const L = Math.hypot(dx, dy) || 1
         const ox = (-dy / L) * 12
         const oy = (dx / L) * 12
-        label = `<text x="${mx + ox}" y="${my + oy}" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">${text}</text>`
+        label = `<text x="${mx + ox}" y="${my + oy}" text-anchor="middle" font-size="12" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">${text}</text>`
       }
       return `${line}\n  ${label}`
     })
@@ -2855,8 +2897,8 @@ export function generateRayOrLineSvg({
   ${lineSvg}
   ${cross(ax, ay)}
   ${cross(bx, ay)}
-  <text x="${ax}" y="${ay - 14}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${labelA}</text>
-  <text x="${bx}" y="${ay - 14}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${labelB}</text>
+  <text x="${ax}" y="${ay - 14}" text-anchor="middle" font-size="14" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">${labelA}</text>
+  <text x="${bx}" y="${ay - 14}" text-anchor="middle" font-size="14" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">${labelB}</text>
 </svg>`.trim()
 }
 
@@ -3212,8 +3254,8 @@ export function generatePyramidVolumeSvg({
   <polygon points="${b1[0]},${b1[1]} ${b2[0]},${b2[1]} ${apex[0]},${apex[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
   <polygon points="${b1[0]},${b1[1]} ${b2[0]},${b2[1]} ${b3[0]},${b3[1]} ${b4[0]},${b4[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.55"/>
   <line x1="${apex[0]}" y1="${apex[1]}" x2="150" y2="180" stroke="${stroke}" stroke-width="1.5" stroke-dasharray="4 3"/>
-  <text x="150" y="230" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">G = ${baseAreaLabel}</text>
-  <text x="168" y="120" font-size="14" font-weight="bold" fill="#333">h = ${heightLabel}</text>
+  <text x="150" y="230" text-anchor="middle" font-size="14" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">G = ${baseAreaLabel}</text>
+  <text x="168" y="120" font-size="14" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">h = ${heightLabel}</text>
 </svg>`.trim()
 }
 
@@ -3550,7 +3592,7 @@ export function generateCircleMeasureSvg({
     showDiameter
       ? `
   <line x1="${cx - r}" y1="${cy}" x2="${cx + r}" y2="${cy}" stroke="${stroke}" stroke-width="2" stroke-dasharray="5 4"/>
-  <text x="${cx}" y="${cy + 28}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${
+  <text x="${cx}" y="${cy + 28}" text-anchor="middle" font-size="14" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">${
           diameterLabel ?? `d = ${radiusLabel}`
         }</text>`
       : ''
@@ -3559,7 +3601,7 @@ export function generateCircleMeasureSvg({
   <circle cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
   <line x1="${cx}" y1="${cy}" x2="${cx + r}" y2="${cy}" stroke="${stroke}" stroke-width="2"/>
   <circle cx="${cx}" cy="${cy}" r="3" fill="${stroke}"/>
-  <text x="${cx + r / 2}" y="${cy - 10}" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">${radiusLabel}</text>
+  <text x="${cx + r / 2}" y="${cy - 10}" text-anchor="middle" font-size="15" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">${radiusLabel}</text>
   ${diam}
 </svg>`.trim()
 }
@@ -3593,8 +3635,8 @@ export function generateCylinderSvg({
   <line x1="${cx + rx}" y1="${topY}" x2="${cx + rx}" y2="${botY}" stroke="${stroke}" stroke-width="2"/>
   <ellipse cx="${cx}" cy="${topY}" rx="${rx}" ry="${ry}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
   <line x1="${cx}" y1="${topY}" x2="${cx + rx}" y2="${topY}" stroke="${stroke}" stroke-width="1.5"/>
-  <text x="${cx + rx / 2}" y="${topY - 10}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">r = ${radiusLabel}</text>
-  <text x="${cx + rx + 16}" y="${(topY + botY) / 2 + 5}" font-size="14" font-weight="bold" fill="#333">h = ${heightLabel}</text>
+  <text x="${cx + rx / 2}" y="${topY - 10}" text-anchor="middle" font-size="14" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">r = ${radiusLabel}</text>
+  <text x="${cx + rx + 16}" y="${(topY + botY) / 2 + 5}" font-size="14" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">h = ${heightLabel}</text>
 </svg>`.trim()
 }
 
@@ -3667,7 +3709,7 @@ export function generateCubeNetSvg(
     )
     .join('\n  ')
   const lab = label
-    ? `<text x="${w / 2}" y="${h - 6}" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">${label}</text>`
+    ? `<text x="${w / 2}" y="${h - 6}" text-anchor="middle" font-size="15" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">${label}</text>`
     : ''
   return `
 <svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">
@@ -3790,7 +3832,7 @@ export function generateSpinnerSvg({
     const lx = cx + r * 0.62 * Math.cos(am)
     const ly = cy + r * 0.62 * Math.sin(am)
     slices.push(
-      `<text x="${lx}" y="${ly + 5}" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">${payoffs[i]}</text>`,
+      `<text x="${lx}" y="${ly + 5}" text-anchor="middle" font-size="13" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">${payoffs[i]}</text>`,
     )
   }
   return `
@@ -4114,7 +4156,7 @@ export function generatePrismNetSvg(
     )
     .join('\n  ')
   const lab = label
-    ? `<text x="${w / 2}" y="${h - 4}" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">${label}</text>`
+    ? `<text x="${w / 2}" y="${h - 4}" text-anchor="middle" font-size="14" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">${label}</text>`
     : ''
   return `<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">${rects}${lab}</svg>`
 }
@@ -4242,7 +4284,7 @@ export function generateLabeledPrismNetSvg({
       const tw = bw * cell
       const th = bh * cell
       return `<rect x="${x}" y="${y}" width="${tw}" height="${th}" fill="#fff8e1" stroke="#f57c00" stroke-width="2"/>
-  <text x="${x + tw / 2}" y="${y + th / 2 + 5}" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">${lab}</text>`
+  <text x="${x + tw / 2}" y="${y + th / 2 + 5}" text-anchor="middle" font-size="16" font-weight="bold" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">${lab}</text>`
     })
     .join('\n  ')
   return `<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">

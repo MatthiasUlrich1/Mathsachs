@@ -2378,6 +2378,8 @@ const flaecheZusammengesetzt: Topic = {
         leftLabel: `${d.outerHeight} m`,
         topLabel: `${d.stemWidth} m`,
         rightLabel: `${d.footHeight} m`,
+        innerHorizontalLabel: `${d.cutWidth} m`,
+        innerVerticalLabel: `${d.cutHeight} m`,
       })
       return visualTask({
         question: 'Berechne den Flächeninhalt der abgebildeten L-Form.',
@@ -2407,6 +2409,9 @@ const flaecheZusammengesetzt: Topic = {
         rightLabel: `${outerHeight} m`,
         topLeftLabel: `${side} m`,
         topRightLabel: `${side} m`,
+        notchBottomLabel: `${notchWidth} m`,
+        notchLeftLabel: `${notchHeight} m`,
+        notchRightLabel: `${notchHeight} m`,
       })
       return visualTask({
         question: 'Berechne den Flächeninhalt der abgebildeten U-Form.',

@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.29] – 2026-09-18
+
+### Behoben
+- **Grafische Geometrie-Aufgaben:** Maßbeschriftungen hell mit Kontrast-Halo
+  (lesbar auf dunklem Hintergrund); fehlende Innenmaße bei U-/L-Form ergänzt;
+  Innenbeschriftung der L-Form sitzt in der Aussparung (nicht im Flächenfüll);
+  Quader-Höhe ohne irrelevante orange Markierung; L-Körper-Schnittkanten
+  eindeutiger beschriftet (Hilfslinien + Abstand).
+
 ## [0.27.28] – 2026-09-17
 
 ### Behoben

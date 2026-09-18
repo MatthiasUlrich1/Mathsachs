@@ -20,6 +20,7 @@ import {
   generateLShapeSvg,
   generateUShapeSvg,
   generateCompositeCuboidSvg,
+  GEO_LABEL_FILL,
   generateCoordinateGridSvg,
   generatePointsOnGridSvg,
   generateTranslationSvg,
@@ -294,6 +295,21 @@ describe('geometrySvg', () => {
       expect(svg).toContain('text-anchor="end"')
       expect(Number(vb![1])).toBeGreaterThan(200)
     })
+
+    it('uses uniform stroke color for height (no orange highlight)', () => {
+      const svg = generateCuboidSvg({
+        lengthLabel: '6 cm',
+        widthLabel: '10 cm',
+        heightLabel: '8 cm',
+      })
+      expect(svg).toContain('8 cm')
+      expect(svg).toContain(GEO_LABEL_FILL)
+      expect(svg).not.toContain('#e65100')
+      const heightLine = svg.match(
+        /<line[^>]*stroke-width="2\.4"[^>]*\/>/,
+      )
+      expect(heightLine?.[0]).toContain('stroke="#1976d2"')
+    })
   })
 
   describe('generateCuboidFaceEdgeSvg', () => {
@@ -531,6 +547,8 @@ describe('geometrySvg', () => {
         leftLabel: '6 m',
         topLabel: '5 m',
         rightLabel: '2 m',
+        innerHorizontalLabel: '3 m',
+        innerVerticalLabel: '4 m',
       })
       expect(svg).toContain('<svg')
       expect(svg).toContain('<polygon')
@@ -538,11 +556,45 @@ describe('geometrySvg', () => {
       expect(svg).toContain('6 m')
       expect(svg).toContain('5 m')
       expect(svg).toContain('2 m')
+      expect(svg).toContain('3 m')
+      expect(svg).toContain('4 m')
+      expect(svg).toContain(GEO_LABEL_FILL)
+    })
+
+    it('places inner cut labels in the cutout, not inside the L fill', () => {
+      const svg = generateLShapeSvg({
+        outerWidth: 14,
+        outerHeight: 12,
+        cutWidth: 12,
+        cutHeight: 7,
+        bottomLabel: '14 m',
+        leftLabel: '12 m',
+        topLabel: '2 m',
+        rightLabel: '5 m',
+        innerHorizontalLabel: '12,0 m',
+        innerVerticalLabel: '7 m',
+      })
+      const scale = Math.min(220 / 14, 180 / 12)
+      const padL = 55
+      const padT = 40
+      const stemEdgeX = padL + (14 - 12) * scale
+      const stepY = padT + 7 * scale
+      const vertMatch = svg.match(
+        /<text x="([^"]+)" y="([^"]+)"[^>]*>7 m<\/text>/,
+      )
+      expect(vertMatch).toBeTruthy()
+      expect(Number(vertMatch![1])).toBeGreaterThan(stemEdgeX)
+      const horizMatch = svg.match(
+        /<text x="([^"]+)" y="([^"]+)"[^>]*>12,0 m<\/text>/,
+      )
+      expect(horizMatch).toBeTruthy()
+      expect(Number(horizMatch![1])).toBeGreaterThan(stemEdgeX)
+      expect(Number(horizMatch![2])).toBeLessThan(stepY)
     })
   })
 
   describe('generateUShapeSvg', () => {
-    it('generates U-shape with dimension labels', () => {
+    it('generates U-shape with outer and notch labels', () => {
       const svg = generateUShapeSvg({
         outerWidth: 10,
         outerHeight: 6,
@@ -550,11 +602,17 @@ describe('geometrySvg', () => {
         notchHeight: 3,
         bottomLabel: '10 m',
         leftLabel: '6 m',
+        notchBottomLabel: '4 m',
+        notchLeftLabel: '3 m',
+        notchRightLabel: '3 m',
       })
       expect(svg).toContain('<svg')
       expect(svg).toContain('<polygon')
       expect(svg).toContain('10 m')
       expect(svg).toContain('6 m')
+      expect(svg).toContain('4 m')
+      expect(svg).toContain('3 m')
+      expect(svg).toContain(GEO_LABEL_FILL)
     })
   })
 
@@ -578,6 +636,8 @@ describe('geometrySvg', () => {
       expect(svg).toContain('6 cm')
       expect(svg).toContain('4 cm')
       expect(svg).toContain('3 cm')
+      expect(svg).toContain(GEO_LABEL_FILL)
+      expect(svg).toContain('stroke-dasharray')
     })
   })
 
