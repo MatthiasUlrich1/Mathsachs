@@ -37,8 +37,7 @@ function geoDimArrowDefs(idPrefix: string, stroke: string): string {
 
 /**
  * Dimension line (Strecke) with outward arrows + label near the line middle.
- * Empty `label` yields nothing. Never mixes in a leader — use geoDimLeaderLabel
- * when a short leader-only style is needed instead.
+ * Empty `label` yields nothing.
  */
 function geoDimArrowSegment(
   x1: number,
@@ -61,21 +60,6 @@ function geoDimArrowSegment(
   const arrow = `url(#${markerId}Arrow)`
   return `<line x1="${mx}" y1="${my}" x2="${x1}" y2="${y1}" stroke="${stroke}" stroke-width="1" marker-end="${arrow}"/>
   <line x1="${mx}" y1="${my}" x2="${x2}" y2="${y2}" stroke="${stroke}" stroke-width="1" marker-end="${arrow}"/>
-  ${geoDimLabel(labelX, labelY, label, { anchor })}`
-}
-
-/** Thin leader from an edge point to a far-away label (no dimension arrows). */
-function geoDimLeaderLabel(
-  fromX: number,
-  fromY: number,
-  labelX: number,
-  labelY: number,
-  label: string | undefined,
-  opts: { stroke: string; anchor?: 'start' | 'middle' | 'end' },
-): string {
-  if (!label?.trim()) return ''
-  const { stroke, anchor } = opts
-  return `<line x1="${fromX}" y1="${fromY}" x2="${labelX}" y2="${labelY - 4}" stroke="${stroke}" stroke-width="1" opacity="0.55"/>
   ${geoDimLabel(labelX, labelY, label, { anchor })}`
 }
 
@@ -1665,11 +1649,11 @@ export function generateCompositeCuboidSvg({
   fill = '#e3f2fd',
   stroke = '#1565c0',
 }: CompositeCuboidSvgProps): string {
-  // Extra padding: depth labels far left, height between solid and its Strecke,
-  // cut leaders in the void, plus room for outward arrowheads.
-  const padL = 130
-  const padR = 110
-  const padT = 74
+  // Same Strecke layout as generateCuboidSvg: height left, depth right,
+  // length below; cut measures are Strecken on the notch (never leaders).
+  const padL = 72
+  const padR = 118
+  const padT = 88
   const padB = 68
   const scale = Math.min(140 / length, 90 / width, 80 / height)
   const L = length * scale
@@ -1737,82 +1721,55 @@ export function generateCompositeCuboidSvg({
     (p[0] + q[0]) / 2,
     (p[1] + q[1]) / 2,
   ]
-  const lerp = (
-    p: [number, number],
-    q: [number, number],
-    t: number,
-  ): [number, number] => [p[0] + (q[0] - p[0]) * t, p[1] + (q[1] - p[1]) * t]
 
   const lenA = f(0, 0, 0)
   const lenB = f(L, 0, 0)
-  // Height on the LEFT front edge; depth also on the left but labeled near the
-  // BACK so the two never stack. Cut leaders stay in the right-hand void.
   const heightA = f(0, 0, H)
   const heightB = f(0, 0, 0)
-  // Full depth along the left side (y: 0 → W), not the short foot edge
-  const widthA = f(0, 0, 0)
-  const widthB = f(0, W, 0)
+  // Full depth on the RIGHT (same side as generateCuboidSvg), spanning y: 0 → W
+  // at x = L even though the solid only fills the foot — the Strecke sits outside.
+  const widthA = f(L, 0, 0)
+  const widthB = f(L, W, 0)
   // Cut length = top edge of the foot step (along length, at y = W-cW)
   const cutLenA = f(stemTop, W - cW, H)
   const cutLenB = f(L, W - cW, H)
-  const cutLenMid = mid(cutLenA, cutLenB)
   // Cut width = inner step edge into the void (along width, at x = stemTop)
   const cutWidA = f(stemTop, W - cW, H)
   const cutWidB = f(stemTop, W, H)
-  const cutWidMid = mid(cutWidA, cutWidB)
 
-  // --- Outer dims: Strecke only (label beside line). No leaders. ---
-  // Length below the front bottom edge
-  const lengthDimY = lenA[1] + 22
+  // --- All measures: Strecke only (outward arrows). No leaders. ---
+  const lengthDimY = lenA[1] + 20
   const lengthLabelPos: [number, number] = [
     (lenA[0] + lenB[0]) / 2,
     lengthDimY + 18,
   ]
 
-  // Height Strecke left of the front-left edge; label BETWEEN Strecke and solid
-  // (start-anchored) so it never overlaps the depth Strecke further left.
-  const heightDimX = heightA[0] - 40
+  // Height left of front-left edge; label outside (left), like cuboid
+  const heightDimX = heightA[0] - 18
   const heightLabelPos: [number, number] = [
-    heightDimX + 10,
+    heightDimX - 12,
     (heightA[1] + heightB[1]) / 2 + 5,
   ]
 
-  // Depth Strecke further left; BACK end extra-offset so isometric +x drift
-  // cannot meet the height Strecke.
-  const widthOffFront = 72
-  const widthOffBack = 72 + Math.ceil(W * 0.55) + 14
-  const widthDimA: [number, number] = [
-    widthA[0] - widthOffFront,
-    widthA[1] + 14,
-  ]
-  const widthDimB: [number, number] = [
-    widthB[0] - widthOffBack,
-    widthB[1] + 4,
-  ]
-  const widthLabelOnLine = lerp(widthDimA, widthDimB, 0.4)
-  const widthLabelPos: [number, number] = [
-    widthLabelOnLine[0] - 12,
-    widthLabelOnLine[1] + 5,
-  ]
+  // Depth Strecke offset to the right of the solid
+  const widthDimA: [number, number] = [widthA[0] + 20, widthA[1] + 6]
+  const widthDimB: [number, number] = [widthB[0] + 20, widthB[1] + 6]
+  const widthMid = mid(widthDimA, widthDimB)
+  const widthLabelPos: [number, number] = [widthMid[0] + 28, widthMid[1] + 6]
 
-  // --- Cut dims: leader only into the empty cutout (no Strecke). ---
-  // Short leaders into the void: length above the cut-length edge, width
-  // deeper into the notch — keep endpoints apart so leaders do not cross.
-  const cutLenLabelPos: [number, number] = [
-    cutLenMid[0] - 6,
-    cutLenMid[1] - 24,
-  ]
-  const cutWidLabelPos: [number, number] = [
-    cutWidMid[0] + 38,
-    cutWidMid[1] + 22,
-  ]
+  // Cut length Strecke well above the step edge; label above the line mid
+  // so it stays clear of the cut-width Strecke at the inner corner.
+  const cutLenDimA: [number, number] = [cutLenA[0] + 4, cutLenA[1] - 26]
+  const cutLenDimB: [number, number] = [cutLenB[0] - 2, cutLenB[1] - 26]
+  const cutLenMid = mid(cutLenDimA, cutLenDimB)
+  const cutLenLabelPos: [number, number] = [cutLenMid[0], cutLenMid[1] - 14]
 
-  const cutEdgeMarks =
-    cutLengthLabel || cutWidthLabel
-      ? `
-  <line x1="${cutLenA[0]}" y1="${cutLenA[1]}" x2="${cutLenB[0]}" y2="${cutLenB[1]}" stroke="${stroke}" stroke-width="2.2" stroke-dasharray="5 3"/>
-  <line x1="${cutWidA[0]}" y1="${cutWidA[1]}" x2="${cutWidB[0]}" y2="${cutWidB[1]}" stroke="${stroke}" stroke-width="2.2" stroke-dasharray="5 3"/>`
-      : ''
+  // Cut width Strecke deeper into the notch void; label to the right of mid
+  // (away from cut-length label and the solid edge).
+  const cutWidDimA: [number, number] = [cutWidA[0] + 28, cutWidA[1] + 6]
+  const cutWidDimB: [number, number] = [cutWidB[0] + 28, cutWidB[1] + 6]
+  const cutWidMid = mid(cutWidDimA, cutWidDimB)
+  const cutWidLabelPos: [number, number] = [cutWidMid[0] + 22, cutWidMid[1] + 4]
 
   const markerId = 'compositeCuboid'
   const lengthDim = geoDimArrowSegment(
@@ -1839,7 +1796,7 @@ export function generateCompositeCuboidSvg({
       markerId,
       labelX: heightLabelPos[0],
       labelY: heightLabelPos[1],
-      anchor: 'start',
+      anchor: 'end',
     },
   )
   const widthDim = geoDimArrowSegment(
@@ -1853,24 +1810,35 @@ export function generateCompositeCuboidSvg({
       markerId,
       labelX: widthLabelPos[0],
       labelY: widthLabelPos[1],
-      anchor: 'end',
+      anchor: 'start',
     },
   )
-  const cutLenDim = geoDimLeaderLabel(
-    cutLenMid[0],
-    cutLenMid[1],
-    cutLenLabelPos[0],
-    cutLenLabelPos[1],
+  const cutLenDim = geoDimArrowSegment(
+    cutLenDimA[0],
+    cutLenDimA[1],
+    cutLenDimB[0],
+    cutLenDimB[1],
     cutLengthLabel,
-    { stroke },
+    {
+      stroke,
+      markerId,
+      labelX: cutLenLabelPos[0],
+      labelY: cutLenLabelPos[1],
+    },
   )
-  const cutWidDim = geoDimLeaderLabel(
-    cutWidMid[0],
-    cutWidMid[1],
-    cutWidLabelPos[0],
-    cutWidLabelPos[1],
+  const cutWidDim = geoDimArrowSegment(
+    cutWidDimA[0],
+    cutWidDimA[1],
+    cutWidDimB[0],
+    cutWidDimB[1],
     cutWidthLabel,
-    { stroke, anchor: 'start' },
+    {
+      stroke,
+      markerId,
+      labelX: cutWidLabelPos[0],
+      labelY: cutWidLabelPos[1],
+      anchor: 'start',
+    },
   )
 
   return `
@@ -1881,7 +1849,6 @@ export function generateCompositeCuboidSvg({
   <polygon points="${rightFoot}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.9" />
   <polygon points="${frontFace}" fill="${fill}" stroke="${stroke}" stroke-width="2" />
   <polygon points="${topFace}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.95" />
-  ${cutEdgeMarks}
   ${lengthDim}
   ${heightDim}
   ${widthDim}

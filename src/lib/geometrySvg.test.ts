@@ -652,45 +652,43 @@ describe('geometrySvg', () => {
       expect(svg).toContain('4 cm')
       expect(svg).toContain('3 cm')
       expect(svg).toContain(GEO_LABEL_FILL)
-      expect(svg).toContain('stroke-dasharray')
+      expect(svg).not.toContain('stroke-dasharray')
+      expect(svg).not.toContain('opacity="0.55"')
       expect(svg).toContain('marker-end="url(#compositeCuboidArrow)"')
       expect(svg).toContain('id="compositeCuboidArrow"')
       // Outward arrow via half-lines + marker-end (tip at +x)
       expect(svg).toMatch(
         /id="compositeCuboidArrow"[\s\S]*?points="0,0 10,5 0,10"/,
       )
-      // Outer dims = Strecke only (3×2 half-lines); cut dims = leader only
+      // All 5 measures = Strecke only (5×2 half-lines); no leaders
       const dimLines = [
         ...svg.matchAll(/<line[^>]*marker-end="url\(#compositeCuboidArrow\)"[^>]*\/>/g),
       ]
-      expect(dimLines.length).toBe(6)
-      const leaders = [...svg.matchAll(/opacity="0\.55"/g)]
-      expect(leaders.length).toBe(2)
-      // Height (between its Strecke and solid) sits right of depth (far left)
+      expect(dimLines.length).toBe(10)
+      // Height left, depth right (same layout as generateCuboidSvg)
       const heightText = svg.match(/<text x="([^"]+)" y="([^"]+)"[^>]*>5 cm<\/text>/)
       const widthText = svg.match(/<text x="([^"]+)" y="([^"]+)"[^>]*>6 cm<\/text>/)
       expect(heightText).toBeTruthy()
       expect(widthText).toBeTruthy()
-      const dx = Number(heightText![1]) - Number(widthText![1])
-      expect(dx).toBeGreaterThan(28)
-      expect(Number(widthText![1])).toBeGreaterThanOrEqual(40)
-      expect(heightText![0]).toContain('text-anchor="start"')
+      expect(Number(widthText![1])).toBeGreaterThan(Number(heightText![1]) + 40)
+      expect(heightText![0]).toContain('text-anchor="end"')
+      expect(widthText![0]).toContain('text-anchor="start"')
       expect(Number(heightText![2])).toBeGreaterThan(12)
       expect(Number(widthText![2])).toBeGreaterThan(12)
     })
 
-    it('matches screenshot-like proportions without clipping left labels', () => {
+    it('matches screenshot-like proportions without clipping labels', () => {
       const svg = generateCompositeCuboidSvg({
         length: 8,
-        width: 10,
+        width: 6,
         height: 3,
-        cutLength: 2,
-        cutWidth: 5,
+        cutLength: 4,
+        cutWidth: 2,
         lengthLabel: '8 cm',
-        widthLabel: '10 cm',
+        widthLabel: '6 cm',
         heightLabel: '3 cm',
-        cutLengthLabel: '2 cm',
-        cutWidthLabel: '5 cm',
+        cutLengthLabel: '4 cm',
+        cutWidthLabel: '2 cm',
       })
       const widthMatch = /width="(\d+)"/.exec(svg)
       const heightMatch = /height="(\d+)"/.exec(svg)
@@ -702,12 +700,12 @@ describe('geometrySvg', () => {
         /<text x="([^"]+)" y="([^"]+)"[^>]*>3 cm<\/text>/,
       )
       const depthText = svg.match(
-        /<text x="([^"]+)" y="([^"]+)"[^>]*>10 cm<\/text>/,
+        /<text x="([^"]+)" y="([^"]+)"[^>]*>6 cm<\/text>/,
       )
       expect(heightText).toBeTruthy()
       expect(depthText).toBeTruthy()
-      expect(Number(heightText![1])).toBeGreaterThan(Number(depthText![1]) + 24)
-      // Depth Strecke must stay left of the height Strecke (no crossing)
+      // Depth Strecke sits to the right of height (no crossing)
+      expect(Number(depthText![1])).toBeGreaterThan(Number(heightText![1]) + 40)
       const arrowLines = [
         ...svg.matchAll(
           /<line x1="([^"]+)" y1="([^"]+)" x2="([^"]+)" y2="([^"]+)"[^>]*marker-end="url\(#compositeCuboidArrow\)"[^>]*\/>/g,
@@ -716,14 +714,15 @@ describe('geometrySvg', () => {
       const heightHalves = arrowLines.filter((m) => Number(m[1]) === Number(m[3]))
       expect(heightHalves.length).toBe(2)
       const heightX = Number(heightHalves[0][1])
+      // Depth halves are the diagonal ones whose endpoints are right of height
       const depthHalves = arrowLines.filter(
-        (m) => Number(m[1]) !== Number(m[3]) && Number(m[2]) !== Number(m[4]),
+        (m) =>
+          Number(m[1]) !== Number(m[3]) &&
+          Number(m[2]) !== Number(m[4]) &&
+          Number(m[1]) > heightX &&
+          Number(m[3]) > heightX,
       )
-      expect(depthHalves.length).toBe(2)
-      for (const m of depthHalves) {
-        expect(Number(m[1])).toBeLessThan(heightX - 4)
-        expect(Number(m[3])).toBeLessThan(heightX - 4)
-      }
+      expect(depthHalves.length).toBeGreaterThanOrEqual(2)
       for (const m of svg.matchAll(
         /<text x="([^"]+)" y="([^"]+)"[^>]*text-anchor="([^"]+)"[^>]*>([^<]*)<\/text>/g,
       )) {

@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.38] – 2026-09-18
+
+### Behoben
+- **L-förmiger Körper (Maßbeschriftung):** Alle Maße wieder einheitlich als
+  Strecken mit auswärtigen Pfeilen (wie Quader / L- / U-Form) — Aussparung
+  nicht mehr mit Leadern; Tiefe rechts statt links; genug Abstand ohne
+  Überlappung oder Clipping.
+
 ## [0.27.37] – 2026-09-18
 
 ### Hinzugefügt
