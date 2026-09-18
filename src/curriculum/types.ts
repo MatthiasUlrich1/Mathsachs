@@ -1,4 +1,4 @@
-import type { Rng } from '../lib/rng'
+﻿import type { Rng } from '../lib/rng'
 
 export type AnswerKind = 'integer' | 'decimal' | 'fraction' | 'text'
 
@@ -28,6 +28,7 @@ export type UserInput =
   | { kind: 'fraction'; num: string; den: string }
   | { kind: 'numberLine'; value: number }
   | { kind: 'dragDropSort'; order: number[] }
+  | { kind: 'dragDropSlots'; slots: Array<number | null> }
   | { kind: 'digitGrid'; digits: string[]; answerRows?: string[][] }
   | { kind: 'choicePick'; choice: string }
   | { kind: 'multiSelect'; selected: string[] }
@@ -40,6 +41,7 @@ export const emptyInput = (
     | AnswerKind
     | 'numberLine'
     | 'dragDropSort'
+    | 'dragDropSlots'
     | 'digitGrid'
     | 'choicePick'
     | 'multiSelect'
@@ -49,6 +51,7 @@ export const emptyInput = (
   if (kind === 'fraction') return { kind: 'fraction', num: '', den: '' }
   if (kind === 'numberLine') return { kind: 'numberLine', value: 0 }
   if (kind === 'dragDropSort') return { kind: 'dragDropSort', order: [] }
+  if (kind === 'dragDropSlots') return { kind: 'dragDropSlots', slots: [] }
   if (kind === 'digitGrid') return { kind: 'digitGrid', digits: [] }
   if (kind === 'choicePick') return { kind: 'choicePick', choice: '' }
   if (kind === 'multiSelect') return { kind: 'multiSelect', selected: [] }
@@ -64,6 +67,7 @@ export interface InteractiveConfig {
   type:
     | 'numberLine'
     | 'dragDropSort'
+    | 'dragDropSlots'
     | 'digitGrid'
     | 'choicePick'
     | 'multiSelect'
@@ -152,3 +156,5 @@ export interface Grade {
   packId?: string
   areas: TopicArea[]
 }
+
+

@@ -29,7 +29,7 @@ const schwingung: Topic['generate'] = mixedVariants(
     const T = 1 / f
     if (pick(rng, [true, false])) {
       return valueTask({
-        question: `Eine Schwingung hat die Frequenz f = ${f} Hz. Berechne die Periodendauer T = 1 / f.`,
+        question: `Eine Schwingung hat die Frequenz f = ${f} Hz. Berechne die Periodendauer.`,
         answerKind: T % 1 === 0 ? 'integer' : 'decimal',
         unit: 's',
         value: T,
@@ -38,7 +38,7 @@ const schwingung: Topic['generate'] = mixedVariants(
       })
     }
     return valueTask({
-      question: `Eine Schwingung hat die Periodendauer T = ${T} s. Berechne die Frequenz f = 1 / T.`,
+      question: `Eine Schwingung hat die Periodendauer T = ${T} s. Berechne die Frequenz.`,
       answerKind: 'integer',
       unit: 'Hz',
       value: f,
@@ -310,7 +310,7 @@ const licht: Topic['generate'] = mixedVariants(
     const askF = pick(rng, [true, false])
     if (askF) {
       return valueTask({
-        question: `Licht / EM-Welle mit c = 3·10⁸ m/s und Wellenlänge λ = ${lambda} m. Berechne f = c / λ in MHz (1 MHz = 10⁶ Hz).`,
+        question: `Licht / EM-Welle mit c = 3·10⁸ m/s und Wellenlänge λ = ${lambda} m. Berechne die Frequenz in MHz (1 MHz = 10⁶ Hz).`,
         answerKind: 'integer',
         unit: 'MHz',
         value: fMhz,
@@ -319,7 +319,7 @@ const licht: Topic['generate'] = mixedVariants(
       })
     }
     return valueTask({
-      question: `EM-Welle mit f = ${fMhz} MHz und c = 3·10⁸ m/s. Berechne λ = c / f in m (f in Hz: ${fMhz}·10⁶ Hz).`,
+      question: `EM-Welle mit f = ${fMhz} MHz und c = 3·10⁸ m/s. Berechne die Wellenlänge in m (f in Hz: ${fMhz}·10⁶ Hz).`,
       answerKind: 'integer',
       unit: 'm',
       value: lambda,
@@ -428,7 +428,7 @@ const hertz: Topic['generate'] = mixedVariants(
     ] as const
     const { lambda, fMhz } = pick(rng, [...pairs])
     return valueTask({
-      question: `Radiowelle mit λ = ${lambda} m und c = 3·10⁸ m/s. Berechne f = c / λ in MHz.`,
+      question: `Radiowelle mit λ = ${lambda} m und c = 3·10⁸ m/s. Berechne die Frequenz in MHz.`,
       answerKind: 'integer',
       unit: 'MHz',
       value: fMhz,

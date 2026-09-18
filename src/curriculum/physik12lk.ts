@@ -22,13 +22,13 @@ const schwingung: Topic['generate'] = mixedVariants(
   (rng) => {
     const exact = pick(rng, [
       {
-        q: 'Eine Schwingung hat die Periodendauer T = 1 s. Berechne die Frequenz f = 1/T.',
+        q: 'Eine Schwingung hat die Periodendauer T = 1 s. Berechne die Frequenz.',
         ans: 1,
         unit: 'Hz',
         explanation: 'f = 1/T = 1/1 = 1 Hz.',
       },
       {
-        q: 'Eine Schwingung hat die Frequenz f = 1 Hz. Berechne die Periodendauer T = 1/f.',
+        q: 'Eine Schwingung hat die Frequenz f = 1 Hz. Berechne die Periodendauer.',
         ans: 1,
         unit: 's',
         explanation: 'T = 1/f = 1/1 = 1 s.',
@@ -40,13 +40,13 @@ const schwingung: Topic['generate'] = mixedVariants(
         explanation: 'N = t/T = 5/1 = 5.',
       },
       {
-        q: 'Frequenz f = 5 Hz. Wie viele Schwingungen erfolgen in t = 4 s? (N = f·t)',
+        q: 'Frequenz f = 5 Hz. Wie viele Schwingungen erfolgen in t = 4 s?',
         ans: 20,
         unit: '',
         explanation: 'N = f·t = 5·4 = 20.',
       },
       {
-        q: 'Frequenz f = 2 Hz. Berechne die Anzahl der Schwingungen in t = 10 s (N = f·t).',
+        q: 'Frequenz f = 2 Hz. Berechne die Anzahl der Schwingungen in t = 10 s.',
         ans: 20,
         unit: '',
         explanation: 'N = f·t = 2·10 = 20.',
@@ -118,7 +118,7 @@ const wellen: Topic['generate'] = mixedVariants(
     ] as const
     const c = pick(rng, [...cases])
     return valueTask({
-      question: `Welle mit Wellenlänge λ = ${c.lambda} m und Frequenz f = ${c.f} Hz. Berechne die Ausbreitungsgeschwindigkeit c = λ · f.`,
+      question: `Welle mit Wellenlänge λ = ${c.lambda} m und Frequenz f = ${c.f} Hz. Berechne die Ausbreitungsgeschwindigkeit.`,
       answerKind: 'integer',
       unit: 'm/s',
       value: c.c,
@@ -133,7 +133,7 @@ const wellen: Topic['generate'] = mixedVariants(
       const ff = pick(rng, [2, 4, 5])
       const cc = ff * pick(rng, [2, 3, 4, 5])
       return valueTask({
-        question: `c = ${cc} m/s, f = ${ff} Hz. Berechne λ = c / f.`,
+        question: `c = ${cc} m/s, f = ${ff} Hz. Berechne die Wellenlänge.`,
         answerKind: 'integer',
         unit: 'm',
         value: cc / ff,
@@ -142,7 +142,7 @@ const wellen: Topic['generate'] = mixedVariants(
       })
     }
     return valueTask({
-      question: `Ausbreitungsgeschwindigkeit c = ${c} m/s, Frequenz f = ${f} Hz. Berechne λ = c / f.`,
+      question: `Ausbreitungsgeschwindigkeit c = ${c} m/s, Frequenz f = ${f} Hz. Berechne die Wellenlänge.`,
       answerKind: 'integer',
       unit: 'm',
       value: c / f,
@@ -371,7 +371,7 @@ const kerne: Topic['generate'] = mixedVariants(
       const n0 = pick(rng, [64, 128, 256])
       const s = pick(rng, [1, 2, 3])
       return valueTask({
-        question: `Halbwertszeit T½: Startaktivität bzw. Kernzahl N₀ = ${n0}. Nach ${s} Halbwertszeiten: N = N₀ / 2^${s}. Berechne N.`,
+        question: `Halbwertszeit T½: Startaktivität bzw. Kernzahl N₀ = ${n0}. Nach ${s} Halbwertszeiten: Berechne die verbleibende Menge N.`,
         answerKind: 'integer',
         value: n0 / 2 ** s,
         solution: String(n0 / 2 ** s),
@@ -379,7 +379,7 @@ const kerne: Topic['generate'] = mixedVariants(
       })
     }
     return valueTask({
-      question: `Radioaktiver Zerfall: N₀ = ${N0}. Nach ${steps} Halbwertszeiten gilt N = N₀ / 2^${steps}. Berechne N.`,
+      question: `Radioaktiver Zerfall: N₀ = ${N0}. Nach ${steps} Halbwertszeiten: Berechne die verbleibende Menge N.`,
       answerKind: 'integer',
       value: N,
       solution: String(N),

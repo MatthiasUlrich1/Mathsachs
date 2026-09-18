@@ -1,7 +1,7 @@
 import { pick, randInt, type Rng } from '../lib/rng'
 import {
   choicePickTask,
-  dragDropSortTask,
+  dragDropSlotsTask,
   mixedVariants,
   multiSelectTask,
   valueTask,
@@ -24,36 +24,77 @@ type Case = { q: string; correct: string; wrong: string[] }
 export function makePhysikTopicGenerate(topicId: string, title: string): Topic['generate'] {
   const lower = `${topicId} ${title}`.toLowerCase()
 
-  if (/dichte|dichte/.test(lower) && /stoff|vergleich/.test(lower)) {
+  if (/dichte/.test(lower) && /stoff|vergleich/.test(lower)) {
     return mixedVariants(
       (rng) => {
         const dens = pick(rng, [
-          { s: 'Wasser', r: 1 },
           { s: 'Aluminium', r: 2.7 },
           { s: 'Eisen', r: 7.8 },
           { s: 'Holz (balsamähnlich)', r: 0.2 },
+          { s: 'Kork', r: 0.25 },
+          { s: 'Blei', r: 11.3 },
         ])
-        const correct = dens.r < 1 ? 'schwimmt auf Wasser' : 'sinkt in Wasser'
+        const floats = dens.r < 1
+        const correct = floats ? 'schwimmt' : 'sinkt zu Boden'
+        const wrong = floats ? 'sinkt zu Boden' : 'schwimmt'
         return choicePickTask({
-          question: `Ein Körper aus ${dens.s} (ρ ≈ ${dens.r} g/cm³) in Wasser (1 g/cm³) …`,
-          choices: shuffleChoices(rng, [correct, dens.r < 1 ? 'sinkt in Wasser' : 'schwimmt auf Wasser', 'verdampft sofort', 'wird zu Gas'], correct),
+          question: `Ein Körper aus ${dens.s} (ρ ≈ ${dens.r} g/cm³) wird in Wasser (ρ ≈ 1 g/cm³) gelegt. Was passiert?`,
+          choices: shuffleChoices(rng, [correct, wrong], correct),
           correct,
           solution: correct,
-          explanation: 'Vergleiche die Dichten: ρ_Körper < ρ_Flüssigkeit → schwimmen (vereinfacht).',
+          explanation: floats
+            ? `ρ_${dens.s} < ρ_Wasser → der Körper schwimmt.`
+            : `ρ_${dens.s} > ρ_Wasser → der Körper sinkt zu Boden.`,
           instruction: 'Tippe die passende Aussage:',
         })
       },
       (rng) => {
-        const m = pick(rng, [20, 40, 50, 80, 100])
-        const v = pick(rng, [2, 4, 5, 10])
-        const rho = m / v
-        return valueTask({
-          question: `m = ${m} g, V = ${v} cm³. Berechne ρ = m/V.`,
-          answerKind: rho % 1 === 0 ? 'integer' : 'decimal',
-          unit: 'g/cm³',
-          value: rho,
-          solution: `${rho} g/cm³`,
-          explanation: `ρ = ${m}/${v} = ${rho} g/cm³.`,
+        const a = pick(rng, [
+          { s: 'Holz', r: 0.7 },
+          { s: 'Wasser', r: 1 },
+          { s: 'Aluminium', r: 2.7 },
+          { s: 'Eisen', r: 7.8 },
+          { s: 'Blei', r: 11.3 },
+        ])
+        let b = pick(rng, [
+          { s: 'Holz', r: 0.7 },
+          { s: 'Wasser', r: 1 },
+          { s: 'Aluminium', r: 2.7 },
+          { s: 'Eisen', r: 7.8 },
+          { s: 'Blei', r: 11.3 },
+        ])
+        while (b.s === a.s) {
+          b = pick(rng, [
+            { s: 'Holz', r: 0.7 },
+            { s: 'Wasser', r: 1 },
+            { s: 'Aluminium', r: 2.7 },
+            { s: 'Eisen', r: 7.8 },
+            { s: 'Blei', r: 11.3 },
+          ])
+        }
+        const correct = a.r > b.r ? a.s : b.s
+        return choicePickTask({
+          question: `Welche Dichte ist größer: ${a.s} (ρ ≈ ${a.r} g/cm³) oder ${b.s} (ρ ≈ ${b.r} g/cm³)?`,
+          choices: shuffleChoices(rng, [a.s, b.s], correct),
+          correct,
+          solution: correct,
+          explanation: `${correct} hat die höhere Dichte (${Math.max(a.r, b.r)} g/cm³ > ${Math.min(a.r, b.r)} g/cm³).`,
+          instruction: 'Tippe den Stoff mit der höheren Dichte:',
+        })
+      },
+      (rng) => {
+        const correct = 'ρ_Körper > ρ_Wasser'
+        return choicePickTask({
+          question: 'Wann sinkt ein Körper in Wasser zu Boden?',
+          choices: shuffleChoices(
+            rng,
+            [correct, 'ρ_Körper < ρ_Wasser', 'ρ_Körper = 0', 'nur wenn er heiß ist'],
+            correct,
+          ),
+          correct,
+          solution: correct,
+          explanation: 'Ist die Dichte des Körpers größer als die von Wasser, sinkt er zu Boden.',
+          instruction: 'Tippe die passende Bedingung:',
         })
       },
     )
@@ -66,7 +107,7 @@ export function makePhysikTopicGenerate(topicId: string, title: string): Topic['
         const r = pick(rng, [2, 4, 5, 10])
         const i = u / r
         return valueTask({
-          question: `U = ${u} V, R = ${r} Ω. Berechne I = U/R.`,
+          question: `U = ${u} V, R = ${r} Ω. Berechne die Stromstärke.`,
           answerKind: i % 1 === 0 ? 'integer' : 'decimal',
           unit: 'A',
           value: i,
@@ -116,7 +157,7 @@ export function makePhysikTopicGenerate(topicId: string, title: string): Topic['
           const e2 = 100
           const e1 = 40
           return valueTask({
-            question: `E_nutz = ${e1} J, E_zu = ${e2} J. Wirkungsgrad η = E_nutz/E_zu · 100 %.`,
+            question: `E_nutz = ${e1} J, E_zu = ${e2} J. Gib den Wirkungsgrad in % an.`,
             answerKind: 'integer',
             unit: '%',
             value: 40,
@@ -186,7 +227,7 @@ export function makePhysikTopicGenerate(topicId: string, title: string): Topic['
         const t = pick(rng, [2, 4, 5, 10])
         const f = 1 / t
         return valueTask({
-          question: `T = ${t} s. Berechne f = 1/T.`,
+          question: `T = ${t} s. Berechne die Frequenz.`,
           answerKind: f % 1 === 0 ? 'integer' : 'decimal',
           unit: 'Hz',
           value: f,
@@ -198,7 +239,7 @@ export function makePhysikTopicGenerate(topicId: string, title: string): Topic['
         const f = pick(rng, [2, 4, 5, 10])
         const t = 1 / f
         return valueTask({
-          question: `f = ${f} Hz. Berechne T = 1/f.`,
+          question: `f = ${f} Hz. Berechne die Periodendauer.`,
           answerKind: t % 1 === 0 ? 'integer' : 'decimal',
           unit: 's',
           value: t,
@@ -216,7 +257,7 @@ export function makePhysikTopicGenerate(topicId: string, title: string): Topic['
         const lambda = pick(rng, [2, 3, 4, 5])
         const c = f * lambda
         return valueTask({
-          question: `λ = ${lambda} m, f = ${f} Hz. Berechne c = λ·f.`,
+          question: `λ = ${lambda} m, f = ${f} Hz. Berechne die Ausbreitungsgeschwindigkeit.`,
           answerKind: 'integer',
           unit: 'm/s',
           value: c,
@@ -244,7 +285,7 @@ export function makePhysikTopicGenerate(topicId: string, title: string): Topic['
         const m = pick(rng, [2, 3, 4, 5, 6, 8, 10])
         const F = m * 10
         return valueTask({
-          question: `m = ${m} kg, g ≈ 10 N/kg. Berechne F_G = m·g.`,
+          question: `m = ${m} kg, g ≈ 10 N/kg. Berechne die Gewichtskraft.`,
           answerKind: 'integer',
           unit: 'N',
           value: F,
@@ -273,7 +314,7 @@ export function makePhysikTopicGenerate(topicId: string, title: string): Topic['
         const a = pick(rng, [2, 4, 5, 10])
         const p = f / a
         return valueTask({
-          question: `F = ${f} N, A = ${a} m². Berechne p = F/A.`,
+          question: `F = ${f} N, A = ${a} m². Berechne den Druck.`,
           answerKind: p % 1 === 0 ? 'integer' : 'decimal',
           unit: 'Pa',
           value: p,
@@ -325,20 +366,25 @@ export function makePhysikTopicGenerate(topicId: string, title: string): Topic['
         ]
       : []),
     (rng) => {
-      const items = bank.sortItems
-      const ordered = items.map((label, i) => ({ label, value: i + 1 }))
-      const shuffled = [...ordered]
+      const parts = bank.formulaParts
+      const distractor = bank.formulaDistractor
+      const labels = distractor ? [...parts, distractor] : [...parts]
+      const items = labels.map((label, i) => ({ label, value: i + 1 }))
+      const shuffled = [...items]
       for (let i = shuffled.length - 1; i > 0; i--) {
         const j = randInt(rng, 0, i)
         ;[shuffled[i], shuffled[j]] = [shuffled[j]!, shuffled[i]!]
       }
-      const correctOrder = ordered.map((row) => shuffled.findIndex((it) => it.value === row.value))
-      return dragDropSortTask({
+      const correctSlots = parts.map((label) => shuffled.findIndex((it) => it.label === label))
+      return dragDropSlotsTask({
         question: bank.sortQuestion,
         items: shuffled,
-        correctOrder,
-        solution: ordered.map((r) => r.label).join(' → '),
+        correctSlots,
+        solution: parts.join(' '),
         explanation: bank.sortExplanation,
+        instruction: distractor
+          ? 'Ziehe die richtigen Blöcke in die Formelplätze. Einen Block brauchst du nicht.'
+          : 'Ziehe die Blöcke in die Formelplätze (von links nach rechts).',
       })
     },
   )
@@ -356,25 +402,31 @@ type CalcTask = {
 type PhysicsBank = {
   cases: Array<Case & { explanation?: string }>
   calc?: (rng: Rng) => CalcTask
-  sortItems: string[]
+  /** Correct formula blocks left→right (fill these slots). */
+  formulaParts: string[]
+  /** Optional wrong block that must stay unused in the pool. */
+  formulaDistractor?: string
   sortQuestion: string
   sortExplanation: string
 }
 
-/** Formula blocks for drag&drop; optional distractor is sorted last. */
+/** Formula blocks for slot drag&drop; optional distractor stays unused. */
 function formulaSort(
   parts: string[],
+  /** What to build, without writing the formula (e.g. „das Quader-Volumen“). */
+  what: string,
+  /** Full formula only for explanation. */
   formula: string,
   distractor?: string,
-): Pick<PhysicsBank, 'sortItems' | 'sortQuestion' | 'sortExplanation'> {
-  const items = distractor ? [...parts, distractor] : parts
+): Pick<PhysicsBank, 'formulaParts' | 'formulaDistractor' | 'sortQuestion' | 'sortExplanation'> {
   return {
-    sortItems: items,
+    formulaParts: parts,
+    ...(distractor ? { formulaDistractor: distractor } : {}),
     sortQuestion: distractor
-      ? `Ordne die Formelblöcke zu ${formula}. Den falschen Block ans Ende.`
-      : `Ordne die Formelblöcke zu ${formula} (von links nach rechts).`,
+      ? `Baue die Formel für ${what}. Einen Block brauchst du nicht.`
+      : `Baue die Formel für ${what} aus den Blöcken.`,
     sortExplanation: distractor
-      ? `Richtige Reihenfolge: ${parts.join(' ')}. „${distractor}“ gehört nicht zur Formel.`
+      ? `Richtige Formel: ${formula}. „${distractor}“ gehört nicht dazu.`
       : `Die Formel lautet ${formula}.`,
   }
 }
@@ -397,7 +449,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           wrong: ['cm²', 'm/s', 'Newton (N)'],
         },
         {
-          q: 'Welche Größen braucht man für V = l · b · h?',
+          q: 'Welche Größen braucht man für das Quader-Volumen?',
           correct: 'Länge, Breite und Höhe',
           wrong: ['nur die Masse', 'nur die Zeit', 'Spannung und Strom'],
         },
@@ -413,7 +465,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
         const h = pick(rng, [2, 3, 4, 5])
         const V = l * b * h
         return {
-          q: `Quader: l = ${l} cm, b = ${b} cm, h = ${h} cm. Berechne V = l·b·h.`,
+          q: `Quader: l = ${l} cm, b = ${b} cm, h = ${h} cm. Berechne das Volumen.`,
           answerKind: 'integer',
           unit: 'cm³',
           value: V,
@@ -421,7 +473,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           explanation: `V = ${l}·${b}·${h} = ${V} cm³.`,
         }
       },
-      ...formulaSort(['V =', 'l', '× b', '× h'], 'V = l × b × h', '× m'),
+      ...formulaSort(['V =', 'l', '× b', '× h'], 'das Quader-Volumen', 'V = l × b × h', '× m'),
     }
   }
 
@@ -457,7 +509,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           explanation: `1 kg = 1000 g → ${kg} kg = ${g} g.`,
         }
       },
-      ...formulaSort(['1 kg', '=', '1000', 'g'], '1 kg = 1000 g', 'N'),
+      ...formulaSort(['1 kg', '=', '1000', 'g'], 'die Umrechnung Kilogramm ↔ Gramm', '1 kg = 1000 g', 'N'),
     }
   }
 
@@ -486,7 +538,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
         const v = pick(rng, [2, 4, 5, 10])
         const rho = m / v
         return {
-          q: `m = ${m} g, V = ${v} cm³. Berechne ρ = m/V.`,
+          q: `m = ${m} g, V = ${v} cm³. Berechne die Dichte.`,
           answerKind: rho % 1 === 0 ? 'integer' : 'decimal',
           unit: 'g/cm³',
           value: rho,
@@ -494,7 +546,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           explanation: `ρ = ${m}/${v} = ${rho} g/cm³.`,
         }
       },
-      ...formulaSort(['ρ', '=', 'm', '/', 'V'], 'ρ = m / V', '+ t'),
+      ...formulaSort(['ρ', '=', 'm', '/', 'V'], 'die Dichte', 'ρ = m / V', '+ t'),
     }
   }
 
@@ -523,7 +575,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
         const t = pick(rng, [2, 3, 4, 5])
         const s = v * t
         return {
-          q: `Gleichförmige Bewegung: v = ${v} m/s, t = ${t} s. Berechne s = v·t.`,
+          q: `Gleichförmige Bewegung: v = ${v} m/s, t = ${t} s. Berechne die Strecke.`,
           answerKind: 'integer',
           unit: 'm',
           value: s,
@@ -531,7 +583,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           explanation: `s = ${v}·${t} = ${s} m.`,
         }
       },
-      ...formulaSort(['s', '=', 'v', '× t'], 's = v × t', '× m'),
+      ...formulaSort(['s', '=', 'v', '× t'], 'die gleichförmige Bewegung (Strecke)', 's = v × t', '× m'),
     }
   }
 
@@ -567,7 +619,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           explanation: `T = ${c} + 273 = ${k} K.`,
         }
       },
-      ...formulaSort(['T', '=', 'ϑ', '+ 273'], 'T = ϑ + 273', '× 273'),
+      ...formulaSort(['T', '=', 'ϑ', '+ 273'], 'Celsius → Kelvin', 'T = ϑ + 273', '× 273'),
     }
   }
 
@@ -590,7 +642,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           wrong: ['nur spiegeln wie ein ebener Spiegel', 'löschen', 'in Strom umwandeln'],
         },
       ],
-      ...formulaSort(['n₁', '· sin α₁', '=', 'n₂', '· sin α₂'], 'n₁·sin α₁ = n₂·sin α₂', '+ c'),
+      ...formulaSort(['n₁', '· sin α₁', '=', 'n₂', '· sin α₂'], 'das Brechungsgesetz', 'n₁·sin α₁ = n₂·sin α₂', '+ c'),
     }
   }
 
@@ -645,7 +697,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           explanation: 'Reflexionsgesetz: Einfallswinkel = Ausfallswinkel.',
         }
       },
-      ...formulaSort(['αₑ', '=', 'αₐ'], 'αₑ = αₐ (Reflexion)', 'αₑ + αₐ'),
+      ...formulaSort(['αₑ', '=', 'αₐ'], 'das Reflexionsgesetz', 'αₑ = αₐ', 'αₑ + αₐ'),
     }
   }
 
@@ -678,7 +730,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
         const r = pick(rng, [2, 3, 4, 6])
         const i = u / r
         return {
-          q: `U = ${u} V, R = ${r} Ω. Berechne I = U/R.`,
+          q: `U = ${u} V, R = ${r} Ω. Berechne die Stromstärke.`,
           answerKind: i % 1 === 0 ? 'integer' : 'decimal',
           unit: 'A',
           value: i,
@@ -686,7 +738,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           explanation: `I = ${u}/${r} = ${i} A.`,
         }
       },
-      ...formulaSort(['R', '=', 'U', '/', 'I'], 'R = U / I', '· I'),
+      ...formulaSort(['R', '=', 'U', '/', 'I'], 'den ohmschen Widerstand', 'R = U / I', '· I'),
     }
   }
 
@@ -714,7 +766,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
         const t = pick(rng, [2, 4, 5, 10])
         const p = e / t
         return {
-          q: `E = ${e} J, t = ${t} s. Berechne P = E/t.`,
+          q: `E = ${e} J, t = ${t} s. Berechne die Leistung.`,
           answerKind: p % 1 === 0 ? 'integer' : 'decimal',
           unit: 'W',
           value: p,
@@ -722,7 +774,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           explanation: `P = ${e}/${t} = ${p} W.`,
         }
       },
-      ...formulaSort(['P', '=', 'E', '/', 't'], 'P = E / t', '· t'),
+      ...formulaSort(['P', '=', 'E', '/', 't'], 'die Leistung', 'P = E / t', '· t'),
     }
   }
 
@@ -751,7 +803,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           const a = pick(rng, [2, 4, 5, 10])
           const p = f / a
           return {
-            q: `F = ${f} N, A = ${a} m². Berechne p = F/A.`,
+            q: `F = ${f} N, A = ${a} m². Berechne den Druck.`,
             answerKind: p % 1 === 0 ? 'integer' : 'decimal',
             unit: 'Pa',
             value: p,
@@ -762,7 +814,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
         const m = pick(rng, [2, 3, 5, 8, 10])
         const F = m * 10
         return {
-          q: `m = ${m} kg, g ≈ 10 N/kg. Berechne F_G = m·g.`,
+          q: `m = ${m} kg, g ≈ 10 N/kg. Berechne die Gewichtskraft.`,
           answerKind: 'integer',
           unit: 'N',
           value: F,
@@ -771,8 +823,8 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
         }
       },
       ...(/druck/.test(lower)
-        ? formulaSort(['p', '=', 'F', '/', 'A'], 'p = F / A', '· A')
-        : formulaSort(['F_G', '=', 'm', '· g'], 'F_G = m · g', '/ g')),
+        ? formulaSort(['p', '=', 'F', '/', 'A'], 'den Druck', 'p = F / A', '· A')
+        : formulaSort(['F_G', '=', 'm', '· g'], 'die Gewichtskraft', 'F_G = m · g', '/ g')),
     }
   }
 
@@ -799,7 +851,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
         const T = pick(rng, [0.2, 0.5, 1, 2])
         const f = 1 / T
         return {
-          q: `Periodendauer T = ${T} s. Berechne f = 1/T.`,
+          q: `Periodendauer T = ${T} s. Berechne die Frequenz.`,
           answerKind: f % 1 === 0 ? 'integer' : 'decimal',
           unit: 'Hz',
           value: f,
@@ -807,7 +859,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           explanation: `f = 1/${T} = ${f} Hz.`,
         }
       },
-      ...formulaSort(['f', '=', '1', '/', 'T'], 'f = 1 / T', '· T'),
+      ...formulaSort(['f', '=', '1', '/', 'T'], 'Frequenz und Periodendauer', 'f = 1 / T', '· T'),
     }
   }
 
@@ -851,7 +903,7 @@ function topicAwareFallback(title: string, lower: string): PhysicsBank {
           explanation: `Mittelwert = (${values.join(' + ')}) / 3 = ${mean}.`,
         }
       },
-      ...formulaSort(['Mittelwert', '=', 'Summe', '/', 'Anzahl'], 'Mittelwert = Summe / Anzahl', '· Anzahl'),
+      ...formulaSort(['Mittelwert', '=', 'Summe', '/', 'Anzahl'], 'den Mittelwert', 'Mittelwert = Summe / Anzahl', '· Anzahl'),
     }
   }
 
@@ -878,7 +930,7 @@ function topicAwareFallback(title: string, lower: string): PhysicsBank {
       const m = pick(rng, [2, 3, 4, 5, 6])
       const F = m * 10
       return {
-        q: `m = ${m} kg, g ≈ 10 N/kg. Berechne F_G = m·g.`,
+        q: `m = ${m} kg, g ≈ 10 N/kg. Berechne die Gewichtskraft.`,
         answerKind: 'integer',
         unit: 'N',
         value: F,
@@ -886,6 +938,6 @@ function topicAwareFallback(title: string, lower: string): PhysicsBank {
         explanation: `F_G = ${m}·10 = ${F} N.`,
       }
     },
-    ...formulaSort(['F_G', '=', 'm', '· g'], 'F_G = m · g', '/ g'),
+    ...formulaSort(['F_G', '=', 'm', '· g'], 'die Gewichtskraft', 'F_G = m · g', '/ g'),
   }
 }

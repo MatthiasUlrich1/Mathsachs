@@ -21,6 +21,9 @@ export const formatExamAnswer = (input: UserInput): string => {
   if (input.kind === 'dragDropSort') {
     return input.order.join(', ')
   }
+  if (input.kind === 'dragDropSlots') {
+    return input.slots.map((s) => (s === null ? '—' : String(s))).join(' | ')
+  }
   if (input.kind === 'digitGrid') {
     if (input.answerRows && input.answerRows.length > 0) {
       const parts = input.answerRows

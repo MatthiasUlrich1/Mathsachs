@@ -176,6 +176,48 @@ export const dragDropSortTask = (input: DragDropSortTaskInput): Task => ({
   },
 })
 
+interface DragDropSlotsTaskInput {
+  question: string
+  /** All chips in the pool (may include unused distractors). */
+  items: Array<{ label: string; value: number }>
+  /** Correct item index for each formula slot. */
+  correctSlots: number[]
+  solution: string
+  explanation: string
+  instruction?: string
+}
+
+/** Formula builder: drag chips into slots; extra blocks stay unused. */
+export const dragDropSlotsTask = (input: DragDropSlotsTaskInput): Task => ({
+  question: input.question,
+  answerKind: 'text',
+  solution: input.solution,
+  explanation: input.explanation,
+  sampleAnswer: { kind: 'dragDropSlots', slots: input.correctSlots },
+  interactive: {
+    type: 'dragDropSlots',
+    props: {
+      items: input.items,
+      slotCount: input.correctSlots.length,
+      instruction:
+        input.instruction ??
+        'Ziehe die richtigen Blöcke in die Formelplätze (einen brauchst du ggf. nicht):',
+    },
+  },
+  check: (answer: UserInput) => {
+    if (answer.kind === 'dragDropSlots') {
+      if (answer.slots.length !== input.correctSlots.length) return false
+      return answer.slots.every((idx, i) => idx === input.correctSlots[i])
+    }
+    if (answer.kind === 'value') {
+      return (
+        answer.value.trim().toLowerCase() === input.solution.trim().toLowerCase()
+      )
+    }
+    return false
+  },
+})
+
 interface VisualTaskInput {
   question: string
   unit?: string

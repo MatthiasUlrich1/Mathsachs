@@ -1,0 +1,103 @@
+.drag-drop-slots {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.1rem;
+  margin: 1rem 0 0.5rem;
+  width: 100%;
+}
+
+.drag-drop-slots__instruction {
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+  color: #cbd5e1;
+}
+
+.drag-drop-slots__pool {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 3rem;
+  padding: 0.35rem;
+}
+
+.drag-drop-slots__pool-empty {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.drag-drop-slots__slots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+}
+
+.drag-drop-slots__slot {
+  min-width: 4.5rem;
+  min-height: 2.75rem;
+  padding: 0.25rem;
+  border: 2px dashed #94a3b8;
+  border-radius: 10px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.drag-drop-slots__slot.filled {
+  border-style: solid;
+  border-color: #64748b;
+  padding: 0;
+}
+
+.drag-drop-slots__slot.drag-over {
+  border-color: #60a5fa;
+  background: rgba(96, 165, 250, 0.12);
+}
+
+.drag-drop-slots__placeholder {
+  font-size: 0.85rem;
+  color: #64748b;
+  user-select: none;
+}
+
+.drag-drop-slots__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.65rem 0.9rem;
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  color: #0f172a;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: grab;
+  user-select: none;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.12);
+}
+
+.drag-drop-slots__chip:hover {
+  border-color: #94a3b8;
+}
+
+.drag-drop-slots__chip.dragging {
+  opacity: 0.45;
+}
+
+.drag-drop-slots__chip.in-slot {
+  width: 100%;
+  justify-content: center;
+  border: none;
+  box-shadow: none;
+}
+
+.drag-drop-slots__handle {
+  font-size: 1.05rem;
+  color: #64748b;
+  line-height: 1;
+}

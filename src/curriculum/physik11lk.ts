@@ -25,7 +25,7 @@ const erhaltung: Topic['generate'] = mixedVariants(
     const v = pick(rng, [2, 3, 4, 5, 6, 10])
     const p = m * v
     return valueTask({
-      question: `Ein Körper der Masse m = ${m} kg bewegt sich mit v = ${v} m/s. Berechne den Impulsbetrag p = m · v.`,
+      question: `Ein Körper der Masse m = ${m} kg bewegt sich mit v = ${v} m/s. Berechne den Impulsbetrag.`,
       answerKind: 'integer',
       unit: 'kg·m/s',
       value: p,
@@ -51,7 +51,7 @@ const erhaltung: Topic['generate'] = mixedVariants(
         const p = pick(rng, [10, 12, 20, 24])
         const vv = p / m
         return valueTask({
-          question: `Impuls p = ${p} kg·m/s, Masse m = ${m} kg. Berechne v = p / m.`,
+          question: `Impuls p = ${p} kg·m/s, Masse m = ${m} kg. Berechne die Geschwindigkeit.`,
           answerKind: 'integer',
           unit: 'm/s',
           value: vv,
@@ -108,7 +108,7 @@ const kinematik: Topic['generate'] = mixedVariants(
     const t = pick(rng, [2, 3, 4, 5])
     const v = v0 + a * t
     return valueTask({
-      question: `Geradlinige Beschleunigung: v₀ = ${v0} m/s, a = ${a} m/s², t = ${t} s. Berechne v = v₀ + a·t.`,
+      question: `Geradlinige Beschleunigung: v₀ = ${v0} m/s, a = ${a} m/s², t = ${t} s. Berechne die Geschwindigkeit.`,
       answerKind: 'integer',
       unit: 'm/s',
       value: v,
@@ -128,7 +128,7 @@ const kinematik: Topic['generate'] = mixedVariants(
     ] as const
     const c = pick(rng, [...cases])
     return valueTask({
-      question: `s = v₀·t + ½·a·t² mit v₀ = ${c.v0} m/s, a = ${c.a} m/s², t = ${c.t} s. Berechne s.`,
+      question: `Mit v₀ = ${c.v0} m/s, a = ${c.a} m/s², t = ${c.t} s. Berechne die Strecke.`,
       answerKind: 'integer',
       unit: 'm',
       value: c.s,
@@ -144,7 +144,7 @@ const kinematik: Topic['generate'] = mixedVariants(
     if (v <= 0) {
       const vv = v0 + a * t
       return valueTask({
-        question: `v₀ = ${v0} m/s, a = ${a} m/s² (Beschleunigen), t = ${t} s. Berechne v = v₀ + a·t.`,
+        question: `v₀ = ${v0} m/s, a = ${a} m/s² (Beschleunigen), t = ${t} s. Berechne die Geschwindigkeit.`,
         answerKind: 'integer',
         unit: 'm/s',
         value: vv,
@@ -153,7 +153,7 @@ const kinematik: Topic['generate'] = mixedVariants(
       })
     }
     return valueTask({
-      question: `Bremsvorgang: v₀ = ${v0} m/s, Betrag der Bremsverzögerung a = ${a} m/s², t = ${t} s. Berechne die Geschwindigkeit v = v₀ − a·t.`,
+      question: `Bremsvorgang: v₀ = ${v0} m/s, Betrag der Bremsverzögerung a = ${a} m/s², t = ${t} s. Berechne die Geschwindigkeit.`,
       answerKind: 'integer',
       unit: 'm/s',
       value: v,
@@ -170,7 +170,7 @@ const newton: Topic['generate'] = mixedVariants(
     const a = pick(rng, [2, 3, 4, 5, 6])
     const F = m * a
     return valueTask({
-      question: `Newton 2: Masse m = ${m} kg, Beschleunigung a = ${a} m/s². Berechne F = m · a.`,
+      question: `Newton 2: Masse m = ${m} kg, Beschleunigung a = ${a} m/s². Berechne die Kraft.`,
       answerKind: 'integer',
       unit: 'N',
       value: F,
@@ -185,7 +185,7 @@ const newton: Topic['generate'] = mixedVariants(
       const mm = pick(rng, [2, 3, 4, 5])
       const FF = mm * pick(rng, [3, 4, 5, 6])
       return valueTask({
-        question: `F = ${FF} N wirkt auf m = ${mm} kg. Berechne a = F / m.`,
+        question: `F = ${FF} N wirkt auf m = ${mm} kg. Berechne die Beschleunigung.`,
         answerKind: 'integer',
         unit: 'm/s²',
         value: FF / mm,
@@ -194,7 +194,7 @@ const newton: Topic['generate'] = mixedVariants(
       })
     }
     return valueTask({
-      question: `F = ${F} N wirkt auf m = ${m} kg. Berechne a = F / m.`,
+      question: `F = ${F} N wirkt auf m = ${m} kg. Berechne die Beschleunigung.`,
       answerKind: 'integer',
       unit: 'm/s²',
       value: F / m,
@@ -305,7 +305,7 @@ const kurven: Topic['generate'] = mixedVariants(
     ] as const
     const c = pick(rng, [...cases])
     return valueTask({
-      question: `Gleichförmige Kreisbewegung: v = ${c.v} m/s, Bahnradius r = ${c.r} m. Berechne den Betrag der Zentripetalbeschleunigung a = v² / r.`,
+      question: `Gleichförmige Kreisbewegung: v = ${c.v} m/s, Bahnradius r = ${c.r} m. Berechne den Betrag der Zentripetalbeschleunigung.`,
       answerKind: 'integer',
       unit: 'm/s²',
       value: c.a,
@@ -431,7 +431,7 @@ const efeld: Topic['generate'] = mixedVariants(
     ] as const
     const c = pick(rng, [...cases])
     return valueTask({
-      question: `Auf eine Probeladung q = ${c.q} C wirkt die Kraft F = ${c.F} N. Berechne den Betrag der Feldstärke E = F / q.`,
+      question: `Auf eine Probeladung q = ${c.q} C wirkt die Kraft F = ${c.F} N. Berechne den Betrag der Feldstärke.`,
       answerKind: 'integer',
       unit: 'N/C',
       value: c.E,
@@ -465,7 +465,7 @@ const efeld: Topic['generate'] = mixedVariants(
     const q = pick(rng, [2, 3, 4, 5])
     const F = E * q
     return valueTask({
-      question: `Homogenes Feld E = ${E} N/C, Ladung q = ${q} C. Berechne F = E · q.`,
+      question: `Homogenes Feld E = ${E} N/C, Ladung q = ${q} C. Berechne die Kraft.`,
       answerKind: 'integer',
       unit: 'N',
       value: F,
@@ -575,7 +575,7 @@ const teilchen: Topic['generate'] = mixedVariants(
     ] as const
     const c = pick(rng, [...cases])
     return valueTask({
-      question: `v ⊥ B: q = ${c.q} C, v = ${c.v} m/s, B = ${c.B} T. Berechne den Betrag F = q · v · B.`,
+      question: `v ⊥ B: q = ${c.q} C, v = ${c.v} m/s, B = ${c.B} T. Berechne den Betrag der Kraft.`,
       answerKind: 'integer',
       unit: 'N',
       value: c.F,
@@ -615,7 +615,7 @@ const induktion: Topic['generate'] = mixedVariants(
       const D = pick(rng, [4, 6, 8, 10])
       const T = pick(rng, [1, 2])
       return valueTask({
-        question: `Flussänderung ΔΦ = ${D} Wb in Δt = ${T} s. Berechne |U_ind| ≈ |ΔΦ/Δt| (idealer Fall).`,
+        question: `Flussänderung ΔΦ = ${D} Wb in Δt = ${T} s. Berechne den Betrag der Induktionsspannung |U_ind| (idealer Fall).`,
         answerKind: 'integer',
         unit: 'V',
         value: D / T,
@@ -624,7 +624,7 @@ const induktion: Topic['generate'] = mixedVariants(
       })
     }
     return valueTask({
-      question: `Magnetischer Fluss ändert sich um ΔΦ = ${dPhi} Wb in Δt = ${dt} s. Berechne |U_ind| ≈ |ΔΦ/Δt|.`,
+      question: `Magnetischer Fluss ändert sich um ΔΦ = ${dPhi} Wb in Δt = ${dt} s. Berechne den Betrag der Induktionsspannung |U_ind|.`,
       answerKind: 'integer',
       unit: 'V',
       value: dPhi / dt,
@@ -790,7 +790,7 @@ const fahren: Topic['generate'] = mixedVariants(
     ] as const
     const c = pick(rng, [...cases])
     return valueTask({
-      question: `Konstante Bremsverzögerung a = ${c.a} m/s², Anfangsgeschwindigkeit v = ${c.v} m/s. Berechne den Bremsweg s = v² / (2·a).`,
+      question: `Konstante Bremsverzögerung a = ${c.a} m/s², Anfangsgeschwindigkeit v = ${c.v} m/s. Berechne den Bremsweg.`,
       answerKind: 'integer',
       unit: 'm',
       value: c.s,

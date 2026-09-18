@@ -81,7 +81,7 @@ const licht: Topic['generate'] = mixedVariants(
     const mode = pick(rng, ['c', 'f', 'lam'] as const)
     if (mode === 'c') {
       return valueTask({
-        question: `Eine Welle hat die Wellenlänge λ = ${lam} m und die Frequenz f = ${f} Hz. Berechne c = λ · f.`,
+        question: `Eine Welle hat die Wellenlänge λ = ${lam} m und die Frequenz f = ${f} Hz. Berechne die Ausbreitungsgeschwindigkeit.`,
         answerKind: 'integer',
         unit: 'm/s',
         value: c,
@@ -91,7 +91,7 @@ const licht: Topic['generate'] = mixedVariants(
     }
     if (mode === 'f') {
       return valueTask({
-        question: `Licht (bzw. eine Welle) hat c = ${c} m/s und λ = ${lam} m. Berechne f = c / λ.`,
+        question: `Licht (bzw. eine Welle) hat c = ${c} m/s und λ = ${lam} m. Berechne die Frequenz.`,
         answerKind: 'integer',
         unit: 'Hz',
         value: f,
@@ -100,7 +100,7 @@ const licht: Topic['generate'] = mixedVariants(
       })
     }
     return valueTask({
-      question: `Eine Welle hat c = ${c} m/s und f = ${f} Hz. Berechne λ = c / f.`,
+      question: `Eine Welle hat c = ${c} m/s und f = ${f} Hz. Berechne die Wellenlänge.`,
       answerKind: 'integer',
       unit: 'm',
       value: lam,
@@ -314,7 +314,7 @@ const quanten: Topic['generate'] = mixedVariants(
     ] as const
     const { h, f, E } = pick(rng, [...pairs])
     return valueTask({
-      question: `Ein Photon hat die Frequenz f = ${f} (in passenden Einheiten). Mit h = ${h} gilt E = h · f. Berechne E.`,
+      question: `Ein Photon hat die Frequenz f = ${f} (in passenden Einheiten). Mit Planck-Konstante h = ${h}: Berechne die Energie E.`,
       answerKind: 'integer',
       unit: 'E',
       value: E,
@@ -640,7 +640,7 @@ const akustik: Topic['generate'] = mixedVariants(
     const mode = pick(rng, ['T', 'f'] as const)
     if (mode === 'T') {
       return valueTask({
-        question: `Eine Schallschwingung hat die Frequenz f = ${f} Hz. Berechne die Periodendauer T = 1 / f.`,
+        question: `Eine Schallschwingung hat die Frequenz f = ${f} Hz. Berechne die Periodendauer.`,
         answerKind: T % 1 === 0 ? 'integer' : 'decimal',
         unit: 's',
         value: T,
@@ -649,7 +649,7 @@ const akustik: Topic['generate'] = mixedVariants(
       })
     }
     return valueTask({
-      question: `Die Periodendauer einer Schwingung beträgt T = ${T} s. Berechne f = 1 / T.`,
+      question: `Die Periodendauer einer Schwingung beträgt T = ${T} s. Berechne die Frequenz.`,
       answerKind: 'integer',
       unit: 'Hz',
       value: f,

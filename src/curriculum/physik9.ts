@@ -135,7 +135,7 @@ const versorgung: Topic['generate'] = mixedVariants(
     const { nutz, zu } = pick(rng, [...pairs])
     const eta = (nutz / zu) * 100
     return valueTask({
-      question: `Ein Kraftwerk liefert nutzbare Energie E_nutz = ${nutz} MJ bei zugeführter Energie E_zu = ${zu} MJ. Berechne den Wirkungsgrad η = E_nutz / E_zu in Prozent.`,
+      question: `Ein Kraftwerk liefert nutzbare Energie E_nutz = ${nutz} MJ bei zugeführter Energie E_zu = ${zu} MJ. Berechne den Wirkungsgrad in Prozent.`,
       answerKind: 'integer',
       unit: '%',
       value: eta,
@@ -201,7 +201,7 @@ const bewegung: Topic['generate'] = mixedVariants(
     const askV = pick(rng, [true, false])
     if (askV) {
       return valueTask({
-        question: `Ein Körper legt s = ${s} m in t = ${t} s gleichförmig zurück. Berechne v = s / t.`,
+        question: `Ein Körper legt s = ${s} m in t = ${t} s gleichförmig zurück. Berechne die Geschwindigkeit.`,
         answerKind: 'integer',
         unit: 'm/s',
         value: v,
@@ -210,7 +210,7 @@ const bewegung: Topic['generate'] = mixedVariants(
       })
     }
     return valueTask({
-      question: `Ein Körper bewegt sich gleichförmig mit v = ${v} m/s für t = ${t} s. Berechne s = v · t.`,
+      question: `Ein Körper bewegt sich gleichförmig mit v = ${v} m/s für t = ${t} s. Berechne die Strecke.`,
       answerKind: 'integer',
       unit: 'm',
       value: s,
@@ -230,7 +230,7 @@ const bewegung: Topic['generate'] = mixedVariants(
     const { v0, v, t } = pick(rng, [...pairs])
     const a = (v - v0) / t
     return valueTask({
-      question: `Ein Körper beschleunigt von v₀ = ${v0} m/s auf v = ${v} m/s in t = ${t} s. Berechne a = (v − v₀) / t.`,
+      question: `Ein Körper beschleunigt von v₀ = ${v0} m/s auf v = ${v} m/s in t = ${t} s. Berechne die Beschleunigung.`,
       answerKind: 'integer',
       unit: 'm/s²',
       value: a,
@@ -243,7 +243,7 @@ const bewegung: Topic['generate'] = mixedVariants(
     const t = pick(rng, [2, 3, 4, 5])
     const s = v * t
     return paramSliderTask({
-      question: `Stelle Geschwindigkeit und Zeit so ein, dass bei gleichförmiger Bewegung s = v · t = ${s} m gilt (v = ${v} m/s, t = ${t} s).`,
+      question: `Stelle Geschwindigkeit und Zeit so ein, dass bei gleichförmiger Bewegung die Strecke ${s} m gilt (v = ${v} m/s, t = ${t} s).`,
       params: [
         {
           id: 'v',
@@ -597,7 +597,7 @@ const kurven: Topic['generate'] = mixedVariants(
     const u = 6 * r
     const v = u / T
     return valueTask({
-      question: `Ein Körper läuft auf einem Kreis mit Radius r = ${r} m in der Periodendauer T = ${T} s. Näherung π ≈ 3: Umfang U ≈ 6 · r. Berechne die Bahngeschwindigkeit v = U / T.`,
+      question: `Ein Körper läuft auf einem Kreis mit Radius r = ${r} m in der Periodendauer T = ${T} s. Näherung π ≈ 3: Umfang U ≈ 6 · r. Berechne die Bahngeschwindigkeit.`,
       answerKind: 'integer',
       unit: 'm/s',
       value: v,

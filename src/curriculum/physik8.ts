@@ -34,7 +34,7 @@ const fluide: Topic['generate'] = mixedVariants(
     const { F, A } = pick(rng, [...pairs])
     const p = F / A
     return valueTask({
-      question: `Auf eine Fläche A = ${A} m² wirkt die Kraft F = ${F} N. Berechne den Druck p = F / A.`,
+      question: `Auf eine Fläche A = ${A} m² wirkt die Kraft F = ${F} N. Berechne den Druck.`,
       answerKind: 'integer',
       unit: 'Pa',
       value: p,
@@ -91,7 +91,7 @@ const fluide: Topic['generate'] = mixedVariants(
       const A2 = 2
       const p2 = F / A2
       return valueTask({
-        question: `F = ${F} N wirkt auf A = ${A2} m². Berechne p = F / A.`,
+        question: `F = ${F} N wirkt auf A = ${A2} m². Berechne den Druck.`,
         answerKind: 'integer',
         unit: 'Pa',
         value: p2,
@@ -100,7 +100,7 @@ const fluide: Topic['generate'] = mixedVariants(
       })
     }
     return paramSliderTask({
-      question: `Stelle Fläche und Kraft so ein, dass p = F / A = ${p} Pa gilt (F = ${F} N, A = ${A} m²).`,
+      question: `Stelle Fläche und Kraft so ein, dass der Druck ${p} Pa beträgt (Ziel: F = ${F} N, A = ${A} m²).`,
       params: [
         { id: 'F', label: 'Kraft F (N)', min: 20, max: 160, step: 20, start: F === 80 ? 40 : 80 },
         { id: 'A', label: 'Fläche A (m²)', min: 1, max: 8, step: 1, start: A === 2 ? 4 : 2 },
@@ -127,7 +127,7 @@ const thermisch: Topic['generate'] = mixedVariants(
     const { c, m, dT } = pick(rng, [...triples])
     const Q = c * m * dT
     return valueTask({
-      question: `Berechne die Wärmemenge Q = c · m · ΔT mit c = ${c} J/(g·K), m = ${m} g und ΔT = ${dT} K.`,
+      question: `Berechne die Wärmemenge mit c = ${c} J/(g·K), m = ${m} g und ΔT = ${dT} K.`,
       answerKind: 'integer',
       unit: 'J',
       value: Q,
@@ -192,7 +192,7 @@ const bauelemente: Topic['generate'] = mixedVariants(
     const { U, I } = pick(rng, [...pairs])
     const R = U / I
     return valueTask({
-      question: `An einem ohmschen Widerstand liegen U = ${U} V und I = ${I} A. Berechne R = U / I.`,
+      question: `An einem ohmschen Widerstand liegen U = ${U} V und I = ${I} A. Berechne den Widerstand.`,
       answerKind: 'integer',
       unit: 'Ω',
       value: R,

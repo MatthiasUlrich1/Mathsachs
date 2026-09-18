@@ -9,6 +9,22 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.32] – 2026-09-18
+
+### Behoben
+- **Physik Klasse 6 LB2:** Thema „Masse“ (statt nur vergleichen) mit Einheiten und
+  m aus ρ·V; Reihenfolge Volumen → Dichte → Stoffvergleich → Masse.
+- **Dichte vergleichen:** nur schwimmen/sinken bzw. welche Dichte größer — keine
+  Unsinns-Distraktoren, keine Dichte-Rechnung.
+- **Physik-Aufgaben:** Formeln stehen nicht mehr im Aufgabentext (kommen ins
+  Wissensfeld); Rechenfragen nennen nur die gesuchte Größe.
+
+## [0.27.31] – 2026-09-18
+
+### Behoben
+- **Physik Formel-Drag&Drop:** Blöcke liegen im Vorrat; darunter leere
+  Formelplätze — der falsche Block bleibt ungenutzt (kein „ans Ende sortieren“).
+
 ## [0.27.30] – 2026-09-18
 
 ### Behoben

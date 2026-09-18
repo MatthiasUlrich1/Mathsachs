@@ -664,7 +664,7 @@ const dichte: Topic['generate'] = mixedVariants(
     const v = pick(rng, [2, 4, 5, 8, 10])
     const rho = m / v
     return valueTask({
-      question: `Ein Körper hat die Masse m = ${m} g und das Volumen V = ${v} cm³. Berechne die Dichte ρ = m / V.`,
+      question: `Ein Körper hat die Masse m = ${m} g und das Volumen V = ${v} cm³. Berechne die Dichte.`,
       answerKind: rho % 1 === 0 ? 'integer' : 'decimal',
       unit: 'g/cm³',
       value: rho,
@@ -686,7 +686,7 @@ const dichte: Topic['generate'] = mixedVariants(
     const startM = m === 40 ? 60 : 40
     const startV = v === 5 ? 2 : 5
     return paramSliderTask({
-      question: `Stelle Masse und Volumen so ein, dass ρ = m / V = ${rho} g/cm³ gilt (m = ${m} g, V = ${v} cm³).`,
+      question: `Stelle Masse und Volumen so ein, dass die Dichte ${rho} g/cm³ beträgt (Ziel: m = ${m} g und V = ${v} cm³).`,
       params: [
         { id: 'm', label: 'Masse m (g)', min: 10, max: 100, step: 10, start: startM },
         { id: 'v', label: 'Volumen V (cm³)', min: 1, max: 10, step: 1, start: startV },
@@ -706,7 +706,7 @@ const geschwindigkeit: Topic['generate'] = (rng) => {
   return mixedVariants(
     () =>
       valueTask({
-        question: `Ein Körper bewegt sich gleichförmig mit v = ${v} m/s für t = ${t} s. Welche Strecke s legt er zurück? (s = v · t)`,
+        question: `Ein Körper bewegt sich gleichförmig mit v = ${v} m/s für t = ${t} s. Welche Strecke legt er zurück?`,
         answerKind: 'integer',
         unit: 'm',
         value: s,
@@ -715,7 +715,7 @@ const geschwindigkeit: Topic['generate'] = (rng) => {
       }),
     () =>
       valueTask({
-        question: `Ein Körper legt s = ${s} m in t = ${t} s gleichförmig zurück. Berechne die Geschwindigkeit v = s / t.`,
+        question: `Ein Körper legt s = ${s} m in t = ${t} s gleichförmig zurück. Berechne die Geschwindigkeit.`,
         answerKind: 'integer',
         unit: 'm/s',
         value: v,
@@ -726,6 +726,54 @@ const geschwindigkeit: Topic['generate'] = (rng) => {
 }
 
 const masseVergleich: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const kg = pick(rng, [1, 2, 3, 4, 5])
+    const g = kg * 1000
+    return valueTask({
+      question: `${kg} kg entsprechen wie vielen Gramm?`,
+      answerKind: 'integer',
+      unit: 'g',
+      value: g,
+      solution: `${g} g`,
+      explanation: `1 kg = 1000 g → ${kg} kg = ${g} g.`,
+    })
+  },
+  (rng) => {
+    const g = pick(rng, [500, 1500, 2000, 2500, 3500])
+    const kg = g / 1000
+    return valueTask({
+      question: `${g} g entsprechen wie vielen Kilogramm?`,
+      answerKind: kg % 1 === 0 ? 'integer' : 'decimal',
+      unit: 'kg',
+      value: kg,
+      solution: `${kg} kg`,
+      explanation: `1000 g = 1 kg → ${g} g = ${kg} kg.`,
+    })
+  },
+  (rng) => {
+    const correct = 'Kilogramm (kg) bzw. Gramm (g)'
+    return choicePickTask({
+      question: 'Welche Einheit hat die Masse?',
+      choices: shuffleChoices(rng, [correct, 'Newton (N)', 'Meter (m)', 'Sekunde (s)'], correct),
+      correct,
+      solution: correct,
+      explanation: 'Masse wird in Kilogramm (kg) oder Gramm (g) angegeben — nicht in Newton.',
+      instruction: 'Tippe die Einheit:',
+    })
+  },
+  (rng) => {
+    const rho = pick(rng, [2, 3, 4, 5, 8])
+    const v = pick(rng, [2, 4, 5, 10])
+    const m = rho * v
+    return valueTask({
+      question: `Ein Körper hat die Dichte ρ = ${rho} g/cm³ und das Volumen V = ${v} cm³. Berechne die Masse.`,
+      answerKind: 'integer',
+      unit: 'g',
+      value: m,
+      solution: `${m} g`,
+      explanation: `m = ρ · V = ${rho} · ${v} = ${m} g.`,
+    })
+  },
   (rng) => {
     const a = randInt(rng, 2, 9)
     const b = randInt(rng, 2, 9)
@@ -747,26 +795,6 @@ const masseVergleich: Topic['generate'] = mixedVariants(
       solution: correct,
       explanation: `Vergleiche die Massen: ${a} kg ${a > b ? '>' : '<'} ${b} kg.`,
       instruction: 'Tippe den Vergleich:',
-    })
-  },
-  (rng) => {
-    const items = [
-      { label: 'Federwaage: 2 kg', value: 2 },
-      { label: 'Federwaage: 5 kg', value: 5 },
-      { label: 'Federwaage: 8 kg', value: 8 },
-    ]
-    const ordered = [...items]
-    for (let i = items.length - 1; i > 0; i--) {
-      const j = randInt(rng, 0, i)
-      ;[items[i], items[j]] = [items[j]!, items[i]!]
-    }
-    const correctOrder = ordered.map((row) => items.findIndex((it) => it.value === row.value))
-    return dragDropSortTask({
-      question: 'Ordne die Körper nach steigender Masse (leicht → schwer).',
-      items,
-      correctOrder,
-      solution: '2 kg → 5 kg → 8 kg',
-      explanation: 'Größere Masse bedeutet bei gleicher g größere Gewichtskraft.',
     })
   },
 )

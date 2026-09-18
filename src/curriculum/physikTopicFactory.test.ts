@@ -37,6 +37,7 @@ describe('Physik topic factory — schulische Aufgaben', () => {
       expect(task.question, `seed ${seed}`).not.toMatch(/Schritte beim Lösen/)
       expect(task.question, `seed ${seed}`).not.toMatch(/Gleichförmige Bewegung/)
       expect(task.question, `seed ${seed}`).not.toMatch(/s = v·t/)
+      expect(task.question, `seed ${seed}`).not.toMatch(/Den falschen Block ans Ende/)
     }
   })
 
@@ -47,15 +48,18 @@ describe('Physik topic factory — schulische Aufgaben', () => {
     const kinds = new Set<string>()
     for (let seed = 1; seed <= 60; seed++) {
       const task = generate(createRng(seed))
-      if (task.interactive?.type === 'dragDropSort') {
-        kinds.add('sort')
-        const labels = (task.interactive.props as { items: Array<{ label: string }> }).items.map(
-          (i) => i.label,
-        )
-        expect(labels.join(' ')).toMatch(/V/)
-        expect(labels.some((l) => /l/.test(l))).toBe(true)
-      } else if (task.unit === 'cm³' || /Berechne V/.test(task.question)) {
+      if (task.interactive?.type === 'dragDropSlots') {
+        kinds.add('slots')
+        const labels = (task.interactive.props as { items: Array<{ label: string }>; slotCount: number })
+          .items.map((i) => i.label)
+        expect(task.interactive.props.slotCount).toBe(4)
+        expect(labels).toContain('V =')
+        expect(labels).toContain('× m')
+        expect(task.sampleAnswer.kind).toBe('dragDropSlots')
+        expect(task.check(task.sampleAnswer)).toBe(true)
+      } else if (task.unit === 'cm³' || /Berechne das Volumen/.test(task.question)) {
         kinds.add('calc')
+        expect(task.question).not.toMatch(/V\s*=\s*l/)
       } else {
         kinds.add('choice')
         expect(task.question).toMatch(/Volumen|Formel|Einheit|Größen|Liter|Quader/)
@@ -63,7 +67,7 @@ describe('Physik topic factory — schulische Aufgaben', () => {
     }
     expect(kinds.has('calc')).toBe(true)
     expect(kinds.has('choice')).toBe(true)
-    expect(kinds.has('sort')).toBe(true)
+    expect(kinds.has('slots')).toBe(true)
   })
 
   it('never uses Kunststil-style distractors anywhere in the factory pack', () => {
@@ -84,6 +88,35 @@ describe('Physik topic factory — schulische Aufgaben', () => {
           }
         }
       }
+    }
+  })
+
+  it('density comparison only compares (no calc, no nonsense distractors)', () => {
+    const generate =
+      resolvePhysikGenerate('ph-k6-lb2-dichtestoffe') ??
+      makePhysikTopicGenerate('ph-k6-lb2-dichtestoffe', 'Dichte von Stoffen vergleichen')
+    for (let seed = 1; seed <= 60; seed++) {
+      const task = generate(createRng(seed))
+      const blob = JSON.stringify(task)
+      expect(blob, `seed ${seed}`).not.toMatch(/verdampft/)
+      expect(blob, `seed ${seed}`).not.toMatch(/wird zu Gas/)
+      expect(blob, `seed ${seed}`).not.toMatch(/Kunststil/)
+      expect(task.question, `seed ${seed}`).not.toMatch(/Berechne/)
+      expect(task.unit, `seed ${seed}`).not.toBe('g/cm³')
+      if (/gelegt\. Was passiert/.test(task.question)) {
+        expect(blob).toMatch(/schwimmt|sinkt zu Boden/)
+      }
+    }
+  })
+
+  it('density calculation questions do not reveal the formula', () => {
+    const generate =
+      resolvePhysikGenerate('ph-k6-lb2-dichte') ??
+      makePhysikTopicGenerate('ph-k6-lb2-dichte', 'Dichte berechnen')
+    for (let seed = 1; seed <= 40; seed++) {
+      const task = generate(createRng(seed))
+      expect(task.question, `seed ${seed}`).not.toMatch(/ρ\s*=\s*m/)
+      expect(task.question, `seed ${seed}`).not.toMatch(/m\s*\/\s*V/)
     }
   })
 })

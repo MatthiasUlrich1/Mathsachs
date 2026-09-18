@@ -34,7 +34,7 @@ const energie: Topic['generate'] = mixedVariants(
     ] as const
     const { m, v, e } = pick(rng, [...pairs])
     return valueTask({
-      question: `Ein Körper der Masse m = ${m} kg bewegt sich mit v = ${v} m/s. Berechne die kinetische Energie E_kin = ½ · m · v².`,
+      question: `Ein Körper der Masse m = ${m} kg bewegt sich mit v = ${v} m/s. Berechne die kinetische Energie.`,
       answerKind: 'integer',
       unit: 'J',
       value: e,
@@ -48,7 +48,7 @@ const energie: Topic['generate'] = mixedVariants(
     const g = 10
     const e = m * g * h
     return valueTask({
-      question: `Ein Körper der Masse m = ${m} kg liegt in der Höhe h = ${h} m (g = ${g} m/s²). Berechne die potenzielle Energie E_pot = m · g · h.`,
+      question: `Ein Körper der Masse m = ${m} kg liegt in der Höhe h = ${h} m (g = ${g} m/s²). Berechne die potenzielle Energie.`,
       answerKind: 'integer',
       unit: 'J',
       value: e,
@@ -118,7 +118,7 @@ const mechanik: Topic['generate'] = mixedVariants(
     ] as const
     const { v0, v, t, a } = pick(rng, [...triples])
     return valueTask({
-      question: `Ein Körper beschleunigt von v₀ = ${v0} m/s auf v = ${v} m/s in t = ${t} s. Berechne a = (v − v₀) / t.`,
+      question: `Ein Körper beschleunigt von v₀ = ${v0} m/s auf v = ${v} m/s in t = ${t} s. Berechne die Beschleunigung.`,
       answerKind: 'integer',
       unit: 'm/s²',
       value: a,
@@ -131,7 +131,7 @@ const mechanik: Topic['generate'] = mixedVariants(
     const a = pick(rng, [2, 3, 4, 5])
     const F = m * a
     return valueTask({
-      question: `Auf einen Körper der Masse m = ${m} kg wirkt die Beschleunigung a = ${a} m/s². Berechne die Kraft F = m · a.`,
+      question: `Auf einen Körper der Masse m = ${m} kg wirkt die Beschleunigung a = ${a} m/s². Berechne die Kraft.`,
       answerKind: 'integer',
       unit: 'N',
       value: F,
@@ -201,7 +201,7 @@ const praktikum: Topic['generate'] = mixedVariants(
     ] as const
     const { Q, U, C } = pick(rng, [...pairs])
     return valueTask({
-      question: `Ein Kondensator speichert die Ladung Q = ${Q} C bei der Spannung U = ${U} V. Berechne die Kapazität C = Q / U.`,
+      question: `Ein Kondensator speichert die Ladung Q = ${Q} C bei der Spannung U = ${U} V. Berechne die Kapazität.`,
       answerKind: 'integer',
       unit: 'F',
       value: C,
@@ -302,7 +302,7 @@ const felder: Topic['generate'] = mixedVariants(
     ] as const
     const { q, E, F } = pick(rng, [...pairs])
     return valueTask({
-      question: `Ein Teilchen mit der Ladung q = ${q} C befindet sich in einem homogenen elektrischen Feld E = ${E} N/C. Berechne den Betrag der Kraft F = q · E.`,
+      question: `Ein Teilchen mit der Ladung q = ${q} C befindet sich in einem homogenen elektrischen Feld E = ${E} N/C. Berechne den Betrag der Kraft.`,
       answerKind: 'integer',
       unit: 'N',
       value: F,

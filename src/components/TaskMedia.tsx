@@ -2,6 +2,7 @@ import type { Task, UserInput } from '../curriculum/types'
 import { emptyInput } from '../curriculum/types'
 import { NumberLineSlider } from './NumberLineSlider'
 import { DragDropSort } from './DragDropSort'
+import { DragDropSlots } from './DragDropSlots'
 import { DigitGrid } from './DigitGrid'
 import { ChoicePick } from './ChoicePick'
 import { MultiSelect } from './MultiSelect'
@@ -17,6 +18,10 @@ export const initTaskInput = (task: Task): UserInput => {
   if (task.interactive?.type === 'dragDropSort') {
     const items = task.interactive.props.items ?? []
     return { kind: 'dragDropSort', order: items.map((_: unknown, i: number) => i) }
+  }
+  if (task.interactive?.type === 'dragDropSlots') {
+    const n = Number(task.interactive.props.slotCount ?? 0)
+    return { kind: 'dragDropSlots', slots: Array.from({ length: n }, () => null) }
   }
   if (task.interactive?.type === 'digitGrid') {
     const lengths = task.interactive.props.answerRowLengths as number[] | undefined
@@ -99,6 +104,21 @@ export function TaskInteractive({
           }
           onChange={(order) => onChange({ kind: 'dragDropSort', order })}
           instruction="Ziehe die Elemente in die richtige Reihenfolge:"
+        />
+      )}
+      {interactive.type === 'dragDropSlots' && !disabled && (
+        <DragDropSlots
+          items={interactive.props.items}
+          slots={
+            value.kind === 'dragDropSlots'
+              ? value.slots
+              : Array.from(
+                  { length: Number(interactive.props.slotCount ?? 0) },
+                  () => null,
+                )
+          }
+          onChange={(slots) => onChange({ kind: 'dragDropSlots', slots })}
+          instruction={interactive.props.instruction}
         />
       )}
       {interactive.type === 'digitGrid' && (

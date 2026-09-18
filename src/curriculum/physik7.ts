@@ -27,7 +27,7 @@ const kraefte: Topic['generate'] = mixedVariants(
     const g = 10
     const F = m * g
     return valueTask({
-      question: `Ein Körper hat die Masse m = ${m} kg. Berechne die Gewichtskraft F_G = m · g mit g ≈ ${g} N/kg.`,
+      question: `Ein Körper hat die Masse m = ${m} kg. Berechne die Gewichtskraft (g ≈ ${g} N/kg).`,
       answerKind: 'integer',
       unit: 'N',
       value: F,
@@ -72,7 +72,7 @@ const kraefte: Topic['generate'] = mixedVariants(
     const m = pick(rng, [2, 4, 5, 8, 10])
     const F = m * 10
     return paramSliderTask({
-      question: `Stelle die Masse so ein, dass F_G = m · 10 = ${F} N gilt (g ≈ 10 N/kg).`,
+      question: `Stelle die Masse so ein, dass die Gewichtskraft ${F} N gilt (g ≈ 10 N/kg).`,
       params: [
         {
           id: 'm',
@@ -93,7 +93,7 @@ const kraefte: Topic['generate'] = mixedVariants(
     const m = pick(rng, [2, 3, 4, 5, 6, 8])
     const F = m * 10
     return numberLineTask({
-      question: `Ein Körper hat m = ${m} kg. Markiere die Gewichtskraft F_G = m · 10 auf dem Zahlenstrahl (in N).`,
+      question: `Ein Körper hat m = ${m} kg. Markiere die Gewichtskraft auf dem Zahlenstrahl (in N).`,
       min: 0,
       max: 100,
       step: 5,
@@ -118,7 +118,7 @@ const strom: Topic['generate'] = mixedVariants(
     const { U, R } = pick(rng, [...pairs])
     const I = U / R
     return valueTask({
-      question: `An einem Widerstand liegen U = ${U} V und R = ${R} Ω. Berechne die Stromstärke I = U / R.`,
+      question: `An einem Widerstand liegen U = ${U} V und R = ${R} Ω. Berechne die Stromstärke.`,
       answerKind: 'integer',
       unit: 'A',
       value: I,

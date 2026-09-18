@@ -90,9 +90,9 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
         ]),
         area('lb2', 'Eigenschaften und Bewegungen von Körpern', 14, [
           topic('ph-k6-lb2-volumen', 'Volumen bestimmen', ['Volumen']),
-          topic('ph-k6-lb2-masse', 'Masse vergleichen', ['Masse', 'Körper']),
           topic('ph-k6-lb2-dichte', 'Dichte berechnen', ['Dichte', 'Masse', 'Volumen']),
           topic('ph-k6-lb2-dichtestoffe', 'Dichte von Stoffen vergleichen', ['Dichte', 'Stoff']),
+          topic('ph-k6-lb2-masse', 'Masse', ['Masse', 'Einheit', 'Körper', 'Gramm', 'Kilogramm']),
           topic('ph-k6-lb2-geschwindigkeit', 'Gleichförmige Bewegung', ['Geschwindigkeit', 'Strecke']),
           topic('ph-k6-lb2-wegzeit', 'Weg-Zeit-Diagramm', ['Diagramm', 'Bewegung']),
           topic('ph-k6-lb2-einheiten', 'Einheiten von v, s und t', ['Einheit', 'Geschwindigkeit']),
