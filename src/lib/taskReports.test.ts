@@ -11,7 +11,9 @@ import {
   markMyReportFixedSeen,
   markTaskReportDone,
   markTaskReportFixed,
+  mergeMyReportList,
   MY_TASK_REPORTS_KEY,
+  myReportStatusLabel,
   rememberMyReportId,
   REPORTS_READ_TOKEN,
   submitTaskReport,
@@ -56,21 +58,89 @@ describe('taskReports helpers', () => {
 
   it('remembers submitted report ids locally without PII', () => {
     const storage = memoryStorage()
-    rememberMyReportId('ABCD1234', storage, 100)
+    rememberMyReportId('ABCD1234', storage, 100, {
+      contentId: 6453,
+      comment: 'falsch',
+      topicTitle: 'Volumen',
+    })
     rememberMyReportId('EFGH5678', storage, 200)
     expect(listMyStoredReports(storage)).toEqual([
       { id: 'EFGH5678', rememberedAt: 200 },
-      { id: 'ABCD1234', rememberedAt: 100 },
+      {
+        id: 'ABCD1234',
+        rememberedAt: 100,
+        contentId: 6453,
+        comment: 'falsch',
+        topicTitle: 'Volumen',
+      },
     ])
-    rememberMyReportId('ABCD1234', storage, 300)
+    rememberMyReportId('ABCD1234', storage, 300, {
+      contentId: 6453,
+      comment: 'falsch',
+    })
     expect(listMyStoredReports(storage)[0]).toEqual({
       id: 'ABCD1234',
       rememberedAt: 300,
+      contentId: 6453,
+      comment: 'falsch',
+      topicTitle: 'Volumen',
     })
     markMyReportFixedSeen('ABCD1234', storage)
     expect(listMyStoredReports(storage)[0].seenFixed).toBe(true)
     expect(storage.getItem(MY_TASK_REPORTS_KEY)).toContain('ABCD1234')
     expect(storage.getItem(MY_TASK_REPORTS_KEY)).not.toMatch(/@|email|device/i)
+  })
+
+  it('merges local snapshots with status updates for Einstellungen', () => {
+    const stored = [
+      {
+        id: 'A',
+        rememberedAt: 1,
+        contentId: 1001,
+        comment: 'lokal',
+        topicTitle: 'Thema A',
+      },
+      { id: 'B', rememberedAt: 2, contentId: 1002, comment: 'alt' },
+    ]
+    expect(
+      mergeMyReportList(
+        stored,
+        [
+          {
+            id: 'A',
+            status: 'fixed',
+            contentId: 1001,
+            comment: 'vom Server',
+            replyMessage: 'ok',
+            fixedAt: 9,
+          },
+        ],
+        { statusFetched: true },
+      ),
+    ).toEqual([
+      {
+        id: 'A',
+        rememberedAt: 1,
+        contentId: 1001,
+        status: 'fixed',
+        comment: 'vom Server',
+        topicTitle: 'Thema A',
+        replyMessage: 'ok',
+        fixedAt: 9,
+      },
+      {
+        id: 'B',
+        rememberedAt: 2,
+        contentId: 1002,
+        status: 'open',
+        comment: 'alt',
+        missing: true,
+      },
+    ])
+    expect(myReportStatusLabel('open')).toBe('offen')
+    expect(myReportStatusLabel('done')).toBe('erledigt')
+    expect(myReportStatusLabel('fixed')).toBe('korrigiert')
+    expect(myReportStatusLabel('open', true)).toBe('nicht mehr verfügbar')
   })
 
   it('filters unseen fixed updates for the reporter banner', () => {
@@ -101,6 +171,7 @@ describe('taskReports helpers', () => {
           contentId: 6453,
           comment: '  falsch  ',
           topicId: 'ph-k6-lb2-volumen',
+          topicTitle: 'Volumen',
         },
         { fetchImpl, storage },
       ),
@@ -112,9 +183,18 @@ describe('taskReports helpers', () => {
         contentId: 6453,
         comment: 'falsch',
         topicId: 'ph-k6-lb2-volumen',
+        topicTitle: 'Volumen',
       }),
     })
-    expect(listMyStoredReports(storage).map((r) => r.id)).toEqual(['ABCD1234'])
+    expect(listMyStoredReports(storage)).toEqual([
+      {
+        id: 'ABCD1234',
+        rememberedAt: expect.any(Number),
+        contentId: 6453,
+        comment: 'falsch',
+        topicTitle: 'Volumen',
+      },
+    ])
   })
 
   it('rejects empty comments locally', async () => {
@@ -265,6 +345,8 @@ describe('taskReports helpers', () => {
             id: 'ABCD1234',
             status: 'fixed',
             contentId: 6453,
+            comment: 'Fehler in der Lösung',
+            topicTitle: 'Volumen',
             replyMessage: 'Danke für den Hinweis',
             fixedAt: 10,
           },
@@ -276,6 +358,8 @@ describe('taskReports helpers', () => {
         id: 'ABCD1234',
         status: 'fixed',
         contentId: 6453,
+        comment: 'Fehler in der Lösung',
+        topicTitle: 'Volumen',
         replyMessage: 'Danke für den Hinweis',
         fixedAt: 10,
       },

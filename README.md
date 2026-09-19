@@ -5,7 +5,7 @@ sächsischen Schulen. Schülerinnen und Schüler wählen Themen aus dem Lehrplan
 üben am Bildschirm oder drucken Übungsblätter. Lehrkräfte stellen
 **Übungsklausuren** zusammen und verteilen sie per Code oder Link.
 
-Aktuelle Version: **0.27.46** · [Changelog](CHANGELOG.md) ·
+Aktuelle Version: **0.27.48** · [Changelog](CHANGELOG.md) ·
 [Alle Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases) ·
 [Web-App](https://matthiasulrich1.github.io/Mathsachs/)
 

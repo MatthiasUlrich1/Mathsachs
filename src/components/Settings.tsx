@@ -3,6 +3,7 @@ import { CurriculumSetup } from './CurriculumSetup'
 import { ClassCodes } from './ClassCodes'
 import { FaultyTasksPanel } from './FaultyTasksPanel'
 import { LanAccessCard } from './LanAccessCard'
+import { MyReportedTasksPanel } from './MyReportedTasksPanel'
 import { RoleRightsMatrix } from './RoleRightsMatrix'
 import { Supporters } from './Supporters'
 import { TaskRequest } from './TaskRequest'
@@ -41,6 +42,7 @@ const SECTION_HINTS: Record<SettingsSectionId, string> = {
   curricula: 'Lehrpläne installieren, aktualisieren oder entfernen',
   class: 'Klassencode erstellen, eintragen oder teilen',
   tasks: 'Vorgaben für neue Übungsaufgaben senden',
+  myReports: 'Deine gemeldeten fehlerhaften Aufgaben und Korrektur-Hinweise',
   faulty: 'Gemeldete fehlerhafte Aufgaben einsehen',
   lan: 'Tablets im selben WLAN verbinden',
   profile: 'Rolle, Lehrercode, Rechte und Benutzerwechsel',
@@ -260,6 +262,8 @@ export function Settings({
             </p>
           </section>
         ))}
+
+      {section === 'myReports' && <MyReportedTasksPanel />}
 
       {section === 'faulty' &&
         (canViewFaultyReports(role) ? (

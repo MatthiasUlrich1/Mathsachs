@@ -9,6 +9,22 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.48] – 2026-09-19
+
+### Hinzugefügt
+- **Einstellungen → Meine Meldungen:** Alle Rollen sehen ihre auf diesem Gerät
+  gemeldeten Aufgaben (Content-ID, Thema, Kommentar, Status offen/erledigt/
+  korrigiert inkl. Antwort). Ohne Entwickler-Aktionen. Leerer Zustand:
+  „Noch keine gemeldeten Aufgaben“.
+- **Korrektur-Banner:** Link **In Einstellungen anzeigen** öffnet die Rubrik
+  Meine Meldungen (Banner bleibt zusätzlich sichtbar nach Poll).
+
+### Geändert
+- Beim Melden speichert die App lokal auch Kommentar/Content-ID/Thema; der
+  öffentliche Status-Lookup `POST /reports/tasks/status` liefert für bekannte
+  IDs zusätzlich `comment` und `topicTitle` (weiterhin kein PII). **Worker muss
+  neu deployed werden**, damit Kommentare auch ohne lokales Snapshot kommen.
+
 ## [0.27.47] – 2026-09-19
 
 ### Hinzugefügt

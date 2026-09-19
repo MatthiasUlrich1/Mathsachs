@@ -3,9 +3,10 @@ import type { TaskReportUpdate } from '../lib/taskReports'
 interface Props {
   update: TaskReportUpdate
   onDismiss: (id: string) => void
+  onShowInSettings?: () => void
 }
 
-export function TaskReportFixedBanner({ update, onDismiss }: Props) {
+export function TaskReportFixedBanner({ update, onDismiss, onShowInSettings }: Props) {
   return (
     <section
       className="update-banner task-report-fixed-banner no-print"
@@ -30,6 +31,20 @@ export function TaskReportFixedBanner({ update, onDismiss }: Props) {
       </p>
       {update.replyMessage ? (
         <p className="task-report-fixed-banner__reply">{update.replyMessage}</p>
+      ) : null}
+      {onShowInSettings ? (
+        <p className="task-report-fixed-banner__actions">
+          <button
+            type="button"
+            className="link"
+            onClick={() => {
+              onDismiss(update.id)
+              onShowInSettings()
+            }}
+          >
+            In Einstellungen anzeigen
+          </button>
+        </p>
       ) : null}
     </section>
   )

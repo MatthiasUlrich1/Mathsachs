@@ -45,6 +45,7 @@ export const SETTINGS_SECTIONS = [
   { id: 'curricula', label: 'Lehrpläne' },
   { id: 'class', label: 'Klasse' },
   { id: 'tasks', label: 'Aufgaben ergänzen' },
+  { id: 'myReports', label: 'Meine Meldungen' },
   { id: 'faulty', label: 'Fehlerhafte Aufgaben' },
   { id: 'lan', label: 'WLAN-Zugang' },
   { id: 'profile', label: 'Profil' },
@@ -55,6 +56,7 @@ export type SettingsSectionId = (typeof SETTINGS_SECTIONS)[number]['id']
 
 /**
  * Aufgaben ergänzen: Lehrer/Entwickler.
+ * Meine Meldungen: alle Rollen (eigene anonyme Meldungen dieses Geräts).
  * Fehlerhafte Aufgaben: nur Entwickleransicht.
  */
 export function settingsSectionsForRole(role?: UserRole | null) {

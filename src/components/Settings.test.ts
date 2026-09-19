@@ -41,6 +41,7 @@ describe('Settings hub update check', () => {
     expect(html).toContain('Einstellungen')
     expect(html).toContain('Lehrpläne')
     expect(html).toContain('Klasse')
+    expect(html).toContain('Meine Meldungen')
     expect(html).toContain('WLAN-Zugang')
     expect(html).toContain('Profil')
     expect(html).toContain('Unterstützer')
@@ -48,6 +49,29 @@ describe('Settings hub update check', () => {
     expect(html).toContain(MANUAL_CHECK_LABEL)
     expect(html).not.toContain(MANUAL_CHECK_CURRENT)
     expect(html).not.toContain(MANUAL_CHECK_CHECKING)
+  })
+
+  it('lists Meine Meldungen for Schüler and Lehrer', () => {
+    for (const role of ['schueler', 'lehrer', 'eltern', 'klassenlehrer'] as const) {
+      const html = renderToStaticMarkup(
+        createElement(Settings, { ...baseProps, role }),
+      )
+      expect(html).toContain('Meine Meldungen')
+      expect(html).toContain('Deine gemeldeten fehlerhaften Aufgaben')
+    }
+  })
+
+  it('renders Meine Meldungen section without Entwickler actions', () => {
+    const html = renderToStaticMarkup(
+      createElement(Settings, {
+        ...baseProps,
+        role: 'schueler',
+        section: 'myReports',
+      }),
+    )
+    expect(html).toContain('Meine Meldungen')
+    expect(html).not.toContain('Als korrigiert melden')
+    expect(html).not.toContain('Fehlerhafte Aufgabe anzeigen')
   })
 
   it('does not show the button on Profil, WLAN or other submenu pages', () => {

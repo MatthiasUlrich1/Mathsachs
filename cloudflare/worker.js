@@ -34,7 +34,8 @@
  * GET/PATCH/DELETE /reports/tasks require Worker secret REPORTS_TOKEN
  * (Authorization: Bearer … or X-Reports-Token). Must match the app’s
  * REPORTS_READ_TOKEN. Public POST for new reports and anonymous status
- * lookup by known report ids stay open (no PII).
+ * lookup by known report ids stay open (no PII). Status lookup may return
+ * the reporter’s own comment/topicTitle for the requested ids only.
  */
 // @ts-nocheck — plain Worker JS; Cloudflare editor checkJs unions are noisy.
 
@@ -2353,10 +2354,14 @@ async function handleLookupTaskReportStatus(request, env) {
   for (const id of ids) {
     const row = byId.get(id)
     if (!row) continue
+    // Own-id lookup only: safe to return the reporter’s own comment/title
+    // (no pupil names or other PII are stored on reports).
     reports.push({
       id: row.id,
       status: row.status,
       contentId: row.contentId,
+      ...(row.comment ? { comment: row.comment } : {}),
+      ...(row.topicTitle ? { topicTitle: row.topicTitle } : {}),
       ...(row.replyMessage ? { replyMessage: row.replyMessage } : {}),
       ...(typeof row.fixedAt === 'number' ? { fixedAt: row.fixedAt } : {}),
     })

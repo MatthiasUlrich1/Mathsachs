@@ -1044,6 +1044,7 @@ describe('Challenge Worker API', () => {
           id,
           status: 'fixed',
           contentId: 6453,
+          comment: 'Fehler in der Lösung',
           replyMessage: fixedBody.report.replyMessage,
           fixedAt: fixedBody.report.fixedAt,
         },

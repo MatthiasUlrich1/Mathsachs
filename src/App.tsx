@@ -189,6 +189,9 @@ export default function App() {
               markMyReportFixedSeen(id)
               setFixedReportNotices((prev) => prev.filter((row) => row.id !== id))
             }}
+            onShowInSettings={() =>
+              setView({ name: 'settings', section: 'myReports' })
+            }
           />
         ))
 

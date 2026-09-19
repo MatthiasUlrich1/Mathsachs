@@ -38,6 +38,8 @@ export interface TaskReportUpdate {
   id: string
   status: TaskReportStatus
   contentId: number
+  comment?: string
+  topicTitle?: string
   replyMessage?: string
   fixedAt?: number
 }
@@ -47,6 +49,24 @@ export interface MyStoredReport {
   rememberedAt: number
   /** True after the reporter dismissed the “korrigiert” notice. */
   seenFixed?: boolean
+  /** Snapshot from submit — used when status API omits comment/title. */
+  contentId?: number
+  comment?: string
+  topicTitle?: string
+}
+
+/** Merged row for the reporter’s Einstellungen list (no admin actions). */
+export interface MyReportListItem {
+  id: string
+  rememberedAt: number
+  contentId: number
+  status: TaskReportStatus
+  comment?: string
+  topicTitle?: string
+  replyMessage?: string
+  fixedAt?: number
+  /** True when the id was remembered but missing from a successful status lookup. */
+  missing?: boolean
 }
 
 export function trimReportComment(raw: string): string {
@@ -64,6 +84,14 @@ export function isReportCommentValid(raw: string): boolean {
 function storageOrLocal(storage?: Storage): Storage | undefined {
   if (storage) return storage
   return typeof localStorage !== 'undefined' ? localStorage : undefined
+}
+
+function optionalStoredContentId(value: unknown): number | undefined {
+  if (typeof value === 'number' && Number.isFinite(value)) {
+    const n = Math.floor(value)
+    if (n >= 1000 && n <= 9999) return n
+  }
+  return undefined
 }
 
 function parseMyStoredReports(raw: string | null): MyStoredReport[] {
@@ -87,10 +115,18 @@ function parseMyStoredReports(raw: string | null): MyStoredReport[] {
         typeof row.rememberedAt === 'number' && Number.isFinite(row.rememberedAt)
           ? Math.floor(row.rememberedAt)
           : Date.now()
+      const contentId = optionalStoredContentId(row.contentId)
+      const comment =
+        typeof row.comment === 'string' ? trimReportComment(row.comment) : ''
+      const topicTitle =
+        typeof row.topicTitle === 'string' ? row.topicTitle.trim().slice(0, 120) : ''
       out.push({
         id,
         rememberedAt,
         ...(row.seenFixed === true ? { seenFixed: true } : {}),
+        ...(contentId !== undefined ? { contentId } : {}),
+        ...(comment ? { comment } : {}),
+        ...(topicTitle ? { topicTitle } : {}),
       })
       if (out.length >= MAX_MY_TASK_REPORTS) break
     }
@@ -113,11 +149,86 @@ export function listMyStoredReports(storage?: Storage): MyStoredReport[] {
   return parseMyStoredReports(kv.getItem(MY_TASK_REPORTS_KEY))
 }
 
-export function rememberMyReportId(id: string, storage?: Storage, now = Date.now()): void {
+export function rememberMyReportId(
+  id: string,
+  storage?: Storage,
+  now = Date.now(),
+  snapshot?: { contentId?: number; comment?: string; topicTitle?: string },
+): void {
   const trimmed = id.trim()
   if (!trimmed) return
-  const prev = listMyStoredReports(storage).filter((row) => row.id !== trimmed)
-  writeMyStoredReports([{ id: trimmed, rememberedAt: now }, ...prev], storage)
+  const existing = listMyStoredReports(storage)
+  const prevRow = existing.find((row) => row.id === trimmed)
+  const prev = existing.filter((row) => row.id !== trimmed)
+  const contentId =
+    optionalStoredContentId(snapshot?.contentId) ?? prevRow?.contentId
+  const comment = snapshot?.comment
+    ? trimReportComment(snapshot.comment)
+    : prevRow?.comment ?? ''
+  const topicTitle = snapshot?.topicTitle?.trim()
+    ? snapshot.topicTitle.trim().slice(0, 120)
+    : prevRow?.topicTitle ?? ''
+  writeMyStoredReports(
+    [
+      {
+        id: trimmed,
+        rememberedAt: now,
+        ...(prevRow?.seenFixed ? { seenFixed: true } : {}),
+        ...(contentId !== undefined ? { contentId } : {}),
+        ...(comment ? { comment } : {}),
+        ...(topicTitle ? { topicTitle } : {}),
+      },
+      ...prev,
+    ],
+    storage,
+  )
+}
+
+/** Combine local snapshots with anonymous status lookup for Einstellungen. */
+export function mergeMyReportList(
+  stored: MyStoredReport[],
+  updates: TaskReportUpdate[],
+  options?: { statusFetched?: boolean },
+): MyReportListItem[] {
+  const byId = new Map(updates.map((row) => [row.id, row]))
+  const statusFetched = options?.statusFetched === true
+  return stored.map((row) => {
+    const update = byId.get(row.id)
+    const contentId = update?.contentId ?? row.contentId ?? 0
+    const comment = update?.comment || row.comment
+    const topicTitle = update?.topicTitle || row.topicTitle
+    if (!update) {
+      return {
+        id: row.id,
+        rememberedAt: row.rememberedAt,
+        contentId,
+        status: 'open' as const,
+        ...(comment ? { comment } : {}),
+        ...(topicTitle ? { topicTitle } : {}),
+        ...(statusFetched ? { missing: true } : {}),
+      }
+    }
+    return {
+      id: row.id,
+      rememberedAt: row.rememberedAt,
+      contentId,
+      status: update.status,
+      ...(comment ? { comment } : {}),
+      ...(topicTitle ? { topicTitle } : {}),
+      ...(update.replyMessage ? { replyMessage: update.replyMessage } : {}),
+      ...(update.fixedAt !== undefined ? { fixedAt: update.fixedAt } : {}),
+    }
+  })
+}
+
+export function myReportStatusLabel(
+  status: TaskReportStatus,
+  missing?: boolean,
+): string {
+  if (missing) return 'nicht mehr verfügbar'
+  if (status === 'done') return 'erledigt'
+  if (status === 'fixed') return 'korrigiert'
+  return 'offen'
 }
 
 export function markMyReportFixedSeen(id: string, storage?: Storage): void {
@@ -203,10 +314,16 @@ function parseReportUpdate(row: unknown): TaskReportUpdate | null {
     typeof r.fixedAt === 'number' && Number.isFinite(r.fixedAt)
       ? Math.floor(r.fixedAt)
       : undefined
+  const comment =
+    typeof r.comment === 'string' ? trimReportComment(r.comment) : ''
+  const topicTitle =
+    typeof r.topicTitle === 'string' ? r.topicTitle.trim().slice(0, 120) : ''
   return {
     id: r.id.trim(),
     status: normalizeReportStatus(r.status),
     contentId: r.contentId,
+    ...(comment ? { comment } : {}),
+    ...(topicTitle ? { topicTitle } : {}),
     ...(replyMessage ? { replyMessage } : {}),
     ...(fixedAt !== undefined ? { fixedAt } : {}),
   }
@@ -332,7 +449,13 @@ export async function submitTaskReport(
     const body = (await response.json()) as { id?: unknown }
     if (typeof body.id === 'string' && body.id.trim()) {
       const id = body.id.trim()
-      rememberMyReportId(id, options?.storage)
+      rememberMyReportId(id, options?.storage, Date.now(), {
+        contentId: Math.floor(payload.contentId),
+        comment,
+        ...(payload.topicTitle?.trim()
+          ? { topicTitle: payload.topicTitle.trim() }
+          : {}),
+      })
       return { id }
     }
   } catch {
