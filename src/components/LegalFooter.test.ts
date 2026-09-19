@@ -12,6 +12,6 @@ describe('LegalFooter supporters', () => {
     expect(html).toContain('logo-mein-delitzsch.png')
     expect(html).toContain('Logo Mein Delitzsch')
     expect(html).toContain('foot__supporter--on-dark')
-    expect(html).toContain('Mathsachs 0.1.42')
+    expect(html).toContain('TaskTrophy 0.1.42')
   })
 })

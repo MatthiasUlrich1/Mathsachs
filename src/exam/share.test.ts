@@ -41,7 +41,7 @@ describe('examCodeShareText', () => {
 
 describe('examCodeShareSubject', () => {
   it('is the fixed German mail subject', () => {
-    expect(examCodeShareSubject()).toBe('Mathsachs Klausurcode')
+    expect(examCodeShareSubject()).toBe('TaskTrophy Klausurcode')
   })
 })
 

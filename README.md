@@ -1,11 +1,11 @@
-# Mathsachs
+# TaskTrophy
 
-**Lehrplanorientiertes Übungsprogramm** für Mathematik und Physik an
-sächsischen Schulen. Schülerinnen und Schüler wählen Themen aus dem Lehrplan,
-üben am Bildschirm oder drucken Übungsblätter. Lehrkräfte stellen
+**Das Klassen-Duell** — lehrplanorientiertes Übungsprogramm für Mathematik und
+Physik an sächsischen Schulen. Schülerinnen und Schüler wählen Themen aus dem
+Lehrplan, üben am Bildschirm oder drucken Übungsblätter. Lehrkräfte stellen
 **Übungsklausuren** zusammen und verteilen sie per Code oder Link.
 
-Aktuelle Version: **0.27.50** · [Changelog](CHANGELOG.md) ·
+Aktuelle Version: **0.27.51** · [Changelog](CHANGELOG.md) ·
 [Alle Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases) ·
 [Web-App](https://matthiasulrich1.github.io/Mathsachs/)
 
@@ -150,10 +150,10 @@ entstehen dieselben Aufgaben.
 
 ## WLAN-Zugang (Desktop-App)
 
-Läuft Mathsachs auf einem Rechner, können Tablets im **selben WLAN** die App im
+Läuft TaskTrophy auf einem Rechner, können Tablets im **selben WLAN** die App im
 Browser öffnen — ohne eigene Installation.
 
-1. Mathsachs auf dem Windows-, macOS- oder Linux-Rechner starten und geöffnet
+1. TaskTrophy auf dem Windows-, macOS- oder Linux-Rechner starten und geöffnet
    lassen.
 2. Unter **Einstellungen → WLAN-Zugang** Adresse und QR-Code ansehen.
 3. Auf dem Tablet die Adresse öffnen oder den QR-Code scannen.
@@ -182,11 +182,11 @@ Unter **Einstellungen → Klasse**:
 
 Über **Idee / Feedback** in der App oder per Mail:
 
-[Idee / Feedback zum Mathsachs Übungsprogramm.](mailto:info@my-smart-home-support.de?subject=Idee%20%2F%20Feedback%20zum%20Mathsachs%20%C3%9Cbungsprogramm.)
+[Idee / Feedback zum TaskTrophy Übungsprogramm.](mailto:info@my-smart-home-support.de?subject=Idee%20%2F%20Feedback%20zum%20TaskTrophy%20%C3%9Cbungsprogramm.)
 
 ## Lizenz
 
-Mathsachs steht unter der [MIT-Lizenz](LICENSE).
+TaskTrophy steht unter der [MIT-Lizenz](LICENSE).
 Copyright © 2026 Linus und Matthias Ulrich.
 
 ## Impressum

@@ -93,7 +93,7 @@ describe('Lehrercode', () => {
     expect(decoded).not.toMatch(/Vorname|Geräte-ID|Ada|88MXDZ92|88MX-DZ92/i)
     expect(TEACHER_CODE_REQUEST_BODY).not.toContain(TEACHER_CODE)
     expect(TEACHER_CODE_REQUEST_SUBJECT).toBe(
-      'Lehrercode für das Mathsachs Übungsprogramm.',
+      'Lehrercode für das TaskTrophy Übungsprogramm.',
     )
   })
 })

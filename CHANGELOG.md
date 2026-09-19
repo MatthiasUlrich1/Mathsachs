@@ -1,6 +1,6 @@
 # Changelog
 
-Alle nennenswerten Änderungen an **Mathsachs** werden in dieser Datei
+Alle nennenswerten Änderungen an **TaskTrophy** werden in dieser Datei
 dokumentiert.
 
 Das Format orientiert sich an
@@ -8,6 +8,14 @@ Das Format orientiert sich an
 der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
+
+## [0.27.51] – 2026-09-19
+
+### Geändert
+- **Rebrand (Anzeige):** Produktname **TaskTrophy** mit Untertitel
+  **Das Klassen-Duell**. Logo/Favicon (Trophy-T), Fenster-Titel, Manifest,
+  rechtliche und Teilen-Texte. Interne IDs bleiben unverändert (`appId`,
+  localStorage-Keys, Export-Schema, GitHub-Repo, Artifact-Namen).
 
 ## [0.27.50] – 2026-09-19
 

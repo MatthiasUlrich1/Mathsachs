@@ -54,14 +54,14 @@ describe('MIT license text', () => {
 describe('buildIdeenmelderMailto', () => {
   it('uses the exact subject string, encoded with encodeURIComponent', () => {
     expect(IDEENMELDER_SUBJECT).toBe(
-      'Idee / Feedback zum Mathsachs Übungsprogramm.',
+      'Idee / Feedback zum TaskTrophy Übungsprogramm.',
     )
     const href = buildIdeenmelderMailto()
     expect(href).toBe(
       `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(IDEENMELDER_SUBJECT)}`,
     )
     expect(href).toBe(
-      `mailto:info@my-smart-home-support.de?subject=${encodeURIComponent('Idee / Feedback zum Mathsachs Übungsprogramm.')}`,
+      `mailto:info@my-smart-home-support.de?subject=${encodeURIComponent('Idee / Feedback zum TaskTrophy Übungsprogramm.')}`,
     )
   })
 

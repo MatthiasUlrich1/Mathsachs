@@ -77,7 +77,7 @@ export function ExamProtocolSheet({
   return (
     <article className="sheet exam-protocol-print" aria-label="Klausurprotokoll">
       <header className="sheet__head">
-        <h1>Mathsachs — Klausurprotokoll</h1>
+        <h1>TaskTrophy — Klausurprotokoll</h1>
         <p>
           Schüler/in: <strong>{user}</strong> · Klausur: <strong>{title}</strong> ·
           erstellt am {printedAt}

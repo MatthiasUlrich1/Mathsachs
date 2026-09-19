@@ -56,7 +56,7 @@ export const buildExamProtocolHtml = (input: ExamProtocolExportInput): string =>
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <title>Mathsachs – Klausurprotokoll</title>
+  <title>TaskTrophy – Klausurprotokoll</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     body {
@@ -134,7 +134,7 @@ export const buildExamProtocolHtml = (input: ExamProtocolExportInput): string =>
     <span>Für PDF im Druckdialog „Als PDF speichern“ bzw. „Microsoft Print to PDF“ wählen.</span>
   </div>
   <main class="sheet">
-    <h1>Mathsachs — Klausurprotokoll</h1>
+    <h1>TaskTrophy — Klausurprotokoll</h1>
     <p class="meta">
       Schüler/in: <strong>${escapeHtml(input.user)}</strong> ·
       Klausur: <strong>${escapeHtml(input.title)}</strong> ·

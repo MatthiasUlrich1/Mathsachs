@@ -9,7 +9,7 @@ export function Supporters() {
         <div>
           <h2 className="section-title no-margin">Unterstützer</h2>
           <p className="muted small">
-            Organisationen, die Mathsachs unterstützen. Weitere Einträge
+            Organisationen, die TaskTrophy unterstützen. Weitere Einträge
             kommen in die Unterstützer-Liste.
           </p>
         </div>

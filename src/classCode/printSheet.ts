@@ -45,7 +45,7 @@ function buildHtml(rows: { code: string; name: string }[]): string {
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <title>Mathsachs \u2013 Klassencode drucken</title>
+  <title>TaskTrophy \u2013 Klassencode drucken</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: Arial, Helvetica, sans-serif; background: #fff; color: #000; }
@@ -159,14 +159,14 @@ function buildPage(code: string, name: string): string {
     { length: 30 },
     () => `
     <div class="slip">
-      <div class="slip__brand">Mathsachs</div>
+      <div class="slip__brand">TaskTrophy</div>
       <div class="slip__class">${esc(name)}</div>
       <div class="slip__code">${esc(formatted)}</div>
       <div class="slip__hint">Code in der App eingeben</div>
     </div>`,
   ).join('')
   return `<div class="page">
-  <div class="page-title">Mathsachs &ndash; ${esc(name)} &ndash; ${esc(formatted)}</div>
+  <div class="page-title">TaskTrophy &ndash; ${esc(name)} &ndash; ${esc(formatted)}</div>
   ${slips}
 </div>`
 }

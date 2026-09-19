@@ -81,7 +81,7 @@ export const decodeExam = (code: string): ExamSpec => {
   const trimmed = code.trim()
   if (!trimmed.startsWith(EXAM_CODE_PREFIX)) {
     throw new ExamCodeError(
-      'Das ist kein gültiger Mathsachs-Klausurcode (erwartet wird der Beginn „MSX1:“).',
+      'Das ist kein gültiger TaskTrophy-Klausurcode (erwartet wird der Beginn „MSX1:“).',
     )
   }
   const body = trimmed.slice(EXAM_CODE_PREFIX.length)

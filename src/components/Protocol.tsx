@@ -124,7 +124,7 @@ export function Protocol({ user, onExit }: Props) {
 
       <article className="sheet">
         <header className="sheet__head">
-          <h1>Mathsachs — Punkteprotokoll</h1>
+          <h1>TaskTrophy — Punkteprotokoll</h1>
           <p>
             Schüler/in: <strong>{user}</strong> · erstellt am{' '}
             {formatDate(protocol.generatedAt)}

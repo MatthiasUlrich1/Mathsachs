@@ -59,7 +59,7 @@ export function LanAccessCard({ status }: { status: LanServerStatus }) {
     <section className="card lan-card no-print" aria-label="WLAN-Zugang">
       <h2 className="section-title no-margin">WLAN-Zugang</h2>
       <p className="muted small">
-        Solange Mathsachs auf diesem Rechner geöffnet ist, können Geräte im
+        Solange TaskTrophy auf diesem Rechner geöffnet ist, können Geräte im
         selben WLAN die Übungs-App im Browser öffnen — ohne Installation. Die
         App muss laufen bleiben. Benutzer und Punkte liegen auf diesem Rechner
         und werden mit Tablets geteilt.
@@ -108,7 +108,7 @@ export function LanAccessCard({ status }: { status: LanServerStatus }) {
         Client-Isolation sehen Tablets den Rechner oft nicht. Es gibt kein
         Passwort: wer die Adresse kennt und im selben Netz ist, kann üben.
         Benutzerliste und Punkte sind dieselben wie in der Desktop-App und
-        aktualisieren sich gegenseitig, solange Mathsachs läuft.
+        aktualisieren sich gegenseitig, solange TaskTrophy läuft.
       </p>
     </section>
   )

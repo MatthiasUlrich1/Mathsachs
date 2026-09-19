@@ -10,7 +10,7 @@ export const GRADE_NOT_CLASS_MESSAGE =
   'Das ist ein Klassenstufencode. Punkte gehen nur an Klassencodes.'
 
 export const GRADE_PRIVACY_COPY =
-  'Online speichert Mathsachs nur den Stufennamen, die Klassennamen und die Punktesummen — keine Vornamen, keine Benutzerkonten und keine Geräte-IDs. Der Stufencode bleibt beim Lehrer. Schüler senden Punkte nur an ihren Klassencode, sehen aber die Stände aller Klassen der Stufe.'
+  'Online speichert TaskTrophy nur den Stufennamen, die Klassennamen und die Punktesummen — keine Vornamen, keine Benutzerkonten und keine Geräte-IDs. Der Stufencode bleibt beim Lehrer. Schüler senden Punkte nur an ihren Klassencode, sehen aber die Stände aller Klassen der Stufe.'
 
 export const GRADE_MANAGE_HINT =
   'Nur Lehrer legen eine Klassenstufe an oder tragen denselben Stufencode ein, um Klassencodes zuzuordnen und alle Klassenstände zu sehen. Eltern erstellen Klassencodes, aber keine Stufe. Klassenlehrer und Schüler tragen nur einen Klassencode ein.'

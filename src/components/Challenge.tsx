@@ -55,7 +55,7 @@ import { ChallengeProtocol } from './ChallengeProtocol'
 import type { Topic } from '../curriculum/types'
 
 const PRIVACY_COPY =
-  'Online speichert Mathsachs nur anonyme Challenge-Summen (Klassenname und Punkte) — keine Vornamen, keine Benutzer- oder Geräte-IDs. Der beste Schüler wird nicht online genannt; Nachweis ist das lokale Challenge-Protokoll.'
+  'Online speichert TaskTrophy nur anonyme Challenge-Summen (Klassenname und Punkte) — keine Vornamen, keine Benutzer- oder Geräte-IDs. Der beste Schüler wird nicht online genannt; Nachweis ist das lokale Challenge-Protokoll.'
 
 interface Props {
   user: string

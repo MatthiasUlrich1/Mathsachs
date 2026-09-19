@@ -105,7 +105,7 @@ function createWindow() {
     minWidth: 420,
     minHeight: 720,
     backgroundColor: '#0b1120',
-    title: 'Mathsachs',
+    title: 'TaskTrophy',
     icon: path.join(__dirname, '..', 'build', 'icon.png'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.cjs'),
@@ -236,7 +236,7 @@ function registerPrintIpc() {
     const printWin = new BrowserWindow({
       width: 860,
       height: 700,
-      title: 'Mathsachs – Drucken',
+      title: 'TaskTrophy – Drucken',
       backgroundColor: '#ffffff',
       webPreferences: {
         contextIsolation: true,

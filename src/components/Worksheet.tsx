@@ -62,7 +62,7 @@ export function Worksheet({ topic, areaTitle, gradeTitle, onExit }: Props) {
 
       <article className="sheet">
         <header className="sheet__head">
-          <h1>Mathsachs — Übungsblatt</h1>
+          <h1>TaskTrophy — Übungsblatt</h1>
           <p>
             {gradeTitle} · {areaTitle} · <strong>{topic.title}</strong>
           </p>

@@ -13,14 +13,14 @@ import {
 describe('classCodeShareText', () => {
   it('uses the formatted code and German quotation marks', () => {
     expect(classCodeShareText('Klasse 6a', 'abcd2345')).toBe(
-      'Mathsachs-Klassencode für „Klasse 6a“: ABCD-2345',
+      'TaskTrophy-Klassencode für „Klasse 6a“: ABCD-2345',
     )
   })
 
   it('falls back to Klasse when the name is blank', () => {
     expect(classCodeShareLabel('  ')).toBe(CLASS_CODE_SHARE_DEFAULT_NAME)
     expect(classCodeShareText('', 'ABCD2345')).toBe(
-      'Mathsachs-Klassencode für „Klasse“: ABCD-2345',
+      'TaskTrophy-Klassencode für „Klasse“: ABCD-2345',
     )
   })
 })

@@ -1,5 +1,5 @@
 /**
- * Local organisations that support Mathsachs.
+ * Local organisations that support TaskTrophy.
  * Add a new entry here — footer and Einstellungen → Unterstützer pick it up.
  */
 export interface Supporter {

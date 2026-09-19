@@ -1,5 +1,5 @@
 /** German subject for Klausurcode mail / share. */
-export const EXAM_CODE_SHARE_SUBJECT = 'Mathsachs Klausurcode'
+export const EXAM_CODE_SHARE_SUBJECT = 'TaskTrophy Klausurcode'
 
 const EXAM_CODE_SHARE_HINT =
   'Schüler öffnet die App → Klausur schreiben → Code eingeben.'
@@ -8,7 +8,7 @@ const EXAM_CODE_SHARE_HINT =
 export function examCodeShareText(code: string, title?: string): string {
   const trimmed = title?.trim()
   const headline = trimmed
-    ? `Mathsachs Klausurcode für „${trimmed}“:`
+    ? `TaskTrophy Klausurcode für „${trimmed}“:`
     : `${EXAM_CODE_SHARE_SUBJECT}:`
   return `${headline}\n${code}\n\n${EXAM_CODE_SHARE_HINT}`
 }

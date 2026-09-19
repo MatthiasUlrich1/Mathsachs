@@ -147,7 +147,7 @@ export function ChallengeProtocol({ user, challenge, onExit }: Props) {
 
       <article className="sheet">
         <header className="sheet__head">
-          <h1>Mathsachs — Challenge-Protokoll</h1>
+          <h1>TaskTrophy — Challenge-Protokoll</h1>
           <p>
             Schüler/in: <strong>{user}</strong> · Challenge:{' '}
             <strong>{challenge.name}</strong> · erstellt am{' '}

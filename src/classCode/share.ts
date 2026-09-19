@@ -8,13 +8,13 @@ export function classCodeShareLabel(name: string): string {
   return trimmed || CLASS_CODE_SHARE_DEFAULT_NAME
 }
 
-/** German share text, e.g. Mathsachs-Klassencode für „Klasse 6a“: ABCD-2345 */
+/** German share text, e.g. TaskTrophy-Klassencode für „Klasse 6a“: ABCD-2345 */
 export function classCodeShareText(name: string, code: string): string {
-  return `Mathsachs-Klassencode für „${classCodeShareLabel(name)}“: ${formatClassCode(code)}`
+  return `TaskTrophy-Klassencode für „${classCodeShareLabel(name)}“: ${formatClassCode(code)}`
 }
 
 export function classCodeShareSubject(name: string): string {
-  return `Mathsachs-Klassencode für „${classCodeShareLabel(name)}“`
+  return `TaskTrophy-Klassencode für „${classCodeShareLabel(name)}“`
 }
 
 export function classCodeWhatsAppUrl(name: string, code: string): string {

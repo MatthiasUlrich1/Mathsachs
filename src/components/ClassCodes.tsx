@@ -55,7 +55,7 @@ import {
 } from '../lib/storage'
 
 const PRIVACY_COPY =
-  'Online speichert Mathsachs nur den Klassennamen und die Summe der Punkte — keine Vornamen und keine Geräte-IDs. Wer den Code kennt, kann die Stände sehen und Punkte hinzufügen. Behandle den Code wie ein Passwort.'
+  'Online speichert TaskTrophy nur den Klassennamen und die Summe der Punkte — keine Vornamen und keine Geräte-IDs. Wer den Code kennt, kann die Stände sehen und Punkte hinzufügen. Behandle den Code wie ein Passwort.'
 
 export function ClassCodes({
   user,
@@ -362,7 +362,7 @@ export function ClassCodes({
           <div className="class-codes__block">
             <span className="field__label">Klassencode erstellen</span>
             <p className="muted small">
-              In der App einen Namen eingeben — Mathsachs erzeugt den Code
+              In der App einen Namen eingeben — TaskTrophy erzeugt den Code
               automatisch. Niemand braucht dafür Cloudflare. Der neue Code
               wird nicht automatisch aktiv.
             </p>

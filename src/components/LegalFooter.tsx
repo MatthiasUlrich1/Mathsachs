@@ -57,7 +57,7 @@ export function LegalFooter({
           </nav>
         )}
         <p>
-          Mathsachs {version} · Übungsprogramm nach sächsischem Lehrplan ·
+          TaskTrophy {version} · Übungsprogramm nach sächsischem Lehrplan ·
           erweiterbar für weitere Klassen und Fächer
           {installCount != null && installCount > 0
             ? ` · ${installCount.toLocaleString('de-DE')} Installationen`
@@ -123,7 +123,7 @@ export function LegalFooter({
           <p className="muted small">
             Benutzerliste und Punkteprotokoll bleiben auf dem Rechner (bzw. im
             lokalen WLAN). Es gibt keine Nutzerkonten. Ein anonymer Zähler
-            speichert bei Cloudflare nur, wie oft Mathsachs erstmals gestartet
+            speichert bei Cloudflare nur, wie oft TaskTrophy erstmals gestartet
             wurde — ohne Geräte-ID und ohne Namen.
           </p>
         </LegalDialog>
@@ -132,7 +132,7 @@ export function LegalFooter({
       {dialog === 'lizenz' && (
         <LegalDialog title="Lizenz" onClose={() => setDialog(null)}>
           <p className="muted small">
-            Mathsachs steht unter der MIT-Lizenz. Der vollständige Text:
+            TaskTrophy steht unter der MIT-Lizenz. Der vollständige Text:
           </p>
           <pre className="license-text">{MIT_LICENSE_TEXT}</pre>
         </LegalDialog>

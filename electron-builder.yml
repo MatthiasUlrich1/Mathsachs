@@ -54,12 +54,12 @@ linux:
     - deb
   category: Education
   icon: build/icon.png
-  maintainer: Mathsachs
-  synopsis: Fast mental-math practice
-  description: Mathsachs is a fast, modern mental-math practice desktop app.
+  maintainer: TaskTrophy
+  synopsis: Das Klassen-Duell — Übungsprogramm
+  description: TaskTrophy — Das Klassen-Duell. Lehrplanorientiertes Übungsprogramm.
   desktop:
     entry:
-      Name: Mathsachs
-      Comment: Fast mental-math practice
+      Name: TaskTrophy
+      Comment: Das Klassen-Duell — Übungsprogramm
 appImage:
   artifactName: Mathsachs-${version}.${ext}

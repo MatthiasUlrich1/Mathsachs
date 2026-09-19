@@ -378,7 +378,7 @@ export function GradeCodes({
         <>
           <span className="field__label">Klassenstufencode erstellen</span>
           <p className="muted small">
-            Name der Stufe, z. B. 6. Klasse. Mathsachs erzeugt den Stufencode.
+            Name der Stufe, z. B. 6. Klasse. TaskTrophy erzeugt den Stufencode.
             Teile ihn nur mit anderen Lehrkräften — nicht mit der Klasse.
           </p>
           <div className="inline-form">

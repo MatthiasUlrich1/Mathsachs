@@ -10,11 +10,11 @@ export const IMPRESSUM_LINES = [
 
 /** One-liner for Impressum / Datenschutz (anonymous class totals at Cloudflare). */
 export const DATENSCHUTZ_NOTE =
-  'Bei aktivem Klassencode speichert Mathsachs online nur den Klassennamen und anonyme Punktesummen bei Cloudflare — keine Vornamen und keine Geräte-IDs. Zusätzlich gibt es einen anonymen Installationszähler (+1 beim ersten Start, ohne Gerätekennung). Der Klassencode ist das Geheimnis.'
+  'Bei aktivem Klassencode speichert TaskTrophy online nur den Klassennamen und anonyme Punktesummen bei Cloudflare — keine Vornamen und keine Geräte-IDs. Zusätzlich gibt es einen anonymen Installationszähler (+1 beim ersten Start, ohne Gerätekennung). Der Klassencode ist das Geheimnis.'
 
 /** Exact subject as specified for the Ideenmelder. */
 export const IDEENMELDER_SUBJECT =
-  'Idee / Feedback zum Mathsachs Übungsprogramm.'
+  'Idee / Feedback zum TaskTrophy Übungsprogramm.'
 
 /** Full MIT license text (must stay in sync with the root LICENSE file). */
 export const MIT_LICENSE_TEXT = `MIT License

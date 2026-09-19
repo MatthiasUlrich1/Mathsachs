@@ -14,10 +14,10 @@ const TEACHER_CODE_GATE = '62b34d22'
 export const TEACHER_CODE_REQUEST_LABEL = 'Lehrercode anfordern'
 
 export const TEACHER_CODE_REQUEST_SUBJECT =
-  'Lehrercode für das Mathsachs Übungsprogramm.'
+  'Lehrercode für das TaskTrophy Übungsprogramm.'
 
 export const TEACHER_CODE_REQUEST_BODY = [
-  'Bitte den gemeinsamen Lehrercode für Mathsachs senden.',
+  'Bitte den gemeinsamen Lehrercode für TaskTrophy senden.',
   '',
   'Der Code ist für alle Lehrer gleich. Er verhindert, dass Schüler sich als',
   'Lehrer oder Klassenlehrer eintragen und Stufen oder Klassen anlegen.',

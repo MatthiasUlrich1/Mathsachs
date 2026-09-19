@@ -1021,16 +1021,17 @@ export default function App() {
 function Brand({ compact }: { compact?: boolean }) {
   return (
     <div className={`brand ${compact ? 'brand--compact' : ''}`}>
-      <span className="brand__mark" aria-hidden="true">
-        ÷
-      </span>
+      <img
+        className="brand__mark"
+        src={`${import.meta.env.BASE_URL}favicon.svg`}
+        alt=""
+        width={48}
+        height={48}
+        aria-hidden="true"
+      />
       <div>
-        <h1 className="brand__title">Mathsachs</h1>
-        {!compact && (
-          <p className="brand__tag">
-            Üben nach Lehrplan — Gymnasium Mathematik (Sachsen)
-          </p>
-        )}
+        <h1 className="brand__title">TaskTrophy</h1>
+        {!compact && <p className="brand__tag">Das Klassen-Duell</p>}
       </div>
     </div>
   )

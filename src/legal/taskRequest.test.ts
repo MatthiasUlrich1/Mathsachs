@@ -99,7 +99,7 @@ describe('task request Vorgaben', () => {
     expect(decodeURIComponent(href)).toContain('Berechne 1/2 + 1/3.')
     expect(href).not.toContain(' ')
     expect(TASK_REQUEST_SUBJECT).toBe(
-      'Neue Aufgabe für das Mathsachs Übungsprogramm.',
+      'Neue Aufgabe für das TaskTrophy Übungsprogramm.',
     )
   })
 

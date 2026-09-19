@@ -9,7 +9,7 @@ import { CONTACT_EMAIL } from './content'
 
 /** Exact subject for the teacher task-request mail. */
 export const TASK_REQUEST_SUBJECT =
-  'Neue Aufgabe für das Mathsachs Übungsprogramm.'
+  'Neue Aufgabe für das TaskTrophy Übungsprogramm.'
 
 /** Placeholder when the Aufgabenbeispiel is attached to the mail instead. */
 export const TASK_REQUEST_ATTACHMENT_NOTE = 'siehe Anhang'

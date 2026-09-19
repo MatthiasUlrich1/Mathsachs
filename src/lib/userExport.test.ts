@@ -41,7 +41,7 @@ describe('parseUserExport', () => {
   it('rejects a file without mathsachs_export_version', () => {
     const result = parseUserExport(JSON.stringify({ user: sampleUser }))
     expect(result.ok).toBe(false)
-    if (!result.ok) expect(result.error).toContain('Mathsachs-Exportdatei')
+    if (!result.ok) expect(result.error).toContain('TaskTrophy-Exportdatei')
   })
 
   it('rejects an unknown version', () => {

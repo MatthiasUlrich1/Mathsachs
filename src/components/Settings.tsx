@@ -46,7 +46,7 @@ const SECTION_HINTS: Record<SettingsSectionId, string> = {
   faulty: 'Gemeldete fehlerhafte Aufgaben einsehen',
   lan: 'Tablets im selben WLAN verbinden',
   profile: 'Rolle, Lehrercode, Rechte und Benutzerwechsel',
-  supporters: 'Organisationen, die Mathsachs unterstützen',
+  supporters: 'Organisationen, die TaskTrophy unterstützen',
 }
 
 interface Props {
@@ -289,7 +289,7 @@ export function Settings({
             <p className="muted small">
               WLAN-Zugang gibt es nur in der installierten Desktop-App. Im Browser
               auf einem Tablet oder Handy siehst du keine Adresse — du bist bereits
-              über das WLAN verbunden, wenn Mathsachs auf dem Rechner geöffnet ist.
+              über das WLAN verbunden, wenn TaskTrophy auf dem Rechner geöffnet ist.
             </p>
           </section>
         ))}

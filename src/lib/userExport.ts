@@ -54,7 +54,7 @@ export function parseUserExport(
       ok: false,
       error:
         typeof obj.mathsachs_export_version === 'undefined'
-          ? 'Keine Mathsachs-Exportdatei.'
+          ? 'Keine TaskTrophy-Exportdatei.'
           : `Unbekannte Export-Version (${String(obj.mathsachs_export_version)}).`,
     }
   }
