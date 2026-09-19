@@ -5,7 +5,7 @@ Physik an sächsischen Schulen. Schülerinnen und Schüler wählen Themen aus de
 Lehrplan, üben am Bildschirm oder drucken Übungsblätter. Lehrkräfte stellen
 **Übungsklausuren** zusammen und verteilen sie per Code oder Link.
 
-Aktuelle Version: **0.27.51** · [Changelog](CHANGELOG.md) ·
+Aktuelle Version: **0.27.52** · [Changelog](CHANGELOG.md) ·
 [Alle Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases) ·
 [Web-App](https://matthiasulrich1.github.io/Mathsachs/)
 

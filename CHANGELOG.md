@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.52] – 2026-09-19
+
+### Behoben
+- **Header-Brand:** Im Kopfbereich erscheint das generierte TaskTrophy-Logo
+  (PNG mit Wordmark, Trophy-T und Untertitel **Das Klassen-Duell**) statt des
+  vereinfachten Favicon-SVG und separater Textzeilen.
+
 ## [0.27.51] – 2026-09-19
 
 ### Geändert

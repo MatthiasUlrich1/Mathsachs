@@ -12,34 +12,26 @@
   max-width: 780px;
 }
 
-/* Brand */
+/* Brand — full lockup PNG (TaskTrophy + Das Klassen-Duell) */
 .brand {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 0;
 }
 
-.brand--compact .brand__title {
-  font-size: 22px;
-}
-
-.brand__mark {
+.brand__logo {
   display: block;
-  width: 48px;
-  height: 48px;
-  border-radius: 13px;
-  object-fit: cover;
+  width: 168px;
+  height: 168px;
+  border-radius: 18px;
+  object-fit: contain;
   box-shadow: 0 10px 30px rgba(5, 18, 43, 0.45);
 }
 
-.brand__title {
-  font-size: 26px;
-  letter-spacing: -0.02em;
-}
-
-.brand__tag {
-  color: var(--muted);
-  font-size: 14px;
+.brand--compact .brand__logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 14px;
 }
 
 /* Topbar */
