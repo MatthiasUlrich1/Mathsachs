@@ -491,7 +491,9 @@ const kuerzen: Topic = {
     url: 'https://de.wikipedia.org/wiki/Bruchrechnung',
   },
   generate: (rng: Rng) => {
-    const base = makeFraction(randInt(rng, 1, 8), randInt(rng, 2, 9))
+    const rawN = randInt(rng, 1, 7)
+    const rawD = randInt(rng, rawN + 1, 9)
+    const base = makeFraction(rawN, rawD)
     const k = randInt(rng, 2, 6)
     const n = base.n * k
     const d = base.d * k

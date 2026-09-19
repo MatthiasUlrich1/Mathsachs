@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.46] – 2026-09-19
+
+### Behoben
+- **Brüche kürzen (Klasse 6, Balken/Kreisdiagramm):** Generator erzeugte unechte
+  oder ganzzahlige Anteile (`n ≥ d`). Die SVG-Darstellung füllt dann nur ein
+  Ganzes (alles eingefärbt), während Lösung/Erklärung den unechten Bruch nannten
+  (z. B. Bild 8/8 vs. Antwort 4/3, oder 3/3 → 1/1, 6/3 → 2/1). Visuelle Varianten
+  erzeugen jetzt nur noch echte, kürzbare Teilbrüche (`0 < Zähler < Nenner`,
+  gemeinsamer Teiler > 1); Segmentanzahl und Einfärbung entsprechen dem
+  ungekürzten Bruch der Erklärung.
+
 ## [0.27.45] – 2026-09-19
 
 ### Hinzugefügt

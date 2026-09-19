@@ -41,6 +41,27 @@ import {
 import { conversionTopic, FLAECHE, LAENGE } from './units'
 import type { Grade, Topic } from './types'
 
+/**
+ * Proper fraction that still needs shortening when shown as a diagram:
+ * reduced answer base with n < d, expanded by k≥2 so the visual is a partial
+ * amount (never a full whole / improper fill that bar/pie SVG cannot show).
+ */
+function reducibleProperForVisual(rng: Rng): {
+  base: Fraction
+  n: number
+  d: number
+  g: number
+} {
+  const rawN = randInt(rng, 1, 5)
+  const rawD = randInt(rng, rawN + 1, 8)
+  const base = makeFraction(rawN, rawD)
+  // makeFraction reduces; keep proper and expand so gcd(unsimplified) > 1
+  const k = randInt(rng, 2, 4)
+  const n = base.n * k
+  const d = base.d * k
+  return { base, n, d, g: gcd(n, d) }
+}
+
 /** Side-by-side fraction diagrams for comparison tasks. */
 function twoFractionVisual(a: Fraction, b: Fraction, kind: 'circle' | 'bar'): string {
   const left =
@@ -71,7 +92,10 @@ const kuerzen: Topic = {
   },
   generate: mixedVariants(
     (rng: Rng) => {
-      const base = makeFraction(randInt(rng, 1, 8), randInt(rng, 2, 9))
+      // Proper base so “vollständig gekürzt” is never 1/1 or an integer like 2/1
+      const rawN = randInt(rng, 1, 7)
+      const rawD = randInt(rng, rawN + 1, 9)
+      const base = makeFraction(rawN, rawD)
       const k = randInt(rng, 2, 6)
       const n = base.n * k
       const d = base.d * k
@@ -85,11 +109,7 @@ const kuerzen: Topic = {
       })
     },
     (rng: Rng) => {
-      const base = makeFraction(randInt(rng, 1, 5), randInt(rng, 2, 8))
-      const k = randInt(rng, 2, 4)
-      const n = base.n * k
-      const d = base.d * k
-      const g = gcd(n, d)
+      const { base, n, d, g } = reducibleProperForVisual(rng)
       return {
         ...fractionTask({
           question: 'Welcher gekürzte Bruchanteil ist im Kreisdiagramm eingefärbt?',
@@ -102,11 +122,7 @@ const kuerzen: Topic = {
       }
     },
     (rng: Rng) => {
-      const base = makeFraction(randInt(rng, 1, 5), randInt(rng, 2, 8))
-      const k = randInt(rng, 2, 4)
-      const n = base.n * k
-      const d = base.d * k
-      const g = gcd(n, d)
+      const { base, n, d, g } = reducibleProperForVisual(rng)
       return {
         ...fractionTask({
           question: 'Welcher gekürzte Bruchanteil ist im Balken eingefärbt?',
