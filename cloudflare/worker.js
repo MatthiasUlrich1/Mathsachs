@@ -13,8 +13,9 @@
  * POST /stats/install 5 / 24h (anonymous install ping),
  * GET /stats/install 60,
  * POST /reports/tasks 10 / 1h (faulty-task reports),
+ * POST /reports/tasks/status 60 (anonymous status lookup by report ids),
  * GET /reports/tasks 60 (requires Bearer REPORTS_TOKEN),
- * PATCH /reports/tasks/:id 60 (status, REPORTS_TOKEN),
+ * PATCH /reports/tasks/:id 60 (status + optional replyMessage, REPORTS_TOKEN),
  * DELETE /reports/tasks/:id 30 (REPORTS_TOKEN),
  * PUT grade membership 30, POST points 60.
  * GET / (health) is not rate-limited. Raise GET/DELETE here if a class page
@@ -24,15 +25,16 @@
  * anonymous challenge sums, class exam assignments (name + MSX1 code +
  * anonymous solve counts), a single anonymous install counter, and
  * faulty-task reports (contentId + short comment + optional topic/question
- * snippets + status open|done — never pupil names, user ids, emails or
- * device identifiers).
+ * snippets + status open|done|fixed + optional replyMessage — never pupil
+ * names, user ids, emails or device identifiers).
  * GET /grades never returns member Klassencodes. Points are accepted only
  * on class records. Challenge POST never stores names.
  * POST /stats/install stores only `{ count }` — no IP persistence beyond
  * the short-lived rate-limit map in Worker memory.
  * GET/PATCH/DELETE /reports/tasks require Worker secret REPORTS_TOKEN
  * (Authorization: Bearer … or X-Reports-Token). Must match the app’s
- * REPORTS_READ_TOKEN. Public POST for new reports stays open.
+ * REPORTS_READ_TOKEN. Public POST for new reports and anonymous status
+ * lookup by known report ids stay open (no PII).
  */
 // @ts-nocheck — plain Worker JS; Cloudflare editor checkJs unions are noisy.
 
@@ -486,6 +488,7 @@ const MAX_REPORT_QUESTION = 280
 const MAX_REPORT_TITLE = 120
 const MAX_REPORT_TOPIC_ID = 80
 const MAX_REPORT_VERSION = 32
+const MAX_REPORT_STATUS_LOOKUP = 40
 
 function trimReportText(value, max) {
   if (typeof value !== 'string') return ''
@@ -494,10 +497,16 @@ function trimReportText(value, max) {
   return trimmed.length > max ? trimmed.slice(0, max) : trimmed
 }
 
+/** Sanitize Entwickler reply shown to the anonymous reporter (max 500). */
+export function sanitizeReportReplyMessage(value) {
+  return trimReportText(value, MAX_REPORT_COMMENT)
+}
+
 function normalizeReportStatus(value) {
   if (typeof value !== 'string') return 'open'
   const trimmed = value.trim().toLowerCase()
   if (trimmed === 'done' || trimmed === 'erledigt') return 'done'
+  if (trimmed === 'fixed' || trimmed === 'korrigiert') return 'fixed'
   return 'open'
 }
 
@@ -525,6 +534,11 @@ function parseTaskReports(raw) {
     const question = trimReportText(item.question, MAX_REPORT_QUESTION)
     const appVersion = trimReportText(item.appVersion, MAX_REPORT_VERSION)
     const status = normalizeReportStatus(item.status)
+    const replyMessage = sanitizeReportReplyMessage(item.replyMessage)
+    const fixedAt =
+      typeof item.fixedAt === 'number' && Number.isFinite(item.fixedAt)
+        ? Math.floor(item.fixedAt)
+        : undefined
     out.push({
       id,
       at,
@@ -536,6 +550,8 @@ function parseTaskReports(raw) {
       ...(areaTitle ? { areaTitle } : {}),
       ...(question ? { question } : {}),
       ...(appVersion ? { appVersion } : {}),
+      ...(replyMessage ? { replyMessage } : {}),
+      ...(fixedAt !== undefined ? { fixedAt } : {}),
     })
   }
   return out
@@ -903,6 +919,7 @@ export const RATE_LIMITS = {
   installGet: { limit: 60, windowMs: 60_000 },
   /** Faulty-task reports — low hourly cap against spam. */
   reportPost: { limit: 10, windowMs: 60 * 60 * 1000 },
+  reportStatus: { limit: 60, windowMs: 60_000 },
   reportGet: { limit: 60, windowMs: 60_000 },
   reportPatch: { limit: 60, windowMs: 60_000 },
   reportDelete: { limit: 30, windowMs: 60_000 },
@@ -2154,6 +2171,9 @@ export async function handleRequest(request, env) {
   if (path === '/reports/tasks' && method === 'POST') {
     return handleCreateTaskReport(request, env)
   }
+  if (path === '/reports/tasks/status' && method === 'POST') {
+    return handleLookupTaskReportStatus(request, env)
+  }
   if (path === '/reports/tasks' && method === 'GET') {
     return handleListTaskReports(request, env)
   }
@@ -2291,6 +2311,59 @@ async function handleListTaskReports(request, env) {
   return json(request, 200, { reports })
 }
 
+async function handleLookupTaskReportStatus(request, env) {
+  if (
+    !rateLimit(
+      `reportStatus:${clientKey(request)}`,
+      RATE_LIMITS.reportStatus.limit,
+      RATE_LIMITS.reportStatus.windowMs,
+    )
+  ) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE_LIMIT')
+  }
+  if (!env.CLASSES) {
+    return errorJson(request, 503, 'KV-Bindung CLASSES fehlt.', 'NO_KV')
+  }
+
+  let body
+  try {
+    body = await readJson(request)
+  } catch {
+    return errorJson(request, 400, 'Ungültiges JSON.', 'INVALID_JSON')
+  }
+
+  const rawIds = body && Array.isArray(body.ids) ? body.ids : null
+  if (!rawIds) {
+    return errorJson(request, 400, 'IDs fehlen.', 'INVALID_IDS')
+  }
+  const ids = []
+  const seen = new Set()
+  for (const value of rawIds) {
+    if (typeof value !== 'string') continue
+    const id = value.trim()
+    if (!id || seen.has(id)) continue
+    seen.add(id)
+    ids.push(id)
+    if (ids.length >= MAX_REPORT_STATUS_LOOKUP) break
+  }
+
+  const existing = parseTaskReports(parseRaw(await env.CLASSES.get(taskReportsKey())))
+  const byId = new Map(existing.map((row) => [row.id, row]))
+  const reports = []
+  for (const id of ids) {
+    const row = byId.get(id)
+    if (!row) continue
+    reports.push({
+      id: row.id,
+      status: row.status,
+      contentId: row.contentId,
+      ...(row.replyMessage ? { replyMessage: row.replyMessage } : {}),
+      ...(typeof row.fixedAt === 'number' ? { fixedAt: row.fixedAt } : {}),
+    })
+  }
+  return json(request, 200, { reports })
+}
+
 async function handlePatchTaskReport(request, env, rawId) {
   if (
     !rateLimit(
@@ -2320,17 +2393,39 @@ async function handlePatchTaskReport(request, env, rawId) {
     return errorJson(request, 400, 'Status fehlt.', 'INVALID_STATUS')
   }
   const statusRaw = typeof body.status === 'string' ? body.status.trim().toLowerCase() : ''
-  if (statusRaw !== 'open' && statusRaw !== 'done' && statusRaw !== 'erledigt') {
+  if (
+    statusRaw !== 'open' &&
+    statusRaw !== 'done' &&
+    statusRaw !== 'erledigt' &&
+    statusRaw !== 'fixed' &&
+    statusRaw !== 'korrigiert'
+  ) {
     return errorJson(request, 400, 'Ungültiger Status.', 'INVALID_STATUS')
   }
   const status = normalizeReportStatus(statusRaw)
+  const hasReplyField = Object.prototype.hasOwnProperty.call(body, 'replyMessage')
+  const replyMessage = hasReplyField ? sanitizeReportReplyMessage(body.replyMessage) : undefined
 
   const existing = parseTaskReports(parseRaw(await env.CLASSES.get(taskReportsKey())))
   const index = existing.findIndex((row) => row.id === id)
   if (index < 0) {
     return errorJson(request, 404, 'Meldung nicht gefunden.', 'NOT_FOUND')
   }
-  const updated = { ...existing[index], status }
+  const prev = existing[index]
+  const updated = { ...prev, status }
+  if (status === 'fixed') {
+    updated.fixedAt =
+      typeof prev.fixedAt === 'number' && Number.isFinite(prev.fixedAt)
+        ? prev.fixedAt
+        : Date.now()
+    if (hasReplyField) {
+      if (replyMessage) updated.replyMessage = replyMessage
+      else delete updated.replyMessage
+    }
+  } else if (status === 'open' || status === 'done') {
+    delete updated.replyMessage
+    delete updated.fixedAt
+  }
   const next = [...existing]
   next[index] = updated
   await env.CLASSES.put(taskReportsKey(), JSON.stringify({ reports: next }))

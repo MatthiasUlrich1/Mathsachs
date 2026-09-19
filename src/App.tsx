@@ -64,9 +64,15 @@ import { parseExamHash } from './exam/examCode'
 import { countOpenClassExams } from './exam/openClassExams'
 import {
   countOpenTaskReports,
+  fetchMyReportUpdates,
   fetchOpenTaskReportCount,
+  listMyStoredReports,
+  markMyReportFixedSeen,
+  unseenFixedUpdates,
   type TaskReport,
+  type TaskReportUpdate,
 } from './lib/taskReports'
+import { TaskReportFixedBanner } from './components/TaskReportFixedBanner'
 import { fetchInstallCount, reportFirstInstall } from './lib/installStats'
 import { useUpdateCheck } from './updates/useUpdateCheck'
 import { useLanStatus } from './lan/useLanStatus'
@@ -124,6 +130,7 @@ export default function App() {
   const [examCodeFromLink, setExamCodeFromLink] = useState<string | null>(null)
   const [openExamCount, setOpenExamCount] = useState(0)
   const [openFaultyReportCount, setOpenFaultyReportCount] = useState(0)
+  const [fixedReportNotices, setFixedReportNotices] = useState<TaskReportUpdate[]>([])
   const [installCount, setInstallCount] = useState<number | null>(null)
 
   const [loaded, setLoaded] = useState<LoadedGrade[]>([])
@@ -171,6 +178,19 @@ export default function App() {
       ) : updateCheck.building ? (
         <UpdateBuildingBanner onDismiss={updateCheck.dismissBuilding} />
       ) : null
+  const fixedReportBanners =
+    hideUpdateBanner || fixedReportNotices.length === 0
+      ? null
+      : fixedReportNotices.map((update) => (
+          <TaskReportFixedBanner
+            key={update.id}
+            update={update}
+            onDismiss={(id) => {
+              markMyReportFixedSeen(id)
+              setFixedReportNotices((prev) => prev.filter((row) => row.id !== id))
+            }}
+          />
+        ))
 
   useEffect(() => {
     if (activeUser) {
@@ -374,6 +394,33 @@ export default function App() {
     }
   }, [storageReady, activeUser, userRole, view.name])
 
+  useEffect(() => {
+    if (!storageReady || !activeUser) {
+      setFixedReportNotices([])
+      return
+    }
+    if (listMyStoredReports().length === 0) {
+      setFixedReportNotices([])
+      return
+    }
+    let cancelled = false
+    const refresh = () => {
+      void fetchMyReportUpdates()
+        .then((updates) => {
+          if (!cancelled) setFixedReportNotices(unseenFixedUpdates(updates))
+        })
+        .catch(() => {
+          /* offline — keep last known notices */
+        })
+    }
+    refresh()
+    const timer = window.setInterval(refresh, 60_000)
+    return () => {
+      cancelled = true
+      window.clearInterval(timer)
+    }
+  }, [storageReady, activeUser, view.name])
+
   const applyFaultyReports = (reports: TaskReport[]) => {
     setOpenFaultyReportCount(countOpenTaskReports(reports))
   }
@@ -517,6 +564,7 @@ export default function App() {
     return (
       <main className="app">
         {updateBanner}
+        {fixedReportBanners}
         <Brand />
         <section className="card">
           <h2 className="section-title">Wer übt heute?</h2>
@@ -531,6 +579,7 @@ export default function App() {
     return (
       <main className="app">
         {updateBanner}
+        {fixedReportBanners}
         <Brand />
         <section className="card">
           <h2 className="section-title">Wer übt heute?</h2>
@@ -658,6 +707,7 @@ export default function App() {
     <main className="app app--wide">
       {curriculumBanner}
       {updateBanner}
+      {fixedReportBanners}
       <header className="topbar">
         <Brand compact />
         <nav className="topbar__nav">

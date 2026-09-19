@@ -13,6 +13,7 @@ import worker, {
   isoWeekKey as workerIsoWeekKey,
   publicIdFromCode as workerPublicIdFromCode,
   resetRateLimitsForTests,
+  sanitizeReportReplyMessage,
   schoolYearStartYear as workerSchoolYearStartYear,
   summarizeDays as workerSummarizeDays,
 } from './worker.js'
@@ -210,6 +211,7 @@ describe('Cloudflare Worker API', () => {
       installPing: { limit: 5, windowMs: 24 * 60 * 60 * 1000 },
       installGet: { limit: 60, windowMs: 60_000 },
       reportPost: { limit: 10, windowMs: 60 * 60 * 1000 },
+      reportStatus: { limit: 60, windowMs: 60_000 },
       reportGet: { limit: 60, windowMs: 60_000 },
       reportPatch: { limit: 60, windowMs: 60_000 },
       reportDelete: { limit: 30, windowMs: 60_000 },
@@ -981,5 +983,89 @@ describe('Challenge Worker API', () => {
     )
     const emptyBody = (await listedEmpty.json()) as { reports: unknown[] }
     expect(emptyBody.reports).toHaveLength(0)
+  })
+
+  it('sanitizes Entwickler reply messages and notifies via fixed status lookup', async () => {
+    expect(sanitizeReportReplyMessage('  hallo  ')).toBe('hallo')
+    expect(sanitizeReportReplyMessage('x'.repeat(600)).length).toBe(500)
+    expect(sanitizeReportReplyMessage('   ')).toBe('')
+    expect(sanitizeReportReplyMessage(null)).toBe('')
+
+    const kv = { ...env(), REPORTS_TOKEN: 'test-reports-token' }
+    const created = await worker.fetch(
+      request('/reports/tasks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contentId: 6453, comment: 'Fehler in der Lösung' }),
+      }),
+      kv,
+    )
+    const { id } = (await created.json()) as { id: string }
+
+    const fixed = await worker.fetch(
+      request(`/reports/tasks/${id}`, {
+        method: 'PATCH',
+        headers: {
+          Authorization: 'Bearer test-reports-token',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          status: 'korrigiert',
+          replyMessage: `  Bitte erneut versuchen. ${'y'.repeat(600)}`,
+        }),
+      }),
+      kv,
+    )
+    expect(fixed.status).toBe(200)
+    const fixedBody = (await fixed.json()) as {
+      report: {
+        status: string
+        replyMessage: string
+        fixedAt: number
+      }
+    }
+    expect(fixedBody.report.status).toBe('fixed')
+    expect(fixedBody.report.replyMessage.startsWith('Bitte erneut versuchen.')).toBe(true)
+    expect(fixedBody.report.replyMessage.length).toBe(500)
+    expect(fixedBody.report.fixedAt).toBeGreaterThan(0)
+
+    const status = await worker.fetch(
+      request('/reports/tasks/status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ids: [id, 'UNKNOWN1', id] }),
+      }),
+      kv,
+    )
+    expect(status.status).toBe(200)
+    await expect(status.json()).resolves.toEqual({
+      reports: [
+        {
+          id,
+          status: 'fixed',
+          contentId: 6453,
+          replyMessage: fixedBody.report.replyMessage,
+          fixedAt: fixedBody.report.fixedAt,
+        },
+      ],
+    })
+
+    const done = await worker.fetch(
+      request(`/reports/tasks/${id}`, {
+        method: 'PATCH',
+        headers: {
+          Authorization: 'Bearer test-reports-token',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status: 'done' }),
+      }),
+      kv,
+    )
+    const doneBody = (await done.json()) as {
+      report: { status: string; replyMessage?: string; fixedAt?: number }
+    }
+    expect(doneBody.report.status).toBe('done')
+    expect(doneBody.report.replyMessage).toBeUndefined()
+    expect(doneBody.report.fixedAt).toBeUndefined()
   })
 })

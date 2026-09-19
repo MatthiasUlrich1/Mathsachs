@@ -9,6 +9,23 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.47] – 2026-09-19
+
+### Hinzugefügt
+- **Anonyme Rückmeldung bei korrigierten Aufgaben:** Nach dem Melden speichert die
+  App nur die anonyme Melde-ID lokal. Entwickler können **Als korrigiert melden**
+  (optional mit kurzer Nachricht, max. 500 Zeichen, keine personenbezogenen Daten).
+  Melder sehen dann den Hinweis „Deine gemeldete Aufgabe wurde korrigiert“ inkl.
+  optionaler Nachricht und können ihn schließen.
+- **Cloudflare Worker:** Status `fixed`/`korrigiert` inkl. `replyMessage`/`fixedAt`
+  über `PATCH /reports/tasks/:id`; öffentlicher Status-Lookup
+  `POST /reports/tasks/status` nur für bekannte IDs. **Worker muss neu deployed
+  werden.**
+
+### Geändert
+- **Fehlerhafte Aufgaben:** **Erledigt** schließt ohne Melder-Hinweis;
+  **Als korrigiert melden** setzt Status `fixed` und benachrichtigt den Melder.
+
 ## [0.27.46] – 2026-09-19
 
 ### Behoben

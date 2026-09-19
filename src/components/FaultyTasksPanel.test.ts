@@ -10,6 +10,6 @@ describe('FaultyTasksPanel', () => {
     )
     expect(html).toContain('Fehlerhafte Aufgaben')
     expect(html).toContain('Lädt')
-    expect(html).toContain('Erledigte Meldungen')
+    expect(html).toContain('Als korrigiert melden')
   })
 })

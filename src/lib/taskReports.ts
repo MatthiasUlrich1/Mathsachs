@@ -9,8 +9,11 @@ import { CLASS_POINTS_API, ClassApiError } from '../classCode/api'
 export const REPORTS_READ_TOKEN = 'MS-REPORTS-8K3QZ7WN'
 
 export const MAX_REPORT_COMMENT = 500
+export const MAX_REPORT_REPLY = 500
+export const MY_TASK_REPORTS_KEY = 'mathsachs.myTaskReports.v1'
+export const MAX_MY_TASK_REPORTS = 40
 
-export type TaskReportStatus = 'open' | 'done'
+export type TaskReportStatus = 'open' | 'done' | 'fixed'
 
 export interface TaskReportPayload {
   contentId: number
@@ -26,20 +29,124 @@ export interface TaskReport extends TaskReportPayload {
   id: string
   at: number
   status: TaskReportStatus
+  replyMessage?: string
+  fixedAt?: number
+}
+
+/** Public status slice returned for locally remembered report ids. */
+export interface TaskReportUpdate {
+  id: string
+  status: TaskReportStatus
+  contentId: number
+  replyMessage?: string
+  fixedAt?: number
+}
+
+export interface MyStoredReport {
+  id: string
+  rememberedAt: number
+  /** True after the reporter dismissed the “korrigiert” notice. */
+  seenFixed?: boolean
 }
 
 export function trimReportComment(raw: string): string {
   return raw.trim().replace(/\s+/g, ' ').slice(0, MAX_REPORT_COMMENT)
 }
 
+export function trimReportReply(raw: string): string {
+  return raw.trim().replace(/\s+/g, ' ').slice(0, MAX_REPORT_REPLY)
+}
+
 export function isReportCommentValid(raw: string): boolean {
   return trimReportComment(raw).length > 0
+}
+
+function storageOrLocal(storage?: Storage): Storage | undefined {
+  if (storage) return storage
+  return typeof localStorage !== 'undefined' ? localStorage : undefined
+}
+
+function parseMyStoredReports(raw: string | null): MyStoredReport[] {
+  if (!raw) return []
+  try {
+    const parsed = JSON.parse(raw) as unknown
+    const list = Array.isArray(parsed)
+      ? parsed
+      : parsed && typeof parsed === 'object' && Array.isArray((parsed as { reports?: unknown }).reports)
+        ? (parsed as { reports: unknown[] }).reports
+        : []
+    const out: MyStoredReport[] = []
+    const seen = new Set<string>()
+    for (const item of list) {
+      if (!item || typeof item !== 'object') continue
+      const row = item as Record<string, unknown>
+      const id = typeof row.id === 'string' ? row.id.trim() : ''
+      if (!id || seen.has(id)) continue
+      seen.add(id)
+      const rememberedAt =
+        typeof row.rememberedAt === 'number' && Number.isFinite(row.rememberedAt)
+          ? Math.floor(row.rememberedAt)
+          : Date.now()
+      out.push({
+        id,
+        rememberedAt,
+        ...(row.seenFixed === true ? { seenFixed: true } : {}),
+      })
+      if (out.length >= MAX_MY_TASK_REPORTS) break
+    }
+    return out
+  } catch {
+    return []
+  }
+}
+
+function writeMyStoredReports(entries: MyStoredReport[], storage?: Storage): void {
+  const kv = storageOrLocal(storage)
+  if (!kv) return
+  kv.setItem(MY_TASK_REPORTS_KEY, JSON.stringify({ reports: entries.slice(0, MAX_MY_TASK_REPORTS) }))
+}
+
+/** Anonymous local memory of report ids submitted on this device — no PII. */
+export function listMyStoredReports(storage?: Storage): MyStoredReport[] {
+  const kv = storageOrLocal(storage)
+  if (!kv) return []
+  return parseMyStoredReports(kv.getItem(MY_TASK_REPORTS_KEY))
+}
+
+export function rememberMyReportId(id: string, storage?: Storage, now = Date.now()): void {
+  const trimmed = id.trim()
+  if (!trimmed) return
+  const prev = listMyStoredReports(storage).filter((row) => row.id !== trimmed)
+  writeMyStoredReports([{ id: trimmed, rememberedAt: now }, ...prev], storage)
+}
+
+export function markMyReportFixedSeen(id: string, storage?: Storage): void {
+  const trimmed = id.trim()
+  if (!trimmed) return
+  const next = listMyStoredReports(storage).map((row) =>
+    row.id === trimmed ? { ...row, seenFixed: true } : row,
+  )
+  writeMyStoredReports(next, storage)
+}
+
+/** Fixed updates the reporter has not dismissed yet. */
+export function unseenFixedUpdates(
+  updates: TaskReportUpdate[],
+  storage?: Storage,
+): TaskReportUpdate[] {
+  const seen = new Set(
+    listMyStoredReports(storage)
+      .filter((row) => row.seenFixed)
+      .map((row) => row.id),
+  )
+  return updates.filter((row) => row.status === 'fixed' && !seen.has(row.id))
 }
 
 function normalizeReportStatus(value: unknown): TaskReportStatus {
   if (typeof value !== 'string') return 'open'
   const trimmed = value.trim().toLowerCase()
   if (trimmed === 'done' || trimmed === 'erledigt') return 'done'
+  if (trimmed === 'fixed' || trimmed === 'korrigiert') return 'fixed'
   return 'open'
 }
 
@@ -54,6 +161,12 @@ function parseReportRow(row: unknown): TaskReport | null {
   ) {
     return null
   }
+  const replyMessage =
+    typeof r.replyMessage === 'string' ? trimReportReply(r.replyMessage) : ''
+  const fixedAt =
+    typeof r.fixedAt === 'number' && Number.isFinite(r.fixedAt)
+      ? Math.floor(r.fixedAt)
+      : undefined
   return {
     id: r.id,
     at: r.at,
@@ -75,6 +188,27 @@ function parseReportRow(row: unknown): TaskReport | null {
     ...(typeof r.appVersion === 'string' && r.appVersion.trim()
       ? { appVersion: r.appVersion.trim() }
       : {}),
+    ...(replyMessage ? { replyMessage } : {}),
+    ...(fixedAt !== undefined ? { fixedAt } : {}),
+  }
+}
+
+function parseReportUpdate(row: unknown): TaskReportUpdate | null {
+  if (!row || typeof row !== 'object') return null
+  const r = row as Record<string, unknown>
+  if (typeof r.id !== 'string' || typeof r.contentId !== 'number') return null
+  const replyMessage =
+    typeof r.replyMessage === 'string' ? trimReportReply(r.replyMessage) : ''
+  const fixedAt =
+    typeof r.fixedAt === 'number' && Number.isFinite(r.fixedAt)
+      ? Math.floor(r.fixedAt)
+      : undefined
+  return {
+    id: r.id.trim(),
+    status: normalizeReportStatus(r.status),
+    contentId: r.contentId,
+    ...(replyMessage ? { replyMessage } : {}),
+    ...(fixedAt !== undefined ? { fixedAt } : {}),
   }
 }
 
@@ -139,7 +273,7 @@ async function reportsMutate(
 /** Anonymous POST — no user/device identifiers. */
 export async function submitTaskReport(
   payload: TaskReportPayload,
-  options?: { fetchImpl?: typeof fetch; baseUrl?: string },
+  options?: { fetchImpl?: typeof fetch; baseUrl?: string; storage?: Storage },
 ): Promise<{ id: string }> {
   const comment = trimReportComment(payload.comment)
   if (!comment) {
@@ -196,7 +330,11 @@ export async function submitTaskReport(
 
   try {
     const body = (await response.json()) as { id?: unknown }
-    if (typeof body.id === 'string' && body.id.trim()) return { id: body.id.trim() }
+    if (typeof body.id === 'string' && body.id.trim()) {
+      const id = body.id.trim()
+      rememberMyReportId(id, options?.storage)
+      return { id }
+    }
   } catch {
     /* fall through */
   }
@@ -226,7 +364,7 @@ export async function fetchTaskReports(options?: {
   }
 }
 
-/** Open (not erledigt) reports — used for Entwickler nav/settings badges. */
+/** Open (not erledigt/korrigiert) reports — used for Entwickler nav/settings badges. */
 export function countOpenTaskReports(reports: TaskReport[]): number {
   return reports.reduce((n, row) => (row.status === 'open' ? n + 1 : n), 0)
 }
@@ -239,9 +377,80 @@ export async function fetchOpenTaskReportCount(options?: {
   return countOpenTaskReports(await fetchTaskReports(options))
 }
 
-/** Mark a report as done (erledigt) — still listed until deleted. */
+/**
+ * Anonymous status check for report ids remembered on this device.
+ * Returns only status / reply for known ids — never lists other reports.
+ */
+export async function fetchMyReportUpdates(options?: {
+  fetchImpl?: typeof fetch
+  baseUrl?: string
+  storage?: Storage
+  ids?: string[]
+}): Promise<TaskReportUpdate[]> {
+  const ids =
+    options?.ids ??
+    listMyStoredReports(options?.storage).map((row) => row.id)
+  if (ids.length === 0) return []
+
+  const fetchImpl = options?.fetchImpl ?? fetch
+  const baseUrl = options?.baseUrl ?? CLASS_POINTS_API
+  let response: Response
+  try {
+    response = await fetchImpl(`${baseUrl}/reports/tasks/status`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ids: ids.slice(0, MAX_MY_TASK_REPORTS) }),
+    })
+  } catch {
+    throw new ClassApiError('network', 'Keine Verbindung zum Server. Bitte Internet prüfen.')
+  }
+
+  if (response.status === 429) {
+    throw new ClassApiError('rate', 'Zu viele Anfragen. Bitte kurz warten.', 429)
+  }
+  if (!response.ok) {
+    throw new ClassApiError('http', 'Status konnte nicht geladen werden.', response.status)
+  }
+
+  try {
+    const body = (await response.json()) as { reports?: unknown }
+    if (!Array.isArray(body.reports)) return []
+    return body.reports
+      .map(parseReportUpdate)
+      .filter((row): row is TaskReportUpdate => row !== null)
+  } catch {
+    throw new ClassApiError('http', 'Unerwartete Server-Antwort.')
+  }
+}
+
+/** Mark a report as done (erledigt) — still listed until deleted; no reporter notice. */
 export async function markTaskReportDone(
   id: string,
+  options?: { fetchImpl?: typeof fetch; baseUrl?: string; token?: string },
+): Promise<TaskReport> {
+  return patchTaskReportStatus(id, { status: 'done' }, options)
+}
+
+/** Mark as korrigiert and optionally notify the reporter with a short message. */
+export async function markTaskReportFixed(
+  id: string,
+  replyMessage?: string,
+  options?: { fetchImpl?: typeof fetch; baseUrl?: string; token?: string },
+): Promise<TaskReport> {
+  const reply = replyMessage !== undefined ? trimReportReply(replyMessage) : undefined
+  return patchTaskReportStatus(
+    id,
+    {
+      status: 'fixed',
+      ...(reply !== undefined ? { replyMessage: reply } : { replyMessage: '' }),
+    },
+    options,
+  )
+}
+
+async function patchTaskReportStatus(
+  id: string,
+  body: { status: TaskReportStatus; replyMessage?: string },
   options?: { fetchImpl?: typeof fetch; baseUrl?: string; token?: string },
 ): Promise<TaskReport> {
   const trimmed = id.trim()
@@ -253,13 +462,13 @@ export async function markTaskReportDone(
     {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ status: 'done' }),
+      body: JSON.stringify(body),
     },
     options,
   )
   try {
-    const body = (await response.json()) as { report?: unknown }
-    const report = parseReportRow(body.report)
+    const parsed = (await response.json()) as { report?: unknown }
+    const report = parseReportRow(parsed.report)
     if (report) return report
   } catch {
     /* fall through */

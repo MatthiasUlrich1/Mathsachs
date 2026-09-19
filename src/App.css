@@ -1227,7 +1227,8 @@ a.task-request__send {
 
 .faulty-tasks__meta,
 .faulty-tasks__question,
-.faulty-tasks__status {
+.faulty-tasks__status,
+.faulty-tasks__reply {
   margin: 0;
 }
 
@@ -1235,11 +1236,27 @@ a.task-request__send {
   opacity: 0.78;
 }
 
+.faulty-tasks__fix-form {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .faulty-tasks__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 10px;
+}
+
+.task-report-fixed-banner__meta {
+  margin: 0 0 4px;
+}
+
+.task-report-fixed-banner__reply {
+  margin: 0;
+  white-space: pre-wrap;
 }
 
 .progress {
