@@ -1019,18 +1019,18 @@ export default function App() {
 }
 
 function Brand({ compact }: { compact?: boolean }) {
-  const size = compact ? 100 : 168
+  const size = compact ? 72 : 112
   return (
     <div className={`brand ${compact ? 'brand--compact' : ''}`}>
       <img
         className="brand__logo"
         src={`${import.meta.env.BASE_URL}tasktrophy-logo.png`}
-        alt="TaskTrophy — Das Klassen-Duell"
+        alt=""
         width={size}
         height={size}
+        aria-hidden="true"
       />
-      <h1 className="visually-hidden">TaskTrophy</h1>
-      <p className="visually-hidden">Das Klassen-Duell</p>
+      <h1 className="brand__title">TaskTrophy – Das Klassen-Duell</h1>
     </div>
   )
 }

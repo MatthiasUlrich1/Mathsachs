@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.53] – 2026-09-19
+
+### Behoben
+- **Header-Überschrift:** Neben dem Logo erscheint wieder die sichtbare
+  Überschrift **TaskTrophy – Das Klassen-Duell** (Login und kompakte Topbar).
+
 ## [0.27.52] – 2026-09-19
 
 ### Behoben
