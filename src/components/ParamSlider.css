@@ -17,12 +17,19 @@
 .param-slider__preview {
   display: flex;
   justify-content: center;
+  width: 100%;
   max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .param-slider__preview svg {
+  display: block;
   max-width: 100%;
+  width: auto;
   height: auto;
+  min-width: 0;
+  flex-shrink: 1;
   border-radius: 8px;
 }
 

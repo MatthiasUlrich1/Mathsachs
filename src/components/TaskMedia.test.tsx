@@ -15,6 +15,18 @@ describe('TaskMedia', () => {
     expect(html).toContain('<circle r="1"')
   })
 
+  it('injects viewBox for fixed-size SVGs so mobile CSS can scale them', () => {
+    const html = renderToStaticMarkup(
+      createElement(TaskVisual, {
+        html: '<svg width="366" height="261" aria-label="L-Form"><polygon points="0,0"/></svg>',
+      }),
+    )
+    expect(html).toContain('viewBox="0 0 366 261"')
+    expect(html).toContain('width="366"')
+    expect(html).toContain('height="261"')
+    expect(html).toContain('aria-label="L-Form"')
+  })
+
   it('renders nothing when visualContent is missing', () => {
     expect(renderToStaticMarkup(createElement(TaskVisual, {}))).toBe('')
     expect(renderToStaticMarkup(createElement(TaskVisual, { html: '' }))).toBe('')

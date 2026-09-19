@@ -1,5 +1,6 @@
 import type { Task, UserInput } from '../curriculum/types'
 import { emptyInput } from '../curriculum/types'
+import { ensureSvgViewBox } from '../lib/ensureSvgViewBox'
 import { NumberLineSlider } from './NumberLineSlider'
 import { DragDropSort } from './DragDropSort'
 import { DragDropSlots } from './DragDropSlots'
@@ -59,7 +60,7 @@ export function TaskVisual({ html }: { html?: string }) {
   return (
     <div
       className="task-visual"
-      dangerouslySetInnerHTML={{ __html: html }}
+      dangerouslySetInnerHTML={{ __html: ensureSvgViewBox(html) }}
     />
   )
 }

@@ -1,6 +1,7 @@
 .app {
   width: 100%;
   max-width: 520px;
+  min-width: 0;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -1006,7 +1007,7 @@ a.task-request__send {
   background: rgba(99, 102, 241, 0.28);
 }
 
-/* Task Visual Content (SVG) */
+/* Task Visual Content (SVG) — scale whole diagram to fit viewport */
 .task-visual {
   display: flex;
   justify-content: center;
@@ -1016,6 +1017,11 @@ a.task-request__send {
   background: rgba(255, 255, 255, 0.02);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .exam-task .task-visual {
@@ -1029,8 +1035,19 @@ a.task-request__send {
 }
 
 .task-visual svg {
+  display: block;
   max-width: 100%;
+  width: auto;
   height: auto;
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+@media (max-width: 560px) {
+  .task-visual {
+    margin: 12px 0;
+    padding: 12px;
+  }
 }
 
 /* Task Interactive Components */

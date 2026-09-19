@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.49] – 2026-09-19
+
+### Geändert
+- **Aufgaben-Grafiken mobil:** Diagramme (SVG) skalieren global mit der
+  Gerätebreite (`TaskVisual` / `.task-visual`): fehlendes `viewBox` wird aus
+  Breite/Höhe ergänzt; Container und Flex-Layout erlauben Schrumpfen. Inhalt,
+  Maße und Beschriftungen bleiben unverändert – nur die Darstellung wird
+  verkleinert.
+
 ## [0.27.48] – 2026-09-19
 
 ### Hinzugefügt

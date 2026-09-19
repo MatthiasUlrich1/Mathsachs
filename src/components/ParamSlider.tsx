@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { generateLinearFunctionSvg } from '../lib/geometrySvg'
+import { ensureSvgViewBox } from '../lib/ensureSvgViewBox'
 import { lightShadowFromLampParam } from '../lib/physikSvg'
 import type { ParamSliderSpec } from '../curriculum/taskHelpers'
 import './ParamSlider.css'
@@ -61,7 +62,7 @@ export const ParamSlider: React.FC<ParamSliderProps> = ({
       {previewSvg && (
         <div
           className="param-slider__preview"
-          dangerouslySetInnerHTML={{ __html: previewSvg }}
+          dangerouslySetInnerHTML={{ __html: ensureSvgViewBox(previewSvg) }}
         />
       )}
       <div className="param-slider__controls">
