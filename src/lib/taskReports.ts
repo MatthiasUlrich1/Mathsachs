@@ -65,8 +65,6 @@ export interface MyReportListItem {
   topicTitle?: string
   replyMessage?: string
   fixedAt?: number
-  /** True when the id was remembered but missing from a successful status lookup. */
-  missing?: boolean
 }
 
 export function trimReportComment(raw: string): string {
@@ -184,7 +182,40 @@ export function rememberMyReportId(
   )
 }
 
-/** Combine local snapshots with anonymous status lookup for Einstellungen. */
+/** Drop remembered report ids (e.g. after Entwickler delete / KV miss). */
+export function forgetMyReportIds(ids: string[], storage?: Storage): void {
+  const drop = new Set(
+    ids.map((id) => id.trim()).filter((id) => id.length > 0),
+  )
+  if (drop.size === 0) return
+  const next = listMyStoredReports(storage).filter((row) => !drop.has(row.id))
+  writeMyStoredReports(next, storage)
+}
+
+/**
+ * After a successful status lookup: ids among `requestedIds` that are absent
+ * from `updates` were deleted from KV — purge them from local memory.
+ * Returns the purged ids.
+ */
+export function purgeMissingMyReports(
+  requestedIds: string[],
+  updates: TaskReportUpdate[],
+  storage?: Storage,
+): string[] {
+  const known = new Set(updates.map((row) => row.id))
+  const missing = requestedIds
+    .map((id) => id.trim())
+    .filter((id) => id.length > 0 && !known.has(id))
+  if (missing.length === 0) return []
+  forgetMyReportIds(missing, storage)
+  return missing
+}
+
+/**
+ * Combine local snapshots with anonymous status lookup for Einstellungen.
+ * When `statusFetched` is true, rows missing from `updates` are omitted
+ * (caller should have purged them via `purgeMissingMyReports`).
+ */
 export function mergeMyReportList(
   stored: MyStoredReport[],
   updates: TaskReportUpdate[],
@@ -192,23 +223,27 @@ export function mergeMyReportList(
 ): MyReportListItem[] {
   const byId = new Map(updates.map((row) => [row.id, row]))
   const statusFetched = options?.statusFetched === true
-  return stored.map((row) => {
+  const out: MyReportListItem[] = []
+  for (const row of stored) {
     const update = byId.get(row.id)
     const contentId = update?.contentId ?? row.contentId ?? 0
     const comment = update?.comment || row.comment
     const topicTitle = update?.topicTitle || row.topicTitle
     if (!update) {
-      return {
+      // Offline / failed fetch: keep local snapshot as open. After a successful
+      // status lookup, deleted ids are purged and must not appear in the list.
+      if (statusFetched) continue
+      out.push({
         id: row.id,
         rememberedAt: row.rememberedAt,
         contentId,
-        status: 'open' as const,
+        status: 'open',
         ...(comment ? { comment } : {}),
         ...(topicTitle ? { topicTitle } : {}),
-        ...(statusFetched ? { missing: true } : {}),
-      }
+      })
+      continue
     }
-    return {
+    out.push({
       id: row.id,
       rememberedAt: row.rememberedAt,
       contentId,
@@ -217,17 +252,14 @@ export function mergeMyReportList(
       ...(topicTitle ? { topicTitle } : {}),
       ...(update.replyMessage ? { replyMessage: update.replyMessage } : {}),
       ...(update.fixedAt !== undefined ? { fixedAt: update.fixedAt } : {}),
-    }
-  })
+    })
+  }
+  return out
 }
 
-export function myReportStatusLabel(
-  status: TaskReportStatus,
-  missing?: boolean,
-): string {
-  if (missing) return 'nicht mehr verfügbar'
+export function myReportStatusLabel(status: TaskReportStatus): string {
   if (status === 'done') return 'erledigt'
-  if (status === 'fixed') return 'korrigiert'
+  if (status === 'fixed') return 'Aufgabe wurde korrigiert'
   return 'offen'
 }
 
@@ -503,12 +535,16 @@ export async function fetchOpenTaskReportCount(options?: {
 /**
  * Anonymous status check for report ids remembered on this device.
  * Returns only status / reply for known ids — never lists other reports.
+ * Ids omitted from a successful response are treated as deleted and purged
+ * from local memory (so Meine Meldungen / banners disappear).
  */
 export async function fetchMyReportUpdates(options?: {
   fetchImpl?: typeof fetch
   baseUrl?: string
   storage?: Storage
   ids?: string[]
+  /** When false, skip purge-on-missing (tests / dry lookup). Default true. */
+  purgeMissing?: boolean
 }): Promise<TaskReportUpdate[]> {
   const ids =
     options?.ids ??
@@ -538,9 +574,13 @@ export async function fetchMyReportUpdates(options?: {
   try {
     const body = (await response.json()) as { reports?: unknown }
     if (!Array.isArray(body.reports)) return []
-    return body.reports
+    const updates = body.reports
       .map(parseReportUpdate)
       .filter((row): row is TaskReportUpdate => row !== null)
+    if (options?.purgeMissing !== false) {
+      purgeMissingMyReports(ids, updates, options?.storage)
+    }
+    return updates
   } catch {
     throw new ClassApiError('http', 'Unerwartete Server-Antwort.')
   }

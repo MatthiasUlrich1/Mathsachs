@@ -38,7 +38,10 @@ export function MyReportedTasksPanel() {
     }
     try {
       const updates = await fetchMyReportUpdates()
-      setRows(mergeMyReportList(stored, updates, { statusFetched: true }))
+      // fetchMyReportUpdates purges deleted ids from localStorage — re-read.
+      setRows(
+        mergeMyReportList(listMyStoredReports(), updates, { statusFetched: true }),
+      )
     } catch (err) {
       setRows(mergeMyReportList(stored, [], { statusFetched: false }))
       setError(
@@ -74,13 +77,13 @@ export function MyReportedTasksPanel() {
       {rows && rows.length > 0 && (
         <ul className="faulty-tasks my-reports">
           {rows.map((row) => {
-            const closed = row.status === 'done' || row.status === 'fixed' || row.missing
-            const label = myReportStatusLabel(row.status, row.missing)
+            const closed = row.status === 'done' || row.status === 'fixed'
+            const label = myReportStatusLabel(row.status)
             return (
               <li
                 key={row.id}
                 className={`faulty-tasks__item${closed ? ' faulty-tasks__item--done' : ''}${
-                  row.status === 'fixed' && !row.missing ? ' faulty-tasks__item--fixed' : ''
+                  row.status === 'fixed' ? ' faulty-tasks__item--fixed' : ''
                 }`}
               >
                 <div className="faulty-tasks__head">
@@ -89,14 +92,21 @@ export function MyReportedTasksPanel() {
                   </strong>
                   <span className="muted small">{formatReportTime(row.rememberedAt)}</span>
                 </div>
-                <p className="muted small faulty-tasks__status">{label}</p>
+                <p
+                  className={`faulty-tasks__status${
+                    row.status === 'fixed' ? ' faulty-tasks__status--fixed' : ' muted small'
+                  }`}
+                >
+                  {label}
+                </p>
                 {row.topicTitle && (
                   <p className="muted small faulty-tasks__meta">{row.topicTitle}</p>
                 )}
                 {row.comment && <p className="faulty-tasks__comment">{row.comment}</p>}
-                {row.status === 'fixed' && row.replyMessage && !row.missing && (
-                  <p className="muted small faulty-tasks__reply">
-                    Antwort: „{row.replyMessage}“
+                {row.status === 'fixed' && row.replyMessage && (
+                  <p className="faulty-tasks__reply" role="status">
+                    <span className="faulty-tasks__reply-label">Nachricht vom Entwickler</span>
+                    {row.replyMessage}
                   </p>
                 )}
               </li>

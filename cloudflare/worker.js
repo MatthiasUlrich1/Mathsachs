@@ -35,7 +35,8 @@
  * (Authorization: Bearer … or X-Reports-Token). Must match the app’s
  * REPORTS_READ_TOKEN. Public POST for new reports and anonymous status
  * lookup by known report ids stay open (no PII). Status lookup may return
- * the reporter’s own comment/topicTitle for the requested ids only.
+ * the reporter’s own comment/topicTitle for the requested ids only;
+ * ids no longer in KV are omitted (clients purge local memory).
  */
 // @ts-nocheck — plain Worker JS; Cloudflare editor checkJs unions are noisy.
 
@@ -2353,6 +2354,7 @@ async function handleLookupTaskReportStatus(request, env) {
   const reports = []
   for (const id of ids) {
     const row = byId.get(id)
+    // Deleted / unknown ids are simply omitted — clients treat absence as gone.
     if (!row) continue
     // Own-id lookup only: safe to return the reporter’s own comment/title
     // (no pupil names or other PII are stored on reports).

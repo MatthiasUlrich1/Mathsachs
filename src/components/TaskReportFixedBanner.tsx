@@ -14,9 +14,7 @@ export function TaskReportFixedBanner({ update, onDismiss, onShowInSettings }: P
       aria-label="Gemeldete Aufgabe korrigiert"
     >
       <div className="update-banner__head">
-        <h2 className="update-banner__title">
-          Deine gemeldete Aufgabe wurde korrigiert
-        </h2>
+        <h2 className="update-banner__title">Aufgabe wurde korrigiert</h2>
         <button
           type="button"
           className="update-banner__close"
@@ -30,7 +28,12 @@ export function TaskReportFixedBanner({ update, onDismiss, onShowInSettings }: P
         Aufgabe ID {update.contentId}
       </p>
       {update.replyMessage ? (
-        <p className="task-report-fixed-banner__reply">{update.replyMessage}</p>
+        <p className="task-report-fixed-banner__reply" role="status">
+          <span className="task-report-fixed-banner__reply-label">
+            Nachricht vom Entwickler
+          </span>
+          {update.replyMessage}
+        </p>
       ) : null}
       {onShowInSettings ? (
         <p className="task-report-fixed-banner__actions">

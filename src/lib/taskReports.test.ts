@@ -6,6 +6,7 @@ import {
   fetchMyReportUpdates,
   fetchOpenTaskReportCount,
   fetchTaskReports,
+  forgetMyReportIds,
   isReportCommentValid,
   listMyStoredReports,
   markMyReportFixedSeen,
@@ -14,6 +15,7 @@ import {
   mergeMyReportList,
   MY_TASK_REPORTS_KEY,
   myReportStatusLabel,
+  purgeMissingMyReports,
   rememberMyReportId,
   REPORTS_READ_TOKEN,
   submitTaskReport,
@@ -128,19 +130,76 @@ describe('taskReports helpers', () => {
         replyMessage: 'ok',
         fixedAt: 9,
       },
+    ])
+    // Offline: keep local rows even without server updates
+    expect(
+      mergeMyReportList(stored, [], { statusFetched: false }),
+    ).toEqual([
+      {
+        id: 'A',
+        rememberedAt: 1,
+        contentId: 1001,
+        status: 'open',
+        comment: 'lokal',
+        topicTitle: 'Thema A',
+      },
       {
         id: 'B',
         rememberedAt: 2,
         contentId: 1002,
         status: 'open',
         comment: 'alt',
-        missing: true,
       },
     ])
     expect(myReportStatusLabel('open')).toBe('offen')
     expect(myReportStatusLabel('done')).toBe('erledigt')
-    expect(myReportStatusLabel('fixed')).toBe('korrigiert')
-    expect(myReportStatusLabel('open', true)).toBe('nicht mehr verfügbar')
+    expect(myReportStatusLabel('fixed')).toBe('Aufgabe wurde korrigiert')
+  })
+
+  it('purges remembered ids missing from a successful status lookup', () => {
+    const storage = memoryStorage()
+    rememberMyReportId('KEEP1', storage, 1, { contentId: 1001 })
+    rememberMyReportId('GONE1', storage, 2, { contentId: 1002 })
+    rememberMyReportId('GONE2', storage, 3, { contentId: 1003 })
+    const updates = [
+      { id: 'KEEP1', status: 'open' as const, contentId: 1001 },
+    ]
+    expect(purgeMissingMyReports(['KEEP1', 'GONE1', 'GONE2'], updates, storage)).toEqual([
+      'GONE1',
+      'GONE2',
+    ])
+    expect(listMyStoredReports(storage).map((row) => row.id)).toEqual(['KEEP1'])
+    expect(forgetMyReportIds(['KEEP1'], storage)).toBeUndefined()
+    expect(listMyStoredReports(storage)).toEqual([])
+  })
+
+  it('fetchMyReportUpdates purges deleted ids from local storage', async () => {
+    const storage = memoryStorage()
+    rememberMyReportId('ABCD1234', storage)
+    rememberMyReportId('DELETED99', storage)
+    const fetchImpl = vi.fn(async () =>
+      Response.json({
+        reports: [
+          {
+            id: 'ABCD1234',
+            status: 'fixed',
+            contentId: 6453,
+            replyMessage: 'Danke für den Hinweis',
+            fixedAt: 10,
+          },
+        ],
+      }),
+    ) as unknown as typeof fetch
+    await expect(fetchMyReportUpdates({ fetchImpl, storage })).resolves.toEqual([
+      {
+        id: 'ABCD1234',
+        status: 'fixed',
+        contentId: 6453,
+        replyMessage: 'Danke für den Hinweis',
+        fixedAt: 10,
+      },
+    ])
+    expect(listMyStoredReports(storage).map((row) => row.id)).toEqual(['ABCD1234'])
   })
 
   it('filters unseen fixed updates for the reporter banner', () => {

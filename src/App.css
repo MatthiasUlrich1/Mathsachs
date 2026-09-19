@@ -1244,9 +1244,30 @@ a.task-request__send {
 
 .faulty-tasks__meta,
 .faulty-tasks__question,
-.faulty-tasks__status,
-.faulty-tasks__reply {
+.faulty-tasks__status {
   margin: 0;
+}
+
+.faulty-tasks__status--fixed {
+  margin: 4px 0 0;
+  font-weight: 600;
+}
+
+.faulty-tasks__reply {
+  margin: 10px 0 0;
+  padding: 8px 10px;
+  border-left: 3px solid var(--accent);
+  background: rgba(99, 102, 241, 0.1);
+  white-space: pre-wrap;
+}
+
+.faulty-tasks__reply-label,
+.task-report-fixed-banner__reply-label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.85em;
+  font-weight: 600;
+  opacity: 0.85;
 }
 
 .faulty-tasks__item--done {
@@ -1272,7 +1293,10 @@ a.task-request__send {
 }
 
 .task-report-fixed-banner__reply {
-  margin: 0;
+  margin: 8px 0 0;
+  padding: 8px 10px;
+  border-left: 3px solid var(--accent);
+  background: rgba(99, 102, 241, 0.12);
   white-space: pre-wrap;
 }
 

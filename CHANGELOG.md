@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.50] – 2026-09-19
+
+### Geändert
+- **Meine Meldungen / Korrektur-Banner:** Gelöschte Entwickler-Meldungen
+  verschwinden beim Status-Abruf auch auf dem Gerät des Melders (lokale IDs
+  werden bereinigt; Banner und Liste aktualisieren sich). Status-Texte klarer:
+  offen / erledigt / „Aufgabe wurde korrigiert“; individuelle Entwickler-
+  Nachricht (`replyMessage`) wird in Liste und Banner hervorgehoben. Der
+  Status-Endpoint lässt gelöschte IDs weiterhin weg (kein API-Breaking-Change).
+
 ## [0.27.49] – 2026-09-19
 
 ### Geändert
