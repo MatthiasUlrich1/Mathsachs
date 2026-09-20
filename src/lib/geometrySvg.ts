@@ -78,8 +78,8 @@ function offsetPt(
 }
 
 /**
- * Maßlinie parallel zum Kantenstück, versetzt entlang `offsetDir`, mit Hilfslinien
- * von den Kantenecken zur Maßlinie (klare Zuordnung der Seite).
+ * Maßlinie parallel zum Kantenstück, versetzt entlang `offsetDir` —
+ * ohne Hilfslinien (keine überschneidenden Striche an den Ecken).
  */
 function geoDimOffsetSegment(
   a: [number, number],
@@ -102,24 +102,18 @@ function geoDimOffsetSegment(
   const { stroke, markerId, offsetDir, dist, labelOffset, anchor, size } = opts
   const a2 = offsetPt(a, offsetDir, dist)
   const b2 = offsetPt(b, offsetDir, dist)
-  // Hilfslinien slightly past the Maßlinie
-  const aExt = offsetPt(a, offsetDir, dist + 5)
-  const bExt = offsetPt(b, offsetDir, dist + 5)
   const mid: [number, number] = [(a2[0] + b2[0]) / 2, (a2[1] + b2[1]) / 2]
   const labelPos: [number, number] = labelOffset
     ? [mid[0] + labelOffset[0], mid[1] + labelOffset[1]]
     : [mid[0], mid[1] - 14]
-  const ext = `stroke="${stroke}" stroke-width="1" opacity="0.85"`
-  return `<line x1="${a[0]}" y1="${a[1]}" x2="${aExt[0]}" y2="${aExt[1]}" ${ext}/>
-  <line x1="${b[0]}" y1="${b[1]}" x2="${bExt[0]}" y2="${bExt[1]}" ${ext}/>
-  ${geoDimArrowSegment(a2[0], a2[1], b2[0], b2[1], label, {
+  return geoDimArrowSegment(a2[0], a2[1], b2[0], b2[1], label, {
     stroke,
     markerId,
     labelX: labelPos[0],
     labelY: labelPos[1],
     anchor,
     size,
-  })}`
+  })
 }
 
 export interface RectangleSvgProps {
@@ -1708,7 +1702,7 @@ export function generateCompositeCuboidSvg({
   fill = '#e3f2fd',
   stroke = '#1565c0',
 }: CompositeCuboidSvgProps): string {
-  // Stretched isometric solid + Maßlinien parallel versetzt (Hilfslinien),
+  // Stretched isometric solid + floating Maßpfeile (no Hilfslinien),
   // Längenmaße nach unten/oben, Tiefenmaße in derselben ~45°-Richtung.
   const padL = 88
   const padR = 160
@@ -1784,34 +1778,34 @@ export function generateCompositeCuboidSvg({
   const lengthDim = geoDimOffsetSegment(lenA, lenB, lengthLabel, {
     ...dimOpts,
     offsetDir: DIR_DOWN,
-    dist: 28,
+    dist: 32,
     labelOffset: [0, 18],
   })
   const heightDim = geoDimOffsetSegment(heightA, heightB, heightLabel, {
     ...dimOpts,
     offsetDir: DIR_LEFT,
-    dist: 28,
+    dist: 32,
     labelOffset: [-14, 5],
     anchor: 'end',
   })
   const widthDim = geoDimOffsetSegment(widthA, widthB, widthLabel, {
     ...dimOpts,
     offsetDir: DIR_DEPTH_OUT,
-    dist: 36,
+    dist: 42,
     labelOffset: [22, 8],
     anchor: 'start',
   })
   const cutLenDim = geoDimOffsetSegment(cutLenA, cutLenB, cutLengthLabel, {
     ...dimOpts,
     offsetDir: DIR_UP,
-    dist: 36,
+    dist: 40,
     labelOffset: [0, -16],
     size: 16,
   })
   const cutWidDim = geoDimOffsetSegment(cutWidA, cutWidB, cutWidthLabel, {
     ...dimOpts,
     offsetDir: DIR_DEPTH_OUT,
-    dist: 40,
+    dist: 44,
     labelOffset: [24, 6],
     anchor: 'start',
     size: 16,

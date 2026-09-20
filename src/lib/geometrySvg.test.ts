@@ -660,16 +660,13 @@ describe('geometrySvg', () => {
       expect(svg).toMatch(
         /id="compositeCuboidArrow"[\s\S]*?points="0,0 10,5 0,10"/,
       )
-      // All 5 measures = Strecke (5×2 half-lines) + Hilfslinien from corners
+      // All 5 measures = floating Strecke only (5×2 half-lines); no Hilfslinien
       const dimLines = [
         ...svg.matchAll(/<line[^>]*marker-end="url\(#compositeCuboidArrow\)"[^>]*\/>/g),
       ]
       expect(dimLines.length).toBe(10)
-      // 5 Maße × 2 Hilfslinien (plus one face uses fill opacity 0.85 — match line tags)
-      const extLines = [
-        ...svg.matchAll(/<line[^>]*opacity="0\.85"[^>]*\/>/g),
-      ]
-      expect(extLines.length).toBe(10)
+      // No extension lines from corners (those used opacity 0.85 on <line>)
+      expect([...svg.matchAll(/<line[^>]*opacity="0\.85"[^>]*\/>/g)].length).toBe(0)
       // Height left, depth right (same layout as generateCuboidSvg)
       const heightText = svg.match(/<text x="([^"]+)" y="([^"]+)"[^>]*>5 cm<\/text>/)
       const widthText = svg.match(/<text x="([^"]+)" y="([^"]+)"[^>]*>6 cm<\/text>/)

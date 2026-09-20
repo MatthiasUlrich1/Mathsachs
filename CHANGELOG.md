@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.68] – 2026-09-20
+
+### Behoben
+- **ID 7227 L-Quader:** Maßpfeile wie in der Vorgabe — freischwebend parallel
+  versetzt (inkl. ~45° bei Tiefenmaßen), **ohne** Hilfslinien an den Ecken.
+
 ## [0.27.67] – 2026-09-20
 
 ### Behoben
