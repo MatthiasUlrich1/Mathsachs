@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.57] – 2026-09-20
+
+### Behoben
+- **GitHub Pages Custom Domain:** `public/CNAME` + Deploy-Option `cname:
+  app.tasktrophy.de`, damit die Custom-URL nach jedem Update erhalten bleibt
+  (vorher wurde sie durch `force_orphan`-Deploys gelöscht).
+- **Origin / Nutzerdaten:** Browser speichern localStorage pro Domain.
+  github.io leitet ohne lokale Profile automatisch nach `app.tasktrophy.de` um;
+  mit vorhandenen Profilen erscheint ein Hinweis inkl. Export-Hilfe.
+
 ## [0.27.56] – 2026-09-20
 
 ### Behoben

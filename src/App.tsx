@@ -25,6 +25,7 @@ import {
   getPreferredSubjects,
   getUserRole,
   initSharedStorage,
+  loadUser,
   listUsers,
   setActiveStorageUser,
   setPreferredSubjects,
@@ -74,6 +75,7 @@ import {
 } from './lib/taskReports'
 import { TaskReportFixedBanner } from './components/TaskReportFixedBanner'
 import { fetchInstallCount, reportFirstInstall } from './lib/installStats'
+import { downloadUserExport } from './lib/userExport'
 import { useUpdateCheck } from './updates/useUpdateCheck'
 import { useLanStatus } from './lan/useLanStatus'
 import {
@@ -201,6 +203,39 @@ export default function App() {
             }
           />
         ))
+
+  const onLegacyGithubPages =
+    typeof window !== 'undefined' &&
+    window.location.hostname.toLowerCase() === 'matthiasulrich1.github.io'
+
+  const originMigrationBanner =
+    onLegacyGithubPages && users.length > 0 ? (
+      <div className="notice notice--warn" role="status">
+        <p>
+          Du bist auf der <strong>alten GitHub-Adresse</strong>. Browser speichern
+          Nutzerdaten getrennt pro Domain — unter{' '}
+          <a href="https://app.tasktrophy.de/">app.tasktrophy.de</a> wirken die
+          Profile deshalb leer. Bitte hier exportieren, dort importieren, und
+          künftig nur noch die Custom-URL nutzen.
+        </p>
+        <div className="exam-export-actions">
+          <button
+            type="button"
+            className="primary"
+            onClick={() => {
+              for (const name of listUsers()) {
+                downloadUserExport(loadUser(name))
+              }
+            }}
+          >
+            Alle Profile exportieren
+          </button>
+          <a className="ghost" href="https://app.tasktrophy.de/">
+            Zur Custom-URL
+          </a>
+        </div>
+      </div>
+    ) : null
 
   useEffect(() => {
     if (activeUser) {
@@ -575,6 +610,7 @@ export default function App() {
       <main className="app">
         {updateBanner}
         {fixedReportBanners}
+        {originMigrationBanner}
         <Brand />
         <section className="card">
           <h2 className="section-title">Wer übt heute?</h2>
@@ -590,6 +626,7 @@ export default function App() {
       <main className="app">
         {updateBanner}
         {fixedReportBanners}
+        {originMigrationBanner}
         <Brand />
         <section className="card">
           <h2 className="section-title">Wer übt heute?</h2>
@@ -779,6 +816,7 @@ export default function App() {
       {curriculumBanner}
       {updateBanner}
       {fixedReportBanners}
+      {originMigrationBanner}
       <header className="topbar">
         <Brand compact />
         <nav className="topbar__nav">

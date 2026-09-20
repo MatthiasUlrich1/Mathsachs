@@ -13,6 +13,26 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="TaskTrophy" />
     <title>TaskTrophy — Das Klassen-Duell</title>
+    <script>
+      // Prefer the stable custom domain so localStorage / PWA stay on one origin.
+      // If this github.io origin already has user data, skip auto-redirect so the
+      // app can show an export hint (browsers cannot move localStorage across origins).
+      (function () {
+        try {
+          var host = location.hostname.toLowerCase()
+          if (host !== 'matthiasulrich1.github.io') return
+          var raw = localStorage.getItem('mathsachs.users.v1')
+          var users = raw ? JSON.parse(raw) : []
+          if (Array.isArray(users) && users.length > 0) return
+          var path = location.pathname.replace(/^\/Mathsachs\/?/i, '/') || '/'
+          location.replace(
+            'https://app.tasktrophy.de' + path + location.search + location.hash,
+          )
+        } catch (e) {
+          /* stay on current origin */
+        }
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

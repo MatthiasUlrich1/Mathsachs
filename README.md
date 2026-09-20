@@ -5,17 +5,17 @@ Physik an sächsischen Schulen. Schülerinnen und Schüler wählen Themen aus de
 Lehrplan, üben am Bildschirm oder drucken Übungsblätter. Lehrkräfte stellen
 **Übungsklausuren** zusammen und verteilen sie per Code oder Link.
 
-Aktuelle Version: **0.27.56** · [Changelog](CHANGELOG.md) ·
-[Alle Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases) ·
-[Web-App](https://matthiasulrich1.github.io/Mathsachs/)
+Aktuelle Version: **0.27.57** · [Changelog](CHANGELOG.md) ·
+Web: [app.tasktrophy.de](https://app.tasktrophy.de/) ·
+[Alle Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
 
 ## Web-App (Browser)
 
 Ohne Installation im Browser:
-**https://matthiasulrich1.github.io/Mathsachs/**
+**https://app.tasktrophy.de/**
 
 Benutzer, Punkte und Einstellungen liegen im **Browser-localStorage** dieses
-Geräts. Unter **Einstellungen → Benutzerverwaltung** kannst du Daten als
+Geräts (pro Domain getrennt). Unter **Einstellungen → Benutzerverwaltung** kannst du Daten als
 JSON **exportieren** und auf einem anderen Gerät **importieren**.
 
 ## Download
