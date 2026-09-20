@@ -64,6 +64,64 @@ function geoDimArrowSegment(
   ${geoDimLabel(labelX, labelY, label, { anchor, size })}`
 }
 
+/** Offset a point by a (possibly unnormalized) direction vector. */
+function offsetPt(
+  p: [number, number],
+  dir: [number, number],
+  dist: number,
+): [number, number] {
+  const len = Math.hypot(dir[0], dir[1]) || 1
+  return [
+    Math.round((p[0] + (dir[0] / len) * dist) * 100) / 100,
+    Math.round((p[1] + (dir[1] / len) * dist) * 100) / 100,
+  ]
+}
+
+/**
+ * Maßlinie parallel zum Kantenstück, versetzt entlang `offsetDir`, mit Hilfslinien
+ * von den Kantenecken zur Maßlinie (klare Zuordnung der Seite).
+ */
+function geoDimOffsetSegment(
+  a: [number, number],
+  b: [number, number],
+  label: string | undefined,
+  opts: {
+    stroke: string
+    markerId: string
+    /** Offset direction (same for related measures — e.g. isometric 45°). */
+    offsetDir: [number, number]
+    /** Distance from edge to dimension line. */
+    dist: number
+    /** Label offset from the midpoint of the dimension line. */
+    labelOffset?: [number, number]
+    anchor?: 'start' | 'middle' | 'end'
+    size?: number
+  },
+): string {
+  if (!label?.trim()) return ''
+  const { stroke, markerId, offsetDir, dist, labelOffset, anchor, size } = opts
+  const a2 = offsetPt(a, offsetDir, dist)
+  const b2 = offsetPt(b, offsetDir, dist)
+  // Hilfslinien slightly past the Maßlinie
+  const aExt = offsetPt(a, offsetDir, dist + 5)
+  const bExt = offsetPt(b, offsetDir, dist + 5)
+  const mid: [number, number] = [(a2[0] + b2[0]) / 2, (a2[1] + b2[1]) / 2]
+  const labelPos: [number, number] = labelOffset
+    ? [mid[0] + labelOffset[0], mid[1] + labelOffset[1]]
+    : [mid[0], mid[1] - 14]
+  const ext = `stroke="${stroke}" stroke-width="1" opacity="0.85"`
+  return `<line x1="${a[0]}" y1="${a[1]}" x2="${aExt[0]}" y2="${aExt[1]}" ${ext}/>
+  <line x1="${b[0]}" y1="${b[1]}" x2="${bExt[0]}" y2="${bExt[1]}" ${ext}/>
+  ${geoDimArrowSegment(a2[0], a2[1], b2[0], b2[1], label, {
+    stroke,
+    markerId,
+    labelX: labelPos[0],
+    labelY: labelPos[1],
+    anchor,
+    size,
+  })}`
+}
+
 export interface RectangleSvgProps {
   /** Width label (e.g., "5 cm") */
   widthLabel: string
@@ -1650,48 +1708,39 @@ export function generateCompositeCuboidSvg({
   fill = '#e3f2fd',
   stroke = '#1565c0',
 }: CompositeCuboidSvgProps): string {
-  // Same Strecke layout as generateCuboidSvg: height left, depth right,
-  // length below; cut measures sit clearly outside the solid (never on edges).
-  const padL = 72
-  const padR = 140
-  const padT = 118
-  const padB = 68
-  const scale = Math.min(140 / length, 90 / width, 80 / height)
+  // Stretched isometric solid + Maßlinien parallel versetzt (Hilfslinien),
+  // Längenmaße nach unten/oben, Tiefenmaße in derselben ~45°-Richtung.
+  const padL = 88
+  const padR = 160
+  const padT = 130
+  const padB = 90
+  const scale = Math.min(210 / length, 150 / width, 120 / height)
   const L = length * scale
   const W = width * scale
   const H = height * scale
   const cL = cutLength * scale
   const cW = cutWidth * scale
 
-  // Isometric offsets (same style as generateCuboidSvg)
-  const dx = W * 0.55
-  const dy = W * 0.45
+  const isoDx = 0.55
+  const isoDy = 0.45
+  const dx = W * isoDx
+  const dy = W * isoDy
 
   const x0 = padL
   const y0 = padT + dy
 
-  // Helper: isometric point from (x along length, y along width, z up)
   const iso = (x: number, y: number, z: number): [number, number] => [
-    x0 + x + y * 0.55,
-    y0 + H - z - y * 0.45,
+    x0 + x + y * isoDx,
+    y0 + H - z - y * isoDy,
   ]
 
   const poly = (...pts: Array<[number, number]>) =>
     pts.map(([x, y]) => `${x},${y}`).join(' ')
 
-  // Key corners of the L solid
-  // Base L (z=0) and top L (z=H)
-  // Stem occupies x in [0, L-cL], full width [0,W]
-  // Foot occupies x in [L-cL, L], width [0, W-cW]
-
   const stemTop = L - cL
-
   const f = (x: number, y: number, z: number) => iso(x, y, z)
 
-  // Front vertical face of full length at y=0
   const frontFace = poly(f(0, 0, 0), f(L, 0, 0), f(L, 0, H), f(0, 0, H))
-
-  // Top face of L (z=H)
   const topFace = poly(
     f(0, 0, H),
     f(L, 0, H),
@@ -1700,147 +1749,73 @@ export function generateCompositeCuboidSvg({
     f(stemTop, W, H),
     f(0, W, H),
   )
-
-  // Right face of foot (x=L, y from 0 to W-cW)
   const rightFoot = poly(f(L, 0, 0), f(L, W - cW, 0), f(L, W - cW, H), f(L, 0, H))
-
-  // Inner vertical step (x=stemTop, y from W-cW to W)
   const stepFace = poly(
     f(stemTop, W - cW, 0),
     f(stemTop, W, 0),
     f(stemTop, W, H),
     f(stemTop, W - cW, H),
   )
-
-  // Back-left top edge region face (y=W, x from 0 to stemTop)
   const backStem = poly(f(0, W, 0), f(stemTop, W, 0), f(stemTop, W, H), f(0, W, H))
 
   const totalW = Math.ceil(padL + L + dx + padR)
   const totalH = Math.ceil(padT + H + dy + padB)
 
-  const mid = (p: [number, number], q: [number, number]): [number, number] => [
-    (p[0] + q[0]) / 2,
-    (p[1] + q[1]) / 2,
-  ]
-
   const lenA = f(0, 0, 0)
   const lenB = f(L, 0, 0)
   const heightA = f(0, 0, H)
   const heightB = f(0, 0, 0)
-  // Full depth on the RIGHT (same side as generateCuboidSvg), spanning y: 0 → W
-  // at x = L even though the solid only fills the foot — the Strecke sits outside.
   const widthA = f(L, 0, 0)
   const widthB = f(L, W, 0)
-  // Cut length = top edge of the foot step (along length, at y = W-cW)
   const cutLenA = f(stemTop, W - cW, H)
   const cutLenB = f(L, W - cW, H)
-  // Cut width = inner step edge into the void (along width, at x = stemTop)
   const cutWidA = f(stemTop, W - cW, H)
   const cutWidB = f(stemTop, W, H)
 
-  // --- All measures: Strecke only (outward arrows). No leaders. ---
-  const lengthDimY = lenA[1] + 20
-  const lengthLabelPos: [number, number] = [
-    (lenA[0] + lenB[0]) / 2,
-    lengthDimY + 18,
-  ]
-
-  // Height left of front-left edge; label outside (left), like cuboid
-  const heightDimX = heightA[0] - 18
-  const heightLabelPos: [number, number] = [
-    heightDimX - 12,
-    (heightA[1] + heightB[1]) / 2 + 5,
-  ]
-
-  // Depth Strecke offset to the right of the solid
-  const widthDimA: [number, number] = [widthA[0] + 20, widthA[1] + 6]
-  const widthDimB: [number, number] = [widthB[0] + 20, widthB[1] + 6]
-  const widthMid = mid(widthDimA, widthDimB)
-  const widthLabelPos: [number, number] = [widthMid[0] + 28, widthMid[1] + 6]
-
-  // Cut length: Strecke clearly ABOVE the notch top edge (like outer length below).
-  const cutLenDimA: [number, number] = [cutLenA[0] + 2, cutLenA[1] - 48]
-  const cutLenDimB: [number, number] = [cutLenB[0] - 2, cutLenB[1] - 48]
-  const cutLenMid = mid(cutLenDimA, cutLenDimB)
-  const cutLenLabelPos: [number, number] = [cutLenMid[0], cutLenMid[1] - 16]
-
-  // Cut width: Strecke OUTSIDE into the void, offset like outer depth — label clear of solid.
-  const cutWidDimA: [number, number] = [cutWidA[0] + 42, cutWidA[1] - 8]
-  const cutWidDimB: [number, number] = [cutWidB[0] + 42, cutWidB[1] - 8]
-  const cutWidMid = mid(cutWidDimA, cutWidDimB)
-  const cutWidLabelPos: [number, number] = [cutWidMid[0] + 30, cutWidMid[1] + 5]
+  const DIR_DOWN: [number, number] = [0, 1]
+  const DIR_UP: [number, number] = [0, -1]
+  const DIR_LEFT: [number, number] = [-1, 0]
+  // Same ~45° depth direction for outer depth and cut-depth
+  const DIR_DEPTH_OUT: [number, number] = [isoDx, isoDy]
 
   const markerId = 'compositeCuboid'
-  const lengthDim = geoDimArrowSegment(
-    lenA[0],
-    lengthDimY,
-    lenB[0],
-    lengthDimY,
-    lengthLabel,
-    {
-      stroke,
-      markerId,
-      labelX: lengthLabelPos[0],
-      labelY: lengthLabelPos[1],
-    },
-  )
-  const heightDim = geoDimArrowSegment(
-    heightDimX,
-    heightA[1],
-    heightDimX,
-    heightB[1],
-    heightLabel,
-    {
-      stroke,
-      markerId,
-      labelX: heightLabelPos[0],
-      labelY: heightLabelPos[1],
-      anchor: 'end',
-    },
-  )
-  const widthDim = geoDimArrowSegment(
-    widthDimA[0],
-    widthDimA[1],
-    widthDimB[0],
-    widthDimB[1],
-    widthLabel,
-    {
-      stroke,
-      markerId,
-      labelX: widthLabelPos[0],
-      labelY: widthLabelPos[1],
-      anchor: 'start',
-    },
-  )
-  const cutLenDim = geoDimArrowSegment(
-    cutLenDimA[0],
-    cutLenDimA[1],
-    cutLenDimB[0],
-    cutLenDimB[1],
-    cutLengthLabel,
-    {
-      stroke,
-      markerId,
-      labelX: cutLenLabelPos[0],
-      labelY: cutLenLabelPos[1],
-      size: 16,
-    },
-  )
-  const cutWidDim = geoDimArrowSegment(
-    cutWidDimA[0],
-    cutWidDimA[1],
-    cutWidDimB[0],
-    cutWidDimB[1],
-    cutWidthLabel,
-    {
-      stroke,
-      markerId,
-      labelX: cutWidLabelPos[0],
-      labelY: cutWidLabelPos[1],
-      anchor: 'start',
-      size: 16,
-    },
-  )
+  const dimOpts = { stroke, markerId }
+
+  const lengthDim = geoDimOffsetSegment(lenA, lenB, lengthLabel, {
+    ...dimOpts,
+    offsetDir: DIR_DOWN,
+    dist: 28,
+    labelOffset: [0, 18],
+  })
+  const heightDim = geoDimOffsetSegment(heightA, heightB, heightLabel, {
+    ...dimOpts,
+    offsetDir: DIR_LEFT,
+    dist: 28,
+    labelOffset: [-14, 5],
+    anchor: 'end',
+  })
+  const widthDim = geoDimOffsetSegment(widthA, widthB, widthLabel, {
+    ...dimOpts,
+    offsetDir: DIR_DEPTH_OUT,
+    dist: 36,
+    labelOffset: [22, 8],
+    anchor: 'start',
+  })
+  const cutLenDim = geoDimOffsetSegment(cutLenA, cutLenB, cutLengthLabel, {
+    ...dimOpts,
+    offsetDir: DIR_UP,
+    dist: 36,
+    labelOffset: [0, -16],
+    size: 16,
+  })
+  const cutWidDim = geoDimOffsetSegment(cutWidA, cutWidB, cutWidthLabel, {
+    ...dimOpts,
+    offsetDir: DIR_DEPTH_OUT,
+    dist: 40,
+    labelOffset: [24, 6],
+    anchor: 'start',
+    size: 16,
+  })
 
   return `
 <svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="L-förmiger Körper">

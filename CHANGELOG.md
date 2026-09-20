@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.67] – 2026-09-20
+
+### Behoben
+- **ID 7227 L-Quader:** Körper gestreckt; Maßpfeile mit Hilfslinien parallel
+  versetzt — Tiefenmaße in derselben ~45°-Richtung, klar der Seite zuordenbar.
+
 ## [0.27.66] – 2026-09-20
 
 ### Freigabe
