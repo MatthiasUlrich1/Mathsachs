@@ -9,6 +9,34 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.61] – 2026-09-20
+
+### Freigabe
+- **Physik Klasse 6 LB4:** Gefahren und Kurzschluss (ID 2233).
+
+## [0.27.60] – 2026-09-20
+
+### Freigabe
+- **Physik Klasse 6 LB4:** Leiter und Nichtleiter (ID 6788) und Reihe und Parallel
+  (ID 5923).
+
+### Behoben
+- **Reihe/Parallel-Schaltbilder (ID 5923):** Parallel jetzt mit zwei eigenen
+  Zweigen; Spannungsquelle und Glühlampen (Kreis mit X) nach Schulschnittbild;
+  Lösungstexte wie „Parallel: eigene Zweige“ aus den Bildern entfernt.
+- **Stromkreis-SVG:** gleiche offiziellen Symbole für Batterie und Lampe.
+
+## [0.27.59] – 2026-09-20
+
+### Freigabe
+- **Physik Klasse 6 LB4:** Schaltsymbole (ID 6148) und Elektrischer Widerstand
+  (ID 6936).
+
+### Behoben
+- **Stromkreis-Schalter (ID 8500):** Offener Schalter jetzt als angewinkelte
+  Schaltlinie mit Kontaktpunkten (Schulschnittbild), nicht mehr als versetzte
+  waagerechte Linien.
+
 ## [0.27.58] – 2026-09-20
 
 ### Geändert

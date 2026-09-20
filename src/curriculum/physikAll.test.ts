@@ -81,9 +81,24 @@ describe('Physik Gym generators (all grades)', () => {
         expect(t.released, t.id).toBe(false)
       }
     }
+    const lb4 = k6.areas.find((a) => a.id === 'lb4')!.topics
+    const releasedLb4 = new Set([
+      'ph-k6-lb4-leiter',
+      'ph-k6-lb4-symbole',
+      'ph-k6-lb4-widerstand',
+      'ph-k6-lb4-reiheparallel',
+      'ph-k6-lb4-gefahren',
+    ])
+    for (const t of lb4) {
+      if (releasedLb4.has(t.id)) {
+        expect(t.released, t.id).toBe(true)
+      } else {
+        expect(t.released, t.id).toBe(false)
+      }
+    }
     expect(
       k6.areas
-        .filter((a) => a.id !== 'lb1' && a.id !== 'lb2')
+        .filter((a) => a.id !== 'lb1' && a.id !== 'lb2' && a.id !== 'lb4')
         .flatMap((a) => a.topics)
         .every((t) => t.released === false),
     ).toBe(true)

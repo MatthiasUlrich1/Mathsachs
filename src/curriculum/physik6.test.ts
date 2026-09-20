@@ -92,6 +92,43 @@ describe('Physik Klasse 6 generators', () => {
     expect(withSvg).toBeGreaterThan(10)
   })
 
+  it('Stromkreis open-switch SVG uses hinged angled lever (not staggered horizontals)', () => {
+    const gen = PHYSIK_K6_GENERATORS['ph-k6-lb4-stromkreis']!
+    let openFound = false
+    for (let seed = 1; seed <= 60; seed++) {
+      const task = gen(createRng(seed))
+      const svg = task.visualContent ?? ''
+      if (!svg.includes('Schalter offen')) continue
+      openFound = true
+      expect(svg).toMatch(/L1\d+ \d+/)
+      expect(svg).not.toMatch(/M148 58 H168/)
+      expect(svg).toContain('circle cx="110"')
+      expect(svg).toContain('circle cx="160"')
+    }
+    expect(openFound).toBe(true)
+  })
+
+  it('Reihe/Parallel SVGs use official symbols and never spoil the answer', () => {
+    const gen = PHYSIK_K6_GENERATORS['ph-k6-lb4-reiheparallel']!
+    let series = 0
+    let parallel = 0
+    for (let seed = 1; seed <= 80; seed++) {
+      const svg = gen(createRng(seed)).visualContent ?? ''
+      if (!svg) continue
+      expect(svg).not.toMatch(/eigene Zweige|gemeinsamer Weg/i)
+      expect(svg).toMatch(/aria-label="(Reihen|Parallel)schaltung"/)
+      // Glühlampe = Kreis mit X (two diagonal strokes)
+      expect(svg).toMatch(/L[\d.]+ [\d.]+ M[\d.]+ [\d.]+ L[\d.]+/)
+      // Spannungsquelle polarity marks
+      expect(svg).toContain('>+</text>')
+      expect(svg).toContain('>−</text>')
+      if (svg.includes('Parallelschaltung')) parallel++
+      if (svg.includes('Reihenschaltung')) series++
+    }
+    expect(series).toBeGreaterThan(5)
+    expect(parallel).toBeGreaterThan(5)
+  })
+
   it('Schaltsymbole (ID 6148) asks for symbols, not Ohm calculations', () => {
     const gen = PHYSIK_K6_GENERATORS['ph-k6-lb4-symbole']!
     for (let seed = 1; seed <= 40; seed++) {

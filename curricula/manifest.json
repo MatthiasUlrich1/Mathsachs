@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-18T21:41:14.063Z",
+  "updatedAt": "2026-09-20T16:23:39.875Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -18,10 +18,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "2.5.2",
+      "version": "2.5.5",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 124051,
-      "changelog": "Pack-Update: Schaltsymbole (ID 6148) mit echten Symbol-Aufgaben; neues Thema Elektrischer Widerstand (ID 6936) in LB4; Factory-Zuordnung für gesperrte Themen nachgebessert."
+      "size": 123917,
+      "changelog": "Freigabe Gefahren und Kurzschluss (ID 2233)."
     },
     {
       "id": "oberschule-sachsen-hs",

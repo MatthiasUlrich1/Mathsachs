@@ -248,24 +248,24 @@ export function wegZeitCompareSvg(highlight: 'rest' | 'uniform' | 'accel'): stri
 }
 
 export function circuitSvg(closed: boolean): string {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 140" width="280" height="140" role="img" aria-label="Einfacher Stromkreis">
-  <rect width="280" height="140" fill="#f8fafc"/>
-  <rect x="40" y="55" width="36" height="30" rx="4" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
-  <text x="58" y="48" text-anchor="middle" fill="#92400e" font-size="11" font-family="system-ui,sans-serif">Batterie</text>
-  <circle cx="210" cy="70" r="18" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
-  <text x="210" y="74" text-anchor="middle" fill="#854d0e" font-size="16" font-family="system-ui,sans-serif">💡</text>
-  <text x="210" y="105" text-anchor="middle" fill="#64748b" font-size="11" font-family="system-ui,sans-serif">Lampe</text>
-  <path d="M76 70 H120" stroke="#334155" stroke-width="3" fill="none"/>
-  <path d="M160 70 H192" stroke="#334155" stroke-width="3" fill="none"/>
-  <path d="M228 70 H250 V110 H40 V85" stroke="#334155" stroke-width="3" fill="none"/>
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150" width="300" height="150" role="img" aria-label="Einfacher Stromkreis">
+  <rect width="300" height="150" fill="#f8fafc"/>
+  ${batteryOnRail(40, 75)}
+  <path d="M40 47 V36 H110" stroke="#334155" stroke-width="2.5" fill="none"/>
   ${
     closed
-      ? `<path d="M120 70 H160" stroke="#334155" stroke-width="3" fill="none"/>
-  <text x="140" y="58" text-anchor="middle" fill="#15803d" font-size="11" font-family="system-ui,sans-serif">Schalter zu</text>`
-      : `<path d="M120 70 H140" stroke="#334155" stroke-width="3" fill="none"/>
-  <path d="M148 58 H168" stroke="#334155" stroke-width="3" fill="none"/>
-  <text x="148" y="48" text-anchor="middle" fill="#b91c1c" font-size="11" font-family="system-ui,sans-serif">Schalter offen</text>`
+      ? `<circle cx="110" cy="36" r="3.5" fill="#334155"/>
+  <path d="M110 36 H160" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <circle cx="160" cy="36" r="3.5" fill="#334155"/>
+  <text x="135" y="24" text-anchor="middle" fill="#15803d" font-size="11" font-family="system-ui,sans-serif">Schalter zu</text>`
+      : `<circle cx="110" cy="36" r="3.5" fill="#334155"/>
+  <path d="M110 36 L148 20" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <circle cx="160" cy="36" r="3.5" fill="#334155"/>
+  <text x="135" y="16" text-anchor="middle" fill="#b91c1c" font-size="11" font-family="system-ui,sans-serif">Schalter offen</text>`
   }
+  <path d="M160 36 H200" stroke="#334155" stroke-width="2.5" fill="none"/>
+  ${lampGlyph(220, 36)}
+  <path d="M236 36 H270 V114 H40 V${75 + 28}" stroke="#334155" stroke-width="2.5" fill="none"/>
 </svg>`
 }
 
@@ -364,24 +364,66 @@ export function circuitSymbolSvg(kind: CircuitSymbolKind): string {
 </svg>`
 }
 
-/** Side-by-side Reihe vs Parallel sketch for Klasse-6 intro. */
+/** Official-style Glühlampe (Kreis mit X). */
+function lampGlyph(cx: number, cy: number, r = 16): string {
+  const d = r * 0.72
+  return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#fffbeb" stroke="#334155" stroke-width="2.5"/>
+  <path d="M${cx - d} ${cy - d} L${cx + d} ${cy + d} M${cx + d} ${cy - d} L${cx - d} ${cy + d}" stroke="#334155" stroke-width="2.5" fill="none"/>`
+}
+
+/** Spannungsquelle on a vertical rail (long + / short − bars). */
+function batteryOnRail(x: number, cy: number): string {
+  return `<path d="M${x} ${cy - 28} V${cy - 10}" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <path d="M${x - 16} ${cy - 10} H${x + 16}" stroke="#334155" stroke-width="3" fill="none"/>
+  <path d="M${x - 9} ${cy + 6} H${x + 9}" stroke="#334155" stroke-width="5" fill="none"/>
+  <path d="M${x} ${cy + 6} V${cy + 28}" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <text x="${x + 22}" y="${cy - 6}" fill="#64748b" font-size="14" font-family="system-ui,sans-serif">+</text>
+  <text x="${x + 22}" y="${cy + 14}" fill="#64748b" font-size="14" font-family="system-ui,sans-serif">−</text>`
+}
+
+/** Open switch on a horizontal wire (hinged lever). */
+function openSwitch(x0: number, x1: number, y: number): string {
+  const mid = (x0 + x1) / 2
+  return `<path d="M${x0} ${y} H${mid - 14}" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <circle cx="${mid - 14}" cy="${y}" r="3.5" fill="#334155"/>
+  <path d="M${mid - 14} ${y} L${mid + 18} ${y - 16}" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <circle cx="${mid + 14}" cy="${y}" r="3.5" fill="#334155"/>
+  <path d="M${mid + 14} ${y} H${x1}" stroke="#334155" stroke-width="2.5" fill="none"/>`
+}
+
+/**
+ * Reihe / Parallel as school Schaltbilder (IEC-like).
+ * No solution captions — pupils must read the topology themselves.
+ */
 export function seriesParallelSvg(kind: 'series' | 'parallel'): string {
   if (kind === 'series') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140" width="320" height="140" role="img" aria-label="Reihenschaltung">
-  <rect width="320" height="140" fill="#f8fafc"/>
-  <rect x="30" y="55" width="28" height="24" rx="3" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
-  <circle cx="120" cy="67" r="14" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
-  <circle cx="190" cy="67" r="14" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
-  <path d="M58 67 H106 M134 67 H176 M204 67 H280 V100 H30 V79" stroke="#334155" stroke-width="3" fill="none"/>
-  <text x="160" y="128" text-anchor="middle" fill="#475569" font-size="13" font-family="system-ui,sans-serif">Reihe: ein gemeinsamer Weg</text>
+    // One loop: battery left, switch top, two lamps in series on the top rail.
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160" role="img" aria-label="Reihenschaltung">
+  <rect width="320" height="160" fill="#f8fafc"/>
+  ${batteryOnRail(40, 80)}
+  <path d="M40 52 V36 H90" stroke="#334155" stroke-width="2.5" fill="none"/>
+  ${openSwitch(90, 150, 36)}
+  <path d="M150 36 H170" stroke="#334155" stroke-width="2.5" fill="none"/>
+  ${lampGlyph(186, 36)}
+  <path d="M202 36 H218" stroke="#334155" stroke-width="2.5" fill="none"/>
+  ${lampGlyph(234, 36)}
+  <path d="M250 36 H280 V108 H40" stroke="#334155" stroke-width="2.5" fill="none"/>
 </svg>`
   }
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 150" width="320" height="150" role="img" aria-label="Parallelschaltung">
-  <rect width="320" height="150" fill="#f8fafc"/>
-  <rect x="30" y="60" width="28" height="24" rx="3" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
-  <circle cx="170" cy="40" r="12" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
-  <circle cx="170" cy="105" r="12" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
-  <path d="M58 72 H110 V40 H158 M182 40 H240 V72 H290 V95 H240 V105 H182 M158 105 H110 V72 M30 84 V95 H110" stroke="#334155" stroke-width="3" fill="none"/>
-  <text x="160" y="140" text-anchor="middle" fill="#475569" font-size="13" font-family="system-ui,sans-serif">Parallel: eigene Zweige</text>
+  // Parallel: after the switch, two vertical branches each with one lamp (own Zweig).
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Parallelschaltung">
+  <rect width="320" height="180" fill="#f8fafc"/>
+  ${batteryOnRail(40, 90)}
+  <path d="M40 62 V40 H90" stroke="#334155" stroke-width="2.5" fill="none"/>
+  ${openSwitch(90, 150, 40)}
+  <path d="M150 40 H200" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <path d="M200 40 V64" stroke="#334155" stroke-width="2.5" fill="none"/>
+  ${lampGlyph(200, 82)}
+  <path d="M200 98 V140" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <path d="M200 40 H260" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <path d="M260 40 V64" stroke="#334155" stroke-width="2.5" fill="none"/>
+  ${lampGlyph(260, 82)}
+  <path d="M260 98 V140 H40 V118" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <path d="M200 140 H260" stroke="#334155" stroke-width="2.5" fill="none"/>
 </svg>`
 }

@@ -19,9 +19,8 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.2',
-    changelog:
-      'Pack-Update: Schaltsymbole (ID 6148) mit echten Symbol-Aufgaben; neues Thema Elektrischer Widerstand (ID 6936) in LB4; Factory-Zuordnung für gesperrte Themen nachgebessert.',
+    version: '2.5.5',
+    changelog: 'Freigabe Gefahren und Kurzschluss (ID 2233).',
     official,
     extras: [],
   }

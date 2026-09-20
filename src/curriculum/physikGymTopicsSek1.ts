@@ -135,11 +135,19 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
         ]),
         area('lb4', 'Elektrische Stromkreise', 5, [
           topic('ph-k6-lb4-stromkreis', 'Offener und geschlossener Stromkreis', ['Stromkreis', 'Schalter']),
-          topic('ph-k6-lb4-leiter', 'Leiter und Nichtleiter', ['Leiter', 'Isolator']),
-          topic('ph-k6-lb4-symbole', 'Schaltsymbole', ['Schaltbild']),
-          topic('ph-k6-lb4-widerstand', 'Elektrischer Widerstand', ['Widerstand', 'Ohm']),
-          topic('ph-k6-lb4-reiheparallel', 'Reihe und Parallel (einfach)', ['Reihe', 'Parallel']),
-          topic('ph-k6-lb4-gefahren', 'Gefahren und Kurzschluss', ['Kurzschluss', 'Sicherheit']),
+          topic('ph-k6-lb4-leiter', 'Leiter und Nichtleiter', ['Leiter', 'Isolator'], {
+            released: true,
+          }),
+          topic('ph-k6-lb4-symbole', 'Schaltsymbole', ['Schaltbild'], { released: true }),
+          topic('ph-k6-lb4-widerstand', 'Elektrischer Widerstand', ['Widerstand', 'Ohm'], {
+            released: true,
+          }),
+          topic('ph-k6-lb4-reiheparallel', 'Reihe und Parallel (einfach)', ['Reihe', 'Parallel'], {
+            released: true,
+          }),
+          topic('ph-k6-lb4-gefahren', 'Gefahren und Kurzschluss', ['Kurzschluss', 'Sicherheit'], {
+            released: true,
+          }),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
           topic('ph-k6-lbw-sehen', 'Sehen und Fotografieren', ['Sehen', 'Fotografie']),
