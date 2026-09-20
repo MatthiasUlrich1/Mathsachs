@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.70] – 2026-09-20
+
+### Behoben
+- **ID 7227 L-Quader:** Maßpfeile wie in der gezeichneten Vorlage — volle
+  Tiefe rechts außen parallel zum Stem (nicht durch die Aussparung), Teiltiefe
+  oben am Absatz; 45°/halbe Länge bleibt, damit z. B. 10 cm kürzer wirkt als
+  9 cm Front.
+
 ## [0.27.69] – 2026-09-20
 
 ### Behoben

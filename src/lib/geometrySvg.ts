@@ -1680,13 +1680,17 @@ export interface CompositeCuboidSvgProps {
   widthLabel?: string
   heightLabel?: string
   cutLengthLabel?: string
+  /** Partial depth on the top ledge (Fuß-Tiefe), not the cut void */
   cutWidthLabel?: string
   fill?: string
   stroke?: string
 }
 
 /**
- * Generate an isometric SVG of an L-shaped composite cuboid (two joined cuboids).
+ * Generate a Schrägbild SVG of an L-shaped composite cuboid (two joined cuboids).
+ * Depth at 45° and half visual length (school convention). Floating Maßpfeile
+ * arranged like a textbook figure: length below, height left, full depth bottom-right,
+ * partial depth top-right, cut length above the ledge — no Hilfslinien.
  */
 export function generateCompositeCuboidSvg({
   length,
@@ -1702,28 +1706,27 @@ export function generateCompositeCuboidSvg({
   fill = '#e3f2fd',
   stroke = '#1565c0',
 }: CompositeCuboidSvgProps): string {
-  // School Schrägbild (same as cuboidIsoGeometry): front true size;
-  // depth at 45° and visually half length. Floating Maßpfeile, no Hilfslinien.
-  const padL = 96
-  const padR = 120
-  const padT = 100
-  const padB = 80
-  // Scale from front-face size; depth uses half-length separately
-  const scale = Math.min(200 / length, 110 / height, 180 / Math.max(width, 1))
+  const padL = 88
+  const padR = 132
+  const padT = 92
+  const padB = 72
+  // Scale from the front face only — depth foreshortening is applied separately
+  const scale = Math.min(200 / length, 120 / height)
   const L = length * scale
   const H = height * scale
   const depthTrue = width * scale
+  // Schrägbild: on paper, depth is drawn at half its true length
   const depthLen = depthTrue / 2
+  const footDepthTrue = (width - cutWidth) * scale
   const cL = cutLength * scale
-  const cDepthTrue = cutWidth * scale
   const angle = Math.PI / 4 // 45°
-  const depUnitX = Math.cos(angle) // for depthLen=1
+  const depUnitX = Math.cos(angle)
   const depUnitY = Math.sin(angle)
   const depX = depthLen * depUnitX
   const depY = depthLen * depUnitY
-  // Per-unit-depth screen coeffs (depthTrue units along y)
-  const isoDx = (depthLen / Math.max(depthTrue, 1e-9)) * depUnitX // = 0.5 * cos45
-  const isoDy = (depthLen / Math.max(depthTrue, 1e-9)) * depUnitY // = 0.5 * sin45
+  // Map model-depth units → screen (half-length × 45°)
+  const isoDx = (depthLen / Math.max(depthTrue, 1e-9)) * depUnitX
+  const isoDy = (depthLen / Math.max(depthTrue, 1e-9)) * depUnitY
 
   const x0 = padL
   const y0 = padT + depY
@@ -1739,46 +1742,63 @@ export function generateCompositeCuboidSvg({
 
   const stemTop = L - cL
   const f = (x: number, y: number, z: number) => schraeg(x, y, z)
-  // cutWidth is along depth (y); keep full depth as width, cut as cDepthTrue in same units
   const W = depthTrue
-  const cW = cDepthTrue
+  const footW = footDepthTrue
 
   const frontFace = poly(f(0, 0, 0), f(L, 0, 0), f(L, 0, H), f(0, 0, H))
   const topFace = poly(
     f(0, 0, H),
     f(L, 0, H),
-    f(L, W - cW, H),
-    f(stemTop, W - cW, H),
+    f(L, footW, H),
+    f(stemTop, footW, H),
     f(stemTop, W, H),
     f(0, W, H),
   )
-  const rightFoot = poly(f(L, 0, 0), f(L, W - cW, 0), f(L, W - cW, H), f(L, 0, H))
+  const rightFoot = poly(f(L, 0, 0), f(L, footW, 0), f(L, footW, H), f(L, 0, H))
   const stepFace = poly(
-    f(stemTop, W - cW, 0),
+    f(stemTop, footW, 0),
     f(stemTop, W, 0),
     f(stemTop, W, H),
-    f(stemTop, W - cW, H),
+    f(stemTop, footW, H),
   )
   const backStem = poly(f(0, W, 0), f(stemTop, W, 0), f(stemTop, W, H), f(0, W, H))
 
-  const totalW = Math.ceil(padL + L + depX + padR)
-  const totalH = Math.ceil(padT + H + depY + padB)
+  // —— Maßpfeile as in the hand-drawn reference ——
+  // Full depth must follow a *solid* full-depth edge (left stem), then sit to the
+  // right of the whole figure — never along x=L through the cut void (that made
+  // "10 cm" look longer than the body).
+  const stemDepthA = f(0, 0, 0)
+  const stemDepthB = f(0, W, 0)
+  const depthVec: [number, number] = [
+    stemDepthB[0] - stemDepthA[0],
+    stemDepthB[1] - stemDepthA[1],
+  ]
+  // Place parallel copy just outside the bottom-right of the silhouette
+  const frontRight = f(L, 0, 0)
+  const depthGap = 44
+  const widthA: [number, number] = [
+    Math.round((frontRight[0] + depthGap * depUnitX) * 100) / 100,
+    Math.round((frontRight[1] + depthGap * depUnitY) * 100) / 100,
+  ]
+  const widthB: [number, number] = [
+    Math.round((widthA[0] + depthVec[0]) * 100) / 100,
+    Math.round((widthA[1] + depthVec[1]) * 100) / 100,
+  ]
 
   const lenA = f(0, 0, 0)
   const lenB = f(L, 0, 0)
   const heightA = f(0, 0, H)
   const heightB = f(0, 0, 0)
-  const widthA = f(L, 0, 0)
-  const widthB = f(L, W, 0)
-  const cutLenA = f(stemTop, W - cW, H)
-  const cutLenB = f(L, W - cW, H)
-  const cutWidA = f(stemTop, W - cW, H)
-  const cutWidB = f(stemTop, W, H)
+  // Cut length: short horizontal ledge on top (like "3 cm" in the reference)
+  const cutLenA = f(stemTop, footW, H)
+  const cutLenB = f(L, footW, H)
+  // Partial depth: along the top of the foot (ledge), 45° — like "6 cm" in the reference
+  const partialA = f(L, 0, H)
+  const partialB = f(L, footW, H)
 
   const DIR_DOWN: [number, number] = [0, 1]
   const DIR_UP: [number, number] = [0, -1]
   const DIR_LEFT: [number, number] = [-1, 0]
-  // Outward along depth foreshortening (same 45° as the body)
   const DIR_DEPTH_OUT: [number, number] = [depUnitX, depUnitY]
 
   const markerId = 'compositeCuboid'
@@ -1787,42 +1807,81 @@ export function generateCompositeCuboidSvg({
   const lengthDim = geoDimOffsetSegment(lenA, lenB, lengthLabel, {
     ...dimOpts,
     offsetDir: DIR_DOWN,
-    dist: 28,
+    dist: 26,
     labelOffset: [0, 18],
   })
   const heightDim = geoDimOffsetSegment(heightA, heightB, heightLabel, {
     ...dimOpts,
     offsetDir: DIR_LEFT,
-    dist: 28,
-    labelOffset: [-14, 5],
+    dist: 26,
+    labelOffset: [-12, 5],
     anchor: 'end',
   })
+  // Full depth already placed outside; tiny extra gap along 45°
   const widthDim = geoDimOffsetSegment(widthA, widthB, widthLabel, {
     ...dimOpts,
     offsetDir: DIR_DEPTH_OUT,
-    dist: 36,
-    labelOffset: [18, 10],
+    dist: 10,
+    labelOffset: [16, 12],
     anchor: 'start',
   })
   const cutLenDim = geoDimOffsetSegment(cutLenA, cutLenB, cutLengthLabel, {
     ...dimOpts,
     offsetDir: DIR_UP,
-    dist: 32,
-    labelOffset: [0, -16],
+    dist: 24,
+    labelOffset: [0, -14],
     size: 16,
   })
-  const cutWidDim = geoDimOffsetSegment(cutWidA, cutWidB, cutWidthLabel, {
+  const cutWidDim = geoDimOffsetSegment(partialA, partialB, cutWidthLabel, {
     ...dimOpts,
     offsetDir: DIR_DEPTH_OUT,
-    dist: 36,
-    labelOffset: [18, 8],
+    dist: 28,
+    labelOffset: [14, 6],
     anchor: 'start',
     size: 16,
   })
 
+  // Bounds from solid + explicitly placed depth dim
+  const allPts: Array<[number, number]> = [
+    f(0, 0, 0),
+    f(L, 0, 0),
+    f(L, 0, H),
+    f(0, 0, H),
+    f(0, W, 0),
+    f(0, W, H),
+    f(stemTop, W, 0),
+    f(stemTop, W, H),
+    f(L, footW, 0),
+    f(L, footW, H),
+    widthA,
+    widthB,
+    [
+      widthA[0] + 10 * depUnitX + 16,
+      widthA[1] + 10 * depUnitY + 12,
+    ],
+    [
+      widthB[0] + 10 * depUnitX + 16,
+      widthB[1] + 10 * depUnitY + 12,
+    ],
+  ]
+  let minX = Infinity
+  let minY = Infinity
+  let maxX = -Infinity
+  let maxY = -Infinity
+  for (const [px, py] of allPts) {
+    minX = Math.min(minX, px)
+    minY = Math.min(minY, py)
+    maxX = Math.max(maxX, px)
+    maxY = Math.max(maxY, py)
+  }
+  const totalW = Math.ceil(Math.max(padL + L + depX + padR, maxX + 56))
+  const totalH = Math.ceil(
+    Math.max(padT + H + depY + padB, maxY + 40, padT + H + depY - Math.min(0, minY) + padB),
+  )
+
   return `
-<svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="L-förmiger Körper">
-  <!-- L-Körper im Schrägbild: Tiefe 45°, halbe Länge -->
+<svg width="${totalW}" height="${totalH}" viewBox="0 0 ${totalW} ${totalH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="L-förmiger Körper">
+  <!-- L-Körper im Schrägbild: Tiefe 45°, halbe Länge; Maßpfeile wie Vorlage -->
   <polygon points="${backStem}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.75" />
   <polygon points="${stepFace}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.85" />
   <polygon points="${rightFoot}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.9" />

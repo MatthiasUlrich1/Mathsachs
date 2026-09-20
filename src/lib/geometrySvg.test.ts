@@ -690,15 +690,8 @@ describe('geometrySvg', () => {
         widthLabel: '10 cm',
         heightLabel: '5 cm',
         cutLengthLabel: '4 cm',
-        cutWidthLabel: '3 cm',
+        cutWidthLabel: '7 cm',
       })
-      // Front length edge: bottom horizontal between (x0,…) and (x0+L,…)
-      // Depth edge on the right: from front-bottom-right to back — screen length = half of true depth
-      const front = svg.match(
-        /<line[^>]*x1="([^"]+)" y1="([^"]+)" x2="([^"]+)" y2="([^"]+)"[^>]*marker-end="url\(#compositeCuboidArrow\)"[^>]*\/>/,
-      )
-      expect(front).toBeTruthy()
-      // Collect all arrow half-lines; find a nearly-horizontal front dim (length) and a 45° depth dim
       const halves = [
         ...svg.matchAll(
           /<line x1="([^"]+)" y1="([^"]+)" x2="([^"]+)" y2="([^"]+)"[^>]*marker-end="url\(#compositeCuboidArrow\)"[^>]*\/>/g,
@@ -711,7 +704,6 @@ describe('geometrySvg', () => {
         len: Math.hypot(Number(m[3]) - Number(m[1]), Number(m[4]) - Number(m[2])),
         ang: Math.atan2(Number(m[4]) - Number(m[2]), Number(m[3]) - Number(m[1])),
       }))
-      // Full length Strecke ≈ sum of two halves; use max horizontal half * 2 ≈ L
       const horiz = halves.filter((h) => Math.abs(h.y1 - h.y2) < 0.5)
       const depthish = halves.filter(
         (h) =>
@@ -722,10 +714,60 @@ describe('geometrySvg', () => {
       expect(horiz.length).toBeGreaterThanOrEqual(2)
       expect(depthish.length).toBeGreaterThanOrEqual(2)
       const frontHalf = Math.max(...horiz.map((h) => h.len))
+      // Longest 45° dim = full depth (width); partial foot is shorter
       const depthHalf = Math.max(...depthish.map((h) => h.len))
       // True depth == true length (both 10); visual depth must be ~ half of visual front
       expect(depthHalf).toBeLessThan(frontHalf * 0.65)
       expect(depthHalf).toBeGreaterThan(frontHalf * 0.35)
+    })
+
+    it('matches reference layout: full depth shorter than front for 9×10', () => {
+      const svg = generateCompositeCuboidSvg({
+        length: 9,
+        width: 10,
+        height: 4,
+        cutLength: 3,
+        cutWidth: 4,
+        lengthLabel: '9 cm',
+        widthLabel: '10 cm',
+        heightLabel: '4 cm',
+        cutLengthLabel: '3 cm',
+        cutWidthLabel: '6 cm',
+      })
+      const halves = [
+        ...svg.matchAll(
+          /<line x1="([^"]+)" y1="([^"]+)" x2="([^"]+)" y2="([^"]+)"[^>]*marker-end="url\(#compositeCuboidArrow\)"[^>]*\/>/g,
+        ),
+      ].map((m) => ({
+        len: Math.hypot(Number(m[3]) - Number(m[1]), Number(m[4]) - Number(m[2])),
+        ang: Math.atan2(Number(m[4]) - Number(m[2]), Number(m[3]) - Number(m[1])),
+        y1: Number(m[2]),
+        y2: Number(m[4]),
+      }))
+      const frontHalf = Math.max(
+        ...halves.filter((h) => Math.abs(h.y1 - h.y2) < 0.5).map((h) => h.len),
+      )
+      const depthHalves = halves
+        .filter(
+          (h) =>
+            Math.abs(Math.abs(h.ang) - Math.PI / 4) < 0.2 ||
+            Math.abs(Math.abs(h.ang) - (Math.PI * 3) / 4) < 0.2,
+        )
+        .map((h) => h.len)
+        .sort((a, b) => b - a)
+      const fullDepthHalf = depthHalves[0]
+      const partialDepthHalf = depthHalves[depthHalves.length - 1]
+      // 10 cm depth drawn at half → visually shorter than 9 cm front
+      expect(fullDepthHalf).toBeLessThan(frontHalf * 0.7)
+      expect(fullDepthHalf).toBeGreaterThan(frontHalf * 0.4)
+      // 6 cm foot depth shorter than full 10 cm depth
+      expect(partialDepthHalf).toBeLessThan(fullDepthHalf * 0.85)
+      // Depth label sits to the right of height label
+      const heightText = svg.match(/<text x="([^"]+)" y="([^"]+)"[^>]*>4 cm<\/text>/)
+      const widthText = svg.match(/<text x="([^"]+)" y="([^"]+)"[^>]*>10 cm<\/text>/)
+      expect(heightText).toBeTruthy()
+      expect(widthText).toBeTruthy()
+      expect(Number(widthText![1])).toBeGreaterThan(Number(heightText![1]) + 40)
     })
 
     it('matches screenshot-like proportions without clipping labels', () => {
