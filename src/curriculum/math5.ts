@@ -2530,11 +2530,11 @@ const volumenZusammengesetzt: Topic = {
         cutLength: d.cutLength,
         cutWidth: d.cutWidth,
         lengthLabel: `${d.length} cm`,
-        widthLabel: `${d.width} cm`,
         heightLabel: `${d.height} cm`,
         cutLengthLabel: `${d.cutLength} cm`,
-        // Top-right diagonal = Fuß-Tiefe (Absatz), like the hand-drawn reference
-        cutWidthLabel: `${d.footWidth} cm`,
+        // Handzeichnung: Ausschnitt-Tiefe oben links, Fuß-Tiefe unten rechts
+        cutWidthLabel: `${d.cutWidth} cm`,
+        footWidthLabel: `${d.footWidth} cm`,
       })
       return visualTask({
         question: 'Berechne das Volumen des abgebildeten L-förmigen Körpers.',

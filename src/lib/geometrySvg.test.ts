@@ -639,15 +639,14 @@ describe('geometrySvg', () => {
         cutLength: 4,
         cutWidth: 3,
         lengthLabel: '10 cm',
-        widthLabel: '6 cm',
         heightLabel: '5 cm',
         cutLengthLabel: '4 cm',
         cutWidthLabel: '3 cm',
+        footWidthLabel: '3 cm',
       })
       expect(svg).toContain('<svg')
       expect(svg).toContain('<polygon')
       expect(svg).toContain('10 cm')
-      expect(svg).toContain('6 cm')
       expect(svg).toContain('5 cm')
       expect(svg).toContain('4 cm')
       expect(svg).toContain('3 cm')
@@ -656,27 +655,18 @@ describe('geometrySvg', () => {
       expect(svg).not.toContain('opacity="0.55"')
       expect(svg).toContain('marker-end="url(#compositeCuboidArrow)"')
       expect(svg).toContain('id="compositeCuboidArrow"')
-      // Outward arrow via half-lines + marker-end (tip at +x)
       expect(svg).toMatch(
         /id="compositeCuboidArrow"[\s\S]*?points="0,0 10,5 0,10"/,
       )
-      // All 5 measures = floating Strecke only (5×2 half-lines); no Hilfslinien
+      // 5 measures (no full-width label): 5×2 half-lines
       const dimLines = [
         ...svg.matchAll(/<line[^>]*marker-end="url\(#compositeCuboidArrow\)"[^>]*\/>/g),
       ]
       expect(dimLines.length).toBe(10)
-      // No extension lines from corners (those used opacity 0.85 on <line>)
       expect([...svg.matchAll(/<line[^>]*opacity="0\.85"[^>]*\/>/g)].length).toBe(0)
-      // Height left, depth right (same layout as generateCuboidSvg)
       const heightText = svg.match(/<text x="([^"]+)" y="([^"]+)"[^>]*>5 cm<\/text>/)
-      const widthText = svg.match(/<text x="([^"]+)" y="([^"]+)"[^>]*>6 cm<\/text>/)
       expect(heightText).toBeTruthy()
-      expect(widthText).toBeTruthy()
-      expect(Number(widthText![1])).toBeGreaterThan(Number(heightText![1]) + 40)
       expect(heightText![0]).toContain('text-anchor="end"')
-      expect(widthText![0]).toContain('text-anchor="start"')
-      expect(Number(heightText![2])).toBeGreaterThan(12)
-      expect(Number(widthText![2])).toBeGreaterThan(12)
     })
 
     it('uses Schrägbild depth: 45° and half visual length', () => {
@@ -685,54 +675,51 @@ describe('geometrySvg', () => {
         width: 10,
         height: 5,
         cutLength: 4,
-        cutWidth: 3,
+        cutWidth: 7,
         lengthLabel: '10 cm',
-        widthLabel: '10 cm',
         heightLabel: '5 cm',
         cutLengthLabel: '4 cm',
         cutWidthLabel: '7 cm',
+        footWidthLabel: '3 cm',
       })
       const halves = [
         ...svg.matchAll(
           /<line x1="([^"]+)" y1="([^"]+)" x2="([^"]+)" y2="([^"]+)"[^>]*marker-end="url\(#compositeCuboidArrow\)"[^>]*\/>/g,
         ),
       ].map((m) => ({
-        x1: Number(m[1]),
-        y1: Number(m[2]),
-        x2: Number(m[3]),
-        y2: Number(m[4]),
         len: Math.hypot(Number(m[3]) - Number(m[1]), Number(m[4]) - Number(m[2])),
         ang: Math.atan2(Number(m[4]) - Number(m[2]), Number(m[3]) - Number(m[1])),
+        y1: Number(m[2]),
+        y2: Number(m[4]),
       }))
       const horiz = halves.filter((h) => Math.abs(h.y1 - h.y2) < 0.5)
       const depthish = halves.filter(
         (h) =>
-          Math.abs(h.x1 - h.x2) > 1 &&
           Math.abs(h.y1 - h.y2) > 1 &&
-          Math.abs(Math.abs(h.ang) - Math.PI / 4) < 0.2,
+          (Math.abs(Math.abs(h.ang) - Math.PI / 4) < 0.2 ||
+            Math.abs(Math.abs(h.ang) - (Math.PI * 3) / 4) < 0.2),
       )
       expect(horiz.length).toBeGreaterThanOrEqual(2)
       expect(depthish.length).toBeGreaterThanOrEqual(2)
       const frontHalf = Math.max(...horiz.map((h) => h.len))
-      // Longest 45° dim = full depth (width); partial foot is shorter
+      // Longest depth dim = Ausschnitt 7 cm (half of true) vs front 10
       const depthHalf = Math.max(...depthish.map((h) => h.len))
-      // True depth == true length (both 10); visual depth must be ~ half of visual front
-      expect(depthHalf).toBeLessThan(frontHalf * 0.65)
-      expect(depthHalf).toBeGreaterThan(frontHalf * 0.35)
+      expect(depthHalf).toBeLessThan(frontHalf * 0.55)
+      expect(depthHalf).toBeGreaterThan(frontHalf * 0.25)
     })
 
-    it('matches reference layout: full depth shorter than front for 9×10', () => {
+    it('matches hand-drawn layout: Ausschnitt top-left, Fuß-Tiefe bottom-right', () => {
       const svg = generateCompositeCuboidSvg({
-        length: 9,
-        width: 10,
-        height: 4,
-        cutLength: 3,
-        cutWidth: 4,
-        lengthLabel: '9 cm',
-        widthLabel: '10 cm',
-        heightLabel: '4 cm',
-        cutLengthLabel: '3 cm',
-        cutWidthLabel: '6 cm',
+        length: 10,
+        width: 12,
+        height: 6,
+        cutLength: 8,
+        cutWidth: 10,
+        lengthLabel: '10 cm',
+        heightLabel: '6 cm',
+        cutLengthLabel: '8 cm',
+        cutWidthLabel: '10 cm',
+        footWidthLabel: '2 cm',
       })
       const halves = [
         ...svg.matchAll(
@@ -741,6 +728,8 @@ describe('geometrySvg', () => {
       ].map((m) => ({
         len: Math.hypot(Number(m[3]) - Number(m[1]), Number(m[4]) - Number(m[2])),
         ang: Math.atan2(Number(m[4]) - Number(m[2]), Number(m[3]) - Number(m[1])),
+        midX: (Number(m[1]) + Number(m[3])) / 2,
+        midY: (Number(m[2]) + Number(m[4])) / 2,
         y1: Number(m[2]),
         y2: Number(m[4]),
       }))
@@ -753,21 +742,23 @@ describe('geometrySvg', () => {
             Math.abs(Math.abs(h.ang) - Math.PI / 4) < 0.2 ||
             Math.abs(Math.abs(h.ang) - (Math.PI * 3) / 4) < 0.2,
         )
-        .map((h) => h.len)
-        .sort((a, b) => b - a)
-      const fullDepthHalf = depthHalves[0]
-      const partialDepthHalf = depthHalves[depthHalves.length - 1]
-      // 10 cm depth drawn at half → visually shorter than 9 cm front
-      expect(fullDepthHalf).toBeLessThan(frontHalf * 0.7)
-      expect(fullDepthHalf).toBeGreaterThan(frontHalf * 0.4)
-      // 6 cm foot depth shorter than full 10 cm depth
-      expect(partialDepthHalf).toBeLessThan(fullDepthHalf * 0.85)
-      // Depth label sits to the right of height label
-      const heightText = svg.match(/<text x="([^"]+)" y="([^"]+)"[^>]*>4 cm<\/text>/)
-      const widthText = svg.match(/<text x="([^"]+)" y="([^"]+)"[^>]*>10 cm<\/text>/)
-      expect(heightText).toBeTruthy()
-      expect(widthText).toBeTruthy()
-      expect(Number(widthText![1])).toBeGreaterThan(Number(heightText![1]) + 40)
+        .sort((a, b) => b.len - a.len)
+      const cutDepth = depthHalves[0]
+      const footDepth = depthHalves[depthHalves.length - 1]
+      // Ausschnitt 10 cm at half < front 10 cm
+      expect(cutDepth.len).toBeLessThan(frontHalf * 0.65)
+      // Fuß 2 cm << Ausschnitt 10 cm
+      expect(footDepth.len).toBeLessThan(cutDepth.len * 0.35)
+      // Ausschnitt oben links, Fuß unten rechts
+      expect(cutDepth.midY).toBeLessThan(footDepth.midY - 20)
+      expect(footDepth.midX).toBeGreaterThan(cutDepth.midX + 40)
+      expect(svg).toContain('>10 cm</text>')
+      expect(svg).toContain('>2 cm</text>')
+      expect(svg).toContain('>8 cm</text>')
+      // 5 measures when widthLabel omitted
+      expect(
+        [...svg.matchAll(/<line[^>]*marker-end="url\(#compositeCuboidArrow\)"[^>]*\/>/g)].length,
+      ).toBe(10)
     })
 
     it('matches screenshot-like proportions without clipping labels', () => {
@@ -778,10 +769,10 @@ describe('geometrySvg', () => {
         cutLength: 4,
         cutWidth: 2,
         lengthLabel: '8 cm',
-        widthLabel: '6 cm',
         heightLabel: '3 cm',
         cutLengthLabel: '4 cm',
         cutWidthLabel: '2 cm',
+        footWidthLabel: '4 cm',
       })
       const widthMatch = /width="(\d+)"/.exec(svg)
       const heightMatch = /height="(\d+)"/.exec(svg)
@@ -792,30 +783,8 @@ describe('geometrySvg', () => {
       const heightText = svg.match(
         /<text x="([^"]+)" y="([^"]+)"[^>]*>3 cm<\/text>/,
       )
-      const depthText = svg.match(
-        /<text x="([^"]+)" y="([^"]+)"[^>]*>6 cm<\/text>/,
-      )
       expect(heightText).toBeTruthy()
-      expect(depthText).toBeTruthy()
-      // Depth Strecke sits to the right of height (no crossing)
-      expect(Number(depthText![1])).toBeGreaterThan(Number(heightText![1]) + 40)
-      const arrowLines = [
-        ...svg.matchAll(
-          /<line x1="([^"]+)" y1="([^"]+)" x2="([^"]+)" y2="([^"]+)"[^>]*marker-end="url\(#compositeCuboidArrow\)"[^>]*\/>/g,
-        ),
-      ]
-      const heightHalves = arrowLines.filter((m) => Number(m[1]) === Number(m[3]))
-      expect(heightHalves.length).toBe(2)
-      const heightX = Number(heightHalves[0][1])
-      // Depth halves are the diagonal ones whose endpoints are right of height
-      const depthHalves = arrowLines.filter(
-        (m) =>
-          Number(m[1]) !== Number(m[3]) &&
-          Number(m[2]) !== Number(m[4]) &&
-          Number(m[1]) > heightX &&
-          Number(m[3]) > heightX,
-      )
-      expect(depthHalves.length).toBeGreaterThanOrEqual(2)
+      expect(heightText![0]).toContain('text-anchor="end"')
       for (const m of svg.matchAll(
         /<text x="([^"]+)" y="([^"]+)"[^>]*text-anchor="([^"]+)"[^>]*>([^<]*)<\/text>/g,
       )) {

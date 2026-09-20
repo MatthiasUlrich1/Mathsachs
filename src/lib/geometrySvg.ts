@@ -1677,20 +1677,23 @@ export interface CompositeCuboidSvgProps {
   cutLength: number
   cutWidth: number
   lengthLabel?: string
+  /** Optional full outer depth (usually omitted — cut + foot are clearer). */
   widthLabel?: string
   heightLabel?: string
   cutLengthLabel?: string
-  /** Partial depth on the top ledge (Fuß-Tiefe), not the cut void */
+  /** Ausschnitt-Tiefe (top-left diagonal on the cut). */
   cutWidthLabel?: string
+  /** Fuß-Tiefe / vorderer Absatz (bottom-right diagonal). */
+  footWidthLabel?: string
   fill?: string
   stroke?: string
 }
 
 /**
  * Generate a Schrägbild SVG of an L-shaped composite cuboid (two joined cuboids).
- * Depth at 45° and half visual length (school convention). Floating Maßpfeile
- * arranged like a textbook figure: length below, height left, full depth bottom-right,
- * partial depth top-right, cut length above the ledge — no Hilfslinien.
+ * Depth at 45° and half visual length. Floating Maßpfeile like the hand-drawn
+ * layout: length below, height left, Ausschnitt-Tiefe top-left, Fuß-Tiefe
+ * bottom-right, cut length above the right arm — no Hilfslinien.
  */
 export function generateCompositeCuboidSvg({
   length,
@@ -1703,12 +1706,13 @@ export function generateCompositeCuboidSvg({
   heightLabel,
   cutLengthLabel,
   cutWidthLabel,
+  footWidthLabel,
   fill = '#e3f2fd',
   stroke = '#1565c0',
 }: CompositeCuboidSvgProps): string {
-  const padL = 88
-  const padR = 132
-  const padT = 92
+  const padL = 100
+  const padR = 88
+  const padT = 110
   const padB = 72
   // Scale from the front face only — depth foreshortening is applied separately
   const scale = Math.min(200 / length, 120 / height)
@@ -1763,43 +1767,32 @@ export function generateCompositeCuboidSvg({
   )
   const backStem = poly(f(0, W, 0), f(stemTop, W, 0), f(stemTop, W, H), f(0, W, H))
 
-  // —— Maßpfeile as in the hand-drawn reference ——
-  // Full depth must follow a *solid* full-depth edge (left stem), then sit to the
-  // right of the whole figure — never along x=L through the cut void (that made
-  // "10 cm" look longer than the body).
-  const stemDepthA = f(0, 0, 0)
-  const stemDepthB = f(0, W, 0)
-  const depthVec: [number, number] = [
-    stemDepthB[0] - stemDepthA[0],
-    stemDepthB[1] - stemDepthA[1],
-  ]
-  // Place parallel copy just outside the bottom-right of the silhouette
-  const frontRight = f(L, 0, 0)
-  const depthGap = 44
-  const widthA: [number, number] = [
-    Math.round((frontRight[0] + depthGap * depUnitX) * 100) / 100,
-    Math.round((frontRight[1] + depthGap * depUnitY) * 100) / 100,
-  ]
-  const widthB: [number, number] = [
-    Math.round((widthA[0] + depthVec[0]) * 100) / 100,
-    Math.round((widthA[1] + depthVec[1]) * 100) / 100,
-  ]
-
+  // —— Maßpfeile wie Handzeichnung ——
+  // 1) Länge unten  2) Höhe links  3) Ausschnitt-Tiefe oben links
+  // 4) Fuß-Tiefe unten rechts  5) Ausschnitt-Länge oben am rechten Arm
+  // Optional: volle äußere Tiefe nur wenn widthLabel gesetzt (meist weglassen)
   const lenA = f(0, 0, 0)
   const lenB = f(L, 0, 0)
   const heightA = f(0, 0, H)
   const heightB = f(0, 0, 0)
-  // Cut length: short horizontal ledge on top (like "3 cm" in the reference)
+  // Ausschnitt-Tiefe: nur der hintere Einschnitt (footW → W), oben am Stem
+  const cutDepthA = f(0, footW, H)
+  const cutDepthB = f(0, W, H)
+  // Fuß-Tiefe unten rechts am kurzen Arm
+  const footDepthA = f(L, 0, 0)
+  const footDepthB = f(L, footW, 0)
+  // Ausschnitt-/Arm-Länge oben am rechten Absatz
   const cutLenA = f(stemTop, footW, H)
   const cutLenB = f(L, footW, H)
-  // Partial depth: along the top of the foot (ledge), 45° — like "6 cm" in the reference
-  const partialA = f(L, 0, H)
-  const partialB = f(L, footW, H)
+  // Optional volle Tiefe (nur wenn explizit beschriftet)
+  const fullDepthA = f(0, 0, H)
+  const fullDepthB = f(0, W, H)
 
   const DIR_DOWN: [number, number] = [0, 1]
   const DIR_UP: [number, number] = [0, -1]
   const DIR_LEFT: [number, number] = [-1, 0]
   const DIR_DEPTH_OUT: [number, number] = [depUnitX, depUnitY]
+  const DIR_CUT_OUT: [number, number] = [-depUnitX, -depUnitY]
 
   const markerId = 'compositeCuboid'
   const dimOpts = { stroke, markerId }
@@ -1807,41 +1800,48 @@ export function generateCompositeCuboidSvg({
   const lengthDim = geoDimOffsetSegment(lenA, lenB, lengthLabel, {
     ...dimOpts,
     offsetDir: DIR_DOWN,
-    dist: 26,
-    labelOffset: [0, 18],
+    dist: 22,
+    labelOffset: [0, 16],
   })
   const heightDim = geoDimOffsetSegment(heightA, heightB, heightLabel, {
     ...dimOpts,
     offsetDir: DIR_LEFT,
-    dist: 26,
+    dist: 22,
     labelOffset: [-12, 5],
     anchor: 'end',
   })
-  // Full depth already placed outside; tiny extra gap along 45°
-  const widthDim = geoDimOffsetSegment(widthA, widthB, widthLabel, {
+  // Optional full outer depth (rarely used — drawing shows cut + foot instead)
+  const widthDim = geoDimOffsetSegment(fullDepthA, fullDepthB, widthLabel, {
     ...dimOpts,
-    offsetDir: DIR_DEPTH_OUT,
-    dist: 10,
-    labelOffset: [16, 12],
-    anchor: 'start',
+    offsetDir: DIR_CUT_OUT,
+    dist: 48,
+    labelOffset: [-8, -14],
+    anchor: 'middle',
+  })
+  const cutDepthDim = geoDimOffsetSegment(cutDepthA, cutDepthB, cutWidthLabel, {
+    ...dimOpts,
+    offsetDir: DIR_CUT_OUT,
+    dist: 26,
+    labelOffset: [-8, -14],
+    anchor: 'middle',
+    size: 16,
   })
   const cutLenDim = geoDimOffsetSegment(cutLenA, cutLenB, cutLengthLabel, {
     ...dimOpts,
     offsetDir: DIR_UP,
-    dist: 24,
+    dist: 20,
     labelOffset: [0, -14],
     size: 16,
   })
-  const cutWidDim = geoDimOffsetSegment(partialA, partialB, cutWidthLabel, {
+  const footDim = geoDimOffsetSegment(footDepthA, footDepthB, footWidthLabel, {
     ...dimOpts,
     offsetDir: DIR_DEPTH_OUT,
-    dist: 28,
-    labelOffset: [14, 6],
+    dist: 22,
+    labelOffset: [12, 10],
     anchor: 'start',
     size: 16,
   })
 
-  // Bounds from solid + explicitly placed depth dim
   const allPts: Array<[number, number]> = [
     f(0, 0, 0),
     f(L, 0, 0),
@@ -1853,16 +1853,10 @@ export function generateCompositeCuboidSvg({
     f(stemTop, W, H),
     f(L, footW, 0),
     f(L, footW, H),
-    widthA,
-    widthB,
-    [
-      widthA[0] + 10 * depUnitX + 16,
-      widthA[1] + 10 * depUnitY + 12,
-    ],
-    [
-      widthB[0] + 10 * depUnitX + 16,
-      widthB[1] + 10 * depUnitY + 12,
-    ],
+    offsetPt(cutDepthA, DIR_CUT_OUT, 26 + 18),
+    offsetPt(cutDepthB, DIR_CUT_OUT, 26 + 18),
+    offsetPt(footDepthA, DIR_DEPTH_OUT, 22 + 14),
+    offsetPt(footDepthB, DIR_DEPTH_OUT, 22 + 14),
   ]
   let minX = Infinity
   let minY = Infinity
@@ -1874,14 +1868,14 @@ export function generateCompositeCuboidSvg({
     maxX = Math.max(maxX, px)
     maxY = Math.max(maxY, py)
   }
-  const totalW = Math.ceil(Math.max(padL + L + depX + padR, maxX + 56))
+  const totalW = Math.ceil(Math.max(padL + L + depX + padR, maxX + 40, -minX + padL + L + depX))
   const totalH = Math.ceil(
-    Math.max(padT + H + depY + padB, maxY + 40, padT + H + depY - Math.min(0, minY) + padB),
+    Math.max(padT + H + depY + padB, maxY + 36, padT + H + depY - Math.min(0, minY) + padB),
   )
 
   return `
 <svg width="${totalW}" height="${totalH}" viewBox="0 0 ${totalW} ${totalH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="L-förmiger Körper">
-  <!-- L-Körper im Schrägbild: Tiefe 45°, halbe Länge; Maßpfeile wie Vorlage -->
+  <!-- L-Körper: Ausschnitt-Tiefe oben links, Fuß-Tiefe unten rechts -->
   <polygon points="${backStem}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.75" />
   <polygon points="${stepFace}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.85" />
   <polygon points="${rightFoot}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.9" />
@@ -1890,8 +1884,9 @@ export function generateCompositeCuboidSvg({
   ${lengthDim}
   ${heightDim}
   ${widthDim}
+  ${cutDepthDim}
   ${cutLenDim}
-  ${cutWidDim}
+  ${footDim}
   ${geoDimArrowDefs(markerId, stroke)}
 </svg>`.trim()
 }

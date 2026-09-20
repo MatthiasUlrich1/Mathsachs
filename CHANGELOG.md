@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.71] – 2026-09-20
+
+### Behoben
+- **ID 7227 L-Quader:** Maßpfeile wie Handzeichnung — Ausschnitt-Tiefe oben
+  links, Fuß-Tiefe (bis zum Ausschnitt) unten rechts, Länge unten, Höhe links,
+  Ausschnitt-Länge oben am Arm; volle äußere Tiefe entfällt zugunsten der
+  klareren Zerlegung.
+
 ## [0.27.70] – 2026-09-20
 
 ### Behoben
