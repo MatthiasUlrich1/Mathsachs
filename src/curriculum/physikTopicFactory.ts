@@ -149,7 +149,7 @@ export function makePhysikTopicGenerate(topicId: string, title: string): Topic['
     )
   }
 
-  if (/wirkungsgrad|η|eta/.test(lower) || /wirkungsgrad/.test(title.toLowerCase())) {
+  if (/wirkungsgrad|\bη\b/.test(lower) || /wirkungsgrad/.test(title.toLowerCase())) {
     return mixedVariants(
       (rng) => {
         const en = pick(rng, [20, 30, 40, 50, 60])
@@ -1196,7 +1196,11 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
     }
   }
 
-  if (/em-spektrum|hertzsche|radio|antenne|modulation|elektromagnetische welle/.test(lower) || (/spektrum/.test(lower) && /em|hertz|welle|radio/.test(lower))) {
+  if (
+    (/em-spektrum|hertzsche|\bradio\b|antenne|modulation|elektromagnetische welle/.test(lower) ||
+      (/spektrum/.test(lower) && /em|hertz|welle|\bradio\b/.test(lower))) &&
+    !/radioaktiv/.test(lower)
+  ) {
     return {
       cases: [
         {
@@ -1491,7 +1495,12 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
     }
   }
 
-  if (/strahlung|atomhülle|atomkern|zerfall|radioaktiv/.test(lower) && !/wärmestrahlung|sonnenstrahlung/.test(lower)) {
+  if (
+    /strahlung|atomhülle|atomkern|zerfall|radioaktiv|alpha|beta|gamma|kernspaltung|fusion/.test(
+      lower,
+    ) &&
+    !/wärmestrahlung|sonnenstrahlung|wärmeleitung|konvektion|wärmefluss/.test(lower)
+  ) {
     return {
       cases: [
         {
@@ -1715,8 +1724,8 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
     }
   }
 
-  // --- Temperatur / Wärme / Aggregate ---
-  if (/temperatur|thermometer|kelvin|celsius|wärme|aggregat|schmelzen|sieden|ausdehnung/.test(lower)) {
+  // --- Temperatur-Einheiten (nur °C/K) — nicht Wärmeausdehnung/Schmelzen/Aggregate ---
+  if (/kelvin|celsius/.test(lower) || (/temperatur/.test(lower) && /umwand|einheit|skala/.test(lower))) {
     return {
       cases: [
         {
@@ -1730,9 +1739,9 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           wrong: ['Newton (N)', 'Ampere (A)', 'Ohm (Ω)'],
         },
         {
-          q: 'Beim Schmelzen ändert sich der Aggregatzustand von …',
-          correct: 'fest → flüssig',
-          wrong: ['flüssig → fest', 'flüssig → gasförmig', 'gasförmig → fest'],
+          q: '0 °C entsprechen …',
+          correct: '273 K',
+          wrong: ['0 K', '100 K', '373 K'],
         },
       ],
       calc: (rng) => {
@@ -1748,6 +1757,159 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
         }
       },
       ...formulaSort(['T', '=', 'ϑ', '+ 273'], 'Celsius → Kelvin', 'T = ϑ + 273', '× 273'),
+    }
+  }
+
+  if (/ausdehnung|bimetall|längenausdehnung|volumenausdehnung/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Die meisten Stoffe dehnen sich bei Erwärmung …',
+          correct: 'aus',
+          wrong: ['zusammen', 'gar nicht', 'nur elektrisch'],
+        },
+        {
+          q: 'Lücken in Bahnschienen dienen der …',
+          correct: 'Wärmeausdehnung',
+          wrong: ['Stromleitung', 'Kelvin-Umrechnung', 'Lichtbrechung'],
+        },
+        {
+          q: 'Ein Bimetallstreifen biegt sich, weil …',
+          correct: 'sich die Metalle unterschiedlich stark ausdehnen',
+          wrong: ['Strom ohne Spannung fließt', 'Kelvin kleiner wird', 'Eis schmilzt'],
+        },
+      ],
+      ...formulaSort(
+        ['Erwärmung', '→', 'Ausdehnung'],
+        'die Wärmeausdehnung',
+        'Erwärmung → Ausdehnung',
+        'nur °C → K',
+      ),
+    }
+  }
+
+  if (/schmelzen|sieden|erstarren|kondensieren|phasenübergang|siedepunkt|schmelzpunkt/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Schmelzen ist der Übergang …',
+          correct: 'fest → flüssig',
+          wrong: ['flüssig → fest', 'flüssig → gasförmig', 'gasförmig → fest'],
+        },
+        {
+          q: 'Sieden von Wasser (Normaldruck) bei etwa …',
+          correct: '100 °C',
+          wrong: ['0 °C', '−20 °C', '273 °C'],
+        },
+        {
+          q: 'Während des Schmelzens bleibt die Temperatur oft …',
+          correct: 'nahezu konstant',
+          wrong: ['immer bei 100 °C', 'immer bei −273 °C', 'beliebig ohne Wärme'],
+        },
+      ],
+      ...formulaSort(
+        ['fest', '→', 'flüssig'],
+        'das Schmelzen',
+        'fest → flüssig',
+        '°C → K',
+      ),
+    }
+  }
+
+  if (/aggregat/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Wasser bei −5 °C (Normaldruck) ist …',
+          correct: 'fest',
+          wrong: ['flüssig', 'gasförmig', 'ein Plasma'],
+        },
+        {
+          q: 'Wasser über 100 °C (Normaldruck) ist …',
+          correct: 'gasförmig',
+          wrong: ['fest', 'flüssig', 'immer Eis'],
+        },
+        {
+          q: 'Flüssigkeiten haben …',
+          correct: 'festes Volumen, aber keine feste Form',
+          wrong: ['feste Form und festes Volumen', 'kein Volumen', 'nur Kelvin-Werte'],
+        },
+      ],
+      ...formulaSort(
+        ['fest', '/', 'flüssig', '/', 'gasförmig'],
+        'die Aggregatzustände',
+        'fest / flüssig / gasförmig',
+        'nur °C → K',
+      ),
+    }
+  }
+
+  if (/wärmeleitung|konvektion|wärmestrahlung|wärmefluss|kältemaschine|wärmepumpe/.test(lower) || (/wärme/.test(lower) && /leitung|strömung|klima|fluss|arbeit/.test(lower))) {
+    return {
+      cases: [
+        {
+          q: 'Wärmeleitung bedeutet …',
+          correct: 'Wärmeübertragung durch direkten Kontakt / Teilchenstöße im Stoff',
+          wrong: ['nur EM-Radioempfang', 'nur radioaktiven Zerfall', 'nur °C → K'],
+        },
+        {
+          q: 'Konvektion / Strömung transportiert Wärme vor allem …',
+          correct: 'durch Bewegung von Flüssigkeit oder Gas',
+          wrong: ['nur im Vakuum ohne Stoff', 'nur durch Alpha-Strahlung', 'nur durch Spiegelung'],
+        },
+        {
+          q: 'Wärmestrahlung braucht …',
+          correct: 'kein Medium (auch im Vakuum möglich)',
+          wrong: ['immer Wasser', 'immer Metalldraht', 'immer radioaktiven Zerfall'],
+        },
+      ],
+      ...formulaSort(
+        ['Wärme', '→', 'Transport'],
+        'den Wärmetransport',
+        'Wärme → Transport (Leitung/Strömung/Strahlung)',
+        'nur Kelvin',
+      ),
+    }
+  }
+
+  if (/thermometer/.test(lower) && !/messreihe/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Ein Flüssigkeitsthermometer nutzt vor allem …',
+          correct: 'die Wärmeausdehnung der Flüssigkeit',
+          wrong: ['Ohmsches Gesetz', 'radioaktiven Zerfall', 'nur Lichtbrechung'],
+        },
+        {
+          q: 'Beim Ablesen eines Thermometers liest man …',
+          correct: 'den Wert an der Skala ab',
+          wrong: ['nur den Batteriestand', 'nur den Klassennamen', 'nur die Wellenlänge'],
+        },
+      ],
+      ...formulaSort(['Skala', '→', 'Temperatur'], 'das Ablesen', 'Skala → Temperatur', 'nur η'),
+    }
+  }
+
+  if (/thermisch|wärmemenge|innere energie|\bwärme\b/.test(lower) && !/ausdehnung|schmelzen|sieden|aggregat|leitung|konvektion|klima|kälte|fluss/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Thermische Energie hängt eng mit … zusammen.',
+          correct: 'der Temperatur und der Bewegungsenergie der Teilchen',
+          wrong: ['nur der Farbe', 'nur dem Ortsnamen', 'nur dem Radioempfang'],
+        },
+        {
+          q: 'Wärme als Prozessgröße beschreibt …',
+          correct: 'übertragene Energie wegen Temperaturunterschied',
+          wrong: ['nur die Umrechnung °C → K', 'nur den Impuls', 'nur den Schall'],
+        },
+        {
+          q: 'Q = c · m · ΔT berechnet …',
+          correct: 'eine Wärmemenge bei Temperaturänderung',
+          wrong: ['den Wirkungsgrad η immer', 'nur die Dichte', 'nur die Stromstärke'],
+        },
+      ],
+      ...formulaSort(['Q', '=', 'c', '· m', '· ΔT'], 'die Wärmemenge', 'Q = c · m · ΔT', '+ R', 'commutativeFactors'),
     }
   }
 
@@ -1962,7 +2124,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
     }
   }
 
-  if (/welle|schall|frequenz|periode|atom|kern|radioaktiv|photon|quant|feld|relativ/.test(lower)) {
+  if (/welle|schall|frequenz|periode/.test(lower) && !/elektromagnet|hertzsche|\bradio\b|atom|kern|feld|relativ|photo|quant|bohr/.test(lower)) {
     return {
       cases: [
         {

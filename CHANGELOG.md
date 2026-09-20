@@ -9,6 +9,22 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.64] – 2026-09-20
+
+### Freigabe
+- **Physik Klasse 6 LB3:** Wärmeausdehnung, Aggregatzustände, Schmelzen und
+  Sieden, Temperatur-Messreihe (gesamter Lernbereich freigegeben).
+
+### Behoben
+- **Themenfit Physik:** Wärmeausdehnung/Schmelzen/Messreihe nicht mehr mit
+  Celsius↔Kelvin vermischt; Aggregatzustände ohne Spoiler („Eis…“,
+  „Wasserdampf…“) und ohne themenfremde Messreihe.
+- **Factory-Routing:** Wirkungsgrad-Regex traf fälschlich Beta/Zentripetal;
+  Radio traf Radioaktiv; Wärmeleitung landete bei Kernstrahlung; Catch-all
+  Welle/Schall ohne atom/kern/feld.
+- **Celsius/Kelvin (ID 5299):** Zahlenstrahl gibt Kelvin vor, Einstellen in °C
+  (vorher umrechnen).
+
 ## [0.27.63] – 2026-09-20
 
 ### Freigabe

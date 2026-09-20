@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "2.5.7",
-  "changelog": "Freigabe Temperatur ablesen (3126) und Celsius/Kelvin (5299); Thermometer-Schieber mit Skala; Zahlenstrahl mit sparser Beschriftung; Formeln aus Kelvin-Aufgabenstellung entfernt.",
+  "version": "2.5.8",
+  "changelog": "LB3 komplett freigegeben; Wärmeausdehnung/Schmelzen/Messreihe/Aggregate themenrein; Factory-Routing (kein Kelvin-Dump, eta/radio/Strahlung-Kollisionen behoben).",
   "official": [
     {
       "id": "physik-klasse-6",
@@ -264,7 +264,7 @@
               "title": "Wärmeausdehnung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Ausdehnung",
@@ -276,7 +276,7 @@
               "title": "Aggregatzustände",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Aggregatzustand",
@@ -288,7 +288,7 @@
               "title": "Schmelzen und Sieden",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Schmelzen",
@@ -300,7 +300,7 @@
               "title": "Temperatur-Messreihe",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Messreihe",
@@ -4008,5 +4008,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "815ca8f7"
+  "contentHash": "18d198a7"
 }

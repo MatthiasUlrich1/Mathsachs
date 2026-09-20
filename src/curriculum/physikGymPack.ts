@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.7',
+    version: '2.5.8',
     changelog:
-      'Freigabe Temperatur ablesen (3126) und Celsius/Kelvin (5299); Thermometer-Schieber mit Skala; Zahlenstrahl mit sparser Beschriftung; Formeln aus Kelvin-Aufgabenstellung entfernt.',
+      'LB3 komplett freigegeben; Wärmeausdehnung/Schmelzen/Messreihe/Aggregate themenrein; Factory-Routing (kein Kelvin-Dump, eta/radio/Strahlung-Kollisionen behoben).',
     official,
     extras: [],
   }

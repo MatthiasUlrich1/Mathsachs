@@ -93,16 +93,59 @@ describe('Physik Klasse 6 generators', () => {
     expect(withSvg).toBeGreaterThan(10)
   })
 
+  it('Aggregatzustände avoid spoilers and off-topic Messreihe sorting', () => {
+    const gen = PHYSIK_K6_GENERATORS['ph-k6-lb3-aggregate']!
+    for (let seed = 1; seed <= 80; seed++) {
+      const task = gen(createRng(seed))
+      expect(task.check(task.sampleAnswer), `seed ${seed}`).toBe(true)
+      expect(task.question).not.toMatch(/^Eis bei/)
+      expect(task.question).not.toMatch(/Wasserdampf/)
+      expect(task.question).not.toMatch(/Messreihe nach der Zeit/)
+      expect(task.question).not.toMatch(/°C in Kelvin|Kelvin um/)
+    }
+  })
+
+  it('Wärmeausdehnung stays on thermal expansion (not Kelvin conversion)', () => {
+    const gen = PHYSIK_K6_GENERATORS['ph-k6-lb3-ausdehnung']!
+    for (let seed = 1; seed <= 60; seed++) {
+      const task = gen(createRng(seed))
+      expect(task.check(task.sampleAnswer), `seed ${seed}`).toBe(true)
+      const blob = `${task.question}\n${task.solution}\n${task.explanation}`
+      expect(blob).toMatch(/Ausdehnung|Bimetall|Schiene|Thermometer|erwärm|abkühl|Länge|Volumen/i)
+      expect(blob).not.toMatch(/T\s*=\s*ϑ\s*\+\s*273|°C in Kelvin/)
+    }
+  })
+
+  it('Schmelzen und Sieden stays on phase changes (not Kelvin conversion)', () => {
+    const gen = PHYSIK_K6_GENERATORS['ph-k6-lb3-schmelzen']!
+    for (let seed = 1; seed <= 60; seed++) {
+      const task = gen(createRng(seed))
+      expect(task.check(task.sampleAnswer), `seed ${seed}`).toBe(true)
+      const blob = `${task.question}\n${task.solution}`
+      expect(blob).toMatch(/Schmelz|Sied|Erstarr|Kondens|Phasen|0 °C|100 °C|fest|flüssig|gas/i)
+      expect(blob).not.toMatch(/T\s*=\s*ϑ\s*\+\s*273|Wandle .* Kelvin/)
+    }
+  })
+
   it('Celsius/Kelvin tasks have no conversion formula in the question', () => {
     const gen = PHYSIK_K6_GENERATORS['ph-k6-lb3-kelvin']!
+    let numberLine = 0
     for (let seed = 1; seed <= 60; seed++) {
       const task = gen(createRng(seed))
       expect(task.question, `seed ${seed}`).not.toMatch(/T\/K|ϑ\/°C|\+ 273|− 273|- 273/)
       expect(task.check(task.sampleAnswer), `seed ${seed}`).toBe(true)
       if (task.interactive?.type === 'numberLine') {
+        numberLine++
         expect(task.interactive.props.labelStep).toBe(20)
+        expect(task.question).toMatch(/\d+ K/)
+        expect(task.question).toMatch(/in °C/)
+        expect(task.sampleAnswer.kind).toBe('numberLine')
+        if (task.sampleAnswer.kind === 'numberLine') {
+          expect(task.sampleAnswer.value).toBeLessThan(200)
+        }
       }
     }
+    expect(numberLine).toBeGreaterThan(5)
   })
 
   it('Temperatur ablesen uses thermometer slider with target °C in the question', () => {

@@ -1254,15 +1254,16 @@ const kelvin: Topic['generate'] = mixedVariants(
   },
   (rng) => {
     const c = pick(rng, [0, 20, 37, 100])
+    const k = c + 273
     return numberLineTask({
-      question: `Stelle ${c} °C auf dem Zahlenstrahl ein.`,
+      question: `Stelle die Temperatur ${k} K auf dem Zahlenstrahl in °C ein.`,
       min: -20,
       max: 120,
       step: 1,
       value: c,
       labelStep: 20,
       solution: `${c} °C`,
-      explanation: `${c} °C entspricht ${c + 273} K.`,
+      explanation: `ϑ = ${k} − 273 = ${c} °C — diesen Wert auf dem Zahlenstrahl einstellen.`,
     })
   },
 )
@@ -1276,14 +1277,69 @@ const aggregate: Topic['generate'] = mixedVariants(
         choices: ['fest', 'flüssig', 'gasförmig'],
       },
       {
-        q: 'Eis bei −5 °C ist …',
+        q: 'Wasser bei −5 °C und Normaldruck ist …',
         correct: 'fest',
         choices: ['fest', 'flüssig', 'gasförmig'],
       },
       {
-        q: 'Wasserdampf über kochendem Wasser ist …',
+        q: 'Wasser über 100 °C und Normaldruck ist …',
         correct: 'gasförmig',
         choices: ['fest', 'flüssig', 'gasförmig'],
+      },
+      {
+        q: 'Wasser bei 0 °C kann (bei Normaldruck) …',
+        correct: 'fest oder flüssig sein (Schmelzpunkt)',
+        choices: [
+          'fest oder flüssig sein (Schmelzpunkt)',
+          'nur gasförmig sein',
+          'nie fest sein',
+          'nur plasmaförmig sein',
+        ],
+      },
+      {
+        q: 'Welcher Aggregatzustand hat eine feste Form und ein festes Volumen?',
+        correct: 'fest',
+        choices: ['fest', 'flüssig', 'gasförmig'],
+      },
+      {
+        q: 'Welcher Aggregatzustand hat ein festes Volumen, aber keine feste Form?',
+        correct: 'flüssig',
+        choices: ['fest', 'flüssig', 'gasförmig'],
+      },
+      {
+        q: 'Welcher Aggregatzustand füllt den verfügbaren Raum und hat kein festes Volumen?',
+        correct: 'gasförmig',
+        choices: ['fest', 'flüssig', 'gasförmig'],
+      },
+      {
+        q: 'Beim Übergang fest → flüssig spricht man von …',
+        correct: 'Schmelzen',
+        choices: ['Schmelzen', 'Erstarren', 'Kondensieren', 'Verdampfen'],
+      },
+      {
+        q: 'Beim Übergang flüssig → fest spricht man von …',
+        correct: 'Erstarren / Gefrieren',
+        choices: ['Erstarren / Gefrieren', 'Schmelzen', 'Sieden', 'Sublimieren'],
+      },
+      {
+        q: 'Beim Übergang flüssig → gasförmig spricht man von …',
+        correct: 'Verdampfen / Sieden',
+        choices: ['Verdampfen / Sieden', 'Schmelzen', 'Erstarren', 'Kondensieren'],
+      },
+      {
+        q: 'Beim Übergang gasförmig → flüssig spricht man von …',
+        correct: 'Kondensieren',
+        choices: ['Kondensieren', 'Schmelzen', 'Sieden', 'Sublimieren'],
+      },
+      {
+        q: 'Ein Stück Butter wird warm und wird weich bis flüssig. Der Aggregatzustand …',
+        correct: 'ändert sich von fest nach flüssig',
+        choices: [
+          'ändert sich von fest nach flüssig',
+          'bleibt immer fest',
+          'wird sofort gasförmig',
+          'ändert sich von gasförmig nach fest',
+        ],
       },
     ] as const
     const c = pick(rng, [...cases])
@@ -1292,22 +1348,347 @@ const aggregate: Topic['generate'] = mixedVariants(
       choices: shuffleChoices(rng, [...c.choices], c.correct),
       correct: c.correct,
       solution: c.correct,
-      explanation: 'Aggregatzustand hängt von Stoff und Temperatur (sowie Druck) ab.',
-      instruction: 'Tippe den Aggregatzustand:',
+      explanation:
+        'Aggregatzustände: fest / flüssig / gasförmig. Sie hängen vom Stoff und von Temperatur (und Druck) ab.',
+      instruction: 'Tippe die passende Aussage:',
     })
   },
-  () =>
-    dragDropSortTask({
-      question: 'Ordne die Vorgänge nach steigender Temperatur (kalt → heiß) für Wasser.',
-      items: [
-        { label: 'Eis schmilzt (0 °C)', value: 0 },
-        { label: 'Wasser kocht (100 °C)', value: 100 },
-        { label: 'Raumtemperatur (~20 °C)', value: 20 },
-      ],
-      correctOrder: [0, 2, 1],
-      solution: 'Eis schmilzt → Raumtemperatur → Wasser kocht',
-      explanation: '0 °C (Schmelzen) < ~20 °C < 100 °C (Sieden).',
-    }),
+  (rng) => {
+    const items = [
+      { label: 'fest', value: 0 },
+      { label: 'flüssig', value: 1 },
+      { label: 'gasförmig', value: 2 },
+    ]
+    const shuffled = [...items]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = randInt(rng, 0, i)
+      ;[shuffled[i], shuffled[j]] = [shuffled[j]!, shuffled[i]!]
+    }
+    const correctOrder = items.map((row) => shuffled.findIndex((it) => it.value === row.value))
+    return dragDropSortTask({
+      question: 'Ordne die Aggregatzustände nach zunehmender Teilchenbeweglichkeit (wenig → stark).',
+      items: shuffled,
+      correctOrder,
+      solution: 'fest → flüssig → gasförmig',
+      explanation: 'Im Festkörper sind Teilchen am stärksten gebunden; im Gas bewegen sie sich am freiesten.',
+    })
+  },
+  (rng) => {
+    const pools = [
+      {
+        question: 'Welche Aussagen zu Aggregatzuständen stimmen? (mehrere möglich)',
+        choices: [
+          'Feste Körper haben meist feste Form und festes Volumen',
+          'Flüssigkeiten passen sich der Gefäßform an',
+          'Gase füllen den verfügbaren Raum aus',
+          'Wasser ist bei −20 °C flüssig',
+          'Aggregatzustände hängen nie von der Temperatur ab',
+        ],
+        correct: [
+          'Feste Körper haben meist feste Form und festes Volumen',
+          'Flüssigkeiten passen sich der Gefäßform an',
+          'Gase füllen den verfügbaren Raum aus',
+        ],
+      },
+      {
+        question: 'Was gehört zu Phasenübergängen von Wasser? (mehrere möglich)',
+        choices: [
+          'Schmelzen bei etwa 0 °C',
+          'Sieden bei etwa 100 °C (Normaldruck)',
+          'Erstarren beim Abkühlen unter 0 °C',
+          'Wasser wird bei 20 °C immer gasförmig',
+          'Eis ist bei −10 °C flüssig',
+        ],
+        correct: [
+          'Schmelzen bei etwa 0 °C',
+          'Sieden bei etwa 100 °C (Normaldruck)',
+          'Erstarren beim Abkühlen unter 0 °C',
+        ],
+      },
+    ] as const
+    const p = pick(rng, [...pools])
+    return multiSelectTask({
+      question: p.question,
+      choices: [...p.choices],
+      correct: [...p.correct],
+      solution: p.correct.join('; '),
+      explanation: 'Aggregatzustand und Phasenübergänge hängen von Stoff und Temperatur (Druck) ab.',
+      instruction: 'Tippe alle richtigen Aussagen:',
+    })
+  },
+)
+
+/** LB3 — Wärmeausdehnung */
+const ausdehnung: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      {
+        q: 'Die meisten Stoffe dehnen sich bei Erwärmung …',
+        correct: 'aus (Volumen/Länge nehmen zu)',
+        wrong: ['zusammen (werden immer kleiner)', 'gar nicht', 'nur magnetisch'],
+      },
+      {
+        q: 'Warum lässt man Lücken zwischen Bahngleisen / Betonplatten?',
+        correct: 'damit sich das Material bei Hitze ausdehnen kann',
+        wrong: [
+          'damit Wasser schneller verdampft',
+          'damit Strom fließen kann',
+          'damit es kälter wird',
+        ],
+      },
+      {
+        q: 'Ein Bimetallstreifen biegt sich bei Erwärmung, weil …',
+        correct: 'die beiden Metalle sich unterschiedlich stark ausdehnen',
+        wrong: [
+          'Metalle bei Wärme immer schrumpfen',
+          'Strom ohne Spannung fließt',
+          'Licht reflektiert wird',
+        ],
+      },
+      {
+        q: 'Ein Flüssigkeitsthermometer funktioniert u. a., weil sich die Flüssigkeit bei Erwärmung …',
+        correct: 'stärker ausdehnt als das Glasgefäß',
+        wrong: [
+          'zusammenzieht und verschwindet',
+          'in Kelvin umwandelt',
+          'zu Eis wird',
+        ],
+      },
+      {
+        q: 'Eine Metallkugel passt bei Raumtemperatur durch einen Ring, nach starker Erwärmung oft nicht mehr. Warum?',
+        correct: 'Die Kugel dehnt sich aus und wird größer',
+        wrong: [
+          'Die Kugel wird leichter',
+          'Der Ring wird magnetisch',
+          'Die Temperatur in Kelvin sinkt',
+        ],
+      },
+      {
+        q: 'Beim Abkühlen eines erhitzten Metallstabes wird er typischerweise …',
+        correct: 'wieder kürzer (zieht sich zusammen)',
+        wrong: ['immer länger', 'zu einem Gas', 'schwerelos'],
+      },
+      {
+        q: 'Wärmeausdehnung bedeutet vor allem …',
+        correct: 'Änderung von Länge/Volumen mit der Temperatur',
+        wrong: [
+          'Umwandlung von °C in Kelvin',
+          'nur das Schmelzen von Eis',
+          'nur elektrischen Widerstand',
+        ],
+      },
+      {
+        q: 'Welche Aussage zur Wärmeausdehnung stimmt?',
+        correct: 'Gase dehnen sich bei gleicher Erwärmung oft stärker aus als Festkörper',
+        wrong: [
+          'Festkörper dehnen sich nie aus',
+          'Ausdehnung gibt es nur bei Kelvin-Umrechnung',
+          'Nur Wasser dehnt sich aus, Metalle nie',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation:
+        'Wärmeausdehnung: bei Erwärmung nehmen Länge und Volumen der meisten Stoffe zu (unterschiedlich stark).',
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (rng) => {
+    const pools = [
+      {
+        question: 'Welche Beispiele gehören zur Wärmeausdehnung? (mehrere möglich)',
+        choices: [
+          'Lücken in Bahnschienen',
+          'Bimetall in Temperaturschaltern',
+          'Steigende Flüssigkeitssäule im Thermometer',
+          'Umwandlung 20 °C → 293 K',
+          'Ohmsches Gesetz R = U/I',
+        ],
+        correct: [
+          'Lücken in Bahnschienen',
+          'Bimetall in Temperaturschaltern',
+          'Steigende Flüssigkeitssäule im Thermometer',
+        ],
+      },
+      {
+        question: 'Was passiert typischerweise beim Erwärmen eines Metallstabes?',
+        choices: [
+          'Länge nimmt zu',
+          'Teilchen schwingen stärker / Abstand nimmt zu',
+          'Stab wird kürzer',
+          'Temperatur in °C wird automatisch zu Kelvin ohne Rechnung',
+        ],
+        correct: ['Länge nimmt zu', 'Teilchen schwingen stärker / Abstand nimmt zu'],
+      },
+    ] as const
+    const p = pick(rng, [...pools])
+    return multiSelectTask({
+      question: p.question,
+      choices: [...p.choices],
+      correct: [...p.correct],
+      solution: p.correct.join('; '),
+      explanation: 'Wärmeausdehnung ist eine Längen-/Volumenänderung mit der Temperatur — keine Einheitenumrechnung.',
+      instruction: 'Tippe alle richtigen Aussagen:',
+    })
+  },
+  (rng) => {
+    const items = [
+      { label: 'kalt (zusammengezogen)', value: 0 },
+      { label: 'erwärmt (ausgedehnt)', value: 1 },
+      { label: 'wieder abgekühlt (zurückgeschrumpft)', value: 2 },
+    ]
+    const shuffled = [...items]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = randInt(rng, 0, i)
+      ;[shuffled[i], shuffled[j]] = [shuffled[j]!, shuffled[i]!]
+    }
+    const correctOrder = items.map((row) => shuffled.findIndex((it) => it.value === row.value))
+    return dragDropSortTask({
+      question: 'Ordne den typischen Ablauf bei Wärmeausdehnung eines Metallstücks.',
+      items: shuffled,
+      correctOrder,
+      solution: 'kalt → erwärmt (ausgedehnt) → wieder abgekühlt',
+      explanation: 'Erwärmen → Ausdehnung; Abkühlen → Zusammenziehen.',
+    })
+  },
+)
+
+/** LB3 — Schmelzen und Sieden */
+const schmelzen: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      {
+        q: 'Beim Schmelzen von Eis (Normaldruck) bleibt die Temperatur während des Schmelzens typischerweise bei …',
+        correct: 'etwa 0 °C',
+        wrong: ['etwa 100 °C', 'etwa −20 °C', 'etwa 273 °C'],
+      },
+      {
+        q: 'Beim Sieden von Wasser (Normaldruck) bleibt die Temperatur während des Siedens typischerweise bei …',
+        correct: 'etwa 100 °C',
+        wrong: ['etwa 0 °C', 'etwa 20 °C', 'etwa −100 °C'],
+      },
+      {
+        q: 'Schmelzen bedeutet den Übergang …',
+        correct: 'fest → flüssig',
+        wrong: ['flüssig → fest', 'flüssig → gasförmig', 'gasförmig → fest'],
+      },
+      {
+        q: 'Sieden / Verdampfen bedeutet den Übergang …',
+        correct: 'flüssig → gasförmig',
+        wrong: ['fest → flüssig', 'gasförmig → flüssig', 'fest → gasförmig nur bei 0 °C'],
+      },
+      {
+        q: 'Während des Schmelzens wird zugeführte Wärme vor allem …',
+        correct: 'für den Phasenübergang genutzt (Temperatur bleibt oft konstant)',
+        wrong: [
+          'sofort in Kelvin umgerechnet',
+          'nur für Längenausdehnung ohne Phasenwechsel',
+          'nur für elektrischen Strom',
+        ],
+      },
+      {
+        q: 'Kondensieren ist der Übergang …',
+        correct: 'gasförmig → flüssig',
+        wrong: ['flüssig → gasförmig', 'fest → flüssig', 'flüssig → fest'],
+      },
+      {
+        q: 'Erstarren / Gefrieren ist der Übergang …',
+        correct: 'flüssig → fest',
+        wrong: ['fest → flüssig', 'flüssig → gasförmig', 'gasförmig → flüssig'],
+      },
+      {
+        q: 'Warum braucht man zum Schmelzen von Eis Wärme, obwohl die Temperatur bei 0 °C bleibt?',
+        correct: 'Die Wärme ändert den Aggregatzustand (Schmelzwärme)',
+        wrong: [
+          'Weil 0 °C = 273 K gerechnet werden muss',
+          'Weil Eis Strom leitet',
+          'Weil sich nur die Farbe ändert',
+        ],
+      },
+      {
+        q: 'Wasserdampf, der an einer kalten Scheibe zu Tropfen wird, …',
+        correct: 'kondensiert (gasförmig → flüssig)',
+        wrong: ['schmilzt', 'siedet', 'sublimiert immer zu Eis'],
+      },
+      {
+        q: 'Welche Aussage zu Schmelzen und Sieden stimmt?',
+        correct: 'Beide sind Phasenübergänge bei charakteristischen Temperaturen (stoffabhängig)',
+        wrong: [
+          'Beide sind nur Umrechnungen °C ↔ K',
+          'Schmelzen gibt es nur bei Metallen',
+          'Sieden passiert nur bei −5 °C',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation:
+        'Schmelzen/Sieden: Phasenübergänge. Bei Normaldruck schmilzt Eis bei ~0 °C, Wasser siedet bei ~100 °C.',
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (rng) => {
+    const items = [
+      { label: 'Eis erwärmen bis 0 °C', value: 0 },
+      { label: 'Schmelzen bei 0 °C', value: 1 },
+      { label: 'Wasser erwärmen bis 100 °C', value: 2 },
+      { label: 'Sieden bei 100 °C', value: 3 },
+    ]
+    const shuffled = [...items]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = randInt(rng, 0, i)
+      ;[shuffled[i], shuffled[j]] = [shuffled[j]!, shuffled[i]!]
+    }
+    const correctOrder = items.map((row) => shuffled.findIndex((it) => it.value === row.value))
+    return dragDropSortTask({
+      question: 'Ordne den Ablauf: Eis wird zu Dampf (Normaldruck, fortlaufend erwärmt).',
+      items: shuffled,
+      correctOrder,
+      solution: 'Erwärmen → Schmelzen (0 °C) → Erwärmen → Sieden (100 °C)',
+      explanation: 'Zuerst Schmelzen bei 0 °C, später Sieden bei 100 °C.',
+    })
+  },
+  (rng) => {
+    const pools = [
+      {
+        question: 'Was gehört zu Schmelzen und Sieden von Wasser? (mehrere möglich)',
+        choices: [
+          'Schmelzpunkt etwa 0 °C',
+          'Siedepunkt etwa 100 °C (Normaldruck)',
+          'Während des Phasenübergangs oft konstante Temperatur',
+          'Schmelzen = Umrechnung in Kelvin',
+          'Sieden = fest → flüssig',
+        ],
+        correct: [
+          'Schmelzpunkt etwa 0 °C',
+          'Siedepunkt etwa 100 °C (Normaldruck)',
+          'Während des Phasenübergangs oft konstante Temperatur',
+        ],
+      },
+    ] as const
+    const p = pick(rng, [...pools])
+    return multiSelectTask({
+      question: p.question,
+      choices: [...p.choices],
+      correct: [...p.correct],
+      solution: p.correct.join('; '),
+      explanation: 'Schmelzen und Sieden sind Phasenübergänge — keine Temperatur-Einheitenumrechnung.',
+      instruction: 'Tippe alle richtigen Aussagen:',
+    })
+  },
+)
+
+/** LB3 — Temperatur-Messreihe */
+const messreihe: Topic['generate'] = mixedVariants(
   (rng) => {
     const t0 = pick(rng, [0, 1, 2])
     const dt = pick(rng, [3, 4, 5])
@@ -1325,11 +1706,58 @@ const aggregate: Topic['generate'] = mixedVariants(
     }
     const correctOrder = ordered.map((row) => items.findIndex((it) => it.value === row.value))
     return dragDropSortTask({
-      question: 'Ordne die Messreihe nach der Zeit (früh → spät).',
+      question: 'Ordne die Temperatur-Messreihe nach der Zeit (früh → spät).',
       items,
       correctOrder,
       solution: ordered.map((row) => row.label).join(' → '),
-      explanation: 'Bei einer Messreihe sortiert man nach der Zeitachse von früh nach spät.',
+      explanation: 'Eine Messreihe sortiert man nach der Zeitachse von früh nach spät.',
+    })
+  },
+  (rng) => {
+    const a = pick(rng, [18, 19, 20, 21])
+    const b = a + pick(rng, [1, 2])
+    const c = b + pick(rng, [1, 2])
+    const mean = Math.round(((a + b + c) / 3) * 10) / 10
+    return valueTask({
+      question: `Temperaturmesswerte: ${a} °C, ${b} °C, ${c} °C. Berechne den Mittelwert.`,
+      answerKind: mean % 1 === 0 ? 'integer' : 'decimal',
+      unit: '°C',
+      value: mean,
+      solution: `${mean} °C`,
+      explanation: `Mittelwert = (${a} + ${b} + ${c}) / 3 = ${mean} °C.`,
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Was gehört zu einer guten Temperatur-Messreihe?',
+        correct: 'Zeitpunkt und Temperaturwert notieren',
+        wrong: ['nur die Farbe des Thermometers', 'nur Kelvin ohne Messung', 'nur raten ohne Uhr'],
+      },
+      {
+        q: 'Steigt die Temperatur in gleichen Zeitabständen um denselben Betrag, ist die Erwärmung …',
+        correct: 'gleichmäßig (näherungsweise linear)',
+        wrong: ['unmöglich', 'nur in Kelvin messbar', 'ohne Messwerte erkennbar'],
+      },
+      {
+        q: 'Warum wiederholt man Temperaturmessungen oft?',
+        correct: 'um Ausreißer zu erkennen und den Mittelwert zu bilden',
+        wrong: ['um °C in Kelvin umzurechnen', 'damit Eis schmilzt', 'damit Strom fließt'],
+      },
+      {
+        q: 'In einer Messreihe steht t für …',
+        correct: 'die Zeit',
+        wrong: ['nur die Temperatur in Kelvin', 'den Widerstand', 'die Dichte'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Messreihen: Zeit und Messwert (hier Temperatur) sauber tabellieren, ggf. Mittelwert bilden.',
+      instruction: 'Tippe die passende Aussage:',
     })
   },
 )
@@ -2348,6 +2776,9 @@ export const PHYSIK_K6_GENERATORS: Record<string, Topic['generate']> = {
   'ph-k6-lb3-thermometer': thermometer,
   'ph-k6-lb3-kelvin': kelvin,
   'ph-k6-lb3-aggregate': aggregate,
+  'ph-k6-lb3-ausdehnung': ausdehnung,
+  'ph-k6-lb3-schmelzen': schmelzen,
+  'ph-k6-lb3-messreihe': messreihe,
   'ph-k6-lb4-stromkreis': stromkreis,
   'ph-k6-lb4-leiter': leiter,
   'ph-k6-lb4-symbole': schaltsymbole,

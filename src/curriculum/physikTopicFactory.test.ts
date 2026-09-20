@@ -132,4 +132,55 @@ describe('Physik topic factory — schulische Aufgaben', () => {
       expect(task.question, `seed ${seed}`).not.toMatch(/m\s*\/\s*V/)
     }
   })
+
+  it('routes critical topics to on-topic banks (no Kelvin/Wirkungsgrad/Radio dump)', () => {
+    const checks: Array<{ id: string; title: string; must: RegExp; mustNot: RegExp }> = [
+      {
+        id: 'ph-k6-lb3-ausdehnung',
+        title: 'Wärmeausdehnung',
+        must: /Ausdehnung|Bimetall|Schiene|erwärm/i,
+        mustNot: /°C in Kelvin|T = ϑ \+ 273|Wirkungsgrad/,
+      },
+      {
+        id: 'ph-k6-lb3-schmelzen',
+        title: 'Schmelzen und Sieden',
+        must: /Schmelz|Sied|fest|flüssig|gas|Kondens|Erstarr/i,
+        mustNot: /°C in Kelvin|T = ϑ \+ 273|Wirkungsgrad η/,
+      },
+      {
+        id: 'ph-k8-lb2-leitung',
+        title: 'Wärmeleitung, Strömung, Strahlung',
+        must: /Wärmeleitung|Konvektion|Wärmestrahlung|Wärmeübertragung|Transport/i,
+        mustNot: /Alpha-, Beta-, Gamma|radioaktive Strahlung|°C in Kelvin/,
+      },
+      {
+        id: 'ph-k9-lbw-strahlung',
+        title: 'Alpha, Beta, Gamma',
+        must: /Alpha|Beta|Gamma|Strahlung|Durchdring/i,
+        mustNot: /Wirkungsgrad|E_nutz|η =/,
+      },
+      {
+        id: 'ph-k9-lbw-zentrifugal',
+        title: 'Zentripetalkraft',
+        must: /./,
+        mustNot: /Wirkungsgrad|E_nutz|η =/,
+      },
+      {
+        id: 'ph-j12gk-lb4-zerfall',
+        title: 'Radioaktiver Zerfall',
+        must: /Strahl|Zerfall|Alpha|Beta|Gamma|Kern|radioaktiv/i,
+        mustNot: /Radio nutzt typischerweise|Modulation|kein Medium \(ausbreitungsfähig/,
+      },
+    ]
+    for (const row of checks) {
+      const generate = resolvePhysikGenerate(row.id) ?? makePhysikTopicGenerate(row.id, row.title)
+      for (let seed = 1; seed <= 30; seed++) {
+        const task = generate(createRng(seed))
+        const blob = `${task.question}\n${task.solution}\n${task.explanation}`
+        expect(blob, `${row.id} seed ${seed}`).toMatch(row.must)
+        expect(blob, `${row.id} seed ${seed}`).not.toMatch(row.mustNot)
+        expect(task.check(task.sampleAnswer), `${row.id} seed ${seed}`).toBe(true)
+      }
+    }
+  })
 })

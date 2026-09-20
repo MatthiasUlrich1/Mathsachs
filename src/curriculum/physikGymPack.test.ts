@@ -55,19 +55,14 @@ describe('Gymnasium Sachsen Physik pack', () => {
     const manifest = parseManifest(
       JSON.parse(readFileSync(join(curriculaDir, 'manifest.json'), 'utf8')),
     )
-    expect(pack.version).toBe('2.5.7')
-    expect(file?.version).toBe('2.5.7')
+    expect(pack.version).toBe('2.5.8')
+    expect(file?.version).toBe('2.5.8')
     expect(file?.contentHash).toBe(pack.contentHash)
-    const thermometer = file?.official
-      .flatMap((g) => g.areas)
-      .flatMap((a) => a.topics)
-      .find((t) => t.id === 'ph-k6-lb3-thermometer')
-    const kelvin = file?.official
-      .flatMap((g) => g.areas)
-      .flatMap((a) => a.topics)
-      .find((t) => t.id === 'ph-k6-lb3-kelvin')
-    expect(thermometer?.released).toBe(true)
-    expect(kelvin?.released).toBe(true)
+    const lb3 = file?.official
+      .find((g) => g.id === 'physik-klasse-6')
+      ?.areas.find((a) => a.id === 'lb3')
+      ?.topics
+    expect(lb3?.every((t) => t.released)).toBe(true)
     expect(manifest?.packs.map((p) => p.id)).toContain(GYM_SACHSEN_PHYSIK_PACK_ID)
     expect(manifest?.packs.find((p) => p.id === GYM_SACHSEN_PHYSIK_PACK_ID)?.subject).toBe(
       'Physik',

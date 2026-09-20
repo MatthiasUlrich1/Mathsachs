@@ -138,10 +138,22 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
             released: true,
             tasksPerRound: 10,
           }),
-          topic('ph-k6-lb3-ausdehnung', 'Wärmeausdehnung', ['Ausdehnung', 'Wärme']),
-          topic('ph-k6-lb3-aggregate', 'Aggregatzustände', ['Aggregatzustand', 'Schmelzen']),
-          topic('ph-k6-lb3-schmelzen', 'Schmelzen und Sieden', ['Schmelzen', 'Sieden']),
-          topic('ph-k6-lb3-messreihe', 'Temperatur-Messreihe', ['Messreihe', 'Temperatur']),
+          topic('ph-k6-lb3-ausdehnung', 'Wärmeausdehnung', ['Ausdehnung', 'Wärme'], {
+            released: true,
+            tasksPerRound: 10,
+          }),
+          topic('ph-k6-lb3-aggregate', 'Aggregatzustände', ['Aggregatzustand', 'Schmelzen'], {
+            released: true,
+            tasksPerRound: 10,
+          }),
+          topic('ph-k6-lb3-schmelzen', 'Schmelzen und Sieden', ['Schmelzen', 'Sieden'], {
+            released: true,
+            tasksPerRound: 10,
+          }),
+          topic('ph-k6-lb3-messreihe', 'Temperatur-Messreihe', ['Messreihe', 'Temperatur'], {
+            released: true,
+            tasksPerRound: 10,
+          }),
         ]),
         area('lb4', 'Elektrische Stromkreise', 5, [
           topic('ph-k6-lb4-stromkreis', 'Offener und geschlossener Stromkreis', ['Stromkreis', 'Schalter'], {

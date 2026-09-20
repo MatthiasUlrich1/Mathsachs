@@ -82,7 +82,14 @@ describe('Physik Gym generators (all grades)', () => {
       }
     }
     const lb3 = k6.areas.find((a) => a.id === 'lb3')!.topics
-    const releasedLb3 = new Set(['ph-k6-lb3-thermometer', 'ph-k6-lb3-kelvin'])
+    const releasedLb3 = new Set([
+      'ph-k6-lb3-thermometer',
+      'ph-k6-lb3-kelvin',
+      'ph-k6-lb3-ausdehnung',
+      'ph-k6-lb3-aggregate',
+      'ph-k6-lb3-schmelzen',
+      'ph-k6-lb3-messreihe',
+    ])
     for (const t of lb3) {
       if (releasedLb3.has(t.id)) {
         expect(t.released, t.id).toBe(true)
