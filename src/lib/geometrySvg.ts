@@ -1789,7 +1789,6 @@ export function generateCompositeCuboidSvg({
   const fullDepthB = f(0, W, H)
 
   const DIR_DOWN: [number, number] = [0, 1]
-  const DIR_UP: [number, number] = [0, -1]
   const DIR_LEFT: [number, number] = [-1, 0]
   const DIR_DEPTH_OUT: [number, number] = [depUnitX, depUnitY]
   const DIR_CUT_OUT: [number, number] = [-depUnitX, -depUnitY]
@@ -1826,10 +1825,13 @@ export function generateCompositeCuboidSvg({
     anchor: 'middle',
     size: 16,
   })
+  // Ausschnitt-Länge: an der Ausschnittkante (stemTop) beginnen, nach oben
+  // und leicht in die Aussparung (rechts/hinten) versetzen — klar über dem Arm
+  const DIR_CUT_LEN_OUT: [number, number] = [depUnitX * 0.55, -1]
   const cutLenDim = geoDimOffsetSegment(cutLenA, cutLenB, cutLengthLabel, {
     ...dimOpts,
-    offsetDir: DIR_UP,
-    dist: 20,
+    offsetDir: DIR_CUT_LEN_OUT,
+    dist: 38,
     labelOffset: [0, -14],
     size: 16,
   })
@@ -1857,6 +1859,8 @@ export function generateCompositeCuboidSvg({
     offsetPt(cutDepthB, DIR_CUT_OUT, 26 + 18),
     offsetPt(footDepthA, DIR_DEPTH_OUT, 22 + 14),
     offsetPt(footDepthB, DIR_DEPTH_OUT, 22 + 14),
+    offsetPt(cutLenA, DIR_CUT_LEN_OUT, 38 + 16),
+    offsetPt(cutLenB, DIR_CUT_LEN_OUT, 38 + 16),
   ]
   let minX = Infinity
   let minY = Infinity

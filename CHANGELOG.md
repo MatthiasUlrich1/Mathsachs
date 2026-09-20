@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.72] – 2026-09-20
+
+### Behoben
+- **ID 7227 L-Quader:** Ausschnitt-Längen-Pfeil oben rechts weiter nach oben/rechts
+  versetzt, linker Anfang an der Ausschnittkante.
+
 ## [0.27.71] – 2026-09-20
 
 ### Behoben
