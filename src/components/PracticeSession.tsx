@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { createRng, timeSeed } from '../lib/rng'
 import { recordSession } from '../lib/storage'
 import type { Topic, UserInput } from '../curriculum/types'
@@ -101,13 +101,26 @@ export function PracticeSession({
   const [correct, setCorrect] = useState(0)
   const [points, setPoints] = useState(0)
   const [finished, setFinished] = useState(false)
-  const recorded = useRef(false)
 
   const answerKind = task.answerKind
+
+  const persistAttempt = (ok: boolean) => {
+    if (skipProtocol) return
+    recordSession(user, {
+      topicId: activeTopic.id,
+      topicTitle: activeTopic.title,
+      areaTitle: activeArea,
+      attempts: 1,
+      correct: ok ? 1 : 0,
+      points: ok ? activeTopic.pointsPerTask : 0,
+      ...(challengeId?.trim() ? { challengeId: challengeId.trim() } : {}),
+    })
+  }
 
   const submit = () => {
     if (phase !== 'answering') return
     const ok = task.check(input)
+    persistAttempt(ok)
     if (ok) {
       setCorrect((c) => c + 1)
       setPoints((p) => p + activeTopic.pointsPerTask)
@@ -117,27 +130,13 @@ export function PracticeSession({
     }
   }
 
-  const finish = (answered: number, correctCount: number, pts: number) => {
-    if (recorded.current) return
-    recorded.current = true
-    if (!skipProtocol && answered > 0) {
-      // Single-topic practice: one session row. Berichtigung skips protocol.
-      recordSession(user, {
-        topicId: topic.id,
-        topicTitle: topic.title,
-        areaTitle,
-        attempts: answered,
-        correct: correctCount,
-        points: pts,
-        ...(challengeId?.trim() ? { challengeId: challengeId.trim() } : {}),
-      })
-    }
+  const finish = () => {
     setFinished(true)
   }
 
   const next = () => {
     if (index >= totalTasks) {
-      finish(index, correct, points)
+      finish()
       return
     }
     setPhase('answering')
@@ -147,8 +146,7 @@ export function PracticeSession({
   }
 
   const endEarly = () => {
-    const answered = phase === 'answering' ? index - 1 : index
-    finish(answered, correct, points)
+    finish()
   }
 
   const accuracy = useMemo(
@@ -197,7 +195,7 @@ export function PracticeSession({
         <p className="muted small">
           {skipProtocol
             ? 'Diese Runde hat die Klausurauswertung und das Punkteprotokoll nicht verändert.'
-            : `Deine Punkte wurden für ${user} gespeichert.`}
+            : `Punkte wurden sofort bei jeder Antwort für ${user} gespeichert.`}
         </p>
         <button type="button" className="primary" onClick={onExit}>
           {isBerichtigung ? 'Zurück zur Auswertung' : 'Zurück zur Themenauswahl'}

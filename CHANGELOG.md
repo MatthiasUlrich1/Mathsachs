@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.56] – 2026-09-20
+
+### Behoben
+- **Üben / Punkte:** Punkte und Versuche werden sofort bei jeder geprüften
+  Antwort gespeichert (richtig und falsch), nicht erst beim Beenden der Runde —
+  so gehen keine Punkte verloren, wenn die App vorher geschlossen wird.
+
 ## [0.27.55] – 2026-09-20
 
 ### Hinzugefügt
