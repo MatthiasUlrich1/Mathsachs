@@ -541,6 +541,12 @@ function parseTaskReports(raw) {
       typeof item.fixedAt === 'number' && Number.isFinite(item.fixedAt)
         ? Math.floor(item.fixedAt)
         : undefined
+    const seed =
+      typeof item.seed === 'number' && Number.isFinite(item.seed)
+        ? Math.floor(item.seed)
+        : typeof item.seed === 'string' && /^-?\d+$/.test(String(item.seed).trim())
+          ? Number.parseInt(String(item.seed).trim(), 10)
+          : undefined
     out.push({
       id,
       at,
@@ -552,6 +558,7 @@ function parseTaskReports(raw) {
       ...(areaTitle ? { areaTitle } : {}),
       ...(question ? { question } : {}),
       ...(appVersion ? { appVersion } : {}),
+      ...(seed !== undefined && Number.isFinite(seed) ? { seed } : {}),
       ...(replyMessage ? { replyMessage } : {}),
       ...(fixedAt !== undefined ? { fixedAt } : {}),
     })
@@ -2277,6 +2284,12 @@ async function handleCreateTaskReport(request, env) {
   const areaTitle = trimReportText(body.areaTitle, MAX_REPORT_TITLE)
   const question = trimReportText(body.question, MAX_REPORT_QUESTION)
   const appVersion = trimReportText(body.appVersion, MAX_REPORT_VERSION)
+  const seed =
+    typeof body.seed === 'number' && Number.isFinite(body.seed)
+      ? Math.floor(body.seed)
+      : typeof body.seed === 'string' && /^-?\d+$/.test(String(body.seed).trim())
+        ? Number.parseInt(String(body.seed).trim(), 10)
+        : undefined
 
   const report = {
     id: generateClassCode(),
@@ -2289,6 +2302,7 @@ async function handleCreateTaskReport(request, env) {
     ...(areaTitle ? { areaTitle } : {}),
     ...(question ? { question } : {}),
     ...(appVersion ? { appVersion } : {}),
+    ...(seed !== undefined && Number.isFinite(seed) ? { seed } : {}),
   }
 
   const existing = parseTaskReports(parseRaw(await env.CLASSES.get(taskReportsKey())))

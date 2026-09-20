@@ -46,6 +46,13 @@ interface Props {
   onExit: () => void
   /** Open a fresh practice round for a topic ("Ähnliche Aufgabe üben"). */
   onPracticeTopic: (moduleId: string, topicId: string) => void
+  /**
+   * Berichtigung: practice similar tasks for wrong exam topics
+   * without changing the Klausur-Auswertung.
+   */
+  onBerichtigung: (
+    topics: Array<{ moduleId: string; topicId: string }>,
+  ) => void | Promise<void>
 }
 
 type Phase = 'input' | 'ready' | 'loading' | 'running' | 'done'
@@ -59,7 +66,13 @@ interface TaskResult {
 
 const normalizeExamCodeKey = (raw: string): string => raw.trim().replace(/\s+/g, '')
 
-export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props) {
+export function ExamRunner({
+  user,
+  initialCode,
+  onExit,
+  onPracticeTopic,
+  onBerichtigung,
+}: Props) {
   const [phase, setPhase] = useState<Phase>(initialCode ? 'ready' : 'input')
   const [codeText, setCodeText] = useState(initialCode ?? '')
   const [error, setError] = useState<string | null>(null)
@@ -656,6 +669,7 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
           areaTitle={r.areaTitle}
           contentId={topicContentId(r.topicId)}
           question={task.question}
+          seed={r.ref.seed}
         />
       </section>
     )
@@ -777,6 +791,32 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
           </p>
         )}
 
+        {results.some((r) => !r.correct) && (
+          <div className="exam-export-actions" style={{ marginBottom: '1rem' }}>
+            <button
+              type="button"
+              className="primary"
+              onClick={() => {
+                const seen = new Set<string>()
+                const topics: Array<{ moduleId: string; topicId: string }> = []
+                for (const r of results) {
+                  if (r.correct) continue
+                  const key = `${r.resolved.moduleId}::${r.resolved.topicId}`
+                  if (seen.has(key)) continue
+                  seen.add(key)
+                  topics.push({
+                    moduleId: r.resolved.moduleId,
+                    topicId: r.resolved.topicId,
+                  })
+                }
+                void onBerichtigung(topics)
+              }}
+            >
+              Falsche Aufgaben üben (Berichtigung)
+            </button>
+          </div>
+        )}
+
         <ol className="exam-review">
           {results.map((r, i) => (
             <li
@@ -805,15 +845,26 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
                 </p>
               )}
               <p className="explanation">{r.resolved.task.explanation}</p>
-              <button
-                type="button"
-                className="ghost"
-                onClick={() =>
-                  onPracticeTopic(r.resolved.moduleId, r.resolved.topicId)
-                }
-              >
-                Ähnliche Aufgabe üben
-              </button>
+              <div className="exam-export-actions">
+                <button
+                  type="button"
+                  className="ghost"
+                  onClick={() =>
+                    onPracticeTopic(r.resolved.moduleId, r.resolved.topicId)
+                  }
+                >
+                  Ähnliche Aufgabe üben
+                </button>
+                <ReportFaultyTask
+                  key={`review-${i}-${r.resolved.ref.seed}`}
+                  topicId={r.resolved.topicId}
+                  topicTitle={r.resolved.topicTitle}
+                  areaTitle={r.resolved.areaTitle}
+                  contentId={topicContentId(r.resolved.topicId)}
+                  question={r.resolved.task.question}
+                  seed={r.resolved.ref.seed}
+                />
+              </div>
             </li>
           ))}
         </ol>

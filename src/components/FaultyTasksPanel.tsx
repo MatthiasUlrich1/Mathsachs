@@ -194,6 +194,7 @@ export function FaultyTasksPanel({ onShowTask, onReportsChanged }: Props) {
                     row.topicTitle,
                     row.areaTitle,
                     row.topicId ? `Thema ${row.topicId}` : null,
+                    typeof row.seed === 'number' ? `Seed ${row.seed}` : null,
                     row.appVersion ? `v${row.appVersion}` : null,
                   ]
                     .filter(Boolean)

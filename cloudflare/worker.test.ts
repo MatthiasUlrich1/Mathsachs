@@ -893,6 +893,7 @@ describe('Challenge Worker API', () => {
           topicId: 'ph-k6-lb2-volumen',
           topicTitle: 'Volumen bestimmen',
           question: 'Wie groß ist das Volumen?',
+          seed: 424242,
           appVersion: '0.27.43',
         }),
       }),
@@ -917,6 +918,7 @@ describe('Challenge Worker API', () => {
         comment: string
         topicId?: string
         question?: string
+        seed?: number
       }>
     }
     expect(body.reports).toHaveLength(1)
@@ -926,6 +928,7 @@ describe('Challenge Worker API', () => {
       comment: 'Falsche Lösung bei Volumen',
       topicId: 'ph-k6-lb2-volumen',
       question: 'Wie groß ist das Volumen?',
+      seed: 424242,
       status: 'open',
     })
 

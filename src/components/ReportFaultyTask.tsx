@@ -15,6 +15,8 @@ interface Props {
   areaTitle?: string
   contentId?: number
   question?: string
+  /** Generator seed so Entwickler can reproduce the exact task. */
+  seed?: number
 }
 
 type Status = 'idle' | 'open' | 'sending' | 'sent' | 'error'
@@ -25,6 +27,7 @@ export function ReportFaultyTask({
   areaTitle,
   contentId,
   question,
+  seed,
 }: Props) {
   const [status, setStatus] = useState<Status>('idle')
   const [comment, setComment] = useState('')
@@ -34,6 +37,9 @@ export function ReportFaultyTask({
     typeof contentId === 'number' && Number.isFinite(contentId)
       ? Math.floor(contentId)
       : topicContentId(topicId)
+
+  const resolvedSeed =
+    typeof seed === 'number' && Number.isFinite(seed) ? Math.floor(seed) : undefined
 
   const send = async () => {
     if (status === 'sending' || status === 'sent') return
@@ -52,6 +58,7 @@ export function ReportFaultyTask({
         topicTitle,
         ...(areaTitle?.trim() ? { areaTitle: areaTitle.trim() } : {}),
         ...(question?.trim() ? { question: question.trim() } : {}),
+        ...(resolvedSeed !== undefined ? { seed: resolvedSeed } : {}),
         appVersion: APP_VERSION,
       })
       setStatus('sent')
@@ -69,7 +76,10 @@ export function ReportFaultyTask({
   if (status === 'sent') {
     return (
       <div className="task-report task-report--done">
-        <p className="muted small">Danke — die Aufgabe wurde gemeldet (ID {resolvedId}).</p>
+        <p className="muted small">
+          Danke — die Aufgabe wurde gemeldet (ID {resolvedId}
+          {resolvedSeed !== undefined ? ` · Seed ${resolvedSeed}` : ''}).
+        </p>
       </div>
     )
   }
@@ -91,7 +101,8 @@ export function ReportFaultyTask({
   return (
     <div className="task-report task-report--open" aria-label="Aufgabe als fehlerhaft melden">
       <p className="muted small">
-        Kurzer Hinweis zum Fehler (ID {resolvedId}):
+        Kurzer Hinweis zum Fehler (ID {resolvedId}
+        {resolvedSeed !== undefined ? ` · Seed ${resolvedSeed}` : ''}):
       </p>
       <textarea
         className="task-report__comment"

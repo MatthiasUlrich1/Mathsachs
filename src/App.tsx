@@ -98,6 +98,13 @@ type View =
       gradeTitle: string
       returnTo?: TopTabId
       challengeId?: string
+      initialSeed?: number
+      mode?: 'practice' | 'berichtigung' | 'replay'
+      berichtigungTopics?: Array<{
+        topic: Topic
+        areaTitle: string
+        gradeTitle: string
+      }>
     }
   | { name: 'worksheet'; topic: Topic; areaTitle: string; gradeTitle: string }
 
@@ -674,7 +681,30 @@ export default function App() {
     gradeTitle: string,
     returnTo?: TopTabId,
     challengeId?: string,
-  ) => setView({ name: 'practice', topic, areaTitle, gradeTitle, returnTo, challengeId })
+    opts?: {
+      initialSeed?: number
+      mode?: 'practice' | 'berichtigung' | 'replay'
+      berichtigungTopics?: Array<{
+        topic: Topic
+        areaTitle: string
+        gradeTitle: string
+      }>
+    },
+  ) =>
+    setView({
+      name: 'practice',
+      topic,
+      areaTitle,
+      gradeTitle,
+      returnTo,
+      challengeId,
+      ...(opts?.initialSeed != null ? { initialSeed: opts.initialSeed } : {}),
+      ...(opts?.mode ? { mode: opts.mode } : {}),
+      ...(opts?.berichtigungTopics
+        ? { berichtigungTopics: opts.berichtigungTopics }
+        : {}),
+    })
+
   const openWorksheet = (topic: Topic, areaTitle: string, gradeTitle: string) =>
     setView({ name: 'worksheet', topic, areaTitle, gradeTitle })
 
@@ -686,15 +716,49 @@ export default function App() {
     for (const area of grade.areas) {
       const topic = area.topics.find((t) => t.id === topicId)
       if (topic) {
-        openPractice(topic, area.title, grade.title)
+        openPractice(topic, area.title, grade.title, 'examRun')
         return
       }
     }
   }
 
+  const openBerichtigung = async (
+    refs: Array<{ moduleId: string; topicId: string }>,
+  ) => {
+    const pool: Array<{ topic: Topic; areaTitle: string; gradeTitle: string }> =
+      []
+    const seen = new Set<string>()
+    for (const ref of refs) {
+      const key = `${ref.moduleId}::${ref.topicId}`
+      if (seen.has(key)) continue
+      seen.add(key)
+      const grade = await loadInstalledGrade(ref.moduleId).catch(() => null)
+      if (!grade) continue
+      for (const area of grade.areas) {
+        const topic = area.topics.find((t) => t.id === ref.topicId)
+        if (topic) {
+          pool.push({ topic, areaTitle: area.title, gradeTitle: grade.title })
+          break
+        }
+      }
+    }
+    if (pool.length === 0) {
+      window.alert(
+        'Keine Themen für die Berichtigung gefunden. Ist der Lehrplan installiert?',
+      )
+      return
+    }
+    const first = pool[0]!
+    openPractice(first.topic, first.areaTitle, first.gradeTitle, 'examRun', undefined, {
+      mode: 'berichtigung',
+      berichtigungTopics: pool,
+    })
+  }
+
   const openFaultyTask = async (report: {
     contentId: number
     topicId?: string
+    seed?: number
   }) => {
     const found = await resolveFaultyTask(report)
     if (!found) {
@@ -703,7 +767,11 @@ export default function App() {
       )
       return
     }
-    openPractice(found.topic, found.areaTitle, found.gradeTitle)
+    openPractice(found.topic, found.areaTitle, found.gradeTitle, undefined, undefined, {
+      ...(typeof report.seed === 'number' && Number.isFinite(report.seed)
+        ? { initialSeed: Math.floor(report.seed), mode: 'replay' as const }
+        : {}),
+    })
   }
 
   return (
@@ -969,8 +1037,18 @@ export default function App() {
           areaTitle={view.areaTitle}
           user={activeUser}
           challengeId={view.challengeId}
+          initialSeed={view.initialSeed}
+          mode={view.mode}
+          berichtigungTopics={view.berichtigungTopics}
           onExit={() =>
-            setView({ name: view.returnTo === 'challenge' ? 'challenge' : 'browse' })
+            setView({
+              name:
+                view.returnTo === 'challenge'
+                  ? 'challenge'
+                  : view.returnTo === 'examRun'
+                    ? 'examRun'
+                    : 'browse',
+            })
           }
         />
       )}
@@ -1006,6 +1084,7 @@ export default function App() {
             setView({ name: 'browse' })
           }}
           onPracticeTopic={openPracticeById}
+          onBerichtigung={openBerichtigung}
         />
       )}
 

@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.55] – 2026-09-20
+
+### Hinzugefügt
+- **Klausur-Berichtigung:** Nach der Auswertung können falsch beantwortete
+  Aufgaben über **Falsche Aufgaben üben (Berichtigung)** mit ähnlichen Aufgaben
+  aus denselben Themen geübt werden — ohne Einfluss auf Klausurauswertung oder
+  Punkteprotokoll.
+- **Fehlermeldungen mit Seed:** Beim Melden einer fehlerhaften Aufgabe wird der
+  Generator-**Seed** mitgeschickt. In der Entwickleransicht sichtbar; „Aufgabe
+  anzeigen“ öffnet genau diese Aufgabe.
+
 ## [0.27.54] – 2026-09-20
 
 ### Hinzugefügt

@@ -3,7 +3,11 @@ import { createRng, timeSeed } from '../lib/rng'
 import { recordSession } from '../lib/storage'
 import type { Topic, UserInput } from '../curriculum/types'
 import { isFormulaLikeHint } from '../curriculum/types'
-import { buildUniqueTaskRound } from '../curriculum/uniqueRound'
+import {
+  buildBerichtigungRound,
+  buildUniqueTaskRoundWithSeeds,
+  type BerichtigungTopicRef,
+} from '../curriculum/uniqueRound'
 import { AnswerInput } from './AnswerInput'
 import { ReportFaultyTask } from './ReportFaultyTask'
 import { initTaskInput, TaskInteractive, TaskVisual } from './TaskMedia'
@@ -18,30 +22,78 @@ function tasksPerRoundFor(topic: Topic): number {
   return topic.id.startsWith('ph-') ? PHYSIK_TASKS_PER_ROUND : TARGET_TASKS_PER_ROUND
 }
 
+export type PracticeMode = 'practice' | 'berichtigung' | 'replay'
+
+interface RoundItem {
+  topic: Topic
+  areaTitle: string
+  gradeTitle?: string
+  task: import('../curriculum/types').Task
+  seed: number
+}
+
 interface Props {
   topic: Topic
   areaTitle: string
   user: string
   onExit: () => void
   challengeId?: string
+  /** Reproduce a reported task first (Entwickler / Melder). */
+  initialSeed?: number
+  /** Berichtigung: no protocol points; multi-topic pool. */
+  mode?: PracticeMode
+  berichtigungTopics?: BerichtigungTopicRef[]
 }
 
 type Phase = 'answering' | 'correct' | 'wrong'
 
-export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }: Props) {
-  const [rng] = useState(() => createRng(timeSeed()))
-  const targetTasks = tasksPerRoundFor(topic)
-  const [tasks] = useState(() => buildUniqueTaskRound(topic.generate, rng, targetTasks))
-  const totalTasks = tasks.length
+export function PracticeSession({
+  topic,
+  areaTitle,
+  user,
+  onExit,
+  challengeId,
+  initialSeed,
+  mode = 'practice',
+  berichtigungTopics,
+}: Props) {
+  const isBerichtigung = mode === 'berichtigung'
+  const isReplay = mode === 'replay'
+  const skipProtocol = isBerichtigung || isReplay
+
+  const [items] = useState<RoundItem[]>(() => {
+    if (isBerichtigung && berichtigungTopics && berichtigungTopics.length > 0) {
+      return buildBerichtigungRound(berichtigungTopics, TARGET_TASKS_PER_ROUND)
+    }
+    const rng = createRng(timeSeed())
+    const target = isReplay && initialSeed != null ? 1 : tasksPerRoundFor(topic)
+    return buildUniqueTaskRoundWithSeeds(
+      topic.generate,
+      rng,
+      target,
+      50,
+      initialSeed,
+    ).map((row) => ({
+      topic,
+      areaTitle,
+      task: row.task,
+      seed: row.seed,
+    }))
+  })
+
+  const totalTasks = items.length
   const [index, setIndex] = useState(1)
-  const task = tasks[index - 1]
+  const current = items[index - 1]!
+  const task = current.task
+  const activeTopic = current.topic
+  const activeArea = current.areaTitle
+  const activeSeed = current.seed
 
   const [input, setInput] = useState<UserInput>(() => initTaskInput(task))
   const [phase, setPhase] = useState<Phase>('answering')
   const [showExplanation, setShowExplanation] = useState(false)
   const [showFachwissen, setShowFachwissen] = useState(false)
 
-  // Reset the answer widget whenever a fresh task appears.
   useEffect(() => {
     setInput(initTaskInput(task))
   }, [task])
@@ -58,7 +110,7 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
     const ok = task.check(input)
     if (ok) {
       setCorrect((c) => c + 1)
-      setPoints((p) => p + topic.pointsPerTask)
+      setPoints((p) => p + activeTopic.pointsPerTask)
       setPhase('correct')
     } else {
       setPhase('wrong')
@@ -68,7 +120,8 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
   const finish = (answered: number, correctCount: number, pts: number) => {
     if (recorded.current) return
     recorded.current = true
-    if (answered > 0) {
+    if (!skipProtocol && answered > 0) {
+      // Single-topic practice: one session row. Berichtigung skips protocol.
       recordSession(user, {
         topicId: topic.id,
         topicTitle: topic.title,
@@ -89,6 +142,7 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
     }
     setPhase('answering')
     setShowExplanation(false)
+    setShowFachwissen(false)
     setIndex((i) => i + 1)
   }
 
@@ -102,14 +156,27 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
     [correct, index],
   )
 
+  const headline = isBerichtigung
+    ? 'Berichtigung'
+    : isReplay
+      ? 'Gemeldete Aufgabe'
+      : activeTopic.title
+  const subline = isBerichtigung
+    ? 'Ähnliche Aufgaben zu falschen Klausur-Themen · zählt nicht für die Klausurauswertung'
+    : isReplay
+      ? `${activeTopic.title} · Seed ${activeSeed}`
+      : activeArea
+
   if (finished) {
     const answered = phase === 'answering' ? index - 1 : index
     const pct = answered > 0 ? Math.round((correct / answered) * 100) : 0
     return (
       <div className="card session">
-        <h2 className="section-title">Runde beendet</h2>
+        <h2 className="section-title">
+          {isBerichtigung ? 'Berichtigung beendet' : 'Runde beendet'}
+        </h2>
         <p className="muted">
-          {topic.title} · {areaTitle}
+          {isBerichtigung ? 'Falsche Klausur-Themen' : `${topic.title} · ${areaTitle}`}
         </p>
         <div className="results">
           <div className="result">
@@ -120,16 +187,20 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
             <span className="result__value">{pct}%</span>
             <span className="result__label">Genauigkeit</span>
           </div>
-          <div className="result">
-            <span className="result__value">{points}</span>
-            <span className="result__label">Punkte</span>
-          </div>
+          {!skipProtocol && (
+            <div className="result">
+              <span className="result__value">{points}</span>
+              <span className="result__label">Punkte</span>
+            </div>
+          )}
         </div>
         <p className="muted small">
-          Deine Punkte wurden für <strong>{user}</strong> gespeichert.
+          {skipProtocol
+            ? 'Diese Runde hat die Klausurauswertung und das Punkteprotokoll nicht verändert.'
+            : `Deine Punkte wurden für ${user} gespeichert.`}
         </p>
         <button type="button" className="primary" onClick={onExit}>
-          Zurück zur Themenauswahl
+          {isBerichtigung ? 'Zurück zur Auswertung' : 'Zurück zur Themenauswahl'}
         </button>
       </div>
     )
@@ -139,8 +210,13 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
     <div className="card session">
       <div className="session__head">
         <div>
-          <h2 className="section-title no-margin">{topic.title}</h2>
-          <p className="muted small">{areaTitle}</p>
+          <h2 className="section-title no-margin">{headline}</h2>
+          <p className="muted small">{subline}</p>
+          {isBerichtigung && (
+            <p className="muted small">
+              Aktuell: {activeTopic.title} · Seed {activeSeed}
+            </p>
+          )}
         </div>
         <button type="button" className="link" onClick={endEarly}>
           Runde beenden
@@ -151,7 +227,7 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
         <span>
           Aufgabe {index} von {totalTasks}
         </span>
-        <span>Punkte: {points}</span>
+        {!skipProtocol && <span>Punkte: {points}</span>}
         <span>{accuracy}%</span>
       </div>
       <div className="progress">
@@ -175,11 +251,11 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
         <TaskInteractive task={task} value={input} onChange={setInput} />
       )}
 
-      {topic.hint && phase === 'answering' && !isFormulaLikeHint(topic.hint) && (
-        <p className="muted small hint">{topic.hint}</p>
+      {activeTopic.hint && phase === 'answering' && !isFormulaLikeHint(activeTopic.hint) && (
+        <p className="muted small hint">{activeTopic.hint}</p>
       )}
 
-      {topic.fachwissen && (
+      {activeTopic.fachwissen && (
         <div className="session__fachwissen">
           <button
             type="button"
@@ -191,18 +267,22 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
           </button>
           {showFachwissen && (
             <div className="fachwissen-card fachwissen-card--session">
-              <p className="fachwissen-card__text">{topic.fachwissen.text}</p>
-              {topic.fachwissen.quelle && (
+              <p className="fachwissen-card__text">{activeTopic.fachwissen.text}</p>
+              {activeTopic.fachwissen.quelle && (
                 <p className="fachwissen-card__source">
                   Quelle:{' '}
-                  {topic.fachwissen.url ? (
-                    <a href={topic.fachwissen.url} target="_blank" rel="noopener noreferrer">
-                      {topic.fachwissen.quelle}
+                  {activeTopic.fachwissen.url ? (
+                    <a
+                      href={activeTopic.fachwissen.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {activeTopic.fachwissen.quelle}
                     </a>
                   ) : (
-                    topic.fachwissen.quelle
+                    activeTopic.fachwissen.quelle
                   )}
-                  {topic.fachwissen.url && (
+                  {activeTopic.fachwissen.url && (
                     <span className="fachwissen-card__license"> (CC BY-SA 4.0)</span>
                   )}
                 </p>
@@ -231,7 +311,10 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
 
       {phase === 'correct' && (
         <div className="feedback feedback--good">
-          <strong>Richtig! +{topic.pointsPerTask} Punkte</strong>
+          <strong>
+            Richtig!
+            {!skipProtocol ? ` +${activeTopic.pointsPerTask} Punkte` : ''}
+          </strong>
           <button type="button" className="primary" onClick={next}>
             {index >= totalTasks ? 'Runde abschließen' : 'Nächste Aufgabe'}
           </button>
@@ -262,12 +345,13 @@ export function PracticeSession({ topic, areaTitle, user, onExit, challengeId }:
       )}
 
       <ReportFaultyTask
-        key={`${topic.id}-${index}-${task.question.slice(0, 40)}`}
-        topicId={topic.id}
-        topicTitle={topic.title}
-        areaTitle={areaTitle}
-        contentId={topic.contentId}
+        key={`${activeTopic.id}-${index}-${activeSeed}`}
+        topicId={activeTopic.id}
+        topicTitle={activeTopic.title}
+        areaTitle={activeArea}
+        contentId={activeTopic.contentId}
         question={task.question}
+        seed={activeSeed}
       />
     </div>
   )

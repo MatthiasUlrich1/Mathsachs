@@ -22,6 +22,8 @@ export interface TaskReportPayload {
   topicTitle?: string
   areaTitle?: string
   question?: string
+  /** Deterministic generator seed for the exact task instance. */
+  seed?: number
   appVersion?: string
 }
 
@@ -310,6 +312,12 @@ function parseReportRow(row: unknown): TaskReport | null {
     typeof r.fixedAt === 'number' && Number.isFinite(r.fixedAt)
       ? Math.floor(r.fixedAt)
       : undefined
+  const seed =
+    typeof r.seed === 'number' && Number.isFinite(r.seed)
+      ? Math.floor(r.seed)
+      : typeof r.seed === 'string' && /^-?\d+$/.test(r.seed.trim())
+        ? Number.parseInt(r.seed.trim(), 10)
+        : undefined
   return {
     id: r.id,
     at: r.at,
@@ -328,6 +336,7 @@ function parseReportRow(row: unknown): TaskReport | null {
     ...(typeof r.question === 'string' && r.question.trim()
       ? { question: r.question.trim() }
       : {}),
+    ...(seed !== undefined && Number.isFinite(seed) ? { seed } : {}),
     ...(typeof r.appVersion === 'string' && r.appVersion.trim()
       ? { appVersion: r.appVersion.trim() }
       : {}),
@@ -451,6 +460,9 @@ export async function submitTaskReport(
         ...(payload.areaTitle?.trim() ? { areaTitle: payload.areaTitle.trim() } : {}),
         ...(payload.question?.trim()
           ? { question: payload.question.trim().slice(0, 280) }
+          : {}),
+        ...(typeof payload.seed === 'number' && Number.isFinite(payload.seed)
+          ? { seed: Math.floor(payload.seed) }
           : {}),
         ...(payload.appVersion?.trim() ? { appVersion: payload.appVersion.trim() } : {}),
       }),
