@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "2.5.9",
-  "changelog": "ID 3173 Temperatur-Messreihe gesperrt (Aufgaben neu: Δϑ, Mittelwert, Ausreißer, Änderungsrate); Klausur-Punkte, Schaltsymbole, Summer, Thermometer ±1, L-Quader-Maße, Zahlenstrahl.",
+  "version": "2.5.10",
+  "changelog": "ID 3173 Temperatur-Messreihe freigegeben; Zahlenstrahl-Hinweis Querformat am Handy.",
   "official": [
     {
       "id": "physik-klasse-6",
@@ -300,7 +300,7 @@
               "title": "Temperatur-Messreihe",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Messreihe",
@@ -4008,5 +4008,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "dc0be610"
+  "contentHash": "18d198a7"
 }

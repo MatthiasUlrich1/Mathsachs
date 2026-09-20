@@ -65,4 +65,19 @@ describe('NumberLineSlider', () => {
     expect(html).not.toMatch(/>5<\/text>/)
     expect(html).not.toMatch(/>15<\/text>/)
   })
+
+  it('shows a mobile landscape hint for narrow portrait screens', () => {
+    const onChange = vi.fn()
+    const html = renderToStaticMarkup(
+      createElement(NumberLineSlider, {
+        min: 0,
+        max: 10,
+        step: 1,
+        value: 5,
+        onChange,
+      }),
+    )
+    expect(html).toContain('number-line-mobile-hint')
+    expect(html).toMatch(/seitlich drehen/i)
+  })
 })

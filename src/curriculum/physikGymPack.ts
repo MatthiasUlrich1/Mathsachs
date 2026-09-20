@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.9',
+    version: '2.5.10',
     changelog:
-      'ID 3173 Temperatur-Messreihe gesperrt (Aufgaben neu: Δϑ, Mittelwert, Ausreißer, Änderungsrate); Klausur-Punkte, Schaltsymbole, Summer, Thermometer ±1, L-Quader-Maße, Zahlenstrahl.',
+      'ID 3173 Temperatur-Messreihe freigegeben; Zahlenstrahl-Hinweis Querformat am Handy.',
     official,
     extras: [],
   }

@@ -151,7 +151,7 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
             tasksPerRound: 10,
           }),
           topic('ph-k6-lb3-messreihe', 'Temperatur-Messreihe', ['Messreihe', 'Temperatur'], {
-            released: false,
+            released: true,
             tasksPerRound: 10,
           }),
         ]),

@@ -104,6 +104,9 @@ export const NumberLineSlider: React.FC<NumberLineSliderProps> = ({
   return (
     <div className="number-line-slider">
       {label && <div className="number-line-label">{label}</div>}
+      <p className="number-line-mobile-hint" role="note">
+        Am Handy: Telefon seitlich drehen für bessere Bedienbarkeit.
+      </p>
       <svg
         ref={svgRef}
         width={width}

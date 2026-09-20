@@ -88,6 +88,7 @@ describe('Physik Gym generators (all grades)', () => {
       'ph-k6-lb3-ausdehnung',
       'ph-k6-lb3-aggregate',
       'ph-k6-lb3-schmelzen',
+      'ph-k6-lb3-messreihe',
     ])
     for (const t of lb3) {
       if (releasedLb3.has(t.id)) {
@@ -96,7 +97,6 @@ describe('Physik Gym generators (all grades)', () => {
         expect(t.released, t.id).toBe(false)
       }
     }
-    expect(lb3.find((t) => t.id === 'ph-k6-lb3-messreihe')?.released).toBe(false)
     const lb4 = k6.areas.find((a) => a.id === 'lb4')!.topics
     const releasedLb4 = new Set([
       'ph-k6-lb4-stromkreis',

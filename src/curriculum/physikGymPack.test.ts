@@ -55,15 +55,14 @@ describe('Gymnasium Sachsen Physik pack', () => {
     const manifest = parseManifest(
       JSON.parse(readFileSync(join(curriculaDir, 'manifest.json'), 'utf8')),
     )
-    expect(pack.version).toBe('2.5.9')
-    expect(file?.version).toBe('2.5.9')
+    expect(pack.version).toBe('2.5.10')
+    expect(file?.version).toBe('2.5.10')
     expect(file?.contentHash).toBe(pack.contentHash)
     const lb3 = file?.official
       .find((g) => g.id === 'physik-klasse-6')
       ?.areas.find((a) => a.id === 'lb3')
       ?.topics
-    expect(lb3?.filter((t) => t.id !== 'ph-k6-lb3-messreihe').every((t) => t.released)).toBe(true)
-    expect(lb3?.find((t) => t.id === 'ph-k6-lb3-messreihe')?.released).toBe(false)
+    expect(lb3?.every((t) => t.released)).toBe(true)
     expect(manifest?.packs.map((p) => p.id)).toContain(GYM_SACHSEN_PHYSIK_PACK_ID)
     expect(manifest?.packs.find((p) => p.id === GYM_SACHSEN_PHYSIK_PACK_ID)?.subject).toBe(
       'Physik',

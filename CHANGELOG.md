@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.66] – 2026-09-20
+
+### Freigabe
+- **ID 3173 Temperatur-Messreihe** freigegeben (Physik-Pack 2.5.10).
+
+### Behoben
+- **ID 5299 Zahlenstrahl:** Hinweis am Handy im Hochformat — Telefon seitlich
+  drehen für bessere Bedienbarkeit.
+
 ## [0.27.65] – 2026-09-20
 
 ### Freigabe / Sperre
