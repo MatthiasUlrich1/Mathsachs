@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.58] – 2026-09-20
+
+### Geändert
+- **Klassenstufen laden:** Nach dem Installieren eines Lehrplans wird keine
+  Klassenstufe mehr automatisch geladen (früher oft Klasse 6). Es erscheinen
+  nur noch die Stufen, die der Nutzer ausdrücklich auswählt.
+
 ## [0.27.57] – 2026-09-20
 
 ### Behoben

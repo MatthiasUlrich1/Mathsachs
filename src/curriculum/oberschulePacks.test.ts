@@ -224,7 +224,7 @@ describe('Oberschule Sachsen Lehrplan packs', () => {
     const visible = listVisibleGradeModules(kv)
     expect(visible.map((m) => m.id)).toContain('os-rs-klasse-10')
     expect(visible.map((m) => m.id)).not.toContain('mathematik-klasse-5')
-    expect(getLoadedIds(kv)[0]).toBe('os-rs-klasse-5')
+    expect(getLoadedIds(kv)).toEqual([])
     const grade = await visible.find((m) => m.id === 'os-rs-klasse-10')!.load()
     expect(grade.areas.some((a) => a.title === 'Zufallsgrößen')).toBe(true)
   })

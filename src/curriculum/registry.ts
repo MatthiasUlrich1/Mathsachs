@@ -33,7 +33,8 @@ export const getCurriculumModule = (
 ): CurriculumModule | undefined =>
   getBundledModule(id) ?? listVisibleGradeModules(kv).find((mod) => mod.id === id)
 
-export const DEFAULT_LOADED_IDS = ['mathematik-klasse-6']
+/** Previously auto-selected Klasse 6; kept empty — users pick grades explicitly. */
+export const DEFAULT_LOADED_IDS: string[] = []
 
 const packGradeModule = (
   packId: string,
@@ -102,10 +103,8 @@ export const getLoadedIds = (kv: CurriculumKv = defaultCurriculumKv()): string[]
   }
   const visible = listVisibleGradeModules(kv)
   if (stored === null) {
-    if (visible.length === 0) return []
-    return visible.some((m) => m.id === DEFAULT_LOADED_IDS[0])
-      ? [...DEFAULT_LOADED_IDS]
-      : visible.slice(0, 1).map((m) => m.id)
+    // No explicit selection yet — do not auto-load any Klassenstufe.
+    return []
   }
   const allowed = new Set(visible.map((m) => m.id))
   return visible.map((m) => m.id).filter((id) => stored!.includes(id) && allowed.has(id))

@@ -1,6 +1,26 @@
 import { describe, it, expect } from 'vitest'
 import { createRng } from '../lib/rng'
-import { availableCurricula, getCurriculumModule } from './registry'
+import {
+  availableCurricula,
+  getCurriculumModule,
+  getLoadedIds,
+  DEFAULT_LOADED_IDS,
+} from './registry'
+import { installPack, resetCurriculumMemory, type CurriculumKv } from './install'
+import { buildGymSachsenSeed } from './seed'
+
+const memoryKv = (): CurriculumKv => {
+  const map = new Map<string, string>()
+  return {
+    getItem: (key) => (map.has(key) ? map.get(key)! : null),
+    setItem: (key, value) => {
+      map.set(key, value)
+    },
+    removeItem: (key) => {
+      map.delete(key)
+    },
+  }
+}
 
 describe('curriculum registry', () => {
   it('has unique module ids', () => {
@@ -11,6 +31,14 @@ describe('curriculum registry', () => {
   it('offers Klasse 5 and Klasse 6', () => {
     expect(getCurriculumModule('mathematik-klasse-5')).toBeDefined()
     expect(getCurriculumModule('mathematik-klasse-6')).toBeDefined()
+  })
+
+  it('does not auto-load a Klassenstufe after installing a pack', async () => {
+    resetCurriculumMemory()
+    const kv = memoryKv()
+    installPack(await buildGymSachsenSeed(), kv)
+    expect(DEFAULT_LOADED_IDS).toEqual([])
+    expect(getLoadedIds(kv)).toEqual([])
   })
 
   it('lazily loads a real Grade with generatable topics for every module', async () => {
