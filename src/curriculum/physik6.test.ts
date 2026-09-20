@@ -93,6 +93,20 @@ describe('Physik Klasse 6 generators', () => {
     expect(withSvg).toBeGreaterThan(10)
   })
 
+  it('Temperatur-Messreihe (ID 3173) evaluates series — no time-sorting busywork', () => {
+    const gen = PHYSIK_K6_GENERATORS['ph-k6-lb3-messreihe']!
+    for (let seed = 1; seed <= 80; seed++) {
+      const task = gen(createRng(seed))
+      expect(task.check(task.sampleAnswer), `seed ${seed}`).toBe(true)
+      expect(task.question).not.toMatch(/Ordne die Temperatur-Messreihe nach der Zeit/)
+      expect(task.interactive?.type).not.toBe('dragDropSort')
+      const blob = `${task.question}\n${task.solution}`
+      expect(blob).toMatch(
+        /Mittelwert|Δϑ|Ausreißer|Messreihe|Temperaturänderung|pro Minute|Erwärmung|Messwert|Zeitpunkt/i,
+      )
+    }
+  })
+
   it('Aggregatzustände avoid spoilers and off-topic Messreihe sorting', () => {
     const gen = PHYSIK_K6_GENERATORS['ph-k6-lb3-aggregate']!
     for (let seed = 1; seed <= 80; seed++) {
@@ -245,14 +259,61 @@ describe('Physik Klasse 6 generators', () => {
       expect(task.question, `seed ${seed}`).not.toMatch(/U\s*=\s*\d+\s*V/)
       expect(task.question, `seed ${seed}`).not.toMatch(/ohmschen Widerstand/)
       expect(task.question, `seed ${seed}`).not.toMatch(/Berechne die Stromstärke/)
+      expect(task.question, `seed ${seed}`).not.toMatch(/Es gibt keine Schaltsymbole/)
       const blob = `${task.question}\n${task.solution}`
-      expect(blob, `seed ${seed}`).toMatch(/Schaltsymbol|Bauteil|Symbol|Amperemeter|Voltmeter|Lampe|Widerstand|Batterie|Motor|Schalter/i)
+      expect(blob, `seed ${seed}`).toMatch(/Schaltsymbol|Bauteil|Symbol|Amperemeter|Voltmeter|Lampe|Widerstand|Batterie|Motor|Schalter|Summer/i)
     }
     let withSvg = 0
-    for (let seed = 1; seed <= 40; seed++) {
-      if (PHYSIK_K6_GENERATORS['ph-k6-lb4-symbole']!(createRng(seed)).visualContent) withSvg++
+    let multiSymbol = 0
+    let ohneCorrect = 0
+    for (let seed = 1; seed <= 80; seed++) {
+      const task = gen(createRng(seed))
+      if (task.visualContent) withSvg++
+      if ((task.visualContent?.match(/<circle/g) ?? []).length >= 2) multiSymbol++
+      if (
+        /Welche Aussagen zu Schaltsymbolen/.test(task.question) &&
+        task.sampleAnswer.kind === 'multiSelect' &&
+        task.sampleAnswer.selected.some((s) => /Ohne Schaltsymbole/.test(s))
+      ) {
+        ohneCorrect++
+      }
     }
     expect(withSvg).toBeGreaterThan(20)
+    expect(multiSymbol).toBeGreaterThan(5)
+    expect(ohneCorrect).toBeGreaterThan(0)
+  })
+
+  it('Stromkreis (ID 8500) uses matching consumer glyph and Der Summer', () => {
+    const gen = PHYSIK_K6_GENERATORS['ph-k6-lb4-stromkreis']!
+    let summerHits = 0
+    for (let seed = 1; seed <= 100; seed++) {
+      const task = gen(createRng(seed))
+      if (!/Summer/.test(task.question)) continue
+      summerHits++
+      expect(task.question + task.solution).toMatch(/Der Summer/)
+      expect(task.question + task.solution).not.toMatch(/Die Summer/)
+      expect(task.visualContent ?? '').toMatch(/fef3c7/)
+      expect(task.visualContent ?? '').not.toMatch(/L[\d.]+ [\d.]+ M[\d.]+ [\d.]+ L[\d.]+/)
+    }
+    expect(summerHits).toBeGreaterThan(5)
+  })
+
+  it('Thermometer (ID 3126) accepts ±1 °C', () => {
+    const gen = PHYSIK_K6_GENERATORS['ph-k6-lb3-thermometer']!
+    let thermo = 0
+    for (let seed = 1; seed <= 60; seed++) {
+      const task = gen(createRng(seed))
+      if (task.interactive?.type !== 'numberLine') continue
+      if (task.interactive.props.variant !== 'thermometer') continue
+      thermo++
+      const target =
+        task.sampleAnswer.kind === 'numberLine' ? task.sampleAnswer.value : null
+      expect(target).not.toBeNull()
+      expect(task.check({ kind: 'numberLine', value: target! + 1 })).toBe(true)
+      expect(task.check({ kind: 'numberLine', value: target! - 1 })).toBe(true)
+      expect(task.check({ kind: 'numberLine', value: target! + 2 })).toBe(false)
+    }
+    expect(thermo).toBeGreaterThan(5)
   })
 
   it('Elektrischer Widerstand topic keeps Ohm-style tasks', () => {

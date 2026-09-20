@@ -51,16 +51,17 @@ function geoDimArrowSegment(
     labelX: number
     labelY: number
     anchor?: 'start' | 'middle' | 'end'
+    size?: number
   },
 ): string {
   if (!label?.trim()) return ''
-  const { stroke, markerId, labelX, labelY, anchor } = opts
+  const { stroke, markerId, labelX, labelY, anchor, size } = opts
   const mx = (x1 + x2) / 2
   const my = (y1 + y2) / 2
   const arrow = `url(#${markerId}Arrow)`
-  return `<line x1="${mx}" y1="${my}" x2="${x1}" y2="${y1}" stroke="${stroke}" stroke-width="1" marker-end="${arrow}"/>
-  <line x1="${mx}" y1="${my}" x2="${x2}" y2="${y2}" stroke="${stroke}" stroke-width="1" marker-end="${arrow}"/>
-  ${geoDimLabel(labelX, labelY, label, { anchor })}`
+  return `<line x1="${mx}" y1="${my}" x2="${x1}" y2="${y1}" stroke="${stroke}" stroke-width="1.5" marker-end="${arrow}"/>
+    <line x1="${mx}" y1="${my}" x2="${x2}" y2="${y2}" stroke="${stroke}" stroke-width="1.5" marker-end="${arrow}"/>
+  ${geoDimLabel(labelX, labelY, label, { anchor, size })}`
 }
 
 export interface RectangleSvgProps {
@@ -1650,10 +1651,10 @@ export function generateCompositeCuboidSvg({
   stroke = '#1565c0',
 }: CompositeCuboidSvgProps): string {
   // Same Strecke layout as generateCuboidSvg: height left, depth right,
-  // length below; cut measures are Strecken on the notch (never leaders).
+  // length below; cut measures sit clearly outside the solid (never on edges).
   const padL = 72
-  const padR = 118
-  const padT = 88
+  const padR = 140
+  const padT = 118
   const padB = 68
   const scale = Math.min(140 / length, 90 / width, 80 / height)
   const L = length * scale
@@ -1757,19 +1758,17 @@ export function generateCompositeCuboidSvg({
   const widthMid = mid(widthDimA, widthDimB)
   const widthLabelPos: [number, number] = [widthMid[0] + 28, widthMid[1] + 6]
 
-  // Cut length Strecke well above the step edge; label above the line mid
-  // so it stays clear of the cut-width Strecke at the inner corner.
-  const cutLenDimA: [number, number] = [cutLenA[0] + 4, cutLenA[1] - 26]
-  const cutLenDimB: [number, number] = [cutLenB[0] - 2, cutLenB[1] - 26]
+  // Cut length: Strecke clearly ABOVE the notch top edge (like outer length below).
+  const cutLenDimA: [number, number] = [cutLenA[0] + 2, cutLenA[1] - 48]
+  const cutLenDimB: [number, number] = [cutLenB[0] - 2, cutLenB[1] - 48]
   const cutLenMid = mid(cutLenDimA, cutLenDimB)
-  const cutLenLabelPos: [number, number] = [cutLenMid[0], cutLenMid[1] - 14]
+  const cutLenLabelPos: [number, number] = [cutLenMid[0], cutLenMid[1] - 16]
 
-  // Cut width Strecke deeper into the notch void; label to the right of mid
-  // (away from cut-length label and the solid edge).
-  const cutWidDimA: [number, number] = [cutWidA[0] + 28, cutWidA[1] + 6]
-  const cutWidDimB: [number, number] = [cutWidB[0] + 28, cutWidB[1] + 6]
+  // Cut width: Strecke OUTSIDE into the void, offset like outer depth — label clear of solid.
+  const cutWidDimA: [number, number] = [cutWidA[0] + 42, cutWidA[1] - 8]
+  const cutWidDimB: [number, number] = [cutWidB[0] + 42, cutWidB[1] - 8]
   const cutWidMid = mid(cutWidDimA, cutWidDimB)
-  const cutWidLabelPos: [number, number] = [cutWidMid[0] + 22, cutWidMid[1] + 4]
+  const cutWidLabelPos: [number, number] = [cutWidMid[0] + 30, cutWidMid[1] + 5]
 
   const markerId = 'compositeCuboid'
   const lengthDim = geoDimArrowSegment(
@@ -1824,6 +1823,7 @@ export function generateCompositeCuboidSvg({
       markerId,
       labelX: cutLenLabelPos[0],
       labelY: cutLenLabelPos[1],
+      size: 16,
     },
   )
   const cutWidDim = geoDimArrowSegment(
@@ -1838,6 +1838,7 @@ export function generateCompositeCuboidSvg({
       labelX: cutWidLabelPos[0],
       labelY: cutWidLabelPos[1],
       anchor: 'start',
+      size: 16,
     },
   )
 

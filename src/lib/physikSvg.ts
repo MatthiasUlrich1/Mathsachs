@@ -263,7 +263,16 @@ export function wegZeitCompareSvg(highlight: 'rest' | 'uniform' | 'accel'): stri
 </svg>`
 }
 
-export function circuitSvg(closed: boolean): string {
+export function circuitSvg(
+  closed: boolean,
+  device: 'Lampe' | 'Summer' | 'LED' = 'Lampe',
+): string {
+  const consumer =
+    device === 'Summer'
+      ? buzzerGlyph(220, 36)
+      : device === 'LED'
+        ? ledGlyph(220, 36)
+        : lampGlyph(220, 36)
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150" width="300" height="150" role="img" aria-label="Einfacher Stromkreis">
   <rect width="300" height="150" fill="#f8fafc"/>
   ${batteryOnRail(40, 75)}
@@ -278,7 +287,7 @@ export function circuitSvg(closed: boolean): string {
   <circle cx="160" cy="36" r="3.5" fill="#334155"/>`
   }
   <path d="M160 36 H200" stroke="#334155" stroke-width="2.5" fill="none"/>
-  ${lampGlyph(220, 36)}
+  ${consumer}
   <path d="M236 36 H270 V114 H40 V${75 + 28}" stroke="#334155" stroke-width="2.5" fill="none"/>
 </svg>`
 }
@@ -311,70 +320,91 @@ export function circuitSymbolLabel(kind: CircuitSymbolKind): string {
   return SYMBOL_LABEL[kind]
 }
 
-export function circuitSymbolSvg(kind: CircuitSymbolKind): string {
-  const body = (() => {
-    switch (kind) {
-      case 'battery':
-        return `
+function circuitSymbolBody(kind: CircuitSymbolKind): string {
+  switch (kind) {
+    case 'battery':
+      return `
   <path d="M40 80 H90" stroke="#334155" stroke-width="3" fill="none"/>
   <path d="M90 55 V105" stroke="#334155" stroke-width="4" fill="none"/>
   <path d="M105 65 V95" stroke="#334155" stroke-width="3" fill="none"/>
   <path d="M105 80 H160" stroke="#334155" stroke-width="3" fill="none"/>
   <text x="100" y="42" text-anchor="middle" fill="#64748b" font-size="12" font-family="system-ui,sans-serif">+</text>
   <text x="78" y="128" text-anchor="middle" fill="#64748b" font-size="12" font-family="system-ui,sans-serif">−</text>`
-      case 'lamp':
-        return `
+    case 'lamp':
+      return `
   <path d="M40 80 H70" stroke="#334155" stroke-width="3" fill="none"/>
   <circle cx="100" cy="80" r="28" fill="#fffbeb" stroke="#334155" stroke-width="3"/>
   <path d="M82 62 L118 98 M118 62 L82 98" stroke="#334155" stroke-width="2.5" fill="none"/>
   <path d="M130 80 H160" stroke="#334155" stroke-width="3" fill="none"/>`
-      case 'switchOpen':
-        return `
+    case 'switchOpen':
+      return `
   <path d="M40 80 H80" stroke="#334155" stroke-width="3" fill="none"/>
   <circle cx="80" cy="80" r="5" fill="#334155"/>
   <path d="M80 80 L130 55" stroke="#334155" stroke-width="3" fill="none"/>
   <circle cx="140" cy="80" r="5" fill="#334155"/>
   <path d="M140 80 H160" stroke="#334155" stroke-width="3" fill="none"/>`
-      case 'switchClosed':
-        return `
+    case 'switchClosed':
+      return `
   <path d="M40 80 H80" stroke="#334155" stroke-width="3" fill="none"/>
   <circle cx="80" cy="80" r="5" fill="#334155"/>
   <path d="M80 80 H140" stroke="#334155" stroke-width="3" fill="none"/>
   <circle cx="140" cy="80" r="5" fill="#334155"/>
   <path d="M140 80 H160" stroke="#334155" stroke-width="3" fill="none"/>`
-      case 'resistor':
-        return `
+    case 'resistor':
+      return `
   <path d="M40 80 H60" stroke="#334155" stroke-width="3" fill="none"/>
   <rect x="60" y="62" width="80" height="36" fill="#f8fafc" stroke="#334155" stroke-width="3"/>
   <path d="M140 80 H160" stroke="#334155" stroke-width="3" fill="none"/>`
-      case 'motor':
-        return `
+    case 'motor':
+      return `
   <path d="M40 80 H70" stroke="#334155" stroke-width="3" fill="none"/>
   <circle cx="100" cy="80" r="28" fill="#eff6ff" stroke="#334155" stroke-width="3"/>
   <text x="100" y="86" text-anchor="middle" fill="#1e3a8a" font-size="22" font-family="system-ui,sans-serif" font-weight="700">M</text>
   <path d="M130 80 H160" stroke="#334155" stroke-width="3" fill="none"/>`
-      case 'buzzer':
-        return `
+    case 'buzzer':
+      return `
   <path d="M40 80 H70" stroke="#334155" stroke-width="3" fill="none"/>
   <path d="M70 55 H110 L130 80 L110 105 H70 Z" fill="#fef3c7" stroke="#334155" stroke-width="3"/>
   <path d="M130 80 H160" stroke="#334155" stroke-width="3" fill="none"/>`
-      case 'ammeter':
-        return `
+    case 'ammeter':
+      return `
   <path d="M40 80 H70" stroke="#334155" stroke-width="3" fill="none"/>
   <circle cx="100" cy="80" r="28" fill="#ecfdf5" stroke="#334155" stroke-width="3"/>
   <text x="100" y="88" text-anchor="middle" fill="#065f46" font-size="24" font-family="system-ui,sans-serif" font-weight="700">A</text>
   <path d="M130 80 H160" stroke="#334155" stroke-width="3" fill="none"/>`
-      case 'voltmeter':
-        return `
+    case 'voltmeter':
+      return `
   <path d="M40 80 H70" stroke="#334155" stroke-width="3" fill="none"/>
   <circle cx="100" cy="80" r="28" fill="#f5f3ff" stroke="#334155" stroke-width="3"/>
   <text x="100" y="88" text-anchor="middle" fill="#5b21b6" font-size="24" font-family="system-ui,sans-serif" font-weight="700">V</text>
   <path d="M130 80 H160" stroke="#334155" stroke-width="3" fill="none"/>`
-    }
-  })()
+  }
+}
+
+export function circuitSymbolSvg(kind: CircuitSymbolKind): string {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" width="200" height="160" role="img" aria-label="Schaltsymbol">
   <rect width="200" height="160" fill="#f8fafc"/>
-  ${body}
+  ${circuitSymbolBody(kind)}
+</svg>`
+}
+
+/** Row of several Schaltsymbole (for multi-select / Messgerät tasks). */
+export function circuitSymbolsRowSvg(kinds: CircuitSymbolKind[]): string {
+  const n = Math.max(1, kinds.length)
+  const cellW = 170
+  const gap = 12
+  const pad = 10
+  const totalW = pad * 2 + n * cellW + (n - 1) * gap
+  const totalH = 140
+  const bodies = kinds
+    .map((kind, i) => {
+      const x = pad + i * (cellW + gap)
+      return `<g transform="translate(${x - 10}, -5) scale(0.82)">${circuitSymbolBody(kind)}</g>`
+    })
+    .join('\n')
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${totalW} ${totalH}" width="${totalW}" height="${totalH}" role="img" aria-label="Schaltsymbole">
+  <rect width="${totalW}" height="${totalH}" fill="#f8fafc"/>
+  ${bodies}
 </svg>`
 }
 
@@ -383,6 +413,19 @@ function lampGlyph(cx: number, cy: number, r = 16): string {
   const d = r * 0.72
   return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#fffbeb" stroke="#334155" stroke-width="2.5"/>
   <path d="M${cx - d} ${cy - d} L${cx + d} ${cy + d} M${cx + d} ${cy - d} L${cx - d} ${cy + d}" stroke="#334155" stroke-width="2.5" fill="none"/>`
+}
+
+/** Summer / Klingel (Trapez, school Schaltzeichen). */
+function buzzerGlyph(cx: number, cy: number, r = 16): string {
+  const w = r * 1.35
+  const h = r * 1.1
+  return `<path d="M${cx - w} ${cy - h} H${cx + w * 0.15} L${cx + w} ${cy} L${cx + w * 0.15} ${cy + h} H${cx - w} Z" fill="#fef3c7" stroke="#334155" stroke-width="2.5"/>`
+}
+
+/** LED (Dreieck + Querstrich). */
+function ledGlyph(cx: number, cy: number, r = 16): string {
+  return `<path d="M${cx - r} ${cy - r * 0.85} L${cx + r * 0.7} ${cy} L${cx - r} ${cy + r * 0.85} Z" fill="#ecfdf5" stroke="#334155" stroke-width="2.5"/>
+  <path d="M${cx + r * 0.7} ${cy - r * 0.85} V${cy + r * 0.85}" stroke="#334155" stroke-width="2.5" fill="none"/>`
 }
 
 /** Spannungsquelle on a vertical rail (long + / short − bars). */

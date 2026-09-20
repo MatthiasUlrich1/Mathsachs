@@ -83,8 +83,6 @@ export function ExamRunner({
   const answersRef = useRef<UserInput[]>([])
   const resolvedRef = useRef<ResolvedExamTask[]>([])
   const [current, setCurrent] = useState(0)
-  /** Points locked when leaving a task (index → earned). */
-  const [lockedEarned, setLockedEarned] = useState<Record<number, number>>({})
   const [results, setResults] = useState<TaskResult[]>([])
   const [completeNotice, setCompleteNotice] = useState<string | null>(null)
 
@@ -222,7 +220,6 @@ export function ExamRunner({
       resolvedRef.current = tasks
       setAnswers(initialAnswers)
       answersRef.current = initialAnswers
-      setLockedEarned({})
       setResults([])
       setCompleteNotice(null)
       setCurrent(0)
@@ -263,29 +260,11 @@ export function ExamRunner({
     const row = rows[index]
     if (!row) return { answer: emptyInput('text'), correct: false, earned: 0 }
     const answer = answerList[index] ?? initTaskInput(row.task)
+    // Score only on Abgabe (not while typing). numberLine/paramSlider defaults
+    // look filled, so requireAttempt stays false here — live “Bisher”-Punkte are hidden.
     const earned = examTaskEarned(row.task, answer, row.punkte, { requireAttempt: false })
     return { answer, correct: earned > 0, earned }
   }
-
-  const lockTaskEarned = (index: number, answerList: UserInput[] = answersRef.current) => {
-    const scored = scoreTask(index, answerList, resolvedRef.current)
-    setLockedEarned((prev) => ({ ...prev, [index]: scored.earned }))
-  }
-
-  const liveEarned = useMemo(() => {
-    let sum = 0
-    for (let i = 0; i < resolved.length; i++) {
-      if (lockedEarned[i] != null) {
-        sum += lockedEarned[i]
-        continue
-      }
-      if (i !== current) continue
-      const row = resolved[i]
-      const answer = answers[i] ?? initTaskInput(row.task)
-      sum += examTaskEarned(row.task, answer, row.punkte)
-    }
-    return sum
-  }, [resolved, answers, lockedEarned, current])
 
   const setAnswer = (input: UserInput) => {
     setAnswers((prev) => {
@@ -296,7 +275,6 @@ export function ExamRunner({
   }
 
   const goToTask = (next: number) => {
-    lockTaskEarned(current, answersRef.current)
     setCurrent(next)
   }
 
@@ -356,7 +334,6 @@ export function ExamRunner({
   const submit = () => {
     const answerList = answersRef.current
     const rows = resolvedRef.current
-    lockTaskEarned(current, answerList)
     const computed: TaskResult[] = rows.map((r, i) => {
       const scored = scoreTask(i, answerList, rows)
       return {
@@ -605,9 +582,6 @@ export function ExamRunner({
         <div className="session__meta">
           <span>
             Aufgabe {current + 1} von {resolved.length}
-          </span>
-          <span>
-            Bisher {liveEarned} / {totalPoints} P.
           </span>
         </div>
         <div className="progress">

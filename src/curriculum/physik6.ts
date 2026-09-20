@@ -3,6 +3,7 @@ import {
   circuitSvg,
   circuitSymbolLabel,
   circuitSymbolSvg,
+  circuitSymbolsRowSvg,
   type CircuitSymbolKind,
   eclipseArrangementSvg,
   kernHalbschattenSvg,
@@ -1205,8 +1206,9 @@ const thermometer: Topic['generate'] = mixedVariants(
       value: c,
       labelStep: 20,
       variant: 'thermometer',
+      eps: 1,
       solution: `${c} °C`,
-      explanation: `Die Quecksilbersäule (rote Säule) endet bei ${c} °C.`,
+      explanation: `Die Quecksilbersäule (rote Säule) endet bei ${c} °C (±1 °C).`,
     })
   },
   (rng) => {
@@ -1687,30 +1689,25 @@ const schmelzen: Topic['generate'] = mixedVariants(
   },
 )
 
-/** LB3 — Temperatur-Messreihe */
+/** LB3 — Temperatur-Messreihe (ID 3173): auswerten, nicht sinnlos nach Zeit sortieren. */
 const messreihe: Topic['generate'] = mixedVariants(
   (rng) => {
-    const t0 = pick(rng, [0, 1, 2])
-    const dt = pick(rng, [3, 4, 5])
-    const temp0 = pick(rng, [5, 10, 18, 20, 22])
-    const dT = pick(rng, [8, 10, 12, 14])
-    const ordered = [
-      { label: `t = ${t0} min: ${temp0} °C`, value: t0 },
-      { label: `t = ${t0 + dt} min: ${temp0 + dT} °C`, value: t0 + dt },
-      { label: `t = ${t0 + 2 * dt} min: ${temp0 + 2 * dT} °C`, value: t0 + 2 * dt },
-    ]
-    const items = [...ordered]
-    for (let i = items.length - 1; i > 0; i--) {
-      const j = randInt(rng, 0, i)
-      ;[items[i], items[j]] = [items[j]!, items[i]!]
-    }
-    const correctOrder = ordered.map((row) => items.findIndex((it) => it.value === row.value))
-    return dragDropSortTask({
-      question: 'Ordne die Temperatur-Messreihe nach der Zeit (früh → spät).',
-      items,
-      correctOrder,
-      solution: ordered.map((row) => row.label).join(' → '),
-      explanation: 'Eine Messreihe sortiert man nach der Zeitachse von früh nach spät.',
+    const t0 = pick(rng, [0, 2, 5])
+    const dt = pick(rng, [5, 10])
+    const temp0 = pick(rng, [18, 20, 22, 25])
+    const dT = pick(rng, [4, 5, 6, 8])
+    const t1 = t0 + dt
+    const t2 = t0 + 2 * dt
+    const temp1 = temp0 + dT
+    const temp2 = temp0 + 2 * dT
+    const delta = temp2 - temp0
+    return valueTask({
+      question: `Messreihe einer Erwärmung:\n• t = ${t0} min → ${temp0} °C\n• t = ${t1} min → ${temp1} °C\n• t = ${t2} min → ${temp2} °C\nWie groß ist die Temperaturänderung Δϑ von Beginn bis Ende?`,
+      answerKind: 'integer',
+      unit: '°C',
+      value: delta,
+      solution: `${delta} °C`,
+      explanation: `Δϑ = ${temp2} °C − ${temp0} °C = ${delta} °C.`,
     })
   },
   (rng) => {
@@ -1725,6 +1722,24 @@ const messreihe: Topic['generate'] = mixedVariants(
       value: mean,
       solution: `${mean} °C`,
       explanation: `Mittelwert = (${a} + ${b} + ${c}) / 3 = ${mean} °C.`,
+    })
+  },
+  (rng) => {
+    const base = pick(rng, [20, 22, 24, 25])
+    const good = [base, base + 1, base + 2]
+    const outlier = base + pick(rng, [12, 15, 18])
+    const values = shuffleChoices(rng, [...good.map(String), String(outlier)], String(outlier))
+    return choicePickTask({
+      question: `Messwerte einer Wassertemperatur (°C): ${values.join(', ')}. Welcher Wert ist vermutlich ein Ausreißer?`,
+      choices: shuffleChoices(
+        rng,
+        [`${outlier} °C`, `${good[0]} °C`, `${good[1]} °C`, `${good[2]} °C`],
+        `${outlier} °C`,
+      ),
+      correct: `${outlier} °C`,
+      solution: `${outlier} °C`,
+      explanation: `Die Werte ${good.join(', ')} liegen nah beieinander; ${outlier} °C weicht stark ab.`,
+      instruction: 'Tippe den Ausreißer:',
     })
   },
   (rng) => {
@@ -1745,9 +1760,9 @@ const messreihe: Topic['generate'] = mixedVariants(
         wrong: ['um °C in Kelvin umzurechnen', 'damit Eis schmilzt', 'damit Strom fließt'],
       },
       {
-        q: 'In einer Messreihe steht t für …',
-        correct: 'die Zeit',
-        wrong: ['nur die Temperatur in Kelvin', 'den Widerstand', 'die Dichte'],
+        q: 'Was berechnet man aus mehreren Messwerten derselben Größe typischerweise zuerst?',
+        correct: 'den Mittelwert',
+        wrong: ['die Dichte der Luft', 'den Widerstand der Batterie', 'die Wellenlänge'],
       },
     ] as const
     const c = pick(rng, [...cases])
@@ -1756,8 +1771,24 @@ const messreihe: Topic['generate'] = mixedVariants(
       choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
       correct: c.correct,
       solution: c.correct,
-      explanation: 'Messreihen: Zeit und Messwert (hier Temperatur) sauber tabellieren, ggf. Mittelwert bilden.',
+      explanation: 'Messreihen: Zeit und Messwert sauber tabellieren, Ausreißer prüfen, Mittelwert bilden.',
       instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (rng) => {
+    const t0 = pick(rng, [0, 5])
+    const dt = pick(rng, [5, 10])
+    const temp0 = pick(rng, [20, 22, 25])
+    const dT = pick(rng, [5, 10])
+    const rate = dT / dt
+    const rateStr = Number.isInteger(rate) ? String(rate) : rate.toFixed(1).replace('.', ',')
+    return valueTask({
+      question: `In ${dt} Minuten steigt die Temperatur von ${temp0} °C auf ${temp0 + dT} °C. Wie groß ist die mittlere Temperaturänderung pro Minute?`,
+      answerKind: Number.isInteger(rate) ? 'integer' : 'decimal',
+      unit: '°C/min',
+      value: rate,
+      solution: `${rateStr} °C/min`,
+      explanation: `Δϑ/Δt = ${dT} °C / ${dt} min = ${rateStr} °C/min (Startzeit t = ${t0} min).`,
     })
   },
 )
@@ -1766,9 +1797,10 @@ const messreihe: Topic['generate'] = mixedVariants(
 const stromkreis: Topic['generate'] = mixedVariants(
   (rng) => {
     const closed = pick(rng, [true, false])
-    const device = pick(rng, ['Lampe', 'Summer', 'LED'])
-    const correct = closed ? `Die ${device} ist an.` : `Die ${device} ist aus.`
-    const wrong = closed ? `Die ${device} ist aus.` : `Die ${device} ist an.`
+    const device = pick(rng, ['Lampe', 'Summer', 'LED'] as const)
+    const art = device === 'Summer' ? 'Der' : 'Die'
+    const correct = closed ? `${art} ${device} ist an.` : `${art} ${device} ist aus.`
+    const wrong = closed ? `${art} ${device} ist aus.` : `${art} ${device} ist an.`
     return choicePickTask({
       question: `Schau auf das Schaltbild mit ${device}. Was gilt für den Verbraucher?`,
       choices: shuffleChoices(
@@ -1781,7 +1813,7 @@ const stromkreis: Topic['generate'] = mixedVariants(
       explanation: closed
         ? 'Geschlossener Stromkreis: Ladung fließt, der Verbraucher arbeitet.'
         : 'Offener Stromkreis: kein geschlossener Weg, der Verbraucher bleibt aus.',
-      visualContent: circuitSvg(closed),
+      visualContent: circuitSvg(closed, device),
       instruction: 'Tippe die richtige Aussage:',
     })
   },
@@ -2063,7 +2095,7 @@ const schaltsymbole: Topic['generate'] = mixedVariants(
     )
     const w3 = pick(rng, ['Trafo', 'Kondensator', 'Diode', 'Lautsprecher'])
     return choicePickTask({
-      question: 'Welches Bauteil zeigt dieses Schaltsymbol?',
+      question: 'Welches Schaltsymbol wird hier gezeigt?',
       choices: shuffleChoices(rng, [correct, w1, w2, w3], correct),
       correct,
       solution: correct,
@@ -2073,23 +2105,24 @@ const schaltsymbole: Topic['generate'] = mixedVariants(
     })
   },
   (rng) => {
-    const kind = pick(rng, ['battery', 'lamp', 'resistor', 'switchOpen', 'motor'] as const)
+    const kind = pick(rng, ['battery', 'lamp', 'resistor', 'switchOpen', 'motor', 'buzzer'] as const)
     const correct = circuitSymbolLabel(kind)
+    const otherLabels = CIRCUIT_SYMBOLS.filter((k) => k !== kind).map(circuitSymbolLabel)
+    const w1 = pick(rng, otherLabels)
+    const w2 = pick(
+      rng,
+      otherLabels.filter((w) => w !== w1),
+    )
+    const w3 = pick(
+      rng,
+      otherLabels.filter((w) => w !== w1 && w !== w2),
+    )
     return choicePickTask({
-      question: `Welches Schaltsymbol gehört zu „${correct}“? (Name → Symbol in der Abbildung)`,
-      choices: shuffleChoices(
-        rng,
-        [
-          correct,
-          'Das Symbol zeigt etwas anderes',
-          'Es gibt keine Schaltsymbole',
-          'Nur Text ohne Zeichnung',
-        ],
-        correct,
-      ),
+      question: 'Welches Schaltsymbol wird hier gezeigt?',
+      choices: shuffleChoices(rng, [correct, w1, w2, w3], correct),
       correct,
       solution: correct,
-      explanation: `Zur Beschriftung „${correct}“ gehört genau das abgebildete Symbol.`,
+      explanation: `Das abgebildete Symbol steht für „${correct}“.`,
       visualContent: circuitSymbolSvg(kind),
       instruction: 'Tippe die passende Zuordnung:',
     })
@@ -2109,7 +2142,9 @@ const schaltsymbole: Topic['generate'] = mixedVariants(
           'Schaltsymbole sind genormte Zeichen in Schaltplänen',
           'Ein Rechteck zwischen Leitungen steht oft für einen Widerstand',
           'Ein Kreis mit X steht typischerweise für eine Lampe',
+          'Ohne Schaltsymbole kann man keinen Stromkreis zeichnen',
         ],
+        visuals: ['resistor', 'lamp', 'voltmeter'] as CircuitSymbolKind[],
       },
       {
         question: 'Was erkennst du an Messgeräte-Symbolen? (mehrere möglich)',
@@ -2121,6 +2156,7 @@ const schaltsymbole: Topic['generate'] = mixedVariants(
           'Voltmeter und Amperemeter haben dasselbe Symbol',
         ],
         correct: ['Kreis mit A = Amperemeter', 'Kreis mit V = Voltmeter', 'Kreis mit M = Motor'],
+        visuals: ['ammeter', 'voltmeter', 'motor'] as CircuitSymbolKind[],
       },
     ] as const
     const p = pick(rng, [...pools])
@@ -2131,7 +2167,7 @@ const schaltsymbole: Topic['generate'] = mixedVariants(
       solution: p.correct.join('; '),
       explanation: 'Schaltsymbole sind genormte Zeichnungen — keine Fotos der Bauteile.',
       instruction: 'Tippe alle richtigen Aussagen:',
-      visualContent: circuitSymbolSvg(pick(rng, ['lamp', 'resistor', 'ammeter', 'voltmeter'] as const)),
+      visualContent: circuitSymbolsRowSvg([...p.visuals]),
     })
   },
 )

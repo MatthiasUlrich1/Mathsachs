@@ -9,6 +9,24 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.65] – 2026-09-20
+
+### Freigabe / Sperre
+- **ID 3173 Temperatur-Messreihe:** wieder **gesperrt** bis Prüfung/Freigabe.
+  Aufgaben neu: Δϑ aus Tabelle, Mittelwert, Ausreißer, Änderungsrate (°C/min) —
+  kein sinnloses Sortieren nach der Zeit mehr.
+
+### Behoben
+- **Klausur:** erreichte Punkte werden während der Klausur nicht mehr angezeigt;
+  kein Live-Mitzählen beim Tippen vor der Abgabe.
+- **ID 7227 L-Quader:** hintere Schnittmaße klar außerhalb des Körpers.
+- **ID 3126 Thermometer:** Toleranz ±1 °C.
+- **ID 8500 Stromkreis:** Summer mit Summer-Schaltzeichen; Artikel „Der Summer“.
+- **ID 6148 Schaltsymbole:** Mehrfach-Symbole zu den Antworten; „Ohne
+  Schaltsymbole…“ zählt richtig; Frage „Welches Schaltsymbol wird hier gezeigt?“
+  mit Bauteil-Antworten.
+- **ID 5299 Zahlenstrahl:** hellere Striche/Beschriftung; mobile Skalierung.
+
 ## [0.27.64] – 2026-09-20
 
 ### Freigabe

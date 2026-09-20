@@ -73,11 +73,21 @@ export const NumberLineSlider: React.FC<NumberLineSliderProps> = ({
       onChange(screenToValue(e.clientX))
     }
     const handleMouseUp = () => setIsDragging(false)
+    const handleTouchMove = (e: TouchEvent) => {
+      const t = e.touches[0]
+      if (!t) return
+      onChange(screenToValue(t.clientX))
+    }
+    const handleTouchEnd = () => setIsDragging(false)
     window.addEventListener('mousemove', handleMouseMove)
     window.addEventListener('mouseup', handleMouseUp)
+    window.addEventListener('touchmove', handleTouchMove, { passive: true })
+    window.addEventListener('touchend', handleTouchEnd)
     return () => {
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('mouseup', handleMouseUp)
+      window.removeEventListener('touchmove', handleTouchMove)
+      window.removeEventListener('touchend', handleTouchEnd)
     }
   }, [isDragging, screenToValue, onChange])
 
@@ -98,10 +108,18 @@ export const NumberLineSlider: React.FC<NumberLineSliderProps> = ({
         ref={svgRef}
         width={width}
         height={height}
+        viewBox={`0 0 ${width} ${height}`}
+        preserveAspectRatio="xMidYMid meet"
         className="number-line-svg"
         onMouseDown={(e) => {
           setIsDragging(true)
           onChange(screenToValue(e.clientX))
+        }}
+        onTouchStart={(e) => {
+          const t = e.touches[0]
+          if (!t) return
+          setIsDragging(true)
+          onChange(screenToValue(t.clientX))
         }}
       >
         <line
@@ -109,8 +127,8 @@ export const NumberLineSlider: React.FC<NumberLineSliderProps> = ({
           y1={lineY}
           x2={width - padding}
           y2={lineY}
-          stroke="#333"
-          strokeWidth="2"
+          stroke="#e2e8f0"
+          strokeWidth="3"
         />
 
         {ticks.map((tick) => {
@@ -124,11 +142,11 @@ export const NumberLineSlider: React.FC<NumberLineSliderProps> = ({
                 y1={lineY - tickHeight / 2}
                 x2={x}
                 y2={lineY + tickHeight / 2}
-                stroke="#333"
-                strokeWidth={major ? 2 : 1}
+                stroke="#e2e8f0"
+                strokeWidth={major ? 2.5 : 1.5}
               />
               {major && (
-                <text x={x} y={lineY + 30} textAnchor="middle" fontSize="14" fill="#333">
+                <text x={x} y={lineY + 30} textAnchor="middle" fontSize="14" fill="#f8fafc">
                   {formatNumber(tick)}
                 </text>
               )}
@@ -143,7 +161,7 @@ export const NumberLineSlider: React.FC<NumberLineSliderProps> = ({
               y1={lineY - 30}
               x2={valueToX(value)}
               y2={lineY}
-              stroke="#007bff"
+              stroke="#38bdf8"
               strokeWidth={2}
               className={isDragging ? 'dragging' : ''}
             />
@@ -151,7 +169,7 @@ export const NumberLineSlider: React.FC<NumberLineSliderProps> = ({
               cx={valueToX(value)}
               cy={lineY - 30}
               r={10}
-              fill="#007bff"
+              fill="#38bdf8"
               stroke="#fff"
               strokeWidth={2}
               className={isDragging ? 'dragging' : ''}

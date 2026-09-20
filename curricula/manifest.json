@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-20T17:03:35.081Z",
+  "updatedAt": "2026-09-20T19:06:04.786Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -18,10 +18,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "2.5.8",
+      "version": "2.5.9",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 134798,
-      "changelog": "LB3 komplett freigegeben; Wärmeausdehnung/Schmelzen/Messreihe/Aggregate themenrein; Factory-Routing (kein Kelvin-Dump, eta/radio/Strahlung-Kollisionen behoben)."
+      "size": 134823,
+      "changelog": "ID 3173 Temperatur-Messreihe gesperrt (Aufgaben neu: Δϑ, Mittelwert, Ausreißer, Änderungsrate); Klausur-Punkte, Schaltsymbole, Summer, Thermometer ±1, L-Quader-Maße, Zahlenstrahl."
     },
     {
       "id": "oberschule-sachsen-hs",

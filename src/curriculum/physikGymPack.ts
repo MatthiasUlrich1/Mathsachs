@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.8',
+    version: '2.5.9',
     changelog:
-      'LB3 komplett freigegeben; Wärmeausdehnung/Schmelzen/Messreihe/Aggregate themenrein; Factory-Routing (kein Kelvin-Dump, eta/radio/Strahlung-Kollisionen behoben).',
+      'ID 3173 Temperatur-Messreihe gesperrt (Aufgaben neu: Δϑ, Mittelwert, Ausreißer, Änderungsrate); Klausur-Punkte, Schaltsymbole, Summer, Thermometer ±1, L-Quader-Maße, Zahlenstrahl.',
     official,
     extras: [],
   }
