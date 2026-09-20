@@ -1702,37 +1702,46 @@ export function generateCompositeCuboidSvg({
   fill = '#e3f2fd',
   stroke = '#1565c0',
 }: CompositeCuboidSvgProps): string {
-  // Stretched isometric solid + floating Maßpfeile (no Hilfslinien),
-  // Längenmaße nach unten/oben, Tiefenmaße in derselben ~45°-Richtung.
-  const padL = 88
-  const padR = 160
-  const padT = 130
-  const padB = 90
-  const scale = Math.min(210 / length, 150 / width, 120 / height)
+  // School Schrägbild (same as cuboidIsoGeometry): front true size;
+  // depth at 45° and visually half length. Floating Maßpfeile, no Hilfslinien.
+  const padL = 96
+  const padR = 120
+  const padT = 100
+  const padB = 80
+  // Scale from front-face size; depth uses half-length separately
+  const scale = Math.min(200 / length, 110 / height, 180 / Math.max(width, 1))
   const L = length * scale
-  const W = width * scale
   const H = height * scale
+  const depthTrue = width * scale
+  const depthLen = depthTrue / 2
   const cL = cutLength * scale
-  const cW = cutWidth * scale
-
-  const isoDx = 0.55
-  const isoDy = 0.45
-  const dx = W * isoDx
-  const dy = W * isoDy
+  const cDepthTrue = cutWidth * scale
+  const angle = Math.PI / 4 // 45°
+  const depUnitX = Math.cos(angle) // for depthLen=1
+  const depUnitY = Math.sin(angle)
+  const depX = depthLen * depUnitX
+  const depY = depthLen * depUnitY
+  // Per-unit-depth screen coeffs (depthTrue units along y)
+  const isoDx = (depthLen / Math.max(depthTrue, 1e-9)) * depUnitX // = 0.5 * cos45
+  const isoDy = (depthLen / Math.max(depthTrue, 1e-9)) * depUnitY // = 0.5 * sin45
 
   const x0 = padL
-  const y0 = padT + dy
+  const y0 = padT + depY
 
-  const iso = (x: number, y: number, z: number): [number, number] => [
-    x0 + x + y * isoDx,
-    y0 + H - z - y * isoDy,
+  /** Schrägbild: x = Länge (rechts), y = Tiefe (45°, halb), z = Höhe (oben) */
+  const schraeg = (x: number, y: number, z: number): [number, number] => [
+    Math.round((x0 + x + y * isoDx) * 100) / 100,
+    Math.round((y0 + H - z - y * isoDy) * 100) / 100,
   ]
 
   const poly = (...pts: Array<[number, number]>) =>
     pts.map(([x, y]) => `${x},${y}`).join(' ')
 
   const stemTop = L - cL
-  const f = (x: number, y: number, z: number) => iso(x, y, z)
+  const f = (x: number, y: number, z: number) => schraeg(x, y, z)
+  // cutWidth is along depth (y); keep full depth as width, cut as cDepthTrue in same units
+  const W = depthTrue
+  const cW = cDepthTrue
 
   const frontFace = poly(f(0, 0, 0), f(L, 0, 0), f(L, 0, H), f(0, 0, H))
   const topFace = poly(
@@ -1752,8 +1761,8 @@ export function generateCompositeCuboidSvg({
   )
   const backStem = poly(f(0, W, 0), f(stemTop, W, 0), f(stemTop, W, H), f(0, W, H))
 
-  const totalW = Math.ceil(padL + L + dx + padR)
-  const totalH = Math.ceil(padT + H + dy + padB)
+  const totalW = Math.ceil(padL + L + depX + padR)
+  const totalH = Math.ceil(padT + H + depY + padB)
 
   const lenA = f(0, 0, 0)
   const lenB = f(L, 0, 0)
@@ -1769,8 +1778,8 @@ export function generateCompositeCuboidSvg({
   const DIR_DOWN: [number, number] = [0, 1]
   const DIR_UP: [number, number] = [0, -1]
   const DIR_LEFT: [number, number] = [-1, 0]
-  // Same ~45° depth direction for outer depth and cut-depth
-  const DIR_DEPTH_OUT: [number, number] = [isoDx, isoDy]
+  // Outward along depth foreshortening (same 45° as the body)
+  const DIR_DEPTH_OUT: [number, number] = [depUnitX, depUnitY]
 
   const markerId = 'compositeCuboid'
   const dimOpts = { stroke, markerId }
@@ -1778,42 +1787,42 @@ export function generateCompositeCuboidSvg({
   const lengthDim = geoDimOffsetSegment(lenA, lenB, lengthLabel, {
     ...dimOpts,
     offsetDir: DIR_DOWN,
-    dist: 32,
+    dist: 28,
     labelOffset: [0, 18],
   })
   const heightDim = geoDimOffsetSegment(heightA, heightB, heightLabel, {
     ...dimOpts,
     offsetDir: DIR_LEFT,
-    dist: 32,
+    dist: 28,
     labelOffset: [-14, 5],
     anchor: 'end',
   })
   const widthDim = geoDimOffsetSegment(widthA, widthB, widthLabel, {
     ...dimOpts,
     offsetDir: DIR_DEPTH_OUT,
-    dist: 42,
-    labelOffset: [22, 8],
+    dist: 36,
+    labelOffset: [18, 10],
     anchor: 'start',
   })
   const cutLenDim = geoDimOffsetSegment(cutLenA, cutLenB, cutLengthLabel, {
     ...dimOpts,
     offsetDir: DIR_UP,
-    dist: 40,
+    dist: 32,
     labelOffset: [0, -16],
     size: 16,
   })
   const cutWidDim = geoDimOffsetSegment(cutWidA, cutWidB, cutWidthLabel, {
     ...dimOpts,
     offsetDir: DIR_DEPTH_OUT,
-    dist: 44,
-    labelOffset: [24, 6],
+    dist: 36,
+    labelOffset: [18, 8],
     anchor: 'start',
     size: 16,
   })
 
   return `
 <svg width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="L-förmiger Körper">
-  <!-- L-shaped composite cuboid (isometric) -->
+  <!-- L-Körper im Schrägbild: Tiefe 45°, halbe Länge -->
   <polygon points="${backStem}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.75" />
   <polygon points="${stepFace}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.85" />
   <polygon points="${rightFoot}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.9" />

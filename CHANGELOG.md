@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.69] – 2026-09-20
+
+### Behoben
+- **ID 7227 L-Quader:** echte Schrägbild-Projektion wie beim Quader — Tiefe
+  unter **45°** und **halbe Länge**; Maßpfeile bleiben ohne Hilfsstriche.
+
 ## [0.27.68] – 2026-09-20
 
 ### Behoben
