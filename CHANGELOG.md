@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.54] – 2026-09-20
+
+### Hinzugefügt
+- **Klausur-Auswertung erneut öffnen:** Nach dem Abgeben wird die Auswertung
+  lokal gespeichert. Unter „Klausur schreiben“ gibt es **Auswertung anzeigen**
+  (letzte Klausur) bzw. bei bereits geschriebenen Klassenklausuren den Button
+  **Auswertung**. Drucken/PDF bleiben verfügbar.
+
 ## [0.27.53] – 2026-09-19
 
 ### Behoben

@@ -3,9 +3,16 @@ import { emptyInput, type UserInput } from '../curriculum/types'
 import {
   getClassCodeSettings,
   getCompletedClassExamIds,
+  getSavedExamEvaluations,
   markClassExamCompleted,
   recordSession,
+  saveExamEvaluation,
 } from '../lib/storage'
+import {
+  findSavedEvaluationForClassExam,
+  fromSavedExamEvaluation,
+  type SavedExamEvaluation,
+} from '../exam/savedExamEvaluation'
 import {
   getClass,
   completeClassExam,
@@ -73,9 +80,33 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
   const [classExams, setClassExams] = useState<ClassExamSummary[]>([])
   const [completedIds, setCompletedIds] = useState(() => new Set(getCompletedClassExamIds()))
   const [activeClassExamId, setActiveClassExamId] = useState<string | null>(null)
+  const [savedEvaluations, setSavedEvaluations] = useState<SavedExamEvaluation[]>(() =>
+    getSavedExamEvaluations(),
+  )
+  /** When reopening a saved Auswertung, total points come from the snapshot. */
+  const [reviewTotalPoints, setReviewTotalPoints] = useState<number | null>(null)
 
   answersRef.current = answers
   resolvedRef.current = resolved
+
+  const openSavedEvaluation = (saved: SavedExamEvaluation) => {
+    const restored = fromSavedExamEvaluation(saved)
+    setSpec({
+      schema: 'B',
+      curriculumVersion: 0,
+      titel: restored.title,
+      aufgaben: restored.results.map((r) => r.resolved.ref),
+    })
+    setResults(restored.results)
+    setReviewTotalPoints(restored.totalPoints)
+    setCompleteNotice(null)
+    setPdfNotice(null)
+    setPhase('done')
+  }
+
+  const refreshSavedEvaluations = () => {
+    setSavedEvaluations(getSavedExamEvaluations())
+  }
 
   const matchClassExamId = (examCode: string): string | null => {
     const trimmed = normalizeExamCodeKey(examCode)
@@ -137,6 +168,7 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
       const decoded = decodeExam(codeText)
       setSpec(decoded)
       setError(null)
+      setReviewTotalPoints(null)
       setActiveClassExamId(matchClassExamId(codeText))
       setPhase('ready')
     } catch (e) {
@@ -151,6 +183,7 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
       setSpec(decoded)
       setCodeText(exam.examCode)
       setError(null)
+      setReviewTotalPoints(null)
       setActiveClassExamId(exam.id)
       setPhase('ready')
     } catch (e) {
@@ -168,6 +201,7 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
     }
     setPhase('loading')
     setError(null)
+    setReviewTotalPoints(null)
     try {
       const tasks = await resolveExam(spec)
       const initialAnswers = tasks.map((t) => initTaskInput(t.task))
@@ -207,10 +241,10 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
     }
   }
 
-  const totalPoints = useMemo(
-    () => (spec ? spec.aufgaben.reduce((s, a) => s + a.punkte, 0) : 0),
-    [spec],
-  )
+  const totalPoints = useMemo(() => {
+    if (reviewTotalPoints != null) return reviewTotalPoints
+    return spec ? spec.aufgaben.reduce((s, a) => s + a.punkte, 0) : 0
+  }, [spec, reviewTotalPoints])
 
   const scoreTask = (index: number, answerList: UserInput[], rows: ResolvedExamTask[]) => {
     const row = rows[index]
@@ -321,6 +355,15 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
     })
     setResults(computed)
     persist(computed)
+    saveExamEvaluation({
+      title: spec?.titel ?? 'Übungsklausur',
+      totalPoints: computed.reduce((s, r) => s + r.resolved.punkte, 0),
+      results: computed,
+      classExamId: activeClassExamId,
+      examCodeKey: normalizeExamCodeKey(codeText || initialCode || ''),
+    })
+    refreshSavedEvaluations()
+    setReviewTotalPoints(null)
     setPhase('done')
     void reportClassExamComplete()
   }
@@ -356,6 +399,7 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
   if (phase === 'input') {
     const openExams = classExams.filter((exam) => !completedIds.has(exam.id))
     const doneExams = classExams.filter((exam) => completedIds.has(exam.id))
+    const latestEvaluation = savedEvaluations[0] ?? null
     return (
       <section className="card">
         <div className="session__head">
@@ -371,6 +415,31 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
           </button>
         </div>
         {error && <p className="notice notice--error">{error}</p>}
+
+        {latestEvaluation && (
+          <div className="class-exam-inbox__item" style={{ marginBottom: '1rem' }}>
+            <div>
+              <strong>Letzte Auswertung</strong>
+              <p className="muted small">
+                {latestEvaluation.title} ·{' '}
+                {new Date(latestEvaluation.finishedAt).toLocaleString('de-DE', {
+                  day: '2-digit',
+                  month: '2-digit',
+                  year: 'numeric',
+                  hour: '2-digit',
+                  minute: '2-digit',
+                })}
+              </p>
+            </div>
+            <button
+              type="button"
+              className="primary"
+              onClick={() => openSavedEvaluation(latestEvaluation)}
+            >
+              Auswertung anzeigen
+            </button>
+          </div>
+        )}
 
         {classExams.length > 0 && (
           <div className="class-exam-inbox">
@@ -406,21 +475,37 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
                   Bereits geschrieben ({doneExams.length})
                 </summary>
                 <ul className="class-exam-inbox__list">
-                  {doneExams.map((exam) => (
-                    <li key={exam.id} className="class-exam-inbox__item">
-                      <div>
-                        <strong>{exam.name}</strong>
-                        <p className="muted small">Erneut schreiben möglich</p>
-                      </div>
-                      <button
-                        type="button"
-                        className="ghost"
-                        onClick={() => startClassExam(exam)}
-                      >
-                        Nochmal
-                      </button>
-                    </li>
-                  ))}
+                  {doneExams.map((exam) => {
+                    const saved = findSavedEvaluationForClassExam(savedEvaluations, exam.id)
+                    return (
+                      <li key={exam.id} className="class-exam-inbox__item">
+                        <div>
+                          <strong>{exam.name}</strong>
+                          <p className="muted small">
+                            {saved ? 'Auswertung gespeichert' : 'Erneut schreiben möglich'}
+                          </p>
+                        </div>
+                        <div className="exam-export-actions">
+                          {saved && (
+                            <button
+                              type="button"
+                              className="primary"
+                              onClick={() => openSavedEvaluation(saved)}
+                            >
+                              Auswertung
+                            </button>
+                          )}
+                          <button
+                            type="button"
+                            className="ghost"
+                            onClick={() => startClassExam(exam)}
+                          >
+                            Nochmal
+                          </button>
+                        </div>
+                      </li>
+                    )
+                  })}
                 </ul>
               </details>
             )}
@@ -642,7 +727,21 @@ export function ExamRunner({ user, initialCode, onExit, onPracticeTopic }: Props
               Ergebnis für <strong>{user}</strong> — im Punkteprotokoll gespeichert.
             </p>
           </div>
-          <button type="button" className="link" onClick={onExit}>
+          <button
+            type="button"
+            className="link"
+            onClick={() => {
+              setPhase('input')
+              setReviewTotalPoints(null)
+              setResults([])
+              setSpec(null)
+              setResolved([])
+              setAnswers([])
+              setCompleteNotice(null)
+              setPdfNotice(null)
+              refreshSavedEvaluations()
+            }}
+          >
             Fertig
           </button>
         </div>

@@ -14,6 +14,11 @@ import {
 } from '../exam/classExamParse'
 import type { DeletedChallenge, StoredChallenge } from '../challenge/types'
 import type { DeletedClassExam, StoredClassExam } from '../exam/classExamTypes'
+import type { SavedExamEvaluation } from '../exam/savedExamEvaluation'
+import {
+  mergeSavedExamEvaluations,
+  parseSavedExamEvaluations,
+} from '../exam/savedExamEvaluation'
 import {
   applyCurriculumTombstones,
   mergeDeletedCurricula,
@@ -92,6 +97,8 @@ export interface UserData {
   deletedClassExams?: DeletedClassExam[]
   /** Locally completed class-exam ids (badge / unsolved list). */
   completedClassExamIds?: string[]
+  /** Saved Klausur-Auswertungen (reopen after finishing). */
+  examEvaluations?: SavedExamEvaluation[]
   /** Optional for older records; treat missing as Schüler (see roleForUser). */
   role?: UserRole
   /**
@@ -765,6 +772,10 @@ export const mergeUserData = (a: UserData | undefined, b: UserData | undefined):
     parseCompletedClassExamIds(a.completedClassExamIds),
     parseCompletedClassExamIds(b.completedClassExamIds),
   )
+  const examEvaluations = mergeSavedExamEvaluations(
+    parseSavedExamEvaluations(a.examEvaluations),
+    parseSavedExamEvaluations(b.examEvaluations),
+  )
   const role = isUserRole(b.role) ? b.role : isUserRole(a.role) ? a.role : undefined
   const preferred = mergePreferredSubject(a, b)
   return {
@@ -787,6 +798,7 @@ export const mergeUserData = (a: UserData | undefined, b: UserData | undefined):
       ? { deletedClassExams: appliedExams.deletedClassExams }
       : {}),
     ...(completedClassExamIds.length > 0 ? { completedClassExamIds } : {}),
+    ...(examEvaluations.length > 0 ? { examEvaluations } : {}),
     ...(role ? { role } : {}),
     ...preferred,
   }

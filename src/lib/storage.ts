@@ -10,6 +10,13 @@ import {
   parseDeletedClassExams,
   parseStoredClassExams,
 } from '../exam/classExamParse'
+import {
+  mergeSavedExamEvaluations,
+  parseSavedExamEvaluations,
+  toSavedExamEvaluation,
+  type SavedExamEvaluation,
+} from '../exam/savedExamEvaluation'
+import type { ExamTaskResult } from '../components/ExamProtocolSheet'
 import type { StoredChallenge } from '../challenge/types'
 import type { StoredClassExam } from '../exam/classExamTypes'
 import {
@@ -138,6 +145,9 @@ const readLocalState = (): SharedState => {
           completedClassExamIds: parsed.completedClassExamIds
             ? parseCompletedClassExamIds(parsed.completedClassExamIds)
             : parsed.completedClassExamIds,
+          examEvaluations: parsed.examEvaluations
+            ? parseSavedExamEvaluations(parsed.examEvaluations)
+            : parsed.examEvaluations,
         }
       } else state.records[name] = freshUser(name)
     } catch {
@@ -1144,6 +1154,28 @@ export const markClassExamCompleted = (id: string): void => {
     trimmed,
   ])
   saveUser({ ...current, completedClassExamIds: next })
+}
+
+export const getSavedExamEvaluations = (name?: string): SavedExamEvaluation[] => {
+  const user = (name ?? activeUserName)?.trim()
+  if (!user) return []
+  return parseSavedExamEvaluations(loadUser(user).examEvaluations)
+}
+
+export const saveExamEvaluation = (input: {
+  title: string
+  totalPoints: number
+  results: ExamTaskResult[]
+  classExamId?: string | null
+  examCodeKey?: string | null
+}): SavedExamEvaluation | null => {
+  const user = activeUserName?.trim()
+  if (!user || input.results.length === 0) return null
+  const saved = toSavedExamEvaluation(input)
+  const current = cache.records[user] ?? freshUser(user)
+  const next = mergeSavedExamEvaluations([saved], parseSavedExamEvaluations(current.examEvaluations))
+  saveUser({ ...current, examEvaluations: next })
+  return saved
 }
 
 /** Drop a Stufencode locally and tombstone it. Does not call the server. */
