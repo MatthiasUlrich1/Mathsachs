@@ -13,7 +13,7 @@ import { ReportFaultyTask } from './ReportFaultyTask'
 import { initTaskInput, TaskInteractive, TaskVisual } from './TaskMedia'
 
 const TARGET_TASKS_PER_ROUND = 10
-const PHYSIK_TASKS_PER_ROUND = 5
+const PHYSIK_TASKS_PER_ROUND = 10
 
 function tasksPerRoundFor(topic: Topic): number {
   if (typeof topic.tasksPerRound === 'number' && topic.tasksPerRound >= 1) {

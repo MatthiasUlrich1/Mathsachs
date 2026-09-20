@@ -39,8 +39,9 @@ describe('Physik Klasse 6 generators', () => {
     expect(topics.every((t) => typeof t.contentId === 'number')).toBe(true)
     const lb1 = k6!.areas.find((a) => a.id === 'lb1')!.topics
     expect(lb1.every((t) => t.released === true)).toBe(true)
-    expect(lb1.find((t) => t.id === 'ph-k6-lb1-spiegel')?.tasksPerRound).toBe(5)
+    expect(lb1.find((t) => t.id === 'ph-k6-lb1-spiegel')?.tasksPerRound).toBe(10)
     expect(lb1.find((t) => t.id === 'ph-k6-lb1-brechung')?.tasksPerRound).toBe(10)
+    expect(lb1.find((t) => t.id === 'ph-k6-lb1-sonne-mond-erde')?.released).toBe(true)
     const lb2 = k6!.areas.find((a) => a.id === 'lb2')!.topics
     expect(lb2.find((t) => t.id === 'ph-k6-lb2-dichte')?.released).toBe(true)
     expect(lb2.find((t) => t.id === 'ph-k6-lb2-wegzeit')?.released).toBe(true)
@@ -92,13 +93,22 @@ describe('Physik Klasse 6 generators', () => {
     expect(withSvg).toBeGreaterThan(10)
   })
 
+  it('Stromkreis SVG has no solution labels like Schalter zu/offen', () => {
+    const gen = PHYSIK_K6_GENERATORS['ph-k6-lb4-stromkreis']!
+    for (let seed = 1; seed <= 40; seed++) {
+      const svg = gen(createRng(seed)).visualContent ?? ''
+      if (!svg) continue
+      expect(svg, `seed ${seed}`).not.toMatch(/Schalter (zu|offen|geschlossen)/i)
+    }
+  })
+
   it('Stromkreis open-switch SVG uses hinged angled lever (not staggered horizontals)', () => {
     const gen = PHYSIK_K6_GENERATORS['ph-k6-lb4-stromkreis']!
     let openFound = false
     for (let seed = 1; seed <= 60; seed++) {
       const task = gen(createRng(seed))
       const svg = task.visualContent ?? ''
-      if (!svg.includes('Schalter offen')) continue
+      if (!svg.includes('circle cx="110"') || !svg.includes('L148')) continue
       openFound = true
       expect(svg).toMatch(/L1\d+ \d+/)
       expect(svg).not.toMatch(/M148 58 H168/)
@@ -106,6 +116,27 @@ describe('Physik Klasse 6 generators', () => {
       expect(svg).toContain('circle cx="160"')
     }
     expect(openFound).toBe(true)
+  })
+
+  it('Sonne/Mond/Erde covers eclipses and moon phases with arrangement SVGs', () => {
+    const gen = PHYSIK_K6_GENERATORS['ph-k6-lb1-sonne-mond-erde']!
+    const hits = { eclipse: 0, phase: 0, sort: 0 }
+    for (let seed = 1; seed <= 80; seed++) {
+      const task = gen(createRng(seed))
+      expect(task.check(task.sampleAnswer), `seed ${seed}`).toBe(true)
+      const blob = `${task.question}\n${task.visualContent ?? ''}`
+      expect(blob).not.toMatch(/Schalter (zu|offen)/i)
+      if (/Finsternis|Anordnung/.test(task.question) || /Anordnung [AB]/.test(task.visualContent ?? '')) {
+        hits.eclipse++
+      }
+      if (/Mondphase|Neumond|Vollmond|zunehmend|abnehmend/.test(task.question)) hits.phase++
+      if (task.interactive?.type === 'dragDropSort') hits.sort++
+      if (task.visualContent) {
+        expect(task.visualContent).not.toMatch(/Sonnenfinsternis|Mondfinsternis|Neumond|Vollmond/)
+      }
+    }
+    expect(hits.eclipse).toBeGreaterThan(5)
+    expect(hits.phase).toBeGreaterThan(5)
   })
 
   it('Reihe/Parallel SVGs use official symbols and never spoil the answer', () => {

@@ -16,7 +16,7 @@ const topic = (
   pointsPerTask: 10,
   hint: 'Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.',
   released: opts?.released ?? false,
-  ...(opts?.tasksPerRound ? { tasksPerRound: opts.tasksPerRound } : {}),
+  tasksPerRound: opts?.tasksPerRound ?? 10,
   ...(keywords?.length ? { keywords } : {}),
   // Wissen is the default for every curriculum topic (Issue #45); only pass
   // excludeFachwissen: true to opt out intentionally.
@@ -84,9 +84,13 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
           }),
           topic('ph-k6-lb1-spiegel', 'Spiegelung am ebenen Spiegel', ['Spiegel', 'Reflexion'], {
             released: true,
-            tasksPerRound: 5,
+            tasksPerRound: 10,
           }),
           topic('ph-k6-lb1-brechung', 'Brechung und Prisma', ['Brechung', 'Prisma'], {
+            released: true,
+            tasksPerRound: 10,
+          }),
+          topic('ph-k6-lb1-sonne-mond-erde', 'Sonne, Mond und Erde', ['Sonne', 'Mond', 'Finsternis'], {
             released: true,
             tasksPerRound: 10,
           }),
@@ -134,7 +138,10 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
           topic('ph-k6-lb3-messreihe', 'Temperatur-Messreihe', ['Messreihe', 'Temperatur']),
         ]),
         area('lb4', 'Elektrische Stromkreise', 5, [
-          topic('ph-k6-lb4-stromkreis', 'Offener und geschlossener Stromkreis', ['Stromkreis', 'Schalter']),
+          topic('ph-k6-lb4-stromkreis', 'Offener und geschlossener Stromkreis', ['Stromkreis', 'Schalter'], {
+            released: true,
+            tasksPerRound: 10,
+          }),
           topic('ph-k6-lb4-leiter', 'Leiter und Nichtleiter', ['Leiter', 'Isolator'], {
             released: true,
           }),

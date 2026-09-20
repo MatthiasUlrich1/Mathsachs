@@ -24,6 +24,8 @@ describe('Physik K6 unique practice rounds', () => {
       'ph-k6-lb1-lampenposition',
       'ph-k6-lb1-lichtstrahl',
       'ph-k6-lb1-brechung',
+      'ph-k6-lb1-sonne-mond-erde',
+      'ph-k6-lb4-stromkreis',
     ]
     for (const id of need10) {
       const gen = resolvePhysikGenerate(id)

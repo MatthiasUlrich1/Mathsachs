@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-20T16:23:39.875Z",
+  "updatedAt": "2026-09-20T16:32:44.358Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -18,10 +18,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "2.5.5",
+      "version": "2.5.6",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 123917,
-      "changelog": "Freigabe Gefahren und Kurzschluss (ID 2233)."
+      "size": 134813,
+      "changelog": "Thema Sonne/Mond/Erde (Finsternisse + Mondphasen); Freigabe Stromkreis (8500) ohne Lösungstext im Schaltbild; Physik-Runden standardmäßig 10 Aufgaben ohne Doppelungen."
     },
     {
       "id": "oberschule-sachsen-hs",

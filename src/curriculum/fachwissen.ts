@@ -149,6 +149,16 @@ export function physikFachwissen(topic: TopicRef): Fachwissen {
       ...wiki('Kilometer_pro_Stunde', 'Kilometer_pro_Stunde'),
     }
   }
+  if (/sonne.?mond|mond.?erde|finsternis|mondphase|lb1-sonne-mond/.test(lower)) {
+    return {
+      text:
+        'Sonnenfinsternis: Mond steht zwischen Sonne und Erde und wirft Schatten auf die Erde. ' +
+        'Mondfinsternis: Erde steht zwischen Sonne und Mond — der Mond liegt im Erdschatten. ' +
+        'Mondphasen: Neumond (Mond zwischen Sonne und Erde), Vollmond (Erde dazwischen), ' +
+        'zunehmend/abnehmend bei seitlicher Stellung. Skizze Sonne–Erde–Mond lesen, dann benennen.',
+      ...wiki('Mondphase', 'Mondphase'),
+    }
+  }
   if (/licht|schatten|spiegel|brechung|strahl|optik|linse|prisma/.test(lower)) {
     return {
       text:

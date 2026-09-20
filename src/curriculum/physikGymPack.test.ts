@@ -55,39 +55,26 @@ describe('Gymnasium Sachsen Physik pack', () => {
     const manifest = parseManifest(
       JSON.parse(readFileSync(join(curriculaDir, 'manifest.json'), 'utf8')),
     )
-    expect(pack.version).toBe('2.5.5')
-    expect(file?.version).toBe('2.5.5')
+    expect(pack.version).toBe('2.5.6')
+    expect(file?.version).toBe('2.5.6')
     expect(file?.contentHash).toBe(pack.contentHash)
     const volumen = file?.official
       .flatMap((g) => g.areas)
       .flatMap((a) => a.topics)
       .find((t) => t.id === 'ph-k6-lb2-volumen')
     expect(volumen?.released).toBe(true)
-    const symbole = file?.official
+    const stromkreis = file?.official
       .flatMap((g) => g.areas)
       .flatMap((a) => a.topics)
-      .find((t) => t.id === 'ph-k6-lb4-symbole')
-    const widerstand = file?.official
+      .find((t) => t.id === 'ph-k6-lb4-stromkreis')
+    const sonneMond = file?.official
       .flatMap((g) => g.areas)
       .flatMap((a) => a.topics)
-      .find((t) => t.id === 'ph-k6-lb4-widerstand')
-    const leiter = file?.official
-      .flatMap((g) => g.areas)
-      .flatMap((a) => a.topics)
-      .find((t) => t.id === 'ph-k6-lb4-leiter')
-    const reihe = file?.official
-      .flatMap((g) => g.areas)
-      .flatMap((a) => a.topics)
-      .find((t) => t.id === 'ph-k6-lb4-reiheparallel')
-    const gefahren = file?.official
-      .flatMap((g) => g.areas)
-      .flatMap((a) => a.topics)
-      .find((t) => t.id === 'ph-k6-lb4-gefahren')
-    expect(symbole?.released).toBe(true)
-    expect(widerstand?.released).toBe(true)
-    expect(leiter?.released).toBe(true)
-    expect(reihe?.released).toBe(true)
-    expect(gefahren?.released).toBe(true)
+      .find((t) => t.id === 'ph-k6-lb1-sonne-mond-erde')
+    expect(stromkreis?.released).toBe(true)
+    expect(stromkreis?.tasksPerRound).toBe(10)
+    expect(sonneMond?.released).toBe(true)
+    expect(sonneMond?.tasksPerRound).toBe(10)
     expect(manifest?.packs.map((p) => p.id)).toContain(GYM_SACHSEN_PHYSIK_PACK_ID)
     expect(manifest?.packs.find((p) => p.id === GYM_SACHSEN_PHYSIK_PACK_ID)?.subject).toBe(
       'Physik',

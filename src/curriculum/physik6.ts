@@ -4,10 +4,13 @@ import {
   circuitSymbolLabel,
   circuitSymbolSvg,
   type CircuitSymbolKind,
+  eclipseArrangementSvg,
   kernHalbschattenSvg,
   lightRayHintSvg,
   lightShadowSvg,
   mirrorAngleSvg,
+  moonPhaseSvg,
+  type MoonPhaseKind,
   seriesParallelSvg,
   thermometerSvg,
   wegZeitCompareSvg,
@@ -1336,7 +1339,7 @@ const stromkreis: Topic['generate'] = mixedVariants(
     const correct = closed ? `Die ${device} ist an.` : `Die ${device} ist aus.`
     const wrong = closed ? `Die ${device} ist aus.` : `Die ${device} ist an.`
     return choicePickTask({
-      question: `Einfacher Stromkreis mit ${device}: Schalter ist ${closed ? 'geschlossen' : 'offen'}. Was gilt?`,
+      question: `Schau auf das Schaltbild mit ${device}. Was gilt für den Verbraucher?`,
       choices: shuffleChoices(
         rng,
         [correct, wrong, 'Die Batterie verschwindet.', 'Nur der Schalter leuchtet.'],
@@ -1395,15 +1398,161 @@ const stromkreis: Topic['generate'] = mixedVariants(
     const closed = pick(rng, [true, false])
     const correct = closed ? 'geschlossen' : 'offen'
     return choicePickTask({
-      question: `Die Lampe ${closed ? 'leuchtet' : 'leuchtet nicht'}. Ist der Stromkreis eher offen oder geschlossen?`,
+      question: 'Schau auf das Schaltbild: Ist der Schalter offen oder geschlossen?',
       choices: shuffleChoices(rng, ['offen', 'geschlossen', 'weder noch', 'nur die Batterie'], correct),
       correct,
       solution: correct,
       explanation: closed
-        ? 'Leuchtet die Lampe, ist der Kreis geschlossen.'
-        : 'Leuchtet die Lampe nicht (bei intakter Lampe/Batterie), ist der Kreis oft offen.',
+        ? 'Geschlossener Schalter: die Schaltlinie verbindet beide Kontaktpunkte.'
+        : 'Offener Schalter: die angewinkelte Linie berührt den gegenüberliegenden Kontakt nicht.',
       visualContent: circuitSvg(closed),
       instruction: 'Tippe den Zustand:',
+    })
+  },
+)
+
+/** LB1 — Sonne, Mond und Erde (Finsternisse + Mondphasen) */
+const sonneMondErde: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const solar = pick(rng, [true, false])
+    const correct = solar ? 'Sonnenfinsternis' : 'Mondfinsternis'
+    const wrong = solar ? 'Mondfinsternis' : 'Sonnenfinsternis'
+    return choicePickTask({
+      question: 'Welche Finsternis passt zur abgebildeten Anordnung von Sonne, Mond und Erde?',
+      choices: shuffleChoices(
+        rng,
+        [correct, wrong, 'keine Finsternis möglich', 'nur Polarlicht'],
+        correct,
+      ),
+      correct,
+      solution: correct,
+      explanation: solar
+        ? 'Sonnenfinsternis: Mond steht zwischen Sonne und Erde und wirft Schatten auf die Erde.'
+        : 'Mondfinsternis: Erde steht zwischen Sonne und Mond; der Mond liegt im Erdschatten.',
+      visualContent: eclipseArrangementSvg(solar ? 'solar' : 'lunar'),
+      instruction: 'Tippe die passende Finsternis:',
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Bei einer Sonnenfinsternis steht der Mond …',
+        correct: 'zwischen Sonne und Erde',
+        wrong: ['hinter der Erde', 'zwischen Erde und Mars', 'neben der Sonne ohne Erde'],
+      },
+      {
+        q: 'Bei einer Mondfinsternis steht der Mond …',
+        correct: 'im Schatten der Erde',
+        wrong: ['zwischen Sonne und Erde', 'im Inneren der Sonne', 'zwischen Venus und Merkur'],
+      },
+      {
+        q: 'Anordnung Sonne – Mond – Erde gehört typischerweise zu …',
+        correct: 'Sonnenfinsternis',
+        wrong: ['Mondfinsternis', 'Vollmond ohne Schatten', 'nur Neumond auf dem Mars'],
+      },
+      {
+        q: 'Anordnung Sonne – Erde – Mond gehört typischerweise zu …',
+        correct: 'Mondfinsternis',
+        wrong: ['Sonnenfinsternis', 'nur Halbschatten ohne Erde', 'Kurzschluss im Stromkreis'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation:
+        'Sonnenfinsternis: Mond zwischen Sonne und Erde. Mondfinsternis: Erde zwischen Sonne und Mond (Mond im Erdschatten).',
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (rng) => {
+    const phase = pick(rng, ['new', 'full', 'waxing', 'waning'] as MoonPhaseKind[])
+    const labels: Record<MoonPhaseKind, string> = {
+      new: 'Neumond',
+      full: 'Vollmond',
+      waxing: 'zunehmender Mond',
+      waning: 'abnehmender Mond',
+    }
+    const correct = labels[phase]
+    const wrong = (Object.keys(labels) as MoonPhaseKind[])
+      .filter((k) => k !== phase)
+      .map((k) => labels[k])
+    return choicePickTask({
+      question: 'Welche Mondphase passt zur abgebildeten Stellung von Sonne, Erde und Mond?',
+      choices: shuffleChoices(rng, [correct, ...wrong], correct),
+      correct,
+      solution: correct,
+      explanation:
+        'Neumond: Mond zwischen Sonne und Erde. Vollmond: Erde zwischen Sonne und Mond. Zunehmend/abnehmend: Mond seitlich zur Sonne–Erde-Linie.',
+      visualContent: moonPhaseSvg(phase),
+      instruction: 'Tippe die Mondphase:',
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Beim Neumond steht der Mond …',
+        correct: 'zwischen Sonne und Erde',
+        wrong: ['hinter der Erde (gegenüber der Sonne)', 'im Erdschatten als Mondfinsternis immer', 'zwischen Erde und Mars'],
+      },
+      {
+        q: 'Beim Vollmond steht der Mond …',
+        correct: 'gegenüber der Sonne (Erde dazwischen)',
+        wrong: ['zwischen Sonne und Erde', 'in der Sonne', 'ohne Bezug zur Erde'],
+      },
+      {
+        q: 'Beim zunehmenden Mond (erste Viertel) steht der Mond ungefähr …',
+        correct: 'seitlich zur Linie Sonne–Erde',
+        wrong: ['genau zwischen Sonne und Erde', 'genau hinter der Erde', 'im Zentrum der Sonne'],
+      },
+      {
+        q: 'Beim abnehmenden Mond (letztes Viertel) steht der Mond ungefähr …',
+        correct: 'seitlich zur Linie Sonne–Erde (andere Seite als zunehmend)',
+        wrong: ['genau zwischen Sonne und Erde', 'nur hinter dem Mars', 'ohne Sonne'],
+      },
+      {
+        q: 'Warum sehen wir vom Neumond meist keine Mondscheibe?',
+        correct: 'Die Sonnenseite des Mondes zeigt von der Erde weg',
+        wrong: ['Der Mond verschwindet aus dem Sonnensystem', 'Die Erde leuchtet heller als die Sonne', 'Es gibt keinen Mond bei Neumond'],
+      },
+      {
+        q: 'Bei Vollmond ist die der Erde zugewandte Mondseite …',
+        correct: 'von der Sonne beleuchtet',
+        wrong: ['vollständig im Erdschatten (immer)', 'von der Erde unbeleuchtbar', 'immer unsichtbar'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation:
+        'Mondphasen entstehen durch die Stellung Mond–Erde–Sonne und die beleuchtete Mondhälfte, die wir von der Erde sehen.',
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (rng) => {
+    const items = [
+      { label: 'Neumond', value: 0 },
+      { label: 'zunehmender Mond', value: 1 },
+      { label: 'Vollmond', value: 2 },
+      { label: 'abnehmender Mond', value: 3 },
+    ]
+    const shuffled = [...items]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = randInt(rng, 0, i)
+      ;[shuffled[i], shuffled[j]] = [shuffled[j]!, shuffled[i]!]
+    }
+    const correctOrder = items.map((row) => shuffled.findIndex((it) => it.value === row.value))
+    return dragDropSortTask({
+      question: 'Ordne die Mondphasen im typischen Ablauf (Neumond → … → wieder Richtung Neumond).',
+      items: shuffled,
+      correctOrder,
+      solution: 'Neumond → zunehmend → Vollmond → abnehmend',
+      explanation: 'Nach Neumond nimmt der sichtbare Teil zu bis Vollmond, danach wieder ab.',
     })
   },
 )
@@ -2187,6 +2336,7 @@ export const PHYSIK_K6_GENERATORS: Record<string, Topic['generate']> = {
   'ph-k6-lb1-spiegel': spiegel,
   'ph-k6-lb1-brechung': brechung,
   'ph-k6-lb1-ausbreitung': ausbreitung,
+  'ph-k6-lb1-sonne-mond-erde': sonneMondErde,
   'ph-k6-lb2-dichte': dichte,
   'ph-k6-lb2-geschwindigkeit': geschwindigkeit,
   'ph-k6-lb2-wegzeit': wegzeit,

@@ -83,6 +83,7 @@ describe('Physik Gym generators (all grades)', () => {
     }
     const lb4 = k6.areas.find((a) => a.id === 'lb4')!.topics
     const releasedLb4 = new Set([
+      'ph-k6-lb4-stromkreis',
       'ph-k6-lb4-leiter',
       'ph-k6-lb4-symbole',
       'ph-k6-lb4-widerstand',

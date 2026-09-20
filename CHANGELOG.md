@@ -9,6 +9,25 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.62] – 2026-09-20
+
+### Hinzugefügt
+- **Physik Klasse 6 LB1:** Thema „Sonne, Mond und Erde“ mit Anordnungen bei
+  Sonnen-/Mondfinsternis und Mondphasen (Neumond, zunehmend, Vollmond, abnehmend).
+
+### Freigabe
+- **Physik Klasse 6 LB4:** Offener und geschlossener Stromkreis (ID 8500).
+
+### Geändert
+- **Physik-Runden:** Standardmäßig 10 Aufgaben pro Durchgang (weniger nur, wenn
+  nicht genug einzigartige Aufgaben verfügbar — keine Doppelungen).
+
+### Behoben
+- **Stromkreis-Schaltbilder (ID 8500):** Lösungstexte wie „Schalter zu/offen“ aus
+  den Bildern entfernt; Zustand am Symbol ablesen.
+- **Release-CI:** Physik-Pack-Upgrade-Test erwartet dynamisch die aktuelle
+  Pack-Version (nicht mehr fest `2.5.2`).
+
 ## [0.27.61] – 2026-09-20
 
 ### Freigabe

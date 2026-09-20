@@ -256,12 +256,10 @@ export function circuitSvg(closed: boolean): string {
     closed
       ? `<circle cx="110" cy="36" r="3.5" fill="#334155"/>
   <path d="M110 36 H160" stroke="#334155" stroke-width="2.5" fill="none"/>
-  <circle cx="160" cy="36" r="3.5" fill="#334155"/>
-  <text x="135" y="24" text-anchor="middle" fill="#15803d" font-size="11" font-family="system-ui,sans-serif">Schalter zu</text>`
+  <circle cx="160" cy="36" r="3.5" fill="#334155"/>`
       : `<circle cx="110" cy="36" r="3.5" fill="#334155"/>
   <path d="M110 36 L148 20" stroke="#334155" stroke-width="2.5" fill="none"/>
-  <circle cx="160" cy="36" r="3.5" fill="#334155"/>
-  <text x="135" y="16" text-anchor="middle" fill="#b91c1c" font-size="11" font-family="system-ui,sans-serif">Schalter offen</text>`
+  <circle cx="160" cy="36" r="3.5" fill="#334155"/>`
   }
   <path d="M160 36 H200" stroke="#334155" stroke-width="2.5" fill="none"/>
   ${lampGlyph(220, 36)}
@@ -425,5 +423,68 @@ export function seriesParallelSvg(kind: 'series' | 'parallel'): string {
   ${lampGlyph(260, 82)}
   <path d="M260 98 V140 H40 V118" stroke="#334155" stroke-width="2.5" fill="none"/>
   <path d="M200 140 H260" stroke="#334155" stroke-width="2.5" fill="none"/>
+</svg>`
+}
+
+function bodyDisk(
+  cx: number,
+  cy: number,
+  r: number,
+  fill: string,
+  label: string,
+): string {
+  return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" stroke="#334155" stroke-width="2"/>
+  <text x="${cx}" y="${cy + r + 16}" text-anchor="middle" fill="#475569" font-size="12" font-family="system-ui,sans-serif">${label}</text>`
+}
+
+/** Anordnung Sonne–Mond–Erde bei Finsternis (ohne Lösungstext). */
+export function eclipseArrangementSvg(kind: 'solar' | 'lunar'): string {
+  const label = kind === 'solar' ? 'Anordnung A' : 'Anordnung B'
+  if (kind === 'solar') {
+    // Sonne — Mond — Erde
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 140" width="360" height="140" role="img" aria-label="${label}">
+  <rect width="360" height="140" fill="#f8fafc"/>
+  ${bodyDisk(55, 58, 28, '#fde68a', 'Sonne')}
+  ${bodyDisk(175, 58, 14, '#cbd5e1', 'Mond')}
+  ${bodyDisk(290, 58, 22, '#93c5fd', 'Erde')}
+  <path d="M85 58 H155 M195 58 H262" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 3" fill="none"/>
+</svg>`
+  }
+  // Sonne — Erde — Mond
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 140" width="360" height="140" role="img" aria-label="${label}">
+  <rect width="360" height="140" fill="#f8fafc"/>
+  ${bodyDisk(55, 58, 28, '#fde68a', 'Sonne')}
+  ${bodyDisk(175, 58, 22, '#93c5fd', 'Erde')}
+  ${bodyDisk(295, 58, 14, '#cbd5e1', 'Mond')}
+  <path d="M85 58 H147 M203 58 H275" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 3" fill="none"/>
+</svg>`
+}
+
+export type MoonPhaseKind = 'new' | 'full' | 'waxing' | 'waning'
+
+/**
+ * Stellung Sonne–Erde–Mond (Draufsicht). Sonne links; Mondposition zeigt die Phase.
+ * Keine Phasenbezeichnung im Bild — die soll der Schüler nennen.
+ */
+export function moonPhaseSvg(kind: MoonPhaseKind): string {
+  const sun = bodyDisk(48, 80, 22, '#fde68a', 'Sonne')
+  const earth = bodyDisk(180, 80, 20, '#93c5fd', 'Erde')
+  // Orbit hint
+  const orbit = `<circle cx="180" cy="80" r="70" fill="none" stroke="#e2e8f0" stroke-width="1.5" stroke-dasharray="3 3"/>`
+  const moonAt = (cx: number, cy: number) => bodyDisk(cx, cy, 12, '#e2e8f0', 'Mond')
+  const moon =
+    kind === 'new'
+      ? moonAt(110, 80) // between Sun and Earth
+      : kind === 'full'
+        ? moonAt(250, 80) // opposite Sun
+        : kind === 'waxing'
+          ? moonAt(180, 22) // first quarter-ish (above)
+          : moonAt(180, 138) // last quarter-ish (below)
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 180" width="300" height="180" role="img" aria-label="Stellung Sonne Erde Mond">
+  <rect width="300" height="180" fill="#f8fafc"/>
+  ${orbit}
+  ${sun}
+  ${earth}
+  ${moon}
 </svg>`
 }

@@ -19,8 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.5',
-    changelog: 'Freigabe Gefahren und Kurzschluss (ID 2233).',
+    version: '2.5.6',
+    changelog:
+      'Thema Sonne/Mond/Erde (Finsternisse + Mondphasen); Freigabe Stromkreis (8500) ohne Lösungstext im Schaltbild; Physik-Runden standardmäßig 10 Aufgaben ohne Doppelungen.',
     official,
     extras: [],
   }

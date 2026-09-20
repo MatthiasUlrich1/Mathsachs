@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "2.5.5",
-  "changelog": "Freigabe Gefahren und Kurzschluss (ID 2233).",
+  "version": "2.5.6",
+  "changelog": "Thema Sonne/Mond/Erde (Finsternisse + Mondphasen); Freigabe Stromkreis (8500) ohne Lösungstext im Schaltbild; Physik-Runden standardmäßig 10 Aufgaben ohne Doppelungen.",
   "official": [
     {
       "id": "physik-klasse-6",
@@ -103,7 +103,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": true,
-              "tasksPerRound": 5,
+              "tasksPerRound": 10,
               "keywords": [
                 "Spiegel",
                 "Reflexion"
@@ -119,6 +119,19 @@
               "keywords": [
                 "Brechung",
                 "Prisma"
+              ]
+            },
+            {
+              "id": "ph-k6-lb1-sonne-mond-erde",
+              "title": "Sonne, Mond und Erde",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": true,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Sonne",
+                "Mond",
+                "Finsternis"
               ]
             }
           ]
@@ -228,6 +241,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Temperatur",
                 "Thermometer"
@@ -239,6 +253,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kelvin",
                 "Celsius"
@@ -250,6 +265,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Ausdehnung",
                 "Wärme"
@@ -261,6 +277,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Aggregatzustand",
                 "Schmelzen"
@@ -272,6 +289,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Schmelzen",
                 "Sieden"
@@ -283,6 +301,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Messreihe",
                 "Temperatur"
@@ -300,7 +319,8 @@
               "title": "Offener und geschlossener Stromkreis",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
+              "tasksPerRound": 10,
               "keywords": [
                 "Stromkreis",
                 "Schalter"
@@ -312,6 +332,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": true,
+              "tasksPerRound": 10,
               "keywords": [
                 "Leiter",
                 "Isolator"
@@ -323,6 +344,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": true,
+              "tasksPerRound": 10,
               "keywords": [
                 "Schaltbild"
               ]
@@ -333,6 +355,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": true,
+              "tasksPerRound": 10,
               "keywords": [
                 "Widerstand",
                 "Ohm"
@@ -344,6 +367,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": true,
+              "tasksPerRound": 10,
               "keywords": [
                 "Reihe",
                 "Parallel"
@@ -355,6 +379,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": true,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kurzschluss",
                 "Sicherheit"
@@ -372,6 +397,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Sehen",
                 "Fotografie"
@@ -383,6 +409,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Lochkamera",
                 "Bild"
@@ -394,6 +421,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Auge"
               ]
@@ -404,6 +432,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wärmedämmung"
               ]
@@ -414,6 +443,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Dämmstoff"
               ]
@@ -424,6 +454,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Farben"
               ]
@@ -434,6 +465,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Filter",
                 "Spektrum"
@@ -445,6 +477,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Spektrum",
                 "Prisma"
@@ -478,6 +511,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kraft",
                 "Newton"
@@ -489,6 +523,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Gewichtskraft"
               ]
@@ -499,6 +534,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kraft",
                 "Gewichtskraft"
@@ -510,6 +546,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Feder",
                 "Hooke"
@@ -521,6 +558,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Reibung"
               ]
@@ -531,6 +569,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Magnet"
               ]
@@ -541,6 +580,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Elektrostatik"
               ]
@@ -558,6 +598,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Stromstärke",
                 "Ampere"
@@ -569,6 +610,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Spannung",
                 "Volt"
@@ -580,6 +622,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Stromstärke",
                 "Spannung"
@@ -591,6 +634,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Ohm",
                 "Widerstand"
@@ -602,6 +646,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Reihe"
               ]
@@ -612,6 +657,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Parallel"
               ]
@@ -622,6 +668,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Amperemeter",
                 "Voltmeter"
@@ -640,6 +687,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Energie"
               ]
@@ -650,6 +698,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Energie",
                 "Wandler"
@@ -661,6 +710,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Umwandlung"
               ]
@@ -671,6 +721,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wirkungsgrad"
               ]
@@ -681,6 +732,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Leistung"
               ]
@@ -691,6 +743,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Energieeinsparung"
               ]
@@ -707,6 +760,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kraftwandler"
               ]
@@ -717,6 +771,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Hebel"
               ]
@@ -727,6 +782,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Flaschenzug"
               ]
@@ -737,6 +793,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Schaltung"
               ]
@@ -747,6 +804,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Klingel"
               ]
@@ -757,6 +815,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Fliegen"
               ]
@@ -767,6 +826,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Auftrieb",
                 "Tragfläche"
@@ -800,6 +860,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Druck"
               ]
@@ -810,6 +871,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Schweredruck"
               ]
@@ -820,6 +882,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Druck",
                 "Auftrieb"
@@ -831,6 +894,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Auftrieb",
                 "Archimedes"
@@ -842,6 +906,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Schwimmen"
               ]
@@ -852,6 +917,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Luftdruck"
               ]
@@ -869,6 +935,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wärme"
               ]
@@ -879,6 +946,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wärme",
                 "thermische Energie"
@@ -890,6 +958,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wärmekapazität"
               ]
@@ -900,6 +969,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wärmeleitung"
               ]
@@ -910,6 +980,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Mischung"
               ]
@@ -920,6 +991,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Klima"
               ]
@@ -937,6 +1009,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Widerstand"
               ]
@@ -947,6 +1020,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Widerstand",
                 "Bauelemente"
@@ -958,6 +1032,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kennlinie"
               ]
@@ -968,6 +1043,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Ohm"
               ]
@@ -978,6 +1054,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Reihe",
                 "Widerstand"
@@ -989,6 +1066,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Parallel",
                 "Widerstand"
@@ -1007,6 +1085,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Hypothese"
               ]
@@ -1017,6 +1096,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Experiment",
                 "Praktikum"
@@ -1028,6 +1108,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Variable"
               ]
@@ -1038,6 +1119,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Messreihe"
               ]
@@ -1048,6 +1130,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Messfehler"
               ]
@@ -1064,6 +1147,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Ballon"
               ]
@@ -1074,6 +1158,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Dichte",
                 "Ballon"
@@ -1085,6 +1170,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wärmepumpe"
               ]
@@ -1095,6 +1181,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wärmepumpe"
               ]
@@ -1105,6 +1192,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Messen"
               ]
@@ -1115,6 +1203,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Sensor"
               ]
@@ -1147,6 +1236,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Diode"
               ]
@@ -1157,6 +1247,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Elektronik",
                 "Diode"
@@ -1168,6 +1259,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Transistor"
               ]
@@ -1178,6 +1270,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "LED"
               ]
@@ -1188,6 +1281,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Digital"
               ]
@@ -1205,6 +1299,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kraftwerk"
               ]
@@ -1215,6 +1310,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Energieversorgung",
                 "Kraftwerk"
@@ -1226,6 +1322,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wirkungsgrad"
               ]
@@ -1236,6 +1333,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Generator"
               ]
@@ -1246,6 +1344,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Netz"
               ]
@@ -1256,6 +1355,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Erneuerbar"
               ]
@@ -1273,6 +1373,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Geschwindigkeit"
               ]
@@ -1283,6 +1384,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Geschwindigkeit",
                 "Beschleunigung"
@@ -1294,6 +1396,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Beschleunigung"
               ]
@@ -1304,6 +1407,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Fall"
               ]
@@ -1314,6 +1418,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Diagramm"
               ]
@@ -1324,6 +1429,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Newton"
               ]
@@ -1341,6 +1447,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Versuch"
               ]
@@ -1351,6 +1458,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Praktikum"
               ]
@@ -1361,6 +1469,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Protokoll"
               ]
@@ -1371,6 +1480,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Auswertung"
               ]
@@ -1381,6 +1491,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Diagramm"
               ]
@@ -1397,6 +1508,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Radioaktivität"
               ]
@@ -1407,6 +1519,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Strahlung"
               ]
@@ -1417,6 +1530,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wind",
                 "Sonne"
@@ -1428,6 +1542,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Solar",
                 "Wind"
@@ -1439,6 +1554,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kreisbewegung"
               ]
@@ -1449,6 +1565,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Zentripetalkraft"
               ]
@@ -1482,6 +1599,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Amplitude",
                 "Periode"
@@ -1493,6 +1611,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Schwingung",
                 "Welle"
@@ -1504,6 +1623,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Frequenz"
               ]
@@ -1514,6 +1634,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Pendel"
               ]
@@ -1524,6 +1645,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Feder"
               ]
@@ -1534,6 +1656,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Welle"
               ]
@@ -1551,6 +1674,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Planet",
                 "Sonne"
@@ -1562,6 +1686,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Astronomie",
                 "Kosmos"
@@ -1573,6 +1698,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Mond",
                 "Finsternis"
@@ -1584,6 +1710,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Jahreszeiten"
               ]
@@ -1594,6 +1721,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Lichtjahr"
               ]
@@ -1604,6 +1732,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Beobachtung"
               ]
@@ -1621,6 +1750,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Strahloptik"
               ]
@@ -1631,6 +1761,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Optik",
                 "Licht"
@@ -1642,6 +1773,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Brechung"
               ]
@@ -1652,6 +1784,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Linse"
               ]
@@ -1662,6 +1795,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Interferenz"
               ]
@@ -1672,6 +1806,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wellenlänge",
                 "Frequenz"
@@ -1690,6 +1825,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "EM-Welle"
               ]
@@ -1700,6 +1836,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Elektromagnetische Wellen"
               ]
@@ -1710,6 +1847,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Spektrum"
               ]
@@ -1720,6 +1858,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Radio"
               ]
@@ -1730,6 +1869,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Antenne"
               ]
@@ -1747,6 +1887,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Versuch"
               ]
@@ -1757,6 +1898,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Praktikum"
               ]
@@ -1767,6 +1909,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Messung"
               ]
@@ -1777,6 +1920,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Auswertung"
               ]
@@ -1787,6 +1931,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Fehler"
               ]
@@ -1803,6 +1948,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Fernrohr"
               ]
@@ -1813,6 +1959,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Teleskop"
               ]
@@ -1823,6 +1970,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Medien"
               ]
@@ -1833,6 +1981,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Digital"
               ]
@@ -1843,6 +1992,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Fernsehen"
               ]
@@ -1853,6 +2003,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Pixel"
               ]
@@ -1885,6 +2036,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Ekin"
               ]
@@ -1895,6 +2047,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Epot"
               ]
@@ -1905,6 +2058,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Energieerhaltung"
               ]
@@ -1915,6 +2069,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Bilanz"
               ]
@@ -1925,6 +2080,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Reibung"
               ]
@@ -1942,6 +2098,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "v"
               ]
@@ -1952,6 +2109,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kinematik",
                 "Dynamik"
@@ -1963,6 +2121,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "a"
               ]
@@ -1973,6 +2132,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Newton"
               ]
@@ -1983,6 +2143,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Diagramm"
               ]
@@ -1993,6 +2154,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wurf"
               ]
@@ -2010,6 +2172,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kondensator"
               ]
@@ -2020,6 +2183,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kondensator",
                 "Spule"
@@ -2031,6 +2195,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "RC"
               ]
@@ -2041,6 +2206,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Spule"
               ]
@@ -2051,6 +2217,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Messung"
               ]
@@ -2068,6 +2235,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "E-Feld"
               ]
@@ -2078,6 +2246,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Feld",
                 "Ladung"
@@ -2089,6 +2258,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kraft"
               ]
@@ -2099,6 +2269,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Lorentz"
               ]
@@ -2109,6 +2280,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Bahn"
               ]
@@ -2119,6 +2291,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Anwendung"
               ]
@@ -2135,6 +2308,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Naturkonstante"
               ]
@@ -2145,6 +2319,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "e"
               ]
@@ -2155,6 +2330,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Exkursion"
               ]
@@ -2165,6 +2341,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Sicherheit"
               ]
@@ -2175,6 +2352,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Anwendung"
               ]
@@ -2185,6 +2363,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Filter"
               ]
@@ -2195,6 +2374,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Relativität"
               ]
@@ -2205,6 +2385,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "c"
               ]
@@ -2237,6 +2418,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Lichtwelle"
               ]
@@ -2247,6 +2429,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Lichtwelle"
               ]
@@ -2257,6 +2440,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Interferenz"
               ]
@@ -2267,6 +2451,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Beugung"
               ]
@@ -2277,6 +2462,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wellenlänge"
               ]
@@ -2294,6 +2480,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Linse"
               ]
@@ -2304,6 +2491,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Optik",
                 "Praktikum"
@@ -2315,6 +2503,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Brennweite"
               ]
@@ -2325,6 +2514,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Bild"
               ]
@@ -2335,6 +2525,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Fehler"
               ]
@@ -2352,6 +2543,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Photoeffekt"
               ]
@@ -2362,6 +2554,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Quantenphysik"
               ]
@@ -2372,6 +2565,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Photon"
               ]
@@ -2382,6 +2576,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Dualismus"
               ]
@@ -2392,6 +2587,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Klassik"
               ]
@@ -2409,6 +2605,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Atom"
               ]
@@ -2419,6 +2616,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Atom",
                 "Kernstrahlung"
@@ -2430,6 +2628,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Zerfall"
               ]
@@ -2440,6 +2639,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Halbwertszeit"
               ]
@@ -2450,6 +2650,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Strahlung"
               ]
@@ -2460,6 +2661,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kernspaltung"
               ]
@@ -2476,6 +2678,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Anwendung"
               ]
@@ -2486,6 +2689,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Medizin"
               ]
@@ -2496,6 +2700,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Optik"
               ]
@@ -2506,6 +2711,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Regenbogen"
               ]
@@ -2516,6 +2722,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Akustik"
               ]
@@ -2526,6 +2733,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Schall"
               ]
@@ -2558,6 +2766,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Impuls"
               ]
@@ -2568,6 +2777,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Impuls",
                 "Energie"
@@ -2579,6 +2789,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Energie"
               ]
@@ -2589,6 +2800,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Stoß"
               ]
@@ -2599,6 +2811,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Drehimpuls"
               ]
@@ -2616,6 +2829,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Ort"
               ]
@@ -2626,6 +2840,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kinematik"
               ]
@@ -2636,6 +2851,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "v"
               ]
@@ -2646,6 +2862,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "a"
               ]
@@ -2656,6 +2873,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Gleichung"
               ]
@@ -2673,6 +2891,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Trägheit"
               ]
@@ -2683,6 +2902,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Newton"
               ]
@@ -2693,6 +2913,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kraft"
               ]
@@ -2703,6 +2924,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Aktion"
               ]
@@ -2713,6 +2935,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Anwendung"
               ]
@@ -2730,6 +2953,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Modell",
                 "Simulation"
@@ -2741,6 +2965,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Annahme"
               ]
@@ -2751,6 +2976,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Grenze"
               ]
@@ -2761,6 +2987,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Simulation"
               ]
@@ -2771,6 +2998,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Numerik"
               ]
@@ -2788,6 +3016,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kreis"
               ]
@@ -2798,6 +3027,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kreisbewegung"
               ]
@@ -2808,6 +3038,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Zentripetal"
               ]
@@ -2818,6 +3049,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wurf"
               ]
@@ -2828,6 +3060,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Bahn"
               ]
@@ -2845,6 +3078,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Relativität"
               ]
@@ -2855,6 +3089,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Relativität"
               ]
@@ -2865,6 +3100,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Zeit"
               ]
@@ -2875,6 +3111,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Länge"
               ]
@@ -2885,6 +3122,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "c"
               ]
@@ -2902,6 +3140,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Ladung"
               ]
@@ -2912,6 +3151,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Elektrisches Feld"
               ]
@@ -2922,6 +3162,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "E"
               ]
@@ -2932,6 +3173,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Feldlinien"
               ]
@@ -2942,6 +3184,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Potential"
               ]
@@ -2959,6 +3202,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Magnet"
               ]
@@ -2969,6 +3213,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Magnetisches Feld"
               ]
@@ -2979,6 +3224,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Feldlinien"
               ]
@@ -2989,6 +3235,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Strom"
               ]
@@ -2999,6 +3246,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Spule"
               ]
@@ -3016,6 +3264,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "E-Feld"
               ]
@@ -3026,6 +3275,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Lorentzkraft"
               ]
@@ -3036,6 +3286,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Lorentz"
               ]
@@ -3046,6 +3297,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Bahn"
               ]
@@ -3056,6 +3308,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Anwendung"
               ]
@@ -3073,6 +3326,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Fluss"
               ]
@@ -3083,6 +3337,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Induktion"
               ]
@@ -3093,6 +3348,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Lenz"
               ]
@@ -3103,6 +3359,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Generator"
               ]
@@ -3113,6 +3370,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Transformator"
               ]
@@ -3130,6 +3388,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Versuch"
               ]
@@ -3140,6 +3399,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Praktikum"
               ]
@@ -3150,6 +3410,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Messung"
               ]
@@ -3160,6 +3421,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Auswertung"
               ]
@@ -3170,6 +3432,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Unsicherheit"
               ]
@@ -3186,6 +3449,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Fahren"
               ]
@@ -3196,6 +3460,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Bremsweg"
               ]
@@ -3206,6 +3471,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Halbleiter"
               ]
@@ -3216,6 +3482,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Diode"
               ]
@@ -3226,6 +3493,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Messen"
               ]
@@ -3236,6 +3504,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kalibrierung"
               ]
@@ -3269,6 +3538,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Schwingung"
               ]
@@ -3279,6 +3549,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Schwingung"
               ]
@@ -3289,6 +3560,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Pendel"
               ]
@@ -3299,6 +3571,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "LC"
               ]
@@ -3309,6 +3582,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Energie"
               ]
@@ -3319,6 +3593,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Resonanz"
               ]
@@ -3336,6 +3611,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Welle"
               ]
@@ -3346,6 +3622,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Welle"
               ]
@@ -3356,6 +3633,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wellenlänge"
               ]
@@ -3366,6 +3644,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Interferenz"
               ]
@@ -3376,6 +3655,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Beugung"
               ]
@@ -3386,6 +3666,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Stehende Welle"
               ]
@@ -3403,6 +3684,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Photoeffekt"
               ]
@@ -3413,6 +3695,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Quantenphysik"
               ]
@@ -3423,6 +3706,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Photon"
               ]
@@ -3433,6 +3717,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Unschärfe"
               ]
@@ -3443,6 +3728,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Dualismus"
               ]
@@ -3460,6 +3746,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Bohr"
               ]
@@ -3470,6 +3757,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Atomphysik"
               ]
@@ -3480,6 +3768,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Spektrum"
               ]
@@ -3490,6 +3779,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Niveau"
               ]
@@ -3500,6 +3790,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Emission"
               ]
@@ -3517,6 +3808,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kern"
               ]
@@ -3527,6 +3819,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kernphysik"
               ]
@@ -3537,6 +3830,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Zerfall"
               ]
@@ -3547,6 +3841,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Halbwertszeit"
               ]
@@ -3557,6 +3852,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Bindung"
               ]
@@ -3567,6 +3863,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Spaltung"
               ]
@@ -3584,6 +3881,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Gas"
               ]
@@ -3594,6 +3892,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Thermodynamik"
               ]
@@ -3604,6 +3903,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Hauptsatz"
               ]
@@ -3614,6 +3914,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Entropie"
               ]
@@ -3624,6 +3925,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Prozess"
               ]
@@ -3640,6 +3942,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Chaos"
               ]
@@ -3650,6 +3953,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Chaos"
               ]
@@ -3660,6 +3964,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Gastheorie"
               ]
@@ -3670,6 +3975,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Druck"
               ]
@@ -3680,6 +3986,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Anwendung"
               ]
@@ -3690,6 +3997,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
+              "tasksPerRound": 10,
               "keywords": [
                 "Technik"
               ]
@@ -3700,5 +4008,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "ce031972"
+  "contentHash": "325701a5"
 }
