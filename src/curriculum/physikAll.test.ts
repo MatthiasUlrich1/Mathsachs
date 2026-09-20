@@ -81,6 +81,15 @@ describe('Physik Gym generators (all grades)', () => {
         expect(t.released, t.id).toBe(false)
       }
     }
+    const lb3 = k6.areas.find((a) => a.id === 'lb3')!.topics
+    const releasedLb3 = new Set(['ph-k6-lb3-thermometer', 'ph-k6-lb3-kelvin'])
+    for (const t of lb3) {
+      if (releasedLb3.has(t.id)) {
+        expect(t.released, t.id).toBe(true)
+      } else {
+        expect(t.released, t.id).toBe(false)
+      }
+    }
     const lb4 = k6.areas.find((a) => a.id === 'lb4')!.topics
     const releasedLb4 = new Set([
       'ph-k6-lb4-stromkreis',
@@ -99,7 +108,7 @@ describe('Physik Gym generators (all grades)', () => {
     }
     expect(
       k6.areas
-        .filter((a) => a.id !== 'lb1' && a.id !== 'lb2' && a.id !== 'lb4')
+        .filter((a) => a.id !== 'lb1' && a.id !== 'lb2' && a.id !== 'lb3' && a.id !== 'lb4')
         .flatMap((a) => a.topics)
         .every((t) => t.released === false),
     ).toBe(true)

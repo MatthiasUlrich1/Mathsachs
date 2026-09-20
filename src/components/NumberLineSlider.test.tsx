@@ -43,9 +43,26 @@ describe('NumberLineSlider', () => {
         value: 0.5,
         onChange,
         decimals: 1,
-      })
+      }),
     )
-    // Check that German decimal format is used (comma instead of dot)
     expect(html).toContain('0,5')
+  })
+
+  it('uses sparse labels when labelStep is set', () => {
+    const onChange = vi.fn()
+    const html = renderToStaticMarkup(
+      createElement(NumberLineSlider, {
+        min: -20,
+        max: 100,
+        step: 1,
+        value: -20,
+        onChange,
+        labelStep: 20,
+      }),
+    )
+    expect(html).toMatch(/>0<\/text>/)
+    expect(html).toMatch(/>20<\/text>/)
+    expect(html).not.toMatch(/>5<\/text>/)
+    expect(html).not.toMatch(/>15<\/text>/)
   })
 })

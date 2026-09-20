@@ -2,6 +2,7 @@ import type { Task, UserInput } from '../curriculum/types'
 import { emptyInput } from '../curriculum/types'
 import { ensureSvgViewBox } from '../lib/ensureSvgViewBox'
 import { NumberLineSlider } from './NumberLineSlider'
+import { ThermometerSlider } from './ThermometerSlider'
 import { DragDropSort } from './DragDropSort'
 import { DragDropSlots } from './DragDropSlots'
 import { DigitGrid } from './DigitGrid'
@@ -84,12 +85,24 @@ export function TaskInteractive({
 
   return (
     <div className="task-interactive">
-      {interactive.type === 'numberLine' && !disabled && (
+      {interactive.type === 'numberLine' && !disabled && interactive.props.variant === 'thermometer' && (
+        <ThermometerSlider
+          min={interactive.props.min}
+          max={interactive.props.max}
+          step={interactive.props.step}
+          labelStep={interactive.props.labelStep}
+          value={value.kind === 'numberLine' ? value.value : null}
+          onChange={(v) => onChange({ kind: 'numberLine', value: v })}
+          label="Stelle die Temperatur am Thermometer ein:"
+        />
+      )}
+      {interactive.type === 'numberLine' && !disabled && interactive.props.variant !== 'thermometer' && (
         <NumberLineSlider
           min={interactive.props.min}
           max={interactive.props.max}
           step={interactive.props.step}
           decimals={interactive.props.decimals}
+          labelStep={interactive.props.labelStep}
           value={value.kind === 'numberLine' ? value.value : null}
           onChange={(v) => onChange({ kind: 'numberLine', value: v })}
           label="Ziehe den Punkt an die richtige Stelle:"

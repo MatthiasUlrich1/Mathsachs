@@ -109,9 +109,13 @@ interface NumberLineTaskInput {
   decimals?: number
   /** Tolerance for comparison. */
   eps?: number
+  /** Spacing between labeled ticks (defaults to step×5). */
+  labelStep?: number
+  /** Visual style: horizontal line or vertical thermometer. */
+  variant?: 'line' | 'thermometer'
 }
 
-/** Build an interactive number line task. */
+/** Build an interactive number line (or thermometer) task. */
 export const numberLineTask = (input: NumberLineTaskInput): Task => ({
   question: input.question,
   answerKind: 'integer', // Fallback for non-interactive mode
@@ -125,6 +129,8 @@ export const numberLineTask = (input: NumberLineTaskInput): Task => ({
       max: input.max,
       step: input.step,
       decimals: input.decimals ?? 0,
+      ...(input.labelStep != null ? { labelStep: input.labelStep } : {}),
+      ...(input.variant ? { variant: input.variant } : {}),
     },
   },
   check: (answer: UserInput) => {

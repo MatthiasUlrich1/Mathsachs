@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-20T16:32:44.358Z",
+  "updatedAt": "2026-09-20T16:45:00.836Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -18,10 +18,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "2.5.6",
+      "version": "2.5.7",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 134813,
-      "changelog": "Thema Sonne/Mond/Erde (Finsternisse + Mondphasen); Freigabe Stromkreis (8500) ohne Lösungstext im Schaltbild; Physik-Runden standardmäßig 10 Aufgaben ohne Doppelungen."
+      "size": 134819,
+      "changelog": "Freigabe Temperatur ablesen (3126) und Celsius/Kelvin (5299); Thermometer-Schieber mit Skala; Zahlenstrahl mit sparser Beschriftung; Formeln aus Kelvin-Aufgabenstellung entfernt."
     },
     {
       "id": "oberschule-sachsen-hs",

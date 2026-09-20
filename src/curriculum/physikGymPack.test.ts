@@ -55,26 +55,19 @@ describe('Gymnasium Sachsen Physik pack', () => {
     const manifest = parseManifest(
       JSON.parse(readFileSync(join(curriculaDir, 'manifest.json'), 'utf8')),
     )
-    expect(pack.version).toBe('2.5.6')
-    expect(file?.version).toBe('2.5.6')
+    expect(pack.version).toBe('2.5.7')
+    expect(file?.version).toBe('2.5.7')
     expect(file?.contentHash).toBe(pack.contentHash)
-    const volumen = file?.official
+    const thermometer = file?.official
       .flatMap((g) => g.areas)
       .flatMap((a) => a.topics)
-      .find((t) => t.id === 'ph-k6-lb2-volumen')
-    expect(volumen?.released).toBe(true)
-    const stromkreis = file?.official
+      .find((t) => t.id === 'ph-k6-lb3-thermometer')
+    const kelvin = file?.official
       .flatMap((g) => g.areas)
       .flatMap((a) => a.topics)
-      .find((t) => t.id === 'ph-k6-lb4-stromkreis')
-    const sonneMond = file?.official
-      .flatMap((g) => g.areas)
-      .flatMap((a) => a.topics)
-      .find((t) => t.id === 'ph-k6-lb1-sonne-mond-erde')
-    expect(stromkreis?.released).toBe(true)
-    expect(stromkreis?.tasksPerRound).toBe(10)
-    expect(sonneMond?.released).toBe(true)
-    expect(sonneMond?.tasksPerRound).toBe(10)
+      .find((t) => t.id === 'ph-k6-lb3-kelvin')
+    expect(thermometer?.released).toBe(true)
+    expect(kelvin?.released).toBe(true)
     expect(manifest?.packs.map((p) => p.id)).toContain(GYM_SACHSEN_PHYSIK_PACK_ID)
     expect(manifest?.packs.find((p) => p.id === GYM_SACHSEN_PHYSIK_PACK_ID)?.subject).toBe(
       'Physik',

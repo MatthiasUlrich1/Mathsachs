@@ -93,6 +93,41 @@ describe('Physik Klasse 6 generators', () => {
     expect(withSvg).toBeGreaterThan(10)
   })
 
+  it('Celsius/Kelvin tasks have no conversion formula in the question', () => {
+    const gen = PHYSIK_K6_GENERATORS['ph-k6-lb3-kelvin']!
+    for (let seed = 1; seed <= 60; seed++) {
+      const task = gen(createRng(seed))
+      expect(task.question, `seed ${seed}`).not.toMatch(/T\/K|ϑ\/°C|\+ 273|− 273|- 273/)
+      expect(task.check(task.sampleAnswer), `seed ${seed}`).toBe(true)
+      if (task.interactive?.type === 'numberLine') {
+        expect(task.interactive.props.labelStep).toBe(20)
+      }
+    }
+  })
+
+  it('Temperatur ablesen uses thermometer slider with target °C in the question', () => {
+    const gen = PHYSIK_K6_GENERATORS['ph-k6-lb3-thermometer']!
+    let slider = 0
+    let reading = 0
+    for (let seed = 1; seed <= 60; seed++) {
+      const task = gen(createRng(seed))
+      expect(task.check(task.sampleAnswer), `seed ${seed}`).toBe(true)
+      if (task.interactive?.type === 'numberLine') {
+        slider++
+        expect(task.interactive.props.variant).toBe('thermometer')
+        expect(task.question).toMatch(/Stelle -?\d+ °C am Thermometer ein/)
+        expect(task.question).not.toMatch(/Zahlenstrahl/)
+      }
+      if (task.visualContent?.includes('Thermometer')) {
+        reading++
+        expect(task.visualContent).toMatch(/°C/)
+        expect(task.visualContent.length).toBeGreaterThan(400)
+      }
+    }
+    expect(slider).toBeGreaterThan(10)
+    expect(reading).toBeGreaterThan(5)
+  })
+
   it('Stromkreis SVG has no solution labels like Schalter zu/offen', () => {
     const gen = PHYSIK_K6_GENERATORS['ph-k6-lb4-stromkreis']!
     for (let seed = 1; seed <= 40; seed++) {

@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.6',
+    version: '2.5.7',
     changelog:
-      'Thema Sonne/Mond/Erde (Finsternisse + Mondphasen); Freigabe Stromkreis (8500) ohne Lösungstext im Schaltbild; Physik-Runden standardmäßig 10 Aufgaben ohne Doppelungen.',
+      'Freigabe Temperatur ablesen (3126) und Celsius/Kelvin (5299); Thermometer-Schieber mit Skala; Zahlenstrahl mit sparser Beschriftung; Formeln aus Kelvin-Aufgabenstellung entfernt.',
     official,
     extras: [],
   }

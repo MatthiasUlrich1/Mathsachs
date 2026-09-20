@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import './NumberLineSlider.css'
 
 export interface NumberLineSliderProps {
@@ -16,6 +16,8 @@ export interface NumberLineSliderProps {
   label?: string
   /** Number of decimal places to show in labels (default 0) */
   decimals?: number
+  /** Spacing between labeled major ticks (default step×5). */
+  labelStep?: number
 }
 
 /**
@@ -30,9 +32,11 @@ export const NumberLineSlider: React.FC<NumberLineSliderProps> = ({
   onChange,
   label,
   decimals = 0,
+  labelStep,
 }) => {
   const svgRef = useRef<SVGSVGElement>(null)
   const [isDragging, setIsDragging] = useState(false)
+  const labelEvery = labelStep ?? step * 5
 
   const width = 600
   const height = 120
@@ -44,7 +48,6 @@ export const NumberLineSlider: React.FC<NumberLineSliderProps> = ({
     return num.toFixed(decimals).replace('.', ',')
   }
 
-  // Convert screen X coordinate to value
   const screenToValue = useCallback(
     (screenX: number): number => {
       const svg = svgRef.current
@@ -53,55 +56,40 @@ export const NumberLineSlider: React.FC<NumberLineSliderProps> = ({
       const relativeX = screenX - rect.left
       const ratio = (relativeX - padding) / (width - 2 * padding)
       const rawValue = min + ratio * (max - min)
-      // Snap to step
       const snapped = Math.round(rawValue / step) * step
       return Math.max(min, Math.min(max, snapped))
     },
-    [min, max, step, padding, width]
+    [min, max, step, padding, width],
   )
 
-  // Convert value to SVG X coordinate
   const valueToX = (val: number) => {
     const ratio = (val - min) / (max - min)
     return padding + ratio * (width - 2 * padding)
   }
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true)
-    const newValue = screenToValue(e.clientX)
-    onChange(newValue)
-  }
-
-  const handleMouseMove = useCallback(
-    (e: MouseEvent) => {
-      if (!isDragging) return
-      const newValue = screenToValue(e.clientX)
-      onChange(newValue)
-    },
-    [isDragging, screenToValue, onChange]
-  )
-
-  const handleMouseUp = useCallback(() => {
-    setIsDragging(false)
-  }, [])
-
-  // Attach global mouse listeners when dragging
-  useState(() => {
-    if (isDragging) {
-      window.addEventListener('mousemove', handleMouseMove)
-      window.addEventListener('mouseup', handleMouseUp)
-      return () => {
-        window.removeEventListener('mousemove', handleMouseMove)
-        window.removeEventListener('mouseup', handleMouseUp)
-      }
+  useEffect(() => {
+    if (!isDragging) return
+    const handleMouseMove = (e: MouseEvent) => {
+      onChange(screenToValue(e.clientX))
     }
-  })
+    const handleMouseUp = () => setIsDragging(false)
+    window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('mouseup', handleMouseUp)
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('mouseup', handleMouseUp)
+    }
+  }, [isDragging, screenToValue, onChange])
 
-  // Generate tick marks
   const ticks: number[] = []
-  for (let v = min; v <= max; v += step) {
-    ticks.push(v)
+  for (let v = min; v <= max + 1e-9; v += step) {
+    ticks.push(Number(v.toFixed(6)))
   }
+
+  const isMajor = (tick: number) =>
+    Math.abs(tick - min) < 1e-9 ||
+    Math.abs(tick - max) < 1e-9 ||
+    Math.abs(tick % labelEvery) < 1e-9
 
   return (
     <div className="number-line-slider">
@@ -111,9 +99,11 @@ export const NumberLineSlider: React.FC<NumberLineSliderProps> = ({
         width={width}
         height={height}
         className="number-line-svg"
-        onMouseDown={handleMouseDown}
+        onMouseDown={(e) => {
+          setIsDragging(true)
+          onChange(screenToValue(e.clientX))
+        }}
       >
-        {/* Main horizontal line */}
         <line
           x1={padding}
           y1={lineY}
@@ -123,11 +113,10 @@ export const NumberLineSlider: React.FC<NumberLineSliderProps> = ({
           strokeWidth="2"
         />
 
-        {/* Tick marks and labels */}
         {ticks.map((tick) => {
           const x = valueToX(tick)
-          const isMajor = tick === min || tick === max || Math.abs(tick % (step * 5)) < 1e-9
-          const tickHeight = isMajor ? 15 : 8
+          const major = isMajor(tick)
+          const tickHeight = major ? 15 : 8
           return (
             <g key={tick}>
               <line
@@ -136,16 +125,10 @@ export const NumberLineSlider: React.FC<NumberLineSliderProps> = ({
                 x2={x}
                 y2={lineY + tickHeight / 2}
                 stroke="#333"
-                strokeWidth={isMajor ? 2 : 1}
+                strokeWidth={major ? 2 : 1}
               />
-              {isMajor && (
-                <text
-                  x={x}
-                  y={lineY + 30}
-                  textAnchor="middle"
-                  fontSize="14"
-                  fill="#333"
-                >
+              {major && (
+                <text x={x} y={lineY + 30} textAnchor="middle" fontSize="14" fill="#333">
                   {formatNumber(tick)}
                 </text>
               )}
@@ -153,10 +136,8 @@ export const NumberLineSlider: React.FC<NumberLineSliderProps> = ({
           )
         })}
 
-        {/* User's marker with vertical line (no number shown) */}
         {value !== null && (
           <g>
-            {/* Vertical line from marker to number line */}
             <line
               x1={valueToX(value)}
               y1={lineY - 30}
@@ -166,7 +147,6 @@ export const NumberLineSlider: React.FC<NumberLineSliderProps> = ({
               strokeWidth={2}
               className={isDragging ? 'dragging' : ''}
             />
-            {/* Draggable marker circle above the line */}
             <circle
               cx={valueToX(value)}
               cy={lineY - 30}

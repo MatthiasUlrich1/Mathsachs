@@ -9,6 +9,19 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.63] – 2026-09-20
+
+### Freigabe
+- **Physik Klasse 6 LB3:** Temperatur ablesen (ID 3126) und Celsius und Kelvin
+  (ID 5299).
+
+### Behoben
+- **Celsius/Kelvin (ID 5299):** Umrechnungsformel aus der Aufgabenstellung
+  entfernt; Zahlenstrahl nur noch alle 20 °C beschriftet.
+- **Temperatur ablesen (ID 3126):** Zieltemperatur in der Frage; Einstellung am
+  Thermometer-Schieber mit klarer Skala statt Zahlenstrahl; Ablese-Thermometer
+  länger und mit Einteilung.
+
 ## [0.27.62] – 2026-09-20
 
 ### Hinzugefügt

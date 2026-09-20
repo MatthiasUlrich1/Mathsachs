@@ -130,8 +130,14 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
           ),
         ]),
         area('lb3', 'Temperatur und Zustand von Körpern', 14, [
-          topic('ph-k6-lb3-thermometer', 'Temperatur ablesen', ['Temperatur', 'Thermometer']),
-          topic('ph-k6-lb3-kelvin', 'Celsius und Kelvin', ['Kelvin', 'Celsius']),
+          topic('ph-k6-lb3-thermometer', 'Temperatur ablesen', ['Temperatur', 'Thermometer'], {
+            released: true,
+            tasksPerRound: 10,
+          }),
+          topic('ph-k6-lb3-kelvin', 'Celsius und Kelvin', ['Kelvin', 'Celsius'], {
+            released: true,
+            tasksPerRound: 10,
+          }),
           topic('ph-k6-lb3-ausdehnung', 'Wärmeausdehnung', ['Ausdehnung', 'Wärme']),
           topic('ph-k6-lb3-aggregate', 'Aggregatzustände', ['Aggregatzustand', 'Schmelzen']),
           topic('ph-k6-lb3-schmelzen', 'Schmelzen und Sieden', ['Schmelzen', 'Sieden']),

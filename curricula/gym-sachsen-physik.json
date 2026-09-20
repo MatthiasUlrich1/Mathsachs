@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "2.5.6",
-  "changelog": "Thema Sonne/Mond/Erde (Finsternisse + Mondphasen); Freigabe Stromkreis (8500) ohne Lösungstext im Schaltbild; Physik-Runden standardmäßig 10 Aufgaben ohne Doppelungen.",
+  "version": "2.5.7",
+  "changelog": "Freigabe Temperatur ablesen (3126) und Celsius/Kelvin (5299); Thermometer-Schieber mit Skala; Zahlenstrahl mit sparser Beschriftung; Formeln aus Kelvin-Aufgabenstellung entfernt.",
   "official": [
     {
       "id": "physik-klasse-6",
@@ -240,7 +240,7 @@
               "title": "Temperatur ablesen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Temperatur",
@@ -252,7 +252,7 @@
               "title": "Celsius und Kelvin",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Kelvin",
@@ -4008,5 +4008,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "325701a5"
+  "contentHash": "815ca8f7"
 }

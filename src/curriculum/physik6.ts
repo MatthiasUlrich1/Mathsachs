@@ -1198,13 +1198,15 @@ const thermometer: Topic['generate'] = mixedVariants(
   (rng) => {
     const c = pick(rng, [-10, 0, 20, 37, 40, 60, 80, 100])
     return numberLineTask({
-      question: 'Stelle die Temperatur auf dem Zahlenstrahl ein (in °C).',
+      question: `Stelle ${c} °C am Thermometer ein.`,
       min: -20,
       max: 100,
       step: 1,
       value: c,
+      labelStep: 20,
+      variant: 'thermometer',
       solution: `${c} °C`,
-      explanation: `Die Markierung liegt bei ${c} °C.`,
+      explanation: `Die Quecksilbersäule (rote Säule) endet bei ${c} °C.`,
     })
   },
   (rng) => {
@@ -1230,7 +1232,7 @@ const kelvin: Topic['generate'] = mixedVariants(
     const c = pick(rng, [-20, -10, 0, 20, 27, 37, 100])
     const k = c + 273
     return valueTask({
-      question: `Wandle ${c} °C in Kelvin um (T/K = ϑ/°C + 273).`,
+      question: `Wandle ${c} °C in Kelvin um.`,
       answerKind: 'integer',
       unit: 'K',
       value: k,
@@ -1242,7 +1244,7 @@ const kelvin: Topic['generate'] = mixedVariants(
     const c = pick(rng, [-20, -10, 0, 20, 27, 37, 100])
     const k = c + 273
     return valueTask({
-      question: `Wandle ${k} K in °C um (ϑ/°C = T/K − 273).`,
+      question: `Wandle ${k} K in °C um.`,
       answerKind: 'integer',
       unit: '°C',
       value: c,
@@ -1253,11 +1255,12 @@ const kelvin: Topic['generate'] = mixedVariants(
   (rng) => {
     const c = pick(rng, [0, 20, 37, 100])
     return numberLineTask({
-      question: `Stelle ${c} °C auf dem Zahlenstrahl ein (nur zur Orientierung; Lösung in °C).`,
+      question: `Stelle ${c} °C auf dem Zahlenstrahl ein.`,
       min: -20,
       max: 120,
       step: 1,
       value: c,
+      labelStep: 20,
       solution: `${c} °C`,
       explanation: `${c} °C entspricht ${c + 273} K.`,
     })

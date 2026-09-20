@@ -131,18 +131,34 @@ export function thermometerSvg(celsius: number): string {
   const min = -20
   const max = 100
   const t = Math.max(0, Math.min(1, (celsius - min) / (max - min)))
-  const yTop = 30
-  const yBot = 130
+  const yTop = 28
+  const yBot = 268
   const fillH = (yBot - yTop) * t
   const yFill = yBot - fillH
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 170" width="160" height="170" role="img" aria-label="Thermometer">
-  <rect width="160" height="170" fill="#f8fafc"/>
-  <rect x="68" y="28" width="24" height="110" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
-  <rect x="72" y="${yFill}" width="16" height="${fillH}" fill="#ef4444"/>
-  <circle cx="80" cy="140" r="16" fill="#ef4444" stroke="#b91c1c" stroke-width="2"/>
-  <text x="110" y="40" fill="#334155" font-size="11" font-family="system-ui,sans-serif">100 °C</text>
-  <text x="110" y="95" fill="#334155" font-size="11" font-family="system-ui,sans-serif">0 °C</text>
-  <text x="110" y="145" fill="#334155" font-size="11" font-family="system-ui,sans-serif">−20 °C</text>
+  const tubeX = 70
+  const tubeW = 26
+  const yAt = (v: number) => yBot - ((v - min) / (max - min)) * (yBot - yTop)
+  const ticks: string[] = []
+  for (let v = min; v <= max; v += 5) {
+    const y = yAt(v)
+    const major = v % 20 === 0 || v === min || v === max
+    const mid = v % 10 === 0
+    const len = major ? 16 : mid ? 11 : 6
+    ticks.push(
+      `<line x1="${tubeX + tubeW}" y1="${y}" x2="${tubeX + tubeW + len}" y2="${y}" stroke="#334155" stroke-width="${major ? 2 : 1}"/>`,
+    )
+    if (major) {
+      ticks.push(
+        `<text x="${tubeX + tubeW + len + 5}" y="${y + 4}" fill="#334155" font-size="12" font-family="system-ui,sans-serif">${v} °C</text>`,
+      )
+    }
+  }
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 320" width="200" height="320" role="img" aria-label="Thermometer">
+  <rect width="200" height="320" fill="#f8fafc"/>
+  <rect x="${tubeX}" y="${yTop - 4}" width="${tubeW}" height="${yBot - yTop + 8}" rx="${tubeW / 2}" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+  <rect x="${tubeX + 5}" y="${yFill}" width="${tubeW - 10}" height="${fillH}" fill="#ef4444"/>
+  <circle cx="${tubeX + tubeW / 2}" cy="${yBot + 20}" r="20" fill="#ef4444" stroke="#b91c1c" stroke-width="2"/>
+  ${ticks.join('\n  ')}
 </svg>`
 }
 
