@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-21T19:15:57.363Z",
+  "updatedAt": "2026-09-21T19:27:22.908Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -7,10 +7,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Mathematik",
-      "version": "1.2.1",
+      "version": "1.2.2",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen.json",
-      "size": 65874,
-      "changelog": "Grafik-Prüfungsthemen (gesperrt) für Klasse 8–12: Gerade/Parabel/Tangente/Fläche."
+      "size": 66505,
+      "changelog": "K7: Gleichungsumstellung mehrzeilig (Äquivalenz); Oberfläche einer Pyramide + SVG."
     },
     {
       "id": "gym-sachsen-physik",

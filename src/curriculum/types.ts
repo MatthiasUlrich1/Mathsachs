@@ -37,6 +37,7 @@ export type UserInput =
   | { kind: 'coordinateClick'; x: number; y: number; points?: Array<{ x: number; y: number }> }
   | { kind: 'coordinateDraw'; scene: import('../lib/coordinateScene').CoordinateScene }
   | { kind: 'paramSlider'; values: Record<string, number> }
+  | { kind: 'equationSteps'; ops: string[] }
 
 /** A blank input matching the widget for a given answer kind. */
 export const emptyInput = (
@@ -50,7 +51,8 @@ export const emptyInput = (
     | 'multiSelect'
     | 'coordinateClick'
     | 'coordinateDraw'
-    | 'paramSlider',
+    | 'paramSlider'
+    | 'equationSteps',
 ): UserInput => {
   if (kind === 'fraction') return { kind: 'fraction', num: '', den: '' }
   if (kind === 'numberLine') return { kind: 'numberLine', value: 0 }
@@ -66,6 +68,7 @@ export const emptyInput = (
       scene: { xRange: [-5, 5], yRange: [-5, 5], snap: 'half', objects: [] },
     }
   if (kind === 'paramSlider') return { kind: 'paramSlider', values: {} }
+  if (kind === 'equationSteps') return { kind: 'equationSteps', ops: [] }
   return { kind: 'value', value: '' }
 }
 
@@ -83,6 +86,7 @@ export interface InteractiveConfig {
     | 'coordinateClick'
     | 'coordinateDraw'
     | 'paramSlider'
+    | 'equationSteps'
   props: Record<string, any> // Component-specific props
 }
 

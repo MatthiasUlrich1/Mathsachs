@@ -25,6 +25,8 @@ export function examAnswerAttempted(_task: Task, input: UserInput): boolean {
       return input.order.length > 0
     case 'dragDropSlots':
       return input.slots.some((s) => s !== null)
+    case 'equationSteps':
+      return input.ops.length > 0
     case 'numberLine':
     case 'paramSlider':
       // Defaults look "filled" — only score when the caller locks the task (leave/submit).

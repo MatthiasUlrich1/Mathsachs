@@ -14,6 +14,7 @@ import {
   generateCrossingLinesSvg,
   generateParallelTransversalSvg,
   generatePyramidVolumeSvg,
+  generatePyramidSurfaceSvg,
   generateFractionCircleSvg,
   generateFractionBarSvg,
   generateFractionGridSvg,
@@ -472,6 +473,18 @@ describe('geometrySvg', () => {
       })
       expect(svg).toContain('G = 36 cm²')
       expect(svg).toContain('h = 9 cm')
+    })
+  })
+
+  describe('generatePyramidSurfaceSvg', () => {
+    it('labels a, hs and O = G + M', () => {
+      const svg = generatePyramidSurfaceSvg({
+        edgeLabel: '6 cm',
+        slantHeightLabel: '5 cm',
+      })
+      expect(svg).toContain('a = 6 cm')
+      expect(svg).toContain('hₛ = 5 cm')
+      expect(svg).toContain('O = G + M')
     })
   })
 

@@ -11,7 +11,9 @@ import { MultiSelect } from './MultiSelect'
 import { CoordinateClick } from './CoordinateClick'
 import { CoordinateGraphEditor } from './CoordinateGraphEditor'
 import { ParamSlider } from './ParamSlider'
+import { EquationSteps, keysToOps, opsToKeys } from './EquationSteps'
 import type { ParamSliderSpec } from '../curriculum/taskHelpers'
+import type { EqOp, LinEq } from '../lib/equationSteps'
 import {
   emptyCoordinateScene,
   parseCoordinateScene,
@@ -67,6 +69,9 @@ export const initTaskInput = (task: Task): UserInput => {
       values[p.id] = p.start ?? p.min
     }
     return { kind: 'paramSlider', values }
+  }
+  if (task.interactive?.type === 'equationSteps') {
+    return { kind: 'equationSteps', ops: [] }
   }
   return emptyInput(task.answerKind)
 }
@@ -271,6 +276,21 @@ export function TaskInteractive({
           instruction={interactive.props.instruction}
           preview={interactive.props.preview}
           fixedShadowSide={interactive.props.fixedShadowSide}
+          disabled={disabled}
+        />
+      )}
+      {interactive.type === 'equationSteps' && (
+        <EquationSteps
+          start={interactive.props.start as LinEq}
+          buttons={(interactive.props.buttons ?? []) as EqOp[]}
+          solution={Number(interactive.props.solution)}
+          ops={
+            value.kind === 'equationSteps' ? keysToOps(value.ops) : []
+          }
+          onChange={(ops) =>
+            onChange({ kind: 'equationSteps', ops: opsToKeys(ops) })
+          }
+          instruction={interactive.props.instruction}
           disabled={disabled}
         />
       )}

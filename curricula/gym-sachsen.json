@@ -4,9 +4,9 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Mathematik",
-  "version": "1.2.1",
-  "changelog": "Grafik-Prüfungsthemen (gesperrt) für Klasse 8–12: Gerade/Parabel/Tangente/Fläche.",
-  "contentHash": "2ffb6e32",
+  "version": "1.2.2",
+  "changelog": "K7: Gleichungsumstellung mehrzeilig (Äquivalenz); Oberfläche einer Pyramide + SVG.",
+  "contentHash": "c6f4061b",
   "official": [
     {
       "id": "klasse-5",
@@ -931,27 +931,30 @@
             },
             {
               "id": "k7-lb2-gleichung-add",
-              "title": "Einfache Gleichung: x + a = b",
-              "hint": "Bringe die Zahl auf die andere Seite.",
+              "title": "Gleichung umstellen: x + a = b",
+              "hint": "Nutze die Buttons für Äquivalenzumformungen (beide Seiten gleich ändern).",
               "pointsPerTask": 10,
               "keywords": [
                 "Gleichung",
                 "lösen",
                 "x",
-                "Äquivalenzumformung"
+                "Äquivalenzumformung",
+                "Addition",
+                "Subtraktion"
               ]
             },
             {
               "id": "k7-lb2-gleichung-mul",
-              "title": "Einfache Gleichung: a · x = b",
-              "hint": "Teile durch den Faktor vor x.",
+              "title": "Gleichung umstellen: a · x = b",
+              "hint": "Teile beide Seiten durch den Faktor vor x (Button „| : a“).",
               "pointsPerTask": 10,
               "keywords": [
                 "Gleichung",
                 "lösen",
                 "x",
                 "Faktor",
-                "Division"
+                "Division",
+                "Multiplikation"
               ]
             }
           ]
@@ -1004,6 +1007,19 @@
                 "Oberfläche",
                 "Oberflächeninhalt",
                 "Prisma"
+              ]
+            },
+            {
+              "id": "k7-lb3-oberflaeche-pyramide",
+              "title": "Oberfläche einer Pyramide",
+              "hint": "O = G + M. Bei quadratischer Grundfläche: G = a², M = 2 · a · hₛ.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Pyramide",
+                "Oberfläche",
+                "Mantelfläche",
+                "Grundfläche",
+                "Seitenfläche"
               ]
             }
           ]

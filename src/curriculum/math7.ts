@@ -6,6 +6,7 @@ import {
   generateLabeledPrismNetSvg,
   generateParallelTransversalSvg,
   generatePrismVolumeSvg,
+  generatePyramidSurfaceSvg,
   generatePyramidVolumeSvg,
   generateSpinnerSvg,
   generateTriangleAnglesSvg,
@@ -14,6 +15,7 @@ import { formatDe, roundTo } from '../lib/num'
 import {
   choicePickTask,
   dragDropSortTask,
+  equationStepsTask,
   mixedVariants,
   multiSelectTask,
   numberLineTask,
@@ -21,6 +23,12 @@ import {
   visualTask,
 } from './taskHelpers'
 import type { Grade, Topic } from './types'
+import {
+  opKey,
+  solveAddPath,
+  solveMulPath,
+  suggestOps,
+} from '../lib/equationSteps'
 
 /** Format a signed integer, wrapping negatives in parentheses with a real minus. */
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
@@ -444,13 +452,13 @@ const termVorrang: Topic = {
 
 const gleichungAdd: Topic = {
   id: 'k7-lb2-gleichung-add',
-  title: 'Einfache Gleichung: x + a = b',
-  hint: 'Bringe die Zahl auf die andere Seite.',
+  title: 'Gleichung umstellen: x + a = b',
+  hint: 'Nutze die Buttons für Äquivalenzumformungen (beide Seiten gleich ändern).',
   pointsPerTask: 10,
   difficulty: 1,
-  keywords: ['Gleichung', 'lösen', 'x', 'Äquivalenzumformung'],
+  keywords: ['Gleichung', 'lösen', 'x', 'Äquivalenzumformung', 'Addition', 'Subtraktion'],
   fachwissen: {
-    text: 'Eine Gleichung ist eine Aussage der Form linke Seite = rechte Seite. Sie wird gelöst, indem man beide Seiten durch Äquivalenzumformungen vereinfacht, ohne die Gleichheit zu verletzen. Bei x + a = b: subtrahiere a auf beiden Seiten → x = b − a.',
+    text: 'Gleichungen der Form x + a = b löst du durch Äquivalenzumformung: Subtrahiere a auf beiden Seiten (bzw. addiere −a). Schreibe jeden Schritt untereinander — so wie im Heft mit „| − a“ rechts. Am Ende steht x = b − a.',
     quelle: 'Wikipedia: Gleichung',
     url: 'https://de.wikipedia.org/wiki/Gleichung',
   },
@@ -458,25 +466,35 @@ const gleichungAdd: Topic = {
     const x = nonZero(rng, -15, 15)
     const a = nonZero(rng, -15, 15)
     const b = x + a
-    return valueTask({
-      question: `Löse die Gleichung nach x: x + ${num(a)} = ${b}`,
-      answerKind: 'integer',
-      value: x,
-      solution: `x = ${x}`,
+    const start = { ax: 1, b: a, cx: 0, d: b }
+    const solutionOps = solveAddPath(a, b)
+    const buttons = suggestOps(start, rng)
+    // Ensure the correct op is always among buttons
+    const keys = new Set(buttons.map(opKey))
+    for (const op of solutionOps) {
+      if (!keys.has(opKey(op))) buttons.unshift(op)
+    }
+    return equationStepsTask({
+      question: `Stelle die Gleichung Schritt für Schritt um und löse nach x: x + ${num(a)} = ${b}`,
+      start,
+      buttons: buttons.slice(0, 6),
+      solutionOps,
+      solution: x,
       explanation: `Subtrahiere ${num(a)} auf beiden Seiten: x = ${b} − ${num(a)} = ${x}.`,
+      instruction: 'Tippe die passende Umformung (gilt für beide Seiten), bis x allein steht:',
     })
   },
 }
 
 const gleichungMul: Topic = {
   id: 'k7-lb2-gleichung-mul',
-  title: 'Einfache Gleichung: a · x = b',
-  hint: 'Teile durch den Faktor vor x.',
+  title: 'Gleichung umstellen: a · x = b',
+  hint: 'Teile beide Seiten durch den Faktor vor x (Button „| : a“).',
   pointsPerTask: 10,
   difficulty: 1,
-  keywords: ['Gleichung', 'lösen', 'x', 'Faktor', 'Division'],
+  keywords: ['Gleichung', 'lösen', 'x', 'Faktor', 'Division', 'Multiplikation'],
   fachwissen: {
-    text: 'Gleichungen der Form a · x = b werden gelöst, indem man beide Seiten durch a dividiert (Voraussetzung: a ≠ 0): x = b / a. Diese Äquivalenzumformung verändert die Lösungsmenge nicht. Solche linearen Gleichungen mit einer Unbekannten haben genau eine Lösung.',
+    text: 'Gleichungen der Form a · x = b löst du, indem du beide Seiten durch a dividierst (a ≠ 0): x = b / a. Auch hier: jeden Schritt untereinander notieren und rechts die Umformung vermerken („| : a“). Das ist eine andere Umformungsart als bei x + a = b.',
     quelle: 'Wikipedia: Lineare Gleichung',
     url: 'https://de.wikipedia.org/wiki/Lineare_Gleichung',
   },
@@ -484,12 +502,21 @@ const gleichungMul: Topic = {
     const a = nonZero(rng, -9, 9)
     const x = nonZero(rng, -12, 12)
     const b = a * x
-    return valueTask({
-      question: `Löse die Gleichung nach x: ${num(a)} · x = ${b}`,
-      answerKind: 'integer',
-      value: x,
-      solution: `x = ${x}`,
+    const start = { ax: a, b: 0, cx: 0, d: b }
+    const solutionOps = solveMulPath(a, b)
+    const buttons = suggestOps(start, rng)
+    const keys = new Set(buttons.map(opKey))
+    for (const op of solutionOps) {
+      if (!keys.has(opKey(op))) buttons.unshift(op)
+    }
+    return equationStepsTask({
+      question: `Stelle die Gleichung Schritt für Schritt um und löse nach x: ${num(a)} · x = ${b}`,
+      start,
+      buttons: buttons.slice(0, 6),
+      solutionOps,
+      solution: x,
       explanation: `Teile beide Seiten durch ${num(a)}: x = ${b} : ${num(a)} = ${x}.`,
+      instruction: 'Tippe die passende Umformung (Division/Multiplikation), bis x allein steht:',
     })
   },
 }
@@ -675,6 +702,115 @@ const oberflaechePrisma: Topic = {
           widthLabel: `${b} cm`,
           heightLabel: `${c} cm`,
         }),
+      })
+    },
+  ),
+}
+
+/** Oberfläche einer (quadratischen) Pyramide: O = G + M */
+const oberflaechePyramide: Topic = {
+  id: 'k7-lb3-oberflaeche-pyramide',
+  title: 'Oberfläche einer Pyramide',
+  hint: 'O = G + M. Bei quadratischer Grundfläche: G = a², M = 2 · a · hₛ.',
+  pointsPerTask: 10,
+  difficulty: 2,
+  keywords: ['Pyramide', 'Oberfläche', 'Mantelfläche', 'Grundfläche', 'Seitenfläche'],
+  fachwissen: {
+    text: 'Die Oberfläche einer Pyramide ist die Summe aus Grundfläche G und Mantelfläche M: O = G + M. Die Mantelfläche besteht aus den Seitendreiecken. Bei einer quadratischen Pyramide mit Grundkante a und Seitenflächenhöhe hₛ gilt G = a² und M = 4 · (½ · a · hₛ) = 2 · a · hₛ, also O = a² + 2 · a · hₛ. Achtung: hₛ ist die Höhe im Seitendreieck — nicht die Körperhöhe h der Pyramide.',
+    quelle: 'Wikipedia: Pyramide (Geometrie)',
+    url: 'https://de.wikipedia.org/wiki/Pyramide_(Geometrie)',
+  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const g = randInt(rng, 12, 80)
+      const m = randInt(rng, 20, 120)
+      const value = g + m
+      return valueTask({
+        question: `Eine Pyramide hat die Grundfläche G = ${g} cm² und die Mantelfläche M = ${m} cm². Berechne die Oberfläche O.`,
+        unit: 'cm²',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm²`,
+        explanation: `O = G + M = ${g} + ${m} = ${value} cm².`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 4, 12)
+      const hs = randInt(rng, 3, 14)
+      const value = a * a + 2 * a * hs
+      return visualTask({
+        question:
+          'Berechne die Oberfläche der abgebildeten quadratischen Pyramide (O = a² + 2 · a · hₛ):',
+        unit: 'cm²',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm²`,
+        explanation: `G = a² = ${a}² = ${a * a} cm²; M = 2 · a · hₛ = 2 · ${a} · ${hs} = ${2 * a * hs} cm²; O = ${a * a} + ${2 * a * hs} = ${value} cm².`,
+        visualContent: generatePyramidSurfaceSvg({
+          edgeLabel: `${a} cm`,
+          slantHeightLabel: `${hs} cm`,
+        }),
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 3, 10)
+      const hs = randInt(rng, 4, 12)
+      const value = a * a + 2 * a * hs
+      return valueTask({
+        question: `Quadratische Pyramide: a = ${a} cm, Seitenflächenhöhe hₛ = ${hs} cm. Berechne O = a² + 2 · a · hₛ.`,
+        unit: 'cm²',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm²`,
+        explanation: `O = ${a}² + 2 · ${a} · ${hs} = ${a * a} + ${2 * a * hs} = ${value} cm².`,
+        visualContent: generatePyramidSurfaceSvg({
+          edgeLabel: `${a} cm`,
+          slantHeightLabel: `${hs} cm`,
+        }),
+      })
+    },
+    (rng: Rng) => {
+      const pools = [
+        {
+          question: 'Was gehört zur Oberfläche einer Pyramide? (mehrere möglich)',
+          choices: [
+            'Grundfläche G',
+            'Mantelfläche M (Seitendreiecke)',
+            'O = G + M',
+            'nur die Körperhöhe h ohne Flächen',
+            'Volumen V = (1/3)·G·h als Oberflächenformel',
+          ],
+          correct: ['Grundfläche G', 'Mantelfläche M (Seitendreiecke)', 'O = G + M'],
+        },
+        {
+          question: 'Quadratische Pyramide — welche Aussagen stimmen? (mehrere möglich)',
+          choices: [
+            'G = a²',
+            'M = 2 · a · hₛ',
+            'hₛ ist die Höhe im Seitendreieck',
+            'hₛ ist immer gleich der Körperhöhe h',
+            'O = a² + 2 · a · hₛ',
+          ],
+          correct: [
+            'G = a²',
+            'M = 2 · a · hₛ',
+            'hₛ ist die Höhe im Seitendreieck',
+            'O = a² + 2 · a · hₛ',
+          ],
+        },
+      ] as const
+      const p = pick(rng, [...pools])
+      return multiSelectTask({
+        question: p.question,
+        choices: [...p.choices],
+        correct: [...p.correct],
+        solution: p.correct.join('; '),
+        explanation: 'Oberfläche = Grundfläche + Mantel; bei Quadrat: O = a² + 2·a·hₛ.',
+        visualContent: generatePyramidSurfaceSvg({
+          edgeLabel: 'a',
+          slantHeightLabel: 'hₛ',
+        }),
+        instruction: 'Tippe alle zutreffenden Aussagen:',
       })
     },
   ),
@@ -894,7 +1030,7 @@ export const klasse7: Grade = {
       id: 'lb3',
       title: 'Darstellen und Berechnen von Prismen und Pyramiden',
       ustd: 20,
-      topics: [volumenPrisma, mantelPrisma, volumenPyramide, oberflaechePrisma],
+      topics: [volumenPrisma, mantelPrisma, volumenPyramide, oberflaechePrisma, oberflaechePyramide],
     },
     {
       id: 'lb4',

@@ -3451,6 +3451,61 @@ export function generatePyramidVolumeSvg({
 </svg>`.trim()
 }
 
+export interface PyramidSurfaceSvgProps {
+  /** Grundkante a (z. B. „6 cm“) */
+  edgeLabel: string
+  /** Seitenflächenhöhe hs (z. B. „5 cm“) */
+  slantHeightLabel: string
+  fill?: string
+  stroke?: string
+  /** Optional Mantel-/Grundflächen-Hinweis */
+  showOmFormula?: boolean
+}
+
+/**
+ * Quadratische Pyramide mit Grundkante a und Seitenflächenhöhe hs
+ * (für O = G + M = a² + 2·a·hs).
+ */
+export function generatePyramidSurfaceSvg({
+  edgeLabel,
+  slantHeightLabel,
+  fill = '#fce4ec',
+  stroke = '#ad1457',
+  showOmFormula = true,
+}: PyramidSurfaceSvgProps): string {
+  const w = 320
+  const h = 280
+  const b1 = [50, 210]
+  const b2 = [200, 210]
+  const b3 = [245, 165]
+  const b4 = [95, 165]
+  const apex = [148, 36]
+  // Midpoint of front base edge for hs
+  const midFront = [(b1[0] + b2[0]) / 2, (b1[1] + b2[1]) / 2]
+  return `
+<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Oberfläche einer Pyramide">
+  <rect width="${w}" height="${h}" fill="#f8fafc"/>
+  <!-- Seitenflächen -->
+  <polygon points="${b4[0]},${b4[1]} ${b3[0]},${b3[1]} ${apex[0]},${apex[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.7"/>
+  <polygon points="${b2[0]},${b2[1]} ${b3[0]},${b3[1]} ${apex[0]},${apex[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.85"/>
+  <polygon points="${b1[0]},${b1[1]} ${b2[0]},${b2[1]} ${apex[0]},${apex[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
+  <!-- Grundfläche -->
+  <polygon points="${b1[0]},${b1[1]} ${b2[0]},${b2[1]} ${b3[0]},${b3[1]} ${b4[0]},${b4[1]}" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity="0.5"/>
+  <!-- a an vorderer Grundkante -->
+  <text x="${midFront[0]}" y="${midFront[1]! + 28}" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a">a = ${edgeLabel}</text>
+  <!-- hs: Höhe im vorderen Seitendreieck -->
+  <line x1="${apex[0]}" y1="${apex[1]}" x2="${midFront[0]}" y2="${midFront[1]}" stroke="#0369a1" stroke-width="1.8" stroke-dasharray="5 3"/>
+  <text x="${(apex[0]! + midFront[0]!) / 2 + 14}" y="${(apex[1]! + midFront[1]!) / 2}" font-size="13" font-weight="bold" fill="#0369a1">hₛ = ${slantHeightLabel}</text>
+  <text x="78" y="188" font-size="13" font-weight="bold" fill="#9a3412">G</text>
+  <text x="210" y="100" font-size="13" font-weight="bold" fill="#9a3412">M</text>
+  ${
+    showOmFormula
+      ? `<text x="160" y="268" text-anchor="middle" font-size="13" fill="#334155">O = G + M</text>`
+      : ''
+  }
+</svg>`.trim()
+}
+
 // ---------------------------------------------------------------------------
 // Klasse 8: lineare Funktionen (Graph + Steigungsdreieck)
 // ---------------------------------------------------------------------------

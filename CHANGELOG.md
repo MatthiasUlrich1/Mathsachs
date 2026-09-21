@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.78] – 2026-09-21
+
+### Hinzugefügt
+- **Gleichung umstellen (K7):** Mehrzeilige Äquivalenzumformung mit Buttons
+  (`| + …`, `| − …`, `| : …`) — ID 1607 (x+a=b) und ID 2474 (a·x=b) klar getrennt.
+- **Oberfläche einer Pyramide (K7):** neues Thema inkl. SVG-Vorlage
+  (`generatePyramidSurfaceSvg` / Generator „Pyramide (Oberfläche)“); Pack Mathe **1.2.2**.
+
 ## [0.27.77] – 2026-09-21
 
 ### Hinzugefügt

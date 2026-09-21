@@ -12,6 +12,15 @@ import {
   type CoordinateScene,
   type SnapMode,
 } from '../lib/coordinateScene'
+import {
+  applyOps as eqApplyOps,
+  isSolved as eqIsSolved,
+  opKey as eqOpKey,
+  parseOpKey as eqParseOpKey,
+  solutionX as eqSolutionX,
+  type EqOp,
+  type LinEq,
+} from '../lib/equationSteps'
 
 interface ValueTaskInput {
   question: string
@@ -832,6 +841,56 @@ export const coordinateDrawTask = (input: CoordinateDrawTaskInput): Task => {
     },
   }
 }
+
+interface EquationStepsTaskInput {
+  question: string
+  start: LinEq
+  buttons: EqOp[]
+  /** Canonical ops for sampleAnswer / key. */
+  solutionOps: EqOp[]
+  solution: number
+  explanation: string
+  instruction?: string
+  visualContent?: string
+}
+
+/** Multi-line Äquivalenzumformung with operation buttons. */
+export const equationStepsTask = (input: EquationStepsTaskInput): Task => ({
+  question: input.question,
+  answerKind: 'text',
+  solution: `x = ${input.solution}`,
+  explanation: input.explanation,
+  visualContent: input.visualContent,
+  sampleAnswer: {
+    kind: 'equationSteps',
+    ops: input.solutionOps.map(eqOpKey),
+  },
+  interactive: {
+    type: 'equationSteps',
+    props: {
+      start: input.start,
+      buttons: input.buttons,
+      solution: input.solution,
+      instruction:
+        input.instruction ??
+        'Stelle die Gleichung Schritt für Schritt um (Tippe die Umformungen):',
+    },
+  },
+  check: (answer: UserInput) => {
+    if (answer.kind === 'equationSteps') {
+      const ops = answer.ops
+        .map(eqParseOpKey)
+        .filter((o): o is EqOp => o !== null)
+      const end = eqApplyOps(input.start, ops)
+      return eqIsSolved(end) && eqSolutionX(end) === input.solution
+    }
+    if (answer.kind === 'value') {
+      const n = Number(String(answer.value).replace(',', '.').trim())
+      return Number.isFinite(n) && n === input.solution
+    }
+    return false
+  },
+})
 
 /**
  * Combine multiple task generators into one, randomly selecting a variant each time.

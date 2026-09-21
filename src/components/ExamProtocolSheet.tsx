@@ -55,6 +55,9 @@ export const formatExamAnswer = (input: UserInput): string => {
     const parts = Object.entries(input.values).map(([k, v]) => `${k}=${v}`)
     return parts.length ? parts.join(', ') : '—'
   }
+  if (input.kind === 'equationSteps') {
+    return input.ops.length ? input.ops.join(' → ') : '—'
+  }
   return input.value.trim() || '—'
 }
 

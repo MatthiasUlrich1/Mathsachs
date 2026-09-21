@@ -10,6 +10,7 @@ import {
   generateCuboidSvg,
   generateLShapeSvg,
   generateLinearFunctionSvg,
+  generatePyramidSurfaceSvg,
   generateRectangleSvg,
   generateTriangleSvg,
   generateUShapeSvg,
@@ -127,6 +128,22 @@ export const SVG_TEMPLATES: SvgTemplate[] = [
       }),
     exportCall: (p) =>
       `generateCuboidSvg({ lengthLabel: ${JSON.stringify(s(p, 'lengthLabel', '5 cm'))}, widthLabel: ${JSON.stringify(s(p, 'widthLabel', '3 cm'))}, heightLabel: ${JSON.stringify(s(p, 'heightLabel', '4 cm'))} })`,
+  },
+  {
+    id: 'pyramidSurface',
+    label: 'Pyramide (Oberfläche)',
+    group: 'mathe',
+    params: [
+      { key: 'edgeLabel', label: 'Grundkante a', defaultValue: '6 cm' },
+      { key: 'slantHeightLabel', label: 'Seitenflächenhöhe hₛ', defaultValue: '5 cm' },
+    ],
+    build: (p) =>
+      generatePyramidSurfaceSvg({
+        edgeLabel: s(p, 'edgeLabel', '6 cm'),
+        slantHeightLabel: s(p, 'slantHeightLabel', '5 cm'),
+      }),
+    exportCall: (p) =>
+      `generatePyramidSurfaceSvg({ edgeLabel: ${JSON.stringify(s(p, 'edgeLabel', '6 cm'))}, slantHeightLabel: ${JSON.stringify(s(p, 'slantHeightLabel', '5 cm'))} })`,
   },
   {
     id: 'lShape',

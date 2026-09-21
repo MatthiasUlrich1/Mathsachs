@@ -1,0 +1,95 @@
+.eq-steps {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  margin: 12px 0 4px;
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+.eq-steps__instruction {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted, #64748b);
+  text-align: center;
+}
+
+.eq-steps__sheet {
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace;
+  font-size: 1.15rem;
+  line-height: 1.65;
+}
+
+.eq-steps__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px 18px;
+  align-items: baseline;
+}
+
+.eq-steps__eq {
+  color: var(--text, #e2e8f0);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.eq-steps__op {
+  color: var(--muted, #94a3b8);
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.eq-steps__hi {
+  color: #86efac;
+  font-weight: 700;
+}
+
+.eq-steps__done {
+  margin: 10px 0 0;
+  color: #86efac;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.eq-steps__hint {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted, #64748b);
+  text-align: center;
+}
+
+.eq-steps__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.eq-steps__btn {
+  min-width: 4rem;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace;
+  color: var(--text, #e2e8f0);
+  background: rgba(15, 23, 42, 0.75);
+  border: 2px solid rgba(148, 163, 184, 0.35);
+  cursor: pointer;
+}
+
+.eq-steps__btn:hover:not(:disabled) {
+  border-color: var(--accent, #6366f1);
+}
+
+.eq-steps__tools {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}

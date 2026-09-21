@@ -4,7 +4,7 @@ import { klasse7 } from './math7'
 import { runGradeSelfTest } from './gradeSelfTest'
 
 describe('Klasse 7 curriculum', () => {
-  runGradeSelfTest(klasse7, { idPrefix: 'k7-', areaCount: 4, minTopics: 16 })
+  runGradeSelfTest(klasse7, { idPrefix: 'k7-', areaCount: 4, minTopics: 17 })
 
   it('emits SVG for Phase-2 geometry topics', () => {
     const ids = [
@@ -14,6 +14,7 @@ describe('Klasse 7 curriculum', () => {
       'k7-lb3-volumen-prisma',
       'k7-lb3-volumen-pyramide',
       'k7-lb3-oberflaeche-quader',
+      'k7-lb3-oberflaeche-pyramide',
     ]
     const topics = klasse7.areas.flatMap((a) => a.topics)
     for (const id of ids) {
