@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-21T19:41:16.557Z",
+  "updatedAt": "2026-09-21T19:47:01.705Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -7,9 +7,9 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Mathematik",
-      "version": "1.2.2",
+      "version": "1.2.3",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen.json",
-      "size": 66505,
+      "size": 66552,
       "changelog": "K7: Gleichungsumstellung mehrzeilig (Äquivalenz); Oberfläche einer Pyramide + SVG."
     },
     {

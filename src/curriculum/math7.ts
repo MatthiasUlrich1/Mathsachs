@@ -14,6 +14,7 @@ import {
 import { formatDe, roundTo } from '../lib/num'
 import {
   choicePickTask,
+  dragDropSlotsTask,
   dragDropSortTask,
   equationStepsTask,
   mixedVariants,
@@ -23,12 +24,7 @@ import {
   visualTask,
 } from './taskHelpers'
 import type { Grade, Topic } from './types'
-import {
-  opKey,
-  solveAddPath,
-  solveMulPath,
-  suggestOps,
-} from '../lib/equationSteps'
+import { opKey, solveAddPath, suggestOps } from '../lib/equationSteps'
 
 /** Format a signed integer, wrapping negatives in parentheses with a real minus. */
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
@@ -489,12 +485,12 @@ const gleichungAdd: Topic = {
 const gleichungMul: Topic = {
   id: 'k7-lb2-gleichung-mul',
   title: 'Gleichung umstellen: a · x = b',
-  hint: 'Teile beide Seiten durch den Faktor vor x (Button „| : a“).',
+  hint: 'Baue die Umstellung aus Term-Bausteinen: x = b : a (Division durch den Faktor vor x).',
   pointsPerTask: 10,
   difficulty: 1,
-  keywords: ['Gleichung', 'lösen', 'x', 'Faktor', 'Division', 'Multiplikation'],
+  keywords: ['Gleichung', 'lösen', 'x', 'Faktor', 'Division', 'Multiplikation', 'Terme'],
   fachwissen: {
-    text: 'Gleichungen der Form a · x = b löst du, indem du beide Seiten durch a dividierst (a ≠ 0): x = b / a. Auch hier: jeden Schritt untereinander notieren und rechts die Umformung vermerken („| : a“). Das ist eine andere Umformungsart als bei x + a = b.',
+    text: 'Gleichungen der Form a · x = b löst du, indem du beide Seiten durch a dividierst (a ≠ 0): x = b : a. Hier setzt du die Terme selbst in die Plätze — anders als bei x + a = b, wo du Äquivalenzumformungen per Button wählst.',
     quelle: 'Wikipedia: Lineare Gleichung',
     url: 'https://de.wikipedia.org/wiki/Lineare_Gleichung',
   },
@@ -502,21 +498,32 @@ const gleichungMul: Topic = {
     const a = nonZero(rng, -9, 9)
     const x = nonZero(rng, -12, 12)
     const b = a * x
-    const start = { ax: a, b: 0, cx: 0, d: b }
-    const solutionOps = solveMulPath(a, b)
-    const buttons = suggestOps(start, rng)
-    const keys = new Set(buttons.map(opKey))
-    for (const op of solutionOps) {
-      if (!keys.has(opKey(op))) buttons.unshift(op)
+    const given = `${num(a)} · x = ${num(b)}`
+    // Student builds the rearranged line: x = b : a (items identified by value, not label)
+    const partLabels = ['x', '=', num(b), ':', num(a)]
+    const distractorLabels = ['+', '−', '·', `${num(a)} · x`].filter(
+      (d) => !partLabels.includes(d),
+    )
+    const allLabels = [...partLabels, ...distractorLabels]
+    const items = allLabels.map((label, i) => ({ label, value: i + 1 }))
+    const shuffled = [...items]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = randInt(rng, 0, i)
+      ;[shuffled[i], shuffled[j]] = [shuffled[j]!, shuffled[i]!]
     }
-    return equationStepsTask({
-      question: `Stelle die Gleichung Schritt für Schritt um und löse nach x: ${num(a)} · x = ${b}`,
-      start,
-      buttons: buttons.slice(0, 6),
-      solutionOps,
-      solution: x,
-      explanation: `Teile beide Seiten durch ${num(a)}: x = ${b} : ${num(a)} = ${x}.`,
-      instruction: 'Tippe die passende Umformung (Division/Multiplikation), bis x allein steht:',
+    const correctSlots = partLabels.map((_, i) =>
+      shuffled.findIndex((it) => it.value === i + 1),
+    )
+    return dragDropSlotsTask({
+      question: `Stelle um nach x. Gegeben: ${given}. Setze die Terme in die richtige Reihenfolge.`,
+      items: shuffled,
+      correctSlots,
+      solution: `x = ${num(b)} : ${num(a)} = ${x}`,
+      explanation: `Teile beide Seiten durch ${num(a)}: x = ${num(b)} : ${num(a)} = ${x}.`,
+      instruction:
+        'Tippe oder ziehe die Terme in die Plätze (einen Block brauchst du nicht). Baue: x = b : a',
+      checkMode: 'strict',
+      visualContent: `<div class="eq-given-line" style="font-size:1.35rem;font-weight:700;text-align:center;padding:0.75rem 1rem;color:#e2e8f0;letter-spacing:0.02em">${given}&nbsp;&nbsp;<span style="color:#86efac;font-weight:600">| : ${num(a)}</span></div>`,
     })
   },
 }

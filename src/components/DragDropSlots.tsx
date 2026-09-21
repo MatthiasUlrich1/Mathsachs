@@ -15,7 +15,8 @@ type DragState =
   | { from: 'slot'; slotIdx: number }
 
 /**
- * Formula builder: drag chips from a pool into slots.
+ * Formula builder: tap or drag chips from a pool into slots.
+ * Tap fills the next empty slot; drag targets a specific slot.
  * Uses Pointer Events so touch (iOS) works — HTML5 DnD does not on Safari.
  */
 export const DragDropSlots: React.FC<DragDropSlotsProps> = ({
@@ -28,12 +29,14 @@ export const DragDropSlots: React.FC<DragDropSlotsProps> = ({
   const [overSlot, setOverSlot] = useState<number | null>(null)
   const [overPool, setOverPool] = useState(false)
   const dragRef = useRef<DragState | null>(null)
+  const pointerOrigin = useRef<{ x: number; y: number } | null>(null)
 
   const used = new Set(slots.filter((s): s is number => s !== null))
   const poolIndices = items.map((_, i) => i).filter((i) => !used.has(i))
 
   const clearDrag = () => {
     dragRef.current = null
+    pointerOrigin.current = null
     setDrag(null)
     setOverSlot(null)
     setOverPool(false)
@@ -47,6 +50,12 @@ export const DragDropSlots: React.FC<DragDropSlotsProps> = ({
     }
     next[slotIdx] = itemIdx
     onChange(next)
+  }
+
+  const fillNextEmpty = (itemIdx: number) => {
+    const empty = slots.findIndex((s) => s === null)
+    if (empty < 0) return
+    placeInSlot(empty, itemIdx)
   }
 
   const returnToPool = (slotIdx: number) => {
@@ -72,6 +81,7 @@ export const DragDropSlots: React.FC<DragDropSlotsProps> = ({
   const beginDrag = (e: React.PointerEvent<HTMLElement>, state: DragState) => {
     if (e.pointerType === 'mouse' && e.button !== 0) return
     e.currentTarget.setPointerCapture(e.pointerId)
+    pointerOrigin.current = { x: e.clientX, y: e.clientY }
     dragRef.current = state
     setDrag(state)
   }
@@ -86,6 +96,10 @@ export const DragDropSlots: React.FC<DragDropSlotsProps> = ({
   const onPointerUp = (e: React.PointerEvent<HTMLElement>) => {
     const current = dragRef.current
     if (!current) return
+    const origin = pointerOrigin.current
+    const moved =
+      origin != null &&
+      (Math.abs(e.clientX - origin.x) > 8 || Math.abs(e.clientY - origin.y) > 8)
     const t = targetFromPoint(e.clientX, e.clientY)
     if (t?.kind === 'slot') {
       if (current.from === 'pool') {
@@ -102,6 +116,9 @@ export const DragDropSlots: React.FC<DragDropSlotsProps> = ({
       }
     } else if (t?.kind === 'pool' && current.from === 'slot') {
       returnToPool(current.slotIdx)
+    } else if (!moved && current.from === 'pool') {
+      // Tap chip → fill next empty slot (button-like)
+      fillNextEmpty(current.itemIdx)
     }
     try {
       e.currentTarget.releasePointerCapture(e.pointerId)

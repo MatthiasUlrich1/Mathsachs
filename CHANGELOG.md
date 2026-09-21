@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.80] – 2026-09-21
+
+### Geändert
+- **ID 2474 (a·x=b):** Terme selbst in Slots setzen (`x = b : a`) — Tippen oder
+  Ziehen; klar getrennt von ID 1607 (Äquivalenzumformung per Button). Mathe-Pack
+  **1.2.3**.
+
 ## [0.27.79] – 2026-09-21
 
 ### Geändert
