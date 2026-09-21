@@ -1,19 +1,36 @@
 import { useEffect, useMemo, useState } from 'react'
 import {
   AUTHORING_ELEMENT_OPTIONS,
+  AUTHORING_NEW_TOPIC,
   createEmptyDraft,
   deleteDraft,
   draftToTask,
   exportGeneratorSnippet,
+  loadAuthoringAreas,
+  loadAuthoringPacks,
   loadDrafts,
+  type AuthoringAreaOption,
   type AuthoringElementType,
   type DraftAuthoringTask,
   upsertDraft,
   validateDraft,
 } from '../lib/taskAuthoring'
+import {
+  defaultSliderParamsForPreview,
+  FUNCTION_PREVIEW_OPTIONS,
+  type FunctionPreviewKind,
+} from '../lib/functionGraph'
+import {
+  emptyCoordinateScene,
+  parseCoordinateScene,
+  type CoordinateScene,
+} from '../lib/coordinateScene'
+import { CoordinateGraphEditor } from './CoordinateGraphEditor'
+import type { TaskRequestPackOption } from '../legal/taskRequest'
 import type { UserRole } from '../lib/roles'
 import { initTaskInput, TaskInteractive, TaskVisual } from './TaskMedia'
 import { TaskAuthoringSvgPicker } from './TaskAuthoringSvgPicker'
+import { CoordinateClick } from './CoordinateClick'
 import type { UserInput } from '../curriculum/types'
 
 interface Props {
@@ -63,8 +80,32 @@ function defaultPropsFor(type: AuthoringElementType): Record<string, unknown> {
       return { a: 23, b: 45, operator: '+', value: 68 }
     case 'coordinateClick':
       return { x: 2, y: 3 }
+    case 'coordinateDraw':
+      return {
+        solutionScene: {
+          xRange: [-5, 5],
+          yRange: [-5, 5],
+          snap: 'half',
+          objects: [
+            {
+              id: 'sol-line',
+              kind: 'line',
+              x1: 0,
+              y1: 0,
+              x2: 1,
+              y2: 1,
+            },
+          ],
+        },
+      }
     case 'paramSlider':
-      return { paramId: 'm', paramLabel: 'm', min: -5, max: 5, step: 1, correct: 2 }
+      return {
+        preview: 'linear',
+        sliders: [
+          { id: 'm', label: 'm', min: -5, max: 5, step: 1, correct: 1 },
+          { id: 'n', label: 'n', min: -5, max: 5, step: 1, correct: 0 },
+        ],
+      }
     default:
       return {}
   }
@@ -176,33 +217,7 @@ export function TaskAuthoringPanel({ role }: Props) {
       </div>
 
       <h3 className="task-authoring__sub">Ziel</h3>
-      <div className="task-authoring__grid">
-        {(
-          [
-            ['packId', 'Pack-ID'],
-            ['gradeId', 'Klasse/Stufe'],
-            ['areaId', 'Lernbereich'],
-            ['topicId', 'Themen-ID'],
-            ['topicTitle', 'Themen-Titel'],
-          ] as const
-        ).map(([key, label]) => (
-          <div className="field" key={key}>
-            <label className="field__label" htmlFor={`ta-${key}`}>
-              {label}
-            </label>
-            <input
-              id={`ta-${key}`}
-              value={draft.target[key]}
-              onChange={(e) =>
-                setDraft({
-                  ...draft,
-                  target: { ...draft.target, [key]: e.target.value },
-                })
-              }
-            />
-          </div>
-        ))}
-      </div>
+      <TargetCascadingSelects draft={draft} setDraft={setDraft} />
 
       <h3 className="task-authoring__sub">Interaktion</h3>
       <div className="field">
@@ -418,6 +433,252 @@ export function TaskAuthoringPanel({ role }: Props) {
   )
 }
 
+function TargetCascadingSelects({
+  draft,
+  setDraft,
+}: {
+  draft: DraftAuthoringTask
+  setDraft: (d: DraftAuthoringTask) => void
+}) {
+  const [packs, setPacks] = useState<TaskRequestPackOption[]>([])
+  const [packsLoading, setPacksLoading] = useState(true)
+  const [areas, setAreas] = useState<AuthoringAreaOption[]>([])
+  const [areasLoading, setAreasLoading] = useState(false)
+  const [topicChoice, setTopicChoice] = useState(() =>
+    draft.target.topicId ? draft.target.topicId : AUTHORING_NEW_TOPIC,
+  )
+
+  useEffect(() => {
+    let cancelled = false
+    setPacksLoading(true)
+    void loadAuthoringPacks()
+      .then((next) => {
+        if (cancelled) return
+        setPacks(next)
+        setPacksLoading(false)
+      })
+      .catch(() => {
+        if (cancelled) return
+        setPacks([])
+        setPacksLoading(false)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  const selectedPack = packs.find((p) => p.id === draft.target.packId)
+  const grades = selectedPack?.grades ?? []
+
+  useEffect(() => {
+    if (!draft.target.packId || !draft.target.gradeId) {
+      setAreas([])
+      setAreasLoading(false)
+      return
+    }
+    let cancelled = false
+    setAreasLoading(true)
+    void loadAuthoringAreas(draft.target.packId, draft.target.gradeId)
+      .then((next) => {
+        if (cancelled) return
+        setAreas(next)
+        setAreasLoading(false)
+      })
+      .catch(() => {
+        if (cancelled) return
+        setAreas([])
+        setAreasLoading(false)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [draft.target.packId, draft.target.gradeId])
+
+  const selectedArea = areas.find((a) => a.id === draft.target.areaId)
+  const topics = selectedArea?.topics ?? []
+  const gradeDisabled = !draft.target.packId || packsLoading || grades.length === 0
+  const areaDisabled = !draft.target.gradeId || areasLoading || areas.length === 0
+  const topicDisabled = !draft.target.areaId || topics.length === 0
+  const isNewTopic = topicChoice === AUTHORING_NEW_TOPIC || !draft.target.topicId
+
+  return (
+    <div className="task-authoring__target">
+      <div className="field">
+        <label className="field__label" htmlFor="ta-pack">
+          Lehrplan
+        </label>
+        <select
+          id="ta-pack"
+          className="answer-input__field"
+          value={draft.target.packId}
+          disabled={packsLoading || packs.length === 0}
+          onChange={(e) => {
+            setDraft({
+              ...draft,
+              target: {
+                ...draft.target,
+                packId: e.target.value,
+                gradeId: '',
+                areaId: '',
+                topicId: '',
+                topicTitle: '',
+              },
+            })
+            setTopicChoice(AUTHORING_NEW_TOPIC)
+          }}
+        >
+          <option value="">
+            {packsLoading ? 'Lehrpläne werden geladen …' : 'Lehrplan wählen'}
+          </option>
+          {packs.map((pack) => (
+            <option key={pack.id} value={pack.id}>
+              {pack.title}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className="field">
+        <label className="field__label" htmlFor="ta-grade">
+          Klassenstufe
+        </label>
+        <select
+          id="ta-grade"
+          className="answer-input__field"
+          value={draft.target.gradeId}
+          disabled={gradeDisabled}
+          onChange={(e) => {
+            setDraft({
+              ...draft,
+              target: {
+                ...draft.target,
+                gradeId: e.target.value,
+                areaId: '',
+                topicId: '',
+                topicTitle: '',
+              },
+            })
+            setTopicChoice(AUTHORING_NEW_TOPIC)
+          }}
+        >
+          <option value="">
+            {!draft.target.packId ? 'Zuerst Lehrplan wählen' : 'Klassenstufe wählen'}
+          </option>
+          {grades.map((g) => (
+            <option key={g.id} value={g.id}>
+              {g.gradeTitle}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className="field">
+        <label className="field__label" htmlFor="ta-area">
+          Lernbereich
+        </label>
+        <select
+          id="ta-area"
+          className="answer-input__field"
+          value={draft.target.areaId}
+          disabled={areaDisabled}
+          onChange={(e) => {
+            setDraft({
+              ...draft,
+              target: {
+                ...draft.target,
+                areaId: e.target.value,
+                topicId: '',
+                topicTitle: '',
+              },
+            })
+            setTopicChoice(AUTHORING_NEW_TOPIC)
+          }}
+        >
+          <option value="">
+            {!draft.target.gradeId
+              ? 'Zuerst Klassenstufe wählen'
+              : areasLoading
+                ? 'Lernbereiche werden geladen …'
+                : 'Lernbereich wählen'}
+          </option>
+          {areas.map((a) => (
+            <option key={a.id} value={a.id}>
+              {a.title}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className="field">
+        <label className="field__label" htmlFor="ta-topic">
+          Thema
+        </label>
+        <select
+          id="ta-topic"
+          className="answer-input__field"
+          value={isNewTopic ? AUTHORING_NEW_TOPIC : draft.target.topicId}
+          disabled={!draft.target.areaId}
+          onChange={(e) => {
+            const v = e.target.value
+            setTopicChoice(v)
+            if (v === AUTHORING_NEW_TOPIC) {
+              setDraft({
+                ...draft,
+                target: { ...draft.target, topicId: '', topicTitle: '' },
+              })
+              return
+            }
+            const topic = topics.find((t) => t.id === v)
+            setDraft({
+              ...draft,
+              target: {
+                ...draft.target,
+                topicId: v,
+                topicTitle: topic?.title ?? '',
+              },
+            })
+          }}
+        >
+          <option value={AUTHORING_NEW_TOPIC}>
+            {topicDisabled && !draft.target.areaId
+              ? 'Zuerst Lernbereich wählen'
+              : '— Neues Thema —'}
+          </option>
+          {topics.map((t) => (
+            <option key={t.id} value={t.id}>
+              {t.title}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {isNewTopic && (
+        <div className="field">
+          <label className="field__label" htmlFor="ta-topic-title">
+            Titel für neues Thema
+          </label>
+          <input
+            id="ta-topic-title"
+            className="answer-input__field"
+            value={draft.target.topicTitle}
+            placeholder="z. B. Mondphasen sortieren"
+            onChange={(e) =>
+              setDraft({
+                ...draft,
+                target: { ...draft.target, topicId: '', topicTitle: e.target.value },
+              })
+            }
+          />
+        </div>
+      )}
+
+      <p className="muted small">
+        Pack- und Themen-IDs werden intern gesetzt und erscheinen erst beim Code-Export.
+      </p>
+    </div>
+  )
+}
+
 function ElementPropsForm({
   draft,
   setDraft,
@@ -524,25 +785,237 @@ function ElementPropsForm({
           {field('value', 'Ergebnis')}
         </>
       )
-    case 'coordinateClick':
+    case 'coordinateClick': {
+      const x = Number(propStr(draft, 'x', '0'))
+      const y = Number(propStr(draft, 'y', '0'))
+      const xOk = Number.isFinite(x)
+      const yOk = Number.isFinite(y)
       return (
         <>
-          {field('x', 'x')}
-          {field('y', 'y')}
+          <p className="muted small">
+            Tipp auf dem Gitter setzt den Lösungspunkt (x/y).
+          </p>
+          <CoordinateClick
+            xRange={[-5, 8]}
+            yRange={[-5, 8]}
+            value={xOk && yOk ? { x, y } : null}
+            onChange={(point) =>
+              setDraft({
+                ...draft,
+                element: {
+                  ...draft.element,
+                  props: { ...draft.element.props, x: point.x, y: point.y },
+                },
+              })
+            }
+            instruction="Tippe den gesuchten Punkt:"
+          />
+          <div className="task-authoring__grid">
+            {field('x', 'x')}
+            {field('y', 'y')}
+          </div>
         </>
       )
-    case 'paramSlider':
+    }
+    case 'coordinateDraw': {
+      const scene =
+        parseCoordinateScene(draft.element.props.solutionScene) ??
+        emptyCoordinateScene({
+          objects: [
+            { id: 'sol-line', kind: 'line', x1: 0, y1: 0, x2: 1, y2: 1 },
+          ],
+        })
       return (
         <>
-          {field('paramId', 'Param-ID')}
-          {field('paramLabel', 'Label')}
-          {field('min', 'Min')}
-          {field('max', 'Max')}
-          {field('step', 'Schrittweite')}
-          {field('correct', 'Richtiger Wert')}
+          <p className="muted small">
+            Zeichne die Musterlösung: Geraden, Strecken, Halbgeraden, Punkte und
+            Texte. Schüler bekommen dasselbe Werkzeug.
+          </p>
+          <CoordinateGraphEditor
+            scene={scene}
+            onChange={(solutionScene: CoordinateScene) =>
+              setDraft({
+                ...draft,
+                element: {
+                  ...draft.element,
+                  props: { ...draft.element.props, solutionScene },
+                },
+              })
+            }
+            instruction="Musterlösung im Koordinatensystem zeichnen:"
+          />
         </>
+      )
+    }
+    case 'paramSlider':
+      return (
+        <ParamSliderAuthorForm draft={draft} setDraft={setDraft} />
       )
     default:
       return null
   }
+}
+
+type SliderRow = {
+  id: string
+  label: string
+  min: number
+  max: number
+  step: number
+  correct: number
+}
+
+function readSliderRows(draft: DraftAuthoringTask): SliderRow[] {
+  const raw = draft.element.props.sliders
+  if (Array.isArray(raw) && raw.length) {
+    return raw.map((r) => {
+      const row = r as Record<string, unknown>
+      return {
+        id: String(row.id ?? 'p'),
+        label: String(row.label ?? row.id ?? 'p'),
+        min: Number(row.min ?? 0),
+        max: Number(row.max ?? 10),
+        step: Number(row.step ?? 1) || 1,
+        correct: Number(row.correct ?? 0),
+      }
+    })
+  }
+  // Legacy single-param drafts
+  const id = String(draft.element.props.paramId ?? 'm')
+  return [
+    {
+      id,
+      label: String(draft.element.props.paramLabel ?? id),
+      min: Number(draft.element.props.min ?? 0),
+      max: Number(draft.element.props.max ?? 10),
+      step: Number(draft.element.props.step ?? 1) || 1,
+      correct: Number(draft.element.props.correct ?? 0),
+    },
+  ]
+}
+
+function ParamSliderAuthorForm({
+  draft,
+  setDraft,
+}: {
+  draft: DraftAuthoringTask
+  setDraft: (d: DraftAuthoringTask) => void
+}) {
+  const previewRaw = String(draft.element.props.preview ?? 'linear')
+  const previewOk = FUNCTION_PREVIEW_OPTIONS.some((o) => o.id === previewRaw)
+  const preview = (previewOk ? previewRaw : 'linear') as FunctionPreviewKind
+  const rows = readSliderRows(draft)
+
+  const setSliders = (sliders: SliderRow[], nextPreview = preview) => {
+    setDraft({
+      ...draft,
+      element: {
+        ...draft.element,
+        props: {
+          ...draft.element.props,
+          preview: nextPreview,
+          sliders,
+        },
+      },
+    })
+  }
+
+  return (
+    <>
+      <div className="field">
+        <label className="field__label" htmlFor="ta-fn-preview">
+          Live-Vorschau (Funktionsgraph)
+        </label>
+        <select
+          id="ta-fn-preview"
+          className="answer-input__field"
+          value={preview}
+          onChange={(e) => {
+            const next = e.target.value as FunctionPreviewKind
+            const defaults = defaultSliderParamsForPreview(next)
+            setSliders(defaults, next)
+          }}
+        >
+          {FUNCTION_PREVIEW_OPTIONS.map((o) => (
+            <option key={o.id} value={o.id}>
+              {o.label}
+            </option>
+          ))}
+        </select>
+      </div>
+      <p className="muted small">
+        Schüler stellen die Parameter per Slider; der Graph aktualisiert sich live.
+      </p>
+      {rows.map((row, idx) => (
+        <div className="task-authoring__grid" key={`${row.id}-${idx}`}>
+          <div className="field">
+            <label className="field__label">ID</label>
+            <input
+              value={row.id}
+              onChange={(e) => {
+                const next = [...rows]
+                next[idx] = { ...row, id: e.target.value }
+                setSliders(next)
+              }}
+            />
+          </div>
+          <div className="field">
+            <label className="field__label">Label</label>
+            <input
+              value={row.label}
+              onChange={(e) => {
+                const next = [...rows]
+                next[idx] = { ...row, label: e.target.value }
+                setSliders(next)
+              }}
+            />
+          </div>
+          <div className="field">
+            <label className="field__label">Min</label>
+            <input
+              value={String(row.min)}
+              onChange={(e) => {
+                const next = [...rows]
+                next[idx] = { ...row, min: Number(e.target.value) }
+                setSliders(next)
+              }}
+            />
+          </div>
+          <div className="field">
+            <label className="field__label">Max</label>
+            <input
+              value={String(row.max)}
+              onChange={(e) => {
+                const next = [...rows]
+                next[idx] = { ...row, max: Number(e.target.value) }
+                setSliders(next)
+              }}
+            />
+          </div>
+          <div className="field">
+            <label className="field__label">Schritt</label>
+            <input
+              value={String(row.step)}
+              onChange={(e) => {
+                const next = [...rows]
+                next[idx] = { ...row, step: Number(e.target.value) || 1 }
+                setSliders(next)
+              }}
+            />
+          </div>
+          <div className="field">
+            <label className="field__label">Richtig</label>
+            <input
+              value={String(row.correct)}
+              onChange={(e) => {
+                const next = [...rows]
+                next[idx] = { ...row, correct: Number(e.target.value) }
+                setSliders(next)
+              }}
+            />
+          </div>
+        </div>
+      ))}
+    </>
+  )
 }

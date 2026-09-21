@@ -49,6 +49,14 @@ describe('taskAuthoring draftToTask / export / storage', () => {
     return {
       ...d,
       ...overrides,
+      target: {
+        packId: 'pack-test',
+        gradeId: 'grade-test',
+        areaId: 'area-test',
+        topicId: 'topic-test',
+        topicTitle: 'Testthema',
+        ...overrides.target,
+      },
       task: {
         question: 'Testfrage?',
         unit: 'cm',
@@ -101,6 +109,59 @@ describe('taskAuthoring draftToTask / export / storage', () => {
       },
     })
     const task = draftToTask(draft)
+    expect(task.check(task.sampleAnswer)).toBe(true)
+  })
+
+  it('builds paramSlider with function preview', () => {
+    const draft = baseDraft({
+      element: {
+        type: 'paramSlider',
+        props: {
+          preview: 'quadratic',
+          sliders: [
+            { id: 'a', label: 'a', min: -3, max: 3, step: 1, correct: 1 },
+            { id: 'b', label: 'b', min: -5, max: 5, step: 1, correct: 0 },
+            { id: 'c', label: 'c', min: -5, max: 5, step: 1, correct: -2 },
+          ],
+        },
+      },
+      task: {
+        question: 'Stelle die Parabel ein.',
+        unit: '',
+        solution: 'a=1, b=0, c=-2',
+        explanation: 'Scheitel auf der y-Achse.',
+        hint: '',
+      },
+    })
+    const task = draftToTask(draft)
+    expect(task.interactive?.type).toBe('paramSlider')
+    expect(task.interactive?.props.preview).toBe('quadratic')
+    expect(task.check(task.sampleAnswer)).toBe(true)
+  })
+
+  it('builds coordinateDraw task from solution scene', () => {
+    const draft = baseDraft({
+      element: {
+        type: 'coordinateDraw',
+        props: {
+          solutionScene: {
+            xRange: [-5, 5],
+            yRange: [-5, 5],
+            snap: 'half',
+            objects: [{ id: 'l', kind: 'line', x1: 0, y1: 0, x2: 2, y2: 1 }],
+          },
+        },
+      },
+      task: {
+        question: 'Zeichne die Gerade.',
+        unit: '',
+        solution: 'Gerade durch Ursprung',
+        explanation: 'Steigung 1/2.',
+        hint: '',
+      },
+    })
+    const task = draftToTask(draft)
+    expect(task.interactive?.type).toBe('coordinateDraw')
     expect(task.check(task.sampleAnswer)).toBe(true)
   })
 
@@ -171,5 +232,21 @@ describe('taskAuthoring draftToTask / export / storage', () => {
     expect(loaded).toHaveLength(1)
     expect(loaded[0]?.id).toBe(draft.id)
     expect(loaded[0]?.element.type).toBe('value')
+  })
+
+  it('requires Lehrplan cascade fields', () => {
+    const draft = createEmptyDraft('entwickler')
+    draft.task.question = 'Q?'
+    draft.task.solution = '1'
+    draft.task.explanation = 'E'
+    draft.element = { type: 'value', props: { value: 1, answerKind: 'integer' } }
+    expect(validateDraft(draft)).toEqual(
+      expect.arrayContaining([
+        'Lehrplan wählen.',
+        'Klassenstufe wählen.',
+        'Lernbereich wählen.',
+        'Thema wählen oder neuen Titel eingeben.',
+      ]),
+    )
   })
 })

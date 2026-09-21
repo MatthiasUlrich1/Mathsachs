@@ -4,8 +4,14 @@ import {
   sanitizeSvg,
   SVG_TEMPLATES,
 } from '../lib/svgTemplateRegistry'
+import {
+  emptyCoordinateScene,
+  generateCoordinateSceneSvg,
+  parseCoordinateScene,
+} from '../lib/coordinateScene'
 import type { VisualSpec } from '../lib/taskAuthoring'
 import { TaskVisual } from './TaskMedia'
+import { CoordinateGraphEditor } from './CoordinateGraphEditor'
 
 interface Props {
   label: string
@@ -14,12 +20,16 @@ interface Props {
   enabled: boolean
 }
 
-/** SVG mode picker: none / template / raw editor. */
+/** SVG mode picker: none / template / scene editor / raw editor. */
 export function TaskAuthoringSvgPicker({ label, value, onChange, enabled }: Props) {
   const template = value.templateId ? getSvgTemplate(value.templateId) : undefined
   const preview = useMemo(() => {
     if (!enabled || value.mode === 'none') return undefined
     if (value.mode === 'raw') return sanitizeSvg(value.svg ?? '') || undefined
+    if (value.mode === 'scene') {
+      const scene = parseCoordinateScene(value.scene) ?? emptyCoordinateScene()
+      return generateCoordinateSceneSvg(scene)
+    }
     if (value.mode === 'template' && template) {
       try {
         return template.build(value.params ?? {})
@@ -48,6 +58,7 @@ export function TaskAuthoringSvgPicker({ label, value, onChange, enabled }: Prop
             [
               ['none', 'Kein Visual'],
               ['template', 'Vorlage'],
+              ['scene', 'Zeichnen'],
               ['raw', 'SVG-Text'],
             ] as const
           ).map(([mode, text]) => (
@@ -56,7 +67,16 @@ export function TaskAuthoringSvgPicker({ label, value, onChange, enabled }: Prop
                 type="radio"
                 name={`svg-mode-${label}`}
                 checked={value.mode === mode}
-                onChange={() => onChange({ ...value, mode })}
+                onChange={() =>
+                  onChange({
+                    ...value,
+                    mode,
+                    scene:
+                      mode === 'scene'
+                        ? (parseCoordinateScene(value.scene) ?? emptyCoordinateScene())
+                        : value.scene,
+                  })
+                }
               />
               {text}
             </label>
@@ -84,6 +104,13 @@ export function TaskAuthoringSvgPicker({ label, value, onChange, enabled }: Prop
               <option value="">— wählen —</option>
               <optgroup label="Mathe">
                 {SVG_TEMPLATES.filter((t) => t.group === 'mathe').map((t) => (
+                  <option key={t.id} value={t.id}>
+                    {t.label}
+                  </option>
+                ))}
+              </optgroup>
+              <optgroup label="Funktionen / Koordinaten">
+                {SVG_TEMPLATES.filter((t) => t.group === 'funktionen').map((t) => (
                   <option key={t.id} value={t.id}>
                     {t.label}
                   </option>
@@ -123,7 +150,12 @@ export function TaskAuthoringSvgPicker({ label, value, onChange, enabled }: Prop
               onClick={() => {
                 try {
                   const svg = template.build(value.params ?? {})
-                  onChange({ mode: 'raw', svg, templateId: template.id, params: value.params })
+                  onChange({
+                    mode: 'raw',
+                    svg,
+                    templateId: template.id,
+                    params: value.params,
+                  })
                 } catch {
                   /* ignore */
                 }
@@ -133,6 +165,14 @@ export function TaskAuthoringSvgPicker({ label, value, onChange, enabled }: Prop
             </button>
           )}
         </>
+      )}
+
+      {value.mode === 'scene' && (
+        <CoordinateGraphEditor
+          scene={parseCoordinateScene(value.scene) ?? emptyCoordinateScene()}
+          onChange={(scene) => onChange({ ...value, mode: 'scene', scene })}
+          instruction="Geraden zeichnen und Objekte frei positionieren (Raster: frei / ½ / ganz)."
+        />
       )}
 
       {value.mode === 'raw' && (
@@ -150,7 +190,7 @@ export function TaskAuthoringSvgPicker({ label, value, onChange, enabled }: Prop
         </div>
       )}
 
-      {preview ? <TaskVisual html={preview} /> : null}
+      {preview && value.mode !== 'scene' ? <TaskVisual html={preview} /> : null}
     </div>
   )
 }

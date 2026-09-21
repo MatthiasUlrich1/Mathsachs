@@ -9,6 +9,21 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.75] – 2026-09-21
+
+### Hinzugefügt
+- **Aufgabengenerator Funktionsgraphen:** Vorlagen für Gerade, Parabel, kubisch,
+  Potenz, Betrag, 1/x, Wurzel, Exponential, ln, Sinus/Cosinus/Tangens, eigener
+  Ausdruck, Zwei-Funktionen und Vektoren; Live-Vorschau am Parameter-Slider.
+- **Koordinatensystem zeichnen:** Freihand-Geraden/Strecken/Halbgeraden, Punkte
+  und Texte positionieren (Raster frei/½/ganz); Visual-Modus „Zeichnen“ und
+  Interaktion „Zeichnen im Koordinatensystem“.
+
+### Geändert
+- **Aufgabengenerator Ziel:** gestaffelte Dropdowns Lehrplan → Klassenstufe →
+  Lernbereich → Thema / Neues Thema; Pack- und Themen-IDs nur intern.
+- **Aufgabengenerator Koordinaten:** Antwortpunkt per Klick im Gitter setzen.
+
 ## [0.27.74] – 2026-09-21
 
 ### Hinzugefügt

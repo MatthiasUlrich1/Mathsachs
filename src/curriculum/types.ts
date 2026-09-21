@@ -35,6 +35,7 @@ export type UserInput =
   | { kind: 'choicePick'; choice: string }
   | { kind: 'multiSelect'; selected: string[] }
   | { kind: 'coordinateClick'; x: number; y: number }
+  | { kind: 'coordinateDraw'; scene: import('../lib/coordinateScene').CoordinateScene }
   | { kind: 'paramSlider'; values: Record<string, number> }
 
 /** A blank input matching the widget for a given answer kind. */
@@ -48,6 +49,7 @@ export const emptyInput = (
     | 'choicePick'
     | 'multiSelect'
     | 'coordinateClick'
+    | 'coordinateDraw'
     | 'paramSlider',
 ): UserInput => {
   if (kind === 'fraction') return { kind: 'fraction', num: '', den: '' }
@@ -58,6 +60,11 @@ export const emptyInput = (
   if (kind === 'choicePick') return { kind: 'choicePick', choice: '' }
   if (kind === 'multiSelect') return { kind: 'multiSelect', selected: [] }
   if (kind === 'coordinateClick') return { kind: 'coordinateClick', x: 0, y: 0 }
+  if (kind === 'coordinateDraw')
+    return {
+      kind: 'coordinateDraw',
+      scene: { xRange: [-5, 5], yRange: [-5, 5], snap: 'half', objects: [] },
+    }
   if (kind === 'paramSlider') return { kind: 'paramSlider', values: {} }
   return { kind: 'value', value: '' }
 }
@@ -74,6 +81,7 @@ export interface InteractiveConfig {
     | 'choicePick'
     | 'multiSelect'
     | 'coordinateClick'
+    | 'coordinateDraw'
     | 'paramSlider'
   props: Record<string, any> // Component-specific props
 }

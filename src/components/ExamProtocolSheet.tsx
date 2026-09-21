@@ -44,6 +44,10 @@ export const formatExamAnswer = (input: UserInput): string => {
     if (!Number.isFinite(input.x) || !Number.isFinite(input.y)) return '—'
     return `(${input.x}|${input.y})`
   }
+  if (input.kind === 'coordinateDraw') {
+    const n = input.scene.objects.length
+    return n ? `${n} Objekt${n === 1 ? '' : 'e'}` : '—'
+  }
   if (input.kind === 'paramSlider') {
     const parts = Object.entries(input.values).map(([k, v]) => `${k}=${v}`)
     return parts.length ? parts.join(', ') : '—'

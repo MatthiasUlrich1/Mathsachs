@@ -693,6 +693,18 @@ a.ghost.update-banner__link {
   font-size: 1.05rem;
 }
 
+.task-authoring__target {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  max-width: 36rem;
+}
+
+.task-authoring__target .field select,
+.task-authoring__target .field input {
+  width: 100%;
+}
+
 .task-authoring__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));

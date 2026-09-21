@@ -9,8 +9,14 @@ import { DigitGrid } from './DigitGrid'
 import { ChoicePick } from './ChoicePick'
 import { MultiSelect } from './MultiSelect'
 import { CoordinateClick } from './CoordinateClick'
+import { CoordinateGraphEditor } from './CoordinateGraphEditor'
 import { ParamSlider } from './ParamSlider'
 import type { ParamSliderSpec } from '../curriculum/taskHelpers'
+import {
+  emptyCoordinateScene,
+  parseCoordinateScene,
+  type CoordinateScene,
+} from '../lib/coordinateScene'
 
 /** Blank input matching a task's interactive widget (or answerKind). */
 export const initTaskInput = (task: Task): UserInput => {
@@ -43,6 +49,12 @@ export const initTaskInput = (task: Task): UserInput => {
   }
   if (task.interactive?.type === 'coordinateClick') {
     return { kind: 'coordinateClick', x: Number.NaN, y: Number.NaN }
+  }
+  if (task.interactive?.type === 'coordinateDraw') {
+    const blank =
+      parseCoordinateScene(task.interactive.props.blankScene) ??
+      emptyCoordinateScene()
+    return { kind: 'coordinateDraw', scene: blank }
   }
   if (task.interactive?.type === 'paramSlider') {
     const params = (task.interactive.props.params ?? []) as ParamSliderSpec[]
@@ -211,6 +223,25 @@ export function TaskInteractive({
           guide={interactive.props.guide}
           solutionRay={interactive.props.solutionRay}
           showSolution={disabled}
+        />
+      )}
+      {interactive.type === 'coordinateDraw' && (
+        <CoordinateGraphEditor
+          scene={
+            value.kind === 'coordinateDraw'
+              ? value.scene
+              : ((interactive.props.blankScene as CoordinateScene) ??
+                emptyCoordinateScene())
+          }
+          onChange={(scene) => onChange({ kind: 'coordinateDraw', scene })}
+          allowedTools={interactive.props.allowedTools}
+          instruction={interactive.props.instruction}
+          disabled={disabled}
+          solutionOverlay={
+            disabled
+              ? parseCoordinateScene(interactive.props.solutionScene)
+              : null
+          }
         />
       )}
       {interactive.type === 'paramSlider' && (

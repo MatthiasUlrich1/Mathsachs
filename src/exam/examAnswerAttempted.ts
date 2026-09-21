@@ -13,6 +13,8 @@ export function examAnswerAttempted(_task: Task, input: UserInput): boolean {
       return input.selected.length > 0
     case 'coordinateClick':
       return Number.isFinite(input.x) && Number.isFinite(input.y)
+    case 'coordinateDraw':
+      return input.scene.objects.length > 0
     case 'digitGrid': {
       const cells = input.answerRows?.flat() ?? input.digits
       return cells.some((d) => String(d).trim().length > 0)

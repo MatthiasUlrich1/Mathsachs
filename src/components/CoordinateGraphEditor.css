@@ -1,0 +1,79 @@
+.coordinate-graph-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.coordinate-graph-editor__instruction {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted, #94a3b8);
+}
+
+.coordinate-graph-editor__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.coordinate-graph-editor__tool {
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(15, 23, 42, 0.55);
+  color: var(--text, #e2e8f0);
+  cursor: pointer;
+}
+
+.coordinate-graph-editor__tool.is-active {
+  border-color: #38bdf8;
+  background: rgba(14, 165, 233, 0.2);
+}
+
+.coordinate-graph-editor__tool:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.coordinate-graph-editor__snap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--muted, #94a3b8);
+  margin-left: 0.25rem;
+}
+
+.coordinate-graph-editor__snap select {
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.2rem 0.35rem;
+  border-radius: 6px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(15, 23, 42, 0.55);
+  color: var(--text, #e2e8f0);
+}
+
+.coordinate-graph-editor__svg {
+  max-width: 100%;
+  height: auto;
+  cursor: crosshair;
+  border-radius: 8px;
+  touch-action: none;
+  background: #fafafa;
+}
+
+.coordinate-graph-editor__svg.is-disabled {
+  cursor: default;
+  opacity: 0.85;
+}
+
+.coordinate-graph-editor__hint {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted, #94a3b8);
+}

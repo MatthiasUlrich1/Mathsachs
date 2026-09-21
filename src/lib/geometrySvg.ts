@@ -4149,7 +4149,7 @@ export function generateFunctionGraphSvg({
   for (let i = 0; i <= steps; i++) {
     const x = xMin + (i / steps) * (xMax - xMin)
     const y = f(x)
-    if (y < yMin - 1 || y > yMax + 1) {
+    if (!Number.isFinite(y) || y < yMin - 1 || y > yMax + 1) {
       if (curve.length >= 2) {
         extras.push(
           `<polyline points="${curve.join(' ')}" fill="none" stroke="${stroke}" stroke-width="2.5"/>`,

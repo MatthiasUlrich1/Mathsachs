@@ -6,6 +6,12 @@ import {
 } from '../lib/fraction'
 import type { AnswerKind, Task, UserInput } from './types'
 import type { Rng } from '../lib/rng'
+import {
+  emptyCoordinateScene,
+  scenesMatch,
+  type CoordinateScene,
+  type SnapMode,
+} from '../lib/coordinateScene'
 
 interface ValueTaskInput {
   question: string
@@ -642,8 +648,21 @@ interface ParamSliderTaskInput {
   solution: string
   explanation: string
   visualContent?: string
-  /** Optional live preview: 'linear' or Physik 'shadow' (lamp x). */
-  preview?: 'linear' | 'shadow'
+  /** Optional live preview: function family or Physik 'shadow' (lamp x). */
+  preview?:
+    | 'linear'
+    | 'quadratic'
+    | 'cubic'
+    | 'sin'
+    | 'cos'
+    | 'tan'
+    | 'exp'
+    | 'ln'
+    | 'abs'
+    | 'reciprocal'
+    | 'sqrt'
+    | 'power'
+    | 'shadow'
   /** With preview=shadow: keep this shadow side fixed while the lamp moves. */
   fixedShadowSide?: 'left' | 'right'
   /**
@@ -702,6 +721,63 @@ export const paramSliderTask = (input: ParamSliderTaskInput): Task => ({
     return false
   },
 })
+
+interface CoordinateDrawTaskInput {
+  question: string
+  solutionScene: CoordinateScene
+  solution: string
+  explanation: string
+  /** Tools the learner may use. Default: line + segment + point + select + delete. */
+  allowedTools?: Array<
+    'select' | 'point' | 'segment' | 'ray' | 'line' | 'label' | 'delete'
+  >
+  instruction?: string
+  visualContent?: string
+  snap?: SnapMode
+  xRange?: [number, number]
+  yRange?: [number, number]
+  tol?: number
+}
+
+/** Draw lines / place objects on a coordinate grid; match against a solution scene. */
+export const coordinateDrawTask = (input: CoordinateDrawTaskInput): Task => {
+  const blank = emptyCoordinateScene({
+    xRange: input.xRange ?? input.solutionScene.xRange,
+    yRange: input.yRange ?? input.solutionScene.yRange,
+    snap: input.snap ?? input.solutionScene.snap ?? 'half',
+    objects: [],
+  })
+  return {
+    question: input.question,
+    answerKind: 'text',
+    solution: input.solution,
+    explanation: input.explanation,
+    visualContent: input.visualContent,
+    sampleAnswer: { kind: 'coordinateDraw', scene: input.solutionScene },
+    interactive: {
+      type: 'coordinateDraw',
+      props: {
+        instruction:
+          input.instruction ??
+          'Zeichne die gesuchte Gerade bzw. setze die Objekte im Koordinatensystem:',
+        allowedTools: input.allowedTools ?? [
+          'select',
+          'point',
+          'segment',
+          'ray',
+          'line',
+          'delete',
+        ],
+        blankScene: blank,
+        solutionScene: input.solutionScene,
+      },
+    },
+    check: (answer: UserInput) => {
+      if (answer.kind !== 'coordinateDraw') return false
+      return scenesMatch(answer.scene, input.solutionScene, input.tol ?? 0.35)
+    },
+  }
+}
 
 /**
  * Combine multiple task generators into one, randomly selecting a variant each time.

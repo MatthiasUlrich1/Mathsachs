@@ -9,10 +9,17 @@ import {
   generateCoordinateGridSvg,
   generateCuboidSvg,
   generateLShapeSvg,
+  generateLinearFunctionSvg,
   generateRectangleSvg,
   generateTriangleSvg,
   generateUShapeSvg,
+  generateVectorArrowsSvg,
 } from './geometrySvg'
+import {
+  buildFunctionTemplateSvg,
+  FUNCTION_KIND_META,
+  type FunctionKind,
+} from './functionGraph'
 import {
   circuitSvg,
   circuitSymbolsRowSvg,
@@ -30,7 +37,7 @@ export type SvgTemplateParam = {
 export type SvgTemplate = {
   id: string
   label: string
-  group: 'mathe' | 'physik'
+  group: 'mathe' | 'physik' | 'funktionen'
   params: SvgTemplateParam[]
   build: (params: Record<string, string>) => string
   /** TypeScript expression for exportSnippet (uses params). */
@@ -209,16 +216,144 @@ export const SVG_TEMPLATES: SvgTemplate[] = [
     label: 'Koordinatengitter',
     group: 'mathe',
     params: [
+      { key: 'xMin', label: 'x min', defaultValue: '-5' },
       { key: 'xMax', label: 'x max', defaultValue: '5' },
+      { key: 'yMin', label: 'y min', defaultValue: '-5' },
       { key: 'yMax', label: 'y max', defaultValue: '5' },
     ],
     build: (p) =>
       generateCoordinateGridSvg({
-        xRange: [0, n(p, 'xMax', 5)],
-        yRange: [0, n(p, 'yMax', 5)],
+        xRange: [n(p, 'xMin', -5), n(p, 'xMax', 5)],
+        yRange: [n(p, 'yMin', -5), n(p, 'yMax', 5)],
       }),
     exportCall: (p) =>
-      `generateCoordinateGridSvg({ xRange: [0, ${n(p, 'xMax', 5)}], yRange: [0, ${n(p, 'yMax', 5)}] })`,
+      `generateCoordinateGridSvg({ xRange: [${n(p, 'xMin', -5)}, ${n(p, 'xMax', 5)}], yRange: [${n(p, 'yMin', -5)}, ${n(p, 'yMax', 5)}] })`,
+  },
+  {
+    id: 'linearFn',
+    label: 'Gerade (Steigung)',
+    group: 'funktionen',
+    params: [
+      { key: 'm', label: 'Steigung m', defaultValue: '1' },
+      { key: 'n', label: 'n', defaultValue: '0' },
+      { key: 'xMin', label: 'x min', defaultValue: '-5' },
+      { key: 'xMax', label: 'x max', defaultValue: '5' },
+      { key: 'yMin', label: 'y min', defaultValue: '-5' },
+      { key: 'yMax', label: 'y max', defaultValue: '5' },
+    ],
+    build: (p) =>
+      generateLinearFunctionSvg({
+        m: n(p, 'm', 1),
+        n: n(p, 'n', 0),
+        xRange: [n(p, 'xMin', -5), n(p, 'xMax', 5)],
+        yRange: [n(p, 'yMin', -5), n(p, 'yMax', 5)],
+        slopeTriangle: { fromX: 0, run: n(p, 'm', 1) >= 0 ? 1 : -1, showLabels: true },
+      }),
+    exportCall: (p) =>
+      `generateLinearFunctionSvg({ m: ${n(p, 'm', 1)}, n: ${n(p, 'n', 0)}, xRange: [${n(p, 'xMin', -5)}, ${n(p, 'xMax', 5)}], yRange: [${n(p, 'yMin', -5)}, ${n(p, 'yMax', 5)}], slopeTriangle: { fromX: 0, run: ${n(p, 'm', 1) >= 0 ? 1 : -1}, showLabels: true } })`,
+  },
+  {
+    id: 'vectors',
+    label: 'Vektoren',
+    group: 'funktionen',
+    params: [
+      { key: 'v1', label: 'Vektor 1 (x,y)', defaultValue: '3,2' },
+      { key: 'v2', label: 'Vektor 2 (x,y, optional)', defaultValue: '-1,3' },
+      { key: 'xMin', label: 'x min', defaultValue: '-5' },
+      { key: 'xMax', label: 'x max', defaultValue: '5' },
+      { key: 'yMin', label: 'y min', defaultValue: '-5' },
+      { key: 'yMax', label: 'y max', defaultValue: '5' },
+    ],
+    build: (p) => {
+      const parseV = (raw: string, label: string) => {
+        const [xs, ys] = raw.split(/[,|;]/).map((t) => t.trim())
+        const x = Number(String(xs ?? '').replace(',', '.'))
+        const y = Number(String(ys ?? '').replace(',', '.'))
+        if (!Number.isFinite(x) || !Number.isFinite(y)) return null
+        return { x, y, label }
+      }
+      const vectors = [
+        parseV(s(p, 'v1', '3,2'), 'a⃗'),
+        parseV(s(p, 'v2', ''), 'b⃗'),
+      ].filter((v): v is { x: number; y: number; label: string } => v != null)
+      return generateVectorArrowsSvg({
+        vectors: vectors.length ? vectors : [{ x: 3, y: 2, label: 'a⃗' }],
+        xRange: [n(p, 'xMin', -5), n(p, 'xMax', 5)],
+        yRange: [n(p, 'yMin', -5), n(p, 'yMax', 5)],
+      })
+    },
+    exportCall: (p) =>
+      `generateVectorArrowsSvg({ vectors: [{ x: ${n(p, 'v1', 3)}, y: 2, label: 'a' }], xRange: [${n(p, 'xMin', -5)}, ${n(p, 'xMax', 5)}], yRange: [${n(p, 'yMin', -5)}, ${n(p, 'yMax', 5)}] })`,
+  },
+  ...FUNCTION_KIND_META.map((meta): SvgTemplate => {
+    const rangeParams: SvgTemplateParam[] = [
+      { key: 'xMin', label: 'x min', defaultValue: '-6' },
+      { key: 'xMax', label: 'x max', defaultValue: '6' },
+      { key: 'yMin', label: 'y min', defaultValue: '-6' },
+      { key: 'yMax', label: 'y max', defaultValue: '6' },
+      {
+        key: 'points',
+        label: 'Punkte (x,y:Label; …)',
+        defaultValue: '',
+      },
+    ]
+    const kindParams: SvgTemplateParam[] = meta.params.map((p) => ({
+      key: p.key,
+      label: p.label,
+      defaultValue: String(p.defaultValue),
+    }))
+    return {
+      id: `fn-${meta.id}`,
+      label: meta.label,
+      group: 'funktionen',
+      params: [...kindParams, ...rangeParams],
+      build: (p) => buildFunctionTemplateSvg(meta.id as FunctionKind, p),
+      exportCall: (p) =>
+        `/* ${meta.formula} */ buildFunctionTemplateSvg(${JSON.stringify(meta.id)}, ${JSON.stringify(p)})`,
+    }
+  }),
+  {
+    id: 'fn-dual',
+    label: 'Zwei Funktionen (Schnitt)',
+    group: 'funktionen',
+    params: [
+      { key: 'kind', label: 'f-Typ (linear|quadratic|sin|…)', defaultValue: 'linear' },
+      { key: 'm', label: 'f: m / a', defaultValue: '1' },
+      { key: 'n', label: 'f: n / b', defaultValue: '0' },
+      { key: 'a', label: 'f: a', defaultValue: '1' },
+      { key: 'b', label: 'f: b', defaultValue: '0' },
+      { key: 'c', label: 'f: c', defaultValue: '0' },
+      { key: 'h', label: 'f: h', defaultValue: '0' },
+      { key: 'k', label: 'f: k', defaultValue: '0' },
+      { key: 'expr', label: 'f: expr (wenn custom)', defaultValue: 'x' },
+      {
+        key: 'secondKind',
+        label: 'g-Typ',
+        defaultValue: 'linear',
+      },
+      { key: 'g_m', label: 'g: m', defaultValue: '-0.5' },
+      { key: 'g_n', label: 'g: n', defaultValue: '2' },
+      { key: 'g_a', label: 'g: a', defaultValue: '1' },
+      { key: 'g_b', label: 'g: b', defaultValue: '0' },
+      { key: 'g_c', label: 'g: c', defaultValue: '0' },
+      { key: 'g_h', label: 'g: h', defaultValue: '0' },
+      { key: 'g_k', label: 'g: k', defaultValue: '0' },
+      { key: 'g_expr', label: 'g: expr', defaultValue: '2-x' },
+      { key: 'xMin', label: 'x min', defaultValue: '-6' },
+      { key: 'xMax', label: 'x max', defaultValue: '6' },
+      { key: 'yMin', label: 'y min', defaultValue: '-6' },
+      { key: 'yMax', label: 'y max', defaultValue: '6' },
+      { key: 'points', label: 'Punkte', defaultValue: '' },
+    ],
+    build: (p) => {
+      const kindRaw = s(p, 'kind', 'linear') as FunctionKind
+      const kind = FUNCTION_KIND_META.some((m) => m.id === kindRaw)
+        ? kindRaw
+        : 'linear'
+      return buildFunctionTemplateSvg(kind, p)
+    },
+    exportCall: (p) =>
+      `buildFunctionTemplateSvg(${JSON.stringify(s(p, 'kind', 'linear'))}, ${JSON.stringify(p)})`,
   },
   {
     id: 'thermometer',

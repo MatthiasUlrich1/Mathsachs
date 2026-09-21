@@ -5,6 +5,7 @@
 import {
   choicePickTask,
   coordinateClickTask,
+  coordinateDrawTask,
   digitGridTask,
   dragDropSlotsTask,
   dragDropSortTask,
@@ -17,7 +18,50 @@ import {
   visualTask,
 } from '../curriculum/taskHelpers'
 import type { Task } from '../curriculum/types'
+import { bundledPackById } from '../curriculum/install'
+import {
+  loadTaskRequestPacks,
+  type TaskRequestPackOption,
+} from '../legal/taskRequest'
 import { getSvgTemplate, sanitizeSvg } from './svgTemplateRegistry'
+import {
+  emptyCoordinateScene,
+  generateCoordinateSceneSvg,
+  parseCoordinateScene,
+  type CoordinateScene,
+} from './coordinateScene'
+
+export type { TaskRequestPackOption }
+
+export type AuthoringTopicOption = { id: string; title: string }
+export type AuthoringAreaOption = {
+  id: string
+  title: string
+  topics: AuthoringTopicOption[]
+}
+
+/** Sentinel value in the Thema dropdown for a brand-new topic title. */
+export const AUTHORING_NEW_TOPIC = '__new__'
+
+/** Load Lehrpläne (reuse TaskRequest catalog). */
+export async function loadAuthoringPacks(): Promise<TaskRequestPackOption[]> {
+  return loadTaskRequestPacks()
+}
+
+/** Lernbereiche + Themen for a grade inside a pack (bundled outline). */
+export async function loadAuthoringAreas(
+  packId: string,
+  gradeId: string,
+): Promise<AuthoringAreaOption[]> {
+  const pack = await bundledPackById(packId.trim())
+  const grade = pack?.official.find((g) => g.id === gradeId.trim())
+  if (!grade) return []
+  return grade.areas.map((area) => ({
+    id: area.id,
+    title: area.title,
+    topics: area.topics.map((t) => ({ id: t.id, title: t.title })),
+  }))
+}
 
 export type AuthoringElementType =
   | 'value'
@@ -31,6 +75,7 @@ export type AuthoringElementType =
   | 'dragDropSlots'
   | 'digitGrid'
   | 'coordinateClick'
+  | 'coordinateDraw'
   | 'paramSlider'
 
 export const AUTHORING_ELEMENT_OPTIONS: Array<{
@@ -48,16 +93,19 @@ export const AUTHORING_ELEMENT_OPTIONS: Array<{
   { id: 'dragDropSlots', label: 'Zuordnen / Slots' },
   { id: 'digitGrid', label: 'Zifferngitter' },
   { id: 'coordinateClick', label: 'Koordinaten klicken' },
-  { id: 'paramSlider', label: 'Parameter-Slider' },
+  { id: 'coordinateDraw', label: 'Zeichnen im Koordinatensystem' },
+  { id: 'paramSlider', label: 'Parameter-Slider (Funktionsgraph)' },
 ]
 
 export type DraftStatus = 'draft' | 'submitted' | 'approved' | 'rejected'
 
 export type VisualSpec = {
-  mode: 'none' | 'template' | 'raw'
+  mode: 'none' | 'template' | 'raw' | 'scene'
   templateId?: string
   params?: Record<string, string>
   svg?: string
+  /** Graph editor scene (mode === 'scene'). */
+  scene?: CoordinateScene
 }
 
 export type DraftAuthoringTask = {
@@ -148,8 +196,48 @@ export function createEmptyDraft(
   }
 }
 
+type AuthoringSlider = {
+  id: string
+  label: string
+  min: number
+  max: number
+  step: number
+  correct: number
+}
+
+function readAuthoringSliders(p: Record<string, unknown>): AuthoringSlider[] {
+  if (Array.isArray(p.sliders) && p.sliders.length) {
+    return p.sliders.map((r) => {
+      const row = r as Record<string, unknown>
+      return {
+        id: String(row.id ?? 'p'),
+        label: String(row.label ?? row.id ?? 'p'),
+        min: Number(row.min ?? 0),
+        max: Number(row.max ?? 10),
+        step: Number(row.step ?? 1) || 1,
+        correct: Number(row.correct ?? 0),
+      }
+    })
+  }
+  const id = String(p.paramId ?? 'm')
+  return [
+    {
+      id,
+      label: String(p.paramLabel ?? id),
+      min: Number(p.min ?? 0),
+      max: Number(p.max ?? 10),
+      step: Number(p.step) || 1,
+      correct: Number(p.correct),
+    },
+  ]
+}
+
 export function resolveVisualSvg(spec: VisualSpec): string | undefined {
   if (spec.mode === 'none') return undefined
+  if (spec.mode === 'scene') {
+    const scene = parseCoordinateScene(spec.scene) ?? emptyCoordinateScene()
+    return generateCoordinateSceneSvg(scene)
+  }
   if (spec.mode === 'raw') {
     const cleaned = sanitizeSvg(spec.svg ?? '')
     return cleaned || undefined
@@ -183,6 +271,10 @@ export function validateDraft(draft: DraftAuthoringTask): string[] {
   const errors: string[] = []
   if (!draft.task.question.trim()) errors.push('Frage fehlt.')
   if (!draft.task.solution.trim()) errors.push('Lösung fehlt.')
+  if (!draft.target.packId.trim()) errors.push('Lehrplan wählen.')
+  if (!draft.target.gradeId.trim()) errors.push('Klassenstufe wählen.')
+  if (!draft.target.areaId.trim()) errors.push('Lernbereich wählen.')
+  if (!draft.target.topicTitle.trim()) errors.push('Thema wählen oder neuen Titel eingeben.')
   if (draft.display.showExplanation && !draft.task.explanation.trim()) {
     errors.push('Erklärung fehlt (Checkbox aktiv).')
   }
@@ -271,9 +363,22 @@ export function validateDraft(draft: DraftAuthoringTask): string[] {
       }
       break
     }
+    case 'coordinateDraw': {
+      const scene = parseCoordinateScene(p.solutionScene)
+      if (!scene || scene.objects.length === 0) {
+        errors.push('Zeichnen: Musterlösung mit mindestens einem Objekt nötig.')
+      }
+      break
+    }
     case 'paramSlider': {
-      if (!String(p.paramId ?? 'm').trim()) errors.push('Slider: Param-ID fehlt.')
-      if (!Number.isFinite(Number(p.correct))) errors.push('Slider: korrekter Wert ungültig.')
+      const sliders = readAuthoringSliders(p)
+      if (!sliders.length) errors.push('Slider: mindestens ein Parameter.')
+      for (const s of sliders) {
+        if (!s.id.trim()) errors.push('Slider: Param-ID fehlt.')
+        if (![s.min, s.max, s.correct, s.step].every(Number.isFinite)) {
+          errors.push(`Slider „${s.id}“: Zahlen ungültig.`)
+        }
+      }
       break
     }
   }
@@ -431,19 +536,70 @@ export function draftToTask(draft: DraftAuthoringTask): Task {
           visualContent,
         }),
       )
-    case 'paramSlider': {
-      const id = String(p.paramId ?? 'm')
-      const min = Number(p.min ?? 0)
-      const max = Number(p.max ?? 10)
-      const correct = Number(p.correct)
+    case 'coordinateDraw': {
+      const solutionScene =
+        parseCoordinateScene(p.solutionScene) ?? emptyCoordinateScene()
       return withVisual(
-        paramSliderTask({
+        coordinateDrawTask({
           question,
-          params: [{ id, label: String(p.paramLabel ?? id), min, max, step: Number(p.step) || 1 }],
-          correct: { [id]: correct },
+          solutionScene,
           solution,
           explanation,
           visualContent,
+        }),
+      )
+    }
+    case 'paramSlider': {
+      const sliders = readAuthoringSliders(p)
+      const previewRaw = String(p.preview ?? '')
+      const preview =
+        previewRaw === 'shadow' ||
+        [
+          'linear',
+          'quadratic',
+          'cubic',
+          'sin',
+          'cos',
+          'tan',
+          'exp',
+          'ln',
+          'abs',
+          'reciprocal',
+          'sqrt',
+          'power',
+        ].includes(previewRaw)
+          ? (previewRaw as
+              | 'linear'
+              | 'quadratic'
+              | 'cubic'
+              | 'sin'
+              | 'cos'
+              | 'tan'
+              | 'exp'
+              | 'ln'
+              | 'abs'
+              | 'reciprocal'
+              | 'sqrt'
+              | 'power'
+              | 'shadow')
+          : undefined
+      const correct: Record<string, number> = {}
+      for (const s of sliders) correct[s.id] = s.correct
+      return withVisual(
+        paramSliderTask({
+          question,
+          params: sliders.map((s) => ({
+            id: s.id,
+            label: s.label,
+            min: s.min,
+            max: s.max,
+            step: s.step,
+          })),
+          correct,
+          solution,
+          explanation,
+          visualContent,
+          preview,
         }),
       )
     }
@@ -466,6 +622,10 @@ export function draftToTask(draft: DraftAuthoringTask): Task {
 
 function visualExportExpr(spec: VisualSpec): string | null {
   if (spec.mode === 'none') return null
+  if (spec.mode === 'scene') {
+    const scene = parseCoordinateScene(spec.scene) ?? emptyCoordinateScene()
+    return `generateCoordinateSceneSvg(${JSON.stringify(scene)})`
+  }
   if (spec.mode === 'template' && spec.templateId) {
     const t = getSvgTemplate(spec.templateId)
     if (t) return t.exportCall(spec.params ?? {})
@@ -601,14 +761,41 @@ export function exportGeneratorSnippet(draft: DraftAuthoringTask): string {
   ${visualExpr ? `visualContent: ${visualExpr},` : ''}
 })`
       break
-    case 'paramSlider': {
-      const id = String(p.paramId ?? 'm')
-      call = `paramSliderTask({
+    case 'coordinateDraw': {
+      const solutionScene =
+        parseCoordinateScene(p.solutionScene) ?? emptyCoordinateScene()
+      call = `coordinateDrawTask({
   question: ${q},
-  params: [{ id: ${JSON.stringify(id)}, label: ${JSON.stringify(String(p.paramLabel ?? id))}, min: ${Number(p.min ?? 0)}, max: ${Number(p.max ?? 10)}, step: ${Number(p.step) || 1} }],
-  correct: { ${JSON.stringify(id)}: ${Number(p.correct)} },
+  solutionScene: ${JSON.stringify(solutionScene)},
   solution: ${sol},
   explanation: ${expl},
+  ${visualExpr ? `visualContent: ${visualExpr},` : ''}
+})`
+      break
+    }
+    case 'paramSlider': {
+      const sliders = readAuthoringSliders(p)
+      const previewRaw = String(p.preview ?? '')
+      const previewPart = previewRaw
+        ? `preview: ${JSON.stringify(previewRaw)},`
+        : ''
+      call = `paramSliderTask({
+  question: ${q},
+  params: ${JSON.stringify(
+    sliders.map((s) => ({
+      id: s.id,
+      label: s.label,
+      min: s.min,
+      max: s.max,
+      step: s.step,
+    })),
+  )},
+  correct: ${JSON.stringify(
+    Object.fromEntries(sliders.map((s) => [s.id, s.correct])),
+  )},
+  solution: ${sol},
+  explanation: ${expl},
+  ${previewPart}
   ${visualExpr ? `visualContent: ${visualExpr},` : ''}
 })`
       break
@@ -617,7 +804,11 @@ export function exportGeneratorSnippet(draft: DraftAuthoringTask): string {
       call = `/* unsupported type */`
   }
 
-  const needsGeo = visualExpr?.includes('generate') || solutionVisualExpr?.includes('generate')
+  const needsGeo =
+    visualExpr?.includes('generate') ||
+    solutionVisualExpr?.includes('generate') ||
+    visualExpr?.includes('buildFunctionTemplateSvg') ||
+    solutionVisualExpr?.includes('buildFunctionTemplateSvg')
   const needsPhysik =
     visualExpr?.includes('thermometerSvg') ||
     visualExpr?.includes('circuit') ||
@@ -625,13 +816,20 @@ export function exportGeneratorSnippet(draft: DraftAuthoringTask): string {
     solutionVisualExpr?.includes('thermometerSvg') ||
     solutionVisualExpr?.includes('circuit') ||
     solutionVisualExpr?.includes('seriesParallel')
+  const needsFn =
+    visualExpr?.includes('buildFunctionTemplateSvg') ||
+    solutionVisualExpr?.includes('buildFunctionTemplateSvg')
+  const needsScene =
+    visualExpr?.includes('generateCoordinateSceneSvg') ||
+    solutionVisualExpr?.includes('generateCoordinateSceneSvg') ||
+    draft.element.type === 'coordinateDraw'
 
   return `// Aufgabengenerator-Export — ${draft.id}
 // Ziel: ${draft.target.topicTitle || '(ohne Titel)'} / ${draft.target.topicId || '—'}
 // Status: ${draft.status}
 // sampleAnswer check: ${task.check(task.sampleAnswer) ? 'ok' : 'FAIL'}
 
-${needsGeo ? `import { /* generate*Svg */ } from '../lib/geometrySvg'\n` : ''}${needsPhysik ? `import { /* thermometerSvg, circuitSvg, … */ } from '../lib/physikSvg'\n` : ''}import { /* task helper */ } from './taskHelpers'
+${needsGeo ? `import { /* generate*Svg */ } from '../lib/geometrySvg'\n` : ''}${needsFn ? `import { buildFunctionTemplateSvg } from '../lib/functionGraph'\n` : ''}${needsScene ? `import { generateCoordinateSceneSvg } from '../lib/coordinateScene'\n` : ''}${needsPhysik ? `import { /* thermometerSvg, circuitSvg, … */ } from '../lib/physikSvg'\n` : ''}import { /* task helper */ } from './taskHelpers'
 
 return ${call}
 `
