@@ -6,6 +6,7 @@ import {
 import { makeFraction, subtract, format, type Fraction } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
 import { fractionTask, mixedVariants, valueTask, visualTask, paramSliderTask, choicePickTask, coordinateClickTask } from './taskHelpers'
+import { math8GraphicReviews } from './graphicReviewTopics'
 import type { Grade, Topic } from './types'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
@@ -776,7 +777,7 @@ export const klasse8: Grade = {
       id: 'lb3',
       title: 'Funktionen und lineare Gleichungssysteme',
       ustd: 32,
-      topics: [funktionswert, steigung, achsenabschnitt, lgs],
+      topics: [funktionswert, steigung, achsenabschnitt, lgs, ...math8GraphicReviews],
     },
     {
       id: 'lb4',

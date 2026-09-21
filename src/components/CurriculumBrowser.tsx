@@ -65,6 +65,14 @@ function TopicRow({
               >
                 {released ? 'freigegeben' : 'gesperrt'}
               </span>
+              {topic.reviewOf && (
+                <span
+                  className="topic__release-badge topic__release-badge--review"
+                  title={`Unterthema von ${topic.reviewOf} — nach Prüfung mergen`}
+                >
+                  Grafik-Prüfung
+                </span>
+              )}
             </>
           )}
         </span>

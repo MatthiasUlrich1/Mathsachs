@@ -129,6 +129,7 @@ export function applyPackTopicMeta(grade: Grade, packGrade: PackGrade): Grade {
             ? { tasksPerRound: meta.tasksPerRound }
             : {}),
           ...(meta.excludeFachwissen ? { excludeFachwissen: true } : {}),
+          ...(meta.reviewOf ? { reviewOf: meta.reviewOf } : {}),
         }
       }),
     })),

@@ -79,7 +79,12 @@ function defaultPropsFor(type: AuthoringElementType): Record<string, unknown> {
     case 'digitGrid':
       return { a: 23, b: 45, operator: '+', value: 68 }
     case 'coordinateClick':
-      return { x: 2, y: 3 }
+      return {
+        pointCount: 1,
+        points: [{ x: 2, y: 3 }],
+        x: 2,
+        y: 3,
+      }
     case 'coordinateDraw':
       return {
         solutionScene: {
@@ -786,34 +791,99 @@ function ElementPropsForm({
         </>
       )
     case 'coordinateClick': {
-      const x = Number(propStr(draft, 'x', '0'))
-      const y = Number(propStr(draft, 'y', '0'))
-      const xOk = Number.isFinite(x)
-      const yOk = Number.isFinite(y)
+      const pointCount = Math.max(
+        1,
+        Math.min(12, Math.floor(Number(draft.element.props.pointCount ?? 1)) || 1),
+      )
+      const rawPoints = Array.isArray(draft.element.props.points)
+        ? (draft.element.props.points as Array<{ x: number; y: number }>)
+        : []
+      let points = rawPoints.filter(
+        (p) => Number.isFinite(p.x) && Number.isFinite(p.y),
+      )
+      if (points.length === 0) {
+        const x = Number(propStr(draft, 'x', '2'))
+        const y = Number(propStr(draft, 'y', '3'))
+        points = Number.isFinite(x) && Number.isFinite(y) ? [{ x, y }] : [{ x: 2, y: 3 }]
+      }
+      while (points.length < pointCount) {
+        points = [...points, { x: points.length, y: 0 }]
+      }
+      if (points.length > pointCount) points = points.slice(0, pointCount)
+
+      const setPoints = (next: Array<{ x: number; y: number }>) => {
+        const clipped = next.slice(0, pointCount)
+        setDraft({
+          ...draft,
+          element: {
+            ...draft.element,
+            props: {
+              ...draft.element.props,
+              pointCount,
+              points: clipped,
+              x: clipped[0]?.x ?? 0,
+              y: clipped[0]?.y ?? 0,
+            },
+          },
+        })
+      }
+
       return (
         <>
+          <div className="field">
+            <label className="field__label" htmlFor="ta-point-count">
+              Anzahl Punkte
+            </label>
+            <input
+              id="ta-point-count"
+              className="answer-input__field"
+              type="number"
+              min={1}
+              max={12}
+              value={pointCount}
+              onChange={(e) => {
+                const n = Math.max(1, Math.min(12, Math.floor(Number(e.target.value)) || 1))
+                let next = points.slice(0, n)
+                while (next.length < n) next = [...next, { x: next.length, y: 0 }]
+                setDraft({
+                  ...draft,
+                  element: {
+                    ...draft.element,
+                    props: {
+                      ...draft.element.props,
+                      pointCount: n,
+                      points: next,
+                      x: next[0]?.x ?? 0,
+                      y: next[0]?.y ?? 0,
+                    },
+                  },
+                })
+              }}
+            />
+          </div>
           <p className="muted small">
-            Tipp auf dem Gitter setzt den Lösungspunkt (x/y).
+            Tippe die Lösungspunkte auf dem Gitter
+            {pointCount > 1 ? ` (${pointCount} Stück, Reihenfolge egal)` : ''}.
+            Erneutes Tippen auf einen Punkt entfernt ihn.
           </p>
           <CoordinateClick
             xRange={[-5, 8]}
             yRange={[-5, 8]}
-            value={xOk && yOk ? { x, y } : null}
-            onChange={(point) =>
-              setDraft({
-                ...draft,
-                element: {
-                  ...draft.element,
-                  props: { ...draft.element.props, x: point.x, y: point.y },
-                },
-              })
+            maxPoints={pointCount}
+            value={pointCount === 1 ? points[0]! : null}
+            onChange={(point) => setPoints([point])}
+            points={points}
+            onChangePoints={setPoints}
+            instruction={
+              pointCount > 1
+                ? `Setze ${pointCount} Lösungspunkte:`
+                : 'Tippe den gesuchten Punkt:'
             }
-            instruction="Tippe den gesuchten Punkt:"
           />
-          <div className="task-authoring__grid">
-            {field('x', 'x')}
-            {field('y', 'y')}
-          </div>
+          <p className="muted small">
+            Aktuell:{' '}
+            {points.map((p) => `(${p.x}|${p.y})`).join(', ') || '—'}
+          </p>
         </>
       )
     }

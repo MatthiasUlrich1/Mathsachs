@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.76] – 2026-09-21
+
+### Hinzugefügt
+- **Grafik-Prüfungsthemen (gesperrt):** Unter-IDs `…__grafik` zu Klasse 8–12
+  (Gerade einstellen/zeichnen, Scheitel/Nullstelle tippen, Tangente, Fläche).
+  Badge „Grafik-Prüfung“; Pack Gym Sachsen Mathe **1.2.1**.
+- **Aufgabengenerator Koordinaten klicken:** mehrere Lösungspunkte, Anzahl
+  1–12 einstellbar (Reihenfolge egal).
+
 ## [0.27.75] – 2026-09-21
 
 ### Hinzugefügt

@@ -165,6 +165,55 @@ describe('taskAuthoring draftToTask / export / storage', () => {
     expect(task.check(task.sampleAnswer)).toBe(true)
   })
 
+  it('builds multi-point coordinateClick', () => {
+    const draft = baseDraft({
+      element: {
+        type: 'coordinateClick',
+        props: {
+          pointCount: 3,
+          points: [
+            { x: 1, y: 2 },
+            { x: -1, y: 0 },
+            { x: 3, y: -2 },
+          ],
+        },
+      },
+      task: {
+        question: 'Tippe die drei Punkte.',
+        unit: '',
+        solution: '(1|2), (−1|0), (3|−2)',
+        explanation: 'Drei Gitterpunkte.',
+        hint: '',
+      },
+    })
+    const task = draftToTask(draft)
+    expect(task.interactive?.props.maxPoints).toBe(3)
+    expect(task.check(task.sampleAnswer)).toBe(true)
+    expect(
+      task.check({
+        kind: 'coordinateClick',
+        x: 3,
+        y: -2,
+        points: [
+          { x: 3, y: -2 },
+          { x: 1, y: 2 },
+          { x: -1, y: 0 },
+        ],
+      }),
+    ).toBe(true)
+    expect(
+      task.check({
+        kind: 'coordinateClick',
+        x: 1,
+        y: 2,
+        points: [
+          { x: 1, y: 2 },
+          { x: -1, y: 0 },
+        ],
+      }),
+    ).toBe(false)
+  })
+
   it('builds numberLine and dragDropSort', () => {
     const line = baseDraft({
       element: {

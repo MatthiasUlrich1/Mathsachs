@@ -6,6 +6,7 @@ import {
 } from '../lib/geometrySvg'
 import { formatDe, roundTo } from '../lib/num'
 import { mixedVariants, valueTask, visualTask, choicePickTask } from './taskHelpers'
+import { math10GraphicReviews } from './graphicReviewTopics'
 import type { Grade, Topic } from './types'
 
 // ---------------------------------------------------------------------------
@@ -559,7 +560,7 @@ export const klasse10: Grade = {
       id: 'lb4',
       title: 'Funktionale Zusammenhänge',
       ustd: 42,
-      topics: [reinquadratisch, quadratischGleichung, parabelWert],
+      topics: [reinquadratisch, quadratischGleichung, parabelWert, ...math10GraphicReviews],
     },
     {
       id: 'lb5',

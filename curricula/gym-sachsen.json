@@ -4,9 +4,9 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Mathematik",
-  "version": "1.2.0",
-  "changelog": "ID 2101 freigegeben: Fläche und senkrechte Seitenlänge (Klasse 6 Prismen).",
-  "contentHash": "e9be709f",
+  "version": "1.2.1",
+  "changelog": "Grafik-Prüfungsthemen (gesperrt) für Klasse 8–12: Gerade/Parabel/Tangente/Fläche.",
+  "contentHash": "2ffb6e32",
   "official": [
     {
       "id": "klasse-5",
@@ -1239,6 +1239,58 @@
                 "lösen",
                 "x und y"
               ]
+            },
+            {
+              "id": "k8-lb3-steigung__grafik",
+              "title": "Gerade einstellen (m und n) · Grafik (Prüfung)",
+              "hint": "Stelle Steigung und Achsenabschnitt am Slider ein.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Steigung",
+                "Achsenabschnitt",
+                "lineare Funktion",
+                "Gerade",
+                "Grafik",
+                "Prüfung",
+                "Interactive",
+                "k8-lb3-steigung"
+              ],
+              "released": false,
+              "reviewOf": "k8-lb3-steigung"
+            },
+            {
+              "id": "k8-lb3-achsenabschnitt__grafik",
+              "title": "Nullstelle einer Geraden tippen · Grafik (Prüfung)",
+              "hint": "Schnittpunkt mit der x-Achse tippen.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Nullstelle",
+                "x-Achse",
+                "lineare Funktion",
+                "Grafik",
+                "Prüfung",
+                "Interactive",
+                "k8-lb3-achsenabschnitt"
+              ],
+              "released": false,
+              "reviewOf": "k8-lb3-achsenabschnitt"
+            },
+            {
+              "id": "k8-lb3-funktionswert__grafik",
+              "title": "Gerade durch zwei Punkte zeichnen · Grafik (Prüfung)",
+              "hint": "Werkzeug Gerade: zwei Punkte tippen.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Gerade zeichnen",
+                "zwei Punkte",
+                "lineare Funktion",
+                "Grafik",
+                "Prüfung",
+                "Interactive",
+                "k8-lb3-funktionswert"
+              ],
+              "released": false,
+              "reviewOf": "k8-lb3-funktionswert"
             }
           ]
         },
@@ -1378,6 +1430,40 @@
                 "quadratische Funktion",
                 "Extrempunkt"
               ]
+            },
+            {
+              "id": "k9-lb1-scheitel__grafik",
+              "title": "Scheitelpunkt am Graphen tippen · Grafik (Prüfung)",
+              "hint": "Tippe den tiefsten bzw. höchsten Punkt der Parabel.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Scheitelpunkt",
+                "Parabel",
+                "Graph",
+                "Grafik",
+                "Prüfung",
+                "Interactive",
+                "k9-lb1-scheitel"
+              ],
+              "released": false,
+              "reviewOf": "k9-lb1-scheitel"
+            },
+            {
+              "id": "k9-lb1-quadrat-wert__grafik",
+              "title": "Nullstelle einer Parabel tippen · Grafik (Prüfung)",
+              "hint": "Tippe einen Schnittpunkt mit der x-Achse.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Nullstelle",
+                "Parabel",
+                "x-Achse",
+                "Grafik",
+                "Prüfung",
+                "Interactive",
+                "k9-lb1-quadrat-wert"
+              ],
+              "released": false,
+              "reviewOf": "k9-lb1-quadrat-wert"
             }
           ]
         },
@@ -1728,6 +1814,40 @@
                 "Funktionswert",
                 "einsetzen"
               ]
+            },
+            {
+              "id": "k10-lb4-parabel-wert__grafik",
+              "title": "Scheitel einer Parabel tippen · Grafik (Prüfung)",
+              "hint": "Tippe den Scheitel der gezeichneten Parabel.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Scheitel",
+                "Parabel",
+                "Graph",
+                "Grafik",
+                "Prüfung",
+                "Interactive",
+                "k10-lb4-parabel-wert"
+              ],
+              "released": false,
+              "reviewOf": "k10-lb4-parabel-wert"
+            },
+            {
+              "id": "k10-lb4-parabel-wert__grafik-ablesen",
+              "title": "Funktionswert am Parabelgraphen · Grafik (Prüfung)",
+              "hint": "Lies f(x₀) am Graphen ab (oder rechne nach).",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Funktionswert",
+                "Parabel",
+                "ablesen",
+                "Grafik",
+                "Prüfung",
+                "Interactive",
+                "k10-lb4-parabel-wert"
+              ],
+              "released": false,
+              "reviewOf": "k10-lb4-parabel-wert"
             }
           ]
         },
@@ -1815,6 +1935,58 @@
                 "Integralrechnung",
                 "Fläche"
               ]
+            },
+            {
+              "id": "k1112-lb1-ableitung-stelle__grafik",
+              "title": "Steigung der Tangente ablesen · Grafik (Prüfung)",
+              "hint": "Lies die Steigung der eingezeichneten Tangente ab.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Ableitung",
+                "Tangente",
+                "Steigung",
+                "Graph",
+                "Grafik",
+                "Prüfung",
+                "Interactive",
+                "k1112-lb1-ableitung-stelle"
+              ],
+              "released": false,
+              "reviewOf": "k1112-lb1-ableitung-stelle"
+            },
+            {
+              "id": "k1112-lb1-bestimmtes-integral__grafik",
+              "title": "Fläche unter dem Graphen · Grafik (Prüfung)",
+              "hint": "Rechteckfläche bzw. Integral berechnen.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Integral",
+                "Fläche",
+                "Graph",
+                "Grafik",
+                "Prüfung",
+                "Interactive",
+                "k1112-lb1-bestimmtes-integral"
+              ],
+              "released": false,
+              "reviewOf": "k1112-lb1-bestimmtes-integral"
+            },
+            {
+              "id": "k1112-lb1-nullstelle-linear__grafik",
+              "title": "Nullstelle linearer Graph tippen · Grafik (Prüfung)",
+              "hint": "Tippe den Schnitt mit der x-Achse.",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Nullstelle",
+                "lineare Funktion",
+                "Graph",
+                "Grafik",
+                "Prüfung",
+                "Interactive",
+                "k1112-lb1-nullstelle-linear"
+              ],
+              "released": false,
+              "reviewOf": "k1112-lb1-nullstelle-linear"
             }
           ]
         },

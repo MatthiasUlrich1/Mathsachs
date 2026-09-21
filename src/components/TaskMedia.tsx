@@ -48,6 +48,10 @@ export const initTaskInput = (task: Task): UserInput => {
     return { kind: 'multiSelect', selected: [] }
   }
   if (task.interactive?.type === 'coordinateClick') {
+    const max = Number(task.interactive.props.maxPoints ?? 1)
+    if (max > 1) {
+      return { kind: 'coordinateClick', x: Number.NaN, y: Number.NaN, points: [] }
+    }
     return { kind: 'coordinateClick', x: Number.NaN, y: Number.NaN }
   }
   if (task.interactive?.type === 'coordinateDraw') {
@@ -211,17 +215,32 @@ export function TaskInteractive({
           xRange={interactive.props.xRange}
           yRange={interactive.props.yRange}
           cellSize={interactive.props.cellSize}
+          maxPoints={Number(interactive.props.maxPoints ?? 1)}
           value={
-            value.kind === 'coordinateClick' && Number.isFinite(value.x)
+            Number(interactive.props.maxPoints ?? 1) <= 1 &&
+            value.kind === 'coordinateClick' &&
+            Number.isFinite(value.x)
               ? { x: value.x, y: value.y }
               : null
           }
           onChange={(p) => onChange({ kind: 'coordinateClick', x: p.x, y: p.y })}
+          points={
+            value.kind === 'coordinateClick' ? (value.points ?? []) : []
+          }
+          onChangePoints={(pts) =>
+            onChange({
+              kind: 'coordinateClick',
+              x: pts[0]?.x ?? Number.NaN,
+              y: pts[0]?.y ?? Number.NaN,
+              points: pts,
+            })
+          }
           instruction={interactive.props.instruction}
           disabled={disabled}
           markers={interactive.props.markers}
           guide={interactive.props.guide}
           solutionRay={interactive.props.solutionRay}
+          solutionPoints={interactive.props.solutionPoints}
           showSolution={disabled}
         />
       )}

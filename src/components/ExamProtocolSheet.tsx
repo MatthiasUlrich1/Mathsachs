@@ -41,6 +41,9 @@ export const formatExamAnswer = (input: UserInput): string => {
     return input.selected.length ? input.selected.join(', ') : '—'
   }
   if (input.kind === 'coordinateClick') {
+    if (input.points && input.points.length > 0) {
+      return input.points.map((p) => `(${p.x}|${p.y})`).join(', ')
+    }
     if (!Number.isFinite(input.x) || !Number.isFinite(input.y)) return '—'
     return `(${input.x}|${input.y})`
   }

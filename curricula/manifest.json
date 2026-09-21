@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-20T19:20:19.152Z",
+  "updatedAt": "2026-09-21T17:28:25.757Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -7,10 +7,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Mathematik",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen.json",
-      "size": 59742,
-      "changelog": "ID 2101 freigegeben: Fläche und senkrechte Seitenlänge (Klasse 6 Prismen)."
+      "size": 65874,
+      "changelog": "Grafik-Prüfungsthemen (gesperrt) für Klasse 8–12: Gerade/Parabel/Tangente/Fläche."
     },
     {
       "id": "gym-sachsen-physik",

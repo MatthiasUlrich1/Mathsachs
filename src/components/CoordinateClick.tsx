@@ -8,40 +8,65 @@ export interface CoordinateMarker {
   color?: string
 }
 
+export type CoordPoint = { x: number; y: number }
+
 export interface CoordinateClickProps {
   xRange: [number, number]
   yRange: [number, number]
   cellSize?: number
-  value: { x: number; y: number } | null
-  onChange: (point: { x: number; y: number }) => void
+  /** Single-point mode (default / maxPoints === 1). */
+  value?: CoordPoint | null
+  onChange?: (point: CoordPoint) => void
+  /** Multi-point mode when maxPoints > 1. */
+  points?: CoordPoint[]
+  onChangePoints?: (points: CoordPoint[]) => void
+  /** How many points the learner may place (1–12). Default 1. */
+  maxPoints?: number
   instruction?: string
   disabled?: boolean
   markers?: CoordinateMarker[]
-  guide?: { from: { x: number; y: number }; to: { x: number; y: number } }
+  guide?: { from: CoordPoint; to: CoordPoint }
   /** Drawn when disabled (Auflösung). */
-  solutionRay?: { from: { x: number; y: number }; to: { x: number; y: number } }
+  solutionRay?: { from: CoordPoint; to: CoordPoint }
   showSolution?: boolean
+  /** Optional solution points to show when disabled. */
+  solutionPoints?: CoordPoint[]
+}
+
+function samePoint(a: CoordPoint, b: CoordPoint): boolean {
+  return a.x === b.x && a.y === b.y
 }
 
 /**
  * Interactive coordinate grid: click/tap snaps to the nearest lattice point.
- * Optional markers (Taschenlampe/Spalt) and solution ray after checking.
+ * Supports one or several points (maxPoints).
  */
 export const CoordinateClick: React.FC<CoordinateClickProps> = ({
   xRange,
   yRange,
   cellSize = 32,
-  value,
+  value = null,
   onChange,
+  points: pointsProp,
+  onChangePoints,
+  maxPoints = 1,
   instruction,
   disabled = false,
   markers = [],
   guide,
   solutionRay,
   showSolution = false,
+  solutionPoints = [],
 }) => {
   const svgRef = useRef<SVGSVGElement>(null)
-  const [hover, setHover] = useState<{ x: number; y: number } | null>(null)
+  const [hover, setHover] = useState<CoordPoint | null>(null)
+
+  const multi = maxPoints > 1
+  const selected: CoordPoint[] = multi
+    ? (pointsProp ?? [])
+    : value
+      ? [value]
+      : []
 
   const xMin = Math.min(xRange[0], xRange[1])
   const xMax = Math.max(xRange[0], xRange[1])
@@ -62,11 +87,11 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
       padL + (mx - xMin) * cellSize,
       padT + (yMax - my) * cellSize,
     ],
-    [cellSize, padL, padT, xMin, yMax],
+    [cellSize, xMin, yMax],
   )
 
   const screenToGrid = useCallback(
-    (clientX: number, clientY: number): { x: number; y: number } | null => {
+    (clientX: number, clientY: number): CoordPoint | null => {
       const svg = svgRef.current
       if (!svg) return null
       const rect = svg.getBoundingClientRect()
@@ -79,8 +104,38 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
       if (x < xMin || x > xMax || y < yMin || y > yMax) return null
       return { x, y }
     },
-    [cellSize, padL, padT, totalH, totalW, xMax, xMin, yMax, yMin],
+    [cellSize, totalH, totalW, xMax, xMin, yMax, yMin],
   )
+
+  const emit = (next: CoordPoint[]) => {
+    if (multi) {
+      onChangePoints?.(next)
+      return
+    }
+    const p = next[0]
+    if (p) onChange?.(p)
+  }
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (disabled) return
+    const p = screenToGrid(e.clientX, e.clientY)
+    if (!p) return
+    if (!multi) {
+      onChange?.(p)
+      return
+    }
+    const idx = selected.findIndex((s) => samePoint(s, p))
+    if (idx >= 0) {
+      emit(selected.filter((_, i) => i !== idx))
+      return
+    }
+    if (selected.length >= maxPoints) {
+      // Replace oldest when full
+      emit([...selected.slice(1), p])
+      return
+    }
+    emit([...selected, p])
+  }
 
   const [ox, oy] = toSvg(0, 0)
   const gridLines: string[] = []
@@ -121,12 +176,18 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
     )
   }
 
-  const mark = value ?? hover
-  const markPos = mark ? toSvg(mark.x, mark.y) : null
+  const hoverPos =
+    hover && !selected.some((s) => samePoint(s, hover)) ? toSvg(hover.x, hover.y) : null
   const guideFrom = guide ? toSvg(guide.from.x, guide.from.y) : null
   const guideTo = guide ? toSvg(guide.to.x, guide.to.y) : null
   const rayFrom = showSolution && solutionRay ? toSvg(solutionRay.from.x, solutionRay.from.y) : null
   const rayTo = showSolution && solutionRay ? toSvg(solutionRay.to.x, solutionRay.to.y) : null
+  const solPts = showSolution ? solutionPoints : []
+
+  const readout =
+    selected.length === 0
+      ? null
+      : selected.map((p) => `(${p.x}|${p.y})`).join(', ')
 
   return (
     <div className="coordinate-click">
@@ -137,18 +198,18 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
         width={totalW}
         height={totalH}
         viewBox={`0 0 ${totalW} ${totalH}`}
-        onClick={(e) => {
-          if (disabled) return
-          const p = screenToGrid(e.clientX, e.clientY)
-          if (p) onChange(p)
-        }}
+        onClick={handleClick}
         onMouseMove={(e) => {
           if (disabled) return
           setHover(screenToGrid(e.clientX, e.clientY))
         }}
         onMouseLeave={() => setHover(null)}
         role="img"
-        aria-label="Kästchenpapier – Lichtstrahl zeichnen"
+        aria-label={
+          multi
+            ? `Koordinatensystem – bis zu ${maxPoints} Punkte setzen`
+            : 'Kästchenpapier – Punkt tippen'
+        }
       >
         <rect x={0} y={0} width={totalW} height={totalH} fill="#fafafa" />
         <g dangerouslySetInnerHTML={{ __html: gridLines.join('') }} />
@@ -205,34 +266,86 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
             <g key={`m${i}`} pointerEvents="none">
               <circle cx={sx} cy={sy} r={8} fill={fill} stroke="#92400e" strokeWidth={2} />
               {m.label && (
-                <text x={sx} y={sy - 12} textAnchor="middle" fontSize={11} fill="#334155" fontWeight={600}>
+                <text
+                  x={sx}
+                  y={sy - 12}
+                  textAnchor="middle"
+                  fontSize={11}
+                  fill="#334155"
+                  fontWeight={600}
+                >
                   {m.label}
                 </text>
               )}
             </g>
           )
         })}
-        {markPos && (
+        {solPts.map((p, i) => {
+          const [sx, sy] = toSvg(p.x, p.y)
+          return (
+            <circle
+              key={`sol${i}`}
+              cx={sx}
+              cy={sy}
+              r={7}
+              fill="#c62828"
+              stroke="#b71c1c"
+              strokeWidth={2}
+              opacity={0.55}
+              pointerEvents="none"
+            />
+          )
+        })}
+        {selected.map((p, i) => {
+          const [sx, sy] = toSvg(p.x, p.y)
+          return (
+            <g key={`s${i}`} pointerEvents="none">
+              <circle
+                cx={sx}
+                cy={sy}
+                r={7}
+                fill="#1565c0"
+                stroke="#0d47a1"
+                strokeWidth={2}
+              />
+              {multi && (
+                <text
+                  x={sx}
+                  y={sy + 4}
+                  textAnchor="middle"
+                  fontSize={10}
+                  fontWeight={700}
+                  fill="#fff"
+                >
+                  {i + 1}
+                </text>
+              )}
+            </g>
+          )
+        })}
+        {hoverPos && (
           <circle
-            cx={markPos[0]}
-            cy={markPos[1]}
-            r={value ? 7 : 5}
-            fill={value ? '#1565c0' : '#90caf9'}
+            cx={hoverPos[0]}
+            cy={hoverPos[1]}
+            r={5}
+            fill="#90caf9"
             stroke="#0d47a1"
             strokeWidth={2}
             pointerEvents="none"
           />
         )}
       </svg>
-      {value && !showSolution && (
+      {!showSolution && (
         <p className="coordinate-click__readout">
-          Gewählt: ({value.x}|{value.y})
+          {multi
+            ? `Punkte: ${selected.length}/${maxPoints}${readout ? ` — ${readout}` : ''}`
+            : readout
+              ? `Gewählt: ${readout}`
+              : null}
         </p>
       )}
       {showSolution && solutionRay && (
-        <p className="coordinate-click__readout">
-          Auflösung: Lichtstrahl eingezeichnet
-        </p>
+        <p className="coordinate-click__readout">Auflösung: Lichtstrahl eingezeichnet</p>
       )}
     </div>
   )

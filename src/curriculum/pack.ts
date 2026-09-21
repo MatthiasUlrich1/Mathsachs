@@ -31,6 +31,8 @@ export interface PackTopic {
    * Fehlend/undefined = freigegeben (Mathe-Kompatibilität).
    */
   released?: boolean
+  /** Parent topic id for pending graphic/interactive review children. */
+  reviewOf?: string
   /** Practice round length; omitted = app default (Physik 5, sonst 10). */
   tasksPerRound?: number
   /**
@@ -152,6 +154,9 @@ const parseTopic = (raw: unknown): PackTopic | null => {
     pointsPerTask: Math.max(1, Math.trunc(asNumber(raw.pointsPerTask, 10))),
     ...(keywords?.length ? { keywords } : {}),
     ...(raw.released === false ? { released: false } : raw.released === true ? { released: true } : {}),
+    ...(typeof raw.reviewOf === 'string' && raw.reviewOf.trim()
+      ? { reviewOf: raw.reviewOf.trim() }
+      : {}),
     ...(typeof raw.tasksPerRound === 'number' &&
     Number.isFinite(raw.tasksPerRound) &&
     raw.tasksPerRound >= 1

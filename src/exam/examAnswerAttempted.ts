@@ -12,7 +12,9 @@ export function examAnswerAttempted(_task: Task, input: UserInput): boolean {
     case 'multiSelect':
       return input.selected.length > 0
     case 'coordinateClick':
-      return Number.isFinite(input.x) && Number.isFinite(input.y)
+      return (
+        Number.isFinite(input.x) && Number.isFinite(input.y)
+      ) || (input.points?.length ?? 0) > 0
     case 'coordinateDraw':
       return input.scene.objects.length > 0
     case 'digitGrid': {

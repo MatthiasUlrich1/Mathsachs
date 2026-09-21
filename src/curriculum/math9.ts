@@ -6,6 +6,7 @@ import {
 } from '../lib/geometrySvg'
 import { formatDe, roundTo } from '../lib/num'
 import { mixedVariants, valueTask, visualTask } from './taskHelpers'
+import { math9GraphicReviews } from './graphicReviewTopics'
 import type { Grade, Topic } from './types'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
@@ -671,7 +672,7 @@ export const klasse9: Grade = {
       id: 'lb1',
       title: 'Funktionen und Potenzen',
       ustd: 48,
-      topics: [potenzProdukt, potenzQuotient, quadratWert, scheitel],
+      topics: [potenzProdukt, potenzQuotient, quadratWert, scheitel, ...math9GraphicReviews],
     },
     {
       id: 'lb2',

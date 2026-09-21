@@ -979,6 +979,11 @@ a.task-request__send {
   color: #fca5a5;
 }
 
+.topic__release-badge--review {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fcd34d;
+}
+
 /* Difficulty badges */
 .difficulty-badge {
   display: inline-block;

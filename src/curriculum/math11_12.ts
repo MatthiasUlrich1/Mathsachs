@@ -5,6 +5,7 @@ import {
 } from '../lib/geometrySvg'
 import { formatDe, roundTo } from '../lib/num'
 import { mixedVariants, valueTask, visualTask, coordinateClickTask } from './taskHelpers'
+import { math1112GraphicReviews } from './graphicReviewTopics'
 import type { Grade, Topic } from './types'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
@@ -392,7 +393,7 @@ export const klasse11_12: Grade = {
       id: 'lb1',
       title: 'Differential- und Integralrechnung',
       ustd: 52,
-      topics: [ableitungStelle, nullstelleLinear, bestimmtesIntegral],
+      topics: [ableitungStelle, nullstelleLinear, bestimmtesIntegral, ...math1112GraphicReviews],
     },
     {
       id: 'lb2',

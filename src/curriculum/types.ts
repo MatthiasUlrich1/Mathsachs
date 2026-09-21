@@ -34,7 +34,7 @@ export type UserInput =
   | { kind: 'digitGrid'; digits: string[]; answerRows?: string[][] }
   | { kind: 'choicePick'; choice: string }
   | { kind: 'multiSelect'; selected: string[] }
-  | { kind: 'coordinateClick'; x: number; y: number }
+  | { kind: 'coordinateClick'; x: number; y: number; points?: Array<{ x: number; y: number }> }
   | { kind: 'coordinateDraw'; scene: import('../lib/coordinateScene').CoordinateScene }
   | { kind: 'paramSlider'; values: Record<string, number> }
 
@@ -135,6 +135,11 @@ export interface Topic {
    * („Noch keine Aufgaben enthalten“), außer bei stiller Pack-Vorschau.
    */
   released?: boolean
+  /**
+   * Wenn gesetzt: Grafik-/Interactive-Unterthema zur Prüfung vor dem Merge
+   * in die Haupt-ID (`reviewOf`). Bleibt gesperrt, bis manuell freigegeben/gemerged.
+   */
+  reviewOf?: string
   /** Stable numeric ID for Freigabe-Feedback (z. B. „ID 8545“). */
   contentId?: number
   /** Tasks per practice round (pack-driven; default depends on subject). */

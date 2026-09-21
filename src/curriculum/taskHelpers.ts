@@ -546,6 +546,8 @@ interface CoordinateClickTaskInput {
   question: string
   x: number
   y: number
+  /** Optional multi-point solution (order irrelevant). Defaults to [{x,y}]. */
+  points?: Array<{ x: number; y: number }>
   solution: string
   explanation: string
   xRange?: [number, number]
@@ -562,7 +564,7 @@ interface CoordinateClickTaskInput {
   solutionRay?: { from: { x: number; y: number }; to: { x: number; y: number } }
   /**
    * If set, any lattice point on the forward ray from→through (t ≥ 1) is correct,
-   * not only the sample point (x|y).
+   * not only the sample point (x|y). Ignored when `points` has length > 1.
    */
   acceptForwardRay?: { from: { x: number; y: number }; through: { x: number; y: number } }
 }
@@ -583,47 +585,93 @@ export function isOnForwardRay(
   return Number.isFinite(t) && t >= 1 - 1e-9
 }
 
-/** Place a point on a coordinate grid by clicking (snaps to lattice). */
+function samePointSet(
+  a: Array<{ x: number; y: number }>,
+  b: Array<{ x: number; y: number }>,
+): boolean {
+  if (a.length !== b.length) return false
+  const used = new Set<number>()
+  for (const p of a) {
+    const idx = b.findIndex(
+      (q, i) => !used.has(i) && q.x === p.x && q.y === p.y,
+    )
+    if (idx < 0) return false
+    used.add(idx)
+  }
+  return true
+}
+
+function answerPoints(answer: UserInput): Array<{ x: number; y: number }> | null {
+  if (answer.kind === 'coordinateClick') {
+    if (answer.points && answer.points.length > 0) return answer.points
+    if (Number.isFinite(answer.x) && Number.isFinite(answer.y)) {
+      return [{ x: answer.x, y: answer.y }]
+    }
+    return null
+  }
+  if (answer.kind === 'value') {
+    const raw = answer.value.trim().toLowerCase()
+    const matches = [
+      ...raw.matchAll(/\(\s*(-?\d+)\s*[|;,]\s*(-?\d+)\s*\)/g),
+      ...raw.matchAll(/(-?\d+)\s*[;|,]\s*(-?\d+)/g),
+    ]
+    if (!matches.length) return null
+    return matches.map((m) => ({ x: +m[1]!, y: +m[2]! }))
+  }
+  return null
+}
+
+/** Place one or more points on a coordinate grid by clicking (snaps to lattice). */
 export const coordinateClickTask = (input: CoordinateClickTaskInput): Task => {
   const xRange = input.xRange ?? [-5, 8]
   const yRange = input.yRange ?? [-5, 8]
+  const want =
+    input.points && input.points.length > 0
+      ? input.points
+      : [{ x: input.x, y: input.y }]
+  const maxPoints = want.length
+  const multi = maxPoints > 1
   return {
     question: input.question,
     answerKind: 'text',
     solution: input.solution,
     explanation: input.explanation,
     visualContent: input.visualContent,
-    sampleAnswer: { kind: 'coordinateClick', x: input.x, y: input.y },
+    sampleAnswer: {
+      kind: 'coordinateClick',
+      x: want[0]!.x,
+      y: want[0]!.y,
+      ...(multi ? { points: want } : {}),
+    },
     interactive: {
       type: 'coordinateClick',
       props: {
         xRange,
         yRange,
         cellSize: input.cellSize ?? 32,
-        instruction: input.instruction ?? 'Tippe auf den gesuchten Punkt im Koordinatensystem:',
+        maxPoints,
+        instruction:
+          input.instruction ??
+          (multi
+            ? `Tippe die ${maxPoints} gesuchten Punkte im Koordinatensystem:`
+            : 'Tippe auf den gesuchten Punkt im Koordinatensystem:'),
         markers: input.markers,
         guide: input.guide,
         solutionRay: input.solutionRay,
+        solutionPoints: want,
       },
     },
     check: (answer: UserInput) => {
-      const point =
-        answer.kind === 'coordinateClick'
-          ? { x: answer.x, y: answer.y }
-          : answer.kind === 'value'
-            ? (() => {
-                const raw = answer.value.trim().toLowerCase()
-                const m =
-                  raw.match(/(-?\d+)\s*[;|,]\s*(-?\d+)/) ||
-                  raw.match(/\(\s*(-?\d+)\s*[|;,]\s*(-?\d+)\s*\)/)
-                return m ? { x: +m[1]!, y: +m[2]! } : null
-              })()
-            : null
-      if (!point || !Number.isFinite(point.x) || !Number.isFinite(point.y)) return false
-      if (input.acceptForwardRay) {
-        return isOnForwardRay(input.acceptForwardRay.from, input.acceptForwardRay.through, point)
+      const got = answerPoints(answer)
+      if (!got) return false
+      if (!multi && input.acceptForwardRay && got.length === 1) {
+        return isOnForwardRay(
+          input.acceptForwardRay.from,
+          input.acceptForwardRay.through,
+          got[0]!,
+        )
       }
-      return point.x === input.x && point.y === input.y
+      return samePointSet(got, want)
     },
   }
 }

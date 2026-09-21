@@ -29,6 +29,7 @@ const topicMeta = (topic: {
   pointsPerTask: number
   keywords?: string[]
   released?: boolean
+  reviewOf?: string
 }): PackTopic => ({
   id: topic.id,
   title: topic.title,
@@ -36,6 +37,7 @@ const topicMeta = (topic: {
   pointsPerTask: topic.pointsPerTask,
   ...(topic.keywords?.length ? { keywords: topic.keywords } : {}),
   ...(topic.released === false ? { released: false } : {}),
+  ...(topic.reviewOf ? { reviewOf: topic.reviewOf } : {}),
 })
 
 export function gradeToPackGrade(
@@ -106,13 +108,13 @@ export async function buildGymSachsenSeed(): Promise<CurriculumPack> {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Mathematik',
-    version: '1.2.0',
+    version: '1.2.1',
     changelog:
-      'ID 2101 freigegeben: Fläche und senkrechte Seitenlänge (Klasse 6 Prismen).',
+      'Grafik-Prüfungsthemen (gesperrt) für Klasse 8–12: Gerade/Parabel/Tangente/Fläche.',
     contentHash: packContentHash(official, extras),
     official,
     extras,
   }
 }
 
-export const GYM_SACHSEN_PACK_VERSION = '1.2.0'
+export const GYM_SACHSEN_PACK_VERSION = '1.2.1'

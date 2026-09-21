@@ -232,6 +232,23 @@ function readAuthoringSliders(p: Record<string, unknown>): AuthoringSlider[] {
   ]
 }
 
+function readAuthoringPoints(
+  p: Record<string, unknown>,
+): Array<{ x: number; y: number }> {
+  if (Array.isArray(p.points) && p.points.length) {
+    return p.points
+      .map((r) => {
+        const row = r as Record<string, unknown>
+        return { x: Number(row.x), y: Number(row.y) }
+      })
+      .filter((pt) => Number.isFinite(pt.x) && Number.isFinite(pt.y))
+  }
+  const x = Number(p.x)
+  const y = Number(p.y)
+  if (Number.isFinite(x) && Number.isFinite(y)) return [{ x, y }]
+  return []
+}
+
 export function resolveVisualSvg(spec: VisualSpec): string | undefined {
   if (spec.mode === 'none') return undefined
   if (spec.mode === 'scene') {
@@ -358,8 +375,13 @@ export function validateDraft(draft: DraftAuthoringTask): string[] {
       break
     }
     case 'coordinateClick': {
-      if (!Number.isFinite(Number(p.x)) || !Number.isFinite(Number(p.y))) {
-        errors.push('Koordinaten: x/y ungültig.')
+      const pts = readAuthoringPoints(p)
+      if (!pts.length) errors.push('Koordinaten: mindestens einen Punkt setzen.')
+      for (const pt of pts) {
+        if (!Number.isFinite(pt.x) || !Number.isFinite(pt.y)) {
+          errors.push('Koordinaten: x/y ungültig.')
+          break
+        }
       }
       break
     }
@@ -525,17 +547,23 @@ export function draftToTask(draft: DraftAuthoringTask): Task {
           explanation,
         }),
       )
-    case 'coordinateClick':
+    case 'coordinateClick': {
+      const pts = readAuthoringPoints(p)
+      const first = pts[0] ?? { x: 0, y: 0 }
       return withVisual(
         coordinateClickTask({
           question,
-          x: Number(p.x),
-          y: Number(p.y),
-          solution,
+          x: first.x,
+          y: first.y,
+          ...(pts.length > 1 ? { points: pts } : {}),
+          solution:
+            solution ||
+            pts.map((pt) => `(${pt.x}|${pt.y})`).join(', '),
           explanation,
           visualContent,
         }),
       )
+    }
     case 'coordinateDraw': {
       const solutionScene =
         parseCoordinateScene(p.solutionScene) ?? emptyCoordinateScene()
@@ -751,16 +779,22 @@ export function exportGeneratorSnippet(draft: DraftAuthoringTask): string {
   explanation: ${expl},
 })`
       break
-    case 'coordinateClick':
+    case 'coordinateClick': {
+      const pts = readAuthoringPoints(p)
+      const first = pts[0] ?? { x: 0, y: 0 }
+      const pointsPart =
+        pts.length > 1 ? `points: ${JSON.stringify(pts)},` : ''
       call = `coordinateClickTask({
   question: ${q},
-  x: ${Number(p.x)},
-  y: ${Number(p.y)},
+  x: ${first.x},
+  y: ${first.y},
+  ${pointsPart}
   solution: ${sol},
   explanation: ${expl},
   ${visualExpr ? `visualContent: ${visualExpr},` : ''}
 })`
       break
+    }
     case 'coordinateDraw': {
       const solutionScene =
         parseCoordinateScene(p.solutionScene) ?? emptyCoordinateScene()
