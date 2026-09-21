@@ -1,6 +1,8 @@
 import {
   canCreateExam,
   canRequestTasks,
+  canSeeTaskAuthoringReviewUI,
+  canSeeTaskAuthoringUI,
   canViewFaultyReports,
   canWriteExam,
   type UserRole,
@@ -45,6 +47,8 @@ export const SETTINGS_SECTIONS = [
   { id: 'curricula', label: 'Lehrpläne' },
   { id: 'class', label: 'Klasse' },
   { id: 'tasks', label: 'Aufgaben ergänzen' },
+  { id: 'taskAuthoring', label: 'Aufgabengenerator' },
+  { id: 'taskAuthoringReview', label: 'Aufgaben-Prüfung' },
   { id: 'myReports', label: 'Meine Meldungen' },
   { id: 'faulty', label: 'Fehlerhafte Aufgaben' },
   { id: 'lan', label: 'WLAN-Zugang' },
@@ -56,12 +60,16 @@ export type SettingsSectionId = (typeof SETTINGS_SECTIONS)[number]['id']
 
 /**
  * Aufgaben ergänzen: Lehrer/Entwickler.
- * Meine Meldungen: alle Rollen (eigene anonyme Meldungen dieses Geräts).
+ * Aufgabengenerator: flag-gated (see taskAuthoringFlags / canSeeTaskAuthoringUI).
+ * Aufgaben-Prüfung: nur Entwickler (+ feature enabled).
+ * Meine Meldungen: alle Rollen.
  * Fehlerhafte Aufgaben: nur Entwickleransicht.
  */
 export function settingsSectionsForRole(role?: UserRole | null) {
   return SETTINGS_SECTIONS.filter((item) => {
     if (item.id === 'tasks') return canRequestTasks(role)
+    if (item.id === 'taskAuthoring') return canSeeTaskAuthoringUI(role)
+    if (item.id === 'taskAuthoringReview') return canSeeTaskAuthoringReviewUI(role)
     if (item.id === 'faulty') return canViewFaultyReports(role)
     return true
   })

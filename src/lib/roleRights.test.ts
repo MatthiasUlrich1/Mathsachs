@@ -41,6 +41,7 @@ describe('Rollen-Rechte-Matrix', () => {
       'Klassen auf eingetragener Stufe anlegen',
       'Stufen-Wettbewerb sehen',
       'Aufgaben ergänzen',
+      'Aufgabengenerator (später)',
       'Challenge anlegen (Klasse)',
       'Challenge anlegen (Stufe)',
       'Challenge ändern / löschen (Klasse)',
@@ -78,7 +79,7 @@ describe('Rollen-Rechte-Matrix', () => {
     expect(byId.challengeJoin.eltern).toBe('no')
     expect(labels).not.toContain('Challenge erstellen')
     expect(ROLE_RIGHT_ROWS.some((row) => Object.values(row.marks).includes('planned'))).toBe(
-      false,
+      true,
     )
     expect(rightMarkSymbol('planned')).toBe('geplant')
     expect(rightMarkLabel('planned')).toBe('Geplant')

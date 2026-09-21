@@ -6,6 +6,8 @@ import { LanAccessCard } from './LanAccessCard'
 import { MyReportedTasksPanel } from './MyReportedTasksPanel'
 import { RoleRightsMatrix } from './RoleRightsMatrix'
 import { Supporters } from './Supporters'
+import { TaskAuthoringPanel } from './TaskAuthoringPanel'
+import { TaskAuthoringReviewPanel } from './TaskAuthoringReviewPanel'
 import { TaskRequest } from './TaskRequest'
 import { UserManagement } from './UserManagement'
 import {
@@ -22,6 +24,8 @@ import {
   canEnterGradeCodes,
   canManageGradeCodes,
   canRequestTasks,
+  canSeeTaskAuthoringReviewUI,
+  canSeeTaskAuthoringUI,
   canSendClassPoints,
   canViewFaultyReports,
   isTeacherRole,
@@ -42,6 +46,8 @@ const SECTION_HINTS: Record<SettingsSectionId, string> = {
   curricula: 'Lehrpläne installieren, aktualisieren oder entfernen',
   class: 'Klassencode erstellen, eintragen oder teilen',
   tasks: 'Vorgaben für neue Übungsaufgaben senden',
+  taskAuthoring: 'Aufgaben interaktiv entwerfen und zur Prüfung einreichen',
+  taskAuthoringReview: 'Eingereichte Generator-Entwürfe prüfen und exportieren',
   myReports: 'Deine gemeldeten fehlerhaften Aufgaben und Korrektur-Hinweise',
   faulty: 'Gemeldete fehlerhafte Aufgaben einsehen',
   lan: 'Tablets im selben WLAN verbinden',
@@ -260,6 +266,26 @@ export function Settings({
             <p className="muted small">
               Nur Lehrer können Vorgaben für neue Aufgaben senden.
             </p>
+          </section>
+        ))}
+
+      {section === 'taskAuthoring' &&
+        (canSeeTaskAuthoringUI(role) ? (
+          <TaskAuthoringPanel role={role} />
+        ) : (
+          <section className="card" aria-label="Aufgabengenerator">
+            <h2 className="section-title no-margin">Aufgabengenerator</h2>
+            <p className="muted small">Derzeit nur in der Entwickleransicht verfügbar.</p>
+          </section>
+        ))}
+
+      {section === 'taskAuthoringReview' &&
+        (canSeeTaskAuthoringReviewUI(role) ? (
+          <TaskAuthoringReviewPanel />
+        ) : (
+          <section className="card" aria-label="Aufgaben-Prüfung">
+            <h2 className="section-title no-margin">Aufgaben-Prüfung</h2>
+            <p className="muted small">Nur in der Entwickleransicht verfügbar.</p>
           </section>
         ))}
 

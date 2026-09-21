@@ -1,4 +1,8 @@
 import type { UserData, UserRole } from './sharedState'
+import {
+  TASK_AUTHORING_ENABLED,
+  TASK_AUTHORING_SHOW_FOR_LEHRER,
+} from './taskAuthoringFlags'
 
 export type { UserRole }
 
@@ -73,6 +77,35 @@ export const canRequestTasks = (role?: unknown): boolean => {
   const id = normalizeRole(role)
   return id === 'lehrer' || id === 'entwickler'
 }
+
+/**
+ * Capability: use Aufgabengenerator (save drafts, submit for review).
+ * Lehrer + Entwickler. UI visibility is separate — see canSeeTaskAuthoringUI.
+ */
+export const canAuthorTasks = (role?: unknown): boolean => {
+  const id = normalizeRole(role)
+  return id === 'lehrer' || id === 'entwickler'
+}
+
+/** Capability: review authored drafts — Entwickler only. */
+export const canReviewAuthoredTasks = (role?: unknown): boolean =>
+  normalizeRole(role) === 'entwickler'
+
+/**
+ * Settings UI visibility for Aufgabengenerator.
+ * Capability (canAuthorTasks) includes Lehrer; visibility is flag-gated for QA.
+ */
+export const canSeeTaskAuthoringUI = (role?: unknown): boolean => {
+  if (!TASK_AUTHORING_ENABLED) return false
+  const id = normalizeRole(role)
+  if (id === 'entwickler') return true
+  if (id === 'lehrer') return TASK_AUTHORING_SHOW_FOR_LEHRER
+  return false
+}
+
+/** Settings UI visibility for Aufgaben-Prüfung (Entwickler + feature enabled). */
+export const canSeeTaskAuthoringReviewUI = (role?: unknown): boolean =>
+  TASK_AUTHORING_ENABLED && canReviewAuthoredTasks(role)
 
 /** Punkte an die aktive Klasse senden — nicht Klassenlehrer. */
 export const canSendClassPoints = (role?: unknown): boolean =>

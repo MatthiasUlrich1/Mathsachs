@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import {
   USER_ROLES,
+  canAuthorTasks,
   canCreateChallenge,
   canCreateChallengeLater,
   canCreateClassChallenge,
@@ -12,6 +13,8 @@ import {
   canEnterGradeCodes,
   canManageGradeCodes,
   canRequestTasks,
+  canReviewAuthoredTasks,
+  canSeeTaskAuthoringUI,
   canSendClassPoints,
   canViewFaultyReports,
   canWriteExam,
@@ -38,6 +41,12 @@ describe('user roles', () => {
     expect(canManageGradeCodes('entwickler')).toBe(true)
     expect(canViewFaultyReports('entwickler')).toBe(true)
     expect(canViewFaultyReports('lehrer')).toBe(false)
+    expect(canAuthorTasks('entwickler')).toBe(true)
+    expect(canAuthorTasks('lehrer')).toBe(true)
+    expect(canSeeTaskAuthoringUI('entwickler')).toBe(true)
+    expect(canSeeTaskAuthoringUI('lehrer')).toBe(false)
+    expect(canReviewAuthoredTasks('entwickler')).toBe(true)
+    expect(canReviewAuthoredTasks('lehrer')).toBe(false)
     expect(roleLabel('entwickler')).toBe('Entwickler')
     expect(USER_ROLES.map((e) => e.id)).not.toContain('entwickler')
   })

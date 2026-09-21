@@ -88,6 +88,8 @@ describe('top-bar navigation', () => {
       'Lehrpläne',
       'Klasse',
       'Aufgaben ergänzen',
+      'Aufgabengenerator',
+      'Aufgaben-Prüfung',
       'Meine Meldungen',
       'Fehlerhafte Aufgaben',
       'WLAN-Zugang',
@@ -98,6 +100,8 @@ describe('top-bar navigation', () => {
       'curricula',
       'class',
       'tasks',
+      'taskAuthoring',
+      'taskAuthoringReview',
       'myReports',
       'faulty',
       'lan',
@@ -131,17 +135,29 @@ describe('top-bar navigation', () => {
     )
   })
 
-  it('shows Fehlerhafte Aufgaben only for Entwickler', () => {
+  it('shows Aufgabengenerator + Prüfung for Entwickler; Lehrer UI gated off by flag', () => {
     expect(settingsSectionsForRole('entwickler').map((item) => item.id)).toEqual([
       'curricula',
       'class',
       'tasks',
+      'taskAuthoring',
+      'taskAuthoringReview',
       'myReports',
       'faulty',
       'lan',
       'profile',
       'supporters',
     ])
+    expect(settingsSectionsForRole('lehrer').map((item) => item.id)).not.toContain(
+      'taskAuthoring',
+    )
+    expect(settingsSectionsForRole('lehrer').map((item) => item.id)).not.toContain(
+      'taskAuthoringReview',
+    )
+  })
+
+  it('shows Fehlerhafte Aufgaben only for Entwickler', () => {
+    expect(settingsSectionsForRole('entwickler').map((item) => item.id)).toContain('faulty')
     expect(settingsSectionsForRole('lehrer').map((item) => item.id)).not.toContain('faulty')
   })
 })

@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.74] – 2026-09-21
+
+### Hinzugefügt
+- **Aufgabengenerator (MVP, Entwickler-UI):** Einstellungen → Aufgabengenerator /
+  Aufgaben-Prüfung. Alle Interactive-Typen wählbar, SVG-Vorlage oder Raw-Editor,
+  lokale Drafts, Einreichen, Review, TS-Export. Lehrer-Capability ist verdrahtet,
+  UI vorerst ausgeblendet (`TASK_AUTHORING_SHOW_FOR_LEHRER` in
+  `taskAuthoringFlags.ts` — Kill-Switch: `TASK_AUTHORING_ENABLED`).
+
 ## [0.27.73] – 2026-09-21
 
 ### Behoben

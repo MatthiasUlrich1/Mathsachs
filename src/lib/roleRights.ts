@@ -89,6 +89,11 @@ export const ROLE_RIGHT_ROWS: RightRow[] = [
     marks: { schueler: 'no', eltern: 'no', klassenlehrer: 'no', lehrer: 'yes' },
   },
   {
+    id: 'taskAuthoring',
+    label: 'Aufgabengenerator (später)',
+    marks: { schueler: 'no', eltern: 'no', klassenlehrer: 'no', lehrer: 'planned' },
+  },
+  {
     id: 'challengeCreateClass',
     label: 'Challenge anlegen (Klasse)',
     marks: { schueler: 'no', eltern: 'no', klassenlehrer: 'yes', lehrer: 'yes' },
