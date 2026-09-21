@@ -117,7 +117,7 @@ export function TaskInteractive({
               : interactive.props.items.map((_: unknown, i: number) => i)
           }
           onChange={(order) => onChange({ kind: 'dragDropSort', order })}
-          instruction="Ziehe die Elemente in die richtige Reihenfolge:"
+          instruction="Ziehe die Elemente in die richtige Reihenfolge (oder nutze ▲/▼):"
         />
       )}
       {interactive.type === 'dragDropSlots' && !disabled && (

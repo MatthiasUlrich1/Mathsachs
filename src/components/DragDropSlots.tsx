@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import './DragDropSlots.css'
 
 export interface DragDropSlotsProps {
@@ -10,9 +10,13 @@ export interface DragDropSlotsProps {
   instruction?: string
 }
 
+type DragState =
+  | { from: 'pool'; itemIdx: number }
+  | { from: 'slot'; slotIdx: number }
+
 /**
- * Formula builder: drag chips from a pool into empty slots.
- * Extra (wrong) blocks stay in the pool unused.
+ * Formula builder: drag chips from a pool into slots.
+ * Uses Pointer Events so touch (iOS) works — HTML5 DnD does not on Safari.
  */
 export const DragDropSlots: React.FC<DragDropSlotsProps> = ({
   items,
@@ -20,25 +24,26 @@ export const DragDropSlots: React.FC<DragDropSlotsProps> = ({
   onChange,
   instruction,
 }) => {
-  const [drag, setDrag] = useState<{ from: 'pool' | 'slot'; index: number } | null>(
-    null,
-  )
+  const [drag, setDrag] = useState<DragState | null>(null)
   const [overSlot, setOverSlot] = useState<number | null>(null)
+  const [overPool, setOverPool] = useState(false)
+  const dragRef = useRef<DragState | null>(null)
 
   const used = new Set(slots.filter((s): s is number => s !== null))
   const poolIndices = items.map((_, i) => i).filter((i) => !used.has(i))
 
   const clearDrag = () => {
+    dragRef.current = null
     setDrag(null)
     setOverSlot(null)
+    setOverPool(false)
   }
 
-  const placeInSlot = (slotIdx: number, itemIdx: number) => {
+  const placeInSlot = (slotIdx: number, itemIdx: number, fromSlot?: number) => {
     const next = [...slots]
     const prev = next[slotIdx]
-    // If coming from another slot, free that slot
-    if (drag?.from === 'slot') {
-      next[drag.index] = prev ?? null
+    if (fromSlot !== undefined) {
+      next[fromSlot] = prev ?? null
     }
     next[slotIdx] = itemIdx
     onChange(next)
@@ -50,50 +55,58 @@ export const DragDropSlots: React.FC<DragDropSlotsProps> = ({
     onChange(next)
   }
 
-  const onDragStartPool = (e: React.DragEvent, poolPos: number) => {
-    const itemIdx = poolIndices[poolPos]
-    if (itemIdx === undefined) return
-    setDrag({ from: 'pool', index: itemIdx })
-    e.dataTransfer.effectAllowed = 'move'
-    e.dataTransfer.setData('text/plain', String(itemIdx))
-  }
-
-  const onDragStartSlot = (e: React.DragEvent, slotIdx: number) => {
-    const itemIdx = slots[slotIdx]
-    if (itemIdx === null || itemIdx === undefined) return
-    setDrag({ from: 'slot', index: slotIdx })
-    e.dataTransfer.effectAllowed = 'move'
-    e.dataTransfer.setData('text/plain', `slot:${slotIdx}`)
-  }
-
-  const onDropSlot = (e: React.DragEvent, slotIdx: number) => {
-    e.preventDefault()
-    if (!drag) {
-      clearDrag()
-      return
+  const targetFromPoint = (
+    clientX: number,
+    clientY: number,
+  ): { kind: 'slot'; idx: number } | { kind: 'pool' } | null => {
+    const el = document.elementFromPoint(clientX, clientY)
+    const slot = el?.closest('[data-slot-idx]') as HTMLElement | null
+    if (slot) {
+      const idx = Number(slot.dataset.slotIdx)
+      if (Number.isFinite(idx)) return { kind: 'slot', idx }
     }
-    if (drag.from === 'pool') {
-      placeInSlot(slotIdx, drag.index)
-    } else if (drag.from === 'slot') {
-      const fromSlot = drag.index
-      if (fromSlot === slotIdx) {
-        clearDrag()
-        return
+    if (el?.closest('[data-drop-pool]')) return { kind: 'pool' }
+    return null
+  }
+
+  const beginDrag = (e: React.PointerEvent<HTMLElement>, state: DragState) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return
+    e.currentTarget.setPointerCapture(e.pointerId)
+    dragRef.current = state
+    setDrag(state)
+  }
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!dragRef.current) return
+    const t = targetFromPoint(e.clientX, e.clientY)
+    setOverSlot(t?.kind === 'slot' ? t.idx : null)
+    setOverPool(t?.kind === 'pool')
+  }
+
+  const onPointerUp = (e: React.PointerEvent<HTMLElement>) => {
+    const current = dragRef.current
+    if (!current) return
+    const t = targetFromPoint(e.clientX, e.clientY)
+    if (t?.kind === 'slot') {
+      if (current.from === 'pool') {
+        placeInSlot(t.idx, current.itemIdx)
+      } else if (current.from === 'slot') {
+        if (current.slotIdx !== t.idx) {
+          const next = [...slots]
+          const a = next[current.slotIdx] ?? null
+          const b = next[t.idx] ?? null
+          next[current.slotIdx] = b
+          next[t.idx] = a
+          onChange(next)
+        }
       }
-      const next = [...slots]
-      const a = next[fromSlot] ?? null
-      const b = next[slotIdx] ?? null
-      next[fromSlot] = b
-      next[slotIdx] = a
-      onChange(next)
+    } else if (t?.kind === 'pool' && current.from === 'slot') {
+      returnToPool(current.slotIdx)
     }
-    clearDrag()
-  }
-
-  const onDropPool = (e: React.DragEvent) => {
-    e.preventDefault()
-    if (drag?.from === 'slot') {
-      returnToPool(drag.index)
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId)
+    } catch {
+      /* already released */
     }
     clearDrag()
   }
@@ -103,20 +116,20 @@ export const DragDropSlots: React.FC<DragDropSlotsProps> = ({
       {instruction && <div className="drag-drop-slots__instruction">{instruction}</div>}
 
       <div
-        className="drag-drop-slots__pool"
-        onDragOver={(e) => e.preventDefault()}
-        onDrop={onDropPool}
+        className={`drag-drop-slots__pool ${overPool ? 'drag-over' : ''}`}
+        data-drop-pool
         aria-label="Block-Vorrat"
       >
-        {poolIndices.map((itemIdx, poolPos) => (
+        {poolIndices.map((itemIdx) => (
           <div
             key={`pool-${itemIdx}`}
             className={`drag-drop-slots__chip ${
-              drag?.from === 'pool' && drag.index === itemIdx ? 'dragging' : ''
+              drag?.from === 'pool' && drag.itemIdx === itemIdx ? 'dragging' : ''
             }`}
-            draggable
-            onDragStart={(e) => onDragStartPool(e, poolPos)}
-            onDragEnd={clearDrag}
+            onPointerDown={(e) => beginDrag(e, { from: 'pool', itemIdx })}
+            onPointerMove={onPointerMove}
+            onPointerUp={onPointerUp}
+            onPointerCancel={clearDrag}
           >
             <span className="drag-drop-slots__handle">≡</span>
             <span>{items[itemIdx]!.label}</span>
@@ -134,27 +147,36 @@ export const DragDropSlots: React.FC<DragDropSlotsProps> = ({
           return (
             <div
               key={`slot-${slotIdx}`}
+              data-slot-idx={slotIdx}
               className={`drag-drop-slots__slot ${filled ? 'filled' : ''} ${
                 overSlot === slotIdx ? 'drag-over' : ''
               }`}
-              onDragOver={(e) => {
-                e.preventDefault()
-                setOverSlot(slotIdx)
-              }}
-              onDragLeave={() => setOverSlot(null)}
-              onDrop={(e) => onDropSlot(e, slotIdx)}
             >
               {filled ? (
                 <div
-                  className="drag-drop-slots__chip in-slot"
-                  draggable
-                  onDragStart={(e) => onDragStartSlot(e, slotIdx)}
-                  onDragEnd={clearDrag}
-                  onDoubleClick={() => returnToPool(slotIdx)}
-                  title="Doppelklick: zurück in den Vorrat"
+                  className={`drag-drop-slots__chip in-slot ${
+                    drag?.from === 'slot' && drag.slotIdx === slotIdx ? 'dragging' : ''
+                  }`}
+                  onPointerDown={(e) => beginDrag(e, { from: 'slot', slotIdx })}
+                  onPointerMove={onPointerMove}
+                  onPointerUp={onPointerUp}
+                  onPointerCancel={clearDrag}
+                  title="Ziehen oder tippen: zurück in den Vorrat"
                 >
                   <span className="drag-drop-slots__handle">≡</span>
                   <span>{label}</span>
+                  <button
+                    type="button"
+                    className="drag-drop-slots__clear"
+                    aria-label="Zurück in den Vorrat"
+                    onPointerDown={(e) => e.stopPropagation()}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      returnToPool(slotIdx)
+                    }}
+                  >
+                    ×
+                  </button>
                 </div>
               ) : (
                 <span className="drag-drop-slots__placeholder">{slotIdx + 1}</span>

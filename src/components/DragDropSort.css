@@ -31,9 +31,10 @@
   background: #f8f9fa;
   border: 2px solid #dee2e6;
   border-radius: 8px;
-  cursor: move;
+  cursor: grab;
   user-select: none;
-  transition: all 0.2s;
+  touch-action: none;
+  transition: background 0.15s, border-color 0.15s, opacity 0.15s;
 }
 
 .drag-drop-item:hover {
@@ -42,8 +43,10 @@
 }
 
 .drag-drop-item.dragging {
-  opacity: 0.5;
+  opacity: 0.45;
   cursor: grabbing;
+  /* Let elementFromPoint hit the item underneath while dragging (touch + mouse). */
+  pointer-events: none;
 }
 
 .drag-drop-item.drag-over {
@@ -61,4 +64,39 @@
   font-size: 16px;
   font-weight: 500;
   color: #212529;
+  flex: 1;
+  min-width: 0;
+}
+
+.drag-reorder-btns {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-shrink: 0;
+  /* Buttons must receive clicks; parent has touch-action:none for drag. */
+  touch-action: manipulation;
+  pointer-events: auto;
+}
+
+.drag-reorder-btn {
+  appearance: none;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #475569;
+  border-radius: 4px;
+  width: 1.75rem;
+  height: 1.35rem;
+  line-height: 1;
+  font-size: 0.65rem;
+  padding: 0;
+  cursor: pointer;
+}
+
+.drag-reorder-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.drag-reorder-btn:not(:disabled):active {
+  background: #e2e8f0;
 }

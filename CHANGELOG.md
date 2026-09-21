@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.73] – 2026-09-21
+
+### Behoben
+- **ID 7081 u. a. Drag&Drop:** Sortieren und Formel-Slots nutzen Pointer-Events
+  statt HTML5-DnD — funktioniert wieder auf iPhone/Touch; zusätzlich ▲/▼ bzw.
+  × als Fallback.
+
 ## [0.27.72] – 2026-09-20
 
 ### Behoben

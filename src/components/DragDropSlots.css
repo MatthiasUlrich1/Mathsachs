@@ -65,6 +65,12 @@
   user-select: none;
 }
 
+.drag-drop-slots__pool.drag-over {
+  outline: 2px dashed #60a5fa;
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+
 .drag-drop-slots__chip {
   display: inline-flex;
   align-items: center;
@@ -78,6 +84,7 @@
   font-weight: 600;
   cursor: grab;
   user-select: none;
+  touch-action: none;
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.12);
 }
 
@@ -87,6 +94,7 @@
 
 .drag-drop-slots__chip.dragging {
   opacity: 0.45;
+  pointer-events: none;
 }
 
 .drag-drop-slots__chip.in-slot {
@@ -94,10 +102,29 @@
   justify-content: center;
   border: none;
   box-shadow: none;
+  position: relative;
 }
 
 .drag-drop-slots__handle {
   font-size: 1.05rem;
   color: #64748b;
   line-height: 1;
+}
+
+.drag-drop-slots__clear {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: 0 0.15rem;
+  margin-left: 0.15rem;
+  cursor: pointer;
+  touch-action: manipulation;
+  pointer-events: auto;
+}
+
+.drag-drop-slots__clear:active {
+  color: #0f172a;
 }

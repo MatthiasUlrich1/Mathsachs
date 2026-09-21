@@ -42,15 +42,28 @@ describe('DragDropSort', () => {
     const html = renderToStaticMarkup(
       createElement(DragDropSort, {
         items,
-        userOrder: [2, 0, 1], // 14 dm, 1.5 m, 130 cm
+        userOrder: [2, 0, 1],
         onChange,
-      })
+      }),
     )
-    // Check that 14 dm appears before 1,5 m in the output
     const dm14Idx = html.indexOf('14 dm')
     const m15Idx = html.indexOf('1,5 m')
     const cm130Idx = html.indexOf('130 cm')
     expect(dm14Idx).toBeLessThan(m15Idx)
     expect(m15Idx).toBeLessThan(cm130Idx)
+  })
+
+  it('renders reorder buttons for touch-friendly fallback', () => {
+    const onChange = vi.fn()
+    const html = renderToStaticMarkup(
+      createElement(DragDropSort, {
+        items,
+        userOrder: [0, 1, 2],
+        onChange,
+      }),
+    )
+    expect(html).toContain('Nach oben')
+    expect(html).toContain('Nach unten')
+    expect(html).toContain('data-sort-idx')
   })
 })
