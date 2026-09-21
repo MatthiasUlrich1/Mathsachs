@@ -108,7 +108,7 @@ export async function buildGymSachsenSeed(): Promise<CurriculumPack> {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Mathematik',
-    version: '1.2.3',
+    version: '1.2.4',
     changelog:
       'K7: Gleichungsumstellung mehrzeilig (Äquivalenz); Oberfläche einer Pyramide + SVG.',
     contentHash: packContentHash(official, extras),
@@ -117,4 +117,4 @@ export async function buildGymSachsenSeed(): Promise<CurriculumPack> {
   }
 }
 
-export const GYM_SACHSEN_PACK_VERSION = '1.2.3'
+export const GYM_SACHSEN_PACK_VERSION = '1.2.4'

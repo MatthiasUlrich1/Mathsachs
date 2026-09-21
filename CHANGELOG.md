@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.82] – 2026-09-21
+
+### Geändert
+- **ID 2474 (a·x=b):** Operation hinter `|` per Drag&Drop setzen, dann
+  `x = b : a`, plus Eingabe des Ergebnisses für x. Mathe-Pack **1.2.4**.
+
 ## [0.27.81] – 2026-09-21
 
 ### Geändert

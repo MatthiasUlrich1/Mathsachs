@@ -30,7 +30,7 @@ export type UserInput =
   | { kind: 'fraction'; num: string; den: string }
   | { kind: 'numberLine'; value: number }
   | { kind: 'dragDropSort'; order: number[] }
-  | { kind: 'dragDropSlots'; slots: Array<number | null> }
+  | { kind: 'dragDropSlots'; slots: Array<number | null>; result?: string }
   | { kind: 'digitGrid'; digits: string[]; answerRows?: string[][] }
   | { kind: 'choicePick'; choice: string }
   | { kind: 'multiSelect'; selected: string[] }

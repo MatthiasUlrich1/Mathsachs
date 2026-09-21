@@ -8,6 +8,22 @@ export interface DragDropSlotsProps {
   slots: Array<number | null>
   onChange: (slots: Array<number | null>) => void
   instruction?: string
+  /**
+   * Worksheet layout for equation rearrange:
+   * given equation + `|` + first `opSlotCount` slots, then remaining slots as new line.
+   */
+  worksheet?: {
+    given: string
+    /** Number of leading slots used for the Äquivalenzumformung after `|`. */
+    opSlotCount: number
+    lineHint?: string
+  }
+  /** Optional numeric result entry (e.g. final x). */
+  result?: {
+    label: string
+    value: string
+    onChange: (value: string) => void
+  }
 }
 
 type DragState =
@@ -24,6 +40,8 @@ export const DragDropSlots: React.FC<DragDropSlotsProps> = ({
   slots,
   onChange,
   instruction,
+  worksheet,
+  result,
 }) => {
   const [drag, setDrag] = useState<DragState | null>(null)
   const [overSlot, setOverSlot] = useState<number | null>(null)
@@ -33,6 +51,7 @@ export const DragDropSlots: React.FC<DragDropSlotsProps> = ({
 
   const used = new Set(slots.filter((s): s is number => s !== null))
   const poolIndices = items.map((_, i) => i).filter((i) => !used.has(i))
+  const opCount = worksheet?.opSlotCount ?? 0
 
   const clearDrag = () => {
     dragRef.current = null
@@ -117,7 +136,6 @@ export const DragDropSlots: React.FC<DragDropSlotsProps> = ({
     } else if (t?.kind === 'pool' && current.from === 'slot') {
       returnToPool(current.slotIdx)
     } else if (!moved && current.from === 'pool') {
-      // Tap chip → fill next empty slot (button-like)
       fillNextEmpty(current.itemIdx)
     }
     try {
@@ -126,6 +144,51 @@ export const DragDropSlots: React.FC<DragDropSlotsProps> = ({
       /* already released */
     }
     clearDrag()
+  }
+
+  const renderSlot = (slotIdx: number, placeholder: string) => {
+    const itemIdx = slots[slotIdx] ?? null
+    const filled = itemIdx !== null
+    const label = filled ? items[itemIdx]?.label : ''
+    return (
+      <div
+        key={`slot-${slotIdx}`}
+        data-slot-idx={slotIdx}
+        className={`drag-drop-slots__slot ${filled ? 'filled' : ''} ${
+          overSlot === slotIdx ? 'drag-over' : ''
+        }`}
+      >
+        {filled ? (
+          <div
+            className={`drag-drop-slots__chip in-slot ${
+              drag?.from === 'slot' && drag.slotIdx === slotIdx ? 'dragging' : ''
+            }`}
+            onPointerDown={(e) => beginDrag(e, { from: 'slot', slotIdx })}
+            onPointerMove={onPointerMove}
+            onPointerUp={onPointerUp}
+            onPointerCancel={clearDrag}
+            title="Ziehen oder tippen: zurück in den Vorrat"
+          >
+            <span className="drag-drop-slots__handle">≡</span>
+            <span>{label}</span>
+            <button
+              type="button"
+              className="drag-drop-slots__clear"
+              aria-label="Zurück in den Vorrat"
+              onPointerDown={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.stopPropagation()
+                returnToPool(slotIdx)
+              }}
+            >
+              ×
+            </button>
+          </div>
+        ) : (
+          <span className="drag-drop-slots__placeholder">{placeholder}</span>
+        )}
+      </div>
+    )
   }
 
   return (
@@ -157,51 +220,50 @@ export const DragDropSlots: React.FC<DragDropSlotsProps> = ({
         )}
       </div>
 
-      <div className="drag-drop-slots__slots" aria-label="Formelplätze">
-        {slots.map((itemIdx, slotIdx) => {
-          const filled = itemIdx !== null
-          const label = filled ? items[itemIdx]?.label : ''
-          return (
-            <div
-              key={`slot-${slotIdx}`}
-              data-slot-idx={slotIdx}
-              className={`drag-drop-slots__slot ${filled ? 'filled' : ''} ${
-                overSlot === slotIdx ? 'drag-over' : ''
-              }`}
-            >
-              {filled ? (
-                <div
-                  className={`drag-drop-slots__chip in-slot ${
-                    drag?.from === 'slot' && drag.slotIdx === slotIdx ? 'dragging' : ''
-                  }`}
-                  onPointerDown={(e) => beginDrag(e, { from: 'slot', slotIdx })}
-                  onPointerMove={onPointerMove}
-                  onPointerUp={onPointerUp}
-                  onPointerCancel={clearDrag}
-                  title="Ziehen oder tippen: zurück in den Vorrat"
-                >
-                  <span className="drag-drop-slots__handle">≡</span>
-                  <span>{label}</span>
-                  <button
-                    type="button"
-                    className="drag-drop-slots__clear"
-                    aria-label="Zurück in den Vorrat"
-                    onPointerDown={(e) => e.stopPropagation()}
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      returnToPool(slotIdx)
-                    }}
-                  >
-                    ×
-                  </button>
-                </div>
-              ) : (
-                <span className="drag-drop-slots__placeholder">{slotIdx + 1}</span>
-              )}
+      {worksheet ? (
+        <div className="drag-drop-slots__worksheet" aria-label="Umformung">
+          <div className="drag-drop-slots__eq-row">
+            <span className="drag-drop-slots__given">{worksheet.given}</span>
+            <span className="drag-drop-slots__bar" aria-hidden>
+              |
+            </span>
+            <div className="drag-drop-slots__slots drag-drop-slots__slots--inline">
+              {Array.from({ length: opCount }, (_, i) => renderSlot(i, String(i + 1)))}
             </div>
-          )
-        })}
-      </div>
+          </div>
+          {worksheet.lineHint && (
+            <p className="drag-drop-slots__line-hint">{worksheet.lineHint}</p>
+          )}
+          <div className="drag-drop-slots__slots" aria-label="Umgestellte Gleichung">
+            {Array.from({ length: Math.max(0, slots.length - opCount) }, (_, i) =>
+              renderSlot(opCount + i, String(opCount + i + 1)),
+            )}
+          </div>
+        </div>
+      ) : (
+        <div className="drag-drop-slots__slots" aria-label="Formelplätze">
+          {slots.map((_, slotIdx) => renderSlot(slotIdx, String(slotIdx + 1)))}
+        </div>
+      )}
+
+      {result && (
+        <div className="drag-drop-slots__result">
+          <label className="drag-drop-slots__result-label" htmlFor="eq-term-result">
+            {result.label}
+          </label>
+          <input
+            id="eq-term-result"
+            className="drag-drop-slots__result-input"
+            type="text"
+            inputMode="numeric"
+            autoComplete="off"
+            value={result.value}
+            onChange={(e) => result.onChange(e.target.value)}
+            placeholder="?"
+            aria-label="Ergebnis für x"
+          />
+        </div>
+      )}
     </div>
   )
 }

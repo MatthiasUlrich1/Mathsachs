@@ -24,7 +24,10 @@ export function examAnswerAttempted(_task: Task, input: UserInput): boolean {
     case 'dragDropSort':
       return input.order.length > 0
     case 'dragDropSlots':
-      return input.slots.some((s) => s !== null)
+      return (
+        input.slots.some((s) => s !== null) ||
+        Boolean(input.result && input.result.trim().length > 0)
+      )
     case 'equationSteps':
       return input.ops.length > 0
     case 'numberLine':

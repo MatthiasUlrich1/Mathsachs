@@ -31,7 +31,12 @@ export const initTaskInput = (task: Task): UserInput => {
   }
   if (task.interactive?.type === 'dragDropSlots') {
     const n = Number(task.interactive.props.slotCount ?? 0)
-    return { kind: 'dragDropSlots', slots: Array.from({ length: n }, () => null) }
+    const askResult = Boolean(task.interactive.props.askResult)
+    return {
+      kind: 'dragDropSlots',
+      slots: Array.from({ length: n }, () => null),
+      ...(askResult ? { result: '' } : {}),
+    }
   }
   if (task.interactive?.type === 'digitGrid') {
     const lengths = task.interactive.props.answerRowLengths as number[] | undefined
@@ -152,8 +157,39 @@ export function TaskInteractive({
                   () => null,
                 )
           }
-          onChange={(slots) => onChange({ kind: 'dragDropSlots', slots })}
+          onChange={(slots) =>
+            onChange({
+              kind: 'dragDropSlots',
+              slots,
+              ...(value.kind === 'dragDropSlots' && value.result !== undefined
+                ? { result: value.result }
+                : interactive.props.askResult
+                  ? { result: '' }
+                  : {}),
+            })
+          }
           instruction={interactive.props.instruction}
+          worksheet={interactive.props.worksheet}
+          result={
+            interactive.props.askResult
+              ? {
+                  label: String(interactive.props.resultLabel ?? 'x ='),
+                  value: value.kind === 'dragDropSlots' ? (value.result ?? '') : '',
+                  onChange: (result) =>
+                    onChange({
+                      kind: 'dragDropSlots',
+                      slots:
+                        value.kind === 'dragDropSlots'
+                          ? value.slots
+                          : Array.from(
+                              { length: Number(interactive.props.slotCount ?? 0) },
+                              () => null,
+                            ),
+                      result,
+                    }),
+                }
+              : undefined
+          }
         />
       )}
       {interactive.type === 'digitGrid' && (

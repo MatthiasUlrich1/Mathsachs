@@ -4,9 +4,9 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Mathematik",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "changelog": "K7: Gleichungsumstellung mehrzeilig (Äquivalenz); Oberfläche einer Pyramide + SVG.",
-  "contentHash": "6675a27f",
+  "contentHash": "f26c1cfd",
   "official": [
     {
       "id": "klasse-5",
@@ -946,7 +946,7 @@
             {
               "id": "k7-lb2-gleichung-mul",
               "title": "Gleichung umstellen: a · x = b",
-              "hint": "Baue die Umstellung aus Term-Bausteinen: x = b : a (Division durch den Faktor vor x).",
+              "hint": "Baue rechts vom Strich die Umformung (| : a), dann x = b : a, und tippe das Ergebnis für x.",
               "pointsPerTask": 10,
               "keywords": [
                 "Gleichung",

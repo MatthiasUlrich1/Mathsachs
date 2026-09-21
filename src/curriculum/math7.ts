@@ -485,12 +485,12 @@ const gleichungAdd: Topic = {
 const gleichungMul: Topic = {
   id: 'k7-lb2-gleichung-mul',
   title: 'Gleichung umstellen: a · x = b',
-  hint: 'Baue die Umstellung aus Term-Bausteinen: x = b : a (Division durch den Faktor vor x).',
+  hint: 'Baue rechts vom Strich die Umformung (| : a), dann x = b : a, und tippe das Ergebnis für x.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['Gleichung', 'lösen', 'x', 'Faktor', 'Division', 'Multiplikation', 'Terme'],
   fachwissen: {
-    text: 'Gleichungen der Form a · x = b löst du, indem du beide Seiten durch a dividierst (a ≠ 0): x = b : a. Hier setzt du die Terme selbst in die Plätze — anders als bei x + a = b, wo du Äquivalenzumformungen per Button wählst.',
+    text: 'Gleichungen der Form a · x = b löst du, indem du beide Seiten durch a dividierst (a ≠ 0). Rechts notierst du die Umformung „| : a“, schreibst darunter x = b : a und berechnest den Wert. Hier setzt du Operation und Terme selbst in die Plätze — anders als bei x + a = b mit Umformungs-Buttons.',
     quelle: 'Wikipedia: Lineare Gleichung',
     url: 'https://de.wikipedia.org/wiki/Lineare_Gleichung',
   },
@@ -499,8 +499,10 @@ const gleichungMul: Topic = {
     const x = nonZero(rng, -12, 12)
     const b = a * x
     const given = `${num(a)} · x = ${num(b)}`
-    // Student builds the rearranged line: x = b : a (items identified by value, not label)
-    const partLabels = ['x', '=', num(b), ':', num(a)]
+    // Slots 1–2: Operation hinter |  →  : a
+    // Slots 3–7: umgestellte Gleichung → x = b : a
+    // (items by value — labels may repeat)
+    const partLabels = [':', num(a), 'x', '=', num(b), ':', num(a)]
     const distractorLabels = ['+', '−', '·', `${num(a)} · x`].filter(
       (d) => !partLabels.includes(d),
     )
@@ -515,15 +517,21 @@ const gleichungMul: Topic = {
       shuffled.findIndex((it) => it.value === i + 1),
     )
     return dragDropSlotsTask({
-      question: `Stelle um nach x. Gegeben: ${given}. Setze die Terme in die richtige Reihenfolge.`,
+      question: `Stelle um nach x. Gegeben: ${given}. Baue die Operation hinter dem Strich und die umgestellte Gleichung; tippe danach x.`,
       items: shuffled,
       correctSlots,
-      solution: `x = ${num(b)} : ${num(a)} = ${x}`,
-      explanation: `Teile beide Seiten durch ${num(a)}: x = ${num(b)} : ${num(a)} = ${x}.`,
+      solution: `| : ${num(a)}  →  x = ${num(b)} : ${num(a)} = ${x}`,
+      explanation: `Beide Seiten durch ${num(a)} teilen: | : ${num(a)}. Dann x = ${num(b)} : ${num(a)} = ${x}.`,
       instruction:
-        'Tippe oder ziehe die Terme in die Plätze (einen Block brauchst du nicht). Baue: x = b : a',
+        'Tippe oder ziehe: zuerst die Umformung hinter |, dann die Zeile x = b : a. Einen Block brauchst du nicht.',
       checkMode: 'strict',
-      visualContent: `<div class="eq-given-line" style="font-size:1.35rem;font-weight:700;text-align:center;padding:0.75rem 1rem;color:#e2e8f0;letter-spacing:0.02em">${given}&nbsp;&nbsp;<span style="color:#86efac;font-weight:600">| : ${num(a)}</span></div>`,
+      worksheet: {
+        given,
+        opSlotCount: 2,
+        lineHint: 'Umgestellte Gleichung:',
+      },
+      resultValue: x,
+      resultLabel: 'x =',
     })
   },
 }

@@ -22,7 +22,10 @@ export const formatExamAnswer = (input: UserInput): string => {
     return input.order.join(', ')
   }
   if (input.kind === 'dragDropSlots') {
-    return input.slots.map((s) => (s === null ? '—' : String(s))).join(' | ')
+    const slots = input.slots.map((s) => (s === null ? '—' : String(s))).join(' | ')
+    return input.result != null && input.result.trim()
+      ? `${slots} → ${input.result.trim()}`
+      : slots
   }
   if (input.kind === 'digitGrid') {
     if (input.answerRows && input.answerRows.length > 0) {

@@ -220,6 +220,15 @@ interface DragDropSlotsTaskInput {
    * When omitted, pure multiplication products after `=` are detected automatically.
    */
   checkMode?: DragDropSlotsCheckMode
+  /** Worksheet: given equation + `|` + leading op slots, then remaining line slots. */
+  worksheet?: {
+    given: string
+    opSlotCount: number
+    lineHint?: string
+  }
+  /** Require typed numeric result (e.g. final x). */
+  resultValue?: number
+  resultLabel?: string
 }
 
 const MULT_OP = /^[×·*]$/
@@ -321,13 +330,18 @@ function resolveSlotsCheckMode(
 /** Formula builder: drag chips into slots; extra blocks stay unused. */
 export const dragDropSlotsTask = (input: DragDropSlotsTaskInput): Task => {
   const checkMode = resolveSlotsCheckMode(input)
+  const askResult = input.resultValue !== undefined
   return {
     question: input.question,
     answerKind: 'text',
     solution: input.solution,
     explanation: input.explanation,
     visualContent: input.visualContent,
-    sampleAnswer: { kind: 'dragDropSlots', slots: input.correctSlots },
+    sampleAnswer: {
+      kind: 'dragDropSlots',
+      slots: input.correctSlots,
+      ...(askResult ? { result: String(input.resultValue) } : {}),
+    },
     interactive: {
       type: 'dragDropSlots',
       props: {
@@ -336,16 +350,28 @@ export const dragDropSlotsTask = (input: DragDropSlotsTaskInput): Task => {
         instruction:
           input.instruction ??
           'Ziehe die richtigen Blöcke in die Formelplätze (einen brauchst du ggf. nicht):',
+        ...(input.worksheet ? { worksheet: input.worksheet } : {}),
+        ...(askResult
+          ? {
+              askResult: true,
+              resultLabel: input.resultLabel ?? 'x =',
+              resultValue: input.resultValue,
+            }
+          : {}),
       },
     },
     check: (answer: UserInput) => {
       if (answer.kind === 'dragDropSlots') {
-        return checkDragDropSlotsAnswer(
+        const slotsOk = checkDragDropSlotsAnswer(
           answer.slots,
           input.correctSlots,
           input.items,
           checkMode,
         )
+        if (!slotsOk) return false
+        if (!askResult) return true
+        const n = Number(String(answer.result ?? '').replace(',', '.').trim())
+        return Number.isFinite(n) && n === input.resultValue
       }
       if (answer.kind === 'value') {
         return (
