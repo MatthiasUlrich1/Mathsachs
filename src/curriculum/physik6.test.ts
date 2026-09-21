@@ -46,7 +46,10 @@ describe('Physik Klasse 6 generators', () => {
     expect(lb2.find((t) => t.id === 'ph-k6-lb2-dichte')?.released).toBe(true)
     expect(lb2.find((t) => t.id === 'ph-k6-lb2-wegzeit')?.released).toBe(true)
     expect(lb2.find((t) => t.id === 'ph-k6-lb2-einheiten')?.released).toBe(true)
-    expect(topics.filter((t) => t.released === false).length).toBeGreaterThan(0)
+    const lbw = k6!.areas.find((a) => a.id === 'lbw')!.topics
+    expect(lbw.find((t) => t.id === 'ph-k6-lbw-lochkamera')?.released).toBe(true)
+    expect(lbw.find((t) => t.id === 'ph-k6-lbw-auge')?.released).toBe(true)
+    expect(lbw.every((t) => t.released === true)).toBe(true)
   })
 
   it('hides Schatten in lampenposition MC until Auflösung', () => {

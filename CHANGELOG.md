@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.85] – 2026-09-21
+
+### Geändert
+- **ID 2474:** gleiche Term-Blöcke (z. B. zwei „(−4)“) sind austauschbar — Prüfung
+  nach Label, nicht nach Chip-Index. Mathe-Pack **1.2.5**.
+- **Freigaben:** Lochkamera (2743), Auge und Sehvorgang (7496); Physik-Pack **2.5.15**.
+
+### Behoben
+- **CI:** Physik-K6-Test an voll freigegebenen Wahlbereich angepasst.
+
 ## [0.27.84] – 2026-09-21
 
 ### Geändert
