@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-21T17:28:25.757Z",
+  "updatedAt": "2026-09-21T19:15:57.363Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -18,10 +18,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "2.5.10",
+      "version": "2.5.11",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 134721,
-      "changelog": "ID 3173 Temperatur-Messreihe freigegeben; Zahlenstrahl-Hinweis Querformat am Handy."
+      "size": 134786,
+      "changelog": "Wahlbereiche K6: Sehen/Wärmedämmung/Farben freigegeben; Lochkamera, Auge, Dämmstoffe, Farbfilter, Spektrum themenpassend (ohne sin-Brechungsgesetz)."
     },
     {
       "id": "oberschule-sachsen-hs",

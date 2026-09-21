@@ -1,17 +1,22 @@
 import { pick, randInt, type Rng } from '../lib/rng'
 import {
+  augeSehSvg,
   circuitSvg,
   circuitSymbolLabel,
   circuitSymbolSvg,
   circuitSymbolsRowSvg,
   type CircuitSymbolKind,
+  daemmstoffCompareSvg,
   eclipseArrangementSvg,
+  farbfilterSvg,
   kernHalbschattenSvg,
   lightRayHintSvg,
   lightShadowSvg,
+  lochkameraSvg,
   mirrorAngleSvg,
   moonPhaseSvg,
   type MoonPhaseKind,
+  prismaSpektrumSvg,
   seriesParallelSvg,
   thermometerSvg,
   wegZeitCompareSvg,
@@ -2418,6 +2423,113 @@ const gefahren: Topic['generate'] = mixedVariants(
 )
 
 /** Wahlbereiche */
+/** LB1 — Lichtquellen und beleuchtete Körper */
+const lichtquellen: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      {
+        q: 'Was ist eine Lichtquelle?',
+        correct: 'ein Körper, der selbst Licht aussendet',
+        wrong: [
+          'jeder Körper, den man sehen kann',
+          'nur der Mond',
+          'nur undurchsichtige Körper ohne Licht',
+        ],
+      },
+      {
+        q: 'Welche ist eine Lichtquelle?',
+        correct: 'brennende Kerze / leuchtende Lampe / Sonne',
+        wrong: ['Mond (ohne eigenes Licht)', 'ein Buch im Dunkeln', 'ein Schatten'],
+      },
+      {
+        q: 'Der Mond ist …',
+        correct: 'ein beleuchteter Körper (reflektiert Sonnenlicht)',
+        wrong: [
+          'eine echte Lichtquelle wie die Sonne',
+          'unsichtbar ohne Schatten',
+          'eine Wärmequelle ohne Lichtbezug',
+        ],
+      },
+      {
+        q: 'Warum siehst du ein Buch bei Tageslicht?',
+        correct: 'es reflektiert Licht der Sonne/Lampe zum Auge',
+        wrong: [
+          'das Buch sendet selbst Licht wie die Sonne',
+          'das Auge strahlt zum Buch',
+          'ohne jede Lichtquelle',
+        ],
+      },
+      {
+        q: 'Ein beleuchteter Körper …',
+        correct: 'sendet kein (oder kaum) eigenes Licht, wirft aber Licht zurück',
+        wrong: [
+          'leuchtet immer selbst wie eine Kerze',
+          'kann man nie sehen',
+          'braucht keinen Lichtweg zum Auge',
+        ],
+      },
+      {
+        q: 'Welche Aussage stimmt?',
+        correct: 'Ohne Lichtquelle (direkt oder indirekt) sieht man nichts',
+        wrong: [
+          'Im Dunkeln sieht man alle Farben besonders gut',
+          'Das Auge ersetzt die Lichtquelle',
+          'Schatten allein reicht zum Sehen',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation:
+        'Lichtquellen senden selbst Licht. Beleuchtete Körper (Mond, Buch) reflektieren Licht zum Auge.',
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (rng) => {
+    const pools = [
+      {
+        question: 'Welche sind typische Lichtquellen? (mehrere möglich)',
+        choices: [
+          'Sonne',
+          'Glühlampe / LED',
+          'Kerzenflamme',
+          'Mond',
+          'ein dunkles Buch ohne Beleuchtung',
+        ],
+        correct: ['Sonne', 'Glühlampe / LED', 'Kerzenflamme'],
+      },
+      {
+        question: 'Welche Aussagen stimmen? (mehrere möglich)',
+        choices: [
+          'Lichtquellen senden selbst Licht aus',
+          'Beleuchtete Körper reflektieren Licht',
+          'Der Mond leuchtet selbst wie die Sonne',
+          'Ohne Licht sieht man keine Gegenstände',
+          'Das Auge sendet Strahlen zum Gegenstand',
+        ],
+        correct: [
+          'Lichtquellen senden selbst Licht aus',
+          'Beleuchtete Körper reflektieren Licht',
+          'Ohne Licht sieht man keine Gegenstände',
+        ],
+      },
+    ] as const
+    const p = pick(rng, [...pools])
+    return multiSelectTask({
+      question: p.question,
+      choices: [...p.choices],
+      correct: [...p.correct],
+      solution: p.correct.join('; '),
+      explanation: 'Lichtquelle ≠ beleuchteter Körper (z. B. Mond).',
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+    })
+  },
+)
+
 const sehen: Topic['generate'] = mixedVariants(
   (rng) => {
     const cases = [
@@ -2795,6 +2907,906 @@ const farben: Topic['generate'] = mixedVariants(
   },
 )
 
+/** Wahlbereich — Lochkamera (Bild 1/2: Gegenstand, Öffnung, Schirm, Abbild; B/G = b/g) */
+const lochkamera: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      {
+        q: 'Wie steht das Abbild auf dem Schirm einer Lochkamera?',
+        correct: 'auf dem Kopf (und seitenverkehrt)',
+        wrong: [
+          'immer aufrecht wie der Gegenstand',
+          'nur als Schatten ohne Form',
+          'gar nicht — es gibt kein Abbild',
+        ],
+      },
+      {
+        q: 'Warum entsteht auf dem Schirm ein umgekehrtes Abbild?',
+        correct: 'Lichtstrahlen kreuzen sich in der Öffnung',
+        wrong: [
+          'die Kamera dreht den Schirm mechanisch',
+          'Licht läuft nur im Kreis',
+          'ohne Öffnung reflektiert der Schirm',
+        ],
+      },
+      {
+        q: 'Was passiert, wenn man die Öffnung vergrößert?',
+        correct: 'Bild wird heller, aber unschärfer',
+        wrong: [
+          'Bild wird immer schärfer und dunkler',
+          'Abbild verschwindet vollständig',
+          'Gegenstand wird größer',
+        ],
+      },
+      {
+        q: 'Was passiert, wenn man die Öffnung verkleinert?',
+        correct: 'Bild wird schärfer, aber dunkler',
+        wrong: [
+          'Bild wird immer heller und unschärfer',
+          'Strahlen laufen nicht mehr geradlinig',
+          'Schirm wird zur Lichtquelle',
+        ],
+      },
+      {
+        q: 'Welche Größen gehören zur Lochkamera-Formel B/G = b/g?',
+        correct: 'Bildgröße, Gegenstandsgröße, Bildweite, Gegenstandsweite',
+        wrong: [
+          'nur Strom und Spannung',
+          'nur Masse und Volumen',
+          'nur Celsius und Kelvin',
+        ],
+      },
+      {
+        q: 'Was bedeutet die Gegenstandsweite g?',
+        correct: 'Abstand Gegenstand → Öffnung',
+        wrong: [
+          'Abstand Öffnung → Schirm',
+          'Höhe des Abbilds',
+          'Durchmesser der Öffnung',
+        ],
+      },
+      {
+        q: 'Was bedeutet die Bildweite b?',
+        correct: 'Abstand Öffnung → Schirm',
+        wrong: [
+          'Abstand Gegenstand → Öffnung',
+          'Höhe des Gegenstands',
+          'nur die Kerzenflamme',
+        ],
+      },
+      {
+        q: 'Je weiter der Gegenstand (größeres g) bei gleicher Bildweite …',
+        correct: 'desto kleiner wird das Abbild (qualitativ)',
+        wrong: [
+          'desto größer wird das Abbild immer',
+          'ändert sich nichts am Abbild',
+          'verschwindet der Schirm',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation:
+        'Lochkamera: Strahlen kreuzen sich in der Öffnung → umgekehrtes Abbild. B/G = b/g. Kleines Loch: schärfer, dunkler.',
+      visualContent: lochkameraSvg({ showRays: true, showLabels: true }),
+      instruction: 'Tippe die passende Aussage zur Lochkamera:',
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'In der Abbildung: Welches Bauteil lässt nur ein schmales Lichtbündel durch?',
+        correct: 'die Öffnung (Loch)',
+        wrong: ['der Schirm allein', 'nur die Kerzenflamme', 'die Außenwand ohne Loch'],
+      },
+      {
+        q: 'In der Abbildung: Wo entsteht das Abbild?',
+        correct: 'auf dem Schirm hinter der Öffnung',
+        wrong: [
+          'vor dem Gegenstand',
+          'nur außerhalb der Kamera in der Luft',
+          'in der Kerzenflamme',
+        ],
+      },
+      {
+        q: 'Vergleiche Gegenstand und Abbild in der Abbildung. Was stimmt?',
+        correct: 'Das Abbild steht auf dem Kopf',
+        wrong: [
+          'Beide stehen gleich ausgerichtet',
+          'Es gibt kein Abbild',
+          'Das Abbild ist immer größer als der Gegenstand',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Gegenstand → Öffnung (Kreuzung der Strahlen) → umgekehrtes Abbild auf dem Schirm.',
+      visualContent: lochkameraSvg({ showRays: true, showLabels: true }),
+      instruction: 'Nutze die Abbildung:',
+    })
+  },
+  (rng) => {
+    // Einfache B = G·b/g ohne sin — Klasse-6-Strahlensatz (ganzzahlige Ergebnisse)
+    const triples = [
+      { G: 5, g: 50, b: 10 },
+      { G: 4, g: 40, b: 10 },
+      { G: 6, g: 60, b: 10 },
+      { G: 8, g: 40, b: 10 },
+      { G: 10, g: 50, b: 10 },
+      { G: 5, g: 25, b: 10 },
+      { G: 6, g: 30, b: 15 },
+      { G: 8, g: 80, b: 20 },
+    ] as const
+    const { G, g, b } = pick(rng, [...triples])
+    const B = (G * b) / g
+    return valueTask({
+      question: `Lochkamera: G = ${G} cm, g = ${g} cm, b = ${b} cm. Berechne die Bildgröße B (B/G = b/g).`,
+      answerKind: 'integer',
+      unit: 'cm',
+      value: B,
+      solution: `${B} cm`,
+      explanation: `B = G·b/g = ${G}·${b}/${g} = ${B} cm.`,
+      visualContent: lochkameraSvg({ showRays: true, showLabels: true, showSizes: true }),
+    })
+  },
+  (rng) => {
+    const parts = ['B/G', '=', 'b/g']
+    const distractor = '+ c'
+    const labels = [...parts, distractor]
+    const items = labels.map((label, i) => ({ label, value: i + 1 }))
+    const shuffled = [...items]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = randInt(rng, 0, i)
+      ;[shuffled[i], shuffled[j]] = [shuffled[j]!, shuffled[i]!]
+    }
+    const correctSlots = parts.map((label) => shuffled.findIndex((it) => it.label === label))
+    return dragDropSlotsTask({
+      question: 'Baue die Lochkamera-Formel (Strahlensatz). Einen Block brauchst du nicht.',
+      items: shuffled,
+      correctSlots,
+      solution: 'B/G = b/g',
+      explanation: 'Abbildungsmaßstab: B/G = b/g (ähnliche Dreiecke).',
+      instruction: 'Ziehe die richtigen Blöcke in die Formelplätze. Einen Block brauchst du nicht.',
+      checkMode: 'strict',
+      visualContent: lochkameraSvg({ showRays: true, showLabels: true, showSizes: true }),
+    })
+  },
+  (rng) => {
+    const pools = [
+      {
+        question: 'Was gehört zur Lochkamera? (mehrere möglich)',
+        choices: [
+          'kleine Öffnung (Loch)',
+          'Schirm für das Abbild',
+          'geradlinige Lichtausbreitung',
+          'dass Lichtstrahlen die Öffnung meiden',
+          'umgekehrtes Abbild auf dem Schirm',
+        ],
+        correct: [
+          'kleine Öffnung (Loch)',
+          'Schirm für das Abbild',
+          'geradlinige Lichtausbreitung',
+          'umgekehrtes Abbild auf dem Schirm',
+        ],
+      },
+      {
+        question: 'Welche Aussagen zur Öffnungsgröße stimmen? (mehrere möglich)',
+        choices: [
+          'größeres Loch → helleres Bild',
+          'größeres Loch → unschärferes Bild',
+          'kleineres Loch → schärferes Bild',
+          'größeres Loch → immer schärferes Bild',
+          'ohne Loch entsteht kein Abbild in der Kamera',
+        ],
+        correct: [
+          'größeres Loch → helleres Bild',
+          'größeres Loch → unschärferes Bild',
+          'kleineres Loch → schärferes Bild',
+          'ohne Loch entsteht kein Abbild in der Kamera',
+        ],
+      },
+    ] as const
+    const p = pick(rng, [...pools])
+    return multiSelectTask({
+      question: p.question,
+      choices: [...p.choices],
+      correct: [...p.correct],
+      solution: p.correct.join('; '),
+      explanation: 'Lochkamera nutzt geradlinige Ausbreitung und eine kleine Öffnung.',
+      visualContent: lochkameraSvg({ showRays: true, showLabels: true }),
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+    })
+  },
+)
+
+/** Wahlbereich — Auge und Sehvorgang */
+const auge: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      {
+        q: 'Wo entsteht das scharfe Bild im Auge?',
+        correct: 'auf der Netzhaut',
+        wrong: ['nur auf der Hornhaut außen', 'im Sehnerv allein ohne Netzhaut', 'außerhalb des Auges'],
+      },
+      {
+        q: 'Welche Aufgabe hat die Augenlinse?',
+        correct: 'Licht bündeln, damit ein scharfes Bild auf der Netzhaut entsteht',
+        wrong: [
+          'Licht zum Gegenstand zurückschicken',
+          'nur die Farbe des Auges bestimmen',
+          'den Sehnerv ersetzen',
+        ],
+      },
+      {
+        q: 'Wie steht das Bild auf der Netzhaut?',
+        correct: 'verkleinert und auf dem Kopf',
+        wrong: [
+          'immer aufrecht und vergrößert',
+          'gar nicht — es gibt kein Bild',
+          'nur als Schatten ohne Form',
+        ],
+      },
+      {
+        q: 'Wozu dient die Pupille?',
+        correct: 'sie regelt, wie viel Licht ins Auge fällt',
+        wrong: [
+          'sie erzeugt selbst Licht',
+          'sie leitet Signale zum Gehirn',
+          'sie ist der Sehnerv',
+        ],
+      },
+      {
+        q: 'Bei hellerem Licht wird die Pupille typischerweise …',
+        correct: 'enger (kleiner)',
+        wrong: ['immer weiter', 'zu einer Linse', 'zum Sehnerv'],
+      },
+      {
+        q: 'Bei dunklerem Licht wird die Pupille typischerweise …',
+        correct: 'weiter (größer)',
+        wrong: ['immer enger', 'geschlossen wie ein Schalter', 'zur Netzhaut'],
+      },
+      {
+        q: 'Was macht der Sehnerv?',
+        correct: 'leitet Signale von der Netzhaut zum Gehirn',
+        wrong: [
+          'bricht das Licht wie eine Linse',
+          'erzeugt das Abbild auf dem Schirm außen',
+          'regelt nur die Pupillengröße',
+        ],
+      },
+      {
+        q: 'Welcher Vergleich passt: Lochkamera ↔ Auge?',
+        correct: 'Öffnung ≈ Pupille, Schirm ≈ Netzhaut',
+        wrong: [
+          'Öffnung ≈ Sehnerv, Schirm ≈ Hornhaut',
+          'es gibt keine Ähnlichkeit',
+          'Lochkamera braucht immer eine Brille',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation:
+        'Licht → Pupille/Linse → umgekehrtes Bild auf der Netzhaut → Sehnerv → Gehirn.',
+      visualContent: augeSehSvg({ showRays: true }),
+      instruction: 'Tippe die passende Aussage zum Auge:',
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'In der Abbildung: Welches Bauteil bündelt die Lichtstrahlen?',
+        correct: 'die Linse',
+        wrong: ['nur der Baum außen', 'nur der Sehnerv', 'die Netzhaut allein ohne Linse'],
+      },
+      {
+        q: 'In der Abbildung: Wo siehst du das umgekehrte Bild des Gegenstands?',
+        correct: 'auf der Netzhaut (hinten im Auge)',
+        wrong: [
+          'vor dem Auge in der Luft',
+          'nur auf dem Baum',
+          'im Sehnerv als fertiges Foto',
+        ],
+      },
+      {
+        q: 'Warum kreuzen sich die Strahlen im Auge (Abbildung)?',
+        correct: 'durch Brechung an der Linse entsteht ein umgekehrtes Bild',
+        wrong: [
+          'Licht läuft nur im Kreis',
+          'ohne Linse immer',
+          'der Sehnerv dreht die Strahlen um',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Linse bricht/bündelt → umgekehrtes Netzhautbild; Gehirn „stellt aufrecht“.',
+      visualContent: augeSehSvg({ showRays: true }),
+      instruction: 'Nutze die Abbildung:',
+    })
+  },
+  (rng) => {
+    const ordered = [
+      { label: 'Licht vom Gegenstand', value: 0 },
+      { label: 'Pupille / Linse', value: 1 },
+      { label: 'Bild auf der Netzhaut', value: 2 },
+      { label: 'Sehnerv → Gehirn', value: 3 },
+    ]
+    const shuffled = [...ordered]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = randInt(rng, 0, i)
+      ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+    }
+    return dragDropSortTask({
+      question: 'Ordne den Sehvorgang (Lichtweg bis Wahrnehmung).',
+      items: shuffled,
+      correctOrder: [0, 1, 2, 3],
+      solution: 'Licht → Pupille/Linse → Netzhaut → Sehnerv/Gehirn',
+      explanation: 'Ohne Licht und Weg zur Netzhaut kein Sehen; das Gehirn wertet die Signale aus.',
+      visualContent: augeSehSvg({ showRays: true }),
+    })
+  },
+  (rng) => {
+    const pools = [
+      {
+        question: 'Welche Aussagen zum Auge stimmen? (mehrere möglich)',
+        choices: [
+          'Auf der Netzhaut entsteht ein umgekehrtes Bild',
+          'Die Linse bündelt Licht',
+          'Die Pupille regelt den Lichteinfall',
+          'Das Auge sendet Strahlen zum Gegenstand',
+          'Der Sehnerv leitet Signale zum Gehirn',
+        ],
+        correct: [
+          'Auf der Netzhaut entsteht ein umgekehrtes Bild',
+          'Die Linse bündelt Licht',
+          'Die Pupille regelt den Lichteinfall',
+          'Der Sehnerv leitet Signale zum Gehirn',
+        ],
+      },
+      {
+        question: 'Was brauchst du, um zu sehen? (mehrere möglich)',
+        choices: [
+          'Licht vom Gegenstand (oder einer Quelle)',
+          'funktionierende Linse und Netzhaut',
+          'völlig dunklen Raum ohne jedes Licht',
+          'Weiterleitung zum Gehirn',
+          'dass das Auge selbst Strahlen aussendet',
+        ],
+        correct: [
+          'Licht vom Gegenstand (oder einer Quelle)',
+          'funktionierende Linse und Netzhaut',
+          'Weiterleitung zum Gehirn',
+        ],
+      },
+    ] as const
+    const p = pick(rng, [...pools])
+    return multiSelectTask({
+      question: p.question,
+      choices: [...p.choices],
+      correct: [...p.correct],
+      solution: p.correct.join('; '),
+      explanation: 'Sehen: Licht → Auge → Netzhautsignale → Gehirn.',
+      visualContent: augeSehSvg({ showRays: true }),
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+    })
+  },
+)
+
+/** Wahlbereich — Dämmstoffe vergleichen (nicht allgemeine Wärmedämmung) */
+const daemmstoff: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      {
+        q: 'Welcher Stoff dämmt typischerweise am besten?',
+        correct: 'Mineralwolle / Styropor (viel stillstehende Luft)',
+        wrong: ['Massives Metallblech', 'durchgehende Kupferbrücke', 'fließendes Wasser allein'],
+      },
+      {
+        q: 'Warum dämmt Mineralwolle gut?',
+        correct: 'viele Luftporen — Luft leitet Wärme schlecht',
+        wrong: [
+          'sie leitet Wärme besser als Kupfer',
+          'sie erzeugt eigene Wärme',
+          'sie ist komplett metallisch',
+        ],
+      },
+      {
+        q: 'Warum dämmt Metall schlecht?',
+        correct: 'Metalle leiten Wärme gut',
+        wrong: [
+          'Metalle enthalten nur Luftporen',
+          'Metalle sind immer Isolatoren',
+          'Metall erzeugt Kälte von allein',
+        ],
+      },
+      {
+        q: 'Vergleiche Styropor und Vollholz (schematisch):',
+        correct: 'Styropor dämmt meist besser (mehr eingeschlossene Luft)',
+        wrong: [
+          'Vollholz dämmt immer besser als Styropor',
+          'beide dämmen wie Kupfer',
+          'Styropor leitet Wärme wie Metall',
+        ],
+      },
+      {
+        q: 'Welches Material ist als Wärmedämmstoff ungeeignet?',
+        correct: 'durchgehendes Metall ohne Unterbrechung',
+        wrong: ['Mineralwolle', 'Styroporplatten', 'Luftpolster in Isolierglas'],
+      },
+      {
+        q: 'Stillstehende Luft in Poren …',
+        correct: 'verbessert die Dämmwirkung',
+        wrong: [
+          'verschlechtert die Dämmung immer',
+          'leitet Wärme wie Kupfer',
+          'spielt bei Dämmstoffen keine Rolle',
+        ],
+      },
+      {
+        q: 'Zwei 10-cm-Schichten: Mineralwolle vs. Metall. Was gilt?',
+        correct: 'Mineralwolle dämmt deutlich besser',
+        wrong: [
+          'Metall dämmt besser',
+          'beide gleich',
+          'Metall speichert Licht als Dämmung',
+        ],
+      },
+      {
+        q: 'Beim Vergleich von Dämmstoffen schaut man vor allem auf …',
+        correct: 'wie gut sie den Wärmefluss behindern',
+        wrong: [
+          'nur die Farbe der Platte',
+          'nur den Stromwiderstand',
+          'nur die Lautstärke',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation:
+        'Gute Dämmstoffe halten Luft in Poren fest. Metall leitet Wärme gut → schlecht dämmend.',
+      visualContent: daemmstoffCompareSvg(),
+      instruction: 'Vergleiche die Dämmstoffe:',
+    })
+  },
+  (rng) => {
+    const ordered = [
+      { label: 'Metall (leitet gut)', value: 0 },
+      { label: 'Vollholz', value: 1 },
+      { label: 'Styropor', value: 2 },
+      { label: 'Mineralwolle', value: 3 },
+    ]
+    const shuffled = [...ordered]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = randInt(rng, 0, i)
+      ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+    }
+    return dragDropSortTask({
+      question: 'Ordne nach steigender Dämmwirkung (schlecht → gut), schematisch wie in der Abbildung.',
+      items: shuffled,
+      correctOrder: [0, 1, 2, 3],
+      solution: 'Metall → Vollholz → Styropor → Mineralwolle',
+      explanation: 'Mehr stillstehende Luft in Poren → bessere Dämmung. Metall dämmt am schlechtesten.',
+      visualContent: daemmstoffCompareSvg(),
+    })
+  },
+  (rng) => {
+    const pools = [
+      {
+        question: 'Welche Stoffe dämmen typischerweise gut? (mehrere möglich)',
+        choices: [
+          'Mineralwolle',
+          'Styropor / Hartschaum',
+          'blankes Kupferblech allein',
+          'Luft in kleinen Poren',
+          'durchgehende Stahlbrücke',
+        ],
+        correct: ['Mineralwolle', 'Styropor / Hartschaum', 'Luft in kleinen Poren'],
+      },
+      {
+        question: 'Worauf achtest du beim Vergleich von Dämmstoffen? (mehrere möglich)',
+        choices: [
+          'Wärmeleitfähigkeit (niedrig = besser dämmend)',
+          'Poren / stillstehende Luft',
+          'ob Metallbrücken Wärme leiten',
+          'nur die Verpackungsfarbe',
+          'ob der Stoff Strom speichert',
+        ],
+        correct: [
+          'Wärmeleitfähigkeit (niedrig = besser dämmend)',
+          'Poren / stillstehende Luft',
+          'ob Metallbrücken Wärme leiten',
+        ],
+      },
+    ] as const
+    const p = pick(rng, [...pools])
+    return multiSelectTask({
+      question: p.question,
+      choices: [...p.choices],
+      correct: [...p.correct],
+      solution: p.correct.join('; '),
+      explanation: 'Dämmstoffe vergleichen heißt: Wärmeleitung und Luftporen beurteilen.',
+      visualContent: daemmstoffCompareSvg(),
+      instruction: 'Tippe alle passenden Antworten:',
+    })
+  },
+)
+
+/** Wahlbereich — Farbfilter (nicht allgemeine Optik/Spiegel) */
+const farbfilter: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const color = pick(rng, ['rot', 'grün', 'blau'] as const)
+    const through =
+      color === 'rot' ? 'rotes Licht' : color === 'grün' ? 'grünes Licht' : 'blaues Licht'
+    const blocked =
+      color === 'rot'
+        ? 'vor allem Blau und Grün'
+        : color === 'grün'
+          ? 'vor allem Rot und Blau'
+          : 'vor allem Rot und Grün'
+    const cases = [
+      {
+        q: `Ein ${color}er Farbfilter lässt vor allem …`,
+        correct: `${through} durch`,
+        wrong: [
+          'alle Spektralfarben gleich stark durch',
+          'nur Ultraschall durch',
+          'gar kein Licht durch',
+        ],
+      },
+      {
+        q: `Was hält ein ${color}er Filter typischerweise zurück?`,
+        correct: blocked,
+        wrong: [
+          'nur „seine“ eigene Farbe',
+          'immer das gesamte weiße Licht vollständig',
+          'nur Schatten ohne Farbe',
+        ],
+      },
+      {
+        q: 'Weißes Licht hinter einem roten Filter erscheint …',
+        correct: 'vor allem rot',
+        wrong: ['vor allem blau', 'weiß wie vorher ohne Filter', 'immer schwarz'],
+      },
+      {
+        q: 'Zwei starke Filter Rot und Grün hintereinander (weißes Licht) …',
+        correct: 'lassen kaum Licht durch (fast dunkel)',
+        wrong: [
+          'lassen immer weißes Licht unverändert durch',
+          'erzeugen Ultraschall',
+          'wirken wie ein Prisma ohne Filterung',
+        ],
+      },
+      {
+        q: 'Ein Farbfilter …',
+        correct: 'lässt „seine“ Farbe durch und schwächt andere Anteile',
+        wrong: [
+          'erzeugt Licht aus dem Nichts',
+          'spiegelt nur wie ein ebener Spiegel',
+          'ändert den Einfallswinkel = Ausfallswinkel',
+        ],
+      },
+      {
+        q: 'Ohne Licht hinter dem Filter …',
+        correct: 'sieht man keine Filterfarbe',
+        wrong: [
+          'leuchtet der Filter von allein',
+          'entstehen alle Spektralfarben neu',
+          'gilt das Reflexionsgesetz am Filter',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation:
+        'Farbfilter: subtraktiv — „eigene“ Farbe durch, andere Spektralanteile werden geschwächt.',
+      visualContent: farbfilterSvg({ filterColor: color, showAfter: true }),
+      instruction: 'Tippe die passende Aussage zum Farbfilter:',
+    })
+  },
+  (rng) => {
+    const color = pick(rng, ['rot', 'grün', 'blau'] as const)
+    const correct =
+      color === 'rot' ? 'rotes Licht' : color === 'grün' ? 'grünes Licht' : 'blaues Licht'
+    return choicePickTask({
+      question: `Sieh dir die Abbildung an: Welches Licht kommt hinter dem ${color}en Filter vor allem an?`,
+      choices: shuffleChoices(
+        rng,
+        [correct, 'weißes Licht unverändert', 'nur Ultraschall', 'gar kein sichtbares Licht immer'],
+        correct,
+      ),
+      correct,
+      solution: correct,
+      explanation: `Der ${color}e Filter lässt vor allem ${correct} durch.`,
+      visualContent: farbfilterSvg({ filterColor: color, showAfter: true }),
+      instruction: 'Nutze die Abbildung:',
+    })
+  },
+  (rng) => {
+    const ordered = [
+      { label: 'weißes Licht', value: 0 },
+      { label: 'Farbfilter', value: 1 },
+      { label: 'vor allem Filterfarbe', value: 2 },
+    ]
+    const shuffled = [...ordered]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = randInt(rng, 0, i)
+      ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+    }
+    const color = pick(rng, ['rot', 'grün', 'blau'] as const)
+    return dragDropSortTask({
+      question: 'Ordne den Weg des Lichts durch einen Farbfilter.',
+      items: shuffled,
+      correctOrder: [0, 1, 2],
+      solution: 'weißes Licht → Farbfilter → vor allem Filterfarbe',
+      explanation: 'Filter schwächen andere Farben; durchgelassen wird vor allem die Filterfarbe.',
+      visualContent: farbfilterSvg({ filterColor: color, showAfter: true }),
+    })
+  },
+  (rng) => {
+    const pools = [
+      {
+        question: 'Welche Aussagen zu Farbfiltern stimmen? (mehrere möglich)',
+        choices: [
+          'Ein roter Filter lässt vor allem Rot durch',
+          'Andere Spektralfarben werden geschwächt',
+          'Filter erzeugen Licht ohne Lichtquelle',
+          'Zwei komplementäre Filter können fast alles Licht blockieren',
+          'Ein Filter wirkt wie ein ebener Spiegel (Einfall = Ausfall)',
+        ],
+        correct: [
+          'Ein roter Filter lässt vor allem Rot durch',
+          'Andere Spektralfarben werden geschwächt',
+          'Zwei komplementäre Filter können fast alles Licht blockieren',
+        ],
+      },
+      {
+        question: 'Was gehört zur Wirkung eines Farbfilters? (mehrere möglich)',
+        choices: [
+          'Durchlassen „seiner“ Farbe',
+          'Zurückhalten / Schwächen anderer Farben',
+          'Zerlegen in ein volles Spektrum wie ein Prisma',
+          'Arbeitet mit vorhandenem Licht',
+          'Ersetzt die Lichtquelle',
+        ],
+        correct: [
+          'Durchlassen „seiner“ Farbe',
+          'Zurückhalten / Schwächen anderer Farben',
+          'Arbeitet mit vorhandenem Licht',
+        ],
+      },
+    ] as const
+    const p = pick(rng, [...pools])
+    const color = pick(rng, ['rot', 'grün', 'blau'] as const)
+    return multiSelectTask({
+      question: p.question,
+      choices: [...p.choices],
+      correct: [...p.correct],
+      solution: p.correct.join('; '),
+      explanation: 'Farbfilter filtern Spektralanteile — sie ersetzen kein Prisma und keinen Spiegel.',
+      visualContent: farbfilterSvg({ filterColor: color, showAfter: true }),
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+    })
+  },
+)
+
+/**
+ * Wahlbereich — Spektrum und Prisma (Klasse 6: qualitativ, KEIN n·sin α / Brechungsgesetz-Formelbau).
+ * Sinus-Brechungsgesetz gehört nicht in Klasse 6.
+ */
+const spektrumPrisma: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      {
+        q: 'Was macht ein Prisma mit weißem Licht?',
+        correct: 'es zerlegt es in Spektralfarben (Dispersion)',
+        wrong: [
+          'es spiegelt nur nach dem Reflexionsgesetz',
+          'es löscht alles Licht',
+          'es erzeugt Ultraschall',
+        ],
+      },
+      {
+        q: 'Weißes Licht enthält …',
+        correct: 'viele Farben / Wellenlängen',
+        wrong: [
+          'nur eine einzige Farbe Rot',
+          'keine Farben',
+          'nur Schatten',
+        ],
+      },
+      {
+        q: 'Welche Farbe wird in Glas typischerweise am stärksten abgelenkt?',
+        correct: 'Violett / Blau stärker als Rot',
+        wrong: [
+          'Rot stärker als Violett',
+          'alle Farben gleich ohne Dispersion',
+          'nur Grün wird abgelenkt',
+        ],
+      },
+      {
+        q: 'Ein Regenbogen entsteht, weil …',
+        correct: 'Sonnenlicht an Wassertropfen gebrochen und zerlegt wird',
+        wrong: [
+          'ohne Sonne Farben entstehen',
+          'nur Spiegelung am ebenen Spiegel',
+          'Ultraschall Spektren speichert',
+        ],
+      },
+      {
+        q: 'Dispersion bedeutet …',
+        correct: 'Zerlegung von Licht in Spektralfarben (unterschiedliche Brechung)',
+        wrong: [
+          'nur Mischen von Massen',
+          'Einfallswinkel = Ausfallswinkel am Spiegel',
+          'nur Kelvin-Umrechnung',
+        ],
+      },
+      {
+        q: 'Hinter dem Prisma siehst du typischerweise …',
+        correct: 'ein Farbspektrum (z. B. rot bis violett)',
+        wrong: [
+          'nur eine graue Fläche ohne Farben',
+          'nur den Schatten der Kerze',
+          'einen Stromkreis',
+        ],
+      },
+      {
+        q: 'Welches Gerät zerlegt weißes Licht ähnlich wie ein Prisma?',
+        correct: 'optisches Gitter (oder Tropfen beim Regenbogen)',
+        wrong: ['Amperemeter', 'Thermometer', 'Kurzschlussdraht'],
+      },
+      {
+        q: 'Rot und Violett im Spektrum unterscheiden sich durch …',
+        correct: 'unterschiedliche Wellenlänge / Farbe',
+        wrong: [
+          'unterschiedliche Masse des Prismas',
+          'nur die Lautstärke',
+          'nur die Temperatur in Kelvin',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation:
+        'Prisma: Brechung hängt von der Farbe ab (Dispersion) → Spektrum. Kein Sinus-Brechungsgesetz nötig.',
+      visualContent: prismaSpektrumSvg(),
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'In der Abbildung: Was tritt links in das Prisma ein?',
+        correct: 'weißes Licht',
+        wrong: ['nur rotes Licht', 'Ultraschall', 'ein Strom'],
+      },
+      {
+        q: 'In der Abbildung: Was entsteht rechts hinter dem Prisma?',
+        correct: 'ein Farbspektrum',
+        wrong: [
+          'nur ein grauer Schatten',
+          'unverändertes weißes Licht ohne Farben',
+          'eine Spiegelung mit Einfall = Ausfall',
+        ],
+      },
+      {
+        q: 'Warum fächern sich die Farben hinter dem Prisma auf?',
+        correct: 'verschiedene Farben werden unterschiedlich stark gebrochen',
+        wrong: [
+          'das Prisma dreht sich mechanisch',
+          'Licht läuft nur im Kreis',
+          'ohne Brechung',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Weißes Licht → Prisma → Spektrum durch Dispersion.',
+      visualContent: prismaSpektrumSvg(),
+      instruction: 'Nutze die Abbildung:',
+    })
+  },
+  (rng) => {
+    const ordered = [
+      { label: 'weißes Licht', value: 0 },
+      { label: 'Prisma (Brechung)', value: 1 },
+      { label: 'Spektrum sichtbar', value: 2 },
+    ]
+    const shuffled = [...ordered]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = randInt(rng, 0, i)
+      ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+    }
+    return dragDropSortTask({
+      question: 'Ordne: Wie entsteht das Spektrum am Prisma?',
+      items: shuffled,
+      correctOrder: [0, 1, 2],
+      solution: 'weißes Licht → Prisma → Spektrum',
+      explanation: 'Einfall → wellenlängenabhängige Brechung → sichtbares Spektrum.',
+      visualContent: prismaSpektrumSvg(),
+    })
+  },
+  (rng) => {
+    const pools = [
+      {
+        question: 'Was gehört zu Spektrum und Prisma? (mehrere möglich)',
+        choices: [
+          'weißes Licht enthält viele Farben',
+          'Dispersion zerlegt Licht',
+          'Farbspektrum hinter dem Prisma',
+          'Einfallswinkel = Ausfallswinkel am Prisma wie am Spiegel',
+          'Farben entstehen nur ohne Licht',
+        ],
+        correct: [
+          'weißes Licht enthält viele Farben',
+          'Dispersion zerlegt Licht',
+          'Farbspektrum hinter dem Prisma',
+        ],
+      },
+      {
+        question: 'Welche Aussagen zum Regenbogen / Spektrum stimmen? (mehrere möglich)',
+        choices: [
+          'Tropfen wirken ähnlich wie ein Prisma',
+          'Sonnenlicht wird zerlegt',
+          'Farben von Rot bis Violett',
+          'ohne Licht entsteht trotzdem ein Spektrum',
+          'nur Metall erzeugt Spektren',
+        ],
+        correct: [
+          'Tropfen wirken ähnlich wie ein Prisma',
+          'Sonnenlicht wird zerlegt',
+          'Farben von Rot bis Violett',
+        ],
+      },
+    ] as const
+    const p = pick(rng, [...pools])
+    return multiSelectTask({
+      question: p.question,
+      choices: [...p.choices],
+      correct: [...p.correct],
+      solution: p.correct.join('; '),
+      explanation:
+        'Prisma und Regenbogen: weißes Licht wird in Spektralfarben zerlegt (Dispersion).',
+      visualContent: prismaSpektrumSvg(),
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+    })
+  },
+)
+
 export const PHYSIK_K6_GENERATORS: Record<string, Topic['generate']> = {
   'ph-k6-lb1-schatten': schatten,
   'ph-k6-lb1-kernschatten': kernschatten,
@@ -2803,6 +3815,7 @@ export const PHYSIK_K6_GENERATORS: Record<string, Topic['generate']> = {
   'ph-k6-lb1-spiegel': spiegel,
   'ph-k6-lb1-brechung': brechung,
   'ph-k6-lb1-ausbreitung': ausbreitung,
+  'ph-k6-lb1-lichtquellen': lichtquellen,
   'ph-k6-lb1-sonne-mond-erde': sonneMondErde,
   'ph-k6-lb2-dichte': dichte,
   'ph-k6-lb2-geschwindigkeit': geschwindigkeit,
@@ -2822,6 +3835,11 @@ export const PHYSIK_K6_GENERATORS: Record<string, Topic['generate']> = {
   'ph-k6-lb4-reiheparallel': reiheparallel,
   'ph-k6-lb4-gefahren': gefahren,
   'ph-k6-lbw-sehen': sehen,
+  'ph-k6-lbw-lochkamera': lochkamera,
+  'ph-k6-lbw-auge': auge,
   'ph-k6-lbw-daemmung': daemmung,
+  'ph-k6-lbw-daemmstoff': daemmstoff,
   'ph-k6-lbw-farben': farben,
+  'ph-k6-lbw-filter': farbfilter,
+  'ph-k6-lbw-spektrum': spektrumPrisma,
 }

@@ -788,6 +788,42 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
     }
   }
 
+  if (/dämmstoff|dämmstoffe vergleichen/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Welcher Stoff dämmt typischerweise am besten?',
+          correct: 'Mineralwolle / Styropor (viel stillstehende Luft)',
+          wrong: ['Massives Metallblech', 'durchgehende Kupferbrücke', 'fließendes Wasser allein'],
+        },
+        {
+          q: 'Warum dämmt Mineralwolle gut?',
+          correct: 'viele Luftporen — Luft leitet Wärme schlecht',
+          wrong: [
+            'sie leitet Wärme besser als Kupfer',
+            'sie erzeugt eigene Wärme',
+            'sie ist komplett metallisch',
+          ],
+        },
+        {
+          q: 'Warum dämmt Metall schlecht?',
+          correct: 'Metalle leiten Wärme gut',
+          wrong: [
+            'Metalle enthalten nur Luftporen',
+            'Metalle sind immer Isolatoren',
+            'Metall erzeugt Kälte von allein',
+          ],
+        },
+      ],
+      ...formulaSort(
+        ['Luftporen', '→', 'gute Dämmung'],
+        'den Vergleich von Dämmstoffen',
+        'Luftporen → gute Dämmung',
+        'Metall → beste Dämmung',
+      ),
+    }
+  }
+
   if (/dämm/.test(lower)) {
     return {
       cases: [
@@ -1913,7 +1949,123 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
     }
   }
 
-  if (/brechung|prisma|linse|optische.?dichte|snell/.test(lower)) {
+  if (/schwingkreis|hochpass|tiefpass|frequenzfilter|filter und schwing/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Ein Filter in der Wechselstromtechnik …',
+          correct: 'lässt bestimmte Frequenzen bevorzugt durch / dämpft andere',
+          wrong: [
+            'wirkt nur als Farbfolie für Licht',
+            'ersetzt immer die Batterie',
+            'misst nur die Temperatur',
+          ],
+        },
+        {
+          q: 'Ein Schwingkreis besteht typischerweise aus …',
+          correct: 'Spule und Kondensator (L und C)',
+          wrong: ['nur einem Thermometer', 'nur einem Prisma', 'nur einem Dämmstoff'],
+        },
+        {
+          q: 'Resonanz beim Schwingkreis bedeutet qualitativ …',
+          correct: 'besonders starke Reaktion nahe der Eigenfrequenz',
+          wrong: [
+            'dass nie Strom fließt',
+            'dass Licht immer weiß bleibt',
+            'dass Masse verschwindet',
+          ],
+        },
+      ],
+      ...formulaSort(
+        ['L', '+', 'C'],
+        'den Schwingkreis (Bauteile)',
+        'Schwingkreis: L und C',
+        'nur Prisma',
+      ),
+    }
+  }
+
+  if (/lichtquellen|beleuchtete.?körper/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Was ist eine Lichtquelle?',
+          correct: 'ein Körper, der selbst Licht aussendet',
+          wrong: [
+            'jeder Körper, den man sieht',
+            'nur der Mond',
+            'nur undurchsichtige Körper',
+          ],
+        },
+        {
+          q: 'Der Mond ist …',
+          correct: 'ein beleuchteter Körper (reflektiert Sonnenlicht)',
+          wrong: [
+            'eine echte Lichtquelle wie die Sonne',
+            'unsichtbar ohne Schatten',
+            'eine reine Wärmequelle ohne Licht',
+          ],
+        },
+        {
+          q: 'Ein beleuchteter Körper wird sichtbar, weil …',
+          correct: 'er Licht reflektiert, das ins Auge gelangt',
+          wrong: [
+            'er selbst immer wie eine Kerze leuchtet',
+            'das Auge Strahlen aussendet',
+            'ohne jede Lichtquelle',
+          ],
+        },
+      ],
+      ...formulaSort(
+        ['Lichtquelle', '→', 'beleuchteter Körper'],
+        'Lichtquelle und Beleuchtung',
+        'Lichtquelle beleuchtet Körper',
+        'Auge sendet Strahlen',
+      ),
+    }
+  }
+
+  // Spektrum/Prisma Klasse 6–Stil: Dispersion qualitativ — KEIN n·sin α
+  if (
+    /spektrum/.test(lower) &&
+    !/em-spektrum|spektrallinie|hertzsche|elektromagnetisch|atom|kern/.test(lower)
+  ) {
+    return {
+      cases: [
+        {
+          q: 'Was macht ein Prisma mit weißem Licht?',
+          correct: 'es zerlegt es in Spektralfarben (Dispersion)',
+          wrong: [
+            'es spiegelt nur nach dem Reflexionsgesetz',
+            'es löscht alles Licht',
+            'es erzeugt Ultraschall',
+          ],
+        },
+        {
+          q: 'Weißes Licht enthält …',
+          correct: 'viele Farben / Wellenlängen',
+          wrong: ['nur eine einzige Farbe Rot', 'keine Farben', 'nur Schatten'],
+        },
+        {
+          q: 'Dispersion bedeutet …',
+          correct: 'Zerlegung von Licht in Spektralfarben (unterschiedliche Brechung)',
+          wrong: [
+            'nur Mischen von Massen',
+            'Einfallswinkel = Ausfallswinkel am Spiegel',
+            'nur Kelvin-Umrechnung',
+          ],
+        },
+      ],
+      ...formulaSort(
+        ['weißes Licht', '→', 'Spektrum'],
+        'die Dispersion am Prisma',
+        'weißes Licht → Spektrum',
+        'ohne Brechung',
+      ),
+    }
+  }
+
+  if (/brechung|linse|optische.?dichte|snell/.test(lower) || (/prisma/.test(lower) && !/spektrum/.test(lower))) {
     return {
       cases: [
         {
@@ -1936,7 +2088,90 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
     }
   }
 
-  if (/licht|optik|schatten|spiegel|strahl|auge|farbe|spektrum|filter|lochkamera|sehen/.test(lower) && !/em-spektrum|hertzsche|elektromagnetisch|radio|antenne|strahlung|atom|kern|medizin|spektrallinie/.test(lower)) {
+  if (/lochkamera/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Das Abbild einer Lochkamera steht …',
+          correct: 'auf dem Kopf (und seitenverkehrt)',
+          wrong: ['immer aufrecht', 'gar nicht', 'nur als Schatten ohne Form'],
+        },
+        {
+          q: 'Strahlensatz bei der Lochkamera: …',
+          correct: 'B/G = b/g',
+          wrong: ['B·G = b·g immer', 'nur Einfall = Ausfall', 'B = G ohne Weiten'],
+        },
+        {
+          q: 'Größeres Loch bedeutet typischerweise …',
+          correct: 'helleres, aber unschärferes Bild',
+          wrong: ['immer schärferes Bild', 'kein Abbild', 'Gegenstand wird größer'],
+        },
+      ],
+      ...formulaSort(['B/G', '=', 'b/g'], 'die Lochkamera-Formel', 'B/G = b/g', '+ c'),
+    }
+  }
+
+  if (/\bauge\b|sehvorgang/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Das scharfe Bild entsteht im Auge auf der …',
+          correct: 'Netzhaut',
+          wrong: ['nur der Hornhaut außen', 'im Sehnerv ohne Netzhaut', 'außerhalb des Auges'],
+        },
+        {
+          q: 'Die Augenlinse …',
+          correct: 'bündelt Licht für ein scharfes Netzhautbild',
+          wrong: ['sendet Strahlen zum Gegenstand', 'ersetzt den Sehnerv', 'erzeugt Ultraschall'],
+        },
+        {
+          q: 'Die Pupille …',
+          correct: 'regelt, wie viel Licht ins Auge fällt',
+          wrong: ['leitet Signale zum Gehirn', 'ist der Sehnerv', 'erzeugt Licht'],
+        },
+      ],
+      ...formulaSort(
+        ['Licht', '→', 'Netzhaut'],
+        'den Sehvorgang',
+        'Licht → Netzhaut → Gehirn',
+        'Auge sendet Strahlen',
+      ),
+    }
+  }
+
+  if (/farbfilter/.test(lower) || (/filter/.test(lower) && !/schwingkreis|frequenz|hochpass|tiefpass|rc-/.test(lower))) {
+    return {
+      cases: [
+        {
+          q: 'Ein roter Farbfilter lässt vor allem …',
+          correct: 'rotes Licht durch',
+          wrong: ['alle Farben gleich', 'nur blaues Licht', 'Ultraschall'],
+        },
+        {
+          q: 'Ein Farbfilter …',
+          correct: 'lässt „seine“ Farbe durch und schwächt andere Anteile',
+          wrong: [
+            'erzeugt Licht aus dem Nichts',
+            'spiegelt nur (Einfall = Ausfall)',
+            'ersetzt die Lichtquelle',
+          ],
+        },
+        {
+          q: 'Zwei starke Filter Rot und Grün hintereinander …',
+          correct: 'lassen kaum Licht durch',
+          wrong: ['lassen weißes Licht unverändert', 'erzeugen Ultraschall', 'wirken wie ein Prisma'],
+        },
+      ],
+      ...formulaSort(
+        ['weißes Licht', '→', 'Filterfarbe'],
+        'die Wirkung eines Farbfilters',
+        'weißes Licht → Filterfarbe',
+        'Einfall = Ausfall',
+      ),
+    }
+  }
+
+  if (/licht|optik|schatten|spiegel|strahl|farbe|sehen/.test(lower) && !/em-spektrum|hertzsche|elektromagnetisch|radio|antenne|strahlung|atom|kern|medizin|spektrallinie|lochkamera|auge|farbfilter|spektrum|filter/.test(lower)) {
     return {
       cases: [
         {

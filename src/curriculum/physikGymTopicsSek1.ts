@@ -175,12 +175,21 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
           }),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
-          topic('ph-k6-lbw-sehen', 'Sehen und Fotografieren', ['Sehen', 'Fotografie']),
+          topic('ph-k6-lbw-sehen', 'Sehen und Fotografieren', ['Sehen', 'Fotografie'], {
+            released: true,
+            tasksPerRound: 10,
+          }),
           topic('ph-k6-lbw-lochkamera', 'Lochkamera', ['Lochkamera', 'Bild']),
           topic('ph-k6-lbw-auge', 'Auge und Sehvorgang', ['Auge']),
-          topic('ph-k6-lbw-daemmung', 'Wärmedämmung', ['Wärmedämmung']),
+          topic('ph-k6-lbw-daemmung', 'Wärmedämmung', ['Wärmedämmung'], {
+            released: true,
+            tasksPerRound: 10,
+          }),
           topic('ph-k6-lbw-daemmstoff', 'Dämmstoffe vergleichen', ['Dämmstoff']),
-          topic('ph-k6-lbw-farben', 'Farben', ['Farben']),
+          topic('ph-k6-lbw-farben', 'Farben', ['Farben'], {
+            released: true,
+            tasksPerRound: 10,
+          }),
           topic('ph-k6-lbw-filter', 'Farbfilter', ['Filter', 'Spektrum']),
           topic('ph-k6-lbw-spektrum', 'Spektrum und Prisma', ['Spektrum', 'Prisma']),
         ]),

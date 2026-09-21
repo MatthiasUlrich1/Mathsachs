@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.10',
+    version: '2.5.11',
     changelog:
-      'ID 3173 Temperatur-Messreihe freigegeben; Zahlenstrahl-Hinweis Querformat am Handy.',
+      'Wahlbereiche K6: Sehen/Wärmedämmung/Farben freigegeben; Lochkamera, Auge, Dämmstoffe, Farbfilter, Spektrum themenpassend (ohne sin-Brechungsgesetz).',
     official,
     extras: [],
   }

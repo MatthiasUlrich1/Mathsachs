@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "2.5.10",
-  "changelog": "ID 3173 Temperatur-Messreihe freigegeben; Zahlenstrahl-Hinweis Querformat am Handy.",
+  "version": "2.5.11",
+  "changelog": "Wahlbereiche K6: Sehen/Wärmedämmung/Farben freigegeben; Lochkamera, Auge, Dämmstoffe, Farbfilter, Spektrum themenpassend (ohne sin-Brechungsgesetz).",
   "official": [
     {
       "id": "physik-klasse-6",
@@ -396,7 +396,7 @@
               "title": "Sehen und Fotografieren",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Sehen",
@@ -431,7 +431,7 @@
               "title": "Wärmedämmung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Wärmedämmung"
@@ -453,7 +453,7 @@
               "title": "Farben",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Farben"
@@ -4008,5 +4008,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "18d198a7"
+  "contentHash": "5475675a"
 }

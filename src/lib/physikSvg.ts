@@ -547,3 +547,151 @@ export function moonPhaseSvg(kind: MoonPhaseKind): string {
   ${moon}
 </svg>`
 }
+
+/** Lochkamera: Gegenstand → Öffnung → umgekehrtes Abbild auf dem Schirm. */
+export function lochkameraSvg(opts?: {
+  showRays?: boolean
+  showLabels?: boolean
+  /** Gegenstandsgröße G, Gegenstandsweite g, Bildgröße B, Bildweite b */
+  showSizes?: boolean
+}): string {
+  const showRays = opts?.showRays !== false
+  const showLabels = opts?.showLabels !== false
+  const showSizes = opts?.showSizes === true
+  const rays = showRays
+    ? `<line x1="70" y1="48" x2="250" y2="118" stroke="#f59e0b" stroke-width="2"/>
+  <line x1="70" y1="130" x2="250" y2="62" stroke="#f59e0b" stroke-width="2"/>`
+    : ''
+  const labels = showLabels
+    ? `<text x="55" y="168" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">Gegenstand</text>
+  <text x="168" y="28" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">Öffnung</text>
+  <text x="290" y="28" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">Schirm</text>
+  <text x="290" y="168" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">Abbild</text>`
+    : ''
+  const sizes = showSizes
+    ? `<!-- Größen/Weiten -->
+  <line x1="40" y1="55" x2="40" y2="125" stroke="#64748b" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="28" y="92" fill="#334155" font-size="12" font-family="system-ui,sans-serif" font-weight="600">G</text>
+  <line x1="55" y1="140" x2="145" y2="140" stroke="#64748b" stroke-width="1.5"/>
+  <text x="100" y="155" text-anchor="middle" fill="#334155" font-size="12" font-family="system-ui,sans-serif" font-weight="600">g</text>
+  <line x1="155" y1="145" x2="275" y2="145" stroke="#64748b" stroke-width="1.5"/>
+  <text x="215" y="160" text-anchor="middle" fill="#334155" font-size="12" font-family="system-ui,sans-serif" font-weight="600">b</text>
+  <line x1="300" y1="55" x2="300" y2="100" stroke="#64748b" stroke-width="1.5"/>
+  <text x="312" y="80" fill="#334155" font-size="12" font-family="system-ui,sans-serif" font-weight="600">B</text>`
+    : ''
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 180" width="360" height="180" role="img" aria-label="Lochkamera">
+  <rect width="360" height="180" fill="#f8fafc"/>
+  <!-- Kerze -->
+  <rect x="48" y="70" width="14" height="55" rx="2" fill="#fda4af"/>
+  <ellipse cx="55" cy="58" rx="8" ry="14" fill="#fde68a" stroke="#f59e0b" stroke-width="1"/>
+  <!-- Kamera-Kasten -->
+  <rect x="150" y="40" width="160" height="100" fill="none" stroke="#334155" stroke-width="2.5"/>
+  <circle cx="150" cy="90" r="5" fill="#0f172a"/>
+  <!-- Abbild (umgekehrt) -->
+  <rect x="278" y="55" width="10" height="38" rx="1" fill="#fda4af" opacity="0.85"/>
+  <ellipse cx="283" cy="102" rx="6" ry="10" fill="#fde68a" opacity="0.9"/>
+  ${rays}
+  ${labels}
+  ${sizes}
+  <text x="180" y="175" text-anchor="middle" fill="#64748b" font-size="12" font-family="system-ui,sans-serif">Lochkamera</text>
+</svg>`
+}
+
+/** Auge im Querschnitt: Gegenstand → Linse → umgekehrtes Netzhautbild. */
+export function augeSehSvg(opts?: { showRays?: boolean }): string {
+  const showRays = opts?.showRays !== false
+  const rays = showRays
+    ? `<line x1="70" y1="45" x2="210" y2="105" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="4 3"/>
+  <line x1="70" y1="130" x2="210" y2="70" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="4 3"/>
+  <line x1="210" y1="105" x2="278" y2="118" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="4 3"/>
+  <line x1="210" y1="70" x2="278" y2="58" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="4 3"/>`
+    : ''
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 170" width="360" height="170" role="img" aria-label="Auge und Sehvorgang">
+  <rect width="360" height="170" fill="#f8fafc"/>
+  <!-- Baum -->
+  <polygon points="55,40 35,95 75,95" fill="#16a34a"/>
+  <rect x="50" y="95" width="10" height="30" fill="#78716c"/>
+  <text x="55" y="145" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">Gegenstand</text>
+  <!-- Auge -->
+  <ellipse cx="240" cy="85" rx="70" ry="48" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+  <ellipse cx="188" cy="85" rx="10" ry="22" fill="#a78bfa"/>
+  <ellipse cx="208" cy="85" rx="14" ry="20" fill="#60a5fa" stroke="#2563eb" stroke-width="1.5"/>
+  <path d="M278 50 Q300 85 278 120" fill="none" stroke="#fb923c" stroke-width="8"/>
+  <text x="208" y="82" text-anchor="middle" fill="#1e3a8a" font-size="9" font-family="system-ui,sans-serif">Linse</text>
+  <text x="295" y="88" fill="#9a3412" font-size="10" font-family="system-ui,sans-serif">Netzhaut</text>
+  <!-- umgekehrtes Bild -->
+  <polygon points="270,105 262,128 278,128" fill="#16a34a" opacity="0.85"/>
+  ${rays}
+</svg>`
+}
+
+/** Weißes Licht → Farbfilter → durchgelassene Farbe. */
+export function farbfilterSvg(opts: {
+  filterColor: 'rot' | 'grün' | 'blau'
+  showAfter?: boolean
+}): string {
+  const map = {
+    rot: { fill: '#ef4444', out: '#ef4444', label: 'roter Filter' },
+    grün: { fill: '#22c55e', out: '#22c55e', label: 'grüner Filter' },
+    blau: { fill: '#3b82f6', out: '#3b82f6', label: 'blauer Filter' },
+  } as const
+  const c = map[opts.filterColor]
+  const after =
+    opts.showAfter === false
+      ? ''
+      : `<path d="M205 85 H245" stroke="#64748b" stroke-width="2"/>
+  <rect x="250" y="70" width="70" height="30" fill="${c.out}" opacity="0.85"/>
+  <text x="285" y="120" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">${opts.filterColor}es Licht</text>`
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 150" width="360" height="150" role="img" aria-label="Farbfilter">
+  <rect width="360" height="150" fill="#f8fafc"/>
+  <defs>
+    <linearGradient id="whiteBand" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fecaca"/><stop offset="25%" stop-color="#fde68a"/>
+      <stop offset="50%" stop-color="#bbf7d0"/><stop offset="75%" stop-color="#bfdbfe"/>
+      <stop offset="100%" stop-color="#e9d5ff"/>
+    </linearGradient>
+  </defs>
+  <rect x="20" y="70" width="80" height="30" fill="url(#whiteBand)" stroke="#94a3b8"/>
+  <text x="60" y="60" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">weißes Licht</text>
+  <path d="M105 85 H145" stroke="#64748b" stroke-width="2"/>
+  <rect x="150" y="55" width="50" height="60" rx="4" fill="${c.fill}" opacity="0.75" stroke="#334155"/>
+  <text x="175" y="135" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">${c.label}</text>
+  ${after}
+</svg>`
+}
+
+/** Weißes Licht durch Prisma → Spektrum (ohne sin/Brechungsformel). */
+export function prismaSpektrumSvg(): string {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 160" width="380" height="160" role="img" aria-label="Prisma und Spektrum">
+  <rect width="380" height="160" fill="#f8fafc"/>
+  <rect x="20" y="70" width="70" height="18" fill="#e2e8f0" stroke="#94a3b8"/>
+  <text x="55" y="58" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">weißes Licht</text>
+  <polygon points="140,35 200,125 80,125" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="140" y="148" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">Prisma</text>
+  <line x1="90" y1="79" x2="130" y2="79" stroke="#64748b" stroke-width="2"/>
+  <g stroke-width="3">
+    <line x1="175" y1="70" x2="310" y2="40" stroke="#ef4444"/>
+    <line x1="175" y1="75" x2="310" y2="55" stroke="#f97316"/>
+    <line x1="175" y1="80" x2="310" y2="70" stroke="#eab308"/>
+    <line x1="175" y1="85" x2="310" y2="85" stroke="#22c55e"/>
+    <line x1="175" y1="90" x2="310" y2="100" stroke="#3b82f6"/>
+    <line x1="175" y1="95" x2="310" y2="115" stroke="#8b5cf6"/>
+  </g>
+  <text x="320" y="80" fill="#334155" font-size="11" font-family="system-ui,sans-serif">Spektrum</text>
+</svg>`
+}
+
+/** Vergleich von Dämmstoffen (qualitativ: besser / schlechter). */
+export function daemmstoffCompareSvg(): string {
+  const bar = (x: number, h: number, label: string, fill: string) =>
+    `<rect x="${x}" y="${130 - h}" width="44" height="${h}" fill="${fill}" stroke="#334155"/>
+  <text x="${x + 22}" y="148" text-anchor="middle" fill="#334155" font-size="10" font-family="system-ui,sans-serif">${label}</text>`
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160" role="img" aria-label="Dämmstoffe vergleichen">
+  <rect width="320" height="160" fill="#f8fafc"/>
+  <text x="160" y="22" text-anchor="middle" fill="#334155" font-size="12" font-family="system-ui,sans-serif">Dämmwirkung (schematisch, höher = besser)</text>
+  ${bar(40, 95, 'Mineralwolle', '#86efac')}
+  ${bar(110, 88, 'Styropor', '#a5b4fc')}
+  ${bar(180, 35, 'Holz voll', '#fdba74')}
+  ${bar(250, 18, 'Metall', '#94a3b8')}
+</svg>`
+}

@@ -23,6 +23,7 @@ interface ValueTaskInput {
   explanation: string
   /** Tolerance for decimal comparisons. */
   eps?: number
+  visualContent?: string
 }
 
 /** Build a task whose answer is a single integer or decimal value. */
@@ -32,6 +33,7 @@ export const valueTask = (input: ValueTaskInput): Task => ({
   answerKind: input.answerKind,
   solution: input.solution,
   explanation: input.explanation,
+  visualContent: input.visualContent,
   sampleAnswer: { kind: 'value', value: String(input.value) },
   check: (answer: UserInput) => {
     if (answer.kind !== 'value') return false
@@ -159,6 +161,7 @@ interface DragDropSortTaskInput {
   correctOrder: number[]
   solution: string
   explanation: string
+  visualContent?: string
 }
 
 /** Build a drag-drop sorting task. */
@@ -167,6 +170,7 @@ export const dragDropSortTask = (input: DragDropSortTaskInput): Task => ({
   answerKind: 'text', // Fallback for non-interactive mode
   solution: input.solution,
   explanation: input.explanation,
+  visualContent: input.visualContent,
   sampleAnswer: { kind: 'dragDropSort', order: input.correctOrder },
   interactive: {
     type: 'dragDropSort',
@@ -200,6 +204,7 @@ interface DragDropSlotsTaskInput {
   solution: string
   explanation: string
   instruction?: string
+  visualContent?: string
   /**
    * `strict`: slots must match left→right.
    * `commutativeFactors`: left of `=` stays fixed; multiplied factors after `=` may be any order.
@@ -312,6 +317,7 @@ export const dragDropSlotsTask = (input: DragDropSlotsTaskInput): Task => {
     answerKind: 'text',
     solution: input.solution,
     explanation: input.explanation,
+    visualContent: input.visualContent,
     sampleAnswer: { kind: 'dragDropSlots', slots: input.correctSlots },
     interactive: {
       type: 'dragDropSlots',

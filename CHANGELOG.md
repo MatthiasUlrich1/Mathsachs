@@ -9,6 +9,19 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.77] – 2026-09-21
+
+### Hinzugefügt
+- **Physik K6 Wahlbereiche:** themenpassende Banken für Lochkamera (inkl. Grafik,
+  B/G = b/g), Auge/Sehvorgang, Dämmstoffe vergleichen, Farbfilter, Spektrum/Prisma
+  (qualitativ, ohne Sinus-Brechungsgesetz); Grafiken in `physikSvg`.
+
+### Geändert
+- **Freigaben:** Sehen und Fotografieren (1057), Wärmedämmung (8550), Farben (1612);
+  Physik-Pack **2.5.11**.
+- **Factory-Routing:** Spektrum/Filter/Lochkamera/Auge/Dämmstoffe/Lichtquellen nicht
+  mehr in Spiegel-/Brechungsgesetz-Sammelbanken; Schwingkreis-Filter getrennt.
+
 ## [0.27.76] – 2026-09-21
 
 ### Hinzugefügt
