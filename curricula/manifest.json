@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-21T19:47:01.705Z",
+  "updatedAt": "2026-09-21T19:57:00.516Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -18,9 +18,9 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "2.5.12",
+      "version": "2.5.13",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 134730,
+      "size": 134729,
       "changelog": "Lochkamera-/Auge-SVG korrigiert; Farbfilter-Bilder nur passend; Dämmstoffe+Spektrum freigegeben."
     },
     {

@@ -119,6 +119,7 @@ describe('Physik Gym generators (all grades)', () => {
       'ph-k6-lbw-daemmung',
       'ph-k6-lbw-daemmstoff',
       'ph-k6-lbw-farben',
+      'ph-k6-lbw-filter',
       'ph-k6-lbw-spektrum',
     ])
     for (const t of lbw) {

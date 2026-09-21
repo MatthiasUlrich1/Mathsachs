@@ -4,7 +4,7 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "2.5.12",
+  "version": "2.5.13",
   "changelog": "Lochkamera-/Auge-SVG korrigiert; Farbfilter-Bilder nur passend; Dämmstoffe+Spektrum freigegeben.",
   "official": [
     {
@@ -464,7 +464,7 @@
               "title": "Farbfilter",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Filter",
@@ -4008,5 +4008,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "b9aca838"
+  "contentHash": "5383a431"
 }

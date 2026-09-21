@@ -549,6 +549,18 @@ export function moonPhaseSvg(kind: MoonPhaseKind): string {
 }
 
 /** Lochkamera: Gegenstand → Öffnung → umgekehrtes Abbild auf dem Schirm. */
+/** Intersection of the ray through `from`→`through` with the vertical line x = atX. */
+function rayHitAtX(
+  from: { x: number; y: number },
+  through: { x: number; y: number },
+  atX: number,
+): { x: number; y: number } {
+  const dx = through.x - from.x
+  if (Math.abs(dx) < 1e-9) return { x: atX, y: from.y }
+  const t = (atX - from.x) / dx
+  return { x: atX, y: from.y + t * (through.y - from.y) }
+}
+
 export function lochkameraSvg(opts?: {
   showRays?: boolean
   showLabels?: boolean
@@ -558,58 +570,103 @@ export function lochkameraSvg(opts?: {
   const showRays = opts?.showRays !== false
   const showLabels = opts?.showLabels !== false
   const showSizes = opts?.showSizes === true
-  // Öffnung leicht innen auf der Vorderwand — Strahlen-X klar in der Öffnung sichtbar
-  const hole = { x: 152, y: 90 }
+
+  // Geometrie so, dass b < g → kleineres Abbild; Strahlen = echte Geraden durch die Öffnung
+  const hole = { x: 200, y: 90 }
+  const objTop = { x: 48, y: 44 } // Flammenspitze (Ellipse cy=58, ry=14)
+  const objBot = { x: 48, y: 128 } // Kerzenfuß
+  const screenX = 328
+  const hitFromTop = rayHitAtX(objTop, hole, screenX) // → unten am Schirm (Bild umgedreht)
+  const hitFromBot = rayHitAtX(objBot, hole, screenX) // → oben am Schirm
+
+  // Ähnlichkeitsabbildung (180°-Drehung in der Bildebene): y am Schirm aus Gegenstands-y
+  const objH = objBot.y - objTop.y
+  const mapY = (y: number) =>
+    hitFromBot.y + ((objBot.y - y) / objH) * (hitFromTop.y - hitFromBot.y)
+  const scale = Math.abs(hitFromTop.y - hitFromBot.y) / objH
+  // Gegenstand: Körper y=70…128, Flamme cx=48 cy=58 rx=8 ry=14
+  const bodyTop = mapY(70)
+  const bodyBot = mapY(128) // = hitFromBot.y
+  const bodyY = Math.min(bodyTop, bodyBot)
+  const bodyH = Math.abs(bodyTop - bodyBot)
+  const bodyW = 14 * scale
+  const imgCx = screenX - 5
+  const bodyX = imgCx - bodyW / 2
+  const flameCy = mapY(58)
+  const flameRx = 8 * scale
+  const flameRy = 14 * scale
+
   const rays = showRays
-    ? `<!-- Strahlen kreuzen sich exakt in der Öffnung -->
-  <polyline points="55,48 ${hole.x},${hole.y} 283,108" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-  <polyline points="55,125 ${hole.x},${hole.y} 283,58" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>`
+    ? `<!-- Geradlinige Ausbreitung: echte Geraden (zuletzt gezeichnet, über der Öffnung) -->
+  <line x1="${objTop.x}" y1="${objTop.y}" x2="${hitFromTop.x}" y2="${hitFromTop.y}" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="${objBot.x}" y1="${objBot.y}" x2="${hitFromBot.x}" y2="${hitFromBot.y}" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="${hole.x}" cy="${hole.y}" r="2.2" fill="#0f172a"/>`
     : ''
   const labels = showLabels
-    ? `<text x="55" y="168" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">Gegenstand</text>
-  <text x="150" y="28" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">Öffnung</text>
-  <text x="290" y="28" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">Schirm</text>
-  <text x="290" y="168" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">Abbild</text>`
+    ? `<text x="48" y="168" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">Gegenstand</text>
+  <text x="${hole.x}" y="28" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">Öffnung</text>
+  <text x="${screenX}" y="28" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">Schirm</text>
+  <text x="${screenX}" y="168" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">Abbild</text>`
     : ''
   const sizes = showSizes
     ? `<!-- Größen/Weiten -->
-  <line x1="40" y1="55" x2="40" y2="125" stroke="#64748b" stroke-width="1.5"/>
-  <text x="28" y="92" fill="#334155" font-size="12" font-family="system-ui,sans-serif" font-weight="600">G</text>
-  <line x1="55" y1="140" x2="145" y2="140" stroke="#64748b" stroke-width="1.5"/>
-  <text x="100" y="155" text-anchor="middle" fill="#334155" font-size="12" font-family="system-ui,sans-serif" font-weight="600">g</text>
-  <line x1="155" y1="145" x2="275" y2="145" stroke="#64748b" stroke-width="1.5"/>
-  <text x="215" y="160" text-anchor="middle" fill="#334155" font-size="12" font-family="system-ui,sans-serif" font-weight="600">b</text>
-  <line x1="300" y1="55" x2="300" y2="100" stroke="#64748b" stroke-width="1.5"/>
-  <text x="312" y="80" fill="#334155" font-size="12" font-family="system-ui,sans-serif" font-weight="600">B</text>`
+  <line x1="32" y1="${objTop.y}" x2="32" y2="${objBot.y}" stroke="#64748b" stroke-width="1.5"/>
+  <text x="20" y="92" fill="#334155" font-size="12" font-family="system-ui,sans-serif" font-weight="600">G</text>
+  <line x1="${objTop.x}" y1="145" x2="${hole.x}" y2="145" stroke="#64748b" stroke-width="1.5"/>
+  <text x="${(objTop.x + hole.x) / 2}" y="160" text-anchor="middle" fill="#334155" font-size="12" font-family="system-ui,sans-serif" font-weight="600">g</text>
+  <line x1="${hole.x}" y1="145" x2="${screenX}" y2="145" stroke="#64748b" stroke-width="1.5"/>
+  <text x="${(hole.x + screenX) / 2}" y="160" text-anchor="middle" fill="#334155" font-size="12" font-family="system-ui,sans-serif" font-weight="600">b</text>
+  <line x1="345" y1="${hitFromBot.y.toFixed(1)}" x2="345" y2="${hitFromTop.y.toFixed(1)}" stroke="#64748b" stroke-width="1.5"/>
+  <text x="356" y="92" fill="#334155" font-size="12" font-family="system-ui,sans-serif" font-weight="600">B</text>`
     : ''
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 180" width="360" height="180" role="img" aria-label="Lochkamera">
-  <rect width="360" height="180" fill="#f8fafc"/>
-  <!-- Kerze -->
-  <rect x="48" y="70" width="14" height="55" rx="2" fill="#fda4af"/>
-  <ellipse cx="55" cy="58" rx="8" ry="14" fill="#fde68a" stroke="#f59e0b" stroke-width="1"/>
-  <!-- Kamera-Kasten -->
-  <rect x="150" y="40" width="160" height="100" fill="none" stroke="#334155" stroke-width="2.5"/>
-  <!-- Abbild (umgekehrt: Flamme unten) -->
-  <rect x="278" y="55" width="10" height="38" rx="1" fill="#fda4af" opacity="0.85"/>
-  <ellipse cx="283" cy="102" rx="6" ry="10" fill="#fde68a" opacity="0.9"/>
+  // Kamerakasten: Vorderwand mit Lücke an der Öffnung (kein Kreis über den Strahlen)
+  const wallGap = 9
+  const boxTop = 40
+  const boxBot = 140
+  const boxRight = screenX
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 180" width="380" height="180" role="img" aria-label="Lochkamera">
+  <rect width="380" height="180" fill="#f8fafc"/>
+  <!-- Kerze (Gegenstand) -->
+  <rect x="41" y="70" width="14" height="58" rx="2" fill="#fda4af"/>
+  <ellipse cx="48" cy="58" rx="8" ry="14" fill="#fde68a" stroke="#f59e0b" stroke-width="1"/>
+  <!-- Kamera-Kasten mit Öffnung (Lücke in der Vorderwand) -->
+  <path d="M${hole.x} ${boxTop} H${boxRight} V${boxBot} H${hole.x} V${hole.y + wallGap} M${hole.x} ${hole.y - wallGap} V${boxTop}" fill="none" stroke="#334155" stroke-width="2.5" stroke-linejoin="miter"/>
+  <!-- Abbild: Ähnlichkeitsabbildung, umgekehrt; Treffer = Strahlenden -->
+  <rect x="${bodyX.toFixed(2)}" y="${bodyY.toFixed(2)}" width="${bodyW.toFixed(2)}" height="${bodyH.toFixed(2)}" rx="1" fill="#fda4af" opacity="0.9"/>
+  <ellipse cx="${imgCx.toFixed(2)}" cy="${flameCy.toFixed(2)}" rx="${flameRx.toFixed(2)}" ry="${flameRy.toFixed(2)}" fill="#fde68a" opacity="0.95"/>
   ${rays}
-  <!-- Offener Ring um die Öffnung: Kreuzung der Strahlen bleibt sichtbar -->
-  <circle cx="${hole.x}" cy="${hole.y}" r="8" fill="none" stroke="#0f172a" stroke-width="2.5"/>
   ${labels}
   ${sizes}
-  <text x="180" y="175" text-anchor="middle" fill="#64748b" font-size="12" font-family="system-ui,sans-serif">Lochkamera</text>
+  <text x="190" y="175" text-anchor="middle" fill="#64748b" font-size="12" font-family="system-ui,sans-serif">Lochkamera</text>
 </svg>`
 }
 
-/** Auge im Querschnitt: Gegenstand → Linse → kleineres, umgekehrtes Bild auf der Netzhaut. */
+/** Auge im Querschnitt: Gegenstand → Linse → kleineres, umgekehrtes ähnliches Bild auf der Netzhaut. */
 export function augeSehSvg(opts?: { showRays?: boolean }): string {
   const showRays = opts?.showRays !== false
-  // Linse ~ (208, 85); Netzhaut rechts. Strahlen kreuzen in der Linse, Bild auf Netzhaut.
+  // Gegenstand (Baum): Spitze (55,40), Kronenbasis y=95 Breite 40, Stamm h=30 → Gesamthöhe 85
+  const objTip = { x: 55, y: 40 }
+  const objBase = { x: 55, y: 125 }
   const lens = { x: 208, y: 85 }
+  const retinaX = 292
+  const hitTip = rayHitAtX(objTip, lens, retinaX) // Spitze → unten auf Netzhaut
+  const hitBase = rayHitAtX(objBase, lens, retinaX) // Fuß → oben auf Netzhaut
+  const imgH = hitTip.y - hitBase.y
+  const scale = imgH / 85
+  const canopyH = 55 * scale
+  const trunkH = 30 * scale
+  const halfCanopy = 20 * scale
+  const trunkW = 10 * scale
+  const cx = retinaX
+  // Umgedreht: Stamm oben (hitBase), Krone darunter, Spitze bei hitTip
+  const trunkY = hitBase.y
+  const canopyBaseY = hitBase.y + trunkH
+  const tipY = hitTip.y
+
   const rays = showRays
-    ? `<!-- Baumspitze → Linse → Netzhaut unten; Baumfuß → Linse → Netzhaut oben (Kreuzung in der Linse) -->
-  <polyline points="55,42 ${lens.x},${lens.y} 292,108" fill="none" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="4 3" stroke-linejoin="round"/>
-  <polyline points="55,125 ${lens.x},${lens.y} 292,55" fill="none" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="4 3" stroke-linejoin="round"/>`
+    ? `<!-- Zentralstrahlen: unvermittelt gerade durch Linsenmitte (zuletzt gezeichnet) -->
+  <line x1="${objTip.x}" y1="${objTip.y}" x2="${hitTip.x}" y2="${hitTip.y}" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="4 3" stroke-linecap="round"/>
+  <line x1="${objBase.x}" y1="${objBase.y}" x2="${hitBase.x}" y2="${hitBase.y}" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="4 3" stroke-linecap="round"/>`
     : ''
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 170" width="360" height="170" role="img" aria-label="Auge und Sehvorgang">
   <rect width="360" height="170" fill="#f8fafc"/>
@@ -620,14 +677,14 @@ export function augeSehSvg(opts?: { showRays?: boolean }): string {
   <!-- Auge -->
   <ellipse cx="240" cy="85" rx="70" ry="48" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
   <ellipse cx="188" cy="85" rx="10" ry="22" fill="#a78bfa"/>
-  <ellipse cx="${lens.x}" cy="${lens.y}" rx="14" ry="20" fill="#60a5fa" stroke="#2563eb" stroke-width="1.5"/>
+  <ellipse cx="${lens.x}" cy="${lens.y}" rx="14" ry="20" fill="#60a5fa" stroke="#2563eb" stroke-width="1.5" fill-opacity="0.55"/>
   <path d="M278 50 Q300 85 278 120" fill="none" stroke="#fb923c" stroke-width="8"/>
-  <text x="208" y="82" text-anchor="middle" fill="#1e3a8a" font-size="9" font-family="system-ui,sans-serif">Linse</text>
+  <text x="208" y="72" text-anchor="middle" fill="#1e3a8a" font-size="9" font-family="system-ui,sans-serif">Linse</text>
   <text x="308" y="40" fill="#9a3412" font-size="10" font-family="system-ui,sans-serif">Netzhaut</text>
+  <!-- Ähnlichkeitsabbild: gleiche Proportionen, kleiner, verkehrt auf der Netzhaut -->
+  <rect x="${(cx - trunkW / 2).toFixed(2)}" y="${trunkY.toFixed(2)}" width="${trunkW.toFixed(2)}" height="${trunkH.toFixed(2)}" fill="#78716c"/>
+  <polygon points="${cx},${tipY.toFixed(2)} ${(cx - halfCanopy).toFixed(2)},${canopyBaseY.toFixed(2)} ${(cx + halfCanopy).toFixed(2)},${canopyBaseY.toFixed(2)}" fill="#16a34a"/>
   ${rays}
-  <!-- kleines, umgekehrtes Bild auf der Netzhaut: Spitze nach unten -->
-  <rect x="290" y="58" width="4" height="12" fill="#78716c"/>
-  <polygon points="292,108 284,82 300,82" fill="#16a34a"/>
   <text x="318" y="95" fill="#334155" font-size="9" font-family="system-ui,sans-serif">Abbild</text>
 </svg>`
 }

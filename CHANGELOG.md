@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.81] – 2026-09-21
+
+### Geändert
+- **Lochkamera-SVG:** Lichtstrahlen als echte Geraden durch die Öffnung (kein Knick);
+  Abbild aus Strahltreffern am Schirm.
+- **Auge-SVG:** Netzhaut-Baum als proportionales, verkehrtes Ähnlichkeitsabbild;
+  Strahlen durch Linsenmitte.
+- **Freigabe:** Farbfilter (7584); Physik-Pack **2.5.13**.
+
 ## [0.27.80] – 2026-09-21
 
 ### Geändert

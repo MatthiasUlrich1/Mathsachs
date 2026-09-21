@@ -193,7 +193,9 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
             released: true,
             tasksPerRound: 10,
           }),
-          topic('ph-k6-lbw-filter', 'Farbfilter', ['Filter', 'Spektrum']),
+          topic('ph-k6-lbw-filter', 'Farbfilter', ['Filter', 'Spektrum'], {
+            released: true,
+          }),
           topic('ph-k6-lbw-spektrum', 'Spektrum und Prisma', ['Spektrum', 'Prisma'], {
             released: true,
             tasksPerRound: 10,
