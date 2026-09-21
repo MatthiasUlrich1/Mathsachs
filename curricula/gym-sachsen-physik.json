@@ -4,7 +4,7 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "2.5.14",
+  "version": "2.5.15",
   "changelog": "Lochkamera-/Auge-SVG korrigiert; Farbfilter-Bilder nur passend; Dämmstoffe+Spektrum freigegeben.",
   "official": [
     {
@@ -408,7 +408,7 @@
               "title": "Lochkamera",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Lochkamera",
@@ -420,7 +420,7 @@
               "title": "Auge und Sehvorgang",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Auge"
@@ -4008,5 +4008,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "5383a431"
+  "contentHash": "be0a7d9d"
 }

@@ -116,6 +116,8 @@ describe('Physik Gym generators (all grades)', () => {
     const lbw = k6.areas.find((a) => a.id === 'lbw')!.topics
     const releasedLbw = new Set([
       'ph-k6-lbw-sehen',
+      'ph-k6-lbw-lochkamera',
+      'ph-k6-lbw-auge',
       'ph-k6-lbw-daemmung',
       'ph-k6-lbw-daemmstoff',
       'ph-k6-lbw-farben',

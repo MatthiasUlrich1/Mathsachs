@@ -138,4 +138,38 @@ describe('dragDropSlots commutativeFactors', () => {
     expect(task.check({ kind: 'dragDropSlots', slots: [0, 1, 2, 3] })).toBe(true)
     expect(task.check({ kind: 'dragDropSlots', slots: [0, 2, 1, 3] })).toBe(false)
   })
+
+  it('treats identical labels as interchangeable in strict mode', () => {
+    // Equation rearrange: | : (−4)  then  x = (−20) : (−4)
+    // Two distinct chips both labeled (−4) and two labeled :
+    const items = [
+      { label: ':', value: 1 },
+      { label: '(−4)', value: 2 },
+      { label: 'x', value: 3 },
+      { label: '=', value: 4 },
+      { label: '(−20)', value: 5 },
+      { label: ':', value: 6 },
+      { label: '(−4)', value: 7 },
+      { label: '+', value: 8 },
+    ]
+    const correct = [0, 1, 2, 3, 4, 5, 6] // : (−4) x = (−20) : (−4)
+    const task = dragDropSlotsTask({
+      question: 'Umstellen',
+      items,
+      correctSlots: correct,
+      solution: 'x = (−20) : (−4)',
+      explanation: 'Division',
+      checkMode: 'strict',
+      resultValue: 5,
+    })
+    expect(task.check({ kind: 'dragDropSlots', slots: correct, result: '5' })).toBe(true)
+    // Swap the two (−4) chips and the two : chips — still correct by content
+    expect(
+      task.check({ kind: 'dragDropSlots', slots: [5, 6, 2, 3, 4, 0, 1], result: '5' }),
+    ).toBe(true)
+    // Wrong label in a slot still fails
+    expect(
+      task.check({ kind: 'dragDropSlots', slots: [0, 7, 2, 3, 4, 5, 6], result: '5' }),
+    ).toBe(false)
+  })
 })

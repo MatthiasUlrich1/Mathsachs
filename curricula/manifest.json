@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-21T20:03:20.152Z",
+  "updatedAt": "2026-09-21T20:14:10.447Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -7,7 +7,7 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Mathematik",
-      "version": "1.2.4",
+      "version": "1.2.5",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen.json",
       "size": 66559,
       "changelog": "K7: Gleichungsumstellung mehrzeilig (Äquivalenz); Oberfläche einer Pyramide + SVG."
@@ -18,9 +18,9 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "2.5.14",
+      "version": "2.5.15",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 134729,
+      "size": 134727,
       "changelog": "Lochkamera-/Auge-SVG korrigiert; Farbfilter-Bilder nur passend; Dämmstoffe+Spektrum freigegeben."
     },
     {

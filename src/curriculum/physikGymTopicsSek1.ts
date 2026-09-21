@@ -179,8 +179,12 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
             released: true,
             tasksPerRound: 10,
           }),
-          topic('ph-k6-lbw-lochkamera', 'Lochkamera', ['Lochkamera', 'Bild']),
-          topic('ph-k6-lbw-auge', 'Auge und Sehvorgang', ['Auge']),
+          topic('ph-k6-lbw-lochkamera', 'Lochkamera', ['Lochkamera', 'Bild'], {
+            released: true,
+          }),
+          topic('ph-k6-lbw-auge', 'Auge und Sehvorgang', ['Auge'], {
+            released: true,
+          }),
           topic('ph-k6-lbw-daemmung', 'Wärmedämmung', ['Wärmedämmung'], {
             released: true,
             tasksPerRound: 10,

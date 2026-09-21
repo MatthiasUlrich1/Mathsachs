@@ -296,7 +296,25 @@ function sameIndexMultiset(a: number[], b: number[]): boolean {
   return sa.every((v, i) => v === sb[i])
 }
 
-/** Compare slot answers; optionally allow any order of multiplied factors after `=`. */
+function sameLabelMultiset(
+  items: Array<{ label: string }>,
+  a: number[],
+  b: number[],
+): boolean {
+  if (a.length !== b.length) return false
+  const la = a.map((i) => items[i]?.label ?? '').sort()
+  const lb = b.map((i) => items[i]?.label ?? '').sort()
+  return la.every((v, i) => v === lb[i])
+}
+
+function slotLabel(items: Array<{ label: string }>, idx: number): string {
+  return items[idx]?.label ?? ''
+}
+
+/**
+ * Compare slot answers by label (identical chips are interchangeable).
+ * Optionally allow any order of multiplied factors after `=`.
+ */
 export function checkDragDropSlotsAnswer(
   answerSlots: Array<number | null>,
   correctSlots: number[],
@@ -308,14 +326,22 @@ export function checkDragDropSlotsAnswer(
   const filled = answerSlots as number[]
 
   if (checkMode === 'strict') {
-    return filled.every((idx, i) => idx === correctSlots[i])
+    // Content match: same label sequence — duplicate chips (two „(−4)“) are equivalent
+    return filled.every(
+      (idx, i) => slotLabel(items, idx) === slotLabel(items, correctSlots[i]!),
+    )
   }
 
   const rhsStart = formulaEqualsRhsStart(items, correctSlots)
   for (let i = 0; i < rhsStart; i++) {
-    if (filled[i] !== correctSlots[i]) return false
+    if (slotLabel(items, filled[i]!) !== slotLabel(items, correctSlots[i]!)) return false
   }
-  return sameIndexMultiset(filled.slice(rhsStart), correctSlots.slice(rhsStart))
+  // Prefer label multiset so identical factor chips may swap; fall back to indices
+  // when labels alone would be ambiguous (shouldn't happen for unique product chips).
+  return (
+    sameLabelMultiset(items, filled.slice(rhsStart), correctSlots.slice(rhsStart)) ||
+    sameIndexMultiset(filled.slice(rhsStart), correctSlots.slice(rhsStart))
+  )
 }
 
 function resolveSlotsCheckMode(
