@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.11',
+    version: '2.5.12',
     changelog:
-      'Wahlbereiche K6: Sehen/Wärmedämmung/Farben freigegeben; Lochkamera, Auge, Dämmstoffe, Farbfilter, Spektrum themenpassend (ohne sin-Brechungsgesetz).',
+      'Lochkamera-/Auge-SVG korrigiert; Farbfilter-Bilder nur passend; Dämmstoffe+Spektrum freigegeben.',
     official,
     extras: [],
   }

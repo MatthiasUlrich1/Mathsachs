@@ -185,13 +185,19 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
             released: true,
             tasksPerRound: 10,
           }),
-          topic('ph-k6-lbw-daemmstoff', 'Dämmstoffe vergleichen', ['Dämmstoff']),
+          topic('ph-k6-lbw-daemmstoff', 'Dämmstoffe vergleichen', ['Dämmstoff'], {
+            released: true,
+            tasksPerRound: 10,
+          }),
           topic('ph-k6-lbw-farben', 'Farben', ['Farben'], {
             released: true,
             tasksPerRound: 10,
           }),
           topic('ph-k6-lbw-filter', 'Farbfilter', ['Filter', 'Spektrum']),
-          topic('ph-k6-lbw-spektrum', 'Spektrum und Prisma', ['Spektrum', 'Prisma']),
+          topic('ph-k6-lbw-spektrum', 'Spektrum und Prisma', ['Spektrum', 'Prisma'], {
+            released: true,
+            tasksPerRound: 10,
+          }),
         ]),
       ],
     ),

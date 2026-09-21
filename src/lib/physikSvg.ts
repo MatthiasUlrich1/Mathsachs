@@ -558,19 +558,22 @@ export function lochkameraSvg(opts?: {
   const showRays = opts?.showRays !== false
   const showLabels = opts?.showLabels !== false
   const showSizes = opts?.showSizes === true
+  // Öffnung leicht innen auf der Vorderwand — Strahlen-X klar in der Öffnung sichtbar
+  const hole = { x: 152, y: 90 }
   const rays = showRays
-    ? `<line x1="70" y1="48" x2="250" y2="118" stroke="#f59e0b" stroke-width="2"/>
-  <line x1="70" y1="130" x2="250" y2="62" stroke="#f59e0b" stroke-width="2"/>`
+    ? `<!-- Strahlen kreuzen sich exakt in der Öffnung -->
+  <polyline points="55,48 ${hole.x},${hole.y} 283,108" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="55,125 ${hole.x},${hole.y} 283,58" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>`
     : ''
   const labels = showLabels
     ? `<text x="55" y="168" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">Gegenstand</text>
-  <text x="168" y="28" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">Öffnung</text>
+  <text x="150" y="28" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">Öffnung</text>
   <text x="290" y="28" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">Schirm</text>
   <text x="290" y="168" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">Abbild</text>`
     : ''
   const sizes = showSizes
     ? `<!-- Größen/Weiten -->
-  <line x1="40" y1="55" x2="40" y2="125" stroke="#64748b" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <line x1="40" y1="55" x2="40" y2="125" stroke="#64748b" stroke-width="1.5"/>
   <text x="28" y="92" fill="#334155" font-size="12" font-family="system-ui,sans-serif" font-weight="600">G</text>
   <line x1="55" y1="140" x2="145" y2="140" stroke="#64748b" stroke-width="1.5"/>
   <text x="100" y="155" text-anchor="middle" fill="#334155" font-size="12" font-family="system-ui,sans-serif" font-weight="600">g</text>
@@ -586,42 +589,46 @@ export function lochkameraSvg(opts?: {
   <ellipse cx="55" cy="58" rx="8" ry="14" fill="#fde68a" stroke="#f59e0b" stroke-width="1"/>
   <!-- Kamera-Kasten -->
   <rect x="150" y="40" width="160" height="100" fill="none" stroke="#334155" stroke-width="2.5"/>
-  <circle cx="150" cy="90" r="5" fill="#0f172a"/>
-  <!-- Abbild (umgekehrt) -->
+  <!-- Abbild (umgekehrt: Flamme unten) -->
   <rect x="278" y="55" width="10" height="38" rx="1" fill="#fda4af" opacity="0.85"/>
   <ellipse cx="283" cy="102" rx="6" ry="10" fill="#fde68a" opacity="0.9"/>
   ${rays}
+  <!-- Offener Ring um die Öffnung: Kreuzung der Strahlen bleibt sichtbar -->
+  <circle cx="${hole.x}" cy="${hole.y}" r="8" fill="none" stroke="#0f172a" stroke-width="2.5"/>
   ${labels}
   ${sizes}
   <text x="180" y="175" text-anchor="middle" fill="#64748b" font-size="12" font-family="system-ui,sans-serif">Lochkamera</text>
 </svg>`
 }
 
-/** Auge im Querschnitt: Gegenstand → Linse → umgekehrtes Netzhautbild. */
+/** Auge im Querschnitt: Gegenstand → Linse → kleineres, umgekehrtes Bild auf der Netzhaut. */
 export function augeSehSvg(opts?: { showRays?: boolean }): string {
   const showRays = opts?.showRays !== false
+  // Linse ~ (208, 85); Netzhaut rechts. Strahlen kreuzen in der Linse, Bild auf Netzhaut.
+  const lens = { x: 208, y: 85 }
   const rays = showRays
-    ? `<line x1="70" y1="45" x2="210" y2="105" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="4 3"/>
-  <line x1="70" y1="130" x2="210" y2="70" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="4 3"/>
-  <line x1="210" y1="105" x2="278" y2="118" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="4 3"/>
-  <line x1="210" y1="70" x2="278" y2="58" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="4 3"/>`
+    ? `<!-- Baumspitze → Linse → Netzhaut unten; Baumfuß → Linse → Netzhaut oben (Kreuzung in der Linse) -->
+  <polyline points="55,42 ${lens.x},${lens.y} 292,108" fill="none" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="4 3" stroke-linejoin="round"/>
+  <polyline points="55,125 ${lens.x},${lens.y} 292,55" fill="none" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="4 3" stroke-linejoin="round"/>`
     : ''
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 170" width="360" height="170" role="img" aria-label="Auge und Sehvorgang">
   <rect width="360" height="170" fill="#f8fafc"/>
-  <!-- Baum -->
+  <!-- Baum (aufrecht) -->
   <polygon points="55,40 35,95 75,95" fill="#16a34a"/>
   <rect x="50" y="95" width="10" height="30" fill="#78716c"/>
   <text x="55" y="145" text-anchor="middle" fill="#334155" font-size="11" font-family="system-ui,sans-serif">Gegenstand</text>
   <!-- Auge -->
   <ellipse cx="240" cy="85" rx="70" ry="48" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
   <ellipse cx="188" cy="85" rx="10" ry="22" fill="#a78bfa"/>
-  <ellipse cx="208" cy="85" rx="14" ry="20" fill="#60a5fa" stroke="#2563eb" stroke-width="1.5"/>
+  <ellipse cx="${lens.x}" cy="${lens.y}" rx="14" ry="20" fill="#60a5fa" stroke="#2563eb" stroke-width="1.5"/>
   <path d="M278 50 Q300 85 278 120" fill="none" stroke="#fb923c" stroke-width="8"/>
   <text x="208" y="82" text-anchor="middle" fill="#1e3a8a" font-size="9" font-family="system-ui,sans-serif">Linse</text>
-  <text x="295" y="88" fill="#9a3412" font-size="10" font-family="system-ui,sans-serif">Netzhaut</text>
-  <!-- umgekehrtes Bild -->
-  <polygon points="270,105 262,128 278,128" fill="#16a34a" opacity="0.85"/>
+  <text x="308" y="40" fill="#9a3412" font-size="10" font-family="system-ui,sans-serif">Netzhaut</text>
   ${rays}
+  <!-- kleines, umgekehrtes Bild auf der Netzhaut: Spitze nach unten -->
+  <rect x="290" y="58" width="4" height="12" fill="#78716c"/>
+  <polygon points="292,108 284,82 300,82" fill="#16a34a"/>
+  <text x="318" y="95" fill="#334155" font-size="9" font-family="system-ui,sans-serif">Abbild</text>
 </svg>`
 }
 

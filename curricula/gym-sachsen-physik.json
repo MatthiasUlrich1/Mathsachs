@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "2.5.11",
-  "changelog": "Wahlbereiche K6: Sehen/Wärmedämmung/Farben freigegeben; Lochkamera, Auge, Dämmstoffe, Farbfilter, Spektrum themenpassend (ohne sin-Brechungsgesetz).",
+  "version": "2.5.12",
+  "changelog": "Lochkamera-/Auge-SVG korrigiert; Farbfilter-Bilder nur passend; Dämmstoffe+Spektrum freigegeben.",
   "official": [
     {
       "id": "physik-klasse-6",
@@ -442,7 +442,7 @@
               "title": "Dämmstoffe vergleichen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Dämmstoff"
@@ -476,7 +476,7 @@
               "title": "Spektrum und Prisma",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Spektrum",
@@ -4008,5 +4008,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "5475675a"
+  "contentHash": "b9aca838"
 }

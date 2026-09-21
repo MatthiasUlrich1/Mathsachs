@@ -117,7 +117,9 @@ describe('Physik Gym generators (all grades)', () => {
     const releasedLbw = new Set([
       'ph-k6-lbw-sehen',
       'ph-k6-lbw-daemmung',
+      'ph-k6-lbw-daemmstoff',
       'ph-k6-lbw-farben',
+      'ph-k6-lbw-spektrum',
     ])
     for (const t of lbw) {
       if (releasedLbw.has(t.id)) {

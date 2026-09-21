@@ -9,6 +9,18 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.79] – 2026-09-21
+
+### Geändert
+- **Lochkamera-SVG:** Lichtstrahlen kreuzen sich in der Öffnung; Abbild weiterhin
+  umgekehrt.
+- **Auge-SVG:** kleines, verkehrtes Abbild auf der Netzhaut; Strahlen kreuzen in
+  der Linse.
+- **Farbfilter:** Abbildung nur wenn sie zur Frage passt (gleiche Farbe); reine
+  Textaufgaben ohne unnötiges Bild.
+- **Freigaben:** Dämmstoffe vergleichen (7326), Spektrum und Prisma (6521);
+  Physik-Pack **2.5.12**.
+
 ## [0.27.78] – 2026-09-21
 
 ### Hinzugefügt

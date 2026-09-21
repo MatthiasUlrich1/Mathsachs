@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-21T19:27:22.908Z",
+  "updatedAt": "2026-09-21T19:41:16.557Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -18,10 +18,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "2.5.11",
+      "version": "2.5.12",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 134786,
-      "changelog": "Wahlbereiche K6: Sehen/Wärmedämmung/Farben freigegeben; Lochkamera, Auge, Dämmstoffe, Farbfilter, Spektrum themenpassend (ohne sin-Brechungsgesetz)."
+      "size": 134730,
+      "changelog": "Lochkamera-/Auge-SVG korrigiert; Farbfilter-Bilder nur passend; Dämmstoffe+Spektrum freigegeben."
     },
     {
       "id": "oberschule-sachsen-hs",

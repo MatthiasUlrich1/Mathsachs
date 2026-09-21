@@ -3455,35 +3455,9 @@ const daemmstoff: Topic['generate'] = mixedVariants(
 
 /** Wahlbereich — Farbfilter (nicht allgemeine Optik/Spiegel) */
 const farbfilter: Topic['generate'] = mixedVariants(
+  // Nur Text — Bild würde oft nicht zur Formulierung passen / ist überflüssig
   (rng) => {
-    const color = pick(rng, ['rot', 'grün', 'blau'] as const)
-    const through =
-      color === 'rot' ? 'rotes Licht' : color === 'grün' ? 'grünes Licht' : 'blaues Licht'
-    const blocked =
-      color === 'rot'
-        ? 'vor allem Blau und Grün'
-        : color === 'grün'
-          ? 'vor allem Rot und Blau'
-          : 'vor allem Rot und Grün'
     const cases = [
-      {
-        q: `Ein ${color}er Farbfilter lässt vor allem …`,
-        correct: `${through} durch`,
-        wrong: [
-          'alle Spektralfarben gleich stark durch',
-          'nur Ultraschall durch',
-          'gar kein Licht durch',
-        ],
-      },
-      {
-        q: `Was hält ein ${color}er Filter typischerweise zurück?`,
-        correct: blocked,
-        wrong: [
-          'nur „seine“ eigene Farbe',
-          'immer das gesamte weiße Licht vollständig',
-          'nur Schatten ohne Farbe',
-        ],
-      },
       {
         q: 'Weißes Licht hinter einem roten Filter erscheint …',
         correct: 'vor allem rot',
@@ -3516,6 +3490,11 @@ const farbfilter: Topic['generate'] = mixedVariants(
           'gilt das Reflexionsgesetz am Filter',
         ],
       },
+      {
+        q: 'Ein blauer Filter lässt vor allem …',
+        correct: 'blaues Licht durch',
+        wrong: ['nur rotes Licht durch', 'alle Farben unverändert', 'Ultraschall'],
+      },
     ] as const
     const c = pick(rng, [...cases])
     return choicePickTask({
@@ -3525,24 +3504,37 @@ const farbfilter: Topic['generate'] = mixedVariants(
       solution: c.correct,
       explanation:
         'Farbfilter: subtraktiv — „eigene“ Farbe durch, andere Spektralanteile werden geschwächt.',
-      visualContent: farbfilterSvg({ filterColor: color, showAfter: true }),
       instruction: 'Tippe die passende Aussage zum Farbfilter:',
     })
   },
+  // Mit Abbildung: Frage und SVG nutzen dieselbe Filterfarbe
   (rng) => {
     const color = pick(rng, ['rot', 'grün', 'blau'] as const)
-    const correct =
+    const through =
       color === 'rot' ? 'rotes Licht' : color === 'grün' ? 'grünes Licht' : 'blaues Licht'
+    const cases = [
+      {
+        q: `Sieh dir die Abbildung an: Ein ${color}er Farbfilter lässt vor allem …`,
+        correct: `${through} durch`,
+        wrong: [
+          'alle Spektralfarben gleich stark durch',
+          'nur Ultraschall durch',
+          'gar kein Licht durch',
+        ],
+      },
+      {
+        q: `Abbildung: Welches Licht kommt hinter dem ${color}en Filter vor allem an?`,
+        correct: through,
+        wrong: ['weißes Licht unverändert', 'nur Ultraschall', 'gar kein sichtbares Licht immer'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
     return choicePickTask({
-      question: `Sieh dir die Abbildung an: Welches Licht kommt hinter dem ${color}en Filter vor allem an?`,
-      choices: shuffleChoices(
-        rng,
-        [correct, 'weißes Licht unverändert', 'nur Ultraschall', 'gar kein sichtbares Licht immer'],
-        correct,
-      ),
-      correct,
-      solution: correct,
-      explanation: `Der ${color}e Filter lässt vor allem ${correct} durch.`,
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: `Der ${color}e Filter lässt vor allem ${through} durch.`,
       visualContent: farbfilterSvg({ filterColor: color, showAfter: true }),
       instruction: 'Nutze die Abbildung:',
     })
@@ -3560,11 +3552,11 @@ const farbfilter: Topic['generate'] = mixedVariants(
     }
     const color = pick(rng, ['rot', 'grün', 'blau'] as const)
     return dragDropSortTask({
-      question: 'Ordne den Weg des Lichts durch einen Farbfilter.',
+      question: `Ordne den Weg des Lichts durch den ${color}en Farbfilter (siehe Abbildung).`,
       items: shuffled,
       correctOrder: [0, 1, 2],
       solution: 'weißes Licht → Farbfilter → vor allem Filterfarbe',
-      explanation: 'Filter schwächen andere Farben; durchgelassen wird vor allem die Filterfarbe.',
+      explanation: `Der ${color}e Filter lässt vor allem ${color}es Licht durch.`,
       visualContent: farbfilterSvg({ filterColor: color, showAfter: true }),
     })
   },
@@ -3602,14 +3594,12 @@ const farbfilter: Topic['generate'] = mixedVariants(
       },
     ] as const
     const p = pick(rng, [...pools])
-    const color = pick(rng, ['rot', 'grün', 'blau'] as const)
     return multiSelectTask({
       question: p.question,
       choices: [...p.choices],
       correct: [...p.correct],
       solution: p.correct.join('; '),
       explanation: 'Farbfilter filtern Spektralanteile — sie ersetzen kein Prisma und keinen Spiegel.',
-      visualContent: farbfilterSvg({ filterColor: color, showAfter: true }),
       instruction: 'Tippe alle zutreffenden Aussagen:',
     })
   },
