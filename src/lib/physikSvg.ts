@@ -653,7 +653,6 @@ export function augeSehSvg(opts?: { showRays?: boolean }): string {
   const hitBase = rayHitAtX(objBase, lens, retinaX) // Fuß → oben auf Netzhaut
   const imgH = hitTip.y - hitBase.y
   const scale = imgH / 85
-  const canopyH = 55 * scale
   const trunkH = 30 * scale
   const halfCanopy = 20 * scale
   const trunkW = 10 * scale

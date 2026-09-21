@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.83] – 2026-09-21
+
+### Behoben
+- **CI:** unbenutzte Variable in `augeSehSvg` (Pages-Build); mehr Varianten bei
+  Lichtquellen für 10er-Runden (Installer-Tests). Physik-Pack **2.5.14**.
+
 ## [0.27.82] – 2026-09-21
 
 ### Geändert

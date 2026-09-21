@@ -2477,6 +2477,33 @@ const lichtquellen: Topic['generate'] = mixedVariants(
           'Schatten allein reicht zum Sehen',
         ],
       },
+      {
+        q: 'Welche Körper sind Lichtquellen?',
+        correct: 'Körper, die selbst Licht aussenden (z. B. Sonne, Lampe)',
+        wrong: [
+          'alle Körper, die man im Hellen sieht',
+          'nur der Mond und Spiegel',
+          'nur Körper ohne Wärme',
+        ],
+      },
+      {
+        q: 'Ein Spiegel im Sonnenlicht …',
+        correct: 'ist beleuchtet und reflektiert Licht (keine eigene Lichtquelle)',
+        wrong: [
+          'wird dadurch selbst zur Sonne',
+          'löscht das Licht der Sonne',
+          'braucht kein Licht zum Spiegeln',
+        ],
+      },
+      {
+        q: 'Woran erkennst du eine Lichtquelle?',
+        correct: 'sie sendet selbst Licht aus (auch im Dunkeln sichtbar, wenn sie leuchtet)',
+        wrong: [
+          'sie wirft immer einen Schatten auf sich selbst',
+          'sie ist immer kalt',
+          'man sieht sie nur durch undurchsichtige Wände',
+        ],
+      },
     ] as const
     const c = pick(rng, [...cases])
     return choicePickTask({
@@ -2516,6 +2543,17 @@ const lichtquellen: Topic['generate'] = mixedVariants(
           'Beleuchtete Körper reflektieren Licht',
           'Ohne Licht sieht man keine Gegenstände',
         ],
+      },
+      {
+        question: 'Was gehört zu beleuchteten Körpern? (mehrere möglich)',
+        choices: [
+          'Mond',
+          'Buch bei Tageslicht',
+          'Wand im Lampenschein',
+          'brennende Kerze',
+          'Sonne',
+        ],
+        correct: ['Mond', 'Buch bei Tageslicht', 'Wand im Lampenschein'],
       },
     ] as const
     const p = pick(rng, [...pools])
