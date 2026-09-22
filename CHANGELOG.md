@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.101] – 2026-09-22
+
+### Behoben
+- **K7 Wahlbereich (QA):** Körper liegt auf der schiefen Ebene; Flaschenzug-Aufgabenstellung
+  beschreibt Anheben + Zugkraft; Flug-Kräfte mit Pfeilspitzen und klareren Stems;
+  Kräfte-Zuordnung über eindeutige Slot-Plätze statt Sortieren. Physik-Pack **2.5.28**
+  (Wahlbereich weiterhin **nicht** freigegeben).
+- **Drag&Drop-Formel-Tests:** Checks nutzen die gemischten Pool-Indizes.
+
 ## [0.27.100] – 2026-09-22
 
 ### Geändert

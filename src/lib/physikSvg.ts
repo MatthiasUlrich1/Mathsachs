@@ -985,16 +985,23 @@ export function meterWiredCircuitSvg(opts: { meter: 'A' | 'V' }): string {
 }
 
 
-/** Schiefe Ebene / Rampe (Kraftwandler). */
+/** Schiefe Ebene / Rampe (Kraftwandler) — Körper liegt auf der Rampe. */
 export function inclinedPlaneSvg(): string {
+  // Rampe: (50,135)→(250,55), Steigung −0.4. Körper-Unterkante liegt auf der Schräge.
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160" role="img" aria-label="Schiefe Ebene">
   <rect width="320" height="160" fill="#f8fafc"/>
-  <path d="M40 130 H280" stroke="#64748b" stroke-width="2"/>
-  <path d="M60 130 L240 50 L240 130 Z" fill="#e2e8f0" stroke="#334155" stroke-width="2.5"/>
-  <rect x="150" y="78" width="36" height="28" transform="rotate(-28 168 92)" fill="#94a3b8" stroke="#334155" stroke-width="2"/>
-  <defs><marker id="msArrowIncline" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1d4ed8"/></marker></defs>
-  <path d="M175 95 L210 75" stroke="#1d4ed8" stroke-width="2.5" fill="none" marker-end="url(#msArrowIncline)"/>
-  <text x="160" y="150" text-anchor="middle" fill="#475569" font-size="12" font-family="system-ui,sans-serif">Rampe = schiefe Ebene</text>
+  <path d="M30 135 H290" stroke="#64748b" stroke-width="2"/>
+  <path d="M50 135 L250 55 L250 135 Z" fill="#e2e8f0" stroke="#334155" stroke-width="2.5"/>
+  <!-- Parallelogramm: Unterkante auf der Schräge, Höhe senkrecht zur Ebene -->
+  <path d="M110 111 L160 91 L152.6 72.4 L102.6 92.4 Z" fill="#94a3b8" stroke="#334155" stroke-width="2.5"/>
+  <defs>
+    <marker id="msArrowIncline" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#1d4ed8"/>
+    </marker>
+  </defs>
+  <path d="M135 92 L175 76" stroke="#1d4ed8" stroke-width="2.5" fill="none" marker-end="url(#msArrowIncline)"/>
+  <text x="188" y="74" fill="#1d4ed8" font-size="12" font-family="system-ui,sans-serif">Zug</text>
+  <text x="160" y="152" text-anchor="middle" fill="#475569" font-size="12" font-family="system-ui,sans-serif">Körper auf der Rampe (schiefe Ebene)</text>
 </svg>`
 }
 
@@ -1014,42 +1021,72 @@ export function leverBalanceSvg(opts: { f1: number; l1: number; f2Label: string;
 </svg>`
 }
 
-/** Vereinfachter Flaschenzug (n tragende Seilstücke). */
+/** Vereinfachter Flaschenzug (n tragende Seilstücke) mit Last und Zugpfeil. */
 export function pulleySvg(strands: number): string {
   const n = Math.max(2, Math.min(6, strands))
+  const left = 110
   const ropes = Array.from({ length: n }, (_, i) => {
-    const x = 120 + i * 14
-    return `<path d="M${x} 40 V100" stroke="#334155" stroke-width="2"/>`
+    const x = left + 8 + i * 16
+    return `<path d="M${x} 36 V88" stroke="#334155" stroke-width="2.5"/>`
   }).join('')
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 160" width="280" height="160" role="img" aria-label="Flaschenzug">
-  <rect width="280" height="160" fill="#f8fafc"/>
-  <rect x="100" y="28" width="${n * 14 + 20}" height="16" rx="4" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
-  <text x="140" y="22" fill="#475569" font-size="11" font-family="system-ui,sans-serif">feste Rollen</text>
+  const blockW = n * 16 + 8
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 170" width="300" height="170" role="img" aria-label="Flaschenzug">
+  <rect width="300" height="170" fill="#f8fafc"/>
+  <defs>
+    <marker id="msArrowPull" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#ca8a04"/>
+    </marker>
+    <marker id="msArrowDown" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <rect x="${left}" y="24" width="${blockW}" height="14" rx="3" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
+  <text x="${left + blockW / 2}" y="18" text-anchor="middle" fill="#475569" font-size="11" font-family="system-ui,sans-serif">feste Rollen</text>
   ${ropes}
-  <rect x="110" y="100" width="${n * 14}" height="14" rx="3" fill="#94a3b8" stroke="#334155" stroke-width="2"/>
-  <text x="140" y="132" text-anchor="middle" fill="#475569" font-size="12" font-family="system-ui,sans-serif">${n} tragende Seilstücke</text>
-  <path d="M${120 + (n - 1) * 14} 40 H230 V70" stroke="#334155" stroke-width="2" fill="none"/>
-  <circle cx="230" cy="78" r="10" fill="#fef3c7" stroke="#334155" stroke-width="2"/>
-  <text x="230" y="82" text-anchor="middle" fill="#92400e" font-size="10" font-family="system-ui,sans-serif">F</text>
+  <rect x="${left + 4}" y="88" width="${blockW - 8}" height="14" rx="3" fill="#94a3b8" stroke="#334155" stroke-width="2"/>
+  <path d="M${left + blockW / 2} 102 V128" stroke="#dc2626" stroke-width="2.5" marker-end="url(#msArrowDown)"/>
+  <text x="${left + blockW / 2}" y="148" text-anchor="middle" fill="#991b1b" font-size="12" font-family="system-ui,sans-serif">Gewicht F_G</text>
+  <path d="M${left + blockW - 8} 31 H250 V55" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <path d="M250 55 V85" stroke="#ca8a04" stroke-width="2.5" marker-end="url(#msArrowPull)"/>
+  <text x="268" y="78" fill="#854d0e" font-size="13" font-family="system-ui,sans-serif" font-weight="700">F</text>
+  <text x="150" y="165" text-anchor="middle" fill="#475569" font-size="11" font-family="system-ui,sans-serif">${n} tragende Seilstücke · Zugkraft F</text>
 </svg>`
 }
 
-/** Flugzeug mit vier Kraftpfeilen A–D. */
+/** Flugzeug mit vier Kraftpfeilen (mit Pfeilspitzen). */
 export function flightForcesSvg(): string {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 180" width="340" height="180" role="img" aria-label="Kräfte am Flugzeug">
-  <rect width="340" height="180" fill="#f8fafc"/>
-  <ellipse cx="170" cy="90" rx="70" ry="18" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
-  <path d="M100 90 H140" stroke="#334155" stroke-width="3"/>
-  <path d="M200 90 H250" stroke="#334155" stroke-width="3"/>
-  <path d="M170 90 V50" stroke="#16a34a" stroke-width="3"/>
-  <text x="178" y="48" fill="#166534" font-size="14" font-family="system-ui,sans-serif" font-weight="700">A</text>
-  <path d="M170 90 V130" stroke="#dc2626" stroke-width="3"/>
-  <text x="178" y="138" fill="#991b1b" font-size="14" font-family="system-ui,sans-serif" font-weight="700">B</text>
-  <path d="M250 90 H290" stroke="#2563eb" stroke-width="3"/>
-  <text x="298" y="94" fill="#1e40af" font-size="14" font-family="system-ui,sans-serif" font-weight="700">C</text>
-  <path d="M100 90 H60" stroke="#ca8a04" stroke-width="3"/>
-  <text x="48" y="94" fill="#854d0e" font-size="14" font-family="system-ui,sans-serif" font-weight="700">D</text>
-  <text x="170" y="168" text-anchor="middle" fill="#475569" font-size="11" font-family="system-ui,sans-serif">A ↑  B ↓  C →  D ←</text>
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 200" width="360" height="200" role="img" aria-label="Kräfte am Flugzeug">
+  <rect width="360" height="200" fill="#f8fafc"/>
+  <defs>
+    <marker id="msArrG" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#16a34a"/>
+    </marker>
+    <marker id="msArrR" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#dc2626"/>
+    </marker>
+    <marker id="msArrB" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#2563eb"/>
+    </marker>
+    <marker id="msArrO" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#ca8a04"/>
+    </marker>
+  </defs>
+  <!-- einfaches Flugzeug-Seitenprofil -->
+  <ellipse cx="180" cy="100" rx="55" ry="16" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
+  <path d="M125 100 L95 100 L105 92 Z" fill="#94a3b8" stroke="#334155" stroke-width="1.5"/>
+  <path d="M220 92 H255 L248 100 L255 108 H220" fill="#94a3b8" stroke="#334155" stroke-width="1.5"/>
+  <path d="M175 84 L185 84 L190 70 L170 70 Z" fill="#64748b" stroke="#334155" stroke-width="1.5"/>
+  <!-- Kraftpfeile: A↑ Auftrieb, B↓ Gewicht, C→ Schub, D← Widerstand -->
+  <path d="M180 84 V52" stroke="#16a34a" stroke-width="3.5" fill="none" marker-end="url(#msArrG)"/>
+  <text x="198" y="58" fill="#166534" font-size="15" font-family="system-ui,sans-serif" font-weight="700">A</text>
+  <path d="M180 116 V148" stroke="#dc2626" stroke-width="3.5" fill="none" marker-end="url(#msArrR)"/>
+  <text x="198" y="148" fill="#991b1b" font-size="15" font-family="system-ui,sans-serif" font-weight="700">B</text>
+  <path d="M235 100 H285" stroke="#2563eb" stroke-width="3.5" fill="none" marker-end="url(#msArrB)"/>
+  <text x="292" y="105" fill="#1e40af" font-size="15" font-family="system-ui,sans-serif" font-weight="700">C</text>
+  <path d="M125 100 H75" stroke="#ca8a04" stroke-width="3.5" fill="none" marker-end="url(#msArrO)"/>
+  <text x="58" y="105" fill="#854d0e" font-size="15" font-family="system-ui,sans-serif" font-weight="700">D</text>
+  <text x="180" y="178" text-anchor="middle" fill="#334155" font-size="12" font-family="system-ui,sans-serif">A nach oben · B nach unten · C nach vorne · D nach hinten</text>
+  <text x="180" y="194" text-anchor="middle" fill="#64748b" font-size="11" font-family="system-ui,sans-serif">gerader, gleichmäßiger Flug</text>
 </svg>`
 }
 

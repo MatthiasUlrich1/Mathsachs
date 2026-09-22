@@ -2023,7 +2023,7 @@ const kraftwandler: Topic['generate'] = mixedVariants(
         wrong: ['nur Thermometer', 'nur Amperemeter', 'nur Lineal ohne Hebelwirkung'],
       },
       {
-        q: 'Warum baut man Pyramidenrampen / schiefe Ebenen?',
+        q: 'Warum baut man bei den Pyramiden lange Rampen (schiefe Ebenen), statt die Steinblöcke steil hochzuheben?',
         correct: 'kleinere Kraft auf längerem Weg statt steil hochheben',
         wrong: [
           'weil der Weg kürzer wird',
@@ -2165,27 +2165,17 @@ const flasche: Topic['generate'] = mixedVariants(
   (rng) => {
     const strands = pick(rng, [2, 4, 3, 5])
     const fg = pick(rng, [200, 400, 600, 800])
-    if (fg % strands !== 0) {
-      const fg2 = 600
-      const n = 4
-      return valueTask({
-        question: `Idealer Flaschenzug: F_G = ${fg2} N, ${n} tragende Seilstücke. Wie groß ist die Zugkraft F?`,
-        answerKind: 'integer',
-        unit: 'N',
-        value: fg2 / n,
-        solution: `${fg2 / n} N`,
-        explanation: `F = F_G / n = ${fg2}/${n} = ${fg2 / n} N (ohne Reibung).`,
-        visualContent: pulleySvg(n),
-      })
-    }
+    const n = fg % strands !== 0 ? 4 : strands
+    const weight = fg % strands !== 0 ? 600 : fg
+    const f = weight / n
     return valueTask({
-      question: `Idealer Flaschenzug: F_G = ${fg} N, ${strands} tragende Seilstücke. Zugkraft F?`,
+      question: `Ein Gewicht von ${weight} N soll mit einem idealen Flaschenzug (ohne Reibung) angehoben werden. Der Flaschenzug hat ${n} tragende Seilstücke. Mit welcher Zugkraft F (in N) musst du am Seil ziehen?`,
       answerKind: 'integer',
       unit: 'N',
-      value: fg / strands,
-      solution: `${fg / strands} N`,
-      explanation: `F = F_G / n = ${fg}/${strands} = ${fg / strands} N.`,
-      visualContent: pulleySvg(strands),
+      value: f,
+      solution: `${f} N`,
+      explanation: `Die Last verteilt sich auf ${n} Seilstücke: F = F_G / n = ${weight}/${n} = ${f} N.`,
+      visualContent: pulleySvg(n),
     })
   },
   (rng) => {
@@ -2205,7 +2195,7 @@ const flasche: Topic['generate'] = mixedVariants(
         wrong: ['größere Zugkraft', 'keine Wirkung', 'kürzeren Seilweg bei gleicher Kraft'],
       },
       {
-        q: '600 N Last, 4 tragende Seile: ideale Zugkraft?',
+        q: 'Ein Gewicht von 600 N soll mit 4 tragenden Seilstücken angehoben werden. Ideale Zugkraft?',
         correct: '150 N',
         wrong: ['300 N', '600 N', '75 N'],
       },
@@ -2427,24 +2417,24 @@ const fliegen: Topic['generate'] = mixedVariants(
   (rng) => {
     const cases = [
       {
-        q: 'Welcher Pfeil im Bild ist der Auftrieb?',
-        correct: 'Pfeil A (nach oben)',
-        wrong: ['Pfeil B (nach unten)', 'Pfeil C (nach vorne)', 'Pfeil D (nach hinten)'],
+        q: 'Ein Flugzeug fliegt geradeaus und gleichmäßig. Die Skizze zeigt vier Kraftpfeile. Welche Kraft wirkt nach oben (Pfeil A)?',
+        correct: 'Auftrieb',
+        wrong: ['Gewichtskraft', 'Schubkraft (Vortrieb)', 'Luftwiderstand'],
       },
       {
-        q: 'Welcher Pfeil ist die Gewichtskraft?',
-        correct: 'Pfeil B (nach unten)',
-        wrong: ['Pfeil A (nach oben)', 'Pfeil C (nach vorne)', 'Pfeil D (nach hinten)'],
+        q: 'Ein Flugzeug fliegt geradeaus und gleichmäßig. Die Skizze zeigt vier Kraftpfeile. Welche Kraft wirkt nach unten (Pfeil B)?',
+        correct: 'Gewichtskraft',
+        wrong: ['Auftrieb', 'Schubkraft (Vortrieb)', 'Luftwiderstand'],
       },
       {
-        q: 'Welcher Pfeil ist die Schubkraft (Vortrieb)?',
-        correct: 'Pfeil C (nach vorne)',
-        wrong: ['Pfeil A (nach oben)', 'Pfeil B (nach unten)', 'Pfeil D (nach hinten)'],
+        q: 'Ein Flugzeug fliegt geradeaus und gleichmäßig. Die Skizze zeigt vier Kraftpfeile. Welche Kraft wirkt nach vorne (Pfeil C)?',
+        correct: 'Schubkraft (Vortrieb)',
+        wrong: ['Auftrieb', 'Gewichtskraft', 'Luftwiderstand'],
       },
       {
-        q: 'Welcher Pfeil ist der Luftwiderstand?',
-        correct: 'Pfeil D (nach hinten)',
-        wrong: ['Pfeil A (nach oben)', 'Pfeil B (nach unten)', 'Pfeil C (nach vorne)'],
+        q: 'Ein Flugzeug fliegt geradeaus und gleichmäßig. Die Skizze zeigt vier Kraftpfeile. Welche Kraft wirkt nach hinten (Pfeil D)?',
+        correct: 'Luftwiderstand',
+        wrong: ['Auftrieb', 'Gewichtskraft', 'Schubkraft (Vortrieb)'],
       },
     ] as const
     const c = pick(rng, [...cases])
@@ -2453,25 +2443,28 @@ const fliegen: Topic['generate'] = mixedVariants(
       choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
       correct: c.correct,
       solution: c.correct,
-      explanation: 'A Auftrieb ↑, B Gewicht ↓, C Schub →, D Widerstand ←.',
-      instruction: 'Tippe den passenden Pfeil:',
+      explanation:
+        'Im geraden Flug: A = Auftrieb (↑), B = Gewichtskraft (↓), C = Schub (→), D = Luftwiderstand (←).',
+      instruction: 'Tippe die passende Kraft:',
       visualContent: flightForcesSvg(),
     })
   },
-  (rng) =>
-    dragDropSortTask({
-      question: 'Ordne die Kräfte zu den Pfeilen: A (↑), B (↓), C (→), D (←).',
+  (_rng) =>
+    dragDropSlotsTask({
+      question:
+        'Ein Flugzeug fliegt geradeaus. Ordne den Pfeilen die Kräfte zu. Ziehe in dieser Reihenfolge in die Plätze: 1 = Pfeil A (nach oben), 2 = Pfeil B (nach unten), 3 = Pfeil C (nach vorne), 4 = Pfeil D (nach hinten). Einen Block brauchst du nicht.',
       items: [
         { label: 'Auftrieb', value: 0 },
         { label: 'Gewichtskraft', value: 1 },
         { label: 'Schubkraft', value: 2 },
         { label: 'Luftwiderstand', value: 3 },
+        { label: 'Magnetkraft', value: 4 },
       ],
-      correctOrder: [0, 1, 2, 3],
-      solution: 'A Auftrieb, B Gewicht, C Schub, D Widerstand',
-      explanation: 'Stabiler Vorwärtsflug: vier Kräfte im Gleichgewicht der Paare.',
+      correctSlots: [0, 1, 2, 3],
+      solution: 'A Auftrieb · B Gewicht · C Schub · D Widerstand',
+      explanation: 'Platz 1→A, 2→B, 3→C, 4→D wie in der Skizze.',
+      instruction: 'Platz 1 = A ↑, Platz 2 = B ↓, Platz 3 = C →, Platz 4 = D ←',
       visualContent: flightForcesSvg(),
-      rng,
     }),
   (_rng) =>
     multiSelectTask({

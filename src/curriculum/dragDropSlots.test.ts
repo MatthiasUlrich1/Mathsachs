@@ -1,8 +1,30 @@
 import { describe, expect, it } from 'vitest'
+import type { Task } from './types'
 import {
   dragDropSlotsTask,
   isCommutativeProductFormula,
 } from './taskHelpers'
+
+/** Pool indices after presentation shuffle (from sampleAnswer). */
+function presentedSlots(task: Task): number[] {
+  const sa = task.sampleAnswer
+  if (!sa || sa.kind !== 'dragDropSlots') {
+    throw new Error('expected dragDropSlots sampleAnswer')
+  }
+  return sa.slots
+}
+
+function presentedItems(task: Task): Array<{ label: string }> {
+  const props = task.interactive?.props as { items?: Array<{ label: string }> } | undefined
+  if (!props?.items) throw new Error('expected dragDropSlots items')
+  return props.items
+}
+
+function indexOfLabel(task: Task, label: string): number {
+  const idx = presentedItems(task).findIndex((i) => i.label === label)
+  if (idx < 0) throw new Error(`label not in pool: ${label}`)
+  return idx
+}
 
 describe('dragDropSlots commutativeFactors', () => {
   const volumeItems = [
@@ -27,11 +49,16 @@ describe('dragDropSlots commutativeFactors', () => {
       explanation: 'Produkt',
       checkMode: 'commutativeFactors',
     })
-    expect(task.check({ kind: 'dragDropSlots', slots: [0, 1, 2, 3] })).toBe(true)
+    const c = presentedSlots(task)
+    expect(task.check({ kind: 'dragDropSlots', slots: c })).toBe(true)
     // V = ×b, l, ×h
-    expect(task.check({ kind: 'dragDropSlots', slots: [0, 2, 1, 3] })).toBe(true)
+    expect(task.check({ kind: 'dragDropSlots', slots: [c[0]!, c[2]!, c[1]!, c[3]!] })).toBe(
+      true,
+    )
     // V = ×h, ×b, l
-    expect(task.check({ kind: 'dragDropSlots', slots: [0, 3, 2, 1] })).toBe(true)
+    expect(task.check({ kind: 'dragDropSlots', slots: [c[0]!, c[3]!, c[2]!, c[1]!] })).toBe(
+      true,
+    )
   })
 
   it('rejects distractor chips even in commutative mode', () => {
@@ -43,10 +70,12 @@ describe('dragDropSlots commutativeFactors', () => {
       explanation: 'Produkt',
       checkMode: 'commutativeFactors',
     })
+    const c = presentedSlots(task)
+    const m = indexOfLabel(task, '× m')
     // uses × m instead of × h
-    expect(task.check({ kind: 'dragDropSlots', slots: [0, 1, 2, 4] })).toBe(false)
+    expect(task.check({ kind: 'dragDropSlots', slots: [c[0]!, c[1]!, c[2]!, m] })).toBe(false)
     // wrong LHS
-    expect(task.check({ kind: 'dragDropSlots', slots: [4, 1, 2, 3] })).toBe(false)
+    expect(task.check({ kind: 'dragDropSlots', slots: [m, c[1]!, c[2]!, c[3]!] })).toBe(false)
   })
 
   it('auto-detects product formulas when checkMode is omitted', () => {
@@ -57,7 +86,10 @@ describe('dragDropSlots commutativeFactors', () => {
       solution: 'V = l × b × h',
       explanation: 'Produkt',
     })
-    expect(task.check({ kind: 'dragDropSlots', slots: [0, 3, 1, 2] })).toBe(true)
+    const c = presentedSlots(task)
+    expect(task.check({ kind: 'dragDropSlots', slots: [c[0]!, c[3]!, c[1]!, c[2]!] })).toBe(
+      true,
+    )
   })
 
   it('keeps F_G = m · g commutative and rejects / g distractor', () => {
@@ -77,8 +109,14 @@ describe('dragDropSlots commutativeFactors', () => {
       explanation: 'Produkt',
       checkMode: 'commutativeFactors',
     })
-    expect(task.check({ kind: 'dragDropSlots', slots: [0, 1, 3, 2] })).toBe(true)
-    expect(task.check({ kind: 'dragDropSlots', slots: [0, 1, 2, 4] })).toBe(false)
+    const c = presentedSlots(task)
+    expect(task.check({ kind: 'dragDropSlots', slots: [c[0]!, c[1]!, c[3]!, c[2]!] })).toBe(
+      true,
+    )
+    const slashG = indexOfLabel(task, '/ g')
+    expect(
+      task.check({ kind: 'dragDropSlots', slots: [c[0]!, c[1]!, c[2]!, slashG] }),
+    ).toBe(false)
   })
 
   it('does not treat ρ = m / V as commutative (swapped operands fail)', () => {
@@ -100,11 +138,16 @@ describe('dragDropSlots commutativeFactors', () => {
       solution: 'ρ = m / V',
       explanation: 'Quotient',
     })
-    expect(task.check({ kind: 'dragDropSlots', slots: [0, 1, 2, 3, 4] })).toBe(true)
+    const c = presentedSlots(task)
+    expect(task.check({ kind: 'dragDropSlots', slots: c })).toBe(true)
     // ρ = V / m  (inverts meaning)
-    expect(task.check({ kind: 'dragDropSlots', slots: [0, 1, 4, 3, 2] })).toBe(false)
+    expect(
+      task.check({ kind: 'dragDropSlots', slots: [c[0]!, c[1]!, c[4]!, c[3]!, c[2]!] }),
+    ).toBe(false)
     // ρ = m V /  (broken order)
-    expect(task.check({ kind: 'dragDropSlots', slots: [0, 1, 2, 4, 3] })).toBe(false)
+    expect(
+      task.check({ kind: 'dragDropSlots', slots: [c[0]!, c[1]!, c[2]!, c[4]!, c[3]!] }),
+    ).toBe(false)
   })
 
   it('does not treat unit conversion juxtaposition as a product', () => {
@@ -123,7 +166,10 @@ describe('dragDropSlots commutativeFactors', () => {
       solution: '1 kg = 1000 g',
       explanation: 'Umrechnung',
     })
-    expect(task.check({ kind: 'dragDropSlots', slots: [0, 1, 3, 2] })).toBe(false)
+    const c = presentedSlots(task)
+    expect(task.check({ kind: 'dragDropSlots', slots: [c[0]!, c[1]!, c[3]!, c[2]!] })).toBe(
+      false,
+    )
   })
 
   it('strict mode rejects factor permutations', () => {
@@ -135,8 +181,11 @@ describe('dragDropSlots commutativeFactors', () => {
       explanation: 'Produkt',
       checkMode: 'strict',
     })
-    expect(task.check({ kind: 'dragDropSlots', slots: [0, 1, 2, 3] })).toBe(true)
-    expect(task.check({ kind: 'dragDropSlots', slots: [0, 2, 1, 3] })).toBe(false)
+    const c = presentedSlots(task)
+    expect(task.check({ kind: 'dragDropSlots', slots: c })).toBe(true)
+    expect(task.check({ kind: 'dragDropSlots', slots: [c[0]!, c[2]!, c[1]!, c[3]!] })).toBe(
+      false,
+    )
   })
 
   it('treats identical labels as interchangeable in strict mode', () => {
@@ -162,14 +211,24 @@ describe('dragDropSlots commutativeFactors', () => {
       checkMode: 'strict',
       resultValue: 5,
     })
-    expect(task.check({ kind: 'dragDropSlots', slots: correct, result: '5' })).toBe(true)
+    const c = presentedSlots(task)
+    expect(task.check({ kind: 'dragDropSlots', slots: c, result: '5' })).toBe(true)
     // Swap the two (−4) chips and the two : chips — still correct by content
     expect(
-      task.check({ kind: 'dragDropSlots', slots: [5, 6, 2, 3, 4, 0, 1], result: '5' }),
+      task.check({
+        kind: 'dragDropSlots',
+        slots: [c[5]!, c[6]!, c[2]!, c[3]!, c[4]!, c[0]!, c[1]!],
+        result: '5',
+      }),
     ).toBe(true)
     // Wrong label in a slot still fails
+    const plus = indexOfLabel(task, '+')
     expect(
-      task.check({ kind: 'dragDropSlots', slots: [0, 7, 2, 3, 4, 5, 6], result: '5' }),
+      task.check({
+        kind: 'dragDropSlots',
+        slots: [c[0]!, plus, c[2]!, c[3]!, c[4]!, c[5]!, c[6]!],
+        result: '5',
+      }),
     ).toBe(false)
   })
 
@@ -188,9 +247,13 @@ describe('dragDropSlots commutativeFactors', () => {
       explanation: 'ungleichnamig',
       checkMode: 'anyOrder',
     })
-    expect(task.check({ kind: 'dragDropSlots', slots: [0, 1, 2] })).toBe(true)
-    expect(task.check({ kind: 'dragDropSlots', slots: [2, 1, 0] })).toBe(true)
-    expect(task.check({ kind: 'dragDropSlots', slots: [0, 1, 3] })).toBe(false)
+    const c = presentedSlots(task)
+    expect(task.check({ kind: 'dragDropSlots', slots: c })).toBe(true)
+    expect(task.check({ kind: 'dragDropSlots', slots: [c[2]!, c[1]!, c[0]!] })).toBe(true)
+    const distractor = indexOfLabel(task, '+ ↔ +')
+    expect(task.check({ kind: 'dragDropSlots', slots: [c[0]!, c[1]!, distractor] })).toBe(
+      false,
+    )
   })
 
   it('endsSwap keeps middle arrow fixed and swaps outer poles', () => {
@@ -208,9 +271,11 @@ describe('dragDropSlots commutativeFactors', () => {
       explanation: 'anziehen',
       checkMode: 'endsSwap',
     })
-    expect(task.check({ kind: 'dragDropSlots', slots: [0, 1, 2] })).toBe(true)
-    expect(task.check({ kind: 'dragDropSlots', slots: [2, 1, 0] })).toBe(true)
+    const c = presentedSlots(task)
+    expect(task.check({ kind: 'dragDropSlots', slots: c })).toBe(true)
+    expect(task.check({ kind: 'dragDropSlots', slots: [c[2]!, c[1]!, c[0]!] })).toBe(true)
     // wrong middle (Abstoßen)
-    expect(task.check({ kind: 'dragDropSlots', slots: [0, 3, 2] })).toBe(false)
+    const ab = indexOfLabel(task, '← →')
+    expect(task.check({ kind: 'dragDropSlots', slots: [c[0]!, ab, c[2]!] })).toBe(false)
   })
 })

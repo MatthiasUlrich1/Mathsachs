@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.27',
+    version: '2.5.28',
     changelog:
-      'K7 Wahlbereich: Freigabe zurückgenommen (Inhalte bleiben, erst nach Prüfung freigeben).',
+      'K7 Wahlbereich QA: Körper auf schiefer Ebene; Flaschenzug/Fliegen klarer formuliert; Flug-Pfeile; Kräfte-Zuordnung über Slots. Noch nicht freigegeben.',
     official,
     extras: [],
   }
