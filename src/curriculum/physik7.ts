@@ -780,7 +780,7 @@ const reihe: Topic['generate'] = mixedVariants(
   (_rng) =>
     dragDropSlotsTask({
       question:
-        'Baue eine Formel für den Gesamtwiderstand von in Reihe geschalteten Glühlampen! Einen Block brauchst du nicht.',
+        'Baue eine Formel für den Gesamtwiderstand von in Reihe geschalteten Widerständen! Einen Block brauchst du nicht.',
       items: [
         { label: 'R', value: 0 },
         { label: '=', value: 1 },
@@ -791,21 +791,21 @@ const reihe: Topic['generate'] = mixedVariants(
       ],
       correctSlots: [0, 1, 2, 3, 4],
       solution: 'R = R₁ + R₂',
-      explanation: 'In Reihe addieren sich die Widerstände der Lampen.',
-      visualContent: seriesParallelSvg('series'),
+      explanation: 'In Reihe addieren sich die Widerstände.',
+      visualContent: seriesParallelSvg('series', { load: 'resistor' }),
     }),
   (rng) => {
     const r1 = pick(rng, [2, 3, 4, 5, 6])
     const r2 = pick(rng, [2, 3, 4, 5, 6])
     const r = r1 + r2
     return valueTask({
-      question: `Zwei Glühlampen in Reihe: R₁ = ${r1} Ω, R₂ = ${r2} Ω. Berechne den Gesamtwiderstand.`,
+      question: `Zwei Widerstände in Reihe: R₁ = ${r1} Ω, R₂ = ${r2} Ω. Berechne den Gesamtwiderstand.`,
       answerKind: 'integer',
       unit: 'Ω',
       value: r,
       solution: `${r} Ω`,
       explanation: `R = R₁ + R₂ = ${r1} + ${r2} = ${r} Ω.`,
-      visualContent: seriesParallelSvg('series'),
+      visualContent: seriesParallelSvg('series', { load: 'resistor' }),
     })
   },
   (rng) => {
@@ -816,14 +816,14 @@ const reihe: Topic['generate'] = mixedVariants(
         wrong: ['an jedem Widerstand anders', 'immer null', 'nur an der Batterie messbar'],
       },
       {
-        q: 'Zwei gleiche Lampen in Reihe: eine fällt aus (Unterbrechung). Was passiert?',
-        correct: 'Beide Lampen gehen aus',
-        wrong: ['Nur die andere leuchtet weiter', 'Der Strom verdoppelt sich', 'Die Batterie wird zum Isolator'],
+        q: 'Zwei gleiche Widerstände in Reihe: einer fällt aus (Unterbrechung). Was passiert?',
+        correct: 'Der Stromkreis ist unterbrochen',
+        wrong: ['Nur der andere leitet weiter', 'Der Strom verdoppelt sich', 'Die Batterie wird zum Isolator'],
       },
       {
-        q: 'Woran erkennst du eine Reihenschaltung zweier Lampen?',
+        q: 'Woran erkennst du eine Reihenschaltung zweier Widerstände?',
         correct: 'Der Strom muss nacheinander durch beide',
-        wrong: ['Jede Lampe hat einen eigenen Zweig', 'Es gibt keinen gemeinsamen Weg', 'Lampen brauchen keine Drähte'],
+        wrong: ['Jeder Widerstand hat einen eigenen Zweig', 'Es gibt keinen gemeinsamen Weg', 'Widerstände brauchen keine Drähte'],
       },
     ] as const
     const c = pick(rng, [...cases])
@@ -840,12 +840,12 @@ const reihe: Topic['generate'] = mixedVariants(
     const correct = 'Reihenschaltung'
     return choicePickTask({
       question: 'Welche Schaltung zeigt die Skizze?',
-      choices: shuffleChoices(rng, [correct, 'Parallelschaltung', 'Kurzschluss ohne Lampen', 'kein Kreis'], correct),
+      choices: shuffleChoices(rng, [correct, 'Parallelschaltung', 'Kurzschluss ohne Widerstände', 'kein Kreis'], correct),
       correct,
       solution: correct,
-      explanation: 'Gemeinsamer Weg durch beide Glühlampen = Reihe.',
+      explanation: 'Gemeinsamer Weg durch beide Widerstände = Reihe.',
       instruction: 'Tippe die Schaltungsart:',
-      visualContent: seriesParallelSvg('series'),
+      visualContent: seriesParallelSvg('series', { load: 'resistor' }),
     })
   },
 )
@@ -855,7 +855,7 @@ const parallel: Topic['generate'] = mixedVariants(
   (_rng) =>
     dragDropSlotsTask({
       question:
-        'Baue eine Formel für den Gesamtwiderstand von parallel geschalteten Glühlampen! Einen Block brauchst du nicht.',
+        'Baue eine Formel für den Gesamtwiderstand von parallel geschalteten Widerständen! Einen Block brauchst du nicht.',
       items: [
         { label: '1/R', value: 0 },
         { label: '=', value: 1 },
@@ -866,8 +866,8 @@ const parallel: Topic['generate'] = mixedVariants(
       ],
       correctSlots: [0, 1, 2, 3, 4],
       solution: '1/R = 1/R₁ + 1/R₂',
-      explanation: 'Parallel: Kehrwerte der Lampenwiderstände addieren.',
-      visualContent: seriesParallelSvg('parallel'),
+      explanation: 'Parallel: Kehrwerte der Widerstände addieren.',
+      visualContent: seriesParallelSvg('parallel', { load: 'resistor' }),
     }),
   (rng) => {
     const pairs = [
@@ -878,13 +878,13 @@ const parallel: Topic['generate'] = mixedVariants(
     ] as const
     const [a, b, req] = pick(rng, [...pairs])
     return valueTask({
-      question: `Zwei Glühlampen parallel: R₁ = ${a} Ω, R₂ = ${b} Ω. Gesamtwiderstand?`,
+      question: `Zwei Widerstände parallel: R₁ = ${a} Ω, R₂ = ${b} Ω. Gesamtwiderstand?`,
       answerKind: 'integer',
       unit: 'Ω',
       value: req,
       solution: `${req} Ω`,
       explanation: `1/R = 1/${a} + 1/${b} → R = ${req} Ω.`,
-      visualContent: seriesParallelSvg('parallel'),
+      visualContent: seriesParallelSvg('parallel', { load: 'resistor' }),
     })
   },
   (rng) => {
@@ -895,17 +895,17 @@ const parallel: Topic['generate'] = mixedVariants(
         wrong: ['immer null', 'nur am ersten Zweig', 'immer völlig verschieden ohne Quelle'],
       },
       {
-        q: 'Zwei gleiche Lampen parallel: eine fällt aus. Was passiert typischerweise?',
-        correct: 'Die andere Lampe kann weiter leuchten',
-        wrong: ['Beide müssen ausgehen', 'Die Spannung wird immer null', 'Es gibt keinen Strom mehr'],
+        q: 'Zwei gleiche Widerstände parallel: einer fällt aus. Was passiert typischerweise?',
+        correct: 'Der andere Zweig kann weiter Strom führen',
+        wrong: ['Beide Zweige müssen ausfallen', 'Die Spannung wird immer null', 'Es gibt keinen Strom mehr'],
       },
       {
-        q: 'Woran erkennst du eine Parallelschaltung zweier Lampen?',
-        correct: 'Jede Lampe hat einen eigenen Zweig',
+        q: 'Woran erkennst du eine Parallelschaltung zweier Widerstände?',
+        correct: 'Jeder Widerstand hat einen eigenen Zweig',
         wrong: [
           'Der Strom muss nacheinander durch beide',
           'Es gibt nur einen Weg ohne Verzweigung',
-          'Lampen dürfen keine Drähte haben',
+          'Widerstände dürfen keine Drähte haben',
         ],
       },
     ] as const
@@ -923,12 +923,12 @@ const parallel: Topic['generate'] = mixedVariants(
     const correct = 'Parallelschaltung'
     return choicePickTask({
       question: 'Welche Schaltung zeigt die Skizze?',
-      choices: shuffleChoices(rng, [correct, 'Reihenschaltung', 'Kurzschluss ohne Lampen', 'kein Kreis'], correct),
+      choices: shuffleChoices(rng, [correct, 'Reihenschaltung', 'Kurzschluss ohne Widerstände', 'kein Kreis'], correct),
       correct,
       solution: correct,
-      explanation: 'Eigene Zweige für jede Glühlampe = Parallel.',
+      explanation: 'Eigene Zweige für jeden Widerstand = Parallel.',
       instruction: 'Tippe die Schaltungsart:',
-      visualContent: seriesParallelSvg('parallel'),
+      visualContent: seriesParallelSvg('parallel', { load: 'resistor' }),
     })
   },
 )

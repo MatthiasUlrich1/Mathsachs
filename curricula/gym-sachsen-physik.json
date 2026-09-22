@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "2.5.21",
-  "changelog": "K7 LB2: Bilder nur bei Mess-/Schaltungsbezug; offener Schalter bei „ohne geschlossen“; kein Formel-Spoiler in U-Rechnung; Reihe/Parallel mit Glühlampen und geschlossenem Schalter (keine Schein-Lücke); mehr U/I-Aufgaben.",
+  "version": "2.5.22",
+  "changelog": "K7 LB2 freigegeben (Spannung/Strom/Ohm + Stromstärke/Reihe/Parallel/Messen); Messgerät-Schaltbilder ohne Kabel-Lücke; Reihe/Parallel mit Widerstands-Rechtecken statt Glühlampen.",
   "official": [
     {
       "id": "physik-klasse-6",
@@ -597,7 +597,7 @@
               "title": "Stromstärke I",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Stromstärke",
@@ -609,7 +609,7 @@
               "title": "Spannung U",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Spannung",
@@ -621,7 +621,7 @@
               "title": "Stromstärke und Spannung in Stromkreisen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Stromstärke",
@@ -633,7 +633,7 @@
               "title": "Ohmsches Gesetz",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Ohm",
@@ -645,7 +645,7 @@
               "title": "Reihenschaltung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Reihe"
@@ -656,7 +656,7 @@
               "title": "Parallelschaltung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Parallel"
@@ -667,7 +667,7 @@
               "title": "Strom und Spannung messen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Amperemeter",
@@ -4008,5 +4008,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "d779405a"
+  "contentHash": "9758097b"
 }

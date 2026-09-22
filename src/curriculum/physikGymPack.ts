@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.21',
+    version: '2.5.22',
     changelog:
-      'K7 LB2: Bilder nur bei Mess-/Schaltungsbezug; offener Schalter bei „ohne geschlossen“; kein Formel-Spoiler in U-Rechnung; Reihe/Parallel mit Glühlampen und geschlossenem Schalter (keine Schein-Lücke); mehr U/I-Aufgaben.',
+      'K7 LB2 freigegeben (Spannung/Strom/Ohm + Stromstärke/Reihe/Parallel/Messen); Messgerät-Schaltbilder ohne Kabel-Lücke; Reihe/Parallel mit Widerstands-Rechtecken statt Glühlampen.',
     official,
     extras: [],
   }

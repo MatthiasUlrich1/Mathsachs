@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.94] – 2026-09-22
+
+### Geändert
+- **K7 LB2 freigegeben:** Spannung (9744), Stromstärke und Spannung (7273),
+  Ohmsches Gesetz (5904); zusätzlich Stromstärke, Reihe, Parallel, Messen.
+- **Messgerät-Schaltbilder (8414/1589):** A- und V-Kreise sitzen auf durchgehender
+  Leitung — keine Luftlücken mehr an Amperemeter/Voltmeter.
+- **Reihe/Parallel (1841/8981):** Widerstands-Rechtecke im Schaltbild (passend zum
+  Aufgabentext), nicht mehr Glühlampen. Physik-Pack **2.5.22**.
+
 ## [0.27.93] – 2026-09-22
 
 ### Geändert

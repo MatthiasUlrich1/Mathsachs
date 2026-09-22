@@ -662,7 +662,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           ] as const
           const [a, b, req] = pick(rng, [...pairs])
           return {
-            q: `Zwei Glühlampen parallel: R₁ = ${a} Ω, R₂ = ${b} Ω. Gesamtwiderstand?`,
+            q: `Zwei Widerstände parallel: R₁ = ${a} Ω, R₂ = ${b} Ω. Gesamtwiderstand?`,
             answerKind: 'integer',
             unit: 'Ω',
             value: req,
@@ -674,7 +674,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
         const r2 = pick(rng, [2, 3, 4, 5, 6])
         const r = r1 + r2
         return {
-          q: `Zwei Glühlampen in Reihe: R₁ = ${r1} Ω, R₂ = ${r2} Ω. Gesamtwiderstand?`,
+          q: `Zwei Widerstände in Reihe: R₁ = ${r1} Ω, R₂ = ${r2} Ω. Gesamtwiderstand?`,
           answerKind: 'integer',
           unit: 'Ω',
           value: r,
@@ -687,8 +687,8 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           ? ['1/R', '=', '1/R₁', '+', '1/R₂']
           : ['R', '=', 'R₁', '+', 'R₂'],
         parallel || /parallel/.test(lower)
-          ? 'den Gesamtwiderstand von parallel geschalteten Glühlampen'
-          : 'den Gesamtwiderstand von in Reihe geschalteten Glühlampen',
+          ? 'den Gesamtwiderstand von parallel geschalteten Widerständen'
+          : 'den Gesamtwiderstand von in Reihe geschalteten Widerständen',
         parallel || /parallel/.test(lower) ? '1/R = 1/R₁ + 1/R₂' : 'R = R₁ + R₂',
         '· U',
       ),

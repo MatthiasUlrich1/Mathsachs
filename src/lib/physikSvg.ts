@@ -451,45 +451,58 @@ function closedSwitch(x0: number, x1: number, y: number): string {
   <circle cx="${mid + 14}" cy="${y}" r="3.5" fill="#334155"/>`
 }
 
+/** Official-style Widerstand (Rechteck). */
+function resistorGlyph(cx: number, cy: number, halfW = 20, halfH = 10): string {
+  return `<rect x="${cx - halfW}" y="${cy - halfH}" width="${halfW * 2}" height="${halfH * 2}" fill="#f8fafc" stroke="#334155" stroke-width="2.5"/>`
+}
+
 /**
- * Reihe / Parallel as school Schaltbilder (IEC-like Glühlampen).
+ * Reihe / Parallel as school Schaltbilder.
+ * Default load = Glühlampe (K6); pass load:'resistor' when the task text says Widerstand.
  * Closed switch by default so the topology is readable (no faux „Kabelbruch“).
  */
 export function seriesParallelSvg(
   kind: 'series' | 'parallel',
-  opts?: { switchClosed?: boolean },
+  opts?: { switchClosed?: boolean; load?: 'lamp' | 'resistor' },
 ): string {
   const switchClosed = opts?.switchClosed !== false
+  const load = opts?.load ?? 'lamp'
   const sw = (x0: number, x1: number, y: number) =>
     switchClosed ? closedSwitch(x0, x1, y) : openSwitch(x0, x1, y)
+  const loadAt = (cx: number, cy: number) =>
+    load === 'resistor' ? resistorGlyph(cx, cy) : lampGlyph(cx, cy)
+  const halfW = load === 'resistor' ? 20 : 16
+  const halfH = load === 'resistor' ? 10 : 16
   if (kind === 'series') {
-    // One loop: battery left, switch top, two lamps in series on the top rail.
+    const c1 = 186
+    const c2 = 238
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160" role="img" aria-label="Reihenschaltung">
   <rect width="320" height="160" fill="#f8fafc"/>
   ${batteryOnRail(40, 80)}
   <path d="M40 52 V36 H90" stroke="#334155" stroke-width="2.5" fill="none"/>
   ${sw(90, 150, 36)}
-  <path d="M150 36 H170" stroke="#334155" stroke-width="2.5" fill="none"/>
-  ${lampGlyph(186, 36)}
-  <path d="M202 36 H218" stroke="#334155" stroke-width="2.5" fill="none"/>
-  ${lampGlyph(234, 36)}
-  <path d="M250 36 H280 V108 H40" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <path d="M150 36 H${c1 - halfW}" stroke="#334155" stroke-width="2.5" fill="none"/>
+  ${loadAt(c1, 36)}
+  <path d="M${c1 + halfW} 36 H${c2 - halfW}" stroke="#334155" stroke-width="2.5" fill="none"/>
+  ${loadAt(c2, 36)}
+  <path d="M${c2 + halfW} 36 H280 V108 H40" stroke="#334155" stroke-width="2.5" fill="none"/>
 </svg>`
   }
-  // Parallel: after the switch, two vertical branches each with one lamp (own Zweig).
+  // Parallel: after the switch, two vertical branches each with one load.
+  const cy = 82
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Parallelschaltung">
   <rect width="320" height="180" fill="#f8fafc"/>
   ${batteryOnRail(40, 90)}
   <path d="M40 62 V40 H90" stroke="#334155" stroke-width="2.5" fill="none"/>
   ${sw(90, 150, 40)}
   <path d="M150 40 H200" stroke="#334155" stroke-width="2.5" fill="none"/>
-  <path d="M200 40 V64" stroke="#334155" stroke-width="2.5" fill="none"/>
-  ${lampGlyph(200, 82)}
-  <path d="M200 98 V140" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <path d="M200 40 V${cy - halfH}" stroke="#334155" stroke-width="2.5" fill="none"/>
+  ${loadAt(200, cy)}
+  <path d="M200 ${cy + halfH} V140" stroke="#334155" stroke-width="2.5" fill="none"/>
   <path d="M200 40 H250" stroke="#334155" stroke-width="2.5" fill="none"/>
-  <path d="M250 40 V64" stroke="#334155" stroke-width="2.5" fill="none"/>
-  ${lampGlyph(250, 82)}
-  <path d="M250 98 V140" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <path d="M250 40 V${cy - halfH}" stroke="#334155" stroke-width="2.5" fill="none"/>
+  ${loadAt(250, cy)}
+  <path d="M250 ${cy + halfH} V140" stroke="#334155" stroke-width="2.5" fill="none"/>
   <path d="M200 140 H250" stroke="#334155" stroke-width="2.5" fill="none"/>
   <path d="M225 140 H280 V140 H40 V118" stroke="#334155" stroke-width="2.5" fill="none"/>
 </svg>`
@@ -914,27 +927,27 @@ export function meterGapCircuitSvg(opts: {
 /** Einfacher Stromkreis mit eingebautem Amperemeter (Reihe) oder Voltmeter (parallel). */
 export function meterWiredCircuitSvg(opts: { meter: 'A' | 'V' }): string {
   if (opts.meter === 'A') {
+    // Wire runs continuously through the meter; circle is drawn on top (no air gap).
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 160" width="340" height="160" role="img" aria-label="Amperemeter in Reihe">
   <rect width="340" height="160" fill="#f8fafc"/>
   ${batteryOnRail(40, 80)}
-  <path d="M40 52 V36 H100" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <path d="M40 52 V36 H210" stroke="#334155" stroke-width="2.5" fill="none"/>
   <circle cx="130" cy="36" r="18" fill="#ecfdf5" stroke="#334155" stroke-width="2.5"/>
   <text x="130" y="42" text-anchor="middle" fill="#065f46" font-size="16" font-family="system-ui,sans-serif" font-weight="700">A</text>
-  <path d="M148 36 H210" stroke="#334155" stroke-width="2.5" fill="none"/>
   ${lampGlyph(226, 36)}
   <path d="M242 36 H300 V124 H40 V108" stroke="#334155" stroke-width="2.5" fill="none"/>
 </svg>`
   }
+  // Parallel V: continuous vertical lead through the meter circle.
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 180" width="340" height="180" role="img" aria-label="Voltmeter parallel">
   <rect width="340" height="180" fill="#f8fafc"/>
   ${batteryOnRail(40, 90)}
   <path d="M40 62 V40 H200" stroke="#334155" stroke-width="2.5" fill="none"/>
   ${lampGlyph(216, 40)}
   <path d="M232 40 H300 V140 H40 V118" stroke="#334155" stroke-width="2.5" fill="none"/>
-  <path d="M180 40 V62" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <path d="M180 40 V140" stroke="#334155" stroke-width="2.5" fill="none"/>
   <circle cx="180" cy="88" r="18" fill="#f5f3ff" stroke="#334155" stroke-width="2.5"/>
   <text x="180" y="94" text-anchor="middle" fill="#5b21b6" font-size="16" font-family="system-ui,sans-serif" font-weight="700">V</text>
-  <path d="M180 106 V140" stroke="#334155" stroke-width="2.5" fill="none"/>
 </svg>`
 }
 

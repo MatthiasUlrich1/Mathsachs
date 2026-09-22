@@ -232,13 +232,19 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
           }),
         ]),
         area('lb2', 'Stromstärke und Spannung in Stromkreisen', 18, [
-          topic('ph-k7-lb2-stromstaerke', 'Stromstärke I', ['Stromstärke', 'Ampere']),
-          topic('ph-k7-lb2-spannung', 'Spannung U', ['Spannung', 'Volt']),
-          topic('ph-k7-lb2-strom', 'Stromstärke und Spannung in Stromkreisen', ['Stromstärke', 'Spannung']),
-          topic('ph-k7-lb2-ohm', 'Ohmsches Gesetz', ['Ohm', 'Widerstand']),
-          topic('ph-k7-lb2-reihe', 'Reihenschaltung', ['Reihe']),
-          topic('ph-k7-lb2-parallel', 'Parallelschaltung', ['Parallel']),
-          topic('ph-k7-lb2-messen', 'Strom und Spannung messen', ['Amperemeter', 'Voltmeter']),
+          topic('ph-k7-lb2-stromstaerke', 'Stromstärke I', ['Stromstärke', 'Ampere'], {
+            released: true,
+          }),
+          topic('ph-k7-lb2-spannung', 'Spannung U', ['Spannung', 'Volt'], { released: true }),
+          topic('ph-k7-lb2-strom', 'Stromstärke und Spannung in Stromkreisen', ['Stromstärke', 'Spannung'], {
+            released: true,
+          }),
+          topic('ph-k7-lb2-ohm', 'Ohmsches Gesetz', ['Ohm', 'Widerstand'], { released: true }),
+          topic('ph-k7-lb2-reihe', 'Reihenschaltung', ['Reihe'], { released: true }),
+          topic('ph-k7-lb2-parallel', 'Parallelschaltung', ['Parallel'], { released: true }),
+          topic('ph-k7-lb2-messen', 'Strom und Spannung messen', ['Amperemeter', 'Voltmeter'], {
+            released: true,
+          }),
         ]),
         area('lb3', 'Energiewandler', 10, [
           topic('ph-k7-lb3-energieformen', 'Energieformen', ['Energie']),
