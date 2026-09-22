@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-22T20:05:21.452Z",
+  "updatedAt": "2026-09-22T20:07:08.290Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -18,10 +18,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "2.5.26",
+      "version": "2.5.27",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 134743,
-      "changelog": "K7 Wahlbereich freigegeben: Kraftwandler/Hebel/Flaschenzug/Schaltungen/Klingel/Fliegen/Auftrieb mit getrennten Generatoren und Lehr-Skizzen."
+      "size": 134699,
+      "changelog": "K7 Wahlbereich: Freigabe zurückgenommen (Inhalte bleiben, erst nach Prüfung freigeben)."
     },
     {
       "id": "gym-sachsen-anhalt",

@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.26',
+    version: '2.5.27',
     changelog:
-      'K7 Wahlbereich freigegeben: Kraftwandler/Hebel/Flaschenzug/Schaltungen/Klingel/Fliegen/Auftrieb mit getrennten Generatoren und Lehr-Skizzen.',
+      'K7 Wahlbereich: Freigabe zurückgenommen (Inhalte bleiben, erst nach Prüfung freigeben).',
     official,
     extras: [],
   }
