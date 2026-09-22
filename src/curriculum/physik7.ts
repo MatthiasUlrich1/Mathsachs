@@ -1417,6 +1417,7 @@ const umwandlung: Topic['generate'] = mixedVariants(
       correctOrder: [...c.order],
       solution: c.solution,
       explanation: c.explanation,
+      rng,
     })
   },
   (rng) => {

@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.98] – 2026-09-22
+
+### Behoben
+- **Sortier- und Formelaufgaben (alle Lehrpläne):** Drag&Drop-Blöcke (Sortieren
+  und Formel-Chips) werden beim Erzeugen gemischt — die Startreihenfolge ist
+  nicht mehr die Lösung (bzw. die Formel als Pool-Präfix).
+
 ## [0.27.97] – 2026-09-22
 
 ### Geändert

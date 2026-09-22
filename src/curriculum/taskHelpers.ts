@@ -6,6 +6,7 @@ import {
 } from '../lib/fraction'
 import type { AnswerKind, Task, UserInput } from './types'
 import type { Rng } from '../lib/rng'
+import { createRng } from '../lib/rng'
 import {
   emptyCoordinateScene,
   scenesMatch,
@@ -171,35 +172,105 @@ interface DragDropSortTaskInput {
   solution: string
   explanation: string
   visualContent?: string
+  /**
+   * Optional RNG for the initial display shuffle. When omitted, a seed is
+   * derived from question + items so the result is deterministic but not the
+   * solved order.
+   */
+  rng?: Rng
 }
 
-/** Build a drag-drop sorting task. */
-export const dragDropSortTask = (input: DragDropSortTaskInput): Task => ({
-  question: input.question,
-  answerKind: 'text', // Fallback for non-interactive mode
-  solution: input.solution,
-  explanation: input.explanation,
-  visualContent: input.visualContent,
-  sampleAnswer: { kind: 'dragDropSort', order: input.correctOrder },
-  interactive: {
-    type: 'dragDropSort',
-    props: {
-      items: input.items,
+/** Stable 32-bit seed from a string (FNV-1a). */
+export function hashStringSeed(s: string): number {
+  let h = 2166136261
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i)
+    h = Math.imul(h, 16777619)
+  }
+  return h >>> 0
+}
+
+/**
+ * Shuffle sort items so the initial display is not already the solution.
+ * Remaps `correctOrder` to the new item indices.
+ */
+export function presentSortItemsShuffled(
+  items: Array<{ label: string; value: number }>,
+  correctOrder: number[],
+  rng: Rng,
+): { items: Array<{ label: string; value: number }>; correctOrder: number[] } {
+  const n = items.length
+  if (n <= 1) return { items: [...items], correctOrder: [...correctOrder] }
+
+  const perm = Array.from({ length: n }, (_, i) => i)
+  const isSolvedOrder = () =>
+    correctOrder.length === n && correctOrder.every((itemIdx, pos) => perm[pos] === itemIdx)
+
+  const fisherYates = () => {
+    for (let i = n - 1; i > 0; i--) {
+      const j = Math.floor(rng() * (i + 1))
+      ;[perm[i], perm[j]] = [perm[j]!, perm[i]!]
+    }
+  }
+
+  for (let attempt = 0; attempt < 32; attempt++) {
+    fisherYates()
+    if (!isSolvedOrder()) break
+  }
+  if (isSolvedOrder()) {
+    ;[perm[0], perm[1]] = [perm[1]!, perm[0]!]
+    if (isSolvedOrder() && n > 2) {
+      const last = perm.pop()!
+      perm.unshift(last)
+    }
+  }
+
+  const newItems = perm.map((i) => items[i]!)
+  const oldToNew = new Map(perm.map((oldIdx, newIdx) => [oldIdx, newIdx] as const))
+  const newCorrectOrder = correctOrder.map((oldIdx) => oldToNew.get(oldIdx)!)
+  return { items: newItems, correctOrder: newCorrectOrder }
+}
+
+/** Build a drag-drop sorting task (items are shuffled so they are not already sorted). */
+export const dragDropSortTask = (input: DragDropSortTaskInput): Task => {
+  const rng =
+    input.rng ??
+    createRng(
+      hashStringSeed(
+        `${input.question}\0${input.items.map((i) => `${i.value}:${i.label}`).join('\0')}\0${input.correctOrder.join(',')}`,
+      ) ^ 0x50a7,
+    )
+  const presented = presentSortItemsShuffled(input.items, input.correctOrder, rng)
+  return {
+    question: input.question,
+    answerKind: 'text', // Fallback for non-interactive mode
+    solution: input.solution,
+    explanation: input.explanation,
+    visualContent: input.visualContent,
+    sampleAnswer: { kind: 'dragDropSort', order: presented.correctOrder },
+    interactive: {
+      type: 'dragDropSort',
+      props: {
+        items: presented.items,
+      },
     },
-  },
-  check: (answer: UserInput) => {
-    if (answer.kind === 'dragDropSort') {
-      if (answer.order.length !== input.correctOrder.length) return false
-      return answer.order.every((idx, i) => idx === input.correctOrder[i])
-    }
-    // Fallback: accept text answer (e.g., "1,5 m")
-    if (answer.kind === 'value') {
-      const expected = input.items[input.correctOrder[0]].label
-      return answer.value.trim().toLowerCase() === expected.trim().toLowerCase()
-    }
-    return false
-  },
-})
+    check: (answer: UserInput) => {
+      if (answer.kind === 'dragDropSort') {
+        if (answer.order.length !== presented.correctOrder.length) return false
+        return answer.order.every((idx, i) => idx === presented.correctOrder[i])
+      }
+      // Fallback: accept text answer (e.g., "1,5 m")
+      if (answer.kind === 'value') {
+        const expected = presented.items[presented.correctOrder[0]!]?.label
+        return (
+          expected !== undefined &&
+          answer.value.trim().toLowerCase() === expected.trim().toLowerCase()
+        )
+      }
+      return false
+    },
+  }
+}
 
 /** How formula slot answers are compared. */
 export type DragDropSlotsCheckMode = 'strict' | 'commutativeFactors' | 'anyOrder' | 'endsSwap'
@@ -231,6 +302,51 @@ interface DragDropSlotsTaskInput {
   /** Require typed numeric result (e.g. final x). */
   resultValue?: number
   resultLabel?: string
+  /** Optional RNG for pool shuffle (otherwise seeded from question + chips). */
+  rng?: Rng
+}
+
+/**
+ * Shuffle formula-pool chips so the left-to-right order is not already the solution
+ * (with distractors merely tacked on at the end). Remaps `correctSlots`.
+ */
+export function presentSlotItemsShuffled(
+  items: Array<{ label: string; value: number }>,
+  correctSlots: number[],
+  rng: Rng,
+): { items: Array<{ label: string; value: number }>; correctSlots: number[] } {
+  const n = items.length
+  if (n <= 1) return { items: [...items], correctSlots: [...correctSlots] }
+
+  const perm = Array.from({ length: n }, (_, i) => i)
+  /** Pool prefix mirrors the formula left→right (classic spoiler). */
+  const isSpoilerPrefix = () =>
+    correctSlots.length > 0 &&
+    correctSlots.every((itemIdx, pos) => pos < n && perm[pos] === itemIdx)
+
+  const fisherYates = () => {
+    for (let i = n - 1; i > 0; i--) {
+      const j = Math.floor(rng() * (i + 1))
+      ;[perm[i], perm[j]] = [perm[j]!, perm[i]!]
+    }
+  }
+
+  for (let attempt = 0; attempt < 32; attempt++) {
+    fisherYates()
+    if (!isSpoilerPrefix()) break
+  }
+  if (isSpoilerPrefix()) {
+    ;[perm[0], perm[n - 1]] = [perm[n - 1]!, perm[0]!]
+    if (isSpoilerPrefix() && n > 2) {
+      const last = perm.pop()!
+      perm.unshift(last)
+    }
+  }
+
+  const newItems = perm.map((i) => items[i]!)
+  const oldToNew = new Map(perm.map((oldIdx, newIdx) => [oldIdx, newIdx] as const))
+  const newCorrectSlots = correctSlots.map((oldIdx) => oldToNew.get(oldIdx)!)
+  return { items: newItems, correctSlots: newCorrectSlots }
 }
 
 const MULT_OP = /^[×·*]$/
@@ -375,9 +491,21 @@ function resolveSlotsCheckMode(
     : 'strict'
 }
 
-/** Formula builder: drag chips into slots; extra blocks stay unused. */
+/** Formula builder: drag chips into slots; extra blocks stay unused. Pool is shuffled. */
 export const dragDropSlotsTask = (input: DragDropSlotsTaskInput): Task => {
-  const checkMode = resolveSlotsCheckMode(input)
+  const rng =
+    input.rng ??
+    createRng(
+      hashStringSeed(
+        `${input.question}\0${input.items.map((i) => `${i.value}:${i.label}`).join('\0')}\0${input.correctSlots.join(',')}`,
+      ) ^ 0x5107,
+    )
+  const presented = presentSlotItemsShuffled(input.items, input.correctSlots, rng)
+  const checkMode = resolveSlotsCheckMode({
+    ...input,
+    items: presented.items,
+    correctSlots: presented.correctSlots,
+  })
   const askResult = input.resultValue !== undefined
   return {
     question: input.question,
@@ -387,14 +515,14 @@ export const dragDropSlotsTask = (input: DragDropSlotsTaskInput): Task => {
     visualContent: input.visualContent,
     sampleAnswer: {
       kind: 'dragDropSlots',
-      slots: input.correctSlots,
+      slots: presented.correctSlots,
       ...(askResult ? { result: String(input.resultValue) } : {}),
     },
     interactive: {
       type: 'dragDropSlots',
       props: {
-        items: input.items,
-        slotCount: input.correctSlots.length,
+        items: presented.items,
+        slotCount: presented.correctSlots.length,
         instruction:
           input.instruction ??
           'Ziehe die richtigen Blöcke in die Formelplätze (einen brauchst du ggf. nicht):',
@@ -412,8 +540,8 @@ export const dragDropSlotsTask = (input: DragDropSlotsTaskInput): Task => {
       if (answer.kind === 'dragDropSlots') {
         const slotsOk = checkDragDropSlotsAnswer(
           answer.slots,
-          input.correctSlots,
-          input.items,
+          presented.correctSlots,
+          presented.items,
           checkMode,
         )
         if (!slotsOk) return false
