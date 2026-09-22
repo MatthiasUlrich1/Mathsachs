@@ -245,6 +245,8 @@ describe('Oberschule Sachsen Lehrplan packs', () => {
       'gym-sachsen',
       'gym-sachsen-physik',
       'gym-sachsen-anhalt',
+      'sekundarschule-sachsen-anhalt-hs',
+      'sekundarschule-sachsen-anhalt-rs',
       OS_HS_PACK_ID,
       OS_RS_PACK_ID,
     ])

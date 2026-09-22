@@ -12,6 +12,8 @@ import {
   GYM_SACHSEN_PACK_ID,
   GYM_SACHSEN_PHYSIK_PACK_ID,
   GYM_SACHSEN_ANHALT_PACK_ID,
+  SKS_SACHSEN_ANHALT_HS_PACK_ID,
+  SKS_SACHSEN_ANHALT_RS_PACK_ID,
   OS_HS_PACK_ID,
   OS_RS_PACK_ID,
 } from './pack'
@@ -23,6 +25,8 @@ export {
   GYM_SACHSEN_PACK_ID,
   GYM_SACHSEN_PHYSIK_PACK_ID,
   GYM_SACHSEN_ANHALT_PACK_ID,
+  SKS_SACHSEN_ANHALT_HS_PACK_ID,
+  SKS_SACHSEN_ANHALT_RS_PACK_ID,
   OS_HS_PACK_ID,
   OS_RS_PACK_ID,
 }
@@ -132,6 +136,8 @@ export function hasAnyInstalledPack(kv: CurriculumKv = defaultCurriculumKv()): b
     isPackInstalled(GYM_SACHSEN_PACK_ID, kv) ||
     isPackInstalled(GYM_SACHSEN_PHYSIK_PACK_ID, kv) ||
     isPackInstalled(GYM_SACHSEN_ANHALT_PACK_ID, kv) ||
+    isPackInstalled(SKS_SACHSEN_ANHALT_HS_PACK_ID, kv) ||
+    isPackInstalled(SKS_SACHSEN_ANHALT_RS_PACK_ID, kv) ||
     isPackInstalled(OS_HS_PACK_ID, kv) ||
     isPackInstalled(OS_RS_PACK_ID, kv)
   )

@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.92] – 2026-09-22
+
+### Geändert
+- **Lehrplan Sekundarschule Sachsen-Anhalt · Mathematik (1.0.0):** zwei Packs
+  Hauptschulabschluss (5–9) und Realschulabschluss (5–10); Kompetenzschwerpunkte
+  mit Alias auf Sachsen-Gym-Aufgaben; Lücken als Outline.
+
 ## [0.27.91] – 2026-09-22
 
 ### Geändert

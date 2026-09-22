@@ -1,0 +1,874 @@
+{
+  "id": "sekundarschule-sachsen-anhalt-hs",
+  "title": "Sekundarschule Sachsen-Anhalt · Mathematik · Hauptschulabschluss",
+  "region": "Sachsen-Anhalt",
+  "school": "Sekundarschule",
+  "subject": "Mathematik",
+  "version": "1.0.0",
+  "changelog": "Erstfassung Klassen 5–9 (hauptschulabschlussbezogen). Kompetenzschwerpunkte; Aufgaben aus dem Sachsen-Gym-Katalog. Fachlehrplan Sekundarschule Mathematik Sachsen-Anhalt, Stand 01.08.2019 (bildung-lsa.de).",
+  "contentHash": "72aff0f1",
+  "official": [
+    {
+      "id": "sks-hs-klasse-5",
+      "title": "Klasse 5 · Hauptschulabschluss",
+      "subjectTitle": "Mathematik",
+      "gradeTitle": "Klasse 5 · Hauptschulabschluss",
+      "description": "Natürliche Zahlen, Gleichungen, Brüche und Dezimalbrüche, Größen, geometrische Grundbegriffe sowie Umfang, Flächeninhalt und Volumen (ST Schuljahrgänge 5/6).",
+      "searchHints": [
+        "natürliche Zahlen",
+        "Brüche",
+        "Dezimalzahlen",
+        "Winkel",
+        "Rechteck",
+        "Quader",
+        "Umfang",
+        "Fläche",
+        "Volumen",
+        "Koordinaten",
+        "Symmetrie"
+      ],
+      "areas": [
+        {
+          "id": "zg-nat",
+          "title": "Natürliche Zahlen",
+          "topics": [
+            {
+              "id": "sks-k5-nat-runden",
+              "title": "Natürliche Zahlen runden",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-nat-add",
+              "title": "Addieren natürlicher Zahlen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-nat-sub",
+              "title": "Subtrahieren natürlicher Zahlen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-nat-mul",
+              "title": "Multiplizieren natürlicher Zahlen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-nat-schriftlich",
+              "title": "Schriftliche Rechenverfahren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-nat-div-rest",
+              "title": "Division mit Rest",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-nat-div",
+              "title": "Schriftliche Division",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-nat-potenz",
+              "title": "Potenzen (Quadrat- und Zehnerpotenzen)",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-nat-teilbarkeit",
+              "title": "Teilbarkeit prüfen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-nat-prim",
+              "title": "Primzahlen erkennen",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "zg-gleichung",
+          "title": "Gleichungen",
+          "topics": [
+            {
+              "id": "sks-k5-gleichung-add",
+              "title": "Gleichung umstellen: x + a = b",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-gleichung-mul",
+              "title": "Gleichung umstellen: a · x = b",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "zg-bruch",
+          "title": "Brüche und Dezimalbrüche",
+          "topics": [
+            {
+              "id": "sks-k5-bruch-anteil",
+              "title": "Anteil als Bruch",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-bruch-kuerzen",
+              "title": "Brüche kürzen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-bruch-erweitern",
+              "title": "Brüche erweitern",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-bruch-grafik",
+              "title": "Brüche grafisch ablesen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-dez-add",
+              "title": "Dezimalzahlen addieren und subtrahieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-dez-mul",
+              "title": "Dezimalzahlen multiplizieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-dez-div",
+              "title": "Dezimalzahlen dividieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-dez-runden",
+              "title": "Dezimalzahlen runden",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-dez-zahlenstrahl",
+              "title": "Dezimalzahlen auf dem Zahlenstrahl",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "zg-groessen",
+          "title": "Größen",
+          "topics": [
+            {
+              "id": "sks-k5-groessen-ordnen",
+              "title": "Größen mit verschiedenen Einheiten ordnen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-umr-laenge",
+              "title": "Einheiten umrechnen: Länge",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-umr-masse",
+              "title": "Einheiten umrechnen: Masse",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-umr-zeit",
+              "title": "Einheiten umrechnen: Zeit",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-umr-flaeche",
+              "title": "Einheiten umrechnen: Flächeninhalt",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-umr-volumen",
+              "title": "Einheiten umrechnen: Volumen",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "rf-grund",
+          "title": "Geometrische Grundbegriffe und Symmetrie",
+          "topics": [
+            {
+              "id": "sks-k5-geo-strecken",
+              "title": "Strecke, Gerade und Halbgerade",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-geo-laenge",
+              "title": "Länge von Strecken",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-geo-mittelpunkt",
+              "title": "Mittelpunkt einer Strecke",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-geo-koord-ablesen",
+              "title": "Koordinaten ablesen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-geo-koord-eintragen",
+              "title": "Punkte im Koordinatensystem zuordnen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-geo-abstand",
+              "title": "Abstand zwischen Punkten",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-geo-winkelarten",
+              "title": "Winkelarten erkennen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-geo-winkel-erg",
+              "title": "Winkel zu 90° oder 180° ergänzen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-geo-verschiebung",
+              "title": "Verschiebung von Figuren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-geo-achse",
+              "title": "Achsensymmetrie erkennen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-geo-punkt",
+              "title": "Punktsymmetrie / Punktspiegelung",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "rf-umfang",
+          "title": "Umfang, Flächeninhalt und Volumen",
+          "topics": [
+            {
+              "id": "sks-k5-umfang-rechteck",
+              "title": "Umfang von Rechteck und Quadrat",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-flaeche-rechteck",
+              "title": "Flächeninhalt von Rechteck und Quadrat",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-volumen-quader",
+              "title": "Volumen von Quader und Würfel",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k5-oberflaeche-quader",
+              "title": "Oberflächeninhalt von Quadern",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "dz-mittel",
+          "title": "Arithmetisches Mittel",
+          "topics": [
+            {
+              "id": "sks-k5-mittelwert",
+              "title": "Arithmetisches Mittel",
+              "pointsPerTask": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sks-hs-klasse-6",
+      "title": "Klasse 6 · Hauptschulabschluss",
+      "subjectTitle": "Mathematik",
+      "gradeTitle": "Klasse 6 · Hauptschulabschluss",
+      "description": "Gebrochene Zahlen, Winkelbeziehungen, Dreiecke, Proportionalität sowie Daten (ST Schuljahrgänge 5/6).",
+      "searchHints": [
+        "Brüche",
+        "Dezimalzahlen",
+        "Proportionalität",
+        "Dreisatz",
+        "Dreieck",
+        "Winkel",
+        "Prozent",
+        "Häufigkeit"
+      ],
+      "areas": [
+        {
+          "id": "zg-gebrochen",
+          "title": "Gebrochene Zahlen",
+          "topics": [
+            {
+              "id": "sks-k6-bruch-kuerzen",
+              "title": "Brüche kürzen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k6-bruch-erweitern",
+              "title": "Brüche erweitern",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k6-bruch-vergleichen",
+              "title": "Brüche vergleichen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k6-bruch-add",
+              "title": "Brüche addieren und subtrahieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k6-bruch-mul",
+              "title": "Brüche multiplizieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k6-bruch-div",
+              "title": "Brüche dividieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k6-bruch-dez",
+              "title": "Brüche in Dezimalzahlen umwandeln",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k6-prozent",
+              "title": "In Prozent umwandeln",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k6-dez-add",
+              "title": "Dezimalzahlen addieren und subtrahieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k6-dez-mul",
+              "title": "Dezimalzahlen multiplizieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k6-dez-div",
+              "title": "Dezimalzahlen dividieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k6-dez-runden",
+              "title": "Dezimalzahlen runden",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "rf-winkel",
+          "title": "Winkelbeziehungen",
+          "topics": [
+            {
+              "id": "sks-k6-nebenwinkel",
+              "title": "Nebenwinkel berechnen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k6-scheitelwinkel",
+              "title": "Scheitel- und Stufenwinkel",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "rf-dreieck",
+          "title": "Dreiecke",
+          "topics": [
+            {
+              "id": "sks-k6-winkel-dreieck",
+              "title": "Innenwinkelsatz im Dreieck",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k6-flaeche-dreieck",
+              "title": "Flächeninhalt von Dreiecken",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k6-kongruenz",
+              "title": "Kongruenzsatz wählen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k6-umkreis",
+              "title": "Umkreis eines Dreiecks",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Umkreis",
+                "Mittelsenkrechte"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "zf-prop",
+          "title": "Direkte und indirekte Proportionalität",
+          "topics": [
+            {
+              "id": "sks-k6-proportional",
+              "title": "Proportionale Zuordnung (Dreisatz)",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k6-antiproportional",
+              "title": "Antiproportionale Zuordnung",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k6-dreisatz",
+              "title": "Sachaufgabe: Dreisatz mit Einheiten",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k6-anteil-prozent",
+              "title": "Prozent einer Größe berechnen",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "dz-daten",
+          "title": "Erfassen, Darstellen und Auswerten von Daten",
+          "topics": [
+            {
+              "id": "sks-k6-haeufigkeit",
+              "title": "Relative Häufigkeit in Prozent",
+              "pointsPerTask": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sks-hs-klasse-7",
+      "title": "Klasse 7 · Hauptschulabschluss",
+      "subjectTitle": "Mathematik",
+      "gradeTitle": "Klasse 7 · Hauptschulabschluss",
+      "description": "Rationale Zahlen, Prozentrechnung, lineare Gleichungen, Terme, Vierecke und Körper (ST 7/8).",
+      "searchHints": [
+        "rationale Zahlen",
+        "Prozent",
+        "Zinsen",
+        "Gleichungen",
+        "Terme",
+        "Viereck",
+        "Prisma",
+        "Mittelwert"
+      ],
+      "areas": [
+        {
+          "id": "zg-rational",
+          "title": "Rationale Zahlen",
+          "topics": [
+            {
+              "id": "sks-k7-rat-add",
+              "title": "Rationale Zahlen addieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k7-rat-sub",
+              "title": "Rationale Zahlen subtrahieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k7-rat-mul",
+              "title": "Rationale Zahlen multiplizieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k7-rat-div",
+              "title": "Rationale Zahlen dividieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k7-betrag",
+              "title": "Betrag einer Zahl",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "zg-prozent",
+          "title": "Prozentrechnung",
+          "topics": [
+            {
+              "id": "sks-k7-prozent",
+              "title": "Prozent einer Größe berechnen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k7-zinsen",
+              "title": "Jahreszinsen berechnen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k7-zinseszins",
+              "title": "Zinseszins: Endkapital",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "zg-gleichung",
+          "title": "Lineare Gleichungen",
+          "topics": [
+            {
+              "id": "sks-k7-gleichung",
+              "title": "Lineare Gleichung a·x + b = c",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k7-gleichung-beid",
+              "title": "Gleichung mit x auf beiden Seiten",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "zg-variablen",
+          "title": "Arbeiten mit Variablen, Gleichungen und Formeln",
+          "topics": [
+            {
+              "id": "sks-k7-term",
+              "title": "Term mit Rechengesetzen auswerten",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k7-term-auswerten",
+              "title": "Term auswerten (x einsetzen)",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k7-zusammenfassen",
+              "title": "Terme zusammenfassen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k7-ausmult",
+              "title": "Klammer ausmultiplizieren",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "rf-viereck",
+          "title": "Vierecke",
+          "topics": [
+            {
+              "id": "sks-k7-winkel-viereck",
+              "title": "Winkelsumme im Viereck",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k7-winkelsumme",
+              "title": "Innenwinkelsumme im Vieleck",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "rf-koerper",
+          "title": "Körperdarstellung und Körperberechnung (Prismen und Kreiszylinder)",
+          "topics": [
+            {
+              "id": "sks-k7-volumen-prisma",
+              "title": "Volumen gerader Prismen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k7-mantel-prisma",
+              "title": "Mantelfläche eines Prismas",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k7-oberflaeche-quader",
+              "title": "Oberfläche eines Quaders",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k7-zylinder",
+              "title": "Volumen eines Kreiszylinders",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Zylinder"
+              ]
+            },
+            {
+              "id": "sks-k7-netz",
+              "title": "Körpernetze und Schrägbilder",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Netz",
+                "Schrägbild"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dz-daten",
+          "title": "Erfassen, Darstellen und Auswerten von Daten",
+          "topics": [
+            {
+              "id": "sks-k7-mittelwert",
+              "title": "Arithmetisches Mittel",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k7-median",
+              "title": "Median (Zentralwert)",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k7-spannweite",
+              "title": "Spannweite berechnen",
+              "pointsPerTask": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sks-hs-klasse-8",
+      "title": "Klasse 8 · Hauptschulabschluss",
+      "subjectTitle": "Mathematik",
+      "gradeTitle": "Klasse 8 · Hauptschulabschluss",
+      "description": "Kreise, rechtwinklige Dreiecke, lineare Funktionen sowie Häufigkeiten und Wahrscheinlichkeiten (ST 7/8).",
+      "searchHints": [
+        "Kreis",
+        "Zylinder",
+        "Pythagoras",
+        "lineare Funktion",
+        "Steigung",
+        "Wahrscheinlichkeit",
+        "Laplace"
+      ],
+      "areas": [
+        {
+          "id": "rf-kreis",
+          "title": "Kreise",
+          "topics": [
+            {
+              "id": "sks-k8-kreis-umfang",
+              "title": "Umfang eines Kreises",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k8-kreis-flaeche",
+              "title": "Flächeninhalt eines Kreises",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k8-zylinder",
+              "title": "Volumen eines Kreiszylinders",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k8-thales",
+              "title": "Satz des Thales",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Thales"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rf-rechtwinklig",
+          "title": "Rechtwinklige Dreiecke",
+          "topics": [
+            {
+              "id": "sks-k8-pythagoras-hyp",
+              "title": "Satz des Pythagoras: Hypotenuse",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k8-pythagoras-kat",
+              "title": "Satz des Pythagoras: fehlende Kathete",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k8-leiter",
+              "title": "Pythagoras im Sachkontext",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "zf-linear",
+          "title": "Lineare Funktionen",
+          "topics": [
+            {
+              "id": "sks-k8-funktionswert",
+              "title": "Funktionswert einer linearen Funktion",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k8-steigung",
+              "title": "Steigung aus zwei Punkten",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k8-achsen",
+              "title": "y-Achsenabschnitt bestimmen",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "dz-zufall",
+          "title": "Häufigkeiten und Wahrscheinlichkeiten",
+          "topics": [
+            {
+              "id": "sks-k8-laplace",
+              "title": "Laplace-Wahrscheinlichkeit als Bruch",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k8-laplace-pct",
+              "title": "Laplace-Wahrscheinlichkeit in Prozent",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-k8-gegen",
+              "title": "Gegenwahrscheinlichkeit",
+              "pointsPerTask": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sks-hs-klasse-9",
+      "title": "Klasse 9 · Hauptschulabschluss",
+      "subjectTitle": "Mathematik",
+      "gradeTitle": "Klasse 9 · Hauptschulabschluss",
+      "description": "Potenzen, Pyramide und zusammengesetzte Körper, lineare Gleichungssysteme, Wachstumsprozesse sowie Häufigkeitsverteilungen (HSA).",
+      "searchHints": [
+        "Potenzen",
+        "Pyramide",
+        "LGS",
+        "Wachstum",
+        "exponentiell",
+        "Mittelwert",
+        "Median"
+      ],
+      "areas": [
+        {
+          "id": "zg-potenz",
+          "title": "Arbeiten mit Variablen, Potenzen",
+          "topics": [
+            {
+              "id": "sks-hs-k9-potenz-prod",
+              "title": "Potenzgesetz: Produkt gleicher Basis",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-hs-k9-potenz-quot",
+              "title": "Potenzgesetz: Quotient und Potenz einer Potenz",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "rf-pyramide",
+          "title": "Pyramide, zusammengesetzte Körper",
+          "topics": [
+            {
+              "id": "sks-hs-k9-pyramide",
+              "title": "Volumen einer Pyramide",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-hs-k9-oberflaeche-pyramide",
+              "title": "Oberfläche einer Pyramide",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-hs-k9-volumen-zus",
+              "title": "Zusammengesetzte Körper: Volumen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-hs-k9-kegel",
+              "title": "Kegel (Volumen / Oberfläche)",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Kegel"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "zf-lgs",
+          "title": "Lineare Gleichungssysteme",
+          "topics": [
+            {
+              "id": "sks-hs-k9-lgs",
+              "title": "Lineares Gleichungssystem (x bestimmen)",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "zf-wachstum",
+          "title": "Potenzfunktionen, Wachstumsprozesse",
+          "topics": [
+            {
+              "id": "sks-hs-k9-exp",
+              "title": "Exponentielles Wachstum",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-hs-k9-zunahme",
+              "title": "Prozentuale Zunahme",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "dz-haeufigkeit",
+          "title": "Häufigkeitsverteilungen",
+          "topics": [
+            {
+              "id": "sks-hs-k9-mittelwert",
+              "title": "Arithmetisches Mittel",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-hs-k9-median",
+              "title": "Median (Zentralwert)",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-hs-k9-modal",
+              "title": "Modalwert (häufigster Wert)",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "sks-hs-k9-spannweite",
+              "title": "Spannweite berechnen",
+              "pointsPerTask": 10
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "extras": []
+}

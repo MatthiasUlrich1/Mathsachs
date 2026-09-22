@@ -24,6 +24,8 @@ import {
   GYM_SACHSEN_PACK_ID,
   GYM_SACHSEN_PHYSIK_PACK_ID,
   GYM_SACHSEN_ANHALT_PACK_ID,
+  SKS_SACHSEN_ANHALT_HS_PACK_ID,
+  SKS_SACHSEN_ANHALT_RS_PACK_ID,
   OS_HS_PACK_ID,
   OS_RS_PACK_ID,
   listVisibleGradeModules,
@@ -73,6 +75,28 @@ const FALLBACK_CATALOG: ManifestPack[] = [
     url: '',
     changelog:
       'Klassen 5–10 und 11/12 gA nach ST-Fachlehrplan; Aufgaben aus dem Sachsen-Gym-Katalog. Ohne Netz lokale Fassung.',
+  },
+  {
+    id: SKS_SACHSEN_ANHALT_HS_PACK_ID,
+    title: 'Sekundarschule Sachsen-Anhalt · Mathematik · Hauptschulabschluss',
+    region: 'Sachsen-Anhalt',
+    school: 'Sekundarschule',
+    subject: 'Mathematik',
+    version: '1.0.0',
+    url: '',
+    changelog:
+      'Klassen 5–9 (HSA) nach ST-Fachlehrplan; Aufgaben aus dem Sachsen-Gym-Katalog. Ohne Netz lokale Fassung.',
+  },
+  {
+    id: SKS_SACHSEN_ANHALT_RS_PACK_ID,
+    title: 'Sekundarschule Sachsen-Anhalt · Mathematik · Realschulabschluss',
+    region: 'Sachsen-Anhalt',
+    school: 'Sekundarschule',
+    subject: 'Mathematik',
+    version: '1.0.0',
+    url: '',
+    changelog:
+      'Klassen 5–10 (RSA) nach ST-Fachlehrplan; Aufgaben aus dem Sachsen-Gym-Katalog. Ohne Netz lokale Fassung.',
   },
   {
     id: OS_HS_PACK_ID,

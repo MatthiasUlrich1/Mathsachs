@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-22T16:57:48.661Z",
+  "updatedAt": "2026-09-22T17:12:13.667Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -33,6 +33,28 @@
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-anhalt.json",
       "size": 37206,
       "changelog": "Erstfassung Klassen 5–10 und 11/12 gA nach Kompetenzschwerpunkten. Aufgaben aus dem Sachsen-Gym-Katalog eingeordnet; Lücken als Outline. Fachlehrplan Gymnasium Mathematik Sachsen-Anhalt, Anpassung 01.08.2022 (LISA), CC BY-SA 3.0."
+    },
+    {
+      "id": "sekundarschule-sachsen-anhalt-hs",
+      "title": "Sekundarschule Sachsen-Anhalt · Mathematik · Hauptschulabschluss",
+      "region": "Sachsen-Anhalt",
+      "school": "Sekundarschule",
+      "subject": "Mathematik",
+      "version": "1.0.0",
+      "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/sekundarschule-sachsen-anhalt-hs.json",
+      "size": 25842,
+      "changelog": "Erstfassung Klassen 5–9 (hauptschulabschlussbezogen). Kompetenzschwerpunkte; Aufgaben aus dem Sachsen-Gym-Katalog. Fachlehrplan Sekundarschule Mathematik Sachsen-Anhalt, Stand 01.08.2019 (bildung-lsa.de)."
+    },
+    {
+      "id": "sekundarschule-sachsen-anhalt-rs",
+      "title": "Sekundarschule Sachsen-Anhalt · Mathematik · Realschulabschluss",
+      "region": "Sachsen-Anhalt",
+      "school": "Sekundarschule",
+      "subject": "Mathematik",
+      "version": "1.0.0",
+      "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/sekundarschule-sachsen-anhalt-rs.json",
+      "size": 29859,
+      "changelog": "Erstfassung Klassen 5–10 (realschulabschlussbezogen). Kompetenzschwerpunkte; Aufgaben aus dem Sachsen-Gym-Katalog. Fachlehrplan Sekundarschule Mathematik Sachsen-Anhalt, Stand 01.08.2019 (bildung-lsa.de)."
     },
     {
       "id": "oberschule-sachsen-hs",

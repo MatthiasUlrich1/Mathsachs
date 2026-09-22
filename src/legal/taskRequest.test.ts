@@ -5,6 +5,8 @@ import {
   GYM_SACHSEN_PACK_ID,
   GYM_SACHSEN_PHYSIK_PACK_ID,
   GYM_SACHSEN_ANHALT_PACK_ID,
+  SKS_SACHSEN_ANHALT_HS_PACK_ID,
+  SKS_SACHSEN_ANHALT_RS_PACK_ID,
   OS_HS_PACK_ID,
   OS_RS_PACK_ID,
 } from '../curriculum/pack'
@@ -38,6 +40,8 @@ describe('task request Vorgaben', () => {
       GYM_SACHSEN_PACK_ID,
       GYM_SACHSEN_PHYSIK_PACK_ID,
       GYM_SACHSEN_ANHALT_PACK_ID,
+      SKS_SACHSEN_ANHALT_HS_PACK_ID,
+      SKS_SACHSEN_ANHALT_RS_PACK_ID,
       OS_HS_PACK_ID,
       OS_RS_PACK_ID,
     ])
@@ -47,6 +51,8 @@ describe('task request Vorgaben', () => {
       'Gymnasium Sachsen · Mathematik',
       'Gymnasium Sachsen · Physik',
       'Gymnasium Sachsen-Anhalt · Mathematik',
+      'Sekundarschule Sachsen-Anhalt · Mathematik · Hauptschulabschluss',
+      'Sekundarschule Sachsen-Anhalt · Mathematik · Realschulabschluss',
       'Oberschule Sachsen · Mathematik · Hauptschulbildungsgang',
       'Oberschule Sachsen · Mathematik · Realschulbildungsgang',
     ])

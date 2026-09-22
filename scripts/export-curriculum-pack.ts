@@ -4,6 +4,10 @@ import { fileURLToPath } from 'node:url'
 import { buildGymSachsenAnhaltPack } from '../src/curriculum/gymSachsenAnhaltPack'
 import { buildOberschuleHsPack, buildOberschuleRsPack } from '../src/curriculum/oberschulePacks'
 import { buildGymSachsenPhysikPack } from '../src/curriculum/physikGymPack'
+import {
+  buildSekundarschuleSachsenAnhaltHsPack,
+  buildSekundarschuleSachsenAnhaltRsPack,
+} from '../src/curriculum/sekundarschuleSachsenAnhaltPack'
 import { buildGymSachsenSeed } from '../src/curriculum/seed'
 import type { CurriculumPack } from '../src/curriculum/pack'
 
@@ -20,77 +24,32 @@ const writePack = (file: string, pack: CurriculumPack) => {
   return { json, size: Buffer.byteLength(json) }
 }
 
-const gym = await buildGymSachsenSeed()
-const physik = buildGymSachsenPhysikPack()
-const st = buildGymSachsenAnhaltPack()
-const hs = buildOberschuleHsPack()
-const rs = buildOberschuleRsPack()
-
-const gymOut = writePack('gym-sachsen.json', gym)
-const physikOut = writePack('gym-sachsen-physik.json', physik)
-const stOut = writePack('gym-sachsen-anhalt.json', st)
-const hsOut = writePack('oberschule-sachsen-hs.json', hs)
-const rsOut = writePack('oberschule-sachsen-rs.json', rs)
+const packs: Array<{ file: string; pack: CurriculumPack }> = [
+  { file: 'gym-sachsen.json', pack: await buildGymSachsenSeed() },
+  { file: 'gym-sachsen-physik.json', pack: buildGymSachsenPhysikPack() },
+  { file: 'gym-sachsen-anhalt.json', pack: buildGymSachsenAnhaltPack() },
+  { file: 'sekundarschule-sachsen-anhalt-hs.json', pack: buildSekundarschuleSachsenAnhaltHsPack() },
+  { file: 'sekundarschule-sachsen-anhalt-rs.json', pack: buildSekundarschuleSachsenAnhaltRsPack() },
+  { file: 'oberschule-sachsen-hs.json', pack: buildOberschuleHsPack() },
+  { file: 'oberschule-sachsen-rs.json', pack: buildOberschuleRsPack() },
+]
 
 const manifest = {
   updatedAt: new Date().toISOString(),
-  packs: [
-    {
-      id: gym.id,
-      title: gym.title,
-      region: gym.region,
-      school: gym.school,
-      subject: gym.subject,
-      version: gym.version,
-      url: rawUrl('gym-sachsen.json'),
-      size: gymOut.size,
-      changelog: gym.changelog,
-    },
-    {
-      id: physik.id,
-      title: physik.title,
-      region: physik.region,
-      school: physik.school,
-      subject: physik.subject,
-      version: physik.version,
-      url: rawUrl('gym-sachsen-physik.json'),
-      size: physikOut.size,
-      changelog: physik.changelog,
-    },
-    {
-      id: st.id,
-      title: st.title,
-      region: st.region,
-      school: st.school,
-      subject: st.subject,
-      version: st.version,
-      url: rawUrl('gym-sachsen-anhalt.json'),
-      size: stOut.size,
-      changelog: st.changelog,
-    },
-    {
-      id: hs.id,
-      title: hs.title,
-      region: hs.region,
-      school: hs.school,
-      subject: hs.subject,
-      version: hs.version,
-      url: rawUrl('oberschule-sachsen-hs.json'),
-      size: hsOut.size,
-      changelog: hs.changelog,
-    },
-    {
-      id: rs.id,
-      title: rs.title,
-      region: rs.region,
-      school: rs.school,
-      subject: rs.subject,
-      version: rs.version,
-      url: rawUrl('oberschule-sachsen-rs.json'),
-      size: rsOut.size,
-      changelog: rs.changelog,
-    },
-  ],
+  packs: packs.map(({ file, pack }) => {
+    const out = writePack(file, pack)
+    return {
+      id: pack.id,
+      title: pack.title,
+      region: pack.region,
+      school: pack.school,
+      subject: pack.subject,
+      version: pack.version,
+      url: rawUrl(file),
+      size: out.size,
+      changelog: pack.changelog,
+    }
+  }),
 }
 writeFileSync(join(dir, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`)
 for (const row of manifest.packs) {
