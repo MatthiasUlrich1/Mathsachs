@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-22T19:46:07.224Z",
+  "updatedAt": "2026-09-22T19:48:51.345Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -18,10 +18,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "2.5.24",
+      "version": "2.5.25",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 134815,
-      "changelog": "K7 LB3 Energiewandler freigegeben: Energieformen ohne Leistung, Ketten (Wasserkraftwerk/Dynamo/Taschenlampe), Wirkungsgrad mit Flussdiagramm, Leistung P=E/t, Energiesparen — mehr Abwechslung, interaktiv."
+      "size": 134717,
+      "changelog": "Energie sparen (6864): deutlich mehr Varianten (Alltag, Reibung/Dämmung, LED-Rechnung, MultiSelect/Slots)."
     },
     {
       "id": "gym-sachsen-anhalt",

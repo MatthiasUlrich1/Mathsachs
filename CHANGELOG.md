@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.97] – 2026-09-22
+
+### Geändert
+- **Energie sparen (6864):** viele neue Aufgaben — Alltag (Standby, Dämmung, Kochen),
+  Reibung verringern, LED-vs-Glühlampe-Rechnung, η→Zufuhr, MultiSelect und Slots.
+  Physik-Pack **2.5.25**.
+
 ## [0.27.96] – 2026-09-22
 
 ### Geändert

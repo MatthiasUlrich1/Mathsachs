@@ -1756,7 +1756,7 @@ const leistung: Topic['generate'] = mixedVariants(
     }),
 )
 
-/** LB3 — Energie sparen (kurz, anwendungsnah) */
+/** LB3 — Energie sparen (anwendungsnah, Lehrplan: Aufwand/Reibung verringern) */
 const energiesparen: Topic['generate'] = mixedVariants(
   (rng) => {
     const cases = [
@@ -1775,6 +1775,45 @@ const energiesparen: Topic['generate'] = mixedVariants(
         correct: 'den Energieaufwand für denselben Nutzen senken',
         wrong: ['den Wirkungsgrad über 100 % treiben', 'Energie verdoppeln ohne Ursache', 'nur die Masse ändern'],
       },
+      {
+        q: 'Warum verbraucht ein Gerät im Standby weiter Energie?',
+        correct: 'Es nimmt weiterhin (wenig) elektrische Energie auf',
+        wrong: ['Standby erzeugt Energie', 'Standby hat Wirkungsgrad über 100 %', 'Standby speichert nur Newton'],
+      },
+      {
+        q: 'Wärmedämmung an Gebäuden spart Energie, weil …',
+        correct: 'weniger Wärme ungewollt nach draußen entweicht',
+        wrong: ['die Temperatur immer 0 °C wird', 'Reibung im Haus zunimmt', 'Ampere zur Energieform wird'],
+      },
+      {
+        q: 'Öl im Fahrradlager (weniger Reibung) hilft beim Energiesparen, weil …',
+        correct: 'weniger Bewegungsenergie in unerwünschte Wärme umgewandelt wird',
+        wrong: ['die Masse des Rads verdoppelt wird', 'η über 100 % steigt', 'elektrische Energie entsteht aus dem Nichts'],
+      },
+      {
+        q: 'Gerät A: η = 80 %, Gerät B: η = 40 % (gleicher Nutzen). Welches spart eher Energie?',
+        correct: 'Gerät A (höherer Wirkungsgrad → weniger Zufuhr nötig)',
+        wrong: ['Gerät B', 'beide gleich, η egal', 'keines, η > 100 % nötig'],
+      },
+      {
+        q: 'Kurz duschen statt lange heiß baden spart vor allem …',
+        correct: 'thermische Energie (weniger Warmwasser = weniger Energieaufwand)',
+        wrong: ['Ampere als Energieform', 'nur Newton', 'Wirkungsgrad über 100 %'],
+      },
+      {
+        q: 'Kühlschranktür zügig schließen spart Energie, weil …',
+        correct: 'weniger warme Luft eindringt → weniger Kühlaufwand',
+        wrong: ['der Kühlschrank Energie vernichtet', 'η über 100 % wird', 'nur die Farbe der Tür zählt'],
+      },
+      {
+        q: 'Was ist keine sinnvolle Sparmaßnahme?',
+        correct: 'Wirkungsgrad über 100 % fordern',
+        wrong: [
+          'LED statt alter Glühlampe',
+          'unnötige Standby-Geräte ausschalten',
+          'Reibung/Wärmeverluste verringern',
+        ],
+      },
     ] as const
     const c = pick(rng, [...cases])
     return choicePickTask({
@@ -1782,28 +1821,170 @@ const energiesparen: Topic['generate'] = mixedVariants(
       choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
       correct: c.correct,
       solution: c.correct,
-      explanation: 'Sparen = Nutzen mit weniger Aufwand / weniger Entwertung.',
+      explanation: 'Sparen = gleichen Nutzen mit weniger Aufwand bzw. weniger Entwertung (Wärme/Reibung).',
       instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (rng) => {
+    const sets = [
+      {
+        q: 'Was hilft beim Energiesparen? (mehrere möglich)',
+        choices: [
+          'Geräte mit besserem Wirkungsgrad wählen',
+          'unnötige Verluste (Wärme/Reibung) vermeiden',
+          'Standby vermeiden, wenn sinnvoll',
+          'Wirkungsgrad über 100 % erwarten',
+          'Energieformen mit Ampere verwechseln',
+        ],
+        correct: [
+          'Geräte mit besserem Wirkungsgrad wählen',
+          'unnötige Verluste (Wärme/Reibung) vermeiden',
+          'Standby vermeiden, wenn sinnvoll',
+        ],
+        solution: 'besserer η, weniger Verluste, sinnvoller Betrieb.',
+        explanation: 'η > 100 % gibt es nicht.',
+      },
+      {
+        q: 'Welche Maßnahmen verringern typischerweise den Energieaufwand? (mehrere möglich)',
+        choices: [
+          'Lager ölen (weniger Reibung)',
+          'Raum isolieren / Fenster schließen im Winter',
+          'LED statt Glühlampe',
+          'Gerät unnötig auf höchster Stufe laufen lassen',
+          'Kühlschrank lange offen stehen lassen',
+        ],
+        correct: [
+          'Lager ölen (weniger Reibung)',
+          'Raum isolieren / Fenster schließen im Winter',
+          'LED statt Glühlampe',
+        ],
+        solution: 'Reibung↓, Dämmung, bessere Lampen.',
+        explanation: 'Offener Kühlschrank und Dauer-Volllast erhöhen den Aufwand.',
+      },
+      {
+        q: 'Was gehört zum Energiesparen im Alltag? (mehrere möglich)',
+        choices: [
+          'Licht ausschalten, wenn niemand im Raum ist',
+          'Waschmaschine möglichst voll beladen (sinnvoll)',
+          'Deckel auf den Topf beim Kochen',
+          'Heizung aufdrehen und Fenster dauerhaft kippen',
+          'η = 150 % als Ziel setzen',
+        ],
+        correct: [
+          'Licht ausschalten, wenn niemand im Raum ist',
+          'Waschmaschine möglichst voll beladen (sinnvoll)',
+          'Deckel auf den Topf beim Kochen',
+        ],
+        solution: 'unnötigen Verbrauch vermeiden, effizient kochen/waschen.',
+        explanation: 'Heizen bei gekipptem Fenster und η > 100 % sind unsinnig.',
+      },
+    ] as const
+    const s = pick(rng, [...sets])
+    return multiSelectTask({
+      question: s.q,
+      choices: [...s.choices],
+      correct: [...s.correct],
+      solution: s.solution,
+      explanation: s.explanation,
+      instruction: 'Tippe alle sinnvollen Maßnahmen:',
+    })
+  },
+  (rng) => {
+    // Einfacher Vergleich: gleiche Nutzenergie, unterschiedlicher Wirkungsgrad → Zufuhr
+    const en = pick(rng, [20, 40, 50])
+    const eta = pick(rng, [20, 25, 40, 50]) // %
+    const ez = Math.round((en * 100) / eta)
+    return valueTask({
+      question: `Gewünschte Nutzenergie ${en} J, Wirkungsgrad ${eta} %. Wie groß ist die nötige Zufuhr E_zu (ganzzahlig)?`,
+      answerKind: 'integer',
+      unit: 'J',
+      value: ez,
+      solution: `${ez} J`,
+      explanation: `E_zu = E_nutz / (η/100) = ${en} / ${eta / 100} = ${ez} J. Besserer η → kleinere Zufuhr.`,
+    })
+  },
+  (rng) => {
+    const pAlt = pick(rng, [40, 60, 100])
+    const pLed = pick(rng, [5, 8, 10])
+    const t = pick(rng, [2, 5, 10]) // Stunden → Energie in Wh: P*t
+    const eAlt = pAlt * t
+    const eLed = pLed * t
+    const save = eAlt - eLed
+    return valueTask({
+      question: `Glühlampe ${pAlt} W vs. LED ${pLed} W, jeweils ${t} h. Wie viel Energie sparst du mit der LED (in Wh)?`,
+      answerKind: 'integer',
+      unit: 'Wh',
+      value: save,
+      solution: `${save} Wh`,
+      explanation: `E = P·t → Glühlampe ${eAlt} Wh, LED ${eLed} Wh, Differenz ${save} Wh.`,
+    })
+  },
+  (_rng) =>
+    dragDropSlotsTask({
+      question: 'Baue den Spar-Gedanken: gleicher Nutzen → … Einen Block brauchst du nicht.',
+      items: [
+        { label: 'weniger', value: 0 },
+        { label: 'Zufuhr', value: 1 },
+        { label: '/', value: 2 },
+        { label: 'besserer η', value: 3 },
+      ],
+      correctSlots: [0, 1],
+      solution: 'weniger Zufuhr',
+      explanation: 'Sparen: Nutzen halten, Aufwand (Zufuhr) und Verluste senken — oft über besseren Wirkungsgrad.',
+    }),
+  (_rng) =>
+    dragDropSlotsTask({
+      question: 'Ordne: Reibung verringern → … Einen Block brauchst du nicht.',
+      items: [
+        { label: 'weniger', value: 0 },
+        { label: 'Wärmeentwertung', value: 1 },
+        { label: 'η > 100 %', value: 2 },
+        { label: 'Ampere', value: 3 },
+      ],
+      correctSlots: [0, 1],
+      solution: 'weniger Wärmeentwertung',
+      explanation: 'Lehrplan: Energieaufwand durch weniger Reibung verringern.',
+    }),
+  (rng) => {
+    const ranking = pick(rng, [
+      {
+        q: 'Was spart typischerweise am meisten elektrische Energie für Licht?',
+        correct: 'LED statt alter Glühlampe',
+        wrong: ['Glühlampe statt LED', 'mehr Standby-Geräte', 'Kühlschranktür offen lassen'],
+      },
+      {
+        q: 'Welches Verhalten spart Heizenergie?',
+        correct: 'Fenster schließen und sinnvoll heizen',
+        wrong: ['Fenster dauerhaft kippen und heizen', 'Heizung aus und alle Fenster auf bei Frost ohne Plan', 'η über 100 % einstellen'],
+      },
+    ] as const)
+    return choicePickTask({
+      question: ranking.q,
+      choices: shuffleChoices(rng, [ranking.correct, ...ranking.wrong], ranking.correct),
+      correct: ranking.correct,
+      solution: ranking.correct,
+      explanation: 'Vergleiche Nutzen und Verluste — die Maßnahme mit weniger Entwertung/Zufuhr gewinnt.',
+      instruction: 'Tippe die beste Sparmaßnahme:',
     })
   },
   (_rng) =>
     multiSelectTask({
-      question: 'Was hilft beim Energiesparen? (mehrere möglich)',
+      question: 'Warum ist Energiesparen physikalisch sinnvoll? (mehrere möglich)',
       choices: [
-        'Geräte mit besserem Wirkungsgrad wählen',
-        'unnötige Verluste (Wärme/Reibung) vermeiden',
-        'Standby vermeiden, wenn sinnvoll',
-        'Wirkungsgrad über 100 % erwarten',
-        'Energieformen mit Ampere verwechseln',
+        'Weniger zugeführte Energie bei gleichem Nutzen',
+        'Weniger unerwünschte Wärme / Reibungsverluste',
+        'Ressourcen und Umwelt entlasten',
+        'Weil Wirkungsgrad über 100 % möglich wird',
+        'Weil Energie und Leistung dieselbe Einheit haben',
       ],
       correct: [
-        'Geräte mit besserem Wirkungsgrad wählen',
-        'unnötige Verluste (Wärme/Reibung) vermeiden',
-        'Standby vermeiden, wenn sinnvoll',
+        'Weniger zugeführte Energie bei gleichem Nutzen',
+        'Weniger unerwünschte Wärme / Reibungsverluste',
+        'Ressourcen und Umwelt entlasten',
       ],
-      solution: 'besserer η, weniger Verluste, sinnvoller Betrieb.',
-      explanation: 'η > 100 % gibt es nicht.',
-      instruction: 'Tippe alle sinnvollen Maßnahmen:',
+      solution: 'weniger Zufuhr, weniger Verluste, Umwelt.',
+      explanation: 'η bleibt unter 100 % — Sparen heißt effizienter nutzen, nicht Physik aushebeln.',
+      instruction: 'Tippe alle zutreffenden Gründe:',
     }),
 )
 
