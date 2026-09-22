@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.31',
+    version: '2.5.32',
     changelog:
-      'K7 Vom Fliegen: Flugzeug-Seitenansicht (Nase rechts) statt Oval, Flugrichtung erkennbar.',
+      'K7 Vom Fliegen: Flugzeug-Silhouette nach Vorlage (Seitenansicht mit Fenstern/Triebwerk).',
     official,
     extras: [],
   }

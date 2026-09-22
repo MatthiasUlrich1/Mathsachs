@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.105] – 2026-09-22
+
+### Behoben
+- **Vom Fliegen:** Flugzeug-Skizze nach Vorlage neu gezeichnet (Seitenansicht mit Rumpf,
+  Leitwerk, Tragfläche, Triebwerk, Fenster). Physik-Pack **2.5.32**.
+
 ## [0.27.104] – 2026-09-22
 
 ### Behoben

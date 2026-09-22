@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "2.5.31",
-  "changelog": "K7 Vom Fliegen: Flugzeug-Seitenansicht (Nase rechts) statt Oval, Flugrichtung erkennbar.",
+  "version": "2.5.32",
+  "changelog": "K7 Vom Fliegen: Flugzeug-Silhouette nach Vorlage (Seitenansicht mit Fenstern/Triebwerk).",
   "official": [
     {
       "id": "physik-klasse-6",
