@@ -1,6 +1,7 @@
 import {
   GYM_SACHSEN_PACK_ID,
   GYM_SACHSEN_PHYSIK_PACK_ID,
+  GYM_SACHSEN_ANHALT_PACK_ID,
   OS_HS_PACK_ID,
   OS_RS_PACK_ID,
 } from '../curriculum/pack'
@@ -18,6 +19,7 @@ export const TASK_REQUEST_ATTACHMENT_NOTE = 'siehe Anhang'
 export const TASK_REQUEST_PACK_IDS = [
   GYM_SACHSEN_PACK_ID,
   GYM_SACHSEN_PHYSIK_PACK_ID,
+  GYM_SACHSEN_ANHALT_PACK_ID,
   OS_HS_PACK_ID,
   OS_RS_PACK_ID,
 ] as const

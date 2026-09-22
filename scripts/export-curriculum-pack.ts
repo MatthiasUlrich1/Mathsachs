@@ -1,6 +1,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { buildGymSachsenAnhaltPack } from '../src/curriculum/gymSachsenAnhaltPack'
 import { buildOberschuleHsPack, buildOberschuleRsPack } from '../src/curriculum/oberschulePacks'
 import { buildGymSachsenPhysikPack } from '../src/curriculum/physikGymPack'
 import { buildGymSachsenSeed } from '../src/curriculum/seed'
@@ -21,11 +22,13 @@ const writePack = (file: string, pack: CurriculumPack) => {
 
 const gym = await buildGymSachsenSeed()
 const physik = buildGymSachsenPhysikPack()
+const st = buildGymSachsenAnhaltPack()
 const hs = buildOberschuleHsPack()
 const rs = buildOberschuleRsPack()
 
 const gymOut = writePack('gym-sachsen.json', gym)
 const physikOut = writePack('gym-sachsen-physik.json', physik)
+const stOut = writePack('gym-sachsen-anhalt.json', st)
 const hsOut = writePack('oberschule-sachsen-hs.json', hs)
 const rsOut = writePack('oberschule-sachsen-rs.json', rs)
 
@@ -53,6 +56,17 @@ const manifest = {
       url: rawUrl('gym-sachsen-physik.json'),
       size: physikOut.size,
       changelog: physik.changelog,
+    },
+    {
+      id: st.id,
+      title: st.title,
+      region: st.region,
+      school: st.school,
+      subject: st.subject,
+      version: st.version,
+      url: rawUrl('gym-sachsen-anhalt.json'),
+      size: stOut.size,
+      changelog: st.changelog,
     },
     {
       id: hs.id,

@@ -23,6 +23,7 @@ import {
 import {
   GYM_SACHSEN_PACK_ID,
   GYM_SACHSEN_PHYSIK_PACK_ID,
+  GYM_SACHSEN_ANHALT_PACK_ID,
   OS_HS_PACK_ID,
   OS_RS_PACK_ID,
   listVisibleGradeModules,
@@ -61,6 +62,17 @@ const FALLBACK_CATALOG: ManifestPack[] = [
     url: '',
     changelog:
       'Lernbereiche mit 5–9 Themen (ähnlich Mathe). Ohne Netz lokale Fassung.',
+  },
+  {
+    id: GYM_SACHSEN_ANHALT_PACK_ID,
+    title: 'Gymnasium Sachsen-Anhalt · Mathematik',
+    region: 'Sachsen-Anhalt',
+    school: 'Gymnasium',
+    subject: 'Mathematik',
+    version: '1.0.0',
+    url: '',
+    changelog:
+      'Klassen 5–10 und 11/12 gA nach ST-Fachlehrplan; Aufgaben aus dem Sachsen-Gym-Katalog. Ohne Netz lokale Fassung.',
   },
   {
     id: OS_HS_PACK_ID,

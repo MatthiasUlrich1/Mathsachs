@@ -8,6 +8,7 @@ import { pick, randInt, type Rng } from '../lib/rng'
 import { bundledCurricula } from './bundled'
 import { topicContentId } from './contentId'
 import { ensureTopicFachwissen } from './fachwissen'
+import { ST_GENERATOR_MAP } from './gymSachsenAnhaltPack'
 import {
   choicePickTask,
   coordinateClickTask,
@@ -616,22 +617,24 @@ export async function gymGeneratorCatalog(): Promise<Map<string, Topic['generate
 }
 
 export function generatorIdForTopic(topicId: string): string | undefined {
-  return OS_GENERATOR_MAP[topicId]
+  return OS_GENERATOR_MAP[topicId] ?? ST_GENERATOR_MAP[topicId]
 }
 
-/** Resolve a playable OS topic generator (custom wrapper or Gymnasium map). */
+/** Resolve a playable OS/ST topic generator (custom wrapper or Gymnasium map). */
 export function resolveOsGenerate(
   topicId: string,
   gymCatalog: Map<string, Topic['generate']>,
 ): Topic['generate'] | undefined {
   const custom = OS_CUSTOM_GENERATORS[topicId]
   if (custom) return custom
-  const mapped = OS_GENERATOR_MAP[topicId]
+  const mapped = OS_GENERATOR_MAP[topicId] ?? ST_GENERATOR_MAP[topicId]
   return mapped ? gymCatalog.get(mapped) : undefined
 }
 
 export function isPlayableOfficialTopic(topicId: string): boolean {
-  return Boolean(OS_CUSTOM_GENERATORS[topicId] || OS_GENERATOR_MAP[topicId])
+  return Boolean(
+    OS_CUSTOM_GENERATORS[topicId] || OS_GENERATOR_MAP[topicId] || ST_GENERATOR_MAP[topicId],
+  )
 }
 
 export function outlineGenerate(title: string): Topic['generate'] {

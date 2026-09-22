@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.91] – 2026-09-22
+
+### Geändert
+- **Themen-Menü (Handy):** Thementitel oben, Buttons (Üben / Übungsblatt / Wissen)
+  darunter — auch in der Suche.
+- **Lehrplan Gymnasium Sachsen-Anhalt · Mathematik (1.0.0):** Klassen 5–10 und
+  11/12 gA nach Kompetenzschwerpunkten; vorhandene Sachsen-Gym-Aufgaben per Alias
+  eingeordnet, Lücken als Outline. Unter Einstellungen → Lehrpläne installierbar
+  (Region Sachsen-Anhalt).
+
 ## [0.27.90] – 2026-09-22
 
 ### Geändert

@@ -244,6 +244,7 @@ describe('Oberschule Sachsen Lehrplan packs', () => {
     expect(manifest?.packs.map((p) => p.id)).toEqual([
       'gym-sachsen',
       'gym-sachsen-physik',
+      'gym-sachsen-anhalt',
       OS_HS_PACK_ID,
       OS_RS_PACK_ID,
     ])

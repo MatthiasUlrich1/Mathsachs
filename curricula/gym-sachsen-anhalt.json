@@ -1,0 +1,1282 @@
+{
+  "id": "gym-sachsen-anhalt",
+  "title": "Gymnasium Sachsen-Anhalt · Mathematik",
+  "region": "Sachsen-Anhalt",
+  "school": "Gymnasium",
+  "subject": "Mathematik",
+  "version": "1.0.0",
+  "changelog": "Erstfassung Klassen 5–10 und 11/12 gA nach Kompetenzschwerpunkten. Aufgaben aus dem Sachsen-Gym-Katalog eingeordnet; Lücken als Outline. Fachlehrplan Gymnasium Mathematik Sachsen-Anhalt, Anpassung 01.08.2022 (LISA), CC BY-SA 3.0.",
+  "official": [
+    {
+      "id": "st-gym-klasse-5",
+      "title": "Klasse 5",
+      "subjectTitle": "Mathematik",
+      "gradeTitle": "Klasse 5",
+      "description": "Natürliche Zahlen, Brüche und Dezimalzahlen, Größen, geometrische Grundbegriffe sowie Umfang, Flächeninhalt und Volumen (ST Schuljahrgänge 5/6).",
+      "searchHints": [
+        "natürliche Zahlen",
+        "runden",
+        "Addition",
+        "Brüche",
+        "Dezimalzahlen",
+        "Winkel",
+        "Rechteck",
+        "Quader",
+        "Umfang",
+        "Fläche",
+        "Volumen",
+        "Koordinaten",
+        "Symmetrie"
+      ],
+      "areas": [
+        {
+          "id": "zg-nat",
+          "title": "Natürliche Zahlen",
+          "topics": [
+            {
+              "id": "st-k5-nat-runden",
+              "title": "Natürliche Zahlen runden",
+              "pointsPerTask": 10,
+              "keywords": [
+                "runden"
+              ]
+            },
+            {
+              "id": "st-k5-nat-add",
+              "title": "Addieren natürlicher Zahlen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Addition"
+              ]
+            },
+            {
+              "id": "st-k5-nat-sub",
+              "title": "Subtrahieren natürlicher Zahlen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Subtraktion"
+              ]
+            },
+            {
+              "id": "st-k5-nat-mul",
+              "title": "Multiplizieren natürlicher Zahlen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Multiplikation"
+              ]
+            },
+            {
+              "id": "st-k5-nat-schriftlich",
+              "title": "Schriftliche Rechenverfahren",
+              "pointsPerTask": 10,
+              "keywords": [
+                "schriftlich"
+              ]
+            },
+            {
+              "id": "st-k5-nat-div-rest",
+              "title": "Division mit Rest",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Division"
+              ]
+            },
+            {
+              "id": "st-k5-nat-div",
+              "title": "Schriftliche Division",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Division"
+              ]
+            },
+            {
+              "id": "st-k5-nat-potenz",
+              "title": "Potenzen (Quadrat- und Zehnerpotenzen)",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Potenz"
+              ]
+            },
+            {
+              "id": "st-k5-nat-teilbarkeit",
+              "title": "Teilbarkeit prüfen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Teiler"
+              ]
+            },
+            {
+              "id": "st-k5-nat-prim",
+              "title": "Primzahlen erkennen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Primzahl"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "zg-bruch",
+          "title": "Brüche und Dezimalzahlen",
+          "topics": [
+            {
+              "id": "st-k5-bruch-anteil",
+              "title": "Anteil als Bruch",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Bruch"
+              ]
+            },
+            {
+              "id": "st-k5-bruch-kuerzen",
+              "title": "Brüche kürzen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "kürzen"
+              ]
+            },
+            {
+              "id": "st-k5-bruch-erweitern",
+              "title": "Brüche erweitern",
+              "pointsPerTask": 10,
+              "keywords": [
+                "erweitern"
+              ]
+            },
+            {
+              "id": "st-k5-bruch-grafik",
+              "title": "Brüche grafisch ablesen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Bruch"
+              ]
+            },
+            {
+              "id": "st-k5-dez-add",
+              "title": "Dezimalzahlen addieren und subtrahieren",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Dezimalzahl"
+              ]
+            },
+            {
+              "id": "st-k5-dez-mul",
+              "title": "Dezimalzahlen multiplizieren",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Dezimalzahl"
+              ]
+            },
+            {
+              "id": "st-k5-dez-div",
+              "title": "Dezimalzahlen dividieren",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Dezimalzahl"
+              ]
+            },
+            {
+              "id": "st-k5-dez-runden",
+              "title": "Dezimalzahlen runden",
+              "pointsPerTask": 10,
+              "keywords": [
+                "runden"
+              ]
+            },
+            {
+              "id": "st-k5-dez-zahlenstrahl",
+              "title": "Dezimalzahlen auf dem Zahlenstrahl",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Zahlenstrahl"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "zg-groessen",
+          "title": "Größen",
+          "topics": [
+            {
+              "id": "st-k5-groessen-ordnen",
+              "title": "Größen mit verschiedenen Einheiten ordnen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k5-umr-laenge",
+              "title": "Einheiten umrechnen: Länge",
+              "pointsPerTask": 10,
+              "keywords": [
+                "cm",
+                "m"
+              ]
+            },
+            {
+              "id": "st-k5-umr-masse",
+              "title": "Einheiten umrechnen: Masse",
+              "pointsPerTask": 10,
+              "keywords": [
+                "g",
+                "kg"
+              ]
+            },
+            {
+              "id": "st-k5-umr-zeit",
+              "title": "Einheiten umrechnen: Zeit",
+              "pointsPerTask": 10,
+              "keywords": [
+                "min",
+                "h"
+              ]
+            },
+            {
+              "id": "st-k5-umr-flaeche",
+              "title": "Einheiten umrechnen: Flächeninhalt",
+              "pointsPerTask": 10,
+              "keywords": [
+                "cm²",
+                "m²"
+              ]
+            },
+            {
+              "id": "st-k5-umr-volumen",
+              "title": "Einheiten umrechnen: Volumen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "cm³",
+                "l"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rf-grund",
+          "title": "Geometrische Grundbegriffe und Abbildungen",
+          "topics": [
+            {
+              "id": "st-k5-geo-strecken",
+              "title": "Strecke, Gerade und Halbgerade",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k5-geo-laenge",
+              "title": "Länge von Strecken",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k5-geo-mittelpunkt",
+              "title": "Mittelpunkt einer Strecke",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k5-geo-koord-ablesen",
+              "title": "Koordinaten ablesen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k5-geo-koord-eintragen",
+              "title": "Punkte im Koordinatensystem zuordnen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k5-geo-abstand",
+              "title": "Abstand zwischen Punkten",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k5-geo-winkelarten",
+              "title": "Winkelarten erkennen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Winkel"
+              ]
+            },
+            {
+              "id": "st-k5-geo-winkel-erg",
+              "title": "Winkel zu 90° oder 180° ergänzen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k5-geo-verschiebung",
+              "title": "Verschiebung von Figuren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k5-geo-achse",
+              "title": "Achsensymmetrie erkennen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k5-geo-punkt",
+              "title": "Punktsymmetrie / Punktspiegelung",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "rf-umfang",
+          "title": "Umfang, Flächeninhalt und Volumen",
+          "topics": [
+            {
+              "id": "st-k5-umfang-rechteck",
+              "title": "Umfang von Rechteck und Quadrat",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k5-flaeche-rechteck",
+              "title": "Flächeninhalt von Rechteck und Quadrat",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k5-volumen-quader",
+              "title": "Volumen von Quader und Würfel",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k5-oberflaeche-quader",
+              "title": "Oberflächeninhalt von Quadern",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k5-flaeche-zus",
+              "title": "Zusammengesetzte Flächen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k5-volumen-zus",
+              "title": "Zusammengesetzte Quader: Volumen",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "dz-daten",
+          "title": "Daten erfassen und auswerten",
+          "topics": [
+            {
+              "id": "st-k5-mittelwert",
+              "title": "Arithmetisches Mittel",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Mittelwert"
+              ]
+            },
+            {
+              "id": "st-k5-sach-preis",
+              "title": "Sachaufgabe: Gesamtpreis",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k5-sach-teilen",
+              "title": "Sachaufgabe: Gerecht aufteilen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k5-sach-mehr",
+              "title": "Sachaufgabe: Mehrstufige Alltagsrechnung",
+              "pointsPerTask": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "st-gym-klasse-6",
+      "title": "Klasse 6",
+      "subjectTitle": "Mathematik",
+      "gradeTitle": "Klasse 6",
+      "description": "Gebrochene Zahlen, Gleichungen, Winkelbeziehungen, Dreiecke und Vierecke, Zuordnungen sowie Daten (ST Schuljahrgänge 5/6).",
+      "searchHints": [
+        "Brüche",
+        "Dezimalzahlen",
+        "Gleichung",
+        "Proportionalität",
+        "Dreisatz",
+        "Dreieck",
+        "Viereck",
+        "Winkel",
+        "Prisma",
+        "Prozent",
+        "Häufigkeit"
+      ],
+      "areas": [
+        {
+          "id": "zg-gebrochen",
+          "title": "Gebrochene Zahlen",
+          "topics": [
+            {
+              "id": "st-k6-bruch-kuerzen",
+              "title": "Brüche kürzen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-bruch-erweitern",
+              "title": "Brüche erweitern",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-bruch-vergleichen",
+              "title": "Brüche vergleichen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-bruch-add",
+              "title": "Brüche addieren und subtrahieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-bruch-mul",
+              "title": "Brüche multiplizieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-bruch-div",
+              "title": "Brüche dividieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-bruch-dez",
+              "title": "Brüche in Dezimalzahlen umwandeln",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-prozent",
+              "title": "In Prozent umwandeln",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-dez-add",
+              "title": "Dezimalzahlen addieren und subtrahieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-dez-mul",
+              "title": "Dezimalzahlen multiplizieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-dez-div",
+              "title": "Dezimalzahlen dividieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-dez-runden",
+              "title": "Dezimalzahlen runden",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "zg-gleichung",
+          "title": "Gleichungen und Ungleichungen",
+          "topics": [
+            {
+              "id": "st-k6-gleichung-add",
+              "title": "Gleichung umstellen: x + a = b",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-gleichung-mul",
+              "title": "Gleichung umstellen: a · x = b",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "rf-winkel",
+          "title": "Winkelbeziehungen",
+          "topics": [
+            {
+              "id": "st-k6-nebenwinkel",
+              "title": "Nebenwinkel berechnen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-scheitelwinkel",
+              "title": "Scheitel- und Stufenwinkel",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "rf-dreieck",
+          "title": "Dreiecke und Vierecke",
+          "topics": [
+            {
+              "id": "st-k6-winkel-dreieck",
+              "title": "Innenwinkelsatz im Dreieck",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-winkel-viereck",
+              "title": "Winkelsumme im Viereck",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-flaeche-dreieck",
+              "title": "Flächeninhalt von Dreiecken",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-kongruenz",
+              "title": "Kongruenzsatz wählen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-volumen-prisma",
+              "title": "Volumen gerader Prismen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-wuerfelnetz",
+              "title": "Würfelnetz erkennen",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "zf-zuordnung",
+          "title": "Zuordnungen, direkte und indirekte Proportionalität",
+          "topics": [
+            {
+              "id": "st-k6-proportional",
+              "title": "Proportionale Zuordnung (Dreisatz)",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-antiproportional",
+              "title": "Antiproportionale Zuordnung",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-dreisatz",
+              "title": "Sachaufgabe: Dreisatz mit Einheiten",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-anteil",
+              "title": "Anteil einer Größe berechnen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k6-anteil-prozent",
+              "title": "Prozent einer Größe berechnen",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "dz-kenngroessen",
+          "title": "Erfassen, Darstellen und Auswerten von Daten",
+          "topics": [
+            {
+              "id": "st-k6-haeufigkeit",
+              "title": "Relative Häufigkeit in Prozent",
+              "pointsPerTask": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "st-gym-klasse-7",
+      "title": "Klasse 7",
+      "subjectTitle": "Mathematik",
+      "gradeTitle": "Klasse 7",
+      "description": "Prozentrechnung, rationale Zahlen, Gleichungen und Terme sowie Körperdarstellung und -berechnung (ST Schuljahrgänge 7/8).",
+      "searchHints": [
+        "Prozent",
+        "Zinsen",
+        "rationale Zahlen",
+        "Terme",
+        "Gleichungen",
+        "Prisma",
+        "Pyramide",
+        "Winkel",
+        "Mittelwert",
+        "Median"
+      ],
+      "areas": [
+        {
+          "id": "zg-prozent",
+          "title": "Prozentrechnung",
+          "topics": [
+            {
+              "id": "st-k7-prozent",
+              "title": "Prozent einer Größe berechnen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k7-zinsen",
+              "title": "Jahreszinsen berechnen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k7-zinseszins",
+              "title": "Zinseszins: Endkapital",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k7-preisaenderung",
+              "title": "Prozentuale Zunahme",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "zg-rational",
+          "title": "Rationale Zahlen und Wurzeln",
+          "topics": [
+            {
+              "id": "st-k7-rat-add",
+              "title": "Rationale Zahlen addieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k7-rat-sub",
+              "title": "Rationale Zahlen subtrahieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k7-rat-mul",
+              "title": "Rationale Zahlen multiplizieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k7-rat-div",
+              "title": "Rationale Zahlen dividieren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k7-betrag",
+              "title": "Betrag einer Zahl",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k7-wurzeln",
+              "title": "Wurzeln und Näherungswerte",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Wurzel",
+                "Näherungswert"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "zg-gleichung",
+          "title": "Gleichungen und Ungleichungen",
+          "topics": [
+            {
+              "id": "st-k7-gleichung",
+              "title": "Lineare Gleichung a·x + b = c",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k7-gleichung-beid",
+              "title": "Gleichung mit x auf beiden Seiten",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "zg-variablen",
+          "title": "Arbeiten mit Variablen",
+          "topics": [
+            {
+              "id": "st-k7-term",
+              "title": "Term mit Rechengesetzen auswerten",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k7-term-auswerten",
+              "title": "Term auswerten (x einsetzen)",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k7-zusammenfassen",
+              "title": "Terme zusammenfassen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k7-ausmult",
+              "title": "Klammer ausmultiplizieren",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "rf-koerper",
+          "title": "Körperdarstellung und Körperberechnung",
+          "topics": [
+            {
+              "id": "st-k7-volumen-prisma",
+              "title": "Volumen gerader Prismen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k7-mantel-prisma",
+              "title": "Mantelfläche eines Prismas",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k7-volumen-pyramide",
+              "title": "Volumen einer Pyramide",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k7-oberflaeche-quader",
+              "title": "Oberfläche eines Quaders",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k7-oberflaeche-pyramide",
+              "title": "Oberfläche einer Pyramide",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k7-winkelsumme",
+              "title": "Innenwinkelsumme im Vieleck",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k7-basiswinkel",
+              "title": "Basiswinkel im gleichschenkligen Dreieck",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k7-mittelsenkrechte",
+              "title": "Mittelsenkrechte: Konstruktionsschritte",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "dz-daten",
+          "title": "Daten und Kenngrößen",
+          "topics": [
+            {
+              "id": "st-k7-mittelwert",
+              "title": "Arithmetisches Mittel",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k7-median",
+              "title": "Median (Zentralwert)",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k7-spannweite",
+              "title": "Spannweite berechnen",
+              "pointsPerTask": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "st-gym-klasse-8",
+      "title": "Klasse 8",
+      "subjectTitle": "Mathematik",
+      "gradeTitle": "Klasse 8",
+      "description": "Kreise, Ähnlichkeit, Satzgruppe des Pythagoras, lineare Funktionen sowie Zufallsversuche (ST Schuljahrgänge 7/8).",
+      "searchHints": [
+        "Kreis",
+        "Zylinder",
+        "Kugel",
+        "Pythagoras",
+        "Ähnlichkeit",
+        "Strahlensatz",
+        "lineare Funktion",
+        "Steigung",
+        "LGS",
+        "Wahrscheinlichkeit",
+        "Laplace"
+      ],
+      "areas": [
+        {
+          "id": "rf-kreis",
+          "title": "Kreise",
+          "topics": [
+            {
+              "id": "st-k8-kreis-umfang",
+              "title": "Umfang eines Kreises",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k8-kreis-flaeche",
+              "title": "Flächeninhalt eines Kreises",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k8-zylinder",
+              "title": "Volumen eines Kreiszylinders",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k8-kugel",
+              "title": "Volumen einer Kugel",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "rf-aehnlich",
+          "title": "Ähnlichkeit",
+          "topics": [
+            {
+              "id": "st-k8-streckfaktor",
+              "title": "Streckfaktor bestimmen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k8-strahlensatz",
+              "title": "Strahlensatz: fehlende Länge",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k8-aehnlich",
+              "title": "Ähnliche Figuren: Seitenlänge",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "rf-pythagoras",
+          "title": "Satzgruppe des Pythagoras",
+          "topics": [
+            {
+              "id": "st-k8-pythagoras-hyp",
+              "title": "Satz des Pythagoras: Hypotenuse",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k8-pythagoras-kat",
+              "title": "Satz des Pythagoras: fehlende Kathete",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k8-leiter",
+              "title": "Pythagoras im Sachkontext",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "zf-linear",
+          "title": "Lineare Funktionen",
+          "topics": [
+            {
+              "id": "st-k8-funktionswert",
+              "title": "Funktionswert einer linearen Funktion",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k8-steigung",
+              "title": "Steigung aus zwei Punkten",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k8-achsen",
+              "title": "y-Achsenabschnitt bestimmen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k8-lgs",
+              "title": "Lineares Gleichungssystem (x bestimmen)",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "dz-zufall",
+          "title": "Zufällige Ereignisse und Wahrscheinlichkeiten",
+          "topics": [
+            {
+              "id": "st-k8-laplace",
+              "title": "Laplace-Wahrscheinlichkeit als Bruch",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k8-laplace-pct",
+              "title": "Laplace-Wahrscheinlichkeit in Prozent",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k8-gegen",
+              "title": "Gegenwahrscheinlichkeit",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k8-mehrstufig",
+              "title": "Mehrstufige Zufallsversuche / Pfadregeln",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Baumdiagramm",
+                "Pfadregel"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "vernetzung",
+          "title": "Vernetzung",
+          "topics": [
+            {
+              "id": "st-k8-zahlenraetsel",
+              "title": "Zahlenrätsel (Gleichung aufstellen)",
+              "pointsPerTask": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "st-gym-klasse-9",
+      "title": "Klasse 9",
+      "subjectTitle": "Mathematik",
+      "gradeTitle": "Klasse 9",
+      "description": "Potenzen und Logarithmen, Trigonometrie, quadratische Gleichungen und Funktionen sowie Häufigkeitsverteilungen.",
+      "searchHints": [
+        "Potenzen",
+        "quadratische Funktion",
+        "Parabel",
+        "Scheitelpunkt",
+        "Trigonometrie",
+        "Sinus",
+        "quadratische Gleichung",
+        "Median",
+        "Modalwert",
+        "Logarithmen"
+      ],
+      "areas": [
+        {
+          "id": "zg-potenz",
+          "title": "Potenzen und Logarithmen",
+          "topics": [
+            {
+              "id": "st-k9-potenz-prod",
+              "title": "Potenzgesetz: Produkt gleicher Basis",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k9-potenz-quot",
+              "title": "Potenzgesetz: Quotient und Potenz einer Potenz",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k9-logarithmen",
+              "title": "Logarithmen und Logarithmusgleichungen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Logarithmus"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rf-trig",
+          "title": "Trigonometrie",
+          "topics": [
+            {
+              "id": "st-k9-trig",
+              "title": "Werte von Sinus, Kosinus, Tangens",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "zf-quadrat",
+          "title": "Quadratische Gleichungen und quadratische Funktionen",
+          "topics": [
+            {
+              "id": "st-k9-quadrat-wert",
+              "title": "Wert einer quadratischen Funktion",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k9-scheitel",
+              "title": "Scheitelpunkt aus der Scheitelform",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k9-reinquadratisch",
+              "title": "Reinquadratische Gleichung x² = a",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k9-gleichung",
+              "title": "Quadratische Gleichung (größere Lösung)",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k9-parabel",
+              "title": "Funktionswert einer Parabel",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "dz-haeufigkeit",
+          "title": "Häufigkeitsverteilungen",
+          "topics": [
+            {
+              "id": "st-k9-mittelwert",
+              "title": "Arithmetisches Mittel",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k9-median",
+              "title": "Median (Zentralwert)",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k9-modal",
+              "title": "Modalwert (häufigster Wert)",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k9-spannweite",
+              "title": "Spannweite berechnen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k9-boxplot",
+              "title": "Histogramm und Boxplot",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Boxplot",
+                "Histogramm"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "st-gym-klasse-10",
+      "title": "Klasse 10 (Einführungsphase)",
+      "subjectTitle": "Mathematik",
+      "gradeTitle": "Klasse 10 (Einführungsphase)",
+      "description": "Funktionsklassen und Wachstum, Vektoren sowie Zufallsgrößen (Einführungsphase).",
+      "searchHints": [
+        "Zinsen",
+        "exponentiell",
+        "Wachstum",
+        "Erwartungswert",
+        "Vektor",
+        "Skalarprodukt",
+        "Funktionsklassen"
+      ],
+      "areas": [
+        {
+          "id": "an-funktionen",
+          "title": "Funktionsklassen",
+          "topics": [
+            {
+              "id": "st-k10-exp",
+              "title": "Exponentielles Wachstum",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k10-zunahme",
+              "title": "Prozentuale Zunahme",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k10-zinsen",
+              "title": "Jahreszinsen berechnen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k10-zinseszins",
+              "title": "Zinseszins: Endkapital",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k10-kapital",
+              "title": "Kapital aus Zinsen bestimmen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k10-zinssatz",
+              "title": "Zinssatz bestimmen",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k10-funk-sin",
+              "title": "Sinus- und Kosinusfunktionen (Funktionsklassen)",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Sinus",
+                "Periodizität"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ag-vektoren",
+          "title": "Vektoren",
+          "topics": [
+            {
+              "id": "st-k10-vektor-skalar",
+              "title": "Skalarprodukt zweier Vektoren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k10-vektor-betrag",
+              "title": "Betrag eines Vektors",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k10-lgs3",
+              "title": "Lineare Gleichungssysteme mit drei Variablen",
+              "pointsPerTask": 10,
+              "keywords": [
+                "LGS"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dz-zufall",
+          "title": "Zufallsgrößen",
+          "topics": [
+            {
+              "id": "st-k10-erwartung",
+              "title": "Erwartungswert eines Glücksrads",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k10-erwartung-wuerfel",
+              "title": "Erwartungswert beim Würfel",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "geo-algebra",
+          "title": "Algebraisches Lösen geometrischer Probleme",
+          "topics": [
+            {
+              "id": "st-k10-rechteck",
+              "title": "Rechteck: Breite aus Fläche",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k10-quadrat-seite",
+              "title": "Quadrat: Seitenlänge aus Fläche",
+              "pointsPerTask": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "st-gym-jgs-11-12-ga",
+      "title": "Jahrgangsstufen 11/12 (grundlegendes Anforderungsniveau)",
+      "subjectTitle": "Mathematik",
+      "gradeTitle": "Jahrgangsstufen 11/12 (gA)",
+      "description": "Differential- und Integralrechnung, analytische Geometrie sowie Binomialverteilung (grundlegendes Anforderungsniveau).",
+      "searchHints": [
+        "Ableitung",
+        "Integral",
+        "Vektoren",
+        "Skalarprodukt",
+        "Binomialverteilung",
+        "Erwartungswert",
+        "Stochastik"
+      ],
+      "areas": [
+        {
+          "id": "an-analysis",
+          "title": "Grundlagen der Infinitesimalrechnung / Differential- und Integralrechnung",
+          "topics": [
+            {
+              "id": "st-k1112-ableitung",
+              "title": "Ableitung eines Polynoms an einer Stelle",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k1112-nullstelle",
+              "title": "Nullstelle einer linearen Funktion",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k1112-integral",
+              "title": "Bestimmtes Integral eines Polynoms",
+              "pointsPerTask": 10
+            }
+          ]
+        },
+        {
+          "id": "ag-raum",
+          "title": "Geraden und Ebenen / Vektoren",
+          "topics": [
+            {
+              "id": "st-k1112-skalar",
+              "title": "Skalarprodukt zweier Vektoren",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k1112-betrag",
+              "title": "Betrag eines Vektors",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k1112-kreise-ag",
+              "title": "Kreise in der analytischen Geometrie",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Kreis",
+                "AG"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dz-stochastik",
+          "title": "Bedingte Wahrscheinlichkeit / Binomialverteilung",
+          "topics": [
+            {
+              "id": "st-k1112-binomial",
+              "title": "Binomialverteilung: P(X = k)",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k1112-erwartung-binom",
+              "title": "Erwartungswert der Binomialverteilung",
+              "pointsPerTask": 10
+            },
+            {
+              "id": "st-k1112-bedingte",
+              "title": "Bedingte Wahrscheinlichkeit",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Vierfeldertafel"
+              ]
+            },
+            {
+              "id": "st-k1112-normal",
+              "title": "Normalverteilung",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Normalverteilung"
+              ]
+            },
+            {
+              "id": "st-k1112-statistik",
+              "title": "Beurteilende Statistik",
+              "pointsPerTask": 10,
+              "keywords": [
+                "Hypothese"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "extras": [],
+  "contentHash": "f6d3358e"
+}

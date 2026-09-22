@@ -1,6 +1,7 @@
 import {
   GYM_SACHSEN_PACK_ID,
   GYM_SACHSEN_PHYSIK_PACK_ID,
+  GYM_SACHSEN_ANHALT_PACK_ID,
   OS_HS_PACK_ID,
   OS_RS_PACK_ID,
   applyCurriculumTombstones,
@@ -16,6 +17,7 @@ import {
   type DeletedCurriculum,
   type InstalledCurriculum,
 } from './pack'
+import { buildGymSachsenAnhaltPack } from './gymSachsenAnhaltPack'
 import { buildOberschuleHsPack, buildOberschuleRsPack } from './oberschulePacks'
 import { buildGymSachsenPhysikPack } from './physikGymPack'
 import { buildGymSachsenSeed } from './seed'
@@ -164,6 +166,7 @@ export function removePack(
 export async function bundledPackById(id: string): Promise<CurriculumPack | null> {
   if (id === GYM_SACHSEN_PACK_ID) return buildGymSachsenSeed()
   if (id === GYM_SACHSEN_PHYSIK_PACK_ID) return buildGymSachsenPhysikPack()
+  if (id === GYM_SACHSEN_ANHALT_PACK_ID) return buildGymSachsenAnhaltPack()
   if (id === OS_HS_PACK_ID) return buildOberschuleHsPack()
   if (id === OS_RS_PACK_ID) return buildOberschuleRsPack()
   return null

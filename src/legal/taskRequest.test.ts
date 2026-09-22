@@ -4,6 +4,7 @@ import { klasse6 } from '../curriculum/math6'
 import {
   GYM_SACHSEN_PACK_ID,
   GYM_SACHSEN_PHYSIK_PACK_ID,
+  GYM_SACHSEN_ANHALT_PACK_ID,
   OS_HS_PACK_ID,
   OS_RS_PACK_ID,
 } from '../curriculum/pack'
@@ -36,6 +37,7 @@ describe('task request Vorgaben', () => {
     expect([...TASK_REQUEST_PACK_IDS]).toEqual([
       GYM_SACHSEN_PACK_ID,
       GYM_SACHSEN_PHYSIK_PACK_ID,
+      GYM_SACHSEN_ANHALT_PACK_ID,
       OS_HS_PACK_ID,
       OS_RS_PACK_ID,
     ])
@@ -44,6 +46,7 @@ describe('task request Vorgaben', () => {
     expect(packs.map((p) => p.title)).toEqual([
       'Gymnasium Sachsen · Mathematik',
       'Gymnasium Sachsen · Physik',
+      'Gymnasium Sachsen-Anhalt · Mathematik',
       'Oberschule Sachsen · Mathematik · Hauptschulbildungsgang',
       'Oberschule Sachsen · Mathematik · Realschulbildungsgang',
     ])
@@ -51,6 +54,8 @@ describe('task request Vorgaben', () => {
     expect(math.grades.some((g) => g.gradeTitle === 'Klasse 6')).toBe(true)
     const physik = packs.find((p) => p.id === GYM_SACHSEN_PHYSIK_PACK_ID)!
     expect(physik.grades.some((g) => g.gradeTitle === 'Klasse 6')).toBe(true)
+    const st = packs.find((p) => p.id === GYM_SACHSEN_ANHALT_PACK_ID)!
+    expect(st.grades.some((g) => g.gradeTitle === 'Klasse 5')).toBe(true)
   })
 
   it('requires Lehrplan, Klassenstufe, Themengebiet, Titel and Aufgabenbeispiel', () => {
