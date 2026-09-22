@@ -192,4 +192,25 @@ describe('dragDropSlots commutativeFactors', () => {
     expect(task.check({ kind: 'dragDropSlots', slots: [2, 1, 0] })).toBe(true)
     expect(task.check({ kind: 'dragDropSlots', slots: [0, 1, 3] })).toBe(false)
   })
+
+  it('endsSwap keeps middle arrow fixed and swaps outer poles', () => {
+    const items = [
+      { label: 'N', value: 1 },
+      { label: '→ ←', value: 2 },
+      { label: 'S', value: 3 },
+      { label: '← →', value: 4 },
+    ]
+    const task = dragDropSlotsTask({
+      question: 'Anziehung',
+      items,
+      correctSlots: [0, 1, 2],
+      solution: 'N → ← S',
+      explanation: 'anziehen',
+      checkMode: 'endsSwap',
+    })
+    expect(task.check({ kind: 'dragDropSlots', slots: [0, 1, 2] })).toBe(true)
+    expect(task.check({ kind: 'dragDropSlots', slots: [2, 1, 0] })).toBe(true)
+    // wrong middle (Abstoßen)
+    expect(task.check({ kind: 'dragDropSlots', slots: [0, 3, 2] })).toBe(false)
+  })
 })

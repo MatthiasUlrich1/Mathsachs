@@ -773,9 +773,27 @@ const fliegen: Topic['generate'] = mixedVariants(
 const reibung: Topic['generate'] = mixedVariants(
   (rng) => {
     const moveRight = pick(rng, [true, false])
+    const dir = moveRight ? 'nach rechts' : 'nach links'
+    const correct = moveRight ? 'nach links' : 'nach rechts'
+    return choicePickTask({
+      question: `Der Klotz bewegt sich ${dir}. In welche Richtung wirkt die Reibungskraft?`,
+      choices: shuffleChoices(
+        rng,
+        [correct, moveRight ? 'nach rechts' : 'nach links', 'immer nach oben', 'immer nach unten'],
+        correct,
+      ),
+      correct,
+      solution: correct,
+      explanation: `Bewegung ${dir} → Reibungskraft ${correct} (entgegen der Bewegung).`,
+      instruction: 'Tippe die Richtung der Reibungskraft:',
+      visualContent: frictionForceSvg({ moveRight }),
+    })
+  },
+  (rng) => {
+    const moveRight = pick(rng, [true, false])
     const correct = 'entgegen der Bewegungsrichtung'
     return choicePickTask({
-      question: 'In welche Richtung wirkt die Reibungskraft F_R am gleitenden Klotz?',
+      question: 'In welche Richtung wirkt die Reibungskraft am gleitenden Klotz?',
       choices: shuffleChoices(
         rng,
         [correct, 'in Bewegungsrichtung', 'immer senkrecht nach oben', 'ohne Richtung'],
@@ -845,24 +863,10 @@ const reibung: Topic['generate'] = mixedVariants(
       explanation: 'Reibung ≠ Gewichtskraft; braucht Kontakt.',
       instruction: 'Tippe alle zutreffenden Aussagen:',
     }),
-  (rng) => {
-    const moveRight = pick(rng, [true, false])
-    const correct = moveRight ? 'nach links' : 'nach rechts'
-    return choicePickTask({
-      question: `Der Klotz bewegt sich ${moveRight ? 'nach rechts' : 'nach links'}. Wohin zeigt F_R?`,
-      choices: shuffleChoices(
-        rng,
-        [correct, moveRight ? 'nach rechts' : 'nach links', 'immer nach oben', 'immer nach unten'],
-        correct,
-      ),
-      correct,
-      solution: correct,
-      explanation: `Bewegung ${moveRight ? 'rechts' : 'links'} → Reibung ${correct}.`,
-      instruction: 'Tippe die Richtung von F_R:',
-      visualContent: frictionForceSvg({ moveRight }),
-    })
-  },
 )
+
+const ATTRACT_BTN = 'Pfeile aufeinander zu (Anziehen)'
+const REPEL_BTN = 'Pfeile voneinander weg (Abstoßen)'
 
 /** LB1 — Magnetische Kräfte */
 const magnet: Topic['generate'] = mixedVariants(
@@ -871,26 +875,21 @@ const magnet: Topic['generate'] = mixedVariants(
     const same = pick(rng, [true, false])
     const right = same ? left : left === 'N' ? 'S' : 'N'
     const attract = !same
-    const correct = attract ? 'sie ziehen sich an' : 'sie stoßen sich ab'
+    const correct = attract ? ATTRACT_BTN : REPEL_BTN
     return choicePickTask({
       question: `Was passiert zwischen den gezeigten Magnetpolen (${left} und ${right})?`,
       choices: shuffleChoices(
         rng,
-        [
-          correct,
-          attract ? 'sie stoßen sich ab' : 'sie ziehen sich an',
-          'es wirkt keine Kraft',
-          'sie erzeugen nur Wärme ohne Kraft',
-        ],
+        [correct, attract ? REPEL_BTN : ATTRACT_BTN, 'es wirkt keine Kraft', 'nur Wärme ohne Kraft'],
         correct,
       ),
       correct,
       solution: correct,
       explanation: attract
-        ? 'Ungleichnamige Pole (N–S) ziehen sich an.'
-        : 'Gleichnamige Pole (N–N oder S–S) stoßen sich ab.',
+        ? 'Ungleichnamige Pole (N–S) ziehen sich an — Kräfte zeigen aufeinander zu.'
+        : 'Gleichnamige Pole (N–N oder S–S) stoßen sich ab — Kräfte zeigen voneinander weg.',
       instruction: 'Tippe die passende Wirkung:',
-      visualContent: magnetPolesSvg({ left, right, attract }),
+      visualContent: magnetPolesSvg({ left, right }),
     })
   },
   (rng) => {
@@ -948,18 +947,37 @@ const magnet: Topic['generate'] = mixedVariants(
     }),
   (_rng) =>
     dragDropSlotsTask({
-      question: 'Baue die Zuordnung für die Anziehung ungleichnamiger Pole. Einen Block brauchst du nicht.',
+      question:
+        'Baue die Zuordnung für die Anziehung ungleichnamiger Pole. Einen Block brauchst du nicht.',
       items: [
         { label: 'N', value: 0 },
-        { label: '↔', value: 1 },
+        { label: '→ ←', value: 1 },
         { label: 'S', value: 2 },
-        { label: 'N ↔ N', value: 3 },
+        { label: '← →', value: 3 },
       ],
       correctSlots: [0, 1, 2],
-      solution: 'N ↔ S (anziehen)',
-      explanation: 'Ungleichnamige Pole ziehen sich an — Reihenfolge N↔S oder S↔N ist gleichwertig.',
-      checkMode: 'anyOrder',
+      solution: 'N → ← S (anziehen)',
+      explanation:
+        'Anziehung: Pfeile aufeinander zu (→ ←). N und S dürfen vertauscht sein (S → ← N).',
+      checkMode: 'endsSwap',
     }),
+  (rng) => {
+    const left = pick(rng, ['N', 'S'] as const)
+    const right = left
+    return choicePickTask({
+      question: `Gleichnamige Pole (${left} und ${right}): Welche Wirkung?`,
+      choices: shuffleChoices(
+        rng,
+        [REPEL_BTN, ATTRACT_BTN, 'es wirkt keine Kraft', 'nur Wärme ohne Kraft'],
+        REPEL_BTN,
+      ),
+      correct: REPEL_BTN,
+      solution: REPEL_BTN,
+      explanation: 'Gleichnamige Pole stoßen sich ab — Kräfte voneinander weg.',
+      instruction: 'Tippe die passende Wirkung:',
+      visualContent: magnetPolesSvg({ left, right }),
+    })
+  },
 )
 
 /** LB1 — Elektrostatische Kräfte */
@@ -969,26 +987,21 @@ const elektrostatik: Topic['generate'] = mixedVariants(
     const same = pick(rng, [true, false])
     const right = same ? left : left === '+' ? '−' : '+'
     const attract = !same
-    const correct = attract ? 'sie ziehen sich an' : 'sie stoßen sich ab'
+    const correct = attract ? ATTRACT_BTN : REPEL_BTN
     return choicePickTask({
       question: `Was passiert zwischen den gezeigten Ladungen (${left} und ${right})?`,
       choices: shuffleChoices(
         rng,
-        [
-          correct,
-          attract ? 'sie stoßen sich ab' : 'sie ziehen sich an',
-          'Ladungen wirken nie aufeinander',
-          'es entsteht nur Schall',
-        ],
+        [correct, attract ? REPEL_BTN : ATTRACT_BTN, 'Ladungen wirken nie', 'nur Schall ohne Kraft'],
         correct,
       ),
       correct,
       solution: correct,
       explanation: attract
-        ? 'Ungleichnamige Ladungen (+ und −) ziehen sich an.'
-        : 'Gleichnamige Ladungen (+/+ oder −/−) stoßen sich ab.',
+        ? 'Ungleichnamige Ladungen (+ und −) ziehen sich an — aufeinander zu.'
+        : 'Gleichnamige Ladungen stoßen sich ab — voneinander weg.',
       instruction: 'Tippe die passende Wirkung:',
-      visualContent: chargeForceSvg({ left, right, attract }),
+      visualContent: chargeForceSvg({ left, right }),
     })
   },
   (rng) => {
@@ -1050,32 +1063,31 @@ const elektrostatik: Topic['generate'] = mixedVariants(
         'Baue die Zuordnung für die Anziehung ungleichnamiger Ladungen. Einen Block brauchst du nicht.',
       items: [
         { label: '+', value: 0 },
-        { label: '↔', value: 1 },
+        { label: '→ ←', value: 1 },
         { label: '−', value: 2 },
-        { label: '+ ↔ +', value: 3 },
+        { label: '← →', value: 3 },
       ],
       correctSlots: [0, 1, 2],
-      solution: '+ ↔ − (anziehen)',
+      solution: '+ → ← − (anziehen)',
       explanation:
-        'Ungleichnamige Ladungen ziehen sich an — Blöcke + ↔ − und − ↔ + sind inhaltlich gleich.',
-      checkMode: 'anyOrder',
+        'Anziehung: Pfeile aufeinander zu (→ ←). + und − dürfen vertauscht sein (− → ← +).',
+      checkMode: 'endsSwap',
     }),
   (rng) => {
     const left = pick(rng, ['+', '−'] as const)
-    const right = left === '+' ? '−' : '+'
-    const correct = 'anziehen'
+    const right = left
     return choicePickTask({
-      question: 'Welche Kraftwirkung zeigt die Skizze (Pfeile zueinander)?',
+      question: `Gleichnamige Ladungen (${left} und ${right}): Welche Wirkung?`,
       choices: shuffleChoices(
         rng,
-        [correct, 'abstoßen', 'keine Kraft', 'nur Magnetkraft ohne Ladung'],
-        correct,
+        [REPEL_BTN, ATTRACT_BTN, 'Ladungen wirken nie', 'nur Magnetkraft ohne Ladung'],
+        REPEL_BTN,
       ),
-      correct,
-      solution: correct,
-      explanation: `${left} und ${right} sind ungleichnamig → Anziehung.`,
-      instruction: 'Tippe die Wirkung:',
-      visualContent: chargeForceSvg({ left, right, attract: true }),
+      correct: REPEL_BTN,
+      solution: REPEL_BTN,
+      explanation: 'Gleichnamige Ladungen stoßen sich ab — voneinander weg.',
+      instruction: 'Tippe die passende Wirkung:',
+      visualContent: chargeForceSvg({ left, right }),
     })
   },
 )

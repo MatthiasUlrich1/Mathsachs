@@ -759,23 +759,28 @@ export function daemmstoffCompareSvg(): string {
 </svg>`
 }
 
-/** Zwei Magnetpole: anziehen oder abstoßen. */
+/** Zwei Magnetpole — optional ohne Richtungspfeile (Schüler wählt Anziehen/Abstoßen). */
 export function magnetPolesSvg(opts: {
   left: 'N' | 'S'
   right: 'N' | 'S'
-  /** true = Anziehung (Pfeile zueinander), false = Abstoßung */
-  attract: boolean
+  /** @deprecated Prefer showArrows; kept for call sites that pass attract. */
+  attract?: boolean
+  /** Wenn false (Default), keine Pfeile — nur die Pole. */
+  showArrows?: boolean
 }): string {
-  const { left, right, attract } = opts
+  const { left, right } = opts
+  const showArrows = opts.showArrows === true
+  const attract = opts.attract !== false
   const leftFill = left === 'N' ? '#ef4444' : '#3b82f6'
   const rightFill = right === 'N' ? '#ef4444' : '#3b82f6'
-  const arrows = attract
-    ? `<path d="M150 90 H190" stroke="#16a34a" stroke-width="3" marker-end="url(#arrG)"/>
+  const arrows = !showArrows
+    ? ''
+    : attract
+      ? `<path d="M150 90 H190" stroke="#16a34a" stroke-width="3" marker-end="url(#arrG)"/>
   <path d="M250 90 H210" stroke="#16a34a" stroke-width="3" marker-end="url(#arrG)"/>`
-    : `<path d="M130 90 H90" stroke="#dc2626" stroke-width="3" marker-end="url(#arrR)"/>
+      : `<path d="M130 90 H90" stroke="#dc2626" stroke-width="3" marker-end="url(#arrR)"/>
   <path d="M270 90 H310" stroke="#dc2626" stroke-width="3" marker-end="url(#arrR)"/>`
-  const caption = attract ? 'anziehen' : 'abstoßen'
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" width="400" height="160" role="img" aria-label="Magnetpole ${caption}">
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" width="400" height="160" role="img" aria-label="Magnetpole ${left} und ${right}">
   <defs>
     <marker id="arrG" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#16a34a"/></marker>
     <marker id="arrR" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#dc2626"/></marker>
@@ -790,21 +795,26 @@ export function magnetPolesSvg(opts: {
 </svg>`
 }
 
-/** Zwei Ladungen: anziehen oder abstoßen. */
+/** Zwei Ladungen — optional ohne Richtungspfeile. */
 export function chargeForceSvg(opts: {
   left: '+' | '−'
   right: '+' | '−'
-  attract: boolean
+  attract?: boolean
+  showArrows?: boolean
 }): string {
-  const { left, right, attract } = opts
+  const { left, right } = opts
+  const showArrows = opts.showArrows === true
+  const attract = opts.attract !== false
   const leftFill = left === '+' ? '#ef4444' : '#3b82f6'
   const rightFill = right === '+' ? '#ef4444' : '#3b82f6'
-  const arrows = attract
-    ? `<path d="M155 90 H185" stroke="#16a34a" stroke-width="3" marker-end="url(#cArrG)"/>
+  const arrows = !showArrows
+    ? ''
+    : attract
+      ? `<path d="M155 90 H185" stroke="#16a34a" stroke-width="3" marker-end="url(#cArrG)"/>
   <path d="M245 90 H215" stroke="#16a34a" stroke-width="3" marker-end="url(#cArrG)"/>`
-    : `<path d="M125 90 H95" stroke="#dc2626" stroke-width="3" marker-end="url(#cArrR)"/>
+      : `<path d="M125 90 H95" stroke="#dc2626" stroke-width="3" marker-end="url(#cArrR)"/>
   <path d="M275 90 H305" stroke="#dc2626" stroke-width="3" marker-end="url(#cArrR)"/>`
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" width="400" height="160" role="img" aria-label="Ladungen">
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" width="400" height="160" role="img" aria-label="Ladungen ${left} und ${right}">
   <defs>
     <marker id="cArrG" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#16a34a"/></marker>
     <marker id="cArrR" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#dc2626"/></marker>
@@ -819,23 +829,28 @@ export function chargeForceSvg(opts: {
 </svg>`
 }
 
-/** Klotz auf Unterlage mit Reibungskraft-Pfeil (entgegen der Bewegung). */
+/** Klotz auf Unterlage mit Bewegungsrichtung v — ohne F_R (Schüler bestimmt die Richtung). */
 export function frictionForceSvg(opts: {
   /** Bewegungsrichtung nach rechts */
   moveRight: boolean
+  /** F_R-Pfeil nur wenn explizit gewünscht (Default: aus). */
+  showFrictionArrow?: boolean
 }): string {
   const move = opts.moveRight
+  const showFr = opts.showFrictionArrow === true
   const vArrow = move
     ? `<path d="M210 70 H280" stroke="#2563eb" stroke-width="3" marker-end="url(#fArrB)"/>
   <text x="245" y="58" text-anchor="middle" fill="#2563eb" font-size="12" font-family="system-ui,sans-serif">v</text>`
     : `<path d="M190 70 H120" stroke="#2563eb" stroke-width="3" marker-end="url(#fArrB)"/>
   <text x="155" y="58" text-anchor="middle" fill="#2563eb" font-size="12" font-family="system-ui,sans-serif">v</text>`
-  const fArrow = move
-    ? `<path d="M190 118 H120" stroke="#dc2626" stroke-width="3" marker-end="url(#fArrR)"/>
+  const fArrow = !showFr
+    ? ''
+    : move
+      ? `<path d="M190 118 H120" stroke="#dc2626" stroke-width="3" marker-end="url(#fArrR)"/>
   <text x="155" y="142" text-anchor="middle" fill="#dc2626" font-size="12" font-family="system-ui,sans-serif">F_R</text>`
-    : `<path d="M210 118 H280" stroke="#dc2626" stroke-width="3" marker-end="url(#fArrR)"/>
+      : `<path d="M210 118 H280" stroke="#dc2626" stroke-width="3" marker-end="url(#fArrR)"/>
   <text x="245" y="142" text-anchor="middle" fill="#dc2626" font-size="12" font-family="system-ui,sans-serif">F_R</text>`
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 170" width="400" height="170" role="img" aria-label="Reibungskraft">
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 170" width="400" height="170" role="img" aria-label="Klotz mit Bewegung">
   <defs>
     <marker id="fArrB" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#2563eb"/></marker>
     <marker id="fArrR" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#dc2626"/></marker>
@@ -846,7 +861,7 @@ export function frictionForceSvg(opts: {
   <text x="200" y="110" text-anchor="middle" fill="#1e293b" font-size="13" font-family="system-ui,sans-serif">Klotz</text>
   ${vArrow}
   ${fArrow}
-  <text x="200" y="24" text-anchor="middle" fill="#334155" font-size="13" font-family="system-ui,sans-serif">Reibung wirkt der Bewegung entgegen</text>
+  <text x="200" y="24" text-anchor="middle" fill="#334155" font-size="13" font-family="system-ui,sans-serif">Bewegung des Klotzes</text>
 </svg>`
 }
 

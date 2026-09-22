@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.89] – 2026-09-22
+
+### Behoben
+- **Reibung (2021):** F_R-Pfeil nicht mehr in der Skizze (nur v); Frage
+  „In welche Richtung wirkt die Reibungskraft?“.
+- **Magnet (4779) & Elektrostatik (7321):** keine Spoiler-Pfeile in der Skizze;
+  Antwort-Buttons „Pfeile aufeinander zu (Anziehen)“ / „voneinander weg
+  (Abstoßen)“; Formelblöcke mit →← (Anziehen) vs ←→ (Abstoßen); N/S bzw. +/−
+  vertauschbar (`endsSwap`). Physik-Pack **2.5.19**.
+
 ## [0.27.88] – 2026-09-22
 
 ### Geändert

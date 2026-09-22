@@ -713,11 +713,11 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
         },
       ],
       ...formulaSort(
-        ['N', '↔', 'S'],
+        ['N', '→ ←', 'S'],
         'die Anziehung ungleichnamiger Pole',
-        'N ↔ S (anziehen)',
-        'N ↔ N',
-        'anyOrder',
+        'N → ← S (anziehen)',
+        '← →',
+        'endsSwap',
       ),
     }
   }
@@ -742,11 +742,11 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
         },
       ],
       ...formulaSort(
-        ['+', '↔', '−'],
+        ['+', '→ ←', '−'],
         'die Anziehung ungleichnamiger Ladungen',
-        '+ ↔ − (anziehen)',
-        '+ ↔ +',
-        'anyOrder',
+        '+ → ← − (anziehen)',
+        '← →',
+        'endsSwap',
       ),
     }
   }
