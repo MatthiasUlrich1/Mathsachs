@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-22T17:12:13.667Z",
+  "updatedAt": "2026-09-22T17:31:06.149Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -18,10 +18,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "2.5.20",
+      "version": "2.5.21",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 134780,
-      "changelog": "K7 LB2 Stromkreis: Stromstärke/Spannung/Ohm/Reihe/Parallel/Messen mit Skizzen; Magnet/Elektrostatik Pfeil-Buttons; Reibung+Magnet+Elektrostatik freigegeben."
+      "size": 134848,
+      "changelog": "K7 LB2: Bilder nur bei Mess-/Schaltungsbezug; offener Schalter bei „ohne geschlossen“; kein Formel-Spoiler in U-Rechnung; Reihe/Parallel mit Glühlampen und geschlossenem Schalter (keine Schein-Lücke); mehr U/I-Aufgaben."
     },
     {
       "id": "gym-sachsen-anhalt",

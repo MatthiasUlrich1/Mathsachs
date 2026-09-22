@@ -662,7 +662,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           ] as const
           const [a, b, req] = pick(rng, [...pairs])
           return {
-            q: `Zwei Widerstände parallel: R₁ = ${a} Ω, R₂ = ${b} Ω. Gesamtwiderstand?`,
+            q: `Zwei Glühlampen parallel: R₁ = ${a} Ω, R₂ = ${b} Ω. Gesamtwiderstand?`,
             answerKind: 'integer',
             unit: 'Ω',
             value: req,
@@ -674,7 +674,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
         const r2 = pick(rng, [2, 3, 4, 5, 6])
         const r = r1 + r2
         return {
-          q: `Zwei Widerstände in Reihe: R₁ = ${r1} Ω, R₂ = ${r2} Ω. Gesamtwiderstand?`,
+          q: `Zwei Glühlampen in Reihe: R₁ = ${r1} Ω, R₂ = ${r2} Ω. Gesamtwiderstand?`,
           answerKind: 'integer',
           unit: 'Ω',
           value: r,
@@ -687,8 +687,8 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           ? ['1/R', '=', '1/R₁', '+', '1/R₂']
           : ['R', '=', 'R₁', '+', 'R₂'],
         parallel || /parallel/.test(lower)
-          ? 'den Gesamtwiderstand von parallel geschalteten Widerständen'
-          : 'den Gesamtwiderstand von in Reihe geschalteten Widerständen',
+          ? 'den Gesamtwiderstand von parallel geschalteten Glühlampen'
+          : 'den Gesamtwiderstand von in Reihe geschalteten Glühlampen',
         parallel || /parallel/.test(lower) ? '1/R = 1/R₁ + 1/R₂' : 'R = R₁ + R₂',
         '· U',
       ),
@@ -777,12 +777,12 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
         const t = pick(rng, [1, 2, 5])
         const i = q / t
         return {
-          q: `Ladung Q = ${q} C fließt in t = ${t} s. Berechne die Stromstärke I = Q/t.`,
+          q: `Ladung Q = ${q} C fließt in t = ${t} s. Berechne die Stromstärke I.`,
           answerKind: i % 1 === 0 ? 'integer' : 'decimal',
           unit: 'A',
           value: i,
           solution: `${i} A`,
-          explanation: `I = ${q}/${t} = ${i} A.`,
+          explanation: `I = Q / t = ${q}/${t} = ${i} A.`,
         }
       },
       ...formulaSort(['I', '=', 'Q', '/', 't'], 'die Stromstärke', 'I = Q / t', '· R'),
@@ -813,12 +813,12 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
         const r = pick(rng, [2, 3, 4, 5])
         const u = i * r
         return {
-          q: `I = ${i} A, R = ${r} Ω. Berechne die Spannung U = R·I.`,
+          q: `I = ${i} A, R = ${r} Ω. Berechne die Spannung U.`,
           answerKind: 'integer',
           unit: 'V',
           value: u,
           solution: `${u} V`,
-          explanation: `U = ${r}·${i} = ${u} V.`,
+          explanation: `U = R · I = ${r}·${i} = ${u} V.`,
         }
       },
       ...formulaSort(['U', '=', 'R', '· I'], 'die Spannung', 'U = R · I', '/ t', 'commutativeFactors'),

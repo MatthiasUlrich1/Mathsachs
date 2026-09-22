@@ -273,19 +273,14 @@ export function circuitSvg(
       : device === 'LED'
         ? ledGlyph(220, 36)
         : lampGlyph(220, 36)
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150" width="300" height="150" role="img" aria-label="Einfacher Stromkreis">
+  const switchPart = closed
+    ? closedSwitch(110, 160, 36)
+    : openSwitch(110, 160, 36)
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150" width="300" height="150" role="img" aria-label="${closed ? 'Geschlossener' : 'Offener'} Stromkreis">
   <rect width="300" height="150" fill="#f8fafc"/>
   ${batteryOnRail(40, 75)}
   <path d="M40 47 V36 H110" stroke="#334155" stroke-width="2.5" fill="none"/>
-  ${
-    closed
-      ? `<circle cx="110" cy="36" r="3.5" fill="#334155"/>
-  <path d="M110 36 H160" stroke="#334155" stroke-width="2.5" fill="none"/>
-  <circle cx="160" cy="36" r="3.5" fill="#334155"/>`
-      : `<circle cx="110" cy="36" r="3.5" fill="#334155"/>
-  <path d="M110 36 L148 20" stroke="#334155" stroke-width="2.5" fill="none"/>
-  <circle cx="160" cy="36" r="3.5" fill="#334155"/>`
-  }
+  ${switchPart}
   <path d="M160 36 H200" stroke="#334155" stroke-width="2.5" fill="none"/>
   ${consumer}
   <path d="M236 36 H270 V114 H40 V${75 + 28}" stroke="#334155" stroke-width="2.5" fill="none"/>
@@ -448,18 +443,32 @@ function openSwitch(x0: number, x1: number, y: number): string {
   <path d="M${mid + 14} ${y} H${x1}" stroke="#334155" stroke-width="2.5" fill="none"/>`
 }
 
+/** Closed switch on a horizontal wire (contacts connected). */
+function closedSwitch(x0: number, x1: number, y: number): string {
+  const mid = (x0 + x1) / 2
+  return `<path d="M${x0} ${y} H${x1}" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <circle cx="${mid - 14}" cy="${y}" r="3.5" fill="#334155"/>
+  <circle cx="${mid + 14}" cy="${y}" r="3.5" fill="#334155"/>`
+}
+
 /**
- * Reihe / Parallel as school Schaltbilder (IEC-like).
- * No solution captions — pupils must read the topology themselves.
+ * Reihe / Parallel as school Schaltbilder (IEC-like Glühlampen).
+ * Closed switch by default so the topology is readable (no faux „Kabelbruch“).
  */
-export function seriesParallelSvg(kind: 'series' | 'parallel'): string {
+export function seriesParallelSvg(
+  kind: 'series' | 'parallel',
+  opts?: { switchClosed?: boolean },
+): string {
+  const switchClosed = opts?.switchClosed !== false
+  const sw = (x0: number, x1: number, y: number) =>
+    switchClosed ? closedSwitch(x0, x1, y) : openSwitch(x0, x1, y)
   if (kind === 'series') {
     // One loop: battery left, switch top, two lamps in series on the top rail.
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160" role="img" aria-label="Reihenschaltung">
   <rect width="320" height="160" fill="#f8fafc"/>
   ${batteryOnRail(40, 80)}
   <path d="M40 52 V36 H90" stroke="#334155" stroke-width="2.5" fill="none"/>
-  ${openSwitch(90, 150, 36)}
+  ${sw(90, 150, 36)}
   <path d="M150 36 H170" stroke="#334155" stroke-width="2.5" fill="none"/>
   ${lampGlyph(186, 36)}
   <path d="M202 36 H218" stroke="#334155" stroke-width="2.5" fill="none"/>
@@ -472,16 +481,17 @@ export function seriesParallelSvg(kind: 'series' | 'parallel'): string {
   <rect width="320" height="180" fill="#f8fafc"/>
   ${batteryOnRail(40, 90)}
   <path d="M40 62 V40 H90" stroke="#334155" stroke-width="2.5" fill="none"/>
-  ${openSwitch(90, 150, 40)}
+  ${sw(90, 150, 40)}
   <path d="M150 40 H200" stroke="#334155" stroke-width="2.5" fill="none"/>
   <path d="M200 40 V64" stroke="#334155" stroke-width="2.5" fill="none"/>
   ${lampGlyph(200, 82)}
   <path d="M200 98 V140" stroke="#334155" stroke-width="2.5" fill="none"/>
-  <path d="M200 40 H260" stroke="#334155" stroke-width="2.5" fill="none"/>
-  <path d="M260 40 V64" stroke="#334155" stroke-width="2.5" fill="none"/>
-  ${lampGlyph(260, 82)}
-  <path d="M260 98 V140 H40 V118" stroke="#334155" stroke-width="2.5" fill="none"/>
-  <path d="M200 140 H260" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <path d="M200 40 H250" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <path d="M250 40 V64" stroke="#334155" stroke-width="2.5" fill="none"/>
+  ${lampGlyph(250, 82)}
+  <path d="M250 98 V140" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <path d="M200 140 H250" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <path d="M225 140 H280 V140 H40 V118" stroke="#334155" stroke-width="2.5" fill="none"/>
 </svg>`
 }
 

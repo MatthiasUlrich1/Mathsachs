@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.20',
+    version: '2.5.21',
     changelog:
-      'K7 LB2 Stromkreis: Stromstärke/Spannung/Ohm/Reihe/Parallel/Messen mit Skizzen; Magnet/Elektrostatik Pfeil-Buttons; Reibung+Magnet+Elektrostatik freigegeben.',
+      'K7 LB2: Bilder nur bei Mess-/Schaltungsbezug; offener Schalter bei „ohne geschlossen“; kein Formel-Spoiler in U-Rechnung; Reihe/Parallel mit Glühlampen und geschlossenem Schalter (keine Schein-Lücke); mehr U/I-Aufgaben.',
     official,
     extras: [],
   }

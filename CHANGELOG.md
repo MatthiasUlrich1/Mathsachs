@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.93] – 2026-09-22
+
+### Geändert
+- **K7 LB2 Stromkreis (Feedback):** Bilder nur wo sinnvoll (keine Deko-Schaltbilder
+  bei reinen Text-/Rechenaufgaben); Stromstärke (8414) mit offenem Schalter bei
+  „ohne geschlossen“; Spannung (9744) ohne Formel-Spoiler in der Aufgabe;
+  Zusammenhang U/I (7273) mit mehr echten U/I-Aufgaben; Ohm (5904) ohne
+  überflüssige Skizzen; Reihe (1841) / Parallel (8981) mit Glühlampen-Schaltbildern
+  und geschlossenem Schalter (keine Schein-Lücke); Messen (1589) ohne falsche
+  Kabel-Lücke. Physik-Pack **2.5.21**.
+
 ## [0.27.92] – 2026-09-22
 
 ### Geändert

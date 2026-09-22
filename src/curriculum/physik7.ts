@@ -393,11 +393,13 @@ const stromstaerke: Topic['generate'] = mixedVariants(
         q: 'Womit misst man die Stromstärke?',
         correct: 'mit dem Amperemeter (in Reihe)',
         wrong: ['mit dem Voltmeter parallel als einzige Option', 'nur mit dem Lineal', 'nur mit der Waage'],
+        visual: 'ammeter' as const,
       },
       {
         q: 'Ohne geschlossenen Stromkreis ist die Stromstärke …',
         correct: 'null (kein Stromfluss)',
         wrong: ['immer maximal', 'unendlich', 'gleich der Spannung in Volt'],
+        visual: 'open' as const,
       },
       {
         q: 'Welche Formel verbindet Stromstärke I, Ladung Q und Zeit t?',
@@ -413,7 +415,11 @@ const stromstaerke: Topic['generate'] = mixedVariants(
       solution: c.correct,
       explanation: 'Stromstärke I in Ampere: I = Q/t. Messung mit Amperemeter in Reihe.',
       instruction: 'Tippe die passende Aussage:',
-      visualContent: circuitSvg(true, 'Lampe'),
+      ...('visual' in c && c.visual === 'open'
+        ? { visualContent: circuitSvg(false, 'Lampe') }
+        : 'visual' in c && c.visual === 'ammeter'
+          ? { visualContent: meterWiredCircuitSvg({ meter: 'A' }) }
+          : {}),
     })
   },
   (rng) => {
@@ -423,22 +429,22 @@ const stromstaerke: Topic['generate'] = mixedVariants(
       const t2 = 2
       const I = Q / t2
       return valueTask({
-        question: `Durch einen Leiter fließt die Ladung Q = ${Q} C in t = ${t2} s. Berechne die Stromstärke I = Q/t.`,
+        question: `Durch einen Leiter fließt die Ladung Q = ${Q} C in t = ${t2} s. Berechne die Stromstärke I.`,
         answerKind: 'integer',
         unit: 'A',
         value: I,
         solution: `${I} A`,
-        explanation: `I = ${Q}/${t2} = ${I} A.`,
+        explanation: `I = Q / t = ${Q}/${t2} = ${I} A.`,
       })
     }
     const I = Q / t
     return valueTask({
-      question: `Durch einen Leiter fließt die Ladung Q = ${Q} C in t = ${t} s. Berechne die Stromstärke I = Q/t.`,
+      question: `Durch einen Leiter fließt die Ladung Q = ${Q} C in t = ${t} s. Berechne die Stromstärke I.`,
       answerKind: 'integer',
       unit: 'A',
       value: I,
       solution: `${I} A`,
-      explanation: `I = ${Q}/${t} = ${I} A.`,
+      explanation: `I = Q / t = ${Q}/${t} = ${I} A.`,
     })
   },
   (_rng) =>
@@ -491,16 +497,12 @@ const spannung: Topic['generate'] = mixedVariants(
         q: 'Womit misst man die Spannung?',
         correct: 'mit dem Voltmeter (parallel zum Bauteil)',
         wrong: ['nur mit dem Amperemeter in Reihe als Kurzschluss', 'nur mit dem Lineal', 'nur mit der Waage'],
+        visual: 'voltmeter' as const,
       },
       {
         q: 'An den Polen einer Batterie misst man …',
         correct: 'die Quellenspannung (näherungsweise)',
         wrong: ['nur die Masse in kg', 'nur den Kurzschlussstrom ohne Gerät', 'die Temperatur der Luft'],
-      },
-      {
-        q: 'Welche Formel gilt oft für die Spannung an einem Widerstand (Ohmsches Bild)?',
-        correct: 'U = R · I',
-        wrong: ['U = R / I', 'U = R + I', 'U = I / R'],
       },
     ] as const
     const c = pick(rng, [...cases])
@@ -511,7 +513,9 @@ const spannung: Topic['generate'] = mixedVariants(
       solution: c.correct,
       explanation: 'Spannung U in Volt; Messung parallel mit Voltmeter.',
       instruction: 'Tippe die passende Aussage:',
-      visualContent: circuitSvg(true, 'Lampe'),
+      ...('visual' in c && c.visual === 'voltmeter'
+        ? { visualContent: meterWiredCircuitSvg({ meter: 'V' }) }
+        : {}),
     })
   },
   (rng) => {
@@ -519,17 +523,17 @@ const spannung: Topic['generate'] = mixedVariants(
     const I = pick(rng, [2, 3, 4])
     const U = R * I
     return valueTask({
-      question: `An einem Widerstand gelten R = ${R} Ω und I = ${I} A. Berechne die Spannung U = R·I.`,
+      question: `An einem Widerstand gelten R = ${R} Ω und I = ${I} A. Berechne die Spannung U.`,
       answerKind: 'integer',
       unit: 'V',
       value: U,
       solution: `${U} V`,
-      explanation: `U = ${R}·${I} = ${U} V.`,
+      explanation: `U = R · I = ${R}·${I} = ${U} V.`,
     })
   },
   (_rng) =>
     dragDropSlotsTask({
-      question: 'Baue die Formel für die Spannung U = R·I. Einen Block brauchst du nicht.',
+      question: 'Baue die Formel für die Spannung am Widerstand. Einen Block brauchst du nicht.',
       items: [
         { label: 'U', value: 0 },
         { label: '=', value: 1 },
@@ -568,14 +572,14 @@ const strom: Topic['generate'] = mixedVariants(
   (rng) => {
     const cases = [
       {
-        q: 'Was braucht ein einfacher Stromkreis mindestens?',
-        correct: 'Spannungsquelle und geschlossenen Leiterweg',
-        wrong: ['nur eine Lampe ohne Batterie', 'nur Luft als Leiter', 'keinen Schalterweg je'],
-      },
-      {
         q: 'Wenn die Spannung an einem ohmschen Verbraucher steigt (R gleich), wird die Stromstärke …',
         correct: 'größer',
         wrong: ['immer kleiner', 'immer null', 'unabhängig von U immer gleich'],
+      },
+      {
+        q: 'Was gilt qualitativ: höhere Spannung bei gleichem Widerstand → …',
+        correct: 'größere Stromstärke',
+        wrong: ['kleinere Stromstärke', 'keine Wirkung', 'nur mehr Masse'],
       },
       {
         q: 'Stromstärke und Spannung sind …',
@@ -583,14 +587,14 @@ const strom: Topic['generate'] = mixedVariants(
         wrong: ['dieselbe Größe mit derselben Einheit', 'nur Temperaturen', 'nur Massen'],
       },
       {
-        q: 'Ein geöffneter Schalter bedeutet typischerweise …',
-        correct: 'kein Stromfluss (Kreis unterbrochen)',
-        wrong: ['doppelte Stromstärke', 'Kurzschluss immer', 'Spannung wird null an der Batterie immer'],
+        q: 'Kleine Spannung bei gleichem Widerstand bedeutet typischerweise …',
+        correct: 'kleine Stromstärke',
+        wrong: ['immer große Stromstärke', 'keinen Zusammenhang', 'nur mehr Wärme ohne Strom'],
       },
       {
-        q: 'Was gilt qualitativ: höhere Spannung bei gleichem Widerstand → …',
-        correct: 'größere Stromstärke',
-        wrong: ['kleinere Stromstärke', 'keine Wirkung', 'nur mehr Masse'],
+        q: 'Einheit der Stromstärke und der Spannung?',
+        correct: 'Ampere (A) und Volt (V)',
+        wrong: ['beide Ampere', 'beide Volt', 'Watt und Ohm'],
       },
     ] as const
     const c = pick(rng, [...cases])
@@ -600,9 +604,8 @@ const strom: Topic['generate'] = mixedVariants(
       correct: c.correct,
       solution: c.correct,
       explanation:
-        'Spannung treibt; Strom fließt im geschlossenen Kreis. Ohmsche Rechnungen gehören zum Thema Ohmsches Gesetz.',
+        'Spannung treibt; Strom fließt. Qualitativ: bei gleichem R steigt I mit U. Zahlen mit R = U/I gehören zum Ohmschen Gesetz.',
       instruction: 'Tippe die passende Aussage:',
-      visualContent: circuitSvg(pick(rng, [true, false]), 'Lampe'),
     })
   },
   (rng) => {
@@ -631,51 +634,42 @@ const strom: Topic['generate'] = mixedVariants(
   },
   (_rng) =>
     multiSelectTask({
-      question: 'Welche Aussagen zu Stromkreisen stimmen? (mehrere möglich)',
+      question: 'Welche Aussagen zu Spannung und Stromstärke stimmen? (mehrere möglich)',
       choices: [
         'Stromstärke wird in Ampere gemessen',
         'Spannung wird in Volt gemessen',
-        'Ohne geschlossenen Stromkreis fließt kein Strom',
+        'Bei gleichem Widerstand wächst I typischerweise mit U',
         'Widerstand wird in Ampere gemessen',
         'Spannung und Stromstärke sind dieselbe Größe',
       ],
       correct: [
         'Stromstärke wird in Ampere gemessen',
         'Spannung wird in Volt gemessen',
-        'Ohne geschlossenen Stromkreis fließt kein Strom',
+        'Bei gleichem Widerstand wächst I typischerweise mit U',
       ],
-      solution: 'A und V; geschlossener Kreis nötig.',
-      explanation: 'Widerstand hat die Einheit Ohm — und Ohm-Rechnungen gehören zum Thema Ohmsches Gesetz.',
+      solution: 'A und V; qualitativ I wächst mit U (bei festem R).',
+      explanation: 'Widerstand hat die Einheit Ohm — Rechnungen gehören zum Thema Ohmsches Gesetz.',
       instruction: 'Tippe alle richtigen Aussagen:',
     }),
   (rng) => {
-    const kind = pick(rng, ['series', 'parallel'] as const)
-    const correct =
-      kind === 'series'
-        ? 'Reihenschaltung (gemeinsamer Stromweg)'
-        : 'Parallelschaltung (eigene Zweige)'
+    const U1 = pick(rng, [3, 4, 6])
+    const U2 = U1 * 2
     return choicePickTask({
-      question: 'Welche Schaltungsart zeigt die Skizze?',
+      question: `An gleichem Widerstand: zuerst U = ${U1} V, dann U = ${U2} V. Was passiert mit der Stromstärke?`,
       choices: shuffleChoices(
         rng,
         [
-          correct,
-          kind === 'series'
-            ? 'Parallelschaltung (eigene Zweige)'
-            : 'Reihenschaltung (gemeinsamer Stromweg)',
-          'nur Kurzschluss ohne Lampen',
-          'kein Stromkreis',
+          'Sie wird etwa doppelt so groß',
+          'Sie wird halb so groß',
+          'Sie bleibt immer gleich',
+          'Sie wird null',
         ],
-        correct,
+        'Sie wird etwa doppelt so groß',
       ),
-      correct,
-      solution: correct,
-      explanation:
-        kind === 'series'
-          ? 'Ein Weg durch beide Lampen hintereinander = Reihe.'
-          : 'Jeder Zweig für sich = Parallel.',
-      instruction: 'Tippe die Schaltungsart:',
-      visualContent: seriesParallelSvg(kind),
+      correct: 'Sie wird etwa doppelt so groß',
+      solution: 'Sie wird etwa doppelt so groß',
+      explanation: `Bei ohmschem Verhalten ist I proportional zu U — verdoppelte Spannung → etwa verdoppelte Stromstärke.`,
+      instruction: 'Tippe die passende Aussage:',
     })
   },
 )
@@ -694,13 +688,12 @@ const ohm: Topic['generate'] = mixedVariants(
     const { U, R } = pick(rng, [...pairs])
     const I = U / R
     return valueTask({
-      question: `An einem ohmschen Widerstand liegen U = ${U} V und R = ${R} Ω. Berechne die Stromstärke I = U/R.`,
+      question: `An einem ohmschen Widerstand liegen U = ${U} V und R = ${R} Ω. Berechne die Stromstärke I.`,
       answerKind: 'integer',
       unit: 'A',
       value: I,
       solution: `${I} A`,
       explanation: `I = U / R = ${U} / ${R} = ${I} A.`,
-      visualContent: circuitSvg(true, 'Lampe'),
     })
   },
   (rng) => {
@@ -708,12 +701,12 @@ const ohm: Topic['generate'] = mixedVariants(
     const R = pick(rng, [2, 3, 4, 5, 6])
     const U = I * R
     return valueTask({
-      question: `I = ${I} A, R = ${R} Ω. Berechne die Spannung U = R·I.`,
+      question: `I = ${I} A, R = ${R} Ω. Berechne die Spannung U.`,
       answerKind: 'integer',
       unit: 'V',
       value: U,
       solution: `${U} V`,
-      explanation: `U = ${R}·${I} = ${U} V.`,
+      explanation: `U = R · I = ${R}·${I} = ${U} V.`,
     })
   },
   (rng) => {
@@ -729,17 +722,17 @@ const ohm: Topic['generate'] = mixedVariants(
     const [U, I] = pick(rng, [...pairs])
     const R = U / I
     return valueTask({
-      question: `U = ${U} V, I = ${I} A. Berechne den Widerstand R = U/I.`,
+      question: `U = ${U} V, I = ${I} A. Berechne den Widerstand R.`,
       answerKind: 'integer',
       unit: 'Ω',
       value: R,
       solution: `${R} Ω`,
-      explanation: `R = ${U}/${I} = ${R} Ω.`,
+      explanation: `R = U / I = ${U}/${I} = ${R} Ω.`,
     })
   },
   (_rng) =>
     dragDropSlotsTask({
-      question: 'Baue das Ohmsche Gesetz R = U/I. Einen Block brauchst du nicht.',
+      question: 'Baue das Ohmsche Gesetz. Einen Block brauchst du nicht.',
       items: [
         { label: 'R', value: 0 },
         { label: '=', value: 1 },
@@ -778,7 +771,6 @@ const ohm: Topic['generate'] = mixedVariants(
       solution: c.correct,
       explanation: 'Ohmsches Gesetz: R = U/I, Einheit Ohm.',
       instruction: 'Tippe die passende Aussage:',
-      visualContent: circuitSvg(true, 'Lampe'),
     })
   },
 )
@@ -788,7 +780,7 @@ const reihe: Topic['generate'] = mixedVariants(
   (_rng) =>
     dragDropSlotsTask({
       question:
-        'Baue eine Formel für den Gesamtwiderstand von in Reihe geschalteten Widerständen! Einen Block brauchst du nicht.',
+        'Baue eine Formel für den Gesamtwiderstand von in Reihe geschalteten Glühlampen! Einen Block brauchst du nicht.',
       items: [
         { label: 'R', value: 0 },
         { label: '=', value: 1 },
@@ -799,7 +791,7 @@ const reihe: Topic['generate'] = mixedVariants(
       ],
       correctSlots: [0, 1, 2, 3, 4],
       solution: 'R = R₁ + R₂',
-      explanation: 'In Reihe addieren sich die Widerstände.',
+      explanation: 'In Reihe addieren sich die Widerstände der Lampen.',
       visualContent: seriesParallelSvg('series'),
     }),
   (rng) => {
@@ -807,7 +799,7 @@ const reihe: Topic['generate'] = mixedVariants(
     const r2 = pick(rng, [2, 3, 4, 5, 6])
     const r = r1 + r2
     return valueTask({
-      question: `Zwei Widerstände in Reihe: R₁ = ${r1} Ω, R₂ = ${r2} Ω. Berechne den Gesamtwiderstand.`,
+      question: `Zwei Glühlampen in Reihe: R₁ = ${r1} Ω, R₂ = ${r2} Ω. Berechne den Gesamtwiderstand.`,
       answerKind: 'integer',
       unit: 'Ω',
       value: r,
@@ -842,7 +834,6 @@ const reihe: Topic['generate'] = mixedVariants(
       solution: c.correct,
       explanation: 'Reihe: ein Stromweg, Widerstände addieren sich.',
       instruction: 'Tippe die passende Aussage:',
-      visualContent: seriesParallelSvg('series'),
     })
   },
   (rng) => {
@@ -852,7 +843,7 @@ const reihe: Topic['generate'] = mixedVariants(
       choices: shuffleChoices(rng, [correct, 'Parallelschaltung', 'Kurzschluss ohne Lampen', 'kein Kreis'], correct),
       correct,
       solution: correct,
-      explanation: 'Gemeinsamer Weg durch beide Lampen = Reihe.',
+      explanation: 'Gemeinsamer Weg durch beide Glühlampen = Reihe.',
       instruction: 'Tippe die Schaltungsart:',
       visualContent: seriesParallelSvg('series'),
     })
@@ -864,7 +855,7 @@ const parallel: Topic['generate'] = mixedVariants(
   (_rng) =>
     dragDropSlotsTask({
       question:
-        'Baue eine Formel für den Gesamtwiderstand von parallel geschalteten Widerständen! Einen Block brauchst du nicht.',
+        'Baue eine Formel für den Gesamtwiderstand von parallel geschalteten Glühlampen! Einen Block brauchst du nicht.',
       items: [
         { label: '1/R', value: 0 },
         { label: '=', value: 1 },
@@ -875,7 +866,7 @@ const parallel: Topic['generate'] = mixedVariants(
       ],
       correctSlots: [0, 1, 2, 3, 4],
       solution: '1/R = 1/R₁ + 1/R₂',
-      explanation: 'Parallel: Kehrwerte der Widerstände addieren.',
+      explanation: 'Parallel: Kehrwerte der Lampenwiderstände addieren.',
       visualContent: seriesParallelSvg('parallel'),
     }),
   (rng) => {
@@ -887,7 +878,7 @@ const parallel: Topic['generate'] = mixedVariants(
     ] as const
     const [a, b, req] = pick(rng, [...pairs])
     return valueTask({
-      question: `Zwei Widerstände parallel: R₁ = ${a} Ω, R₂ = ${b} Ω. Gesamtwiderstand?`,
+      question: `Zwei Glühlampen parallel: R₁ = ${a} Ω, R₂ = ${b} Ω. Gesamtwiderstand?`,
       answerKind: 'integer',
       unit: 'Ω',
       value: req,
@@ -926,7 +917,6 @@ const parallel: Topic['generate'] = mixedVariants(
       solution: c.correct,
       explanation: 'Parallel: eigene Zweige, gleiche Spannung, 1/R = 1/R₁ + 1/R₂.',
       instruction: 'Tippe die passende Aussage:',
-      visualContent: seriesParallelSvg('parallel'),
     })
   },
   (rng) => {
@@ -936,7 +926,7 @@ const parallel: Topic['generate'] = mixedVariants(
       choices: shuffleChoices(rng, [correct, 'Reihenschaltung', 'Kurzschluss ohne Lampen', 'kein Kreis'], correct),
       correct,
       solution: correct,
-      explanation: 'Eigene Zweige für jede Lampe = Parallel.',
+      explanation: 'Eigene Zweige für jede Glühlampe = Parallel.',
       instruction: 'Tippe die Schaltungsart:',
       visualContent: seriesParallelSvg('parallel'),
     })

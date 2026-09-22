@@ -203,12 +203,13 @@ describe('Physik Klasse 6 generators', () => {
     for (let seed = 1; seed <= 60; seed++) {
       const task = gen(createRng(seed))
       const svg = task.visualContent ?? ''
-      if (!svg.includes('circle cx="110"') || !svg.includes('L148')) continue
+      // Open switch: contact dots + angled lever (e.g. L153 20), not a continuous top rail.
+      if (!svg.includes('circle cx="121"') || !/L1\d+ 20/.test(svg)) continue
       openFound = true
-      expect(svg).toMatch(/L1\d+ \d+/)
-      expect(svg).not.toMatch(/M148 58 H168/)
-      expect(svg).toContain('circle cx="110"')
-      expect(svg).toContain('circle cx="160"')
+      expect(svg).toMatch(/L1\d+ 20/)
+      expect(svg).not.toMatch(/M110 36 H160/)
+      expect(svg).toContain('circle cx="121"')
+      expect(svg).toContain('circle cx="149"')
     }
     expect(openFound).toBe(true)
   })
