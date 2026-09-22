@@ -20,8 +20,135 @@ const shuffleChoices = (rng: Rng, choices: string[], correct: string): string[] 
   return list
 }
 
-/** LB1 — Kräfte: F = m·g (g ≈ 10), Kraftarten, Gewichtskraft */
-const kraefte: Topic['generate'] = mixedVariants(
+/** LB1 — Kraft als physikalische Größe (ohne F_G-Rechnung) */
+const kraftbegriff: Topic['generate'] = mixedVariants(
+  // choicePick twice → häufiger Begriffsfragen als nur MultiSelect
+  (rng) => {
+    const cases = [
+      {
+        q: 'Was beschreibt eine Kraft in der Physik?',
+        correct: 'eine Einwirkung, die einen Körper beschleunigen oder verformen kann',
+        wrong: [
+          'nur die Masse eines Körpers',
+          'nur die Temperatur',
+          'die Farbe einer Oberfläche',
+        ],
+      },
+      {
+        q: 'In welcher Einheit wird die Kraft angegeben?',
+        correct: 'Newton (N)',
+        wrong: ['Joule (J)', 'Watt (W)', 'Pascal (Pa)'],
+      },
+      {
+        q: 'Welche Angabe gehört zu einer Kraft?',
+        correct: 'Betrag und Richtung (Kraft ist gerichtet)',
+        wrong: [
+          'nur die Masse in kg',
+          'nur die Zeit in Sekunden',
+          'nur die Temperatur in °C',
+        ],
+      },
+      {
+        q: 'Womit misst man Kräfte im Schülerversuch typischerweise?',
+        correct: 'mit einem Kraftmesser (Federkraftmesser)',
+        wrong: ['mit einem Thermometer', 'mit einem Lineal allein', 'mit einer Stoppuhr allein'],
+      },
+      {
+        q: 'Was bewirkt eine Kraft an einem ruhenden Körper (wenn andere Kräfte sie nicht aufheben)?',
+        correct: 'sie kann ihn in Bewegung setzen (beschleunigen)',
+        wrong: [
+          'sie ändert immer nur die Farbe',
+          'sie erzeugt immer Strom',
+          'sie lässt die Masse verschwinden',
+        ],
+      },
+      {
+        q: 'Eine Kraft kann einen Körper auch …',
+        correct: 'verformen (z. B. Feder dehnen, Knete drücken)',
+        wrong: [
+          'in Joule umrechnen ohne Wirkung',
+          'ohne jede Wechselwirkung entstehen',
+          'nur im Vakuum existieren',
+        ],
+      },
+      {
+        q: 'Wie stellt man Kräfte in Skizzen oft dar?',
+        correct: 'als Pfeile (Länge ≈ Betrag, Richtung = Wirkrichtung)',
+        wrong: [
+          'nur als Kreise ohne Richtung',
+          'nur als Temperaturstriche',
+          'nur als Schaltzeichen für Lampen',
+        ],
+      },
+      {
+        q: '1 N ist definiert über …',
+        correct: 'die Kraft, die 1 kg um 1 m/s² beschleunigt (F = m·a)',
+        wrong: [
+          '1 Liter Wasser bei 0 °C',
+          '1 Volt an 1 Ohm',
+          '1 Joule pro Sekunde ohne Kraftbezug',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation:
+        'Kraft ist eine gerichtete Größe in Newton; sie kann beschleunigen oder verformen und wird z. B. mit dem Kraftmesser gemessen.',
+      instruction: 'Tippe die passende Aussage zur Kraft:',
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Welche Aussage zur Kraft stimmt?',
+        correct: 'Kraft hat Betrag und Richtung',
+        wrong: ['Kraft ist dasselbe wie Masse', 'Kraft wird in °C gemessen', 'Kraft braucht keine Einheit'],
+      },
+      {
+        q: 'Welche Wirkung kann eine Kraft haben?',
+        correct: 'Formänderung oder Bewegungsänderung',
+        wrong: ['nur die Farbe ändern', 'Masse vernichten', 'Zeit anhalten'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Kraft: gerichtet, Einheit N, Wirkung auf Form oder Bewegung.',
+      instruction: 'Tippe die passende Aussage zur Kraft:',
+    })
+  },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was gehört zum physikalischen Kraftbegriff? (mehrere möglich)',
+      choices: [
+        'Einheit Newton (N)',
+        'Betrag und Richtung',
+        'kann Körper beschleunigen',
+        'kann Körper verformen',
+        'ist dasselbe wie die Masse in kg',
+        'wird nur in °C gemessen',
+      ],
+      correct: [
+        'Einheit Newton (N)',
+        'Betrag und Richtung',
+        'kann Körper beschleunigen',
+        'kann Körper verformen',
+      ],
+      solution: 'Kraft: N, gerichtet, Wirkung auf Bewegung/Form — nicht Masse oder Temperatur.',
+      explanation: 'Masse (kg) und Temperatur (°C) sind andere Größen.',
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+    }),
+)
+
+/** LB1 — Gewichtskraft F_G = m·g */
+const gewichtskraft: Topic['generate'] = mixedVariants(
   (rng) => {
     const m = pick(rng, [2, 3, 4, 5, 6, 8, 10])
     const g = 10
@@ -36,26 +163,42 @@ const kraefte: Topic['generate'] = mixedVariants(
     })
   },
   (rng) => {
+    const m = pick(rng, [2, 3, 4, 5, 6, 8, 10])
+    const F = m * 10
+    return valueTask({
+      question: `m = ${m} kg, g ≈ 10 N/kg. Berechne die Gewichtskraft F_G.`,
+      answerKind: 'integer',
+      unit: 'N',
+      value: F,
+      solution: `${F} N`,
+      explanation: `F_G = ${m} · 10 = ${F} N.`,
+    })
+  },
+  (rng) => {
     const cases = [
       {
-        q: 'Welche Kraft zieht einen Apfel nach unten zur Erde?',
-        correct: 'Gewichtskraft',
-        wrong: ['Reibungskraft', 'Spannkraft', 'Magnetkraft'],
+        q: 'Was ist die Gewichtskraft?',
+        correct: 'die Anziehungskraft der Erde auf den Körper (≈ m·g)',
+        wrong: [
+          'die Masse des Körpers in kg',
+          'die Temperatur des Körpers',
+          'der elektrische Widerstand',
+        ],
       },
       {
-        q: 'Welche Kraft wirkt zwischen Magnet und Nägeln?',
-        correct: 'Magnetkraft',
-        wrong: ['Gewichtskraft', 'Luftwiderstand', 'Federkraft'],
+        q: 'In welche Richtung wirkt die Gewichtskraft (nahe der Erdoberfläche)?',
+        correct: 'zum Erdmittelpunkt / nach unten',
+        wrong: ['immer nach oben', 'immer horizontal', 'zufällig in alle Richtungen'],
       },
       {
-        q: 'Welche Kraft bremst einen Rutschwagen auf dem Boden?',
-        correct: 'Reibungskraft',
-        wrong: ['Gewichtskraft', 'Spannkraft der Sonne', 'Magnetkraft'],
+        q: 'Welche Formel gilt näherungsweise für die Gewichtskraft?',
+        correct: 'F_G = m · g',
+        wrong: ['F_G = m / g', 'F_G = m + g', 'F_G = U / I'],
       },
       {
-        q: 'Welche Kraft spannt eine gedehnte Feder?',
-        correct: 'Federkraft',
-        wrong: ['Gewichtskraft', 'Luftwiderstand', 'Magnetkraft'],
+        q: 'Welche Einheit hat g in F_G = m·g (Schulnäherung)?',
+        correct: 'N/kg (bzw. m/s²)',
+        wrong: ['nur Volt', 'nur Ohm', 'nur °C'],
       },
     ] as const
     const c = pick(rng, [...cases])
@@ -64,8 +207,8 @@ const kraefte: Topic['generate'] = mixedVariants(
       choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
       correct: c.correct,
       solution: c.correct,
-      explanation: 'Kräfte haben Ursachen und Richtungen — hier geht es um die typische Kraftart.',
-      instruction: 'Tippe die passende Kraftart:',
+      explanation: 'Gewichtskraft F_G ≈ m·g mit g ≈ 10 N/kg, Richtung zur Erde.',
+      instruction: 'Tippe die passende Aussage:',
     })
   },
   (rng) => {
@@ -102,6 +245,124 @@ const kraefte: Topic['generate'] = mixedVariants(
       explanation: `F_G = ${m} · 10 = ${F} N.`,
     })
   },
+)
+
+/** LB1 — Kräfte vergleichen und addieren (nicht F_G-Rechnung) */
+const kraefte: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      {
+        q: 'Zwei Kräfte gleicher Richtung (gleichsinnig) werden …',
+        correct: 'addiert: F_ges = F₁ + F₂',
+        wrong: [
+          'immer subtrahiert',
+          'multipliziert zu F₁·F₂',
+          'ignoriert, weil Kräfte sich aufheben',
+        ],
+      },
+      {
+        q: 'Zwei Kräfte gleicher Beträge, aber entgegengesetzter Richtung …',
+        correct: 'heben sich auf (Resultierende 0)',
+        wrong: [
+          'verdoppeln sich immer',
+          'wirken nur als Temperatur',
+          'erzeugen immer Strom',
+        ],
+      },
+      {
+        q: 'F₁ = 3 N nach rechts, F₂ = 5 N nach rechts. Resultierende?',
+        correct: '8 N nach rechts',
+        wrong: ['2 N nach links', '15 N nach oben', '0 N'],
+      },
+      {
+        q: 'F₁ = 6 N nach rechts, F₂ = 2 N nach links. Resultierende?',
+        correct: '4 N nach rechts',
+        wrong: ['8 N nach rechts', '12 N nach links', '0 N'],
+      },
+      {
+        q: 'Welche Kraft zieht einen Apfel nach unten zur Erde?',
+        correct: 'Gewichtskraft',
+        wrong: ['Reibungskraft', 'Spannkraft', 'Magnetkraft'],
+      },
+      {
+        q: 'Welche Kraft bremst einen Rutschwagen auf dem Boden?',
+        correct: 'Reibungskraft',
+        wrong: ['Gewichtskraft', 'Spannkraft der Sonne', 'Magnetkraft'],
+      },
+      {
+        q: 'Welche Kraft wirkt zwischen Magnet und Nägeln?',
+        correct: 'Magnetkraft',
+        wrong: ['Gewichtskraft', 'Luftwiderstand', 'Federkraft'],
+      },
+      {
+        q: 'Welche Kraft spannt eine gedehnte Feder?',
+        correct: 'Federkraft',
+        wrong: ['Gewichtskraft', 'Luftwiderstand', 'Magnetkraft'],
+      },
+      {
+        q: 'Beim Vergleich zweier Kräfte schaust du vor allem auf …',
+        correct: 'Betrag und Richtung',
+        wrong: ['nur die Farbe der Pfeile', 'nur die Uhrzeit', 'nur die Temperatur'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation:
+        'Kräfte vergleichen/addieren: Richtung beachten — gleichsinnig addieren, entgegengesetzt subtrahieren.',
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (rng) => {
+    const a = pick(rng, [2, 3, 4, 5])
+    const b = pick(rng, [1, 2, 3, 4].filter((x) => x !== a))
+    const same = pick(rng, [true, false])
+    if (same) {
+      const F = a + b
+      return valueTask({
+        question: `Zwei Kräfte ${a} N und ${b} N wirken gleichsinnig in dieselbe Richtung. Wie groß ist die Resultierende?`,
+        answerKind: 'integer',
+        unit: 'N',
+        value: F,
+        solution: `${F} N`,
+        explanation: `Gleichsinnig: F_ges = ${a} + ${b} = ${F} N.`,
+      })
+    }
+    const big = Math.max(a, b)
+    const small = Math.min(a, b)
+    const F = big - small
+    return valueTask({
+      question: `Zwei Kräfte ${big} N und ${small} N wirken entgegengesetzt. Wie groß ist der Betrag der Resultierenden?`,
+      answerKind: 'integer',
+      unit: 'N',
+      value: F,
+      solution: `${F} N`,
+      explanation: `Entgegengesetzt: |F_ges| = ${big} − ${small} = ${F} N.`,
+    })
+  },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was gilt beim Addieren von Kräften? (mehrere möglich)',
+      choices: [
+        'Richtung muss beachtet werden',
+        'gleichsinnige Kräfte: Beträge addieren',
+        'entgegengesetzte Kräfte: Beträge subtrahieren',
+        'Kräfte ohne Richtung addieren wie skalare Massen',
+        'Resultierende hat wieder Betrag und Richtung',
+      ],
+      correct: [
+        'Richtung muss beachtet werden',
+        'gleichsinnige Kräfte: Beträge addieren',
+        'entgegengesetzte Kräfte: Beträge subtrahieren',
+        'Resultierende hat wieder Betrag und Richtung',
+      ],
+      solution: 'Kräfte sind gerichtet — gleichsinnig +, entgegengesetzt −.',
+      explanation: 'Kräfte sind keine richtungsfreien Skalare wie reine Massenangaben.',
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+    }),
 )
 
 /** LB2 — Stromstärke und Spannung: Ohm, Reihe/Parallel, Einheiten */
@@ -507,6 +768,8 @@ const fliegen: Topic['generate'] = mixedVariants(
 )
 
 export const PHYSIK_K7_GENERATORS: Record<string, Topic['generate']> = {
+  'ph-k7-lb1-kraftbegriff': kraftbegriff,
+  'ph-k7-lb1-gewichtskraft': gewichtskraft,
   'ph-k7-lb1-kraefte': kraefte,
   'ph-k7-lb2-strom': strom,
   'ph-k7-lb3-energie': energie,

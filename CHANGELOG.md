@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.86] – 2026-09-22
+
+### Geändert
+- **K7 Kräfte-Zuordnung:** ID 5888 nur noch Kraftbegriff (ohne F_G-Rechnung);
+  Gewichtskraft-Rechnungen in ID 4203; ID 4243 Kräfte vergleichen/addieren.
+- **Fachwissen:** passend für Kraftbegriff, Gewichtskraft, Kräfte addieren, Feder/Hooke,
+  Reibung, Magnet (K7), Elektrostatik. Physik-Pack **2.5.16**.
+
 ## [0.27.85] – 2026-09-21
 
 ### Geändert

@@ -178,7 +178,7 @@ export function physikFachwissen(topic: TopicRef): Fachwissen {
       ...wiki('Temperatur', 'Temperatur'),
     }
   }
-  if (/strom|elektr|spannung|widerstand|ohm|schalt|leiter|ladung|kurzschluss/.test(lower)) {
+  if (/strom|elektr|spannung|widerstand|ohm|schalt|leiter|ladung|kurzschluss/.test(lower) && !/elektrostatik|elektrostatisch/.test(lower)) {
     return {
       text:
         'Stromkreis: geschlossener Leiterweg + Spannungsquelle. Ohmsches Gesetz: R = U / I, also I = U / R, U = R · I. ' +
@@ -187,7 +187,62 @@ export function physikFachwissen(topic: TopicRef): Fachwissen {
       ...wiki('Ohmsches_Gesetz', 'Ohmsches_Gesetz'),
     }
   }
-  if (/kraft|druck|impuls|newton|reibung|hebel|auftrieb|feder|hooke/.test(lower)) {
+  if (/elektrostatik|elektrostatisch/.test(lower)) {
+    return {
+      text:
+        'Elektrostatik: ruhende elektrische Ladungen. Gleichnamige Ladungen stoßen sich ab, ungleichnamige ziehen sich an. ' +
+        'Reiben kann Ladung trennen (z. B. Kunststoffstab). Die Kraftwirkung nimmt mit dem Abstand ab. ' +
+        'Aufgaben: Zuordnung Anziehen/Abstoßen, Isolator vs. Leiter (Ladung bleibt bzw. fließt ab).',
+      ...wiki('Elektrostatik', 'Elektrostatik'),
+    }
+  }
+  if (/feder|hooke/.test(lower)) {
+    return {
+      text:
+        'Hookesches Gesetz (ideal): F = D · s. Dabei ist F die Federkraft, D die Federhärte (Einheit N/m) und s die Auslenkung. ' +
+        'Je größer D, desto „härter“ die Feder — bei gleicher Auslenkung wirkt eine größere Kraft. ' +
+        'Vorgehen: Formel wählen → D und s mit Einheit einsetzen → F in Newton angeben.',
+      ...wiki('Hookesches_Gesetz', 'Hookesches_Gesetz'),
+    }
+  }
+  if (/reibung/.test(lower) && !/energie/.test(lower)) {
+    return {
+      text:
+        'Reibung wirkt der Relativbewegung entgegen und bremst (Haftreibung hält in Ruhe, Gleitreibung beim Rutschen). ' +
+        'Sie hängt von Oberfläche und Anpresskraft ab. ' +
+        'Aufgaben oft: Kraftart zuordnen oder Wirkung (Abbremsen, Festhalten) erkennen — nicht mit Gewichtskraft verwechseln.',
+      ...wiki('Reibung', 'Reibung'),
+    }
+  }
+  if (/kraftbegriff|kraft als physikalische/.test(lower)) {
+    return {
+      text:
+        'Kraft ist eine physikalische Größe mit Betrag und Richtung; Einheit Newton (N). ' +
+        'Wirkungen: Körper beschleunigen (Bewegungsänderung) oder verformen. ' +
+        'Im Versuch misst man Kräfte oft mit dem Kraftmesser; in Skizzen stellt man sie als Pfeile dar. ' +
+        'Hier geht es um den Kraftbegriff selbst — nicht um die Berechnung der Gewichtskraft F_G = m·g.',
+      ...wiki('Kraft', 'Kraft'),
+    }
+  }
+  if (/gewichtskraft/.test(lower)) {
+    return {
+      text:
+        'Gewichtskraft F_G ist die Anziehung der Erde auf den Körper. Näherung: F_G = m · g mit g ≈ 10 N/kg. ' +
+        'Richtung: zum Erdmittelpunkt (nach unten). Einheit Newton (N). ' +
+        'Rechnung: Masse in kg einsetzen, mit 10 multiplizieren, Ergebnis in N angeben.',
+      ...wiki('Gewichtskraft', 'Gewichtskraft'),
+    }
+  }
+  if (/kräfte vergleichen|kräfte.*addier|lb1-kraefte/.test(lower)) {
+    return {
+      text:
+        'Kräfte sind gerichtete Größen. Gleichsinnig (gleiche Richtung): Beträge addieren. ' +
+        'Entgegengesetzt: Beträge subtrahieren; die Resultierende zeigt in Richtung der größeren Kraft. ' +
+        'Immer Betrag und Richtung der Resultierenden angeben. Kraftarten (Gewicht, Reibung, Feder, Magnet) zuordnen.',
+      ...wiki('Kraft', 'Kraft'),
+    }
+  }
+  if (/kraft|druck|impuls|newton|hebel|auftrieb/.test(lower) && !/feder|hooke|reibung|gewichtskraft|kraftbegriff|kräfte/.test(lower)) {
     return {
       text:
         'Kraft F in Newton (N). Druck p = F / A (Pascal). Gewichtskraft näherungsweise F_G = m · g (g ≈ 10 N/kg). ' +
@@ -221,6 +276,15 @@ export function physikFachwissen(topic: TopicRef): Fachwissen {
         'Strahlungsarten α, β, γ unterscheiden sich in Reichweite und Abschirmung. ' +
         'Aufgaben oft: Halbwertszeiten zählen oder Zuordnung Strahlungsart ↔ Eigenschaften.',
       ...wiki('Radioaktivität', 'Radioaktivit%C3%A4t'),
+    }
+  }
+  if (/magnetische kräfte|lb1-magnet/.test(lower)) {
+    return {
+      text:
+        'Permanentmagnete haben Nord- und Südpol. Ungleichnamige Pole ziehen sich an, gleichnamige stoßen sich ab. ' +
+        'Magnetkraft wirkt auch ohne Berührung (Fernkraft). Eisen und manche Stoffe werden angezogen. ' +
+        'Aufgaben: Pole zuordnen, Anziehen/Abstoßen erkennen — nicht mit Gewichtskraft verwechseln.',
+      ...wiki('Magnet', 'Magnet'),
     }
   }
   if (/magnet|induktion|spule|lorentz|feld/.test(lower)) {

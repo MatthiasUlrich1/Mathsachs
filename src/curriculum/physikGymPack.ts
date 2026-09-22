@@ -19,7 +19,7 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.15',
+    version: '2.5.16',
     changelog:
       'Lochkamera-/Auge-SVG korrigiert; Farbfilter-Bilder nur passend; Dämmstoffe+Spektrum freigegeben.',
     official,

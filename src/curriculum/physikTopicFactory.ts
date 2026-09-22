@@ -280,7 +280,7 @@ export function makePhysikTopicGenerate(topicId: string, title: string): Topic['
     )
   }
 
-  if (/gewichtskraft|f = m|f_g|newton.*kraft|kraftbegriff/.test(lower)) {
+  if (/gewichtskraft|f_g\b/.test(lower) || (/f = m/.test(lower) && /gewicht/.test(lower))) {
     return mixedVariants(
       (rng) => {
         const m = pick(rng, [2, 3, 4, 5, 6, 8, 10])
@@ -295,14 +295,42 @@ export function makePhysikTopicGenerate(topicId: string, title: string): Topic['
         })
       },
       (rng) => {
-        const correct = 'Newton (N)'
+        const correct = 'F_G = m · g'
         return choicePickTask({
-          question: 'Welche Einheit hat die Kraft?',
-          choices: shuffleChoices(rng, [correct, 'Joule (J)', 'Watt (W)', 'Pascal (Pa)'], correct),
+          question: 'Welche Formel beschreibt die Gewichtskraft?',
+          choices: shuffleChoices(rng, [correct, 'F_G = m / g', 'F_G = m + g', 'F_G = U / I'], correct),
           correct,
           solution: correct,
-          explanation: 'Kraft wird in Newton gemessen.',
-          instruction: 'Tippe die Einheit:',
+          explanation: 'Gewichtskraft näherungsweise Masse mal Fallbeschleunigung.',
+          instruction: 'Tippe die Formel:',
+        })
+      },
+    )
+  }
+
+  if (/kraftbegriff|kraft als physikalische/.test(lower)) {
+    return mixedVariants(
+      (rng) => {
+        const cases = [
+          {
+            q: 'Einheit der Kraft?',
+            correct: 'Newton (N)',
+            wrong: ['Joule (J)', 'Watt (W)', 'Pascal (Pa)'],
+          },
+          {
+            q: 'Kraft ist …',
+            correct: 'eine gerichtete Größe (Betrag und Richtung)',
+            wrong: ['nur eine Temperatur', 'dasselbe wie Masse', 'nur eine Farbe'],
+          },
+        ] as const
+        const c = pick(rng, [...cases])
+        return choicePickTask({
+          question: c.q,
+          choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+          correct: c.correct,
+          solution: c.correct,
+          explanation: 'Kraft in Newton, mit Betrag und Richtung.',
+          instruction: 'Tippe die passende Aussage:',
         })
       },
     )
