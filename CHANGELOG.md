@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.103] – 2026-09-22
+
+### Geändert
+- **K7 Wahlbereich freigegeben:** Flaschenzug-Text „Körper mit einer Gewichtskraft …“;
+  Flug-Skizze nur noch Flugzeug + bunte Kraftpfeile (ohne Artefakte/Legende).
+  Physik-Pack **2.5.30**.
+
 ## [0.27.102] – 2026-09-22
 
 ### Behoben

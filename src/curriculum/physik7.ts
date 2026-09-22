@@ -2169,7 +2169,7 @@ const flasche: Topic['generate'] = mixedVariants(
     const weight = fg % strands !== 0 ? 600 : fg
     const f = weight / n
     return valueTask({
-      question: `Ein Gewicht von ${weight} N soll mit einem idealen Flaschenzug (ohne Reibung) angehoben werden. Der Flaschenzug hat ${n} tragende Seilstücke. Mit welcher Zugkraft F (in N) musst du am Seil ziehen?`,
+      question: `Ein Körper mit einer Gewichtskraft von ${weight} N soll mit einem idealen Flaschenzug (ohne Reibung) angehoben werden. Der Flaschenzug hat ${n} tragende Seilstücke. Mit welcher Zugkraft F (in N) musst du am Seil ziehen?`,
       answerKind: 'integer',
       unit: 'N',
       value: f,
@@ -2195,7 +2195,7 @@ const flasche: Topic['generate'] = mixedVariants(
         wrong: ['größere Zugkraft', 'keine Wirkung', 'kürzeren Seilweg bei gleicher Kraft'],
       },
       {
-        q: 'Ein Gewicht von 600 N soll mit 4 tragenden Seilstücken angehoben werden. Ideale Zugkraft?',
+        q: 'Ein Körper mit einer Gewichtskraft von 600 N soll mit 4 tragenden Seilstücken angehoben werden. Ideale Zugkraft?',
         correct: '150 N',
         wrong: ['300 N', '600 N', '75 N'],
       },

@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.29',
+    version: '2.5.30',
     changelog:
-      'K7 Wahlbereich QA (0.27.102): schiefe Ebene, Flaschenzug/Fliegen, Flug-Pfeile, Slot-Zuordnung. Noch nicht freigegeben.',
+      'K7 Wahlbereich freigegeben: Flaschenzug-Wording (Körper mit Gewichtskraft), Flug-Skizze bereinigt (nur Flugzeug + Pfeile).',
     official,
     extras: [],
   }

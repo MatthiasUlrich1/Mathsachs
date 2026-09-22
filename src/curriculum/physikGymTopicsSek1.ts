@@ -257,13 +257,21 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
           topic('ph-k7-lb3-sparen', 'Energie sparen', ['Energieeinsparung'], { released: true }),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
-          topic('ph-k7-lbw-kraftwandler', 'Kraftwandler – früher und heute', ['Kraftwandler']),
-          topic('ph-k7-lbw-hebel', 'Hebelgesetz', ['Hebel']),
-          topic('ph-k7-lbw-flasche', 'Flaschenzug', ['Flaschenzug']),
-          topic('ph-k7-lbw-schaltungen', 'Elektrische Schaltungen', ['Schaltung']),
-          topic('ph-k7-lbw-klingel', 'Klingel und Wechselschaltung', ['Klingel']),
-          topic('ph-k7-lbw-fliegen', 'Vom Fliegen', ['Fliegen']),
-          topic('ph-k7-lbw-auftrieb-dyn', 'Dynamischer Auftrieb', ['Auftrieb', 'Tragfläche']),
+          topic('ph-k7-lbw-kraftwandler', 'Kraftwandler – früher und heute', ['Kraftwandler'], {
+            released: true,
+          }),
+          topic('ph-k7-lbw-hebel', 'Hebelgesetz', ['Hebel'], { released: true }),
+          topic('ph-k7-lbw-flasche', 'Flaschenzug', ['Flaschenzug'], { released: true }),
+          topic('ph-k7-lbw-schaltungen', 'Elektrische Schaltungen', ['Schaltung'], {
+            released: true,
+          }),
+          topic('ph-k7-lbw-klingel', 'Klingel und Wechselschaltung', ['Klingel'], {
+            released: true,
+          }),
+          topic('ph-k7-lbw-fliegen', 'Vom Fliegen', ['Fliegen'], { released: true }),
+          topic('ph-k7-lbw-auftrieb-dyn', 'Dynamischer Auftrieb', ['Auftrieb', 'Tragfläche'], {
+            released: true,
+          }),
         ]),
       ],
     ),

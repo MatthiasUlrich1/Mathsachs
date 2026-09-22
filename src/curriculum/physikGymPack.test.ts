@@ -55,8 +55,8 @@ describe('Gymnasium Sachsen Physik pack', () => {
     const manifest = parseManifest(
       JSON.parse(readFileSync(join(curriculaDir, 'manifest.json'), 'utf8')),
     )
-    expect(pack.version).toBe('2.5.29')
-    expect(file?.version).toBe('2.5.29')
+    expect(pack.version).toBe('2.5.30')
+    expect(file?.version).toBe('2.5.30')
     expect(file?.contentHash).toBe(pack.contentHash)
     const lb3 = file?.official
       .find((g) => g.id === 'physik-klasse-6')

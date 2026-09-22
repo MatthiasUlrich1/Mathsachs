@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-22T20:38:14.634Z",
+  "updatedAt": "2026-09-22T20:51:21.463Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -18,10 +18,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "2.5.29",
+      "version": "2.5.30",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 134728,
-      "changelog": "K7 Wahlbereich QA (0.27.102): schiefe Ebene, Flaschenzug/Fliegen, Flug-Pfeile, Slot-Zuordnung. Noch nicht freigegeben."
+      "size": 134726,
+      "changelog": "K7 Wahlbereich freigegeben: Flaschenzug-Wording (Körper mit Gewichtskraft), Flug-Skizze bereinigt (nur Flugzeug + Pfeile)."
     },
     {
       "id": "gym-sachsen-anhalt",
