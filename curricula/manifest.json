@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-22T20:51:21.463Z",
+  "updatedAt": "2026-09-22T20:59:34.879Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -18,10 +18,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "2.5.30",
+      "version": "2.5.31",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 134726,
-      "changelog": "K7 Wahlbereich freigegeben: Flaschenzug-Wording (Körper mit Gewichtskraft), Flug-Skizze bereinigt (nur Flugzeug + Pfeile)."
+      "size": 134691,
+      "changelog": "K7 Vom Fliegen: Flugzeug-Seitenansicht (Nase rechts) statt Oval, Flugrichtung erkennbar."
     },
     {
       "id": "gym-sachsen-anhalt",

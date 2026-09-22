@@ -1053,7 +1053,7 @@ export function pulleySvg(strands: number): string {
 </svg>`
 }
 
-/** Flugzeug mit vier Kraftpfeilen — nur Rumpf + bunte Pfeile (A–D). */
+/** Flugzeug-Seitenansicht mit vier Kraftpfeilen (A–D). Nase nach rechts = Flugrichtung. */
 export function flightForcesSvg(): string {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 180" width="360" height="180" role="img" aria-label="Kräfte am Flugzeug">
   <rect width="360" height="180" fill="#f8fafc"/>
@@ -1071,15 +1071,28 @@ export function flightForcesSvg(): string {
       <path d="M0,0 L7,3 L0,6 Z" fill="#ca8a04"/>
     </marker>
   </defs>
-  <ellipse cx="180" cy="90" rx="52" ry="16" fill="#cbd5e1" stroke="#334155" stroke-width="2.5"/>
-  <path d="M180 74 V38" stroke="#16a34a" stroke-width="3.5" fill="none" marker-end="url(#msArrG)"/>
-  <text x="196" y="44" fill="#166534" font-size="15" font-family="system-ui,sans-serif" font-weight="700">A</text>
-  <path d="M180 106 V142" stroke="#dc2626" stroke-width="3.5" fill="none" marker-end="url(#msArrR)"/>
-  <text x="196" y="142" fill="#991b1b" font-size="15" font-family="system-ui,sans-serif" font-weight="700">B</text>
-  <path d="M232 90 H282" stroke="#2563eb" stroke-width="3.5" fill="none" marker-end="url(#msArrB)"/>
-  <text x="290" y="95" fill="#1e40af" font-size="15" font-family="system-ui,sans-serif" font-weight="700">C</text>
-  <path d="M128 90 H78" stroke="#ca8a04" stroke-width="3.5" fill="none" marker-end="url(#msArrO)"/>
-  <text x="60" y="95" fill="#854d0e" font-size="15" font-family="system-ui,sans-serif" font-weight="700">D</text>
+  <!-- Seitenansicht: Nase rechts (= vorne / Schub C) -->
+  <g fill="#94a3b8" stroke="#334155" stroke-width="2" stroke-linejoin="round">
+    <!-- Rumpf + Nase -->
+    <path d="M110 82 H230 L265 95 L230 108 H110 Z"/>
+    <!-- Cockpit -->
+    <path d="M195 82 L210 82 L205 68 L185 68 Z"/>
+    <!-- Seitenleitwerk (Heck) -->
+    <path d="M110 82 L118 48 H132 L125 82 Z"/>
+    <!-- Höhenleitwerk -->
+    <path d="M110 95 H95 V115 L125 108 Z"/>
+    <!-- Tragfläche -->
+    <path d="M165 108 L175 138 H205 L195 108 Z"/>
+  </g>
+  <!-- Kraftpfeile -->
+  <path d="M185 68 V30" stroke="#16a34a" stroke-width="3.5" fill="none" marker-end="url(#msArrG)"/>
+  <text x="201" y="36" fill="#166534" font-size="15" font-family="system-ui,sans-serif" font-weight="700">A</text>
+  <path d="M185 138 V162" stroke="#dc2626" stroke-width="3.5" fill="none" marker-end="url(#msArrR)"/>
+  <text x="201" y="162" fill="#991b1b" font-size="15" font-family="system-ui,sans-serif" font-weight="700">B</text>
+  <path d="M265 95 H315" stroke="#2563eb" stroke-width="3.5" fill="none" marker-end="url(#msArrB)"/>
+  <text x="323" y="100" fill="#1e40af" font-size="15" font-family="system-ui,sans-serif" font-weight="700">C</text>
+  <path d="M95 100 H50" stroke="#ca8a04" stroke-width="3.5" fill="none" marker-end="url(#msArrO)"/>
+  <text x="32" y="105" fill="#854d0e" font-size="15" font-family="system-ui,sans-serif" font-weight="700">D</text>
 </svg>`
 }
 

@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.104] – 2026-09-22
+
+### Behoben
+- **Vom Fliegen:** Skizze zeigt eine Flugzeug-Seitenansicht (Nase rechts = vorne), nicht
+  nur ein Oval — Flugrichtung und damit Schub/Widerstand sind erkennbar. Physik-Pack
+  **2.5.31**.
+
 ## [0.27.103] – 2026-09-22
 
 ### Geändert

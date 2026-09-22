@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.30',
+    version: '2.5.31',
     changelog:
-      'K7 Wahlbereich freigegeben: Flaschenzug-Wording (Körper mit Gewichtskraft), Flug-Skizze bereinigt (nur Flugzeug + Pfeile).',
+      'K7 Vom Fliegen: Flugzeug-Seitenansicht (Nase rechts) statt Oval, Flugrichtung erkennbar.',
     official,
     extras: [],
   }

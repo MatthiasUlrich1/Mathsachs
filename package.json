@@ -1,7 +1,7 @@
 {
   "name": "mathsachs",
   "private": true,
-  "version": "0.27.103",
+  "version": "0.27.104",
   "type": "module",
   "description": "TaskTrophy — Das Klassen-Duell. Lehrplanorientiertes Übungsprogramm.",
   "homepage": "https://app.tasktrophy.de/",
