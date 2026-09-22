@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.96] – 2026-09-22
+
+### Geändert
+- **K7 LB3 Energiewandler freigegeben** mit getrennten Generatoren:
+  - **Energieformen (8663):** viele Zuordnungen/MultiSelect, **kein** Leistungsstoff;
+    Energieformen-Aufgaben nicht mehr unter Energiewandler (2714).
+  - **Energiewandler (2714):** Geräte und Wandlungen.
+  - **Umwandlungsketten (8655):** Wasserkraftwerk, Dynamo, Taschenlampe, Wärmeentwertung.
+  - **Wirkungsgrad (6657):** η-Rechnung, Formel, LED/Glühlampe, Energieflussdiagramm.
+  - **Leistung / Energiesparen:** eigene Varianten. Physik-Pack **2.5.24**.
+
 ## [0.27.95] – 2026-09-22
 
 ### Geändert

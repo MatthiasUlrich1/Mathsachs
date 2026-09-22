@@ -2,6 +2,7 @@ import { pick, randInt, type Rng } from '../lib/rng'
 import {
   chargeForceSvg,
   circuitSvg,
+  energyFlowSvg,
   frictionForceSvg,
   magnetPolesSvg,
   meterGapCircuitSvg,
@@ -1067,45 +1068,49 @@ const messen: Topic['generate'] = mixedVariants(
     }),
 )
 
-/** LB3 — Energiewandler und Energieformen */
-const energie: Topic['generate'] = mixedVariants(
+/** LB3 — Energieformen (kein Leistungs-Thema) */
+const energieformen: Topic['generate'] = mixedVariants(
   (rng) => {
     const cases = [
       {
-        q: 'Welche Wandlung beschreibt ein Generator in einem Wasserkraftwerk ungefähr?',
-        correct: 'Bewegungsenergie → elektrische Energie',
-        wrong: [
-          'chemische Energie → Wärmeenergie',
-          'Lichtenergie → chemische Energie',
-          'elektrische Energie → chemische Energie',
-        ],
+        q: 'Welche Energieform hat ein fliegender Tennisball vor allem?',
+        correct: 'kinetische Energie (Bewegungsenergie)',
+        wrong: ['nur chemische Energie', 'nur elektrische Energie', 'Ampere'],
       },
       {
-        q: 'Welche Wandlung beschreibt eine Taschenlampenbatterie beim Entladen ungefähr?',
-        correct: 'chemische Energie → elektrische Energie',
-        wrong: [
-          'elektrische Energie → chemische Energie',
-          'Wärmeenergie → Bewegungsenergie',
-          'Lichtenergie → Lageenergie',
-        ],
+        q: 'Welche Energieform hat ein Buch auf dem Tisch vor allem?',
+        correct: 'Lageenergie (potenzielle Energie)',
+        wrong: ['nur kinetische Energie', 'nur Strahlungsenergie', 'Newton als Energieform'],
       },
       {
-        q: 'Welche Wandlung beschreibt eine Glühlampe ungefähr?',
-        correct: 'elektrische Energie → Licht- und Wärmeenergie',
-        wrong: [
-          'Lichtenergie → elektrische Energie',
-          'chemische Energie → Lageenergie',
-          'Bewegungsenergie → chemische Energie',
-        ],
+        q: 'Welche Energieform speichert eine Batterie vor allem?',
+        correct: 'chemische Energie',
+        wrong: ['nur kinetische Energie', 'nur Lageenergie der Erde', 'Ampere'],
       },
       {
-        q: 'Welche Wandlung beschreibt ein Solarmodul ungefähr?',
-        correct: 'Lichtenergie → elektrische Energie',
-        wrong: [
-          'elektrische Energie → Lichtenergie',
-          'chemische Energie → Bewegungsenergie',
-          'Wärmeenergie → chemische Energie',
-        ],
+        q: 'Welche Energieform liefert die Steckdose?',
+        correct: 'elektrische Energie',
+        wrong: ['nur Lageenergie', 'nur chemische Energie der Luft', 'Pascal'],
+      },
+      {
+        q: 'Welche Energieform hat warmes Wasser vor allem?',
+        correct: 'thermische Energie (Wärmeenergie)',
+        wrong: ['nur elektrische Energie', 'nur Ampère', 'nur Newton'],
+      },
+      {
+        q: 'Welche Energieform hat Sonnenlicht vor allem?',
+        correct: 'Strahlungsenergie (Lichtenergie)',
+        wrong: ['nur Lageenergie', 'nur Ampere', 'nur Masse'],
+      },
+      {
+        q: 'Ein gespannter Gummi (Flitzebogen) speichert vor allem …',
+        correct: 'Lageenergie / Spannenergie (potenzielle Energie)',
+        wrong: ['nur elektrische Energie', 'nur Ampere', 'nur Temperatur ohne Energie'],
+      },
+      {
+        q: 'Einheit der Energie?',
+        correct: 'Joule (J)',
+        wrong: ['Watt (W)', 'Ampere (A)', 'Newton (N)'],
       },
     ] as const
     const c = pick(rng, [...cases])
@@ -1114,44 +1119,691 @@ const energie: Topic['generate'] = mixedVariants(
       choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
       correct: c.correct,
       solution: c.correct,
-      explanation: 'Energiewandler wandeln eine Energieform in eine andere um — die Gesamtenergie bleibt erhalten.',
+      explanation:
+        'Wichtige Energieformen: kinetisch, Lage/potenziell, chemisch, elektrisch, thermisch, Strahlung. Einheit: Joule.',
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (rng) => {
+    const sets = [
+      {
+        q: 'Welche der folgenden sind Energieformen? (mehrere möglich)',
+        choices: [
+          'kinetische Energie (Bewegungsenergie)',
+          'Lageenergie (potenzielle Energie)',
+          'chemische Energie',
+          'elektrische Energie',
+          'ein Newtonmeter als Kraftart',
+          'Ampere als Energieform',
+        ],
+        correct: [
+          'kinetische Energie (Bewegungsenergie)',
+          'Lageenergie (potenzielle Energie)',
+          'chemische Energie',
+          'elektrische Energie',
+        ],
+        solution: 'Bewegungs-, Lage-, chemische und elektrische Energie.',
+        explanation: 'Newton/Ampere sind keine Energieformen.',
+      },
+      {
+        q: 'Welche gehören zu den Energieformen? (mehrere möglich)',
+        choices: [
+          'thermische Energie',
+          'Strahlungsenergie (Licht)',
+          'Spannenergie in einer Feder',
+          'Watt als Energieform',
+          'Volt als Energieform',
+          'chemische Energie in Nahrung',
+        ],
+        correct: [
+          'thermische Energie',
+          'Strahlungsenergie (Licht)',
+          'Spannenergie in einer Feder',
+          'chemische Energie in Nahrung',
+        ],
+        solution: 'thermisch, Strahlung, Spannenergie, chemisch.',
+        explanation: 'Watt und Volt sind Einheiten anderer Größen, keine Energieformen.',
+      },
+      {
+        q: 'Was sind Energieformen? (mehrere möglich)',
+        choices: [
+          'Bewegungsenergie',
+          'Lageenergie',
+          'elektrische Energie',
+          'thermische Energie',
+          'Kilogramm als Energieform',
+          'Sekunde als Energieform',
+        ],
+        correct: ['Bewegungsenergie', 'Lageenergie', 'elektrische Energie', 'thermische Energie'],
+        solution: 'Bewegung, Lage, elektrisch, thermisch.',
+        explanation: 'kg und s sind keine Energieformen.',
+      },
+    ] as const
+    const s = pick(rng, [...sets])
+    return multiSelectTask({
+      question: s.q,
+      choices: [...s.choices],
+      correct: [...s.correct],
+      solution: s.solution,
+      explanation: s.explanation,
+      instruction: 'Tippe alle Energieformen:',
+    })
+  },
+  (rng) => {
+    const pairs = [
+      { sit: 'brennendes Lagerfeuer', forms: 'chemische → thermische + Strahlungsenergie' },
+      { sit: 'Bergsteiger auf dem Gipfel', forms: 'Lageenergie (potenziell)' },
+      { sit: 'fahrendes Auto', forms: 'kinetische Energie' },
+      { sit: 'Akku eines Handys', forms: 'chemische Energie' },
+    ] as const
+    const p = pick(rng, [...pairs])
+    return choicePickTask({
+      question: `Situation: ${p.sit}. Welche Energieform(en) passen am besten?`,
+      choices: shuffleChoices(
+        rng,
+        [p.forms, 'nur Ampere', 'nur Watt als Energieform', 'nur die Masse in kg'],
+        p.forms,
+      ),
+      correct: p.forms,
+      solution: p.forms,
+      explanation: 'Energieformen beschreiben, in welcher „Art“ Energie vorliegt — nicht Masse oder Stromstärke.',
+      instruction: 'Tippe die passende Zuordnung:',
+    })
+  },
+  (_rng) =>
+    dragDropSlotsTask({
+      question: 'Baue: Energie wird in … gemessen. Einen Block brauchst du nicht.',
+      items: [
+        { label: 'Energie', value: 0 },
+        { label: '→', value: 1 },
+        { label: 'Joule (J)', value: 2 },
+        { label: 'Watt (W)', value: 3 },
+      ],
+      correctSlots: [0, 1, 2],
+      solution: 'Energie → Joule (J)',
+      explanation: 'Energie: Joule. Watt ist die Einheit der Leistung (kommt im Leistungsthema).',
+    }),
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was gilt für Energie? (mehrere möglich)',
+      choices: [
+        'Energie kann Formen wechseln (Umwandlung)',
+        'Einheit oft Joule (J)',
+        'Lageenergie hängt von der Höhe ab',
+        'Ampere ist eine Energieform',
+        'Leistung und Energie sind dieselbe Größe',
+      ],
+      correct: [
+        'Energie kann Formen wechseln (Umwandlung)',
+        'Einheit oft Joule (J)',
+        'Lageenergie hängt von der Höhe ab',
+      ],
+      solution: 'Umwandlung, Joule, Lageenergie/Höhe.',
+      explanation: 'Ampere ≠ Energieform. Leistung (Watt) ist ein anderes Thema.',
+      instruction: 'Tippe alle richtigen Aussagen:',
+    }),
+)
+
+/** LB3 — Energiewandler (Geräte / Umwandlung im Gerät) */
+const energie: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      {
+        q: 'Was macht ein Energiewandler?',
+        correct: 'wandelt eine Energieform in eine andere um',
+        wrong: [
+          'erzeugt Energie aus dem Nichts',
+          'misst nur die Temperatur',
+          'ändert die Masse eines Körpers dauerhaft',
+        ],
+      },
+      {
+        q: 'Generator im Wasserkraftwerk wandelt ungefähr …',
+        correct: 'Bewegungsenergie → elektrische Energie',
+        wrong: [
+          'chemische Energie → Wärmeenergie',
+          'Lichtenergie → chemische Energie',
+          'elektrische Energie → chemische Energie',
+        ],
+      },
+      {
+        q: 'Taschenlampenbatterie beim Entladen: …',
+        correct: 'chemische Energie → elektrische Energie',
+        wrong: [
+          'elektrische Energie → chemische Energie',
+          'Wärmeenergie → Bewegungsenergie',
+          'Lichtenergie → Lageenergie',
+        ],
+      },
+      {
+        q: 'Glühlampe wandelt ungefähr …',
+        correct: 'elektrische Energie → Licht- und Wärmeenergie',
+        wrong: [
+          'Lichtenergie → elektrische Energie',
+          'chemische Energie → Lageenergie',
+          'Bewegungsenergie → chemische Energie',
+        ],
+      },
+      {
+        q: 'Solarmodul wandelt ungefähr …',
+        correct: 'Strahlungsenergie (Licht) → elektrische Energie',
+        wrong: [
+          'elektrische Energie → Lichtenergie',
+          'chemische Energie → Bewegungsenergie',
+          'Wärmeenergie → chemische Energie',
+        ],
+      },
+      {
+        q: 'Elektromotor wandelt ungefähr …',
+        correct: 'elektrische Energie → Bewegungsenergie',
+        wrong: [
+          'Bewegungsenergie → chemische Energie',
+          'Lageenergie → Lichtenergie',
+          'Ampere → Newton',
+        ],
+      },
+      {
+        q: 'Windkraftanlage: Ausgangsenergieform am Rotor?',
+        correct: 'Bewegungsenergie (Wind)',
+        wrong: ['nur chemische Energie', 'nur Lageenergie im See', 'nur Ampere'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Energiewandler ändern die Energieform — die Energie verschwindet nicht einfach.',
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (rng) => {
+    const devices = [
+      { d: 'Föhn', ok: 'elektrische → thermische (+ Bewegungs-)Energie' },
+      { d: 'Lautsprecher', ok: 'elektrische → Schall-/Bewegungsenergie' },
+      { d: 'Muskel (Mensch)', ok: 'chemische → Bewegungs-/Lageenergie' },
+      { d: 'Kohlekraftwerk (vereinfacht)', ok: 'chemische → thermische → … → elektrische Energie' },
+    ] as const
+    const x = pick(rng, [...devices])
+    return choicePickTask({
+      question: `Welcher Energieweg passt zu: ${x.d}?`,
+      choices: shuffleChoices(
+        rng,
+        [x.ok, 'Energie wird vernichtet', 'nur Ampere ohne Wandlung', 'Masse wird zu Watt'],
+        x.ok,
+      ),
+      correct: x.ok,
+      solution: x.ok,
+      explanation: 'Immer Ausgangsform → gewünschte Form(en) benennen.',
       instruction: 'Tippe die passende Wandlung:',
     })
   },
   (_rng) =>
     multiSelectTask({
-      question: 'Welche der folgenden sind Energieformen? (mehrere möglich)',
+      question: 'Welche Geräte sind typische Energiewandler? (mehrere möglich)',
       choices: [
-        'kinetische Energie (Bewegungsenergie)',
-        'Lageenergie (potenzielle Energie)',
-        'chemische Energie',
-        'elektrische Energie',
-        'ein Newtonmeter als Kraftart',
-        'Ampere als Energieform',
+        'Elektromotor',
+        'Solarzelle',
+        'Glühlampe',
+        'Lineal (nur Länge messen)',
+        'Generator',
+        'Thermometer (nur Temperatur anzeigen)',
+      ],
+      correct: ['Elektromotor', 'Solarzelle', 'Glühlampe', 'Generator'],
+      solution: 'Motor, Solarzelle, Lampe, Generator.',
+      explanation: 'Lineal und Thermometer wandeln keine Energieformen um — sie messen.',
+      instruction: 'Tippe alle passenden Geräte:',
+    }),
+  (_rng) =>
+    dragDropSlotsTask({
+      question: 'Ordne: Energiewandler … Energieformen. Einen Block brauchst du nicht.',
+      items: [
+        { label: 'wandelt', value: 0 },
+        { label: '→', value: 1 },
+        { label: 'andere Form', value: 2 },
+        { label: 'vernichtet Energie', value: 3 },
+      ],
+      correctSlots: [0, 1, 2],
+      solution: 'wandelt → andere Form',
+      explanation: 'Wandeln ≠ vernichten. (Verluste heißen oft Wärmeentwertung.)',
+    }),
+)
+
+/** LB3 — Energieumwandlungsketten */
+const umwandlung: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const chains = [
+      {
+        q: 'Wasserkraftwerk: Ordne die Kette (Start → Ende).',
+        items: [
+          { label: 'Lageenergie (Wasser im See)', value: 0 },
+          { label: 'kinetische Energie (fließendes Wasser)', value: 1 },
+          { label: 'kinetische Energie (Turbine)', value: 2 },
+          { label: 'elektrische Energie', value: 3 },
+        ],
+        order: [0, 1, 2, 3],
+        solution: 'Lage → kinetisch (Wasser) → kinetisch (Turbine) → elektrisch',
+        explanation: 'Höhe → Fluss → Turbine → Generatorstrom.',
+      },
+      {
+        q: 'Fahrrad mit Dynamo: Ordne die Kette (Start → Ende).',
+        items: [
+          { label: 'chemische Energie (Nahrung)', value: 0 },
+          { label: 'kinetische Energie (Pedale)', value: 1 },
+          { label: 'elektrische Energie (Dynamo)', value: 2 },
+          { label: 'Strahlungsenergie (Lampe)', value: 3 },
+        ],
+        order: [0, 1, 2, 3],
+        solution: 'chemisch → kinetisch → elektrisch → Strahlung',
+        explanation: 'Nahrung → Treten → Dynamo → Licht.',
+      },
+      {
+        q: 'Taschenlampe: Ordne die Kette (Start → Ende).',
+        items: [
+          { label: 'chemische Energie (Batterie)', value: 0 },
+          { label: 'elektrische Energie', value: 1 },
+          { label: 'Strahlungs- + thermische Energie', value: 2 },
+        ],
+        order: [0, 1, 2],
+        solution: 'chemisch → elektrisch → Licht/Wärme',
+        explanation: 'Batterie → Strom → Licht und Erwärmung.',
+      },
+    ] as const
+    const c = pick(rng, [...chains])
+    return dragDropSortTask({
+      question: c.q,
+      items: [...c.items],
+      correctOrder: [...c.order],
+      solution: c.solution,
+      explanation: c.explanation,
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Bei realen Umwandlungen entsteht oft unerwünschte …',
+        correct: 'thermische Energie (Wärme / Entwertung)',
+        wrong: ['zusätzliche Masse', 'Ampere aus dem Nichts', 'verlorene Zeit als Energieform'],
+      },
+      {
+        q: 'Reibung an Reifen „entwertet“ Energie vor allem als …',
+        correct: 'thermische Energie (Wärme)',
+        wrong: ['reine Lageenergie ohne Verlust', 'nur chemische Energie', 'Ampere'],
+      },
+      {
+        q: 'Was beschreibt eine Energieumwandlungskette?',
+        correct: 'nacheinander folgende Energieformen (oft mit →)',
+        wrong: ['nur eine einzige Einheit Watt', 'nur die Masse', 'nur Ampere und Volt'],
+      },
+      {
+        q: 'Wasserkraftwerk: erste Energieform im Stausee?',
+        correct: 'Lageenergie (potenzielle Energie)',
+        wrong: ['nur elektrische Energie', 'nur Ampere', 'nur chemische Energie der Luft'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Ketten: Form₁ → Form₂ → … ; Verluste oft als Wärme.',
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (_rng) =>
+    dragDropSlotsTask({
+      question: 'Baue die Taschenlampen-Kette. Einen Block brauchst du nicht.',
+      items: [
+        { label: 'chemisch', value: 0 },
+        { label: '→', value: 1 },
+        { label: 'elektrisch', value: 2 },
+        { label: '→', value: 3 },
+        { label: 'Licht/Wärme', value: 4 },
+        { label: 'Ampere', value: 5 },
+      ],
+      correctSlots: [0, 1, 2, 3, 4],
+      solution: 'chemisch → elektrisch → Licht/Wärme',
+      explanation: 'Klassische Schulkette der Taschenlampe.',
+    }),
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was gehört zu Energieumwandlungsketten? (mehrere möglich)',
+      choices: [
+        'Pfeile → für Umwandlungsschritte',
+        'Beteiligte Energieformen nennen',
+        'Wärme als mögliche Entwertung',
+        'Leistung P = E/t berechnen (eigenes Thema)',
+        'Ampere als Energieform in der Kette',
       ],
       correct: [
-        'kinetische Energie (Bewegungsenergie)',
-        'Lageenergie (potenzielle Energie)',
-        'chemische Energie',
-        'elektrische Energie',
+        'Pfeile → für Umwandlungsschritte',
+        'Beteiligte Energieformen nennen',
+        'Wärme als mögliche Entwertung',
       ],
-      solution: 'Bewegungs-, Lage-, chemische und elektrische Energie sind Energieformen.',
-      explanation:
-        'Newton ist eine Krafteinheit, Ampere eine Stromstärke — beides keine Energieformen.',
-      instruction: 'Tippe alle Energieformen:',
+      solution: 'Formen + Pfeile; Wärme oft Verlust.',
+      explanation: 'Leistungsrechnung gehört zum Thema Leistung — hier geht es um Ketten.',
+      instruction: 'Tippe alle zutreffenden Aussagen:',
     }),
-  () =>
-    dragDropSortTask({
-      question: 'Ordne die typische Energiekette einer Taschenlampe (Start → Ende).',
+  (rng) => {
+    const miss = pick(rng, [
+      {
+        q: 'Fahrrad bergab mit Dynamo und LED: Welche Form fehlt oft am Ende der Kette?',
+        correct: 'Strahlungsenergie (Licht der LED)',
+        wrong: ['nur Ampere', 'nur Newton', 'nur Kilogramm'],
+      },
+      {
+        q: 'Nach der Turbine im Wasserkraftwerk folgt typischerweise …',
+        correct: 'elektrische Energie (Generator)',
+        wrong: ['nur chemische Energie der Kohle', 'nur Ampère ohne Gerät', 'nur Licht der Sonne'],
+      },
+    ] as const)
+    return choicePickTask({
+      question: miss.q,
+      choices: shuffleChoices(rng, [miss.correct, ...miss.wrong], miss.correct),
+      correct: miss.correct,
+      solution: miss.correct,
+      explanation: 'Kette zu Ende denken: welche Form kommt als Nächstes?',
+      instruction: 'Tippe die passende Form:',
+    })
+  },
+)
+
+/** LB3 — Wirkungsgrad */
+const wirkungsgrad: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const pairs = [
+      [2, 10, 20],
+      [4, 10, 40],
+      [5, 20, 25],
+      [15, 50, 30],
+      [40, 100, 40],
+      [170, 200, 85],
+    ] as const
+    const [en, ez, eta] = pick(rng, [...pairs])
+    return valueTask({
+      question: `Ein Gerät nimmt ${ez} J auf und nutzt ${en} J. Berechne den Wirkungsgrad η in %.`,
+      answerKind: 'integer',
+      unit: '%',
+      value: eta,
+      solution: `${eta} %`,
+      explanation: `η = E_nutz / E_zu · 100 % = ${en}/${ez}·100 % = ${eta} %.`,
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Wirkungsgrad η ist …',
+        correct: 'genutzte Energie / zugeführte Energie (oft in %)',
+        wrong: ['zugeführte / genutzte Energie', 'E_nutz · E_zu', 'E_zu − E_nutz ohne Bezug'],
+      },
+      {
+        q: 'Der Wirkungsgrad ist in der Realität …',
+        correct: 'immer kleiner als 100 %',
+        wrong: ['immer genau 100 %', 'immer größer als 100 %', 'immer 0 %'],
+      },
+      {
+        q: 'Alte Glühlampe: typischer Wirkungsgrad für Licht?',
+        correct: 'sehr klein (viel Wärme statt Licht)',
+        wrong: ['nahe 100 % nur Licht', 'größer als 100 %', 'ohne Energieumwandlung'],
+      },
+      {
+        q: 'LED gegenüber Glühlampe: Wirkungsgrad für Licht ist …',
+        correct: 'deutlich höher (weniger ungenutzte Wärme)',
+        wrong: ['immer kleiner', 'immer 0 %', 'größer als 100 %'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'η = E_nutz/E_zu < 1; Rest oft Wärme (Entwertung).',
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (_rng) =>
+    dragDropSlotsTask({
+      question: 'Baue die Wirkungsgrad-Formel. Einen Block brauchst du nicht.',
       items: [
-        { label: 'chemische Energie in der Batterie', value: 0 },
-        { label: 'elektrische Energie im Stromkreis', value: 1 },
-        { label: 'Licht- und Wärmeenergie an der Lampe', value: 2 },
+        { label: 'η', value: 0 },
+        { label: '=', value: 1 },
+        { label: 'E_nutz', value: 2 },
+        { label: '/', value: 3 },
+        { label: 'E_zu', value: 4 },
+        { label: '· t', value: 5 },
       ],
-      correctOrder: [0, 1, 2],
-      solution: 'chemisch → elektrisch → Licht/Wärme',
+      correctSlots: [0, 1, 2, 3, 4],
+      solution: 'η = E_nutz / E_zu',
+      explanation: 'Genutzte durch zugeführte Energie — oft ·100 % für Prozent.',
+    }),
+  (rng) => {
+    const ez = pick(rng, [100, 200, 50])
+    const en = pick(rng, [ez === 100 ? 40 : ez === 200 ? 170 : 20, ez === 100 ? 30 : ez === 200 ? 150 : 10])
+    const waste = ez - en
+    return valueTask({
+      question: `Zugeführt ${ez} J, genutzt ${en} J. Wie viel Energie wird entwertet (in J)?`,
+      answerKind: 'integer',
+      unit: 'J',
+      value: waste,
+      solution: `${waste} J`,
+      explanation: `E_verlust = E_zu − E_nutz = ${ez} − ${en} = ${waste} J.`,
+    })
+  },
+  (rng) => {
+    const eta = pick(rng, [5, 20, 40, 85])
+    return choicePickTask({
+      question: 'Was zeigt das Energieflussdiagramm? (Nutzanteil siehe Skizze)',
+      choices: shuffleChoices(
+        rng,
+        [
+          `etwa ${eta} % der Energie werden genutzt, der Rest oft als Wärme abgegeben`,
+          'Energie wird vollständig vernichtet',
+          'Wirkungsgrad ist immer über 100 %',
+          'nur Ampere wird umgewandelt',
+        ],
+        `etwa ${eta} % der Energie werden genutzt, der Rest oft als Wärme abgegeben`,
+      ),
+      correct: `etwa ${eta} % der Energie werden genutzt, der Rest oft als Wärme abgegeben`,
+      solution: `genutzt ≈ ${eta} %`,
+      explanation: 'Breiter Eingangspfeil, schmalerer Nutzpfeil, Abzweig = Verlust/Wärme.',
+      instruction: 'Tippe die passende Deutung:',
+      visualContent: energyFlowSvg({
+        inputLabel: 'E_zu',
+        usefulLabel: 'Nutzen',
+        wasteLabel: 'Wärme',
+        usefulPct: eta,
+      }),
+    })
+  },
+)
+
+/** LB3 — Leistung P = E/t */
+const leistung: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const e = pick(rng, [20, 40, 60, 100, 3000])
+    const t = pick(rng, [2, 4, 5, 6, 10])
+    if (e % t !== 0) {
+      const t2 = 5
+      const e2 = 100
+      return valueTask({
+        question: `E = ${e2} J, t = ${t2} s. Berechne die Leistung P.`,
+        answerKind: 'integer',
+        unit: 'W',
+        value: 20,
+        solution: '20 W',
+        explanation: `P = E / t = ${e2}/${t2} = 20 W.`,
+      })
+    }
+    const p = e / t
+    return valueTask({
+      question: `E = ${e} J, t = ${t} s. Berechne die Leistung P.`,
+      answerKind: 'integer',
+      unit: 'W',
+      value: p,
+      solution: `${p} W`,
+      explanation: `P = E / t = ${e}/${t} = ${p} W.`,
+    })
+  },
+  (rng) => {
+    const p = pick(rng, [10, 20, 50, 2000])
+    const t = pick(rng, [2, 5, 10, 60])
+    const e = p * t
+    return valueTask({
+      question: `P = ${p} W, t = ${t} s. Berechne die umgewandelte Energie E.`,
+      answerKind: 'integer',
+      unit: 'J',
+      value: e,
+      solution: `${e} J`,
+      explanation: `E = P · t = ${p}·${t} = ${e} J.`,
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Leistung beschreibt …',
+        correct: 'wie schnell Energie umgewandelt/übertragen wird',
+        wrong: [
+          'nur die Gesamtmenge Energie im Tank',
+          'nur die Masse',
+          'nur die Temperatur',
+        ],
+      },
+      {
+        q: 'Unterschied Energie und Leistung?',
+        correct: 'Energie = „wie viel“, Leistung = „wie schnell“',
+        wrong: [
+          'beides dieselbe Größe mit derselben Einheit',
+          'Leistung ist immer Joule',
+          'Energie wird in Watt gemessen',
+        ],
+      },
+      {
+        q: 'Einheit der Leistung?',
+        correct: 'Watt (W)',
+        wrong: ['Joule (J)', 'Ampere (A)', 'Newton (N)'],
+      },
+      {
+        q: '1 kW sind …',
+        correct: '1000 W',
+        wrong: ['100 W', '10 W', '1 000 000 W'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'P = E/t in Watt. Energie in Joule — nicht verwechseln.',
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (_rng) =>
+    dragDropSlotsTask({
+      question: 'Baue die Leistungsformel. Einen Block brauchst du nicht.',
+      items: [
+        { label: 'P', value: 0 },
+        { label: '=', value: 1 },
+        { label: 'E', value: 2 },
+        { label: '/', value: 3 },
+        { label: 't', value: 4 },
+        { label: '· m', value: 5 },
+      ],
+      correctSlots: [0, 1, 2, 3, 4],
+      solution: 'P = E / t',
+      explanation: 'Leistung = umgewandelte Energie geteilt durch Zeit.',
+    }),
+  (rng) => {
+    const e = 3000
+    const tMax = 6
+    const tBen = 10
+    const who = pick(rng, ['Max', 'Ben'] as const)
+    const p = who === 'Max' ? e / tMax : e / tBen
+    return valueTask({
+      question: `Max und Ben wandeln je ${e} J Lageenergie an der Treppe um. Max: ${tMax} s, Ben: ${tBen} s. Leistung von ${who}?`,
+      answerKind: 'integer',
+      unit: 'W',
+      value: p,
+      solution: `${p} W`,
       explanation:
-        'Die Batterie speichert chemische Energie; im Stromkreis fließt elektrische Energie; die Lampe gibt Licht und Wärme ab.',
+        who === 'Max'
+          ? `P_Max = ${e}/${tMax} = ${p} W (kürzere Zeit → größere Leistung).`
+          : `P_Ben = ${e}/${tBen} = ${p} W.`,
+    })
+  },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was gilt zur Leistung? (mehrere möglich)',
+      choices: [
+        'P = E / t',
+        'Einheit Watt (W)',
+        'gleiche Energie in kürzerer Zeit → größere Leistung',
+        'Energie und Leistung haben dieselbe Einheit',
+        '1 W = 1 J / 1 s',
+      ],
+      correct: [
+        'P = E / t',
+        'Einheit Watt (W)',
+        'gleiche Energie in kürzerer Zeit → größere Leistung',
+        '1 W = 1 J / 1 s',
+      ],
+      solution: 'P=E/t, Watt, Zeitbezug, 1 W = 1 J/s.',
+      explanation: 'Energie: Joule — Leistung: Watt.',
+      instruction: 'Tippe alle richtigen Aussagen:',
+    }),
+)
+
+/** LB3 — Energie sparen (kurz, anwendungsnah) */
+const energiesparen: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      {
+        q: 'Energie sparen heißt oft …',
+        correct: 'weniger Energie zuführen oder Verluste (z. B. Reibung/Wärme) verringern',
+        wrong: ['Wirkungsgrad über 100 % erzwingen', 'Energie vernichten', 'nur Ampere erhöhen'],
+      },
+      {
+        q: 'LED statt Glühlampe spart Energie, weil …',
+        correct: 'bei gleichem Nutzen weniger Verlustwärme entsteht (besserer Wirkungsgrad)',
+        wrong: ['die LED Energie aus dem Nichts erzeugt', 'Watt und Joule gleich sind', 'Reibung zunimmt'],
+      },
+      {
+        q: 'Reibung verringern kann …',
+        correct: 'den Energieaufwand für denselben Nutzen senken',
+        wrong: ['den Wirkungsgrad über 100 % treiben', 'Energie verdoppeln ohne Ursache', 'nur die Masse ändern'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Sparen = Nutzen mit weniger Aufwand / weniger Entwertung.',
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was hilft beim Energiesparen? (mehrere möglich)',
+      choices: [
+        'Geräte mit besserem Wirkungsgrad wählen',
+        'unnötige Verluste (Wärme/Reibung) vermeiden',
+        'Standby vermeiden, wenn sinnvoll',
+        'Wirkungsgrad über 100 % erwarten',
+        'Energieformen mit Ampere verwechseln',
+      ],
+      correct: [
+        'Geräte mit besserem Wirkungsgrad wählen',
+        'unnötige Verluste (Wärme/Reibung) vermeiden',
+        'Standby vermeiden, wenn sinnvoll',
+      ],
+      solution: 'besserer η, weniger Verluste, sinnvoller Betrieb.',
+      explanation: 'η > 100 % gibt es nicht.',
+      instruction: 'Tippe alle sinnvollen Maßnahmen:',
     }),
 )
 
@@ -1697,7 +2349,12 @@ export const PHYSIK_K7_GENERATORS: Record<string, Topic['generate']> = {
   'ph-k7-lb2-reihe': reihe,
   'ph-k7-lb2-parallel': parallel,
   'ph-k7-lb2-messen': messen,
+  'ph-k7-lb3-energieformen': energieformen,
   'ph-k7-lb3-energie': energie,
+  'ph-k7-lb3-umwandlung': umwandlung,
+  'ph-k7-lb3-wirkungsgrad': wirkungsgrad,
+  'ph-k7-lb3-leistung': leistung,
+  'ph-k7-lb3-sparen': energiesparen,
   'ph-k7-lbw-kraftwandler': kraftwandler,
   'ph-k7-lbw-hebel': kraftwandler,
   'ph-k7-lbw-flasche': kraftwandler,

@@ -934,7 +934,30 @@ export function meterGapCircuitSvg(opts: {
 </svg>`
 }
 
-/** Einfacher Stromkreis mit eingebautem Amperemeter (Reihe) oder Voltmeter (parallel). */
+/** Einfaches Energieflussdiagramm (Sankey-ähnlich) für Wirkungsgrad. */
+export function energyFlowSvg(opts: {
+  inputLabel: string
+  usefulLabel: string
+  wasteLabel: string
+  usefulPct: number
+}): string {
+  const u = Math.max(5, Math.min(95, opts.usefulPct))
+  const usefulH = Math.round(18 + (u / 100) * 44)
+  const wasteH = Math.round(18 + ((100 - u) / 100) * 44)
+  const midY = 70
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 150" width="360" height="150" role="img" aria-label="Energieflussdiagramm">
+  <rect width="360" height="150" fill="#f8fafc"/>
+  <path d="M20 ${midY - 36} H90 V${midY + 36} H20 Z" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+  <text x="55" y="${midY + 5}" text-anchor="middle" fill="#1e3a8a" font-size="11" font-family="system-ui,sans-serif">${opts.inputLabel}</text>
+  <path d="M90 ${midY - usefulH / 2} H200 V${midY + usefulH / 2} H90 Z" fill="#bbf7d0" stroke="#334155" stroke-width="2"/>
+  <text x="145" y="${midY + 4}" text-anchor="middle" fill="#14532d" font-size="11" font-family="system-ui,sans-serif">${opts.usefulLabel}</text>
+  <path d="M200 ${midY - usefulH / 2} H330 V${midY + usefulH / 2} H200 Z" fill="#86efac" stroke="#334155" stroke-width="2"/>
+  <text x="265" y="${midY + 4}" text-anchor="middle" fill="#14532d" font-size="11" font-family="system-ui,sans-serif">genutzt ${u} %</text>
+  <path d="M140 ${midY + usefulH / 2} L140 ${midY + usefulH / 2 + wasteH} L210 ${midY + usefulH / 2 + wasteH} L180 ${midY + usefulH / 2} Z" fill="#fecaca" stroke="#334155" stroke-width="2"/>
+  <text x="175" y="${midY + usefulH / 2 + wasteH / 2 + 4}" text-anchor="middle" fill="#7f1d1d" font-size="11" font-family="system-ui,sans-serif">${opts.wasteLabel}</text>
+</svg>`
+}
+
 export function meterWiredCircuitSvg(opts: { meter: 'A' | 'V' }): string {
   if (opts.meter === 'A') {
     // Wire runs continuously through the meter; circle is drawn on top (no air gap).

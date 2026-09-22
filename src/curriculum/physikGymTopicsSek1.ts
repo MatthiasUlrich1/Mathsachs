@@ -247,12 +247,14 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
           }),
         ]),
         area('lb3', 'Energiewandler', 10, [
-          topic('ph-k7-lb3-energieformen', 'Energieformen', ['Energie']),
-          topic('ph-k7-lb3-energie', 'Energiewandler', ['Energie', 'Wandler']),
-          topic('ph-k7-lb3-umwandlung', 'Energieumwandlungsketten', ['Umwandlung']),
-          topic('ph-k7-lb3-wirkungsgrad', 'Wirkungsgrad', ['Wirkungsgrad']),
-          topic('ph-k7-lb3-leistung', 'Leistung P = E/t', ['Leistung']),
-          topic('ph-k7-lb3-sparen', 'Energie sparen', ['Energieeinsparung']),
+          topic('ph-k7-lb3-energieformen', 'Energieformen', ['Energie'], { released: true }),
+          topic('ph-k7-lb3-energie', 'Energiewandler', ['Energie', 'Wandler'], { released: true }),
+          topic('ph-k7-lb3-umwandlung', 'Energieumwandlungsketten', ['Umwandlung'], {
+            released: true,
+          }),
+          topic('ph-k7-lb3-wirkungsgrad', 'Wirkungsgrad', ['Wirkungsgrad'], { released: true }),
+          topic('ph-k7-lb3-leistung', 'Leistung P = E/t', ['Leistung'], { released: true }),
+          topic('ph-k7-lb3-sparen', 'Energie sparen', ['Energieeinsparung'], { released: true }),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
           topic('ph-k7-lbw-kraftwandler', 'Kraftwandler – früher und heute', ['Kraftwandler']),

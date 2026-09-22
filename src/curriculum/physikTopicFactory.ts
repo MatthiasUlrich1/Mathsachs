@@ -2724,7 +2724,9 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
 
   if (
     /leistung|arbeit|energie/.test(lower) &&
-    !/dichte|volumen|bindungsenergie|bindung|kraftwerk/.test(lower)
+    !/dichte|volumen|bindungsenergie|bindung|kraftwerk|energieform|umwandlung|wirkungsgrad|energiewandler|sparen|η/.test(
+      lower,
+    )
   ) {
     return {
       cases: [

@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.23',
+    version: '2.5.24',
     changelog:
-      'Parallelschaltung: Widerstands-Rechtecke längs zur vertikalen Leitung (hochkant), nicht quer.',
+      'K7 LB3 Energiewandler freigegeben: Energieformen ohne Leistung, Ketten (Wasserkraftwerk/Dynamo/Taschenlampe), Wirkungsgrad mit Flussdiagramm, Leistung P=E/t, Energiesparen — mehr Abwechslung, interaktiv.',
     official,
     extras: [],
   }

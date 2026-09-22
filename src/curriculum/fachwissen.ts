@@ -324,6 +324,41 @@ export function physikFachwissen(topic: TopicRef): Fachwissen {
       ...wiki('Dynamischer_Auftrieb', 'Dynamischer_Auftrieb'),
     }
   }
+  if (/energieform|lb3-energieformen/.test(lower)) {
+    return {
+      text:
+        'Energieformen (Klasse 6/7): kinetische (Bewegungs-), Lage-/potenzielle, chemische, elektrische, thermische und Strahlungsenergie. ' +
+        'Einheit: Joule (J). Ampere, Watt, Newton sind keine Energieformen. ' +
+        'Leistung P = E/t gehört zum eigenen Thema Leistung — hier nur Formen zuordnen.',
+      ...wiki('Energie', 'Energie'),
+    }
+  }
+  if (/umwandlungskette|lb3-umwandlung/.test(lower)) {
+    return {
+      text:
+        'Energieumwandlungsketten: Formen nacheinander mit → verbinden (z. B. Wasserkraftwerk, Dynamo, Taschenlampe). ' +
+        'In der Realität entsteht oft unerwünschte Wärme (Energieentwertung durch Reibung). ' +
+        'Aufgabe: Ketten ordnen und Verluste als thermische Energie benennen.',
+      ...wiki('Energieumwandlung', 'Energieumwandlung'),
+    }
+  }
+  if (/wirkungsgrad|lb3-wirkungsgrad/.test(lower)) {
+    return {
+      text:
+        'Wirkungsgrad η = E_nutz / E_zu (oft in %). Immer < 100 %, Rest meist Wärme. ' +
+        'Vergleich: Glühlampe vs. LED. Energieflussdiagramm: Eingang, Nutzen, Verlustzweig.',
+      ...wiki('Wirkungsgrad', 'Wirkungsgrad'),
+    }
+  }
+  if (/lb3-leistung|leistung p\s*=\s*e/.test(lower)) {
+    return {
+      text:
+        'Leistung P = E / t in Watt (W): wie schnell Energie umgewandelt wird. ' +
+        'Energie = „wie viel“ (J), Leistung = „wie schnell“ (W). 1 kW = 1000 W. ' +
+        'Umstellen: E = P · t.',
+      ...wiki('Leistung', 'Leistung_(Physik)'),
+    }
+  }
   if (/energie|leistung|arbeit|kinetisch|potentiell/.test(lower)) {
     return {
       text:

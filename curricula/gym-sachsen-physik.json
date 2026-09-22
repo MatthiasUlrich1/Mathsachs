@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "2.5.23",
-  "changelog": "Parallelschaltung: Widerstands-Rechtecke längs zur vertikalen Leitung (hochkant), nicht quer.",
+  "version": "2.5.24",
+  "changelog": "K7 LB3 Energiewandler freigegeben: Energieformen ohne Leistung, Ketten (Wasserkraftwerk/Dynamo/Taschenlampe), Wirkungsgrad mit Flussdiagramm, Leistung P=E/t, Energiesparen — mehr Abwechslung, interaktiv.",
   "official": [
     {
       "id": "physik-klasse-6",
@@ -686,7 +686,7 @@
               "title": "Energieformen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Energie"
@@ -697,7 +697,7 @@
               "title": "Energiewandler",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Energie",
@@ -709,7 +709,7 @@
               "title": "Energieumwandlungsketten",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Umwandlung"
@@ -720,7 +720,7 @@
               "title": "Wirkungsgrad",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Wirkungsgrad"
@@ -731,7 +731,7 @@
               "title": "Leistung P = E/t",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Leistung"
@@ -742,7 +742,7 @@
               "title": "Energie sparen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Energieeinsparung"
@@ -4008,5 +4008,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "9758097b"
+  "contentHash": "f6b20fc7"
 }
