@@ -4,7 +4,7 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "2.5.17",
+  "version": "2.5.18",
   "changelog": "Lochkamera-/Auge-SVG korrigiert; Farbfilter-Bilder nur passend; Dämmstoffe+Spektrum freigegeben.",
   "official": [
     {
@@ -510,7 +510,7 @@
               "title": "Kraft als physikalische Größe",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Kraft",
@@ -522,7 +522,7 @@
               "title": "Gewichtskraft F = m·g",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Gewichtskraft"
@@ -533,7 +533,7 @@
               "title": "Kräfte vergleichen und addieren",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Kraft",
@@ -545,7 +545,7 @@
               "title": "Federkraft und Hooke",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Feder",
@@ -4008,5 +4008,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "be0a7d9d"
+  "contentHash": "b41ab051"
 }

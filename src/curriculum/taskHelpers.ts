@@ -202,7 +202,7 @@ export const dragDropSortTask = (input: DragDropSortTaskInput): Task => ({
 })
 
 /** How formula slot answers are compared. */
-export type DragDropSlotsCheckMode = 'strict' | 'commutativeFactors'
+export type DragDropSlotsCheckMode = 'strict' | 'commutativeFactors' | 'anyOrder'
 
 interface DragDropSlotsTaskInput {
   question: string
@@ -215,8 +215,9 @@ interface DragDropSlotsTaskInput {
   instruction?: string
   visualContent?: string
   /**
-   * `strict`: slots must match left→right.
+   * `strict`: slots must match left→right (by label).
    * `commutativeFactors`: left of `=` stays fixed; multiplied factors after `=` may be any order.
+   * `anyOrder`: all correct chips may appear in any order (e.g. `+ ↔ −` ≡ `− ↔ +`).
    * When omitted, pure multiplication products after `=` are detected automatically.
    */
   checkMode?: DragDropSlotsCheckMode
@@ -330,6 +331,11 @@ export function checkDragDropSlotsAnswer(
     return filled.every(
       (idx, i) => slotLabel(items, idx) === slotLabel(items, correctSlots[i]!),
     )
+  }
+
+  if (checkMode === 'anyOrder') {
+    // Same chips (by label), any order — e.g. + ↔ − same as − ↔ +
+    return sameLabelMultiset(items, filled, correctSlots)
   }
 
   const rhsStart = formulaEqualsRhsStart(items, correctSlots)

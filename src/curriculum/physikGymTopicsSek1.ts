@@ -215,10 +215,16 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
       ['Kraft', 'Stromstärke', 'Spannung', 'Energie'],
       [
         area('lb1', 'Kräfte', 22, [
-          topic('ph-k7-lb1-kraftbegriff', 'Kraft als physikalische Größe', ['Kraft', 'Newton']),
-          topic('ph-k7-lb1-gewichtskraft', 'Gewichtskraft F = m·g', ['Gewichtskraft']),
-          topic('ph-k7-lb1-kraefte', 'Kräfte vergleichen und addieren', ['Kraft', 'Gewichtskraft']),
-          topic('ph-k7-lb1-feder', 'Federkraft und Hooke', ['Feder', 'Hooke']),
+          topic('ph-k7-lb1-kraftbegriff', 'Kraft als physikalische Größe', ['Kraft', 'Newton'], {
+            released: true,
+          }),
+          topic('ph-k7-lb1-gewichtskraft', 'Gewichtskraft F = m·g', ['Gewichtskraft'], {
+            released: true,
+          }),
+          topic('ph-k7-lb1-kraefte', 'Kräfte vergleichen und addieren', ['Kraft', 'Gewichtskraft'], {
+            released: true,
+          }),
+          topic('ph-k7-lb1-feder', 'Federkraft und Hooke', ['Feder', 'Hooke'], { released: true }),
           topic('ph-k7-lb1-reibung', 'Reibung', ['Reibung']),
           topic('ph-k7-lb1-magnet', 'Magnetische Kräfte', ['Magnet']),
           topic('ph-k7-lb1-elektrostatik', 'Elektrostatische Kräfte', ['Elektrostatik']),

@@ -172,4 +172,24 @@ describe('dragDropSlots commutativeFactors', () => {
       task.check({ kind: 'dragDropSlots', slots: [0, 7, 2, 3, 4, 5, 6], result: '5' }),
     ).toBe(false)
   })
+
+  it('anyOrder accepts swapped charge/pole symbols', () => {
+    const items = [
+      { label: '+', value: 1 },
+      { label: '↔', value: 2 },
+      { label: '−', value: 3 },
+      { label: '+ ↔ +', value: 4 },
+    ]
+    const task = dragDropSlotsTask({
+      question: 'Anziehung',
+      items,
+      correctSlots: [0, 1, 2],
+      solution: '+ ↔ −',
+      explanation: 'ungleichnamig',
+      checkMode: 'anyOrder',
+    })
+    expect(task.check({ kind: 'dragDropSlots', slots: [0, 1, 2] })).toBe(true)
+    expect(task.check({ kind: 'dragDropSlots', slots: [2, 1, 0] })).toBe(true)
+    expect(task.check({ kind: 'dragDropSlots', slots: [0, 1, 3] })).toBe(false)
+  })
 })

@@ -717,6 +717,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
         'die Anziehung ungleichnamiger Pole',
         'N ↔ S (anziehen)',
         'N ↔ N',
+        'anyOrder',
       ),
     }
   }
@@ -745,6 +746,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
         'die Anziehung ungleichnamiger Ladungen',
         '+ ↔ − (anziehen)',
         '+ ↔ +',
+        'anyOrder',
       ),
     }
   }

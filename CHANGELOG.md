@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.88] – 2026-09-22
+
+### Geändert
+- **Freigaben K7 Kräfte:** Kraftbegriff (5888), Gewichtskraft (4203), Kräfte
+  vergleichen (4243), Feder/Hooke (5427).
+- **Reibung (2021) & Magnet (4779):** eigene Generatoren mit mehr Varianten und
+  SVG-Skizzen (Reibungspfeile, Magnetpole).
+- **Elektrostatik (7321):** mehr Aufgaben inkl. Ladungs-SVGs; Formelblöcke
+  `+ ↔ −` tolerieren Vertauschen (`anyOrder`). Physik-Pack **2.5.18**.
+
 ## [0.27.87] – 2026-09-22
 
 ### Behoben

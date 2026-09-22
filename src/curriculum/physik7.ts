@@ -1,6 +1,8 @@
 import { pick, randInt, type Rng } from '../lib/rng'
+import { chargeForceSvg, frictionForceSvg, magnetPolesSvg } from '../lib/physikSvg'
 import {
   choicePickTask,
+  dragDropSlotsTask,
   dragDropSortTask,
   mixedVariants,
   multiSelectTask,
@@ -767,10 +769,324 @@ const fliegen: Topic['generate'] = mixedVariants(
   },
 )
 
+/** LB1 — Reibung */
+const reibung: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const moveRight = pick(rng, [true, false])
+    const correct = 'entgegen der Bewegungsrichtung'
+    return choicePickTask({
+      question: 'In welche Richtung wirkt die Reibungskraft F_R am gleitenden Klotz?',
+      choices: shuffleChoices(
+        rng,
+        [correct, 'in Bewegungsrichtung', 'immer senkrecht nach oben', 'ohne Richtung'],
+        correct,
+      ),
+      correct,
+      solution: correct,
+      explanation: 'Gleitreibung wirkt der Relativbewegung an der Kontaktfläche entgegen.',
+      instruction: 'Tippe die passende Richtung:',
+      visualContent: frictionForceSvg({ moveRight }),
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Haftreibung greift …',
+        correct: 'bevor der Körper gleitet (hält in Ruhe)',
+        wrong: ['nur im Vakuum', 'nur bei Licht', 'nur ohne Kontakt'],
+      },
+      {
+        q: 'Gleitreibung wirkt …',
+        correct: 'beim Gleiten entlang der Kontaktfläche',
+        wrong: ['nur ohne Kontakt', 'nur ohne Kraft', 'nur magnetisch'],
+      },
+      {
+        q: 'Reibung …',
+        correct: 'wirkt der Relativbewegung entgegen (oder verhindert Losbrechen)',
+        wrong: ['zieht immer nach oben wie Auftrieb', 'löscht Masse aus', 'ist nur eine Einheit'],
+      },
+      {
+        q: 'Auf glatterem Untergrund ist die Reibung typischerweise …',
+        correct: 'kleiner (leichter gleiten)',
+        wrong: ['immer größer', 'unabhängig von der Oberfläche', 'nur Temperatur'],
+      },
+      {
+        q: 'Welche Kraft bremst einen Rutschwagen auf dem Boden?',
+        correct: 'Reibungskraft',
+        wrong: ['Gewichtskraft allein ohne Reibung', 'Magnetkraft der Sonne', 'Spannkraft ohne Seil'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Haftreibung hält; Gleitreibung bremst beim Rutschen — immer entgegen der Bewegung.',
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was gilt zur Reibung? (mehrere möglich)',
+      choices: [
+        'wirkt der Bewegung entgegen',
+        'Haftreibung hält in Ruhe',
+        'Gleitreibung wirkt beim Rutschen',
+        'ist dasselbe wie Gewichtskraft',
+        'Brauch keine Kontaktfläche',
+      ],
+      correct: [
+        'wirkt der Bewegung entgegen',
+        'Haftreibung hält in Ruhe',
+        'Gleitreibung wirkt beim Rutschen',
+      ],
+      solution: 'Richtung entgegen Bewegung; Haft- vs. Gleitreibung.',
+      explanation: 'Reibung ≠ Gewichtskraft; braucht Kontakt.',
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+    }),
+  (rng) => {
+    const moveRight = pick(rng, [true, false])
+    const correct = moveRight ? 'nach links' : 'nach rechts'
+    return choicePickTask({
+      question: `Der Klotz bewegt sich ${moveRight ? 'nach rechts' : 'nach links'}. Wohin zeigt F_R?`,
+      choices: shuffleChoices(
+        rng,
+        [correct, moveRight ? 'nach rechts' : 'nach links', 'immer nach oben', 'immer nach unten'],
+        correct,
+      ),
+      correct,
+      solution: correct,
+      explanation: `Bewegung ${moveRight ? 'rechts' : 'links'} → Reibung ${correct}.`,
+      instruction: 'Tippe die Richtung von F_R:',
+      visualContent: frictionForceSvg({ moveRight }),
+    })
+  },
+)
+
+/** LB1 — Magnetische Kräfte */
+const magnet: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const left = pick(rng, ['N', 'S'] as const)
+    const same = pick(rng, [true, false])
+    const right = same ? left : left === 'N' ? 'S' : 'N'
+    const attract = !same
+    const correct = attract ? 'sie ziehen sich an' : 'sie stoßen sich ab'
+    return choicePickTask({
+      question: `Was passiert zwischen den gezeigten Magnetpolen (${left} und ${right})?`,
+      choices: shuffleChoices(
+        rng,
+        [
+          correct,
+          attract ? 'sie stoßen sich ab' : 'sie ziehen sich an',
+          'es wirkt keine Kraft',
+          'sie erzeugen nur Wärme ohne Kraft',
+        ],
+        correct,
+      ),
+      correct,
+      solution: correct,
+      explanation: attract
+        ? 'Ungleichnamige Pole (N–S) ziehen sich an.'
+        : 'Gleichnamige Pole (N–N oder S–S) stoßen sich ab.',
+      instruction: 'Tippe die passende Wirkung:',
+      visualContent: magnetPolesSvg({ left, right, attract }),
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Gleichnamige Magnetpole …',
+        correct: 'stoßen sich ab',
+        wrong: ['ziehen sich an', 'löschen sich immer aus', 'erzeugen nur Wärme ohne Kraft'],
+      },
+      {
+        q: 'Ungleichnamige Magnetpole …',
+        correct: 'ziehen sich an',
+        wrong: ['stoßen sich immer ab', 'wirken nur im Vakuum', 'haben keine Kraft'],
+      },
+      {
+        q: 'Woraus bestehen typische Permanentmagnete oft?',
+        correct: 'aus magnetisierbaren Stoffen (z. B. Eisenverbindungen)',
+        wrong: ['nur aus Gummi', 'nur aus Wasser', 'nur aus Glas'],
+      },
+      {
+        q: 'Ein Magnet hat typischerweise …',
+        correct: 'einen Nord- und einen Südpol',
+        wrong: ['nur einen Pol', 'keine Pole', 'nur elektrische Ladung'],
+      },
+      {
+        q: 'Eisenfeilspäne ordnen sich im Magnetfeld …',
+        correct: 'entlang der Feldlinien',
+        wrong: ['zufällig ohne Muster', 'nur als Kreis ohne Pole', 'nur vertikal nach oben'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'N und S: ungleichnamig anziehen, gleichnamig abstoßen.',
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was gilt für Magnete? (mehrere möglich)',
+      choices: [
+        'N und S ziehen sich an',
+        'N und N stoßen sich ab',
+        'S und S stoßen sich ab',
+        'N und S stoßen sich immer ab',
+        'Magnete haben keine Pole',
+      ],
+      correct: ['N und S ziehen sich an', 'N und N stoßen sich ab', 'S und S stoßen sich ab'],
+      solution: 'Ungleichnamig anziehen, gleichnamig abstoßen.',
+      explanation: 'N–S anziehen; N–N und S–S abstoßen.',
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+    }),
+  (_rng) =>
+    dragDropSlotsTask({
+      question: 'Baue die Zuordnung für die Anziehung ungleichnamiger Pole. Einen Block brauchst du nicht.',
+      items: [
+        { label: 'N', value: 0 },
+        { label: '↔', value: 1 },
+        { label: 'S', value: 2 },
+        { label: 'N ↔ N', value: 3 },
+      ],
+      correctSlots: [0, 1, 2],
+      solution: 'N ↔ S (anziehen)',
+      explanation: 'Ungleichnamige Pole ziehen sich an — Reihenfolge N↔S oder S↔N ist gleichwertig.',
+      checkMode: 'anyOrder',
+    }),
+)
+
+/** LB1 — Elektrostatische Kräfte */
+const elektrostatik: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const left = pick(rng, ['+', '−'] as const)
+    const same = pick(rng, [true, false])
+    const right = same ? left : left === '+' ? '−' : '+'
+    const attract = !same
+    const correct = attract ? 'sie ziehen sich an' : 'sie stoßen sich ab'
+    return choicePickTask({
+      question: `Was passiert zwischen den gezeigten Ladungen (${left} und ${right})?`,
+      choices: shuffleChoices(
+        rng,
+        [
+          correct,
+          attract ? 'sie stoßen sich ab' : 'sie ziehen sich an',
+          'Ladungen wirken nie aufeinander',
+          'es entsteht nur Schall',
+        ],
+        correct,
+      ),
+      correct,
+      solution: correct,
+      explanation: attract
+        ? 'Ungleichnamige Ladungen (+ und −) ziehen sich an.'
+        : 'Gleichnamige Ladungen (+/+ oder −/−) stoßen sich ab.',
+      instruction: 'Tippe die passende Wirkung:',
+      visualContent: chargeForceSvg({ left, right, attract }),
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Gleichnamige Ladungen …',
+        correct: 'stoßen sich ab',
+        wrong: ['ziehen sich an', 'löschen Masse aus', 'fließen nur ohne Luft'],
+      },
+      {
+        q: 'Ungleichnamige Ladungen …',
+        correct: 'ziehen sich an',
+        wrong: ['stoßen sich ab', 'sind immer neutral', 'existieren nur bei Magneten'],
+      },
+      {
+        q: 'Reibungselektrizität entsteht z. B. durch …',
+        correct: 'Reiben geeigneter Stoffe (Ladungstrennung)',
+        wrong: ['nur durch Kurzschluss', 'nur durch Schmelzen', 'nur durch Schall'],
+      },
+      {
+        q: 'Ein Neutralisieren bedeutet qualitativ …',
+        correct: 'positive und negative Ladungen gleichen sich aus',
+        wrong: ['Masse verschwindet', 'nur Magnetpole entstehen', 'Temperatur wird immer 0 K'],
+      },
+      {
+        q: 'Welche Aussage zur Elektrostatik stimmt?',
+        correct: 'Ladungen üben Kräfte aufeinander aus (anziehen/abstoßen)',
+        wrong: ['Ladungen haben keine Wirkung', 'nur Gewichtskraft zählt', 'nur Ohm ohne Ladung'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Gleichnamig abstoßen, ungleichnamig anziehen — analog zu Magnetpolen.',
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was gilt für elektrische Ladungen? (mehrere möglich)',
+      choices: [
+        '+ und − ziehen sich an',
+        '+ und + stoßen sich ab',
+        '− und − stoßen sich ab',
+        '+ und − stoßen sich immer ab',
+        'Ladungen wirken nur bei Magneten',
+      ],
+      correct: ['+ und − ziehen sich an', '+ und + stoßen sich ab', '− und − stoßen sich ab'],
+      solution: 'Ungleichnamig anziehen, gleichnamig abstoßen.',
+      explanation: 'Wie bei Magnetpolen: gleich abstoßen, ungleich anziehen.',
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+    }),
+  (_rng) =>
+    dragDropSlotsTask({
+      question:
+        'Baue die Zuordnung für die Anziehung ungleichnamiger Ladungen. Einen Block brauchst du nicht.',
+      items: [
+        { label: '+', value: 0 },
+        { label: '↔', value: 1 },
+        { label: '−', value: 2 },
+        { label: '+ ↔ +', value: 3 },
+      ],
+      correctSlots: [0, 1, 2],
+      solution: '+ ↔ − (anziehen)',
+      explanation:
+        'Ungleichnamige Ladungen ziehen sich an — Blöcke + ↔ − und − ↔ + sind inhaltlich gleich.',
+      checkMode: 'anyOrder',
+    }),
+  (rng) => {
+    const left = pick(rng, ['+', '−'] as const)
+    const right = left === '+' ? '−' : '+'
+    const correct = 'anziehen'
+    return choicePickTask({
+      question: 'Welche Kraftwirkung zeigt die Skizze (Pfeile zueinander)?',
+      choices: shuffleChoices(
+        rng,
+        [correct, 'abstoßen', 'keine Kraft', 'nur Magnetkraft ohne Ladung'],
+        correct,
+      ),
+      correct,
+      solution: correct,
+      explanation: `${left} und ${right} sind ungleichnamig → Anziehung.`,
+      instruction: 'Tippe die Wirkung:',
+      visualContent: chargeForceSvg({ left, right, attract: true }),
+    })
+  },
+)
+
 export const PHYSIK_K7_GENERATORS: Record<string, Topic['generate']> = {
   'ph-k7-lb1-kraftbegriff': kraftbegriff,
   'ph-k7-lb1-gewichtskraft': gewichtskraft,
   'ph-k7-lb1-kraefte': kraefte,
+  'ph-k7-lb1-reibung': reibung,
+  'ph-k7-lb1-magnet': magnet,
+  'ph-k7-lb1-elektrostatik': elektrostatik,
   'ph-k7-lb2-strom': strom,
   'ph-k7-lb3-energie': energie,
   'ph-k7-lbw-kraftwandler': kraftwandler,
