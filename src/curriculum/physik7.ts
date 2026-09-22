@@ -774,6 +774,9 @@ export const PHYSIK_K7_GENERATORS: Record<string, Topic['generate']> = {
   'ph-k7-lb2-strom': strom,
   'ph-k7-lb3-energie': energie,
   'ph-k7-lbw-kraftwandler': kraftwandler,
+  'ph-k7-lbw-hebel': kraftwandler,
+  'ph-k7-lbw-flasche': kraftwandler,
   'ph-k7-lbw-schaltungen': schaltungen,
   'ph-k7-lbw-fliegen': fliegen,
+  'ph-k7-lbw-auftrieb-dyn': fliegen,
 }

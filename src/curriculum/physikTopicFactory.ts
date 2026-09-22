@@ -25,6 +25,57 @@ type Case = { q: string; correct: string; wrong: string[] }
 export function makePhysikTopicGenerate(topicId: string, title: string): Topic['generate'] {
   const lower = `${topicId} ${title}`.toLowerCase()
 
+  // Messunsicherheit / Messreihe — vor Optik/Licht/Sicherheit, sonst greift „Optik“ im Titel falsch
+  if (/messunsicherheit|messreihe|messfehler|lb4-fehler|lb2-fehler|lb11-unsicherheit|lb5-fehler/.test(lower)) {
+    return mixedVariants(
+      (rng) => {
+        const values = pick(rng, [
+          [2, 4, 6],
+          [3, 5, 7],
+          [10, 12, 14],
+          [8, 10, 12],
+        ])
+        const mean = (values[0]! + values[1]! + values[2]!) / 3
+        return valueTask({
+          question: `Messwerte ${values.join(' · ')}. Berechne den Mittelwert.`,
+          answerKind: mean % 1 === 0 ? 'integer' : 'decimal',
+          unit: '',
+          value: mean,
+          solution: String(mean),
+          explanation: `Mittelwert = (${values.join(' + ')}) / 3 = ${mean}.`,
+        })
+      },
+      (rng) => {
+        const cases = [
+          {
+            q: 'Messunsicherheit beschreibt …',
+            correct: 'wie genau ein Messwert bestimmt ist',
+            wrong: ['nur die Farbe des Messgeräts', 'ob die Formel stimmt', 'nur den Mittelwert'],
+          },
+          {
+            q: 'Eine Messreihe auswerten heißt typischerweise …',
+            correct: 'Mittelwert bilden und Streuung/Unsicherheit einschätzen',
+            wrong: ['nur die Gerätefarbe notieren', 'Kurzschluss erzeugen', 'Formeln ohne Werte raten'],
+          },
+          {
+            q: 'Im Optik-Praktikum entsteht Messunsicherheit z. B. durch …',
+            correct: 'Ableseungenauigkeit an Skala/Schirm oder Justierfehler',
+            wrong: ['nur die Lichtgeschwindigkeit c', 'nur F_G = m·g', 'nur Kurzschluss'],
+          },
+        ] as const
+        const c = pick(rng, [...cases])
+        return choicePickTask({
+          question: c.q,
+          choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+          correct: c.correct,
+          solution: c.correct,
+          explanation: 'Messunsicherheit: Genauigkeit der Messung — Mittelwert und Fehlerabschätzung.',
+          instruction: 'Tippe die passende Aussage:',
+        })
+      },
+    )
+  }
+
   if (/dichte/.test(lower) && /stoff|vergleich/.test(lower)) {
     return mixedVariants(
       (rng) => {
@@ -251,7 +302,11 @@ export function makePhysikTopicGenerate(topicId: string, title: string): Topic['
     )
   }
 
-  if (/c =|wellenlänge|λ|lambda/.test(lower) || /c = λ/.test(title)) {
+  // Nur Wellen: c = λ·f — nicht Kondensator „C = Q/U“ o. Ä.
+  if (
+    (/c\s*=\s*λ|wellenlänge|\bλ\b|lambda/.test(lower) || /c\s*=\s*λ/.test(title)) &&
+    !/kondensator|q\s*\/\s*u|c\s*=\s*q/.test(lower)
+  ) {
     return mixedVariants(
       (rng) => {
         const f = pick(rng, [2, 3, 4, 5]) // MHz-scale simplified as number
@@ -274,6 +329,36 @@ export function makePhysikTopicGenerate(topicId: string, title: string): Topic['
           correct,
           solution: correct,
           explanation: 'Ausbreitungsgeschwindigkeit = Wellenlänge · Frequenz.',
+          instruction: 'Tippe die Formel:',
+        })
+      },
+    )
+  }
+
+  // Kondensator C = Q/U (vor generischen Banks)
+  if (/kondensator|c\s*=\s*q\s*\/\s*u|q\s*=\s*c\s*·\s*u/.test(lower)) {
+    return mixedVariants(
+      (rng) => {
+        const C = pick(rng, [2, 4, 5])
+        const U = pick(rng, [2, 3, 4, 6])
+        const Q = C * U
+        return valueTask({
+          question: `C = ${C} F (Modellzahl), U = ${U} V. Berechne die Ladung Q = C·U.`,
+          answerKind: 'integer',
+          unit: 'C',
+          value: Q,
+          solution: `${Q} C`,
+          explanation: `Q = ${C}·${U} = ${Q} C.`,
+        })
+      },
+      (rng) => {
+        const correct = 'Q = C · U'
+        return choicePickTask({
+          question: 'Welche Beziehung gilt für den Kondensator?',
+          choices: shuffleChoices(rng, [correct, 'Q = C / U', 'Q = C + U', 'Q = U / C'], correct),
+          correct,
+          solution: correct,
+          explanation: 'Ladung = Kapazität · Spannung.',
           instruction: 'Tippe die Formel:',
         })
       },
@@ -504,7 +589,11 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
     }
   }
 
-  if (/gefahr|kurzschluss|sicherheit/.test(lower)) {
+  // Nicht „Messunsicherheit“ / „Unsicherheit“ — nur echte Sicherheitsthemen
+  if (
+    /gefahr|kurzschluss/.test(lower) ||
+    (/\bsicherheit\b/.test(lower) && !/unsicherheit|messunsicherheit/.test(lower))
+  ) {
     return {
       cases: [
         {
@@ -932,7 +1021,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
     }
   }
 
-  if (/auftrieb|schwimmen|schweben|sinken/.test(lower) && !/fliegen|dynamisch/.test(lower)) {
+  if (/auftrieb|schwimmen|schweben|sinken/.test(lower) && !/fliegen|dynamisch|auftrieb-dyn/.test(lower)) {
     return {
       cases: [
         {
@@ -957,6 +1046,283 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
         'F_A ≈ F_G beim Schweben',
         'F_A = 0',
       ),
+    }
+  }
+
+  // Dynamischer Auftrieb / Fliegen (nicht F_G-Rechnung)
+  if (/fliegen|dynamisch.*auftrieb|auftrieb-dyn|tragfläche/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Dynamischer Auftrieb an einer Tragfläche entsteht vor allem durch …',
+          correct: 'Luftströmung und Form (Druck-/Impulsunterschied)',
+          wrong: ['nur die Farbe der Tragfläche', 'nur F_G = m·g ohne Strömung', 'Kurzschluss im Cockpit'],
+        },
+        {
+          q: 'Was wirkt dem Vorwärtsflug entgegen?',
+          correct: 'Luftwiderstand',
+          wrong: ['Auftrieb allein', 'nur die Masse in kg als Kraftart', 'Lichtgeschwindigkeit'],
+        },
+        {
+          q: 'Ohne ausreichende Anströmung …',
+          correct: 'fehlt typischerweise der dynamische Auftrieb',
+          wrong: ['ist der Auftrieb am größten', 'verschwindet die Gewichtskraft', 'entsteht nur Magnetkraft'],
+        },
+      ],
+      ...formulaSort(
+        ['Anströmung', '→', 'Auftrieb'],
+        'den dynamischen Auftrieb',
+        'Anströmung → Auftrieb',
+        'F_G = m·g allein',
+      ),
+    }
+  }
+
+  // Kraftwerkskette (nicht Gewichtskraft — „Kraft“ im Wort Kraftwerk)
+  if (/kraftwerk/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'In einem typischen Wärmekraftwerk folgt grob die Kette …',
+          correct: 'Wärme → Bewegung (Turbine) → elektrische Energie (Generator)',
+          wrong: ['nur F_G = m·g ohne Wandlung', 'Kurzschluss → Licht ohne Generator', 'Masse → Farbe'],
+        },
+        {
+          q: 'Der Generator wandelt vor allem …',
+          correct: 'Bewegungsenergie in elektrische Energie',
+          wrong: ['chemische Energie in Masse', 'Licht in Temperatur ohne Spule', 'Druck in Farbe'],
+        },
+        {
+          q: 'Wirkungsgrad eines Kraftwerks beschreibt …',
+          correct: 'Nutzenergie / zugeführte Energie',
+          wrong: ['nur die Schornsteinhöhe', 'nur die Farbe der Turbine', 'F_G ohne Energiebezug'],
+        },
+      ],
+      ...formulaSort(
+        ['Wärme', '→', 'Bewegung', '→', 'elektr. Energie'],
+        'die Kraftwerkskette',
+        'Wärme → Bewegung → elektr. Energie',
+        'F_G = m·g',
+      ),
+    }
+  }
+
+  // Zentripetal-/Zentrifugalkraft (nicht Gewichtskraft)
+  if (/zentripetal|zentrifugal/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Die Zentripetalkraft zeigt …',
+          correct: 'zum Kreismittelpunkt (hält auf der Kreisbahn)',
+          wrong: ['immer radial nach außen', 'nur vertikal wie F_G', 'ohne Richtung'],
+        },
+        {
+          q: 'Ohne Zentripetalkraft würde ein Körper auf der Kreisbahn …',
+          correct: 'geradlinig weiterfliegen (Trägheit)',
+          wrong: ['stehen bleiben ohne Kraft', 'nur nach oben steigen', 'Masse verlieren'],
+        },
+        {
+          q: 'Größere Geschwindigkeit auf demselben Kreis bedeutet …',
+          correct: 'größere benötigte Zentripetalkraft',
+          wrong: ['immer kleinere Kraft', 'keine Kraft nötig', 'nur mehr Temperatur'],
+        },
+      ],
+      calc: (rng) => {
+        const m = pick(rng, [2, 3, 4, 5])
+        const v = pick(rng, [2, 4, 5, 10])
+        const r = pick(rng, [2, 4, 5])
+        const F = (m * v * v) / r
+        return {
+          q: `m = ${m} kg, v = ${v} m/s, r = ${r} m. Berechne F_z = m·v²/r.`,
+          answerKind: F % 1 === 0 ? 'integer' : 'decimal',
+          unit: 'N',
+          value: F,
+          solution: `${F} N`,
+          explanation: `F_z = ${m}·${v}²/${r} = ${F} N.`,
+        }
+      },
+      ...formulaSort(['F_z', '=', 'm', '· v²', '/', 'r'], 'die Zentripetalkraft', 'F_z = m·v²/r', '· g'),
+    }
+  }
+
+  // Wellen- / Schall- / Lichtgeschwindigkeit (nicht s = v·t der Mechanik)
+  if (/wellengeschwindigkeit|v\s*=\s*λ|ausbreitungsgeschwindigkeit/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Wellengeschwindigkeit v hängt zusammen mit …',
+          correct: 'v = λ · f',
+          wrong: ['v = λ / f²', 'v = nur s/t ohne Welle', 'v = m·g'],
+        },
+        {
+          q: 'Größere Frequenz bei gleicher Wellenlänge bedeutet …',
+          correct: 'größere Ausbreitungsgeschwindigkeit',
+          wrong: ['immer kleinere Geschwindigkeit', 'keine Welle', 'nur mehr Masse'],
+        },
+        {
+          q: 'Einheit der Wellengeschwindigkeit?',
+          correct: 'm/s',
+          wrong: ['nur Hz', 'nur m', 'Newton (N)'],
+        },
+      ],
+      calc: (rng) => {
+        const lambda = pick(rng, [2, 3, 4, 5])
+        const f = pick(rng, [2, 3, 4, 5])
+        const v = lambda * f
+        return {
+          q: `λ = ${lambda} m, f = ${f} Hz. Berechne die Wellengeschwindigkeit.`,
+          answerKind: 'integer',
+          unit: 'm/s',
+          value: v,
+          solution: `${v} m/s`,
+          explanation: `v = ${lambda}·${f} = ${v} m/s.`,
+        }
+      },
+      ...formulaSort(['v', '=', 'λ', '· f'], 'die Wellengeschwindigkeit', 'v = λ · f', '/ t', 'commutativeFactors'),
+    }
+  }
+
+  if (/schallgeschwindigkeit|schall\b/.test(lower) && !/licht/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Schallgeschwindigkeit in Luft (Näherung, 20 °C)?',
+          correct: 'etwa 340 m/s',
+          wrong: ['3·10⁸ m/s', '3 m/s', '340 km/h ohne Umrechnung immer'],
+        },
+        {
+          q: 'Schall braucht zum Ausbreiten …',
+          correct: 'ein Medium (z. B. Luft, Wasser)',
+          wrong: ['kein Medium / nur Vakuum', 'nur Magnetfelder', 'nur Licht'],
+        },
+        {
+          q: 'In Wasser ist die Schallgeschwindigkeit typischerweise …',
+          correct: 'größer als in Luft',
+          wrong: ['immer null', 'kleiner als in Luft', 'gleich der Lichtgeschwindigkeit'],
+        },
+      ],
+      calc: (rng) => {
+        const v = 340
+        const t = pick(rng, [2, 3, 4, 5])
+        const s = v * t
+        return {
+          q: `Schall in Luft: v ≈ ${v} m/s, t = ${t} s. Welche Strecke legt der Schall zurück?`,
+          answerKind: 'integer',
+          unit: 'm',
+          value: s,
+          solution: `${s} m`,
+          explanation: `s = ${v}·${t} = ${s} m.`,
+        }
+      },
+      ...formulaSort(['s', '=', 'v', '· t'], 'Schallweg bei konstanter v', 's = v · t', '+ g', 'commutativeFactors'),
+    }
+  }
+
+  if (/lichtgeschwindigkeit|c als grenz|grenzgeschwindigkeit/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Lichtgeschwindigkeit im Vakuum (Näherung)?',
+          correct: '3·10⁸ m/s',
+          wrong: ['340 m/s', '3 m/s', '3·10⁶ m/s'],
+        },
+        {
+          q: 'In der Relativitätstheorie ist c …',
+          correct: 'eine Grenzgeschwindigkeit (nichts mit Masse erreicht c)',
+          wrong: ['nur eine Temperatur', 'nur Schall in Luft', 'beliebig überschreitbar für Materie'],
+        },
+        {
+          q: 'Licht braucht im Vakuum …',
+          correct: 'kein Medium',
+          wrong: ['immer Luft', 'immer Wasser', 'einen Stromkreis'],
+        },
+      ],
+      ...formulaSort(['c', '≈', '3·10⁸ m/s'], 'die Lichtgeschwindigkeit', 'c ≈ 3·10⁸ m/s', '340 m/s'),
+    }
+  }
+
+  // Elektrisches Feld (nicht Ohm/Stromkreis nur wegen „elektr“)
+  if (/elektrisches feld|e-feld|feldstärke e|lb4-efeld|lb7-efeld/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Die elektrische Feldstärke E ist definiert als …',
+          correct: 'E = F / q (Kraft pro Ladung)',
+          wrong: ['E = m · g', 'E = U · I', 'E = nur R ohne Ladung'],
+        },
+        {
+          q: 'Feldlinien elektrischer Felder beginnen/enden typischerweise …',
+          correct: 'an positiven bzw. negativen Ladungen',
+          wrong: ['nur an Magnetpolen ohne Ladung', 'im Kurzschluss', 'an der Masse in kg'],
+        },
+        {
+          q: 'Einheit der elektrischen Feldstärke?',
+          correct: 'N/C bzw. V/m',
+          wrong: ['nur kg', 'nur °C', 'nur Hz'],
+        },
+      ],
+      calc: (rng) => {
+        const F = pick(rng, [2, 4, 6, 8, 10])
+        const q = pick(rng, [1, 2])
+        const E = F / q
+        return {
+          q: `F = ${F} N wirkt auf q = ${q} C. Berechne E = F/q.`,
+          answerKind: 'integer',
+          unit: 'N/C',
+          value: E,
+          solution: `${E} N/C`,
+          explanation: `E = ${F}/${q} = ${E} N/C.`,
+        }
+      },
+      ...formulaSort(['E', '=', 'F', '/', 'q'], 'die elektrische Feldstärke', 'E = F / q', '· m'),
+    }
+  }
+
+  // Bindungsenergie (nicht P = E/t)
+  if (/bindungsenergie|bindung/.test(lower) && /kern|atom|lb6-bindung/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Bindungsenergie eines Kerns beschreibt …',
+          correct: 'die Energie, die zur Trennung in Nukleonen nötig wäre (bzw. freigesetzt bei Bildung)',
+          wrong: ['nur die Leistung P = E/t eines Motors', 'nur F_G', 'nur die Farbe des Kerns'],
+        },
+        {
+          q: 'Hohe Bindungsenergie pro Nukleon bedeutet qualitativ …',
+          correct: 'besonders stabiler Kern',
+          wrong: ['immer radioaktiver Zerfall sofort', 'keine Masse', 'nur mehr Temperatur ohne Kern'],
+        },
+        {
+          q: 'Massendefekt hängt zusammen mit …',
+          correct: 'E = Δm · c² (Bindungsenergie)',
+          wrong: ['nur Ohm ohne Masse', 'nur s = v·t', 'nur p = F/A'],
+        },
+      ],
+      ...formulaSort(['E', '=', 'Δm', '· c²'], 'den Massendefekt / Bindungsenergie', 'E = Δm · c²', '/ t'),
+    }
+  }
+
+  // Wechselwirkungsgesetz (Newton 3)
+  if (/wechselwirkung/.test(lower)) {
+    return {
+      cases: [
+        {
+          q: 'Wechselwirkungsgesetz (Newton 3): Kräfte …',
+          correct: 'treten immer paarweise auf (actio = reactio), entgegengesetzt gleich groß',
+          wrong: ['wirken nur auf einen Körper allein', 'löschen Masse aus', 'brauchen Kurzschluss'],
+        },
+        {
+          q: 'Wenn A auf B eine Kraft ausübt, dann …',
+          correct: 'übt B auf A eine gleich große, entgegengesetzte Kraft aus',
+          wrong: ['wirkt nie eine Gegenkraft', 'wird die Masse von B null', 'entsteht nur Wärme ohne Kraft'],
+        },
+        {
+          q: 'Actio und Reactio greifen an …',
+          correct: 'verschiedenen Körpern an',
+          wrong: ['immer am selben Punkt desselben Körpers und heben sich dort auf', 'nur im Vakuum', 'nur an Lampen'],
+        },
+      ],
+      ...formulaSort(['F_AB', '=', '−', 'F_BA'], 'das Wechselwirkungsgesetz', 'F_AB = − F_BA', 'F = m·g allein'),
     }
   }
 
@@ -1061,25 +1427,67 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
     }
   }
 
-  if (/beschleunigung|freier.?fall|senkrechter.?wurf|wurf/.test(lower)) {
+  if (/beschleunigung|freier.?fall|senkrechter.?wurf|schr[äa]ger.?wurf|\bwurf\b/.test(lower)) {
+    const schraeg = /schr[äa]ger.?wurf/.test(lower)
+    const senkrecht = /senkrechter.?wurf/.test(lower)
     return {
-      cases: [
-        {
-          q: 'Beschleunigung a beschreibt …',
-          correct: 'wie schnell sich die Geschwindigkeit ändert',
-          wrong: ['nur die Masse', 'nur die Farbe', 'nur die Temperatur'],
-        },
-        {
-          q: 'Freier Fall (ohne Luftwiderstand): alle Körper …',
-          correct: 'fallen mit derselben Erdbeschleunigung g',
-          wrong: ['fallen nur wenn sie schwerer sind immer schneller unabhängig von g', 'schweben ohne Kraft', 'brauchen Strom'],
-        },
-        {
-          q: 'Einheit der Beschleunigung?',
-          correct: 'm/s²',
-          wrong: ['nur m', 'nur s', 'N·m'],
-        },
-      ],
+      cases: schraeg
+        ? [
+            {
+              q: 'Beim schrägen Wurf zerlegt man die Anfangsgeschwindigkeit oft in …',
+              correct: 'eine horizontale und eine vertikale Komponente',
+              wrong: ['nur Masse und Farbe', 'nur Strom und Spannung', 'nur Druck und Fläche'],
+            },
+            {
+              q: 'Ohne Luftwiderstand bleibt die horizontale Komponente …',
+              correct: 'konstant (keine Horizontalkraft)',
+              wrong: ['immer null', 'immer beschleunigt wie g', 'nur temperaturabhängig'],
+            },
+            {
+              q: 'Die Bahnkurve ist (ideal) …',
+              correct: 'eine Parabel',
+              wrong: ['ein Kreis um den Erdmittelpunkt', 'eine Gerade senkrecht nach oben nur', 'eine Sinuswelle der Temperatur'],
+            },
+          ]
+        : senkrecht
+          ? [
+              {
+                q: 'Beim senkrechten Wurf nach oben wirkt (ohne Luftwiderstand) …',
+                correct: 'die Gewichtskraft nach unten (Beschleunigung −g)',
+                wrong: ['keine Kraft', 'nur Magnetkraft', 'nur Reibung ohne g'],
+              },
+              {
+                q: 'Am höchsten Punkt ist die Geschwindigkeit …',
+                correct: 'momentan null (danach Fall nach unten)',
+                wrong: ['maximal und bleibt so', 'unendlich', 'gleich c'],
+              },
+              {
+                q: 'Einheit der Beschleunigung?',
+                correct: 'm/s²',
+                wrong: ['nur m', 'nur s', 'N·m'],
+              },
+            ]
+          : [
+              {
+                q: 'Beschleunigung a beschreibt …',
+                correct: 'wie schnell sich die Geschwindigkeit ändert',
+                wrong: ['nur die Masse', 'nur die Farbe', 'nur die Temperatur'],
+              },
+              {
+                q: 'Freier Fall (ohne Luftwiderstand): alle Körper …',
+                correct: 'fallen mit derselben Erdbeschleunigung g',
+                wrong: [
+                  'fallen nur wenn sie schwerer sind immer schneller unabhängig von g',
+                  'schweben ohne Kraft',
+                  'brauchen Strom',
+                ],
+              },
+              {
+                q: 'Einheit der Beschleunigung?',
+                correct: 'm/s²',
+                wrong: ['nur m', 'nur s', 'N·m'],
+              },
+            ],
       calc: (rng) => {
         const v = pick(rng, [10, 20, 30])
         const t = pick(rng, [2, 4, 5])
@@ -1322,7 +1730,7 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
     }
   }
 
-  if (/brennweite|reelle|virtuelle|linse/.test(lower) && /optik|bild|brenn/.test(lower)) {
+  if (/brennweite|reelle|virtuelle|linse|linsenexperiment/.test(lower)) {
     return {
       cases: [
         {
@@ -1339,6 +1747,11 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           q: 'Ein virtuelles Bild …',
           correct: 'scheint hinter dem Spiegel/der Linse zu liegen (nicht auf Schirm)',
           wrong: ['ist immer heißer', 'braucht Kurzschluss', 'hat keine Strahlen'],
+        },
+        {
+          q: 'Im Linsenexperiment bestimmt man oft die Brennweite, indem man …',
+          correct: 'Gegenstands-/Bildweite misst bzw. parallele Strahlen im Brennpunkt bündelt',
+          wrong: ['nur die Masse der Linse wiegt', 'Kurzschluss erzeugt', 'F_G = m·g rechnet'],
         },
       ],
       ...formulaSort(['1/f', '=', '1/g', '+', '1/b'], 'die Linsengleichung', '1/f = 1/g + 1/b', '· R'),
@@ -1742,10 +2155,11 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
     }
   }
 
-  // --- Bewegung / Geschwindigkeit (nicht Weg-Zeit-Diagramm / reine Einheiten) ---
+  // --- Bewegung / Geschwindigkeit (nicht Wellen-/Schall-/Lichtgeschwindigkeit) ---
   if (
-    /geschwindigkeit|gleichförmig/.test(lower) ||
-    (/bewegung/.test(lower) && !/weg.?zeit|einheiten/.test(lower))
+    (/geschwindigkeit|gleichförmig/.test(lower) ||
+      (/bewegung/.test(lower) && !/weg.?zeit|einheiten/.test(lower))) &&
+    !/wellen|schall|licht|grenz|c als|relativ|welle\b/.test(lower)
   ) {
     return {
       cases: [
@@ -2254,7 +2668,14 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
     }
   }
 
-  if (/strom|elektr|spannung|widerstand|ladung|induktion|spule|kondensator|leiter|kurzschluss|schalt(?!symbol)/.test(lower) && !/schaltsymbol|schaltbild|magnetische|elektrostatik|gefahr|transistor|diode|led\b|generator|photoeffekt|elementarladung|sensor|solar|ladung und feld|lb7-ladung/.test(lower)) {
+  if (
+    /strom|elektr|spannung|widerstand|ladung|induktion|spule|kondensator|leiter|kurzschluss|schalt(?!symbol)/.test(
+      lower,
+    ) &&
+    !/schaltsymbol|schaltbild|magnetische|elektrostatik|gefahr|transistor|diode|led\b|generator|photoeffekt|elementarladung|sensor|solar|ladung und feld|lb7-ladung|elektrisches feld|e-feld|feldstärke|lorentz|lb4-efeld|lb7-efeld|lb4-felder|lb9-/.test(
+      lower,
+    )
+  ) {
     return {
       cases: [
         {
@@ -2295,7 +2716,10 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
     }
   }
 
-  if (/leistung|arbeit|energie/.test(lower) && !/dichte|volumen/.test(lower)) {
+  if (
+    /leistung|arbeit|energie/.test(lower) &&
+    !/dichte|volumen|bindungsenergie|bindung|kraftwerk/.test(lower)
+  ) {
     return {
       cases: [
         {
@@ -2331,7 +2755,13 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
     }
   }
 
-  if (/kraft|druck|impuls|newton|reibung|hebel|auftrieb|feder|hooke/.test(lower) && !/magnet|elektrostatik|fliegen|drehimpuls|stoß|stoss|erhaltung/.test(lower)) {
+  // Generische Kraft/Druck — NICHT Kraftwerk, Zentripetal, dynamischer Auftrieb
+  if (
+    /kraft|druck|impuls|newton|reibung|hebel|auftrieb|feder|hooke/.test(lower) &&
+    !/magnet|elektrostatik|fliegen|drehimpuls|stoß|stoss|erhaltung|kraftwerk|zentripetal|zentrifugal|dynamisch|auftrieb-dyn|bindungs|wechselwirkung/.test(
+      lower,
+    )
+  ) {
     return {
       cases: [
         {
@@ -2345,9 +2775,9 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
           wrong: ['Newton (N)', 'Joule (J)', 'Ampere (A)'],
         },
         {
-          q: 'Gewichtskraft näherungsweise (g ≈ 10 N/kg): F_G = …',
-          correct: 'm · g',
-          wrong: ['m / g', 'm + g', 'g / m'],
+          q: 'Kraft ist …',
+          correct: 'eine gerichtete Größe (Betrag und Richtung)',
+          wrong: ['dasselbe wie Masse', 'nur eine Temperatur', 'ohne Einheit'],
         },
       ],
       calc: (rng) => {
@@ -2364,26 +2794,42 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
             explanation: `p = ${f}/${a} = ${p} Pa.`,
           }
         }
-        const m = pick(rng, [2, 3, 5, 8, 10])
-        const F = m * 10
+        // Nur bei explizitem Gewichtskraft-Thema F_G rechnen — sonst F = m·a
+        if (/gewichtskraft|f_g/.test(lower)) {
+          const m = pick(rng, [2, 3, 5, 8, 10])
+          const F = m * 10
+          return {
+            q: `m = ${m} kg, g ≈ 10 N/kg. Berechne die Gewichtskraft.`,
+            answerKind: 'integer',
+            unit: 'N',
+            value: F,
+            solution: `${F} N`,
+            explanation: `F_G = ${m}·10 = ${F} N.`,
+          }
+        }
+        const m = pick(rng, [2, 3, 4, 5])
+        const a = pick(rng, [2, 3, 4, 5])
+        const F = m * a
         return {
-          q: `m = ${m} kg, g ≈ 10 N/kg. Berechne die Gewichtskraft.`,
+          q: `m = ${m} kg, a = ${a} m/s². Berechne F = m·a.`,
           answerKind: 'integer',
           unit: 'N',
           value: F,
           solution: `${F} N`,
-          explanation: `F_G = ${m}·10 = ${F} N.`,
+          explanation: `F = ${m}·${a} = ${F} N.`,
         }
       },
       ...(/druck/.test(lower)
         ? formulaSort(['p', '=', 'F', '/', 'A'], 'den Druck', 'p = F / A', '· A')
-        : formulaSort(
-            ['F_G', '=', 'm', '· g'],
-            'die Gewichtskraft',
-            'F_G = m · g',
-            '/ g',
-            'commutativeFactors',
-          )),
+        : /gewichtskraft|f_g/.test(lower)
+          ? formulaSort(
+              ['F_G', '=', 'm', '· g'],
+              'die Gewichtskraft',
+              'F_G = m · g',
+              '/ g',
+              'commutativeFactors',
+            )
+          : formulaSort(['F', '=', 'm', '· a'], 'das Kraftgesetz', 'F = m · a', '/ g', 'commutativeFactors')),
     }
   }
 

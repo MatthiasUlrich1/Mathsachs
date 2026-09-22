@@ -747,8 +747,10 @@ export const PHYSIK_J11GK_GENERATORS: Record<string, Topic['generate']> = {
   'ph-j11gk-lb2-mechanik': mechanik,
   'ph-j11gk-lb3-praktikum': praktikum,
   'ph-j11gk-lb4-felder': felder,
+  'ph-j11gk-lb4-efeld': felder,
   'ph-j11gk-lbw-konstanten': konstanten,
   'ph-j11gk-lbw-exkursion': exkursion,
   'ph-j11gk-lbw-anwendungen': anwendungen,
   'ph-j11gk-lbw-relativitaet': relativitaet,
+  'ph-j11gk-lbw-lichtgeschwindigkeit': relativitaet,
 }

@@ -237,21 +237,41 @@ const quanten: Topic['generate'] = mixedVariants(
 /** LB5 — Atomphysik: Bohr, Spektrallinien */
 const atom: Topic['generate'] = mixedVariants(
   (rng) => {
-    const correct = 'Elektronen nur auf diskreten Bahnen / Energieniveaus; Übergänge mit ΔE = h·f'
-    return choicePickTask({
-      question: 'Welche Idee gehört zu den Bohrschen Postulaten (qualitativ)?',
-      choices: shuffleChoices(
-        rng,
-        [
-          correct,
+    const cases = [
+      {
+        q: 'Was gehört zu den Bohrschen Postulaten (qualitativ)?',
+        correct: 'Elektronen nur auf diskreten Bahnen / Energieniveaus; Übergänge mit ΔE = h·f',
+        wrong: [
           'Elektronen strahlen auf jeder Bahn ständig kontinuierlich Energie ab',
           'Atome haben keine Energieniveaus',
           'Licht entsteht nur ohne Elektronenübergänge',
         ],
-        correct,
-      ),
-      correct,
-      solution: correct,
+      },
+      {
+        q: 'Im Bohr-Modell strahlen Elektronen auf stationären Bahnen …',
+        correct: 'keine elektromagnetische Energie ab',
+        wrong: [
+          'ständig kontinuierlich wie im klassischen Kreisstrom',
+          'nur Schall ab',
+          'nur Wärme ohne Lichtbezug',
+        ],
+      },
+      {
+        q: 'Ein Elektronenübergang zu einem tieferen Niveau …',
+        correct: 'kann ein Photon der Energie ΔE = h·f aussenden',
+        wrong: [
+          'löscht immer die Atommasse aus',
+          'braucht Kurzschluss',
+          'ändert nie die Energie',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
       explanation:
         'Bohr: stationäre Zustände ohne Strahlung; Lichtemission/-absorption bei Übergängen mit E = h·f.',
       instruction: 'Tippe die passende Aussage:',
@@ -298,6 +318,25 @@ const atom: Topic['generate'] = mixedVariants(
       instruction: 'Tippe die passende Aussage:',
     })
   },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was gehört zur Atomphysik nach Bohr (mehrere möglich)?',
+      choices: [
+        'diskrete Energieniveaus',
+        'Photonenergie E = h·f bei Übergängen',
+        'stationäre Bahnen ohne Dauerstrahlung',
+        'Elektronen strahlen auf jeder Bahn ständig ab',
+        'Atome haben keine innere Struktur',
+      ],
+      correct: [
+        'diskrete Energieniveaus',
+        'Photonenergie E = h·f bei Übergängen',
+        'stationäre Bahnen ohne Dauerstrahlung',
+      ],
+      solution: 'Diskrete Niveaus, E = h·f bei Übergängen, keine Dauerstrahlung auf stationären Bahnen.',
+      explanation: 'Klassische Dauerstrahlung auf jeder Bahn widerspricht Bohr.',
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+    }),
 )
 
 /** LB6 — Kerne: Bindungsenergie, Zerfall, Halbwertszeit */
@@ -669,6 +708,7 @@ export const PHYSIK_J12LK_GENERATORS: Record<string, Topic['generate']> = {
   'ph-j12lk-lb4-quanten': quanten,
   'ph-j12lk-lb5-atom': atom,
   'ph-j12lk-lb6-kerne': kerne,
+  'ph-j12lk-lb6-bindung': kerne,
   'ph-j12lk-lb7-thermo': thermo,
   'ph-j12lk-lbw-chaos': chaos,
   'ph-j12lk-lbw-gas': gas,

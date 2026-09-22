@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.87] – 2026-09-22
+
+### Behoben
+- **Themenfit gesperrte Physik K7–12:** Factory-Routing korrigiert (u. a. „Kraft“ in
+  Kraftwerk/Zentripetalkraft nicht mehr → Gewichtskraft; „C =“ nicht mehr → Wellen;
+  „Messunsicherheit“ nicht mehr → Sicherung; Geschwindigkeit nicht mehr → s=v·t bei
+  Wellen/Schall/Licht). Neue Themen-Banks + Aliase; Fachwissen angepasst.
+  Physik-Pack **2.5.17**.
+
 ## [0.27.86] – 2026-09-22
 
 ### Geändert

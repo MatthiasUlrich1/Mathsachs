@@ -716,9 +716,11 @@ const akustik: Topic['generate'] = mixedVariants(
 export const PHYSIK_J12GK_GENERATORS: Record<string, Topic['generate']> = {
   'ph-j12gk-lb1-licht': licht,
   'ph-j12gk-lb2-optik': optik,
+  'ph-j12gk-lb2-linse': optik,
   'ph-j12gk-lb3-quanten': quanten,
   'ph-j12gk-lb4-strahlung': strahlung,
   'ph-j12gk-lbw-anwendungen': anwendungen,
   'ph-j12gk-lbw-optik': optikWahl,
   'ph-j12gk-lbw-akustik': akustik,
+  'ph-j12gk-lbw-schall': akustik,
 }

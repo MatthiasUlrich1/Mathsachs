@@ -622,9 +622,11 @@ const kurven: Topic['generate'] = mixedVariants(
 export const PHYSIK_K9_GENERATORS: Record<string, Topic['generate']> = {
   'ph-k9-lb1-elektronik': elektronik,
   'ph-k9-lb2-versorgung': versorgung,
+  'ph-k9-lb2-kraftwerk': versorgung,
   'ph-k9-lb3-bewegung': bewegung,
   'ph-k9-lb4-praktikum': praktikum,
   'ph-k9-lbw-radioaktivitaet': radioaktivitaet,
   'ph-k9-lbw-wind-sonne': windSonne,
   'ph-k9-lbw-kurven': kurven,
+  'ph-k9-lbw-zentrifugal': kurven,
 }

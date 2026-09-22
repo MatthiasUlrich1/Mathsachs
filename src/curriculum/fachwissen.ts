@@ -242,13 +242,41 @@ export function physikFachwissen(topic: TopicRef): Fachwissen {
       ...wiki('Kraft', 'Kraft'),
     }
   }
-  if (/kraft|druck|impuls|newton|hebel|auftrieb/.test(lower) && !/feder|hooke|reibung|gewichtskraft|kraftbegriff|kräfte/.test(lower)) {
+  if (/kraft|druck|impuls|newton|hebel|auftrieb/.test(lower) && !/feder|hooke|reibung|gewichtskraft|kraftbegriff|kräfte|kraftwerk|zentripetal|zentrifugal|dynamisch|fliegen|bindungs/.test(lower)) {
     return {
       text:
-        'Kraft F in Newton (N). Druck p = F / A (Pascal). Gewichtskraft näherungsweise F_G = m · g (g ≈ 10 N/kg). ' +
+        'Kraft F in Newton (N). Druck p = F / A (Pascal). ' +
         'Größere Fläche bei gleicher Kraft → kleinerer Druck. ' +
-        'Ablauf: Formel wählen → Einheiten (N, m², kg) prüfen → einsetzen → Ergebnis mit Einheit angeben.',
+        'Ablauf: Formel wählen → Einheiten (N, m², kg) prüfen → einsetzen → Ergebnis mit Einheit angeben. ' +
+        'Gewichtskraft F_G = m·g gehört nur zum Thema Gewichtskraft — nicht in jedes Kraft-Thema mischen.',
       ...wiki('Druck_(Physik)', 'Druck_(Physik)'),
+    }
+  }
+  if (/kraftwerk/.test(lower)) {
+    return {
+      text:
+        'Kraftwerkskette: typisch Wärme (oder Lage-/Bewegungsenergie) → Turbine (Bewegung) → Generator (elektrische Energie). ' +
+        'Wirkungsgrad η = Nutzenergie / zugeführte Energie. ' +
+        'Nicht verwechseln mit der Gewichtskraft F_G = m·g — „Kraftwerk“ enthält nur das Wort „Kraft“.',
+      ...wiki('Kraftwerk', 'Kraftwerk'),
+    }
+  }
+  if (/zentripetal|zentrifugal/.test(lower)) {
+    return {
+      text:
+        'Zentripetalkraft hält einen Körper auf der Kreisbahn und zeigt zum Mittelpunkt: F_z = m·v²/r. ' +
+        'Ohne diese Kraft fliegt der Körper geradlinig weiter (Trägheit). ' +
+        'Nicht mit Gewichtskraft F_G = m·g verwechseln.',
+      ...wiki('Zentripetalkraft', 'Zentripetalkraft'),
+    }
+  }
+  if (/dynamisch|fliegen|tragfläche|auftrieb-dyn/.test(lower)) {
+    return {
+      text:
+        'Dynamischer Auftrieb entsteht durch Anströmung und Form der Tragfläche (Druck-/Impulsunterschied). ' +
+        'Zum Fliegen gehören Auftrieb, Gewichtskraft, Vortrieb und Luftwiderstand. ' +
+        'Ohne Anströmung fehlt typischerweise der dynamische Auftrieb — das ist kein F_G = m·g-Rechenthema.',
+      ...wiki('Dynamischer_Auftrieb', 'Dynamischer_Auftrieb'),
     }
   }
   if (/energie|leistung|arbeit|kinetisch|potentiell/.test(lower)) {
