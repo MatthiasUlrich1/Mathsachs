@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.99] – 2026-09-22
+
+### Geändert
+- **K7 Wahlbereich freigegeben** mit eigenen Generatoren und Lehr-Skizzen:
+  Kraftwandler (3268), Hebelgesetz (8875), Flaschenzug (1909), Schaltungen (7125),
+  Klingel/Wechselschaltung (9421), Vom Fliegen (5411), Dynamischer Auftrieb (1575).
+  Physik-Pack **2.5.26**.
+
 ## [0.27.98] – 2026-09-22
 
 ### Behoben

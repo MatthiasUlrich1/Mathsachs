@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "2.5.25",
-  "changelog": "Energie sparen (6864): deutlich mehr Varianten (Alltag, Reibung/Dämmung, LED-Rechnung, MultiSelect/Slots).",
+  "version": "2.5.26",
+  "changelog": "K7 Wahlbereich freigegeben: Kraftwandler/Hebel/Flaschenzug/Schaltungen/Klingel/Fliegen/Auftrieb mit getrennten Generatoren und Lehr-Skizzen.",
   "official": [
     {
       "id": "physik-klasse-6",
@@ -759,7 +759,7 @@
               "title": "Kraftwandler – früher und heute",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Kraftwandler"
@@ -770,7 +770,7 @@
               "title": "Hebelgesetz",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Hebel"
@@ -781,7 +781,7 @@
               "title": "Flaschenzug",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Flaschenzug"
@@ -792,7 +792,7 @@
               "title": "Elektrische Schaltungen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Schaltung"
@@ -803,7 +803,7 @@
               "title": "Klingel und Wechselschaltung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Klingel"
@@ -814,7 +814,7 @@
               "title": "Vom Fliegen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Fliegen"
@@ -825,7 +825,7 @@
               "title": "Dynamischer Auftrieb",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Auftrieb",
@@ -4008,5 +4008,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "f6b20fc7"
+  "contentHash": "601912b0"
 }

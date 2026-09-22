@@ -1,13 +1,19 @@
 import { pick, randInt, type Rng } from '../lib/rng'
 import {
+  airfoilSvg,
   chargeForceSvg,
   circuitSvg,
   energyFlowSvg,
+  flightForcesSvg,
   frictionForceSvg,
+  inclinedPlaneSvg,
+  leverBalanceSvg,
   magnetPolesSvg,
   meterGapCircuitSvg,
   meterWiredCircuitSvg,
+  pulleySvg,
   seriesParallelSvg,
+  wechselCircuitSvg,
 } from '../lib/physikSvg'
 import {
   choicePickTask,
@@ -1989,115 +1995,308 @@ const energiesparen: Topic['generate'] = mixedVariants(
     }),
 )
 
-/** Wahlbereich — Kraftwandler: Hebel, Flaschenzug */
+/** Wahlbereich — Kraftwandler früher und heute (Goldene Regel, schiefe Ebene) */
 const kraftwandler: Topic['generate'] = mixedVariants(
   (rng) => {
     const cases = [
       {
-        q: 'Wozu dient ein Hebel oft?',
-        correct: 'kleine Kraft auf langem Arm → große Kraft auf kurzem Arm',
+        q: 'Ein Arbeiter zieht einen schweren Stein über eine Rampe nach oben. Welches Prinzip nutzt er?',
+        correct: 'Die Rampe verringert die nötige Zugkraft, verlängert aber den Weg.',
         wrong: [
-          'Kraft und Weg bleiben immer gleich',
-          'Masse des Körpers wird kleiner',
-          'Gewichtskraft verschwindet',
+          'Die Rampe verringert den zurückzulegenden Weg nach oben.',
+          'Die Rampe vernichtet einen Teil der Gewichtskraft.',
+          'Die Rampe spart sowohl Kraft als auch Weg.',
         ],
       },
       {
-        q: 'Was trifft auf einen Flaschenzug zu?',
-        correct: 'Man zieht mit kleinerer Kraft, aber über einen längeren Weg',
+        q: 'Goldene Regel der Mechanik: Was gilt für Kraftwandler?',
+        correct: 'Was man an Kraft spart, muss man an Weg (oder Zeit) zusetzen.',
         wrong: [
-          'Man spart Kraft und Weg gleichzeitig ohne Nachteil',
-          'Die Last wird leichter (Masse nimmt ab)',
-          'Es wirkt keine Gewichtskraft mehr',
+          'Man spart immer Kraft und Weg gleichzeitig.',
+          'Kräfte werden vernichtet.',
+          'Hebelarme spielen keine Rolle.',
         ],
       },
       {
-        q: 'Wo greift man bei einer Schere oder Zange oft an, um Kraft zu sparen?',
-        correct: 'weiter vom Drehpunkt entfernt (langer Hebelarm)',
+        q: 'Welche Geräte sind typische Kraftwandler?',
+        correct: 'Hebel, Flaschenzug, schiefe Ebene / Rampe',
+        wrong: ['nur Thermometer', 'nur Amperemeter', 'nur Lineal ohne Hebelwirkung'],
+      },
+      {
+        q: 'Warum baut man Pyramidenrampen / schiefe Ebenen?',
+        correct: 'kleinere Kraft auf längerem Weg statt steil hochheben',
         wrong: [
-          'möglichst nah am Drehpunkt',
-          'nur an der Schneide',
-          'ohne Hebelarm',
+          'weil der Weg kürzer wird',
+          'weil die Masse des Steins abnimmt',
+          'weil g sich ändert',
         ],
       },
     ] as const
     const c = pick(rng, [...cases])
+    const withRamp = /Rampe|schiefe|Pyramide/i.test(c.q)
     return choicePickTask({
       question: c.q,
       choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
       correct: c.correct,
       solution: c.correct,
       explanation:
-        'Kraftwandler tauschen Kraft gegen Weg: kleinere Kraft bedeutet meist längeren Weg.',
+        'Kraftwandler: kleinere Kraft ↔ längerer Weg. Kräfte werden nicht vernichtet.',
       instruction: 'Tippe die passende Aussage:',
+      ...(withRamp ? { visualContent: inclinedPlaneSvg() } : {}),
     })
   },
   (_rng) =>
     multiSelectTask({
-      question: 'Welche Geräte nutzen typischerweise Hebel oder Flaschenzug? (mehrere möglich)',
+      question: 'Was gehört zur Goldenen Regel / zu Kraftwandlern? (mehrere möglich)',
       choices: [
-        'Schubkarre',
-        'Flaschenzug am Baukran',
-        'Nussknacker',
-        'einfache Glühlampe ohne Hebel',
-        'Batterie allein',
+        'Kraft sparen ↔ Weg zusetzen',
+        'Hebel, Flaschenzug, schiefe Ebene',
+        'Kräfte können vernichtet werden',
+        'Gleichzeitig Kraft und Weg sparen ist unmöglich',
+        'Nur die Farbe des Geräts zählt',
       ],
-      correct: ['Schubkarre', 'Flaschenzug am Baukran', 'Nussknacker'],
-      solution: 'Schubkarre, Flaschenzug und Nussknacker sind Kraftwandler.',
-      explanation: 'Lampe und Batterie wandeln Energie, sind aber keine Hebel/Flaschenzüge.',
-      instruction: 'Tippe alle passenden Geräte:',
+      correct: [
+        'Kraft sparen ↔ Weg zusetzen',
+        'Hebel, Flaschenzug, schiefe Ebene',
+        'Gleichzeitig Kraft und Weg sparen ist unmöglich',
+      ],
+      solution: 'Kraft gegen Weg tauschen; Beispiele Hebel/Flaschenzug/Rampe.',
+      explanation: 'Kräfte vernichten oder beides sparen — falsch.',
+      instruction: 'Tippe alle richtigen Aussagen:',
     }),
-  (rng) => {
-    const correct = 'längerer Kraftarm → kleinere nötige Kraft'
-    return choicePickTask({
-      question: `Ein Kind hebt mit einem Hebel eine Last. Was hilft, die nötige Kraft zu verringern?`,
-      choices: shuffleChoices(
-        rng,
-        [
-          correct,
-          'kürzerer Kraftarm → kleinere nötige Kraft',
-          'Hebelarm spielt keine Rolle',
-          'nur die Farbe des Hebels zählt',
-        ],
-        correct,
-      ),
-      correct,
-      solution: correct,
-      explanation: 'Je länger der Kraftarm (bei gleicher Last und gleichem Lastarm), desto kleiner die nötige Kraft.',
-      instruction: 'Tippe die richtige Aussage:',
-    })
-  },
+  (_rng) =>
+    dragDropSlotsTask({
+      question: 'Baue die Goldene Regel (kurz). Einen Block brauchst du nicht.',
+      items: [
+        { label: 'Kraft sparen', value: 0 },
+        { label: '→', value: 1 },
+        { label: 'Weg zusetzen', value: 2 },
+        { label: 'η > 100 %', value: 3 },
+      ],
+      correctSlots: [0, 1, 2],
+      solution: 'Kraft sparen → Weg zusetzen',
+      explanation: 'Klassische Formulierung der Goldenen Regel der Mechanik.',
+    }),
 )
 
-/** Wahlbereich — elektrische Schaltungen: Reihe vs Parallel */
-const schaltungen: Topic['generate'] = mixedVariants(
+/** Wahlbereich — Hebelgesetz */
+const hebel: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const pairs = [
+      [400, 2, 4, 200],
+      [300, 1, 3, 100],
+      [200, 2, 4, 100],
+      [500, 2, 5, 200],
+    ] as const
+    const [f1, l1, l2, f2] = pick(rng, [...pairs])
+    return valueTask({
+      question: `Wippe im Gleichgewicht: links F₁ = ${f1} N, l₁ = ${l1} m; rechts l₂ = ${l2} m. Wie groß ist F₂ (in N)?`,
+      answerKind: 'integer',
+      unit: 'N',
+      value: f2,
+      solution: `${f2} N`,
+      explanation: `Hebelgesetz: F₁·l₁ = F₂·l₂ → F₂ = (${f1}·${l1})/${l2} = ${f2} N.`,
+      visualContent: leverBalanceSvg({ f1, l1, f2Label: '?', l2 }),
+    })
+  },
   (rng) => {
     const cases = [
       {
-        q: 'Zwei gleiche Lampen sind in Reihe geschaltet. Eine Lampe fällt aus (Unterbrechung). Was passiert?',
-        correct: 'Beide Lampen erlöschen',
+        q: 'Hebelgesetz im Gleichgewicht?',
+        correct: 'F₁ · l₁ = F₂ · l₂',
+        wrong: ['F₁ = F₂ immer', 'l₁ = l₂ immer ohne Kräfte', 'F₁ + l₁ = F₂ + l₂'],
+      },
+      {
+        q: 'Längerer Kraftarm bei gleicher Last bedeutet …',
+        correct: 'kleinere nötige Kraft',
+        wrong: ['größere nötige Kraft', 'keine Wirkung', 'Last wird leichter (Masse sinkt)'],
+      },
+      {
+        q: 'Wo greift man an Schere/Zange, um Kraft zu sparen?',
+        correct: 'weiter vom Drehpunkt (langer Hebelarm)',
+        wrong: ['möglichst nah am Drehpunkt', 'nur an der Schneide', 'ohne Hebelarm'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Gleichgewicht: Drehmomente gleich — F·l links = F·l rechts.',
+      instruction: 'Tippe die passende Aussage:',
+    })
+  },
+  (_rng) =>
+    dragDropSlotsTask({
+      question: 'Baue das Hebelgesetz. Einen Block brauchst du nicht.',
+      items: [
+        { label: 'F₁', value: 0 },
+        { label: '· l₁', value: 1 },
+        { label: '=', value: 2 },
+        { label: 'F₂', value: 3 },
+        { label: '· l₂', value: 4 },
+        { label: '+ m', value: 5 },
+      ],
+      correctSlots: [0, 1, 2, 3, 4],
+      solution: 'F₁ · l₁ = F₂ · l₂',
+      explanation: 'Kraft mal Kraftarm = Last mal Lastarm.',
+      checkMode: 'strict',
+    }),
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was gilt am Hebel? (mehrere möglich)',
+      choices: [
+        'Drehpunkt / Drehachse',
+        'Kraftarm und Lastarm',
+        'Im Gleichgewicht: F₁·l₁ = F₂·l₂',
+        'Kräfte werden vernichtet',
+        'Nur die Farbe der Wippe zählt',
+      ],
+      correct: ['Drehpunkt / Drehachse', 'Kraftarm und Lastarm', 'Im Gleichgewicht: F₁·l₁ = F₂·l₂'],
+      solution: 'Drehpunkt, Arme, F·l = F·l.',
+      explanation: 'Kräfte vernichten oder Farbe — keine Physik.',
+      instruction: 'Tippe alle richtigen Aussagen:',
+    }),
+)
+
+/** Wahlbereich — Flaschenzug */
+const flasche: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const strands = pick(rng, [2, 4, 3, 5])
+    const fg = pick(rng, [200, 400, 600, 800])
+    if (fg % strands !== 0) {
+      const fg2 = 600
+      const n = 4
+      return valueTask({
+        question: `Idealer Flaschenzug: F_G = ${fg2} N, ${n} tragende Seilstücke. Wie groß ist die Zugkraft F?`,
+        answerKind: 'integer',
+        unit: 'N',
+        value: fg2 / n,
+        solution: `${fg2 / n} N`,
+        explanation: `F = F_G / n = ${fg2}/${n} = ${fg2 / n} N (ohne Reibung).`,
+        visualContent: pulleySvg(n),
+      })
+    }
+    return valueTask({
+      question: `Idealer Flaschenzug: F_G = ${fg} N, ${strands} tragende Seilstücke. Zugkraft F?`,
+      answerKind: 'integer',
+      unit: 'N',
+      value: fg / strands,
+      solution: `${fg / strands} N`,
+      explanation: `F = F_G / n = ${fg}/${strands} = ${fg / strands} N.`,
+      visualContent: pulleySvg(strands),
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Was leistet ein Flaschenzug (ideal, ohne Reibung)?',
+        correct: 'verringert die nötige Zugkraft — dafür zieht man einen längeren Seilweg',
         wrong: [
-          'Nur die kaputte bleibt aus, die andere leuchtet weiter',
-          'Beide werden heller',
-          'Die Spannung verdoppelt sich',
+          'löscht die Gewichtskraft aus',
+          'spart Kraft und Weg gleichzeitig ohne Nachteil',
+          'erhöht g',
         ],
       },
       {
-        q: 'Zwei gleiche Lampen sind parallel geschaltet. Eine Lampe fällt aus. Was passiert typischerweise?',
-        correct: 'Die andere Lampe leuchtet weiter',
-        wrong: [
-          'Beide erlöschen immer',
-          'Die andere wird automatisch doppelt so hell',
-          'Strom kann nie fließen',
-        ],
+        q: 'Mehr tragende Seilstücke bedeuten typischerweise …',
+        correct: 'kleinere Zugkraft (Last verteilt sich)',
+        wrong: ['größere Zugkraft', 'keine Wirkung', 'kürzeren Seilweg bei gleicher Kraft'],
       },
       {
-        q: 'Woran erkennst du eine Parallelschaltung zweier Lampen?',
+        q: '600 N Last, 4 tragende Seile: ideale Zugkraft?',
+        correct: '150 N',
+        wrong: ['300 N', '600 N', '75 N'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'F ≈ F_G / n; Goldene Regel: Kraft↓ → Weg↑.',
+      instruction: 'Tippe die passende Aussage:',
+      visualContent: pulleySvg(4),
+    })
+  },
+  (_rng) =>
+    dragDropSlotsTask({
+      question: 'Baue: ideale Zugkraft am Flaschenzug. Einen Block brauchst du nicht.',
+      items: [
+        { label: 'F', value: 0 },
+        { label: '=', value: 1 },
+        { label: 'F_G', value: 2 },
+        { label: '/', value: 3 },
+        { label: 'n', value: 4 },
+        { label: '· g', value: 5 },
+      ],
+      correctSlots: [0, 1, 2, 3, 4],
+      solution: 'F = F_G / n',
+      explanation: 'n = Anzahl der tragenden Seilstücke.',
+    }),
+)
+
+/** Wahlbereich — elektrische Schaltungen */
+const schaltungen: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const series = pick(rng, [true, false])
+    if (series) {
+      return choicePickTask({
+        question:
+          'Zwei Glühlampen in Reihe an einer Batterie. Du drehst eine Lampe heraus (Unterbrechung). Was passiert?',
+        choices: shuffleChoices(
+          rng,
+          [
+            'Die andere Lampe geht ebenfalls aus.',
+            'Die andere Lampe leuchtet unverändert weiter.',
+            'Die andere Lampe leuchtet plötzlich doppelt so hell.',
+            'Die Batterie erleidet sofort einen Kurzschluss.',
+          ],
+          'Die andere Lampe geht ebenfalls aus.',
+        ),
+        correct: 'Die andere Lampe geht ebenfalls aus.',
+        solution: 'Die andere Lampe geht ebenfalls aus.',
+        explanation:
+          'Reihe: ein Strompfad — Unterbrechung → kein Strom mehr im ganzen Kreis.',
+        instruction: 'Tippe die passende Aussage:',
+        visualContent: seriesParallelSvg('series', { load: 'lamp', switchClosed: false }),
+      })
+    }
+    return choicePickTask({
+      question: 'Zwei gleiche Lampen parallel. Eine fällt aus. Was passiert typischerweise?',
+      choices: shuffleChoices(
+        rng,
+        [
+          'Die andere Lampe kann weiter leuchten.',
+          'Beide müssen ausgehen.',
+          'Die Spannung wird immer null.',
+          'Es gibt keinen Strom mehr im ganzen Haus.',
+        ],
+        'Die andere Lampe kann weiter leuchten.',
+      ),
+      correct: 'Die andere Lampe kann weiter leuchten.',
+      solution: 'Die andere Lampe kann weiter leuchten.',
+      explanation: 'Parallel: eigene Zweige — ein Zweig kann weiter Strom führen.',
+      instruction: 'Tippe die passende Aussage:',
+      visualContent: seriesParallelSvg('parallel', { load: 'lamp' }),
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Woran erkennst du eine Reihenschaltung zweier Lampen?',
+        correct: 'Der Strom muss nacheinander durch beide',
+        wrong: ['Jede Lampe hat einen eigenen Zweig', 'Es gibt keinen gemeinsamen Weg', 'Lampen brauchen keine Drähte'],
+      },
+      {
+        q: 'Woran erkennst du eine Parallelschaltung?',
         correct: 'Jede Lampe hat einen eigenen Zweig',
         wrong: [
-          'Der Strom muss nacheinander durch beide Lampen',
-          'Es gibt nur einen einzigen Weg ohne Verzweigung',
-          'Lampen dürfen keine Drähte haben',
+          'Der Strom muss nacheinander durch beide',
+          'Es gibt nur einen Weg ohne Verzweigung',
+          'Unterbrechung löscht immer beide',
         ],
       },
     ] as const
@@ -2107,9 +2306,8 @@ const schaltungen: Topic['generate'] = mixedVariants(
       choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
       correct: c.correct,
       solution: c.correct,
-      explanation:
-        'Reihe: ein Weg — Unterbrechung löscht alles. Parallel: eigene Zweige — ein Zweig kann weiter leuchten.',
-      instruction: 'Tippe die richtige Aussage:',
+      explanation: 'Reihe = hintereinander; Parallel = eigene Zweige.',
+      instruction: 'Tippe die passende Aussage:',
     })
   },
   (_rng) =>
@@ -2126,11 +2324,11 @@ const schaltungen: Topic['generate'] = mixedVariants(
         'Fällt ein Bauteil aus, ist der Kreis oft unterbrochen',
         'Die Spannungen teilen sich oft auf die Bauteile auf',
       ],
-      solution: 'In Reihe: ein Stromweg, Aufteilung der Spannung, Ausfall unterbricht oft alles.',
-      explanation: 'Eigene Zweige gehören zur Parallelschaltung, nicht zur Reihe.',
+      solution: 'ein Stromweg, Unterbrechung löscht oft alles, Spannung teilt sich.',
+      explanation: 'Eigene Zweige = Parallel.',
       instruction: 'Tippe alle richtigen Aussagen:',
     }),
-  () =>
+  (rng) =>
     dragDropSortTask({
       question: 'Ordne: zuerst typisch für Reihenschaltung, dann für Parallelschaltung.',
       items: [
@@ -2138,32 +2336,43 @@ const schaltungen: Topic['generate'] = mixedVariants(
         { label: 'zwei Zweige — jede Lampe für sich', value: 1 },
       ],
       correctOrder: [0, 1],
-      solution: 'Reihe (gemeinsamer Weg) → Parallel (eigene Zweige)',
-      explanation: 'Reihe = hintereinander; Parallel = nebeneinander in Zweigen.',
+      solution: 'Reihe → Parallel',
+      explanation: 'Reihe = hintereinander; Parallel = nebeneinander.',
+      rng,
     }),
 )
 
-/** Wahlbereich — Vom Fliegen: Auftrieb / Luftwiderstand */
-const fliegen: Topic['generate'] = mixedVariants(
+/** Wahlbereich — Klingel und Wechselschaltung */
+const klingel: Topic['generate'] = mixedVariants(
   (rng) => {
     const cases = [
       {
-        q: 'Was braucht ein Flugzeug zum Fliegen neben Vortrieb typischerweise?',
-        correct: 'Auftrieb an den Tragflächen',
-        wrong: ['nur Gewichtskraft nach oben', 'keinen Luftwiderstand je', 'nur Magnetkraft'],
-      },
-      {
-        q: 'Was wirkt dem Vorwärtsfliegen entgegen und muss überwunden werden?',
-        correct: 'Luftwiderstand',
-        wrong: ['Auftrieb allein', 'nur die Masse in kg', 'Lichtgeschwindigkeit'],
-      },
-      {
-        q: 'Was gilt qualitativ für den Auftrieb an einer Tragfläche?',
-        correct: 'Luftströmung und Form erzeugen eine Kraft nach oben',
+        q: 'Welche Funktion hat die gezeigte Schaltung im Alltag?',
+        correct:
+          'Wechselschaltung: eine Lampe von zwei Schaltern (z. B. Flur) ein-/ausschalten',
         wrong: [
-          'Auftrieb entsteht nur im Vakuum',
-          'Auftrieb ist immer gleich der Magnetkraft',
-          'Ohne Luft gibt es mehr Auftrieb',
+          'elektrische Klingel (Wagnerscher Hammer) mit Selbstunterbrechung',
+          'reine Parallelschaltung von zwei Lampen',
+          'Schutzschaltung gegen Kurzschlüsse',
+        ],
+        visual: true as const,
+      },
+      {
+        q: 'Wozu dient eine Wechselschaltung?',
+        correct: 'Verbraucher von zwei Orten aus schalten',
+        wrong: [
+          'nur Kurzschluss erzeugen',
+          'Stromstärke in Ampere verdoppeln ohne Gerät',
+          'Masse der Lampe ändern',
+        ],
+      },
+      {
+        q: 'Woran erkennst du eher eine Klingel (Wagnerscher Hammer) als eine Wechselschaltung?',
+        correct: 'Elektromagnet + federnder Unterbrecherkontakt (Selbstunterbrechung)',
+        wrong: [
+          'zwei Umschalter und eine Lampe im Flur',
+          'nur eine Batterie ohne Schalter',
+          'Parallelschaltung zweier Glühlampen',
         ],
       },
     ] as const
@@ -2174,10 +2383,96 @@ const fliegen: Topic['generate'] = mixedVariants(
       correct: c.correct,
       solution: c.correct,
       explanation:
-        'Fliegen: Auftrieb hält gegen die Gewichtskraft; Vortrieb muss den Luftwiderstand überwinden.',
+        'Wechselschaltung: zwei Umschalter steuern eine Lampe. Klingel: Elektromagnet mit Selbstunterbrechung.',
       instruction: 'Tippe die passende Aussage:',
+      ...('visual' in c && c.visual ? { visualContent: wechselCircuitSvg() } : {}),
     })
   },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was gehört zur Wechselschaltung? (mehrere möglich)',
+      choices: [
+        'zwei Umschalter (Wechselschalter)',
+        'oft eine Lampe / ein Verbraucher',
+        'Schalten von zwei Orten aus',
+        'immer genau zwei Lampen parallel',
+        'Wirkungsgrad über 100 %',
+      ],
+      correct: [
+        'zwei Umschalter (Wechselschalter)',
+        'oft eine Lampe / ein Verbraucher',
+        'Schalten von zwei Orten aus',
+      ],
+      solution: 'zwei Umschalter, ein Verbraucher, zwei Orte.',
+      explanation: 'Nicht zwingend zwei Lampen; η > 100 % falsch.',
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+    }),
+  (_rng) =>
+    dragDropSlotsTask({
+      question: 'Ordne: Wechselschaltung → … Einen Block brauchst du nicht.',
+      items: [
+        { label: 'Lampe', value: 0 },
+        { label: 'von 2 Orten', value: 1 },
+        { label: 'schalten', value: 2 },
+        { label: 'Kurzschluss', value: 3 },
+      ],
+      correctSlots: [0, 1, 2],
+      solution: 'Lampe von 2 Orten schalten',
+      explanation: 'Alltagsnutzen der Wechselschaltung (z. B. Treppenhaus).',
+    }),
+)
+
+/** Wahlbereich — Vom Fliegen (vier Kräfte) */
+const fliegen: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      {
+        q: 'Welcher Pfeil im Bild ist der Auftrieb?',
+        correct: 'Pfeil A (nach oben)',
+        wrong: ['Pfeil B (nach unten)', 'Pfeil C (nach vorne)', 'Pfeil D (nach hinten)'],
+      },
+      {
+        q: 'Welcher Pfeil ist die Gewichtskraft?',
+        correct: 'Pfeil B (nach unten)',
+        wrong: ['Pfeil A (nach oben)', 'Pfeil C (nach vorne)', 'Pfeil D (nach hinten)'],
+      },
+      {
+        q: 'Welcher Pfeil ist die Schubkraft (Vortrieb)?',
+        correct: 'Pfeil C (nach vorne)',
+        wrong: ['Pfeil A (nach oben)', 'Pfeil B (nach unten)', 'Pfeil D (nach hinten)'],
+      },
+      {
+        q: 'Welcher Pfeil ist der Luftwiderstand?',
+        correct: 'Pfeil D (nach hinten)',
+        wrong: ['Pfeil A (nach oben)', 'Pfeil B (nach unten)', 'Pfeil C (nach vorne)'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'A Auftrieb ↑, B Gewicht ↓, C Schub →, D Widerstand ←.',
+      instruction: 'Tippe den passenden Pfeil:',
+      visualContent: flightForcesSvg(),
+    })
+  },
+  (rng) =>
+    dragDropSortTask({
+      question: 'Ordne die Kräfte zu den Pfeilen: A (↑), B (↓), C (→), D (←).',
+      items: [
+        { label: 'Auftrieb', value: 0 },
+        { label: 'Gewichtskraft', value: 1 },
+        { label: 'Schubkraft', value: 2 },
+        { label: 'Luftwiderstand', value: 3 },
+      ],
+      correctOrder: [0, 1, 2, 3],
+      solution: 'A Auftrieb, B Gewicht, C Schub, D Widerstand',
+      explanation: 'Stabiler Vorwärtsflug: vier Kräfte im Gleichgewicht der Paare.',
+      visualContent: flightForcesSvg(),
+      rng,
+    }),
   (_rng) =>
     multiSelectTask({
       question: 'Welche Kräfte spielen beim Fliegen eine wichtige Rolle? (mehrere möglich)',
@@ -2189,31 +2484,106 @@ const fliegen: Topic['generate'] = mixedVariants(
         'chemische Farbe der Tragfläche als Kraft',
       ],
       correct: ['Gewichtskraft', 'Auftrieb', 'Luftwiderstand', 'Vortrieb (Schub)'],
-      solution: 'Gewicht, Auftrieb, Widerstand und Vortrieb — die „vier Kräfte“ beim Fliegen.',
-      explanation: 'Die Farbe der Tragfläche ist keine Kraft.',
+      solution: 'Gewicht, Auftrieb, Widerstand, Vortrieb.',
+      explanation: 'Farbe ist keine Kraft.',
       instruction: 'Tippe alle relevanten Kräfte:',
     }),
   (rng) => {
-    const correct = 'mehr Geschwindigkeit / bessere Strömung → oft mehr Auftrieb'
+    const cases = [
+      {
+        q: 'Was braucht ein Flugzeug zum Fliegen neben Vortrieb typischerweise?',
+        correct: 'Auftrieb an den Tragflächen',
+        wrong: ['nur Gewichtskraft nach oben', 'keinen Luftwiderstand je', 'nur Magnetkraft'],
+      },
+      {
+        q: 'Was wirkt dem Vorwärtsfliegen entgegen?',
+        correct: 'Luftwiderstand',
+        wrong: ['Auftrieb allein', 'nur die Masse in kg', 'Lichtgeschwindigkeit'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
     return choicePickTask({
-      question: 'Was gilt qualitativ für den Auftrieb einer Tragfläche?',
-      choices: shuffleChoices(
-        rng,
-        [
-          correct,
-          'Auftrieb hängt nie von der Geschwindigkeit ab',
-          'Auftrieb wirkt immer nach unten',
-          'Ohne Vorwärtsbewegung ist Auftrieb am größten',
-        ],
-        correct,
-      ),
-      correct,
-      solution: correct,
-      explanation:
-        'Mit ausreichender Anströmung entsteht Auftrieb; ohne Vorwärtsbewegung fehlt typischerweise der Auftrieb.',
-      instruction: 'Tippe die richtige Aussage:',
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Auftrieb gegen Gewicht; Schub gegen Widerstand.',
+      instruction: 'Tippe die passende Aussage:',
     })
   },
+)
+
+/** Wahlbereich — Dynamischer Auftrieb */
+const auftriebDyn: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      {
+        q: 'Warum entsteht an einer gewölbten Tragfläche dynamischer Auftrieb?',
+        correct:
+          'Oben strömt die Luft schneller → Unterdruck (Sog); unten höherer Druck → Kraft nach oben.',
+        wrong: [
+          'Die Tragfläche saugt Luft und stößt sie wie eine Rakete aus.',
+          'Durch die Wölbung wird die Tragfläche leichter als Luft.',
+          'Nur warme Triebwerksluft unter den Flügeln erzeugt den Auftrieb.',
+        ],
+      },
+      {
+        q: 'Dynamischer Auftrieb an einer Tragfläche entsteht vor allem durch …',
+        correct: 'Luftströmung und Form (Druckunterschied)',
+        wrong: ['nur die Farbe der Tragfläche', 'nur F_G = m·g ohne Strömung', 'Kurzschluss im Cockpit'],
+      },
+      {
+        q: 'Ohne ausreichende Anströmung …',
+        correct: 'fehlt typischerweise der dynamische Auftrieb',
+        wrong: ['ist der Auftrieb am größten', 'verschwindet die Gewichtskraft', 'entsteht nur Magnetkraft'],
+      },
+      {
+        q: 'Mehr Geschwindigkeit / bessere Anströmung bedeutet oft …',
+        correct: 'größeren dynamischen Auftrieb',
+        wrong: ['keinen Einfluss', 'Auftrieb immer nach unten', 'kleinere Strömungsgeschwindigkeit oben'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    const withFoil = /Tragfläche|gewölbt|Anströmung|Geschwindigkeit/i.test(c.q)
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation:
+        'Schnellere Strömung oben → geringerer Druck; Druckdifferenz → Auftrieb (Bernoulli/Impuls, Schulniveau).',
+      instruction: 'Tippe die passende Aussage:',
+      ...(withFoil ? { visualContent: airfoilSvg() } : {}),
+    })
+  },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was gehört zum dynamischen Auftrieb? (mehrere möglich)',
+      choices: [
+        'Anströmung der Tragfläche',
+        'Form / Wölbung des Profils',
+        'Druckunterschied oben/unten',
+        'Farbe der Tragfläche als Kraft',
+        'F_G = m·g allein ohne Luft',
+      ],
+      correct: ['Anströmung der Tragfläche', 'Form / Wölbung des Profils', 'Druckunterschied oben/unten'],
+      solution: 'Anströmung, Profil, Druckdifferenz.',
+      explanation: 'Ohne Strömung kein dynamischer Auftrieb — Gewichtskraft allein reicht nicht.',
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+    }),
+  (_rng) =>
+    dragDropSlotsTask({
+      question: 'Baue den Merksatz. Einen Block brauchst du nicht.',
+      items: [
+        { label: 'Anströmung', value: 0 },
+        { label: '→', value: 1 },
+        { label: 'Auftrieb', value: 2 },
+        { label: 'F_G = m·g allein', value: 3 },
+      ],
+      correctSlots: [0, 1, 2],
+      solution: 'Anströmung → Auftrieb',
+      explanation: 'Ohne Anströmung fehlt typischerweise der dynamische Auftrieb.',
+    }),
 )
 
 /** LB1 — Reibung */
@@ -2538,9 +2908,10 @@ export const PHYSIK_K7_GENERATORS: Record<string, Topic['generate']> = {
   'ph-k7-lb3-leistung': leistung,
   'ph-k7-lb3-sparen': energiesparen,
   'ph-k7-lbw-kraftwandler': kraftwandler,
-  'ph-k7-lbw-hebel': kraftwandler,
-  'ph-k7-lbw-flasche': kraftwandler,
+  'ph-k7-lbw-hebel': hebel,
+  'ph-k7-lbw-flasche': flasche,
   'ph-k7-lbw-schaltungen': schaltungen,
+  'ph-k7-lbw-klingel': klingel,
   'ph-k7-lbw-fliegen': fliegen,
-  'ph-k7-lbw-auftrieb-dyn': fliegen,
+  'ph-k7-lbw-auftrieb-dyn': auftriebDyn,
 }

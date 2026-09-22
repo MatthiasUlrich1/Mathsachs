@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.25',
+    version: '2.5.26',
     changelog:
-      'Energie sparen (6864): deutlich mehr Varianten (Alltag, Reibung/Dämmung, LED-Rechnung, MultiSelect/Slots).',
+      'K7 Wahlbereich freigegeben: Kraftwandler/Hebel/Flaschenzug/Schaltungen/Klingel/Fliegen/Auftrieb mit getrennten Generatoren und Lehr-Skizzen.',
     official,
     extras: [],
   }

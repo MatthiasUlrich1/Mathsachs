@@ -984,3 +984,108 @@ export function meterWiredCircuitSvg(opts: { meter: 'A' | 'V' }): string {
 </svg>`
 }
 
+
+/** Schiefe Ebene / Rampe (Kraftwandler). */
+export function inclinedPlaneSvg(): string {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160" role="img" aria-label="Schiefe Ebene">
+  <rect width="320" height="160" fill="#f8fafc"/>
+  <path d="M40 130 H280" stroke="#64748b" stroke-width="2"/>
+  <path d="M60 130 L240 50 L240 130 Z" fill="#e2e8f0" stroke="#334155" stroke-width="2.5"/>
+  <rect x="150" y="78" width="36" height="28" transform="rotate(-28 168 92)" fill="#94a3b8" stroke="#334155" stroke-width="2"/>
+  <defs><marker id="msArrowIncline" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1d4ed8"/></marker></defs>
+  <path d="M175 95 L210 75" stroke="#1d4ed8" stroke-width="2.5" fill="none" marker-end="url(#msArrowIncline)"/>
+  <text x="160" y="150" text-anchor="middle" fill="#475569" font-size="12" font-family="system-ui,sans-serif">Rampe = schiefe Ebene</text>
+</svg>`
+}
+
+/** Zweiseitiger Hebel / Wippe mit Beschriftung. */
+export function leverBalanceSvg(opts: { f1: number; l1: number; f2Label: string; l2: number }): string {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 150" width="340" height="150" role="img" aria-label="Hebel im Gleichgewicht">
+  <rect width="340" height="150" fill="#f8fafc"/>
+  <path d="M170 40 V95" stroke="#334155" stroke-width="3"/>
+  <path d="M155 95 L170 115 L185 95 Z" fill="#334155"/>
+  <path d="M50 55 H290" stroke="#334155" stroke-width="4"/>
+  <path d="M80 55 V85" stroke="#dc2626" stroke-width="2.5"/>
+  <text x="80" y="102" text-anchor="middle" fill="#991b1b" font-size="12" font-family="system-ui,sans-serif">F₁=${opts.f1} N</text>
+  <text x="125" y="48" text-anchor="middle" fill="#475569" font-size="11" font-family="system-ui,sans-serif">l₁=${opts.l1} m</text>
+  <path d="M260 55 V85" stroke="#2563eb" stroke-width="2.5"/>
+  <text x="260" y="102" text-anchor="middle" fill="#1e40af" font-size="12" font-family="system-ui,sans-serif">F₂=${opts.f2Label}</text>
+  <text x="215" y="48" text-anchor="middle" fill="#475569" font-size="11" font-family="system-ui,sans-serif">l₂=${opts.l2} m</text>
+</svg>`
+}
+
+/** Vereinfachter Flaschenzug (n tragende Seilstücke). */
+export function pulleySvg(strands: number): string {
+  const n = Math.max(2, Math.min(6, strands))
+  const ropes = Array.from({ length: n }, (_, i) => {
+    const x = 120 + i * 14
+    return `<path d="M${x} 40 V100" stroke="#334155" stroke-width="2"/>`
+  }).join('')
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 160" width="280" height="160" role="img" aria-label="Flaschenzug">
+  <rect width="280" height="160" fill="#f8fafc"/>
+  <rect x="100" y="28" width="${n * 14 + 20}" height="16" rx="4" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
+  <text x="140" y="22" fill="#475569" font-size="11" font-family="system-ui,sans-serif">feste Rollen</text>
+  ${ropes}
+  <rect x="110" y="100" width="${n * 14}" height="14" rx="3" fill="#94a3b8" stroke="#334155" stroke-width="2"/>
+  <text x="140" y="132" text-anchor="middle" fill="#475569" font-size="12" font-family="system-ui,sans-serif">${n} tragende Seilstücke</text>
+  <path d="M${120 + (n - 1) * 14} 40 H230 V70" stroke="#334155" stroke-width="2" fill="none"/>
+  <circle cx="230" cy="78" r="10" fill="#fef3c7" stroke="#334155" stroke-width="2"/>
+  <text x="230" y="82" text-anchor="middle" fill="#92400e" font-size="10" font-family="system-ui,sans-serif">F</text>
+</svg>`
+}
+
+/** Flugzeug mit vier Kraftpfeilen A–D. */
+export function flightForcesSvg(): string {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 180" width="340" height="180" role="img" aria-label="Kräfte am Flugzeug">
+  <rect width="340" height="180" fill="#f8fafc"/>
+  <ellipse cx="170" cy="90" rx="70" ry="18" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
+  <path d="M100 90 H140" stroke="#334155" stroke-width="3"/>
+  <path d="M200 90 H250" stroke="#334155" stroke-width="3"/>
+  <path d="M170 90 V50" stroke="#16a34a" stroke-width="3"/>
+  <text x="178" y="48" fill="#166534" font-size="14" font-family="system-ui,sans-serif" font-weight="700">A</text>
+  <path d="M170 90 V130" stroke="#dc2626" stroke-width="3"/>
+  <text x="178" y="138" fill="#991b1b" font-size="14" font-family="system-ui,sans-serif" font-weight="700">B</text>
+  <path d="M250 90 H290" stroke="#2563eb" stroke-width="3"/>
+  <text x="298" y="94" fill="#1e40af" font-size="14" font-family="system-ui,sans-serif" font-weight="700">C</text>
+  <path d="M100 90 H60" stroke="#ca8a04" stroke-width="3"/>
+  <text x="48" y="94" fill="#854d0e" font-size="14" font-family="system-ui,sans-serif" font-weight="700">D</text>
+  <text x="170" y="168" text-anchor="middle" fill="#475569" font-size="11" font-family="system-ui,sans-serif">A ↑  B ↓  C →  D ←</text>
+</svg>`
+}
+
+/** Tragflächen-Querschnitt mit Strömung. */
+export function airfoilSvg(): string {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 150" width="340" height="150" role="img" aria-label="Tragflächenprofil">
+  <rect width="340" height="150" fill="#f8fafc"/>
+  <path d="M60 85 Q140 40 260 70 Q180 95 60 85 Z" fill="#e2e8f0" stroke="#334155" stroke-width="2.5"/>
+  <path d="M40 55 H100 M50 48 H120 M60 42 H140" stroke="#93c5fd" stroke-width="1.5" fill="none"/>
+  <path d="M40 100 H280" stroke="#93c5fd" stroke-width="1.5" fill="none"/>
+  <text x="170" y="28" text-anchor="middle" fill="#1e40af" font-size="12" font-family="system-ui,sans-serif">oben: schnellere Strömung</text>
+  <text x="170" y="130" text-anchor="middle" fill="#475569" font-size="12" font-family="system-ui,sans-serif">unten: langsamere Strömung</text>
+</svg>`
+}
+
+/** Wechselschaltung (zwei Umschalter + Lampe). */
+export function wechselCircuitSvg(): string {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 160" width="340" height="160" role="img" aria-label="Wechselschaltung">
+  <rect width="340" height="160" fill="#f8fafc"/>
+  ${batteryOnRail(40, 80)}
+  <path d="M40 52 V36 H90" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <circle cx="90" cy="36" r="3.5" fill="#334155"/>
+  <path d="M90 36 L120 22" stroke="#334155" stroke-width="2.5"/>
+  <circle cx="120" cy="50" r="3" fill="#334155"/>
+  <circle cx="120" cy="22" r="3" fill="#334155"/>
+  <path d="M120 22 H200" stroke="#334155" stroke-width="2"/>
+  <path d="M120 50 H200" stroke="#334155" stroke-width="2"/>
+  <circle cx="200" cy="22" r="3" fill="#334155"/>
+  <circle cx="200" cy="50" r="3" fill="#334155"/>
+  <path d="M200 22 L230 36" stroke="#334155" stroke-width="2.5"/>
+  <circle cx="230" cy="36" r="3.5" fill="#334155"/>
+  <path d="M230 36 H250" stroke="#334155" stroke-width="2.5" fill="none"/>
+  ${lampGlyph(266, 36)}
+  <path d="M282 36 H300 V124 H40 V108" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <text x="105" y="70" fill="#475569" font-size="11" font-family="system-ui,sans-serif">S1</text>
+  <text x="210" y="70" fill="#475569" font-size="11" font-family="system-ui,sans-serif">S2</text>
+  <text x="170" y="150" text-anchor="middle" fill="#475569" font-size="11" font-family="system-ui,sans-serif">Wechselschaltung (2 Schalter)</text>
+</svg>`
+}

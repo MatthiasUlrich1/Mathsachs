@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-22T19:48:51.345Z",
+  "updatedAt": "2026-09-22T20:05:21.452Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -18,10 +18,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "2.5.25",
+      "version": "2.5.26",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 134717,
-      "changelog": "Energie sparen (6864): deutlich mehr Varianten (Alltag, Reibung/Dämmung, LED-Rechnung, MultiSelect/Slots)."
+      "size": 134743,
+      "changelog": "K7 Wahlbereich freigegeben: Kraftwandler/Hebel/Flaschenzug/Schaltungen/Klingel/Fliegen/Auftrieb mit getrennten Generatoren und Lehr-Skizzen."
     },
     {
       "id": "gym-sachsen-anhalt",
