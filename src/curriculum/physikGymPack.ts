@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.22',
+    version: '2.5.23',
     changelog:
-      'K7 LB2 freigegeben (Spannung/Strom/Ohm + Stromstärke/Reihe/Parallel/Messen); Messgerät-Schaltbilder ohne Kabel-Lücke; Reihe/Parallel mit Widerstands-Rechtecken statt Glühlampen.',
+      'Parallelschaltung: Widerstands-Rechtecke längs zur vertikalen Leitung (hochkant), nicht quer.',
     official,
     extras: [],
   }

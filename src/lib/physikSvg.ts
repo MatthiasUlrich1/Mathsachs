@@ -451,8 +451,16 @@ function closedSwitch(x0: number, x1: number, y: number): string {
   <circle cx="${mid + 14}" cy="${y}" r="3.5" fill="#334155"/>`
 }
 
-/** Official-style Widerstand (Rechteck). */
-function resistorGlyph(cx: number, cy: number, halfW = 20, halfH = 10): string {
+/** Official-style Widerstand (Rechteck), längs zur Leitung. */
+function resistorGlyph(
+  cx: number,
+  cy: number,
+  orient: 'horizontal' | 'vertical' = 'horizontal',
+): string {
+  const along = 20
+  const across = 10
+  const halfW = orient === 'horizontal' ? along : across
+  const halfH = orient === 'horizontal' ? across : along
   return `<rect x="${cx - halfW}" y="${cy - halfH}" width="${halfW * 2}" height="${halfH * 2}" fill="#f8fafc" stroke="#334155" stroke-width="2.5"/>`
 }
 
@@ -469,13 +477,12 @@ export function seriesParallelSvg(
   const load = opts?.load ?? 'lamp'
   const sw = (x0: number, x1: number, y: number) =>
     switchClosed ? closedSwitch(x0, x1, y) : openSwitch(x0, x1, y)
-  const loadAt = (cx: number, cy: number) =>
-    load === 'resistor' ? resistorGlyph(cx, cy) : lampGlyph(cx, cy)
-  const halfW = load === 'resistor' ? 20 : 16
-  const halfH = load === 'resistor' ? 10 : 16
   if (kind === 'series') {
     const c1 = 186
     const c2 = 238
+    const halfW = load === 'resistor' ? 20 : 16
+    const loadAt = (cx: number, cy: number) =>
+      load === 'resistor' ? resistorGlyph(cx, cy, 'horizontal') : lampGlyph(cx, cy)
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160" role="img" aria-label="Reihenschaltung">
   <rect width="320" height="160" fill="#f8fafc"/>
   ${batteryOnRail(40, 80)}
@@ -488,8 +495,11 @@ export function seriesParallelSvg(
   <path d="M${c2 + halfW} 36 H280 V108 H40" stroke="#334155" stroke-width="2.5" fill="none"/>
 </svg>`
   }
-  // Parallel: after the switch, two vertical branches each with one load.
+  // Parallel: vertical branches → resistors upright (längs zur Leitung).
   const cy = 82
+  const halfH = load === 'resistor' ? 20 : 16
+  const loadAt = (cx: number, y: number) =>
+    load === 'resistor' ? resistorGlyph(cx, y, 'vertical') : lampGlyph(cx, y)
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Parallelschaltung">
   <rect width="320" height="180" fill="#f8fafc"/>
   ${batteryOnRail(40, 90)}

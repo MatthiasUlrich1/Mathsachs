@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.95] – 2026-09-22
+
+### Geändert
+- **Parallelschaltung (8981):** Widerstands-Rechtecke stehen längs zur Leitung
+  (hochkant auf vertikalen Zweigen), nicht quer. Physik-Pack **2.5.23**.
+
 ## [0.27.94] – 2026-09-22
 
 ### Geändert
