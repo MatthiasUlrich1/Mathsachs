@@ -9,6 +9,18 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.90] – 2026-09-22
+
+### Geändert
+- **Freigaben:** Reibung (2021), Magnetische Kräfte (4779), Elektrostatik (7321).
+- **Magnet/Elektrostatik:** Antwort-Buttons nur noch große Pfeile (`→ ←` / `← →`), nicht
+  ausgeschrieben „Anziehen/Abstoßen“.
+- **K7 LB2 Stromkreis:** Stromstärke (8414) inkl. Ladung I=Q/t + Fachwissen; Spannung (9744);
+  Zusammenhang U/I ohne Ohm-Rechnung (7273); Ohmsches Gesetz (5904) mit mehr Varianten/Skizzen;
+  Reihe (1841) / Parallel (8981) mit klarer Gesamtwiderstand-Formel + Schaltbild;
+  Messen (1589) mit Lücken-Schaltbildern (A vs. V) und klarerer Zuordnung.
+  Physik-Pack **2.5.20**.
+
 ## [0.27.89] – 2026-09-22
 
 ### Behoben

@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "2.5.19",
-  "changelog": "Lochkamera-/Auge-SVG korrigiert; Farbfilter-Bilder nur passend; Dämmstoffe+Spektrum freigegeben.",
+  "version": "2.5.20",
+  "changelog": "K7 LB2 Stromkreis: Stromstärke/Spannung/Ohm/Reihe/Parallel/Messen mit Skizzen; Magnet/Elektrostatik Pfeil-Buttons; Reibung+Magnet+Elektrostatik freigegeben.",
   "official": [
     {
       "id": "physik-klasse-6",
@@ -557,7 +557,7 @@
               "title": "Reibung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Reibung"
@@ -568,7 +568,7 @@
               "title": "Magnetische Kräfte",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Magnet"
@@ -579,7 +579,7 @@
               "title": "Elektrostatische Kräfte",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Elektrostatik"
@@ -4008,5 +4008,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "b41ab051"
+  "contentHash": "d779405a"
 }

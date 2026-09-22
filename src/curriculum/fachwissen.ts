@@ -178,13 +178,58 @@ export function physikFachwissen(topic: TopicRef): Fachwissen {
       ...wiki('Temperatur', 'Temperatur'),
     }
   }
+  if (/stromstaerke|stromstärke i\b|lb2-stromstaerke/.test(lower)) {
+    return {
+      text:
+        'Elektrische Ladung Q (Einheit Coulomb, C) fließt durch Leiter. Die Stromstärke I ist Ladung pro Zeit: I = Q / t (Einheit Ampere, A). ' +
+        'Gemessen wird I mit dem Amperemeter in Reihe. Ohne geschlossenen Stromkreis fließt kein Strom (I = 0). ' +
+        'Aufgaben: Einheit, Formel I = Q/t, Messgerät — Ohmsches Gesetz gehört zum eigenen Thema.',
+      ...wiki('Elektrische_Stromstärke', 'Elektrische_Stromst%C3%A4rke'),
+    }
+  }
+  if (/lb2-spannung|spannung u\b/.test(lower) && !/stromstärke und spannung|lb2-strom\b|ohm|messen/.test(lower)) {
+    return {
+      text:
+        'Elektrische Spannung U treibt Ladungen durch den Stromkreis (Ursache für Strom). Einheit Volt (V). ' +
+        'Gemessen wird U mit dem Voltmeter parallel zum Bauteil. Oft gilt U = R · I. ' +
+        'Aufgaben: Einheit, Messgerät parallel, einfache U = R·I — ausführliche Ohm-Rechnungen im Thema Ohmsches Gesetz.',
+      ...wiki('Elektrische_Spannung', 'Elektrische_Spannung'),
+    }
+  }
+  if (/lb2-strom\b|stromstärke und spannung in stromkreisen/.test(lower) && !/stromstaerke|messen|ohm/.test(lower)) {
+    return {
+      text:
+        'Spannung U (V) treibt, Stromstärke I (A) fließt nur im geschlossenen Kreis. Qualitativ: bei gleichem Widerstand wird I größer, wenn U steigt. ' +
+        'Reihe vs. Parallel: gemeinsamer Weg bzw. eigene Zweige. ' +
+        'Zahlen mit R = U/I gehören zum Thema Ohmsches Gesetz — hier geht es um den Zusammenhang und den Stromkreis.',
+      ...wiki('Elektrischer_Stromkreis', 'Elektrischer_Stromkreis'),
+    }
+  }
+  if (/ohmsches gesetz|lb2-ohm/.test(lower)) {
+    return {
+      text:
+        'Ohmsches Gesetz: R = U / I (bzw. U = R · I, I = U / R). Einheiten: U in V, I in A, R in Ω. ' +
+        'Bei ohmschen Widerständen sind U und I proportional (Gerade durch den Ursprung). ' +
+        'Ablauf: Formel wählen → einsetzen → Einheit prüfen.',
+      ...wiki('Ohmsches_Gesetz', 'Ohmsches_Gesetz'),
+    }
+  }
+  if (/messen|amperemeter|voltmeter|lb2-messen/.test(lower)) {
+    return {
+      text:
+        'Amperemeter misst die Stromstärke und wird in Reihe in den Stromweg eingebaut. ' +
+        'Voltmeter misst die Spannung und wird parallel zum Bauteil geschaltet. ' +
+        'Amperemeter nie parallel zur Spannungsquelle (Kurzschlussgefahr).',
+      ...wiki('Amperemeter', 'Amperemeter'),
+    }
+  }
   if (/strom|elektr|spannung|widerstand|ohm|schalt|leiter|ladung|kurzschluss/.test(lower) && !/elektrostatik|elektrostatisch/.test(lower)) {
     return {
       text:
-        'Stromkreis: geschlossener Leiterweg + Spannungsquelle. Ohmsches Gesetz: R = U / I, also I = U / R, U = R · I. ' +
-        'Einheiten: U in V, I in A, R in Ω. ' +
-        'Reihe: gleicher Strom; Parallel: gleiche Spannung. Zuerst Formel wählen, Größen einsetzen, Einheit prüfen.',
-      ...wiki('Ohmsches_Gesetz', 'Ohmsches_Gesetz'),
+        'Stromkreis: geschlossener Leiterweg + Spannungsquelle. Spannung U (V) treibt, Stromstärke I (A) fließt. ' +
+        'Ladung: I = Q / t. Ohmsches Gesetz R = U / I gehört zum eigenen Thema. ' +
+        'Reihe: gleicher Strom; Parallel: gleiche Spannung. Messgeräte: A in Reihe, V parallel.',
+      ...wiki('Elektrischer_Strom', 'Elektrischer_Strom'),
     }
   }
   if (/elektrostatik|elektrostatisch/.test(lower)) {

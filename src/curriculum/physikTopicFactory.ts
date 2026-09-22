@@ -686,7 +686,9 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
         parallel || /parallel/.test(lower)
           ? ['1/R', '=', '1/R₁', '+', '1/R₂']
           : ['R', '=', 'R₁', '+', 'R₂'],
-        parallel || /parallel/.test(lower) ? 'den Parallelwiderstand' : 'den Reihenwiderstand',
+        parallel || /parallel/.test(lower)
+          ? 'den Gesamtwiderstand von parallel geschalteten Widerständen'
+          : 'den Gesamtwiderstand von in Reihe geschalteten Widerständen',
         parallel || /parallel/.test(lower) ? '1/R = 1/R₁ + 1/R₂' : 'R = R₁ + R₂',
         '· U',
       ),
@@ -843,11 +845,13 @@ function resolvePhysicsBank(topicId: string, title: string): PhysicsBank {
         },
       ],
       ...formulaSort(
-        ['A', '→', 'Reihe'],
-        'den Einbau des Amperemeters',
-        'Amperemeter → Reihe',
-        'Kurzschluss',
+        ['Amperemeter', '→', 'in Reihe'],
+        'den Einbau des Amperemeters (in Reihe)',
+        'Amperemeter → in Reihe',
+        'als Kurzschluss',
       ),
+      sortQuestion:
+        'Ordne: Amperemeter wird … geschaltet. Einen Block brauchst du nicht.',
     }
   }
 

@@ -551,6 +551,8 @@ interface ChoicePickTaskInput {
   solutionVisualContent?: string
   /** Optional instruction above the buttons. */
   instruction?: string
+  /** Larger symbol buttons (e.g. force attract/repel arrows). */
+  largeSymbols?: boolean
 }
 
 /** Multiple-choice via tappable buttons (A/B/C, Winkelart, Kongruenzsatz, …). */
@@ -569,6 +571,7 @@ export const choicePickTask = (input: ChoicePickTaskInput): Task => {
       props: {
         choices: input.choices,
         instruction: input.instruction ?? 'Wähle die richtige Antwort:',
+        ...(input.largeSymbols ? { largeSymbols: true } : {}),
       },
     },
     check: (answer: UserInput) => {

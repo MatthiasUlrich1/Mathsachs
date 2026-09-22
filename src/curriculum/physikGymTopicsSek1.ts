@@ -225,9 +225,11 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
             released: true,
           }),
           topic('ph-k7-lb1-feder', 'Federkraft und Hooke', ['Feder', 'Hooke'], { released: true }),
-          topic('ph-k7-lb1-reibung', 'Reibung', ['Reibung']),
-          topic('ph-k7-lb1-magnet', 'Magnetische Kräfte', ['Magnet']),
-          topic('ph-k7-lb1-elektrostatik', 'Elektrostatische Kräfte', ['Elektrostatik']),
+          topic('ph-k7-lb1-reibung', 'Reibung', ['Reibung'], { released: true }),
+          topic('ph-k7-lb1-magnet', 'Magnetische Kräfte', ['Magnet'], { released: true }),
+          topic('ph-k7-lb1-elektrostatik', 'Elektrostatische Kräfte', ['Elektrostatik'], {
+            released: true,
+          }),
         ]),
         area('lb2', 'Stromstärke und Spannung in Stromkreisen', 18, [
           topic('ph-k7-lb2-stromstaerke', 'Stromstärke I', ['Stromstärke', 'Ampere']),

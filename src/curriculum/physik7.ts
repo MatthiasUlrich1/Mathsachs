@@ -1,5 +1,13 @@
 import { pick, randInt, type Rng } from '../lib/rng'
-import { chargeForceSvg, frictionForceSvg, magnetPolesSvg } from '../lib/physikSvg'
+import {
+  chargeForceSvg,
+  circuitSvg,
+  frictionForceSvg,
+  magnetPolesSvg,
+  meterGapCircuitSvg,
+  meterWiredCircuitSvg,
+  seriesParallelSvg,
+} from '../lib/physikSvg'
 import {
   choicePickTask,
   dragDropSlotsTask,
@@ -367,8 +375,313 @@ const kraefte: Topic['generate'] = mixedVariants(
     }),
 )
 
-/** LB2 — Stromstärke und Spannung: Ohm, Reihe/Parallel, Einheiten */
+/** LB2 — Stromstärke I (ohne Ohmsches Gesetz) */
+const stromstaerke: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      {
+        q: 'In welcher Einheit wird die Stromstärke angegeben?',
+        correct: 'Ampere (A)',
+        wrong: ['Volt (V)', 'Ohm (Ω)', 'Watt (W)'],
+      },
+      {
+        q: 'Stromstärke beschreibt …',
+        correct: 'wie viel Ladung pro Zeit durch den Leiter fließt',
+        wrong: ['nur die Temperatur der Leitung', 'nur die Masse der Batterie', 'die Farbe der Isolierung'],
+      },
+      {
+        q: 'Womit misst man die Stromstärke?',
+        correct: 'mit dem Amperemeter (in Reihe)',
+        wrong: ['mit dem Voltmeter parallel als einzige Option', 'nur mit dem Lineal', 'nur mit der Waage'],
+      },
+      {
+        q: 'Ohne geschlossenen Stromkreis ist die Stromstärke …',
+        correct: 'null (kein Stromfluss)',
+        wrong: ['immer maximal', 'unendlich', 'gleich der Spannung in Volt'],
+      },
+      {
+        q: 'Welche Formel verbindet Stromstärke I, Ladung Q und Zeit t?',
+        correct: 'I = Q / t',
+        wrong: ['I = Q · t', 'I = t / Q', 'I = Q + t'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Stromstärke I in Ampere: I = Q/t. Messung mit Amperemeter in Reihe.',
+      instruction: 'Tippe die passende Aussage:',
+      visualContent: circuitSvg(true, 'Lampe'),
+    })
+  },
+  (rng) => {
+    const Q = pick(rng, [10, 12, 20, 24, 30])
+    const t = pick(rng, [2, 4, 5, 6, 10])
+    if (Q % t !== 0) {
+      const t2 = 2
+      const I = Q / t2
+      return valueTask({
+        question: `Durch einen Leiter fließt die Ladung Q = ${Q} C in t = ${t2} s. Berechne die Stromstärke I = Q/t.`,
+        answerKind: 'integer',
+        unit: 'A',
+        value: I,
+        solution: `${I} A`,
+        explanation: `I = ${Q}/${t2} = ${I} A.`,
+      })
+    }
+    const I = Q / t
+    return valueTask({
+      question: `Durch einen Leiter fließt die Ladung Q = ${Q} C in t = ${t} s. Berechne die Stromstärke I = Q/t.`,
+      answerKind: 'integer',
+      unit: 'A',
+      value: I,
+      solution: `${I} A`,
+      explanation: `I = ${Q}/${t} = ${I} A.`,
+    })
+  },
+  (_rng) =>
+    dragDropSlotsTask({
+      question: 'Baue die Formel für die Stromstärke. Einen Block brauchst du nicht.',
+      items: [
+        { label: 'I', value: 0 },
+        { label: '=', value: 1 },
+        { label: 'Q', value: 2 },
+        { label: '/', value: 3 },
+        { label: 't', value: 4 },
+        { label: '· U', value: 5 },
+      ],
+      correctSlots: [0, 1, 2, 3, 4],
+      solution: 'I = Q / t',
+      explanation: 'Stromstärke = Ladung geteilt durch Zeit.',
+    }),
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was gehört zur Stromstärke? (mehrere möglich)',
+      choices: [
+        'Einheit Ampere (A)',
+        'Formel I = Q / t',
+        'Messung mit Amperemeter',
+        'Einheit Volt (V)',
+        'Messung nur mit Voltmeter parallel',
+      ],
+      correct: ['Einheit Ampere (A)', 'Formel I = Q / t', 'Messung mit Amperemeter'],
+      solution: 'A, I = Q/t, Amperemeter.',
+      explanation: 'Volt ist die Einheit der Spannung.',
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+    }),
+)
+
+/** LB2 — Spannung U (ohne Ohmsches Gesetz) */
+const spannung: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      {
+        q: 'In welcher Einheit wird die elektrische Spannung angegeben?',
+        correct: 'Volt (V)',
+        wrong: ['Ampere (A)', 'Ohm (Ω)', 'Newton (N)'],
+      },
+      {
+        q: 'Spannung treibt …',
+        correct: 'Ladungen durch den Stromkreis (Ursache für Strom)',
+        wrong: ['nur die Masse der Leitung', 'nur die Farbe der Isolierung', 'die Temperatur auf 0 K'],
+      },
+      {
+        q: 'Womit misst man die Spannung?',
+        correct: 'mit dem Voltmeter (parallel zum Bauteil)',
+        wrong: ['nur mit dem Amperemeter in Reihe als Kurzschluss', 'nur mit dem Lineal', 'nur mit der Waage'],
+      },
+      {
+        q: 'An den Polen einer Batterie misst man …',
+        correct: 'die Quellenspannung (näherungsweise)',
+        wrong: ['nur die Masse in kg', 'nur den Kurzschlussstrom ohne Gerät', 'die Temperatur der Luft'],
+      },
+      {
+        q: 'Welche Formel gilt oft für die Spannung an einem Widerstand (Ohmsches Bild)?',
+        correct: 'U = R · I',
+        wrong: ['U = R / I', 'U = R + I', 'U = I / R'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Spannung U in Volt; Messung parallel mit Voltmeter.',
+      instruction: 'Tippe die passende Aussage:',
+      visualContent: circuitSvg(true, 'Lampe'),
+    })
+  },
+  (rng) => {
+    const R = pick(rng, [2, 3, 4, 5, 6])
+    const I = pick(rng, [2, 3, 4])
+    const U = R * I
+    return valueTask({
+      question: `An einem Widerstand gelten R = ${R} Ω und I = ${I} A. Berechne die Spannung U = R·I.`,
+      answerKind: 'integer',
+      unit: 'V',
+      value: U,
+      solution: `${U} V`,
+      explanation: `U = ${R}·${I} = ${U} V.`,
+    })
+  },
+  (_rng) =>
+    dragDropSlotsTask({
+      question: 'Baue die Formel für die Spannung U = R·I. Einen Block brauchst du nicht.',
+      items: [
+        { label: 'U', value: 0 },
+        { label: '=', value: 1 },
+        { label: 'R', value: 2 },
+        { label: '· I', value: 3 },
+        { label: '/ t', value: 4 },
+      ],
+      correctSlots: [0, 1, 2, 3],
+      solution: 'U = R · I',
+      explanation: 'Spannung = Widerstand mal Stromstärke.',
+      checkMode: 'commutativeFactors',
+    }),
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was gehört zur Spannung? (mehrere möglich)',
+      choices: [
+        'Einheit Volt (V)',
+        'Messung mit Voltmeter parallel',
+        'treibt Ladungen durch den Kreis',
+        'Einheit Ampere (A)',
+        'wird nur mit dem Amperemeter in Reihe gemessen',
+      ],
+      correct: [
+        'Einheit Volt (V)',
+        'Messung mit Voltmeter parallel',
+        'treibt Ladungen durch den Kreis',
+      ],
+      solution: 'V, Voltmeter parallel, treibt den Strom.',
+      explanation: 'Ampere ist die Einheit der Stromstärke.',
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+    }),
+)
+
+/** LB2 — Zusammenhang Stromstärke/Spannung in Kreisen (ohne Ohm-Rechnung) */
 const strom: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      {
+        q: 'Was braucht ein einfacher Stromkreis mindestens?',
+        correct: 'Spannungsquelle und geschlossenen Leiterweg',
+        wrong: ['nur eine Lampe ohne Batterie', 'nur Luft als Leiter', 'keinen Schalterweg je'],
+      },
+      {
+        q: 'Wenn die Spannung an einem ohmschen Verbraucher steigt (R gleich), wird die Stromstärke …',
+        correct: 'größer',
+        wrong: ['immer kleiner', 'immer null', 'unabhängig von U immer gleich'],
+      },
+      {
+        q: 'Stromstärke und Spannung sind …',
+        correct: 'verschiedene Größen (A bzw. V) mit unterschiedlichem Messgerät',
+        wrong: ['dieselbe Größe mit derselben Einheit', 'nur Temperaturen', 'nur Massen'],
+      },
+      {
+        q: 'Ein geöffneter Schalter bedeutet typischerweise …',
+        correct: 'kein Stromfluss (Kreis unterbrochen)',
+        wrong: ['doppelte Stromstärke', 'Kurzschluss immer', 'Spannung wird null an der Batterie immer'],
+      },
+      {
+        q: 'Was gilt qualitativ: höhere Spannung bei gleichem Widerstand → …',
+        correct: 'größere Stromstärke',
+        wrong: ['kleinere Stromstärke', 'keine Wirkung', 'nur mehr Masse'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation:
+        'Spannung treibt; Strom fließt im geschlossenen Kreis. Ohmsche Rechnungen gehören zum Thema Ohmsches Gesetz.',
+      instruction: 'Tippe die passende Aussage:',
+      visualContent: circuitSvg(pick(rng, [true, false]), 'Lampe'),
+    })
+  },
+  (rng) => {
+    const closed = pick(rng, [true, false])
+    const correct = closed ? 'Strom kann fließen (Kreis geschlossen)' : 'kein Strom (Kreis offen)'
+    return choicePickTask({
+      question: 'Was gilt für den gezeigten Stromkreis?',
+      choices: shuffleChoices(
+        rng,
+        [
+          correct,
+          closed ? 'kein Strom (Kreis offen)' : 'Strom kann fließen (Kreis geschlossen)',
+          'nur Magnetkraft ohne Batterie',
+          'Spannung ist immer null',
+        ],
+        correct,
+      ),
+      correct,
+      solution: correct,
+      explanation: closed
+        ? 'Geschlossener Schalter → Leiterweg durchgängig → Strom möglich.'
+        : 'Offener Schalter → Unterbrechung → kein Strom.',
+      instruction: 'Tippe die passende Aussage:',
+      visualContent: circuitSvg(closed, 'Lampe'),
+    })
+  },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Welche Aussagen zu Stromkreisen stimmen? (mehrere möglich)',
+      choices: [
+        'Stromstärke wird in Ampere gemessen',
+        'Spannung wird in Volt gemessen',
+        'Ohne geschlossenen Stromkreis fließt kein Strom',
+        'Widerstand wird in Ampere gemessen',
+        'Spannung und Stromstärke sind dieselbe Größe',
+      ],
+      correct: [
+        'Stromstärke wird in Ampere gemessen',
+        'Spannung wird in Volt gemessen',
+        'Ohne geschlossenen Stromkreis fließt kein Strom',
+      ],
+      solution: 'A und V; geschlossener Kreis nötig.',
+      explanation: 'Widerstand hat die Einheit Ohm — und Ohm-Rechnungen gehören zum Thema Ohmsches Gesetz.',
+      instruction: 'Tippe alle richtigen Aussagen:',
+    }),
+  (rng) => {
+    const kind = pick(rng, ['series', 'parallel'] as const)
+    const correct =
+      kind === 'series'
+        ? 'Reihenschaltung (gemeinsamer Stromweg)'
+        : 'Parallelschaltung (eigene Zweige)'
+    return choicePickTask({
+      question: 'Welche Schaltungsart zeigt die Skizze?',
+      choices: shuffleChoices(
+        rng,
+        [
+          correct,
+          kind === 'series'
+            ? 'Parallelschaltung (eigene Zweige)'
+            : 'Reihenschaltung (gemeinsamer Stromweg)',
+          'nur Kurzschluss ohne Lampen',
+          'kein Stromkreis',
+        ],
+        correct,
+      ),
+      correct,
+      solution: correct,
+      explanation:
+        kind === 'series'
+          ? 'Ein Weg durch beide Lampen hintereinander = Reihe.'
+          : 'Jeder Zweig für sich = Parallel.',
+      instruction: 'Tippe die Schaltungsart:',
+      visualContent: seriesParallelSvg(kind),
+    })
+  },
+)
+
+/** LB2 — Ohmsches Gesetz */
+const ohm: Topic['generate'] = mixedVariants(
   (rng) => {
     const pairs = [
       { U: 12, R: 4 },
@@ -381,42 +694,227 @@ const strom: Topic['generate'] = mixedVariants(
     const { U, R } = pick(rng, [...pairs])
     const I = U / R
     return valueTask({
-      question: `An einem Widerstand liegen U = ${U} V und R = ${R} Ω. Berechne die Stromstärke.`,
+      question: `An einem ohmschen Widerstand liegen U = ${U} V und R = ${R} Ω. Berechne die Stromstärke I = U/R.`,
       answerKind: 'integer',
       unit: 'A',
       value: I,
       solution: `${I} A`,
       explanation: `I = U / R = ${U} / ${R} = ${I} A.`,
+      visualContent: circuitSvg(true, 'Lampe'),
+    })
+  },
+  (rng) => {
+    const I = pick(rng, [2, 3, 4, 5])
+    const R = pick(rng, [2, 3, 4, 5, 6])
+    const U = I * R
+    return valueTask({
+      question: `I = ${I} A, R = ${R} Ω. Berechne die Spannung U = R·I.`,
+      answerKind: 'integer',
+      unit: 'V',
+      value: U,
+      solution: `${U} V`,
+      explanation: `U = ${R}·${I} = ${U} V.`,
+    })
+  },
+  (rng) => {
+    const pairs = [
+      [6, 2],
+      [9, 3],
+      [12, 2],
+      [12, 3],
+      [12, 4],
+      [15, 3],
+      [15, 5],
+    ] as const
+    const [U, I] = pick(rng, [...pairs])
+    const R = U / I
+    return valueTask({
+      question: `U = ${U} V, I = ${I} A. Berechne den Widerstand R = U/I.`,
+      answerKind: 'integer',
+      unit: 'Ω',
+      value: R,
+      solution: `${R} Ω`,
+      explanation: `R = ${U}/${I} = ${R} Ω.`,
+    })
+  },
+  (_rng) =>
+    dragDropSlotsTask({
+      question: 'Baue das Ohmsche Gesetz R = U/I. Einen Block brauchst du nicht.',
+      items: [
+        { label: 'R', value: 0 },
+        { label: '=', value: 1 },
+        { label: 'U', value: 2 },
+        { label: '/', value: 3 },
+        { label: 'I', value: 4 },
+        { label: '· t', value: 5 },
+      ],
+      correctSlots: [0, 1, 2, 3, 4],
+      solution: 'R = U / I',
+      explanation: 'Widerstand = Spannung geteilt durch Stromstärke.',
+    }),
+  (rng) => {
+    const cases = [
+      {
+        q: 'Was gilt für einen ohmschen Widerstand (Kennlinie)?',
+        correct: 'U und I sind proportional (Gerade durch Ursprung)',
+        wrong: ['U und I sind unabhängig', 'I ist immer null', 'nur Magnetkraft zählt'],
+      },
+      {
+        q: 'Einheit des elektrischen Widerstands?',
+        correct: 'Ohm (Ω)',
+        wrong: ['Ampere (A)', 'Volt (V)', 'Newton (N)'],
+      },
+      {
+        q: 'Ohmsches Gesetz lautet …',
+        correct: 'R = U / I (bzw. U = R·I)',
+        wrong: ['R = U · I', 'R = I / U ohne Bezug', 'R = U + I'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Ohmsches Gesetz: R = U/I, Einheit Ohm.',
+      instruction: 'Tippe die passende Aussage:',
+      visualContent: circuitSvg(true, 'Lampe'),
+    })
+  },
+)
+
+/** LB2 — Reihenschaltung */
+const reihe: Topic['generate'] = mixedVariants(
+  (_rng) =>
+    dragDropSlotsTask({
+      question:
+        'Baue eine Formel für den Gesamtwiderstand von in Reihe geschalteten Widerständen! Einen Block brauchst du nicht.',
+      items: [
+        { label: 'R', value: 0 },
+        { label: '=', value: 1 },
+        { label: 'R₁', value: 2 },
+        { label: '+', value: 3 },
+        { label: 'R₂', value: 4 },
+        { label: '· U', value: 5 },
+      ],
+      correctSlots: [0, 1, 2, 3, 4],
+      solution: 'R = R₁ + R₂',
+      explanation: 'In Reihe addieren sich die Widerstände.',
+      visualContent: seriesParallelSvg('series'),
+    }),
+  (rng) => {
+    const r1 = pick(rng, [2, 3, 4, 5, 6])
+    const r2 = pick(rng, [2, 3, 4, 5, 6])
+    const r = r1 + r2
+    return valueTask({
+      question: `Zwei Widerstände in Reihe: R₁ = ${r1} Ω, R₂ = ${r2} Ω. Berechne den Gesamtwiderstand.`,
+      answerKind: 'integer',
+      unit: 'Ω',
+      value: r,
+      solution: `${r} Ω`,
+      explanation: `R = R₁ + R₂ = ${r1} + ${r2} = ${r} Ω.`,
+      visualContent: seriesParallelSvg('series'),
     })
   },
   (rng) => {
     const cases = [
       {
-        q: 'In welcher Einheit wird die Stromstärke angegeben?',
-        correct: 'Ampere (A)',
-        wrong: ['Volt (V)', 'Ohm (Ω)', 'Watt (W)'],
+        q: 'In einer Reihenschaltung ist der Strom …',
+        correct: 'überall gleich groß',
+        wrong: ['an jedem Widerstand anders', 'immer null', 'nur an der Batterie messbar'],
       },
       {
-        q: 'In welcher Einheit wird die elektrische Spannung angegeben?',
-        correct: 'Volt (V)',
-        wrong: ['Ampere (A)', 'Ohm (Ω)', 'Newton (N)'],
+        q: 'Zwei gleiche Lampen in Reihe: eine fällt aus (Unterbrechung). Was passiert?',
+        correct: 'Beide Lampen gehen aus',
+        wrong: ['Nur die andere leuchtet weiter', 'Der Strom verdoppelt sich', 'Die Batterie wird zum Isolator'],
       },
       {
-        q: 'Was gilt näherungsweise für zwei gleiche Lampen in Reihe (eine Spannungsquelle)?',
-        correct: 'Beide Lampen leuchten schwächer als einzeln',
+        q: 'Woran erkennst du eine Reihenschaltung zweier Lampen?',
+        correct: 'Der Strom muss nacheinander durch beide',
+        wrong: ['Jede Lampe hat einen eigenen Zweig', 'Es gibt keinen gemeinsamen Weg', 'Lampen brauchen keine Drähte'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Reihe: ein Stromweg, Widerstände addieren sich.',
+      instruction: 'Tippe die passende Aussage:',
+      visualContent: seriesParallelSvg('series'),
+    })
+  },
+  (rng) => {
+    const correct = 'Reihenschaltung'
+    return choicePickTask({
+      question: 'Welche Schaltung zeigt die Skizze?',
+      choices: shuffleChoices(rng, [correct, 'Parallelschaltung', 'Kurzschluss ohne Lampen', 'kein Kreis'], correct),
+      correct,
+      solution: correct,
+      explanation: 'Gemeinsamer Weg durch beide Lampen = Reihe.',
+      instruction: 'Tippe die Schaltungsart:',
+      visualContent: seriesParallelSvg('series'),
+    })
+  },
+)
+
+/** LB2 — Parallelschaltung */
+const parallel: Topic['generate'] = mixedVariants(
+  (_rng) =>
+    dragDropSlotsTask({
+      question:
+        'Baue eine Formel für den Gesamtwiderstand von parallel geschalteten Widerständen! Einen Block brauchst du nicht.',
+      items: [
+        { label: '1/R', value: 0 },
+        { label: '=', value: 1 },
+        { label: '1/R₁', value: 2 },
+        { label: '+', value: 3 },
+        { label: '1/R₂', value: 4 },
+        { label: '· U', value: 5 },
+      ],
+      correctSlots: [0, 1, 2, 3, 4],
+      solution: '1/R = 1/R₁ + 1/R₂',
+      explanation: 'Parallel: Kehrwerte der Widerstände addieren.',
+      visualContent: seriesParallelSvg('parallel'),
+    }),
+  (rng) => {
+    const pairs = [
+      [2, 2, 1],
+      [3, 6, 2],
+      [4, 4, 2],
+      [6, 3, 2],
+    ] as const
+    const [a, b, req] = pick(rng, [...pairs])
+    return valueTask({
+      question: `Zwei Widerstände parallel: R₁ = ${a} Ω, R₂ = ${b} Ω. Gesamtwiderstand?`,
+      answerKind: 'integer',
+      unit: 'Ω',
+      value: req,
+      solution: `${req} Ω`,
+      explanation: `1/R = 1/${a} + 1/${b} → R = ${req} Ω.`,
+      visualContent: seriesParallelSvg('parallel'),
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'In einer Parallelschaltung ist die Spannung an den Zweigen …',
+        correct: 'näherungsweise gleich groß',
+        wrong: ['immer null', 'nur am ersten Zweig', 'immer völlig verschieden ohne Quelle'],
+      },
+      {
+        q: 'Zwei gleiche Lampen parallel: eine fällt aus. Was passiert typischerweise?',
+        correct: 'Die andere Lampe kann weiter leuchten',
+        wrong: ['Beide müssen ausgehen', 'Die Spannung wird immer null', 'Es gibt keinen Strom mehr'],
+      },
+      {
+        q: 'Woran erkennst du eine Parallelschaltung zweier Lampen?',
+        correct: 'Jede Lampe hat einen eigenen Zweig',
         wrong: [
-          'Beide Lampen leuchten heller als einzeln',
-          'Nur eine Lampe kann leuchten',
-          'Die Spannung verdoppelt sich an jeder Lampe',
-        ],
-      },
-      {
-        q: 'Was gilt für zwei gleiche Lampen parallel (eine Spannungsquelle)?',
-        correct: 'Beide Lampen leuchten etwa so hell wie eine allein',
-        wrong: [
-          'Beide Lampen bleiben immer dunkel',
-          'Die Spannung an beiden ist null',
-          'Strom fließt nur durch eine Lampe',
+          'Der Strom muss nacheinander durch beide',
+          'Es gibt nur einen Weg ohne Verzweigung',
+          'Lampen dürfen keine Drähte haben',
         ],
       },
     ] as const
@@ -426,31 +924,156 @@ const strom: Topic['generate'] = mixedVariants(
       choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
       correct: c.correct,
       solution: c.correct,
+      explanation: 'Parallel: eigene Zweige, gleiche Spannung, 1/R = 1/R₁ + 1/R₂.',
+      instruction: 'Tippe die passende Aussage:',
+      visualContent: seriesParallelSvg('parallel'),
+    })
+  },
+  (rng) => {
+    const correct = 'Parallelschaltung'
+    return choicePickTask({
+      question: 'Welche Schaltung zeigt die Skizze?',
+      choices: shuffleChoices(rng, [correct, 'Reihenschaltung', 'Kurzschluss ohne Lampen', 'kein Kreis'], correct),
+      correct,
+      solution: correct,
+      explanation: 'Eigene Zweige für jede Lampe = Parallel.',
+      instruction: 'Tippe die Schaltungsart:',
+      visualContent: seriesParallelSvg('parallel'),
+    })
+  },
+)
+
+/** LB2 — Strom und Spannung messen */
+const messen: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const series = pick(rng, [true, false])
+    const correct = series ? 'Amperemeter (A)' : 'Voltmeter (V)'
+    return choicePickTask({
+      question: series
+        ? 'In die gelbe Lücke im Stromweg gehört welches Messgerät?'
+        : 'In die gelbe Lücke parallel zur Lampe gehört welches Messgerät?',
+      choices: shuffleChoices(rng, ['Amperemeter (A)', 'Voltmeter (V)', 'kein Messgerät', 'nur ein Schalter'], correct),
+      correct,
+      solution: correct,
+      explanation: series
+        ? 'Lücke im Stromweg (Reihe) → Amperemeter.'
+        : 'Lücke parallel zum Bauteil → Voltmeter.',
+      instruction: 'Tippe das passende Messgerät:',
+      visualContent: meterGapCircuitSvg({ mode: series ? 'seriesGap' : 'parallelGap' }),
+    })
+  },
+  (rng) => {
+    const meter = pick(rng, ['A', 'V'] as const)
+    const correct =
+      meter === 'A'
+        ? 'Amperemeter misst die Stromstärke (in Reihe)'
+        : 'Voltmeter misst die Spannung (parallel)'
+    return choicePickTask({
+      question: 'Was zeigt die Skizze richtig?',
+      choices: shuffleChoices(
+        rng,
+        [
+          correct,
+          meter === 'A'
+            ? 'Voltmeter misst die Spannung (parallel)'
+            : 'Amperemeter misst die Stromstärke (in Reihe)',
+          'Messgeräte brauchen keinen Anschluss',
+          'A und V sind immer parallel und in Reihe zugleich',
+        ],
+        correct,
+      ),
+      correct,
+      solution: correct,
       explanation:
-        'Stromstärke in Ampere, Spannung in Volt. In Reihe teilen sich die Lampen die Spannung; parallel liegen sie an (nahezu) gleicher Spannung.',
-      instruction: 'Tippe die richtige Aussage:',
+        meter === 'A'
+          ? 'Amperemeter: Kreisstrom, Einbau in Reihe.'
+          : 'Voltmeter: Spannungsabfall, Einbau parallel.',
+      instruction: 'Tippe die passende Aussage:',
+      visualContent: meterWiredCircuitSvg({ meter }),
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Amperemeter wird typischerweise … geschaltet.',
+        correct: 'in Reihe in den Stromkreis',
+        wrong: ['nur parallel zur Batterie als Kurzschluss', 'ohne Leiter', 'nur an Isolatoren'],
+      },
+      {
+        q: 'Voltmeter wird typischerweise … geschaltet.',
+        correct: 'parallel zum Bauteil',
+        wrong: ['immer in Reihe als Kurzschluss', 'ohne Anschlüsse', 'nur an den Isolator'],
+      },
+      {
+        q: 'Was misst das Amperemeter?',
+        correct: 'die Stromstärke',
+        wrong: ['die Spannung', 'die Masse', 'die Temperatur'],
+      },
+      {
+        q: 'Was misst das Voltmeter?',
+        correct: 'die Spannung',
+        wrong: ['die Stromstärke', 'die Masse', 'nur den Widerstand ohne Spannung'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'A in Reihe (Strom), V parallel (Spannung).',
+      instruction: 'Tippe die passende Aussage:',
     })
   },
   (_rng) =>
+    dragDropSlotsTask({
+      question:
+        'Ordne: Amperemeter wird … geschaltet. Einen Block brauchst du nicht.',
+      items: [
+        { label: 'Amperemeter', value: 0 },
+        { label: '→', value: 1 },
+        { label: 'in Reihe', value: 2 },
+        { label: 'als Kurzschluss', value: 3 },
+      ],
+      correctSlots: [0, 1, 2],
+      solution: 'Amperemeter → in Reihe',
+      explanation: 'Amperemeter immer in den Stromweg (Reihe), nie als Kurzschluss parallel zur Quelle.',
+      visualContent: meterWiredCircuitSvg({ meter: 'A' }),
+    }),
+  (_rng) =>
+    dragDropSlotsTask({
+      question:
+        'Ordne: Voltmeter wird … geschaltet. Einen Block brauchst du nicht.',
+      items: [
+        { label: 'Voltmeter', value: 0 },
+        { label: '→', value: 1 },
+        { label: 'parallel', value: 2 },
+        { label: 'als Kurzschluss', value: 3 },
+      ],
+      correctSlots: [0, 1, 2],
+      solution: 'Voltmeter → parallel',
+      explanation: 'Voltmeter parallel zum Bauteil, an dem U gemessen werden soll.',
+      visualContent: meterWiredCircuitSvg({ meter: 'V' }),
+    }),
+  (_rng) =>
     multiSelectTask({
-      question: 'Welche Aussagen zu Stromkreisen stimmen? (mehrere möglich)',
+      question: 'Was gilt beim Messen? (mehrere möglich)',
       choices: [
-        'I = U / R (Ohmsches Gesetz)',
-        'Stromstärke wird in Ampere gemessen',
-        'Spannung wird in Volt gemessen',
-        'Widerstand wird in Ampere gemessen',
-        'Ohne geschlossenen Stromkreis fließt kein Strom',
+        'Amperemeter in Reihe',
+        'Voltmeter parallel',
+        'Amperemeter parallel zur Batterie als Kurzschluss',
+        'Voltmeter misst Spannung',
+        'Amperemeter misst Stromstärke',
       ],
       correct: [
-        'I = U / R (Ohmsches Gesetz)',
-        'Stromstärke wird in Ampere gemessen',
-        'Spannung wird in Volt gemessen',
-        'Ohne geschlossenen Stromkreis fließt kein Strom',
+        'Amperemeter in Reihe',
+        'Voltmeter parallel',
+        'Voltmeter misst Spannung',
+        'Amperemeter misst Stromstärke',
       ],
-      solution: 'Ohmsches Gesetz; A und V als Einheiten; geschlossener Stromkreis nötig.',
-      explanation:
-        'Falsch ist „Widerstand in Ampere“ — der Widerstand hat die Einheit Ohm (Ω).',
-      instruction: 'Tippe alle richtigen Aussagen:',
+      solution: 'A Reihe/Strom, V parallel/Spannung — nie A als Kurzschluss.',
+      explanation: 'Falsch ist Amperemeter parallel zur Quelle (Kurzschlussgefahr).',
+      instruction: 'Tippe alle zutreffenden Aussagen:',
     }),
 )
 
@@ -865,8 +1488,8 @@ const reibung: Topic['generate'] = mixedVariants(
     }),
 )
 
-const ATTRACT_BTN = 'Pfeile aufeinander zu (Anziehen)'
-const REPEL_BTN = 'Pfeile voneinander weg (Abstoßen)'
+const ATTRACT_ARROW = '→ ←'
+const REPEL_ARROW = '← →'
 
 /** LB1 — Magnetische Kräfte */
 const magnet: Topic['generate'] = mixedVariants(
@@ -875,21 +1498,18 @@ const magnet: Topic['generate'] = mixedVariants(
     const same = pick(rng, [true, false])
     const right = same ? left : left === 'N' ? 'S' : 'N'
     const attract = !same
-    const correct = attract ? ATTRACT_BTN : REPEL_BTN
+    const correct = attract ? ATTRACT_ARROW : REPEL_ARROW
     return choicePickTask({
       question: `Was passiert zwischen den gezeigten Magnetpolen (${left} und ${right})?`,
-      choices: shuffleChoices(
-        rng,
-        [correct, attract ? REPEL_BTN : ATTRACT_BTN, 'es wirkt keine Kraft', 'nur Wärme ohne Kraft'],
-        correct,
-      ),
+      choices: shuffleChoices(rng, [ATTRACT_ARROW, REPEL_ARROW], correct),
       correct,
-      solution: correct,
+      solution: attract ? 'Anziehen (→ ←)' : 'Abstoßen (← →)',
       explanation: attract
-        ? 'Ungleichnamige Pole (N–S) ziehen sich an — Kräfte zeigen aufeinander zu.'
-        : 'Gleichnamige Pole (N–N oder S–S) stoßen sich ab — Kräfte zeigen voneinander weg.',
-      instruction: 'Tippe die passende Wirkung:',
+        ? 'Ungleichnamige Pole ziehen sich an — Pfeile aufeinander zu.'
+        : 'Gleichnamige Pole stoßen sich ab — Pfeile voneinander weg.',
+      instruction: 'Tippe die Wirkung (Pfeile):',
       visualContent: magnetPolesSvg({ left, right }),
+      largeSymbols: true,
     })
   },
   (rng) => {
@@ -913,11 +1533,6 @@ const magnet: Topic['generate'] = mixedVariants(
         q: 'Ein Magnet hat typischerweise …',
         correct: 'einen Nord- und einen Südpol',
         wrong: ['nur einen Pol', 'keine Pole', 'nur elektrische Ladung'],
-      },
-      {
-        q: 'Eisenfeilspäne ordnen sich im Magnetfeld …',
-        correct: 'entlang der Feldlinien',
-        wrong: ['zufällig ohne Muster', 'nur als Kreis ohne Pole', 'nur vertikal nach oben'],
       },
     ] as const
     const c = pick(rng, [...cases])
@@ -966,16 +1581,13 @@ const magnet: Topic['generate'] = mixedVariants(
     const right = left
     return choicePickTask({
       question: `Gleichnamige Pole (${left} und ${right}): Welche Wirkung?`,
-      choices: shuffleChoices(
-        rng,
-        [REPEL_BTN, ATTRACT_BTN, 'es wirkt keine Kraft', 'nur Wärme ohne Kraft'],
-        REPEL_BTN,
-      ),
-      correct: REPEL_BTN,
-      solution: REPEL_BTN,
-      explanation: 'Gleichnamige Pole stoßen sich ab — Kräfte voneinander weg.',
-      instruction: 'Tippe die passende Wirkung:',
+      choices: shuffleChoices(rng, [ATTRACT_ARROW, REPEL_ARROW], REPEL_ARROW),
+      correct: REPEL_ARROW,
+      solution: 'Abstoßen (← →)',
+      explanation: 'Gleichnamige Pole stoßen sich ab — Pfeile voneinander weg.',
+      instruction: 'Tippe die Wirkung (Pfeile):',
       visualContent: magnetPolesSvg({ left, right }),
+      largeSymbols: true,
     })
   },
 )
@@ -987,21 +1599,18 @@ const elektrostatik: Topic['generate'] = mixedVariants(
     const same = pick(rng, [true, false])
     const right = same ? left : left === '+' ? '−' : '+'
     const attract = !same
-    const correct = attract ? ATTRACT_BTN : REPEL_BTN
+    const correct = attract ? ATTRACT_ARROW : REPEL_ARROW
     return choicePickTask({
       question: `Was passiert zwischen den gezeigten Ladungen (${left} und ${right})?`,
-      choices: shuffleChoices(
-        rng,
-        [correct, attract ? REPEL_BTN : ATTRACT_BTN, 'Ladungen wirken nie', 'nur Schall ohne Kraft'],
-        correct,
-      ),
+      choices: shuffleChoices(rng, [ATTRACT_ARROW, REPEL_ARROW], correct),
       correct,
-      solution: correct,
+      solution: attract ? 'Anziehen (→ ←)' : 'Abstoßen (← →)',
       explanation: attract
-        ? 'Ungleichnamige Ladungen (+ und −) ziehen sich an — aufeinander zu.'
-        : 'Gleichnamige Ladungen stoßen sich ab — voneinander weg.',
-      instruction: 'Tippe die passende Wirkung:',
+        ? 'Ungleichnamige Ladungen ziehen sich an — Pfeile aufeinander zu.'
+        : 'Gleichnamige Ladungen stoßen sich ab — Pfeile voneinander weg.',
+      instruction: 'Tippe die Wirkung (Pfeile):',
       visualContent: chargeForceSvg({ left, right }),
+      largeSymbols: true,
     })
   },
   (rng) => {
@@ -1020,11 +1629,6 @@ const elektrostatik: Topic['generate'] = mixedVariants(
         q: 'Reibungselektrizität entsteht z. B. durch …',
         correct: 'Reiben geeigneter Stoffe (Ladungstrennung)',
         wrong: ['nur durch Kurzschluss', 'nur durch Schmelzen', 'nur durch Schall'],
-      },
-      {
-        q: 'Ein Neutralisieren bedeutet qualitativ …',
-        correct: 'positive und negative Ladungen gleichen sich aus',
-        wrong: ['Masse verschwindet', 'nur Magnetpole entstehen', 'Temperatur wird immer 0 K'],
       },
       {
         q: 'Welche Aussage zur Elektrostatik stimmt?',
@@ -1078,16 +1682,13 @@ const elektrostatik: Topic['generate'] = mixedVariants(
     const right = left
     return choicePickTask({
       question: `Gleichnamige Ladungen (${left} und ${right}): Welche Wirkung?`,
-      choices: shuffleChoices(
-        rng,
-        [REPEL_BTN, ATTRACT_BTN, 'Ladungen wirken nie', 'nur Magnetkraft ohne Ladung'],
-        REPEL_BTN,
-      ),
-      correct: REPEL_BTN,
-      solution: REPEL_BTN,
-      explanation: 'Gleichnamige Ladungen stoßen sich ab — voneinander weg.',
-      instruction: 'Tippe die passende Wirkung:',
+      choices: shuffleChoices(rng, [ATTRACT_ARROW, REPEL_ARROW], REPEL_ARROW),
+      correct: REPEL_ARROW,
+      solution: 'Abstoßen (← →)',
+      explanation: 'Gleichnamige Ladungen stoßen sich ab — Pfeile voneinander weg.',
+      instruction: 'Tippe die Wirkung (Pfeile):',
       visualContent: chargeForceSvg({ left, right }),
+      largeSymbols: true,
     })
   },
 )
@@ -1099,7 +1700,13 @@ export const PHYSIK_K7_GENERATORS: Record<string, Topic['generate']> = {
   'ph-k7-lb1-reibung': reibung,
   'ph-k7-lb1-magnet': magnet,
   'ph-k7-lb1-elektrostatik': elektrostatik,
+  'ph-k7-lb2-stromstaerke': stromstaerke,
+  'ph-k7-lb2-spannung': spannung,
   'ph-k7-lb2-strom': strom,
+  'ph-k7-lb2-ohm': ohm,
+  'ph-k7-lb2-reihe': reihe,
+  'ph-k7-lb2-parallel': parallel,
+  'ph-k7-lb2-messen': messen,
   'ph-k7-lb3-energie': energie,
   'ph-k7-lbw-kraftwandler': kraftwandler,
   'ph-k7-lbw-hebel': kraftwandler,

@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.19',
+    version: '2.5.20',
     changelog:
-      'Lochkamera-/Auge-SVG korrigiert; Farbfilter-Bilder nur passend; Dämmstoffe+Spektrum freigegeben.',
+      'K7 LB2 Stromkreis: Stromstärke/Spannung/Ohm/Reihe/Parallel/Messen mit Skizzen; Magnet/Elektrostatik Pfeil-Buttons; Reibung+Magnet+Elektrostatik freigegeben.',
     official,
     extras: [],
   }

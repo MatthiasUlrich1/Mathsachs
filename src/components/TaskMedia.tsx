@@ -239,6 +239,7 @@ export function TaskInteractive({
           value={value.kind === 'choicePick' ? value.choice || null : null}
           onChange={(choice) => onChange({ kind: 'choicePick', choice })}
           instruction={interactive.props.instruction}
+          largeSymbols={Boolean(interactive.props.largeSymbols)}
           disabled={disabled}
         />
       )}

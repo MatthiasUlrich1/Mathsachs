@@ -865,3 +865,66 @@ export function frictionForceSvg(opts: {
 </svg>`
 }
 
+/**
+ * Unvollständiger Stromkreis: Lücke für Messgerät (Schüler wählt A oder V).
+ * seriesGap: Messgerät in Reihe (Amperemeter). parallelGap: parallel zur Lampe (Voltmeter).
+ */
+export function meterGapCircuitSvg(opts: {
+  mode: 'seriesGap' | 'parallelGap'
+}): string {
+  if (opts.mode === 'seriesGap') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 160" width="340" height="160" role="img" aria-label="Stromkreis mit Messlücke in Reihe">
+  <rect width="340" height="160" fill="#f8fafc"/>
+  ${batteryOnRail(40, 80)}
+  <path d="M40 52 V36 H100" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <circle cx="100" cy="36" r="3.5" fill="#334155"/>
+  <rect x="118" y="18" width="56" height="36" rx="6" fill="#fef9c3" stroke="#ca8a04" stroke-width="2" stroke-dasharray="5 3"/>
+  <text x="146" y="42" text-anchor="middle" fill="#854d0e" font-size="18" font-family="system-ui,sans-serif" font-weight="700">?</text>
+  <circle cx="192" cy="36" r="3.5" fill="#334155"/>
+  <path d="M192 36 H230" stroke="#334155" stroke-width="2.5" fill="none"/>
+  ${lampGlyph(246, 36)}
+  <path d="M262 36 H300 V124 H40 V108" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <text x="170" y="150" text-anchor="middle" fill="#64748b" font-size="12" font-family="system-ui,sans-serif">Lücke im Stromweg (Reihe)</text>
+</svg>`
+  }
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 180" width="340" height="180" role="img" aria-label="Stromkreis mit Messlücke parallel">
+  <rect width="340" height="180" fill="#f8fafc"/>
+  ${batteryOnRail(40, 90)}
+  <path d="M40 62 V40 H200" stroke="#334155" stroke-width="2.5" fill="none"/>
+  ${lampGlyph(216, 40)}
+  <path d="M232 40 H300 V140 H40 V118" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <path d="M180 40 V70" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <rect x="152" y="70" width="56" height="36" rx="6" fill="#fef9c3" stroke="#ca8a04" stroke-width="2" stroke-dasharray="5 3"/>
+  <text x="180" y="94" text-anchor="middle" fill="#854d0e" font-size="18" font-family="system-ui,sans-serif" font-weight="700">?</text>
+  <path d="M180 106 V140" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <text x="170" y="168" text-anchor="middle" fill="#64748b" font-size="12" font-family="system-ui,sans-serif">Lücke parallel zur Lampe</text>
+</svg>`
+}
+
+/** Einfacher Stromkreis mit eingebautem Amperemeter (Reihe) oder Voltmeter (parallel). */
+export function meterWiredCircuitSvg(opts: { meter: 'A' | 'V' }): string {
+  if (opts.meter === 'A') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 160" width="340" height="160" role="img" aria-label="Amperemeter in Reihe">
+  <rect width="340" height="160" fill="#f8fafc"/>
+  ${batteryOnRail(40, 80)}
+  <path d="M40 52 V36 H100" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <circle cx="130" cy="36" r="18" fill="#ecfdf5" stroke="#334155" stroke-width="2.5"/>
+  <text x="130" y="42" text-anchor="middle" fill="#065f46" font-size="16" font-family="system-ui,sans-serif" font-weight="700">A</text>
+  <path d="M148 36 H210" stroke="#334155" stroke-width="2.5" fill="none"/>
+  ${lampGlyph(226, 36)}
+  <path d="M242 36 H300 V124 H40 V108" stroke="#334155" stroke-width="2.5" fill="none"/>
+</svg>`
+  }
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 180" width="340" height="180" role="img" aria-label="Voltmeter parallel">
+  <rect width="340" height="180" fill="#f8fafc"/>
+  ${batteryOnRail(40, 90)}
+  <path d="M40 62 V40 H200" stroke="#334155" stroke-width="2.5" fill="none"/>
+  ${lampGlyph(216, 40)}
+  <path d="M232 40 H300 V140 H40 V118" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <path d="M180 40 V62" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <circle cx="180" cy="88" r="18" fill="#f5f3ff" stroke="#334155" stroke-width="2.5"/>
+  <text x="180" y="94" text-anchor="middle" fill="#5b21b6" font-size="16" font-family="system-ui,sans-serif" font-weight="700">V</text>
+  <path d="M180 106 V140" stroke="#334155" stroke-width="2.5" fill="none"/>
+</svg>`
+}
+
