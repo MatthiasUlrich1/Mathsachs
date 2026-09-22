@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.27.102] – 2026-09-22
+
+### Behoben
+- **Build:** TypeScript-Fehler in `dragDropSlots.test.ts` (Slots-Indizes), der Web- und
+  Desktop-Release von 0.27.101 blockiert hat. Physik-Pack **2.5.29**.
+
 ## [0.27.101] – 2026-09-22
 
 ### Behoben

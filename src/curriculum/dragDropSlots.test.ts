@@ -11,7 +11,10 @@ function presentedSlots(task: Task): number[] {
   if (!sa || sa.kind !== 'dragDropSlots') {
     throw new Error('expected dragDropSlots sampleAnswer')
   }
-  return sa.slots
+  if (sa.slots.some((idx) => idx === null || !Number.isInteger(idx))) {
+    throw new Error('sampleAnswer slots must be fully filled')
+  }
+  return sa.slots as number[]
 }
 
 function presentedItems(task: Task): Array<{ label: string }> {
