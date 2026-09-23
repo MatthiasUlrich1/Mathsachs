@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.19] – 2026-09-23
+
+### Behoben
+- **Übungsblatt leerer Bildschirm:** Drag-and-Drop-Aufgaben (u. a. Geschichte K6
+  Zuordnung/Chronologie) übergaben `{label, value}`-Objekte als Optionen — React
+  stürzte ab. Print-Builder wandelt Items jetzt in Text um; Worksheet fängt
+  Visual-/Generatorfehler ab. Karten-Abbildungen (PNG) skalieren drucktauglich
+  mit lesbarer Quellenzeile.
+
 ## [0.28.18] – 2026-09-23
 
 ### Geändert

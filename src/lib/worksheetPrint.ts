@@ -31,6 +31,27 @@ const defaultBlank = (task: Task): string => {
   return `__________${unit}`
 }
 
+/**
+ * Drag-drop / choice items may be plain strings or `{ label, value }` objects.
+ * React cannot render objects as children — always coerce to printable text.
+ */
+export function printLabel(item: unknown): string {
+  if (typeof item === 'string') return item
+  if (typeof item === 'number' || typeof item === 'boolean') return String(item)
+  if (item && typeof item === 'object' && 'label' in item) {
+    const label = (item as { label: unknown }).label
+    if (typeof label === 'string') return label
+    if (typeof label === 'number' || typeof label === 'boolean') return String(label)
+  }
+  return ''
+}
+
+export function printLabels(items: unknown): string[] | undefined {
+  if (!Array.isArray(items) || items.length === 0) return undefined
+  const labels = items.map(printLabel).filter((s) => s.length > 0)
+  return labels.length > 0 ? labels : undefined
+}
+
 function paramStartValues(params: ParamSliderSpec[]): Record<string, number> {
   const values: Record<string, number> = {}
   for (const p of params) {
@@ -193,7 +214,7 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
     }
 
     case 'choicePick': {
-      const choices = (props.choices as string[] | undefined) ?? []
+      const choices = printLabels(props.choices)
       return {
         ...fromVisual,
         paperHint: instruction ?? 'Kreuze die richtige Antwort an.',
@@ -203,7 +224,7 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
     }
 
     case 'multiSelect': {
-      const choices = (props.choices as string[] | undefined) ?? []
+      const choices = printLabels(props.choices)
       return {
         ...fromVisual,
         paperHint: instruction ?? 'Kreuze alle zutreffenden Antworten an.',
@@ -213,19 +234,20 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
     }
 
     case 'dragDropSort': {
-      const items = (props.items as string[] | undefined) ?? []
+      const items = printLabels(props.items) ?? []
       return {
         ...fromVisual,
         paperHint:
           instruction ??
           'Nummeriere die Elemente in der richtigen Reihenfolge.',
-        options: items,
+        options: items.length ? items : undefined,
         answerBlank: items.map((_, i) => `${i + 1}. ______`).join('  '),
       }
     }
 
     case 'dragDropSlots': {
-      const items = (props.items as string[] | undefined) ?? []
+      const items = printLabels(props.items) ?? []
+      const slotLabels = printLabels(props.slotLabels)
       const slotCount = Number(props.slotCount ?? 0)
       const worksheet = props.worksheet as
         | { given?: string; lineHint?: string }
@@ -233,15 +255,24 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
       const given = worksheet?.given
         ? `Gegeben: ${worksheet.given}`
         : undefined
+      const slotsLine = slotLabels?.length
+        ? `Begriffe: ${slotLabels.join(' · ')}`
+        : undefined
       return {
         ...fromVisual,
         paperHint:
-          [instruction, given, worksheet?.lineHint].filter(Boolean).join(' ') ||
+          [instruction, given, slotsLine, worksheet?.lineHint]
+            .filter(Boolean)
+            .join(' ') ||
           'Ordne die Bausteine den Plätzen zu (auf Papier notieren).',
         options: items.length ? items : undefined,
         answerBlank:
           slotCount > 0
-            ? Array.from({ length: slotCount }, () => '______').join(' | ')
+            ? Array.from({ length: slotCount }, (_, i) =>
+                slotLabels?.[i]
+                  ? `${slotLabels[i]}: ______`
+                  : '______',
+              ).join(' | ')
             : defaultBlank(task),
       }
     }

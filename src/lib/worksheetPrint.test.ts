@@ -4,12 +4,13 @@ import {
   choicePickTask,
   coordinateClickTask,
   coordinateDrawTask,
+  dragDropSortTask,
   paramSliderTask,
   visualTask,
 } from '../curriculum/taskHelpers'
 import { emptyCoordinateScene } from './coordinateScene'
 import { generateLinearFunctionSvg } from './geometrySvg'
-import { worksheetPrintExtras } from './worksheetPrint'
+import { printLabel, worksheetPrintExtras } from './worksheetPrint'
 import { math8GraphicReviews } from '../curriculum/graphicReviewTopics'
 
 describe('worksheetPrintExtras', () => {
@@ -101,6 +102,24 @@ describe('worksheetPrintExtras', () => {
     )
     expect(extras.options).toEqual(['spitz', 'stumpf', 'recht'])
     expect(extras.visualHtml).toBeUndefined()
+  })
+
+  it('stringifies dragDropSort {label,value} items for printable options', () => {
+    const extras = worksheetPrintExtras(
+      dragDropSortTask({
+        question: 'Ordne:',
+        items: [
+          { label: 'Alpha', value: 0 },
+          { label: 'Beta', value: 1 },
+        ],
+        correctOrder: [0, 1],
+        solution: 'Alpha → Beta',
+        explanation: 'Reihenfolge',
+      }),
+    )
+    expect(extras.options).toEqual(expect.arrayContaining(['Alpha', 'Beta']))
+    expect(extras.options?.every((o) => typeof o === 'string')).toBe(true)
+    expect(printLabel({ label: 'Alpha', value: 0 })).toBe('Alpha')
   })
 
   it('covers freigegebene K8 grafik topics with printable visuals', () => {

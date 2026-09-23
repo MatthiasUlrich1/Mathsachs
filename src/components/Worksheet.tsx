@@ -1,8 +1,12 @@
-import { useMemo, useState } from 'react'
+import { Component, type ErrorInfo, type ReactNode, useMemo, useState } from 'react'
 import { createRng, timeSeed } from '../lib/rng'
 import type { Task, Topic } from '../curriculum/types'
 import { buildUniqueTaskRound } from '../curriculum/uniqueRound'
-import { worksheetPrintExtras } from '../lib/worksheetPrint'
+import {
+  printLabel,
+  worksheetPrintExtras,
+  type WorksheetPrintExtras,
+} from '../lib/worksheetPrint'
 import { TaskVisual } from './TaskMedia'
 
 interface Props {
@@ -14,12 +18,66 @@ interface Props {
 
 const COUNTS = [10, 15, 20, 30]
 
+/** Catch visual render failures so one bad SVG/img never blanks the sheet. */
+class WorksheetVisualBoundary extends Component<
+  { children: ReactNode; fallbackText?: string },
+  { failed: boolean }
+> {
+  state = { failed: false }
+
+  static getDerivedStateFromError(): { failed: boolean } {
+    return { failed: true }
+  }
+
+  componentDidCatch(_error: Error, _info: ErrorInfo): void {
+    // Intentionally quiet — worksheet stays usable without the diagram.
+  }
+
+  render(): ReactNode {
+    if (this.state.failed) {
+      if (!this.props.fallbackText) return null
+      return <p className="sheet__paper-hint">{this.props.fallbackText}</p>
+    }
+    return this.props.children
+  }
+}
+
+function safePrintExtras(task: Task): WorksheetPrintExtras {
+  try {
+    const extras = worksheetPrintExtras(task)
+    return {
+      ...extras,
+      paperHint:
+        extras.paperHint !== undefined
+          ? printLabel(extras.paperHint) || undefined
+          : undefined,
+      answerBlank:
+        extras.answerBlank !== undefined
+          ? printLabel(extras.answerBlank) || undefined
+          : undefined,
+      options: extras.options?.map(printLabel).filter((s) => s.length > 0),
+      visualHtml:
+        typeof extras.visualHtml === 'string' && extras.visualHtml.trim()
+          ? extras.visualHtml
+          : undefined,
+    }
+  } catch {
+    return { answerBlank: '__________' }
+  }
+}
+
 function WorksheetTaskItem({ task }: { task: Task }) {
-  const extras = worksheetPrintExtras(task)
+  const extras = safePrintExtras(task)
+  const question = printLabel(task.question) || 'Aufgabe'
+  const attributionHint =
+    extras.visualHtml && /figcaption|Karten:|Wikimedia|Quelle/i.test(extras.visualHtml)
+      ? 'Abbildung / Quellenangabe siehe Aufgabenstellung (falls Karte fehlt).'
+      : 'Abbildung konnte nicht dargestellt werden — bearbeite die Frage ohne Diagramm.'
+
   return (
     <li className="sheet__task">
       <div className="sheet__task-row">
-        <span className="sheet__q">{task.question}</span>
+        <span className="sheet__q">{question}</span>
         {extras.answerBlank && extras.answerBlank !== '□' && (
           <span className="sheet__blank">{extras.answerBlank}</span>
         )}
@@ -27,7 +85,11 @@ function WorksheetTaskItem({ task }: { task: Task }) {
       {extras.paperHint && (
         <p className="sheet__paper-hint">{extras.paperHint}</p>
       )}
-      {extras.visualHtml && <TaskVisual html={extras.visualHtml} />}
+      {extras.visualHtml && (
+        <WorksheetVisualBoundary fallbackText={attributionHint}>
+          <TaskVisual html={extras.visualHtml} />
+        </WorksheetVisualBoundary>
+      )}
       {extras.options && extras.options.length > 0 && (
         <ul className="sheet__options">
           {extras.options.map((opt, j) => (
@@ -49,8 +111,12 @@ export function Worksheet({ topic, areaTitle, gradeTitle, onExit }: Props) {
   const [seed, setSeed] = useState(() => timeSeed())
 
   const tasks = useMemo<Task[]>(() => {
-    const rng = createRng(seed)
-    return buildUniqueTaskRound(topic.generate, rng, count)
+    try {
+      const rng = createRng(seed)
+      return buildUniqueTaskRound(topic.generate, rng, count)
+    } catch {
+      return []
+    }
   }, [topic, count, seed])
 
   return (
@@ -103,20 +169,29 @@ export function Worksheet({ topic, areaTitle, gradeTitle, onExit }: Props) {
           </p>
         </header>
 
-        <ol className="sheet__tasks">
-          {tasks.map((t, i) => (
-            <WorksheetTaskItem key={i} task={t} />
-          ))}
-        </ol>
-
-        <section className="sheet__solutions">
-          <h2>Lösungen</h2>
-          <ol>
+        {tasks.length === 0 ? (
+          <p className="sheet__paper-hint">
+            Für dieses Thema konnten keine Aufgaben erzeugt werden. Bitte „Neue
+            Aufgaben“ versuchen oder ein anderes Thema wählen.
+          </p>
+        ) : (
+          <ol className="sheet__tasks">
             {tasks.map((t, i) => (
-              <li key={i}>{t.solution}</li>
+              <WorksheetTaskItem key={i} task={t} />
             ))}
           </ol>
-        </section>
+        )}
+
+        {tasks.length > 0 && (
+          <section className="sheet__solutions">
+            <h2>Lösungen</h2>
+            <ol>
+              {tasks.map((t, i) => (
+                <li key={i}>{printLabel(t.solution) || '—'}</li>
+              ))}
+            </ol>
+          </section>
+        )}
       </article>
     </div>
   )

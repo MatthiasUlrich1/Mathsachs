@@ -1699,10 +1699,39 @@ select.answer-input__field {
   background: #fff;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
+  /* Avoid flex+percentage collapse that can hide map figures */
+  display: block;
+  overflow: visible;
 }
 
 .sheet .task-visual svg {
   max-height: 220px;
+}
+
+.sheet .task-visual figure {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+
+.sheet .task-visual img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 280px;
+  height: auto;
+  object-fit: contain;
+  margin-inline: auto;
+}
+
+.sheet .task-visual figcaption {
+  margin-top: 6px;
+  font-size: 10.5px;
+  line-height: 1.35;
+  color: #4b5563;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .sheet__solutions {
