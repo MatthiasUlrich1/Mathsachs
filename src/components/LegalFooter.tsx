@@ -57,8 +57,7 @@ export function LegalFooter({
           </nav>
         )}
         <p>
-          TaskTrophy {version} · Übungsprogramm nach sächsischem Lehrplan ·
-          erweiterbar für weitere Klassen und Fächer
+          TaskTrophy {version} · Übungsprogramm nach Lehrplan
           {installCount != null && installCount > 0
             ? ` · ${installCount.toLocaleString('de-DE')} Installationen`
             : ''}
