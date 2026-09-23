@@ -3,22 +3,27 @@
  * - `reviewOf` = ID des Hauptthemas
  * - `released: false` → Schüler/Eltern sehen sie nicht
  * - Nach Prüfung: Generator in die Haupt-ID mergen und dieses Unterthema entfernen
- *   (oder released:true setzen, wenn es eigenständig bleiben soll).
+ *   (oder `{ released: true }`, wenn es eigenständig freigegeben bleiben soll).
  */
 import type { Topic } from './types'
 
-/** Mark a topic as a pending graphic/interactive review child of `parentId`. */
-export function asGraphicReview(parentId: string, topic: Topic): Topic {
+/** Mark a topic as a graphic/interactive review child of `parentId`. */
+export function asGraphicReview(
+  parentId: string,
+  topic: Topic,
+  opts?: { released?: boolean },
+): Topic {
+  const released = opts?.released === true
   const baseTitle = topic.title.replace(/\s*·\s*Grafik\s*\(Prüfung\)\s*$/i, '').trim()
   return {
     ...topic,
     reviewOf: parentId,
-    released: false,
-    title: `${baseTitle} · Grafik (Prüfung)`,
+    released,
+    title: released ? baseTitle : `${baseTitle} · Grafik (Prüfung)`,
     keywords: [
       ...(topic.keywords ?? []),
       'Grafik',
-      'Prüfung',
+      ...(released ? [] : ['Prüfung']),
       'Interactive',
       parentId,
     ],

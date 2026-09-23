@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.14] – 2026-09-23
+
+### Geändert
+- **Mathe K8 LB3 Grafik freigegeben:** ID **4569** Gerade einstellen (m und n),
+  ID **5997** Nullstelle einer Geraden tippen, ID **6374** Gerade durch zwei
+  Punkte zeichnen (`…__grafik`). Mathe-Pack **1.2.6**.
+
 ## [0.28.13] – 2026-09-23
 
 ### Hinzugefügt

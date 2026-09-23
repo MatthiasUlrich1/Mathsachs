@@ -38,106 +38,118 @@ const scheitelForm = (a: number, d: number, e: number): string => {
 // ---------------------------------------------------------------------------
 
 export const math8GraphicReviews: Topic[] = [
-  asGraphicReview('k8-lb3-steigung', {
-    id: 'k8-lb3-steigung__grafik',
-    title: 'Gerade einstellen (m und n)',
-    hint: 'Stelle Steigung und Achsenabschnitt am Slider ein.',
-    pointsPerTask: 10,
-    difficulty: 2,
-    keywords: ['Steigung', 'Achsenabschnitt', 'lineare Funktion', 'Gerade'],
-    fachwissen: {
-      text: 'f(x) = m·x + n: m ist die Steigung (Δy/Δx), n der Schnitt mit der y-Achse.',
-      quelle: 'Wikipedia: Lineare Funktion',
-      url: 'https://de.wikipedia.org/wiki/Lineare_Funktion',
+  asGraphicReview(
+    'k8-lb3-steigung',
+    {
+      id: 'k8-lb3-steigung__grafik',
+      title: 'Gerade einstellen (m und n)',
+      hint: 'Stelle Steigung und Achsenabschnitt am Slider ein.',
+      pointsPerTask: 10,
+      difficulty: 2,
+      keywords: ['Steigung', 'Achsenabschnitt', 'lineare Funktion', 'Gerade'],
+      fachwissen: {
+        text: 'f(x) = m·x + n: m ist die Steigung (Δy/Δx), n der Schnitt mit der y-Achse.',
+        quelle: 'Wikipedia: Lineare Funktion',
+        url: 'https://de.wikipedia.org/wiki/Lineare_Funktion',
+      },
+      generate: (rng: Rng) => {
+        const m = nonZero(rng, -3, 3)
+        const n = randInt(rng, -4, 4)
+        return paramSliderTask({
+          question: `Stelle die Gerade f(x) = ${num(m)}·x + ${num(n)} ein.`,
+          params: [
+            { id: 'm', label: 'm', min: -5, max: 5, step: 1, start: 0 },
+            { id: 'n', label: 'n', min: -5, max: 5, step: 1, start: 0 },
+          ],
+          correct: { m, n },
+          solution: `m = ${m}, n = ${n}`,
+          explanation: `y = ${num(m)}x + ${num(n)} hat Steigung m = ${m} und Achsenabschnitt n = ${n}.`,
+          preview: 'linear',
+          instruction: 'Stelle m und n so ein, dass die Gerade passt:',
+        })
+      },
     },
-    generate: (rng: Rng) => {
-      const m = nonZero(rng, -3, 3)
-      const n = randInt(rng, -4, 4)
-      return paramSliderTask({
-        question: `Stelle die Gerade f(x) = ${num(m)}·x + ${num(n)} ein.`,
-        params: [
-          { id: 'm', label: 'm', min: -5, max: 5, step: 1, start: 0 },
-          { id: 'n', label: 'n', min: -5, max: 5, step: 1, start: 0 },
-        ],
-        correct: { m, n },
-        solution: `m = ${m}, n = ${n}`,
-        explanation: `y = ${num(m)}x + ${num(n)} hat Steigung m = ${m} und Achsenabschnitt n = ${n}.`,
-        preview: 'linear',
-        instruction: 'Stelle m und n so ein, dass die Gerade passt:',
-      })
-    },
-  }),
+    { released: true },
+  ),
 
-  asGraphicReview('k8-lb3-achsenabschnitt', {
-    id: 'k8-lb3-achsenabschnitt__grafik',
-    title: 'Nullstelle einer Geraden tippen',
-    hint: 'Schnittpunkt mit der x-Achse tippen.',
-    pointsPerTask: 10,
-    difficulty: 2,
-    keywords: ['Nullstelle', 'x-Achse', 'lineare Funktion'],
-    fachwissen: {
-      text: 'Nullstelle von f(x) = m·x + n: x = −n/m (m ≠ 0) = Schnitt mit der x-Achse.',
-      quelle: 'Wikipedia: Nullstelle',
-      url: 'https://de.wikipedia.org/wiki/Nullstelle',
-    },
-    generate: (rng: Rng) => {
-      const m = nonZero(rng, -3, 3)
-      const x0 = nonZero(rng, -4, 4)
-      const n = -m * x0
-      return coordinateClickTask({
-        question: `Die Gerade f(x) = ${num(m)}·x + ${num(n)} ist gezeichnet. Tippe die Nullstelle.`,
-        x: x0,
-        y: 0,
-        solution: `(${x0}|0)`,
-        explanation: `f(x) = 0 ⇒ x = ${x0}.`,
-        xRange: [-6, 6],
-        yRange: [-6, 6],
-        instruction: 'Tippe den Schnitt mit der x-Achse:',
-        visualContent: generateLinearFunctionSvg({
-          m,
-          n,
+  asGraphicReview(
+    'k8-lb3-achsenabschnitt',
+    {
+      id: 'k8-lb3-achsenabschnitt__grafik',
+      title: 'Nullstelle einer Geraden tippen',
+      hint: 'Schnittpunkt mit der x-Achse tippen.',
+      pointsPerTask: 10,
+      difficulty: 2,
+      keywords: ['Nullstelle', 'x-Achse', 'lineare Funktion'],
+      fachwissen: {
+        text: 'Nullstelle von f(x) = m·x + n: x = −n/m (m ≠ 0) = Schnitt mit der x-Achse.',
+        quelle: 'Wikipedia: Nullstelle',
+        url: 'https://de.wikipedia.org/wiki/Nullstelle',
+      },
+      generate: (rng: Rng) => {
+        const m = nonZero(rng, -3, 3)
+        const x0 = nonZero(rng, -4, 4)
+        const n = -m * x0
+        return coordinateClickTask({
+          question: `Die Gerade f(x) = ${num(m)}·x + ${num(n)} ist gezeichnet. Tippe die Nullstelle.`,
+          x: x0,
+          y: 0,
+          solution: `(${x0}|0)`,
+          explanation: `f(x) = 0 ⇒ x = ${x0}.`,
           xRange: [-6, 6],
           yRange: [-6, 6],
-          interceptLabel: `n=${n}`,
-        }),
-      })
+          instruction: 'Tippe den Schnitt mit der x-Achse:',
+          visualContent: generateLinearFunctionSvg({
+            m,
+            n,
+            xRange: [-6, 6],
+            yRange: [-6, 6],
+            interceptLabel: `n=${n}`,
+          }),
+        })
+      },
     },
-  }),
+    { released: true },
+  ),
 
-  asGraphicReview('k8-lb3-funktionswert', {
-    id: 'k8-lb3-funktionswert__grafik',
-    title: 'Gerade durch zwei Punkte zeichnen',
-    hint: 'Werkzeug Gerade: zwei Punkte tippen.',
-    pointsPerTask: 10,
-    difficulty: 2,
-    keywords: ['Gerade zeichnen', 'zwei Punkte', 'lineare Funktion'],
-    fachwissen: {
-      text: 'Durch zwei verschiedene Punkte verläuft genau eine Gerade.',
-      quelle: 'Wikipedia: Gerade',
-      url: 'https://de.wikipedia.org/wiki/Gerade',
+  asGraphicReview(
+    'k8-lb3-funktionswert',
+    {
+      id: 'k8-lb3-funktionswert__grafik',
+      title: 'Gerade durch zwei Punkte zeichnen',
+      hint: 'Werkzeug Gerade: zwei Punkte tippen.',
+      pointsPerTask: 10,
+      difficulty: 2,
+      keywords: ['Gerade zeichnen', 'zwei Punkte', 'lineare Funktion'],
+      fachwissen: {
+        text: 'Durch zwei verschiedene Punkte verläuft genau eine Gerade.',
+        quelle: 'Wikipedia: Gerade',
+        url: 'https://de.wikipedia.org/wiki/Gerade',
+      },
+      generate: (rng: Rng) => {
+        const x1 = randInt(rng, -4, -1)
+        const y1 = randInt(rng, -3, 3)
+        const x2 = randInt(rng, 1, 4)
+        let y2 = randInt(rng, -3, 3)
+        while (y2 === y1) y2 = randInt(rng, -3, 3)
+        const solutionScene = emptyCoordinateScene({
+          xRange: [-5, 5],
+          yRange: [-5, 5],
+          snap: 'integer',
+          objects: [{ id: 'l', kind: 'line', x1, y1, x2, y2 }],
+        })
+        return coordinateDrawTask({
+          question: `Zeichne die Gerade durch A(${x1}|${y1}) und B(${x2}|${y2}).`,
+          solutionScene,
+          solution: `Gerade durch (${x1}|${y1}) und (${x2}|${y2})`,
+          explanation: `Richtung von A nach B: (${x2 - x1}|${y2 - y1}).`,
+          allowedTools: ['select', 'line', 'delete'],
+          instruction: 'Werkzeug Gerade: zwei Punkte der Geraden tippen.',
+        })
+      },
     },
-    generate: (rng: Rng) => {
-      const x1 = randInt(rng, -4, -1)
-      const y1 = randInt(rng, -3, 3)
-      const x2 = randInt(rng, 1, 4)
-      let y2 = randInt(rng, -3, 3)
-      while (y2 === y1) y2 = randInt(rng, -3, 3)
-      const solutionScene = emptyCoordinateScene({
-        xRange: [-5, 5],
-        yRange: [-5, 5],
-        snap: 'integer',
-        objects: [{ id: 'l', kind: 'line', x1, y1, x2, y2 }],
-      })
-      return coordinateDrawTask({
-        question: `Zeichne die Gerade durch A(${x1}|${y1}) und B(${x2}|${y2}).`,
-        solutionScene,
-        solution: `Gerade durch (${x1}|${y1}) und (${x2}|${y2})`,
-        explanation: `Richtung von A nach B: (${x2 - x1}|${y2 - y1}).`,
-        allowedTools: ['select', 'line', 'delete'],
-        instruction: 'Werkzeug Gerade: zwei Punkte der Geraden tippen.',
-      })
-    },
-  }),
+    { released: true },
+  ),
 ]
 
 // ---------------------------------------------------------------------------

@@ -17,14 +17,26 @@ const ALL = [
 ]
 
 describe('graphic review topics', () => {
-  it('are locked under a parent id', () => {
+  const releasedIds = new Set([
+    'k8-lb3-steigung__grafik',
+    'k8-lb3-achsenabschnitt__grafik',
+    'k8-lb3-funktionswert__grafik',
+  ])
+
+  it('are locked under a parent id (except freigegebene K8-Grafiken)', () => {
     expect(ALL.length).toBeGreaterThanOrEqual(8)
     for (const t of ALL) {
-      expect(isGraphicReviewTopic(t)).toBe(true)
-      expect(t.released).toBe(false)
       expect(t.reviewOf).toBeTruthy()
       expect(t.id).toContain('__grafik')
-      expect(t.title).toMatch(/Grafik \(Prüfung\)/)
+      if (releasedIds.has(t.id)) {
+        expect(t.released).toBe(true)
+        expect(isGraphicReviewTopic(t)).toBe(false)
+        expect(t.title).not.toMatch(/Grafik \(Prüfung\)/)
+      } else {
+        expect(isGraphicReviewTopic(t)).toBe(true)
+        expect(t.released).toBe(false)
+        expect(t.title).toMatch(/Grafik \(Prüfung\)/)
+      }
     }
   })
 

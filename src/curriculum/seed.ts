@@ -36,7 +36,7 @@ const topicMeta = (topic: {
   hint: topic.hint,
   pointsPerTask: topic.pointsPerTask,
   ...(topic.keywords?.length ? { keywords: topic.keywords } : {}),
-  ...(topic.released === false ? { released: false } : {}),
+  ...(topic.released === false ? { released: false } : topic.released === true ? { released: true } : {}),
   ...(topic.reviewOf ? { reviewOf: topic.reviewOf } : {}),
 })
 
@@ -108,13 +108,13 @@ export async function buildGymSachsenSeed(): Promise<CurriculumPack> {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Mathematik',
-    version: '1.2.5',
+    version: '1.2.6',
     changelog:
-      'K7: Gleichungsumstellung mehrzeilig (Äquivalenz); Oberfläche einer Pyramide + SVG.',
+      'K8 LB3 Grafik freigegeben: Gerade einstellen (4569), Nullstelle tippen (5997), Gerade zeichnen (6374).',
     contentHash: packContentHash(official, extras),
     official,
     extras,
   }
 }
 
-export const GYM_SACHSEN_PACK_VERSION = '1.2.5'
+export const GYM_SACHSEN_PACK_VERSION = '1.2.6'
