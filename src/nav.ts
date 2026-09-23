@@ -54,6 +54,7 @@ export const SETTINGS_SECTIONS = [
   { id: 'lan', label: 'WLAN-Zugang' },
   { id: 'profile', label: 'Profil' },
   { id: 'supporters', label: 'Unterstützer' },
+  { id: 'about', label: 'Über die App' },
 ] as const
 
 export type SettingsSectionId = (typeof SETTINGS_SECTIONS)[number]['id']

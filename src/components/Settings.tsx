@@ -5,6 +5,7 @@ import { FaultyTasksPanel } from './FaultyTasksPanel'
 import { LanAccessCard } from './LanAccessCard'
 import { MyReportedTasksPanel } from './MyReportedTasksPanel'
 import { RoleRightsMatrix } from './RoleRightsMatrix'
+import { AboutApp } from './AboutApp'
 import { Supporters } from './Supporters'
 import { TaskAuthoringPanel } from './TaskAuthoringPanel'
 import { TaskAuthoringReviewPanel } from './TaskAuthoringReviewPanel'
@@ -53,6 +54,7 @@ const SECTION_HINTS: Record<SettingsSectionId, string> = {
   lan: 'Tablets im selben WLAN verbinden',
   profile: 'Rolle, Lehrercode, Rechte und Benutzerwechsel',
   supporters: 'Organisationen, die TaskTrophy unterstützen',
+  about: 'Kurzanleitung und Inhaltsverzeichnis',
 }
 
 interface Props {
@@ -417,6 +419,8 @@ export function Settings({
       )}
 
       {section === 'supporters' && <Supporters />}
+
+      {section === 'about' && <AboutApp />}
     </div>
   )
 }

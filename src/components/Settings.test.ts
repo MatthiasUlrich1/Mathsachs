@@ -45,6 +45,7 @@ describe('Settings hub update check', () => {
     expect(html).toContain('WLAN-Zugang')
     expect(html).toContain('Profil')
     expect(html).toContain('Unterstützer')
+    expect(html).toContain('Über die App')
     expect(html).toContain('Aufgaben ergänzen')
     expect(html).toContain(MANUAL_CHECK_LABEL)
     expect(html).not.toContain(MANUAL_CHECK_CURRENT)
@@ -162,6 +163,22 @@ describe('Settings hub update check', () => {
     expect(html).toContain('logo-bi-menschenskinder.png')
     expect(html).not.toContain('Mein Delitzsch')
     expect(html).not.toContain(MANUAL_CHECK_LABEL)
+  })
+
+  it('renders the Über die App guide with TOC and home-screen steps', () => {
+    const html = renderToStaticMarkup(
+      createElement(Settings, { ...baseProps, section: 'about' }),
+    )
+    expect(html).toContain('Über die App')
+    expect(html).toContain('Inhaltsverzeichnis')
+    expect(html).toContain('Zum Startbildschirm')
+    expect(html).toContain('Android')
+    expect(html).toContain('iPhone und iPad')
+    expect(html).toContain('Zum Home-Bildschirm')
+    expect(html).toContain('app.tasktrophy.de')
+    expect(html).not.toContain('Entwickleransicht')
+    expect(html).not.toContain('Aufgabengenerator')
+    expect(html).not.toContain('settings-updates')
   })
 
   it('denies the tasks section to other roles', () => {

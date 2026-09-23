@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.13] – 2026-09-23
+
+### Hinzugefügt
+- **Einstellungen → Über die App:** Nutzerhandbuch mit Inhaltsverzeichnis
+  (Sprungmarken), Anleitung zu Themen, Lehrplänen, Challenge, Klausuren,
+  Klasse/Codes, WLAN, Updates sowie **Web-App zum Startbildschirm** (Android
+  und iOS). Ohne Entwickler-Funktionen.
+
 ## [0.28.12] – 2026-09-23
 
 ### Geändert

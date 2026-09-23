@@ -2227,6 +2227,90 @@ select.answer-input__field {
   font-size: 15px;
 }
 
+.user-guide {
+  max-width: 42rem;
+}
+
+.user-guide__toc {
+  margin: 4px 0 18px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.user-guide__toc-title {
+  margin: 0 0 8px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.user-guide__toc-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  line-height: 1.45;
+}
+
+.user-guide__toc-link {
+  font-size: 14px;
+}
+
+.user-guide__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.user-guide__body > p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.user-guide__heading {
+  margin: 18px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid rgba(148, 163, 184, 0.16);
+  font-size: 1.05rem;
+  font-weight: 700;
+  scroll-margin-top: 72px;
+}
+
+.user-guide__heading:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.user-guide__subheading {
+  margin: 8px 0 0;
+  font-size: 0.95rem;
+  font-weight: 650;
+}
+
+.user-guide__list {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  line-height: 1.5;
+}
+
+.user-guide__list--numbered {
+  list-style: decimal;
+}
+
+.user-guide__body code {
+  font-size: 0.92em;
+  padding: 0.1em 0.35em;
+  border-radius: 6px;
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+}
+
 .foot__legal {
   display: flex;
   align-items: center;

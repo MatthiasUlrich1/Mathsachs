@@ -95,6 +95,7 @@ describe('top-bar navigation', () => {
       'WLAN-Zugang',
       'Profil',
       'Unterstützer',
+      'Über die App',
     ])
     expect(SETTINGS_SECTIONS.map((item) => item.id)).toEqual([
       'curricula',
@@ -107,6 +108,7 @@ describe('top-bar navigation', () => {
       'lan',
       'profile',
       'supporters',
+      'about',
     ])
   })
 
@@ -119,6 +121,7 @@ describe('top-bar navigation', () => {
       'lan',
       'profile',
       'supporters',
+      'about',
     ])
     for (const role of ['schueler', 'eltern', 'klassenlehrer'] as const) {
       expect(settingsSectionsForRole(role).map((item) => item.id)).toEqual([
@@ -128,6 +131,7 @@ describe('top-bar navigation', () => {
         'lan',
         'profile',
         'supporters',
+        'about',
       ])
     }
     expect(settingsSectionsForRole(undefined).map((item) => item.label)).not.toContain(
@@ -147,6 +151,7 @@ describe('top-bar navigation', () => {
       'lan',
       'profile',
       'supporters',
+      'about',
     ])
     expect(settingsSectionsForRole('lehrer').map((item) => item.id)).not.toContain(
       'taskAuthoring',
