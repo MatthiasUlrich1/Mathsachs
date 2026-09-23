@@ -25,9 +25,12 @@ describe('graphic review topics', () => {
     'k9-lb1-quadrat-wert__grafik',
     'k10-lb4-parabel-wert__grafik',
     'k10-lb4-parabel-wert__grafik-ablesen',
+    'k1112-lb1-ableitung-stelle__grafik',
+    'k1112-lb1-bestimmtes-integral__grafik',
+    'k1112-lb1-nullstelle-linear__grafik',
   ])
 
-  it('are locked under a parent id (except freigegebene K8–K10-Grafiken)', () => {
+  it('are locked under a parent id (except freigegebene K8–K11/12-Grafiken)', () => {
     expect(ALL.length).toBeGreaterThanOrEqual(8)
     for (const t of ALL) {
       expect(t.reviewOf).toBeTruthy()

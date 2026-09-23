@@ -4,9 +4,9 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Mathematik",
-  "version": "1.2.7",
-  "changelog": "K9/K10 Grafik freigegeben: Scheitel tippen (3505), Parabel-Nullstelle (3071), Scheitel tippen K10 (1077), Funktionswert ablesen (7302).",
-  "contentHash": "c57411be",
+  "version": "1.2.8",
+  "changelog": "K11/12 Grafik freigegeben: Tangente-Steigung (2453), Fläche unter Graph (8970), Nullstelle linear tippen (5544).",
+  "contentHash": "db31979f",
   "official": [
     {
       "id": "klasse-5",
@@ -1948,7 +1948,7 @@
             },
             {
               "id": "k1112-lb1-ableitung-stelle__grafik",
-              "title": "Steigung der Tangente ablesen · Grafik (Prüfung)",
+              "title": "Steigung der Tangente ablesen",
               "hint": "Lies die Steigung der eingezeichneten Tangente ab.",
               "pointsPerTask": 10,
               "keywords": [
@@ -1957,16 +1957,15 @@
                 "Steigung",
                 "Graph",
                 "Grafik",
-                "Prüfung",
                 "Interactive",
                 "k1112-lb1-ableitung-stelle"
               ],
-              "released": false,
+              "released": true,
               "reviewOf": "k1112-lb1-ableitung-stelle"
             },
             {
               "id": "k1112-lb1-bestimmtes-integral__grafik",
-              "title": "Fläche unter dem Graphen · Grafik (Prüfung)",
+              "title": "Fläche unter dem Graphen",
               "hint": "Rechteckfläche bzw. Integral berechnen.",
               "pointsPerTask": 10,
               "keywords": [
@@ -1974,16 +1973,15 @@
                 "Fläche",
                 "Graph",
                 "Grafik",
-                "Prüfung",
                 "Interactive",
                 "k1112-lb1-bestimmtes-integral"
               ],
-              "released": false,
+              "released": true,
               "reviewOf": "k1112-lb1-bestimmtes-integral"
             },
             {
               "id": "k1112-lb1-nullstelle-linear__grafik",
-              "title": "Nullstelle linearer Graph tippen · Grafik (Prüfung)",
+              "title": "Nullstelle linearer Graph tippen",
               "hint": "Tippe den Schnitt mit der x-Achse.",
               "pointsPerTask": 10,
               "keywords": [
@@ -1991,11 +1989,10 @@
                 "lineare Funktion",
                 "Graph",
                 "Grafik",
-                "Prüfung",
                 "Interactive",
                 "k1112-lb1-nullstelle-linear"
               ],
-              "released": false,
+              "released": true,
               "reviewOf": "k1112-lb1-nullstelle-linear"
             }
           ]

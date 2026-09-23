@@ -358,7 +358,7 @@ export const math1112GraphicReviews: Topic[] = [
         }),
       })
     },
-  }),
+  }, { released: true }),
 
   asGraphicReview('k1112-lb1-bestimmtes-integral', {
     id: 'k1112-lb1-bestimmtes-integral__grafik',
@@ -390,7 +390,7 @@ export const math1112GraphicReviews: Topic[] = [
         }),
       })
     },
-  }),
+  }, { released: true }),
 
   asGraphicReview('k1112-lb1-nullstelle-linear', {
     id: 'k1112-lb1-nullstelle-linear__grafik',
@@ -426,5 +426,5 @@ export const math1112GraphicReviews: Topic[] = [
         }),
       })
     },
-  }),
+  }, { released: true }),
 ]

@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.18] – 2026-09-23
+
+### Geändert
+- **Mathe K11/12 Grafik freigegeben:** ID **2453** Steigung der Tangente ablesen,
+  ID **8970** Fläche unter dem Graphen, ID **5544** Nullstelle linearer Graph
+  tippen (`…__grafik`). Mathe-Pack **1.2.8**. „Grafik-Prüfung“-Badge entfällt
+  für freigegebene Themen (wie in 0.28.15).
+
 ## [0.28.17] – 2026-09-23
 
 ### Geändert
