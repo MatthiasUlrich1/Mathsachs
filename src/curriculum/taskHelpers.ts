@@ -286,6 +286,11 @@ interface DragDropSlotsTaskInput {
   instruction?: string
   visualContent?: string
   /**
+   * Labels for each slot (Begriff links → Erklärung rechts).
+   * When set, the UI stacks terms on the left with drop targets on the right.
+   */
+  slotLabels?: string[]
+  /**
    * `strict`: slots must match left→right (by label).
    * `commutativeFactors`: left of `=` stays fixed; multiplied factors after `=` may be any order.
    * `anyOrder`: all correct chips may appear in any order (e.g. `+ ↔ −` ≡ `− ↔ +`).
@@ -526,6 +531,9 @@ export const dragDropSlotsTask = (input: DragDropSlotsTaskInput): Task => {
         instruction:
           input.instruction ??
           'Ziehe die richtigen Blöcke in die Formelplätze (einen brauchst du ggf. nicht):',
+        ...(input.slotLabels?.length
+          ? { slotLabels: input.slotLabels }
+          : {}),
         ...(input.worksheet ? { worksheet: input.worksheet } : {}),
         ...(askResult
           ? {

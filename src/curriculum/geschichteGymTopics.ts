@@ -103,27 +103,21 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
         area('lb1', 'Die römische Zivilisation und ihre prägende Wirkung für Europa', 18, [
           topic(
             'ge-k6-lb1-jahreszahlen',
-            'Jahreszahlen einprägen (LK-Drill)',
-            ['753', '264', '146', 'Hannibal'],
+            'Jahreszahlen (nur LB1)',
+            ['753', '500', '264', '146'],
             { tasksPerRound: 20 },
           ),
           topic(
             'ge-k6-lb1-chronologie',
-            'Chronologie: Anfänge und Punische Kriege',
-            ['Chronologie', 'Punische Kriege'],
-            { tasksPerRound: 15 },
+            'Chronologie (Reihenfolge)',
+            ['Zeitstrahl', 'Reihenfolge'],
+            { tasksPerRound: 12 },
           ),
-          topic('ge-k6-lb1-rom', 'Die römische Zivilisation – Überblick (LK)', [
-            'Rom',
-            'Zivilisation',
-            'Europa',
-          ], { tasksPerRound: 15 }),
           topic('ge-k6-lb1-anfaenge', 'Die Anfänge Roms', [
             'Romulus',
-            '753',
             'Etrusker',
-            'Republik',
-          ], { tasksPerRound: 15 }),
+            'Tiber',
+          ], { tasksPerRound: 12 }),
           topic('ge-k6-lb1-begriffe', 'Senat, Republik, Patrizier und Plebejer', [
             'Senat',
             'Patrizier',
@@ -138,15 +132,20 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Hannibal',
             'Karthago',
             'Scipio',
-          ], { tasksPerRound: 15 }),
+          ], { tasksPerRound: 12 }),
           topic('ge-k6-lb1-weltreich', 'Vom Stadtstaat zum Weltreich (Mare Nostrum)', [
             'Weltreich',
             'Mittelmeer',
             'Karte',
-          ], { tasksPerRound: 12 }),
+          ], { tasksPerRound: 10 }),
           topic('ge-k6-lb1-buergerrecht', 'Was bringt das Bürgerrecht?', [
             'Bürgerrecht',
             'Rechte',
+          ], { tasksPerRound: 10 }),
+          topic('ge-k6-lb1-rom', 'Prägende Wirkung für Europa', [
+            'Latein',
+            'Recht',
+            'Straßen',
           ], { tasksPerRound: 10 }),
         ]),
         area('lb2', 'Herrschaft und Lebensformen im Mittelalter', 20, [

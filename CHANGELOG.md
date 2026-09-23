@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.5] – 2026-09-23
+
+### Geändert
+- **Geschichte K6 LB1:** Themen entflochten (wenig Überschneidung); **Jahreszahlen** nur im
+  eigenen Thema; Zuordnung **Begriff links → Erklärung rechts**; Merkhilfe-Spoiler aus
+  Fragen entfernt. Pack **1.3.0**.
+
 ## [0.28.4] – 2026-09-23
 
 ### Geändert

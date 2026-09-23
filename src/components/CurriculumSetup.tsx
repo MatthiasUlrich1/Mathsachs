@@ -74,10 +74,10 @@ const FALLBACK_CATALOG: ManifestPack[] = [
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Geschichte',
-    version: '1.2.0',
+    version: '1.3.0',
     url: '',
     changelog:
-      'K6 LB1 Rom LK-Drill (Jahreszahlen). Themen gesperrt — nur Entwickleransicht.',
+      'K6 LB1 entflochten: Jahreszahlen-only, Zuordnung Begriff→Erklärung, Spoiler weg.',
   },
   {
     id: GYM_SACHSEN_ANHALT_PACK_ID,

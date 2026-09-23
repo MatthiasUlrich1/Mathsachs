@@ -169,6 +169,7 @@ export function TaskInteractive({
             })
           }
           instruction={interactive.props.instruction}
+          slotLabels={interactive.props.slotLabels}
           worksheet={interactive.props.worksheet}
           result={
             interactive.props.askResult

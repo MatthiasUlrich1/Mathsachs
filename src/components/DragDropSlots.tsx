@@ -9,6 +9,11 @@ export interface DragDropSlotsProps {
   onChange: (slots: Array<number | null>) => void
   instruction?: string
   /**
+   * When set (one label per slot), show a matching layout:
+   * terms stacked on the left, drop slots on the right.
+   */
+  slotLabels?: string[]
+  /**
    * Worksheet layout for equation rearrange:
    * given equation + `|` + first `opSlotCount` slots, then remaining slots as new line.
    */
@@ -40,6 +45,7 @@ export const DragDropSlots: React.FC<DragDropSlotsProps> = ({
   slots,
   onChange,
   instruction,
+  slotLabels,
   worksheet,
   result,
 }) => {
@@ -239,6 +245,15 @@ export const DragDropSlots: React.FC<DragDropSlotsProps> = ({
               renderSlot(opCount + i, String(opCount + i + 1)),
             )}
           </div>
+        </div>
+      ) : slotLabels && slotLabels.length === slots.length ? (
+        <div className="drag-drop-slots__match" aria-label="Zuordnung Begriff → Erklärung">
+          {slots.map((_, slotIdx) => (
+            <div key={`match-${slotIdx}`} className="drag-drop-slots__match-row">
+              <div className="drag-drop-slots__match-term">{slotLabels[slotIdx]}</div>
+              {renderSlot(slotIdx, '→')}
+            </div>
+          ))}
         </div>
       ) : (
         <div className="drag-drop-slots__slots" aria-label="Formelplätze">

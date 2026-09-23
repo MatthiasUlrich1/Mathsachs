@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-23T15:45:55.325Z",
+  "updatedAt": "2026-09-23T16:37:10.832Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -29,10 +29,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Geschichte",
-      "version": "1.2.0",
+      "version": "1.3.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-geschichte.json",
-      "size": 41663,
-      "changelog": "K6 LB1 Römische Zivilisation für Leistungskontrolle: starker Jahreszahl-Drill (753, 500, 264–146), Chronologie, Begriffe, Ämter, Bürgerrecht. Themen weiterhin nur Entwickleransicht. Lehrplan Gymnasium Geschichte (Sachsen) 2004/2007/2009/2011/2019, lplanid=65, https://www.schulportal.sachsen.de/lplandb/lehrplan/65"
+      "size": 41594,
+      "changelog": "K6 LB1 Themen entflochten (wenig Überschneidung): Jahreszahlen nur im eigenen Thema, Zuordnung Begriff links → Erklärung rechts, Spoiler aus Fragen entfernt. Themen weiterhin nur Entwickleransicht. Lehrplan Gymnasium Geschichte (Sachsen) 2004/2007/2009/2011/2019, lplanid=65, https://www.schulportal.sachsen.de/lplandb/lehrplan/65"
     },
     {
       "id": "gym-sachsen-anhalt",

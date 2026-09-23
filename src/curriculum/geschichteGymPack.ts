@@ -17,10 +17,10 @@ export function buildGymSachsenGeschichtePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Geschichte',
-    version: '1.2.0',
+    version: '1.3.0',
     changelog:
-      `K6 LB1 Römische Zivilisation für Leistungskontrolle: starker Jahreszahl-Drill ` +
-      `(753, 500, 264–146), Chronologie, Begriffe, Ämter, Bürgerrecht. ` +
+      `K6 LB1 Themen entflochten (wenig Überschneidung): Jahreszahlen nur im eigenen Thema, ` +
+      `Zuordnung Begriff links → Erklärung rechts, Spoiler aus Fragen entfernt. ` +
       `Themen weiterhin nur Entwickleransicht. ${SOURCE}`,
     official,
     extras: [],
