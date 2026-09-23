@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.11] – 2026-09-23
+
+### Geändert
+- **Geschichte K6 Mare Nostrum (ID 6763):** Kartenaufgaben fragen „Was zeigt die [Farbe]…?“ mit
+  Antworten **Jahr + Entwicklungsphase** (z. B. „133 v. Chr. — Vormacht nach den Kriegen im Westen“);
+  Distraktoren aus derselben Legende. Keine Spoiler über der Karte; vollständige Quellenangaben
+  (Renato CC0 1.0, Javierfv1212 Public Domain, Varana CC BY-SA 3.0 inkl. ShareAlike) nur darunter.
+  Thema bleibt **gesperrt**. Geschichte-Pack **1.4.4**.
+
 ## [0.28.10] – 2026-09-23
 
 ### Geändert

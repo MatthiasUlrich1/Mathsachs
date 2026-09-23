@@ -153,21 +153,35 @@ describe('Geschichte K6 Römische Zivilisation', () => {
     let withMap = 0
     let withEarly = 0
     let withExtent = 0
+    let colorAskWithPhase = 0
     for (let seed = 1; seed <= 80; seed++) {
       const task = GESCHICHTE_K6_GENERATORS['ge-k6-lb1-weltreich']!(createRng(seed))
       expect(task.check(task.sampleAnswer)).toBe(true)
       const vc = task.visualContent ?? ''
       const q = task.question ?? ''
-      // No spoiler captions that restate color+year before check
+      // No spoiler captions that restate color+year before check; attribution only under map
       expect(vc).not.toMatch(/Legende beachten/i)
+      expect(vc).not.toMatch(/Tipp:/i)
       expect(vc).not.toMatch(/Hellrot:\s*133/i)
       expect(vc).not.toMatch(/Dunkelrot:\s*218/i)
       expect(q).not.toMatch(/Varana-Karte/i)
       expect(q).not.toMatch(/Welche Karte zeigt/i)
+      if (/Was zeigt die .+ Farbe auf dieser Karte\?/.test(q)) {
+        colorAskWithPhase += 1
+        const labels =
+          task.interactive?.type === 'choicePick'
+            ? (task.interactive.props.choices as string[])
+            : []
+        expect(labels.length).toBeGreaterThan(1)
+        expect(labels.some((l) => /—/.test(l))).toBe(true)
+        expect(labels.every((l) => !/^\d+\s*[vn]\.\s*Chr\.\s*$/.test(l))).toBe(true)
+      }
       if (vc.includes('/maps/roman-') || vc.includes('/maps/roma-antiga')) {
         withMap += 1
         expect(vc).toContain('<img')
         expect(vc).not.toContain('<svg')
+        expect(vc).toMatch(/figcaption/i)
+        expect(vc).toMatch(/Wikimedia Commons/)
       }
       if (vc.includes('roma-antiga-500bc') || vc.includes('roman-conquest-of-italy')) withEarly += 1
       if (vc.includes('roman-extent-218bc-117ad-varana')) withExtent += 1
@@ -175,6 +189,7 @@ describe('Geschichte K6 Römische Zivilisation', () => {
     expect(withMap).toBeGreaterThan(5)
     expect(withEarly).toBeGreaterThan(0)
     expect(withExtent).toBeGreaterThan(0)
+    expect(colorAskWithPhase).toBeGreaterThan(5)
   })
 
   it('locks weltreich until freigabe; other K6 LB1 topics stay released', async () => {

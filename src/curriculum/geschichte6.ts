@@ -955,7 +955,8 @@ export const romPunisch: Topic['generate'] = mixedVariants(
 )
 
 // ─── Weltreich: Stadtstaat → Italien → Mare Nostrum (+ echte Commons-Karten) ─
-// Kartenaufgaben: nur Legende lesen (Farbe ↔ Jahr). Keine Spoiler-Hinweise über der Karte.
+// Kartenaufgaben: Legende lesen (Farbe ↔ Jahr + Entwicklungsphase).
+// Keine Spoiler über der Karte; Attribution nur unter dem Bild; keine Kartenvergleiche.
 
 function weltreichMapChoice(rng: Rng) {
   type Case = {
@@ -969,58 +970,37 @@ function weltreichMapChoice(rng: Rng) {
 
   for (const key of Object.keys(LATIUM_MAP_PHASES) as LatiumMapPhase[]) {
     const p = LATIUM_MAP_PHASES[key]
-    const others = Object.values(LATIUM_MAP_PHASES).filter((o) => o.year !== p.year)
+    const others = Object.values(LATIUM_MAP_PHASES).filter((o) => o.choice !== p.choice)
     cases.push({
       map: 'stadtstaat',
-      ask: `Was bedeutet ${p.colorAsk} auf dieser Karte?`,
-      correct: p.year,
-      wrong: others.map((o) => o.year),
-      wissen: `${p.colorShort} = ${p.year}. ${p.meaning}`,
-    })
-    cases.push({
-      map: 'stadtstaat',
-      ask: `Welches Jahr gehört zur Farbe ${p.colorShort}?`,
-      correct: p.year,
-      wrong: others.map((o) => o.year),
-      wissen: `${p.colorShort} = ${p.year}. ${p.meaning}`,
+      ask: `Was zeigt ${p.colorAsk} auf dieser Karte?`,
+      correct: p.choice,
+      wrong: others.map((o) => o.choice),
+      wissen: `${p.colorShort}: ${p.choice}. ${p.meaning}`,
     })
   }
 
   for (const key of Object.keys(ITALY_MAP_PHASES) as ItalyMapPhase[]) {
     const p = ITALY_MAP_PHASES[key]
-    const others = Object.values(ITALY_MAP_PHASES).filter((o) => o.year !== p.year)
+    const others = Object.values(ITALY_MAP_PHASES).filter((o) => o.choice !== p.choice)
     cases.push({
       map: 'italy',
-      ask: `Was bedeutet ${p.colorAsk} auf dieser Karte?`,
-      correct: p.year,
-      wrong: others.map((o) => o.year).slice(0, 3),
-      wissen: `${p.colorShort} = ${p.year}. ${p.meaning}`,
-    })
-    cases.push({
-      map: 'italy',
-      ask: `Welches Jahr gehört zur Farbe ${p.colorShort}?`,
-      correct: p.year,
-      wrong: others.map((o) => o.year).slice(0, 3),
-      wissen: `${p.colorShort} = ${p.year}. ${p.meaning}`,
+      ask: `Was zeigt ${p.colorAsk} auf dieser Karte?`,
+      correct: p.choice,
+      wrong: others.map((o) => o.choice).slice(0, 3),
+      wissen: `${p.colorShort}: ${p.choice}. ${p.meaning}`,
     })
   }
 
   for (const key of Object.keys(ROM_MAP_PHASES) as RomMapPhase[]) {
     const p = ROM_MAP_PHASES[key]
-    const others = Object.values(ROM_MAP_PHASES).filter((o) => o.year !== p.year)
+    const others = Object.values(ROM_MAP_PHASES).filter((o) => o.choice !== p.choice)
     cases.push({
       map: 'extent',
-      ask: `Was bedeutet ${p.colorAsk} auf dieser Karte?`,
-      correct: p.year,
-      wrong: others.map((o) => o.year).slice(0, 3),
-      wissen: `${p.colorShort} = ${p.year}. ${p.meaning}`,
-    })
-    cases.push({
-      map: 'extent',
-      ask: `Welches Jahr gehört zur Farbe ${p.colorShort}?`,
-      correct: p.year,
-      wrong: others.map((o) => o.year).slice(0, 3),
-      wissen: `${p.colorShort} = ${p.year}. ${p.meaning}`,
+      ask: `Was zeigt ${p.colorAsk} auf dieser Karte?`,
+      correct: p.choice,
+      wrong: others.map((o) => o.choice).slice(0, 3),
+      wissen: `${p.colorShort}: ${p.choice}. ${p.meaning}`,
     })
   }
 
@@ -1031,10 +1011,10 @@ function weltreichMapChoice(rng: Rng) {
     correct: c.correct,
     solution: c.correct,
     explanation: `${c.wissen} ${ROM_MAP_ATTRIBUTION}`,
-    instruction: 'Schau in die Legende und tippe das passende Jahr:',
+    instruction: 'Schau in die Legende und tippe die passende Antwort:',
     visualContent: romanExpansionMapHtml(c.map),
     fachwissen: fwMap(
-      'Jede Farbe in der Legende steht für ein Jahr. Lies die Legende auf der Karte.',
+      'Jede Farbe in der Legende steht für ein Jahr und eine Entwicklungsphase. Lies die Legende auf der Karte.',
     ),
   })
 }

@@ -454,7 +454,9 @@ export function defaultFachwissen(topic: TopicRef, subject?: string): Fachwissen
         'Personen: Hannibal, Scipio, Cato.',
       'ge-k6-lb1-weltreich':
         'Vom Stadtstaat zur Weltmacht: Wachstum um das Mittelmeer; Mare Nostrum = „unser Meer“. ' +
-        'Karten: Latium 500 v. Chr. (CC0), Eroberung Italiens (Public Domain), Varana ab 218 v. Chr. (CC BY-SA 3.0).',
+        'Karten (Wikimedia Commons): Renato de Carvalho Ferreira „Roma Antiga - 500 a.C.“ (2014, CC0 1.0); ' +
+        'Javierfv1212 „Roman conquest of Italy“ (2009, Public Domain); ' +
+        'Varana „Extent … 218 BC and 117 AD“ (2006, CC BY-SA 3.0 — ShareAlike beachten).',
       'ge-k6-lb1-buergerrecht':
         'Bürgerrecht: Schutz vor Willkür, Verträge, Testament, Wahlrecht — keine persönliche Königsmacht.',
       'ge-k6-lb1-rom':
