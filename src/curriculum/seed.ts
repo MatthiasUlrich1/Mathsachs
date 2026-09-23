@@ -108,13 +108,13 @@ export async function buildGymSachsenSeed(): Promise<CurriculumPack> {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Mathematik',
-    version: '1.2.6',
+    version: '1.2.7',
     changelog:
-      'K8 LB3 Grafik freigegeben: Gerade einstellen (4569), Nullstelle tippen (5997), Gerade zeichnen (6374).',
+      'K9/K10 Grafik freigegeben: Scheitel tippen (3505), Parabel-Nullstelle (3071), Scheitel tippen K10 (1077), Funktionswert ablesen (7302).',
     contentHash: packContentHash(official, extras),
     official,
     extras,
   }
 }
 
-export const GYM_SACHSEN_PACK_VERSION = '1.2.6'
+export const GYM_SACHSEN_PACK_VERSION = '1.2.7'

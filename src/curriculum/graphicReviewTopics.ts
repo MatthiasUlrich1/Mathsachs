@@ -157,72 +157,80 @@ export const math8GraphicReviews: Topic[] = [
 // ---------------------------------------------------------------------------
 
 export const math9GraphicReviews: Topic[] = [
-  asGraphicReview('k9-lb1-scheitel', {
-    id: 'k9-lb1-scheitel__grafik',
-    title: 'Scheitelpunkt am Graphen tippen',
-    hint: 'Tippe den tiefsten bzw. höchsten Punkt der Parabel.',
-    pointsPerTask: 10,
-    difficulty: 2,
-    keywords: ['Scheitelpunkt', 'Parabel', 'Graph'],
-    fachwissen: {
-      text: 'Scheitel = Extremum der Parabel. In f(x)=a(x−d)²+e liegt er bei S(d|e).',
-      quelle: 'Wikipedia: Scheitelpunktform',
-      url: 'https://de.wikipedia.org/wiki/Quadratische_Funktion#Scheitelpunktform',
-    },
-    generate: (rng: Rng) => {
-      const a = pick(rng, [-1, 1])
-      const d = nonZero(rng, -3, 3)
-      const e = randInt(rng, -3, 3)
-      return coordinateClickTask({
-        question: `Tippe den Scheitelpunkt von ${scheitelForm(a, d, e)}.`,
-        x: d,
-        y: e,
-        solution: `(${d}|${e})`,
-        explanation: `Scheitel S(${d}|${e}).`,
-        xRange: [-6, 6],
-        yRange: [-6, 6],
-        instruction: 'Tippe den Scheitel S:',
-        visualContent: generateFunctionGraphSvg({
-          f: (x) => a * (x - d) * (x - d) + e,
+  asGraphicReview(
+    'k9-lb1-scheitel',
+    {
+      id: 'k9-lb1-scheitel__grafik',
+      title: 'Scheitelpunkt am Graphen tippen',
+      hint: 'Tippe den tiefsten bzw. höchsten Punkt der Parabel.',
+      pointsPerTask: 10,
+      difficulty: 2,
+      keywords: ['Scheitelpunkt', 'Parabel', 'Graph'],
+      fachwissen: {
+        text: 'Scheitel = Extremum der Parabel. In f(x)=a(x−d)²+e liegt er bei S(d|e).',
+        quelle: 'Wikipedia: Scheitelpunktform',
+        url: 'https://de.wikipedia.org/wiki/Quadratische_Funktion#Scheitelpunktform',
+      },
+      generate: (rng: Rng) => {
+        const a = pick(rng, [-1, 1])
+        const d = nonZero(rng, -3, 3)
+        const e = randInt(rng, -3, 3)
+        return coordinateClickTask({
+          question: `Tippe den Scheitelpunkt von ${scheitelForm(a, d, e)}.`,
+          x: d,
+          y: e,
+          solution: `(${d}|${e})`,
+          explanation: `Scheitel S(${d}|${e}).`,
           xRange: [-6, 6],
           yRange: [-6, 6],
-        }),
-      })
+          instruction: 'Tippe den Scheitel S:',
+          visualContent: generateFunctionGraphSvg({
+            f: (x) => a * (x - d) * (x - d) + e,
+            xRange: [-6, 6],
+            yRange: [-6, 6],
+          }),
+        })
+      },
     },
-  }),
+    { released: true },
+  ),
 
-  asGraphicReview('k9-lb1-quadrat-wert', {
-    id: 'k9-lb1-quadrat-wert__grafik',
-    title: 'Nullstelle einer Parabel tippen',
-    hint: 'Tippe einen Schnittpunkt mit der x-Achse.',
-    pointsPerTask: 10,
-    difficulty: 2,
-    keywords: ['Nullstelle', 'Parabel', 'x-Achse'],
-    fachwissen: {
-      text: 'Nullstellen: Schnittpunkte der Parabel mit der x-Achse (f(x)=0).',
-      quelle: 'Wikipedia: Nullstelle',
-      url: 'https://de.wikipedia.org/wiki/Nullstelle',
-    },
-    generate: (rng: Rng) => {
-      // Eine klare Nullstelle (Berührpunkt): f(x) = (x − r)²
-      const r = nonZero(rng, -3, 3)
-      return coordinateClickTask({
-        question: `Die Parabel f(x) = (x − ${num(r)})² berührt die x-Achse. Tippe die Nullstelle.`,
-        x: r,
-        y: 0,
-        solution: `(${r}|0)`,
-        explanation: `f(x) = 0 ⇒ x = ${r} (doppelte Nullstelle / Scheitel auf der x-Achse).`,
-        xRange: [-6, 6],
-        yRange: [-1, 8],
-        instruction: 'Tippe den Berührpunkt mit der x-Achse:',
-        visualContent: generateFunctionGraphSvg({
-          f: (x) => (x - r) * (x - r),
+  asGraphicReview(
+    'k9-lb1-quadrat-wert',
+    {
+      id: 'k9-lb1-quadrat-wert__grafik',
+      title: 'Nullstelle einer Parabel tippen',
+      hint: 'Tippe einen Schnittpunkt mit der x-Achse.',
+      pointsPerTask: 10,
+      difficulty: 2,
+      keywords: ['Nullstelle', 'Parabel', 'x-Achse'],
+      fachwissen: {
+        text: 'Nullstellen: Schnittpunkte der Parabel mit der x-Achse (f(x)=0).',
+        quelle: 'Wikipedia: Nullstelle',
+        url: 'https://de.wikipedia.org/wiki/Nullstelle',
+      },
+      generate: (rng: Rng) => {
+        // Eine klare Nullstelle (Berührpunkt): f(x) = (x − r)²
+        const r = nonZero(rng, -3, 3)
+        return coordinateClickTask({
+          question: `Die Parabel f(x) = (x − ${num(r)})² berührt die x-Achse. Tippe die Nullstelle.`,
+          x: r,
+          y: 0,
+          solution: `(${r}|0)`,
+          explanation: `f(x) = 0 ⇒ x = ${r} (doppelte Nullstelle / Scheitel auf der x-Achse).`,
           xRange: [-6, 6],
           yRange: [-1, 8],
-        }),
-      })
+          instruction: 'Tippe den Berührpunkt mit der x-Achse:',
+          visualContent: generateFunctionGraphSvg({
+            f: (x) => (x - r) * (x - r),
+            xRange: [-6, 6],
+            yRange: [-1, 8],
+          }),
+        })
+      },
     },
-  }),
+    { released: true },
+  ),
 ]
 
 // ---------------------------------------------------------------------------
@@ -230,74 +238,82 @@ export const math9GraphicReviews: Topic[] = [
 // ---------------------------------------------------------------------------
 
 export const math10GraphicReviews: Topic[] = [
-  asGraphicReview('k10-lb4-parabel-wert', {
-    id: 'k10-lb4-parabel-wert__grafik',
-    title: 'Scheitel einer Parabel tippen',
-    hint: 'Tippe den Scheitel der gezeichneten Parabel.',
-    pointsPerTask: 10,
-    difficulty: 2,
-    keywords: ['Scheitel', 'Parabel', 'Graph'],
-    fachwissen: {
-      text: 'Bei f(x)=a·x² + c liegt der Scheitel bei S(0|c).',
-      quelle: 'Wikipedia: Parabel (Mathematik)',
-      url: 'https://de.wikipedia.org/wiki/Parabel_(Mathematik)',
-    },
-    generate: (rng: Rng) => {
-      const a = pick(rng, [-2, -1, 1, 2])
-      const c = nonZero(rng, -3, 3)
-      return coordinateClickTask({
-        question: `Tippe den Scheitelpunkt von f(x) = ${num(a)}·x² + ${num(c)}.`,
-        x: 0,
-        y: c,
-        solution: `(0|${c})`,
-        explanation: `Ohne x-Term: Scheitel S(0|${c}).`,
-        xRange: [-5, 5],
-        yRange: [-6, 8],
-        instruction: 'Tippe den Scheitel:',
-        visualContent: generateFunctionGraphSvg({
-          f: (x) => a * x * x + c,
+  asGraphicReview(
+    'k10-lb4-parabel-wert',
+    {
+      id: 'k10-lb4-parabel-wert__grafik',
+      title: 'Scheitel einer Parabel tippen',
+      hint: 'Tippe den Scheitel der gezeichneten Parabel.',
+      pointsPerTask: 10,
+      difficulty: 2,
+      keywords: ['Scheitel', 'Parabel', 'Graph'],
+      fachwissen: {
+        text: 'Bei f(x)=a·x² + c liegt der Scheitel bei S(0|c).',
+        quelle: 'Wikipedia: Parabel (Mathematik)',
+        url: 'https://de.wikipedia.org/wiki/Parabel_(Mathematik)',
+      },
+      generate: (rng: Rng) => {
+        const a = pick(rng, [-2, -1, 1, 2])
+        const c = nonZero(rng, -3, 3)
+        return coordinateClickTask({
+          question: `Tippe den Scheitelpunkt von f(x) = ${num(a)}·x² + ${num(c)}.`,
+          x: 0,
+          y: c,
+          solution: `(0|${c})`,
+          explanation: `Ohne x-Term: Scheitel S(0|${c}).`,
           xRange: [-5, 5],
           yRange: [-6, 8],
-        }),
-      })
+          instruction: 'Tippe den Scheitel:',
+          visualContent: generateFunctionGraphSvg({
+            f: (x) => a * x * x + c,
+            xRange: [-5, 5],
+            yRange: [-6, 8],
+          }),
+        })
+      },
     },
-  }),
+    { released: true },
+  ),
 
-  asGraphicReview('k10-lb4-parabel-wert', {
-    id: 'k10-lb4-parabel-wert__grafik-ablesen',
-    title: 'Funktionswert am Parabelgraphen',
-    hint: 'Lies f(x₀) am Graphen ab (oder rechne nach).',
-    pointsPerTask: 10,
-    difficulty: 2,
-    keywords: ['Funktionswert', 'Parabel', 'ablesen'],
-    fachwissen: {
-      text: 'Am Graphen: vom x-Wert senkrecht zum Graphen, dann zur y-Achse.',
-      quelle: 'Wikipedia: Funktionsgraph',
-      url: 'https://de.wikipedia.org/wiki/Funktionsgraph',
+  asGraphicReview(
+    'k10-lb4-parabel-wert',
+    {
+      id: 'k10-lb4-parabel-wert__grafik-ablesen',
+      title: 'Funktionswert am Parabelgraphen',
+      hint: 'Lies f(x₀) am Graphen ab (oder rechne nach).',
+      pointsPerTask: 10,
+      difficulty: 2,
+      keywords: ['Funktionswert', 'Parabel', 'ablesen'],
+      fachwissen: {
+        text: 'Am Graphen: vom x-Wert senkrecht zum Graphen, dann zur y-Achse.',
+        quelle: 'Wikipedia: Funktionsgraph',
+        url: 'https://de.wikipedia.org/wiki/Funktionsgraph',
+      },
+      generate: (rng: Rng) => {
+        const a = pick(rng, [-1, 1, 2])
+        const c = randInt(rng, -2, 2)
+        const x0 = nonZero(rng, -3, 3)
+        const value = a * x0 * x0 + c
+        return visualTask({
+          question: `Am Graphen von f(x) = ${num(a)}·x² + ${num(c)}: Welchen y-Wert hat der markierte Punkt bei x = ${x0}?`,
+          answerKind: 'integer',
+          value,
+          solution: `${value}`,
+          explanation: `f(${x0}) = ${num(a)}·${x0}² + ${num(c)} = ${value}.`,
+          visualContent: generateFunctionGraphSvg({
+            f: (x) => a * x * x + c,
+            points: [{ x: x0, y: value, label: `(${x0}|?)` }],
+            xRange: [-5, 5],
+            yRange: [
+              Math.min(-6, value - 2, c - 2),
+              Math.max(8, value + 2, c + 2),
+            ],
+          }),
+        })
+      },
     },
-    generate: (rng: Rng) => {
-      const a = pick(rng, [-1, 1, 2])
-      const c = randInt(rng, -2, 2)
-      const x0 = nonZero(rng, -3, 3)
-      const value = a * x0 * x0 + c
-      return visualTask({
-        question: `Am Graphen von f(x) = ${num(a)}·x² + ${num(c)}: Welchen y-Wert hat der markierte Punkt bei x = ${x0}?`,
-        answerKind: 'integer',
-        value,
-        solution: `${value}`,
-        explanation: `f(${x0}) = ${num(a)}·${x0}² + ${num(c)} = ${value}.`,
-        visualContent: generateFunctionGraphSvg({
-          f: (x) => a * x * x + c,
-          points: [{ x: x0, y: value, label: `(${x0}|?)` }],
-          xRange: [-5, 5],
-          yRange: [
-            Math.min(-6, value - 2, c - 2),
-            Math.max(8, value + 2, c + 2),
-          ],
-        }),
-      })
-    },
-  }),
+    { released: true },
+  ),
 ]
 
 // ---------------------------------------------------------------------------

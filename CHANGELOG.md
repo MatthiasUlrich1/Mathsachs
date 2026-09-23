@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.17] – 2026-09-23
+
+### Geändert
+- **Mathe K9/K10 Grafik freigegeben:** ID **3505** Scheitelpunkt am Graphen tippen,
+  ID **3071** Nullstelle einer Parabel tippen, ID **1077** Scheitel einer Parabel
+  tippen, ID **7302** Funktionswert am Parabelgraphen (`…__grafik`). Mathe-Pack
+  **1.2.7**. „Grafik-Prüfung“-Badge entfällt für freigegebene Themen (wie in 0.28.15).
+
 ## [0.28.16] – 2026-09-23
 
 ### Hinzugefügt

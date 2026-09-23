@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-23T19:25:04.511Z",
+  "updatedAt": "2026-09-23T19:36:50.545Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -7,10 +7,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Mathematik",
-      "version": "1.2.6",
+      "version": "1.2.7",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen.json",
-      "size": 66427,
-      "changelog": "K8 LB3 Grafik freigegeben: Gerade einstellen (4569), Nullstelle tippen (5997), Gerade zeichnen (6374)."
+      "size": 66260,
+      "changelog": "K9/K10 Grafik freigegeben: Scheitel tippen (3505), Parabel-Nullstelle (3071), Scheitel tippen K10 (1077), Funktionswert ablesen (7302)."
     },
     {
       "id": "gym-sachsen-physik",

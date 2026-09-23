@@ -21,9 +21,13 @@ describe('graphic review topics', () => {
     'k8-lb3-steigung__grafik',
     'k8-lb3-achsenabschnitt__grafik',
     'k8-lb3-funktionswert__grafik',
+    'k9-lb1-scheitel__grafik',
+    'k9-lb1-quadrat-wert__grafik',
+    'k10-lb4-parabel-wert__grafik',
+    'k10-lb4-parabel-wert__grafik-ablesen',
   ])
 
-  it('are locked under a parent id (except freigegebene K8-Grafiken)', () => {
+  it('are locked under a parent id (except freigegebene K8–K10-Grafiken)', () => {
     expect(ALL.length).toBeGreaterThanOrEqual(8)
     for (const t of ALL) {
       expect(t.reviewOf).toBeTruthy()

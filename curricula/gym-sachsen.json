@@ -4,9 +4,9 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Mathematik",
-  "version": "1.2.6",
-  "changelog": "K8 LB3 Grafik freigegeben: Gerade einstellen (4569), Nullstelle tippen (5997), Gerade zeichnen (6374).",
-  "contentHash": "6af8c100",
+  "version": "1.2.7",
+  "changelog": "K9/K10 Grafik freigegeben: Scheitel tippen (3505), Parabel-Nullstelle (3071), Scheitel tippen K10 (1077), Funktionswert ablesen (7302).",
+  "contentHash": "c57411be",
   "official": [
     {
       "id": "klasse-5",
@@ -1447,7 +1447,7 @@
             },
             {
               "id": "k9-lb1-scheitel__grafik",
-              "title": "Scheitelpunkt am Graphen tippen · Grafik (Prüfung)",
+              "title": "Scheitelpunkt am Graphen tippen",
               "hint": "Tippe den tiefsten bzw. höchsten Punkt der Parabel.",
               "pointsPerTask": 10,
               "keywords": [
@@ -1455,16 +1455,15 @@
                 "Parabel",
                 "Graph",
                 "Grafik",
-                "Prüfung",
                 "Interactive",
                 "k9-lb1-scheitel"
               ],
-              "released": false,
+              "released": true,
               "reviewOf": "k9-lb1-scheitel"
             },
             {
               "id": "k9-lb1-quadrat-wert__grafik",
-              "title": "Nullstelle einer Parabel tippen · Grafik (Prüfung)",
+              "title": "Nullstelle einer Parabel tippen",
               "hint": "Tippe einen Schnittpunkt mit der x-Achse.",
               "pointsPerTask": 10,
               "keywords": [
@@ -1472,11 +1471,10 @@
                 "Parabel",
                 "x-Achse",
                 "Grafik",
-                "Prüfung",
                 "Interactive",
                 "k9-lb1-quadrat-wert"
               ],
-              "released": false,
+              "released": true,
               "reviewOf": "k9-lb1-quadrat-wert"
             }
           ]
@@ -1831,7 +1829,7 @@
             },
             {
               "id": "k10-lb4-parabel-wert__grafik",
-              "title": "Scheitel einer Parabel tippen · Grafik (Prüfung)",
+              "title": "Scheitel einer Parabel tippen",
               "hint": "Tippe den Scheitel der gezeichneten Parabel.",
               "pointsPerTask": 10,
               "keywords": [
@@ -1839,16 +1837,15 @@
                 "Parabel",
                 "Graph",
                 "Grafik",
-                "Prüfung",
                 "Interactive",
                 "k10-lb4-parabel-wert"
               ],
-              "released": false,
+              "released": true,
               "reviewOf": "k10-lb4-parabel-wert"
             },
             {
               "id": "k10-lb4-parabel-wert__grafik-ablesen",
-              "title": "Funktionswert am Parabelgraphen · Grafik (Prüfung)",
+              "title": "Funktionswert am Parabelgraphen",
               "hint": "Lies f(x₀) am Graphen ab (oder rechne nach).",
               "pointsPerTask": 10,
               "keywords": [
@@ -1856,11 +1853,10 @@
                 "Parabel",
                 "ablesen",
                 "Grafik",
-                "Prüfung",
                 "Interactive",
                 "k10-lb4-parabel-wert"
               ],
-              "released": false,
+              "released": true,
               "reviewOf": "k10-lb4-parabel-wert"
             }
           ]
