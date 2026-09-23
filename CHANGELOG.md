@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.4] – 2026-09-23
+
+### Geändert
+- **Footer:** „Übungsprogramm nach Lehrplan“ — Hinweis „erweiterbar …“ entfernt;
+  Version und Installationszahl bleiben.
+
 ## [0.28.3] – 2026-09-23
 
 ### Geändert
