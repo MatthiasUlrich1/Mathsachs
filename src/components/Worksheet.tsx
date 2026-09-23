@@ -2,6 +2,8 @@ import { useMemo, useState } from 'react'
 import { createRng, timeSeed } from '../lib/rng'
 import type { Task, Topic } from '../curriculum/types'
 import { buildUniqueTaskRound } from '../curriculum/uniqueRound'
+import { worksheetPrintExtras } from '../lib/worksheetPrint'
+import { TaskVisual } from './TaskMedia'
 
 interface Props {
   topic: Topic
@@ -11,6 +13,36 @@ interface Props {
 }
 
 const COUNTS = [10, 15, 20, 30]
+
+function WorksheetTaskItem({ task }: { task: Task }) {
+  const extras = worksheetPrintExtras(task)
+  return (
+    <li className="sheet__task">
+      <div className="sheet__task-row">
+        <span className="sheet__q">{task.question}</span>
+        {extras.answerBlank && extras.answerBlank !== '□' && (
+          <span className="sheet__blank">{extras.answerBlank}</span>
+        )}
+      </div>
+      {extras.paperHint && (
+        <p className="sheet__paper-hint">{extras.paperHint}</p>
+      )}
+      {extras.visualHtml && <TaskVisual html={extras.visualHtml} />}
+      {extras.options && extras.options.length > 0 && (
+        <ul className="sheet__options">
+          {extras.options.map((opt, j) => (
+            <li key={j}>
+              <span className="sheet__option-box" aria-hidden="true">
+                □
+              </span>{' '}
+              {opt}
+            </li>
+          ))}
+        </ul>
+      )}
+    </li>
+  )
+}
 
 export function Worksheet({ topic, areaTitle, gradeTitle, onExit }: Props) {
   const [count, setCount] = useState(15)
@@ -73,13 +105,7 @@ export function Worksheet({ topic, areaTitle, gradeTitle, onExit }: Props) {
 
         <ol className="sheet__tasks">
           {tasks.map((t, i) => (
-            <li key={i} className="sheet__task">
-              <span className="sheet__q">{t.question}</span>
-              <span className="sheet__blank">
-                {t.answerKind === 'fraction' ? '______ / ______' : '__________'}
-                {t.unit ? ` ${t.unit}` : ''}
-              </span>
-            </li>
+            <WorksheetTaskItem key={i} task={t} />
           ))}
         </ol>
 

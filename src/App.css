@@ -1644,19 +1644,65 @@ select.answer-input__field {
   margin: 20px 0;
   padding-left: 22px;
   display: grid;
-  gap: 12px;
+  gap: 18px;
 }
 
 .sheet__task {
   display: flex;
-  justify-content: space-between;
-  gap: 16px;
+  flex-direction: column;
+  gap: 6px;
   font-size: 15px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.sheet__task-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
 }
 
 .sheet__blank {
   color: #6b7280;
-  white-space: nowrap;
+  white-space: normal;
+  text-align: right;
+  flex-shrink: 0;
+  max-width: 48%;
+}
+
+.sheet__paper-hint {
+  margin: 0;
+  font-size: 12.5px;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.sheet__options {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+  font-size: 14px;
+  color: #111827;
+}
+
+.sheet__option-box {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  color: #374151;
+}
+
+.sheet .task-visual {
+  margin: 6px 0 2px;
+  padding: 8px 10px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.sheet .task-visual svg {
+  max-height: 220px;
 }
 
 .sheet__solutions {

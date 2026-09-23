@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.16] – 2026-09-23
+
+### Hinzugefügt
+- **Übungsblätter mit Grafiken:** `visualContent` (SVG/Bilder) erscheint auf dem
+  Druckblatt; Interaktives (Koordinatensystem tippen/zeichnen, Parameter-Slider,
+  Multiple Choice, Drag-and-Drop, Zifferngitter, …) wird als statisches Diagramm
+  bzw. Papier-Prompt dargestellt — relevant u. a. für freigegebene K8-Grafik-Themen
+  (Gerade einstellen / Nullstelle tippen / Gerade zeichnen).
+
 ## [0.28.15] – 2026-09-23
 
 ### Geändert
