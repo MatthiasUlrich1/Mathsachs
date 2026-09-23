@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.10] – 2026-09-23
+
+### Geändert
+- **Geschichte K6 Mare Nostrum (ID 6763):** Kartenaufgaben nur noch einfache Legenden-Fragen
+  („Was bedeutet die hellrote Farbe?“ → Jahr). Keine Spoiler-Hinweise über der Karte, keine
+  Kartenvergleiche / „Welche Karte…“. Thema bleibt **gesperrt**. Geschichte-Pack **1.4.3**.
+
 ## [0.28.9] – 2026-09-23
 
 ### Geändert

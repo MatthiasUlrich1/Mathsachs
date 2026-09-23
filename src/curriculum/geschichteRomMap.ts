@@ -17,32 +17,104 @@ export const ROM_MAP_QUELLE = {
   url: 'https://commons.wikimedia.org/wiki/File:Roma_Antiga_-_500_a.C..svg',
 } as const
 
-/** Legend phases of the Varana extent map (colors as on the Commons file). Starts 218 BC — not Stadtstaat. */
+/** Latium-Karte (Renato): Legende „Expansão territorial“ — Grün / Gelb / Orange-Rot. */
+export const LATIUM_MAP_PHASES = {
+  p753: {
+    fill: '#3a8a4a',
+    colorAsk: 'die grüne Farbe',
+    colorShort: 'Grün',
+    year: '753 v. Chr.',
+    meaning: 'Gebiet um 753 v. Chr. (Gründungssage — kleinster Kern um Rom)',
+  },
+  p700: {
+    fill: '#e8c838',
+    colorAsk: 'die gelbe Farbe',
+    colorShort: 'Gelb',
+    year: '700 v. Chr.',
+    meaning: 'Gebiet um 700 v. Chr. (erste Erweiterung um Rom)',
+  },
+  p500: {
+    fill: '#c45c2c',
+    colorAsk: 'die orange-rote Farbe',
+    colorShort: 'Orange/Rot',
+    year: '500 v. Chr.',
+    meaning: 'Gebiet um 500 v. Chr. (größere Fläche in Latium)',
+  },
+} as const
+
+export type LatiumMapPhase = keyof typeof LATIUM_MAP_PHASES
+
+/** Italien-Karte (Javierfv1212): Phasenfarben mit Jahreszahlen v. Chr. */
+export const ITALY_MAP_PHASES = {
+  p500: {
+    colorAsk: 'die dunkelrote Farbe',
+    colorShort: 'Dunkelrot',
+    year: '500 v. Chr.',
+    meaning: 'Gebiet um 500 v. Chr. (früher Kern um Rom)',
+  },
+  p338: {
+    colorAsk: 'die hellrote Farbe',
+    colorShort: 'Hellrot',
+    year: '338 v. Chr.',
+    meaning: 'Gebiet um 338 v. Chr. (nach dem Latinerkrieg)',
+  },
+  p272: {
+    colorAsk: 'die beige Farbe',
+    colorShort: 'Beige',
+    year: '272 v. Chr.',
+    meaning: 'Gebiet um 272 v. Chr. (nach dem Pyrrhoskrieg — Süditalien)',
+  },
+  p218: {
+    colorAsk: 'die hellgrüne Farbe',
+    colorShort: 'Hellgrün',
+    year: '218 v. Chr.',
+    meaning: 'Gebiet um 218 v. Chr. (Beginn des Zweiten Punischen Krieges)',
+  },
+} as const
+
+export type ItalyMapPhase = keyof typeof ITALY_MAP_PHASES
+
+/** Legend phases of the Varana extent map (colors as on the Commons file). Starts 218 BC. */
 export const ROM_MAP_PHASES = {
   p218: {
     fill: '#7a1515',
+    colorAsk: 'die dunkelrote Farbe',
+    colorShort: 'Dunkelrot',
+    year: '218 v. Chr.',
     label: 'Dunkelrot: 218 v. Chr.',
-    meaning: 'Kerngebiet vor dem Zweiten Punischen Krieg (Varana beginnt hier — nicht Stadtstaat)',
+    meaning: 'Gebiet um 218 v. Chr. (früheste Phase auf dieser Karte)',
   },
   p133: {
     fill: '#c45c5c',
+    colorAsk: 'die hellrote Farbe',
+    colorShort: 'Hellrot',
+    year: '133 v. Chr.',
     label: 'Hellrot: 133 v. Chr.',
-    meaning: 'Nach den großen Kriegen im Westen — Vormacht ums Westmittelmeer',
+    meaning: 'Gebiet um 133 v. Chr. (nach den großen Kriegen im Westen)',
   },
   p44: {
     fill: '#e07a28',
+    colorAsk: 'die orange Farbe',
+    colorShort: 'Orange',
+    year: '44 v. Chr.',
     label: 'Orange: 44 v. Chr.',
-    meaning: 'Späte Republik (Tod Caesars)',
+    meaning: 'Gebiet um 44 v. Chr. (späte Republik)',
   },
   p14: {
     fill: '#e8c838',
+    colorAsk: 'die gelbe Farbe',
+    colorShort: 'Gelb',
+    year: '14 n. Chr.',
     label: 'Gelb: 14 n. Chr.',
-    meaning: 'Reich unter Augustus (Tod des Augustus)',
+    meaning: 'Gebiet um 14 n. Chr. (Tod des Augustus)',
   },
   p117: {
     fill: '#3a8a4a',
-    label: 'Grün: nach 14 / Trajan 117 n. Chr.',
-    meaning: 'Weitere Erwerbungen bis zur größten Ausdehnung',
+    colorAsk: 'die grüne Farbe',
+    colorShort: 'Grün',
+    year: '117 n. Chr.',
+    label: 'Grün: 117 n. Chr.',
+    meaning: 'Gebiet um 117 n. Chr. (größte Ausdehnung unter Trajan)',
   },
 } as const
 
@@ -56,55 +128,35 @@ const ITALY_SRC = '/maps/roman-conquest-of-italy.png'
 const EXTENT_SRC = '/maps/roman-extent-218bc-117ad-varana-1280.png'
 
 const STADTSTAAT_CAPTION =
-  'Renato de Carvalho Ferreira: Römisches Gebiet um 500 v. Chr. (Stadtstaat/Latium), CC0 1.0'
+  'Renato de Carvalho Ferreira, „Roma Antiga - 500 a.C.“, Wikimedia Commons, CC0 1.0'
 const ITALY_CAPTION =
-  'Javierfv1212: Eroberung Italiens durch Rom (ca. 500–218 v. Chr.), Public Domain'
+  'Javierfv1212, „Roman conquest of Italy“, Wikimedia Commons, Public Domain'
 const EXTENT_CAPTION =
-  'Varana: Ausdehnung der römischen Republik und des Römischen Reichs 218 v. Chr.–117 n. Chr. (CC BY-SA 3.0) — beginnt erst 218 v. Chr.'
+  'Varana, Wikimedia Commons, CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Extent_of_the_Roman_Republic_and_the_Roman_Empire_between_218_BC_and_117_AD.png'
+
+const LEGEND_HINT =
+  '<p style="margin:0 0 8px;font-size:0.95rem;line-height:1.35"><strong>Tipp:</strong> Schau in die Legende der Karte — jede Farbe steht für ein Jahr.</p>'
 
 /**
- * HTML figure with the real Commons map (img), optional focus hint for a phase,
- * and a short license line under the image.
+ * HTML figure with the real Commons map (img) and a short license line.
+ * Hints stay neutral (no year/color spoilers — pupils read the legend).
  */
 export function romanExpansionMapHtml(
   kind: RomMapKind = 'extent',
-  focus?: RomMapPhase | 'mare' | 'all' | 'stadtstaat' | 'italy',
+  _focus?: RomMapPhase | 'mare' | 'all' | 'stadtstaat' | 'italy' | LatiumMapPhase | ItalyMapPhase,
 ): string {
   const src = kind === 'stadtstaat' ? STADTSTAAT_SRC : kind === 'italy' ? ITALY_SRC : EXTENT_SRC
   const alt =
     kind === 'stadtstaat'
-      ? 'Historische Karte: Rom als Stadtstaat um 500 v. Chr. (Latium)'
+      ? 'Historische Karte: frühes Rom in Latium (Farben = Jahre)'
       : kind === 'italy'
-        ? 'Historische Karte: Eroberung Italiens durch Rom (vor 218 v. Chr.)'
-        : 'Historische Karte: Ausdehnung Roms vom Mittelmeer bis Trajan (ab 218 v. Chr.)'
+        ? 'Historische Karte: Eroberung Italiens durch Rom (Farben = Jahre)'
+        : 'Historische Karte: Ausdehnung Roms (Farben = Jahre)'
   const caption =
     kind === 'stadtstaat' ? STADTSTAAT_CAPTION : kind === 'italy' ? ITALY_CAPTION : EXTENT_CAPTION
 
-  let hint = ''
-  if (kind === 'stadtstaat') {
-    hint =
-      '<p style="margin:0 0 8px;font-size:0.95rem;line-height:1.35"><strong>Blick auf die Karte:</strong> Frühes Rom als Stadtstaat — kleines Gebiet am Tiber in Latium (Phasen bis ca. 500 v. Chr.).</p>'
-  } else if (kind === 'italy') {
-    hint =
-      '<p style="margin:0 0 8px;font-size:0.95rem;line-height:1.35"><strong>Blick auf die Karte:</strong> Vom Stadtstaat zur Landmacht auf der italienischen Halbinsel (Zahlen = Jahre v. Chr., bis 218).</p>'
-  } else if (focus && focus !== 'all') {
-    if (focus === 'mare') {
-      hint =
-        '<p style="margin:0 0 8px;font-size:0.95rem;line-height:1.35"><strong>Blick auf die Karte:</strong> Spätere Farben (gelb/grün) umschließen das Mittelmeer — Mare Nostrum („unser Meer“). Diese Karte beginnt erst 218 v. Chr.</p>'
-    } else if (focus === 'stadtstaat' || focus === 'italy') {
-      hint =
-        '<p style="margin:0 0 8px;font-size:0.95rem;line-height:1.35"><strong>Hinweis:</strong> Stadtstaat und frühe Italien-Expansion liegen <em>vor</em> 218 v. Chr. — dafür die anderen Karten (Latium / Italien).</p>'
-    } else {
-      const p = ROM_MAP_PHASES[focus]
-      hint = `<p style="margin:0 0 8px;font-size:0.95rem;line-height:1.35"><strong>Legende beachten:</strong> ${p.label} — ${p.meaning}.</p>`
-    }
-  } else {
-    hint =
-      '<p style="margin:0 0 8px;font-size:0.95rem;line-height:1.35"><strong>Gesamtkarte (ab 218 v. Chr.):</strong> Farben zeigen Wachstumsschritte vom Kern (dunkelrot) zur größten Ausdehnung (grün). Stadtstaat und frühe Italien-Eroberung sind hier nicht dargestellt.</p>'
-  }
-
   return `<figure style="margin:0;max-width:100%;text-align:center">
-  ${hint}
+  ${LEGEND_HINT}
   <img src="${src}" alt="${alt}" style="display:block;max-width:100%;width:100%;height:auto;margin:0 auto;border-radius:4px" loading="lazy" decoding="async"/>
   <figcaption style="margin-top:8px;font-size:0.72rem;line-height:1.35;opacity:0.85;text-align:left">${caption}</figcaption>
 </figure>`

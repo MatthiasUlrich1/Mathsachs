@@ -18,8 +18,8 @@ export function buildGymSachsenGeschichtePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Geschichte',
-    version: '1.4.2',
-    changelog: `Klassen 5–12 (Gk/Lk) · ${topics} Themen. K6 LB1 Rom freigegeben (weltreich/Mare-Nostrum gesperrt; Stadtstaat-/Italien-Karten). Ohne Netz lokale Fassung.`,
+    version: '1.4.3',
+    changelog: `Klassen 5–12 (Gk/Lk) · ${topics} Themen. K6 LB1 Rom freigegeben (weltreich/Mare-Nostrum gesperrt; einfache Legenden-Aufgaben). Ohne Netz lokale Fassung.`,
     official,
     extras: [],
   }

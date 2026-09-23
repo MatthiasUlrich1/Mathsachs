@@ -157,13 +157,14 @@ describe('Geschichte K6 Römische Zivilisation', () => {
       const task = GESCHICHTE_K6_GENERATORS['ge-k6-lb1-weltreich']!(createRng(seed))
       expect(task.check(task.sampleAnswer)).toBe(true)
       const vc = task.visualContent ?? ''
-      if (
-        vc.includes('/maps/roman-') ||
-        vc.includes('/maps/roma-antiga') ||
-        vc.includes('Mare Nostrum') ||
-        vc.includes('Mittelmeer') ||
-        vc.includes('Stadtstaat')
-      ) {
+      const q = task.question ?? ''
+      // No spoiler captions that restate color+year before check
+      expect(vc).not.toMatch(/Legende beachten/i)
+      expect(vc).not.toMatch(/Hellrot:\s*133/i)
+      expect(vc).not.toMatch(/Dunkelrot:\s*218/i)
+      expect(q).not.toMatch(/Varana-Karte/i)
+      expect(q).not.toMatch(/Welche Karte zeigt/i)
+      if (vc.includes('/maps/roman-') || vc.includes('/maps/roma-antiga')) {
         withMap += 1
         expect(vc).toContain('<img')
         expect(vc).not.toContain('<svg')

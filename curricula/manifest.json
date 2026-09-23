@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-23T17:29:40.621Z",
+  "updatedAt": "2026-09-23T18:36:00.597Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -29,10 +29,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Geschichte",
-      "version": "1.4.2",
+      "version": "1.4.3",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-geschichte.json",
       "size": 41400,
-      "changelog": "Klassen 5–12 (Gk/Lk) · 67 Themen. K6 LB1 Rom freigegeben (weltreich/Mare-Nostrum gesperrt; Stadtstaat-/Italien-Karten). Ohne Netz lokale Fassung."
+      "changelog": "Klassen 5–12 (Gk/Lk) · 67 Themen. K6 LB1 Rom freigegeben (weltreich/Mare-Nostrum gesperrt; einfache Legenden-Aufgaben). Ohne Netz lokale Fassung."
     },
     {
       "id": "gym-sachsen-anhalt",
