@@ -9,8 +9,8 @@ import {
   ROM_MAP_ATTRIBUTION,
   ROM_MAP_PHASES,
   ROM_MAP_QUELLE,
-  romanExpansionMapSvg,
-  type RomMapHighlight,
+  romanExpansionMapHtml,
+  type RomMapPhase,
 } from './geschichteRomMap'
 import {
   choicePickTask,
@@ -950,57 +950,81 @@ export const romPunisch: Topic['generate'] = mixedVariants(
     }),
 )
 
-// ─── Weltreich: Mare Nostrum / Expansion (+ Karte) ───────────────────────────
+// ─── Weltreich: Mare Nostrum / Expansion (+ echte Commons-Karten) ────────────
 
 function weltreichMapChoice(rng: Rng) {
-  const phases: { key: RomMapHighlight; ask: string; correct: string; wrong: string[] }[] = [
+  const phases: {
+    focus: RomMapPhase | 'all' | 'mare'
+    ask: string
+    correct: string
+    wrong: string[]
+    wissen: string
+  }[] = [
     {
-      key: 'stadt',
-      ask: 'Welche Farbe / Phase steht auf der Karte für den Stadtstaat Rom?',
-      correct: ROM_MAP_PHASES.stadt.label,
-      wrong: [ROM_MAP_PHASES.italien.label, ROM_MAP_PHASES.west.label, ROM_MAP_PHASES.mare.label],
+      focus: 'p218',
+      ask: 'Welche Farbe steht auf der Legende für das früheste Gebiet (218 v. Chr.)?',
+      correct: ROM_MAP_PHASES.p218.label,
+      wrong: [ROM_MAP_PHASES.p133.label, ROM_MAP_PHASES.p44.label, ROM_MAP_PHASES.p117.label],
+      wissen: 'Dunkelrot = 218 v. Chr.: Kerngebiet vor dem Zweiten Punischen Krieg.',
     },
     {
-      key: 'italien',
-      ask: 'Welche Phase zeigt die Kontrolle über die italienische Halbinsel?',
-      correct: ROM_MAP_PHASES.italien.label,
-      wrong: [ROM_MAP_PHASES.stadt.label, ROM_MAP_PHASES.west.label, ROM_MAP_PHASES.mare.label],
+      focus: 'p133',
+      ask: 'Welche Farbe zeigt das Gebiet um 133 v. Chr. (nach den großen Kriegen im Westen)?',
+      correct: ROM_MAP_PHASES.p133.label,
+      wrong: [ROM_MAP_PHASES.p218.label, ROM_MAP_PHASES.p14.label, ROM_MAP_PHASES.p117.label],
+      wissen: 'Hellrot = 133 v. Chr.: Rom ist dann Vormacht im westlichen Mittelmeer.',
     },
     {
-      key: 'west',
-      ask: 'Welche Phase steht für die Vormacht im westlichen Mittelmeer (nach großen Kriegen)?',
-      correct: ROM_MAP_PHASES.west.label,
-      wrong: [ROM_MAP_PHASES.stadt.label, ROM_MAP_PHASES.italien.label, ROM_MAP_PHASES.mare.label],
+      focus: 'p44',
+      ask: 'Welche Farbe steht für 44 v. Chr. (späte Republik / Tod Caesars)?',
+      correct: ROM_MAP_PHASES.p44.label,
+      wrong: [ROM_MAP_PHASES.p218.label, ROM_MAP_PHASES.p133.label, ROM_MAP_PHASES.p14.label],
+      wissen: 'Orange = 44 v. Chr.: weitere Expansion in der späten Republik.',
     },
     {
-      key: 'mare',
-      ask: 'Welche Phase meint Mare Nostrum — das beherrschte Mittelmeer?',
-      correct: ROM_MAP_PHASES.mare.label,
-      wrong: [ROM_MAP_PHASES.stadt.label, ROM_MAP_PHASES.italien.label, ROM_MAP_PHASES.west.label],
+      focus: 'p14',
+      ask: 'Welche Farbe zeigt das Reich um 14 n. Chr. (Tod des Augustus)?',
+      correct: ROM_MAP_PHASES.p14.label,
+      wrong: [ROM_MAP_PHASES.p218.label, ROM_MAP_PHASES.p44.label, ROM_MAP_PHASES.p117.label],
+      wissen: 'Gelb = 14 n. Chr.: Ausdehnung unter Augustus.',
     },
     {
-      key: 'all',
+      focus: 'p117',
+      ask: 'Welche Farbe steht für die späteren Erwerbungen bis zur größten Ausdehnung (Trajan 117)?',
+      correct: ROM_MAP_PHASES.p117.label,
+      wrong: [ROM_MAP_PHASES.p218.label, ROM_MAP_PHASES.p133.label, ROM_MAP_PHASES.p14.label],
+      wissen: 'Grün = nach 14 n. Chr. / Trajan 117: größte Ausdehnung.',
+    },
+    {
+      focus: 'all',
       ask: 'Was zeigt die Karte insgesamt?',
-      correct: 'Roms Wachstum vom Stadtstaat zur Mittelmeer-Vormacht',
+      correct: 'Roms territoriales Wachstum um das Mittelmeer (Phasen in Farben)',
       wrong: [
         'nur die Gründungssage ohne Expansion',
         'nur das Ende Roms im Mittelalter',
         'nur die Stadt Karthago ohne Rom',
       ],
+      wissen:
+        'Die Farben markieren Wachstumsschritte vom Kern (dunkelrot) zur größten Ausdehnung (grün) — Weg zum Mare Nostrum.',
+    },
+    {
+      focus: 'mare',
+      ask: 'Wenn gelb/grün das Mittelmeer umschließen: Welcher Begriff passt dafür?',
+      correct: 'Mare Nostrum („unser Meer“)',
+      wrong: ['nur der Tiber ohne Meer', 'Mare Germanicum', 'Rückzug auf den Palatin'],
+      wissen: 'Mare Nostrum = beherrschtes Mittelmeer — sichtbar, wenn römische Gebiete das Meer umringen.',
     },
   ]
   const c = pick(rng, phases)
   return choicePickTask({
-    question: `${c.ask}\n\n(Legende beachten)`,
+    question: `${c.ask}\n\n(Legende der historischen Karte beachten)`,
     choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
     correct: c.correct,
     solution: c.correct,
-    explanation: `Stadtstaat → Italien → Westmittelmeer → Mare Nostrum. ${ROM_MAP_ATTRIBUTION}`,
+    explanation: `${c.wissen} Stadtstaat → Italien → Westmittelmeer → Mare Nostrum. ${ROM_MAP_ATTRIBUTION}`,
     instruction: 'Tippe die passende Phase / Aussage:',
-    visualContent: romanExpansionMapSvg(c.key),
-    fachwissen: fwMap(
-      'Die Schulkarte zeigt schematisch Roms Expansion: dunkler Kern = Stadtstaat, orange = Italien, gelb = Westmittelmeer, grün = Mare Nostrum.',
-    ),
+    visualContent: romanExpansionMapHtml('extent', c.focus),
+    fachwissen: fwMap(c.wissen),
   })
 }
 
@@ -1009,19 +1033,19 @@ export const romWeltreich: Topic['generate'] = mixedVariants(
   (rng) =>
     matchTermsTask(rng, {
       question: 'Ordne den Phasen die passende Beschreibung zu:',
-      terms: ['Stadtstaat', 'Land-/Seemacht', 'Weltmacht', 'Mare Nostrum'],
+      terms: ['Stadtstaat', 'Landmacht Italien', 'Westmittelmeer', 'Mare Nostrum'],
       meanings: [
         'nur die Stadt Rom und näheres Umland',
-        'Kontrolle über Italien und Seewege',
-        'Vormacht um das Mittelmeer',
+        'Kontrolle der italienischen Halbinsel',
+        'Vormacht nach großen Kriegen im Westen',
         '„unser Meer“ — beherrschtes Mittelmeer',
       ],
       distractor: 'Romulus und Remus als Konsuln',
-      solution: 'Stadtstaat → Land/Seemacht → Weltmacht; Mare Nostrum',
-      explanation: 'Kartenbild: Wachstum vom Stadtstaat zur Mittelmeer-Vormacht.',
-      visualContent: romanExpansionMapSvg('all'),
+      solution: 'Stadtstaat → Italien → Westmittelmeer → Mare Nostrum',
+      explanation: `Karten: Italien-Eroberung + Phasen ums Mittelmeer. ${ROM_MAP_ATTRIBUTION}`,
+      visualContent: romanExpansionMapHtml('extent', 'all'),
       fachwissen: fwMap(
-        'Stadtstaat → Land-/Seemacht → Weltmacht; Mare Nostrum = beherrschtes Mittelmeer.',
+        'Stadtstaat → Landmacht Italien → Westmittelmeer → Mare Nostrum („unser Meer“).',
       ),
     }),
   (rng) => {
@@ -1031,42 +1055,48 @@ export const romWeltreich: Topic['generate'] = mixedVariants(
         correct: 'Mare Nostrum („unser Meer“)',
         wrong: ['Mare Germanicum', 'Ozeanus Atlanticus', 'Pontus Euxinus'],
         wissen: 'Mare Nostrum bedeutet „unser Meer“ — Ausdruck der römischen Mittelmeer-Vormacht.',
-        map: 'mare' as RomMapHighlight,
+        map: 'extent' as const,
+        focus: 'mare' as const,
       },
       {
         q: '„Vom Stadtstaat zum Weltreich“ bedeutet …',
         correct: 'Rom wächst von einer Stadt zur Macht um das Mittelmeer',
         wrong: ['Rom schrumpft auf sieben Hügel', 'Karthago erobert Rom dauerhaft', 'Rom bleibt ohne Heer und Provinzen'],
-        wissen: 'Vom Stadtstaat am Tiber zur Macht um das Mittelmeer.',
-        map: 'all' as RomMapHighlight,
+        wissen: 'Vom Stadtstaat am Tiber zur Macht um das Mittelmeer (Mare Nostrum).',
+        map: 'extent' as const,
+        focus: 'all' as const,
       },
       {
-        q: 'Nach den großen Kriegen im Westen wird Rom vor allem …',
-        correct: 'Vormacht / Weltmacht im Mittelmeerraum',
-        wrong: ['abhängige Provinz Karthagos', 'nur ein Dorf ohne Einfluss', 'germanisches Königreich'],
-        wissen: 'Nach den Siegen im Westen wird Rom Vormacht im Mittelmeerraum.',
-        map: 'west' as RomMapHighlight,
+        q: 'Welche Kartenfarbe steht für 133 v. Chr. (Vormacht nach den Kriegen im Westen)?',
+        correct: ROM_MAP_PHASES.p133.label,
+        wrong: [ROM_MAP_PHASES.p218.label, ROM_MAP_PHASES.p14.label, ROM_MAP_PHASES.p117.label],
+        wissen: 'Hellrot = 133 v. Chr.: Rom ist Vormacht im westlichen Mittelmeer.',
+        map: 'extent' as const,
+        focus: 'p133' as const,
       },
       {
-        q: 'Der erste Schritt der Expansion ist …',
-        correct: 'Kontrolle über Italien (Landmacht)',
-        wrong: ['sofort das gesamte Mare Nostrum ohne Italien', 'Rückzug nur auf den Palatin', 'Aufgabe aller Seewege'],
-        wissen: 'Zuerst Italien, danach Seewege und das weitere Mittelmeer.',
-        map: 'italien' as RomMapHighlight,
+        q: 'Was zeigt die Italien-Karte vor allem?',
+        correct: 'Roms Expansion zur Landmacht auf der Halbinsel',
+        wrong: ['moderne Autobahnen in Italien', 'nur Ägypten ohne Rom', 'das Ende des Mittelalters'],
+        wissen: 'Zuerst wird Italien kontrolliert, danach weitet sich Rom ums Mittelmeer aus.',
+        map: 'italy' as const,
+        focus: 'all' as const,
       },
       {
         q: 'Was bedeutet Mare Nostrum wörtlich?',
         correct: 'unser Meer',
         wrong: ['fremdes Meer', 'kaltes Meer', 'leeres Meer'],
         wissen: 'Mare = Meer, Nostrum = unser.',
-        map: 'mare' as RomMapHighlight,
+        map: 'extent' as const,
+        focus: 'mare' as const,
       },
       {
-        q: 'Warum ist eine Phasen-Karte für dieses Thema nützlich?',
-        correct: 'Sie zeigt Wachstumsschritte vom Kern zur Mittelmeer-Vormacht',
-        wrong: ['Sie ersetzt jedes Datum tippen', 'Sie zeigt nur moderne Autobahnen', 'Sie gilt nur für das Mittelalter'],
-        wissen: 'Die Phasen-Karte macht Expansionsschritte sichtbar — ein Lernbild, keine Autobahnkarte.',
-        map: 'all' as RomMapHighlight,
+        q: 'Warum helfen Phasenfarben auf der historischen Karte?',
+        correct: 'Sie machen Wachstumsschritte vom Kern zur größten Ausdehnung sichtbar',
+        wrong: ['Sie ersetzen jedes Datum tippen', 'Sie zeigen nur moderne Autobahnen', 'Sie gelten nur fürs Mittelalter'],
+        wissen: 'Dunkelrot → hellrot → orange → gelb → grün: Expansion bis zum Mare Nostrum.',
+        map: 'extent' as const,
+        focus: 'all' as const,
       },
     ] as const
     const c = pick(rng, cases)
@@ -1075,9 +1105,9 @@ export const romWeltreich: Topic['generate'] = mixedVariants(
       choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
       correct: c.correct,
       solution: c.correct,
-      explanation: `Stadtstaat → Land-/Seemacht → Weltmacht; Mare Nostrum. ${ROM_MAP_ATTRIBUTION}`,
+      explanation: `Stadtstaat → Italien → Westmittelmeer → Mare Nostrum. ${ROM_MAP_ATTRIBUTION}`,
       instruction: 'Tippe die passende Aussage:',
-      visualContent: romanExpansionMapSvg(c.map),
+      visualContent: romanExpansionMapHtml(c.map, c.focus),
       fachwissen: fwMap(c.wissen),
     })
   },
@@ -1087,7 +1117,7 @@ export const romWeltreich: Topic['generate'] = mixedVariants(
       accepted: ['mare nostrum', 'Mare Nostrum'],
       solution: 'Mare Nostrum',
       explanation: `Mare Nostrum = „unser Meer“. ${ROM_MAP_ATTRIBUTION}`,
-      visualContent: romanExpansionMapSvg('mare'),
+      visualContent: romanExpansionMapHtml('extent', 'mare'),
       fachwissen: fwMap(
         'Mare Nostrum („unser Meer“) — lateinischer Name für das beherrschte Mittelmeer.',
       ),
@@ -1111,7 +1141,7 @@ export const romWeltreich: Topic['generate'] = mixedVariants(
       solution: 'Stadtstaat → Italien → Westmittelmeer → Mare Nostrum.',
       explanation: `Vier Expansionsstufen; „nur Dorf“ ist falsch. ${ROM_MAP_ATTRIBUTION}`,
       instruction: 'Tippe alle zutreffenden Phasen:',
-      visualContent: romanExpansionMapSvg('all'),
+      visualContent: romanExpansionMapHtml('extent', 'all'),
       fachwissen: fwMap(
         'Expansion: Stadtstaat → Italien → Westmittelmeer → Mare Nostrum.',
       ),

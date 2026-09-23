@@ -1147,13 +1147,23 @@ a.task-request__send {
   padding: 12px;
 }
 
-.task-visual svg {
+.task-visual svg,
+.task-visual img,
+.task-visual figure {
   display: block;
   max-width: 100%;
   width: auto;
   height: auto;
   min-width: 0;
   flex-shrink: 1;
+}
+
+.task-visual figure {
+  margin: 0;
+}
+
+.task-visual img {
+  width: 100%;
 }
 
 @media (max-width: 560px) {

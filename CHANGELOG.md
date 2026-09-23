@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.8] – 2026-09-23
+
+### Geändert
+- **Geschichte K6 Mare Nostrum (ID 6763):** Schematische SVG-Karte durch echte Wikimedia-Commons-Karten
+  ersetzt (Varana, CC BY-SA 3.0; Javierfv1212 Italien-Karte, Public Domain), lokal unter `public/maps/`
+  mit Attribution; Aufgaben lesen die Phasenfarben der historischen Karte. Thema wieder **gesperrt**
+  (`released: false`) bis Freigabe. Geschichte-Pack **1.4.1**.
+
 ## [0.28.7] – 2026-09-23
 
 ### Geändert

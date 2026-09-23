@@ -453,7 +453,8 @@ export function defaultFachwissen(topic: TopicRef, subject?: string): Fachwissen
         'Punische Kriege: Rom gegen Karthago — Sizilien/Flotte, Hannibal/Alpen/Zama, Zerstörung Karthagos. ' +
         'Personen: Hannibal, Scipio, Cato.',
       'ge-k6-lb1-weltreich':
-        'Vom Stadtstaat zur Weltmacht: Wachstum um das Mittelmeer; Mare Nostrum = „unser Meer“.',
+        'Vom Stadtstaat zur Weltmacht: Wachstum um das Mittelmeer; Mare Nostrum = „unser Meer“. ' +
+        'Karten: Varana (CC BY-SA 3.0) und Eroberung Italiens (Public Domain) auf Wikimedia Commons.',
       'ge-k6-lb1-buergerrecht':
         'Bürgerrecht: Schutz vor Willkür, Verträge, Testament, Wahlrecht — keine persönliche Königsmacht.',
       'ge-k6-lb1-rom':

@@ -1,6 +1,7 @@
 /**
  * Gymnasium Sachsen · Geschichte — Lehrplan-Outline (lplanid=65).
- * K6 LB1 (Römische Zivilisation) freigegeben; übrige Themen: released:false
+ * K6 LB1 (Römische Zivilisation) freigegeben außer Mare-Nostrum-Karte
+ * (`ge-k6-lb1-weltreich` gesperrt bis Freigabe); übrige Themen: released:false
  * (nur Entwickleransicht). Quelle: https://www.schulportal.sachsen.de/lplandb/lehrplan/65
  */
 import type { PackArea, PackGrade, PackTopic } from './pack'
@@ -137,7 +138,7 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Weltreich',
             'Mittelmeer',
             'Karte',
-          ], { tasksPerRound: 10, released: true }),
+          ], { tasksPerRound: 10, released: false }),
           topic('ge-k6-lb1-buergerrecht', 'Was bringt das Bürgerrecht?', [
             'Bürgerrecht',
             'Rechte',
