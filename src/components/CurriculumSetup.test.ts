@@ -105,7 +105,7 @@ describe('CurriculumSetup Entfernen', () => {
     expect(removed).not.toContain('Entfernen')
     expect(removed).not.toContain('Installiert: Version')
     expect(removed).toContain('Installieren')
-    expect(count(removed, 'Installieren')).toBe(7)
+    expect(count(removed, 'Installieren')).toBe(8)
   })
 
   it('shows Entfernen for every installed pack, including Oberschule RS', () => {

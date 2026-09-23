@@ -1,6 +1,7 @@
 import {
   GYM_SACHSEN_PACK_ID,
   GYM_SACHSEN_PHYSIK_PACK_ID,
+  GYM_SACHSEN_GESCHICHTE_PACK_ID,
   GYM_SACHSEN_ANHALT_PACK_ID,
   SKS_SACHSEN_ANHALT_HS_PACK_ID,
   SKS_SACHSEN_ANHALT_RS_PACK_ID,
@@ -21,6 +22,7 @@ import {
 } from './pack'
 import { buildGymSachsenAnhaltPack } from './gymSachsenAnhaltPack'
 import { buildOberschuleHsPack, buildOberschuleRsPack } from './oberschulePacks'
+import { buildGymSachsenGeschichtePack } from './geschichteGymPack'
 import { buildGymSachsenPhysikPack } from './physikGymPack'
 import {
   buildSekundarschuleSachsenAnhaltHsPack,
@@ -172,6 +174,7 @@ export function removePack(
 export async function bundledPackById(id: string): Promise<CurriculumPack | null> {
   if (id === GYM_SACHSEN_PACK_ID) return buildGymSachsenSeed()
   if (id === GYM_SACHSEN_PHYSIK_PACK_ID) return buildGymSachsenPhysikPack()
+  if (id === GYM_SACHSEN_GESCHICHTE_PACK_ID) return buildGymSachsenGeschichtePack()
   if (id === GYM_SACHSEN_ANHALT_PACK_ID) return buildGymSachsenAnhaltPack()
   if (id === SKS_SACHSEN_ANHALT_HS_PACK_ID) return buildSekundarschuleSachsenAnhaltHsPack()
   if (id === SKS_SACHSEN_ANHALT_RS_PACK_ID) return buildSekundarschuleSachsenAnhaltRsPack()

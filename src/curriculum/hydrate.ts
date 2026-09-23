@@ -8,6 +8,7 @@ import {
   resolveOsGenerate,
   topicFromPack,
 } from './oberschuleGenerators'
+import { resolveGeschichteGenerate } from './geschichteGenerators'
 import { resolvePhysikGenerate } from './physikGenerators'
 import type { CurriculumPack, PackExtra, PackGrade, PackTask, PackTopic } from './pack'
 import { fractionTask, textTask, valueTask } from './taskHelpers'
@@ -157,7 +158,9 @@ export async function hydratePackGrades(pack: CurriculumPack): Promise<Grade[]> 
           ustd: area.ustd,
           topics: area.topics.map((topic) => {
             const generate =
-              resolvePhysikGenerate(topic.id) ?? resolveOsGenerate(topic.id, generators!)
+              resolvePhysikGenerate(topic.id) ??
+              resolveGeschichteGenerate(topic.id, topic.title) ??
+              resolveOsGenerate(topic.id, generators!)
             return topicFromPack(topic, generate, { subject })
           }),
         })),

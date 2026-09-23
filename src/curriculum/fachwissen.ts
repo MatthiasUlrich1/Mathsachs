@@ -429,6 +429,15 @@ export function defaultFachwissen(topic: TopicRef, subject?: string): Fachwissen
   if (subject === 'Physik' || topic.id.startsWith('ph-')) {
     return physikFachwissen(topic)
   }
+  if (subject === 'Geschichte' || topic.id.startsWith('ge-')) {
+    return {
+      text:
+        `Thema „${topic.title}“: Historische Ereignisse und Prozesse einordnen — ` +
+        'Quellen unterscheiden, Zusammenhänge erklären und begründete Urteile bilden. ' +
+        'Achte auf Chronologie, Perspektiven und den Unterschied zwischen Quelle und Darstellung.',
+      ...wiki('Geschichtswissenschaft', 'Geschichtswissenschaft'),
+    }
+  }
   if (/umrechnen|einheiten/.test(`${topic.id} ${topic.title}`.toLowerCase())) {
     if (/fläch|flaeche|m²|quadrat/.test(topic.title.toLowerCase())) {
       return conversionFachwissen('Flächeninhalt')

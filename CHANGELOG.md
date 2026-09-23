@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.0] – 2026-09-23
+
+### Hinzugefügt
+- **Lehrplan Gymnasium Sachsen · Geschichte** (lplanid=65): Klassen 5–10 und
+  JGS 11/12 (Gk/Lk) als Outline. Alle Themen **gesperrt** — nur in der
+  Entwickleransicht übbar. Physik-Pack unverändert; Fach-Filter um Geschichte ergänzt.
+
 ## [0.27.105] – 2026-09-22
 
 ### Behoben

@@ -1,0 +1,1137 @@
+{
+  "id": "gym-sachsen-geschichte",
+  "title": "Gymnasium Sachsen · Geschichte",
+  "region": "Sachsen",
+  "school": "Gymnasium",
+  "subject": "Geschichte",
+  "version": "1.0.0",
+  "changelog": "Erstfassung Klassen 5–10 und JGS 11/12 (Gk/Lk) nach Lernbereichen. Alle Themen gesperrt — nur in der Entwickleransicht übbar. Lehrplan Gymnasium Geschichte (Sachsen) 2004/2007/2009/2011/2019, lplanid=65, https://www.schulportal.sachsen.de/lplandb/lehrplan/65",
+  "official": [
+    {
+      "id": "geschichte-klasse-5",
+      "title": "Klasse 5",
+      "subjectTitle": "Geschichte",
+      "gradeTitle": "Klasse 5",
+      "description": "Orientierung in der Vergangenheit, Steinzeit und Hochkulturen, antikes Griechenland.",
+      "searchHints": [
+        "Steinzeit",
+        "Hochkultur",
+        "Griechenland",
+        "Hellenismus",
+        "Orientierung"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Orientierung in der Vergangenheit",
+          "ustd": 4,
+          "topics": [
+            {
+              "id": "ge-k5-lb1-orientierung",
+              "title": "Orientierung in der Vergangenheit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Zeitstrahl",
+                "Quellen"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Von der Steinzeit zur Hochkultur – Menschen organisieren ihr Zusammenleben",
+          "ustd": 12,
+          "topics": [
+            {
+              "id": "ge-k5-lb2-steinzeit-hochkultur",
+              "title": "Von der Steinzeit zur Hochkultur",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Steinzeit",
+                "Hochkultur",
+                "Zusammenleben"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Zusammenleben im antiken Griechenland",
+          "ustd": 8,
+          "topics": [
+            {
+              "id": "ge-k5-lb3-griechenland",
+              "title": "Zusammenleben im antiken Griechenland",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Griechenland",
+                "Polis",
+                "Antike"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Längsschnitt: Mensch und Natur",
+          "ustd": 2,
+          "topics": [
+            {
+              "id": "ge-k5-lb4-mensch-natur",
+              "title": "Längsschnitt: Mensch und Natur",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Mensch",
+                "Natur"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "ge-k5-lbw-hellenismus-alexander",
+              "title": "Hellenismus – Alexander „der Große“?",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Hellenismus",
+                "Alexander"
+              ]
+            },
+            {
+              "id": "ge-k5-lbw-hellenismus-alexandria",
+              "title": "Hellenismus – Alexandria als Begegnungsstätte",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Hellenismus",
+                "Alexandria"
+              ]
+            },
+            {
+              "id": "ge-k5-lbw-hellenismus-geschichten",
+              "title": "Hellenismus – Geschichten und Geschichte um Alexander",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Hellenismus",
+                "Alexander"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geschichte-klasse-6",
+      "title": "Klasse 6",
+      "subjectTitle": "Geschichte",
+      "gradeTitle": "Klasse 6",
+      "description": "Römische Zivilisation, Mittelalter, Religionen und Kulturen, Regionalgeschichte Sachsen.",
+      "searchHints": [
+        "Rom",
+        "Mittelalter",
+        "Religion",
+        "Sachsen",
+        "Bürger"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Die römische Zivilisation und ihre prägende Wirkung für Europa",
+          "ustd": 18,
+          "topics": [
+            {
+              "id": "ge-k6-lb1-rom",
+              "title": "Die römische Zivilisation und ihre prägende Wirkung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Rom",
+                "Zivilisation",
+                "Europa"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Herrschaft und Lebensformen im Mittelalter",
+          "ustd": 20,
+          "topics": [
+            {
+              "id": "ge-k6-lb2-mittelalter",
+              "title": "Herrschaft und Lebensformen im Mittelalter",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Mittelalter",
+                "Herrschaft",
+                "Leben"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Religionen und Kulturen im Mit- und Gegeneinander",
+          "ustd": 10,
+          "topics": [
+            {
+              "id": "ge-k6-lb3-religionen",
+              "title": "Religionen und Kulturen im Mit- und Gegeneinander",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Religion",
+                "Kultur"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Längsschnitt: Erziehung zum Bürger",
+          "ustd": 4,
+          "topics": [
+            {
+              "id": "ge-k6-lb4-buerger",
+              "title": "Längsschnitt: Erziehung zum Bürger",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Bürger",
+                "Erziehung"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "ge-k6-lbw-besiedlung",
+              "title": "Regionalgeschichte – Besiedlung Sachsens",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Sachsen",
+                "Besiedlung"
+              ]
+            },
+            {
+              "id": "ge-k6-lbw-kurfuerstentum",
+              "title": "Regionalgeschichte – Sachsens Weg zum Kurfürstentum",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Sachsen",
+                "Kurfürstentum"
+              ]
+            },
+            {
+              "id": "ge-k6-lbw-selbstverstaendnis",
+              "title": "Regionalgeschichte – Ausdrucksformen sächsischen Selbstverständnisses",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Sachsen",
+                "Identität"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geschichte-klasse-7",
+      "title": "Klasse 7",
+      "subjectTitle": "Geschichte",
+      "gradeTitle": "Klasse 7",
+      "description": "Aufbruch in die Neuzeit, Absolutismus und Aufklärung, Reformation.",
+      "searchHints": [
+        "Neuzeit",
+        "Absolutismus",
+        "Aufklärung",
+        "Reformation",
+        "Herrschaft"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Aufbruch in die Neuzeit – Das Welt- und Menschenbild verändert sich",
+          "ustd": 16,
+          "topics": [
+            {
+              "id": "ge-k7-lb1-neuzeit",
+              "title": "Aufbruch in die Neuzeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Neuzeit",
+                "Menschenbild"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Staat und Gesellschaft im Zeitalter von Absolutismus und Aufklärung",
+          "ustd": 14,
+          "topics": [
+            {
+              "id": "ge-k7-lb2-absolutismus",
+              "title": "Absolutismus und Aufklärung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Absolutismus",
+                "Aufklärung"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Formen der Beschränkung der Alleinherrschaft",
+          "ustd": 18,
+          "topics": [
+            {
+              "id": "ge-k7-lb3-alleinherrschaft",
+              "title": "Formen der Beschränkung der Alleinherrschaft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Herrschaft",
+                "Verfassung"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Längsschnitt: Legitimation von Herrschaft in der Geschichte",
+          "ustd": 4,
+          "topics": [
+            {
+              "id": "ge-k7-lb4-legitimation",
+              "title": "Längsschnitt: Legitimation von Herrschaft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Herrschaft",
+                "Legitimation"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "ge-k7-lbw-reformation-gerechtigkeit",
+              "title": "Reformation und Anspruch auf soziale Gerechtigkeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Reformation"
+              ]
+            },
+            {
+              "id": "ge-k7-lbw-reformation-sachsen",
+              "title": "Sachsen – ein Kernland der Reformation",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Reformation",
+                "Sachsen"
+              ]
+            },
+            {
+              "id": "ge-k7-lbw-reformation-katholisch",
+              "title": "Reformation und katholische Reform",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Reformation",
+                "katholisch"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geschichte-klasse-8",
+      "title": "Klasse 8",
+      "subjectTitle": "Geschichte",
+      "gradeTitle": "Klasse 8",
+      "description": "Einheit und Freiheit, Industrialisierung, Nationalismus und Erster Weltkrieg.",
+      "searchHints": [
+        "Industrialisierung",
+        "Nationalismus",
+        "Weltkrieg",
+        "Bürgertum",
+        "Kinderarbeit"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Die Vorstellungen des deutschen Bürgertums von Einheit und Freiheit",
+          "ustd": 18,
+          "topics": [
+            {
+              "id": "ge-k8-lb1-einheit-freiheit",
+              "title": "Einheit und Freiheit – Vorstellungen des Bürgertums",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Bürgertum",
+                "Einheit",
+                "Freiheit"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Das Doppelgesicht des Fortschritts – Industrialisierung und die Folgen",
+          "ustd": 14,
+          "topics": [
+            {
+              "id": "ge-k8-lb2-industrialisierung",
+              "title": "Industrialisierung und die Folgen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Industrialisierung",
+                "Fortschritt"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Längsschnitt: Industrialisierung und Kinderarbeit",
+          "ustd": 6,
+          "topics": [
+            {
+              "id": "ge-k8-lb3-kinderarbeit",
+              "title": "Längsschnitt: Industrialisierung und Kinderarbeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Kinderarbeit",
+                "Industrialisierung"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Vom übersteigerten Nationalismus zum Ersten Weltkrieg",
+          "ustd": 14,
+          "topics": [
+            {
+              "id": "ge-k8-lb4-nationalismus-wk1",
+              "title": "Vom Nationalismus zum Ersten Weltkrieg",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Nationalismus",
+                "Erster Weltkrieg"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "ge-k8-lbw-kriegstechnik",
+              "title": "Neue Dimension von Krieg – Kriegsführung und Kriegstechnik im Ersten Weltkrieg",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Erster Weltkrieg",
+                "Kriegstechnik"
+              ]
+            },
+            {
+              "id": "ge-k8-lbw-massenmedien",
+              "title": "Neue Dimension von Krieg – Moderne Massenmedien im Ersten Weltkrieg",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Erster Weltkrieg",
+                "Medien"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geschichte-klasse-9",
+      "title": "Klasse 9",
+      "subjectTitle": "Geschichte",
+      "gradeTitle": "Klasse 9",
+      "description": "Zwischenkriegszeit, Weimarer Republik, Nationalsozialismus.",
+      "searchHints": [
+        "Weimar",
+        "Nationalsozialismus",
+        "Diktatur",
+        "Demokratie",
+        "Außenpolitik"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Versuche der Zukunftsgestaltung in Europa nach dem Ersten Weltkrieg",
+          "ustd": 10,
+          "topics": [
+            {
+              "id": "ge-k9-lb1-nach-wk1",
+              "title": "Zukunftsgestaltung in Europa nach dem Ersten Weltkrieg",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Versailles",
+                "Zwischenkriegszeit"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Deutschlands Weg von der Demokratie zur Diktatur",
+          "ustd": 22,
+          "topics": [
+            {
+              "id": "ge-k9-lb2-demokratie-diktatur",
+              "title": "Von der Demokratie zur Diktatur",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Weimar",
+                "Diktatur"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Die nationalsozialistische Diktatur – ein System von Terror und Gewalt",
+          "ustd": 12,
+          "topics": [
+            {
+              "id": "ge-k9-lb3-ns-diktatur",
+              "title": "Die nationalsozialistische Diktatur",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Nationalsozialismus",
+                "Terror"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Längsschnitt: Deutsche Außenpolitik zwischen Ausgleich und Konfrontation",
+          "ustd": 8,
+          "topics": [
+            {
+              "id": "ge-k9-lb4-aussenpolitik",
+              "title": "Längsschnitt: Deutsche Außenpolitik",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Außenpolitik"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "ge-k9-lbw-justiz",
+              "title": "Justiz und Rechtsprechung in der Weimarer Republik und im Nationalsozialismus",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Justiz",
+                "Weimar",
+                "NS"
+              ]
+            },
+            {
+              "id": "ge-k9-lbw-frauen",
+              "title": "Gesellschaftliche Situation von Frauen in der Weimarer Republik und im Nationalsozialismus",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Frauen",
+                "Weimar",
+                "NS"
+              ]
+            },
+            {
+              "id": "ge-k9-lbw-kultur",
+              "title": "Kunst und Kultur in der Weimarer Republik und im Nationalsozialismus",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Kultur",
+                "Weimar",
+                "NS"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geschichte-klasse-10",
+      "title": "Klasse 10",
+      "subjectTitle": "Geschichte",
+      "gradeTitle": "Klasse 10",
+      "description": "Ost-West-Konflikt, deutsche Teilung und politische Wandlungsprozesse in Europa.",
+      "searchHints": [
+        "Kalter Krieg",
+        "DDR",
+        "BRD",
+        "Europa",
+        "Wiedervereinigung"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Längsschnitt: Beziehungen zwischen USA und UdSSR im 20. Jahrhundert",
+          "ustd": 16,
+          "topics": [
+            {
+              "id": "ge-k10-lb1-usa-udssr",
+              "title": "Beziehungen zwischen USA und UdSSR",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "USA",
+                "UdSSR",
+                "Kalter Krieg"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Der Ost-West-Konflikt – Ursachen und Auswirkungen für Deutschland",
+          "ustd": 22,
+          "topics": [
+            {
+              "id": "ge-k10-lb2-ost-west",
+              "title": "Der Ost-West-Konflikt und Deutschland",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Ost-West-Konflikt",
+                "Teilung"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Politische Wandlungsprozesse in Europa",
+          "ustd": 14,
+          "topics": [
+            {
+              "id": "ge-k10-lb3-wandel-europa",
+              "title": "Politische Wandlungsprozesse in Europa",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Europa",
+                "Revolution"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "ge-k10-lbw-50er",
+              "title": "Alltagserfahrungen und Mentalitäten in beiden deutschen Staaten in den 50er Jahren",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Alltag",
+                "50er"
+              ]
+            },
+            {
+              "id": "ge-k10-lbw-70er",
+              "title": "Alltagserfahrungen und Mentalitäten in beiden deutschen Staaten in den 70er Jahren",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Alltag",
+                "70er"
+              ]
+            },
+            {
+              "id": "ge-k10-lbw-friedliche-revolution",
+              "title": "Alltagserfahrungen zur Zeit der Friedlichen Revolution und im geeinten Deutschland",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Friedliche Revolution",
+                "Wiedervereinigung"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geschichte-jgs-11-12-gk",
+      "title": "Jahrgangsstufen 11/12 · Grundkurs",
+      "subjectTitle": "Geschichte",
+      "gradeTitle": "Jahrgangsstufen 11/12 · Grundkurs",
+      "description": "Moderne Gesellschaft, Demokratie und Diktatur, Herausforderung Frieden.",
+      "searchHints": [
+        "Demokratie",
+        "Diktatur",
+        "Frieden",
+        "Gesellschaft",
+        "Geschichtskultur"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Die Grundlegung einer modernen Gesellschaft in Wirtschaft und Politik in Deutschland",
+          "ustd": 26,
+          "topics": [
+            {
+              "id": "ge-gk-lb1-moderne-gesellschaft",
+              "title": "Grundlegung einer modernen Gesellschaft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Gesellschaft",
+                "Wirtschaft",
+                "Politik"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Demokratie und Diktatur – Anspruch und Wirklichkeit in der ersten Hälfte des 20. Jahrhunderts",
+          "ustd": 26,
+          "topics": [
+            {
+              "id": "ge-gk-lb2-demokratie-diktatur-1",
+              "title": "Demokratie und Diktatur (1. Hälfte 20. Jh.)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Demokratie",
+                "Diktatur"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Demokratie und Diktatur – Anspruch und Wirklichkeit in der zweiten Hälfte des 20. Jahrhunderts",
+          "ustd": 26,
+          "topics": [
+            {
+              "id": "ge-gk-lb3-demokratie-diktatur-2",
+              "title": "Demokratie und Diktatur (2. Hälfte 20. Jh.)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Demokratie",
+                "Diktatur"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Herausforderung „Frieden“ – Die Suche nach dauerhaft friedlichem Zusammenleben im 20. Jahrhundert",
+          "ustd": 18,
+          "topics": [
+            {
+              "id": "ge-gk-lb4-frieden",
+              "title": "Herausforderung Frieden im 20. Jahrhundert",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Frieden"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "ge-gk-lbw-rezeptions-person",
+              "title": "Geschichtskultur – Rezeptionsgeschichte einer Person oder eines Ereignisses",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Geschichtskultur",
+                "Rezeption"
+              ]
+            },
+            {
+              "id": "ge-gk-lbw-rezeptions-wk1",
+              "title": "Geschichtskultur – Rezeptionsgeschichte am Beispiel des Ersten Weltkrieges",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Geschichtskultur",
+                "Erster Weltkrieg"
+              ]
+            },
+            {
+              "id": "ge-gk-lbw-rezeptions-wk2",
+              "title": "Geschichtskultur – Rezeptionsgeschichte am Beispiel des Zweiten Weltkrieges",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Geschichtskultur",
+                "Zweiter Weltkrieg"
+              ]
+            },
+            {
+              "id": "ge-gk-lbw-nation",
+              "title": "Nationales Selbstverständnis – Die Frage nach der Nation",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Nation",
+                "Identität"
+              ]
+            },
+            {
+              "id": "ge-gk-lbw-mythen",
+              "title": "Nationales Selbstverständnis – Die Wirkung von Mythen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Mythos",
+                "Nation"
+              ]
+            },
+            {
+              "id": "ge-gk-lbw-feindbilder",
+              "title": "Nationales Selbstverständnis – Die Bedeutung von Feindbildern",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Feindbild",
+                "Nation"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geschichte-jgs-11-lk",
+      "title": "Jahrgangsstufe 11 · Leistungskurs",
+      "subjectTitle": "Geschichte",
+      "gradeTitle": "Jahrgangsstufe 11 · Leistungskurs",
+      "description": "Politische Ordnungsvorstellungen und Partizipation; Industrialisierung international.",
+      "searchHints": [
+        "Partizipation",
+        "Ordnung",
+        "Industrialisierung",
+        "International"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Politische Ordnungsvorstellungen und politische Partizipation",
+          "ustd": 80,
+          "topics": [
+            {
+              "id": "ge-lk11-lb1-ordnung-partizipation",
+              "title": "Politische Ordnungsvorstellungen und Partizipation",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Partizipation",
+                "Ordnung"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Von der vorindustriellen zur Industriegesellschaft – internationale Entwicklungen und ihre Folgen",
+          "ustd": 50,
+          "topics": [
+            {
+              "id": "ge-lk11-lb2-industriegesellschaft",
+              "title": "Von der vorindustriellen zur Industriegesellschaft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Industrialisierung",
+                "International"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "ge-lk11-lbw-frauen",
+              "title": "Politische Partizipation von Frauen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Frauen",
+                "Partizipation"
+              ]
+            },
+            {
+              "id": "ge-lk11-lbw-juden",
+              "title": "Politische Partizipation von Juden zwischen Ausgrenzung und Integration",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Juden",
+                "Partizipation"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geschichte-jgs-12-lk",
+      "title": "Jahrgangsstufe 12 · Leistungskurs",
+      "subjectTitle": "Geschichte",
+      "gradeTitle": "Jahrgangsstufe 12 · Leistungskurs",
+      "description": "Herausforderung Frieden; Geschichtskultur und Identitätsbildung.",
+      "searchHints": [
+        "Frieden",
+        "Geschichtskultur",
+        "Identität"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Herausforderung „Frieden“ – Die Suche nach dauerhaft friedlichem Zusammenleben",
+          "ustd": 65,
+          "topics": [
+            {
+              "id": "ge-lk12-lb1-frieden",
+              "title": "Herausforderung Frieden",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Frieden"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Formen von Geschichtskultur und Identitätsbildung",
+          "ustd": 45,
+          "topics": [
+            {
+              "id": "ge-lk12-lb2-geschichtskultur",
+              "title": "Geschichtskultur und Identitätsbildung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Geschichtskultur",
+                "Identität"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "ge-lk12-lbw-voelkerrecht",
+              "title": "Völkerrecht und Kriegsführung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Völkerrecht",
+                "Krieg"
+              ]
+            },
+            {
+              "id": "ge-lk12-lbw-entkolonialisierung",
+              "title": "Entkolonialisierung und Folgekonflikte",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Entkolonialisierung"
+              ]
+            },
+            {
+              "id": "ge-lk12-lbw-terror",
+              "title": "Gewaltanwendung terroristischer Gruppen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Terrorismus"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "extras": [],
+  "contentHash": "e9b1974e"
+}

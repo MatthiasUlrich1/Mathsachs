@@ -23,6 +23,7 @@ import {
 import {
   GYM_SACHSEN_PACK_ID,
   GYM_SACHSEN_PHYSIK_PACK_ID,
+  GYM_SACHSEN_GESCHICHTE_PACK_ID,
   GYM_SACHSEN_ANHALT_PACK_ID,
   SKS_SACHSEN_ANHALT_HS_PACK_ID,
   SKS_SACHSEN_ANHALT_RS_PACK_ID,
@@ -64,6 +65,17 @@ const FALLBACK_CATALOG: ManifestPack[] = [
     url: '',
     changelog:
       'Lernbereiche mit 5–9 Themen (ähnlich Mathe). Ohne Netz lokale Fassung.',
+  },
+  {
+    id: GYM_SACHSEN_GESCHICHTE_PACK_ID,
+    title: 'Gymnasium Sachsen · Geschichte',
+    region: 'Sachsen',
+    school: 'Gymnasium',
+    subject: 'Geschichte',
+    version: '1.0.0',
+    url: '',
+    changelog:
+      'Klassen 5–10 und JGS 11/12 (Gk/Lk). Themen gesperrt — nur Entwickleransicht. Ohne Netz lokale Fassung.',
   },
   {
     id: GYM_SACHSEN_ANHALT_PACK_ID,

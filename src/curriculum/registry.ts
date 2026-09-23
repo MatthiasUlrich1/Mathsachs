@@ -11,6 +11,7 @@ import { loadInstalledGrade } from './loadGrade'
 import {
   GYM_SACHSEN_PACK_ID,
   GYM_SACHSEN_PHYSIK_PACK_ID,
+  GYM_SACHSEN_GESCHICHTE_PACK_ID,
   GYM_SACHSEN_ANHALT_PACK_ID,
   SKS_SACHSEN_ANHALT_HS_PACK_ID,
   SKS_SACHSEN_ANHALT_RS_PACK_ID,
@@ -24,6 +25,7 @@ export {
   bundledCurricula,
   GYM_SACHSEN_PACK_ID,
   GYM_SACHSEN_PHYSIK_PACK_ID,
+  GYM_SACHSEN_GESCHICHTE_PACK_ID,
   GYM_SACHSEN_ANHALT_PACK_ID,
   SKS_SACHSEN_ANHALT_HS_PACK_ID,
   SKS_SACHSEN_ANHALT_RS_PACK_ID,
@@ -135,6 +137,7 @@ export function hasAnyInstalledPack(kv: CurriculumKv = defaultCurriculumKv()): b
     listInstalledPacks(kv).length > 0 ||
     isPackInstalled(GYM_SACHSEN_PACK_ID, kv) ||
     isPackInstalled(GYM_SACHSEN_PHYSIK_PACK_ID, kv) ||
+    isPackInstalled(GYM_SACHSEN_GESCHICHTE_PACK_ID, kv) ||
     isPackInstalled(GYM_SACHSEN_ANHALT_PACK_ID, kv) ||
     isPackInstalled(SKS_SACHSEN_ANHALT_HS_PACK_ID, kv) ||
     isPackInstalled(SKS_SACHSEN_ANHALT_RS_PACK_ID, kv) ||
