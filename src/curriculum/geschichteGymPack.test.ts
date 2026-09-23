@@ -14,11 +14,11 @@ import { allGeschichteTopicIds } from './geschichteGymTopics'
 import { resolveGeschichteGenerate } from './geschichteGenerators'
 
 describe('Gymnasium Sachsen Geschichte pack', () => {
-  it('builds Klassen 5–10 and Oberstufe Gk/Lk with K6 LB1 mostly released', () => {
+  it('builds Klassen 5–10 and Oberstufe Gk/Lk with K6 LB1 released', () => {
     const pack = buildGymSachsenGeschichtePack()
     expect(pack.id).toBe(GYM_SACHSEN_GESCHICHTE_PACK_ID)
     expect(pack.subject).toBe('Geschichte')
-    expect(pack.version).toBe('1.4.4')
+    expect(pack.version).toBe('1.4.5')
     expect(pack.official.map((g) => g.id)).toEqual([
       'geschichte-klasse-5',
       'geschichte-klasse-6',
@@ -36,10 +36,7 @@ describe('Gymnasium Sachsen Geschichte pack', () => {
       .find((g) => g.id === 'geschichte-klasse-6')!
       .areas.find((a) => a.id === 'lb1')!
       .topics
-    expect(k6Lb1.find((t) => t.id === 'ge-k6-lb1-weltreich')?.released).toBe(false)
-    expect(
-      k6Lb1.filter((t) => t.id !== 'ge-k6-lb1-weltreich').every((t) => t.released === true),
-    ).toBe(true)
+    expect(k6Lb1.every((t) => t.released === true)).toBe(true)
     const lockedElsewhere = topics.filter((t) => !t.id.startsWith('ge-k6-lb1-'))
     expect(lockedElsewhere.every((t) => t.released === false)).toBe(true)
     expect(pack.extras).toEqual([])

@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.12] – 2026-09-23
+
+### Geändert
+- **Geschichte K6 Mare Nostrum (ID 6763) freigegeben** (`ge-k6-lb1-weltreich` /
+  Vom Stadtstaat zum Weltreich): `released: true`. Geschichte-Pack **1.4.5**.
+
 ## [0.28.11] – 2026-09-23
 
 ### Geändert

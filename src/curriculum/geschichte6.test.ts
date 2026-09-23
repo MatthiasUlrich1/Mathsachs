@@ -119,17 +119,12 @@ describe('Geschichte K6 Römische Zivilisation', () => {
     }
   })
 
-  it('hydrates K6 LB1 with playable Rom topics (weltreich locked)', async () => {
+  it('hydrates K6 LB1 with playable Rom topics (all released)', async () => {
     const grades = await hydratePackGrades(buildGymSachsenGeschichtePack())
     const k6 = grades.find((g) => g.id === 'geschichte-klasse-6')!
     const lb1 = k6.areas.find((a) => a.id === 'lb1')!
     expect(lb1.topics.length).toBeGreaterThanOrEqual(8)
-    expect(lb1.topics.find((t) => t.id === 'ge-k6-lb1-weltreich')!.released).toBe(false)
-    expect(
-      lb1.topics
-        .filter((t) => t.id !== 'ge-k6-lb1-weltreich')
-        .every((t) => t.released !== false),
-    ).toBe(true)
+    expect(lb1.topics.every((t) => t.released !== false)).toBe(true)
     expect(lb1.topics.every((t) => !t.outlineOnly)).toBe(true)
     expect(lb1.topics.some((t) => t.id === 'ge-k6-lb1-jahreszahlen')).toBe(true)
     const punisch = lb1.topics.find((t) => t.id === 'ge-k6-lb1-punische-kriege')!
@@ -192,16 +187,14 @@ describe('Geschichte K6 Römische Zivilisation', () => {
     expect(colorAskWithPhase).toBeGreaterThan(5)
   })
 
-  it('locks weltreich until freigabe; other K6 LB1 topics stay released', async () => {
+  it('releases weltreich (Mare Nostrum); other K6 LB1 topics stay released', async () => {
     const grades = await hydratePackGrades(buildGymSachsenGeschichtePack())
     const lb1 = grades
       .find((g) => g.id === 'geschichte-klasse-6')!
       .areas.find((a) => a.id === 'lb1')!
     const weltreich = lb1.topics.find((t) => t.id === 'ge-k6-lb1-weltreich')!
-    expect(weltreich.released).toBe(false)
-    expect(
-      lb1.topics.filter((t) => t.id !== 'ge-k6-lb1-weltreich').every((t) => t.released !== false),
-    ).toBe(true)
+    expect(weltreich.released).toBe(true)
+    expect(lb1.topics.every((t) => t.released !== false)).toBe(true)
   })
 })
 

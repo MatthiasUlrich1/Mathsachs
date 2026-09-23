@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Geschichte",
-  "version": "1.4.4",
-  "changelog": "Klassen 5–12 (Gk/Lk) · 67 Themen. K6 LB1 Rom freigegeben (weltreich/Mare-Nostrum gesperrt; Legende = Jahr+Phase). Ohne Netz lokale Fassung.",
+  "version": "1.4.5",
+  "changelog": "Klassen 5–12 (Gk/Lk) · 67 Themen. K6 LB1 Rom freigegeben inkl. Mare Nostrum (ID 6763). Ohne Netz lokale Fassung.",
   "official": [
     {
       "id": "geschichte-klasse-5",
@@ -245,7 +245,7 @@
               "title": "Vom Stadtstaat zum Weltreich (Mare Nostrum)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Weltreich",
@@ -1236,5 +1236,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "1aca8c99"
+  "contentHash": "a075943e"
 }
