@@ -72,6 +72,8 @@ interface Props {
   preferredSubject: string
   preferredSubjects: string[]
   onChangePreferredSubjects: (subjects: string[]) => void
+  /** Nach Lehrplan-Installation: Fach in die bevorzugten Fächer aufnehmen. */
+  onEnsureSubject?: (subject: string) => void
   classLabel: string | null
   lanStatus: LanServerStatus | null
   onChangeRole: (role: UserRole) => void
@@ -99,6 +101,7 @@ export function Settings({
   preferredSubject,
   preferredSubjects,
   onChangePreferredSubjects,
+  onEnsureSubject,
   classLabel,
   lanStatus,
   onChangeRole,
@@ -242,6 +245,7 @@ export function Settings({
           onLoad={onLoad}
           onRemove={onRemove}
           onPacksChanged={onPacksChanged}
+          onEnsureSubject={onEnsureSubject}
           initialSubject={isTeacherRole(role) ? preferredSubject : undefined}
         />
       )}

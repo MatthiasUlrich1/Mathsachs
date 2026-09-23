@@ -38,6 +38,8 @@ interface Props {
   onLoad: (id: string) => Promise<void>
   onRemove: (id: string) => void
   onPacksChanged: () => void
+  /** Lehrerprofil: Fach in die bevorzugten Fächer aufnehmen (Themen-Filter). */
+  onEnsureSubject?: (subject: string) => void
   initialRegion?: string
   initialSchulform?: string
   /** Preferred subject from Lehrerprofil — defaults the Fach filter. */
@@ -137,6 +139,7 @@ export function CurriculumSetup({
   onLoad,
   onRemove,
   onPacksChanged,
+  onEnsureSubject,
   initialRegion,
   initialSchulform,
   initialSubject,
@@ -219,6 +222,22 @@ export function CurriculumSetup({
     }
   }
 
+  /** Install/update: Fach-Filter setzen, Profil-Fach ergänzen, alle Klassenstufen in Themen laden. */
+  const activatePackInThemen = async (pack: {
+    id: string
+    subject: string
+    official: Array<{ id: string }>
+  }) => {
+    const subject = normalizeSubject(pack.subject)
+    setSubject(subject)
+    onEnsureSubject?.(subject)
+    for (const grade of pack.official) {
+      if (!loadedIds.includes(grade.id)) {
+        await onLoad(grade.id)
+      }
+    }
+  }
+
   return (
     <section className="card">
       <div className="session__head">
@@ -233,9 +252,8 @@ export function CurriculumSetup({
 
       {installed.length === 0 && (
         <p className="notice notice--warn">
-          Es ist noch kein Lehrplan installiert. Installiere zuerst
-          „Gymnasium Sachsen · Mathematik“, „Gymnasium Sachsen · Physik“ oder einen
-          Oberschule-Lehrplan (Hauptschul- oder Realschulbildungsgang), um Themen,
+          Es ist noch kein Lehrplan installiert. Installiere zuerst z. B.
+          „Gymnasium Sachsen · Mathematik“, Physik oder Geschichte, um Themen,
           Klausur und Challenge nutzen zu können.
         </p>
       )}
@@ -341,10 +359,29 @@ export function CurriculumSetup({
                               const fallback = downloaded ?? (await bundledPackById(entry.id))
                               if (!fallback) throw new Error('Lehrplan nicht verfügbar.')
                               installPack(fallback)
+                              await activatePackInThemen(fallback)
                             })
                           }
                         >
                           {busy ? 'Wird aktualisiert …' : 'Aktualisieren'}
+                        </button>
+                      )}
+                      {gradesByPack.get(entry.id)?.some((g) => !loadedIds.includes(g.id)) && (
+                        <button
+                          type="button"
+                          className="primary"
+                          disabled={busy}
+                          onClick={() =>
+                            void run(entry.id, async () => {
+                              const pack =
+                                listInstalledPacks().find((p) => p.id === entry.id) ??
+                                (await bundledPackById(entry.id))
+                              if (!pack) throw new Error('Lehrplan nicht verfügbar.')
+                              await activatePackInThemen(pack)
+                            })
+                          }
+                        >
+                          {busy ? 'Wird geladen …' : 'In Themen einblenden'}
                         </button>
                       )}
                       <button type="button" className="ghost" onClick={() => void run(entry.id, async () => removePack(entry.id))}>
@@ -362,6 +399,7 @@ export function CurriculumSetup({
                           const fallback = downloaded ?? (await bundledPackById(entry.id))
                           if (!fallback) throw new Error('Lehrplan nicht verfügbar.')
                           installPack(fallback)
+                          await activatePackInThemen(fallback)
                         })
                       }
                     >

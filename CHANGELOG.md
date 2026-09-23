@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.1] – 2026-09-23
+
+### Behoben
+- **Lehrpläne → Themen:** Nach Installation (oder „In Themen einblenden“) werden alle
+  Klassenstufen geladen und das Fach (z. B. Geschichte) in die bevorzugten Fächer
+  übernommen — sonst blieb der Lehrplan in Themen unsichtbar.
+
 ## [0.28.0] – 2026-09-23
 
 ### Hinzugefügt

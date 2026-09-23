@@ -512,6 +512,17 @@ export default function App() {
     }
   }
 
+  const ensurePreferredSubject = (subject: string) => {
+    if (!activeUser) return
+    const label = normalizeSubject(subject)
+    if (preferredSubjects.some((s) => s.toLowerCase() === label.toLowerCase())) {
+      setBrowseSubject(label)
+      return
+    }
+    changePreferredSubjects([...preferredSubjects, label])
+    setBrowseSubject(label)
+  }
+
   const subjectOf = (moduleId: string) => normalizeSubject(subjectTitleForModule(moduleId))
 
   const loadedSubjects = (() => {
@@ -1041,6 +1052,7 @@ export default function App() {
           preferredSubject={preferredSubject}
           preferredSubjects={preferredSubjects}
           onChangePreferredSubjects={changePreferredSubjects}
+          onEnsureSubject={ensurePreferredSubject}
           classLabel={classLabel}
           lanStatus={lanStatus}
           onChangeRole={changeRole}
