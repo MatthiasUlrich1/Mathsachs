@@ -27,11 +27,29 @@ describe('Geschichte K6 Römische Zivilisation', () => {
     }
   })
 
-  it('does not stub Rom topics when a title is passed', () => {
-    const task = resolveGeschichteGenerate('ge-k6-lb1-punische-kriege', 'Punische Kriege')!(
-      createRng(3),
-    )
-    expect(task.question).not.toMatch(/Übungsaufgaben folgen/)
+  it('jahreszahlen drill asks for years most of the time', () => {
+    let yearAsks = 0
+    for (let seed = 1; seed <= 40; seed++) {
+      const task = GESCHICHTE_K6_GENERATORS['ge-k6-lb1-jahreszahlen']!(createRng(seed))
+      if (
+        task.answerKind === 'integer' ||
+        /\d{3}\s*v\.\s*Chr/i.test(task.question) ||
+        /Welches Jahr|welchem Jahr|Jahreszahl/i.test(task.question)
+      ) {
+        yearAsks += 1
+      }
+      expect(task.check(task.sampleAnswer)).toBe(true)
+    }
+    expect(yearAsks).toBeGreaterThan(30)
+  })
+
+  it('never serves Platzhalter stubs for Rom LB1 topics', () => {
+    for (const id of romIds) {
+      for (let seed = 1; seed <= 5; seed++) {
+        const task = GESCHICHTE_K6_GENERATORS[id]!(createRng(seed))
+        expect(task.question).not.toMatch(/Übungsaufgaben folgen|Tippe „ok“/)
+      }
+    }
   })
 
   it('hydrates K6 LB1 with playable Rom topics (still locked)', async () => {

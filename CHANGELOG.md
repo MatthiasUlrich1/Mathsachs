@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.3] – 2026-09-23
+
+### Geändert
+- **Geschichte K6 LB1 (LK):** Keine Platzhalter mehr — Jahreszahl-Drill (753, 500, 264–146
+  u. a. mit vielen Wiederholungen), Chronologie, Begriffe, Ämter, Punische Kriege,
+  Bürgerrecht. Pack **1.2.0**. Nach Update Lehrplan aktualisieren / in Themen einblenden.
+
 ## [0.28.2] – 2026-09-23
 
 ### Hinzugefügt

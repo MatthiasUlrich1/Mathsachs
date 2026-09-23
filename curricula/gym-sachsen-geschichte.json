@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Geschichte",
-  "version": "1.1.0",
-  "changelog": "K6 LB1 Römische Zivilisation: Übungsaufgaben aus Heft + Schulwissen (Anfänge, Begriffe, Ämter, Punische Kriege, Mare Nostrum, Bürgerrecht). Themen weiterhin gesperrt — nur Entwickleransicht. Lehrplan Gymnasium Geschichte (Sachsen) 2004/2007/2009/2011/2019, lplanid=65, https://www.schulportal.sachsen.de/lplandb/lehrplan/65",
+  "version": "1.2.0",
+  "changelog": "K6 LB1 Römische Zivilisation für Leistungskontrolle: starker Jahreszahl-Drill (753, 500, 264–146), Chronologie, Begriffe, Ämter, Bürgerrecht. Themen weiterhin nur Entwickleransicht. Lehrplan Gymnasium Geschichte (Sachsen) 2004/2007/2009/2011/2019, lplanid=65, https://www.schulportal.sachsen.de/lplandb/lehrplan/65",
   "official": [
     {
       "id": "geschichte-klasse-5",
@@ -163,12 +163,38 @@
           "ustd": 18,
           "topics": [
             {
-              "id": "ge-k6-lb1-rom",
-              "title": "Die römische Zivilisation – Überblick",
+              "id": "ge-k6-lb1-jahreszahlen",
+              "title": "Jahreszahlen einprägen (LK-Drill)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 20,
+              "keywords": [
+                "753",
+                "264",
+                "146",
+                "Hannibal"
+              ]
+            },
+            {
+              "id": "ge-k6-lb1-chronologie",
+              "title": "Chronologie: Anfänge und Punische Kriege",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 15,
+              "keywords": [
+                "Chronologie",
+                "Punische Kriege"
+              ]
+            },
+            {
+              "id": "ge-k6-lb1-rom",
+              "title": "Die römische Zivilisation – Überblick (LK)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 15,
               "keywords": [
                 "Rom",
                 "Zivilisation",
@@ -181,7 +207,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 15,
               "keywords": [
                 "Romulus",
                 "753",
@@ -195,7 +221,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 12,
               "keywords": [
                 "Senat",
                 "Patrizier",
@@ -208,7 +234,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 12,
               "keywords": [
                 "Konsuln",
                 "Volkstribune",
@@ -221,7 +247,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 15,
               "keywords": [
                 "Hannibal",
                 "Karthago",
@@ -234,7 +260,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 12,
               "keywords": [
                 "Weltreich",
                 "Mittelmeer",
@@ -247,7 +273,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Bürgerrecht",
                 "Rechte"
@@ -1211,5 +1237,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "22cb039e"
+  "contentHash": "dffecc78"
 }

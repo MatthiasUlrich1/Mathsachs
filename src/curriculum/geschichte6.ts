@@ -1,7 +1,6 @@
 /**
- * Geschichte Klasse 6 — Römische Zivilisation (LB1).
- * Quellen: Heftnotizen (Anfänge, Republik, Punische Kriege, Mare Nostrum, Bürgerrecht, Ämter)
- * + gängige Schulgeschichte (Wikipedia/Lehrplan Sachsen).
+ * Geschichte Klasse 6 — LB1 Römische Zivilisation.
+ * Schwerpunkt Leistungskontrolle: Jahreszahlen einprägen + Kernwissen aus dem Heft.
  */
 import type { Rng } from '../lib/rng'
 import {
@@ -27,117 +26,248 @@ const shuffleChoices = (rng: Rng, choices: string[], correct: string): string[] 
   return out
 }
 
-/** Anfänge Roms: Sage, Siedlung, Etrusker, Republik */
-export const romAnfaenge: Topic['generate'] = mixedVariants(
-  (rng) => {
-    const cases = [
-      {
-        q: 'Wann wurde Rom der Sage nach gegründet? (Merkhilfe: „Rom schlüpft aus dem Ei“)',
-        correct: '753 v. Chr.',
-        wrong: ['1000 v. Chr.', '500 v. Chr.', '146 v. Chr.'],
-        explanation:
-          'Die Gründungssage nennt 753 v. Chr. — Merkhilfe „Rom schlüpft aus dem Ei“ (7-5-3).',
-      },
-      {
-        q: 'Wer gründete Rom der Sage nach?',
-        correct: 'Romulus und Remus',
-        wrong: ['Hannibal und Scipio', 'Caesar und Augustus', 'Sabiner und nur Remus'],
-        explanation: 'Die Zwillinge Romulus und Remus stehen in der Gründungssage.',
-      },
-      {
-        q: 'Rom lag der Sage nach auf …',
-        correct: 'sieben Hügeln',
-        wrong: ['drei Inseln', 'einem einzelnen Berg', 'zehn Hügeln'],
-        explanation: 'Rom gilt als „Stadt auf sieben Hügeln“.',
-      },
-      {
-        q: 'Welche Völkergruppen siedelten früh am Tiber und entwickelten einen Handelsplatz (um 1000 v. Chr.)?',
-        correct: 'Sabiner und Latiner (Hirten und Bauern)',
-        wrong: ['Punier und Phönizier', 'Germanen und Kelten', 'nur Etrusker als Händler'],
-        explanation: 'Sabiner und Latiner siedelten als Hirten und Bauern und entwickelten Rom zum Handelsplatz.',
-      },
-      {
-        q: 'Was brachten die Etrusker (um 700 v. Chr.) u. a. nach Rom?',
-        correct: 'Stein- und Ziegelbau, Wassertechnik, Metallverarbeitung',
-        wrong: ['Buchdruck und Dampfmaschine', 'nur das Bürgerrecht', 'die Punischen Kriege'],
-        explanation:
-          'Die Etrusker brachten u. a. Stein-/Ziegelbau, Wassertechnik und Metallverarbeitung.',
-      },
-      {
-        q: 'Um 500 v. Chr. stürzten Patrizier den König. Was entstand?',
-        correct: 'die römische Republik',
-        wrong: ['das Kaiserreich', 'das Frankenreich', 'Karthago'],
-        explanation: 'Nach Vertreibung der etruskischen Könige entstand die Republik (res publica).',
-      },
-    ] as const
-    const c = pick(rng, cases)
-    return choicePickTask({
-      question: c.q,
-      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
-      correct: c.correct,
-      solution: c.correct,
-      explanation: c.explanation,
-      instruction: 'Tippe die passende Aussage:',
-    })
+/** Kern-Jahreszahlen für die LK (v. Chr., nur die Zahl eingeben). */
+const YEAR_FACTS = [
+  {
+    year: 753,
+    event: 'Gründung Roms (Sage: Romulus und Remus)',
+    hint: 'Merkhilfe: „Rom schlüpft aus dem Ei“ (7-5-3)',
   },
-  (_rng) =>
-    dragDropSortTask({
-      question:
-        'Ordne die Phasen chronologisch (älteste zuerst): Siedlung → Etruskerkönigtum → Republik → Gründungssage 753.',
-      items: [
-        { label: 'Sabiner/Latiner siedeln (~1000 v. Chr.)', value: 0 },
-        { label: 'Etruskerkönigtum (~700 v. Chr.)', value: 1 },
-        { label: 'Gründungssage Romulus/Remus (753 v. Chr.)', value: 2 },
-        { label: 'Beginn der Republik (~500 v. Chr.)', value: 3 },
-      ],
-      correctOrder: [0, 1, 2, 3],
-      solution: 'Siedlung → Etrusker → Sage 753 → Republik ~500',
-      explanation:
-        'Historisch: Siedlung und Etrusker früher; die Sage datiert 753; Republik um 500 v. Chr.',
-      rng: _rng,
-    }),
-  (_rng) =>
-    multiSelectTask({
-      question: 'Was gehört zu den Anfängen Roms? (mehrere möglich)',
-      choices: [
-        'Lage auf sieben Hügeln',
-        'Sage von Romulus und Remus',
-        'Einfluss der Etrusker',
-        'Beginn der Republik um 500 v. Chr.',
-        'Hannibal überquert die Alpen als Gründungsmythos',
-      ],
-      correct: [
-        'Lage auf sieben Hügeln',
-        'Sage von Romulus und Remus',
-        'Einfluss der Etrusker',
-        'Beginn der Republik um 500 v. Chr.',
-      ],
-      solution: 'Hügel, Sage, Etrusker, Republik — nicht Hannibals Alpenzug.',
-      explanation: 'Hannibal gehört zu den Punischen Kriegen, nicht zur Stadtgründung.',
-      instruction: 'Tippe alle zutreffenden Aussagen:',
-    }),
+  {
+    year: 1000,
+    event: 'Frühe Siedlung von Sabinern und Latinern am Tiber (ca.)',
+    hint: 'Lange vor der Sage — Hirten und Bauern, Handelsplatz',
+  },
+  {
+    year: 700,
+    event: 'Etrusker prägen Rom (Steinbau, Wassertechnik, Metall) (ca.)',
+    hint: 'Etruskerkönigtum vor der Republik',
+  },
+  {
+    year: 500,
+    event: 'Beginn der römischen Republik (ca., Könige vertrieben)',
+    hint: 'Patrizier stürzen den König — res publica',
+  },
+  {
+    year: 264,
+    event: 'Beginn des Ersten Punischen Krieges (Kampf um Sizilien)',
+    hint: 'Rom gegen Karthago — Rom baut eine Flotte',
+  },
+  {
+    year: 241,
+    event: 'Ende des Ersten Punischen Krieges; Sizilien wird römische Provinz',
+    hint: 'Rom siegt zur See / um Sizilien',
+  },
+  {
+    year: 218,
+    event: 'Beginn des Zweiten Punischen Krieges; Hannibal überquert die Alpen',
+    hint: 'Hannibal mit Heer und Elefanten über die Alpen',
+  },
+  {
+    year: 202,
+    event: 'Schlacht bei Zama: Scipio besiegt Hannibal',
+    hint: 'Entscheidung in Afrika zugunsten Roms',
+  },
+  {
+    year: 201,
+    event: 'Ende des Zweiten Punischen Krieges',
+    hint: 'Nach Zama — Karthago stark geschwächt',
+  },
+  {
+    year: 149,
+    event: 'Beginn des Dritten Punischen Krieges',
+    hint: 'Cato: „Carthago delenda est!“',
+  },
+  {
+    year: 146,
+    event: 'Zerstörung Karthagos (Ende des Dritten Punischen Krieges)',
+    hint: 'Rom alleinige Vormacht im Mittelmeer',
+  },
+] as const
+
+type YearFact = (typeof YEAR_FACTS)[number]
+
+const otherYears = (fact: YearFact): number[] =>
+  YEAR_FACTS.filter((f) => f.year !== fact.year).map((f) => f.year)
+
+/** Jahreszahl tippen (viele Wiederholungen). */
+function yearValueTask(rng: Rng, pool: readonly YearFact[] = YEAR_FACTS) {
+  const fact = pick(rng, pool)
+  const forms = [
+    `In welchem Jahr v. Chr. geschah Folgendes?\n\n${fact.event}\n\n(Nur die Jahreszahl tippen, z. B. 753)`,
+    `Jahreszahl lernen: ${fact.event}\n\nWelches Jahr v. Chr.? ${fact.hint}\n\n(Nur die Zahl)`,
+    `LK-Drill: Wann? „${fact.event}“\n\nJahr v. Chr. (nur Zahl):`,
+  ]
+  return valueTask({
+    question: pick(rng, forms),
+    answerKind: 'integer',
+    value: fact.year,
+    solution: `${fact.year}`,
+    explanation: `${fact.year} v. Chr. — ${fact.event}. ${fact.hint}`,
+  })
+}
+
+/** Welches Ereignis gehört zur Jahreszahl? */
+function yearEventChoice(rng: Rng, pool: readonly YearFact[] = YEAR_FACTS) {
+  const fact = pick(rng, pool)
+  const distractors = shuffleChoices(
+    rng,
+    YEAR_FACTS.filter((f) => f.year !== fact.year).map((f) => f.event),
+    fact.event,
+  ).filter((e) => e !== fact.event)
+  const wrong = distractors.slice(0, 3)
+  return choicePickTask({
+    question: `Was geschah ${fact.year} v. Chr.?`,
+    choices: shuffleChoices(rng, [fact.event, ...wrong], fact.event),
+    correct: fact.event,
+    solution: fact.event,
+    explanation: `${fact.year} v. Chr.: ${fact.event}. ${fact.hint}`,
+    instruction: 'Tippe das passende Ereignis:',
+  })
+}
+
+/** Welche Jahreszahl passt zum Ereignis? (MC) */
+function yearMcTask(rng: Rng, pool: readonly YearFact[] = YEAR_FACTS) {
+  const fact = pick(rng, pool)
+  const wrongYears = shuffleChoices(
+    rng,
+    otherYears(fact).map(String),
+    String(fact.year),
+  )
+    .filter((y) => y !== String(fact.year))
+    .slice(0, 3)
+  const correct = `${fact.year} v. Chr.`
+  const choices = shuffleChoices(
+    rng,
+    [correct, ...wrongYears.map((y) => `${y} v. Chr.`)],
+    correct,
+  )
+  return choicePickTask({
+    question: `${fact.event}\n\nWelches Jahr? ${fact.hint}`,
+    choices,
+    correct,
+    solution: correct,
+    explanation: `${fact.year} v. Chr. — ${fact.hint}`,
+    instruction: 'Tippe die Jahreszahl:',
+  })
+}
+
+/** ~70 % Jahreszahlen, Rest Inhalt — für LK-Drill. */
+function withYearWeight(
+  rng: Rng,
+  content: () => ReturnType<Topic['generate']>,
+  yearPool?: readonly YearFact[],
+): ReturnType<Topic['generate']> {
+  const roll = rng()
+  if (roll < 0.45) return yearValueTask(rng, yearPool)
+  if (roll < 0.65) return yearMcTask(rng, yearPool)
+  if (roll < 0.78) return yearEventChoice(rng, yearPool)
+  return content()
+}
+
+const ANFANGE_YEARS = YEAR_FACTS.filter((f) => [753, 1000, 700, 500].includes(f.year))
+const PUNISCH_YEARS = YEAR_FACTS.filter((f) =>
+  [264, 241, 218, 202, 201, 149, 146].includes(f.year),
 )
 
-/** Wichtige Begriffe: Senat, Republik, Patrizier, Plebejer */
-export const romBegriffe: Topic['generate'] = mixedVariants(
-  (rng) => {
+/** Reine Jahreszahl-Wiederholung (LK). */
+export const romJahreszahlen: Topic['generate'] = (rng) => {
+  const roll = rng()
+  if (roll < 0.55) return yearValueTask(rng)
+  if (roll < 0.78) return yearMcTask(rng)
+  return yearEventChoice(rng)
+}
+
+export const romAnfaenge: Topic['generate'] = (rng) =>
+  withYearWeight(
+    rng,
+    () => {
+      const cases = [
+        {
+          q: 'Wer gründete Rom der Sage nach?',
+          correct: 'Romulus und Remus',
+          wrong: ['Hannibal und Scipio', 'Caesar und Augustus', 'Cato und Scipio'],
+          explanation: 'Zwillinge Romulus und Remus — Sage zur Stadtgründung.',
+        },
+        {
+          q: 'Rom lag der Sage nach auf …',
+          correct: 'sieben Hügeln',
+          wrong: ['drei Inseln', 'einem Berg', 'zehn Hügeln'],
+          explanation: '„Stadt auf sieben Hügeln“.',
+        },
+        {
+          q: 'Merkhilfe für 753 v. Chr.?',
+          correct: '„Rom schlüpft aus dem Ei“ (7-5-3)',
+          wrong: [
+            '„Rom baut eine Flotte“',
+            '„Carthago delenda est“',
+            '„Mare Nostrum“',
+          ],
+          explanation: '7-5-3 = 753 — „Rom schlüpft aus dem Ei“.',
+        },
+        {
+          q: 'Sabiner und Latiner (Hirten/Bauern) …',
+          correct: 'siedeln früh am Tiber und entwickeln einen Handelsplatz',
+          wrong: [
+            'zerstören Karthago 146',
+            'überqueren die Alpen mit Elefanten',
+            'sind nur Feldherren Karthagos',
+          ],
+          explanation: 'Frühe Siedlung → Handelsplatz (ca. 1000 v. Chr.).',
+        },
+        {
+          q: 'Was brachten die Etrusker nach Rom?',
+          correct: 'Stein-/Ziegelbau, Wassertechnik, Metallverarbeitung',
+          wrong: [
+            'Buchdruck',
+            'nur das Bürgerrecht',
+            'die Zerstörung Karthagos',
+          ],
+          explanation: 'Etrusker: neue Lebensweise, Steinbau, Wasser, Metall.',
+        },
+        {
+          q: 'Um 500 v. Chr. entsteht die Republik, weil …',
+          correct: 'Patrizier den König stürzen und die Etrusker vertreiben',
+          wrong: [
+            'Hannibal Rom erobert',
+            'Karthago den Senat gründet',
+            'Romulus Konsul wird',
+          ],
+          explanation: 'Königszeit endet → Republik (res publica).',
+        },
+      ] as const
+      const c = pick(rng, cases)
+      return choicePickTask({
+        question: c.q,
+        choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+        correct: c.correct,
+        solution: c.correct,
+        explanation: c.explanation,
+        instruction: 'Tippe die passende Aussage:',
+      })
+    },
+    ANFANGE_YEARS,
+  )
+
+export const romBegriffe: Topic['generate'] = (rng) =>
+  withYearWeight(rng, () => {
     const cases = [
       {
-        q: 'Was bedeutet „Republik“ (lat. res publica)?',
+        q: '„Republik“ kommt von lat. res publica und bedeutet …',
         correct: 'öffentliche Sache — Regierung durch gewählte Vertreter',
         wrong: [
           'Alleinherrschaft eines Königs',
-          'nur Militärdiktatur',
+          'nur Militär ohne Senat',
           'Herrschaft der Götter',
         ],
       },
       {
         q: 'Was war der Senat in der frühen Republik?',
-        correct: 'Rat der Ältesten — politische Versammlung zunächst adliger Männer',
+        correct: 'Rat der Ältesten; politische Versammlung zunächst adliger Männer',
         wrong: [
-          'Versammlung nur der Plebejer',
-          'Heer der Gladiatoren',
-          'Marktplatz für Getreide',
+          'nur die Plebejerversammlung',
+          'das Heer Hannibals',
+          'ein einzelner König',
         ],
       },
       {
@@ -145,13 +275,13 @@ export const romBegriffe: Topic['generate'] = mixedVariants(
         correct: 'Adlige und wohlhabende Römer (lat. „Väter“)',
         wrong: [
           'das einfache Volk ohne Adel',
-          'nur Sklaven',
           'Feldherren Karthagos',
+          'nur Sklaven',
         ],
       },
       {
         q: 'Wer waren die Plebejer?',
-        correct: 'Angehörige des römischen Volkes, die nicht zum Adel gehörten',
+        correct: 'Angehörige des Volkes, die nicht zum Adel gehörten',
         wrong: [
           'nur die Konsuln',
           'etruskische Könige',
@@ -159,12 +289,12 @@ export const romBegriffe: Topic['generate'] = mixedVariants(
         ],
       },
       {
-        q: 'Rom wird Republik — aber wer hat zunächst die Macht?',
-        correct: 'nur die Patrizier; die Plebejer bleiben zunächst machtlos',
+        q: 'Rom wird Republik — aber zunächst …',
+        correct: 'haben nur die Patrizier die Macht; Plebejer bleiben machtlos',
         wrong: [
-          'alle Bürger gleichberechtigt',
-          'nur die Plebejer',
-          'Hannibal als Konsul',
+          'sind alle sofort gleichberechtigt',
+          'herrschen nur die Plebejer',
+          'gibt es keinen Senat',
         ],
       },
     ] as const
@@ -177,88 +307,62 @@ export const romBegriffe: Topic['generate'] = mixedVariants(
       explanation: 'Frühe Republik: res publica, Senat, Patrizier vs. Plebejer.',
       instruction: 'Tippe die passende Erklärung:',
     })
-  },
-  (_rng) =>
-    dragDropSlotsTask({
-      question:
-        'Ordne: Begriff → Bedeutung. Platz 1 = Republik, 2 = Senat, 3 = Patrizier, 4 = Plebejer. Einen Block brauchst du nicht.',
-      items: [
-        { label: 'öffentliche Sache / gewählte Vertreter', value: 0 },
-        { label: 'Rat der Ältesten (zunächst Adlige)', value: 1 },
-        { label: 'Adlige / wohlhabende „Väter“', value: 2 },
-        { label: 'Volk ohne Adelszugehörigkeit', value: 3 },
-        { label: 'König mit unbeschränkter Macht', value: 4 },
-      ],
-      correctSlots: [0, 1, 2, 3],
-      solution: 'Republik · Senat · Patrizier · Plebejer',
-      explanation: 'König gehört nicht zur republikanischen Begriffsreihe.',
-      instruction: 'Platz 1–4 wie in der Frage',
-    }),
-  (_rng) =>
-    multiSelectTask({
-      question: 'Welche Aussagen zur frühen Republik stimmen? (mehrere möglich)',
-      choices: [
-        'res publica = öffentliche Sache',
-        'Senat berät die Politik',
-        'Patrizier stellen zunächst die Machtelite',
-        'Plebejer sind von Anfang an den Patriziern gleichgestellt',
-        'Königsherrschaft wird abgelöst',
-      ],
-      correct: [
-        'res publica = öffentliche Sache',
-        'Senat berät die Politik',
-        'Patrizier stellen zunächst die Machtelite',
-        'Königsherrschaft wird abgelöst',
-      ],
-      solution: 'Gleichstellung der Plebejer kommt erst später (Ständekämpfe).',
-      explanation: 'Die Plebejer erkämpfen Rechte schrittweise (z. B. Volkstribune).',
-      instruction: 'Tippe alle zutreffenden Aussagen:',
-    }),
-)
+  }, ANFANGE_YEARS)
 
-/** Ämter der Republik */
-export const romAemter: Topic['generate'] = mixedVariants(
-  (rng) => {
+export const romAemter: Topic['generate'] = (rng) =>
+  withYearWeight(rng, () => {
     const cases = [
       {
-        q: 'Welche Aufgabe hatten die Konsuln?',
-        correct: 'oberste Beamte Roms (je zwei)',
-        wrong: ['nur Finanzen', 'nur Sittenkontrolle', 'nur Veto der Plebejer'],
+        q: 'Welche Aufgabe hatten die beiden Konsuln?',
+        correct: 'die obersten Beamten Roms',
+        wrong: ['nur für Finanzen zuständig', 'nur Volkstribune', 'Könige auf Lebenszeit'],
       },
       {
-        q: 'Wofür waren die Prätoren zuständig?',
-        correct: 'Gerichtswesen',
-        wrong: ['Getreideimporte aus Ägypten', 'nur Krieg gegen Karthago', 'Sittenkontrolle'],
+        q: 'Prätoren waren zuständig für …',
+        correct: 'das Gerichtswesen',
+        wrong: ['nur Sittenkontrolle', 'nur die Flotte Karthagos', 'Getreide aus Germanien'],
       },
       {
-        q: 'Wofür waren die Ädile zuständig?',
-        correct: 'Verwaltung (u. a. Stadt/Markt)',
-        wrong: ['unbeschränkte Diktatur', 'nur Senatsberatung', 'Alpenübergang'],
+        q: 'Ädile waren zuständig für …',
+        correct: 'die Verwaltung (Stadt/Markt u. a.)',
+        wrong: ['unbeschränkte Diktatur', 'nur Alpenübergänge', 'nur Krieg und Frieden allein'],
       },
       {
-        q: 'Wofür waren die Quästoren zuständig?',
-        correct: 'Finanzen',
-        wrong: ['Veto gegen Gesetze', 'nur Heiratserlaubnis', 'Zerstörung Karthagos'],
+        q: 'Quästoren waren zuständig für …',
+        correct: 'die Finanzen',
+        wrong: ['nur das Veto', 'nur Heiraten', 'nur die Zerstörung Karthagos'],
       },
       {
-        q: 'Wofür waren die Zensoren zuständig?',
+        q: 'Zensoren waren zuständig für …',
         correct: 'Sittenkontrolle (und Bürgerlisten)',
-        wrong: ['nur Gladiatorenkämpfe', 'nur Straßenbau in Germanien', 'Flottenbau Karthagos'],
+        wrong: ['nur Gladiatoren', 'nur Straßen in Britannien', 'die Flotte Karthagos'],
       },
       {
-        q: 'Was konnten die Volkstribune?',
+        q: 'Volkstribune konnten …',
         correct: 'Veto einlegen (Schutz der Plebejer)',
-        wrong: ['allein den Senat ersetzen', 'Könige ernennen', 'nur Steuern erheben'],
+        wrong: [
+          'den Senat abschaffen',
+          'Könige ernennen',
+          'nur Steuern in Karthago erheben',
+        ],
       },
       {
-        q: 'Wann gab es einen Diktator in der Republik?',
-        correct: 'auf Zeit in Notzeiten — mit großer Macht',
-        wrong: ['dauerhaft als König', 'nur in Karthago', 'nie in Rom'],
+        q: 'Ein Diktator in der Republik …',
+        correct: 'wurde auf Zeit in Notzeiten mit großer Macht eingesetzt',
+        wrong: [
+          'war dauerhafter König',
+          'gab es nur in Karthago',
+          'wurde nie gewählt',
+        ],
       },
       {
-        q: 'Der Senat …',
+        q: 'Welche Rolle hatte der Senat in der Republik?',
         correct: 'beriet die Magistrate und entschied u. a. über Krieg und Frieden',
-        wrong: ['war nur die Plebejerversammlung', 'baute die Alpenstraße', 'war ein einzelner König'],
+        wrong: [
+          'war nur die Plebejerversammlung',
+          'baute die Alpenstraße',
+          'war ein einzelner Kaiser von Anfang an',
+        ],
       },
     ] as const
     const c = pick(rng, cases)
@@ -270,182 +374,118 @@ export const romAemter: Topic['generate'] = mixedVariants(
       explanation: 'Republik: Magistrate, Senat, Volksversammlung, Volkstribune, Diktator auf Zeit.',
       instruction: 'Tippe die passende Zuordnung:',
     })
-  },
-  (_rng) =>
-    dragDropSlotsTask({
-      question:
-        'Ämter → Aufgaben. Reihenfolge: 1 Konsuln, 2 Prätoren, 3 Ädile, 4 Quästoren, 5 Volkstribune. Einen Block brauchst du nicht.',
-      items: [
-        { label: 'oberste Beamte (2)', value: 0 },
-        { label: 'Gerichtswesen', value: 1 },
-        { label: 'Verwaltung', value: 2 },
-        { label: 'Finanzen', value: 3 },
-        { label: 'Veto möglich', value: 4 },
-        { label: 'Seemacht Karthagos', value: 5 },
-      ],
-      correctSlots: [0, 1, 2, 3, 4],
-      solution: 'Konsuln · Prätoren · Ädile · Quästoren · Volkstribune',
-      explanation: 'Karthago gehört nicht zu den römischen Ämtern.',
-      instruction: 'Platz 1–5 wie in der Frage',
-    }),
-  (_rng) =>
-    multiSelectTask({
-      question: 'Welche Institutionen gehören zur römischen Republik? (mehrere möglich)',
-      choices: [
-        'Senat',
-        'Konsuln',
-        'Volkstribune',
-        'Volksversammlung',
-        'Pharao von Ägypten',
-      ],
-      correct: ['Senat', 'Konsuln', 'Volkstribune', 'Volksversammlung'],
-      solution: 'Senat, Magistrate, Volksversammlung, Volkstribune — kein Pharao.',
-      explanation: 'Der Pharao gehört zu Ägypten, nicht zur römischen Republik.',
-      instruction: 'Tippe alle passenden Institutionen:',
-    }),
-)
+  })
 
-/** Punische Kriege */
-export const romPunisch: Topic['generate'] = mixedVariants(
-  (rng) => {
+export const romPunisch: Topic['generate'] = (rng) =>
+  withYearWeight(
+    rng,
+    () => {
+      const cases = [
+        {
+          q: 'Wo lag die Stadt Karthago?',
+          correct: 'in Nordafrika',
+          wrong: ['in Britannien', 'am Rhein', 'nur in Gallien'],
+        },
+        {
+          q: 'Wer war Hannibal in den Punischen Kriegen?',
+          correct: 'Feldherr Karthagos; überquerte die Alpen mit seinem Heer',
+          wrong: [
+            'römischer Konsul',
+            'etruskischer König',
+            'germanischer Häuptling',
+          ],
+        },
+        {
+          q: 'Was leistete der Römer Scipio im Zweiten Punischen Krieg?',
+          correct: 'besiegte Hannibal in Afrika (Zama)',
+          wrong: [
+            'gründete Rom 753',
+            'war König der Etrusker',
+            'zerstörte Rom',
+          ],
+        },
+        {
+          q: 'Was forderte Cato immer wieder im Senat?',
+          correct: '„Carthago delenda est!“ — Karthago muss zerstört werden',
+          wrong: [
+            'Rom soll die Flotte abschaffen',
+            'Hannibal soll Konsul werden',
+            'nur Frieden ohne Sieg',
+          ],
+        },
+        {
+          q: 'Erster Punischer Krieg: Worum ging es zuerst?',
+          correct: 'um Sizilien; Rom baut eine Flotte und siegt',
+          wrong: [
+            'um Britannien',
+            'um die Gründung Roms',
+            'um den Senat in Karthago',
+          ],
+        },
+        {
+          q: 'Warum waren die Punischen Kriege für Rom wichtig?',
+          correct: 'Rom wurde Großmacht und Vormacht im Mittelmeerraum',
+          wrong: [
+            'Rom verlor alle Kriege',
+            'Rom blieb kleiner Stadtstaat',
+            'Karthago eroberte Italien dauerhaft',
+          ],
+        },
+        {
+          q: 'Richtig oder falsch? „Rom verlor alle drei Punischen Kriege.“',
+          correct: 'falsch — Rom gewann alle drei Kriege',
+          wrong: ['richtig — Rom verlor alle drei'],
+        },
+        {
+          q: 'Richtig oder falsch? „Karthago lag in Nordafrika.“',
+          correct: 'richtig — Karthago lag in Nordafrika',
+          wrong: ['falsch — Karthago lag in Britannien'],
+        },
+      ] as const
+      const c = pick(rng, cases)
+      return choicePickTask({
+        question: c.q,
+        choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+        correct: c.correct,
+        solution: c.correct,
+        explanation:
+          'Drei Punische Kriege (264–146): Sizilien → Hannibal/Alpen → Zerstörung 146.',
+        instruction: 'Tippe die passende Antwort:',
+      })
+    },
+    PUNISCH_YEARS,
+  )
+
+export const romWeltreich: Topic['generate'] = (rng) =>
+  withYearWeight(rng, () => {
     const cases = [
       {
-        q: 'Wo lag Karthago?',
-        correct: 'in Nordafrika',
-        wrong: ['in Britannien', 'am Rhein', 'nur auf Sizilien'],
-      },
-      {
-        q: 'Wer war Hannibal?',
-        correct: 'Feldherr Karthagos; überquerte die Alpen mit seinem Heer',
-        wrong: ['römischer Konsul', 'etruskischer König', 'germanischer Häuptling'],
-      },
-      {
-        q: 'Wer besiegte Hannibal in Afrika (u. a. Zama)?',
-        correct: 'Scipio (römischer Feldherr)',
-        wrong: ['Cato allein mit Worten', 'Romulus', 'Augustus'],
-      },
-      {
-        q: 'Was forderte Cato immer wieder?',
-        correct: '„Carthago delenda est!“ — Karthago muss zerstört werden',
-        wrong: [
-          'Rom soll die Flotte abschaffen',
-          'Hannibal soll Konsul werden',
-          'nur Frieden ohne Bedingungen',
-        ],
-      },
-      {
-        q: 'Wann wurde Karthago zerstört?',
-        correct: '146 v. Chr.',
-        wrong: ['753 v. Chr.', '264 v. Chr.', '500 n. Chr.'],
-      },
-      {
-        q: 'Erster Punischer Krieg (264–241): Worüber kämpften Rom und Karthago zuerst?',
-        correct: 'um Sizilien; Rom baut eine Flotte und siegt',
-        wrong: [
-          'um Britannien',
-          'um die Alpen alone',
-          'um die Gründung Roms',
-        ],
-      },
-      {
-        q: 'Warum waren die Punischen Kriege für Rom wichtig?',
-        correct: 'Rom wurde Großmacht und Vormacht im Mittelmeerraum',
-        wrong: [
-          'Rom verlor alle Kriege',
-          'Rom blieb kleiner Stadtstaat',
-          'Karthago eroberte Rom dauerhaft',
-        ],
-      },
-    ] as const
-    const c = pick(rng, cases)
-    return choicePickTask({
-      question: c.q,
-      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
-      correct: c.correct,
-      solution: c.correct,
-      explanation:
-        'Drei Punische Kriege (264–146): Sizilien → Hannibal/Alpen → Zerstörung Karthagos 146.',
-      instruction: 'Tippe die passende Aussage:',
-    })
-  },
-  (rng) => {
-    const trueFalse = [
-      { statement: 'Karthago lag in Nordafrika.', truth: true },
-      { statement: 'Hannibal war ein Feldherr Karthagos.', truth: true },
-      { statement: 'Hannibal überquerte mit seinem Heer die Alpen.', truth: true },
-      { statement: 'Rom verlor alle drei Punischen Kriege.', truth: false },
-      { statement: 'Karthago wurde 146 v. Chr. zerstört.', truth: true },
-    ] as const
-    const item = pick(rng, trueFalse)
-    const correct = item.truth ? 'richtig' : 'falsch'
-    return choicePickTask({
-      question: `Richtig oder falsch? „${item.statement}“`,
-      choices: shuffleChoices(rng, ['richtig', 'falsch'], correct),
-      correct,
-      solution: correct,
-      explanation: item.truth
-        ? 'Die Aussage ist historisch zutreffend.'
-        : 'Rom gewann die Punischen Kriege; Karthago unterlag.',
-      instruction: 'Tippe „richtig“ oder „falsch“:',
-    })
-  },
-  (_rng) =>
-    dragDropSortTask({
-      question: 'Ordne chronologisch (früh → spät):',
-      items: [
-        { label: 'Erster Punischer Krieg beginnt (264)', value: 0 },
-        { label: 'Rom erobert Sizilien / siegt im 1. Krieg', value: 1 },
-        { label: 'Hannibal zieht über die Alpen (2. Krieg)', value: 2 },
-        { label: 'Scipio besiegt Hannibal in Afrika', value: 3 },
-        { label: 'Karthago wird zerstört (146)', value: 4 },
-      ],
-      correctOrder: [0, 1, 2, 3, 4],
-      solution: '1. Krieg → Sizilien → Alpen → Scipio → 146 Zerstörung',
-      explanation: 'Klassische Reihenfolge der Punischen Kriege.',
-      rng: _rng,
-    }),
-  (_rng) =>
-    valueTask({
-      question: 'In welchem Jahr v. Chr. wurde Karthago zerstört? (nur die Jahreszahl)',
-      answerKind: 'integer',
-      value: 146,
-      solution: '146',
-      explanation: 'Im Dritten Punischen Krieg wurde Karthago 146 v. Chr. zerstört.',
-    }),
-)
-
-/** Vom Stadtstaat zum Weltreich / Mare Nostrum */
-export const romWeltreich: Topic['generate'] = mixedVariants(
-  (rng) => {
-    const cases = [
-      {
-        q: 'Wie nannten die Römer das Mittelmeer, als sie es beherrschten?',
+        q: 'Wie nannten die Römer das beherrschte Mittelmeer?',
         correct: 'Mare Nostrum („unser Meer“)',
-        wrong: ['Mare Germanicum', 'Ozeanus Atlanticus', 'Nilus'],
+        wrong: ['Mare Germanicum', 'Ozeanus Atlanticus', 'Pontus Euxinus'],
       },
       {
-        q: 'Was bedeutet die Entwicklung „vom Stadtstaat zum Weltreich“?',
+        q: '„Vom Stadtstaat zum Weltreich“ bedeutet …',
         correct: 'Rom wächst von einer Stadt zur Macht um das Mittelmeer',
         wrong: [
-          'Rom schrumpft auf sieben Hügel zurück',
-          'Rom wird von Karthago dauerhaft erobert',
-          'Rom bleibt nur Handelsplatz ohne Heer',
+          'Rom schrumpft auf sieben Hügel',
+          'Karthago erobert Rom dauerhaft',
+          'Rom bleibt ohne Heer',
         ],
       },
       {
-        q: 'Um 270 v. Chr. war Rom vor allem …',
-        correct: 'eine Landmacht in Italien',
-        wrong: ['schon Weltmacht bis Britannien', 'nur ein Dorf ohne Senat', 'Hauptstadt Karthagos'],
-      },
-      {
-        q: 'Nach den Punischen Kriegen und weiteren Eroberungen wird Rom …',
-        correct: 'Vormacht / Weltmacht im Mittelmeerraum',
-        wrong: ['abhängige Provinz Karthagos', 'nur Seemacht ohne Land', 'germanisches Königreich'],
-      },
-      {
-        q: 'Welche Bezeichnung passt zur frühen Phase mit nur der Stadt Rom?',
+        q: 'Frühe Phase nur mit der Stadt Rom = …',
         correct: 'Stadtstaat',
-        wrong: ['Weltmacht', 'Seemacht Karthagos', 'Kaiserreich von Anfang an'],
+        wrong: ['Weltmacht', 'Seemacht Karthagos', 'Kaiserreich von Beginn an'],
+      },
+      {
+        q: 'Nach den Punischen Kriegen wird Rom vor allem …',
+        correct: 'Vormacht / Weltmacht im Mittelmeerraum',
+        wrong: [
+          'abhängige Provinz Karthagos',
+          'nur ein Dorf',
+          'germanisches Königreich',
+        ],
       },
     ] as const
     const c = pick(rng, cases)
@@ -454,58 +494,54 @@ export const romWeltreich: Topic['generate'] = mixedVariants(
       choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
       correct: c.correct,
       solution: c.correct,
-      explanation:
-        'Kartenarbeit: Stadtstaat → Land-/Seemacht → Weltmacht; Mare Nostrum = beherrschtes Mittelmeer.',
+      explanation: 'Karten: Stadtstaat → Land-/Seemacht → Weltmacht; Mare Nostrum.',
       instruction: 'Tippe die passende Aussage:',
     })
-  },
-  (_rng) =>
-    dragDropSortTask({
-      question: 'Ordne die Stufen der Macht (klein → groß):',
-      items: [
-        { label: 'Stadtstaat Rom', value: 0 },
-        { label: 'Landmacht in Italien', value: 1 },
-        { label: 'Seemacht nach Sieg über Karthago', value: 2 },
-        { label: 'Weltmacht um das Mittelmeer', value: 3 },
-      ],
-      correctOrder: [0, 1, 2, 3],
-      solution: 'Stadtstaat → Landmacht → Seemacht → Weltmacht',
-      explanation: 'So lässt sich die Ausdehnung auf Geschichtskarten lesen.',
-      rng: _rng,
-    }),
-  (_rng) =>
-    textTask({
-      question:
-        'Wie nannten die Römer das Mittelmeer auf Latein (zwei Wörter)? Tipp: „unser Meer“.',
-      accepted: ['mare nostrum', 'Mare Nostrum', 'mare nostrum.'],
-      solution: 'Mare Nostrum',
-      explanation:
-        'Mare Nostrum = „unser Meer“ — Ausdruck der römischen Vorherrschaft im Mittelmeer.',
-    }),
-)
+  }, PUNISCH_YEARS)
 
-/** Bürgerrecht */
-export const romBuergerrecht: Topic['generate'] = mixedVariants(
-  (rng) => {
+export const romBuergerrecht: Topic['generate'] = (rng) =>
+  withYearWeight(rng, () => {
+    const roll = rng()
+    if (roll < 0.45) {
+      return multiSelectTask({
+        question: 'Was gehörte zum römischen Bürgerrecht? (mehrere möglich)',
+        choices: [
+          'Schutz vor Willkür / Folter',
+          'Testamente verfassen',
+          'Geschäftsverträge abschließen',
+          'Wahlrecht in der Volksversammlung',
+          'unbeschränkte Königsmacht für jeden Bürger',
+        ],
+        correct: [
+          'Schutz vor Willkür / Folter',
+          'Testamente verfassen',
+          'Geschäftsverträge abschließen',
+          'Wahlrecht in der Volksversammlung',
+        ],
+        solution: 'Rechte und Schutz — keine persönliche Königsmacht.',
+        explanation: 'Bürgerrecht schützt und berechtigt; es macht niemanden zum König.',
+        instruction: 'Tippe alle zutreffenden Rechte:',
+      })
+    }
     const cases = [
       {
-        q: 'Was brachte das römische Bürgerrecht u. a.?',
-        correct: 'Schutz vor Willkür (z. B. Folter/Todesurteil)',
+        q: 'Das Bürgerrecht schützte vor …',
+        correct: 'Willkür (z. B. Folter / Todesurteil)',
         wrong: [
-          'Pflicht, König zu werden',
-          'Verbot von Testamenten',
-          'Verlust des Wahlrechts',
+          'jeder Steuer überhaupt weltweit',
+          'Handelsverboten in Karthago allein',
+          'der Pflicht, Konsul zu werden',
         ],
       },
       {
-        q: 'Dürften römische Bürger Geschäfte und Verträge schließen?',
-        correct: 'ja — Geschäftsverträge abschließen',
-        wrong: ['nein — nur Patrizier', 'nur in Karthago', 'nur ohne Testament'],
+        q: 'Dürften Bürger Geschäftsverträge schließen?',
+        correct: 'ja',
+        wrong: ['nein', 'nur Patrizierinnen', 'nur in Karthago'],
       },
       {
         q: 'Hatten Bürger Wahlrecht in der Volksversammlung?',
         correct: 'ja',
-        wrong: ['nein, nie', 'nur Hannibal', 'nur Sklaven'],
+        wrong: ['nein, nie', 'nur Sklaven', 'nur Hannibal'],
       },
     ] as const
     const c = pick(rng, cases)
@@ -514,46 +550,74 @@ export const romBuergerrecht: Topic['generate'] = mixedVariants(
       choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
       correct: c.correct,
       solution: c.correct,
-      explanation: 'Bürgerrecht: Rechtsschutz, Verträge, Testament, Heirat, Wahlrecht, Steuerprivilegien.',
+      explanation: 'Bürgerrecht: Schutz, Verträge, Testament, Heirat, Wahlrecht, Steuerprivilegien.',
       instruction: 'Tippe die passende Antwort:',
     })
-  },
-  (_rng) =>
-    multiSelectTask({
-      question: 'Was gehörte zum römischen Bürgerrecht? (mehrere möglich)',
-      choices: [
-        'Schutz vor Willkür / Folter',
-        'Testamente verfassen',
-        'Geschäftsverträge abschließen',
-        'Wahlrecht in der Volksversammlung',
-        'unbeschränkte Königsmacht für jeden Bürger',
-      ],
-      correct: [
-        'Schutz vor Willkür / Folter',
-        'Testamente verfassen',
-        'Geschäftsverträge abschließen',
-        'Wahlrecht in der Volksversammlung',
-      ],
-      solution: 'Rechte und Schutz — keine persönliche Königsmacht.',
-      explanation: 'Bürgerrecht schützt und berechtigt; es macht niemanden zum Alleinherrscher.',
-      instruction: 'Tippe alle zutreffenden Rechte:',
-    }),
-)
+  })
 
-/** Überblick LB1 — mischt Kernwissen */
-export const romUeberblick: Topic['generate'] = mixedVariants(
-  romAnfaenge,
-  romBegriffe,
-  romPunisch,
-  romWeltreich,
+/** Überblick = stark jahreszahl-lastig (LK). */
+export const romUeberblick: Topic['generate'] = (rng) => {
+  const roll = rng()
+  if (roll < 0.5) return romJahreszahlen(rng)
+  if (roll < 0.65) return romAnfaenge(rng)
+  if (roll < 0.8) return romPunisch(rng)
+  if (roll < 0.9) return romBegriffe(rng)
+  return romWeltreich(rng)
+}
+
+/** Chronologie Punische Kriege einprägen. */
+export const romChronologie: Topic['generate'] = mixedVariants(
+  (rng) => yearValueTask(rng, PUNISCH_YEARS),
+  (rng) => yearMcTask(rng, PUNISCH_YEARS),
+  (_rng) =>
+    dragDropSortTask({
+      question: 'Ordne chronologisch (früh → spät) — Punische Kriege:',
+      items: [
+        { label: '1. Punischer Krieg beginnt (264)', value: 0 },
+        { label: 'Rom siegt / Sizilien (bis 241)', value: 1 },
+        { label: 'Hannibal über die Alpen (218)', value: 2 },
+        { label: 'Scipio siegt bei Zama (202)', value: 3 },
+        { label: 'Karthago zerstört (146)', value: 4 },
+      ],
+      correctOrder: [0, 1, 2, 3, 4],
+      solution: '264 → 241 → 218 → 202 → 146',
+      explanation: 'Merke die Reihenfolge für die Leistungskontrolle.',
+      rng: _rng,
+    }),
+  (_rng) =>
+    dragDropSlotsTask({
+      question:
+        'Jahreszahlen zuordnen. Platz 1 = Gründungssage, 2 = Republikbeginn, 3 = 1. Punischer Krieg beginnt, 4 = Karthago zerstört. Einen Block brauchst du nicht.',
+      items: [
+        { label: '753', value: 0 },
+        { label: '500', value: 1 },
+        { label: '264', value: 2 },
+        { label: '146', value: 3 },
+        { label: '2024', value: 4 },
+      ],
+      correctSlots: [0, 1, 2, 3],
+      solution: '753 · 500 · 264 · 146',
+      explanation: 'Die wichtigsten LK-Jahreszahlen in der Reihenfolge der Frage.',
+      instruction: 'Platz 1–4 = Jahreszahlen v. Chr.',
+    }),
+() =>
+    textTask({
+      question:
+        'Lateinisch: Wie nannten die Römer das Mittelmeer? (zwei Wörter, z. B. Mare Nostrum)',
+      accepted: ['mare nostrum', 'Mare Nostrum'],
+      solution: 'Mare Nostrum',
+      explanation: 'Mare Nostrum = „unser Meer“.',
+    }),
 )
 
 export const GESCHICHTE_K6_GENERATORS: Record<string, Topic['generate']> = {
   'ge-k6-lb1-rom': romUeberblick,
+  'ge-k6-lb1-jahreszahlen': romJahreszahlen,
   'ge-k6-lb1-anfaenge': romAnfaenge,
   'ge-k6-lb1-begriffe': romBegriffe,
   'ge-k6-lb1-aemter': romAemter,
   'ge-k6-lb1-punische-kriege': romPunisch,
   'ge-k6-lb1-weltreich': romWeltreich,
   'ge-k6-lb1-buergerrecht': romBuergerrecht,
+  'ge-k6-lb1-chronologie': romChronologie,
 }

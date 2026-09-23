@@ -17,11 +17,11 @@ export function buildGymSachsenGeschichtePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Geschichte',
-    version: '1.1.0',
+    version: '1.2.0',
     changelog:
-      `K6 LB1 Römische Zivilisation: Übungsaufgaben aus Heft + Schulwissen ` +
-      `(Anfänge, Begriffe, Ämter, Punische Kriege, Mare Nostrum, Bürgerrecht). ` +
-      `Themen weiterhin gesperrt — nur Entwickleransicht. ${SOURCE}`,
+      `K6 LB1 Römische Zivilisation für Leistungskontrolle: starker Jahreszahl-Drill ` +
+      `(753, 500, 264–146), Chronologie, Begriffe, Ämter, Bürgerrecht. ` +
+      `Themen weiterhin nur Entwickleransicht. ${SOURCE}`,
     official,
     extras: [],
   }

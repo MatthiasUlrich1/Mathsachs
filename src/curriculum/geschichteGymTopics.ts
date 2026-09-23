@@ -9,13 +9,14 @@ const topic = (
   id: string,
   title: string,
   keywords?: string[],
+  opts?: { tasksPerRound?: number },
 ): PackTopic => ({
   id,
   title,
   pointsPerTask: 10,
   hint: 'Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.',
   released: false,
-  tasksPerRound: 8,
+  tasksPerRound: opts?.tasksPerRound ?? 8,
   ...(keywords?.length ? { keywords } : {}),
 })
 
@@ -100,41 +101,53 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
       ['Rom', 'Mittelalter', 'Religion', 'Sachsen', 'Bürger'],
       [
         area('lb1', 'Die römische Zivilisation und ihre prägende Wirkung für Europa', 18, [
-          topic('ge-k6-lb1-rom', 'Die römische Zivilisation – Überblick', [
+          topic(
+            'ge-k6-lb1-jahreszahlen',
+            'Jahreszahlen einprägen (LK-Drill)',
+            ['753', '264', '146', 'Hannibal'],
+            { tasksPerRound: 20 },
+          ),
+          topic(
+            'ge-k6-lb1-chronologie',
+            'Chronologie: Anfänge und Punische Kriege',
+            ['Chronologie', 'Punische Kriege'],
+            { tasksPerRound: 15 },
+          ),
+          topic('ge-k6-lb1-rom', 'Die römische Zivilisation – Überblick (LK)', [
             'Rom',
             'Zivilisation',
             'Europa',
-          ]),
+          ], { tasksPerRound: 15 }),
           topic('ge-k6-lb1-anfaenge', 'Die Anfänge Roms', [
             'Romulus',
             '753',
             'Etrusker',
             'Republik',
-          ]),
+          ], { tasksPerRound: 15 }),
           topic('ge-k6-lb1-begriffe', 'Senat, Republik, Patrizier und Plebejer', [
             'Senat',
             'Patrizier',
             'Plebejer',
-          ]),
+          ], { tasksPerRound: 12 }),
           topic('ge-k6-lb1-aemter', 'Ämter und Institutionen der Republik', [
             'Konsuln',
             'Volkstribune',
             'Magistrate',
-          ]),
+          ], { tasksPerRound: 12 }),
           topic('ge-k6-lb1-punische-kriege', 'Punische Kriege – Rom und Karthago', [
             'Hannibal',
             'Karthago',
             'Scipio',
-          ]),
+          ], { tasksPerRound: 15 }),
           topic('ge-k6-lb1-weltreich', 'Vom Stadtstaat zum Weltreich (Mare Nostrum)', [
             'Weltreich',
             'Mittelmeer',
             'Karte',
-          ]),
+          ], { tasksPerRound: 12 }),
           topic('ge-k6-lb1-buergerrecht', 'Was bringt das Bürgerrecht?', [
             'Bürgerrecht',
             'Rechte',
-          ]),
+          ], { tasksPerRound: 10 }),
         ]),
         area('lb2', 'Herrschaft und Lebensformen im Mittelalter', 20, [
           topic('ge-k6-lb2-mittelalter', 'Herrschaft und Lebensformen im Mittelalter', [

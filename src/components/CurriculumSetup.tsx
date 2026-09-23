@@ -74,10 +74,10 @@ const FALLBACK_CATALOG: ManifestPack[] = [
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Geschichte',
-    version: '1.1.0',
+    version: '1.2.0',
     url: '',
     changelog:
-      'K6 Römische Zivilisation mit Übungsaufgaben. Themen gesperrt — nur Entwickleransicht. Ohne Netz lokale Fassung.',
+      'K6 LB1 Rom LK-Drill (Jahreszahlen). Themen gesperrt — nur Entwickleransicht.',
   },
   {
     id: GYM_SACHSEN_ANHALT_PACK_ID,
