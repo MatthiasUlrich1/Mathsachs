@@ -103,6 +103,8 @@ export function PracticeSession({
   const [finished, setFinished] = useState(false)
 
   const answerKind = task.answerKind
+  /** Prefer question-specific Fachwissen; fall back to topic-level. */
+  const fachwissen = task.fachwissen ?? activeTopic.fachwissen
 
   const persistAttempt = (ok: boolean) => {
     if (skipProtocol) return
@@ -253,7 +255,7 @@ export function PracticeSession({
         <p className="muted small hint">{activeTopic.hint}</p>
       )}
 
-      {activeTopic.fachwissen && (
+      {fachwissen && (
         <div className="session__fachwissen">
           <button
             type="button"
@@ -265,22 +267,22 @@ export function PracticeSession({
           </button>
           {showFachwissen && (
             <div className="fachwissen-card fachwissen-card--session">
-              <p className="fachwissen-card__text">{activeTopic.fachwissen.text}</p>
-              {activeTopic.fachwissen.quelle && (
+              <p className="fachwissen-card__text">{fachwissen.text}</p>
+              {fachwissen.quelle && (
                 <p className="fachwissen-card__source">
                   Quelle:{' '}
-                  {activeTopic.fachwissen.url ? (
+                  {fachwissen.url ? (
                     <a
-                      href={activeTopic.fachwissen.url}
+                      href={fachwissen.url}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {activeTopic.fachwissen.quelle}
+                      {fachwissen.quelle}
                     </a>
                   ) : (
-                    activeTopic.fachwissen.quelle
+                    fachwissen.quelle
                   )}
-                  {activeTopic.fachwissen.url && (
+                  {fachwissen.url && (
                     <span className="fachwissen-card__license"> (CC BY-SA 4.0)</span>
                   )}
                 </p>

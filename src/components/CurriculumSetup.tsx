@@ -65,8 +65,7 @@ const FALLBACK_CATALOG: ManifestPack[] = [
     subject: 'Physik',
     version: '2.1.0',
     url: '',
-    changelog:
-      'Lernbereiche mit 5–9 Themen (ähnlich Mathe). Ohne Netz lokale Fassung.',
+    changelog: 'Mitgeliefert: Klassen 6–12. Ohne Netz wird die lokale Fassung installiert.',
   },
   {
     id: GYM_SACHSEN_GESCHICHTE_PACK_ID,
@@ -77,7 +76,7 @@ const FALLBACK_CATALOG: ManifestPack[] = [
     version: '1.3.0',
     url: '',
     changelog:
-      'K6 LB1 entflochten: Jahreszahlen-only, Zuordnung Begriff→Erklärung, Spoiler weg.',
+      'Mitgeliefert: Klassen 5–12 (Gk/Lk). Ohne Netz wird die lokale Fassung installiert.',
   },
   {
     id: GYM_SACHSEN_ANHALT_PACK_ID,
@@ -88,7 +87,7 @@ const FALLBACK_CATALOG: ManifestPack[] = [
     version: '1.0.0',
     url: '',
     changelog:
-      'Klassen 5–10 und 11/12 gA nach ST-Fachlehrplan; Aufgaben aus dem Sachsen-Gym-Katalog. Ohne Netz lokale Fassung.',
+      'Mitgeliefert: Klassen 5–10 und 11/12 gA. Ohne Netz wird die lokale Fassung installiert.',
   },
   {
     id: SKS_SACHSEN_ANHALT_HS_PACK_ID,
@@ -98,8 +97,7 @@ const FALLBACK_CATALOG: ManifestPack[] = [
     subject: 'Mathematik',
     version: '1.0.0',
     url: '',
-    changelog:
-      'Klassen 5–9 (HSA) nach ST-Fachlehrplan; Aufgaben aus dem Sachsen-Gym-Katalog. Ohne Netz lokale Fassung.',
+    changelog: 'Mitgeliefert: Klassen 5–9 (HSA). Ohne Netz wird die lokale Fassung installiert.',
   },
   {
     id: SKS_SACHSEN_ANHALT_RS_PACK_ID,
@@ -109,8 +107,7 @@ const FALLBACK_CATALOG: ManifestPack[] = [
     subject: 'Mathematik',
     version: '1.0.0',
     url: '',
-    changelog:
-      'Klassen 5–10 (RSA) nach ST-Fachlehrplan; Aufgaben aus dem Sachsen-Gym-Katalog. Ohne Netz lokale Fassung.',
+    changelog: 'Mitgeliefert: Klassen 5–10 (RSA). Ohne Netz wird die lokale Fassung installiert.',
   },
   {
     id: OS_HS_PACK_ID,
@@ -222,8 +219,8 @@ export function CurriculumSetup({
     }
   }
 
-  /** Install/update: Fach-Filter setzen, Profil-Fach ergänzen, alle Klassenstufen in Themen laden. */
-  const activatePackInThemen = async (pack: {
+  /** After install/update: set Fach filter, add subject to Lehrerprofil, load all grades. */
+  const activateInstalledPack = async (pack: {
     id: string
     subject: string
     official: Array<{ id: string }>
@@ -237,6 +234,12 @@ export function CurriculumSetup({
       }
     }
   }
+
+  const topicCount = (pack: { official: Array<{ areas: Array<{ topics: unknown[] }> }> }) =>
+    pack.official.reduce(
+      (sum, grade) => sum + grade.areas.reduce((n, area) => n + area.topics.length, 0),
+      0,
+    )
 
   return (
     <section className="card">
@@ -359,29 +362,11 @@ export function CurriculumSetup({
                               const fallback = downloaded ?? (await bundledPackById(entry.id))
                               if (!fallback) throw new Error('Lehrplan nicht verfügbar.')
                               installPack(fallback)
-                              await activatePackInThemen(fallback)
+                              await activateInstalledPack(fallback)
                             })
                           }
                         >
                           {busy ? 'Wird aktualisiert …' : 'Aktualisieren'}
-                        </button>
-                      )}
-                      {gradesByPack.get(entry.id)?.some((g) => !loadedIds.includes(g.id)) && (
-                        <button
-                          type="button"
-                          className="primary"
-                          disabled={busy}
-                          onClick={() =>
-                            void run(entry.id, async () => {
-                              const pack =
-                                listInstalledPacks().find((p) => p.id === entry.id) ??
-                                (await bundledPackById(entry.id))
-                              if (!pack) throw new Error('Lehrplan nicht verfügbar.')
-                              await activatePackInThemen(pack)
-                            })
-                          }
-                        >
-                          {busy ? 'Wird geladen …' : 'In Themen einblenden'}
                         </button>
                       )}
                       <button type="button" className="ghost" onClick={() => void run(entry.id, async () => removePack(entry.id))}>
@@ -399,7 +384,7 @@ export function CurriculumSetup({
                           const fallback = downloaded ?? (await bundledPackById(entry.id))
                           if (!fallback) throw new Error('Lehrplan nicht verfügbar.')
                           installPack(fallback)
-                          await activatePackInThemen(fallback)
+                          await activateInstalledPack(fallback)
                         })
                       }
                     >
@@ -409,7 +394,8 @@ export function CurriculumSetup({
                 </div>
                 {pack && (
                   <p className="muted small curriculum-card__meta">
-                    {pack.official.length} Klassenstufen · {pack.extras.length} Lehrer-Ergänzungen
+                    {pack.official.length} Klassenstufen · {topicCount(pack)} Themen
+                    {pack.extras.length > 0 ? ` · ${pack.extras.length} Lehrer-Ergänzungen` : ''}
                   </p>
                 )}
               </li>

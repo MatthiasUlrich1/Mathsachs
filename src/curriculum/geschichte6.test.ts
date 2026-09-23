@@ -49,6 +49,43 @@ describe('Geschichte K6 Römische Zivilisation', () => {
     }
   })
 
+  it('jahreszahlen Fachwissen is about the asked year/event (not whole LB1 dump)', () => {
+    const seenYears = new Set<string>()
+    for (let seed = 1; seed <= 50; seed++) {
+      const task = GESCHICHTE_K6_GENERATORS['ge-k6-lb1-jahreszahlen']!(createRng(seed))
+      const fw = task.fachwissen?.text ?? ''
+      expect(fw.length, `seed ${seed}`).toBeGreaterThan(40)
+      // Not the old topic-wide dump covering every LB1 strand at once.
+      expect(fw).not.toMatch(/Bürgerrecht: Schutz, Verträge/)
+      expect(fw).not.toMatch(/Ämter: Konsuln, Prätoren/)
+      // Must mention a year from YEAR_FACTS (question-specific).
+      const yearMatch = fw.match(/\b(753|1000|700|500|264|241|218|202|201|149|146)\b/)
+      expect(yearMatch, `seed ${seed}: ${fw.slice(0, 80)}`).toBeTruthy()
+      seenYears.add(yearMatch![1]!)
+      // Fachwissen should relate to this task's solution year when answer is a year.
+      if (task.answerKind === 'integer') {
+        expect(fw).toContain(String(task.solution))
+      } else if (/^\d{3,4}\s*v\.\s*Chr/.test(task.solution)) {
+        const y = task.solution.match(/(\d{3,4})/)?.[1]
+        if (y) expect(fw).toContain(y)
+      } else {
+        // Event-choice: solution is the event string — fachwissen should share year from question.
+        const qYear = task.question.match(/(\d{3,4})\s*v\.\s*Chr/)?.[1]
+        if (qYear) expect(fw).toContain(qYear)
+      }
+    }
+    expect(seenYears.size).toBeGreaterThan(3)
+  })
+
+  it('every LB1 Rom task attaches question-specific Fachwissen', () => {
+    for (const id of romIds) {
+      for (let seed = 1; seed <= 15; seed++) {
+        const task = GESCHICHTE_K6_GENERATORS[id]!(createRng(seed))
+        expect(task.fachwissen?.text.trim().length, `${id} seed ${seed}`).toBeGreaterThan(40)
+      }
+    }
+  })
+
   it('begriffe match uses slotLabels (terms on the left)', () => {
     let found = 0
     for (let seed = 1; seed <= 40; seed++) {

@@ -588,9 +588,6 @@ function officialGradesRs710(): PackGrade[] {
   ]
 }
 
-const SOURCE =
-  'Lehrplan Oberschule Mathematik (Sachsen) 2004/2009/2019, lplanid=67, https://www.schulportal.sachsen.de/lplandb/'
-
 const wrap = (
   id: string,
   title: string,
@@ -614,7 +611,7 @@ export function buildOberschuleHsPack(): CurriculumPack {
   return wrap(
     OS_HS_PACK_ID,
     'Oberschule Sachsen · Mathematik · Hauptschulbildungsgang',
-    `Erstfassung Klassen 5–9 (Hauptschulbildungsgang). Pflicht-Lernbereiche und Wahlbereiche nach dem offiziellen Lehrplan. ${SOURCE}`,
+    'Klassen 5–9 (Hauptschulbildungsgang). Ohne Netz lokale Fassung.',
     official,
   )
 }
@@ -624,7 +621,7 @@ export function buildOberschuleRsPack(): CurriculumPack {
   return wrap(
     OS_RS_PACK_ID,
     'Oberschule Sachsen · Mathematik · Realschulbildungsgang',
-    `Erstfassung Klassen 5–10 (Realschulbildungsgang). Pflicht-Lernbereiche und Wahlbereiche nach dem offiziellen Lehrplan. ${SOURCE}`,
+    'Klassen 5–10 (Realschulbildungsgang). Ohne Netz lokale Fassung.',
     official,
   )
 }

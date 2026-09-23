@@ -430,17 +430,45 @@ export function defaultFachwissen(topic: TopicRef, subject?: string): Fachwissen
     return physikFachwissen(topic)
   }
   if (subject === 'Geschichte' || topic.id.startsWith('ge-')) {
-    const lower = `${topic.id} ${topic.title}`.toLowerCase()
-    if (/rom|punisch|karthago|hannibal|republik|patriz|plebej|senat|bürgerrecht|mare nostrum|konsul|tribun/.test(lower)) {
+    const id = topic.id
+    // Topic-level intros for Curriculum-Browser; practice prefers Task.fachwissen.
+    const lb1ById: Record<string, string> = {
+      'ge-k6-lb1-jahreszahlen':
+        'Jahreszahlen LB1: Merke zentrale Daten (v. Chr.) und das zugehörige Ereignis — ' +
+        'z. B. 753 Gründungssage, ~500 Republik, 264–146 Punische Kriege. ' +
+        'In der Übung erklärt Fachwissen jeweils das Ereignis zur aktuellen Jahreszahl.',
+      'ge-k6-lb1-chronologie':
+        'Chronologie: Ordne Ereignisse früh → spät ohne Jahreszahl tippen. ' +
+        'Leitlinie: Anfänge → Republik → Punische Kriege (Sizilien → Hannibal → Zerstörung Karthagos).',
+      'ge-k6-lb1-anfaenge':
+        'Anfänge Roms: Sage (Romulus/Remus), frühe Siedlung am Tiber, Etrusker (Steinbau, Wasser, Metall), sieben Hügel. ' +
+        'Trenne Mythos und Siedlungsgeschichte.',
+      'ge-k6-lb1-begriffe':
+        'Begriffe der frühen Republik: res publica (öffentliche Sache), Senat (Rat der Ältesten), ' +
+        'Patrizier (Adel) und Plebejer (Volk ohne Adel).',
+      'ge-k6-lb1-aemter':
+        'Ämter: Konsuln, Prätoren, Ädile, Quästoren; dazu Zensoren, Volkstribune (Veto), Diktator auf Zeit, Senat. ' +
+        'Jedes Amt hat einen klaren Zuständigkeitsbereich.',
+      'ge-k6-lb1-punische-kriege':
+        'Punische Kriege: Rom gegen Karthago — Sizilien/Flotte, Hannibal/Alpen/Zama, Zerstörung Karthagos. ' +
+        'Personen: Hannibal, Scipio, Cato.',
+      'ge-k6-lb1-weltreich':
+        'Vom Stadtstaat zur Weltmacht: Wachstum um das Mittelmeer; Mare Nostrum = „unser Meer“.',
+      'ge-k6-lb1-buergerrecht':
+        'Bürgerrecht: Schutz vor Willkür, Verträge, Testament, Wahlrecht — keine persönliche Königsmacht.',
+      'ge-k6-lb1-rom':
+        'Prägende Wirkung für Europa: Latein, Recht, Straßen/Infrastruktur und städtisches Leben wirkten lange nach.',
+    }
+    if (lb1ById[id]) {
+      return { text: lb1ById[id], ...wiki('Römisches_Reich', 'R%C3%B6misches_Reich') }
+    }
+    if (/rom|punisch|karthago|hannibal|republik|patriz|plebej|senat|bürgerrecht|mare nostrum|konsul|tribun/.test(
+      `${id} ${topic.title}`.toLowerCase(),
+    )) {
       return {
         text:
-          'Römische Geschichte (Klasse 6): Chronologie und Institutionen unterscheiden. ' +
-          'Anfänge: Sage 753 v. Chr., Siedlung, Etrusker, Republik ~500. ' +
-          'Begriffe: res publica, Senat, Patrizier/Plebejer. ' +
-          'Ämter: Konsuln, Prätoren, Ädile, Quästoren, Zensoren, Volkstribune (Veto), Senat, Diktator auf Zeit. ' +
-          'Punische Kriege (264–146): Sizilien → Hannibal/Alpen → Zerstörung Karthagos 146; Mare Nostrum. ' +
-          'Bürgerrecht: Schutz, Verträge, Testament, Wahlrecht. ' +
-          'Tipp: Jahreszahlen und lateinische Begriffe genau lesen.',
+          `Thema „${topic.title}“: Ordne römische Ereignisse und Institutionen chronologisch und begrifflich ein. ` +
+          'Unterscheide Sage, Republik, Kriege und Nachwirkungen. Lies Jahreszahlen und lateinische Begriffe genau.',
         ...wiki('Römisches_Reich', 'R%C3%B6misches_Reich'),
       }
     }

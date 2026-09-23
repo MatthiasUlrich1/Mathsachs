@@ -5,7 +5,7 @@
   "school": "Oberschule",
   "subject": "Mathematik",
   "version": "1.0.0",
-  "changelog": "Erstfassung Klassen 5–9 (Hauptschulbildungsgang). Pflicht-Lernbereiche und Wahlbereiche nach dem offiziellen Lehrplan. Lehrplan Oberschule Mathematik (Sachsen) 2004/2009/2019, lplanid=67, https://www.schulportal.sachsen.de/lplandb/",
+  "changelog": "Klassen 5–9 (Hauptschulbildungsgang). Ohne Netz lokale Fassung.",
   "contentHash": "a321f773",
   "official": [
     {

@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.6] – 2026-09-23
+
+### Geändert
+- **Fachwissen:** Aufgaben können eigenes `Task.fachwissen` tragen; die Übung zeigt
+  fragenbezogen statt nur Themen-Text. Geschichte K6 LB1 (Jahreszahlen/`YEAR_FACTS` u. a.)
+  liefert Wissen zur aktuellen Frage; Themen-Defaults sind LB1-spezifisch.
+- **Lehrpläne:** Button „In Themen einblenden“ entfernt. Installation/Aktualisierung setzt
+  weiter das Fach im Lehrerprofil (`preferredSubjects`) und lädt alle Klassenstufen.
+- **Lehrplan-Kurztexte** (Geschichte und andere verbose Packs) im Mathematik-Stil;
+  installierte Packs zeigen die Themenanzahl.
+
 ## [0.28.5] – 2026-09-23
 
 ### Geändert

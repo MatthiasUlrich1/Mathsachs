@@ -195,3 +195,15 @@ describe('CurriculumSetup Katalog-Filter', () => {
     expect(html).not.toContain('Oberschule Sachsen')
   })
 })
+
+describe('CurriculumSetup Installation', () => {
+  it('does not show „In Themen einblenden“ for installed packs with unloaded grades', () => {
+    installPack(gymPack())
+    const html = renderToStaticMarkup(
+      createElement(CurriculumSetup, { ...props, onEnsureSubject: vi.fn() }),
+    )
+    expect(html).toContain('Entfernen')
+    expect(html).toContain('1 Klassenstufen · 1 Themen')
+    expect(html).not.toContain('In Themen einblenden')
+  })
+})

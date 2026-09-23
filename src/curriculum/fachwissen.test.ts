@@ -117,6 +117,22 @@ describe('Fachwissen / Wissen rubric (Issue #45)', () => {
     }
   })
 
+  it('gives Geschichte LB1 topic-specific Wissen (not one Rom dump for all)', () => {
+    const jz = defaultFachwissen(
+      { id: 'ge-k6-lb1-jahreszahlen', title: 'Jahreszahlen (nur LB1)' },
+      'Geschichte',
+    )
+    expect(jz.text).toMatch(/Jahreszahlen|aktuellen Jahreszahl/i)
+    expect(jz.text).not.toMatch(/Bürgerrecht: Schutz, Verträge/)
+
+    const begriffe = defaultFachwissen(
+      { id: 'ge-k6-lb1-begriffe', title: 'Senat, Republik, Patrizier und Plebejer' },
+      'Geschichte',
+    )
+    expect(begriffe.text).toMatch(/res publica|Patrizier|Plebejer/)
+    expect(begriffe.text).not.toMatch(/Punische Kriege \(264/)
+  })
+
   it('defaultFachwissen routes OS unit topics to conversion texts', () => {
     const fw = defaultFachwissen(
       { id: 'os-k5-lb3-flaeche-eh', title: 'Einheiten umrechnen: Flächeninhalt' },

@@ -4,7 +4,11 @@ import {
   isReduced,
   type Fraction,
 } from '../lib/fraction'
-import type { AnswerKind, Task, UserInput } from './types'
+import type { AnswerKind, Fachwissen, Task, UserInput } from './types'
+
+/** Spread optional per-task Fachwissen onto a Task. */
+const withFw = (fw?: Fachwissen): { fachwissen?: Fachwissen } =>
+  fw?.text?.trim() ? { fachwissen: fw } : {}
 import type { Rng } from '../lib/rng'
 import { createRng } from '../lib/rng'
 import {
@@ -34,6 +38,8 @@ interface ValueTaskInput {
   /** Tolerance for decimal comparisons. */
   eps?: number
   visualContent?: string
+  /** Question-specific Fachwissen (overrides topic-level in PracticeSession). */
+  fachwissen?: Fachwissen
 }
 
 /** Build a task whose answer is a single integer or decimal value. */
@@ -44,6 +50,7 @@ export const valueTask = (input: ValueTaskInput): Task => ({
   solution: input.solution,
   explanation: input.explanation,
   visualContent: input.visualContent,
+  ...withFw(input.fachwissen),
   sampleAnswer: { kind: 'value', value: String(input.value) },
   check: (answer: UserInput) => {
     if (answer.kind !== 'value') return false
@@ -62,6 +69,7 @@ interface TextTaskInput {
   accepted: string[]
   solution: string
   explanation: string
+  fachwissen?: Fachwissen
 }
 
 /** Build a task whose answer is checked as free text (e.g. "<", ">", "="). */
@@ -72,6 +80,7 @@ export const textTask = (input: TextTaskInput): Task => {
     answerKind: 'text',
     solution: input.solution,
     explanation: input.explanation,
+    ...withFw(input.fachwissen),
     check: (answer: UserInput) =>
       answer.kind === 'value' &&
       accepted.includes(answer.value.trim().toLowerCase()),
@@ -172,6 +181,7 @@ interface DragDropSortTaskInput {
   solution: string
   explanation: string
   visualContent?: string
+  fachwissen?: Fachwissen
   /**
    * Optional RNG for the initial display shuffle. When omitted, a seed is
    * derived from question + items so the result is deterministic but not the
@@ -247,6 +257,7 @@ export const dragDropSortTask = (input: DragDropSortTaskInput): Task => {
     solution: input.solution,
     explanation: input.explanation,
     visualContent: input.visualContent,
+    ...withFw(input.fachwissen),
     sampleAnswer: { kind: 'dragDropSort', order: presented.correctOrder },
     interactive: {
       type: 'dragDropSort',
@@ -285,6 +296,7 @@ interface DragDropSlotsTaskInput {
   explanation: string
   instruction?: string
   visualContent?: string
+  fachwissen?: Fachwissen
   /**
    * Labels for each slot (Begriff links → Erklärung rechts).
    * When set, the UI stacks terms on the left with drop targets on the right.
@@ -518,6 +530,7 @@ export const dragDropSlotsTask = (input: DragDropSlotsTaskInput): Task => {
     solution: input.solution,
     explanation: input.explanation,
     visualContent: input.visualContent,
+    ...withFw(input.fachwissen),
     sampleAnswer: {
       kind: 'dragDropSlots',
       slots: presented.correctSlots,
@@ -689,6 +702,7 @@ interface ChoicePickTaskInput {
   instruction?: string
   /** Larger symbol buttons (e.g. force attract/repel arrows). */
   largeSymbols?: boolean
+  fachwissen?: Fachwissen
 }
 
 /** Multiple-choice via tappable buttons (A/B/C, Winkelart, Kongruenzsatz, …). */
@@ -701,6 +715,7 @@ export const choicePickTask = (input: ChoicePickTaskInput): Task => {
     explanation: input.explanation,
     visualContent: input.visualContent,
     solutionVisualContent: input.solutionVisualContent,
+    ...withFw(input.fachwissen),
     sampleAnswer: { kind: 'choicePick', choice: input.correct },
     interactive: {
       type: 'choicePick',
@@ -732,6 +747,7 @@ interface MultiSelectTaskInput {
   explanation: string
   visualContent?: string
   instruction?: string
+  fachwissen?: Fachwissen
 }
 
 const sameSet = (a: string[], b: string[]): boolean => {
@@ -747,6 +763,7 @@ export const multiSelectTask = (input: MultiSelectTaskInput): Task => ({
   solution: input.solution,
   explanation: input.explanation,
   visualContent: input.visualContent,
+  ...withFw(input.fachwissen),
   sampleAnswer: { kind: 'multiSelect', selected: [...input.correct] },
   interactive: {
     type: 'multiSelect',

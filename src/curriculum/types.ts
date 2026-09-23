@@ -3,14 +3,17 @@ import type { Rng } from '../lib/rng'
 export type AnswerKind = 'integer' | 'decimal' | 'fraction' | 'text'
 
 /**
- * Fachliches Basiswissen zu einem Thema (Rubrik „Wissen“ / „Fachwissen“).
- * Erklärt, *wie* man diesen Aufgabentyp löst und welches Prinzip dahintersteckt
- * (Issue #45) — nicht nur eine allgemeine Definition.
+ * Fachliches Basiswissen (Rubrik „Wissen“ / „Fachwissen“).
+ * Erklärt, *wie* man diesen Aufgabentyp löst bzw. welches Prinzip/Faktum
+ * zur *aktuellen* Frage gehört (Issue #45) — nicht nur eine allgemeine Definition.
  * Text ist eine eigene Formulierung (Fakten unterliegen keinem Urheberrecht).
  * Quellenangaben verweisen auf weiterführende Literatur.
+ *
+ * Bevorzugt auf der `Task` setzen (fragebezogen). Topic-Level ist Fallback
+ * (Curriculum-Browser / Themen ohne per-Task-Text).
  */
 export interface Fachwissen {
-  /** How-to-Erklärung des Themas (Prinzip + Lösungsweg, typisch 3–6 Sätze). */
+  /** How-to- oder Fakten-Erklärung (Prinzip + Kontext, typisch 3–6 Sätze). */
   text: string
   /**
    * Titel der zitierten Quelle, z. B. „Wikipedia: Bruchrechnung".
@@ -113,6 +116,11 @@ export interface Task {
   solutionVisualContent?: string
   /** Optional interactive component configuration. */
   interactive?: InteractiveConfig
+  /**
+   * Question-specific Fachwissen (preferred in PracticeSession over topic.fachwissen).
+   * Use for facts that change per generated task (e.g. Jahreszahl → Ereignis).
+   */
+  fachwissen?: Fachwissen
 }
 
 /** A single, selectable curriculum topic (Einzelthema). */
@@ -149,7 +157,8 @@ export interface Topic {
   /** Tasks per practice round (pack-driven; default depends on subject). */
   tasksPerRound?: number
   /**
-   * Fachliches Basiswissen (Rubrik „Wissen“). Standard: immer gesetzt
+   * Thema-Fallback für Rubrik „Wissen“ (Curriculum-Browser / wenn die Task
+   * kein eigenes `fachwissen` hat). Standard: immer gesetzt
    * (authored oder per `ensureTopicFachwissen` / Hydrate-Default).
    */
   fachwissen?: Fachwissen

@@ -13,9 +13,6 @@ import {
  * Source: https://lisa.sachsen-anhalt.de/…/FLP_Mathe_Gym_010822_swd.pdf (CC BY-SA 3.0)
  */
 
-const SOURCE =
-  'Fachlehrplan Gymnasium Mathematik Sachsen-Anhalt, Anpassung 01.08.2022 (LISA), CC BY-SA 3.0.'
-
 const topic = (
   id: string,
   title: string,
@@ -562,7 +559,7 @@ export function buildGymSachsenAnhaltPack(): CurriculumPack {
     school: 'Gymnasium',
     subject: 'Mathematik',
     version: '1.0.0',
-    changelog: `Erstfassung Klassen 5–10 und 11/12 gA nach Kompetenzschwerpunkten. Aufgaben aus dem Sachsen-Gym-Katalog eingeordnet; Lücken als Outline. ${SOURCE}`,
+    changelog: 'Klassen 5–10 und 11/12 gA nach ST-Fachlehrplan. Ohne Netz lokale Fassung.',
     official,
     extras: [],
   }

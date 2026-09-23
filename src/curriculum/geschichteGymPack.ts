@@ -5,12 +5,13 @@ import {
 } from './pack'
 import { buildGeschichteGymOfficialGrades } from './geschichteGymTopics'
 
-const SOURCE =
-  'Lehrplan Gymnasium Geschichte (Sachsen) 2004/2007/2009/2011/2019, lplanid=65, https://www.schulportal.sachsen.de/lplandb/lehrplan/65'
-
 /** Gymnasium Sachsen · Geschichte — Outline, Themen gesperrt (nur Entwickleransicht). */
 export function buildGymSachsenGeschichtePack(): CurriculumPack {
   const official = buildGeschichteGymOfficialGrades()
+  const topics = official.reduce(
+    (sum, grade) => sum + grade.areas.reduce((n, area) => n + area.topics.length, 0),
+    0,
+  )
   const pack: Omit<CurriculumPack, 'contentHash'> = {
     id: GYM_SACHSEN_GESCHICHTE_PACK_ID,
     title: 'Gymnasium Sachsen · Geschichte',
@@ -18,10 +19,7 @@ export function buildGymSachsenGeschichtePack(): CurriculumPack {
     school: 'Gymnasium',
     subject: 'Geschichte',
     version: '1.3.0',
-    changelog:
-      `K6 LB1 Themen entflochten (wenig Überschneidung): Jahreszahlen nur im eigenen Thema, ` +
-      `Zuordnung Begriff links → Erklärung rechts, Spoiler aus Fragen entfernt. ` +
-      `Themen weiterhin nur Entwickleransicht. ${SOURCE}`,
+    changelog: `Klassen 5–12 (Gk/Lk) · ${topics} Themen. Ohne Netz lokale Fassung.`,
     official,
     extras: [],
   }

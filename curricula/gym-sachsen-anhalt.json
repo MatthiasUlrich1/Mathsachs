@@ -5,7 +5,7 @@
   "school": "Gymnasium",
   "subject": "Mathematik",
   "version": "1.0.0",
-  "changelog": "Erstfassung Klassen 5–10 und 11/12 gA nach Kompetenzschwerpunkten. Aufgaben aus dem Sachsen-Gym-Katalog eingeordnet; Lücken als Outline. Fachlehrplan Gymnasium Mathematik Sachsen-Anhalt, Anpassung 01.08.2022 (LISA), CC BY-SA 3.0.",
+  "changelog": "Klassen 5–10 und 11/12 gA nach ST-Fachlehrplan. Ohne Netz lokale Fassung.",
   "official": [
     {
       "id": "st-gym-klasse-5",

@@ -14,9 +14,6 @@ import {
  * Source: https://www.bildung-lsa.de/…/lp_sks_mathe_01_08_2019.pdf
  */
 
-const SOURCE =
-  'Fachlehrplan Sekundarschule Mathematik Sachsen-Anhalt, Stand 01.08.2019 (bildung-lsa.de).'
-
 const topic = (
   id: string,
   title: string,
@@ -592,7 +589,7 @@ export function buildSekundarschuleSachsenAnhaltHsPack(): CurriculumPack {
   return wrap(
     SKS_SACHSEN_ANHALT_HS_PACK_ID,
     'Sekundarschule Sachsen-Anhalt · Mathematik · Hauptschulabschluss',
-    `Erstfassung Klassen 5–9 (hauptschulabschlussbezogen). Kompetenzschwerpunkte; Aufgaben aus dem Sachsen-Gym-Katalog. ${SOURCE}`,
+    'Klassen 5–9 (HSA) nach ST-Fachlehrplan. Ohne Netz lokale Fassung.',
     official,
   )
 }
@@ -606,7 +603,7 @@ export function buildSekundarschuleSachsenAnhaltRsPack(): CurriculumPack {
   return wrap(
     SKS_SACHSEN_ANHALT_RS_PACK_ID,
     'Sekundarschule Sachsen-Anhalt · Mathematik · Realschulabschluss',
-    `Erstfassung Klassen 5–10 (realschulabschlussbezogen). Kompetenzschwerpunkte; Aufgaben aus dem Sachsen-Gym-Katalog. ${SOURCE}`,
+    'Klassen 5–10 (RSA) nach ST-Fachlehrplan. Ohne Netz lokale Fassung.',
     official,
   )
 }
