@@ -950,64 +950,111 @@ export const romPunisch: Topic['generate'] = mixedVariants(
     }),
 )
 
-// ─── Weltreich: Mare Nostrum / Expansion (+ echte Commons-Karten) ────────────
+// ─── Weltreich: Stadtstaat → Italien → Mare Nostrum (+ echte Commons-Karten) ─
+
+type WeltreichMapCase = {
+  map: 'stadtstaat' | 'italy' | 'extent'
+  focus?: RomMapPhase | 'all' | 'mare'
+  ask: string
+  correct: string
+  wrong: string[]
+  wissen: string
+}
 
 function weltreichMapChoice(rng: Rng) {
-  const phases: {
-    focus: RomMapPhase | 'all' | 'mare'
-    ask: string
-    correct: string
-    wrong: string[]
-    wissen: string
-  }[] = [
+  const phases: WeltreichMapCase[] = [
     {
-      focus: 'p218',
-      ask: 'Welche Farbe steht auf der Legende für das früheste Gebiet (218 v. Chr.)?',
-      correct: ROM_MAP_PHASES.p218.label,
-      wrong: [ROM_MAP_PHASES.p133.label, ROM_MAP_PHASES.p44.label, ROM_MAP_PHASES.p117.label],
-      wissen: 'Dunkelrot = 218 v. Chr.: Kerngebiet vor dem Zweiten Punischen Krieg.',
+      map: 'stadtstaat',
+      ask: 'Was zeigt die Latium-Karte (um 500 v. Chr.) vor allem?',
+      correct: 'Rom als Stadtstaat mit kleinem Gebiet am Tiber',
+      wrong: [
+        'das ganze Mittelmeer unter Trajan',
+        'moderne Autobahnen in Italien',
+        'nur Karthago ohne Rom',
+      ],
+      wissen:
+        'Frühes Rom ist Stadtstaat: kleines Gebiet in Latium — noch keine Mittelmeer-Vormacht.',
     },
     {
+      map: 'italy',
+      ask: 'Was zeigen die Jahreszahlen auf der Italien-Karte (vor 218 v. Chr.)?',
+      correct: 'Wachstumsschritte vom Stadtstaat zur Landmacht auf der Halbinsel',
+      wrong: [
+        'nur das Kaiserreich unter Trajan',
+        'die Gründungssage ohne Territorium',
+        'das Ende Roms im Mittelalter',
+      ],
+      wissen:
+        'Die Italien-Karte deckt Phasen ca. 500–218 v. Chr. ab — Stadtstaat → Kontrolle Italiens.',
+    },
+    {
+      map: 'italy',
+      ask: 'Welche Phase gehört zur Italien-Karte — nicht zur Varana-Karte ab 218 v. Chr.?',
+      correct: 'Eroberung der italienischen Halbinsel (z. B. 338 / 272 v. Chr.)',
+      wrong: [
+        'größte Ausdehnung unter Trajan 117 n. Chr.',
+        'Mare Nostrum ums ganze Mittelmeer',
+        'Reichsgrenze am Ende des Mittelalters',
+      ],
+      wissen:
+        'Varana beginnt erst 218 v. Chr.; Stadtstaat und Italien-Expansion liegen davor (Italien-Karte).',
+    },
+    {
+      map: 'extent',
+      focus: 'p218',
+      ask: 'Welche Farbe steht auf der Varana-Legende für das früheste Gebiet dieser Karte (218 v. Chr.)?',
+      correct: ROM_MAP_PHASES.p218.label,
+      wrong: [ROM_MAP_PHASES.p133.label, ROM_MAP_PHASES.p44.label, ROM_MAP_PHASES.p117.label],
+      wissen:
+        'Dunkelrot = 218 v. Chr.: früheste Phase der Varana-Karte (vor dem Zweiten Punischen Krieg) — nicht der Stadtstaat.',
+    },
+    {
+      map: 'extent',
       focus: 'p133',
-      ask: 'Welche Farbe zeigt das Gebiet um 133 v. Chr. (nach den großen Kriegen im Westen)?',
+      ask: 'Welche Farbe zeigt auf der Varana-Karte das Gebiet um 133 v. Chr. (nach den großen Kriegen im Westen)?',
       correct: ROM_MAP_PHASES.p133.label,
       wrong: [ROM_MAP_PHASES.p218.label, ROM_MAP_PHASES.p14.label, ROM_MAP_PHASES.p117.label],
       wissen: 'Hellrot = 133 v. Chr.: Rom ist dann Vormacht im westlichen Mittelmeer.',
     },
     {
+      map: 'extent',
       focus: 'p44',
-      ask: 'Welche Farbe steht für 44 v. Chr. (späte Republik / Tod Caesars)?',
+      ask: 'Welche Farbe steht auf der Varana-Karte für 44 v. Chr. (späte Republik / Tod Caesars)?',
       correct: ROM_MAP_PHASES.p44.label,
       wrong: [ROM_MAP_PHASES.p218.label, ROM_MAP_PHASES.p133.label, ROM_MAP_PHASES.p14.label],
       wissen: 'Orange = 44 v. Chr.: weitere Expansion in der späten Republik.',
     },
     {
+      map: 'extent',
       focus: 'p14',
-      ask: 'Welche Farbe zeigt das Reich um 14 n. Chr. (Tod des Augustus)?',
+      ask: 'Welche Farbe zeigt auf der Varana-Karte das Reich um 14 n. Chr. (Tod des Augustus)?',
       correct: ROM_MAP_PHASES.p14.label,
       wrong: [ROM_MAP_PHASES.p218.label, ROM_MAP_PHASES.p44.label, ROM_MAP_PHASES.p117.label],
       wissen: 'Gelb = 14 n. Chr.: Ausdehnung unter Augustus.',
     },
     {
+      map: 'extent',
       focus: 'p117',
-      ask: 'Welche Farbe steht für die späteren Erwerbungen bis zur größten Ausdehnung (Trajan 117)?',
+      ask: 'Welche Farbe steht auf der Varana-Karte für die späteren Erwerbungen bis zur größten Ausdehnung (Trajan 117)?',
       correct: ROM_MAP_PHASES.p117.label,
       wrong: [ROM_MAP_PHASES.p218.label, ROM_MAP_PHASES.p133.label, ROM_MAP_PHASES.p14.label],
       wissen: 'Grün = nach 14 n. Chr. / Trajan 117: größte Ausdehnung.',
     },
     {
+      map: 'extent',
       focus: 'all',
-      ask: 'Was zeigt die Karte insgesamt?',
+      ask: 'Was zeigt die Varana-Karte insgesamt (ab 218 v. Chr.)?',
       correct: 'Roms territoriales Wachstum um das Mittelmeer (Phasen in Farben)',
       wrong: [
-        'nur die Gründungssage ohne Expansion',
+        'den Stadtstaat Rom um 500 v. Chr.',
         'nur das Ende Roms im Mittelalter',
         'nur die Stadt Karthago ohne Rom',
       ],
       wissen:
-        'Die Farben markieren Wachstumsschritte vom Kern (dunkelrot) zur größten Ausdehnung (grün) — Weg zum Mare Nostrum.',
+        'Varana: Wachstum ab 218 v. Chr. zum Mare Nostrum. Stadtstaat und frühe Italien-Eroberung: eigene Karten.',
     },
     {
+      map: 'extent',
       focus: 'mare',
       ask: 'Wenn gelb/grün das Mittelmeer umschließen: Welcher Begriff passt dafür?',
       correct: 'Mare Nostrum („unser Meer“)',
@@ -1017,13 +1064,13 @@ function weltreichMapChoice(rng: Rng) {
   ]
   const c = pick(rng, phases)
   return choicePickTask({
-    question: `${c.ask}\n\n(Legende der historischen Karte beachten)`,
+    question: `${c.ask}\n\n(Legende / Blick auf die historische Karte beachten)`,
     choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
     correct: c.correct,
     solution: c.correct,
     explanation: `${c.wissen} Stadtstaat → Italien → Westmittelmeer → Mare Nostrum. ${ROM_MAP_ATTRIBUTION}`,
     instruction: 'Tippe die passende Phase / Aussage:',
-    visualContent: romanExpansionMapHtml('extent', c.focus),
+    visualContent: romanExpansionMapHtml(c.map, c.focus ?? 'all'),
     fachwissen: fwMap(c.wissen),
   })
 }
@@ -1042,8 +1089,8 @@ export const romWeltreich: Topic['generate'] = mixedVariants(
       ],
       distractor: 'Romulus und Remus als Konsuln',
       solution: 'Stadtstaat → Italien → Westmittelmeer → Mare Nostrum',
-      explanation: `Karten: Italien-Eroberung + Phasen ums Mittelmeer. ${ROM_MAP_ATTRIBUTION}`,
-      visualContent: romanExpansionMapHtml('extent', 'all'),
+      explanation: `Frühe Phasen: Latium-/Italien-Karten; Mare Nostrum: Varana ab 218. ${ROM_MAP_ATTRIBUTION}`,
+      visualContent: romanExpansionMapHtml('italy', 'all'),
       fachwissen: fwMap(
         'Stadtstaat → Landmacht Italien → Westmittelmeer → Mare Nostrum („unser Meer“).',
       ),
@@ -1062,12 +1109,25 @@ export const romWeltreich: Topic['generate'] = mixedVariants(
         q: '„Vom Stadtstaat zum Weltreich“ bedeutet …',
         correct: 'Rom wächst von einer Stadt zur Macht um das Mittelmeer',
         wrong: ['Rom schrumpft auf sieben Hügel', 'Karthago erobert Rom dauerhaft', 'Rom bleibt ohne Heer und Provinzen'],
-        wissen: 'Vom Stadtstaat am Tiber zur Macht um das Mittelmeer (Mare Nostrum).',
-        map: 'extent' as const,
+        wissen:
+          'Vom Stadtstaat am Tiber (Latium-Karte) über Italien zur Macht um das Mittelmeer (Mare Nostrum).',
+        map: 'stadtstaat' as const,
         focus: 'all' as const,
       },
       {
-        q: 'Welche Kartenfarbe steht für 133 v. Chr. (Vormacht nach den Kriegen im Westen)?',
+        q: 'Welche Karte zeigt Rom als Stadtstaat / frühes Latium (vor der Italien-Eroberung)?',
+        correct: 'Latium-Karte um 500 v. Chr. (kleines Gebiet am Tiber)',
+        wrong: [
+          'Varana-Karte ab 218 v. Chr. (Mittelmeer-Phasen)',
+          'nur eine moderne Autobahnkarte',
+          'eine Karte nur von Karthago',
+        ],
+        wissen: 'Stadtstaat = frühes Rom in Latium — nicht die Varana-Karte (die erst 218 v. Chr. beginnt).',
+        map: 'stadtstaat' as const,
+        focus: 'all' as const,
+      },
+      {
+        q: 'Welche Kartenfarbe steht auf der Varana-Karte für 133 v. Chr. (Vormacht nach den Kriegen im Westen)?',
         correct: ROM_MAP_PHASES.p133.label,
         wrong: [ROM_MAP_PHASES.p218.label, ROM_MAP_PHASES.p14.label, ROM_MAP_PHASES.p117.label],
         wissen: 'Hellrot = 133 v. Chr.: Rom ist Vormacht im westlichen Mittelmeer.',
@@ -1076,11 +1136,23 @@ export const romWeltreich: Topic['generate'] = mixedVariants(
       },
       {
         q: 'Was zeigt die Italien-Karte vor allem?',
-        correct: 'Roms Expansion zur Landmacht auf der Halbinsel',
+        correct: 'Roms Expansion zur Landmacht auf der Halbinsel (vor 218 v. Chr.)',
         wrong: ['moderne Autobahnen in Italien', 'nur Ägypten ohne Rom', 'das Ende des Mittelalters'],
-        wissen: 'Zuerst wird Italien kontrolliert, danach weitet sich Rom ums Mittelmeer aus.',
+        wissen: 'Zuerst wird Italien kontrolliert (Italien-Karte), danach weitet sich Rom ums Mittelmeer aus (Varana).',
         map: 'italy' as const,
         focus: 'all' as const,
+      },
+      {
+        q: 'Ab wann beginnt die Varana-Karte — und was fehlt deshalb darauf?',
+        correct: 'Ab 218 v. Chr.; Stadtstaat und frühe Italien-Eroberung fehlen',
+        wrong: [
+          'Ab 753 v. Chr.; sie zeigt nur den Tiber',
+          'Ab 117 n. Chr.; sie zeigt nur Trajan',
+          'Sie beginnt mit dem Mittelalter',
+        ],
+        wissen: 'Varana = ab 218 v. Chr. Für Stadtstaat/Italien: Latium- und Italien-Karte.',
+        map: 'extent' as const,
+        focus: 'p218' as const,
       },
       {
         q: 'Was bedeutet Mare Nostrum wörtlich?',
@@ -1091,10 +1163,10 @@ export const romWeltreich: Topic['generate'] = mixedVariants(
         focus: 'mare' as const,
       },
       {
-        q: 'Warum helfen Phasenfarben auf der historischen Karte?',
-        correct: 'Sie machen Wachstumsschritte vom Kern zur größten Ausdehnung sichtbar',
-        wrong: ['Sie ersetzen jedes Datum tippen', 'Sie zeigen nur moderne Autobahnen', 'Sie gelten nur fürs Mittelalter'],
-        wissen: 'Dunkelrot → hellrot → orange → gelb → grün: Expansion bis zum Mare Nostrum.',
+        q: 'Warum helfen Phasenfarben auf der Varana-Karte?',
+        correct: 'Sie machen Wachstumsschritte ab 218 v. Chr. zur größten Ausdehnung sichtbar',
+        wrong: ['Sie ersetzen jedes Datum tippen', 'Sie zeigen den Stadtstaat um 500 v. Chr.', 'Sie gelten nur fürs Mittelalter'],
+        wissen: 'Dunkelrot → hellrot → orange → gelb → grün: Expansion ab 218 bis zum Mare Nostrum.',
         map: 'extent' as const,
         focus: 'all' as const,
       },
@@ -1139,9 +1211,9 @@ export const romWeltreich: Topic['generate'] = mixedVariants(
         'Mare Nostrum',
       ],
       solution: 'Stadtstaat → Italien → Westmittelmeer → Mare Nostrum.',
-      explanation: `Vier Expansionsstufen; „nur Dorf“ ist falsch. ${ROM_MAP_ATTRIBUTION}`,
+      explanation: `Vier Expansionsstufen; „nur Dorf“ ist falsch. Frühe Stufen: Latium-/Italien-Karten. ${ROM_MAP_ATTRIBUTION}`,
       instruction: 'Tippe alle zutreffenden Phasen:',
-      visualContent: romanExpansionMapHtml('extent', 'all'),
+      visualContent: romanExpansionMapHtml('italy', 'all'),
       fachwissen: fwMap(
         'Expansion: Stadtstaat → Italien → Westmittelmeer → Mare Nostrum.',
       ),

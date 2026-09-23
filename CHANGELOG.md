@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.9] – 2026-09-23
+
+### Geändert
+- **Geschichte K6 Mare Nostrum (ID 6763):** Frühe Phasen nutzen Stadtstaat-/Italien-Karten
+  (Renato, CC0: Latium um 500 v. Chr.; Javierfv1212, PD: Eroberung Italiens bis 218);
+  Varana (CC BY-SA 3.0) nur noch ab 218 v. Chr. / Mare Nostrum — ohne Stadtstaat-Anspruch.
+  Thema bleibt **gesperrt**. Geschichte-Pack **1.4.2**.
+
 ## [0.28.8] – 2026-09-23
 
 ### Geändert

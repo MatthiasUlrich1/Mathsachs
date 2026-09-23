@@ -151,20 +151,29 @@ describe('Geschichte K6 Römische Zivilisation', () => {
 
   it('weltreich serves Commons map images for expansion tasks', () => {
     let withMap = 0
-    for (let seed = 1; seed <= 40; seed++) {
+    let withEarly = 0
+    let withExtent = 0
+    for (let seed = 1; seed <= 80; seed++) {
       const task = GESCHICHTE_K6_GENERATORS['ge-k6-lb1-weltreich']!(createRng(seed))
       expect(task.check(task.sampleAnswer)).toBe(true)
+      const vc = task.visualContent ?? ''
       if (
-        task.visualContent?.includes('/maps/roman-') ||
-        task.visualContent?.includes('Mare Nostrum') ||
-        task.visualContent?.includes('Mittelmeer')
+        vc.includes('/maps/roman-') ||
+        vc.includes('/maps/roma-antiga') ||
+        vc.includes('Mare Nostrum') ||
+        vc.includes('Mittelmeer') ||
+        vc.includes('Stadtstaat')
       ) {
         withMap += 1
-        expect(task.visualContent).toContain('<img')
-        expect(task.visualContent).not.toContain('<svg')
+        expect(vc).toContain('<img')
+        expect(vc).not.toContain('<svg')
       }
+      if (vc.includes('roma-antiga-500bc') || vc.includes('roman-conquest-of-italy')) withEarly += 1
+      if (vc.includes('roman-extent-218bc-117ad-varana')) withExtent += 1
     }
     expect(withMap).toBeGreaterThan(5)
+    expect(withEarly).toBeGreaterThan(0)
+    expect(withExtent).toBeGreaterThan(0)
   })
 
   it('locks weltreich until freigabe; other K6 LB1 topics stay released', async () => {
