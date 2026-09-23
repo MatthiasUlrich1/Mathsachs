@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.15] – 2026-09-23
+
+### Geändert
+- **Grafik-Prüfung-Badge:** Freigegebene `__grafik`-Themen (IDs **4569**,
+  **5997**, **6374**) zeigen im Curriculum-Browser kein „Grafik-Prüfung“-Label
+  mehr — nur noch unfreigegebene Review-Unterthemen.
+
 ## [0.28.14] – 2026-09-23
 
 ### Geändert
