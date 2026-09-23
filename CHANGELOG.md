@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.2] – 2026-09-23
+
+### Hinzugefügt
+- **Geschichte K6 · Römische Zivilisation:** Übungs-Generatoren aus Heftnotizen +
+  Schulwissen (Anfänge, Begriffe, Ämter, Punische Kriege, Mare Nostrum, Bürgerrecht).
+  Geschichte-Pack **1.1.0** (Themen weiterhin nur Entwickleransicht).
+
 ## [0.28.1] – 2026-09-23
 
 ### Behoben

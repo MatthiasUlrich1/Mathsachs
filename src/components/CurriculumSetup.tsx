@@ -74,10 +74,10 @@ const FALLBACK_CATALOG: ManifestPack[] = [
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Geschichte',
-    version: '1.0.0',
+    version: '1.1.0',
     url: '',
     changelog:
-      'Klassen 5–10 und JGS 11/12 (Gk/Lk). Themen gesperrt — nur Entwickleransicht. Ohne Netz lokale Fassung.',
+      'K6 Römische Zivilisation mit Übungsaufgaben. Themen gesperrt — nur Entwickleransicht. Ohne Netz lokale Fassung.',
   },
   {
     id: GYM_SACHSEN_ANHALT_PACK_ID,

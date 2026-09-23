@@ -1,5 +1,6 @@
 import { textTask } from './taskHelpers'
 import { allGeschichteTopicIds } from './geschichteGymTopics'
+import { GESCHICHTE_K6_GENERATORS } from './geschichte6'
 import type { Topic } from './types'
 
 /** Platzhalter-Generator bis echte Geschichtsaufgaben vorliegen. */
@@ -15,14 +16,12 @@ function stubGenerate(title: string): Topic['generate'] {
     })
 }
 
-const GENERATORS: Record<string, Topic['generate']> = Object.fromEntries(
-  allGeschichteTopicIds().map((id) => {
-    const title = id
-    return [id, stubGenerate(title)]
-  }),
+const STUBS: Record<string, Topic['generate']> = Object.fromEntries(
+  allGeschichteTopicIds()
+    .filter((id) => !GESCHICHTE_K6_GENERATORS[id])
+    .map((id) => [id, stubGenerate(id)]),
 )
 
-/** Ensure stubs use the human title from the pack when hydrating. */
 export function geschichteStubForTitle(title: string): Topic['generate'] {
   return stubGenerate(title)
 }
@@ -32,10 +31,17 @@ export function resolveGeschichteGenerate(
   title?: string,
 ): Topic['generate'] | undefined {
   if (!topicId.startsWith('ge-')) return undefined
+  const real = GESCHICHTE_K6_GENERATORS[topicId]
+  if (real) return real
+  if (STUBS[topicId]) return STUBS[topicId]
   if (title) return stubGenerate(title)
-  return GENERATORS[topicId]
+  return undefined
 }
 
 export function isGeschichteTopic(topicId: string): boolean {
   return topicId.startsWith('ge-')
+}
+
+export function isPlayableGeschichteTopic(topicId: string): boolean {
+  return Boolean(GESCHICHTE_K6_GENERATORS[topicId])
 }

@@ -17,10 +17,11 @@ export function buildGymSachsenGeschichtePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Geschichte',
-    version: '1.0.0',
+    version: '1.1.0',
     changelog:
-      `Erstfassung Klassen 5–10 und JGS 11/12 (Gk/Lk) nach Lernbereichen. ` +
-      `Alle Themen gesperrt — nur in der Entwickleransicht übbar. ${SOURCE}`,
+      `K6 LB1 Römische Zivilisation: Übungsaufgaben aus Heft + Schulwissen ` +
+      `(Anfänge, Begriffe, Ämter, Punische Kriege, Mare Nostrum, Bürgerrecht). ` +
+      `Themen weiterhin gesperrt — nur Entwickleransicht. ${SOURCE}`,
     official,
     extras: [],
   }

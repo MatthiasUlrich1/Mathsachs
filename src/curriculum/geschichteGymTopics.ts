@@ -100,10 +100,40 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
       ['Rom', 'Mittelalter', 'Religion', 'Sachsen', 'Bürger'],
       [
         area('lb1', 'Die römische Zivilisation und ihre prägende Wirkung für Europa', 18, [
-          topic('ge-k6-lb1-rom', 'Die römische Zivilisation und ihre prägende Wirkung', [
+          topic('ge-k6-lb1-rom', 'Die römische Zivilisation – Überblick', [
             'Rom',
             'Zivilisation',
             'Europa',
+          ]),
+          topic('ge-k6-lb1-anfaenge', 'Die Anfänge Roms', [
+            'Romulus',
+            '753',
+            'Etrusker',
+            'Republik',
+          ]),
+          topic('ge-k6-lb1-begriffe', 'Senat, Republik, Patrizier und Plebejer', [
+            'Senat',
+            'Patrizier',
+            'Plebejer',
+          ]),
+          topic('ge-k6-lb1-aemter', 'Ämter und Institutionen der Republik', [
+            'Konsuln',
+            'Volkstribune',
+            'Magistrate',
+          ]),
+          topic('ge-k6-lb1-punische-kriege', 'Punische Kriege – Rom und Karthago', [
+            'Hannibal',
+            'Karthago',
+            'Scipio',
+          ]),
+          topic('ge-k6-lb1-weltreich', 'Vom Stadtstaat zum Weltreich (Mare Nostrum)', [
+            'Weltreich',
+            'Mittelmeer',
+            'Karte',
+          ]),
+          topic('ge-k6-lb1-buergerrecht', 'Was bringt das Bürgerrecht?', [
+            'Bürgerrecht',
+            'Rechte',
           ]),
         ]),
         area('lb2', 'Herrschaft und Lebensformen im Mittelalter', 20, [

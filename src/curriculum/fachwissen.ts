@@ -430,6 +430,20 @@ export function defaultFachwissen(topic: TopicRef, subject?: string): Fachwissen
     return physikFachwissen(topic)
   }
   if (subject === 'Geschichte' || topic.id.startsWith('ge-')) {
+    const lower = `${topic.id} ${topic.title}`.toLowerCase()
+    if (/rom|punisch|karthago|hannibal|republik|patriz|plebej|senat|bürgerrecht|mare nostrum|konsul|tribun/.test(lower)) {
+      return {
+        text:
+          'Römische Geschichte (Klasse 6): Chronologie und Institutionen unterscheiden. ' +
+          'Anfänge: Sage 753 v. Chr., Siedlung, Etrusker, Republik ~500. ' +
+          'Begriffe: res publica, Senat, Patrizier/Plebejer. ' +
+          'Ämter: Konsuln, Prätoren, Ädile, Quästoren, Zensoren, Volkstribune (Veto), Senat, Diktator auf Zeit. ' +
+          'Punische Kriege (264–146): Sizilien → Hannibal/Alpen → Zerstörung Karthagos 146; Mare Nostrum. ' +
+          'Bürgerrecht: Schutz, Verträge, Testament, Wahlrecht. ' +
+          'Tipp: Jahreszahlen und lateinische Begriffe genau lesen.',
+        ...wiki('Römisches_Reich', 'R%C3%B6misches_Reich'),
+      }
+    }
     return {
       text:
         `Thema „${topic.title}“: Historische Ereignisse und Prozesse einordnen — ` +

@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Geschichte",
-  "version": "1.0.0",
-  "changelog": "Erstfassung Klassen 5–10 und JGS 11/12 (Gk/Lk) nach Lernbereichen. Alle Themen gesperrt — nur in der Entwickleransicht übbar. Lehrplan Gymnasium Geschichte (Sachsen) 2004/2007/2009/2011/2019, lplanid=65, https://www.schulportal.sachsen.de/lplandb/lehrplan/65",
+  "version": "1.1.0",
+  "changelog": "K6 LB1 Römische Zivilisation: Übungsaufgaben aus Heft + Schulwissen (Anfänge, Begriffe, Ämter, Punische Kriege, Mare Nostrum, Bürgerrecht). Themen weiterhin gesperrt — nur Entwickleransicht. Lehrplan Gymnasium Geschichte (Sachsen) 2004/2007/2009/2011/2019, lplanid=65, https://www.schulportal.sachsen.de/lplandb/lehrplan/65",
   "official": [
     {
       "id": "geschichte-klasse-5",
@@ -164,7 +164,7 @@
           "topics": [
             {
               "id": "ge-k6-lb1-rom",
-              "title": "Die römische Zivilisation und ihre prägende Wirkung",
+              "title": "Die römische Zivilisation – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -173,6 +173,84 @@
                 "Rom",
                 "Zivilisation",
                 "Europa"
+              ]
+            },
+            {
+              "id": "ge-k6-lb1-anfaenge",
+              "title": "Die Anfänge Roms",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Romulus",
+                "753",
+                "Etrusker",
+                "Republik"
+              ]
+            },
+            {
+              "id": "ge-k6-lb1-begriffe",
+              "title": "Senat, Republik, Patrizier und Plebejer",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Senat",
+                "Patrizier",
+                "Plebejer"
+              ]
+            },
+            {
+              "id": "ge-k6-lb1-aemter",
+              "title": "Ämter und Institutionen der Republik",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Konsuln",
+                "Volkstribune",
+                "Magistrate"
+              ]
+            },
+            {
+              "id": "ge-k6-lb1-punische-kriege",
+              "title": "Punische Kriege – Rom und Karthago",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Hannibal",
+                "Karthago",
+                "Scipio"
+              ]
+            },
+            {
+              "id": "ge-k6-lb1-weltreich",
+              "title": "Vom Stadtstaat zum Weltreich (Mare Nostrum)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Weltreich",
+                "Mittelmeer",
+                "Karte"
+              ]
+            },
+            {
+              "id": "ge-k6-lb1-buergerrecht",
+              "title": "Was bringt das Bürgerrecht?",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Bürgerrecht",
+                "Rechte"
               ]
             }
           ]
@@ -1133,5 +1211,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "e9b1974e"
+  "contentHash": "22cb039e"
 }
