@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.7] – 2026-09-23
+
+### Geändert
+- **Geschichte K6 LB1 freigegeben** (IDs 9045, 5521, 3377, 6594, 7496, 9229, 6763, 2358,
+  1994): mehr Varianten je Thema; Chronologie ohne Ordnungszahl-Spoiler
+  (Sizilien / Hannibal·Alpen·Zama / Zerstörung Karthagos); Mare-Nostrum-Phasenkarte
+  (Attribution: Varana, Wikimedia Commons, CC BY-SA). Pack **1.4.0**.
+
 ## [0.28.6] – 2026-09-23
 
 ### Geändert

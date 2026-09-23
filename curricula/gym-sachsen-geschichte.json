@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Geschichte",
-  "version": "1.3.0",
-  "changelog": "Klassen 5–12 (Gk/Lk) · 67 Themen. Ohne Netz lokale Fassung.",
+  "version": "1.4.0",
+  "changelog": "Klassen 5–12 (Gk/Lk) · 67 Themen. K6 LB1 Rom freigegeben. Ohne Netz lokale Fassung.",
   "official": [
     {
       "id": "geschichte-klasse-5",
@@ -167,7 +167,7 @@
               "title": "Jahreszahlen (nur LB1)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 20,
               "keywords": [
                 "753",
@@ -181,7 +181,7 @@
               "title": "Chronologie (Reihenfolge)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 12,
               "keywords": [
                 "Zeitstrahl",
@@ -193,7 +193,7 @@
               "title": "Die Anfänge Roms",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 12,
               "keywords": [
                 "Romulus",
@@ -206,7 +206,7 @@
               "title": "Senat, Republik, Patrizier und Plebejer",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 12,
               "keywords": [
                 "Senat",
@@ -219,7 +219,7 @@
               "title": "Ämter und Institutionen der Republik",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 12,
               "keywords": [
                 "Konsuln",
@@ -232,7 +232,7 @@
               "title": "Punische Kriege – Rom und Karthago",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 12,
               "keywords": [
                 "Hannibal",
@@ -245,7 +245,7 @@
               "title": "Vom Stadtstaat zum Weltreich (Mare Nostrum)",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Weltreich",
@@ -258,7 +258,7 @@
               "title": "Was bringt das Bürgerrecht?",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Bürgerrecht",
@@ -270,7 +270,7 @@
               "title": "Prägende Wirkung für Europa",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Latein",
@@ -1236,5 +1236,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "a4a1d92d"
+  "contentHash": "a075943e"
 }

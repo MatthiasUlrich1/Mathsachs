@@ -1,7 +1,7 @@
 /**
  * Gymnasium Sachsen · Geschichte — Lehrplan-Outline (lplanid=65).
- * Alle Themen: released:false → nur Entwickleransicht übbar.
- * Quelle: https://www.schulportal.sachsen.de/lplandb/lehrplan/65
+ * K6 LB1 (Römische Zivilisation) freigegeben; übrige Themen: released:false
+ * (nur Entwickleransicht). Quelle: https://www.schulportal.sachsen.de/lplandb/lehrplan/65
  */
 import type { PackArea, PackGrade, PackTopic } from './pack'
 
@@ -9,13 +9,13 @@ const topic = (
   id: string,
   title: string,
   keywords?: string[],
-  opts?: { tasksPerRound?: number },
+  opts?: { tasksPerRound?: number; released?: boolean },
 ): PackTopic => ({
   id,
   title,
   pointsPerTask: 10,
   hint: 'Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.',
-  released: false,
+  released: opts?.released ?? false,
   tasksPerRound: opts?.tasksPerRound ?? 8,
   ...(keywords?.length ? { keywords } : {}),
 })
@@ -105,48 +105,48 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'ge-k6-lb1-jahreszahlen',
             'Jahreszahlen (nur LB1)',
             ['753', '500', '264', '146'],
-            { tasksPerRound: 20 },
+            { tasksPerRound: 20, released: true },
           ),
           topic(
             'ge-k6-lb1-chronologie',
             'Chronologie (Reihenfolge)',
             ['Zeitstrahl', 'Reihenfolge'],
-            { tasksPerRound: 12 },
+            { tasksPerRound: 12, released: true },
           ),
           topic('ge-k6-lb1-anfaenge', 'Die Anfänge Roms', [
             'Romulus',
             'Etrusker',
             'Tiber',
-          ], { tasksPerRound: 12 }),
+          ], { tasksPerRound: 12, released: true }),
           topic('ge-k6-lb1-begriffe', 'Senat, Republik, Patrizier und Plebejer', [
             'Senat',
             'Patrizier',
             'Plebejer',
-          ], { tasksPerRound: 12 }),
+          ], { tasksPerRound: 12, released: true }),
           topic('ge-k6-lb1-aemter', 'Ämter und Institutionen der Republik', [
             'Konsuln',
             'Volkstribune',
             'Magistrate',
-          ], { tasksPerRound: 12 }),
+          ], { tasksPerRound: 12, released: true }),
           topic('ge-k6-lb1-punische-kriege', 'Punische Kriege – Rom und Karthago', [
             'Hannibal',
             'Karthago',
             'Scipio',
-          ], { tasksPerRound: 12 }),
+          ], { tasksPerRound: 12, released: true }),
           topic('ge-k6-lb1-weltreich', 'Vom Stadtstaat zum Weltreich (Mare Nostrum)', [
             'Weltreich',
             'Mittelmeer',
             'Karte',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb1-buergerrecht', 'Was bringt das Bürgerrecht?', [
             'Bürgerrecht',
             'Rechte',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb1-rom', 'Prägende Wirkung für Europa', [
             'Latein',
             'Recht',
             'Straßen',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
         ]),
         area('lb2', 'Herrschaft und Lebensformen im Mittelalter', 20, [
           topic('ge-k6-lb2-mittelalter', 'Herrschaft und Lebensformen im Mittelalter', [

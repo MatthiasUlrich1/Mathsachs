@@ -6,6 +6,13 @@
  */
 import type { Rng } from '../lib/rng'
 import {
+  ROM_MAP_ATTRIBUTION,
+  ROM_MAP_PHASES,
+  ROM_MAP_QUELLE,
+  romanExpansionMapSvg,
+  type RomMapHighlight,
+} from './geschichteRomMap'
+import {
   choicePickTask,
   dragDropSlotsTask,
   dragDropSortTask,
@@ -34,6 +41,10 @@ const ROM_QUELLE: Pick<Fachwissen, 'quelle' | 'url'> = {
 }
 
 const fw = (text: string): Fachwissen => ({ text, ...ROM_QUELLE })
+const fwMap = (text: string): Fachwissen => ({
+  text: `${text} ${ROM_MAP_ATTRIBUTION}`,
+  ...ROM_MAP_QUELLE,
+})
 
 /** Kern-Jahreszahlen LB1 (v. Chr.) — wissen = fragebezogenes Fachwissen. */
 const YEAR_FACTS = [
@@ -195,6 +206,7 @@ function matchTermsTask(
     solution: string
     explanation: string
     fachwissen: Fachwissen
+    visualContent?: string
   },
 ) {
   const items = [
@@ -211,6 +223,7 @@ function matchTermsTask(
     instruction: 'Ziehe rechts die passende Erklärung zum Begriff links. Einen Block brauchst du nicht.',
     rng,
     fachwissen: opts.fachwissen,
+    ...(opts.visualContent ? { visualContent: opts.visualContent } : {}),
   })
 }
 
@@ -223,7 +236,7 @@ export const romJahreszahlen: Topic['generate'] = (rng) => {
   return yearEventChoice(rng)
 }
 
-// ─── Chronologie: nur Reihenfolge (keine Jahreszahl tippen) ──────────────────
+// ─── Chronologie: nur Reihenfolge (keine Ordnungszahlen als Spoiler) ─────────
 
 export const romChronologie: Topic['generate'] = mixedVariants(
   (_rng) =>
@@ -232,58 +245,131 @@ export const romChronologie: Topic['generate'] = mixedVariants(
       items: [
         { label: 'Gründung Roms (Sage)', value: 0 },
         { label: 'Beginn der Republik', value: 1 },
-        { label: 'Erster Punischer Krieg beginnt', value: 2 },
+        { label: 'Krieg um Sizilien beginnt', value: 2 },
         { label: 'Hannibal überquert die Alpen', value: 3 },
         { label: 'Zerstörung Karthagos', value: 4 },
       ],
       correctOrder: [0, 1, 2, 3, 4],
-      solution: 'Gründung → Republik → 1. Punischer Krieg → Alpen → Karthago zerstört',
+      solution: 'Gründung → Republik → Sizilien → Alpen → Karthago zerstört',
       explanation: 'So baut sich LB1 zeitlich auf — von den Anfängen bis zur Vormacht.',
       rng: _rng,
       fachwissen: fw(
-        'Chronologie LB1 (früh → spät): Gründungssage Roms → Beginn der Republik (~500) → Erster Punischer Krieg (Sizilien) → Hannibal über die Alpen (2. Punischer Krieg) → Zerstörung Karthagos (146). So merkst du die Reihenfolge ohne jede Jahreszahl tippen zu müssen.',
+        'Chronologie LB1 (früh → spät): Gründungssage Roms → Beginn der Republik (~500) → Krieg um Sizilien → Hannibal über die Alpen → Zerstörung Karthagos (146). So merkst du die Reihenfolge ohne jede Jahreszahl tippen zu müssen.',
       ),
     }),
   (_rng) =>
     dragDropSortTask({
-      question: 'Ordne die drei Punischen Kriege chronologisch (früh → spät):',
+      question: 'Ordne diese Ereignisse chronologisch (früh → spät):',
       items: [
-        { label: 'Krieg um Sizilien (1. Punischer Krieg)', value: 0 },
-        { label: 'Hannibal / Alpen / Zama (2. Punischer Krieg)', value: 1 },
-        { label: 'Zerstörung Karthagos (3. Punischer Krieg)', value: 2 },
+        { label: 'Krieg um Sizilien', value: 0 },
+        { label: 'Hannibal / Alpen / Zama', value: 1 },
+        { label: 'Zerstörung Karthagos', value: 2 },
       ],
       correctOrder: [0, 1, 2],
-      solution: '1. → 2. → 3. Punischer Krieg',
-      explanation: 'Die drei Kriege gegen Karthago folgen nacheinander.',
+      solution: 'Sizilien → Hannibal/Zama → Zerstörung Karthagos',
+      explanation: 'Drei große Konflikte gegen Karthago folgen nacheinander.',
       rng: _rng,
       fachwissen: fw(
-        'Die drei Punischen Kriege folgen nacheinander: (1) Kampf um Sizilien — Rom wird Seemacht; (2) Hannibal über die Alpen, Entscheidung bei Zama; (3) Belagerung und Zerstörung Karthagos. Merke: Sizilien → Hannibal → Zerstörung.',
+        'Reihenfolge der Konflikte mit Karthago: zuerst Kampf um Sizilien (Rom wird Seemacht); dann Hannibal über die Alpen und Entscheidung bei Zama; zuletzt Belagerung und Zerstörung Karthagos. Merke Inhalt: Sizilien → Hannibal → Zerstörung — ohne Nummern in der Aufgabe.',
+      ),
+    }),
+  (_rng) =>
+    dragDropSortTask({
+      question: 'Ordne die Anfänge Roms chronologisch (früh → spät):',
+      items: [
+        { label: 'Sabiner & Latiner am Tiber', value: 0 },
+        { label: 'Etrusker prägen Rom', value: 1 },
+        { label: 'Gründungssage (Romulus/Remus)', value: 2 },
+        { label: 'Beginn der Republik', value: 3 },
+      ],
+      correctOrder: [0, 1, 2, 3],
+      solution: 'Siedlung → Etrusker → Sage (Tradition) → Republik',
+      explanation:
+        'Historisch früh: Siedlung und Etrusker; die Sage datiert die Gründung; danach Republik.',
+      rng: _rng,
+      fachwissen: fw(
+        'Anfänge zeitlich: Sabiner und Latiner siedeln früh am Tiber; Etrusker prägen Technik und Stadt; die Gründungssage setzt die mythische Stadtgründung; um 500 beginnt die Republik.',
+      ),
+    }),
+  (_rng) =>
+    dragDropSortTask({
+      question: 'Ordne die Expansionsphasen (klein → groß):',
+      items: [
+        { label: 'Stadtstaat Rom', value: 0 },
+        { label: 'Landmacht in Italien', value: 1 },
+        { label: 'Vormacht im Westmittelmeer', value: 2 },
+        { label: 'Mare Nostrum', value: 3 },
+      ],
+      correctOrder: [0, 1, 2, 3],
+      solution: 'Stadtstaat → Italien → Westmittelmeer → Mare Nostrum',
+      explanation: 'Rom wächst schrittweise vom Stadtstaat zur Mittelmeer-Vormacht.',
+      rng: _rng,
+      fachwissen: fw(
+        'Expansionslinie: Stadtstaat → Kontrolle Italiens → Vormacht im westlichen Mittelmeer → Mare Nostrum („unser Meer“).',
       ),
     }),
   (rng) =>
     matchTermsTask(rng, {
-      question: 'Ordne: Welcher Krieg passt zu welchem Schwerpunkt?',
-      terms: ['1. Punischer Krieg', '2. Punischer Krieg', '3. Punischer Krieg'],
+      question: 'Ordne: Welcher Schwerpunkt passt zu welchem Konflikt?',
+      terms: ['Krieg um Sizilien', 'Hannibal / Alpen / Zama', 'Zerstörung Karthagos'],
       meanings: [
-        'Kampf um Sizilien; Rom wird Seemacht',
-        'Hannibal über die Alpen; Entscheidung bei Zama',
-        'Karthago wird belagert und zerstört',
+        'Rom wird Seemacht; Insel vor der italienischen Küste',
+        'Feldzug über die Alpen; Entscheidung in Afrika',
+        'Belagerung; Rivale fällt endgültig',
       ],
       distractor: 'Gründung Roms durch Romulus und Remus',
-      solution: '1. Sizilien · 2. Hannibal/Zama · 3. Zerstörung',
-      explanation: 'Jeder Krieg hat einen klaren Schwerpunkt — so merkst du die Reihenfolge.',
+      solution: 'Sizilien · Hannibal/Zama · Zerstörung',
+      explanation: 'Jeder Konflikt hat einen klaren Schwerpunkt — so merkst du die Abfolge.',
       fachwissen: fw(
-        'Schwerpunkte der Punischen Kriege: 1. Sizilien und Flotte; 2. Hannibal, Alpen, Zama (Scipio); 3. Belagerung und Zerstörung Karthagos. Die Gründungssage gehört nicht in diese Kriegslinie.',
+        'Schwerpunkte ohne Nummern-Spoiler: Sizilien und Flotte; Hannibal, Alpen, Zama (Scipio); Belagerung und Zerstörung Karthagos. Die Gründungssage gehört nicht in diese Kriegslinie.',
       ),
     }),
+  (rng) => {
+    const cases = [
+      {
+        q: 'Was kommt zeitlich zuerst?',
+        correct: 'Beginn der Republik',
+        wrong: ['Zerstörung Karthagos', 'Hannibal über die Alpen', 'Krieg um Sizilien'],
+        wissen:
+          'Die Republik beginnt um 500 v. Chr. — lange vor den Konflikten mit Karthago (Sizilien, Hannibal, Zerstörung).',
+      },
+      {
+        q: 'Was kommt zeitlich zuletzt?',
+        correct: 'Zerstörung Karthagos',
+        wrong: ['Gründungssage Roms', 'Beginn der Republik', 'Krieg um Sizilien'],
+        wissen:
+          'Die Zerstörung Karthagos (146) steht am Ende der großen Konflikte mit Karthago — nach Sizilien und Hannibal/Zama.',
+      },
+      {
+        q: 'Was liegt zeitlich zwischen Republikbeginn und Zerstörung Karthagos?',
+        correct: 'Krieg um Sizilien und Hannibals Alpenzug',
+        wrong: [
+          'nur die Gründungssage',
+          'nur das Ende des Mittelalters',
+          'die Entdeckung Amerikas',
+        ],
+        wissen:
+          'Zwischen Republikbeginn und Zerstörung Karthagos liegen u. a. der Krieg um Sizilien und Hannibals Alpenzug mit der Entscheidung bei Zama.',
+      },
+    ] as const
+    const c = pick(rng, cases)
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Chronologie: Anfänge → Republik → Konflikte mit Karthago → Vormacht.',
+      instruction: 'Tippe die passende Antwort:',
+      fachwissen: fw(c.wissen),
+    })
+  },
 )
 
 // ─── Anfänge: Sage, Siedlung, Etrusker (kein Senat/Krieg/Ämter) ───────────────
 
-export const romAnfaenge: Topic['generate'] = (rng) => {
-  const roll = rng()
-  if (roll < 0.35) {
-    return matchTermsTask(rng, {
+export const romAnfaenge: Topic['generate'] = mixedVariants(
+  (rng) =>
+    matchTermsTask(rng, {
       question: 'Ordne den frühen Phasen Roms die passende Aussage zu:',
       terms: ['Sage', 'Sabiner & Latiner', 'Etrusker', 'Sieben Hügel'],
       meanings: [
@@ -296,78 +382,140 @@ export const romAnfaenge: Topic['generate'] = (rng) => {
       solution: 'Sage · Siedlung · Etrusker · Hügel',
       explanation: 'Anfänge: Sage, frühe Siedlung, Etruskereinfluss, Lage auf sieben Hügeln.',
       fachwissen: fw(
-        'Anfänge Roms in vier Schichten: (1) Sage — Romulus und Remus; (2) frühe Siedlung von Sabinern und Latinern am Tiber; (3) Etrusker bringen Steinbau, Wasser und Metall; (4) Lage auf sieben Hügeln. Hannibal gehört in die Punischen Kriege, nicht hierher.',
+        'Anfänge Roms in vier Schichten: Sage (Romulus/Remus); frühe Siedlung am Tiber; Etrusker (Steinbau, Wasser, Metall); sieben Hügel. Hannibal gehört nicht hierher.',
       ),
+    }),
+  (rng) =>
+    matchTermsTask(rng, {
+      question: 'Ordne Ort und Fluss den Anfängen zu:',
+      terms: ['Tiber', 'Latium', 'Palatin', 'Forum'],
+      meanings: [
+        'Fluss, an dem Rom entsteht',
+        'Landschaft Mittelitaliens um Rom',
+        'einer der sieben Hügel (Sage: Gründung)',
+        'späterer Markt- und Versammlungsplatz',
+      ],
+      distractor: 'Alpenpass Hannibals',
+      solution: 'Tiber · Latium · Palatin · Forum',
+      explanation: 'Lage: Tiber, Latium, Hügel — Forum wird später Zentrum.',
+      fachwissen: fw(
+        'Geografie der Anfänge: Tiber, Latium, Palatin; Forum wird später Zentrum. Hannibals Alpenpass gehört nicht zu den Anfängen.',
+      ),
+    }),
+  (rng) => {
+    const cases = [
+      {
+        q: 'Wer gründete Rom der Sage nach?',
+        correct: 'Romulus und Remus',
+        wrong: ['Zwei etruskische Kaufleute ohne Sage', 'Ein einzelner Sabinerkönig allein', 'Nur Plebejer ohne Anführer'],
+        explanation: 'Zwillinge Romulus und Remus — Sage zur Stadtgründung.',
+        wissen: 'Der Sage nach gründeten die Zwillinge Romulus und Remus Rom. Historisch ist die Erzählung mythisch, nicht wörtlich belegbar.',
+      },
+      {
+        q: 'Auf wie vielen Hügeln lag Rom der Sage nach?',
+        correct: 'sieben',
+        wrong: ['drei', 'zehn', 'zwei'],
+        explanation: '„Stadt auf sieben Hügeln“.',
+        wissen: 'Rom heißt in der Überlieferung die „Stadt auf sieben Hügeln“. Die Hügellage am Tiber bot Schutz und Überblick.',
+      },
+      {
+        q: 'Was brachten die Etrusker nach Rom?',
+        correct: 'Stein-/Ziegelbau, Wassertechnik, Metallverarbeitung',
+        wrong: ['nur mündliche Märkte ohne Technik', 'ausschließlich Seefahrt nach Karthago', 'das Ende jeder Stadtanlage'],
+        explanation: 'Etrusker: neue Lebensweise, Steinbau, Wasser, Metall.',
+        wissen: 'Die Etrusker beeinflussten frühes Rom stark: Stein- und Ziegelbau, Wassertechnik und Metallverarbeitung.',
+      },
+      {
+        q: 'Sabiner und Latiner (Hirten/Bauern) …',
+        correct: 'siedeln früh am Tiber und entwickeln einen Handelsplatz',
+        wrong: ['gründen zuerst Karthago in Afrika', 'sind nur Feldherren einer späteren Flotte', 'leben ausschließlich in Gallien'],
+        explanation: 'Frühe Siedlung am Tiber → Handelsplatz.',
+        wissen: 'Sabiner und Latiner siedelten früh als Hirten und Bauern am Tiber. Aus ihren Siedlungen wuchs ein Handelsplatz.',
+      },
+      {
+        q: 'Warum endet die Königszeit in Rom (ca. 500 v. Chr.)?',
+        correct: 'Patrizier vertreiben den König und begründen die Republik',
+        wrong: ['Ein fremdes Heer setzt einen neuen König auf Lebenszeit ein', 'Der Senat wird abgeschafft und nie ersetzt', 'Romulus wird erneut zum einzigen Herrscher gewählt'],
+        explanation: 'Ende der Königszeit → Republik (res publica).',
+        wissen: 'Um 500 v. Chr. vertreiben Patrizier den König und begründen die Republik (res publica).',
+      },
+      {
+        q: 'Was bedeutet „ab urbe condita“ grob?',
+        correct: '„seit der Stadtgründung“ — römische Zeitrechnung ab der Sage',
+        wrong: ['„seit dem Ende Karthagos“', '„seit dem ersten Konsul in Gallien“', '„seit dem Bau der Alpenstraße“'],
+        explanation: 'Römische Zählung ab der (sagenhaften) Stadtgründung.',
+        wissen: 'Ab urbe condita heißt „seit der Stadtgründung“. Die Römer zählten Jahre ab der traditionellen Gründung (753).',
+      },
+      {
+        q: 'Warum war die Lage am Tiber für frühes Rom günstig?',
+        correct: 'Flussweg, Hügelsschutz und Handelsplatz',
+        wrong: ['weil dort kein Wasser existierte', 'weil die Alpen direkt an Rom grenzten', 'weil Karthago dort lag'],
+        explanation: 'Fluss + Hügel = Schutz und Handel.',
+        wissen: 'Am Tiber gab es Wasserweg und Handel; die Hügel boten Schutz. Karthago lag in Nordafrika.',
+      },
+      {
+        q: 'Die Königszeit Roms liegt …',
+        correct: 'vor dem Beginn der Republik',
+        wrong: ['erst nach der Zerstörung Karthagos', 'gleichzeitig mit Hannibals Alpenzug', 'erst im Mittelalter'],
+        explanation: 'Könige → danach Republik.',
+        wissen: 'Die Königszeit liegt vor der Republik — nicht erst nach Karthago oder Hannibal.',
+      },
+      {
+        q: 'Was ist an der Gründungssage historisch besonders?',
+        correct: 'Sie ist mythische Tradition — nicht wörtlich belegbare Geschichte',
+        wrong: ['Sie ist ein Tagesbericht aus dem Senat', 'Sie beschreibt nur die Punischen Kriege', 'Sie gilt nur für Karthago'],
+        explanation: 'Sage = Ursprungsmythos, kein Protokoll.',
+        wissen: 'Die Gründungssage ist mythische Tradition und kein historischer Tagesbericht.',
+      },
+      {
+        q: 'Wer hatte in der Königszeit oft Einfluss auf Rom?',
+        correct: 'etruskische Könige / etruskische Kultur',
+        wrong: ['nur germanische Stammesführer', 'nur karthagische Konsuln', 'nur mittelalterliche Fürsten'],
+        explanation: 'Etrusker prägen Königszeit und Technik.',
+        wissen: 'In der Königszeit hatten etruskische Herrscher und Kultur starken Einfluss auf Rom.',
+      },
+    ] as const
+    const c = pick(rng, cases)
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: c.explanation,
+      instruction: 'Tippe die passende Aussage:',
+      fachwissen: fw(c.wissen),
     })
-  }
-  const cases = [
-    {
-      q: 'Wer gründete Rom der Sage nach?',
-      correct: 'Romulus und Remus',
-      wrong: ['Hannibal und Scipio', 'Caesar und Augustus', 'Cato und Scipio'],
-      explanation: 'Zwillinge Romulus und Remus — Sage zur Stadtgründung.',
-      wissen:
-        'Der Sage nach gründeten die Zwillinge Romulus und Remus Rom. Romulus tötete Remus und wurde erster König. Die Geschichte erklärt mythisch den Ursprung der Stadt — historisch ist sie nicht wörtlich belegbar.',
-    },
-    {
-      q: 'Auf wie vielen Hügeln lag Rom der Sage nach?',
-      correct: 'sieben',
-      wrong: ['drei', 'zehn', 'zwei'],
-      explanation: '„Stadt auf sieben Hügeln“.',
-      wissen:
-        'Rom heißt in der Überlieferung die „Stadt auf sieben Hügeln“. Die Hügellage am Tiber bot Schutz und Überblick — ein zentrales Bild in der römischen Gründungserzählung.',
-    },
-    {
-      q: 'Was brachten die Etrusker nach Rom?',
-      correct: 'Stein-/Ziegelbau, Wassertechnik, Metallverarbeitung',
-      wrong: ['Buchdruck', 'das Bürgerrecht Karthagos', 'die Zerstörung Karthagos'],
-      explanation: 'Etrusker: neue Lebensweise, Steinbau, Wasser, Metall.',
-      wissen:
-        'Die Etrusker beeinflussten frühes Rom stark: Stein- und Ziegelbau, Wassertechnik und Metallverarbeitung. In der Königszeit hatten etruskische Herrscher Einfluss — Technik und städtische Kultur vor der Republik.',
-    },
-    {
-      q: 'Sabiner und Latiner (Hirten/Bauern) …',
-      correct: 'siedeln früh am Tiber und entwickeln einen Handelsplatz',
-      wrong: [
-        'zerstören Karthago',
-        'überqueren die Alpen mit Elefanten',
-        'sind nur Feldherren Karthagos',
+  },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was gehört zu den Anfängen Roms? (mehrere möglich)',
+      choices: [
+        'Sage von Romulus und Remus',
+        'Siedlung am Tiber',
+        'Etruskischer Einfluss',
+        'Lage auf sieben Hügeln',
+        'Zerstörung Karthagos als Gründungsakt',
       ],
-      explanation: 'Frühe Siedlung am Tiber → Handelsplatz.',
-      wissen:
-        'Sabiner und Latiner siedelten früh als Hirten und Bauern am Tiber. Aus ihren Siedlungen wuchs ein Handelsplatz — die reale Schicht unter der späteren Gründungssage.',
-    },
-    {
-      q: 'Warum endet die Königszeit in Rom (ca. 500 v. Chr.)?',
-      correct: 'Patrizier vertreiben den König und begründen die Republik',
-      wrong: [
-        'Hannibal erobert Rom',
-        'Karthago gründet den Senat',
-        'Romulus wird Konsul',
+      correct: [
+        'Sage von Romulus und Remus',
+        'Siedlung am Tiber',
+        'Etruskischer Einfluss',
+        'Lage auf sieben Hügeln',
       ],
-      explanation: 'Ende der Königszeit → Republik (res publica).',
-      wissen:
-        'Um 500 v. Chr. vertreiben Patrizier den König und begründen die Republik (res publica). Statt Alleinherrschaft: gewählte Magistrate und der Senat als Rat. Das ist der Übergang von der Königszeit zur frühen Republik.',
-    },
-  ] as const
-  const c = pick(rng, cases)
-  return choicePickTask({
-    question: c.q,
-    choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
-    correct: c.correct,
-    solution: c.correct,
-    explanation: c.explanation,
-    instruction: 'Tippe die passende Aussage:',
-    fachwissen: fw(c.wissen),
-  })
-}
+      solution: 'Sage, Tiber-Siedlung, Etrusker, sieben Hügel — nicht Karthagos Ende.',
+      explanation: 'Anfänge ≠ spätere Kriege gegen Karthago.',
+      instruction: 'Tippe alle zutreffenden Punkte:',
+      fachwissen: fw(
+        'Zu den Anfängen gehören Sage, frühe Siedlung am Tiber, Etruskereinfluss und die sieben Hügel. Die Zerstörung Karthagos ist kein Gründungsakt.',
+      ),
+    }),
+)
 
 // ─── Begriffe: nur Republik / Senat / Patrizier / Plebejer ───────────────────
 
-export const romBegriffe: Topic['generate'] = (rng) => {
-  const roll = rng()
-  if (roll < 0.55) {
-    return matchTermsTask(rng, {
+export const romBegriffe: Topic['generate'] = mixedVariants(
+  (rng) =>
+    matchTermsTask(rng, {
       question: 'Ordne: Begriff → Bedeutung',
       terms: ['Republik', 'Senat', 'Patrizier', 'Plebejer'],
       meanings: [
@@ -378,88 +526,145 @@ export const romBegriffe: Topic['generate'] = (rng) => {
       ],
       distractor: 'König mit unbeschränkter Macht',
       solution: 'Republik · Senat · Patrizier · Plebejer',
-      explanation:
-        'res publica = öffentliche Sache; Senat berät; Patrizier = Adel; Plebejer = Volk.',
+      explanation: 'res publica = öffentliche Sache; Senat berät; Patrizier = Adel; Plebejer = Volk.',
       fachwissen: fw(
-        'Kernbegriffe der frühen Republik: res publica = „öffentliche Sache“ (Regierung durch gewählte Vertreter); Senat = Rat der Ältesten; Patrizier = Adlige („Väter“); Plebejer = Volk ohne Adelszugehörigkeit. Ein König mit unbeschränkter Macht ist das Gegenteil der Republik.',
+        'Kernbegriffe: res publica; Senat = Rat der Ältesten; Patrizier = Adlige; Plebejer = Volk ohne Adelszugehörigkeit. Ein König mit unbeschränkter Macht ist das Gegenteil.',
       ),
+    }),
+  (rng) =>
+    matchTermsTask(rng, {
+      question: 'Ordne weitere Republik-Begriffe:',
+      terms: ['res publica', 'SPQR', 'Standeskampf', 'Klientel'],
+      meanings: [
+        'lateinisch: öffentliche Sache',
+        'Senatus Populusque Romanus',
+        'Auseinandersetzung Patrizier ↔ Plebejer',
+        'Schutzverhältnis Patron — Klient',
+      ],
+      distractor: 'Alleinherrschaft eines Königs auf Lebenszeit',
+      solution: 'res publica · SPQR · Standeskampf · Klientel',
+      explanation: 'Weitere Schlüsselbegriffe der frühen Republik.',
+      fachwissen: fw(
+        'res publica; SPQR = Senatus Populusque Romanus; Standeskampf; Klientel. Königs-Alleinherrschaft ist das Gegenteil.',
+      ),
+    }),
+  (rng) => {
+    const cases = [
+      {
+        q: '„Republik“ kommt von lat. res publica und bedeutet …',
+        correct: 'öffentliche Sache — Regierung durch gewählte Vertreter',
+        wrong: ['Alleinherrschaft eines Königs', 'nur Militär ohne jede Beratung', 'Herrschaft der Götter ohne Menschen'],
+        wissen: 'Res publica heißt „öffentliche Sache“. Gewählte Magistrate statt König auf Lebenszeit.',
+      },
+      {
+        q: 'Was war der Senat in der frühen Republik?',
+        correct: 'Rat der Ältesten; politische Versammlung zunächst adliger Männer',
+        wrong: ['nur die Versammlung aller Sklaven', 'ein einzelner Feldherr ohne Rat', 'ein Königshof auf Lebenszeit'],
+        wissen: 'Der Senat war der Rat der Ältesten und beriet Magistrate zu Krieg, Frieden und Politik.',
+      },
+      {
+        q: 'Wer waren die Patrizier?',
+        correct: 'Adlige und wohlhabende Römer (lat. „Väter“)',
+        wrong: ['das einfache Volk ohne Adel', 'nur freigelassene Sklaven', 'nur fremde Händler ohne Bürgerstatus'],
+        wissen: 'Patrizier waren die adligen, wohlhabenden Familien mit großem Einfluss in der frühen Republik.',
+      },
+      {
+        q: 'Wer waren die Plebejer?',
+        correct: 'Angehörige des Volkes, die nicht zum Adel gehörten',
+        wrong: ['nur die beiden Konsuln', 'etruskische Könige', 'von Anfang an alleiniger Senat'],
+        wissen: 'Plebejer gehörten nicht zum Adel und erkämpften sich später Rechte (z. B. Volkstribune).',
+      },
+      {
+        q: 'In der frühen Republik hatten zunächst vor allem … die Macht.',
+        correct: 'die Patrizier; Plebejer blieben lange machtlos',
+        wrong: ['alle Einwohner gleichermaßen inklusive Sklaven', 'nur die Plebejer ohne Patrizier', 'nur Kinder ohne Erwachsene'],
+        wissen: 'Die Macht lag zunächst bei den Patriziern; Plebejer blieben lange benachteiligt.',
+      },
+      {
+        q: 'Was bedeutet SPQR?',
+        correct: 'Senatus Populusque Romanus — Senat und Volk von Rom',
+        wrong: ['nur „Senat ohne Volk“', '„Sklave, Patrizier, Quästor, Rex“', 'ein Name nur für Karthago'],
+        wissen: 'SPQR = Senatus Populusque Romanus — Senat und römisches Volk.',
+      },
+      {
+        q: 'Der Standeskampf war vor allem …',
+        correct: 'der Konflikt zwischen Patriziern und Plebejern um Rechte',
+        wrong: ['ein Krieg nur gegen die Etrusker ohne Innenpolitik', 'ein Streit nur um die Farbe der Toga', 'die Abschaffung des Tiber'],
+        wissen: 'Im Standeskampf rangen Plebejer mit Patriziern um politische Rechte.',
+      },
+      {
+        q: 'Ein Patron und sein Klient …',
+        correct: 'stehen in einem Schutz- und Abhängigkeitsverhältnis',
+        wrong: ['sind immer zwei gleichrangige Könige', 'bilden den Senat allein ohne andere', 'ersetzen den Tiber als Fluss'],
+        wissen: 'Klientel: Patron gewährt Schutz; Klient schuldet Loyalität — soziales Netz der Republik.',
+      },
+      {
+        q: 'Warum ist „König auf Lebenszeit“ das Gegenteil der Republik?',
+        correct: 'Republik setzt auf befristete, gewählte Magistrate statt Alleinherrschaft',
+        wrong: ['weil Könige immer Plebejer waren', 'weil der Senat nur aus Sklaven bestand', 'weil res publica „Königsburg“ heißt'],
+        wissen: 'Die Republik ersetzt den König durch befristete, gewählte Magistrate und Senatsberatung.',
+      },
+      {
+        q: 'Plebejer erkämpften sich später u. a. …',
+        correct: 'mehr Rechte und eigene Vertreter (z. B. Volkstribune)',
+        wrong: ['das Recht, den Tiber trockenzulegen', 'die alleinige Königswürde für jeden Bürger', 'das Verbot jeglicher Verträge'],
+        wissen: 'Plebejer gewannen Rechte und Ämter — etwa Volkstribune mit Veto.',
+      },
+    ] as const
+    const c = pick(rng, cases)
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Frühe Republik: res publica, Senat, Patrizier vs. Plebejer.',
+      instruction: 'Tippe die passende Erklärung:',
+      fachwissen: fw(c.wissen),
     })
-  }
-  const cases = [
-    {
-      q: '„Republik“ kommt von lat. res publica und bedeutet …',
-      correct: 'öffentliche Sache — Regierung durch gewählte Vertreter',
-      wrong: [
-        'Alleinherrschaft eines Königs',
-        'nur Militär ohne Senat',
-        'Herrschaft der Götter',
+  },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Welche Aussagen zur frühen Republik stimmen? (mehrere möglich)',
+      choices: [
+        'Res publica heißt öffentliche Sache',
+        'Der Senat berät die Magistrate',
+        'Patrizier sind adlige Familien',
+        'Plebejer gehören nicht zum Adel',
+        'Jeder Bürger ist automatisch König',
       ],
-      wissen:
-        'Res publica heißt wörtlich „öffentliche Sache“. In der römischen Republik regieren gewählte Vertreter (Magistrate), nicht ein König auf Lebenszeit. Der Senat berät; das Volk hat in Versammlungen Mitspracherechte — mit Abstufungen je nach Stand.',
-    },
-    {
-      q: 'Was war der Senat in der frühen Republik?',
-      correct: 'Rat der Ältesten; politische Versammlung zunächst adliger Männer',
-      wrong: [
-        'nur die Plebejerversammlung',
-        'das Heer Hannibals',
-        'ein einzelner König',
+      correct: [
+        'Res publica heißt öffentliche Sache',
+        'Der Senat berät die Magistrate',
+        'Patrizier sind adlige Familien',
+        'Plebejer gehören nicht zum Adel',
       ],
-      wissen:
-        'Der Senat war der Rat der Ältesten: eine politische Versammlung zunächst adliger Männer. Er beriet Magistrate zu Krieg, Frieden und Politik — kein einzelner König und keine reine Plebejerversammlung.',
-    },
-    {
-      q: 'Wer waren die Patrizier?',
-      correct: 'Adlige und wohlhabende Römer (lat. „Väter“)',
-      wrong: [
-        'das einfache Volk ohne Adel',
-        'Feldherren Karthagos',
-        'nur Sklaven',
-      ],
-      wissen:
-        'Patrizier (von lat. „Väter“) waren die adligen, wohlhabenden Familien. In der frühen Republik hatten sie den größten politischen Einfluss; Plebejer standen ihnen als Volk ohne Adelszugehörigkeit gegenüber.',
-    },
-    {
-      q: 'Wer waren die Plebejer?',
-      correct: 'Angehörige des Volkes, die nicht zum Adel gehörten',
-      wrong: [
-        'nur die Konsuln',
-        'etruskische Könige',
-        'Mitglieder des Senats von Anfang an',
-      ],
-      wissen:
-        'Plebejer waren Angehörige des Volkes ohne Adelszugehörigkeit. Sie waren lange von vielen Ämtern ausgeschlossen und erkämpften sich später Rechte (z. B. Volkstribune mit Veto).',
-    },
-    {
-      q: 'In der frühen Republik hatten zunächst vor allem … die Macht.',
-      correct: 'die Patrizier; Plebejer blieben lange machtlos',
-      wrong: [
-        'alle Bürger gleichermaßen',
-        'nur die Plebejer',
-        'nur Sklaven',
-      ],
-      wissen:
-        'In der frühen Republik lag die Macht zunächst bei den Patriziern. Plebejer blieben lange politisch benachteiligt — Gleichheit aller Bürger war kein Ausgangspunkt der Republik.',
-    },
-  ] as const
-  const c = pick(rng, cases)
-  return choicePickTask({
-    question: c.q,
-    choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
-    correct: c.correct,
-    solution: c.correct,
-    explanation: 'Frühe Republik: res publica, Senat, Patrizier vs. Plebejer.',
-    instruction: 'Tippe die passende Erklärung:',
-    fachwissen: fw(c.wissen),
-  })
-}
+      solution: 'Res publica, Senat, Patrizier, Plebejer — keine Königsmacht für alle.',
+      explanation: 'Vier Kernaussagen; Königsmacht für jeden Bürger ist falsch.',
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+      fachwissen: fw(
+        'Frühe Republik: res publica, Senat, Patrizier vs. Plebejer. Niemand wird automatisch König.',
+      ),
+    }),
+  (rng) =>
+    textTask({
+      question: pick(rng, [
+        'Lateinisch: Wie heißt „öffentliche Sache“? (zwei Wörter)',
+        'Welcher lateinische Begriff bedeutet „öffentliche Sache“?',
+      ]),
+      accepted: ['res publica', 'Res publica', 'respublica'],
+      solution: 'res publica',
+      explanation: 'res publica = öffentliche Sache → Republik.',
+      fachwissen: fw(
+        'Res publica („öffentliche Sache“) ist der lateinische Ursprung von „Republik“.',
+      ),
+    }),
+)
 
 // ─── Ämter: nur Magistrate / Institutionen ───────────────────────────────────
 
-export const romAemter: Topic['generate'] = (rng) => {
-  const roll = rng()
-  if (roll < 0.5) {
-    return matchTermsTask(rng, {
+export const romAemter: Topic['generate'] = mixedVariants(
+  (rng) =>
+    matchTermsTask(rng, {
       question: 'Ordne den Ämtern die Zuständigkeit zu:',
       terms: ['Konsuln', 'Prätoren', 'Ädile', 'Quästoren'],
       meanings: [
@@ -472,12 +677,11 @@ export const romAemter: Topic['generate'] = (rng) => {
       solution: 'Konsuln · Prätoren · Ädile · Quästoren',
       explanation: 'Klassische Magistraturen der Republik — je ein klarer Aufgabenbereich.',
       fachwissen: fw(
-        'Klassische Magistrate der Republik: zwei Konsuln (oberste Beamte), Prätoren (Gerichtswesen), Ädile (Stadt-/Marktverwaltung), Quästoren (Finanzen). Jedes Amt hat einen klaren Zuständigkeitsbereich — nicht zu verwechseln mit Kriegsereignissen wie der Zerstörung Karthagos.',
+        'Zwei Konsuln (oberste Beamte), Prätoren (Gericht), Ädile (Stadt/Markt), Quästoren (Finanzen).',
       ),
-    })
-  }
-  if (roll < 0.75) {
-    return matchTermsTask(rng, {
+    }),
+  (rng) =>
+    matchTermsTask(rng, {
       question: 'Ordne weitere Ämter und Organe:',
       terms: ['Zensoren', 'Volkstribune', 'Diktator', 'Senat'],
       meanings: [
@@ -488,61 +692,122 @@ export const romAemter: Topic['generate'] = (rng) => {
       ],
       distractor: 'Hannibal als ständiger König Roms',
       solution: 'Zensoren · Volkstribune · Diktator · Senat',
-      explanation: 'Neben den normalen Magistraten: Kontrolle, Plebejerschutz, Notstand, Senat.',
+      explanation: 'Kontrolle, Plebejerschutz, Notstand, Senat.',
       fachwissen: fw(
-        'Weitere Organe: Zensoren (Sittenkontrolle, Bürgerlisten), Volkstribune (Veto zum Schutz der Plebejer), Diktator (große Macht auf Zeit in Notlagen), Senat (berät zu Krieg und Frieden). Ein ständiger König — egal ob Hannibal — widerspricht dem Republikprinzip.',
+        'Zensoren, Volkstribune (Veto), Diktator (befristet), Senat. Kein ständiger König.',
       ),
+    }),
+  (rng) =>
+    matchTermsTask(rng, {
+      question: 'Ordne Prinzipien der Ämterordnung:',
+      terms: ['Annuität', 'Kollegialität', 'Veto', 'Imperium'],
+      meanings: [
+        'Ämter meist nur für ein Jahr',
+        'zwei Amtsinhaber teilen die Führung',
+        'Einspruch / Blockade einer Entscheidung',
+        'Befehlsmacht der hohen Magistrate',
+      ],
+      distractor: 'Königswürde auf Lebenszeit für alle',
+      solution: 'Annuität · Kollegialität · Veto · Imperium',
+      explanation: 'Befristung, Doppelbesetzung, Einspruch, Befehlsmacht.',
+      fachwissen: fw(
+        'Annuität, Kollegialität, Veto, Imperium — Republikprinzipien gegen Alleinherrschaft.',
+      ),
+    }),
+  (rng) => {
+    const cases = [
+      {
+        q: 'Welche Aufgabe hatten die beiden Konsuln?',
+        correct: 'die obersten Beamten Roms',
+        wrong: ['nur für Finanzen zuständig', 'nur Volkstribune ohne Heer', 'Könige auf Lebenszeit'],
+        wissen: 'Zwei Konsuln waren die obersten Beamten — gemeinsam und befristet, nicht als Könige.',
+      },
+      {
+        q: 'Wofür waren die Prätoren zuständig?',
+        correct: 'das Gerichtswesen',
+        wrong: ['nur Sittenkontrolle', 'nur die Getreidepreise in Gallien', 'nur Tempelbau ohne Recht'],
+        wissen: 'Prätoren: Gerichtswesen. Sitten = Zensoren; Finanzen = Quästoren.',
+      },
+      {
+        q: 'Was konnten Volkstribune?',
+        correct: 'Veto einlegen (Schutz der Plebejer)',
+        wrong: ['den Senat dauerhaft abschaffen', 'Könige auf Lebenszeit ernennen', 'nur Steuern in fernen Provinzen erheben'],
+        wissen: 'Volkstribune schützten Plebejer mit Veto — ohne den Senat abzuschaffen.',
+      },
+      {
+        q: 'Ein Diktator in der Republik …',
+        correct: 'wurde auf Zeit in Notzeiten mit großer Macht eingesetzt',
+        wrong: ['war dauerhafter König', 'gab es nur außerhalb Roms ohne Notlage', 'wurde nie mit Macht ausgestattet'],
+        wissen: 'Diktator: große Macht auf begrenzte Zeit in Notlagen — kein dauerhaftes Königtum.',
+      },
+      {
+        q: 'Wofür waren Quästoren zuständig?',
+        correct: 'Finanzen / Staatskasse',
+        wrong: ['nur das Gerichtswesen', 'nur die Sittenkontrolle', 'nur das Veto der Plebejer'],
+        wissen: 'Quästoren verwalteten Finanzen und Staatskasse.',
+      },
+      {
+        q: 'Was machten die Ädile?',
+        correct: 'Stadt- und Marktverwaltung (u. a. Ordnung, Spiele, Versorgung)',
+        wrong: ['nur Kriegführung als einzige Aufgabe', 'nur Königszeremonien', 'nur die Bürgerlisten der Zensoren'],
+        wissen: 'Ädile: Stadt und Markt — Ordnung, oft Spiele und Versorgung.',
+      },
+      {
+        q: 'Zensoren waren zuständig für …',
+        correct: 'Sittenkontrolle und Bürgerlisten (Census)',
+        wrong: ['nur das Veto der Tribune', 'nur die Finanzen der Quästoren', 'nur den Bau von Kriegsschiffen'],
+        wissen: 'Zensoren: Census und öffentliche Sitte.',
+      },
+      {
+        q: 'Warum gab es zwei Konsuln?',
+        correct: 'Kollegialität — Machtteilung, keine Alleinherrschaft',
+        wrong: ['weil Rom zwei Könige auf Lebenszeit wollte', 'weil einer immer in Karthago residieren musste', 'weil der Senat abgeschafft war'],
+        wissen: 'Zwei Konsuln teilen die Macht — Kollegialität gegen Alleinherrschaft.',
+      },
+      {
+        q: 'Annuität bei Magistraten bedeutet …',
+        correct: 'das Amt gilt in der Regel nur für ein Jahr',
+        wrong: ['das Amt gilt immer lebenslang', 'das Amt darf nur Sklaven ausüben', 'das Amt existiert nur in Karthago'],
+        wissen: 'Annuität: typische Befristung auf ein Jahr.',
+      },
+      {
+        q: 'Der Senat …',
+        correct: 'berät Magistrate und beeinflusst Krieg und Frieden',
+        wrong: ['ersetzt alle Magistrate dauerhaft durch einen König', 'ist nur eine Sportversammlung', 'besteht nur aus Kindern'],
+        wissen: 'Der Senat berät Magistrate und beeinflusst Politik, Krieg und Frieden.',
+      },
+    ] as const
+    const c = pick(rng, cases)
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Republik: Magistrate, Senat, Volkstribune, Diktator auf Zeit.',
+      instruction: 'Tippe die passende Zuordnung:',
+      fachwissen: fw(c.wissen),
     })
-  }
-  const cases = [
-    {
-      q: 'Welche Aufgabe hatten die beiden Konsuln?',
-      correct: 'die obersten Beamten Roms',
-      wrong: ['nur für Finanzen zuständig', 'nur Volkstribune', 'Könige auf Lebenszeit'],
-      wissen:
-        'Zwei Konsuln waren die obersten Beamten der Republik. Sie führten gemeinsam, damit nicht ein Einzelner Alleinherrscher wurde — und nur auf begrenzte Zeit, nicht als Könige auf Lebenszeit.',
-    },
-    {
-      q: 'Wofür waren die Prätoren zuständig?',
-      correct: 'das Gerichtswesen',
-      wrong: ['nur Sittenkontrolle', 'nur die Flotte Karthagos', 'Getreide aus Germanien'],
-      wissen:
-        'Prätoren waren für das Gerichtswesen zuständig: Rechtsprechung und Rechtsordnung in der Republik. Sittenkontrolle war Sache der Zensoren; Finanzen der Quästoren.',
-    },
-    {
-      q: 'Was konnten Volkstribune?',
-      correct: 'Veto einlegen (Schutz der Plebejer)',
-      wrong: ['den Senat abschaffen', 'Könige ernennen', 'nur Steuern in Karthago erheben'],
-      wissen:
-        'Volkstribune schützten die Plebejer: Sie konnten ein Veto gegen Beschlüsse einlegen. Das Amt entstand aus den Standeskämpfen und begrenzte die Macht der Patrizier — ohne den Senat abzuschaffen oder Könige einzusetzen.',
-    },
-    {
-      q: 'Ein Diktator in der Republik …',
-      correct: 'wurde auf Zeit in Notzeiten mit großer Macht eingesetzt',
-      wrong: ['war dauerhafter König', 'gab es nur in Karthago', 'wurde nie gewählt'],
-      wissen:
-        'Ein Diktator wurde in Notzeiten auf begrenzte Zeit mit großer Macht eingesetzt. Das war kein dauerhaftes Königtum: Die Befristung sollte Missbrauch verhindern und die Republik retten, nicht ersetzen.',
-    },
-  ] as const
-  const c = pick(rng, cases)
-  return choicePickTask({
-    question: c.q,
-    choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
-    correct: c.correct,
-    solution: c.correct,
-    explanation: 'Republik: Magistrate, Senat, Volkstribune, Diktator auf Zeit.',
-    instruction: 'Tippe die passende Zuordnung:',
-    fachwissen: fw(c.wissen),
-  })
-}
+  },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Welche Ämter/Organe gehören zur römischen Republik? (mehrere möglich)',
+      choices: ['Konsuln', 'Prätoren', 'Volkstribune', 'Senat', 'lebenslanger König als Normalfall'],
+      correct: ['Konsuln', 'Prätoren', 'Volkstribune', 'Senat'],
+      solution: 'Konsuln, Prätoren, Tribune, Senat — kein Normal-König.',
+      explanation: 'Klassische Republikorgane; lebenslanger König ist Ausnahme/Gegenteil.',
+      instruction: 'Tippe alle zutreffenden:',
+      fachwissen: fw(
+        'Zur Republik gehören Konsuln, Prätoren, Volkstribune und der Senat — kein lebenslanger König als Normalfall.',
+      ),
+    }),
+)
 
 // ─── Punische Kriege: Inhalt (keine Jahreszahl tippen) ───────────────────────
 
-export const romPunisch: Topic['generate'] = (rng) => {
-  const roll = rng()
-  if (roll < 0.4) {
-    return matchTermsTask(rng, {
-      question: 'Ordne Personen und Orte den Punischen Kriegen zu:',
+export const romPunisch: Topic['generate'] = mixedVariants(
+  (rng) =>
+    matchTermsTask(rng, {
+      question: 'Ordne Personen und Orte den Konflikten mit Karthago zu:',
       terms: ['Karthago', 'Hannibal', 'Scipio', 'Cato'],
       meanings: [
         'Stadt in Nordafrika; Rivale Roms',
@@ -552,89 +817,197 @@ export const romPunisch: Topic['generate'] = (rng) => {
       ],
       distractor: 'Romulus gründet Rom',
       solution: 'Karthago · Hannibal · Scipio · Cato',
-      explanation: 'Kernfiguren und Schauplatz der Punischen Kriege.',
+      explanation: 'Kernfiguren und Schauplatz der Kriege gegen Karthago.',
       fachwissen: fw(
-        'Punische Kriege — Personen und Ort: Karthago (Nordafrika, Rivale), Hannibal (karthagischer Feldherr, Alpen), Scipio (römischer Sieger bei Zama), Cato (forderte die Zerstörung Karthagos). Die Gründungssage um Romulus gehört nicht hierher.',
+        'Karthago (Nordafrika), Hannibal (Alpen), Scipio (Zama), Cato (Zerstörungsforderung). Gründungssage gehört nicht hierher.',
       ),
+    }),
+  (rng) =>
+    matchTermsTask(rng, {
+      question: 'Ordne Schauplätze und Stichworte:',
+      terms: ['Sizilien', 'Alpen', 'Zama', 'Nordafrika'],
+      meanings: [
+        'Insel — Streitobjekt; Rom wird Seemacht',
+        'Übergang Hannibals nach Italien',
+        'Entscheidungsschlacht; Scipio siegt',
+        'Lage Karthagos; später Kriegsschauplatz',
+      ],
+      distractor: 'Sieben Hügel als Gründungssage',
+      solution: 'Sizilien · Alpen · Zama · Nordafrika',
+      explanation: 'Geografie der Konflikte mit Karthago.',
+      fachwissen: fw(
+        'Sizilien: Streitobjekt und Seemacht-Einstieg; Alpen: Hannibal; Zama: Scipio; Nordafrika: Karthago.',
+      ),
+    }),
+  (rng) => {
+    const cases = [
+      {
+        q: 'Wo lag die Stadt Karthago?',
+        correct: 'in Nordafrika',
+        wrong: ['in Britannien', 'am Rhein', 'nur in Gallien ohne Afrika'],
+        wissen: 'Karthago lag in Nordafrika (nahe dem heutigen Tunis) — Rivale Roms.',
+      },
+      {
+        q: 'Wer war Hannibal in den Kriegen gegen Karthago?',
+        correct: 'Feldherr Karthagos; überquerte die Alpen mit seinem Heer',
+        wrong: ['römischer Konsul auf Lebenszeit', 'etruskischer König Roms', 'germanischer Häuptling am Rhein'],
+        wissen: 'Hannibal führte sein Heer über die Alpen nach Italien und bedrohte Rom jahrelang.',
+      },
+      {
+        q: 'Was leistete der Römer Scipio?',
+        correct: 'besiegte Hannibal in Afrika (Zama)',
+        wrong: ['gründete Rom der Sage nach', 'war König der Etrusker', 'zerstörte die Stadt Rom'],
+        wissen: 'Scipio besiegte Hannibal bei Zama in Nordafrika.',
+      },
+      {
+        q: 'Was forderte Cato immer wieder im Senat?',
+        correct: '„Carthago delenda est!“ — Karthago muss zerstört werden',
+        wrong: ['Rom soll die Flotte abschaffen', 'Hannibal soll Konsul werden', 'nur Frieden ohne jeden Sieg'],
+        wissen: 'Cato forderte die Zerstörung Karthagos: „Carthago delenda est!“',
+      },
+      {
+        q: 'Worum ging es im Konflikt um Sizilien zuerst?',
+        correct: 'um Sizilien; Rom baut eine Flotte und siegt',
+        wrong: ['um Britannien', 'um die Gründung Roms', 'um den Senat in Karthago als römische Behörde'],
+        wissen: 'Um Sizilien: Rom baut eine Flotte und wird Seemacht; Sizilien wird Provinz.',
+      },
+      {
+        q: 'Warum waren die Kriege gegen Karthago für Rom wichtig?',
+        correct: 'Rom wurde Großmacht und Vormacht im Mittelmeerraum',
+        wrong: ['Rom verlor dauerhaft jede Seehöheit', 'Rom blieb kleiner Stadtstaat ohne Provinzen', 'Karthago eroberte Italien dauerhaft'],
+        wissen: 'Siege gegen Karthago machen Rom zur Mittelmeer-Vormacht.',
+      },
+      {
+        q: 'Richtig oder falsch? „Rom verlor alle Kriege gegen Karthago.“',
+        correct: 'falsch — Rom gewann die großen Konflikte',
+        wrong: ['richtig — Rom verlor alle'],
+        wissen: 'Rom gewann die großen Konflikte; am Ende stand die Zerstörung Karthagos.',
+      },
+      {
+        q: 'Was kennzeichnet Hannibals Zug nach Italien?',
+        correct: 'Übergang über die Alpen mit Heer (u. a. Elefanten)',
+        wrong: ['Ankunft nur mit Handelsschiffen in Britannien', 'Gründung Roms am Tiber', 'Bau des Forum Romanum'],
+        wissen: 'Hannibal führte sein Heer über die Alpen nach Italien.',
+      },
+      {
+        q: 'Welche Rolle spielte Sizilien?',
+        correct: 'Streitobjekt; Einstieg Roms als Seemacht / Provinz',
+        wrong: ['Hauptstadt Karthagos', 'Sitz des Senats von Anfang an', 'nur ein Fluss in Latium'],
+        wissen: 'Sizilien war Streitobjekt und wurde römische Provinz.',
+      },
+      {
+        q: 'Was passierte am Ende mit Karthago?',
+        correct: 'Die Stadt wurde belagert und zerstört',
+        wrong: ['Karthago wurde römische Königsresidenz auf Lebenszeit', 'Hannibal wurde Konsul in Rom', 'Rom zog sich dauerhaft nach Latium zurück'],
+        wissen: 'Karthago wurde belagert und zerstört; Rom blieb Vormacht im Westmittelmeer.',
+      },
+      {
+        q: 'Scipio und Hannibal treffen entscheidend …',
+        correct: 'bei Zama (in Afrika)',
+        wrong: ['nur auf dem Forum in Rom', 'nur am Rhein', 'nur auf den sieben Hügeln ohne Heer'],
+        wissen: 'Die Entscheidung fiel bei Zama in Nordafrika.',
+      },
+      {
+        q: '„Punisch“ bezieht sich auf …',
+        correct: 'die Karthager (von lat. Poeni / Punier)',
+        wrong: ['nur die Etrusker', 'nur die Germanen', 'nur die Griechen Athens'],
+        wissen: '„Punisch“ kommt von den Puniern/Poeni — Bezeichnung für die Karthager.',
+      },
+    ] as const
+    const c = pick(rng, cases)
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Konflikte mit Karthago: Sizilien → Hannibal/Zama → Zerstörung.',
+      instruction: 'Tippe die passende Antwort:',
+      fachwissen: fw(c.wissen),
     })
-  }
-  const cases = [
-    {
-      q: 'Wo lag die Stadt Karthago?',
-      correct: 'in Nordafrika',
-      wrong: ['in Britannien', 'am Rhein', 'nur in Gallien'],
-      wissen:
-        'Karthago lag in Nordafrika (nahe dem heutigen Tunis). Die Stadt war Handels- und Seemacht und der große Rivale Roms in den Punischen Kriegen — nicht in Britannien oder am Rhein.',
-    },
-    {
-      q: 'Wer war Hannibal in den Punischen Kriegen?',
-      correct: 'Feldherr Karthagos; überquerte die Alpen mit seinem Heer',
-      wrong: ['römischer Konsul', 'etruskischer König', 'germanischer Häuptling'],
-      wissen:
-        'Hannibal war der bedeutendste Feldherr Karthagos im Zweiten Punischen Krieg. Er führte sein Heer (mit Elefanten) über die Alpen nach Italien und bedrohte Rom jahrelang.',
-    },
-    {
-      q: 'Was leistete der Römer Scipio im Zweiten Punischen Krieg?',
-      correct: 'besiegte Hannibal in Afrika (Zama)',
-      wrong: ['gründete Rom', 'war König der Etrusker', 'zerstörte Rom'],
-      wissen:
-        'Scipio (Africanus) besiegte Hannibal 202 v. Chr. in der Schlacht bei Zama in Nordafrika. Damit entschied Rom den Zweiten Punischen Krieg — Scipio gründete Rom nicht und war kein etruskischer König.',
-    },
-    {
-      q: 'Was forderte Cato immer wieder im Senat?',
-      correct: '„Carthago delenda est!“ — Karthago muss zerstört werden',
-      wrong: [
-        'Rom soll die Flotte abschaffen',
-        'Hannibal soll Konsul werden',
-        'nur Frieden ohne Sieg',
+  },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was gehört zu den Kriegen gegen Karthago? (mehrere möglich)',
+      choices: [
+        'Kampf um Sizilien',
+        'Hannibals Alpenzug',
+        'Schlacht bei Zama',
+        'Zerstörung Karthagos',
+        'Gründung Roms durch Romulus',
       ],
-      wissen:
-        'Cato der Ältere schloss Reden im Senat oft mit „Carthago delenda est!“ — Karthago müsse zerstört werden. Diese Haltung bereitete den Dritten Punischen Krieg und die endgültige Zerstörung Karthagos mit vor.',
-    },
-    {
-      q: 'Worum ging es im Ersten Punischen Krieg zuerst?',
-      correct: 'um Sizilien; Rom baut eine Flotte und siegt',
-      wrong: ['um Britannien', 'um die Gründung Roms', 'um den Senat in Karthago'],
-      wissen:
-        'Im Ersten Punischen Krieg ging es zuerst um Sizilien. Rom baute eine Flotte, um Karthago zur See zu schlagen, und machte Sizilien zur ersten Provinz — der Start als Seemacht.',
-    },
-    {
-      q: 'Warum waren die Punischen Kriege für Rom wichtig?',
-      correct: 'Rom wurde Großmacht und Vormacht im Mittelmeerraum',
-      wrong: [
-        'Rom verlor alle Kriege',
-        'Rom blieb kleiner Stadtstaat',
-        'Karthago eroberte Italien dauerhaft',
+      correct: [
+        'Kampf um Sizilien',
+        'Hannibals Alpenzug',
+        'Schlacht bei Zama',
+        'Zerstörung Karthagos',
       ],
-      wissen:
-        'Durch den Sieg in allen drei Punischen Kriegen wurde Rom Großmacht und Vormacht im Mittelmeerraum. Karthago fiel aus; Rom war nicht länger nur Stadtstaat in Italien.',
+      solution: 'Sizilien, Hannibal, Zama, Zerstörung — nicht die Gründungssage.',
+      explanation: 'Vier Kriegsinhalte; Gründungssage gehört zu den Anfängen.',
+      instruction: 'Tippe alle zutreffenden:',
+      fachwissen: fw(
+        'Zu den Konflikten gehören Sizilien, Hannibal, Zama und die Zerstörung Karthagos — nicht die Gründungssage.',
+      ),
+    }),
+)
+
+// ─── Weltreich: Mare Nostrum / Expansion (+ Karte) ───────────────────────────
+
+function weltreichMapChoice(rng: Rng) {
+  const phases: { key: RomMapHighlight; ask: string; correct: string; wrong: string[] }[] = [
+    {
+      key: 'stadt',
+      ask: 'Welche Farbe / Phase steht auf der Karte für den Stadtstaat Rom?',
+      correct: ROM_MAP_PHASES.stadt.label,
+      wrong: [ROM_MAP_PHASES.italien.label, ROM_MAP_PHASES.west.label, ROM_MAP_PHASES.mare.label],
     },
     {
-      q: 'Richtig oder falsch? „Rom verlor alle drei Punischen Kriege.“',
-      correct: 'falsch — Rom gewann alle drei Kriege',
-      wrong: ['richtig — Rom verlor alle drei'],
-      wissen:
-        'Rom gewann alle drei Punischen Kriege gegen Karthago. Am Ende stand die Zerstörung Karthagos (146 v. Chr.) und Roms Aufstieg zur Mittelmeer-Vormacht.',
+      key: 'italien',
+      ask: 'Welche Phase zeigt die Kontrolle über die italienische Halbinsel?',
+      correct: ROM_MAP_PHASES.italien.label,
+      wrong: [ROM_MAP_PHASES.stadt.label, ROM_MAP_PHASES.west.label, ROM_MAP_PHASES.mare.label],
     },
-  ] as const
-  const c = pick(rng, cases)
+    {
+      key: 'west',
+      ask: 'Welche Phase steht für die Vormacht im westlichen Mittelmeer (nach großen Kriegen)?',
+      correct: ROM_MAP_PHASES.west.label,
+      wrong: [ROM_MAP_PHASES.stadt.label, ROM_MAP_PHASES.italien.label, ROM_MAP_PHASES.mare.label],
+    },
+    {
+      key: 'mare',
+      ask: 'Welche Phase meint Mare Nostrum — das beherrschte Mittelmeer?',
+      correct: ROM_MAP_PHASES.mare.label,
+      wrong: [ROM_MAP_PHASES.stadt.label, ROM_MAP_PHASES.italien.label, ROM_MAP_PHASES.west.label],
+    },
+    {
+      key: 'all',
+      ask: 'Was zeigt die Karte insgesamt?',
+      correct: 'Roms Wachstum vom Stadtstaat zur Mittelmeer-Vormacht',
+      wrong: [
+        'nur die Gründungssage ohne Expansion',
+        'nur das Ende Roms im Mittelalter',
+        'nur die Stadt Karthago ohne Rom',
+      ],
+    },
+  ]
+  const c = pick(rng, phases)
   return choicePickTask({
-    question: c.q,
+    question: `${c.ask}\n\n(Legende beachten)`,
     choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
     correct: c.correct,
     solution: c.correct,
-    explanation: 'Drei Kriege gegen Karthago: Sizilien → Hannibal/Zama → Zerstörung.',
-    instruction: 'Tippe die passende Antwort:',
-    fachwissen: fw(c.wissen),
+    explanation: `Stadtstaat → Italien → Westmittelmeer → Mare Nostrum. ${ROM_MAP_ATTRIBUTION}`,
+    instruction: 'Tippe die passende Phase / Aussage:',
+    visualContent: romanExpansionMapSvg(c.key),
+    fachwissen: fwMap(
+      'Die Schulkarte zeigt schematisch Roms Expansion: dunkler Kern = Stadtstaat, orange = Italien, gelb = Westmittelmeer, grün = Mare Nostrum.',
+    ),
   })
 }
 
-// ─── Weltreich: Mare Nostrum / Expansion (kein Kriegsdetail) ─────────────────
-
-export const romWeltreich: Topic['generate'] = (rng) => {
-  const roll = rng()
-  if (roll < 0.4) {
-    return matchTermsTask(rng, {
+export const romWeltreich: Topic['generate'] = mixedVariants(
+  (rng) => weltreichMapChoice(rng),
+  (rng) =>
+    matchTermsTask(rng, {
       question: 'Ordne den Phasen die passende Beschreibung zu:',
       terms: ['Stadtstaat', 'Land-/Seemacht', 'Weltmacht', 'Mare Nostrum'],
       meanings: [
@@ -646,71 +1019,110 @@ export const romWeltreich: Topic['generate'] = (rng) => {
       distractor: 'Romulus und Remus als Konsuln',
       solution: 'Stadtstaat → Land/Seemacht → Weltmacht; Mare Nostrum',
       explanation: 'Kartenbild: Wachstum vom Stadtstaat zur Mittelmeer-Vormacht.',
-      fachwissen: fw(
-        'Wachstum Roms: Stadtstaat (Stadt + Umland) → Land-/Seemacht (Italien und Seewege) → Weltmacht um das Mittelmeer. Mare Nostrum („unser Meer“) nennt das beherrschte Mittelmeer. Romulus und Remus als Konsuln sind eine Vermischung von Sage und Republik.',
+      visualContent: romanExpansionMapSvg('all'),
+      fachwissen: fwMap(
+        'Stadtstaat → Land-/Seemacht → Weltmacht; Mare Nostrum = beherrschtes Mittelmeer.',
       ),
-    })
-  }
-  const cases = [
-    {
-      q: 'Wie nannten die Römer das beherrschte Mittelmeer?',
-      correct: 'Mare Nostrum („unser Meer“)',
-      wrong: ['Mare Germanicum', 'Ozeanus Atlanticus', 'Pontus Euxinus'],
-      wissen:
-        'Mare Nostrum bedeutet „unser Meer“. So nannten die Römer das Mittelmeer, als sie es weitgehend beherrschten — Ausdruck der römischen Vormacht rund um das Mittelmeerbecken.',
-    },
-    {
-      q: '„Vom Stadtstaat zum Weltreich“ bedeutet …',
-      correct: 'Rom wächst von einer Stadt zur Macht um das Mittelmeer',
-      wrong: [
-        'Rom schrumpft auf sieben Hügel',
-        'Karthago erobert Rom dauerhaft',
-        'Rom bleibt ohne Heer',
-      ],
-      wissen:
-        '„Vom Stadtstaat zum Weltreich“ beschreibt Roms Wachstum: von einer Stadt am Tiber zur Macht, die das Mittelmeer und weite Gebiete beherrscht — nicht Schrumpfung oder dauerhafte Eroberung durch Karthago.',
-    },
-    {
-      q: 'Nach den großen Kriegen im Westen wird Rom vor allem …',
-      correct: 'Vormacht / Weltmacht im Mittelmeerraum',
-      wrong: [
-        'abhängige Provinz Karthagos',
-        'nur ein Dorf',
-        'germanisches Königreich',
-      ],
-      wissen:
-        'Nach den Siegen im Westen (bes. gegen Karthago) wird Rom Vormacht im Mittelmeerraum. Karthago ist besiegt; Rom ist weder Provinz noch Dorf oder germanisches Königreich.',
-    },
-  ] as const
-  if (roll < 0.7) {
+    }),
+  (rng) => {
+    const cases = [
+      {
+        q: 'Wie nannten die Römer das beherrschte Mittelmeer?',
+        correct: 'Mare Nostrum („unser Meer“)',
+        wrong: ['Mare Germanicum', 'Ozeanus Atlanticus', 'Pontus Euxinus'],
+        wissen: 'Mare Nostrum bedeutet „unser Meer“ — Ausdruck der römischen Mittelmeer-Vormacht.',
+        map: 'mare' as RomMapHighlight,
+      },
+      {
+        q: '„Vom Stadtstaat zum Weltreich“ bedeutet …',
+        correct: 'Rom wächst von einer Stadt zur Macht um das Mittelmeer',
+        wrong: ['Rom schrumpft auf sieben Hügel', 'Karthago erobert Rom dauerhaft', 'Rom bleibt ohne Heer und Provinzen'],
+        wissen: 'Vom Stadtstaat am Tiber zur Macht um das Mittelmeer.',
+        map: 'all' as RomMapHighlight,
+      },
+      {
+        q: 'Nach den großen Kriegen im Westen wird Rom vor allem …',
+        correct: 'Vormacht / Weltmacht im Mittelmeerraum',
+        wrong: ['abhängige Provinz Karthagos', 'nur ein Dorf ohne Einfluss', 'germanisches Königreich'],
+        wissen: 'Nach den Siegen im Westen wird Rom Vormacht im Mittelmeerraum.',
+        map: 'west' as RomMapHighlight,
+      },
+      {
+        q: 'Der erste Schritt der Expansion ist …',
+        correct: 'Kontrolle über Italien (Landmacht)',
+        wrong: ['sofort das gesamte Mare Nostrum ohne Italien', 'Rückzug nur auf den Palatin', 'Aufgabe aller Seewege'],
+        wissen: 'Zuerst Italien, danach Seewege und das weitere Mittelmeer.',
+        map: 'italien' as RomMapHighlight,
+      },
+      {
+        q: 'Was bedeutet Mare Nostrum wörtlich?',
+        correct: 'unser Meer',
+        wrong: ['fremdes Meer', 'kaltes Meer', 'leeres Meer'],
+        wissen: 'Mare = Meer, Nostrum = unser.',
+        map: 'mare' as RomMapHighlight,
+      },
+      {
+        q: 'Warum ist eine Phasen-Karte für dieses Thema nützlich?',
+        correct: 'Sie zeigt Wachstumsschritte vom Kern zur Mittelmeer-Vormacht',
+        wrong: ['Sie ersetzt jedes Datum tippen', 'Sie zeigt nur moderne Autobahnen', 'Sie gilt nur für das Mittelalter'],
+        wissen: 'Die Phasen-Karte macht Expansionsschritte sichtbar — ein Lernbild, keine Autobahnkarte.',
+        map: 'all' as RomMapHighlight,
+      },
+    ] as const
     const c = pick(rng, cases)
     return choicePickTask({
       question: c.q,
       choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
       correct: c.correct,
       solution: c.correct,
-      explanation: 'Stadtstaat → Land-/Seemacht → Weltmacht; Mare Nostrum.',
+      explanation: `Stadtstaat → Land-/Seemacht → Weltmacht; Mare Nostrum. ${ROM_MAP_ATTRIBUTION}`,
       instruction: 'Tippe die passende Aussage:',
-      fachwissen: fw(c.wissen),
+      visualContent: romanExpansionMapSvg(c.map),
+      fachwissen: fwMap(c.wissen),
     })
-  }
-  return textTask({
-    question: 'Lateinisch: Wie nannten die Römer das Mittelmeer? (zwei Wörter)',
-    accepted: ['mare nostrum', 'Mare Nostrum'],
-    solution: 'Mare Nostrum',
-    explanation: 'Mare Nostrum = „unser Meer“.',
-    fachwissen: fw(
-      'Mare Nostrum („unser Meer“) ist der lateinische Name der Römer für das beherrschte Mittelmeer. Zwei Wörter: Mare + Nostrum — Symbol der römischen Mittelmeer-Vormacht.',
-    ),
-  })
-}
+  },
+  (_rng) =>
+    textTask({
+      question: 'Lateinisch: Wie nannten die Römer das Mittelmeer? (zwei Wörter)',
+      accepted: ['mare nostrum', 'Mare Nostrum'],
+      solution: 'Mare Nostrum',
+      explanation: `Mare Nostrum = „unser Meer“. ${ROM_MAP_ATTRIBUTION}`,
+      visualContent: romanExpansionMapSvg('mare'),
+      fachwissen: fwMap(
+        'Mare Nostrum („unser Meer“) — lateinischer Name für das beherrschte Mittelmeer.',
+      ),
+    }),
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was gehört zur Expansion Roms? (mehrere möglich)',
+      choices: [
+        'Stadtstaat am Tiber',
+        'Kontrolle Italiens',
+        'Vormacht im Westmittelmeer',
+        'Mare Nostrum',
+        'Rom bleibt dauerhaft nur ein Dorf',
+      ],
+      correct: [
+        'Stadtstaat am Tiber',
+        'Kontrolle Italiens',
+        'Vormacht im Westmittelmeer',
+        'Mare Nostrum',
+      ],
+      solution: 'Stadtstaat → Italien → Westmittelmeer → Mare Nostrum.',
+      explanation: `Vier Expansionsstufen; „nur Dorf“ ist falsch. ${ROM_MAP_ATTRIBUTION}`,
+      instruction: 'Tippe alle zutreffenden Phasen:',
+      visualContent: romanExpansionMapSvg('all'),
+      fachwissen: fwMap(
+        'Expansion: Stadtstaat → Italien → Westmittelmeer → Mare Nostrum.',
+      ),
+    }),
+)
 
 // ─── Bürgerrecht: nur Rechte / Schutz ────────────────────────────────────────
 
-export const romBuergerrecht: Topic['generate'] = (rng) => {
-  const roll = rng()
-  if (roll < 0.4) {
-    return multiSelectTask({
+export const romBuergerrecht: Topic['generate'] = mixedVariants(
+  (_rng) =>
+    multiSelectTask({
       question: 'Was gehörte zum römischen Bürgerrecht? (mehrere möglich)',
       choices: [
         'Schutz vor Willkür / Folter',
@@ -729,12 +1141,11 @@ export const romBuergerrecht: Topic['generate'] = (rng) => {
       explanation: 'Bürgerrecht schützt und berechtigt; es macht niemanden zum König.',
       instruction: 'Tippe alle zutreffenden Rechte:',
       fachwissen: fw(
-        'Zum römischen Bürgerrecht gehörten u. a.: Schutz vor Willkür (z. B. Folter), Testamente, Geschäftsverträge und Wahlrecht in der Volksversammlung. Es macht niemanden zum König mit unbeschränkter Macht.',
+        'Bürgerrecht: Schutz vor Willkür, Testamente, Verträge, Wahlrecht — keine Königsmacht.',
       ),
-    })
-  }
-  if (roll < 0.7) {
-    return matchTermsTask(rng, {
+    }),
+  (rng) =>
+    matchTermsTask(rng, {
       question: 'Ordne: Welches Recht gehört wohin?',
       terms: ['Schutz', 'Verträge', 'Testament', 'Wahlrecht'],
       meanings: [
@@ -747,55 +1158,127 @@ export const romBuergerrecht: Topic['generate'] = (rng) => {
       solution: 'Schutz · Verträge · Testament · Wahlrecht',
       explanation: 'Bürgerrecht = Schutz + rechtliche und politische Teilhabe.',
       fachwissen: fw(
-        'Bürgerrecht bündelt Schutz und Teilhabe: Schutz vor Willkür, Recht auf Verträge und Testament sowie Wahlrecht in der Volksversammlung. Automatische Königsmacht für jeden Bürger gehört nicht dazu.',
+        'Schutz, Verträge, Testament, Wahlrecht — keine automatische Königsmacht.',
       ),
+    }),
+  (rng) => {
+    const cases = [
+      {
+        q: 'Das Bürgerrecht schützte vor …',
+        correct: 'Willkür (z. B. Folter / willkürliches Todesurteil)',
+        wrong: [
+          'jeder Steuer überhaupt weltweit',
+          'der Pflicht, jemals Verträge zu schließen',
+          'der Teilnahme an der Volksversammlung',
+        ],
+        wissen: 'Schutz vor Willkür (Folter, willkürliches Todesurteil) — nicht Steuerfreiheit weltweit.',
+      },
+      {
+        q: 'Dürften Bürger Geschäftsverträge schließen?',
+        correct: 'ja — Vertragsfähigkeit gehörte zum Status',
+        wrong: [
+          'nein — Verträge waren nur Königen erlaubt',
+          'nur wenn sie den Senat abschafften',
+          'nur außerhalb jeder Rechtsordnung',
+        ],
+        wissen: 'Bürger durften Geschäftsverträge abschließen — Kernbestandteil des Status.',
+      },
+      {
+        q: 'Hatten Bürger Wahlrecht in der Volksversammlung?',
+        correct: 'ja — mit Abstufungen je nach Zeit und Stand',
+        wrong: [
+          'nein, nie in der gesamten Republik',
+          'nur Sklaven hatten Wahlrecht',
+          'nur fremde Feldherren ohne Bürgerstatus',
+        ],
+        wissen: 'Bürger hatten Wahlrecht in der Volksversammlung (mit Abstufungen).',
+      },
+      {
+        q: 'Ein Testament verfassen …',
+        correct: 'gehörte zu den rechtlichen Möglichkeiten von Bürgern',
+        wrong: [
+          'war nur ohne jedes Eigentum möglich',
+          'war ausschließlich Sklaven vorbehalten',
+          'ersetzte das Bürgerrecht vollständig',
+        ],
+        wissen: 'Bürger konnten ihren letzten Willen in einem Testament festlegen.',
+      },
+      {
+        q: 'Was bedeutet „Schutz vor Willkür“ praktisch?',
+        correct: 'Verfahren und Rechte statt reiner Gewalt eines Beamten',
+        wrong: [
+          'Bürger dürfen Gesetze jederzeit ignorieren',
+          'Bürger müssen nie Steuern zahlen',
+          'Bürger werden automatisch Magistrate auf Lebenszeit',
+        ],
+        wissen: 'Rechtliche Grenzen und Verfahren — nicht Steuerfreiheit oder lebenslanges Amt.',
+      },
+      {
+        q: 'Wer hatte typischerweise kein volles römisches Bürgerrecht?',
+        correct: 'Sklaven (und oft auch Peregrine / Nichtbürger)',
+        wrong: [
+          'Konsuln während ihrer Amtszeit',
+          'Patrizier grundsätzlich',
+          'alle Bewohner Italiens automatisch von Anfang an',
+        ],
+        wissen: 'Sklaven hatten kein Bürgerrecht; viele Nichtbürger waren eingeschränkt.',
+      },
+      {
+        q: 'Warum war das Bürgerrecht attraktiv?',
+        correct: 'Es bot Schutz und rechtliche/politische Teilhabe',
+        wrong: [
+          'Es entzog jede Rechtsfähigkeit',
+          'Es machte automatisch zum König',
+          'Es verbot alle Verträge und Testamente',
+        ],
+        wissen: 'Attraktiv wegen Schutz und Teilhabe — nicht wegen Königswürde.',
+      },
+      {
+        q: 'Das Bürgerrecht macht aus einem Menschen …',
+        correct: 'einen Rechtsträger mit bestimmten Rechten und Pflichten',
+        wrong: [
+          'automatisch den Alleinherrscher Roms',
+          'automatisch einen Sklaven',
+          'jemand ohne jede Rechtsbindung',
+        ],
+        wissen: 'Bürgerstatus = Rechte und Pflichten — nicht Alleinherrschaft.',
+      },
+    ] as const
+    const c = pick(rng, cases)
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Bürgerrecht: Schutz, Verträge, Testament, Wahlrecht.',
+      instruction: 'Tippe die passende Antwort:',
+      fachwissen: fw(c.wissen),
     })
-  }
-  const cases = [
-    {
-      q: 'Das Bürgerrecht schützte vor …',
-      correct: 'Willkür (z. B. Folter / Todesurteil)',
-      wrong: [
-        'jeder Steuer überhaupt weltweit',
-        'Handelsverboten in Karthago allein',
-        'der Pflicht, Konsul zu werden',
+  },
+  (rng) =>
+    matchTermsTask(rng, {
+      question: 'Ordne: Wer hat typischerweise welches Verhältnis zum Bürgerrecht?',
+      terms: ['römischer Bürger', 'Sklave', 'Peregrinus', 'Freigelassener'],
+      meanings: [
+        'volle/teilweise Bürgerrechte je nach Zeit',
+        'kein Bürgerrecht; Eigentum eines Herrn',
+        'freier Nichtbürger mit eingeschränkten Rechten',
+        'ehemals Sklave; oft eingeschränktes Bürgerrecht',
       ],
-      wissen:
-        'Das Bürgerrecht schützte vor Willkür — etwa Folter oder willkürlichem Todesurteil. Es befreite nicht von allen Steuern weltweit und machte niemanden automatisch zum Konsul.',
-    },
-    {
-      q: 'Dürften Bürger Geschäftsverträge schließen?',
-      correct: 'ja',
-      wrong: ['nein', 'nur Patrizierinnen', 'nur in Karthago'],
-      wissen:
-        'Römische Bürger durften Geschäftsverträge abschließen. Das Vertragsrecht war ein Kernbestandteil des Bürgerstatus — nicht auf Patrizierinnen oder Karthago beschränkt.',
-    },
-    {
-      q: 'Hatten Bürger Wahlrecht in der Volksversammlung?',
-      correct: 'ja',
-      wrong: ['nein, nie', 'nur Sklaven', 'nur Hannibal'],
-      wissen:
-        'Bürger hatten Wahlrecht in der Volksversammlung (mit Abstufungen je nach Zeit und Stand). Sklaven und fremde Feldherren wie Hannibal hatten dieses Recht nicht.',
-    },
-  ] as const
-  const c = pick(rng, cases)
-  return choicePickTask({
-    question: c.q,
-    choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
-    correct: c.correct,
-    solution: c.correct,
-    explanation: 'Bürgerrecht: Schutz, Verträge, Testament, Wahlrecht.',
-    instruction: 'Tippe die passende Antwort:',
-    fachwissen: fw(c.wissen),
-  })
-}
+      distractor: 'Jeder Einwohner ist automatisch König',
+      solution: 'Bürger · Sklave · Peregrinus · Freigelassener',
+      explanation: 'Statusunterschiede erklären, warum Bürgerrecht so wichtig war.',
+      fachwissen: fw(
+        'Bürger mit Rechten; Sklaven ohne; Peregrine eingeschränkt; Freigelassene oft eingeschränkt.',
+      ),
+    }),
+)
 
 // ─── Prägende Wirkung für Europa (Legacy — kein Kriegs-/Ämter-Drill) ─────────
 
-export const romUeberblick: Topic['generate'] = (rng) => {
-  const roll = rng()
-  if (roll < 0.45) {
-    return matchTermsTask(rng, {
+export const romUeberblick: Topic['generate'] = mixedVariants(
+  (rng) =>
+    matchTermsTask(rng, {
       question: 'Was wirkt aus Rom bis heute in Europa nach?',
       terms: ['Latein', 'Recht', 'Straßen', 'Städte'],
       meanings: [
@@ -808,56 +1291,153 @@ export const romUeberblick: Topic['generate'] = (rng) => {
       solution: 'Latein · Recht · Straßen · Städte',
       explanation: 'Prägend: Sprache, Recht, Infrastruktur, Stadtidee — nicht nur Kriege.',
       fachwissen: fw(
-        'Prägende Nachwirkungen Roms in Europa: Latein (Sprachen und Fachwörter), Recht (Gesetz, Vertrag, Bürgerstatus), Straßen/Infrastruktur und städtisches Leben (Forum, öffentliche Bauten). Kriege allein erklären diese Langzeitwirkung nicht.',
+        'Nachwirkungen: Latein, Recht, Straßen/Infrastruktur, städtisches Leben. Kriege allein erklären das nicht.',
       ),
+    }),
+  (rng) =>
+    matchTermsTask(rng, {
+      question: 'Ordne weitere Nachwirkungen:',
+      terms: ['Kalender', 'Schriftkultur', 'Architektur', 'Verwaltung'],
+      meanings: [
+        'Monatsnamen und Jahresstruktur wirken nach',
+        'lateinische Schrift und Bildungstradition',
+        'Bögen, Kuppel, öffentliche Gebäude',
+        'Provinzen, Beamte, Steuern als Vorbild',
+      ],
+      distractor: 'Abschaffung jeder Stadt in Europa',
+      solution: 'Kalender · Schrift · Architektur · Verwaltung',
+      explanation: 'Weitere Spuren: Zeitrechnung, Schrift, Bauen, Verwaltung.',
+      fachwissen: fw(
+        'Kalender, lateinische Schriftkultur, Architektur und Verwaltungsmodelle wirken nach.',
+      ),
+    }),
+  (rng) => {
+    const cases = [
+      {
+        q: 'Warum gilt die römische Zivilisation als prägend für Europa?',
+        correct: 'u. a. Sprache, Recht, Städtebau und Infrastruktur wirkten lange nach',
+        wrong: ['weil Rom nie Krieg führte', 'weil nur Karthago Europa prägte', 'weil es keine Straßen gab'],
+        wissen: 'Prägend wegen Latein, Recht, Städtebau und Infrastruktur.',
+      },
+      {
+        q: 'Welche Idee verbindet man oft mit römischem Recht?',
+        correct: 'klare Regeln, Verträge und Rechte von Bürgern',
+        wrong: [
+          'nur Willkür eines Königs ohne Gesetz',
+          'nur Regeln ohne Eigentum und Verträge',
+          'Recht gilt nur für Gebäude, nie für Menschen',
+        ],
+        wissen: 'Römisches Recht: klare Regeln, Verträge, Bürgerrechte.',
+      },
+      {
+        q: 'Latein ist für Europa wichtig, weil …',
+        correct: 'viele Wörter und Fachbegriffe darauf zurückgehen',
+        wrong: [
+          'es nur in einer einzigen Stadt ohne Schrift existierte',
+          'es keine Fachsprache beeinflusste',
+          'es erst im 21. Jahrhundert erfunden wurde',
+        ],
+        wissen: 'Latein ist Wurzel vieler Sprachen und Fachbegriffe.',
+      },
+      {
+        q: 'Römische Straßen stehen sinnbildlich für …',
+        correct: 'Infrastruktur, Vernetzung und Verwaltung über weite Räume',
+        wrong: [
+          'die Ablehnung jeder Fernverbindung',
+          'nur den Bau von Schiffen ohne Landweg',
+          'das Ende städtischen Lebens',
+        ],
+        wissen: 'Straßen ermöglichten Militär, Handel und Verwaltung.',
+      },
+      {
+        q: 'Das Forum steht für …',
+        correct: 'öffentliches städtisches Zentrum (Markt, Politik, Begegnung)',
+        wrong: ['nur private Schlafzimmer', 'nur Wälder ohne Siedlung', 'nur eine einzelne Hütte ohne Öffentlichkeit'],
+        wissen: 'Das Forum war öffentlicher Mittelpunkt: Markt, Politik, Begegnung.',
+      },
+      {
+        q: 'Welche Sprachenfamilie prägte Latein besonders?',
+        correct: 'die romanischen Sprachen (u. a. Italienisch, Französisch, Spanisch)',
+        wrong: [
+          'nur Sprachen ohne jeden lateinischen Einfluss',
+          'ausschließlich Sprachen außerhalb Europas ohne Kontakt',
+          'keine Sprache nach der Antike',
+        ],
+        wissen: 'Aus dem Lateinischen entwickelten sich die romanischen Sprachen.',
+      },
+      {
+        q: 'Bürgerstatus und Vertragsideen wirken nach, weil …',
+        correct: 'Rechtspersonen, Regeln und Verbindlichkeit spätere Ordnungen beeinflussten',
+        wrong: [
+          'Rom alle Verträge verboten hatte',
+          'es kein Recht gab',
+          'nur Könige Verträge kannten und Bürger nie',
+        ],
+        wissen: 'Ideen von Rechtsperson, Vertrag und Bürgerstatus beeinflussten spätere Ordnungen.',
+      },
+      {
+        q: 'Öffentliche Bauten (Thermen, Theater, Aquädukte) zeigen …',
+        correct: 'städtische Infrastruktur und Gemeinschaftsleben',
+        wrong: ['dass Rom Städte ablehnte', 'dass es keine Technik gab', 'dass nur Zelte erlaubt waren'],
+        wissen: 'Thermen, Theater und Aquädukte = öffentliche Infrastruktur.',
+      },
+      {
+        q: '„Prägend für Europa“ meint vor allem …',
+        correct: 'langfristige kulturelle und institutionelle Nachwirkungen',
+        wrong: [
+          'dass Europa geografisch identisch mit Latium ist',
+          'dass es keine anderen Einflüsse gab',
+          'dass nur ein einziges Kriegsjahr zählt',
+        ],
+        wissen: 'Langfristige Spuren in Sprache, Recht, Stadt und Infrastruktur.',
+      },
+      {
+        q: 'Welche Aussage ist richtig?',
+        correct: 'Römische Einflüsse mischen sich mit anderen Traditionen in Europa',
+        wrong: [
+          'Nur Rom hat Europa jemals beeinflusst',
+          'Rom hinterließ keinerlei Spuren',
+          'Latein verschwand ohne jede Nachwirkung',
+        ],
+        wissen: 'Römische Einflüsse sind wichtig, aber Europa hat viele Wurzeln.',
+      },
+    ] as const
+    const c = pick(rng, cases)
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Nachwirkung: Latein, Recht, Städte, Straßen — „prägend für Europa“.',
+      instruction: 'Tippe die passende Aussage:',
+      fachwissen: fw(c.wissen),
     })
-  }
-  const cases = [
-    {
-      q: 'Warum gilt die römische Zivilisation als prägend für Europa?',
-      correct: 'u. a. Sprache, Recht, Städtebau und Infrastruktur wirkten lange nach',
-      wrong: [
-        'weil Rom nie Krieg führte',
-        'weil nur Karthago Europa prägte',
-        'weil es keine Straßen gab',
+  },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was wirkt aus der römischen Zivilisation nach? (mehrere möglich)',
+      choices: [
+        'Latein / romanische Sprachen',
+        'Rechtsideen (Vertrag, Bürger)',
+        'Straßen und Infrastruktur',
+        'städtisches Leben / Forum',
+        'Rom hat nie gebaut und nie geschrieben',
       ],
-      wissen:
-        'Rom gilt als prägend für Europa, weil Sprache (Latein), Recht, Städtebau und Infrastruktur lange nachwirkten — nicht weil Rom nie Krieg führte oder Karthago Europa formte.',
-    },
-    {
-      q: 'Welche Idee verbindet man oft mit römischem Recht?',
-      correct: 'klare Regeln, Verträge und Rechte von Bürgern',
-      wrong: [
-        'nur Willkür eines Königs ohne Gesetz',
-        'nur Regeln für Elefanten',
-        'kein Eigentum und keine Verträge',
+      correct: [
+        'Latein / romanische Sprachen',
+        'Rechtsideen (Vertrag, Bürger)',
+        'Straßen und Infrastruktur',
+        'städtisches Leben / Forum',
       ],
-      wissen:
-        'Römisches Recht steht für klare Regeln, Verträge und Rechte von Bürgern. Willkür ohne Gesetz oder „keine Verträge“ widersprechen diesem Bild.',
-    },
-    {
-      q: 'Latein ist für Europa wichtig, weil …',
-      correct: 'viele Wörter und Fachbegriffe darauf zurückgehen',
-      wrong: [
-        'es nur in Karthago gesprochen wurde',
-        'es keine Schrift hatte',
-        'es erst 2024 erfunden wurde',
-      ],
-      wissen:
-        'Latein ist die Wurzel vieler europäischer Sprachen und Fachbegriffe (Recht, Medizin, Wissenschaft). Es wurde in Rom und dem Reich gesprochen — nicht erst 2024 erfunden und nicht nur in Karthago.',
-    },
-  ] as const
-  const c = pick(rng, cases)
-  return choicePickTask({
-    question: c.q,
-    choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
-    correct: c.correct,
-    solution: c.correct,
-    explanation: 'Nachwirkung: Latein, Recht, Städte, Straßen — Lehrplan-Leitidee „prägend für Europa“.',
-    instruction: 'Tippe die passende Aussage:',
-    fachwissen: fw(c.wissen),
-  })
-}
+      solution: 'Sprache, Recht, Infrastruktur, Stadt — nicht „nie gebaut“.',
+      explanation: 'Vier Nachwirkungen; die Negativaussage ist falsch.',
+      instruction: 'Tippe alle zutreffenden:',
+      fachwissen: fw(
+        'Nachwirkungen: Latein, Recht, Straßen, städtisches Leben. Rom hat gebaut und geschrieben.',
+      ),
+    }),
+)
+
 
 export const GESCHICHTE_K6_GENERATORS: Record<string, Topic['generate']> = {
   'ge-k6-lb1-rom': romUeberblick,

@@ -93,7 +93,9 @@ describe('Geschichte K6 Römische Zivilisation', () => {
       if (task.interactive?.type !== 'dragDropSlots') continue
       const labels = task.interactive.props.slotLabels as string[] | undefined
       if (!labels?.length) continue
-      expect(labels).toEqual(['Republik', 'Senat', 'Patrizier', 'Plebejer'])
+      const okCore = labels[0] === 'Republik' && labels.includes('Senat')
+      const okExtra = labels[0] === 'res publica' && labels.includes('SPQR')
+      expect(okCore || okExtra, `seed ${seed}: ${labels.join(', ')}`).toBe(true)
       expect(task.question).not.toMatch(/Platz 1\s*=/)
       found += 1
     }
@@ -117,17 +119,42 @@ describe('Geschichte K6 Römische Zivilisation', () => {
     }
   })
 
-  it('hydrates K6 LB1 with playable Rom topics (still locked)', async () => {
+  it('hydrates K6 LB1 with playable released Rom topics', async () => {
     const grades = await hydratePackGrades(buildGymSachsenGeschichtePack())
     const k6 = grades.find((g) => g.id === 'geschichte-klasse-6')!
     const lb1 = k6.areas.find((a) => a.id === 'lb1')!
     expect(lb1.topics.length).toBeGreaterThanOrEqual(8)
-    expect(lb1.topics.every((t) => t.released === false)).toBe(true)
+    expect(lb1.topics.every((t) => t.released !== false)).toBe(true)
     expect(lb1.topics.every((t) => !t.outlineOnly)).toBe(true)
     expect(lb1.topics.some((t) => t.id === 'ge-k6-lb1-jahreszahlen')).toBe(true)
     const punisch = lb1.topics.find((t) => t.id === 'ge-k6-lb1-punische-kriege')!
     const task = punisch.generate(createRng(5))
     expect(task.check(task.sampleAnswer)).toBe(true)
+  })
+
+  it('chronologie sort labels have no ordinal war-number spoilers', () => {
+    for (let seed = 1; seed <= 60; seed++) {
+      const task = GESCHICHTE_K6_GENERATORS['ge-k6-lb1-chronologie']!(createRng(seed))
+      if (task.interactive?.type !== 'dragDropSort') continue
+      const items = task.interactive.props.items as Array<{ label: string }>
+      for (const item of items) {
+        expect(item.label, `seed ${seed}`).not.toMatch(/\b[123]\.\s*Punisch/i)
+        expect(item.label, `seed ${seed}`).not.toMatch(/Erster|Zweiter|Dritter Punischer/i)
+      }
+    }
+  })
+
+  it('weltreich serves map visuals for expansion tasks', () => {
+    let withMap = 0
+    for (let seed = 1; seed <= 40; seed++) {
+      const task = GESCHICHTE_K6_GENERATORS['ge-k6-lb1-weltreich']!(createRng(seed))
+      expect(task.check(task.sampleAnswer)).toBe(true)
+      if (task.visualContent?.includes('Mare Nostrum') || task.visualContent?.includes('Mittelmeer')) {
+        withMap += 1
+        expect(task.visualContent).toContain('<svg')
+      }
+    }
+    expect(withMap).toBeGreaterThan(5)
   })
 })
 

@@ -5,7 +5,7 @@ import {
 } from './pack'
 import { buildGeschichteGymOfficialGrades } from './geschichteGymTopics'
 
-/** Gymnasium Sachsen · Geschichte — Outline, Themen gesperrt (nur Entwickleransicht). */
+/** Gymnasium Sachsen · Geschichte — K6 LB1 freigegeben, Rest Outline/gesperrt. */
 export function buildGymSachsenGeschichtePack(): CurriculumPack {
   const official = buildGeschichteGymOfficialGrades()
   const topics = official.reduce(
@@ -18,8 +18,8 @@ export function buildGymSachsenGeschichtePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Geschichte',
-    version: '1.3.0',
-    changelog: `Klassen 5–12 (Gk/Lk) · ${topics} Themen. Ohne Netz lokale Fassung.`,
+    version: '1.4.0',
+    changelog: `Klassen 5–12 (Gk/Lk) · ${topics} Themen. K6 LB1 Rom freigegeben. Ohne Netz lokale Fassung.`,
     official,
     extras: [],
   }

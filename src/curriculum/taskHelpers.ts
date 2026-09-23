@@ -69,6 +69,7 @@ interface TextTaskInput {
   accepted: string[]
   solution: string
   explanation: string
+  visualContent?: string
   fachwissen?: Fachwissen
 }
 
@@ -80,6 +81,7 @@ export const textTask = (input: TextTaskInput): Task => {
     answerKind: 'text',
     solution: input.solution,
     explanation: input.explanation,
+    visualContent: input.visualContent,
     ...withFw(input.fachwissen),
     check: (answer: UserInput) =>
       answer.kind === 'value' &&
