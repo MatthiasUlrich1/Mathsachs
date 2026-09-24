@@ -1,5 +1,6 @@
 /**
  * Dense subtopic generators + NEW UX variants for Biologie K5–10.
+ * Topic-scoped: no cross-pollination between Überblick / Spezial / andere Gruppen.
  * Original German; themes mapped from Schlaukopf under Lehrplan 522 LBs.
  */
 import { bankGenerate } from './biologieBank'
@@ -28,79 +29,109 @@ const fw = (text: string) => ({
   url: 'https://de.wikipedia.org/wiki/Wirbeltiere',
 })
 
-function vertebrateIcons(rng: Rng) {
-  const sets = [
-    {
-      question: 'Welches Tier gehört zu den Fischen?',
-      prompt: 'Gruppe: Fische',
-      correctId: 'forelle',
-      options: [
-        { id: 'forelle', label: 'Forelle', icon: '🐟' },
-        { id: 'frosch', label: 'Frosch', icon: '🐸' },
-        { id: 'adler', label: 'Adler', icon: '🦅' },
-        { id: 'hirsch', label: 'Hirsch', icon: '🦌' },
-      ],
-      explanation: 'Fische leben im Wasser, atmen über Kiemen und haben Flossen.',
-      wissen: 'Zuordnung zu Wirbeltiergruppen anhand typischer Vertreter.',
-    },
-    {
-      question: 'Welches Tier gehört zu den Lurchen (Amphibien)?',
-      prompt: 'Gruppe: Lurche',
-      correctId: 'frosch',
-      options: [
-        { id: 'frosch', label: 'Frosch', icon: '🐸' },
-        { id: 'forelle', label: 'Forelle', icon: '🐟' },
-        { id: 'schlange', label: 'Schlange', icon: '🐍' },
-        { id: 'fledermaus', label: 'Fledermaus', icon: '🦇' },
-      ],
-      explanation: 'Lurche haben feuchte Haut und oft eine Metamorphose.',
-      wissen: 'Amphibien: Übergang Wasser–Land.',
-    },
-    {
-      question: 'Welches Tier gehört zu den Kriechtieren?',
-      prompt: 'Gruppe: Kriechtiere',
-      correctId: 'schlange',
-      options: [
-        { id: 'schlange', label: 'Schlange', icon: '🐍' },
-        { id: 'frosch', label: 'Frosch', icon: '🐸' },
-        { id: 'pinguin', label: 'Pinguin', icon: '🐧' },
-        { id: 'forelle', label: 'Forelle', icon: '🐟' },
-      ],
-      explanation: 'Kriechtiere haben eine trockene Hornschicht und Lungenatmung.',
-      wissen: 'Reptilien sind an das Landleben angepasst.',
-    },
-    {
-      question: 'Welches Tier gehört zu den Vögeln?',
-      prompt: 'Gruppe: Vögel',
-      correctId: 'adler',
-      options: [
-        { id: 'adler', label: 'Adler', icon: '🦅' },
-        { id: 'fledermaus', label: 'Fledermaus', icon: '🦇' },
-        { id: 'frosch', label: 'Frosch', icon: '🐸' },
-        { id: 'forelle', label: 'Forelle', icon: '🐟' },
-      ],
-      explanation: 'Vögel haben Federn — Fledermäuse sind Säugetiere.',
-      wissen: 'Federn sind das Leitmerkmal der Vögel.',
-    },
-    {
-      question: 'Welches Tier gehört zu den Säugetieren?',
-      prompt: 'Gruppe: Säugetiere',
-      correctId: 'hirsch',
-      options: [
-        { id: 'hirsch', label: 'Hirsch', icon: '🦌' },
-        { id: 'adler', label: 'Adler', icon: '🦅' },
-        { id: 'schlange', label: 'Schlange', icon: '🐍' },
-        { id: 'forelle', label: 'Forelle', icon: '🐟' },
-      ],
-      explanation: 'Säugetiere säugen ihre Jungen und sind gleichwarm.',
-      wissen: 'Fell/Haare und Säugen kennzeichnen Säuger.',
-    },
-  ]
-  const s = pick(rng, sets)
+type VertebrateGroup = 'fisch' | 'lurch' | 'kriechtier' | 'vogel' | 'saeuger'
+
+type IconSet = {
+  group: VertebrateGroup
+  question: string
+  prompt: string
+  correctId: string
+  options: Array<{ id: string; label: string; icon: string }>
+  explanation: string
+  wissen: string
+}
+
+/** Cross-group assignment — ONLY for Systematik / Zuordnung. */
+const VERTEBRATE_ASSIGN_SETS: IconSet[] = [
+  {
+    group: 'fisch',
+    question: 'Welches Tier gehört zu den Fischen?',
+    prompt: 'Gruppe: Fische',
+    correctId: 'forelle',
+    options: [
+      { id: 'forelle', label: 'Forelle', icon: '🐟' },
+      { id: 'frosch', label: 'Frosch', icon: '🐸' },
+      { id: 'adler', label: 'Adler', icon: '🦅' },
+      { id: 'hirsch', label: 'Hirsch', icon: '🦌' },
+    ],
+    explanation: 'Fische leben im Wasser, atmen über Kiemen und haben Flossen.',
+    wissen: 'Zuordnung zu Wirbeltiergruppen anhand typischer Vertreter.',
+  },
+  {
+    group: 'lurch',
+    question: 'Welches Tier gehört zu den Lurchen (Amphibien)?',
+    prompt: 'Gruppe: Lurche',
+    correctId: 'frosch',
+    options: [
+      { id: 'frosch', label: 'Frosch', icon: '🐸' },
+      { id: 'forelle', label: 'Forelle', icon: '🐟' },
+      { id: 'schlange', label: 'Schlange', icon: '🐍' },
+      { id: 'fledermaus', label: 'Fledermaus', icon: '🦇' },
+    ],
+    explanation: 'Lurche haben feuchte Haut und oft eine Metamorphose.',
+    wissen: 'Amphibien: Übergang Wasser–Land.',
+  },
+  {
+    group: 'kriechtier',
+    question: 'Welches Tier gehört zu den Kriechtieren?',
+    prompt: 'Gruppe: Kriechtiere',
+    correctId: 'schlange',
+    options: [
+      { id: 'schlange', label: 'Schlange', icon: '🐍' },
+      { id: 'frosch', label: 'Frosch', icon: '🐸' },
+      { id: 'pinguin', label: 'Pinguin', icon: '🐧' },
+      { id: 'forelle', label: 'Forelle', icon: '🐟' },
+    ],
+    explanation: 'Kriechtiere haben eine trockene Hornschicht und Lungenatmung.',
+    wissen: 'Reptilien sind an das Landleben angepasst.',
+  },
+  {
+    group: 'vogel',
+    question: 'Welches Tier gehört zu den Vögeln?',
+    prompt: 'Gruppe: Vögel',
+    correctId: 'adler',
+    options: [
+      { id: 'adler', label: 'Adler', icon: '🦅' },
+      { id: 'fledermaus', label: 'Fledermaus', icon: '🦇' },
+      { id: 'frosch', label: 'Frosch', icon: '🐸' },
+      { id: 'forelle', label: 'Forelle', icon: '🐟' },
+    ],
+    explanation: 'Vögel haben Federn — Fledermäuse sind Säugetiere.',
+    wissen: 'Federn sind das Leitmerkmal der Vögel.',
+  },
+  {
+    group: 'saeuger',
+    question: 'Welches Tier gehört zu den Säugetieren?',
+    prompt: 'Gruppe: Säugetiere',
+    correctId: 'hirsch',
+    options: [
+      { id: 'hirsch', label: 'Hirsch', icon: '🦌' },
+      { id: 'adler', label: 'Adler', icon: '🦅' },
+      { id: 'schlange', label: 'Schlange', icon: '🐍' },
+      { id: 'forelle', label: 'Forelle', icon: '🐟' },
+    ],
+    explanation: 'Säugetiere säugen ihre Jungen und sind gleichwarm.',
+    wissen: 'Fell/Haare und Säugen kennzeichnen Säuger.',
+  },
+]
+
+function iconsForGroup(group: VertebrateGroup) {
+  return (rng: Rng) => {
+    const s = pick(
+      rng,
+      VERTEBRATE_ASSIGN_SETS.filter((x) => x.group === group),
+    )
+    return iconBelongBioTask(rng, { ...s, fachwissen: fw(s.wissen) })
+  }
+}
+
+/** All groups — Systematik / Zuordnung only. */
+function vertebrateAssignIcons(rng: Rng) {
+  const s = pick(rng, VERTEBRATE_ASSIGN_SETS)
   return iconBelongBioTask(rng, { ...s, fachwissen: fw(s.wissen) })
 }
 
-function vertebrateCloze(rng: Rng) {
+function vertebrateCompareCloze(rng: Rng) {
   const items = [
     {
       q: 'Atmung der Wirbeltiergruppen',
@@ -125,16 +156,6 @@ function vertebrateCloze(rng: Rng) {
       explanation: 'Die Körperbedeckung ist an den Lebensraum angepasst.',
       wissen: 'Struktur–Funktion–Angepasstheit (Systematisierung).',
     },
-    {
-      q: 'Fortpflanzung Lurch',
-      template: 'Viele Lurche legen ___ ab; die Larve heißt oft ___; daraus wird das erwachsene Tier.',
-      accepted: [
-        ['Laich', 'Eier im Laich'],
-        ['Kaulquappe', 'Larve'],
-      ],
-      explanation: 'Metamorphose: Laich → Larve → erwachsenes Tier.',
-      wissen: 'Entwicklungszyklus der Amphibien.',
-    },
   ]
   const it = pick(rng, items)
   return clozeBlanksTask({
@@ -147,26 +168,7 @@ function vertebrateCloze(rng: Rng) {
   })
 }
 
-function vertebrateFlash(rng: Rng) {
-  const cards = [
-    { front: 'Atmungsorgan der Fische?', answer: 'Kiemen', alt: ['Kieme'] },
-    { front: 'Was kennzeichnet Vögel äußerlich?', answer: 'Federn', alt: ['Federkleid'] },
-    { front: 'Wie ernähren Säuger ihre Jungen?', answer: 'Säugen', alt: ['mit Milch', 'Milch'] },
-    { front: 'Entwicklungswechsel bei Frosch/Kröte?', answer: 'Metamorphose', alt: ['Verwandlung'] },
-    { front: 'Körpertemperatur der Kriechtiere?', answer: 'wechselwarm', alt: ['poikilotherm', 'kaltblütig'] },
-  ]
-  const c = pick(rng, cards)
-  return flashcardBioTask({
-    question: 'Karte umdrehen und Fachwort tippen.',
-    front: c.front,
-    accepted: [c.answer, ...c.alt],
-    solution: c.answer,
-    explanation: `Gesucht war: ${c.answer}.`,
-    fachwissen: fw('Kurzabfrage zentraler Fachbegriffe der Wirbeltiere.'),
-  })
-}
-
-function vertebratePairs(rng: Rng) {
+function vertebrateComparePairs(rng: Rng) {
   const pool = [
     { term: 'Kieme', meaning: 'Atemorgan im Wasser', wissen: 'Fische.' },
     { term: 'Feder', meaning: 'Flug und Wärmeschutz bei Vögeln', wissen: 'Vögel.' },
@@ -187,47 +189,177 @@ function vertebratePairs(rng: Rng) {
   })
 }
 
-const newUxBundle = mixedVariants(
-  vertebrateIcons,
-  vertebrateCloze,
-  vertebrateFlash,
-  vertebratePairs,
-  vertebrateIcons,
-  vertebrateCloze,
-)
-
-function blend(base: Topic['generate'] | undefined): Topic['generate'] {
-  if (!base) return newUxBundle
-  return mixedVariants(base, newUxBundle, newUxBundle)
+const GROUP_FLASH: Record<
+  VertebrateGroup,
+  Array<{ front: string; answer: string; alt: string[]; wrong: string[] }>
+> = {
+  fisch: [
+    {
+      front: 'Atmungsorgan der Fische?',
+      answer: 'Kiemen',
+      alt: ['Kieme'],
+      wrong: ['Lungen', 'Federn', 'Fell'],
+    },
+    {
+      front: 'Womit steuern Fische beim Schwimmen?',
+      answer: 'Flossen',
+      alt: ['Flosse'],
+      wrong: ['Flügel', 'Beine', 'Hörner'],
+    },
+  ],
+  lurch: [
+    {
+      front: 'Entwicklungswechsel bei Frosch/Kröte?',
+      answer: 'Metamorphose',
+      alt: ['Verwandlung'],
+      wrong: ['Photosynthese', 'Winterschlaf', 'Vogelzug'],
+    },
+    {
+      front: 'Typische Haut der Lurche?',
+      answer: 'feuchte Haut',
+      alt: ['Feuchthaut', 'drüsenreiche Haut'],
+      wrong: ['Hornschicht', 'Federn', 'Fell'],
+    },
+  ],
+  kriechtier: [
+    {
+      front: 'Körpertemperatur der Kriechtiere?',
+      answer: 'wechselwarm',
+      alt: ['poikilotherm', 'kaltblütig'],
+      wrong: ['gleichwarm', 'homoiotherm', 'warmblütig'],
+    },
+    {
+      front: 'Körperbedeckung der Kriechtiere?',
+      answer: 'Hornschicht',
+      alt: ['Hornschuppen', 'Schuppen'],
+      wrong: ['Federn', 'Fell', 'Schleimhaut'],
+    },
+  ],
+  vogel: [
+    {
+      front: 'Was kennzeichnet Vögel äußerlich?',
+      answer: 'Federn',
+      alt: ['Federkleid'],
+      wrong: ['Fell', 'Schuppenpanzer', 'Chitin'],
+    },
+    {
+      front: 'Sind Vögel gleichwarm oder wechselwarm?',
+      answer: 'gleichwarm',
+      alt: ['homoiotherm', 'warmblütig'],
+      wrong: ['wechselwarm', 'poikilotherm', 'kaltblütig'],
+    },
+  ],
+  saeuger: [
+    {
+      front: 'Wie ernähren Säuger ihre Jungen?',
+      answer: 'Säugen',
+      alt: ['mit Milch', 'Milch'],
+      wrong: ['nur mit Laich', 'Photosynthese', 'Kiemenatmung'],
+    },
+    {
+      front: 'Typische Körperbedeckung der Säuger?',
+      answer: 'Fell',
+      alt: ['Haare', 'Fell/Haare'],
+      wrong: ['Federn', 'Schuppenpanzer', 'Chitin'],
+    },
+  ],
 }
 
-/** Enhanced K5 registry: legacy generators + NEW UX + expanded subtopics. */
+function groupFlash(group: VertebrateGroup) {
+  return (rng: Rng) => {
+    const c = pick(rng, GROUP_FLASH[group])
+    return flashcardBioTask({
+      question: 'Karteikarte: lesen → umdrehen → antworten.',
+      front: c.front,
+      accepted: [c.answer, ...c.alt],
+      solution: c.answer,
+      explanation: `Gesucht war: ${c.answer}.`,
+      fachwissen: fw(`Kurzabfrage zu ${group}.`),
+      choices: shuffle(rng, [c.answer, ...c.wrong.slice(0, 3)]),
+    })
+  }
+}
+
+/** Blend base with optional same-topic UX only (never foreign groups). */
+function withTopicUx(
+  base: Topic['generate'] | undefined,
+  ...extras: Array<(rng: Rng) => ReturnType<Topic['generate']>>
+): Topic['generate'] {
+  if (!base && extras.length === 0) {
+    throw new Error('withTopicUx: need base or extras')
+  }
+  if (!base) return mixedVariants(...extras)
+  if (extras.length === 0) return base
+  return mixedVariants(base, ...extras)
+}
+
+/** Systematik / Zuordnung: Vergleich über Gruppen hinweg ist hier absichtlich. */
+const vertebrateCompareUx = mixedVariants(
+  vertebrateAssignIcons,
+  vertebrateCompareCloze,
+  vertebrateComparePairs,
+  vertebrateAssignIcons,
+)
+
+/** Enhanced K5 registry: topic-scoped — no foreign-group bleed. */
 export const BIOLOGIE_K5_EXPANDED: Record<string, Topic['generate']> = {
-  'bi-k5-lb1-merkmale': blend(BASE_K5['bi-k5-lb1-merkmale']),
-  'bi-k5-lb1-kennzeichen': blend(BASE_K5['bi-k5-lb1-merkmale']),
-  'bi-k5-lb2-fische': blend(BASE_K5['bi-k5-lb2-fische']),
-  'bi-k5-lb2-fische-merkmale': blend(BASE_K5['bi-k5-lb2-fische']),
-  'bi-k5-lb2-fische-lebensraum': blend(BASE_K5['bi-k5-lb2-fische']),
-  'bi-k5-lb2-fische-schutz': blend(BASE_K5['bi-k5-lb2-fische']),
-  'bi-k5-lb3-lurche': blend(BASE_K5['bi-k5-lb3-lurche']),
-  'bi-k5-lb3-lurche-merkmale': blend(BASE_K5['bi-k5-lb3-lurche']),
-  'bi-k5-lb3-lurche-meta': blend(BASE_K5['bi-k5-lb3-lurche']),
-  'bi-k5-lb3-lurche-schutz': blend(BASE_K5['bi-k5-lb3-lurche']),
-  'bi-k5-lb4-kriechtiere': blend(BASE_K5['bi-k5-lb4-kriechtiere']),
-  'bi-k5-lb4-kriechtiere-merkmale': blend(BASE_K5['bi-k5-lb4-kriechtiere']),
-  'bi-k5-lb4-kriechtiere-arten': blend(BASE_K5['bi-k5-lb4-kriechtiere']),
-  'bi-k5-lb5-voegel': blend(BASE_K5['bi-k5-lb5-voegel']),
-  'bi-k5-lb5-voegel-flug': blend(BASE_K5['bi-k5-lb5-voegel']),
-  'bi-k5-lb5-voegel-fortpflanzung': blend(BASE_K5['bi-k5-lb5-voegel']),
-  'bi-k5-lb6-saeugetiere': blend(BASE_K5['bi-k5-lb6-saeugetiere']),
-  'bi-k5-lb6-saeuger-merkmale': blend(BASE_K5['bi-k5-lb6-saeugetiere']),
-  'bi-k5-lb6-saeuger-angepasst': blend(BASE_K5['bi-k5-lb6-saeugetiere']),
-  'bi-k5-lb6-saeuger-schutz': blend(BASE_K5['bi-k5-lb6-saeugetiere']),
-  'bi-k5-lb7-systematik': blend(BASE_K5['bi-k5-lb7-systematik']),
-  'bi-k5-lb7-zuordnung': mixedVariants(vertebrateIcons, vertebratePairs, vertebrateCloze),
-  'bi-k5-lbw-winter': blend(BASE_K5['bi-k5-lbw-winter']),
-  'bi-k5-lbw-saurier': blend(BASE_K5['bi-k5-lbw-saurier']),
-  'bi-k5-lbw-haltung': blend(BASE_K5['bi-k5-lbw-haltung']),
+  'bi-k5-lb1-merkmale': BASE_K5['bi-k5-lb1-merkmale']!,
+  'bi-k5-lb1-kennzeichen': BASE_K5['bi-k5-lb1-kennzeichen']!,
+  'bi-k5-lb2-fische': withTopicUx(
+    BASE_K5['bi-k5-lb2-fische'],
+    iconsForGroup('fisch'),
+    groupFlash('fisch'),
+  ),
+  'bi-k5-lb2-fische-merkmale': withTopicUx(
+    BASE_K5['bi-k5-lb2-fische-merkmale'],
+    groupFlash('fisch'),
+  ),
+  'bi-k5-lb2-fische-lebensraum': BASE_K5['bi-k5-lb2-fische-lebensraum']!,
+  'bi-k5-lb2-fische-schutz': BASE_K5['bi-k5-lb2-fische-schutz']!,
+  'bi-k5-lb3-lurche': withTopicUx(
+    BASE_K5['bi-k5-lb3-lurche'],
+    iconsForGroup('lurch'),
+    groupFlash('lurch'),
+  ),
+  'bi-k5-lb3-lurche-merkmale': withTopicUx(
+    BASE_K5['bi-k5-lb3-lurche-merkmale'],
+    groupFlash('lurch'),
+  ),
+  'bi-k5-lb3-lurche-meta': BASE_K5['bi-k5-lb3-lurche-meta']!,
+  'bi-k5-lb3-lurche-schutz': BASE_K5['bi-k5-lb3-lurche-schutz']!,
+  'bi-k5-lb4-kriechtiere': withTopicUx(
+    BASE_K5['bi-k5-lb4-kriechtiere'],
+    iconsForGroup('kriechtier'),
+    groupFlash('kriechtier'),
+  ),
+  'bi-k5-lb4-kriechtiere-merkmale': withTopicUx(
+    BASE_K5['bi-k5-lb4-kriechtiere-merkmale'],
+    groupFlash('kriechtier'),
+  ),
+  'bi-k5-lb4-kriechtiere-arten': BASE_K5['bi-k5-lb4-kriechtiere-arten']!,
+  'bi-k5-lb5-voegel': withTopicUx(
+    BASE_K5['bi-k5-lb5-voegel'],
+    iconsForGroup('vogel'),
+    groupFlash('vogel'),
+  ),
+  'bi-k5-lb5-voegel-flug': withTopicUx(BASE_K5['bi-k5-lb5-voegel-flug'], groupFlash('vogel')),
+  'bi-k5-lb5-voegel-fortpflanzung': BASE_K5['bi-k5-lb5-voegel-fortpflanzung']!,
+  'bi-k5-lb6-saeugetiere': withTopicUx(
+    BASE_K5['bi-k5-lb6-saeugetiere'],
+    iconsForGroup('saeuger'),
+    groupFlash('saeuger'),
+  ),
+  'bi-k5-lb6-saeuger-merkmale': withTopicUx(
+    BASE_K5['bi-k5-lb6-saeuger-merkmale'],
+    groupFlash('saeuger'),
+  ),
+  'bi-k5-lb6-saeuger-angepasst': BASE_K5['bi-k5-lb6-saeuger-angepasst']!,
+  'bi-k5-lb6-saeuger-schutz': BASE_K5['bi-k5-lb6-saeuger-schutz']!,
+  'bi-k5-lb7-systematik': withTopicUx(BASE_K5['bi-k5-lb7-systematik'], vertebrateCompareUx),
+  'bi-k5-lb7-zuordnung': vertebrateCompareUx,
+  'bi-k5-lbw-winter': BASE_K5['bi-k5-lbw-winter']!,
+  'bi-k5-lbw-saurier': BASE_K5['bi-k5-lbw-saurier']!,
+  'bi-k5-lbw-haltung': BASE_K5['bi-k5-lbw-haltung']!,
 }
 
 const cellIcons: NonNullable<BioBank['icons']> = [
@@ -246,34 +378,18 @@ const cellIcons: NonNullable<BioBank['icons']> = [
   },
 ]
 
-const insectIcons: NonNullable<BioBank['icons']> = [
-  {
-    question: 'Welches Tier ist ein Insekt (6 Beine)?',
-    prompt: 'Wirbellose',
-    options: [
-      { id: 'biene', label: 'Biene', icon: '🐝' },
-      { id: 'spinne', label: 'Kreuzspinne', icon: '🕷️' },
-      { id: 'regenwurm', label: 'Regenwurm', icon: '🪱' },
-      { id: 'schnecke', label: 'Schnecke', icon: '🐌' },
-    ],
-    correctId: 'biene',
-    explanation: 'Insekten haben sechs Beine; Spinnen acht.',
-    wissen: 'Gliederfüßer unterscheiden.',
-  },
-]
-
-/** Patch K6+ banks: export expanded maps by aliasing + icons. */
+/**
+ * Alias / expand without foreign UX bundles.
+ * Optional `extraBySrc` adds only topic-local extras keyed by source id.
+ */
 export function expandFromBase(
   base: Record<string, Topic['generate']>,
   aliases: Record<string, string>,
 ): Record<string, Topic['generate']> {
-  const out: Record<string, Topic['generate']> = {}
-  for (const [id, gen] of Object.entries(base)) {
-    out[id] = mixedVariants(gen, newUxBundle)
-  }
+  const out: Record<string, Topic['generate']> = { ...base }
   for (const [id, src] of Object.entries(aliases)) {
     const g = out[src] ?? base[src]
-    if (g) out[id] = mixedVariants(g, newUxBundle)
+    if (g) out[id] = g
   }
   return out
 }
@@ -282,15 +398,14 @@ export const BIOLOGIE_K6_EXPANDED = expandFromBase(BASE_K6, {
   'bi-k6-lb1-bluete': 'bi-k6-lb1-samenpflanzen',
   'bi-k6-lb1-baeume': 'bi-k6-lb1-samenpflanzen',
   'bi-k6-lb1-organe': 'bi-k6-lb1-samenpflanzen',
-  'bi-k6-lb2-insekten': 'bi-k6-lb2-wirbellose',
-  'bi-k6-lb2-spinnen': 'bi-k6-lb2-wirbellose',
+  // insekten / spinnen / wirbellose have dedicated banks in BASE_K6 — do not alias together
   'bi-k6-lb4-nahrung': 'bi-k6-lb4-wald',
   'bi-k6-lb5-mikroskop': 'bi-k6-lb5-zellen',
 })
 
-// Enrich K6 cells/insects with dedicated icon banks blended in
-BIOLOGIE_K6_EXPANDED['bi-k6-lb5-zellen'] = mixedVariants(
-  BASE_K6['bi-k6-lb5-zellen']!,
+// Cells: cell icons only — never vertebrate assign sets
+BIOLOGIE_K6_EXPANDED['bi-k6-lb5-zellen'] = withTopicUx(
+  BASE_K6['bi-k6-lb5-zellen'],
   bankGenerate({
     quelle: 'Wikipedia: Zelle (Biologie)',
     url: 'https://de.wikipedia.org/wiki/Zelle_(Biologie)',
@@ -301,7 +416,8 @@ BIOLOGIE_K6_EXPANDED['bi-k6-lb5-zellen'] = mixedVariants(
         answer: 'Pflanzenzelle',
         explanation: 'Cloze zu Organellen.',
         wissen: 'Organellen.',
-        cloze: 'Die ___ enthält DNA; ___ betreiben Fotosynthese; die ___ gibt der Pflanzenzelle Stabilität.',
+        cloze:
+          'Die ___ enthält DNA; ___ betreiben Fotosynthese; die ___ gibt der Pflanzenzelle Stabilität.',
         clozeAccepted: [
           ['Zellkern', 'Kern'],
           ['Chloroplasten', 'Chloroplast'],
@@ -310,25 +426,6 @@ BIOLOGIE_K6_EXPANDED['bi-k6-lb5-zellen'] = mixedVariants(
       },
     ],
   }),
-  newUxBundle,
-)
-
-BIOLOGIE_K6_EXPANDED['bi-k6-lb2-insekten'] = mixedVariants(
-  BASE_K6['bi-k6-lb2-wirbellose']!,
-  bankGenerate({
-    quelle: 'Wikipedia: Insekten',
-    url: 'https://de.wikipedia.org/wiki/Insekten',
-    icons: insectIcons,
-    sorts: [
-      {
-        question: 'Ordne die vollständige Metamorphose.',
-        labels: ['Ei', 'Larve', 'Puppe', 'Imago'],
-        explanation: 'Klassische Reihenfolge.',
-        wissen: 'Insektenentwicklung.',
-      },
-    ],
-  }),
-  newUxBundle,
 )
 
 export const BIOLOGIE_K7_EXPANDED = expandFromBase(BASE_K7, {

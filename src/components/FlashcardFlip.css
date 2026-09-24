@@ -7,10 +7,33 @@
   max-width: 28rem;
 }
 
+.flashcard-flip__steps {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--text-muted, #94a3b8);
+}
+
+.flashcard-flip__steps li {
+  margin: 0.15rem 0;
+}
+
+.flashcard-flip__steps li strong {
+  color: var(--text, #e2e8f0);
+  font-weight: 600;
+}
+
 .flashcard-flip__instruction {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--text-muted, #4a5568);
+  color: var(--text-muted, #94a3b8);
+}
+
+.flashcard-flip__hint {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted, #94a3b8);
 }
 
 .flashcard-flip__card {
@@ -18,14 +41,11 @@
   padding: 1.25rem 1rem;
   border: 1.5px solid var(--border, #cbd5e1);
   border-radius: 14px;
-  background: linear-gradient(
-    145deg,
-    color-mix(in srgb, var(--accent, #0d9488) 10%, #fff) 0%,
-    #fff 55%
-  );
+  background: #fff;
   cursor: pointer;
   font: inherit;
-  color: inherit;
+  /* Light card: always dark text */
+  color: #0f172a;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,34 +56,100 @@
 }
 
 .flashcard-flip__card:hover:not(:disabled) {
-  border-color: var(--accent, #0d9488);
+  border-color: var(--accent, #6366f1);
   transform: translateY(-1px);
 }
 
 .flashcard-flip__card--flipped {
   cursor: default;
-  background: color-mix(in srgb, var(--accent, #0d9488) 8%, #f8fafc);
+  background: #f8fafc;
+  color: #0f172a;
 }
 
 .flashcard-flip__face {
   font-size: 1.15rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.4;
+  color: #0f172a;
 }
 
 .flashcard-flip__tap {
   font-size: 0.8rem;
-  color: var(--text-muted, #64748b);
+  font-weight: 600;
+  color: #475569;
+}
+
+.flashcard-flip__answer-area {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.flashcard-flip__answer-label {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text, #e2e8f0);
+}
+
+.flashcard-flip__check-hint {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted, #94a3b8);
+}
+
+.flashcard-flip__choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.flashcard-flip__choice {
+  flex: 1 1 7rem;
+  padding: 0.65rem 0.75rem;
+  border: 1.5px solid var(--border, #cbd5e1);
+  border-radius: 10px;
+  background: #fff;
+  color: #0f172a;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.flashcard-flip__choice:hover:not(:disabled) {
+  border-color: var(--accent, #6366f1);
+}
+
+.flashcard-flip__choice--selected {
+  border-color: var(--accent, #6366f1);
+  background: color-mix(in srgb, var(--accent, #6366f1) 14%, white);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent, #6366f1) 30%, transparent);
+  color: #0f172a;
+}
+
+.flashcard-flip__choice:disabled {
+  cursor: default;
+  opacity: 0.9;
 }
 
 .flashcard-flip__input {
-  padding: 0.55rem 0.7rem;
+  padding: 0.65rem 0.75rem;
   border: 1.5px solid var(--border, #cbd5e1);
   border-radius: 8px;
   font: inherit;
+  font-weight: 600;
+  background: #fff;
+  color: #0f172a;
+}
+
+.flashcard-flip__input::placeholder {
+  color: #64748b;
+  font-weight: 500;
 }
 
 .flashcard-flip__input:focus {
-  outline: 2px solid color-mix(in srgb, var(--accent, #0d9488) 45%, transparent);
-  border-color: var(--accent, #0d9488);
+  outline: 2px solid color-mix(in srgb, var(--accent, #6366f1) 45%, transparent);
+  border-color: var(--accent, #6366f1);
 }

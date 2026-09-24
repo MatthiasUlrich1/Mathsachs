@@ -109,47 +109,36 @@ const samenpflanzen: BioBank = {
   ],
 }
 
-const wirbellose: BioBank = {
+/** Überblick Wirbellose: nur übergeordnete Gruppen / Abgrenzung — keine Spezialdetails. */
+const wirbelloseOverview: BioBank = {
   ...Q.wirbellose,
   facts: [
     {
-      prompt: 'Was unterscheidet Insekten äußerlich typischerweise?',
-      answer: 'Sechs Beine und oft ein Chitinpanzer',
-      wrong: ['Acht Beine und Federn', 'Wirbelsäule und Fell', 'Kiemen und Flossen'],
-      explanation: 'Insekten: drei Körperabschnitte, sechs Beine, äußeres Skelett aus Chitin.',
-      wissen: 'Wirbellose haben keine Wirbelsäule — Insekten sind die artenreichste Gruppe.',
-      gap: 'Insekten haben typischerweise ___ Beine.',
-      gapAccepted: ['sechs', '6', 'Sechs'],
+      prompt: 'Was bedeutet „wirbellos“?',
+      answer: 'Ohne Wirbelsäule',
+      wrong: ['Mit Federkleid', 'Immer mit sechs Beinen', 'Nur im Meer lebend'],
+      explanation: 'Wirbellose Tiere haben keine Wirbelsäule — z. B. Insekten, Spinnen, Würmer, Weichtiere.',
+      wissen: 'Überbegriff für viele Stämme ohne innere Wirbelsäule.',
+      gap: 'Wirbellose Tiere haben keine ___.',
+      gapAccepted: ['Wirbelsäule', 'Wirbelsaeule'],
     },
     {
-      prompt: 'Wie viele Beine haben Spinnen typischerweise?',
-      answer: 'Acht',
-      wrong: ['Sechs', 'Vier', 'Zehn'],
-      explanation: 'Spinnentiere haben acht Beine; Insekten sechs.',
-      wissen: 'Spinnen ≠ Insekten — wichtiges Unterscheidungsmerkmal.',
-      gap: 'Spinnen haben ___ Beine.',
-      gapAccepted: ['acht', '8', 'Acht'],
-    },
-    {
-      prompt: 'Was ist eine vollständige Metamorphose bei Insekten?',
-      answer: 'Ei → Larve → Puppe → Imago',
-      wrong: ['Nur Ei → erwachsenes Tier', 'Samen → Keimling → Baum', 'Kaulquappe → Frosch ohne Puppe'],
-      explanation: 'Bei Schmetterlingen u. a.: Larve, Puppe, dann fertiges Insekt (Imago).',
-      wissen: 'Entwicklungstypen der Insekten sind ein zentrales Lernziel.',
-    },
-    {
-      prompt: 'Wozu dient das Spinnennetz vor allem?',
-      answer: 'Beutefang (und Orientierung)',
-      wrong: ['Fotosynthese', 'Knochenbildung', 'Säugen der Jungen'],
-      explanation: 'Viele Spinnen fangen Beute mit Netzen aus Spinnenseide.',
-      wissen: 'Angepasstheit der Spinnen an räuberische Lebensweise.',
+      prompt: 'Welche Aussage zur Vielfalt wirbelloser Tiere stimmt?',
+      answer: 'Dazu gehören u. a. Insekten, Spinnen, Würmer und Weichtiere',
+      wrong: [
+        'Nur Fische und Vögel',
+        'Nur Säugetiere',
+        'Nur Tiere mit Wirbelsäule',
+      ],
+      explanation: 'Wirbellose umfassen viele Gruppen mit unterschiedlichen Lebensräumen.',
+      wissen: 'Überblick: Gruppennamen und Lebensräume, nicht Spezialbau.',
     },
   ],
   pairs: [
-    { term: 'Insekt', meaning: 'Sechs Beine, oft Flügel, Chitinpanzer', wissen: 'Insekten sind Gliederfüßer mit drei Beinpaaren.' },
-    { term: 'Spinne', meaning: 'Acht Beine, keine Fühler wie Insekten', wissen: 'Spinnentiere gehören zu den Kieferklauenträgern.' },
-    { term: 'Regenwurm', meaning: 'Ringelwurm, lockert den Boden', wissen: 'Regenwürmer sind wichtig für Bodenfruchtbarkeit.' },
-    { term: 'Schnecke', meaning: 'Weichtier mit Fuß und oft Gehäuse', wissen: 'Weichtiere haben keinen Chitinpanzer wie Insekten.' },
+    { term: 'Wirbelloses Tier', meaning: 'Ohne Wirbelsäule', wissen: 'z. B. Insekten, Spinnen, Würmer, Weichtiere.' },
+    { term: 'Insekt', meaning: 'Gliederfüßer mit typisch sechs Beinen', wissen: 'Überblick: Insekten als artenreiche Gruppe.' },
+    { term: 'Spinne', meaning: 'Gliederfüßer mit acht Beinen', wissen: 'Überblick: Spinnen ≠ Insekten.' },
+    { term: 'Lebensraum', meaning: 'Ort, an den Tiere angepasst sind', wissen: 'Wirbellose besiedeln Land, Wasser und Luft.' },
   ],
   trueFalse: [
     {
@@ -159,10 +148,78 @@ const wirbellose: BioBank = {
       wissen: '„Wirbellos“ fasst viele Stämme zusammen.',
     },
     {
+      statement: 'Wirbellose haben keine Wirbelsäule.',
+      correct: true,
+      explanation: 'Das ist das namensgebende Merkmal.',
+      wissen: 'Abgrenzung zu Wirbeltieren.',
+    },
+  ],
+  multis: [
+    {
+      question: 'Welche Tiere sind wirbellos?',
+      correct: ['Honigbiene', 'Kreuzspinne', 'Regenwurm'],
+      wrong: ['Forelle', 'Amsel'],
+      explanation: 'Fische und Vögel sind Wirbeltiere.',
+      wissen: 'Überblick: Zuordnung wirbellos vs. Wirbeltier.',
+    },
+  ],
+  icons: [
+    {
+      question: 'Welches Tier ist wirbellos?',
+      prompt: 'Wirbellose – Überblick',
+      options: [
+        { id: 'biene', label: 'Biene', icon: '🐝' },
+        { id: 'forelle', label: 'Forelle', icon: '🐟' },
+        { id: 'adler', label: 'Adler', icon: '🦅' },
+        { id: 'hirsch', label: 'Hirsch', icon: '🦌' },
+      ],
+      correctId: 'biene',
+      explanation: 'Die Biene hat keine Wirbelsäule — Fische, Vögel und Säuger sind Wirbeltiere.',
+      wissen: 'Überblick: wirbellos vs. Wirbeltier.',
+    },
+  ],
+}
+
+/** Insekten – Bau und Metamorphose (Spezialthema). */
+const insekten: BioBank = {
+  quelle: 'Wikipedia: Insekten',
+  url: 'https://de.wikipedia.org/wiki/Insekten',
+  facts: [
+    {
+      prompt: 'Was unterscheidet Insekten äußerlich typischerweise?',
+      answer: 'Sechs Beine und oft ein Chitinpanzer',
+      wrong: ['Acht Beine und Federn', 'Wirbelsäule und Fell', 'Kiemen und Flossen'],
+      explanation: 'Insekten: drei Körperabschnitte, sechs Beine, äußeres Skelett aus Chitin.',
+      wissen: 'Insekten sind die artenreichste Wirbellosen-Gruppe.',
+      gap: 'Insekten haben typischerweise ___ Beine.',
+      gapAccepted: ['sechs', '6', 'Sechs'],
+    },
+    {
+      prompt: 'Was ist eine vollständige Metamorphose bei Insekten?',
+      answer: 'Ei → Larve → Puppe → Imago',
+      wrong: ['Nur Ei → erwachsenes Tier', 'Samen → Keimling → Baum', 'Kaulquappe → Frosch ohne Puppe'],
+      explanation: 'Bei Schmetterlingen u. a.: Larve, Puppe, dann fertiges Insekt (Imago).',
+      wissen: 'Entwicklungstypen der Insekten sind ein zentrales Lernziel.',
+    },
+  ],
+  pairs: [
+    { term: 'Chitinpanzer', meaning: 'Äußeres Skelett vieler Gliederfüßer', wissen: 'Schutz und Ansatz für Muskeln.' },
+    { term: 'Imago', meaning: 'Erwachsenes Insekt nach der Metamorphose', wissen: 'Endstadium der Entwicklung.' },
+    { term: 'Puppe', meaning: 'Ruhestadium mit Umbau', wissen: 'Bei vollständiger Verwandlung.' },
+    { term: 'Fühler', meaning: 'Sinnesorgane am Kopf vieler Insekten', wissen: 'Riechen und Tasten.' },
+  ],
+  trueFalse: [
+    {
       statement: 'Viele Insekten durchlaufen eine Metamorphose.',
       correct: true,
       explanation: 'Vollständige oder unvollständige Verwandlung ist weit verbreitet.',
       wissen: 'Metamorphose = Gestaltwechsel in der Entwicklung.',
+    },
+    {
+      statement: 'Insekten haben typischerweise acht Beine.',
+      correct: false,
+      explanation: 'Insekten: sechs Beine; Spinnen: acht.',
+      wissen: 'Unterscheidung Insekt / Spinne.',
     },
   ],
   sorts: [
@@ -173,13 +230,78 @@ const wirbellose: BioBank = {
       wissen: 'Puppe = Ruhestadium mit Umbau.',
     },
   ],
-  multis: [
+  icons: [
     {
-      question: 'Welche Tiere sind wirbellos?',
-      correct: ['Honigbiene', 'Kreuzspinne', 'Regenwurm'],
-      wrong: ['Forelle', 'Amsel'],
-      explanation: 'Fische und Vögel sind Wirbeltiere.',
-      wissen: 'Systematischer Vergleich Wirbellose ↔ Wirbeltiere (LB3).',
+      question: 'Welches Tier ist ein Insekt (6 Beine)?',
+      prompt: 'Insekten',
+      options: [
+        { id: 'biene', label: 'Biene', icon: '🐝' },
+        { id: 'spinne', label: 'Kreuzspinne', icon: '🕷️' },
+        { id: 'regenwurm', label: 'Regenwurm', icon: '🪱' },
+        { id: 'schnecke', label: 'Schnecke', icon: '🐌' },
+      ],
+      correctId: 'biene',
+      explanation: 'Insekten haben sechs Beine; Spinnen acht.',
+      wissen: 'Gliederfüßer unterscheiden.',
+    },
+  ],
+}
+
+/** Spinnen und andere Gliederfüßer (Spezialthema). */
+const spinnen: BioBank = {
+  quelle: 'Wikipedia: Spinnentiere',
+  url: 'https://de.wikipedia.org/wiki/Spinnentiere',
+  facts: [
+    {
+      prompt: 'Wie viele Beine haben Spinnen typischerweise?',
+      answer: 'Acht',
+      wrong: ['Sechs', 'Vier', 'Zehn'],
+      explanation: 'Spinnentiere haben acht Beine; Insekten sechs.',
+      wissen: 'Spinnen ≠ Insekten — wichtiges Unterscheidungsmerkmal.',
+      gap: 'Spinnen haben ___ Beine.',
+      gapAccepted: ['acht', '8', 'Acht'],
+    },
+    {
+      prompt: 'Wozu dient das Spinnennetz vor allem?',
+      answer: 'Beutefang (und Orientierung)',
+      wrong: ['Fotosynthese', 'Knochenbildung', 'Säugen der Jungen'],
+      explanation: 'Viele Spinnen fangen Beute mit Netzen aus Spinnenseide.',
+      wissen: 'Angepasstheit der Spinnen an räuberische Lebensweise.',
+    },
+  ],
+  pairs: [
+    { term: 'Spinne', meaning: 'Acht Beine, keine Fühler wie Insekten', wissen: 'Spinnentiere gehören zu den Kieferklauenträgern.' },
+    { term: 'Spinnenseide', meaning: 'Festhalten von Beute / Netzbau', wissen: 'Hochfeste Fäden aus Drüsen.' },
+    { term: 'Kieferklaue', meaning: 'Mundwerkzeug vieler Spinnentiere', wissen: 'Oft mit Giftdrüse.' },
+    { term: 'Gliederfüßer', meaning: 'Chitinpanzer und gegliederte Beine', wissen: 'Insekten und Spinnen gehören dazu.' },
+  ],
+  trueFalse: [
+    {
+      statement: 'Spinnen sind Insekten.',
+      correct: false,
+      explanation: 'Spinnen haben acht Beine und gehören zu den Spinnentieren.',
+      wissen: 'Häufige Verwechslung in Quizzes.',
+    },
+    {
+      statement: 'Viele Spinnen nutzen Netze zum Beutefang.',
+      correct: true,
+      explanation: 'Spinnenseide dient u. a. dem Fang von Beute.',
+      wissen: 'Angepasstheit.',
+    },
+  ],
+  icons: [
+    {
+      question: 'Welches Tier ist eine Spinne (8 Beine)?',
+      prompt: 'Spinnen',
+      options: [
+        { id: 'spinne', label: 'Kreuzspinne', icon: '🕷️' },
+        { id: 'biene', label: 'Biene', icon: '🐝' },
+        { id: 'schnecke', label: 'Schnecke', icon: '🐌' },
+        { id: 'regenwurm', label: 'Regenwurm', icon: '🪱' },
+      ],
+      correctId: 'spinne',
+      explanation: 'Spinnen haben acht Beine; Insekten sechs.',
+      wissen: 'Spinnentiere vs. Insekten.',
     },
   ],
 }
@@ -430,7 +552,9 @@ const pfuetze: BioBank = {
 
 export const BIOLOGIE_K6_GENERATORS: Record<string, Topic['generate']> = {
   'bi-k6-lb1-samenpflanzen': bankGenerate(samenpflanzen),
-  'bi-k6-lb2-wirbellose': bankGenerate(wirbellose),
+  'bi-k6-lb2-wirbellose': bankGenerate(wirbelloseOverview),
+  'bi-k6-lb2-insekten': bankGenerate(insekten),
+  'bi-k6-lb2-spinnen': bankGenerate(spinnen),
   'bi-k6-lb3-systematik': bankGenerate(systematikK6),
   'bi-k6-lb4-wald': bankGenerate(wald),
   'bi-k6-lb5-zellen': bankGenerate(zellen),

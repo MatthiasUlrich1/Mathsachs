@@ -9,12 +9,22 @@ export interface FlashcardFlipProps {
   onFlip: () => void
   answer: string
   onAnswerChange: (value: string) => void
+  /** Optional multiple-choice options shown after flip (preferred over free text). */
+  choices?: string[]
   instruction?: string
   disabled?: boolean
   placeholder?: string
+  /** How grading works — shown under the answer area. */
+  checkHint?: string
 }
 
-/** Flip card → tip answer (quiz-style flashcard). */
+const DEFAULT_STEPS = [
+  'Vorderseite lesen',
+  'Karte umdrehen',
+  'Antwort wählen oder tippen',
+] as const
+
+/** Flip card → choose or tip answer (quiz-style flashcard). */
 export const FlashcardFlip: React.FC<FlashcardFlipProps> = ({
   front,
   backHint,
@@ -22,40 +32,95 @@ export const FlashcardFlip: React.FC<FlashcardFlipProps> = ({
   onFlip,
   answer,
   onAnswerChange,
+  choices,
   instruction,
   disabled = false,
   placeholder = 'Antwort tippen…',
-}) => (
-  <div className="flashcard-flip">
-    {instruction && <p className="flashcard-flip__instruction">{instruction}</p>}
-    <button
-      type="button"
-      className={`flashcard-flip__card${flipped ? ' flashcard-flip__card--flipped' : ''}`}
-      onClick={() => {
-        if (!disabled && !flipped) onFlip()
-      }}
-      disabled={disabled || flipped}
-      aria-label={flipped ? 'Karte umgedreht' : 'Karte umdrehen'}
-    >
-      <span className="flashcard-flip__face">
-        {flipped ? (backHint ?? 'Was passt dazu?') : front}
-      </span>
+  checkHint,
+}) => {
+  const hasChoices = Boolean(choices && choices.length > 0)
+  const gradingHint =
+    checkHint ??
+    (hasChoices
+      ? 'Prüfung: gewählte Option muss zur Lösung passen. Erklärung erscheint nach „Antwort prüfen“.'
+      : 'Prüfung: Groß-/Kleinschreibung und Leerzeichen egal; Synonyme aus der Lösungsliste zählen. Erklärung erscheint nach „Antwort prüfen“.')
+
+  return (
+    <div className="flashcard-flip">
+      <ol className="flashcard-flip__steps" aria-label="Ablauf">
+        {DEFAULT_STEPS.map((step, i) => (
+          <li key={step}>
+            <strong>{i + 1}.</strong> {step}
+          </li>
+        ))}
+      </ol>
+      {instruction && <p className="flashcard-flip__instruction">{instruction}</p>}
       {!flipped && !disabled && (
-        <span className="flashcard-flip__tap">Tippen zum Umdrehen</span>
+        <p className="flashcard-flip__hint">
+          {hasChoices
+            ? 'Nach dem Umdrehen erscheinen Antwort-Optionen zum Tippen.'
+            : 'Nach dem Umdrehen erscheint ein Eingabefeld zum Tippen.'}
+        </p>
       )}
-    </button>
-    {flipped && (
-      <input
-        className="flashcard-flip__input"
-        type="text"
-        value={answer}
-        onChange={(e) => onAnswerChange(e.target.value)}
-        disabled={disabled}
-        placeholder={placeholder}
-        aria-label="Antwort nach dem Umdrehen"
-        autoComplete="off"
-        spellCheck={false}
-      />
-    )}
-  </div>
-)
+      <button
+        type="button"
+        className={`flashcard-flip__card${flipped ? ' flashcard-flip__card--flipped' : ''}`}
+        onClick={() => {
+          if (!disabled && !flipped) onFlip()
+        }}
+        disabled={disabled || flipped}
+        aria-label={flipped ? 'Karte umgedreht' : 'Karte umdrehen'}
+      >
+        <span className="flashcard-flip__face">
+          {flipped ? (backHint ?? 'Was passt dazu?') : front}
+        </span>
+        {!flipped && !disabled && (
+          <span className="flashcard-flip__tap">Tippen zum Umdrehen</span>
+        )}
+      </button>
+      {flipped && (
+        <div className="flashcard-flip__answer-area">
+          <p className="flashcard-flip__answer-label">
+            {hasChoices ? 'Antwort wählen:' : 'Antwort tippen:'}
+          </p>
+          {hasChoices ? (
+            <div
+              className="flashcard-flip__choices"
+              role="group"
+              aria-label="Antwort wählen"
+            >
+              {choices!.map((c) => {
+                const selected = answer === c
+                return (
+                  <button
+                    key={c}
+                    type="button"
+                    className={`flashcard-flip__choice${selected ? ' flashcard-flip__choice--selected' : ''}`}
+                    onClick={() => onAnswerChange(c)}
+                    disabled={disabled}
+                    aria-pressed={selected}
+                  >
+                    {c}
+                  </button>
+                )
+              })}
+            </div>
+          ) : (
+            <input
+              className="flashcard-flip__input"
+              type="text"
+              value={answer}
+              onChange={(e) => onAnswerChange(e.target.value)}
+              disabled={disabled}
+              placeholder={placeholder}
+              aria-label="Antwort nach dem Umdrehen"
+              autoComplete="off"
+              spellCheck={false}
+            />
+          )}
+          <p className="flashcard-flip__check-hint">{gradingHint}</p>
+        </div>
+      )}
+    </div>
+  )
+}

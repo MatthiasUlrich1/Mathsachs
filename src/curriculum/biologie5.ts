@@ -745,19 +745,34 @@ function saeugerGliedmass(rng: Rng) {
   })
 }
 
-export const biFische = makeGroupTopic('fisch', (rng) =>
-  rng() < 0.5 ? fischeNahrung(rng) : fischeBauMatch(rng),
-)
-export const biLurche = makeGroupTopic('lurch', (rng) =>
-  rng() < 0.5 ? lurcheMetaSort(rng) : lurcheMatch(rng),
-)
-export const biKriechtiere = makeGroupTopic('kriechtier', kriechMatch)
-export const biVoegel = makeGroupTopic('vogel', (rng) =>
-  rng() < 0.5 ? voegelSchnabel(rng) : voegelFlugMatch(rng),
-)
-export const biSaeugetiere = makeGroupTopic('saeuger', (rng) =>
-  rng() < 0.5 ? saeugerGebiss(rng) : saeugerGliedmass(rng),
-)
+/** Überblick: Gruppenmerkmale / Zuordnung — ohne Spezial-Extras anderer Unterthemen. */
+export const biFischeOverview = makeGroupTopic('fisch')
+export const biLurcheOverview = makeGroupTopic('lurch')
+export const biKriechtiereOverview = makeGroupTopic('kriechtier')
+export const biVoegelOverview = makeGroupTopic('vogel')
+export const biSaeugetiereOverview = makeGroupTopic('saeuger')
+
+/** Spezialisierte Unterthemen — nur gruppeninterne Details. */
+export const biFischeMerkmale = makeGroupTopic('fisch', fischeBauMatch)
+export const biFischeLebensraum = makeGroupTopic('fisch', fischeNahrung)
+export const biFischeSchutz = makeGroupTopic('fisch', (rng) => groupSchutzMc(rng, 'fisch'))
+export const biLurcheMerkmale = makeGroupTopic('lurch', lurcheMatch)
+export const biLurcheMeta = makeGroupTopic('lurch', lurcheMetaSort)
+export const biLurcheSchutz = makeGroupTopic('lurch', (rng) => groupSchutzMc(rng, 'lurch'))
+export const biKriechtiereMerkmale = makeGroupTopic('kriechtier', kriechMatch)
+export const biKriechtiereArten = makeGroupTopic('kriechtier', (rng) => groupSpeciesMc(rng, 'kriechtier'))
+export const biVoegelFlug = makeGroupTopic('vogel', voegelFlugMatch)
+export const biVoegelFortpflanzung = makeGroupTopic('vogel', voegelSchnabel)
+export const biSaeugerMerkmale = makeGroupTopic('saeuger', saeugerGebiss)
+export const biSaeugerAngepasst = makeGroupTopic('saeuger', saeugerGliedmass)
+export const biSaeugerSchutz = makeGroupTopic('saeuger', (rng) => groupSchutzMc(rng, 'saeuger'))
+
+/** @deprecated Prefer Überblick / Spezial-Exports — kept as Überblick alias. */
+export const biFische = biFischeOverview
+export const biLurche = biLurcheOverview
+export const biKriechtiere = biKriechtiereOverview
+export const biVoegel = biVoegelOverview
+export const biSaeugetiere = biSaeugetiereOverview
 
 // ─── LB7 Systematisierung — classification tree / feature matrix ─────────────
 
@@ -1069,12 +1084,27 @@ export const biHaltung: Topic['generate'] = mixedVariants(haltungMc, haltungMult
 
 export const BIOLOGIE_K5_GENERATORS: Record<string, Topic['generate']> = {
   'bi-k5-lb1-merkmale': biMerkmale,
-  'bi-k5-lb2-fische': biFische,
-  'bi-k5-lb3-lurche': biLurche,
-  'bi-k5-lb4-kriechtiere': biKriechtiere,
-  'bi-k5-lb5-voegel': biVoegel,
-  'bi-k5-lb6-saeugetiere': biSaeugetiere,
+  'bi-k5-lb1-kennzeichen': biMerkmale,
+  'bi-k5-lb2-fische': biFischeOverview,
+  'bi-k5-lb2-fische-merkmale': biFischeMerkmale,
+  'bi-k5-lb2-fische-lebensraum': biFischeLebensraum,
+  'bi-k5-lb2-fische-schutz': biFischeSchutz,
+  'bi-k5-lb3-lurche': biLurcheOverview,
+  'bi-k5-lb3-lurche-merkmale': biLurcheMerkmale,
+  'bi-k5-lb3-lurche-meta': biLurcheMeta,
+  'bi-k5-lb3-lurche-schutz': biLurcheSchutz,
+  'bi-k5-lb4-kriechtiere': biKriechtiereOverview,
+  'bi-k5-lb4-kriechtiere-merkmale': biKriechtiereMerkmale,
+  'bi-k5-lb4-kriechtiere-arten': biKriechtiereArten,
+  'bi-k5-lb5-voegel': biVoegelOverview,
+  'bi-k5-lb5-voegel-flug': biVoegelFlug,
+  'bi-k5-lb5-voegel-fortpflanzung': biVoegelFortpflanzung,
+  'bi-k5-lb6-saeugetiere': biSaeugetiereOverview,
+  'bi-k5-lb6-saeuger-merkmale': biSaeugerMerkmale,
+  'bi-k5-lb6-saeuger-angepasst': biSaeugerAngepasst,
+  'bi-k5-lb6-saeuger-schutz': biSaeugerSchutz,
   'bi-k5-lb7-systematik': biSystematik,
+  'bi-k5-lb7-zuordnung': biSystematik,
   'bi-k5-lbw-winter': biWinter,
   'bi-k5-lbw-saurier': biSaurier,
   'bi-k5-lbw-haltung': biHaltung,

@@ -401,6 +401,11 @@ export function TaskInteractive({
         <FlashcardFlip
           front={String(interactive.props.front ?? '')}
           backHint={interactive.props.backHint}
+          choices={
+            Array.isArray(interactive.props.choices)
+              ? (interactive.props.choices as string[])
+              : undefined
+          }
           flipped={value.kind === 'flashcardFlip' ? value.flipped : false}
           onFlip={() =>
             onChange({
@@ -415,6 +420,7 @@ export function TaskInteractive({
           }
           instruction={interactive.props.instruction}
           placeholder={interactive.props.placeholder}
+          checkHint={interactive.props.checkHint}
           disabled={disabled}
         />
       )}

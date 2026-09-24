@@ -248,7 +248,7 @@ export function iconBelongBioTask(
   })
 }
 
-/** NEW: flashcard flip → tip answer */
+/** NEW: flashcard flip → choose or tip answer (prefer choices when available). */
 export function flashcardBioTask(opts: {
   question: string
   front: string
@@ -257,8 +257,11 @@ export function flashcardBioTask(opts: {
   explanation: string
   fachwissen: Fachwissen
   backHint?: string
+  /** MC options on the back; if set, UI shows choice buttons instead of free text. */
+  choices?: string[]
   dedupeKey?: string
 }): Task {
+  const hasChoices = Boolean(opts.choices && opts.choices.length > 0)
   return flashcardFlipTask({
     question: opts.question,
     front: opts.front,
@@ -266,7 +269,13 @@ export function flashcardBioTask(opts: {
     solution: opts.solution,
     explanation: opts.explanation,
     fachwissen: opts.fachwissen,
-    backHint: opts.backHint ?? 'Was passt dazu? Tippe die Antwort.',
+    backHint:
+      opts.backHint ??
+      (hasChoices ? 'Was passt dazu? Wähle eine Antwort.' : 'Was passt dazu? Tippe die Antwort.'),
+    choices: opts.choices,
+    instruction: hasChoices
+      ? '1) Vorderseite lesen  2) Karte umdrehen  3) Antwort tippen (Option wählen).'
+      : '1) Vorderseite lesen  2) Karte umdrehen  3) Antwort tippen.',
     ...(opts.dedupeKey ? { dedupeKey: opts.dedupeKey } : {}),
   })
 }

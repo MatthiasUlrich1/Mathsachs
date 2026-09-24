@@ -1296,23 +1296,42 @@ interface FlashcardFlipTaskInput {
   solution: string
   explanation: string
   backHint?: string
+  /** Prefer MC options on the back (choicePick-style) over free text alone. */
+  choices?: string[]
   instruction?: string
   placeholder?: string
+  checkHint?: string
   fachwissen?: Fachwissen
   dedupeKey?: string
   visualContent?: string
 }
 
-/** Flip the card, then tip the answer. */
+/** Flip the card, then choose or tip the answer (accepted list, trim/casefold). */
 export const flashcardFlipTask = (input: FlashcardFlipTaskInput): Task => {
   const accepted = input.accepted.map(normCloze)
+  const hasChoices = Boolean(input.choices && input.choices.length > 0)
+  const defaultInstruction = hasChoices
+    ? '1) Vorderseite lesen  2) Karte umdrehen  3) Antwort tippen (Option wählen).'
+    : '1) Vorderseite lesen  2) Karte umdrehen  3) Antwort tippen.'
+  const fwBase =
+    input.fachwissen?.text ??
+    'Karteikarte: nach dem Umdrehen antworten.'
+  const fwCheck = hasChoices
+    ? ' Prüfung: gewählte Option muss zur Lösung passen (Groß-/Kleinschreibung egal).'
+    : ' Prüfung: Freitext gegen akzeptierte Antworten (trim, Kleinbuchstaben, Synonyme).'
+  const fachwissen: Fachwissen | undefined = input.fachwissen
+    ? {
+        ...input.fachwissen,
+        text: `${fwBase}${fwBase.includes('Prüfung:') ? '' : fwCheck}`,
+      }
+    : undefined
   return {
     question: input.question,
     answerKind: 'text',
     solution: input.solution,
     explanation: input.explanation,
     visualContent: input.visualContent,
-    ...withFw(input.fachwissen),
+    ...withFw(fachwissen),
     ...withDedupe(input.dedupeKey),
     sampleAnswer: {
       kind: 'flashcardFlip',
@@ -1324,14 +1343,18 @@ export const flashcardFlipTask = (input: FlashcardFlipTaskInput): Task => {
       props: {
         front: input.front,
         backHint: input.backHint,
-        instruction:
-          input.instruction ?? 'Drehe die Karte um und tippe die Antwort.',
+        choices: input.choices,
+        instruction: input.instruction ?? defaultInstruction,
         placeholder: input.placeholder,
+        checkHint: input.checkHint,
       },
     },
     check: (answer: UserInput) => {
       if (answer.kind === 'flashcardFlip') {
         return answer.flipped && accepted.includes(normCloze(answer.answer))
+      }
+      if (answer.kind === 'choicePick') {
+        return accepted.includes(normCloze(answer.choice))
       }
       if (answer.kind === 'value') return accepted.includes(normCloze(answer.value))
       return false

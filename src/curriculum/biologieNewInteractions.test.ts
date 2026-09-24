@@ -67,12 +67,25 @@ describe('new biologie interaction task helpers', () => {
       accepted: ['Kiemen', 'Kieme'],
       solution: 'Kiemen',
       explanation: 'ok',
+      choices: ['Kiemen', 'Lungen', 'Federn', 'Fell'],
     })
     expect(flash.interactive?.type).toBe('flashcardFlip')
+    expect(flash.interactive?.props.choices).toEqual([
+      'Kiemen',
+      'Lungen',
+      'Federn',
+      'Fell',
+    ])
     expect(flash.check({ kind: 'flashcardFlip', flipped: true, answer: 'Kiemen' })).toBe(
       true,
     )
+    expect(flash.check({ kind: 'flashcardFlip', flipped: true, answer: 'kiemen' })).toBe(
+      true,
+    )
     expect(flash.check({ kind: 'flashcardFlip', flipped: false, answer: 'Kiemen' })).toBe(
+      false,
+    )
+    expect(flash.check({ kind: 'flashcardFlip', flipped: true, answer: 'Lungen' })).toBe(
       false,
     )
     void createRng(1)

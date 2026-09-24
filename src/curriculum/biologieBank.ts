@@ -153,25 +153,49 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
           dedupeKey: `gap:${f.gap}`,
         })
       }
+      const flashWrong =
+        f.wrong?.length && f.wrong.length >= 2
+          ? shuffle(rng, f.wrong).slice(0, 3)
+          : shuffle(
+              rng,
+              bank.facts!.filter((x) => x.answer !== f.answer).map((x) => x.answer),
+            ).slice(0, 3)
+      const flashChoices =
+        flashWrong.length >= 2
+          ? shuffle(rng, [f.answer, ...flashWrong.slice(0, 3)])
+          : undefined
       return flashcardBioTask({
-        question: f.prompt,
+        question: 'Karteikarte: lesen → umdrehen → antworten.',
         front: f.flashFront ?? f.prompt,
-        accepted: [f.answer, f.answer.toLowerCase()],
+        accepted: [f.answer, f.answer.toLowerCase(), ...((f.gapAccepted as string[] | undefined) ?? [])],
         solution: f.answer,
         explanation: f.explanation,
         fachwissen: fw(bank, f.wissen),
+        choices: flashChoices,
         dedupeKey: `flash:${f.prompt}`,
       })
     })
     variants.push((rng) => {
       const f = pick(rng, bank.facts!)
+      const flashWrong =
+        f.wrong?.length && f.wrong.length >= 2
+          ? shuffle(rng, f.wrong).slice(0, 3)
+          : shuffle(
+              rng,
+              bank.facts!.filter((x) => x.answer !== f.answer).map((x) => x.answer),
+            ).slice(0, 3)
+      const flashChoices =
+        flashWrong.length >= 2
+          ? shuffle(rng, [f.answer, ...flashWrong.slice(0, 3)])
+          : undefined
       return flashcardBioTask({
-        question: 'Karte umdrehen und Antwort tippen.',
+        question: 'Karteikarte: lesen → umdrehen → antworten.',
         front: f.flashFront ?? f.prompt,
         accepted: [f.answer, ...((f.gapAccepted as string[] | undefined) ?? [])],
         solution: f.answer,
         explanation: f.explanation,
         fachwissen: fw(bank, f.wissen),
+        choices: flashChoices,
         dedupeKey: `flash2:${f.prompt}`,
       })
     })

@@ -9,6 +9,24 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.27] – 2026-09-24
+
+### Behoben
+- **Kontrast (neue Bio-Widgets):** `iconBelong`, `flashcardFlip`, `pairMatch` und `clozeMulti`
+  nutzen auf hellen Karten/Feldern dunklen Text (`#0f172a`) statt geerbter Theme-Schrift —
+  Labels und Eingaben wieder lesbar im Dark-UI.
+- **Themen-Isolation Biologie:** Überblick-Themen (z. B. Wirbellose / Fische) ziehen keine
+  fremden Gruppen-Fragen mehr (kein „Welches Tier gehört zu den Vögeln?“ unter Wirbellose).
+  K5 Wirbeltiere und K6 Wirbellose: Überblick vs. Spezialbanken getrennt; Systematik/Zuordnung
+  behält bewusst den Gruppenvergleich. Shared `newUxBundle` (Wirbeltiere) nicht mehr global
+  in K6–K10 gemischt.
+
+### Geändert
+- **Flashcard-UX:** klare Schritte (lesen → umdrehen → wählen/tippen); Antwort-Optionen
+  (choicePick-Stil) nach dem Umdrehen bevorzugt; sonst Freitext mit akzeptierten Synonymen
+  (trim/casefold). Prüfung und Hinweis in Fachwissen/UI dokumentiert; Erklärung nach Prüfen
+  wie bei anderen Aufgaben.
+
 ## [0.28.26] – 2026-09-24
 
 ### Hinzugefügt
