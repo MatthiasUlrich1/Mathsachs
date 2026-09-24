@@ -54,27 +54,15 @@ export type UserInput =
 export const emptyInput = (
   kind:
     | AnswerKind
-    | 'numberLine'
-    | 'dragDropSort'
-    | 'dragDropSlots'
-    | 'digitGrid'
-    | 'choicePick'
-    | 'multiSelect'
-    | 'coordinateClick'
-    | 'coordinateDraw'
-    | 'paramSlider'
-    | 'equationSteps'
-    | 'pairMatch'
-    | 'clozeMulti'
-    | 'iconBelong'
-    | 'flashcardFlip',
+    | InteractiveConfig['type'],
 ): UserInput => {
   if (kind === 'fraction') return { kind: 'fraction', num: '', den: '' }
   if (kind === 'numberLine') return { kind: 'numberLine', value: 0 }
   if (kind === 'dragDropSort') return { kind: 'dragDropSort', order: [] }
   if (kind === 'dragDropSlots') return { kind: 'dragDropSlots', slots: [] }
   if (kind === 'digitGrid') return { kind: 'digitGrid', digits: [] }
-  if (kind === 'choicePick') return { kind: 'choicePick', choice: '' }
+  // sourceQuote answers via choicePick; causeEffect via pairMatch.
+  if (kind === 'choicePick' || kind === 'sourceQuote') return { kind: 'choicePick', choice: '' }
   if (kind === 'multiSelect') return { kind: 'multiSelect', selected: [] }
   if (kind === 'coordinateClick') return { kind: 'coordinateClick', x: 0, y: 0 }
   if (kind === 'coordinateDraw')
@@ -84,7 +72,7 @@ export const emptyInput = (
     }
   if (kind === 'paramSlider') return { kind: 'paramSlider', values: {} }
   if (kind === 'equationSteps') return { kind: 'equationSteps', ops: [] }
-  if (kind === 'pairMatch') return { kind: 'pairMatch', links: {} }
+  if (kind === 'pairMatch' || kind === 'causeEffect') return { kind: 'pairMatch', links: {} }
   if (kind === 'clozeMulti') return { kind: 'clozeMulti', blanks: [] }
   if (kind === 'iconBelong') return { kind: 'iconBelong', choice: '' }
   if (kind === 'flashcardFlip') return { kind: 'flashcardFlip', flipped: false, answer: '' }

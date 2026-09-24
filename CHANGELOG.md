@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.40] – 2026-09-24
+
+### Behoben
+- `emptyInput` akzeptiert die neuen Interaktionstypen `sourceQuote` / `causeEffect`
+  (mappt auf choicePick bzw. pairMatch), damit Pages-Build und Desktop-Installer
+  nach 0.28.39 wieder durchlaufen.
+
 ## [0.28.39] – 2026-09-24
 
 ### Hinzugefügt
