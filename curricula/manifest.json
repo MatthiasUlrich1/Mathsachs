@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-24T16:47:16.011Z",
+  "updatedAt": "2026-09-24T17:12:28.963Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -40,10 +40,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Biologie",
-      "version": "1.2.2",
+      "version": "1.2.3",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-biologie.json",
-      "size": 57162,
-      "changelog": "Themen-Isolation: Überblick vs. Spezial getrennt (u. a. Blüte ≠ Bäume). Fachwissen rein fachlich. 109 Themen; neue Interaktionen (released:false)."
+      "size": 57135,
+      "changelog": "Bug A/B: innerhalb einer Runde keine Konzept-Wiederholung; Überblick≠Spezial disjunkte Banken (u. a. Fische). 109 Themen."
     },
     {
       "id": "gym-sachsen-anhalt",

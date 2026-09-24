@@ -9,6 +9,19 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.32] – 2026-09-24
+
+### Behoben
+- **Biologie Bug A (innerhalb eines Themas):** Runden deduplizieren über `contentIds`,
+  normalisierte Frage-Stems, charakteristische Antworten und Begriffs-Labels
+  (pairMatch/Zuordnung). Kein Auffüllen mit Duplikaten — kürzere Runden, wenn der
+  Unique-Pool erschöpft ist. Alle `BIOLOGIE_GENERATORS` tragen stabile Concept-IDs.
+- **Biologie Bug B (zwischen Geschwister-Themen):** K5-Wirbeltiere Überblick / Merkmale /
+  Lebensraum / Schutz (und gleiche Muster K6–10 + Organellen) haben disjunkte Banken —
+  keine gemeinsamen Fragetexte oder `contentIds` mehr (Beweis: Fische Überblick ≠ Merkmale).
+  NewUx: Icons nur Überblick, Flashcards nur Merkmale/Flug — kein Bleed mehr.
+  Biologie-Pack **1.2.3**.
+
 ## [0.28.31] – 2026-09-24
 
 ### Behoben

@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.2.2',
-    changelog: `Themen-Isolation: Überblick vs. Spezial getrennt (u. a. Blüte ≠ Bäume). Fachwissen rein fachlich. ${topics} Themen; neue Interaktionen (released:false).`,
+    version: '1.2.3',
+    changelog: `Bug A/B: innerhalb einer Runde keine Konzept-Wiederholung; Überblick≠Spezial disjunkte Banken (u. a. Fische). ${topics} Themen.`,
     official,
     extras: [],
   }

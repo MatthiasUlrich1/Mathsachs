@@ -75,7 +75,7 @@ export function PracticeSession({
       topic.generate,
       rng,
       target,
-      50,
+      120,
       initialSeed,
     ).map((row) => ({
       topic,

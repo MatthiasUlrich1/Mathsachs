@@ -2,34 +2,69 @@ import type { Rng } from '../lib/rng'
 import { createRng, randInt, timeSeed } from '../lib/rng'
 import type { Task, Topic } from './types'
 
+/** Normalize free text for within-round identity (ignore punctuation / case). */
+export function normalizeTaskText(s: string): string {
+  return s
+    .toLowerCase()
+    .replace(/\s+/g, ' ')
+    .replace(/[„“”"']/g, '')
+    .replace(/[^a-z0-9äöüß:.\- ]+/gi, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+const TRIVIAL_SOLUTION =
+  /^(richtig|falsch|ja|nein|true|false|ok|—|-|r|f|\.|…)$/i
+
+/** Generic prompts whose stem alone must not block distinct item sets. */
+function isGenericPromptStem(stem: string): boolean {
+  return (
+    /^(ordne|ordne zu|zuordnung|passe .* zu|klick-paare|karteikarte)/i.test(stem) ||
+    /klick-paare/i.test(stem) ||
+    /^ordne (begriff|fachbegriff|term|jedem|die|den|das)/i.test(stem)
+  )
+}
+
 /** Extra identity for interactive tasks when dedupeKey/contentIds are absent. */
-function interactiveFingerprint(task: Task): string {
+function interactiveContentKey(task: Task): string {
   const ix = task.interactive
   if (!ix) return ''
   const p = ix.props ?? {}
   if (ix.type === 'pairMatch') {
     const left = (p.left as Array<{ label?: string }> | undefined)?.map((l) => l.label ?? '') ?? []
-    return `pair:${[...left].sort().join('|')}`
+    return `pair:${[...left].map(normalizeTaskText).sort().join('|')}`
   }
   if (ix.type === 'clozeMulti') {
     const segs = (p.segments as string[] | undefined) ?? []
-    return `cloze:${segs.join('___')}`
+    return `cloze:${normalizeTaskText(segs.join('___'))}`
   }
   if (ix.type === 'flashcardFlip') {
-    return `flash:${String(p.front ?? '')}`
+    return `flash:${normalizeTaskText(String(p.front ?? task.question ?? ''))}`
   }
   if (ix.type === 'iconBelong') {
-    return `icon:${String(p.prompt ?? '')}`
+    return `icon:${normalizeTaskText(String(p.prompt ?? task.question ?? ''))}`
   }
-  if (ix.type === 'choicePick') {
-    return `choice:${String((p.choices as string[] | undefined)?.slice().sort().join('|') ?? '')}`
+  if (ix.type === 'choicePick' || ix.type === 'multiSelect') {
+    // Ignore shuffled distractors — question + solution define the fact.
+    return `${ix.type}:${normalizeTaskText(task.question)}\n${normalizeTaskText(String(task.solution ?? ''))}`
+  }
+  if (ix.type === 'dragDropSlots') {
+    const items = (p.items as Array<{ label?: string }> | undefined) ?? []
+    const labels = items.map((it) => normalizeTaskText(it.label ?? '')).filter(Boolean).sort()
+    return `slots:${labels.join('|')}`
+  }
+  if (ix.type === 'dragDropSort') {
+    const items = (p.items as Array<{ label?: string }> | undefined) ?? []
+    const labels = items.map((it) => normalizeTaskText(it.label ?? '')).filter(Boolean)
+    return `sort:${labels.join('>')}`
   }
   return ix.type
 }
 
 /**
  * All identities that must stay unique within a practice round.
- * Prefer contentIds / dedupeKey (fact-level); fall back to question fingerprint.
+ * Prefer contentIds / dedupeKey (fact-level); also block same stem / same
+ * distinctive answer; fall back to a distractor-stable fingerprint.
  */
 export function taskContentIds(task: Task): string[] {
   const ids = new Set<string>()
@@ -39,14 +74,50 @@ export function taskContentIds(task: Task): string[] {
     const id = raw.trim()
     if (id) ids.add(`content:${id}`)
   }
+
+  const stem = normalizeTaskText(task.question ?? '')
+  if (stem && !isGenericPromptStem(stem)) {
+    ids.add(`stem:${stem}`)
+  }
+
+  const sol = normalizeTaskText(String(task.solution ?? ''))
+  if (sol && sol.length >= 4 && !TRIVIAL_SOLUTION.test(sol)) {
+    // Same fact via MC / cloze / flash with different wording → same answer.
+    ids.add(`ans:${sol}`)
+  }
+
+  // Item-level identities for pairing / slot tasks (Begriff uniqueness).
+  const ix = task.interactive
+  if (ix?.type === 'pairMatch') {
+    const left = (ix.props?.left as Array<{ label?: string }> | undefined) ?? []
+    for (const l of left) {
+      const term = normalizeTaskText(l.label ?? '')
+      if (term) ids.add(`term:${term}`)
+    }
+  }
+  if (ix?.type === 'dragDropSlots') {
+    const items = (ix.props?.items as Array<{ label?: string }> | undefined) ?? []
+    for (const it of items) {
+      const term = normalizeTaskText(it.label ?? '')
+      // Skip obvious distractors / short junk
+      if (term && term.length >= 3) ids.add(`term:${term}`)
+    }
+    const slotLabels = (ix.props?.slotLabels as string[] | undefined) ?? []
+    for (const label of slotLabels) {
+      const term = normalizeTaskText(label)
+      if (term && term.length >= 3) ids.add(`term:${term}`)
+    }
+  }
+
   if (ids.size > 0) return [...ids]
-  // Fallback: whole-task fingerprint as one identity
   return [`fp:${taskFingerprintFallback(task)}`]
 }
 
 function taskFingerprintFallback(task: Task): string {
-  const ix = interactiveFingerprint(task)
-  return [task.question, task.solution, task.visualContent ?? '', task.unit ?? '', ix].join('\n')
+  const ix = interactiveContentKey(task)
+  const stem = normalizeTaskText(task.question ?? '')
+  const sol = normalizeTaskText(String(task.solution ?? ''))
+  return [stem, sol, task.visualContent ?? '', task.unit ?? '', ix].join('\n')
 }
 
 /** Stable identity for "same exercise" within a practice round (legacy single key). */
@@ -75,7 +146,7 @@ export function buildUniqueTaskRound(
   generate: (rng: Rng) => Task,
   rng: Rng,
   targetCount = 10,
-  maxAttemptsPerSlot = 80,
+  maxAttemptsPerSlot = 120,
 ): Task[] {
   return buildUniqueTaskRoundWithSeeds(generate, rng, targetCount, maxAttemptsPerSlot).map(
     (row) => row.task,
@@ -92,7 +163,7 @@ export function buildUniqueTaskRoundWithSeeds(
   generate: (rng: Rng) => Task,
   rng: Rng,
   targetCount = 10,
-  maxAttemptsPerSlot = 80,
+  maxAttemptsPerSlot = 120,
   firstSeed?: number,
 ): SeededTask[] {
   const tasks: SeededTask[] = []

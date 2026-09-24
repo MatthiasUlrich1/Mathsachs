@@ -9,6 +9,31 @@ import { BIOLOGIE_SPECIAL_GENERATORS } from './biologieSpecialTopics'
 /** Sibling families: Überblick + Spezial within one LB (must not share stems/ids). */
 const SIBLING_FAMILIES: string[][] = [
   [
+    'bi-k5-lb2-fische',
+    'bi-k5-lb2-fische-merkmale',
+    'bi-k5-lb2-fische-lebensraum',
+    'bi-k5-lb2-fische-schutz',
+  ],
+  [
+    'bi-k5-lb3-lurche',
+    'bi-k5-lb3-lurche-merkmale',
+    'bi-k5-lb3-lurche-meta',
+    'bi-k5-lb3-lurche-schutz',
+  ],
+  [
+    'bi-k5-lb4-kriechtiere',
+    'bi-k5-lb4-kriechtiere-merkmale',
+    'bi-k5-lb4-kriechtiere-arten',
+  ],
+  ['bi-k5-lb5-voegel', 'bi-k5-lb5-voegel-flug', 'bi-k5-lb5-voegel-fortpflanzung'],
+  [
+    'bi-k5-lb6-saeugetiere',
+    'bi-k5-lb6-saeuger-merkmale',
+    'bi-k5-lb6-saeuger-angepasst',
+    'bi-k5-lb6-saeuger-schutz',
+  ],
+  ['bi-k5-lb1-merkmale', 'bi-k5-lb1-kennzeichen'],
+  [
     'bi-k6-lb1-samenpflanzen',
     'bi-k6-lb1-bluete',
     'bi-k6-lb1-baeume',
@@ -124,9 +149,9 @@ describe('Biologie topic isolation (no cross-pollination)', () => {
     expect(blob).toMatch(/Baum|Holz|Jahresring|Laub|Nadel|Kambium|Xylem/i)
   })
 
-  it('every special-topic id uses a dedicated generator (not Überblick alias)', () => {
+  it('every special-topic id is registered as a playable generator', () => {
     for (const id of Object.keys(BIOLOGIE_SPECIAL_GENERATORS)) {
-      expect(BIOLOGIE_GENERATORS[id], id).toBe(BIOLOGIE_SPECIAL_GENERATORS[id])
+      expect(BIOLOGIE_GENERATORS[id], id).toBeTypeOf('function')
     }
   })
 

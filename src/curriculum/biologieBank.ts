@@ -136,6 +136,58 @@ function isTrivialAnimalIcon(ic: BioIcon): boolean {
   return false
 }
 
+/**
+ * Guarantee every bio task carries concept-level contentIds / dedupeKey.
+ * Uses existing keys when present; otherwise derives a stable key from the
+ * distractor-insensitive question + solution (+ interactive content).
+ */
+export function ensureBioTaskIdentity(
+  task: ReturnType<Topic['generate']>,
+  prefix = 'bio:auto',
+): ReturnType<Topic['generate']> {
+  if ((task.contentIds?.length ?? 0) > 0) {
+    return {
+      ...task,
+      dedupeKey: task.dedupeKey?.trim() || task.contentIds![0]!,
+      contentIds: task.contentIds,
+    }
+  }
+  if (task.dedupeKey?.trim()) {
+    const key = bioConceptKey(task.dedupeKey, prefix)
+    return { ...task, dedupeKey: key, contentIds: [key] }
+  }
+  const ix = task.interactive
+  let fallback = task.question ?? ''
+  if (ix?.type === 'flashcardFlip') {
+    fallback = String(ix.props?.front ?? fallback)
+  } else if (ix?.type === 'pairMatch') {
+    const left = (ix.props?.left as Array<{ label?: string }> | undefined) ?? []
+    fallback = left
+      .map((l) => l.label ?? '')
+      .sort()
+      .join('+')
+  } else if (ix?.type === 'dragDropSlots' || ix?.type === 'dragDropSort') {
+    const items = (ix.props?.items as Array<{ label?: string }> | undefined) ?? []
+    fallback = items
+      .map((it) => it.label ?? '')
+      .sort()
+      .join('+')
+  } else if (ix?.type === 'clozeMulti') {
+    const segs = (ix.props?.segments as string[] | undefined) ?? []
+    fallback = segs.join('___')
+  }
+  const key = bioConceptKey(undefined, prefix, fallback.slice(0, 96) || String(task.solution ?? 'item'))
+  return { ...task, dedupeKey: key, contentIds: [key] }
+}
+
+/** Wrap a generator so every emitted task has stable concept contentIds. */
+export function withBioContentIds(
+  generate: Topic['generate'],
+  prefix = 'bio:auto',
+): Topic['generate'] {
+  return (rng) => ensureBioTaskIdentity(generate(rng), prefix)
+}
+
 /** Build a playable Topic.generate from a knowledge bank. */
 export function bankGenerate(bank: BioBank): Topic['generate'] {
   const prefix = bank.conceptPrefix

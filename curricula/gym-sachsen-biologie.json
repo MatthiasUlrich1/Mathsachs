@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Biologie",
-  "version": "1.2.2",
-  "changelog": "Themen-Isolation: Überblick vs. Spezial getrennt (u. a. Blüte ≠ Bäume). Fachwissen rein fachlich. 109 Themen; neue Interaktionen (released:false).",
+  "version": "1.2.3",
+  "changelog": "Bug A/B: innerhalb einer Runde keine Konzept-Wiederholung; Überblick≠Spezial disjunkte Banken (u. a. Fische). 109 Themen.",
   "official": [
     {
       "id": "biologie-klasse-5",

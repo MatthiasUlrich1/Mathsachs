@@ -45,9 +45,11 @@ const trueFalse = (
     explanation: string
     fachwissen: Fachwissen
     dedupeKey?: string
+    contentIds?: string[]
   },
 ) => {
   const correctLabel = opts.correct ? 'Richtig' : 'Falsch'
+  const key = opts.dedupeKey ?? `tf:${opts.statement.slice(0, 64)}`
   return choicePickTask({
     question: `Stimmt die Aussage?\n\n„${opts.statement}“`,
     choices: shuffleChoices(rng, ['Richtig', 'Falsch'], correctLabel),
@@ -56,9 +58,20 @@ const trueFalse = (
     explanation: opts.explanation,
     instruction: 'Richtig oder falsch?',
     fachwissen: opts.fachwissen,
-    ...(opts.dedupeKey ? { dedupeKey: opts.dedupeKey } : {}),
+    dedupeKey: key,
+    contentIds: opts.contentIds ?? [key],
   })
 }
+
+/** Attach stable concept ids (within-round + cross-topic isolation). */
+const withConcept = <T extends { dedupeKey?: string; contentIds?: string[] }>(
+  task: T,
+  concept: string,
+): T => ({
+  ...task,
+  dedupeKey: concept,
+  contentIds: [concept],
+})
 
 /** Zuordnung: Merkmale/Arten → Gruppen (Klassifikations-Slots). */
 function classifySlotsTask(
@@ -73,6 +86,7 @@ function classifySlotsTask(
     explanation: string
     fachwissen: Fachwissen
     instruction?: string
+    concept?: string
   },
 ) {
   const distractors = opts.distractors ?? []
@@ -83,7 +97,7 @@ function classifySlotsTask(
       value: opts.itemLabels.length + i,
     })),
   ]
-  return dragDropSlotsTask({
+  const task = dragDropSlotsTask({
     question: opts.question,
     items,
     correctSlots: opts.correctSlots,
@@ -98,6 +112,10 @@ function classifySlotsTask(
     rng,
     fachwissen: opts.fachwissen,
   })
+  const concept =
+    opts.concept ??
+    `bio:k5:slots:${opts.question.slice(0, 48)}:${[...opts.itemLabels].sort().join('+')}`
+  return withConcept(task, concept)
 }
 
 /** Merkmals-Zuordnung: Begriffe links, Erklärungen rechts. */
@@ -111,6 +129,7 @@ function matchTermsTask(
     solution: string
     explanation: string
     fachwissen: Fachwissen
+    concept?: string
   },
 ) {
   return classifySlotsTask(rng, {
@@ -123,6 +142,9 @@ function matchTermsTask(
     explanation: opts.explanation,
     fachwissen: opts.fachwissen,
     instruction: 'Ziehe rechts die passende Erklärung zum Begriff links. Einen Block brauchst du nicht.',
+    concept:
+      opts.concept ??
+      `bio:k5:match:${[...opts.terms].map((t) => t.toLowerCase()).sort().join('+')}`,
   })
 }
 
@@ -266,7 +288,9 @@ const WINTER_STRATEGIES = [
   },
 ]
 
-// ─── LB1 Merkmale des Lebens ─────────────────────────────────────────────────
+// ─── LB1 Merkmale des Lebens (Bug A: concept once per round; Bug B: merkmale ≠ kennzeichen) ─
+
+const LIFE_CONCEPT = (trait: string) => `bio:k5:leben:${trait.toLowerCase()}`
 
 function merkmaleMc(rng: Rng) {
   const trait = pick(rng, LIFE_TRAITS)
@@ -274,6 +298,7 @@ function merkmaleMc(rng: Rng) {
     rng,
     LIFE_TRAITS.filter((t) => t.trait !== trait.trait).map((t) => t.meaning),
   ).slice(0, 3)
+  const concept = LIFE_CONCEPT(trait.trait)
   return choicePickTask({
     question: `Was bedeutet das Lebensmerkmal „${trait.trait}“?`,
     choices: shuffleChoices(rng, [trait.meaning, ...wrong], trait.meaning),
@@ -282,29 +307,47 @@ function merkmaleMc(rng: Rng) {
     explanation: trait.wissen,
     instruction: 'Wähle die passende Erklärung:',
     fachwissen: fw(trait.wissen),
-    dedupeKey: `leben:${trait.trait}`,
+    dedupeKey: concept,
+    contentIds: [concept],
   })
 }
 
 function merkmaleTrueFalse(rng: Rng) {
   const cases = [
     {
+      concept: 'bio:k5:leben:tf-stein',
       statement: 'Ein Stein zeigt Stoffwechsel und Fortpflanzung.',
       correct: false,
       explanation: 'Steine sind unbelebt — sie haben keinen Stoffwechsel und keine Fortpflanzung.',
       wissen: 'Biologie untersucht Lebewesen. Unbelebte Objekte erfüllen die Lebensmerkmale nicht.',
     },
     {
+      concept: 'bio:k5:leben:tf-atmung-stoffwechsel',
       statement: 'Atmung und Ernährung gehören zum Stoffwechsel.',
       correct: true,
       explanation: 'Stoffwechsel umfasst Aufnahme, Umbau und Abgabe von Stoffen und Energie.',
       wissen: 'Stoffwechsel ist ein zentrales Merkmal des Lebens neben Bewegung, Reizbarkeit und Fortpflanzung.',
     },
     {
+      concept: 'bio:k5:leben:tf-pflanzen-bewegung',
       statement: 'Nur Tiere bewegen sich — Pflanzen nie.',
       correct: false,
       explanation: 'Auch Pflanzen bewegen sich (z. B. Blätter zur Sonne, Ranker) — oft langsamer.',
       wissen: 'Bewegung als Lebensmerkmal gilt für Organismen allgemein, nicht nur für Tiere.',
+    },
+    {
+      concept: 'bio:k5:leben:tf-reizbarkeit',
+      statement: 'Reizbarkeit bedeutet, dass Lebewesen auf Umwelteinflüsse reagieren können.',
+      correct: true,
+      explanation: 'Reizbarkeit ist ein Lebensmerkmal: Reaktion auf Reize.',
+      wissen: 'Ohne Reizbarkeit wären Orientierung und Anpassung an die Umwelt unmöglich.',
+    },
+    {
+      concept: 'bio:k5:leben:tf-wachstum',
+      statement: 'Wachstum und Entwicklung zählen zu den Merkmalen des Lebens.',
+      correct: true,
+      explanation: 'Lebewesen verändern Größe und Gestalt im Lebenslauf.',
+      wissen: 'Wachstum/Entwicklung gehört neben Stoffwechsel und Fortpflanzung zu den Lebensmerkmalen.',
     },
   ]
   const c = pick(rng, cases)
@@ -313,22 +356,32 @@ function merkmaleTrueFalse(rng: Rng) {
     correct: c.correct,
     explanation: c.explanation,
     fachwissen: fw(c.wissen),
+    dedupeKey: c.concept,
+    contentIds: [c.concept],
   })
 }
 
+/** Prefer full/half pool Zuordnung so rounds are not 10× the same MC. */
 function merkmaleMatch(rng: Rng) {
-  const three = shuffle(rng, LIFE_TRAITS).slice(0, 3)
-  return matchTermsTask(rng, {
-    question: 'Ordne jedem Lebensmerkmal die passende Erklärung zu.',
-    terms: three.map((t) => t.trait),
-    meanings: three.map((t) => t.meaning),
+  const useAll = rng() < 0.55
+  const pool = useAll ? shuffle(rng, LIFE_TRAITS) : shuffle(rng, LIFE_TRAITS).slice(0, 3)
+  const concepts = pool.map((t) => LIFE_CONCEPT(t.trait))
+  const task = matchTermsTask(rng, {
+    question: useAll
+      ? 'Ordne alle Lebensmerkmale ihren Erklärungen zu.'
+      : 'Ordne drei Lebensmerkmale ihren Erklärungen zu.',
+    terms: pool.map((t) => t.trait),
+    meanings: pool.map((t) => t.meaning),
     distractor: 'Besteht nur aus Metall und Glas',
-    solution: three.map((t) => `${t.trait} → ${t.meaning}`).join('; '),
-    explanation: three.map((t) => t.wissen).join(' '),
+    solution: pool.map((t) => `${t.trait} → ${t.meaning}`).join('; '),
+    explanation: pool.map((t) => t.wissen).join(' '),
     fachwissen: fw(
-      'Merkmale des Lebens: Reizbarkeit, Bewegung, Fortpflanzung, Wachstum/Entwicklung, Stoffwechsel (Ernährung/Atmung).',
+      'Merkmale des Lebens: Reizbarkeit, Bewegung, Fortpflanzung, Wachstum/Entwicklung, Stoffwechsel.',
     ),
+    concept: `bio:k5:leben:match:${[...concepts].sort().join('+')}`,
   })
+  // Each trait concept blocks MC/TF of the same Lebensmerkmal in one round (Bug A).
+  return { ...task, contentIds: concepts, dedupeKey: concepts.slice().sort().join('+') }
 }
 
 function merkmaleMulti(rng: Rng) {
@@ -345,17 +398,144 @@ function merkmaleMulti(rng: Rng) {
     fachwissen: fw(
       'Unterscheide belebte und unbelebte Natur: Nur Lebewesen erfüllen die Merkmale des Lebens.',
     ),
+    dedupeKey: 'bio:k5:leben:multi-typisch',
+    contentIds: ['bio:k5:leben:multi-typisch', ...living.map(LIFE_CONCEPT)],
   })
 }
 
+/** Merkmale = Begriffsdefinitionen + Zuordnung (pair-heavy). */
 export const biMerkmale: Topic['generate'] = mixedVariants(
+  merkmaleMatch,
+  merkmaleMatch,
   merkmaleMc,
   merkmaleTrueFalse,
-  merkmaleMatch,
   merkmaleMulti,
 )
 
-// ─── Per-group topic helpers ─────────────────────────────────────────────────
+/** Kennzeichen = belebte/unbelebte Abgrenzung — DISJOINT from biMerkmale. */
+function kennzeichenMc(rng: Rng) {
+  const cases = [
+    {
+      concept: 'bio:k5:kennzeichen:stein-vs-pflanze',
+      q: 'Was unterscheidet eine Pflanze klar von einem Stein?',
+      good: 'Die Pflanze erfüllt Lebensmerkmale (z. B. Stoffwechsel, Wachstum)',
+      bad: [
+        'Nur die Farbe ist anders',
+        'Steine haben immer Fortpflanzung',
+        'Pflanzen haben keinen Stoffwechsel',
+      ],
+      wissen:
+        'Kennzeichen des Lebendigen: Nur Lebewesen zeigen Stoffwechsel, Wachstum, Reizbarkeit und Fortpflanzung.',
+    },
+    {
+      concept: 'bio:k5:kennzeichen:unbelebt',
+      q: 'Welches Objekt ist eindeutig unbelebt?',
+      good: 'Ein Quarzstück ohne Stoffwechsel',
+      bad: [
+        'Eine keimende Bohne',
+        'Ein Regenwurm',
+        'Eine Hefezelle in Gärung',
+      ],
+      wissen: 'Unbelebte Dinge erfüllen die Lebensmerkmale nicht — auch wenn sie sich chemisch verändern können.',
+    },
+    {
+      concept: 'bio:k5:kennzeichen:beobachtung',
+      q: 'Woran erkennst du im Alltag am ehesten „lebendig“?',
+      good: 'Eigenständige Reaktion auf Umwelt und Stoffwechselzeichen',
+      bad: [
+        'Nur dass etwas schwer ist',
+        'Nur dass etwas glänzt',
+        'Nur dass etwas kalt ist',
+      ],
+      wissen: 'Beobachtbare Kennzeichen: Wachstum, Bewegung/Reaktion, Ernährung/Atmung — nicht bloß Aussehen.',
+    },
+    {
+      concept: 'bio:k5:kennzeichen:virus-grenze',
+      q: 'Warum gelten Viren im Schulmodell oft als Grenzfall?',
+      good: 'Sie haben keinen eigenen Stoffwechsel und brauchen Wirtszellen',
+      bad: [
+        'Sie sind immer Pflanzen',
+        'Sie atmen mit Kiemen',
+        'Sie sind Säugetiere',
+      ],
+      wissen: 'Viren zeigen keine eigenen Stoffwechselprozesse — sie nutzen Wirtszellen zur Vermehrung.',
+    },
+  ]
+  const c = pick(rng, cases)
+  return choicePickTask({
+    question: c.q,
+    choices: shuffleChoices(rng, [c.good, ...c.bad], c.good),
+    correct: c.good,
+    solution: c.good,
+    explanation: c.wissen,
+    instruction: 'Wähle die passende Antwort:',
+    fachwissen: fw(c.wissen),
+    dedupeKey: c.concept,
+    contentIds: [c.concept],
+  })
+}
+
+function kennzeichenTf(rng: Rng) {
+  const cases = [
+    {
+      concept: 'bio:k5:kennzeichen:tf-feuer',
+      statement: 'Ein Lagerfeuer ist ein Lebewesen, weil es sich bewegt und Stoffe umsetzt.',
+      correct: false,
+      explanation: 'Feuer hat keinen eigenen Organismus mit Fortpflanzung und geregeltem Stoffwechsel.',
+      wissen: 'Chemische Prozesse allein machen noch kein Lebewesen aus.',
+    },
+    {
+      concept: 'bio:k5:kennzeichen:tf-samen',
+      statement: 'Ein ruhender Samen kann zu einem Lebewesen werden und zeigt damit Entwicklungsfähigkeit.',
+      correct: true,
+      explanation: 'Samen können keimen — Wachstum und Entwicklung setzen ein.',
+      wissen: 'Überdauerungsstadien gehören zum Lebenszyklus vieler Organismen.',
+    },
+    {
+      concept: 'bio:k5:kennzeichen:tf-kristall',
+      statement: 'Kristalle „wachsen“ wie Lebewesen und erfüllen deshalb alle Lebensmerkmale.',
+      correct: false,
+      explanation: 'Kristallwachstum ist Anlagerung — kein Stoffwechsel und keine Fortpflanzung im biologischen Sinn.',
+      wissen: 'Ähnliche Wörter (Wachstum) meinen bei Kristallen etwas anderes als bei Organismen.',
+    },
+  ]
+  const c = pick(rng, cases)
+  return trueFalse(rng, {
+    statement: c.statement,
+    correct: c.correct,
+    explanation: c.explanation,
+    fachwissen: fw(c.wissen),
+    dedupeKey: c.concept,
+    contentIds: [c.concept],
+  })
+}
+
+function kennzeichenMulti(rng: Rng) {
+  const living = ['keimende Bohne', 'Regenwurm', 'Hefezelle']
+  const non = ['Glasstück', 'Salzkristall']
+  return multiSelectTask({
+    question: 'Welche Beispiele gelten klar als belebt (Organismen)?',
+    choices: shuffle(rng, [...living, ...non]),
+    correct: living,
+    solution: living.join(', '),
+    explanation: 'Glas und Salzkristall sind unbelebt; Bohne, Wurm und Hefe sind Organismen.',
+    instruction: 'Tippe alle belebten Beispiele:',
+    fachwissen: fw(
+      'Kennzeichen des Lebendigen prüfst du an konkreten Beispielen: Organismus vs. unbelebte Materie.',
+    ),
+    dedupeKey: 'bio:k5:kennzeichen:multi-beispiele',
+    contentIds: ['bio:k5:kennzeichen:multi-beispiele'],
+  })
+}
+
+export const biKennzeichen: Topic['generate'] = mixedVariants(
+  kennzeichenMc,
+  kennzeichenTf,
+  kennzeichenMulti,
+  kennzeichenMc,
+)
+
+// ─── Per-group DISJOINT topic helpers (Bug B) ────────────────────────────────
 
 function groupFeatureMc(rng: Rng, group: GroupKey) {
   const pool = FEATURES.filter((f) => f.group === group)
@@ -364,15 +544,17 @@ function groupFeatureMc(rng: Rng, group: GroupKey) {
     rng,
     FEATURES.filter((f) => f.group !== group).map((f) => f.text),
   ).slice(0, 3)
+  const concept = `bio:k5:${group}:merkmal:${feat.text.slice(0, 40)}`
   return choicePickTask({
-    question: `Welches Merkmal passt besonders zu ${GROUP_LABEL[group]}?`,
+    question: `Welches Körper-/Funktionsmerkmal passt besonders zu ${GROUP_LABEL[group]}?`,
     choices: shuffleChoices(rng, [feat.text, ...wrong], feat.text),
     correct: feat.text,
     solution: feat.text,
     explanation: feat.wissen,
     instruction: 'Wähle das passende Merkmal:',
     fachwissen: fw(feat.wissen),
-    dedupeKey: `feat:${group}:${feat.text}`,
+    dedupeKey: concept,
+    contentIds: [concept],
   })
 }
 
@@ -383,6 +565,7 @@ function groupSpeciesMc(rng: Rng, group: GroupKey) {
     rng,
     SPECIES.filter((x) => x.group !== group).map((x) => x.name),
   ).slice(0, 3)
+  const concept = `bio:k5:${group}:art:${s.name.toLowerCase()}`
   return choicePickTask({
     question: `Welche Art gehört zu den ${GROUP_LABEL[group]}?`,
     choices: shuffleChoices(rng, [s.name, ...wrong], s.name),
@@ -391,80 +574,95 @@ function groupSpeciesMc(rng: Rng, group: GroupKey) {
     explanation: `${s.name}: ${s.note}.`,
     instruction: 'Wähle die passende Art:',
     fachwissen: fw(`${s.name} — ${s.note}. Heimische Beispiele helfen, Gruppenmerkmale abzuleiten.`),
-    dedupeKey: `art:${s.name}`,
+    dedupeKey: concept,
+    contentIds: [concept],
   })
 }
 
-function groupTrueFalse(rng: Rng, group: GroupKey) {
-  const bank: Record<GroupKey, { statement: string; correct: boolean; explanation: string; wissen: string }[]> = {
+/** Überblick-only TF — high-level group identity (NOT anatomy detail). */
+function groupOverviewTf(rng: Rng, group: GroupKey) {
+  const bank: Record<
+    GroupKey,
+    { concept: string; statement: string; correct: boolean; explanation: string; wissen: string }[]
+  > = {
     fisch: [
       {
-        statement: 'Die Stromlinienform der Fische ist eine Angepasstheit an das Schwimmen.',
+        concept: 'bio:k5:fisch:ueberblick:tf-wirbeltier',
+        statement: 'Fische gehören zu den Wirbeltieren.',
         correct: true,
-        explanation: 'Stromlinienform verringert den Wasserwiderstand.',
-        wissen: 'Erschließungsfeld Angepasstheit: Körperbau passt zum Lebensraum Wasser.',
+        explanation: 'Fische haben eine Wirbelsäule — sie sind Wirbeltiere.',
+        wissen: 'Überblick: Fische sind eine Wirbeltiergruppe mit typischem Wasserleben.',
       },
       {
-        statement: 'Fische atmen typischerweise mit Lungen an Land.',
+        concept: 'bio:k5:fisch:ueberblick:tf-insekten',
+        statement: 'Forelle und Hecht sind Insekten.',
         correct: false,
-        explanation: 'Fische atmen über Kiemen im Wasser.',
-        wissen: 'Kiemen entziehen dem Wasser Sauerstoff — typisch für Wasserleben.',
+        explanation: 'Forelle und Hecht sind Fische, keine Insekten.',
+        wissen: 'Artenkenntnis im Überblick: heimische Beispiele den richtigen Gruppen zuordnen.',
       },
     ],
     lurch: [
       {
-        statement: 'Viele Lurche durchlaufen eine Metamorphose.',
+        concept: 'bio:k5:lurch:ueberblick:tf-wirbeltier',
+        statement: 'Lurche (Amphibien) gehören zu den Wirbeltieren.',
         correct: true,
-        explanation: 'Kaulquappe → Frosch ist das klassische Beispiel.',
-        wissen: 'Metamorphose verbindet Wasserlarve und landlebendes Adulttier.',
+        explanation: 'Lurche sind Wirbeltiere mit oft feuchtem Lebensraumbezug.',
+        wissen: 'Überblick: Lurche sind eine eigene Wirbeltiergruppe neben Fischen und Kriechtieren.',
       },
       {
-        statement: 'Lurche haben eine trockene Hornschicht wie Kriechtiere.',
+        concept: 'bio:k5:lurch:ueberblick:tf-vogel',
+        statement: 'Erdkröte und Grasfrosch sind Vögel.',
         correct: false,
-        explanation: 'Lurche haben feuchte, drüsenreiche Haut (Feuchtlufttiere).',
-        wissen: 'Körperbedeckung und Atmung hängen zusammen — feuchte Haut ermöglicht Hautatmung.',
+        explanation: 'Kröte und Frosch sind Lurche.',
+        wissen: 'Artenkenntnis: heimische Lurche wie Frosch und Kröte korrekt der Wirbeltiergruppe zuordnen.',
       },
     ],
     kriechtier: [
       {
-        statement: 'Kriechtiere sind typische Trockenlufttiere mit Lungenatmung.',
+        concept: 'bio:k5:kriechtier:ueberblick:tf-wirbeltier',
+        statement: 'Kriechtiere (Reptilien) gehören zu den Wirbeltieren.',
         correct: true,
-        explanation: 'Hornschicht und Lungen passen zum Landleben.',
-        wissen: 'Angepasstheit: trockene Haut, innere Befruchtung, Eiablage an Land.',
+        explanation: 'Kriechtiere sind landlebende Wirbeltiere.',
+        wissen: 'Überblick: Kriechtiere bilden eine eigene Wirbeltiergruppe.',
       },
       {
-        statement: 'Heimische Kriechtiere brauchen zur Fortpflanzung zwingend offenes Wasser wie Fische.',
+        concept: 'bio:k5:kriechtier:ueberblick:tf-fisch',
+        statement: 'Zauneidechse und Ringelnatter sind Fische.',
         correct: false,
-        explanation: 'Kriechtiere legen Eier an Land; innere Befruchtung.',
-        wissen: 'Im Vergleich zu Fischen/Lurchen sind Kriechtiere unabhängiger vom Wasser.',
+        explanation: 'Eidechse und Natter sind Kriechtiere.',
+        wissen: 'Artenkenntnis im Überblick: heimische Beispiele den richtigen Wirbeltiergruppen zuordnen.',
       },
     ],
     vogel: [
       {
-        statement: 'Luftsäcke unterstützen den effizienten Gasaustausch beim Fliegen.',
+        concept: 'bio:k5:vogel:ueberblick:tf-wirbeltier',
+        statement: 'Vögel gehören zu den Wirbeltieren.',
         correct: true,
-        explanation: 'Vögel haben Lunge plus Luftsäcke.',
-        wissen: 'Struktur und Funktion: Atmungsorgane sind an den Flug angepasst.',
+        explanation: 'Vögel sind gleichwarme Wirbeltiere.',
+        wissen: 'Überblick: Vögel sind eine Wirbeltiergruppe mit Federkleid und typischerweise Flugvermögen.',
       },
       {
-        statement: 'Alle Vögel sind Nestflüchter und verlassen das Nest sofort nach dem Schlüpfen.',
+        concept: 'bio:k5:vogel:ueberblick:tf-saeuger',
+        statement: 'Amsel und Kohlmeise sind Säugetiere.',
         correct: false,
-        explanation: 'Es gibt Nesthocker und Nestflüchter.',
-        wissen: 'Brutpflegeverhalten unterscheidet sich — Nesthocker bleiben länger im Nest.',
+        explanation: 'Amsel und Meise sind Vögel.',
+        wissen: 'Artenkenntnis: Singvögel wie Amsel und Kohlmeise korrekt den Vögeln zuordnen.',
       },
     ],
     saeuger: [
       {
-        statement: 'Säugetiere säugen ihre Nachkommen mit Milch.',
+        concept: 'bio:k5:saeuger:ueberblick:tf-wirbeltier',
+        statement: 'Säugetiere gehören zu den Wirbeltieren.',
         correct: true,
-        explanation: 'Das Säugen ist namensgebend für die Gruppe.',
-        wissen: 'Fell, Säugen und meist lebendgebärend zeichnen Säugetiere aus.',
+        explanation: 'Säugetiere sind Wirbeltiere mit Säugen der Jungen.',
+        wissen: 'Überblick: Säugetiere sind eine Wirbeltiergruppe.',
       },
       {
-        statement: 'Der Maulwurf hat Grabextremitäten — eine Angepasstheit an unterirdisches Leben.',
-        correct: true,
-        explanation: 'Gliedmaßenbau spiegelt den Lebensraum wider.',
-        wissen: 'Vergleiche Maulwurf, Fledermaus, Delphin, Pferd: gleiche Grundbaupläne, andere Angepasstheit.',
+        concept: 'bio:k5:saeuger:ueberblick:tf-vogel',
+        statement: 'Reh und Fuchs sind Vögel.',
+        correct: false,
+        explanation: 'Reh und Fuchs sind Säugetiere.',
+        wissen: 'Artenkenntnis im Überblick: heimische Beispiele den richtigen Wirbeltiergruppen zuordnen.',
       },
     ],
   }
@@ -474,6 +672,106 @@ function groupTrueFalse(rng: Rng, group: GroupKey) {
     correct: c.correct,
     explanation: c.explanation,
     fachwissen: fw(c.wissen),
+    dedupeKey: c.concept,
+    contentIds: [c.concept],
+  })
+}
+
+/** Merkmale-only TF — anatomy / Angepasstheit (NOT overview species). */
+function groupMerkmaleTf(rng: Rng, group: GroupKey) {
+  const bank: Record<
+    GroupKey,
+    { concept: string; statement: string; correct: boolean; explanation: string; wissen: string }[]
+  > = {
+    fisch: [
+      {
+        concept: 'bio:k5:fisch:merkmale:tf-stromlinie',
+        statement: 'Die Stromlinienform der Fische ist eine Angepasstheit an das Schwimmen.',
+        correct: true,
+        explanation: 'Stromlinienform verringert den Wasserwiderstand.',
+        wissen: 'Körperbau passt zum Lebensraum Wasser.',
+      },
+      {
+        concept: 'bio:k5:fisch:merkmale:tf-lungen',
+        statement: 'Fische atmen typischerweise mit Lungen an Land.',
+        correct: false,
+        explanation: 'Fische atmen über Kiemen im Wasser.',
+        wissen: 'Kiemen entziehen dem Wasser Sauerstoff.',
+      },
+    ],
+    lurch: [
+      {
+        concept: 'bio:k5:lurch:merkmale:tf-meta',
+        statement: 'Viele Lurche durchlaufen eine Metamorphose.',
+        correct: true,
+        explanation: 'Kaulquappe → Frosch ist das klassische Beispiel.',
+        wissen: 'Metamorphose verbindet Wasserlarve und landlebendes Adulttier.',
+      },
+      {
+        concept: 'bio:k5:lurch:merkmale:tf-horn',
+        statement: 'Lurche haben eine trockene Hornschicht wie Kriechtiere.',
+        correct: false,
+        explanation: 'Lurche haben feuchte, drüsenreiche Haut (Feuchtlufttiere).',
+        wissen: 'Feuchte Haut ermöglicht Hautatmung.',
+      },
+    ],
+    kriechtier: [
+      {
+        concept: 'bio:k5:kriechtier:merkmale:tf-trocken',
+        statement: 'Kriechtiere sind typische Trockenlufttiere mit Lungenatmung.',
+        correct: true,
+        explanation: 'Hornschicht und Lungen passen zum Landleben.',
+        wissen: 'Trockene Haut, innere Befruchtung, Eiablage an Land.',
+      },
+      {
+        concept: 'bio:k5:kriechtier:merkmale:tf-wasser',
+        statement: 'Heimische Kriechtiere brauchen zur Fortpflanzung zwingend offenes Wasser wie Fische.',
+        correct: false,
+        explanation: 'Kriechtiere legen Eier an Land; innere Befruchtung.',
+        wissen: 'Kriechtiere sind unabhängiger vom Wasser als Fische/Lurche.',
+      },
+    ],
+    vogel: [
+      {
+        concept: 'bio:k5:vogel:merkmale:tf-luftsacke',
+        statement: 'Luftsäcke unterstützen den effizienten Gasaustausch beim Fliegen.',
+        correct: true,
+        explanation: 'Vögel haben Lunge plus Luftsäcke.',
+        wissen: 'Atmungsorgane sind an den Flug angepasst.',
+      },
+      {
+        concept: 'bio:k5:vogel:merkmale:tf-nestfluechter',
+        statement: 'Alle Vögel sind Nestflüchter und verlassen das Nest sofort nach dem Schlüpfen.',
+        correct: false,
+        explanation: 'Es gibt Nesthocker und Nestflüchter.',
+        wissen: 'Brutpflegeverhalten unterscheidet sich.',
+      },
+    ],
+    saeuger: [
+      {
+        concept: 'bio:k5:saeuger:merkmale:tf-saeugen',
+        statement: 'Säugetiere säugen ihre Nachkommen mit Milch.',
+        correct: true,
+        explanation: 'Das Säugen ist namensgebend für die Gruppe.',
+        wissen: 'Fell, Säugen und meist lebendgebärend zeichnen Säugetiere aus.',
+      },
+      {
+        concept: 'bio:k5:saeuger:merkmale:tf-fell',
+        statement: 'Säugetiere haben typischerweise Federn statt Haare.',
+        correct: false,
+        explanation: 'Säugetiere haben Haare/Fell — Federn kennzeichnen Vögel.',
+        wissen: 'Körperbedeckung ist ein Leitmerkmal der Gruppen.',
+      },
+    ],
+  }
+  const c = pick(rng, bank[group])
+  return trueFalse(rng, {
+    statement: c.statement,
+    correct: c.correct,
+    explanation: c.explanation,
+    fachwissen: fw(c.wissen),
+    dedupeKey: c.concept,
+    contentIds: [c.concept],
   })
 }
 
@@ -486,23 +784,30 @@ function groupFeatureMulti(rng: Rng, group: GroupKey) {
     rng,
     FEATURES.filter((f) => f.group !== group).map((f) => f.text),
   ).slice(0, 2)
+  const concept = `bio:k5:${group}:merkmale:multi:${correct.join('|').slice(0, 48)}`
   return multiSelectTask({
-    question: `Welche Merkmale gehören zu ${GROUP_LABEL[group]}?`,
+    question: `Welche Bau- und Funktionsmerkmale gehören zu ${GROUP_LABEL[group]}?`,
     choices: shuffle(rng, [...correct, ...wrong]),
     correct,
     solution: correct.join('; '),
     explanation: `Typisch für ${GROUP_LABEL[group]}: ${correct.join('; ')}.`,
     instruction: 'Tippe alle passenden Merkmale:',
     fachwissen: fw(
-      `Leite Gruppenmerkmale aus heimischen Arten ab und nutze die Erschließungsfelder Vielfalt und Angepasstheit.`,
+      `Leite Gruppenmerkmale aus heimischen Arten ab (Vielfalt und Angepasstheit).`,
     ),
+    dedupeKey: concept,
+    contentIds: [concept],
   })
 }
 
 function groupSchutzMc(rng: Rng, group: GroupKey) {
-  const tips: Record<GroupKey, { q: string; good: string; bad: string[]; wissen: string }[]> = {
+  const tips: Record<
+    GroupKey,
+    { concept: string; q: string; good: string; bad: string[]; wissen: string }[]
+  > = {
     fisch: [
       {
+        concept: 'bio:k5:fisch:schutz:lebensraum',
         q: 'Was schützt Fischbestände nachhaltig?',
         good: 'Erhalt von Lebensräumen und guter Wasserqualität',
         bad: [
@@ -510,11 +815,23 @@ function groupSchutzMc(rng: Rng, group: GroupKey) {
           'Zerstören von Laichplätzen',
           'Überfischung ohne Schonzeiten',
         ],
-        wissen: 'Schutz heißt: Gewässerqualität und Lebensräume erhalten (BNE, Beispiele aus Sachsen).',
+        wissen: 'Schutz heißt: Gewässerqualität und Lebensräume erhalten.',
+      },
+      {
+        concept: 'bio:k5:fisch:schutz:schonzeit',
+        q: 'Welche Regel schützt laichende Fische besonders?',
+        good: 'Schonzeiten und geschützte Laichplätze einhalten',
+        bad: [
+          'Laichplätze trockenlegen',
+          'Jede Menge Dünger direkt ins Gewässer',
+          'Netze in Schongebieten ohne Kontrolle',
+        ],
+        wissen: 'Schonzeiten sichern die Fortpflanzung der Bestände.',
       },
     ],
     lurch: [
       {
+        concept: 'bio:k5:lurch:schutz:laich',
         q: 'Was hilft dem Schutz heimischer Lurche?',
         good: 'Laichgewässer und Wanderwege erhalten / vernetzen',
         bad: [
@@ -522,11 +839,23 @@ function groupSchutzMc(rng: Rng, group: GroupKey) {
           'Straßen ohne Amphibienschutz zur Wanderzeit',
           'Feuchtgebiete trocknen',
         ],
-        wissen: 'Lurche brauchen feuchte Lebensräume und sichere Wanderungen zu Laichgewässern.',
+        wissen: 'Lurche brauchen feuchte Lebensräume und sichere Wanderungen.',
+      },
+      {
+        concept: 'bio:k5:lurch:schutz:zaun',
+        q: 'Wozu dienen Amphibienschutzzäune an Straßen?',
+        good: 'Wandernde Lurche vor dem Überfahren schützen und ableiten',
+        bad: [
+          'Fische im Bach fangen',
+          'Vögel am Nest stören',
+          'Kriechtiere in Terrarien sammeln',
+        ],
+        wissen: 'Zur Laichzeit queren viele Lurche Straßen — Zäune und Leitungen retten Tiere.',
       },
     ],
     kriechtier: [
       {
+        concept: 'bio:k5:kriechtier:schutz:habitat',
         q: 'Welche Maßnahme schützt heimische Kriechtiere?',
         good: 'Sonnige Lebensräume und Verstecke erhalten',
         bad: [
@@ -534,11 +863,12 @@ function groupSchutzMc(rng: Rng, group: GroupKey) {
           'Habitate zersiedeln ohne Ausgleich',
           'Wildfang für Terrarien ohne Genehmigung',
         ],
-        wissen: 'Artenschutz: Lebensräume (z. B. Trockenrasen, Lesesteinhaufen) erhalten.',
+        wissen: 'Artenschutz: Lebensräume (Trockenrasen, Lesesteinhaufen) erhalten.',
       },
     ],
     vogel: [
       {
+        concept: 'bio:k5:vogel:schutz:nisthilfe',
         q: 'Was unterstützt den Schutz heimischer Vögel?',
         good: 'Lebensräume erhalten und artgerechte Nisthilfen',
         bad: [
@@ -546,11 +876,12 @@ function groupSchutzMc(rng: Rng, group: GroupKey) {
           'Dauerhafte Störung an Brutplätzen',
           'Giftköder auslegen',
         ],
-        wissen: 'Schutz der Lebensräume, Artenschutz und verantwortungsvolle Jagd/Regeln in Sachsen.',
+        wissen: 'Schutz der Lebensräume und verantwortungsvoller Umgang in der Brutzeit.',
       },
     ],
     saeuger: [
       {
+        concept: 'bio:k5:saeuger:schutz:vernetzung',
         q: 'Was ist eine sinnvolle Schutzmaßnahme für heimische Säugetiere?',
         good: 'Lebensräume vernetzen und Störungen in Kernzonen vermeiden',
         bad: [
@@ -571,22 +902,234 @@ function groupSchutzMc(rng: Rng, group: GroupKey) {
     explanation: tip.wissen,
     instruction: 'Wähle die beste Maßnahme:',
     fachwissen: fw(tip.wissen),
+    dedupeKey: tip.concept,
+    contentIds: [tip.concept],
   })
 }
 
-function makeGroupTopic(group: GroupKey, extra?: (rng: Rng) => ReturnType<Topic['generate']>) {
-  const variants = [
-    (rng: Rng) => groupFeatureMc(rng, group),
-    (rng: Rng) => groupSpeciesMc(rng, group),
-    (rng: Rng) => groupTrueFalse(rng, group),
-    (rng: Rng) => groupFeatureMulti(rng, group),
-    (rng: Rng) => groupSchutzMc(rng, group),
-  ]
-  if (extra) variants.push(extra)
-  return mixedVariants(...variants)
+function groupSchutzTf(rng: Rng, group: GroupKey) {
+  const bank: Record<
+    GroupKey,
+    { concept: string; statement: string; correct: boolean; explanation: string; wissen: string }[]
+  > = {
+    fisch: [
+      {
+        concept: 'bio:k5:fisch:schutz:tf-abwasser',
+        statement: 'Ungeklärte Abwässer verbessern langfristig die Fischbestände.',
+        correct: false,
+        explanation: 'Schlechte Wasserqualität schädigt Fische und Laichplätze.',
+        wissen:
+          'Gewässerschutz ist Artenschutz: Sauberes Wasser, intakte Ufer und Laichplätze sichern nachhaltige Fischbestände in Sachsen.',
+      },
+    ],
+    lurch: [
+      {
+        concept: 'bio:k5:lurch:schutz:tf-tuempel',
+        statement: 'Das Zuschütten kleiner Tümpel gefährdet viele Lurcharten.',
+        correct: true,
+        explanation: 'Laichgewässer sind unverzichtbar.',
+        wissen:
+          'Viele Lurche brauchen kleine Gewässer zum Laichen. Wer Tümpel zuschüttet, zerstört Fortpflanzungsorte und gefährdet ganze Populationen.',
+      },
+    ],
+    kriechtier: [
+      {
+        concept: 'bio:k5:kriechtier:schutz:tf-totholz',
+        statement: 'Totholz- und Steinhaufen können als Verstecke für Kriechtiere wichtig sein.',
+        correct: true,
+        explanation: 'Strukturen bieten Wärme und Schutz.',
+        wissen:
+          'Kriechtiere nutzen sonnige Plätze und Verstecke aus Stein oder Totholz. Solche Kleinstrukturen im Lebensraum zu erhalten ist praktischer Artenschutz.',
+      },
+    ],
+    vogel: [
+      {
+        concept: 'bio:k5:vogel:schutz:tf-brut',
+        statement: 'Heckenrodung mitten in der Brutzeit ist unproblematisch für Vögel.',
+        correct: false,
+        explanation: 'Brutgeschäft wird gestört, Gelege können verloren gehen.',
+        wissen:
+          'In der Brutzeit stören Eingriffe an Hecken und Gehölzen Nester und Jungvögel. Rücksicht und zeitliche Schonung sind wirksamer Vogelschutz.',
+      },
+    ],
+    saeuger: [
+      {
+        concept: 'bio:k5:saeuger:schutz:tf-korridor',
+        statement: 'Vernetzte Lebensräume (Korridore) helfen wandernden Säugetieren.',
+        correct: true,
+        explanation: 'Zerschneidung isoliert Populationen.',
+        wissen:
+          'Biotopverbund verbindet Teillebensräume. Ohne Korridore bleiben Populationen isoliert und anfälliger für lokale Störungen oder Verluste.',
+      },
+    ],
+  }
+  const c = pick(rng, bank[group])
+  return trueFalse(rng, {
+    statement: c.statement,
+    correct: c.correct,
+    explanation: c.explanation,
+    fachwissen: fw(c.wissen),
+    dedupeKey: c.concept,
+    contentIds: [c.concept],
+  })
 }
 
-// Group-specific extras
+/** Lebensraum-only content (habitat / Nahrung) — not features/schutz/species. */
+function groupLebensraumTf(rng: Rng, group: GroupKey) {
+  const bank: Record<
+    GroupKey,
+    { concept: string; statement: string; correct: boolean; explanation: string; wissen: string }[]
+  > = {
+    fisch: [
+      {
+        concept: 'bio:k5:fisch:lebensraum:tf-wasser',
+        statement: 'Der typische Lebensraum der meisten Fische ist das Wasser.',
+        correct: true,
+        explanation: 'Fische sind an das Wasserleben angepasst.',
+        wissen: 'Lebensraum Wasser prägt Atmung, Bewegung und Fortpflanzung der Fische.',
+      },
+      {
+        concept: 'bio:k5:fisch:lebensraum:tf-wueste',
+        statement: 'Die meisten Knochenfische leben dauerhaft in der Wüste ohne Wasser.',
+        correct: false,
+        explanation: 'Ohne Wasser kein typisches Fischleben.',
+        wissen: 'Lebensraum und Angepasstheit gehören zusammen.',
+      },
+    ],
+    lurch: [
+      {
+        concept: 'bio:k5:lurch:lebensraum:tf-feucht',
+        statement: 'Viele Lurche sind an feuchte Lebensräume gebunden.',
+        correct: true,
+        explanation: 'Feuchte Haut und oft Wasserlarven erfordern Feuchtigkeit.',
+        wissen: 'Lebensraum Feuchtgebiet / Gewässerrand.',
+      },
+    ],
+    kriechtier: [
+      {
+        concept: 'bio:k5:kriechtier:lebensraum:tf-land',
+        statement: 'Heimische Kriechtiere nutzen oft sonnige Landlebensräume.',
+        correct: true,
+        explanation: 'Als Wechselwarme brauchen sie Sonnenplätze.',
+        wissen: 'Trockenrasen, Säume und Steinstrukturen sind typische Habitate.',
+      },
+    ],
+    vogel: [
+      {
+        concept: 'bio:k5:vogel:lebensraum:tf-luft',
+        statement: 'Viele Vögel nutzen den Luftraum zum Fliegen und verschiedene Biotope zum Brüten.',
+        correct: true,
+        explanation: 'Flug und Brutplatz gehören zum Lebensraumbezug.',
+        wissen: 'Lebensraum umfasst Nahrung, Brut und Zugwege.',
+      },
+    ],
+    saeuger: [
+      {
+        concept: 'bio:k5:saeuger:lebensraum:tf-vielfalt',
+        statement: 'Säugetiere besiedeln sehr unterschiedliche Lebensräume (Wald, Feld, Wasser, Luft).',
+        correct: true,
+        explanation: 'Von Maulwurf bis Fledermaus — große Habitatvielfalt.',
+        wissen: 'Angepasstheit der Gliedmaßen spiegelt den Lebensraum wider.',
+      },
+    ],
+  }
+  const c = pick(rng, bank[group])
+  return trueFalse(rng, {
+    statement: c.statement,
+    correct: c.correct,
+    explanation: c.explanation,
+    fachwissen: fw(c.wissen),
+    dedupeKey: c.concept,
+    contentIds: [c.concept],
+  })
+}
+
+function groupLebensraumMc(rng: Rng, group: GroupKey) {
+  const tips: Record<
+    GroupKey,
+    { concept: string; q: string; good: string; bad: string[]; wissen: string }[]
+  > = {
+    fisch: [
+      {
+        concept: 'bio:k5:fisch:lebensraum:sauerstoff',
+        q: 'Was ist für Fische im Gewässer besonders wichtig?',
+        good: 'Ausreichend gelöster Sauerstoff und geeignete Temperatur',
+        bad: [
+          'Nur trockene Steppenluft',
+          'Nur Nestkästen in Bäumen',
+          'Nur Winterfütterung mit Brotkrumen an Land',
+        ],
+        wissen: 'Abiotische Faktoren im Wasser bestimmen, welche Fische wo leben können.',
+      },
+    ],
+    lurch: [
+      {
+        concept: 'bio:k5:lurch:lebensraum:laichgewaesser',
+        q: 'Welcher Lebensraum ist für viele Froschlurche zur Fortpflanzung zentral?',
+        good: 'Laichgewässer (Tümpel, Weiher) plus umliegende Landhabitate',
+        bad: [
+          'Nur Hochgebirgsgletscher ohne Wasser',
+          'Nur Meeresboden in 2000 m Tiefe',
+          'Nur Wüsten ohne Feuchtigkeit',
+        ],
+        wissen: 'Laichgewässer und Landlebensraum bilden zusammen den Jahreslebensraum.',
+      },
+    ],
+    kriechtier: [
+      {
+        concept: 'bio:k5:kriechtier:lebensraum:sonne',
+        q: 'Warum sind sonnige Plätze für Kriechtiere wichtig?',
+        good: 'Als Wechselwarme nutzen sie Sonne zur Aktivitätssteuerung',
+        bad: [
+          'Weil sie Kiemen trocknen müssen',
+          'Weil sie Federn wärmen',
+          'Weil sie Milch produzieren',
+        ],
+        wissen: 'Verhaltensweisen wie Sonnenbaden hängen mit dem Temperaturhaushalt zusammen.',
+      },
+    ],
+    vogel: [
+      {
+        concept: 'bio:k5:vogel:lebensraum:brut',
+        q: 'Was gehört typischerweise zum Lebensraum eines Brutvogels?',
+        good: 'Geeigneter Nistplatz plus Nahrungsflächen in erreichbarer Nähe',
+        bad: [
+          'Nur ein Aquarium ohne Land',
+          'Nur ein steinernes Labyrinth ohne Pflanzen',
+          'Nur ein dunkler Keller ohne Zugang',
+        ],
+        wissen: 'Brut- und Nahrungsraum müssen zusammenpassen.',
+      },
+    ],
+    saeuger: [
+      {
+        concept: 'bio:k5:saeuger:lebensraum:deckung',
+        q: 'Was brauchen viele Säugetiere in der Kulturlandschaft?',
+        good: 'Deckung, Vernetzung und ungestörte Rückzugsräume',
+        bad: [
+          'Nur Kiemenwasser ohne Unterschlupf',
+          'Nur Nestkästen ausschließlich für Fische',
+          'Nur dauerhafte Beleuchtung ohne Schatten',
+        ],
+        wissen: 'Strukturreiche Landschaften sichern Lebensräume.',
+      },
+    ],
+  }
+  const tip = pick(rng, tips[group])
+  return choicePickTask({
+    question: tip.q,
+    choices: shuffleChoices(rng, [tip.good, ...tip.bad], tip.good),
+    correct: tip.good,
+    solution: tip.good,
+    explanation: tip.wissen,
+    instruction: 'Wähle die passende Antwort:',
+    fachwissen: fw(tip.wissen),
+    dedupeKey: tip.concept,
+    contentIds: [tip.concept],
+  })
+}
+
+// Group-specific Spezial extras (only used in their own topic)
 
 function fischeNahrung(rng: Rng) {
   return classifySlotsTask(rng, {
@@ -600,6 +1143,7 @@ function fischeNahrung(rng: Rng) {
     fachwissen: fw(
       'Nahrungsbeziehungen im Lebensraum Wasser: Produzenten, Fried- und Raubfische bilden Ketten.',
     ),
+    concept: 'bio:k5:fisch:lebensraum:nahrungskette',
   })
 }
 
@@ -618,23 +1162,26 @@ function fischeBauMatch(rng: Rng) {
     fachwissen: fw(
       'Körpergliederung und äußerer Bau der Fische: Stromlinienform, Flossen, Schleimhaut, Schuppen, Kiemen.',
     ),
+    concept: 'bio:k5:fisch:merkmale:bau-funktion',
   })
 }
 
 function lurcheMetaSort(rng: Rng) {
   const steps = ['Laich im Wasser', 'Kaulquappe mit Kiemen', 'Beine wachsen', 'Landlebender Frosch']
-  return dragDropSortTask({
-    question:
-      'Ordne die Metamorphose eines Froschlurchs von früh nach spät.',
-    items: steps.map((label, value) => ({ label, value })),
-    correctOrder: [0, 1, 2, 3],
-    solution: steps.join(' → '),
-    explanation: 'Aus dem Laich wird die wasserlebende Larve; später entsteht das landlebende Adulttier.',
-    rng,
-    fachwissen: fw(
-      'Fortpflanzung der Lurche: äußere Befruchtung, Metamorphose, Wanderung zu Laichgewässern.',
-    ),
-  })
+  return withConcept(
+    dragDropSortTask({
+      question: 'Ordne die Metamorphose eines Froschlurchs von früh nach spät.',
+      items: steps.map((label, value) => ({ label, value })),
+      correctOrder: [0, 1, 2, 3],
+      solution: steps.join(' → '),
+      explanation: 'Aus dem Laich wird die wasserlebende Larve; später entsteht das landlebende Adulttier.',
+      rng,
+      fachwissen: fw(
+        'Fortpflanzung der Lurche: äußere Befruchtung, Metamorphose, Wanderung zu Laichgewässern.',
+      ),
+    }),
+    'bio:k5:lurch:meta:sort-phasen',
+  )
 }
 
 function lurcheMatch(rng: Rng) {
@@ -652,6 +1199,7 @@ function lurcheMatch(rng: Rng) {
     fachwissen: fw(
       'Typische Merkmale: feuchte Haut, wechselwarm, äußere Befruchtung, Metamorphose.',
     ),
+    concept: 'bio:k5:lurch:merkmale:begriffe',
   })
 }
 
@@ -670,6 +1218,7 @@ function kriechMatch(rng: Rng) {
     fachwissen: fw(
       'Heimische Arten (z. B. Zauneidechse, Ringelnatter) zeigen typische Kriechtiermerkmale.',
     ),
+    concept: 'bio:k5:kriechtier:merkmale:zuordnung',
   })
 }
 
@@ -691,6 +1240,7 @@ function voegelSchnabel(rng: Rng) {
     fachwissen: fw(
       'Angepasstheit der Vögel: Körperform/Skelett zum Fliegen, Schnabel zur Nahrung, Luftsäcke zur Atmung.',
     ),
+    concept: `bio:k5:vogel:fortpflanzung:schnabel:${three.map((p) => p.form.slice(0, 12)).join('+')}`,
   })
 }
 
@@ -709,6 +1259,7 @@ function voegelFlugMatch(rng: Rng) {
     fachwissen: fw(
       'Vögel: Federkleid, gleichwarm, innere Befruchtung, Brutpflege (Nesthocker/Nestflüchter).',
     ),
+    concept: 'bio:k5:vogel:flug:zuordnung',
   })
 }
 
@@ -728,6 +1279,7 @@ function saeugerGebiss(rng: Rng) {
     fachwissen: fw(
       'Säugetiere: Fell, Säugen, gleichwarm; Angepasstheit von Gliedmaßen und Gebiss an Lebensraum und Nahrung.',
     ),
+    concept: 'bio:k5:saeuger:merkmale:gebiss',
   })
 }
 
@@ -742,30 +1294,141 @@ function saeugerGliedmass(rng: Rng) {
     fachwissen: fw(
       'Vergleich von Gliedmaßenskeletten zeigt Angepasstheit an unterschiedliche Lebensräume.',
     ),
+    concept: 'bio:k5:saeuger:angepasst:gliedmassen',
   })
 }
 
-/** Überblick: Gruppenmerkmale / Zuordnung — ohne Spezial-Extras anderer Unterthemen. */
-export const biFischeOverview = makeGroupTopic('fisch')
-export const biLurcheOverview = makeGroupTopic('lurch')
-export const biKriechtiereOverview = makeGroupTopic('kriechtier')
-export const biVoegelOverview = makeGroupTopic('vogel')
-export const biSaeugetiereOverview = makeGroupTopic('saeuger')
+/**
+ * DISJOINT topic factories — Überblick never reuses Merkmale/Lebensraum/Schutz pools.
+ * Fewer tasks per topic is intentional and correct.
+ */
+function makeOverviewTopic(group: GroupKey): Topic['generate'] {
+  // Species ID + high-level TF only. No feature/schutz/lebensraum bleed.
+  // kriechtier-arten owns species — overview for kriechtier skips species MC.
+  if (group === 'kriechtier') {
+    return mixedVariants(
+      (rng) => groupOverviewTf(rng, group),
+      (rng) => groupOverviewTf(rng, group),
+      (rng) =>
+        choicePickTask({
+          question: 'Welche Aussage beschreibt Kriechtiere im Überblick korrekt?',
+          choices: shuffleChoices(
+            rng,
+            [
+              'Landlebende Wirbeltiere mit typischer Hornschicht',
+              'Ausschließlich Insekten ohne Wirbelsäule',
+              'Nur wasserlebende Kiemenatmer',
+              'Nur Vögel mit Federkleid',
+            ],
+            'Landlebende Wirbeltiere mit typischer Hornschicht',
+          ),
+          correct: 'Landlebende Wirbeltiere mit typischer Hornschicht',
+          solution: 'Landlebende Wirbeltiere mit typischer Hornschicht',
+          explanation: 'Kriechtiere: Wirbeltiere, an Land angepasst.',
+          fachwissen: fw('Überblick Kriechtiere: Gruppe der Wirbeltiere, Trockenlufttiere.'),
+          dedupeKey: 'bio:k5:kriechtier:ueberblick:definition',
+          contentIds: ['bio:k5:kriechtier:ueberblick:definition'],
+        }),
+    )
+  }
+  return mixedVariants(
+    (rng) => groupSpeciesMc(rng, group),
+    (rng) => groupOverviewTf(rng, group),
+    (rng) => groupSpeciesMc(rng, group),
+    (rng) => groupOverviewTf(rng, group),
+  )
+}
 
-/** Spezialisierte Unterthemen — nur gruppeninterne Details. */
-export const biFischeMerkmale = makeGroupTopic('fisch', fischeBauMatch)
-export const biFischeLebensraum = makeGroupTopic('fisch', fischeNahrung)
-export const biFischeSchutz = makeGroupTopic('fisch', (rng) => groupSchutzMc(rng, 'fisch'))
-export const biLurcheMerkmale = makeGroupTopic('lurch', lurcheMatch)
-export const biLurcheMeta = makeGroupTopic('lurch', lurcheMetaSort)
-export const biLurcheSchutz = makeGroupTopic('lurch', (rng) => groupSchutzMc(rng, 'lurch'))
-export const biKriechtiereMerkmale = makeGroupTopic('kriechtier', kriechMatch)
-export const biKriechtiereArten = makeGroupTopic('kriechtier', (rng) => groupSpeciesMc(rng, 'kriechtier'))
-export const biVoegelFlug = makeGroupTopic('vogel', voegelFlugMatch)
-export const biVoegelFortpflanzung = makeGroupTopic('vogel', voegelSchnabel)
-export const biSaeugerMerkmale = makeGroupTopic('saeuger', saeugerGebiss)
-export const biSaeugerAngepasst = makeGroupTopic('saeuger', saeugerGliedmass)
-export const biSaeugerSchutz = makeGroupTopic('saeuger', (rng) => groupSchutzMc(rng, 'saeuger'))
+function makeMerkmaleTopic(
+  group: GroupKey,
+  extra?: (rng: Rng) => ReturnType<Topic['generate']>,
+): Topic['generate'] {
+  const variants: Array<(rng: Rng) => ReturnType<Topic['generate']>> = [
+    (rng) => groupFeatureMc(rng, group),
+    (rng) => groupFeatureMulti(rng, group),
+    (rng) => groupMerkmaleTf(rng, group),
+  ]
+  if (extra) variants.unshift(extra)
+  return mixedVariants(...variants)
+}
+
+function makeLebensraumTopic(
+  group: GroupKey,
+  extra?: (rng: Rng) => ReturnType<Topic['generate']>,
+): Topic['generate'] {
+  const variants: Array<(rng: Rng) => ReturnType<Topic['generate']>> = [
+    (rng) => groupLebensraumMc(rng, group),
+    (rng) => groupLebensraumTf(rng, group),
+  ]
+  if (extra) variants.unshift(extra)
+  return mixedVariants(...variants)
+}
+
+function makeSchutzTopic(group: GroupKey): Topic['generate'] {
+  return mixedVariants(
+    (rng) => groupSchutzMc(rng, group),
+    (rng) => groupSchutzTf(rng, group),
+    (rng) => groupSchutzMc(rng, group),
+  )
+}
+
+function makeMetaTopic(extra: (rng: Rng) => ReturnType<Topic['generate']>): Topic['generate'] {
+  return mixedVariants(extra, extra)
+}
+
+function makeArtenTopic(group: GroupKey): Topic['generate'] {
+  // Species only — no overview TF (would collide with Überblick stems/ids).
+  return mixedVariants(
+    (rng) => groupSpeciesMc(rng, group),
+    (rng) => groupSpeciesMc(rng, group),
+    (rng) => {
+      const species = SPECIES.filter((s) => s.group === group)
+      const s = pick(rng, species)
+      const concept = `bio:k5:${group}:arten:note:${s.name.toLowerCase()}`
+      return choicePickTask({
+        question: `Welches Kennzeichen passt zur Art „${s.name}“?`,
+        choices: shuffleChoices(
+          rng,
+          [
+            s.note,
+            'Atmung nur über Federn',
+            'Typisches Insekt mit sechs Beinen',
+            'Lebt ausschließlich als Stein ohne Stoffwechsel',
+          ],
+          s.note,
+        ),
+        correct: s.note,
+        solution: s.note,
+        explanation: `${s.name}: ${s.note}.`,
+        fachwissen: fw(`${s.name} — ${s.note}.`),
+        dedupeKey: concept,
+        contentIds: [concept, `bio:k5:${group}:art:${s.name.toLowerCase()}`],
+      })
+    },
+  )
+}
+
+/** Überblick: nur Arten + Gruppenidentität — ohne Spezial-Inhalte. */
+export const biFischeOverview = makeOverviewTopic('fisch')
+export const biLurcheOverview = makeOverviewTopic('lurch')
+export const biKriechtiereOverview = makeOverviewTopic('kriechtier')
+export const biVoegelOverview = makeOverviewTopic('vogel')
+export const biSaeugetiereOverview = makeOverviewTopic('saeuger')
+
+/** Spezial: jeweils eigene, disjunkte Banken. */
+export const biFischeMerkmale = makeMerkmaleTopic('fisch', fischeBauMatch)
+export const biFischeLebensraum = makeLebensraumTopic('fisch', fischeNahrung)
+export const biFischeSchutz = makeSchutzTopic('fisch')
+export const biLurcheMerkmale = makeMerkmaleTopic('lurch', lurcheMatch)
+export const biLurcheMeta = makeMetaTopic(lurcheMetaSort)
+export const biLurcheSchutz = makeSchutzTopic('lurch')
+export const biKriechtiereMerkmale = makeMerkmaleTopic('kriechtier', kriechMatch)
+export const biKriechtiereArten = makeArtenTopic('kriechtier')
+export const biVoegelFlug = makeMerkmaleTopic('vogel', voegelFlugMatch)
+export const biVoegelFortpflanzung = makeLebensraumTopic('vogel', voegelSchnabel)
+export const biSaeugerMerkmale = makeMerkmaleTopic('saeuger', saeugerGebiss)
+export const biSaeugerAngepasst = makeLebensraumTopic('saeuger', saeugerGliedmass)
+export const biSaeugerSchutz = makeSchutzTopic('saeuger')
 
 /** @deprecated Prefer Überblick / Spezial-Exports — kept as Überblick alias. */
 export const biFische = biFischeOverview
@@ -773,6 +1436,7 @@ export const biLurche = biLurcheOverview
 export const biKriechtiere = biKriechtiereOverview
 export const biVoegel = biVoegelOverview
 export const biSaeugetiere = biSaeugetiereOverview
+
 
 // ─── LB7 Systematisierung — classification tree / feature matrix ─────────────
 
@@ -1096,7 +1760,7 @@ export const biHaltung: Topic['generate'] = mixedVariants(haltungMc, haltungMult
 
 export const BIOLOGIE_K5_GENERATORS: Record<string, Topic['generate']> = {
   'bi-k5-lb1-merkmale': biMerkmale,
-  'bi-k5-lb1-kennzeichen': biMerkmale,
+  'bi-k5-lb1-kennzeichen': biKennzeichen,
   'bi-k5-lb2-fische': biFischeOverview,
   'bi-k5-lb2-fische-merkmale': biFischeMerkmale,
   'bi-k5-lb2-fische-lebensraum': biFischeLebensraum,
@@ -1116,7 +1780,7 @@ export const BIOLOGIE_K5_GENERATORS: Record<string, Topic['generate']> = {
   'bi-k5-lb6-saeuger-angepasst': biSaeugerAngepasst,
   'bi-k5-lb6-saeuger-schutz': biSaeugerSchutz,
   'bi-k5-lb7-systematik': biSystematik,
-  'bi-k5-lb7-zuordnung': biSystematik,
+  'bi-k5-lb7-zuordnung': biSystematik, // overridden in biologieNewUx to vertebrateCompareUx only
   'bi-k5-lbw-winter': biWinter,
   'bi-k5-lbw-saurier': biSaurier,
   'bi-k5-lbw-haltung': biHaltung,

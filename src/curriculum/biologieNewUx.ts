@@ -331,6 +331,7 @@ const GROUP_FLASH: Record<
 function groupFlash(group: VertebrateGroup) {
   return (rng: Rng) => {
     const c = pick(rng, GROUP_FLASH[group])
+    const concept = `bio:k5:${group}:merkmale:flash:${c.answer.toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/[^a-z0-9]+/g, '-')}`
     return flashcardBioTask({
       question: c.front,
       front: c.front,
@@ -339,6 +340,8 @@ function groupFlash(group: VertebrateGroup) {
       explanation: `${c.answer}: ${c.wissen}`,
       fachwissen: fw(c.wissen),
       choices: shuffle(rng, [c.answer, ...c.wrong.slice(0, 3)]),
+      dedupeKey: concept,
+      contentIds: [concept],
     })
   }
 }
@@ -364,26 +367,18 @@ const vertebrateCompareUx = mixedVariants(
   vertebrateAssignIcons,
 )
 
-/** Enhanced K5 registry: topic-scoped — no foreign-group bleed. */
+/** Enhanced K5 registry: Überblick gets icons only; Merkmale/Flug get flash only — never both. */
 export const BIOLOGIE_K5_EXPANDED: Record<string, Topic['generate']> = {
   'bi-k5-lb1-merkmale': BASE_K5['bi-k5-lb1-merkmale']!,
   'bi-k5-lb1-kennzeichen': BASE_K5['bi-k5-lb1-kennzeichen']!,
-  'bi-k5-lb2-fische': withTopicUx(
-    BASE_K5['bi-k5-lb2-fische'],
-    iconsForGroup('fisch'),
-    groupFlash('fisch'),
-  ),
+  'bi-k5-lb2-fische': withTopicUx(BASE_K5['bi-k5-lb2-fische'], iconsForGroup('fisch')),
   'bi-k5-lb2-fische-merkmale': withTopicUx(
     BASE_K5['bi-k5-lb2-fische-merkmale'],
     groupFlash('fisch'),
   ),
   'bi-k5-lb2-fische-lebensraum': BASE_K5['bi-k5-lb2-fische-lebensraum']!,
   'bi-k5-lb2-fische-schutz': BASE_K5['bi-k5-lb2-fische-schutz']!,
-  'bi-k5-lb3-lurche': withTopicUx(
-    BASE_K5['bi-k5-lb3-lurche'],
-    iconsForGroup('lurch'),
-    groupFlash('lurch'),
-  ),
+  'bi-k5-lb3-lurche': withTopicUx(BASE_K5['bi-k5-lb3-lurche'], iconsForGroup('lurch')),
   'bi-k5-lb3-lurche-merkmale': withTopicUx(
     BASE_K5['bi-k5-lb3-lurche-merkmale'],
     groupFlash('lurch'),
@@ -393,24 +388,18 @@ export const BIOLOGIE_K5_EXPANDED: Record<string, Topic['generate']> = {
   'bi-k5-lb4-kriechtiere': withTopicUx(
     BASE_K5['bi-k5-lb4-kriechtiere'],
     iconsForGroup('kriechtier'),
-    groupFlash('kriechtier'),
   ),
   'bi-k5-lb4-kriechtiere-merkmale': withTopicUx(
     BASE_K5['bi-k5-lb4-kriechtiere-merkmale'],
     groupFlash('kriechtier'),
   ),
   'bi-k5-lb4-kriechtiere-arten': BASE_K5['bi-k5-lb4-kriechtiere-arten']!,
-  'bi-k5-lb5-voegel': withTopicUx(
-    BASE_K5['bi-k5-lb5-voegel'],
-    iconsForGroup('vogel'),
-    groupFlash('vogel'),
-  ),
+  'bi-k5-lb5-voegel': withTopicUx(BASE_K5['bi-k5-lb5-voegel'], iconsForGroup('vogel')),
   'bi-k5-lb5-voegel-flug': withTopicUx(BASE_K5['bi-k5-lb5-voegel-flug'], groupFlash('vogel')),
   'bi-k5-lb5-voegel-fortpflanzung': BASE_K5['bi-k5-lb5-voegel-fortpflanzung']!,
   'bi-k5-lb6-saeugetiere': withTopicUx(
     BASE_K5['bi-k5-lb6-saeugetiere'],
     iconsForGroup('saeuger'),
-    groupFlash('saeuger'),
   ),
   'bi-k5-lb6-saeuger-merkmale': withTopicUx(
     BASE_K5['bi-k5-lb6-saeuger-merkmale'],
@@ -418,7 +407,8 @@ export const BIOLOGIE_K5_EXPANDED: Record<string, Topic['generate']> = {
   ),
   'bi-k5-lb6-saeuger-angepasst': BASE_K5['bi-k5-lb6-saeuger-angepasst']!,
   'bi-k5-lb6-saeuger-schutz': BASE_K5['bi-k5-lb6-saeuger-schutz']!,
-  'bi-k5-lb7-systematik': withTopicUx(BASE_K5['bi-k5-lb7-systematik'], vertebrateCompareUx),
+  // Systematik = Lehrplan-Klassifikation; Zuordnung = Merkmalsvergleich UX — disjoint.
+  'bi-k5-lb7-systematik': BASE_K5['bi-k5-lb7-systematik']!,
   'bi-k5-lb7-zuordnung': vertebrateCompareUx,
   'bi-k5-lbw-winter': BASE_K5['bi-k5-lbw-winter']!,
   'bi-k5-lbw-saurier': BASE_K5['bi-k5-lbw-saurier']!,
