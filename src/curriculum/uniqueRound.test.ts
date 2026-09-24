@@ -31,6 +31,35 @@ describe('uniqueRound', () => {
     expect(taskFingerprint(a)).not.toBe(taskFingerprint(c))
   })
 
+  it('fingerprints by dedupeKey when set (near-duplicate formats collide)', () => {
+    const tipIn = valueTask({
+      question: 'Jahr der Gründung?',
+      answerKind: 'integer',
+      value: 753,
+      solution: '753',
+      explanation: 'x',
+      dedupeKey: 'rom-year:753',
+    })
+    const mc = valueTask({
+      question: 'Gründung Roms — Welches Jahr?',
+      answerKind: 'integer',
+      value: 753,
+      solution: '753 v. Chr.',
+      explanation: 'y',
+      dedupeKey: 'rom-year:753',
+    })
+    const other = valueTask({
+      question: 'Jahr der Republik?',
+      answerKind: 'integer',
+      value: 500,
+      solution: '500',
+      explanation: 'z',
+      dedupeKey: 'rom-year:500',
+    })
+    expect(taskFingerprint(tipIn)).toBe(taskFingerprint(mc))
+    expect(taskFingerprint(tipIn)).not.toBe(taskFingerprint(other))
+  })
+
   it('returns up to targetCount unique tasks', () => {
     let n = 0
     const generate = (): Task => {

@@ -133,7 +133,12 @@ const YEAR_FACTS = [
 
 type YearFact = (typeof YEAR_FACTS)[number]
 
+/** Pool size for Jahreszahlen rounds (one task per year max). */
+export const ROM_YEAR_FACT_COUNT = YEAR_FACTS.length
+
 const yearFw = (fact: YearFact): Fachwissen => fw(fact.wissen)
+
+const yearDedupeKey = (fact: YearFact): string => `rom-year:${fact.year}`
 
 const otherYears = (fact: YearFact): number[] =>
   YEAR_FACTS.filter((f) => f.year !== fact.year).map((f) => f.year)
@@ -153,6 +158,7 @@ function yearValueTask(rng: Rng) {
     solution: `${fact.year}`,
     explanation: `${fact.year} v. Chr. — ${fact.event}. ${fact.hint}`,
     fachwissen: yearFw(fact),
+    dedupeKey: yearDedupeKey(fact),
   })
 }
 
@@ -170,6 +176,7 @@ function yearEventChoice(rng: Rng) {
     explanation: `${fact.year} v. Chr.: ${fact.event}. ${fact.hint}`,
     instruction: 'Tippe das passende Ereignis:',
     fachwissen: yearFw(fact),
+    dedupeKey: yearDedupeKey(fact),
   })
 }
 
@@ -196,6 +203,7 @@ function yearMcTask(rng: Rng) {
     explanation: `${fact.year} v. Chr. — ${fact.hint}`,
     instruction: 'Tippe die Jahreszahl:',
     fachwissen: yearFw(fact),
+    dedupeKey: yearDedupeKey(fact),
   })
 }
 

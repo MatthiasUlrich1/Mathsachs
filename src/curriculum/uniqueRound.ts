@@ -4,6 +4,8 @@ import type { Task, Topic } from './types'
 
 /** Stable identity for "same exercise" within a practice round. */
 export function taskFingerprint(task: Task): string {
+  const dedupe = task.dedupeKey?.trim()
+  if (dedupe) return `dedupe:${dedupe}`
   return [task.question, task.solution, task.visualContent ?? '', task.unit ?? ''].join('\n')
 }
 

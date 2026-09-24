@@ -3,6 +3,7 @@
  * K6 LB1 (Römische Zivilisation) freigegeben; übrige Themen: released:false
  * (nur Entwickleransicht). Quelle: https://www.schulportal.sachsen.de/lplandb/lehrplan/65
  */
+import { ROM_YEAR_FACT_COUNT } from './geschichte6'
 import type { PackArea, PackGrade, PackTopic } from './pack'
 
 const topic = (
@@ -105,7 +106,8 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'ge-k6-lb1-jahreszahlen',
             'Jahreszahlen (nur LB1)',
             ['753', '500', '264', '146'],
-            { tasksPerRound: 20, released: true },
+            // One task per year fact — more would only re-ask the same year.
+            { tasksPerRound: ROM_YEAR_FACT_COUNT, released: true },
           ),
           topic(
             'ge-k6-lb1-chronologie',

@@ -121,6 +121,12 @@ export interface Task {
    * Use for facts that change per generated task (e.g. Jahreszahl → Ereignis).
    */
   fachwissen?: Fachwissen
+  /**
+   * Optional round-dedupe identity. When set, practice rounds treat tasks with the
+   * same key as duplicates even if question wording / answer format differs
+   * (e.g. same year as tip-in vs. multiple-choice).
+   */
+  dedupeKey?: string
 }
 
 /** A single, selectable curriculum topic (Einzelthema). */

@@ -2,10 +2,11 @@ import { describe, expect, it } from 'vitest'
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { createRng } from '../lib/rng'
-import { GESCHICHTE_K6_GENERATORS } from './geschichte6'
+import { GESCHICHTE_K6_GENERATORS, ROM_YEAR_FACT_COUNT } from './geschichte6'
 import { isPlayableGeschichteTopic, resolveGeschichteGenerate } from './geschichteGenerators'
 import { hydratePackGrades } from './hydrate'
 import { buildGymSachsenGeschichtePack } from './geschichteGymPack'
+import { buildUniqueTaskRound, taskFingerprint } from './uniqueRound'
 
 describe('Geschichte K6 Römische Zivilisation', () => {
   const romIds = Object.keys(GESCHICHTE_K6_GENERATORS)
@@ -38,6 +39,23 @@ describe('Geschichte K6 Römische Zivilisation', () => {
         /Welches Jahr|welchem Jahr|Jahreszahl|Wann geschah/i.test(task.question)
       expect(yearAsk, `seed ${seed}: ${task.question.slice(0, 60)}`).toBe(true)
       expect(task.check(task.sampleAnswer)).toBe(true)
+    }
+  })
+
+  it('jahreszahlen rounds have unique years (no double/triple same event)', () => {
+    const gen = GESCHICHTE_K6_GENERATORS['ge-k6-lb1-jahreszahlen']!
+    // Reported seed + many random round seeds (target > pool → must cap at unique years).
+    const seeds = [1978221244, 1, 7, 42, 99, 12345, 999991, 0x5eed, 0xcafe, 0xbabe]
+    for (const seed of seeds) {
+      const round = buildUniqueTaskRound(gen, createRng(seed), 20, 50)
+      expect(round.length, `seed ${seed}`).toBe(ROM_YEAR_FACT_COUNT)
+      const keys = round.map(taskFingerprint)
+      expect(new Set(keys).size, `seed ${seed} fingerprints`).toBe(round.length)
+      const years = round.map((t) => {
+        expect(t.dedupeKey, `seed ${seed} missing dedupeKey`).toMatch(/^rom-year:\d+$/)
+        return t.dedupeKey!
+      })
+      expect(new Set(years).size, `seed ${seed} years`).toBe(round.length)
     }
   })
 

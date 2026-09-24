@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.20] – 2026-09-24
+
+### Behoben
+- **Geschichte K6 Jahreszahlen doppelt/dreifach:** Übungsrunden fragten dieselbe
+  Jahreszahl mehrfach (Tipp / MC / Ereigniswahl hatten unterschiedliche
+  Fingerprints). Tasks tragen jetzt `dedupeKey` pro Jahr; Runden deduplizieren
+  danach. `tasksPerRound` = Poolgröße (11). Regression inkl. Seed 1978221244
+  (Meldung ID 9045).
+
 ## [0.28.19] – 2026-09-23
 
 ### Behoben

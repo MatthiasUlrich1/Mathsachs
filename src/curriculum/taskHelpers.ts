@@ -9,6 +9,10 @@ import type { AnswerKind, Fachwissen, Task, UserInput } from './types'
 /** Spread optional per-task Fachwissen onto a Task. */
 const withFw = (fw?: Fachwissen): { fachwissen?: Fachwissen } =>
   fw?.text?.trim() ? { fachwissen: fw } : {}
+
+/** Spread optional round-dedupe key onto a Task. */
+const withDedupe = (key?: string): { dedupeKey?: string } =>
+  key?.trim() ? { dedupeKey: key.trim() } : {}
 import type { Rng } from '../lib/rng'
 import { createRng } from '../lib/rng'
 import {
@@ -40,6 +44,8 @@ interface ValueTaskInput {
   visualContent?: string
   /** Question-specific Fachwissen (overrides topic-level in PracticeSession). */
   fachwissen?: Fachwissen
+  /** Round-dedupe identity (same key → treated as duplicate in a round). */
+  dedupeKey?: string
 }
 
 /** Build a task whose answer is a single integer or decimal value. */
@@ -51,6 +57,7 @@ export const valueTask = (input: ValueTaskInput): Task => ({
   explanation: input.explanation,
   visualContent: input.visualContent,
   ...withFw(input.fachwissen),
+  ...withDedupe(input.dedupeKey),
   sampleAnswer: { kind: 'value', value: String(input.value) },
   check: (answer: UserInput) => {
     if (answer.kind !== 'value') return false
@@ -705,6 +712,8 @@ interface ChoicePickTaskInput {
   /** Larger symbol buttons (e.g. force attract/repel arrows). */
   largeSymbols?: boolean
   fachwissen?: Fachwissen
+  /** Round-dedupe identity (same key → treated as duplicate in a round). */
+  dedupeKey?: string
 }
 
 /** Multiple-choice via tappable buttons (A/B/C, Winkelart, Kongruenzsatz, …). */
@@ -718,6 +727,7 @@ export const choicePickTask = (input: ChoicePickTaskInput): Task => {
     visualContent: input.visualContent,
     solutionVisualContent: input.solutionVisualContent,
     ...withFw(input.fachwissen),
+    ...withDedupe(input.dedupeKey),
     sampleAnswer: { kind: 'choicePick', choice: input.correct },
     interactive: {
       type: 'choicePick',
