@@ -168,7 +168,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": true,
-              "tasksPerRound": 20,
+              "tasksPerRound": 11,
               "keywords": [
                 "753",
                 "500",
@@ -1236,5 +1236,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "a075943e"
+  "contentHash": "a9138c22"
 }

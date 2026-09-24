@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.21] – 2026-09-24
+
+### Behoben
+- **Curricula-Export / contentHash:** `gym-sachsen-geschichte.json` und Manifest
+  nachgezogen (`tasksPerRound` Jahreszahlen 11, contentHash `a9138c22`). Der
+  Tag **v0.28.20** brach die Desktop-Installer-Builds auf allen Plattformen ab
+  (`geschichteGymPack` contentHash-Mismatch); Installer bitte mit **0.28.21**
+  neu bauen.
+
 ## [0.28.20] – 2026-09-24
 
 ### Behoben
