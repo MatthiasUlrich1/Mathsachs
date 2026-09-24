@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { createRng, timeSeed } from '../lib/rng'
 import { recordSession } from '../lib/storage'
-import type { Topic, UserInput } from '../curriculum/types'
-import { isFormulaLikeHint } from '../curriculum/types'
+import type { TaskGrade, Topic, UserInput } from '../curriculum/types'
+import { awardPoints, gradeTask, isFormulaLikeHint } from '../curriculum/types'
 import {
   buildBerichtigungRound,
   buildUniqueTaskRoundWithSeeds,
@@ -45,7 +45,7 @@ interface Props {
   berichtigungTopics?: BerichtigungTopicRef[]
 }
 
-type Phase = 'answering' | 'correct' | 'wrong'
+type Phase = 'answering' | 'correct' | 'partial' | 'wrong'
 
 export function PracticeSession({
   topic,
@@ -91,11 +91,15 @@ export function PracticeSession({
 
   const [input, setInput] = useState<UserInput>(() => initTaskInput(task))
   const [phase, setPhase] = useState<Phase>('answering')
+  const [lastGrade, setLastGrade] = useState<TaskGrade | null>(null)
+  const [lastAwarded, setLastAwarded] = useState(0)
   const [showExplanation, setShowExplanation] = useState(false)
   const [showFachwissen, setShowFachwissen] = useState(false)
 
   useEffect(() => {
     setInput(initTaskInput(task))
+    setLastGrade(null)
+    setLastAwarded(0)
   }, [task])
 
   const [correct, setCorrect] = useState(0)
@@ -106,27 +110,35 @@ export function PracticeSession({
   /** Prefer question-specific Fachwissen; fall back to topic-level. */
   const fachwissen = task.fachwissen ?? activeTopic.fachwissen
 
-  const persistAttempt = (ok: boolean) => {
+  const persistAttempt = (fullyCorrect: boolean, awarded: number) => {
     if (skipProtocol) return
     recordSession(user, {
       topicId: activeTopic.id,
       topicTitle: activeTopic.title,
       areaTitle: activeArea,
       attempts: 1,
-      correct: ok ? 1 : 0,
-      points: ok ? activeTopic.pointsPerTask : 0,
+      correct: fullyCorrect ? 1 : 0,
+      points: awarded,
       ...(challengeId?.trim() ? { challengeId: challengeId.trim() } : {}),
     })
   }
 
   const submit = () => {
     if (phase !== 'answering') return
-    const ok = task.check(input)
-    persistAttempt(ok)
-    if (ok) {
+    const grade = gradeTask(task, input)
+    const awarded = awardPoints(activeTopic.pointsPerTask, grade)
+    const fullyCorrect = grade.fraction >= 1
+    setLastGrade(grade)
+    setLastAwarded(awarded)
+    persistAttempt(fullyCorrect, awarded)
+    if (awarded > 0) {
+      setPoints((p) => p + awarded)
+    }
+    if (fullyCorrect) {
       setCorrect((c) => c + 1)
-      setPoints((p) => p + activeTopic.pointsPerTask)
       setPhase('correct')
+    } else if (grade.fraction > 0) {
+      setPhase('partial')
     } else {
       setPhase('wrong')
     }
@@ -144,6 +156,8 @@ export function PracticeSession({
     setPhase('answering')
     setShowExplanation(false)
     setShowFachwissen(false)
+    setLastGrade(null)
+    setLastAwarded(0)
     setIndex((i) => i + 1)
   }
 
@@ -166,6 +180,10 @@ export function PracticeSession({
     : isReplay
       ? `${activeTopic.title} · Seed ${activeSeed}`
       : activeArea
+
+  const showInteractiveFeedback = phase === 'partial' || phase === 'wrong'
+  const partResults =
+    showInteractiveFeedback && lastGrade?.parts ? lastGrade.parts : undefined
 
   if (finished) {
     const answered = phase === 'answering' ? index - 1 : index
@@ -247,8 +265,14 @@ export function PracticeSession({
         }
       />
 
-      {phase === 'answering' && (
-        <TaskInteractive task={task} value={input} onChange={setInput} />
+      {(phase === 'answering' || showInteractiveFeedback) && (
+        <TaskInteractive
+          task={task}
+          value={input}
+          onChange={setInput}
+          disabled={phase !== 'answering'}
+          partResults={partResults}
+        />
       )}
 
       {activeTopic.hint && phase === 'answering' && !isFormulaLikeHint(activeTopic.hint) && (
@@ -313,8 +337,37 @@ export function PracticeSession({
         <div className="feedback feedback--good">
           <strong>
             Richtig!
-            {!skipProtocol ? ` +${activeTopic.pointsPerTask} Punkte` : ''}
+            {!skipProtocol ? ` +${lastAwarded || activeTopic.pointsPerTask} Punkte` : ''}
           </strong>
+          <button type="button" className="primary" onClick={next}>
+            {index >= totalTasks ? 'Runde abschließen' : 'Nächste Aufgabe'}
+          </button>
+        </div>
+      )}
+
+      {phase === 'partial' && (
+        <div className="feedback feedback--partial">
+          <strong>
+            Teilweise richtig
+            {lastGrade?.parts
+              ? ` (${lastGrade.parts.filter(Boolean).length} von ${lastGrade.parts.length})`
+              : ''}
+            {!skipProtocol && lastAwarded > 0 ? ` · +${lastAwarded} Punkte` : ''}
+          </strong>
+          <p>
+            Vollständige Lösung: <span className="solution">{task.solution}</span>
+          </p>
+          {!showExplanation ? (
+            <button
+              type="button"
+              className="ghost"
+              onClick={() => setShowExplanation(true)}
+            >
+              Erklärung anzeigen
+            </button>
+          ) : (
+            <p className="explanation">{task.explanation}</p>
+          )}
           <button type="button" className="primary" onClick={next}>
             {index >= totalTasks ? 'Runde abschließen' : 'Nächste Aufgabe'}
           </button>

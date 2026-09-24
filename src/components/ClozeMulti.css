@@ -48,3 +48,13 @@
 .cloze-multi__input:disabled {
   opacity: 0.85;
 }
+
+.cloze-multi__input--ok {
+  border-bottom-color: #16a34a;
+  background: color-mix(in srgb, #16a34a 12%, white);
+}
+
+.cloze-multi__input--bad {
+  border-bottom-color: #dc2626;
+  background: color-mix(in srgb, #dc2626 12%, white);
+}

@@ -11,6 +11,8 @@ export interface PairMatchProps {
   onChange: (links: Record<string, string>) => void
   instruction?: string
   disabled?: boolean
+  /** After check: per-left-item correct/incorrect (same order as `left`) */
+  partResults?: boolean[]
 }
 
 /**
@@ -24,6 +26,7 @@ export const PairMatch: React.FC<PairMatchProps> = ({
   onChange,
   instruction,
   disabled = false,
+  partResults,
 }) => {
   const [pendingLeft, setPendingLeft] = React.useState<string | null>(null)
   const usedRight = new Set(Object.values(links).filter(Boolean))
@@ -66,14 +69,23 @@ export const PairMatch: React.FC<PairMatchProps> = ({
       <div className="pair-match__cols" role="group" aria-label="Begriffspaare zuordnen">
         <div className="pair-match__col">
           <p className="pair-match__col-title">Begriffe</p>
-          {left.map((item) => {
+          {left.map((item, idx) => {
             const linked = Boolean(links[item.id])
             const active = pendingLeft === item.id
+            const partOk = partResults?.[idx]
             return (
               <button
                 key={item.id}
                 type="button"
-                className={`pair-match__item${active ? ' pair-match__item--active' : ''}${linked ? ' pair-match__item--linked' : ''}`}
+                className={[
+                  'pair-match__item',
+                  active ? 'pair-match__item--active' : '',
+                  linked ? 'pair-match__item--linked' : '',
+                  partOk === true ? 'pair-match__item--ok' : '',
+                  partOk === false ? 'pair-match__item--bad' : '',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
                 onClick={() => onLeft(item.id)}
                 disabled={disabled}
                 aria-pressed={active || linked}

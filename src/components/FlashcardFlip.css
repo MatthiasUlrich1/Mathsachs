@@ -10,6 +10,7 @@
 .flashcard-flip__steps {
   margin: 0;
   padding-left: 1.25rem;
+  list-style: decimal;
   font-size: 0.9rem;
   line-height: 1.45;
   color: var(--text-muted, #94a3b8);
@@ -17,9 +18,10 @@
 
 .flashcard-flip__steps li {
   margin: 0.15rem 0;
+  color: var(--text-muted, #94a3b8);
 }
 
-.flashcard-flip__steps li strong {
+.flashcard-flip__steps li::marker {
   color: var(--text, #e2e8f0);
   font-weight: 600;
 }

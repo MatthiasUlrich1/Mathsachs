@@ -17,7 +17,7 @@ const topic = (
   pointsPerTask: 10,
   hint: 'Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.',
   released: opts?.released ?? false,
-  tasksPerRound: opts?.tasksPerRound ?? 8,
+  tasksPerRound: opts?.tasksPerRound ?? 10,
   ...(keywords?.length ? { keywords } : {}),
 })
 
@@ -106,35 +106,35 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'ge-k6-lb1-jahreszahlen',
             'Jahreszahlen (nur LB1)',
             ['753', '500', '264', '146'],
-            // One task per year fact — more would only re-ask the same year.
-            { tasksPerRound: ROM_YEAR_FACT_COUNT, released: true },
+            // Pool-limited: one attempt per year fact, but never more than 10.
+            { tasksPerRound: Math.min(10, ROM_YEAR_FACT_COUNT), released: true },
           ),
           topic(
             'ge-k6-lb1-chronologie',
             'Chronologie (Reihenfolge)',
             ['Zeitstrahl', 'Reihenfolge'],
-            { tasksPerRound: 12, released: true },
+            { tasksPerRound: 10, released: true },
           ),
           topic('ge-k6-lb1-anfaenge', 'Die Anfänge Roms', [
             'Romulus',
             'Etrusker',
             'Tiber',
-          ], { tasksPerRound: 12, released: true }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb1-begriffe', 'Senat, Republik, Patrizier und Plebejer', [
             'Senat',
             'Patrizier',
             'Plebejer',
-          ], { tasksPerRound: 12, released: true }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb1-aemter', 'Ämter und Institutionen der Republik', [
             'Konsuln',
             'Volkstribune',
             'Magistrate',
-          ], { tasksPerRound: 12, released: true }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb1-punische-kriege', 'Punische Kriege – Rom und Karthago', [
             'Hannibal',
             'Karthago',
             'Scipio',
-          ], { tasksPerRound: 12, released: true }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb1-weltreich', 'Vom Stadtstaat zum Weltreich (Mare Nostrum)', [
             'Weltreich',
             'Mittelmeer',

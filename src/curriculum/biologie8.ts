@@ -10,6 +10,7 @@ const sinne: BioBank = {
   url: 'https://de.wikipedia.org/wiki/Sinnesorgan',
   facts: [
     {
+      concept: 'bio:k8:welche-aufgabe-haben-sinnesorgane',
       prompt: 'Welche Aufgabe haben Sinnesorgane?',
       answer: 'Reize aus der Umwelt aufnehmen und ans Nervensystem weitergeben',
       wrong: ['Nur Blut filtern', 'Nur Knochen bilden', 'Nur Enzyme im Magen ersetzen'],
@@ -19,6 +20,7 @@ const sinne: BioBank = {
       gapAccepted: ['Auge', 'Auge/Retina', 'Auge (Netzhaut)'],
     },
     {
+      concept: 'bio:k8:wozu-dient-das-gehirn-im-nervensystem',
       prompt: 'Wozu dient das Gehirn im Nervensystem?',
       answer: 'Verarbeitung von Informationen und Steuerung',
       wrong: ['Nur Speichelproduktion', 'Nur Urinbildung', 'Nur Pollenflug'],
@@ -26,6 +28,7 @@ const sinne: BioBank = {
       wissen: 'Nervensystem: Aufnahme – Leitung – Verarbeitung – Reaktion.',
     },
     {
+      concept: 'bio:k8:was-transportieren-hormone-typischerweis',
       prompt: 'Was transportieren Hormone typischerweise?',
       answer: 'Botenstoffe über das Blut zu Zielorganen',
       wrong: ['Nur festen Knochenkalk', 'Nur Luft in die Lungenbläschen', 'Nur Chitin'],
@@ -35,6 +38,7 @@ const sinne: BioBank = {
       gapAccepted: ['Blut', 'Blutbahn', 'Blutgefäßsystem'],
     },
     {
+      concept: 'bio:k8:ein-reflex-ist',
       prompt: 'Ein Reflex ist …',
       answer: 'eine schnelle, oft unwillkürliche Reaktion auf einen Reiz',
       wrong: ['immer eine bewusste Entscheidung nach Stunden', 'nur Fotosynthese', 'nur Verdauung im Dickdarm'],
@@ -50,6 +54,7 @@ const sinne: BioBank = {
   ],
   trueFalse: [
     {
+      concept: 'bio:k8:hormone-wirken-immer-nur-an-der-stelle-a',
       statement: 'Hormone wirken immer nur an der Stelle, an der sie gebildet werden.',
       correct: false,
       explanation: 'Viele Hormone wirken entfernt über die Blutbahn.',
@@ -58,6 +63,7 @@ const sinne: BioBank = {
   ],
   sorts: [
     {
+      concept: 'bio:k8:ordne-den-vereinfachten-weg-eines-lichtr',
       question: 'Ordne den vereinfachten Weg eines Lichtreizes.',
       labels: ['Licht trifft Auge', 'Rezeptoren in der Netzhaut', 'Sehnerv leitet', 'Gehirn verarbeitet'],
       explanation: 'Reiz → Rezeptor → Leitung → Verarbeitung.',
@@ -66,6 +72,7 @@ const sinne: BioBank = {
   ],
   multis: [
     {
+      concept: 'bio:k8:welche-sinne-gehoeren-zu-den-klassischen',
       question: 'Welche Sinne gehören zu den „klassischen“ fünf?',
       correct: ['Sehen', 'Hören', 'Riechen'],
       wrong: ['Fotosynthese', 'Gärung'],
@@ -80,6 +87,7 @@ const sexualitaet: BioBank = {
   url: 'https://de.wikipedia.org/wiki/Menschliche_Sexualit%C3%A4t',
   facts: [
     {
+      concept: 'bio:k8:was-ist-mit-verantwortung-in-der-sexuali',
       prompt: 'Was ist mit Verantwortung in der Sexualität gemeint?',
       answer: 'Rücksicht, Einvernehmen, Schutz vor Infektionen und ungewollter Schwangerschaft',
       wrong: ['Nur Gewinnmaximierung', 'Nur Sportrekorde', 'Nur Ernährungsumstellung'],
@@ -87,6 +95,7 @@ const sexualitaet: BioBank = {
       wissen: 'Lehrplan: Sexualität des Menschen — sachlich und respektvoll.',
     },
     {
+      concept: 'bio:k8:wozu-dienen-geschlechtshormone-u-a',
       prompt: 'Wozu dienen Geschlechtshormone u. a.?',
       answer: 'Steuerung der Geschlechtsentwicklung und -funktionen',
       wrong: ['Nur der Zahnschmelzhärtung', 'Nur der Blattbildung', 'Nur der Knochenmarklosigkeit'],
@@ -96,6 +105,7 @@ const sexualitaet: BioBank = {
       gapAccepted: ['Geschlechtshormone', 'Hormone', 'Sexualhormone'],
     },
     {
+      concept: 'bio:k8:was-beschreibt-empfaengnisverhuetung-sac',
       prompt: 'Was beschreibt Empfängnisverhütung sachlich?',
       answer: 'Methoden, ungewollte Schwangerschaft zu vermeiden',
       wrong: ['Nur Impfungen gegen Viren', 'Nur Knochenbruchheilung', 'Nur Blutdruckmessen'],
@@ -110,12 +120,14 @@ const sexualitaet: BioBank = {
   ],
   trueFalse: [
     {
+      concept: 'bio:k8:ueber-sexualitaet-zu-sprechen-und-fragen',
       statement: 'Über Sexualität zu sprechen und Fragen zu stellen ist im Unterricht erlaubt und sinnvoll.',
       correct: true,
       explanation: 'Sachliche Aufklärung schützt und klärt.',
       wissen: 'Unterrichtsklima.',
     },
     {
+      concept: 'bio:k8:nur-erwachsene-haben-hormone',
       statement: 'Nur Erwachsene haben Hormone.',
       correct: false,
       explanation: 'Hormone wirken in jedem Lebensalter — in der Pubertät besonders spürbar.',
@@ -124,6 +136,7 @@ const sexualitaet: BioBank = {
   ],
   multis: [
     {
+      concept: 'bio:k8:welche-aspekte-gehoeren-zu-verantwortlic',
       question: 'Welche Aspekte gehören zu verantwortlicher Sexualität?',
       correct: ['Einvernehmen', 'Schutz vor Infektionen'],
       wrong: ['Druck ausüben', 'Informationen absichtlich verfälschen'],
@@ -138,6 +151,7 @@ const stress: BioBank = {
   url: 'https://de.wikipedia.org/wiki/Stress',
   facts: [
     {
+      concept: 'bio:k8:was-kann-bei-stress-im-koerper-passieren',
       prompt: 'Was kann bei Stress im Körper passieren?',
       answer: 'Erhöhte Anspannung, veränderte Atmung/Puls, Stresshormone',
       wrong: ['Sofortige Fotosynthese', 'Knochen verschwinden', 'Keine Nervensignale mehr'],
@@ -147,6 +161,7 @@ const stress: BioBank = {
   ],
   trueFalse: [
     {
+      concept: 'bio:k8:entspannungstechniken-und-pausen-koennen',
       statement: 'Entspannungstechniken und Pausen können helfen, Stress zu bewältigen.',
       correct: true,
       explanation: 'Bewegung, Gespräche, Pausen und Struktur sind typische Strategien.',
@@ -164,6 +179,7 @@ const sinneWahl: BioBank = {
   url: 'https://de.wikipedia.org/wiki/Wahrnehmung',
   facts: [
     {
+      concept: 'bio:k8:warum-ergaenzen-sich-die-sinne-gegenseit',
       prompt: 'Warum ergänzen sich die Sinne gegenseitig?',
       answer: 'Die Wahrnehmung wird genauer und sicherer',
       wrong: ['Weil Knochen dann leuchten', 'Weil Blut dann grün wird', 'Weil Zellen verschwinden'],
@@ -173,6 +189,7 @@ const sinneWahl: BioBank = {
   ],
   trueFalse: [
     {
+      concept: 'bio:k8:ohne-sehsinn-ist-orientierung-immer-unmo',
       statement: 'Ohne Sehsinn ist Orientierung immer unmöglich.',
       correct: false,
       explanation: 'Andere Sinne und Hilfsmittel ermöglichen Orientierung.',
@@ -186,6 +203,7 @@ const ersteHilfe: BioBank = {
   url: 'https://de.wikipedia.org/wiki/Erste_Hilfe',
   facts: [
     {
+      concept: 'bio:k8:was-ist-der-erste-schritt-in-vielen-notf',
       prompt: 'Was ist der erste Schritt in vielen Notfallsituationen?',
       answer: 'Absichern und Notruf absetzen (wenn nötig)',
       wrong: ['Sofort weglaufen ohne Hilfe', 'Warten bis morgen', 'Nur fotografieren'],
@@ -197,6 +215,7 @@ const ersteHilfe: BioBank = {
   ],
   trueFalse: [
     {
+      concept: 'bio:k8:bei-bewusstlosigkeit-prueft-man-atmung-u',
       statement: 'Bei Bewusstlosigkeit prüft man Atmung und holt Hilfe.',
       correct: true,
       explanation: 'Bewusstlosigkeit ist ein Notfall — Atmung prüfen, Notruf, stabile Seitenlage wenn Atmung vorhanden (Kurswissen).',

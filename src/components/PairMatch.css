@@ -85,6 +85,16 @@
   opacity: 0.85;
 }
 
+.pair-match__item--ok {
+  border-color: #16a34a !important;
+  background: color-mix(in srgb, #16a34a 14%, white) !important;
+}
+
+.pair-match__item--bad {
+  border-color: #dc2626 !important;
+  background: color-mix(in srgb, #dc2626 14%, white) !important;
+}
+
 .pair-match__hint {
   font-size: 0.8rem;
   color: #334155;

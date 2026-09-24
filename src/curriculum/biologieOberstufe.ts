@@ -11,6 +11,7 @@ const zellen: BioBank = {
   url: 'https://de.wikipedia.org/wiki/Zellbiologie',
   facts: [
     {
+      concept: 'bio:kOberstufe:was-bedeutet-funktionsbezogene-differenz',
       prompt: 'Was bedeutet funktionsbezogene Differenzierung von Zellen?',
       answer: 'Zellen spezialisieren sich für bestimmte Aufgaben in Geweben/Organen',
       wrong: ['Alle Körperzellen bleiben identisch funktionslos', 'Nur Pflanzen haben nie Gewebe', 'Differenzierung löscht DNA immer vollständig'],
@@ -20,6 +21,7 @@ const zellen: BioBank = {
       gapAccepted: ['differenzierten', 'spezialisierten', 'gebaut'],
     },
     {
+      concept: 'bio:kOberstufe:kompartimentierung-in-eukaryoten-dient-v',
       prompt: 'Kompartimentierung in Eukaryoten dient vor allem …',
       answer: 'der räumlichen Trennung von Stoffwechselwegen',
       wrong: ['nur der Fotosynthese in Knochen', 'nur der Impfung', 'nur dem Federkleid'],
@@ -34,6 +36,7 @@ const zellen: BioBank = {
   ],
   trueFalse: [
     {
+      concept: 'bio:kOberstufe:in-differenzierten-zellen-ist-die-dna-im',
       statement: 'In differenzierten Zellen ist die DNA immer vollständig gelöscht.',
       correct: false,
       explanation: 'Meist gleiche DNA — unterschiedliche Genaktivität.',
@@ -42,6 +45,7 @@ const zellen: BioBank = {
   ],
   multis: [
     {
+      concept: 'bio:kOberstufe:welche-strukturen-sind-eukaryotische-org',
       question: 'Welche Strukturen sind eukaryotische Organellen?',
       correct: ['Mitochondrien', 'Zellkern'],
       wrong: ['Nur Chitinpanzer außen', 'Nur Federfahnen'],
@@ -56,6 +60,7 @@ const stoffwechsel: BioBank = {
   url: 'https://de.wikipedia.org/wiki/Zellatmung',
   facts: [
     {
+      concept: 'bio:kOberstufe:assimilation-bedeutet-grob',
       prompt: 'Assimilation bedeutet grob …',
       answer: 'Aufbau körpereigener Stoffe (z. B. Fotosynthese)',
       wrong: ['Nur Abbau zu CO₂ ohne Ausnahme', 'Nur Knochenbruch', 'Nur Impfung'],
@@ -65,6 +70,7 @@ const stoffwechsel: BioBank = {
       gapAccepted: ['ATP', 'ATP-Energie', 'Adenosintriphosphat'],
     },
     {
+      concept: 'bio:kOberstufe:dissimilation-z-b-zellatmung',
       prompt: 'Dissimilation (z. B. Zellatmung) …',
       answer: 'baut energiereiche Stoffe ab und stellt ATP bereit',
       wrong: ['erzeugt Zucker nur aus Licht ohne Enzyme', 'löscht Gene', 'bildet nur Chlorophyll'],
@@ -72,6 +78,7 @@ const stoffwechsel: BioBank = {
       wissen: 'Vergleich Fotosynthese/Atmung.',
     },
     {
+      concept: 'bio:kOberstufe:enzyme-senken',
       prompt: 'Enzyme senken …',
       answer: 'die Aktivierungsenergie von Reaktionen',
       wrong: ['die Lichtgeschwindigkeit', 'die Chromosomenzahl immer auf null', 'den pH auf 14 fest'],
@@ -86,6 +93,7 @@ const stoffwechsel: BioBank = {
   ],
   trueFalse: [
     {
+      concept: 'bio:kOberstufe:fotosynthese-und-zellatmung-sind-stoffli',
       statement: 'Fotosynthese und Zellatmung sind stofflich/energetisch miteinander verknüpft.',
       correct: true,
       explanation: 'Produkte der einen sind Edukte der anderen (vereinfacht).',
@@ -94,6 +102,7 @@ const stoffwechsel: BioBank = {
   ],
   sorts: [
     {
+      concept: 'bio:kOberstufe:ordne-grob-stationen-der-aeroben-dissimi',
       question: 'Ordne grob Stationen der aeroben Dissimilation.',
       labels: ['Glykolyse', 'Citratzyklus', 'Atmungskette'],
       explanation: 'Klassische Abfolge im Schulmodell.',
@@ -107,6 +116,7 @@ const oekologie: BioBank = {
   url: 'https://de.wikipedia.org/wiki/%C3%96kologie',
   facts: [
     {
+      concept: 'bio:kOberstufe:nachhaltigkeit-meint-im-oekologischen-ko',
       prompt: 'Nachhaltigkeit meint im ökologischen Kontext grob …',
       answer: 'Ressourcen so nutzen, dass zukünftige Generationen nicht gefährdet werden',
       wrong: ['Sofortiger Totalverbrauch aller Vorräte', 'Nur Einweg ohne Recyclinggedanken', 'Ignorieren von Stoffkreisläufen'],
@@ -114,6 +124,7 @@ const oekologie: BioBank = {
       wissen: 'Handlungsoptionen und Systemdenken.',
     },
     {
+      concept: 'bio:kOberstufe:ein-begrenzender-faktor',
       prompt: 'Ein begrenzender Faktor …',
       answer: 'schränkt Wachstum/Verbreitung einer Population ein',
       wrong: ['erhöht immer unbegrenzt die Population', 'löscht Physikgesetze', 'ist nur der Wochentag'],
@@ -128,6 +139,7 @@ const oekologie: BioBank = {
   ],
   trueFalse: [
     {
+      concept: 'bio:kOberstufe:oekosystemdienstleistungen-z-b-bestaeubu',
       statement: 'Ökosystemdienstleistungen (z. B. Bestäubung, Wasserfilter) haben gesellschaftlichen Wert.',
       correct: true,
       explanation: 'Naturleistungen stützen Wirtschaft und Gesundheit.',
@@ -136,6 +148,7 @@ const oekologie: BioBank = {
   ],
   multis: [
     {
+      concept: 'bio:kOberstufe:welche-massnahmen-koennen-nachhaltigkeit',
       question: 'Welche Maßnahmen können Nachhaltigkeit fördern?',
       correct: ['Ressourcen schonen', 'Kreisläufe schließen', 'Vielfalt schützen'],
       wrong: ['Unbegrenzte Verschwendung', 'Lebensräume flächendeckend versiegeln'],
@@ -150,6 +163,7 @@ const genetikOS: BioBank = {
   url: 'https://de.wikipedia.org/wiki/Gentechnik',
   facts: [
     {
+      concept: 'bio:kOberstufe:was-beschreibt-pcr-grob',
       prompt: 'Was beschreibt PCR grob?',
       answer: 'Vervielfältigung von DNA-Abschnitten',
       wrong: ['Nur Knochenheilung', 'Nur Transpiration', 'Nur Impfung mit Bakterien immer'],
@@ -159,6 +173,7 @@ const genetikOS: BioBank = {
       gapAccepted: ['mRNA', 'RNA', 'Messenger-RNA'],
     },
     {
+      concept: 'bio:kOberstufe:ein-ethischer-aspekt-der-gentechnik-ist',
       prompt: 'Ein ethischer Aspekt der Gentechnik ist …',
       answer: 'Abwägung von Nutzen, Risiken und gesellschaftlichen Folgen',
       wrong: ['dass Ethik irrelevant sei', 'dass nur Farbe zählt', 'dass Physik entfällt'],
@@ -173,6 +188,7 @@ const genetikOS: BioBank = {
   ],
   trueFalse: [
     {
+      concept: 'bio:kOberstufe:klassische-zuechtung-veraendert-ebenfall',
       statement: 'Klassische Züchtung verändert ebenfalls die genetische Ausstattung von Populationen.',
       correct: true,
       explanation: 'Selektion durch Menschen — Vergleich zur Gentechnik.',
@@ -181,6 +197,7 @@ const genetikOS: BioBank = {
   ],
   sorts: [
     {
+      concept: 'bio:kOberstufe:ordne-die-genexpression',
       question: 'Ordne die Genexpression.',
       labels: ['DNA', 'mRNA', 'Protein'],
       explanation: 'Zentrales Dogma (Schulmodell).',
@@ -194,6 +211,7 @@ const kommunikation: BioBank = {
   url: 'https://de.wikipedia.org/wiki/Signaltransduktion',
   facts: [
     {
+      concept: 'bio:kOberstufe:zellulaere-kommunikation-braucht-typisch',
       prompt: 'Zelluläre Kommunikation braucht typischerweise …',
       answer: 'Signal, Rezeptor und nachfolgende Antwort der Zelle',
       wrong: ['nur Zufall ohne Moleküle', 'nur Federkleid', 'nur Holzfasern'],
@@ -210,6 +228,7 @@ const kommunikation: BioBank = {
   ],
   trueFalse: [
     {
+      concept: 'bio:kOberstufe:ohne-passende-rezeptoren-bleibt-ein-sign',
       statement: 'Ohne passende Rezeptoren bleibt ein Signalstoff an der Zielzelle wirkungslos.',
       correct: true,
       explanation: 'Schlüssel-Schloss-Prinzip.',
@@ -223,6 +242,7 @@ const biodiversitaet: BioBank = {
   url: 'https://de.wikipedia.org/wiki/Biodiversit%C3%A4t',
   facts: [
     {
+      concept: 'bio:kOberstufe:biodiversitaet-umfasst',
       prompt: 'Biodiversität umfasst …',
       answer: 'Vielfalt der Gene, Arten und Ökosysteme',
       wrong: ['nur eine einzelne Laborzelle', 'nur Schulnoten', 'nur Metalllegierungen'],
@@ -236,6 +256,7 @@ const biodiversitaet: BioBank = {
   ],
   trueFalse: [
     {
+      concept: 'bio:kOberstufe:hoehere-genetische-vielfalt-kann-populat',
       statement: 'Höhere genetische Vielfalt kann Populationen robuster gegen Umweltänderungen machen.',
       correct: true,
       explanation: 'Anpassungspotenzial.',
@@ -244,6 +265,7 @@ const biodiversitaet: BioBank = {
   ],
   multis: [
     {
+      concept: 'bio:kOberstufe:welche-prozesse-foerdern-biodiversitaet-',
       question: 'Welche Prozesse fördern Biodiversität langfristig?',
       correct: ['Artbildung', 'Angepasste Nutzung/Schutz'],
       wrong: ['Flächendeckende Monokultur überall', 'Vollständige Lebensraumvernichtung'],
@@ -258,6 +280,7 @@ const verhalten: BioBank = {
   url: 'https://de.wikipedia.org/wiki/Verhaltensbiologie',
   facts: [
     {
+      concept: 'bio:kOberstufe:angeborenes-verhalten',
       prompt: 'Angeborenes Verhalten …',
       answer: 'tritt ohne Lernen in typischer Form auf (Schulmodell)',
       wrong: ['existiert nie', 'ist immer nur Kultur', 'braucht immer Schrift'],
@@ -271,6 +294,7 @@ const verhalten: BioBank = {
   ],
   trueFalse: [
     {
+      concept: 'bio:kOberstufe:menschliches-verhalten-ist-rein-genetisc',
       statement: 'Menschliches Verhalten ist rein genetisch und nie kulturell beeinflusst.',
       correct: false,
       explanation: 'Biologie und Kultur wirken zusammen.',
@@ -284,6 +308,7 @@ const systematikOS: BioBank = {
   url: 'https://de.wikipedia.org/wiki/Systematik_(Biologie)',
   facts: [
     {
+      concept: 'bio:kOberstufe:systematisierung-und-vernetztheit-betont',
       prompt: 'Systematisierung und Vernetztheit betont …',
       answer: 'Zusammenhänge zwischen Teilgebieten der Biologie',
       wrong: ['nur isolierte Fakten ohne Bezug', 'nur Orthografie', 'nur Sportregeln'],
@@ -293,6 +318,7 @@ const systematikOS: BioBank = {
   ],
   trueFalse: [
     {
+      concept: 'bio:kOberstufe:zellbiologie-genetik-und-oekologie-lasse',
       statement: 'Zellbiologie, Genetik und Ökologie lassen sich sinnvoll verknüpfen.',
       correct: true,
       explanation: 'z. B. Genetik der Anpassung in Populationen.',
@@ -301,6 +327,7 @@ const systematikOS: BioBank = {
   ],
   sorts: [
     {
+      concept: 'bio:kOberstufe:ordne-organisationsebenen-vom-kleinen-zu',
       question: 'Ordne Organisationsebenen vom Kleinen zum Großen.',
       labels: ['Molekül', 'Zelle', 'Organismus', 'Ökosystem'],
       explanation: 'Skalen der Biologie.',
@@ -335,6 +362,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
   'bi-gk-lbw-wueste': bankGenerate(
     wahl('Wüste', [
       {
+        concept: 'bio:kOberstufe:welche-angepasstheit-hilft-wuestenpflanz',
         prompt: 'Welche Angepasstheit hilft Wüstenpflanzen oft?',
         answer: 'Wasserspeicherung / reduzierte Blätter / dicke Cuticula',
         wrong: ['Kiemenatmung', 'Federflug als Blatt', 'Blutkreislauf wie Säuger'],
@@ -346,6 +374,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
   'bi-gk-lbw-energie': bankGenerate(
     wahl('Energieumsatz', [
       {
+        concept: 'bio:kOberstufe:grundumsatz-beschreibt-grob',
         prompt: 'Grundumsatz beschreibt grob …',
         answer: 'Energiebedarf in Ruhe',
         wrong: ['nur den Sprintrekord', 'nur die Blattfläche', 'nur die Chromosomenzahl'],
@@ -357,6 +386,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
   'bi-gk-lbw-fliesgewaesser': bankGenerate(
     wahl('Fließgewässer', [
       {
+        concept: 'bio:kOberstufe:was-praegt-fliessgewaesser-als-lebensrau',
         prompt: 'Was prägt Fließgewässer als Lebensraum stark?',
         answer: 'Strömung, Sauerstoffeintrag, Uferstruktur',
         wrong: ['Nur Mondstaub', 'Nur Schulklingeln', 'Nur Federfarbe'],
@@ -368,6 +398,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
   'bi-gk-lbw-krebs': bankGenerate(
     wahl('Krebs (Medizin)', [
       {
+        concept: 'bio:kOberstufe:krebszellen-kennzeichnet-oft',
         prompt: 'Krebszellen kennzeichnet oft …',
         answer: 'unkontrollierte Zellteilung',
         wrong: ['immer sofortige Heilung ohne Therapie', 'nur Fotosynthese', 'nur Kiemen'],
@@ -382,6 +413,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
   'bi-lk11-lbw-urban': bankGenerate(
     wahl('Stadtökologie', [
       {
+        concept: 'bio:kOberstufe:urbane-oekologie-untersucht',
         prompt: 'Urbane Ökologie untersucht …',
         answer: 'Wechselwirkungen von Arten und Umwelt in Städten',
         wrong: ['nur Meeresboden ohne Stadt', 'nur Sternkarten', 'nur Orthografie'],
@@ -393,6 +425,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
   'bi-lk11-lbw-bioindikation': bankGenerate(
     wahl('Bioindikator', [
       {
+        concept: 'bio:kOberstufe:bioindikatoren',
         prompt: 'Bioindikatoren …',
         answer: 'zeigen Umweltzustände durch An-/Abwesenheit oder Zustand von Arten',
         wrong: ['ersetzen Messgeräte immer vollständig ohne Sinn', 'sind nur Steine', 'sind nur Zahlen ohne Biologie'],
@@ -404,6 +437,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
   'bi-lk11-lbw-invasiv': bankGenerate(
     wahl('Neobiota', [
       {
+        concept: 'bio:kOberstufe:invasive-arten-koennen',
         prompt: 'Invasive Arten können …',
         answer: 'heimische Arten und Ökosysteme verdrängen/verändern',
         wrong: ['nie ökologische Wirkung haben', 'nur Schulbücher fressen', 'nur DNA löschen weltweit'],
@@ -415,6 +449,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
   'bi-lk11-lbw-rohstoffe': bankGenerate(
     wahl('Nachwachsende Rohstoffe', [
       {
+        concept: 'bio:kOberstufe:nachwachsende-rohstoffe',
         prompt: 'Nachwachsende Rohstoffe …',
         answer: 'stammen aus Biomasse und können erneut erzeugt werden',
         wrong: ['sind immer unbegrenzt ohne Fläche', 'sind nur Erdöl', 'sind nur Metall'],
@@ -426,6 +461,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
   'bi-lk11-lbw-energie': bankGenerate(
     wahl('Energiehaushalt', [
       {
+        concept: 'bio:kOberstufe:leistungsumsatz-ist',
         prompt: 'Leistungsumsatz ist …',
         answer: 'Energiebedarf bei Aktivität über dem Grundumsatz',
         wrong: ['nur die DNA-Länge', 'nur die Blattzahl', 'nur die Schuhgröße'],
@@ -437,6 +473,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
   'bi-lk12-lbw-allergie': bankGenerate(
     wahl('Allergie', [
       {
+        concept: 'bio:kOberstufe:eine-allergie-ist-grob',
         prompt: 'Eine Allergie ist grob …',
         answer: 'übersteigerte Immunreaktion gegen eigentlich harmlose Stoffe',
         wrong: ['immer eine Virusvermehrung', 'nur Knochenbruch', 'nur Fotosynthese'],
@@ -449,6 +486,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
   'bi-lk12-lbw-gefaess': bankGenerate(
     wahl('Gefäßpflanzen', [
       {
+        concept: 'bio:kOberstufe:gefaesspflanzen-besitzen',
         prompt: 'Gefäßpflanzen besitzen …',
         answer: 'Leitgewebe (Xylem/Phloem)',
         wrong: ['nie Wurzeln', 'nur Kiemen', 'nur Federn'],

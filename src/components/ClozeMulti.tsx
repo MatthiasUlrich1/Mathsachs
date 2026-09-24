@@ -10,6 +10,8 @@ export interface ClozeMultiProps {
   disabled?: boolean
   /** Optional placeholders per blank */
   placeholders?: string[]
+  /** After check: per-blank correct/incorrect highlight */
+  partResults?: boolean[]
 }
 
 /** Multi-blank cloze: several gaps in one running sentence. */
@@ -20,6 +22,7 @@ export const ClozeMulti: React.FC<ClozeMultiProps> = ({
   instruction,
   disabled = false,
   placeholders,
+  partResults,
 }) => {
   const setBlank = (index: number, value: string) => {
     const next = [...blanks]
@@ -36,13 +39,20 @@ export const ClozeMulti: React.FC<ClozeMultiProps> = ({
             <span>{seg}</span>
             {i < blanks.length && (
               <input
-                className="cloze-multi__input"
+                className={[
+                  'cloze-multi__input',
+                  partResults?.[i] === true ? 'cloze-multi__input--ok' : '',
+                  partResults?.[i] === false ? 'cloze-multi__input--bad' : '',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
                 type="text"
                 value={blanks[i] ?? ''}
                 onChange={(e) => setBlank(i, e.target.value)}
                 disabled={disabled}
                 placeholder={placeholders?.[i] ?? '…'}
                 aria-label={`Lücke ${i + 1}`}
+                aria-invalid={partResults?.[i] === false ? true : undefined}
                 autoComplete="off"
                 spellCheck={false}
               />

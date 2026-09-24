@@ -33,6 +33,7 @@ type VertebrateGroup = 'fisch' | 'lurch' | 'kriechtier' | 'vogel' | 'saeuger'
 
 type IconSet = {
   group: VertebrateGroup
+  concept: string
   question: string
   prompt: string
   correctId: string
@@ -41,77 +42,85 @@ type IconSet = {
   wissen: string
 }
 
-/** Cross-group assignment — ONLY for Systematik / Zuordnung. */
-const VERTEBRATE_ASSIGN_SETS: IconSet[] = [
+/**
+ * Feature-based iconBelong (Gym K5): no “pick the labeled animal” giveaways.
+ * Cards show Merkmale — student must know which trait fits which group.
+ */
+const VERTEBRATE_FEATURE_ICONS: IconSet[] = [
   {
     group: 'fisch',
-    question: 'Welches Tier gehört zu den Fischen?',
-    prompt: 'Gruppe: Fische',
-    correctId: 'forelle',
+    concept: 'bio:wirbeltiere:fisch-kiemen-flossen',
+    question: 'Welches Merkmalspaar passt typisch zu Fischen?',
+    prompt: 'Angepasstheit ans Wasser',
+    correctId: 'kiemen',
     options: [
-      { id: 'forelle', label: 'Forelle', icon: '🐟' },
-      { id: 'frosch', label: 'Frosch', icon: '🐸' },
-      { id: 'adler', label: 'Adler', icon: '🦅' },
-      { id: 'hirsch', label: 'Hirsch', icon: '🦌' },
+      { id: 'kiemen', label: 'Kiemen und Flossen', icon: '🫧' },
+      { id: 'federn', label: 'Federn und Flug', icon: '🪶' },
+      { id: 'fell', label: 'Fell und Säugen', icon: '🍼' },
+      { id: 'horn', label: 'Trockene Hornschicht an Land', icon: '🛡️' },
     ],
-    explanation: 'Fische leben im Wasser, atmen über Kiemen und haben Flossen.',
-    wissen: 'Zuordnung zu Wirbeltiergruppen anhand typischer Vertreter.',
+    explanation: 'Fische atmen über Kiemen und steuern mit Flossen.',
+    wissen: 'Atmung und Fortbewegung spiegeln den Lebensraum Wasser wider.',
   },
   {
     group: 'lurch',
-    question: 'Welches Tier gehört zu den Lurchen (Amphibien)?',
-    prompt: 'Gruppe: Lurche',
-    correctId: 'frosch',
+    concept: 'bio:wirbeltiere:lurch-haut-meta',
+    question: 'Welches Merkmal ist typisch für viele Lurche?',
+    prompt: 'Entwicklung / Haut',
+    correctId: 'meta',
     options: [
-      { id: 'frosch', label: 'Frosch', icon: '🐸' },
-      { id: 'forelle', label: 'Forelle', icon: '🐟' },
-      { id: 'schlange', label: 'Schlange', icon: '🐍' },
-      { id: 'fledermaus', label: 'Fledermaus', icon: '🦇' },
+      { id: 'meta', label: 'Feuchte Haut, oft Metamorphose', icon: '🔁' },
+      { id: 'federn', label: 'Federkleid', icon: '🪶' },
+      { id: 'kiemen', label: 'Nur Kiemen lebenslang, nie Lungen', icon: '🫧' },
+      { id: 'fell', label: 'Gleichwarm mit Fell', icon: '🦌' },
     ],
-    explanation: 'Lurche haben feuchte Haut und oft eine Metamorphose.',
-    wissen: 'Amphibien: Übergang Wasser–Land.',
+    explanation: 'Viele Lurche haben feuchte Haut und durchlaufen eine Metamorphose.',
+    wissen: 'Übergang Wasser–Land: Kaulquappe → erwachsenes Tier.',
   },
   {
     group: 'kriechtier',
-    question: 'Welches Tier gehört zu den Kriechtieren?',
-    prompt: 'Gruppe: Kriechtiere',
-    correctId: 'schlange',
+    concept: 'bio:wirbeltiere:kriechtier-horn',
+    question: 'Welches Merkmal kennzeichnet Kriechtiere besonders?',
+    prompt: 'Körperbedeckung',
+    correctId: 'horn',
     options: [
-      { id: 'schlange', label: 'Schlange', icon: '🐍' },
-      { id: 'frosch', label: 'Frosch', icon: '🐸' },
-      { id: 'pinguin', label: 'Pinguin', icon: '🐧' },
-      { id: 'forelle', label: 'Forelle', icon: '🐟' },
+      { id: 'horn', label: 'Trockene Hornschicht / Schuppen', icon: '🛡️' },
+      { id: 'haut', label: 'Ständig feuchte Nackthaut', icon: '💧' },
+      { id: 'federn', label: 'Federn', icon: '🪶' },
+      { id: 'fell', label: 'Dichtes Fell und Säugen', icon: '🍼' },
     ],
     explanation: 'Kriechtiere haben eine trockene Hornschicht und Lungenatmung.',
-    wissen: 'Reptilien sind an das Landleben angepasst.',
+    wissen: 'Angepasstheit an das Landleben ohne Austrocknung.',
   },
   {
     group: 'vogel',
-    question: 'Welches Tier gehört zu den Vögeln?',
-    prompt: 'Gruppe: Vögel',
-    correctId: 'adler',
+    concept: 'bio:wirbeltiere:vogel-federn',
+    question: 'Welches Merkmal unterscheidet Vögel klar von Fledermäusen?',
+    prompt: 'Körperbedeckung',
+    correctId: 'federn',
     options: [
-      { id: 'adler', label: 'Adler', icon: '🦅' },
-      { id: 'fledermaus', label: 'Fledermaus', icon: '🦇' },
-      { id: 'frosch', label: 'Frosch', icon: '🐸' },
-      { id: 'forelle', label: 'Forelle', icon: '🐟' },
+      { id: 'federn', label: 'Federn', icon: '🪶' },
+      { id: 'fell', label: 'Fell und Säugen', icon: '🦇' },
+      { id: 'schuppen', label: 'Nur Fischschuppen', icon: '🐟' },
+      { id: 'chitin', label: 'Chitinpanzer außen', icon: '🪲' },
     ],
-    explanation: 'Vögel haben Federn — Fledermäuse sind Säugetiere.',
-    wissen: 'Federn sind das Leitmerkmal der Vögel.',
+    explanation: 'Federn sind das Leitmerkmal der Vögel — Fledermäuse sind Säuger.',
+    wissen: 'Homologie/Analogie: Flug bei Vögeln und Fledermäusen, aber unterschiedliche Bedeckung.',
   },
   {
     group: 'saeuger',
-    question: 'Welches Tier gehört zu den Säugetieren?',
-    prompt: 'Gruppe: Säugetiere',
-    correctId: 'hirsch',
+    concept: 'bio:wirbeltiere:saeuger-saeugen',
+    question: 'Welches Merkmal ist namensgebend für Säugetiere?',
+    prompt: 'Fortpflanzung / Ernährung der Jungen',
+    correctId: 'milch',
     options: [
-      { id: 'hirsch', label: 'Hirsch', icon: '🦌' },
-      { id: 'adler', label: 'Adler', icon: '🦅' },
-      { id: 'schlange', label: 'Schlange', icon: '🐍' },
-      { id: 'forelle', label: 'Forelle', icon: '🐟' },
+      { id: 'milch', label: 'Junge mit Milch ernähren', icon: '🍼' },
+      { id: 'laich', label: 'Nur Laich im Wasser ablegen', icon: '🥚' },
+      { id: 'federn', label: 'Federkleid', icon: '🪶' },
+      { id: 'kiemen', label: 'Kiemenatmung lebenslang', icon: '🫧' },
     ],
-    explanation: 'Säugetiere säugen ihre Jungen und sind gleichwarm.',
-    wissen: 'Fell/Haare und Säugen kennzeichnen Säuger.',
+    explanation: 'Säugetiere säugen ihre Jungen — daher der Name.',
+    wissen: 'Gleichwarm + Fell/Haare + Säugen sind zentrale Merkmale.',
   },
 ]
 
@@ -119,16 +128,26 @@ function iconsForGroup(group: VertebrateGroup) {
   return (rng: Rng) => {
     const s = pick(
       rng,
-      VERTEBRATE_ASSIGN_SETS.filter((x) => x.group === group),
+      VERTEBRATE_FEATURE_ICONS.filter((x) => x.group === group),
     )
-    return iconBelongBioTask(rng, { ...s, fachwissen: fw(s.wissen) })
+    return iconBelongBioTask(rng, {
+      ...s,
+      fachwissen: fw(s.wissen),
+      dedupeKey: s.concept,
+      contentIds: [s.concept],
+    })
   }
 }
 
-/** All groups — Systematik / Zuordnung only. */
+/** Systematik / Zuordnung: Merkmalsvergleich über Gruppen. */
 function vertebrateAssignIcons(rng: Rng) {
-  const s = pick(rng, VERTEBRATE_ASSIGN_SETS)
-  return iconBelongBioTask(rng, { ...s, fachwissen: fw(s.wissen) })
+  const s = pick(rng, VERTEBRATE_FEATURE_ICONS)
+  return iconBelongBioTask(rng, {
+    ...s,
+    fachwissen: fw(s.wissen),
+    dedupeKey: s.concept,
+    contentIds: [s.concept],
+  })
 }
 
 function vertebrateCompareCloze(rng: Rng) {
@@ -165,19 +184,33 @@ function vertebrateCompareCloze(rng: Rng) {
     solution: it.accepted.map((a) => a[0]).join(' / '),
     explanation: it.explanation,
     fachwissen: fw(it.wissen),
+    dedupeKey: it.q === 'Körperbedeckung' ? 'bio:wirbeltiere:koerperbedeckung-vergleich' : 'bio:wirbeltiere:atmung-vergleich',
+    contentIds: [
+      it.q === 'Körperbedeckung'
+        ? 'bio:wirbeltiere:koerperbedeckung-vergleich'
+        : 'bio:wirbeltiere:atmung-vergleich',
+    ],
   })
 }
 
 function vertebrateComparePairs(rng: Rng) {
   const pool = [
-    { term: 'Kieme', meaning: 'Atemorgan im Wasser', wissen: 'Fische.' },
-    { term: 'Feder', meaning: 'Flug und Wärmeschutz bei Vögeln', wissen: 'Vögel.' },
-    { term: 'Laich', meaning: 'Eigelege im Wasser (oft Lurche/Fische)', wissen: 'Fortpflanzung.' },
-    { term: 'Hornschicht', meaning: 'Trockene Hautbedeckung der Kriechtiere', wissen: 'Landleben.' },
-    { term: 'Säugen', meaning: 'Jungtiere mit Milch ernähren', wissen: 'Säugetiere.' },
+    { term: 'Kieme', meaning: 'Atemorgan im Wasser', wissen: 'Fische atmen mit Kiemen.' },
+    { term: 'Feder', meaning: 'Flug und Wärmeschutz bei Vögeln', wissen: 'Federn sind typisch für Vögel.' },
+    { term: 'Laich', meaning: 'Eigelege im Wasser (oft Lurche/Fische)', wissen: 'Laichen hängt am Wasserleben.' },
+    { term: 'Hornschicht', meaning: 'Trockene Hautbedeckung der Kriechtiere', wissen: 'Schützt vor Austrocknung an Land.' },
+    { term: 'Säugen', meaning: 'Jungtiere mit Milch ernähren', wissen: 'Namensgebend für Säugetiere.' },
+    { term: 'Flosse', meaning: 'Steuer- und Antriebsorgan der Fische', wissen: 'Angepasstheit an Schwimmen.' },
+    { term: 'Metamorphose', meaning: 'Gestaltwechsel (z. B. Kaulquappe → Frosch)', wissen: 'Typisch für viele Lurche.' },
+    { term: 'Gleichwarm', meaning: 'Körpertemperatur relativ konstant', wissen: 'Vögel und Säuger sind gleichwarm.' },
+    { term: 'Wechselwarm', meaning: 'Körpertemperatur folgt der Umgebung', wissen: 'Fische, Lurche, Kriechtiere.' },
+    { term: 'Lunge', meaning: 'Atemorgan der Landwirbeltiere', wissen: 'Vögel, Säuger, viele Kriechtiere.' },
+    { term: 'Nest', meaning: 'Brut- und Aufzuchtort vieler Vögel', wissen: 'Fortpflanzung der Vögel.' },
+    { term: 'Fell', meaning: 'Haarkleid der Säugetiere', wissen: 'Wärmeschutz und Schutz.' },
   ]
   const three = shuffle(rng, pool).slice(0, 3)
   const rest = pool.filter((p) => !three.includes(p))
+  const keys = three.map((p) => `bio:wirbeltiere:paar-${p.term.toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue')}`)
   return matchTermsTask(rng, {
     question: 'Ordne Fachbegriff und Bedeutung (Klick-Paare).',
     terms: three.map((p) => p.term),
@@ -185,7 +218,9 @@ function vertebrateComparePairs(rng: Rng) {
     distractor: rest[0]?.meaning ?? 'Photosynthese der Blätter',
     solution: three.map((p) => `${p.term} → ${p.meaning}`).join('; '),
     explanation: three.map((p) => p.wissen).join(' '),
-    fachwissen: fw(three.map((p) => p.wissen).join(' ')),
+    fachwissen: fw(three.map((p) => `${p.term}: ${p.wissen}`).join(' ')),
+    dedupeKey: `pair:${[...keys].sort().join('+')}`,
+    contentIds: keys,
   })
 }
 
@@ -274,7 +309,9 @@ function groupFlash(group: VertebrateGroup) {
       accepted: [c.answer, ...c.alt],
       solution: c.answer,
       explanation: `Gesucht war: ${c.answer}.`,
-      fachwissen: fw(`Kurzabfrage zu ${group}.`),
+      fachwissen: fw(
+        `Zur Frage „${c.front}“: Die gesuchte Antwort ist „${c.answer}“. ${c.alt.length ? `Auch akzeptiert: ${c.alt.join(', ')}.` : ''} Ordne das Merkmal der Wirbeltiergruppe zu.`,
+      ),
       choices: shuffle(rng, [c.answer, ...c.wrong.slice(0, 3)]),
     })
   }
@@ -364,6 +401,7 @@ export const BIOLOGIE_K5_EXPANDED: Record<string, Topic['generate']> = {
 
 const cellIcons: NonNullable<BioBank['icons']> = [
   {
+    concept: 'bio:zelle:icon-chloroplast',
     question: 'Welches Organell betreibt Fotosynthese?',
     prompt: 'Pflanzenzelle',
     options: [

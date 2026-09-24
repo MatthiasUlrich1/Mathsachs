@@ -117,6 +117,8 @@ interface InteractiveProps {
   value: UserInput
   onChange: (value: UserInput) => void
   disabled?: boolean
+  /** Per-part correctness after check (cloze blanks / pairMatch left items). */
+  partResults?: boolean[]
 }
 
 /** Interactive widgets for a task. */
@@ -125,6 +127,7 @@ export function TaskInteractive({
   value,
   onChange,
   disabled = false,
+  partResults,
 }: InteractiveProps) {
   const interactive = task.interactive
   if (!interactive) return null
@@ -368,6 +371,7 @@ export function TaskInteractive({
           onChange={(links) => onChange({ kind: 'pairMatch', links })}
           instruction={interactive.props.instruction}
           disabled={disabled}
+          partResults={partResults}
         />
       )}
       {interactive.type === 'clozeMulti' && (
@@ -385,6 +389,7 @@ export function TaskInteractive({
           instruction={interactive.props.instruction}
           placeholders={interactive.props.placeholders}
           disabled={disabled}
+          partResults={partResults}
         />
       )}
       {interactive.type === 'iconBelong' && (

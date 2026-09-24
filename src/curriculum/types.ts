@@ -123,8 +123,14 @@ export interface Task {
   solution: string
   /** Task-specific, step-by-step explanation. */
   explanation: string
-  /** Validate the learner's answer. */
+  /** Validate the learner's answer (all-or-nothing). */
   check: (input: UserInput) => boolean
+  /**
+   * Optional partial credit. When set, PracticeSession awards
+   * `round(pointsPerTask * fraction)` and can highlight per-part results
+   * (e.g. cloze blanks, pairMatch links). Defaults to check ? 1 : 0.
+   */
+  grade?: (input: UserInput) => TaskGrade
   /** The canonical correct input (used for answer keys and tests). */
   sampleAnswer: UserInput
   /** Optional SVG visual content (e.g., geometry diagrams). */
@@ -147,6 +153,33 @@ export interface Task {
    * (e.g. same year as tip-in vs. multiple-choice).
    */
   dedupeKey?: string
+  /**
+   * Content / fact identities for round uniqueness. If any id overlaps an earlier
+   * task in the same round, the task is rejected — so the same fact cannot reappear
+   * as MC, cloze, flashcard, or pairMatch.
+   */
+  contentIds?: string[]
+}
+
+/** Partial / full credit for a single attempt. */
+export type TaskGrade = {
+  /** Share of task points in [0, 1]. */
+  fraction: number
+  /** Per-part correctness (blanks, left-column pairs, …) for UI feedback. */
+  parts?: boolean[]
+}
+
+/** Resolve grade from optional `task.grade`, else all-or-nothing `check`. */
+export function gradeTask(task: Task, input: UserInput): TaskGrade {
+  if (task.grade) return task.grade(input)
+  return { fraction: task.check(input) ? 1 : 0 }
+}
+
+/** Integer points awarded for a graded attempt. */
+export function awardPoints(pointsPerTask: number, grade: TaskGrade): number {
+  if (grade.fraction <= 0) return 0
+  if (grade.fraction >= 1) return pointsPerTask
+  return Math.round(pointsPerTask * grade.fraction)
 }
 
 /** A single, selectable curriculum topic (Einzelthema). */

@@ -11,6 +11,10 @@ export interface FlashcardFlipProps {
   onAnswerChange: (value: string) => void
   /** Optional multiple-choice options shown after flip (preferred over free text). */
   choices?: string[]
+  /**
+   * Optional extra instruction. Prefer omitting — the numbered steps list
+   * already explains the flow; do not pass a duplicate of those steps.
+   */
   instruction?: string
   disabled?: boolean
   placeholder?: string
@@ -23,6 +27,20 @@ const DEFAULT_STEPS = [
   'Karte umdrehen',
   'Antwort wählen oder tippen',
 ] as const
+
+/** True when `instruction` only restates the default step list (skip rendering). */
+export function isRedundantFlashcardInstruction(instruction: string | undefined): boolean {
+  if (!instruction?.trim()) return true
+  const n = instruction
+    .toLowerCase()
+    .replace(/\s+/g, ' ')
+    .replace(/[)）.：:]/g, '')
+  return (
+    n.includes('vorderseite') &&
+    n.includes('umdrehen') &&
+    (n.includes('antwort tippen') || n.includes('antwort wählen'))
+  )
+}
 
 /** Flip card → choose or tip answer (quiz-style flashcard). */
 export const FlashcardFlip: React.FC<FlashcardFlipProps> = ({
@@ -44,17 +62,16 @@ export const FlashcardFlip: React.FC<FlashcardFlipProps> = ({
     (hasChoices
       ? 'Prüfung: gewählte Option muss zur Lösung passen. Erklärung erscheint nach „Antwort prüfen“.'
       : 'Prüfung: Groß-/Kleinschreibung und Leerzeichen egal; Synonyme aus der Lösungsliste zählen. Erklärung erscheint nach „Antwort prüfen“.')
+  const showInstruction = Boolean(instruction?.trim()) && !isRedundantFlashcardInstruction(instruction)
 
   return (
     <div className="flashcard-flip">
       <ol className="flashcard-flip__steps" aria-label="Ablauf">
-        {DEFAULT_STEPS.map((step, i) => (
-          <li key={step}>
-            <strong>{i + 1}.</strong> {step}
-          </li>
+        {DEFAULT_STEPS.map((step) => (
+          <li key={step}>{step}</li>
         ))}
       </ol>
-      {instruction && <p className="flashcard-flip__instruction">{instruction}</p>}
+      {showInstruction && <p className="flashcard-flip__instruction">{instruction}</p>}
       {!flipped && !disabled && (
         <p className="flashcard-flip__hint">
           {hasChoices

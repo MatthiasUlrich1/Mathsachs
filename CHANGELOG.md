@@ -9,6 +9,31 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.28] – 2026-09-24
+
+### Hinzugefügt
+- **Teilpunkte für clozeMulti / pairMatch:** Jede Lücke bzw. jedes Paar wird einzeln bewertet;
+  `PracticeSession` vergibt `round(pointsPerTask × fraction)` und markiert richtige/falsche Teile
+  in der UI (Phase „Teilweise richtig“).
+- **Konzept-Dedupe in Übungsrunden:** `Task.contentIds` + stärkere `uniqueRound`-Logik — dieselbe
+  Lernidee (z. B. `bio:spinnen:beinzahl`) erscheint höchstens einmal pro Durchlauf, auch über
+  verschiedene Interaktionen (MC, Cloze, Flashcard, pairMatch).
+- **Fragebezogenes Fachwissen (Biologie):** Generatoren setzen `task.fachwissen` mit Bezug zur
+  konkreten Frage (nicht nur Themen-Fallback).
+
+### Geändert
+- **Rundenlänge Standard 10:** Biologie- und Geschichte-Topic-Helper default `tasksPerRound: 10`
+  (Jahreszahlen-Pool max. 10); Physik unverändert 10.
+- **pairMatch-Vielfalt:** größere Begriffspools; `dedupeKey`/`contentIds` pro Begriffs-Set.
+- **iconBelong Gym-Niveau:** Merkmals-/Angepasstheitsfragen statt „Welches Tier ist X (n Beine)?“;
+  Emoji-UX bleibt, ohne Spoilers und Namens-Giveaways.
+- **FlashcardFlip:** Schritte nur einmal (CSS-Liste); redundante „1) 2) 3)“-Absätze und
+  Doppelnummerierung entfernt.
+
+### Behoben
+- **Themenfit:** Wirbellose-Überblick liefert keine Wirbeltier-Körperbedeckungs-Clozes mehr
+  (bleiben bei K5 Systematik/Zuordnung).
+
 ## [0.28.27] – 2026-09-24
 
 ### Behoben

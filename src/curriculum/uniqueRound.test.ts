@@ -60,6 +60,34 @@ describe('uniqueRound', () => {
     expect(taskFingerprint(tipIn)).not.toBe(taskFingerprint(other))
   })
 
+  it('contentIds overlap blocks a second fact even with different question text', () => {
+    const a = textTask({
+      question: 'Form A',
+      accepted: ['x'],
+      solution: 'x',
+      explanation: 'e',
+      contentIds: ['bio:demo:fact'],
+    })
+    const b = textTask({
+      question: 'Form B völlig anders',
+      accepted: ['y'],
+      solution: 'y',
+      explanation: 'e',
+      contentIds: ['bio:demo:fact'],
+    })
+    const c = textTask({
+      question: 'Other',
+      accepted: ['z'],
+      solution: 'z',
+      explanation: 'e',
+      contentIds: ['bio:demo:other'],
+    })
+    let i = 0
+    const pool = [a, b, c]
+    const round = buildUniqueTaskRound(() => pool[i++ % 3]!, createRng(1), 10, 20)
+    expect(round.length).toBe(2)
+  })
+
   it('returns up to targetCount unique tasks', () => {
     let n = 0
     const generate = (): Task => {

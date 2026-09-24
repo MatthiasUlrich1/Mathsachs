@@ -13,6 +13,12 @@ const withFw = (fw?: Fachwissen): { fachwissen?: Fachwissen } =>
 /** Spread optional round-dedupe key onto a Task. */
 const withDedupe = (key?: string): { dedupeKey?: string } =>
   key?.trim() ? { dedupeKey: key.trim() } : {}
+
+/** Spread optional content fact ids onto a Task. */
+const withContentIds = (ids?: string[]): { contentIds?: string[] } => {
+  const clean = (ids ?? []).map((id) => id.trim()).filter(Boolean)
+  return clean.length ? { contentIds: clean } : {}
+}
 import type { Rng } from '../lib/rng'
 import { createRng } from '../lib/rng'
 import {
@@ -80,6 +86,7 @@ interface TextTaskInput {
   fachwissen?: Fachwissen
   /** Round-dedupe identity (same key → treated as duplicate in a round). */
   dedupeKey?: string
+  contentIds?: string[]
 }
 
 /** Build a task whose answer is checked as free text (e.g. "<", ">", "="). */
@@ -93,6 +100,7 @@ export const textTask = (input: TextTaskInput): Task => {
     visualContent: input.visualContent,
     ...withFw(input.fachwissen),
     ...withDedupe(input.dedupeKey),
+    ...withContentIds(input.contentIds),
     check: (answer: UserInput) =>
       answer.kind === 'value' &&
       accepted.includes(answer.value.trim().toLowerCase()),
@@ -194,6 +202,8 @@ interface DragDropSortTaskInput {
   explanation: string
   visualContent?: string
   fachwissen?: Fachwissen
+  dedupeKey?: string
+  contentIds?: string[]
   /**
    * Optional RNG for the initial display shuffle. When omitted, a seed is
    * derived from question + items so the result is deterministic but not the
@@ -270,6 +280,8 @@ export const dragDropSortTask = (input: DragDropSortTaskInput): Task => {
     explanation: input.explanation,
     visualContent: input.visualContent,
     ...withFw(input.fachwissen),
+    ...withDedupe(input.dedupeKey),
+    ...withContentIds(input.contentIds),
     sampleAnswer: { kind: 'dragDropSort', order: presented.correctOrder },
     interactive: {
       type: 'dragDropSort',
@@ -717,6 +729,7 @@ interface ChoicePickTaskInput {
   fachwissen?: Fachwissen
   /** Round-dedupe identity (same key → treated as duplicate in a round). */
   dedupeKey?: string
+  contentIds?: string[]
 }
 
 /** Multiple-choice via tappable buttons (A/B/C, Winkelart, Kongruenzsatz, …). */
@@ -731,6 +744,7 @@ export const choicePickTask = (input: ChoicePickTaskInput): Task => {
     solutionVisualContent: input.solutionVisualContent,
     ...withFw(input.fachwissen),
     ...withDedupe(input.dedupeKey),
+    ...withContentIds(input.contentIds),
     sampleAnswer: { kind: 'choicePick', choice: input.correct },
     interactive: {
       type: 'choicePick',
@@ -763,6 +777,8 @@ interface MultiSelectTaskInput {
   visualContent?: string
   instruction?: string
   fachwissen?: Fachwissen
+  dedupeKey?: string
+  contentIds?: string[]
 }
 
 const sameSet = (a: string[], b: string[]): boolean => {
@@ -779,6 +795,8 @@ export const multiSelectTask = (input: MultiSelectTaskInput): Task => ({
   explanation: input.explanation,
   visualContent: input.visualContent,
   ...withFw(input.fachwissen),
+  ...withDedupe(input.dedupeKey),
+  ...withContentIds(input.contentIds),
   sampleAnswer: { kind: 'multiSelect', selected: [...input.correct] },
   interactive: {
     type: 'multiSelect',
@@ -1153,12 +1171,24 @@ interface PairMatchTaskInput {
   instruction?: string
   fachwissen?: Fachwissen
   dedupeKey?: string
+  contentIds?: string[]
   visualContent?: string
 }
 
 /** Click-to-pair two columns (no drag-slot labels). */
 export const pairMatchTask = (input: PairMatchTaskInput): Task => {
   const leftIds = input.left.map((l) => l.id)
+  const gradePair = (answer: UserInput) => {
+    if (answer.kind !== 'pairMatch') {
+      return { fraction: 0, parts: leftIds.map(() => false) }
+    }
+    const parts = leftIds.map((id) => answer.links[id] === input.correctLinks[id])
+    const correct = parts.filter(Boolean).length
+    return {
+      fraction: leftIds.length === 0 ? 0 : correct / leftIds.length,
+      parts,
+    }
+  }
   return {
     question: input.question,
     answerKind: 'text',
@@ -1167,6 +1197,7 @@ export const pairMatchTask = (input: PairMatchTaskInput): Task => {
     visualContent: input.visualContent,
     ...withFw(input.fachwissen),
     ...withDedupe(input.dedupeKey),
+    ...withContentIds(input.contentIds),
     sampleAnswer: { kind: 'pairMatch', links: { ...input.correctLinks } },
     interactive: {
       type: 'pairMatch',
@@ -1178,10 +1209,8 @@ export const pairMatchTask = (input: PairMatchTaskInput): Task => {
           'Tippe links einen Begriff, dann rechts die passende Erklärung.',
       },
     },
-    check: (answer: UserInput) => {
-      if (answer.kind !== 'pairMatch') return false
-      return leftIds.every((id) => answer.links[id] === input.correctLinks[id])
-    },
+    check: (answer: UserInput) => gradePair(answer).fraction >= 1,
+    grade: gradePair,
   }
 }
 
@@ -1197,6 +1226,7 @@ interface ClozeMultiTaskInput {
   placeholders?: string[]
   fachwissen?: Fachwissen
   dedupeKey?: string
+  contentIds?: string[]
   visualContent?: string
 }
 
@@ -1206,6 +1236,23 @@ const normCloze = (s: string) => s.trim().toLowerCase().replace(/\s+/g, ' ')
 export const clozeMultiTask = (input: ClozeMultiTaskInput): Task => {
   const n = input.accepted.length
   const sampleBlanks = input.accepted.map((a) => a[0] ?? '')
+  const blankOk = (b: string, i: number) =>
+    (input.accepted[i] ?? []).some((a) => normCloze(a) === normCloze(b))
+  const gradeBlanks = (answer: UserInput): { parts: boolean[]; fraction: number } => {
+    if (n === 0) return { parts: [], fraction: 0 }
+    if (answer.kind === 'clozeMulti') {
+      const parts = Array.from({ length: n }, (_, i) => blankOk(answer.blanks[i] ?? '', i))
+      const ok = parts.filter(Boolean).length
+      return { parts, fraction: ok / n }
+    }
+    if (answer.kind === 'value') {
+      const partsRaw = answer.value.split(/[/|;]+/).map((s) => s.trim())
+      const parts = Array.from({ length: n }, (_, i) => blankOk(partsRaw[i] ?? '', i))
+      const ok = parts.filter(Boolean).length
+      return { parts, fraction: ok / n }
+    }
+    return { parts: Array.from({ length: n }, () => false), fraction: 0 }
+  }
   return {
     question: input.question,
     answerKind: 'text',
@@ -1214,6 +1261,7 @@ export const clozeMultiTask = (input: ClozeMultiTaskInput): Task => {
     visualContent: input.visualContent,
     ...withFw(input.fachwissen),
     ...withDedupe(input.dedupeKey),
+    ...withContentIds(input.contentIds),
     sampleAnswer: { kind: 'clozeMulti', blanks: sampleBlanks },
     interactive: {
       type: 'clozeMulti',
@@ -1224,22 +1272,8 @@ export const clozeMultiTask = (input: ClozeMultiTaskInput): Task => {
         instruction: input.instruction ?? 'Fülle alle Lücken aus:',
       },
     },
-    check: (answer: UserInput) => {
-      if (answer.kind === 'clozeMulti') {
-        if (answer.blanks.length !== n) return false
-        return answer.blanks.every((b, i) =>
-          (input.accepted[i] ?? []).some((a) => normCloze(a) === normCloze(b)),
-        )
-      }
-      if (answer.kind === 'value') {
-        const parts = answer.value.split(/[/|;]+/).map((s) => s.trim())
-        if (parts.length !== n) return false
-        return parts.every((b, i) =>
-          (input.accepted[i] ?? []).some((a) => normCloze(a) === normCloze(b)),
-        )
-      }
-      return false
-    },
+    check: (answer: UserInput) => gradeBlanks(answer).fraction === 1,
+    grade: (answer: UserInput) => gradeBlanks(answer),
   }
 }
 
@@ -1255,6 +1289,7 @@ interface IconBelongTaskInput {
   prompt?: string
   fachwissen?: Fachwissen
   dedupeKey?: string
+  contentIds?: string[]
   visualContent?: string
 }
 
@@ -1267,6 +1302,7 @@ export const iconBelongTask = (input: IconBelongTaskInput): Task => ({
   visualContent: input.visualContent,
   ...withFw(input.fachwissen),
   ...withDedupe(input.dedupeKey),
+  ...withContentIds(input.contentIds),
   sampleAnswer: { kind: 'iconBelong', choice: input.correctId },
   interactive: {
     type: 'iconBelong',
@@ -1303,6 +1339,7 @@ interface FlashcardFlipTaskInput {
   checkHint?: string
   fachwissen?: Fachwissen
   dedupeKey?: string
+  contentIds?: string[]
   visualContent?: string
 }
 
@@ -1310,9 +1347,6 @@ interface FlashcardFlipTaskInput {
 export const flashcardFlipTask = (input: FlashcardFlipTaskInput): Task => {
   const accepted = input.accepted.map(normCloze)
   const hasChoices = Boolean(input.choices && input.choices.length > 0)
-  const defaultInstruction = hasChoices
-    ? '1) Vorderseite lesen  2) Karte umdrehen  3) Antwort tippen (Option wählen).'
-    : '1) Vorderseite lesen  2) Karte umdrehen  3) Antwort tippen.'
   const fwBase =
     input.fachwissen?.text ??
     'Karteikarte: nach dem Umdrehen antworten.'
@@ -1333,6 +1367,7 @@ export const flashcardFlipTask = (input: FlashcardFlipTaskInput): Task => {
     visualContent: input.visualContent,
     ...withFw(fachwissen),
     ...withDedupe(input.dedupeKey),
+    ...withContentIds(input.contentIds),
     sampleAnswer: {
       kind: 'flashcardFlip',
       flipped: true,
@@ -1344,7 +1379,8 @@ export const flashcardFlipTask = (input: FlashcardFlipTaskInput): Task => {
         front: input.front,
         backHint: input.backHint,
         choices: input.choices,
-        instruction: input.instruction ?? defaultInstruction,
+        // Steps list lives in FlashcardFlip UI — only pass non-redundant extras.
+        ...(input.instruction?.trim() ? { instruction: input.instruction } : {}),
         placeholder: input.placeholder,
         checkHint: input.checkHint,
       },

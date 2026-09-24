@@ -10,6 +10,7 @@ const pflanzen: BioBank = {
   url: 'https://de.wikipedia.org/wiki/Fotosynthese',
   facts: [
     {
+      concept: 'bio:k9:was-ist-die-vereinfachte-wortgleichung-d',
       prompt: 'Was ist die vereinfachte Wortgleichung der Fotosynthese?',
       answer: 'Kohlenstoffdioxid + Wasser → Glucose + Sauerstoff (mit Licht)',
       wrong: ['Nur Stickstoff → Gold', 'Eiweiß → Licht', 'Knochen → Blut'],
@@ -19,6 +20,7 @@ const pflanzen: BioBank = {
       gapAccepted: ['Sauerstoff', 'O2', 'O₂'],
     },
     {
+      concept: 'bio:k9:wo-findet-die-fotosynthese-in-der-zelle-',
       prompt: 'Wo findet die Fotosynthese in der Zelle statt?',
       answer: 'In den Chloroplasten',
       wrong: ['Nur in den Mitochondrien', 'Nur im Zellkern', 'Nur in den Knochen'],
@@ -26,6 +28,7 @@ const pflanzen: BioBank = {
       wissen: 'Anatomie und Physiologie der Samenpflanzen.',
     },
     {
+      concept: 'bio:k9:was-ist-transpiration',
       prompt: 'Was ist Transpiration?',
       answer: 'Abgabe von Wasserdampf über die Spaltöffnungen',
       wrong: ['Aufnahme von Knochenkalk', 'Bildung von Antikörpern', 'Nur Blutpumpung'],
@@ -35,6 +38,7 @@ const pflanzen: BioBank = {
       gapAccepted: ['Wasserdampf', 'Transpiration', 'Dampf'],
     },
     {
+      concept: 'bio:k9:xylem-transportiert-vor-allem',
       prompt: 'Xylem transportiert vor allem …',
       answer: 'Wasser und Mineralstoffe nach oben',
       wrong: ['Nur Asssimilate abwärts ausschließlich als Knochen', 'Nur Nervensignale', 'Nur Hormone im Menschen'],
@@ -50,12 +54,14 @@ const pflanzen: BioBank = {
   ],
   trueFalse: [
     {
+      concept: 'bio:k9:pflanzen-brauchen-fuer-die-fotosynthese-',
       statement: 'Pflanzen brauchen für die Fotosynthese Licht, CO₂ und Wasser.',
       correct: true,
       explanation: 'Das sind die klassischen Voraussetzungen.',
       wissen: 'Grundgleichung.',
     },
     {
+      concept: 'bio:k9:fotosynthese-findet-nur-in-den-wurzeln-s',
       statement: 'Fotosynthese findet nur in den Wurzeln statt.',
       correct: false,
       explanation: 'Vor allem in grünen Blättern (Chloroplasten).',
@@ -64,6 +70,7 @@ const pflanzen: BioBank = {
   ],
   sorts: [
     {
+      concept: 'bio:k9:ordne-den-weg-des-wassers-in-der-pflanze',
       question: 'Ordne den Weg des Wassers in der Pflanze grob.',
       labels: ['Aufnahme in der Wurzel', 'Transport im Spross', 'Verdunstung am Blatt'],
       explanation: 'Boden → Leitbahnen → Transpiration.',
@@ -72,6 +79,7 @@ const pflanzen: BioBank = {
   ],
   multis: [
     {
+      concept: 'bio:k9:welche-faktoren-beeinflussen-die-fotosyn',
       question: 'Welche Faktoren beeinflussen die Fotosynthese?',
       correct: ['Licht', 'CO₂-Angebot', 'Temperatur'],
       wrong: ['Nur Mondphase ohne Licht', 'Nur Verkehrsrauschen'],
@@ -86,6 +94,7 @@ const oekosystem: BioBank = {
   url: 'https://de.wikipedia.org/wiki/%C3%96kosystem',
   facts: [
     {
+      concept: 'bio:k9:was-ist-ein-oekosystem',
       prompt: 'Was ist ein Ökosystem?',
       answer: 'Lebensgemeinschaft + Lebensraum in Wechselwirkung',
       wrong: ['Nur eine einzelne Zelle', 'Nur ein Mineral ohne Leben', 'Nur ein Knochen'],
@@ -95,6 +104,7 @@ const oekosystem: BioBank = {
       gapAccepted: ['Destruenten', 'Zersetzer', 'Destruenten/Zersetzer'],
     },
     {
+      concept: 'bio:k9:was-beschreibt-einen-stoffkreislauf-z-b-',
       prompt: 'Was beschreibt einen Stoffkreislauf (z. B. Kohlenstoff)?',
       answer: 'Stoffe werden zwischen Umwelt und Lebewesen umgewälzt',
       wrong: ['Stoffe verschwinden für immer spurlos', 'Nur einmalige Einbahn ohne Rückkehr', 'Nur Sternenlicht ohne Erde'],
@@ -102,6 +112,7 @@ const oekosystem: BioBank = {
       wissen: 'Stoff- und Energiefluss unterscheiden.',
     },
     {
+      concept: 'bio:k9:energie-fliesst-im-oekosystem',
       prompt: 'Energie fließt im Ökosystem …',
       answer: 'von der Sonne über Produzenten zu Konsumenten (und geht als Wärme verloren)',
       wrong: ['Nur von Raubtieren zu Pflanzen rückwärts vollständig', 'Ohne Sonne bei Pflanzen unnötig', 'Nur in Knochen'],
@@ -117,6 +128,7 @@ const oekosystem: BioBank = {
   ],
   trueFalse: [
     {
+      concept: 'bio:k9:wenn-eine-art-ausfaellt-kann-das-folgen-',
       statement: 'Wenn eine Art ausfällt, kann das Folgen für andere Arten haben.',
       correct: true,
       explanation: 'Vernetzung: Keystone-Effekte und Nahrungsbeziehungen.',
@@ -125,6 +137,7 @@ const oekosystem: BioBank = {
   ],
   sorts: [
     {
+      concept: 'bio:k9:ordne-eine-nahrungskette-im-gewaesser',
       question: 'Ordne eine Nahrungskette im Gewässer.',
       labels: ['Alge', 'Wasserfloh', 'Kleinfisch', 'Raubfisch'],
       explanation: 'Produzent → Konsumenten steigender Ordnung.',
@@ -133,6 +146,7 @@ const oekosystem: BioBank = {
   ],
   multis: [
     {
+      concept: 'bio:k9:welche-eingriffe-des-menschen-koennen-oe',
       question: 'Welche Eingriffe des Menschen können Ökosysteme belasten?',
       correct: ['Überdüngung', 'Schadstoffeintrag', 'Lebensraumzerstörung'],
       wrong: ['Nur das Beobachten mit Fernglas', 'Nur das Notieren von Artenlisten'],
@@ -147,6 +161,7 @@ const wiese: BioBank = {
   url: 'https://de.wikipedia.org/wiki/Wiese',
   facts: [
     {
+      concept: 'bio:k9:warum-ist-eine-wiese-artenreich',
       prompt: 'Warum ist eine Wiese artenreich?',
       answer: 'Viele Pflanzen- und Insektenarten teilen den Lebensraum',
       wrong: ['Weil dort nur eine Art lebt', 'Weil es kein Licht gibt', 'Weil es nur Beton gibt'],
@@ -156,6 +171,7 @@ const wiese: BioBank = {
   ],
   trueFalse: [
     {
+      concept: 'bio:k9:intensiv-geduengte-einheitsgrasflaechen-',
       statement: 'Intensiv gedüngte Einheitsgrasflächen sind oft artenärmer als Magerrasen.',
       correct: true,
       explanation: 'Nährstoffreichtum begünstigt wenige Dominanzarten.',
@@ -169,6 +185,7 @@ const pilze: BioBank = {
   url: 'https://de.wikipedia.org/wiki/Pilze',
   facts: [
     {
+      concept: 'bio:k9:wie-ernaehren-sich-die-meisten-pilze',
       prompt: 'Wie ernähren sich die meisten Pilze?',
       answer: 'Heterotroph — zersetzen oder parasitieren/symbiotisch',
       wrong: ['Nur durch Fotosynthese mit Chlorophyll wie Blätter', 'Nur durch Lungenatmung', 'Nur durch Blutkreislauf'],
@@ -184,6 +201,7 @@ const pilze: BioBank = {
   ],
   trueFalse: [
     {
+      concept: 'bio:k9:alle-wildpilze-sind-essbar',
       statement: 'Alle Wildpilze sind essbar.',
       correct: false,
       explanation: 'Viele sind giftig — nur bekannte Arten, Fachwissen.',
@@ -197,6 +215,7 @@ const bier: BioBank = {
   url: 'https://de.wikipedia.org/wiki/G%C3%A4rung',
   facts: [
     {
+      concept: 'bio:k9:welche-mikroorganismen-sind-bei-der-alko',
       prompt: 'Welche Mikroorganismen sind bei der alkoholischen Gärung zentral?',
       answer: 'Hefen',
       wrong: ['Nur Greifvögel', 'Nur Säugetiere', 'Nur Farne'],
@@ -208,6 +227,7 @@ const bier: BioBank = {
   ],
   trueFalse: [
     {
+      concept: 'bio:k9:gaerung-laeuft-ohne-sauerstoff-ab-anaero',
       statement: 'Gärung läuft ohne Sauerstoff ab (anaerob).',
       correct: true,
       explanation: 'Klassische alkoholische Gärung ist anaerob.',
@@ -216,6 +236,7 @@ const bier: BioBank = {
   ],
   sorts: [
     {
+      concept: 'bio:k9:ordne-grob-schritte-vom-getreide-zum-bie',
       question: 'Ordne grob Schritte vom Getreide zum Bier (vereinfacht).',
       labels: ['Malzbereitung', 'Maischen', 'Gärung', 'Reifung'],
       explanation: 'Schulmodell der Prozesskette.',

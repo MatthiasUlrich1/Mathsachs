@@ -49,6 +49,7 @@ export const trueFalse = (
     explanation: string
     fachwissen: Fachwissen
     dedupeKey?: string
+    contentIds?: string[]
   },
 ): Task => {
   const correctLabel = opts.correct ? 'Richtig' : 'Falsch'
@@ -61,6 +62,8 @@ export const trueFalse = (
     instruction: 'Richtig oder falsch?',
     fachwissen: opts.fachwissen,
     ...(opts.dedupeKey ? { dedupeKey: opts.dedupeKey } : {}),
+    ...(opts.contentIds?.length ? { contentIds: opts.contentIds } : {}),
+    ...(opts.contentIds?.length ? { contentIds: opts.contentIds } : {}),
   })
 }
 
@@ -118,6 +121,8 @@ export function matchTermsTask(
     solution: string
     explanation: string
     fachwissen: Fachwissen
+    dedupeKey?: string
+    contentIds?: string[]
   },
 ): Task {
   const left = opts.terms.map((label, i) => ({ id: `L${i}`, label }))
@@ -128,6 +133,9 @@ export function matchTermsTask(
   for (let i = 0; i < left.length; i++) {
     correctLinks[left[i]!.id] = rightPairs[i]!.id
   }
+  const dedupeKey =
+    opts.dedupeKey ??
+    `pair:${[...opts.terms].map((t) => t.trim().toLowerCase()).sort().join('|')}`
   return pairMatchTask({
     question: opts.question,
     left,
@@ -136,6 +144,8 @@ export function matchTermsTask(
     solution: opts.solution,
     explanation: opts.explanation,
     fachwissen: opts.fachwissen,
+    dedupeKey,
+    contentIds: opts.contentIds ?? [dedupeKey],
     instruction:
       'Tippe links einen Begriff, dann rechts die passende Erklärung (einen Eintrag brauchst du nicht).',
   })
@@ -149,6 +159,8 @@ export function sortChronologyTask(
     solution: string
     explanation: string
     fachwissen: Fachwissen
+    dedupeKey?: string
+    contentIds?: string[]
   },
 ): Task {
   return dragDropSortTask({
@@ -159,6 +171,8 @@ export function sortChronologyTask(
     explanation: opts.explanation,
     rng,
     fachwissen: opts.fachwissen,
+    ...(opts.dedupeKey ? { dedupeKey: opts.dedupeKey } : {}),
+    ...(opts.contentIds?.length ? { contentIds: opts.contentIds } : {}),
   })
 }
 
@@ -170,6 +184,7 @@ export function gapFillTask(opts: {
   explanation: string
   fachwissen: Fachwissen
   dedupeKey?: string
+  contentIds?: string[]
 }): Task {
   return textTask({
     question: opts.question,
@@ -178,6 +193,7 @@ export function gapFillTask(opts: {
     explanation: opts.explanation,
     fachwissen: opts.fachwissen,
     ...(opts.dedupeKey ? { dedupeKey: opts.dedupeKey } : {}),
+    ...(opts.contentIds?.length ? { contentIds: opts.contentIds } : {}),
   })
 }
 
@@ -193,6 +209,7 @@ export function clozeBlanksTask(opts: {
   explanation: string
   fachwissen: Fachwissen
   dedupeKey?: string
+  contentIds?: string[]
 }): Task {
   const segments = opts.template.split('___')
   const n = opts.accepted.length
@@ -206,6 +223,7 @@ export function clozeBlanksTask(opts: {
       explanation: opts.explanation,
       fachwissen: opts.fachwissen,
       ...(opts.dedupeKey ? { dedupeKey: opts.dedupeKey } : {}),
+    ...(opts.contentIds?.length ? { contentIds: opts.contentIds } : {}),
     })
   }
   return clozeMultiTask({
@@ -217,6 +235,7 @@ export function clozeBlanksTask(opts: {
     fachwissen: opts.fachwissen,
     instruction: 'Fülle alle Lücken aus:',
     ...(opts.dedupeKey ? { dedupeKey: opts.dedupeKey } : {}),
+    ...(opts.contentIds?.length ? { contentIds: opts.contentIds } : {}),
   })
 }
 
@@ -231,6 +250,7 @@ export function iconBelongBioTask(
     explanation: string
     fachwissen: Fachwissen
     dedupeKey?: string
+    contentIds?: string[]
   },
 ): Task {
   const options = shuffle(rng, opts.options)
@@ -245,6 +265,7 @@ export function iconBelongBioTask(
     prompt: opts.prompt,
     instruction: 'Tippe das passende Symbol:',
     ...(opts.dedupeKey ? { dedupeKey: opts.dedupeKey } : {}),
+    ...(opts.contentIds?.length ? { contentIds: opts.contentIds } : {}),
   })
 }
 
@@ -260,6 +281,7 @@ export function flashcardBioTask(opts: {
   /** MC options on the back; if set, UI shows choice buttons instead of free text. */
   choices?: string[]
   dedupeKey?: string
+  contentIds?: string[]
 }): Task {
   const hasChoices = Boolean(opts.choices && opts.choices.length > 0)
   return flashcardFlipTask({
@@ -273,10 +295,9 @@ export function flashcardBioTask(opts: {
       opts.backHint ??
       (hasChoices ? 'Was passt dazu? Wähle eine Antwort.' : 'Was passt dazu? Tippe die Antwort.'),
     choices: opts.choices,
-    instruction: hasChoices
-      ? '1) Vorderseite lesen  2) Karte umdrehen  3) Antwort tippen (Option wählen).'
-      : '1) Vorderseite lesen  2) Karte umdrehen  3) Antwort tippen.',
+    // Steps are shown once in FlashcardFlip UI — do not pass a duplicate instruction.
     ...(opts.dedupeKey ? { dedupeKey: opts.dedupeKey } : {}),
+    ...(opts.contentIds?.length ? { contentIds: opts.contentIds } : {}),
   })
 }
 
@@ -290,6 +311,7 @@ export function mcTask(
     fachwissen: Fachwissen
     instruction?: string
     dedupeKey?: string
+    contentIds?: string[]
   },
 ): Task {
   return choicePickTask({
@@ -301,6 +323,7 @@ export function mcTask(
     instruction: opts.instruction ?? 'Wähle die passende Antwort:',
     fachwissen: opts.fachwissen,
     ...(opts.dedupeKey ? { dedupeKey: opts.dedupeKey } : {}),
+    ...(opts.contentIds?.length ? { contentIds: opts.contentIds } : {}),
   })
 }
 
@@ -313,6 +336,8 @@ export function multiPickTask(
     explanation: string
     fachwissen: Fachwissen
     instruction?: string
+    dedupeKey?: string
+    contentIds?: string[]
   },
 ): Task {
   const choices = shuffle(rng, [...opts.correct, ...opts.wrong])
@@ -324,5 +349,7 @@ export function multiPickTask(
     explanation: opts.explanation,
     instruction: opts.instruction ?? 'Wähle alle zutreffenden Antworten:',
     fachwissen: opts.fachwissen,
+    ...(opts.dedupeKey ? { dedupeKey: opts.dedupeKey } : {}),
+    ...(opts.contentIds?.length ? { contentIds: opts.contentIds } : {}),
   })
 }
