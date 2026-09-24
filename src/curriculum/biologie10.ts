@@ -11,25 +11,13 @@ const genetik: BioBank = {
   conceptPrefix: 'bio:k10:genetik',
   facts: [
     {
-      concept: 'bio:k10:was-ist-ein-gen-vereinfacht',
-      prompt: 'Was ist ein Gen vereinfacht?',
-      answer: 'Abschnitt der DNA mit Information für ein Merkmal/Protein',
-      wrong: ['Ein Knochenstück', 'Ein Blatt ohne Zellkern', 'Nur ein Hormon ohne DNA'],
-      explanation: 'Gene sind Erbeinheiten auf der DNA.',
+      concept: 'bio:k10:genetik:was-ist',
+      prompt: 'Womit beschäftigt sich die Genetik im Überblick?',
+      answer: 'Mit Vererbung und der Weitergabe von Erbinformation',
+      wrong: ['Nur mit Jahresringen am Baum', 'Nur mit Magensäure', 'Nur mit Flugfedern'],
+      explanation: 'Genetik = Lehre von der Vererbung.',
       wissen:
-        'Ein Gen ist ein DNA-Abschnitt mit Information für ein Merkmal/Protein. Mendel und DNA-Bau → Spezialthemen.',
-      gap: 'Die Erbinformation ist in der ___ gespeichert.',
-      gapAccepted: ['DNA', 'DNS', 'DNA/DNS'],
-    },
-    {
-      concept: 'bio:k10:chromosomen-sind',
-      prompt: 'Chromosomen sind …',
-      answer: 'Strukturen, in denen DNA im Zellkern organisiert ist',
-      wrong: ['Nur Fetttröpfchen im Blut', 'Nur Spaltöffnungen', 'Nur Federn'],
-      explanation: 'Mensch: 46 Chromosomen in Körperzellen (Schulwissen).',
-      wissen: 'Chromosomen organisieren die DNA im Zellkern.',
-      gap: 'Der Mensch hat in Körperzellen typischerweise ___ Chromosomen.',
-      gapAccepted: ['46', '46 Chromosomen'],
+        'Genetik untersucht Vererbung und die Weitergabe von Erbinformation. DNA-Bau und Chromosomen → Spezial DNA; Kreuzungsregeln → Mendel.',
     },
     {
       concept: 'bio:k10:mutation-bedeutet',
@@ -37,27 +25,28 @@ const genetik: BioBank = {
       answer: 'Veränderung der Erbinformation',
       wrong: ['Immer sofortige Heilung', 'Nur Verdauung', 'Nur Transpiration'],
       explanation: 'Mutationen erzeugen Variation.',
-      wissen: 'Mutation verändert die Erbinformation und schafft Variation für Evolution.',
+      wissen:
+        'Eine Mutation ist eine Veränderung der Erbinformation. Sie erzeugt Variation — Grundlage für Selektion in der Evolution.',
     },
   ],
   pairs: [
     {
-      concept: 'bio:k10:genetik:paar-gen',
-      term: 'Gen',
-      meaning: 'Erbeinheit auf der DNA',
-      wissen: 'Information für Merkmal/Protein.',
-    },
-    {
-      concept: 'bio:k10:genetik:paar-chromosom',
-      term: 'Chromosom',
-      meaning: 'DNA-Paket im Zellkern',
-      wissen: 'Organisiert die Erbinformation.',
+      concept: 'bio:k10:genetik:paar-vererbung',
+      term: 'Vererbung',
+      meaning: 'Weitergabe von Merkmalen an Nachkommen',
+      wissen: 'Zentrale Fragestellung der Genetik — Merkmale und Erbinformation an Nachkommen.',
     },
     {
       concept: 'bio:k10:genetik:paar-mutation',
       term: 'Mutation',
       meaning: 'Veränderung der Erbinformation',
-      wissen: 'Quelle neuer Variation.',
+      wissen: 'Quelle neuer Variation in Populationen und damit Ausgangspunkt der Evolution.',
+    },
+    {
+      concept: 'bio:k10:genetik:paar-variation',
+      term: 'Variation',
+      meaning: 'Unterschiede zwischen Individuen',
+      wissen: 'Unterschiede in Merkmalen und Allelen — Voraussetzung dafür, dass Selektion wirken kann.',
     },
   ],
   trueFalse: [
@@ -66,17 +55,19 @@ const genetik: BioBank = {
       statement: 'Der Phänotyp wird nur von Genen bestimmt, nie von der Umwelt.',
       correct: false,
       explanation: 'Umwelt und Gene wirken oft zusammen.',
-      wissen: 'Phänotyp entsteht aus Genotyp und Umwelt.',
+      wissen:
+        'Phänotyp entsteht aus Genotyp und Umwelt: Ernährung, Licht und Lernen beeinflussen das Erscheinungsbild mit.',
     },
   ],
   multis: [
     {
-      concept: 'bio:k10:welche-aussagen-zur-dna-stimmen',
-      question: 'Welche Aussagen zur DNA stimmen?',
-      correct: ['Sie trägt Erbinformation', 'Sie liegt vor allem im Zellkern'],
-      wrong: ['Sie ist identisch mit Magensäure', 'Sie ist nur in den Wurzeln von Tieren'],
-      explanation: 'DNA = Träger der Erbinformation.',
-      wissen: 'Feinbau und Replikation → Spezial DNA; Kreuzungen → Mendel.',
+      concept: 'bio:k10:genetik:multi-ueberblick',
+      question: 'Welche Themen gehören zur Genetik im Überblick?',
+      correct: ['Vererbung', 'Mutation'],
+      wrong: ['Nur Verkehrszeichen lesen', 'Nur Blattgrün messen'],
+      explanation: 'Vererbung und Veränderung der Erbinformation.',
+      wissen:
+        'Zur Genetik gehören Vererbung und Mutation; DNA-Feinbau und Mendel-Regeln stehen in den Spezialthemen.',
     },
   ],
 }

@@ -427,19 +427,19 @@ export const BIOLOGIE_K5_EXPANDED: Record<string, Topic['generate']> = {
 
 const cellIcons: NonNullable<BioBank['icons']> = [
   {
-    concept: 'bio:zelle:icon-chloroplast',
-    question: 'Welches Organell betreibt Fotosynthese?',
-    prompt: 'Pflanzenzelle',
+    concept: 'bio:zelle:icon-zellkern',
+    question: 'Welches Organell enthält die Erbinformation?',
+    prompt: 'Pflanzen- und Tierzelle',
     options: [
-      { id: 'chloro', label: 'Chloroplast', icon: '🟢' },
-      { id: 'mito', label: 'Mitochondrium', icon: '⚡' },
       { id: 'kern', label: 'Zellkern', icon: '🔵' },
       { id: 'wand', label: 'Zellwand', icon: '🧱' },
+      { id: 'mito', label: 'Mitochondrium', icon: '⚡' },
+      { id: 'vakuole', label: 'Vakuole', icon: '💧' },
     ],
-    correctId: 'chloro',
-    explanation: 'Chloroplasten enthalten Chlorophyll und betreiben Fotosynthese.',
+    correctId: 'kern',
+    explanation: 'Im Zellkern liegt die DNA.',
     wissen:
-      'Pflanzenzellen haben Zellwand und oft Chloroplasten; Tierzellen nicht. Beide haben Zellkern und Cytoplasma.',
+      'Der Zellkern enthält die Erbinformation (DNA). Zellwand und große Vakuole sind typisch für Pflanzenzellen; Organellen-Details → Mikroskop-Spezial.',
   },
 ]
 
@@ -493,12 +493,11 @@ BIOLOGIE_K6_EXPANDED['bi-k6-lb5-zellen'] = withTopicUx(
         answer: 'Pflanzenzelle',
         explanation: 'Cloze zu Organellen.',
         wissen:
-          'Organellen sind Zellbestandteile mit eigener Aufgabe — z. B. Zellkern (Steuerung), Chloroplast (Fotosynthese), Mitochondrium (Energie).',
+          'Der Zellkern steuert die Zelle und enthält DNA; Chloroplasten und Zellwand sind typische Pflanzenmerkmale — Vertiefung im Mikroskop-Spezial.',
         cloze:
-          'Die ___ enthält DNA; ___ betreiben Fotosynthese; die ___ gibt der Pflanzenzelle Stabilität.',
+          'Die ___ enthält DNA; Pflanzenzellen haben oft eine feste ___.',
         clozeAccepted: [
           ['Zellkern', 'Kern'],
-          ['Chloroplasten', 'Chloroplast'],
           ['Zellwand', 'Wand'],
         ],
       },

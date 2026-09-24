@@ -168,13 +168,13 @@ const ernaehrung: BioBank = {
         'Ernährung liefert Energie und Baustoffe. Nährstoffgruppen und Organe → Spezialthemen.',
     },
     {
-      concept: 'bio:k7:wozu-dienen-enzyme-bei-der-verdauung',
-      prompt: 'Wozu dienen Enzyme bei der Verdauung?',
-      answer: 'Spalten Nährstoffe in aufnehmbare Bausteine',
-      wrong: ['Erzeugen Knochenmark', 'Transportieren nur Sauerstoff', 'Bilden Antikörper allein'],
-      explanation: 'Enzyme katalysieren die Zerlegung von Nährstoffen.',
+      concept: 'bio:k7:ernaehrung:aufnahme',
+      prompt: 'Was passiert bei der Verdauung grob mit der Nahrung?',
+      answer: 'Sie wird zerkleinert und in aufnehmbare Bestandteile zerlegt',
+      wrong: ['Sie wird zu Jahresringen', 'Sie wird zu Federn', 'Sie wird zu Holz'],
+      explanation: 'Mechanische und chemische Aufspaltung.',
       wissen:
-        'Verdauungsenzyme spalten Kohlenhydrate, Fette und Eiweiße in aufnehmbare Bausteine.',
+        'Verdauung zerlegt Nahrung mechanisch und chemisch, damit Nährstoffe aufgenommen werden können. Enzyme und Organe → Spezial Verdauungsorgane.',
     },
   ],
   pairs: [
