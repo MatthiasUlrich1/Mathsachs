@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.26] – 2026-09-24
+
+### Hinzugefügt
+- **Neue Interaktionen (Biologie-Übung):** `pairMatch` (Zwei-Spalten-Klick-Paare ohne Slot-Spoiler),
+  `clozeMulti` (Lückentext mit mehreren Lücken), `iconBelong` (große Emoji-/Symbol-Karten
+  „welches gehört dazu?“), `flashcardFlip` (Karte umdrehen → Antwort tippen). Verdrahtet in
+  `types` / `TaskMedia` / Übungsblatt / Klausur-Protokoll / Authoring-Auswahl.
+- **Biologie Gymnasium Sachsen 1.2.0:** dichtere PackTopics unter den Lehrplan-522-Lernbereichen
+  (K5–10, Ideen an Schlaukopf Bio-Gym angelehnt, original formuliert); Generatoren nutzen die
+  neuen Interaktionen stark. Themen weiter `released:false` (Entwickler).
+
 ## [0.28.25] – 2026-09-24
 
 ### Behoben

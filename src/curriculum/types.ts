@@ -41,6 +41,14 @@ export type UserInput =
   | { kind: 'coordinateDraw'; scene: import('../lib/coordinateScene').CoordinateScene }
   | { kind: 'paramSlider'; values: Record<string, number> }
   | { kind: 'equationSteps'; ops: string[] }
+  /** Two-column click pairing: leftId → rightId ('' = unpaired). */
+  | { kind: 'pairMatch'; links: Record<string, string> }
+  /** Several gaps in one cloze text. */
+  | { kind: 'clozeMulti'; blanks: string[] }
+  /** Icon/emoji card pick (same shape as choice, distinct widget). */
+  | { kind: 'iconBelong'; choice: string }
+  /** Flashcard: must flip, then tip answer. */
+  | { kind: 'flashcardFlip'; flipped: boolean; answer: string }
 
 /** A blank input matching the widget for a given answer kind. */
 export const emptyInput = (
@@ -55,7 +63,11 @@ export const emptyInput = (
     | 'coordinateClick'
     | 'coordinateDraw'
     | 'paramSlider'
-    | 'equationSteps',
+    | 'equationSteps'
+    | 'pairMatch'
+    | 'clozeMulti'
+    | 'iconBelong'
+    | 'flashcardFlip',
 ): UserInput => {
   if (kind === 'fraction') return { kind: 'fraction', num: '', den: '' }
   if (kind === 'numberLine') return { kind: 'numberLine', value: 0 }
@@ -72,6 +84,10 @@ export const emptyInput = (
     }
   if (kind === 'paramSlider') return { kind: 'paramSlider', values: {} }
   if (kind === 'equationSteps') return { kind: 'equationSteps', ops: [] }
+  if (kind === 'pairMatch') return { kind: 'pairMatch', links: {} }
+  if (kind === 'clozeMulti') return { kind: 'clozeMulti', blanks: [] }
+  if (kind === 'iconBelong') return { kind: 'iconBelong', choice: '' }
+  if (kind === 'flashcardFlip') return { kind: 'flashcardFlip', flipped: false, answer: '' }
   return { kind: 'value', value: '' }
 }
 
@@ -90,6 +106,10 @@ export interface InteractiveConfig {
     | 'coordinateDraw'
     | 'paramSlider'
     | 'equationSteps'
+    | 'pairMatch'
+    | 'clozeMulti'
+    | 'iconBelong'
+    | 'flashcardFlip'
   props: Record<string, any> // Component-specific props
 }
 

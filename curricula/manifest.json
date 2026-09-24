@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-24T14:36:45.579Z",
+  "updatedAt": "2026-09-24T14:59:30.474Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -40,10 +40,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Biologie",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-biologie.json",
-      "size": 40629,
-      "changelog": "Klassen 5–12 (Gk/Lk) · 71 Themen mit Generatoren (MC, R/F, Match, Sort, Gap, Multi; released:false). Lehrplan 522; Quiz-Ideen an Schulportale angelehnt. Ohne Netz lokale Fassung."
+      "size": 57192,
+      "changelog": "Klassen 5–12 · 109 Themen + neue Interaktionen pairMatch, clozeMulti, iconBelong, flashcardFlip (released:false). Lehrplan 522; Schlaukopf-Themen als Ideen (original formuliert)."
     },
     {
       "id": "gym-sachsen-anhalt",

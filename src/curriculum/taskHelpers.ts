@@ -1137,6 +1137,208 @@ export const equationStepsTask = (input: EquationStepsTaskInput): Task => ({
   },
 })
 
+// ─── Biologie / quiz: pairMatch, clozeMulti, iconBelong, flashcardFlip ───────
+
+export type PairMatchSide = { id: string; label: string }
+
+interface PairMatchTaskInput {
+  question: string
+  left: PairMatchSide[]
+  /** Right column (shuffled by caller or via rng). */
+  right: PairMatchSide[]
+  /** leftId → correct rightId */
+  correctLinks: Record<string, string>
+  solution: string
+  explanation: string
+  instruction?: string
+  fachwissen?: Fachwissen
+  dedupeKey?: string
+  visualContent?: string
+}
+
+/** Click-to-pair two columns (no drag-slot labels). */
+export const pairMatchTask = (input: PairMatchTaskInput): Task => {
+  const leftIds = input.left.map((l) => l.id)
+  return {
+    question: input.question,
+    answerKind: 'text',
+    solution: input.solution,
+    explanation: input.explanation,
+    visualContent: input.visualContent,
+    ...withFw(input.fachwissen),
+    ...withDedupe(input.dedupeKey),
+    sampleAnswer: { kind: 'pairMatch', links: { ...input.correctLinks } },
+    interactive: {
+      type: 'pairMatch',
+      props: {
+        left: input.left,
+        right: input.right,
+        instruction:
+          input.instruction ??
+          'Tippe links einen Begriff, dann rechts die passende Erklärung.',
+      },
+    },
+    check: (answer: UserInput) => {
+      if (answer.kind !== 'pairMatch') return false
+      return leftIds.every((id) => answer.links[id] === input.correctLinks[id])
+    },
+  }
+}
+
+interface ClozeMultiTaskInput {
+  question: string
+  /** Text segments around blanks; length = blanks + 1 */
+  segments: string[]
+  /** Accepted answers per blank (any of the strings). */
+  accepted: string[][]
+  solution: string
+  explanation: string
+  instruction?: string
+  placeholders?: string[]
+  fachwissen?: Fachwissen
+  dedupeKey?: string
+  visualContent?: string
+}
+
+const normCloze = (s: string) => s.trim().toLowerCase().replace(/\s+/g, ' ')
+
+/** Multi-blank cloze in one running text. */
+export const clozeMultiTask = (input: ClozeMultiTaskInput): Task => {
+  const n = input.accepted.length
+  const sampleBlanks = input.accepted.map((a) => a[0] ?? '')
+  return {
+    question: input.question,
+    answerKind: 'text',
+    solution: input.solution,
+    explanation: input.explanation,
+    visualContent: input.visualContent,
+    ...withFw(input.fachwissen),
+    ...withDedupe(input.dedupeKey),
+    sampleAnswer: { kind: 'clozeMulti', blanks: sampleBlanks },
+    interactive: {
+      type: 'clozeMulti',
+      props: {
+        segments: input.segments,
+        blankCount: n,
+        placeholders: input.placeholders,
+        instruction: input.instruction ?? 'Fülle alle Lücken aus:',
+      },
+    },
+    check: (answer: UserInput) => {
+      if (answer.kind === 'clozeMulti') {
+        if (answer.blanks.length !== n) return false
+        return answer.blanks.every((b, i) =>
+          (input.accepted[i] ?? []).some((a) => normCloze(a) === normCloze(b)),
+        )
+      }
+      if (answer.kind === 'value') {
+        const parts = answer.value.split(/[/|;]+/).map((s) => s.trim())
+        if (parts.length !== n) return false
+        return parts.every((b, i) =>
+          (input.accepted[i] ?? []).some((a) => normCloze(a) === normCloze(b)),
+        )
+      }
+      return false
+    },
+  }
+}
+
+export type IconBelongOption = { id: string; label: string; icon: string }
+
+interface IconBelongTaskInput {
+  question: string
+  options: IconBelongOption[]
+  correctId: string
+  solution: string
+  explanation: string
+  instruction?: string
+  prompt?: string
+  fachwissen?: Fachwissen
+  dedupeKey?: string
+  visualContent?: string
+}
+
+/** Large emoji/icon cards — „welches gehört dazu?“. */
+export const iconBelongTask = (input: IconBelongTaskInput): Task => ({
+  question: input.question,
+  answerKind: 'text',
+  solution: input.solution,
+  explanation: input.explanation,
+  visualContent: input.visualContent,
+  ...withFw(input.fachwissen),
+  ...withDedupe(input.dedupeKey),
+  sampleAnswer: { kind: 'iconBelong', choice: input.correctId },
+  interactive: {
+    type: 'iconBelong',
+    props: {
+      options: input.options,
+      instruction: input.instruction ?? 'Tippe das passende Symbol:',
+      prompt: input.prompt,
+    },
+  },
+  check: (answer: UserInput) => {
+    if (answer.kind === 'iconBelong') return answer.choice === input.correctId
+    if (answer.kind === 'choicePick') return answer.choice === input.correctId
+    if (answer.kind === 'value') {
+      const v = answer.value.trim()
+      if (v === input.correctId) return true
+      const opt = input.options.find((o) => o.id === input.correctId)
+      return Boolean(opt && normCloze(v) === normCloze(opt.label))
+    }
+    return false
+  },
+})
+
+interface FlashcardFlipTaskInput {
+  question: string
+  front: string
+  accepted: string[]
+  solution: string
+  explanation: string
+  backHint?: string
+  instruction?: string
+  placeholder?: string
+  fachwissen?: Fachwissen
+  dedupeKey?: string
+  visualContent?: string
+}
+
+/** Flip the card, then tip the answer. */
+export const flashcardFlipTask = (input: FlashcardFlipTaskInput): Task => {
+  const accepted = input.accepted.map(normCloze)
+  return {
+    question: input.question,
+    answerKind: 'text',
+    solution: input.solution,
+    explanation: input.explanation,
+    visualContent: input.visualContent,
+    ...withFw(input.fachwissen),
+    ...withDedupe(input.dedupeKey),
+    sampleAnswer: {
+      kind: 'flashcardFlip',
+      flipped: true,
+      answer: input.accepted[0] ?? input.solution,
+    },
+    interactive: {
+      type: 'flashcardFlip',
+      props: {
+        front: input.front,
+        backHint: input.backHint,
+        instruction:
+          input.instruction ?? 'Drehe die Karte um und tippe die Antwort.',
+        placeholder: input.placeholder,
+      },
+    },
+    check: (answer: UserInput) => {
+      if (answer.kind === 'flashcardFlip') {
+        return answer.flipped && accepted.includes(normCloze(answer.answer))
+      }
+      if (answer.kind === 'value') return accepted.includes(normCloze(answer.value))
+      return false
+    },
+  }
+}
+
 /**
  * Combine multiple task generators into one, randomly selecting a variant each time.
  * Use this to add variety to a topic (text, visual, interactive).

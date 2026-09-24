@@ -12,6 +12,10 @@ import { CoordinateClick } from './CoordinateClick'
 import { CoordinateGraphEditor } from './CoordinateGraphEditor'
 import { ParamSlider } from './ParamSlider'
 import { EquationSteps, keysToOps, opsToKeys } from './EquationSteps'
+import { PairMatch } from './PairMatch'
+import { ClozeMulti } from './ClozeMulti'
+import { IconBelong } from './IconBelong'
+import { FlashcardFlip } from './FlashcardFlip'
 import type { ParamSliderSpec } from '../curriculum/taskHelpers'
 import type { EqOp, LinEq } from '../lib/equationSteps'
 import {
@@ -77,6 +81,22 @@ export const initTaskInput = (task: Task): UserInput => {
   }
   if (task.interactive?.type === 'equationSteps') {
     return { kind: 'equationSteps', ops: [] }
+  }
+  if (task.interactive?.type === 'pairMatch') {
+    const left = (task.interactive.props.left ?? []) as Array<{ id: string }>
+    const links: Record<string, string> = {}
+    for (const item of left) links[item.id] = ''
+    return { kind: 'pairMatch', links }
+  }
+  if (task.interactive?.type === 'clozeMulti') {
+    const n = Number(task.interactive.props.blankCount ?? 0)
+    return { kind: 'clozeMulti', blanks: Array.from({ length: n }, () => '') }
+  }
+  if (task.interactive?.type === 'iconBelong') {
+    return { kind: 'iconBelong', choice: '' }
+  }
+  if (task.interactive?.type === 'flashcardFlip') {
+    return { kind: 'flashcardFlip', flipped: false, answer: '' }
   }
   return emptyInput(task.answerKind)
 }
@@ -329,6 +349,72 @@ export function TaskInteractive({
             onChange({ kind: 'equationSteps', ops: opsToKeys(ops) })
           }
           instruction={interactive.props.instruction}
+          disabled={disabled}
+        />
+      )}
+      {interactive.type === 'pairMatch' && (
+        <PairMatch
+          left={interactive.props.left ?? []}
+          right={interactive.props.right ?? []}
+          links={
+            value.kind === 'pairMatch'
+              ? value.links
+              : Object.fromEntries(
+                  ((interactive.props.left ?? []) as Array<{ id: string }>).map(
+                    (l) => [l.id, ''],
+                  ),
+                )
+          }
+          onChange={(links) => onChange({ kind: 'pairMatch', links })}
+          instruction={interactive.props.instruction}
+          disabled={disabled}
+        />
+      )}
+      {interactive.type === 'clozeMulti' && (
+        <ClozeMulti
+          segments={interactive.props.segments ?? ['']}
+          blanks={
+            value.kind === 'clozeMulti'
+              ? value.blanks
+              : Array.from(
+                  { length: Number(interactive.props.blankCount ?? 0) },
+                  () => '',
+                )
+          }
+          onChange={(blanks) => onChange({ kind: 'clozeMulti', blanks })}
+          instruction={interactive.props.instruction}
+          placeholders={interactive.props.placeholders}
+          disabled={disabled}
+        />
+      )}
+      {interactive.type === 'iconBelong' && (
+        <IconBelong
+          options={interactive.props.options ?? []}
+          value={value.kind === 'iconBelong' ? value.choice || null : null}
+          onChange={(choice) => onChange({ kind: 'iconBelong', choice })}
+          instruction={interactive.props.instruction}
+          prompt={interactive.props.prompt}
+          disabled={disabled}
+        />
+      )}
+      {interactive.type === 'flashcardFlip' && (
+        <FlashcardFlip
+          front={String(interactive.props.front ?? '')}
+          backHint={interactive.props.backHint}
+          flipped={value.kind === 'flashcardFlip' ? value.flipped : false}
+          onFlip={() =>
+            onChange({
+              kind: 'flashcardFlip',
+              flipped: true,
+              answer: value.kind === 'flashcardFlip' ? value.answer : '',
+            })
+          }
+          answer={value.kind === 'flashcardFlip' ? value.answer : ''}
+          onAnswerChange={(answer) =>
+            onChange({ kind: 'flashcardFlip', flipped: true, answer })
+          }
+          instruction={interactive.props.instruction}
+          placeholder={interactive.props.placeholder}
           disabled={disabled}
         />
       )}

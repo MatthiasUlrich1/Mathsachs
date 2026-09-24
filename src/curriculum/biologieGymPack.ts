@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.1.0',
-    changelog: `Klassen 5–12 (Gk/Lk) · ${topics} Themen mit Generatoren (MC, R/F, Match, Sort, Gap, Multi; released:false). Lehrplan 522; Quiz-Ideen an Schulportale angelehnt. Ohne Netz lokale Fassung.`,
+    version: '1.2.0',
+    changelog: `Klassen 5–12 · ${topics} Themen + neue Interaktionen pairMatch, clozeMulti, iconBelong, flashcardFlip (released:false). Lehrplan 522; Schlaukopf-Themen als Ideen (original formuliert).`,
     official,
     extras: [],
   }

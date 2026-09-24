@@ -1,0 +1,41 @@
+.cloze-multi {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.cloze-multi__instruction {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-muted, #4a5568);
+}
+
+.cloze-multi__text {
+  margin: 0;
+  line-height: 2.1;
+  font-size: 1.05rem;
+}
+
+.cloze-multi__input {
+  display: inline-block;
+  min-width: 5.5rem;
+  max-width: 12rem;
+  margin: 0 0.2rem;
+  padding: 0.2rem 0.45rem;
+  border: none;
+  border-bottom: 2px solid var(--accent, #0d9488);
+  background: color-mix(in srgb, var(--accent, #0d9488) 8%, transparent);
+  border-radius: 4px 4px 0 0;
+  font: inherit;
+  text-align: center;
+}
+
+.cloze-multi__input:focus {
+  outline: 2px solid color-mix(in srgb, var(--accent, #0d9488) 45%, transparent);
+  outline-offset: 1px;
+}
+
+.cloze-multi__input:disabled {
+  opacity: 0.85;
+}

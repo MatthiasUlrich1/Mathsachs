@@ -30,6 +30,14 @@ export function examAnswerAttempted(_task: Task, input: UserInput): boolean {
       )
     case 'equationSteps':
       return input.ops.length > 0
+    case 'pairMatch':
+      return Object.values(input.links).some((v) => Boolean(v && v.trim()))
+    case 'clozeMulti':
+      return input.blanks.some((b) => b.trim().length > 0)
+    case 'iconBelong':
+      return input.choice.trim().length > 0
+    case 'flashcardFlip':
+      return input.flipped && input.answer.trim().length > 0
     case 'numberLine':
     case 'paramSlider':
       // Defaults look "filled" — only score when the caller locks the task (leave/submit).

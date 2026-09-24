@@ -61,6 +61,24 @@ export const formatExamAnswer = (input: UserInput): string => {
   if (input.kind === 'equationSteps') {
     return input.ops.length ? input.ops.join(' → ') : '—'
   }
+  if (input.kind === 'pairMatch') {
+    const parts = Object.entries(input.links)
+      .filter(([, r]) => r)
+      .map(([l, r]) => `${l}→${r}`)
+    return parts.length ? parts.join('; ') : '—'
+  }
+  if (input.kind === 'clozeMulti') {
+    return input.blanks.some((b) => b.trim())
+      ? input.blanks.map((b) => b.trim() || '…').join(' | ')
+      : '—'
+  }
+  if (input.kind === 'iconBelong') {
+    return input.choice.trim() || '—'
+  }
+  if (input.kind === 'flashcardFlip') {
+    if (!input.flipped) return '(nicht umgedreht)'
+    return input.answer.trim() || '—'
+  }
   return input.value.trim() || '—'
 }
 

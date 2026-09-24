@@ -1,23 +1,34 @@
 import { textTask } from './taskHelpers'
 import { allBiologieTopicIds } from './biologieGymTopics'
-import { BIOLOGIE_K5_GENERATORS } from './biologie5'
-import { BIOLOGIE_K6_GENERATORS } from './biologie6'
-import { BIOLOGIE_K7_GENERATORS } from './biologie7'
-import { BIOLOGIE_K8_GENERATORS } from './biologie8'
-import { BIOLOGIE_K9_GENERATORS } from './biologie9'
-import { BIOLOGIE_K10_GENERATORS } from './biologie10'
+import {
+  BIOLOGIE_K5_EXPANDED,
+  BIOLOGIE_K6_EXPANDED,
+  BIOLOGIE_K7_EXPANDED,
+  BIOLOGIE_K8_EXPANDED,
+  BIOLOGIE_K9_EXPANDED,
+  BIOLOGIE_K10_EXPANDED,
+} from './biologieNewUx'
 import { BIOLOGIE_OBERSTUFE_GENERATORS } from './biologieOberstufe'
+import { mixedVariants } from './taskHelpers'
 import type { Topic } from './types'
 
 /** Alle spielbaren Biologie-Generatoren (K5–12, released:false → Entwickler). */
 export const BIOLOGIE_GENERATORS: Record<string, Topic['generate']> = {
-  ...BIOLOGIE_K5_GENERATORS,
-  ...BIOLOGIE_K6_GENERATORS,
-  ...BIOLOGIE_K7_GENERATORS,
-  ...BIOLOGIE_K8_GENERATORS,
-  ...BIOLOGIE_K9_GENERATORS,
-  ...BIOLOGIE_K10_GENERATORS,
+  ...BIOLOGIE_K5_EXPANDED,
+  ...BIOLOGIE_K6_EXPANDED,
+  ...BIOLOGIE_K7_EXPANDED,
+  ...BIOLOGIE_K8_EXPANDED,
+  ...BIOLOGIE_K9_EXPANDED,
+  ...BIOLOGIE_K10_EXPANDED,
   ...BIOLOGIE_OBERSTUFE_GENERATORS,
+}
+
+// GK extra subtopic alias
+if (BIOLOGIE_OBERSTUFE_GENERATORS['bi-gk11-lb1-zellen']) {
+  BIOLOGIE_GENERATORS['bi-gk11-lb1-organellen'] = mixedVariants(
+    BIOLOGIE_OBERSTUFE_GENERATORS['bi-gk11-lb1-zellen'],
+    BIOLOGIE_OBERSTUFE_GENERATORS['bi-gk11-lb1-zellen'],
+  )
 }
 
 /** Platzhalter-Generator bis echte Biologie-Aufgaben vorliegen. */

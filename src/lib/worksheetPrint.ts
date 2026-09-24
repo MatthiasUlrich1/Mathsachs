@@ -319,6 +319,63 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
       }
     }
 
+    case 'pairMatch': {
+      const left = printLabels(
+        (props.left as Array<{ label?: string; id?: string }> | undefined)?.map(
+          (x) => x.label ?? x.id ?? '',
+        ),
+      )
+      const right = printLabels(
+        (props.right as Array<{ label?: string; id?: string }> | undefined)?.map(
+          (x) => x.label ?? x.id ?? '',
+        ),
+      )
+      return {
+        ...fromVisual,
+        paperHint:
+          instruction ??
+          'Ordne links und rechts zu (auf Papier: Begriff → Erklärung).',
+        options: [...(left ?? []), ...(right ?? [])].filter(Boolean),
+        answerBlank: (left ?? []).map((l) => `${l} → ______`).join(' | '),
+      }
+    }
+
+    case 'clozeMulti': {
+      const segments = (props.segments ?? []) as string[]
+      const n = Number(props.blankCount ?? Math.max(0, segments.length - 1))
+      const preview = segments
+        .map((s, i) => (i < n ? `${s}______` : s))
+        .join('')
+      return {
+        ...fromVisual,
+        paperHint: instruction ?? 'Fülle alle Lücken aus.',
+        answerBlank: preview || Array.from({ length: n }, () => '______').join(' | '),
+      }
+    }
+
+    case 'iconBelong': {
+      const opts = (props.options ?? []) as Array<{ label?: string; icon?: string }>
+      const labels = opts.map((o) =>
+        [o.icon, o.label].filter(Boolean).join(' ').trim(),
+      )
+      return {
+        ...fromVisual,
+        paperHint: instruction ?? 'Kreuze das passende Symbol / die passende Option an.',
+        options: labels,
+        answerBlank: '□',
+      }
+    }
+
+    case 'flashcardFlip': {
+      return {
+        ...fromVisual,
+        paperHint:
+          instruction ??
+          `Karte: „${String(props.front ?? '')}“. Schreibe die passende Antwort.`,
+        answerBlank: '______',
+      }
+    }
+
     default:
       return {
         ...fromVisual,

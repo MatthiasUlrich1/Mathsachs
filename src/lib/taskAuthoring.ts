@@ -77,6 +77,10 @@ export type AuthoringElementType =
   | 'coordinateClick'
   | 'coordinateDraw'
   | 'paramSlider'
+  | 'pairMatch'
+  | 'clozeMulti'
+  | 'iconBelong'
+  | 'flashcardFlip'
 
 export const AUTHORING_ELEMENT_OPTIONS: Array<{
   id: AuthoringElementType
@@ -91,6 +95,10 @@ export const AUTHORING_ELEMENT_OPTIONS: Array<{
   { id: 'numberLineThermometer', label: 'Thermometer' },
   { id: 'dragDropSort', label: 'Sortieren (Drag&Drop)' },
   { id: 'dragDropSlots', label: 'Zuordnen / Slots' },
+  { id: 'pairMatch', label: 'Paare klicken (2 Spalten)' },
+  { id: 'clozeMulti', label: 'Lückentext (mehrere Lücken)' },
+  { id: 'iconBelong', label: 'Symbol-/Emoji-Auswahl' },
+  { id: 'flashcardFlip', label: 'Karteikarte umdrehen' },
   { id: 'digitGrid', label: 'Zifferngitter' },
   { id: 'coordinateClick', label: 'Koordinaten klicken' },
   { id: 'coordinateDraw', label: 'Zeichnen im Koordinatensystem' },
@@ -403,6 +411,12 @@ export function validateDraft(draft: DraftAuthoringTask): string[] {
       }
       break
     }
+    case 'pairMatch':
+    case 'clozeMulti':
+    case 'iconBelong':
+    case 'flashcardFlip':
+      // Generator-heavy widgets — full authoring UI follows later; allow draft shell.
+      break
   }
   return errors
 }

@@ -1,8 +1,9 @@
 /**
  * Gymnasium Sachsen · Biologie — Lehrplan-Outline (lplanid=522).
- * K5 Wirbeltiere mit Spielbaren Themen (released:false → Entwickler);
- * übrige Klassen: Outline/Stub. Quelle:
- * https://www.schulportal.sachsen.de/lplandb/lehrplan/522
+ * Lehrplan structure is authoritative; denser PackTopics under each LB draw on
+ * Schlaukopf Bio-Gym quiz themes (original German wording — no verbatim copy).
+ * Surveyed: https://www.schlaukopf.de/gymnasium/klasse{5–10}/biologie/ + Oberstufe.
+ * released:false → Entwickler.
  */
 import type { PackArea, PackGrade, PackTopic } from './pack'
 
@@ -17,7 +18,7 @@ const topic = (
   pointsPerTask: 10,
   hint: 'Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.',
   released: opts?.released ?? false,
-  tasksPerRound: opts?.tasksPerRound ?? 8,
+  tasksPerRound: opts?.tasksPerRound ?? 12,
   ...(keywords?.length ? { keywords } : {}),
 })
 
@@ -45,7 +46,7 @@ const grade = (
   areas,
 })
 
-/** Official Lernbereiche laut Lehrplan Gymnasium Biologie (Sachsen). */
+/** Official Lernbereiche laut Lehrplan Gymnasium Biologie (Sachsen), denser topics. */
 export function buildBiologieGymOfficialGrades(): PackGrade[] {
   return [
     grade(
@@ -64,78 +65,140 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
       ],
       [
         area('lb1', 'Merkmale des Lebens', 3, [
-          topic(
-            'bi-k5-lb1-merkmale',
-            'Merkmale des Lebens',
-            ['Reizbarkeit', 'Stoffwechsel', 'Fortpflanzung', 'Bewegung'],
-            { tasksPerRound: 10 },
-          ),
+          topic('bi-k5-lb1-merkmale', 'Merkmale des Lebens – Überblick', [
+            'Reizbarkeit',
+            'Stoffwechsel',
+            'Fortpflanzung',
+            'Bewegung',
+          ], { tasksPerRound: 12 }),
+          topic('bi-k5-lb1-kennzeichen', 'Kennzeichen der Lebewesen', [
+            'Kennzeichen',
+            'Lebewesen',
+            'Stoffwechsel',
+          ], { tasksPerRound: 12 }),
         ]),
         area('lb2', 'Fische in ihren Lebensräumen', 8, [
-          topic(
-            'bi-k5-lb2-fische',
-            'Fische – Merkmale, Lebensraum und Schutz',
-            ['Kiemen', 'Flossen', 'Stromlinienform', 'Süßwasser'],
-            { tasksPerRound: 12 },
-          ),
+          topic('bi-k5-lb2-fische', 'Fische – Überblick', [
+            'Kiemen',
+            'Flossen',
+            'Stromlinienform',
+          ], { tasksPerRound: 14 }),
+          topic('bi-k5-lb2-fische-merkmale', 'Fische – Merkmale und Angepasstheit', [
+            'Kiemen',
+            'Schuppen',
+            'Seitenlinie',
+          ], { tasksPerRound: 14 }),
+          topic('bi-k5-lb2-fische-lebensraum', 'Fische – Lebensraum und Vielfalt', [
+            'Süßwasser',
+            'Salzwasser',
+            'Gewässer',
+          ], { tasksPerRound: 12 }),
+          topic('bi-k5-lb2-fische-schutz', 'Fische – Fortpflanzung und Schutz', [
+            'Laich',
+            'Gewässerschutz',
+          ], { tasksPerRound: 12 }),
         ]),
         area('lb3', 'Lurche in ihren Lebensräumen', 7, [
-          topic(
-            'bi-k5-lb3-lurche',
-            'Lurche – Merkmale, Metamorphose und Schutz',
-            ['Amphibien', 'Metamorphose', 'Hautatmung', 'Laich'],
-            { tasksPerRound: 12 },
-          ),
+          topic('bi-k5-lb3-lurche', 'Lurche – Überblick', [
+            'Amphibien',
+            'Metamorphose',
+            'Hautatmung',
+          ], { tasksPerRound: 14 }),
+          topic('bi-k5-lb3-lurche-merkmale', 'Lurche – Merkmale und Haut', [
+            'Hautatmung',
+            'Feuchte Haut',
+          ], { tasksPerRound: 12 }),
+          topic('bi-k5-lb3-lurche-meta', 'Lurche – Metamorphose', [
+            'Kaulquappe',
+            'Laich',
+            'Metamorphose',
+          ], { tasksPerRound: 14 }),
+          topic('bi-k5-lb3-lurche-schutz', 'Lurche – Lebensraum und Schutz', [
+            'Amphibienschutz',
+            'Wanderung',
+          ], { tasksPerRound: 12 }),
         ]),
         area('lb4', 'Kriechtiere in ihren Lebensräumen', 7, [
-          topic(
-            'bi-k5-lb4-kriechtiere',
-            'Kriechtiere – Merkmale und Landleben',
-            ['Reptilien', 'Hornschicht', 'Lungen', 'Eiablage'],
-            { tasksPerRound: 12 },
-          ),
+          topic('bi-k5-lb4-kriechtiere', 'Kriechtiere – Überblick', [
+            'Reptilien',
+            'Hornschicht',
+            'Lungen',
+          ], { tasksPerRound: 14 }),
+          topic('bi-k5-lb4-kriechtiere-merkmale', 'Kriechtiere – Merkmale und Landleben', [
+            'Schuppen',
+            'Eiablage',
+            'Poikilotherm',
+          ], { tasksPerRound: 12 }),
+          topic('bi-k5-lb4-kriechtiere-arten', 'Kriechtiere – heimische Arten', [
+            'Eidechse',
+            'Schlange',
+            'Schildkröte',
+          ], { tasksPerRound: 12 }),
         ]),
         area('lb5', 'Vögel in ihren Lebensräumen', 9, [
-          topic(
-            'bi-k5-lb5-voegel',
-            'Vögel – Flug, Federkleid und Fortpflanzung',
-            ['Federn', 'Luftsäcke', 'Schnabel', 'Nesthocker'],
-            { tasksPerRound: 12 },
-          ),
+          topic('bi-k5-lb5-voegel', 'Vögel – Überblick', [
+            'Federn',
+            'Luftsäcke',
+            'Schnabel',
+          ], { tasksPerRound: 14 }),
+          topic('bi-k5-lb5-voegel-flug', 'Vögel – Flug und Federkleid', [
+            'Flug',
+            'Federn',
+            'Knochen',
+          ], { tasksPerRound: 14 }),
+          topic('bi-k5-lb5-voegel-fortpflanzung', 'Vögel – Fortpflanzung und Brutpflege', [
+            'Nest',
+            'Nesthocker',
+            'Nestflüchter',
+          ], { tasksPerRound: 12 }),
         ]),
         area('lb6', 'Säugetiere in ihren Lebensräumen', 13, [
-          topic(
-            'bi-k5-lb6-saeugetiere',
-            'Säugetiere – Merkmale, Angepasstheit und Schutz',
-            ['Fell', 'Säugen', 'Gebiss', 'Gleichwarm'],
-            { tasksPerRound: 12 },
-          ),
+          topic('bi-k5-lb6-saeugetiere', 'Säugetiere – Überblick', [
+            'Fell',
+            'Säugen',
+            'Gleichwarm',
+          ], { tasksPerRound: 14 }),
+          topic('bi-k5-lb6-saeuger-merkmale', 'Säugetiere – Merkmale und Gebiss', [
+            'Gebiss',
+            'Fell',
+            'Säugen',
+          ], { tasksPerRound: 14 }),
+          topic('bi-k5-lb6-saeuger-angepasst', 'Säugetiere – Angepasstheit und Lebensräume', [
+            'Angepasstheit',
+            'Lebensraum',
+          ], { tasksPerRound: 12 }),
+          topic('bi-k5-lb6-saeuger-schutz', 'Säugetiere – Schutz und Vielfalt', [
+            'Artenschutz',
+            'Vielfalt',
+          ], { tasksPerRound: 12 }),
         ]),
         area('lb7', 'Systematisierung', 3, [
-          topic(
-            'bi-k5-lb7-systematik',
-            'Wirbeltiere vergleichen – Struktur, Funktion, Angepasstheit',
-            ['Systematik', 'Vergleich', 'Atmung', 'Körperbedeckung'],
-            { tasksPerRound: 12 },
-          ),
+          topic('bi-k5-lb7-systematik', 'Wirbeltiere vergleichen', [
+            'Systematik',
+            'Vergleich',
+            'Atmung',
+          ], { tasksPerRound: 14 }),
+          topic('bi-k5-lb7-zuordnung', 'Wirbeltiere zuordnen (Merkmale → Gruppe)', [
+            'Zuordnung',
+            'Merkmale',
+          ], { tasksPerRound: 14 }),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
-          topic(
-            'bi-k5-lbw-winter',
-            'Wirbeltiere im Winter',
-            ['Winterschlaf', 'Winterruhe', 'Kältestarre', 'Vogelzug'],
-            { tasksPerRound: 10 },
-          ),
+          topic('bi-k5-lbw-winter', 'Wirbeltiere im Winter', [
+            'Winterschlaf',
+            'Winterruhe',
+            'Kältestarre',
+            'Vogelzug',
+          ], { tasksPerRound: 12 }),
           topic('bi-k5-lbw-saurier', 'Kriechtiere vergangener Zeiten', [
             'Saurier',
             'Fossilien',
-            'Paläontologie',
-          ]),
+          ], { tasksPerRound: 10 }),
           topic('bi-k5-lbw-haltung', 'Artgerechte Tierhaltung', [
             'Aquarium',
             'Terrarium',
             'Tierschutz',
-          ]),
+          ], { tasksPerRound: 10 }),
         ]),
       ],
     ),
@@ -147,35 +210,81 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
       ['Samenpflanzen', 'Wirbellose', 'Wald', 'Zelle'],
       [
         area('lb1', 'Samenpflanzen', 10, [
-          topic('bi-k6-lb1-samenpflanzen', 'Samenpflanzen', ['Blüte', 'Samen', 'Frucht']),
+          topic('bi-k6-lb1-samenpflanzen', 'Samenpflanzen – Überblick', [
+            'Blüte',
+            'Samen',
+            'Frucht',
+          ], { tasksPerRound: 14 }),
+          topic('bi-k6-lb1-bluete', 'Blütenpflanzen – Blüte und Bestäubung', [
+            'Blüte',
+            'Bestäubung',
+            'Narbe',
+          ], { tasksPerRound: 14 }),
+          topic('bi-k6-lb1-baeume', 'Bäume und Holzpflanzen', [
+            'Baum',
+            'Holz',
+            'Jahresring',
+          ], { tasksPerRound: 12 }),
+          topic('bi-k6-lb1-organe', 'Spross, Blatt und Wurzel', [
+            'Wurzel',
+            'Blatt',
+            'Spross',
+          ], { tasksPerRound: 12 }),
         ]),
         area('lb2', 'Wirbellose Tiere in ihren Lebensräumen', 16, [
-          topic('bi-k6-lb2-wirbellose', 'Wirbellose Tiere in ihren Lebensräumen', [
+          topic('bi-k6-lb2-wirbellose', 'Wirbellose – Überblick', [
             'Insekten',
             'Spinnen',
-            'Wirbellose',
-          ]),
+          ], { tasksPerRound: 14 }),
+          topic('bi-k6-lb2-insekten', 'Insekten – Bau und Metamorphose', [
+            'Insekt',
+            'Metamorphose',
+            'Chitin',
+          ], { tasksPerRound: 14 }),
+          topic('bi-k6-lb2-spinnen', 'Spinnen und andere Gliederfüßer', [
+            'Spinne',
+            'Acht Beine',
+          ], { tasksPerRound: 12 }),
         ]),
         area('lb3', 'Systematisierung', 4, [
-          topic('bi-k6-lb3-systematik', 'Systematisierung wirbelloser Tiere und Wirbeltiere', [
+          topic('bi-k6-lb3-systematik', 'Wirbellose und Wirbeltiere vergleichen', [
             'Vergleich',
             'Systematik',
-          ]),
+          ], { tasksPerRound: 14 }),
         ]),
         area('lb4', 'Wald als Lebensgemeinschaft', 10, [
-          topic('bi-k6-lb4-wald', 'Wald als Lebensgemeinschaft', ['Ökosystem', 'Wald', 'Nahrungsnetz']),
+          topic('bi-k6-lb4-wald', 'Wald als Lebensgemeinschaft', [
+            'Ökosystem',
+            'Nahrungsnetz',
+          ], { tasksPerRound: 14 }),
+          topic('bi-k6-lb4-nahrung', 'Nahrungsnetz und Stockwerke im Wald', [
+            'Produzent',
+            'Konsument',
+            'Destruent',
+          ], { tasksPerRound: 14 }),
         ]),
         area('lb5', 'Pflanzliche und tierische Zellen', 10, [
-          topic('bi-k6-lb5-zellen', 'Pflanzliche und tierische Zellen', [
+          topic('bi-k6-lb5-zellen', 'Zellen im Vergleich', [
             'Zelle',
             'Zellkern',
             'Mikroskop',
-          ]),
+          ], { tasksPerRound: 14 }),
+          topic('bi-k6-lb5-mikroskop', 'Mikroskop und Zellorganellen', [
+            'Mikroskop',
+            'Chloroplast',
+            'Vakuole',
+          ], { tasksPerRound: 14 }),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
-          topic('bi-k6-lbw-weichtiere', 'Weichtiere', ['Schnecke', 'Muschel']),
-          topic('bi-k6-lbw-heilen', 'Pflanzen helfen heilen', ['Heilpflanze']),
-          topic('bi-k6-lbw-pfuetze', 'Leben in der Pfütze', ['Kleinstlebewesen']),
+          topic('bi-k6-lbw-weichtiere', 'Weichtiere', ['Schnecke', 'Muschel'], {
+            tasksPerRound: 10,
+          }),
+          topic('bi-k6-lbw-heilen', 'Pflanzen helfen heilen', ['Heilpflanze'], {
+            tasksPerRound: 10,
+          }),
+          topic('bi-k6-lbw-pfuetze', 'Leben in der Pfütze', ['Kleinstlebewesen'], {
+            tasksPerRound: 10,
+          }),
         ]),
       ],
     ),
@@ -187,30 +296,63 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
       ['Immunbiologie', 'Verdauung', 'Skelett', 'Bakterien'],
       [
         area('lb1', 'Bakterien und Viren', 4, [
-          topic('bi-k7-lb1-mikroben', 'Bakterien und Viren', ['Bakterien', 'Viren', 'Hygiene']),
+          topic('bi-k7-lb1-mikroben', 'Bakterien und Viren – Überblick', [
+            'Bakterien',
+            'Viren',
+            'Hygiene',
+          ], { tasksPerRound: 12 }),
+          topic('bi-k7-lb1-hygiene', 'Hygiene und Infektionsschutz', [
+            'Hygiene',
+            'Infektion',
+          ], { tasksPerRound: 12 }),
         ]),
         area('lb2', 'Blutkreislauf des Menschen und Immunbiologie', 7, [
-          topic('bi-k7-lb2-blut', 'Blutkreislauf und Immunbiologie', [
+          topic('bi-k7-lb2-blut', 'Blutkreislauf – Überblick', [
             'Herz',
             'Blut',
             'Immunsystem',
-          ]),
+          ], { tasksPerRound: 14 }),
+          topic('bi-k7-lb2-herz', 'Herz und Gefäße', ['Herz', 'Arterie', 'Vene'], {
+            tasksPerRound: 14,
+          }),
+          topic('bi-k7-lb2-immun', 'Immunbiologie – Abwehr', [
+            'Antikörper',
+            'Impfung',
+          ], { tasksPerRound: 12 }),
         ]),
         area('lb3', 'Ernährung, Verdauung und Ausscheidung beim Menschen', 10, [
-          topic('bi-k7-lb3-ernaehrung', 'Ernährung, Verdauung und Ausscheidung', [
+          topic('bi-k7-lb3-ernaehrung', 'Ernährung und Verdauung – Überblick', [
             'Verdauung',
             'Nährstoffe',
-          ]),
+          ], { tasksPerRound: 14 }),
+          topic('bi-k7-lb3-naehrstoffe', 'Nährstoffe und ausgewogene Ernährung', [
+            'Kohlenhydrate',
+            'Eiweiß',
+            'Fett',
+          ], { tasksPerRound: 14 }),
+          topic('bi-k7-lb3-organe', 'Verdauungsorgane und Ausscheidung', [
+            'Magen',
+            'Darm',
+            'Niere',
+          ], { tasksPerRound: 12 }),
         ]),
         area('lb4', 'Stütz- und Bewegungssystem des Menschen', 4, [
-          topic('bi-k7-lb4-skelett', 'Stütz- und Bewegungssystem', ['Knochen', 'Muskeln', 'Gelenke']),
+          topic('bi-k7-lb4-skelett', 'Knochen, Muskeln und Gelenke', [
+            'Knochen',
+            'Muskeln',
+            'Gelenke',
+          ], { tasksPerRound: 14 }),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
           topic('bi-k7-lbw-ernaehrung-persoenlichkeit', 'Ernährung und Persönlichkeit', [
             'Ernährung',
-          ]),
-          topic('bi-k7-lbw-fitness', 'Fitness und Gesundheit', ['Fitness']),
-          topic('bi-k7-lbw-mikroben', 'Mikroben und ihre Bedeutung', ['Mikroben']),
+          ], { tasksPerRound: 10 }),
+          topic('bi-k7-lbw-fitness', 'Fitness und Gesundheit', ['Fitness'], {
+            tasksPerRound: 10,
+          }),
+          topic('bi-k7-lbw-mikroben', 'Mikroben und ihre Bedeutung', ['Mikroben'], {
+            tasksPerRound: 10,
+          }),
         ]),
       ],
     ),
@@ -222,22 +364,38 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
       ['Sinne', 'Hormone', 'Nervensystem', 'Sexualität'],
       [
         area('lb1', 'Sinnesorgane, Nerven- und Hormonsystem des Menschen', 14, [
-          topic('bi-k8-lb1-sinne', 'Sinnesorgane, Nerven- und Hormonsystem', [
+          topic('bi-k8-lb1-sinne', 'Sinne und Nervensystem – Überblick', [
             'Sinne',
             'Nerven',
             'Hormone',
-          ]),
+          ], { tasksPerRound: 14 }),
+          topic('bi-k8-lb1-auge-ohr', 'Auge und Ohr', ['Auge', 'Ohr', 'Reiz'], {
+            tasksPerRound: 14,
+          }),
+          topic('bi-k8-lb1-hormone', 'Hormonsystem', ['Hormon', 'Drüse'], {
+            tasksPerRound: 12,
+          }),
         ]),
         area('lb2', 'Sexualität des Menschen', 11, [
-          topic('bi-k8-lb2-sexualitaet', 'Sexualität des Menschen', [
+          topic('bi-k8-lb2-sexualitaet', 'Sexualität des Menschen – Überblick', [
             'Sexualität',
             'Verantwortung',
-          ]),
+          ], { tasksPerRound: 12 }),
+          topic('bi-k8-lb2-entwicklung', 'Entwicklung und Verantwortung', [
+            'Pubertät',
+            'Verantwortung',
+          ], { tasksPerRound: 12 }),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
-          topic('bi-k8-lbw-stress', 'Stress und Stressbewältigung', ['Stress']),
-          topic('bi-k8-lbw-sinne', 'Erleben mit allen Sinnen', ['Wahrnehmung']),
-          topic('bi-k8-lbw-erste-hilfe', 'Erste Hilfe', ['Erste Hilfe']),
+          topic('bi-k8-lbw-stress', 'Stress und Stressbewältigung', ['Stress'], {
+            tasksPerRound: 10,
+          }),
+          topic('bi-k8-lbw-sinne', 'Erleben mit allen Sinnen', ['Wahrnehmung'], {
+            tasksPerRound: 10,
+          }),
+          topic('bi-k8-lbw-erste-hilfe', 'Erste Hilfe', ['Erste Hilfe'], {
+            tasksPerRound: 10,
+          }),
         ]),
       ],
     ),
@@ -249,21 +407,41 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
       ['Pflanzenphysiologie', 'Ökosystem', 'Fotosynthese'],
       [
         area('lb1', 'Anatomie und Physiologie der Samenpflanzen', 25, [
-          topic('bi-k9-lb1-pflanzen', 'Anatomie und Physiologie der Samenpflanzen', [
+          topic('bi-k9-lb1-pflanzen', 'Samenpflanzen – Physiologie Überblick', [
             'Fotosynthese',
             'Transpiration',
-          ]),
+          ], { tasksPerRound: 14 }),
+          topic('bi-k9-lb1-fotosynthese', 'Fotosynthese und Blattbau', [
+            'Fotosynthese',
+            'Chlorophyll',
+          ], { tasksPerRound: 14 }),
+          topic('bi-k9-lb1-wasser', 'Wassertransport und Transpiration', [
+            'Transpiration',
+            'Xylem',
+          ], { tasksPerRound: 12 }),
         ]),
         area('lb2', 'Zusammenhänge im Ökosystem', 25, [
-          topic('bi-k9-lb2-oekosystem', 'Zusammenhänge im Ökosystem', [
+          topic('bi-k9-lb2-oekosystem', 'Ökosystem – Überblick', [
             'Ökosystem',
             'Stoffkreislauf',
-          ]),
+          ], { tasksPerRound: 14 }),
+          topic('bi-k9-lb2-wald-gewaesser', 'Wald und Gewässer als Ökosysteme', [
+            'Wald',
+            'Gewässer',
+          ], { tasksPerRound: 14 }),
+          topic('bi-k9-lb2-stoffkreis', 'Stoffkreisläufe und Energiefluss', [
+            'Kohlenstoffkreislauf',
+            'Energie',
+          ], { tasksPerRound: 12 }),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
-          topic('bi-k9-lbw-wiese', 'Mikrokosmos Wiese', ['Wiese']),
-          topic('bi-k9-lbw-pilze', 'Mannigfaltigkeit der Pilze', ['Pilze']),
-          topic('bi-k9-lbw-bier', 'Von der Gerste zum Bier', ['Gärung']),
+          topic('bi-k9-lbw-wiese', 'Mikrokosmos Wiese', ['Wiese'], { tasksPerRound: 10 }),
+          topic('bi-k9-lbw-pilze', 'Mannigfaltigkeit der Pilze', ['Pilze'], {
+            tasksPerRound: 10,
+          }),
+          topic('bi-k9-lbw-bier', 'Von der Gerste zum Bier', ['Gärung'], {
+            tasksPerRound: 10,
+          }),
         ]),
       ],
     ),
@@ -275,23 +453,45 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
       ['Genetik', 'Evolution', 'Artenvielfalt', 'Mensch'],
       [
         area('lb1', 'Genetik', 25, [
-          topic('bi-k10-lb1-genetik', 'Genetik', ['Mendel', 'DNA', 'Vererbung']),
+          topic('bi-k10-lb1-genetik', 'Genetik – Überblick', [
+            'Mendel',
+            'DNA',
+            'Vererbung',
+          ], { tasksPerRound: 14 }),
+          topic('bi-k10-lb1-mendel', 'Mendel-Regeln und Kreuzungen', [
+            'Mendel',
+            'Dominant',
+            'Rezessiv',
+          ], { tasksPerRound: 14 }),
+          topic('bi-k10-lb1-dna', 'DNA, Gene und Chromosomen', [
+            'DNA',
+            'Gen',
+            'Chromosom',
+          ], { tasksPerRound: 14 }),
         ]),
         area('lb2', 'Entstehung der Artenvielfalt', 16, [
-          topic('bi-k10-lb2-artenvielfalt', 'Entstehung der Artenvielfalt', [
+          topic('bi-k10-lb2-artenvielfalt', 'Artenvielfalt und Evolution – Überblick', [
             'Evolution',
             'Selektion',
-          ]),
+          ], { tasksPerRound: 14 }),
+          topic('bi-k10-lb2-selektion', 'Selektion und Anpassung', [
+            'Selektion',
+            'Mutation',
+          ], { tasksPerRound: 14 }),
         ]),
         area('lb3', 'Stammesgeschichte des Menschen', 9, [
           topic('bi-k10-lb3-mensch', 'Stammesgeschichte des Menschen', [
             'Hominiden',
             'Evolution',
-          ]),
+          ], { tasksPerRound: 14 }),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
-          topic('bi-k10-lbw-leben', 'Entstehung des Lebens auf der Erde', ['Ursuppe']),
-          topic('bi-k10-lbw-lernen', 'Lernen und Gedächtnis', ['Gedächtnis']),
+          topic('bi-k10-lbw-leben', 'Entstehung des Lebens auf der Erde', ['Ursuppe'], {
+            tasksPerRound: 10,
+          }),
+          topic('bi-k10-lbw-lernen', 'Lernen und Gedächtnis', ['Gedächtnis'], {
+            tasksPerRound: 10,
+          }),
         ]),
       ],
     ),
@@ -303,46 +503,59 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
       ['Zelle', 'Dissimilation', 'Ökologie', 'Genetik', 'Biodiversität'],
       [
         area('lb1', 'Zellen, Gewebe und Organe', 24, [
-          topic('bi-gk11-lb1-zellen', 'Zellen, Gewebe und Organe', ['Differenzierung', 'Zelle']),
+          topic('bi-gk11-lb1-zellen', 'Zellen, Gewebe und Organe', [
+            'Differenzierung',
+            'Zelle',
+          ], { tasksPerRound: 12 }),
+          topic('bi-gk11-lb1-organellen', 'Zellorganellen und Kompartimente', [
+            'Organell',
+            'Membran',
+          ], { tasksPerRound: 12 }),
         ]),
         area('lb2', 'Assimilation und Dissimilation', 15, [
           topic('bi-gk11-lb2-stoffwechsel', 'Assimilation und Dissimilation', [
             'Fotosynthese',
             'Zellatmung',
-          ]),
+          ], { tasksPerRound: 12 }),
         ]),
         area('lb3', 'Ökologie und Nachhaltigkeit', 13, [
           topic('bi-gk11-lb3-oekologie', 'Ökologie und Nachhaltigkeit', [
             'Nachhaltigkeit',
             'Ökologie',
-          ]),
+          ], { tasksPerRound: 12 }),
         ]),
         area('lb4', 'Grundlagen, Anwendungen und Perspektiven der Genetik', 18, [
           topic('bi-gk12-lb1-genetik', 'Genetik – Grundlagen und Perspektiven', [
             'Gentechnik',
             'DNA',
-          ]),
+          ], { tasksPerRound: 12 }),
         ]),
         area('lb5', 'Kommunikation zwischen Zellen', 10, [
           topic('bi-gk12-lb2-kommunikation', 'Kommunikation zwischen Zellen', [
             'Signal',
             'Rezeptor',
-          ]),
+          ], { tasksPerRound: 12 }),
         ]),
         area('lb6', 'Biodiversität und ihre Entstehung', 14, [
           topic('bi-gk12-lb3-biodiversitaet', 'Biodiversität und ihre Entstehung', [
             'Biodiversität',
             'Evolution',
-          ]),
+          ], { tasksPerRound: 12 }),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
-          topic('bi-gk-lbw-wueste', 'Leben in der Wüste', ['Wüste']),
-          topic('bi-gk-lbw-energie', 'Energiehaushalt von Mensch und Tier', ['Energie']),
-          topic('bi-gk-lbw-fliesgewaesser', 'Fließgewässer', ['Fluss']),
-          topic('bi-gk-lbw-krebs', 'Krebs', ['Tumor']),
-          topic('bi-gk-lbw-nerven', 'Nervensysteme', ['Nerven']),
-          topic('bi-gk-lbw-verhalten', 'Verhaltensbiologisches Praktikum', ['Verhalten']),
-          topic('bi-gk-lbw-gentechnik', 'Grüne Gentechnik', ['Gentechnik']),
+          topic('bi-gk-lbw-wueste', 'Leben in der Wüste', ['Wüste'], { tasksPerRound: 10 }),
+          topic('bi-gk-lbw-energie', 'Energiehaushalt von Mensch und Tier', ['Energie'], {
+            tasksPerRound: 10,
+          }),
+          topic('bi-gk-lbw-fliesgewaesser', 'Fließgewässer', ['Fluss'], { tasksPerRound: 10 }),
+          topic('bi-gk-lbw-krebs', 'Krebs', ['Tumor'], { tasksPerRound: 10 }),
+          topic('bi-gk-lbw-nerven', 'Nervensysteme', ['Nerven'], { tasksPerRound: 10 }),
+          topic('bi-gk-lbw-verhalten', 'Verhaltensbiologisches Praktikum', ['Verhalten'], {
+            tasksPerRound: 10,
+          }),
+          topic('bi-gk-lbw-gentechnik', 'Grüne Gentechnik', ['Gentechnik'], {
+            tasksPerRound: 10,
+          }),
         ]),
       ],
     ),
@@ -357,25 +570,33 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
           topic('bi-lk11-lb1-zellen', 'Zellen, Gewebe und Organe (Lk)', [
             'Differenzierung',
             'Zelle',
-          ]),
+          ], { tasksPerRound: 12 }),
         ]),
         area('lb2', 'Assimilation und Dissimilation', 40, [
           topic('bi-lk11-lb2-stoffwechsel', 'Assimilation und Dissimilation (Lk)', [
             'Redox',
             'Stoffwechsel',
-          ]),
+          ], { tasksPerRound: 12 }),
         ]),
         area('lb3', 'Ökologie und Nachhaltigkeit', 35, [
           topic('bi-lk11-lb3-oekologie', 'Ökologie und Nachhaltigkeit (Lk)', [
             'Nachhaltigkeit',
-          ]),
+          ], { tasksPerRound: 12 }),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
-          topic('bi-lk11-lbw-urban', 'Urbane Ökologie', ['Stadtökologie']),
-          topic('bi-lk11-lbw-bioindikation', 'Bioindikation', ['Bioindikator']),
-          topic('bi-lk11-lbw-invasiv', 'Invasive Arten', ['Neobiota']),
-          topic('bi-lk11-lbw-rohstoffe', 'Nachwachsende Rohstoffe', ['Biomasse']),
-          topic('bi-lk11-lbw-energie', 'Energiehaushalt des Menschen', ['Energie']),
+          topic('bi-lk11-lbw-urban', 'Urbane Ökologie', ['Stadtökologie'], {
+            tasksPerRound: 10,
+          }),
+          topic('bi-lk11-lbw-bioindikation', 'Bioindikation', ['Bioindikator'], {
+            tasksPerRound: 10,
+          }),
+          topic('bi-lk11-lbw-invasiv', 'Invasive Arten', ['Neobiota'], { tasksPerRound: 10 }),
+          topic('bi-lk11-lbw-rohstoffe', 'Nachwachsende Rohstoffe', ['Biomasse'], {
+            tasksPerRound: 10,
+          }),
+          topic('bi-lk11-lbw-energie', 'Energiehaushalt des Menschen', ['Energie'], {
+            tasksPerRound: 10,
+          }),
         ]),
       ],
     ),
@@ -387,32 +608,46 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
       ['Genetik', 'Verhalten', 'Biodiversität'],
       [
         area('lb1', 'Grundlagen, Anwendungen und Perspektiven der Genetik', 34, [
-          topic('bi-lk12-lb1-genetik', 'Genetik (Lk)', ['Genetik', 'Gentechnik']),
+          topic('bi-lk12-lb1-genetik', 'Genetik (Lk)', ['Genetik', 'Gentechnik'], {
+            tasksPerRound: 12,
+          }),
         ]),
         area('lb2', 'Kommunikation zwischen Zellen', 32, [
           topic('bi-lk12-lb2-kommunikation', 'Kommunikation zwischen Zellen (Lk)', [
             'Signalwege',
-          ]),
+          ], { tasksPerRound: 12 }),
         ]),
         area('lb3', 'Verhalten von Tier und Mensch', 10, [
-          topic('bi-lk12-lb3-verhalten', 'Verhalten von Tier und Mensch', ['Ethologie']),
+          topic('bi-lk12-lb3-verhalten', 'Verhalten von Tier und Mensch', ['Ethologie'], {
+            tasksPerRound: 12,
+          }),
         ]),
         area('lb4', 'Biodiversität und ihre Entstehung', 20, [
           topic('bi-lk12-lb4-biodiversitaet', 'Biodiversität und ihre Entstehung (Lk)', [
             'Biodiversität',
-          ]),
+          ], { tasksPerRound: 12 }),
         ]),
         area('lb5', 'Systematisierung und Vernetztheit', 14, [
           topic('bi-lk12-lb5-systematik', 'Systematisierung und Vernetztheit', [
             'Vernetzung',
-          ]),
+          ], { tasksPerRound: 12 }),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
-          topic('bi-lk12-lbw-allergie', 'Allergien und Autoimmunkrankheiten', ['Allergie']),
-          topic('bi-lk12-lbw-stoffwechsel', 'Evolution des Stoffwechsels', ['Stoffwechsel']),
-          topic('bi-lk12-lbw-gefaess', 'Praktikum Gefäßpflanzen', ['Pflanzen']),
-          topic('bi-lk12-lbw-verhalten', 'Verhaltensbiologisches Praktikum', ['Verhalten']),
-          topic('bi-lk12-lbw-gentechnik', 'Arbeitstechniken in der Genetik', ['Labor']),
+          topic('bi-lk12-lbw-allergie', 'Allergien und Autoimmunkrankheiten', ['Allergie'], {
+            tasksPerRound: 10,
+          }),
+          topic('bi-lk12-lbw-stoffwechsel', 'Evolution des Stoffwechsels', ['Stoffwechsel'], {
+            tasksPerRound: 10,
+          }),
+          topic('bi-lk12-lbw-gefaess', 'Praktikum Gefäßpflanzen', ['Pflanzen'], {
+            tasksPerRound: 10,
+          }),
+          topic('bi-lk12-lbw-verhalten', 'Verhaltensbiologisches Praktikum', ['Verhalten'], {
+            tasksPerRound: 10,
+          }),
+          topic('bi-lk12-lbw-gentechnik', 'Arbeitstechniken in der Genetik', ['Labor'], {
+            tasksPerRound: 10,
+          }),
         ]),
       ],
     ),
@@ -425,15 +660,30 @@ export function allBiologieTopicIds(): string[] {
   )
 }
 
-/** Playable K5 Wirbeltiere + Wahl topic ids (generators in biologie5.ts). */
+/** Playable K5 Wirbeltiere + Wahl topic ids (legacy + expanded). */
 export const BIOLOGIE_K5_WIRBELTIERE_TOPIC_IDS = [
   'bi-k5-lb1-merkmale',
+  'bi-k5-lb1-kennzeichen',
   'bi-k5-lb2-fische',
+  'bi-k5-lb2-fische-merkmale',
+  'bi-k5-lb2-fische-lebensraum',
+  'bi-k5-lb2-fische-schutz',
   'bi-k5-lb3-lurche',
+  'bi-k5-lb3-lurche-merkmale',
+  'bi-k5-lb3-lurche-meta',
+  'bi-k5-lb3-lurche-schutz',
   'bi-k5-lb4-kriechtiere',
+  'bi-k5-lb4-kriechtiere-merkmale',
+  'bi-k5-lb4-kriechtiere-arten',
   'bi-k5-lb5-voegel',
+  'bi-k5-lb5-voegel-flug',
+  'bi-k5-lb5-voegel-fortpflanzung',
   'bi-k5-lb6-saeugetiere',
+  'bi-k5-lb6-saeuger-merkmale',
+  'bi-k5-lb6-saeuger-angepasst',
+  'bi-k5-lb6-saeuger-schutz',
   'bi-k5-lb7-systematik',
+  'bi-k5-lb7-zuordnung',
   'bi-k5-lbw-winter',
   'bi-k5-lbw-saurier',
   'bi-k5-lbw-haltung',

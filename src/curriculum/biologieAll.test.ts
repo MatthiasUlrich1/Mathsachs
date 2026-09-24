@@ -26,7 +26,7 @@ describe('Biologie generators (K5–12)', () => {
     }
   })
 
-  it('uses a mix of interactive styles', () => {
+  it('uses a mix of interactive styles including NEW widgets', () => {
     const kinds = new Set<string>()
     for (const id of allBiologieTopicIds()) {
       for (let seed = 0; seed < 20; seed++) {
@@ -36,9 +36,9 @@ describe('Biologie generators (K5–12)', () => {
       }
     }
     expect(kinds.has('choicePick')).toBe(true)
-    expect(kinds.has('multiSelect')).toBe(true)
-    expect(kinds.has('dragDropSlots')).toBe(true)
-    expect(kinds.has('dragDropSort')).toBe(true)
-    expect(kinds.has('text')).toBe(true)
+    expect(kinds.has('pairMatch')).toBe(true)
+    expect(kinds.has('clozeMulti')).toBe(true)
+    expect(kinds.has('iconBelong')).toBe(true)
+    expect(kinds.has('flashcardFlip')).toBe(true)
   })
 })

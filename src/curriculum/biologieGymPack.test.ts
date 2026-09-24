@@ -21,7 +21,7 @@ describe('Gymnasium Sachsen Biologie pack', () => {
     const pack = buildGymSachsenBiologiePack()
     expect(pack.id).toBe(GYM_SACHSEN_BIOLOGIE_PACK_ID)
     expect(pack.subject).toBe('Biologie')
-    expect(pack.version).toBe('1.1.0')
+    expect(pack.version).toBe('1.2.0')
     expect(pack.official.map((g) => g.id)).toEqual([
       'biologie-klasse-5',
       'biologie-klasse-6',
@@ -34,7 +34,7 @@ describe('Gymnasium Sachsen Biologie pack', () => {
       'biologie-jgs-12-lk',
     ])
     const topics = pack.official.flatMap((g) => g.areas.flatMap((a) => a.topics))
-    expect(topics.length).toBeGreaterThan(30)
+    expect(topics.length).toBeGreaterThan(70)
     expect(topics.every((t) => t.released === false)).toBe(true)
     const k5Ids = pack.official
       .find((g) => g.id === 'biologie-klasse-5')!

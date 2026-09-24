@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Biologie",
-  "version": "1.1.0",
-  "changelog": "Klassen 5–12 (Gk/Lk) · 71 Themen mit Generatoren (MC, R/F, Match, Sort, Gap, Multi; released:false). Lehrplan 522; Quiz-Ideen an Schulportale angelehnt. Ohne Netz lokale Fassung.",
+  "version": "1.2.0",
+  "changelog": "Klassen 5–12 · 109 Themen + neue Interaktionen pairMatch, clozeMulti, iconBelong, flashcardFlip (released:false). Lehrplan 522; Schlaukopf-Themen als Ideen (original formuliert).",
   "official": [
     {
       "id": "biologie-klasse-5",
@@ -30,16 +30,29 @@
           "topics": [
             {
               "id": "bi-k5-lb1-merkmale",
-              "title": "Merkmale des Lebens",
+              "title": "Merkmale des Lebens – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 10,
+              "tasksPerRound": 12,
               "keywords": [
                 "Reizbarkeit",
                 "Stoffwechsel",
                 "Fortpflanzung",
                 "Bewegung"
+              ]
+            },
+            {
+              "id": "bi-k5-lb1-kennzeichen",
+              "title": "Kennzeichen der Lebewesen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Kennzeichen",
+                "Lebewesen",
+                "Stoffwechsel"
               ]
             }
           ]
@@ -51,16 +64,53 @@
           "topics": [
             {
               "id": "bi-k5-lb2-fische",
-              "title": "Fische – Merkmale, Lebensraum und Schutz",
+              "title": "Fische – Überblick",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "Kiemen",
+                "Flossen",
+                "Stromlinienform"
+              ]
+            },
+            {
+              "id": "bi-k5-lb2-fische-merkmale",
+              "title": "Fische – Merkmale und Angepasstheit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "Kiemen",
+                "Schuppen",
+                "Seitenlinie"
+              ]
+            },
+            {
+              "id": "bi-k5-lb2-fische-lebensraum",
+              "title": "Fische – Lebensraum und Vielfalt",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 12,
               "keywords": [
-                "Kiemen",
-                "Flossen",
-                "Stromlinienform",
-                "Süßwasser"
+                "Süßwasser",
+                "Salzwasser",
+                "Gewässer"
+              ]
+            },
+            {
+              "id": "bi-k5-lb2-fische-schutz",
+              "title": "Fische – Fortpflanzung und Schutz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Laich",
+                "Gewässerschutz"
               ]
             }
           ]
@@ -72,16 +122,52 @@
           "topics": [
             {
               "id": "bi-k5-lb3-lurche",
-              "title": "Lurche – Merkmale, Metamorphose und Schutz",
+              "title": "Lurche – Überblick",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "Amphibien",
+                "Metamorphose",
+                "Hautatmung"
+              ]
+            },
+            {
+              "id": "bi-k5-lb3-lurche-merkmale",
+              "title": "Lurche – Merkmale und Haut",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 12,
               "keywords": [
-                "Amphibien",
-                "Metamorphose",
                 "Hautatmung",
-                "Laich"
+                "Feuchte Haut"
+              ]
+            },
+            {
+              "id": "bi-k5-lb3-lurche-meta",
+              "title": "Lurche – Metamorphose",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "Kaulquappe",
+                "Laich",
+                "Metamorphose"
+              ]
+            },
+            {
+              "id": "bi-k5-lb3-lurche-schutz",
+              "title": "Lurche – Lebensraum und Schutz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Amphibienschutz",
+                "Wanderung"
               ]
             }
           ]
@@ -93,16 +179,41 @@
           "topics": [
             {
               "id": "bi-k5-lb4-kriechtiere",
+              "title": "Kriechtiere – Überblick",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "Reptilien",
+                "Hornschicht",
+                "Lungen"
+              ]
+            },
+            {
+              "id": "bi-k5-lb4-kriechtiere-merkmale",
               "title": "Kriechtiere – Merkmale und Landleben",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 12,
               "keywords": [
-                "Reptilien",
-                "Hornschicht",
-                "Lungen",
-                "Eiablage"
+                "Schuppen",
+                "Eiablage",
+                "Poikilotherm"
+              ]
+            },
+            {
+              "id": "bi-k5-lb4-kriechtiere-arten",
+              "title": "Kriechtiere – heimische Arten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Eidechse",
+                "Schlange",
+                "Schildkröte"
               ]
             }
           ]
@@ -114,16 +225,41 @@
           "topics": [
             {
               "id": "bi-k5-lb5-voegel",
-              "title": "Vögel – Flug, Federkleid und Fortpflanzung",
+              "title": "Vögel – Überblick",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "Federn",
+                "Luftsäcke",
+                "Schnabel"
+              ]
+            },
+            {
+              "id": "bi-k5-lb5-voegel-flug",
+              "title": "Vögel – Flug und Federkleid",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "Flug",
+                "Federn",
+                "Knochen"
+              ]
+            },
+            {
+              "id": "bi-k5-lb5-voegel-fortpflanzung",
+              "title": "Vögel – Fortpflanzung und Brutpflege",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 12,
               "keywords": [
-                "Federn",
-                "Luftsäcke",
-                "Schnabel",
-                "Nesthocker"
+                "Nest",
+                "Nesthocker",
+                "Nestflüchter"
               ]
             }
           ]
@@ -135,16 +271,52 @@
           "topics": [
             {
               "id": "bi-k5-lb6-saeugetiere",
-              "title": "Säugetiere – Merkmale, Angepasstheit und Schutz",
+              "title": "Säugetiere – Überblick",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "Fell",
+                "Säugen",
+                "Gleichwarm"
+              ]
+            },
+            {
+              "id": "bi-k5-lb6-saeuger-merkmale",
+              "title": "Säugetiere – Merkmale und Gebiss",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "Gebiss",
+                "Fell",
+                "Säugen"
+              ]
+            },
+            {
+              "id": "bi-k5-lb6-saeuger-angepasst",
+              "title": "Säugetiere – Angepasstheit und Lebensräume",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 12,
               "keywords": [
-                "Fell",
-                "Säugen",
-                "Gebiss",
-                "Gleichwarm"
+                "Angepasstheit",
+                "Lebensraum"
+              ]
+            },
+            {
+              "id": "bi-k5-lb6-saeuger-schutz",
+              "title": "Säugetiere – Schutz und Vielfalt",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Artenschutz",
+                "Vielfalt"
               ]
             }
           ]
@@ -156,16 +328,27 @@
           "topics": [
             {
               "id": "bi-k5-lb7-systematik",
-              "title": "Wirbeltiere vergleichen – Struktur, Funktion, Angepasstheit",
+              "title": "Wirbeltiere vergleichen",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 14,
               "keywords": [
                 "Systematik",
                 "Vergleich",
-                "Atmung",
-                "Körperbedeckung"
+                "Atmung"
+              ]
+            },
+            {
+              "id": "bi-k5-lb7-zuordnung",
+              "title": "Wirbeltiere zuordnen (Merkmale → Gruppe)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "Zuordnung",
+                "Merkmale"
               ]
             }
           ]
@@ -180,7 +363,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 10,
+              "tasksPerRound": 12,
               "keywords": [
                 "Winterschlaf",
                 "Winterruhe",
@@ -194,11 +377,10 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Saurier",
-                "Fossilien",
-                "Paläontologie"
+                "Fossilien"
               ]
             },
             {
@@ -207,7 +389,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Aquarium",
                 "Terrarium",
@@ -238,15 +420,54 @@
           "topics": [
             {
               "id": "bi-k6-lb1-samenpflanzen",
-              "title": "Samenpflanzen",
+              "title": "Samenpflanzen – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 14,
               "keywords": [
                 "Blüte",
                 "Samen",
                 "Frucht"
+              ]
+            },
+            {
+              "id": "bi-k6-lb1-bluete",
+              "title": "Blütenpflanzen – Blüte und Bestäubung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "Blüte",
+                "Bestäubung",
+                "Narbe"
+              ]
+            },
+            {
+              "id": "bi-k6-lb1-baeume",
+              "title": "Bäume und Holzpflanzen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Baum",
+                "Holz",
+                "Jahresring"
+              ]
+            },
+            {
+              "id": "bi-k6-lb1-organe",
+              "title": "Spross, Blatt und Wurzel",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Wurzel",
+                "Blatt",
+                "Spross"
               ]
             }
           ]
@@ -258,15 +479,39 @@
           "topics": [
             {
               "id": "bi-k6-lb2-wirbellose",
-              "title": "Wirbellose Tiere in ihren Lebensräumen",
+              "title": "Wirbellose – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 14,
               "keywords": [
                 "Insekten",
-                "Spinnen",
-                "Wirbellose"
+                "Spinnen"
+              ]
+            },
+            {
+              "id": "bi-k6-lb2-insekten",
+              "title": "Insekten – Bau und Metamorphose",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "Insekt",
+                "Metamorphose",
+                "Chitin"
+              ]
+            },
+            {
+              "id": "bi-k6-lb2-spinnen",
+              "title": "Spinnen und andere Gliederfüßer",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Spinne",
+                "Acht Beine"
               ]
             }
           ]
@@ -278,11 +523,11 @@
           "topics": [
             {
               "id": "bi-k6-lb3-systematik",
-              "title": "Systematisierung wirbelloser Tiere und Wirbeltiere",
+              "title": "Wirbellose und Wirbeltiere vergleichen",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 14,
               "keywords": [
                 "Vergleich",
                 "Systematik"
@@ -301,11 +546,23 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 14,
               "keywords": [
                 "Ökosystem",
-                "Wald",
                 "Nahrungsnetz"
+              ]
+            },
+            {
+              "id": "bi-k6-lb4-nahrung",
+              "title": "Nahrungsnetz und Stockwerke im Wald",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "Produzent",
+                "Konsument",
+                "Destruent"
               ]
             }
           ]
@@ -317,15 +574,28 @@
           "topics": [
             {
               "id": "bi-k6-lb5-zellen",
-              "title": "Pflanzliche und tierische Zellen",
+              "title": "Zellen im Vergleich",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 14,
               "keywords": [
                 "Zelle",
                 "Zellkern",
                 "Mikroskop"
+              ]
+            },
+            {
+              "id": "bi-k6-lb5-mikroskop",
+              "title": "Mikroskop und Zellorganellen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "Mikroskop",
+                "Chloroplast",
+                "Vakuole"
               ]
             }
           ]
@@ -340,7 +610,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Schnecke",
                 "Muschel"
@@ -352,7 +622,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Heilpflanze"
               ]
@@ -363,7 +633,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kleinstlebewesen"
               ]
@@ -392,15 +662,27 @@
           "topics": [
             {
               "id": "bi-k7-lb1-mikroben",
-              "title": "Bakterien und Viren",
+              "title": "Bakterien und Viren – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 12,
               "keywords": [
                 "Bakterien",
                 "Viren",
                 "Hygiene"
+              ]
+            },
+            {
+              "id": "bi-k7-lb1-hygiene",
+              "title": "Hygiene und Infektionsschutz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Hygiene",
+                "Infektion"
               ]
             }
           ]
@@ -412,15 +694,40 @@
           "topics": [
             {
               "id": "bi-k7-lb2-blut",
-              "title": "Blutkreislauf und Immunbiologie",
+              "title": "Blutkreislauf – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 14,
               "keywords": [
                 "Herz",
                 "Blut",
                 "Immunsystem"
+              ]
+            },
+            {
+              "id": "bi-k7-lb2-herz",
+              "title": "Herz und Gefäße",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "Herz",
+                "Arterie",
+                "Vene"
+              ]
+            },
+            {
+              "id": "bi-k7-lb2-immun",
+              "title": "Immunbiologie – Abwehr",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Antikörper",
+                "Impfung"
               ]
             }
           ]
@@ -432,14 +739,40 @@
           "topics": [
             {
               "id": "bi-k7-lb3-ernaehrung",
-              "title": "Ernährung, Verdauung und Ausscheidung",
+              "title": "Ernährung und Verdauung – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 14,
               "keywords": [
                 "Verdauung",
                 "Nährstoffe"
+              ]
+            },
+            {
+              "id": "bi-k7-lb3-naehrstoffe",
+              "title": "Nährstoffe und ausgewogene Ernährung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "Kohlenhydrate",
+                "Eiweiß",
+                "Fett"
+              ]
+            },
+            {
+              "id": "bi-k7-lb3-organe",
+              "title": "Verdauungsorgane und Ausscheidung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Magen",
+                "Darm",
+                "Niere"
               ]
             }
           ]
@@ -451,11 +784,11 @@
           "topics": [
             {
               "id": "bi-k7-lb4-skelett",
-              "title": "Stütz- und Bewegungssystem",
+              "title": "Knochen, Muskeln und Gelenke",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 14,
               "keywords": [
                 "Knochen",
                 "Muskeln",
@@ -474,7 +807,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Ernährung"
               ]
@@ -485,7 +818,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Fitness"
               ]
@@ -496,7 +829,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Mikroben"
               ]
@@ -525,15 +858,40 @@
           "topics": [
             {
               "id": "bi-k8-lb1-sinne",
-              "title": "Sinnesorgane, Nerven- und Hormonsystem",
+              "title": "Sinne und Nervensystem – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 14,
               "keywords": [
                 "Sinne",
                 "Nerven",
                 "Hormone"
+              ]
+            },
+            {
+              "id": "bi-k8-lb1-auge-ohr",
+              "title": "Auge und Ohr",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "Auge",
+                "Ohr",
+                "Reiz"
+              ]
+            },
+            {
+              "id": "bi-k8-lb1-hormone",
+              "title": "Hormonsystem",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Hormon",
+                "Drüse"
               ]
             }
           ]
@@ -545,13 +903,25 @@
           "topics": [
             {
               "id": "bi-k8-lb2-sexualitaet",
-              "title": "Sexualität des Menschen",
+              "title": "Sexualität des Menschen – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 12,
               "keywords": [
                 "Sexualität",
+                "Verantwortung"
+              ]
+            },
+            {
+              "id": "bi-k8-lb2-entwicklung",
+              "title": "Entwicklung und Verantwortung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Pubertät",
                 "Verantwortung"
               ]
             }
@@ -567,7 +937,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Stress"
               ]
@@ -578,7 +948,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wahrnehmung"
               ]
@@ -589,7 +959,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Erste Hilfe"
               ]
@@ -617,14 +987,38 @@
           "topics": [
             {
               "id": "bi-k9-lb1-pflanzen",
-              "title": "Anatomie und Physiologie der Samenpflanzen",
+              "title": "Samenpflanzen – Physiologie Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 14,
               "keywords": [
                 "Fotosynthese",
                 "Transpiration"
+              ]
+            },
+            {
+              "id": "bi-k9-lb1-fotosynthese",
+              "title": "Fotosynthese und Blattbau",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "Fotosynthese",
+                "Chlorophyll"
+              ]
+            },
+            {
+              "id": "bi-k9-lb1-wasser",
+              "title": "Wassertransport und Transpiration",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Transpiration",
+                "Xylem"
               ]
             }
           ]
@@ -636,14 +1030,38 @@
           "topics": [
             {
               "id": "bi-k9-lb2-oekosystem",
-              "title": "Zusammenhänge im Ökosystem",
+              "title": "Ökosystem – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 14,
               "keywords": [
                 "Ökosystem",
                 "Stoffkreislauf"
+              ]
+            },
+            {
+              "id": "bi-k9-lb2-wald-gewaesser",
+              "title": "Wald und Gewässer als Ökosysteme",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "Wald",
+                "Gewässer"
+              ]
+            },
+            {
+              "id": "bi-k9-lb2-stoffkreis",
+              "title": "Stoffkreisläufe und Energiefluss",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Kohlenstoffkreislauf",
+                "Energie"
               ]
             }
           ]
@@ -658,7 +1076,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wiese"
               ]
@@ -669,7 +1087,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Pilze"
               ]
@@ -680,7 +1098,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Gärung"
               ]
@@ -709,15 +1127,41 @@
           "topics": [
             {
               "id": "bi-k10-lb1-genetik",
-              "title": "Genetik",
+              "title": "Genetik – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 14,
               "keywords": [
                 "Mendel",
                 "DNA",
                 "Vererbung"
+              ]
+            },
+            {
+              "id": "bi-k10-lb1-mendel",
+              "title": "Mendel-Regeln und Kreuzungen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "Mendel",
+                "Dominant",
+                "Rezessiv"
+              ]
+            },
+            {
+              "id": "bi-k10-lb1-dna",
+              "title": "DNA, Gene und Chromosomen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "DNA",
+                "Gen",
+                "Chromosom"
               ]
             }
           ]
@@ -729,14 +1173,26 @@
           "topics": [
             {
               "id": "bi-k10-lb2-artenvielfalt",
-              "title": "Entstehung der Artenvielfalt",
+              "title": "Artenvielfalt und Evolution – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 14,
               "keywords": [
                 "Evolution",
                 "Selektion"
+              ]
+            },
+            {
+              "id": "bi-k10-lb2-selektion",
+              "title": "Selektion und Anpassung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 14,
+              "keywords": [
+                "Selektion",
+                "Mutation"
               ]
             }
           ]
@@ -752,7 +1208,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 14,
               "keywords": [
                 "Hominiden",
                 "Evolution"
@@ -770,7 +1226,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Ursuppe"
               ]
@@ -781,7 +1237,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Gedächtnis"
               ]
@@ -815,10 +1271,22 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 12,
               "keywords": [
                 "Differenzierung",
                 "Zelle"
+              ]
+            },
+            {
+              "id": "bi-gk11-lb1-organellen",
+              "title": "Zellorganellen und Kompartimente",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Organell",
+                "Membran"
               ]
             }
           ]
@@ -834,7 +1302,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 12,
               "keywords": [
                 "Fotosynthese",
                 "Zellatmung"
@@ -853,7 +1321,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 12,
               "keywords": [
                 "Nachhaltigkeit",
                 "Ökologie"
@@ -872,7 +1340,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 12,
               "keywords": [
                 "Gentechnik",
                 "DNA"
@@ -891,7 +1359,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 12,
               "keywords": [
                 "Signal",
                 "Rezeptor"
@@ -910,7 +1378,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 12,
               "keywords": [
                 "Biodiversität",
                 "Evolution"
@@ -928,7 +1396,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wüste"
               ]
@@ -939,7 +1407,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Energie"
               ]
@@ -950,7 +1418,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Fluss"
               ]
@@ -961,7 +1429,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Tumor"
               ]
@@ -972,7 +1440,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Nerven"
               ]
@@ -983,7 +1451,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Verhalten"
               ]
@@ -994,7 +1462,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Gentechnik"
               ]
@@ -1026,7 +1494,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 12,
               "keywords": [
                 "Differenzierung",
                 "Zelle"
@@ -1045,7 +1513,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 12,
               "keywords": [
                 "Redox",
                 "Stoffwechsel"
@@ -1064,7 +1532,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 12,
               "keywords": [
                 "Nachhaltigkeit"
               ]
@@ -1081,7 +1549,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Stadtökologie"
               ]
@@ -1092,7 +1560,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Bioindikator"
               ]
@@ -1103,7 +1571,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Neobiota"
               ]
@@ -1114,7 +1582,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Biomasse"
               ]
@@ -1125,7 +1593,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Energie"
               ]
@@ -1157,7 +1625,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 12,
               "keywords": [
                 "Genetik",
                 "Gentechnik"
@@ -1176,7 +1644,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 12,
               "keywords": [
                 "Signalwege"
               ]
@@ -1194,7 +1662,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 12,
               "keywords": [
                 "Ethologie"
               ]
@@ -1212,7 +1680,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 12,
               "keywords": [
                 "Biodiversität"
               ]
@@ -1230,7 +1698,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 12,
               "keywords": [
                 "Vernetzung"
               ]
@@ -1247,7 +1715,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Allergie"
               ]
@@ -1258,7 +1726,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Stoffwechsel"
               ]
@@ -1269,7 +1737,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Pflanzen"
               ]
@@ -1280,7 +1748,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Verhalten"
               ]
@@ -1291,7 +1759,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Labor"
               ]
@@ -1302,5 +1770,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "1cfada06"
+  "contentHash": "b62546d1"
 }

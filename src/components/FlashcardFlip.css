@@ -1,0 +1,69 @@
+.flashcard-flip {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.65rem;
+  width: 100%;
+  max-width: 28rem;
+}
+
+.flashcard-flip__instruction {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-muted, #4a5568);
+}
+
+.flashcard-flip__card {
+  min-height: 8.5rem;
+  padding: 1.25rem 1rem;
+  border: 1.5px solid var(--border, #cbd5e1);
+  border-radius: 14px;
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--accent, #0d9488) 10%, #fff) 0%,
+    #fff 55%
+  );
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+  transition: transform 0.25s ease, border-color 0.2s ease;
+}
+
+.flashcard-flip__card:hover:not(:disabled) {
+  border-color: var(--accent, #0d9488);
+  transform: translateY(-1px);
+}
+
+.flashcard-flip__card--flipped {
+  cursor: default;
+  background: color-mix(in srgb, var(--accent, #0d9488) 8%, #f8fafc);
+}
+
+.flashcard-flip__face {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.flashcard-flip__tap {
+  font-size: 0.8rem;
+  color: var(--text-muted, #64748b);
+}
+
+.flashcard-flip__input {
+  padding: 0.55rem 0.7rem;
+  border: 1.5px solid var(--border, #cbd5e1);
+  border-radius: 8px;
+  font: inherit;
+}
+
+.flashcard-flip__input:focus {
+  outline: 2px solid color-mix(in srgb, var(--accent, #0d9488) 45%, transparent);
+  border-color: var(--accent, #0d9488);
+}

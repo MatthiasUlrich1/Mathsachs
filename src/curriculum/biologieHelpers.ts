@@ -1,14 +1,20 @@
 /**
- * Shared Biologie quiz helpers — original tasks; UX inspired by typical school quizzes
- * (MC, true/false, multi-select, match/classify slots, sort, gap-fill).
+ * Shared Biologie quiz helpers — original tasks; UX inspired by school quizzes.
+ * Includes legacy wrappers (MC/slots/sort) plus NEW widgets:
+ * pairMatch, clozeMulti, iconBelong, flashcardFlip.
  */
 import type { Rng } from '../lib/rng'
 import {
   choicePickTask,
+  clozeMultiTask,
   dragDropSlotsTask,
   dragDropSortTask,
+  flashcardFlipTask,
+  iconBelongTask,
   multiSelectTask,
+  pairMatchTask,
   textTask,
+  type IconBelongOption,
 } from './taskHelpers'
 import type { Fachwissen, Task } from './types'
 
@@ -98,6 +104,10 @@ export function classifySlotsTask(
   })
 }
 
+/**
+ * NEW: paired matching via two click-columns (no slot labels / no drag spoiler).
+ * Prefers this over dragDropSlots for term↔meaning quizzes.
+ */
 export function matchTermsTask(
   rng: Rng,
   opts: {
@@ -110,16 +120,24 @@ export function matchTermsTask(
     fachwissen: Fachwissen
   },
 ): Task {
-  return classifySlotsTask(rng, {
+  const left = opts.terms.map((label, i) => ({ id: `L${i}`, label }))
+  const rightPairs = opts.meanings.map((label, i) => ({ id: `R${i}`, label }))
+  const distractor = { id: 'Rd', label: opts.distractor }
+  const right = shuffle(rng, [...rightPairs, distractor])
+  const correctLinks: Record<string, string> = {}
+  for (let i = 0; i < left.length; i++) {
+    correctLinks[left[i]!.id] = rightPairs[i]!.id
+  }
+  return pairMatchTask({
     question: opts.question,
-    slotLabels: opts.terms,
-    itemLabels: opts.meanings,
-    correctSlots: opts.meanings.map((_, i) => i),
-    distractors: [opts.distractor],
+    left,
+    right,
+    correctLinks,
     solution: opts.solution,
     explanation: opts.explanation,
     fachwissen: opts.fachwissen,
-    instruction: 'Ziehe die passende Erklärung zum Begriff. Einen Block brauchst du nicht.',
+    instruction:
+      'Tippe links einen Begriff, dann rechts die passende Erklärung (einen Eintrag brauchst du nicht).',
   })
 }
 
@@ -159,6 +177,96 @@ export function gapFillTask(opts: {
     solution: opts.solution,
     explanation: opts.explanation,
     fachwissen: opts.fachwissen,
+    ...(opts.dedupeKey ? { dedupeKey: opts.dedupeKey } : {}),
+  })
+}
+
+/**
+ * NEW: multi-blank cloze. `template` uses `___` placeholders (one per blank).
+ */
+export function clozeBlanksTask(opts: {
+  question: string
+  /** Running text with `___` for each blank */
+  template: string
+  accepted: string[][]
+  solution: string
+  explanation: string
+  fachwissen: Fachwissen
+  dedupeKey?: string
+}): Task {
+  const segments = opts.template.split('___')
+  const n = opts.accepted.length
+  if (segments.length !== n + 1) {
+    // Fallback: treat whole as one blank if mismatch
+    return clozeMultiTask({
+      question: opts.question,
+      segments: [opts.template, ''],
+      accepted: opts.accepted.slice(0, 1),
+      solution: opts.solution,
+      explanation: opts.explanation,
+      fachwissen: opts.fachwissen,
+      ...(opts.dedupeKey ? { dedupeKey: opts.dedupeKey } : {}),
+    })
+  }
+  return clozeMultiTask({
+    question: opts.question,
+    segments,
+    accepted: opts.accepted,
+    solution: opts.solution,
+    explanation: opts.explanation,
+    fachwissen: opts.fachwissen,
+    instruction: 'Fülle alle Lücken aus:',
+    ...(opts.dedupeKey ? { dedupeKey: opts.dedupeKey } : {}),
+  })
+}
+
+/** NEW: emoji/icon „welches gehört dazu?“ */
+export function iconBelongBioTask(
+  rng: Rng,
+  opts: {
+    question: string
+    prompt?: string
+    options: IconBelongOption[]
+    correctId: string
+    explanation: string
+    fachwissen: Fachwissen
+    dedupeKey?: string
+  },
+): Task {
+  const options = shuffle(rng, opts.options)
+  const correct = opts.options.find((o) => o.id === opts.correctId)
+  return iconBelongTask({
+    question: opts.question,
+    options,
+    correctId: opts.correctId,
+    solution: correct?.label ?? opts.correctId,
+    explanation: opts.explanation,
+    fachwissen: opts.fachwissen,
+    prompt: opts.prompt,
+    instruction: 'Tippe das passende Symbol:',
+    ...(opts.dedupeKey ? { dedupeKey: opts.dedupeKey } : {}),
+  })
+}
+
+/** NEW: flashcard flip → tip answer */
+export function flashcardBioTask(opts: {
+  question: string
+  front: string
+  accepted: string[]
+  solution: string
+  explanation: string
+  fachwissen: Fachwissen
+  backHint?: string
+  dedupeKey?: string
+}): Task {
+  return flashcardFlipTask({
+    question: opts.question,
+    front: opts.front,
+    accepted: opts.accepted,
+    solution: opts.solution,
+    explanation: opts.explanation,
+    fachwissen: opts.fachwissen,
+    backHint: opts.backHint ?? 'Was passt dazu? Tippe die Antwort.',
     ...(opts.dedupeKey ? { dedupeKey: opts.dedupeKey } : {}),
   })
 }
