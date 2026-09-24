@@ -1603,14 +1603,14 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     },
     {
       concept: "bio:k8:hormone:xfact:rezeptor",
-      prompt: "Fachbegriff: Was bedeutet „Rezeptor“?",
+      prompt: "Fachbegriff (Hormone): Was bedeutet „Rezeptor“ an der Zielzelle?",
       answer: "Bindungsstelle an der Zielzelle",
       wrong: ['Photosynthese in Knochen', 'Nur Federkleid ohne Funktion', 'Ausschließlich Schulklingel'],
       explanation: "Nur passende Hormone wirken. Rezeptor bedeutet: Bindungsstelle an der Zielzelle. Im Unterrichtsthema hilft Rezeptor (Bindungsstelle an der Zielzelle), Zusammenhänge zu erklären.",
       wissen: "Nur passende Hormone wirken. Rezeptor bedeutet: Bindungsstelle an der Zielzelle. Im Unterrichtsthema hilft Rezeptor (Bindungsstelle an der Zielzelle), Zusammenhänge zu erklären.",
       gap: "Fachbegriff: ___ — Bindungsstelle an der Zielzelle",
       gapAccepted: ["Rezeptor", "Rezeptor"],
-      flashFront: "Rezeptor",
+      flashFront: "Rezeptor (Hormone)",
     },
     ],
     trueFalse: [
@@ -4108,16 +4108,16 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     { concept: "bio:k8:sinne:xpaar:sinnestaeuschung", term: "Sinnestäuschung", meaning: "Wahrnehmung weicht ab", wissen: "Gehirn interpretiert. Sinnestäuschung bedeutet: Wahrnehmung weicht ab. Im Unterrichtsthema hilft Sinnestäuschung (Wahrnehmung weicht ab), Zusammenhänge zu erklären." },
     ],
     facts: [
-    {
+     {
       concept: "bio:k8:sinne:xfact:rezeptor",
-      prompt: "Fachbegriff: Was bedeutet „Rezeptor“?",
+      prompt: "Fachbegriff (Sinne): Was bedeutet „Rezeptor“ bei Sinnesorganen?",
       answer: "Nimmt Reiz auf",
       wrong: ['Photosynthese in Knochen', 'Nur Federkleid ohne Funktion', 'Ausschließlich Schulklingel'],
       explanation: "Umwandlung in Erregung. Rezeptor bedeutet: Nimmt Reiz auf. Im Unterrichtsthema hilft Rezeptor (Nimmt Reiz auf), Zusammenhänge zu erklären.",
       wissen: "Umwandlung in Erregung. Rezeptor bedeutet: Nimmt Reiz auf. Im Unterrichtsthema hilft Rezeptor (Nimmt Reiz auf), Zusammenhänge zu erklären.",
       gap: "Fachbegriff: ___ — Nimmt Reiz auf",
       gapAccepted: ["Rezeptor", "Rezeptor"],
-      flashFront: "Rezeptor",
+      flashFront: "Rezeptor (Sinne)",
     },
     {
       concept: "bio:k8:sinne:xfact:reiz",

@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.37] – 2026-09-24
+
+### Behoben
+- **Release-/Update-Pipeline:** TypeScript-Fehler und fehlgeschlagene CI-Tests (Physik-K6-Runden,
+  Biologie-Themenisolation) blockierten Web-Deploy und Desktop-Installer seit 0.28.32–0.28.36.
+  Leere GitHub-Releases ohne Installer (0.28.34/35) entfernt — sie waren fälschlich „Latest“ und
+  verhinderten Auto-Updates.
+- Physik K6: mehr Varianten/Dedupe für Licht, Schatten, Stromkreis, Schaltsymbole; generische
+  Schaltsymbol-Fragen zählen nicht mehr als inhaltliche Stem-Duplikate.
+
 ## [0.28.36] – 2026-09-24
 
 ### Hinzugefügt

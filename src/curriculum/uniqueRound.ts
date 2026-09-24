@@ -23,7 +23,9 @@ function isGenericPromptStem(stem: string): boolean {
     /klick-paare/i.test(stem) ||
     /^ordne (begriff|fachbegriff|term|jedem|die|den|das|\d+)/i.test(stem) ||
     /fachbegriffe ihren erkl/i.test(stem) ||
-    /lebensmerkmale ihren erkl/i.test(stem)
+    /lebensmerkmale ihren erkl/i.test(stem) ||
+    /welches schaltsymbol/i.test(stem) ||
+    /ist der schalter offen oder geschlossen/i.test(stem)
   )
 }
 

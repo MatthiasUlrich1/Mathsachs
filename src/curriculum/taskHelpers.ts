@@ -834,6 +834,9 @@ interface CoordinateClickTaskInput {
   /** Optional instruction above the grid. */
   instruction?: string
   visualContent?: string
+  fachwissen?: Fachwissen
+  dedupeKey?: string
+  contentIds?: string[]
   /** Fixed markers on the grid (e.g. Taschenlampe, Spalt). */
   markers?: Array<{ x: number; y: number; label?: string; color?: string }>
   /** Guide segment shown while answering (e.g. Lampe → Spalt). */
@@ -915,6 +918,9 @@ export const coordinateClickTask = (input: CoordinateClickTaskInput): Task => {
     solution: input.solution,
     explanation: input.explanation,
     visualContent: input.visualContent,
+    ...withFw(input.fachwissen),
+    ...withDedupe(input.dedupeKey),
+    ...withContentIds(input.contentIds),
     sampleAnswer: {
       kind: 'coordinateClick',
       x: want[0]!.x,

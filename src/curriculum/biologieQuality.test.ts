@@ -300,6 +300,9 @@ describe('Biologie UX: bank slugs, pairMatch duplicates, Fachbegriff spoilers', 
     const fact = {
       prompt: 'Fachbegriff (baeume): Was bedeutet „Laubbaum“?',
       answer: 'Wirft Blätter saisonal ab (oft)',
+      explanation: 'Laubbäume werfen oft saisonal Blätter ab.',
+      wissen:
+        'Laubbäume werfen oft saisonal Blätter ab. Das spart Wasser im Winter und schützt vor Frostschäden an der Blattfläche.',
       gap: 'Fachbegriff: ___ — Wirft Blätter saisonal ab (oft)',
       gapAccepted: ['Laubbaum'],
     }

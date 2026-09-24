@@ -54,8 +54,7 @@ const schatten: Topic['generate'] = mixedVariants(
     const correct = shadowSide === 'left' ? 'links vom Körper' : 'rechts vom Körper'
     const wrong = shadowSide === 'left' ? 'rechts vom Körper' : 'links vom Körper'
     return choicePickTask({
-      question:
-        'Wo liegt der Schatten des Körpers, wenn die Lampe wie in der Abbildung steht?',
+      question: `Die Lampe steht ${lampLeft ? 'links' : 'rechts'} vom Körper. Wo liegt der Schatten?`,
       choices: shuffleChoices(rng, [correct, wrong, 'unter dem Körper', 'über dem Körper'], correct),
       correct,
       solution: correct,
@@ -72,8 +71,7 @@ const schatten: Topic['generate'] = mixedVariants(
     const lampCorrect = shadowSide === 'left' ? pick(rng, [2, 3, 4, 5]) : pick(rng, [-5, -4, -3, -2])
     const start = shadowSide === 'left' ? -3 : 3
     return paramSliderTask({
-      question:
-        'Der Schatten liegt schon fest. Stelle die Lampe so ein, dass sie zum gezeigten Schatten passt (Licht und Schatten liegen auf gegenüberliegenden Seiten des Körpers).',
+      question: `Der Schatten liegt ${shadowSide === 'left' ? 'links' : 'rechts'} vom Körper. Stelle die Lampe so ein, dass sie zum gezeigten Schatten passt.`,
       params: [
         {
           id: 'lamp',
@@ -142,6 +140,20 @@ const schatten: Topic['generate'] = mixedVariants(
         correct: 'undurchsichtige (opake) Körper',
         wrong: ['nur durchsichtige Körper', 'nur Gase', 'nur Spiegel'],
       },
+      {
+        q: 'Was passiert mit dem Schatten, wenn die Lichtquelle weiter weg rückt (Schirm fest)?',
+        correct: 'Er wird kleiner',
+        wrong: ['Er wird größer', 'Er verschwindet sofort', 'Er wechselt die Seite'],
+      },
+      {
+        q: 'Schatten entstehen, weil Licht …',
+        correct: 'sich geradlinig ausbreitet und vom Körper abgefangen wird',
+        wrong: [
+          'nur nach oben läuft',
+          'vom Körper angezogen wird',
+          'ohne Lichtquelle trotzdem sichtbar ist',
+        ],
+      },
     ] as const
     const c = pick(rng, [...cases])
     return choicePickTask({
@@ -153,6 +165,7 @@ const schatten: Topic['generate'] = mixedVariants(
         'Bei mehreren Lichtquellen: Kernschatten = von keiner Lampe erreicht; Halbschatten = nur von einem Teil der Lampen erreicht.',
       visualContent: kernHalbschattenSvg(),
       instruction: 'Tippe die passende Aussage:',
+      dedupeKey: `ph:k6:schatten:mc:${c.q}`,
     })
   },
   (rng) => {
@@ -172,6 +185,7 @@ const schatten: Topic['generate'] = mixedVariants(
       explanation:
         'Lichtquellen senden selbst Licht aus. Mond und Rückstrahler sind beleuchtete Körper.',
       instruction: 'Tippe alle Lichtquellen:',
+      dedupeKey: `ph:k6:schatten:ms-quellen:${correct.join('+')}`,
     })
   },
 )
@@ -544,6 +558,30 @@ const ausbreitung: Topic['generate'] = mixedVariants(
         correct: 'Es läuft geradlinig.',
         wrong: ['Es läuft nur im Kreis.', 'Es bleibt stehen.', 'Es läuft nur nach links.'],
       },
+      {
+        q: 'Warum kannst du hinter einer Wand nicht um die Ecke „herumsehen“, ohne Spiegel?',
+        correct: 'weil Licht sich geradlinig ausbreitet',
+        wrong: [
+          'weil Licht nur nach oben läuft',
+          'weil Wände Licht anziehen',
+          'weil Luft Licht stoppt',
+        ],
+      },
+      {
+        q: 'Sonnenstrahlen im Staub wirken wie „Strahlenbüschel“. Was zeigen sie?',
+        correct: 'geradlinige Ausbreitung des Lichts',
+        wrong: ['kreisförmige Ausbreitung', 'dass Licht keine Richtung hat', 'dass Schatten Licht erzeugen'],
+      },
+      {
+        q: 'Ein Laserpunkt wandert geradlinig über die Wand. Das passt zu …',
+        correct: 'geradliniger Lichtausbreitung',
+        wrong: ['kreisrunde Lichtausbreitung', 'Licht nur nach unten', 'Licht ohne Richtung'],
+      },
+      {
+        q: 'Welches Modell beschreibt die Ausbreitung von Licht in Luft am besten?',
+        correct: 'Lichtstrahlen (geradlinig)',
+        wrong: ['Lichtkreise um die Lampe', 'Licht bleibt am Ort', 'Licht nur nach oben'],
+      },
     ] as const
     const c = pick(rng, [...cases])
     return choicePickTask({
@@ -554,6 +592,7 @@ const ausbreitung: Topic['generate'] = mixedVariants(
       explanation:
         'In homogenen Medien breitet sich Licht geradlinig aus — deshalb entstehen scharfe Schatten.',
       instruction: 'Tippe die passende Aussage:',
+      dedupeKey: `ph:k6:ausbreitung:mc:${c.q}`,
     })
   },
   (rng) => {
@@ -588,6 +627,21 @@ const ausbreitung: Topic['generate'] = mixedVariants(
           'Sonnenstrahlen als „Strahlenbüschel“ im Staub',
         ],
       },
+      {
+        question: 'Was gehört zur geradlinigen Lichtausbreitung? (mehrere möglich)',
+        choices: [
+          'Lichtstrahl als Modell',
+          'scharfe Schattenkanten bei Punktquellen',
+          'Licht biegt von allein um jede Ecke',
+          'zwei Löcher hintereinander → Lichtfleck in einer Linie',
+          'Schatten ohne Lichtquelle',
+        ],
+        correct: [
+          'Lichtstrahl als Modell',
+          'scharfe Schattenkanten bei Punktquellen',
+          'zwei Löcher hintereinander → Lichtfleck in einer Linie',
+        ],
+      },
     ] as const
     const p = pick(rng, [...pools])
     return multiSelectTask({
@@ -597,6 +651,7 @@ const ausbreitung: Topic['generate'] = mixedVariants(
       solution: p.correct.join('; '),
       explanation: 'Falsch sind Aussagen, die Licht nur nach oben oder Schatten ohne Lichtquelle behaupten.',
       instruction: 'Tippe alle richtigen Aussagen:',
+      dedupeKey: `ph:k6:ausbreitung:ms:${p.question}`,
     })
   },
   (rng) => {
@@ -617,7 +672,7 @@ const ausbreitung: Topic['generate'] = mixedVariants(
       y: target.y,
       xRange: [0, 6],
       yRange: [0, 5],
-      solution: 'Jeder Gitterpunkt auf der Verlängerung hinter dem Spalt (gleiche Richtung)',
+      solution: `Verlängerung hinter Spalt (${through.x}|${through.y}) — z. B. (${target.x}|${target.y})`,
       explanation: `Geradlinige Ausbreitung: von (${ax}|${y}) durch (${through.x}|${through.y}) weiter in dieselbe Richtung — Abstand egal.`,
       visualContent: lightRayHintSvg({ from: { x: ax, y }, through }),
       markers: [
@@ -628,6 +683,7 @@ const ausbreitung: Topic['generate'] = mixedVariants(
       solutionRay: { from: { x: ax, y }, to: { x: 6, y } },
       acceptForwardRay: { from: { x: ax, y }, through },
       instruction: 'Tippe einen Punkt auf dem Lichtstrahl:',
+      dedupeKey: `ph:k6:ausbreitung:ray:${ax},${y}->${through.x},${through.y}`,
     })
   },
 )
@@ -638,8 +694,7 @@ const lampenposition: Topic['generate'] = mixedVariants(
     const lampCorrect = shadowSide === 'left' ? pick(rng, [2, 3, 4, 5]) : pick(rng, [-5, -4, -3, -2])
     const start = shadowSide === 'left' ? -4 : 4
     return paramSliderTask({
-      question:
-        'Schatten und Körper sind gegeben. Positioniere die Lampe so, dass der Schatten zur Lampenstellung passt.',
+      question: `Der Schatten liegt ${shadowSide === 'left' ? 'links' : 'rechts'}. Positioniere die Lampe passend.`,
       params: [
         {
           id: 'lamp',
@@ -689,6 +744,7 @@ const lampenposition: Topic['generate'] = mixedVariants(
         showShadow: true,
       }),
       instruction: 'Tippe die Schattenseite:',
+      dedupeKey: `ph:k6:lampenpos:side:${lampLeft ? 'L' : 'R'}`,
     })
   },
   (rng) => {
@@ -723,6 +779,16 @@ const lampenposition: Topic['generate'] = mixedVariants(
         correct: 'zwischen Sonne und Erde',
         wrong: ['hinter der Erde', 'neben der Sonne ohne Erde', 'zwischen Erde und Mars'],
       },
+      {
+        q: 'Lampenposition und Schattenseite sind …',
+        correct: 'gegenüberliegend',
+        wrong: ['immer gleichseitig', 'unabhängig voneinander', 'nur bei Spiegeln gekoppelt'],
+      },
+      {
+        q: 'Je schräger das Licht einfällt, desto …',
+        correct: 'länger wird typischerweise der Schatten',
+        wrong: ['kürzer wird immer der Schatten', 'verschwindet der Körper', 'wechselt die Lichtfarbe'],
+      },
     ] as const
     const c = pick(rng, [...cases])
     return choicePickTask({
@@ -732,11 +798,64 @@ const lampenposition: Topic['generate'] = mixedVariants(
       solution: c.correct,
       explanation: 'Lampenposition und Abstände bestimmen Seite und Größe des Schattens; Finsternisse sind Schattenphänomene.',
       instruction: 'Tippe die passende Aussage:',
+      dedupeKey: `ph:k6:lampenpos:mc:${c.q}`,
     })
   },
 )
 
 const lichtstrahl: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const cases = [
+      {
+        q: 'Was beschreibt ein Lichtstrahl im Modell?',
+        correct: 'die Ausbreitungsrichtung des Lichts',
+        wrong: ['die Farbe der Lampe', 'die Temperatur der Sonne', 'die Lautstärke des Lichts'],
+      },
+      {
+        q: 'Warum zeichnet man Licht oft als Strahl mit Pfeil?',
+        correct: 'um Richtung und Weg des Lichts zu zeigen',
+        wrong: [
+          'weil Licht immer nach oben zeigt',
+          'weil Pfeile die Helligkeit messen',
+          'weil Strahlen nur bei Spiegeln existieren',
+        ],
+      },
+      {
+        q: 'Ein Lichtstrahl trifft senkrecht auf einen ebenen Spiegel. Wie wird er reflektiert?',
+        correct: 'senkrecht zurück',
+        wrong: ['parallel zur Spiegelfläche', 'nur nach links', 'gar nicht'],
+      },
+      {
+        q: 'Einfallswinkel und Ausfallswinkel am Spiegel …',
+        correct: 'sind gleich groß',
+        wrong: ['addieren sich immer zu 90°', 'sind immer verschieden', 'existieren nur bei Linsen'],
+      },
+      {
+        q: 'Wozu braucht man das Lichtstrahl-Modell in der Schule?',
+        correct: 'um Wege, Schatten und Spiegelung zu erklären',
+        wrong: [
+          'um die Stromstärke zu berechnen',
+          'um die Masse der Lampe zu messen',
+          'um Farben chemisch zu analysieren',
+        ],
+      },
+      {
+        q: 'Welches Gerät erzeugt näherungsweise einen schmalen Lichtstrahl?',
+        correct: 'Laserpointer',
+        wrong: ['Küchenwaage', 'Lineal ohne Licht', 'Thermometer'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Lichtstrahlen sind ein Modell für Richtung und Weg des Lichts (z. B. Spiegelung, Schatten).',
+      instruction: 'Tippe die passende Aussage:',
+      dedupeKey: `ph:k6:lichtstrahl:mc:${c.q}`,
+    })
+  },
   (rng) => {
     const ax = randInt(rng, 0, 2)
     const ay = randInt(rng, 1, 3)
@@ -757,7 +876,7 @@ const lichtstrahl: Topic['generate'] = mixedVariants(
       y: cy,
       xRange: [0, 6],
       yRange: [0, 5],
-      solution: 'Jeder Gitterpunkt hinter dem Spalt in derselben Richtung',
+      solution: `Punkt auf der Verlängerung hinter (${bx}|${by}) — z. B. (${cx}|${cy})`,
       explanation: `Geradlinig von (${ax}|${ay}) durch (${bx}|${by}) — jeder Punkt auf der Verlängerung zählt.`,
       visualContent: lightRayHintSvg({ from: { x: ax, y: ay }, through: { x: bx, y: by } }),
       markers: [
@@ -774,6 +893,7 @@ const lichtstrahl: Topic['generate'] = mixedVariants(
       },
       acceptForwardRay: { from: { x: ax, y: ay }, through: { x: bx, y: by } },
       instruction: 'Tippe einen Punkt auf dem Lichtstrahl:',
+      dedupeKey: `ph:k6:lichtstrahl:ray:${ax},${ay}->${bx},${by}`,
     })
   },
   (rng) => {
@@ -792,6 +912,7 @@ const lichtstrahl: Topic['generate'] = mixedVariants(
       guide: { from: { x, y: ay }, to: { x, y: 1 } },
       solutionRay: { from: { x, y: ay }, to: { x, y: 0 } },
       instruction: 'Tippe den Punkt auf dem Spiegel:',
+      dedupeKey: `ph:k6:lichtstrahl:mirror-vert:${x}`,
     })
   },
   (rng) => {
@@ -813,6 +934,7 @@ const lichtstrahl: Topic['generate'] = mixedVariants(
         markers: [{ x: hitX, y: ay, label: 'Lampe', color: '#f59e0b' }],
         solutionRay: { from: { x: hitX, y: ay }, to: { x: hitX, y: 0 } },
         instruction: 'Tippe den Punkt auf dem Spiegel:',
+        dedupeKey: `ph:k6:lichtstrahl:mirror-fallback:${hitX},${ay}`,
       })
     }
     return coordinateClickTask({
@@ -830,6 +952,7 @@ const lichtstrahl: Topic['generate'] = mixedVariants(
       ],
       solutionRay: { from: { x: ax, y: ay }, to: { x: hitX, y: 0 } },
       instruction: 'Tippe den Auftreffpunkt auf dem Spiegel:',
+      dedupeKey: `ph:k6:lichtstrahl:mirror-reflect:${ax},${ay}->${hitX}`,
     })
   },
 )
@@ -1820,6 +1943,7 @@ const stromkreis: Topic['generate'] = mixedVariants(
         : 'Offener Stromkreis: kein geschlossener Weg, der Verbraucher bleibt aus.',
       visualContent: circuitSvg(closed, device),
       instruction: 'Tippe die richtige Aussage:',
+      dedupeKey: `ph:k6:stromkreis:dev:${device}:${closed ? 'zu' : 'auf'}`,
     })
   },
   (rng) => {
@@ -1850,6 +1974,17 @@ const stromkreis: Topic['generate'] = mixedVariants(
         ],
         correct: ['Spannungsquelle', 'geschlossener Leitungsweg', 'Verbraucher (z. B. Lampe)'],
       },
+      {
+        question: 'Was unterbricht einen Stromkreis? (mehrere möglich)',
+        choices: [
+          'offener Schalter',
+          'durchtrennter Draht',
+          'geschlossener Schalter',
+          'fehlende Batterie',
+          'intakte Leitung und geschlossener Schalter',
+        ],
+        correct: ['offener Schalter', 'durchtrennter Draht', 'fehlende Batterie'],
+      },
     ] as const
     const p = pick(rng, [...pools])
     return multiSelectTask({
@@ -1860,21 +1995,62 @@ const stromkreis: Topic['generate'] = mixedVariants(
       explanation: 'Ohne Spannungsquelle und geschlossenen Weg fließt kein Strom.',
       instruction: 'Tippe alle nötigen Teile:',
       visualContent: circuitSvg(true),
+      dedupeKey: `ph:k6:stromkreis:ms:${p.question}`,
     })
   },
   (rng) => {
     const closed = pick(rng, [true, false])
     const correct = closed ? 'geschlossen' : 'offen'
     return choicePickTask({
-      question: 'Schau auf das Schaltbild: Ist der Schalter offen oder geschlossen?',
+      question: `Schau auf das Schaltbild: Ist der Schalter offen oder geschlossen? (${closed ? 'Linie verbindet' : 'Lücke sichtbar'})`,
       choices: shuffleChoices(rng, ['offen', 'geschlossen', 'weder noch', 'nur die Batterie'], correct),
       correct,
-      solution: correct,
+      solution: `Schalter ${correct}`,
       explanation: closed
         ? 'Geschlossener Schalter: die Schaltlinie verbindet beide Kontaktpunkte.'
         : 'Offener Schalter: die angewinkelte Linie berührt den gegenüberliegenden Kontakt nicht.',
       visualContent: circuitSvg(closed),
       instruction: 'Tippe den Zustand:',
+      dedupeKey: `ph:k6:stromkreis:switch:${correct}`,
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Warum leuchtet die Lampe nicht, wenn der Schalter offen ist?',
+        correct: 'Der Stromkreis ist unterbrochen',
+        wrong: ['Die Batterie ist immer leer', 'Lampen brauchen keinen Strom', 'Offene Schalter erzeugen mehr Strom'],
+      },
+      {
+        q: 'Was transportieren die Leitungen im Stromkreis?',
+        correct: 'elektrische Ladung / Strom',
+        wrong: ['nur Licht', 'nur Wärme ohne Strom', 'Schatten'],
+      },
+      {
+        q: 'Eine Batterie im Stromkreis liefert vor allem …',
+        correct: 'elektrische Energie / Spannung',
+        wrong: ['nur Schatten', 'nur Schall', 'kein Potentialunterschied'],
+      },
+      {
+        q: 'Damit ein Verbraucher arbeitet, muss der Stromkreis …',
+        correct: 'geschlossen sein',
+        wrong: ['immer offen sein', 'ohne Spannungsquelle sein', 'nur aus Isolatoren bestehen'],
+      },
+      {
+        q: 'Ein Summer piept nur, wenn …',
+        correct: 'ein geschlossener Stromkreis vorliegt',
+        wrong: ['der Schalter immer offen ist', 'keine Batterie da ist', 'nur ein Draht fehlt und alles passt'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Geschlossener Weg + Spannungsquelle → Strom fließt → Verbraucher arbeitet.',
+      instruction: 'Tippe die passende Aussage:',
+      dedupeKey: `ph:k6:stromkreis:mc:${c.q}`,
     })
   },
 )
@@ -2046,10 +2222,11 @@ const leiter: Topic['generate'] = mixedVariants(
       question: `Ist „${c.material}“ eher ein elektrischer Leiter oder ein Nichtleiter?`,
       choices: ['Leiter', 'Nichtleiter'],
       correct: c.correct,
-      solution: c.correct,
+      solution: `${c.material}: ${c.correct}`,
       explanation:
         'Metalle und Graphit leiten gut; Gummi, Kunststoff, Glas, Porzellan und trockenes Holz isolieren.',
       instruction: 'Tippe die Einordnung:',
+      dedupeKey: `ph:k6:leiter:mat:${c.material}`,
     })
   },
   (rng) => {
@@ -2062,6 +2239,10 @@ const leiter: Topic['generate'] = mixedVariants(
         choices: ['Aluminium', 'Gold', 'Kunststoff', 'Graphit', 'Porzellan'],
         correct: ['Aluminium', 'Gold', 'Graphit'],
       },
+      {
+        choices: ['Messing', 'Zinn', 'Glas', 'Gummi', 'Kupfer'],
+        correct: ['Messing', 'Zinn', 'Kupfer'],
+      },
     ] as const
     const p = pick(rng, [...pools])
     return multiSelectTask({
@@ -2071,6 +2252,7 @@ const leiter: Topic['generate'] = mixedVariants(
       solution: p.correct.join(', '),
       explanation: 'Metalle und Graphit leiten; Isolatoren nicht.',
       instruction: 'Tippe alle Leiter:',
+      dedupeKey: `ph:k6:leiter:ms:${p.correct.join('+')}`,
     })
   },
 )
@@ -2107,6 +2289,7 @@ const schaltsymbole: Topic['generate'] = mixedVariants(
       explanation: `Das gezeigte Schaltsymbol steht für: ${correct}.`,
       visualContent: circuitSymbolSvg(kind),
       instruction: 'Tippe den Namen des Symbols:',
+      dedupeKey: `ph:k6:symbole:rec:${kind}`,
     })
   },
   (rng) => {
@@ -2130,6 +2313,7 @@ const schaltsymbole: Topic['generate'] = mixedVariants(
       explanation: `Das abgebildete Symbol steht für „${correct}“.`,
       visualContent: circuitSymbolSvg(kind),
       instruction: 'Tippe die passende Zuordnung:',
+      dedupeKey: `ph:k6:symbole:name:${kind}`,
     })
   },
   (rng) => {
@@ -2173,6 +2357,7 @@ const schaltsymbole: Topic['generate'] = mixedVariants(
       explanation: 'Schaltsymbole sind genormte Zeichnungen — keine Fotos der Bauteile.',
       instruction: 'Tippe alle richtigen Aussagen:',
       visualContent: circuitSymbolsRowSvg([...p.visuals]),
+      dedupeKey: `ph:k6:symbole:ms:${p.question}`,
     })
   },
 )

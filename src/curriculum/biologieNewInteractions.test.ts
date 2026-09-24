@@ -67,7 +67,7 @@ describe('new biologie interaction task helpers', () => {
       links: { L0: 'R0', L1: 'R1', L2: 'R0' },
     })
     expect(partial.fraction).toBeCloseTo(2 / 3)
-    expect(partial.parts.filter(Boolean)).toHaveLength(2)
+    expect(partial.parts?.filter(Boolean)).toHaveLength(2)
   })
 
   it('clozeMulti accepts synonyms per blank', () => {
