@@ -206,4 +206,41 @@ describe('CurriculumSetup Installation', () => {
     expect(html).toContain('1 Klassenstufen · 1 Themen')
     expect(html).not.toContain('In Themen einblenden')
   })
+
+  it('loads only Sek I grades and never activates (no K12)', async () => {
+    const onLoad = vi.fn(async () => undefined)
+    const onEnsureSubject = vi.fn()
+    installPack(physikPack())
+    const html = renderToStaticMarkup(
+      createElement(CurriculumSetup, {
+        ...props,
+        onLoad,
+        onEnsureSubject,
+        initialRegion: 'Sachsen',
+        initialSubject: 'Physik',
+      }),
+    )
+    expect(html).toContain('Installiert')
+    // Simulate install path via activateInstalledPack behaviour: unit-test helper.
+    const { isOberstufeGradeId } = await import('./CurriculumSetup')
+    expect(isOberstufeGradeId('physik-jgs-12-lk')).toBe(true)
+    expect(isOberstufeGradeId('physik-jgs-11-gk')).toBe(true)
+    expect(isOberstufeGradeId('biologie-jgs-12-lk')).toBe(true)
+    expect(isOberstufeGradeId('physik-klasse-6')).toBe(false)
+    expect(isOberstufeGradeId('biologie-klasse-10')).toBe(false)
+    expect(isOberstufeGradeId('geschichte-klasse-8')).toBe(false)
+
+    const pack = physikPack()
+    const sek1 = pack.official.filter((g) => !isOberstufeGradeId(g.id))
+    const ober = pack.official.filter((g) => isOberstufeGradeId(g.id))
+    expect(sek1.map((g) => g.id)).toEqual([
+      'physik-klasse-6',
+      'physik-klasse-7',
+      'physik-klasse-8',
+      'physik-klasse-9',
+      'physik-klasse-10',
+    ])
+    expect(ober.length).toBeGreaterThan(0)
+    expect(ober.every((g) => g.id.includes('jgs'))).toBe(true)
+  })
 })

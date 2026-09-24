@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Biologie",
-  "version": "1.0.0",
-  "changelog": "Klassen 5–12 (Gk/Lk) · 71 Themen. K5 Wirbeltiere mit Generatoren (released:false, Entwickler). Ohne Netz lokale Fassung.",
+  "version": "1.1.0",
+  "changelog": "Klassen 5–12 (Gk/Lk) · 71 Themen mit Generatoren (MC, R/F, Match, Sort, Gap, Multi; released:false). Lehrplan 522; Quiz-Ideen an Schulportale angelehnt. Ohne Netz lokale Fassung.",
   "official": [
     {
       "id": "biologie-klasse-5",

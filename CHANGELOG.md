@@ -9,6 +9,24 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.24] – 2026-09-24
+
+### Hinzugefügt
+- **Biologie Gymnasium Sachsen 1.1.0:** Generatoren für **alle** Outline-Themen
+  Klassen 5–12 (Gk/Lk), `released:false`. Interaktionen: MC, Richtig/Falsch,
+  Mehrfachauswahl, Zuordnung/Klassifikation (Slots), chronologisches Sortieren,
+  Lückentext (Gap-fill). Quiz-Ideen an Schlaukopf-Biologie angelehnt (original
+  formuliert), Einsortierung strikt nach Lehrplan 522. K5 Wahlbereiche Saurier
+  und artgerechte Haltung ergänzt.
+
+### Behoben
+- **Lehrplan-Install Physik/Biologie/Geschichte:** Nach Install wurde oft
+  **Klasse 12 / Oberstufe** aktiv, weil `activateInstalledPack` alle Module
+  lud und jedes `onLoad` `setActiveId` setzte (letzter = JGS 12); außerdem
+  verlor ein stale-closure-`loaded` bei Mehrfachladen alle außer dem letzten
+  Modul. Fix: nur Sek I einblenden (keine Oberstufe), `activate: false` beim
+  Bulk-Load, funktionales `setLoaded`.
+
 ## [0.28.23] – 2026-09-24
 
 ### Behoben

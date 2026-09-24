@@ -425,7 +425,7 @@ export function allBiologieTopicIds(): string[] {
   )
 }
 
-/** Playable K5 Wirbeltiere topic ids (generators in biologie5.ts). */
+/** Playable K5 Wirbeltiere + Wahl topic ids (generators in biologie5.ts). */
 export const BIOLOGIE_K5_WIRBELTIERE_TOPIC_IDS = [
   'bi-k5-lb1-merkmale',
   'bi-k5-lb2-fische',
@@ -435,4 +435,6 @@ export const BIOLOGIE_K5_WIRBELTIERE_TOPIC_IDS = [
   'bi-k5-lb6-saeugetiere',
   'bi-k5-lb7-systematik',
   'bi-k5-lbw-winter',
+  'bi-k5-lbw-saurier',
+  'bi-k5-lbw-haltung',
 ] as const

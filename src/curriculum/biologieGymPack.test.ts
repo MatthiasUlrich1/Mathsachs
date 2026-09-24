@@ -21,7 +21,7 @@ describe('Gymnasium Sachsen Biologie pack', () => {
     const pack = buildGymSachsenBiologiePack()
     expect(pack.id).toBe(GYM_SACHSEN_BIOLOGIE_PACK_ID)
     expect(pack.subject).toBe('Biologie')
-    expect(pack.version).toBe('1.0.0')
+    expect(pack.version).toBe('1.1.0')
     expect(pack.official.map((g) => g.id)).toEqual([
       'biologie-klasse-5',
       'biologie-klasse-6',
@@ -52,6 +52,20 @@ describe('Gymnasium Sachsen Biologie pack', () => {
     }
   })
 
+  it('hydrates all outline topics with playable (non-stub) generators', async () => {
+    const grades = await hydratePackGrades(buildGymSachsenBiologiePack())
+    const topics = grades.flatMap((g) => g.areas.flatMap((a) => a.topics))
+    expect(topics.every((t) => t.released === false)).toBe(true)
+    expect(topics.every((t) => !t.outlineOnly)).toBe(true)
+    expect(topics.every((t) => isPlayableBiologieTopic(t.id))).toBe(true)
+    for (const topic of topics) {
+      const task = topic.generate(() => 0.42)
+      expect(task.question.trim().length, topic.id).toBeGreaterThan(10)
+      expect(task.solution.trim().length, topic.id).toBeGreaterThan(0)
+      expect(task.check(task.sampleAnswer!), topic.id).toBe(true)
+    }
+  })
+
   it('hydrates K5 Wirbeltiere with playable tasks', async () => {
     const grades = await hydratePackGrades(buildGymSachsenBiologiePack())
     const k5 = grades.find((g) => g.id === 'biologie-klasse-5')!
@@ -68,10 +82,6 @@ describe('Gymnasium Sachsen Biologie pack', () => {
       expect(task.solution.trim().length, topic.id).toBeGreaterThan(0)
       expect(task.fachwissen?.text.trim().length ?? 0, topic.id).toBeGreaterThan(20)
     }
-    const stub = grades
-      .find((g) => g.id === 'biologie-klasse-6')!
-      .areas[0]!.topics[0]!.generate(() => 0.5)
-    expect(stub.question).toMatch(/Biologie/)
   })
 
   it('is bundled and appears after install', async () => {

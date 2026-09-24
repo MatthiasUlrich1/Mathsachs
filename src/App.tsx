@@ -470,15 +470,23 @@ export default function App() {
     setOpenFaultyReportCount(countOpenTaskReports(reports))
   }
 
-  const loadCurriculum = async (id: string) => {
-    if (loaded.some((l) => l.moduleId === id)) return
+  const loadCurriculum = async (
+    id: string,
+    opts?: { activate?: boolean },
+  ) => {
     const grade = await loadInstalledGrade(id)
-    const next = [...loaded, { moduleId: id, grade }].sort(
-      (a, b) => registryOrder(a.moduleId) - registryOrder(b.moduleId),
-    )
-    setLoaded(next)
-    setLoadedIds(next.map((l) => l.moduleId))
-    setActiveId(id)
+    let didAdd = false
+    setLoaded((prev) => {
+      if (prev.some((l) => l.moduleId === id)) return prev
+      didAdd = true
+      const next = [...prev, { moduleId: id, grade }].sort(
+        (a, b) => registryOrder(a.moduleId) - registryOrder(b.moduleId),
+      )
+      setLoadedIds(next.map((l) => l.moduleId))
+      return next
+    })
+    // Bulk install passes activate:false so the last grade (often JGS 12) is not selected.
+    if (didAdd && opts?.activate !== false) setActiveId(id)
   }
 
   const removeCurriculum = (id: string) => {

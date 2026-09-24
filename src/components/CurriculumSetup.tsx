@@ -36,7 +36,7 @@ import {
 
 interface Props {
   loadedIds: string[]
-  onLoad: (id: string) => Promise<void>
+  onLoad: (id: string, opts?: { activate?: boolean }) => Promise<void>
   onRemove: (id: string) => void
   onPacksChanged: () => void
   /** Lehrerprofil: Fach in die bevorzugten Fächer aufnehmen (Themen-Filter). */
@@ -45,6 +45,17 @@ interface Props {
   initialSchulform?: string
   /** Preferred subject from Lehrerprofil — defaults the Fach filter. */
   initialSubject?: string
+}
+
+/** Oberstufe / JGS 11–12 — nicht automatisch bei Install einblenden. */
+export function isOberstufeGradeId(id: string): boolean {
+  const n = id.toLowerCase()
+  return (
+    n.includes('jgs') ||
+    n.includes('jahrgang') ||
+    /klasse-1[12]\b/.test(n) ||
+    /-(11|12)-(gk|lk)\b/.test(n)
+  )
 }
 
 const FALLBACK_CATALOG: ManifestPack[] = [
@@ -85,10 +96,10 @@ const FALLBACK_CATALOG: ManifestPack[] = [
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.0.0',
+    version: '1.1.0',
     url: '',
     changelog:
-      'Mitgeliefert: Klassen 5–12 (Gk/Lk). K5 Wirbeltiere spielbar (Entwickler). Ohne Netz lokale Fassung.',
+      'Mitgeliefert: Klassen 5–12 (Gk/Lk) mit Generatoren (Entwickler). Ohne Netz lokale Fassung.',
   },
   {
     id: GYM_SACHSEN_ANHALT_PACK_ID,
@@ -231,7 +242,11 @@ export function CurriculumSetup({
     }
   }
 
-  /** After install/update: set Fach filter, add subject to Lehrerprofil, load all grades. */
+  /**
+   * After install/update: set Fach filter, add subject to Lehrerprofil,
+   * load Sekundarstufe-I grades only (no Oberstufe/K12). Do not activate a grade
+   * — otherwise the last loaded module (often JGS 12) becomes the Themen-Tab.
+   */
   const activateInstalledPack = async (pack: {
     id: string
     subject: string
@@ -240,10 +255,10 @@ export function CurriculumSetup({
     const subject = normalizeSubject(pack.subject)
     setSubject(subject)
     onEnsureSubject?.(subject)
-    for (const grade of pack.official) {
-      if (!loadedIds.includes(grade.id)) {
-        await onLoad(grade.id)
-      }
+    const sek1 = pack.official.filter((grade) => !isOberstufeGradeId(grade.id))
+    for (const grade of sek1) {
+      // Always call onLoad — loadedIds can be stale across the loop; onLoad is idempotent.
+      await onLoad(grade.id, { activate: false })
     }
   }
 

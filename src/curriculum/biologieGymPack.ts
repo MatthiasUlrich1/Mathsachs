@@ -5,7 +5,7 @@ import {
 } from './pack'
 import { buildBiologieGymOfficialGrades } from './biologieGymTopics'
 
-/** Gymnasium Sachsen · Biologie — K5 Wirbeltiere spielbar (Entwickler), Rest Outline. */
+/** Gymnasium Sachsen · Biologie — K5–12 Generatoren (released:false, Entwickler). */
 export function buildGymSachsenBiologiePack(): CurriculumPack {
   const official = buildBiologieGymOfficialGrades()
   const topics = official.reduce(
@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.0.0',
-    changelog: `Klassen 5–12 (Gk/Lk) · ${topics} Themen. K5 Wirbeltiere mit Generatoren (released:false, Entwickler). Ohne Netz lokale Fassung.`,
+    version: '1.1.0',
+    changelog: `Klassen 5–12 (Gk/Lk) · ${topics} Themen mit Generatoren (MC, R/F, Match, Sort, Gap, Multi; released:false). Lehrplan 522; Quiz-Ideen an Schulportale angelehnt. Ohne Netz lokale Fassung.`,
     official,
     extras: [],
   }

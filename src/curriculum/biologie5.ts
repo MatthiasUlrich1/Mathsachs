@@ -949,6 +949,122 @@ export const biWinter: Topic['generate'] = mixedVariants(
   winterClassify,
 )
 
+// ─── Wahl: Kriechtiere vergangener Zeiten / Artgerechte Haltung ───────────────
+
+function saurierMc(rng: Rng) {
+  const items = [
+    {
+      q: 'Was sind Fossilien?',
+      a: 'Versteinerte Reste oder Spuren früherer Lebewesen',
+      w: ['Nur heutige Federn', 'Nur frisches Laub', 'Nur Magensaft'],
+      e: 'Fossilien belegen ausgestorbene Lebensformen wie Saurier.',
+      wissen: 'Paläontologie rekonstruiert vergangene Lebenswelten.',
+    },
+    {
+      q: 'Warum sind viele Saurier ausgestorben (Schulmodell)?',
+      a: 'Umweltveränderungen (u. a. nach Impaktereignissen) führten zum Artensterben',
+      w: ['Weil sie zu Insekten wurden', 'Weil sie keine DNA hatten', 'Weil Knochen weich wurden über Nacht'],
+      e: 'Massensterben am Ende der Kreide — vereinfachtes Unterrichtsmodell.',
+      wissen: 'Angepasstheit hilft nur, solange die Umwelt passt.',
+    },
+  ]
+  const it = pick(rng, items)
+  return choicePickTask({
+    question: it.q,
+    choices: shuffleChoices(rng, [it.a, ...it.w], it.a),
+    correct: it.a,
+    solution: it.a,
+    explanation: it.e,
+    instruction: 'Wähle die passende Antwort:',
+    fachwissen: fw(it.wissen),
+  })
+}
+
+function saurierTf(rng: Rng) {
+  return trueFalse(rng, {
+    statement: 'Alle Saurier waren flugunfähige Riesenechsen ohne Ausnahme.',
+    correct: false,
+    explanation: 'Die Vielfalt war groß — u. a. flugfähige Formen in verwandten Gruppen; „Saurier“ im Unterricht oft vereinfacht.',
+    fachwissen: fw('Vergangene Kriechtiere zeigen große Formenvielfalt — Vergleich mit heutigen Reptilien.'),
+  })
+}
+
+function saurierMatch(rng: Rng) {
+  return matchTermsTask(rng, {
+    question: 'Ordne Begriffe zur Paläontologie zu.',
+    terms: ['Fossil', 'Aussterben', 'Angepasstheit'],
+    meanings: [
+      'Erhaltener Rest oder Spur',
+      'Verschwinden einer Art',
+      'Merkmal, das in einer Umwelt Vorteile bringt',
+    ],
+    distractor: 'Spaltöffnung der Blätter',
+    solution: 'Fossil → Rest/Spur; Aussterben → Verschwinden; Angepasstheit → Vorteil',
+    explanation: 'Mit Fossilien und Aussterben wird der Blick auf heutige Kriechtiere geschärft.',
+    fachwissen: fw('Wahlbereich: Kriechtiere vergangener Zeiten.'),
+  })
+}
+
+export const biSaurier: Topic['generate'] = mixedVariants(saurierMc, saurierTf, saurierMatch)
+
+function haltungMc(rng: Rng) {
+  const items = [
+    {
+      q: 'Was meint artgerechte Tierhaltung?',
+      a: 'Bedürfnisse der Art (Raum, Klima, Nahrung, Soziales) werden berücksichtigt',
+      w: ['Nur möglichst kleiner Käfig', 'Nie Wasser anbieten', 'Nur Kunststoffpflanzen ohne Licht'],
+      e: 'Artgerecht heißt: Lebensweise der Art ernst nehmen.',
+      wissen: 'Aquarium/Terrarium: Temperatur, Feuchte, Verstecke, Futter.',
+    },
+    {
+      q: 'Warum ist Überfütterung im Aquarium problematisch?',
+      a: 'Wasserqualität sinkt, Tiere können erkranken',
+      w: ['Weil Fische dann fliegen', 'Weil Knochen verschwinden', 'Weil Photosynthese stoppt sofort weltweit'],
+      e: 'Futterreste belasten das Wasser.',
+      wissen: 'Pflege und Verantwortung.',
+    },
+  ]
+  const it = pick(rng, items)
+  return choicePickTask({
+    question: it.q,
+    choices: shuffleChoices(rng, [it.a, ...it.w], it.a),
+    correct: it.a,
+    solution: it.a,
+    explanation: it.e,
+    instruction: 'Wähle die passende Antwort:',
+    fachwissen: fw(it.wissen),
+  })
+}
+
+function haltungMulti(rng: Rng) {
+  return multiSelectTask({
+    question: 'Was gehört zu verantwortlicher Haltung?',
+    choices: shuffle(rng, [
+      'Passende Temperatur',
+      'Sauberes Wasser / Hygiene',
+      'Artgerechtes Futter',
+      'Nie informieren vor dem Kauf',
+      'Tiere als Wegwerfartikel',
+    ]),
+    correct: ['Passende Temperatur', 'Sauberes Wasser / Hygiene', 'Artgerechtes Futter'],
+    solution: 'Temperatur, Hygiene, Futter',
+    explanation: 'Vorbereitung und Pflege schützen Tiere.',
+    instruction: 'Wähle alle zutreffenden Antworten:',
+    fachwissen: fw('Wahl: Artgerechte Tierhaltung — Tierschutzgedanke.'),
+  })
+}
+
+function haltungTf(rng: Rng) {
+  return trueFalse(rng, {
+    statement: 'Vor der Anschaffung sollte man den Platz- und Pflegebedarf der Art kennen.',
+    correct: true,
+    explanation: 'Planung verhindert Leid und Abgabe.',
+    fachwissen: fw('Information vor dem Kauf ist Tierschutz.'),
+  })
+}
+
+export const biHaltung: Topic['generate'] = mixedVariants(haltungMc, haltungMulti, haltungTf)
+
 // ─── Registry ────────────────────────────────────────────────────────────────
 
 export const BIOLOGIE_K5_GENERATORS: Record<string, Topic['generate']> = {
@@ -960,4 +1076,6 @@ export const BIOLOGIE_K5_GENERATORS: Record<string, Topic['generate']> = {
   'bi-k5-lb6-saeugetiere': biSaeugetiere,
   'bi-k5-lb7-systematik': biSystematik,
   'bi-k5-lbw-winter': biWinter,
+  'bi-k5-lbw-saurier': biSaurier,
+  'bi-k5-lbw-haltung': biHaltung,
 }
