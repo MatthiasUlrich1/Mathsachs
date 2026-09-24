@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.2.8',
-    changelog: `K8–K10/Oberstufe verdichtet: Wahlbereiche + neue LB-Unterthemen (Nerv/Reflex, Haut, Blattgewebe, Stickstoff); Deepen-Pools. ${topics} Themen.`,
+    version: '1.2.9',
+    changelog: `Lückentexte: Spoiler-Guard — Antwort darf nicht schon in Lücke/Frage stehen (gesamter Bio-Lehrplan). ${topics} Themen.`,
     official,
     extras: [],
   }

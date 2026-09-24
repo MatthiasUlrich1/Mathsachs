@@ -7,8 +7,11 @@ import { BIOLOGIE_GENERATORS } from './biologieGenerators'
 import { isRedundantFlashcardInstruction } from '../components/FlashcardFlip'
 import {
   bankGenerate,
+  bioFactGapModeSafe,
   bioFactQuestion,
+  bioGapTemplateSpoils,
   bioQuestionSpoilsTerm,
+  bioTextContainsAcceptedTerm,
   stripBioBankSlug,
 } from './biologieBank'
 
@@ -314,6 +317,106 @@ describe('Biologie UX: bank slugs, pairMatch duplicates, Fachbegriff spoilers', 
     const mcQ = bioFactQuestion(fact, 'mc')
     expect(mcQ).toContain('Laubbaum')
     expect(mcQ).not.toMatch(/\(baeume\)/)
+  })
+
+  it('detects accepted answers already present in gap template or unquoted stem', () => {
+    expect(
+      bioGapTemplateSpoils('Fachbegriff: ___ — Erzeugt Spinnenseide', ['Spinnenseide']),
+    ).toBe(true)
+    expect(
+      bioGapTemplateSpoils('Fachbegriff: ___ — Männliches Blütenorgan mit Pollen', [
+        'Staubblatt',
+      ]),
+    ).toBe(false)
+    expect(
+      bioTextContainsAcceptedTerm(
+        'Welches Merkmal wird oft mit dem aufrechten Gang verbunden?',
+        ['aufrecht'],
+      ),
+    ).toBe(true)
+    expect(
+      bioFactGapModeSafe(
+        {
+          prompt: 'Fachbegriff: Was bedeutet „Spinnenseide“?',
+          answer: 'x',
+          explanation: 'x',
+          wissen: 'Spinnenseide ist ein Proteinsekret. Spinnen nutzen sie für Netze und Fangfäden.',
+          gap: 'Fachbegriff: ___ — Erzeugt Spinnenseide',
+          gapAccepted: ['Spinnenseide'],
+        },
+        'gap',
+      ),
+    ).toBe(false)
+    expect(
+      bioFactGapModeSafe(
+        {
+          prompt: 'Was ist ein transgener Organismus grob?',
+          answer: 'x',
+          explanation: 'x',
+          wissen:
+            'Ein transgener Organismus trägt artfremde Gene. Gentechnik kann solche Veränderungen gezielt einbringen.',
+          gap: 'Ein ___ Organismus enthält artfremde Gene durch Gentechnik.',
+          gapAccepted: ['transgener'],
+        },
+        'gap',
+      ),
+    ).toBe(false)
+  })
+
+  it('bankGenerate skips gap templates that already contain the answer', () => {
+    const gen = bankGenerate({
+      facts: [
+        {
+          concept: 'bio:test:ux:seide',
+          prompt: 'Fachbegriff: Was bedeutet „Spinnenseide“?',
+          answer: 'Erzeugt Spinnenseide',
+          wrong: ['a', 'b', 'c'],
+          explanation: 'x',
+          wissen:
+            'Spinnenseide ist ein Proteinsekret. Spinnen nutzen sie für Netze und Fangfäden im Beutefang.',
+          gap: 'Fachbegriff: ___ — Erzeugt Spinnenseide',
+          gapAccepted: ['Spinnenseide'],
+        },
+      ],
+    })
+    for (let i = 0; i < 80; i++) {
+      const task = gen(createRng(i * 13 + 2))
+      if (task.interactive?.type !== 'clozeMulti') continue
+      const segs = (task.interactive.props?.segments as string[]) ?? []
+      const accepted = ((task.interactive.props?.accepted as string[][]) ?? []).flat()
+      const gapText = segs.join(' ')
+      for (const a of accepted) {
+        expect(bioTextContainsAcceptedTerm(gapText, [a]), `seed ${i} A=${a}`).toBe(false)
+      }
+      expect(bioTextContainsAcceptedTerm(task.question, accepted), `seed ${i} Q`).toBe(
+        false,
+      )
+    }
+  })
+
+  it('live Bio generators: cloze answers never appear in gap text or question', () => {
+    const ids = Object.keys(BIOLOGIE_GENERATORS)
+    expect(ids.length).toBeGreaterThan(40)
+    for (const topicId of ids) {
+      const gen = BIOLOGIE_GENERATORS[topicId]!
+      for (let i = 0; i < 12; i++) {
+        const task = gen(createRng(i * 41 + 9))
+        if (task.interactive?.type !== 'clozeMulti') continue
+        const segs = (task.interactive.props?.segments as string[]) ?? []
+        const accepted = ((task.interactive.props?.accepted as string[][]) ?? []).flat()
+        const gapText = segs.join(' ')
+        for (const a of accepted) {
+          expect(
+            bioTextContainsAcceptedTerm(gapText, [a]),
+            `${topicId}@${i} gap←${a}`,
+          ).toBe(false)
+        }
+        expect(
+          bioTextContainsAcceptedTerm(task.question, accepted),
+          `${topicId}@${i} Q`,
+        ).toBe(false)
+      }
+    }
   })
 
   it('generated bank tasks never show slug tags or term spoilers on gap mode', () => {

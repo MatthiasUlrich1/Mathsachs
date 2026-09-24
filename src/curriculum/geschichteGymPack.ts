@@ -18,8 +18,8 @@ export function buildGymSachsenGeschichtePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Geschichte',
-    version: '1.7.0',
-    changelog: `K7–OS Unterthemen verdichtet (Klett+Schlaukopf+Wikipedia-Inspiration, eigene Formulierungen) · Schwerpunkt K8–10/Oberstufe · Wahl Alltag WK1 · ${topics} Themen. K6 LB1 Rom freigegeben; Rest Entwickler (released:false).`,
+    version: '1.7.1',
+    changelog: `Lückentexte: Spoiler-Guard — Antwort darf nicht schon in Lücke/Frage stehen (Bio+Geschichte bankGenerate, gesamter Lehrplan). ${topics} Themen. K6 LB1 Rom freigegeben; Rest Entwickler (released:false).`,
     official,
     extras: [],
   }

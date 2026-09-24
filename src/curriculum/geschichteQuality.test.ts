@@ -9,6 +9,7 @@ import {
   resolveGeschichteGenerate,
 } from './geschichteGenerators'
 import { buildUniqueTaskRound } from './uniqueRound'
+import { bioTextContainsAcceptedTerm } from './biologieBank'
 
 const HARD_META =
   /Prüfung:|Antwort prüfen|Teilpunkte|Groß-\/Kleinschreibung|Karte umdrehen|Tippe „ok“|Übungsaufgaben folgen/i
@@ -72,5 +73,32 @@ describe('Geschichte generators quality', () => {
       const keys = new Set(round.map((t) => t.dedupeKey ?? t.contentIds?.[0] ?? t.question))
       expect(keys.size, id).toBe(round.length)
     }
+  })
+
+  it('cloze/gap answers never appear in gap text or question stem', () => {
+    let sawCloze = 0
+    for (const id of allIds) {
+      const gen = resolveGeschichteGenerate(id)
+      if (!gen) continue
+      for (let seed = 0; seed < 10; seed++) {
+        const task = gen(createRng(seed * 53 + 17))
+        if (task.interactive?.type !== 'clozeMulti') continue
+        sawCloze++
+        const segs = (task.interactive.props?.segments as string[]) ?? []
+        const accepted = ((task.interactive.props?.accepted as string[][]) ?? []).flat()
+        const gapText = segs.join(' ')
+        for (const a of accepted) {
+          expect(
+            bioTextContainsAcceptedTerm(gapText, [a]),
+            `${id}@${seed} gap←${a}`,
+          ).toBe(false)
+        }
+        expect(
+          bioTextContainsAcceptedTerm(task.question, accepted),
+          `${id}@${seed} Q`,
+        ).toBe(false)
+      }
+    }
+    expect(sawCloze).toBeGreaterThan(20)
   })
 })

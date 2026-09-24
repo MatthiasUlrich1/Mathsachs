@@ -303,20 +303,107 @@ export function stripBioBankSlug(text: string): string {
     .trim()
 }
 
+/** Normalize for loose German term matching (case, umlauts, light punctuation). */
+export function normalizeBioTerm(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ß/g, 'ss')
+    .replace(/[„“”"'`´]/g, '')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+/**
+ * True when haystack already contains an accepted gap/cloze answer
+ * (verbatim, quoted, or light German inflection / stem).
+ */
+export function bioTextContainsAcceptedTerm(
+  haystack: string,
+  acceptedTerms: string[],
+): boolean {
+  const hay = normalizeBioTerm(haystack)
+  if (!hay) return false
+  const hayTokens = hay.split(' ').filter(Boolean)
+
+  for (const raw of acceptedTerms) {
+    const term = normalizeBioTerm(raw)
+    if (term.length < 3) continue
+
+    // Multi-word / dotted phrases ("v chr", "jaeger und sammler")
+    if (term.includes(' ')) {
+      if (` ${hay} `.includes(` ${term} `)) return true
+      continue
+    }
+
+    for (const tok of hayTokens) {
+      if (tok === term) return true
+      // Short tokens: exact word only (avoid "art" ⊂ "artfremde").
+      if (term.length < 4) continue
+      // Light inflection: aufrecht ⊂ aufrechten, reiz ⊂ reize
+      if (tok.startsWith(term) && tok.length - term.length <= 4) return true
+      if (term.startsWith(tok) && term.length - tok.length <= 2 && tok.length >= 4) {
+        return true
+      }
+    }
+  }
+  return false
+}
+
 /** True when question already names a term that a gap/cloze expects as answer. */
 export function bioQuestionSpoilsTerm(
   question: string,
   acceptedTerms: string[],
 ): boolean {
-  const q = question
-  for (const raw of acceptedTerms) {
-    const t = raw.trim()
-    if (t.length < 2) continue
-    if (q.includes(`„${t}“`) || q.includes(`"${t}"`) || q.includes(`'${t}'`)) {
-      return true
-    }
+  return bioTextContainsAcceptedTerm(question, acceptedTerms)
+}
+
+/**
+ * Gap/cloze template must not already show an accepted answer beside the blank.
+ * `___` placeholders are stripped before matching.
+ */
+export function bioGapTemplateSpoils(
+  template: string,
+  accepted: string[] | string[][],
+): boolean {
+  const flat = (Array.isArray(accepted[0])
+    ? (accepted as string[][]).flat()
+    : (accepted as string[])
+  ).filter(Boolean)
+  if (!flat.length) return false
+  const withoutBlanks = template.replace(/_+/g, ' ')
+  return bioTextContainsAcceptedTerm(withoutBlanks, flat)
+}
+
+/**
+ * Whether gap/cloze mode is safe: answer must not leak in the template
+ * or in the question stem. Fachbegriff prompts may be rewritten; other
+ * spoiling stems skip gap/cloze entirely (fall through to MC/flash).
+ */
+export function bioFactGapModeSafe(f: BioFact, mode: 'gap' | 'cloze'): boolean {
+  const template = mode === 'cloze' ? f.cloze : f.gap
+  const accepted =
+    mode === 'cloze' ? (f.clozeAccepted?.flat() ?? []) : (f.gapAccepted ?? [])
+  if (!template?.trim() || !accepted.length) return false
+
+  if (template.includes('_') && bioGapTemplateSpoils(template, accepted)) return false
+
+  const base = stripBioBankSlug(f.prompt)
+  const stemSpoils =
+    bioTextContainsAcceptedTerm(base, accepted) ||
+    bioTextContainsAcceptedTerm(f.prompt, accepted)
+  if (stemSpoils) {
+    const fachbegriffGap = /Fachbegriff\s*:/i.test(template) || /Fachbegriff\s*:/i.test(base)
+    // Meaning→term Fachbegriff gaps: rewrite the question (bioFactQuestion).
+    // Content gaps whose stem already names the answer: skip this mode.
+    if (!fachbegriffGap) return false
   }
-  return false
+
+  const q = bioFactQuestion(f, mode)
+  return !bioTextContainsAcceptedTerm(q, accepted)
 }
 
 /**
@@ -433,25 +520,26 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
             ).slice(0, 3)
       while (wrong.length < 3) wrong.push(`Nicht: ${f.answer} (${wrong.length})`)
 
-      if (mode < 0.34 && f.cloze && f.clozeAccepted?.length) {
+      // Skip gap/cloze when the accepted answer already appears in template or stem.
+      if (mode < 0.34 && bioFactGapModeSafe(f, 'cloze')) {
         return clozeBlanksTask({
           question: bioFactQuestion(f, 'cloze'),
-          template: f.cloze,
-          accepted: f.clozeAccepted,
-          solution: f.clozeAccepted.map((a) => a[0]).join(' / '),
+          template: f.cloze!,
+          accepted: f.clozeAccepted!,
+          solution: f.clozeAccepted!.map((a) => a[0]).join(' / '),
           explanation: f.explanation,
           fachwissen: fw(bank, f.wissen, factCtx),
           dedupeKey: key,
           contentIds: [key],
         })
       }
-      if (mode < 0.55 && f.gap && f.gapAccepted?.length) {
-        if (f.gap.includes('___')) {
+      if (mode < 0.55 && bioFactGapModeSafe(f, 'gap')) {
+        if (f.gap!.includes('___')) {
           return clozeBlanksTask({
             question: bioFactQuestion(f, 'gap'),
-            template: f.gap,
-            accepted: [f.gapAccepted],
-            solution: f.gapAccepted[0]!,
+            template: f.gap!,
+            accepted: [f.gapAccepted!],
+            solution: f.gapAccepted![0]!,
             explanation: f.explanation,
             fachwissen: fw(bank, f.wissen, factCtx),
             dedupeKey: key,
@@ -460,8 +548,8 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         }
         return gapFillTask({
           question: bioFactQuestion(f, 'gap'),
-          accepted: f.gapAccepted,
-          solution: f.gapAccepted[0]!,
+          accepted: f.gapAccepted!,
+          solution: f.gapAccepted![0]!,
           explanation: f.explanation,
           fachwissen: fw(bank, f.wissen, factCtx),
           dedupeKey: key,

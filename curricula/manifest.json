@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-24T20:35:17.417Z",
+  "updatedAt": "2026-09-24T20:42:02.931Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -29,10 +29,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Geschichte",
-      "version": "1.7.0",
+      "version": "1.7.1",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-geschichte.json",
-      "size": 72488,
-      "changelog": "K7–OS Unterthemen verdichtet (Klett+Schlaukopf+Wikipedia-Inspiration, eigene Formulierungen) · Schwerpunkt K8–10/Oberstufe · Wahl Alltag WK1 · 133 Themen. K6 LB1 Rom freigegeben; Rest Entwickler (released:false)."
+      "size": 72468,
+      "changelog": "Lückentexte: Spoiler-Guard — Antwort darf nicht schon in Lücke/Frage stehen (Bio+Geschichte bankGenerate, gesamter Lehrplan). 133 Themen. K6 LB1 Rom freigegeben; Rest Entwickler (released:false)."
     },
     {
       "id": "gym-sachsen-biologie",
@@ -40,10 +40,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Biologie",
-      "version": "1.2.8",
+      "version": "1.2.9",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-biologie.json",
-      "size": 64655,
-      "changelog": "K8–K10/Oberstufe verdichtet: Wahlbereiche + neue LB-Unterthemen (Nerv/Reflex, Haut, Blattgewebe, Stickstoff); Deepen-Pools. 125 Themen."
+      "size": 64634,
+      "changelog": "Lückentexte: Spoiler-Guard — Antwort darf nicht schon in Lücke/Frage stehen (gesamter Bio-Lehrplan). 125 Themen."
     },
     {
       "id": "gym-sachsen-anhalt",
