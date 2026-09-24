@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.38] – 2026-09-24
+
+### Behoben
+- Physik-Stromkreis-Test: MC-Variante ohne irreführendes „Summer“-Wording, damit der
+  Desktop-Installer-Build (v0.28.37) durchläuft.
+
 ## [0.28.37] – 2026-09-24
 
 ### Behoben

@@ -2037,7 +2037,7 @@ const stromkreis: Topic['generate'] = mixedVariants(
         wrong: ['immer offen sein', 'ohne Spannungsquelle sein', 'nur aus Isolatoren bestehen'],
       },
       {
-        q: 'Ein Summer piept nur, wenn …',
+        q: 'Ein akustischer Verbraucher arbeitet nur, wenn …',
         correct: 'ein geschlossener Stromkreis vorliegt',
         wrong: ['der Schalter immer offen ist', 'keine Batterie da ist', 'nur ein Draht fehlt und alles passt'],
       },
