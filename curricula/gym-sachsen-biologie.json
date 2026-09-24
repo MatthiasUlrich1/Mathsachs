@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Biologie",
-  "version": "1.2.6",
-  "changelog": "K6 Wirbellose Spezial: Krebstiere, Tausendfüßer, Ringelwürmer, Stachelhäuter, Nesseltiere; Weichtiere mit Schnecken/Muscheln/Kopffüßern. 117 Themen.",
+  "version": "1.2.7",
+  "changelog": "Lehrplan-522-Struktur: Gk 11/12 getrennt, fehlende Wahlbereiche (Spinnen, Transgene, Gärung, Allergien, Wüste Lk), LB2 ohne Stachelhäuter/Tausendfüßer, mit Rundwürmern/Hohltiere. 121 Themen.",
   "official": [
     {
       "id": "biologie-klasse-5",
@@ -530,18 +530,6 @@
               ]
             },
             {
-              "id": "bi-k6-lb2-tausendfuesser",
-              "title": "Tausendfüßer",
-              "pointsPerTask": 10,
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Schnurfüßer",
-                "Hundertfüßer"
-              ]
-            },
-            {
               "id": "bi-k6-lb2-ringelwuermer",
               "title": "Ringelwürmer",
               "pointsPerTask": 10,
@@ -555,21 +543,21 @@
               ]
             },
             {
-              "id": "bi-k6-lb2-stachelhaeuter",
-              "title": "Stachelhäuter",
+              "id": "bi-k6-lb2-rundwuermer",
+              "title": "Rundwürmer",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 10,
               "keywords": [
-                "Seestern",
-                "Seeigel",
-                "Ambulakralsystem"
+                "Nematoden",
+                "Askaris",
+                "Parasit"
               ]
             },
             {
               "id": "bi-k6-lb2-nesseltiere",
-              "title": "Nesseltiere",
+              "title": "Hohltiere",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -671,8 +659,21 @@
           "title": "Wahlbereiche",
           "topics": [
             {
+              "id": "bi-k6-lbw-spinnen",
+              "title": "Spinnen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Netzbau",
+                "Beutefang",
+                "Spinnenseide"
+              ]
+            },
+            {
               "id": "bi-k6-lbw-weichtiere",
-              "title": "Weichtiere – Überblick",
+              "title": "Weichtiere",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -1326,6 +1327,17 @@
           "title": "Wahlbereiche",
           "topics": [
             {
+              "id": "bi-k10-lbw-transgen",
+              "title": "Transgene Organismen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Gentechnik"
+              ]
+            },
+            {
               "id": "bi-k10-lbw-leben",
               "title": "Entstehung des Lebens auf der Erde",
               "pointsPerTask": 10,
@@ -1352,22 +1364,20 @@
       ]
     },
     {
-      "id": "biologie-jgs-11-12-gk",
-      "title": "Jahrgangsstufe 11/12 (Grundkurs)",
+      "id": "biologie-jgs-11-gk",
+      "title": "Jahrgangsstufe 11 – Grundkurs",
       "subjectTitle": "Biologie",
-      "gradeTitle": "Jahrgangsstufe 11/12 (Grundkurs)",
-      "description": "Zellbiologie, Stoffwechsel, Ökologie, Genetik und Biodiversität (Grundkurs).",
+      "gradeTitle": "Jahrgangsstufe 11 – Grundkurs",
+      "description": "Zellbiologie, Stoffwechsel sowie Ökologie und Nachhaltigkeit (Grundkurs).",
       "searchHints": [
         "Zelle",
         "Dissimilation",
-        "Ökologie",
-        "Genetik",
-        "Biodiversität"
+        "Ökologie"
       ],
       "areas": [
         {
           "id": "lb1",
-          "title": "Zellen, Gewebe und Organe",
+          "title": "Zellen, Gewebe und Organe und deren funktionsbezogene Differenzierung",
           "ustd": 24,
           "topics": [
             {
@@ -1398,7 +1408,7 @@
         },
         {
           "id": "lb2",
-          "title": "Assimilation und Dissimilation",
+          "title": "Assimilation und Dissimilation – Redoxprozesse zellulärer Strukturen",
           "ustd": 15,
           "topics": [
             {
@@ -1435,63 +1445,6 @@
           ]
         },
         {
-          "id": "lb4",
-          "title": "Grundlagen, Anwendungen und Perspektiven der Genetik",
-          "ustd": 18,
-          "topics": [
-            {
-              "id": "bi-gk12-lb1-genetik",
-              "title": "Genetik – Grundlagen und Perspektiven",
-              "pointsPerTask": 10,
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Gentechnik",
-                "DNA"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "lb5",
-          "title": "Kommunikation zwischen Zellen",
-          "ustd": 10,
-          "topics": [
-            {
-              "id": "bi-gk12-lb2-kommunikation",
-              "title": "Kommunikation zwischen Zellen",
-              "pointsPerTask": 10,
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Signal",
-                "Rezeptor"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "lb6",
-          "title": "Biodiversität und ihre Entstehung",
-          "ustd": 14,
-          "topics": [
-            {
-              "id": "bi-gk12-lb3-biodiversitaet",
-              "title": "Biodiversität und ihre Entstehung",
-              "pointsPerTask": 10,
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Biodiversität",
-                "Evolution"
-              ]
-            }
-          ]
-        },
-        {
           "id": "lbw",
           "title": "Wahlbereiche",
           "topics": [
@@ -1518,6 +1471,17 @@
               ]
             },
             {
+              "id": "bi-gk-lbw-gaerung",
+              "title": "Gärung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Gärung"
+              ]
+            },
+            {
               "id": "bi-gk-lbw-fliesgewaesser",
               "title": "Fließgewässer",
               "pointsPerTask": 10,
@@ -1526,6 +1490,94 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Fluss"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "biologie-jgs-12-gk",
+      "title": "Jahrgangsstufe 12 – Grundkurs",
+      "subjectTitle": "Biologie",
+      "gradeTitle": "Jahrgangsstufe 12 – Grundkurs",
+      "description": "Genetik, Zellkommunikation und Biodiversität (Grundkurs).",
+      "searchHints": [
+        "Genetik",
+        "Kommunikation",
+        "Biodiversität"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Grundlagen, Anwendungen und Perspektiven der Genetik",
+          "ustd": 18,
+          "topics": [
+            {
+              "id": "bi-gk12-lb1-genetik",
+              "title": "Genetik – Grundlagen und Perspektiven",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Gentechnik",
+                "DNA"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Kommunikation zwischen Zellen",
+          "ustd": 10,
+          "topics": [
+            {
+              "id": "bi-gk12-lb2-kommunikation",
+              "title": "Kommunikation zwischen Zellen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Signal",
+                "Rezeptor"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Biodiversität und ihre Entstehung",
+          "ustd": 14,
+          "topics": [
+            {
+              "id": "bi-gk12-lb3-biodiversitaet",
+              "title": "Biodiversität und ihre Entstehung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Biodiversität",
+                "Evolution"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "bi-gk-lbw-allergien",
+              "title": "Allergien",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Allergie"
               ]
             },
             {
@@ -1578,9 +1630,9 @@
     },
     {
       "id": "biologie-jgs-11-lk",
-      "title": "Jahrgangsstufe 11 (Leistungskurs)",
+      "title": "Jahrgangsstufe 11 – Leistungskurs",
       "subjectTitle": "Biologie",
-      "gradeTitle": "Jahrgangsstufe 11 (Leistungskurs)",
+      "gradeTitle": "Jahrgangsstufe 11 – Leistungskurs",
       "description": "Vertiefte Zellbiologie, Stoffwechsel sowie Ökologie und Nachhaltigkeit.",
       "searchHints": [
         "Zelle",
@@ -1590,12 +1642,12 @@
       "areas": [
         {
           "id": "lb1",
-          "title": "Zellen, Gewebe und Organe",
+          "title": "Zellen, Gewebe und Organe und deren funktionsbezogene Differenzierung",
           "ustd": 55,
           "topics": [
             {
               "id": "bi-lk11-lb1-zellen",
-              "title": "Zellen, Gewebe und Organe (Lk)",
+              "title": "Zellen, Gewebe und Organe",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -1609,12 +1661,12 @@
         },
         {
           "id": "lb2",
-          "title": "Assimilation und Dissimilation",
+          "title": "Assimilation und Dissimilation – Redoxprozesse zellulärer Strukturen",
           "ustd": 40,
           "topics": [
             {
               "id": "bi-lk11-lb2-stoffwechsel",
-              "title": "Assimilation und Dissimilation (Lk)",
+              "title": "Assimilation und Dissimilation",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -1633,7 +1685,7 @@
           "topics": [
             {
               "id": "bi-lk11-lb3-oekologie",
-              "title": "Ökologie und Nachhaltigkeit (Lk)",
+              "title": "Ökologie und Nachhaltigkeit",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -1648,6 +1700,17 @@
           "id": "lbw",
           "title": "Wahlbereiche",
           "topics": [
+            {
+              "id": "bi-lk11-lbw-wueste",
+              "title": "Leben in der Wüste",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Wüste"
+              ]
+            },
             {
               "id": "bi-lk11-lbw-urban",
               "title": "Urbane Ökologie",
@@ -1672,7 +1735,7 @@
             },
             {
               "id": "bi-lk11-lbw-invasiv",
-              "title": "Invasive Arten",
+              "title": "Invasive Arten und deren Einfluss auf Ökosysteme",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -1709,9 +1772,9 @@
     },
     {
       "id": "biologie-jgs-12-lk",
-      "title": "Jahrgangsstufe 12 (Leistungskurs)",
+      "title": "Jahrgangsstufe 12 – Leistungskurs",
       "subjectTitle": "Biologie",
-      "gradeTitle": "Jahrgangsstufe 12 (Leistungskurs)",
+      "gradeTitle": "Jahrgangsstufe 12 – Leistungskurs",
       "description": "Genetik, Zellkommunikation, Verhalten, Biodiversität und Systematisierung.",
       "searchHints": [
         "Genetik",
@@ -1726,7 +1789,7 @@
           "topics": [
             {
               "id": "bi-lk12-lb1-genetik",
-              "title": "Genetik (Lk)",
+              "title": "Genetik",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -1745,7 +1808,7 @@
           "topics": [
             {
               "id": "bi-lk12-lb2-kommunikation",
-              "title": "Kommunikation zwischen Zellen (Lk)",
+              "title": "Kommunikation zwischen Zellen",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -1781,7 +1844,7 @@
           "topics": [
             {
               "id": "bi-lk12-lb4-biodiversitaet",
-              "title": "Biodiversität und ihre Entstehung (Lk)",
+              "title": "Biodiversität und ihre Entstehung",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -1875,5 +1938,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "33617235"
+  "contentHash": "ec8f969b"
 }

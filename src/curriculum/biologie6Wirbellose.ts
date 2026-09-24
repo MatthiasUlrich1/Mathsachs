@@ -1,6 +1,6 @@
 /**
- * K6 Wirbellose Spezialbanken — Gliederfüßer-Gruppen, Weichtiere, Ringelwürmer,
- * Stachelhäuter, Nesseltiere. Überblick bleibt in biologie6.ts schlank.
+ * K6 Wirbellose Spezialbanken — Lehrplan-LB2 (Hohltiere, Rund-/Ringelwürmer,
+ * Spinnentiere, Krebstiere, Insekten) und Wahl Weichtiere. Überblick in biologie6.ts.
  * Originalwortlaut; fragebezogenes Fachwissen; released:false via Gym-Topics.
  */
 import { bankGenerate, type BioBank } from './biologieBank'
@@ -1654,11 +1654,71 @@ export const nesseltiere: BioBank = {
   ],
 }
 
+export const rundwuermer: BioBank = {
+  quelle: 'Wikipedia: Fadenwürmer',
+  url: 'https://de.wikipedia.org/wiki/Fadenw%C3%BCrmer',
+  conceptPrefix: 'bio:k6:rundwuermer',
+  facts: [
+    {
+      concept: 'bio:k6:rundwuermer:kennzeichen',
+      prompt: 'Was kennzeichnet Rundwürmer (Nematoden) äußerlich grob?',
+      answer: 'Unsegmentierter, fadenförmiger Körper',
+      wrong: ['Gegliederter Chitinpanzer mit Flügeln', 'Federkleid', 'Zwei Schalenklappen'],
+      explanation: 'Rundwürmer haben einen glatten, rundlichen Querschnitt ohne echte Segmente.',
+      wissen:
+        'Rundwürmer (Nematoda) sind wirbellos und haben einen langgestreckten, unsegmentierten Körper mit rundem Querschnitt. Viele leben frei im Boden oder Wasser; andere sind Parasiten von Pflanzen, Tieren oder Menschen.',
+      gap: 'Rundwürmer haben einen ___ Körper ohne echte Segmente.',
+      gapAccepted: ['fadenförmigen', 'unsegmentierten', 'fadenartigen'],
+    },
+    {
+      concept: 'bio:k6:rundwuermer:parasit',
+      prompt: 'Warum sind einige Rundwürmer gesundheitsrelevant?',
+      answer: 'Manche leben parasitisch in Mensch oder Tier',
+      wrong: ['Sie betreiben Fotosynthese', 'Sie haben immer Federn', 'Sie sind Wirbeltiere'],
+      explanation: 'Parasitische Nematoden können Krankheiten verursachen; Hygiene schützt.',
+      wissen:
+        'Einige Rundwürmer (z. B. Spulwürmer) parasitieren in Darm oder Gewebe. Übertragung oft über Eier in verunreinigter Nahrung oder Erde. Prophylaxe: Hygiene, sauberes Wasser, sachgerechte Lebensmittelbehandlung.',
+      gap: 'Parasitische Rundwürmer können den ___ des Menschen befallen.',
+      gapAccepted: ['Darm', 'Körper', 'Organismus'],
+    },
+    {
+      concept: 'bio:k6:rundwuermer-vs-ringel',
+      prompt: 'Woran unterscheidest du Rundwürmer von Ringelwürmern?',
+      answer: 'Rundwürmer ohne echte Segmente, Ringelwürmer geringelt',
+      wrong: ['Rundwürmer haben immer Flügel', 'Ringelwürmer haben Federkleid', 'Beide sind Säugetiere'],
+      explanation: 'Ringelwürmer (z. B. Regenwurm) sind deutlich segmentiert; Rundwürmer nicht.',
+      wissen:
+        'Ringelwürmer (Annelida) zeigen äußere Segmentierung (Ringe). Rundwürmer fehlen diese echten Segmente — der Körper wirkt glatt und fadenförmig. Beide Gruppen sind wirbellos, gehören aber zu verschiedenen Stämmen.',
+    },
+  ],
+  pairs: [
+    {
+      term: 'Nematode',
+      meaning: 'Faden- bzw. Rundwurm',
+      wissen: 'Wissenschaftlicher Name für Rundwürmer — oft mikroskopisch klein, manchmal parasitisch.',
+    },
+    {
+      term: 'Askaris',
+      meaning: 'Spulwurm (parasitisch)',
+      wissen: 'Bekannter parasitärer Rundwurm im Darm; Übertragung über Eier — Hygiene wichtig.',
+    },
+  ],
+  trueFalse: [
+    {
+      concept: 'bio:k6:rundwuermer:tf-segment',
+      statement: 'Rundwürmer sind wie Regenwürmer äußerlich klar geringelt.',
+      correct: false,
+      explanation: 'Regenwürmer sind Ringelwürmer; Rundwürmer haben keine echten Segmente.',
+      wissen:
+        'Die äußere Ringelung kennzeichnet Ringelwürmer. Rundwürmer sind unsegmentiert — ein zentrales Unterscheidungsmerkmal im Unterricht.',
+    },
+  ],
+}
+
 export const BIOLOGIE_K6_WIRBELLOSE_SPECIAL_GENERATORS: Record<string, Topic['generate']> = {
   'bi-k6-lb2-krebstiere': bankGenerate(krebstiere),
-  'bi-k6-lb2-tausendfuesser': bankGenerate(tausendfuesser),
   'bi-k6-lb2-ringelwuermer': bankGenerate(ringelwuermer),
-  'bi-k6-lb2-stachelhaeuter': bankGenerate(stachelhaeuter),
+  'bi-k6-lb2-rundwuermer': bankGenerate(rundwuermer),
   'bi-k6-lb2-nesseltiere': bankGenerate(nesseltiere),
   'bi-k6-lbw-weichtiere': bankGenerate(weichtiereOverview),
   'bi-k6-lbw-schnecken': bankGenerate(schnecken),

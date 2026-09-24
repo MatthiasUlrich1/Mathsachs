@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.41] – 2026-09-24
+
+### Behoben
+- **Biologie Gymnasium Sachsen 1.2.7:** Themenstruktur exakt nach Lehrplan 522 —
+  Gk JGS 11 und 12 getrennt; fehlende Wahlbereiche ergänzt (K6 Spinnen, K10 Transgene
+  Organismen, Gk Gärung/Allergien, Lk11 Leben in der Wüste); K6 LB2 an Pflichtliste
+  (Rundwürmer/Hohltiere statt Stachelhäuter/Tausendfüßer); offizielle LB-Titel und
+  Zeitrichtwerte.
+
 ## [0.28.40] – 2026-09-24
 
 ### Behoben

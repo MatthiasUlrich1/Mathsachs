@@ -249,21 +249,17 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Wasserfloh',
             'Kieme',
           ]),
-          topic('bi-k6-lb2-tausendfuesser', 'Tausendfüßer', [
-            'Schnurfüßer',
-            'Hundertfüßer',
-          ]),
           topic('bi-k6-lb2-ringelwuermer', 'Ringelwürmer', [
             'Regenwurm',
             'Blutegel',
             'Segment',
           ]),
-          topic('bi-k6-lb2-stachelhaeuter', 'Stachelhäuter', [
-            'Seestern',
-            'Seeigel',
-            'Ambulakralsystem',
+          topic('bi-k6-lb2-rundwuermer', 'Rundwürmer', [
+            'Nematoden',
+            'Askaris',
+            'Parasit',
           ]),
-          topic('bi-k6-lb2-nesseltiere', 'Nesseltiere', [
+          topic('bi-k6-lb2-nesseltiere', 'Hohltiere', [
             'Qualle',
             'Koralle',
             'Nesselzelle',
@@ -299,7 +295,12 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
           ]),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
-          topic('bi-k6-lbw-weichtiere', 'Weichtiere – Überblick', [
+          topic('bi-k6-lbw-spinnen', 'Spinnen', [
+            'Netzbau',
+            'Beutefang',
+            'Spinnenseide',
+          ], { tasksPerRound: 10 }),
+          topic('bi-k6-lbw-weichtiere', 'Weichtiere', [
             'Mantel',
             'Schnecke',
             'Muschel',
@@ -510,6 +511,8 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
           ]),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
+          topic('bi-k10-lbw-transgen', 'Transgene Organismen', ['Gentechnik'], {
+            tasksPerRound: 10}),
           topic('bi-k10-lbw-leben', 'Entstehung des Lebens auf der Erde', ['Ursuppe'], {
             tasksPerRound: 10}),
           topic('bi-k10-lbw-lernen', 'Lernen und Gedächtnis', ['Gedächtnis'], {
@@ -518,57 +521,80 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
       ],
     ),
     grade(
-      'biologie-jgs-11-12-gk',
-      'Jahrgangsstufe 11/12 (Grundkurs)',
-      'Jahrgangsstufe 11/12 (Grundkurs)',
-      'Zellbiologie, Stoffwechsel, Ökologie, Genetik und Biodiversität (Grundkurs).',
-      ['Zelle', 'Dissimilation', 'Ökologie', 'Genetik', 'Biodiversität'],
+      'biologie-jgs-11-gk',
+      'Jahrgangsstufe 11 – Grundkurs',
+      'Jahrgangsstufe 11 – Grundkurs',
+      'Zellbiologie, Stoffwechsel sowie Ökologie und Nachhaltigkeit (Grundkurs).',
+      ['Zelle', 'Dissimilation', 'Ökologie'],
       [
-        area('lb1', 'Zellen, Gewebe und Organe', 24, [
-          topic('bi-gk11-lb1-zellen', 'Zellen, Gewebe und Organe', [
-            'Differenzierung',
-            'Zelle',
-          ]),
-          topic('bi-gk11-lb1-organellen', 'Zellorganellen und Kompartimente', [
-            'Organell',
-            'Membran',
-          ]),
-        ]),
-        area('lb2', 'Assimilation und Dissimilation', 15, [
-          topic('bi-gk11-lb2-stoffwechsel', 'Assimilation und Dissimilation', [
-            'Fotosynthese',
-            'Zellatmung',
-          ]),
-        ]),
+        area(
+          'lb1',
+          'Zellen, Gewebe und Organe und deren funktionsbezogene Differenzierung',
+          24,
+          [
+            topic('bi-gk11-lb1-zellen', 'Zellen, Gewebe und Organe', [
+              'Differenzierung',
+              'Zelle',
+            ]),
+            topic('bi-gk11-lb1-organellen', 'Zellorganellen und Kompartimente', [
+              'Organell',
+              'Membran',
+            ]),
+          ],
+        ),
+        area(
+          'lb2',
+          'Assimilation und Dissimilation – Redoxprozesse zellulärer Strukturen',
+          15,
+          [
+            topic('bi-gk11-lb2-stoffwechsel', 'Assimilation und Dissimilation', [
+              'Fotosynthese',
+              'Zellatmung',
+            ]),
+          ],
+        ),
         area('lb3', 'Ökologie und Nachhaltigkeit', 13, [
           topic('bi-gk11-lb3-oekologie', 'Ökologie und Nachhaltigkeit', [
             'Nachhaltigkeit',
             'Ökologie',
           ]),
         ]),
-        area('lb4', 'Grundlagen, Anwendungen und Perspektiven der Genetik', 18, [
+        area('lbw', 'Wahlbereiche', undefined, [
+          topic('bi-gk-lbw-wueste', 'Leben in der Wüste', ['Wüste'], { tasksPerRound: 10 }),
+          topic('bi-gk-lbw-energie', 'Energiehaushalt von Mensch und Tier', ['Energie'], {
+            tasksPerRound: 10}),
+          topic('bi-gk-lbw-gaerung', 'Gärung', ['Gärung'], { tasksPerRound: 10 }),
+          topic('bi-gk-lbw-fliesgewaesser', 'Fließgewässer', ['Fluss'], { tasksPerRound: 10 }),
+        ]),
+      ],
+    ),
+    grade(
+      'biologie-jgs-12-gk',
+      'Jahrgangsstufe 12 – Grundkurs',
+      'Jahrgangsstufe 12 – Grundkurs',
+      'Genetik, Zellkommunikation und Biodiversität (Grundkurs).',
+      ['Genetik', 'Kommunikation', 'Biodiversität'],
+      [
+        area('lb1', 'Grundlagen, Anwendungen und Perspektiven der Genetik', 18, [
           topic('bi-gk12-lb1-genetik', 'Genetik – Grundlagen und Perspektiven', [
             'Gentechnik',
             'DNA',
           ]),
         ]),
-        area('lb5', 'Kommunikation zwischen Zellen', 10, [
+        area('lb2', 'Kommunikation zwischen Zellen', 10, [
           topic('bi-gk12-lb2-kommunikation', 'Kommunikation zwischen Zellen', [
             'Signal',
             'Rezeptor',
           ]),
         ]),
-        area('lb6', 'Biodiversität und ihre Entstehung', 14, [
+        area('lb3', 'Biodiversität und ihre Entstehung', 14, [
           topic('bi-gk12-lb3-biodiversitaet', 'Biodiversität und ihre Entstehung', [
             'Biodiversität',
             'Evolution',
           ]),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
-          topic('bi-gk-lbw-wueste', 'Leben in der Wüste', ['Wüste'], { tasksPerRound: 10 }),
-          topic('bi-gk-lbw-energie', 'Energiehaushalt von Mensch und Tier', ['Energie'], {
-            tasksPerRound: 10}),
-          topic('bi-gk-lbw-fliesgewaesser', 'Fließgewässer', ['Fluss'], { tasksPerRound: 10 }),
+          topic('bi-gk-lbw-allergien', 'Allergien', ['Allergie'], { tasksPerRound: 10 }),
           topic('bi-gk-lbw-krebs', 'Krebs', ['Tumor'], { tasksPerRound: 10 }),
           topic('bi-gk-lbw-nerven', 'Nervensysteme', ['Nerven'], { tasksPerRound: 10 }),
           topic('bi-gk-lbw-verhalten', 'Verhaltensbiologisches Praktikum', ['Verhalten'], {
@@ -580,34 +606,51 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
     ),
     grade(
       'biologie-jgs-11-lk',
-      'Jahrgangsstufe 11 (Leistungskurs)',
-      'Jahrgangsstufe 11 (Leistungskurs)',
+      'Jahrgangsstufe 11 – Leistungskurs',
+      'Jahrgangsstufe 11 – Leistungskurs',
       'Vertiefte Zellbiologie, Stoffwechsel sowie Ökologie und Nachhaltigkeit.',
       ['Zelle', 'Stoffwechsel', 'Ökologie'],
       [
-        area('lb1', 'Zellen, Gewebe und Organe', 55, [
-          topic('bi-lk11-lb1-zellen', 'Zellen, Gewebe und Organe (Lk)', [
-            'Differenzierung',
-            'Zelle',
-          ]),
-        ]),
-        area('lb2', 'Assimilation und Dissimilation', 40, [
-          topic('bi-lk11-lb2-stoffwechsel', 'Assimilation und Dissimilation (Lk)', [
-            'Redox',
-            'Stoffwechsel',
-          ]),
-        ]),
+        area(
+          'lb1',
+          'Zellen, Gewebe und Organe und deren funktionsbezogene Differenzierung',
+          55,
+          [
+            topic('bi-lk11-lb1-zellen', 'Zellen, Gewebe und Organe', [
+              'Differenzierung',
+              'Zelle',
+            ]),
+          ],
+        ),
+        area(
+          'lb2',
+          'Assimilation und Dissimilation – Redoxprozesse zellulärer Strukturen',
+          40,
+          [
+            topic('bi-lk11-lb2-stoffwechsel', 'Assimilation und Dissimilation', [
+              'Redox',
+              'Stoffwechsel',
+            ]),
+          ],
+        ),
         area('lb3', 'Ökologie und Nachhaltigkeit', 35, [
-          topic('bi-lk11-lb3-oekologie', 'Ökologie und Nachhaltigkeit (Lk)', [
+          topic('bi-lk11-lb3-oekologie', 'Ökologie und Nachhaltigkeit', [
             'Nachhaltigkeit',
           ]),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
+          topic('bi-lk11-lbw-wueste', 'Leben in der Wüste', ['Wüste'], {
+            tasksPerRound: 10}),
           topic('bi-lk11-lbw-urban', 'Urbane Ökologie', ['Stadtökologie'], {
             tasksPerRound: 10}),
           topic('bi-lk11-lbw-bioindikation', 'Bioindikation', ['Bioindikator'], {
             tasksPerRound: 10}),
-          topic('bi-lk11-lbw-invasiv', 'Invasive Arten', ['Neobiota'], { tasksPerRound: 10 }),
+          topic(
+            'bi-lk11-lbw-invasiv',
+            'Invasive Arten und deren Einfluss auf Ökosysteme',
+            ['Neobiota'],
+            { tasksPerRound: 10 },
+          ),
           topic('bi-lk11-lbw-rohstoffe', 'Nachwachsende Rohstoffe', ['Biomasse'], {
             tasksPerRound: 10}),
           topic('bi-lk11-lbw-energie', 'Energiehaushalt des Menschen', ['Energie'], {
@@ -617,16 +660,16 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
     ),
     grade(
       'biologie-jgs-12-lk',
-      'Jahrgangsstufe 12 (Leistungskurs)',
-      'Jahrgangsstufe 12 (Leistungskurs)',
+      'Jahrgangsstufe 12 – Leistungskurs',
+      'Jahrgangsstufe 12 – Leistungskurs',
       'Genetik, Zellkommunikation, Verhalten, Biodiversität und Systematisierung.',
       ['Genetik', 'Verhalten', 'Biodiversität'],
       [
         area('lb1', 'Grundlagen, Anwendungen und Perspektiven der Genetik', 34, [
-          topic('bi-lk12-lb1-genetik', 'Genetik (Lk)', ['Genetik', 'Gentechnik']),
+          topic('bi-lk12-lb1-genetik', 'Genetik', ['Genetik', 'Gentechnik']),
         ]),
         area('lb2', 'Kommunikation zwischen Zellen', 32, [
-          topic('bi-lk12-lb2-kommunikation', 'Kommunikation zwischen Zellen (Lk)', [
+          topic('bi-lk12-lb2-kommunikation', 'Kommunikation zwischen Zellen', [
             'Signalwege',
           ]),
         ]),
@@ -634,7 +677,7 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
           topic('bi-lk12-lb3-verhalten', 'Verhalten von Tier und Mensch', ['Ethologie']),
         ]),
         area('lb4', 'Biodiversität und ihre Entstehung', 20, [
-          topic('bi-lk12-lb4-biodiversitaet', 'Biodiversität und ihre Entstehung (Lk)', [
+          topic('bi-lk12-lb4-biodiversitaet', 'Biodiversität und ihre Entstehung', [
             'Biodiversität',
           ]),
         ]),

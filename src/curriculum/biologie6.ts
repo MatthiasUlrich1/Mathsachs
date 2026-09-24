@@ -866,6 +866,7 @@ export const BIOLOGIE_K6_GENERATORS: Record<string, Topic['generate']> = {
   'bi-k6-lb2-wirbellose': bankGenerate(wirbelloseOverview),
   'bi-k6-lb2-insekten': bankGenerate(insekten),
   'bi-k6-lb2-spinnen': bankGenerate(spinnen),
+  'bi-k6-lbw-spinnen': bankGenerate(spinnen),
   'bi-k6-lb3-systematik': bankGenerate(systematikK6),
   'bi-k6-lb4-wald': bankGenerate(wald),
   'bi-k6-lb5-zellen': bankGenerate(zellen),

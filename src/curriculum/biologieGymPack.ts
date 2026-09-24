@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.2.6',
-    changelog: `K6 Wirbellose Spezial: Krebstiere, Tausendfüßer, Ringelwürmer, Stachelhäuter, Nesseltiere; Weichtiere mit Schnecken/Muscheln/Kopffüßern. ${topics} Themen.`,
+    version: '1.2.7',
+    changelog: `Lehrplan-522-Struktur: Gk 11/12 getrennt, fehlende Wahlbereiche (Spinnen, Transgene, Gärung, Allergien, Wüste Lk), LB2 ohne Stachelhäuter/Tausendfüßer, mit Rundwürmern/Hohltiere. ${topics} Themen.`,
     official,
     extras: [],
   }

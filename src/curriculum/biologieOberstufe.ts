@@ -593,6 +593,30 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
       },
     ]),
   ),
+  'bi-gk-lbw-gaerung': bankGenerate(
+    wahl('Gärung', 'G%C3%A4rung', [
+      {
+        concept: 'bio:kOberstufe:gaerung-vs-atmung',
+        prompt: 'Was unterscheidet Gärung grob von Zellatmung?',
+        answer: 'Gärung liefert ATP ohne Sauerstoff / ohne Atmungskette',
+        wrong: ['Gärung braucht immer Chloroplasten', 'Gärung ist nur Federbildung', 'Gärung ersetzt DNA'],
+        explanation: 'Milchsäure- und alkoholische Gärung — anaerober Abbau.',
+        wissen:
+          'Bei der Gärung wird Glucose anaerob abgebaut; die Netto-ATP-Ausbeute ist geringer als bei Zellatmung. Milchsäuregärung und alkoholische Gärung sind zentrale Beispiele. Der Vergleich von Atmung und Gärung vertieft Dissimilation.',
+        gap: 'Gärung läuft ___ ab und liefert weniger ATP als Atmung.',
+        gapAccepted: ['anaerob', 'ohne Sauerstoff', 'sauerstofffrei'],
+      },
+      {
+        concept: 'bio:kOberstufe:alkoholische-gaerung',
+        prompt: 'Was entsteht typisch bei alkoholischer Gärung?',
+        answer: 'Ethanol und CO₂',
+        wrong: ['Nur Sauerstoff', 'Nur Proteine ohne Stoffwechsel', 'Nur Knochen'],
+        explanation: 'Hefen: Zucker → Ethanol + CO₂.',
+        wissen:
+          'Alkoholische Gärung spaltet Zucker zu Ethanol und Kohlenstoffdioxid. Hefen nutzen sie bei Sauerstoffmangel. Im Unterricht wird sie mit Zellatmung und Milchsäuregärung verglichen.',
+      },
+    ]),
+  ),
   'bi-gk-lbw-fliesgewaesser': bankGenerate(
     wahl('Fließgewässer', 'Flie%C3%9Fgew%C3%A4sser', [
       {
@@ -605,6 +629,19 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
           'In Fließgewässern prägen Strömung, Sauerstoffeintrag, Temperatur und Uferstruktur die Lebensgemeinschaft. Viele Organismen sind an Strömung angepasst (Haftorgane, robuste Körper). Veränderungen der Ufer und Verbauung ändern das Habitat stark.',
         gap: 'In Bächen ist die ___ ein prägender abiotischer Faktor.',
         gapAccepted: ['Strömung', 'Strömungsgeschwindigkeit'],
+      },
+    ]),
+  ),
+  'bi-gk-lbw-allergien': bankGenerate(
+    wahl('Allergie', 'Allergie', [
+      {
+        concept: 'bio:kOberstufe:gk-allergie',
+        prompt: 'Eine Allergie ist grob …',
+        answer: 'übersteigerte Immunreaktion gegen eigentlich harmlose Stoffe',
+        wrong: ['immer eine Virusvermehrung', 'nur Knochenbruch', 'nur Fotosynthese'],
+        explanation: 'Immunbiologie auf Allergien anwenden.',
+        wissen:
+          'Allergien sind übersteigerte Immunreaktionen gegen harmlose Antigene (Allergene). IgE und Mastzellen spielen beim Soforttyp eine Rolle. Der Wahlbereich übt die Anwendung immunbiologischer Kenntnisse.',
       },
     ]),
   ),
@@ -626,6 +663,23 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
   'bi-gk-lbw-nerven': bankGenerate(kommunikation),
   'bi-gk-lbw-verhalten': bankGenerate(verhalten),
   'bi-gk-lbw-gentechnik': bankGenerate(genetikOS),
+  'bi-lk11-lbw-wueste': bankGenerate(
+    wahl(
+      'Wüste',
+      'W%C3%BCste',
+      [
+        {
+          concept: 'bio:kOberstufe:lk-wueste-angepasstheit',
+          prompt: 'Welche Angepasstheit hilft Wüstenpflanzen oft?',
+          answer: 'Wasserspeicherung / reduzierte Blätter / dicke Cuticula',
+          wrong: ['Kiemenatmung', 'Federflug als Blatt', 'Blutkreislauf wie Säuger'],
+          explanation: 'Wassersparen und -speichern sind typisch.',
+          wissen:
+            'Wüstenpflanzen speichern Wasser, reduzieren Verdunstungsfläche und schützen mit dicker Cuticula. CAM und Sukkulenz sind häufige Anpassungen an Trockenheit.',
+        },
+      ],
+    ),
+  ),
   'bi-lk11-lbw-urban': bankGenerate(
     wahl('Stadtökologie', 'Stadt%C3%B6kologie', [
       {

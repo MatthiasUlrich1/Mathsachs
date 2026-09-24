@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-24T19:47:21.646Z",
+  "updatedAt": "2026-09-24T20:03:08.755Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -40,10 +40,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Biologie",
-      "version": "1.2.6",
+      "version": "1.2.7",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-biologie.json",
-      "size": 60725,
-      "changelog": "K6 Wirbellose Spezial: Krebstiere, Tausendfüßer, Ringelwürmer, Stachelhäuter, Nesseltiere; Weichtiere mit Schnecken/Muscheln/Kopffüßern. 117 Themen."
+      "size": 62901,
+      "changelog": "Lehrplan-522-Struktur: Gk 11/12 getrennt, fehlende Wahlbereiche (Spinnen, Transgene, Gärung, Allergien, Wüste Lk), LB2 ohne Stachelhäuter/Tausendfüßer, mit Rundwürmern/Hohltiere. 121 Themen."
     },
     {
       "id": "gym-sachsen-anhalt",

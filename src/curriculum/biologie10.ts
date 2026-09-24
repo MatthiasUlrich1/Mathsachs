@@ -281,10 +281,61 @@ const lernen: BioBank = {
   ],
 }
 
+const transgen: BioBank = {
+  quelle: 'Wikipedia: Transgener Organismus',
+  url: 'https://de.wikipedia.org/wiki/Transgener_Organismus',
+  conceptPrefix: 'bio:k10:transgen',
+  facts: [
+    {
+      concept: 'bio:k10:transgen:definition',
+      prompt: 'Was ist ein transgener Organismus grob?',
+      answer: 'Organismus mit artfremdem Gen durch Gentechnik',
+      wrong: ['Jedes Wildtier ohne Züchtung', 'Nur Fossilien', 'Nur Viren ohne DNA'],
+      explanation: 'Fremde Gene werden gezielt eingebracht.',
+      wissen:
+        'Transgene Organismen tragen Gene, die ihnen gentechnisch aus einer anderen Art übertragen wurden. Ziel kann Resistenz, Wirkstoffproduktion oder Forschung sein. Nutzen und Risiken werden ethisch und ökologisch abgewogen.',
+      gap: 'Ein ___ Organismus enthält artfremde Gene durch Gentechnik.',
+      gapAccepted: ['transgener', 'transgener', 'gentechnisch veränderter'],
+    },
+    {
+      concept: 'bio:k10:transgen:nutzen-risiko',
+      prompt: 'Wozu positioniert man sich bei transgenen Organismen im Unterricht?',
+      answer: 'Zu Nutzen und Risiken ausgewählter Beispiele',
+      wrong: ['Nur zur Federfarbe', 'Nur zur Kiemenatmung', 'Nur zur Nestbaukunst'],
+      explanation: 'Landwirtschaft, Medizin, Umweltschutz — Chancen und Risiken.',
+      wissen:
+        'Beispiele reichen von resistenten Nutzpflanzen bis zu diagnostischen oder therapeutischen Anwendungen. Mögliche Risiken betreffen Ökosysteme, Kennzeichnung und gesellschaftliche Akzeptanz. Eine fundierte Position braucht Fachwissen und Werteklärung.',
+    },
+  ],
+  pairs: [
+    {
+      term: 'Transgen',
+      meaning: 'Übertragenes artfremdes Gen',
+      wissen: 'Das eingebrachte Gen stammt typischerweise aus einer anderen Art und wird stabil vererbt.',
+    },
+    {
+      term: 'Gentechnik',
+      meaning: 'Gezielte Veränderung von Erbgut',
+      wissen: 'Methoden zum Einbringen, Ausschalten oder Verändern von Genen — Grundlage transgener Organismen.',
+    },
+  ],
+  trueFalse: [
+    {
+      concept: 'bio:k10:transgen:tf',
+      statement: 'Transgene Organismen entstehen ausschließlich durch klassische Kreuzung verwandter Arten.',
+      correct: false,
+      explanation: 'Transgenie nutzt gentechnische Methoden, nicht nur klassische Züchtung.',
+      wissen:
+        'Klassische Züchtung kreuzt verwandte Formen; Transgenie überträgt Gene auch über Artgrenzen hinweg mit molekularen Methoden.',
+    },
+  ],
+}
+
 export const BIOLOGIE_K10_GENERATORS: Record<string, Topic['generate']> = {
   'bi-k10-lb1-genetik': bankGenerate(genetik),
   'bi-k10-lb2-artenvielfalt': bankGenerate(artenvielfalt),
   'bi-k10-lb3-mensch': bankGenerate(mensch),
+  'bi-k10-lbw-transgen': bankGenerate(transgen),
   'bi-k10-lbw-leben': bankGenerate(leben),
   'bi-k10-lbw-lernen': bankGenerate(lernen),
 }
