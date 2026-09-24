@@ -9,6 +9,20 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.33] – 2026-09-24
+
+### Behoben
+- **Biologie Fachwissen (K5–10 + Oberstufe):** Jede Aufgabe trägt fragebezogenes Fachwissen
+  (≥2 Sätze, keine LB-/Wahl-/Untertitel-Platzhalter). Genetik/PCR: Lücke und Wissen beschreiben
+  DNA-Amplifikation (Denaturierung, Primer, Polymerase) — nicht mehr mRNA/Proteinbiosynthese
+  oder den Lernbereichstitel „Anwendungen und Perspektiven der Genetik“.
+
+### Geändert
+- **Vielfalt erhalten:** größere pairMatch-/Faktenpools (`biologieBankDeepen`) bleiben aktiv,
+  damit Runden bei Unique-Dedupe weiterhin ≈10 Aufgaben erreichen.
+- **Qualitätstests:** Fachwissen-Bar für alle Generatoren inkl. Oberstufe; PCR-Konsistenz über
+  Gk/Lk-Genetik-Themen. Biologie-Pack **1.2.4**.
+
 ## [0.28.32] – 2026-09-24
 
 ### Behoben

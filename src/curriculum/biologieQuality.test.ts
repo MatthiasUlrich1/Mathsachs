@@ -91,39 +91,98 @@ describe('content-level round uniqueness', () => {
 
 describe('Biologie quality bar', () => {
   const META_FACHWISSEN =
-    /Prüfung:|Antwort prüfen|Teilpunkte|Karteikarte:|Zur Frage|Die gesuchte Antwort|Auch akzeptiert|Klassenarbeiten|gewertet|Häufige Verwechslung in Quizzes|im Unterricht\.|Systemüberblick\.|Orientierung im|Wahl:|Wahlbereich:|LB\d|Kursinhalte beachten|Schlaukopf|Klassiker \(/i
+    /Prüfung:|Antwort prüfen|Teilpunkte|Karteikarte:|Zur Frage|Die gesuchte Antwort|Auch akzeptiert|Klassenarbeiten|gewertet|Häufige Verwechslung in Quizzes|im Unterricht\.|Systemüberblick\.|Orientierung im|Wahl:\s|Wahlbereich:|LB\d|LB:\s|Kursinhalte beachten|Schlaukopf|Klassiker \(/i
 
-  /** Sek I Gym (K5–10) — Fachwissen hier auf reines Fachwissen gehärtet. */
-  const sekIIds = Object.keys(BIOLOGIE_GENERATORS).filter((id) =>
-    /^bi-k(5|6|7|8|9|10)-/.test(id),
+  const TOPIC_SUBTITLE_PLACEHOLDER =
+    /^(Anwendungen und Perspektiven der Genetik\.?|Grundlagen, Anwendungen und Perspektiven|Zellbiologie\.?|Genregulation\.?|Molekulare Genetik\.?|Genexpression\.?|Einordnung\.?|Vernetzung\.?|Systemdenken\.?|Immunologie\.?|Leben in der Wüste\.?|Wahl Energiehaushalt\.?|Wahl Fließgewässer\.?)$/i
+
+  const allIds = Object.keys(BIOLOGIE_GENERATORS)
+  const sekIIds = allIds.filter((id) => /^bi-k(5|6|7|8|9|10)-/.test(id))
+  const oberstufeIds = allIds.filter(
+    (id) => /^bi-(gk|lk)/.test(id) || id.includes('organellen'),
   )
 
-  it('every Sek-I task has question-specific fachwissen', () => {
+  it('registers the full Biologie Lehrplan (Sek I + Oberstufe)', () => {
+    expect(allIds.length).toBeGreaterThan(90)
     expect(sekIIds.length).toBeGreaterThan(40)
-    for (const id of sekIIds) {
-      for (let seed = 0; seed < 6; seed++) {
+    expect(oberstufeIds.length).toBeGreaterThan(25)
+  })
+
+  it('every Bio task (incl. Oberstufe) has substantive question-specific fachwissen', () => {
+    for (const id of allIds) {
+      for (let seed = 0; seed < 5; seed++) {
         const task = BIOLOGIE_GENERATORS[id]!(createRng(seed * 97 + 3))
-        expect(task.fachwissen?.text?.trim().length, `${id}@${seed}`).toBeGreaterThanOrEqual(45)
+        const text = task.fachwissen?.text?.trim() ?? ''
+        expect(text.length, `${id}@${seed}`).toBeGreaterThanOrEqual(80)
+        const sentences = text.split(/[.!?]+/).filter((s) => s.trim().length > 15)
+        expect(sentences.length, `${id}@${seed} sentences`).toBeGreaterThanOrEqual(2)
+        expect(text, `${id}@${seed}`).not.toMatch(TOPIC_SUBTITLE_PLACEHOLDER)
       }
     }
   })
 
-  it('Sek-I fachwissen is pure subject knowledge — no grading/UI/meta bla', () => {
-    for (const id of sekIIds) {
-      for (let seed = 0; seed < 8; seed++) {
+  it('fachwissen is pure subject knowledge — no grading/UI/meta bla', () => {
+    for (const id of allIds) {
+      for (let seed = 0; seed < 4; seed++) {
         const task = BIOLOGIE_GENERATORS[id]!(createRng(seed * 53 + 11))
         const text = task.fachwissen?.text ?? ''
         expect(text, `${id}@${seed}`).not.toMatch(META_FACHWISSEN)
         expect(text.toLowerCase(), `${id}@${seed}`).not.toContain('karte umdrehen')
         expect(text.toLowerCase(), `${id}@${seed}`).not.toContain('groß-/kleinschreibung')
+        expect(text, `${id}@${seed}`).not.toMatch(/^Wahl:\s/i)
+        expect(text, `${id}@${seed}`).not.toMatch(/^LB:\s/i)
+      }
+    }
+  })
+
+  it('Genetik PCR prompt never pairs with Proteinbiosynthese cloze', () => {
+    const genetikIds = [
+      'bi-lk12-lb1-genetik',
+      'bi-gk12-lb1-genetik',
+      'bi-gk-lbw-gentechnik',
+      'bi-lk12-lbw-gentechnik',
+    ]
+    for (const topicId of genetikIds) {
+      const gen = BIOLOGIE_GENERATORS[topicId]!
+      let pcrSeen = 0
+      for (let seed = 0; seed < 120; seed++) {
+        const task = gen(createRng(seed * 17 + 3))
+        if (!/PCR/i.test(task.question)) continue
+        pcrSeen++
+        const segs = task.interactive?.props?.segments
+        const cloze = Array.isArray(segs) ? segs.join('___') : ''
+        expect(cloze, `${topicId} seed ${seed}`).not.toMatch(/Proteinbiosynthese/i)
+        expect(cloze, `${topicId} seed ${seed}`).not.toMatch(/mRNA|Aminosäure/i)
+        expect(task.fachwissen?.text ?? '', `${topicId} seed ${seed}`).toMatch(
+          /Polymerase|Denaturierung|Primer|Amplifik|Vervielfält/i,
+        )
+        expect(task.fachwissen?.text ?? '', `${topicId} seed ${seed}`).not.toMatch(
+          /^Anwendungen und Perspektiven/i,
+        )
+        expect(String(task.solution ?? ''), `${topicId} seed ${seed}`).toMatch(
+          /Vervielfält|Amplifik|DNA/i,
+        )
+      }
+      expect(pcrSeen, topicId).toBeGreaterThan(0)
+    }
+  })
+
+  it('Oberstufe generators never emit thin LB/Wahl/subtitle placeholders', () => {
+    const thin =
+      /^(LB:?\s|Wahl:?\s|Wahlbereich|Anwendungen und Perspektiven|Zellbiologie\.?$|Genregulation\.?$|Molekulare Genetik\.?$|Genexpression\.?$|Einordnung\.?$|Vernetzung\.?$|Systemdenken\.?$|Immunologie\.?$|Dissimilation\.?$|Praxisbezug\.?$|Spezifität\.?$)/i
+    for (const id of oberstufeIds) {
+      for (let seed = 0; seed < 6; seed++) {
+        const text = BIOLOGIE_GENERATORS[id]!(createRng(seed * 41 + 7)).fachwissen?.text?.trim() ?? ''
+        expect(text.length, `${id}@${seed}`).toBeGreaterThanOrEqual(80)
+        expect(text, `${id}@${seed}`).not.toMatch(thin)
       }
     }
   })
 
   it('no bio task injects Prüfung-/Wertung-meta into fachwissen', () => {
     const hardMeta = /Prüfung:|Antwort prüfen|Teilpunkte|Groß-\/Kleinschreibung|Karte umdrehen/i
-    for (const id of Object.keys(BIOLOGIE_GENERATORS)) {
-      for (let seed = 0; seed < 4; seed++) {
+    for (const id of allIds) {
+      for (let seed = 0; seed < 3; seed++) {
         const task = BIOLOGIE_GENERATORS[id]!(createRng(seed * 17 + 3))
         expect(task.fachwissen?.text ?? '', `${id}@${seed}`).not.toMatch(hardMeta)
       }
@@ -172,13 +231,17 @@ describe('Biologie quality bar', () => {
   it('pairMatch tasks carry concept contentIds and enough pool variety', () => {
     const gen = BIOLOGIE_GENERATORS['bi-k6-lb2-wirbellose']!
     const pairKeys = new Set<string>()
-    for (let seed = 0; seed < 60; seed++) {
+    let maxLeft = 0
+    for (let seed = 0; seed < 80; seed++) {
       const task = gen(createRng(seed * 41 + 9))
       if (task.interactive?.type !== 'pairMatch') continue
       expect(task.contentIds?.length ?? 0).toBeGreaterThanOrEqual(3)
+      const left = (task.interactive.props?.left as Array<{ label?: string }>) ?? []
+      maxLeft = Math.max(maxLeft, left.length)
       for (const id of task.contentIds ?? []) pairKeys.add(id)
     }
-    expect(pairKeys.size).toBeGreaterThanOrEqual(6)
+    expect(pairKeys.size).toBeGreaterThanOrEqual(8)
+    expect(maxLeft).toBeGreaterThanOrEqual(4)
   })
 
   it('rounds of 10 have unique content identities', () => {
@@ -196,7 +259,7 @@ describe('Biologie quality bar', () => {
           expect(seen.has(id), `${topicId} dup ${id}`).toBe(false)
           seen.add(id)
         }
-        expect(t.fachwissen?.text?.length).toBeGreaterThan(10)
+        expect(t.fachwissen?.text?.length).toBeGreaterThan(40)
       }
     }
   })

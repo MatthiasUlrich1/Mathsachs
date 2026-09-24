@@ -507,6 +507,15 @@ export function defaultFachwissen(topic: TopicRef, subject?: string): Fachwissen
     if (k5ById[id]) {
       return { text: k5ById[id], ...wiki('Wirbeltiere', 'Wirbeltiere') }
     }
+    if (/genetik|gentechnik|pcr|transkription|translation/.test(`${id} ${topic.title}`.toLowerCase())) {
+      return {
+        text:
+          'Genetik verbindet DNA-Struktur, Genexpression (Transkription → mRNA → Translation) und Anwendungen wie PCR. ' +
+          'PCR amplifiziert DNA-Abschnitte zyklisch (Denaturierung, Primer-Anlagerung, Elongation). ' +
+          'In der Übung erklärt Fachwissen jeweils den konkreten Fragetext — nicht nur den Lernbereichstitel.',
+        ...wiki('Genetik', 'Genetik'),
+      }
+    }
     if (/fisch|lurch|amphib|kriech|reptil|vogel|s[aä]ug|wirbeltier|metamorph/.test(
       `${id} ${topic.title}`.toLowerCase(),
     )) {

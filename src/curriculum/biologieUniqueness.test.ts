@@ -60,7 +60,7 @@ const SIBLING_FAMILIES: string[][] = [
 ]
 
 const GENERIC_STEM =
-  /^(ordne begriff und erklaerung|ordne zu|welche aussage|richtig oder falsch|karteikarte|tippe|waehle|stimmt die aussage)/i
+  /^(ordne begriff und erklaerung|ordne zu|ordne zu \d+|welche aussage|richtig oder falsch|karteikarte|tippe|waehle|stimmt die aussage)/i
 
 function normalizeStem(s: string): string {
   return s
@@ -77,6 +77,11 @@ function normalizeStem(s: string): string {
 function isContentStem(stem: string): boolean {
   if (stem.length < 12) return false
   if (GENERIC_STEM.test(stem)) return false
+  // Size-varying Zuordnung chrome — not topic content
+  if (/^ordne( zu)?(:)?\s*\d+\s*fachbegriff/i.test(stem)) return false
+  if (/klick.?paare/i.test(stem) && /ordne/i.test(stem)) return false
+  if (/lebensmerkmale ihren erkl/i.test(stem)) return false
+  if (/bau und funktionsbegriff/i.test(stem)) return false
   return true
 }
 
@@ -154,6 +159,32 @@ describe('Bug A — within-topic uniqueness (entire Bio Lehrplan)', () => {
     expect(round.length).toBeLessThanOrEqual(3)
     const idsRound = round.flatMap(taskContentIds)
     expect(new Set(idsRound).size).toBe(idsRound.length)
+  })
+
+  it('Sek-I core topics usually fill ~10 unique tasks (pool expansion, not short rounds)', () => {
+    const core = [
+      'bi-k5-lb1-merkmale',
+      'bi-k5-lb1-kennzeichen',
+      'bi-k5-lb2-fische',
+      'bi-k5-lb2-fische-merkmale',
+      'bi-k6-lb2-spinnen',
+      'bi-k6-lb2-insekten',
+      'bi-k6-lb2-wirbellose',
+      'bi-k7-lb2-herz',
+      'bi-k8-lb1-sinne',
+      'bi-k9-lb1-fotosynthese',
+      'bi-k10-lb1-dna',
+    ]
+    for (const id of core) {
+      const gen = BIOLOGIE_GENERATORS[id]
+      if (!gen) continue
+      const lens = [1, 42, 99, 777, 12345].map(
+        (s) => buildUniqueTaskRound(gen, createRng(s), 10, 140).length,
+      )
+      const avg = lens.reduce((a, b) => a + b, 0) / lens.length
+      expect(avg, `${id} avgLen=${avg} lenses=${lens.join(',')}`).toBeGreaterThanOrEqual(8.5)
+      expect(Math.min(...lens), `${id} min=${Math.min(...lens)}`).toBeGreaterThanOrEqual(7)
+    }
   })
 })
 

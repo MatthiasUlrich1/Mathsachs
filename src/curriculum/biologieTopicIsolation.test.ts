@@ -72,6 +72,10 @@ const GENERIC_STEM =
 function isContentStem(stem: string): boolean {
   if (stem.length < 12) return false
   if (GENERIC_STEM.test(stem)) return false
+  if (/^ordne( zu)?(:)?\s*\d+\s*fachbegriff/i.test(stem)) return false
+  if (/klick.?paare/i.test(stem) && /ordne/i.test(stem)) return false
+  if (/lebensmerkmale ihren erkl/i.test(stem)) return false
+  if (/bau und funktionsbegriff/i.test(stem)) return false
   return true
 }
 

@@ -164,19 +164,33 @@ const SPECIES: { name: string; group: GroupKey; note: string }[] = [
   { name: 'Forelle', group: 'fisch', note: 'Süßwasserfisch mit Kiemen und Flossen' },
   { name: 'Hecht', group: 'fisch', note: 'Raubfisch in sächsischen Gewässern' },
   { name: 'Aal', group: 'fisch', note: 'Wanderfisch zwischen Süß- und Salzwasser' },
+  { name: 'Karpfen', group: 'fisch', note: 'Friedfisch; oft in Teichen gehalten' },
+  { name: 'Barsch', group: 'fisch', note: 'Raubfisch mit Stachelflossen' },
+  { name: 'Schleie', group: 'fisch', note: 'Bodenfisch in ruhigen Gewässern' },
   { name: 'Erdkröte', group: 'lurch', note: 'Froschlurch; feuchte Haut, Metamorphose' },
   { name: 'Grasfrosch', group: 'lurch', note: 'Laicht im Frühjahr in Tümpeln' },
   { name: 'Feuersalamander', group: 'lurch', note: 'Schwanzlurch mit Warnfärbung' },
+  { name: 'Teichmolch', group: 'lurch', note: 'Schwanzlurch; Laichgewässer nötig' },
+  { name: 'Laubfrosch', group: 'lurch', note: 'Kletternder Froschlurch; Haftscheiben' },
+  { name: 'Knoblauchkröte', group: 'lurch', note: 'Grabende Kröte; Versteck im Boden' },
   { name: 'Zauneidechse', group: 'kriechtier', note: 'Heimisches Kriechtier; Hornschuppen' },
   { name: 'Ringelnatter', group: 'kriechtier', note: 'Ungiftige Schlange; Eiablage an Land' },
   { name: 'Blindschleiche', group: 'kriechtier', note: 'Beinlose Echse (kein Wurm!)' },
+  { name: 'Waldeidechse', group: 'kriechtier', note: 'Kleine Echse; oft in Heide und Wald' },
+  { name: 'Kreuzotter', group: 'kriechtier', note: 'Giftige Viper; charakteristische Zeichnung' },
+  { name: 'Europäische Sumpfschildkröte', group: 'kriechtier', note: 'Panzer; an Gewässer gebunden' },
   { name: 'Amsel', group: 'vogel', note: 'Singvogel; Federkleid, gleichwarm' },
   { name: 'Kohlmeise', group: 'vogel', note: 'Häufiger Höhlenbrüter in Gärten' },
   { name: 'Rotmilan', group: 'vogel', note: 'Greifvogel; Schnabel an Beute angepasst' },
+  { name: 'Buchfink', group: 'vogel', note: 'Häufiger Singvogel; Körnerfresser-Anteil' },
+  { name: 'Mauersegler', group: 'vogel', note: 'Ausgesprochener Flugjäger; Zugvogel' },
+  { name: 'Stockente', group: 'vogel', note: 'Wasservogel; Schwimmhäute' },
   { name: 'Reh', group: 'saeuger', note: 'Pflanzenfresser; Wiederkäuer-Gebiss' },
   { name: 'Fuchs', group: 'saeuger', note: 'Allesfresser; Fell, lebendgebärend' },
   { name: 'Maulwurf', group: 'saeuger', note: 'Grabende Gliedmaßen – Angepasstheit' },
   { name: 'Fledermaus', group: 'saeuger', note: 'Flughäute – Angepasstheit an Luftleben' },
+  { name: 'Igel', group: 'saeuger', note: 'Insektenfresser; Stacheln als Schutz' },
+  { name: 'Rothirsch', group: 'saeuger', note: 'Großer Wiederkäuer; Geweih der Männchen' },
 ]
 
 const FEATURES: { text: string; group: GroupKey | 'alle' | 'keines'; wissen: string }[] = [
@@ -196,6 +210,16 @@ const FEATURES: { text: string; group: GroupKey | 'alle' | 'keines'; wissen: str
     wissen: 'Bei vielen Fischen werden Eier und Samen im Wasser abgegeben (äußere Befruchtung).',
   },
   {
+    text: 'Seitenlinie zum Wahrnehmen von Wasserbewegungen',
+    group: 'fisch',
+    wissen: 'Die Seitenlinie hilft Fischen, Strömung und Bewegungen im Wasser wahrzunehmen.',
+  },
+  {
+    text: 'Schwimmblase zur Auftriebsregulation (viele Knochenfische)',
+    group: 'fisch',
+    wissen: 'Die Schwimmblase ermöglicht vielen Knochenfischen, ohne ständiges Schwimmen in der Tiefe zu schweben.',
+  },
+  {
     text: 'Feuchte, drüsenreiche Haut; Feuchtlufttier',
     group: 'lurch',
     wissen: 'Lurche atmen auch über die Haut; sie brauchen Feuchtigkeit und sind wechselwarm.',
@@ -204,6 +228,16 @@ const FEATURES: { text: string; group: GroupKey | 'alle' | 'keines'; wissen: str
     text: 'Metamorphose (z. B. Kaulquappe → Frosch)',
     group: 'lurch',
     wissen: 'Die Larve im Wasser (Kiemen) wird zum landlebenden Adulttier — typische Metamorphose.',
+  },
+  {
+    text: 'Oft äußere Befruchtung und Laich im Wasser',
+    group: 'lurch',
+    wissen: 'Viele Froschlurche legen Laich in Gewässern ab; die Befruchtung erfolgt oft äußerlich.',
+  },
+  {
+    text: 'Wechselwarm; Aktivität stark temperaturabhängig',
+    group: 'lurch',
+    wissen: 'Als Wechselwarme sind Lurche bei Kälte träge und suchen Schutz oder erstarren.',
   },
   {
     text: 'Hornschicht oder Hornpanzer; Trockenlufttier',
@@ -216,6 +250,16 @@ const FEATURES: { text: string; group: GroupKey | 'alle' | 'keines'; wissen: str
     wissen: 'Anders als Fische/Lurche: innere Befruchtung; Eier entwickeln sich ohne Wasserbad.',
   },
   {
+    text: 'Lungenatmung ohne Hautatmung wie bei Lurchen',
+    group: 'kriechtier',
+    wissen: 'Kriechtiere atmen mit Lungen; die trockene Hornschicht erlaubt kein feuchtes Hautatmen wie bei vielen Lurchen.',
+  },
+  {
+    text: 'Eier mit ledriger oder kalkiger Schale (viele Arten)',
+    group: 'kriechtier',
+    wissen: 'Landleben der Fortpflanzung: Eihüllen schützen vor Austrocknung.',
+  },
+  {
     text: 'Federkleid und hohle Knochen',
     group: 'vogel',
     wissen: 'Federn und leichtes Skelett (u. a. hohle Knochen) unterstützen den Flug.',
@@ -226,6 +270,16 @@ const FEATURES: { text: string; group: GroupKey | 'alle' | 'keines'; wissen: str
     wissen: 'Luftsäcke verbessern den Gasaustausch beim energetisch aufwendigen Fliegen.',
   },
   {
+    text: 'Schnabel statt Zähne; innere Befruchtung',
+    group: 'vogel',
+    wissen: 'Vögel haben einen Schnabel; die Fortpflanzung erfolgt mit innerer Befruchtung und Eiablage.',
+  },
+  {
+    text: 'Gleichwarm; hoher Energiebedarf',
+    group: 'vogel',
+    wissen: 'Gleichwarme Vögel halten ihre Temperatur — der Flug kostet viel Energie.',
+  },
+  {
     text: 'Fell; Nachkommen werden gesäugt',
     group: 'saeuger',
     wissen: 'Säugetiere: Haare/Fell, lebendgebärend (meist), Säugen — gleichwarme Körpertemperatur.',
@@ -234,6 +288,16 @@ const FEATURES: { text: string; group: GroupKey | 'alle' | 'keines'; wissen: str
     text: 'Gleichwarme Körpertemperatur und lebendgebärend (meist)',
     group: 'saeuger',
     wissen: 'Gleichwarm hält die Körpertemperatur weitgehend konstant; Jungtiere werden oft im Körper ausgetragen.',
+  },
+  {
+    text: 'Differenziertes Gebiss je nach Ernährung',
+    group: 'saeuger',
+    wissen: 'Schneide-, Eck- und Backenzähne sind an Pflanzen-, Fleisch- oder Allesfresser angepasst.',
+  },
+  {
+    text: 'Milchdrüsen ernähren die Jungen',
+    group: 'saeuger',
+    wissen: 'Namengebend: Säugetiere säugen ihre Nachkommen mit Milch.',
   },
 ]
 
@@ -262,6 +326,31 @@ const LIFE_TRAITS = [
     trait: 'Wachstum und Entwicklung',
     meaning: 'Größenzunahme und Veränderung im Lebenslauf',
     wissen: 'Lebewesen wachsen und durchlaufen Entwicklungsstadien (Geburt/Keimung bis Tod).',
+  },
+  {
+    trait: 'Zellulärer Aufbau',
+    meaning: 'Lebewesen bestehen aus einer oder vielen Zellen',
+    wissen: 'Die Zelle ist die grundlegende strukturelle und funktionelle Einheit des Lebens.',
+  },
+  {
+    trait: 'Regulation',
+    meaning: 'Innere Zustände werden aktiv im Gleichgewicht gehalten',
+    wissen: 'Regulation (Homöostase) steuert z. B. Temperatur, Wasser- und Stoffhaushalt.',
+  },
+  {
+    trait: 'Erbinformation',
+    meaning: 'Merkmale werden über Erbgut an Nachkommen weitergegeben',
+    wissen: 'Erbinformation in der DNA ermöglicht Vererbung und Entwicklung.',
+  },
+  {
+    trait: 'Ausscheidung',
+    meaning: 'Abgabe nicht mehr benötigter oder schädlicher Stoffe',
+    wissen: 'Ausscheidung gehört zum Stoffwechselgeschehen und schützt vor Giftstoffen.',
+  },
+  {
+    trait: 'Angepasstheit',
+    meaning: 'Merkmale passen zu Lebensraum und Lebensweise',
+    wissen: 'Angepasstheit zeigt sich in Bau und Verhalten — Ergebnis langfristiger Evolution.',
   },
 ]
 
@@ -349,6 +438,41 @@ function merkmaleTrueFalse(rng: Rng) {
       explanation: 'Lebewesen verändern Größe und Gestalt im Lebenslauf.',
       wissen: 'Wachstum/Entwicklung gehört neben Stoffwechsel und Fortpflanzung zu den Lebensmerkmalen.',
     },
+    {
+      concept: 'bio:k5:leben:tf-zelle',
+      statement: 'Lebewesen bestehen aus einer oder vielen Zellen.',
+      correct: true,
+      explanation: 'Der zelluläre Aufbau ist ein zentrales Lebensmerkmal.',
+      wissen: 'Die Zelle ist die grundlegende Einheit des Lebens.',
+    },
+    {
+      concept: 'bio:k5:leben:tf-regulation',
+      statement: 'Regulation hält innere Zustände im Gleichgewicht (Homöostase).',
+      correct: true,
+      explanation: 'Lebewesen steuern z. B. Wasser- und Stoffhaushalt aktiv.',
+      wissen: 'Regulation gehört zu den Merkmalen des Lebens.',
+    },
+    {
+      concept: 'bio:k5:leben:tf-erbgut-stein',
+      statement: 'Auch unbelebte Steine speichern Erbinformation in DNA.',
+      correct: false,
+      explanation: 'Erbinformation in DNA ist ein Merkmal von Lebewesen.',
+      wissen: 'Vererbung über Erbgut gilt für Organismen, nicht für Steine.',
+    },
+    {
+      concept: 'bio:k5:leben:tf-ausscheidung',
+      statement: 'Ausscheidung von Abfallstoffen gehört zum Stoffwechselgeschehen.',
+      correct: true,
+      explanation: 'Aufnahme, Umbau und Abgabe bilden den Stoffwechsel.',
+      wissen: 'Ausscheidung schützt vor schädlichen Stoffansammlungen.',
+    },
+    {
+      concept: 'bio:k5:leben:tf-angepasstheit',
+      statement: 'Angepasstheit bedeutet, dass Merkmale zu Lebensraum und Lebensweise passen.',
+      correct: true,
+      explanation: 'Bau und Verhalten zeigen oft Angepasstheit.',
+      wissen: 'Angepasstheit ist im Schulunterricht ein zentrales Beobachtungsziel.',
+    },
   ]
   const c = pick(rng, cases)
   return trueFalse(rng, {
@@ -363,20 +487,20 @@ function merkmaleTrueFalse(rng: Rng) {
 
 /** Prefer full/half pool Zuordnung so rounds are not 10× the same MC. */
 function merkmaleMatch(rng: Rng) {
-  const useAll = rng() < 0.55
-  const pool = useAll ? shuffle(rng, LIFE_TRAITS) : shuffle(rng, LIFE_TRAITS).slice(0, 3)
+  const n = LIFE_TRAITS.length
+  // Large Zuordnungen (5–6 Begriffe) when possible — variety, not short rounds.
+  const size = n >= 10 ? (rng() < 0.55 ? 6 : 5) : n >= 6 ? 5 : Math.min(4, n)
+  const pool = shuffle(rng, LIFE_TRAITS).slice(0, size)
   const concepts = pool.map((t) => LIFE_CONCEPT(t.trait))
   const task = matchTermsTask(rng, {
-    question: useAll
-      ? 'Ordne alle Lebensmerkmale ihren Erklärungen zu.'
-      : 'Ordne drei Lebensmerkmale ihren Erklärungen zu.',
+    question: `Ordne ${size} Lebensmerkmale ihren Erklärungen zu.`,
     terms: pool.map((t) => t.trait),
     meanings: pool.map((t) => t.meaning),
     distractor: 'Besteht nur aus Metall und Glas',
     solution: pool.map((t) => `${t.trait} → ${t.meaning}`).join('; '),
     explanation: pool.map((t) => t.wissen).join(' '),
     fachwissen: fw(
-      'Merkmale des Lebens: Reizbarkeit, Bewegung, Fortpflanzung, Wachstum/Entwicklung, Stoffwechsel.',
+      'Merkmale des Lebens: u. a. Reizbarkeit, Bewegung, Fortpflanzung, Wachstum/Entwicklung, Stoffwechsel, zellulärer Aufbau, Regulation.',
     ),
     concept: `bio:k5:leben:match:${[...concepts].sort().join('+')}`,
   })
@@ -460,6 +584,52 @@ function kennzeichenMc(rng: Rng) {
       ],
       wissen: 'Viren zeigen keine eigenen Stoffwechselprozesse — sie nutzen Wirtszellen zur Vermehrung.',
     },
+    {
+      concept: 'bio:k5:kennzeichen:kristall',
+      q: 'Warum ist Kristallwachstum kein Lebensmerkmal wie bei Organismen?',
+      good: 'Es ist Anlagerung von Stoff — ohne Stoffwechsel und Fortpflanzung im biologischen Sinn',
+      bad: [
+        'Kristalle säugen ihre Jungen',
+        'Kristalle haben immer Kiemen',
+        'Kristalle sind Säugetiere',
+      ],
+      wissen:
+        'Ähnliche Wörter (Wachstum) meinen bei Kristallen etwas anderes als bei Lebewesen — Kennzeichen prüfen.',
+    },
+    {
+      concept: 'bio:k5:kennzeichen:auto',
+      q: 'Warum ist ein fahrendes Auto kein Lebewesen?',
+      good: 'Es hat keinen eigenen Stoffwechsel und keine Fortpflanzung als Organismus',
+      bad: [
+        'Weil es immer Federn hat',
+        'Weil es Laich ablegt',
+        'Weil es aus Zellen mit DNA besteht',
+      ],
+      wissen:
+        'Maschinen bewegen sich und setzen Stoffe um, erfüllen aber nicht die Kennzeichen eines Organismus.',
+    },
+    {
+      concept: 'bio:k5:kennzeichen:hefe',
+      q: 'Warum zählt Hefe zu den Lebewesen?',
+      good: 'Sie ist zellulär, hat Stoffwechsel und kann sich vermehren',
+      bad: [
+        'Weil sie aus reinem Glas besteht',
+        'Weil sie keine Zellen hat',
+        'Weil sie ein Steinmineral ist',
+      ],
+      wissen: 'Mikroorganismen wie Hefe erfüllen die Kennzeichen des Lebendigen.',
+    },
+    {
+      concept: 'bio:k5:kennzeichen:samen',
+      q: 'Warum kann ein ruhender Samen als lebendig gelten?',
+      good: 'Er kann keimen — Wachstum, Stoffwechsel und Entwicklung setzen ein',
+      bad: [
+        'Weil Samen immer Steine sind',
+        'Weil Samen nie DNA enthalten',
+        'Weil Samen nur Metall sind',
+      ],
+      wissen: 'Überdauerungsstadien gehören zum Lebenszyklus — Kennzeichen werden bei Keimung sichtbar.',
+    },
   ]
   const c = pick(rng, cases)
   return choicePickTask({
@@ -482,14 +652,14 @@ function kennzeichenTf(rng: Rng) {
       statement: 'Ein Lagerfeuer ist ein Lebewesen, weil es sich bewegt und Stoffe umsetzt.',
       correct: false,
       explanation: 'Feuer hat keinen eigenen Organismus mit Fortpflanzung und geregeltem Stoffwechsel.',
-      wissen: 'Chemische Prozesse allein machen noch kein Lebewesen aus.',
+      wissen: 'Chemische Prozesse allein machen noch kein Lebewesen aus — Kennzeichen des Lebendigen fehlen.',
     },
     {
       concept: 'bio:k5:kennzeichen:tf-samen',
       statement: 'Ein ruhender Samen kann zu einem Lebewesen werden und zeigt damit Entwicklungsfähigkeit.',
       correct: true,
       explanation: 'Samen können keimen — Wachstum und Entwicklung setzen ein.',
-      wissen: 'Überdauerungsstadien gehören zum Lebenszyklus vieler Organismen.',
+      wissen: 'Überdauerungsstadien gehören zum Lebenszyklus vieler Organismen und zeigen Entwicklungsfähigkeit.',
     },
     {
       concept: 'bio:k5:kennzeichen:tf-kristall',
@@ -497,6 +667,34 @@ function kennzeichenTf(rng: Rng) {
       correct: false,
       explanation: 'Kristallwachstum ist Anlagerung — kein Stoffwechsel und keine Fortpflanzung im biologischen Sinn.',
       wissen: 'Ähnliche Wörter (Wachstum) meinen bei Kristallen etwas anderes als bei Organismen.',
+    },
+    {
+      concept: 'bio:k5:kennzeichen:tf-auto',
+      statement: 'Ein fahrendes Auto ist ein Lebewesen, weil es sich bewegt und Kraftstoff umsetzt.',
+      correct: false,
+      explanation: 'Maschinen erfüllen nicht die Kennzeichen eines Organismus.',
+      wissen: 'Bewegung und Stoffumsatz allein reichen nicht — ohne zellulären Organismus kein Lebewesen.',
+    },
+    {
+      concept: 'bio:k5:kennzeichen:tf-hefe',
+      statement: 'Hefezellen gelten als Lebewesen, weil sie Stoffwechsel und Vermehrung zeigen.',
+      correct: true,
+      explanation: 'Hefen sind Mikroorganismen mit zellulärem Aufbau.',
+      wissen: 'Auch einzellige Organismen erfüllen die Kennzeichen des Lebendigen.',
+    },
+    {
+      concept: 'bio:k5:kennzeichen:tf-rost',
+      statement: 'Rostbildung an Eisen ist Fortpflanzung eines Lebewesens.',
+      correct: false,
+      explanation: 'Rost ist eine chemische Reaktion unbelebter Materie.',
+      wissen: 'Chemische Veränderungen an Metallen sind keine biologische Fortpflanzung.',
+    },
+    {
+      concept: 'bio:k5:kennzeichen:tf-regenwurm',
+      statement: 'Ein Regenwurm ist ein Lebewesen mit Stoffwechsel und Reizbarkeit.',
+      correct: true,
+      explanation: 'Tiere wie der Regenwurm erfüllen die Kennzeichen des Lebendigen.',
+      wissen: 'Konkrete Organismen-Beispiele helfen, belebt und unbelebt zu unterscheiden.',
     },
   ]
   const c = pick(rng, cases)
@@ -508,6 +706,57 @@ function kennzeichenTf(rng: Rng) {
     dedupeKey: c.concept,
     contentIds: [c.concept],
   })
+}
+
+function kennzeichenMatch(rng: Rng) {
+  const pool = [
+    {
+      term: 'keimende Bohne',
+      meaning: 'Belebt — Wachstum und Stoffwechsel',
+      concept: 'bio:k5:kennzeichen:paar-bohne',
+    },
+    {
+      term: 'Regenwurm',
+      meaning: 'Belebt — Organismus mit Reizbarkeit',
+      concept: 'bio:k5:kennzeichen:paar-wurm',
+    },
+    {
+      term: 'Hefezelle',
+      meaning: 'Belebt — einzelliger Organismus',
+      concept: 'bio:k5:kennzeichen:paar-hefe',
+    },
+    {
+      term: 'Salzkristall',
+      meaning: 'Unbelebt — kein Stoffwechsel',
+      concept: 'bio:k5:kennzeichen:paar-salz',
+    },
+    {
+      term: 'Glasstück',
+      meaning: 'Unbelebt — keine Fortpflanzung',
+      concept: 'bio:k5:kennzeichen:paar-glas',
+    },
+    {
+      term: 'Quarz',
+      meaning: 'Unbelebt — Mineral ohne Zellen',
+      concept: 'bio:k5:kennzeichen:paar-quarz',
+    },
+  ]
+  const size = rng() < 0.5 ? 5 : 4
+  const subset = shuffle(rng, pool).slice(0, size)
+  const concepts = subset.map((p) => p.concept)
+  const task = matchTermsTask(rng, {
+    question: `Ordne ${size} Beispiele zu: belebt oder unbelebt?`,
+    terms: subset.map((p) => p.term),
+    meanings: subset.map((p) => p.meaning),
+    distractor: 'Photosynthese nur in Knochenmark',
+    solution: subset.map((p) => `${p.term} → ${p.meaning}`).join('; '),
+    explanation: 'Kennzeichen des Lebendigen prüfst du an konkreten Beispielen.',
+    fachwissen: fw(
+      'Kennzeichen des Lebendigen: Organismen vs. unbelebte Materie — an Beispielen wie Bohne, Wurm, Hefe gegen Glas und Kristall.',
+    ),
+    concept: `bio:k5:kennzeichen:match:${[...concepts].sort().join('+')}`,
+  })
+  return { ...task, contentIds: concepts, dedupeKey: concepts.slice().sort().join('+') }
 }
 
 function kennzeichenMulti(rng: Rng) {
@@ -529,6 +778,8 @@ function kennzeichenMulti(rng: Rng) {
 }
 
 export const biKennzeichen: Topic['generate'] = mixedVariants(
+  kennzeichenMatch,
+  kennzeichenMatch,
   kennzeichenMc,
   kennzeichenTf,
   kennzeichenMulti,
@@ -600,6 +851,34 @@ function groupOverviewTf(rng: Rng, group: GroupKey) {
         explanation: 'Forelle und Hecht sind Fische, keine Insekten.',
         wissen: 'Artenkenntnis im Überblick: heimische Beispiele den richtigen Gruppen zuordnen.',
       },
+      {
+        concept: 'bio:k5:fisch:ueberblick:tf-wasser',
+        statement: 'Die meisten Fische leben dauerhaft im Wasser.',
+        correct: true,
+        explanation: 'Fische sind an das Wasserleben angepasst.',
+        wissen: 'Überblick: Wasser ist der typische Lebensraum der Fische.',
+      },
+      {
+        concept: 'bio:k5:fisch:ueberblick:tf-fell',
+        statement: 'Fische haben typischerweise dichtes Fell und säugen ihre Jungen.',
+        correct: false,
+        explanation: 'Fell und Säugen kennzeichnen Säugetiere, nicht Fische.',
+        wissen: 'Gruppen im Überblick unterscheiden: Fische ≠ Säuger.',
+      },
+      {
+        concept: 'bio:k5:fisch:ueberblick:tf-karpfen',
+        statement: 'Karpfen und Barsch sind Beispiele für Fische.',
+        correct: true,
+        explanation: 'Karpfen und Barsch gehören zu den Fischen.',
+        wissen: 'Heimische Beispiele stärken die Gruppenzuordnung im Überblick.',
+      },
+      {
+        concept: 'bio:k5:fisch:ueberblick:tf-flug',
+        statement: 'Fische fliegen typischerweise mit Federflügeln.',
+        correct: false,
+        explanation: 'Federn und Flug gehören zu den Vögeln.',
+        wissen: 'Überblick: Fische bewegen sich schwimmend im Wasser.',
+      },
     ],
     lurch: [
       {
@@ -615,6 +894,34 @@ function groupOverviewTf(rng: Rng, group: GroupKey) {
         correct: false,
         explanation: 'Kröte und Frosch sind Lurche.',
         wissen: 'Artenkenntnis: heimische Lurche wie Frosch und Kröte korrekt der Wirbeltiergruppe zuordnen.',
+      },
+      {
+        concept: 'bio:k5:lurch:ueberblick:tf-amphibien',
+        statement: 'Lurche werden auch Amphibien genannt.',
+        correct: true,
+        explanation: 'Amphibien ist die wissenschaftliche Bezeichnung für Lurche.',
+        wissen: 'Überblick: Lurche werden fachsprachlich auch Amphibien genannt — eine eigene Wirbeltiergruppe.',
+      },
+      {
+        concept: 'bio:k5:lurch:ueberblick:tf-ozean',
+        statement: 'Alle erwachsenen Lurche leben ausschließlich im offenen Ozean.',
+        correct: false,
+        explanation: 'Viele erwachsene Lurche leben an Land, brauchen aber Feuchtigkeit und Laichgewässer.',
+        wissen: 'Überblick Lurche: Viele Adulttiere leben an Land, brauchen aber Feuchtigkeit und Laichgewässer.',
+      },
+      {
+        concept: 'bio:k5:lurch:ueberblick:tf-molch',
+        statement: 'Teichmolch und Feuersalamander sind Lurche.',
+        correct: true,
+        explanation: 'Molche und Salamander gehören zu den Schwanzlurchen.',
+        wissen: 'Artenkenntnis im Überblick: heimische Lurche wie Molch und Salamander korrekt zuordnen.',
+      },
+      {
+        concept: 'bio:k5:lurch:ueberblick:tf-hornpanzer',
+        statement: 'Lurche tragen typischerweise einen trockenen Hornpanzer wie Schildkröten.',
+        correct: false,
+        explanation: 'Trockene Hornschicht/Panzer ist typisch für Kriechtiere.',
+        wissen: 'Gruppenunterscheidung im Überblick: Lurche haben feuchte Haut, keine trockene Hornschicht wie Kriechtiere.',
       },
     ],
     kriechtier: [
@@ -632,6 +939,34 @@ function groupOverviewTf(rng: Rng, group: GroupKey) {
         explanation: 'Eidechse und Natter sind Kriechtiere.',
         wissen: 'Artenkenntnis im Überblick: heimische Beispiele den richtigen Wirbeltiergruppen zuordnen.',
       },
+      {
+        concept: 'bio:k5:kriechtier:ueberblick:tf-reptilien',
+        statement: 'Kriechtiere werden auch Reptilien genannt.',
+        correct: true,
+        explanation: 'Reptilien ist die wissenschaftliche Bezeichnung.',
+        wissen: 'Überblick: Kriechtiere werden fachsprachlich auch Reptilien genannt — eigene Wirbeltiergruppe.',
+      },
+      {
+        concept: 'bio:k5:kriechtier:ueberblick:tf-kiemenfortpflanzung',
+        statement: 'Kriechtiere können sich nur mit Kiemen im Wasser fortpflanzen.',
+        correct: false,
+        explanation: 'Kriechtiere pflanzen sich typischerweise an Land fort (innere Befruchtung, Eier).',
+        wissen: 'Überblick: Kriechtiere sind in der Fortpflanzung vom offenen Wasser unabhängiger als Fische.',
+      },
+      {
+        concept: 'bio:k5:kriechtier:ueberblick:tf-eidechse',
+        statement: 'Waldeidechse und Blindschleiche sind Kriechtiere.',
+        correct: true,
+        explanation: 'Beide sind heimische Kriechtiere (Echsen).',
+        wissen: 'Artenkenntnis im Überblick: heimische Echsen korrekt den Kriechtieren zuordnen.',
+      },
+      {
+        concept: 'bio:k5:kriechtier:ueberblick:tf-saeugen',
+        statement: 'Kriechtiere säugen ihre Jungen mit Milch.',
+        correct: false,
+        explanation: 'Säugen ist das Kennzeichen der Säugetiere.',
+        wissen: 'Gruppenunterscheidung im Überblick: Säugen gehört zu Säugern, nicht zu Kriechtieren.',
+      },
     ],
     vogel: [
       {
@@ -648,6 +983,34 @@ function groupOverviewTf(rng: Rng, group: GroupKey) {
         explanation: 'Amsel und Meise sind Vögel.',
         wissen: 'Artenkenntnis: Singvögel wie Amsel und Kohlmeise korrekt den Vögeln zuordnen.',
       },
+      {
+        concept: 'bio:k5:vogel:ueberblick:tf-federn',
+        statement: 'Federn sind ein typisches Kennzeichen der Vögel.',
+        correct: true,
+        explanation: 'Nur Vögel haben ein Federkleid.',
+        wissen: 'Überblick Vögel: Das Federkleid ist das klare Gruppenmerkmal und unterscheidet sie von Säugern und Kriechtieren.',
+      },
+      {
+        concept: 'bio:k5:vogel:ueberblick:tf-kiemen',
+        statement: 'Erwachsene Vögel atmen typischerweise über Kiemen.',
+        correct: false,
+        explanation: 'Vögel atmen mit Lungen (und Luftsäcken).',
+        wissen: 'Überblick Vögel: Atmung über Lungen und Luftsäcke — keine Kiemenatmung wie bei Fischen.',
+      },
+      {
+        concept: 'bio:k5:vogel:ueberblick:tf-zug',
+        statement: 'Mauersegler und Stockente sind Beispiele für Vögel.',
+        correct: true,
+        explanation: 'Beide gehören zu den Vögeln.',
+        wissen: 'Artenkenntnis im Überblick: heimische und häufige Vögel korrekt der Wirbeltiergruppe zuordnen.',
+      },
+      {
+        concept: 'bio:k5:vogel:ueberblick:tf-schuppenpanzer',
+        statement: 'Vögel tragen einen trockenen Schuppenpanzer statt Federn.',
+        correct: false,
+        explanation: 'Federn kennzeichnen Vögel; Schuppen/Hornschicht eher Kriechtiere.',
+        wissen: 'Gruppenunterscheidung im Überblick: Federn = Vögel, Hornschicht = Kriechtiere, Fell = Säuger.',
+      },
     ],
     saeuger: [
       {
@@ -655,7 +1018,7 @@ function groupOverviewTf(rng: Rng, group: GroupKey) {
         statement: 'Säugetiere gehören zu den Wirbeltieren.',
         correct: true,
         explanation: 'Säugetiere sind Wirbeltiere mit Säugen der Jungen.',
-        wissen: 'Überblick: Säugetiere sind eine Wirbeltiergruppe.',
+        wissen: 'Überblick: Säugetiere sind eine Wirbeltiergruppe mit Fell und Säugen der Nachkommen.',
       },
       {
         concept: 'bio:k5:saeuger:ueberblick:tf-vogel',
@@ -663,6 +1026,34 @@ function groupOverviewTf(rng: Rng, group: GroupKey) {
         correct: false,
         explanation: 'Reh und Fuchs sind Säugetiere.',
         wissen: 'Artenkenntnis im Überblick: heimische Beispiele den richtigen Wirbeltiergruppen zuordnen.',
+      },
+      {
+        concept: 'bio:k5:saeuger:ueberblick:tf-milch',
+        statement: 'Säugetiere ernähren ihre Jungen typischerweise mit Milch.',
+        correct: true,
+        explanation: 'Säugen ist namengebend für die Gruppe.',
+        wissen: 'Überblick Säuger: Milchdrüsen ernähren die Jungen — darum heißt die Gruppe Säugetiere.',
+      },
+      {
+        concept: 'bio:k5:saeuger:ueberblick:tf-laich',
+        statement: 'Säugetiere legen typischerweise Laich im Wasser wie Fische.',
+        correct: false,
+        explanation: 'Die meisten Säuger sind lebendgebärend und säugen — kein Fischlaich.',
+        wissen: 'Gruppenunterscheidung im Überblick: Säuger sind meist lebendgebärend, Fische laichen oft im Wasser.',
+      },
+      {
+        concept: 'bio:k5:saeuger:ueberblick:tf-igel',
+        statement: 'Igel und Fledermaus sind Säugetiere.',
+        correct: true,
+        explanation: 'Beide säugen ihre Jungen; die Fledermaus fliegt mit Flughaut.',
+        wissen: 'Artenkenntnis im Überblick — auch ungewöhnliche Säuger wie Fledermaus gehören zur Gruppe.',
+      },
+      {
+        concept: 'bio:k5:saeuger:ueberblick:tf-federn',
+        statement: 'Säugetiere haben typischerweise ein Federkleid.',
+        correct: false,
+        explanation: 'Federn kennzeichnen Vögel; Säuger haben Haare/Fell.',
+        wissen: 'Gruppenunterscheidung im Überblick: Säuger haben Haare/Fell, Vögel ein Federkleid.',
       },
     ],
   }
@@ -689,14 +1080,56 @@ function groupMerkmaleTf(rng: Rng, group: GroupKey) {
         statement: 'Die Stromlinienform der Fische ist eine Angepasstheit an das Schwimmen.',
         correct: true,
         explanation: 'Stromlinienform verringert den Wasserwiderstand.',
-        wissen: 'Körperbau passt zum Lebensraum Wasser.',
+        wissen: 'Körperbau passt zum Lebensraum Wasser — Stromlinienform spart Energie beim Schwimmen.',
       },
       {
         concept: 'bio:k5:fisch:merkmale:tf-lungen',
         statement: 'Fische atmen typischerweise mit Lungen an Land.',
         correct: false,
         explanation: 'Fische atmen über Kiemen im Wasser.',
-        wissen: 'Kiemen entziehen dem Wasser Sauerstoff.',
+        wissen: 'Kiemen entziehen dem Wasser Sauerstoff — typische Angepasstheit der Fische.',
+      },
+      {
+        concept: 'bio:k5:fisch:merkmale:tf-seitenlinie',
+        statement: 'Die Seitenlinie hilft Fischen, Bewegungen und Strömung im Wasser wahrzunehmen.',
+        correct: true,
+        explanation: 'Die Seitenlinie ist ein Sinnesorgan der Fische.',
+        wissen: 'Über die Seitenlinie registrieren Fische Druckwellen — wichtig für Orientierung und Beutefang.',
+      },
+      {
+        concept: 'bio:k5:fisch:merkmale:tf-schwimmblase',
+        statement: 'Viele Knochenfische nutzen eine Schwimmblase zur Auftriebsregulation.',
+        correct: true,
+        explanation: 'Die Schwimmblase ermöglicht Schweben ohne ständiges Schwimmen.',
+        wissen: 'Schwimmblase: Angepasstheit an das Schweben in unterschiedlichen Wassertiefen.',
+      },
+      {
+        concept: 'bio:k5:fisch:merkmale:tf-federn',
+        statement: 'Fische haben typischerweise ein Federkleid statt Schuppen.',
+        correct: false,
+        explanation: 'Federn kennzeichnen Vögel; Fische haben oft Schuppen und Schleimhaut.',
+        wissen: 'Körperbedeckung der Fische: Schuppen und Schleim — keine Federn.',
+      },
+      {
+        concept: 'bio:k5:fisch:merkmale:tf-befruchtung',
+        statement: 'Bei vielen Fischen findet die Befruchtung äußerlich im Wasser statt.',
+        correct: true,
+        explanation: 'Eier und Samen werden oft ins Wasser abgegeben.',
+        wissen: 'Äußere Befruchtung ist bei vielen Fischarten typisch und an das Wasserleben gebunden.',
+      },
+      {
+        concept: 'bio:k5:fisch:merkmale:tf-flossen',
+        statement: 'Flossen dienen nur der Atmung, nie der Steuerung.',
+        correct: false,
+        explanation: 'Flossen dienen Vortrieb, Steuerung und Stabilität.',
+        wissen: 'Flossen sind Bewegungsorgane — Angepasstheit an das Schwimmen.',
+      },
+      {
+        concept: 'bio:k5:fisch:merkmale:tf-schleim',
+        statement: 'Schleim auf der Fischhaut verringert den Reibungswiderstand im Wasser.',
+        correct: true,
+        explanation: 'Schleimhaut schützt und gleitet.',
+        wissen: 'Schleimschicht: Schutz und geringerer Wasserwiderstand — Bau und Funktion.',
       },
     ],
     lurch: [
@@ -1148,22 +1581,60 @@ function fischeNahrung(rng: Rng) {
 }
 
 function fischeBauMatch(rng: Rng) {
-  return matchTermsTask(rng, {
-    question: 'Ordne Bau und Funktion bei Fischen zu.',
-    terms: ['Kiemen', 'Flossen', 'Schuppen'],
-    meanings: [
-      'Gasaustausch im Wasser',
-      'Steuerung und Vortrieb beim Schwimmen',
-      'Äußerer Schutz der Körperoberfläche',
-    ],
+  const pool = [
+    {
+      term: 'Kiemen',
+      meaning: 'Gasaustausch im Wasser',
+      wissen: 'Kiemen entziehen dem Wasser Sauerstoff.',
+      concept: 'bio:k5:fisch:merkmale:paar-kiemen',
+    },
+    {
+      term: 'Flossen',
+      meaning: 'Steuerung und Vortrieb beim Schwimmen',
+      wissen: 'Flossen dienen Antrieb, Steuerung und Stabilität.',
+      concept: 'bio:k5:fisch:merkmale:paar-flossen',
+    },
+    {
+      term: 'Schuppen',
+      meaning: 'Äußerer Schutz der Körperoberfläche',
+      wissen: 'Schuppen schützen die Haut und verringern Verletzungen.',
+      concept: 'bio:k5:fisch:merkmale:paar-schuppen',
+    },
+    {
+      term: 'Schwimmblase',
+      meaning: 'Auftriebsregulation (viele Knochenfische)',
+      wissen: 'Die Schwimmblase hilft, ohne ständiges Schwimmen in der Tiefe zu schweben.',
+      concept: 'bio:k5:fisch:merkmale:paar-schwimmblase',
+    },
+    {
+      term: 'Seitenlinie',
+      meaning: 'Wahrnehmung von Wasserbewegungen',
+      wissen: 'Die Seitenlinie registriert Druckwellen und Strömung.',
+      concept: 'bio:k5:fisch:merkmale:paar-seitenlinie',
+    },
+    {
+      term: 'Schleimhaut',
+      meaning: 'Verringert Reibung und schützt',
+      wissen: 'Schleim auf der Haut vermindert den Wasserwiderstand.',
+      concept: 'bio:k5:fisch:merkmale:paar-schleim',
+    },
+  ]
+  const size = rng() < 0.55 ? 4 : 5
+  const subset = shuffle(rng, pool).slice(0, size)
+  const concepts = subset.map((p) => p.concept)
+  const task = matchTermsTask(rng, {
+    question: `Ordne ${size} Bau- und Funktionsbegriffe bei Fischen zu.`,
+    terms: subset.map((p) => p.term),
+    meanings: subset.map((p) => p.meaning),
     distractor: 'Aufnahme von Luftsauerstoff wie bei Säugern',
-    solution: 'Kiemen→Gasaustausch; Flossen→Steuerung; Schuppen→Schutz',
-    explanation: 'Struktur und Funktion: Organe sind an das Wasserleben angepasst.',
+    solution: subset.map((p) => `${p.term}→${p.meaning}`).join('; '),
+    explanation: subset.map((p) => p.wissen).join(' '),
     fachwissen: fw(
-      'Körpergliederung und äußerer Bau der Fische: Stromlinienform, Flossen, Schleimhaut, Schuppen, Kiemen.',
+      'Körpergliederung und äußerer Bau der Fische: Stromlinienform, Flossen, Schleimhaut, Schuppen, Kiemen, Seitenlinie, Schwimmblase.',
     ),
-    concept: 'bio:k5:fisch:merkmale:bau-funktion',
+    concept: `bio:k5:fisch:merkmale:bau:${[...concepts].sort().join('+')}`,
   })
+  return { ...task, contentIds: concepts, dedupeKey: concepts.slice().sort().join('+') }
 }
 
 function lurcheMetaSort(rng: Rng) {
@@ -1300,12 +1771,31 @@ function saeugerGliedmass(rng: Rng) {
 
 /**
  * DISJOINT topic factories — Überblick never reuses Merkmale/Lebensraum/Schutz pools.
- * Fewer tasks per topic is intentional and correct.
+ * Each sibling topic needs its own rich unique pool so rounds of ~10 stay normal.
  */
 function makeOverviewTopic(group: GroupKey): Topic['generate'] {
-  // Species ID + high-level TF only. No feature/schutz/lebensraum bleed.
-  // kriechtier-arten owns species — overview for kriechtier skips species MC.
+  // Species ID + high-level TF + Arten-Zuordnung. No feature/schutz/lebensraum bleed.
+  const speciesMatch = (rng: Rng) => {
+    const species = SPECIES.filter((s) => s.group === group)
+    const size = Math.min(5, Math.max(3, species.length))
+    const subset = shuffle(rng, species).slice(0, size)
+    const concepts = subset.map((s) => `bio:k5:${group}:art:${s.name.toLowerCase()}`)
+    const task = matchTermsTask(rng, {
+      question: `Ordne ${size} Arten der Gruppe ${GROUP_LABEL[group]} ihren Kurzinfos zu.`,
+      terms: subset.map((s) => s.name),
+      meanings: subset.map((s) => s.note),
+      distractor: 'Typisches Insekt mit genau sechs Beinen',
+      solution: subset.map((s) => `${s.name} → ${s.note}`).join('; '),
+      explanation: subset.map((s) => `${s.name}: ${s.note}`).join(' '),
+      fachwissen: fw(
+        `Überblick ${GROUP_LABEL[group]}: heimische Arten den richtigen Wirbeltiergruppen zuordnen und Kurzinfos kennen.`,
+      ),
+      concept: `bio:k5:${group}:ueberblick:arten-match:${[...concepts].sort().join('+')}`,
+    })
+    return { ...task, contentIds: concepts, dedupeKey: concepts.slice().sort().join('+') }
+  }
   if (group === 'kriechtier') {
+    // Arten-IDs gehören zu kriechtiere-arten — Überblick nur TF + Definition (Bug B).
     return mixedVariants(
       (rng) => groupOverviewTf(rng, group),
       (rng) => groupOverviewTf(rng, group),
@@ -1329,11 +1819,35 @@ function makeOverviewTopic(group: GroupKey): Topic['generate'] {
           dedupeKey: 'bio:k5:kriechtier:ueberblick:definition',
           contentIds: ['bio:k5:kriechtier:ueberblick:definition'],
         }),
+      (rng) =>
+        choicePickTask({
+          question: 'Was beschreibt die Gruppe der Kriechtiere im Schulüberblick am besten?',
+          choices: shuffleChoices(
+            rng,
+            [
+              'Trockenlufttiere mit Hornschicht und Lungenatmung',
+              'Nur Kiemenatmer ohne Wirbelsäule',
+              'Nur Federkleid und Luftsäcke',
+              'Nur Säugen der Jungen mit Milch',
+            ],
+            'Trockenlufttiere mit Hornschicht und Lungenatmung',
+          ),
+          correct: 'Trockenlufttiere mit Hornschicht und Lungenatmung',
+          solution: 'Trockenlufttiere mit Hornschicht und Lungenatmung',
+          explanation: 'Kriechtiere sind an Landleben angepasst.',
+          fachwissen: fw(
+            'Überblick Kriechtiere: Hornschicht, Lungen, Fortpflanzung unabhängig vom Wasser — eigene Wirbeltiergruppe.',
+          ),
+          dedupeKey: 'bio:k5:kriechtier:ueberblick:definition-2',
+          contentIds: ['bio:k5:kriechtier:ueberblick:definition-2'],
+        }),
     )
   }
   return mixedVariants(
     (rng) => groupSpeciesMc(rng, group),
     (rng) => groupOverviewTf(rng, group),
+    speciesMatch,
+    speciesMatch,
     (rng) => groupSpeciesMc(rng, group),
     (rng) => groupOverviewTf(rng, group),
   )

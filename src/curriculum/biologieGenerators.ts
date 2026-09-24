@@ -1,6 +1,11 @@
 import { textTask } from './taskHelpers'
 import { allBiologieTopicIds } from './biologieGymTopics'
-import { withBioContentIds } from './biologieBank'
+import {
+  expandBioWissen,
+  isThinBioWissen,
+  withBioContentIds,
+} from './biologieBank'
+import { bioFw } from './biologieHelpers'
 import {
   BIOLOGIE_K5_EXPANDED,
   BIOLOGIE_K6_EXPANDED,
@@ -14,12 +19,46 @@ import { BIOLOGIE_SPECIAL_GENERATORS } from './biologieSpecialTopics'
 import { bankGenerate, type BioBank } from './biologieBank'
 import type { Topic } from './types'
 
+/** Ensure every emitted task has substantive question-specific Fachwissen. */
+function withRichFachwissen(generate: Topic['generate']): Topic['generate'] {
+  return (rng) => {
+    const task = generate(rng)
+    const prev = task.fachwissen?.text?.trim() ?? ''
+    let enriched = prev
+    if (isThinBioWissen(prev)) {
+      enriched = expandBioWissen(prev, {
+        prompt: task.question,
+        explanation: task.explanation,
+        answer: String(task.solution ?? ''),
+      })
+    }
+    // Final length floor — never ship placeholder-short Fachwissen.
+    if (enriched.trim().length < 80 && task.explanation?.trim()) {
+      const e = task.explanation.trim()
+      enriched = `${enriched} ${e.endsWith('.') ? e : `${e}.`}`.replace(/\s+/g, ' ').trim()
+    }
+    if (enriched.trim().length < 80) {
+      enriched =
+        `${enriched} Fachlich: ${String(task.solution ?? '').slice(0, 120)}.`.replace(/\s+/g, ' ').trim()
+    }
+    if (enriched === prev && !isThinBioWissen(prev)) return task
+    return {
+      ...task,
+      fachwissen: bioFw(
+        enriched,
+        task.fachwissen?.quelle ?? 'Wikipedia: Biologie',
+        task.fachwissen?.url ?? 'https://de.wikipedia.org/wiki/Biologie',
+      ),
+    }
+  }
+}
+
 function wrapAll(
   gens: Record<string, Topic['generate']>,
 ): Record<string, Topic['generate']> {
   const out: Record<string, Topic['generate']> = {}
   for (const [id, gen] of Object.entries(gens)) {
-    out[id] = withBioContentIds(gen, `bio:${id}`)
+    out[id] = withRichFachwissen(withBioContentIds(gen, `bio:${id}`))
   }
   return out
 }
@@ -53,7 +92,8 @@ const organellenBank: BioBank = {
         'Nur Organe des Körpers wie Leber',
       ],
       explanation: 'Organellen sind zelluläre Funktionskompartimente (z. B. Mitochondrien, Zellkern).',
-      wissen: 'Eukaryoten organisieren Stoffwechselwege in Organellen.',
+      wissen:
+        'Organellen sind spezialisierte Funktionsräume der eukaryotischen Zelle, oft von Membranen umgeben. Sie ermöglichen Kompartimentierung: Stoffwechselwege laufen räumlich getrennt ab. Beispiele sind Mitochondrien, Zellkern, ER und Chloroplasten.',
       gap: 'Mitochondrien und Chloroplasten sind Beispiele für ___.',
       gapAccepted: ['Organellen', 'Zellorganellen'],
     },
@@ -63,7 +103,8 @@ const organellenBank: BioBank = {
       answer: 'ATP-Produktion (Zellatmung)',
       wrong: ['Nur Photosynthese', 'Nur DNA-Löschung', 'Nur Chitinbildung'],
       explanation: 'Mitochondrien liefern ATP durch oxidative Prozesse.',
-      wissen: 'EnergieUmwandlung in der Zelle.',
+      wissen:
+        'Mitochondrien sind die Hauptorte der aeroben Energiegewinnung. In der Atmungskette entsteht ATP aus der Oxidation energiereicher Substrate. Sie besitzen eigene DNA und eine Doppelmembran.',
     },
     {
       concept: 'bio:kOberstufe:organellen:kern',
@@ -71,7 +112,8 @@ const organellenBank: BioBank = {
       answer: 'Speicherung und Organisation der Erbinformation (DNA)',
       wrong: ['Nur Fettverdauung im Darm', 'Nur Wasserfilterung der Niere', 'Nur Federwachstum'],
       explanation: 'Im Kern liegt die DNA; Transkription startet dort.',
-      wissen: 'Zellkern als Steuerzentrale.',
+      wissen:
+        'Der Zellkern speichert und organisiert die Erbinformation (DNA) der Eukaryoten. Transkription startet dort; mRNA gelangt anschließend ins Cytoplasma. Die Kernmembran trennt Kernplasma vom Cytoplasma.',
     },
     {
       concept: 'bio:kOberstufe:organellen:membran',
@@ -79,7 +121,8 @@ const organellenBank: BioBank = {
       answer: 'Sie schaffen getrennte Reaktionsräume (Kompartimentierung)',
       wrong: ['Sie löschen Gene immer', 'Sie ersetzen die Wirbelsäule', 'Sie bilden nur Chitinpanzer'],
       explanation: 'Kompartimente erlauben parallele, kontrollierte Reaktionen.',
-      wissen: 'Membranen = selektive Barrieren.',
+      wissen:
+        'Membranen begrenzen Organellen und schaffen getrennte Reaktionsräume. So können gegenläufige Prozesse parallel und kontrolliert ablaufen. Transportproteine und Vesikel verbinden die Kompartimente.',
     },
   ],
   pairs: [
@@ -87,25 +130,29 @@ const organellenBank: BioBank = {
       concept: 'bio:kOberstufe:organellen:paar-mito',
       term: 'Mitochondrium',
       meaning: 'Ort der aeroben Energiegewinnung',
-      wissen: 'ATP aus Dissimilation.',
+      wissen:
+        'Im Mitochondrium läuft die aerobe Dissimilation mit hohem ATP-Gewinn. Die innere Membran trägt die Atmungskette. Ohne Mitochondrien wäre der Energieumsatz eukaryotischer Zellen stark eingeschränkt.',
     },
     {
       concept: 'bio:kOberstufe:organellen:paar-chloro',
       term: 'Chloroplast',
       meaning: 'Ort der Fotosynthese in Pflanzenzellen',
-      wissen: 'Lichtenergie → chemische Energie.',
+      wissen:
+        'Chloroplasten wandeln Lichtenergie in chemische Energie (Zucker) um. Sie enthalten Chlorophyll und eigene DNA. Nur photosynthetisch aktive Pflanzen- und Algenzellen besitzen sie.',
     },
     {
       concept: 'bio:kOberstufe:organellen:paar-er',
       term: 'Endoplasmatisches Retikulum',
       meaning: 'Membransystem für Synthese und Transport',
-      wissen: 'Raues ER mit Ribosomen.',
+      wissen:
+        'Das ER ist ein Membrannetz für Synthese und Transport. Raues ER trägt Ribosomen und bildet Proteine; glattes ER ist u. a. an Lipidstoffwechsel beteiligt. Vesikel bringen Produkte weiter zum Golgi-Apparat.',
     },
     {
       concept: 'bio:kOberstufe:organellen:paar-golgi',
       term: 'Golgi-Apparat',
       meaning: 'Modifikation und Versand von Vesikeln',
-      wissen: 'Sortier- und Versandzentrale.',
+      wissen:
+        'Der Golgi-Apparat modifiziert, sortiert und verpackt Proteine und Lipide in Vesikel. Er ist die Versandzentrale der Zelle. Vom ER kommende Vesikel werden hier weiterverarbeitet.',
     },
   ],
   trueFalse: [
@@ -114,7 +161,8 @@ const organellenBank: BioBank = {
       statement: 'Typische prokaryotische Zellen besitzen einen echten Zellkern mit Kernmembran.',
       correct: false,
       explanation: 'Prokaryoten haben kein kernmembranumschlossenes Kompartiment.',
-      wissen: 'Unterschied Eu-/Prokaryoten.',
+      wissen:
+        'Prokaryoten (Bakterien, Archaeen) besitzen keinen kernmembranumschlossenen Zellkern. Ihre DNA liegt im Nucleoid im Cytoplasma. Echte Organellen mit Kernmembran sind ein Merkmal der Eukaryoten.',
     },
   ],
 }

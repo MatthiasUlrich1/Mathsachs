@@ -119,6 +119,7 @@ const samenpflanzen: BioBank = {
 /** Überblick Wirbellose: nur übergeordnete Gruppen / Abgrenzung — keine Spezialdetails. */
 const wirbelloseOverview: BioBank = {
   ...Q.wirbellose,
+  conceptPrefix: 'bio:k6:wirbellose',
   facts: [
     {
       concept: 'bio:k6:was-bedeutet-wirbellos',
@@ -259,6 +260,7 @@ const wirbelloseOverview: BioBank = {
 const insekten: BioBank = {
   quelle: 'Wikipedia: Insekten',
   url: 'https://de.wikipedia.org/wiki/Insekten',
+  conceptPrefix: 'bio:k6:insekten',
   facts: [
     {
       concept: 'bio:k6:was-unterscheidet-insekten-aeusserlich-t',

@@ -21,7 +21,9 @@ function isGenericPromptStem(stem: string): boolean {
   return (
     /^(ordne|ordne zu|zuordnung|passe .* zu|klick-paare|karteikarte)/i.test(stem) ||
     /klick-paare/i.test(stem) ||
-    /^ordne (begriff|fachbegriff|term|jedem|die|den|das)/i.test(stem)
+    /^ordne (begriff|fachbegriff|term|jedem|die|den|das|\d+)/i.test(stem) ||
+    /fachbegriffe ihren erkl/i.test(stem) ||
+    /lebensmerkmale ihren erkl/i.test(stem)
   )
 }
 
@@ -139,8 +141,8 @@ function markSeen(ids: string[], seen: Set<string>) {
 
 /**
  * Build a practice round of unique tasks (no duplicate content identities).
- * Stops early if the generator cannot produce more distinct tasks —
- * so a round may be shorter than `targetCount`.
+ * Prefer rich concept pools so `targetCount` (~10) is usually reached.
+ * Early-stop only when the unique pool is truly exhausted after expansion.
  */
 export function buildUniqueTaskRound(
   generate: (rng: Rng) => Task,

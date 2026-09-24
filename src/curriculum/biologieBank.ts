@@ -24,6 +24,7 @@ import {
   sortChronologyTask,
   trueFalse,
 } from './biologieHelpers'
+import { deepenBioBank } from './biologieBankDeepen'
 
 export type BioFact = {
   /** Stable concept id, e.g. `bio:spinnen:beinzahl`. Auto-derived if omitted. */
@@ -95,10 +96,86 @@ export type BioBank = {
   icons?: BioIcon[]
 }
 
+/** Thin / placeholder wissen that must never reach the UI as sole Fachwissen. */
+const PLACEHOLDER_WISSEN =
+  /^(LB:?\s|Wahl:?\s|Wahlbereich|Anwendungen und Perspektiven|Grundlagen[,.]?\s|Lehrplanziel|Zellbiologie\.?$|Genregulation\.?$|Molekulare Genetik\.?$|Genexpression\.?$|Einordnung\.?$|Spezifität\.?$|Vernetzung\.?$|Systemdenken\.?$|Immunologie\.?$|Systematisierung|Populationsökologie\.?$|Dissimilation\.?$|Praxisbezug\.?$|Verstärkung\.?$|Klassische Ethologie\.?$|Differenzierung\.?$|Schutzziel\.?$|Evolutionärer Hintergrund\.?$|Nachhaltigkeitsdiskurs\.?$|Handlungsoptionen|Kommunikation zwischen Zellen\.?$|Biodiversität und ihre Entstehung\.?$|Verhalten von Tier|Redoxprozesse|Vergleich Fotosynthese|Zelluläre Organisation\.?$|Leben in der Wüste\.?$|Schlaukopf)/i
+
+export function isThinBioWissen(text: string): boolean {
+  const t = text.trim()
+  if (!t || t.length < 80) return true
+  if (PLACEHOLDER_WISSEN.test(t)) return true
+  const sentences = t.split(/[.!?]+/).filter((s) => s.trim().length > 20)
+  return sentences.length < 2
+}
+
+/**
+ * Build question-specific Fachwissen: 2+ substantive sentences.
+ * Prefer authored `wissen`; only fill gaps when thin/placeholder — never UI meta.
+ */
+export function expandBioWissen(
+  wissen: string,
+  ctx: {
+    explanation?: string
+    answer?: string
+    term?: string
+    meaning?: string
+    prompt?: string
+  } = {},
+): string {
+  const raw = wissen.trim()
+  if (raw && !isThinBioWissen(raw) && !PLACEHOLDER_WISSEN.test(raw)) {
+    return raw
+  }
+
+  const parts: string[] = []
+  const push = (s?: string) => {
+    const x = (s ?? '').trim()
+    if (!x) return
+    if (PLACEHOLDER_WISSEN.test(x) && x.length < 80) return
+    if (/\bLB:\s|Wahl:\s|Wahlbereich:/i.test(x)) return
+    const norm = x.endsWith('.') || x.endsWith('!') || x.endsWith('?') ? x : `${x}.`
+    if (parts.some((p) => p.includes(norm.slice(0, Math.min(40, norm.length))))) return
+    parts.push(norm)
+  }
+
+  if (raw && !PLACEHOLDER_WISSEN.test(raw)) push(raw)
+  if (ctx.explanation && !/\bLB:\s|Wahl:\s/i.test(ctx.explanation)) push(ctx.explanation)
+  if (ctx.term && ctx.meaning) push(`${ctx.term} bedeutet: ${ctx.meaning}`)
+  if (ctx.answer && ctx.answer.length > 12) push(ctx.answer)
+  if (parts.length < 2 && ctx.meaning) push(ctx.meaning)
+
+  let out = parts.join(' ').replace(/\s+/g, ' ').trim()
+  if (out.length < 80 && ctx.meaning) {
+    const extra = `Kurzfassung: ${ctx.meaning}.`
+    if (!out.includes(ctx.meaning.slice(0, 20))) out = `${out} ${extra}`.replace(/\s+/g, ' ').trim()
+  }
+  if (out.length < 80 && ctx.explanation && !/\bLB:\s|Wahl:\s/i.test(ctx.explanation)) {
+    const e = ctx.explanation.trim()
+    if (e && !out.includes(e.slice(0, Math.min(30, e.length)))) {
+      out = `${out} ${e.endsWith('.') ? e : `${e}.`}`.replace(/\s+/g, ' ').trim()
+    }
+  }
+  if (out.length < 80 && ctx.answer && ctx.answer.length > 20) {
+    out = `${out} ${ctx.answer.endsWith('.') ? ctx.answer : `${ctx.answer}.`}`.replace(/\s+/g, ' ').trim()
+  }
+  return out || raw
+}
+
 /** Fachwissen = subject facts only — never wrap with question/scoring meta. */
-function fw(bank: BioBank, text: string, _prompt?: string) {
+function fw(
+  bank: BioBank,
+  text: string,
+  ctx?: {
+    prompt?: string
+    explanation?: string
+    answer?: string
+    term?: string
+    meaning?: string
+  },
+) {
+  const expanded = expandBioWissen(text, ctx ?? {})
   return bioFw(
-    text,
+    expanded,
     bank.quelle ?? 'Wikipedia: Biologie',
     bank.url ?? 'https://de.wikipedia.org/wiki/Biologie',
   )
@@ -188,8 +265,21 @@ export function withBioContentIds(
   return (rng) => ensureBioTaskIdentity(generate(rng), prefix)
 }
 
+/** Prefer large Zuordnungen when the Begriffspool allows (4–6, not always 3). */
+function pickPairSubset<T>(rng: Rng, pairs: T[]): T[] {
+  const n = pairs.length
+  if (n <= 3) return shuffle(rng, pairs)
+  let size = 3
+  if (n >= 12) size = rng() < 0.55 ? 6 : 5
+  else if (n >= 8) size = rng() < 0.5 ? 5 : 4
+  else if (n >= 5) size = 4
+  return shuffle(rng, pairs).slice(0, size)
+}
+
 /** Build a playable Topic.generate from a knowledge bank. */
 export function bankGenerate(bank: BioBank): Topic['generate'] {
+  // Expand Begriff/fact pools first — existing wissen strings stay untouched.
+  bank = deepenBioBank(bank)
   const prefix = bank.conceptPrefix
   const variants: Array<(rng: Rng) => ReturnType<Topic['generate']>> = []
 
@@ -199,6 +289,11 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
       const f = pick(rng, bank.facts!)
       const key = bioConceptKey(f.concept, prefix, f.prompt)
       const mode = rng()
+      const factCtx = {
+        prompt: f.prompt,
+        explanation: f.explanation,
+        answer: f.answer,
+      }
       const wrong =
         f.wrong?.length && f.wrong.length >= 3
           ? shuffle(rng, f.wrong).slice(0, 3)
@@ -215,7 +310,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
           accepted: f.clozeAccepted,
           solution: f.clozeAccepted.map((a) => a[0]).join(' / '),
           explanation: f.explanation,
-          fachwissen: fw(bank, f.wissen, f.prompt),
+          fachwissen: fw(bank, f.wissen, factCtx),
           dedupeKey: key,
           contentIds: [key],
         })
@@ -228,7 +323,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
             accepted: [f.gapAccepted],
             solution: f.gapAccepted[0]!,
             explanation: f.explanation,
-            fachwissen: fw(bank, f.wissen, f.prompt),
+            fachwissen: fw(bank, f.wissen, factCtx),
             dedupeKey: key,
             contentIds: [key],
           })
@@ -238,7 +333,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
           accepted: f.gapAccepted,
           solution: f.gapAccepted[0]!,
           explanation: f.explanation,
-          fachwissen: fw(bank, f.wissen, f.prompt),
+          fachwissen: fw(bank, f.wissen, factCtx),
           dedupeKey: key,
           contentIds: [key],
         })
@@ -254,7 +349,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
           accepted: [f.answer, ...(f.gapAccepted ?? [])],
           solution: f.answer,
           explanation: f.explanation,
-          fachwissen: fw(bank, f.wissen),
+          fachwissen: fw(bank, f.wissen, factCtx),
           choices: shuffle(rng, [f.answer, ...flashWrong.slice(0, 3)]),
           dedupeKey: key,
           contentIds: [key],
@@ -265,7 +360,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         correct: f.answer,
         wrong,
         explanation: f.explanation,
-        fachwissen: fw(bank, f.wissen, f.prompt),
+        fachwissen: fw(bank, f.wissen, factCtx),
         dedupeKey: key,
         contentIds: [key],
       })
@@ -273,28 +368,44 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
   }
 
   if (bank.pairs && bank.pairs.length >= 3) {
-    variants.push((rng) => {
-      const three = shuffle(rng, bank.pairs!).slice(0, 3)
-      const distractorPool = bank.pairs!.filter((p) => !three.includes(p))
+    const pairMatchVariant = (rng: Rng) => {
+      const subset = pickPairSubset(rng, bank.pairs!)
+      const distractorPool = bank.pairs!.filter((p) => !subset.includes(p))
       const distractor =
         distractorPool.length > 0
           ? pick(rng, distractorPool).meaning
           : 'Photosynthese in Mitochondrien'
-      const keys = three.map((p) => bioConceptKey(p.concept, prefix, p.term))
-      const fwText = three.map((p) => `${p.term}: ${p.wissen}`).join(' ')
+      const keys = subset.map((p) => bioConceptKey(p.concept, prefix, p.term))
+      const fwText = subset
+        .map((p) =>
+          expandBioWissen(p.wissen, {
+            term: p.term,
+            meaning: p.meaning,
+            explanation: p.wissen,
+          }),
+        )
+        .join(' ')
+      const n = subset.length
       return matchTermsTask(rng, {
-        question: 'Ordne Begriff und Erklärung einander zu (Klick-Paare).',
-        terms: three.map((p) => p.term),
-        meanings: three.map((p) => p.meaning),
+        question:
+          n >= 5
+            ? `Ordne zu: ${n} Fachbegriffe und Erklärungen (Klick-Paare).`
+            : 'Ordne Begriff und Erklärung einander zu (Klick-Paare).',
+        terms: subset.map((p) => p.term),
+        meanings: subset.map((p) => p.meaning),
         distractor,
-        solution: three.map((p) => `${p.term} → ${p.meaning}`).join('; '),
-        explanation: three.map((p) => `${p.term}: ${p.wissen}`).join(' '),
+        solution: subset.map((p) => `${p.term} → ${p.meaning}`).join('; '),
+        explanation: subset.map((p) => `${p.term}: ${p.wissen}`).join(' '),
         fachwissen: fw(bank, fwText),
-        // Pair set key + each concept so any shared fact blocks the round slot.
+        // Each Begriff concept blocks MC/TF/Match reuse in the same round (Bug A).
         dedupeKey: `pair:${[...keys].sort().join('+')}`,
         contentIds: keys,
       })
-    })
+    }
+    // Weight Zuordnung heavily when the pool is rich — variety, not short rounds.
+    variants.push(pairMatchVariant)
+    if (bank.pairs.length >= 6) variants.push(pairMatchVariant)
+    if (bank.pairs.length >= 10) variants.push(pairMatchVariant)
   }
 
   if (bank.trueFalse?.length) {
@@ -305,7 +416,10 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         statement: t.statement,
         correct: t.correct,
         explanation: t.explanation,
-        fachwissen: fw(bank, t.wissen, t.statement),
+        fachwissen: fw(bank, t.wissen, {
+          prompt: t.statement,
+          explanation: t.explanation,
+        }),
         dedupeKey: key,
         contentIds: [key],
       })
@@ -321,7 +435,10 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         labels: s.labels,
         solution: s.labels.join(' → '),
         explanation: s.explanation,
-        fachwissen: fw(bank, s.wissen, s.question),
+        fachwissen: fw(bank, s.wissen, {
+          prompt: s.question,
+          explanation: s.explanation,
+        }),
         dedupeKey: key,
         contentIds: [key],
       })
@@ -337,7 +454,11 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         correct: m.correct,
         wrong: m.wrong,
         explanation: m.explanation,
-        fachwissen: fw(bank, m.wissen, m.question),
+        fachwissen: fw(bank, m.wissen, {
+          prompt: m.question,
+          explanation: m.explanation,
+          answer: m.correct.join(', '),
+        }),
         dedupeKey: key,
         contentIds: [key],
       })
@@ -355,7 +476,10 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         options: ic.options,
         correctId: ic.correctId,
         explanation: ic.explanation,
-        fachwissen: fw(bank, ic.wissen, ic.question),
+        fachwissen: fw(bank, ic.wissen, {
+          prompt: ic.question,
+          explanation: ic.explanation,
+        }),
         dedupeKey: key,
         contentIds: [key],
       })
