@@ -5,6 +5,12 @@ import { clozeMultiTask, pairMatchTask } from './taskHelpers'
 import { buildUniqueTaskRound, taskContentIds } from './uniqueRound'
 import { BIOLOGIE_GENERATORS } from './biologieGenerators'
 import { isRedundantFlashcardInstruction } from '../components/FlashcardFlip'
+import {
+  bankGenerate,
+  bioFactQuestion,
+  bioQuestionSpoilsTerm,
+  stripBioBankSlug,
+} from './biologieBank'
 
 describe('clozeMulti / pairMatch partial scoring', () => {
   it('awards fractional points per blank', () => {
@@ -273,5 +279,108 @@ describe('FlashcardFlip instructions', () => {
       ),
     ).toBe(true)
     expect(isRedundantFlashcardInstruction('Nutze das Fachwort aus dem Text.')).toBe(false)
+  })
+})
+
+describe('Biologie UX: bank slugs, pairMatch duplicates, Fachbegriff spoilers', () => {
+  it('stripBioBankSlug removes internal topic keys from prompts', () => {
+    expect(stripBioBankSlug('Fachbegriff (baeume): Was bedeutet „Laubbaum“?')).toBe(
+      'Fachbegriff: Was bedeutet „Laubbaum“?',
+    )
+    expect(stripBioBankSlug('Fachbegriff (wirbellose): Was bedeutet „Gliederfüßer“?')).toBe(
+      'Fachbegriff: Was bedeutet „Gliederfüßer“?',
+    )
+    expect(stripBioBankSlug('(wirbellose) Weichtier: Oft mit Schale.')).toBe(
+      'Weichtier: Oft mit Schale.',
+    )
+    expect(stripBioBankSlug('baeume: Laubbaum')).toBe('Laubbaum')
+  })
+
+  it('gap/cloze meaning→term does not spoil the Fachbegriff in the question', () => {
+    const fact = {
+      prompt: 'Fachbegriff (baeume): Was bedeutet „Laubbaum“?',
+      answer: 'Wirft Blätter saisonal ab (oft)',
+      gap: 'Fachbegriff: ___ — Wirft Blätter saisonal ab (oft)',
+      gapAccepted: ['Laubbaum'],
+    }
+    const gapQ = bioFactQuestion(fact, 'gap')
+    expect(gapQ).not.toMatch(/Laubbaum/)
+    expect(gapQ).toMatch(/Fachbegriff/i)
+    expect(bioQuestionSpoilsTerm(gapQ, fact.gapAccepted)).toBe(false)
+
+    const mcQ = bioFactQuestion(fact, 'mc')
+    expect(mcQ).toContain('Laubbaum')
+    expect(mcQ).not.toMatch(/\(baeume\)/)
+  })
+
+  it('generated bank tasks never show slug tags or term spoilers on gap mode', () => {
+    const gen = bankGenerate({
+      // Isolated concept — avoid deepenBioBank merging real baeume extras.
+      facts: [
+        {
+          concept: 'bio:test:ux:laub',
+          prompt: 'Fachbegriff (baeume): Was bedeutet „Laubbaum“?',
+          answer: 'Wirft Blätter saisonal ab (oft)',
+          wrong: ['a', 'b', 'c'],
+          explanation: 'x',
+          wissen:
+            'Laubbäume werfen oft saisonal Blätter ab. Das spart Wasser im Winter und schützt vor Frostschäden an der Blattfläche.',
+          gap: 'Fachbegriff: ___ — Wirft Blätter saisonal ab (oft)',
+          gapAccepted: ['Laubbaum'],
+          flashFront: 'baeume: Laubbaum',
+        },
+      ],
+      pairs: [
+        {
+          term: 'Laubbaum',
+          meaning: 'Wirft Blätter saisonal ab (oft)',
+          wissen:
+            'Laubbäume werfen oft saisonal Blätter ab. Das spart Wasser im Winter und schützt vor Frostschäden an der Blattfläche.',
+        },
+        {
+          term: 'Nadelbaum',
+          meaning: 'Meist immergrün mit Nadeln',
+          wissen:
+            'Nadelbäume behalten meist ihre Nadeln. Das ermöglicht Fotosynthese auch in kühleren Perioden mit wenig Wasserverlust.',
+        },
+        {
+          term: 'Kambium',
+          meaning: 'Bildet neues Holz und Bast',
+          wissen:
+            'Das Kambium bildet neues Holz und Bast. Dadurch wächst der Stamm in die Dicke und leitet Wasser sowie Assimilate.',
+        },
+      ],
+    })
+
+    let sawGap = false
+    for (let i = 0; i < 120; i++) {
+      const task = gen(createRng(i * 17 + 3))
+      expect(task.question).not.toMatch(/Fachbegriff\s*\([a-z]/i)
+      expect(task.question).not.toMatch(/^\([a-z0-9_-]+\)/i)
+      if (task.interactive?.type === 'flashcardFlip') {
+        const front = String(task.interactive.props?.front ?? '')
+        expect(front).not.toMatch(/^[a-z0-9_-]+:\s/)
+      }
+      if (task.interactive?.type === 'clozeMulti') {
+        if (/laubbaum/i.test(String(task.solution ?? ''))) {
+          sawGap = true
+          expect(task.question).not.toMatch(/Laubbaum/i)
+          expect(task.question).toMatch(/Fachbegriff/i)
+        }
+      }
+    }
+    expect(sawGap).toBe(true)
+  })
+
+  it('live wirbellose / baeume generators hide bank slugs', () => {
+    for (const topicId of ['bi-k6-lb2-wirbellose', 'bi-k6-lb1-baeume'] as const) {
+      const gen = BIOLOGIE_GENERATORS[topicId]
+      if (!gen) continue
+      for (let i = 0; i < 40; i++) {
+        const task = gen(createRng(i + 100))
+        expect(task.question, topicId).not.toMatch(/Fachbegriff\s*\([a-z]/i)
+        expect(task.question, topicId).not.toMatch(/^\([a-z0-9_-]+\)/i)
+      }
+    }
   })
 })

@@ -265,21 +265,127 @@ export function withBioContentIds(
   return (rng) => ensureBioTaskIdentity(generate(rng), prefix)
 }
 
+/**
+ * Strip internal bank/topic slug tags from user-facing bio strings.
+ * e.g. `Fachbegriff (baeume): …`, `(wirbellose) …`, flashFront `baeume: Term`.
+ */
+export function stripBioBankSlug(text: string): string {
+  return text
+    .replace(/\bFachbegriff\s*\([a-z0-9äöüß_-]+\)\s*:/gi, 'Fachbegriff:')
+    .replace(/^\(([a-z0-9äöüß_-]+)\)\s+/i, '')
+    // Theme slug prefix on flash fronts only (lowercase keys like "baeume: …").
+    .replace(/^([a-z][a-z0-9_-]*):\s+(?=\S)/, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+/** True when question already names a term that a gap/cloze expects as answer. */
+export function bioQuestionSpoilsTerm(
+  question: string,
+  acceptedTerms: string[],
+): boolean {
+  const q = question
+  for (const raw of acceptedTerms) {
+    const t = raw.trim()
+    if (t.length < 2) continue
+    if (q.includes(`„${t}“`) || q.includes(`"${t}"`) || q.includes(`'${t}'`)) {
+      return true
+    }
+  }
+  return false
+}
+
+/**
+ * Question for a fact variant. Gap/cloze that asks for the Fachbegriff must not
+ * spoil that term in the question (meaning→term). MC/flash keep term→meaning.
+ */
+export function bioFactQuestion(
+  f: BioFact,
+  mode: 'mc' | 'flash' | 'gap' | 'cloze',
+): string {
+  const base = stripBioBankSlug(f.prompt)
+  if (mode === 'mc' || mode === 'flash') return base || f.prompt
+
+  const accepted = [
+    ...(f.gapAccepted ?? []),
+    ...(f.clozeAccepted?.flat() ?? []),
+  ]
+  if (bioQuestionSpoilsTerm(base, accepted) || bioQuestionSpoilsTerm(f.prompt, accepted)) {
+    return 'Welcher Fachbegriff passt zur Erklärung?'
+  }
+  // Fachbegriff-Lücke with meaning after the blank — never restate the term above.
+  const gap = f.gap ?? f.cloze ?? ''
+  if (/Fachbegriff\s*:/i.test(gap) && gap.includes('___') && accepted.length > 0) {
+    return 'Welcher Fachbegriff passt zur Erklärung?'
+  }
+  return base || 'Welcher Fachbegriff passt zur Erklärung?'
+}
+
 /** Prefer large Zuordnungen when the Begriffspool allows (4–6, not always 3). */
-function pickPairSubset<T>(rng: Rng, pairs: T[]): T[] {
+function pickPairSubset<T extends { term: string }>(rng: Rng, pairs: T[]): T[] {
   const n = pairs.length
   if (n <= 3) return shuffle(rng, pairs)
   let size = 3
   if (n >= 12) size = rng() < 0.55 ? 6 : 5
   else if (n >= 8) size = rng() < 0.5 ? 5 : 4
   else if (n >= 5) size = 4
-  return shuffle(rng, pairs).slice(0, size)
+
+  const shuffled = shuffle(rng, pairs)
+  // Prefer unique left labels so interchangeable duplicates are rare.
+  const unique: T[] = []
+  const seen = new Set<string>()
+  for (const p of shuffled) {
+    const key = p.term.trim().toLowerCase()
+    if (seen.has(key)) continue
+    seen.add(key)
+    unique.push(p)
+    if (unique.length >= size) return unique
+  }
+  if (unique.length >= 3) return unique
+  // Last resort: allow duplicates so the match still has enough rows.
+  for (const p of shuffled) {
+    if (unique.includes(p)) continue
+    unique.push(p)
+    if (unique.length >= Math.min(size, 3)) break
+  }
+  return unique
+}
+
+/** Drop later pairs that reuse an earlier term (case-insensitive). */
+function dedupeBioPairsByTerm(pairs: BioPair[] | undefined): BioPair[] | undefined {
+  if (!pairs?.length) return pairs
+  const out: BioPair[] = []
+  const seen = new Set<string>()
+  for (const p of pairs) {
+    const key = p.term.trim().toLowerCase()
+    if (seen.has(key)) continue
+    seen.add(key)
+    out.push(p)
+  }
+  return out
+}
+
+/** Sanitize deepen/hand-authored strings so internal slugs never reach the UI. */
+export function sanitizeBioBank(bank: BioBank): BioBank {
+  return {
+    ...bank,
+    facts: bank.facts?.map((f) => ({
+      ...f,
+      prompt: stripBioBankSlug(f.prompt),
+      flashFront: f.flashFront ? stripBioBankSlug(f.flashFront) : undefined,
+    })),
+    trueFalse: bank.trueFalse?.map((t) => ({
+      ...t,
+      statement: stripBioBankSlug(t.statement),
+    })),
+    pairs: dedupeBioPairsByTerm(bank.pairs),
+  }
 }
 
 /** Build a playable Topic.generate from a knowledge bank. */
 export function bankGenerate(bank: BioBank): Topic['generate'] {
   // Expand Begriff/fact pools first — existing wissen strings stay untouched.
-  bank = deepenBioBank(bank)
+  bank = sanitizeBioBank(deepenBioBank(bank))
   const prefix = bank.conceptPrefix
   const variants: Array<(rng: Rng) => ReturnType<Topic['generate']>> = []
 
@@ -305,7 +411,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
 
       if (mode < 0.34 && f.cloze && f.clozeAccepted?.length) {
         return clozeBlanksTask({
-          question: f.prompt,
+          question: bioFactQuestion(f, 'cloze'),
           template: f.cloze,
           accepted: f.clozeAccepted,
           solution: f.clozeAccepted.map((a) => a[0]).join(' / '),
@@ -318,7 +424,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
       if (mode < 0.55 && f.gap && f.gapAccepted?.length) {
         if (f.gap.includes('___')) {
           return clozeBlanksTask({
-            question: f.prompt,
+            question: bioFactQuestion(f, 'gap'),
             template: f.gap,
             accepted: [f.gapAccepted],
             solution: f.gapAccepted[0]!,
@@ -329,7 +435,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
           })
         }
         return gapFillTask({
-          question: f.gap,
+          question: bioFactQuestion(f, 'gap'),
           accepted: f.gapAccepted,
           solution: f.gapAccepted[0]!,
           explanation: f.explanation,
@@ -343,9 +449,10 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
           f.wrong?.length && f.wrong.length >= 2
             ? shuffle(rng, f.wrong).slice(0, 3)
             : wrong.slice(0, 3)
+        const flashQ = bioFactQuestion(f, 'flash')
         return flashcardBioTask({
-          question: f.prompt,
-          front: f.flashFront ?? f.prompt,
+          question: flashQ,
+          front: stripBioBankSlug(f.flashFront ?? flashQ),
           accepted: [f.answer, ...(f.gapAccepted ?? [])],
           solution: f.answer,
           explanation: f.explanation,
@@ -356,7 +463,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         })
       }
       return mcTask(rng, {
-        question: f.prompt,
+        question: bioFactQuestion(f, 'mc'),
         correct: f.answer,
         wrong,
         explanation: f.explanation,
@@ -413,7 +520,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
       const t = pick(rng, bank.trueFalse!)
       const key = bioConceptKey(t.concept, prefix, t.statement)
       return trueFalse(rng, {
-        statement: t.statement,
+        statement: stripBioBankSlug(t.statement),
         correct: t.correct,
         explanation: t.explanation,
         fachwissen: fw(bank, t.wissen, {

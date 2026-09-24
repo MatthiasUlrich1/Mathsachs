@@ -1175,6 +1175,58 @@ interface PairMatchTaskInput {
   visualContent?: string
 }
 
+const normPairLabel = (s: string) => s.trim().toLowerCase().replace(/\s+/g, ' ')
+
+/**
+ * Grade pairMatch links. Duplicate left labels with interchangeable correct
+ * rights are scored via multiset matching (any permutation of the correct
+ * explanations for that label counts), not rigid L_i→R_i only.
+ */
+export function gradePairMatchLinks(
+  left: PairMatchSide[],
+  correctLinks: Record<string, string>,
+  answerLinks: Record<string, string>,
+): { fraction: number; parts: boolean[] } {
+  const leftIds = left.map((l) => l.id)
+  if (leftIds.length === 0) return { fraction: 0, parts: [] }
+
+  const groups = new Map<string, string[]>()
+  for (const side of left) {
+    const key = normPairLabel(side.label) || side.id
+    const g = groups.get(key)
+    if (g) g.push(side.id)
+    else groups.set(key, [side.id])
+  }
+
+  const partsById = new Map<string, boolean>()
+  for (const ids of groups.values()) {
+    if (ids.length === 1) {
+      const id = ids[0]!
+      partsById.set(id, answerLinks[id] === correctLinks[id])
+      continue
+    }
+    // Multiset of correct right-ids for this label — claim each at most once.
+    const available = ids.map((id) => correctLinks[id])
+    for (const id of ids) {
+      const userRight = answerLinks[id]
+      const idx =
+        userRight === undefined || userRight === ''
+          ? -1
+          : available.indexOf(userRight)
+      if (idx >= 0) {
+        available.splice(idx, 1)
+        partsById.set(id, true)
+      } else {
+        partsById.set(id, false)
+      }
+    }
+  }
+
+  const parts = leftIds.map((id) => partsById.get(id) === true)
+  const correct = parts.filter(Boolean).length
+  return { fraction: correct / leftIds.length, parts }
+}
+
 /** Click-to-pair two columns (no drag-slot labels). */
 export const pairMatchTask = (input: PairMatchTaskInput): Task => {
   const leftIds = input.left.map((l) => l.id)
@@ -1182,12 +1234,7 @@ export const pairMatchTask = (input: PairMatchTaskInput): Task => {
     if (answer.kind !== 'pairMatch') {
       return { fraction: 0, parts: leftIds.map(() => false) }
     }
-    const parts = leftIds.map((id) => answer.links[id] === input.correctLinks[id])
-    const correct = parts.filter(Boolean).length
-    return {
-      fraction: leftIds.length === 0 ? 0 : correct / leftIds.length,
-      parts,
-    }
+    return gradePairMatchLinks(input.left, input.correctLinks, answer.links)
   }
   return {
     question: input.question,

@@ -9,6 +9,20 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.34] – 2026-09-24
+
+### Behoben
+- **Biologie Fachbegriff-Fragen:** Interne Bank-Tags wie `(baeume)` / `(wirbellose)` erscheinen
+  nicht mehr in Fragen, True/False-Aussagen oder Flashcard-Vorderseiten.
+- **Biologie pairMatch:** Bei doppelten linken Begriffen (z. B. zwei „Weichtier“) zählt jede
+  inhaltlich passende Zuordnung — nicht nur die starre Index-Paarung L₀→R₀.
+- **Biologie Bedeutung→Begriff:** Lückenaufgaben spoilen den gesuchten Fachbegriff nicht mehr
+  in der Frage darüber (`Was bedeutet „X“?` + Lücke erwartet X).
+
+### Geändert
+- Begriffs-Pools bevorzugen eindeutige linke Labels; Deepen-Generator ohne Theme-Slugs.
+  Biologie-Pack **1.2.5**.
+
 ## [0.28.33] – 2026-09-24
 
 ### Behoben

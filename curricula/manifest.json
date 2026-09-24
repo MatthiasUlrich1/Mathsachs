@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-24T17:42:15.225Z",
+  "updatedAt": "2026-09-24T18:07:29.729Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -40,10 +40,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Biologie",
-      "version": "1.2.4",
+      "version": "1.2.5",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-biologie.json",
-      "size": 57137,
-      "changelog": "Fragebezogenes Fachwissen K5–12/Oberstufe (u. a. Genetik PCR≠mRNA); größere Begriffspools für Runden ≈10. 109 Themen."
+      "size": 57126,
+      "changelog": "UX: keine Bank-Slugs in Fragen; pairMatch toleriert doppelte Begriffe; Fachbegriff-Lücke ohne Spoiler. 109 Themen."
     },
     {
       "id": "gym-sachsen-anhalt",

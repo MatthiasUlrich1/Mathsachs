@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.2.4',
-    changelog: `Fragebezogenes Fachwissen K5–12/Oberstufe (u. a. Genetik PCR≠mRNA); größere Begriffspools für Runden ≈10. ${topics} Themen.`,
+    version: '1.2.5',
+    changelog: `UX: keine Bank-Slugs in Fragen; pairMatch toleriert doppelte Begriffe; Fachbegriff-Lücke ohne Spoiler. ${topics} Themen.`,
     official,
     extras: [],
   }
