@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.23] – 2026-09-24
+
+### Behoben
+- **Desktop-Installer-CI:** Tests erwarteten noch 8 Curriculum-Packs; nach
+  `gym-sachsen-biologie` schlagen `CurriculumSetup` und `oberschulePacks` fehl
+  (`expected 9 to be 8`). Erwartung auf 9 Packs inkl. Biologie angepasst.
+
 ## [0.28.22] – 2026-09-24
 
 ### Hinzugefügt
