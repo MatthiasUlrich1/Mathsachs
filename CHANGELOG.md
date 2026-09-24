@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.43] – 2026-09-24
+
+### Geändert
+- **Geschichte Gymnasium Sachsen 1.7.0:** K7–Oberstufe verdichtet — Unterthemen unter
+  korrekten Lehrplan-LBs (Schwerpunkt K8–K10/Gk/Lk); 133 Themen; neue Banken
+  (Inspiration Schlaukopf/Klett/Wikipedia DE, eigene Formulierungen); Wahl
+  „Alltag im Ersten Weltkrieg“ ergänzt. Alle neuen Inhalte `released:false`.
+
 ## [0.28.42] – 2026-09-24
 
 ### Geändert

@@ -5,7 +5,7 @@ Physik an sÃ¤chsischen Schulen. SchÃ¼lerinnen und SchÃ¼ler wÃ¤hlen Theme
 Lehrplan, Ã¼ben am Bildschirm oder drucken ÃœbungsblÃ¤tter. LehrkrÃ¤fte stellen
 **Ãœbungsklausuren** zusammen und verteilen sie per Code oder Link.
 
-Aktuelle Version: **0.28.42** Â· [Changelog](CHANGELOG.md) Â·
+Aktuelle Version: **0.28.43** Â· [Changelog](CHANGELOG.md) Â·
 Web: [app.tasktrophy.de](https://app.tasktrophy.de/) Â·
 [Alle Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
 

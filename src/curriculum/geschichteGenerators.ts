@@ -9,6 +9,7 @@ import { GESCHICHTE_K9_GENERATORS } from './geschichte9'
 import { GESCHICHTE_K10_GENERATORS } from './geschichte10'
 import { GESCHICHTE_OBERSTUFE_GENERATORS } from './geschichteOberstufe'
 import { GESCHICHTE_DENSE_GENERATORS } from './geschichteDense'
+import { GESCHICHTE_DENSE_UPPER_GENERATORS } from './geschichteDenseUpper'
 import type { Topic } from './types'
 
 /** Alle spielbaren Geschichte-Generatoren (K5–12; K6 LB1 freigegeben, Rest Entwickler). */
@@ -22,6 +23,7 @@ const GESCHICHTE_ALL_GENERATORS: Record<string, Topic['generate']> = {
   ...GESCHICHTE_K10_GENERATORS,
   ...GESCHICHTE_OBERSTUFE_GENERATORS,
   ...GESCHICHTE_DENSE_GENERATORS,
+  ...GESCHICHTE_DENSE_UPPER_GENERATORS,
 }
 
 /** Platzhalter-Generator bis echte Geschichtsaufgaben vorliegen. */
