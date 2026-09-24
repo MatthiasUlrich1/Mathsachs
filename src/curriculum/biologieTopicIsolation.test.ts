@@ -39,7 +39,8 @@ const SIBLING_FAMILIES: string[][] = [
     'bi-k6-lb1-baeume',
     'bi-k6-lb1-organe',
   ],
-  ['bi-k6-lb2-wirbellose', 'bi-k6-lb2-insekten', 'bi-k6-lb2-spinnen'],
+  ['bi-k6-lb2-wirbellose', 'bi-k6-lb2-insekten', 'bi-k6-lb2-spinnen', 'bi-k6-lb2-krebstiere', 'bi-k6-lb2-tausendfuesser', 'bi-k6-lb2-ringelwuermer', 'bi-k6-lb2-stachelhaeuter', 'bi-k6-lb2-nesseltiere'],
+  ['bi-k6-lbw-weichtiere', 'bi-k6-lbw-schnecken', 'bi-k6-lbw-muscheln', 'bi-k6-lbw-kopffuesser'],
   ['bi-k6-lb4-wald', 'bi-k6-lb4-nahrung'],
   ['bi-k6-lb5-zellen', 'bi-k6-lb5-mikroskop'],
   ['bi-k7-lb1-mikroben', 'bi-k7-lb1-hygiene'],
@@ -67,7 +68,7 @@ function normalizeStem(s: string): string {
 
 /** Shared UI chrome for pairMatch etc. — not topic content. */
 const GENERIC_STEM =
-  /^(ordne begriff und erklaerung|ordne zu|welche aussage|richtig oder falsch|karteikarte|tippe|waehle)/i
+  /^(ordne begriff und erklaerung|ordne zu|welche aussage|richtig oder falsch|karteikarte|tippe|waehle|welcher fachbegriff passt|fachbegriff was bedeutet)/i
 
 function isContentStem(stem: string): boolean {
   if (stem.length < 12) return false
@@ -76,6 +77,8 @@ function isContentStem(stem: string): boolean {
   if (/klick.?paare/i.test(stem) && /ordne/i.test(stem)) return false
   if (/lebensmerkmale ihren erkl/i.test(stem)) return false
   if (/bau und funktionsbegriff/i.test(stem)) return false
+  // Flashcard/gap template + term only — real isolation is via contentIds.
+  if (/^fachbegriff\b/i.test(stem) && /bedeutet/.test(stem)) return false
   return true
 }
 
@@ -127,6 +130,71 @@ describe('Biologie topic isolation (no cross-pollination)', () => {
     const texts = sampleTopic('bi-k6-lb2-spinnen', 100).questions.join('\n')
     expect(texts).not.toMatch(/gehört zu den Vögeln/i)
     expect(texts).toMatch(/Spinne|Beine|Netz|Spinnenseide|acht/i)
+  })
+
+  it('new Wirbellose Spezial topics are playable and stay on-theme', () => {
+    const cases: Array<{ id: string; expect: RegExp; forbid: RegExp }> = [
+      {
+        id: 'bi-k6-lb2-krebstiere',
+        expect: /Krebs|Kieme|Antenne|Wasserfloh|Häutung|Schere/i,
+        forbid: /vollständige Metamorphose|Spinnenseide|Ambulakral/i,
+      },
+      {
+        id: 'bi-k6-lb2-tausendfuesser',
+        expect: /Tausend|Schnurfüß|Hundertfüß|Giftklau|Doppelfüß/i,
+        forbid: /Spinnenseide|Ambulakral|Nesselzelle/i,
+      },
+      {
+        id: 'bi-k6-lb2-ringelwuermer',
+        expect: /Regenwurm|Segment|Ringel|Borste|Blutegel|Hautatmung/i,
+        forbid: /Spinnenseide|Radula|Ambulakral/i,
+      },
+      {
+        id: 'bi-k6-lb2-stachelhaeuter',
+        expect: /Seestern|Seeigel|Ambulakral|Saugfüß|fünfstrahlig|Kalk/i,
+        forbid: /Spinnenseide|Kriechfuß|Nesselzelle/i,
+      },
+      {
+        id: 'bi-k6-lb2-nesseltiere',
+        expect: /Nessel|Qualle|Koralle|Polyp|Meduse|Tentakel/i,
+        forbid: /Spinnenseide|Ambulakral|Kriechfuß/i,
+      },
+      {
+        id: 'bi-k6-lbw-weichtiere',
+        expect: /Weichtier|Mantel|Schnecke|Muschel|Kopffüß/i,
+        forbid: /Ambulakral|Nesselzelle/i,
+      },
+      {
+        id: 'bi-k6-lbw-schnecken',
+        expect: /Schnecke|Kriechfuß|Radula|Gehäuse|Fühler/i,
+        forbid: /Ambulakral|Nesselzelle/i,
+      },
+      {
+        id: 'bi-k6-lbw-muscheln',
+        expect: /Muschel|Klappe|Filtr|Kieme|Byssus/i,
+        forbid: /Ambulakral|Nesselzelle|Spinnenseide/i,
+      },
+      {
+        id: 'bi-k6-lbw-kopffuesser',
+        expect: /Tintenfisch|Fangarm|Rückstoß|Tinte|Kopffüß/i,
+        forbid: /Ambulakral|Nesselzelle|Spinnenseide/i,
+      },
+    ]
+    for (const c of cases) {
+      const { questions } = sampleTopic(c.id, 80)
+      const blob = questions.join('\n')
+      expect(blob, c.id).toMatch(c.expect)
+      expect(blob, c.id).not.toMatch(c.forbid)
+    }
+  })
+
+  it('Wirbellose Überblick stays high-level — no Spezial-only detail stems', () => {
+    const texts = sampleTopic('bi-k6-lb2-wirbellose', 100).questions.join('\n')
+    expect(texts).toMatch(/wirbellos/i)
+    expect(texts).not.toMatch(/Butterkrebs/i)
+    expect(texts).not.toMatch(/Madreporenplatte/i)
+    expect(texts).not.toMatch(/Forcipulen/i)
+    expect(texts).not.toMatch(/Zooxanthellen/i)
   })
 
   it('Fische Überblick never asks „Welches Tier gehört zu den Vögeln?“', () => {

@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.2.5',
-    changelog: `UX: keine Bank-Slugs in Fragen; pairMatch toleriert doppelte Begriffe; Fachbegriff-Lücke ohne Spoiler. ${topics} Themen.`,
+    version: '1.2.6',
+    changelog: `K6 Wirbellose Spezial: Krebstiere, Tausendfüßer, Ringelwürmer, Stachelhäuter, Nesseltiere; Weichtiere mit Schnecken/Muscheln/Kopffüßern. ${topics} Themen.`,
     official,
     extras: [],
   }

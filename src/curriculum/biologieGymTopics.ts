@@ -230,17 +230,43 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
         ]),
         area('lb2', 'Wirbellose Tiere in ihren Lebensräumen', 16, [
           topic('bi-k6-lb2-wirbellose', 'Wirbellose – Überblick', [
-            'Insekten',
-            'Spinnen',
+            'Gliederfüßer',
+            'Weichtiere',
+            'Wirbellos',
           ]),
           topic('bi-k6-lb2-insekten', 'Insekten – Bau und Metamorphose', [
             'Insekt',
             'Metamorphose',
             'Chitin',
           ]),
-          topic('bi-k6-lb2-spinnen', 'Spinnen und andere Gliederfüßer', [
+          topic('bi-k6-lb2-spinnen', 'Spinnentiere', [
             'Spinne',
             'Acht Beine',
+            'Milben',
+          ]),
+          topic('bi-k6-lb2-krebstiere', 'Krebstiere', [
+            'Flusskrebs',
+            'Wasserfloh',
+            'Kieme',
+          ]),
+          topic('bi-k6-lb2-tausendfuesser', 'Tausendfüßer', [
+            'Schnurfüßer',
+            'Hundertfüßer',
+          ]),
+          topic('bi-k6-lb2-ringelwuermer', 'Ringelwürmer', [
+            'Regenwurm',
+            'Blutegel',
+            'Segment',
+          ]),
+          topic('bi-k6-lb2-stachelhaeuter', 'Stachelhäuter', [
+            'Seestern',
+            'Seeigel',
+            'Ambulakralsystem',
+          ]),
+          topic('bi-k6-lb2-nesseltiere', 'Nesseltiere', [
+            'Qualle',
+            'Koralle',
+            'Nesselzelle',
           ]),
         ]),
         area('lb3', 'Systematisierung', 4, [
@@ -273,8 +299,25 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
           ]),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
-          topic('bi-k6-lbw-weichtiere', 'Weichtiere', ['Schnecke', 'Muschel'], {
-            tasksPerRound: 10}),
+          topic('bi-k6-lbw-weichtiere', 'Weichtiere – Überblick', [
+            'Mantel',
+            'Schnecke',
+            'Muschel',
+          ], { tasksPerRound: 10 }),
+          topic('bi-k6-lbw-schnecken', 'Schnecken', [
+            'Kriechfuß',
+            'Radula',
+            'Gehäuse',
+          ], { tasksPerRound: 10 }),
+          topic('bi-k6-lbw-muscheln', 'Muscheln', [
+            'Schalenklappen',
+            'Filtrierer',
+          ], { tasksPerRound: 10 }),
+          topic('bi-k6-lbw-kopffuesser', 'Kopffüßer', [
+            'Tintenfisch',
+            'Fangarme',
+            'Rückstoß',
+          ], { tasksPerRound: 10 }),
           topic('bi-k6-lbw-heilen', 'Pflanzen helfen heilen', ['Heilpflanze'], {
             tasksPerRound: 10}),
           topic('bi-k6-lbw-pfuetze', 'Leben in der Pfütze', ['Kleinstlebewesen'], {

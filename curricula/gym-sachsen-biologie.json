@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Biologie",
-  "version": "1.2.5",
-  "changelog": "UX: keine Bank-Slugs in Fragen; pairMatch toleriert doppelte Begriffe; Fachbegriff-Lücke ohne Spoiler. 109 Themen.",
+  "version": "1.2.6",
+  "changelog": "K6 Wirbellose Spezial: Krebstiere, Tausendfüßer, Ringelwürmer, Stachelhäuter, Nesseltiere; Weichtiere mit Schnecken/Muscheln/Kopffüßern. 117 Themen.",
   "official": [
     {
       "id": "biologie-klasse-5",
@@ -485,8 +485,9 @@
               "released": false,
               "tasksPerRound": 10,
               "keywords": [
-                "Insekten",
-                "Spinnen"
+                "Gliederfüßer",
+                "Weichtiere",
+                "Wirbellos"
               ]
             },
             {
@@ -504,14 +505,79 @@
             },
             {
               "id": "bi-k6-lb2-spinnen",
-              "title": "Spinnen und andere Gliederfüßer",
+              "title": "Spinnentiere",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 10,
               "keywords": [
                 "Spinne",
-                "Acht Beine"
+                "Acht Beine",
+                "Milben"
+              ]
+            },
+            {
+              "id": "bi-k6-lb2-krebstiere",
+              "title": "Krebstiere",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Flusskrebs",
+                "Wasserfloh",
+                "Kieme"
+              ]
+            },
+            {
+              "id": "bi-k6-lb2-tausendfuesser",
+              "title": "Tausendfüßer",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Schnurfüßer",
+                "Hundertfüßer"
+              ]
+            },
+            {
+              "id": "bi-k6-lb2-ringelwuermer",
+              "title": "Ringelwürmer",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Regenwurm",
+                "Blutegel",
+                "Segment"
+              ]
+            },
+            {
+              "id": "bi-k6-lb2-stachelhaeuter",
+              "title": "Stachelhäuter",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Seestern",
+                "Seeigel",
+                "Ambulakralsystem"
+              ]
+            },
+            {
+              "id": "bi-k6-lb2-nesseltiere",
+              "title": "Nesseltiere",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Qualle",
+                "Koralle",
+                "Nesselzelle"
               ]
             }
           ]
@@ -606,14 +672,53 @@
           "topics": [
             {
               "id": "bi-k6-lbw-weichtiere",
-              "title": "Weichtiere",
+              "title": "Weichtiere – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 10,
               "keywords": [
+                "Mantel",
                 "Schnecke",
                 "Muschel"
+              ]
+            },
+            {
+              "id": "bi-k6-lbw-schnecken",
+              "title": "Schnecken",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kriechfuß",
+                "Radula",
+                "Gehäuse"
+              ]
+            },
+            {
+              "id": "bi-k6-lbw-muscheln",
+              "title": "Muscheln",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Schalenklappen",
+                "Filtrierer"
+              ]
+            },
+            {
+              "id": "bi-k6-lbw-kopffuesser",
+              "title": "Kopffüßer",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Tintenfisch",
+                "Fangarme",
+                "Rückstoß"
               ]
             },
             {
@@ -1770,5 +1875,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "1158346f"
+  "contentHash": "33617235"
 }

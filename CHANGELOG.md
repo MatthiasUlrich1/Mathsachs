@@ -9,6 +9,19 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.35] – 2026-09-24
+
+### Hinzugefügt
+- **Biologie K6 Wirbellose Spezialthemen:** Krebstiere, Tausendfüßer, Ringelwürmer, Stachelhäuter,
+  Nesseltiere sowie Weichtiere-Überblick mit Schnecken, Muscheln und Kopffüßern
+  (`released:false`, Entwickler). Überblick bleibt hochstufig; reiche Banken mit
+  fragebezogenem Fachwissen und disjunkten `contentIds`.
+- Isolationstests für die neuen Themen-IDs (spielbar, themenrein, Geschwister ohne Stem-/ID-Bleed).
+
+### Geändert
+- Spinnentiere-Titel präzisiert; Wirbellose-Überblick um Gruppen-Hinweise ergänzt.
+  Biologie-Pack **1.2.6**.
+
 ## [0.28.34] – 2026-09-24
 
 ### Behoben

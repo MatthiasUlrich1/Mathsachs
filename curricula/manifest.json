@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-24T18:07:29.729Z",
+  "updatedAt": "2026-09-24T18:19:21.760Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -40,10 +40,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Biologie",
-      "version": "1.2.5",
+      "version": "1.2.6",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-biologie.json",
-      "size": 57126,
-      "changelog": "UX: keine Bank-Slugs in Fragen; pairMatch toleriert doppelte Begriffe; Fachbegriff-Lücke ohne Spoiler. 109 Themen."
+      "size": 60725,
+      "changelog": "K6 Wirbellose Spezial: Krebstiere, Tausendfüßer, Ringelwürmer, Stachelhäuter, Nesseltiere; Weichtiere mit Schnecken/Muscheln/Kopffüßern. 117 Themen."
     },
     {
       "id": "gym-sachsen-anhalt",

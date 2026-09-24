@@ -4,6 +4,7 @@
  * Wortlaut original; Zuordnung nach sächsischem Lehrplan.
  */
 import { bankGenerate, type BioBank } from './biologieBank'
+import { BIOLOGIE_K6_WIRBELLOSE_SPECIAL_GENERATORS } from './biologie6Wirbellose'
 import type { Topic } from './types'
 
 const Q = {
@@ -190,7 +191,22 @@ const wirbelloseOverview: BioBank = {
     {
       term: 'Gliederfüßer',
       meaning: 'Gegliederte Beine und oft Panzer',
-      wissen: 'Arthropoden: Chitinpanzer und gegliederte Beine — u. a. Insekten, Spinnen und Krebse.',
+      wissen: 'Arthropoden: Chitinpanzer und gegliederte Beine — u. a. Insekten, Spinnen, Krebse und Tausendfüßer.',
+    },
+    {
+      term: 'Krebstier',
+      meaning: 'Gliederfüßer, oft mit Kiemen im Wasser',
+      wissen: 'Krebse gehören zu den Gliederfüßern — Details zu Flusskrebs und Wasserfloh im Spezialthema.',
+    },
+    {
+      term: 'Nesseltier',
+      meaning: 'Wassertier mit Nesselzellen',
+      wissen: 'Quallen und Korallen sind Nesseltiere — Vertiefung im Spezialthema.',
+    },
+    {
+      term: 'Stachelhäuter',
+      meaning: 'Meereswirbellose mit Kalk-Innenskelett',
+      wissen: 'Seesterne und Seeigel leben nur im Meer — Bau und Ambulakralsystem im Spezialthema.',
     },
     {
       term: 'Angepasstheit',
@@ -781,44 +797,6 @@ const zellen: BioBank = {
   ],
 }
 
-const weichtiere: BioBank = {
-  quelle: 'Wikipedia: Weichtiere',
-  url: 'https://de.wikipedia.org/wiki/Weichtiere',
-  facts: [
-    {
-      concept: 'bio:k6:welche-gruppe-sind-schnecken-und-muschel',
-      prompt: 'Welche Gruppe sind Schnecken und Muscheln?',
-      answer: 'Weichtiere',
-      wrong: ['Insekten', 'Säugetiere', 'Knochenfische'],
-      explanation: 'Weichtiere: u. a. Schnecken, Muscheln, Tintenfische.',
-      wissen:
-        'Schnecken und Muscheln gehören zu den Weichtieren: weicher Körper, oft mit Schale oder Gehäuse — wirbellos.',
-    },
-  ],
-  pairs: [
-    {
-      term: 'Schnecke',
-      meaning: 'Kriechfuß, oft Gehäuse',
-      wissen: 'Schnecken bewegen sich mit dem Kriechfuß; viele tragen ein Gehäuse — Land- und Wasserarten.',
-    },
-    {
-      term: 'Muschel',
-      meaning: 'Zwei Schalen, filtriert oft Wasser',
-      wissen: 'Muscheln haben zwei Schalen; viele filtrieren Nahrungspartikel aus dem Wasser.',
-    },
-  ],
-  trueFalse: [
-    {
-      concept: 'bio:k6:schnecken-besitzen-eine-wirbelsaeule',
-      statement: 'Schnecken besitzen eine Wirbelsäule.',
-      correct: false,
-      explanation: 'Weichtiere sind wirbellos.',
-      wissen:
-        'Weichtiere wie Schnecken sind wirbellos — sie haben keine Wirbelsäule, anders als Fische oder Säuger.',
-    },
-  ],
-}
-
 const heilen: BioBank = {
   quelle: 'Wikipedia: Heilpflanze',
   url: 'https://de.wikipedia.org/wiki/Heilpflanze',
@@ -891,7 +869,7 @@ export const BIOLOGIE_K6_GENERATORS: Record<string, Topic['generate']> = {
   'bi-k6-lb3-systematik': bankGenerate(systematikK6),
   'bi-k6-lb4-wald': bankGenerate(wald),
   'bi-k6-lb5-zellen': bankGenerate(zellen),
-  'bi-k6-lbw-weichtiere': bankGenerate(weichtiere),
   'bi-k6-lbw-heilen': bankGenerate(heilen),
   'bi-k6-lbw-pfuetze': bankGenerate(pfuetze),
+  ...BIOLOGIE_K6_WIRBELLOSE_SPECIAL_GENERATORS,
 }
