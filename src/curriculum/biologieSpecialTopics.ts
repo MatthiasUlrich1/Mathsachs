@@ -848,6 +848,87 @@ const hormone: BioBank = {
   ],
 }
 
+const nervReflex: BioBank = {
+  ...Q.sinne,
+  conceptPrefix: 'bio:k8:nerv-reflex',
+  facts: [
+    {
+      concept: 'bio:k8:nerv:axon',
+      prompt: 'Welche Aufgabe hat das Axon einer Nervenzelle?',
+      answer: 'Leitet Erregung vom Zellkörper weiter',
+      wrong: ['Bildet nur Blüten', 'Speichert nur Fett im Knochen', 'Ersetzt die Atmung'],
+      explanation: 'Axon = Leitungsfortsatz.',
+      wissen:
+        'Das Axon leitet elektrische Erregung vom Zellkörper zu Synapsen. Dendriten nehmen Signale auf. So entsteht die gerichtete Informationsübertragung.',
+      gap: 'Das ___ leitet das Signal der Nervenzelle weiter.',
+      gapAccepted: ['Axon', 'Neurit'],
+    },
+    {
+      concept: 'bio:k8:nerv:reflexbogen',
+      prompt: 'Was beschreibt einen Reflexbogen grob?',
+      answer: 'Reiz → Rezeptor → Nerven → Effektor (oft ohne bewusste Planung)',
+      wrong: ['Nur Fotosynthese im Blatt', 'Nur Gärung in Hefe', 'Nur Jahresringe'],
+      explanation: 'Schnelle Schutzreaktionen.',
+      wissen:
+        'Beim Reflexbogen nimmt ein Rezeptor den Reiz auf, Nerven leiten, oft schaltet das Rückenmark, und ein Muskel oder eine Drüse reagiert — schnell und oft unwillkürlich.',
+    },
+  ],
+}
+
+const hautSinn: BioBank = {
+  ...Q.sinne,
+  conceptPrefix: 'bio:k8:haut',
+  facts: [
+    {
+      concept: 'bio:k8:haut:sinne',
+      prompt: 'Welche Reize nimmt die Haut u. a. wahr?',
+      answer: 'Druck, Temperatur und Schmerz',
+      wrong: ['Nur Licht wie die Netzhaut allein', 'Nur Schall wie die Hörschnecke', 'Nur Blütenfarbe'],
+      explanation: 'Haut = großes Sinnesorgan.',
+      wissen:
+        'In der Haut liegen Rezeptoren für Druck, Temperatur und Schmerz. Die Haut schützt außerdem, reguliert Wärme und ist Barriere gegen Keime.',
+      gap: 'Die Haut nimmt u. a. ___ und Temperatur wahr.',
+      gapAccepted: ['Druck', 'Berührung', 'Schmerz'],
+    },
+  ],
+}
+
+const blattGewebe: BioBank = {
+  ...Q.foto,
+  conceptPrefix: 'bio:k9:blatt',
+  facts: [
+    {
+      concept: 'bio:k9:blatt:spaltoeffnung',
+      prompt: 'Wozu dienen Spaltöffnungen am Blatt?',
+      answer: 'Gasaustausch (CO₂ hinein, Wasserdampf hinaus)',
+      wrong: ['Nur Knochenbildung', 'Nur Antikörperbildung', 'Nur Federwachstum'],
+      explanation: 'Reguliert von Schließzellen.',
+      wissen:
+        'Spaltöffnungen ermöglichen den Gasaustausch: CO₂ für die Fotosynthese hinein, O₂ und Wasserdampf hinaus. Schließzellen regulieren die Weite.',
+      gap: 'CO₂ gelangt über ___ ins Blatt.',
+      gapAccepted: ['Spaltöffnungen', 'Stomata', 'Spaltöffnung'],
+    },
+  ],
+}
+
+const stickstoffKreis: BioBank = {
+  ...Q.oeko,
+  conceptPrefix: 'bio:k9:stickstoff',
+  facts: [
+    {
+      concept: 'bio:k9:n:fixierung',
+      prompt: 'Was leisten Knöllchenbakterien an Leguminosen grob?',
+      answer: 'Binden Luftstickstoff für die Pflanze',
+      wrong: ['Betreiben nur Fotosynthese im Knochen', 'Bilden nur Federn', 'Ersetzen die Atmung'],
+      explanation: 'Stickstofffixierung in Symbiose.',
+      wissen:
+        'Knöllchenbakterien an Wurzeln von Leguminosen fixieren Luftstickstoff und machen ihn für die Pflanze nutzbar. Das ist ein Schlüsselprozess im Stickstoffkreislauf.',
+      gap: '___ binden Luftstickstoff in Wurzelknöllchen.',
+      gapAccepted: ['Knöllchenbakterien', 'Rhizobien', 'Stickstofffixierer'],
+    },
+  ],
+}
+
 const entwicklung: BioBank = {
   quelle: 'Wikipedia: Menschliche Sexualität',
   url: 'https://de.wikipedia.org/wiki/Menschliche_Sexualit%C3%A4t',
@@ -1244,11 +1325,15 @@ export const BIOLOGIE_SPECIAL_GENERATORS: Record<string, Topic['generate']> = {
   'bi-k7-lb3-organe': bankGenerate(verdauungsorgane),
   'bi-k8-lb1-auge-ohr': bankGenerate(augeOhr),
   'bi-k8-lb1-hormone': bankGenerate(hormone),
+  'bi-k8-lb1-nerv-reflex': bankGenerate(nervReflex),
+  'bi-k8-lb1-haut': bankGenerate(hautSinn),
   'bi-k8-lb2-entwicklung': bankGenerate(entwicklung),
   'bi-k9-lb1-fotosynthese': bankGenerate(fotosynthese),
   'bi-k9-lb1-wasser': bankGenerate(wasserTransport),
+  'bi-k9-lb1-blatt': bankGenerate(blattGewebe),
   'bi-k9-lb2-wald-gewaesser': bankGenerate(waldGewaesser),
   'bi-k9-lb2-stoffkreis': bankGenerate(stoffkreis),
+  'bi-k9-lb2-stickstoff': bankGenerate(stickstoffKreis),
   'bi-k10-lb1-mendel': bankGenerate(mendel),
   'bi-k10-lb1-dna': bankGenerate(dna),
   'bi-k10-lb2-selektion': bankGenerate(selektion),

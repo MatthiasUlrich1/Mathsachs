@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Geschichte",
-  "version": "1.6.0",
-  "changelog": "K5–12 Banken verdichtet (Klett+Schlaukopf-Inspiration, eigene Formulierungen) · neue Interaktionen sourceQuote/causeEffect · fragebezogenes Fachwissen · 85 Themen. K6 LB1 Rom freigegeben; Rest Entwickler (released:false).",
+  "version": "1.6.1",
+  "changelog": "Themenstruktur ab K8 verdichtet unter Lehrplan-LBs · 133 Themen. K6 LB1 Rom freigegeben; Rest Entwickler (released:false).",
   "official": [
     {
       "id": "geschichte-klasse-5",
@@ -584,7 +584,7 @@
           "topics": [
             {
               "id": "ge-k7-lb1-neuzeit",
-              "title": "Aufbruch in die Neuzeit",
+              "title": "Aufbruch in die Neuzeit – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -592,6 +592,45 @@
               "keywords": [
                 "Neuzeit",
                 "Menschenbild"
+              ]
+            },
+            {
+              "id": "ge-k7-lb1-renaissance",
+              "title": "Renaissance und Humanismus",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Renaissance",
+                "Humanismus",
+                "Buchdruck"
+              ]
+            },
+            {
+              "id": "ge-k7-lb1-entdeckungen",
+              "title": "Entdeckungsfahrten und globale Verflechtung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "1492",
+                "Kolumbus",
+                "Kolonialisierung"
+              ]
+            },
+            {
+              "id": "ge-k7-lb1-reformation-krieg",
+              "title": "Reformation und Dreißigjähriger Krieg",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Luther",
+                "Glaubensspaltung",
+                "Dreißigjähriger Krieg"
               ]
             }
           ]
@@ -603,7 +642,7 @@
           "topics": [
             {
               "id": "ge-k7-lb2-absolutismus",
-              "title": "Absolutismus und Aufklärung",
+              "title": "Absolutismus und Aufklärung – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -611,6 +650,45 @@
               "keywords": [
                 "Absolutismus",
                 "Aufklärung"
+              ]
+            },
+            {
+              "id": "ge-k7-lb2-absolutismus-frankreich",
+              "title": "Absolutismus in Frankreich (Ludwig XIV.)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Ludwig XIV.",
+                "Versailles",
+                "Merkantilismus"
+              ]
+            },
+            {
+              "id": "ge-k7-lb2-aufklaerung",
+              "title": "Aufklärung: Vernunft und Kritik",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Vernunft",
+                "Gewaltenteilung",
+                "Toleranz"
+              ]
+            },
+            {
+              "id": "ge-k7-lb2-preussen-sachsen",
+              "title": "Preußen und Sachsen im Absolutismus",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Friedrich II.",
+                "August der Starke",
+                "Barock"
               ]
             }
           ]
@@ -769,7 +847,7 @@
           "topics": [
             {
               "id": "ge-k8-lb1-einheit-freiheit",
-              "title": "Einheit und Freiheit – Vorstellungen des Bürgertums",
+              "title": "Einheit und Freiheit – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -778,6 +856,45 @@
                 "Bürgertum",
                 "Einheit",
                 "Freiheit"
+              ]
+            },
+            {
+              "id": "ge-k8-lb1-napoleon-wiener",
+              "title": "Napoleon, Wiener Kongress und Deutscher Bund",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Wiener Kongress",
+                "Napoleon",
+                "Deutscher Bund"
+              ]
+            },
+            {
+              "id": "ge-k8-lb1-vormaerz-1848",
+              "title": "Vormärz und Revolution 1848/49",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Vormärz",
+                "1848",
+                "Paulskirche"
+              ]
+            },
+            {
+              "id": "ge-k8-lb1-kaiserreich",
+              "title": "Reichsgründung und Kaiserreich",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Bismarck",
+                "1871",
+                "Verfassung"
               ]
             }
           ]
@@ -789,7 +906,7 @@
           "topics": [
             {
               "id": "ge-k8-lb2-industrialisierung",
-              "title": "Industrialisierung und die Folgen",
+              "title": "Industrialisierung – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -797,6 +914,45 @@
               "keywords": [
                 "Industrialisierung",
                 "Fortschritt"
+              ]
+            },
+            {
+              "id": "ge-k8-lb2-england",
+              "title": "England als Pionier der Industriellen Revolution",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "England",
+                "Dampfmaschine",
+                "Fabrik"
+              ]
+            },
+            {
+              "id": "ge-k8-lb2-deutschland",
+              "title": "Industrialisierung in Deutschland",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zollverein",
+                "Eisenbahn",
+                "Hochindustrialisierung"
+              ]
+            },
+            {
+              "id": "ge-k8-lb2-folgen",
+              "title": "Soziale Folgen: Stadt, Arbeit, Umwelt",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Verstädterung",
+                "Migration",
+                "Soziale Frage"
               ]
             }
           ]
@@ -827,7 +983,7 @@
           "topics": [
             {
               "id": "ge-k8-lb4-nationalismus-wk1",
-              "title": "Vom Nationalismus zum Ersten Weltkrieg",
+              "title": "Nationalismus und Erster Weltkrieg – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -835,6 +991,45 @@
               "keywords": [
                 "Nationalismus",
                 "Erster Weltkrieg"
+              ]
+            },
+            {
+              "id": "ge-k8-lb4-imperialismus",
+              "title": "Imperialismus und Kolonialpolitik",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Imperialismus",
+                "Kolonialismus",
+                "Großmächte"
+              ]
+            },
+            {
+              "id": "ge-k8-lb4-buendnisse",
+              "title": "Bündnispolitik und Wettrüsten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Bismarck",
+                "Bündnisse",
+                "Militarismus"
+              ]
+            },
+            {
+              "id": "ge-k8-lb4-ursachen-wk1",
+              "title": "Ursachen und Kriegsschuldfrage 1914",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Julikrise",
+                "Kriegsschuld",
+                "1914"
               ]
             }
           ]
@@ -856,6 +1051,19 @@
               ]
             },
             {
+              "id": "ge-k8-lbw-alltag",
+              "title": "Neue Dimension von Krieg – Alltag im Ersten Weltkrieg",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Heimatfront",
+                "Feldpost",
+                "Alltag"
+              ]
+            },
+            {
               "id": "ge-k8-lbw-massenmedien",
               "title": "Neue Dimension von Krieg – Moderne Massenmedien im Ersten Weltkrieg",
               "pointsPerTask": 10,
@@ -864,7 +1072,8 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Erster Weltkrieg",
-                "Medien"
+                "Medien",
+                "Propaganda"
               ]
             }
           ]
@@ -892,7 +1101,7 @@
           "topics": [
             {
               "id": "ge-k9-lb1-nach-wk1",
-              "title": "Zukunftsgestaltung in Europa nach dem Ersten Weltkrieg",
+              "title": "Nach dem Ersten Weltkrieg – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -900,6 +1109,32 @@
               "keywords": [
                 "Versailles",
                 "Zwischenkriegszeit"
+              ]
+            },
+            {
+              "id": "ge-k9-lb1-versailles",
+              "title": "Versailler Vertrag und Nachkriegsordnung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Versailles",
+                "Reparationen",
+                "Völkerbund"
+              ]
+            },
+            {
+              "id": "ge-k9-lb1-europa-ordnung",
+              "title": "Neue Staaten und gesellschaftliche Umbrüche",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Selbstbestimmung",
+                "Sowjetrussland",
+                "Nachkriegsordnung"
               ]
             }
           ]
@@ -911,7 +1146,7 @@
           "topics": [
             {
               "id": "ge-k9-lb2-demokratie-diktatur",
-              "title": "Von der Demokratie zur Diktatur",
+              "title": "Von der Demokratie zur Diktatur – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -919,6 +1154,32 @@
               "keywords": [
                 "Weimar",
                 "Diktatur"
+              ]
+            },
+            {
+              "id": "ge-k9-lb2-weimar",
+              "title": "Weimarer Republik: Chancen und Krisen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Weimar",
+                "Verfassung",
+                "Inflation"
+              ]
+            },
+            {
+              "id": "ge-k9-lb2-aufstieg-ns",
+              "title": "Aufstieg der Nationalsozialisten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "NSDAP",
+                "Weltwirtschaftskrise",
+                "Machtübertragung"
               ]
             }
           ]
@@ -930,7 +1191,7 @@
           "topics": [
             {
               "id": "ge-k9-lb3-ns-diktatur",
-              "title": "Die nationalsozialistische Diktatur",
+              "title": "NS-Diktatur – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -938,6 +1199,45 @@
               "keywords": [
                 "Nationalsozialismus",
                 "Terror"
+              ]
+            },
+            {
+              "id": "ge-k9-lb3-terror",
+              "title": "Gleichschaltung, Terror und Verfolgung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Gleichschaltung",
+                "Gestapo",
+                "Konzentrationslager"
+              ]
+            },
+            {
+              "id": "ge-k9-lb3-holocaust",
+              "title": "Holocaust und Völkermord",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Holocaust",
+                "Shoah",
+                "Erinnerung"
+              ]
+            },
+            {
+              "id": "ge-k9-lb3-widerstand",
+              "title": "Widerstand in der Diktatur",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Widerstand",
+                "Opposition",
+                "Zivilcourage"
               ]
             }
           ]
@@ -949,13 +1249,40 @@
           "topics": [
             {
               "id": "ge-k9-lb4-aussenpolitik",
-              "title": "Längsschnitt: Deutsche Außenpolitik",
+              "title": "Deutsche Außenpolitik – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 10,
               "keywords": [
-                "Außenpolitik"
+                "Außenpolitik",
+                "Längsschnitt"
+              ]
+            },
+            {
+              "id": "ge-k9-lb4-ausgleich",
+              "title": "Ausgleichspolitik und Revision",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Locarno",
+                "Rapallo",
+                "Revision"
+              ]
+            },
+            {
+              "id": "ge-k9-lb4-aggression",
+              "title": "Aggressive Expansion der NS-Zeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Appeasement",
+                "Expansion",
+                "Kriegsbeginn"
               ]
             }
           ]
@@ -1028,7 +1355,7 @@
           "topics": [
             {
               "id": "ge-k10-lb1-usa-udssr",
-              "title": "Beziehungen zwischen USA und UdSSR",
+              "title": "USA und UdSSR – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -1037,6 +1364,32 @@
                 "USA",
                 "UdSSR",
                 "Kalter Krieg"
+              ]
+            },
+            {
+              "id": "ge-k10-lb1-allianz-bruch",
+              "title": "Kriegsallianz und Bruch der Sieger",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Allianz",
+                "Jalta",
+                "Potsdam"
+              ]
+            },
+            {
+              "id": "ge-k10-lb1-kaltkrieg-phasen",
+              "title": "Phasen des Kalten Krieges",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Eindämmung",
+                "Kubakrise",
+                "Entspannung"
               ]
             }
           ]
@@ -1048,7 +1401,7 @@
           "topics": [
             {
               "id": "ge-k10-lb2-ost-west",
-              "title": "Der Ost-West-Konflikt und Deutschland",
+              "title": "Ost-West-Konflikt und Deutschland – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -1056,6 +1409,45 @@
               "keywords": [
                 "Ost-West-Konflikt",
                 "Teilung"
+              ]
+            },
+            {
+              "id": "ge-k10-lb2-teilung",
+              "title": "Teilung Deutschlands und Berlins",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Besatzungszonen",
+                "Berlin-Blockade",
+                "Mauerbau"
+              ]
+            },
+            {
+              "id": "ge-k10-lb2-zwei-staaten",
+              "title": "Zwei deutsche Staaten im Systemkonflikt",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "BRD",
+                "DDR",
+                "Hallstein-Doktrin"
+              ]
+            },
+            {
+              "id": "ge-k10-lb2-deutsche-frage",
+              "title": "Deutsche Frage und Ostpolitik",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Ostpolitik",
+                "Grundlagenvertrag",
+                "Entspannung"
               ]
             }
           ]
@@ -1067,7 +1459,7 @@
           "topics": [
             {
               "id": "ge-k10-lb3-wandel-europa",
-              "title": "Politische Wandlungsprozesse in Europa",
+              "title": "Wandlungsprozesse in Europa – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -1075,6 +1467,32 @@
               "keywords": [
                 "Europa",
                 "Revolution"
+              ]
+            },
+            {
+              "id": "ge-k10-lb3-osteuropa-1989",
+              "title": "Umwälzungen in Mittel- und Osteuropa 1989/90",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "1989",
+                "Systemwechsel",
+                "Sowjetunion"
+              ]
+            },
+            {
+              "id": "ge-k10-lb3-einigung",
+              "title": "Deutsche Einheit und europäische Integration",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Wiedervereinigung",
+                "EU",
+                "Zwei-plus-Vier"
               ]
             }
           ]
@@ -1144,7 +1562,7 @@
           "topics": [
             {
               "id": "ge-gk-lb1-moderne-gesellschaft",
-              "title": "Grundlegung einer modernen Gesellschaft",
+              "title": "Moderne Gesellschaft – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -1153,6 +1571,32 @@
                 "Gesellschaft",
                 "Wirtschaft",
                 "Politik"
+              ]
+            },
+            {
+              "id": "ge-gk-lb1-wirtschaft",
+              "title": "Wirtschaftlicher Wandel und soziale Frage",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Industrialisierung",
+                "Soziale Frage",
+                "Kapitalismus"
+              ]
+            },
+            {
+              "id": "ge-gk-lb1-politik-partizipation",
+              "title": "Politische Partizipation und Verfassung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Verfassung",
+                "Partizipation",
+                "Rechtsstaat"
               ]
             }
           ]
@@ -1164,7 +1608,7 @@
           "topics": [
             {
               "id": "ge-gk-lb2-demokratie-diktatur-1",
-              "title": "Demokratie und Diktatur (1. Hälfte 20. Jh.)",
+              "title": "Demokratie und Diktatur I – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -1172,6 +1616,32 @@
               "keywords": [
                 "Demokratie",
                 "Diktatur"
+              ]
+            },
+            {
+              "id": "ge-gk-lb2-weimar-versagen",
+              "title": "Weimar: Chancen, Krisen, Scheitern",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Weimar",
+                "Krise",
+                "Machtübertragung"
+              ]
+            },
+            {
+              "id": "ge-gk-lb2-ns-herrschaft",
+              "title": "NS-Herrschaft: Ideologie und Praxis",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Nationalsozialismus",
+                "Ideologie",
+                "Terror"
               ]
             }
           ]
@@ -1183,7 +1653,7 @@
           "topics": [
             {
               "id": "ge-gk-lb3-demokratie-diktatur-2",
-              "title": "Demokratie und Diktatur (2. Hälfte 20. Jh.)",
+              "title": "Demokratie und Diktatur II – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -1191,6 +1661,32 @@
               "keywords": [
                 "Demokratie",
                 "Diktatur"
+              ]
+            },
+            {
+              "id": "ge-gk-lb3-brd-demokratie",
+              "title": "Demokratieaufbau in der Bundesrepublik",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Grundgesetz",
+                "Parlamentarismus",
+                "Rechtsstaat"
+              ]
+            },
+            {
+              "id": "ge-gk-lb3-ddr-diktatur",
+              "title": "SED-Diktatur und deutsche Teilung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "DDR",
+                "SED",
+                "Stasi"
               ]
             }
           ]
@@ -1202,13 +1698,39 @@
           "topics": [
             {
               "id": "ge-gk-lb4-frieden",
-              "title": "Herausforderung Frieden im 20. Jahrhundert",
+              "title": "Herausforderung Frieden – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 10,
               "keywords": [
                 "Frieden"
+              ]
+            },
+            {
+              "id": "ge-gk-lb4-kollektive-sicherheit",
+              "title": "Kollektive Sicherheit und Institutionen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "UNO",
+                "Völkerbund",
+                "Sicherheitsarchitektur"
+              ]
+            },
+            {
+              "id": "ge-gk-lb4-kaltkrieg-frieden",
+              "title": "Friedenssicherung im Kalten Krieg",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Abschreckung",
+                "Entspannung",
+                "Abrüstung"
               ]
             }
           ]
@@ -1313,7 +1835,7 @@
           "topics": [
             {
               "id": "ge-lk11-lb1-ordnung-partizipation",
-              "title": "Politische Ordnungsvorstellungen und Partizipation",
+              "title": "Ordnung und Partizipation – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -1321,6 +1843,32 @@
               "keywords": [
                 "Partizipation",
                 "Ordnung"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-ordnungen",
+              "title": "Politische Ordnungsmodelle im Vergleich",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Monarchie",
+                "Republik",
+                "Diktatur"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-partizipation",
+              "title": "Wege und Grenzen politischer Teilhabe",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Wahlrecht",
+                "Protest",
+                "Zivilgesellschaft"
               ]
             }
           ]
@@ -1332,7 +1880,7 @@
           "topics": [
             {
               "id": "ge-lk11-lb2-industriegesellschaft",
-              "title": "Von der vorindustriellen zur Industriegesellschaft",
+              "title": "Industriegesellschaft – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -1340,6 +1888,32 @@
               "keywords": [
                 "Industrialisierung",
                 "International"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb2-industrialisierung",
+              "title": "Industrialisierung als globaler Prozess",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Fabriksystem",
+                "Technologie",
+                "Weltmarkt"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb2-folgen",
+              "title": "Soziale und politische Folgen der Industrialisierung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Arbeiterbewegung",
+                "Migration",
+                "Imperialismus"
               ]
             }
           ]
@@ -1395,13 +1969,39 @@
           "topics": [
             {
               "id": "ge-lk12-lb1-frieden",
-              "title": "Herausforderung Frieden",
+              "title": "Herausforderung Frieden – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 10,
               "keywords": [
                 "Frieden"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-kriegsursachen",
+              "title": "Kriegsursachen und Friedensordnungen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kriegsursachen",
+                "Friedensvertrag",
+                "Sicherheit"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-institutionen",
+              "title": "Internationale Institutionen und Konfliktlösung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "UNO",
+                "Diplomatie",
+                "Abrüstung"
               ]
             }
           ]
@@ -1413,7 +2013,7 @@
           "topics": [
             {
               "id": "ge-lk12-lb2-geschichtskultur",
-              "title": "Geschichtskultur und Identitätsbildung",
+              "title": "Geschichtskultur – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -1421,6 +2021,32 @@
               "keywords": [
                 "Geschichtskultur",
                 "Identität"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb2-erinnerung",
+              "title": "Erinnerungskultur und öffentliche Geschichte",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Erinnerung",
+                "Denkmal",
+                "Gedenken"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb2-identitaet",
+              "title": "Historische Identitätsbildung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Identität",
+                "Narrative",
+                "Geschichtspolitik"
               ]
             }
           ]
@@ -1469,5 +2095,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "cc2d00be"
+  "contentHash": "a471d079"
 }

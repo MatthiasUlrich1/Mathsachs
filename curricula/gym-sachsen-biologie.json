@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Biologie",
-  "version": "1.2.7",
-  "changelog": "Lehrplan-522-Struktur: Gk 11/12 getrennt, fehlende Wahlbereiche (Spinnen, Transgene, Gärung, Allergien, Wüste Lk), LB2 ohne Stachelhäuter/Tausendfüßer, mit Rundwürmern/Hohltiere. 121 Themen.",
+  "version": "1.2.8",
+  "changelog": "K8–K10/Oberstufe verdichtet: Wahlbereiche + neue LB-Unterthemen (Nerv/Reflex, Haut, Blattgewebe, Stickstoff); Deepen-Pools. 125 Themen.",
   "official": [
     {
       "id": "biologie-klasse-5",
@@ -976,6 +976,19 @@
               ]
             },
             {
+              "id": "bi-k8-lb1-nerv-reflex",
+              "title": "Nervenzelle und Reflex",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Axon",
+                "Synapse",
+                "Reflexbogen"
+              ]
+            },
+            {
               "id": "bi-k8-lb1-auge-ohr",
               "title": "Auge und Ohr",
               "pointsPerTask": 10,
@@ -986,6 +999,19 @@
                 "Auge",
                 "Ohr",
                 "Reiz"
+              ]
+            },
+            {
+              "id": "bi-k8-lb1-haut",
+              "title": "Haut als Sinnesorgan",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Tastsinn",
+                "Schmerz",
+                "Thermoregulation"
               ]
             },
             {
@@ -1116,6 +1142,19 @@
               ]
             },
             {
+              "id": "bi-k9-lb1-blatt",
+              "title": "Spaltöffnungen und Blattgewebe",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Spaltöffnung",
+                "Mesophyll",
+                "Cuticula"
+              ]
+            },
+            {
               "id": "bi-k9-lb1-wasser",
               "title": "Wassertransport und Transpiration",
               "pointsPerTask": 10,
@@ -1168,6 +1207,19 @@
               "keywords": [
                 "Kohlenstoffkreislauf",
                 "Energie"
+              ]
+            },
+            {
+              "id": "bi-k9-lb2-stickstoff",
+              "title": "Stickstoffkreislauf",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Stickstofffixierung",
+                "Nitrat",
+                "Knöllchenbakterien"
               ]
             }
           ]
@@ -1938,5 +1990,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "ec8f969b"
+  "contentHash": "22bb3caa"
 }

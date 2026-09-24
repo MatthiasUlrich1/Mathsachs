@@ -506,14 +506,18 @@ export const BIOLOGIE_K7_EXPANDED = withSpecialTopics(BASE_K7, [
 export const BIOLOGIE_K8_EXPANDED = withSpecialTopics(BASE_K8, [
   'bi-k8-lb1-auge-ohr',
   'bi-k8-lb1-hormone',
+  'bi-k8-lb1-nerv-reflex',
+  'bi-k8-lb1-haut',
   'bi-k8-lb2-entwicklung',
 ])
 
 export const BIOLOGIE_K9_EXPANDED = withSpecialTopics(BASE_K9, [
   'bi-k9-lb1-fotosynthese',
   'bi-k9-lb1-wasser',
+  'bi-k9-lb1-blatt',
   'bi-k9-lb2-wald-gewaesser',
   'bi-k9-lb2-stoffkreis',
+  'bi-k9-lb2-stickstoff',
 ])
 
 export const BIOLOGIE_K10_EXPANDED = withSpecialTopics(BASE_K10, [

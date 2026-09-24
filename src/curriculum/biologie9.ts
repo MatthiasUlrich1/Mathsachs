@@ -138,6 +138,7 @@ const oekosystem: BioBank = {
 const wiese: BioBank = {
   quelle: 'Wikipedia: Wiese',
   url: 'https://de.wikipedia.org/wiki/Wiese',
+  conceptPrefix: 'bio:k9:wiese',
   facts: [
     {
       concept: 'bio:k9:warum-ist-eine-wiese-artenreich',
@@ -164,6 +165,7 @@ const wiese: BioBank = {
 const pilze: BioBank = {
   quelle: 'Wikipedia: Pilze',
   url: 'https://de.wikipedia.org/wiki/Pilze',
+  conceptPrefix: 'bio:k9:pilze',
   facts: [
     {
       concept: 'bio:k9:wie-ernaehren-sich-die-meisten-pilze',
@@ -204,6 +206,7 @@ const pilze: BioBank = {
 const bier: BioBank = {
   quelle: 'Wikipedia: Gärung',
   url: 'https://de.wikipedia.org/wiki/G%C3%A4rung',
+  conceptPrefix: 'bio:k9:bier',
   facts: [
     {
       concept: 'bio:k9:welche-mikroorganismen-sind-bei-der-alko',

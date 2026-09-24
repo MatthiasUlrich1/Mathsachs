@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.2.7',
-    changelog: `Lehrplan-522-Struktur: Gk 11/12 getrennt, fehlende Wahlbereiche (Spinnen, Transgene, Gärung, Allergien, Wüste Lk), LB2 ohne Stachelhäuter/Tausendfüßer, mit Rundwürmern/Hohltiere. ${topics} Themen.`,
+    version: '1.2.8',
+    changelog: `K8–K10/Oberstufe verdichtet: Wahlbereiche + neue LB-Unterthemen (Nerv/Reflex, Haut, Blattgewebe, Stickstoff); Deepen-Pools. ${topics} Themen.`,
     official,
     extras: [],
   }

@@ -142,6 +142,7 @@ const sexualitaet: BioBank = {
 const stress: BioBank = {
   quelle: 'Wikipedia: Stress',
   url: 'https://de.wikipedia.org/wiki/Stress',
+  conceptPrefix: 'bio:k8:stress',
   facts: [
     {
       concept: 'bio:k8:was-kann-bei-stress-im-koerper-passieren',
@@ -180,6 +181,7 @@ const stress: BioBank = {
 const sinneWahl: BioBank = {
   quelle: 'Wikipedia: Wahrnehmung',
   url: 'https://de.wikipedia.org/wiki/Wahrnehmung',
+  conceptPrefix: 'bio:k8:sinne-wahl',
   facts: [
     {
       concept: 'bio:k8:warum-ergaenzen-sich-die-sinne-gegenseit',
@@ -206,6 +208,7 @@ const sinneWahl: BioBank = {
 const ersteHilfe: BioBank = {
   quelle: 'Wikipedia: Erste Hilfe',
   url: 'https://de.wikipedia.org/wiki/Erste_Hilfe',
+  conceptPrefix: 'bio:k8:erste-hilfe',
   facts: [
     {
       concept: 'bio:k8:was-ist-der-erste-schritt-in-vielen-notf',

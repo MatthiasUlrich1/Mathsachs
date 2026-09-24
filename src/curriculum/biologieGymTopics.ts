@@ -403,7 +403,17 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Nerven',
             'Hormone',
           ]),
+          topic('bi-k8-lb1-nerv-reflex', 'Nervenzelle und Reflex', [
+            'Axon',
+            'Synapse',
+            'Reflexbogen',
+          ]),
           topic('bi-k8-lb1-auge-ohr', 'Auge und Ohr', ['Auge', 'Ohr', 'Reiz']),
+          topic('bi-k8-lb1-haut', 'Haut als Sinnesorgan', [
+            'Tastsinn',
+            'Schmerz',
+            'Thermoregulation',
+          ]),
           topic('bi-k8-lb1-hormone', 'Hormonsystem', ['Hormon', 'Drüse']),
         ]),
         area('lb2', 'Sexualität des Menschen', 11, [
@@ -442,6 +452,11 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Fotosynthese',
             'Chlorophyll',
           ]),
+          topic('bi-k9-lb1-blatt', 'Spaltöffnungen und Blattgewebe', [
+            'Spaltöffnung',
+            'Mesophyll',
+            'Cuticula',
+          ]),
           topic('bi-k9-lb1-wasser', 'Wassertransport und Transpiration', [
             'Transpiration',
             'Xylem',
@@ -459,6 +474,11 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
           topic('bi-k9-lb2-stoffkreis', 'Stoffkreisläufe und Energiefluss', [
             'Kohlenstoffkreislauf',
             'Energie',
+          ]),
+          topic('bi-k9-lb2-stickstoff', 'Stickstoffkreislauf', [
+            'Stickstofffixierung',
+            'Nitrat',
+            'Knöllchenbakterien',
           ]),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [

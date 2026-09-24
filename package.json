@@ -1,9 +1,9 @@
 {
   "name": "mathsachs",
   "private": true,
-  "version": "0.28.41",
+  "version": "0.28.42",
   "type": "module",
-  "description": "TaskTrophy — Das Klassen-Duell. Lehrplanorientiertes Übungsprogramm.",
+  "description": "TaskTrophy â€” Das Klassen-Duell. Lehrplanorientiertes Ãœbungsprogramm.",
   "homepage": "https://app.tasktrophy.de/",
   "author": "Linus und Matthias Ulrich",
   "license": "MIT",

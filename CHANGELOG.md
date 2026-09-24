@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.42] – 2026-09-24
+
+### Geändert
+- **Biologie Gymnasium Sachsen 1.2.8:** K8–K10 und Oberstufe verdichtet — Wahlbereiche
+  und dünne Gk/Lk-Banken mit Deepen-Pools; neue LB-Unterthemen (Nervenzelle/Reflex, Haut,
+  Spaltöffnungen/Blattgewebe, Stickstoffkreislauf) unter korrekten Lehrplan-LBs.
+  Inspiration Schlaukopf/Klett/Wikipedia, eigene Formulierungen.
+- **Geschichte Gymnasium Sachsen 1.6.1:** dichtere Themenstruktur unter Lehrplan-LBs
+  (Export gemeinsam mit Biologie 1.2.8).
+
 ## [0.28.41] – 2026-09-24
 
 ### Behoben

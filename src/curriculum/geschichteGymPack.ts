@@ -18,8 +18,8 @@ export function buildGymSachsenGeschichtePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Geschichte',
-    version: '1.6.0',
-    changelog: `K5–12 Banken verdichtet (Klett+Schlaukopf-Inspiration, eigene Formulierungen) · neue Interaktionen sourceQuote/causeEffect · fragebezogenes Fachwissen · ${topics} Themen. K6 LB1 Rom freigegeben; Rest Entwickler (released:false).`,
+    version: '1.6.1',
+    changelog: `Themenstruktur ab K8 verdichtet unter Lehrplan-LBs · ${topics} Themen. K6 LB1 Rom freigegeben; Rest Entwickler (released:false).`,
     official,
     extras: [],
   }

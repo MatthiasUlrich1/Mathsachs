@@ -147,6 +147,7 @@ const artenvielfalt: BioBank = {
 const mensch: BioBank = {
   quelle: 'Wikipedia: Stammesgeschichte des Menschen',
   url: 'https://de.wikipedia.org/wiki/Stammesgeschichte_des_Menschen',
+  conceptPrefix: 'bio:k10:mensch',
   facts: [
     {
       concept: 'bio:k10:was-bedeutet-homininen-grob-im-unterrich',
@@ -220,6 +221,7 @@ const mensch: BioBank = {
 const leben: BioBank = {
   quelle: 'Wikipedia: Chemische Evolution',
   url: 'https://de.wikipedia.org/wiki/Chemische_Evolution',
+  conceptPrefix: 'bio:k10:leben',
   facts: [
     {
       concept: 'bio:k10:was-meint-chemische-evolution-grob',
@@ -246,6 +248,7 @@ const leben: BioBank = {
 const lernen: BioBank = {
   quelle: 'Wikipedia: Gedächtnis',
   url: 'https://de.wikipedia.org/wiki/Ged%C3%A4chtnis',
+  conceptPrefix: 'bio:k10:lernen',
   facts: [
     {
       concept: 'bio:k10:was-beschreibt-lernen-biologisch-grob',

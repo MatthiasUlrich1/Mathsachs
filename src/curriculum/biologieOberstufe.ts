@@ -555,6 +555,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
         },
       ],
       {
+        conceptPrefix: 'bio:kOberstufe:wueste',
         pairs: [
           {
             term: 'CAM-Stoffwechsel',
@@ -591,7 +592,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
         gap: 'Der ___ ist der Energiebedarf in Ruhe.',
         gapAccepted: ['Grundumsatz', 'Ruheumsatz'],
       },
-    ]),
+    ], { conceptPrefix: 'bio:kOberstufe:energie' }),
   ),
   'bi-gk-lbw-gaerung': bankGenerate(
     wahl('Gärung', 'G%C3%A4rung', [
@@ -615,7 +616,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
         wissen:
           'Alkoholische Gärung spaltet Zucker zu Ethanol und Kohlenstoffdioxid. Hefen nutzen sie bei Sauerstoffmangel. Im Unterricht wird sie mit Zellatmung und Milchsäuregärung verglichen.',
       },
-    ]),
+    ], { conceptPrefix: 'bio:kOberstufe:gaerung' }),
   ),
   'bi-gk-lbw-fliesgewaesser': bankGenerate(
     wahl('Fließgewässer', 'Flie%C3%9Fgew%C3%A4sser', [
@@ -630,7 +631,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
         gap: 'In Bächen ist die ___ ein prägender abiotischer Faktor.',
         gapAccepted: ['Strömung', 'Strömungsgeschwindigkeit'],
       },
-    ]),
+    ], { conceptPrefix: 'bio:kOberstufe:fliesgewaesser' }),
   ),
   'bi-gk-lbw-allergien': bankGenerate(
     wahl('Allergie', 'Allergie', [
@@ -643,7 +644,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
         wissen:
           'Allergien sind übersteigerte Immunreaktionen gegen harmlose Antigene (Allergene). IgE und Mastzellen spielen beim Soforttyp eine Rolle. Der Wahlbereich übt die Anwendung immunbiologischer Kenntnisse.',
       },
-    ]),
+    ], { conceptPrefix: 'bio:kOberstufe:allergien' }),
   ),
   'bi-gk-lbw-krebs': bankGenerate(
     wahl('Krebs (Medizin)', 'Krebs_(Medizin)', [
@@ -658,7 +659,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
         gap: 'Krebszellen zeigen oft unkontrollierte ___.',
         gapAccepted: ['Zellteilung', 'Proliferation', 'Vermehrung'],
       },
-    ]),
+    ], { conceptPrefix: 'bio:kOberstufe:krebs' }),
   ),
   'bi-gk-lbw-nerven': bankGenerate(kommunikation),
   'bi-gk-lbw-verhalten': bankGenerate(verhalten),
@@ -678,6 +679,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
             'Wüstenpflanzen speichern Wasser, reduzieren Verdunstungsfläche und schützen mit dicker Cuticula. CAM und Sukkulenz sind häufige Anpassungen an Trockenheit.',
         },
       ],
+      { conceptPrefix: 'bio:kOberstufe:wueste' },
     ),
   ),
   'bi-lk11-lbw-urban': bankGenerate(
@@ -691,7 +693,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
         wissen:
           'Urbane Ökologie untersucht Arten, Lebensräume und Stoffflüsse in Städten. Versiegelung, Wärmeinsel und Fragmentierung prägen die Lebensgemeinschaften. Grünflächen und Vernetzung fördern urbane Biodiversität.',
       },
-    ]),
+    ], { conceptPrefix: 'bio:kOberstufe:urban' }),
   ),
   'bi-lk11-lbw-bioindikation': bankGenerate(
     wahl('Bioindikator', 'Bioindikator', [
@@ -704,7 +706,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
         wissen:
           'Bioindikatoren spiegeln Umweltzustände über Vorkommen, Häufigkeit oder Zustand von Arten wider. Flechten zeigen z. B. Luftqualität; bestimmte Wasserorganismen zeigen Gewässergüte. Sie ergänzen chemische Messungen um biologische Wirkung.',
       },
-    ]),
+    ], { conceptPrefix: 'bio:kOberstufe:bioindikation' }),
   ),
   'bi-lk11-lbw-invasiv': bankGenerate(
     wahl('Neobiota', 'Neobiota', [
@@ -717,7 +719,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
         wissen:
           'Invasive Arten (invasive Neobiota) können heimische Arten verdrängen, Nahrungsnetze umbauen und Lebensräume verändern. Einschleppung erfolgt oft durch Handel und Verkehr. Management reicht von Prävention bis Bekämpfung.',
       },
-    ]),
+    ], { conceptPrefix: 'bio:kOberstufe:invasiv' }),
   ),
   'bi-lk11-lbw-rohstoffe': bankGenerate(
     wahl('Nachwachsende Rohstoffe', 'Nachwachsender_Rohstoff', [
@@ -730,7 +732,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
         wissen:
           'Nachwachsende Rohstoffe stammen aus Biomasse (Holz, Ölsaaten, Fasern) und können erneut erzeugt werden. Sie ersetzen teils fossile Rohstoffe, brauchen aber Fläche und können mit Nahrung konkurrieren. Nachhaltigkeit hängt von Anbau und Nutzung ab.',
       },
-    ]),
+    ], { conceptPrefix: 'bio:kOberstufe:rohstoffe' }),
   ),
   'bi-lk11-lbw-energie': bankGenerate(
     wahl('Energieumsatz', 'Energieumsatz', [
@@ -743,7 +745,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
         wissen:
           'Leistungsumsatz ist der Energiebedarf bei körperlicher oder geistiger Aktivität über dem Grundumsatz. Sport, Arbeit und Thermoregulation erhöhen ihn. Gesamtenergiebedarf = Grundumsatz + Leistungsumsatz (vereinfacht).',
       },
-    ]),
+    ], { conceptPrefix: 'bio:kOberstufe:energie' }),
   ),
   'bi-lk12-lbw-allergie': bankGenerate(
     wahl('Allergie', 'Allergie', [
@@ -756,7 +758,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
         wissen:
           'Eine Allergie ist eine übersteigerte Immunreaktion gegen eigentlich harmlose Antigene (Allergene). Mastzellen und IgE spielen bei Soforttyp-Reaktionen eine Rolle. Sie ist von Infektion und von Autoimmunität abzugrenzen.',
       },
-    ]),
+    ], { conceptPrefix: 'bio:kOberstufe:allergien' }),
   ),
   'bi-lk12-lbw-stoffwechsel': bankGenerate(stoffwechsel),
   'bi-lk12-lbw-gefaess': bankGenerate(
@@ -770,7 +772,7 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
         wissen:
           'Gefäßpflanzen besitzen Leitgewebe: Xylem transportiert Wasser und Mineralstoffe, Phloem Assimilate. Das ermöglicht höheres Wachstum und Versorgung entfernter Organe. Moose fehlen echte Gefäße im gleichen Sinn.',
       },
-    ]),
+    ], { conceptPrefix: 'bio:k9:blatt' }),
   ),
   'bi-lk12-lbw-verhalten': bankGenerate(verhalten),
   'bi-lk12-lbw-gentechnik': bankGenerate(genetikOS),
