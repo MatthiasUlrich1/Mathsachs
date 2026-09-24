@@ -92,6 +92,7 @@ describe('top-bar navigation', () => {
       'Aufgaben-Prüfung',
       'Meine Meldungen',
       'Fehlerhafte Aufgaben',
+      'Info',
       'WLAN-Zugang',
       'Profil',
       'Unterstützer',
@@ -105,6 +106,7 @@ describe('top-bar navigation', () => {
       'taskAuthoringReview',
       'myReports',
       'faulty',
+      'info',
       'lan',
       'profile',
       'supporters',
@@ -148,6 +150,7 @@ describe('top-bar navigation', () => {
       'taskAuthoringReview',
       'myReports',
       'faulty',
+      'info',
       'lan',
       'profile',
       'supporters',
@@ -164,5 +167,11 @@ describe('top-bar navigation', () => {
   it('shows Fehlerhafte Aufgaben only for Entwickler', () => {
     expect(settingsSectionsForRole('entwickler').map((item) => item.id)).toContain('faulty')
     expect(settingsSectionsForRole('lehrer').map((item) => item.id)).not.toContain('faulty')
+  })
+
+  it('shows Info only for Entwickler', () => {
+    expect(settingsSectionsForRole('entwickler').map((item) => item.id)).toContain('info')
+    expect(settingsSectionsForRole('lehrer').map((item) => item.id)).not.toContain('info')
+    expect(settingsSectionsForRole('schueler').map((item) => item.id)).not.toContain('info')
   })
 })

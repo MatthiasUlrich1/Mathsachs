@@ -9,6 +9,37 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.31] – 2026-09-24
+
+### Behoben
+- **Biologie Themen-Isolation:** Überblick und Spezial getrennt verdrahtet (keine Alias-Banken
+  mehr). U. a. „Bäume / Holzpflanzen“ ohne Blütenbau-Fragen; Blüte/Bestäubung nur unter
+  Blütenpflanzen. Dedizierte Spezialbanken (`biologieSpecialTopics`) überschreiben Alt-Aliase.
+  Biologie-Pack **1.2.2**.
+
+### Geändert
+- **Lehrplan-Karten:** Beschreibung nur noch Themenanzahl, Klassenstufen, Version und
+  Aktualisierungsdatum — kein Roh-`changelog` mehr (Interaktionsnamen, interne Notizen).
+  Datum aus Install-Meta (`installedAt`, bei Versions-/Hash-Update erneuert); nicht installiert
+  optional Katalog-`updatedAt`.
+
+### Hinweis
+- **0.28.30** war lokal vorbereitet, aber noch nicht released. Inhalt von 0.28.30 bleibt
+  in diesem Stand enthalten und geht mit 0.28.31 heraus.
+
+## [0.28.30] – 2026-09-24
+
+### Hinzugefügt
+- **Info (Entwickler):** Einstellungen → Info — anonyme Zähler für geprüfte Schüler-Antworten
+  (Summe aller Schüler-Profile lokal; optional globaler Cloudflare-Zähler ohne Namen/Geräte-ID).
+  Zählt bei „Prüfen“ in Übung (nicht Berichtigung/Replay) und pro Klausuraufgabe bei Abgabe.
+
+### Geändert
+- **Fachwissen = reines Fachwissen:** Nur Fakten, die zur Lösung der aktuellen Aufgabe beitragen —
+  kein Bla zu Bedienung, Wertung oder Ablauf. FlashcardFlip zeigt keine Default-„Prüfung:“-Hinweise
+  mehr; `bioFw` streift Meta-Formulierungen; Banken K5–K10 mit konkretem Fachwissen angereichert
+  (u. a. Spinnentiere nach Arachnologie-Quellen). Biologie-Pack **1.2.1**.
+
 ## [0.28.29] – 2026-09-24
 
 ### Behoben

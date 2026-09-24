@@ -37,10 +37,13 @@ import {
   resolveExam,
   type ResolvedExamTask,
 } from '../exam/examCode'
+import { reportSchuelerAnswersChecked } from '../lib/schuelerAnswerStats'
+import { normalizeRole, type UserRole } from '../lib/roles'
 import type { ExamSpec } from '../exam/types'
 
 interface Props {
   user: string
+  role?: UserRole | null
   /** Optional code pre-filled from a shared link (`#klausur=…`). */
   initialCode?: string
   onExit: () => void
@@ -68,6 +71,7 @@ const normalizeExamCodeKey = (raw: string): string => raw.trim().replace(/\s+/g,
 
 export function ExamRunner({
   user,
+  role,
   initialCode,
   onExit,
   onPracticeTopic,
@@ -345,6 +349,9 @@ export function ExamRunner({
     })
     setResults(computed)
     persist(computed)
+    if (normalizeRole(role) === 'schueler' && computed.length > 0) {
+      reportSchuelerAnswersChecked(computed.length)
+    }
     saveExamEvaluation({
       title: spec?.titel ?? 'Übungsklausur',
       totalPoints: computed.reduce((s, r) => s + r.resolved.punkte, 0),

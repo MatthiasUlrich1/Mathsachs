@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.2.0',
-    changelog: `Klassen 5–12 · ${topics} Themen + neue Interaktionen pairMatch, clozeMulti, iconBelong, flashcardFlip (released:false). Lehrplan 522; Schlaukopf-Themen als Ideen (original formuliert).`,
+    version: '1.2.2',
+    changelog: `Themen-Isolation: Überblick vs. Spezial getrennt (u. a. Blüte ≠ Bäume). Fachwissen rein fachlich. ${topics} Themen; neue Interaktionen (released:false).`,
     official,
     extras: [],
   }

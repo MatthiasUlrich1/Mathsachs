@@ -1,6 +1,6 @@
 /**
  * Biologie Klasse 9 — Pflanzenphysiologie & Ökosystem (Lehrplan 522).
- * Schlaukopf-Themen Fotosynthese / Ökosystem Wald·Gewässer → hier LB1/LB2.
+ * Fachwissen = reine Fakten zur jeweiligen Frage.
  */
 import { bankGenerate, type BioBank } from './biologieBank'
 import type { Topic } from './types'
@@ -8,83 +8,65 @@ import type { Topic } from './types'
 const pflanzen: BioBank = {
   quelle: 'Wikipedia: Fotosynthese',
   url: 'https://de.wikipedia.org/wiki/Fotosynthese',
+  conceptPrefix: 'bio:k9:pflanzen',
   facts: [
     {
-      concept: 'bio:k9:was-ist-die-vereinfachte-wortgleichung-d',
-      prompt: 'Was ist die vereinfachte Wortgleichung der Fotosynthese?',
-      answer: 'Kohlenstoffdioxid + Wasser → Glucose + Sauerstoff (mit Licht)',
-      wrong: ['Nur Stickstoff → Gold', 'Eiweiß → Licht', 'Knochen → Blut'],
-      explanation: 'Lichtenergie wird in chemische Energie (Zucker) überführt; O₂ entsteht.',
-      wissen: 'Kern der Pflanzenphysiologie in Klasse 9.',
-      gap: 'Bei der Fotosynthese entsteht neben Zucker auch ___.',
-      gapAccepted: ['Sauerstoff', 'O2', 'O₂'],
+      concept: 'bio:k9:pflanzen:ueberblick',
+      prompt: 'Was leisten Samenpflanzen physiologisch im Überblick?',
+      answer: 'Fotosynthese, Stofftransport und Gas-/Wasserhaushalt',
+      wrong: ['Nur Knochenbildung', 'Nur Antikörperbildung', 'Nur Nervenleitung wie im Gehirn'],
+      explanation: 'Pflanzen bauen Stoffe auf und transportieren Wasser/Assimilate.',
+      wissen:
+        'Physiologie der Samenpflanzen: Fotosynthese, Wassertransport, Transpiration. Details → Spezialthemen.',
     },
     {
-      concept: 'bio:k9:wo-findet-die-fotosynthese-in-der-zelle-',
-      prompt: 'Wo findet die Fotosynthese in der Zelle statt?',
-      answer: 'In den Chloroplasten',
-      wrong: ['Nur in den Mitochondrien', 'Nur im Zellkern', 'Nur in den Knochen'],
-      explanation: 'Chlorophyll in Chloroplasten fängt Licht.',
-      wissen: 'Anatomie und Physiologie der Samenpflanzen.',
-    },
-    {
-      concept: 'bio:k9:was-ist-transpiration',
-      prompt: 'Was ist Transpiration?',
-      answer: 'Abgabe von Wasserdampf über die Spaltöffnungen',
-      wrong: ['Aufnahme von Knochenkalk', 'Bildung von Antikörpern', 'Nur Blutpumpung'],
-      explanation: 'Transpiration treibt den Wasserstrom mit an.',
-      wissen: 'Wasserhaushalt der Pflanze.',
-      gap: 'Wasser steigt in Leitungsbahnen nach oben; Austritt oft als ___ an Blättern.',
-      gapAccepted: ['Wasserdampf', 'Transpiration', 'Dampf'],
-    },
-    {
-      concept: 'bio:k9:xylem-transportiert-vor-allem',
-      prompt: 'Xylem transportiert vor allem …',
-      answer: 'Wasser und Mineralstoffe nach oben',
-      wrong: ['Nur Asssimilate abwärts ausschließlich als Knochen', 'Nur Nervensignale', 'Nur Hormone im Menschen'],
-      explanation: 'Xylem = Holzteil; Phloem = Siebteil (Assimilattransport).',
-      wissen: 'Leitgewebe der Samenpflanzen.',
+      concept: 'bio:k9:pflanzen-brauchen-fuer-die-fotosynthese-',
+      prompt: 'Welche Voraussetzungen brauchen Pflanzen für die Fotosynthese grob?',
+      answer: 'Licht, CO₂ und Wasser',
+      wrong: ['Nur Mondphase ohne Licht', 'Nur Verkehrsrauschen', 'Nur Knochenkalk'],
+      explanation: 'Klassische Voraussetzungen im Überblick.',
+      wissen:
+        'Fotosynthese braucht Licht, Kohlenstoffdioxid und Wasser — Gleichung und Blattbau → Spezial Fotosynthese.',
     },
   ],
   pairs: [
-    { term: 'Chlorophyll', meaning: 'Grüner Blattfarbstoff', wissen: 'Fängt Lichtenergie.' },
-    { term: 'Phloem', meaning: 'Transport von Assimilaten', wissen: 'Siebteil.' },
-    { term: 'Xylem', meaning: 'Wasserleitung', wissen: 'Holzteil.' },
-    { term: 'Spaltöffnung', meaning: 'Reguliert Gasaustausch', wissen: 'Öffnen/Schließen steuerbar.' },
+    {
+      concept: 'bio:k9:pflanzen:paar-foto',
+      term: 'Fotosynthese',
+      meaning: 'Aufbau von Zucker mit Lichtenergie',
+      wissen: 'Details und Gleichung → Spezial Fotosynthese.',
+    },
+    {
+      concept: 'bio:k9:pflanzen:paar-transport',
+      term: 'Stofftransport',
+      meaning: 'Wasser/Mineralstoffe und Assimilate in Leitbahnen',
+      wissen: 'Xylem/Phloem und Transpiration → Spezial Wassertransport.',
+    },
   ],
   trueFalse: [
-    {
-      concept: 'bio:k9:pflanzen-brauchen-fuer-die-fotosynthese-',
-      statement: 'Pflanzen brauchen für die Fotosynthese Licht, CO₂ und Wasser.',
-      correct: true,
-      explanation: 'Das sind die klassischen Voraussetzungen.',
-      wissen: 'Grundgleichung.',
-    },
     {
       concept: 'bio:k9:fotosynthese-findet-nur-in-den-wurzeln-s',
       statement: 'Fotosynthese findet nur in den Wurzeln statt.',
       correct: false,
       explanation: 'Vor allem in grünen Blättern (Chloroplasten).',
-      wissen: 'Ort der Fotosynthese.',
+      wissen: 'Fotosynthese läuft vor allem in grünen Blättern ab.',
     },
-  ],
-  sorts: [
     {
-      concept: 'bio:k9:ordne-den-weg-des-wassers-in-der-pflanze',
-      question: 'Ordne den Weg des Wassers in der Pflanze grob.',
-      labels: ['Aufnahme in der Wurzel', 'Transport im Spross', 'Verdunstung am Blatt'],
-      explanation: 'Boden → Leitbahnen → Transpiration.',
-      wissen: 'Wasserstrom.',
+      concept: 'bio:k9:pflanzen-brauchen-fuer-die-fotosynthese-tf',
+      statement: 'Pflanzen brauchen für die Fotosynthese Licht, CO₂ und Wasser.',
+      correct: true,
+      explanation: 'Das sind die klassischen Voraussetzungen.',
+      wissen: 'Licht, CO₂ und Wasser sind Voraussetzungen der Fotosynthese.',
     },
   ],
   multis: [
     {
-      concept: 'bio:k9:welche-faktoren-beeinflussen-die-fotosyn',
-      question: 'Welche Faktoren beeinflussen die Fotosynthese?',
-      correct: ['Licht', 'CO₂-Angebot', 'Temperatur'],
-      wrong: ['Nur Mondphase ohne Licht', 'Nur Verkehrsrauschen'],
-      explanation: 'Abiotische Faktoren limitieren die Rate.',
-      wissen: 'Physiologie vertiefen.',
+      concept: 'bio:k9:pflanzen:multi-ueberblick',
+      question: 'Welche Prozesse gehören zur Pflanzenphysiologie im Überblick?',
+      correct: ['Fotosynthese', 'Wassertransport'],
+      wrong: ['Nur Knochenwachstum', 'Nur Antikörperbildung'],
+      explanation: 'Aufbau und Transport sind zentrale Themen.',
+      wissen: 'Vertiefung in den Spezialthemen Fotosynthese und Wassertransport.',
     },
   ],
 }
@@ -92,6 +74,7 @@ const pflanzen: BioBank = {
 const oekosystem: BioBank = {
   quelle: 'Wikipedia: Ökosystem',
   url: 'https://de.wikipedia.org/wiki/%C3%96kosystem',
+  conceptPrefix: 'bio:k9:oekosystem',
   facts: [
     {
       concept: 'bio:k9:was-ist-ein-oekosystem',
@@ -99,59 +82,55 @@ const oekosystem: BioBank = {
       answer: 'Lebensgemeinschaft + Lebensraum in Wechselwirkung',
       wrong: ['Nur eine einzelne Zelle', 'Nur ein Mineral ohne Leben', 'Nur ein Knochen'],
       explanation: 'Biozönose und Biotop bilden das Ökosystem.',
-      wissen: 'Zusammenhänge im Ökosystem — LB2.',
-      gap: 'Produzenten, Konsumenten und ___ bilden Stoffkreisläufe.',
-      gapAccepted: ['Destruenten', 'Zersetzer', 'Destruenten/Zersetzer'],
+      wissen:
+        'Ökosystem = Biozönose + Biotop. Stoffkreisläufe und konkrete Ökosysteme → Spezialthemen.',
     },
     {
-      concept: 'bio:k9:was-beschreibt-einen-stoffkreislauf-z-b-',
-      prompt: 'Was beschreibt einen Stoffkreislauf (z. B. Kohlenstoff)?',
-      answer: 'Stoffe werden zwischen Umwelt und Lebewesen umgewälzt',
-      wrong: ['Stoffe verschwinden für immer spurlos', 'Nur einmalige Einbahn ohne Rückkehr', 'Nur Sternenlicht ohne Erde'],
-      explanation: 'z. B. CO₂ ↔ Fotosynthese/Atmung.',
-      wissen: 'Stoff- und Energiefluss unterscheiden.',
-    },
-    {
-      concept: 'bio:k9:energie-fliesst-im-oekosystem',
-      prompt: 'Energie fließt im Ökosystem …',
-      answer: 'von der Sonne über Produzenten zu Konsumenten (und geht als Wärme verloren)',
-      wrong: ['Nur von Raubtieren zu Pflanzen rückwärts vollständig', 'Ohne Sonne bei Pflanzen unnötig', 'Nur in Knochen'],
-      explanation: 'Energie wird genutzt und dissipiert — kein geschlossener Energiekreislauf wie bei Stoffen.',
-      wissen: 'Wichtiges Konzept.',
+      concept: 'bio:k9:oekosystem:nische',
+      prompt: 'Was meint die ökologische Nische grob?',
+      answer: 'Rolle und Ansprüche einer Art im Ökosystem',
+      wrong: ['Nur die Schuhgröße', 'Nur die Haarfarbe', 'Nur der Wochentag'],
+      explanation: 'Mehr als nur der Aufenthaltsort.',
+      wissen: 'Die Nische umfasst Ansprüche und Rolle einer Art.',
     },
   ],
   pairs: [
-    { term: 'Biotop', meaning: 'Lebensraum', wissen: 'Abiotische Bedingungen.' },
-    { term: 'Biozönose', meaning: 'Lebensgemeinschaft', wissen: 'Alle Arten am Ort.' },
-    { term: 'Nahrungsnetz', meaning: 'Vernetzte Freßbeziehungen', wissen: 'Realistischer als eine Kette.' },
-    { term: 'Ökologische Nische', meaning: 'Rolle/Ansprüche einer Art', wissen: 'Mehr als nur „Ort“.' },
+    {
+      concept: 'bio:k9:oeko:paar-biotop',
+      term: 'Biotop',
+      meaning: 'Lebensraum',
+      wissen: 'Abiotische Bedingungen eines Ortes.',
+    },
+    {
+      concept: 'bio:k9:oeko:paar-biozoenose',
+      term: 'Biozönose',
+      meaning: 'Lebensgemeinschaft',
+      wissen: 'Alle miteinander wechselwirkenden Arten.',
+    },
+    {
+      concept: 'bio:k9:oeko:paar-nische',
+      term: 'Ökologische Nische',
+      meaning: 'Rolle/Ansprüche einer Art',
+      wissen: 'Mehr als nur der Aufenthaltsort.',
+    },
   ],
   trueFalse: [
     {
       concept: 'bio:k9:wenn-eine-art-ausfaellt-kann-das-folgen-',
       statement: 'Wenn eine Art ausfällt, kann das Folgen für andere Arten haben.',
       correct: true,
-      explanation: 'Vernetzung: Keystone-Effekte und Nahrungsbeziehungen.',
-      wissen: 'Interdependenz.',
-    },
-  ],
-  sorts: [
-    {
-      concept: 'bio:k9:ordne-eine-nahrungskette-im-gewaesser',
-      question: 'Ordne eine Nahrungskette im Gewässer.',
-      labels: ['Alge', 'Wasserfloh', 'Kleinfisch', 'Raubfisch'],
-      explanation: 'Produzent → Konsumenten steigender Ordnung.',
-      wissen: 'Schlaukopf „Ökosystem Gewässer“ → Lehrplan Ökosystem.',
+      explanation: 'Vernetzung: Nahrungsbeziehungen und Abhängigkeiten.',
+      wissen: 'Arten sind vernetzt — Ausfall kann andere treffen.',
     },
   ],
   multis: [
     {
-      concept: 'bio:k9:welche-eingriffe-des-menschen-koennen-oe',
-      question: 'Welche Eingriffe des Menschen können Ökosysteme belasten?',
-      correct: ['Überdüngung', 'Schadstoffeintrag', 'Lebensraumzerstörung'],
-      wrong: ['Nur das Beobachten mit Fernglas', 'Nur das Notieren von Artenlisten'],
-      explanation: 'Anthropogene Störungen sind Teil des Lernbereichs.',
-      wissen: 'Nachhaltigkeit anbahnen.',
+      concept: 'bio:k9:oeko:multi-teile',
+      question: 'Was gehört zum Ökosystem-Begriff?',
+      correct: ['Lebensgemeinschaft', 'Lebensraum'],
+      wrong: ['Nur ein einzelnes Gen ohne Umwelt', 'Nur Verkehrszeichen'],
+      explanation: 'Biozönose und Biotop gehören zusammen.',
+      wissen: 'Wald/Gewässer und Stoffkreisläufe → Spezialthemen.',
     },
   ],
 }
@@ -166,7 +145,8 @@ const wiese: BioBank = {
       answer: 'Viele Pflanzen- und Insektenarten teilen den Lebensraum',
       wrong: ['Weil dort nur eine Art lebt', 'Weil es kein Licht gibt', 'Weil es nur Beton gibt'],
       explanation: 'Struktur und Mahd/Beweidung prägen Vielfalt.',
-      wissen: 'Wahl: Mikrokosmos Wiese.',
+      wissen:
+        'Wiesen bieten vielen Pflanzen- und Insektenarten Lebensraum. Mahd und Beweidung prägen, welche Arten sich etablieren können.',
     },
   ],
   trueFalse: [
@@ -175,7 +155,8 @@ const wiese: BioBank = {
       statement: 'Intensiv gedüngte Einheitsgrasflächen sind oft artenärmer als Magerrasen.',
       correct: true,
       explanation: 'Nährstoffreichtum begünstigt wenige Dominanzarten.',
-      wissen: 'Vergleich Nutzungsintensität.',
+      wissen:
+        'Starke Düngung begünstigt wenige wuchsstarke Gräser — Magerrasen mit weniger Nährstoffen sind oft artenreicher.',
     },
   ],
 }
@@ -190,14 +171,23 @@ const pilze: BioBank = {
       answer: 'Heterotroph — zersetzen oder parasitieren/symbiotisch',
       wrong: ['Nur durch Fotosynthese mit Chlorophyll wie Blätter', 'Nur durch Lungenatmung', 'Nur durch Blutkreislauf'],
       explanation: 'Pilze sind eigene Gruppe — oft Destruenten oder Symbionten (Mykorrhiza).',
-      wissen: 'Wahl: Mannigfaltigkeit der Pilze.',
+      wissen:
+        'Pilze sind heterotroph (kein Chlorophyll): sie zersetzen organische Substanz, parasitieren oder leben in Symbiose (z. B. Mykorrhiza).',
       gap: 'Pilze haben typischerweise ___ statt Chlorophyll-Fotosynthese.',
       gapAccepted: ['kein Chlorophyll', 'kein Blattgrün', 'Heterotrophie'],
     },
   ],
   pairs: [
-    { term: 'Myzel', meaning: 'Fadengeflecht im Boden/Substrat', wissen: 'Eigentlicher Pilzkörper oft unsichtbar.' },
-    { term: 'Fruchtkörper', meaning: 'Sichtbarer „Pilz“ zur Sporenbildung', wissen: 'Hutpilze.' },
+    {
+      term: 'Myzel',
+      meaning: 'Fadengeflecht im Boden/Substrat',
+      wissen: 'Das Myzel ist das oft unsichtbare Fadengeflecht — der eigentliche Pilzkörper im Substrat.',
+    },
+    {
+      term: 'Fruchtkörper',
+      meaning: 'Sichtbarer „Pilz“ zur Sporenbildung',
+      wissen: 'Fruchtkörper (z. B. Hutpilz) dienen der Sporenbildung und -ausbreitung.',
+    },
   ],
   trueFalse: [
     {
@@ -205,7 +195,8 @@ const pilze: BioBank = {
       statement: 'Alle Wildpilze sind essbar.',
       correct: false,
       explanation: 'Viele sind giftig — nur bekannte Arten, Fachwissen.',
-      wissen: 'Sicherheit.',
+      wissen:
+        'Viele Wildpilze sind giftig. Nur sicher bestimmte, bekannte Arten dürfen gesammelt und gegessen werden.',
     },
   ],
 }
@@ -220,7 +211,8 @@ const bier: BioBank = {
       answer: 'Hefen',
       wrong: ['Nur Greifvögel', 'Nur Säugetiere', 'Nur Farne'],
       explanation: 'Hefe wandelt Zucker u. a. in Ethanol und CO₂ um.',
-      wissen: 'Wahl: Von der Gerste zum Bier — Stoffwechselbezug.',
+      wissen:
+        'Hefen führen die alkoholische Gärung durch: Zucker wird anaerob zu Ethanol und Kohlenstoffdioxid umgewandelt.',
       gap: 'Bei der alkoholischen Gärung entsteht u. a. ___.',
       gapAccepted: ['Ethanol', 'Alkohol', 'Ethanol/CO2', 'Alkohol und CO₂'],
     },
@@ -231,7 +223,8 @@ const bier: BioBank = {
       statement: 'Gärung läuft ohne Sauerstoff ab (anaerob).',
       correct: true,
       explanation: 'Klassische alkoholische Gärung ist anaerob.',
-      wissen: 'Vergleich Atmung/Gärung.',
+      wissen:
+        'Gärung ist anaerob (ohne Sauerstoff). Zellatmung hingegen nutzt Sauerstoff und liefert deutlich mehr Energie.',
     },
   ],
   sorts: [
@@ -240,7 +233,8 @@ const bier: BioBank = {
       question: 'Ordne grob Schritte vom Getreide zum Bier (vereinfacht).',
       labels: ['Malzbereitung', 'Maischen', 'Gärung', 'Reifung'],
       explanation: 'Schulmodell der Prozesskette.',
-      wissen: 'Anwendung von Stoffwechselwissen.',
+      wissen:
+        'Vereinfachte Kette: Malzbereitung → Maischen (Zucker freisetzen) → Gärung durch Hefe → Reifung.',
     },
   ],
 }

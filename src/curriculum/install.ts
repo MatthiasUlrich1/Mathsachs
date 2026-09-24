@@ -123,12 +123,20 @@ export function writeInstalledState(
   now: number = Date.now(),
 ): InstalledCurriculum[] {
   const prev = new Map(listInstalledMeta(kv).map((row) => [row.id, row]))
-  const meta: InstalledCurriculum[] = packs.map((pack) => ({
-    id: pack.id,
-    version: pack.version,
-    installedAt: prev.get(pack.id)?.installedAt ?? now,
-    contentHash: pack.contentHash,
-  }))
+  const meta: InstalledCurriculum[] = packs.map((pack) => {
+    const old = prev.get(pack.id)
+    const changed =
+      !old ||
+      old.version !== pack.version ||
+      (Boolean(pack.contentHash) && old.contentHash !== pack.contentHash)
+    return {
+      id: pack.id,
+      version: pack.version,
+      // Bump on install/update so UI can show a sensible „Aktualisiert am“.
+      installedAt: changed ? now : (old?.installedAt ?? now),
+      contentHash: pack.contentHash,
+    }
+  })
   kv.setItem(INSTALLED_KEY, JSON.stringify(meta))
   for (const row of prev.keys()) {
     if (!packs.some((pack) => pack.id === row)) kv.removeItem(packStorageKey(row))

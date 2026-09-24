@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { createRng, timeSeed } from '../lib/rng'
+import { reportSchuelerAnswersChecked } from '../lib/schuelerAnswerStats'
 import { recordSession } from '../lib/storage'
+import { normalizeRole, type UserRole } from '../lib/roles'
 import type { TaskGrade, Topic, UserInput } from '../curriculum/types'
 import { awardPoints, gradeTask, isFormulaLikeHint } from '../curriculum/types'
 import {
@@ -36,6 +38,7 @@ interface Props {
   topic: Topic
   areaTitle: string
   user: string
+  role?: UserRole | null
   onExit: () => void
   challengeId?: string
   /** Reproduce a reported task first (Entwickler / Melder). */
@@ -51,6 +54,7 @@ export function PracticeSession({
   topic,
   areaTitle,
   user,
+  role,
   onExit,
   challengeId,
   initialSeed,
@@ -131,6 +135,9 @@ export function PracticeSession({
     setLastGrade(grade)
     setLastAwarded(awarded)
     persistAttempt(fullyCorrect, awarded)
+    if (!skipProtocol && normalizeRole(role) === 'schueler') {
+      reportSchuelerAnswersChecked(1)
+    }
     if (awarded > 0) {
       setPoints((p) => p + awarded)
     }

@@ -39,6 +39,10 @@ export const isCurriculumPreviewRole = (role?: unknown): boolean =>
 export const canViewFaultyReports = (role?: unknown): boolean =>
   isCurriculumPreviewRole(role)
 
+/** Anonymous telemetry panel (Schüler-Antwortzähler). */
+export const canViewDeveloperInfo = (role?: unknown): boolean =>
+  isCurriculumPreviewRole(role)
+
 /** Klausur erstellen — Eltern, Lehrer und Entwickler. */
 export const canCreateExam = (role?: unknown): boolean => {
   const id = normalizeRole(role)

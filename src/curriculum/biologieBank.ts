@@ -95,12 +95,10 @@ export type BioBank = {
   icons?: BioIcon[]
 }
 
-function fw(bank: BioBank, text: string, prompt?: string) {
-  const body = prompt?.trim()
-    ? `Zur Frage „${prompt.trim()}“: ${text}`
-    : text
+/** Fachwissen = subject facts only — never wrap with question/scoring meta. */
+function fw(bank: BioBank, text: string, _prompt?: string) {
   return bioFw(
-    body,
+    text,
     bank.quelle ?? 'Wikipedia: Biologie',
     bank.url ?? 'https://de.wikipedia.org/wiki/Biologie',
   )
@@ -199,12 +197,12 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
             ? shuffle(rng, f.wrong).slice(0, 3)
             : wrong.slice(0, 3)
         return flashcardBioTask({
-          question: 'Karteikarte: lesen → umdrehen → antworten.',
+          question: f.prompt,
           front: f.flashFront ?? f.prompt,
           accepted: [f.answer, ...(f.gapAccepted ?? [])],
           solution: f.answer,
           explanation: f.explanation,
-          fachwissen: fw(bank, f.wissen, f.prompt),
+          fachwissen: fw(bank, f.wissen),
           choices: shuffle(rng, [f.answer, ...flashWrong.slice(0, 3)]),
           dedupeKey: key,
           contentIds: [key],

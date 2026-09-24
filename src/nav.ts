@@ -3,6 +3,7 @@ import {
   canRequestTasks,
   canSeeTaskAuthoringReviewUI,
   canSeeTaskAuthoringUI,
+  canViewDeveloperInfo,
   canViewFaultyReports,
   canWriteExam,
   type UserRole,
@@ -51,6 +52,7 @@ export const SETTINGS_SECTIONS = [
   { id: 'taskAuthoringReview', label: 'Aufgaben-Prüfung' },
   { id: 'myReports', label: 'Meine Meldungen' },
   { id: 'faulty', label: 'Fehlerhafte Aufgaben' },
+  { id: 'info', label: 'Info' },
   { id: 'lan', label: 'WLAN-Zugang' },
   { id: 'profile', label: 'Profil' },
   { id: 'supporters', label: 'Unterstützer' },
@@ -72,6 +74,7 @@ export function settingsSectionsForRole(role?: UserRole | null) {
     if (item.id === 'taskAuthoring') return canSeeTaskAuthoringUI(role)
     if (item.id === 'taskAuthoringReview') return canSeeTaskAuthoringReviewUI(role)
     if (item.id === 'faulty') return canViewFaultyReports(role)
+    if (item.id === 'info') return canViewDeveloperInfo(role)
     return true
   })
 }

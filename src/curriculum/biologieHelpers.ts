@@ -35,11 +35,22 @@ export const shuffleChoices = (rng: Rng, choices: string[], correct: string): st
   return shuffle(rng, [correct, ...rest])
 }
 
+/** Patterns that belong in UI/explanation — never in Fachwissen. */
+const META_FACHWISSEN =
+  /Prüfung:|Antwort prüfen|gewertet|Teilpunkte|Karte umdrehen|Vorderseite lesen|Groß-\/Kleinschreibung|Synonyme aus der Lösung|Karteikarte:|Zur Frage\s*[„"][^„"]*[“"]\s*:?\s*|Die gesuchte Antwort ist\s*[„"][^„"]*[“"]\.?\s*|Auch akzeptiert:[^.]*\.?\s*|Ordne das Merkmal[^.]*\.?\s*|Klassiker in Klassenarbeiten\.?\s*|im Unterricht\.?\s*|Häufige Verwechslung in Quizzes\.?\s*|Gesucht war:[^.]*\.?\s*/gi
+
+/** Build Fachwissen: subject knowledge only (strips accidental meta phrasing). */
 export const bioFw = (
   text: string,
   quelle = 'Wikipedia: Biologie',
   url = 'https://de.wikipedia.org/wiki/Biologie',
-): Fachwissen => ({ text, quelle, url })
+): Fachwissen => {
+  const cleaned = text
+    .replace(META_FACHWISSEN, '')
+    .replace(/\s{2,}/g, ' ')
+    .trim()
+  return { text: cleaned, quelle, url }
+}
 
 export const trueFalse = (
   rng: Rng,
@@ -283,7 +294,6 @@ export function flashcardBioTask(opts: {
   dedupeKey?: string
   contentIds?: string[]
 }): Task {
-  const hasChoices = Boolean(opts.choices && opts.choices.length > 0)
   return flashcardFlipTask({
     question: opts.question,
     front: opts.front,
@@ -291,9 +301,7 @@ export function flashcardBioTask(opts: {
     solution: opts.solution,
     explanation: opts.explanation,
     fachwissen: opts.fachwissen,
-    backHint:
-      opts.backHint ??
-      (hasChoices ? 'Was passt dazu? Wähle eine Antwort.' : 'Was passt dazu? Tippe die Antwort.'),
+    backHint: opts.backHint ?? 'Was passt dazu?',
     choices: opts.choices,
     // Steps are shown once in FlashcardFlip UI — do not pass a duplicate instruction.
     ...(opts.dedupeKey ? { dedupeKey: opts.dedupeKey } : {}),

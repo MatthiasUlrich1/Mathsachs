@@ -6,6 +6,7 @@ import { LanAccessCard } from './LanAccessCard'
 import { MyReportedTasksPanel } from './MyReportedTasksPanel'
 import { RoleRightsMatrix } from './RoleRightsMatrix'
 import { AboutApp } from './AboutApp'
+import { DeveloperInfoPanel } from './DeveloperInfoPanel'
 import { Supporters } from './Supporters'
 import { TaskAuthoringPanel } from './TaskAuthoringPanel'
 import { TaskAuthoringReviewPanel } from './TaskAuthoringReviewPanel'
@@ -51,6 +52,7 @@ const SECTION_HINTS: Record<SettingsSectionId, string> = {
   taskAuthoringReview: 'Eingereichte Generator-Entwürfe prüfen und exportieren',
   myReports: 'Deine gemeldeten fehlerhaften Aufgaben und Korrektur-Hinweise',
   faulty: 'Gemeldete fehlerhafte Aufgaben einsehen',
+  info: 'Anonyme Schüler-Antwortzähler (Entwickler)',
   lan: 'Tablets im selben WLAN verbinden',
   profile: 'Rolle, Lehrercode, Rechte und Benutzerwechsel',
   supporters: 'Organisationen, die TaskTrophy unterstützen',
@@ -421,6 +423,8 @@ export function Settings({
       {section === 'supporters' && <Supporters />}
 
       {section === 'about' && <AboutApp />}
+
+      {section === 'info' && <DeveloperInfoPanel />}
     </div>
   )
 }

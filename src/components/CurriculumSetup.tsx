@@ -8,6 +8,7 @@ import {
   removePack,
 } from '../curriculum/install'
 import { packNeedsUpdate, type ManifestPack } from '../curriculum/pack'
+import { formatPackCardCopy } from '../curriculum/packDisplay'
 import {
   ALL_FILTER,
   defaultRegionFilter,
@@ -167,6 +168,7 @@ export function CurriculumSetup({
   const [busyId, setBusyId] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [remote, setRemote] = useState<ManifestPack[]>([])
+  const [catalogUpdatedAt, setCatalogUpdatedAt] = useState<string | null>(null)
   const [rev, setRev] = useState(0)
   const [region, setRegion] = useState<string | undefined>(initialRegion)
   const [schulform, setSchulform] = useState(initialSchulform ?? ALL_FILTER)
@@ -177,7 +179,10 @@ export function CurriculumSetup({
   useEffect(() => {
     let cancelled = false
     void fetchCurriculumManifest().then((manifest) => {
-      if (!cancelled && manifest) setRemote(manifest.packs)
+      if (!cancelled && manifest) {
+        setRemote(manifest.packs)
+        setCatalogUpdatedAt(manifest.updatedAt || null)
+      }
     })
     return () => {
       cancelled = true
@@ -261,12 +266,6 @@ export function CurriculumSetup({
       await onLoad(grade.id, { activate: false })
     }
   }
-
-  const topicCount = (pack: { official: Array<{ areas: Array<{ topics: unknown[] }> }> }) =>
-    pack.official.reduce(
-      (sum, grade) => sum + grade.areas.reduce((n, area) => n + area.topics.length, 0),
-      0,
-    )
 
   return (
     <section className="card">
@@ -352,22 +351,26 @@ export function CurriculumSetup({
         <ul className="curriculum-list">
           {visibleCatalog.map((entry) => {
             const local = installed.find((row) => row.id === entry.id)
-            const pack = installedPacks.find((item) => item.id === entry.id)
+            const pack = installedPacks.find((item) => item.id === entry.id) ?? null
             const busy = busyId === entry.id
             const canUpdate = Boolean(local && packNeedsUpdate(local.version, entry.version))
+            const copy = formatPackCardCopy({
+              entry,
+              pack,
+              local,
+              canUpdate,
+              catalogUpdatedAt,
+            })
             return (
               <li key={entry.id} className="curriculum-card">
                 <div className="curriculum-card__head">
                   <div>
                     <h3 className="curriculum-card__title">{entry.title}</h3>
-                    <p className="muted small">
-                      {entry.region} · {entry.school} · {entry.subject}
-                      {entry.changelog ? ` — ${entry.changelog}` : ''}
-                    </p>
-                    <p className="muted small">
-                      {local ? `Installiert: Version ${local.version}` : 'Nicht installiert'}
-                      {canUpdate ? ` · Online: Version ${entry.version}` : ''}
-                    </p>
+                    {copy.coverage && <p className="muted small">{copy.coverage}</p>}
+                    <p className="muted small">{copy.status}</p>
+                    {pack && pack.extras.length > 0 && (
+                      <p className="muted small">{pack.extras.length} Lehrer-Ergänzungen</p>
+                    )}
                   </div>
                   {local ? (
                     <span className="badge badge--ok">{canUpdate ? 'Update verfügbar' : 'Installiert ✓'}</span>
@@ -419,12 +422,6 @@ export function CurriculumSetup({
                     </button>
                   )}
                 </div>
-                {pack && (
-                  <p className="muted small curriculum-card__meta">
-                    {pack.official.length} Klassenstufen · {topicCount(pack)} Themen
-                    {pack.extras.length > 0 ? ` · ${pack.extras.length} Lehrer-Ergänzungen` : ''}
-                  </p>
-                )}
               </li>
             )
           })}

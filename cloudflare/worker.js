@@ -12,6 +12,8 @@
  * POST /exams/complete 60, POST /exams/:id/complete 60,
  * POST /stats/install 5 / 24h (anonymous install ping),
  * GET /stats/install 60,
+ * POST /stats/schueler-answers 300 / 60s (anonymous +1 per checked Schüler answer),
+ * GET /stats/schueler-answers 60,
  * POST /reports/tasks 10 / 1h (faulty-task reports),
  * POST /reports/tasks/status 60 (anonymous status lookup by report ids),
  * GET /reports/tasks 60 (requires Bearer REPORTS_TOKEN),
@@ -29,8 +31,8 @@
  * names, user ids, emails or device identifiers).
  * GET /grades never returns member Klassencodes. Points are accepted only
  * on class records. Challenge POST never stores names.
- * POST /stats/install stores only `{ count }` — no IP persistence beyond
- * the short-lived rate-limit map in Worker memory.
+ * POST /stats/install and POST /stats/schueler-answers store only `{ count }` —
+ * no IP persistence beyond the short-lived rate-limit map in Worker memory.
  * GET/PATCH/DELETE /reports/tasks require Worker secret REPORTS_TOKEN
  * (Authorization: Bearer … or X-Reports-Token). Must match the app’s
  * REPORTS_READ_TOKEN. Public POST for new reports and anonymous status
@@ -480,6 +482,10 @@ function installStatsKey() {
   return 'stats:installs'
 }
 
+function schuelerAnswerStatsKey() {
+  return 'stats:schueler-answers'
+}
+
 function taskReportsKey() {
   return 'reports:tasks'
 }
@@ -926,6 +932,8 @@ export const RATE_LIMITS = {
   /** One ping per first install; keep daily IP cap low against inflation. */
   installPing: { limit: 5, windowMs: 24 * 60 * 60 * 1000 },
   installGet: { limit: 60, windowMs: 60_000 },
+  schuelerAnswerPing: { limit: 300, windowMs: 60_000 },
+  schuelerAnswerGet: { limit: 60, windowMs: 60_000 },
   /** Faulty-task reports — low hourly cap against spam. */
   reportPost: { limit: 10, windowMs: 60 * 60 * 1000 },
   reportStatus: { limit: 60, windowMs: 60_000 },
@@ -2176,6 +2184,12 @@ export async function handleRequest(request, env) {
   if (path === '/stats/install' && method === 'POST') {
     return handlePingInstall(request, env)
   }
+  if (path === '/stats/schueler-answers' && method === 'GET') {
+    return handleGetSchuelerAnswerCount(request, env)
+  }
+  if (path === '/stats/schueler-answers' && method === 'POST') {
+    return handlePingSchuelerAnswers(request, env)
+  }
 
   if (path === '/reports/tasks' && method === 'POST') {
     return handleCreateTaskReport(request, env)
@@ -2239,6 +2253,60 @@ async function handlePingInstall(request, env) {
       : 0
   const count = prev + 1
   await env.CLASSES.put(installStatsKey(), JSON.stringify({ count }))
+  return json(request, 200, { count })
+}
+
+/** Anonymous Schüler answer counter — optional `{ delta }` (1–30), default 1. */
+async function handleGetSchuelerAnswerCount(request, env) {
+  if (
+    !rateLimit(
+      `schuelerAnswerGet:${clientKey(request)}`,
+      RATE_LIMITS.schuelerAnswerGet.limit,
+      RATE_LIMITS.schuelerAnswerGet.windowMs,
+    )
+  ) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE_LIMIT')
+  }
+  if (!env.CLASSES) {
+    return errorJson(request, 503, 'KV-Bindung CLASSES fehlt.', 'NO_KV')
+  }
+  const raw = parseRaw(await env.CLASSES.get(schuelerAnswerStatsKey()))
+  const count =
+    raw && typeof raw.count === 'number' && Number.isFinite(raw.count)
+      ? Math.max(0, Math.floor(raw.count))
+      : 0
+  return json(request, 200, { count })
+}
+
+async function handlePingSchuelerAnswers(request, env) {
+  if (
+    !rateLimit(
+      `schuelerAnswerPing:${clientKey(request)}`,
+      RATE_LIMITS.schuelerAnswerPing.limit,
+      RATE_LIMITS.schuelerAnswerPing.windowMs,
+    )
+  ) {
+    return errorJson(request, 429, 'Zu viele Anfragen. Bitte kurz warten.', 'RATE_LIMIT')
+  }
+  if (!env.CLASSES) {
+    return errorJson(request, 503, 'KV-Bindung CLASSES fehlt.', 'NO_KV')
+  }
+  let delta = 1
+  try {
+    const body = await request.json()
+    if (body && typeof body.delta === 'number' && Number.isFinite(body.delta)) {
+      delta = Math.max(1, Math.min(30, Math.floor(body.delta)))
+    }
+  } catch {
+    /* empty body ok */
+  }
+  const raw = parseRaw(await env.CLASSES.get(schuelerAnswerStatsKey()))
+  const prev =
+    raw && typeof raw.count === 'number' && Number.isFinite(raw.count)
+      ? Math.max(0, Math.floor(raw.count))
+      : 0
+  const count = prev + delta
+  await env.CLASSES.put(schuelerAnswerStatsKey(), JSON.stringify({ count }))
   return json(request, 200, { count })
 }
 

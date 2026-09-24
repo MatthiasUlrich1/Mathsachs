@@ -20,6 +20,7 @@ import { BIOLOGIE_K7_GENERATORS as BASE_K7 } from './biologie7'
 import { BIOLOGIE_K8_GENERATORS as BASE_K8 } from './biologie8'
 import { BIOLOGIE_K9_GENERATORS as BASE_K9 } from './biologie9'
 import { BIOLOGIE_K10_GENERATORS as BASE_K10 } from './biologie10'
+import { BIOLOGIE_SPECIAL_GENERATORS } from './biologieSpecialTopics'
 import type { Rng } from '../lib/rng'
 import type { BioBank } from './biologieBank'
 
@@ -60,7 +61,8 @@ const VERTEBRATE_FEATURE_ICONS: IconSet[] = [
       { id: 'horn', label: 'Trockene Hornschicht an Land', icon: '🛡️' },
     ],
     explanation: 'Fische atmen über Kiemen und steuern mit Flossen.',
-    wissen: 'Atmung und Fortbewegung spiegeln den Lebensraum Wasser wider.',
+    wissen:
+      'Fische sind an Wasser angepasst: Kiemen entziehen dem Wasser Sauerstoff, Flossen dienen Antrieb und Steuerung.',
   },
   {
     group: 'lurch',
@@ -75,7 +77,8 @@ const VERTEBRATE_FEATURE_ICONS: IconSet[] = [
       { id: 'fell', label: 'Gleichwarm mit Fell', icon: '🦌' },
     ],
     explanation: 'Viele Lurche haben feuchte Haut und durchlaufen eine Metamorphose.',
-    wissen: 'Übergang Wasser–Land: Kaulquappe → erwachsenes Tier.',
+    wissen:
+      'Viele Lurche haben feuchte Haut (Hautatmung) und eine Metamorphose von der Wasserlarve zum landlebenden Adulttier.',
   },
   {
     group: 'kriechtier',
@@ -90,7 +93,8 @@ const VERTEBRATE_FEATURE_ICONS: IconSet[] = [
       { id: 'fell', label: 'Dichtes Fell und Säugen', icon: '🍼' },
     ],
     explanation: 'Kriechtiere haben eine trockene Hornschicht und Lungenatmung.',
-    wissen: 'Angepasstheit an das Landleben ohne Austrocknung.',
+    wissen:
+      'Kriechtiere tragen eine trockene Hornschicht bzw. Schuppen und atmen mit Lungen — Schutz vor Austrocknung an Land.',
   },
   {
     group: 'vogel',
@@ -105,7 +109,8 @@ const VERTEBRATE_FEATURE_ICONS: IconSet[] = [
       { id: 'chitin', label: 'Chitinpanzer außen', icon: '🪲' },
     ],
     explanation: 'Federn sind das Leitmerkmal der Vögel — Fledermäuse sind Säuger.',
-    wissen: 'Homologie/Analogie: Flug bei Vögeln und Fledermäusen, aber unterschiedliche Bedeckung.',
+    wissen:
+      'Federn kennzeichnen Vögel. Fledermäuse fliegen mit Flughaut und Fell — gleicher Flug, andere Körperbedeckung.',
   },
   {
     group: 'saeuger',
@@ -120,7 +125,8 @@ const VERTEBRATE_FEATURE_ICONS: IconSet[] = [
       { id: 'kiemen', label: 'Kiemenatmung lebenslang', icon: '🫧' },
     ],
     explanation: 'Säugetiere säugen ihre Jungen — daher der Name.',
-    wissen: 'Gleichwarm + Fell/Haare + Säugen sind zentrale Merkmale.',
+    wissen:
+      'Säugetiere säugen ihre Jungen mit Milch; dazu kommen meist Fell/Haare und Gleichwarmigkeit.',
   },
 ]
 
@@ -161,7 +167,8 @@ function vertebrateCompareCloze(rng: Rng) {
         ['Lungen', 'Lunge'],
       ],
       explanation: 'Kiemen (Wasser), Haut/Lungen (Lurche), Lungen (Landwirbeltiere).',
-      wissen: 'Atmungsorgane spiegeln den Lebensraum wider.',
+      wissen:
+        'Atmungsorgane spiegeln den Lebensraum: Fische — Kiemen; viele Lurche zusätzlich Haut; Vögel und Säuger — Lungen.',
     },
     {
       q: 'Körperbedeckung',
@@ -173,7 +180,8 @@ function vertebrateCompareCloze(rng: Rng) {
         ['Fell', 'Fell/Haare'],
       ],
       explanation: 'Die Körperbedeckung ist an den Lebensraum angepasst.',
-      wissen: 'Struktur–Funktion–Angepasstheit (Systematisierung).',
+      wissen:
+        'Körperbedeckung ist an den Lebensraum angepasst: Schuppen (Wasser), Hornschicht (Land), Federn (Flug/Wärme), Fell (Wärme).',
     },
   ]
   const it = pick(rng, items)
@@ -226,7 +234,7 @@ function vertebrateComparePairs(rng: Rng) {
 
 const GROUP_FLASH: Record<
   VertebrateGroup,
-  Array<{ front: string; answer: string; alt: string[]; wrong: string[] }>
+  Array<{ front: string; answer: string; alt: string[]; wrong: string[]; wissen: string }>
 > = {
   fisch: [
     {
@@ -234,12 +242,16 @@ const GROUP_FLASH: Record<
       answer: 'Kiemen',
       alt: ['Kieme'],
       wrong: ['Lungen', 'Federn', 'Fell'],
+      wissen:
+        'Fische nehmen Sauerstoff aus dem Wasser über Kiemen auf. Lamellen vergrößern die Austauschfläche; Wasser strömt am Kiemengewebe vorbei.',
     },
     {
       front: 'Womit steuern Fische beim Schwimmen?',
       answer: 'Flossen',
       alt: ['Flosse'],
       wrong: ['Flügel', 'Beine', 'Hörner'],
+      wissen:
+        'Flossen dienen Antrieb, Steuerung und Stabilität im Wasser. Rücken- und Afterflosse stabilisieren, Brust- und Bauchflossen steuern, die Schwanzflosse treibt oft an.',
     },
   ],
   lurch: [
@@ -248,12 +260,16 @@ const GROUP_FLASH: Record<
       answer: 'Metamorphose',
       alt: ['Verwandlung'],
       wrong: ['Photosynthese', 'Winterschlaf', 'Vogelzug'],
+      wissen:
+        'Viele Lurche durchlaufen eine Metamorphose: aus der wasserlebenden Larve (z. B. Kaulquappe mit Kiemen) wird ein landtaugliches Adulttier mit Lungen und Beinen.',
     },
     {
       front: 'Typische Haut der Lurche?',
       answer: 'feuchte Haut',
       alt: ['Feuchthaut', 'drüsenreiche Haut'],
       wrong: ['Hornschicht', 'Federn', 'Fell'],
+      wissen:
+        'Die Haut der Lurche ist dünn, drüsenreich und feucht — sie ermöglicht zusätzliche Hautatmung und ist daher an feuchte Lebensräume gebunden.',
     },
   ],
   kriechtier: [
@@ -262,12 +278,16 @@ const GROUP_FLASH: Record<
       answer: 'wechselwarm',
       alt: ['poikilotherm', 'kaltblütig'],
       wrong: ['gleichwarm', 'homoiotherm', 'warmblütig'],
+      wissen:
+        'Kriechtiere sind wechselwarm: ihre Körpertemperatur folgt weitgehend der Umgebung. Aktivität hängt stark von der Außentemperatur ab.',
     },
     {
       front: 'Körperbedeckung der Kriechtiere?',
       answer: 'Hornschicht',
       alt: ['Hornschuppen', 'Schuppen'],
       wrong: ['Federn', 'Fell', 'Schleimhaut'],
+      wissen:
+        'Eine trockene Hornschicht bzw. Hornschuppen schützt vor Austrocknung an Land. Kriechtiere atmen mit Lungen und sind unabhängiger vom Wasser als Lurche.',
     },
   ],
   vogel: [
@@ -276,12 +296,16 @@ const GROUP_FLASH: Record<
       answer: 'Federn',
       alt: ['Federkleid'],
       wrong: ['Fell', 'Schuppenpanzer', 'Chitin'],
+      wissen:
+        'Federn sind das typische Körperkleid der Vögel: sie isolieren Wärme und bilden bei vielen Arten die Tragfläche für den Flug.',
     },
     {
       front: 'Sind Vögel gleichwarm oder wechselwarm?',
       answer: 'gleichwarm',
       alt: ['homoiotherm', 'warmblütig'],
       wrong: ['wechselwarm', 'poikilotherm', 'kaltblütig'],
+      wissen:
+        'Vögel halten ihre Körpertemperatur relativ konstant (gleichwarm). Das ermöglicht hohe Aktivität, erfordert aber viel Energie und gute Isolierung durch Federn.',
     },
   ],
   saeuger: [
@@ -290,12 +314,16 @@ const GROUP_FLASH: Record<
       answer: 'Säugen',
       alt: ['mit Milch', 'Milch'],
       wrong: ['nur mit Laich', 'Photosynthese', 'Kiemenatmung'],
+      wissen:
+        'Säugetiere ernähren ihre Jungen mit Milch aus Milchdrüsen — das namensgebende Merkmal. Dazu kommen meist Fell/Haare und oft lebendgebärend.',
     },
     {
       front: 'Typische Körperbedeckung der Säuger?',
       answer: 'Fell',
       alt: ['Haare', 'Fell/Haare'],
       wrong: ['Federn', 'Schuppenpanzer', 'Chitin'],
+      wissen:
+        'Haare bzw. Fell isolieren und schützen die Haut. Zusammen mit Gleichwarmigkeit und Säugen kennzeichnen sie die Säugetiere.',
     },
   ],
 }
@@ -304,14 +332,12 @@ function groupFlash(group: VertebrateGroup) {
   return (rng: Rng) => {
     const c = pick(rng, GROUP_FLASH[group])
     return flashcardBioTask({
-      question: 'Karteikarte: lesen → umdrehen → antworten.',
+      question: c.front,
       front: c.front,
       accepted: [c.answer, ...c.alt],
       solution: c.answer,
-      explanation: `Gesucht war: ${c.answer}.`,
-      fachwissen: fw(
-        `Zur Frage „${c.front}“: Die gesuchte Antwort ist „${c.answer}“. ${c.alt.length ? `Auch akzeptiert: ${c.alt.join(', ')}.` : ''} Ordne das Merkmal der Wirbeltiergruppe zu.`,
-      ),
+      explanation: `${c.answer}: ${c.wissen}`,
+      fachwissen: fw(c.wissen),
       choices: shuffle(rng, [c.answer, ...c.wrong.slice(0, 3)]),
     })
   }
@@ -412,14 +438,28 @@ const cellIcons: NonNullable<BioBank['icons']> = [
     ],
     correctId: 'chloro',
     explanation: 'Chloroplasten enthalten Chlorophyll und betreiben Fotosynthese.',
-    wissen: 'Vergleich Pflanzen-/Tierzelle.',
+    wissen:
+      'Pflanzenzellen haben Zellwand und oft Chloroplasten; Tierzellen nicht. Beide haben Zellkern und Cytoplasma.',
   },
 ]
 
 /**
- * Alias / expand without foreign UX bundles.
- * Optional `extraBySrc` adds only topic-local extras keyed by source id.
+ * Merge overview banks with dedicated special-topic generators.
+ * Never alias Spezial → Überblick (that caused Blütenfragen under „Bäume“).
  */
+export function withSpecialTopics(
+  base: Record<string, Topic['generate']>,
+  specialIds: readonly string[],
+): Record<string, Topic['generate']> {
+  const out: Record<string, Topic['generate']> = { ...base }
+  for (const id of specialIds) {
+    const g = BIOLOGIE_SPECIAL_GENERATORS[id]
+    if (g) out[id] = g
+  }
+  return out
+}
+
+/** @deprecated Prefer withSpecialTopics — kept for any external callers. */
 export function expandFromBase(
   base: Record<string, Topic['generate']>,
   aliases: Record<string, string>,
@@ -432,14 +472,13 @@ export function expandFromBase(
   return out
 }
 
-export const BIOLOGIE_K6_EXPANDED = expandFromBase(BASE_K6, {
-  'bi-k6-lb1-bluete': 'bi-k6-lb1-samenpflanzen',
-  'bi-k6-lb1-baeume': 'bi-k6-lb1-samenpflanzen',
-  'bi-k6-lb1-organe': 'bi-k6-lb1-samenpflanzen',
-  // insekten / spinnen / wirbellose have dedicated banks in BASE_K6 — do not alias together
-  'bi-k6-lb4-nahrung': 'bi-k6-lb4-wald',
-  'bi-k6-lb5-mikroskop': 'bi-k6-lb5-zellen',
-})
+export const BIOLOGIE_K6_EXPANDED = withSpecialTopics(BASE_K6, [
+  'bi-k6-lb1-bluete',
+  'bi-k6-lb1-baeume',
+  'bi-k6-lb1-organe',
+  'bi-k6-lb4-nahrung',
+  'bi-k6-lb5-mikroskop',
+])
 
 // Cells: cell icons only — never vertebrate assign sets
 BIOLOGIE_K6_EXPANDED['bi-k6-lb5-zellen'] = withTopicUx(
@@ -453,7 +492,8 @@ BIOLOGIE_K6_EXPANDED['bi-k6-lb5-zellen'] = withTopicUx(
         prompt: 'Zellvergleich',
         answer: 'Pflanzenzelle',
         explanation: 'Cloze zu Organellen.',
-        wissen: 'Organellen.',
+        wissen:
+          'Organellen sind Zellbestandteile mit eigener Aufgabe — z. B. Zellkern (Steuerung), Chloroplast (Fotosynthese), Mitochondrium (Energie).',
         cloze:
           'Die ___ enthält DNA; ___ betreiben Fotosynthese; die ___ gibt der Pflanzenzelle Stabilität.',
         clozeAccepted: [
@@ -466,29 +506,29 @@ BIOLOGIE_K6_EXPANDED['bi-k6-lb5-zellen'] = withTopicUx(
   }),
 )
 
-export const BIOLOGIE_K7_EXPANDED = expandFromBase(BASE_K7, {
-  'bi-k7-lb1-hygiene': 'bi-k7-lb1-mikroben',
-  'bi-k7-lb2-herz': 'bi-k7-lb2-blut',
-  'bi-k7-lb2-immun': 'bi-k7-lb2-blut',
-  'bi-k7-lb3-naehrstoffe': 'bi-k7-lb3-ernaehrung',
-  'bi-k7-lb3-organe': 'bi-k7-lb3-ernaehrung',
-})
+export const BIOLOGIE_K7_EXPANDED = withSpecialTopics(BASE_K7, [
+  'bi-k7-lb1-hygiene',
+  'bi-k7-lb2-herz',
+  'bi-k7-lb2-immun',
+  'bi-k7-lb3-naehrstoffe',
+  'bi-k7-lb3-organe',
+])
 
-export const BIOLOGIE_K8_EXPANDED = expandFromBase(BASE_K8, {
-  'bi-k8-lb1-auge-ohr': 'bi-k8-lb1-sinne',
-  'bi-k8-lb1-hormone': 'bi-k8-lb1-sinne',
-  'bi-k8-lb2-entwicklung': 'bi-k8-lb2-sexualitaet',
-})
+export const BIOLOGIE_K8_EXPANDED = withSpecialTopics(BASE_K8, [
+  'bi-k8-lb1-auge-ohr',
+  'bi-k8-lb1-hormone',
+  'bi-k8-lb2-entwicklung',
+])
 
-export const BIOLOGIE_K9_EXPANDED = expandFromBase(BASE_K9, {
-  'bi-k9-lb1-fotosynthese': 'bi-k9-lb1-pflanzen',
-  'bi-k9-lb1-wasser': 'bi-k9-lb1-pflanzen',
-  'bi-k9-lb2-wald-gewaesser': 'bi-k9-lb2-oekosystem',
-  'bi-k9-lb2-stoffkreis': 'bi-k9-lb2-oekosystem',
-})
+export const BIOLOGIE_K9_EXPANDED = withSpecialTopics(BASE_K9, [
+  'bi-k9-lb1-fotosynthese',
+  'bi-k9-lb1-wasser',
+  'bi-k9-lb2-wald-gewaesser',
+  'bi-k9-lb2-stoffkreis',
+])
 
-export const BIOLOGIE_K10_EXPANDED = expandFromBase(BASE_K10, {
-  'bi-k10-lb1-mendel': 'bi-k10-lb1-genetik',
-  'bi-k10-lb1-dna': 'bi-k10-lb1-genetik',
-  'bi-k10-lb2-selektion': 'bi-k10-lb2-artenvielfalt',
-})
+export const BIOLOGIE_K10_EXPANDED = withSpecialTopics(BASE_K10, [
+  'bi-k10-lb1-mendel',
+  'bi-k10-lb1-dna',
+  'bi-k10-lb2-selektion',
+])

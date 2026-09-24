@@ -1094,6 +1094,7 @@ export default function App() {
           topic={view.topic}
           areaTitle={view.areaTitle}
           user={activeUser}
+          role={userRole}
           challengeId={view.challengeId}
           initialSeed={view.initialSeed}
           mode={view.mode}
@@ -1136,6 +1137,7 @@ export default function App() {
         <ExamRunner
           key={examCodeFromLink ?? 'manual'}
           user={activeUser}
+          role={userRole}
           initialCode={examCodeFromLink ?? undefined}
           onExit={() => {
             setExamCodeFromLink(null)

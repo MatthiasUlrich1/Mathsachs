@@ -55,4 +55,21 @@ describe('Biologie topic isolation (no cross-pollination)', () => {
     expect(texts).not.toMatch(/Gruppe:\s*Fische/i)
     expect(texts).not.toMatch(/gehört zu den Lurchen/i)
   })
+
+  it('Bäume Spezial never asks Blütenbau / Bestäubung', () => {
+    const texts = sampleTexts('bi-k6-lb1-baeume', 100).join('\n')
+    expect(texts).not.toMatch(/Welcher Blütenteil erzeugt Pollen/i)
+    expect(texts).not.toMatch(/\bNarbe\b/i)
+    expect(texts).not.toMatch(/Staubblatt|Staubbeutel|Anthere/i)
+    expect(texts).not.toMatch(/Bestäubung/i)
+    expect(texts).toMatch(/Jahresring|Holz|Laub|Nadel|Kambium|Baum/i)
+  })
+
+  it('Blütenpflanzen Spezial stays on Blüte — not Jahresringe / Holz', () => {
+    const texts = sampleTexts('bi-k6-lb1-bluete', 100).join('\n')
+    expect(texts).not.toMatch(/Jahresring/i)
+    expect(texts).not.toMatch(/Kambium/i)
+    expect(texts).not.toMatch(/Laub- und Nadelbäume/i)
+    expect(texts).toMatch(/Pollen|Narbe|Blüte|Bestäubung|Staub|Frucht|Kelch|Krone/i)
+  })
 })

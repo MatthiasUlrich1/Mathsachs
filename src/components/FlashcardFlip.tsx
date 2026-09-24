@@ -18,7 +18,7 @@ export interface FlashcardFlipProps {
   instruction?: string
   disabled?: boolean
   placeholder?: string
-  /** How grading works — shown under the answer area. */
+  /** Optional short UI hint under the answer (not Fachwissen). Prefer omitting. */
   checkHint?: string
 }
 
@@ -57,12 +57,8 @@ export const FlashcardFlip: React.FC<FlashcardFlipProps> = ({
   checkHint,
 }) => {
   const hasChoices = Boolean(choices && choices.length > 0)
-  const gradingHint =
-    checkHint ??
-    (hasChoices
-      ? 'Prüfung: gewählte Option muss zur Lösung passen. Erklärung erscheint nach „Antwort prüfen“.'
-      : 'Prüfung: Groß-/Kleinschreibung und Leerzeichen egal; Synonyme aus der Lösungsliste zählen. Erklärung erscheint nach „Antwort prüfen“.')
-  const showInstruction = Boolean(instruction?.trim()) && !isRedundantFlashcardInstruction(instruction)
+  const showInstruction =
+    Boolean(instruction?.trim()) && !isRedundantFlashcardInstruction(instruction)
 
   return (
     <div className="flashcard-flip">
@@ -75,8 +71,8 @@ export const FlashcardFlip: React.FC<FlashcardFlipProps> = ({
       {!flipped && !disabled && (
         <p className="flashcard-flip__hint">
           {hasChoices
-            ? 'Nach dem Umdrehen erscheinen Antwort-Optionen zum Tippen.'
-            : 'Nach dem Umdrehen erscheint ein Eingabefeld zum Tippen.'}
+            ? 'Nach dem Umdrehen erscheinen Antwort-Optionen.'
+            : 'Nach dem Umdrehen erscheint ein Eingabefeld.'}
         </p>
       )}
       <button
@@ -135,7 +131,9 @@ export const FlashcardFlip: React.FC<FlashcardFlipProps> = ({
               spellCheck={false}
             />
           )}
-          <p className="flashcard-flip__check-hint">{gradingHint}</p>
+          {checkHint?.trim() ? (
+            <p className="flashcard-flip__check-hint">{checkHint}</p>
+          ) : null}
         </div>
       )}
     </div>

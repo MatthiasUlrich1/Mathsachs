@@ -9,6 +9,7 @@ import {
   BIOLOGIE_K10_EXPANDED,
 } from './biologieNewUx'
 import { BIOLOGIE_OBERSTUFE_GENERATORS } from './biologieOberstufe'
+import { BIOLOGIE_SPECIAL_GENERATORS } from './biologieSpecialTopics'
 import { mixedVariants } from './taskHelpers'
 import type { Topic } from './types'
 
@@ -21,6 +22,8 @@ export const BIOLOGIE_GENERATORS: Record<string, Topic['generate']> = {
   ...BIOLOGIE_K9_EXPANDED,
   ...BIOLOGIE_K10_EXPANDED,
   ...BIOLOGIE_OBERSTUFE_GENERATORS,
+  // Dedicated Spezial banks win over any leftover overview aliases.
+  ...BIOLOGIE_SPECIAL_GENERATORS,
 }
 
 // GK extra subtopic alias

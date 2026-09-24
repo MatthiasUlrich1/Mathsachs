@@ -210,6 +210,8 @@ describe('Cloudflare Worker API', () => {
       examComplete: { limit: 60, windowMs: 60_000 },
       installPing: { limit: 5, windowMs: 24 * 60 * 60 * 1000 },
       installGet: { limit: 60, windowMs: 60_000 },
+      schuelerAnswerPing: { limit: 300, windowMs: 60_000 },
+      schuelerAnswerGet: { limit: 60, windowMs: 60_000 },
       reportPost: { limit: 10, windowMs: 60 * 60 * 1000 },
       reportStatus: { limit: 60, windowMs: 60_000 },
       reportGet: { limit: 60, windowMs: 60_000 },
@@ -831,6 +833,35 @@ describe('Challenge Worker API', () => {
     expect(body.exams).toEqual(
       expect.arrayContaining([expect.objectContaining({ id: exam.id, solveCount: 3 })]),
     )
+  })
+
+  it('counts anonymous Schüler answers with optional delta', async () => {
+    const kv = env()
+    const empty = await worker.fetch(request('/stats/schueler-answers'), kv)
+    expect(empty.status).toBe(200)
+    await expect(empty.json()).resolves.toEqual({ count: 0 })
+
+    const batch = await worker.fetch(
+      request('/stats/schueler-answers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ delta: 5 }),
+      }),
+      kv,
+    )
+    expect(batch.status).toBe(200)
+    await expect(batch.json()).resolves.toEqual({ count: 5 })
+
+    const once = await worker.fetch(
+      request('/stats/schueler-answers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: '{}',
+      }),
+      kv,
+    )
+    expect(once.status).toBe(200)
+    await expect(once.json()).resolves.toEqual({ count: 6 })
   })
 
   it('counts anonymous installs without storing a payload', async () => {

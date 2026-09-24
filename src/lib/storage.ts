@@ -713,6 +713,19 @@ const plannedTransfer = (
   }
 }
 
+/** Sum checked answers across all local profiles with role Schüler (no names exposed). */
+export const countSchuelerAnswerAttempts = (): number => {
+  let total = 0
+  for (const name of listUsers()) {
+    if (getUserRole(name) !== 'schueler') continue
+    const stats = loadUser(name).stats
+    for (const row of Object.values(stats)) {
+      total += row.attempts ?? 0
+    }
+  }
+  return total
+}
+
 /** Record a finished session into the user's aggregated stats and history. */
 export const recordSession = (name: string, input: SessionInput): UserData => {
   const data = loadUser(name)

@@ -1346,26 +1346,14 @@ interface FlashcardFlipTaskInput {
 /** Flip the card, then choose or tip the answer (accepted list, trim/casefold). */
 export const flashcardFlipTask = (input: FlashcardFlipTaskInput): Task => {
   const accepted = input.accepted.map(normCloze)
-  const hasChoices = Boolean(input.choices && input.choices.length > 0)
-  const fwBase =
-    input.fachwissen?.text ??
-    'Karteikarte: nach dem Umdrehen antworten.'
-  const fwCheck = hasChoices
-    ? ' Prüfung: gewählte Option muss zur Lösung passen (Groß-/Kleinschreibung egal).'
-    : ' Prüfung: Freitext gegen akzeptierte Antworten (trim, Kleinbuchstaben, Synonyme).'
-  const fachwissen: Fachwissen | undefined = input.fachwissen
-    ? {
-        ...input.fachwissen,
-        text: `${fwBase}${fwBase.includes('Prüfung:') ? '' : fwCheck}`,
-      }
-    : undefined
+  // Fachwissen = reines Fachwissen zur Frage — kein Meta zu Wertung/Ablauf.
   return {
     question: input.question,
     answerKind: 'text',
     solution: input.solution,
     explanation: input.explanation,
     visualContent: input.visualContent,
-    ...withFw(fachwissen),
+    ...withFw(input.fachwissen),
     ...withDedupe(input.dedupeKey),
     ...withContentIds(input.contentIds),
     sampleAnswer: {
@@ -1382,7 +1370,8 @@ export const flashcardFlipTask = (input: FlashcardFlipTaskInput): Task => {
         // Steps list lives in FlashcardFlip UI — only pass non-redundant extras.
         ...(input.instruction?.trim() ? { instruction: input.instruction } : {}),
         placeholder: input.placeholder,
-        checkHint: input.checkHint,
+        // checkHint only if author explicitly sets it — never inject grading blurb into UI by default.
+        ...(input.checkHint?.trim() ? { checkHint: input.checkHint } : {}),
       },
     },
     check: (answer: UserInput) => {

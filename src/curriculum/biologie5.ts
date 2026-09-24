@@ -973,14 +973,16 @@ function saurierMc(rng: Rng) {
       a: 'Versteinerte Reste oder Spuren früherer Lebewesen',
       w: ['Nur heutige Federn', 'Nur frisches Laub', 'Nur Magensaft'],
       e: 'Fossilien belegen ausgestorbene Lebensformen wie Saurier.',
-      wissen: 'Paläontologie rekonstruiert vergangene Lebenswelten.',
+      wissen:
+        'Fossilien sind erhaltene Reste oder Spuren früherer Lebewesen. Die Paläontologie rekonstruiert damit vergangene Lebenswelten.',
     },
     {
       q: 'Warum sind viele Saurier ausgestorben (Schulmodell)?',
       a: 'Umweltveränderungen (u. a. nach Impaktereignissen) führten zum Artensterben',
       w: ['Weil sie zu Insekten wurden', 'Weil sie keine DNA hatten', 'Weil Knochen weich wurden über Nacht'],
       e: 'Massensterben am Ende der Kreide — vereinfachtes Unterrichtsmodell.',
-      wissen: 'Angepasstheit hilft nur, solange die Umwelt passt.',
+      wissen:
+        'Angepasstheit hilft nur, solange die Umwelt passt. Starke Umweltveränderungen (z. B. am Ende der Kreide) können zum Massensterben führen.',
     },
   ]
   const it = pick(rng, items)
@@ -1000,7 +1002,9 @@ function saurierTf(rng: Rng) {
     statement: 'Alle Saurier waren flugunfähige Riesenechsen ohne Ausnahme.',
     correct: false,
     explanation: 'Die Vielfalt war groß — u. a. flugfähige Formen in verwandten Gruppen; „Saurier“ im Unterricht oft vereinfacht.',
-    fachwissen: fw('Vergangene Kriechtiere zeigen große Formenvielfalt — Vergleich mit heutigen Reptilien.'),
+    fachwissen: fw(
+      'Vergangene Kriechtiere zeigten große Formenvielfalt — von kleinen bis riesigen Arten; nicht alle waren flugunfähige Riesenechsen.',
+    ),
   })
 }
 
@@ -1016,7 +1020,9 @@ function saurierMatch(rng: Rng) {
     distractor: 'Spaltöffnung der Blätter',
     solution: 'Fossil → Rest/Spur; Aussterben → Verschwinden; Angepasstheit → Vorteil',
     explanation: 'Mit Fossilien und Aussterben wird der Blick auf heutige Kriechtiere geschärft.',
-    fachwissen: fw('Wahlbereich: Kriechtiere vergangener Zeiten.'),
+    fachwissen: fw(
+      'Fossil: erhaltener Rest oder Spur. Aussterben: Verschwinden einer Art. Angepasstheit: Merkmal mit Vorteil in einer Umwelt.',
+    ),
   })
 }
 
@@ -1029,14 +1035,16 @@ function haltungMc(rng: Rng) {
       a: 'Bedürfnisse der Art (Raum, Klima, Nahrung, Soziales) werden berücksichtigt',
       w: ['Nur möglichst kleiner Käfig', 'Nie Wasser anbieten', 'Nur Kunststoffpflanzen ohne Licht'],
       e: 'Artgerecht heißt: Lebensweise der Art ernst nehmen.',
-      wissen: 'Aquarium/Terrarium: Temperatur, Feuchte, Verstecke, Futter.',
+      wissen:
+        'Artgerechte Haltung berücksichtigt Raum, Klima, Nahrung und Sozialverhalten der Art — z. B. Temperatur, Feuchte, Verstecke und artgerechtes Futter im Aquarium oder Terrarium.',
     },
     {
       q: 'Warum ist Überfütterung im Aquarium problematisch?',
       a: 'Wasserqualität sinkt, Tiere können erkranken',
       w: ['Weil Fische dann fliegen', 'Weil Knochen verschwinden', 'Weil Photosynthese stoppt sofort weltweit'],
       e: 'Futterreste belasten das Wasser.',
-      wissen: 'Pflege und Verantwortung.',
+      wissen:
+        'Überschüssiges Futter zersetzt sich, belastet das Wasser (Ammoniak/Nitrit) und kann Fische krank machen — sparsam und artgerecht füttern.',
     },
   ]
   const it = pick(rng, items)
@@ -1065,7 +1073,9 @@ function haltungMulti(rng: Rng) {
     solution: 'Temperatur, Hygiene, Futter',
     explanation: 'Vorbereitung und Pflege schützen Tiere.',
     instruction: 'Wähle alle zutreffenden Antworten:',
-    fachwissen: fw('Wahl: Artgerechte Tierhaltung — Tierschutzgedanke.'),
+    fachwissen: fw(
+      'Verantwortliche Haltung braucht passende Temperatur, sauberes Wasser bzw. Hygiene und artgerechtes Futter — abgestimmt auf die Bedürfnisse der Art.',
+    ),
   })
 }
 
@@ -1074,7 +1084,9 @@ function haltungTf(rng: Rng) {
     statement: 'Vor der Anschaffung sollte man den Platz- und Pflegebedarf der Art kennen.',
     correct: true,
     explanation: 'Planung verhindert Leid und Abgabe.',
-    fachwissen: fw('Information vor dem Kauf ist Tierschutz.'),
+    fachwissen: fw(
+      'Vor dem Kauf den Platz-, Klima- und Pflegebedarf der Art klären — so vermeidet man Überforderung und Tierleid.',
+    ),
   })
 }
 

@@ -90,13 +90,54 @@ describe('content-level round uniqueness', () => {
 })
 
 describe('Biologie quality bar', () => {
-  it('every generated task has question-specific fachwissen', () => {
-    const ids = Object.keys(BIOLOGIE_GENERATORS)
-    expect(ids.length).toBeGreaterThan(40)
-    for (const id of ids) {
+  const META_FACHWISSEN =
+    /Prüfung:|Antwort prüfen|Teilpunkte|Karteikarte:|Zur Frage|Die gesuchte Antwort|Auch akzeptiert|Klassenarbeiten|gewertet|Häufige Verwechslung in Quizzes|im Unterricht\.|Systemüberblick\.|Orientierung im|Wahl:|Wahlbereich:|LB\d|Kursinhalte beachten|Schlaukopf|Klassiker \(/i
+
+  /** Sek I Gym (K5–10) — Fachwissen hier auf reines Fachwissen gehärtet. */
+  const sekIIds = Object.keys(BIOLOGIE_GENERATORS).filter((id) =>
+    /^bi-k(5|6|7|8|9|10)-/.test(id),
+  )
+
+  it('every Sek-I task has question-specific fachwissen', () => {
+    expect(sekIIds.length).toBeGreaterThan(40)
+    for (const id of sekIIds) {
       for (let seed = 0; seed < 6; seed++) {
         const task = BIOLOGIE_GENERATORS[id]!(createRng(seed * 97 + 3))
-        expect(task.fachwissen?.text?.trim().length, `${id}@${seed}`).toBeGreaterThan(20)
+        expect(task.fachwissen?.text?.trim().length, `${id}@${seed}`).toBeGreaterThanOrEqual(45)
+      }
+    }
+  })
+
+  it('Sek-I fachwissen is pure subject knowledge — no grading/UI/meta bla', () => {
+    for (const id of sekIIds) {
+      for (let seed = 0; seed < 8; seed++) {
+        const task = BIOLOGIE_GENERATORS[id]!(createRng(seed * 53 + 11))
+        const text = task.fachwissen?.text ?? ''
+        expect(text, `${id}@${seed}`).not.toMatch(META_FACHWISSEN)
+        expect(text.toLowerCase(), `${id}@${seed}`).not.toContain('karte umdrehen')
+        expect(text.toLowerCase(), `${id}@${seed}`).not.toContain('groß-/kleinschreibung')
+      }
+    }
+  })
+
+  it('no bio task injects Prüfung-/Wertung-meta into fachwissen', () => {
+    const hardMeta = /Prüfung:|Antwort prüfen|Teilpunkte|Groß-\/Kleinschreibung|Karte umdrehen/i
+    for (const id of Object.keys(BIOLOGIE_GENERATORS)) {
+      for (let seed = 0; seed < 4; seed++) {
+        const task = BIOLOGIE_GENERATORS[id]!(createRng(seed * 17 + 3))
+        expect(task.fachwissen?.text ?? '', `${id}@${seed}`).not.toMatch(hardMeta)
+      }
+    }
+  })
+
+  it('flashcard questions are content prompts, not UI instructions', () => {
+    for (const topicId of ['bi-k6-lb2-spinnen', 'bi-k5-lb2-fische', 'bi-k7-lb1-mikroben']) {
+      const gen = BIOLOGIE_GENERATORS[topicId]!
+      for (let seed = 0; seed < 40; seed++) {
+        const task = gen(createRng(seed * 19 + 7))
+        if (task.interactive?.type !== 'flashcardFlip') continue
+        expect(task.question).not.toMatch(/Karteikarte:/i)
+        expect(task.question).not.toMatch(/umdrehen/i)
       }
     }
   })

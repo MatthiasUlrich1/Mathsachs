@@ -4,16 +4,16 @@ export type AnswerKind = 'integer' | 'decimal' | 'fraction' | 'text'
 
 /**
  * Fachliches Basiswissen (Rubrik „Wissen“ / „Fachwissen“).
- * Erklärt, *wie* man diesen Aufgabentyp löst bzw. welches Prinzip/Faktum
- * zur *aktuellen* Frage gehört (Issue #45) — nicht nur eine allgemeine Definition.
- * Text ist eine eigene Formulierung (Fakten unterliegen keinem Urheberrecht).
+ * Nur **reines Fachwissen**, das zur Lösung der *aktuellen* Frage beiträgt
+ * (Fakten, Zusammenhänge, Merkmale) — kein Meta zu Bedienung, Wertung oder
+ * Aufgabenablauf. Text ist eine eigene Formulierung (Fakten ohne Urheberrecht).
  * Quellenangaben verweisen auf weiterführende Literatur.
  *
  * Bevorzugt auf der `Task` setzen (fragebezogen). Topic-Level ist Fallback
  * (Curriculum-Browser / Themen ohne per-Task-Text).
  */
 export interface Fachwissen {
-  /** How-to- oder Fakten-Erklärung (Prinzip + Kontext, typisch 3–6 Sätze). */
+  /** Reines Fachwissen zur Frage (typisch 2–5 Sätze). */
   text: string
   /**
    * Titel der zitierten Quelle, z. B. „Wikipedia: Bruchrechnung".

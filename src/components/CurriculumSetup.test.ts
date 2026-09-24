@@ -97,13 +97,16 @@ describe('CurriculumSetup Entfernen', () => {
     installPack(hsPack(), undefined, 10)
     const installed = renderToStaticMarkup(createElement(CurriculumSetup, props))
     expect(installed).toContain('Entfernen')
-    expect(installed).toContain('Installiert: Version 1.0.0')
+    expect(installed).toContain('Version 1.0.0')
+    expect(installed).toContain('Aktualisiert am')
+    expect(installed).not.toContain('changelog')
+    expect(installed).not.toContain(' — Test')
     expect(count(installed, 'Entfernen')).toBe(1)
 
     removePack(OS_HS_PACK_ID, undefined, 20)
     const removed = renderToStaticMarkup(createElement(CurriculumSetup, props))
     expect(removed).not.toContain('Entfernen')
-    expect(removed).not.toContain('Installiert: Version')
+    expect(removed).not.toContain('Aktualisiert am')
     expect(removed).toContain('Installieren')
     expect(count(removed, 'Installieren')).toBe(9)
   })
@@ -203,8 +206,10 @@ describe('CurriculumSetup Installation', () => {
       createElement(CurriculumSetup, { ...props, onEnsureSubject: vi.fn() }),
     )
     expect(html).toContain('Entfernen')
-    expect(html).toContain('1 Klassenstufen · 1 Themen')
+    expect(html).toContain('1 Thema · 1 Klassenstufe · Klasse 5')
+    expect(html).toContain('Version 1.0.0')
     expect(html).not.toContain('In Themen einblenden')
+    expect(html).not.toContain(' — Test')
   })
 
   it('loads only Sek I grades and never activates (no K12)', async () => {

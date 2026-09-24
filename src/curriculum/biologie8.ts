@@ -1,6 +1,6 @@
 /**
  * Biologie Klasse 8 — Sinne/Nerven/Hormone, Sexualität (+ Wahl).
- * Quiz-Ideen analog Schulportale (Sinne, Hormone, Sexualität) → Lehrplan-LB.
+ * Quiz-Ideen analog Schulportale → Lehrplan-LB; Fachwissen = reine Fakten.
  */
 import { bankGenerate, type BioBank } from './biologieBank'
 import type { Topic } from './types'
@@ -8,6 +8,7 @@ import type { Topic } from './types'
 const sinne: BioBank = {
   quelle: 'Wikipedia: Sinnesorgan',
   url: 'https://de.wikipedia.org/wiki/Sinnesorgan',
+  conceptPrefix: 'bio:k8:sinne',
   facts: [
     {
       concept: 'bio:k8:welche-aufgabe-haben-sinnesorgane',
@@ -15,9 +16,8 @@ const sinne: BioBank = {
       answer: 'Reize aus der Umwelt aufnehmen und ans Nervensystem weitergeben',
       wrong: ['Nur Blut filtern', 'Nur Knochen bilden', 'Nur Enzyme im Magen ersetzen'],
       explanation: 'Sinne wandeln Reize in Nervensignale um.',
-      wissen: 'Auge, Ohr, Haut, Zunge, Nase — Übersicht.',
-      gap: 'Lichtreize werden im ___ verarbeitet (Sehsinn).',
-      gapAccepted: ['Auge', 'Auge/Retina', 'Auge (Netzhaut)'],
+      wissen:
+        'Sinnesorgane nehmen Reize auf und leiten Signale ans Nervensystem. Auge/Ohr und Hormone → Spezialthemen.',
     },
     {
       concept: 'bio:k8:wozu-dient-das-gehirn-im-nervensystem',
@@ -25,17 +25,8 @@ const sinne: BioBank = {
       answer: 'Verarbeitung von Informationen und Steuerung',
       wrong: ['Nur Speichelproduktion', 'Nur Urinbildung', 'Nur Pollenflug'],
       explanation: 'Zentrales Steuer- und Verarbeitungsorgan.',
-      wissen: 'Nervensystem: Aufnahme – Leitung – Verarbeitung – Reaktion.',
-    },
-    {
-      concept: 'bio:k8:was-transportieren-hormone-typischerweis',
-      prompt: 'Was transportieren Hormone typischerweise?',
-      answer: 'Botenstoffe über das Blut zu Zielorganen',
-      wrong: ['Nur festen Knochenkalk', 'Nur Luft in die Lungenbläschen', 'Nur Chitin'],
-      explanation: 'Hormonsystem steuert längerfristig als viele Nervenreflexe.',
-      wissen: 'Vergleich Nerven- vs. Hormonsystem.',
-      gap: 'Hormone gelangen über das ___ zu ihren Zielzellen.',
-      gapAccepted: ['Blut', 'Blutbahn', 'Blutgefäßsystem'],
+      wissen:
+        'Reizaufnahme → Leitung → Verarbeitung im Gehirn/Rückenmark → Reaktion.',
     },
     {
       concept: 'bio:k8:ein-reflex-ist',
@@ -43,31 +34,37 @@ const sinne: BioBank = {
       answer: 'eine schnelle, oft unwillkürliche Reaktion auf einen Reiz',
       wrong: ['immer eine bewusste Entscheidung nach Stunden', 'nur Fotosynthese', 'nur Verdauung im Dickdarm'],
       explanation: 'Reflexbögen ermöglichen schnelle Schutzreaktionen.',
-      wissen: 'Informationsverarbeitung im Nervensystem.',
+      wissen:
+        'Ein Reflex ist eine schnelle, oft unwillkürliche Reaktion über Rezeptor, Nerven und oft Rückenmark.',
     },
   ],
   pairs: [
-    { term: 'Netzhaut', meaning: 'Lichtempfindliche Schicht im Auge', wissen: 'Zapfen und Stäbchen.' },
-    { term: 'Hörschnecke', meaning: 'Wandelt Schall im Innenohr um', wissen: 'Gehörsinn.' },
-    { term: 'Nervenzelle', meaning: 'Leitet elektrische Signale', wissen: 'Grundeinheit des Nervensystems.' },
-    { term: 'Hormon', meaning: 'Chemischer Botenstoff', wissen: 'Wirkt an Zielzellen mit Rezeptoren.' },
+    {
+      concept: 'bio:k8:sinne:paar-reiz',
+      term: 'Reiz',
+      meaning: 'Auslöser, der Sinneszellen erregt',
+      wissen: 'Licht, Schall, Druck, chemische Stoffe u. a.',
+    },
+    {
+      concept: 'bio:k8:sinne:paar-nerv',
+      term: 'Nervenzelle',
+      meaning: 'Leitet elektrische Signale',
+      wissen: 'Vernetzt Sinnesorgane, Gehirn und Erfolgsorgane.',
+    },
+    {
+      concept: 'bio:k8:sinne:paar-sinn',
+      term: 'Sinn',
+      meaning: 'Fähigkeit, bestimmte Reize wahrzunehmen',
+      wissen: 'Klassisch: Sehen, Hören, Riechen, Schmecken, Tasten.',
+    },
   ],
   trueFalse: [
     {
-      concept: 'bio:k8:hormone-wirken-immer-nur-an-der-stelle-a',
-      statement: 'Hormone wirken immer nur an der Stelle, an der sie gebildet werden.',
+      concept: 'bio:k8:sinne:tf-ohne-hirn',
+      statement: 'Sinnesorgane verarbeiten komplexe Wahrnehmungen vollständig ohne Gehirn.',
       correct: false,
-      explanation: 'Viele Hormone wirken entfernt über die Blutbahn.',
-      wissen: 'Zielorgane und Rezeptoren.',
-    },
-  ],
-  sorts: [
-    {
-      concept: 'bio:k8:ordne-den-vereinfachten-weg-eines-lichtr',
-      question: 'Ordne den vereinfachten Weg eines Lichtreizes.',
-      labels: ['Licht trifft Auge', 'Rezeptoren in der Netzhaut', 'Sehnerv leitet', 'Gehirn verarbeitet'],
-      explanation: 'Reiz → Rezeptor → Leitung → Verarbeitung.',
-      wissen: 'Informationsweg üben.',
+      explanation: 'Die bewusste Wahrnehmung entsteht vor allem im Gehirn.',
+      wissen: 'Rezeptoren liefern Signale; das Gehirn erzeugt die Wahrnehmung.',
     },
   ],
   multis: [
@@ -77,7 +74,8 @@ const sinne: BioBank = {
       correct: ['Sehen', 'Hören', 'Riechen'],
       wrong: ['Fotosynthese', 'Gärung'],
       explanation: 'Sehen, Hören, Riechen, Schmecken, Tasten.',
-      wissen: 'Grundwissen Sinnesorgane.',
+      wissen:
+        'Die fünf klassischen Sinne: Sehen, Hören, Riechen, Schmecken, Tasten.',
     },
   ],
 }
@@ -85,63 +83,58 @@ const sinne: BioBank = {
 const sexualitaet: BioBank = {
   quelle: 'Wikipedia: Menschliche Sexualität',
   url: 'https://de.wikipedia.org/wiki/Menschliche_Sexualit%C3%A4t',
+  conceptPrefix: 'bio:k8:sexualitaet',
   facts: [
-    {
-      concept: 'bio:k8:was-ist-mit-verantwortung-in-der-sexuali',
-      prompt: 'Was ist mit Verantwortung in der Sexualität gemeint?',
-      answer: 'Rücksicht, Einvernehmen, Schutz vor Infektionen und ungewollter Schwangerschaft',
-      wrong: ['Nur Gewinnmaximierung', 'Nur Sportrekorde', 'Nur Ernährungsumstellung'],
-      explanation: 'Sexualität umfasst Körper, Gefühle und Verantwortung füreinander.',
-      wissen: 'Lehrplan: Sexualität des Menschen — sachlich und respektvoll.',
-    },
-    {
-      concept: 'bio:k8:wozu-dienen-geschlechtshormone-u-a',
-      prompt: 'Wozu dienen Geschlechtshormone u. a.?',
-      answer: 'Steuerung der Geschlechtsentwicklung und -funktionen',
-      wrong: ['Nur der Zahnschmelzhärtung', 'Nur der Blattbildung', 'Nur der Knochenmarklosigkeit'],
-      explanation: 'Hormone beeinflussen Pubertät und Fortpflanzungsfunktionen.',
-      wissen: 'Anbindung an Hormonsystem (LB1).',
-      gap: 'In der Pubertät steigen die ___ und lösen körperliche Veränderungen aus.',
-      gapAccepted: ['Geschlechtshormone', 'Hormone', 'Sexualhormone'],
-    },
     {
       concept: 'bio:k8:was-beschreibt-empfaengnisverhuetung-sac',
       prompt: 'Was beschreibt Empfängnisverhütung sachlich?',
       answer: 'Methoden, ungewollte Schwangerschaft zu vermeiden',
       wrong: ['Nur Impfungen gegen Viren', 'Nur Knochenbruchheilung', 'Nur Blutdruckmessen'],
       explanation: 'Verschiedene Methoden mit unterschiedlicher Sicherheit.',
-      wissen: 'Aufklärung ohne moralisierenden Ton — Fakten.',
+      wissen:
+        'Empfängnisverhütung umfasst Methoden, die Befruchtung bzw. Einnistung verhindern sollen.',
+    },
+    {
+      concept: 'bio:k8:sexualitaet:ueberblick',
+      prompt: 'Was gehört zur Sexualität des Menschen im Überblick?',
+      answer: 'Körperliche, emotionale und soziale Aspekte der Fortpflanzung und Beziehungen',
+      wrong: ['Nur Blattbildung', 'Nur Jahresringe', 'Nur Zellwandbau'],
+      explanation: 'Mehr als nur Biologie der Keimzellen.',
+      wissen:
+        'Sexualität umfasst Körper, Gefühle und soziale Verantwortung. Pubertät/Verantwortung → Spezial Entwicklung.',
     },
   ],
   pairs: [
-    { term: 'Pubertät', meaning: 'Phase der Geschlechtsreifung', wissen: 'Körperliche und emotionale Veränderungen.' },
-    { term: 'Einvernehmen', meaning: 'Gegenseitige Zustimmung', wissen: 'Grundlage respektvoller Beziehungen.' },
-    { term: 'STI', meaning: 'Sexuell übertragbare Infektion', wissen: 'Schutz durch Aufklärung und Vorsicht.' },
+    {
+      concept: 'bio:k8:sexualitaet:paar-verhuetung',
+      term: 'Verhütung',
+      meaning: 'Schutz vor ungewollter Schwangerschaft',
+      wissen: 'Verschiedene Methoden mit unterschiedlicher Sicherheit.',
+    },
+    {
+      concept: 'bio:k8:sexualitaet:paar-sti',
+      term: 'STI',
+      meaning: 'Sexuell übertragbare Infektion',
+      wissen: 'Schutz z. B. durch Kondome und Aufklärung.',
+    },
   ],
   trueFalse: [
     {
-      concept: 'bio:k8:ueber-sexualitaet-zu-sprechen-und-fragen',
-      statement: 'Über Sexualität zu sprechen und Fragen zu stellen ist im Unterricht erlaubt und sinnvoll.',
-      correct: true,
-      explanation: 'Sachliche Aufklärung schützt und klärt.',
-      wissen: 'Unterrichtsklima.',
-    },
-    {
-      concept: 'bio:k8:nur-erwachsene-haben-hormone',
-      statement: 'Nur Erwachsene haben Hormone.',
+      concept: 'bio:k8:sexualitaet:tf-nur-biologie',
+      statement: 'Sexualität betrifft ausschließlich die Zellteilung.',
       correct: false,
-      explanation: 'Hormone wirken in jedem Lebensalter — in der Pubertät besonders spürbar.',
-      wissen: 'Hormonsystem.',
+      explanation: 'Sie umfasst auch Emotionen, Beziehungen und Verantwortung.',
+      wissen: 'Biologie, Emotion und Verantwortung gehören zusammen.',
     },
   ],
   multis: [
     {
-      concept: 'bio:k8:welche-aspekte-gehoeren-zu-verantwortlic',
-      question: 'Welche Aspekte gehören zu verantwortlicher Sexualität?',
-      correct: ['Einvernehmen', 'Schutz vor Infektionen'],
-      wrong: ['Druck ausüben', 'Informationen absichtlich verfälschen'],
-      explanation: 'Respekt und Schutz sind zentral.',
-      wissen: 'Werte und Fakten verbinden.',
+      concept: 'bio:k8:sexualitaet:multi',
+      question: 'Welche Aussagen passen zur Sexualität im Überblick?',
+      correct: ['Sie betrifft Körper und Gefühle', 'Verhütung kann ungewollte Schwangerschaft vermeiden'],
+      wrong: ['Sie ist nur Blattphysiologie', 'Sie braucht keine Verantwortung'],
+      explanation: 'Überblick ohne Pubertäts-/Entwicklungsdetails.',
+      wissen: 'Details zu Pubertät und Verantwortung → Spezial Entwicklung.',
     },
   ],
 }
@@ -156,7 +149,8 @@ const stress: BioBank = {
       answer: 'Erhöhte Anspannung, veränderte Atmung/Puls, Stresshormone',
       wrong: ['Sofortige Fotosynthese', 'Knochen verschwinden', 'Keine Nervensignale mehr'],
       explanation: 'Stress aktiviert Alarmreaktionen — Dauerstress belastet.',
-      wissen: 'Wahl: Stress und Stressbewältigung.',
+      wissen:
+        'Bei Stress schüttet der Körper u. a. Adrenalin und Cortisol aus: Puls und Atmung steigen, Muskeln spannen sich an. Kurzfristig hilfreich, dauerhaft belastend.',
     },
   ],
   trueFalse: [
@@ -165,12 +159,21 @@ const stress: BioBank = {
       statement: 'Entspannungstechniken und Pausen können helfen, Stress zu bewältigen.',
       correct: true,
       explanation: 'Bewegung, Gespräche, Pausen und Struktur sind typische Strategien.',
-      wissen: 'Handlungsoptionen.',
+      wissen:
+        'Pausen, Bewegung, Gespräche und Entspannungstechniken senken die Stressreaktion und helfen dem Körper, wieder ins Gleichgewicht zu kommen.',
     },
   ],
   pairs: [
-    { term: 'Akuter Stress', meaning: 'Kurzfristige Alarmreaktion', wissen: 'Kann leistungsfördernd sein.' },
-    { term: 'Chronischer Stress', meaning: 'Dauerhafte Überforderung', wissen: 'Gesundheitlich belastend.' },
+    {
+      term: 'Akuter Stress',
+      meaning: 'Kurzfristige Alarmreaktion',
+      wissen: 'Kurzfristige Aktivierung kann Leistung steigern — danach sollte Erholung folgen.',
+    },
+    {
+      term: 'Chronischer Stress',
+      meaning: 'Dauerhafte Überforderung',
+      wissen: 'Dauerhafte Überforderung belastet Herz-Kreislauf, Schlaf und Immunsystem.',
+    },
   ],
 }
 
@@ -184,7 +187,8 @@ const sinneWahl: BioBank = {
       answer: 'Die Wahrnehmung wird genauer und sicherer',
       wrong: ['Weil Knochen dann leuchten', 'Weil Blut dann grün wird', 'Weil Zellen verschwinden'],
       explanation: 'Multisensorik verbessert Orientierung.',
-      wissen: 'Wahl: Erleben mit allen Sinnen.',
+      wissen:
+        'Mehrere Sinne zusammen (z. B. Sehen + Hören + Tasten) machen Wahrnehmung genauer und Orientierung sicherer — das Gehirn verknüpft die Eindrücke.',
     },
   ],
   trueFalse: [
@@ -193,7 +197,8 @@ const sinneWahl: BioBank = {
       statement: 'Ohne Sehsinn ist Orientierung immer unmöglich.',
       correct: false,
       explanation: 'Andere Sinne und Hilfsmittel ermöglichen Orientierung.',
-      wissen: 'Kompensation und Vielfalt der Sinne.',
+      wissen:
+        'Ohne Sehen helfen Hören, Tasten, Riechen und Hilfsmittel (Stock, Orientierungstechniken) — Orientierung bleibt möglich.',
     },
   ],
 }
@@ -208,7 +213,8 @@ const ersteHilfe: BioBank = {
       answer: 'Absichern und Notruf absetzen (wenn nötig)',
       wrong: ['Sofort weglaufen ohne Hilfe', 'Warten bis morgen', 'Nur fotografieren'],
       explanation: 'Eigene Sicherheit, dann Hilfe holen / leisten.',
-      wissen: 'Wahl: Erste Hilfe — Grundregeln.',
+      wissen:
+        'Erste-Hilfe-Grundregel: eigene Sicherheit prüfen, Unfallstelle absichern, dann Notruf (in DE oft 112) und Hilfe leisten.',
       gap: 'In Deutschland lautet die Notrufnummer oft ___.',
       gapAccepted: ['112', '110/112'],
     },
@@ -219,12 +225,21 @@ const ersteHilfe: BioBank = {
       statement: 'Bei Bewusstlosigkeit prüft man Atmung und holt Hilfe.',
       correct: true,
       explanation: 'Bewusstlosigkeit ist ein Notfall — Atmung prüfen, Notruf, stabile Seitenlage wenn Atmung vorhanden (Kurswissen).',
-      wissen: 'Kursinhalte beachten; hier nur Orientierung.',
+      wissen:
+        'Bei Bewusstlosigkeit: Atmung prüfen, Notruf absetzen; bei vorhandener Atmung stabile Seitenlage (laut Erste-Hilfe-Kurs).',
     },
   ],
   pairs: [
-    { term: 'Notruf', meaning: 'Professionelle Hilfe anfordern', wissen: 'Wichtigste Sofortmaßnahme oft.' },
-    { term: 'Wundversorgung', meaning: 'Blutung stillen / schützen', wissen: 'Grundfertigkeit.' },
+    {
+      term: 'Notruf',
+      meaning: 'Professionelle Hilfe anfordern',
+      wissen: 'Notruf (112) holt Rettungsdienst — oft die wichtigste Sofortmaßnahme.',
+    },
+    {
+      term: 'Wundversorgung',
+      meaning: 'Blutung stillen / schützen',
+      wissen: 'Druckverband oder saubere Abdeckung stillt Blutungen und schützt vor Keimen.',
+    },
   ],
 }
 

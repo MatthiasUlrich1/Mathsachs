@@ -9,6 +9,7 @@ import {
   listUsers,
   loadUser,
   recordSession,
+  countSchuelerAnswerAttempts,
   forgetCreatedChallenge,
   rememberCreatedChallenge,
   rememberCreatedClassCode,
@@ -367,6 +368,31 @@ describe('storage adapter', () => {
       code: 'ABCD2345',
       points: 4,
     })
+  })
+
+  it('counts checked answers only from Schüler profiles', async () => {
+    const local = memoryStorage()
+    vi.stubGlobal('localStorage', local)
+    await initSharedStorage()
+    addUser('Kim', 'schueler')
+    addUser('LehrerX', 'lehrer')
+    recordSession('Kim', {
+      topicId: 'a',
+      topicTitle: 'A',
+      areaTitle: 'X',
+      attempts: 2,
+      correct: 1,
+      points: 5,
+    })
+    recordSession('LehrerX', {
+      topicId: 'b',
+      topicTitle: 'B',
+      areaTitle: 'Y',
+      attempts: 9,
+      correct: 9,
+      points: 90,
+    })
+    expect(countSchuelerAnswerAttempts()).toBe(2)
   })
 
   it('shows a joined Worker class name in the badge and protocol, not the code', async () => {

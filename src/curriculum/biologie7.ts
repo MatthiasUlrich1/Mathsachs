@@ -1,7 +1,6 @@
 /**
  * Biologie Klasse 7 — Lehrplan 522 (Mikroben, Blut/Immun, Ernährung, Skelett).
- * Ideen aus Schulquiz-Themen (Immunsystem, Verdauung, Blutkreislauf, Knochen) —
- * original formuliert; Platzierung nach Lehrplan, nicht nach Schlaukopf-Baum.
+ * Ideen aus Schulquiz-Themen — original formuliert; Platzierung nach Lehrplan.
  */
 import { bankGenerate, type BioBank } from './biologieBank'
 import type { Topic } from './types'
@@ -9,6 +8,7 @@ import type { Topic } from './types'
 const mikroben: BioBank = {
   quelle: 'Wikipedia: Bakterien',
   url: 'https://de.wikipedia.org/wiki/Bakterien',
+  conceptPrefix: 'bio:k7:mikroben',
   facts: [
     {
       concept: 'bio:k7:was-sind-bakterien',
@@ -16,7 +16,8 @@ const mikroben: BioBank = {
       answer: 'Einzellige Mikroorganismen ohne echten Zellkern',
       wrong: ['Immer Viren mit Hülle', 'Nur vielzellige Tiere', 'Nur Pflanzenzellen mit Chloroplast'],
       explanation: 'Bakterien sind Prokaryoten — kein Zellkern wie bei Pflanzen/Tieren.',
-      wissen: 'Unterscheidung Bakterien ↔ Viren ist zentral.',
+      wissen:
+        'Bakterien sind einzellige Prokaryoten: ihr Erbgut liegt frei im Zytoplasma, ohne echten Zellkern.',
       gap: 'Bakterien besitzen keinen echten ___.',
       gapAccepted: ['Zellkern', 'Kern'],
     },
@@ -26,23 +27,31 @@ const mikroben: BioBank = {
       answer: 'Infektiöse Partikel aus Erbgut und oft Proteinhülle — keine Zellen',
       wrong: ['Vollständige Zellen mit Mitochondrien', 'Immer nützliche Darmbakterien', 'Nur Mineralien'],
       explanation: 'Viren brauchen Wirtszellen zur Vermehrung.',
-      wissen: 'Viren sind keine klassischen Lebewesen im Unterrichtsmodell.',
+      wissen:
+        'Viren bestehen aus Erbgut und oft einer Proteinhülle — keine Zellen; Vermehrung nur in Wirtszellen.',
       gap: 'Viren vermehren sich nur in ___.',
       gapAccepted: ['Wirtszellen', 'lebenden Zellen', 'Zellen'],
     },
-    {
-      concept: 'bio:k7:welche-hygienemassnahme-verringert-die-u',
-      prompt: 'Welche Hygienemaßnahme verringert die Übertragung vieler Keime?',
-      answer: 'Hände waschen / Desinfektion wo nötig',
-      wrong: ['Nie Lüften', 'Gemeinsame Zahnbürste', 'Offene Wunden ignorieren'],
-      explanation: 'Hygiene unterbricht Infektionsketten.',
-      wissen: 'Prävention gehört zum Lernbereich.',
-    },
   ],
   pairs: [
-    { term: 'Bakterium', meaning: 'Einzeller ohne Zellkern', wissen: 'Kann nützlich oder pathogen sein.' },
-    { term: 'Virus', meaning: 'Erbgut + Hülle, parasitär', wissen: 'Braucht Wirtszelle.' },
-    { term: 'Antibiotikum', meaning: 'Wirkt gegen Bakterien (nicht gegen Viren)', wissen: 'Falsche Nutzung fördert Resistenzen.' },
+    {
+      concept: 'bio:k7:mikroben:paar-bak',
+      term: 'Bakterium',
+      meaning: 'Einzeller ohne Zellkern',
+      wissen: 'Prokaryot — kann nützlich oder krankheitserregend sein.',
+    },
+    {
+      concept: 'bio:k7:mikroben:paar-virus',
+      term: 'Virus',
+      meaning: 'Erbgut + Hülle, parasitär',
+      wissen: 'Kein eigener Stoffwechsel; Vermehrung nur in einer Wirtszelle.',
+    },
+    {
+      concept: 'bio:k7:mikroben:paar-ab',
+      term: 'Antibiotikum',
+      meaning: 'Wirkt gegen Bakterien (nicht gegen Viren)',
+      wissen: 'Hemmt Bakterienwachstum; gegen Viren wirkungslos.',
+    },
   ],
   trueFalse: [
     {
@@ -50,24 +59,27 @@ const mikroben: BioBank = {
       statement: 'Antibiotika helfen zuverlässig gegen alle Virusinfektionen.',
       correct: false,
       explanation: 'Antibiotika zielen auf Bakterien, nicht auf Viren.',
-      wissen: 'Häufiges Missverständnis in Quizzes.',
+      wissen:
+        'Antibiotika greifen Bakterienzellen an. Viren haben keine solche Zelle — deshalb helfen sie nicht gegen Virusinfektionen.',
     },
     {
       concept: 'bio:k7:manche-bakterien-sind-fuer-den-menschen-',
       statement: 'Manche Bakterien sind für den Menschen nützlich (z. B. Darmflora).',
       correct: true,
       explanation: 'Nicht alle Bakterien sind Krankheitserreger.',
-      wissen: 'Wahlbereich Mikroben und ihre Bedeutung.',
+      wissen:
+        'Viele Bakterien sind nützlich (Darmflora, Lebensmittelherstellung). Hygiene-Maßnahmen → Spezial Hygiene.',
     },
   ],
   multis: [
     {
-      concept: 'bio:k7:was-hilft-ansteckungen-zu-verringern',
-      question: 'Was hilft, Ansteckungen zu verringern?',
-      correct: ['Hände waschen', 'Impfungen wo empfohlen'],
-      wrong: ['Offene Lebensmittel wochenlang ungekühlt', 'Nie Lüften im Krankenraum'],
-      explanation: 'Hygiene und Impfungen sind zentrale Schutzmaßnahmen.',
-      wissen: 'Infektionsbiologie alltagsnah.',
+      concept: 'bio:k7:mikroben:multi-gruppen',
+      question: 'Welche Aussagen zu Mikroorganismen stimmen?',
+      correct: ['Bakterien sind Zellen ohne echten Zellkern', 'Viren sind keine Zellen'],
+      wrong: ['Viren haben Mitochondrien', 'Bakterien sind immer vielzellige Tiere'],
+      explanation: 'Bakterien = Prokaryoten; Viren = infektiöse Partikel.',
+      wissen:
+        'Bakterien sind einzellige Prokaryoten; Viren sind keine Zellen und brauchen Wirte zur Vermehrung.',
     },
   ],
 }
@@ -75,49 +87,48 @@ const mikroben: BioBank = {
 const blut: BioBank = {
   quelle: 'Wikipedia: Blutkreislauf',
   url: 'https://de.wikipedia.org/wiki/Blutkreislauf',
+  conceptPrefix: 'bio:k7:blut',
   facts: [
-    {
-      concept: 'bio:k7:welche-aufgabe-hat-das-herz-im-blutkreis',
-      prompt: 'Welche Aufgabe hat das Herz im Blutkreislauf?',
-      answer: 'Pumpt Blut durch den Körper',
-      wrong: ['Erzeugt Pollen', 'Speichert nur Galle', 'Bildet nur Knochenmark außen'],
-      explanation: 'Das Herz ist die Pumpe des Kreislaufs.',
-      wissen: 'Körper- und Lungenkreislauf (vereinfacht).',
-      gap: 'Das ___ pumpt das Blut durch die Gefäße.',
-      gapAccepted: ['Herz'],
-    },
     {
       concept: 'bio:k7:wofuer-sind-rote-blutkoerperchen-besonde',
       prompt: 'Wofür sind rote Blutkörperchen besonders wichtig?',
       answer: 'Sauerstofftransport (Hämoglobin)',
       wrong: ['Nur Antikörperbildung', 'Nur Fettverdauung', 'Nur Knochenwachstum'],
       explanation: 'Hämoglobin bindet Sauerstoff.',
-      wissen: 'Blutbestandteile und ihre Funktionen.',
+      wissen:
+        'Rote Blutkörperchen enthalten Hämoglobin und transportieren Sauerstoff. Herz/Gefäße und Immunabwehr → Spezialthemen.',
       gap: 'Rote Blutkörperchen transportieren vor allem ___.',
       gapAccepted: ['Sauerstoff', 'O2', 'O₂'],
     },
     {
-      concept: 'bio:k7:was-leisten-weisse-blutkoerperchen-typis',
-      prompt: 'Was leisten weiße Blutkörperchen typischerweise?',
-      answer: 'Abwehr von Krankheitserregern',
-      wrong: ['Nur Sauerstoffbindung', 'Nur Puls erzeugen', 'Nur Speichel bilden'],
-      explanation: 'Teil der Immunabwehr.',
-      wissen: 'Immunbiologie im LB2.',
-    },
-    {
-      concept: 'bio:k7:arterien-fuehren-blut',
-      prompt: 'Arterien führen Blut …',
-      answer: 'vom Herzen weg',
-      wrong: ['immer nur zum Herzen hin', 'nur in die Leber ohne Herz', 'nur in Pflanzen'],
-      explanation: 'Arterien: vom Herzen; Venen: zum Herzen (Schulmodell).',
-      wissen: 'Gefäßtypen unterscheiden.',
+      concept: 'bio:k7:blut:aufgabe',
+      prompt: 'Welche Aufgabe hat das Blut im Körper grob?',
+      answer: 'Transport von Stoffen und Zellen',
+      wrong: ['Nur Pollenflug', 'Nur Jahresringe bilden', 'Nur Blattgrün speichern'],
+      explanation: 'Blut transportiert Gase, Nährstoffe, Hormone und Abwehrzellen.',
+      wissen:
+        'Blut transportiert u. a. Sauerstoff, CO₂, Nährstoffe, Hormone und Abwehrzellen.',
     },
   ],
   pairs: [
-    { term: 'Arterie', meaning: 'Gefäß vom Herzen weg', wissen: 'Oft sauerstoffreich im Körperkreislauf.' },
-    { term: 'Vene', meaning: 'Gefäß zum Herzen hin', wissen: 'Rückfluss zum Herzen.' },
-    { term: 'Antikörper', meaning: 'Abwehrstoff gegen Erreger/Merkmale', wissen: 'Gehört zur spezifischen Abwehr.' },
-    { term: 'Impfung', meaning: 'Trainiert das Immunsystem vorsorglich', wissen: 'Bildung von Gedächtniszellen.' },
+    {
+      concept: 'bio:k7:blut:paar-ery',
+      term: 'Erythrozyten',
+      meaning: 'Rote Blutkörperchen / O₂-Transport',
+      wissen: 'Enthalten Hämoglobin.',
+    },
+    {
+      concept: 'bio:k7:blut:paar-plasma',
+      term: 'Blutplasma',
+      meaning: 'Flüssiger Anteil des Blutes',
+      wissen: 'Transportiert gelöste Stoffe und enthält Gerinnungsfaktoren.',
+    },
+    {
+      concept: 'bio:k7:blut:paar-kreislauf',
+      term: 'Blutkreislauf',
+      meaning: 'Geschlossenes Transportsystem mit Herz und Gefäßen',
+      wissen: 'Überblick; Herz und Gefäße im Detail → Spezial Herz.',
+    },
   ],
   trueFalse: [
     {
@@ -125,16 +136,8 @@ const blut: BioBank = {
       statement: 'Das Blut transportiert nur Sauerstoff, nie Nährstoffe oder Hormone.',
       correct: false,
       explanation: 'Blut transportiert u. a. Gase, Nährstoffe, Hormone, Abwehrzellen.',
-      wissen: 'Transportfunktion des Blutes.',
-    },
-  ],
-  sorts: [
-    {
-      concept: 'bio:k7:ordne-den-weg-des-blutes-im-koerperkreis',
-      question: 'Ordne den Weg des Blutes im Körperkreislauf vereinfacht (Start Herz).',
-      labels: ['Herz (linke Kammer)', 'Arterien zum Körper', 'Kapillaren (Stoffaustausch)', 'Venen zurück zum Herzen'],
-      explanation: 'Pumpe → Arterien → Kapillaren → Venen → Herz.',
-      wissen: 'Kreislaufschema üben.',
+      wissen:
+        'Blut transportiert Sauerstoff und CO₂, Nährstoffe, Hormone und Abwehrzellen — nicht nur Sauerstoff.',
     },
   ],
   multis: [
@@ -144,7 +147,8 @@ const blut: BioBank = {
       correct: ['Rote Blutkörperchen', 'Blutplasma', 'Weiße Blutkörperchen'],
       wrong: ['Nur Blattgrün', 'Nur Holzfasern'],
       explanation: 'Blut = Zellen + Plasma (+ Blutplättchen).',
-      wissen: 'Zusammensetzung des Blutes.',
+      wissen:
+        'Blut besteht aus Plasma und Zellen: Erythrozyten, Leukozyten und Thrombozyten.',
     },
   ],
 }
@@ -152,56 +156,54 @@ const blut: BioBank = {
 const ernaehrung: BioBank = {
   quelle: 'Wikipedia: Verdauung',
   url: 'https://de.wikipedia.org/wiki/Verdauung',
+  conceptPrefix: 'bio:k7:ernaehrung',
   facts: [
+    {
+      concept: 'bio:k7:ernaehrung:zweck',
+      prompt: 'Wozu dient Ernährung und Verdauung grob?',
+      answer: 'Energie und Baustoffe für den Körper bereitstellen',
+      wrong: ['Nur Jahresringe zählen', 'Nur Pollen lagern', 'Nur Flugfedern bilden'],
+      explanation: 'Nahrung liefert Energie und Baustoffe; Verdauung spaltet und nimmt auf.',
+      wissen:
+        'Ernährung liefert Energie und Baustoffe. Nährstoffgruppen und Organe → Spezialthemen.',
+    },
     {
       concept: 'bio:k7:wozu-dienen-enzyme-bei-der-verdauung',
       prompt: 'Wozu dienen Enzyme bei der Verdauung?',
       answer: 'Spalten Nährstoffe in aufnehmbare Bausteine',
       wrong: ['Erzeugen Knochenmark', 'Transportieren nur Sauerstoff', 'Bilden Antikörper allein'],
       explanation: 'Enzyme katalysieren die Zerlegung von Nährstoffen.',
-      wissen: 'Verdauungsweg Mund → Magen → Darm.',
-      gap: 'Im Dünndarm werden Nährstoffe vor allem in die ___ aufgenommen.',
-      gapAccepted: ['Blutbahn', 'Blutbahn/Lymphe', 'Blut', 'Blutgefäße'],
-    },
-    {
-      concept: 'bio:k7:welche-naehrstoffgruppe-liefert-vor-alle',
-      prompt: 'Welche Nährstoffgruppe liefert vor allem schnell verfügbare Energie?',
-      answer: 'Kohlenhydrate',
-      wrong: ['Nur Mineralstoffe ohne Energie', 'Nur Wasser', 'Nur Vitamine als Brennstoff'],
-      explanation: 'Kohlenhydrate sind wichtige Energielieferanten.',
-      wissen: 'Nährstoffe: KH, Fette, Proteine + Begleitstoffe.',
-    },
-    {
-      concept: 'bio:k7:welche-aufgabe-hat-die-niere-grob',
-      prompt: 'Welche Aufgabe hat die Niere grob?',
-      answer: 'Filtert Blut und bildet Harn (Ausscheidung)',
-      wrong: ['Verdaut Fett im Mund', 'Erzeugt Magensäure dauerhaft', 'Pumpt Blut wie das Herz'],
-      explanation: 'Ausscheidung harnpflichtiger Stoffe.',
-      wissen: 'Ernährung, Verdauung und Ausscheidung hängen zusammen.',
+      wissen:
+        'Verdauungsenzyme spalten Kohlenhydrate, Fette und Eiweiße in aufnehmbare Bausteine.',
     },
   ],
   pairs: [
-    { term: 'Magen', meaning: 'Durchmischung und saure Vorverdauung', wissen: 'Magensäure und Enzyme.' },
-    { term: 'Dünndarm', meaning: 'Hauptort der Nährstoffaufnahme', wissen: 'Große Oberfläche durch Zotten.' },
-    { term: 'Dickdarm', meaning: 'Wasserentzug, Stuhlbildung', wissen: 'Auch Mikrobiom.' },
-    { term: 'Eiweiße', meaning: 'Baustoffe (Aminosäuren)', wissen: 'Für Wachstum und Enzyme nötig.' },
+    {
+      concept: 'bio:k7:ernaehrung:paar-energie',
+      term: 'Energie',
+      meaning: 'Kommt vor allem aus Kohlenhydraten und Fetten',
+      wissen: 'Details zu Nährstoffgruppen → Spezial Nährstoffe.',
+    },
+    {
+      concept: 'bio:k7:ernaehrung:paar-baustoff',
+      term: 'Baustoffe',
+      meaning: 'Vor allem Eiweiße für Wachstum und Gewebe',
+      wissen: 'Proteine liefern Aminosäuren.',
+    },
+    {
+      concept: 'bio:k7:ernaehrung:paar-wasser',
+      term: 'Trinken',
+      meaning: 'Hält den Wasserhaushalt stabil',
+      wissen: 'Ausreichend Flüssigkeit gehört zur gesunden Ernährung.',
+    },
   ],
   trueFalse: [
     {
-      concept: 'bio:k7:vitamine-liefern-die-hauptenergie-wie-fe',
-      statement: 'Vitamine liefern die Hauptenergie wie Fette und Kohlenhydrate.',
+      concept: 'bio:k7:ernaehrung:tf-nur-suess',
+      statement: 'Gesunde Ernährung besteht nur aus Süßigkeiten.',
       correct: false,
-      explanation: 'Vitamine sind Wirkstoffe, keine klassischen Energielieferanten.',
-      wissen: 'Nährstoffgruppen klar trennen.',
-    },
-  ],
-  sorts: [
-    {
-      concept: 'bio:k7:ordne-den-weg-der-nahrung-im-verdauungst',
-      question: 'Ordne den Weg der Nahrung im Verdauungstrakt.',
-      labels: ['Mund', 'Speiseröhre', 'Magen', 'Dünndarm', 'Dickdarm'],
-      explanation: 'Klassische Reihenfolge der Passage.',
-      wissen: 'Orientierung im Verdauungssystem.',
+      explanation: 'Abwechslung und Balance sind zentral.',
+      wissen: 'Ausgewogene Ernährung nutzt verschiedene Lebensmittelgruppen.',
     },
   ],
   multis: [
@@ -211,7 +213,8 @@ const ernaehrung: BioBank = {
       correct: ['Abwechslungsreich essen', 'Ausreichend trinken'],
       wrong: ['Nur Süßigkeiten', 'Nie Gemüse'],
       explanation: 'Balance und Flüssigkeit sind Grundlagen.',
-      wissen: 'Alltagsbezug LB3 / Wahl Ernährung.',
+      wissen:
+        'Ausgewogene Ernährung und ausreichendes Trinken sind Grundlagen — Organe und Nährstoffe in Spezialthemen.',
     },
   ],
 }
@@ -226,7 +229,8 @@ const skelett: BioBank = {
       answer: 'Stütze, Schutz und Ansatz für Muskeln',
       wrong: ['Nur Blut filtern wie die Niere', 'Nur Hormone erzeugen', 'Nur Fotosynthese'],
       explanation: 'Knochen schützen Organe und ermöglichen Bewegung mit Muskeln.',
-      wissen: 'Stütz- und Bewegungssystem.',
+      wissen:
+        'Das Skelett stützt den Körper, schützt Organe (z. B. Schädel, Brustkorb) und bietet Ansatzpunkte für Muskeln.',
       gap: 'Knochen und ___ arbeiten bei der Bewegung zusammen.',
       gapAccepted: ['Muskeln', 'Muskulatur', 'Sehnen'],
     },
@@ -236,7 +240,8 @@ const skelett: BioBank = {
       answer: 'Gelenke',
       wrong: ['Nur Haare', 'Nur Schweißdrüsen', 'Nur Zahnschmelz'],
       explanation: 'Gelenke ermöglichen Bewegung.',
-      wissen: 'Gelenkformen im Überblick.',
+      wissen:
+        'Gelenke verbinden Knochen beweglich. Scharniergelenke bewegen vorwiegend in einer Ebene; Kugelgelenke in vielen Richtungen.',
     },
     {
       concept: 'bio:k7:wozu-dienen-sehnen',
@@ -244,13 +249,26 @@ const skelett: BioBank = {
       answer: 'Verbinden Muskeln mit Knochen',
       wrong: ['Leiten nur Nervenimpulse zum Auge', 'Speichern nur Galle', 'Bilden Antikörper'],
       explanation: 'Sehnen übertragen Zugkraft.',
-      wissen: 'Zusammenspiel Muskel–Sehne–Knochen.',
+      wissen:
+        'Sehnen sind zugfeste Bindegewebsstränge: sie übertragen die Kraft des sich zusammenziehenden Muskels auf den Knochen.',
     },
   ],
   pairs: [
-    { term: 'Scharniergelenk', meaning: 'Bewegung vorwiegend in einer Ebene (z. B. Ellbogen)', wissen: 'Beispiel Gelenktypen.' },
-    { term: 'Kugelgelenk', meaning: 'Bewegung in vielen Richtungen (z. B. Schulter)', wissen: 'Hohe Beweglichkeit.' },
-    { term: 'Muskel', meaning: 'Erzeugt Zug durch Zusammenziehen', wissen: 'Aktiver Teil der Bewegung.' },
+    {
+      term: 'Scharniergelenk',
+      meaning: 'Bewegung vorwiegend in einer Ebene (z. B. Ellbogen)',
+      wissen: 'Erlaubt Beugung/Streckung weitgehend in einer Ebene — z. B. Ellbogen, Knie.',
+    },
+    {
+      term: 'Kugelgelenk',
+      meaning: 'Bewegung in vielen Richtungen (z. B. Schulter)',
+      wissen: 'Kugelkopf in Pfanne — große Beweglichkeit, z. B. Schulter und Hüfte.',
+    },
+    {
+      term: 'Muskel',
+      meaning: 'Erzeugt Zug durch Zusammenziehen',
+      wissen: 'Skelettmuskeln verkürzen sich aktiv und ziehen über Sehnen am Knochen.',
+    },
   ],
   trueFalse: [
     {
@@ -258,7 +276,8 @@ const skelett: BioBank = {
       statement: 'Knochen sind völlig leblos und ohne Blutversorgung.',
       correct: false,
       explanation: 'Knochengewebe ist lebendig und gut durchblutet.',
-      wissen: 'Knochenheilung möglich.',
+      wissen:
+        'Knochen sind lebendiges Gewebe mit Blutversorgung und Knochenmark — deshalb können Brüche heilen.',
     },
   ],
   multis: [
@@ -268,7 +287,8 @@ const skelett: BioBank = {
       correct: ['Knochen', 'Muskeln', 'Gelenke'],
       wrong: ['Nur Chloroplasten', 'Nur Blütenstaub'],
       explanation: 'Stütz- und Bewegungsapparat umfasst diese Teile.',
-      wissen: 'Systemüberblick.',
+      wissen:
+        'Zum Bewegungssystem gehören Knochen (Stütze), Gelenke (Beweglichkeit) und Muskeln mit Sehnen (Antrieb).',
     },
   ],
 }
@@ -283,7 +303,8 @@ const wahlErnaehrung: BioBank = {
       answer: 'Sie liefert Energie und Baustoffe für Körper und Gehirn',
       wrong: ['Sie ersetzt Schlaf vollständig', 'Sie macht Knochen überflüssig', 'Sie stoppt jede Atmung'],
       explanation: 'Nahrung und Gewohnheiten prägen Gesundheit.',
-      wissen: 'Wahl: Ernährung und Persönlichkeit — reflektieren, nicht belehren.',
+      wissen:
+        'Nahrung liefert Energie (Kohlenhydrate, Fette) und Baustoffe (Eiweiße, Mineralstoffe). Gehirn und Muskeln brauchen stetige Versorgung für Leistung und Wohlbefinden.',
     },
   ],
   trueFalse: [
@@ -292,7 +313,8 @@ const wahlErnaehrung: BioBank = {
       statement: 'Nur der Geschmack entscheidet über eine ausgewogene Ernährung.',
       correct: false,
       explanation: 'Nährstoffbedarf, Vielfalt und Maß zählen mit.',
-      wissen: 'Kritische Auseinandersetzung mit Essgewohnheiten.',
+      wissen:
+        'Geschmack allein reicht nicht: ausgewogene Ernährung berücksichtigt Energiebedarf, Nährstoffvielfalt und Maß — nicht nur Vorlieben.',
     },
   ],
 }
@@ -307,7 +329,8 @@ const wahlFitness: BioBank = {
       answer: 'Herz-Kreislauf-Leistung und Muskelkraft',
       wrong: ['Die Notwendigkeit zu atmen entfällt', 'Knochen verschwinden', 'Immunsystem wird nutzlos'],
       explanation: 'Training stärkt Herz, Kreislauf und Muskeln.',
-      wissen: 'Wahl: Fitness und Gesundheit.',
+      wissen:
+        'Regelmäßiges Training stärkt Herz und Kreislauf, erhöht die Ausdauer und baut Muskelkraft auf — positiv für Stoffwechsel und Gesundheit.',
     },
   ],
   trueFalse: [
@@ -316,7 +339,8 @@ const wahlFitness: BioBank = {
       statement: 'Aufwärmen vor Sport kann Verletzungsrisiko senken.',
       correct: true,
       explanation: 'Aufwärmen bereitet Muskeln und Kreislauf vor.',
-      wissen: 'Sicherheitsaspekt.',
+      wissen:
+        'Aufwärmen steigert Durchblutung und Beweglichkeit von Muskeln und Gelenken und senkt so das Verletzungsrisiko.',
     },
   ],
 }
@@ -331,12 +355,21 @@ const wahlMikroben: BioBank = {
       answer: 'Joghurt-/Käsehefen und -bakterien bzw. Darmflora',
       wrong: ['Nur hochgiftige Viren ohne Ausnahme', 'Nur Rost an Eisen', 'Nur Plastik'],
       explanation: 'Mikroben in Lebensmitteln und im Darm können nützlich sein.',
-      wissen: 'Wahl: Mikroben und ihre Bedeutung.',
+      wissen:
+        'Nützliche Mikroben: Milchbakterien bei Joghurt/Käse, Hefe beim Backen, Darmflora bei der Verdauung — nicht alle Mikroorganismen sind Erreger.',
     },
   ],
   pairs: [
-    { term: 'Gärung', meaning: 'Stoffwechsel ohne Sauerstoff (z. B. Hefe)', wissen: 'Brot, Joghurt, Bier.' },
-    { term: 'Hygiene', meaning: 'Maßnahmen gegen unerwünschte Keime', wissen: 'Schutz und Nutzen abwägen.' },
+    {
+      term: 'Gärung',
+      meaning: 'Stoffwechsel ohne Sauerstoff (z. B. Hefe)',
+      wissen: 'Ohne Sauerstoff: Hefe bildet z. B. CO₂ und Alkohol — Grundlage für Brot, Bier und Wein.',
+    },
+    {
+      term: 'Hygiene',
+      meaning: 'Maßnahmen gegen unerwünschte Keime',
+      wissen: 'Hygiene begrenzt unerwünschte Keime, ohne nützliche Mikroben pauschal zu vernichten.',
+    },
   ],
   trueFalse: [
     {
@@ -344,7 +377,8 @@ const wahlMikroben: BioBank = {
       statement: 'Alle Mikroorganismen sind Krankheitserreger.',
       correct: false,
       explanation: 'Viele sind harmlos oder nützlich.',
-      wissen: 'Differenzierung üben.',
+      wissen:
+        'Nur ein Teil der Mikroorganismen ist pathogen. Viele sind harmlos oder nützlich (Nahrungsmittel, Darmflora, Stoffkreisläufe).',
     },
   ],
 }

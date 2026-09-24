@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-24T15:46:22.010Z",
+  "updatedAt": "2026-09-24T16:42:57.244Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -40,10 +40,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Biologie",
-      "version": "1.2.0",
+      "version": "1.2.2",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-biologie.json",
-      "size": 57192,
-      "changelog": "Klassen 5–12 · 109 Themen + neue Interaktionen pairMatch, clozeMulti, iconBelong, flashcardFlip (released:false). Lehrplan 522; Schlaukopf-Themen als Ideen (original formuliert)."
+      "size": 57162,
+      "changelog": "Themen-Isolation: Überblick vs. Spezial getrennt (u. a. Blüte ≠ Bäume). Fachwissen rein fachlich. 109 Themen; neue Interaktionen (released:false)."
     },
     {
       "id": "gym-sachsen-anhalt",
