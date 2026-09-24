@@ -5,7 +5,7 @@ import {
 } from './pack'
 import { buildGeschichteGymOfficialGrades } from './geschichteGymTopics'
 
-/** Gymnasium Sachsen · Geschichte — K6 LB1 freigegeben, Rest Outline/gesperrt. */
+/** Gymnasium Sachsen · Geschichte — K6 LB1 freigegeben; übrige Banken released:false. */
 export function buildGymSachsenGeschichtePack(): CurriculumPack {
   const official = buildGeschichteGymOfficialGrades()
   const topics = official.reduce(
@@ -18,8 +18,8 @@ export function buildGymSachsenGeschichtePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Geschichte',
-    version: '1.4.5',
-    changelog: `Klassen 5–12 (Gk/Lk) · ${topics} Themen. K6 LB1 Rom freigegeben inkl. Mare Nostrum (ID 6763). Ohne Netz lokale Fassung.`,
+    version: '1.5.0',
+    changelog: `K5–12 Banken (Schlaukopf-Inspiration, eigene Formulierungen) · fragebezogenes Fachwissen · ${topics} Themen. K6 LB1 Rom freigegeben; Rest Entwickler (released:false).`,
     official,
     extras: [],
   }

@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.36] – 2026-09-24
+
+### Hinzugefügt
+- **Geschichte Gym Sachsen (K5–12 Gk/Lk):** Aufgabengeneratoren für alle Lehrplan-Themen
+  (Schlaukopf-Themen als Inspiration, eigene Formulierungen). Fragebezogenes Fachwissen
+  pro Aufgabe; neue Inhalte bleiben **`released: false`** (Entwickler).
+  K6 LB1 Rom unverändert freigegeben. Geschichte-Pack **1.5.0**.
+- Qualitätstests: alle Topic-IDs spielbar, Fachwissen-Länge, Unique-Runden.
+
 ## [0.28.35] – 2026-09-24
 
 ### Hinzugefügt

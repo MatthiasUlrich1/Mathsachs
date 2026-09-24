@@ -11,14 +11,14 @@ import {
 import { listVisibleGradeModules } from './registry'
 import { buildGymSachsenGeschichtePack } from './geschichteGymPack'
 import { allGeschichteTopicIds } from './geschichteGymTopics'
-import { resolveGeschichteGenerate } from './geschichteGenerators'
+import { isPlayableGeschichteTopic, resolveGeschichteGenerate } from './geschichteGenerators'
 
 describe('Gymnasium Sachsen Geschichte pack', () => {
   it('builds Klassen 5–10 and Oberstufe Gk/Lk with K6 LB1 released', () => {
     const pack = buildGymSachsenGeschichtePack()
     expect(pack.id).toBe(GYM_SACHSEN_GESCHICHTE_PACK_ID)
     expect(pack.subject).toBe('Geschichte')
-    expect(pack.version).toBe('1.4.5')
+    expect(pack.version).toBe('1.5.0')
     expect(pack.official.map((g) => g.id)).toEqual([
       'geschichte-klasse-5',
       'geschichte-klasse-6',
@@ -42,20 +42,23 @@ describe('Gymnasium Sachsen Geschichte pack', () => {
     expect(pack.extras).toEqual([])
   })
 
-  it('registers stub generators so Entwickler can open topics (not outlineOnly)', () => {
+  it('registers playable generators for all Lehrplan topics', () => {
     for (const id of allGeschichteTopicIds()) {
       expect(resolveGeschichteGenerate(id, 'Test'), id).toBeTypeOf('function')
+      expect(isPlayableGeschichteTopic(id), id).toBe(true)
     }
   })
 
-  it('hydrates with released:false and playable stub tasks', async () => {
+  it('hydrates with released:false and real playable tasks (K5)', async () => {
     const grades = await hydratePackGrades(buildGymSachsenGeschichtePack())
     const k5 = grades.find((g) => g.id === 'geschichte-klasse-5')!
     const topics = k5.areas.flatMap((a) => a.topics)
     expect(topics.every((t) => t.released === false)).toBe(true)
     expect(topics.every((t) => !t.outlineOnly)).toBe(true)
     const task = topics[0]!.generate(() => 0.5)
-    expect(task.question).toMatch(/Geschichte/)
+    expect(task.question.length).toBeGreaterThan(10)
+    expect(task.fachwissen?.text?.trim().length ?? 0).toBeGreaterThanOrEqual(80)
+    expect(task.check(task.sampleAnswer)).toBe(true)
   })
 
   it('is bundled and appears after install', async () => {
