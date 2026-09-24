@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-24T14:59:30.474Z",
+  "updatedAt": "2026-09-24T15:46:22.010Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -31,7 +31,7 @@
       "subject": "Geschichte",
       "version": "1.4.5",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-geschichte.json",
-      "size": 41366,
+      "size": 41424,
       "changelog": "Klassen 5–12 (Gk/Lk) · 67 Themen. K6 LB1 Rom freigegeben inkl. Mare Nostrum (ID 6763). Ohne Netz lokale Fassung."
     },
     {

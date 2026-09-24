@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.29] – 2026-09-24
+
+### Behoben
+- **Desktop-Installer-CI:** Bio/Geschichte-Curricula-Export nachgezogen (`tasksPerRound` 10,
+  contentHash `1158346f` / `d206d0ed`). Pack-Tests schlugen fehl, weil 0.28.28 die Generatoren
+  änderte, aber `curricula/*.json` + Manifest nicht neu exportiert wurden.
+
 ## [0.28.28] – 2026-09-24
 
 ### Hinzugefügt

@@ -32,7 +32,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Zeitstrahl",
                 "Quellen"
@@ -51,7 +51,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Steinzeit",
                 "Hochkultur",
@@ -71,7 +71,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Griechenland",
                 "Polis",
@@ -91,7 +91,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Mensch",
                 "Natur"
@@ -109,7 +109,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Hellenismus",
                 "Alexander"
@@ -121,7 +121,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Hellenismus",
                 "Alexandria"
@@ -133,7 +133,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Hellenismus",
                 "Alexander"
@@ -168,7 +168,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": true,
-              "tasksPerRound": 11,
+              "tasksPerRound": 10,
               "keywords": [
                 "753",
                 "500",
@@ -182,7 +182,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": true,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Zeitstrahl",
                 "Reihenfolge"
@@ -194,7 +194,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": true,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Romulus",
                 "Etrusker",
@@ -207,7 +207,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": true,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Senat",
                 "Patrizier",
@@ -220,7 +220,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": true,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Konsuln",
                 "Volkstribune",
@@ -233,7 +233,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": true,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Hannibal",
                 "Karthago",
@@ -291,7 +291,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Mittelalter",
                 "Herrschaft",
@@ -311,7 +311,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Religion",
                 "Kultur"
@@ -330,7 +330,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Bürger",
                 "Erziehung"
@@ -348,7 +348,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Sachsen",
                 "Besiedlung"
@@ -360,7 +360,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Sachsen",
                 "Kurfürstentum"
@@ -372,7 +372,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Sachsen",
                 "Identität"
@@ -407,7 +407,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Neuzeit",
                 "Menschenbild"
@@ -426,7 +426,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Absolutismus",
                 "Aufklärung"
@@ -445,7 +445,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Herrschaft",
                 "Verfassung"
@@ -464,7 +464,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Herrschaft",
                 "Legitimation"
@@ -482,7 +482,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Reformation"
               ]
@@ -493,7 +493,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Reformation",
                 "Sachsen"
@@ -505,7 +505,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Reformation",
                 "katholisch"
@@ -540,7 +540,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Bürgertum",
                 "Einheit",
@@ -560,7 +560,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Industrialisierung",
                 "Fortschritt"
@@ -579,7 +579,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kinderarbeit",
                 "Industrialisierung"
@@ -598,7 +598,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Nationalismus",
                 "Erster Weltkrieg"
@@ -616,7 +616,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Erster Weltkrieg",
                 "Kriegstechnik"
@@ -628,7 +628,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Erster Weltkrieg",
                 "Medien"
@@ -663,7 +663,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Versailles",
                 "Zwischenkriegszeit"
@@ -682,7 +682,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Weimar",
                 "Diktatur"
@@ -701,7 +701,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Nationalsozialismus",
                 "Terror"
@@ -720,7 +720,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Außenpolitik"
               ]
@@ -737,7 +737,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Justiz",
                 "Weimar",
@@ -750,7 +750,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Frauen",
                 "Weimar",
@@ -763,7 +763,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kultur",
                 "Weimar",
@@ -799,7 +799,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "USA",
                 "UdSSR",
@@ -819,7 +819,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Ost-West-Konflikt",
                 "Teilung"
@@ -838,7 +838,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Europa",
                 "Revolution"
@@ -856,7 +856,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Alltag",
                 "50er"
@@ -868,7 +868,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Alltag",
                 "70er"
@@ -880,7 +880,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Friedliche Revolution",
                 "Wiedervereinigung"
@@ -915,7 +915,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Gesellschaft",
                 "Wirtschaft",
@@ -935,7 +935,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Demokratie",
                 "Diktatur"
@@ -954,7 +954,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Demokratie",
                 "Diktatur"
@@ -973,7 +973,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Frieden"
               ]
@@ -990,7 +990,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Geschichtskultur",
                 "Rezeption"
@@ -1002,7 +1002,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Geschichtskultur",
                 "Erster Weltkrieg"
@@ -1014,7 +1014,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Geschichtskultur",
                 "Zweiter Weltkrieg"
@@ -1026,7 +1026,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Nation",
                 "Identität"
@@ -1038,7 +1038,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Mythos",
                 "Nation"
@@ -1050,7 +1050,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Feindbild",
                 "Nation"
@@ -1084,7 +1084,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Partizipation",
                 "Ordnung"
@@ -1103,7 +1103,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Industrialisierung",
                 "International"
@@ -1121,7 +1121,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Frauen",
                 "Partizipation"
@@ -1133,7 +1133,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Juden",
                 "Partizipation"
@@ -1166,7 +1166,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Frieden"
               ]
@@ -1184,7 +1184,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Geschichtskultur",
                 "Identität"
@@ -1202,7 +1202,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Völkerrecht",
                 "Krieg"
@@ -1214,7 +1214,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Entkolonialisierung"
               ]
@@ -1225,7 +1225,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 8,
+              "tasksPerRound": 10,
               "keywords": [
                 "Terrorismus"
               ]
@@ -1236,5 +1236,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "a9138c22"
+  "contentHash": "d206d0ed"
 }

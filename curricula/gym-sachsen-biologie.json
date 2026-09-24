@@ -34,7 +34,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Reizbarkeit",
                 "Stoffwechsel",
@@ -48,7 +48,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kennzeichen",
                 "Lebewesen",
@@ -68,7 +68,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kiemen",
                 "Flossen",
@@ -81,7 +81,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kiemen",
                 "Schuppen",
@@ -94,7 +94,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Süßwasser",
                 "Salzwasser",
@@ -107,7 +107,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Laich",
                 "Gewässerschutz"
@@ -126,7 +126,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Amphibien",
                 "Metamorphose",
@@ -139,7 +139,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Hautatmung",
                 "Feuchte Haut"
@@ -151,7 +151,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kaulquappe",
                 "Laich",
@@ -164,7 +164,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Amphibienschutz",
                 "Wanderung"
@@ -183,7 +183,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Reptilien",
                 "Hornschicht",
@@ -196,7 +196,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Schuppen",
                 "Eiablage",
@@ -209,7 +209,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Eidechse",
                 "Schlange",
@@ -229,7 +229,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Federn",
                 "Luftsäcke",
@@ -242,7 +242,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Flug",
                 "Federn",
@@ -255,7 +255,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Nest",
                 "Nesthocker",
@@ -275,7 +275,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Fell",
                 "Säugen",
@@ -288,7 +288,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Gebiss",
                 "Fell",
@@ -301,7 +301,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Angepasstheit",
                 "Lebensraum"
@@ -313,7 +313,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Artenschutz",
                 "Vielfalt"
@@ -332,7 +332,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Systematik",
                 "Vergleich",
@@ -345,7 +345,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Zuordnung",
                 "Merkmale"
@@ -363,7 +363,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Winterschlaf",
                 "Winterruhe",
@@ -424,7 +424,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Blüte",
                 "Samen",
@@ -437,7 +437,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Blüte",
                 "Bestäubung",
@@ -450,7 +450,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Baum",
                 "Holz",
@@ -463,7 +463,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wurzel",
                 "Blatt",
@@ -483,7 +483,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Insekten",
                 "Spinnen"
@@ -495,7 +495,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Insekt",
                 "Metamorphose",
@@ -508,7 +508,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Spinne",
                 "Acht Beine"
@@ -527,7 +527,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Vergleich",
                 "Systematik"
@@ -546,7 +546,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Ökosystem",
                 "Nahrungsnetz"
@@ -558,7 +558,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Produzent",
                 "Konsument",
@@ -578,7 +578,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Zelle",
                 "Zellkern",
@@ -591,7 +591,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Mikroskop",
                 "Chloroplast",
@@ -666,7 +666,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Bakterien",
                 "Viren",
@@ -679,7 +679,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Hygiene",
                 "Infektion"
@@ -698,7 +698,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Herz",
                 "Blut",
@@ -711,7 +711,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Herz",
                 "Arterie",
@@ -724,7 +724,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Antikörper",
                 "Impfung"
@@ -743,7 +743,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Verdauung",
                 "Nährstoffe"
@@ -755,7 +755,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kohlenhydrate",
                 "Eiweiß",
@@ -768,7 +768,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Magen",
                 "Darm",
@@ -788,7 +788,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Knochen",
                 "Muskeln",
@@ -862,7 +862,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Sinne",
                 "Nerven",
@@ -875,7 +875,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Auge",
                 "Ohr",
@@ -888,7 +888,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Hormon",
                 "Drüse"
@@ -907,7 +907,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Sexualität",
                 "Verantwortung"
@@ -919,7 +919,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Pubertät",
                 "Verantwortung"
@@ -991,7 +991,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Fotosynthese",
                 "Transpiration"
@@ -1003,7 +1003,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Fotosynthese",
                 "Chlorophyll"
@@ -1015,7 +1015,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Transpiration",
                 "Xylem"
@@ -1034,7 +1034,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Ökosystem",
                 "Stoffkreislauf"
@@ -1046,7 +1046,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wald",
                 "Gewässer"
@@ -1058,7 +1058,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kohlenstoffkreislauf",
                 "Energie"
@@ -1131,7 +1131,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Mendel",
                 "DNA",
@@ -1144,7 +1144,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Mendel",
                 "Dominant",
@@ -1157,7 +1157,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "DNA",
                 "Gen",
@@ -1177,7 +1177,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Evolution",
                 "Selektion"
@@ -1189,7 +1189,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Selektion",
                 "Mutation"
@@ -1208,7 +1208,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 14,
+              "tasksPerRound": 10,
               "keywords": [
                 "Hominiden",
                 "Evolution"
@@ -1271,7 +1271,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Differenzierung",
                 "Zelle"
@@ -1283,7 +1283,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Organell",
                 "Membran"
@@ -1302,7 +1302,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Fotosynthese",
                 "Zellatmung"
@@ -1321,7 +1321,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Nachhaltigkeit",
                 "Ökologie"
@@ -1340,7 +1340,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Gentechnik",
                 "DNA"
@@ -1359,7 +1359,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Signal",
                 "Rezeptor"
@@ -1378,7 +1378,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Biodiversität",
                 "Evolution"
@@ -1494,7 +1494,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Differenzierung",
                 "Zelle"
@@ -1513,7 +1513,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Redox",
                 "Stoffwechsel"
@@ -1532,7 +1532,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Nachhaltigkeit"
               ]
@@ -1625,7 +1625,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Genetik",
                 "Gentechnik"
@@ -1644,7 +1644,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Signalwege"
               ]
@@ -1662,7 +1662,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Ethologie"
               ]
@@ -1680,7 +1680,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Biodiversität"
               ]
@@ -1698,7 +1698,7 @@
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
-              "tasksPerRound": 12,
+              "tasksPerRound": 10,
               "keywords": [
                 "Vernetzung"
               ]
@@ -1770,5 +1770,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "b62546d1"
+  "contentHash": "1158346f"
 }
