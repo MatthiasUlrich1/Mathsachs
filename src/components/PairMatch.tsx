@@ -10,6 +10,11 @@ export interface PairMatchProps {
   links: Record<string, string>
   onChange: (links: Record<string, string>) => void
   instruction?: string
+  /** Column titles (default: Begriffe / Erklärungen). */
+  leftTitle?: string
+  rightTitle?: string
+  /** Accessible group label. */
+  groupLabel?: string
   disabled?: boolean
   /** After check: per-left-item correct/incorrect (same order as `left`) */
   partResults?: boolean[]
@@ -25,6 +30,9 @@ export const PairMatch: React.FC<PairMatchProps> = ({
   links,
   onChange,
   instruction,
+  leftTitle = 'Begriffe',
+  rightTitle = 'Erklärungen',
+  groupLabel = 'Begriffspaare zuordnen',
   disabled = false,
   partResults,
 }) => {
@@ -66,9 +74,9 @@ export const PairMatch: React.FC<PairMatchProps> = ({
   return (
     <div className="pair-match">
       {instruction && <p className="pair-match__instruction">{instruction}</p>}
-      <div className="pair-match__cols" role="group" aria-label="Begriffspaare zuordnen">
+      <div className="pair-match__cols" role="group" aria-label={groupLabel}>
         <div className="pair-match__col">
-          <p className="pair-match__col-title">Begriffe</p>
+          <p className="pair-match__col-title">{leftTitle}</p>
           {left.map((item, idx) => {
             const linked = Boolean(links[item.id])
             const active = pendingLeft === item.id
@@ -99,7 +107,7 @@ export const PairMatch: React.FC<PairMatchProps> = ({
           })}
         </div>
         <div className="pair-match__col">
-          <p className="pair-match__col-title">Erklärungen</p>
+          <p className="pair-match__col-title">{rightTitle}</p>
           {right.map((item) => {
             const taken = usedRight.has(item.id)
             return (

@@ -1,0 +1,65 @@
+.source-quote {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.source-quote__instruction {
+  margin: 0;
+  font-size: 0.92rem;
+  opacity: 0.9;
+}
+
+.source-quote__card {
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.02)
+  );
+}
+
+.source-quote__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.source-quote__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.source-quote__kind {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  opacity: 0.9;
+}
+
+.source-quote__text {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-size: 1.02rem;
+  line-height: 1.45;
+  font-style: italic;
+}
+
+.source-quote__attr {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  opacity: 0.7;
+  font-style: normal;
+}

@@ -110,6 +110,8 @@ export interface InteractiveConfig {
     | 'clozeMulti'
     | 'iconBelong'
     | 'flashcardFlip'
+    | 'sourceQuote'
+    | 'causeEffect'
   props: Record<string, any> // Component-specific props
 }
 

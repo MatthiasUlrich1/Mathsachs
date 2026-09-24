@@ -9,6 +9,18 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.39] – 2026-09-24
+
+### Hinzugefügt
+- **Geschichte Pack 1.6.0:** dichtere Unterthemen unter Lehrplan-LBs (K5 Orientierung/
+  Steinzeit–Hochkultur/Griechenland, K6 Mittelalter/Religionen, K7 Beschränkung der
+  Alleinherrschaft). Schlaukopf- und Klett-Themen nur als Inspiration, Einsortierung
+  strikt nach Sachsen lplanid=65 (z. B. Römer weiter K6 LB1). ~85 Themen; neue Inhalte
+  `released:false`, K6 LB1 Rom freigegeben.
+- **Interaktionen `sourceQuote` und `causeEffect`:** wiederverwendbar über `taskHelpers` /
+  `BioBank.sources` / `BioBank.causeEffects` (Quellenauszug+MC, Ursache↔Wirkung). In
+  Geschichte-Banken verdrahtet; für andere Fächer nutzbar.
+
 ## [0.28.38] – 2026-09-24
 
 ### Behoben

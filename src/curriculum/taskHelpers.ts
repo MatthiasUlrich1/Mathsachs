@@ -1440,6 +1440,108 @@ export const flashcardFlipTask = (input: FlashcardFlipTaskInput): Task => {
   }
 }
 
+interface SourceQuoteTaskInput {
+  question: string
+  sourceText: string
+  sourceLabel?: string
+  sourceKind?: string
+  attribution?: string
+  choices: string[]
+  correct: string
+  solution: string
+  explanation: string
+  instruction?: string
+  fachwissen?: Fachwissen
+  dedupeKey?: string
+  contentIds?: string[]
+  visualContent?: string
+}
+
+/** Source/excerpt card + multiple choice (Geschichte Quellenarbeit; reusable). */
+export const sourceQuoteTask = (input: SourceQuoteTaskInput): Task => {
+  const correctNorm = normCloze(input.correct)
+  return {
+    question: input.question,
+    answerKind: 'text',
+    solution: input.solution,
+    explanation: input.explanation,
+    visualContent: input.visualContent,
+    ...withFw(input.fachwissen),
+    ...withDedupe(input.dedupeKey),
+    ...withContentIds(input.contentIds),
+    sampleAnswer: { kind: 'choicePick', choice: input.correct },
+    interactive: {
+      type: 'sourceQuote',
+      props: {
+        sourceText: input.sourceText,
+        sourceLabel: input.sourceLabel ?? 'Quelle',
+        sourceKind: input.sourceKind,
+        attribution: input.attribution,
+        choices: input.choices,
+        instruction:
+          input.instruction ?? 'Lies die Quelle und wähle die passende Deutung.',
+      },
+    },
+    check: (answer: UserInput) => {
+      if (answer.kind === 'choicePick') return normCloze(answer.choice) === correctNorm
+      if (answer.kind === 'value') return normCloze(answer.value) === correctNorm
+      return false
+    },
+  }
+}
+
+interface CauseEffectTaskInput {
+  question: string
+  left: Array<{ id: string; label: string }>
+  right: Array<{ id: string; label: string }>
+  correctLinks: Record<string, string>
+  solution: string
+  explanation: string
+  instruction?: string
+  leftTitle?: string
+  rightTitle?: string
+  fachwissen?: Fachwissen
+  dedupeKey?: string
+  contentIds?: string[]
+  visualContent?: string
+}
+
+/** Cause → effect pairing (reuses pairMatch grading; dedicated UI labels). */
+export const causeEffectTask = (input: CauseEffectTaskInput): Task => {
+  const leftIds = input.left.map((l) => l.id)
+  const gradePair = (answer: UserInput) => {
+    if (answer.kind !== 'pairMatch') {
+      return { fraction: 0, parts: leftIds.map(() => false) }
+    }
+    return gradePairMatchLinks(input.left, input.correctLinks, answer.links)
+  }
+  return {
+    question: input.question,
+    answerKind: 'text',
+    solution: input.solution,
+    explanation: input.explanation,
+    visualContent: input.visualContent,
+    ...withFw(input.fachwissen),
+    ...withDedupe(input.dedupeKey),
+    ...withContentIds(input.contentIds),
+    sampleAnswer: { kind: 'pairMatch', links: { ...input.correctLinks } },
+    interactive: {
+      type: 'causeEffect',
+      props: {
+        left: input.left,
+        right: input.right,
+        leftTitle: input.leftTitle ?? 'Ursache',
+        rightTitle: input.rightTitle ?? 'Wirkung',
+        instruction:
+          input.instruction ?? 'Ordne jeder Ursache die passende Wirkung zu.',
+        groupLabel: 'Ursache und Wirkung zuordnen',
+      },
+    },
+    check: (answer: UserInput) => gradePair(answer).fraction >= 1,
+    grade: gradePair,
+  }
+}
+
 /**
  * Combine multiple task generators into one, randomly selecting a variant each time.
  * Use this to add variety to a topic (text, visual, interactive).

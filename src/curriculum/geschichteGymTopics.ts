@@ -56,23 +56,62 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
       ['Steinzeit', 'Hochkultur', 'Griechenland', 'Hellenismus', 'Orientierung'],
       [
         area('lb1', 'Orientierung in der Vergangenheit', 4, [
-          topic('ge-k5-lb1-orientierung', 'Orientierung in der Vergangenheit', [
+          topic('ge-k5-lb1-orientierung', 'Orientierung – Überblick', [
             'Zeitstrahl',
             'Quellen',
           ]),
+          topic('ge-k5-lb1-quellen', 'Quellen und Quellenkritik', [
+            'Primärquelle',
+            'Quellenkritik',
+          ]),
+          topic('ge-k5-lb1-zeitrechnung', 'Zeitrechnung und Chronologie', [
+            'Zeitstrahl',
+            'Epoche',
+            'v. Chr.',
+          ]),
         ]),
         area('lb2', 'Von der Steinzeit zur Hochkultur – Menschen organisieren ihr Zusammenleben', 12, [
-          topic('ge-k5-lb2-steinzeit-hochkultur', 'Von der Steinzeit zur Hochkultur', [
+          topic('ge-k5-lb2-steinzeit-hochkultur', 'Steinzeit zur Hochkultur – Überblick', [
             'Steinzeit',
             'Hochkultur',
             'Zusammenleben',
           ]),
+          topic('ge-k5-lb2-steinzeit', 'Steinzeit und Sesshaftigkeit', [
+            'Altsteinzeit',
+            'Jungsteinzeit',
+            'Sesshaftigkeit',
+          ]),
+          topic('ge-k5-lb2-aegypten', 'Ägypten als Hochkultur', [
+            'Nil',
+            'Pharao',
+            'Hieroglyphen',
+          ]),
+          topic('ge-k5-lb2-metallzeit', 'Metallzeit und frühe Hochkulturen', [
+            'Bronze',
+            'Mesopotamien',
+            'Keilschrift',
+          ]),
         ]),
         area('lb3', 'Zusammenleben im antiken Griechenland', 8, [
-          topic('ge-k5-lb3-griechenland', 'Zusammenleben im antiken Griechenland', [
+          topic('ge-k5-lb3-griechenland', 'Antikes Griechenland – Überblick', [
             'Griechenland',
             'Polis',
             'Antike',
+          ]),
+          topic('ge-k5-lb3-athen', 'Athen und attische Demokratie', [
+            'Volksversammlung',
+            'Scherbengericht',
+            'Bürgerrecht',
+          ]),
+          topic('ge-k5-lb3-sparta', 'Sparta als Militärstaat', [
+            'Spartiaten',
+            'Heloten',
+            'Militärstaat',
+          ]),
+          topic('ge-k5-lb3-kultur', 'Götterwelt, Spiele und Kultur', [
+            'Götter',
+            'Olympia',
+            'Tempel',
           ]),
         ]),
         area('lb4', 'Längsschnitt: Mensch und Natur', 2, [
@@ -151,16 +190,46 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
           ], { tasksPerRound: 10, released: true }),
         ]),
         area('lb2', 'Herrschaft und Lebensformen im Mittelalter', 20, [
-          topic('ge-k6-lb2-mittelalter', 'Herrschaft und Lebensformen im Mittelalter', [
+          topic('ge-k6-lb2-mittelalter', 'Mittelalter – Überblick', [
             'Mittelalter',
             'Herrschaft',
             'Leben',
           ]),
+          topic('ge-k6-lb2-lehnswesen', 'Lehnswesen und Vasallität', [
+            'Lehen',
+            'Vasall',
+            'Treueeid',
+          ]),
+          topic('ge-k6-lb2-alltag-staende', 'Ständeordnung und Alltag', [
+            'Stände',
+            'Grundherrschaft',
+            'Bauern',
+          ]),
+          topic('ge-k6-lb2-staedte', 'Städtisches Leben und Zünfte', [
+            'Markt',
+            'Zunft',
+            'Stadtluft',
+          ]),
         ]),
         area('lb3', 'Religionen und Kulturen im Mit- und Gegeneinander', 10, [
-          topic('ge-k6-lb3-religionen', 'Religionen und Kulturen im Mit- und Gegeneinander', [
+          topic('ge-k6-lb3-religionen', 'Religionen und Kulturen – Überblick', [
             'Religion',
             'Kultur',
+          ]),
+          topic('ge-k6-lb3-christentum', 'Christentum im Mittelalter', [
+            'Kirche',
+            'Kloster',
+            'Papst',
+          ]),
+          topic('ge-k6-lb3-islam', 'Entstehung und Ausbreitung des Islams', [
+            'Islam',
+            'Koran',
+            'Mekka',
+          ]),
+          topic('ge-k6-lb3-begegnung', 'Begegnung, Konflikte und Kreuzzüge', [
+            'Kreuzzug',
+            'Jerusalem',
+            'Toleranz',
           ]),
         ]),
         area('lb4', 'Längsschnitt: Erziehung zum Bürger', 4, [
@@ -200,9 +269,29 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
           ]),
         ]),
         area('lb3', 'Formen der Beschränkung der Alleinherrschaft', 18, [
-          topic('ge-k7-lb3-alleinherrschaft', 'Formen der Beschränkung der Alleinherrschaft', [
+          topic('ge-k7-lb3-alleinherrschaft', 'Beschränkung der Alleinherrschaft – Überblick', [
             'Herrschaft',
             'Verfassung',
+          ]),
+          topic('ge-k7-lb3-england', 'England: Parlament und Bill of Rights', [
+            'Magna Carta',
+            'Parlament',
+            'Bill of Rights',
+          ]),
+          topic('ge-k7-lb3-usa', 'USA: Unabhängigkeit und Verfassung', [
+            'Unabhängigkeitserklärung',
+            'Verfassung',
+            'Zustimmung',
+          ]),
+          topic('ge-k7-lb3-franzoesische-revolution', 'Französische Revolution', [
+            '1789',
+            'Volkssouveränität',
+            'Bürgerrechte',
+          ]),
+          topic('ge-k7-lb3-napoleon', 'Napoleon und das Ende der Revolution', [
+            'Napoleon',
+            'Kaisertum',
+            'Europa',
           ]),
         ]),
         area('lb4', 'Längsschnitt: Legitimation von Herrschaft in der Geschichte', 4, [

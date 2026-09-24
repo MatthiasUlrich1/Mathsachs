@@ -393,6 +393,74 @@ const alleinherrschaft: BioBank = {
       'In England entwickelte sich die Begrenzung königlicher Macht über mehrere Jahrhunderte. Magna Carta und Bill of Rights markieren wichtige Stationen dieser Entwicklung. Beide wurden später zu Symbolen verfassungsgebundener Herrschaft.',
     ),
   ],
+  sources: [
+    {
+      concept: 'src-bill',
+      question: 'Welche politische Idee steckt hinter diesem Grundsatz?',
+      sourceText:
+        'Der König soll ohne Zustimmung des Parlaments keine Steuern erheben und Gesetze nicht beliebig aussetzen.',
+      sourceLabel: 'Verfassungsprinzip',
+      sourceKind: 'Gesetzestext (sinngemäß)',
+      attribution: 'Angelehnt an die englische Bill of Rights 1689',
+      correct: 'Die Krone wird an Recht und Parlament gebunden',
+      wrong: [
+        'Der König erhält absolute Willkürgewalt',
+        'Parlamente werden abgeschafft',
+        'Nur der Adel darf Steuern zahlen',
+      ] as [string, string, string],
+      explanation: 'Die Bill of Rights begrenzte königliche Alleinherrschaft.',
+      wissen:
+        '1689 wurde festgeschrieben, dass der König nicht schrankenlos regieren darf. Parlament und Recht gewannen an Gewicht. Damit entstand ein Gegenmodell zum Absolutismus.',
+    },
+    {
+      concept: 'src-usa',
+      question: 'Worauf stützt dieser Text politische Herrschaft?',
+      sourceText:
+        'Regierungen leiten ihre rechtmäßige Macht von der Zustimmung der Regierten her.',
+      sourceLabel: 'Politische Erklärung',
+      sourceKind: 'Programmatischer Text',
+      attribution: 'Sinngemäß nach der Unabhängigkeitserklärung der USA 1776',
+      correct: 'Auf Zustimmung und Rechte der Regierten',
+      wrong: [
+        'Auf Gottesgnadentum ohne Verfassung',
+        'Auf reines Lehnswesen',
+        'Auf die Alleinherrschaft eines Pharaos',
+      ] as [string, string, string],
+      explanation: 'Zustimmung der Regierten widerspricht reiner Alleinherrschaft.',
+      wissen:
+        'Die USA verbanden Unabhängigkeit mit Verfassungsideen. Gewaltenteilung und Rechte wurden zentral. Das wurde zum Vorbild für viele Zeitgenossen.',
+    },
+  ],
+  causeEffects: [
+    {
+      concept: 'ce-magna',
+      cause: 'Adel erzwingt 1215 die Magna Carta',
+      effect: 'Königliche Willkür wird erstmals schriftlich begrenzt',
+      wissen:
+        'Die Magna Carta schuf noch keine Demokratie, aber setzte Grenzen. Später wurde sie zum Symbol. Rechtsbindung der Macht begann schrittweise.',
+    },
+    {
+      concept: 'ce-glorious',
+      cause: 'Glorious Revolution 1688/89',
+      effect: 'Bill of Rights stärkt Parlament gegenüber der Krone',
+      wissen:
+        'Die Krone wurde enger an Recht gebunden. Parlamentarische Mitwirkung wuchs. Absolutismus fand in England ein Gegenmodell.',
+    },
+    {
+      concept: 'ce-fr',
+      cause: 'Französische Revolution greift Privilegien an',
+      effect: 'Volkssouveränität und Bürgerrechte werden zentrale Forderungen',
+      wissen:
+        '1789 stellte die Revolution Stand und Monarchie infrage. Freiheit und Gleichheit wurden Leitbegriffe. Alleinherrschaft verlor an Selbstverständlichkeit.',
+    },
+    {
+      concept: 'ce-usa',
+      cause: 'USA erklären Unabhängigkeit und Verfassung',
+      effect: 'Herrschaft wird an Rechte und Zustimmung gebunden',
+      wissen:
+        'Verfassung und Gewaltenteilung begrenzten Macht. Das Vorbild wirkte über Amerika hinaus. Alleinherrschaft erhielt ein republikanisches Gegenbild.',
+    },
+  ],
 }
 
 const legitimation: BioBank = {
@@ -863,10 +931,117 @@ const reformKatholisch: BioBank = {
   ],
 }
 
+const englandParlament: BioBank = {
+  quelle: 'Wikipedia: Bill of Rights (England)',
+  url: 'https://de.wikipedia.org/wiki/Bill_of_Rights_(England)',
+  conceptPrefix: 'ge:k7:england',
+  facts: [
+    fact('magna', 'Warum ist die Magna Carta von 1215 historisch wichtig?', 'Weil sie königliche Macht begrenzte und Rechte des Adels festschrieb', ['Weil sie Frankreich zur Republik erklärte', 'Weil sie den Buchdruck erfand', 'Weil sie den Ersten Weltkrieg beendete'], 'Die Magna Carta gilt als frühes Zeichen begrenzter Herrschaft.', 'Die Magna Carta wurde 1215 dem englischen König Johann abgerungen. Sie beschränkte königliche Willkür und sicherte bestimmten Gruppen Rechte zu. Auch wenn sie noch keine moderne Demokratie schuf, wurde sie später zu einem wichtigen Symbol.', 'Die Magna Carta begrenzte die Macht des ___.', ['Königs', 'Koenigs']),
+    fact('parlament', 'Welche Rolle gewann das englische Parlament langfristig?', 'Es wurde zu einem Organ, das königliche Macht mitbestimmen und begrenzen konnte', ['Es diente nur der Hofunterhaltung', 'Es ersetzte jede Rechtsprechung durch Rituale', 'Es war nur eine Zunftversammlung'], 'Parlamentarische Mitwirkung entwickelte sich schrittweise.', 'Das englische Parlament entstand nicht auf einmal in moderner Form. Über lange Zeit gewann es Mitspracherechte, besonders bei Steuern und Gesetzen. Gerade dadurch wurde die königliche Alleinherrschaft schrittweise eingeschränkt.', 'Das englische Parlament begrenzte langfristig die ___ des Königs.', ['Macht', 'Alleinherrschaft']),
+    fact('glorious', 'Was zeigte die Glorious Revolution von 1688/89?', 'Dass in England die Krone nicht völlig unabhängig vom Parlament regieren konnte', ['Dass England zum absolutistischen Musterstaat wurde', 'Dass Parlamente überall abgeschafft wurden', 'Dass Ludwig XIV. König von England wurde'], 'Die Glorious Revolution stärkte die parlamentarische Ordnung.', 'Die Glorious Revolution führte zu einer stärkeren Bindung der Krone an Recht und Parlament. Die Bill of Rights von 1689 machte deutlich, dass Herrschaft nicht beliebig sein durfte. Damit entstand ein Gegenmodell zum Absolutismus.', 'Die Glorious Revolution stärkte Recht und ___.', ['Parlament']),
+    fact('bill', 'Wofür steht die englische Bill of Rights von 1689?', 'Für die Bindung der Krone an Recht und Parlament', ['Für das Recht des Königs auf absolute Willkür', 'Für die Abschaffung jeder Volksvertretung', 'Für ein neues Kreuzzugsgesetz'], 'Die Bill of Rights ordnete Macht verfassungsrechtlich ein.', 'Die Bill of Rights von 1689 legte fest, dass der englische König nicht ohne Parlament herrschen sollte. Sie stärkte Rechte des Parlaments und begrenzte königliche Eingriffe. Damit wurde Rechtsbindung der Herrschaft deutlich ausgebaut.', 'Die Bill of Rights band die Krone an Recht und ___.', ['Parlament']),
+    fact('konstitutionell', 'Was meint konstitutionelle Monarchie grob?', 'Ein Königreich, in dem die Herrschaft durch Recht und Mitwirkung begrenzt ist', ['Ein Staat ohne jedes Gesetz', 'Eine reine Militärdiktatur', 'Ein Pharaonenstaat ohne Schrift'], 'Konstitutionelle Monarchie bindet den Herrscher an Regeln. Parlament und Rechte begrenzen Willkür. England wurde dafür zum europäischen Beispiel.', 'Konstitutionelle Monarchie bindet den Herrscher an Regeln. Parlament und Rechte begrenzen Willkür. England wurde dafür zum europäischen Beispiel.', 'In der konstitutionellen Monarchie begrenzt ___ die königliche Macht.', ['Recht', 'Parlament']),
+    fact('steuern', 'Warum war die Steuerfrage für das Parlament so zentral?', 'Weil Zustimmung zu Abgaben Macht über den König gab', ['Weil Steuern nur Bauern betrafen', 'Weil Könige keine Heere brauchten', 'Weil Geld bedeutungslos war'], 'Wer Steuern bewilligt, kann Herrschaft mitsteuern.', 'Könige brauchten Geld für Krieg und Hof. Das Parlament nutzte die Bewilligung als Hebel. So wuchs politische Mitwirkung.', 'Zustimmung zu ___ stärkte das Parlament.', ['Steuern', 'Abgaben']),
+    fact('vergleich', 'Warum ist England ein Gegenmodell zum Absolutismus?', 'Weil Krone und Parlament Herrschaft teilten und rechtlich banden', ['Weil England absolutistischer als Frankreich war', 'Weil es kein Parlament gab', 'Weil Ludwig XIV. dort residierte'], 'Geteilte und gebundene Macht widerspricht Alleinherrschaft.', 'Während Ludwig XIV. verdichtete Herrschaft verkörperte, entwickelte England parlamentarische Begrenzung. Der Vergleich ist Lehrplanstoff. Beide Modelle prägten Europa.', 'England begrenzte königliche Macht durch ___.', ['Parlament', 'Recht']),
+    fact('symbol', 'Warum wirken Magna Carta und Bill of Rights bis heute als Symbole?', 'Weil sie für die Idee rechtsgebundener Herrschaft stehen', ['Weil sie den Absolutismus feierten', 'Weil sie nur Sportregeln waren', 'Weil sie die Steinzeit beschrieben'], 'Symbole verdichten lange Entwicklungen.', 'Nicht jeder Artikel war modern demokratisch. Dennoch markieren die Texte Stationen der Machtbegrenzung. Spätere Generationen beriefen sich darauf.', 'Beide Texte symbolisieren ___ Herrschaft.', ['rechtsgebundene', 'begrenzte']),
+  ],
+  pairs: [
+    pair('p1', 'Magna Carta', 'Frühe Begrenzung königlicher Willkür', '1215 durchgesetzt, später Symbol.'),
+    pair('p2', 'Bill of Rights', 'Stärkte 1689 das Parlament', 'Band die Krone an Recht.'),
+    pair('p3', 'Parlament', 'Organ der Mitbestimmung und Kontrolle', 'Begrenzte königliche Macht.'),
+  ],
+  trueFalse: [
+    tf('t1', 'Die Bill of Rights von 1689 stärkte die absolute Willkür des Königs.', false, 'Sie band die Krone an Recht und Parlament.', '1689 wurde königliche Macht begrenzt, nicht ausgeweitet. Parlament und Recht gewannen an Gewicht. Das ist das Gegenteil von Absolutismus.'),
+  ],
+  sources: alleinherrschaft.sources,
+  causeEffects: alleinherrschaft.causeEffects?.filter((c) =>
+    ['ce-magna', 'ce-glorious'].includes(c.concept ?? ''),
+  ),
+}
+
+const usaVerfassung: BioBank = {
+  quelle: 'Wikipedia: Unabhängigkeitserklärung der Vereinigten Staaten',
+  url: 'https://de.wikipedia.org/wiki/Unabh%C3%A4ngigkeitserkl%C3%A4rung_der_Vereinigten_Staaten',
+  conceptPrefix: 'ge:k7:usa',
+  facts: [
+    fact('usa', 'Warum war die Unabhängigkeit der USA für die Frage nach Herrschaft wichtig?', 'Weil sie Regierung auf Rechte, Verfassung und Zustimmung der Regierten stützte', ['Weil sie ein neues Lehnswesen einführte', 'Weil sie den König von Frankreich stärkte', 'Weil sie jede Verfassung ablehnte'], 'Die USA verbanden Unabhängigkeit mit Verfassungsideen.', 'Die Unabhängigkeitserklärung von 1776 begründete Herrschaft mit Rechten und Zustimmung. In der Verfassung wurden Gewaltenteilung und republikanische Ordnung wichtig. Damit entstand ein neues politisches Vorbild.', 'Die USA stützten Herrschaft auf Rechte, Verfassung und die ___ der Regierten.', ['Zustimmung']),
+    fact('1776', 'Was geschah 1776 in Nordamerika?', 'Die Unabhängigkeitserklärung der USA wurde verkündet', ['Rom wurde gegründet', 'Die Magna Carta wurde unterzeichnet', 'Der Erste Weltkrieg begann'], '1776 markiert den Bruch mit der britischen Krone.', 'Die Kolonien erklärten sich unabhängig. Der Text formulierte Rechte und Zustimmung der Regierten. Das wirkte als politisches Signal weit über Amerika hinaus.', '1776 verkündeten die USA die ___.', ['Unabhängigkeitserklärung']),
+    fact('verfassung', 'Was leisten Verfassungen im Kampf gegen Alleinherrschaft?', 'Sie legen Regeln fest und begrenzen Macht durch Recht', ['Sie ersetzen alle Gerichte durch den Hof', 'Sie schaffen automatisch soziale Gleichheit', 'Sie sind nur schöne Texte ohne Wirkung'], 'Verfassungen ordnen Herrschaft und setzen Grenzen.', 'Verfassungen sind grundlegende Regeln eines Staates. Sie legen fest, wer Macht ausübt und wie diese kontrolliert wird. Gerade dadurch können sie Alleinherrschaft einschränken.', 'Verfassungen begrenzen Macht durch ___.', ['Recht']),
+    fact('gewalt', 'Warum ist Gewaltenteilung wichtig?', 'Weil sie Macht auf verschiedene Organe verteilt und Kontrolle ermöglicht', ['Weil ein einzelner Herrscher alles allein entscheiden soll', 'Weil Gerichte überflüssig werden', 'Weil Parlamente verboten sind'], 'Geteilte Macht soll Missbrauch erschweren.', 'Legislative, Exekutive und Judikative kontrollieren einander. Das war ein Kern der US-Verfassungsideen. Alleinherrschaft widerspricht diesem Prinzip.', 'Gewaltenteilung verteilt ___ auf Organe.', ['Macht']),
+    fact('rechte', 'Welche Idee wurde in den USA besonders betont?', 'Dass Menschen unveräußerliche Rechte haben', ['Dass nur der König Rechte besitzt', 'Dass Rechte nur dem Adel zustehen', 'Dass Rechte bedeutungslos sind'], 'Rechte begrenzen, was Herrschaft darf.', 'Freiheit und Rechte wurden als Begründung gegen Willkür genutzt. Nicht alle Menschen waren faktisch gleichberechtigt. Dennoch wurde die Idee politisch wirkmächtig.', 'Die USA betonten unveräußerliche ___.', ['Rechte']),
+    fact('vorbild', 'Warum wurden die USA für Europäer interessant?', 'Weil sie ein republikanisches Gegenmodell zur Alleinherrschaft zeigten', ['Weil sie den Absolutismus Ludwigs XIV. kopierten', 'Weil sie das Lehnswesen wiedereinführten', 'Weil sie Geschichte abschafften'], 'Das amerikanische Experiment wirkte als Vorbild und Streitfall.', 'Viele Europäer beobachteten Verfassung und Republik aufmerksam. Die Französische Revolution griff verwandte Ideen auf. Transatlantische Bezüge gehören zur Epoche.', 'Die USA zeigten ein ___ zur Alleinherrschaft.', ['Gegenmodell', 'Vorbild']),
+    fact('grenzen', 'Welche Grenze hatte die frühe US-Freiheit?', 'Viele Menschen, etwa Versklavte, waren ausgeschlossen', ['Alle Einwohner hatten sofort gleiches Stimmrecht', 'Es gab keine Verfassung', 'Nur Pharaonen durften wählen'], 'Idee und Praxis fielen auseinander.', 'Rechte auf dem Papier galten nicht für alle. Sklaverei und Ausschluss widersprachen den eigenen Grundsätzen. Historische Beurteilung muss beides nennen.', 'Frühe US-Freiheit schloss viele Menschen ___.', ['aus', 'ausgeschlossen']),
+    fact('zustimmung', 'Was meint Zustimmung der Regierten?', 'Dass legitime Macht von den Beherrschten ausgehen soll', ['Dass nur der König zustimmen darf', 'Dass Bauern keine Meinung haben dürfen', 'Dass Verfassungen verboten sind'], 'Zustimmung widerspricht reiner Alleinherrschaft.', 'Herrschaft braucht Rechtfertigung durch die Regierten. Wahlen und Verfassung sollen das absichern. Das ist ein Kern moderner Politikideen.', 'Legitime Macht soll von den ___ ausgehen.', ['Regierten', 'Beherrschten']),
+  ],
+  pairs: [
+    pair('p1', 'Unabhängigkeit 1776', 'Bruch mit der britischen Krone', 'Rechte und Zustimmung als Begründung.'),
+    pair('p2', 'Gewaltenteilung', 'Machtverteilung auf Organe', 'Soll Missbrauch erschweren.'),
+    pair('p3', 'Verfassung', 'Grundregeln des Staates', 'Begrenzt Herrschaft durch Recht.'),
+  ],
+  trueFalse: [
+    tf('t1', 'Die frühen USA stützten Herrschaft auf Zustimmung der Regierten und eine Verfassung.', true, 'Unabhängigkeit und Verfassungsideen gehörten zusammen.', '1776 und die spätere Verfassung verbanden Rechte mit institutioneller Ordnung. Das wurde zum Gegenbild reiner Alleinherrschaft. Grenzen der Praxis bleiben zu bedenken.'),
+  ],
+  sources: alleinherrschaft.sources?.filter((s) => s.concept === 'src-usa'),
+  causeEffects: alleinherrschaft.causeEffects?.filter((c) => c.concept === 'ce-usa'),
+}
+
+const franzoesischeRevolution: BioBank = {
+  quelle: 'Wikipedia: Französische Revolution',
+  url: 'https://de.wikipedia.org/wiki/Franz%C3%B6sische_Revolution',
+  conceptPrefix: 'ge:k7:fr-revolution',
+  facts: [
+    fact('fr', 'Was griff die Französische Revolution gegen die alte Herrschaft an?', 'Privilegien, Ständegesellschaft und unkontrollierte Monarchie', ['Nur den Buchdruck', 'Nur römisches Bürgerrecht', 'Nur mittelalterliche Stadtmauern'], 'Die Revolution zielte auf grundlegende politische Veränderung.', 'Die Französische Revolution von 1789 wandte sich gegen Privilegien des Ancien Régime. Sie stellte infrage, dass Herrschaft von Geburt abhängen dürfe. Freiheit, Gleichheit und Volkssouveränität wurden zentrale Begriffe.', 'Die Französische Revolution griff Privilegien und die alte ___ an.', ['Ständegesellschaft', 'Monarchie']),
+    fact('1789', 'Welches Jahr gilt als Beginn der Französischen Revolution?', '1789', ['1215', '1689', '1914'], '1789 markiert den Umbruch in Frankreich.', 'Mit dem Jahr 1789 verbinden sich Einberufung der Generalstände, Bastille und erste revolutionäre Schritte. Das Datum ist ein Schlüsseljahr der Neuzeit. Es verändert das Bild legitimer Herrschaft.', 'Die Französische Revolution begann ___ .', ['1789']),
+    fact('volk', 'Was meint Volkssouveränität?', 'Dass politische Macht vom Volk ausgehen soll', ['Dass nur der König Souverän ist', 'Dass Bauern keine Rechte haben', 'Dass Parlamente verboten sind'], 'Volkssouveränität widerspricht Alleinherrschaft.', 'Die Idee macht das Volk zum Träger der Macht. Revolutionäre forderten Mitbestimmung und Rechte. Das wurde zum Leitmotiv moderner Demokratien.', 'Volkssouveränität meint Macht vom ___.', ['Volk']),
+    fact('rechte', 'Welche Erklärung wurde 1789 besonders wichtig?', 'Die Erklärung der Menschen- und Bürgerrechte', ['Die Magna Carta von 1215 allein', 'Die Bill of Rights ohne Bezug', 'Der Versailler Vertrag'], 'Rechte sollten Herrschaft begrenzen.', 'Die Erklärung formulierte Freiheit und Gleichheit vor dem Gesetz. Sie wurde zum Bezugspunkt. Praxis und Terror zeigten aber auch Widersprüche.', '1789 wurde die Erklärung der Menschen- und ___ wichtig.', ['Bürgerrechte']),
+    fact('terror', 'Warum ist die Phase des Terrors historisch umstritten?', 'Weil Revolutionäre Gewalt im Namen der Freiheit einsetzten', ['Weil es keine Gewalt gab', 'Weil der König absolut siegte', 'Weil nur Sport stattfand'], 'Freiheit und Gewalt traten in Spannung.', 'Die Revolution radikalierte sich. Gegner wurden verfolgt und hingerichtet. Historiker bewerten Ziele und Mittel kontrovers.', 'Im Terror wurde Gewalt im Namen der ___ eingesetzt.', ['Freiheit', 'Revolution']),
+    fact('stand', 'Was war der Dritte Stand?', 'Die große Mehrheit außerhalb von Klerus und Adel', ['Nur der Königshof', 'Nur die römischen Konsuln', 'Nur die Pharaonen'], 'Der Dritte Stand forderte politische Anerkennung.', 'Bürger, Bauern und andere trugen Lasten ohne gleiche Rechte. Ihre Emanzipation war zentral. Das sprengte die Ständeordnung.', 'Der Dritte Stand umfasste die große ___ außerhalb von Klerus und Adel.', ['Mehrheit']),
+    fact('karikatur', 'Warum eignen sich Karikaturen als Quelle zur Revolution?', 'Weil sie Kritik, Feindbilder und politische Botschaften zuspitzen', ['Weil sie immer neutral sind', 'Weil sie keine Absicht haben', 'Weil sie nur Wetter zeigen'], 'Karikaturen sind parteilich und aussagekräftig.', 'Überzeichnung macht Standpunkte sichtbar. Historiker fragen nach Absicht und Publikum. Der Lehrplan nennt die Quellenart ausdrücklich.', 'Karikaturen spitzen politische ___ zu.', ['Botschaften', 'Kritik']),
+    fact('erbe', 'Welches Erbe hinterließ die Revolution langfristig?', 'Ideen von Rechten, Nation und politischer Teilhabe', ['Die Rückkehr zum reinen Lehnswesen', 'Die Abschaffung jeder Verfassungsidee', 'Nur mittelalterliche Zünfte'], 'Trotz Widersprüchen wirkten die Ideen weiter.', 'Menschenrechte und Nation wurden Leitbegriffe. Europa und die Welt reagierten unterschiedlich. Das Erbe bleibt umkämpft und zentral.', 'Die Revolution hinterließ Ideen von Rechten und ___.', ['Teilhabe', 'Nation']),
+  ],
+  pairs: [
+    pair('p1', 'Volkssouveränität', 'Macht soll vom Volk ausgehen', 'Kernidee gegen Alleinherrschaft.'),
+    pair('p2', '1789', 'Beginn der Französischen Revolution', 'Schlüsseljahr der Neuzeit.'),
+    pair('p3', 'Menschen- und Bürgerrechte', 'Erklärung von Freiheit und Gleichheit', 'Sollte Herrschaft begrenzen.'),
+  ],
+  trueFalse: [
+    tf('t1', 'Die Französische Revolution griff Privilegien und unkontrollierte Monarchie an.', true, 'Ständegesellschaft und Alleinherrschaft standen infrage.', '1789 begann ein Umbruch, der Rechte und Volkssouveränität in den Mittelpunkt rückte. Gewalt und Widersprüche gehören zur Bewertung. Das Thema ist Kern des Lehrplans.'),
+  ],
+  causeEffects: alleinherrschaft.causeEffects?.filter((c) => c.concept === 'ce-fr'),
+}
+
+const napoleonBank: BioBank = {
+  quelle: 'Wikipedia: Napoleon Bonaparte',
+  url: 'https://de.wikipedia.org/wiki/Napoleon_Bonaparte',
+  conceptPrefix: 'ge:k7:napoleon',
+  facts: [
+    fact('kaisertum', 'Was kennzeichnete Napoleons Kaisertum?', 'Persönliche Herrschaft nach der Revolution mit militärischer Machtbasis', ['Eine reine attische Demokratie', 'Ein mittelalterliches Lehnswesen ohne Heer', 'Eine Ablehnung jeder Ordnung'], 'Napoleon beendete und formte die Revolutionszeit neu.', 'Aus der Revolution ging eine starke Führungsfigur hervor. Napoleon krönte sich zum Kaiser und führte Kriege in Europa. Freiheitspathos und Herrschaftsanspruch traten in Spannung.', 'Napoleon errichtete ein ___ nach der Revolution.', ['Kaisertum']),
+    fact('ende', 'Warum gehört Napoleon zum Thema Beschränkung der Alleinherrschaft?', 'Weil nach revolutionärer Begrenzung wieder persönliche Herrschaft entstand', ['Weil er die Magna Carta erfand', 'Weil er nur Steinzeitforschung betrieb', 'Weil er den Absolutismus Ludwigs XIV. unverändert fortsetzte'], 'Die Revolution begrenzte Macht, Napoleon verdichtete sie neu.', 'Das zeigt, dass Alleinherrschaft in neuer Form zurückkehren kann. Bewertung muss Revolution und Kaiserreich zusammensehen. Herrschaftsformen sind wandelbar.', 'Nach der Revolution entstand unter Napoleon wieder persönliche ___.', ['Herrschaft']),
+    fact('code', 'Wofür steht der Code civil grob?', 'Für eine einheitliche Rechtsordnung unter Napoleon', ['Für ein mittelalterliches Zunftstatut allein', 'Für den Versailler Vertrag', 'Für attische Ostraka'], 'Recht wurde vereinheitlicht und exportiert.', 'Der Code civil ordnete Zivilrecht neu. Er wirkte in besetzten und verbündeten Gebieten. Rechtsgleichheit und patriarchale Grenzen gehörten dazu.', 'Der Code civil war eine einheitliche ___.', ['Rechtsordnung']),
+    fact('europa', 'Wie veränderte Napoleon Europa?', 'Durch Kriege, Neuordnung von Staaten und Verbreitung von Reformideen', ['Durch Gründung des Völkerbunds 1919', 'Durch Abschaffung aller Heere', 'Durch Rückkehr zur Steinzeit'], 'Militärische Expansion und Reformen gingen zusammen.', 'Viele Territorien wurden umgeordnet. Manche Reformen blieben, andere stießen auf Widerstand. Europa nach 1815 reagierte darauf.', 'Napoleon veränderte Europa durch Kriege und ___.', ['Neuordnung', 'Reformen']),
+    fact('widerstand', 'Warum entstand Widerstand gegen Napoleon?', 'Weil Besatzung, Kriegslasten und Herrschaftsanspruch Ablehnung erzeugten', ['Weil er zu wenig Macht wollte', 'Weil er keine Armee hatte', 'Weil er nur Frieden stiftete'], 'Herrschaft nach außen erzeugte Gegner.', 'Nationale und dynastische Kräfte formierten sich. Die späteren Koalitionskriege beendeten seine Herrschaft. Folgen wirkten im 19. Jahrhundert nach.', 'Kriegslasten und Besatzung erzeugten ___.', ['Widerstand', 'Ablehnung']),
+    fact('karikatur', 'Warum wurden Karikaturen über Napoleon verbreitet?', 'Weil sie Macht, Krieg und Selbstinszenierung kritisierten oder überzeichneten', ['Weil Karikaturen verboten und unmöglich waren', 'Weil sie nur Wetter zeigten', 'Weil Napoleon anonym blieb'], 'Karikatur ist Lehrplan-Quellenart.', 'Bilder transportierten politische Botschaften. Historiker lesen Absicht und Publikum mit. Kritik an Alleinherrschaft erscheint oft satirisch.', 'Karikaturen überzeichneten Napoleons ___ und Krieg.', ['Macht', 'Herrschaft']),
+    fact('erbe', 'Welches ambivalente Erbe hinterließ Napoleon?', 'Reformen und Rechtsideen neben Krieg und persönlicher Herrschaft', ['Nur reine Demokratie ohne Krieg', 'Nur Steinzeitwerkzeuge', 'Nur die Abschaffung jedes Rechts'], 'Fortschritt und Gewalt lagen nah beieinander.', 'Code civil und Verwaltung wirkten fort. Gleichzeitig kosteten Kriege unzählige Menschenleben. Historische Bewertung bleibt kontrovers.', 'Napoleons Erbe verbindet Reformen mit ___.', ['Krieg', 'Herrschaft']),
+    fact('lehrplan', 'Warum nennt der Lehrplan das Kaisertum Napoleons explizit?', 'Weil es zeigt, wie Alleinherrschaft nach revolutionärer Begrenzung neu entstehen kann', ['Weil Napoleon die Steinzeit erforschte', 'Weil er den Buchdruck erfand', 'Weil er nur Sachsens Kurfürst war'], 'Revolution und Kaisertum gehören zusammen betrachtet.', 'Schüler sollen Wandel von Herrschaftsformen verstehen. Begrenzung und erneute Verdichtung von Macht sind das Thema. Napoleon ist das Schlüsselfigur-Beispiel.', 'Napoleon zeigt erneute ___ von Herrschaft nach der Revolution.', ['Verdichtung', 'Personalisierung']),
+  ],
+  pairs: [
+    pair('p1', 'Kaisertum', 'Persönliche Herrschaft Napoleons', 'Nach der Revolution neu verdichtet.'),
+    pair('p2', 'Code civil', 'Zivilrechtskodifikation', 'Vereinheitlichte Recht unter Napoleon.'),
+    pair('p3', 'Koalitionskriege', 'Kriege gegen und um Napoleon', 'Endeten seine Vorherrschaft.'),
+  ],
+  trueFalse: [
+    tf('t1', 'Unter Napoleon entstand nach der Revolution erneut eine starke persönliche Herrschaft.', true, 'Das Kaisertum verdichtete Macht in einer Person.', 'Die Revolution hatte Alleinherrschaft infrage gestellt. Napoleon formte daraus ein neues Herrschaftsmodell. Genau diese Spannung ist lehrplanrelevant.'),
+  ],
+}
+
 export const GESCHICHTE_K7_GENERATORS: Record<string, Topic['generate']> = {
   'ge-k7-lb1-neuzeit': bankGenerate(neuzeit),
   'ge-k7-lb2-absolutismus': bankGenerate(absolutismus),
   'ge-k7-lb3-alleinherrschaft': bankGenerate(alleinherrschaft),
+  'ge-k7-lb3-england': bankGenerate(englandParlament),
+  'ge-k7-lb3-usa': bankGenerate(usaVerfassung),
+  'ge-k7-lb3-franzoesische-revolution': bankGenerate(franzoesischeRevolution),
+  'ge-k7-lb3-napoleon': bankGenerate(napoleonBank),
   'ge-k7-lb4-legitimation': bankGenerate(legitimation),
   'ge-k7-lbw-reformation-gerechtigkeit': bankGenerate(reformGerechtigkeit),
   'ge-k7-lbw-reformation-sachsen': bankGenerate(reformSachsen),

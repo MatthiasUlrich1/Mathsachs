@@ -340,6 +340,40 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
       }
     }
 
+    case 'causeEffect': {
+      const left = printLabels(
+        (props.left as Array<{ label?: string; id?: string }> | undefined)?.map(
+          (x) => x.label ?? x.id ?? '',
+        ),
+      )
+      const right = printLabels(
+        (props.right as Array<{ label?: string; id?: string }> | undefined)?.map(
+          (x) => x.label ?? x.id ?? '',
+        ),
+      )
+      return {
+        ...fromVisual,
+        paperHint:
+          instruction ??
+          'Ordne Ursache und Wirkung zu (auf Papier: Ursache → Wirkung).',
+        options: [...(left ?? []), ...(right ?? [])].filter(Boolean),
+        answerBlank: (left ?? []).map((l) => `${l} → ______`).join(' | '),
+      }
+    }
+
+    case 'sourceQuote': {
+      const quote = String(props.sourceText ?? '')
+      const choices = printLabels(props.choices as string[] | undefined)
+      return {
+        ...fromVisual,
+        paperHint: quote
+          ? `Quelle: „${quote.slice(0, 180)}${quote.length > 180 ? '…' : ''}“ — ${instruction ?? 'Deutung wählen.'}`
+          : (instruction ?? 'Lies die Quelle und wähle die Deutung.'),
+        options: choices,
+        answerBlank: 'Deutung: ______',
+      }
+    }
+
     case 'clozeMulti': {
       const segments = (props.segments ?? []) as string[]
       const n = Number(props.blankCount ?? Math.max(0, segments.length - 1))

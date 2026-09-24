@@ -16,6 +16,7 @@ import { PairMatch } from './PairMatch'
 import { ClozeMulti } from './ClozeMulti'
 import { IconBelong } from './IconBelong'
 import { FlashcardFlip } from './FlashcardFlip'
+import { SourceQuote } from './SourceQuote'
 import type { ParamSliderSpec } from '../curriculum/taskHelpers'
 import type { EqOp, LinEq } from '../lib/equationSteps'
 import {
@@ -97,6 +98,15 @@ export const initTaskInput = (task: Task): UserInput => {
   }
   if (task.interactive?.type === 'flashcardFlip') {
     return { kind: 'flashcardFlip', flipped: false, answer: '' }
+  }
+  if (task.interactive?.type === 'sourceQuote') {
+    return { kind: 'choicePick', choice: '' }
+  }
+  if (task.interactive?.type === 'causeEffect') {
+    const left = (task.interactive.props.left ?? []) as Array<{ id: string }>
+    const links: Record<string, string> = {}
+    for (const item of left) links[item.id] = ''
+    return { kind: 'pairMatch', links }
   }
   return emptyInput(task.answerKind)
 }
@@ -370,8 +380,49 @@ export function TaskInteractive({
           }
           onChange={(links) => onChange({ kind: 'pairMatch', links })}
           instruction={interactive.props.instruction}
+          leftTitle={interactive.props.leftTitle}
+          rightTitle={interactive.props.rightTitle}
+          groupLabel={interactive.props.groupLabel}
           disabled={disabled}
           partResults={partResults}
+        />
+      )}
+      {interactive.type === 'causeEffect' && (
+        <PairMatch
+          left={interactive.props.left ?? []}
+          right={interactive.props.right ?? []}
+          links={
+            value.kind === 'pairMatch'
+              ? value.links
+              : Object.fromEntries(
+                  ((interactive.props.left ?? []) as Array<{ id: string }>).map(
+                    (l) => [l.id, ''],
+                  ),
+                )
+          }
+          onChange={(links) => onChange({ kind: 'pairMatch', links })}
+          instruction={
+            interactive.props.instruction ??
+            'Ordne jeder Ursache die passende Wirkung zu.'
+          }
+          leftTitle={interactive.props.leftTitle ?? 'Ursache'}
+          rightTitle={interactive.props.rightTitle ?? 'Wirkung'}
+          groupLabel={interactive.props.groupLabel ?? 'Ursache und Wirkung zuordnen'}
+          disabled={disabled}
+          partResults={partResults}
+        />
+      )}
+      {interactive.type === 'sourceQuote' && (
+        <SourceQuote
+          sourceLabel={interactive.props.sourceLabel}
+          sourceKind={interactive.props.sourceKind}
+          sourceText={String(interactive.props.sourceText ?? '')}
+          attribution={interactive.props.attribution}
+          choices={interactive.props.choices ?? []}
+          value={value.kind === 'choicePick' ? value.choice || null : null}
+          onChange={(choice) => onChange({ kind: 'choicePick', choice })}
+          instruction={interactive.props.instruction}
+          disabled={disabled}
         />
       )}
       {interactive.type === 'clozeMulti' && (

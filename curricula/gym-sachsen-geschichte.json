@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Geschichte",
-  "version": "1.5.0",
-  "changelog": "K5–12 Banken (Schlaukopf-Inspiration, eigene Formulierungen) · fragebezogenes Fachwissen · 67 Themen. K6 LB1 Rom freigegeben; Rest Entwickler (released:false).",
+  "version": "1.6.0",
+  "changelog": "K5–12 Banken verdichtet (Klett+Schlaukopf-Inspiration, eigene Formulierungen) · neue Interaktionen sourceQuote/causeEffect · fragebezogenes Fachwissen · 85 Themen. K6 LB1 Rom freigegeben; Rest Entwickler (released:false).",
   "official": [
     {
       "id": "geschichte-klasse-5",
@@ -28,7 +28,7 @@
           "topics": [
             {
               "id": "ge-k5-lb1-orientierung",
-              "title": "Orientierung in der Vergangenheit",
+              "title": "Orientierung – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -36,6 +36,31 @@
               "keywords": [
                 "Zeitstrahl",
                 "Quellen"
+              ]
+            },
+            {
+              "id": "ge-k5-lb1-quellen",
+              "title": "Quellen und Quellenkritik",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Primärquelle",
+                "Quellenkritik"
+              ]
+            },
+            {
+              "id": "ge-k5-lb1-zeitrechnung",
+              "title": "Zeitrechnung und Chronologie",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zeitstrahl",
+                "Epoche",
+                "v. Chr."
               ]
             }
           ]
@@ -47,7 +72,7 @@
           "topics": [
             {
               "id": "ge-k5-lb2-steinzeit-hochkultur",
-              "title": "Von der Steinzeit zur Hochkultur",
+              "title": "Steinzeit zur Hochkultur – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -56,6 +81,45 @@
                 "Steinzeit",
                 "Hochkultur",
                 "Zusammenleben"
+              ]
+            },
+            {
+              "id": "ge-k5-lb2-steinzeit",
+              "title": "Steinzeit und Sesshaftigkeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Altsteinzeit",
+                "Jungsteinzeit",
+                "Sesshaftigkeit"
+              ]
+            },
+            {
+              "id": "ge-k5-lb2-aegypten",
+              "title": "Ägypten als Hochkultur",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Nil",
+                "Pharao",
+                "Hieroglyphen"
+              ]
+            },
+            {
+              "id": "ge-k5-lb2-metallzeit",
+              "title": "Metallzeit und frühe Hochkulturen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Bronze",
+                "Mesopotamien",
+                "Keilschrift"
               ]
             }
           ]
@@ -67,7 +131,7 @@
           "topics": [
             {
               "id": "ge-k5-lb3-griechenland",
-              "title": "Zusammenleben im antiken Griechenland",
+              "title": "Antikes Griechenland – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -76,6 +140,45 @@
                 "Griechenland",
                 "Polis",
                 "Antike"
+              ]
+            },
+            {
+              "id": "ge-k5-lb3-athen",
+              "title": "Athen und attische Demokratie",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Volksversammlung",
+                "Scherbengericht",
+                "Bürgerrecht"
+              ]
+            },
+            {
+              "id": "ge-k5-lb3-sparta",
+              "title": "Sparta als Militärstaat",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Spartiaten",
+                "Heloten",
+                "Militärstaat"
+              ]
+            },
+            {
+              "id": "ge-k5-lb3-kultur",
+              "title": "Götterwelt, Spiele und Kultur",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Götter",
+                "Olympia",
+                "Tempel"
               ]
             }
           ]
@@ -287,7 +390,7 @@
           "topics": [
             {
               "id": "ge-k6-lb2-mittelalter",
-              "title": "Herrschaft und Lebensformen im Mittelalter",
+              "title": "Mittelalter – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -296,6 +399,45 @@
                 "Mittelalter",
                 "Herrschaft",
                 "Leben"
+              ]
+            },
+            {
+              "id": "ge-k6-lb2-lehnswesen",
+              "title": "Lehnswesen und Vasallität",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Lehen",
+                "Vasall",
+                "Treueeid"
+              ]
+            },
+            {
+              "id": "ge-k6-lb2-alltag-staende",
+              "title": "Ständeordnung und Alltag",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Stände",
+                "Grundherrschaft",
+                "Bauern"
+              ]
+            },
+            {
+              "id": "ge-k6-lb2-staedte",
+              "title": "Städtisches Leben und Zünfte",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Markt",
+                "Zunft",
+                "Stadtluft"
               ]
             }
           ]
@@ -307,7 +449,7 @@
           "topics": [
             {
               "id": "ge-k6-lb3-religionen",
-              "title": "Religionen und Kulturen im Mit- und Gegeneinander",
+              "title": "Religionen und Kulturen – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -315,6 +457,45 @@
               "keywords": [
                 "Religion",
                 "Kultur"
+              ]
+            },
+            {
+              "id": "ge-k6-lb3-christentum",
+              "title": "Christentum im Mittelalter",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kirche",
+                "Kloster",
+                "Papst"
+              ]
+            },
+            {
+              "id": "ge-k6-lb3-islam",
+              "title": "Entstehung und Ausbreitung des Islams",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Islam",
+                "Koran",
+                "Mekka"
+              ]
+            },
+            {
+              "id": "ge-k6-lb3-begegnung",
+              "title": "Begegnung, Konflikte und Kreuzzüge",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kreuzzug",
+                "Jerusalem",
+                "Toleranz"
               ]
             }
           ]
@@ -441,7 +622,7 @@
           "topics": [
             {
               "id": "ge-k7-lb3-alleinherrschaft",
-              "title": "Formen der Beschränkung der Alleinherrschaft",
+              "title": "Beschränkung der Alleinherrschaft – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -449,6 +630,58 @@
               "keywords": [
                 "Herrschaft",
                 "Verfassung"
+              ]
+            },
+            {
+              "id": "ge-k7-lb3-england",
+              "title": "England: Parlament und Bill of Rights",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Magna Carta",
+                "Parlament",
+                "Bill of Rights"
+              ]
+            },
+            {
+              "id": "ge-k7-lb3-usa",
+              "title": "USA: Unabhängigkeit und Verfassung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Unabhängigkeitserklärung",
+                "Verfassung",
+                "Zustimmung"
+              ]
+            },
+            {
+              "id": "ge-k7-lb3-franzoesische-revolution",
+              "title": "Französische Revolution",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "1789",
+                "Volkssouveränität",
+                "Bürgerrechte"
+              ]
+            },
+            {
+              "id": "ge-k7-lb3-napoleon",
+              "title": "Napoleon und das Ende der Revolution",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Napoleon",
+                "Kaisertum",
+                "Europa"
               ]
             }
           ]
@@ -1236,5 +1469,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "d206d0ed"
+  "contentHash": "cc2d00be"
 }

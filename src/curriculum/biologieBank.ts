@@ -8,7 +8,7 @@
  * point cannot reappear via MC, cloze, flashcard, or pairMatch in one round.
  */
 import type { Rng } from '../lib/rng'
-import { mixedVariants } from './taskHelpers'
+import { causeEffectTask, mixedVariants, sourceQuoteTask } from './taskHelpers'
 import type { Topic } from './types'
 import {
   bioFw,
@@ -83,6 +83,28 @@ export type BioIcon = {
   wissen: string
 }
 
+/** Short source excerpt + MC (Quellenarbeit). Reusable across subjects. */
+export type BioSource = {
+  concept?: string
+  question: string
+  sourceText: string
+  sourceLabel?: string
+  sourceKind?: string
+  attribution?: string
+  correct: string
+  wrong: [string, string, string]
+  explanation: string
+  wissen: string
+}
+
+/** Cause → effect pair for causeEffect interaction. */
+export type BioCauseEffect = {
+  concept?: string
+  cause: string
+  effect: string
+  wissen: string
+}
+
 export type BioBank = {
   quelle?: string
   url?: string
@@ -94,6 +116,8 @@ export type BioBank = {
   sorts?: BioSort[]
   multis?: BioMulti[]
   icons?: BioIcon[]
+  sources?: BioSource[]
+  causeEffects?: BioCauseEffect[]
 }
 
 /** Thin / placeholder wissen that must never reach the UI as sole Fachwissen. */
@@ -589,6 +613,65 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         }),
         dedupeKey: key,
         contentIds: [key],
+      })
+    })
+  }
+
+  if (bank.sources?.length) {
+    variants.push((rng) => {
+      const s = pick(rng, bank.sources!)
+      const key = bioConceptKey(s.concept, prefix, s.question)
+      const choices = shuffle(rng, [s.correct, ...s.wrong])
+      return sourceQuoteTask({
+        question: s.question,
+        sourceText: s.sourceText,
+        sourceLabel: s.sourceLabel ?? 'Quelle',
+        sourceKind: s.sourceKind,
+        attribution: s.attribution,
+        choices,
+        correct: s.correct,
+        solution: s.correct,
+        explanation: s.explanation,
+        fachwissen: fw(bank, s.wissen, {
+          prompt: s.question,
+          explanation: s.explanation,
+          answer: s.correct,
+        }),
+        dedupeKey: key,
+        contentIds: [key],
+      })
+    })
+  }
+
+  if (bank.causeEffects && bank.causeEffects.length >= 3) {
+    variants.push((rng) => {
+      const subset = shuffle(rng, [...bank.causeEffects!]).slice(0, Math.min(4, bank.causeEffects!.length))
+      const distractorPool = bank.causeEffects!.filter((c) => !subset.includes(c))
+      const distractor =
+        distractorPool.length > 0
+          ? pick(rng, distractorPool).effect
+          : 'Keine historische Wirkung'
+      const left = subset.map((c, i) => ({ id: `c${i}`, label: c.cause }))
+      const rightItems = shuffle(rng, [
+        ...subset.map((c, i) => ({ id: `e${i}`, label: c.effect })),
+        { id: 'xd', label: distractor },
+      ])
+      const correctLinks: Record<string, string> = {}
+      subset.forEach((_, i) => {
+        correctLinks[`c${i}`] = `e${i}`
+      })
+      const keys = subset.map((c) => bioConceptKey(c.concept, prefix, c.cause))
+      const fwText = subset.map((c) => expandBioWissen(c.wissen, { explanation: c.wissen })).join(' ')
+      return causeEffectTask({
+        question: `Ordne Ursache und Wirkung zu (${subset.length} Paare).`,
+        left,
+        right: rightItems,
+        correctLinks,
+        solution: subset.map((c) => `${c.cause} → ${c.effect}`).join('; '),
+        explanation: subset.map((c) => `${c.cause}: ${c.effect}`).join(' '),
+        fachwissen: fw(bank, fwText),
+        dedupeKey: `cause:${[...keys].sort().join('+')}`,
+        contentIds: keys,
       })
     })
   }

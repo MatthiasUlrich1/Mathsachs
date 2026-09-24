@@ -159,6 +159,54 @@ const mittelalter: BioBank = {
       'Auf dem Land dominierten Grundherrschaft und Abhängigkeit. Lehnswesen ordnete Herrschaft zwischen Herren und Vasallen. Städte mit Märkten und Zünften entwickelten daneben eigene wirtschaftliche und rechtliche Formen.',
     ),
   ],
+  sources: [
+    {
+      concept: 'src-stadtluft',
+      question: 'Was meint dieser Rechtssatz im mittelalterlichen Kontext?',
+      sourceText: '„Stadtluft macht frei.“',
+      sourceLabel: 'Rechtssprichwort',
+      sourceKind: 'Traditionsformel',
+      correct: 'In Städten konnten Abhängige unter Bedingungen persönliche Freiheit gewinnen',
+      wrong: [
+        'Städte hatten keine Regeln und Abgaben',
+        'Nur Adlige durften in Städten wohnen',
+        'Bauern verloren in der Stadt jedes Recht',
+      ] as [string, string, string],
+      explanation: 'Der Satz beschreibt einen Rechtsvorteil städtischen Lebens.',
+      wissen:
+        'Wer lange in einer Stadt lebte, konnte aus grundherrlicher Abhängigkeit herauswachsen. Freiheit war an städtische Regeln gebunden. Der Satz macht den Unterschied zwischen Stadt und Land greifbar.',
+    },
+  ],
+  causeEffects: [
+    {
+      concept: 'ce-lehen',
+      cause: 'Vasall erhält ein Lehen',
+      effect: 'Er schuldet Treue und oft Heeresfolge',
+      wissen:
+        'Lehnswesen band Herrschaft an persönliche Pflichten. Ohne Gegenleistung fehlte der Kern. So entstand ein Netz gestufter Bindungen.',
+    },
+    {
+      concept: 'ce-grund',
+      cause: 'Bauern stehen unter Grundherrschaft',
+      effect: 'Sie leisten Abgaben und oft Frondienste',
+      wissen:
+        'Abhängigkeit prägte den ländlichen Alltag. Arbeit und Abgaben sicherten den Herrn. Rechte waren ungleich verteilt.',
+    },
+    {
+      concept: 'ce-zunft',
+      cause: 'Handwerker schließen sich in Zünften zusammen',
+      effect: 'Ausbildung, Qualität und Preise werden geregelt',
+      wissen:
+        'Zünfte organisierten städtisches Handwerk. Sie schützten Mitglieder und setzten Standards. Das prägte Wirtschaft und Sozialleben.',
+    },
+    {
+      concept: 'ce-mauer',
+      cause: 'Stadt baut Mauern und Tore',
+      effect: 'Schutz und kontrollierter Zugang zum Rechtsraum',
+      wissen:
+        'Mauern markierten Sicherheit und Grenze. Tore steuerten Personen und Waren. Das Stadtbild wurde dadurch geprägt.',
+    },
+  ],
 }
 
 const religionen: BioBank = {

@@ -192,6 +192,65 @@ const orientierung: BioBank = {
       "explanation": "Ein Zeitstrahl ist chronologisch geordnet.",
       "wissen": "Ein Zeitstrahl ist chronologisch geordnet. Zufällige Reihenfolge zerstört Orientierung. Abstände werden so sichtbar."
     }
+  ],
+  "sources": [
+    {
+      "concept": "ge:k5:o:src1",
+      "question": "Was lässt sich aus diesem Quellenhinweis vor allem schließen?",
+      "sourceText": "„Ich berichte, was ich selbst gesehen habe, und was mir glaubwürdige Zeugen erzählten.“",
+      "sourceLabel": "Quellennotiz",
+      "sourceKind": "Chronik",
+      "attribution": "Typische Selbstauskunft eines Chronisten (nachgestellt)",
+      "correct": "Der Verfasser beansprucht Augenzeugenschaft und Prüfung von Zeugen",
+      "wrong": [
+        "Der Text ist eine moderne Wettervorhersage",
+        "Quellenkritik ist hier überflüssig",
+        "Es handelt sich um eine reine Zahlenliste ohne Absicht"
+      ],
+      "explanation": "Chronisten betonen oft Nähe zum Geschehen und Glaubwürdigkeit.",
+      "wissen": "Solche Formeln zeigen, dass Verfasser ihre Glaubwürdigkeit absichern wollen. Historiker prüfen trotzdem Absicht und Kontext. Quellenkritik bleibt nötig, auch wenn jemand Augenzeugenschaft behauptet."
+    },
+    {
+      "concept": "ge:k5:o:src2",
+      "question": "Welche Quellenart liegt hier eher vor?",
+      "sourceText": "Ein abgenutzter Feuerstein mit Bearbeitungsspuren aus einer Grabungsschicht.",
+      "sourceLabel": "Fundbeschreibung",
+      "sourceKind": "Überrest",
+      "correct": "Ein materieller Überrest ohne Geschichtserzählungsabsicht",
+      "wrong": [
+        "Eine Traditionsquelle mit bewusster Heldengeschichte",
+        "Ein modernes Schulbuchkapitel",
+        "Eine politische Rede des 20. Jahrhunderts"
+      ],
+      "explanation": "Werkzeuge sind typische Überreste der Archäologie.",
+      "wissen": "Überreste entstanden oft für den Alltag, nicht als Erzählung. Bearbeitungsspuren und Fundschicht helfen bei der Deutung. Archäologie erschließt so schriftlose Zeiten."
+    }
+  ],
+  "causeEffects": [
+    {
+      "concept": "ge:k5:o:ce1",
+      "cause": "Quellen sind lückenhaft oder parteilich",
+      "effect": "Historische Deutungen bleiben oft unsicher",
+      "wissen": "Ohne vollständige und neutrale Zeugnisse bleibt Rekonstruktion vorläufig. Mehrere Quellen erhöhen Sicherheit. Kritik ist deshalb zentral."
+    },
+    {
+      "concept": "ge:k5:o:ce2",
+      "cause": "Ereignisse werden chronologisch geordnet",
+      "effect": "Zusammenhänge und Abstände werden sichtbar",
+      "wissen": "Zeitstrahl und Datierung schaffen Orientierung. Ohne Reihenfolge wirken Fakten isoliert. Chronologie ist Grundwerkzeug."
+    },
+    {
+      "concept": "ge:k5:o:ce3",
+      "cause": "Verfasser haben unterschiedliche Standpunkte",
+      "effect": "Berichte zum selben Ereignis können differieren",
+      "wissen": "Perspektive prägt Auswahl und Bewertung. Quellenkritik fragt nach Absicht. Vergleich mehrerer Stimmen hilft."
+    },
+    {
+      "concept": "ge:k5:o:ce4",
+      "cause": "Archäologische Funde werden dokumentiert",
+      "effect": "Auch schriftlose Zeiten lassen sich erschließen",
+      "wissen": "Materielle Spuren ersetzen fehlende Texte. Fundkontext ist entscheidend. Regionalgeschichte wird greifbar."
+    }
   ]
 }
 
