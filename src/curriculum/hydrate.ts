@@ -8,6 +8,7 @@ import {
   resolveOsGenerate,
   topicFromPack,
 } from './oberschuleGenerators'
+import { resolveBiologieGenerate } from './biologieGenerators'
 import { resolveGeschichteGenerate } from './geschichteGenerators'
 import { resolvePhysikGenerate } from './physikGenerators'
 import type { CurriculumPack, PackExtra, PackGrade, PackTask, PackTopic } from './pack'
@@ -160,6 +161,7 @@ export async function hydratePackGrades(pack: CurriculumPack): Promise<Grade[]> 
             const generate =
               resolvePhysikGenerate(topic.id) ??
               resolveGeschichteGenerate(topic.id, topic.title) ??
+              resolveBiologieGenerate(topic.id, topic.title) ??
               resolveOsGenerate(topic.id, generators!)
             return topicFromPack(topic, generate, { subject })
           }),

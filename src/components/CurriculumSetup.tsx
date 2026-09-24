@@ -24,6 +24,7 @@ import {
   GYM_SACHSEN_PACK_ID,
   GYM_SACHSEN_PHYSIK_PACK_ID,
   GYM_SACHSEN_GESCHICHTE_PACK_ID,
+  GYM_SACHSEN_BIOLOGIE_PACK_ID,
   GYM_SACHSEN_ANHALT_PACK_ID,
   SKS_SACHSEN_ANHALT_HS_PACK_ID,
   SKS_SACHSEN_ANHALT_RS_PACK_ID,
@@ -77,6 +78,17 @@ const FALLBACK_CATALOG: ManifestPack[] = [
     url: '',
     changelog:
       'Mitgeliefert: Klassen 5–12 (Gk/Lk). Ohne Netz wird die lokale Fassung installiert.',
+  },
+  {
+    id: GYM_SACHSEN_BIOLOGIE_PACK_ID,
+    title: 'Gymnasium Sachsen · Biologie',
+    region: 'Sachsen',
+    school: 'Gymnasium',
+    subject: 'Biologie',
+    version: '1.0.0',
+    url: '',
+    changelog:
+      'Mitgeliefert: Klassen 5–12 (Gk/Lk). K5 Wirbeltiere spielbar (Entwickler). Ohne Netz lokale Fassung.',
   },
   {
     id: GYM_SACHSEN_ANHALT_PACK_ID,

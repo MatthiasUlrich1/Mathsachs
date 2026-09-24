@@ -483,6 +483,47 @@ export function defaultFachwissen(topic: TopicRef, subject?: string): Fachwissen
       ...wiki('Geschichtswissenschaft', 'Geschichtswissenschaft'),
     }
   }
+  if (subject === 'Biologie' || topic.id.startsWith('bi-')) {
+    const id = topic.id
+    const k5ById: Record<string, string> = {
+      'bi-k5-lb1-merkmale':
+        'Merkmale des Lebens: Reizbarkeit, Bewegung, Fortpflanzung, Wachstum/Entwicklung, Stoffwechsel. ' +
+        'Unterscheide belebte und unbelebte Natur.',
+      'bi-k5-lb2-fische':
+        'Fische: Kiemen, Flossen, Stromlinienform, äußere Befruchtung, Nahrungsketten im Gewässer, Schutz der Bestände.',
+      'bi-k5-lb3-lurche':
+        'Lurche: feuchte Haut, wechselwarm, Metamorphose, Laichgewässer — Feuchtlufttiere und Artenschutz.',
+      'bi-k5-lb4-kriechtiere':
+        'Kriechtiere: Hornschicht, Lungen, innere Befruchtung, Eiablage an Land — Trockenlufttiere.',
+      'bi-k5-lb5-voegel':
+        'Vögel: Federkleid, Flugmerkmale (hohle Knochen, Luftsäcke), Schnabel–Nahrung, Brutpflege.',
+      'bi-k5-lb6-saeugetiere':
+        'Säugetiere: Fell, Säugen, gleichwarm; Angepasstheit von Gliedmaßen und Gebiss; Artenschutz.',
+      'bi-k5-lb7-systematik':
+        'Systematisierung: Vergleiche Atmung, Körperbedeckung, Temperaturhaushalt und Fortpflanzung der Wirbeltiere.',
+      'bi-k5-lbw-winter':
+        'Überwinterung: Winterschlaf, Winterruhe, Kältestarre, Vogelzug — Angepasstheit an Kälte und Nahrungsmangel.',
+    }
+    if (k5ById[id]) {
+      return { text: k5ById[id], ...wiki('Wirbeltiere', 'Wirbeltiere') }
+    }
+    if (/fisch|lurch|amphib|kriech|reptil|vogel|s[aä]ug|wirbeltier|metamorph/.test(
+      `${id} ${topic.title}`.toLowerCase(),
+    )) {
+      return {
+        text:
+          `Thema „${topic.title}“: Leite Gruppenmerkmale aus heimischen Arten ab und nutze die Erschließungsfelder ` +
+          'Vielfalt, Angepasstheit, Struktur und Funktion sowie Fortpflanzung.',
+        ...wiki('Wirbeltiere', 'Wirbeltiere'),
+      }
+    }
+    return {
+      text:
+        `Thema „${topic.title}“: Beobachte, vergleiche und erkläre biologische Strukturen und Zusammenhänge. ` +
+        'Nutze Fachbegriffe präzise und unterscheide Beobachtung, Erklärung und Bewertung (z. B. Naturschutz).',
+      ...wiki('Biologie', 'Biologie'),
+    }
+  }
   if (/umrechnen|einheiten/.test(`${topic.id} ${topic.title}`.toLowerCase())) {
     if (/fläch|flaeche|m²|quadrat/.test(topic.title.toLowerCase())) {
       return conversionFachwissen('Flächeninhalt')

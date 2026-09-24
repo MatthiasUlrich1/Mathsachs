@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-24T14:09:17.962Z",
+  "updatedAt": "2026-09-24T14:16:12.408Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -33,6 +33,17 @@
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-geschichte.json",
       "size": 41366,
       "changelog": "Klassen 5–12 (Gk/Lk) · 67 Themen. K6 LB1 Rom freigegeben inkl. Mare Nostrum (ID 6763). Ohne Netz lokale Fassung."
+    },
+    {
+      "id": "gym-sachsen-biologie",
+      "title": "Gymnasium Sachsen · Biologie",
+      "region": "Sachsen",
+      "school": "Gymnasium",
+      "subject": "Biologie",
+      "version": "1.0.0",
+      "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-biologie.json",
+      "size": 40571,
+      "changelog": "Klassen 5–12 (Gk/Lk) · 71 Themen. K5 Wirbeltiere mit Generatoren (released:false, Entwickler). Ohne Netz lokale Fassung."
     },
     {
       "id": "gym-sachsen-anhalt",

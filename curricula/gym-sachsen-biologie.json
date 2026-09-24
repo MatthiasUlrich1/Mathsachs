@@ -1,0 +1,1306 @@
+{
+  "id": "gym-sachsen-biologie",
+  "title": "Gymnasium Sachsen · Biologie",
+  "region": "Sachsen",
+  "school": "Gymnasium",
+  "subject": "Biologie",
+  "version": "1.0.0",
+  "changelog": "Klassen 5–12 (Gk/Lk) · 71 Themen. K5 Wirbeltiere mit Generatoren (released:false, Entwickler). Ohne Netz lokale Fassung.",
+  "official": [
+    {
+      "id": "biologie-klasse-5",
+      "title": "Klasse 5",
+      "subjectTitle": "Biologie",
+      "gradeTitle": "Klasse 5",
+      "description": "Wirbeltiere in ihren Lebensräumen: Merkmale, Vielfalt, Angepasstheit und Schutz.",
+      "searchHints": [
+        "Wirbeltiere",
+        "Fische",
+        "Lurche",
+        "Kriechtiere",
+        "Vögel",
+        "Säugetiere",
+        "Merkmale des Lebens"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Merkmale des Lebens",
+          "ustd": 3,
+          "topics": [
+            {
+              "id": "bi-k5-lb1-merkmale",
+              "title": "Merkmale des Lebens",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Reizbarkeit",
+                "Stoffwechsel",
+                "Fortpflanzung",
+                "Bewegung"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Fische in ihren Lebensräumen",
+          "ustd": 8,
+          "topics": [
+            {
+              "id": "bi-k5-lb2-fische",
+              "title": "Fische – Merkmale, Lebensraum und Schutz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Kiemen",
+                "Flossen",
+                "Stromlinienform",
+                "Süßwasser"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Lurche in ihren Lebensräumen",
+          "ustd": 7,
+          "topics": [
+            {
+              "id": "bi-k5-lb3-lurche",
+              "title": "Lurche – Merkmale, Metamorphose und Schutz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Amphibien",
+                "Metamorphose",
+                "Hautatmung",
+                "Laich"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Kriechtiere in ihren Lebensräumen",
+          "ustd": 7,
+          "topics": [
+            {
+              "id": "bi-k5-lb4-kriechtiere",
+              "title": "Kriechtiere – Merkmale und Landleben",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Reptilien",
+                "Hornschicht",
+                "Lungen",
+                "Eiablage"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb5",
+          "title": "Vögel in ihren Lebensräumen",
+          "ustd": 9,
+          "topics": [
+            {
+              "id": "bi-k5-lb5-voegel",
+              "title": "Vögel – Flug, Federkleid und Fortpflanzung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Federn",
+                "Luftsäcke",
+                "Schnabel",
+                "Nesthocker"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb6",
+          "title": "Säugetiere in ihren Lebensräumen",
+          "ustd": 13,
+          "topics": [
+            {
+              "id": "bi-k5-lb6-saeugetiere",
+              "title": "Säugetiere – Merkmale, Angepasstheit und Schutz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Fell",
+                "Säugen",
+                "Gebiss",
+                "Gleichwarm"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb7",
+          "title": "Systematisierung",
+          "ustd": 3,
+          "topics": [
+            {
+              "id": "bi-k5-lb7-systematik",
+              "title": "Wirbeltiere vergleichen – Struktur, Funktion, Angepasstheit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 12,
+              "keywords": [
+                "Systematik",
+                "Vergleich",
+                "Atmung",
+                "Körperbedeckung"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "bi-k5-lbw-winter",
+              "title": "Wirbeltiere im Winter",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Winterschlaf",
+                "Winterruhe",
+                "Kältestarre",
+                "Vogelzug"
+              ]
+            },
+            {
+              "id": "bi-k5-lbw-saurier",
+              "title": "Kriechtiere vergangener Zeiten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Saurier",
+                "Fossilien",
+                "Paläontologie"
+              ]
+            },
+            {
+              "id": "bi-k5-lbw-haltung",
+              "title": "Artgerechte Tierhaltung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Aquarium",
+                "Terrarium",
+                "Tierschutz"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "biologie-klasse-6",
+      "title": "Klasse 6",
+      "subjectTitle": "Biologie",
+      "gradeTitle": "Klasse 6",
+      "description": "Samenpflanzen, wirbellose Tiere, Wald als Lebensgemeinschaft und Zellen.",
+      "searchHints": [
+        "Samenpflanzen",
+        "Wirbellose",
+        "Wald",
+        "Zelle"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Samenpflanzen",
+          "ustd": 10,
+          "topics": [
+            {
+              "id": "bi-k6-lb1-samenpflanzen",
+              "title": "Samenpflanzen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Blüte",
+                "Samen",
+                "Frucht"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Wirbellose Tiere in ihren Lebensräumen",
+          "ustd": 16,
+          "topics": [
+            {
+              "id": "bi-k6-lb2-wirbellose",
+              "title": "Wirbellose Tiere in ihren Lebensräumen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Insekten",
+                "Spinnen",
+                "Wirbellose"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Systematisierung",
+          "ustd": 4,
+          "topics": [
+            {
+              "id": "bi-k6-lb3-systematik",
+              "title": "Systematisierung wirbelloser Tiere und Wirbeltiere",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Vergleich",
+                "Systematik"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Wald als Lebensgemeinschaft",
+          "ustd": 10,
+          "topics": [
+            {
+              "id": "bi-k6-lb4-wald",
+              "title": "Wald als Lebensgemeinschaft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Ökosystem",
+                "Wald",
+                "Nahrungsnetz"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb5",
+          "title": "Pflanzliche und tierische Zellen",
+          "ustd": 10,
+          "topics": [
+            {
+              "id": "bi-k6-lb5-zellen",
+              "title": "Pflanzliche und tierische Zellen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Zelle",
+                "Zellkern",
+                "Mikroskop"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "bi-k6-lbw-weichtiere",
+              "title": "Weichtiere",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Schnecke",
+                "Muschel"
+              ]
+            },
+            {
+              "id": "bi-k6-lbw-heilen",
+              "title": "Pflanzen helfen heilen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Heilpflanze"
+              ]
+            },
+            {
+              "id": "bi-k6-lbw-pfuetze",
+              "title": "Leben in der Pfütze",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Kleinstlebewesen"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "biologie-klasse-7",
+      "title": "Klasse 7",
+      "subjectTitle": "Biologie",
+      "gradeTitle": "Klasse 7",
+      "description": "Bakterien und Viren, Blutkreislauf, Ernährung und Bewegungssystem des Menschen.",
+      "searchHints": [
+        "Immunbiologie",
+        "Verdauung",
+        "Skelett",
+        "Bakterien"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Bakterien und Viren",
+          "ustd": 4,
+          "topics": [
+            {
+              "id": "bi-k7-lb1-mikroben",
+              "title": "Bakterien und Viren",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Bakterien",
+                "Viren",
+                "Hygiene"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Blutkreislauf des Menschen und Immunbiologie",
+          "ustd": 7,
+          "topics": [
+            {
+              "id": "bi-k7-lb2-blut",
+              "title": "Blutkreislauf und Immunbiologie",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Herz",
+                "Blut",
+                "Immunsystem"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Ernährung, Verdauung und Ausscheidung beim Menschen",
+          "ustd": 10,
+          "topics": [
+            {
+              "id": "bi-k7-lb3-ernaehrung",
+              "title": "Ernährung, Verdauung und Ausscheidung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Verdauung",
+                "Nährstoffe"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Stütz- und Bewegungssystem des Menschen",
+          "ustd": 4,
+          "topics": [
+            {
+              "id": "bi-k7-lb4-skelett",
+              "title": "Stütz- und Bewegungssystem",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Knochen",
+                "Muskeln",
+                "Gelenke"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "bi-k7-lbw-ernaehrung-persoenlichkeit",
+              "title": "Ernährung und Persönlichkeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Ernährung"
+              ]
+            },
+            {
+              "id": "bi-k7-lbw-fitness",
+              "title": "Fitness und Gesundheit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Fitness"
+              ]
+            },
+            {
+              "id": "bi-k7-lbw-mikroben",
+              "title": "Mikroben und ihre Bedeutung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Mikroben"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "biologie-klasse-8",
+      "title": "Klasse 8",
+      "subjectTitle": "Biologie",
+      "gradeTitle": "Klasse 8",
+      "description": "Sinnesorgane, Nerven- und Hormonsystem sowie Sexualität des Menschen.",
+      "searchHints": [
+        "Sinne",
+        "Hormone",
+        "Nervensystem",
+        "Sexualität"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Sinnesorgane, Nerven- und Hormonsystem des Menschen",
+          "ustd": 14,
+          "topics": [
+            {
+              "id": "bi-k8-lb1-sinne",
+              "title": "Sinnesorgane, Nerven- und Hormonsystem",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Sinne",
+                "Nerven",
+                "Hormone"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Sexualität des Menschen",
+          "ustd": 11,
+          "topics": [
+            {
+              "id": "bi-k8-lb2-sexualitaet",
+              "title": "Sexualität des Menschen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Sexualität",
+                "Verantwortung"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "bi-k8-lbw-stress",
+              "title": "Stress und Stressbewältigung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Stress"
+              ]
+            },
+            {
+              "id": "bi-k8-lbw-sinne",
+              "title": "Erleben mit allen Sinnen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Wahrnehmung"
+              ]
+            },
+            {
+              "id": "bi-k8-lbw-erste-hilfe",
+              "title": "Erste Hilfe",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Erste Hilfe"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "biologie-klasse-9",
+      "title": "Klasse 9",
+      "subjectTitle": "Biologie",
+      "gradeTitle": "Klasse 9",
+      "description": "Anatomie und Physiologie der Samenpflanzen sowie Zusammenhänge im Ökosystem.",
+      "searchHints": [
+        "Pflanzenphysiologie",
+        "Ökosystem",
+        "Fotosynthese"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Anatomie und Physiologie der Samenpflanzen",
+          "ustd": 25,
+          "topics": [
+            {
+              "id": "bi-k9-lb1-pflanzen",
+              "title": "Anatomie und Physiologie der Samenpflanzen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Fotosynthese",
+                "Transpiration"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Zusammenhänge im Ökosystem",
+          "ustd": 25,
+          "topics": [
+            {
+              "id": "bi-k9-lb2-oekosystem",
+              "title": "Zusammenhänge im Ökosystem",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Ökosystem",
+                "Stoffkreislauf"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "bi-k9-lbw-wiese",
+              "title": "Mikrokosmos Wiese",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Wiese"
+              ]
+            },
+            {
+              "id": "bi-k9-lbw-pilze",
+              "title": "Mannigfaltigkeit der Pilze",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Pilze"
+              ]
+            },
+            {
+              "id": "bi-k9-lbw-bier",
+              "title": "Von der Gerste zum Bier",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Gärung"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "biologie-klasse-10",
+      "title": "Klasse 10",
+      "subjectTitle": "Biologie",
+      "gradeTitle": "Klasse 10",
+      "description": "Genetik, Entstehung der Artenvielfalt und Stammesgeschichte des Menschen.",
+      "searchHints": [
+        "Genetik",
+        "Evolution",
+        "Artenvielfalt",
+        "Mensch"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Genetik",
+          "ustd": 25,
+          "topics": [
+            {
+              "id": "bi-k10-lb1-genetik",
+              "title": "Genetik",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Mendel",
+                "DNA",
+                "Vererbung"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Entstehung der Artenvielfalt",
+          "ustd": 16,
+          "topics": [
+            {
+              "id": "bi-k10-lb2-artenvielfalt",
+              "title": "Entstehung der Artenvielfalt",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Evolution",
+                "Selektion"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Stammesgeschichte des Menschen",
+          "ustd": 9,
+          "topics": [
+            {
+              "id": "bi-k10-lb3-mensch",
+              "title": "Stammesgeschichte des Menschen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Hominiden",
+                "Evolution"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "bi-k10-lbw-leben",
+              "title": "Entstehung des Lebens auf der Erde",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Ursuppe"
+              ]
+            },
+            {
+              "id": "bi-k10-lbw-lernen",
+              "title": "Lernen und Gedächtnis",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Gedächtnis"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "biologie-jgs-11-12-gk",
+      "title": "Jahrgangsstufe 11/12 (Grundkurs)",
+      "subjectTitle": "Biologie",
+      "gradeTitle": "Jahrgangsstufe 11/12 (Grundkurs)",
+      "description": "Zellbiologie, Stoffwechsel, Ökologie, Genetik und Biodiversität (Grundkurs).",
+      "searchHints": [
+        "Zelle",
+        "Dissimilation",
+        "Ökologie",
+        "Genetik",
+        "Biodiversität"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Zellen, Gewebe und Organe",
+          "ustd": 24,
+          "topics": [
+            {
+              "id": "bi-gk11-lb1-zellen",
+              "title": "Zellen, Gewebe und Organe",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Differenzierung",
+                "Zelle"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Assimilation und Dissimilation",
+          "ustd": 15,
+          "topics": [
+            {
+              "id": "bi-gk11-lb2-stoffwechsel",
+              "title": "Assimilation und Dissimilation",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Fotosynthese",
+                "Zellatmung"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Ökologie und Nachhaltigkeit",
+          "ustd": 13,
+          "topics": [
+            {
+              "id": "bi-gk11-lb3-oekologie",
+              "title": "Ökologie und Nachhaltigkeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Nachhaltigkeit",
+                "Ökologie"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Grundlagen, Anwendungen und Perspektiven der Genetik",
+          "ustd": 18,
+          "topics": [
+            {
+              "id": "bi-gk12-lb1-genetik",
+              "title": "Genetik – Grundlagen und Perspektiven",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Gentechnik",
+                "DNA"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb5",
+          "title": "Kommunikation zwischen Zellen",
+          "ustd": 10,
+          "topics": [
+            {
+              "id": "bi-gk12-lb2-kommunikation",
+              "title": "Kommunikation zwischen Zellen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Signal",
+                "Rezeptor"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb6",
+          "title": "Biodiversität und ihre Entstehung",
+          "ustd": 14,
+          "topics": [
+            {
+              "id": "bi-gk12-lb3-biodiversitaet",
+              "title": "Biodiversität und ihre Entstehung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Biodiversität",
+                "Evolution"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "bi-gk-lbw-wueste",
+              "title": "Leben in der Wüste",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Wüste"
+              ]
+            },
+            {
+              "id": "bi-gk-lbw-energie",
+              "title": "Energiehaushalt von Mensch und Tier",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Energie"
+              ]
+            },
+            {
+              "id": "bi-gk-lbw-fliesgewaesser",
+              "title": "Fließgewässer",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Fluss"
+              ]
+            },
+            {
+              "id": "bi-gk-lbw-krebs",
+              "title": "Krebs",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Tumor"
+              ]
+            },
+            {
+              "id": "bi-gk-lbw-nerven",
+              "title": "Nervensysteme",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Nerven"
+              ]
+            },
+            {
+              "id": "bi-gk-lbw-verhalten",
+              "title": "Verhaltensbiologisches Praktikum",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Verhalten"
+              ]
+            },
+            {
+              "id": "bi-gk-lbw-gentechnik",
+              "title": "Grüne Gentechnik",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Gentechnik"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "biologie-jgs-11-lk",
+      "title": "Jahrgangsstufe 11 (Leistungskurs)",
+      "subjectTitle": "Biologie",
+      "gradeTitle": "Jahrgangsstufe 11 (Leistungskurs)",
+      "description": "Vertiefte Zellbiologie, Stoffwechsel sowie Ökologie und Nachhaltigkeit.",
+      "searchHints": [
+        "Zelle",
+        "Stoffwechsel",
+        "Ökologie"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Zellen, Gewebe und Organe",
+          "ustd": 55,
+          "topics": [
+            {
+              "id": "bi-lk11-lb1-zellen",
+              "title": "Zellen, Gewebe und Organe (Lk)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Differenzierung",
+                "Zelle"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Assimilation und Dissimilation",
+          "ustd": 40,
+          "topics": [
+            {
+              "id": "bi-lk11-lb2-stoffwechsel",
+              "title": "Assimilation und Dissimilation (Lk)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Redox",
+                "Stoffwechsel"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Ökologie und Nachhaltigkeit",
+          "ustd": 35,
+          "topics": [
+            {
+              "id": "bi-lk11-lb3-oekologie",
+              "title": "Ökologie und Nachhaltigkeit (Lk)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Nachhaltigkeit"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "bi-lk11-lbw-urban",
+              "title": "Urbane Ökologie",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Stadtökologie"
+              ]
+            },
+            {
+              "id": "bi-lk11-lbw-bioindikation",
+              "title": "Bioindikation",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Bioindikator"
+              ]
+            },
+            {
+              "id": "bi-lk11-lbw-invasiv",
+              "title": "Invasive Arten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Neobiota"
+              ]
+            },
+            {
+              "id": "bi-lk11-lbw-rohstoffe",
+              "title": "Nachwachsende Rohstoffe",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Biomasse"
+              ]
+            },
+            {
+              "id": "bi-lk11-lbw-energie",
+              "title": "Energiehaushalt des Menschen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Energie"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "biologie-jgs-12-lk",
+      "title": "Jahrgangsstufe 12 (Leistungskurs)",
+      "subjectTitle": "Biologie",
+      "gradeTitle": "Jahrgangsstufe 12 (Leistungskurs)",
+      "description": "Genetik, Zellkommunikation, Verhalten, Biodiversität und Systematisierung.",
+      "searchHints": [
+        "Genetik",
+        "Verhalten",
+        "Biodiversität"
+      ],
+      "areas": [
+        {
+          "id": "lb1",
+          "title": "Grundlagen, Anwendungen und Perspektiven der Genetik",
+          "ustd": 34,
+          "topics": [
+            {
+              "id": "bi-lk12-lb1-genetik",
+              "title": "Genetik (Lk)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Genetik",
+                "Gentechnik"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb2",
+          "title": "Kommunikation zwischen Zellen",
+          "ustd": 32,
+          "topics": [
+            {
+              "id": "bi-lk12-lb2-kommunikation",
+              "title": "Kommunikation zwischen Zellen (Lk)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Signalwege"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Verhalten von Tier und Mensch",
+          "ustd": 10,
+          "topics": [
+            {
+              "id": "bi-lk12-lb3-verhalten",
+              "title": "Verhalten von Tier und Mensch",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Ethologie"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb4",
+          "title": "Biodiversität und ihre Entstehung",
+          "ustd": 20,
+          "topics": [
+            {
+              "id": "bi-lk12-lb4-biodiversitaet",
+              "title": "Biodiversität und ihre Entstehung (Lk)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Biodiversität"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb5",
+          "title": "Systematisierung und Vernetztheit",
+          "ustd": 14,
+          "topics": [
+            {
+              "id": "bi-lk12-lb5-systematik",
+              "title": "Systematisierung und Vernetztheit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Vernetzung"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lbw",
+          "title": "Wahlbereiche",
+          "topics": [
+            {
+              "id": "bi-lk12-lbw-allergie",
+              "title": "Allergien und Autoimmunkrankheiten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Allergie"
+              ]
+            },
+            {
+              "id": "bi-lk12-lbw-stoffwechsel",
+              "title": "Evolution des Stoffwechsels",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Stoffwechsel"
+              ]
+            },
+            {
+              "id": "bi-lk12-lbw-gefaess",
+              "title": "Praktikum Gefäßpflanzen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Pflanzen"
+              ]
+            },
+            {
+              "id": "bi-lk12-lbw-verhalten",
+              "title": "Verhaltensbiologisches Praktikum",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Verhalten"
+              ]
+            },
+            {
+              "id": "bi-lk12-lbw-gentechnik",
+              "title": "Arbeitstechniken in der Genetik",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 8,
+              "keywords": [
+                "Labor"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "extras": [],
+  "contentHash": "1cfada06"
+}

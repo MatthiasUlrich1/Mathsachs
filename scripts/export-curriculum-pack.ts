@@ -2,6 +2,7 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { buildGymSachsenAnhaltPack } from '../src/curriculum/gymSachsenAnhaltPack'
+import { buildGymSachsenBiologiePack } from '../src/curriculum/biologieGymPack'
 import { buildGymSachsenGeschichtePack } from '../src/curriculum/geschichteGymPack'
 import { buildOberschuleHsPack, buildOberschuleRsPack } from '../src/curriculum/oberschulePacks'
 import { buildGymSachsenPhysikPack } from '../src/curriculum/physikGymPack'
@@ -29,6 +30,7 @@ const packs: Array<{ file: string; pack: CurriculumPack }> = [
   { file: 'gym-sachsen.json', pack: await buildGymSachsenSeed() },
   { file: 'gym-sachsen-physik.json', pack: buildGymSachsenPhysikPack() },
   { file: 'gym-sachsen-geschichte.json', pack: buildGymSachsenGeschichtePack() },
+  { file: 'gym-sachsen-biologie.json', pack: buildGymSachsenBiologiePack() },
   { file: 'gym-sachsen-anhalt.json', pack: buildGymSachsenAnhaltPack() },
   { file: 'sekundarschule-sachsen-anhalt-hs.json', pack: buildSekundarschuleSachsenAnhaltHsPack() },
   { file: 'sekundarschule-sachsen-anhalt-rs.json', pack: buildSekundarschuleSachsenAnhaltRsPack() },

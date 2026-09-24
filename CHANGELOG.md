@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.22] – 2026-09-24
+
+### Hinzugefügt
+- **Biologie Gymnasium Sachsen (Lehrplan 522):** neues Pack `gym-sachsen-biologie`
+  **1.0.0** mit Outline Klassen 5–12 (Gk/Lk). **Klasse 5 · Wirbeltiere** mit
+  spielbaren Generatoren (MC, Richtig/Falsch, Mehrfachauswahl, Zuordnung,
+  Sortieren, Klassifikations-Slots): Merkmale des Lebens, Fische, Lurche,
+  Kriechtiere, Vögel, Säugetiere, Systematisierung, Wirbeltiere im Winter.
+  Themen `released:false` (Entwickler-Test). Fachfilter **Biologie**.
+
 ## [0.28.21] – 2026-09-24
 
 ### Behoben

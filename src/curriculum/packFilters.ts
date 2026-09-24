@@ -16,7 +16,7 @@ export const SCHULFORM_OPTIONS: { id: SchulformId; label: string }[] = [
   { id: 'realschule', label: 'Realschule' },
 ]
 
-export const SUBJECT_OPTIONS = ['Mathematik', 'Physik', 'Geschichte'] as const
+export const SUBJECT_OPTIONS = ['Mathematik', 'Physik', 'Geschichte', 'Biologie'] as const
 export type SubjectId = (typeof SUBJECT_OPTIONS)[number]
 
 export function normalizeSubject(subject: string | undefined | null): string {
