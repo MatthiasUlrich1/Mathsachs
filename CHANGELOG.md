@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.25] – 2026-09-24
+
+### Behoben
+- **Desktop-Installer-CI (`tsc`):** `gapFillTask` übergab `instruction` an
+  `textTask`, obwohl `TextTaskInput` (anders als choicePick/multiSelect) kein
+  Interactive-`instruction` hat — Build brach mit TS2353 ab. Argument entfernt;
+  `dedupeKey` in `textTask` analog zu anderen Helpers verdrahtet.
+
 ## [0.28.24] – 2026-09-24
 
 ### Hinzugefügt

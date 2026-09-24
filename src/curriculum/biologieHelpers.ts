@@ -151,7 +151,6 @@ export function gapFillTask(opts: {
   solution: string
   explanation: string
   fachwissen: Fachwissen
-  instruction?: string
   dedupeKey?: string
 }): Task {
   return textTask({
@@ -159,7 +158,6 @@ export function gapFillTask(opts: {
     accepted: opts.accepted,
     solution: opts.solution,
     explanation: opts.explanation,
-    instruction: opts.instruction ?? 'Ergänze das passende Fachwort:',
     fachwissen: opts.fachwissen,
     ...(opts.dedupeKey ? { dedupeKey: opts.dedupeKey } : {}),
   })

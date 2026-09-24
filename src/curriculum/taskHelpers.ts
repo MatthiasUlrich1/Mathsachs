@@ -78,6 +78,8 @@ interface TextTaskInput {
   explanation: string
   visualContent?: string
   fachwissen?: Fachwissen
+  /** Round-dedupe identity (same key → treated as duplicate in a round). */
+  dedupeKey?: string
 }
 
 /** Build a task whose answer is checked as free text (e.g. "<", ">", "="). */
@@ -90,6 +92,7 @@ export const textTask = (input: TextTaskInput): Task => {
     explanation: input.explanation,
     visualContent: input.visualContent,
     ...withFw(input.fachwissen),
+    ...withDedupe(input.dedupeKey),
     check: (answer: UserInput) =>
       answer.kind === 'value' &&
       accepted.includes(answer.value.trim().toLowerCase()),
