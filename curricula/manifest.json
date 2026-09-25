@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-25T16:02:14.465Z",
+  "updatedAt": "2026-09-25T16:38:37.673Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -7,10 +7,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Mathematik",
-      "version": "1.2.8",
+      "version": "1.2.9",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen.json",
-      "size": 66088,
-      "changelog": "K11/12 Grafik freigegeben: Tangente-Steigung (2453), Fläche unter Graph (8970), Nullstelle linear tippen (5544)."
+      "size": 71977,
+      "changelog": "tasksPerRound Standard 10 für alle Mathe-Themen. K11/12 Grafik freigegeben: Tangente-Steigung (2453), Fläche unter Graph (8970), Nullstelle linear tippen (5544)."
     },
     {
       "id": "gym-sachsen-physik",
@@ -51,10 +51,10 @@
       "region": "Sachsen-Anhalt",
       "school": "Gymnasium",
       "subject": "Mathematik",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-anhalt.json",
-      "size": 37049,
-      "changelog": "Klassen 5–10 und 11/12 gA nach ST-Fachlehrplan. Ohne Netz lokale Fassung."
+      "size": 42641,
+      "changelog": "Klassen 5–10 und 11/12 gA nach ST-Fachlehrplan. tasksPerRound Standard 10. Ohne Netz lokale Fassung."
     },
     {
       "id": "sekundarschule-sachsen-anhalt-hs",
@@ -62,10 +62,10 @@
       "region": "Sachsen-Anhalt",
       "school": "Sekundarschule",
       "subject": "Mathematik",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/sekundarschule-sachsen-anhalt-hs.json",
-      "size": 25703,
-      "changelog": "Klassen 5–9 (HSA) nach ST-Fachlehrplan. Ohne Netz lokale Fassung."
+      "size": 29790,
+      "changelog": "Klassen 5–9 (HSA) nach ST-Fachlehrplan. tasksPerRound Standard 10. Ohne Netz lokale Fassung."
     },
     {
       "id": "sekundarschule-sachsen-anhalt-rs",
@@ -73,10 +73,10 @@
       "region": "Sachsen-Anhalt",
       "school": "Sekundarschule",
       "subject": "Mathematik",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/sekundarschule-sachsen-anhalt-rs.json",
-      "size": 29721,
-      "changelog": "Klassen 5–10 (RSA) nach ST-Fachlehrplan. Ohne Netz lokale Fassung."
+      "size": 34368,
+      "changelog": "Klassen 5–10 (RSA) nach ST-Fachlehrplan. tasksPerRound Standard 10. Ohne Netz lokale Fassung."
     },
     {
       "id": "oberschule-sachsen-hs",
@@ -84,10 +84,10 @@
       "region": "Sachsen",
       "school": "Oberschule",
       "subject": "Mathematik",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/oberschule-sachsen-hs.json",
-      "size": 46595,
-      "changelog": "Klassen 5–9 (Hauptschulbildungsgang). Ohne Netz lokale Fassung."
+      "size": 52362,
+      "changelog": "Klassen 5–9 (Hauptschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung."
     },
     {
       "id": "oberschule-sachsen-rs",
@@ -95,10 +95,10 @@
       "region": "Sachsen",
       "school": "Oberschule",
       "subject": "Mathematik",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/oberschule-sachsen-rs.json",
-      "size": 55717,
-      "changelog": "Klassen 5–10 (Realschulbildungsgang). Ohne Netz lokale Fassung."
+      "size": 62639,
+      "changelog": "Klassen 5–10 (Realschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung."
     }
   ]
 }

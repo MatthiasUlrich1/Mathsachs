@@ -6,6 +6,7 @@
  * released:false → Entwickler.
  */
 import type { PackArea, PackGrade, PackTopic } from './pack'
+import { DEFAULT_TASKS_PER_ROUND } from './tasksPerRound'
 
 const topic = (
   id: string,
@@ -18,7 +19,7 @@ const topic = (
   pointsPerTask: 10,
   hint: 'Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.',
   released: opts?.released ?? false,
-  tasksPerRound: opts?.tasksPerRound ?? 10,
+  tasksPerRound: opts?.tasksPerRound ?? DEFAULT_TASKS_PER_ROUND,
   ...(keywords?.length ? { keywords } : {})})
 
 const area = (id: string, title: string, ustd: number | undefined, topics: PackTopic[]): PackArea => ({

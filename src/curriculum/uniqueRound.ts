@@ -1,5 +1,6 @@
 import type { Rng } from '../lib/rng'
 import { createRng, randInt, timeSeed } from '../lib/rng'
+import { DEFAULT_TASKS_PER_ROUND } from './tasksPerRound'
 import type { Task, Topic } from './types'
 
 /** Normalize free text for within-round identity (ignore punctuation / case). */
@@ -162,7 +163,7 @@ function markSeen(ids: string[], seen: Set<string>) {
 export function buildUniqueTaskRound(
   generate: (rng: Rng) => Task,
   rng: Rng,
-  targetCount = 10,
+  targetCount = DEFAULT_TASKS_PER_ROUND,
   maxAttemptsPerSlot = 120,
 ): Task[] {
   return buildUniqueTaskRoundWithSeeds(generate, rng, targetCount, maxAttemptsPerSlot).map(
@@ -179,7 +180,7 @@ export interface SeededTask {
 export function buildUniqueTaskRoundWithSeeds(
   generate: (rng: Rng) => Task,
   rng: Rng,
-  targetCount = 10,
+  targetCount = DEFAULT_TASKS_PER_ROUND,
   maxAttemptsPerSlot = 120,
   firstSeed?: number,
 ): SeededTask[] {
@@ -232,7 +233,7 @@ export interface BerichtigungTopicRef {
 /** Mixed round over wrong-exam topics (~2–3 similar tasks each, capped). */
 export function buildBerichtigungRound(
   topics: BerichtigungTopicRef[],
-  targetCount = 10,
+  targetCount = DEFAULT_TASKS_PER_ROUND,
 ): Array<SeededTask & BerichtigungTopicRef> {
   if (topics.length === 0) return []
   const rng = createRng(timeSeed())

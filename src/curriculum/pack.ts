@@ -1,5 +1,6 @@
 import { compareSemver, isNewerVersion } from '../updates/semver'
 import type { AnswerKind } from './types'
+import { MAX_TASKS_PER_ROUND } from './tasksPerRound'
 
 export const GYM_SACHSEN_PACK_ID = 'gym-sachsen'
 export const GYM_SACHSEN_PHYSIK_PACK_ID = 'gym-sachsen-physik'
@@ -38,7 +39,7 @@ export interface PackTopic {
   released?: boolean
   /** Parent topic id for pending graphic/interactive review children. */
   reviewOf?: string
-  /** Practice round length; omitted = app default (Physik 5, sonst 10). */
+  /** Practice round length; omitted = app default 10 (all subjects). */
   tasksPerRound?: number
   /**
    * Opt-out der Wissens-Rubrik. Standard: Wissen immer vorhanden
@@ -165,7 +166,7 @@ const parseTopic = (raw: unknown): PackTopic | null => {
     ...(typeof raw.tasksPerRound === 'number' &&
     Number.isFinite(raw.tasksPerRound) &&
     raw.tasksPerRound >= 1
-      ? { tasksPerRound: Math.min(30, Math.trunc(raw.tasksPerRound)) }
+      ? { tasksPerRound: Math.min(MAX_TASKS_PER_ROUND, Math.trunc(raw.tasksPerRound)) }
       : {}),
     ...(raw.excludeFachwissen === true ? { excludeFachwissen: true } : {}),
   }

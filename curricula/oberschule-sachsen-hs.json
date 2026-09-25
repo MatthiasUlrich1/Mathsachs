@@ -4,9 +4,9 @@
   "region": "Sachsen",
   "school": "Oberschule",
   "subject": "Mathematik",
-  "version": "1.0.0",
-  "changelog": "Klassen 5–9 (Hauptschulbildungsgang). Ohne Netz lokale Fassung.",
-  "contentHash": "a321f773",
+  "version": "1.0.1",
+  "changelog": "Klassen 5–9 (Hauptschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung.",
+  "contentHash": "60e7be89",
   "official": [
     {
       "id": "os-hs-klasse-5",
@@ -47,6 +47,7 @@
               "title": "Veranschaulichen, Schätzen, Runden, Vergleichen und Ordnen natürlicher Zahlen",
               "hint": "Schau auf die Ziffer rechts von der Rundungsstelle.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "runden",
                 "Zahlenstrahl"
@@ -57,6 +58,7 @@
               "title": "Potenzschreibweise und Zehnerpotenzen",
               "hint": "a² = a · a; 10ⁿ ist eine 1 mit n Nullen.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Potenz",
                 "Zehnerpotenz"
@@ -67,6 +69,7 @@
               "title": "Addieren natürlicher Zahlen",
               "hint": "Rechne Stelle für Stelle.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Addition"
               ]
@@ -76,6 +79,7 @@
               "title": "Subtrahieren natürlicher Zahlen",
               "hint": "Der Minuend (vorne) ist immer größer.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Subtraktion"
               ]
@@ -85,6 +89,7 @@
               "title": "Multiplizieren natürlicher Zahlen",
               "hint": "Zerlege den zweiten Faktor nach Stellenwerten von links; trage Teilprodukte und Summe ein.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Multiplikation"
               ]
@@ -94,6 +99,7 @@
               "title": "Schriftliche Division durch einstelligen Divisor",
               "hint": "Trage den Quotienten ziffernweise ein; bei Rest zusätzlich die Rest-Zeile.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Division"
               ]
@@ -102,13 +108,15 @@
               "id": "os-k5-lb1-quadrat",
               "title": "Quadratzahl und Quadratwurzel",
               "hint": "Die Quadratwurzel ist die Umkehrung des Quadrierens.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k5-lb1-gleichung",
               "title": "Einfache Gleichungen und Ungleichungen inhaltlich lösen",
               "hint": "Nutze die Umkehroperation oder systematisches Probieren.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Gleichung"
               ]
@@ -118,6 +126,7 @@
               "title": "Teilbarkeit, Vielfache und Teiler",
               "hint": "Antworte mit „ja“ oder „nein“.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Teiler",
                 "Vielfache"
@@ -128,6 +137,7 @@
               "title": "Teilbarkeitsregeln und Primzahlen",
               "hint": "Eine Primzahl hat genau zwei Teiler: 1 und sich selbst.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Primzahl",
                 "Sieb des Eratosthenes"
@@ -145,6 +155,7 @@
               "title": "Erkennen und Darstellen gemeiner Brüche und Dezimalzahlen",
               "hint": "Gib den vollständig gekürzten Bruch ein.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Bruch",
                 "Anteil"
@@ -155,6 +166,7 @@
               "title": "Echte und unechte Brüche, Kürzen",
               "hint": "Gib den vollständig gekürzten Bruch ein.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "kürzen"
               ]
@@ -164,6 +176,7 @@
               "title": "Erweitern und Umwandeln von Zehnerbrüchen und Dezimalzahlen",
               "hint": "Gib den gesuchten Zähler ein.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "erweitern",
                 "Zehnerbruch"
@@ -172,13 +185,15 @@
             {
               "id": "os-k5-lb2-vergleichen",
               "title": "Vergleichen, Ordnen und Abschätzen gemeiner Brüche",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k5-lb2-runden-dez",
               "title": "Runden von Dezimalzahlen",
               "hint": "Ist die nächste Ziffer 5 oder größer, wird aufgerundet.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "runden"
               ]
@@ -188,6 +203,7 @@
               "title": "Dezimalzahlen addieren und subtrahieren",
               "hint": "Achte auf die Ausrichtung des Kommas.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Dezimalzahl"
               ]
@@ -197,6 +213,7 @@
               "title": "Vervielfachen mit einstelligen natürlichen Zahlen und Zehnerpotenzen",
               "hint": "Mit einstelliger Zahl oder Zehnerpotenz.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Dezimalzahl"
               ]
@@ -206,6 +223,7 @@
               "title": "Teilen durch einstellige natürliche Zahlen und Zehnerpotenzen",
               "hint": "Durch einstellige Zahl oder Zehnerpotenz.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Dezimalzahl"
               ]
@@ -213,13 +231,15 @@
             {
               "id": "os-k5-lb2-prozent",
               "title": "Prozentschreibweise für bequeme Anteile",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k5-lb2-mittelwert",
               "title": "Arithmetisches Mittel",
               "hint": "Mittelwert = Summe : Anzahl.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Mittelwert",
                 "Durchschnitt"
@@ -230,6 +250,7 @@
               "title": "Einheiten umrechnen: Länge",
               "hint": "Vorsätze Dezi, Zenti, Milli.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "cm",
                 "m",
@@ -240,6 +261,7 @@
               "id": "os-k5-lb2-masse",
               "title": "Einheiten umrechnen: Masse",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "g",
                 "kg",
@@ -250,6 +272,7 @@
               "id": "os-k5-lb2-zeit",
               "title": "Einheiten umrechnen: Zeit",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "min",
                 "h",
@@ -266,18 +289,21 @@
             {
               "id": "os-k5-lb3-koordinaten",
               "title": "Koordinaten und Koordinatensystem (erster Quadrant)",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k5-lb3-lage",
               "title": "Lagebeziehungen: parallel, senkrecht, schneiden einander",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k5-lb3-winkelarten",
               "title": "Messen und Zeichnen von Winkeln, Winkelarten",
               "hint": "spitz, recht, stumpf, gestreckt oder überstumpf.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Winkel"
               ]
@@ -286,17 +312,20 @@
               "id": "os-k5-lb3-winkel-erg",
               "title": "Winkel zu 90° oder 180° ergänzen",
               "hint": "Ziehe den gegebenen Winkel von 90° bzw. 180° ab.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k5-lb3-wuerfel",
               "title": "Würfel skizzieren, Körpernetze und Schrägbild",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k5-lb3-umfang",
               "title": "Umfang als Summe von Seitenlängen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Umfang",
                 "Rechteck"
@@ -306,6 +335,7 @@
               "id": "os-k5-lb3-flaeche",
               "title": "Flächeninhaltsformel für das Rechteck",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Fläche",
                 "Quadrat"
@@ -315,6 +345,7 @@
               "id": "os-k5-lb3-flaeche-eh",
               "title": "Einheiten umrechnen: Flächeninhalt",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "cm²",
                 "m²",
@@ -325,6 +356,7 @@
               "id": "os-k5-lb3-oberflaeche",
               "title": "Oberfläche als zusammengesetzte Fläche",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Oberfläche",
                 "Würfel"
@@ -334,6 +366,7 @@
               "id": "os-k5-lb3-volumen-wuerfel",
               "title": "Volumenformel für den Würfel",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Volumen",
                 "Würfel"
@@ -343,6 +376,7 @@
               "id": "os-k5-lb3-volumen-eh",
               "title": "Einheiten umrechnen: Volumen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "cm³",
                 "dm³",
@@ -359,12 +393,14 @@
             {
               "id": "os-k5-lb4-spiegelung",
               "title": "Spiegelungen und Verschiebungen, Symmetrieachse",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k5-lb4-deckung",
               "title": "Zeichnen und Analysieren symmetrischer sowie deckungsgleicher Figuren",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -375,12 +411,14 @@
             {
               "id": "os-k5-lbw1-zahlzeichen",
               "title": "Zahlzeichen verschiedener Epochen und Kulturkreise",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k5-lbw1-abakus",
               "title": "Darstellung und Rechnen mit Abakus oder Rechenpfennigen",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -391,12 +429,14 @@
             {
               "id": "os-k5-lbw2-daten",
               "title": "Erfassen und Darstellen von Daten (Urliste, Tabelle, Säulendiagramm)",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k5-lbw2-kombinatorik",
               "title": "Einfache kombinatorische Zählstrategien",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -407,7 +447,8 @@
             {
               "id": "os-k5-lbw3-angebote",
               "title": "Angebote vergleichen, Zeitpläne und Fahrtkosten",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         }
@@ -443,13 +484,15 @@
             {
               "id": "os-k6-lb1-erweiterung",
               "title": "Notwendigkeit einer Zahlenbereichserweiterung, Mengenbegriff",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k6-lb1-kuerzen",
               "title": "Erweitern und Kürzen",
               "hint": "Gib den vollständig gekürzten Bruch ein.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "kürzen"
               ]
@@ -458,6 +501,7 @@
               "id": "os-k6-lb1-erweitern",
               "title": "Erweitern gemeiner Brüche",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "erweitern"
               ]
@@ -466,6 +510,7 @@
               "id": "os-k6-lb1-bruch-dez",
               "title": "Umwandeln gemeiner Brüche in Dezimalzahlen und umgekehrt",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Dezimalzahl",
                 "periodisch"
@@ -475,6 +520,7 @@
               "id": "os-k6-lb1-vergleichen",
               "title": "Vergleichen und Ordnen gebrochener Zahlen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "vergleichen"
               ]
@@ -483,6 +529,7 @@
               "id": "os-k6-lb1-add-sub",
               "title": "Addieren und Subtrahieren gebrochener Zahlen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Brüche"
               ]
@@ -491,6 +538,7 @@
               "id": "os-k6-lb1-mult",
               "title": "Multiplizieren gebrochener Zahlen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Brüche"
               ]
@@ -499,6 +547,7 @@
               "id": "os-k6-lb1-div",
               "title": "Dividieren gebrochener Zahlen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Brüche"
               ]
@@ -506,27 +555,32 @@
             {
               "id": "os-k6-lb1-dez-add-sub",
               "title": "Dezimalzahlen addieren und subtrahieren",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k6-lb1-dez-mult",
               "title": "Dezimalzahlen multiplizieren",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k6-lb1-dez-div",
               "title": "Dezimalzahlen dividieren",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k6-lb1-runden",
               "title": "Überschlagen, Abschätzen und Runden",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k6-lb1-mittelwert",
               "title": "Arithmetisches Mittel",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Mittelwert"
               ]
@@ -534,7 +588,8 @@
             {
               "id": "os-k6-lb1-verhaeltnis",
               "title": "Verhältnisgleichungen",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -546,12 +601,14 @@
             {
               "id": "os-k6-lb2-arten",
               "title": "Eindeutige, eineindeutige und mehrdeutige Zuordnungen",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k6-lb2-prop",
               "title": "Direkt proportionale Zuordnung (Dreisatz)",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Dreisatz",
                 "proportional"
@@ -561,6 +618,7 @@
               "id": "os-k6-lb2-antiprop",
               "title": "Indirekt proportionale Zuordnung",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "antiproportional",
                 "Dreisatz"
@@ -570,6 +628,7 @@
               "id": "os-k6-lb2-anteil",
               "title": "Anteil einer Größe berechnen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Anteil"
               ]
@@ -577,7 +636,8 @@
             {
               "id": "os-k6-lb2-darstellung",
               "title": "Darstellung in Wort, Tabelle, Koordinatensystem und Gleichung",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -590,6 +650,7 @@
               "id": "os-k6-lb3-nebenwinkel",
               "title": "Nebenwinkelsatz",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Nebenwinkel"
               ]
@@ -598,6 +659,7 @@
               "id": "os-k6-lb3-scheitel",
               "title": "Scheitelwinkelsatz und Stufen- bzw. Wechselwinkel",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Scheitelwinkel",
                 "Stufenwinkel"
@@ -607,6 +669,7 @@
               "id": "os-k6-lb3-innenwinkel",
               "title": "Innenwinkelsatz für Dreiecke",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Dreieck",
                 "Winkelsumme"
@@ -615,17 +678,20 @@
             {
               "id": "os-k6-lb3-einteilung",
               "title": "Einteilung der Dreiecke nach Seiten und Winkeln",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k6-lb3-kongruenz",
               "title": "Kongruenzsätze, Seiten-Winkel-Relation und Dreiecksungleichung",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k6-lb3-flaeche-dreieck",
               "title": "Flächeninhalt von Dreiecken (Grundseite und Höhe)",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Dreieck"
               ]
@@ -633,12 +699,14 @@
             {
               "id": "os-k6-lb3-parallelogramm",
               "title": "Flächeninhalt von Parallelogramm, Drachenviereck und Trapez",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k6-lb3-umfang",
               "title": "Umfangsberechnung",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Umfang"
               ]
@@ -646,12 +714,14 @@
             {
               "id": "os-k6-lb3-flaeche-rechteck",
               "title": "Flächeninhalt von Rechteck und Quadrat",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k6-lb3-winkelsumme-viereck",
               "title": "Winkelsumme im Viereck",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -663,12 +733,14 @@
             {
               "id": "os-k6-lb4-darstellen",
               "title": "Grundriss, Seitenansichten, Schrägbild und Körpernetz",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k6-lb4-volumen-quader",
               "title": "Volumen von Quader und Würfel",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Volumen"
               ]
@@ -677,6 +749,7 @@
               "id": "os-k6-lb4-oberflaeche",
               "title": "Oberfläche als zusammengesetzte Fläche",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Oberfläche"
               ]
@@ -685,6 +758,7 @@
               "id": "os-k6-lb4-volumen-prisma",
               "title": "Volumen gerader Prismen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Prisma"
               ]
@@ -699,12 +773,14 @@
             {
               "id": "os-k6-lb5-probieren",
               "title": "Problemlösestrategien: systematisches Probieren, Zurückführen auf Bekanntes",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-k6-lb5-haeufigkeit",
               "title": "Zufallsversuche: absolute und relative Häufigkeit",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Häufigkeit",
                 "Zufall"
@@ -714,6 +790,7 @@
               "id": "os-k6-lb5-anteil-prozent",
               "title": "Anteile in Prozent",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Prozent"
               ]
@@ -721,7 +798,8 @@
             {
               "id": "os-k6-lb5-praesentation",
               "title": "Präsentation zu geometrischen Figuren und Körpern in der Umwelt",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -732,7 +810,8 @@
             {
               "id": "os-k6-lbw1-dgs",
               "title": "Geometrische Objekte mit dynamischer Geometriesoftware",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -743,7 +822,8 @@
             {
               "id": "os-k6-lbw2-spiele",
               "title": "Spiele zur Problemlösefähigkeit, Raumanschauung und Stochastik",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -755,6 +835,7 @@
               "id": "os-k6-lbw3-mittelwert",
               "title": "Arithmetisches Mittel bei Datenerhebungen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Mittelwert"
               ]
@@ -763,6 +844,7 @@
               "id": "os-k6-lbw3-modal",
               "title": "Modalwert, Maximum und Minimum",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Modalwert"
               ]
@@ -797,17 +879,20 @@
             {
               "id": "os-hs-k7-lb1-netze",
               "title": "Netze, Seitenansichten und Schrägbilder zeichnen",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k7-lb1-modelle",
               "title": "Herstellen von Modellen",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k7-lb1-flaeche",
               "title": "Flächeninhalte zusammengesetzter Figuren",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Fläche"
               ]
@@ -816,6 +901,7 @@
               "id": "os-hs-k7-lb1-volumen",
               "title": "Volumen zusammengesetzter Körper",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Volumen"
               ]
@@ -831,6 +917,7 @@
               "id": "os-hs-k7-lb2-anteil-bruch",
               "title": "Anteile als gemeine Brüche, Dezimalzahlen und Prozente",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Bruch",
                 "Prozent"
@@ -839,17 +926,20 @@
             {
               "id": "os-hs-k7-lb2-vergleich",
               "title": "Vergleichen von Anteilen",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k7-lb2-kreisdiagramm",
               "title": "Grafisches Darstellen von Anteilen im Kreisdiagramm",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k7-lb2-anteil-groesse",
               "title": "Anteil einer Größe berechnen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Anteil"
               ]
@@ -857,12 +947,14 @@
             {
               "id": "os-hs-k7-lb2-begriffe",
               "title": "Prozent, Prozentwert, Prozentsatz und Grundwert",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k7-lb2-prozent",
               "title": "Grundaufgaben der Prozentrechnung",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Prozent",
                 "Prozentsatz"
@@ -872,6 +964,7 @@
               "id": "os-hs-k7-lb2-dreisatz",
               "title": "Dreisatz bei Aufgaben mit Umweltbezug",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Dreisatz"
               ]
@@ -880,6 +973,7 @@
               "id": "os-hs-k7-lb2-haeufigkeit",
               "title": "Zufallsversuche: Urliste, absolute und relative Häufigkeit",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Häufigkeit"
               ]
@@ -894,12 +988,14 @@
             {
               "id": "os-hs-k7-lb3-zahlengerade",
               "title": "Veranschaulichen auf der Zahlengeraden, Vergleichen und Ordnen",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k7-lb3-add",
               "title": "Rationale Zahlen addieren",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "negative Zahlen"
               ]
@@ -907,22 +1003,26 @@
             {
               "id": "os-hs-k7-lb3-sub",
               "title": "Rationale Zahlen subtrahieren",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k7-lb3-mul",
               "title": "Rationale Zahlen vervielfachen",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k7-lb3-div",
               "title": "Rationale Zahlen durch eine natürliche Zahl teilen",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k7-lb3-term",
               "title": "Termwerte berechnen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Term"
               ]
@@ -931,6 +1031,7 @@
               "id": "os-hs-k7-lb3-gleichung",
               "title": "Einfache Gleichungen und Zahlenrätsel inhaltlich lösen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Gleichung"
               ]
@@ -938,7 +1039,8 @@
             {
               "id": "os-hs-k7-lb3-koordinaten",
               "title": "Punktkoordinaten in vier Quadranten",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -950,12 +1052,14 @@
             {
               "id": "os-hs-k7-lb4-konstruieren",
               "title": "Konstruieren von Dreiecken, Parallelogrammen und Drachenvierecken",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k7-lb4-flaeche-dreieck",
               "title": "Flächeninhalt von Dreiecken",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Dreieck"
               ]
@@ -964,6 +1068,7 @@
               "id": "os-hs-k7-lb4-umfang",
               "title": "Umfang von Dreiecken und Vierecken",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Umfang"
               ]
@@ -972,6 +1077,7 @@
               "id": "os-hs-k7-lb4-winkelsumme",
               "title": "Innenwinkelsumme im Vieleck",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Vieleck"
               ]
@@ -979,17 +1085,20 @@
             {
               "id": "os-hs-k7-lb4-zerlegen",
               "title": "Flächeninhalte von Vielecken durch Zerlegen",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k7-lb4-netze",
               "title": "Körpernetze, Schrägbilder und Seitenansichten von Prismen",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k7-lb4-volumen-prisma",
               "title": "Volumen gerader Prismen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Prisma",
                 "Volumen"
@@ -999,6 +1108,7 @@
               "id": "os-hs-k7-lb4-mantel",
               "title": "Grund-, Mantel- und Oberfläche von Prismen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Mantelfläche"
               ]
@@ -1007,6 +1117,7 @@
               "id": "os-hs-k7-lb4-oberflaeche",
               "title": "Oberfläche eines Quaders",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Oberfläche"
               ]
@@ -1020,7 +1131,8 @@
             {
               "id": "os-hs-k7-lbw1-parkett",
               "title": "Bandornamente und Parkettierungen",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -1031,7 +1143,8 @@
             {
               "id": "os-hs-k7-lbw2-taeuschung",
               "title": "Räumliche Illusionen und optische Täuschungen",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -1042,7 +1155,8 @@
             {
               "id": "os-hs-k7-lbw3-knobel",
               "title": "Probleme der Unterhaltungsmathematik",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         }
@@ -1076,6 +1190,7 @@
               "id": "os-hs-k8-lb1-prozent",
               "title": "Prozentrechnung in wirtschaftlichen Problemen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Prozent"
               ]
@@ -1084,6 +1199,7 @@
               "id": "os-hs-k8-lb1-zinsen",
               "title": "Kapital, Zinssatz, Jahreszins",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Zinsen",
                 "Kapital"
@@ -1093,6 +1209,7 @@
               "id": "os-hs-k8-lb1-zinseszins",
               "title": "Zinseszins",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Zinseszins"
               ]
@@ -1101,6 +1218,7 @@
               "id": "os-hs-k8-lb1-preisaenderung",
               "title": "Preiserhöhung und Preissenkung",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Prozent"
               ]
@@ -1108,12 +1226,14 @@
             {
               "id": "os-hs-k8-lb1-skonto",
               "title": "Skonto, Rabatt und Mehrwertsteuer",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k8-lb1-diagramme",
               "title": "Erstellen und Deuten von Säulen-, Linien- und Kreisdiagrammen",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -1125,12 +1245,14 @@
             {
               "id": "os-hs-k8-lb2-struktur",
               "title": "Struktur von Formeln erkennen und Formeln umstellen",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k8-lb2-term",
               "title": "Term auswerten (Werte berechnen)",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Term"
               ]
@@ -1139,6 +1261,7 @@
               "id": "os-hs-k8-lb2-zusammenfassen",
               "title": "Terme zusammenfassen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Term"
               ]
@@ -1147,6 +1270,7 @@
               "id": "os-hs-k8-lb2-gleichung",
               "title": "Lineare Gleichung",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Gleichung"
               ]
@@ -1154,7 +1278,8 @@
             {
               "id": "os-hs-k8-lb2-formelsammlung",
               "title": "Umgang mit der Formelsammlung",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -1166,12 +1291,14 @@
             {
               "id": "os-hs-k8-lb3-vieleck",
               "title": "Eigenschaften regelmäßiger Vielecke, Achsen- und Drehsymmetrie",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k8-lb3-winkelsumme",
               "title": "Innenwinkel und Innenwinkelsumme",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Vieleck"
               ]
@@ -1180,6 +1307,7 @@
               "id": "os-hs-k8-lb3-kreis-umfang",
               "title": "Umfang eines Kreises",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kreis",
                 "Pi"
@@ -1189,6 +1317,7 @@
               "id": "os-hs-k8-lb3-kreis-flaeche",
               "title": "Flächeninhalt eines Kreises",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kreis",
                 "Pi"
@@ -1197,12 +1326,14 @@
             {
               "id": "os-hs-k8-lb3-kreisring",
               "title": "Flächeninhalt am Kreisring",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k8-lb3-lage",
               "title": "Lagebeziehungen von Kreis und Gerade: Sehne, Sekante, Tangente",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -1214,12 +1345,14 @@
             {
               "id": "os-hs-k8-lb4-darstellen",
               "title": "Netze, Ansichten und Schrägbild des Kreiszylinders",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k8-lb4-zylinder",
               "title": "Volumen von Kreis- und Hohlzylindern",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Zylinder",
                 "Volumen"
@@ -1228,7 +1361,8 @@
             {
               "id": "os-hs-k8-lb4-oberflaeche",
               "title": "Grund-, Mantel- und Oberfläche des Kreiszylinders",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -1240,12 +1374,14 @@
             {
               "id": "os-hs-k8-lb5-haushalt",
               "title": "Haushaltsbuch, Rechnungen, Wohn- und Baukosten",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k8-lb5-zinsen",
               "title": "Verzinsungsmöglichkeiten und Vergleich von Angeboten",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Zinsen"
               ]
@@ -1254,6 +1390,7 @@
               "id": "os-hs-k8-lb5-streckfaktor",
               "title": "Maßstäbliches Darstellen ebener Figuren und Körper",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Maßstab",
                 "Streckfaktor"
@@ -1268,7 +1405,8 @@
             {
               "id": "os-hs-k8-lbw1-fahrrad",
               "title": "Kenndaten, Wegstrecken und Geschwindigkeiten am Fahrrad",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -1279,7 +1417,8 @@
             {
               "id": "os-hs-k8-lbw2-kredit",
               "title": "Kredit, Tilgung und Kreditangebote",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -1290,7 +1429,8 @@
             {
               "id": "os-hs-k8-lbw3-modell",
               "title": "Maßstäbliches Vergrößern und Verkleinern im Modellbau",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         }
@@ -1321,6 +1461,7 @@
               "id": "os-hs-k9-lb1-hyp",
               "title": "Satz des Pythagoras: Hypotenuse",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Pythagoras"
               ]
@@ -1329,6 +1470,7 @@
               "id": "os-hs-k9-lb1-kathete",
               "title": "Satz des Pythagoras: fehlende Kathete",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Pythagoras"
               ]
@@ -1337,6 +1479,7 @@
               "id": "os-hs-k9-lb1-sinus",
               "title": "Sinus eines Winkels im rechtwinkligen Dreieck",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Sinus",
                 "Trigonometrie"
@@ -1345,12 +1488,14 @@
             {
               "id": "os-hs-k9-lb1-umkehrung",
               "title": "Umkehrung des Satzes des Pythagoras",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k9-lb1-sach",
               "title": "Seitenlängen und Winkel in Sachaufgaben",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Dachstuhl",
                 "Fachwerk"
@@ -1366,12 +1511,14 @@
             {
               "id": "os-hs-k9-lb2-darstellen",
               "title": "Schrägbild, Netz und Ansichten von Pyramide und Kreiskegel",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k9-lb2-pyramide",
               "title": "Volumen einer Pyramide mit quadratischer Grundfläche",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Pyramide"
               ]
@@ -1379,12 +1526,14 @@
             {
               "id": "os-hs-k9-lb2-kegel",
               "title": "Volumen von Kreiskegeln",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k9-lb2-zylinder",
               "title": "Volumen eines Kreiszylinders",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Zylinder"
               ]
@@ -1392,12 +1541,14 @@
             {
               "id": "os-hs-k9-lb2-masse",
               "title": "Masse unter Einbeziehung der Dichte",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k9-lb2-zusammengesetzt",
               "title": "Zusammengesetzte Körper",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -1409,12 +1560,14 @@
             {
               "id": "os-hs-k9-lb3-funktion",
               "title": "Funktion als eindeutige Zuordnung",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k9-lb3-funktionswert",
               "title": "Funktionswert einer linearen Funktion y = m·x+n",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "lineare Funktion"
               ]
@@ -1423,6 +1576,7 @@
               "id": "os-hs-k9-lb3-steigung",
               "title": "Steigung aus zwei Punkten",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Steigung"
               ]
@@ -1431,6 +1585,7 @@
               "id": "os-hs-k9-lb3-achsen",
               "title": "y-Achsenabschnitt bestimmen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Achsenabschnitt"
               ]
@@ -1438,12 +1593,14 @@
             {
               "id": "os-hs-k9-lb3-schnitt",
               "title": "Schnittpunktkoordinaten zweier Graphen",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k9-lb3-quadrat",
               "title": "Einblick: y = x² und y = a·x²",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Parabel"
               ]
@@ -1458,12 +1615,14 @@
             {
               "id": "os-hs-k9-lb4-kalkulation",
               "title": "Kalkulationen, Materialbedarf und funktionale Zusammenhänge",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "os-hs-k9-lb4-mittelwert",
               "title": "Darstellen und Auswerten von Daten",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Mittelwert"
               ]
@@ -1478,6 +1637,7 @@
               "id": "os-hs-k9-lbw1-median",
               "title": "Zentralwert (Median)",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Median"
               ]
@@ -1486,6 +1646,7 @@
               "id": "os-hs-k9-lbw1-modal",
               "title": "Modalwert",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Modalwert"
               ]
@@ -1494,6 +1655,7 @@
               "id": "os-hs-k9-lbw1-spannweite",
               "title": "Spannweite",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Spannweite"
               ]
@@ -1507,7 +1669,8 @@
             {
               "id": "os-hs-k9-lbw2-opt",
               "title": "Optimierungsprobleme aus Alltag und Wirtschaft",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -1518,7 +1681,8 @@
             {
               "id": "os-hs-k9-lbw3-zeichnen",
               "title": "Technische Zeichnungen und mehrere Ansichten",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         }

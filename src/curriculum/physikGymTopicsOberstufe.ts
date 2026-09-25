@@ -1,4 +1,5 @@
 import type { PackArea, PackGrade, PackTopic } from './pack'
+import { DEFAULT_TASKS_PER_ROUND } from './tasksPerRound'
 
 const topic = (id: string, title: string, keywords?: string[]): PackTopic => ({
   id,
@@ -6,7 +7,7 @@ const topic = (id: string, title: string, keywords?: string[]): PackTopic => ({
   pointsPerTask: 10,
   hint: 'Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.',
   released: false,
-  tasksPerRound: 10,
+  tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   ...(keywords?.length ? { keywords } : {}),
   // Wissen default via hydrate/ensureTopicFachwissen (Issue #45)
 })

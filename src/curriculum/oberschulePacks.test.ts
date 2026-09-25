@@ -61,7 +61,7 @@ describe('Oberschule Sachsen Lehrplan packs', () => {
     expect(parsedHs?.region).toBe('Sachsen')
     expect(parsedHs?.school).toBe('Oberschule')
     expect(parsedHs?.subject).toBe('Mathematik')
-    expect(parsedHs?.version).toBe('1.0.0')
+    expect(parsedHs?.version).toBe('1.0.1')
     expect(parsedRs?.school).toBe('Oberschule')
   })
 

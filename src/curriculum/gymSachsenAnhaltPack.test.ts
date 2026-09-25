@@ -44,7 +44,7 @@ describe('Gymnasium Sachsen-Anhalt Mathematik pack', () => {
     expect(parsed?.region).toBe('Sachsen-Anhalt')
     expect(parsed?.school).toBe('Gymnasium')
     expect(parsed?.subject).toBe('Mathematik')
-    expect(parsed?.version).toBe('1.0.0')
+    expect(parsed?.version).toBe('1.0.1')
     expect(parsed?.extras).toEqual([])
   })
 
@@ -104,7 +104,7 @@ describe('Gymnasium Sachsen-Anhalt Mathematik pack', () => {
     const manifest = parseManifest(
       JSON.parse(readFileSync(join(curriculaDir, 'manifest.json'), 'utf8')),
     )
-    expect(file?.version).toBe('1.0.0')
+    expect(file?.version).toBe('1.0.1')
     expect(file?.contentHash).toBe(pack.contentHash)
     expect(manifest?.packs.map((p) => p.id)).toContain(GYM_SACHSEN_ANHALT_PACK_ID)
     expect(manifest?.packs.find((p) => p.id === GYM_SACHSEN_ANHALT_PACK_ID)?.region).toBe(

@@ -7,6 +7,7 @@ import {
   type PackGrade,
   type PackTopic,
 } from './pack'
+import { DEFAULT_TASKS_PER_ROUND } from './tasksPerRound'
 
 const topic = (
   id: string,
@@ -21,6 +22,7 @@ const topic = (
     title,
     hint,
     pointsPerTask: 10,
+    tasksPerRound: DEFAULT_TASKS_PER_ROUND,
     ...(keys?.length ? { keywords: keys } : {}),
   }
 }
@@ -599,7 +601,7 @@ const wrap = (
   region: 'Sachsen',
   school: 'Oberschule',
   subject: 'Mathematik',
-  version: '1.0.0',
+  version: '1.0.1',
   changelog,
   contentHash: packContentHash(official, []),
   official,
@@ -611,7 +613,7 @@ export function buildOberschuleHsPack(): CurriculumPack {
   return wrap(
     OS_HS_PACK_ID,
     'Oberschule Sachsen · Mathematik · Hauptschulbildungsgang',
-    'Klassen 5–9 (Hauptschulbildungsgang). Ohne Netz lokale Fassung.',
+    'Klassen 5–9 (Hauptschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung.',
     official,
   )
 }
@@ -621,7 +623,7 @@ export function buildOberschuleRsPack(): CurriculumPack {
   return wrap(
     OS_RS_PACK_ID,
     'Oberschule Sachsen · Mathematik · Realschulbildungsgang',
-    'Klassen 5–10 (Realschulbildungsgang). Ohne Netz lokale Fassung.',
+    'Klassen 5–10 (Realschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung.',
     official,
   )
 }

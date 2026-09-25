@@ -6,6 +6,7 @@ import {
   type PackGrade,
   type PackTopic,
 } from './pack'
+import { DEFAULT_TASKS_PER_ROUND } from './tasksPerRound'
 
 /**
  * Gymnasium Sachsen-Anhalt · Mathematik (Fachlehrplan 01.08.2022).
@@ -26,6 +27,7 @@ const topic = (
     title,
     hint,
     pointsPerTask: 10,
+    tasksPerRound: DEFAULT_TASKS_PER_ROUND,
     ...(keys?.length ? { keywords: keys } : {}),
   }
 }
@@ -558,8 +560,9 @@ export function buildGymSachsenAnhaltPack(): CurriculumPack {
     region: 'Sachsen-Anhalt',
     school: 'Gymnasium',
     subject: 'Mathematik',
-    version: '1.0.0',
-    changelog: 'Klassen 5–10 und 11/12 gA nach ST-Fachlehrplan. Ohne Netz lokale Fassung.',
+    version: '1.0.1',
+    changelog:
+      'Klassen 5–10 und 11/12 gA nach ST-Fachlehrplan. tasksPerRound Standard 10. Ohne Netz lokale Fassung.',
     official,
     extras: [],
   }

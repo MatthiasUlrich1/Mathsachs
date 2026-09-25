@@ -9,6 +9,7 @@ import {
   type PackGrade,
   type PackTopic,
 } from './pack'
+import { DEFAULT_TASKS_PER_ROUND } from './tasksPerRound'
 
 const GRADE_META = Object.fromEntries(
   bundledCurricula.map((mod) => [
@@ -30,11 +31,13 @@ const topicMeta = (topic: {
   keywords?: string[]
   released?: boolean
   reviewOf?: string
+  tasksPerRound?: number
 }): PackTopic => ({
   id: topic.id,
   title: topic.title,
   hint: topic.hint,
   pointsPerTask: topic.pointsPerTask,
+  tasksPerRound: topic.tasksPerRound ?? DEFAULT_TASKS_PER_ROUND,
   ...(topic.keywords?.length ? { keywords: topic.keywords } : {}),
   ...(topic.released === false ? { released: false } : topic.released === true ? { released: true } : {}),
   ...(topic.reviewOf ? { reviewOf: topic.reviewOf } : {}),
@@ -73,6 +76,7 @@ export const GYM_SACHSEN_SEED_EXTRAS: PackExtra[] = [
       title: 'Kopfrechnen mit Zehnerzahlen',
       hint: 'Zehner plus Zehner, ohne Schriftlich-Rechnen.',
       pointsPerTask: 10,
+      tasksPerRound: DEFAULT_TASKS_PER_ROUND,
       keywords: ['Kopfrechnen', 'Zehner', 'Lehrer'],
     },
     tasks: [
@@ -108,13 +112,13 @@ export async function buildGymSachsenSeed(): Promise<CurriculumPack> {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Mathematik',
-    version: '1.2.8',
+    version: '1.2.9',
     changelog:
-      'K11/12 Grafik freigegeben: Tangente-Steigung (2453), Fläche unter Graph (8970), Nullstelle linear tippen (5544).',
+      'tasksPerRound Standard 10 für alle Mathe-Themen. K11/12 Grafik freigegeben: Tangente-Steigung (2453), Fläche unter Graph (8970), Nullstelle linear tippen (5544).',
     contentHash: packContentHash(official, extras),
     official,
     extras,
   }
 }
 
-export const GYM_SACHSEN_PACK_VERSION = '1.2.8'
+export const GYM_SACHSEN_PACK_VERSION = '1.2.9'

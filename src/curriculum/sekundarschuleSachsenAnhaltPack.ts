@@ -7,6 +7,7 @@ import {
   type PackGrade,
   type PackTopic,
 } from './pack'
+import { DEFAULT_TASKS_PER_ROUND } from './tasksPerRound'
 
 /**
  * Sekundarschule Sachsen-Anhalt · Mathematik (Fachlehrplan 01.08.2019).
@@ -27,6 +28,7 @@ const topic = (
     title,
     hint,
     pointsPerTask: 10,
+    tasksPerRound: DEFAULT_TASKS_PER_ROUND,
     ...(keys?.length ? { keywords: keys } : {}),
   }
 }
@@ -547,7 +549,7 @@ function wrap(
     region: 'Sachsen-Anhalt',
     school: 'Sekundarschule',
     subject: 'Mathematik',
-    version: '1.0.0',
+    version: '1.0.1',
     changelog,
     contentHash: packContentHash(official, []),
     official,
@@ -589,7 +591,7 @@ export function buildSekundarschuleSachsenAnhaltHsPack(): CurriculumPack {
   return wrap(
     SKS_SACHSEN_ANHALT_HS_PACK_ID,
     'Sekundarschule Sachsen-Anhalt · Mathematik · Hauptschulabschluss',
-    'Klassen 5–9 (HSA) nach ST-Fachlehrplan. Ohne Netz lokale Fassung.',
+    'Klassen 5–9 (HSA) nach ST-Fachlehrplan. tasksPerRound Standard 10. Ohne Netz lokale Fassung.',
     official,
   )
 }
@@ -603,7 +605,7 @@ export function buildSekundarschuleSachsenAnhaltRsPack(): CurriculumPack {
   return wrap(
     SKS_SACHSEN_ANHALT_RS_PACK_ID,
     'Sekundarschule Sachsen-Anhalt · Mathematik · Realschulabschluss',
-    'Klassen 5–10 (RSA) nach ST-Fachlehrplan. Ohne Netz lokale Fassung.',
+    'Klassen 5–10 (RSA) nach ST-Fachlehrplan. tasksPerRound Standard 10. Ohne Netz lokale Fassung.',
     official,
   )
 }

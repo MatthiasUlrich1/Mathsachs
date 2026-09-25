@@ -1,0 +1,36 @@
+---
+description: Regeln für Lernbereiche/Themen und Practice-Runden (tasksPerRound)
+globs: src/curriculum/**/*.{ts,tsx},curricula/**/*.json,.cursor/rules/**
+alwaysApply: false
+---
+
+# Lernbereiche / Themen — Practice-Runden
+
+## Standard (alle Lehrpläne)
+
+- **`tasksPerRound` default = 10** — Mathe, Physik, Biologie, Geschichte, Oberschule, Sekundarschule, …
+- Aufgaben einer Übungsrunde werden **zufällig** aus dem Topic-Pool gezogen.
+- Innerhalb einer Runde: Unique/Dedupe wie bisher (`uniqueRound`) — Qualität bei großen Pools nicht aufweichen.
+
+## Einzige Ausnahme
+
+- Wenn ein Thema **weniger als 10 unique** Aufgaben hat → `tasksPerRound = Poolgröße`.
+- **Nie** Padding erfinden (keine Duplikate nur um 10 zu erreichen).
+- Bewusste Overrides `< 10` nur mit Begründung (z. B. Jahreszahlen-Fakten mit bekannt kleinem Pool: `Math.min(10, POOL_COUNT)`).
+
+## Pack-Topic-Helper
+
+```typescript
+import { DEFAULT_TASKS_PER_ROUND } from './tasksPerRound'
+
+tasksPerRound: opts?.tasksPerRound ?? DEFAULT_TASKS_PER_ROUND
+```
+
+- Keine willkürlichen Defaults wie `5`.
+- Laufzeit-Fallback: `resolveTasksPerRound` in der Practice-Session (auch für gebündelte Mathe-Topics ohne Pack-Feld).
+
+## Checkliste neue Themen
+
+1. Pool ≥ 10 unique Facts/Stämme anstreben, damit Runden Länge 10 erreichen.
+2. `tasksPerRound` nur setzen, wenn Override nötig (Pool &lt; 10 oder bewusst höher, max. 30).
+3. Nach Pack-Änderungen Curricula exportieren (`scripts/export-curriculum-pack.ts`).

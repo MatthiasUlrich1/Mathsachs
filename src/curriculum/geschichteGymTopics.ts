@@ -5,6 +5,7 @@
  */
 import { ROM_YEAR_FACT_COUNT } from './geschichte6'
 import type { PackArea, PackGrade, PackTopic } from './pack'
+import { DEFAULT_TASKS_PER_ROUND } from './tasksPerRound'
 
 const topic = (
   id: string,
@@ -17,7 +18,7 @@ const topic = (
   pointsPerTask: 10,
   hint: 'Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.',
   released: opts?.released ?? false,
-  tasksPerRound: opts?.tasksPerRound ?? 10,
+  tasksPerRound: opts?.tasksPerRound ?? DEFAULT_TASKS_PER_ROUND,
   ...(keywords?.length ? { keywords } : {}),
 })
 
@@ -146,7 +147,10 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Jahreszahlen (nur LB1)',
             ['753', '500', '264', '146'],
             // Pool-limited: one attempt per year fact, but never more than 10.
-            { tasksPerRound: Math.min(10, ROM_YEAR_FACT_COUNT), released: true },
+            {
+              tasksPerRound: Math.min(DEFAULT_TASKS_PER_ROUND, ROM_YEAR_FACT_COUNT),
+              released: true,
+            },
           ),
           topic(
             'ge-k6-lb1-chronologie',

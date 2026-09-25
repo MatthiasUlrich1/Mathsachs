@@ -6,6 +6,10 @@ import { normalizeRole, type UserRole } from '../lib/roles'
 import type { TaskGrade, Topic, UserInput } from '../curriculum/types'
 import { awardPoints, gradeTask, isFormulaLikeHint } from '../curriculum/types'
 import {
+  DEFAULT_TASKS_PER_ROUND,
+  resolveTasksPerRound,
+} from '../curriculum/tasksPerRound'
+import {
   buildBerichtigungRound,
   buildUniqueTaskRoundWithSeeds,
   type BerichtigungTopicRef,
@@ -13,18 +17,6 @@ import {
 import { AnswerInput } from './AnswerInput'
 import { ReportFaultyTask } from './ReportFaultyTask'
 import { initTaskInput, TaskInteractive, TaskVisual } from './TaskMedia'
-
-const TARGET_TASKS_PER_ROUND = 10
-/** Allgemeingültig: 10 zufällige Aufgaben pro Durchgang (alle Lehrpläne). */
-const PHYSIK_TASKS_PER_ROUND = 10
-
-function tasksPerRoundFor(topic: Topic): number {
-  if (typeof topic.tasksPerRound === 'number' && topic.tasksPerRound >= 1) {
-    return Math.min(30, Math.trunc(topic.tasksPerRound))
-  }
-  // Fallback: 10 für alle Fächer (Physik-Präfix historisch, Wert identisch).
-  return topic.id.startsWith('ph-') ? PHYSIK_TASKS_PER_ROUND : TARGET_TASKS_PER_ROUND
-}
 
 export type PracticeMode = 'practice' | 'berichtigung' | 'replay'
 
@@ -69,10 +61,10 @@ export function PracticeSession({
 
   const [items] = useState<RoundItem[]>(() => {
     if (isBerichtigung && berichtigungTopics && berichtigungTopics.length > 0) {
-      return buildBerichtigungRound(berichtigungTopics, TARGET_TASKS_PER_ROUND)
+      return buildBerichtigungRound(berichtigungTopics, DEFAULT_TASKS_PER_ROUND)
     }
     const rng = createRng(timeSeed())
-    const target = isReplay && initialSeed != null ? 1 : tasksPerRoundFor(topic)
+    const target = isReplay && initialSeed != null ? 1 : resolveTasksPerRound(topic)
     return buildUniqueTaskRoundWithSeeds(
       topic.generate,
       rng,

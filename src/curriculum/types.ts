@@ -207,7 +207,10 @@ export interface Topic {
   reviewOf?: string
   /** Stable numeric ID for Freigabe-Feedback (z. B. „ID 8545“). */
   contentId?: number
-  /** Tasks per practice round (pack-driven; default depends on subject). */
+  /**
+   * Tasks per practice round. Global default: 10 (all subjects).
+   * Override only when the unique pool is smaller (or intentionally larger, max 30).
+   */
   tasksPerRound?: number
   /**
    * Thema-Fallback für Rubrik „Wissen“ (Curriculum-Browser / wenn die Task

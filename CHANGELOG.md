@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.57] – 2026-09-25
+
+### Geändert
+- **Rundenlänge global 10:** Alle Lehrpläne (Mathe, Physik, Biologie, Geschichte,
+  Oberschule, Sekundarschule) defaulten Übungsrunden auf **10** zufällige unique
+  Aufgaben. Ausnahme nur bei Unique-Pool &lt; 10 (kein Padding). Shared Helper
+  `resolveTasksPerRound` / `DEFAULT_TASKS_PER_ROUND`; Cursor-Regel für Autoren.
+- Mathe-Packs mit explizitem `tasksPerRound: 10` (Gym Sachsen **1.2.9**, Anhalt/
+  Oberschule/Sekundarschule **1.0.1**).
+
 ## [0.28.56] – 2026-09-25
 
 ### Hinzugefügt

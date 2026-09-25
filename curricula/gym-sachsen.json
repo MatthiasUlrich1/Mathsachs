@@ -4,9 +4,9 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Mathematik",
-  "version": "1.2.8",
-  "changelog": "K11/12 Grafik freigegeben: Tangente-Steigung (2453), Fläche unter Graph (8970), Nullstelle linear tippen (5544).",
-  "contentHash": "db31979f",
+  "version": "1.2.9",
+  "changelog": "tasksPerRound Standard 10 für alle Mathe-Themen. K11/12 Grafik freigegeben: Tangente-Steigung (2453), Fläche unter Graph (8970), Nullstelle linear tippen (5544).",
+  "contentHash": "51da82db",
   "official": [
     {
       "id": "klasse-5",
@@ -24,31 +24,36 @@
               "id": "lb1-runden-natuerlich",
               "title": "Natürliche Zahlen runden",
               "hint": "Schau auf die Ziffer rechts von der Rundungsstelle.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb1-addition",
               "title": "Addition natürlicher Zahlen",
               "hint": "Rechne schriftlich, Stelle für Stelle.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb1-subtraktion",
               "title": "Subtraktion natürlicher Zahlen",
               "hint": "Der Minuend (vorne) ist immer größer.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb1-multiplikation",
               "title": "Multiplikation natürlicher Zahlen",
               "hint": "Zerlege den zweiten Faktor nach Stellenwerten (Zehner, Einer, …) von links.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb1-schriftliches-rechnen",
               "title": "Schriftliches Rechnen (Kästchenpapier)",
               "hint": "Schreibe stellenrichtig untereinander und trage jede Ziffer in ein Kästchen.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "schriftlich",
                 "Kästchen",
@@ -60,13 +65,15 @@
               "id": "lb1-division-rest",
               "title": "Division mit Rest",
               "hint": "Antwortformat: „q R r\" (Quotient, dann Rest).",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb1-schriftliche-division",
               "title": "Schriftliche Division",
               "hint": "Schreibe Dividend : Divisor = und trage den Quotienten ziffernweise ein. Bei Rest zusätzlich die Rest-Zeile füllen.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "schriftlich",
                 "Division",
@@ -79,19 +86,22 @@
             {
               "id": "lb1-potenzieren",
               "title": "Potenzieren (Quadrat- und Zehnerpotenzen)",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb1-teilbarkeit",
               "title": "Teilbarkeit prüfen",
               "hint": "Antworte mit „ja\" oder „nein\".",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb1-primzahl",
               "title": "Primzahlen erkennen",
               "hint": "Eine Primzahl hat genau zwei Teiler: 1 und sich selbst.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -104,60 +114,70 @@
               "id": "lb2-kuerzen",
               "title": "Brüche kürzen",
               "hint": "Gib den vollständig gekürzten Bruch ein.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb2-erweitern",
               "title": "Brüche erweitern",
               "hint": "Gib den gesuchten Zähler ein.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb2-anteil-bruch",
               "title": "Anteil als Bruch",
               "hint": "Gib den vollständig gekürzten Bruch ein.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb2-grafische-brueche",
               "title": "Brüche grafisch ablesen",
               "hint": "Zähle die eingefärbten Teile und die Gesamtanzahl. Gib den gekürzten Bruch an.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb2-dez-add-sub",
               "title": "Dezimalzahlen addieren und subtrahieren",
               "hint": "Achte auf die Ausrichtung des Kommas.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb2-dez-mult",
               "title": "Dezimalzahl multiplizieren",
               "hint": "Mit einstelliger Zahl oder Zehnerpotenz.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb2-dez-div",
               "title": "Dezimalzahl dividieren",
               "hint": "Durch einstellige Zahl oder Zehnerpotenz.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb2-runden-dezimal",
               "title": "Dezimalzahlen runden",
               "hint": "Ist die nächste Ziffer 5 oder größer, wird aufgerundet.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb2-mittelwert",
               "title": "Arithmetisches Mittel",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb2-zahlenstrahl",
               "title": "Dezimalzahlen auf dem Zahlenstrahl: Mitte finden",
               "hint": "Die Mitte zwischen zwei Zahlen ist ihr Durchschnitt: (a + b) : 2.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Zahlenstrahl",
                 "Mitte",
@@ -171,6 +191,7 @@
               "title": "Größen mit verschiedenen Einheiten ordnen",
               "hint": "Rechne alle Angaben in dieselbe Einheit um, dann vergleiche.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "ordnen",
                 "vergleichen",
@@ -191,67 +212,78 @@
               "id": "lb3-koordinaten-ablesen",
               "title": "Koordinaten ablesen",
               "hint": "Antwortformat: x; y (auch Komma oder (x|y) sind ok).",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb3-koordinaten-eintragen",
               "title": "Punkte im Koordinatensystem zuordnen",
               "hint": "Bei Buchstaben: A, B oder C. Bei Quadranten: I, II, III oder IV.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb3-koordinaten-abstand",
               "title": "Abstand zwischen Punkten",
               "hint": "Waagerecht/senkrecht: |Δx| bzw. |Δy|. Schräg: Pythagoras (z. B. 3–4–5).",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb3-winkelarten",
               "title": "Winkelarten erkennen",
               "hint": "spitz (<90°), recht (90°), stumpf (90°–180°), gestreckt (180°) oder überstumpf (>180°).",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb3-winkel-ergaenzung",
               "title": "Winkel zu 90° oder 180° ergänzen",
               "hint": "Vom Zielwert (90° oder 180°) den gegebenen Winkel abziehen.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb3-strecken-laenge",
               "title": "Länge von Strecken",
               "hint": "1 Kästchen = 1 Längeneinheit (cm).",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb3-strecken-mittelpunkt",
               "title": "Mittelpunkt einer Strecke",
               "hint": "Mittelpunkt M = ((x₁+x₂)/2 ; (y₁+y₂)/2). Antwortformat: x; y.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb3-strecken-bezeichnung",
               "title": "Strecke, Gerade und Halbgerade",
               "hint": "Strecke: begrenzt; Halbgerade: ein Endpunkt; Gerade: unbegrenzt in beide Richtungen.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb3-verschiebung",
               "title": "Verschiebung von Figuren",
               "hint": "Antwortformat für Vektor und Punkt: dx; dy bzw. x; y (positiv = rechts / oben). Auch Komma oder (x|y) sind ok.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb3-achsensymmetrie",
               "title": "Achsensymmetrie erkennen",
               "hint": "Eine Figur ist achsensymmetrisch, wenn sie an einer Geraden gespiegelt auf sich selbst fällt. Bildpunkt: x; y.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb3-punktsymmetrie",
               "title": "Punktsymmetrie / Punktspiegelung",
               "hint": "Punktspiegelung an S: A' = 2S − A. Antwortformat x; y (auch Komma oder (x|y)).",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -263,40 +295,47 @@
             {
               "id": "lb4-umfang-rechteck",
               "title": "Umfang von Rechteck und Quadrat",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb4-flaeche-rechteck",
               "title": "Flächeninhalt von Rechteck und Quadrat",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb4-volumen-quader",
               "title": "Volumen von Quader und Würfel",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb4-oberflaeche-quader",
               "title": "Oberflächeninhalt von Quadern",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb4-flaeche-zusammengesetzt",
               "title": "Zusammengesetzte Flächen: Fläche berechnen",
               "hint": "Zerlege die Figur in Rechtecke oder ziehe die Aussparung ab.",
-              "pointsPerTask": 12
+              "pointsPerTask": 12,
+              "tasksPerRound": 10
             },
             {
               "id": "lb4-umfang-zusammengesetzt",
               "title": "Zusammengesetzte Flächen: Umfang berechnen",
               "hint": "Addiere alle äußeren Kanten.",
-              "pointsPerTask": 12
+              "pointsPerTask": 12,
+              "tasksPerRound": 10
             },
             {
               "id": "lb4-volumen-zusammengesetzt",
               "title": "Zusammengesetzte Quader: Volumen",
               "hint": "Zerlege in zwei Quader und addiere die Volumina – oder ziehe die Aussparung ab.",
-              "pointsPerTask": 12
+              "pointsPerTask": 12,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -308,19 +347,22 @@
             {
               "id": "lb5-gesamtpreis",
               "title": "Sachaufgabe: Gesamtpreis",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb5-teilen",
               "title": "Sachaufgabe: Gerecht aufteilen",
               "hint": "Teile die Gesamtmenge durch die Anzahl.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb5-mehrstufig",
               "title": "Sachaufgabe: Mehrstufige Alltagsrechnung",
               "hint": "Löse Schritt für Schritt: Zuerst den Gesamtpreis, dann das Wechselgeld.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Sachaufgabe",
                 "Wechselgeld",
@@ -333,6 +375,7 @@
               "title": "Sachaufgabe: Fläche und Umfang im Alltag",
               "hint": "Entscheide, ob Umfang oder Fläche gefragt ist.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Sachaufgabe",
                 "Fläche",
@@ -346,6 +389,7 @@
               "title": "Einheiten umrechnen: Länge",
               "hint": "Nutze den Umrechnungsfaktor zwischen den Einheiten.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Einheiten",
                 "umrechnen",
@@ -368,6 +412,7 @@
               "title": "Einheiten umrechnen: Flächeninhalt",
               "hint": "Nutze den Umrechnungsfaktor zwischen den Einheiten.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Einheiten",
                 "umrechnen",
@@ -394,6 +439,7 @@
               "title": "Einheiten umrechnen: Volumen",
               "hint": "Nutze den Umrechnungsfaktor zwischen den Einheiten.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Einheiten",
                 "umrechnen",
@@ -417,6 +463,7 @@
               "title": "Einheiten umrechnen: Masse",
               "hint": "Nutze den Umrechnungsfaktor zwischen den Einheiten.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Einheiten",
                 "umrechnen",
@@ -439,6 +486,7 @@
               "title": "Einheiten umrechnen: Zeit",
               "hint": "Nutze den Umrechnungsfaktor zwischen den Zeiteinheiten.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Einheiten",
                 "umrechnen",
@@ -474,79 +522,92 @@
               "id": "lb1-kuerzen",
               "title": "Brüche kürzen",
               "hint": "Gib den vollständig gekürzten Bruch ein.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb1-erweitern",
               "title": "Brüche erweitern",
               "hint": "Gib den gesuchten Zähler ein.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb1-vergleichen",
               "title": "Brüche vergleichen",
               "hint": "Gib <, > oder = ein.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb1-add-sub-brueche",
               "title": "Brüche addieren und subtrahieren",
               "hint": "Gib das Ergebnis als gekürzten Bruch ein.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb1-mult-brueche",
               "title": "Brüche multiplizieren",
               "hint": "Gib das Ergebnis als gekürzten Bruch ein.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb1-div-brueche",
               "title": "Brüche dividieren",
               "hint": "Dividieren heißt mit dem Kehrwert multiplizieren.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb1-bruch-dezimal",
               "title": "Brüche in Dezimalzahlen umwandeln",
               "hint": "Nutze das Komma als Dezimaltrennzeichen.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb1-prozent",
               "title": "In Prozent umwandeln",
               "hint": "Gib nur die Zahl vor dem Prozentzeichen ein.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb1-dez-add-sub",
               "title": "Dezimalzahlen addieren und subtrahieren",
               "hint": "Achte auf die Ausrichtung des Kommas.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb1-dez-mult",
               "title": "Dezimalzahlen multiplizieren",
               "hint": "Mit natürlichen Zahlen oder Zehnerpotenzen.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb1-dez-div",
               "title": "Dezimalzahlen dividieren",
               "hint": "Durch natürliche Zahlen oder Zehnerpotenzen.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb1-runden",
               "title": "Dezimalzahlen runden",
               "hint": "Ist die nächste Ziffer 5 oder größer, wird aufgerundet.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb1-sachaufgabe-bruch",
               "title": "Sachaufgabe: Bruchrechnung im Alltag",
               "hint": "Lies die Aufgabe genau. Welcher Bruch wird gesucht? Dann rechne.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Sachaufgabe",
                 "Bruch",
@@ -565,24 +626,28 @@
               "id": "lb2-proportional",
               "title": "Proportionale Zuordnung (Dreisatz)",
               "hint": "Erst auf eine Einheit zurückrechnen.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb2-antiproportional",
               "title": "Antiproportionale Zuordnung",
               "hint": "Mehr Personen → weniger Zeit. Produktgleichheit nutzen.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb2-haeufigkeit",
               "title": "Relative Häufigkeit in Prozent",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb2-sachaufgabe-dreisatz",
               "title": "Sachaufgabe: Dreisatz mit Einheiten",
               "hint": "Zuerst den Einheitspreis oder -wert bestimmen, dann umrechnen.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Sachaufgabe",
                 "Dreisatz",
@@ -601,34 +666,40 @@
               "id": "lb3-winkel-dreieck",
               "title": "Innenwinkelsatz im Dreieck",
               "hint": "Die Innenwinkel im Dreieck ergeben zusammen 180°.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb3-winkel-viereck",
               "title": "Winkelsumme im Viereck",
               "hint": "Die Innenwinkel im Viereck ergeben zusammen 360°.",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb3-umfang-rechteck",
               "title": "Umfang von Rechteck und Quadrat",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb3-flaeche-rechteck",
               "title": "Flächeninhalt von Rechteck und Quadrat",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb3-flaeche-dreieck",
               "title": "Flächeninhalt von Dreiecken",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb3-kongruenzsatz",
               "title": "Kongruenzsatz wählen",
               "hint": "SSS, SWS, WSW oder SsW – welche Angabe reicht?",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kongruenz",
                 "SSS",
@@ -643,6 +714,7 @@
               "title": "Sachaufgabe: Fläche und Umfang im Alltag",
               "hint": "Welche Formel passt? Umfang für Strecken, Fläche für Belag/Tapete.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Sachaufgabe",
                 "Fläche",
@@ -662,22 +734,26 @@
             {
               "id": "lb4-volumen-quader",
               "title": "Volumen von Quader und Würfel",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb4-oberflaeche-quader",
               "title": "Oberflächeninhalt von Quadern",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb4-volumen-prisma",
               "title": "Volumen gerader Prismen",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb4-flaeche-kante-quader",
               "title": "Fläche und senkrechte Seitenlänge",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Quader",
                 "Würfel",
@@ -693,6 +769,7 @@
               "title": "Würfelnetz erkennen",
               "hint": "Ein faltbares Netz hat sechs Quadrate ohne Überlappung beim Falten.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Würfel",
                 "Körpernetz",
@@ -710,19 +787,22 @@
             {
               "id": "lb5-anteil-groesse",
               "title": "Anteil einer Größe berechnen",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "lb5-anteil-prozent",
               "title": "Prozent einer Größe berechnen",
               "hint": "Prozent bedeutet „von hundert\".",
-              "pointsPerTask": 10
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             },
             {
               "id": "k6-umrechnen-flaeche",
               "title": "Einheiten umrechnen: Flächeninhalt",
               "hint": "Nutze den Umrechnungsfaktor zwischen den Einheiten.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Einheiten",
                 "umrechnen",
@@ -749,6 +829,7 @@
               "title": "Einheiten umrechnen: Länge",
               "hint": "Nutze den Umrechnungsfaktor zwischen den Einheiten.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Einheiten",
                 "umrechnen",
@@ -787,6 +868,7 @@
               "title": "Nebenwinkel berechnen",
               "hint": "Nebenwinkel ergänzen sich zu 180°.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Winkel",
                 "Nebenwinkel",
@@ -800,6 +882,7 @@
               "title": "Scheitel- und Stufenwinkel",
               "hint": "Scheitelwinkel und Stufenwinkel sind gleich groß.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Winkel",
                 "Scheitelwinkel",
@@ -812,6 +895,7 @@
               "id": "k7-lb1-winkelsumme-vieleck",
               "title": "Innenwinkelsumme im Vieleck",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Vieleck",
                 "Polygon",
@@ -825,6 +909,7 @@
               "title": "Basiswinkel im gleichschenkligen Dreieck",
               "hint": "Die beiden Basiswinkel sind gleich groß.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Dreieck",
                 "gleichschenklig",
@@ -837,6 +922,7 @@
               "title": "Mittelsenkrechte: Konstruktionsschritte",
               "hint": "Ordne die Schritte einer Mittelsenkrechten.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Mittelsenkrechte",
                 "Konstruktion",
@@ -857,6 +943,7 @@
               "title": "Rationale Zahlen addieren",
               "hint": "Achte auf die Vorzeichen.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "rationale Zahlen",
                 "Vorzeichen",
@@ -870,6 +957,7 @@
               "title": "Rationale Zahlen subtrahieren",
               "hint": "Minus einer negativen Zahl heißt plus.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "rationale Zahlen",
                 "Vorzeichen",
@@ -883,6 +971,7 @@
               "title": "Rationale Zahlen multiplizieren",
               "hint": "Gleiche Vorzeichen → plus, verschiedene → minus.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "rationale Zahlen",
                 "Vorzeichenregel",
@@ -896,6 +985,7 @@
               "title": "Rationale Zahlen dividieren",
               "hint": "Gleiche Vorzeichen → plus, verschiedene → minus.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "rationale Zahlen",
                 "Vorzeichenregel",
@@ -909,6 +999,7 @@
               "title": "Betrag einer Zahl",
               "hint": "Der Betrag ist immer nicht negativ.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Betrag",
                 "Absolutbetrag",
@@ -921,6 +1012,7 @@
               "title": "Term mit Rechengesetzen auswerten",
               "hint": "Punkt- vor Strichrechnung, Klammern zuerst.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Term",
                 "Rechengesetze",
@@ -934,6 +1026,7 @@
               "title": "Gleichung umstellen: x + a = b",
               "hint": "Nutze die Buttons für Äquivalenzumformungen (beide Seiten gleich ändern).",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Gleichung",
                 "lösen",
@@ -948,6 +1041,7 @@
               "title": "Gleichung umstellen: a · x = b",
               "hint": "Baue rechts vom Strich die Umformung (| : a), dann x = b : a, und tippe das Ergebnis für x.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Gleichung",
                 "lösen",
@@ -969,6 +1063,7 @@
               "id": "k7-lb3-volumen-prisma",
               "title": "Volumen gerader Prismen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Prisma",
                 "Volumen",
@@ -980,6 +1075,7 @@
               "id": "k7-lb3-mantel-prisma",
               "title": "Mantelfläche eines Prismas",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Prisma",
                 "Mantelfläche",
@@ -992,6 +1088,7 @@
               "id": "k7-lb3-volumen-pyramide",
               "title": "Volumen einer Pyramide",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Pyramide",
                 "Volumen",
@@ -1003,6 +1100,7 @@
               "id": "k7-lb3-oberflaeche-quader",
               "title": "Oberfläche eines Quaders",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Quader",
                 "Oberfläche",
@@ -1015,6 +1113,7 @@
               "title": "Oberfläche einer Pyramide",
               "hint": "O = G + M. Bei quadratischer Grundfläche: G = a², M = 2 · a · hₛ.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Pyramide",
                 "Oberfläche",
@@ -1034,6 +1133,7 @@
               "id": "k7-lb4-mittelwert",
               "title": "Arithmetisches Mittel",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Mittelwert",
                 "arithmetisches Mittel",
@@ -1047,6 +1147,7 @@
               "title": "Median (Zentralwert)",
               "hint": "Ordne die Werte und nimm den mittleren.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Median",
                 "Zentralwert",
@@ -1059,6 +1160,7 @@
               "id": "k7-lb4-spannweite",
               "title": "Spannweite berechnen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Spannweite",
                 "Maximum",
@@ -1071,6 +1173,7 @@
               "id": "k7-lb4-rel-haeufigkeit",
               "title": "Relative Häufigkeit in Prozent",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "relative Häufigkeit",
                 "Häufigkeit",
@@ -1100,6 +1203,7 @@
               "title": "Terme zusammenfassen (Zahl vor x)",
               "hint": "Fasse nur die x-Glieder zusammen.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Term",
                 "zusammenfassen",
@@ -1113,6 +1217,7 @@
               "title": "Term auswerten (x einsetzen)",
               "hint": "Setze den Wert für x ein und rechne aus.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Term",
                 "einsetzen",
@@ -1126,6 +1231,7 @@
               "title": "Lineare Gleichung a·x + b = c",
               "hint": "Erst b, dann den Faktor a beseitigen.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Gleichung",
                 "linear",
@@ -1139,6 +1245,7 @@
               "title": "Gleichung mit x auf beiden Seiten",
               "hint": "Bringe alle x auf eine Seite.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Gleichung",
                 "beide Seiten",
@@ -1152,6 +1259,7 @@
               "title": "Klammer ausmultiplizieren (Wert bei x)",
               "hint": "Wende das Distributivgesetz an.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Distributivgesetz",
                 "ausmultiplizieren",
@@ -1170,6 +1278,7 @@
               "id": "k8-lb2-laplace-bruch",
               "title": "Laplace-Wahrscheinlichkeit als Bruch",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wahrscheinlichkeit",
                 "Laplace",
@@ -1182,6 +1291,7 @@
               "id": "k8-lb2-laplace-prozent",
               "title": "Laplace-Wahrscheinlichkeit in Prozent",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Wahrscheinlichkeit",
                 "Laplace",
@@ -1194,6 +1304,7 @@
               "id": "k8-lb2-gegenwahrscheinlichkeit",
               "title": "Gegenwahrscheinlichkeit",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Gegenwahrscheinlichkeit",
                 "Gegenereignis",
@@ -1213,6 +1324,7 @@
               "title": "Funktionswert einer linearen Funktion",
               "hint": "Setze den gegebenen x-Wert in die Funktion ein.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "lineare Funktion",
                 "Funktionswert",
@@ -1225,6 +1337,7 @@
               "id": "k8-lb3-steigung",
               "title": "Steigung aus zwei Punkten",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Steigung",
                 "lineare Funktion",
@@ -1237,6 +1350,7 @@
               "id": "k8-lb3-achsenabschnitt",
               "title": "y-Achsenabschnitt bestimmen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "y-Achsenabschnitt",
                 "lineare Funktion",
@@ -1249,6 +1363,7 @@
               "title": "Lineares Gleichungssystem (x bestimmen)",
               "hint": "Additions- oder Einsetzungsverfahren.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "LGS",
                 "Gleichungssystem",
@@ -1262,6 +1377,7 @@
               "title": "Gerade einstellen (m und n)",
               "hint": "Stelle Steigung und Achsenabschnitt am Slider ein.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Steigung",
                 "Achsenabschnitt",
@@ -1279,6 +1395,7 @@
               "title": "Nullstelle einer Geraden tippen",
               "hint": "Schnittpunkt mit der x-Achse tippen.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Nullstelle",
                 "x-Achse",
@@ -1295,6 +1412,7 @@
               "title": "Gerade durch zwei Punkte zeichnen",
               "hint": "Werkzeug Gerade: zwei Punkte tippen.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Gerade zeichnen",
                 "zwei Punkte",
@@ -1317,6 +1435,7 @@
               "id": "k8-lb4-streckfaktor",
               "title": "Streckfaktor bestimmen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Ähnlichkeit",
                 "Streckfaktor",
@@ -1329,6 +1448,7 @@
               "title": "Strahlensatz: fehlende Länge",
               "hint": "Stelle die Proportion auf und löse nach x.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Strahlensatz",
                 "Ähnlichkeit",
@@ -1341,6 +1461,7 @@
               "title": "Ähnliche Figuren: Seitenlänge",
               "hint": "Multipliziere mit dem Ähnlichkeitsfaktor.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Ähnlichkeit",
                 "ähnliche Dreiecke",
@@ -1360,6 +1481,7 @@
               "title": "Zahlenrätsel (Gleichung aufstellen)",
               "hint": "Übersetze in eine Gleichung und löse.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Zahlenrätsel",
                 "Gleichung",
@@ -1373,6 +1495,7 @@
               "title": "Rückwärtsrechnen",
               "hint": "Kehre die Rechenschritte um.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Rückwärtsrechnen",
                 "Umkehroperation",
@@ -1400,6 +1523,7 @@
               "id": "k9-lb1-potenz-produkt",
               "title": "Potenzgesetz: Produkt gleicher Basis",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Potenz",
                 "Potenzgesetze",
@@ -1412,6 +1536,7 @@
               "id": "k9-lb1-potenz-quotient",
               "title": "Potenzgesetz: Quotient und Potenz einer Potenz",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Potenz",
                 "Potenzgesetze",
@@ -1425,6 +1550,7 @@
               "title": "Wert einer quadratischen Funktion",
               "hint": "Setze den gegebenen x-Wert in die Funktion ein.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "quadratische Funktion",
                 "Parabel",
@@ -1437,6 +1563,7 @@
               "title": "Scheitelpunkt aus der Scheitelform",
               "hint": "Lies den Scheitel aus der Scheitelform ab.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Scheitelpunkt",
                 "Scheitelform",
@@ -1450,6 +1577,7 @@
               "title": "Scheitelpunkt am Graphen tippen",
               "hint": "Tippe den tiefsten bzw. höchsten Punkt der Parabel.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Scheitelpunkt",
                 "Parabel",
@@ -1466,6 +1594,7 @@
               "title": "Nullstelle einer Parabel tippen",
               "hint": "Tippe einen Schnittpunkt mit der x-Achse.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Nullstelle",
                 "Parabel",
@@ -1488,6 +1617,7 @@
               "id": "k9-lb2-kreis-umfang",
               "title": "Umfang eines Kreises",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kreis",
                 "Umfang",
@@ -1500,6 +1630,7 @@
               "id": "k9-lb2-kreis-flaeche",
               "title": "Flächeninhalt eines Kreises",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kreis",
                 "Flächeninhalt",
@@ -1513,6 +1644,7 @@
               "id": "k9-lb2-zylinder-volumen",
               "title": "Volumen eines Kreiszylinders",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Zylinder",
                 "Kreiszylinder",
@@ -1526,6 +1658,7 @@
               "id": "k9-lb2-kugel-volumen",
               "title": "Volumen einer Kugel",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Kugel",
                 "Volumen",
@@ -1545,6 +1678,7 @@
               "id": "k9-lb3-pythagoras-hypotenuse",
               "title": "Satz des Pythagoras: Hypotenuse",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Pythagoras",
                 "Hypotenuse",
@@ -1556,6 +1690,7 @@
               "id": "k9-lb3-pythagoras-kathete",
               "title": "Satz des Pythagoras: fehlende Kathete",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Pythagoras",
                 "Kathete",
@@ -1568,6 +1703,7 @@
               "title": "Werte von Sinus, Kosinus, Tangens",
               "hint": "Nutze den Taschenrechner und runde auf vier Nachkommastellen.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Sinus",
                 "Kosinus",
@@ -1590,6 +1726,7 @@
               "id": "k9-lb4-mittelwert",
               "title": "Arithmetisches Mittel",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Mittelwert",
                 "Durchschnitt",
@@ -1603,6 +1740,7 @@
               "title": "Median (Zentralwert)",
               "hint": "Ordne die Werte und nimm den mittleren.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Median",
                 "Zentralwert",
@@ -1616,6 +1754,7 @@
               "title": "Modalwert (häufigster Wert)",
               "hint": "Der Modalwert kommt am häufigsten vor.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Modalwert",
                 "Modus",
@@ -1636,6 +1775,7 @@
               "title": "Vernetzung: Pythagoras im Sachkontext",
               "hint": "Leiter, Wand und Boden bilden ein rechtwinkliges Dreieck.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Pythagoras",
                 "Sachaufgabe",
@@ -1664,6 +1804,7 @@
               "id": "k10-lb1-zinsen",
               "title": "Jahreszinsen berechnen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Zinsen",
                 "Zinsrechnung",
@@ -1676,6 +1817,7 @@
               "id": "k10-lb1-zinseszins",
               "title": "Zinseszins: Endkapital",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Zinseszins",
                 "Endkapital",
@@ -1688,6 +1830,7 @@
               "id": "k10-lb1-prozentuale-zunahme",
               "title": "Prozentuale Zunahme",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "prozentuale Zunahme",
                 "Wachstum",
@@ -1700,6 +1843,7 @@
               "id": "k10-lb1-exp-wachstum",
               "title": "Exponentielles Wachstum",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "exponentielles Wachstum",
                 "Verdopplung",
@@ -1718,6 +1862,7 @@
               "id": "k10-lb2-erwartungswert",
               "title": "Erwartungswert eines Glücksrads",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Erwartungswert",
                 "Zufallsgröße",
@@ -1731,6 +1876,7 @@
               "title": "Erwartungswert beim Würfel",
               "hint": "Multipliziere jede Augenzahl mit 1/6 und addiere.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Erwartungswert",
                 "Würfel",
@@ -1750,6 +1896,7 @@
               "id": "k10-lb3-rechteck-breite",
               "title": "Rechteck: Breite aus Fläche",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Rechteck",
                 "Flächeninhalt",
@@ -1762,6 +1909,7 @@
               "id": "k10-lb3-quadrat-seite",
               "title": "Quadrat: Seitenlänge aus Fläche",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Quadrat",
                 "Flächeninhalt",
@@ -1774,6 +1922,7 @@
               "id": "k10-lb3-rechteck-umfang",
               "title": "Rechteck: Breite aus Umfang",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Rechteck",
                 "Umfang",
@@ -1794,6 +1943,7 @@
               "title": "Reinquadratische Gleichung x² = a",
               "hint": "Nimm die positive Quadratwurzel.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "quadratische Gleichung",
                 "Wurzel",
@@ -1807,6 +1957,7 @@
               "title": "Quadratische Gleichung (größere Lösung)",
               "hint": "Faktorisiere und nutze den Satz vom Nullprodukt.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "quadratische Gleichung",
                 "Nullstellen",
@@ -1820,6 +1971,7 @@
               "title": "Funktionswert einer Parabel",
               "hint": "Setze den gegebenen x-Wert in die Funktion ein.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Parabel",
                 "quadratische Funktion",
@@ -1832,6 +1984,7 @@
               "title": "Scheitel einer Parabel tippen",
               "hint": "Tippe den Scheitel der gezeichneten Parabel.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Scheitel",
                 "Parabel",
@@ -1848,6 +2001,7 @@
               "title": "Funktionswert am Parabelgraphen",
               "hint": "Lies f(x₀) am Graphen ab (oder rechne nach).",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Funktionswert",
                 "Parabel",
@@ -1870,6 +2024,7 @@
               "id": "k10-lb5-kapital",
               "title": "Kapital aus Zinsen bestimmen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Zinsrechnung",
                 "Kapital",
@@ -1882,6 +2037,7 @@
               "id": "k10-lb5-zinssatz",
               "title": "Zinssatz bestimmen",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Zinsrechnung",
                 "Zinssatz",
@@ -1911,6 +2067,7 @@
               "title": "Ableitung eines Polynoms an einer Stelle",
               "hint": "Leite mit der Potenzregel ab und setze x₀ ein.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Ableitung",
                 "Differentialrechnung",
@@ -1925,6 +2082,7 @@
               "title": "Nullstelle einer linearen Funktion",
               "hint": "Setze die Funktion gleich null und löse nach x.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Nullstelle",
                 "lineare Funktion",
@@ -1938,6 +2096,7 @@
               "title": "Bestimmtes Integral eines Polynoms",
               "hint": "Bilde die Stammfunktion und setze die Grenzen ein.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Integral",
                 "bestimmtes Integral",
@@ -1951,6 +2110,7 @@
               "title": "Steigung der Tangente ablesen",
               "hint": "Lies die Steigung der eingezeichneten Tangente ab.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Ableitung",
                 "Tangente",
@@ -1968,6 +2128,7 @@
               "title": "Fläche unter dem Graphen",
               "hint": "Rechteckfläche bzw. Integral berechnen.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Integral",
                 "Fläche",
@@ -1984,6 +2145,7 @@
               "title": "Nullstelle linearer Graph tippen",
               "hint": "Tippe den Schnitt mit der x-Achse.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Nullstelle",
                 "lineare Funktion",
@@ -2007,6 +2169,7 @@
               "title": "Skalarprodukt zweier Vektoren",
               "hint": "Multipliziere komponentenweise und addiere.",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Skalarprodukt",
                 "Vektoren",
@@ -2019,6 +2182,7 @@
               "id": "k1112-lb2-betrag-vektor",
               "title": "Betrag eines Vektors",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Betrag",
                 "Länge",
@@ -2039,6 +2203,7 @@
               "id": "k1112-lb3-binomialverteilung",
               "title": "Binomialverteilung: P(X = k)",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Binomialverteilung",
                 "Wahrscheinlichkeit",
@@ -2051,6 +2216,7 @@
               "id": "k1112-lb3-erwartungswert-binom",
               "title": "Erwartungswert der Binomialverteilung",
               "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "keywords": [
                 "Binomialverteilung",
                 "Erwartungswert",
@@ -2075,6 +2241,7 @@
         "title": "Kopfrechnen mit Zehnerzahlen",
         "hint": "Zehner plus Zehner, ohne Schriftlich-Rechnen.",
         "pointsPerTask": 10,
+        "tasksPerRound": 10,
         "keywords": [
           "Kopfrechnen",
           "Zehner",
