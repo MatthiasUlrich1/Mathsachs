@@ -334,7 +334,7 @@ export const BIRD_AIR_SACS_ASSET: AnatomyAsset = {
   imageSrc: '/anatomy/bird-respiratory-cruithne.jpg',
   imageAlt: 'Schema der Vogelatmung mit Lunge und Luftsäcken',
   attribution:
-    'Cruithne9: „Bird\'s respiratory system“. Wikimedia Commons, CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Bird%27s_respiratory_system.jpg',
+    'Cruithne9: „Bird\'s respiratory system“. Wikimedia Commons, CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Bird%27s_respiratory_system.jpg (ShareAlike: Bearbeitungen unter gleicher/kompatibler Lizenz; Datei unverändert eingebunden)',
   drawLeaders: true,
   fachwissenQuelle: 'Wikipedia: Vogelatmung',
   fachwissenUrl: 'https://de.wikipedia.org/wiki/Vogelatmung',
@@ -455,7 +455,7 @@ export const SKELETON_UPPER_ASSET: AnatomyAsset = {
   imageSrc: '/anatomy/human-skeleton-upper-anterior.jpg',
   imageAlt: 'Menschliches Skelett Oberkörper von vorn (unbeschriftet)',
   attribution:
-    'Andrewmeyerson: „Human Skeleton Upper Body Anterior View“. Wikimedia Commons, CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0/ · https://commons.wikimedia.org/wiki/File:Human_Skeleton_Upper_Body_Anterior_View.jpg',
+    'Andrewmeyerson (Ableitung von Anatomography / BodyParts3D, DBCLS): „Human Skeleton Upper Body Anterior View“. Wikimedia Commons, CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0/ · https://commons.wikimedia.org/wiki/File:Human_Skeleton_Upper_Body_Anterior_View.jpg (ShareAlike: Bearbeitungen unter gleicher/kompatibler Lizenz; Datei unverändert, Drop-Felder nur UI-Overlay)',
   drawLeaders: true,
   fachwissenQuelle: 'Wikipedia: Menschliches Skelett',
   fachwissenUrl: 'https://de.wikipedia.org/wiki/Menschliches_Skelett',
@@ -536,7 +536,7 @@ export const SKELETON_AXIAL_ASSET: AnatomyAsset = {
   imageSrc: '/anatomy/axial-skeleton-anterior.png',
   imageAlt: 'Menschliches Skelett von vorn; Achsenskelett hervorgehoben',
   attribution:
-    'Anatomography / BodyParts3D, DBCLS: „Axial skeleton - anterior view“. Wikimedia Commons, CC BY-SA 2.1 JP — https://creativecommons.org/licenses/by-sa/2.1/jp/ · https://commons.wikimedia.org/wiki/File:Axial_skeleton_-_anterior_view.png',
+    'Anatomography / BodyParts3D, DBCLS: „Axial skeleton - anterior view“. Wikimedia Commons, CC BY-SA 2.1 JP — https://creativecommons.org/licenses/by-sa/2.1/jp/ · https://commons.wikimedia.org/wiki/File:Axial_skeleton_-_anterior_view.png (ShareAlike: Bearbeitungen unter gleicher/kompatibler Lizenz; Datei unverändert, Drop-Felder nur UI-Overlay)',
   drawLeaders: true,
   fachwissenQuelle: 'Wikipedia: Achsenskelett',
   fachwissenUrl: 'https://de.wikipedia.org/wiki/Achsenskelett',

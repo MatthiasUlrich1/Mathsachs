@@ -1,6 +1,10 @@
 # Anatomy images — Quellenangaben
 
-Assets bundled for offline practice. Prefer Public Domain / CC0 / CC BY with clear attribution.
+Assets bundled for offline practice (educational app + desktop installers). Prefer Public Domain / CC0 / CC BY with clear attribution.
+
+**In-app:** Jede `imageLabelSlots`-Aufgabe zeigt die Quellenangabe als `figcaption` unter dem Bild (`AnatomyAsset.attribution`).
+
+**ShareAlike (CC BY-SA):** Die SA-Dateien werden unverändert eingebunden; Beschriftungs-Drop-Felder sind UI-Overlays, keine Bearbeitung der Bilddatei. Abgeleitete Bearbeitungen der SA-Werke müssten unter gleicher/kompatibler Lizenz stehen.
 
 ## Fish — Regenbogenforelle (external anatomy)
 
@@ -24,9 +28,10 @@ Assets bundled for offline practice. Prefer Public Domain / CC0 / CC BY with cle
 
 - **File:** `feather-parts-numbered.jpg`
 - **Title:** Parts of feather modified
-- **Author:** Original Image:Parts_of_feather.jpg; modified for language-neutral numbering by Icea
-- **License:** Copyrighted free use (unrestricted redistribution / commercial use / modification)
+- **Author:** Original Image:Parts_of_feather.jpg (JoJan); modified for language-neutral numbering by Icea
+- **License:** Copyrighted free use (unrestricted redistribution / commercial use / modification) — Commons-Vorlage `{{CopyrightedFreeUse}}`
 - **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Parts_of_feather_modified.jpg
+- **Provenance note:** Ableitungskette nennt `Parts_of_feather.jpg` / früher `Green parrot feather.jpg`; die Foto-Ursprungsseite ist auf Commons nicht mehr erreichbar. Nutzung stützt sich auf die aktuelle Commons-Lizenzmarkierung (free use).
 - **Parts (1–5):** Federfahne, Federschaft, Federäste, Dunenanteil, Federkiel
 
 ## Bird — Atmung / Luftsäcke
@@ -37,6 +42,7 @@ Assets bundled for offline practice. Prefer Public Domain / CC0 / CC BY with cle
 - **License:** CC BY-SA 4.0
 - **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Bird%27s_respiratory_system.jpg
 - **License deed:** https://creativecommons.org/licenses/by-sa/4.0/
+- **ShareAlike:** Bearbeitungen unter gleicher/kompatibler Lizenz; Datei unverändert eingebunden.
 
 ## Säugetier/Mensch — Gebiss (Zahnarten, blank)
 
@@ -52,10 +58,11 @@ Assets bundled for offline practice. Prefer Public Domain / CC0 / CC BY with cle
 
 - **File:** `human-skeleton-upper-anterior.jpg`
 - **Title:** Human Skeleton Upper Body Anterior View
-- **Author:** Andrewmeyerson (derivative of Anatomist / related Commons skeletal plates)
+- **Author:** Andrewmeyerson (Ableitung von Anatomography / BodyParts3D, DBCLS; laut Commons u. a. von File:Xiphoid_process_frontal.png)
 - **License:** CC BY-SA 3.0
 - **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Human_Skeleton_Upper_Body_Anterior_View.jpg
 - **License deed:** https://creativecommons.org/licenses/by-sa/3.0/
+- **ShareAlike:** Bearbeitungen unter gleicher/kompatibler Lizenz; Datei unverändert, Drop-Felder nur UI-Overlay.
 - **Note:** Unlabeled anterior upper-body skeleton — drop fields + leader lines added in the app.
 
 ## Mensch — Achsenskelett (Ganzkörper, BodyParts3D)
@@ -66,6 +73,8 @@ Assets bundled for offline practice. Prefer Public Domain / CC0 / CC BY with cle
 - **License:** CC BY-SA 2.1 JP
 - **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Axial_skeleton_-_anterior_view.png
 - **License deed:** https://creativecommons.org/licenses/by-sa/2.1/jp/
+- **ShareAlike:** Bearbeitungen unter gleicher/kompatibler Lizenz; Datei unverändert, Drop-Felder nur UI-Overlay.
+- **Note:** Abbildung markiert das Achsenskelett farbig (Commons-Original).
 
 ## Insect (optional / future)
 

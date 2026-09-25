@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.55] – 2026-09-25
+
+### Behoben
+- **Bio Quality/CI:** Fachwissen bei Anatomie-MC/Cloze/TF mind. zwei Sätze
+  (Installer-Build v0.28.54 war an Quality-Bar gescheitert).
+
+### Geändert
+- **Quellenangaben Anatomie:** ShareAlike-Hinweise und vollere Autorenschaft
+  (Skelett-Ableitung BodyParts3D) in App-Attribution und `ATTRIBUTION.md`.
+
 ## [0.28.54] – 2026-09-25
 
 ### Hinzugefügt

@@ -108,6 +108,15 @@ function buildFunctionMatch(rng: Rng, asset: AnatomyAsset, question: string) {
   })
 }
 
+function partFachwissen(part: AnatomyAsset['slots'][number], asset: AnatomyAsset) {
+  // Quality bar: ≥2 substantive sentences (function + wissen).
+  return bioFw(
+    `${part.label}: ${part.functionDe}. ${part.wissen}`,
+    asset.fachwissenQuelle,
+    asset.fachwissenUrl,
+  )
+}
+
 function buildFunctionMc(rng: Rng, asset: AnatomyAsset) {
   const part = pick(rng, asset.slots)
   const wrongFns = shufflePool(
@@ -123,7 +132,7 @@ function buildFunctionMc(rng: Rng, asset: AnatomyAsset) {
     correct: part.functionDe,
     solution: part.functionDe,
     explanation: part.wissen,
-    fachwissen: bioFw(part.wissen, asset.fachwissenQuelle, asset.fachwissenUrl),
+    fachwissen: partFachwissen(part, asset),
     contentIds: [part.concept, `${part.concept}:fn`],
     dedupeKey: `${part.concept}:fn-mc`,
   })
@@ -137,7 +146,7 @@ function buildPartCloze(rng: Rng, asset: AnatomyAsset) {
     accepted: [[part.functionDe]],
     solution: part.functionDe,
     explanation: part.wissen,
-    fachwissen: bioFw(part.wissen, asset.fachwissenQuelle, asset.fachwissenUrl),
+    fachwissen: partFachwissen(part, asset),
     dedupeKey: `${part.concept}:cloze`,
     contentIds: [part.concept, `${part.concept}:cloze`],
   })
@@ -159,7 +168,7 @@ function buildPartTf(rng: Rng, asset: AnatomyAsset) {
     explanation: correct
       ? part.wissen
       : `Falsch — ${part.label}: ${part.functionDe}. ${part.wissen}`,
-    fachwissen: bioFw(part.wissen, asset.fachwissenQuelle, asset.fachwissenUrl),
+    fachwissen: partFachwissen(part, asset),
     dedupeKey: `${part.concept}:tf:${correct ? 'ok' : other.id}`,
     contentIds: [part.concept, `${part.concept}:tf`],
   })

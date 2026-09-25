@@ -373,7 +373,7 @@ function federArtenMatch(rng: Rng): Task {
     solution: 'Kontur / Daune / Schwung / Steuer',
     explanation: 'Verschiedene Federarten übernehmen Form, Wärme, Flug und Steuerung.',
     fachwissen: bioFw(
-      'Federkleid: Konturfedern formen den Körper, Daunen isolieren, Schwung- und Steuerfedern ermöglichen den Flug.',
+      'Federkleid: Konturfedern formen den Körper, Daunen isolieren. Schwung- und Steuerfedern ermöglichen den Flug und die Richtungskontrolle.',
       'Wikipedia: Feder',
       'https://de.wikipedia.org/wiki/Feder_(Vogel)',
     ),
@@ -442,7 +442,7 @@ function federMc(rng: Rng): Task {
     solution: it.correct,
     explanation: it.correct,
     fachwissen: bioFw(
-      'Struktur und Funktion: Federarten und Federaufbau sind Angepasstheiten an Flug und Temperaturhaushalt.',
+      'Struktur und Funktion: Federarten und Federaufbau sind Angepasstheiten an Flug und Temperaturhaushalt. Konturfedern formen den Körper, Daunen isolieren, Schwungfedern erzeugen Auftrieb.',
       'Wikipedia: Feder',
       'https://de.wikipedia.org/wiki/Feder_(Vogel)',
     ),
