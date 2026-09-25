@@ -29,16 +29,22 @@ import {
 import {
   buildFischeLebensraumDense,
   buildFischeSchutzDense,
-  buildLurcheMetaDense,
-  buildVoegelFortpflanzungDense,
 } from './biologieFischeDense'
 import {
   biKriechtiereFortpflanzung,
   biLurcheFortpflanzung,
-  buildSaeugerSchutzDense,
   buildSaeugerUeberblickDense,
   buildVoegelFlugDense,
 } from './biologieFortpflanzungExpand'
+import {
+  buildLurcheMetaDense,
+  buildLurcheSchutzDense,
+  buildSaeugerAngepasstDense,
+  buildSaeugerMerkmaleDense,
+  buildSaeugerSchutzDense,
+  buildVoegelFortpflanzungDense,
+} from './biologieK5DenseExpand'
+import { biSaeugerFortpflanzungMensch } from './biologieMenschFortpflanzung'
 import type { Rng } from '../lib/rng'
 import type { BioBank } from './biologieBank'
 
@@ -406,7 +412,7 @@ export const BIOLOGIE_K5_EXPANDED: Record<string, Topic['generate']> = {
   ),
   'bi-k5-lb3-lurche-meta': buildLurcheMetaDense(BASE_K5['bi-k5-lb3-lurche-meta']!),
   'bi-k5-lb3-lurche-fortpflanzung': biLurcheFortpflanzung,
-  'bi-k5-lb3-lurche-schutz': BASE_K5['bi-k5-lb3-lurche-schutz']!,
+  'bi-k5-lb3-lurche-schutz': buildLurcheSchutzDense(BASE_K5['bi-k5-lb3-lurche-schutz']!),
   'bi-k5-lb4-kriechtiere': withTopicUx(
     BASE_K5['bi-k5-lb4-kriechtiere'],
     iconsForGroup('kriechtier'),
@@ -429,15 +435,16 @@ export const BIOLOGIE_K5_EXPANDED: Record<string, Topic['generate']> = {
   'bi-k5-lb6-saeugetiere': buildSaeugerUeberblickDense(
     withTopicUx(BASE_K5['bi-k5-lb6-saeugetiere'], iconsForGroup('saeuger')),
   ),
-  'bi-k5-lb6-saeuger-merkmale': mixedVariants(
+  'bi-k5-lb6-saeuger-merkmale': buildSaeugerMerkmaleDense(
     biSaeugerGebissBild,
-    biSaeugerGebissBild,
-    withTopicUx(BASE_K5['bi-k5-lb6-saeuger-merkmale'], groupFlash('saeuger')),
     withTopicUx(BASE_K5['bi-k5-lb6-saeuger-merkmale'], groupFlash('saeuger')),
   ),
   'bi-k5-lb6-saeuger-skelett': BIOLOGIE_ANATOMY_GENERATORS['bi-k5-lb6-saeuger-skelett']!,
-  'bi-k5-lb6-saeuger-angepasst': BASE_K5['bi-k5-lb6-saeuger-angepasst']!,
+  'bi-k5-lb6-saeuger-angepasst': buildSaeugerAngepasstDense(
+    BASE_K5['bi-k5-lb6-saeuger-angepasst']!,
+  ),
   'bi-k5-lb6-saeuger-schutz': buildSaeugerSchutzDense(BASE_K5['bi-k5-lb6-saeuger-schutz']!),
+  'bi-k5-lb6-saeuger-fortpflanzung': biSaeugerFortpflanzungMensch,
   // Systematik = Lehrplan-Klassifikation; Zuordnung = Merkmalsvergleich UX — disjoint.
   'bi-k5-lb7-systematik': BASE_K5['bi-k5-lb7-systematik']!,
   'bi-k5-lb7-zuordnung': vertebrateCompareUx,

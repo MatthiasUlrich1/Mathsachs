@@ -80,12 +80,12 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Flossen',
             'Stromlinienform',
           ], { released: true }),
-          topic('bi-k5-lb2-fische-aufbau', 'Aufbau des Fisches', [
+          topic('bi-k5-lb2-fische-aufbau', 'Fische – Aufbau und Bestandteile', [
             'Körperbau',
             'Flossen',
             'Kiemendeckel',
             'Seitenlinie',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb2-fische-merkmale', 'Fische – Merkmale und Angepasstheit', [
             'Kiemen',
             'Schuppen',
@@ -125,7 +125,7 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Äußere Befruchtung',
             'Laichgewässer',
             'Kaulquappe',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb3-lurche-schutz', 'Lurche – Lebensraum und Schutz', [
             'Amphibienschutz',
             'Wanderung',
@@ -152,7 +152,7 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Schalenei',
             'Dotter',
             'Eiablage',
-          ]),
+          ], { released: true }),
         ]),
         area('lb5', 'Vögel in ihren Lebensräumen', 9, [
           topic('bi-k5-lb5-voegel', 'Vögel – Überblick', [
@@ -160,17 +160,19 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Luftsäcke',
             'Schnabel',
           ], { released: true }),
-          topic('bi-k5-lb5-voegel-aufbau', 'Aufbau des Vogels', [
+          topic('bi-k5-lb5-voegel-aufbau', 'Angepasstheit der Vögel (Körperbau und Atmung)', [
             'Körperbau',
             'Kropf',
             'Muskelmagen',
             'Luftsäcke',
-          ]),
+            'Stromlinienform',
+            'Brustbeinkamm',
+          ], { released: true }),
           topic('bi-k5-lb5-voegel-flug', 'Vögel – Flug und Federkleid', [
             'Flug',
             'Federn',
             'Knochen',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb5-voegel-fortpflanzung', 'Vögel – Fortpflanzung und Brutpflege', [
             'Nest',
             'Nesthocker',
@@ -182,7 +184,7 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Fell',
             'Säugen',
             'Gleichwarm',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb6-saeuger-merkmale', 'Säugetiere – Merkmale und Gebiss', [
             'Gebiss',
             'Fell',
@@ -193,7 +195,7 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Schädel',
             'Wirbelsäule',
             'Gliedmaßen',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb6-saeuger-angepasst', 'Säugetiere – Angepasstheit und Lebensräume', [
             'Angepasstheit',
             'Lebensraum',
@@ -201,6 +203,13 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
           topic('bi-k5-lb6-saeuger-schutz', 'Säugetiere – Schutz und Vielfalt', [
             'Artenschutz',
             'Vielfalt',
+          ]),
+          topic('bi-k5-lb6-saeuger-fortpflanzung', 'Säugetiere – Fortpflanzung und Mensch', [
+            'Geschlechtsorgane',
+            'Pubertät',
+            'Menstruation',
+            'Pollution',
+            'Eltern-Kind',
           ]),
         ]),
         area('lb7', 'Systematisierung', 3, [
@@ -212,7 +221,7 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
           topic('bi-k5-lb7-zuordnung', 'Wirbeltiere zuordnen (Merkmale → Gruppe)', [
             'Zuordnung',
             'Merkmale',
-          ]),
+          ], { released: true }),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
           topic('bi-k5-lbw-winter', 'Wirbeltiere im Winter', [
@@ -774,21 +783,29 @@ export const BIOLOGIE_K6_WIRBELLOSE_RELEASED_IDS = [
   'bi-k6-lb2-nesseltiere',
 ] as const
 
-/** K5 Themen laut Freigabeliste (Bild 5) — freigegeben. */
+/** K5 Themen laut Freigabeliste — freigegeben (Anatomie + Fortpflanzung Lurch/Kriechtier + Vögel/Säuger-Kern). */
 export const BIOLOGIE_K5_RELEASED_IDS = [
   'bi-k5-lb1-merkmale',
   'bi-k5-lb1-kennzeichen',
   'bi-k5-lb2-fische',
+  'bi-k5-lb2-fische-aufbau',
   'bi-k5-lb2-fische-merkmale',
   'bi-k5-lb2-fische-lebensraum',
   'bi-k5-lb2-fische-schutz',
   'bi-k5-lb3-lurche',
   'bi-k5-lb3-lurche-merkmale',
+  'bi-k5-lb3-lurche-fortpflanzung',
   'bi-k5-lb4-kriechtiere',
   'bi-k5-lb4-kriechtiere-merkmale',
   'bi-k5-lb4-kriechtiere-arten',
+  'bi-k5-lb4-kriechtiere-fortpflanzung',
   'bi-k5-lb5-voegel',
+  'bi-k5-lb5-voegel-aufbau',
+  'bi-k5-lb5-voegel-flug',
+  'bi-k5-lb6-saeugetiere',
+  'bi-k5-lb6-saeuger-skelett',
   'bi-k5-lb7-systematik',
+  'bi-k5-lb7-zuordnung',
   'bi-k5-lbw-winter',
   'bi-k5-lbw-saurier',
   'bi-k5-lbw-haltung',
@@ -827,6 +844,7 @@ export const BIOLOGIE_K5_WIRBELTIERE_TOPIC_IDS = [
   'bi-k5-lb6-saeuger-skelett',
   'bi-k5-lb6-saeuger-angepasst',
   'bi-k5-lb6-saeuger-schutz',
+  'bi-k5-lb6-saeuger-fortpflanzung',
   'bi-k5-lb7-systematik',
   'bi-k5-lb7-zuordnung',
   'bi-k5-lbw-winter',

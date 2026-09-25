@@ -76,6 +76,14 @@ Assets bundled for offline practice (educational app + desktop installers). Pref
 - **ShareAlike:** Bearbeitungen unter gleicher/kompatibler Lizenz; Datei unverändert, Drop-Felder nur UI-Overlay.
 - **Note:** Abbildung markiert das Achsenskelett farbig (Commons-Original).
 
+## Mensch — weibliche Geschlechtsorgane (Unterrichtsschema)
+
+- **File:** `female-reproductive-unlabeled.svg`
+- **Title:** Weibliche Geschlechtsorgane (unbeschriftet)
+- **Author:** TaskTrophy / Mathsachs (Originalschema)
+- **License:** Public Domain (CC0) — für Bildungszwecke
+- **Note:** Nummerierte Marker 1–4 für `imageLabelSlots`; kein Fremdwerk.
+
 ## Insect (optional / future)
 
 - **File:** `bug-parts.svg`

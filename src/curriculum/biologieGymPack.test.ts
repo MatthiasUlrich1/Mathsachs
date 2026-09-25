@@ -23,7 +23,7 @@ describe('Gymnasium Sachsen Biologie pack', () => {
     const pack = buildGymSachsenBiologiePack()
     expect(pack.id).toBe(GYM_SACHSEN_BIOLOGIE_PACK_ID)
     expect(pack.subject).toBe('Biologie')
-    expect(pack.version).toBe('1.6.0')
+    expect(pack.version).toBe('1.7.0')
     expect(pack.official.map((g) => g.id)).toEqual([
       'biologie-klasse-5',
       'biologie-klasse-6',

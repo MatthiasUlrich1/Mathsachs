@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Biologie",
-  "version": "1.6.0",
-  "changelog": "K5 Anatomie-Bilder (released:false): Fisch-Aufbau verdichtet; Vogel Aufbau+Luftsäcke, Federaufbau; Säuger Gebiss+Skelett/Körpergliederung. 130 Themen; Rest Entwickler (released:false).",
+  "version": "1.7.0",
+  "changelog": "K5 Freigabeliste: Fisch-Aufbau, Lurch-/Kriechtier-Fortpflanzung, Vogel Aufbau+Flug, Säuger Überblick+Skelett, Zuordnung freigegeben. Anatomie-Slots kalibriert; dichte Banken für gesperrte Themen; Fortpflanzung Mensch (locked). 131 Themen.",
   "official": [
     {
       "id": "biologie-klasse-5",
@@ -77,10 +77,10 @@
             },
             {
               "id": "bi-k5-lb2-fische-aufbau",
-              "title": "Aufbau des Fisches",
+              "title": "Fische – Aufbau und Bestandteile",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Körperbau",
@@ -181,7 +181,7 @@
               "title": "Lurche – Fortpflanzung",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Laich",
@@ -253,7 +253,7 @@
               "title": "Kriechtiere – Fortpflanzung",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Innere Befruchtung",
@@ -284,16 +284,18 @@
             },
             {
               "id": "bi-k5-lb5-voegel-aufbau",
-              "title": "Aufbau des Vogels",
+              "title": "Angepasstheit der Vögel (Körperbau und Atmung)",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Körperbau",
                 "Kropf",
                 "Muskelmagen",
-                "Luftsäcke"
+                "Luftsäcke",
+                "Stromlinienform",
+                "Brustbeinkamm"
               ]
             },
             {
@@ -301,7 +303,7 @@
               "title": "Vögel – Flug und Federkleid",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Flug",
@@ -334,7 +336,7 @@
               "title": "Säugetiere – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Fell",
@@ -360,7 +362,7 @@
               "title": "Körpergliederung und Skelett",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Skelett",
@@ -392,6 +394,21 @@
                 "Artenschutz",
                 "Vielfalt"
               ]
+            },
+            {
+              "id": "bi-k5-lb6-saeuger-fortpflanzung",
+              "title": "Säugetiere – Fortpflanzung und Mensch",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Geschlechtsorgane",
+                "Pubertät",
+                "Menstruation",
+                "Pollution",
+                "Eltern-Kind"
+              ]
             }
           ]
         },
@@ -418,7 +435,7 @@
               "title": "Wirbeltiere zuordnen (Merkmale → Gruppe)",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Zuordnung",
@@ -2064,5 +2081,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "7d9b3be1"
+  "contentHash": "6e438f4d"
 }

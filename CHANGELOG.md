@@ -9,6 +9,20 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.56] – 2026-09-25
+
+### Hinzugefügt
+- **Bio K5 Freigabeliste:** Fisch-Aufbau (tolerante Auge-Funktion), Lurch-/Kriechtier-Fortpflanzung,
+  Vogel Aufbau+Flug/Federkleid, Säuger Überblick+Skelett, Wirbeltiere-Zuordnung freigegeben.
+- **Säuger Fortpflanzung/Mensch** (released:false): Organ-Schema mit Blöcken, Pubertät, Menstruation,
+  Pollution, Eltern-Kind.
+- **Dichte Banken** (noch gesperrt): Lurch-Metamorphose/Schutz, Vogel-Fortpflanzung, Säuger
+  Angepasstheit/Gebiss-Typen/Schutz (≥50 Arten, Teilpunkte).
+
+### Geändert
+- Feder-/Gebiss-/Skelett-Slots auf Nummern bzw. Knochenpunkte kalibriert; Bio-Pack **1.7.0**.
+- 10 Aufgaben/Durchgang als allgemeiner Fallback in der Übungsrunde bestätigt.
+
 ## [0.28.55] – 2026-09-25
 
 ### Behoben

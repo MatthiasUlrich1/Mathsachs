@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.6.0',
-    changelog: `K5 Anatomie-Bilder (released:false): Fisch-Aufbau verdichtet; Vogel Aufbau+Luftsäcke, Federaufbau; Säuger Gebiss+Skelett/Körpergliederung. ${topics} Themen; Rest Entwickler (released:false).`,
+    version: '1.7.0',
+    changelog: `K5 Freigabeliste: Fisch-Aufbau, Lurch-/Kriechtier-Fortpflanzung, Vogel Aufbau+Flug, Säuger Überblick+Skelett, Zuordnung freigegeben. Anatomie-Slots kalibriert; dichte Banken für gesperrte Themen; Fortpflanzung Mensch (locked). ${topics} Themen.`,
     official,
     extras: [],
   }

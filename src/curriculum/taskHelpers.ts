@@ -1283,14 +1283,31 @@ interface ClozeMultiTaskInput {
   visualContent?: string
 }
 
-const normCloze = (s: string) => s.trim().toLowerCase().replace(/\s+/g, ' ')
+const normCloze = (s: string) =>
+  s
+    .trim()
+    .toLowerCase()
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ß/g, 'ss')
+    .replace(/\s+/g, ' ')
+
+/** Match blank: exact, or any comma-separated token equals an accepted form. */
+const blankMatchesAccepted = (blank: string, accepted: string[]) => {
+  const n = normCloze(blank)
+  if (accepted.some((a) => normCloze(a) === n)) return true
+  const tokens = n.split(/[,;/]+/).map((t) => t.trim()).filter(Boolean)
+  if (tokens.length <= 1) return false
+  return tokens.every((tok) => accepted.some((a) => normCloze(a) === tok))
+}
 
 /** Multi-blank cloze in one running text. */
 export const clozeMultiTask = (input: ClozeMultiTaskInput): Task => {
   const n = input.accepted.length
   const sampleBlanks = input.accepted.map((a) => a[0] ?? '')
   const blankOk = (b: string, i: number) =>
-    (input.accepted[i] ?? []).some((a) => normCloze(a) === normCloze(b))
+    blankMatchesAccepted(b, input.accepted[i] ?? [])
   const gradeBlanks = (answer: UserInput): { parts: boolean[]; fraction: number } => {
     if (n === 0) return { parts: [], fraction: 0 }
     if (answer.kind === 'clozeMulti') {

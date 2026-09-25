@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" role="img" aria-label="Schema weibliche Geschlechtsorgane unbeschriftet">
+  <!-- Original educational schematic for Mathsachs / TaskTrophy (CC0 dedication by project). -->
+  <rect width="400" height="320" fill="#faf8f5"/>
+  <!-- uterus body -->
+  <ellipse cx="200" cy="150" rx="55" ry="70" fill="#f2c4c0" stroke="#8a4a45" stroke-width="2"/>
+  <!-- cervix / vagina -->
+  <path d="M175 210 Q200 280 225 210" fill="#e8b0ab" stroke="#8a4a45" stroke-width="2"/>
+  <rect x="188" y="210" width="24" height="70" rx="8" fill="#e8b0ab" stroke="#8a4a45" stroke-width="2"/>
+  <!-- left ovary + tube -->
+  <ellipse cx="95" cy="120" rx="22" ry="16" fill="#e8d4a8" stroke="#8a4a45" stroke-width="2"/>
+  <path d="M117 120 C150 90 170 110 175 130" fill="none" stroke="#8a4a45" stroke-width="3"/>
+  <!-- right ovary + tube -->
+  <ellipse cx="305" cy="120" rx="22" ry="16" fill="#e8d4a8" stroke="#8a4a45" stroke-width="2"/>
+  <path d="M283 120 C250 90 230 110 225 130" fill="none" stroke="#8a4a45" stroke-width="3"/>
+  <!-- empty numbered markers for drop fields -->
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#1a1a1a">
+    <circle cx="55" cy="90" r="12" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+    <text x="55" y="95" text-anchor="middle">1</text>
+    <circle cx="55" cy="155" r="12" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+    <text x="55" y="160" text-anchor="middle">2</text>
+    <circle cx="200" cy="40" r="12" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+    <text x="200" y="45" text-anchor="middle">3</text>
+    <circle cx="200" cy="300" r="12" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+    <text x="200" y="305" text-anchor="middle">4</text>
+  </g>
+  <!-- leader stubs -->
+  <line x1="67" y1="95" x2="85" y2="112" stroke="#555" stroke-width="1"/>
+  <line x1="67" y1="155" x2="140" y2="125" stroke="#555" stroke-width="1"/>
+  <line x1="200" y1="52" x2="200" y2="90" stroke="#555" stroke-width="1"/>
+  <line x1="200" y1="288" x2="200" y2="275" stroke="#555" stroke-width="1"/>
+</svg>

@@ -15,12 +15,14 @@ import { ReportFaultyTask } from './ReportFaultyTask'
 import { initTaskInput, TaskInteractive, TaskVisual } from './TaskMedia'
 
 const TARGET_TASKS_PER_ROUND = 10
+/** Allgemeingültig: 10 zufällige Aufgaben pro Durchgang (alle Lehrpläne). */
 const PHYSIK_TASKS_PER_ROUND = 10
 
 function tasksPerRoundFor(topic: Topic): number {
   if (typeof topic.tasksPerRound === 'number' && topic.tasksPerRound >= 1) {
     return Math.min(30, Math.trunc(topic.tasksPerRound))
   }
+  // Fallback: 10 für alle Fächer (Physik-Präfix historisch, Wert identisch).
   return topic.id.startsWith('ph-') ? PHYSIK_TASKS_PER_ROUND : TARGET_TASKS_PER_ROUND
 }
 

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-25T15:13:51.033Z",
+  "updatedAt": "2026-09-25T16:02:14.465Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -40,10 +40,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Biologie",
-      "version": "1.6.0",
+      "version": "1.7.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-biologie.json",
-      "size": 67259,
-      "changelog": "K5 Anatomie-Bilder (released:false): Fisch-Aufbau verdichtet; Vogel Aufbau+Luftsäcke, Federaufbau; Säuger Gebiss+Skelett/Körpergliederung. 130 Themen; Rest Entwickler (released:false)."
+      "size": 67970,
+      "changelog": "K5 Freigabeliste: Fisch-Aufbau, Lurch-/Kriechtier-Fortpflanzung, Vogel Aufbau+Flug, Säuger Überblick+Skelett, Zuordnung freigegeben. Anatomie-Slots kalibriert; dichte Banken für gesperrte Themen; Fortpflanzung Mensch (locked). 131 Themen."
     },
     {
       "id": "gym-sachsen-anhalt",

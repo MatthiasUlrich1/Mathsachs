@@ -138,18 +138,98 @@ function buildFunctionMc(rng: Rng, asset: AnatomyAsset) {
   })
 }
 
+/** Tolerante Synonyme für Cloze-Funktionen (Komma/Teilantworten erlaubt). */
+function functionAccepted(part: AnatomyAsset['slots'][number]): string[] {
+  const base = part.functionDe
+  const extras: string[] = [base]
+  // Einzelne Teilstücke bei „A und B“ / „A und B“
+  for (const chunk of base.split(/\s+und\s+|\s*\/\s*|,\s*/i)) {
+    const t = chunk.trim()
+    if (t.length >= 3) extras.push(t)
+  }
+  if (part.id === 'auge') {
+    extras.push(
+      'Sehen',
+      'sehen',
+      'Orientierung',
+      'orientierung',
+      'Sehen und Orientierung',
+      'Orientierung und Sehen',
+      'Sehen, Orientierung',
+      'Orientierung, Sehen',
+      'Lichtwahrnehmung',
+      'Wahrnehmen von Licht',
+    )
+  }
+  return [...new Set(extras)]
+}
+
 function buildPartCloze(rng: Rng, asset: AnatomyAsset) {
   const part = pick(rng, asset.slots)
+  const accepted = functionAccepted(part)
+  const question =
+    part.id === 'auge'
+      ? 'Ergänze die Funktion vom Auge.'
+      : `Ergänze die Funktion von ${part.label}.`
   return clozeBlanksTask({
-    question: `Ergänze die Funktion von ${part.label}.`,
+    question,
     template: `${part.label}: ___.`,
-    accepted: [[part.functionDe]],
+    accepted: [accepted],
     solution: part.functionDe,
     explanation: part.wissen,
     fachwissen: partFachwissen(part, asset),
     dedupeKey: `${part.concept}:cloze`,
     contentIds: [part.concept, `${part.concept}:cloze`],
   })
+}
+
+/** Auge: Komma-Liste mit Teilpunkten (Sehen / Orientierung). */
+function fishEyeClozePartial(_rng: Rng) {
+  const grade = (answer: import('./types').UserInput) => {
+    if (answer.kind !== 'value' && answer.kind !== 'clozeMulti') {
+      return { fraction: 0, parts: [false, false] }
+    }
+    const raw =
+      answer.kind === 'value' ? answer.value : (answer.blanks ?? []).join(', ')
+    const parts = raw
+      .toLowerCase()
+      .split(/[,;/]|\bund\b/i)
+      .map((s) =>
+        s
+          .trim()
+          .replace(/ä/g, 'ae')
+          .replace(/ö/g, 'oe')
+          .replace(/ü/g, 'ue')
+          .replace(/ß/g, 'ss'),
+      )
+      .filter(Boolean)
+    const hitSehen = parts.some((p) => p.includes('sehen') || p.includes('licht'))
+    const hitOri = parts.some((p) => p.includes('orient'))
+    const flags = [hitSehen, hitOri]
+    const ok = flags.filter(Boolean).length
+    return { parts: flags, fraction: ok / 2 }
+  }
+  return {
+    question: 'Ergänze die Funktion vom Auge.',
+    answerKind: 'text' as const,
+    solution: 'Sehen und Orientierung',
+    explanation:
+      'Das Auge dient dem Sehen und der Orientierung unter Wasser. Auch Einzelnennungen wie „Sehen“ oder „Orientierung“ geben Teilpunkte.',
+    fachwissen: partFachwissen(FISH_TROUT_ASSET.slots[0]!, FISH_TROUT_ASSET),
+    dedupeKey: 'bio:k5:fisch:aufbau:auge:cloze-partial',
+    contentIds: ['bio:k5:fisch:aufbau:auge', 'bio:k5:fisch:aufbau:auge:cloze'],
+    sampleAnswer: { kind: 'value' as const, value: 'Sehen, Orientierung' },
+    interactive: {
+      type: 'clozeMulti' as const,
+      props: {
+        segments: ['Auge: ', '.'],
+        blankCount: 1,
+        instruction: 'Tippe die Funktion (Komma erlaubt, z. B. Sehen, Orientierung):',
+      },
+    },
+    check: (answer: import('./types').UserInput) => grade(answer).fraction >= 0.5,
+    grade,
+  }
 }
 
 function buildPartTf(rng: Rng, asset: AnatomyAsset) {
@@ -195,6 +275,8 @@ function fishFnMc(rng: Rng) {
 }
 
 function fishCloze(rng: Rng) {
+  // Auge-Funktion besonders oft und tolerant (Freigabeliste).
+  if (rng() < 0.45) return fishEyeClozePartial(rng)
   return buildPartCloze(rng, FISH_TROUT_ASSET)
 }
 
@@ -340,13 +422,14 @@ function skeletonGliederungMatch(rng: Rng) {
   })
 }
 
-/** K5 LB2 — Aufbau des Fisches (released:false via Gym-Topics). */
+/** K5 LB2 — Aufbau des Fisches (Freigabe nach Auge-Toleranz + 10er-Runde). */
 export const biFischeAufbau: Topic['generate'] = mixedVariants(
   fishLabel,
   fishLabel,
   fishFunctions,
   fishFnMc,
   fishCloze,
+  fishEyeClozePartial,
   fishTf,
   fishFunctions,
 )

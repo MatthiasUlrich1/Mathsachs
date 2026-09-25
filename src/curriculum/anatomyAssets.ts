@@ -269,11 +269,15 @@ export const FEATHER_PARTS_ASSET: AnatomyAsset = {
   fachwissenQuelle: 'Wikipedia: Feder',
   fachwissenUrl: 'https://de.wikipedia.org/wiki/Feder_(Vogel)',
   distractors: ['Kiemendeckel', 'Schwimmblase'],
+  /**
+   * Drop-Felder mittig auf den Bildnummern 1–5 (gemessen an 599×600).
+   * target* zeigt auf die anatomische Region (Linie bleibt im Bild).
+   */
   slots: [
     {
       id: 'federfahne',
-      x: 34,
-      y: 14,
+      x: 33.0,
+      y: 17.4,
       targetX: 42,
       targetY: 28,
       label: 'Federfahne',
@@ -283,8 +287,8 @@ export const FEATHER_PARTS_ASSET: AnatomyAsset = {
     },
     {
       id: 'federschaft',
-      x: 80,
-      y: 20,
+      x: 86.2,
+      y: 32.4,
       targetX: 58,
       targetY: 32,
       label: 'Federschaft',
@@ -294,8 +298,8 @@ export const FEATHER_PARTS_ASSET: AnatomyAsset = {
     },
     {
       id: 'federaste',
-      x: 78,
-      y: 42,
+      x: 80.7,
+      y: 48.0,
       targetX: 62,
       targetY: 48,
       label: 'Federäste',
@@ -305,8 +309,8 @@ export const FEATHER_PARTS_ASSET: AnatomyAsset = {
     },
     {
       id: 'dunenanteil',
-      x: 58,
-      y: 74,
+      x: 70.9,
+      y: 80.6,
       targetX: 48,
       targetY: 68,
       label: 'Dunenanteil',
@@ -316,8 +320,8 @@ export const FEATHER_PARTS_ASSET: AnatomyAsset = {
     },
     {
       id: 'federkiel',
-      x: 40,
-      y: 90,
+      x: 46.6,
+      y: 89.2,
       targetX: 36,
       targetY: 82,
       label: 'Federkiel',
@@ -397,17 +401,22 @@ export const TEETH_TYPES_ASSET: AnatomyAsset = {
   imageAlt: 'Mundhöhle mit Zahnarten und leeren Beschriftungsplätzen',
   attribution:
     'DataBase Center for Life Science (DBCLS); blank labeling layout TheTechnician27: „Oral cavity teeth labels (blank)“. Wikimedia Commons, CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/ · https://commons.wikimedia.org/wiki/File:Oral_cavity_teeth_labels_(blank).svg',
-  drawLeaders: true,
+  /** Blank-SVG hat bereits Klammern/Striche — Drop-Felder darüber, keine Extra-Linien. */
+  drawLeaders: false,
   fachwissenQuelle: 'Wikipedia: Zahn',
   fachwissenUrl: 'https://de.wikipedia.org/wiki/Zahn',
   distractors: ['Kiemenreusen', 'Federkiel'],
+  /**
+   * Drop-Felder über den leeren Beschriftungs-/Klammernbereichen (blank SVG),
+   * nicht über den Zähnen selbst.
+   */
   slots: [
     {
       id: 'schneidezaehne',
       x: 50,
-      y: 6,
+      y: 8,
       targetX: 50,
-      targetY: 24,
+      targetY: 28,
       label: 'Schneidezähne',
       functionDe: 'Abbeißen und Abschneiden',
       wissen: 'Schneidezähne stehen vorn und dienen dem Abbeißen und Abschneiden der Nahrung.',
@@ -415,10 +424,10 @@ export const TEETH_TYPES_ASSET: AnatomyAsset = {
     },
     {
       id: 'eckzaehne',
-      x: 92,
-      y: 36,
+      x: 90,
+      y: 38,
       targetX: 78,
-      targetY: 40,
+      targetY: 42,
       label: 'Eckzähne',
       functionDe: 'Festhalten und Zerreißen',
       wissen: 'Eckzähne sind spitz und halten bzw. zerreißen Nahrung — besonders bei Fleischfressern.',
@@ -426,8 +435,8 @@ export const TEETH_TYPES_ASSET: AnatomyAsset = {
     },
     {
       id: 'vorbackenzaehne',
-      x: 8,
-      y: 40,
+      x: 10,
+      y: 38,
       targetX: 24,
       targetY: 44,
       label: 'Vorbackenzähne',
@@ -437,8 +446,8 @@ export const TEETH_TYPES_ASSET: AnatomyAsset = {
     },
     {
       id: 'backenzaehne',
-      x: 8,
-      y: 68,
+      x: 10,
+      y: 66,
       targetX: 28,
       targetY: 58,
       label: 'Backenzähne',
@@ -460,13 +469,14 @@ export const SKELETON_UPPER_ASSET: AnatomyAsset = {
   fachwissenQuelle: 'Wikipedia: Menschliches Skelett',
   fachwissenUrl: 'https://de.wikipedia.org/wiki/Menschliches_Skelett',
   distractors: ['Federfahne', 'Kiemendeckel'],
+  /** Zielpunkte (target*) sitzen auf dem Knochen; Drop-Felder am Bildrand. */
   slots: [
     {
       id: 'schaedel',
       x: 8,
       y: 8,
       targetX: 50,
-      targetY: 10,
+      targetY: 9,
       label: 'Schädel',
       functionDe: 'Schützt das Gehirn',
       wissen: 'Der Schädel bildet den knöchernen Schutz für Gehirn und Sinnesorgane.',
@@ -476,8 +486,8 @@ export const SKELETON_UPPER_ASSET: AnatomyAsset = {
       id: 'schluesselbein',
       x: 92,
       y: 22,
-      targetX: 62,
-      targetY: 24,
+      targetX: 60,
+      targetY: 25,
       label: 'Schlüsselbein',
       functionDe: 'Verbindung Schulter–Brust',
       wissen: 'Das Schlüsselbein verbindet Schultergürtel und Brustbein und stützt die Schulter.',
@@ -488,7 +498,7 @@ export const SKELETON_UPPER_ASSET: AnatomyAsset = {
       x: 8,
       y: 36,
       targetX: 50,
-      targetY: 36,
+      targetY: 34,
       label: 'Brustbein',
       functionDe: 'Vorderer Abschluss des Brustkorbs',
       wissen: 'Am Brustbein setzen Rippenknorpel an — es stabilisiert den Brustkorb.',
@@ -498,8 +508,8 @@ export const SKELETON_UPPER_ASSET: AnatomyAsset = {
       id: 'rippen',
       x: 92,
       y: 40,
-      targetX: 68,
-      targetY: 40,
+      targetX: 70,
+      targetY: 38,
       label: 'Rippen',
       functionDe: 'Schutz von Herz und Lunge',
       wissen: 'Die Rippen bilden den Brustkorb und schützen Herz und Lunge.',
@@ -510,7 +520,7 @@ export const SKELETON_UPPER_ASSET: AnatomyAsset = {
       x: 8,
       y: 52,
       targetX: 50,
-      targetY: 48,
+      targetY: 20,
       label: 'Wirbelsäule',
       functionDe: 'Stütze und Schutz des Rückenmarks',
       wissen: 'Die Wirbelsäule stützt den Rumpf und schützt das Rückenmark.',
@@ -520,8 +530,8 @@ export const SKELETON_UPPER_ASSET: AnatomyAsset = {
       id: 'oberarmknochen',
       x: 92,
       y: 58,
-      targetX: 78,
-      targetY: 55,
+      targetX: 80,
+      targetY: 56,
       label: 'Oberarmknochen',
       functionDe: 'Knochen des Oberarms',
       wissen: 'Der Oberarmknochen (Humerus) ist der lange Knochen zwischen Schulter und Ellbogen.',

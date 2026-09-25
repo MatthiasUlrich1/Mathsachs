@@ -37,8 +37,10 @@ const SIBLING_FAMILIES: string[][] = [
   [
     'bi-k5-lb6-saeugetiere',
     'bi-k5-lb6-saeuger-merkmale',
+    'bi-k5-lb6-saeuger-skelett',
     'bi-k5-lb6-saeuger-angepasst',
     'bi-k5-lb6-saeuger-schutz',
+    'bi-k5-lb6-saeuger-fortpflanzung',
   ],
   ['bi-k5-lb1-merkmale', 'bi-k5-lb1-kennzeichen'],
   [
