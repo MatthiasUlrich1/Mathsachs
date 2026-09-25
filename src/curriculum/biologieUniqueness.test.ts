@@ -154,11 +154,14 @@ describe('Bug A — within-topic uniqueness (entire Bio Lehrplan)', () => {
   it('does not pad rounds when the unique pool is small', () => {
     // Synthetic tiny bank: one fact → round length 1, never 10 duplicates
     // (real topics like bi-gk-lbw-energie are densified and no longer tiny)
-    const tiny = () => ({
+    const tiny = (_rng: ReturnType<typeof createRng>) => ({
       question: 'Tiny pool probe',
       solution: 'eine Antwort',
+      explanation: 'probe',
       contentIds: ['bio:test:tiny-pool-only'],
-      answerKind: 'short' as const,
+      answerKind: 'text' as const,
+      check: () => true,
+      sampleAnswer: { kind: 'value' as const, value: 'eine Antwort' },
     })
     const round = buildUniqueTaskRound(tiny, createRng(7), 10, 80)
     expect(round.length).toBeLessThanOrEqual(3)
