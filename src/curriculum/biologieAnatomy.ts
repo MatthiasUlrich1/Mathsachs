@@ -4,7 +4,6 @@
  */
 import type { Rng } from '../lib/rng'
 import {
-  BIRD_AIR_SACS_ASSET,
   BIRD_ORGANS_ASSET,
   FEATHER_PARTS_ASSET,
   FISH_TROUT_ASSET,
@@ -292,11 +291,11 @@ function fishTf(rng: Rng) {
 }
 
 function birdCloze(rng: Rng) {
-  return buildPartCloze(rng, rng() < 0.55 ? BIRD_ORGANS_ASSET : BIRD_AIR_SACS_ASSET)
+  return buildPartCloze(rng, BIRD_ORGANS_ASSET)
 }
 
 function birdTf(rng: Rng) {
-  return buildPartTf(rng, rng() < 0.55 ? BIRD_ORGANS_ASSET : BIRD_AIR_SACS_ASSET)
+  return buildPartTf(rng, BIRD_ORGANS_ASSET)
 }
 
 function birdAdaptationExtra(rng: Rng) {
@@ -389,26 +388,6 @@ function birdFunctions(rng: Rng) {
 
 function birdFnMc(rng: Rng) {
   return buildFunctionMc(rng, BIRD_ORGANS_ASSET)
-}
-
-function birdAirSacsLabel(rng: Rng) {
-  return buildLabelTask(
-    rng,
-    BIRD_AIR_SACS_ASSET,
-    'Beschrifte Atmungsorgane des Vogels (Lunge und Luftsäcke). Ziehe die Begriffe in die Felder.',
-  )
-}
-
-function birdAirSacsMatch(rng: Rng) {
-  return buildFunctionMatch(
-    rng,
-    BIRD_AIR_SACS_ASSET,
-    'Ordne den Teilen der Vogelatmung die passende Funktion zu.',
-  )
-}
-
-function birdAirSacsMc(rng: Rng) {
-  return buildFunctionMc(rng, BIRD_AIR_SACS_ASSET)
 }
 
 function featherLabel(rng: Rng) {
@@ -603,20 +582,20 @@ export const biFischeAufbau: Topic['generate'] = mixedVariants(
   fishAdaptationExtra,
 )
 
-/** K5 LB5 — Aufbau des Vogels (Organe + Luftsäcke). Pool ≥10 unique für 10er-Runden. */
+/** K5 LB5 — Aufbau des Vogels (Organ-Schema; engl. Luftsäcke-Diagramm entfernt). Pool ≥10. */
 export const biVoegelAufbau: Topic['generate'] = mixedVariants(
   birdLabel,
-  birdAirSacsLabel,
+  birdLabel,
   birdFunctions,
-  birdAirSacsMatch,
   birdFnMc,
-  birdAirSacsMc,
   birdCloze,
   birdTf,
   birdAdaptationExtra,
   birdFnMc,
-  birdAirSacsMc,
+  birdCloze,
   birdAdaptationExtra,
+  birdTf,
+  birdFunctions,
 )
 
 /** Federaufbau image+blocks — mix into Flug/Federkleid. */

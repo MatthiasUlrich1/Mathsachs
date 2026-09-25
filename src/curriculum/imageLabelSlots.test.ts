@@ -112,23 +112,21 @@ describe('Biologie anatomy topics', () => {
           if (id === 'bi-k5-lb5-voegel-aufbau') {
             const items = task.interactive.props.items as Array<{ label: string }>
             const labels = items.map((i) => i.label)
-            // Organ diagram (8) or air-sacs diagram (subset)
-            if ((task.interactive.props.slots as unknown[]).length === 8) {
-              expect(labels).toEqual(
-                expect.arrayContaining([
-                  'Kropf',
-                  'Herz',
-                  'Leber',
-                  'Kloake',
-                  'Darm',
-                  'Muskelmagen',
-                  'Drüsenmagen',
-                  'Lunge',
-                ]),
-              )
-            } else {
-              expect(labels.some((l) => /Luftsack|Lunge|Luftröhre/i.test(l))).toBe(true)
-            }
+            // Organ diagram only (engl. Luftsäcke-Schema entfernt, zu schwer für K5)
+            expect((task.interactive.props.slots as unknown[]).length).toBe(8)
+            expect(labels).toEqual(
+              expect.arrayContaining([
+                'Kropf',
+                'Herz',
+                'Leber',
+                'Kloake',
+                'Darm',
+                'Muskelmagen',
+                'Drüsenmagen',
+                'Lunge',
+              ]),
+            )
+            expect(String(task.interactive.props.imageSrc)).not.toMatch(/respiratory|airsac/i)
           }
           if (id === 'bi-k5-lb5-voegel-feder') {
             expect((task.interactive.props.slots as unknown[]).length).toBe(5)

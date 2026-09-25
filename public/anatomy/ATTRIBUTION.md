@@ -34,16 +34,6 @@ Assets bundled for offline practice (educational app + desktop installers). Pref
 - **Provenance note:** Ableitungskette nennt `Parts_of_feather.jpg` / früher `Green parrot feather.jpg`; die Foto-Ursprungsseite ist auf Commons nicht mehr erreichbar. Nutzung stützt sich auf die aktuelle Commons-Lizenzmarkierung (free use).
 - **Parts (1–5):** Federfahne, Federschaft, Federäste, Dunenanteil, Federkiel
 
-## Bird — Atmung / Luftsäcke
-
-- **File:** `bird-respiratory-cruithne.jpg`
-- **Title:** Bird's respiratory system
-- **Author:** Cruithne9
-- **License:** CC BY-SA 4.0
-- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Bird%27s_respiratory_system.jpg
-- **License deed:** https://creativecommons.org/licenses/by-sa/4.0/
-- **ShareAlike:** Bearbeitungen unter gleicher/kompatibler Lizenz; Datei unverändert eingebunden.
-
 ## Säugetier/Mensch — Gebiss (Zahnarten, blank)
 
 - **File:** `oral-cavity-teeth-blank.svg`

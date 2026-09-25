@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.60] – 2026-09-25
+
+### Entfernt
+- **Bio K5 Vogel-Aufbau:** zu schweres englisches Atmungs-/Luftsäcke-`imageLabelSlots`
+  (Cruithne9, Parabronchi usw.) aus „Angepasstheit der Vögel“ entfernt. Organ-Schema und
+  altersgerechte Luftsäcke-True/False bleiben. Bio-Pack **1.8.1**.
+
 ## [0.28.59] – 2026-09-25
 
 ### Behoben

@@ -332,65 +332,6 @@ export const FEATHER_PARTS_ASSET: AnatomyAsset = {
   ],
 }
 
-/** Bird lungs + air sacs schematic (English labels on source; German chips in app). */
-export const BIRD_AIR_SACS_ASSET: AnatomyAsset = {
-  id: 'bird-airsacs-cruithne',
-  imageSrc: '/anatomy/bird-respiratory-cruithne.jpg',
-  imageAlt: 'Schema der Vogelatmung mit Lunge und Luftsäcken',
-  attribution:
-    'Cruithne9: „Bird\'s respiratory system“. Wikimedia Commons, CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Bird%27s_respiratory_system.jpg (ShareAlike: Bearbeitungen unter gleicher/kompatibler Lizenz; Datei unverändert eingebunden)',
-  drawLeaders: true,
-  fachwissenQuelle: 'Wikipedia: Vogelatmung',
-  fachwissenUrl: 'https://de.wikipedia.org/wiki/Vogelatmung',
-  distractors: ['Schwimmblase', 'Kiemendeckel'],
-  slots: [
-    {
-      id: 'luftroehre',
-      x: 6,
-      y: 88,
-      targetX: 22,
-      targetY: 78,
-      label: 'Luftröhre',
-      functionDe: 'Luftweg zum Atmungssystem',
-      wissen: 'Über die Luftröhre gelangt Atemluft zu Lunge und Luftsäcken.',
-      concept: 'bio:k5:vogel:atmung:luftroehre',
-    },
-    {
-      id: 'vordere-luftsaecke',
-      x: 6,
-      y: 28,
-      targetX: 24,
-      targetY: 40,
-      label: 'Vordere Luftsäcke',
-      functionDe: 'Luftspeicher vor der Lunge',
-      wissen: 'Vordere Luftsäcke speichern Luft und unterstützen den gerichteten Luftstrom.',
-      concept: 'bio:k5:vogel:atmung:vordere-luftsaecke',
-    },
-    {
-      id: 'lunge-parabronchien',
-      x: 48,
-      y: 8,
-      targetX: 48,
-      targetY: 42,
-      label: 'Lunge',
-      functionDe: 'Ort des Gasaustauschs',
-      wissen: 'In der Vogellunge (u. a. Parabronchien) findet der Gasaustausch statt.',
-      concept: 'bio:k5:vogel:atmung:lunge',
-    },
-    {
-      id: 'hintere-luftsaecke',
-      x: 94,
-      y: 38,
-      targetX: 82,
-      targetY: 48,
-      label: 'Hintere Luftsäcke',
-      functionDe: 'Luftspeicher hinter der Lunge',
-      wissen: 'Hintere Luftsäcke nehmen frische Luft auf und treiben den Luftstrom durch die Lunge.',
-      concept: 'bio:k5:vogel:atmung:hintere-luftsaecke',
-    },
-  ],
-}
-
 /**
  * Human oral cavity with blank brackets for tooth-type groups (DBCLS).
  * Drop fields sit at the outer label areas; leaders point to tooth groups.
