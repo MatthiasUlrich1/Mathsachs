@@ -8,6 +8,9 @@ import {
   FEATHER_PARTS_ASSET,
   FISH_ORGANS_ASSET,
   FISH_TROUT_ASSET,
+  HORSE_SKULL_TEETH_ASSET,
+  LION_TEETH_ASSET,
+  PIG_SKULL_TEETH_ASSET,
   SKELETON_AXIAL_ASSET,
   SKELETON_UPPER_ASSET,
   TEETH_TYPES_ASSET,
@@ -665,16 +668,140 @@ function teethLabel(rng: Rng) {
   )
 }
 
+function lionTeethLabel(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    LION_TEETH_ASSET,
+    'Beschrifte das Fleischfresser-Gebiss (Löwin). Ziehe die Begriffe in die Felder.',
+  )
+}
+
+function horseTeethLabel(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    HORSE_SKULL_TEETH_ASSET,
+    'Beschrifte das Pflanzenfresser-Gebiss (Pferd). Ziehe die Begriffe in die Felder.',
+  )
+}
+
+function pigTeethLabel(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    PIG_SKULL_TEETH_ASSET,
+    'Beschrifte das Allesfresser-Gebiss (Schwein). Ziehe die Begriffe in die Felder.',
+  )
+}
+
 function teethFunctions(rng: Rng) {
+  const asset = pick(rng, [
+    TEETH_TYPES_ASSET,
+    LION_TEETH_ASSET,
+    HORSE_SKULL_TEETH_ASSET,
+    PIG_SKULL_TEETH_ASSET,
+  ])
   return buildFunctionMatch(
     rng,
-    TEETH_TYPES_ASSET,
-    'Ordne den Zahnarten die passende Funktion zu.',
+    asset,
+    'Ordne den Zahnarten / Gebissmerkmalen die passende Funktion zu.',
   )
 }
 
 function teethFnMc(rng: Rng) {
-  return buildFunctionMc(rng, TEETH_TYPES_ASSET)
+  const asset = pick(rng, [
+    TEETH_TYPES_ASSET,
+    LION_TEETH_ASSET,
+    HORSE_SKULL_TEETH_ASSET,
+    PIG_SKULL_TEETH_ASSET,
+  ])
+  return buildFunctionMc(rng, asset)
+}
+
+function teethCloze(rng: Rng) {
+  const asset = pick(rng, [
+    TEETH_TYPES_ASSET,
+    LION_TEETH_ASSET,
+    HORSE_SKULL_TEETH_ASSET,
+    PIG_SKULL_TEETH_ASSET,
+  ])
+  return buildPartCloze(rng, asset)
+}
+
+function teethTf(rng: Rng) {
+  const asset = pick(rng, [
+    TEETH_TYPES_ASSET,
+    LION_TEETH_ASSET,
+    HORSE_SKULL_TEETH_ASSET,
+    PIG_SKULL_TEETH_ASSET,
+  ])
+  return buildPartTf(rng, asset)
+}
+
+function gebissTypenMatch(rng: Rng) {
+  return matchTermsTask(rng, {
+    question: 'Ordne Gebisstypen der Säugetiere zu.',
+    terms: ['Fleischfresser-Gebiss', 'Pflanzenfresser-Gebiss', 'Allesfresser-Gebiss'],
+    meanings: [
+      'Lange Eckzähne und schneidende Reißzähne',
+      'Breite Mahlzähne, oft große Zahnlücke',
+      'Mischung aus schneidenden und mahlenden Zähnen',
+    ],
+    distractor: 'Nur Barten ohne Zähne',
+    solution: 'Fleisch- / Pflanzen- / Allesfresser',
+    explanation: 'Zahnform folgt der Nahrung — Angepasstheit an die Ernährung.',
+    fachwissen: bioFw(
+      'Gebisstypen: Fleischfresser mit Fang- und Reißzähnen, Pflanzenfresser mit Mahlflächen und oft Zahnlücke, Allesfresser mit Mischgebiss (z. B. Schwein, Mensch).',
+      'Wikipedia: Gebiss',
+      'https://de.wikipedia.org/wiki/Gebiss',
+    ),
+    dedupeKey: 'bio:k5:saeuger:gebiss:typen-match',
+    contentIds: [
+      'bio:k5:saeuger:gebiss:carnivor',
+      'bio:k5:saeuger:gebiss:herbivor',
+      'bio:k5:saeuger:gebiss:omnivor',
+    ],
+  })
+}
+
+function gebissTypenMc(rng: Rng) {
+  const bank = [
+    {
+      q: 'Welches Merkmal passt typisch zum Fleischfresser-Gebiss?',
+      correct: 'Lange Eckzähne und schneidende Reißzähne',
+      wrong: ['Nur flache Mahlflächen ohne Eckzähne', 'Nur Barten statt Zähne', 'Nur Zahnlücke ohne Backenzähne'],
+      concept: 'bio:k5:saeuger:gebiss:carnivor:mc',
+    },
+    {
+      q: 'Welches Gebiss passt eher zu Pferd oder Rind?',
+      correct: 'Pflanzenfresser-Gebiss mit breiten Mahlzähnen',
+      wrong: ['Nur Reißzähne ohne Schneidezähne', 'Nur Fangzähne ohne Backenzähne', 'Nur Barten'],
+      concept: 'bio:k5:saeuger:gebiss:herbivor:mc',
+    },
+    {
+      q: 'Warum gilt das Schweinegebiss als Allesfresser-Gebiss?',
+      correct: 'Es kombiniert schneidende und mahlende Zähne',
+      wrong: [
+        'Es hat nur Reißzähne wie ein Löwe',
+        'Es hat nur eine Zahnlücke ohne Zähne',
+        'Es besteht nur aus Barten',
+      ],
+      concept: 'bio:k5:saeuger:gebiss:omnivor:mc',
+    },
+  ]
+  const c = pick(rng, bank)
+  return choicePickTask({
+    question: c.q,
+    choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+    correct: c.correct,
+    solution: c.correct,
+    explanation: 'Gebissform zeigt die Angepasstheit an die Nahrung.',
+    fachwissen: bioFw(
+      'Fleischfresser: Fang- und Reißzähne. Pflanzenfresser: Mahlzähne und oft Zahnlücke. Allesfresser: Mischgebiss.',
+      'Wikipedia: Gebiss',
+      'https://de.wikipedia.org/wiki/Gebiss',
+    ),
+    dedupeKey: c.concept,
+    contentIds: [c.concept],
+  })
 }
 
 function skeletonUpperLabel(rng: Rng) {
@@ -869,13 +996,19 @@ export const biVoegelFederBild: Topic['generate'] = mixedVariants(
   featherFunctions,
 )
 
-/** Gebiss image+blocks (Zahnarten, Commons-Tafel) — mix into Säuger Merkmale. */
+/** Gebiss: Mensch-Zahnarten + echte Commons-Schädel (Fleisch-/Pflanzen-/Allesfresser). */
 export const biSaeugerGebissBild: Topic['generate'] = mixedVariants(
   teethLabel,
-  teethLabel,
+  lionTeethLabel,
+  horseTeethLabel,
+  pigTeethLabel,
   teethLabel,
   teethFunctions,
   teethFnMc,
+  teethCloze,
+  teethTf,
+  gebissTypenMatch,
+  gebissTypenMc,
   teethFunctions,
   teethFnMc,
 )

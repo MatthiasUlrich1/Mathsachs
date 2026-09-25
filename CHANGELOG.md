@@ -9,6 +9,18 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.63] – 2026-09-25
+
+### Behoben
+- **Gebiss Mensch:** Drop-Felder an den Leader-Enden der Commons-Tafel
+  `oral-cavity-teeth-blank`; Ablenker themenbezogen (kein „Kiemenreusen“).
+
+### Hinzugefügt
+- **Säuger-Gebisse (echte Commons-Fotos):** Löwin (Fleischfresser, CC0),
+  Pferdeschädel (Pflanzenfresser, CC BY-SA 3.0), Schweineschädel (Allesfresser,
+  CC BY-SA 4.0) — jeweils Bild+Blöcke, Funktionen und Gebisstypen-Zuordnung.
+  Bio-Pack **1.8.4**.
+
 ## [0.28.62] – 2026-09-25
 
 ### Behoben

@@ -1026,7 +1026,7 @@ function gebissTypenExtra(rng: Rng): Task {
           'Breite Mahlzähne, oft ohne große Eckzähne',
           'Mischung aus schneidenden und mahlenden Zähnen',
         ],
-        distractor: 'Nur Kiemenreusen ohne Zähne',
+        distractor: 'Nur Barten ohne Zähne',
         solution: 'Fleisch- / Pflanzen- / Allesfresser',
         explanation: 'Zahnform folgt der Nahrung — Angepasstheit.',
         fachwissen: bioFw(
@@ -1049,8 +1049,8 @@ function gebissTypenExtra(rng: Rng): Task {
           [
             'Lange Eckzähne und schneidende Backenzähne',
             'Nur flache Mahlflächen ohne Eckzähne',
-            'Nur Federkiel statt Zähne',
-            'Nur Kiemenlamellen',
+            'Nur Barten statt Zähne',
+            'Nur Giftzähne ohne Backenzähne',
           ],
           'Lange Eckzähne und schneidende Backenzähne',
         ),
@@ -1073,8 +1073,8 @@ function gebissTypenExtra(rng: Rng): Task {
           [
             'Pflanzenfresser-Gebiss mit breiten Mahlzähnen',
             'Nur Reißzähne ohne Mahlflächen',
-            'Nur Kiemenreusen',
-            'Nur Federfahne',
+            'Nur Barten statt Zähne',
+            'Nur Fangzähne ohne Mahlzähne',
           ],
           'Pflanzenfresser-Gebiss mit breiten Mahlzähnen',
         ),

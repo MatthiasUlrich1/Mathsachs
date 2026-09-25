@@ -57,6 +57,38 @@ Assets bundled for offline practice (educational app + desktop installers). Pref
 - **Derived from:** https://commons.wikimedia.org/wiki/File:202402_Oral_Cavity.svg
 - **License deed:** https://creativecommons.org/licenses/by/4.0/
 
+## Säugetier — Fleischfresser-Gebiss (Löwin)
+
+- **File:** `lioness-teeth.jpg`
+- **Title:** Female Lion Teeth
+- **Author:** Thecodemachine
+- **License:** CC0 1.0 Universal (Public Domain Dedication)
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Female_Lion_Teeth.jpg
+- **License deed:** https://creativecommons.org/publicdomain/zero/1.0/
+- **Note:** Reales Foto (Fauchende Löwin) — Drop-Felder + Leader nur UI-Overlay.
+
+## Säugetier — Pflanzenfresser-Gebiss (Pferd)
+
+- **File:** `horse-skull-teeth.jpg`
+- **Title:** Horse skull and teeth
+- **Author:** Montanabw
+- **License:** CC BY-SA 3.0
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Horse_skull_and_teeth.JPG
+- **License deed:** https://creativecommons.org/licenses/by-sa/3.0/
+- **ShareAlike:** Datei unverändert, Drop-Felder nur UI-Overlay.
+- **Note:** Schädel mit freigelegten Zahnwurzeln — Schneidezähne, Zahnlücke, Backenzähne.
+
+## Säugetier — Allesfresser-Gebiss (Schwein)
+
+- **File:** `pig-skull-lateral.jpg`
+- **Title:** Domestic pig skull (Sus domesticus)
+- **Author:** Museum of Veterinary Anatomy FMVZ USP / Wagner Souza e Silva
+- **License:** CC BY-SA 4.0
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Domestic_pig_skull_(Sus_domesticus).jpg
+- **License deed:** https://creativecommons.org/licenses/by-sa/4.0/
+- **ShareAlike:** Datei unverändert, Drop-Felder nur UI-Overlay.
+- **Note:** Lateralansicht mit Schneidezähnen, Eckzähnen/Hauern und Backenzähnen.
+
 ## Mensch — Skelett (Oberkörper, unbeschriftet)
 
 - **File:** `human-skeleton-upper-anterior.jpg`

@@ -1777,7 +1777,7 @@ function saeugerGebiss(rng: Rng) {
       'Gemischtes Gebiss (z. B. Mensch, Schwein)',
     ],
     correctSlots: [0, 1, 2],
-    distractors: ['Nur Kiemenreusen'],
+    distractors: ['Nur Barten'],
     solution: 'Fleisch- / Pflanzen- / Allesfresser',
     explanation: 'Gebissform zeigt die Angepasstheit an die Nahrung.',
     fachwissen: fw(

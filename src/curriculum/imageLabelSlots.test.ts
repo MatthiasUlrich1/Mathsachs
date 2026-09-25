@@ -158,8 +158,14 @@ describe('Biologie anatomy topics', () => {
           if (id === 'bi-k5-lb6-saeuger-gebiss') {
             const items = task.interactive.props.items as Array<{ label: string }>
             const labels = items.map((i) => i.label)
-            expect(labels.some((l) => /Schneide/i.test(l))).toBe(true)
+            expect(labels.some((l) => /Schneide|Eck|Backen|Reiß|Zahnlücke|Hauer/i.test(l))).toBe(
+              true,
+            )
+            expect(labels.some((l) => /Kiemenreusen/i.test(l))).toBe(false)
             expect(labels.length).toBeGreaterThanOrEqual(3)
+            expect(String(task.interactive.props.imageSrc)).toMatch(
+              /oral-cavity-teeth-blank|lioness-teeth|horse-skull-teeth|pig-skull-lateral/,
+            )
           }
         }
       }
