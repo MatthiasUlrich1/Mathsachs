@@ -8,6 +8,9 @@ import {
   BIRD_ORGANS_ASSET,
   FEATHER_PARTS_ASSET,
   FISH_TROUT_ASSET,
+  GEBISS_ALLESFRESSER_ASSET,
+  GEBISS_FLEISCHFRESSER_ASSET,
+  GEBISS_PFLANZENFRESSER_ASSET,
   SKELETON_AXIAL_ASSET,
   SKELETON_UPPER_ASSET,
   TEETH_TYPES_ASSET,
@@ -364,6 +367,30 @@ function teethFnMc(rng: Rng) {
   return buildFunctionMc(rng, TEETH_TYPES_ASSET)
 }
 
+function gebissFleischLabel(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    GEBISS_FLEISCHFRESSER_ASSET,
+    'Beschrifte das Fleischfresser-Gebiss. Ziehe die Begriffe in die nummerierten Felder.',
+  )
+}
+
+function gebissPflanzenLabel(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    GEBISS_PFLANZENFRESSER_ASSET,
+    'Beschrifte das Pflanzenfresser-Gebiss. Ziehe die Begriffe in die nummerierten Felder.',
+  )
+}
+
+function gebissAllesLabel(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    GEBISS_ALLESFRESSER_ASSET,
+    'Beschrifte das Allesfresser-Gebiss. Ziehe die Begriffe in die nummerierten Felder.',
+  )
+}
+
 function skeletonUpperLabel(rng: Rng) {
   return buildLabelTask(
     rng,
@@ -455,10 +482,13 @@ export const biVoegelFederBild: Topic['generate'] = mixedVariants(
   featherFunctions,
 )
 
-/** Gebiss image+blocks — mix into Säuger Merkmale. */
+/** Gebiss image+blocks (Zahnarten + Gebisstypen) — mix into Säuger Merkmale. */
 export const biSaeugerGebissBild: Topic['generate'] = mixedVariants(
   teethLabel,
   teethLabel,
+  gebissFleischLabel,
+  gebissPflanzenLabel,
+  gebissAllesLabel,
   teethFunctions,
   teethFnMc,
   teethFunctions,

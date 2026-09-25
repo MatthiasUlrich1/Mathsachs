@@ -84,6 +84,21 @@ Assets bundled for offline practice (educational app + desktop installers). Pref
 - **License:** Public Domain (CC0) — für Bildungszwecke
 - **Note:** Nummerierte Marker 1–4 für `imageLabelSlots`; kein Fremdwerk.
 
+## Mensch — männliche Geschlechtsorgane (Unterrichtsschema)
+
+- **File:** `male-reproductive-unlabeled.svg`
+- **Title:** Männliche Geschlechtsorgane (unbeschriftet)
+- **Author:** TaskTrophy / Mathsachs (Originalschema)
+- **License:** Public Domain (CC0) — für Bildungszwecke
+- **Note:** Nummerierte Marker 1–4 für `imageLabelSlots`; kein Fremdwerk.
+
+## Säugetier — Gebisstypen (Unterrichtsschemata)
+
+- **Files:** `gebiss-fleischfresser.svg`, `gebiss-pflanzenfresser.svg`, `gebiss-allesfresser.svg`
+- **Author:** TaskTrophy / Mathsachs (Originalschemata)
+- **License:** Public Domain (CC0) — für Bildungszwecke
+- **Note:** Nummerierte Marker für Bild+Blöcke zu Carnivoren-/Herbivoren-/Omnivoren-Gebiss.
+
 ## Insect (optional / future)
 
 - **File:** `bug-parts.svg`

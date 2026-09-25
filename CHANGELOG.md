@@ -9,6 +9,18 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.58] – 2026-09-25
+
+### Hinzugefügt
+- **Bio K5 Freigabeliste komplett:** Lurch-Metamorphose/Schutz, Vogel-Fortpflanzung,
+  Säuger Merkmale/Gebiss (Zahnarten + 3 Gebisstyp-Schemas), Angepasstheit, Schutz
+  (≥50 Säuger-Pool, tolerante 5er-Liste), Fortpflanzung Mensch (♀/♂ Organ-Schemas,
+  Pubertät/Menstruation/Pollution/Eltern-Kind) freigegeben.
+- CC0-Unterrichtsschemata: männliche Geschlechtsorgane, Fleisch-/Pflanzen-/Allesfresser-Gebiss.
+
+### Geändert
+- Dichte Banken für zuvor gesperrte K5-Themen erweitert; Bio-Pack **1.8.0**.
+
 ## [0.28.57] – 2026-09-25
 
 ### Geändert

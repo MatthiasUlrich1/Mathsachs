@@ -192,6 +192,122 @@ function lurcheMetaExtra(rng: Rng): Task {
         dedupeKey: 'bio:k5:lurch:meta:multi-umbau',
         contentIds: ['bio:k5:lurch:meta:multi-umbau'],
       }),
+    () =>
+      sortChronologyTask(rng, {
+        question: 'Ordne die Metamorphose eines Froschlurchs von früh nach spät.',
+        labels: ['Laich im Wasser', 'Kaulquappe mit Kiemen', 'Beine wachsen / Umbau', 'Adulttier an Land'],
+        solution: 'Laich → Kaulquappe → Umbau → Adult',
+        explanation: 'Der Lebenszyklus führt von Ei über Larve zur landlebenden Form.',
+        fachwissen: bioFw(
+          'Chronologie: Laich, wasserlebende Kaulquappe, Metamorphose mit Organumbau, danach oft landlebendes Adulttier.',
+          'Wikipedia: Amphibien',
+          'https://de.wikipedia.org/wiki/Amphibien',
+        ),
+        dedupeKey: 'bio:k5:lurch:meta:chrono',
+        contentIds: ['bio:k5:lurch:meta:chrono'],
+      }),
+    () =>
+      choicePickTask({
+        question: 'Was atmet eine junge Kaulquappe typischerweise zuerst?',
+        choices: shuffleChoices(
+          rng,
+          ['Mit Kiemen im Wasser', 'Nur mit Federn', 'Nur mit Reißzähnen', 'Nur mit Schwimmblase'],
+          'Mit Kiemen im Wasser',
+        ),
+        correct: 'Mit Kiemen im Wasser',
+        solution: 'Mit Kiemen im Wasser',
+        explanation: 'Die Larve ist an das Wasserleben angepasst.',
+        fachwissen: bioFw(
+          'Kaulquappen vieler Froschlurche nutzen Kiemen; erst mit der Metamorphose dominiert Lungen-/Hautatmung.',
+          'Wikipedia: Kaulquappe',
+          'https://de.wikipedia.org/wiki/Kaulquappe',
+        ),
+        dedupeKey: 'bio:k5:lurch:meta:mc-kiemen-start',
+        contentIds: ['bio:k5:lurch:meta:mc-kiemen-start'],
+      }),
+    () =>
+      choicePickTask({
+        question: 'Was geschieht mit dem Schwanz vieler Frosch-Kaulquappen?',
+        choices: shuffleChoices(
+          rng,
+          [
+            'Er wird bei der Metamorphose rückgebildet',
+            'Er wird zu Federn umgebaut',
+            'Er wird zur Schwimmblase',
+            'Er bleibt unverändert beim Adultfrosch',
+          ],
+          'Er wird bei der Metamorphose rückgebildet',
+        ),
+        correct: 'Er wird bei der Metamorphose rückgebildet',
+        solution: 'Er wird bei der Metamorphose rückgebildet',
+        explanation: 'Adultfrösche haben keinen langen Larvenschwanz mehr.',
+        fachwissen: bioFw(
+          'Schwanzrückbildung ist ein sichtbares Kennzeichen der Froschlurch-Metamorphose; Molche behalten oft einen Schwanz.',
+          'Wikipedia: Froschlurche',
+          'https://de.wikipedia.org/wiki/Froschlurche',
+        ),
+        dedupeKey: 'bio:k5:lurch:meta:mc-schwanz',
+        contentIds: ['bio:k5:lurch:meta:mc-schwanz'],
+      }),
+    () =>
+      clozeBlanksTask({
+        question: 'Ergänze zur Metamorphose.',
+        template: 'Aus dem ___ wird die ___; nach der ___ lebt oft das ___ an Land.',
+        accepted: [
+          ['Laich', 'Ei', 'Eigelege'],
+          ['Kaulquappe', 'Larve'],
+          ['Metamorphose', 'Umwandlung'],
+          ['Adulttier', 'Frosch', 'Erwachsene', 'erwachsene Tier'],
+        ],
+        solution: 'Laich; Kaulquappe; Metamorphose; Adulttier',
+        explanation: 'Vier Stationen prägen den typischen Zyklus.',
+        fachwissen: bioFw(
+          'Laich → Kaulquappe → Metamorphose → Adulttier beschreibt den klassischen Weg vieler Froschlurche.',
+          'Wikipedia: Metamorphose (Zoologie)',
+          'https://de.wikipedia.org/wiki/Metamorphose_(Zoologie)',
+        ),
+        dedupeKey: 'bio:k5:lurch:meta:cloze-zyklus',
+        contentIds: ['bio:k5:lurch:meta:cloze-zyklus'],
+      }),
+    () =>
+      trueFalse(rng, {
+        statement: 'Während der Metamorphose ändern sich Atmung und Fortbewegung vieler Lurche.',
+        correct: true,
+        explanation: 'Kiemen→Lunge/Haut und Schwimmen→Landbewegung sind typisch.',
+        fachwissen: bioFw(
+          'Metamorphose betrifft Organe und Verhalten: neuer Lebensraum verlangt neue Angepasstheiten.',
+          'Wikipedia: Amphibien',
+          'https://de.wikipedia.org/wiki/Amphibien',
+        ),
+        dedupeKey: 'bio:k5:lurch:meta:tf-organe',
+        contentIds: ['bio:k5:lurch:meta:tf-organe'],
+      }),
+    () =>
+      matchTermsTask(rng, {
+        question: 'Ordne Larve und Adulttier der Lurche zu.',
+        terms: ['Kaulquappe', 'Adultfrosch', 'Kiemen', 'Haut-/Lungenatmung'],
+        meanings: [
+          'Wasserlebende Larvenform',
+          'Landtaugliche erwachsene Form',
+          'Atmung der frühen Larve',
+          'Atmung nach der Umwandlung',
+        ],
+        distractor: 'Nur Federfahne',
+        solution: 'Kaulquappe / Adult / Kiemen / Haut-Lunge',
+        explanation: 'Larve und Adult unterscheiden sich klar in Bau und Atmung.',
+        fachwissen: bioFw(
+          'Vergleich Larve–Adult zeigt den Sinn der Metamorphose: Wechsel der Angepasstheit zwischen Wasser und Land.',
+          'Wikipedia: Amphibien',
+          'https://de.wikipedia.org/wiki/Amphibien',
+        ),
+        dedupeKey: 'bio:k5:lurch:meta:match-larve-adult',
+        contentIds: [
+          'bio:k5:lurch:meta:kaulquappe2',
+          'bio:k5:lurch:meta:adult2',
+          'bio:k5:lurch:meta:kiemen2',
+          'bio:k5:lurch:meta:lunge2',
+        ],
+      }),
   ]
   return pick(rng, pool)()
 }
@@ -340,6 +456,112 @@ function lurcheSchutzExtra(rng: Rng): Task {
         ),
         dedupeKey: 'bio:k5:lurch:schutz:multi',
         contentIds: ['bio:k5:lurch:schutz:multi'],
+      }),
+    () =>
+      choicePickTask({
+        question: 'Warum sind trockengelegte Feuchtgebiete ein Problem für Lurche?',
+        choices: shuffleChoices(
+          rng,
+          [
+            'Laichgewässer und feuchte Hautatmung fallen weg',
+            'Lurche brauchen nur Salzwasserwüsten',
+            'Lurche atmen ausschließlich mit Federfahnen',
+            'Lurche brauchen kein Wasser mehr nach dem Schlüpfen',
+          ],
+          'Laichgewässer und feuchte Hautatmung fallen weg',
+        ),
+        correct: 'Laichgewässer und feuchte Hautatmung fallen weg',
+        solution: 'Laichgewässer und feuchte Hautatmung fallen weg',
+        explanation: 'Ohne Feuchte bricht der Lebenszyklus.',
+        fachwissen: bioFw(
+          'Feuchtlebensräume sind Schlüsselstrukturen: ohne Tümpel und Feuchte fehlen Laichplätze und Hautatmungsmöglichkeiten.',
+          'Wikipedia: Amphibienschutz',
+          'https://de.wikipedia.org/wiki/Amphibienschutz',
+        ),
+        dedupeKey: 'bio:k5:lurch:schutz:mc-trocken',
+        contentIds: ['bio:k5:lurch:schutz:mc-trocken'],
+      }),
+    () =>
+      choicePickTask({
+        question: 'Wann sind wandernde Lurche besonders gefährdet?',
+        choices: shuffleChoices(
+          rng,
+          [
+            'Zur Laichwanderung, oft im Frühjahr an Straßen',
+            'Nur im Hochsommer auf Gletschern',
+            'Nur wenn sie Federn tragen',
+            'Nie — Lurche wandern nicht',
+          ],
+          'Zur Laichwanderung, oft im Frühjahr an Straßen',
+        ),
+        correct: 'Zur Laichwanderung, oft im Frühjahr an Straßen',
+        solution: 'Zur Laichwanderung, oft im Frühjahr an Straßen',
+        explanation: 'Verkehr und Wanderkorridore treffen zusammen.',
+        fachwissen: bioFw(
+          'Laichwanderungen führen über Wege und Straßen — deshalb helfen Zäune, Eimeraktionen und Querungshilfen.',
+          'Wikipedia: Amphibienschutz',
+          'https://de.wikipedia.org/wiki/Amphibienschutz',
+        ),
+        dedupeKey: 'bio:k5:lurch:schutz:mc-wanderung-zeit',
+        contentIds: ['bio:k5:lurch:schutz:mc-wanderung-zeit'],
+      }),
+    () =>
+      trueFalse(rng, {
+        statement: 'Schadstoffe im Gewässer können Laich und Larven der Lurche schädigen.',
+        correct: true,
+        explanation: 'Empfindliche Haut und Wasserbindung machen Lurche anfällig.',
+        fachwissen: bioFw(
+          'Amphibien reagieren empfindlich auf Gewässerverschmutzung — ein weiterer Grund für Gewässerschutz.',
+          'Wikipedia: Amphibien',
+          'https://de.wikipedia.org/wiki/Amphibien',
+        ),
+        dedupeKey: 'bio:k5:lurch:schutz:tf-schadstoff',
+        contentIds: ['bio:k5:lurch:schutz:tf-schadstoff'],
+      }),
+    () =>
+      clozeBlanksTask({
+        question: 'Ergänze zum Amphibienschutz.',
+        template: 'An Straßen helfen ___ und ___; außerdem müssen ___ erhalten bleiben.',
+        accepted: [
+          ['Amphibienschutzzäune', 'Schutzzäune', 'Leiteinrichtungen', 'Zäune'],
+          ['Querungshilfen', 'Durchlässe', 'Tunnel', 'Übergänge'],
+          ['Laichgewässer', 'Tümpel', 'Feuchtgebiete', 'Gewässer'],
+        ],
+        solution: 'Schutzzäune; Querungshilfen; Laichgewässer',
+        explanation: 'Technik und Biotopschutz greifen ineinander.',
+        fachwissen: bioFw(
+          'Kombinierter Schutz: Leiteinrichtungen, Querungen und Erhalt der Laichgewässer sichern Bestände.',
+          'Wikipedia: Amphibienschutz',
+          'https://de.wikipedia.org/wiki/Amphibienschutz',
+        ),
+        dedupeKey: 'bio:k5:lurch:schutz:cloze-massnahmen',
+        contentIds: ['bio:k5:lurch:schutz:cloze-massnahmen'],
+      }),
+    () =>
+      matchTermsTask(rng, {
+        question: 'Ordne Gefahr und Schutzmaßnahme bei Lurchen zu.',
+        terms: ['Straßenverkehr', 'Trockenlegung', 'Schadstoffe', 'Schutzzaun'],
+        meanings: [
+          'Tiere werden auf der Wanderung überfahren',
+          'Laichgewässer verschwinden',
+          'Wasser und Haut werden belastet',
+          'Leitet Tiere zu sicheren Übergängen',
+        ],
+        distractor: 'Nur Federkleid wärmen',
+        solution: 'Verkehr / Trockenlegung / Schadstoffe / Zaun',
+        explanation: 'Gefahren und Gegenmaßnahmen gehören zusammen.',
+        fachwissen: bioFw(
+          'Schutzplanung benennt konkrete Gefahren (Verkehr, Habitatverlust, Stoffe) und passende Maßnahmen.',
+          'Wikipedia: Amphibienschutz',
+          'https://de.wikipedia.org/wiki/Amphibienschutz',
+        ),
+        dedupeKey: 'bio:k5:lurch:schutz:match-gefahr',
+        contentIds: [
+          'bio:k5:lurch:schutz:gefahr-verkehr',
+          'bio:k5:lurch:schutz:gefahr-trocken',
+          'bio:k5:lurch:schutz:gefahr-stoff',
+          'bio:k5:lurch:schutz:massnahme-zaun',
+        ],
       }),
   ]
   return pick(rng, pool)()
@@ -674,6 +896,107 @@ function saeugerAngepasstExtra(rng: Rng): Task {
         ),
         dedupeKey: 'bio:k5:saeuger:angepasst:multi',
         contentIds: ['bio:k5:saeuger:angepasst:multi'],
+      }),
+    () =>
+      choicePickTask({
+        question: 'Welches Säugetier passt zur Gliedmaßen-Angepasstheit „Springen“?',
+        choices: shuffleChoices(
+          rng,
+          ['Feldhase / Kaninchen mit langen Hinterbeinen', 'Nur Regenwurm', 'Nur Kaulquappe', 'Nur Libelle'],
+          'Feldhase / Kaninchen mit langen Hinterbeinen',
+        ),
+        correct: 'Feldhase / Kaninchen mit langen Hinterbeinen',
+        solution: 'Feldhase / Kaninchen mit langen Hinterbeinen',
+        explanation: 'Lange Hinterbeine ermöglichen kraftvolles Springen.',
+        fachwissen: bioFw(
+          'Springen als Fortbewegung: verlängerte Hintergliedmaßen speichern und geben Energie ab — typisch für Hasenartige.',
+          'Wikipedia: Hasen',
+          'https://de.wikipedia.org/wiki/Hasen',
+        ),
+        dedupeKey: 'bio:k5:saeuger:angepasst:mc-hase',
+        contentIds: ['bio:k5:saeuger:angepasst:mc-hase'],
+      }),
+    () =>
+      choicePickTask({
+        question: 'Wozu dient das Fell vieler Säugetiere?',
+        choices: shuffleChoices(
+          rng,
+          [
+            'Wärmeschutz und oft zusätzlicher Schutz der Haut',
+            'Nur der Fotosynthese',
+            'Nur dem Laichen im Salzwasser',
+            'Nur dem Federflug',
+          ],
+          'Wärmeschutz und oft zusätzlicher Schutz der Haut',
+        ),
+        correct: 'Wärmeschutz und oft zusätzlicher Schutz der Haut',
+        solution: 'Wärmeschutz und oft zusätzlicher Schutz der Haut',
+        explanation: 'Fell isoliert und schützt.',
+        fachwissen: bioFw(
+          'Haare/Fell sind Kennzeichen vieler Säuger und eine Angepasstheit an Temperaturhaushalt und Schutz.',
+          'Wikipedia: Fell',
+          'https://de.wikipedia.org/wiki/Fell',
+        ),
+        dedupeKey: 'bio:k5:saeuger:angepasst:mc-fell',
+        contentIds: ['bio:k5:saeuger:angepasst:mc-fell'],
+      }),
+    () =>
+      trueFalse(rng, {
+        statement: 'Säugetiere besiedeln sehr unterschiedliche Lebensräume — von Wasser bis Luft.',
+        correct: true,
+        explanation: 'Vielfalt der Angepasstheiten ermöglicht viele Lebensräume.',
+        fachwissen: bioFw(
+          'Von Maulwurf bis Fledermaus und Wal: Säuger nutzen Land, Untergrund, Wasser und Luft mit unterschiedlichen Angepasstheiten.',
+          'Wikipedia: Säugetiere',
+          'https://de.wikipedia.org/wiki/S%C3%A4ugetiere',
+        ),
+        dedupeKey: 'bio:k5:saeuger:angepasst:tf-vielfalt',
+        contentIds: ['bio:k5:saeuger:angepasst:tf-vielfalt'],
+      }),
+    () =>
+      matchTermsTask(rng, {
+        question: 'Ordne Lebensraum und typische Angepasstheit zu.',
+        terms: ['Unterirdisch', 'Luft', 'Wasser', 'Offene Landschaft'],
+        meanings: [
+          'Grabbeine (z. B. Maulwurf)',
+          'Flughaut (z. B. Fledermaus)',
+          'Flossen (z. B. Wal/Robbe)',
+          'Springbeine / gute Sinne (z. B. Hase)',
+        ],
+        distractor: 'Nur Kiemen ohne Lungen',
+        solution: 'Graben / Flug / Schwimmen / Springen',
+        explanation: 'Lebensraum prägt den Körperbau.',
+        fachwissen: bioFw(
+          'Angepasstheit verknüpft Lebensraum und Bau: Extremitäten, Sinne und Körperbedeckung folgen der Nutzung.',
+          'Wikipedia: Anpassung (Biologie)',
+          'https://de.wikipedia.org/wiki/Anpassung_(Biologie)',
+        ),
+        dedupeKey: 'bio:k5:saeuger:angepasst:match-raum',
+        contentIds: [
+          'bio:k5:saeuger:angepasst:raum-unter',
+          'bio:k5:saeuger:angepasst:raum-luft',
+          'bio:k5:saeuger:angepasst:raum-wasser',
+          'bio:k5:saeuger:angepasst:raum-land',
+        ],
+      }),
+    () =>
+      clozeBlanksTask({
+        question: 'Ergänze zu Lebensräumen der Säuger.',
+        template: 'Der ___ gräbt Gänge; die ___ fliegt mit Flughaut; ___ schwimmen mit Flossen.',
+        accepted: [
+          ['Maulwurf', 'Maulwurfe'],
+          ['Fledermaus', 'Fledermause'],
+          ['Wale', 'Robben', 'Wale oder Robben', 'Wale/Robben'],
+        ],
+        solution: 'Maulwurf; Fledermaus; Wale/Robben',
+        explanation: 'Drei Lebensweisen — drei Angepasstheiten.',
+        fachwissen: bioFw(
+          'Beispiele machen Angepasstheit greifbar: Graben, Fliegen, Schwimmen bei Säugern ohne Federn bzw. ohne Kiemen.',
+          'Wikipedia: Säugetiere',
+          'https://de.wikipedia.org/wiki/S%C3%A4ugetiere',
+        ),
+        dedupeKey: 'bio:k5:saeuger:angepasst:cloze-beispiele',
+        contentIds: ['bio:k5:saeuger:angepasst:cloze-beispiele'],
       }),
   ]
   return pick(rng, pool)()

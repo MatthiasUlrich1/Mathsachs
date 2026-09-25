@@ -120,7 +120,7 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Kaulquappe',
             'Laich',
             'Metamorphose',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb3-lurche-fortpflanzung', 'Lurche – Fortpflanzung', [
             'Laich',
             'Äußere Befruchtung',
@@ -130,7 +130,7 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
           topic('bi-k5-lb3-lurche-schutz', 'Lurche – Lebensraum und Schutz', [
             'Amphibienschutz',
             'Wanderung',
-          ]),
+          ], { released: true }),
         ]),
         area('lb4', 'Kriechtiere in ihren Lebensräumen', 7, [
           topic('bi-k5-lb4-kriechtiere', 'Kriechtiere – Überblick', [
@@ -178,7 +178,7 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Nest',
             'Nesthocker',
             'Nestflüchter',
-          ]),
+          ], { released: true }),
         ]),
         area('lb6', 'Säugetiere in ihren Lebensräumen', 13, [
           topic('bi-k5-lb6-saeugetiere', 'Säugetiere – Überblick', [
@@ -190,7 +190,7 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Gebiss',
             'Fell',
             'Säugen',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb6-saeuger-skelett', 'Körpergliederung und Skelett', [
             'Skelett',
             'Schädel',
@@ -200,18 +200,18 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
           topic('bi-k5-lb6-saeuger-angepasst', 'Säugetiere – Angepasstheit und Lebensräume', [
             'Angepasstheit',
             'Lebensraum',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb6-saeuger-schutz', 'Säugetiere – Schutz und Vielfalt', [
             'Artenschutz',
             'Vielfalt',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb6-saeuger-fortpflanzung', 'Säugetiere – Fortpflanzung und Mensch', [
             'Geschlechtsorgane',
             'Pubertät',
             'Menstruation',
             'Pollution',
             'Eltern-Kind',
-          ]),
+          ], { released: true }),
         ]),
         area('lb7', 'Systematisierung', 3, [
           topic('bi-k5-lb7-systematik', 'Wirbeltiere vergleichen', [
@@ -784,7 +784,7 @@ export const BIOLOGIE_K6_WIRBELLOSE_RELEASED_IDS = [
   'bi-k6-lb2-nesseltiere',
 ] as const
 
-/** K5 Themen laut Freigabeliste — freigegeben (Anatomie + Fortpflanzung Lurch/Kriechtier + Vögel/Säuger-Kern). */
+/** K5 Themen laut Freigabeliste — vollständig freigegeben nach Verdichtung. */
 export const BIOLOGIE_K5_RELEASED_IDS = [
   'bi-k5-lb1-merkmale',
   'bi-k5-lb1-kennzeichen',
@@ -795,7 +795,9 @@ export const BIOLOGIE_K5_RELEASED_IDS = [
   'bi-k5-lb2-fische-schutz',
   'bi-k5-lb3-lurche',
   'bi-k5-lb3-lurche-merkmale',
+  'bi-k5-lb3-lurche-meta',
   'bi-k5-lb3-lurche-fortpflanzung',
+  'bi-k5-lb3-lurche-schutz',
   'bi-k5-lb4-kriechtiere',
   'bi-k5-lb4-kriechtiere-merkmale',
   'bi-k5-lb4-kriechtiere-arten',
@@ -803,8 +805,13 @@ export const BIOLOGIE_K5_RELEASED_IDS = [
   'bi-k5-lb5-voegel',
   'bi-k5-lb5-voegel-aufbau',
   'bi-k5-lb5-voegel-flug',
+  'bi-k5-lb5-voegel-fortpflanzung',
   'bi-k5-lb6-saeugetiere',
+  'bi-k5-lb6-saeuger-merkmale',
   'bi-k5-lb6-saeuger-skelett',
+  'bi-k5-lb6-saeuger-angepasst',
+  'bi-k5-lb6-saeuger-schutz',
+  'bi-k5-lb6-saeuger-fortpflanzung',
   'bi-k5-lb7-systematik',
   'bi-k5-lb7-zuordnung',
   'bi-k5-lbw-winter',

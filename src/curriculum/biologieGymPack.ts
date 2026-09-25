@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.7.0',
-    changelog: `K5 Freigabeliste: Fisch-Aufbau, Lurch-/Kriechtier-Fortpflanzung, Vogel Aufbau+Flug, Säuger Überblick+Skelett, Zuordnung freigegeben. Anatomie-Slots kalibriert; dichte Banken für gesperrte Themen; Fortpflanzung Mensch (locked). ${topics} Themen.`,
+    version: '1.8.0',
+    changelog: `K5 Freigabeliste komplett: Lurch Meta/Schutz, Vogel-Fortpflanzung, Säuger Merkmale/Gebiss-Typen, Angepasstheit, Schutz (≥50 Arten), Fortpflanzung Mensch freigegeben. Anatomie CC0-Schemas; 10er-Runden. ${topics} Themen.`,
     official,
     extras: [],
   }

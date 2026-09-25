@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-25T16:38:37.673Z",
+  "updatedAt": "2026-09-25T16:44:25.939Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -40,10 +40,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Biologie",
-      "version": "1.7.0",
+      "version": "1.8.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-biologie.json",
-      "size": 67970,
-      "changelog": "K5 Freigabeliste: Fisch-Aufbau, Lurch-/Kriechtier-Fortpflanzung, Vogel Aufbau+Flug, Säuger Überblick+Skelett, Zuordnung freigegeben. Anatomie-Slots kalibriert; dichte Banken für gesperrte Themen; Fortpflanzung Mensch (locked). 131 Themen."
+      "size": 67937,
+      "changelog": "K5 Freigabeliste komplett: Lurch Meta/Schutz, Vogel-Fortpflanzung, Säuger Merkmale/Gebiss-Typen, Angepasstheit, Schutz (≥50 Arten), Fortpflanzung Mensch freigegeben. Anatomie CC0-Schemas; 10er-Runden. 131 Themen."
     },
     {
       "id": "gym-sachsen-anhalt",

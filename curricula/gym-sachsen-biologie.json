@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Biologie",
-  "version": "1.7.0",
-  "changelog": "K5 Freigabeliste: Fisch-Aufbau, Lurch-/Kriechtier-Fortpflanzung, Vogel Aufbau+Flug, Säuger Überblick+Skelett, Zuordnung freigegeben. Anatomie-Slots kalibriert; dichte Banken für gesperrte Themen; Fortpflanzung Mensch (locked). 131 Themen.",
+  "version": "1.8.0",
+  "changelog": "K5 Freigabeliste komplett: Lurch Meta/Schutz, Vogel-Fortpflanzung, Säuger Merkmale/Gebiss-Typen, Angepasstheit, Schutz (≥50 Arten), Fortpflanzung Mensch freigegeben. Anatomie CC0-Schemas; 10er-Runden. 131 Themen.",
   "official": [
     {
       "id": "biologie-klasse-5",
@@ -168,7 +168,7 @@
               "title": "Lurche – Metamorphose",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Kaulquappe",
@@ -195,7 +195,7 @@
               "title": "Lurche – Lebensraum und Schutz",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Amphibienschutz",
@@ -316,7 +316,7 @@
               "title": "Vögel – Fortpflanzung und Brutpflege",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Nest",
@@ -349,7 +349,7 @@
               "title": "Säugetiere – Merkmale und Gebiss",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Gebiss",
@@ -376,7 +376,7 @@
               "title": "Säugetiere – Angepasstheit und Lebensräume",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Angepasstheit",
@@ -388,7 +388,7 @@
               "title": "Säugetiere – Schutz und Vielfalt",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Artenschutz",
@@ -400,7 +400,7 @@
               "title": "Säugetiere – Fortpflanzung und Mensch",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Geschlechtsorgane",
@@ -2081,5 +2081,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "6e438f4d"
+  "contentHash": "07ee4e94"
 }
