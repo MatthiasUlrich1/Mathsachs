@@ -57,14 +57,16 @@ Assets bundled for offline practice (educational app + desktop installers). Pref
 - **Derived from:** https://commons.wikimedia.org/wiki/File:202402_Oral_Cavity.svg
 - **License deed:** https://creativecommons.org/licenses/by/4.0/
 
-## Säugetier — Fleischfresser-Gebiss (Löwe, Schema)
+## Säugetier — Fleischfresser-Gebiss (Raubtier/Hund, Schema)
 
-- **File:** `lion-skull-schematic.png`
-- **Title:** Skull lion
-- **Author:** F. A. Brockhaus / unbekannt (Scan)
-- **License:** Public Domain
-- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Skull_lion.png
-- **Note:** Veröffentlichtes Schädel-Schema (keine Mathsachs-Eigenzeichnung). Drop-Felder + Leader nur UI-Overlay. Ersetzt früheres Löwinnen-Foto.
+- **File:** `carnivore-skull-schematic.svg`
+- **Title:** Skull of a dog diagram
+- **Author:** Przemek Maksim
+- **License:** CC BY-SA 3.0
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Skull_of_a_dog_diagram.svg
+- **License deed:** https://creativecommons.org/licenses/by-sa/3.0/
+- **ShareAlike:** Bearbeitungen unter gleicher/kompatibler Lizenz; Datei unverändert, Drop-Felder + Leader nur UI-Overlay.
+- **Note:** Klares farbiges Unterrichtsschema eines typischen Raubtier-Gebisses (Schneide-/Eck-/Reißzähne). Ersetzt die körnige Brockhaus-Tafel `Skull_lion.png`.
 
 ## Säugetier — Pflanzenfresser-Gebiss (Pferd, Schema)
 

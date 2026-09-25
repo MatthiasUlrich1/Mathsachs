@@ -529,14 +529,15 @@ export const TEETH_TYPES_ASSET: AnatomyAsset = {
 }
 
 /**
- * Lion skull engraving — carnivore dentition (Commons schematic, public domain).
+ * Dog skull diagram — typical carnivore dentition (Commons schematic, CC BY-SA 3.0).
+ * Clear K5-readable tooth row: Schneidezähne, Eckzähne, Reißzähne.
  */
 export const LION_TEETH_ASSET: AnatomyAsset = {
   id: 'lioness-teeth-carnivore',
-  imageSrc: '/anatomy/lion-skull-schematic.png',
-  imageAlt: 'Löwenschädel von der Seite — Fleischfresser-Gebiss (Schema)',
+  imageSrc: '/anatomy/carnivore-skull-schematic.svg',
+  imageAlt: 'Hundeschädel von der Seite — typisches Fleischfresser-Gebiss (Schema)',
   attribution:
-    'F. A. Brockhaus / unbekannt: „Skull lion“. Wikimedia Commons, Public Domain — https://commons.wikimedia.org/wiki/File:Skull_lion.png',
+    'Przemek Maksim: „Skull of a dog diagram“. Wikimedia Commons, CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Skull_of_a_dog_diagram.svg',
   drawLeaders: true,
   fachwissenQuelle: 'Wikipedia: Gebiss',
   fachwissenUrl: 'https://de.wikipedia.org/wiki/Gebiss',
@@ -544,10 +545,10 @@ export const LION_TEETH_ASSET: AnatomyAsset = {
   slots: [
     {
       id: 'schneidezaehne',
-      x: 3,
-      y: 30,
-      targetX: 6,
-      targetY: 54,
+      x: 12,
+      y: 90,
+      targetX: 11.5,
+      targetY: 54.5,
       label: 'Schneidezähne',
       functionDe: 'Abnagen und Festhalten',
       wissen: 'Kleine Schneidezähne sitzen vorn zwischen den Eckzähnen und helfen beim Abnagen von Fleisch.',
@@ -555,22 +556,22 @@ export const LION_TEETH_ASSET: AnatomyAsset = {
     },
     {
       id: 'eckzaehne',
-      x: 3,
-      y: 52,
-      targetX: 9,
-      targetY: 50,
+      x: 32,
+      y: 90,
+      targetX: 19.5,
+      targetY: 60.5,
       label: 'Eckzähne',
       functionDe: 'Beute festhalten und zerreißen',
       wissen:
-        'Bei Fleischfressern sind die Eckzähne (Fangzähne) besonders lang und spitz — typisch für Großkatzen.',
+        'Bei Fleischfressern sind die Eckzähne (Fangzähne) besonders lang und spitz — typisch für Raubtiere.',
       concept: 'bio:k5:saeuger:gebiss:carnivor:eck',
     },
     {
       id: 'reisszaehne',
-      x: 3,
-      y: 78,
-      targetX: 40,
-      targetY: 52,
+      x: 52,
+      y: 90,
+      targetX: 35.5,
+      targetY: 53.5,
       label: 'Reißzähne',
       functionDe: 'Fleisch scheren wie eine Schere',
       wissen:

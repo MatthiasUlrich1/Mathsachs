@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Biologie",
-  "version": "1.8.6",
-  "changelog": "Säuger-Gebisse: Commons-Schemata statt Fotos (Löwe/Pferd/Schwein); Mensch-Zahnarten Drop-Felder an Leader-Enden. 131 Themen.",
+  "version": "1.8.7",
+  "changelog": "Fleischfresser-Gebiss: klares Commons-Schema Hundeschädel (CC BY-SA 3.0) statt Brockhaus-Löwe; Slots neu kalibriert. 131 Themen.",
   "official": [
     {
       "id": "biologie-klasse-5",

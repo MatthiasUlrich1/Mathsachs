@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.67] – 2026-09-25
+
+### Behoben
+- **Bio K5 Fleischfresser-Gebiss:** körnige Brockhaus-Tafel `Skull_lion.png` durch klares
+  Commons-Schema `Skull of a dog diagram.svg` (Przemek Maksim, CC BY-SA 3.0) ersetzt;
+  Leader auf Schneide-/Eck-/Reißzähne neu kalibriert. Bio-Pack **1.8.7**.
+
 ## [0.28.66] – 2026-09-25
 
 ### Behoben

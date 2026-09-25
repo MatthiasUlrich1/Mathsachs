@@ -672,7 +672,7 @@ function lionTeethLabel(rng: Rng) {
   return buildLabelTask(
     rng,
     LION_TEETH_ASSET,
-    'Beschrifte das Fleischfresser-Gebiss (Löwe). Ziehe die Begriffe in die Felder.',
+    'Beschrifte das Fleischfresser-Gebiss (Raubtier). Ziehe die Begriffe in die Felder.',
   )
 }
 
