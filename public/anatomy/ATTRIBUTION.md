@@ -6,6 +6,8 @@ Assets bundled for offline practice (educational app + desktop installers). Pref
 
 **ShareAlike (CC BY-SA):** Die SA-Dateien werden unverändert eingebunden; Beschriftungs-Drop-Felder sind UI-Overlays, keine Bearbeitung der Bilddatei. Abgeleitete Bearbeitungen der SA-Werke müssten unter gleicher/kompatibler Lizenz stehen.
 
+**Policy:** Keine selbst gezeichneten Mathsachs-/TaskTrophy-Unterrichtsschemata für Anatomie-Beschriftung. Nur reale Fotos oder veröffentlichte Bildungstafeln mit freier Lizenz (Wikimedia Commons o. ä.).
+
 ## Fish — Regenbogenforelle (external anatomy)
 
 - **File:** `oncorhynchus-mykiss-raver.jpg`
@@ -66,28 +68,27 @@ Assets bundled for offline practice (educational app + desktop installers). Pref
 - **ShareAlike:** Bearbeitungen unter gleicher/kompatibler Lizenz; Datei unverändert, Drop-Felder nur UI-Overlay.
 - **Note:** Abbildung markiert das Achsenskelett farbig (Commons-Original).
 
-## Mensch — weibliche Geschlechtsorgane (Unterrichtsschema)
+## Mensch — weibliche Geschlechtsorgane (Commons-Tafel)
 
-- **File:** `female-reproductive-unlabeled.svg`
-- **Title:** Weibliche Geschlechtsorgane (unbeschriftet)
-- **Author:** TaskTrophy / Mathsachs (Originalschema)
-- **License:** Public Domain (CC0) — für Bildungszwecke
-- **Note:** Nummerierte Marker 1–4 für `imageLabelSlots`; kein Fremdwerk.
+- **Files:** `female-reproductive-frontal.png` (App), `female-reproductive-frontal.svg` (Quelldatei)
+- **Title:** Scheme female reproductive non-labels-2 (frontal cross-section without labels)
+- **Author:** Jmarchn
+- **License:** CC BY-SA 3.0
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Scheme_female_reproductive_non-labels-2.svg
+- **License deed:** https://creativecommons.org/licenses/by-sa/3.0/
+- **ShareAlike:** Bearbeitungen unter gleicher/kompatibler Lizenz; PNG unverändert aus SVG gerastert (keine inhaltliche Bearbeitung); Drop-Felder nur UI-Overlay.
+- **Note:** Altersgerechte Unterrichtstafel, unbeschriftet — ersetzt früheres Mathsachs-Eigen-Schema.
 
-## Mensch — männliche Geschlechtsorgane (Unterrichtsschema)
+## Mensch — männliche Geschlechtsorgane (Commons-Tafel)
 
-- **File:** `male-reproductive-unlabeled.svg`
-- **Title:** Männliche Geschlechtsorgane (unbeschriftet)
-- **Author:** TaskTrophy / Mathsachs (Originalschema)
-- **License:** Public Domain (CC0) — für Bildungszwecke
-- **Note:** Nummerierte Marker 1–4 für `imageLabelSlots`; kein Fremdwerk.
-
-## Säugetier — Gebisstypen (Unterrichtsschemata)
-
-- **Files:** `gebiss-fleischfresser.svg`, `gebiss-pflanzenfresser.svg`, `gebiss-allesfresser.svg`
-- **Author:** TaskTrophy / Mathsachs (Originalschemata)
-- **License:** Public Domain (CC0) — für Bildungszwecke
-- **Note:** Nummerierte Marker für Bild+Blöcke zu Carnivoren-/Herbivoren-/Omnivoren-Gebiss.
+- **Files:** `male-reproductive-frontal.png` (App), `male-reproductive-frontal.svg` (Quelldatei)
+- **Title:** Male reproductive frontal without labels
+- **Author:** T. Kebert
+- **License:** CC BY-SA 4.0
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Male_reproductive_frontal_without_labels.svg
+- **License deed:** https://creativecommons.org/licenses/by-sa/4.0/
+- **ShareAlike:** Bearbeitungen unter gleicher/kompatibler Lizenz; PNG unverändert aus SVG gerastert (keine inhaltliche Bearbeitung); Drop-Felder nur UI-Overlay.
+- **Note:** Altersgerechte Unterrichtstafel, unbeschriftet — ersetzt früheres Mathsachs-Eigen-Schema.
 
 ## Insect (optional / future)
 

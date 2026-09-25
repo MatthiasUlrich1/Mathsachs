@@ -9,6 +9,21 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.61] – 2026-09-25
+
+### Behoben
+- **Bio K5 Fortpflanzung Mensch — echte Commons-Tafeln:** Mathsachs-Eigen-Schemata
+  (♀/♂ unbeschriftet, weiße Balken) ersetzt durch Wikimedia-Tafeln
+  `female-reproductive-frontal.png` (Jmarchn, CC BY-SA 3.0) und
+  `male-reproductive-frontal.png` (T. Kebert, CC BY-SA 4.0); Drop-Felder neu ausgerichtet;
+  Ablenker nur themenbezogen (Gegengeschlecht), keine Federfahne/Schwanzflosse.
+- **Gebiss-Typ-Schemas entfernt:** selbst gezeichnete Fleisch-/Pflanzen-/Allesfresser-SVGs
+  aus dem Aufgabenpool; Zahnarten-Beschriftung bleibt (Commons `oral-cavity-teeth-blank`).
+- **Bio K5 Säuger-Fortpflanzung Cloze:** „In der ___ werden Eizellen …“ → „In den ___ …“
+  (Dativ Plural zu Eierstöcken); akzeptierte Lückenantworten an Plural angepasst.
+  Bio-Pack **1.8.2**.
+
+
 ## [0.28.60] – 2026-09-25
 
 ### Entfernt

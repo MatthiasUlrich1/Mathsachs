@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.8.1',
-    changelog: `K5 Vogel-Aufbau: englisches Luftsäcke-/Atmungsdiagramm (imageLabelSlots) entfernt — zu schwer für Klasse 5. Organ-Schema und altersgerechte Luftsäcke-TF bleiben. ${topics} Themen.`,
+    version: '1.8.2',
+    changelog: `Fortpflanzung Mensch: ♀/♂ Beschriftung mit Wikimedia-Commons-Tafeln (Jmarchn / T. Kebert); Mathsachs-Eigen-Schemata und Gebiss-Typ-Schemas entfernt. Ablenker themenbezogen. ${topics} Themen.`,
     official,
     extras: [],
   }
