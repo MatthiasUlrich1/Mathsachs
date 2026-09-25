@@ -95,10 +95,14 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Süßwasser',
             'Salzwasser',
             'Gewässer',
+            'Raubfisch',
+            'Friedfisch',
           ]),
           topic('bi-k5-lb2-fische-schutz', 'Fische – Fortpflanzung und Schutz', [
             'Laich',
             'Gewässerschutz',
+            'Befruchtung',
+            'Rogen',
           ]),
         ]),
         area('lb3', 'Lurche in ihren Lebensräumen', 7, [

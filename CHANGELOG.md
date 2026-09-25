@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.49] – 2026-09-25
+
+### Hinzugefügt
+- **Biologie K5 Fische:** dichte Pools zu Raubfisch/Friedfisch (Zuordnung, Unterschiede,
+  Mehrfachauswahl) unter Lebensraum; detaillierte Fortpflanzung (Laichen, äußere Befruchtung,
+  Rogen/Milch, Laichplatz, Brutfürsorge) unter Fortpflanzung und Schutz.
+- **Verwandt:** zusätzliche Fortpflanzungsaufgaben bei Lurch-Metamorphose und Vogel-Fortpflanzung.
+
 ## [0.28.48] – 2026-09-25
 
 ### Hinzugefügt

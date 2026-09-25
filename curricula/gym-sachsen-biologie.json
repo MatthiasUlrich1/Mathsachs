@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Biologie",
-  "version": "1.4.0",
-  "changelog": "K5 Aufbau des Fisches / Aufbau des Vogels (imageLabelSlots, locked). K6 LB2 Wirbellose freigegeben. 127 Themen; Rest Entwickler (released:false).",
+  "version": "1.4.1",
+  "changelog": "K5 Fische: Raub-/Friedfisch + Fortpflanzung verdichtet. Aufbau Fisch/Vogel (imageLabelSlots). 127 Themen; Rest Entwickler (released:false).",
   "official": [
     {
       "id": "biologie-klasse-5",
@@ -112,7 +112,9 @@
               "keywords": [
                 "Süßwasser",
                 "Salzwasser",
-                "Gewässer"
+                "Gewässer",
+                "Raubfisch",
+                "Friedfisch"
               ]
             },
             {
@@ -124,7 +126,9 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Laich",
-                "Gewässerschutz"
+                "Gewässerschutz",
+                "Befruchtung",
+                "Rogen"
               ]
             }
           ]
@@ -2018,5 +2022,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "4956efcb"
+  "contentHash": "0d75b249"
 }
