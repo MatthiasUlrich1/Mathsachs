@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.64] – 2026-09-25
+
+### Behoben
+- **Bio K5 Fische innere Organe:** Jon-Houseman-Barschpräparat durch klares
+  Commons-Schema `Fish-anatomy.svg` (Uwe Gille, CC BY 2.5) ersetzt; Drop-Felder
+  und Leader neu kalibriert (Leber, Magen, Darm, Herz, Schwimmblase, Kiemen).
+  Bio-Pack **1.8.5**.
+
 ## [0.28.63] – 2026-09-25
 
 ### Behoben

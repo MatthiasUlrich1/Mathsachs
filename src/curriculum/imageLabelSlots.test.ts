@@ -117,10 +117,11 @@ describe('Biologie anatomy topics', () => {
               expect(labels).toEqual(expect.arrayContaining(['Schwanzflosse']))
               expect(labels.join(' ')).not.toMatch(/Federfahne|Schwimmhaut/)
             }
-            if (src.includes('fish-internal')) {
+            if (src.includes('fish-internal-teleost') || src.includes('fish-internal')) {
               expect(labels).toEqual(
                 expect.arrayContaining(['Kiemen', 'Herz', 'Leber', 'Magen', 'Schwimmblase', 'Darm']),
               )
+              expect(src).not.toMatch(/houseman|perch/i)
             }
           }
           if (id === 'bi-k5-lb5-voegel-aufbau') {

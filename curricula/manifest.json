@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-25T17:42:32.966Z",
+  "updatedAt": "2026-09-25T17:56:02.802Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -40,10 +40,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Biologie",
-      "version": "1.8.4",
+      "version": "1.8.5",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-biologie.json",
-      "size": 67892,
-      "changelog": "Säuger-Gebiss: Slot-Kalibrierung Mensch-Tafel; echte Commons-Fotos Löwin/Pferd/Schwein (Fleisch-/Pflanzen-/Allesfresser) mit Bild+Blöcken; Ablenker themenbezogen. 131 Themen."
+      "size": 67870,
+      "changelog": "Fische innere Organe: Commons-Schema Fish-anatomy (Uwe Gille) statt Barschpräparat; Drop-Felder neu kalibriert. Säuger-Gebisse Commons-Fotos. 131 Themen."
     },
     {
       "id": "gym-sachsen-anhalt",

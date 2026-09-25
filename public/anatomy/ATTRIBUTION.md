@@ -17,16 +17,16 @@ Assets bundled for offline practice (educational app + desktop installers). Pref
 - **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Oncorhynchus_mykiss_mid_res_150dpi_whiteBG.jpg
 - **Original:** USFWS WVDR-54-Raver / National Conservation Training Center
 
-## Fish — Innere Organe (Barsch-Präparat)
+## Fish — Innere Organe (Knochenfisch-Schema)
 
-- **File:** `fish-internal-perch-houseman.png`
-- **Title:** Oste082p labelled (Internal Anatomy of the Perch Perca flavescens)
-- **Author:** Jon Houseman
-- **License:** CC BY-SA 3.0
-- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Oste082p_labelled.png
-- **License deed:** https://creativecommons.org/licenses/by-sa/3.0/
-- **ShareAlike:** Datei unverändert, Drop-Felder nur UI-Overlay.
-- **Parts used (K5):** Kiemen (A), Herz (B), Leber (D), Magen (E), Schwimmblase (G), Darm (H)
+- **File:** `fish-internal-teleost-gille.svg`
+- **Title:** Fish-anatomy (schematic inner anatomy of a teleost)
+- **Author:** Uwe Gille
+- **License:** CC BY 2.5 (auch GFDL / CC BY-SA 3.0 wählbar; App nutzt CC BY 2.5)
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Fish-anatomy.svg
+- **License deed:** https://creativecommons.org/licenses/by/2.5/
+- **Note:** Veröffentlichtes Unterrichtsschema (nicht Mathsachs-Eigenzeichnung). Datei unverändert; Drop-Felder + Leader nur UI-Overlay.
+- **Parts used (K5):** Leber (1), Magen (2), Darm (3), Herz (4), Schwimmblase (5), Kiemen (11)
 
 ## Bird — Innere Organe (labeling diagram)
 

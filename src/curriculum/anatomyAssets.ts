@@ -146,27 +146,27 @@ export const FISH_TROUT_ASSET: AnatomyAsset = {
 }
 
 /**
- * Jon Houseman perch dissection — real photo with letter markers A–J (Commons).
- * Drop fields sit on letters; we skip redrawing leaders.
- * Mapping (Commons caption): A Kiemen, B Herz, D Leber, E Magen, G Schwimmblase, H Darm.
+ * Uwe Gille teleost schematic — numbered organs 1–11 (Commons).
+ * Leaders from peripheral drop fields to organ centres (K5-clear schematic, not a dissection photo).
+ * Mapping (Commons): 1 Leber, 2 Magen, 3 Darm, 4 Herz, 5 Schwimmblase, 11 Kiemen.
  */
 export const FISH_ORGANS_ASSET: AnatomyAsset = {
-  id: 'fish-organs-perch',
-  imageSrc: '/anatomy/fish-internal-perch-houseman.png',
-  imageAlt: 'Aufgeschnittene Barsch-Ansicht mit inneren Organen (Buchstaben A–J)',
+  id: 'fish-organs-teleost',
+  imageSrc: '/anatomy/fish-internal-teleost-gille.svg',
+  imageAlt: 'Schematische Darstellung der inneren Organe eines Knochenfisches (nummeriert)',
   attribution:
-    'Jon Houseman: „Oste082p labelled“ (innere Anatomie von Perca flavescens). Wikimedia Commons, CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0/ · https://commons.wikimedia.org/wiki/File:Oste082p_labelled.png (ShareAlike: Datei unverändert, Drop-Felder nur UI-Overlay)',
-  drawLeaders: false,
+    'Uwe Gille: „Fish-anatomy“ (Schematische Zeichnung der inneren Anatomie eines Knochenfischs). Wikimedia Commons, CC BY 2.5 — https://creativecommons.org/licenses/by/2.5/ · https://commons.wikimedia.org/wiki/File:Fish-anatomy.svg (Datei unverändert, Drop-Felder + Leader nur UI-Overlay)',
+  drawLeaders: true,
   fachwissenQuelle: 'Wikipedia: Fisch',
   fachwissenUrl: 'https://de.wikipedia.org/wiki/Fisch',
-  distractors: ['Niere', 'Harnblase', 'Pylorusschlauch'],
+  distractors: ['Niere', 'Harnblase', 'Hoden'],
   slots: [
     {
       id: 'kiemen',
-      x: 8.5,
-      y: 40,
-      targetX: 8.5,
-      targetY: 40,
+      x: 8,
+      y: 42,
+      targetX: 26,
+      targetY: 52,
       label: 'Kiemen',
       functionDe: 'Sauerstoff aus dem Wasser aufnehmen',
       wissen: 'An den Kiemen geht Sauerstoff aus dem Wasser ins Blut — die Atmung der Fische.',
@@ -174,10 +174,10 @@ export const FISH_ORGANS_ASSET: AnatomyAsset = {
     },
     {
       id: 'herz',
-      x: 14,
-      y: 55,
-      targetX: 14,
-      targetY: 55,
+      x: 8,
+      y: 72,
+      targetX: 29,
+      targetY: 61,
       label: 'Herz',
       functionDe: 'Blutkreislauf antreiben',
       wissen: 'Das Herz pumpt Blut durch den Körper und versorgt Organe mit Sauerstoff.',
@@ -185,10 +185,10 @@ export const FISH_ORGANS_ASSET: AnatomyAsset = {
     },
     {
       id: 'leber',
-      x: 24,
-      y: 52,
-      targetX: 24,
-      targetY: 52,
+      x: 18,
+      y: 28,
+      targetX: 33,
+      targetY: 56,
       label: 'Leber',
       functionDe: 'Stoffwechsel und Entgiftung',
       wissen: 'Die Leber speichert Nährstoffe und hilft bei der Entgiftung.',
@@ -196,10 +196,10 @@ export const FISH_ORGANS_ASSET: AnatomyAsset = {
     },
     {
       id: 'magen',
-      x: 38,
-      y: 32,
-      targetX: 38,
-      targetY: 32,
+      x: 58,
+      y: 78,
+      targetX: 40,
+      targetY: 62,
       label: 'Magen',
       functionDe: 'Nahrung chemisch verdauen',
       wissen: 'Im Magen wird die Nahrung mit Verdauungssäften zersetzt.',
@@ -207,10 +207,10 @@ export const FISH_ORGANS_ASSET: AnatomyAsset = {
     },
     {
       id: 'schwimmblase',
-      x: 52,
+      x: 58,
       y: 22,
-      targetX: 52,
-      targetY: 22,
+      targetX: 40,
+      targetY: 50,
       label: 'Schwimmblase',
       functionDe: 'Schweben ohne ständiges Schwimmen',
       wissen: 'Die Schwimmblase reguliert den Auftrieb — der Fisch schwebt mit wenig Kraftaufwand.',
@@ -218,10 +218,10 @@ export const FISH_ORGANS_ASSET: AnatomyAsset = {
     },
     {
       id: 'darm',
-      x: 55,
-      y: 58,
-      targetX: 55,
-      targetY: 58,
+      x: 72,
+      y: 68,
+      targetX: 36,
+      targetY: 70,
       label: 'Darm',
       functionDe: 'Nährstoffe aufnehmen',
       wissen: 'Im Darm werden Nährstoffe aus der verdauten Nahrung aufgenommen.',

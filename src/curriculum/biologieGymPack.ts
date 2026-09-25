@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.8.4',
-    changelog: `Säuger-Gebiss: Slot-Kalibrierung Mensch-Tafel; echte Commons-Fotos Löwin/Pferd/Schwein (Fleisch-/Pflanzen-/Allesfresser) mit Bild+Blöcken; Ablenker themenbezogen. ${topics} Themen.`,
+    version: '1.8.5',
+    changelog: `Fische innere Organe: Commons-Schema Fish-anatomy (Uwe Gille) statt Barschpräparat; Drop-Felder neu kalibriert. Säuger-Gebisse Commons-Fotos. ${topics} Themen.`,
     official,
     extras: [],
   }
