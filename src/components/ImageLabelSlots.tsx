@@ -177,7 +177,7 @@ export const ImageLabelSlots: React.FC<ImageLabelSlotsProps> = ({
               preserveAspectRatio="none"
               aria-hidden
             >
-              {slots.map((s, i) => (
+              {slots.map((s) => (
                 <g key={`line-${s.id}`}>
                   <line
                     x1={s.x}

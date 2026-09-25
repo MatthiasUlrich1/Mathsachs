@@ -9,6 +9,11 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.51] – 2026-09-25
+
+### Behoben
+- **Installer-CI:** unbenutzte Index-Variable in `ImageLabelSlots` (tsc).
+
 ## [0.28.50] – 2026-09-25
 
 ### Behoben
