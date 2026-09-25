@@ -9,6 +9,20 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.45] – 2026-09-25
+
+### Geändert
+- **Biologie Gymnasium Sachsen 1.3.0:** K6 LB2 „Wirbellose Tiere in ihren Lebensräumen“
+  freigegeben (IDs 1434, 2689, 2495, 4496, 3666, 7502, 1467): Überblick, Insekten,
+  Spinnentiere, Krebstiere, Ringelwürmer, Rundwürmer, Hohltiere. Übrige Bio-Themen
+  weiter `released:false`.
+
+## [0.28.44] – 2026-09-24
+
+### Behoben
+- **Lückentexte Bio/Geschichte:** Spoiler-Guard — die gesuchte Antwort darf nicht schon in
+  Lücke oder Fragestellung stehen (gesamter Bio- und Geschichte-Lehrplan).
+
 ## [0.28.43] – 2026-09-24
 
 ### Geändert

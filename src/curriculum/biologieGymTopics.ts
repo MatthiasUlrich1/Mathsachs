@@ -233,37 +233,37 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Gliederfüßer',
             'Weichtiere',
             'Wirbellos',
-          ]),
+          ], { released: true }),
           topic('bi-k6-lb2-insekten', 'Insekten – Bau und Metamorphose', [
             'Insekt',
             'Metamorphose',
             'Chitin',
-          ]),
+          ], { released: true }),
           topic('bi-k6-lb2-spinnen', 'Spinnentiere', [
             'Spinne',
             'Acht Beine',
             'Milben',
-          ]),
+          ], { released: true }),
           topic('bi-k6-lb2-krebstiere', 'Krebstiere', [
             'Flusskrebs',
             'Wasserfloh',
             'Kieme',
-          ]),
+          ], { released: true }),
           topic('bi-k6-lb2-ringelwuermer', 'Ringelwürmer', [
             'Regenwurm',
             'Blutegel',
             'Segment',
-          ]),
+          ], { released: true }),
           topic('bi-k6-lb2-rundwuermer', 'Rundwürmer', [
             'Nematoden',
             'Askaris',
             'Parasit',
-          ]),
+          ], { released: true }),
           topic('bi-k6-lb2-nesseltiere', 'Hohltiere', [
             'Qualle',
             'Koralle',
             'Nesselzelle',
-          ]),
+          ], { released: true }),
         ]),
         area('lb3', 'Systematisierung', 4, [
           topic('bi-k6-lb3-systematik', 'Wirbellose und Wirbeltiere vergleichen', [
@@ -728,6 +728,17 @@ export function allBiologieTopicIds(): string[] {
     g.areas.flatMap((a) => a.topics.map((t) => t.id)),
   )
 }
+
+/** K6 LB2 Wirbellose — freigegeben (IDs 1434, 2689, 2495, 4496, 3666, 7502, 1467). */
+export const BIOLOGIE_K6_WIRBELLOSE_RELEASED_IDS = [
+  'bi-k6-lb2-wirbellose',
+  'bi-k6-lb2-insekten',
+  'bi-k6-lb2-spinnen',
+  'bi-k6-lb2-krebstiere',
+  'bi-k6-lb2-ringelwuermer',
+  'bi-k6-lb2-rundwuermer',
+  'bi-k6-lb2-nesseltiere',
+] as const
 
 /** Playable K5 Wirbeltiere + Wahl topic ids (legacy + expanded). */
 export const BIOLOGIE_K5_WIRBELTIERE_TOPIC_IDS = [

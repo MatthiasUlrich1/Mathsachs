@@ -5,7 +5,7 @@ import {
 } from './pack'
 import { buildBiologieGymOfficialGrades } from './biologieGymTopics'
 
-/** Gymnasium Sachsen · Biologie — K5–12 Generatoren (released:false, Entwickler). */
+/** Gymnasium Sachsen · Biologie — K6 LB2 Wirbellose freigegeben; übrige released:false. */
 export function buildGymSachsenBiologiePack(): CurriculumPack {
   const official = buildBiologieGymOfficialGrades()
   const topics = official.reduce(
@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.2.9',
-    changelog: `Lückentexte: Spoiler-Guard — Antwort darf nicht schon in Lücke/Frage stehen (gesamter Bio-Lehrplan). ${topics} Themen.`,
+    version: '1.3.0',
+    changelog: `K6 LB2 Wirbellose freigegeben (7 Themen). ${topics} Themen; Rest Entwickler (released:false).`,
     official,
     extras: [],
   }
