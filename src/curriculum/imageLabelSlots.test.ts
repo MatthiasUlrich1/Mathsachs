@@ -109,6 +109,20 @@ describe('Biologie anatomy topics', () => {
           expect(String(task.interactive.props.attribution).length).toBeGreaterThan(20)
           expect(Array.isArray(task.interactive.props.slots)).toBe(true)
           expect((task.interactive.props.slots as unknown[]).length).toBeGreaterThanOrEqual(3)
+          if (id === 'bi-k5-lb2-fische-aufbau') {
+            const items = task.interactive.props.items as Array<{ label: string }>
+            const labels = items.map((i) => i.label)
+            const src = String(task.interactive.props.imageSrc)
+            if (src.includes('oncorhynchus')) {
+              expect(labels).toEqual(expect.arrayContaining(['Schwanzflosse']))
+              expect(labels.join(' ')).not.toMatch(/Federfahne|Schwimmhaut/)
+            }
+            if (src.includes('fish-internal')) {
+              expect(labels).toEqual(
+                expect.arrayContaining(['Kiemen', 'Herz', 'Leber', 'Magen', 'Schwimmblase', 'Darm']),
+              )
+            }
+          }
           if (id === 'bi-k5-lb5-voegel-aufbau') {
             const items = task.interactive.props.items as Array<{ label: string }>
             const labels = items.map((i) => i.label)

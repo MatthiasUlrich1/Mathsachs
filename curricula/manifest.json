@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-25T17:10:11.674Z",
+  "updatedAt": "2026-09-25T17:36:57.514Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -40,10 +40,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Biologie",
-      "version": "1.8.2",
+      "version": "1.8.3",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-biologie.json",
-      "size": 67910,
-      "changelog": "Fortpflanzung Mensch: ♀/♂ Beschriftung mit Wikimedia-Commons-Tafeln (Jmarchn / T. Kebert); Mathsachs-Eigen-Schemata und Gebiss-Typ-Schemas entfernt. Ablenker themenbezogen. 131 Themen."
+      "size": 68007,
+      "changelog": "Fisch-Aufbau: Slot-Kalibrierung (Auge/Kiemendeckel/Fettflosse/Schwanzflosse), innere Organe (Houseman-Barsch), tolerante Funktions-Clozes; K6 Wahl Weichtiere/Schnecken/Muscheln/Kopffüßer/Heilpflanzen/Pfütze freigegeben; Spinnen-Fachbegriffe deutsch-first; Pfütze Bild+Blöcke. 131 Themen."
     },
     {
       "id": "gym-sachsen-anhalt",

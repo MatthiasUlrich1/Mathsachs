@@ -6,6 +6,7 @@ import type { Rng } from '../lib/rng'
 import {
   BIRD_ORGANS_ASSET,
   FEATHER_PARTS_ASSET,
+  FISH_ORGANS_ASSET,
   FISH_TROUT_ASSET,
   SKELETON_AXIAL_ASSET,
   SKELETON_UPPER_ASSET,
@@ -141,39 +142,223 @@ function buildFunctionMc(rng: Rng, asset: AnatomyAsset) {
   })
 }
 
+const normFn = (s: string) =>
+  s
+    .trim()
+    .toLowerCase()
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ß/g, 'ss')
+    .replace(/\s+/g, ' ')
+
+/** Stems for partial-credit function clozes (fish Aufbau). */
+function functionStems(part: AnatomyAsset['slots'][number]): string[][] {
+  const id = part.id
+  if (id === 'auge') {
+    return [
+      ['sehen', 'licht', 'lichtwahrnehmung'],
+      ['orientierung', 'orientieren'],
+    ]
+  }
+  if (id === 'brustflosse') {
+    return [
+      ['steuer', 'steuern', 'steuerung', 'lenken', 'lenkung'],
+      ['brems', 'bremsen', 'abbremsen'],
+    ]
+  }
+  if (id === 'bauchflosse') {
+    return [
+      ['lage', 'halten'],
+      ['balance', 'gleichgewicht'],
+    ]
+  }
+  if (id === 'schwanzflosse') {
+    return [['vortrieb', 'antrieb', 'vorwaerts', 'schwung']]
+  }
+  if (id === 'rueckenflosse' || id === 'afterflosse') {
+    return [['stabil', 'stabilitaet', 'stabilisieren', 'kentern']]
+  }
+  if (id === 'kiamendeckel') {
+    return [['schutz', 'schuetzt', 'schuetzen', 'decken', 'bedecken', 'kiemen']]
+  }
+  if (id === 'seitenlinie') {
+    return [
+      ['wahrnehmung', 'wahrnehmen', 'registr', 'fuehlen', 'spueren'],
+      ['wasser', 'stroemung', 'druck', 'bewegung'],
+    ]
+  }
+  if (id === 'fettflosse') {
+    return [['kennzeichen', 'merkmal', 'typisch', 'salmon', 'forelle']]
+  }
+  if (id === 'kiemen') {
+    return [
+      ['sauerstoff', 'o2', 'atmen', 'atmung'],
+      ['wasser', 'aufnehmen', 'aufnahme'],
+    ]
+  }
+  if (id === 'herz') {
+    return [['blut', 'kreislauf', 'pumpen', 'antreiben']]
+  }
+  if (id === 'leber') {
+    return [['stoffwechsel', 'entgift', 'speicher']]
+  }
+  if (id === 'magen') {
+    return [['verdau', 'zersetz', 'chemisch', 'nahrung']]
+  }
+  if (id === 'schwimmblase') {
+    return [['schweb', 'auftrieb', 'schweben', 'ohne staendiges schwimmen']]
+  }
+  if (id === 'darm') {
+    return [['naehrstoff', 'aufnehmen', 'aufnahme']]
+  }
+  // Fallback: each "und"-chunk is one stem group
+  return part.functionDe
+    .split(/\s+und\s+|\s*\/\s*|,\s*/i)
+    .map((c) => c.trim())
+    .filter((c) => c.length >= 3)
+    .map((c) => [normFn(c)])
+}
+
 /** Tolerante Synonyme für Cloze-Funktionen (Komma/Teilantworten erlaubt). */
 function functionAccepted(part: AnatomyAsset['slots'][number]): string[] {
   const base = part.functionDe
   const extras: string[] = [base]
-  // Einzelne Teilstücke bei „A und B“ / „A und B“
   for (const chunk of base.split(/\s+und\s+|\s*\/\s*|,\s*/i)) {
     const t = chunk.trim()
     if (t.length >= 3) extras.push(t)
   }
-  if (part.id === 'auge') {
-    extras.push(
+  const byId: Record<string, string[]> = {
+    auge: [
       'Sehen',
-      'sehen',
       'Orientierung',
-      'orientierung',
       'Sehen und Orientierung',
       'Orientierung und Sehen',
       'Sehen, Orientierung',
       'Orientierung, Sehen',
       'Lichtwahrnehmung',
       'Wahrnehmen von Licht',
-    )
+    ],
+    brustflosse: [
+      'Steuern',
+      'Bremsen',
+      'Steuerung',
+      'Steuern und Bremsen',
+      'Bremsen und Steuern',
+      'Steuern, Bremsen',
+      'Steuerung und Bremsen',
+      'Lenken und Bremsen',
+      'Lenken',
+    ],
+    bauchflosse: [
+      'Lage halten',
+      'Balance',
+      'Balance halten',
+      'Gleichgewicht',
+      'Lage und Balance',
+      'Lage und Balance halten',
+    ],
+    schwanzflosse: ['Vortrieb', 'Antrieb', 'Vortrieb erzeugen', 'Antrieb beim Schwimmen'],
+    rueckenflosse: ['Stabilität', 'Stabilisieren', 'Stabilität beim Schwimmen'],
+    afterflosse: ['Stabilität', 'Stabilisieren', 'Stabilität am Hinterkörper'],
+    kiamendeckel: [
+      'Schutz der Kiemen',
+      'Kiemen schützen',
+      'Schützt die Kiemen',
+      'Bedeckt die Kiemen',
+      'Schutz',
+    ],
+    seitenlinie: [
+      'Wahrnehmung',
+      'Wasserbewegungen wahrnehmen',
+      'Strömung wahrnehmen',
+      'Druckwellen wahrnehmen',
+      'Wahrnehmung von Wasserbewegungen',
+    ],
+    fettflosse: [
+      'Kennzeichen',
+      'Artmerkmal',
+      'Kennzeichen mancher Arten',
+      'Kennzeichen der Forelle',
+    ],
+    kiemen: [
+      'Atmung',
+      'Atmen',
+      'Sauerstoffaufnahme',
+      'Sauerstoff aufnehmen',
+      'Sauerstoff aus dem Wasser aufnehmen',
+    ],
+    herz: ['Blut pumpen', 'Kreislauf antreiben', 'Blutkreislauf antreiben', 'Pumpt das Blut'],
+    leber: ['Stoffwechsel', 'Entgiftung', 'Stoffwechsel und Entgiftung'],
+    magen: ['Verdauung', 'Nahrung verdauen', 'chemische Verdauung', 'Nahrung chemisch verdauen'],
+    schwimmblase: [
+      'Schweben',
+      'Auftrieb',
+      'Auftrieb regulieren',
+      'Schweben ohne ständiges Schwimmen',
+    ],
+    darm: ['Nährstoffaufnahme', 'Nährstoffe aufnehmen', 'Aufnahme von Nährstoffen'],
   }
+  extras.push(...(byId[part.id] ?? []))
   return [...new Set(extras)]
 }
 
+/** Cloze with stem-based partial credit (Steuerung allein = Teilpunkt). */
 function buildPartCloze(rng: Rng, asset: AnatomyAsset) {
   const part = pick(rng, asset.slots)
   const accepted = functionAccepted(part)
+  const stems = functionStems(part)
   const question =
     part.id === 'auge'
       ? 'Ergänze die Funktion vom Auge.'
       : `Ergänze die Funktion von ${part.label}.`
+
+  if (stems.length >= 1) {
+    const grade = (answer: import('./types').UserInput) => {
+      if (answer.kind !== 'value' && answer.kind !== 'clozeMulti') {
+        return { fraction: 0, parts: stems.map(() => false) }
+      }
+      const raw =
+        answer.kind === 'value' ? answer.value : (answer.blanks ?? []).join(', ')
+      const n = normFn(raw)
+      // Full accepted phrase → full credit
+      if (accepted.some((a) => normFn(a) === n)) {
+        return { fraction: 1, parts: stems.map(() => true) }
+      }
+      const tokens = n
+        .split(/[,;/]|\bund\b/i)
+        .map((t) => normFn(t))
+        .filter(Boolean)
+      const hay = [n, ...tokens].join(' ')
+      const flags = stems.map((group) =>
+        group.some((stem) => hay.includes(stem) || tokens.some((t) => t.includes(stem))),
+      )
+      const ok = flags.filter(Boolean).length
+      return { parts: flags, fraction: ok / flags.length }
+    }
+    return {
+      question,
+      answerKind: 'text' as const,
+      solution: part.functionDe,
+      explanation: part.wissen,
+      fachwissen: partFachwissen(part, asset),
+      dedupeKey: `${part.concept}:cloze`,
+      contentIds: [part.concept, `${part.concept}:cloze`],
+      sampleAnswer: { kind: 'value' as const, value: part.functionDe },
+      interactive: {
+        type: 'clozeMulti' as const,
+        props: {
+          segments: [`${part.label}: `, '.'],
+          blankCount: 1,
+          instruction:
+            'Tippe die Funktion (Synonyme und Teilantworten wie „Steuerung“ sind ok):',
+        },
+      },
+      check: (answer: import('./types').UserInput) => grade(answer).fraction >= 0.5,
+      grade,
+    }
+  }
+
   return clozeBlanksTask({
     question,
     template: `${part.label}: ___.`,
@@ -258,11 +443,75 @@ function buildPartTf(rng: Rng, asset: AnatomyAsset) {
 }
 
 function fishLabel(rng: Rng) {
+  // Always include the corrected landmarks from user feedback.
+  const mustIds = ['auge', 'kiamendeckel', 'fettflosse', 'schwanzflosse'] as const
+  const must = mustIds
+    .map((id) => FISH_TROUT_ASSET.slots.find((s) => s.id === id)!)
+    .filter(Boolean)
+  const rest = FISH_TROUT_ASSET.slots.filter((s) => !mustIds.includes(s.id as (typeof mustIds)[number]))
+  const want = rng() < 0.45 ? 5 : 6
+  const fill = shufflePool(rng, rest).slice(0, Math.max(0, want - must.length))
+  const subset = shufflePool(rng, [...must, ...fill]).slice(0, want)
+  const distractors = shufflePool(rng, FISH_TROUT_ASSET.distractors).slice(0, 2)
+  const labels = [...subset.map((s) => s.label), ...distractors]
+  const concepts = subset.map((s) => s.concept)
+  return imageLabelSlotsTask({
+    question:
+      'Beschrifte den äußeren Aufbau des Fisches. Ziehe die Begriffe in die Felder.',
+    imageSrc: FISH_TROUT_ASSET.imageSrc,
+    imageAlt: FISH_TROUT_ASSET.imageAlt,
+    attribution: FISH_TROUT_ASSET.attribution,
+    drawLeaders: FISH_TROUT_ASSET.drawLeaders,
+    items: labels.map((label) => ({ label })),
+    slots: subset.map(({ id, x, y, targetX, targetY }) => ({
+      id,
+      x,
+      y,
+      targetX,
+      targetY,
+    })),
+    correctSlots: subset.map((_, i) => i),
+    solution: subset.map((s, i) => `${i + 1}:${s.label}`).join('; '),
+    explanation: subset.map((s) => `${s.label}: ${s.wissen}`).join(' '),
+    instruction:
+      'Ziehe die Bezeichnungen in die Felder. Die Linien zeigen auf die Körperregion.',
+    fachwissen: bioFw(
+      subset.map((s) => `${s.label} — ${s.functionDe}. ${s.wissen}`).join(' '),
+      FISH_TROUT_ASSET.fachwissenQuelle,
+      FISH_TROUT_ASSET.fachwissenUrl,
+    ),
+    contentIds: concepts,
+    dedupeKey: `imgLabel:${FISH_TROUT_ASSET.id}:${[...concepts].sort().join('+')}`,
+    rng,
+  })
+}
+
+function fishOrgansLabel(rng: Rng) {
   return buildLabelTask(
     rng,
-    FISH_TROUT_ASSET,
-    'Beschrifte den äußeren Aufbau des Fisches. Ziehe die Begriffe in die Felder.',
+    FISH_ORGANS_ASSET,
+    'Beschrifte die inneren Organe des Fisches. Ziehe die Begriffe in die Felder.',
   )
+}
+
+function fishOrgansFunctions(rng: Rng) {
+  return buildFunctionMatch(
+    rng,
+    FISH_ORGANS_ASSET,
+    'Ordne den Organen des Fisches die passende Funktion zu.',
+  )
+}
+
+function fishOrgansFnMc(rng: Rng) {
+  return buildFunctionMc(rng, FISH_ORGANS_ASSET)
+}
+
+function fishOrgansCloze(rng: Rng) {
+  return buildPartCloze(rng, FISH_ORGANS_ASSET)
+}
+
+function fishOrgansTf(rng: Rng) {
+  return buildPartTf(rng, FISH_ORGANS_ASSET)
 }
 
 function fishFunctions(rng: Rng) {
@@ -278,12 +527,13 @@ function fishFnMc(rng: Rng) {
 }
 
 function fishCloze(rng: Rng) {
-  // Auge-Funktion besonders oft und tolerant (Freigabeliste).
-  if (rng() < 0.45) return fishEyeClozePartial(rng)
+  // Mix outer + inner organ function clozes (tolerant stems).
+  if (rng() < 0.4) return buildPartCloze(rng, FISH_ORGANS_ASSET)
   return buildPartCloze(rng, FISH_TROUT_ASSET)
 }
 
 function fishTf(rng: Rng) {
+  if (rng() < 0.4) return buildPartTf(rng, FISH_ORGANS_ASSET)
   return buildPartTf(rng, FISH_TROUT_ASSET)
 }
 
@@ -529,6 +779,41 @@ function fishAdaptationExtra(rng: Rng) {
       explanation: 'Augen sind wichtige Sinnesorgane der Fische.',
       wissen: 'Fische nutzen das Auge zur Orientierung und zum Beutefang im Wasser.',
     },
+    {
+      concept: 'bio:k5:fisch:aufbau:adapt:schwimmblase',
+      statement: 'Die Schwimmblase hilft dem Fisch, ohne ständiges Schwimmen zu schweben.',
+      correct: true,
+      explanation: 'Schwimmblase = Auftriebsorgan.',
+      wissen: 'Durch Gasfüllung der Schwimmblase bleibt der Fisch mit wenig Kraftaufwand in der gewünschten Wassertiefe.',
+    },
+    {
+      concept: 'bio:k5:fisch:aufbau:adapt:herz',
+      statement: 'Das Herz treibt den Blutkreislauf des Fisches an.',
+      correct: true,
+      explanation: 'Das Herz pumpt das Blut.',
+      wissen: 'Blut transportiert Sauerstoff von den Kiemen zu den Organen — das Herz hält den Kreislauf in Gang.',
+    },
+    {
+      concept: 'bio:k5:fisch:aufbau:adapt:schwanzflosse',
+      statement: 'Die Schwanzflosse erzeugt den Hauptvortrieb beim Schwimmen.',
+      correct: true,
+      explanation: 'Schwanzflosse = Antriebsflosse.',
+      wissen: 'Seitliche Schläge der Schwanzflosse schieben den Fisch vorwärts.',
+    },
+    {
+      concept: 'bio:k5:fisch:aufbau:adapt:magen-darm',
+      statement: 'Magen und Darm verdauen Nahrung und nehmen Nährstoffe auf.',
+      correct: true,
+      explanation: 'Verdauungsorgane der Fische.',
+      wissen: 'Im Magen wird Nahrung zersetzt; im Darm werden Nährstoffe aufgenommen.',
+    },
+    {
+      concept: 'bio:k5:fisch:aufbau:adapt:federfahne-falsch',
+      statement: 'Fische atmen mit Federfahnen wie Vögel.',
+      correct: false,
+      explanation: 'Federfahnen gehören zu Vogelfedern — Fische atmen mit Kiemen.',
+      wissen: 'Kiemen sind das Atmungsorgan der Fische; Federfahnen sind Teile der Vogelfeder.',
+    },
   ]
   const c = pick(rng, bank)
   return trueFalse(rng, {
@@ -541,17 +826,21 @@ function fishAdaptationExtra(rng: Rng) {
   })
 }
 
-/** K5 LB2 — Aufbau des Fisches (Freigabe nach Auge-Toleranz + 10er-Runde). */
+/** K5 LB2 — Aufbau des Fisches (äußerer + innerer Aufbau, tolerante Clozes, 10er-Runde). */
 export const biFischeAufbau: Topic['generate'] = mixedVariants(
   fishLabel,
+  fishOrgansLabel,
   fishFunctions,
+  fishOrgansFunctions,
   fishFnMc,
+  fishOrgansFnMc,
   fishCloze,
-  fishEyeClozePartial,
+  fishOrgansCloze,
   fishTf,
+  fishOrgansTf,
   fishAdaptationExtra,
+  fishEyeClozePartial,
   fishFnMc,
-  fishTf,
   fishAdaptationExtra,
 )
 

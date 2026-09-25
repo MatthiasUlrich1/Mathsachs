@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.8.2',
-    changelog: `Fortpflanzung Mensch: ♀/♂ Beschriftung mit Wikimedia-Commons-Tafeln (Jmarchn / T. Kebert); Mathsachs-Eigen-Schemata und Gebiss-Typ-Schemas entfernt. Ablenker themenbezogen. ${topics} Themen.`,
+    version: '1.8.3',
+    changelog: `Fisch-Aufbau: Slot-Kalibrierung (Auge/Kiemendeckel/Fettflosse/Schwanzflosse), innere Organe (Houseman-Barsch), tolerante Funktions-Clozes; K6 Wahl Weichtiere/Schnecken/Muscheln/Kopffüßer/Heilpflanzen/Pfütze freigegeben; Spinnen-Fachbegriffe deutsch-first; Pfütze Bild+Blöcke. ${topics} Themen.`,
     official,
     extras: [],
   }

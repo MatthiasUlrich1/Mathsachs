@@ -9,6 +9,24 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.62] – 2026-09-25
+
+### Behoben
+- **Bio K5 Fische Aufbau:** Leader-Ziele für Auge, Kiemendeckel und Fettflosse
+  kalibriert; Schwanzflosse fest in Beschriftungsrunden; Ablenker fischtypisch
+  (keine Federfahne/Schwimmhaut). Funktions-Clozes tolerant (z. B. „Steuerung“
+  für Brustflosse = Teilpunkt).
+
+### Hinzugefügt
+- **Innere Organe Fische:** Jon-Houseman-Barschpräparat (Commons, CC BY-SA 3.0)
+  mit `imageLabelSlots` + Organ-MC/Cloze/TF.
+- **K6 Wahl freigegeben:** Weichtiere, Schnecken, Muscheln, Kopffüßer, Spinnen,
+  Pflanzen helfen heilen, Leben in der Pfütze.
+- **Pfütze:** Commons-Collage Wasserfloh/Hüpferling + dichte Banken (≥10 Konzepte).
+- **Heilpflanzen:** Banken verdichtet (≥10 Konzepte).
+- Spinnen-Fachbegriffe deutsch-first (Kieferklaue/Taster/Vorder-/Hinterkörper;
+  Latein optional). Bio-Pack **1.8.3**.
+
 ## [0.28.61] – 2026-09-25
 
 ### Behoben

@@ -17,6 +17,17 @@ Assets bundled for offline practice (educational app + desktop installers). Pref
 - **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Oncorhynchus_mykiss_mid_res_150dpi_whiteBG.jpg
 - **Original:** USFWS WVDR-54-Raver / National Conservation Training Center
 
+## Fish — Innere Organe (Barsch-Präparat)
+
+- **File:** `fish-internal-perch-houseman.png`
+- **Title:** Oste082p labelled (Internal Anatomy of the Perch Perca flavescens)
+- **Author:** Jon Houseman
+- **License:** CC BY-SA 3.0
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Oste082p_labelled.png
+- **License deed:** https://creativecommons.org/licenses/by-sa/3.0/
+- **ShareAlike:** Datei unverändert, Drop-Felder nur UI-Overlay.
+- **Parts used (K5):** Kiemen (A), Herz (B), Leber (D), Magen (E), Schwimmblase (G), Darm (H)
+
 ## Bird — Innere Organe (labeling diagram)
 
 - **File:** `bird-anatomy-unlabeled.png`
@@ -89,6 +100,14 @@ Assets bundled for offline practice (educational app + desktop installers). Pref
 - **License deed:** https://creativecommons.org/licenses/by-sa/4.0/
 - **ShareAlike:** Bearbeitungen unter gleicher/kompatibler Lizenz; PNG unverändert aus SVG gerastert (keine inhaltliche Bearbeitung); Drop-Felder nur UI-Overlay.
 - **Note:** Altersgerechte Unterrichtstafel, unbeschriftet — ersetzt früheres Mathsachs-Eigen-Schema.
+
+## Pfütze — Plankton-Collage (Wasserfloh + Hüpferling)
+
+- **File:** `pond-organisms-daphnia-cyclops.png`
+- **Contents:** Side-by-side collage (unaltered photos)
+  - Left: Paul Hebert — „Daphnia pulex“, CC BY 2.5 — https://commons.wikimedia.org/wiki/File:Daphnia_pulex.png
+  - Right: „Cyclops.jpg“, Public Domain — https://commons.wikimedia.org/wiki/File:Cyclops.jpg
+- **Note:** Drop fields are UI overlays only.
 
 ## Insect (optional / future)
 

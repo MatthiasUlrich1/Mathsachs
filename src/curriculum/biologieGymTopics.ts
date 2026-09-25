@@ -343,30 +343,34 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Netzbau',
             'Beutefang',
             'Spinnenseide',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('bi-k6-lbw-weichtiere', 'Weichtiere', [
             'Mantel',
             'Schnecke',
             'Muschel',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('bi-k6-lbw-schnecken', 'Schnecken', [
             'Kriechfuß',
             'Radula',
             'Gehäuse',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('bi-k6-lbw-muscheln', 'Muscheln', [
             'Schalenklappen',
             'Filtrierer',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('bi-k6-lbw-kopffuesser', 'Kopffüßer', [
             'Tintenfisch',
             'Fangarme',
             'Rückstoß',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('bi-k6-lbw-heilen', 'Pflanzen helfen heilen', ['Heilpflanze'], {
-            tasksPerRound: 10}),
+            tasksPerRound: 10,
+            released: true,
+          }),
           topic('bi-k6-lbw-pfuetze', 'Leben in der Pfütze', ['Kleinstlebewesen'], {
-            tasksPerRound: 10}),
+            tasksPerRound: 10,
+            released: true,
+          }),
         ]),
       ],
     ),
@@ -784,6 +788,17 @@ export const BIOLOGIE_K6_WIRBELLOSE_RELEASED_IDS = [
   'bi-k6-lb2-nesseltiere',
 ] as const
 
+/** K6 Wahlbereich — Weichtiere + Spinnen/Heilpflanzen/Pfütze freigegeben. */
+export const BIOLOGIE_K6_WAHL_RELEASED_IDS = [
+  'bi-k6-lbw-spinnen',
+  'bi-k6-lbw-weichtiere',
+  'bi-k6-lbw-schnecken',
+  'bi-k6-lbw-muscheln',
+  'bi-k6-lbw-kopffuesser',
+  'bi-k6-lbw-heilen',
+  'bi-k6-lbw-pfuetze',
+] as const
+
 /** K5 Themen laut Freigabeliste — vollständig freigegeben nach Verdichtung. */
 export const BIOLOGIE_K5_RELEASED_IDS = [
   'bi-k5-lb1-merkmale',
@@ -819,10 +834,11 @@ export const BIOLOGIE_K5_RELEASED_IDS = [
   'bi-k5-lbw-haltung',
 ] as const
 
-/** Alle aktuell freigegebenen Bio-Themen (K5 + K6 Wirbellose). */
+/** Alle aktuell freigegebenen Bio-Themen (K5 + K6 Wirbellose + K6 Wahl). */
 export const BIOLOGIE_RELEASED_IDS = [
   ...BIOLOGIE_K5_RELEASED_IDS,
   ...BIOLOGIE_K6_WIRBELLOSE_RELEASED_IDS,
+  ...BIOLOGIE_K6_WAHL_RELEASED_IDS,
 ] as const
 
 /** Playable K5 Wirbeltiere + Wahl topic ids (legacy + expanded). */

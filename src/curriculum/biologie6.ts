@@ -3,9 +3,13 @@
  * Themenideen angelehnt an Schlaukopf (Blütenpflanzen, Bäume, Zellen, Wirbellose, Wald),
  * Wortlaut original; Zuordnung nach sächsischem Lehrplan.
  */
+import { POND_PLANKTON_ASSET } from './anatomyAssets'
 import { bankGenerate, type BioBank } from './biologieBank'
 import { BIOLOGIE_K6_WIRBELLOSE_SPECIAL_GENERATORS } from './biologie6Wirbellose'
+import { bioFw, shuffle } from './biologieHelpers'
+import { imageLabelSlotsTask, mixedVariants } from './taskHelpers'
 import type { Topic } from './types'
+import type { Rng } from '../lib/rng'
 
 const Q = {
   pflanzen: {
@@ -519,10 +523,10 @@ const spinnen: BioBank = {
     },
     {
       concept: 'bio:spinnen:paar-pedipalpus',
-      term: 'Pedipalpen',
+      term: 'Taster',
       meaning: 'Tast- und Hilfswerkzeuge am Vorderkörper',
       wissen:
-        'Pedipalpen sitzen hinter den Cheliceren und dienen Tasten, Nahrungsaufnahme oder Fortpflanzung — nicht als Laufbeine.',
+        'Taster (Pedipalpen) sitzen hinter den Kieferklauen und dienen Tasten, Nahrungsaufnahme oder Fortpflanzung — nicht als Laufbeine. Fachwort Pedipalpus ist optional.',
     },
     {
       concept: 'bio:spinnen:paar-gift',
@@ -800,37 +804,191 @@ const zellen: BioBank = {
 const heilen: BioBank = {
   quelle: 'Wikipedia: Heilpflanze',
   url: 'https://de.wikipedia.org/wiki/Heilpflanze',
+  conceptPrefix: 'bio:k6:heilen',
   facts: [
     {
-      concept: 'bio:k6:warum-gelten-manche-pflanzen-als-heilpfl',
+      concept: 'bio:k6:heilen:warum',
       prompt: 'Warum gelten manche Pflanzen als Heilpflanzen?',
       answer: 'Sie enthalten Wirkstoffe, die medizinisch genutzt werden',
       wrong: ['Sie haben immer Giftzähne', 'Sie sind immer ungenießbar', 'Sie erzeugen Strom'],
       explanation: 'Wirkstoffe können heilen — Dosierung und Fachkenntnis sind nötig.',
       wissen:
         'Heilpflanzen enthalten Wirkstoffe, die medizinisch genutzt werden können — Dosis und sichere Bestimmung sind entscheidend.',
+      gap: 'Heilpflanzen enthalten ___, die medizinisch genutzt werden können.',
+      gapAccepted: ['Wirkstoffe', 'Wirkstoff', 'medizinische Wirkstoffe'],
+    },
+    {
+      concept: 'bio:k6:heilen:kamille',
+      prompt: 'Wofür wird Kamille traditionell oft genutzt?',
+      answer: 'Bei Entzündungen / zur Beruhigung von Haut und Schleimhaut',
+      wrong: ['Als Baustahl', 'Zum Strom erzeugen', 'Als Fischfutterersatz'],
+      explanation: 'Kamille ist eine bekannte Heilpflanze mit beruhigenden und entzündungshemmenden Eigenschaften.',
+      wissen:
+        'Echte Kamille enthält ätherische Öle. Tee oder Umschläge werden traditionell bei Entzündungen und Reizungen eingesetzt — immer altersgerecht und dosiert.',
+      gap: '___ wird traditionell als Tee bei Entzündungen eingesetzt.',
+      gapAccepted: ['Kamille', 'Echte Kamille'],
+    },
+    {
+      concept: 'bio:k6:heilen:pfefferminze',
+      prompt: 'Welche Wirkung wird Pfefferminze oft zugeschrieben?',
+      answer: 'Erfrischend / hilfreich bei Magen-Darm-Beschwerden',
+      wrong: ['Ersetzt den Blutkreislauf', 'Erzeugt Giftzähne', 'Macht Wasser salzig'],
+      explanation: 'Pfefferminze enthält Menthol und wird oft bei Verdauungsbeschwerden genutzt.',
+      wissen:
+        'Pfefferminze enthält Menthol. Tee kann erfrischend wirken und bei leichten Magen-Darm-Beschwerden helfen — keine Selbstbehandlung schwerer Krankheiten.',
+    },
+    {
+      concept: 'bio:k6:heilen:salbei',
+      prompt: 'Wofür ist Salbei als Heilpflanze bekannt?',
+      answer: 'Bei Entzündungen im Mund- und Rachenraum',
+      wrong: ['Als Kiemenersatz', 'Zum Fliegenlernen', 'Als reines Kunststoffmaterial'],
+      explanation: 'Salbeitee wird traditionell zum Gurgeln bei Halsbeschwerden genutzt.',
+      wissen:
+        'Salbei enthält ätherische Öle mit keimhemmender Wirkung und wird traditionell bei Entzündungen im Mund-Rachen-Raum eingesetzt.',
+    },
+    {
+      concept: 'bio:k6:heilen:dosis',
+      prompt: 'Warum ist die Dosis bei Heilpflanzen wichtig?',
+      answer: 'Zu viel kann schaden — Wirkstoffe sind chemisch aktiv',
+      wrong: ['Pflanzen wirken nie', 'Dosis spielt keine Rolle', 'Nur Farbe zählt'],
+      explanation: 'Wirkstoffe können in falscher Menge giftig wirken.',
+      wissen:
+        'Heilwirkung und Giftigkeit liegen oft nah beieinander. Deshalb gelten Bestimmung, Zubereitung und Dosis — nie „je mehr, desto besser“.',
+      gap: 'Bei Heilpflanzen ist die ___ entscheidend, weil Wirkstoffe chemisch aktiv sind.',
+      gapAccepted: ['Dosis', 'Dosierung', 'richtige Dosis'],
+    },
+    {
+      concept: 'bio:k6:heilen:bestimmung',
+      prompt: 'Warum muss man Wildpflanzen sicher bestimmen?',
+      answer: 'Verwechslungen mit giftigen Arten sind möglich',
+      wrong: ['Alle Pflanzen sind gleich', 'Nur der Geruch zählt', 'Bestimmung ist unnötig'],
+      explanation: 'Ähnlich aussehende giftige Arten können gefährlich sein.',
+      wissen:
+        'Viele Giftpflanzen ähneln Heilpflanzen. Sichere Bestimmung und Beratung (Fachliteratur, Erwachsene, Apotheke) sind Pflicht.',
+    },
+    {
+      concept: 'bio:k6:heilen:tee',
+      prompt: 'Was passiert beim Teeaufguss?',
+      answer: 'Heißes Wasser löst wasserlösliche Stoffe aus der Pflanze',
+      wrong: ['Die Pflanze wird zu Metall', 'Es entsteht immer Giftgas', 'Wasser wird zu Öl'],
+      explanation: 'Ein Aufguss zieht lösliche Wirkstoffe heraus.',
+      wissen:
+        'Beim Teeaufguss lösen heißes Wasser wasserlösliche Stoffe aus Blättern oder Blüten — eine klassische Zubereitung von Heiltee.',
+    },
+    {
+      concept: 'bio:k6:heilen:arznei',
+      prompt: 'Woraus entstehen viele Arzneimittel ursprünglich?',
+      answer: 'Aus pflanzlichen Wirkstoffen (oder deren Nachbau)',
+      wrong: ['Nur aus Plastik', 'Nur aus Sand', 'Nur aus Federfahnen'],
+      explanation: 'Viele Medikamente haben pflanzliche Vorbilder.',
+      wissen:
+        'Viele Arzneistoffe wurden aus Pflanzen isoliert oder nachgebaut. Heilpflanzenwissen ist die historische Grundlage der Pharmakologie.',
+    },
+    {
+      concept: 'bio:k6:heilen:nicht-ersetzen',
+      prompt: 'Ersetzen Hausmittel aus Heilpflanzen immer den Arztbesuch?',
+      answer: 'Nein — bei ernsthaften Beschwerden gehört fachliche Hilfe dazu',
+      wrong: ['Ja, immer', 'Nur bei Fieber über 50 °C', 'Nur nachts'],
+      explanation: 'Heilpflanzen ergänzen, ersetzen aber keine medizinische Diagnose.',
+      wissen:
+        'Heiltee und Hausmittel können leichte Beschwerden lindern, ersetzen aber keine ärztliche Behandlung bei ernsten Erkrankungen.',
+    },
+    {
+      concept: 'bio:k6:heilen:brennnessel',
+      prompt: 'Wofür wird die Brennnessel traditionell genutzt?',
+      answer: 'Als Tee / Wildgemüse mit vielen Mineralstoffen',
+      wrong: ['Als Kiemendeckel', 'Als Schwimmblase', 'Als Federkiel'],
+      explanation: 'Brennnessel enthält Mineralstoffe und wird als Tee oder Gemüse genutzt.',
+      wissen:
+        'Brennnesseln sind mineralstoffreich. Junge Blätter als Tee oder Gemüse — Handschuhe wegen der Brennhaare; nie unbekannte Pflanzen sammeln.',
+    },
+    {
+      concept: 'bio:k6:heilen:lavendel',
+      prompt: 'Welche Wirkung wird Lavendel oft zugeschrieben?',
+      answer: 'Beruhigend / entspannend',
+      wrong: ['Erzeugt Strom', 'Ersetzt Knochen', 'Macht Wasser salzig'],
+      explanation: 'Lavendelduft wird traditionell zur Entspannung genutzt.',
+      wissen:
+        'Lavendel enthält ätherische Öle; Duft und Tee werden traditionell zur Entspannung eingesetzt.',
+    },
+    {
+      concept: 'bio:k6:heilen:giftig',
+      prompt: 'Sind alle Heilpflanzen ungiftig?',
+      answer: 'Nein — manche sind in falscher Dosis giftig',
+      wrong: ['Ja, alle', 'Nur die roten', 'Nur im Winter'],
+      explanation: 'Heil- und Giftwirkung hängen von Art und Menge ab.',
+      wissen:
+        'Auch bekannte Heilpflanzen können bei Überdosierung schaden. Giftpflanzen nie als Tee verwenden.',
     },
   ],
   trueFalse: [
     {
-      concept: 'bio:k6:jede-wildpflanze-darf-bedenkenlos-in-gro',
+      concept: 'bio:k6:heilen:tf-wild',
       statement: 'Jede Wildpflanze darf bedenkenlos in großer Menge eingenommen werden.',
       correct: false,
       explanation: 'Viele Pflanzen sind giftig oder nur in richtiger Dosis wirksam.',
       wissen:
         'Viele Wildpflanzen sind giftig oder nur in richtiger Dosis wirksam — nie bedenkenlos große Mengen einnehmen.',
     },
+    {
+      concept: 'bio:k6:heilen:tf-wirkstoff',
+      statement: 'Heilpflanzen enthalten Wirkstoffe mit biologischer Wirkung.',
+      correct: true,
+      explanation: 'Wirkstoffe beeinflussen den Körper chemisch.',
+      wissen: 'Pflanzliche Wirkstoffe können entzündungshemmend, beruhigend oder verdauungsfördernd wirken.',
+    },
+    {
+      concept: 'bio:k6:heilen:tf-dosis',
+      statement: 'Bei Heiltee gilt: Je mehr Blätter, desto besser — ohne Grenze.',
+      correct: false,
+      explanation: 'Überdosierung kann schaden.',
+      wissen: 'Dosis und Zubereitungshinweise beachten; Kinder brauchen altersgerechte Mengen.',
+    },
+    {
+      concept: 'bio:k6:heilen:tf-arzt',
+      statement: 'Bei starken Schmerzen oder hohem Fieber reicht immer nur Kamillentee.',
+      correct: false,
+      explanation: 'Ernsthafte Symptome brauchen fachliche Hilfe.',
+      wissen: 'Hausmittel ersetzen keine Diagnose — bei starken Beschwerden Erwachsene/Arzt einbeziehen.',
+    },
+    {
+      concept: 'bio:k6:heilen:tf-bestimmung',
+      statement: 'Sichere Pflanzenbestimmung schützt vor Verwechslung mit Giftpflanzen.',
+      correct: true,
+      explanation: 'Bestimmung ist Sicherheit.',
+      wissen: 'Ähnliche Arten können giftig sein — nur sicher bestimmte Pflanzen nutzen.',
+    },
   ],
   pairs: [
     {
       term: 'Wirkstoff',
       meaning: 'Chemische Verbindung mit biologischer Wirkung',
-      wissen: 'Wirkstoffe aus Pflanzen sind die Grundlage vieler Arzneimittel — chemisch wirksam am Organismus.',
+      wissen: 'Wirkstoffe aus Pflanzen sind die Grundlage vieler Arzneimittel.',
     },
     {
       term: 'Teeaufguss',
       meaning: 'Auszug wasserlöslicher Stoffe mit heißem Wasser',
-      wissen: 'Beim Teeaufguss lösen heißes Wasser wasserlösliche Stoffe aus der Pflanze heraus.',
+      wissen: 'Heißes Wasser löst wasserlösliche Stoffe aus der Pflanze.',
+    },
+    {
+      term: 'Heilpflanze',
+      meaning: 'Pflanze mit nutzbaren medizinischen Wirkstoffen',
+      wissen: 'Heilpflanzen werden traditionell und in der Pharmazie genutzt.',
+    },
+    {
+      term: 'Dosis',
+      meaning: 'Menge, die wirkt — zu viel kann schaden',
+      wissen: 'Die richtige Menge entscheidet zwischen Nutzen und Risiko.',
+    },
+    {
+      term: 'Ätherisches Öl',
+      meaning: 'Duftendes Pflanzenöl mit Wirkstoffen',
+      wissen: 'Ätherische Öle stecken z. B. in Minze, Lavendel und Kamille.',
+    },
+    {
+      term: 'Apotheke',
+      meaning: 'Ort für geprüfte Arzneimittel und Beratung',
+      wissen: 'Bei Unsicherheit hilft fachliche Beratung — nicht wild experimentieren.',
     },
   ],
 }
@@ -838,25 +996,191 @@ const heilen: BioBank = {
 const pfuetze: BioBank = {
   quelle: 'Wikipedia: Kleinstlebewesen',
   url: 'https://de.wikipedia.org/wiki/Mikroorganismus',
+  conceptPrefix: 'bio:k6:pfuetze',
   facts: [
     {
-      concept: 'bio:k6:warum-lohnt-der-blick-ins-mikroskop-bei-',
+      concept: 'bio:k6:pfuetze:mikroskop',
       prompt: 'Warum lohnt der Blick ins Mikroskop bei einer Pfütze?',
       answer: 'Dort leben viele Kleinstlebewesen',
       wrong: ['Dort gibt es nur Steine', 'Wasser ist immer steril', 'Nur Säugetiere schwimmen dort'],
       explanation: 'Einzeller und Kleinkrebse u. a. besiedeln Kleingewässer.',
       wissen:
         'In Pfützen leben oft Einzeller und Kleinkrebse — ein kleiner Lebensraum mit großer Vielfalt unter dem Mikroskop.',
+      gap: 'Unter dem Mikroskop sieht man in einer Pfütze viele ___.',
+      gapAccepted: ['Kleinstlebewesen', 'Einzeller', 'Mikroorganismen', 'Kleinkrebse'],
+    },
+    {
+      concept: 'bio:k6:pfuetze:wasserfloh',
+      prompt: 'Was ist ein Wasserfloh (Daphnia)?',
+      answer: 'Ein kleiner Krebstierchen / Planktonorganismus',
+      wrong: ['Ein Säugetier', 'Eine Vogelfeder', 'Ein Stein'],
+      explanation: 'Wasserflöhe sind winzige Krebse und wichtige Planktonfresser.',
+      wissen:
+        'Wasserflöhe (Daphnia) sind kleine Krebse. Sie filtern Algen und Bakterien und sind selbst Nahrung für Fische und Insektenlarven.',
+      gap: 'Der ___ (Daphnia) ist ein kleines Krebstierchen im Plankton.',
+      gapAccepted: ['Wasserfloh', 'Wasserfloh'],
+    },
+    {
+      concept: 'bio:k6:pfuetze:pantoffel',
+      prompt: 'Was ist ein Pantoffeltierchen?',
+      answer: 'Ein Einzeller mit Wimpern (Ciliat)',
+      wrong: ['Ein Fisch', 'Ein Vogel', 'Eine Pflanze mit Wurzeln'],
+      explanation: 'Pantoffeltierchen bewegen sich mit Wimpern und fressen Bakterien.',
+      wissen:
+        'Pantoffeltierchen (Paramecium) sind Einzeller. Wimpern bewegen sie fort; sie fressen Bakterien — klassisches Mikroskopierobjekt.',
+    },
+    {
+      concept: 'bio:k6:pfuetze:augentier',
+      prompt: 'Was kennzeichnet das Augentierchen (Euglena)?',
+      answer: 'Einzeller mit Geißel; kann Photosynthese betreiben',
+      wrong: ['Nur Knochenfisch', 'Nur Federfahne', 'Nur Säugetierherz'],
+      explanation: 'Euglena hat Chloroplasten und eine Geißel.',
+      wissen:
+        'Augentierchen können mit Chloroplasten Photosynthese betreiben und sich mit einer Geißel bewegen — Grenzbereich Pflanze/Tier im Schulunterricht.',
+    },
+    {
+      concept: 'bio:k6:pfuetze:huepferling',
+      prompt: 'Was ist ein Hüpferling (Cyclops)?',
+      answer: 'Ein kleiner Ruderfußkrebs im Plankton',
+      wrong: ['Ein Dinosaurier', 'Eine Baumwurzel', 'Ein Metall'],
+      explanation: 'Hüpferlinge sind Copepoden und oft in Pfützen und Teichen.',
+      wissen:
+        'Hüpferlinge (Cyclops) sind winzige Krebse mit typischem Ruderfuß. Sie gehören zum Zooplankton und fressen kleinere Organismen.',
+    },
+    {
+      concept: 'bio:k6:pfuetze:algen',
+      prompt: 'Welche Rolle spielen Algen in einer Pfütze?',
+      answer: 'Produzenten — erzeugen mit Licht organische Stoffe',
+      wrong: ['Nur Destruenten ohne Licht', 'Nur Säugetiere', 'Nur Gift ohne Funktion'],
+      explanation: 'Algen sind Produzenten am Anfang der Nahrungskette.',
+      wissen:
+        'Algen betreiben Photosynthese und bilden die Basis vieler Nahrungsnetze im Kleingewässer.',
+    },
+    {
+      concept: 'bio:k6:pfuetze:nahrungsnetz',
+      prompt: 'Wer frisst oft Wasserflöhe?',
+      answer: 'Größere Tiere wie Fischlarven oder Insektenlarven',
+      wrong: ['Nur Steine', 'Nur Wolken', 'Nur Federkiele'],
+      explanation: 'Wasserflöhe sind wichtige Beute im Nahrungsnetz.',
+      wissen:
+        'Wasserflöhe verbinden Produzenten (Algen) mit größeren Verbrauchern — zentrale Rolle im Nahrungsnetz der Pfütze/Teiches.',
+    },
+    {
+      concept: 'bio:k6:pfuetze:austrocknung',
+      prompt: 'Was passiert, wenn eine Pfütze austrocknet?',
+      answer: 'Viele Tiere sterben oder überdauern als Dauerstadien',
+      wrong: ['Alles bleibt unverändert', 'Es entstehen sofort Wale', 'Wasser wird zu Metall'],
+      explanation: 'Kleingewässer sind unbeständig — Überdauerungsstadien helfen.',
+      wissen:
+        'Pfützen können austrocknen. Viele Kleinstlebewesen bilden Dauereier oder Zysten und „warten“ auf neues Wasser.',
+    },
+    {
+      concept: 'bio:k6:pfuetze:sauerstoff',
+      prompt: 'Warum kann Sauerstoff in einer warmen Pfütze knapp werden?',
+      answer: 'Warmes Wasser hält weniger Sauerstoff; Abbau verbraucht O₂',
+      wrong: ['Sauerstoff kommt nur aus Steinen', 'Fische atmen Luftsäcke', 'Wasser braucht keinen Sauerstoff'],
+      explanation: 'Temperatur und Zersetzung beeinflussen den Sauerstoffgehalt.',
+      wissen:
+        'Warmes Wasser speichert weniger Sauerstoff. Wenn viele Organismen und Bakterien atmen, kann es zu Sauerstoffmangel kommen.',
+    },
+    {
+      concept: 'bio:k6:pfuetze:einzeller',
+      prompt: 'Was bedeutet „Einzeller“?',
+      answer: 'Lebewesen aus nur einer Zelle',
+      wrong: ['Tier mit genau einem Bein', 'Pflanze ohne Chlorophyll', 'Nur Säugetiere'],
+      explanation: 'Einzeller bestehen aus einer Zelle — z. B. Pantoffeltierchen.',
+      wissen:
+        'Einzeller sind vollständige Lebewesen aus einer Zelle. Unter dem Mikroskop werden Bau und Bewegung sichtbar.',
+      gap: 'Ein ___ besteht aus nur einer Zelle.',
+      gapAccepted: ['Einzeller', 'Einzeller'],
+    },
+    {
+      concept: 'bio:k6:pfuetze:plankton',
+      prompt: 'Was versteht man unter Plankton?',
+      answer: 'Im Wasser schwebende Kleinlebewesen',
+      wrong: ['Nur große Haie', 'Nur Baumstämme', 'Nur Wolken'],
+      explanation: 'Plankton schwebt und treibt mit der Strömung.',
+      wissen:
+        'Plankton umfasst schwebende Pflanzen (Phytoplankton) und Tiere (Zooplankton) — Grundlage vieler Gewässer-Nahrungsnetze.',
+    },
+    {
+      concept: 'bio:k6:pfuetze:beobachtung',
+      prompt: 'Welche Regel gilt beim Untersuchen einer Pfütze?',
+      answer: 'Probe nehmen, Mikroskop nutzen, Lebensraum schonen',
+      wrong: ['Alles ausschütten und zertreten', 'Nur mit dem Auto fahren', 'Ohne Wasser beobachten'],
+      explanation: 'Beobachten ohne den Lebensraum zu zerstören.',
+      wissen:
+        'Kleine Proben reichen. Lebensraum und Tiere schonen — nach dem Betrachten Wasser zurückbringen, wenn möglich.',
     },
   ],
   trueFalse: [
     {
-      concept: 'bio:k6:in-jeder-pfuetze-leben-ausschliesslich-f',
+      concept: 'bio:k6:pfuetze:tf-fische',
       statement: 'In jeder Pfütze leben ausschließlich Fische.',
       correct: false,
       explanation: 'Oft Mikroorganismen und Kleinstkrebse — selten Fische.',
       wissen:
         'Pfützen beherbergen vor allem Mikroorganismen und Kleinstkrebse — Fische brauchen größere, dauerhafte Gewässer.',
+    },
+    {
+      concept: 'bio:k6:pfuetze:tf-leer',
+      statement: 'Eine klare Pfütze ist immer völlig ohne Leben.',
+      correct: false,
+      explanation: 'Auch klares Wasser kann Kleinstlebewesen enthalten.',
+      wissen: 'Viele Organismen sind winzig — erst das Mikroskop zeigt die Vielfalt.',
+    },
+    {
+      concept: 'bio:k6:pfuetze:tf-wasserfloh',
+      statement: 'Wasserflöhe sind kleine Krebse und gehören zum Plankton.',
+      correct: true,
+      explanation: 'Daphnia = Krebstierchen im Plankton.',
+      wissen: 'Wasserflöhe filtern Nahrung aus dem Wasser und sind selbst Beute.',
+    },
+    {
+      concept: 'bio:k6:pfuetze:tf-pantoffel',
+      statement: 'Pantoffeltierchen sind Einzeller mit Wimpern.',
+      correct: true,
+      explanation: 'Ciliaten bewegen sich mit Wimpern.',
+      wissen: 'Pantoffeltierchen fressen Bakterien und sind typische Mikroskopierobjekte.',
+    },
+    {
+      concept: 'bio:k6:pfuetze:tf-produzent',
+      statement: 'Algen in der Pfütze sind Produzenten.',
+      correct: true,
+      explanation: 'Photosynthese erzeugt Biomasse.',
+      wissen: 'Produzenten bilden den Anfang der Nahrungskette im Gewässer.',
+    },
+  ],
+  pairs: [
+    {
+      term: 'Wasserfloh',
+      meaning: 'Kleines Krebstierchen (Daphnia) im Plankton',
+      wissen: 'Wasserflöhe filtern Algen und Bakterien.',
+    },
+    {
+      term: 'Pantoffeltierchen',
+      meaning: 'Einzeller mit Wimpern',
+      wissen: 'Paramecium bewegt sich mit Wimpern und frisst Bakterien.',
+    },
+    {
+      term: 'Hüpferling',
+      meaning: 'Ruderfußkrebs (Cyclops) im Plankton',
+      wissen: 'Hüpferlinge sind winzige Krebse mit Ruderfüßen.',
+    },
+    {
+      term: 'Plankton',
+      meaning: 'Schwebende Kleinlebewesen im Wasser',
+      wissen: 'Plankton treibt mit dem Wasser und ernährt viele Verbraucher.',
+    },
+    {
+      term: 'Einzeller',
+      meaning: 'Lebewesen aus einer Zelle',
+      wissen: 'Viele Pfützenbewohner sind Einzeller.',
+    },
+    {
+      term: 'Produzent',
+      meaning: 'Erzeugt Biomasse (z. B. Algen per Photosynthese)',
+      wissen: 'Produzenten stehen am Anfang des Nahrungsnetzes.',
     },
   ],
 }
@@ -871,6 +1195,45 @@ export const BIOLOGIE_K6_GENERATORS: Record<string, Topic['generate']> = {
   'bi-k6-lb4-wald': bankGenerate(wald),
   'bi-k6-lb5-zellen': bankGenerate(zellen),
   'bi-k6-lbw-heilen': bankGenerate(heilen),
-  'bi-k6-lbw-pfuetze': bankGenerate(pfuetze),
+  'bi-k6-lbw-pfuetze': mixedVariants(
+    bankGenerate(pfuetze),
+    pondPlanktonLabel,
+    pondPlanktonLabel,
+    bankGenerate(pfuetze),
+  ),
   ...BIOLOGIE_K6_WIRBELLOSE_SPECIAL_GENERATORS,
+}
+
+function pondPlanktonLabel(rng: Rng) {
+  const asset = POND_PLANKTON_ASSET
+  const distractors = shuffle(rng, [...asset.distractors]).slice(0, 2)
+  const labels = [...asset.slots.map((s) => s.label), ...distractors]
+  return imageLabelSlotsTask({
+    question:
+      'Benenne die Kleinstkrebse aus der Pfütze. Ziehe die Begriffe in die Felder.',
+    imageSrc: asset.imageSrc,
+    imageAlt: asset.imageAlt,
+    attribution: asset.attribution,
+    drawLeaders: asset.drawLeaders,
+    items: labels.map((label) => ({ label })),
+    slots: asset.slots.map(({ id, x, y, targetX, targetY }) => ({
+      id,
+      x,
+      y,
+      targetX,
+      targetY,
+    })),
+    correctSlots: asset.slots.map((_, i) => i),
+    solution: asset.slots.map((s, i) => `${i + 1}:${s.label}`).join('; '),
+    explanation: asset.slots.map((s) => `${s.label}: ${s.wissen}`).join(' '),
+    instruction: 'Ziehe die Bezeichnungen in die nummerierten Felder auf dem Bild.',
+    fachwissen: bioFw(
+      asset.slots.map((s) => `${s.label} — ${s.functionDe}. ${s.wissen}`).join(' '),
+      asset.fachwissenQuelle,
+      asset.fachwissenUrl,
+    ),
+    contentIds: [`${asset.id}:diagram`],
+    dedupeKey: `imgLabel:${asset.id}:all`,
+    rng,
+  })
 }

@@ -14,6 +14,7 @@ import {
   allBiologieTopicIds,
   BIOLOGIE_K5_WIRBELTIERE_TOPIC_IDS,
   BIOLOGIE_K6_WIRBELLOSE_RELEASED_IDS,
+  BIOLOGIE_K6_WAHL_RELEASED_IDS,
   BIOLOGIE_RELEASED_IDS,
 } from './biologieGymTopics'
 import { isPlayableBiologieTopic, resolveBiologieGenerate } from './biologieGenerators'
@@ -23,7 +24,7 @@ describe('Gymnasium Sachsen Biologie pack', () => {
     const pack = buildGymSachsenBiologiePack()
     expect(pack.id).toBe(GYM_SACHSEN_BIOLOGIE_PACK_ID)
     expect(pack.subject).toBe('Biologie')
-    expect(pack.version).toBe('1.8.2')
+    expect(pack.version).toBe('1.8.3')
     expect(pack.official.map((g) => g.id)).toEqual([
       'biologie-klasse-5',
       'biologie-klasse-6',
@@ -59,6 +60,11 @@ describe('Gymnasium Sachsen Biologie pack', () => {
     }
     for (const id of BIOLOGIE_K6_WIRBELLOSE_RELEASED_IDS) {
       expect(isPlayableBiologieTopic(id)).toBe(true)
+    }
+    for (const id of BIOLOGIE_K6_WAHL_RELEASED_IDS) {
+      expect(isPlayableBiologieTopic(id)).toBe(true)
+      const t = topics.find((x) => x.id === id)
+      expect(t?.released, id).toBe(true)
     }
     expect(pack.extras).toEqual([])
   })

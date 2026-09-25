@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Biologie",
-  "version": "1.8.2",
-  "changelog": "Fortpflanzung Mensch: ♀/♂ Beschriftung mit Wikimedia-Commons-Tafeln (Jmarchn / T. Kebert); Mathsachs-Eigen-Schemata und Gebiss-Typ-Schemas entfernt. Ablenker themenbezogen. 131 Themen.",
+  "version": "1.8.3",
+  "changelog": "Fisch-Aufbau: Slot-Kalibrierung (Auge/Kiemendeckel/Fettflosse/Schwanzflosse), innere Organe (Houseman-Barsch), tolerante Funktions-Clozes; K6 Wahl Weichtiere/Schnecken/Muscheln/Kopffüßer/Heilpflanzen/Pfütze freigegeben; Spinnen-Fachbegriffe deutsch-first; Pfütze Bild+Blöcke. 131 Themen.",
   "official": [
     {
       "id": "biologie-klasse-5",
@@ -754,7 +754,7 @@
               "title": "Spinnen",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Netzbau",
@@ -767,7 +767,7 @@
               "title": "Weichtiere",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Mantel",
@@ -780,7 +780,7 @@
               "title": "Schnecken",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Kriechfuß",
@@ -793,7 +793,7 @@
               "title": "Muscheln",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Schalenklappen",
@@ -805,7 +805,7 @@
               "title": "Kopffüßer",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Tintenfisch",
@@ -818,7 +818,7 @@
               "title": "Pflanzen helfen heilen",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Heilpflanze"
@@ -829,7 +829,7 @@
               "title": "Leben in der Pfütze",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Kleinstlebewesen"
@@ -2081,5 +2081,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "07ee4e94"
+  "contentHash": "eafdf967"
 }
