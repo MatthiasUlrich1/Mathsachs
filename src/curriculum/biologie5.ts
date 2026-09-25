@@ -185,6 +185,10 @@ const SPECIES: { name: string; group: GroupKey; note: string }[] = [
   { name: 'Buchfink', group: 'vogel', note: 'Häufiger Singvogel; Körnerfresser-Anteil' },
   { name: 'Mauersegler', group: 'vogel', note: 'Ausgesprochener Flugjäger; Zugvogel' },
   { name: 'Stockente', group: 'vogel', note: 'Wasservogel; Schwimmhäute' },
+  { name: 'Hausrotschwanz', group: 'vogel', note: 'Singvogel an Gebäuden und Felsen' },
+  { name: 'Blaumeise', group: 'vogel', note: 'Kleiner Höhlenbrüter; Insektenjäger' },
+  { name: 'Buntspecht', group: 'vogel', note: 'Specht; meißelt Insekten aus Holz' },
+  { name: 'Graureiher', group: 'vogel', note: 'Watvogel; jagt Fische an Gewässern' },
   { name: 'Reh', group: 'saeuger', note: 'Pflanzenfresser; Wiederkäuer-Gebiss' },
   { name: 'Fuchs', group: 'saeuger', note: 'Allesfresser; Fell, lebendgebärend' },
   { name: 'Maulwurf', group: 'saeuger', note: 'Grabende Gliedmaßen – Angepasstheit' },
@@ -1011,6 +1015,34 @@ function groupOverviewTf(rng: Rng, group: GroupKey) {
         explanation: 'Federn kennzeichnen Vögel; Schuppen/Hornschicht eher Kriechtiere.',
         wissen: 'Gruppenunterscheidung im Überblick: Federn = Vögel, Hornschicht = Kriechtiere, Fell = Säuger.',
       },
+      {
+        concept: 'bio:k5:vogel:ueberblick:tf-gleichwarm',
+        statement: 'Vögel sind typischerweise gleichwarm.',
+        correct: true,
+        explanation: 'Gleichwarme Tiere halten ihre Körpertemperatur aktiv konstant.',
+        wissen: 'Überblick Vögel: Gleichwarmsein unterstützt Flug und hohen Stoffwechsel.',
+      },
+      {
+        concept: 'bio:k5:vogel:ueberblick:tf-eier',
+        statement: 'Vögel legen typischerweise Eier mit kalkhaltiger Schale.',
+        correct: true,
+        explanation: 'Die meisten Vögel sind eierlegend.',
+        wissen: 'Überblick Fortpflanzung: Vogeleier mit Schale — typisches Gruppenmerkmal.',
+      },
+      {
+        concept: 'bio:k5:vogel:ueberblick:tf-fell',
+        statement: 'Vögel haben typischerweise dichtes Fell statt Federn.',
+        correct: false,
+        explanation: 'Fell kennzeichnet Säugetiere; Vögel haben Federn.',
+        wissen: 'Körperbedeckung im Überblick: Federn = Vögel, Haare/Fell = Säuger.',
+      },
+      {
+        concept: 'bio:k5:vogel:ueberblick:tf-specht',
+        statement: 'Buntspecht und Blaumeise sind Beispiele für Vögel.',
+        correct: true,
+        explanation: 'Beide gehören zu den Vögeln.',
+        wissen: 'Artenkenntnis im Überblick: weitere heimische Vögel korrekt zuordnen.',
+      },
     ],
     saeuger: [
       {
@@ -1781,6 +1813,7 @@ function makeOverviewTopic(group: GroupKey): Topic['generate'] {
     const size = Math.min(5, Math.max(3, species.length))
     const subset = shuffle(rng, species).slice(0, size)
     const concepts = subset.map((s) => `bio:k5:${group}:art:${s.name.toLowerCase()}`)
+    const matchId = `bio:k5:${group}:ueberblick:arten-match:${[...concepts].sort().join('+')}`
     const task = matchTermsTask(rng, {
       question: `Ordne ${size} Arten der Gruppe ${GROUP_LABEL[group]} ihren Kurzinfos zu.`,
       terms: subset.map((s) => s.name),
@@ -1791,9 +1824,11 @@ function makeOverviewTopic(group: GroupKey): Topic['generate'] {
       fachwissen: fw(
         `Überblick ${GROUP_LABEL[group]}: heimische Arten den richtigen Wirbeltiergruppen zuordnen und Kurzinfos kennen.`,
       ),
-      concept: `bio:k5:${group}:ueberblick:arten-match:${[...concepts].sort().join('+')}`,
+      concept: matchId,
     })
-    return { ...task, contentIds: concepts, dedupeKey: concepts.slice().sort().join('+') }
+    // Match-level identity only — do not burn every art:* id, otherwise
+    // overview rounds top out below 10 when species banks are small.
+    return { ...task, contentIds: [matchId], dedupeKey: matchId }
   }
   if (group === 'kriechtier') {
     // Arten-IDs gehören zu kriechtiere-arten — Überblick nur TF + Definition (Bug B).

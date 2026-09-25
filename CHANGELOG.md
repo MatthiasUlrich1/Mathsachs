@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.59] – 2026-09-25
+
+### Behoben
+- **Rundenlänge wirklich 10:** Unique-Dedupe bei Anatomie-Diagrammen (alle Organ-IDs +
+  `term:`) ließ Runden bei 5–9 stecken („Aufgabe 1 von 9“). Vollbild-Labels nutzen jetzt
+  ein Task-`contentId`; `term:` nur noch ohne authored Identities; Vogel-/Fisch-Aufbau-
+  und Überblick-Banken verdichtet. Regression: `practiceRoundLength.test.ts`
+  (u. a. Angepasstheit der Vögel / `bi-k5-lb5-voegel-aufbau` → Länge 10).
+
 ## [0.28.58] – 2026-09-25
 
 ### Hinzugefügt

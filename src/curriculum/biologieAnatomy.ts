@@ -50,6 +50,10 @@ function buildLabelTask(rng: Rng, asset: AnatomyAsset, question: string) {
   const items = labels.map((label) => ({ label }))
   const correctSlots = subset.map((_, i) => i)
   const concepts = subset.map((s) => s.concept)
+  // Full numbered diagrams: one task-level identity so organ-MC/cloze about
+  // individual parts can still fill a 10er-Runde (label ≠ Funktions-MC).
+  // Subset labels keep per-organ contentIds for within-round fact uniqueness.
+  const contentIds = useFixedNumbered ? [`${asset.id}:diagram`] : concepts
   return imageLabelSlotsTask({
     question,
     imageSrc: asset.imageSrc,
@@ -75,7 +79,7 @@ function buildLabelTask(rng: Rng, asset: AnatomyAsset, question: string) {
       asset.fachwissenQuelle,
       asset.fachwissenUrl,
     ),
-    contentIds: concepts,
+    contentIds,
     dedupeKey: useFixedNumbered
       ? `imgLabel:${asset.id}:all`
       : `imgLabel:${asset.id}:${[...concepts].sort().join('+')}`,
@@ -287,6 +291,86 @@ function fishTf(rng: Rng) {
   return buildPartTf(rng, FISH_TROUT_ASSET)
 }
 
+function birdCloze(rng: Rng) {
+  return buildPartCloze(rng, rng() < 0.55 ? BIRD_ORGANS_ASSET : BIRD_AIR_SACS_ASSET)
+}
+
+function birdTf(rng: Rng) {
+  return buildPartTf(rng, rng() < 0.55 ? BIRD_ORGANS_ASSET : BIRD_AIR_SACS_ASSET)
+}
+
+function birdAdaptationExtra(rng: Rng) {
+  const bank = [
+    {
+      concept: 'bio:k5:vogel:aufbau:adapt:gleichwarm',
+      statement: 'Vögel sind gleichwarm und halten ihre Körpertemperatur weitgehend konstant.',
+      correct: true,
+      explanation: 'Gleichwarmsein unterstützt den energieintensiven Flug.',
+      wissen:
+        'Gleichwarme Tiere halten die Körpertemperatur aktiv. Bei Vögeln ermöglicht das dauerhaft hohe Leistung für Flug und Stoffwechsel.',
+    },
+    {
+      concept: 'bio:k5:vogel:aufbau:adapt:luftsaecke',
+      statement: 'Luftsäcke speichern Luft und unterstützen die effiziente Atmung der Vögel.',
+      correct: true,
+      explanation: 'Luftsäcke sind ein Kennzeichen der Vogelatmung.',
+      wissen:
+        'Vordere und hintere Luftsäcke speichern Luft und ermöglichen einen nahezu kontinuierlichen Gasfluss durch die Lunge.',
+    },
+    {
+      concept: 'bio:k5:vogel:aufbau:adapt:kropf',
+      statement: 'Der Kropf speichert und erweicht Nahrung vor der eigentlichen Verdauung.',
+      correct: true,
+      explanation: 'Der Kropf ist ein Vorratsorgan im Verdauungsweg.',
+      wissen: 'Im Kropf wird Nahrung zwischengespeichert und vorgeweicht — Angepasstheit an unregelmäßige Nahrungsaufnahme.',
+    },
+    {
+      concept: 'bio:k5:vogel:aufbau:adapt:muskelmagen',
+      statement: 'Der Muskelmagen zerkleinert Nahrung mechanisch, oft mit aufgenommenen Steinchen.',
+      correct: true,
+      explanation: 'Muskelmagen = mechanische Zerkleinerung.',
+      wissen: 'Viele Vögel haben keinen Kauapparat mit Zähnen; der Muskelmagen übernimmt das Zerkleinern.',
+    },
+    {
+      concept: 'bio:k5:vogel:aufbau:adapt:kloake',
+      statement: 'Die Kloake ist bei Vögeln ein gemeinsamer Ausgang für Darm, Harn- und Geschlechtswege.',
+      correct: true,
+      explanation: 'Kloake = gemeinsamer Ausgang.',
+      wissen: 'Anders als beim Menschen enden mehrere Organsysteme in der Kloake.',
+    },
+    {
+      concept: 'bio:k5:vogel:aufbau:adapt:lungen-tf-falsch',
+      statement: 'Vögel atmen wie Fische ausschließlich über Kiemen.',
+      correct: false,
+      explanation: 'Vögel atmen mit Lunge und Luftsäcken, nicht mit Kiemen.',
+      wissen: 'Atmung der Vögel: Lunge plus Luftsäcke — keine Kiemenatmung.',
+    },
+    {
+      concept: 'bio:k5:vogel:aufbau:adapt:herz-tf',
+      statement: 'Das Herz treibt den Blutkreislauf der Vögel an.',
+      correct: true,
+      explanation: 'Das Herz pumpt das Blut durch den Körper.',
+      wissen: 'Vögel haben ein leistungsfähiges Herz für den hohen Sauerstoffbedarf beim Fliegen.',
+    },
+    {
+      concept: 'bio:k5:vogel:aufbau:adapt:druesenmagen',
+      statement: 'Im Drüsenmagen wird Nahrung vor allem chemisch verdaut.',
+      correct: true,
+      explanation: 'Drüsenmagen = chemische Verdauung.',
+      wissen: 'Verdauungssäfte im Drüsenmagen bereiten die Nahrung für den Muskelmagen vor.',
+    },
+  ]
+  const c = pick(rng, bank)
+  return trueFalse(rng, {
+    statement: c.statement,
+    correct: c.correct,
+    explanation: c.explanation,
+    fachwissen: bioFw(c.wissen, 'Wikipedia: Vögel', 'https://de.wikipedia.org/wiki/V%C3%B6gel'),
+    dedupeKey: c.concept,
+    contentIds: [c.concept],
+  })
+}
+
 function birdLabel(rng: Rng) {
   return buildLabelTask(
     rng,
@@ -449,28 +533,90 @@ function skeletonGliederungMatch(rng: Rng) {
   })
 }
 
+function fishAdaptationExtra(rng: Rng) {
+  const bank = [
+    {
+      concept: 'bio:k5:fisch:aufbau:adapt:kiemen',
+      statement: 'Fische nehmen Sauerstoff aus dem Wasser über die Kiemen auf.',
+      correct: true,
+      explanation: 'Kiemen sind das Atmungsorgan der Fische.',
+      wissen: 'Wasser strömt über die Kiemen; dort diffundiert Sauerstoff ins Blut.',
+    },
+    {
+      concept: 'bio:k5:fisch:aufbau:adapt:seitenlinie',
+      statement: 'Die Seitenlinie hilft Fischen, Strömung und Bewegungen im Wasser wahrzunehmen.',
+      correct: true,
+      explanation: 'Seitenlinie = Sinnesorgan für Wasserbewegungen.',
+      wissen: 'Über die Seitenlinie registrieren Fische Druckwellen — wichtig für Orientierung und Beutefang.',
+    },
+    {
+      concept: 'bio:k5:fisch:aufbau:adapt:flossen',
+      statement: 'Flossen dienen Vortrieb, Steuerung und Stabilität beim Schwimmen.',
+      correct: true,
+      explanation: 'Flossen sind Bewegungsorgane.',
+      wissen: 'Verschiedene Flossenarten übernehmen Antrieb, Steuerung und Stabilisierung.',
+    },
+    {
+      concept: 'bio:k5:fisch:aufbau:adapt:lungen-falsch',
+      statement: 'Knochenfische atmen typischerweise mit einer Lunge an Land.',
+      correct: false,
+      explanation: 'Fische atmen über Kiemen im Wasser.',
+      wissen: 'Kiemenatmung ist die typische Angepasstheit der Fische an das Wasserleben.',
+    },
+    {
+      concept: 'bio:k5:fisch:aufbau:adapt:stromlinie',
+      statement: 'Die Stromlinienform verringert den Wasserwiderstand.',
+      correct: true,
+      explanation: 'Stromlinienform spart Energie beim Schwimmen.',
+      wissen: 'Körperbau und Schwimmen: Stromlinienform ist eine Angepasstheit an das Wasser.',
+    },
+    {
+      concept: 'bio:k5:fisch:aufbau:adapt:auge',
+      statement: 'Das Auge dient dem Sehen und der Orientierung unter Wasser.',
+      correct: true,
+      explanation: 'Augen sind wichtige Sinnesorgane der Fische.',
+      wissen: 'Fische nutzen das Auge zur Orientierung und zum Beutefang im Wasser.',
+    },
+  ]
+  const c = pick(rng, bank)
+  return trueFalse(rng, {
+    statement: c.statement,
+    correct: c.correct,
+    explanation: c.explanation,
+    fachwissen: bioFw(c.wissen, 'Wikipedia: Fische', 'https://de.wikipedia.org/wiki/Fische'),
+    dedupeKey: c.concept,
+    contentIds: [c.concept],
+  })
+}
+
 /** K5 LB2 — Aufbau des Fisches (Freigabe nach Auge-Toleranz + 10er-Runde). */
 export const biFischeAufbau: Topic['generate'] = mixedVariants(
-  fishLabel,
   fishLabel,
   fishFunctions,
   fishFnMc,
   fishCloze,
   fishEyeClozePartial,
   fishTf,
-  fishFunctions,
+  fishAdaptationExtra,
+  fishFnMc,
+  fishTf,
+  fishAdaptationExtra,
 )
 
-/** K5 LB5 — Aufbau des Vogels (Organe + Luftsäcke). */
+/** K5 LB5 — Aufbau des Vogels (Organe + Luftsäcke). Pool ≥10 unique für 10er-Runden. */
 export const biVoegelAufbau: Topic['generate'] = mixedVariants(
-  birdLabel,
   birdLabel,
   birdAirSacsLabel,
   birdFunctions,
   birdAirSacsMatch,
   birdFnMc,
   birdAirSacsMc,
-  birdFunctions,
+  birdCloze,
+  birdTf,
+  birdAdaptationExtra,
+  birdFnMc,
+  birdAirSacsMc,
+  birdAdaptationExtra,
 )
 
 /** Federaufbau image+blocks — mix into Flug/Federkleid. */

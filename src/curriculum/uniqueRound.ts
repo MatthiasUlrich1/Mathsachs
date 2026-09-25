@@ -97,33 +97,39 @@ export function taskContentIds(task: Task): string[] {
     ids.add(`ans:${sol}`)
   }
 
-  // Item-level identities for pairing / slot tasks (Begriff uniqueness).
-  const ix = task.interactive
-  if (ix?.type === 'pairMatch') {
-    const left = (ix.props?.left as Array<{ label?: string }> | undefined) ?? []
-    for (const l of left) {
-      const term = normalizeTaskText(l.label ?? '')
-      if (term) ids.add(`term:${term}`)
+  // Item-level term identities only when the task has no authored contentIds /
+  // dedupeKey. Anatomy label/match tasks already list concepts — also marking
+  // every drag label as `term:` collapses a rich pool (e.g. Vogel-Aufbau) to
+  // ≤9 unique slots and silently ships short rounds.
+  const hasAuthoredIdentity =
+    Boolean(dedupe) || (task.contentIds ?? []).some((c) => c.trim())
+  if (!hasAuthoredIdentity) {
+    const ix = task.interactive
+    if (ix?.type === 'pairMatch') {
+      const left = (ix.props?.left as Array<{ label?: string }> | undefined) ?? []
+      for (const l of left) {
+        const term = normalizeTaskText(l.label ?? '')
+        if (term) ids.add(`term:${term}`)
+      }
     }
-  }
-  if (ix?.type === 'dragDropSlots') {
-    const items = (ix.props?.items as Array<{ label?: string }> | undefined) ?? []
-    for (const it of items) {
-      const term = normalizeTaskText(it.label ?? '')
-      // Skip obvious distractors / short junk
-      if (term && term.length >= 3) ids.add(`term:${term}`)
+    if (ix?.type === 'dragDropSlots') {
+      const items = (ix.props?.items as Array<{ label?: string }> | undefined) ?? []
+      for (const it of items) {
+        const term = normalizeTaskText(it.label ?? '')
+        if (term && term.length >= 3) ids.add(`term:${term}`)
+      }
+      const slotLabels = (ix.props?.slotLabels as string[] | undefined) ?? []
+      for (const label of slotLabels) {
+        const term = normalizeTaskText(label)
+        if (term && term.length >= 3) ids.add(`term:${term}`)
+      }
     }
-    const slotLabels = (ix.props?.slotLabels as string[] | undefined) ?? []
-    for (const label of slotLabels) {
-      const term = normalizeTaskText(label)
-      if (term && term.length >= 3) ids.add(`term:${term}`)
-    }
-  }
-  if (ix?.type === 'imageLabelSlots') {
-    const items = (ix.props?.items as Array<{ label?: string }> | undefined) ?? []
-    for (const it of items) {
-      const term = normalizeTaskText(it.label ?? '')
-      if (term && term.length >= 3) ids.add(`term:${term}`)
+    if (ix?.type === 'imageLabelSlots') {
+      const items = (ix.props?.items as Array<{ label?: string }> | undefined) ?? []
+      for (const it of items) {
+        const term = normalizeTaskText(it.label ?? '')
+        if (term && term.length >= 3) ids.add(`term:${term}`)
+      }
     }
   }
 

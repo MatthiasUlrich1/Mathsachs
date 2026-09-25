@@ -10,13 +10,16 @@ alwaysApply: false
 
 - **`tasksPerRound` default = 10** — Mathe, Physik, Biologie, Geschichte, Oberschule, Sekundarschule, …
 - Aufgaben einer Übungsrunde werden **zufällig** aus dem Topic-Pool gezogen.
-- Innerhalb einer Runde: Unique/Dedupe wie bisher (`uniqueRound`) — Qualität bei großen Pools nicht aufweichen.
+- Innerhalb einer Runde: Unique/Dedupe über `contentIds` / `dedupeKey` (`uniqueRound`).
+- **Produktregel:** Runden müssen **Länge 10** erreichen, sobald der Unique-Pool ≥ 10 ist.
+  Banken so verdichten (oder Identitäten so setzen), dass Dedupe nicht bei 8–9 stecken bleibt.
+  Diagramm-Aufgaben: Vollbild = ein Task-`contentId`, nicht alle Organ-IDs verbrennen.
 
 ## Einzige Ausnahme
 
-- Wenn ein Thema **weniger als 10 unique** Aufgaben hat → `tasksPerRound = Poolgröße`.
+- Wenn ein Thema **weniger als 10 unique** Aufgaben hat → kürzere Runde = Poolgröße.
 - **Nie** Padding erfinden (keine Duplikate nur um 10 zu erreichen).
-- Bewusste Overrides `< 10` nur mit Begründung (z. B. Jahreszahlen-Fakten mit bekannt kleinem Pool: `Math.min(10, POOL_COUNT)`).
+- Bewusste Overrides `< 10` nur mit Begründung (z. B. Jahreszahlen-Fakten: `Math.min(10, POOL_COUNT)`).
 
 ## Pack-Topic-Helper
 
@@ -27,10 +30,11 @@ tasksPerRound: opts?.tasksPerRound ?? DEFAULT_TASKS_PER_ROUND
 ```
 
 - Keine willkürlichen Defaults wie `5`.
-- Laufzeit-Fallback: `resolveTasksPerRound` in der Practice-Session (auch für gebündelte Mathe-Topics ohne Pack-Feld).
+- Laufzeit: `resolveTasksPerRound` + `buildUniqueTaskRound` (target 10).
 
 ## Checkliste neue Themen
 
-1. Pool ≥ 10 unique Facts/Stämme anstreben, damit Runden Länge 10 erreichen.
+1. Pool ≥ 10 **echt unique** Facts/Stämme — mit `buildUniqueTaskRound(..., 10)` gegen mehrere Seeds prüfen.
 2. `tasksPerRound` nur setzen, wenn Override nötig (Pool &lt; 10 oder bewusst höher, max. 30).
 3. Nach Pack-Änderungen Curricula exportieren (`scripts/export-curriculum-pack.ts`).
+4. Regression: `practiceRoundLength.test.ts` (Bio K5 Aufbau/Überblick).
