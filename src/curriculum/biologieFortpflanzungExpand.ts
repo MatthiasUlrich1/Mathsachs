@@ -235,7 +235,7 @@ function kriechFpMatch(rng: Rng): Task {
   })
 }
 
-function kriechFpCloze(rng: Rng): Task {
+function kriechFpCloze(_rng: Rng): Task {
   return clozeBlanksTask({
     question: 'Ergänze: Fortpflanzung der Kriechtiere.',
     template:

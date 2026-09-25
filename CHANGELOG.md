@@ -9,6 +9,11 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.53] – 2026-09-25
+
+### Behoben
+- **Installer-CI:** unbenutztes `rng` in `kriechFpCloze` (tsc).
+
 ## [0.28.52] – 2026-09-25
 
 ### Behoben
