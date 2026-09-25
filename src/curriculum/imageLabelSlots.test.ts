@@ -105,6 +105,25 @@ describe('Biologie anatomy topics', () => {
           expect(String(task.interactive.props.attribution).length).toBeGreaterThan(20)
           expect(Array.isArray(task.interactive.props.slots)).toBe(true)
           expect((task.interactive.props.slots as unknown[]).length).toBeGreaterThan(3)
+          if (id === 'bi-k5-lb5-voegel-aufbau') {
+            expect((task.interactive.props.slots as unknown[]).length).toBe(8)
+            const items = task.interactive.props.items as Array<{ label: string }>
+            const labels = items.map((i) => i.label)
+            expect(labels).toEqual(
+              expect.arrayContaining([
+                'Kropf',
+                'Herz',
+                'Leber',
+                'Kloake',
+                'Darm',
+                'Muskelmagen',
+                'Drüsenmagen',
+                'Lunge',
+              ]),
+            )
+            // Fish organs may appear as distractors, but all 8 bird organs are required.
+            expect(labels.filter((l) => l === 'Kieme' || l === 'Schwimmblase').length).toBeLessThanOrEqual(2)
+          }
         }
       }
       expect(sawImage).toBe(true)

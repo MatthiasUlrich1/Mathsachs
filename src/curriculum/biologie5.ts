@@ -1021,18 +1021,19 @@ function groupOverviewTf(rng: Rng, group: GroupKey) {
         wissen: 'Überblick: Säugetiere sind eine Wirbeltiergruppe mit Fell und Säugen der Nachkommen.',
       },
       {
-        concept: 'bio:k5:saeuger:ueberblick:tf-vogel',
-        statement: 'Reh und Fuchs sind Vögel.',
-        correct: false,
-        explanation: 'Reh und Fuchs sind Säugetiere.',
-        wissen: 'Artenkenntnis im Überblick: heimische Beispiele den richtigen Wirbeltiergruppen zuordnen.',
-      },
-      {
         concept: 'bio:k5:saeuger:ueberblick:tf-milch',
         statement: 'Säugetiere ernähren ihre Jungen typischerweise mit Milch.',
         correct: true,
         explanation: 'Säugen ist namengebend für die Gruppe.',
         wissen: 'Überblick Säuger: Milchdrüsen ernähren die Jungen — darum heißt die Gruppe Säugetiere.',
+      },
+      {
+        concept: 'bio:k5:saeuger:ueberblick:tf-gleichwarm',
+        statement: 'Säugetiere sind typischerweise gleichwarm und halten eine hohe Körpertemperatur.',
+        correct: true,
+        explanation: 'Gleichwarmsein ist ein zentrales Säugermerkmal neben Fell und Säugen.',
+        wissen:
+          'Überblick Säuger: Gleichwarm, Haare/Fell und Säugen der Jungen kennzeichnen die Gruppe gegenüber wechselwarmen Wirbeltieren.',
       },
       {
         concept: 'bio:k5:saeuger:ueberblick:tf-laich',
@@ -1955,13 +1956,13 @@ export const biSaeugetiere = biSaeugetiereOverview
 // ─── LB7 Systematisierung — classification tree / feature matrix ─────────────
 
 function systematikClassify(rng: Rng) {
-  const sample = shuffle(rng, SPECIES).slice(0, 4)
-  const groups = [...new Set(sample.map((s) => s.group))]
-  // Ensure slots cover the groups present
-  const slotKeys = shuffle(rng, groups)
+  // Genau eine Art pro Gruppe → slotLabels.length === Slotanzahl (sonst nur Nummern 1–4).
+  const allGroups = Object.keys(GROUP_LABEL) as GroupKey[]
+  const slotKeys = shuffle(rng, allGroups).slice(0, 4)
+  const sample = slotKeys.map((g) => pick(rng, SPECIES.filter((s) => s.group === g)))
   const slotLabels = slotKeys.map((g) => GROUP_LABEL[g])
   const itemLabels = sample.map((s) => s.name)
-  const correctSlots = sample.map((s) => slotKeys.indexOf(s.group))
+  const correctSlots = sample.map((_, i) => i)
   return classifySlotsTask(rng, {
     question: 'Ordne die Arten der richtigen Wirbeltiergruppe zu (Klassifikation).',
     slotLabels,
@@ -1973,7 +1974,8 @@ function systematikClassify(rng: Rng) {
     fachwissen: fw(
       'Systematisierung: Vergleiche Struktur, Funktion und Angepasstheit der Wirbeltiergruppen.',
     ),
-    instruction: 'Klassifikationsbaum als Fächer: Ziehe jede Art in die passende Gruppe. Einen Block brauchst du nicht.',
+    instruction:
+      'Klassifikationsbaum als Fächer: Ziehe jede Art in die passende Wirbeltiergruppe. Einen Block brauchst du nicht.',
   })
 }
 

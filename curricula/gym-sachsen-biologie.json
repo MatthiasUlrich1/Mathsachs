@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Biologie",
-  "version": "1.4.1",
-  "changelog": "K5 Fische: Raub-/Friedfisch + Fortpflanzung verdichtet. Aufbau Fisch/Vogel (imageLabelSlots). 127 Themen; Rest Entwickler (released:false).",
+  "version": "1.5.0",
+  "changelog": "K5 Freigabe (Merkmale, Fische, Lurche/Kriechtiere Überblick+Merkmale, Vögel Überblick, Systematik, Wahl). Bugs: Fisch-Lücke äußere Befruchtung, Vogel-Beschriftung, Klassifikation-Slotlabels, Säuger-TF. Neue Themen Lurche/Kriechtiere-Fortpflanzung. 129 Themen; Rest Entwickler (released:false).",
   "official": [
     {
       "id": "biologie-klasse-5",
@@ -33,7 +33,7 @@
               "title": "Merkmale des Lebens – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Reizbarkeit",
@@ -47,7 +47,7 @@
               "title": "Kennzeichen der Lebewesen",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Kennzeichen",
@@ -67,7 +67,7 @@
               "title": "Fische – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Kiemen",
@@ -94,7 +94,7 @@
               "title": "Fische – Merkmale und Angepasstheit",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Kiemen",
@@ -107,7 +107,7 @@
               "title": "Fische – Lebensraum und Vielfalt",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Süßwasser",
@@ -122,7 +122,7 @@
               "title": "Fische – Fortpflanzung und Schutz",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Laich",
@@ -143,7 +143,7 @@
               "title": "Lurche – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Amphibien",
@@ -156,7 +156,7 @@
               "title": "Lurche – Merkmale und Haut",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Hautatmung",
@@ -174,6 +174,20 @@
                 "Kaulquappe",
                 "Laich",
                 "Metamorphose"
+              ]
+            },
+            {
+              "id": "bi-k5-lb3-lurche-fortpflanzung",
+              "title": "Lurche – Fortpflanzung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Laich",
+                "Äußere Befruchtung",
+                "Laichgewässer",
+                "Kaulquappe"
               ]
             },
             {
@@ -200,7 +214,7 @@
               "title": "Kriechtiere – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Reptilien",
@@ -213,7 +227,7 @@
               "title": "Kriechtiere – Merkmale und Landleben",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Schuppen",
@@ -226,12 +240,26 @@
               "title": "Kriechtiere – heimische Arten",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Eidechse",
                 "Schlange",
                 "Schildkröte"
+              ]
+            },
+            {
+              "id": "bi-k5-lb4-kriechtiere-fortpflanzung",
+              "title": "Kriechtiere – Fortpflanzung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Innere Befruchtung",
+                "Schalenei",
+                "Dotter",
+                "Eiablage"
               ]
             }
           ]
@@ -246,7 +274,7 @@
               "title": "Vögel – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Federn",
@@ -363,7 +391,7 @@
               "title": "Wirbeltiere vergleichen",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Systematik",
@@ -394,7 +422,7 @@
               "title": "Wirbeltiere im Winter",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Winterschlaf",
@@ -408,7 +436,7 @@
               "title": "Kriechtiere vergangener Zeiten",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Saurier",
@@ -420,7 +448,7 @@
               "title": "Artgerechte Tierhaltung",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Aquarium",
@@ -2022,5 +2050,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "0d75b249"
+  "contentHash": "210736da"
 }

@@ -28,6 +28,13 @@ import {
   buildLurcheMetaDense,
   buildVoegelFortpflanzungDense,
 } from './biologieFischeDense'
+import {
+  biKriechtiereFortpflanzung,
+  biLurcheFortpflanzung,
+  buildSaeugerSchutzDense,
+  buildSaeugerUeberblickDense,
+  buildVoegelFlugDense,
+} from './biologieFortpflanzungExpand'
 import type { Rng } from '../lib/rng'
 import type { BioBank } from './biologieBank'
 
@@ -394,6 +401,7 @@ export const BIOLOGIE_K5_EXPANDED: Record<string, Topic['generate']> = {
     groupFlash('lurch'),
   ),
   'bi-k5-lb3-lurche-meta': buildLurcheMetaDense(BASE_K5['bi-k5-lb3-lurche-meta']!),
+  'bi-k5-lb3-lurche-fortpflanzung': biLurcheFortpflanzung,
   'bi-k5-lb3-lurche-schutz': BASE_K5['bi-k5-lb3-lurche-schutz']!,
   'bi-k5-lb4-kriechtiere': withTopicUx(
     BASE_K5['bi-k5-lb4-kriechtiere'],
@@ -404,22 +412,24 @@ export const BIOLOGIE_K5_EXPANDED: Record<string, Topic['generate']> = {
     groupFlash('kriechtier'),
   ),
   'bi-k5-lb4-kriechtiere-arten': BASE_K5['bi-k5-lb4-kriechtiere-arten']!,
+  'bi-k5-lb4-kriechtiere-fortpflanzung': biKriechtiereFortpflanzung,
   'bi-k5-lb5-voegel': withTopicUx(BASE_K5['bi-k5-lb5-voegel'], iconsForGroup('vogel')),
   'bi-k5-lb5-voegel-aufbau': BIOLOGIE_ANATOMY_GENERATORS['bi-k5-lb5-voegel-aufbau']!,
-  'bi-k5-lb5-voegel-flug': withTopicUx(BASE_K5['bi-k5-lb5-voegel-flug'], groupFlash('vogel')),
+  'bi-k5-lb5-voegel-flug': buildVoegelFlugDense(
+    withTopicUx(BASE_K5['bi-k5-lb5-voegel-flug'], groupFlash('vogel')),
+  ),
   'bi-k5-lb5-voegel-fortpflanzung': buildVoegelFortpflanzungDense(
     BASE_K5['bi-k5-lb5-voegel-fortpflanzung']!,
   ),
-  'bi-k5-lb6-saeugetiere': withTopicUx(
-    BASE_K5['bi-k5-lb6-saeugetiere'],
-    iconsForGroup('saeuger'),
+  'bi-k5-lb6-saeugetiere': buildSaeugerUeberblickDense(
+    withTopicUx(BASE_K5['bi-k5-lb6-saeugetiere'], iconsForGroup('saeuger')),
   ),
   'bi-k5-lb6-saeuger-merkmale': withTopicUx(
     BASE_K5['bi-k5-lb6-saeuger-merkmale'],
     groupFlash('saeuger'),
   ),
   'bi-k5-lb6-saeuger-angepasst': BASE_K5['bi-k5-lb6-saeuger-angepasst']!,
-  'bi-k5-lb6-saeuger-schutz': BASE_K5['bi-k5-lb6-saeuger-schutz']!,
+  'bi-k5-lb6-saeuger-schutz': buildSaeugerSchutzDense(BASE_K5['bi-k5-lb6-saeuger-schutz']!),
   // Systematik = Lehrplan-Klassifikation; Zuordnung = Merkmalsvergleich UX — disjoint.
   'bi-k5-lb7-systematik': BASE_K5['bi-k5-lb7-systematik']!,
   'bi-k5-lb7-zuordnung': vertebrateCompareUx,

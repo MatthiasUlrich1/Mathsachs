@@ -19,12 +19,14 @@ const SIBLING_FAMILIES: string[][] = [
     'bi-k5-lb3-lurche',
     'bi-k5-lb3-lurche-merkmale',
     'bi-k5-lb3-lurche-meta',
+    'bi-k5-lb3-lurche-fortpflanzung',
     'bi-k5-lb3-lurche-schutz',
   ],
   [
     'bi-k5-lb4-kriechtiere',
     'bi-k5-lb4-kriechtiere-merkmale',
     'bi-k5-lb4-kriechtiere-arten',
+    'bi-k5-lb4-kriechtiere-fortpflanzung',
   ],
   [
     'bi-k5-lb5-voegel',

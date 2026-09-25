@@ -246,11 +246,13 @@ export const DragDropSlots: React.FC<DragDropSlotsProps> = ({
             )}
           </div>
         </div>
-      ) : slotLabels && slotLabels.length === slots.length ? (
+      ) : slotLabels && slotLabels.length > 0 ? (
         <div className="drag-drop-slots__match" aria-label="Zuordnung Begriff → Erklärung">
           {slots.map((_, slotIdx) => (
             <div key={`match-${slotIdx}`} className="drag-drop-slots__match-row">
-              <div className="drag-drop-slots__match-term">{slotLabels[slotIdx]}</div>
+              <div className="drag-drop-slots__match-term">
+                {slotLabels[slotIdx]?.trim() || `Gruppe ${slotIdx + 1}`}
+              </div>
               {renderSlot(slotIdx, '→')}
             </div>
           ))}

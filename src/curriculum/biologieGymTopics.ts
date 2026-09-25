@@ -67,19 +67,19 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Stoffwechsel',
             'Fortpflanzung',
             'Bewegung',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb1-kennzeichen', 'Kennzeichen der Lebewesen', [
             'Kennzeichen',
             'Lebewesen',
             'Stoffwechsel',
-          ]),
+          ], { released: true }),
         ]),
         area('lb2', 'Fische in ihren Lebensräumen', 8, [
           topic('bi-k5-lb2-fische', 'Fische – Überblick', [
             'Kiemen',
             'Flossen',
             'Stromlinienform',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb2-fische-aufbau', 'Aufbau des Fisches', [
             'Körperbau',
             'Flossen',
@@ -90,35 +90,41 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Kiemen',
             'Schuppen',
             'Seitenlinie',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb2-fische-lebensraum', 'Fische – Lebensraum und Vielfalt', [
             'Süßwasser',
             'Salzwasser',
             'Gewässer',
             'Raubfisch',
             'Friedfisch',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb2-fische-schutz', 'Fische – Fortpflanzung und Schutz', [
             'Laich',
             'Gewässerschutz',
             'Befruchtung',
             'Rogen',
-          ]),
+          ], { released: true }),
         ]),
         area('lb3', 'Lurche in ihren Lebensräumen', 7, [
           topic('bi-k5-lb3-lurche', 'Lurche – Überblick', [
             'Amphibien',
             'Metamorphose',
             'Hautatmung',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb3-lurche-merkmale', 'Lurche – Merkmale und Haut', [
             'Hautatmung',
             'Feuchte Haut',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb3-lurche-meta', 'Lurche – Metamorphose', [
             'Kaulquappe',
             'Laich',
             'Metamorphose',
+          ]),
+          topic('bi-k5-lb3-lurche-fortpflanzung', 'Lurche – Fortpflanzung', [
+            'Laich',
+            'Äußere Befruchtung',
+            'Laichgewässer',
+            'Kaulquappe',
           ]),
           topic('bi-k5-lb3-lurche-schutz', 'Lurche – Lebensraum und Schutz', [
             'Amphibienschutz',
@@ -130,16 +136,22 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Reptilien',
             'Hornschicht',
             'Lungen',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb4-kriechtiere-merkmale', 'Kriechtiere – Merkmale und Landleben', [
             'Schuppen',
             'Eiablage',
             'Poikilotherm',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb4-kriechtiere-arten', 'Kriechtiere – heimische Arten', [
             'Eidechse',
             'Schlange',
             'Schildkröte',
+          ], { released: true }),
+          topic('bi-k5-lb4-kriechtiere-fortpflanzung', 'Kriechtiere – Fortpflanzung', [
+            'Innere Befruchtung',
+            'Schalenei',
+            'Dotter',
+            'Eiablage',
           ]),
         ]),
         area('lb5', 'Vögel in ihren Lebensräumen', 9, [
@@ -147,7 +159,7 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Federn',
             'Luftsäcke',
             'Schnabel',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb5-voegel-aufbau', 'Aufbau des Vogels', [
             'Körperbau',
             'Kropf',
@@ -190,7 +202,7 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Systematik',
             'Vergleich',
             'Atmung',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb7-zuordnung', 'Wirbeltiere zuordnen (Merkmale → Gruppe)', [
             'Zuordnung',
             'Merkmale',
@@ -202,16 +214,16 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Winterruhe',
             'Kältestarre',
             'Vogelzug',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lbw-saurier', 'Kriechtiere vergangener Zeiten', [
             'Saurier',
             'Fossilien',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('bi-k5-lbw-haltung', 'Artgerechte Tierhaltung', [
             'Aquarium',
             'Terrarium',
             'Tierschutz',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
         ]),
       ],
     ),
@@ -756,6 +768,32 @@ export const BIOLOGIE_K6_WIRBELLOSE_RELEASED_IDS = [
   'bi-k6-lb2-nesseltiere',
 ] as const
 
+/** K5 Themen laut Freigabeliste (Bild 5) — freigegeben. */
+export const BIOLOGIE_K5_RELEASED_IDS = [
+  'bi-k5-lb1-merkmale',
+  'bi-k5-lb1-kennzeichen',
+  'bi-k5-lb2-fische',
+  'bi-k5-lb2-fische-merkmale',
+  'bi-k5-lb2-fische-lebensraum',
+  'bi-k5-lb2-fische-schutz',
+  'bi-k5-lb3-lurche',
+  'bi-k5-lb3-lurche-merkmale',
+  'bi-k5-lb4-kriechtiere',
+  'bi-k5-lb4-kriechtiere-merkmale',
+  'bi-k5-lb4-kriechtiere-arten',
+  'bi-k5-lb5-voegel',
+  'bi-k5-lb7-systematik',
+  'bi-k5-lbw-winter',
+  'bi-k5-lbw-saurier',
+  'bi-k5-lbw-haltung',
+] as const
+
+/** Alle aktuell freigegebenen Bio-Themen (K5 + K6 Wirbellose). */
+export const BIOLOGIE_RELEASED_IDS = [
+  ...BIOLOGIE_K5_RELEASED_IDS,
+  ...BIOLOGIE_K6_WIRBELLOSE_RELEASED_IDS,
+] as const
+
 /** Playable K5 Wirbeltiere + Wahl topic ids (legacy + expanded). */
 export const BIOLOGIE_K5_WIRBELTIERE_TOPIC_IDS = [
   'bi-k5-lb1-merkmale',
@@ -768,10 +806,12 @@ export const BIOLOGIE_K5_WIRBELTIERE_TOPIC_IDS = [
   'bi-k5-lb3-lurche',
   'bi-k5-lb3-lurche-merkmale',
   'bi-k5-lb3-lurche-meta',
+  'bi-k5-lb3-lurche-fortpflanzung',
   'bi-k5-lb3-lurche-schutz',
   'bi-k5-lb4-kriechtiere',
   'bi-k5-lb4-kriechtiere-merkmale',
   'bi-k5-lb4-kriechtiere-arten',
+  'bi-k5-lb4-kriechtiere-fortpflanzung',
   'bi-k5-lb5-voegel',
   'bi-k5-lb5-voegel-aufbau',
   'bi-k5-lb5-voegel-flug',

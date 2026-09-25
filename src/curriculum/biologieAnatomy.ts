@@ -19,9 +19,18 @@ import type { Topic } from './types'
 const shufflePool = <T,>(rng: Rng, arr: readonly T[]): T[] => shuffle(rng, [...arr])
 
 function buildLabelTask(rng: Rng, asset: AnatomyAsset, question: string) {
-  const size = Math.min(asset.slots.length, rng() < 0.45 ? 6 : 7)
-  const subset = shufflePool(rng, asset.slots).slice(0, size)
-  const distractorCount = Math.min(2, asset.distractors.length)
+  // Vorgezeichnete Nummernfelder (drawLeaders:false): immer alle Slots in Bildreihenfolge,
+  // damit Drop-Felder exakt auf 1…n liegen und keine Organe fehlen.
+  const useFixedNumbered = !asset.drawLeaders
+  const subset = useFixedNumbered
+    ? [...asset.slots]
+    : shufflePool(rng, asset.slots).slice(
+        0,
+        Math.min(asset.slots.length, rng() < 0.45 ? 6 : 7),
+      )
+  const distractorCount = useFixedNumbered
+    ? Math.min(2, asset.distractors.length)
+    : Math.min(2, asset.distractors.length)
   const distractors = shufflePool(rng, asset.distractors).slice(0, distractorCount)
   const labels = [...subset.map((s) => s.label), ...distractors]
   const items = labels.map((label) => ({ label }))
@@ -44,15 +53,18 @@ function buildLabelTask(rng: Rng, asset: AnatomyAsset, question: string) {
     correctSlots,
     solution: subset.map((s, i) => `${i + 1}:${s.label}`).join('; '),
     explanation: subset.map((s) => `${s.label}: ${s.wissen}`).join(' '),
-    instruction:
-      'Ziehe die Bezeichnungen in die Felder. Die Linien zeigen auf die Körperregion.',
+    instruction: useFixedNumbered
+      ? 'Ziehe die Bezeichnungen in die nummerierten Felder auf dem Bild.'
+      : 'Ziehe die Bezeichnungen in die Felder. Die Linien zeigen auf die Körperregion.',
     fachwissen: bioFw(
       subset.map((s) => `${s.label} — ${s.functionDe}. ${s.wissen}`).join(' '),
       asset.fachwissenQuelle,
       asset.fachwissenUrl,
     ),
     contentIds: concepts,
-    dedupeKey: `imgLabel:${asset.id}:${[...concepts].sort().join('+')}`,
+    dedupeKey: useFixedNumbered
+      ? `imgLabel:${asset.id}:all8`
+      : `imgLabel:${asset.id}:${[...concepts].sort().join('+')}`,
     rng,
   })
 }

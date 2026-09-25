@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-25T13:47:25.855Z",
+  "updatedAt": "2026-09-25T14:52:40.447Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -40,10 +40,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Biologie",
-      "version": "1.4.1",
+      "version": "1.5.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-biologie.json",
-      "size": 65724,
-      "changelog": "K5 Fische: Raub-/Friedfisch + Fortpflanzung verdichtet. Aufbau Fisch/Vogel (imageLabelSlots). 127 Themen; Rest Entwickler (released:false)."
+      "size": 66879,
+      "changelog": "K5 Freigabe (Merkmale, Fische, Lurche/Kriechtiere Überblick+Merkmale, Vögel Überblick, Systematik, Wahl). Bugs: Fisch-Lücke äußere Befruchtung, Vogel-Beschriftung, Klassifikation-Slotlabels, Säuger-TF. Neue Themen Lurche/Kriechtiere-Fortpflanzung. 129 Themen; Rest Entwickler (released:false)."
     },
     {
       "id": "gym-sachsen-anhalt",

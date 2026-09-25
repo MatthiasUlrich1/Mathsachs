@@ -9,6 +9,20 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.52] – 2026-09-25
+
+### Behoben
+- **Bio K5:** Lückentext Fisch-Fortpflanzung — Lücke vor „Befruchtung“ (äußere).
+- **Bio K5:** Vogel-Beschriftung — Drop-Felder auf Bildnummern 1–8; alle Organe Pflicht.
+- **Bio K5:** Klassifikation „Wirbeltiere vergleichen“ — Gruppenlabels statt nur 1–4.
+- **Bio K5:** Zu leichte Säuger-TF „Reh und Fuchs sind Vögel“ entfernt.
+
+### Hinzugefügt
+- **Bio Pack 1.5.0:** K5-Freigabeliste (Merkmale, Fische, Lurche/Kriechtiere Überblick+Merkmale,
+  Vögel Überblick, Systematik, Wahl) + bestehende K6-Wirbellose.
+- Neue Themen (noch gesperrt): Lurche-/Kriechtiere-Fortpflanzung; Federarten/-aufbau;
+  Säuger „5 heimische Arten“ (tolerante Prüfung).
+
 ## [0.28.51] – 2026-09-25
 
 ### Behoben

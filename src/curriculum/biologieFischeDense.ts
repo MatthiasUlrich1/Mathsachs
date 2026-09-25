@@ -479,10 +479,11 @@ export function fischeFortpflanzungCloze(rng: Rng): Task {
   const variants = [
     {
       concept: 'bio:k5:fisch:fp:cloze-befruchtung',
+      // Lücke VOR „Befruchtung“, damit das Adjektiv „äußere“ grammatisch passt.
       template:
-        'Bei den meisten Knochenfischen erfolgt die Befruchtung ___ im Wasser; die Weibchen legen ___ ab.',
+        'Bei den meisten Knochenfischen erfolgt die ___ Befruchtung im Wasser; die Weibchen legen ___ ab.',
       accepted: [
-        ['äußere', 'ausser', 'außerhalb', 'aussen', 'ausserhalb'],
+        ['äußere', 'aeussere'],
         ['Eier', 'Rogen', 'Laich'],
       ],
       solution: 'äußere; Eier',
@@ -871,7 +872,9 @@ export function buildFischeSchutzDense(base: Topic['generate']): Topic['generate
 }
 
 export function buildLurcheMetaDense(base: Topic['generate']): Topic['generate'] {
-  return mixedVariants(base, base, lurcheFortpflanzungExtra, lurcheFortpflanzungExtra)
+  // Fortpflanzungs-Extras liegen im eigenen Thema bi-k5-lb3-lurche-fortpflanzung
+  // (keine Stem-/contentId-Kollision mit Metamorphose).
+  return mixedVariants(base, base, base)
 }
 
 export function buildVoegelFortpflanzungDense(

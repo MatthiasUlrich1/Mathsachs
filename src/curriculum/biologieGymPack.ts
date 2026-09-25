@@ -5,7 +5,7 @@ import {
 } from './pack'
 import { buildBiologieGymOfficialGrades } from './biologieGymTopics'
 
-/** Gymnasium Sachsen · Biologie — K6 LB2 Wirbellose freigegeben; übrige released:false. */
+/** Gymnasium Sachsen · Biologie — K5 Freigabeliste + K6 LB2 Wirbellose; Rest released:false. */
 export function buildGymSachsenBiologiePack(): CurriculumPack {
   const official = buildBiologieGymOfficialGrades()
   const topics = official.reduce(
@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.4.1',
-    changelog: `K5 Fische: Raub-/Friedfisch + Fortpflanzung verdichtet. Aufbau Fisch/Vogel (imageLabelSlots). ${topics} Themen; Rest Entwickler (released:false).`,
+    version: '1.5.0',
+    changelog: `K5 Freigabe (Merkmale, Fische, Lurche/Kriechtiere Überblick+Merkmale, Vögel Überblick, Systematik, Wahl). Bugs: Fisch-Lücke äußere Befruchtung, Vogel-Beschriftung, Klassifikation-Slotlabels, Säuger-TF. Neue Themen Lurche/Kriechtiere-Fortpflanzung. ${topics} Themen; Rest Entwickler (released:false).`,
     official,
     extras: [],
   }
