@@ -50,7 +50,7 @@ export const FISH_TROUT_ASSET: AnatomyAsset = {
       targetY: 36,
       label: 'Auge',
       functionDe: 'Sehen und Orientierung',
-      wissen: 'Das Auge nimmt Lichtreize wahr und hilft bei der Orientierung im Wasser.',
+      wissen: 'Das Auge nimmt Lichtreize wahr und hilft dem Fisch, sich unter Wasser zurechtzufinden.',
       concept: 'bio:k5:fisch:aufbau:auge',
     },
     {

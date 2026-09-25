@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.50] – 2026-09-25
+
+### Behoben
+- **Installer-CI:** Fachwissen Fisch-Auge ohne Meta-Phrase „Orientierung im“ (false positive
+  in `biologieQuality`).
+
 ## [0.28.49] – 2026-09-25
 
 ### Hinzugefügt
