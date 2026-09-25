@@ -25,6 +25,7 @@ import {
   trueFalse,
 } from './biologieHelpers'
 import { deepenBioBank } from './biologieBankDeepen'
+import { enrichGapAccepted, normalizeGapAnswer } from './gapAnswerMatch'
 
 export type BioFact = {
   /** Stable concept id, e.g. `bio:spinnen:beinzahl`. Auto-derived if omitted. */
@@ -305,13 +306,7 @@ export function stripBioBankSlug(text: string): string {
 
 /** Normalize for loose German term matching (case, umlauts, light punctuation). */
 export function normalizeBioTerm(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/ä/g, 'ae')
-    .replace(/ö/g, 'oe')
-    .replace(/ü/g, 'ue')
-    .replace(/ß/g, 'ss')
-    .replace(/[„“”"'`´]/g, '')
+  return normalizeGapAnswer(text)
     .replace(/[^a-z0-9]+/g, ' ')
     .replace(/\s+/g, ' ')
     .trim()
@@ -522,11 +517,12 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
 
       // Skip gap/cloze when the accepted answer already appears in template or stem.
       if (mode < 0.34 && bioFactGapModeSafe(f, 'cloze')) {
+        const clozeAcc = f.clozeAccepted!.map((blank) => enrichGapAccepted(blank))
         return clozeBlanksTask({
           question: bioFactQuestion(f, 'cloze'),
           template: f.cloze!,
-          accepted: f.clozeAccepted!,
-          solution: f.clozeAccepted!.map((a) => a[0]).join(' / '),
+          accepted: clozeAcc,
+          solution: clozeAcc.map((a) => a[0]).join(' / '),
           explanation: f.explanation,
           fachwissen: fw(bank, f.wissen, factCtx),
           dedupeKey: key,
@@ -534,12 +530,13 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         })
       }
       if (mode < 0.55 && bioFactGapModeSafe(f, 'gap')) {
+        const gapAcc = enrichGapAccepted(f.gapAccepted!)
         if (f.gap!.includes('___')) {
           return clozeBlanksTask({
             question: bioFactQuestion(f, 'gap'),
             template: f.gap!,
-            accepted: [f.gapAccepted!],
-            solution: f.gapAccepted![0]!,
+            accepted: [gapAcc],
+            solution: gapAcc[0]!,
             explanation: f.explanation,
             fachwissen: fw(bank, f.wissen, factCtx),
             dedupeKey: key,
@@ -548,8 +545,8 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         }
         return gapFillTask({
           question: bioFactQuestion(f, 'gap'),
-          accepted: f.gapAccepted!,
-          solution: f.gapAccepted![0]!,
+          accepted: gapAcc,
+          solution: gapAcc[0]!,
           explanation: f.explanation,
           fachwissen: fw(bank, f.wissen, factCtx),
           dedupeKey: key,
@@ -565,7 +562,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         return flashcardBioTask({
           question: flashQ,
           front: stripBioBankSlug(f.flashFront ?? flashQ),
-          accepted: [f.answer, ...(f.gapAccepted ?? [])],
+          accepted: enrichGapAccepted([f.answer, ...(f.gapAccepted ?? [])]),
           solution: f.answer,
           explanation: f.explanation,
           fachwissen: fw(bank, f.wissen, factCtx),

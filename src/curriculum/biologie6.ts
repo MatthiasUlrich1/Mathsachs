@@ -44,7 +44,7 @@ const samenpflanzen: BioBank = {
       wissen:
         'Samenpflanzen bilden Samen mit Embryo. Blütenpflanzen tragen Blüten; Nadelbäume oft Zapfen. Details zu Blüte, Organen und Holz gehören zu den Spezialthemen.',
       gap: 'Samenpflanzen bilden ___.',
-      gapAccepted: ['Samen'],
+      gapAccepted: ['Samen', 'Same', 'Samenkörner'],
     },
     {
       concept: 'bio:k6:samenpflanzen:organe-ueberblick',
@@ -135,7 +135,7 @@ const wirbelloseOverview: BioBank = {
       wissen:
         '„Wirbellos“ bedeutet: ohne innere Wirbelsäule. Dazu gehören viele Stämme — u. a. Insekten, Spinnentiere, Weichtiere und Würmer.',
       gap: 'Wirbellose Tiere haben keine ___.',
-      gapAccepted: ['Wirbelsäule', 'Wirbelsaeule'],
+      gapAccepted: ['Wirbelsäule', 'Wirbelsaeule', 'Rückgrat', 'Spinalsäule'],
     },
     {
       concept: 'bio:k6:welche-aussage-zur-vielfalt-wirbelloser-',
@@ -724,7 +724,7 @@ const zellen: BioBank = {
       wissen:
         'Im Zellkern liegt die DNA (Chromosomen). Er steuert viele Zellvorgänge bei Pflanzen- und Tierzellen.',
       gap: 'Die Erbinformation liegt im ___.',
-      gapAccepted: ['Zellkern', 'Kern'],
+      gapAccepted: ['Zellkern', 'Kern', 'Nucleus', 'Zell-Kern'],
     },
     {
       concept: 'bio:k6:was-besitzen-pflanzliche-zellen-typische',
@@ -815,7 +815,15 @@ const heilen: BioBank = {
       wissen:
         'Heilpflanzen enthalten Wirkstoffe, die medizinisch genutzt werden können — Dosis und sichere Bestimmung sind entscheidend.',
       gap: 'Heilpflanzen enthalten ___, die medizinisch genutzt werden können.',
-      gapAccepted: ['Wirkstoffe', 'Wirkstoff', 'medizinische Wirkstoffe'],
+      gapAccepted: [
+        'Wirkstoffe',
+        'Wirkstoff',
+        'medizinische Wirkstoffe',
+        'Inhaltsstoffe',
+        'Arzneistoffe',
+        'Heilstoffe',
+        'aktive Stoffe',
+      ],
     },
     {
       concept: 'bio:k6:heilen:kamille',
@@ -826,7 +834,7 @@ const heilen: BioBank = {
       wissen:
         'Echte Kamille enthält ätherische Öle. Tee oder Umschläge werden traditionell bei Entzündungen und Reizungen eingesetzt — immer altersgerecht und dosiert.',
       gap: '___ wird traditionell als Tee bei Entzündungen eingesetzt.',
-      gapAccepted: ['Kamille', 'Echte Kamille'],
+      gapAccepted: ['Kamille', 'Echte Kamille', 'Kamillentee', 'Matricaria'],
     },
     {
       concept: 'bio:k6:heilen:pfefferminze',
@@ -836,6 +844,8 @@ const heilen: BioBank = {
       explanation: 'Pfefferminze enthält Menthol und wird oft bei Verdauungsbeschwerden genutzt.',
       wissen:
         'Pfefferminze enthält Menthol. Tee kann erfrischend wirken und bei leichten Magen-Darm-Beschwerden helfen — keine Selbstbehandlung schwerer Krankheiten.',
+      gap: '___ enthält Menthol und hilft oft bei leichten Magen-Darm-Beschwerden.',
+      gapAccepted: ['Pfefferminze', 'Minze', 'Pfeffer-Minze', 'Mentha'],
     },
     {
       concept: 'bio:k6:heilen:salbei',
@@ -845,6 +855,8 @@ const heilen: BioBank = {
       explanation: 'Salbeitee wird traditionell zum Gurgeln bei Halsbeschwerden genutzt.',
       wissen:
         'Salbei enthält ätherische Öle mit keimhemmender Wirkung und wird traditionell bei Entzündungen im Mund-Rachen-Raum eingesetzt.',
+      gap: '___ wird traditionell zum Gurgeln bei Halsentzündungen genutzt.',
+      gapAccepted: ['Salbei', 'Salbeitee', 'Echter Salbei'],
     },
     {
       concept: 'bio:k6:heilen:dosis',
@@ -855,7 +867,7 @@ const heilen: BioBank = {
       wissen:
         'Heilwirkung und Giftigkeit liegen oft nah beieinander. Deshalb gelten Bestimmung, Zubereitung und Dosis — nie „je mehr, desto besser“.',
       gap: 'Bei Heilpflanzen ist die ___ entscheidend, weil Wirkstoffe chemisch aktiv sind.',
-      gapAccepted: ['Dosis', 'Dosierung', 'richtige Dosis'],
+      gapAccepted: ['Dosis', 'Dosierung', 'richtige Dosis', 'Menge', 'richtige Menge', 'Dosiermenge'],
     },
     {
       concept: 'bio:k6:heilen:bestimmung',
@@ -865,6 +877,8 @@ const heilen: BioBank = {
       explanation: 'Ähnlich aussehende giftige Arten können gefährlich sein.',
       wissen:
         'Viele Giftpflanzen ähneln Heilpflanzen. Sichere Bestimmung und Beratung (Fachliteratur, Erwachsene, Apotheke) sind Pflicht.',
+      gap: 'Sichere ___ schützt vor Verwechslung mit Giftpflanzen.',
+      gapAccepted: ['Bestimmung', 'Pflanzenbestimmung', 'Artbestimmung', 'Identifikation'],
     },
     {
       concept: 'bio:k6:heilen:tee',
@@ -874,6 +888,8 @@ const heilen: BioBank = {
       explanation: 'Ein Aufguss zieht lösliche Wirkstoffe heraus.',
       wissen:
         'Beim Teeaufguss lösen heißes Wasser wasserlösliche Stoffe aus Blättern oder Blüten — eine klassische Zubereitung von Heiltee.',
+      gap: 'Beim ___ löst heißes Wasser wasserlösliche Stoffe aus der Pflanze.',
+      gapAccepted: ['Teeaufguss', 'Aufguss', 'Tee', 'Heißwasserauszug', 'Auszug'],
     },
     {
       concept: 'bio:k6:heilen:arznei',
@@ -883,6 +899,8 @@ const heilen: BioBank = {
       explanation: 'Viele Medikamente haben pflanzliche Vorbilder.',
       wissen:
         'Viele Arzneistoffe wurden aus Pflanzen isoliert oder nachgebaut. Heilpflanzenwissen ist die historische Grundlage der Pharmakologie.',
+      gap: 'Viele Arzneimittel stammen ursprünglich aus ___ Wirkstoffen.',
+      gapAccepted: ['pflanzlichen', 'pflanzlich', 'pflanzen', 'Heilpflanzen', 'Pflanzen'],
     },
     {
       concept: 'bio:k6:heilen:nicht-ersetzen',
@@ -901,6 +919,8 @@ const heilen: BioBank = {
       explanation: 'Brennnessel enthält Mineralstoffe und wird als Tee oder Gemüse genutzt.',
       wissen:
         'Brennnesseln sind mineralstoffreich. Junge Blätter als Tee oder Gemüse — Handschuhe wegen der Brennhaare; nie unbekannte Pflanzen sammeln.',
+      gap: 'Die ___ wird als Tee oder Wildgemüse mit vielen Mineralstoffen genutzt.',
+      gapAccepted: ['Brennnessel', 'Brennnesseln', 'Große Brennnessel', 'Urtica'],
     },
     {
       concept: 'bio:k6:heilen:lavendel',
@@ -910,6 +930,8 @@ const heilen: BioBank = {
       explanation: 'Lavendelduft wird traditionell zur Entspannung genutzt.',
       wissen:
         'Lavendel enthält ätherische Öle; Duft und Tee werden traditionell zur Entspannung eingesetzt.',
+      gap: '___ wirkt traditionell beruhigend und entspannend.',
+      gapAccepted: ['Lavendel', 'Lavendelduft', 'Lavendelöl'],
     },
     {
       concept: 'bio:k6:heilen:giftig',
@@ -1018,7 +1040,7 @@ const pfuetze: BioBank = {
       wissen:
         'Wasserflöhe (Daphnia) sind kleine Krebse. Sie filtern Algen und Bakterien und sind selbst Nahrung für Fische und Insektenlarven.',
       gap: 'Der ___ (Daphnia) ist ein kleines Krebstierchen im Plankton.',
-      gapAccepted: ['Wasserfloh', 'Wasserfloh'],
+      gapAccepted: ['Wasserfloh', 'Daphnia', 'Wasserflöhe', 'Wasserfloeh'],
     },
     {
       concept: 'bio:k6:pfuetze:pantoffel',
@@ -1092,7 +1114,7 @@ const pfuetze: BioBank = {
       wissen:
         'Einzeller sind vollständige Lebewesen aus einer Zelle. Unter dem Mikroskop werden Bau und Bewegung sichtbar.',
       gap: 'Ein ___ besteht aus nur einer Zelle.',
-      gapAccepted: ['Einzeller', 'Einzeller'],
+      gapAccepted: ['Einzeller', 'Protisten', 'Ciliaten', 'Wimpertierchen'],
     },
     {
       concept: 'bio:k6:pfuetze:plankton',

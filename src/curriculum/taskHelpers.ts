@@ -36,6 +36,7 @@ import {
   type EqOp,
   type LinEq,
 } from '../lib/equationSteps'
+import { gapAnswerMatches, normalizeGapAnswer } from './gapAnswerMatch'
 
 interface ValueTaskInput {
   question: string
@@ -91,7 +92,7 @@ interface TextTaskInput {
 
 /** Build a task whose answer is checked as free text (e.g. "<", ">", "="). */
 export const textTask = (input: TextTaskInput): Task => {
-  const accepted = input.accepted.map((a) => a.trim().toLowerCase())
+  const accepted = input.accepted
   return {
     question: input.question,
     answerKind: 'text',
@@ -102,8 +103,7 @@ export const textTask = (input: TextTaskInput): Task => {
     ...withDedupe(input.dedupeKey),
     ...withContentIds(input.contentIds),
     check: (answer: UserInput) =>
-      answer.kind === 'value' &&
-      accepted.includes(answer.value.trim().toLowerCase()),
+      answer.kind === 'value' && gapAnswerMatches(answer.value, accepted),
     sampleAnswer: { kind: 'value', value: input.accepted[0] },
   }
 }
@@ -1283,24 +1283,12 @@ interface ClozeMultiTaskInput {
   visualContent?: string
 }
 
-const normCloze = (s: string) =>
-  s
-    .trim()
-    .toLowerCase()
-    .replace(/ä/g, 'ae')
-    .replace(/ö/g, 'oe')
-    .replace(/ü/g, 'ue')
-    .replace(/ß/g, 'ss')
-    .replace(/\s+/g, ' ')
+/** @deprecated Prefer normalizeGapAnswer — kept for label equality elsewhere. */
+const normCloze = (s: string) => normalizeGapAnswer(s)
 
-/** Match blank: exact, or any comma-separated token equals an accepted form. */
-const blankMatchesAccepted = (blank: string, accepted: string[]) => {
-  const n = normCloze(blank)
-  if (accepted.some((a) => normCloze(a) === n)) return true
-  const tokens = n.split(/[,;/]+/).map((t) => t.trim()).filter(Boolean)
-  if (tokens.length <= 1) return false
-  return tokens.every((tok) => accepted.some((a) => normCloze(a) === tok))
-}
+/** Match blank: tolerant German forms (umlauts, stems, synonyms list). */
+const blankMatchesAccepted = (blank: string, accepted: string[]) =>
+  gapAnswerMatches(blank, accepted)
 
 /** Multi-blank cloze in one running text. */
 export const clozeMultiTask = (input: ClozeMultiTaskInput): Task => {
@@ -1413,9 +1401,9 @@ interface FlashcardFlipTaskInput {
   visualContent?: string
 }
 
-/** Flip the card, then choose or tip the answer (accepted list, trim/casefold). */
+/** Flip the card, then choose or tip the answer (accepted list, tolerant match). */
 export const flashcardFlipTask = (input: FlashcardFlipTaskInput): Task => {
-  const accepted = input.accepted.map(normCloze)
+  const accepted = input.accepted
   // Fachwissen = reines Fachwissen zur Frage — kein Meta zu Wertung/Ablauf.
   return {
     question: input.question,
@@ -1446,12 +1434,12 @@ export const flashcardFlipTask = (input: FlashcardFlipTaskInput): Task => {
     },
     check: (answer: UserInput) => {
       if (answer.kind === 'flashcardFlip') {
-        return answer.flipped && accepted.includes(normCloze(answer.answer))
+        return answer.flipped && gapAnswerMatches(answer.answer, accepted)
       }
       if (answer.kind === 'choicePick') {
-        return accepted.includes(normCloze(answer.choice))
+        return gapAnswerMatches(answer.choice, accepted)
       }
-      if (answer.kind === 'value') return accepted.includes(normCloze(answer.value))
+      if (answer.kind === 'value') return gapAnswerMatches(answer.value, accepted)
       return false
     },
   }

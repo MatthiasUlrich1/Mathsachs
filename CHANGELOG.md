@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.65] – 2026-09-25
+
+### Verbessert
+- **Lückentexte toleranter (alle Fächer):** zentrale Prüfung für Gap/Cloze/Flash
+  (`gapAnswerMatch`) — Groß/Klein, Umlaute (ä↔ae), Satzzeichen am Ende, leichte
+  Flexion (Wirkstoff↔Wirkstoffe) und kuratierte Synonyme; Mathematik-Symbole (`<`,
+  `=`) bleiben exakt. **Pflanzen helfen heilen** und weitere Bio-K6-Lücken mit
+  mehr akzeptierten Schreibweisen/Synonymen.
+
 ## [0.28.64] – 2026-09-25
 
 ### Behoben
