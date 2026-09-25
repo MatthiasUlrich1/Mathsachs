@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.66] – 2026-09-25
+
+### Behoben
+- **Bio K5 Gebiss:** Mensch-Zahnarten Drop-Felder sitzen auf den äußeren Enden der
+  vorgezeichneten Leader (Schneide/Eck/Vorbacken/Backen); keine Extra-UI-Linien.
+- **Säuger-Gebisse als Commons-Schemata:** Löwe (`Skull_lion.png`), Pferd
+  (Linienzeichnung), Schwein (`Sus_celebensis_skull.png`) ersetzen die Fotos;
+  Slots neu kalibriert. Bio-Pack **1.8.6**.
+
 ## [0.28.65] – 2026-09-25
 
 ### Verbessert

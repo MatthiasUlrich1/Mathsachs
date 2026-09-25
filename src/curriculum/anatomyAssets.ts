@@ -460,7 +460,9 @@ export const FEATHER_PARTS_ASSET: AnatomyAsset = {
 
 /**
  * Human oral cavity with blank brackets for tooth-type groups (DBCLS).
- * Drop fields sit at the outer ends of the pre-drawn leaders (viewBox 400×400).
+ * Drop fields sit ON the outer ends of the pre-drawn leaders (viewBox 400×400).
+ * Mapping follows inkscape labels in the Commons SVG (Incisors / Canines /
+ * Premolars / Molars). drawLeaders stays false — baked-in lines only.
  */
 export const TEETH_TYPES_ASSET: AnatomyAsset = {
   id: 'oral-teeth-blank',
@@ -475,14 +477,14 @@ export const TEETH_TYPES_ASSET: AnatomyAsset = {
   /** Themenbezogene Ablenker (kein Fisch-/Vogel-Jargon). */
   distractors: ['Barten', 'Giftzähne'],
   /**
-   * Drop-Felder an den äußeren Enden der vorgezeichneten Leader
-   * (Schneide oben, Eck rechts, Vorbacken links, Backen links unten).
+   * Drop-Feld-Zentren = äußere Leader-Enden (gemessen aus SVG-Pfaden):
+   * Schneide oben Mitte, Eck unten links, Vorbacken oben rechts, Backen links.
    */
   slots: [
     {
       id: 'schneidezaehne',
       x: 50,
-      y: 24,
+      y: 25,
       targetX: 50,
       targetY: 40,
       label: 'Schneidezähne',
@@ -492,10 +494,10 @@ export const TEETH_TYPES_ASSET: AnatomyAsset = {
     },
     {
       id: 'eckzaehne',
-      x: 86,
-      y: 46,
-      targetX: 74,
-      targetY: 48,
+      x: 24,
+      y: 90,
+      targetX: 35,
+      targetY: 85,
       label: 'Eckzähne',
       functionDe: 'Festhalten und Zerreißen',
       wissen: 'Eckzähne sind spitz und halten bzw. zerreißen Nahrung — besonders bei Fleischfressern.',
@@ -503,10 +505,10 @@ export const TEETH_TYPES_ASSET: AnatomyAsset = {
     },
     {
       id: 'vorbackenzaehne',
-      x: 8,
-      y: 32,
-      targetX: 28,
-      targetY: 36,
+      x: 79,
+      y: 16,
+      targetX: 76,
+      targetY: 20,
       label: 'Vorbackenzähne',
       functionDe: 'Zerkleinern der Nahrung',
       wissen: 'Vorbackenzähne (Prämolaren) zerkleinern die Nahrung zwischen Schneide- und Backenzähnen.',
@@ -514,10 +516,10 @@ export const TEETH_TYPES_ASSET: AnatomyAsset = {
     },
     {
       id: 'backenzaehne',
-      x: 8,
-      y: 66,
-      targetX: 30,
-      targetY: 56,
+      x: 13,
+      y: 32,
+      targetX: 17,
+      targetY: 33,
       label: 'Backenzähne',
       functionDe: 'Zermahlen der Nahrung',
       wissen: 'Backenzähne (Molaren) haben breite Kauflächen und zermahlen die Nahrung.',
@@ -527,49 +529,48 @@ export const TEETH_TYPES_ASSET: AnatomyAsset = {
 }
 
 /**
- * Lioness snarl — carnivore dentition (real photo, CC0).
- * Drop fields at image margin; leaders onto tooth groups.
+ * Lion skull engraving — carnivore dentition (Commons schematic, public domain).
  */
 export const LION_TEETH_ASSET: AnatomyAsset = {
   id: 'lioness-teeth-carnivore',
-  imageSrc: '/anatomy/lioness-teeth.jpg',
-  imageAlt: 'Löwin mit geöffnetem Maul — Fleischfresser-Gebiss',
+  imageSrc: '/anatomy/lion-skull-schematic.png',
+  imageAlt: 'Löwenschädel von der Seite — Fleischfresser-Gebiss (Schema)',
   attribution:
-    'Thecodemachine: „Female Lion Teeth“. Wikimedia Commons, CC0 1.0 — https://creativecommons.org/publicdomain/zero/1.0/ · https://commons.wikimedia.org/wiki/File:Female_Lion_Teeth.jpg',
+    'F. A. Brockhaus / unbekannt: „Skull lion“. Wikimedia Commons, Public Domain — https://commons.wikimedia.org/wiki/File:Skull_lion.png',
   drawLeaders: true,
   fachwissenQuelle: 'Wikipedia: Gebiss',
   fachwissenUrl: 'https://de.wikipedia.org/wiki/Gebiss',
   distractors: ['Zahnlücke', 'Barten'],
   slots: [
     {
-      id: 'eckzaehne',
-      x: 92,
-      y: 36,
-      targetX: 54,
-      targetY: 40,
-      label: 'Eckzähne',
-      functionDe: 'Beute festhalten und zerreißen',
-      wissen:
-        'Bei Fleischfressern sind die Eckzähne (Fangzähne) besonders lang und spitz — typisch für das Löwinnengebiss.',
-      concept: 'bio:k5:saeuger:gebiss:carnivor:eck',
-    },
-    {
       id: 'schneidezaehne',
-      x: 50,
-      y: 6,
-      targetX: 50,
-      targetY: 37,
+      x: 3,
+      y: 30,
+      targetX: 6,
+      targetY: 54,
       label: 'Schneidezähne',
       functionDe: 'Abnagen und Festhalten',
       wissen: 'Kleine Schneidezähne sitzen vorn zwischen den Eckzähnen und helfen beim Abnagen von Fleisch.',
       concept: 'bio:k5:saeuger:gebiss:carnivor:schneide',
     },
     {
-      id: 'reisszaehne',
-      x: 6,
+      id: 'eckzaehne',
+      x: 3,
       y: 52,
-      targetX: 42,
-      targetY: 46,
+      targetX: 9,
+      targetY: 50,
+      label: 'Eckzähne',
+      functionDe: 'Beute festhalten und zerreißen',
+      wissen:
+        'Bei Fleischfressern sind die Eckzähne (Fangzähne) besonders lang und spitz — typisch für Großkatzen.',
+      concept: 'bio:k5:saeuger:gebiss:carnivor:eck',
+    },
+    {
+      id: 'reisszaehne',
+      x: 3,
+      y: 78,
+      targetX: 40,
+      targetY: 52,
       label: 'Reißzähne',
       functionDe: 'Fleisch scheren wie eine Schere',
       wissen:
@@ -580,14 +581,14 @@ export const LION_TEETH_ASSET: AnatomyAsset = {
 }
 
 /**
- * Horse skull cutaway — herbivore dentition (real photo, CC BY-SA 3.0).
+ * Horse skull line drawing — herbivore dentition (Commons schematic, public domain).
  */
 export const HORSE_SKULL_TEETH_ASSET: AnatomyAsset = {
   id: 'horse-skull-herbivore',
-  imageSrc: '/anatomy/horse-skull-teeth.jpg',
-  imageAlt: 'Pferdeschädel mit Schneide-, Lücke und Backenzähnen — Pflanzenfresser',
+  imageSrc: '/anatomy/horse-skull-schematic.svg',
+  imageAlt: 'Pferdeschädel von der Seite — Pflanzenfresser-Gebiss (Schema)',
   attribution:
-    'Montanabw: „Horse skull and teeth“. Wikimedia Commons, CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0/ · https://commons.wikimedia.org/wiki/File:Horse_skull_and_teeth.JPG (ShareAlike: Datei unverändert, Drop-Felder nur UI-Overlay)',
+    '„20150129 horse-skull-side-drawn-medical …“. Wikimedia Commons, Public Domain — https://commons.wikimedia.org/wiki/File:20150129_horse-skull-side-drawn-medical_ore-e-refineries_cool1_gh3-raw_xxx_e-1-a_trans-horse_pho.svg',
   drawLeaders: true,
   fachwissenQuelle: 'Wikipedia: Gebiss',
   fachwissenUrl: 'https://de.wikipedia.org/wiki/Gebiss',
@@ -595,10 +596,10 @@ export const HORSE_SKULL_TEETH_ASSET: AnatomyAsset = {
   slots: [
     {
       id: 'schneidezaehne',
-      x: 4,
-      y: 18,
-      targetX: 12,
-      targetY: 52,
+      x: 6,
+      y: 88,
+      targetX: 10,
+      targetY: 92,
       label: 'Schneidezähne',
       functionDe: 'Gras abbeißen',
       wissen: 'Pflanzenfresser haben vorn breite Schneidezähne zum Abschneiden von Gras und Blättern.',
@@ -606,10 +607,10 @@ export const HORSE_SKULL_TEETH_ASSET: AnatomyAsset = {
     },
     {
       id: 'zahnluecke',
-      x: 4,
-      y: 85,
-      targetX: 32,
-      targetY: 48,
+      x: 6,
+      y: 70,
+      targetX: 26,
+      targetY: 78,
       label: 'Zahnlücke',
       functionDe: 'Freier Abschnitt zwischen Schneide- und Backenzähnen',
       wissen:
@@ -619,9 +620,9 @@ export const HORSE_SKULL_TEETH_ASSET: AnatomyAsset = {
     {
       id: 'backenzaehne',
       x: 92,
-      y: 42,
-      targetX: 58,
-      targetY: 42,
+      y: 55,
+      targetX: 50,
+      targetY: 62,
       label: 'Backenzähne',
       functionDe: 'Pflanzen zermahlen',
       wissen:
@@ -632,14 +633,15 @@ export const HORSE_SKULL_TEETH_ASSET: AnatomyAsset = {
 }
 
 /**
- * Domestic pig skull (lateral) — omnivore dentition (real photo, CC BY-SA 4.0).
+ * Celebes pig skull plate — omnivore dentition (Commons schematic, public domain).
+ * Lateral view is the right half of the plate.
  */
 export const PIG_SKULL_TEETH_ASSET: AnatomyAsset = {
   id: 'pig-skull-omnivore',
-  imageSrc: '/anatomy/pig-skull-lateral.jpg',
-  imageAlt: 'Schweineschädel von der Seite — Allesfresser-Gebiss',
+  imageSrc: '/anatomy/pig-skull-schematic.png',
+  imageAlt: 'Schweineschädel (Schema) — Allesfresser-Gebiss',
   attribution:
-    'Museum of Veterinary Anatomy FMVZ USP / Wagner Souza e Silva: „Domestic pig skull (Sus domesticus)“. Wikimedia Commons, CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Domestic_pig_skull_(Sus_domesticus).jpg (ShareAlike: Datei unverändert, Drop-Felder nur UI-Overlay)',
+    '„Sus celebensis skull“. Wikimedia Commons, Public Domain — https://commons.wikimedia.org/wiki/File:Sus_celebensis_skull.png',
   drawLeaders: true,
   fachwissenQuelle: 'Wikipedia: Gebiss',
   fachwissenUrl: 'https://de.wikipedia.org/wiki/Gebiss',
@@ -647,8 +649,8 @@ export const PIG_SKULL_TEETH_ASSET: AnatomyAsset = {
   slots: [
     {
       id: 'schneidezaehne',
-      x: 94,
-      y: 22,
+      x: 96,
+      y: 42,
       targetX: 90,
       targetY: 58,
       label: 'Schneidezähne',
@@ -658,10 +660,10 @@ export const PIG_SKULL_TEETH_ASSET: AnatomyAsset = {
     },
     {
       id: 'hauer',
-      x: 94,
-      y: 78,
+      x: 96,
+      y: 72,
       targetX: 80,
-      targetY: 55,
+      targetY: 60,
       label: 'Eckzähne',
       functionDe: 'Festhalten und Verteidigen',
       wissen:
@@ -670,9 +672,9 @@ export const PIG_SKULL_TEETH_ASSET: AnatomyAsset = {
     },
     {
       id: 'backenzaehne',
-      x: 6,
-      y: 58,
-      targetX: 52,
+      x: 38,
+      y: 38,
+      targetX: 65,
       targetY: 58,
       label: 'Backenzähne',
       functionDe: 'Pflanzen und tierische Kost zerdrücken',

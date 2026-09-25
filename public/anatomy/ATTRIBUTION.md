@@ -57,37 +57,32 @@ Assets bundled for offline practice (educational app + desktop installers). Pref
 - **Derived from:** https://commons.wikimedia.org/wiki/File:202402_Oral_Cavity.svg
 - **License deed:** https://creativecommons.org/licenses/by/4.0/
 
-## Säugetier — Fleischfresser-Gebiss (Löwin)
+## Säugetier — Fleischfresser-Gebiss (Löwe, Schema)
 
-- **File:** `lioness-teeth.jpg`
-- **Title:** Female Lion Teeth
-- **Author:** Thecodemachine
-- **License:** CC0 1.0 Universal (Public Domain Dedication)
-- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Female_Lion_Teeth.jpg
-- **License deed:** https://creativecommons.org/publicdomain/zero/1.0/
-- **Note:** Reales Foto (Fauchende Löwin) — Drop-Felder + Leader nur UI-Overlay.
+- **File:** `lion-skull-schematic.png`
+- **Title:** Skull lion
+- **Author:** F. A. Brockhaus / unbekannt (Scan)
+- **License:** Public Domain
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Skull_lion.png
+- **Note:** Veröffentlichtes Schädel-Schema (keine Mathsachs-Eigenzeichnung). Drop-Felder + Leader nur UI-Overlay. Ersetzt früheres Löwinnen-Foto.
 
-## Säugetier — Pflanzenfresser-Gebiss (Pferd)
+## Säugetier — Pflanzenfresser-Gebiss (Pferd, Schema)
 
-- **File:** `horse-skull-teeth.jpg`
-- **Title:** Horse skull and teeth
-- **Author:** Montanabw
-- **License:** CC BY-SA 3.0
-- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Horse_skull_and_teeth.JPG
-- **License deed:** https://creativecommons.org/licenses/by-sa/3.0/
-- **ShareAlike:** Datei unverändert, Drop-Felder nur UI-Overlay.
-- **Note:** Schädel mit freigelegten Zahnwurzeln — Schneidezähne, Zahnlücke, Backenzähne.
+- **File:** `horse-skull-schematic.svg`
+- **Title:** 20150129 horse-skull-side-drawn-medical …
+- **Author:** siehe Commons-Dateiseite
+- **License:** Public Domain
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:20150129_horse-skull-side-drawn-medical_ore-e-refineries_cool1_gh3-raw_xxx_e-1-a_trans-horse_pho.svg
+- **Note:** Linienzeichnung Pferdeschädel — Schneidezähne, Zahnlücke, Backenzähne. Drop-Felder + Leader nur UI-Overlay. Ersetzt früheres Schädel-Foto.
 
-## Säugetier — Allesfresser-Gebiss (Schwein)
+## Säugetier — Allesfresser-Gebiss (Schwein, Schema)
 
-- **File:** `pig-skull-lateral.jpg`
-- **Title:** Domestic pig skull (Sus domesticus)
-- **Author:** Museum of Veterinary Anatomy FMVZ USP / Wagner Souza e Silva
-- **License:** CC BY-SA 4.0
-- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Domestic_pig_skull_(Sus_domesticus).jpg
-- **License deed:** https://creativecommons.org/licenses/by-sa/4.0/
-- **ShareAlike:** Datei unverändert, Drop-Felder nur UI-Overlay.
-- **Note:** Lateralansicht mit Schneidezähnen, Eckzähnen/Hauern und Backenzähnen.
+- **File:** `pig-skull-schematic.png`
+- **Title:** Sus celebensis skull
+- **Author:** siehe Commons-Dateiseite (Public-Domain-Tafel)
+- **License:** Public Domain
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Sus_celebensis_skull.png
+- **Note:** Dorsal- + Lateralansicht; Beschriftung nutzt die rechte Lateralansicht. Drop-Felder + Leader nur UI-Overlay. Ersetzt früheres Foto.
 
 ## Mensch — Skelett (Oberkörper, unbeschriftet)
 

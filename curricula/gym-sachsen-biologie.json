@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Biologie",
-  "version": "1.8.5",
-  "changelog": "Fische innere Organe: Commons-Schema Fish-anatomy (Uwe Gille) statt Barschpräparat; Drop-Felder neu kalibriert. Säuger-Gebisse Commons-Fotos. 131 Themen.",
+  "version": "1.8.6",
+  "changelog": "Säuger-Gebisse: Commons-Schemata statt Fotos (Löwe/Pferd/Schwein); Mensch-Zahnarten Drop-Felder an Leader-Enden. 131 Themen.",
   "official": [
     {
       "id": "biologie-klasse-5",

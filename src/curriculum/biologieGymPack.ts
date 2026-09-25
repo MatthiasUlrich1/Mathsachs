@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.8.5',
-    changelog: `Fische innere Organe: Commons-Schema Fish-anatomy (Uwe Gille) statt Barschpräparat; Drop-Felder neu kalibriert. Säuger-Gebisse Commons-Fotos. ${topics} Themen.`,
+    version: '1.8.6',
+    changelog: `Säuger-Gebisse: Commons-Schemata statt Fotos (Löwe/Pferd/Schwein); Mensch-Zahnarten Drop-Felder an Leader-Enden. ${topics} Themen.`,
     official,
     extras: [],
   }

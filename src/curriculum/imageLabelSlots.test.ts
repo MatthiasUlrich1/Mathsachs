@@ -165,7 +165,7 @@ describe('Biologie anatomy topics', () => {
             expect(labels.some((l) => /Kiemenreusen/i.test(l))).toBe(false)
             expect(labels.length).toBeGreaterThanOrEqual(3)
             expect(String(task.interactive.props.imageSrc)).toMatch(
-              /oral-cavity-teeth-blank|lioness-teeth|horse-skull-teeth|pig-skull-lateral/,
+              /oral-cavity-teeth-blank|lion-skull-schematic|horse-skull-schematic|pig-skull-schematic/,
             )
           }
         }
