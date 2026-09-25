@@ -57,6 +57,12 @@ function interactiveContentKey(task: Task): string {
     const labels = items.map((it) => normalizeTaskText(it.label ?? '')).filter(Boolean).sort()
     return `slots:${labels.join('|')}`
   }
+  if (ix.type === 'imageLabelSlots') {
+    const items = (p.items as Array<{ label?: string }> | undefined) ?? []
+    const labels = items.map((it) => normalizeTaskText(it.label ?? '')).filter(Boolean).sort()
+    const src = String(p.imageSrc ?? '')
+    return `imgSlots:${src}:${labels.join('|')}`
+  }
   if (ix.type === 'dragDropSort') {
     const items = (p.items as Array<{ label?: string }> | undefined) ?? []
     const labels = items.map((it) => normalizeTaskText(it.label ?? '')).filter(Boolean)
@@ -109,6 +115,13 @@ export function taskContentIds(task: Task): string[] {
     const slotLabels = (ix.props?.slotLabels as string[] | undefined) ?? []
     for (const label of slotLabels) {
       const term = normalizeTaskText(label)
+      if (term && term.length >= 3) ids.add(`term:${term}`)
+    }
+  }
+  if (ix?.type === 'imageLabelSlots') {
+    const items = (ix.props?.items as Array<{ label?: string }> | undefined) ?? []
+    for (const it of items) {
+      const term = normalizeTaskText(it.label ?? '')
       if (term && term.length >= 3) ids.add(`term:${term}`)
     }
   }

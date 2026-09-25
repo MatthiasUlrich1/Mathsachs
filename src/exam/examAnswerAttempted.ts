@@ -28,6 +28,8 @@ export function examAnswerAttempted(_task: Task, input: UserInput): boolean {
         input.slots.some((s) => s !== null) ||
         Boolean(input.result && input.result.trim().length > 0)
       )
+    case 'imageLabelSlots':
+      return input.slots.some((s) => s !== null)
     case 'equationSteps':
       return input.ops.length > 0
     case 'pairMatch':

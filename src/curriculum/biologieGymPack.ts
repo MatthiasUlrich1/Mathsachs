@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.3.0',
-    changelog: `K6 LB2 Wirbellose freigegeben (7 Themen). ${topics} Themen; Rest Entwickler (released:false).`,
+    version: '1.4.0',
+    changelog: `K5 Aufbau des Fisches / Aufbau des Vogels (imageLabelSlots, locked). K6 LB2 Wirbellose freigegeben. ${topics} Themen; Rest Entwickler (released:false).`,
     official,
     extras: [],
   }

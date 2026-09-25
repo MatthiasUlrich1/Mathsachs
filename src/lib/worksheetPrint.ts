@@ -277,6 +277,32 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
       }
     }
 
+    case 'imageLabelSlots': {
+      const items = printLabels(props.items) ?? []
+      const slotCount = Number(
+        props.slotCount ??
+          (Array.isArray(props.slots) ? props.slots.length : 0),
+      )
+      const attr =
+        typeof props.attribution === 'string' && props.attribution.trim()
+          ? `Quelle: ${props.attribution.trim()}`
+          : undefined
+      return {
+        ...fromVisual,
+        paperHint:
+          [instruction, attr, 'Beschrifte die nummerierten Felder an der Abbildung.']
+            .filter(Boolean)
+            .join(' '),
+        options: items.length ? items : undefined,
+        answerBlank:
+          slotCount > 0
+            ? Array.from({ length: slotCount }, (_, i) => `${i + 1}: ______`).join(
+                ' | ',
+              )
+            : defaultBlank(task),
+      }
+    }
+
     case 'digitGrid': {
       const lengths = props.answerRowLengths as number[] | undefined
       const len = Number(props.answerLength ?? 4)

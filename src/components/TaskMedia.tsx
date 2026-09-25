@@ -17,6 +17,7 @@ import { ClozeMulti } from './ClozeMulti'
 import { IconBelong } from './IconBelong'
 import { FlashcardFlip } from './FlashcardFlip'
 import { SourceQuote } from './SourceQuote'
+import { ImageLabelSlots } from './ImageLabelSlots'
 import type { ParamSliderSpec } from '../curriculum/taskHelpers'
 import type { EqOp, LinEq } from '../lib/equationSteps'
 import {
@@ -41,6 +42,17 @@ export const initTaskInput = (task: Task): UserInput => {
       kind: 'dragDropSlots',
       slots: Array.from({ length: n }, () => null),
       ...(askResult ? { result: '' } : {}),
+    }
+  }
+  if (task.interactive?.type === 'imageLabelSlots') {
+    const n = Number(
+      task.interactive.props.slotCount ??
+        (task.interactive.props.slots as unknown[] | undefined)?.length ??
+        0,
+    )
+    return {
+      kind: 'imageLabelSlots',
+      slots: Array.from({ length: n }, () => null),
     }
   }
   if (task.interactive?.type === 'digitGrid') {
@@ -177,6 +189,34 @@ export function TaskInteractive({
           }
           onChange={(order) => onChange({ kind: 'dragDropSort', order })}
           instruction="Ziehe die Elemente in die richtige Reihenfolge (oder nutze ▲/▼):"
+        />
+      )}
+      {interactive.type === 'imageLabelSlots' && (
+        <ImageLabelSlots
+          imageSrc={String(interactive.props.imageSrc ?? '')}
+          imageAlt={String(interactive.props.imageAlt ?? '')}
+          attribution={String(interactive.props.attribution ?? '')}
+          drawLeaders={interactive.props.drawLeaders !== false}
+          items={interactive.props.items ?? []}
+          slots={interactive.props.slots ?? []}
+          value={
+            value.kind === 'imageLabelSlots'
+              ? value.slots
+              : Array.from(
+                  {
+                    length: Number(
+                      interactive.props.slotCount ??
+                        (interactive.props.slots as unknown[] | undefined)?.length ??
+                        0,
+                    ),
+                  },
+                  () => null,
+                )
+          }
+          onChange={(slots) => onChange({ kind: 'imageLabelSlots', slots })}
+          instruction={interactive.props.instruction}
+          disabled={disabled}
+          partResults={partResults}
         />
       )}
       {interactive.type === 'dragDropSlots' && !disabled && (

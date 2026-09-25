@@ -27,6 +27,9 @@ export const formatExamAnswer = (input: UserInput): string => {
       ? `${slots} → ${input.result.trim()}`
       : slots
   }
+  if (input.kind === 'imageLabelSlots') {
+    return input.slots.map((s) => (s === null ? '—' : String(s))).join(' | ')
+  }
   if (input.kind === 'digitGrid') {
     if (input.answerRows && input.answerRows.length > 0) {
       const parts = input.answerRows

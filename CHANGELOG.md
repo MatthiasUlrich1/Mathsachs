@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.48] – 2026-09-25
+
+### Hinzugefügt
+- **Biologie:** Themen „Aufbau des Fisches“ (K5 LB2) und „Aufbau des Vogels“ (K5 LB5),
+  `released:false`.
+- **Interaktion `imageLabelSlots`:** Abbildung mit festen Drop-Feldern, Zieh-Blöcken und
+  optionalen Hinweislinien; Quellenangabe unter dem Bild. Wiederverwendbar fachübergreifend.
+- **Medien:** Regenbogenforelle (Duane Raver / USFWS, Public Domain) und Vogelorgan-Diagramm
+  (Ndennis99, CC0) unter `public/anatomy/` mit Attribution.
+- **Bio-Pack 1.4.0** exportiert.
+
 ## [0.28.45] – 2026-09-25
 
 ### Geändert

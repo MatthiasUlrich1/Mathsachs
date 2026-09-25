@@ -34,6 +34,8 @@ export type UserInput =
   | { kind: 'numberLine'; value: number }
   | { kind: 'dragDropSort'; order: number[] }
   | { kind: 'dragDropSlots'; slots: Array<number | null>; result?: string }
+  /** Image labeling: drag chips into fixed drop fields (optional leader lines). */
+  | { kind: 'imageLabelSlots'; slots: Array<number | null> }
   | { kind: 'digitGrid'; digits: string[]; answerRows?: string[][] }
   | { kind: 'choicePick'; choice: string }
   | { kind: 'multiSelect'; selected: string[] }
@@ -60,6 +62,7 @@ export const emptyInput = (
   if (kind === 'numberLine') return { kind: 'numberLine', value: 0 }
   if (kind === 'dragDropSort') return { kind: 'dragDropSort', order: [] }
   if (kind === 'dragDropSlots') return { kind: 'dragDropSlots', slots: [] }
+  if (kind === 'imageLabelSlots') return { kind: 'imageLabelSlots', slots: [] }
   if (kind === 'digitGrid') return { kind: 'digitGrid', digits: [] }
   // sourceQuote answers via choicePick; causeEffect via pairMatch.
   if (kind === 'choicePick' || kind === 'sourceQuote') return { kind: 'choicePick', choice: '' }
@@ -87,6 +90,7 @@ export interface InteractiveConfig {
     | 'numberLine'
     | 'dragDropSort'
     | 'dragDropSlots'
+    | 'imageLabelSlots'
     | 'digitGrid'
     | 'choicePick'
     | 'multiSelect'

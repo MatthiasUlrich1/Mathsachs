@@ -35,5 +35,6 @@ describe('Biologie K5 Wirbeltiere generators', () => {
     expect(kinds.has('clozeMulti')).toBe(true)
     expect(kinds.has('iconBelong')).toBe(true)
     expect(kinds.has('flashcardFlip')).toBe(true)
+    expect(kinds.has('imageLabelSlots')).toBe(true)
   })
 })

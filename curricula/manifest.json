@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-25T03:36:02.795Z",
+  "updatedAt": "2026-09-25T13:43:01.396Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -40,10 +40,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Biologie",
-      "version": "1.3.0",
+      "version": "1.4.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-biologie.json",
-      "size": 64598,
-      "changelog": "K6 LB2 Wirbellose freigegeben (7 Themen). 125 Themen; Rest Entwickler (released:false)."
+      "size": 65615,
+      "changelog": "K5 Aufbau des Fisches / Aufbau des Vogels (imageLabelSlots, locked). K6 LB2 Wirbellose freigegeben. 127 Themen; Rest Entwickler (released:false)."
     },
     {
       "id": "gym-sachsen-anhalt",

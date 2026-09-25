@@ -21,6 +21,7 @@ import { BIOLOGIE_K8_GENERATORS as BASE_K8 } from './biologie8'
 import { BIOLOGIE_K9_GENERATORS as BASE_K9 } from './biologie9'
 import { BIOLOGIE_K10_GENERATORS as BASE_K10 } from './biologie10'
 import { BIOLOGIE_SPECIAL_GENERATORS } from './biologieSpecialTopics'
+import { BIOLOGIE_ANATOMY_GENERATORS } from './biologieAnatomy'
 import type { Rng } from '../lib/rng'
 import type { BioBank } from './biologieBank'
 
@@ -372,6 +373,7 @@ export const BIOLOGIE_K5_EXPANDED: Record<string, Topic['generate']> = {
   'bi-k5-lb1-merkmale': BASE_K5['bi-k5-lb1-merkmale']!,
   'bi-k5-lb1-kennzeichen': BASE_K5['bi-k5-lb1-kennzeichen']!,
   'bi-k5-lb2-fische': withTopicUx(BASE_K5['bi-k5-lb2-fische'], iconsForGroup('fisch')),
+  'bi-k5-lb2-fische-aufbau': BIOLOGIE_ANATOMY_GENERATORS['bi-k5-lb2-fische-aufbau']!,
   'bi-k5-lb2-fische-merkmale': withTopicUx(
     BASE_K5['bi-k5-lb2-fische-merkmale'],
     groupFlash('fisch'),
@@ -395,6 +397,7 @@ export const BIOLOGIE_K5_EXPANDED: Record<string, Topic['generate']> = {
   ),
   'bi-k5-lb4-kriechtiere-arten': BASE_K5['bi-k5-lb4-kriechtiere-arten']!,
   'bi-k5-lb5-voegel': withTopicUx(BASE_K5['bi-k5-lb5-voegel'], iconsForGroup('vogel')),
+  'bi-k5-lb5-voegel-aufbau': BIOLOGIE_ANATOMY_GENERATORS['bi-k5-lb5-voegel-aufbau']!,
   'bi-k5-lb5-voegel-flug': withTopicUx(BASE_K5['bi-k5-lb5-voegel-flug'], groupFlash('vogel')),
   'bi-k5-lb5-voegel-fortpflanzung': BASE_K5['bi-k5-lb5-voegel-fortpflanzung']!,
   'bi-k5-lb6-saeugetiere': withTopicUx(

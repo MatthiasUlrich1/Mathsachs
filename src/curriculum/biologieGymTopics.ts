@@ -80,6 +80,12 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Flossen',
             'Stromlinienform',
           ]),
+          topic('bi-k5-lb2-fische-aufbau', 'Aufbau des Fisches', [
+            'Körperbau',
+            'Flossen',
+            'Kiemendeckel',
+            'Seitenlinie',
+          ]),
           topic('bi-k5-lb2-fische-merkmale', 'Fische – Merkmale und Angepasstheit', [
             'Kiemen',
             'Schuppen',
@@ -137,6 +143,12 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Federn',
             'Luftsäcke',
             'Schnabel',
+          ]),
+          topic('bi-k5-lb5-voegel-aufbau', 'Aufbau des Vogels', [
+            'Körperbau',
+            'Kropf',
+            'Muskelmagen',
+            'Luftsäcke',
           ]),
           topic('bi-k5-lb5-voegel-flug', 'Vögel – Flug und Federkleid', [
             'Flug',
@@ -745,6 +757,7 @@ export const BIOLOGIE_K5_WIRBELTIERE_TOPIC_IDS = [
   'bi-k5-lb1-merkmale',
   'bi-k5-lb1-kennzeichen',
   'bi-k5-lb2-fische',
+  'bi-k5-lb2-fische-aufbau',
   'bi-k5-lb2-fische-merkmale',
   'bi-k5-lb2-fische-lebensraum',
   'bi-k5-lb2-fische-schutz',
@@ -756,6 +769,7 @@ export const BIOLOGIE_K5_WIRBELTIERE_TOPIC_IDS = [
   'bi-k5-lb4-kriechtiere-merkmale',
   'bi-k5-lb4-kriechtiere-arten',
   'bi-k5-lb5-voegel',
+  'bi-k5-lb5-voegel-aufbau',
   'bi-k5-lb5-voegel-flug',
   'bi-k5-lb5-voegel-fortpflanzung',
   'bi-k5-lb6-saeugetiere',

@@ -1506,6 +1506,101 @@ interface CauseEffectTaskInput {
   visualContent?: string
 }
 
+export type ImageLabelSlotSpec = {
+  id: string
+  x: number
+  y: number
+  targetX: number
+  targetY: number
+}
+
+interface ImageLabelSlotsTaskInput {
+  question: string
+  imageSrc: string
+  imageAlt?: string
+  attribution: string
+  /** Default true — set false when the asset already draws leaders/slots. */
+  drawLeaders?: boolean
+  items: Array<{ label: string }>
+  slots: ImageLabelSlotSpec[]
+  /** Item index per drop field (after pool shuffle, remapped). */
+  correctSlots: number[]
+  solution: string
+  explanation: string
+  instruction?: string
+  fachwissen?: Fachwissen
+  dedupeKey?: string
+  contentIds?: string[]
+  rng?: Rng
+}
+
+/** Image + fixed drop fields for labeled anatomy (or any diagram). Partial credit per slot. */
+export const imageLabelSlotsTask = (input: ImageLabelSlotsTaskInput): Task => {
+  const rng =
+    input.rng ??
+    createRng(
+      hashStringSeed(
+        `${input.question}\0${input.imageSrc}\0${input.items.map((i) => i.label).join('\0')}\0${input.correctSlots.join(',')}`,
+      ) ^ 0x1a6e1,
+    )
+  const presented = presentSlotItemsShuffled(
+    input.items.map((it, value) => ({ label: it.label, value })),
+    input.correctSlots,
+    rng,
+  )
+  const gradeSlots = (answer: UserInput) => {
+    const n = presented.correctSlots.length
+    const parts = Array.from({ length: n }, () => false)
+    if (answer.kind !== 'imageLabelSlots' && answer.kind !== 'dragDropSlots') {
+      return { fraction: 0, parts }
+    }
+    const filled = answer.slots
+    let ok = 0
+    for (let i = 0; i < n; i++) {
+      const got = filled[i]
+      const want = presented.correctSlots[i]!
+      const match =
+        got !== null &&
+        got !== undefined &&
+        (got === want ||
+          presented.items[got]?.label === presented.items[want]?.label)
+      parts[i] = match
+      if (match) ok++
+    }
+    return { fraction: n === 0 ? 0 : ok / n, parts }
+  }
+  return {
+    question: input.question,
+    answerKind: 'text',
+    solution: input.solution,
+    explanation: input.explanation,
+    ...withFw(input.fachwissen),
+    ...withDedupe(input.dedupeKey),
+    ...withContentIds(input.contentIds),
+    sampleAnswer: {
+      kind: 'imageLabelSlots',
+      slots: presented.correctSlots,
+    },
+    interactive: {
+      type: 'imageLabelSlots',
+      props: {
+        imageSrc: input.imageSrc,
+        imageAlt: input.imageAlt ?? '',
+        attribution: input.attribution,
+        drawLeaders: input.drawLeaders !== false,
+        items: presented.items.map(({ label }) => ({ label })),
+        slots: input.slots,
+        slotCount: presented.correctSlots.length,
+        instruction:
+          input.instruction ??
+          'Ziehe die richtigen Bezeichnungen in die Felder an der Abbildung.',
+      },
+    },
+    check: (answer: UserInput) => gradeSlots(answer).fraction >= 1,
+    grade: gradeSlots,
+  }
+}
+
 /** Cause → effect pairing (reuses pairMatch grading; dedicated UI labels). */
 export const causeEffectTask = (input: CauseEffectTaskInput): Task => {
   const leftIds = input.left.map((l) => l.id)

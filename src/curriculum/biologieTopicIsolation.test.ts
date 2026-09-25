@@ -10,6 +10,7 @@ import { BIOLOGIE_SPECIAL_GENERATORS } from './biologieSpecialTopics'
 const SIBLING_FAMILIES: string[][] = [
   [
     'bi-k5-lb2-fische',
+    'bi-k5-lb2-fische-aufbau',
     'bi-k5-lb2-fische-merkmale',
     'bi-k5-lb2-fische-lebensraum',
     'bi-k5-lb2-fische-schutz',
@@ -25,7 +26,12 @@ const SIBLING_FAMILIES: string[][] = [
     'bi-k5-lb4-kriechtiere-merkmale',
     'bi-k5-lb4-kriechtiere-arten',
   ],
-  ['bi-k5-lb5-voegel', 'bi-k5-lb5-voegel-flug', 'bi-k5-lb5-voegel-fortpflanzung'],
+  [
+    'bi-k5-lb5-voegel',
+    'bi-k5-lb5-voegel-aufbau',
+    'bi-k5-lb5-voegel-flug',
+    'bi-k5-lb5-voegel-fortpflanzung',
+  ],
   [
     'bi-k5-lb6-saeugetiere',
     'bi-k5-lb6-saeuger-merkmale',
