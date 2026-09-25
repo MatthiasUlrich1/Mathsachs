@@ -357,7 +357,7 @@ export const biKriechtiereFortpflanzung: Topic['generate'] = mixedVariants(
   kriechFpCloze,
 )
 
-// ─── Vögel Flug: Federarten / Federaufbau (Text+Zuordnung; Bild folgt) ────────
+// ─── Vögel Flug: Federarten / Federaufbau (+ Bild über biVoegelFederBild) ─────
 
 function federArtenMatch(rng: Rng): Task {
   return matchTermsTask(rng, {
@@ -451,7 +451,23 @@ function federMc(rng: Rng): Task {
   })
 }
 
-export function buildVoegelFlugDense(base: Topic['generate']): Topic['generate'] {
+export function buildVoegelFlugDense(
+  base: Topic['generate'],
+  federBild?: Topic['generate'],
+): Topic['generate'] {
+  if (federBild) {
+    return mixedVariants(
+      federBild,
+      federBild,
+      federArtenMatch,
+      federAufbauMatch,
+      federMc,
+      federArtenMatch,
+      federMc,
+      base,
+      base,
+    )
+  }
   return mixedVariants(
     federArtenMatch,
     federAufbauMatch,

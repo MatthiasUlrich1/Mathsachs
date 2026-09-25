@@ -10,6 +10,7 @@ import { initTaskInput } from '../components/TaskMedia'
 import { examAnswerAttempted } from '../exam/examAnswerAttempted'
 import { taskContentIds } from './uniqueRound'
 import { worksheetPrintExtras } from '../lib/worksheetPrint'
+import { BIOLOGIE_K5_EXPANDED } from './biologieNewUx'
 
 describe('imageLabelSlotsTask', () => {
   it('grades full and partial credit by slot', () => {
@@ -89,6 +90,9 @@ describe('Biologie anatomy topics', () => {
   for (const id of [
     'bi-k5-lb2-fische-aufbau',
     'bi-k5-lb5-voegel-aufbau',
+    'bi-k5-lb5-voegel-feder',
+    'bi-k5-lb6-saeuger-gebiss',
+    'bi-k5-lb6-saeuger-skelett',
   ] as const) {
     it(`${id} emits valid tasks including imageLabelSlots`, () => {
       const gen = BIOLOGIE_ANATOMY_GENERATORS[id]
@@ -106,27 +110,71 @@ describe('Biologie anatomy topics', () => {
           expect(Array.isArray(task.interactive.props.slots)).toBe(true)
           expect((task.interactive.props.slots as unknown[]).length).toBeGreaterThan(3)
           if (id === 'bi-k5-lb5-voegel-aufbau') {
-            expect((task.interactive.props.slots as unknown[]).length).toBe(8)
             const items = task.interactive.props.items as Array<{ label: string }>
             const labels = items.map((i) => i.label)
-            expect(labels).toEqual(
+            // Organ diagram (8) or air-sacs diagram (subset)
+            if ((task.interactive.props.slots as unknown[]).length === 8) {
+              expect(labels).toEqual(
+                expect.arrayContaining([
+                  'Kropf',
+                  'Herz',
+                  'Leber',
+                  'Kloake',
+                  'Darm',
+                  'Muskelmagen',
+                  'Drüsenmagen',
+                  'Lunge',
+                ]),
+              )
+            } else {
+              expect(labels.some((l) => /Luftsack|Lunge|Luftröhre/i.test(l))).toBe(true)
+            }
+          }
+          if (id === 'bi-k5-lb5-voegel-feder') {
+            expect((task.interactive.props.slots as unknown[]).length).toBe(5)
+            const items = task.interactive.props.items as Array<{ label: string }>
+            expect(items.map((i) => i.label)).toEqual(
               expect.arrayContaining([
-                'Kropf',
-                'Herz',
-                'Leber',
-                'Kloake',
-                'Darm',
-                'Muskelmagen',
-                'Drüsenmagen',
-                'Lunge',
+                'Federfahne',
+                'Federschaft',
+                'Federäste',
+                'Dunenanteil',
+                'Federkiel',
               ]),
             )
-            // Fish organs may appear as distractors, but all 8 bird organs are required.
-            expect(labels.filter((l) => l === 'Kieme' || l === 'Schwimmblase').length).toBeLessThanOrEqual(2)
+          }
+          if (id === 'bi-k5-lb6-saeuger-gebiss') {
+            const items = task.interactive.props.items as Array<{ label: string }>
+            expect(items.map((i) => i.label)).toEqual(
+              expect.arrayContaining(['Schneidezähne', 'Eckzähne', 'Backenzähne']),
+            )
           }
         }
       }
       expect(sawImage).toBe(true)
+    })
+  }
+})
+
+describe('K5 wired topics emit anatomy images', () => {
+  for (const id of [
+    'bi-k5-lb5-voegel-flug',
+    'bi-k5-lb6-saeuger-merkmale',
+    'bi-k5-lb6-saeuger-skelett',
+  ] as const) {
+    it(`${id} eventually yields imageLabelSlots`, () => {
+      const gen = BIOLOGIE_K5_EXPANDED[id]
+      expect(gen).toBeTypeOf('function')
+      let saw = false
+      for (let seed = 0; seed < 80; seed++) {
+        const task = gen!(createRng(seed * 19 + 3))
+        expect(task.check(task.sampleAnswer)).toBe(true)
+        if (task.interactive?.type === 'imageLabelSlots') {
+          saw = true
+          expect(String(task.interactive.props.imageSrc)).toMatch(/^\/anatomy\//)
+        }
+      }
+      expect(saw).toBe(true)
     })
   }
 })

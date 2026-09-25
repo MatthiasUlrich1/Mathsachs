@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.54] – 2026-09-25
+
+### Hinzugefügt
+- **Bio K5 Anatomie (released:false):** Wikimedia-Bilder + `imageLabelSlots` für
+  Fisch-Aufbau (verdichtet), Vogel Federaufbau & Luftsäcke, Säuger Gebiss und
+  Körpergliederung/Skelett. Bio-Pack **1.6.0**.
+
 ## [0.28.53] – 2026-09-25
 
 ### Behoben

@@ -1,14 +1,27 @@
 /**
- * Biologie — Aufbau/Beschriftung (imageLabelSlots) für K5 Fische & Vögel.
- * Lehrplan Gym Sachsen (lplanid=522): LB2 Fische / LB5 Vögel.
+ * Biologie — Aufbau/Beschriftung (imageLabelSlots) für K5 Fische, Vögel, Säuger.
+ * Lehrplan Gym Sachsen (lplanid=522): LB2 Fische / LB5 Vögel / LB6 Säugetiere.
  */
 import type { Rng } from '../lib/rng'
 import {
+  BIRD_AIR_SACS_ASSET,
   BIRD_ORGANS_ASSET,
+  FEATHER_PARTS_ASSET,
   FISH_TROUT_ASSET,
+  SKELETON_AXIAL_ASSET,
+  SKELETON_UPPER_ASSET,
+  TEETH_TYPES_ASSET,
   type AnatomyAsset,
 } from './anatomyAssets'
-import { bioFw, matchTermsTask, pick, shuffle, shuffleChoices } from './biologieHelpers'
+import {
+  bioFw,
+  clozeBlanksTask,
+  matchTermsTask,
+  pick,
+  shuffle,
+  shuffleChoices,
+  trueFalse,
+} from './biologieHelpers'
 import {
   choicePickTask,
   imageLabelSlotsTask,
@@ -26,11 +39,9 @@ function buildLabelTask(rng: Rng, asset: AnatomyAsset, question: string) {
     ? [...asset.slots]
     : shufflePool(rng, asset.slots).slice(
         0,
-        Math.min(asset.slots.length, rng() < 0.45 ? 6 : 7),
+        Math.min(asset.slots.length, rng() < 0.45 ? 5 : Math.min(asset.slots.length, 6)),
       )
-  const distractorCount = useFixedNumbered
-    ? Math.min(2, asset.distractors.length)
-    : Math.min(2, asset.distractors.length)
+  const distractorCount = Math.min(2, asset.distractors.length)
   const distractors = shufflePool(rng, asset.distractors).slice(0, distractorCount)
   const labels = [...subset.map((s) => s.label), ...distractors]
   const items = labels.map((label) => ({ label }))
@@ -63,14 +74,14 @@ function buildLabelTask(rng: Rng, asset: AnatomyAsset, question: string) {
     ),
     contentIds: concepts,
     dedupeKey: useFixedNumbered
-      ? `imgLabel:${asset.id}:all8`
+      ? `imgLabel:${asset.id}:all`
       : `imgLabel:${asset.id}:${[...concepts].sort().join('+')}`,
     rng,
   })
 }
 
 function buildFunctionMatch(rng: Rng, asset: AnatomyAsset, question: string) {
-  const size = rng() < 0.5 ? 4 : 5
+  const size = Math.min(asset.slots.length, rng() < 0.5 ? 4 : 5)
   const subset = shufflePool(rng, asset.slots).slice(0, size)
   const distractor = pick(rng, [
     ...asset.distractors.map((d) => `passt zu ${d}`),
@@ -118,6 +129,42 @@ function buildFunctionMc(rng: Rng, asset: AnatomyAsset) {
   })
 }
 
+function buildPartCloze(rng: Rng, asset: AnatomyAsset) {
+  const part = pick(rng, asset.slots)
+  return clozeBlanksTask({
+    question: `Ergänze die Funktion von ${part.label}.`,
+    template: `${part.label}: ___.`,
+    accepted: [[part.functionDe]],
+    solution: part.functionDe,
+    explanation: part.wissen,
+    fachwissen: bioFw(part.wissen, asset.fachwissenQuelle, asset.fachwissenUrl),
+    dedupeKey: `${part.concept}:cloze`,
+    contentIds: [part.concept, `${part.concept}:cloze`],
+  })
+}
+
+function buildPartTf(rng: Rng, asset: AnatomyAsset) {
+  const part = pick(rng, asset.slots)
+  const other = pick(
+    rng,
+    asset.slots.filter((s) => s.id !== part.id),
+  )
+  const correct = rng() < 0.5
+  const statement = correct
+    ? `${part.label}: ${part.functionDe}.`
+    : `${part.label}: ${other.functionDe}.`
+  return trueFalse(rng, {
+    statement,
+    correct,
+    explanation: correct
+      ? part.wissen
+      : `Falsch — ${part.label}: ${part.functionDe}. ${part.wissen}`,
+    fachwissen: bioFw(part.wissen, asset.fachwissenQuelle, asset.fachwissenUrl),
+    dedupeKey: `${part.concept}:tf:${correct ? 'ok' : other.id}`,
+    contentIds: [part.concept, `${part.concept}:tf`],
+  })
+}
+
 function fishLabel(rng: Rng) {
   return buildLabelTask(
     rng,
@@ -136,6 +183,14 @@ function fishFunctions(rng: Rng) {
 
 function fishFnMc(rng: Rng) {
   return buildFunctionMc(rng, FISH_TROUT_ASSET)
+}
+
+function fishCloze(rng: Rng) {
+  return buildPartCloze(rng, FISH_TROUT_ASSET)
+}
+
+function fishTf(rng: Rng) {
+  return buildPartTf(rng, FISH_TROUT_ASSET)
 }
 
 function birdLabel(rng: Rng) {
@@ -158,25 +213,180 @@ function birdFnMc(rng: Rng) {
   return buildFunctionMc(rng, BIRD_ORGANS_ASSET)
 }
 
+function birdAirSacsLabel(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    BIRD_AIR_SACS_ASSET,
+    'Beschrifte Atmungsorgane des Vogels (Lunge und Luftsäcke). Ziehe die Begriffe in die Felder.',
+  )
+}
+
+function birdAirSacsMatch(rng: Rng) {
+  return buildFunctionMatch(
+    rng,
+    BIRD_AIR_SACS_ASSET,
+    'Ordne den Teilen der Vogelatmung die passende Funktion zu.',
+  )
+}
+
+function birdAirSacsMc(rng: Rng) {
+  return buildFunctionMc(rng, BIRD_AIR_SACS_ASSET)
+}
+
+function featherLabel(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    FEATHER_PARTS_ASSET,
+    'Beschrifte den Aufbau einer Konturfeder. Ziehe die Begriffe in die nummerierten Felder.',
+  )
+}
+
+function featherFunctions(rng: Rng) {
+  return buildFunctionMatch(
+    rng,
+    FEATHER_PARTS_ASSET,
+    'Ordne den Federteilen die passende Funktion zu.',
+  )
+}
+
+function featherFnMc(rng: Rng) {
+  return buildFunctionMc(rng, FEATHER_PARTS_ASSET)
+}
+
+function teethLabel(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    TEETH_TYPES_ASSET,
+    'Beschrifte die Zahnarten im Gebiss. Ziehe die Begriffe in die Felder.',
+  )
+}
+
+function teethFunctions(rng: Rng) {
+  return buildFunctionMatch(
+    rng,
+    TEETH_TYPES_ASSET,
+    'Ordne den Zahnarten die passende Funktion zu.',
+  )
+}
+
+function teethFnMc(rng: Rng) {
+  return buildFunctionMc(rng, TEETH_TYPES_ASSET)
+}
+
+function skeletonUpperLabel(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    SKELETON_UPPER_ASSET,
+    'Beschrifte Knochen am Skelett (Oberkörper). Ziehe die Begriffe in die Felder.',
+  )
+}
+
+function skeletonAxialLabel(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    SKELETON_AXIAL_ASSET,
+    'Beschrifte Körpergliederung und Skelett. Ziehe die Begriffe in die Felder.',
+  )
+}
+
+function skeletonFunctions(rng: Rng) {
+  const asset = rng() < 0.5 ? SKELETON_UPPER_ASSET : SKELETON_AXIAL_ASSET
+  return buildFunctionMatch(
+    rng,
+    asset,
+    'Ordne Skelettteilen die passende Funktion zu.',
+  )
+}
+
+function skeletonFnMc(rng: Rng) {
+  return buildFunctionMc(rng, rng() < 0.5 ? SKELETON_UPPER_ASSET : SKELETON_AXIAL_ASSET)
+}
+
+function skeletonGliederungMatch(rng: Rng) {
+  return matchTermsTask(rng, {
+    question: 'Ordne Körperabschnitte und Skelettbezug zu.',
+    terms: ['Kopf', 'Rumpf', 'Obere Gliedmaßen', 'Untere Gliedmaßen'],
+    meanings: [
+      'Schädel und Sinnesorgane',
+      'Wirbelsäule, Brustkorb, Becken',
+      'Schultergürtel und Arme',
+      'Beckengürtel und Beine',
+    ],
+    distractor: 'Nur Federfahne ohne Knochen',
+    solution: 'Kopf / Rumpf / Arme / Beine',
+    explanation:
+      'Körpergliederung: Kopf, Rumpf sowie obere und untere Gliedmaßen — das Skelett stützt und schützt.',
+    fachwissen: bioFw(
+      'Beim Menschen und anderen Säugetieren gliedert sich der Körper in Kopf, Rumpf und Gliedmaßen. Das Achsenskelett (Schädel, Wirbelsäule, Brustkorb) und das Gliedmaßenskelett arbeiten zusammen.',
+      'Wikipedia: Menschliches Skelett',
+      'https://de.wikipedia.org/wiki/Menschliches_Skelett',
+    ),
+    dedupeKey: 'bio:k5:saeuger:skelett:gliederung-match',
+    contentIds: [
+      'bio:k5:saeuger:skelett:kopf',
+      'bio:k5:saeuger:skelett:rumpf',
+      'bio:k5:saeuger:skelett:arme',
+      'bio:k5:saeuger:skelett:beine',
+    ],
+  })
+}
+
 /** K5 LB2 — Aufbau des Fisches (released:false via Gym-Topics). */
 export const biFischeAufbau: Topic['generate'] = mixedVariants(
   fishLabel,
   fishLabel,
   fishFunctions,
   fishFnMc,
+  fishCloze,
+  fishTf,
   fishFunctions,
 )
 
-/** K5 LB5 — Aufbau des Vogels. */
+/** K5 LB5 — Aufbau des Vogels (Organe + Luftsäcke). */
 export const biVoegelAufbau: Topic['generate'] = mixedVariants(
   birdLabel,
   birdLabel,
+  birdAirSacsLabel,
   birdFunctions,
+  birdAirSacsMatch,
   birdFnMc,
+  birdAirSacsMc,
   birdFunctions,
+)
+
+/** Federaufbau image+blocks — mix into Flug/Federkleid. */
+export const biVoegelFederBild: Topic['generate'] = mixedVariants(
+  featherLabel,
+  featherLabel,
+  featherFunctions,
+  featherFnMc,
+  featherFunctions,
+)
+
+/** Gebiss image+blocks — mix into Säuger Merkmale. */
+export const biSaeugerGebissBild: Topic['generate'] = mixedVariants(
+  teethLabel,
+  teethLabel,
+  teethFunctions,
+  teethFnMc,
+  teethFunctions,
+)
+
+/** K5 LB6 — Körpergliederung und Skelett (released:false). */
+export const biSaeugerSkelett: Topic['generate'] = mixedVariants(
+  skeletonUpperLabel,
+  skeletonAxialLabel,
+  skeletonGliederungMatch,
+  skeletonFunctions,
+  skeletonFnMc,
+  skeletonUpperLabel,
+  skeletonAxialLabel,
 )
 
 export const BIOLOGIE_ANATOMY_GENERATORS: Record<string, Topic['generate']> = {
   'bi-k5-lb2-fische-aufbau': biFischeAufbau,
   'bi-k5-lb5-voegel-aufbau': biVoegelAufbau,
+  'bi-k5-lb5-voegel-feder': biVoegelFederBild,
+  'bi-k5-lb6-saeuger-gebiss': biSaeugerGebissBild,
+  'bi-k5-lb6-saeuger-skelett': biSaeugerSkelett,
 }

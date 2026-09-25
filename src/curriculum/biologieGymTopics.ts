@@ -188,6 +188,12 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Fell',
             'Säugen',
           ]),
+          topic('bi-k5-lb6-saeuger-skelett', 'Körpergliederung und Skelett', [
+            'Skelett',
+            'Schädel',
+            'Wirbelsäule',
+            'Gliedmaßen',
+          ]),
           topic('bi-k5-lb6-saeuger-angepasst', 'Säugetiere – Angepasstheit und Lebensräume', [
             'Angepasstheit',
             'Lebensraum',
@@ -818,6 +824,7 @@ export const BIOLOGIE_K5_WIRBELTIERE_TOPIC_IDS = [
   'bi-k5-lb5-voegel-fortpflanzung',
   'bi-k5-lb6-saeugetiere',
   'bi-k5-lb6-saeuger-merkmale',
+  'bi-k5-lb6-saeuger-skelett',
   'bi-k5-lb6-saeuger-angepasst',
   'bi-k5-lb6-saeuger-schutz',
   'bi-k5-lb7-systematik',

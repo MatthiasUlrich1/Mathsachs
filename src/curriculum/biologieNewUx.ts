@@ -21,7 +21,11 @@ import { BIOLOGIE_K8_GENERATORS as BASE_K8 } from './biologie8'
 import { BIOLOGIE_K9_GENERATORS as BASE_K9 } from './biologie9'
 import { BIOLOGIE_K10_GENERATORS as BASE_K10 } from './biologie10'
 import { BIOLOGIE_SPECIAL_GENERATORS } from './biologieSpecialTopics'
-import { BIOLOGIE_ANATOMY_GENERATORS } from './biologieAnatomy'
+import {
+  BIOLOGIE_ANATOMY_GENERATORS,
+  biSaeugerGebissBild,
+  biVoegelFederBild,
+} from './biologieAnatomy'
 import {
   buildFischeLebensraumDense,
   buildFischeSchutzDense,
@@ -417,6 +421,7 @@ export const BIOLOGIE_K5_EXPANDED: Record<string, Topic['generate']> = {
   'bi-k5-lb5-voegel-aufbau': BIOLOGIE_ANATOMY_GENERATORS['bi-k5-lb5-voegel-aufbau']!,
   'bi-k5-lb5-voegel-flug': buildVoegelFlugDense(
     withTopicUx(BASE_K5['bi-k5-lb5-voegel-flug'], groupFlash('vogel')),
+    biVoegelFederBild,
   ),
   'bi-k5-lb5-voegel-fortpflanzung': buildVoegelFortpflanzungDense(
     BASE_K5['bi-k5-lb5-voegel-fortpflanzung']!,
@@ -424,10 +429,13 @@ export const BIOLOGIE_K5_EXPANDED: Record<string, Topic['generate']> = {
   'bi-k5-lb6-saeugetiere': buildSaeugerUeberblickDense(
     withTopicUx(BASE_K5['bi-k5-lb6-saeugetiere'], iconsForGroup('saeuger')),
   ),
-  'bi-k5-lb6-saeuger-merkmale': withTopicUx(
-    BASE_K5['bi-k5-lb6-saeuger-merkmale'],
-    groupFlash('saeuger'),
+  'bi-k5-lb6-saeuger-merkmale': mixedVariants(
+    biSaeugerGebissBild,
+    biSaeugerGebissBild,
+    withTopicUx(BASE_K5['bi-k5-lb6-saeuger-merkmale'], groupFlash('saeuger')),
+    withTopicUx(BASE_K5['bi-k5-lb6-saeuger-merkmale'], groupFlash('saeuger')),
   ),
+  'bi-k5-lb6-saeuger-skelett': BIOLOGIE_ANATOMY_GENERATORS['bi-k5-lb6-saeuger-skelett']!,
   'bi-k5-lb6-saeuger-angepasst': BASE_K5['bi-k5-lb6-saeuger-angepasst']!,
   'bi-k5-lb6-saeuger-schutz': buildSaeugerSchutzDense(BASE_K5['bi-k5-lb6-saeuger-schutz']!),
   // Systematik = Lehrplan-Klassifikation; Zuordnung = Merkmalsvergleich UX — disjoint.

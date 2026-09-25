@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.5.0',
-    changelog: `K5 Freigabe (Merkmale, Fische, Lurche/Kriechtiere Überblick+Merkmale, Vögel Überblick, Systematik, Wahl). Bugs: Fisch-Lücke äußere Befruchtung, Vogel-Beschriftung, Klassifikation-Slotlabels, Säuger-TF. Neue Themen Lurche/Kriechtiere-Fortpflanzung. ${topics} Themen; Rest Entwickler (released:false).`,
+    version: '1.6.0',
+    changelog: `K5 Anatomie-Bilder (released:false): Fisch-Aufbau verdichtet; Vogel Aufbau+Luftsäcke, Federaufbau; Säuger Gebiss+Skelett/Körpergliederung. ${topics} Themen; Rest Entwickler (released:false).`,
     official,
     extras: [],
   }
