@@ -9,6 +9,8 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.69] – 2026-09-27
+
 ### Geändert
 - **Geschichte Gym Sachsen 1.8.0:** K6 LB2/LB3 verdichtet nach Lehrplan (lplanid=65) —
   Herrschaft/Lebensformen im Mittelalter (Frankenreich, Reichsbildung, Mission,
