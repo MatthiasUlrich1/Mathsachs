@@ -34,6 +34,8 @@ import {
   ExamCodeError,
   decodeExam,
   examCurriculumGate,
+  extractExamCode,
+  normalizeExamCodeInput,
   resolveExam,
   type ResolvedExamTask,
 } from '../exam/examCode'
@@ -67,7 +69,7 @@ interface TaskResult {
   earned: number
 }
 
-const normalizeExamCodeKey = (raw: string): string => raw.trim().replace(/\s+/g, '')
+const normalizeExamCodeKey = (raw: string): string => normalizeExamCodeInput(raw)
 
 export function ExamRunner({
   user,
@@ -517,6 +519,14 @@ export function ExamRunner({
             placeholder="MSX1:…"
             value={codeText}
             onChange={(e) => setCodeText(e.target.value)}
+            onPaste={(e) => {
+              const pasted = e.clipboardData.getData('text')
+              const extracted = extractExamCode(pasted)
+              if (extracted) {
+                e.preventDefault()
+                setCodeText(extracted)
+              }
+            }}
           />
         </div>
         <button

@@ -4,7 +4,10 @@ export const EXAM_CODE_SHARE_SUBJECT = 'TaskTrophy Klausurcode'
 const EXAM_CODE_SHARE_HINT =
   'Schüler öffnet die App → Klausur schreiben → Code eingeben.'
 
-/** Body for WhatsApp / mailto — Klausurcode only, no LAN URL. */
+/**
+ * Mail body — short explanation + Klausurcode (no LAN URL).
+ * WhatsApp uses {@link examCodeWhatsAppText} (code only) so copy-paste stays clean.
+ */
 export function examCodeShareText(code: string, title?: string): string {
   const trimmed = title?.trim()
   const headline = trimmed
@@ -13,12 +16,17 @@ export function examCodeShareText(code: string, title?: string): string {
   return `${headline}\n${code}\n\n${EXAM_CODE_SHARE_HINT}`
 }
 
+/** WhatsApp prefill — only the Klausurcode (no explanatory prefix). */
+export function examCodeWhatsAppText(code: string): string {
+  return code.trim()
+}
+
 export function examCodeShareSubject(): string {
   return EXAM_CODE_SHARE_SUBJECT
 }
 
-export function examCodeWhatsAppUrl(code: string, title?: string): string {
-  return `https://wa.me/?text=${encodeURIComponent(examCodeShareText(code, title))}`
+export function examCodeWhatsAppUrl(code: string, _title?: string): string {
+  return `https://wa.me/?text=${encodeURIComponent(examCodeWhatsAppText(code))}`
 }
 
 /** Recipient-less mailto so the OS mail app opens a compose window. */

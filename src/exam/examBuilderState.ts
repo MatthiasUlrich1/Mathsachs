@@ -1,7 +1,14 @@
+import type { Rng } from '../lib/rng'
+import { createRng, timeSeed } from '../lib/rng'
+import { buildUniqueTaskRoundWithSeeds } from '../curriculum/uniqueRound'
+import type { Task } from '../curriculum/types'
 import type { ExamSpec } from './types'
 
-/** Number of concrete task proposals offered per selected topic in ExamBuilder. */
-export const EXAM_POOL_SIZE = 5
+/**
+ * Proposal slots offered per selected topic in ExamBuilder.
+ * Teachers can select all of them — formerly capped at 5.
+ */
+export const EXAM_POOL_SIZE = 12
 
 export const examThemeKey = (moduleId: string, topicId: string): string =>
   `${moduleId}::${topicId}`
@@ -14,6 +21,23 @@ export interface ExamBuilderHydrateState {
   selectedThemes: string[]
   pools: Record<string, number[]>
   selections: Record<string, number>
+}
+
+/**
+ * Build a pool of distinct seeds for one topic (by content identity).
+ * Avoids identical Geschichte / MC repeats when random seeds collide on variants.
+ */
+export function buildExamPoolSeeds(
+  generate: (rng: Rng) => Task,
+  count: number = EXAM_POOL_SIZE,
+): number[] {
+  const rows = buildUniqueTaskRoundWithSeeds(
+    generate,
+    createRng(timeSeed()),
+    count,
+    Math.max(120, count * 50),
+  )
+  return rows.map((row) => row.seed)
 }
 
 /**

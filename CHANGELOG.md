@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.74] – 2026-09-27
+
+### Behoben
+- **Klausurcode WhatsApp / Einfügen:** WhatsApp teilt nur noch den Code (ohne
+  Erklärungstext); Einfügen strippt Präfixe und akzeptiert `msx1:`/`MSX1:` gleich.
+- **Multi-Select Klausur:** Antwortoptionen werden gemischt — richtige Antworten
+  stehen nicht mehr immer in den ersten N Positionen.
+- **Klausur-Vorschläge:** Pro Thema bis zu 12 statt 5 Aufgaben; Pool wählt
+  inhaltlich eindeutige Seeds (u. a. Geschichte ohne Wiederholungen).
+
 ## [0.28.73] – 2026-09-27
 
 ### Geändert

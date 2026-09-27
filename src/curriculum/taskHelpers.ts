@@ -787,38 +787,65 @@ const sameSet = (a: string[], b: string[]): boolean => {
   return a.every((x) => want.has(x.trim()))
 }
 
+/** Stable FNV-1a seed so multi-select option order is shuffled but reproducible. */
+const multiSelectShuffleSeed = (question: string, choices: string[], correct: string[]): number => {
+  const text = `${question}\0${choices.join('\0')}\0${correct.join('\0')}`
+  let h = 0x811c9dc5
+  for (let i = 0; i < text.length; i++) {
+    h ^= text.charCodeAt(i)
+    h = Math.imul(h, 0x01000193)
+  }
+  return h >>> 0
+}
+
+const shuffleStrings = (rng: Rng, items: string[]): string[] => {
+  const out = [...items]
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1))
+    ;[out[i], out[j]] = [out[j]!, out[i]!]
+  }
+  return out
+}
+
 /** Multi-select buttons (Mantel-Flächen, mehrere Sektoren, …). */
-export const multiSelectTask = (input: MultiSelectTaskInput): Task => ({
-  question: input.question,
-  answerKind: 'text',
-  solution: input.solution,
-  explanation: input.explanation,
-  visualContent: input.visualContent,
-  ...withFw(input.fachwissen),
-  ...withDedupe(input.dedupeKey),
-  ...withContentIds(input.contentIds),
-  sampleAnswer: { kind: 'multiSelect', selected: [...input.correct] },
-  interactive: {
-    type: 'multiSelect',
-    props: {
-      choices: input.choices,
-      instruction: input.instruction ?? 'Tippe alle zutreffenden Flächen / Optionen:',
+export const multiSelectTask = (input: MultiSelectTaskInput): Task => {
+  // Always shuffle so correct answers are not stuck in the first N slots.
+  const choices = shuffleStrings(
+    createRng(multiSelectShuffleSeed(input.question, input.choices, input.correct)),
+    input.choices,
+  )
+  return {
+    question: input.question,
+    answerKind: 'text',
+    solution: input.solution,
+    explanation: input.explanation,
+    visualContent: input.visualContent,
+    ...withFw(input.fachwissen),
+    ...withDedupe(input.dedupeKey),
+    ...withContentIds(input.contentIds),
+    sampleAnswer: { kind: 'multiSelect', selected: [...input.correct] },
+    interactive: {
+      type: 'multiSelect',
+      props: {
+        choices,
+        instruction: input.instruction ?? 'Tippe alle zutreffenden Flächen / Optionen:',
+      },
     },
-  },
-  check: (answer: UserInput) => {
-    if (answer.kind === 'multiSelect') {
-      return sameSet(answer.selected, input.correct)
-    }
-    if (answer.kind === 'value') {
-      const parts = answer.value
-        .split(/[,;+/]|und/i)
-        .map((s) => s.trim())
-        .filter(Boolean)
-      return sameSet(parts, input.correct)
-    }
-    return false
-  },
-})
+    check: (answer: UserInput) => {
+      if (answer.kind === 'multiSelect') {
+        return sameSet(answer.selected, input.correct)
+      }
+      if (answer.kind === 'value') {
+        const parts = answer.value
+          .split(/[,;+/]|und/i)
+          .map((s) => s.trim())
+          .filter(Boolean)
+        return sameSet(parts, input.correct)
+      }
+      return false
+    },
+  }
+}
 
 interface CoordinateClickTaskInput {
   question: string

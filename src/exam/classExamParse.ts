@@ -6,6 +6,7 @@ import {
   type DeletedClassExam,
   type StoredClassExam,
 } from './classExamTypes'
+import { looksLikeExamCode, normalizeExamCodeInput } from './examCode'
 
 const isFiniteNumber = (value: unknown): value is number =>
   typeof value === 'number' && Number.isFinite(value)
@@ -16,11 +17,12 @@ export function parseStoredClassExam(raw: unknown): StoredClassExam | null {
   const id = typeof row.id === 'string' ? row.id.trim().toUpperCase() : ''
   const hostCode = typeof row.hostCode === 'string' ? row.hostCode.trim().toUpperCase() : ''
   const name = typeof row.name === 'string' ? row.name.trim() : ''
-  const examCode = typeof row.examCode === 'string' ? row.examCode.trim() : ''
-  if (!id || !hostCode || !name || !examCode) return null
+  const examCodeRaw = typeof row.examCode === 'string' ? row.examCode.trim() : ''
+  if (!id || !hostCode || !name || !examCodeRaw) return null
   if (name.length > MAX_CLASS_EXAM_NAME_LENGTH) return null
-  if (examCode.length > MAX_EXAM_CODE_PAYLOAD) return null
-  if (!examCode.startsWith('MSX1:')) return null
+  if (examCodeRaw.length > MAX_EXAM_CODE_PAYLOAD) return null
+  if (!looksLikeExamCode(examCodeRaw)) return null
+  const examCode = normalizeExamCodeInput(examCodeRaw)
   const createdAt = isFiniteNumber(row.createdAt) ? row.createdAt : Date.now()
   return {
     id,

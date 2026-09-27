@@ -4,6 +4,7 @@ import type { Grade, Task, Topic } from '../curriculum/types'
 import { encodeExam, decodeExam } from '../exam/examCode'
 import {
   EXAM_POOL_SIZE,
+  buildExamPoolSeeds,
   examSelKey,
   examThemeKey,
   hydrateExamBuilderFromSpec,
@@ -77,8 +78,6 @@ interface EditingExam {
   /** Original MSX1 — used to find sibling class assignments. */
   examCode: string
 }
-
-const randomSeed = () => Math.floor(Math.random() * 0xffffffff) >>> 0
 
 export function ExamBuilder({
   loaded,
@@ -218,12 +217,22 @@ export function ExamBuilder({
       return next
     })
 
+  const poolSeedsFor = (key: string): number[] => {
+    const entry = entryByKey.get(key)
+    if (!entry) {
+      // Theme key without a loaded topic — fall back to random unique-ish seeds.
+      return Array.from({ length: EXAM_POOL_SIZE }, () =>
+        Math.floor(Math.random() * 0xffffffff) >>> 0,
+      )
+    }
+    return buildExamPoolSeeds(entry.topic.generate, EXAM_POOL_SIZE)
+  }
+
   const goToProposals = () => {
     setPools((prev) => {
       const next: Record<string, number[]> = {}
       for (const key of selectedThemes) {
-        next[key] =
-          prev[key] ?? Array.from({ length: EXAM_POOL_SIZE }, () => randomSeed())
+        next[key] = prev[key] ?? poolSeedsFor(key)
       }
       return next
     })
@@ -241,7 +250,7 @@ export function ExamBuilder({
   const refreshPool = (key: string) => {
     setPools((prev) => ({
       ...prev,
-      [key]: Array.from({ length: EXAM_POOL_SIZE }, () => randomSeed()),
+      [key]: poolSeedsFor(key),
     }))
     setSelections((prev) => {
       const next: Record<string, number> = {}

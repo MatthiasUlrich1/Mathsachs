@@ -473,6 +473,29 @@ function challengeIndexKey(id) {
 
 const EXAM_INDEX_PREFIX = 'E:'
 const MAX_EXAM_CODE_PAYLOAD = 50_000
+const EXAM_CODE_IN_TEXT_RE = /MSX1:[A-Za-z0-9_-]+:[a-z0-9]+/i
+
+/** Pull MSX1 code from paste and normalize prefix case. */
+function normalizeExamCodeKey(raw) {
+  const compact = String(raw || '')
+    .trim()
+    .replace(/\s+/g, '')
+  const match = EXAM_CODE_IN_TEXT_RE.exec(compact)
+  if (match) {
+    const found = match[0]
+    return `MSX1:${found.slice(found.indexOf(':') + 1)}`
+  }
+  if (/^MSX1:/i.test(compact)) {
+    return `MSX1:${compact.slice(compact.indexOf(':') + 1)}`
+  }
+  return compact
+}
+
+function isExamCodePayload(raw) {
+  const code = normalizeExamCodeKey(raw)
+  // Opaque MSX1 payload — checksum is validated client-side on decode.
+  return /^MSX1:[A-Za-z0-9_-]+:[a-z0-9]+/i.test(code) && code.length <= MAX_EXAM_CODE_PAYLOAD
+}
 
 function examIndexKey(id) {
   return `${EXAM_INDEX_PREFIX}${id}`
@@ -607,8 +630,8 @@ function parseExamStored(raw) {
   if (!isValidClassCode(id)) return null
   const name = typeof raw.name === 'string' ? raw.name.trim() : ''
   if (!name || name.length > MAX_CLASS_NAME_LENGTH) return null
-  const examCode = typeof raw.examCode === 'string' ? raw.examCode.trim() : ''
-  if (!examCode.startsWith('MSX1:') || examCode.length > MAX_EXAM_CODE_PAYLOAD) return null
+  const examCode = typeof raw.examCode === 'string' ? normalizeExamCodeKey(raw.examCode) : ''
+  if (!isExamCodePayload(examCode)) return null
   const createdAt =
     typeof raw.createdAt === 'number' && Number.isFinite(raw.createdAt) ? raw.createdAt : Date.now()
   const taskCount =
@@ -1704,8 +1727,8 @@ async function allocateExamId(env) {
 function readExamCreateBody(body) {
   const named = readDisplayName(body, 'Bitte einen Klausur-Namen eingeben.')
   if (named.error) return { ok: false, error: named.error, code: 'BAD_NAME' }
-  const examCode = typeof body.examCode === 'string' ? body.examCode.trim() : ''
-  if (!examCode.startsWith('MSX1:') || examCode.length > MAX_EXAM_CODE_PAYLOAD) {
+  const examCode = typeof body.examCode === 'string' ? normalizeExamCodeKey(body.examCode) : ''
+  if (!isExamCodePayload(examCode)) {
     return {
       ok: false,
       error: 'Bitte einen gültigen Klausurcode (MSX1:…) senden.',
@@ -1906,8 +1929,8 @@ async function handleUpdateExam(request, env, rawId) {
   }
   const named = readDisplayName(body, 'Bitte einen Klausur-Namen eingeben.')
   if (named.error) return errorJson(request, 400, named.error, 'BAD_NAME')
-  const examCode = typeof body.examCode === 'string' ? body.examCode.trim() : ''
-  if (!examCode.startsWith('MSX1:') || examCode.length > MAX_EXAM_CODE_PAYLOAD) {
+  const examCode = typeof body.examCode === 'string' ? normalizeExamCodeKey(body.examCode) : ''
+  if (!isExamCodePayload(examCode)) {
     return errorJson(request, 400, 'Bitte einen gültigen Klausurcode (MSX1:…) senden.', 'BAD_EXAM')
   }
   const nextHost = normalizeClassCode(body.classCode || found.index.hostCode)
@@ -1989,13 +2012,6 @@ async function handleDeleteExam(request, env, rawId) {
   return json(request, 200, { ok: true, deleted: found.id })
 }
 
-function normalizeExamCodeKey(raw) {
-  return String(raw || '')
-    .trim()
-    .replace(/\s+/g, '')
-}
-
-/** Bump anonymous solveCount for an exam already loaded on its host class. */
 async function bumpExamSolveCount(env, loaded, examId) {
   const existing = (loaded.stored.exams || {})[examId]
   if (!existing) return null
@@ -2060,7 +2076,7 @@ async function handleCompleteExamByCode(request, env) {
   if (!isValidClassCode(classCode)) {
     return errorJson(request, 400, 'Der Klassencode ist ungültig.', 'BAD_CODE')
   }
-  if (!examCode.startsWith('MSX1:')) {
+  if (!isExamCodePayload(examCode)) {
     return errorJson(request, 400, 'Der Klausurcode ist ungültig.', 'BAD_EXAM')
   }
   const loaded = await loadClass(env, classCode)

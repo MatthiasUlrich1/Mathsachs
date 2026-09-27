@@ -1,6 +1,7 @@
 import { challengeTopicIds, classPointsPayload, updateChallengePayload } from '../challenge/logic'
 import type { ChallengePrize, ChallengeScope, ChallengeTopicRef, CurriculumRef } from '../challenge/types'
 import { parseCurriculumRefs } from '../curriculum/pack'
+import { looksLikeExamCode, normalizeExamCodeInput } from '../exam/examCode'
 import { CLASS_CODE_LENGTH, isValidClassCode, normalizeClassCode } from './code'
 import type { ClassPointBreakdown, ClassPointPeriod } from './buckets'
 
@@ -329,11 +330,13 @@ const parseClassExamSummary = (raw: unknown): ClassExamSummary | null => {
   if (!isRecord(raw)) return null
   const id = typeof raw.id === 'string' ? normalizeClassCode(raw.id) : ''
   const name = typeof raw.name === 'string' ? raw.name.trim() : ''
-  const examCode = typeof raw.examCode === 'string' ? raw.examCode.trim() : ''
+  const examCodeRaw = typeof raw.examCode === 'string' ? raw.examCode.trim() : ''
   const createdAt = typeof raw.createdAt === 'number' && Number.isFinite(raw.createdAt)
     ? raw.createdAt
     : 0
-  if (!id || !name || !examCode.startsWith('MSX1:') || !createdAt) return null
+  if (!id || !name || !examCodeRaw || !createdAt) return null
+  if (!looksLikeExamCode(examCodeRaw)) return null
+  const examCode = normalizeExamCodeInput(examCodeRaw)
   return {
     id,
     name,
@@ -894,11 +897,11 @@ export async function completeClassExamByCode(
   base: string = CLASS_POINTS_API,
 ): Promise<ClassExamSummary> {
   const normalizedClass = normalizeClassCode(classCode)
-  const normalizedExam = examCode.trim().replace(/\s+/g, '')
+  const normalizedExam = normalizeExamCodeInput(examCode)
   if (!isValidClassCode(normalizedClass)) {
     throw new ClassApiError('invalid', 'Der Klassencode ist ungültig.', 400)
   }
-  if (!normalizedExam.startsWith('MSX1:')) {
+  if (!looksLikeExamCode(normalizedExam)) {
     throw new ClassApiError('invalid', 'Der Klausurcode ist ungültig.', 400)
   }
   const json = await requestJson(classApiUrl('/exams/complete', base), {

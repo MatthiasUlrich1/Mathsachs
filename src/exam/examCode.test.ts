@@ -6,6 +6,8 @@ import {
   buildExamLink,
   decodeExam,
   encodeExam,
+  extractExamCode,
+  normalizeExamCodeInput,
   parseExamHash,
   resolveExam,
 } from './examCode'
@@ -42,6 +44,20 @@ describe('exam code round-trip', () => {
   it('tolerates surrounding whitespace in a pasted code', () => {
     const code = encodeExam(sampleSpec)
     expect(decodeExam(`  \n${code}\t `)).toEqual(sampleSpec)
+  })
+
+  it('accepts a lowercase msx1: prefix', () => {
+    const code = encodeExam(sampleSpec)
+    const lower = code.replace(/^MSX1:/, 'msx1:')
+    expect(decodeExam(lower)).toEqual(sampleSpec)
+    expect(normalizeExamCodeInput(lower)).toBe(code)
+  })
+
+  it('extracts the code when WhatsApp-style explanatory text is pasted', () => {
+    const code = encodeExam(sampleSpec)
+    const paste = `TaskTrophy Klausurcode für „Brüche“:\n${code}\n\nSchüler öffnet die App → Klausur schreiben → Code eingeben.`
+    expect(extractExamCode(paste)).toBe(code)
+    expect(decodeExam(paste)).toEqual(sampleSpec)
   })
 })
 

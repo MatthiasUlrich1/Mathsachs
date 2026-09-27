@@ -24,6 +24,9 @@ import type { ExamSpec, ExamTaskRef } from './types'
 /** Fixed identifier prefix of every Mathsachs exam code (version 1). */
 export const EXAM_CODE_PREFIX = 'MSX1:'
 
+/** Matches a Klausurcode anywhere in pasted text (prefix case-insensitive). */
+const EXAM_CODE_IN_TEXT_RE = /MSX1:[A-Za-z0-9_-]+:[a-z0-9]+/i
+
 /** URL hash key used for shareable links, e.g. `…#klausur=<code>`. */
 export const EXAM_HASH_KEY = 'klausur'
 
@@ -33,6 +36,71 @@ export class ExamCodeError extends Error {
     super(message)
     this.name = 'ExamCodeError'
   }
+}
+
+const withCanonicalPrefix = (found: string): string => {
+  const colon = found.indexOf(':')
+  return `${EXAM_CODE_PREFIX}${found.slice(colon + 1)}`
+}
+
+/**
+ * Pull a Klausurcode out of clipboard / WhatsApp paste.
+ * Strips explanatory prefixes and normalizes `msx1:` → `MSX1:`.
+ * Verifies the checksum so trailing words (e.g. „Schüler…“) are not glued on.
+ */
+export const extractExamCode = (raw: string): string | null => {
+  const tryValidate = (candidate: string): string | null => {
+    const normalized = withCanonicalPrefix(candidate)
+    const body = normalized.slice(EXAM_CODE_PREFIX.length)
+    const sep = body.lastIndexOf(':')
+    if (sep <= 0) return null
+    const payload = body.slice(0, sep)
+    let given = body.slice(sep + 1)
+    // Trim trailing junk that may have been glued after whitespace removal.
+    while (given.length > 0) {
+      if (checksum(payload) === given) {
+        return `${EXAM_CODE_PREFIX}${payload}:${given}`
+      }
+      given = given.slice(0, -1)
+    }
+    return null
+  }
+
+  // Prefer a match on the original text so newlines bound the code cleanly.
+  const direct = EXAM_CODE_IN_TEXT_RE.exec(raw)
+  if (direct) {
+    const ok = tryValidate(direct[0])
+    if (ok) return ok
+  }
+
+  const compact = raw.replace(/\s+/g, '')
+  const re = /MSX1:[A-Za-z0-9_-]+:[a-z0-9]+/gi
+  let match: RegExpExecArray | null
+  while ((match = re.exec(compact)) !== null) {
+    const ok = tryValidate(match[0])
+    if (ok) return ok
+  }
+  return null
+}
+
+export const looksLikeExamCode = (raw: string): boolean => {
+  if (extractExamCode(raw)) return true
+  const compact = raw.trim().replace(/\s+/g, '')
+  return /^MSX1:[A-Za-z0-9_-]+:[a-z0-9]+/i.test(compact)
+}
+
+/**
+ * Normalize pasted input: extract embedded code if present, else trim whitespace
+ * and uppercase the `MSX1:` prefix when it matches.
+ */
+export const normalizeExamCodeInput = (raw: string): string => {
+  const extracted = extractExamCode(raw)
+  if (extracted) return extracted
+  const compact = raw.trim().replace(/\s+/g, '')
+  if (/^MSX1:/i.test(compact)) {
+    return `${EXAM_CODE_PREFIX}${compact.slice(compact.indexOf(':') + 1)}`
+  }
+  return compact
 }
 
 // --- Base64url (works in both browsers and Node/Vitest) --------------------
@@ -78,7 +146,7 @@ export const encodeExam = (spec: ExamSpec): string => {
  * warning is emitted because seed-based tasks might no longer match.
  */
 export const decodeExam = (code: string): ExamSpec => {
-  const trimmed = code.trim()
+  const trimmed = normalizeExamCodeInput(code)
   if (!trimmed.startsWith(EXAM_CODE_PREFIX)) {
     throw new ExamCodeError(
       'Das ist kein gültiger TaskTrophy-Klausurcode (erwartet wird der Beginn „MSX1:“).',

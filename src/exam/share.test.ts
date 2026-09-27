@@ -7,6 +7,7 @@ import {
   examCodeMailtoUrl,
   examCodeShareSubject,
   examCodeShareText,
+  examCodeWhatsAppText,
   examCodeWhatsAppUrl,
 } from './share'
 
@@ -39,6 +40,15 @@ describe('examCodeShareText', () => {
   })
 })
 
+describe('examCodeWhatsAppText', () => {
+  it('is only the Klausurcode — no explanatory prefix', () => {
+    const code = encodeExam(sampleSpec)
+    expect(examCodeWhatsAppText(code)).toBe(code)
+    expect(examCodeWhatsAppText(code)).not.toContain('TaskTrophy')
+    expect(examCodeWhatsAppText(code)).not.toContain('Schüler')
+  })
+})
+
 describe('examCodeShareSubject', () => {
   it('is the fixed German mail subject', () => {
     expect(examCodeShareSubject()).toBe('TaskTrophy Klausurcode')
@@ -46,13 +56,13 @@ describe('examCodeShareSubject', () => {
 })
 
 describe('examCodeWhatsAppUrl', () => {
-  it('puts the exam code on wa.me and does not include a LAN URL', () => {
+  it('puts only the exam code on wa.me and does not include a LAN URL', () => {
     const code = encodeExam(sampleSpec)
-    const text = examCodeShareText(code, sampleSpec.titel)
     const url = examCodeWhatsAppUrl(code, sampleSpec.titel)
-    expect(url).toBe(`https://wa.me/?text=${encodeURIComponent(text)}`)
+    expect(url).toBe(`https://wa.me/?text=${encodeURIComponent(code)}`)
     expect(url.startsWith('https://wa.me/?text=')).toBe(true)
-    expect(decodeURIComponent(url)).toContain(code)
+    expect(decodeURIComponent(url)).toBe(`https://wa.me/?text=${code}`)
+    expect(decodeURIComponent(url)).not.toContain('TaskTrophy')
     expect(url).not.toMatch(LAN_URL_RE)
     expect(url).not.toContain(' ')
   })
