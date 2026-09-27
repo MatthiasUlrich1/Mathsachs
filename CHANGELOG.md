@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.71] – 2026-09-27
+
+### Behoben
+- **Lückentexte erschließbar (HARD):** Meta-Gaps (`Korrekt ist kurz gesagt…`) und
+  Satzfragment-Antworten (z. B. `Mission war zentral für`) in Geschichte K6 LB2/LB3
+  ersetzt durch Fachsätze mit klaren Begriffen; Missionierung „Alltag/Glauben“-Falle
+  → Kirchenjahr-Lücke. Guards `gapQuality.ts` + Tests; Cursor-Regel
+  `curriculum-aufgaben-qualitaet.mdc`. Pack **Geschichte 1.8.2**.
+
 ## [0.28.70] – 2026-09-27
 
 ### Verbessert

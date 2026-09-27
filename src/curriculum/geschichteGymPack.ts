@@ -18,8 +18,8 @@ export function buildGymSachsenGeschichtePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Geschichte',
-    version: '1.8.1',
-    changelog: `Qualität K6 LB2/LB3: Chronologie ohne Spoiler, Fachwissen ohne Lehrplan-Meta, TF→MC, tolerantere Lücken. ${topics} Themen. K6 LB1 Rom freigegeben; verdichtete Themen released:false.`,
+    version: '1.8.2',
+    changelog: `Lückentexte erschließbar: keine Meta-Gaps/Satzfragmente (K6 LB2/LB3 u. a.); Guards gapQuality. ${topics} Themen. K6 LB1 Rom freigegeben; verdichtete Themen released:false.`,
     official,
     extras: [],
   }

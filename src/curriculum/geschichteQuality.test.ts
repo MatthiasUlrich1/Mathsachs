@@ -9,7 +9,10 @@ import {
   resolveGeschichteGenerate,
 } from './geschichteGenerators'
 import { buildUniqueTaskRound } from './uniqueRound'
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
 import { bioTextContainsAcceptedTerm, isLehrplanMetaWissen } from './biologieBank'
+import { gapQualityIssues } from './gapQuality'
 import { GESCHICHTE_DENSE_K6_LB23_GENERATORS } from './geschichteDenseK6Lb23'
 
 const HARD_META =
@@ -144,5 +147,52 @@ describe('Geschichte generators quality', () => {
         expect(task.question, `${id}@${seed}`).not.toMatch(CHRONOLOGY_SPOILER)
       }
     }
+  })
+
+  it('dense bank sources reject meta gaps and fragment answers (erschließbar)', () => {
+    const files = [
+      'geschichteDenseK6Lb23.ts',
+      'geschichteDense.ts',
+      'geschichteDenseUpper.ts',
+    ]
+    const factRe =
+      /fact\(\s*['"]([^'"]+)['"]\s*,\s*['"]((?:\\.|[^'"\\])*)['"]\s*,\s*['"]((?:\\.|[^'"\\])*)['"]\s*,\s*\[((?:.|\n)*?)\]\s*,\s*['"]((?:\\.|[^'"\\])*)['"]\s*,\s*['"]((?:\\.|[^'"\\])*)['"]\s*,\s*['"]((?:\\.|[^'"\\])*)['"]\s*,\s*(\[[^\]]*\])/g
+    for (const file of files) {
+      const text = readFileSync(join(process.cwd(), 'src/curriculum', file), 'utf8')
+      let m: RegExpExecArray | null
+      let count = 0
+      while ((m = factRe.exec(text))) {
+        count++
+        const [, concept, prompt, , , , , gap, accRaw] = m
+        const accepted = [...accRaw.matchAll(/['"]((?:\\.|[^'"\\])*)['"]/g)].map((x) => x[1]!)
+        const issues = gapQualityIssues(gap!, accepted, prompt!)
+        expect(issues, `${file}:${concept} ${issues.join(',')}`).toEqual([])
+      }
+      expect(count, file).toBeGreaterThan(10)
+    }
+  })
+
+  it('emitted clozes are not meta templates or fragment answers', () => {
+    const ids = [
+      ...Object.keys(GESCHICHTE_DENSE_K6_LB23_GENERATORS),
+      'ge-k7-lb1-renaissance',
+      'ge-k5-lb2-athen',
+    ]
+    let saw = 0
+    for (const id of ids) {
+      const gen = resolveGeschichteGenerate(id)
+      if (!gen) continue
+      for (let seed = 0; seed < 16; seed++) {
+        const task = gen(createRng(seed * 31 + 7))
+        if (task.interactive?.type !== 'clozeMulti') continue
+        saw++
+        const segs = (task.interactive.props?.segments as string[]) ?? []
+        const gapText = segs.join('___')
+        const accepted = ((task.interactive.props?.accepted as string[][]) ?? []).flat()
+        const issues = gapQualityIssues(gapText, accepted, task.question)
+        expect(issues, `${id}@${seed} ${issues.join(',')}`).toEqual([])
+      }
+    }
+    expect(saw).toBeGreaterThan(10)
   })
 })

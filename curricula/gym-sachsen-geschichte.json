@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Geschichte",
-  "version": "1.8.1",
-  "changelog": "Qualität K6 LB2/LB3: Chronologie ohne Spoiler, Fachwissen ohne Lehrplan-Meta, TF→MC, tolerantere Lücken. 148 Themen. K6 LB1 Rom freigegeben; verdichtete Themen released:false.",
+  "version": "1.8.2",
+  "changelog": "Lückentexte erschließbar: keine Meta-Gaps/Satzfragmente (K6 LB2/LB3 u. a.); Guards gapQuality. 148 Themen. K6 LB1 Rom freigegeben; verdichtete Themen released:false.",
   "official": [
     {
       "id": "geschichte-klasse-5",
