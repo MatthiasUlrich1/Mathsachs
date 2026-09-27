@@ -505,6 +505,18 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
   const variants: Array<(rng: Rng) => ReturnType<Topic['generate']>> = []
 
   if (bank.facts?.length) {
+    // Prefer MC / flash / Zuordnung elsewhere; gaps only sparsely when safe.
+    // Rich banks (pairs/sort/cause/source/multi) suppress gaps further.
+    const hasAltModes =
+      (bank.pairs?.length ?? 0) >= 3 ||
+      (bank.sorts?.length ?? 0) > 0 ||
+      (bank.causeEffects?.length ?? 0) >= 3 ||
+      (bank.sources?.length ?? 0) > 0 ||
+      (bank.multis?.length ?? 0) > 0
+    const clozeCut = hasAltModes ? 0.04 : 0.08
+    const gapCut = hasAltModes ? 0.1 : 0.14
+    const flashCut = hasAltModes ? 0.32 : 0.38
+
     // One variant family for facts: randomly MC / cloze / flash — same concept key.
     variants.push((rng) => {
       const f = pick(rng, bank.facts!)
@@ -525,7 +537,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
       while (wrong.length < 3) wrong.push(`Nicht: ${f.answer} (${wrong.length})`)
 
       // Skip gap/cloze when the accepted answer already appears in template or stem.
-      if (mode < 0.34 && bioFactGapModeSafe(f, 'cloze')) {
+      if (mode < clozeCut && bioFactGapModeSafe(f, 'cloze')) {
         const clozeAcc = f.clozeAccepted!.map((blank) => enrichGapAccepted(blank))
         return clozeBlanksTask({
           question: bioFactQuestion(f, 'cloze'),
@@ -538,7 +550,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
           contentIds: [key],
         })
       }
-      if (mode < 0.55 && bioFactGapModeSafe(f, 'gap')) {
+      if (mode < gapCut && bioFactGapModeSafe(f, 'gap')) {
         const gapAcc = enrichGapAccepted(f.gapAccepted!)
         if (f.gap!.includes('___')) {
           return clozeBlanksTask({
@@ -562,7 +574,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
           contentIds: [key],
         })
       }
-      if (mode < 0.72) {
+      if (mode < flashCut) {
         const flashWrong =
           f.wrong?.length && f.wrong.length >= 2
             ? shuffle(rng, f.wrong).slice(0, 3)

@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.72] – 2026-09-27
+
+### Geändert
+- **Weniger Lückentexte (bankGenerate + Geschichte K6):** Gap/Cloze-Gewicht in
+  `bankGenerate` stark gesenkt (bei reichen Banken mit Zuordnung/Sort/Cause/Quelle
+  noch sparsamer); in K6 LB2/LB3 Dense ~160 Surplus-Gaps → MC (Inhalte erhalten,
+  32 faire Lücken behalten). Runden bleiben bei 10 Aufgaben. Regel
+  `curriculum-aufgaben-qualitaet.mdc`. Pack **Geschichte 1.8.3**.
+
 ## [0.28.71] – 2026-09-27
 
 ### Behoben
