@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-27T08:35:49.059Z",
+  "updatedAt": "2026-09-27T09:22:11.383Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -29,10 +29,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Geschichte",
-      "version": "1.8.0",
+      "version": "1.8.1",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-geschichte.json",
-      "size": 79715,
-      "changelog": "K6 LB2/LB3 verdichtet nach Lehrplan (Herrschaft/Lebensformen Mittelalter; Religionen/Kulturen): Frankenreich, Reichsbildung, Mission, Ostkolonisation, HRR, Weltlich/Geistlich, Grundherrschaft, Burg/Ritter, Frömmigkeit, Klöster; Juden, Pogrome, Kreuzzüge, Al-Andalus, Kulturtransfer, Toleranz heute. 148 Themen. K6 LB1 Rom freigegeben; neue Themen released:false."
+      "size": 79529,
+      "changelog": "Qualität K6 LB2/LB3: Chronologie ohne Spoiler, Fachwissen ohne Lehrplan-Meta, TF→MC, tolerantere Lücken. 148 Themen. K6 LB1 Rom freigegeben; verdichtete Themen released:false."
     },
     {
       "id": "gym-sachsen-biologie",

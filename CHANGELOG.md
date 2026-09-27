@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.70] – 2026-09-27
+
+### Verbessert
+- **Geschichte Gym Sachsen 1.8.1 (Qualität):** K6 LB2/LB3 ohne Chronologie-Spoiler in
+  Sortierfragen; Fachwissen aufgabenspezifisch (kein „gehört zum Lehrplan“);
+  keine Lehrplan-Meta-Prompts; True/False → MC/Entscheidungsfragen (Poolgröße
+  erhalten); Lücken toleranter (`geteilt`/`aufgeteilt` u. a. via `gapAnswerMatch`).
+  Guards/Tests + Cursor-Regel `curriculum-aufgaben-qualitaet.mdc`. Skim-Fixes in
+  weiteren Geschichte-Dense-Banken.
+
 ## [0.28.69] – 2026-09-27
 
 ### Geändert

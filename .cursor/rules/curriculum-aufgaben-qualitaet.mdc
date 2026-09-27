@@ -1,0 +1,56 @@
+---
+description: Qualitätsregeln für Curriculum-Aufgaben (alle Fächer)
+globs: src/curriculum/**/*.{ts,tsx},curricula/**/*.json,.cursor/rules/**
+alwaysApply: false
+---
+
+# Curriculum-Aufgaben — Qualitätsregeln für Autor:innen
+
+Gilt für **alle Lehrpläne** (Mathe, Physik, Bio, Geschichte, …). Besonders relevant
+nach Verdichtung (z. B. Geschichte K6 LB2/LB3).
+
+## 1) Chronologie ohne Spoiler
+
+- Bei Sortier-/Reihenfolge-Aufgaben die **korrekte Reihenfolge nicht** in der
+  Fragestellung vorgeben (kein `Ordne: A → B → C`, kein eingebetteter Zeitstrahl
+  mit der Lösung).
+- Stattdessen: „Ordne chronologisch (ältestes zuerst).“ + Labels **ohne**
+  Reihenfolge-Hinweis in der Question.
+- Guard: `geschichteQuality.test.ts` (`CHRONOLOGY_SPOILER`).
+
+## 2) Fachwissen = Schüler-Fachwissen
+
+- `wissen` / `fachwissen` muss **aufgabenspezifisch** sein (≥ 2 Sätze, inhaltlich).
+- **Verboten** als Fachwissen: „gehört zum Lehrplan“, „Lehrplanbezug“,
+  „Lehrplanziel“, Meta über den Sachsen-Lehrplan, UI-/Prüfungs-Hinweise.
+- Runtime: `isThinBioWissen` / `isLehrplanMetaWissen` in `biologieBank.ts`.
+
+## 3) Lückentexte tolerant
+
+- Primärantwort + sinnvolle Varianten in `gapAccepted`.
+- Zentrale Toleranz: `gapAnswerMatch.ts` (`normalizeGapAnswer`, Stemming,
+  `enrichGapAccepted` inkl. Synonyme wie `geteilt`↔`aufgeteilt`).
+- Neue Lücken: Synonyme/Partizipien mitdenken, nicht nur die eine Schulbuchform.
+
+## 4) Keine Lehrplan-Meta-Fragen
+
+- **Keine** Prompts wie „Warum steht X im Lehrplan?“, „Lehrplanziel?“,
+  „Warum für Sachsen relevant?“ (als Lehrplan-Meta).
+- Nur **Fachfragen** (Begriffe, Ursachen, Folgen, Quellenurteil).
+- Regionalbezug ok, wenn fachlich (z. B. Burgen vor Ort, Christianisierung
+  Mitteldeutschlands) — nicht „weil der Lehrplan es verlangt“.
+
+## 5) Weniger True/False — Format wechseln, nicht kürzen
+
+- Viele Richtig/Falsch-Items in **MC** oder Entscheidungsfragen zwischen
+  Fakten umwandeln (Poolgröße beibehalten oder erhöhen).
+- Nicht die Aufgabenanzahl reduzieren, um TF zu vermeiden.
+
+## 6) Checkliste neue Banken
+
+1. Prompts/Fachwissen gegen Lehrplan-Meta und Chrono-Spoiler prüfen.
+2. `gapAccepted` + ggf. Synonyme in `GAP_SYNONYM_MAP`.
+3. TF-Anteil niedrig; lieber MC/Zuordnen/Ursache–Wirkung/Quelle.
+4. Regression: `geschichteQuality.test.ts`, `gapAnswerMatch.test.ts`,
+   `practiceRoundLength.test.ts` wo betroffen.
+5. Pack-Version bump + CHANGELOG + Curricula exporten bei Pack-Änderung.

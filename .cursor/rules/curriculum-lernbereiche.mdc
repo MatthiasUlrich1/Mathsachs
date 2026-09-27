@@ -38,3 +38,5 @@ tasksPerRound: opts?.tasksPerRound ?? DEFAULT_TASKS_PER_ROUND
 2. `tasksPerRound` nur setzen, wenn Override nötig (Pool &lt; 10 oder bewusst höher, max. 30).
 3. Nach Pack-Änderungen Curricula exportieren (`scripts/export-curriculum-pack.ts`).
 4. Regression: `practiceRoundLength.test.ts` (Bio K5 Aufbau/Überblick).
+5. Inhaltsqualität: siehe `curriculum-aufgaben-qualitaet.mdc` (keine Chrono-Spoiler,
+   kein Lehrplan-Meta in Prompt/Fachwissen, tolerante Lücken, TF→MC statt kürzen).

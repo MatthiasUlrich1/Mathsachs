@@ -9,12 +9,18 @@ import {
   resolveGeschichteGenerate,
 } from './geschichteGenerators'
 import { buildUniqueTaskRound } from './uniqueRound'
-import { bioTextContainsAcceptedTerm } from './biologieBank'
+import { bioTextContainsAcceptedTerm, isLehrplanMetaWissen } from './biologieBank'
+import { GESCHICHTE_DENSE_K6_LB23_GENERATORS } from './geschichteDenseK6Lb23'
 
 const HARD_META =
   /Prüfung:|Antwort prüfen|Teilpunkte|Groß-\/Kleinschreibung|Karte umdrehen|Tippe „ok“|Übungsaufgaben folgen/i
 const THIN_PLACEHOLDER =
   /^(LB:?\s|Wahl:?\s|Wahlbereich|Lehrplanziel|Schlaukopf)/i
+/** Schüler prompts must not ask about Lehrplan meta or spoil chronology order. */
+const LEHRPLAN_META_PROMPT =
+  /Lehrplanziel|steht im Lehrplan|laut Lehrplan|lehrplanrelevant|für Sachsen relevant|Warum .* Lehrplan|Welches Lehrplanziel|verbindlichen Lehrplanstoff|Lehrplanbezug/i
+const CHRONOLOGY_SPOILER =
+  /Ordne chronologisch:\s*\S|Ordne:[^?]{0,80}→|→[^?]{0,60}→/i
 
 describe('Geschichte generators quality', () => {
   const allIds = allGeschichteTopicIds()
@@ -100,5 +106,43 @@ describe('Geschichte generators quality', () => {
       }
     }
     expect(sawCloze).toBeGreaterThan(20)
+  })
+
+  it('K6 LB2/LB3: no Lehrplan-meta prompts/Fachwissen and no chronology spoilers', () => {
+    const ids = Object.keys(GESCHICHTE_DENSE_K6_LB23_GENERATORS)
+    expect(ids.length).toBeGreaterThanOrEqual(14)
+    for (const id of ids) {
+      const gen = resolveGeschichteGenerate(id)!
+      for (let seed = 0; seed < 12; seed++) {
+        const task = gen(createRng(seed * 41 + 5))
+        expect(task.question, `${id}@${seed} Q`).not.toMatch(LEHRPLAN_META_PROMPT)
+        expect(task.question, `${id}@${seed} chrono`).not.toMatch(CHRONOLOGY_SPOILER)
+        const fw = task.fachwissen?.text ?? ''
+        expect(isLehrplanMetaWissen(fw), `${id}@${seed} fw-meta`).toBe(false)
+        expect(fw, `${id}@${seed} fw-text`).not.toMatch(LEHRPLAN_META_PROMPT)
+        // Prefer MC/decision over True/False for densified banks
+        expect(task.question, `${id}@${seed} tf`).not.toMatch(/^Stimmt die Aussage\?/i)
+      }
+    }
+  })
+
+  it('emitted Geschichte prompts avoid Lehrplan-meta and chronology spoilers (sample)', () => {
+    const sample = [
+      'ge-k6-lb2-frankenreich',
+      'ge-k6-lb2-reichsbildung',
+      'ge-k6-lb3-kreuzzuege',
+      'ge-k6-lb3-toleranz-heute',
+      'ge-k7-lb1-renaissance',
+      'ge-k5-lb2-athen',
+    ]
+    for (const id of sample) {
+      const gen = resolveGeschichteGenerate(id)
+      if (!gen) continue
+      for (let seed = 0; seed < 8; seed++) {
+        const task = gen(createRng(seed * 19 + 2))
+        expect(task.question, `${id}@${seed}`).not.toMatch(LEHRPLAN_META_PROMPT)
+        expect(task.question, `${id}@${seed}`).not.toMatch(CHRONOLOGY_SPOILER)
+      }
+    }
   })
 })

@@ -57,6 +57,14 @@ describe('gapAnswerMatches', () => {
     expect(gapAnswerMatches('Lenken', acc)).toBe(true)
     expect(gapAnswerMatches('Atmung', acc)).toBe(false)
   })
+
+  it('accepts geteilt ↔ aufgeteilt and enrich synonyms', () => {
+    expect(gapAnswerMatches('aufgeteilt', ['geteilt'])).toBe(true)
+    expect(gapAnswerMatches('geteilt', ['aufgeteilt'])).toBe(true)
+    expect(gapAnswerMatches('zerteilt', enrichGapAccepted(['geteilt']))).toBe(true)
+    expect(gapAnswerMatches('zersplittert', enrichGapAccepted(['geteilt']))).toBe(true)
+    expect(gapAnswerMatches('vereinigt', ['geteilt'])).toBe(false)
+  })
 })
 
 describe('textTask / cloze use central tolerance', () => {

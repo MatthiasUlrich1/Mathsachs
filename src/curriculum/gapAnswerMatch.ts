@@ -29,6 +29,10 @@ function lettersForm(text: string): string {
     .trim()
 }
 
+/** Separable / particle prefixes (not Partizip-ge- / be-/ver-). */
+const DE_VERB_PREFIXES =
+  /^(auf|ab|an|aus|ein|um|zu|vor|nach|mit|weg|hin|her|zer)/
+
 /** Light German inflection / stem match between two single tokens. */
 function tokensStemMatch(given: string, accepted: string): boolean {
   if (!given || !accepted) return false
@@ -37,6 +41,23 @@ function tokensStemMatch(given: string, accepted: string): boolean {
   if (accepted.length < 4 || given.length < 4) return false
   if (given.startsWith(accepted) && given.length - accepted.length <= 4) return true
   if (accepted.startsWith(given) && accepted.length - given.length <= 2) return true
+  // Partizip / Verbvariante: aufgeteilt ↔ geteilt, zerteilt ↔ geteilt
+  const stripPref = (s: string) => {
+    const m = DE_VERB_PREFIXES.exec(s)
+    if (!m) return s
+    const rest = s.slice(m[0].length)
+    return rest.length >= 4 ? rest : s
+  }
+  const gCore = stripPref(given)
+  const aCore = stripPref(accepted)
+  if (gCore !== given || aCore !== accepted) {
+    if (gCore === aCore) return true
+    if (gCore === accepted || aCore === given) return true
+    if (gCore.length >= 4 && aCore.length >= 4) {
+      if (gCore.startsWith(aCore) && gCore.length - aCore.length <= 3) return true
+      if (aCore.startsWith(gCore) && aCore.length - gCore.length <= 3) return true
+    }
+  }
   return false
 }
 
@@ -131,6 +152,22 @@ const GAP_SYNONYM_MAP: Record<string, readonly string[]> = {
   vortrieb: ['Antrieb'],
   antrieb: ['Vortrieb'],
   stabilitaet: ['Stabilisieren', 'Stabilität'],
+  // History / general verb & noun variants
+  geteilt: ['aufgeteilt', 'zerteilt', 'zersplittert', 'geteilt'],
+  aufgeteilt: ['geteilt', 'zerteilt', 'zersplittert'],
+  zerteilt: ['geteilt', 'aufgeteilt', 'zersplittert'],
+  zersplittert: ['geteilt', 'aufgeteilt', 'zerteilt'],
+  zerfiel: ['zerbrach', 'zerfiel', 'ging unter'],
+  zerbrach: ['zerfiel', 'brach auseinander'],
+  konflikte: ['Streit', 'Konflikten', 'Auseinandersetzungen'],
+  konflikten: ['Konflikte', 'Streit', 'Auseinandersetzungen'],
+  streit: ['Konflikte', 'Konflikt', 'Auseinandersetzung'],
+  herrschaft: ['Macht', 'Herrschen', 'Regierung'],
+  macht: ['Herrschaft', 'Einfluss'],
+  bekehrung: ['Christianisierung', 'Mission', 'Glaubenswechsel'],
+  mission: ['Missionierung', 'Bekehrung', 'Christianisierung'],
+  geduldet: ['toleriert', 'zugelassen'],
+  toleriert: ['geduldet', 'zugelassen'],
 }
 
 function synonymKey(term: string): string {

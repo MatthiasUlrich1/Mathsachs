@@ -125,10 +125,19 @@ export type BioBank = {
 const PLACEHOLDER_WISSEN =
   /^(LB:?\s|Wahl:?\s|Wahlbereich|Anwendungen und Perspektiven|Grundlagen[,.]?\s|Lehrplanziel|Zellbiologie\.?$|Genregulation\.?$|Molekulare Genetik\.?$|Genexpression\.?$|Einordnung\.?$|Spezifität\.?$|Vernetzung\.?$|Systemdenken\.?$|Immunologie\.?$|Systematisierung|Populationsökologie\.?$|Dissimilation\.?$|Praxisbezug\.?$|Verstärkung\.?$|Klassische Ethologie\.?$|Differenzierung\.?$|Schutzziel\.?$|Evolutionärer Hintergrund\.?$|Nachhaltigkeitsdiskurs\.?$|Handlungsoptionen|Kommunikation zwischen Zellen\.?$|Biodiversität und ihre Entstehung\.?$|Verhalten von Tier|Redoxprozesse|Vergleich Fotosynthese|Zelluläre Organisation\.?$|Leben in der Wüste\.?$|Schlaukopf)/i
 
+/** Fachwissen that is curriculum-meta rather than Schüler-Fachwissen. */
+const LEHRPLAN_META_WISSEN =
+  /verbindlichen Lehrplanstoff|Lehrplanbezug|steht im Lehrplan|laut Lehrplan|Lehrplanziel|gehört zum Lehrplan|Warum .* Lehrplan|für Sachsen relevant\?/i
+
+export function isLehrplanMetaWissen(text: string): boolean {
+  return LEHRPLAN_META_WISSEN.test(text)
+}
+
 export function isThinBioWissen(text: string): boolean {
   const t = text.trim()
   if (!t || t.length < 80) return true
   if (PLACEHOLDER_WISSEN.test(t)) return true
+  if (isLehrplanMetaWissen(t)) return true
   const sentences = t.split(/[.!?]+/).filter((s) => s.trim().length > 20)
   return sentences.length < 2
 }
