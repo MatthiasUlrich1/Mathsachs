@@ -9,6 +9,34 @@ alwaysApply: false
 Gilt für **alle Lehrpläne** (Mathe, Physik, Bio, Geschichte, …). Besonders relevant
 nach Verdichtung (z. B. Geschichte K6 LB2/LB3).
 
+## 0) Zuordnung + MC-Distraktoren nur aus dem gleichen Lernbereich
+
+- Bei **Multiple Choice / Zuordnung**: Falschantworten (Distraktoren) stammen aus dem
+  **gleichen Lernbereich** (historisch/thematisch verwandt) — nicht fachfremd
+  (kein Smartphone, keine olympische Medaille, keine Steinzeit bei Mittelalter-LB
+  usw., es sei denn der LB behandelt genau das).
+- Ziel: Schüler:innen unterscheiden nahe Konzepte, statt offensichtliche
+  Outsider zu streichen.
+- Gilt für Zuordnungspaare analog: Ablenker aus dem Themenfeld, nicht aus
+  anderen Epochen/Fächern ohne Bezug.
+
+## 0b) Themen klar trennen (disjunkte Banken)
+
+- Geschwister-Themen im selben Lernbereich haben **disjunkte** Inhaltskerne
+  (`contentId` / Concept-Prefix / Faktenschwerpunkt).
+- Überblick-Themen bleiben epochal/strukturell; Detailthemen (z. B. Lehnswesen,
+  Verdun, Klöster) dürfen denselben Stoff nicht noch einmal als Hauptpool
+  wiederholen.
+- Cross-Topic-Doppelungen vermeiden: gleiche Frage/Antwort nicht in zwei
+  freigegebenen Banken.
+
+## 0c) Keine inhaltlichen Wiederholungen in einer Runde
+
+- Innerhalb einer Übungsrunde: kein doppelter Fakt (`contentId` / `dedupeKey`),
+  kein gleicher Prompt-Stamm, keine gleiche markante Lösung.
+- Runtime: `uniqueRound.ts` (`taskContentIds`, `buildUniqueTaskRound`) —
+  Banken mit klaren Concept-IDs und ausreichend großem Pool pflegen.
+
 ## 1) Chronologie ohne Spoiler
 
 - Bei Sortier-/Reihenfolge-Aufgaben die **korrekte Reihenfolge nicht** in der
@@ -51,6 +79,10 @@ nach Verdichtung (z. B. Geschichte K6 LB2/LB3).
 - Primärantwort + sinnvolle Varianten in `gapAccepted`.
 - Zentrale Toleranz: `gapAnswerMatch.ts` (`normalizeGapAnswer`, Stemming,
   `enrichGapAccepted` inkl. Synonyme wie `geteilt`↔`aufgeteilt`).
+- **Tippfehler-Toleranz (fuzzy):** leichte Edit-Distance (z. B. `Porzellan`↔
+  `Porzelan`) wird akzeptiert — **ohne** fremde Begriffe zuzulassen
+  (kurze Tokens exakt; Distanz relativ zur Wortlänge begrenzt; gleicher
+  Anfangsbuchstabe).
 - Guards: `gapQuality.ts` + `geschichteQuality.test.ts` (Meta/Fragment).
 
 ## 4) Keine Lehrplan-Meta-Fragen
@@ -70,11 +102,14 @@ nach Verdichtung (z. B. Geschichte K6 LB2/LB3).
 ## 6) Checkliste neue Banken
 
 1. Prompts/Fachwissen gegen Lehrplan-Meta und Chrono-Spoiler prüfen.
-2. **Wenige Lücken:** nur wo erschließbar und nötig; sonst MC/Zuordnen/Sort/
+2. **MC-Distraktoren** nur aus dem gleichen Lernbereich / Themenfeld.
+3. **Disjunktheit** zu Geschwister-Themen (keine doppelten Kerne).
+4. **Wenige Lücken:** nur wo erschließbar und nötig; sonst MC/Zuordnen/Sort/
    Ursache–Wirkung/Quelle. Kein Meta-Gap, keine Fragment-Antwort
    (`gapQuality.ts`).
-3. `gapAccepted` + ggf. Synonyme in `GAP_SYNONYM_MAP`.
-4. TF-Anteil niedrig; lieber MC/Zuordnen/Ursache–Wirkung/Quelle.
-5. Regression: `geschichteQuality.test.ts`, `gapAnswerMatch.test.ts`,
+5. `gapAccepted` + ggf. Synonyme in `GAP_SYNONYM_MAP`; Fuzzy deckt Tippfehler.
+6. TF-Anteil niedrig; lieber MC/Zuordnen/Ursache–Wirkung/Quelle.
+7. Concept-IDs eindeutig; Runden ohne Wiederholung (`uniqueRound`).
+8. Regression: `geschichteQuality.test.ts`, `gapAnswerMatch.test.ts`,
    `practiceRoundLength.test.ts` wo betroffen.
-6. Pack-Version bump + CHANGELOG + Curricula exporten bei Pack-Änderung.
+9. Pack-Version bump + CHANGELOG + Curricula exporten bei Pack-Änderung.

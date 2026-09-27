@@ -5,7 +5,7 @@ import {
 } from './pack'
 import { buildGeschichteGymOfficialGrades } from './geschichteGymTopics'
 
-/** Gymnasium Sachsen · Geschichte — K6 LB1 freigegeben; übrige Banken released:false. */
+/** Gymnasium Sachsen · Geschichte — K6 LB1–LB4 + Wahl freigegeben. */
 export function buildGymSachsenGeschichtePack(): CurriculumPack {
   const official = buildGeschichteGymOfficialGrades()
   const topics = official.reduce(
@@ -18,8 +18,8 @@ export function buildGymSachsenGeschichtePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Geschichte',
-    version: '1.8.3',
-    changelog: `Weniger Lückentexte: bankGenerate Gap-Anteil stark gesenkt; K6 LB2/LB3 Surplus-Gaps→MC (Inhalte erhalten). ${topics} Themen. K6 LB1 Rom freigegeben; verdichtete Themen released:false.`,
+    version: '1.9.0',
+    changelog: `K6 freigegeben: LB2 Mittelalter (14), LB3 Religionen/Kulturen (9), LB4 Bürger „Durch die Zeiten“, Wahl Regionalgeschichte. Karl/Verdun erweitert; Toleranz-heute ohne Meta-Übungsbeispiel; Lückentoleranz fuzzy. ${topics} Themen.`,
     official,
     extras: [],
   }

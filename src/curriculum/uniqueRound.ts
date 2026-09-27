@@ -76,6 +76,7 @@ function interactiveContentKey(task: Task): string {
  * All identities that must stay unique within a practice round.
  * Prefer contentIds / dedupeKey (fact-level); also block same stem / same
  * distinctive answer; fall back to a distractor-stable fingerprint.
+ * Strengthens against repeats: authored contentId + prompt stem + answer.
  */
 export function taskContentIds(task: Task): string[] {
   const ids = new Set<string>()
@@ -89,6 +90,16 @@ export function taskContentIds(task: Task): string[] {
   const stem = normalizeTaskText(task.question ?? '')
   if (stem && !isGenericPromptStem(stem)) {
     ids.add(`stem:${stem}`)
+    // Near-duplicate prompts with the same content words (ignore leading
+    // question particle / trailing ?) still collide within a round.
+    const core = stem
+      .replace(
+        /^(was|wie|warum|welche|welcher|welches|wer|wen|wem|wann|wo|womit|wozu|wofuer|wofür|wodurch)\s+/i,
+        '',
+      )
+      .replace(/\?+$/g, '')
+      .trim()
+    if (core.length >= 12 && core !== stem) ids.add(`stemcore:${core}`)
   }
 
   const sol = normalizeTaskText(String(task.solution ?? ''))

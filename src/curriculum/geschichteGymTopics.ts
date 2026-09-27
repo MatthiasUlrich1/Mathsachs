@@ -1,7 +1,8 @@
 /**
  * Gymnasium Sachsen · Geschichte — Lehrplan-Outline (lplanid=65).
- * K6 LB1 (Römische Zivilisation) freigegeben; übrige Themen: released:false
- * (nur Entwickleransicht). Quelle: https://www.schulportal.sachsen.de/lplandb/lehrplan/65
+ * K6 LB1–LB4 + Wahl (Mittelalter, Religionen/Kulturen, Bürger, Regional) freigegeben;
+ * übrige Klassen: released:false (nur Entwickleransicht).
+ * Quelle: https://www.schulportal.sachsen.de/lplandb/lehrplan/65
  */
 import { ROM_YEAR_FACT_COUNT } from './geschichte6'
 import type { PackArea, PackGrade, PackTopic } from './pack'
@@ -198,138 +199,142 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Mittelalter',
             'Herrschaft',
             'Leben',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb2-frankenreich', 'Frankenreich und Karl der Große', [
             'Völkerwanderung',
             'Frankenreich',
             'Karl der Große',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb2-reichsbildung', 'Reichsteilung und Staatenbildung', [
             'Reichsteilung',
             'Nachfolgestaaten',
             'Karten',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb2-missionierung', 'Missionierung und Christianisierung', [
             'Mission',
             'Christentum',
             'Bekehrung',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb2-ostkolonisation', 'Ostkolonisation', [
             'Ostsiedlung',
             'Kolonisation',
             'Landesausbau',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb2-heiliges-reich', 'Heiliges Römisches Reich', [
             'HRR',
             'Kaiser',
             'Spätmittelalter',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb2-weltlich-geistlich', 'Weltliche und geistliche Macht', [
             'Kaiser',
             'Papst',
             'Investitur',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb2-lehnswesen', 'Lehnswesen und Vasallität', [
             'Lehen',
             'Vasall',
             'Treueeid',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb2-grundherrschaft', 'Grundherrschaft, Abgaben und Dienste', [
             'Grundherrschaft',
             'Frondienst',
             'Abgaben',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb2-alltag-staende', 'Ständeordnung und Alltag', [
             'Stände',
             'Bauern',
             'Adel',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb2-staedte', 'Stadt, Bürger, Zünfte und Hanse', [
             'Markt',
             'Zunft',
             'Hanse',
             'Patrizier',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb2-burg-ritter', 'Burg, Rittertum und höfische Kultur', [
             'Burg',
             'Ritter',
             'Minne',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb2-alltag-froemmigkeit', 'Christliche Durchdringung des Alltags', [
             'Pfarrkirche',
             'Festkalender',
             'Volksfrömmigkeit',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb2-kloester', 'Klöster: Lebensform und Ausstrahlung', [
             'Kloster',
             'Mönche',
             'Regel',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
         ]),
         area('lb3', 'Religionen und Kulturen im Mit- und Gegeneinander', 10, [
           topic('ge-k6-lb3-religionen', 'Religionen und Kulturen – Überblick', [
             'Religion',
             'Kultur',
             'Begegnung',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb3-juden', 'Juden als Minderheit und Mitgestalter', [
             'Juden',
             'Handel',
             'Bildung',
             'Medizin',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb3-juden-verfolgung', 'Duldung, Verfolgung und Pogrome', [
             'Ghetto',
             'Pogrom',
             'Schwarzer Tod',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb3-islam', 'Entstehung und Ausbreitung des Islams', [
             'Mekka',
             'Medina',
             'Koran',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb3-kreuzzuege', 'Kreuzzüge und „Heilige Kriege“', [
             'Kreuzzug',
             'Dschihad',
             'Jerusalem',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb3-al-andalus', 'Südspanien: Austausch und Duldung', [
             'Al-Andalus',
             'Córdoba',
             'Konvivenz',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb3-kulturtransfer', 'Medizin, Wissenschaft und Handel', [
             'Wissenschaft',
             'Medizin',
             'Handel',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb3-begegnung', 'Absolutheitsanspruch, Duldung und Austausch', [
             'Toleranz',
             'Konflikt',
             'Austausch',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lb3-toleranz-heute', 'Kulturelle Vielfalt und Toleranz heute', [
             'Vielfalt',
             'Toleranz',
             'Religionsfreiheit',
-          ], { tasksPerRound: 10 }),
+          ], { tasksPerRound: 10, released: true }),
         ]),
-        area('lb4', 'Längsschnitt: Erziehung zum Bürger', 4, [
-          topic('ge-k6-lb4-buerger', 'Längsschnitt: Erziehung zum Bürger', ['Bürger', 'Erziehung']),
+        area('lb4', 'Durch die Zeiten: Erziehung zum Bürger', 4, [
+          topic('ge-k6-lb4-buerger', 'Durch die Zeiten: Erziehung zum Bürger', [
+            'Bürger',
+            'Erziehung',
+          ], { tasksPerRound: 10, released: true }),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
           topic('ge-k6-lbw-besiedlung', 'Regionalgeschichte – Besiedlung Sachsens', [
             'Sachsen',
             'Besiedlung',
-          ]),
+          ], { tasksPerRound: 10, released: true }),
           topic('ge-k6-lbw-kurfuerstentum', 'Regionalgeschichte – Sachsens Weg zum Kurfürstentum', [
             'Sachsen',
             'Kurfürstentum',
-          ]),
+          ], { tasksPerRound: 10, released: true }),
           topic(
             'ge-k6-lbw-selbstverstaendnis',
             'Regionalgeschichte – Ausdrucksformen sächsischen Selbstverständnisses',
             ['Sachsen', 'Identität'],
+            { tasksPerRound: 10, released: true },
           ),
         ]),
       ],

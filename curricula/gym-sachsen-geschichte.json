@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Geschichte",
-  "version": "1.8.3",
-  "changelog": "Weniger Lückentexte: bankGenerate Gap-Anteil stark gesenkt; K6 LB2/LB3 Surplus-Gaps→MC (Inhalte erhalten). 148 Themen. K6 LB1 Rom freigegeben; verdichtete Themen released:false.",
+  "version": "1.9.0",
+  "changelog": "K6 freigegeben: LB2 Mittelalter (14), LB3 Religionen/Kulturen (9), LB4 Bürger „Durch die Zeiten“, Wahl Regionalgeschichte. Karl/Verdun erweitert; Toleranz-heute ohne Meta-Übungsbeispiel; Lückentoleranz fuzzy. 148 Themen.",
   "official": [
     {
       "id": "geschichte-klasse-5",
@@ -393,7 +393,7 @@
               "title": "Mittelalter – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Mittelalter",
@@ -406,7 +406,7 @@
               "title": "Frankenreich und Karl der Große",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Völkerwanderung",
@@ -419,7 +419,7 @@
               "title": "Reichsteilung und Staatenbildung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Reichsteilung",
@@ -432,7 +432,7 @@
               "title": "Missionierung und Christianisierung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Mission",
@@ -445,7 +445,7 @@
               "title": "Ostkolonisation",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Ostsiedlung",
@@ -458,7 +458,7 @@
               "title": "Heiliges Römisches Reich",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "HRR",
@@ -471,7 +471,7 @@
               "title": "Weltliche und geistliche Macht",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Kaiser",
@@ -484,7 +484,7 @@
               "title": "Lehnswesen und Vasallität",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Lehen",
@@ -497,7 +497,7 @@
               "title": "Grundherrschaft, Abgaben und Dienste",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Grundherrschaft",
@@ -510,7 +510,7 @@
               "title": "Ständeordnung und Alltag",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Stände",
@@ -523,7 +523,7 @@
               "title": "Stadt, Bürger, Zünfte und Hanse",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Markt",
@@ -537,7 +537,7 @@
               "title": "Burg, Rittertum und höfische Kultur",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Burg",
@@ -550,7 +550,7 @@
               "title": "Christliche Durchdringung des Alltags",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Pfarrkirche",
@@ -563,7 +563,7 @@
               "title": "Klöster: Lebensform und Ausstrahlung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Kloster",
@@ -583,7 +583,7 @@
               "title": "Religionen und Kulturen – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Religion",
@@ -596,7 +596,7 @@
               "title": "Juden als Minderheit und Mitgestalter",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Juden",
@@ -610,7 +610,7 @@
               "title": "Duldung, Verfolgung und Pogrome",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Ghetto",
@@ -623,7 +623,7 @@
               "title": "Entstehung und Ausbreitung des Islams",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Mekka",
@@ -636,7 +636,7 @@
               "title": "Kreuzzüge und „Heilige Kriege“",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Kreuzzug",
@@ -649,7 +649,7 @@
               "title": "Südspanien: Austausch und Duldung",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Al-Andalus",
@@ -662,7 +662,7 @@
               "title": "Medizin, Wissenschaft und Handel",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Wissenschaft",
@@ -675,7 +675,7 @@
               "title": "Absolutheitsanspruch, Duldung und Austausch",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Toleranz",
@@ -688,7 +688,7 @@
               "title": "Kulturelle Vielfalt und Toleranz heute",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Vielfalt",
@@ -700,15 +700,15 @@
         },
         {
           "id": "lb4",
-          "title": "Längsschnitt: Erziehung zum Bürger",
+          "title": "Durch die Zeiten: Erziehung zum Bürger",
           "ustd": 4,
           "topics": [
             {
               "id": "ge-k6-lb4-buerger",
-              "title": "Längsschnitt: Erziehung zum Bürger",
+              "title": "Durch die Zeiten: Erziehung zum Bürger",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Bürger",
@@ -726,7 +726,7 @@
               "title": "Regionalgeschichte – Besiedlung Sachsens",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Sachsen",
@@ -738,7 +738,7 @@
               "title": "Regionalgeschichte – Sachsens Weg zum Kurfürstentum",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Sachsen",
@@ -750,7 +750,7 @@
               "title": "Regionalgeschichte – Ausdrucksformen sächsischen Selbstverständnisses",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Sachsen",
@@ -2293,5 +2293,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "b9922948"
+  "contentHash": "173a4cab"
 }

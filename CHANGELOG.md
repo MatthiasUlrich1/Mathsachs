@@ -9,6 +9,18 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.73] – 2026-09-27
+
+### Geändert
+- **Qualität (alle Lehrpläne):** MC-Distraktoren nur gleicher Lernbereich; Themen
+  disjunkt; keine Wiederholungen in einer Runde; Lücken toleranter bei Tippfehlern
+  (`Porzellan`↔`Porzelan` via Edit-Distance in `gapAnswerMatch`). Regel
+  `curriculum-aufgaben-qualitaet.mdc`.
+- **Geschichte Gym Sachsen 1.9.0:** K6 LB2/LB3/LB4 + Wahl freigegeben (Mittelalter,
+  Religionen/Kulturen, Bürger „Durch die Zeiten“, Regionalgeschichte). Banken Karl
+  der Große und Vertrag von Verdun erweitert; Meta-„Übungsbeispiel“ in Toleranz heute
+  ersetzt; „Längsschnitt“ in schülerfreundliche Titel/Prompts für K6 LB4.
+
 ## [0.28.72] – 2026-09-27
 
 ### Geändert

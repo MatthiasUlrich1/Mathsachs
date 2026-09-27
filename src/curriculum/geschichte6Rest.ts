@@ -363,10 +363,10 @@ const buerger: BioBank = {
     ),
     fact(
       'vergleich',
-      'Was zeigt der Längsschnitt zu Bürgern in Polis, Rom und Mittelalter besonders?',
+      'Was zeigt der Vergleich „Durch die Zeiten“ zu Bürgern in Polis, Rom und Mittelalter besonders?',
       'Dass Bürgerrechte sich verändern und von Zeit und Gesellschaft abhängen',
       ['Dass Bürger überall immer genau dieselben Rechte hatten', 'Dass Bürgersein nur im Mittelalter existierte', 'Dass Rechte nie etwas mit Herrschaft zu tun hatten'],
-      'Ein Längsschnitt vergleicht Wandel über längere Zeiträume.',
+      'Der Blick durch die Zeiten vergleicht Wandel über längere Zeiträume.',
       'Im Vergleich von Polis, Rom und mittelalterlicher Stadt wird deutlich, dass Bürgersein historisch wandelbar ist. Rechte, Pflichten und Ausschlüsse änderten sich je nach Epoche. Geschichte fragt deshalb nicht nur nach Begriffen, sondern auch nach Veränderungen.',
       'Der Vergleich zeigt den historischen ___ von Bürgerrechten.',
       ['Wandel'],
@@ -435,10 +435,10 @@ const buerger: BioBank = {
   trueFalse: [
     tf(
       't1',
-      'Der Längsschnitt zu Bürgern zeigt, dass Bürgerrechte in allen Epochen unverändert blieben.',
+      'Der Vergleich „Durch die Zeiten“ zu Bürgern zeigt, dass Bürgerrechte in allen Epochen unverändert blieben.',
       false,
       'Gerade der Vergleich macht sichtbar, dass sich Rechte, Pflichten und Ausschlüsse wandelten.',
-      'Ein Längsschnitt verfolgt Entwicklungen über längere Zeiträume. Beim Bürgerbegriff werden Unterschiede zwischen griechischer Polis, römischem Bürgerrecht und mittelalterlicher Stadt deutlich. Wandel ist hier also der eigentliche Erkenntnisgewinn.',
+      'Ein Blick durch die Zeiten verfolgt Entwicklungen über längere Zeiträume. Beim Bürgerbegriff werden Unterschiede zwischen griechischer Polis, römischem Bürgerrecht und mittelalterlicher Stadt deutlich. Wandel ist hier also der eigentliche Erkenntnisgewinn.',
     ),
   ],
 }

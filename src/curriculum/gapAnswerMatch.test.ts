@@ -65,6 +65,17 @@ describe('gapAnswerMatches', () => {
     expect(gapAnswerMatches('zersplittert', enrichGapAccepted(['geteilt']))).toBe(true)
     expect(gapAnswerMatches('vereinigt', ['geteilt'])).toBe(false)
   })
+
+  it('accepts light typos via edit distance without wrong concepts', () => {
+    expect(gapAnswerMatches('Porzelan', ['Porzellan'])).toBe(true)
+    expect(gapAnswerMatches('porzelan', ['Porzellan'])).toBe(true)
+    expect(gapAnswerMatches('Verdunn', ['Verdun'])).toBe(true)
+    expect(gapAnswerMatches('Missonierung', ['Missionierung'])).toBe(true)
+    expect(gapAnswerMatches('Kirche', ['Porzellan'])).toBe(false)
+    expect(gapAnswerMatches('gelebt', ['geteilt'])).toBe(false)
+    expect(gapAnswerMatches('art', ['Art'])).toBe(true) // exact short
+    expect(gapAnswerMatches('Artfremd', ['Art'])).toBe(false)
+  })
 })
 
 describe('textTask / cloze use central tolerance', () => {

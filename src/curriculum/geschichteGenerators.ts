@@ -13,7 +13,7 @@ import { GESCHICHTE_DENSE_K6_LB23_GENERATORS } from './geschichteDenseK6Lb23'
 import { GESCHICHTE_DENSE_UPPER_GENERATORS } from './geschichteDenseUpper'
 import type { Topic } from './types'
 
-/** Alle spielbaren Geschichte-Generatoren (K5–12; K6 LB1 freigegeben, Rest Entwickler). */
+/** Alle spielbaren Geschichte-Generatoren (K5–12; K6 freigegeben, Rest Entwickler). */
 const GESCHICHTE_ALL_GENERATORS: Record<string, Topic['generate']> = {
   ...GESCHICHTE_K5_GENERATORS,
   ...GESCHICHTE_K6_GENERATORS,

@@ -2,8 +2,10 @@
  * Central tolerance for free-text / cloze / gap answers across all curricula.
  *
  * Accepts: case, German umlauts (ä↔ae), trailing punctuation, light inflection
- * (Wirkstoff↔Wirkstoffe), and significant words from multi-word accepted phrases.
- * Does not accept unrelated stems (art ⊄ artfremde; short tokens stay exact).
+ * (Wirkstoff↔Wirkstoffe), light typos via edit distance (Porzellan↔Porzelan),
+ * and significant words from multi-word accepted phrases.
+ * Does not accept unrelated stems/concepts (art ⊄ artfremde; short tokens stay
+ * exact; fuzzy capped by length + shared first letter).
  */
 
 /** Normalize for comparison: trim, casefold, umlauts, trailing sentence punct. */
@@ -33,7 +35,39 @@ function lettersForm(text: string): string {
 const DE_VERB_PREFIXES =
   /^(auf|ab|an|aus|ein|um|zu|vor|nach|mit|weg|hin|her|zer)/
 
-/** Light German inflection / stem match between two single tokens. */
+/** Levenshtein distance (small strings only). */
+function editDistance(a: string, b: string): number {
+  if (a === b) return 0
+  if (!a.length) return b.length
+  if (!b.length) return a.length
+  const rows = a.length + 1
+  const cols = b.length + 1
+  const prev = new Array<number>(cols)
+  const cur = new Array<number>(cols)
+  for (let j = 0; j < cols; j++) prev[j] = j
+  for (let i = 1; i < rows; i++) {
+    cur[0] = i
+    const ca = a.charCodeAt(i - 1)
+    for (let j = 1; j < cols; j++) {
+      const cost = ca === b.charCodeAt(j - 1) ? 0 : 1
+      cur[j] = Math.min(prev[j]! + 1, cur[j - 1]! + 1, prev[j - 1]! + cost)
+    }
+    for (let j = 0; j < cols; j++) prev[j] = cur[j]!
+  }
+  return prev[b.length]!
+}
+
+/**
+ * Max allowed typos for a token pair. Short words stay strict; longer school
+ * terms allow 1–2 edits (Porzellan↔Porzelan) without opening wrong concepts.
+ */
+function maxTypoDistance(len: number): number {
+  if (len < 5) return 0
+  if (len < 8) return 1
+  return 2
+}
+
+/** Light German inflection / stem / typo match between two single tokens. */
 function tokensStemMatch(given: string, accepted: string): boolean {
   if (!given || !accepted) return false
   if (given === accepted) return true
@@ -57,6 +91,18 @@ function tokensStemMatch(given: string, accepted: string): boolean {
       if (gCore.startsWith(aCore) && gCore.length - aCore.length <= 3) return true
       if (aCore.startsWith(gCore) && aCore.length - gCore.length <= 3) return true
     }
+  }
+  // Typo tolerance: same first letter, bounded edit distance, similar length.
+  const minLen = Math.min(given.length, accepted.length)
+  const maxLen = Math.max(given.length, accepted.length)
+  const maxDist = maxTypoDistance(minLen)
+  if (
+    maxDist > 0 &&
+    given[0] === accepted[0] &&
+    maxLen - minLen <= maxDist &&
+    editDistance(given, accepted) <= maxDist
+  ) {
+    return true
   }
   return false
 }
