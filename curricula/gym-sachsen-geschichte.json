@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Geschichte",
-  "version": "1.7.1",
-  "changelog": "Lückentexte: Spoiler-Guard — Antwort darf nicht schon in Lücke/Frage stehen (Bio+Geschichte bankGenerate, gesamter Lehrplan). 133 Themen. K6 LB1 Rom freigegeben; Rest Entwickler (released:false).",
+  "version": "1.8.0",
+  "changelog": "K6 LB2/LB3 verdichtet nach Lehrplan (Herrschaft/Lebensformen Mittelalter; Religionen/Kulturen): Frankenreich, Reichsbildung, Mission, Ostkolonisation, HRR, Weltlich/Geistlich, Grundherrschaft, Burg/Ritter, Frömmigkeit, Klöster; Juden, Pogrome, Kreuzzüge, Al-Andalus, Kulturtransfer, Toleranz heute. 148 Themen. K6 LB1 Rom freigegeben; neue Themen released:false.",
   "official": [
     {
       "id": "geschichte-klasse-5",
@@ -402,6 +402,84 @@
               ]
             },
             {
+              "id": "ge-k6-lb2-frankenreich",
+              "title": "Frankenreich und Karl der Große",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Völkerwanderung",
+                "Frankenreich",
+                "Karl der Große"
+              ]
+            },
+            {
+              "id": "ge-k6-lb2-reichsbildung",
+              "title": "Reichsteilung und Staatenbildung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Reichsteilung",
+                "Nachfolgestaaten",
+                "Karten"
+              ]
+            },
+            {
+              "id": "ge-k6-lb2-missionierung",
+              "title": "Missionierung und Christianisierung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Mission",
+                "Christentum",
+                "Bekehrung"
+              ]
+            },
+            {
+              "id": "ge-k6-lb2-ostkolonisation",
+              "title": "Ostkolonisation",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Ostsiedlung",
+                "Kolonisation",
+                "Landesausbau"
+              ]
+            },
+            {
+              "id": "ge-k6-lb2-heiliges-reich",
+              "title": "Heiliges Römisches Reich",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "HRR",
+                "Kaiser",
+                "Spätmittelalter"
+              ]
+            },
+            {
+              "id": "ge-k6-lb2-weltlich-geistlich",
+              "title": "Weltliche und geistliche Macht",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kaiser",
+                "Papst",
+                "Investitur"
+              ]
+            },
+            {
               "id": "ge-k6-lb2-lehnswesen",
               "title": "Lehnswesen und Vasallität",
               "pointsPerTask": 10,
@@ -415,6 +493,19 @@
               ]
             },
             {
+              "id": "ge-k6-lb2-grundherrschaft",
+              "title": "Grundherrschaft, Abgaben und Dienste",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Grundherrschaft",
+                "Frondienst",
+                "Abgaben"
+              ]
+            },
+            {
               "id": "ge-k6-lb2-alltag-staende",
               "title": "Ständeordnung und Alltag",
               "pointsPerTask": 10,
@@ -423,13 +514,13 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Stände",
-                "Grundherrschaft",
-                "Bauern"
+                "Bauern",
+                "Adel"
               ]
             },
             {
               "id": "ge-k6-lb2-staedte",
-              "title": "Städtisches Leben und Zünfte",
+              "title": "Stadt, Bürger, Zünfte und Hanse",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -437,7 +528,47 @@
               "keywords": [
                 "Markt",
                 "Zunft",
-                "Stadtluft"
+                "Hanse",
+                "Patrizier"
+              ]
+            },
+            {
+              "id": "ge-k6-lb2-burg-ritter",
+              "title": "Burg, Rittertum und höfische Kultur",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Burg",
+                "Ritter",
+                "Minne"
+              ]
+            },
+            {
+              "id": "ge-k6-lb2-alltag-froemmigkeit",
+              "title": "Christliche Durchdringung des Alltags",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Pfarrkirche",
+                "Festkalender",
+                "Volksfrömmigkeit"
+              ]
+            },
+            {
+              "id": "ge-k6-lb2-kloester",
+              "title": "Klöster: Lebensform und Ausstrahlung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kloster",
+                "Mönche",
+                "Regel"
               ]
             }
           ]
@@ -456,20 +587,35 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Religion",
-                "Kultur"
+                "Kultur",
+                "Begegnung"
               ]
             },
             {
-              "id": "ge-k6-lb3-christentum",
-              "title": "Christentum im Mittelalter",
+              "id": "ge-k6-lb3-juden",
+              "title": "Juden als Minderheit und Mitgestalter",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 10,
               "keywords": [
-                "Kirche",
-                "Kloster",
-                "Papst"
+                "Juden",
+                "Handel",
+                "Bildung",
+                "Medizin"
+              ]
+            },
+            {
+              "id": "ge-k6-lb3-juden-verfolgung",
+              "title": "Duldung, Verfolgung und Pogrome",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Ghetto",
+                "Pogrom",
+                "Schwarzer Tod"
               ]
             },
             {
@@ -480,22 +626,74 @@
               "released": false,
               "tasksPerRound": 10,
               "keywords": [
-                "Islam",
-                "Koran",
-                "Mekka"
+                "Mekka",
+                "Medina",
+                "Koran"
               ]
             },
             {
-              "id": "ge-k6-lb3-begegnung",
-              "title": "Begegnung, Konflikte und Kreuzzüge",
+              "id": "ge-k6-lb3-kreuzzuege",
+              "title": "Kreuzzüge und „Heilige Kriege“",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 10,
               "keywords": [
                 "Kreuzzug",
-                "Jerusalem",
-                "Toleranz"
+                "Dschihad",
+                "Jerusalem"
+              ]
+            },
+            {
+              "id": "ge-k6-lb3-al-andalus",
+              "title": "Südspanien: Austausch und Duldung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Al-Andalus",
+                "Córdoba",
+                "Konvivenz"
+              ]
+            },
+            {
+              "id": "ge-k6-lb3-kulturtransfer",
+              "title": "Medizin, Wissenschaft und Handel",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Wissenschaft",
+                "Medizin",
+                "Handel"
+              ]
+            },
+            {
+              "id": "ge-k6-lb3-begegnung",
+              "title": "Absolutheitsanspruch, Duldung und Austausch",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Toleranz",
+                "Konflikt",
+                "Austausch"
+              ]
+            },
+            {
+              "id": "ge-k6-lb3-toleranz-heute",
+              "title": "Kulturelle Vielfalt und Toleranz heute",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Vielfalt",
+                "Toleranz",
+                "Religionsfreiheit"
               ]
             }
           ]
@@ -2095,5 +2293,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "a471d079"
+  "contentHash": "b9922948"
 }

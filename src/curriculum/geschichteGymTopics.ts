@@ -198,43 +198,121 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Mittelalter',
             'Herrschaft',
             'Leben',
-          ]),
+          ], { tasksPerRound: 10 }),
+          topic('ge-k6-lb2-frankenreich', 'Frankenreich und Karl der Große', [
+            'Völkerwanderung',
+            'Frankenreich',
+            'Karl der Große',
+          ], { tasksPerRound: 10 }),
+          topic('ge-k6-lb2-reichsbildung', 'Reichsteilung und Staatenbildung', [
+            'Reichsteilung',
+            'Nachfolgestaaten',
+            'Karten',
+          ], { tasksPerRound: 10 }),
+          topic('ge-k6-lb2-missionierung', 'Missionierung und Christianisierung', [
+            'Mission',
+            'Christentum',
+            'Bekehrung',
+          ], { tasksPerRound: 10 }),
+          topic('ge-k6-lb2-ostkolonisation', 'Ostkolonisation', [
+            'Ostsiedlung',
+            'Kolonisation',
+            'Landesausbau',
+          ], { tasksPerRound: 10 }),
+          topic('ge-k6-lb2-heiliges-reich', 'Heiliges Römisches Reich', [
+            'HRR',
+            'Kaiser',
+            'Spätmittelalter',
+          ], { tasksPerRound: 10 }),
+          topic('ge-k6-lb2-weltlich-geistlich', 'Weltliche und geistliche Macht', [
+            'Kaiser',
+            'Papst',
+            'Investitur',
+          ], { tasksPerRound: 10 }),
           topic('ge-k6-lb2-lehnswesen', 'Lehnswesen und Vasallität', [
             'Lehen',
             'Vasall',
             'Treueeid',
-          ]),
+          ], { tasksPerRound: 10 }),
+          topic('ge-k6-lb2-grundherrschaft', 'Grundherrschaft, Abgaben und Dienste', [
+            'Grundherrschaft',
+            'Frondienst',
+            'Abgaben',
+          ], { tasksPerRound: 10 }),
           topic('ge-k6-lb2-alltag-staende', 'Ständeordnung und Alltag', [
             'Stände',
-            'Grundherrschaft',
             'Bauern',
-          ]),
-          topic('ge-k6-lb2-staedte', 'Städtisches Leben und Zünfte', [
+            'Adel',
+          ], { tasksPerRound: 10 }),
+          topic('ge-k6-lb2-staedte', 'Stadt, Bürger, Zünfte und Hanse', [
             'Markt',
             'Zunft',
-            'Stadtluft',
-          ]),
+            'Hanse',
+            'Patrizier',
+          ], { tasksPerRound: 10 }),
+          topic('ge-k6-lb2-burg-ritter', 'Burg, Rittertum und höfische Kultur', [
+            'Burg',
+            'Ritter',
+            'Minne',
+          ], { tasksPerRound: 10 }),
+          topic('ge-k6-lb2-alltag-froemmigkeit', 'Christliche Durchdringung des Alltags', [
+            'Pfarrkirche',
+            'Festkalender',
+            'Volksfrömmigkeit',
+          ], { tasksPerRound: 10 }),
+          topic('ge-k6-lb2-kloester', 'Klöster: Lebensform und Ausstrahlung', [
+            'Kloster',
+            'Mönche',
+            'Regel',
+          ], { tasksPerRound: 10 }),
         ]),
         area('lb3', 'Religionen und Kulturen im Mit- und Gegeneinander', 10, [
           topic('ge-k6-lb3-religionen', 'Religionen und Kulturen – Überblick', [
             'Religion',
             'Kultur',
-          ]),
-          topic('ge-k6-lb3-christentum', 'Christentum im Mittelalter', [
-            'Kirche',
-            'Kloster',
-            'Papst',
-          ]),
+            'Begegnung',
+          ], { tasksPerRound: 10 }),
+          topic('ge-k6-lb3-juden', 'Juden als Minderheit und Mitgestalter', [
+            'Juden',
+            'Handel',
+            'Bildung',
+            'Medizin',
+          ], { tasksPerRound: 10 }),
+          topic('ge-k6-lb3-juden-verfolgung', 'Duldung, Verfolgung und Pogrome', [
+            'Ghetto',
+            'Pogrom',
+            'Schwarzer Tod',
+          ], { tasksPerRound: 10 }),
           topic('ge-k6-lb3-islam', 'Entstehung und Ausbreitung des Islams', [
-            'Islam',
-            'Koran',
             'Mekka',
-          ]),
-          topic('ge-k6-lb3-begegnung', 'Begegnung, Konflikte und Kreuzzüge', [
+            'Medina',
+            'Koran',
+          ], { tasksPerRound: 10 }),
+          topic('ge-k6-lb3-kreuzzuege', 'Kreuzzüge und „Heilige Kriege“', [
             'Kreuzzug',
+            'Dschihad',
             'Jerusalem',
+          ], { tasksPerRound: 10 }),
+          topic('ge-k6-lb3-al-andalus', 'Südspanien: Austausch und Duldung', [
+            'Al-Andalus',
+            'Córdoba',
+            'Konvivenz',
+          ], { tasksPerRound: 10 }),
+          topic('ge-k6-lb3-kulturtransfer', 'Medizin, Wissenschaft und Handel', [
+            'Wissenschaft',
+            'Medizin',
+            'Handel',
+          ], { tasksPerRound: 10 }),
+          topic('ge-k6-lb3-begegnung', 'Absolutheitsanspruch, Duldung und Austausch', [
             'Toleranz',
-          ]),
+            'Konflikt',
+            'Austausch',
+          ], { tasksPerRound: 10 }),
+          topic('ge-k6-lb3-toleranz-heute', 'Kulturelle Vielfalt und Toleranz heute', [
+            'Vielfalt',
+            'Toleranz',
+            'Religionsfreiheit',
+          ], { tasksPerRound: 10 }),
         ]),
         area('lb4', 'Längsschnitt: Erziehung zum Bürger', 4, [
           topic('ge-k6-lb4-buerger', 'Längsschnitt: Erziehung zum Bürger', ['Bürger', 'Erziehung']),

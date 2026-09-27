@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-25T18:26:37.896Z",
+  "updatedAt": "2026-09-27T08:35:49.059Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -29,10 +29,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Geschichte",
-      "version": "1.7.1",
+      "version": "1.8.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-geschichte.json",
-      "size": 72468,
-      "changelog": "Lückentexte: Spoiler-Guard — Antwort darf nicht schon in Lücke/Frage stehen (Bio+Geschichte bankGenerate, gesamter Lehrplan). 133 Themen. K6 LB1 Rom freigegeben; Rest Entwickler (released:false)."
+      "size": 79715,
+      "changelog": "K6 LB2/LB3 verdichtet nach Lehrplan (Herrschaft/Lebensformen Mittelalter; Religionen/Kulturen): Frankenreich, Reichsbildung, Mission, Ostkolonisation, HRR, Weltlich/Geistlich, Grundherrschaft, Burg/Ritter, Frömmigkeit, Klöster; Juden, Pogrome, Kreuzzüge, Al-Andalus, Kulturtransfer, Toleranz heute. 148 Themen. K6 LB1 Rom freigegeben; neue Themen released:false."
     },
     {
       "id": "gym-sachsen-biologie",

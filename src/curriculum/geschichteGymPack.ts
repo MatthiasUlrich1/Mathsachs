@@ -18,8 +18,8 @@ export function buildGymSachsenGeschichtePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Geschichte',
-    version: '1.7.1',
-    changelog: `Lückentexte: Spoiler-Guard — Antwort darf nicht schon in Lücke/Frage stehen (Bio+Geschichte bankGenerate, gesamter Lehrplan). ${topics} Themen. K6 LB1 Rom freigegeben; Rest Entwickler (released:false).`,
+    version: '1.8.0',
+    changelog: `K6 LB2/LB3 verdichtet nach Lehrplan (Herrschaft/Lebensformen Mittelalter; Religionen/Kulturen): Frankenreich, Reichsbildung, Mission, Ostkolonisation, HRR, Weltlich/Geistlich, Grundherrschaft, Burg/Ritter, Frömmigkeit, Klöster; Juden, Pogrome, Kreuzzüge, Al-Andalus, Kulturtransfer, Toleranz heute. ${topics} Themen. K6 LB1 Rom freigegeben; neue Themen released:false.`,
     official,
     extras: [],
   }

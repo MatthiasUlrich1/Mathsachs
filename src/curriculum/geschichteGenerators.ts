@@ -9,6 +9,7 @@ import { GESCHICHTE_K9_GENERATORS } from './geschichte9'
 import { GESCHICHTE_K10_GENERATORS } from './geschichte10'
 import { GESCHICHTE_OBERSTUFE_GENERATORS } from './geschichteOberstufe'
 import { GESCHICHTE_DENSE_GENERATORS } from './geschichteDense'
+import { GESCHICHTE_DENSE_K6_LB23_GENERATORS } from './geschichteDenseK6Lb23'
 import { GESCHICHTE_DENSE_UPPER_GENERATORS } from './geschichteDenseUpper'
 import type { Topic } from './types'
 
@@ -23,6 +24,7 @@ const GESCHICHTE_ALL_GENERATORS: Record<string, Topic['generate']> = {
   ...GESCHICHTE_K10_GENERATORS,
   ...GESCHICHTE_OBERSTUFE_GENERATORS,
   ...GESCHICHTE_DENSE_GENERATORS,
+  ...GESCHICHTE_DENSE_K6_LB23_GENERATORS,
   ...GESCHICHTE_DENSE_UPPER_GENERATORS,
 }
 

@@ -282,38 +282,19 @@ const k6Staedte: BioBank = {
     fact("selbst", "Was meint städtische Selbstverwaltung grob?", "Dass Städte eigene Regeln und Organe ausbildeten", ["Dass Könige jede Stadtregel verboten", "Dass nur Bauern regierten", "Dass Rom alle Städte abschaffte"], "Räte und Amtleute organisierten Ordnung.", "Räte und Amtleute organisierten Ordnung. Privilegien sicherten Rechte gegenüber Herren. Selbstverwaltung war ein städtisches Merkmal.", "Städte bildeten oft eigene ___.", ["Organe","Regeln"]),
     fact("attraktiv", "Warum zogen Städte Menschen an?", "Wegen Handel, Handwerk und größerer persönlicher Freiheit", ["Weil Abgaben immer höher waren als auf dem Land", "Weil nur Adel dort leben durfte", "Weil es keine Märkte gab"], "Chancen auf Arbeit und Freistatus lockten.", "Chancen auf Arbeit und Freistatus lockten. Gleichzeitig gab es städtische Regeln. Attraktivität war relativ zum Land.", "Städte lockten mit Handel, Handwerk und ___.", ["Freiheit"]),
     fact("kirche", "Welche Rolle spielten Kirchen in Städten?", "Religiöse Zentren, oft auch Bildung und Fürsorge", ["Nur industrielle Produktion", "Nur Gladiatorenkämpfe", "Nur Atomkraftwerke"], "Kirchen prägten Skyline und Alltag.", "Kirchen prägten Skyline und Alltag. Geistliche Institutionen besaßen Einfluss. Stadt und Kirche waren eng verbunden.", "Kirchen waren religiöse ___ der Stadt.", ["Zentren"]),
+    fact("patrizier", "Wer waren Patrizier in der Stadt?", "Eine wohlhabende Oberschicht mit großem Einfluss auf Rat und Politik", ["Nur abhängige Bauern ohne Rechte", "Nur römische Sklaven", "Nur moderne Touristen"], "Patrizier stellten oft Ratsherren.", "Patrizier stellten oft Ratsherren. Reichtum aus Handel sicherte Macht. Soziale Schichtung prägte die Stadt.", "___ waren die städtische Oberschicht mit Ratseinfluss.", ["Patrizier"]),
+    fact("hanse", "Was war die Hanse?", "Ein Bund von Kaufleuten und Städten für Handel und Schutz im Nord- und Ostseeraum", ["Eine römische Legion", "Ein Pharaonenreich", "Nur ein einzelnes Kloster"], "Hansestädte kooperierten über weite Netze.", "Hansestädte kooperierten über weite Netze. Handel und Recht wurden abgestimmt. Die Hanse prägte Wirtschaft und Politik.", "Die ___ verband Kaufleute und Städte im Seehandel.", ["Hanse"]),
+    fact("schichtung", "Wie war die soziale Schichtung in der Stadt grob?", "Patrizier, Handwerker/Zünfte und untere Schichten mit unterschiedlichen Rechten", ["Alle hatten identische Rechte immer", "Nur Bauern ohne Stadt", "Nur Pharaonen und Sklaven"], "Rechtsstellung hing vom Stand in der Stadt ab.", "Rechtsstellung hing vom Stand in der Stadt ab. Zünfte organisierten Handwerk. Schaubilder machen Schichtung sichtbar.", "Städtische ___ meint unterschiedliche Rechte der Gruppen.", ["Schichtung"]),
   ],
   pairs: [
     pair("p1", "Zunft", "Handwerkerzusammenschluss", "Regelte Lehre und Qualität."),
     pair("p2", "Stadtmauer", "Schutz und Rechtsgrenze", "Prägte das Stadtbild."),
     pair("p3", "Markt", "Ort des Handels", "Wirtschaftliches Zentrum."),
+    pair("p4", "Hanse", "Kaufleute- und Städtebund", "Nord- und Ostseehandel."),
+    pair("p5", "Patrizier", "Städtische Oberschicht", "Oft im Rat vertreten."),
   ],
   trueFalse: [
     tf("t1", "Mittelalterliche Städte hatten weder Markt noch Handwerk.", false, "Markt und Handwerk waren zentral.", "Markt und Handwerk waren zentral. Zünfte organisierten Produktion. Genau das machte Städte attraktiv."),
-  ],
-}
-
-const k6Christentum: BioBank = {
-  quelle: "Wikipedia: Christentum",
-  url: "https://de.wikipedia.org/wiki/Christentum",
-  conceptPrefix: "ge:k6:christentum",
-  facts: [
-    fact("ausbreitung", "Wie breitete sich das Christentum in Europa aus?", "Durch Mission, politische Förderung und kirchliche Organisation", ["Nur durch moderne Internetwerbung", "Nur durch Industrielle Revolution", "Nur durch olympische Spiele"], "Missionare predigten den Glauben.", "Missionare predigten den Glauben. Herrscher förderten oft die Kirche. Bistümer und Klöster organisierten das Christentum räumlich.", "Das Christentum breitete sich durch Mission und ___ aus.", ["Organisation","Förderung"]),
-    fact("kirche", "Welche Rolle spielte die Kirche im Mittelalter?", "Sie war religiöse, kulturelle und oft politische Macht", ["Sie war nur ein Sportverein", "Sie ersetzte jede Landwirtschaft", "Sie war nur in Ägypten wichtig"], "Die Kirche prägte Glauben, Bildung und Herrschaft.", "Die Kirche prägte Glauben, Bildung und Herrschaft. Päpste und Bischöfe übten Einfluss aus. Alltag und Politik waren eng mit Kirche verbunden.", "Die Kirche war religiöse und oft ___ Macht.", ["politische","kulturelle"]),
-    fact("kloster", "Wofür waren Klöster wichtig?", "Für Gebet, Wirtschaft, Bildung und Schriftkultur", ["Nur für moderne Fabriken", "Nur für römische Legionen", "Nur für Atomkraft"], "Mönche und Nonnen lebten nach Regeln.", "Mönche und Nonnen lebten nach Regeln. Klöster bewahrten Wissen und bewirtschafteten Land. Sie waren Zentren mittelalterlicher Kultur.", "Klöster dienten Gebet, Wirtschaft und ___.", ["Bildung"]),
-    fact("papst", "Was war der Papst?", "Das Oberhaupt der lateinischen Kirche in Rom", ["Ein römischer Konsul der Republik", "Ein Pharao Ägyptens", "Ein spartanischer König"], "Der Papst beanspruchte geistliche Führung.", "Der Papst beanspruchte geistliche Führung. Konflikte mit Kaisern kamen vor. Das Papsttum prägte europäische Geschichte.", "Der ___ war Oberhaupt der lateinischen Kirche.", ["Papst"]),
-    fact("taufe", "Warum war die Taufe gesellschaftlich wichtig?", "Weil sie Zugehörigkeit zur christlichen Gemeinschaft markierte", ["Weil sie nur Sportregeln festlegte", "Weil sie den Buchdruck erfand", "Weil sie Atomwaffen verbot"], "Taufe bedeutete Aufnahme in die Kirche.", "Taufe bedeutete Aufnahme in die Kirche. In christlichen Gesellschaften war das zentral für Zugehörigkeit. Rituale strukturierten Lebensläufe.", "Die Taufe markierte Zugehörigkeit zur ___ Gemeinschaft.", ["christlichen"]),
-    fact("alltag", "Wie durchdrang das Christentum den Alltag?", "Durch Feste, Kirchenjahr, Moral und Gotteshäuser", ["Durch reine Industrieproduktion", "Durch olympische Athleten allein", "Durch moderne Parteien"], "Sonntage und Heiligenfeste gliederten Zeit.", "Sonntage und Heiligenfeste gliederten Zeit. Kirchenbauten prägten Orte. Glauben beeinflusste Normen.", "Christentum prägte Alltag durch Feste und ___.", ["Kirchenjahr","Moral"]),
-    fact("mission", "Was meint Mission?", "Die Verbreitung des christlichen Glaubens", ["Nur Handel mit Metallen", "Nur Bau von Pyramiden", "Nur Gründung von Zünften"], "Missionare predigten und tauften.", "Missionare predigten und tauften. Manche Mission war mit Herrschaft verbunden. Ausbreitung war ein langer Prozess.", "Mission meint die Verbreitung des christlichen ___.", ["Glaubens"]),
-    fact("toleranz", "Warum ist Religionsfreiheit heute ein Lehrplanbezug?", "Weil historische Konflikte den Wert von Toleranz zeigen", ["Weil Religion nie Konflikte auslöste", "Weil Kirche und Staat immer getrennt waren", "Weil Mission unnötig war"], "Christentum prägte Europa, führte aber auch zu Konflikten.", "Christentum prägte Europa, führte aber auch zu Konflikten. Lehrplan zielt auf Toleranz und Ablehnung von Fanatismus. Geschichte schärft Urteil.", "Historische Konflikte zeigen den Wert von ___.", ["Toleranz","Religionsfreiheit"]),
-  ],
-  pairs: [
-    pair("p1", "Kloster", "Ort von Gebet, Wirtschaft und Bildung", "Zentrum mittelalterlicher Kultur."),
-    pair("p2", "Papst", "Oberhaupt der lateinischen Kirche", "Sitz in Rom."),
-    pair("p3", "Mission", "Verbreitung des Glaubens", "Oft mit Herrschaft verknüpft."),
-  ],
-  trueFalse: [
-    tf("t1", "Die Kirche spielte im europäischen Mittelalter kaum eine Rolle.", false, "Kirche prägte Glauben, Bildung und Politik.", "Kirche prägte Glauben, Bildung und Politik. Klöster und Bistümer organisierten Raum und Alltag. Genau deshalb ist sie Lehrplanstoff."),
   ],
 }
 
@@ -377,7 +358,7 @@ export const GESCHICHTE_DENSE_GENERATORS: Record<string, Topic['generate']> = {
   'ge-k6-lb2-lehnswesen': bankGenerate(k6Lehnswesen),
   'ge-k6-lb2-alltag-staende': bankGenerate(k6AlltagStaende),
   'ge-k6-lb2-staedte': bankGenerate(k6Staedte),
-  'ge-k6-lb3-christentum': bankGenerate(k6Christentum),
+  // Christentum-Alltag/Klöster → LB2 (alltag-froemmigkeit, kloester); LB3 fokussiert Juden/Islam/Begegnung
   'ge-k6-lb3-islam': bankGenerate(k6Islam),
   'ge-k6-lb3-begegnung': bankGenerate(k6Begegnung),
 }

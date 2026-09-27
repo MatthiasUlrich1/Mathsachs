@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+### Geändert
+- **Geschichte Gym Sachsen 1.8.0:** K6 LB2/LB3 verdichtet nach Lehrplan (lplanid=65) —
+  Herrschaft/Lebensformen im Mittelalter (Frankenreich, Reichsbildung, Mission,
+  Ostkolonisation, HRR, weltlich/geistlich, Grundherrschaft, Burg/Ritter, Frömmigkeit,
+  Klöster) und Religionen/Kulturen (Juden, Pogrome, Kreuzzüge, Al-Andalus, Kulturtransfer,
+  Toleranz heute). Neue Themen `released:false`; K6 LB1 Rom unverändert freigegeben.
+
 ## [0.28.68] – 2026-09-27
 
 ### Behoben
