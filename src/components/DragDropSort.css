@@ -43,10 +43,32 @@
 }
 
 .drag-drop-item.dragging {
-  opacity: 0.45;
+  opacity: 0.4;
   cursor: grabbing;
-  /* Let elementFromPoint hit the item underneath while dragging (touch + mouse). */
+}
+
+.drag-drop-sort__hint {
+  margin: 0 0 10px;
+  font-size: 0.82rem;
+  color: #94a3b8;
+  text-align: center;
+}
+
+.drag-drop-sort__ghost {
+  position: fixed;
+  z-index: 10000;
+  transform: translate(-50%, -60%);
   pointer-events: none;
+  touch-action: none;
+  padding: 10px 14px;
+  background: #f8f9fa;
+  border: 2px solid #007bff;
+  border-radius: 8px;
+  color: #212529;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.28);
+  max-width: min(90vw, 16rem);
 }
 
 .drag-drop-item.drag-over {

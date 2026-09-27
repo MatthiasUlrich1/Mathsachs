@@ -1,4 +1,7 @@
-import { useRef, useState } from 'react'
+import { useCallback } from 'react'
+import { createPortal } from 'react-dom'
+import type { BlockDragFrom } from './blockSlotPointer'
+import { useBlockSlotPointer } from './useBlockSlotPointer'
 import './ImageLabelSlots.css'
 
 export type ImageLabelSlot = {
@@ -28,14 +31,9 @@ export interface ImageLabelSlotsProps {
   partResults?: boolean[]
 }
 
-type DragState =
-  | { from: 'pool'; itemIdx: number }
-  | { from: 'slot'; slotIdx: number }
-
 /**
- * Image labeling: drag answer chips into fixed drop fields.
- * Optional leader lines connect each slot to a precise region on the image.
- * Reusable across subjects (biology anatomy, maps, technical diagrams, …).
+ * Image labeling: drag or tap answer chips into fixed drop fields.
+ * Mobile: Pointer Events + ghost + tap-select then tap-frame.
  */
 export const ImageLabelSlots: React.FC<ImageLabelSlotsProps> = ({
   imageSrc,
@@ -50,113 +48,94 @@ export const ImageLabelSlots: React.FC<ImageLabelSlotsProps> = ({
   disabled = false,
   partResults,
 }) => {
-  const [drag, setDrag] = useState<DragState | null>(null)
-  const [overSlot, setOverSlot] = useState<number | null>(null)
-  const [overPool, setOverPool] = useState(false)
-  const dragRef = useRef<DragState | null>(null)
-  const pointerOrigin = useRef<{ x: number; y: number } | null>(null)
-
   const used = new Set(value.filter((s): s is number => s !== null))
   const poolIndices = items.map((_, i) => i).filter((i) => !used.has(i))
 
-  const clearDrag = () => {
-    dragRef.current = null
-    pointerOrigin.current = null
-    setDrag(null)
-    setOverSlot(null)
-    setOverPool(false)
-  }
+  const placeInSlot = useCallback(
+    (slotIdx: number, itemIdx: number, fromSlot?: number) => {
+      if (disabled) return
+      const next = [...value]
+      const prev = next[slotIdx]
+      if (fromSlot !== undefined) {
+        next[fromSlot] = prev ?? null
+      }
+      next[slotIdx] = itemIdx
+      onChange(next)
+    },
+    [disabled, value, onChange],
+  )
 
-  const placeInSlot = (slotIdx: number, itemIdx: number, fromSlot?: number) => {
-    if (disabled) return
-    const next = [...value]
-    const prev = next[slotIdx]
-    if (fromSlot !== undefined) {
-      next[fromSlot] = prev ?? null
-    }
-    next[slotIdx] = itemIdx
-    onChange(next)
-  }
+  const returnToPool = useCallback(
+    (slotIdx: number) => {
+      if (disabled) return
+      const next = [...value]
+      next[slotIdx] = null
+      onChange(next)
+    },
+    [disabled, value, onChange],
+  )
 
-  const fillNextEmpty = (itemIdx: number) => {
-    const empty = value.findIndex((s) => s === null)
-    if (empty < 0) return
-    placeInSlot(empty, itemIdx)
-  }
-
-  const returnToPool = (slotIdx: number) => {
-    if (disabled) return
-    const next = [...value]
-    next[slotIdx] = null
-    onChange(next)
-  }
-
-  const targetFromPoint = (
-    clientX: number,
-    clientY: number,
-  ): { kind: 'slot'; idx: number } | { kind: 'pool' } | null => {
-    const el = document.elementFromPoint(clientX, clientY)
-    const slot = el?.closest('[data-ils-slot]') as HTMLElement | null
-    if (slot) {
-      const idx = Number(slot.dataset.ilsSlot)
-      if (Number.isFinite(idx)) return { kind: 'slot', idx }
-    }
-    if (el?.closest('[data-ils-pool]')) return { kind: 'pool' }
-    return null
-  }
-
-  const beginDrag = (e: React.PointerEvent<HTMLElement>, state: DragState) => {
-    if (disabled) return
-    if (e.pointerType === 'mouse' && e.button !== 0) return
-    e.currentTarget.setPointerCapture(e.pointerId)
-    pointerOrigin.current = { x: e.clientX, y: e.clientY }
-    dragRef.current = state
-    setDrag(state)
-  }
-
-  const onPointerMove = (e: React.PointerEvent) => {
-    if (!dragRef.current) return
-    const t = targetFromPoint(e.clientX, e.clientY)
-    setOverSlot(t?.kind === 'slot' ? t.idx : null)
-    setOverPool(t?.kind === 'pool')
-  }
-
-  const onPointerUp = (e: React.PointerEvent<HTMLElement>) => {
-    const current = dragRef.current
-    if (!current) return
-    const origin = pointerOrigin.current
-    const moved =
-      origin != null &&
-      (Math.abs(e.clientX - origin.x) > 8 || Math.abs(e.clientY - origin.y) > 8)
-    const t = targetFromPoint(e.clientX, e.clientY)
-    if (t?.kind === 'slot') {
-      if (current.from === 'pool') {
-        placeInSlot(t.idx, current.itemIdx)
-      } else if (current.from === 'slot' && current.slotIdx !== t.idx) {
+  const onDropOnSlot = useCallback(
+    (state: BlockDragFrom, slotIdx: number) => {
+      if (disabled) return
+      if (state.from === 'pool') {
+        placeInSlot(slotIdx, state.itemIdx)
+      } else if (state.from === 'slot' && state.slotIdx !== slotIdx) {
         const next = [...value]
-        const a = next[current.slotIdx] ?? null
-        const b = next[t.idx] ?? null
-        next[current.slotIdx] = b
-        next[t.idx] = a
+        const a = next[state.slotIdx] ?? null
+        const b = next[slotIdx] ?? null
+        next[state.slotIdx] = b
+        next[slotIdx] = a
         onChange(next)
       }
-    } else if (t?.kind === 'pool' && current.from === 'slot') {
-      returnToPool(current.slotIdx)
-    } else if (!moved && current.from === 'pool') {
-      fillNextEmpty(current.itemIdx)
-    }
-    try {
-      e.currentTarget.releasePointerCapture(e.pointerId)
-    } catch {
-      /* already released */
-    }
-    clearDrag()
-  }
+    },
+    [disabled, value, onChange, placeInSlot],
+  )
+
+  const onDropOnPool = useCallback(
+    (state: BlockDragFrom) => {
+      if (state.from === 'slot') returnToPool(state.slotIdx)
+    },
+    [returnToPool],
+  )
+
+  const getLabel = useCallback(
+    (state: BlockDragFrom) => {
+      if (state.from === 'pool') return items[state.itemIdx]?.label ?? ''
+      const itemIdx = value[state.slotIdx]
+      return itemIdx != null ? (items[itemIdx]?.label ?? '') : ''
+    },
+    [items, value],
+  )
+
+  const {
+    overSlot,
+    overPool,
+    ghost,
+    status,
+    beginPointer,
+    onSlotActivate,
+    setGhostNode,
+    isSelected,
+    isDragging,
+  } = useBlockSlotPointer({
+    slotAttr: 'data-ils-slot',
+    poolAttr: 'data-ils-pool',
+    disabled,
+    getLabel,
+    onDropOnSlot,
+    onDropOnPool,
+  })
 
   return (
     <div className="image-label-slots">
       {instruction && (
         <p className="image-label-slots__instruction">{instruction}</p>
+      )}
+      {!disabled && (
+        <p className="image-label-slots__hint">
+          Ziehen oder tippen: Block wählen, dann Feld antippen.
+        </p>
       )}
 
       <figure className="image-label-slots__figure">
@@ -208,31 +187,37 @@ export const ImageLabelSlots: React.FC<ImageLabelSlotsProps> = ({
                 : result === false
                   ? 'image-label-slots__slot--bad'
                   : ''
+            const slotState: BlockDragFrom = { from: 'slot', slotIdx }
             return (
               <div
                 key={s.id}
                 data-ils-slot={slotIdx}
                 className={`image-label-slots__slot ${filled ? 'filled' : ''} ${
                   overSlot === slotIdx ? 'drag-over' : ''
-                } ${resultClass}`}
+                } ${isSelected(slotState) ? 'selected' : ''} ${resultClass}`}
                 style={{ left: `${s.x}%`, top: `${s.y}%` }}
                 aria-label={`Beschriftungsfeld ${slotIdx + 1}`}
+                onClick={() => onSlotActivate(slotIdx)}
+                role="button"
+                tabIndex={disabled ? -1 : 0}
+                onKeyDown={(e) => {
+                  if (disabled) return
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    onSlotActivate(slotIdx)
+                  }
+                }}
               >
                 {filled ? (
                   <div
                     className={`image-label-slots__chip in-slot ${
-                      drag?.from === 'slot' && drag.slotIdx === slotIdx
-                        ? 'dragging'
-                        : ''
-                    }`}
-                    onPointerDown={(e) =>
-                      beginDrag(e, { from: 'slot', slotIdx })
-                    }
-                    onPointerMove={onPointerMove}
-                    onPointerUp={onPointerUp}
-                    onPointerCancel={clearDrag}
+                      isDragging(slotState) ? 'dragging' : ''
+                    } ${isSelected(slotState) ? 'selected' : ''}`}
+                    onPointerDown={(e) => beginPointer(e, slotState)}
                   >
-                    <span className="image-label-slots__handle">≡</span>
+                    <span className="image-label-slots__handle" aria-hidden>
+                      ≡
+                    </span>
                     <span>{label}</span>
                     {!disabled && (
                       <button
@@ -266,25 +251,42 @@ export const ImageLabelSlots: React.FC<ImageLabelSlotsProps> = ({
         data-ils-pool
         aria-label="Block-Vorrat"
       >
-        {poolIndices.map((itemIdx) => (
-          <div
-            key={`pool-${itemIdx}`}
-            className={`image-label-slots__chip ${
-              drag?.from === 'pool' && drag.itemIdx === itemIdx ? 'dragging' : ''
-            }`}
-            onPointerDown={(e) => beginDrag(e, { from: 'pool', itemIdx })}
-            onPointerMove={onPointerMove}
-            onPointerUp={onPointerUp}
-            onPointerCancel={clearDrag}
-          >
-            <span className="image-label-slots__handle">≡</span>
-            <span>{items[itemIdx]!.label}</span>
-          </div>
-        ))}
+        {poolIndices.map((itemIdx) => {
+          const state: BlockDragFrom = { from: 'pool', itemIdx }
+          return (
+            <div
+              key={`pool-${itemIdx}`}
+              className={`image-label-slots__chip ${
+                isDragging(state) ? 'dragging' : ''
+              } ${isSelected(state) ? 'selected' : ''}`}
+              onPointerDown={(e) => beginPointer(e, state)}
+            >
+              <span className="image-label-slots__handle" aria-hidden>
+                ≡
+              </span>
+              <span>{items[itemIdx]!.label}</span>
+            </div>
+          )
+        })}
         {poolIndices.length === 0 && (
           <span className="image-label-slots__pool-empty">Alle Blöcke gesetzt</span>
         )}
       </div>
+
+      {status && <p className="image-label-slots__status">{status}</p>}
+
+      {ghost &&
+        createPortal(
+          <div
+            ref={setGhostNode}
+            className="image-label-slots__ghost"
+            style={{ left: ghost.x, top: ghost.y }}
+            aria-hidden
+          >
+            {ghost.label}
+          </div>,
+          document.body,
+        )}
     </div>
   )
 }

@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.68] – 2026-09-27
+
+### Behoben
+- **Mobile Drag&Drop (Blöcke → Rahmen):** Zuordnen/Beschriften/Sortieren funktioniert
+  zuverlässiger auf dem Handy — Pointer-Events mit Fenster-Listenern, Drop per
+  `elementsFromPoint` + Geometrie-Toleranz, sichtbarer Ghost beim Ziehen.
+  **Tap-Fallback:** Block tippen, dann Rahmen tippen (gilt für `dragDropSlots`/
+  Classify/Gebiss, `imageLabelSlots`, `dragDropSort` mit ▲/▼).
+
 ## [0.28.67] – 2026-09-25
 
 ### Behoben
