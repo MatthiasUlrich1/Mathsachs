@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.75] – 2026-09-27
+
+### Behoben
+- **Release-CI:** Worker-Test nutzt gültigen Klausurcode `MSX1:…:checksum`, damit
+  der Installer-Build nach der strengeren MSX1-Validierung wieder grün wird.
+
 ## [0.28.74] – 2026-09-27
 
 ### Behoben

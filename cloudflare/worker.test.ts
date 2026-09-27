@@ -787,7 +787,7 @@ describe('Challenge Worker API', () => {
     const kv = env()
     const created = await postJson('/classes', { name: 'Klasse 8a' }, kv)
     const { code } = (await created.json()) as { code: string }
-    const examCode = 'MSX1:TESTPAYLOAD'
+    const examCode = 'MSX1:TESTPAYLOAD:abc123'
     const examRes = await postJson(
       '/exams',
       {
