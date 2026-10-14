@@ -1,8 +1,10 @@
 import { pick, randInt, type Rng } from '../lib/rng'
+import { TELESCOPE_KEPLER_ASSET } from './physikDiagramAssets'
 import {
   choicePickTask,
   coordinateClickTask,
   dragDropSortTask,
+  imageLabelSlotsTask,
   mixedVariants,
   multiSelectTask,
   numberLineTask,
@@ -535,8 +537,53 @@ const praktikum: Topic['generate'] = mixedVariants(
     }),
 )
 
+function fernrohrLabel(rng: Rng) {
+  const asset = TELESCOPE_KEPLER_ASSET
+  const subset = [...asset.slots]
+  const distractors = asset.distractors.slice(0, 2)
+  const labels = [...subset.map((s) => s.label), ...distractors]
+  // Shuffle pool labels without breaking correctSlots indices into subset order.
+  const order = labels.map((_, i) => i)
+  for (let i = order.length - 1; i > 0; i--) {
+    const j = randInt(rng, 0, i)
+    ;[order[i], order[j]] = [order[j], order[i]]
+  }
+  const shuffledLabels = order.map((i) => labels[i]!)
+  const correctSlots = subset.map((s) => shuffledLabels.indexOf(s.label))
+  return imageLabelSlotsTask({
+    question:
+      'Beschrifte das Kepler-Fernrohr. Ziehe die Begriffe in die nummerierten Felder.',
+    imageSrc: asset.imageSrc,
+    imageAlt: asset.imageAlt,
+    attribution: asset.attribution,
+    drawLeaders: asset.drawLeaders,
+    items: shuffledLabels.map((label) => ({ label })),
+    slots: subset.map(({ id, x, y, targetX, targetY }) => ({
+      id,
+      x,
+      y,
+      targetX,
+      targetY,
+    })),
+    correctSlots,
+    solution: subset.map((s, i) => `${i + 1}:${s.label}`).join('; '),
+    explanation: subset.map((s) => `${s.label}: ${s.wissen}`).join(' '),
+    instruction: 'Ziehe die Bezeichnungen in die nummerierten Felder auf dem Bild.',
+    fachwissen: {
+      text: subset.map((s) => `${s.label} — ${s.functionDe}. ${s.wissen}`).join(' '),
+      quelle: asset.fachwissenQuelle,
+      url: asset.fachwissenUrl,
+    },
+    contentIds: [`${asset.id}:diagram`],
+    dedupeKey: `imgLabel:${asset.id}:all`,
+    rng,
+  })
+}
+
 /** LBW — Fernrohre */
 const fernrohr: Topic['generate'] = mixedVariants(
+  fernrohrLabel,
+  fernrohrLabel,
   (rng) => {
     const cases = [
       {

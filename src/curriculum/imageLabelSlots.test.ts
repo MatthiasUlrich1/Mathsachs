@@ -93,6 +93,15 @@ describe('Biologie anatomy topics', () => {
     'bi-k5-lb5-voegel-feder',
     'bi-k5-lb6-saeuger-gebiss',
     'bi-k5-lb6-saeuger-skelett',
+    'bi-k6-lb5-zellen',
+    'bi-k6-lb5-mikroskop',
+    'bi-k7-lb1-bakterien-bau',
+    'bi-k7-lb2-herz',
+    'bi-k7-lb3-organe',
+    'bi-k6-lb1-organe',
+    'bi-k7-lb4-skelett',
+    'bi-k7-lb4-gelenke',
+    'bi-k9-lb1-blatt',
   ] as const) {
     it(`${id} emits valid tasks including imageLabelSlots`, () => {
       const gen = BIOLOGIE_ANATOMY_GENERATORS[id]
@@ -167,6 +176,35 @@ describe('Biologie anatomy topics', () => {
             expect(String(task.interactive.props.imageSrc)).toMatch(
               /oral-cavity-teeth-blank|carnivore-skull-schematic|horse-skull-schematic|pig-skull-schematic/,
             )
+          }
+          if (id === 'bi-k6-lb5-zellen') {
+            expect(String(task.interactive.props.imageSrc)).toMatch(
+              /animal-cell-numbers|plant-cell-numbers/,
+            )
+            const items = task.interactive.props.items as Array<{ label: string }>
+            expect(items.map((i) => i.label).join(' ')).toMatch(/Zellkern|Zellmembran|Zytoplasma/)
+          }
+          if (id === 'bi-k7-lb1-bakterien-bau') {
+            expect(String(task.interactive.props.imageSrc)).toMatch(/bacterium-numbers/)
+            const items = task.interactive.props.items as Array<{ label: string }>
+            expect(items.map((i) => i.label)).toEqual(
+              expect.arrayContaining(['Nucleoid', 'Zellwand', 'Geißel']),
+            )
+          }
+          if (id === 'bi-k7-lb2-herz') {
+            expect(String(task.interactive.props.imageSrc)).toMatch(/heart-numlabels/)
+            const items = task.interactive.props.items as Array<{ label: string }>
+            expect(items.map((i) => i.label).join(' ')).toMatch(/Vorhof|Kammer|Aorta/)
+          }
+          if (id === 'bi-k7-lb3-organe') {
+            expect(String(task.interactive.props.imageSrc)).toMatch(/stomach-colon-rectum/)
+            const items = task.interactive.props.items as Array<{ label: string }>
+            expect(items.map((i) => i.label)).toEqual(expect.arrayContaining(['Magen']))
+          }
+          if (id === 'bi-k6-lb5-mikroskop') {
+            expect(String(task.interactive.props.imageSrc)).toMatch(/microscope-blank/)
+            const items = task.interactive.props.items as Array<{ label: string }>
+            expect(items.map((i) => i.label).join(' ')).toMatch(/Okular|Objektiv/)
           }
         }
       }

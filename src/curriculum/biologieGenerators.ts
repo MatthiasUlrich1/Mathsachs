@@ -1,4 +1,14 @@
-import { textTask } from './taskHelpers'
+import {
+  biBlattBild,
+  biGelenkeBild,
+  biHerzBild,
+  biMikroskopBild,
+  biPflanzenOrganeBild,
+  biSkelettK7Bild,
+  biVerdauungBild,
+  biZellenBild,
+} from './biologieAnatomy'
+import { textTask, mixedVariants } from './taskHelpers'
 import { allBiologieTopicIds } from './biologieGymTopics'
 import {
   expandBioWissen,
@@ -38,7 +48,17 @@ function withRichFachwissen(generate: Topic['generate']): Topic['generate'] {
       const e = task.explanation.trim()
       enriched = `${enriched} ${e.endsWith('.') ? e : `${e}.`}`.replace(/\s+/g, ' ').trim()
     }
-    if (enriched.trim().length < 80) {
+    // Quality bar: ≥2 substantive sentences (Zuordnung-Solutions mit `;` zählen als eins).
+    const countSentences = (t: string) =>
+      t.split(/[.!?]+/).filter((s) => s.trim().length > 20).length
+    if (countSentences(enriched) < 2 && task.explanation?.trim()) {
+      const e = task.explanation.trim()
+      const extra = e.endsWith('.') ? e : `${e}.`
+      if (!enriched.includes(extra.slice(0, Math.min(40, extra.length)))) {
+        enriched = `${enriched} ${extra}`.replace(/\s+/g, ' ').trim()
+      }
+    }
+    if (enriched.trim().length < 80 || countSentences(enriched) < 2) {
       enriched =
         `${enriched} Fachlich: ${String(task.solution ?? '').slice(0, 120)}.`.replace(/\s+/g, ' ').trim()
     }
@@ -77,6 +97,47 @@ export const BIOLOGIE_GENERATORS: Record<string, Topic['generate']> = wrapAll({
   ...BIOLOGIE_SPECIAL_GENERATORS,
   // Lehrplan-Lücken K7–OS (neue Topic-IDs, released:false).
   ...BIOLOGIE_DENSE_K7PLUS_GENERATORS,
+  // Aufbau-Bilder zuletzt — Spezialbanken + imageLabelSlots (nicht von Special überschreiben).
+  'bi-k6-lb1-organe': mixedVariants(
+    BIOLOGIE_SPECIAL_GENERATORS['bi-k6-lb1-organe']!,
+    biPflanzenOrganeBild,
+    biPflanzenOrganeBild,
+  ),
+  'bi-k6-lb5-zellen': mixedVariants(
+    BIOLOGIE_K6_EXPANDED['bi-k6-lb5-zellen']!,
+    biZellenBild,
+    biZellenBild,
+  ),
+  'bi-k6-lb5-mikroskop': mixedVariants(
+    BIOLOGIE_SPECIAL_GENERATORS['bi-k6-lb5-mikroskop']!,
+    biMikroskopBild,
+    biMikroskopBild,
+  ),
+  'bi-k7-lb2-herz': mixedVariants(
+    BIOLOGIE_SPECIAL_GENERATORS['bi-k7-lb2-herz']!,
+    biHerzBild,
+    biHerzBild,
+  ),
+  'bi-k7-lb3-organe': mixedVariants(
+    BIOLOGIE_SPECIAL_GENERATORS['bi-k7-lb3-organe']!,
+    biVerdauungBild,
+    biVerdauungBild,
+  ),
+  'bi-k7-lb4-skelett': mixedVariants(
+    BIOLOGIE_K7_EXPANDED['bi-k7-lb4-skelett']!,
+    biSkelettK7Bild,
+    biSkelettK7Bild,
+  ),
+  'bi-k7-lb4-gelenke': mixedVariants(
+    BIOLOGIE_DENSE_K7PLUS_GENERATORS['bi-k7-lb4-gelenke']!,
+    biGelenkeBild,
+    biGelenkeBild,
+  ),
+  'bi-k9-lb1-blatt': mixedVariants(
+    BIOLOGIE_SPECIAL_GENERATORS['bi-k9-lb1-blatt']!,
+    biBlattBild,
+    biBlattBild,
+  ),
 })
 
 /** Organellen: eigene Bank — nicht Alias von Zellen (Bug B). */

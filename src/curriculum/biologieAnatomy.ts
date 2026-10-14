@@ -4,15 +4,26 @@
  */
 import type { Rng } from '../lib/rng'
 import {
+  ANIMAL_CELL_ASSET,
+  BACTERIUM_ASSET,
   BIRD_ORGANS_ASSET,
+  DIGESTIVE_STOMACH_ASSET,
   FEATHER_PARTS_ASSET,
   FISH_ORGANS_ASSET,
   FISH_TROUT_ASSET,
+  HEART_NUMLABELS_ASSET,
   HORSE_SKULL_TEETH_ASSET,
+  JOINT_BLANK_ASSET,
+  LEAF_BUD_STEM_ASSET,
   LION_TEETH_ASSET,
+  MICROSCOPE_BLANK_ASSET,
   PIG_SKULL_TEETH_ASSET,
+  PLANT_CELL_ASSET,
+  PLANT_ORGANS_ASSET,
   SKELETON_AXIAL_ASSET,
+  SKELETON_AXIAL_K7_ASSET,
   SKELETON_UPPER_ASSET,
+  SKELETON_UPPER_K7_ASSET,
   TEETH_TYPES_ASSET,
   type AnatomyAsset,
 } from './anatomyAssets'
@@ -1024,10 +1035,313 @@ export const biSaeugerSkelett: Topic['generate'] = mixedVariants(
   skeletonAxialLabel,
 )
 
+function animalCellLabel(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    ANIMAL_CELL_ASSET,
+    'Beschrifte die tierische Zelle. Ziehe die Begriffe in die nummerierten Felder.',
+  )
+}
+
+function plantCellLabel(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    PLANT_CELL_ASSET,
+    'Beschrifte die Pflanzenzelle. Ziehe die Begriffe in die nummerierten Felder.',
+  )
+}
+
+function bacteriumLabel(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    BACTERIUM_ASSET,
+    'Beschrifte den Aufbau der Bakterienzelle. Ziehe die Begriffe in die Felder auf den Markierungen.',
+  )
+}
+
+function animalCellFunctions(rng: Rng) {
+  return buildFunctionMatch(
+    rng,
+    ANIMAL_CELL_ASSET,
+    'Ordne den Teilen der Tierzelle die passende Funktion zu.',
+  )
+}
+
+function plantCellFunctions(rng: Rng) {
+  return buildFunctionMatch(
+    rng,
+    PLANT_CELL_ASSET,
+    'Ordne den Teilen der Pflanzenzelle die passende Funktion zu.',
+  )
+}
+
+function bacteriumFunctions(rng: Rng) {
+  return buildFunctionMatch(
+    rng,
+    BACTERIUM_ASSET,
+    'Ordne den Bakterienteilen die passende Funktion zu.',
+  )
+}
+
+function animalCellFnMc(rng: Rng) {
+  return buildFunctionMc(rng, ANIMAL_CELL_ASSET)
+}
+
+function plantCellFnMc(rng: Rng) {
+  return buildFunctionMc(rng, PLANT_CELL_ASSET)
+}
+
+function bacteriumFnMc(rng: Rng) {
+  return buildFunctionMc(rng, BACTERIUM_ASSET)
+}
+
+/** K6 LB5 — Zellen im Vergleich: Bild-Zuordnung Tier-/Pflanzenzelle. */
+export const biZellenBild: Topic['generate'] = mixedVariants(
+  animalCellLabel,
+  plantCellLabel,
+  animalCellFunctions,
+  plantCellFunctions,
+  animalCellFnMc,
+  plantCellFnMc,
+  animalCellLabel,
+  plantCellLabel,
+)
+
+/** K7 LB1 — Bakterien Bau: Bild-Zuordnung + Funktionsfragen. */
+export const biBakterienBauBild: Topic['generate'] = mixedVariants(
+  bacteriumLabel,
+  bacteriumFunctions,
+  bacteriumFnMc,
+  bacteriumLabel,
+  bacteriumFunctions,
+)
+
+function heartLabel(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    HEART_NUMLABELS_ASSET,
+    'Beschrifte das Herz. Ziehe die Begriffe in die Felder auf den Markierungen.',
+  )
+}
+
+function heartFunctions(rng: Rng) {
+  return buildFunctionMatch(
+    rng,
+    HEART_NUMLABELS_ASSET,
+    'Ordne den Herzteilen die passende Funktion zu.',
+  )
+}
+
+function heartFnMc(rng: Rng) {
+  return buildFunctionMc(rng, HEART_NUMLABELS_ASSET)
+}
+
+function digestiveLabel(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    DIGESTIVE_STOMACH_ASSET,
+    'Beschrifte Magen und Dickdarm. Ziehe die Begriffe in die nummerierten Felder.',
+  )
+}
+
+function digestiveFunctions(rng: Rng) {
+  return buildFunctionMatch(
+    rng,
+    DIGESTIVE_STOMACH_ASSET,
+    'Ordne den Verdauungsabschnitten die passende Funktion zu.',
+  )
+}
+
+function digestiveFnMc(rng: Rng) {
+  return buildFunctionMc(rng, DIGESTIVE_STOMACH_ASSET)
+}
+
+function microscopeLabel(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    MICROSCOPE_BLANK_ASSET,
+    'Beschrifte das Lichtmikroskop. Ziehe die Begriffe in die Felder.',
+  )
+}
+
+function microscopeFunctions(rng: Rng) {
+  return buildFunctionMatch(
+    rng,
+    MICROSCOPE_BLANK_ASSET,
+    'Ordne den Mikroskopteilen die passende Funktion zu.',
+  )
+}
+
+function microscopeFnMc(rng: Rng) {
+  return buildFunctionMc(rng, MICROSCOPE_BLANK_ASSET)
+}
+
+/** K7 LB2 — Herz Aufbau (Bild). */
+export const biHerzBild: Topic['generate'] = mixedVariants(
+  heartLabel,
+  heartFunctions,
+  heartFnMc,
+  heartLabel,
+  heartFunctions,
+)
+
+/** K7 LB3 — Verdauungsorgane (Bild). */
+export const biVerdauungBild: Topic['generate'] = mixedVariants(
+  digestiveLabel,
+  digestiveFunctions,
+  digestiveFnMc,
+  digestiveLabel,
+)
+
+/** K6 LB5 — Mikroskop Gerät (Bild). */
+export const biMikroskopBild: Topic['generate'] = mixedVariants(
+  microscopeLabel,
+  microscopeFunctions,
+  microscopeFnMc,
+  microscopeLabel,
+)
+
+function plantOrgansLabel(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    PLANT_ORGANS_ASSET,
+    'Beschrifte die Pflanzenorgane. Ziehe die Begriffe in die Felder.',
+  )
+}
+
+function plantOrgansFunctions(rng: Rng) {
+  return buildFunctionMatch(
+    rng,
+    PLANT_ORGANS_ASSET,
+    'Ordne den Pflanzenorganen die passende Funktion zu.',
+  )
+}
+
+function plantOrgansFnMc(rng: Rng) {
+  return buildFunctionMc(rng, PLANT_ORGANS_ASSET)
+}
+
+/** K6 LB1 — Spross, Blatt, Wurzel (Bild). */
+export const biPflanzenOrganeBild: Topic['generate'] = mixedVariants(
+  plantOrgansLabel,
+  plantOrgansFunctions,
+  plantOrgansFnMc,
+  plantOrgansLabel,
+  plantOrgansFunctions,
+)
+
+function leafBudLabel(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    LEAF_BUD_STEM_ASSET,
+    'Beschrifte Blatt und Sprossansatz. Ziehe die Begriffe in die Felder.',
+  )
+}
+
+function leafBudFunctions(rng: Rng) {
+  return buildFunctionMatch(
+    rng,
+    LEAF_BUD_STEM_ASSET,
+    'Ordne Blattteilen die passende Funktion zu.',
+  )
+}
+
+function leafBudFnMc(rng: Rng) {
+  return buildFunctionMc(rng, LEAF_BUD_STEM_ASSET)
+}
+
+/** K9 LB1 — Blatt makro (Bild); Gewebe/Spaltöffnungen bleiben in der Bank. */
+export const biBlattBild: Topic['generate'] = mixedVariants(
+  leafBudLabel,
+  leafBudFunctions,
+  leafBudFnMc,
+  leafBudLabel,
+)
+
+function skeletonUpperK7Label(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    SKELETON_UPPER_K7_ASSET,
+    'Beschrifte Knochen am Skelett (Oberkörper). Ziehe die Begriffe in die Felder.',
+  )
+}
+
+function skeletonAxialK7Label(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    SKELETON_AXIAL_K7_ASSET,
+    'Beschrifte Achsen- und Gliedmaßenskelett. Ziehe die Begriffe in die Felder.',
+  )
+}
+
+function skeletonK7Functions(rng: Rng) {
+  const asset = rng() < 0.5 ? SKELETON_UPPER_K7_ASSET : SKELETON_AXIAL_K7_ASSET
+  return buildFunctionMatch(
+    rng,
+    asset,
+    'Ordne Skelettteilen die passende Funktion zu.',
+  )
+}
+
+function skeletonK7FnMc(rng: Rng) {
+  return buildFunctionMc(
+    rng,
+    rng() < 0.5 ? SKELETON_UPPER_K7_ASSET : SKELETON_AXIAL_K7_ASSET,
+  )
+}
+
+/** K7 LB4 — Skelett Aufbau (Bild); Gelenke/Muskeln in Sibling-Themen. */
+export const biSkelettK7Bild: Topic['generate'] = mixedVariants(
+  skeletonUpperK7Label,
+  skeletonAxialK7Label,
+  skeletonK7Functions,
+  skeletonK7FnMc,
+  skeletonUpperK7Label,
+  skeletonAxialK7Label,
+)
+
+function jointLabel(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    JOINT_BLANK_ASSET,
+    'Beschrifte den Aufbau eines Gelenks. Ziehe die Begriffe in die Felder.',
+  )
+}
+
+function jointFunctions(rng: Rng) {
+  return buildFunctionMatch(
+    rng,
+    JOINT_BLANK_ASSET,
+    'Ordne den Gelenkteilen die passende Funktion zu.',
+  )
+}
+
+function jointFnMc(rng: Rng) {
+  return buildFunctionMc(rng, JOINT_BLANK_ASSET)
+}
+
+/** K7 LB4 — Gelenkaufbau (Bild). */
+export const biGelenkeBild: Topic['generate'] = mixedVariants(
+  jointLabel,
+  jointFunctions,
+  jointFnMc,
+  jointLabel,
+  jointFunctions,
+)
+
 export const BIOLOGIE_ANATOMY_GENERATORS: Record<string, Topic['generate']> = {
   'bi-k5-lb2-fische-aufbau': biFischeAufbau,
   'bi-k5-lb5-voegel-aufbau': biVoegelAufbau,
   'bi-k5-lb5-voegel-feder': biVoegelFederBild,
   'bi-k5-lb6-saeuger-gebiss': biSaeugerGebissBild,
   'bi-k5-lb6-saeuger-skelett': biSaeugerSkelett,
+  'bi-k6-lb1-organe': biPflanzenOrganeBild,
+  'bi-k6-lb5-zellen': biZellenBild,
+  'bi-k6-lb5-mikroskop': biMikroskopBild,
+  'bi-k7-lb1-bakterien-bau': biBakterienBauBild,
+  'bi-k7-lb2-herz': biHerzBild,
+  'bi-k7-lb3-organe': biVerdauungBild,
+  'bi-k7-lb4-skelett': biSkelettK7Bild,
+  'bi-k7-lb4-gelenke': biGelenkeBild,
+  'bi-k9-lb1-blatt': biBlattBild,
 }

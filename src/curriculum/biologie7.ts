@@ -219,60 +219,67 @@ const ernaehrung: BioBank = {
   ],
 }
 
+/** Knochen/Skelett — Gelenke → bi-k7-lb4-gelenke, Muskeln/Sehnen → bi-k7-lb4-muskeln. */
 const skelett: BioBank = {
   quelle: 'Wikipedia: Skelett',
   url: 'https://de.wikipedia.org/wiki/Menschliches_Skelett',
+  conceptPrefix: 'bio:k7:skelett',
   facts: [
     {
-      concept: 'bio:k7:welche-aufgaben-hat-das-skelett',
+      concept: 'bio:k7:skelett:aufgaben',
       prompt: 'Welche Aufgaben hat das Skelett?',
-      answer: 'Stütze, Schutz und Ansatz für Muskeln',
+      answer: 'Stütze, Schutz und Calciumspeicher',
       wrong: ['Nur Blut filtern wie die Niere', 'Nur Hormone erzeugen', 'Nur Fotosynthese'],
-      explanation: 'Knochen schützen Organe und ermöglichen Bewegung mit Muskeln.',
+      explanation: 'Knochen stützen, schützen Organe und speichern Mineralstoffe.',
       wissen:
-        'Das Skelett stützt den Körper, schützt Organe (z. B. Schädel, Brustkorb) und bietet Ansatzpunkte für Muskeln.',
-      gap: 'Knochen und ___ arbeiten bei der Bewegung zusammen.',
-      gapAccepted: ['Muskeln', 'Muskulatur', 'Sehnen'],
+        'Das Skelett stützt den Körper, schützt Organe (z. B. Schädel, Brustkorb) und speichert Calcium. Knochenmark ist an der Blutbildung beteiligt.',
+      gap: 'Der ___ schützt das Gehirn.',
+      gapAccepted: ['Schädel', 'Schädelknochen', 'Hirnschädel'],
     },
     {
-      concept: 'bio:k7:was-verbindet-knochen-beweglich-miteinan',
-      prompt: 'Was verbindet Knochen beweglich miteinander?',
-      answer: 'Gelenke',
-      wrong: ['Nur Haare', 'Nur Schweißdrüsen', 'Nur Zahnschmelz'],
-      explanation: 'Gelenke ermöglichen Bewegung.',
+      concept: 'bio:k7:skelett:wirbelsaeule',
+      prompt: 'Welche Aufgabe hat die Wirbelsäule vor allem?',
+      answer: 'Stützt den Rumpf und schützt das Rückenmark',
+      wrong: ['Filtert nur das Blut', 'Erzeugt nur Hormone', 'Bildet nur Hautpigmente'],
+      explanation: 'Wirbel bilden die Körperachse und schützen das Rückenmark.',
       wissen:
-        'Gelenke verbinden Knochen beweglich. Scharniergelenke bewegen vorwiegend in einer Ebene; Kugelgelenke in vielen Richtungen.',
+        'Die Wirbelsäule besteht aus Wirbeln: sie stützt den Rumpf und umschließt das Rückenmark im Wirbelkanal.',
     },
     {
-      concept: 'bio:k7:wozu-dienen-sehnen',
-      prompt: 'Wozu dienen Sehnen?',
-      answer: 'Verbinden Muskeln mit Knochen',
-      wrong: ['Leiten nur Nervenimpulse zum Auge', 'Speichern nur Galle', 'Bilden Antikörper'],
-      explanation: 'Sehnen übertragen Zugkraft.',
+      concept: 'bio:k7:skelett:brustkorb',
+      prompt: 'Was schützt der Brustkorb vor allem?',
+      answer: 'Herz und Lunge',
+      wrong: ['Nur die Fußsohlen', 'Nur die Zahnwurzeln', 'Nur die Haarfollikel'],
+      explanation: 'Rippen und Brustbein bilden den schützenden Brustkorb.',
       wissen:
-        'Sehnen sind zugfeste Bindegewebsstränge: sie übertragen die Kraft des sich zusammenziehenden Muskels auf den Knochen.',
+        'Rippen, Brustbein und Wirbelsäule bilden den Brustkorb und schützen Herz und Lunge.',
+      gap: 'Rippen und Brustbein gehören zum ___.',
+      gapAccepted: ['Brustkorb', 'Thorax'],
     },
   ],
   pairs: [
     {
-      term: 'Scharniergelenk',
-      meaning: 'Bewegung vorwiegend in einer Ebene (z. B. Ellbogen)',
-      wissen: 'Erlaubt Beugung/Streckung weitgehend in einer Ebene — z. B. Ellbogen, Knie.',
+      concept: 'bio:k7:skelett:paar-schaedel',
+      term: 'Schädel',
+      meaning: 'Knöcherne Kapsel um das Gehirn',
+      wissen: 'Der Schädel schützt Gehirn und viele Sinnesorgane.',
     },
     {
-      term: 'Kugelgelenk',
-      meaning: 'Bewegung in vielen Richtungen (z. B. Schulter)',
-      wissen: 'Kugelkopf in Pfanne — große Beweglichkeit, z. B. Schulter und Hüfte.',
+      concept: 'bio:k7:skelett:paar-achse',
+      term: 'Achsenskelett',
+      meaning: 'Schädel, Wirbelsäule und Brustkorb',
+      wissen: 'Das Achsenskelett bildet die zentrale Körperachse.',
     },
     {
-      term: 'Muskel',
-      meaning: 'Erzeugt Zug durch Zusammenziehen',
-      wissen: 'Skelettmuskeln verkürzen sich aktiv und ziehen über Sehnen am Knochen.',
+      concept: 'bio:k7:skelett:paar-glied',
+      term: 'Gliedmaßenskelett',
+      meaning: 'Knochen von Armen und Beinen (mit Gürteln)',
+      wissen: 'Zum Gliedmaßenskelett gehören Schulter-/Beckengürtel sowie Arm- und Beinknochen.',
     },
   ],
   trueFalse: [
     {
-      concept: 'bio:k7:knochen-sind-voellig-leblos-und-ohne-blu',
+      concept: 'bio:k7:skelett:tf-leblos',
       statement: 'Knochen sind völlig leblos und ohne Blutversorgung.',
       correct: false,
       explanation: 'Knochengewebe ist lebendig und gut durchblutet.',
@@ -282,13 +289,13 @@ const skelett: BioBank = {
   ],
   multis: [
     {
-      concept: 'bio:k7:was-gehoert-zum-bewegungssystem',
-      question: 'Was gehört zum Bewegungssystem?',
-      correct: ['Knochen', 'Muskeln', 'Gelenke'],
-      wrong: ['Nur Chloroplasten', 'Nur Blütenstaub'],
-      explanation: 'Stütz- und Bewegungsapparat umfasst diese Teile.',
+      concept: 'bio:k7:skelett:multi-achse',
+      question: 'Was gehört zum Achsenskelett?',
+      correct: ['Schädel', 'Wirbelsäule', 'Brustkorb'],
+      wrong: ['Nur Fingerknochen allein', 'Nur die Kniescheibe allein'],
+      explanation: 'Achsenskelett = zentrale Achse ohne freie Gliedmaßen.',
       wissen:
-        'Zum Bewegungssystem gehören Knochen (Stütze), Gelenke (Beweglichkeit) und Muskeln mit Sehnen (Antrieb).',
+        'Zum Achsenskelett zählen Schädel, Wirbelsäule und Brustkorb — die Gliedmaßenknochen gehören zum Gliedmaßenskelett.',
     },
   ],
 }

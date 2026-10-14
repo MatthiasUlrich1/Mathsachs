@@ -23,8 +23,12 @@ import { BIOLOGIE_K10_GENERATORS as BASE_K10 } from './biologie10'
 import { BIOLOGIE_SPECIAL_GENERATORS } from './biologieSpecialTopics'
 import {
   BIOLOGIE_ANATOMY_GENERATORS,
+  biHerzBild,
+  biMikroskopBild,
   biSaeugerGebissBild,
+  biVerdauungBild,
   biVoegelFederBild,
+  biZellenBild,
 } from './biologieAnatomy'
 import {
   buildFischeLebensraumDense,
@@ -508,9 +512,11 @@ export const BIOLOGIE_K6_EXPANDED = withSpecialTopics(BASE_K6, [
   'bi-k6-lb5-mikroskop',
 ])
 
-// Cells: cell icons only — never vertebrate assign sets
+// Cells: Bild-Zuordnung Tier-/Pflanzenzelle + cell icons — never vertebrate assign sets
 BIOLOGIE_K6_EXPANDED['bi-k6-lb5-zellen'] = withTopicUx(
   BASE_K6['bi-k6-lb5-zellen'],
+  biZellenBild,
+  biZellenBild,
   bankGenerate({
     quelle: 'Wikipedia: Zelle (Biologie)',
     url: 'https://de.wikipedia.org/wiki/Zelle_(Biologie)',
@@ -521,7 +527,7 @@ BIOLOGIE_K6_EXPANDED['bi-k6-lb5-zellen'] = withTopicUx(
         answer: 'Pflanzenzelle',
         explanation: 'Cloze zu Organellen.',
         wissen:
-          'Der Zellkern steuert die Zelle und enthält DNA; Chloroplasten und Zellwand sind typische Pflanzenmerkmale — Vertiefung im Mikroskop-Spezial.',
+          'Der Zellkern steuert die Zelle und enthält DNA; Chloroplasten und Zellwand sind typische Pflanzenmerkmale.',
         cloze:
           'Die ___ enthält DNA; Pflanzenzellen haben oft eine feste ___.',
         clozeAccepted: [
@@ -533,6 +539,13 @@ BIOLOGIE_K6_EXPANDED['bi-k6-lb5-zellen'] = withTopicUx(
   }),
 )
 
+// Mikroskop: Gerät-Bild + Spezialbank (keine Organellen-Dopplung zu Zellen)
+BIOLOGIE_K6_EXPANDED['bi-k6-lb5-mikroskop'] = withTopicUx(
+  BIOLOGIE_SPECIAL_GENERATORS['bi-k6-lb5-mikroskop'],
+  biMikroskopBild,
+  biMikroskopBild,
+)
+
 export const BIOLOGIE_K7_EXPANDED = withSpecialTopics(BASE_K7, [
   'bi-k7-lb1-hygiene',
   'bi-k7-lb2-herz',
@@ -540,6 +553,18 @@ export const BIOLOGIE_K7_EXPANDED = withSpecialTopics(BASE_K7, [
   'bi-k7-lb3-naehrstoffe',
   'bi-k7-lb3-organe',
 ])
+
+BIOLOGIE_K7_EXPANDED['bi-k7-lb2-herz'] = withTopicUx(
+  BIOLOGIE_SPECIAL_GENERATORS['bi-k7-lb2-herz'],
+  biHerzBild,
+  biHerzBild,
+)
+
+BIOLOGIE_K7_EXPANDED['bi-k7-lb3-organe'] = withTopicUx(
+  BIOLOGIE_SPECIAL_GENERATORS['bi-k7-lb3-organe'],
+  biVerdauungBild,
+  biVerdauungBild,
+)
 
 export const BIOLOGIE_K8_EXPANDED = withSpecialTopics(BASE_K8, [
   'bi-k8-lb1-auge-ohr',

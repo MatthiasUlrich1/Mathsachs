@@ -57,7 +57,7 @@ const SIBLING_FAMILIES: string[][] = [
   ['bi-k6-lb4-wald', 'bi-k6-lb4-nahrung'],
   ['bi-k6-lb5-zellen', 'bi-k6-lb5-mikroskop'],
   ['bi-k7-lb1-mikroben', 'bi-k7-lb1-hygiene'],
-  ['bi-k7-lb2-blut', 'bi-k7-lb2-herz', 'bi-k7-lb2-immun'],
+  ['bi-k7-lb2-blut', 'bi-k7-lb2-herz', 'bi-k7-lb2-immun', 'bi-k7-lb2-gefaesse'],
   ['bi-k7-lb3-ernaehrung', 'bi-k7-lb3-naehrstoffe', 'bi-k7-lb3-organe'],
   ['bi-k8-lb1-sinne', 'bi-k8-lb1-auge-ohr', 'bi-k8-lb1-hormone'],
   ['bi-k8-lb2-sexualitaet', 'bi-k8-lb2-entwicklung'],

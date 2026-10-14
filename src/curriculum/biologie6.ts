@@ -768,7 +768,7 @@ const zellen: BioBank = {
       concept: 'bio:k6:zellen:paar-vergleich',
       term: 'Pflanzenzelle',
       meaning: 'Typisch mit Wand, oft Chloroplasten und großer Vakuole',
-      wissen: 'Unterscheidet sich strukturell von der Tierzelle — Organellen-Details im Mikroskop-Spezial.',
+      wissen: 'Unterscheidet sich strukturell von der Tierzelle durch Wand, oft Chloroplasten und große Vakuole.',
     },
   ],
   trueFalse: [
@@ -786,7 +786,7 @@ const zellen: BioBank = {
       correct: true,
       explanation: 'Mitochondrien kommen in Pflanzen- und Tierzellen vor.',
       wissen:
-        'Mitochondrien liefern Energie in Pflanzen- und Tierzellen — Feinheiten zu Organellen → Mikroskop-Spezial.',
+        'Mitochondrien liefern Energie in Pflanzen- und Tierzellen.',
     },
   ],
   multis: [

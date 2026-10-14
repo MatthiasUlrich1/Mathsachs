@@ -1,5 +1,5 @@
 ---
-description: Qualitätsregeln für Lehrplan-Aufgaben (Runden, Prompts, Spoiler)
+description: Qualitätsregeln für Lehrplan-Aufgaben (Runden, Prompts, Spoiler, Aufbau)
 globs: src/curriculum/**
 alwaysApply: false
 ---
@@ -28,6 +28,67 @@ alwaysApply: false
 - Visuals dürfen die gesuchte Zahl/den Bruch nicht als Label verraten
   (`showLabel: false`, wenn genau dieser Wert die Antwort ist).
 
+## Aufbau-Themen (Bild-Zuordnung)
+
+- Themen zum **Aufbau** (Zelle, Bakterie, Organe, Geräte, Schädel, Feder, … —
+  fachübergreifend) sollen wo sinnvoll **lizenzklare Bilder** nutzen
+  (bevorzugt Wikimedia Commons / PD / CC0 / CC BY mit klarer Attribution).
+- Interaktion: `imageLabelSlots` (oder gleichwertige Slot-Zuordnung).
+- Bilder unter `public/` ablegen (Pattern wie `public/anatomy/`), Attribution in
+  `ATTRIBUTION.md` **und** im Task (`AnatomyAsset.attribution` / figcaption).
+- Lizenzfelder und Quellenangabe wie im Repo üblich korrekt setzen.
+- Vorhandene **Nummerierungen/Anstriche im Bild** durch Drop-Felder **korrekt
+  überdecken** (`drawLeaders: false`, Slot-Zentren auf den Markierungen).
+- Qualität: Aufgabe und Antworten inhaltlich passend; Bild gut erkennbar;
+  Zuordnungen eindeutig (kein Ratespiel zwischen überlappenden Organellen).
+
+## Interaktionen und Grafik
+
+- Interaktive Formate und grafische Elemente **wo möglich und sinnvoll**.
+- Nicht erzwingen, wo unsinnig (reine Fakten-/Zahlenfragen ohne visuellen Mehrwert).
+
+## Inhaltliche Qualität
+
+- Aufgabe und erwartete Antworten müssen thematisch und fachlich passen.
+- Keine Spoilers in Prompt/Visual zur gesuchten Antwort (außer bewusst als
+  Lernhilfe gekennzeichnet).
+
+## Fachwissen: immer aufgabenbezogen
+
+- Jeder `fachwissen`-Eintrag muss **spezifisches Wissen zur jeweiligen Aufgabe/
+  Antwort** enthalten (Begriff, Prinzip, Rechenweg oder Zuordnung dieser
+  Aufgabe) — nicht nur Topic-Titel, Leertext, Platzhalter oder generische
+  Fach-Einleitung ohne Bezug zur gestellten Frage.
+- Verboten als alleiniges Fachwissen: Meta („im Lehrplan …“, „im Thema hilft …“),
+  UI-/Wertungs-Hinweise, Einwort-Stubs, copy-paste desselben Generikums für
+  unterschiedliche Aufgaben.
+- Bei Banken: `wissen` pro Fact/Pair mit Bezug zu Prompt/Lösung pflegen;
+  Safety-Nets (`expandBioWissen` / Quality-Tests) ergänzen, nicht ersetzen.
+
+## Themenbindung — keine Vermischung/Dopplung
+
+- Aufgaben bleiben **klar themengebunden**.
+- Keine inhaltliche Vermischung oder Dopplung derselben Facts über mehrere
+  Themen **desselben Lernbereichs** (Cross-Topic-Duplikate bereinigen bzw.
+  Spezialthemen sauber trennen).
+
+## Kein Lehrplan-Meta / keine Philosophie-Fragen
+
+- **Keine** philosophischen oder „warum wichtig für den Lehrplan“-Fragen.
+- Nur **Lernbereich-Inhalte** (Fachfakten, Begriffe, Struktur, Prozesse).
+- Keine Meta-Floskeln in `wissen`/Erklärung
+  (z. B. „Im Unterrichtsthema hilft …“, „steht im Lehrplan“, „für Sachsen
+  relevant?“). Filter/`isLehrplanMetaWissen` und Quality-Tests beachten.
+
+## Vollständigkeit
+
+- Keine Lehrplan-Punkte/Themen weglassen: vorhandene Lehrpläne vollständig mit
+  Themen und **ausreichend** unique Aufgaben (Ziel: 10er-Runde, siehe
+  `curriculum-lernbereiche.mdc`).
+- Dünne Pflichtlücken nachziehen, statt Themen stillschweigend auszulassen.
+
 ## Freigabe
 
 - Kein stilles `released: true` ohne explizite Freigabe-Anforderung.
+- Freigabe für alle Installationen nur über Code/`released` + Ship/Pack-Deploy —
+  kein rein lokaler Entwickler-Toggle als Ersatz.

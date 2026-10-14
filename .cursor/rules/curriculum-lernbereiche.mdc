@@ -39,4 +39,11 @@ tasksPerRound: opts?.tasksPerRound ?? DEFAULT_TASKS_PER_ROUND
 3. Nach Pack-Änderungen Curricula exportieren (`scripts/export-curriculum-pack.ts`).
 4. Regression: `practiceRoundLength.test.ts` (Bio K5 Aufbau/Überblick).
 5. Inhaltsqualität: siehe `curriculum-aufgaben-qualitaet.mdc` (keine Chrono-Spoiler,
-   kein Lehrplan-Meta in Prompt/Fachwissen, tolerante Lücken, TF→MC statt kürzen).
+   kein Lehrplan-Meta/Philosophie in Prompt/Fachwissen, themengebunden ohne
+   LB-interne Dopplung, Aufbau-Themen mit lizenzklarer Bild-Zuordnung wo sinnvoll,
+   tolerante Lücken, TF→MC statt kürzen).
+6. **Fachwissen aufgabenbezogen:** jeder Task-`fachwissen`-Text konkret zur
+   gestellten Frage/Antwort — kein generisches/leeres/Meta-Fachwissen
+   (siehe `curriculum-aufgaben-qualitaet.mdc`).
+7. Vollständigkeit: Lehrplan-Themen nicht weglassen; dünne Pflichtpools nachziehen.
+8. Freigabe: kein `released: true` ohne explizite Anforderung (Ship/Pack).

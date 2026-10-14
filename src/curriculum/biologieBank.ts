@@ -127,7 +127,21 @@ const PLACEHOLDER_WISSEN =
 
 /** Fachwissen that is curriculum-meta rather than Schüler-Fachwissen. */
 const LEHRPLAN_META_WISSEN =
-  /verbindlichen Lehrplanstoff|Lehrplanbezug|steht im Lehrplan|laut Lehrplan|Lehrplanziel|gehört zum Lehrplan|Warum .* Lehrplan|für Sachsen relevant\?/i
+  /verbindlichen Lehrplanstoff|Lehrplanbezug|steht im Lehrplan|laut Lehrplan|Lehrplanziel|gehört zum Lehrplan|Warum .* Lehrplan|für Sachsen relevant\?|Im Unterrichtsthema hilft/i
+
+/** Generic / empty-topic fluff — not task-specific Fachwissen. */
+const GENERIC_FACHWISSEN =
+  /^(Dieses Thema|In diesem Thema|Zum Thema|Fachlich:|Biologie ist|Die Biologie|Wikipedia: Biologie\.?$|Merke den Fachbegriff\.?$|Siehe Lehrbuch\.?$)/i
+
+/** Strip deepen-template meta sentences from Fachwissen (keep Fachfakten). */
+export function stripBioMetaWissen(text: string): string {
+  return text
+    .replace(/\s*Im Unterrichtsthema hilft[^.!?]*[.!?]/gi, ' ')
+    // Deepen sometimes prefixes thin placeholders as first „sentence“.
+    .replace(/^(Lehrplanziel|Praxisbezug|Einordnung|Systemdenken|Vernetzung)\.\s*/gi, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
 
 export function isLehrplanMetaWissen(text: string): boolean {
   return LEHRPLAN_META_WISSEN.test(text)
@@ -138,6 +152,7 @@ export function isThinBioWissen(text: string): boolean {
   if (!t || t.length < 80) return true
   if (PLACEHOLDER_WISSEN.test(t)) return true
   if (isLehrplanMetaWissen(t)) return true
+  if (GENERIC_FACHWISSEN.test(t)) return true
   const sentences = t.split(/[.!?]+/).filter((s) => s.trim().length > 20)
   return sentences.length < 2
 }
@@ -156,17 +171,18 @@ export function expandBioWissen(
     prompt?: string
   } = {},
 ): string {
-  const raw = wissen.trim()
+  const raw = stripBioMetaWissen(wissen)
   if (raw && !isThinBioWissen(raw) && !PLACEHOLDER_WISSEN.test(raw)) {
     return raw
   }
 
   const parts: string[] = []
   const push = (s?: string) => {
-    const x = (s ?? '').trim()
+    const x = stripBioMetaWissen(s ?? '')
     if (!x) return
     if (PLACEHOLDER_WISSEN.test(x) && x.length < 80) return
     if (/\bLB:\s|Wahl:\s|Wahlbereich:/i.test(x)) return
+    if (isLehrplanMetaWissen(x)) return
     const norm = x.endsWith('.') || x.endsWith('!') || x.endsWith('?') ? x : `${x}.`
     if (parts.some((p) => p.includes(norm.slice(0, Math.min(40, norm.length))))) return
     parts.push(norm)
@@ -614,13 +630,18 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
           : 'Photosynthese in Mitochondrien'
       const keys = subset.map((p) => bioConceptKey(p.concept, prefix, p.term))
       const fwText = subset
-        .map((p) =>
-          expandBioWissen(p.wissen, {
+        .map((p) => {
+          const cleaned = stripBioMetaWissen(p.wissen)
+          const expanded = expandBioWissen(cleaned, {
             term: p.term,
             meaning: p.meaning,
-            explanation: p.wissen,
-          }),
-        )
+            explanation: cleaned,
+          })
+          // Ensure each Begriff contributes a full sentence ending in `.`
+          const base = expanded.trim()
+          if (/[.!?]$/.test(base)) return base
+          return `${p.term}: ${p.meaning}. ${base}`
+        })
         .join(' ')
       const n = subset.length
       const conceptNs = bank.conceptPrefix ?? ''
@@ -652,7 +673,9 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         meanings: subset.map((p) => p.meaning),
         distractor,
         solution: subset.map((p) => `${p.term} → ${p.meaning}`).join('; '),
-        explanation: subset.map((p) => `${p.term}: ${p.wissen}`).join(' '),
+        explanation: subset
+          .map((p) => `${p.term}: ${stripBioMetaWissen(p.wissen)}`)
+          .join(' '),
         fachwissen: fw(bank, fwText),
         // Each Begriff concept blocks MC/TF/Match reuse in the same round (Bug A).
         dedupeKey: `pair:${[...keys].sort().join('+')}`,

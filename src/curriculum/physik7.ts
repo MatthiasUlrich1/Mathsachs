@@ -15,6 +15,7 @@ import {
   seriesParallelSvg,
   wechselCircuitSvg,
 } from '../lib/physikSvg'
+import { phMessenBild } from './physikDiagram'
 import {
   choicePickTask,
   dragDropSlotsTask,
@@ -2893,7 +2894,7 @@ export const PHYSIK_K7_GENERATORS: Record<string, Topic['generate']> = {
   'ph-k7-lb2-ohm': ohm,
   'ph-k7-lb2-reihe': reihe,
   'ph-k7-lb2-parallel': parallel,
-  'ph-k7-lb2-messen': messen,
+  'ph-k7-lb2-messen': mixedVariants(messen, phMessenBild, phMessenBild),
   'ph-k7-lb3-energieformen': energieformen,
   'ph-k7-lb3-energie': energie,
   'ph-k7-lb3-umwandlung': umwandlung,

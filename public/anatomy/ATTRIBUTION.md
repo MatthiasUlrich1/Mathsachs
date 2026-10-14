@@ -146,3 +146,100 @@ Assets bundled for offline practice (educational app + desktop installers). Pref
 - **License:** CC0 1.0
 - **Source:** https://commons.wikimedia.org/wiki/File:Bug_parts.svg
 - **Note:** English labels already present — not used for drop-field tasks (would spoil answers).
+
+## Zelle — tierisch (nummeriert)
+
+- **File:** `animal-cell-numbers.svg`
+- **Title:** Simple diagram of animal cell (numbers)
+- **Author:** domdomegg
+- **License:** CC BY 4.0
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Simple_diagram_of_animal_cell_(numbers).svg
+- **License deed:** https://creativecommons.org/licenses/by/4.0/
+- **Parts (1–4):** Zytoplasma, Zellkern, Zellmembran, Mitochondrium
+- **Note:** Datei unverändert; Drop-Felder überdecken die Bildnummern (UI-Overlay).
+
+## Zelle — pflanzlich (nummeriert)
+
+- **File:** `plant-cell-numbers.svg`
+- **Title:** Simple diagram of plant cell (numbers)
+- **Author:** domdomegg
+- **License:** CC BY 4.0
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Simple_diagram_of_plant_cell_(numbers).svg
+- **License deed:** https://creativecommons.org/licenses/by/4.0/
+- **Parts (1–7):** Zytoplasma, Zellkern, Zellmembran, Mitochondrium, Zellwand, Vakuole, Chloroplast
+- **Note:** Datei unverändert; Drop-Felder überdecken die Bildnummern (UI-Overlay).
+
+## Bakterie (nummeriert)
+
+- **File:** `bacterium-numbers.svg`
+- **Title:** Simple diagram of bacterium (numbers)
+- **Author:** domdomegg
+- **License:** CC BY 4.0
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Simple_diagram_of_bacterium_(numbers).svg
+- **License deed:** https://creativecommons.org/licenses/by/4.0/
+- **Parts (Bildnummern 1,3,5,8–11):** Zytoplasma, Zellmembran, Zellwand, Kapsel, Nucleoid, Plasmid, Geißel
+- **Note:** Nummerierung der Serie ist bewusst nicht lückenlos 1…n. Datei unverändert; Drop-Felder überdecken die Markierungen (UI-Overlay).
+
+## Herz (nummeriert)
+
+- **File:** `heart-numlabels.svg`
+- **Title:** Heart numlabels
+- **Author:** Wapcaplet; lightly edited by Stanisław Skowron (Ss181292)
+- **License:** CC BY-SA 3.0
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Heart_numlabels.svg
+- **License deed:** https://creativecommons.org/licenses/by-sa/3.0/
+- **ShareAlike:** Datei unverändert; Drop-Felder nur UI-Overlay.
+- **Parts used (K7):** Rechter/Linker Vorhof, Aorta, Lungenarterie, Linke/Rechte Kammer
+
+## Verdauung — Magen/Dickdarm (nummeriert)
+
+- **File:** `stomach-colon-rectum-numbered.svg`
+- **Title:** Stomach colon rectum diagram numbered
+- **Author:** Original NCI (US Gov, Public Domain); numbered layout Medium69
+- **License:** Public Domain (US Government) / CC BY-SA 4.0 for numbering overlay on Commons
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Stomach_colon_rectum_diagram_numbered.svg
+- **Parts (1–7):** Magen, Querdarm, absteigender Dickdarm, aufsteigender Dickdarm, Blinddarm, Sigma, Mastdarm
+- **Note:** Datei unverändert; Drop-Felder überdecken die Bildnummern.
+
+## Lichtmikroskop (blank)
+
+- **File:** `microscope-blank.svg`
+- **Title:** Microscope-blank
+- **Author:** Tomia
+- **License:** CC BY 2.5
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Microscope-blank.svg
+- **License deed:** https://creativecommons.org/licenses/by/2.5/
+- **Note:** Unbeschriftet; Leader + Drop-Felder nur UI-Overlay (an Microscope-letters A–F angelehnt).
+
+## Pflanze — Organe Überblick
+
+- **File:** `plant-anatomy.svg`
+- **Title:** Plant Anatomy
+- **Author:** Bigman24225
+- **License:** CC BY-SA 4.0
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Plant_Anatomy.svg
+- **License deed:** https://creativecommons.org/licenses/by-sa/4.0/
+- **ShareAlike:** Datei unverändert; Drop-Felder + Leader nur UI-Overlay.
+- **Parts used (K6):** Endknospe, Blatt, Sprossachse, Wurzel, Seitenwurzel, Wurzelspitze
+
+## Blatt — Knospe und Spross
+
+- **File:** `leaf-bud-stem.svg`
+- **Title:** Leaf, Bud, and Stem Diagram
+- **Author:** Jessekar0524
+- **License:** CC BY-SA 4.0
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Leaf,_Bud,_and_Stem_Diagram.svg
+- **License deed:** https://creativecommons.org/licenses/by-sa/4.0/
+- **ShareAlike:** Datei unverändert; Drop-Felder + Leader nur UI-Overlay.
+- **Parts used (K9):** Blattspreite, Mittelrippe, Blattstiel, Knospe, Spross
+
+## Gelenk — Synovialgelenk (blank)
+
+- **File:** `joint-blank.svg` (abgeleitet von `joint.svg`)
+- **Title:** Joint
+- **Author:** Madhero88
+- **License:** CC BY-SA 3.0
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Joint.svg
+- **License deed:** https://creativecommons.org/licenses/by-sa/3.0/
+- **ShareAlike:** Titles-Layer (EN/FR/SK) entfernt für Blank-Version; Drop-Felder + Leader nur UI-Overlay.
+- **Parts used (K7):** Gelenkhöhle, Gelenkkapsel, Gelenkknorpel, Band, Knochenende

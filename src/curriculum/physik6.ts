@@ -23,6 +23,7 @@ import {
   wegZeitDiagramSvg,
 } from '../lib/physikSvg'
 import { matchTermsTask } from './biologieHelpers'
+import { phLochkameraBild } from './physikDiagram'
 import {
   choicePickTask,
   coordinateClickTask,
@@ -4503,7 +4504,7 @@ export const PHYSIK_K6_GENERATORS: Record<string, Topic['generate']> = {
   'ph-k6-lb4-reiheparallel': reiheparallel,
   'ph-k6-lb4-gefahren': gefahren,
   'ph-k6-lbw-sehen': sehen,
-  'ph-k6-lbw-lochkamera': lochkamera,
+  'ph-k6-lbw-lochkamera': mixedVariants(lochkamera, phLochkameraBild, phLochkameraBild),
   'ph-k6-lbw-auge': auge,
   'ph-k6-lbw-daemmung': daemmung,
   'ph-k6-lbw-daemmstoff': daemmstoff,

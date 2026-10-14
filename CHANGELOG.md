@@ -9,6 +9,19 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.79] – 2026-10-14
+
+### Hinzugefügt
+- **Aufbau Bild-Zuordnung:** lizenzklare Schemata + `imageLabelSlots` für
+  Pflanzenorgane, Zellen/Bakterie/Herz/Verdauung/Mikroskop, K7-Skelett/Gelenk,
+  Physik Fernrohr, Lochkamera, Amperemeter-/Voltmeter-Stromkreise (Attribution
+  unter `public/anatomy/` und `public/physik/`).
+- **Regel:** Fachwissen immer aufgabenbezogen (kein generisches/Meta-Fachwissen).
+
+### Geändert
+- Bio Cross-LB-Bereinigung (Organe/Skelett/Wasser/Herz↔Gefäße); Deepen-Bänke
+  ohne Lehrplan-Meta; Quality-Tests gegen generisches Fachwissen.
+
 ## [0.28.78] – 2026-10-14
 
 ### Behoben

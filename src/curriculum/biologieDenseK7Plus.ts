@@ -3,7 +3,9 @@
  * Eigene Formulierungen; Distraktoren LB-lokal; wenig Gaps.
  * Quelle: https://www.schulportal.sachsen.de/lplandb/lehrplan/522
  */
+import { biBakterienBauBild } from './biologieAnatomy'
 import { bankGenerate, type BioBank } from './biologieBank'
+import { mixedVariants } from './taskHelpers'
 import type { Topic } from './types'
 
 const bank = (
@@ -1001,7 +1003,12 @@ export const osSignalWege: BioBank = bank(
 
 /** Generators for new topic ids (keep locked via PackTopic released:false). */
 export const BIOLOGIE_DENSE_K7PLUS_GENERATORS: Record<string, Topic['generate']> = {
-  'bi-k7-lb1-bakterien-bau': bankGenerate(k7BakterienBau),
+  'bi-k7-lb1-bakterien-bau': mixedVariants(
+    bankGenerate(k7BakterienBau),
+    biBakterienBauBild,
+    biBakterienBauBild,
+    bankGenerate(k7BakterienBau),
+  ),
   'bi-k7-lb2-gefaesse': bankGenerate(k7Gefaesse),
   'bi-k7-lb4-muskeln': bankGenerate(k7Muskeln),
   'bi-k7-lb4-gelenke': bankGenerate(k7Gelenke),

@@ -169,22 +169,11 @@ const organe: BioBank = {
     {
       concept: 'bio:k6:organe:blatt',
       prompt: 'Welche Hauptaufgabe hat das Blatt?',
-      answer: 'Fotosynthese und Gasaustausch',
+      answer: 'Fotosynthese (Lichtfang und Zuckerbildung)',
       wrong: ['Nur Pollen lagern', 'Nur Samen reifen lassen', 'Nur Holzringe bilden'],
-      explanation: 'Im Blatt finden Fotosynthese und Gasaustausch statt.',
+      explanation: 'Im Blatt findet vor allem die Fotosynthese statt.',
       wissen:
-        'Im Blatt finden Fotosynthese (mit Chlorophyll) und Gasaustausch über Spaltöffnungen statt.',
-    },
-    {
-      concept: 'bio:k6:organe:spaltoeffnung',
-      prompt: 'Wozu dienen Spaltöffnungen in der Blattunterseite vor allem?',
-      answer: 'Gasaustausch (CO₂, O₂, Wasserdampf)',
-      wrong: ['Pollenlagerung', 'Samenreifung', 'Holzbildung'],
-      explanation: 'Über Spaltöffnungen gelangt CO₂ hinein und Wasserdampf hinaus.',
-      wissen:
-        'Spaltöffnungen (Stomata) regulieren den Gasaustausch und die Transpiration.',
-      gap: 'Über ___ tauschen Blätter Gase mit der Luft aus.',
-      gapAccepted: ['Spaltöffnungen', 'Stomata', 'Spaltöffnung'],
+        'Im Blatt fängt die Pflanze Licht und bildet mit Chlorophyll energiereiche Stoffe (Fotosynthese).',
     },
     {
       concept: 'bio:k6:organe:spross',
@@ -194,6 +183,17 @@ const organe: BioBank = {
       explanation: 'Die Sprossachse trägt Blätter und leitet Stoffe.',
       wissen:
         'Die Sprossachse stützt die Pflanze und transportiert Wasser (nach oben) sowie Assimilate.',
+    },
+    {
+      concept: 'bio:k6:organe:knospe',
+      prompt: 'Was ist eine Knospe an der Pflanze?',
+      answer: 'Junges Spross- oder Blütengewebe, oft geschützt',
+      wrong: ['Nur abgestorbenes Holz', 'Nur eine Wurzelspitze unter der Erde', 'Nur Jahresringe im Stamm'],
+      explanation: 'Knospen bilden neue Blätter, Triebe oder Blüten.',
+      wissen:
+        'Knospen enthalten junges Gewebe und sind oft von Schuppenblättern geschützt — daraus entstehen neue Sprossteile oder Blüten.',
+      gap: 'Aus einer ___ können neue Blätter oder Blüten entstehen.',
+      gapAccepted: ['Knospe', 'Endknospe', 'Seitenknospe'],
     },
   ],
   pairs: [
@@ -206,8 +206,8 @@ const organe: BioBank = {
     {
       concept: 'bio:k6:organe:paar-blatt',
       term: 'Blatt',
-      meaning: 'Fotosynthese und Gasaustausch',
-      wissen: 'Blätter betreiben Fotosynthese und tauschen Gase aus.',
+      meaning: 'Hauptort der Fotosynthese',
+      wissen: 'Blätter fangen Licht und betreiben Fotosynthese.',
     },
     {
       concept: 'bio:k6:organe:paar-spross',
@@ -216,10 +216,10 @@ const organe: BioBank = {
       wissen: 'Die Sprossachse verbindet Wurzel und Blatt und leitet Stoffe.',
     },
     {
-      concept: 'bio:k6:organe:paar-stomata',
-      term: 'Spaltöffnung',
-      meaning: 'Reguliert Gasaustausch am Blatt',
-      wissen: 'Schließzellen steuern, wie weit die Spaltöffnung geöffnet ist.',
+      concept: 'bio:k6:organe:paar-knospe',
+      term: 'Knospe',
+      meaning: 'Junges Spross- oder Blütengewebe',
+      wissen: 'Aus Knospen entstehen neue Triebe, Blätter oder Blüten.',
     },
   ],
   trueFalse: [
@@ -399,13 +399,14 @@ const waldNahrung: BioBank = {
 }
 
 /** Mikroskop & Organellen — Spezial zu Zellen-Überblick. */
+/** Mikroskop-Gerät — keine Organellen-Dopplung zu bi-k6-lb5-zellen. */
 const mikroskop: BioBank = {
   ...Q.zelle,
   conceptPrefix: 'bio:k6:mikroskop',
   facts: [
     {
       concept: 'bio:k6:mikroskop:zweck',
-      prompt: 'Wozu dient das Mikroskop im Biologieunterricht vor allem?',
+      prompt: 'Wozu dient das Mikroskop beim Untersuchen von Zellen?',
       answer: 'Kleine Strukturen (Zellen) sichtbar machen',
       wrong: ['Nur den pH-Wert messen', 'Nur die Luftfeuchtigkeit', 'Nur DNA sequenzieren'],
       explanation: 'Präparate werden vergrößert betrachtet.',
@@ -413,50 +414,50 @@ const mikroskop: BioBank = {
         'Das Mikroskop vergrößert Präparate, sodass Zellen und Organellen sichtbar werden.',
     },
     {
-      concept: 'bio:k6:mikroskop:chloroplast',
-      prompt: 'Welches Organell betreibt Fotosynthese?',
-      answer: 'Chloroplast',
-      wrong: ['Nur Mitochondrium', 'Nur Zellkern', 'Nur Zellwand'],
-      explanation: 'Chloroplasten enthalten Chlorophyll.',
+      concept: 'bio:k6:mikroskop:vergroesserung',
+      prompt: 'Wie ergibt sich die Gesamtvergrößerung grob?',
+      answer: 'Vergrößerung von Objektiv × Okular',
+      wrong: ['Nur die Länge des Tubus in Metern', 'Nur die Farbe des Präparats', 'Nur die Raumtemperatur'],
+      explanation: 'Objektiv und Okular multiplizieren sich.',
       wissen:
-        'Chloroplasten enthalten Chlorophyll und sind der Ort der Fotosynthese.',
-      gap: 'Photosynthese findet in den ___ statt.',
-      gapAccepted: ['Chloroplasten', 'Chloroplast'],
+        'Die Gesamtvergrößerung berechnet man näherungsweise als Produkt aus Objektiv- und Okularvergrößerung.',
+      gap: 'Gesamtvergrößerung ≈ Objektiv × ___.',
+      gapAccepted: ['Okular', 'Okularvergrößerung'],
     },
     {
-      concept: 'bio:k6:mikroskop:mitochondrium',
-      prompt: 'Wofür sind Mitochondrien vor allem wichtig?',
-      answer: 'Zellatmung / Energiebereitstellung',
-      wrong: ['Nur Pollen lagern', 'Nur Jahresringe zählen', 'Nur Laich bilden'],
-      explanation: 'Mitochondrien liefern ATP durch Zellatmung.',
+      concept: 'bio:k6:mikroskop:praeparat',
+      prompt: 'Was ist ein mikroskopisches Präparat?',
+      answer: 'Das untersuchte Objekt auf dem Objektträger',
+      wrong: ['Nur das Okular allein', 'Nur die Tischlampe', 'Nur der Grobtrieb ohne Objekt'],
+      explanation: 'Oft mit Deckglas abgedeckt.',
       wissen:
-        'Mitochondrien sind „Kraftwerke“ der Zelle: sie treiben die Zellatmung und liefern Energie.',
+        'Ein Präparat ist das untersuchte Objekt auf dem Objektträger — oft mit Deckglas und ggf. Färbung.',
     },
   ],
   pairs: [
-    {
-      concept: 'bio:k6:mikroskop:paar-chloro',
-      term: 'Chloroplast',
-      meaning: 'Ort der Fotosynthese',
-      wissen: 'Enthält Chlorophyll — nur in Pflanzenzellen typisch.',
-    },
-    {
-      concept: 'bio:k6:mikroskop:paar-mito',
-      term: 'Mitochondrium',
-      meaning: 'Zellatmung / Energie',
-      wissen: 'Liegt in Pflanzen- und Tierzellen.',
-    },
-    {
-      concept: 'bio:k6:mikroskop:paar-vakuole',
-      term: 'Vakuole',
-      meaning: 'Speicher und Turgor',
-      wissen: 'Besonders groß in Pflanzenzellen.',
-    },
     {
       concept: 'bio:k6:mikroskop:paar-objektiv',
       term: 'Objektiv',
       meaning: 'Vergrößerungslinse nahe am Präparat',
       wissen: 'Zusammen mit dem Okular ergibt sich die Gesamtvergrößerung.',
+    },
+    {
+      concept: 'bio:k6:mikroskop:paar-okular',
+      term: 'Okular',
+      meaning: 'Einblicklinse am oberen Ende',
+      wissen: 'Vergrößert das Zwischenbild vom Objektiv.',
+    },
+    {
+      concept: 'bio:k6:mikroskop:paar-objekttisch',
+      term: 'Objekttisch',
+      meaning: 'Träger des Präparats',
+      wissen: 'Hier liegt der Objektträger; oft mit Klammern fixiert.',
+    },
+    {
+      concept: 'bio:k6:mikroskop:paar-feintrieb',
+      term: 'Feintrieb',
+      meaning: 'Feine Scharfeinstellung',
+      wissen: 'Für das scharfe Bild bei stärkerer Vergrößerung.',
     },
   ],
   trueFalse: [
@@ -519,6 +520,7 @@ const hygiene: BioBank = {
   ],
 }
 
+/** Herz: Kammern/Vorhöfe/Kreisläufe — Arterie/Vene/Kapillare nur in bi-k7-lb2-gefaesse. */
 const herz: BioBank = {
   ...Q.blut,
   conceptPrefix: 'bio:k7:herz',
@@ -535,27 +537,30 @@ const herz: BioBank = {
       gapAccepted: ['Herz'],
     },
     {
-      concept: 'bio:k7:herz:arterie',
-      prompt: 'Arterien führen Blut …',
-      answer: 'vom Herzen weg',
-      wrong: ['immer nur zum Herzen hin', 'nur in die Leber ohne Herz', 'nur in Pflanzen'],
-      explanation: 'Arterien: vom Herzen; Venen: zum Herzen.',
+      concept: 'bio:k7:herz:linke-kammer',
+      prompt: 'Wohin pumpt die linke Herzkammer das Blut?',
+      answer: 'In den Körperkreislauf (Aorta)',
+      wrong: ['Nur in die Speiseröhre', 'Nur in die Gallenblase', 'Nur rückwärts in die Lunge ohne Vorhof'],
+      explanation: 'Linke Kammer → Aorta → Körper.',
       wissen:
-        'Arterien führen Blut vom Herzen weg; Venen führen es zum Herzen zurück.',
+        'Die linke Kammer hat die stärkste Wand und pumpt Blut über die Aorta in den Körperkreislauf.',
+    },
+    {
+      concept: 'bio:k7:herz:rechte-kammer',
+      prompt: 'Wohin pumpt die rechte Herzkammer das Blut?',
+      answer: 'In den Lungenkreislauf',
+      wrong: ['Direkt in alle Körperkapillaren ohne Lunge', 'Nur in den Magen', 'Nur in den Dickdarm'],
+      explanation: 'Rechte Kammer → Lungenarterie → Lunge.',
+      wissen:
+        'Die rechte Kammer pumpt sauerstoffarmes Blut zur Lunge, wo es Sauerstoff aufnimmt.',
     },
   ],
   pairs: [
     {
-      concept: 'bio:k7:herz:paar-arterie',
-      term: 'Arterie',
-      meaning: 'Gefäß vom Herzen weg',
-      wissen: 'Im Körperkreislauf oft sauerstoffreich.',
-    },
-    {
-      concept: 'bio:k7:herz:paar-vene',
-      term: 'Vene',
-      meaning: 'Gefäß zum Herzen hin',
-      wissen: 'Rückfluss zum Herzen, oft mit Klappen.',
+      concept: 'bio:k7:herz:paar-vorhof',
+      term: 'Vorhof',
+      meaning: 'Nimmt Blut auf und leitet es in die Kammer',
+      wissen: 'Rechter Vorhof: Körpervenen; linker Vorhof: Lungenvenen.',
     },
     {
       concept: 'bio:k7:herz:paar-kammer',
@@ -563,15 +568,27 @@ const herz: BioBank = {
       meaning: 'Pumpt Blut in die großen Gefäße',
       wissen: 'Linke Kammer → Körper; rechte Kammer → Lunge (Schulmodell).',
     },
+    {
+      concept: 'bio:k7:herz:paar-klappe',
+      term: 'Herzklappe',
+      meaning: 'Verhindert Rückfluss zwischen Vorhof und Kammer',
+      wissen: 'Klappen sorgen für gerichteten Blutstrom.',
+    },
+    {
+      concept: 'bio:k7:herz:paar-lungenkreis',
+      term: 'Lungenkreislauf',
+      meaning: 'Herz → Lunge → Herz',
+      wissen: 'Hier wird Blut mit Sauerstoff angereichert.',
+    },
   ],
   sorts: [
     {
       concept: 'bio:k7:herz:sort-kreis',
       question: 'Ordne den Weg des Blutes im Körperkreislauf vereinfacht (Start Herz).',
-      labels: ['Herz (linke Kammer)', 'Arterien zum Körper', 'Kapillaren (Stoffaustausch)', 'Venen zurück zum Herzen'],
-      explanation: 'Pumpe → Arterien → Kapillaren → Venen → Herz.',
+      labels: ['Herz (linke Kammer)', 'große Schlagader zum Körper', 'Kapillaren (Stoffaustausch)', 'Rückfluss zum Herzen'],
+      explanation: 'Pumpe → Schlagader → Kapillaren → Rückfluss → Herz.',
       wissen:
-        'Körperkreislauf: linke Kammer → Arterien → Kapillaren → Venen → Herz.',
+        'Körperkreislauf: linke Kammer → Schlagader → Kapillaren → Rückfluss → Herz.',
     },
   ],
 }
@@ -1039,27 +1056,27 @@ const wasserTransport: BioBank = {
         'Transpiration: Wasserdampfabgabe über Stomata — treibt den Transpirationssog mit an.',
     },
     {
-      concept: 'bio:k9:wasser:xylem',
-      prompt: 'Xylem transportiert vor allem …',
-      answer: 'Wasser und Mineralstoffe nach oben',
-      wrong: ['Nur Nervensignale', 'Nur Hormone im Menschen', 'Nur Asssimilate abwärts ausschließlich'],
-      explanation: 'Xylem = Holzteil; Phloem = Siebteil.',
+      concept: 'bio:k9:wasser:sog',
+      prompt: 'Was treibt den Wasserstrom in der Pflanze vor allem mit an?',
+      answer: 'Transpirationssog durch Verdunstung am Blatt',
+      wrong: ['Nur Nervensignale', 'Nur Hormone im Menschen', 'Nur Knochenwachstum'],
+      explanation: 'Verdunstung erzeugt Saugspannung in den Leitbahnen.',
       wissen:
-        'Xylem leitet Wasser und Mineralstoffe nach oben; Phloem leitet Assimilate.',
+        'Über die Blätter verdunstet Wasser: der Transpirationssog zieht die Wassersäule in den Leitbahnen nach oben.',
     },
   ],
   pairs: [
     {
-      concept: 'bio:k9:wasser:paar-xylem',
-      term: 'Xylem',
-      meaning: 'Wasserleitung',
-      wissen: 'Holzteil: Wasser und Mineralstoffe von der Wurzel nach oben.',
+      concept: 'bio:k9:wasser:paar-transpiration',
+      term: 'Transpiration',
+      meaning: 'Wasserdampfabgabe über Stomata',
+      wissen: 'Treibt den Aufstieg des Wassers mit an.',
     },
     {
-      concept: 'bio:k9:wasser:paar-phloem',
-      term: 'Phloem',
-      meaning: 'Transport von Assimilaten',
-      wissen: 'Siebteil: Zucker zu Verbrauchsorten.',
+      concept: 'bio:k9:wasser:paar-turgor',
+      term: 'Turgor',
+      meaning: 'Innendruck der Zelle',
+      wissen: 'Gibt krautigen Pflanzen Stabilität; bei Wassermangel sinkt er.',
     },
   ],
   sorts: [
@@ -1069,7 +1086,7 @@ const wasserTransport: BioBank = {
       labels: ['Aufnahme in der Wurzel', 'Transport im Spross', 'Verdunstung am Blatt'],
       explanation: 'Boden → Leitbahnen → Transpiration.',
       wissen:
-        'Wurzel → Xylem im Spross → Transpiration am Blatt.',
+        'Wurzel nimmt Wasser auf → Leitbahnen im Spross → Verdunstung am Blatt.',
     },
   ],
 }

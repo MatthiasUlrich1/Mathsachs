@@ -102,6 +102,9 @@ describe('Biologie quality bar', () => {
   const META_FACHWISSEN =
     /Prüfung:|Antwort prüfen|Teilpunkte|Karteikarte:|Zur Frage|Die gesuchte Antwort|Auch akzeptiert|Klassenarbeiten|gewertet|Häufige Verwechslung in Quizzes|im Unterricht\.|Systemüberblick\.|Orientierung im|Wahl:\s|Wahlbereich:|LB\d|LB:\s|Kursinhalte beachten|Schlaukopf|Klassiker \(/i
 
+  const GENERIC_FACHWISSEN =
+    /^(Dieses Thema|In diesem Thema|Zum Thema|Fachlich:|Biologie ist|Die Biologie|Wikipedia: Biologie\.?$|Merke den Fachbegriff\.?$|Siehe Lehrbuch\.?$)/i
+
   const TOPIC_SUBTITLE_PLACEHOLDER =
     /^(Anwendungen und Perspektiven der Genetik\.?|Grundlagen, Anwendungen und Perspektiven|Zellbiologie\.?|Genregulation\.?|Molekulare Genetik\.?|Genexpression\.?|Einordnung\.?|Vernetzung\.?|Systemdenken\.?|Immunologie\.?|Leben in der Wüste\.?|Wahl Energiehaushalt\.?|Wahl Fließgewässer\.?)$/i
 
@@ -136,6 +139,7 @@ describe('Biologie quality bar', () => {
         const task = BIOLOGIE_GENERATORS[id]!(createRng(seed * 53 + 11))
         const text = task.fachwissen?.text ?? ''
         expect(text, `${id}@${seed}`).not.toMatch(META_FACHWISSEN)
+        expect(text, `${id}@${seed}`).not.toMatch(GENERIC_FACHWISSEN)
         expect(text.toLowerCase(), `${id}@${seed}`).not.toContain('karte umdrehen')
         expect(text.toLowerCase(), `${id}@${seed}`).not.toContain('groß-/kleinschreibung')
         expect(text, `${id}@${seed}`).not.toMatch(/^Wahl:\s/i)
