@@ -118,6 +118,16 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
         ]),
         area('lb4', 'Längsschnitt: Mensch und Natur', 2, [
           topic('ge-k5-lb4-mensch-natur', 'Längsschnitt: Mensch und Natur', ['Mensch', 'Natur']),
+          topic('ge-k5-lb4-ressourcen', 'Ressourcen: Wasser, Boden, Ernährung', [
+            'Wasser',
+            'Boden',
+            'Ressource',
+          ]),
+          topic('ge-k5-lb4-landschaft', 'Landschaftswandel: Rodung und Nutzung', [
+            'Rodung',
+            'Erosion',
+            'Technik',
+          ]),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
           topic('ge-k5-lbw-hellenismus-alexander', 'Hellenismus – Alexander „der Große“?', [
@@ -320,6 +330,27 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Bürger',
             'Erziehung',
           ], { tasksPerRound: 10, released: true }),
+          // Neue Unterthemen gesperrt — User gibt frei (Lehrplan: Längsschnitt Polis/Rom/Stadt)
+          topic('ge-k6-lb4-polis', 'Bürger in der griechischen Polis', [
+            'Polis',
+            'Bürgerrecht',
+            'Pflichten',
+          ]),
+          topic('ge-k6-lb4-rom', 'Römisches Bürgerrecht', [
+            'Rom',
+            'Bürgerrecht',
+            'Rechtsstatus',
+          ]),
+          topic('ge-k6-lb4-stadt', 'Bürger in der mittelalterlichen Stadt', [
+            'Stadt',
+            'Stadtluft',
+            'Zunft',
+          ]),
+          topic('ge-k6-lb4-vergleich', 'Bürgerrechte im Epochenvergleich', [
+            'Vergleich',
+            'Wandel',
+            'Ausschluss',
+          ]),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
           topic('ge-k6-lbw-besiedlung', 'Regionalgeschichte – Besiedlung Sachsens', [
@@ -416,6 +447,14 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Herrschaft',
             'Legitimation',
           ]),
+          topic('ge-k7-lb4-gottesgnade', 'Gottesgnadentum und religiöse Begründung', [
+            'Gottesgnadentum',
+            'Absolutismus',
+          ]),
+          topic('ge-k7-lb4-verfassung', 'Verfassung und Volkssouveränität', [
+            'Verfassung',
+            'Volkssouveränität',
+          ]),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
           topic('ge-k7-lbw-reformation-gerechtigkeit', 'Reformation und Anspruch auf soziale Gerechtigkeit', [
@@ -486,6 +525,14 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
           topic('ge-k8-lb3-kinderarbeit', 'Längsschnitt: Industrialisierung und Kinderarbeit', [
             'Kinderarbeit',
             'Industrialisierung',
+          ]),
+          topic('ge-k8-lb3-schutzgesetze', 'Kinderschutz und Fabrikgesetze', [
+            'Fabrikgesetz',
+            'Arbeitsschutz',
+          ]),
+          topic('ge-k8-lb3-schule', 'Schulpflicht und Ende der Kinderarbeit', [
+            'Schulpflicht',
+            'Bildung',
           ]),
         ]),
         area('lb4', 'Vom übersteigerten Nationalismus zum Ersten Weltkrieg', 14, [

@@ -16,6 +16,7 @@ import {
 } from './biologieNewUx'
 import { BIOLOGIE_OBERSTUFE_GENERATORS } from './biologieOberstufe'
 import { BIOLOGIE_SPECIAL_GENERATORS } from './biologieSpecialTopics'
+import { BIOLOGIE_DENSE_K7PLUS_GENERATORS } from './biologieDenseK7Plus'
 import { bankGenerate, type BioBank } from './biologieBank'
 import type { Topic } from './types'
 
@@ -74,6 +75,8 @@ export const BIOLOGIE_GENERATORS: Record<string, Topic['generate']> = wrapAll({
   ...BIOLOGIE_OBERSTUFE_GENERATORS,
   // Dedicated Spezial banks win over any leftover overview aliases.
   ...BIOLOGIE_SPECIAL_GENERATORS,
+  // Lehrplan-Lücken K7–OS (neue Topic-IDs, released:false).
+  ...BIOLOGIE_DENSE_K7PLUS_GENERATORS,
 })
 
 /** Organellen: eigene Bank — nicht Alias von Zellen (Bug B). */
@@ -167,9 +170,11 @@ const organellenBank: BioBank = {
   ],
 }
 
-BIOLOGIE_GENERATORS['bi-gk11-lb1-organellen'] = withBioContentIds(
-  bankGenerate(organellenBank),
-  'bio:bi-gk11-lb1-organellen',
+BIOLOGIE_GENERATORS['bi-gk11-lb1-organellen'] = withRichFachwissen(
+  withBioContentIds(bankGenerate(organellenBank), 'bio:bi-gk11-lb1-organellen'),
+)
+BIOLOGIE_GENERATORS['bi-lk11-lb1-organellen'] = withRichFachwissen(
+  withBioContentIds(bankGenerate(organellenBank), 'bio:bi-lk11-lb1-organellen'),
 )
 
 /** Platzhalter-Generator bis echte Biologie-Aufgaben vorliegen. */

@@ -109,17 +109,23 @@ export function officialGrades56(prefix: 'os-hs' | 'os-rs'): PackGrade[] {
         area('lb4', 'Symmetrie und deckungsgleiche Figuren', 12, [
           topic('os-k5-lb4-spiegelung', 'Spiegelungen und Verschiebungen, Symmetrieachse'),
           topic('os-k5-lb4-deckung', 'Zeichnen und Analysieren symmetrischer sowie deckungsgleicher Figuren'),
+          topic('os-k5-lb4-drehung', 'Drehungen und Symmetrie in Mustern'),
+          topic('os-k5-lb4-achsen', 'Achsen- und Punktsymmetrie erkennen'),
         ]),
         area('lbw1', 'Wahlbereich 1: Wie die Menschen Zählen und Rechnen lernten', undefined, [
           topic('os-k5-lbw1-zahlzeichen', 'Zahlzeichen verschiedener Epochen und Kulturkreise'),
           topic('os-k5-lbw1-abakus', 'Darstellung und Rechnen mit Abakus oder Rechenpfennigen'),
+          topic('os-k5-lbw1-stellenwert', 'Stellenwertsysteme im Vergleich'),
         ]),
         area('lbw2', 'Wahlbereich 2: Meine neue Klasse', undefined, [
           topic('os-k5-lbw2-daten', 'Erfassen und Darstellen von Daten (Urliste, Tabelle, Säulendiagramm)'),
           topic('os-k5-lbw2-kombinatorik', 'Einfache kombinatorische Zählstrategien'),
+          topic('os-k5-lbw2-mittel', 'Mittelwert aus Klassendaten'),
         ]),
         area('lbw3', 'Wahlbereich 3: Planen einer Klassenfahrt', undefined, [
           topic('os-k5-lbw3-angebote', 'Angebote vergleichen, Zeitpläne und Fahrtkosten'),
+          topic('os-k5-lbw3-budget', 'Budget und Stückkosten berechnen'),
+          topic('os-k5-lbw3-zeit', 'Fahrzeiten und Zeitpläne'),
         ]),
       ],
     ),
@@ -182,13 +188,18 @@ export function officialGrades56(prefix: 'os-hs' | 'os-rs'): PackGrade[] {
         ]),
         area('lbw1', 'Wahlbereich 1: Dynamisieren geometrischer Objekte', undefined, [
           topic('os-k6-lbw1-dgs', 'Geometrische Objekte mit dynamischer Geometriesoftware'),
+          topic('os-k6-lbw1-konstruktion', 'Grundkonstruktionen am Computer'),
+          topic('os-k6-lbw1-messen', 'Längen und Winkel dynamisch messen'),
         ]),
         area('lbw2', 'Wahlbereich 2: Mathematische Spiele', undefined, [
           topic('os-k6-lbw2-spiele', 'Spiele zur Problemlösefähigkeit, Raumanschauung und Stochastik'),
+          topic('os-k6-lbw2-strategie', 'Strategiespiele und Gewinnzüge'),
+          topic('os-k6-lbw2-wuerfel', 'Würfelspiele und relative Häufigkeit'),
         ]),
         area('lbw3', 'Wahlbereich 3: Erfassen und Auswerten von Daten', undefined, [
           topic('os-k6-lbw3-mittelwert', 'Arithmetisches Mittel bei Datenerhebungen', ['Mittelwert']),
           topic('os-k6-lbw3-modal', 'Modalwert, Maximum und Minimum', ['Modalwert']),
+          topic('os-k6-lbw3-diagramm', 'Säulen- und Kreisdiagramme lesen'),
         ]),
       ],
     ),
@@ -246,12 +257,18 @@ function officialGradesHs79(): PackGrade[] {
         ]),
         area('lbw1', 'Wahlbereich 1: Bandornamente und Parkettierungen', undefined, [
           topic('os-hs-k7-lbw1-parkett', 'Bandornamente und Parkettierungen'),
+          topic('os-hs-k7-lbw1-spiegel', 'Spiegelungen in Ornamenten'),
+          topic('os-hs-k7-lbw1-verschieb', 'Verschiebungen und Rapport'),
         ]),
         area('lbw2', 'Wahlbereich 2: Optische Täuschungen', undefined, [
           topic('os-hs-k7-lbw2-taeuschung', 'Räumliche Illusionen und optische Täuschungen'),
+          topic('os-hs-k7-lbw2-perspektive', 'Perspektive und Scheinraum'),
+          topic('os-hs-k7-lbw2-messen', 'Messen trotz Täuschung'),
         ]),
         area('lbw3', 'Wahlbereich 3: Unterhaltungsmathematik', undefined, [
           topic('os-hs-k7-lbw3-knobel', 'Probleme der Unterhaltungsmathematik'),
+          topic('os-hs-k7-lbw3-zahlen', 'Zahlenrätsel und magische Quadrate'),
+          topic('os-hs-k7-lbw3-logik', 'Logikspiele und Schlussfolgern'),
         ]),
       ],
     ),
@@ -300,12 +317,18 @@ function officialGradesHs79(): PackGrade[] {
         ]),
         area('lbw1', 'Wahlbereich 1: Das Fahrrad', undefined, [
           topic('os-hs-k8-lbw1-fahrrad', 'Kenndaten, Wegstrecken und Geschwindigkeiten am Fahrrad'),
+          topic('os-hs-k8-lbw1-umfang', 'Radumfang und zurückgelegte Strecke'),
+          topic('os-hs-k8-lbw1-tempo', 'Durchschnittsgeschwindigkeit berechnen'),
         ]),
         area('lbw2', 'Wahlbereich 2: Achtung Schuldenfalle', undefined, [
           topic('os-hs-k8-lbw2-kredit', 'Kredit, Tilgung und Kreditangebote'),
+          topic('os-hs-k8-lbw2-zinsen', 'Zinsen und Gesamtkosten vergleichen'),
+          topic('os-hs-k8-lbw2-raten', 'Ratenkauf und effektive Belastung'),
         ]),
         area('lbw3', 'Wahlbereich 3: Modellbau', undefined, [
           topic('os-hs-k8-lbw3-modell', 'Maßstäbliches Vergrößern und Verkleinern im Modellbau'),
+          topic('os-hs-k8-lbw3-massstab', 'Maßstab umrechnen'),
+          topic('os-hs-k8-lbw3-volumen', 'Volumenveränderung bei Maßstab'),
         ]),
       ],
     ),
@@ -345,6 +368,8 @@ function officialGradesHs79(): PackGrade[] {
         area('lb4', 'Mathematik im Alltag', 20, [
           topic('os-hs-k9-lb4-kalkulation', 'Kalkulationen, Materialbedarf und funktionale Zusammenhänge'),
           topic('os-hs-k9-lb4-mittelwert', 'Darstellen und Auswerten von Daten', ['Mittelwert']),
+          topic('os-hs-k9-lb4-prozent', 'Prozentuale Aufschläge und Rabatte'),
+          topic('os-hs-k9-lb4-vergleich', 'Angebote und Tarife vergleichen'),
         ]),
         area('lbw1', 'Wahlbereich 1: Statistische Erhebungen', undefined, [
           topic('os-hs-k9-lbw1-median', 'Zentralwert (Median)', ['Median']),
@@ -353,9 +378,13 @@ function officialGradesHs79(): PackGrade[] {
         ]),
         area('lbw2', 'Wahlbereich 2: Optimierung', undefined, [
           topic('os-hs-k9-lbw2-opt', 'Optimierungsprobleme aus Alltag und Wirtschaft'),
+          topic('os-hs-k9-lbw2-flaeche', 'Maximale Fläche bei gegebenem Umfang'),
+          topic('os-hs-k9-lbw2-kosten', 'Kostenminimum abschätzen'),
         ]),
         area('lbw3', 'Wahlbereich 3: Technisches Zeichnen', undefined, [
           topic('os-hs-k9-lbw3-zeichnen', 'Technische Zeichnungen und mehrere Ansichten'),
+          topic('os-hs-k9-lbw3-mass', 'Bemaßung und Maßstab'),
+          topic('os-hs-k9-lbw3-schnitt', 'Schnittdarstellungen lesen'),
         ]),
       ],
     ),
@@ -414,12 +443,18 @@ function officialGradesRs710(): PackGrade[] {
         ]),
         area('lbw1', 'Wahlbereich 1: Technisches Zeichnen', undefined, [
           topic('os-rs-k7-lbw1-zeichnen', 'Lesen technischer Zeichnungen, Schnitte und Bemaßung'),
+          topic('os-rs-k7-lbw1-schnitt', 'Schnittdarstellungen verstehen'),
+          topic('os-rs-k7-lbw1-mass', 'Bemaßung und Maßlinien'),
         ]),
         area('lbw2', 'Wahlbereich 2: Unterhaltungsmathematik und Rechenverfahren', undefined, [
           topic('os-rs-k7-lbw2-knobel', 'Andere Rechenverfahren und Unterhaltungsmathematik'),
+          topic('os-rs-k7-lbw2-zahlen', 'Zahlenrätsel und magische Quadrate'),
+          topic('os-rs-k7-lbw2-logik', 'Logikspiele und Schlussfolgern'),
         ]),
         area('lbw3', 'Wahlbereich 3: Parkettierungen', undefined, [
           topic('os-rs-k7-lbw3-parkett', 'Parkettierung der Ebene'),
+          topic('os-rs-k7-lbw3-symmetrie', 'Symmetrie in Parketten'),
+          topic('os-rs-k7-lbw3-fliese', 'Fliesenmuster berechnen'),
         ]),
       ],
     ),
@@ -476,12 +511,18 @@ function officialGradesRs710(): PackGrade[] {
         ]),
         area('lbw1', 'Wahlbereich 1: Das Fahrrad', undefined, [
           topic('os-rs-k8-lbw1-fahrrad', 'Kenndaten, Wegstrecken und Geschwindigkeiten am Fahrrad'),
+          topic('os-rs-k8-lbw1-umfang', 'Radumfang und zurückgelegte Strecke'),
+          topic('os-rs-k8-lbw1-tempo', 'Durchschnittsgeschwindigkeit berechnen'),
         ]),
         area('lbw2', 'Wahlbereich 2: Modellbau', undefined, [
           topic('os-rs-k8-lbw2-modell', 'Maßstäbliches Vergrößern und Verkleinern im Modellbau'),
+          topic('os-rs-k8-lbw2-massstab', 'Maßstab umrechnen'),
+          topic('os-rs-k8-lbw2-volumen', 'Volumenveränderung bei Maßstab'),
         ]),
         area('lbw3', 'Wahlbereich 3: Polyeder', undefined, [
           topic('os-rs-k8-lbw3-polyeder', 'Reguläre und halbreguläre Polyeder'),
+          topic('os-rs-k8-lbw3-netz', 'Netze von Polyedern'),
+          topic('os-rs-k8-lbw3-euler', 'Eulersche Polyederformel (Idee)'),
         ]),
       ],
     ),
@@ -528,12 +569,18 @@ function officialGradesRs710(): PackGrade[] {
         ]),
         area('lbw1', 'Wahlbereich 1: Goldener Schnitt', undefined, [
           topic('os-rs-k9-lbw1-gold', 'Goldener Schnitt als Streckenverhältnis'),
+          topic('os-rs-k9-lbw1-rechteck', 'Goldenes Rechteck konstruieren'),
+          topic('os-rs-k9-lbw1-natur', 'Goldener Schnitt in Natur und Kunst'),
         ]),
         area('lbw2', 'Wahlbereich 2: Wahre Größe und Gestalt', undefined, [
           topic('os-rs-k9-lbw2-laenge', 'Wahre Länge von Kanten und wahre Gestalt von Schnittflächen'),
+          topic('os-rs-k9-lbw2-schnitt', 'Schnittebenen an Körpern'),
+          topic('os-rs-k9-lbw2-netz', 'Netze und wahre Gestalt'),
         ]),
         area('lbw3', 'Wahlbereich 3: Sportfest', undefined, [
           topic('os-rs-k9-lbw3-sport', 'Wettkampfsysteme und Auswertung eines Sportfestes'),
+          topic('os-rs-k9-lbw3-tabelle', 'Tabellen und Ranglisten'),
+          topic('os-rs-k9-lbw3-statistik', 'Mittelwerte bei Sportleistungen'),
         ]),
       ],
     ),
@@ -577,13 +624,18 @@ function officialGradesRs710(): PackGrade[] {
         ]),
         area('lbw1', 'Wahlbereich 1: Dynamisieren geometrischer Objekte', undefined, [
           topic('os-rs-k10-lbw1-dgs', 'Zentralperspektive, Ortskurven und Makros'),
+          topic('os-rs-k10-lbw1-ort', 'Ortslinien erzeugen'),
+          topic('os-rs-k10-lbw1-makro', 'Makros und Konstruktionsschritte'),
         ]),
         area('lbw2', 'Wahlbereich 2: Optimierung', undefined, [
           topic('os-rs-k10-lbw2-opt', 'Optimierungsprobleme und lineare Ungleichungen'),
+          topic('os-rs-k10-lbw2-flaeche', 'Maximale Fläche bei Nebenbedingungen'),
+          topic('os-rs-k10-lbw2-kosten', 'Kostenminimum abschätzen'),
         ]),
         area('lbw3', 'Wahlbereich 3: Vermessungsprobleme', undefined, [
           topic('os-rs-k10-lbw3-pythagoras', 'Vermessung mit dem Satz des Pythagoras', ['Pythagoras']),
           topic('os-rs-k10-lbw3-strahlensatz', 'Vermessung mit Strahlensätzen und ähnlichen Figuren', ['Strahlensatz']),
+          topic('os-rs-k10-lbw3-trig', 'Vermessung mit Trigonometrie'),
         ]),
       ],
     ),
@@ -601,7 +653,7 @@ const wrap = (
   region: 'Sachsen',
   school: 'Oberschule',
   subject: 'Mathematik',
-  version: '1.0.1',
+  version: '1.0.3',
   changelog,
   contentHash: packContentHash(official, []),
   official,

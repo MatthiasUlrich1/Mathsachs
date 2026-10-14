@@ -4,8 +4,8 @@
   "region": "Sachsen-Anhalt",
   "school": "Gymnasium",
   "subject": "Mathematik",
-  "version": "1.0.1",
-  "changelog": "Klassen 5–10 und 11/12 gA nach ST-Fachlehrplan. tasksPerRound Standard 10. Ohne Netz lokale Fassung.",
+  "version": "1.0.3",
+  "changelog": "Dünne Pflicht-LBs verdichtet (Gleichungen, Winkel, Vernetzung, Zufall, Geo-Algebra). Alias auf Gym-Sachsen-Generatoren. tasksPerRound 10.",
   "official": [
     {
       "id": "st-gym-klasse-5",
@@ -539,6 +539,18 @@
               "title": "Gleichung umstellen: a · x = b",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "st-k6-gleichung-beid",
+              "title": "Gleichung mit x auf beiden Seiten",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "st-k6-gleichung-probe",
+              "title": "Lineare Gleichung und Probe",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -555,6 +567,18 @@
             {
               "id": "st-k6-scheitelwinkel",
               "title": "Scheitel- und Stufenwinkel",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "st-k6-wechselwinkel",
+              "title": "Wechselwinkel an Parallelen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "st-k6-gestreckter",
+              "title": "Winkel am gestreckten Winkel",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -645,6 +669,18 @@
             {
               "id": "st-k6-haeufigkeit",
               "title": "Relative Häufigkeit in Prozent",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "st-k6-mittelwert",
+              "title": "Arithmetisches Mittel",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "st-k6-median",
+              "title": "Median (Zentralwert)",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -760,6 +796,18 @@
             {
               "id": "st-k7-gleichung-beid",
               "title": "Gleichung mit x auf beiden Seiten",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "st-k7-gleichung-klammer",
+              "title": "Gleichung mit Klammern vorbereiten",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "st-k7-ungleichung",
+              "title": "Einfache lineare Ungleichung (Idee)",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -1046,6 +1094,24 @@
               "title": "Zahlenrätsel (Gleichung aufstellen)",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "st-k8-rueckwaerts",
+              "title": "Rückwärtsrechnen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "st-k8-probieren",
+              "title": "Systematisches Probieren",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "st-k8-skizze",
+              "title": "Skizze und Hilfsfigur",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         }
@@ -1104,6 +1170,18 @@
             {
               "id": "st-k9-trig",
               "title": "Werte von Sinus, Kosinus, Tangens",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "st-k9-pythagoras-hyp",
+              "title": "Satz des Pythagoras: Hypotenuse",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "st-k9-pythagoras-kat",
+              "title": "Satz des Pythagoras: fehlende Kathete",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -1297,6 +1375,18 @@
               "title": "Erwartungswert beim Würfel",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "st-k10-varianz",
+              "title": "Varianz einer Zufallsgröße",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "st-k10-laplace",
+              "title": "Laplace-Wahrscheinlichkeit als Bruch",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -1313,6 +1403,18 @@
             {
               "id": "st-k10-quadrat-seite",
               "title": "Quadrat: Seitenlänge aus Fläche",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "st-k10-rechteck-umfang",
+              "title": "Rechteck: Breite aus Umfang",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "st-k10-sinussatz",
+              "title": "Sinussatz: Seite berechnen",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -1437,5 +1539,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "a63e8af4"
+  "contentHash": "010eae41"
 }

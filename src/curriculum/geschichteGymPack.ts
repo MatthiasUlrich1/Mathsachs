@@ -18,8 +18,8 @@ export function buildGymSachsenGeschichtePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Geschichte',
-    version: '1.9.0',
-    changelog: `K6 freigegeben: LB2 Mittelalter (14), LB3 Religionen/Kulturen (9), LB4 Bürger „Durch die Zeiten“, Wahl Regionalgeschichte. Karl/Verdun erweitert; Toleranz-heute ohne Meta-Übungsbeispiel; Lückentoleranz fuzzy. ${topics} Themen.`,
+    version: '1.9.3',
+    changelog: `Längsschnitte verdichtet (K5 Mensch–Natur, K7 Legitimation, K8 Kinderarbeit) mit neuen Themen/Banken; Freigabe unverändert außer bestehendem K6. ${topics} Themen.`,
     official,
     extras: [],
   }

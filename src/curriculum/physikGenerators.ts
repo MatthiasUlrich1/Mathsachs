@@ -7,11 +7,13 @@ import { PHYSIK_J11GK_GENERATORS } from './physik11gk'
 import { PHYSIK_J12GK_GENERATORS } from './physik12gk'
 import { PHYSIK_J11LK_GENERATORS } from './physik11lk'
 import { PHYSIK_J12LK_GENERATORS } from './physik12lk'
+import { PHYSIK_DENSE_GENERATORS } from './physikDenseBanks'
 import { buildGymSachsenPhysikPack } from './physikGymPack'
 import { makePhysikTopicGenerate } from './physikTopicFactory'
 import type { Topic } from './types'
 
 const HAND_WRITTEN: Record<string, Topic['generate']> = {
+  ...PHYSIK_DENSE_GENERATORS,
   ...PHYSIK_K6_GENERATORS,
   ...PHYSIK_K7_GENERATORS,
   ...PHYSIK_K8_GENERATORS,

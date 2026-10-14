@@ -18,7 +18,7 @@ describe('Gymnasium Sachsen Geschichte pack', () => {
     const pack = buildGymSachsenGeschichtePack()
     expect(pack.id).toBe(GYM_SACHSEN_GESCHICHTE_PACK_ID)
     expect(pack.subject).toBe('Geschichte')
-    expect(pack.version).toBe('1.9.0')
+    expect(pack.version).toBe('1.9.3')
     expect(pack.official.map((g) => g.id)).toEqual([
       'geschichte-klasse-5',
       'geschichte-klasse-6',
@@ -33,11 +33,18 @@ describe('Gymnasium Sachsen Geschichte pack', () => {
     const topics = pack.official.flatMap((g) => g.areas.flatMap((a) => a.topics))
     expect(topics.length).toBeGreaterThan(30)
     const k6 = pack.official.find((g) => g.id === 'geschichte-klasse-6')!
-    expect(k6.areas.flatMap((a) => a.topics).every((t) => t.released === true)).toBe(true)
     const lb4 = k6.areas.find((a) => a.id === 'lb4')!
     expect(lb4.title).toMatch(/Durch die Zeiten/)
+    expect(lb4.topics.length).toBeGreaterThanOrEqual(4)
     expect(lb4.topics[0]!.title).toMatch(/Durch die Zeiten/)
+    expect(lb4.topics[0]!.released).toBe(true)
     expect(lb4.topics[0]!.title).not.toMatch(/Längsschnitt/)
+    // Neue LB4-Unterthemen bleiben gesperrt (User gibt frei)
+    expect(lb4.topics.slice(1).every((t) => t.released === false)).toBe(true)
+    const k6ReleasedCore = k6.areas
+      .filter((a) => a.id !== 'lb4')
+      .flatMap((a) => a.topics)
+    expect(k6ReleasedCore.every((t) => t.released === true)).toBe(true)
     const lockedElsewhere = topics.filter((t) => !t.id.startsWith('ge-k6-'))
     expect(lockedElsewhere.every((t) => t.released === false)).toBe(true)
     expect(pack.extras).toEqual([])

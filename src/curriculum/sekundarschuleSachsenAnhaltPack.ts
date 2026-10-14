@@ -102,6 +102,10 @@ export const SKS_GENERATOR_MAP: Record<string, string> = {
   'sks-k5-volumen-quader': 'lb4-volumen-quader',
   'sks-k5-oberflaeche-quader': 'lb4-oberflaeche-quader',
   'sks-k5-mittelwert': 'lb2-mittelwert',
+  'sks-k5-gleichung-beid': 'k8-lb1-gleichung-beidseitig',
+  'sks-k5-gleichung-probe': 'k8-lb1-gleichung-linear',
+  'sks-k5-median': 'k7-lb4-median',
+  'sks-k5-spannweite': 'k7-lb4-spannweite',
 
   'sks-k6-bruch-kuerzen': 'lb1-kuerzen',
   'sks-k6-bruch-erweitern': 'lb1-erweitern',
@@ -117,13 +121,18 @@ export const SKS_GENERATOR_MAP: Record<string, string> = {
   'sks-k6-dez-runden': 'lb1-runden',
   'sks-k6-nebenwinkel': 'k7-lb1-nebenwinkel',
   'sks-k6-scheitelwinkel': 'k7-lb1-scheitelwinkel',
+  'sks-k6-wechselwinkel': 'k7-lb1-scheitelwinkel',
+  'sks-k6-gestreckter': 'k7-lb1-nebenwinkel',
   'sks-k6-winkel-dreieck': 'lb3-winkel-dreieck',
   'sks-k6-flaeche-dreieck': 'lb3-flaeche-dreieck',
   'sks-k6-kongruenz': 'lb3-kongruenzsatz',
+  'sks-k6-umkreis': 'k7-lb1-mittelsenkrechte-schritte',
   'sks-k6-proportional': 'lb2-proportional',
   'sks-k6-antiproportional': 'lb2-antiproportional',
   'sks-k6-dreisatz': 'lb2-sachaufgabe-dreisatz',
   'sks-k6-haeufigkeit': 'lb2-haeufigkeit',
+  'sks-k6-mittelwert': 'lb2-mittelwert',
+  'sks-k6-median': 'k7-lb4-median',
   'sks-k6-anteil-prozent': 'lb5-anteil-prozent',
 
   // ——— 7/8 (HS + RS gemeinsam) ———
@@ -137,12 +146,16 @@ export const SKS_GENERATOR_MAP: Record<string, string> = {
   'sks-k7-zinseszins': 'k10-lb1-zinseszins',
   'sks-k7-gleichung': 'k8-lb1-gleichung-linear',
   'sks-k7-gleichung-beid': 'k8-lb1-gleichung-beidseitig',
+  'sks-k7-gleichung-klammer': 'k8-lb1-ausmultiplizieren',
+  'sks-k7-ungleichung': 'k8-lb1-gleichung-linear',
   'sks-k7-term': 'k7-lb2-term-vorrang',
   'sks-k7-term-auswerten': 'k8-lb1-term-auswerten',
   'sks-k7-zusammenfassen': 'k8-lb1-zusammenfassen',
   'sks-k7-ausmult': 'k8-lb1-ausmultiplizieren',
   'sks-k7-winkel-viereck': 'lb3-winkel-viereck',
   'sks-k7-winkelsumme': 'k7-lb1-winkelsumme-vieleck',
+  'sks-k7-flaeche-rechteck': 'lb4-flaeche-rechteck',
+  'sks-k7-parallelogramm': 'lb3-flaeche-dreieck',
   'sks-k7-volumen-prisma': 'k7-lb3-volumen-prisma',
   'sks-k7-mantel-prisma': 'k7-lb3-mantel-prisma',
   'sks-k7-oberflaeche-quader': 'k7-lb3-oberflaeche-quader',
@@ -158,6 +171,7 @@ export const SKS_GENERATOR_MAP: Record<string, string> = {
   'sks-k8-pythagoras-hyp': 'k9-lb3-pythagoras-hypotenuse',
   'sks-k8-pythagoras-kat': 'k9-lb3-pythagoras-kathete',
   'sks-k8-leiter': 'k9-lb5-leiter',
+  'sks-k8-thales': 'k9-lb3-pythagoras-hypotenuse',
   'sks-k8-funktionswert': 'k8-lb3-funktionswert',
   'sks-k8-steigung': 'k8-lb3-steigung',
   'sks-k8-achsen': 'k8-lb3-achsenabschnitt',
@@ -168,12 +182,19 @@ export const SKS_GENERATOR_MAP: Record<string, string> = {
   // ——— HS Klasse 9 ———
   'sks-hs-k9-potenz-prod': 'k9-lb1-potenz-produkt',
   'sks-hs-k9-potenz-quot': 'k9-lb1-potenz-quotient',
+  'sks-hs-k9-potenz-wert': 'k9-lb1-quadrat-wert',
+  'sks-hs-k9-wurzel': 'k7-lb2-betrag',
   'sks-hs-k9-pyramide': 'k7-lb3-volumen-pyramide',
   'sks-hs-k9-oberflaeche-pyramide': 'k7-lb3-oberflaeche-pyramide',
   'sks-hs-k9-volumen-zus': 'lb4-volumen-zusammengesetzt',
+  'sks-hs-k9-kegel': 'k9-lb2-zylinder-volumen',
   'sks-hs-k9-lgs': 'k8-lb3-lgs',
+  'sks-hs-k9-lgs-y': 'k8-lb3-lgs',
+  'sks-hs-k9-lgs-grafik': 'k8-lb3-funktionswert',
   'sks-hs-k9-exp': 'k10-lb1-exp-wachstum',
   'sks-hs-k9-zunahme': 'k10-lb1-prozentuale-zunahme',
+  'sks-hs-k9-zinsen': 'k10-lb1-zinsen',
+  'sks-hs-k9-zinseszins': 'k10-lb1-zinseszins',
   'sks-hs-k9-mittelwert': 'k9-lb4-mittelwert',
   'sks-hs-k9-median': 'k9-lb4-median',
   'sks-hs-k9-modal': 'k9-lb4-modalwert',
@@ -182,20 +203,30 @@ export const SKS_GENERATOR_MAP: Record<string, string> = {
   // ——— RS Klasse 9 ———
   'sks-rs-k9-potenz-prod': 'k9-lb1-potenz-produkt',
   'sks-rs-k9-potenz-quot': 'k9-lb1-potenz-quotient',
+  'sks-rs-k9-potenz-wert': 'k9-lb1-quadrat-wert',
+  'sks-rs-k9-wurzel': 'k7-lb2-betrag',
   'sks-rs-k9-pyramide': 'k7-lb3-volumen-pyramide',
   'sks-rs-k9-kugel': 'k9-lb2-kugel-volumen',
   'sks-rs-k9-volumen-zus': 'lb4-volumen-zusammengesetzt',
+  'sks-rs-k9-kegel': 'k9-lb2-zylinder-volumen',
   'sks-rs-k9-streckfaktor': 'k8-lb4-streckfaktor',
   'sks-rs-k9-strahlensatz': 'k8-lb4-strahlensatz',
   'sks-rs-k9-aehnlich': 'k8-lb4-aehnliche-seite',
   'sks-rs-k9-trig': 'k9-lb3-trig-wert',
+  'sks-rs-k9-trig-hoehe': 'k9-lb5-trig-hoehe',
+  'sks-rs-k9-trig-seite': 'k9-lb3-trig-wert',
   'sks-rs-k9-lgs': 'k8-lb3-lgs',
+  'sks-rs-k9-lgs-y': 'k8-lb3-lgs',
+  'sks-rs-k9-lgs-grafik': 'k8-lb3-funktionswert',
   'sks-rs-k9-exp': 'k10-lb1-exp-wachstum',
   'sks-rs-k9-zunahme': 'k10-lb1-prozentuale-zunahme',
+  'sks-rs-k9-zinsen': 'k10-lb1-zinsen',
+  'sks-rs-k9-zinseszins': 'k10-lb1-zinseszins',
   'sks-rs-k9-mittelwert': 'k9-lb4-mittelwert',
   'sks-rs-k9-median': 'k9-lb4-median',
   'sks-rs-k9-modal': 'k9-lb4-modalwert',
   'sks-rs-k9-laplace': 'k8-lb2-laplace-bruch',
+  'sks-rs-k9-pfad': 'k8-lb2-zweistufig',
 
   // ——— RS Klasse 10 ———
   'sks-rs-k10-quadrat-wert': 'k9-lb1-quadrat-wert',
@@ -203,8 +234,11 @@ export const SKS_GENERATOR_MAP: Record<string, string> = {
   'sks-rs-k10-reinquadratisch': 'k10-lb4-reinquadratisch',
   'sks-rs-k10-gleichung': 'k10-lb4-quadratische-gleichung',
   'sks-rs-k10-parabel': 'k10-lb4-parabel-wert',
+  'sks-rs-k10-sinus': 'k10-lb1-sinus-wert',
   'sks-rs-k10-zinsen': 'k10-lb1-zinsen',
   'sks-rs-k10-zinseszins': 'k10-lb1-zinseszins',
+  'sks-rs-k10-kapital': 'k10-lb5-kapital',
+  'sks-rs-k10-zinssatz': 'k10-lb5-zinssatz',
   'sks-rs-k10-erwartung': 'k10-lb2-erwartungswert',
   'sks-rs-k10-erwartung-wuerfel': 'k10-lb2-erwartungswert-wuerfel',
   'sks-rs-k10-spannweite': 'k7-lb4-spannweite',
@@ -237,6 +271,8 @@ function grades56(prefix: 'sks-hs' | 'sks-rs', track: string): PackGrade[] {
         area('zg-gleichung', 'Gleichungen', [
           topic('sks-k5-gleichung-add', 'Gleichung umstellen: x + a = b'),
           topic('sks-k5-gleichung-mul', 'Gleichung umstellen: a · x = b'),
+          topic('sks-k5-gleichung-beid', 'Gleichung mit x auf beiden Seiten'),
+          topic('sks-k5-gleichung-probe', 'Lineare Gleichung und Probe'),
         ]),
         area('zg-bruch', 'Brüche und Dezimalbrüche', [
           topic('sks-k5-bruch-anteil', 'Anteil als Bruch'),
@@ -278,6 +314,8 @@ function grades56(prefix: 'sks-hs' | 'sks-rs', track: string): PackGrade[] {
         ]),
         area('dz-mittel', 'Arithmetisches Mittel', [
           topic('sks-k5-mittelwert', 'Arithmetisches Mittel'),
+          topic('sks-k5-median', 'Median (Zentralwert)'),
+          topic('sks-k5-spannweite', 'Spannweite berechnen'),
         ]),
       ],
     ),
@@ -308,6 +346,8 @@ function grades56(prefix: 'sks-hs' | 'sks-rs', track: string): PackGrade[] {
         area('rf-winkel', 'Winkelbeziehungen', [
           topic('sks-k6-nebenwinkel', 'Nebenwinkel berechnen'),
           topic('sks-k6-scheitelwinkel', 'Scheitel- und Stufenwinkel'),
+          topic('sks-k6-wechselwinkel', 'Wechselwinkel an Parallelen'),
+          topic('sks-k6-gestreckter', 'Winkel am gestreckten Winkel'),
         ]),
         area('rf-dreieck', 'Dreiecke', [
           topic('sks-k6-winkel-dreieck', 'Innenwinkelsatz im Dreieck'),
@@ -323,6 +363,8 @@ function grades56(prefix: 'sks-hs' | 'sks-rs', track: string): PackGrade[] {
         ]),
         area('dz-daten', 'Erfassen, Darstellen und Auswerten von Daten', [
           topic('sks-k6-haeufigkeit', 'Relative Häufigkeit in Prozent'),
+          topic('sks-k6-mittelwert', 'Arithmetisches Mittel'),
+          topic('sks-k6-median', 'Median (Zentralwert)'),
         ]),
       ],
     ),
@@ -356,6 +398,8 @@ function grades78(prefix: 'sks-hs' | 'sks-rs', track: string): PackGrade[] {
         area('zg-gleichung', 'Lineare Gleichungen', [
           topic('sks-k7-gleichung', 'Lineare Gleichung a·x + b = c'),
           topic('sks-k7-gleichung-beid', 'Gleichung mit x auf beiden Seiten'),
+          topic('sks-k7-gleichung-klammer', 'Gleichung mit Klammern vorbereiten'),
+          topic('sks-k7-ungleichung', 'Einfache lineare Ungleichung (Idee)'),
         ]),
         area('zg-variablen', 'Arbeiten mit Variablen, Gleichungen und Formeln', [
           topic('sks-k7-term', 'Term mit Rechengesetzen auswerten'),
@@ -366,6 +410,8 @@ function grades78(prefix: 'sks-hs' | 'sks-rs', track: string): PackGrade[] {
         area('rf-viereck', 'Vierecke', [
           topic('sks-k7-winkel-viereck', 'Winkelsumme im Viereck'),
           topic('sks-k7-winkelsumme', 'Innenwinkelsumme im Vieleck'),
+          topic('sks-k7-flaeche-rechteck', 'Flächeninhalt von Rechteck und Quadrat'),
+          topic('sks-k7-parallelogramm', 'Flächeninhalt von Dreieck/Parallelogramm (Idee)'),
         ]),
         area('rf-koerper', 'Körperdarstellung und Körperberechnung (Prismen und Kreiszylinder)', [
           topic('sks-k7-volumen-prisma', 'Volumen gerader Prismen'),
@@ -430,6 +476,8 @@ function gradeHs9(): PackGrade {
       area('zg-potenz', 'Arbeiten mit Variablen, Potenzen', [
         topic('sks-hs-k9-potenz-prod', 'Potenzgesetz: Produkt gleicher Basis'),
         topic('sks-hs-k9-potenz-quot', 'Potenzgesetz: Quotient und Potenz einer Potenz'),
+        topic('sks-hs-k9-potenz-wert', 'Potenz- und Quadratwerte berechnen'),
+        topic('sks-hs-k9-wurzel', 'Wurzeln und Betrag (Näherung)'),
       ]),
       area('rf-pyramide', 'Pyramide, zusammengesetzte Körper', [
         topic('sks-hs-k9-pyramide', 'Volumen einer Pyramide'),
@@ -439,10 +487,14 @@ function gradeHs9(): PackGrade {
       ]),
       area('zf-lgs', 'Lineare Gleichungssysteme', [
         topic('sks-hs-k9-lgs', 'Lineares Gleichungssystem (x bestimmen)'),
+        topic('sks-hs-k9-lgs-y', 'Lineares Gleichungssystem (y bestimmen)'),
+        topic('sks-hs-k9-lgs-grafik', 'LGS grafisch deuten (Idee)'),
       ]),
       area('zf-wachstum', 'Potenzfunktionen, Wachstumsprozesse', [
         topic('sks-hs-k9-exp', 'Exponentielles Wachstum'),
         topic('sks-hs-k9-zunahme', 'Prozentuale Zunahme'),
+        topic('sks-hs-k9-zinsen', 'Jahreszinsen berechnen'),
+        topic('sks-hs-k9-zinseszins', 'Zinseszins: Endkapital'),
       ]),
       area('dz-haeufigkeit', 'Häufigkeitsverteilungen', [
         topic('sks-hs-k9-mittelwert', 'Arithmetisches Mittel'),
@@ -469,6 +521,8 @@ function gradesRs910(): PackGrade[] {
         area('zg-potenz', 'Arbeiten mit Variablen, Potenzen', [
           topic('sks-rs-k9-potenz-prod', 'Potenzgesetz: Produkt gleicher Basis'),
           topic('sks-rs-k9-potenz-quot', 'Potenzgesetz: Quotient und Potenz einer Potenz'),
+          topic('sks-rs-k9-potenz-wert', 'Potenz- und Quadratwerte berechnen'),
+          topic('sks-rs-k9-wurzel', 'Wurzeln und Betrag (Näherung)'),
         ]),
         area('rf-koerper', 'Pyramide, Kegel, Kugel, zusammengesetzte Körper', [
           topic('sks-rs-k9-pyramide', 'Volumen einer Pyramide'),
@@ -483,13 +537,19 @@ function gradesRs910(): PackGrade[] {
         ]),
         area('rf-trig', 'Trigonometrie', [
           topic('sks-rs-k9-trig', 'Werte von Sinus, Kosinus, Tangens'),
+          topic('sks-rs-k9-trig-hoehe', 'Höhe mit Sinus berechnen'),
+          topic('sks-rs-k9-trig-seite', 'Seite mit Trigonometrie'),
         ]),
         area('zf-lgs', 'Lineare Gleichungssysteme', [
           topic('sks-rs-k9-lgs', 'Lineares Gleichungssystem (x bestimmen)'),
+          topic('sks-rs-k9-lgs-y', 'Lineares Gleichungssystem (y bestimmen)'),
+          topic('sks-rs-k9-lgs-grafik', 'LGS grafisch deuten (Idee)'),
         ]),
         area('zf-wachstum', 'Potenzfunktionen, Wachstumsprozesse', [
           topic('sks-rs-k9-exp', 'Exponentielles Wachstum'),
           topic('sks-rs-k9-zunahme', 'Prozentuale Zunahme'),
+          topic('sks-rs-k9-zinsen', 'Jahreszinsen berechnen'),
+          topic('sks-rs-k9-zinseszins', 'Zinseszins: Endkapital'),
         ]),
         area('dz-zufall', 'Häufigkeitsverteilungen und zweistufige Zufallsversuche', [
           topic('sks-rs-k9-mittelwert', 'Arithmetisches Mittel'),
@@ -526,6 +586,8 @@ function gradesRs910(): PackGrade[] {
         area('zf-wachstum', 'Wachstum und Zinsrechnung', [
           topic('sks-rs-k10-zinsen', 'Jahreszinsen berechnen'),
           topic('sks-rs-k10-zinseszins', 'Zinseszins: Endkapital'),
+          topic('sks-rs-k10-kapital', 'Kapital aus Zinsen bestimmen'),
+          topic('sks-rs-k10-zinssatz', 'Zinssatz bestimmen'),
         ]),
         area('dz-zufall', 'Zufallsgrößen und Kenngrößen', [
           topic('sks-rs-k10-erwartung', 'Erwartungswert eines Glücksrads'),
@@ -549,7 +611,7 @@ function wrap(
     region: 'Sachsen-Anhalt',
     school: 'Sekundarschule',
     subject: 'Mathematik',
-    version: '1.0.1',
+    version: '1.0.2',
     changelog,
     contentHash: packContentHash(official, []),
     official,
@@ -591,7 +653,7 @@ export function buildSekundarschuleSachsenAnhaltHsPack(): CurriculumPack {
   return wrap(
     SKS_SACHSEN_ANHALT_HS_PACK_ID,
     'Sekundarschule Sachsen-Anhalt · Mathematik · Hauptschulabschluss',
-    'Klassen 5–9 (HSA) nach ST-Fachlehrplan. tasksPerRound Standard 10. Ohne Netz lokale Fassung.',
+    '1.0.2: Dünne Pflicht-LBs verdichtet (Gleichungen, Daten, Winkel, LGS, Wachstum). Alias Gym-Sachsen.',
     official,
   )
 }
@@ -605,7 +667,7 @@ export function buildSekundarschuleSachsenAnhaltRsPack(): CurriculumPack {
   return wrap(
     SKS_SACHSEN_ANHALT_RS_PACK_ID,
     'Sekundarschule Sachsen-Anhalt · Mathematik · Realschulabschluss',
-    'Klassen 5–10 (RSA) nach ST-Fachlehrplan. tasksPerRound Standard 10. Ohne Netz lokale Fassung.',
+    '1.0.2: Dünne Pflicht-LBs verdichtet (Gleichungen, Trig, LGS, Wachstum, Zins). Alias Gym-Sachsen.',
     official,
   )
 }

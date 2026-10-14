@@ -7,6 +7,13 @@ import {
 import { formatDe, roundTo } from '../lib/num'
 import { mixedVariants, valueTask, visualTask } from './taskHelpers'
 import { math9GraphicReviews } from './graphicReviewTopics'
+import {
+  k9Hoehensatz,
+  k9PotenzfunktionWert,
+  k9Spannweite,
+  k9Standardabweichung,
+  k9Wurzelgleichung,
+} from './mathUpperDense'
 import type { Grade, Topic } from './types'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
@@ -660,6 +667,62 @@ const leiterProblem: Topic = {
   ),
 }
 
+const rechteckDiagonale: Topic = {
+  id: 'k9-lb5-diagonale',
+  title: 'Vernetzung: Diagonale im Rechteck',
+  hint: 'Die Diagonale ist Hypotenuse im rechtwinkligen Dreieck.',
+  pointsPerTask: 10,
+  difficulty: 2,
+  keywords: ['Pythagoras', 'Rechteck', 'Diagonale', 'Vernetzung'],
+  fachwissen: {
+    text: 'Im Rechteck entsteht durch eine Diagonale ein rechtwinkliges Dreieck aus Länge, Breite und Diagonale. Mit dem Satz des Pythagoras berechnet man fehlende Größen — typische Vernetzung von Geometrie und Algebra.',
+    quelle: 'Wikipedia: Satz des Pythagoras',
+    url: 'https://de.wikipedia.org/wiki/Satz_des_Pythagoras',
+  },
+  generate: (rng: Rng) => {
+    const [a, b, c] = pick(rng, TRIPLES)
+    const k = randInt(rng, 1, 3)
+    const L = a * k
+    const B = b * k
+    const D = c * k
+    return valueTask({
+      question: `Ein Rechteck misst ${L} cm × ${B} cm. Wie lang ist die Diagonale?`,
+      unit: 'cm',
+      answerKind: 'integer',
+      value: D,
+      solution: `${D} cm`,
+      explanation: `d = √(${L}² + ${B}²) = √(${L * L} + ${B * B}) = √${L * L + B * B} = ${D} cm.`,
+    })
+  },
+}
+
+const trigHoehe: Topic = {
+  id: 'k9-lb5-trig-hoehe',
+  title: 'Vernetzung: Höhe mit Trigonometrie',
+  hint: 'sin(α) = Gegenkathete / Hypotenuse.',
+  pointsPerTask: 10,
+  difficulty: 3,
+  keywords: ['Trigonometrie', 'Höhe', 'Sinus', 'Vernetzung'],
+  fachwissen: {
+    text: 'Höhen und Abstände lassen sich mit Sinus, Kosinus oder Tangens berechnen, wenn ein Winkel und eine Seite bekannt sind. Die Vernetzung von Trigonometrie und Sachkontext trainiert Modellieren.',
+    quelle: 'Wikipedia: Trigonometrie',
+    url: 'https://de.wikipedia.org/wiki/Trigonometrie',
+  },
+  generate: (rng: Rng) => {
+    // Use 30°: sin 30 = 1/2 → height = hyp/2
+    const hyp = pick(rng, [10, 12, 14, 16, 20])
+    const h = hyp / 2
+    return valueTask({
+      question: `Eine Schräge der Länge ${hyp} m bildet mit dem Boden 30°. Wie groß ist die Höhe am oberen Ende? (sin 30° = 1/2)`,
+      unit: 'm',
+      answerKind: 'decimal',
+      value: h,
+      solution: `${h} m`,
+      explanation: `h = ${hyp} · sin 30° = ${hyp} · 1/2 = ${h} m.`,
+    })
+  },
+}
+
 // ---------------------------------------------------------------------------
 // Grade — Klasse 9 (Gymnasium Mathematik, Sachsen)
 // ---------------------------------------------------------------------------
@@ -672,7 +735,15 @@ export const klasse9: Grade = {
       id: 'lb1',
       title: 'Funktionen und Potenzen',
       ustd: 48,
-      topics: [potenzProdukt, potenzQuotient, quadratWert, scheitel, ...math9GraphicReviews],
+      topics: [
+        potenzProdukt,
+        potenzQuotient,
+        quadratWert,
+        scheitel,
+        k9Wurzelgleichung,
+        k9PotenzfunktionWert,
+        ...math9GraphicReviews,
+      ],
     },
     {
       id: 'lb2',
@@ -684,19 +755,19 @@ export const klasse9: Grade = {
       id: 'lb3',
       title: 'Rechtwinklige Dreiecke',
       ustd: 32,
-      topics: [pythagorasHypotenuse, pythagorasKathete, trigWert],
+      topics: [pythagorasHypotenuse, pythagorasKathete, trigWert, k9Hoehensatz],
     },
     {
       id: 'lb4',
       title: 'Auswerten von Daten',
       ustd: 12,
-      topics: [mittelwert, median, modalwert],
+      topics: [mittelwert, median, modalwert, k9Spannweite, k9Standardabweichung],
     },
     {
       id: 'lb5',
       title: 'Vernetzung',
       ustd: 4,
-      topics: [leiterProblem],
+      topics: [leiterProblem, rechteckDiagonale, trigHoehe],
     },
   ],
 }

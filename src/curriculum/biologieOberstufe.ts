@@ -30,6 +30,51 @@ const zellen: BioBank = {
       wissen:
         'Eukaryotische Zellen sind in Membrankompartimente gegliedert (z. B. Kern, Mitochondrien, ER). Dadurch laufen gegenläufige Stoffwechselwege räumlich getrennt und effizient ab. Transport zwischen Kompartimenten erfolgt über Membranen und Vesikel.',
     },
+    {
+      concept: 'bio:kOberstufe:mitochondrien-hauptaufgabe',
+      prompt: 'Welche Hauptaufgabe haben Mitochondrien?',
+      answer: 'ATP-Gewinnung durch Zellatmung',
+      wrong: ['nur Speicherung von Stärke wie Amyloplasten', 'nur Photosynthese ohne Ausnahme', 'nur Bildung der Zellwand'],
+      explanation: 'Kraftwerke der Zelle.',
+      wissen:
+        'Mitochondrien sind die Hauptorte der aeroben ATP-Gewinnung. In der inneren Membran läuft die Atmungskette; in der Matrix der Citratzyklus. Zellen mit hohem Energiebedarf (z. B. Muskel) sind mitochondrienreich.',
+    },
+    {
+      concept: 'bio:kOberstufe:zellkern-enthaelt',
+      prompt: 'Der Zellkern eukaryotischer Zellen enthält vor allem …',
+      answer: 'die chromosomale DNA',
+      wrong: ['nur Chlorophyllkristalle', 'nur Extrazellulärmatrix', 'nur Chitinpanzer'],
+      explanation: 'Steuerzentrale mit Erbgut.',
+      wissen:
+        'Im Zellkern liegt die DNA in Chromosomen vor. Dort finden Transkription und Replikation statt. Durch Kernporen werden RNA und Proteine ausgetauscht.',
+    },
+    {
+      concept: 'bio:kOberstufe:passiver-transport',
+      prompt: 'Passiver Transport durch Membranen …',
+      answer: 'verläuft ohne ATP entlang des Konzentrationsgefälles',
+      wrong: ['braucht immer ATP gegen das Gefälle', 'löscht immer Gene', 'ist nur bei Pflanzen unmöglich'],
+      explanation: 'Diffusion/erleichterte Diffusion.',
+      wissen:
+        'Passiver Transport folgt dem Konzentrationsgefälle und verbraucht kein ATP. Dazu gehören einfache Diffusion und erleichterte Diffusion über Kanäle/Carrier. Aktiver Transport dagegen pumpt Stoffe unter Energieeinsatz.',
+    },
+    {
+      concept: 'bio:kOberstufe:stammzellen',
+      prompt: 'Stammzellen zeichnen sich dadurch aus, dass sie …',
+      answer: 'sich teilen und zu verschiedenen Zelltypen differenzieren können',
+      wrong: ['nie teilen und sofort sterben', 'nur als Knochenzellen vorkommen', 'keine DNA besitzen'],
+      explanation: 'Selbsterneuerung und Potenz.',
+      wissen:
+        'Stammzellen können sich erneuern und Tochterzellen bilden, die sich differenzieren. Embryonale Stammzellen sind pluripotent; adulte oft multipotent. In der Medizin und Ethik spielen sie eine große Rolle.',
+    },
+    {
+      concept: 'bio:kOberstufe:er-funktion',
+      prompt: 'Das endoplasmatische Retikulum (ER) dient vor allem …',
+      answer: 'der Proteinsynthese und dem Stofftransport in der Zelle',
+      wrong: ['nur der Photosynthese in Chloroplasten', 'nur dem Knochenwachstum', 'nur der Impfung'],
+      explanation: 'Membrannetzwerk der Zelle.',
+      wissen:
+        'Das raue ER trägt Ribosomen und ist an der Proteinsynthese für den Export beteiligt; das glatte ER spielt u. a. beim Lipidstoffwechsel eine Rolle. Vesikel transportieren Produkte weiter zum Golgi-Apparat.',
+    },
   ],
   pairs: [
     {
@@ -50,6 +95,12 @@ const zellen: BioBank = {
       wissen:
         'Biomembranen aus Lipid-Doppelschicht und Proteinen sind selektive Barrieren. Sie steuern Stofftransport und tragen Rezeptoren für Signale.',
     },
+    {
+      term: 'Golgi-Apparat',
+      meaning: 'Verpackung und Modifikation von Proteinen',
+      wissen:
+        'Der Golgi-Apparat modifiziert, sortiert und verpackt Proteine und Lipide in Vesikel. Er arbeitet eng mit dem ER zusammen. Viele Sekrete verlassen die Zelle über den Golgi-Weg.',
+    },
   ],
   trueFalse: [
     {
@@ -59,6 +110,14 @@ const zellen: BioBank = {
       explanation: 'Meist gleiche DNA — unterschiedliche Genaktivität.',
       wissen:
         'Differenzierte Körperzellen eines Individuums besitzen in der Regel denselben DNA-Bestand. Unterschiedliche Funktionen entstehen durch Genregulation (welche Gene abgelesen werden). Vollständiges Löschen der DNA ist nicht der Normalfall der Differenzierung.',
+    },
+    {
+      concept: 'bio:kOberstufe:prokaryoten-ohne-echten-kern',
+      statement: 'Prokaryoten besitzen keinen echten Zellkern.',
+      correct: true,
+      explanation: 'DNA liegt im Nucleoid, nicht kernmembranumschlossen.',
+      wissen:
+        'Bakterien und Archaeen sind Prokaryoten: ihre DNA liegt nicht in einem kernmembranumschlossenen Kern, sondern im Nucleoid. Eukaryoten haben dagegen einen echten Zellkern und weitere Organellen.',
     },
   ],
   multis: [
@@ -174,6 +233,33 @@ const oekologie: BioBank = {
       wissen:
         'Begrenzende (limitierende) Faktoren wie Nahrung, Licht, Raum oder Temperatur drosseln Wachstum und Verbreitung einer Population. Das Minimumgesetz (Liebig) betont: der knappste Faktor bestimmt den Ertrag. In der Populationsökologie erklären solche Faktoren Tragfähigkeit und Dichteabhängigkeit.',
     },
+    {
+      concept: 'bio:kOberstufe:abiotische-faktoren',
+      prompt: 'Abiotische Umweltfaktoren sind …',
+      answer: 'unbelebte Einflüsse wie Temperatur, Licht, Wasser, pH',
+      wrong: ['nur Konkurrenz zwischen Arten', 'nur Fressfeinde', 'nur Symbiosen'],
+      explanation: 'Unbelebte vs. belebte Faktoren.',
+      wissen:
+        'Abiotische Faktoren sind unbelebte Umweltbedingungen (Temperatur, Licht, Wasser, Boden, pH). Biotische Faktoren entstehen durch andere Lebewesen (Konkurrenz, Räuber, Symbiose). Beide prägen Verbreitung und Ökosystemstrukturen.',
+    },
+    {
+      concept: 'bio:kOberstufe:stoffkreislauf',
+      prompt: 'Stoffkreisläufe in Ökosystemen …',
+      answer: 'führen Stoffe zwischen belebter und unbelebter Natur hin und her',
+      wrong: ['existieren nie', 'löschen immer alle Populationen', 'gelten nur im Weltraum'],
+      explanation: 'z. B. Kohlenstoff- und Stickstoffkreislauf.',
+      wissen:
+        'In Stoffkreisläufen (z. B. C, N) werden Elemente zwischen Atmosphäre, Boden, Wasser und Organismen ausgetauscht. Produzenten, Konsumenten und Destruenten sind zentrale Stationen. Menschliche Eingriffe können Kreisläufe stören (z. B. CO₂-Anstieg).',
+    },
+    {
+      concept: 'bio:kOberstufe:trockenpyramide',
+      prompt: 'Warum nimmt die Biomasse in einer Nahrungskette oft nach oben ab?',
+      answer: 'Weil auf jeder Stufe Energie verloren geht (z. B. als Wärme)',
+      wrong: ['Weil Physikgesetze aussetzen', 'Weil Produzenten keine Photosynthese betreiben', 'Weil Destruenten fehlen immer'],
+      explanation: 'Energiefluss und ökologische Pyramide.',
+      wissen:
+        'Entlang der Nahrungskette geht Energie verloren (Atmung, Wärme, unverwertete Reste). Deshalb sind Biomasse und verfügbare Energie auf höheren Trophieebenen geringer. Ökologische Pyramiden veranschaulichen das.',
+    },
   ],
   pairs: [
     {
@@ -193,6 +279,12 @@ const oekologie: BioBank = {
       meaning: 'Menschliche Einwirkung',
       wissen:
         'Anthropogene Einflüsse sind menschliche Eingriffe: Emissionen, Landnutzung, Übernutzung, Versiegelung. Sie verändern Stoffkreisläufe und Lebensräume. Viele Nachhaltigkeitsmaßnahmen zielen darauf, diese Wirkungen zu verringern.',
+    },
+    {
+      term: 'Produzent',
+      meaning: 'Autotrophe Basis der Nahrungskette',
+      wissen:
+        'Produzenten (meist grüne Pflanzen oder Algen) bilden Biomasse aus anorganischen Stoffen, oft durch Fotosynthese. Sie sind die energetische Basis der meisten Ökosysteme.',
     },
   ],
   trueFalse: [
@@ -330,6 +422,33 @@ const kommunikation: BioBank = {
       gap: 'Hormone und Neurotransmitter sind Beispiele für ___.',
       gapAccepted: ['Signale', 'Botenstoffe', 'Signalstoffe'],
     },
+    {
+      concept: 'bio:kOberstufe:hormon-vs-nerv',
+      prompt: 'Im Vergleich zur Nervenleitung wirken Hormone oft …',
+      answer: 'langsamer, aber länger und über den Blutweg',
+      wrong: ['immer nur lokal an einer Synapse in Millisekunden', 'nur in Pflanzenwurzeln', 'gar nicht auf Zellen'],
+      explanation: 'Endokrines vs. neuronales System.',
+      wissen:
+        'Hormone werden meist über das Blut transportiert und wirken an Zellen mit passenden Rezeptoren — oft langsamer und nachhaltiger als synaptische Signalübertragung. Nervenimpulse sind schnell und lokal begrenzt. Beide Systeme kooperieren bei der Homöostase.',
+    },
+    {
+      concept: 'bio:kOberstufe:neurotransmittter',
+      prompt: 'Neurotransmitter …',
+      answer: 'übertragen Signale an chemischen Synapsen',
+      wrong: ['sind nur Zellwandstoffe', 'ersetzen immer DNA', 'sind nur Abfallprodukte ohne Wirkung'],
+      explanation: 'Chemische Signalstoffe der Nervenzelle.',
+      wissen:
+        'Neurotransmitter werden aus Vesikeln in den synaptischen Spalt freigesetzt und binden an postsynaptische Rezeptoren. Beispiele im Schulkontext: Acetylcholin, Dopamin. Danach werden sie abgebaut oder wieder aufgenommen.',
+    },
+    {
+      concept: 'bio:kOberstufe:signalverstaerkung',
+      prompt: 'Eine Signaltransduktionskaskade kann …',
+      answer: 'ein schwaches äußeres Signal stark verstärken',
+      wrong: ['Signale immer abschalten und nie verstärken', 'nur Chromosomen verdoppeln', 'nur Zellwände abbauen'],
+      explanation: 'Amplifikation in der Zelle.',
+      wissen:
+        'Enzymkaskaden und Second Messenger verstärken Signale: wenige aktivierte Rezeptoren können viele nachgeschaltete Moleküle beeinflussen. Das ermöglicht empfindliche und abgestufte Antworten. Fehlregulation spielt in Krankheiten eine Rolle.',
+    },
   ],
   pairs: [
     {
@@ -350,6 +469,12 @@ const kommunikation: BioBank = {
       wissen:
         'An chemischen Synapsen setzen Nervenzellen Transmitter frei, die an postsynaptische Rezeptoren binden. Elektrische Synapsen koppeln Zellen direkter. Synapsen sind zentrale Orte neuronaler Kommunikation.',
     },
+    {
+      term: 'Hormon',
+      meaning: 'Botenstoff des endokrinen Systems',
+      wissen:
+        'Hormone werden von Drüsen gebildet und steuern Zielzellen über Rezeptoren. Konzentration und Timing sind entscheidend. Störungen der Hormonachse haben systemische Folgen.',
+    },
   ],
   trueFalse: [
     {
@@ -359,6 +484,14 @@ const kommunikation: BioBank = {
       explanation: 'Schlüssel-Schloss-Prinzip.',
       wissen:
         'Die Spezifität der Signalwirkung beruht auf passenden Rezeptoren. Fehlt der Rezeptor, bindet der Signalstoff nicht und löst keine Kaskade aus. Dasselbe Molekül kann an anderen Zelltypen völlig anders wirken.',
+    },
+    {
+      concept: 'bio:kOberstufe:alle-zellen-gleiche-rezeptoren',
+      statement: 'Alle Körperzellen besitzen dieselben Rezeptoren für jedes Hormon.',
+      correct: false,
+      explanation: 'Rezeptorausstattung ist zelltypspezifisch.',
+      wissen:
+        'Nur Zellen mit passenden Rezeptoren reagieren auf ein bestimmtes Hormon. Deshalb wirken Hormone selektiv, obwohl sie oft im ganzen Körper verteilt werden.',
     },
   ],
 }
@@ -376,6 +509,33 @@ const biodiversitaet: BioBank = {
       explanation: 'Drei Ebenen der Vielfalt.',
       wissen:
         'Biodiversität meint genetische Vielfalt innerhalb von Arten, die Vielfalt der Arten selbst und die Vielfalt der Ökosysteme. Alle drei Ebenen hängen zusammen: ohne genetische Vielfalt fehlt Anpassungspotenzial. Artenschutz und Lebensraumschutz greifen oft ineinander.',
+    },
+    {
+      concept: 'bio:kOberstufe:invasive-arten',
+      prompt: 'Invasive Arten können Biodiversität gefährden, weil sie …',
+      answer: 'heimische Arten verdrängen oder Lebensgemeinschaften verändern',
+      wrong: ['immer die genetische Vielfalt erhöhen', 'nur Schulbücher betreffen', 'nie mit Nahrungsnetzen wechselwirken'],
+      explanation: 'Neozoen/Neophyten im Ökosystem.',
+      wissen:
+        'Eingeschleppte Arten können Konkurrenz, Prädation oder Krankheitsdruck erhöhen und heimische Arten zurückdrängen. Nicht jede Neubürger-Art ist invasiv — problematisch wird sie bei starker Ausbreitung und ökologischen Schäden.',
+    },
+    {
+      concept: 'bio:kOberstufe:endemiten',
+      prompt: 'Endemische Arten …',
+      answer: 'kommen nur in einem begrenzten Gebiet natürlich vor',
+      wrong: ['leben überall auf der Erde gleich häufig', 'sind immer invasiv', 'haben keine ökologische Nische'],
+      explanation: 'Räumlich begrenzte Verbreitung.',
+      wissen:
+        'Endemiten sind auf ein bestimmtes Gebiet beschränkt. Inseln und isolierte Lebensräume haben oft viele Endemiten. Habitatverlust trifft sie besonders hart, weil Ausweichräume fehlen.',
+    },
+    {
+      concept: 'bio:kOberstufe:rote-liste',
+      prompt: 'Rote Listen dienen vor allem dazu …',
+      answer: 'den Gefährdungsgrad von Arten zu dokumentieren',
+      wrong: ['nur Schulnoten festzulegen', 'invasive Arten zu züchten', 'Stoffwechselwege zu messen'],
+      explanation: 'Gefährdungseinstufung.',
+      wissen:
+        'Rote Listen stufen Arten nach Gefährdung ein und helfen bei Schutzprioritäten. Sie basieren auf Bestandsdaten und Trendabschätzungen. Politische und praktische Schutzmaßnahmen können daran ansetzen.',
     },
   ],
   pairs: [
@@ -397,6 +557,12 @@ const biodiversitaet: BioBank = {
       wissen:
         'Genetische Vielfalt innerhalb einer Population erhöht die Chance, auf Umweltänderungen zu reagieren. Engpässe und Inzucht verringern sie. Evolution und Artenschutz berücksichtigen deshalb auch Allelfrequenzen.',
     },
+    {
+      term: 'Hotspot',
+      meaning: 'Region mit besonders hoher Artenvielfalt',
+      wissen:
+        'Biodiversitäts-Hotspots sind Regionen mit außergewöhnlich vielen Arten, oft mit hohem Endemitenanteil und starker Bedrohung. Schutz dort ist besonders wirksam pro Fläche.',
+    },
   ],
   trueFalse: [
     {
@@ -406,6 +572,14 @@ const biodiversitaet: BioBank = {
       explanation: 'Anpassungspotenzial.',
       wissen:
         'Mit mehr Allelkombinationen steigen die Chancen, dass Teile der Population neue Bedingungen überleben. Das ist evolutionäres Anpassungspotenzial. Sehr kleine, genetisch enge Populationen sind oft anfälliger.',
+    },
+    {
+      concept: 'bio:kOberstufe:monokultur-foerdert-vielfalt',
+      statement: 'Flächendeckende Monokulturen fördern in der Regel die Artenvielfalt.',
+      correct: false,
+      explanation: 'Monokulturen verringern Habitat- und Artenvielfalt.',
+      wissen:
+        'Monokulturen vereinheitlichen Lebensräume und reduzieren Nischen. Schädlingsanfälligkeit kann steigen. Vielfalt fördernde Nutzung belässt Strukturen und Randbiotope.',
     },
   ],
   multis: [
@@ -526,17 +700,31 @@ export const BIOLOGIE_OBERSTUFE_GENERATORS: Record<string, Topic['generate']> = 
   'bi-gk11-lb1-zellen': bankGenerate(zellen),
   'bi-gk11-lb2-stoffwechsel': bankGenerate(stoffwechsel),
   'bi-gk11-lb3-oekologie': bankGenerate(oekologie),
+  'bi-gk11-lb1-gewebe': bankGenerate(zellen),
   'bi-gk12-lb1-genetik': bankGenerate(genetikOS),
+  'bi-gk12-lb1-dna': bankGenerate(genetikOS),
+  'bi-gk12-lb1-anwendung': bankGenerate(genetikOS),
   'bi-gk12-lb2-kommunikation': bankGenerate(kommunikation),
   'bi-gk12-lb3-biodiversitaet': bankGenerate(biodiversitaet),
+  'bi-gk12-lb3-artbildung': bankGenerate(biodiversitaet),
+  'bi-gk12-lb3-schutz': bankGenerate(biodiversitaet),
   'bi-lk11-lb1-zellen': bankGenerate(zellen),
+  'bi-lk11-lb1-gewebe': bankGenerate(zellen),
   'bi-lk11-lb2-stoffwechsel': bankGenerate(stoffwechsel),
   'bi-lk11-lb3-oekologie': bankGenerate(oekologie),
   'bi-lk12-lb1-genetik': bankGenerate(genetikOS),
+  'bi-lk12-lb1-dna': bankGenerate(genetikOS),
+  'bi-lk12-lb1-anwendung': bankGenerate(genetikOS),
   'bi-lk12-lb2-kommunikation': bankGenerate(kommunikation),
   'bi-lk12-lb3-verhalten': bankGenerate(verhalten),
+  'bi-lk12-lb3-lernen': bankGenerate(verhalten),
+  'bi-lk12-lb3-sozial': bankGenerate(verhalten),
   'bi-lk12-lb4-biodiversitaet': bankGenerate(biodiversitaet),
+  'bi-lk12-lb4-artbildung': bankGenerate(biodiversitaet),
+  'bi-lk12-lb4-schutz': bankGenerate(biodiversitaet),
   'bi-lk12-lb5-systematik': bankGenerate(systematikOS),
+  'bi-lk12-lb5-ebenen': bankGenerate(systematikOS),
+  'bi-lk12-lb5-vernetzung': bankGenerate(systematikOS),
   'bi-gk-lbw-wueste': bankGenerate(
     wahl(
       'Wüste',

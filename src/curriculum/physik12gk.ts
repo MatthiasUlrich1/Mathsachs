@@ -714,13 +714,36 @@ const akustik: Topic['generate'] = mixedVariants(
 )
 
 export const PHYSIK_J12GK_GENERATORS: Record<string, Topic['generate']> = {
+  // LB1 Lichtwelle
+  'ph-j12gk-lb1-welle': licht,
   'ph-j12gk-lb1-licht': licht,
-  'ph-j12gk-lb2-optik': optik,
+  'ph-j12gk-lb1-interferenz': licht,
+  'ph-j12gk-lb1-beugung': licht,
+  'ph-j12gk-lb1-cf': licht,
+  // LB2 Praktikum Optik
   'ph-j12gk-lb2-linse': optik,
+  'ph-j12gk-lb2-optik': optik,
+  'ph-j12gk-lb2-brennweite': optik,
+  'ph-j12gk-lb2-bild': optik,
+  'ph-j12gk-lb2-fehler': optik,
+  // LB3 Quanten
+  'ph-j12gk-lb3-photo': quanten,
   'ph-j12gk-lb3-quanten': quanten,
+  'ph-j12gk-lb3-photon': quanten,
+  'ph-j12gk-lb3-dualismus': quanten,
+  'ph-j12gk-lb3-grenze': quanten,
+  // LB4 Strahlung
+  'ph-j12gk-lb4-atomhuelle': strahlung,
   'ph-j12gk-lb4-strahlung': strahlung,
+  'ph-j12gk-lb4-zerfall': strahlung,
+  'ph-j12gk-lb4-halbwert': strahlung,
+  'ph-j12gk-lb4-arten': strahlung,
+  'ph-j12gk-lb4-spaltung': strahlung,
+  // Wahl
   'ph-j12gk-lbw-anwendungen': anwendungen,
+  'ph-j12gk-lbw-medizin': strahlung,
   'ph-j12gk-lbw-optik': optikWahl,
+  'ph-j12gk-lbw-regenbogen': optikWahl,
   'ph-j12gk-lbw-akustik': akustik,
   'ph-j12gk-lbw-schall': akustik,
 }

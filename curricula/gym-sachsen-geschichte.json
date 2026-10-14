@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Geschichte",
-  "version": "1.9.0",
-  "changelog": "K6 freigegeben: LB2 Mittelalter (14), LB3 Religionen/Kulturen (9), LB4 Bürger „Durch die Zeiten“, Wahl Regionalgeschichte. Karl/Verdun erweitert; Toleranz-heute ohne Meta-Übungsbeispiel; Lückentoleranz fuzzy. 148 Themen.",
+  "version": "1.9.3",
+  "changelog": "Längsschnitte verdichtet (K5 Mensch–Natur, K7 Legitimation, K8 Kinderarbeit) mit neuen Themen/Banken; Freigabe unverändert außer bestehendem K6. 158 Themen.",
   "official": [
     {
       "id": "geschichte-klasse-5",
@@ -198,6 +198,32 @@
               "keywords": [
                 "Mensch",
                 "Natur"
+              ]
+            },
+            {
+              "id": "ge-k5-lb4-ressourcen",
+              "title": "Ressourcen: Wasser, Boden, Ernährung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Wasser",
+                "Boden",
+                "Ressource"
+              ]
+            },
+            {
+              "id": "ge-k5-lb4-landschaft",
+              "title": "Landschaftswandel: Rodung und Nutzung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Rodung",
+                "Erosion",
+                "Technik"
               ]
             }
           ]
@@ -714,6 +740,58 @@
                 "Bürger",
                 "Erziehung"
               ]
+            },
+            {
+              "id": "ge-k6-lb4-polis",
+              "title": "Bürger in der griechischen Polis",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Polis",
+                "Bürgerrecht",
+                "Pflichten"
+              ]
+            },
+            {
+              "id": "ge-k6-lb4-rom",
+              "title": "Römisches Bürgerrecht",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Rom",
+                "Bürgerrecht",
+                "Rechtsstatus"
+              ]
+            },
+            {
+              "id": "ge-k6-lb4-stadt",
+              "title": "Bürger in der mittelalterlichen Stadt",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Stadt",
+                "Stadtluft",
+                "Zunft"
+              ]
+            },
+            {
+              "id": "ge-k6-lb4-vergleich",
+              "title": "Bürgerrechte im Epochenvergleich",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Vergleich",
+                "Wandel",
+                "Ausschluss"
+              ]
             }
           ]
         },
@@ -978,6 +1056,30 @@
                 "Herrschaft",
                 "Legitimation"
               ]
+            },
+            {
+              "id": "ge-k7-lb4-gottesgnade",
+              "title": "Gottesgnadentum und religiöse Begründung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Gottesgnadentum",
+                "Absolutismus"
+              ]
+            },
+            {
+              "id": "ge-k7-lb4-verfassung",
+              "title": "Verfassung und Volkssouveränität",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Verfassung",
+                "Volkssouveränität"
+              ]
             }
           ]
         },
@@ -1170,6 +1272,30 @@
               "keywords": [
                 "Kinderarbeit",
                 "Industrialisierung"
+              ]
+            },
+            {
+              "id": "ge-k8-lb3-schutzgesetze",
+              "title": "Kinderschutz und Fabrikgesetze",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Fabrikgesetz",
+                "Arbeitsschutz"
+              ]
+            },
+            {
+              "id": "ge-k8-lb3-schule",
+              "title": "Schulpflicht und Ende der Kinderarbeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Schulpflicht",
+                "Bildung"
               ]
             }
           ]
@@ -2293,5 +2419,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "173a4cab"
+  "contentHash": "24cf1ce4"
 }

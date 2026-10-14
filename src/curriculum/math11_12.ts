@@ -6,6 +6,31 @@ import {
 import { formatDe, roundTo } from '../lib/num'
 import { mixedVariants, valueTask, visualTask, coordinateClickTask } from './taskHelpers'
 import { math1112GraphicReviews } from './graphicReviewTopics'
+import {
+  k1112AbleitungExp,
+  k1112AbstandPunktGerade,
+  k1112BinomKumuliert,
+  k1112BinomSigma,
+  k1112Differenzenquotient,
+  k1112Extremum,
+  k1112ExtremwertAnwendung,
+  k1112FlaecheIntegral,
+  k1112GeradePunkt,
+  k1112Hypothesentest,
+  k1112LageGeraden,
+  k1112KonfidenzIdee,
+  k1112MatrixAdd,
+  k1112MatrixDet,
+  k1112MatrixLgs,
+  k1112MatrixMult,
+  k1112Orthogonal,
+  k1112SpiegelungEbene,
+  k1112Stammfunktion,
+  k1112Stichprobenmittel,
+  k1112VektorAdd,
+  k1112VolumenOptimierung,
+  k1112WinkelVektoren,
+} from './mathUpperDense'
 import type { Grade, Topic } from './types'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
@@ -391,21 +416,63 @@ export const klasse11_12: Grade = {
   areas: [
     {
       id: 'lb1',
-      title: 'Differential- und Integralrechnung',
+      title: 'Differentialrechnung',
       ustd: 52,
-      topics: [ableitungStelle, nullstelleLinear, bestimmtesIntegral, ...math1112GraphicReviews],
+      topics: [
+        ableitungStelle,
+        nullstelleLinear,
+        k1112Extremum,
+        k1112AbleitungExp,
+        k1112Differenzenquotient,
+        ...math1112GraphicReviews.filter((t) => !t.id.includes('integral')),
+      ],
     },
     {
       id: 'lb2',
-      title: 'Vektoren, Geraden und Ebenen',
-      ustd: 32,
-      topics: [skalarprodukt, betragVektor],
+      title: 'Matrizen',
+      ustd: 6,
+      topics: [k1112MatrixMult, k1112MatrixLgs, k1112MatrixAdd, k1112MatrixDet],
     },
     {
       id: 'lb3',
+      title: 'Vektoren, Geraden und Ebenen',
+      ustd: 32,
+      topics: [skalarprodukt, betragVektor, k1112VektorAdd, k1112GeradePunkt, k1112LageGeraden],
+    },
+    {
+      id: 'lb4',
       title: 'Binomialverteilte Zufallsgrößen',
       ustd: 18,
-      topics: [binomialverteilung, erwartungswertBinom],
+      topics: [binomialverteilung, erwartungswertBinom, k1112BinomKumuliert, k1112BinomSigma],
+    },
+    {
+      id: 'lb5',
+      title: 'Integralrechnung',
+      ustd: 28,
+      topics: [
+        bestimmtesIntegral,
+        k1112Stammfunktion,
+        k1112FlaecheIntegral,
+        ...math1112GraphicReviews.filter((t) => t.id.includes('integral')),
+      ],
+    },
+    {
+      id: 'lb6',
+      title: 'Beurteilende Statistik',
+      ustd: 12,
+      topics: [k1112Stichprobenmittel, k1112Hypothesentest, k1112KonfidenzIdee],
+    },
+    {
+      id: 'lb7',
+      title: 'Abstände und Winkel',
+      ustd: 24,
+      topics: [k1112Orthogonal, k1112WinkelVektoren, k1112AbstandPunktGerade],
+    },
+    {
+      id: 'lb8',
+      title: 'Weitere Anwendungen',
+      ustd: 20,
+      topics: [k1112ExtremwertAnwendung, k1112SpiegelungEbene, k1112VolumenOptimierung],
     },
   ],
 }

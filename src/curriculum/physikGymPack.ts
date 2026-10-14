@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.32',
+    version: '2.5.34',
     changelog:
-      'K7 Vom Fliegen: Flugzeug-Silhouette nach Vorlage (Seitenansicht mit Fenstern/Triebwerk).',
+      'JGS 11/12 GK: alle Teilthemen auf handgeschriebene Generatoren verdrahtet (statt Title-Factory); Freigabe unverändert locked.',
     official,
     extras: [],
   }

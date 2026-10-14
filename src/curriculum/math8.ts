@@ -7,6 +7,7 @@ import { makeFraction, subtract, format, type Fraction } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
 import { fractionTask, mixedVariants, valueTask, visualTask, paramSliderTask, choicePickTask, coordinateClickTask } from './taskHelpers'
 import { math8GraphicReviews } from './graphicReviewTopics'
+import { k8Baumdiagramm, k8BinomischeFormel, k8ProduktregelAnzahl } from './mathUpperDense'
 import type { Grade, Topic } from './types'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
@@ -753,6 +754,60 @@ const rueckwaerts: Topic = {
   },
 }
 
+const systematischProbieren: Topic = {
+  id: 'k8-lb5-probieren',
+  title: 'Systematisches Probieren',
+  hint: 'Probiere geordnet und notiere Zwischenergebnisse.',
+  pointsPerTask: 10,
+  difficulty: 2,
+  keywords: ['Probieren', 'heuristisch', 'systematisch', 'Vernetzung'],
+  fachwissen: {
+    text: 'Systematisches Probieren bedeutet, mögliche Werte geordnet zu testen und Ergebnisse festzuhalten, statt wahllos zu raten. So findet man Lösungen bei Gleichungen, Zahlenrätseln und Sachaufgaben zuverlässiger und kann Fehler leichter erkennen.',
+    quelle: 'Wikipedia: Heuristik',
+    url: 'https://de.wikipedia.org/wiki/Heuristik',
+  },
+  generate: (rng: Rng) => {
+    const a = randInt(rng, 3, 9)
+    const b = randInt(rng, 2, 8)
+    const target = a * b + randInt(rng, 1, 5)
+    // Find x such that a*x is just below target
+    const x = Math.floor((target - 1) / a)
+    return valueTask({
+      question: `Welche größte ganze Zahl x erfüllt ${a}·x < ${target}?`,
+      answerKind: 'integer',
+      value: x,
+      solution: `${x}`,
+      explanation: `${a}·${x} = ${a * x} < ${target}, aber ${a}·${x + 1} = ${a * (x + 1)} ist nicht kleiner als ${target}.`,
+    })
+  },
+}
+
+const skizzeNutzen: Topic = {
+  id: 'k8-lb5-skizze',
+  title: 'Skizze und Hilfsfigur',
+  hint: 'Zeichne die Situation zuerst grob.',
+  pointsPerTask: 10,
+  difficulty: 2,
+  keywords: ['Skizze', 'Hilfsfigur', 'heuristisch', 'Geometrie', 'Vernetzung'],
+  fachwissen: {
+    text: 'Eine Skizze oder Hilfsfigur macht Beziehungen sichtbar: Längen, Winkel und Teilschritte. In der Heuristik gilt: Visualisieren reduziert Komplexität und hilft, passende Sätze (z. B. Pythagoras, Ähnlichkeit) zu wählen.',
+    quelle: 'Wikipedia: Heuristik',
+    url: 'https://de.wikipedia.org/wiki/Heuristik',
+  },
+  generate: (rng: Rng) => {
+    const a = randInt(rng, 3, 12)
+    const b = randInt(rng, 3, 12)
+    const c2 = a * a + b * b
+    return valueTask({
+      question: `Rechtwinkliges Dreieck mit Katheten ${a} und ${b}. Wie groß ist das Quadrat der Hypotenuse (c²)?`,
+      answerKind: 'integer',
+      value: c2,
+      solution: `${c2}`,
+      explanation: `Pythagoras: c² = ${a}² + ${b}² = ${a * a} + ${b * b} = ${c2}. Eine Skizze zeigt, welche Seiten Katheten sind.`,
+    })
+  },
+}
+
 // ---------------------------------------------------------------------------
 // Grade — Klasse 8 (Gymnasium Mathematik, Sachsen)
 // ---------------------------------------------------------------------------
@@ -765,13 +820,20 @@ export const klasse8: Grade = {
       id: 'lb1',
       title: 'Arbeiten mit Termen und Gleichungen',
       ustd: 24,
-      topics: [zusammenfassen, termAuswerten, gleichungLinear, gleichungBeidseitig, ausmultiplizieren],
+      topics: [
+        zusammenfassen,
+        termAuswerten,
+        gleichungLinear,
+        gleichungBeidseitig,
+        ausmultiplizieren,
+        k8BinomischeFormel,
+      ],
     },
     {
       id: 'lb2',
       title: 'Zufallsversuche',
       ustd: 24,
-      topics: [laplaceBruch, laplaceProzent, gegenwahrscheinlichkeit],
+      topics: [laplaceBruch, laplaceProzent, gegenwahrscheinlichkeit, k8Baumdiagramm, k8ProduktregelAnzahl],
     },
     {
       id: 'lb3',
@@ -789,7 +851,7 @@ export const klasse8: Grade = {
       id: 'lb5',
       title: 'Vernetzung: Heuristische Strategien',
       ustd: 4,
-      topics: [zahlenraetsel, rueckwaerts],
+      topics: [zahlenraetsel, rueckwaerts, systematischProbieren, skizzeNutzen],
     },
   ],
 }

@@ -124,6 +124,8 @@ export const ST_GENERATOR_MAP: Record<string, string> = {
   'st-k6-antiproportional': 'lb2-antiproportional',
   'st-k6-dreisatz': 'lb2-sachaufgabe-dreisatz',
   'st-k6-haeufigkeit': 'lb2-haeufigkeit',
+  'st-k6-mittelwert': 'lb2-mittelwert',
+  'st-k6-median': 'k7-lb4-median',
   'st-k6-winkel-dreieck': 'lb3-winkel-dreieck',
   'st-k6-winkel-viereck': 'lb3-winkel-viereck',
   'st-k6-flaeche-dreieck': 'lb3-flaeche-dreieck',
@@ -134,6 +136,10 @@ export const ST_GENERATOR_MAP: Record<string, string> = {
   'st-k6-anteil-prozent': 'lb5-anteil-prozent',
   'st-k6-nebenwinkel': 'k7-lb1-nebenwinkel',
   'st-k6-scheitelwinkel': 'k7-lb1-scheitelwinkel',
+  'st-k6-gleichung-beid': 'k8-lb1-gleichung-beidseitig',
+  'st-k6-gleichung-probe': 'k8-lb1-gleichung-linear',
+  'st-k6-wechselwinkel': 'k7-lb1-scheitelwinkel',
+  'st-k6-gestreckter': 'k7-lb1-nebenwinkel',
 
   // ——— Klasse 7 (ST 7/8 früh: Prozent, rationale Zahlen, Terme, Körper) ———
   'st-k7-prozent': 'lb5-anteil-prozent',
@@ -148,6 +154,8 @@ export const ST_GENERATOR_MAP: Record<string, string> = {
   'st-k7-term': 'k7-lb2-term-vorrang',
   'st-k7-gleichung': 'k8-lb1-gleichung-linear',
   'st-k7-gleichung-beid': 'k8-lb1-gleichung-beidseitig',
+  'st-k7-gleichung-klammer': 'k8-lb1-ausmultiplizieren',
+  'st-k7-ungleichung': 'k8-lb1-gleichung-linear',
   'st-k7-term-auswerten': 'k8-lb1-term-auswerten',
   'st-k7-zusammenfassen': 'k8-lb1-zusammenfassen',
   'st-k7-ausmult': 'k8-lb1-ausmultiplizieren',
@@ -182,6 +190,9 @@ export const ST_GENERATOR_MAP: Record<string, string> = {
   'st-k8-gegen': 'k8-lb2-gegenwahrscheinlichkeit',
   'st-k8-leiter': 'k9-lb5-leiter',
   'st-k8-zahlenraetsel': 'k8-lb5-zahlenraetsel',
+  'st-k8-rueckwaerts': 'k8-lb5-rueckwaerts',
+  'st-k8-probieren': 'k8-lb5-probieren',
+  'st-k8-skizze': 'k8-lb5-skizze',
 
   // ——— Klasse 9 ———
   'st-k9-potenz-prod': 'k9-lb1-potenz-produkt',
@@ -189,6 +200,8 @@ export const ST_GENERATOR_MAP: Record<string, string> = {
   'st-k9-quadrat-wert': 'k9-lb1-quadrat-wert',
   'st-k9-scheitel': 'k9-lb1-scheitel',
   'st-k9-trig': 'k9-lb3-trig-wert',
+  'st-k9-pythagoras-hyp': 'k9-lb3-pythagoras-hypotenuse',
+  'st-k9-pythagoras-kat': 'k9-lb3-pythagoras-kathete',
   'st-k9-gleichung': 'k10-lb4-quadratische-gleichung',
   'st-k9-reinquadratisch': 'k10-lb4-reinquadratisch',
   'st-k9-parabel': 'k10-lb4-parabel-wert',
@@ -204,6 +217,10 @@ export const ST_GENERATOR_MAP: Record<string, string> = {
   'st-k10-exp': 'k10-lb1-exp-wachstum',
   'st-k10-erwartung': 'k10-lb2-erwartungswert',
   'st-k10-erwartung-wuerfel': 'k10-lb2-erwartungswert-wuerfel',
+  'st-k10-varianz': 'k10-lb2-varianz',
+  'st-k10-laplace': 'k8-lb2-laplace-bruch',
+  'st-k10-rechteck-umfang': 'k10-lb3-rechteck-umfang',
+  'st-k10-sinussatz': 'k10-lb3-sinussatz',
   'st-k10-vektor-skalar': 'k1112-lb2-skalarprodukt',
   'st-k10-vektor-betrag': 'k1112-lb2-betrag-vektor',
   'st-k10-kapital': 'k10-lb5-kapital',
@@ -320,10 +337,14 @@ function officialGrades(): PackGrade[] {
         area('zg-gleichung', 'Gleichungen und Ungleichungen', [
           topic('st-k6-gleichung-add', 'Gleichung umstellen: x + a = b'),
           topic('st-k6-gleichung-mul', 'Gleichung umstellen: a · x = b'),
+          topic('st-k6-gleichung-beid', 'Gleichung mit x auf beiden Seiten'),
+          topic('st-k6-gleichung-probe', 'Lineare Gleichung und Probe'),
         ]),
         area('rf-winkel', 'Winkelbeziehungen', [
           topic('st-k6-nebenwinkel', 'Nebenwinkel berechnen'),
           topic('st-k6-scheitelwinkel', 'Scheitel- und Stufenwinkel'),
+          topic('st-k6-wechselwinkel', 'Wechselwinkel an Parallelen'),
+          topic('st-k6-gestreckter', 'Winkel am gestreckten Winkel'),
         ]),
         area('rf-dreieck', 'Dreiecke und Vierecke', [
           topic('st-k6-winkel-dreieck', 'Innenwinkelsatz im Dreieck'),
@@ -342,6 +363,8 @@ function officialGrades(): PackGrade[] {
         ]),
         area('dz-kenngroessen', 'Erfassen, Darstellen und Auswerten von Daten', [
           topic('st-k6-haeufigkeit', 'Relative Häufigkeit in Prozent'),
+          topic('st-k6-mittelwert', 'Arithmetisches Mittel'),
+          topic('st-k6-median', 'Median (Zentralwert)'),
         ]),
       ],
     ),
@@ -375,6 +398,8 @@ function officialGrades(): PackGrade[] {
         area('zg-gleichung', 'Gleichungen und Ungleichungen', [
           topic('st-k7-gleichung', 'Lineare Gleichung a·x + b = c'),
           topic('st-k7-gleichung-beid', 'Gleichung mit x auf beiden Seiten'),
+          topic('st-k7-gleichung-klammer', 'Gleichung mit Klammern vorbereiten'),
+          topic('st-k7-ungleichung', 'Einfache lineare Ungleichung (Idee)'),
         ]),
         area('zg-variablen', 'Arbeiten mit Variablen', [
           topic('st-k7-term', 'Term mit Rechengesetzen auswerten'),
@@ -442,6 +467,9 @@ function officialGrades(): PackGrade[] {
         ]),
         area('vernetzung', 'Vernetzung', [
           topic('st-k8-zahlenraetsel', 'Zahlenrätsel (Gleichung aufstellen)'),
+          topic('st-k8-rueckwaerts', 'Rückwärtsrechnen'),
+          topic('st-k8-probieren', 'Systematisches Probieren'),
+          topic('st-k8-skizze', 'Skizze und Hilfsfigur'),
         ]),
       ],
     ),
@@ -462,6 +490,8 @@ function officialGrades(): PackGrade[] {
         ]),
         area('rf-trig', 'Trigonometrie', [
           topic('st-k9-trig', 'Werte von Sinus, Kosinus, Tangens'),
+          topic('st-k9-pythagoras-hyp', 'Satz des Pythagoras: Hypotenuse'),
+          topic('st-k9-pythagoras-kat', 'Satz des Pythagoras: fehlende Kathete'),
         ]),
         area('zf-quadrat', 'Quadratische Gleichungen und quadratische Funktionen', [
           topic('st-k9-quadrat-wert', 'Wert einer quadratischen Funktion'),
@@ -509,10 +539,14 @@ function officialGrades(): PackGrade[] {
         area('dz-zufall', 'Zufallsgrößen', [
           topic('st-k10-erwartung', 'Erwartungswert eines Glücksrads'),
           topic('st-k10-erwartung-wuerfel', 'Erwartungswert beim Würfel'),
+          topic('st-k10-varianz', 'Varianz einer Zufallsgröße'),
+          topic('st-k10-laplace', 'Laplace-Wahrscheinlichkeit als Bruch'),
         ]),
         area('geo-algebra', 'Algebraisches Lösen geometrischer Probleme', [
           topic('st-k10-rechteck', 'Rechteck: Breite aus Fläche'),
           topic('st-k10-quadrat-seite', 'Quadrat: Seitenlänge aus Fläche'),
+          topic('st-k10-rechteck-umfang', 'Rechteck: Breite aus Umfang'),
+          topic('st-k10-sinussatz', 'Sinussatz: Seite berechnen'),
         ]),
       ],
     ),
@@ -560,9 +594,9 @@ export function buildGymSachsenAnhaltPack(): CurriculumPack {
     region: 'Sachsen-Anhalt',
     school: 'Gymnasium',
     subject: 'Mathematik',
-    version: '1.0.1',
+    version: '1.0.3',
     changelog:
-      'Klassen 5–10 und 11/12 gA nach ST-Fachlehrplan. tasksPerRound Standard 10. Ohne Netz lokale Fassung.',
+      'Dünne Pflicht-LBs verdichtet (Gleichungen, Winkel, Vernetzung, Zufall, Geo-Algebra). Alias auf Gym-Sachsen-Generatoren. tasksPerRound 10.',
     official,
     extras: [],
   }

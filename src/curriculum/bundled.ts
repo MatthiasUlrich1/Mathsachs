@@ -90,11 +90,10 @@ export const bundledCurricula: CurriculumModule[] = [
     subjectTitle: 'Mathematik',
     gradeTitle: 'Klasse 10',
     description:
-      'Wachstumsvorgänge und Zinsrechnung, diskrete Zufallsgrößen, algebraisches Lösen geometrischer Probleme und quadratische Gleichungen.',
+      'Wachstum und Sinus, diskrete Zufallsgrößen, Sinus-/Kosinussatz, Logarithmus, Folgen und Zinsrechnung.',
     searchHints: [
-      'Zinsen', 'Zinseszins', 'Zinsrechnung', 'Wachstum', 'exponentiell', 'Prozent',
-      'Erwartungswert', 'Zufallsgröße', 'quadratische Gleichung', 'Wurzel', 'Parabel',
-      'Rechteck', 'Quadrat', 'Flächeninhalt',
+      'Zinsen', 'Zinseszins', 'Wachstum', 'exponentiell', 'Sinus', 'Logarithmus',
+      'Erwartungswert', 'Varianz', 'Sinussatz', 'Kosinussatz', 'Folge', 'Parabel',
     ],
     load: () => import('./math10').then((m) => m.klasse10),
   },
@@ -104,11 +103,11 @@ export const bundledCurricula: CurriculumModule[] = [
     subjectTitle: 'Mathematik',
     gradeTitle: 'Jahrgangsstufe 11/12 (Grundkurs)',
     description:
-      'Grundkurs-Themen der Kursstufe: Differential- und Integralrechnung, Vektoren im Raum sowie binomialverteilte Zufallsgrößen.',
+      'Grundkurs 11/12 nach Lehrplan Sachsen: Differentialrechnung, Matrizen, Vektoren/Geraden/Ebenen, Binomialverteilung, Integralrechnung, beurteilende Statistik, Abstände/Winkel und Anwendungen.',
     searchHints: [
-      'Ableitung', 'Differentialrechnung', 'Nullstellen', 'Integral', 'Stammfunktion',
-      'Vektoren', 'Skalarprodukt', 'Betrag', 'Binomialverteilung', 'Erwartungswert',
-      'Wahrscheinlichkeit', 'Stochastik',
+      'Ableitung', 'Differentialrechnung', 'Nullstellen', 'Extremum', 'Integral', 'Stammfunktion',
+      'Matrizen', 'Vektoren', 'Skalarprodukt', 'Gerade', 'Ebene', 'Binomialverteilung',
+      'Erwartungswert', 'Hypothesentest', 'Abstand', 'Winkel', 'Stochastik',
     ],
     load: () => import('./math11_12').then((m) => m.klasse11_12),
   },

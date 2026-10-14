@@ -4,9 +4,9 @@
   "region": "Sachsen-Anhalt",
   "school": "Sekundarschule",
   "subject": "Mathematik",
-  "version": "1.0.1",
-  "changelog": "Klassen 5–10 (RSA) nach ST-Fachlehrplan. tasksPerRound Standard 10. Ohne Netz lokale Fassung.",
-  "contentHash": "9f6bf775",
+  "version": "1.0.2",
+  "changelog": "1.0.2: Dünne Pflicht-LBs verdichtet (Gleichungen, Trig, LGS, Wachstum, Zins). Alias Gym-Sachsen.",
+  "contentHash": "2b387fda",
   "official": [
     {
       "id": "sks-rs-klasse-5",
@@ -107,6 +107,18 @@
             {
               "id": "sks-k5-gleichung-mul",
               "title": "Gleichung umstellen: a · x = b",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "sks-k5-gleichung-beid",
+              "title": "Gleichung mit x auf beiden Seiten",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "sks-k5-gleichung-probe",
+              "title": "Lineare Gleichung und Probe",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -325,6 +337,18 @@
               "title": "Arithmetisches Mittel",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "sks-k5-median",
+              "title": "Median (Zentralwert)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "sks-k5-spannweite",
+              "title": "Spannweite berechnen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         }
@@ -440,6 +464,18 @@
               "title": "Scheitel- und Stufenwinkel",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "sks-k6-wechselwinkel",
+              "title": "Wechselwinkel an Parallelen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "sks-k6-gestreckter",
+              "title": "Winkel am gestreckten Winkel",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -514,6 +550,18 @@
             {
               "id": "sks-k6-haeufigkeit",
               "title": "Relative Häufigkeit in Prozent",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "sks-k6-mittelwert",
+              "title": "Arithmetisches Mittel",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "sks-k6-median",
+              "title": "Median (Zentralwert)",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -613,6 +661,18 @@
               "title": "Gleichung mit x auf beiden Seiten",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "sks-k7-gleichung-klammer",
+              "title": "Gleichung mit Klammern vorbereiten",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "sks-k7-ungleichung",
+              "title": "Einfache lineare Ungleichung (Idee)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -659,6 +719,18 @@
             {
               "id": "sks-k7-winkelsumme",
               "title": "Innenwinkelsumme im Vieleck",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "sks-k7-flaeche-rechteck",
+              "title": "Flächeninhalt von Rechteck und Quadrat",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "sks-k7-parallelogramm",
+              "title": "Flächeninhalt von Dreieck/Parallelogramm (Idee)",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -888,6 +960,18 @@
               "title": "Potenzgesetz: Quotient und Potenz einer Potenz",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "sks-rs-k9-potenz-wert",
+              "title": "Potenz- und Quadratwerte berechnen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "sks-rs-k9-wurzel",
+              "title": "Wurzeln und Betrag (Näherung)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -957,6 +1041,18 @@
               "title": "Werte von Sinus, Kosinus, Tangens",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "sks-rs-k9-trig-hoehe",
+              "title": "Höhe mit Sinus berechnen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "sks-rs-k9-trig-seite",
+              "title": "Seite mit Trigonometrie",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -967,6 +1063,18 @@
             {
               "id": "sks-rs-k9-lgs",
               "title": "Lineares Gleichungssystem (x bestimmen)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "sks-rs-k9-lgs-y",
+              "title": "Lineares Gleichungssystem (y bestimmen)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "sks-rs-k9-lgs-grafik",
+              "title": "LGS grafisch deuten (Idee)",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -985,6 +1093,18 @@
             {
               "id": "sks-rs-k9-zunahme",
               "title": "Prozentuale Zunahme",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "sks-rs-k9-zinsen",
+              "title": "Jahreszinsen berechnen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "sks-rs-k9-zinseszins",
+              "title": "Zinseszins: Endkapital",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -1106,6 +1226,18 @@
             {
               "id": "sks-rs-k10-zinseszins",
               "title": "Zinseszins: Endkapital",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "sks-rs-k10-kapital",
+              "title": "Kapital aus Zinsen bestimmen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "sks-rs-k10-zinssatz",
+              "title": "Zinssatz bestimmen",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }

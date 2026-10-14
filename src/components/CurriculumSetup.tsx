@@ -66,7 +66,7 @@ const FALLBACK_CATALOG: ManifestPack[] = [
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Mathematik',
-    version: '1.2.9',
+    version: '1.3.0',
     url: '',
     changelog: 'Mitgeliefert: Klassen 5–12 GK. Ohne Netz wird die lokale Fassung installiert.',
   },

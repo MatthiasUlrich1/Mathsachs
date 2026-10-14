@@ -7,6 +7,15 @@ import {
 import { formatDe, roundTo } from '../lib/num'
 import { mixedVariants, valueTask, visualTask, choicePickTask } from './taskHelpers'
 import { math10GraphicReviews } from './graphicReviewTopics'
+import {
+  k10ExpGleichung,
+  k10FolgeExplizit,
+  k10Kosinussatz,
+  k10Logarithmus,
+  k10Sinussatz,
+  k10SinusWert,
+  k10VarianzZufall,
+} from './mathUpperDense'
 import type { Grade, Topic } from './types'
 
 // ---------------------------------------------------------------------------
@@ -530,6 +539,58 @@ const zinssatz: Topic = {
   },
 }
 
+const zinsenAusKapital: Topic = {
+  id: 'k10-lb5-zinsen',
+  title: 'Zinsen aus Kapital berechnen',
+  pointsPerTask: 10,
+  difficulty: 1,
+  keywords: ['Zinsrechnung', 'Zinsen', 'Kapital', 'Vernetzung'],
+  fachwissen: {
+    text: 'Die Jahreszinsen berechnen sich mit Z = K · p / 100. Diese Grundformel vernetzt Prozentrechnung und lineare Funktionen (Z proportional zu K bei festem p).',
+    quelle: 'Wikipedia: Zinsrechnung',
+    url: 'https://de.wikipedia.org/wiki/Zinsrechnung',
+  },
+  generate: (rng: Rng) => {
+    const k = randInt(rng, 2, 50) * 100
+    const p = pick(rng, [1, 2, 3, 4, 5, 8, 10])
+    const z = (k * p) / 100
+    return valueTask({
+      question: `Kapital ${formatDe(k)} €, Zinssatz ${p} % p. a. Wie hoch sind die Zinsen nach einem Jahr?`,
+      unit: '€',
+      answerKind: 'decimal',
+      value: z,
+      solution: `${formatDe(z)} €`,
+      explanation: `Z = K · p : 100 = ${formatDe(k)} · ${p} : 100 = ${formatDe(z)} €.`,
+    })
+  },
+}
+
+const endkapital: Topic = {
+  id: 'k10-lb5-endkapital',
+  title: 'Endkapital nach einem Jahr',
+  pointsPerTask: 10,
+  difficulty: 2,
+  keywords: ['Zinsrechnung', 'Endkapital', 'Vernetzung'],
+  fachwissen: {
+    text: 'Das Endkapital nach einem Jahr ist K_end = K + Z = K · (1 + p/100). Diese Darstellung verbindet Zinsrechnung mit prozentualer Zunahme.',
+    quelle: 'Wikipedia: Zinsrechnung',
+    url: 'https://de.wikipedia.org/wiki/Zinsrechnung',
+  },
+  generate: (rng: Rng) => {
+    const k = randInt(rng, 2, 40) * 100
+    const p = pick(rng, [1, 2, 4, 5, 10])
+    const end = k * (1 + p / 100)
+    return valueTask({
+      question: `${formatDe(k)} € werden ein Jahr zu ${p} % verzinst. Wie groß ist das Endkapital?`,
+      unit: '€',
+      answerKind: 'decimal',
+      value: end,
+      solution: `${formatDe(end)} €`,
+      explanation: `K_end = ${formatDe(k)} · (1 + ${p}/100) = ${formatDe(end)} €.`,
+    })
+  },
+}
+
 // ---------------------------------------------------------------------------
 // Grade — Klasse 10 (Gymnasium Mathematik, Sachsen)
 // ---------------------------------------------------------------------------
@@ -542,31 +603,39 @@ export const klasse10: Grade = {
       id: 'lb1',
       title: 'Wachstumsvorgänge und periodische Vorgänge',
       ustd: 22,
-      topics: [zinsen, zinseszins, prozentualeZunahme, expWachstum],
+      topics: [zinsen, zinseszins, prozentualeZunahme, expWachstum, k10SinusWert],
     },
     {
       id: 'lb2',
       title: 'Diskrete Zufallsgrößen',
       ustd: 16,
-      topics: [erwartungswert, erwartungswertWuerfel],
+      topics: [erwartungswert, erwartungswertWuerfel, k10VarianzZufall],
     },
     {
       id: 'lb3',
       title: 'Algebraisches Lösen geometrischer Probleme',
       ustd: 20,
-      topics: [rechteckBreite, quadratSeite, rechteckBreiteUmfang],
+      topics: [rechteckBreite, quadratSeite, rechteckBreiteUmfang, k10Sinussatz, k10Kosinussatz],
     },
     {
       id: 'lb4',
       title: 'Funktionale Zusammenhänge',
       ustd: 42,
-      topics: [reinquadratisch, quadratischGleichung, parabelWert, ...math10GraphicReviews],
+      topics: [
+        reinquadratisch,
+        quadratischGleichung,
+        parabelWert,
+        k10ExpGleichung,
+        k10Logarithmus,
+        k10FolgeExplizit,
+        ...math10GraphicReviews,
+      ],
     },
     {
       id: 'lb5',
       title: 'Vernetzung: Zinsrechnung',
       ustd: 4,
-      topics: [kapitalAusZinsen, zinssatz],
+      topics: [kapitalAusZinsen, zinssatz, zinsenAusKapital, endkapital],
     },
   ],
 }

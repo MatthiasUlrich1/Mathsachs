@@ -4,9 +4,9 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Mathematik",
-  "version": "1.2.9",
-  "changelog": "tasksPerRound Standard 10 für alle Mathe-Themen. K11/12 Grafik freigegeben: Tangente-Steigung (2453), Fläche unter Graph (8970), Nullstelle linear tippen (5544).",
-  "contentHash": "51da82db",
+  "version": "1.3.1",
+  "changelog": "Lehrplan-Abgleich K8–12: K11/12 auf 8 GK-Lernbereiche (Matrizen, Integral, Statistik, Abstände, Anwendungen); K10 Sinus/Logarithmus/Folgen/Sinus-Kosinussatz; K9 Höhensatz/Streuung; K8 Binome/Pfadregel.",
+  "contentHash": "fb6a914b",
   "official": [
     {
       "id": "klasse-5",
@@ -1266,6 +1266,19 @@
                 "Klammer",
                 "Term"
               ]
+            },
+            {
+              "id": "k8-lb1-binomisch",
+              "title": "Binomische Formel: (a±b)² auswerten",
+              "hint": "(a±b)² = a² ± 2ab + b².",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "binomische Formel",
+                "Quadrat",
+                "Term",
+                "ausmultiplizieren"
+              ]
             }
           ]
         },
@@ -1310,6 +1323,32 @@
                 "Gegenereignis",
                 "Wahrscheinlichkeit",
                 "Komplement"
+              ]
+            },
+            {
+              "id": "k8-lb2-zweistufig",
+              "title": "Zweistufiger Zufallsversuch (Pfadregel)",
+              "hint": "Wahrscheinlichkeiten längs eines Pfades multiplizieren.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Baumdiagramm",
+                "Pfadregel",
+                "mehrstufig",
+                "Wahrscheinlichkeit"
+              ]
+            },
+            {
+              "id": "k8-lb2-abzaehlen",
+              "title": "Abzählen mit der Produktregel",
+              "hint": "Anzahl der Möglichkeiten = Produkt der Stufen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Produktregel",
+                "Abzählen",
+                "Kombinatorik",
+                "Möglichkeiten"
               ]
             }
           ]
@@ -1502,6 +1541,33 @@
                 "heuristisch",
                 "Strategie"
               ]
+            },
+            {
+              "id": "k8-lb5-probieren",
+              "title": "Systematisches Probieren",
+              "hint": "Probiere geordnet und notiere Zwischenergebnisse.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Probieren",
+                "heuristisch",
+                "systematisch",
+                "Vernetzung"
+              ]
+            },
+            {
+              "id": "k8-lb5-skizze",
+              "title": "Skizze und Hilfsfigur",
+              "hint": "Zeichne die Situation zuerst grob.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Skizze",
+                "Hilfsfigur",
+                "heuristisch",
+                "Geometrie",
+                "Vernetzung"
+              ]
             }
           ]
         }
@@ -1570,6 +1636,32 @@
                 "Parabel",
                 "quadratische Funktion",
                 "Extrempunkt"
+              ]
+            },
+            {
+              "id": "k9-lb1-wurzelgleichung",
+              "title": "Einfache Wurzelgleichung",
+              "hint": "Quadriere beide Seiten; prüfe die Lösung.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Wurzelgleichung",
+                "Quadratwurzel",
+                "lösen",
+                "Potenzen"
+              ]
+            },
+            {
+              "id": "k9-lb1-potenzfunktion",
+              "title": "Wert einer Potenzfunktion",
+              "hint": "Setze x ein und potenziere.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Potenzfunktion",
+                "Funktionswert",
+                "Potenz",
+                "Graph"
               ]
             },
             {
@@ -1714,6 +1806,19 @@
                 "tan",
                 "Winkel"
               ]
+            },
+            {
+              "id": "k9-lb3-hoehensatz",
+              "title": "Höhensatz: Höhe im rechtwinkligen Dreieck",
+              "hint": "h² = p · q (Abschnitte der Hypotenuse).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Höhensatz",
+                "rechtwinkliges Dreieck",
+                "Pythagoras",
+                "Höhe"
+              ]
             }
           ]
         },
@@ -1762,6 +1867,33 @@
                 "Kennwert",
                 "Daten"
               ]
+            },
+            {
+              "id": "k9-lb4-spannweite",
+              "title": "Spannweite einer Datenreihe",
+              "hint": "Spannweite = Maximum − Minimum.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Spannweite",
+                "Streuung",
+                "Daten",
+                "Maximum",
+                "Minimum"
+              ]
+            },
+            {
+              "id": "k9-lb4-standardabweichung",
+              "title": "Standardabweichung (kleine Datenreihe)",
+              "hint": "σ = √(Mittel der quadrierten Abweichungen vom Mittelwert).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Standardabweichung",
+                "Varianz",
+                "Streuung",
+                "Daten"
+              ]
             }
           ]
         },
@@ -1781,6 +1913,32 @@
                 "Sachaufgabe",
                 "Leiter",
                 "Anwendung",
+                "Vernetzung"
+              ]
+            },
+            {
+              "id": "k9-lb5-diagonale",
+              "title": "Vernetzung: Diagonale im Rechteck",
+              "hint": "Die Diagonale ist Hypotenuse im rechtwinkligen Dreieck.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Pythagoras",
+                "Rechteck",
+                "Diagonale",
+                "Vernetzung"
+              ]
+            },
+            {
+              "id": "k9-lb5-trig-hoehe",
+              "title": "Vernetzung: Höhe mit Trigonometrie",
+              "hint": "sin(α) = Gegenkathete / Hypotenuse.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Trigonometrie",
+                "Höhe",
+                "Sinus",
                 "Vernetzung"
               ]
             }
@@ -1850,6 +2008,19 @@
                 "Wachstumsfaktor",
                 "Bakterien"
               ]
+            },
+            {
+              "id": "k10-lb1-sinus-wert",
+              "title": "Sinusfunktion: Funktionswert",
+              "hint": "sin(0°)=0, sin(30°)=1/2, sin(90°)=1, …",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Sinus",
+                "periodisch",
+                "Trigonometrie",
+                "Funktionswert"
+              ]
             }
           ]
         },
@@ -1883,6 +2054,19 @@
                 "Zufallsgröße",
                 "Gewinn",
                 "Wahrscheinlichkeit"
+              ]
+            },
+            {
+              "id": "k10-lb2-varianz",
+              "title": "Varianz einer Zufallsgröße",
+              "hint": "Var(X) = E(X²) − [E(X)]² bzw. Mittel der quadrierten Abweichungen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Varianz",
+                "Zufallsgröße",
+                "Streuung",
+                "Erwartungswert"
               ]
             }
           ]
@@ -1928,6 +2112,32 @@
                 "Umfang",
                 "algebraisch",
                 "Gleichung",
+                "Seite"
+              ]
+            },
+            {
+              "id": "k10-lb3-sinussatz",
+              "title": "Sinussatz: Seite berechnen",
+              "hint": "a/sin(α) = b/sin(β).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Sinussatz",
+                "Dreieck",
+                "Trigonometrie",
+                "Seite"
+              ]
+            },
+            {
+              "id": "k10-lb3-kosinussatz",
+              "title": "Kosinussatz: Seite berechnen",
+              "hint": "c² = a² + b² − 2ab·cos(γ).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kosinussatz",
+                "Dreieck",
+                "Trigonometrie",
                 "Seite"
               ]
             }
@@ -1977,6 +2187,44 @@
                 "quadratische Funktion",
                 "Funktionswert",
                 "einsetzen"
+              ]
+            },
+            {
+              "id": "k10-lb4-exp-gleichung",
+              "title": "Exponentialgleichung aˣ = b",
+              "hint": "Schreibe b als Potenz von a oder nutze den Logarithmus.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Exponentialgleichung",
+                "Logarithmus",
+                "Potenz",
+                "lösen"
+              ]
+            },
+            {
+              "id": "k10-lb4-logarithmus",
+              "title": "Logarithmus berechnen",
+              "hint": "logₐ(b) ist der Exponent, mit dem a die Zahl b ergibt.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Logarithmus",
+                "Umkehrfunktion",
+                "Exponentialfunktion"
+              ]
+            },
+            {
+              "id": "k10-lb4-folge",
+              "title": "Glied einer Zahlenfolge",
+              "hint": "Setze n in die explizite Bildungsvorschrift ein.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zahlenfolge",
+                "explizit",
+                "Bildungsvorschrift",
+                "Glied"
               ]
             },
             {
@@ -2045,6 +2293,29 @@
                 "Zinsen",
                 "Kapital"
               ]
+            },
+            {
+              "id": "k10-lb5-zinsen",
+              "title": "Zinsen aus Kapital berechnen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zinsrechnung",
+                "Zinsen",
+                "Kapital",
+                "Vernetzung"
+              ]
+            },
+            {
+              "id": "k10-lb5-endkapital",
+              "title": "Endkapital nach einem Jahr",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zinsrechnung",
+                "Endkapital",
+                "Vernetzung"
+              ]
             }
           ]
         }
@@ -2059,7 +2330,7 @@
       "areas": [
         {
           "id": "lb1",
-          "title": "Differential- und Integralrechnung",
+          "title": "Differentialrechnung",
           "ustd": 52,
           "topics": [
             {
@@ -2092,17 +2363,44 @@
               ]
             },
             {
-              "id": "k1112-lb1-bestimmtes-integral",
-              "title": "Bestimmtes Integral eines Polynoms",
-              "hint": "Bilde die Stammfunktion und setze die Grenzen ein.",
+              "id": "k1112-lb1-extremum",
+              "title": "Extremstelle einer Parabel",
+              "hint": "Setze f′(x)=0 und löse.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
-                "Integral",
-                "bestimmtes Integral",
-                "Stammfunktion",
-                "Integralrechnung",
-                "Fläche"
+                "Extremum",
+                "Ableitung",
+                "Hochpunkt",
+                "Tiefpunkt",
+                "Differentialrechnung"
+              ]
+            },
+            {
+              "id": "k1112-lb1-ableitung-exp",
+              "title": "Ableitung von eˣ und ln an einer Stelle",
+              "hint": "(eˣ)′=eˣ, (ln x)′=1/x.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Ableitung",
+                "Exponentialfunktion",
+                "Logarithmus",
+                "e",
+                "ln"
+              ]
+            },
+            {
+              "id": "k1112-lb1-differenzenquotient",
+              "title": "Differenzenquotient zweier Punkte",
+              "hint": "m = (f(x₂)−f(x₁))/(x₂−x₁).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Differenzenquotient",
+                "mittlere Änderungsrate",
+                "Sekante",
+                "Steigung"
               ]
             },
             {
@@ -2122,23 +2420,6 @@
               ],
               "released": true,
               "reviewOf": "k1112-lb1-ableitung-stelle"
-            },
-            {
-              "id": "k1112-lb1-bestimmtes-integral__grafik",
-              "title": "Fläche unter dem Graphen",
-              "hint": "Rechteckfläche bzw. Integral berechnen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Integral",
-                "Fläche",
-                "Graph",
-                "Grafik",
-                "Interactive",
-                "k1112-lb1-bestimmtes-integral"
-              ],
-              "released": true,
-              "reviewOf": "k1112-lb1-bestimmtes-integral"
             },
             {
               "id": "k1112-lb1-nullstelle-linear__grafik",
@@ -2161,6 +2442,62 @@
         },
         {
           "id": "lb2",
+          "title": "Matrizen",
+          "ustd": 6,
+          "topics": [
+            {
+              "id": "k1112-lb2-matrix-mult",
+              "title": "Matrizen multiplizieren (2×2)",
+              "hint": "Zeile · Spalte; Ergebnis ist eine Zahl je Eintrag.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Matrix",
+                "Matrizenmultiplikation",
+                "lineares Gleichungssystem"
+              ]
+            },
+            {
+              "id": "k1112-lb2-matrix-lgs",
+              "title": "LGS in Matrizenschreibweise lösen",
+              "hint": "Löse das 2×2-System; gesucht ist x.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Matrix",
+                "Gleichungssystem",
+                "Gauß",
+                "Matrizenschreibweise"
+              ]
+            },
+            {
+              "id": "k1112-lb2-matrix-add",
+              "title": "Matrizen addieren (2×2)",
+              "hint": "Einträge jeweils addieren.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Matrix",
+                "Addition",
+                "Matrizen"
+              ]
+            },
+            {
+              "id": "k1112-lb2-matrix-det",
+              "title": "Determinante 2×2",
+              "hint": "det = a₁₁a₂₂ − a₁₂a₂₁.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Determinante",
+                "Matrix",
+                "2×2"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
           "title": "Vektoren, Geraden und Ebenen",
           "ustd": 32,
           "topics": [
@@ -2191,11 +2528,50 @@
                 "Norm",
                 "analytische Geometrie"
               ]
+            },
+            {
+              "id": "k1112-lb3-vektor-add",
+              "title": "Vektoren addieren",
+              "hint": "Komponentenweise addieren.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Vektor",
+                "Addition",
+                "analytische Geometrie"
+              ]
+            },
+            {
+              "id": "k1112-lb3-gerade-punkt",
+              "title": "Punkt auf einer Geraden (Parameter)",
+              "hint": "Setze den Parameter t in die Parametergleichung ein.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Gerade",
+                "Parameterform",
+                "Vektor",
+                "Punkt"
+              ]
+            },
+            {
+              "id": "k1112-lb3-lage-geraden",
+              "title": "Lagebeziehung zweier Geraden in der Ebene",
+              "hint": "Vergleiche Richtungsvektoren und einen Punkt.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Lagebeziehung",
+                "Gerade",
+                "parallel",
+                "identisch",
+                "schneidend"
+              ]
             }
           ]
         },
         {
-          "id": "lb3",
+          "id": "lb4",
           "title": "Binomialverteilte Zufallsgrößen",
           "ustd": 18,
           "topics": [
@@ -2223,6 +2599,230 @@
                 "E(X)",
                 "Stochastik",
                 "n mal p"
+              ]
+            },
+            {
+              "id": "k1112-lb4-binom-kumuliert",
+              "title": "Binomialverteilung: P(X ≤ k)",
+              "hint": "Summe der Einzelwahrscheinlichkeiten von 0 bis k.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Binomialverteilung",
+                "kumuliert",
+                "höchstens",
+                "Stochastik"
+              ]
+            },
+            {
+              "id": "k1112-lb4-binom-sigma",
+              "title": "Standardabweichung der Binomialverteilung",
+              "hint": "σ = √(n·p·(1−p)).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Binomialverteilung",
+                "Standardabweichung",
+                "Varianz",
+                "Stochastik"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb5",
+          "title": "Integralrechnung",
+          "ustd": 28,
+          "topics": [
+            {
+              "id": "k1112-lb1-bestimmtes-integral",
+              "title": "Bestimmtes Integral eines Polynoms",
+              "hint": "Bilde die Stammfunktion und setze die Grenzen ein.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Integral",
+                "bestimmtes Integral",
+                "Stammfunktion",
+                "Integralrechnung",
+                "Fläche"
+              ]
+            },
+            {
+              "id": "k1112-lb5-stammfunktion",
+              "title": "Stammfunktion eines Polynoms",
+              "hint": "Potenzregel rückwärts: xⁿ → xⁿ⁺¹/(n+1).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Stammfunktion",
+                "Integral",
+                "unbestimmtes Integral"
+              ]
+            },
+            {
+              "id": "k1112-lb5-flaeche",
+              "title": "Fläche zwischen Graph und x-Achse",
+              "hint": "Berechne |∫ₐᵇ f| wenn f das Vorzeichen nicht wechselt.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Integral",
+                "Flächeninhalt",
+                "Graph",
+                "x-Achse"
+              ]
+            },
+            {
+              "id": "k1112-lb1-bestimmtes-integral__grafik",
+              "title": "Fläche unter dem Graphen",
+              "hint": "Rechteckfläche bzw. Integral berechnen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Integral",
+                "Fläche",
+                "Graph",
+                "Grafik",
+                "Interactive",
+                "k1112-lb1-bestimmtes-integral"
+              ],
+              "released": true,
+              "reviewOf": "k1112-lb1-bestimmtes-integral"
+            }
+          ]
+        },
+        {
+          "id": "lb6",
+          "title": "Beurteilende Statistik",
+          "ustd": 12,
+          "topics": [
+            {
+              "id": "k1112-lb6-stichprobenmittel",
+              "title": "Stichprobenmittel berechnen",
+              "hint": "Mittelwert der Stichprobenwerte.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Stichprobe",
+                "Mittelwert",
+                "beurteilende Statistik"
+              ]
+            },
+            {
+              "id": "k1112-lb6-hypothesentest",
+              "title": "Signifikanztest: Entscheidung",
+              "hint": "Vergleiche die Testgröße mit dem kritischen Wert.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Hypothesentest",
+                "Signifikanz",
+                "Nullhypothese",
+                "kritischer Wert"
+              ]
+            },
+            {
+              "id": "k1112-lb6-konfidenz",
+              "title": "Konfidenzintervall (Idee)",
+              "hint": "Schätzintervall um den Stichprobenanteil.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Konfidenzintervall",
+                "Statistik",
+                "Anteil"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb7",
+          "title": "Abstände und Winkel",
+          "ustd": 24,
+          "topics": [
+            {
+              "id": "k1112-lb7-orthogonal",
+              "title": "Orthogonalität zweier Vektoren",
+              "hint": "Senkrecht ⇔ Skalarprodukt = 0.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "orthogonal",
+                "Skalarprodukt",
+                "senkrecht",
+                "Vektor"
+              ]
+            },
+            {
+              "id": "k1112-lb7-winkel",
+              "title": "Winkel zwischen Vektoren (Kosinus)",
+              "hint": "cos(φ) = (a·b)/(|a|·|b|).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Winkel",
+                "Skalarprodukt",
+                "Vektor",
+                "Kosinus"
+              ]
+            },
+            {
+              "id": "k1112-lb7-abstand-gerade",
+              "title": "Abstand Punkt–Gerade in der Ebene",
+              "hint": "d = |ax₀+by₀+c|/√(a²+b²) für Gerade ax+by+c=0.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Abstand",
+                "Gerade",
+                "Punkt",
+                "analytische Geometrie"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb8",
+          "title": "Weitere Anwendungen",
+          "ustd": 20,
+          "topics": [
+            {
+              "id": "k1112-lb8-extremwert",
+              "title": "Extremwert: Rechteck mit festem Umfang",
+              "hint": "Fläche A=x·(U/2−x); Maximum bei A′=0.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Extremwertaufgabe",
+                "Optimierung",
+                "Ableitung",
+                "Anwendung"
+              ]
+            },
+            {
+              "id": "k1112-lb8-spiegelung",
+              "title": "Spiegelung eines Punktes an einer Koordinatenebene",
+              "hint": "An der xy-Ebene ändert sich das Vorzeichen von z.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Spiegelung",
+                "Ebene",
+                "Punkt",
+                "Anwendung"
+              ]
+            },
+            {
+              "id": "k1112-lb8-volumen",
+              "title": "Extremwert: offener Quader",
+              "hint": "Volumen V(x) aufstellen und ableiten.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Extremwert",
+                "Volumen",
+                "Optimierung"
               ]
             }
           ]

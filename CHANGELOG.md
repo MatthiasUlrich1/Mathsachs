@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.76] – 2026-10-14
+
+### Geändert
+- **Lehrplan-Vollständigkeit (dichte Banken, weiter locked):** Gym Sachsen Mathe
+  1.3.1 (K8–12 + Vernetzung), Biologie 1.9.2 (+Themen/Deepen), Physik 2.5.34
+  (Factory→eigene Banken), Geschichte 1.9.3 (Überblick + K6-LB4); Mathe ST Gym
+  1.0.3; Oberschule HS/RS 1.0.3; Sekundarschule ST 1.0.2. Neue Themen bleiben
+  `released:false` bis QA.
+
 ## [0.28.75] – 2026-09-27
 
 ### Behoben

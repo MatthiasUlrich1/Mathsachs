@@ -66,15 +66,17 @@ describe('Sekundarschule Sachsen-Anhalt Mathematik packs', () => {
     expect(names).not.toContain('Arbeiten mit natürlichen Zahlen')
   })
 
-  it('maps aliases to existing Gym generators and leaves gaps unmapped', async () => {
+  it('maps aliases to existing Gym generators for all outline topics', async () => {
     const catalog = await gymGeneratorCatalog()
     for (const [sksId, gymId] of Object.entries(SKS_GENERATOR_MAP)) {
       expect(catalog.has(gymId), `${sksId} → ${gymId}`).toBe(true)
       expect(isPlayableOfficialTopic(sksId)).toBe(true)
     }
     const outline = allOfficialSksTopics().filter((t) => !SKS_GENERATOR_MAP[t.id])
-    expect(outline.length).toBeGreaterThan(0)
-    expect(outline.some((t) => /Thales|Kegel|Sinus|Pfad|Umkreis/i.test(t.title))).toBe(true)
+    expect(outline).toEqual([])
+    expect(
+      allOfficialSksTopics().some((t) => /Thales|Kegel|Sinus|Pfad|Umkreis/i.test(t.title)),
+    ).toBe(true)
   })
 
   it('hydrates playable topics', async () => {

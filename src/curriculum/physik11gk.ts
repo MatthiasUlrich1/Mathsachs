@@ -743,14 +743,39 @@ const relativitaet: Topic['generate'] = mixedVariants(
 )
 
 export const PHYSIK_J11GK_GENERATORS: Record<string, Topic['generate']> = {
+  // LB1 Energie — alle Teilthemen auf handgeschriebene Bank (Lehrplan 523)
+  'ph-j11gk-lb1-ekin': energie,
+  'ph-j11gk-lb1-epot': energie,
   'ph-j11gk-lb1-energie': energie,
+  'ph-j11gk-lb1-bilanz': energie,
+  'ph-j11gk-lb1-reibung': energie,
+  // LB2 Mechanik
+  'ph-j11gk-lb2-gleichfoermig': mechanik,
   'ph-j11gk-lb2-mechanik': mechanik,
+  'ph-j11gk-lb2-beschleunigung': mechanik,
+  'ph-j11gk-lb2-kraft': mechanik,
+  'ph-j11gk-lb2-diagramme': mechanik,
+  'ph-j11gk-lb2-wurf': mechanik,
+  // LB3 Praktikum C/L
+  'ph-j11gk-lb3-kondensator': praktikum,
   'ph-j11gk-lb3-praktikum': praktikum,
-  'ph-j11gk-lb4-felder': felder,
+  'ph-j11gk-lb3-laden': praktikum,
+  'ph-j11gk-lb3-spule': praktikum,
+  'ph-j11gk-lb3-messung': praktikum,
+  // LB4 Felder
   'ph-j11gk-lb4-efeld': felder,
+  'ph-j11gk-lb4-felder': felder,
+  'ph-j11gk-lb4-kraft': felder,
+  'ph-j11gk-lb4-lorentz': felder,
+  'ph-j11gk-lb4-bahn': felder,
+  'ph-j11gk-lb4-anwendung': felder,
+  // Wahl
   'ph-j11gk-lbw-konstanten': konstanten,
+  'ph-j11gk-lbw-e': konstanten,
   'ph-j11gk-lbw-exkursion': exkursion,
+  'ph-j11gk-lbw-sicherheit': exkursion,
   'ph-j11gk-lbw-anwendungen': anwendungen,
+  'ph-j11gk-lbw-filter': anwendungen,
   'ph-j11gk-lbw-relativitaet': relativitaet,
   'ph-j11gk-lbw-lichtgeschwindigkeit': relativitaet,
 }
