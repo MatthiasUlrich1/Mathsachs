@@ -160,6 +160,8 @@ interface NumberLineTaskInput {
   labelStep?: number
   /** Visual style: horizontal line or vertical thermometer. */
   variant?: 'line' | 'thermometer'
+  dedupeKey?: string
+  contentIds?: string[]
 }
 
 /** Build an interactive number line (or thermometer) task. */
@@ -168,6 +170,8 @@ export const numberLineTask = (input: NumberLineTaskInput): Task => ({
   answerKind: 'integer', // Fallback for non-interactive mode
   solution: input.solution,
   explanation: input.explanation,
+  ...withDedupe(input.dedupeKey),
+  ...withContentIds(input.contentIds),
   sampleAnswer: { kind: 'numberLine', value: input.value },
   interactive: {
     type: 'numberLine',
@@ -345,6 +349,8 @@ interface DragDropSlotsTaskInput {
   resultLabel?: string
   /** Optional RNG for pool shuffle (otherwise seeded from question + chips). */
   rng?: Rng
+  dedupeKey?: string
+  contentIds?: string[]
 }
 
 /**
@@ -555,6 +561,8 @@ export const dragDropSlotsTask = (input: DragDropSlotsTaskInput): Task => {
     explanation: input.explanation,
     visualContent: input.visualContent,
     ...withFw(input.fachwissen),
+    ...withDedupe(input.dedupeKey),
+    ...withContentIds(input.contentIds),
     sampleAnswer: {
       kind: 'dragDropSlots',
       slots: presented.correctSlots,
@@ -1036,6 +1044,8 @@ interface ParamSliderTaskInput {
    */
   match?: 'exact' | 'sign'
   instruction?: string
+  dedupeKey?: string
+  contentIds?: string[]
 }
 
 /** One or more numeric sliders (e.g. Steigung m, Achsenabschnitt n). */
@@ -1045,6 +1055,8 @@ export const paramSliderTask = (input: ParamSliderTaskInput): Task => ({
   solution: input.solution,
   explanation: input.explanation,
   visualContent: input.visualContent,
+  ...withDedupe(input.dedupeKey),
+  ...withContentIds(input.contentIds),
   sampleAnswer: { kind: 'paramSlider', values: { ...input.correct } },
   interactive: {
     type: 'paramSlider',

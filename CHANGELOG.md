@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.78] – 2026-10-14
+
+### Behoben
+- **Installer-CI:** Physik K6 `ph-k6-lb1-spiegel` Unique-Round-Pool (stemfamily nach
+  0.28.77) auf ≥10 verschiedene Aufgaben erweitert; präventiv dichte Konzeptvarianten
+  für Dichte, Geschwindigkeit, Thermometer und Widerstand.
+
 ## [0.28.77] – 2026-10-14
 
 ### Behoben

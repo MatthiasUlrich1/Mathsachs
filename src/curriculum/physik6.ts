@@ -351,6 +351,7 @@ const kernschatten: Topic['generate'] = mixedVariants(
   },
 )
 
+/** LB1 — Spiegelung am ebenen Spiegel (Konzeptvielfalt für uniqueRound ≥10) */
 const spiegel: Topic['generate'] = mixedVariants(
   (rng) => {
     const alpha = pick(rng, [20, 30, 35, 40, 45, 50, 55, 60])
@@ -367,6 +368,7 @@ const spiegel: Topic['generate'] = mixedVariants(
         'Reflexionsgesetz: Einfallswinkel = Ausfallswinkel (beide gegen das Lot gemessen).',
       visualContent: mirrorAngleSvg(alpha),
       instruction: 'Tippe den Ausfallswinkel:',
+      dedupeKey: `ph:k6:spiegel:ausfall-mc:${alpha}`,
     })
   },
   (rng) => {
@@ -378,6 +380,201 @@ const spiegel: Topic['generate'] = mixedVariants(
       value: alpha,
       solution: `${alpha}°`,
       explanation: 'Einfallswinkel = Ausfallswinkel.',
+      dedupeKey: `ph:k6:spiegel:ausfall-val:${alpha}`,
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Was besagt das Reflexionsgesetz am ebenen Spiegel?',
+        correct: 'Einfallswinkel = Ausfallswinkel',
+        wrong: [
+          'Einfallswinkel + Ausfallswinkel = 90°',
+          'Ausfallswinkel ist immer 45°',
+          'Nur der Einfallswinkel zählt, Ausfall ist egal',
+        ],
+      },
+      {
+        q: 'Gegen welche Hilfslinie misst man Einfall- und Ausfallswinkel am Spiegel?',
+        correct: 'gegen das Lot (Senkrechte zur Spiegelfläche)',
+        wrong: [
+          'gegen die Spiegelfläche selbst',
+          'gegen die Decke des Klassenzimmers',
+          'gegen den Lichtschalter',
+        ],
+      },
+      {
+        q: 'Was ist das Lot am ebenen Spiegel?',
+        correct: 'die Senkrechte zur Spiegelfläche im Auftreffpunkt',
+        wrong: [
+          'die Spiegelfläche selbst',
+          'der einfallende Lichtstrahl',
+          'ein paralleler Strahl neben dem Spiegel',
+        ],
+      },
+      {
+        q: 'Ein Lichtstrahl trifft senkrecht auf einen ebenen Spiegel (Einfallswinkel 0°). Wohin wird er reflektiert?',
+        correct: 'senkrecht zurück auf demselben Weg',
+        wrong: [
+          'parallel zur Spiegelfläche entlang',
+          'immer unter 45°',
+          'er wird nicht reflektiert',
+        ],
+      },
+      {
+        q: 'Woran erkennst du am ebenen Spiegel, dass Einfall = Ausfall gilt?',
+        correct: 'beide Winkel werden vom Lot aus gleich groß gemessen',
+        wrong: [
+          'beide Winkel werden von der Decke aus gemessen',
+          'nur der Ausfallswinkel wird gemessen',
+          'Winkel braucht man am Spiegel nie',
+        ],
+      },
+      {
+        q: 'Ein Spiegelbild hinter dem ebenen Spiegel ist …',
+        correct: 'ein virtuelles Bild (Strahlen scheinen von dort zu kommen)',
+        wrong: [
+          'ein reelles Bild, das man auf einen Schirm fangen kann',
+          'ohne Licht sichtbar',
+          'immer kleiner als der Gegenstand',
+        ],
+      },
+      {
+        q: 'Warum siehst du dich im ebenen Spiegel?',
+        correct: 'Licht vom Gesicht wird am Spiegel reflektiert und gelangt ins Auge',
+        wrong: [
+          'der Spiegel sendet eigene Lichtstrahlen aus',
+          'ohne Licht entsteht trotzdem ein Bild',
+          'Licht bleibt im Spiegel stecken',
+        ],
+      },
+      {
+        q: 'Was ändert ein ebener Spiegel an der Lichtrichtung?',
+        correct: 'er reflektiert nach dem Reflexionsgesetz',
+        wrong: [
+          'er bricht Licht wie Glas von Luft nach Glas',
+          'er löscht immer alles Licht',
+          'er macht aus Licht Strom',
+        ],
+      },
+      {
+        q: 'Einfallswinkel 35°, Ausfallswinkel am ebenen Spiegel?',
+        correct: 'ebenfalls 35°',
+        wrong: ['55°', '70°', '0°'],
+      },
+      {
+        q: 'Worin unterscheidet sich Spiegelung am ebenen Spiegel von Brechung?',
+        correct: 'Spiegelung: Licht bleibt im selben Medium und wird reflektiert',
+        wrong: [
+          'Spiegelung und Brechung sind immer dasselbe',
+          'Brechung braucht nie eine Grenzfläche',
+          'Am Spiegel gilt immer Brechung zum Lot',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation:
+        'Am ebenen Spiegel gilt: Einfallswinkel = Ausfallswinkel (gegen das Lot). Licht wird reflektiert; das Spiegelbild ist virtuell.',
+      instruction: 'Tippe die passende Aussage:',
+      dedupeKey: `ph:k6:spiegel:mc:${c.q}`,
+    })
+  },
+  (rng) => {
+    const pools = [
+      {
+        question: 'Was gilt am ebenen Spiegel? (mehrere möglich)',
+        choices: [
+          'Einfallswinkel = Ausfallswinkel',
+          'Winkel werden gegen das Lot gemessen',
+          'Licht wird reflektiert',
+          'Einfallswinkel ist immer 90°',
+          'Ohne Lot gibt es kein Reflexionsgesetz',
+        ],
+        correct: [
+          'Einfallswinkel = Ausfallswinkel',
+          'Winkel werden gegen das Lot gemessen',
+          'Licht wird reflektiert',
+        ],
+      },
+      {
+        question: 'Welche Aussagen zum Spiegelbild am ebenen Spiegel stimmen? (mehrere möglich)',
+        choices: [
+          'Es entsteht durch Reflexion',
+          'Es wirkt hinter dem Spiegel (virtuell)',
+          'Seiten vertauschen sich (links/rechts)',
+          'Der Spiegel erzeugt Licht ohne Lichtquelle',
+          'Man braucht kein Licht zum Sehen im Spiegel',
+        ],
+        correct: [
+          'Es entsteht durch Reflexion',
+          'Es wirkt hinter dem Spiegel (virtuell)',
+          'Seiten vertauschen sich (links/rechts)',
+        ],
+      },
+      {
+        question: 'Was brauchst du, um Winkel am Spiegel korrekt zu messen? (mehrere möglich)',
+        choices: [
+          'das Lot im Auftreffpunkt',
+          'den einfallenden Strahl',
+          'den reflektierten Strahl',
+          'nur die Raumtemperatur',
+          'einen Stromkreis',
+        ],
+        correct: ['das Lot im Auftreffpunkt', 'den einfallenden Strahl', 'den reflektierten Strahl'],
+      },
+    ] as const
+    const p = pick(rng, [...pools])
+    return multiSelectTask({
+      question: p.question,
+      choices: [...p.choices],
+      correct: [...p.correct],
+      solution: p.correct.join('; '),
+      explanation: 'Reflexionsgesetz und Lot sind zentral; das Spiegelbild entsteht durch reflektiertes Licht.',
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+      dedupeKey: `ph:k6:spiegel:ms:${p.question}`,
+    })
+  },
+  (rng) =>
+    matchTermsTask(rng, {
+      question: 'Ordne jedem Spiegel-Begriff die passende Erklärung zu:',
+      terms: ['Lot', 'Einfallswinkel', 'Ausfallswinkel', 'virtuelles Bild'],
+      meanings: [
+        'Senkrechte zur Spiegelfläche im Auftreffpunkt',
+        'Winkel zwischen einfallendem Strahl und Lot',
+        'Winkel zwischen reflektiertem Strahl und Lot',
+        'erscheint hinter dem Spiegel, Strahlen scheinen von dort zu kommen',
+      ],
+      distractor: 'Brechung zum Lot beim Eintritt in Glas',
+      solution: 'Lot · Einfallswinkel · Ausfallswinkel · virtuelles Bild',
+      explanation: 'Winkel am Spiegel werden immer gegen das Lot gemessen; Einfall = Ausfall.',
+      fachwissen: {
+        text: 'Am ebenen Spiegel gilt das Reflexionsgesetz: Einfallswinkel = Ausfallswinkel, gemessen gegen das Lot. Das Spiegelbild ist virtuell.',
+        quelle: 'Wikipedia: Reflexionsgesetz',
+        url: 'https://de.wikipedia.org/wiki/Reflexionsgesetz',
+      },
+      dedupeKey: 'ph:k6:spiegel:terms:grund',
+    }),
+  (rng) => {
+    const ordered = [
+      { label: 'Lichtstrahl trifft auf den Spiegel', value: 0 },
+      { label: 'Lot im Auftreffpunkt zeichnen', value: 1 },
+      { label: 'Einfallswinkel am Lot ablesen', value: 2 },
+      { label: 'Ausfallswinkel gleich groß abtragen', value: 3 },
+    ]
+    return dragDropSortTask({
+      question: 'Ordne die Schritte zur Konstruktion der Spiegelung (früh → spät).',
+      items: ordered,
+      correctOrder: [0, 1, 2, 3],
+      solution: ordered.map((r) => r.label).join(' → '),
+      explanation:
+        'Zuerst Auftreffpunkt, dann Lot, dann Einfallswinkel, dann denselben Ausfallswinkel abtragen.',
+      rng,
+      dedupeKey: 'ph:k6:spiegel:sort:konstruktion',
     })
   },
 )
@@ -971,6 +1168,7 @@ const dichte: Topic['generate'] = mixedVariants(
       value: rho,
       solution: `${rho} g/cm³`,
       explanation: `ρ = m / V = ${m} / ${v} = ${rho} g/cm³.`,
+      dedupeKey: `ph:k6:dichte:calc:${m}/${v}`,
     })
   },
   (rng) => {
@@ -996,6 +1194,7 @@ const dichte: Topic['generate'] = mixedVariants(
       solution: `m = ${m} g, V = ${v} cm³ → ρ = ${rho} g/cm³`,
       explanation: `ρ = m / V = ${m} / ${v} = ${rho} g/cm³. Beide Werte müssen passen.`,
       instruction: 'Schieberegler auf die geforderten Werte:',
+      dedupeKey: `ph:k6:dichte:slider:${m},${v}`,
     })
   },
   (rng) => {
@@ -1013,12 +1212,76 @@ const dichte: Topic['generate'] = mixedVariants(
       question: 'Baue die Formel für die Dichte. Einen Block brauchst du nicht.',
       items: shuffled,
       correctSlots,
-      solution: 'ρ = m / V',
+      solution: 'Formelbausteine: ρ = m / V',
       explanation: 'Die Dichte ist Masse durch Volumen: ρ = m / V (Reihenfolge der Division ist fest).',
       instruction: 'Ziehe die richtigen Blöcke in die Formelplätze. Einen Block brauchst du nicht.',
       checkMode: 'strict',
+      dedupeKey: 'ph:k6:dichte:slots:formel',
     })
   },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Welche Formel gilt für die Dichte?',
+        correct: 'ρ = m / V',
+        wrong: ['ρ = m · V', 'ρ = V / m', 'ρ = m + V'],
+      },
+      {
+        q: 'In welcher Einheit gibt man die Dichte oft in der Schule an?',
+        correct: 'g/cm³ (oder kg/m³)',
+        wrong: ['nur Meter', 'nur Sekunden', 'Ampere'],
+      },
+      {
+        q: 'Zwei Körper haben dieselbe Masse. Der mit dem größeren Volumen hat …',
+        correct: 'die kleinere Dichte',
+        wrong: ['die größere Dichte', 'immer dieselbe Dichte', 'keine Dichte'],
+      },
+      {
+        q: 'Was bedeutet eine große Dichte qualitativ?',
+        correct: 'viel Masse auf kleinem Volumen',
+        wrong: [
+          'wenig Masse auf großem Volumen',
+          'nur eine große Fläche',
+          'eine hohe Temperatur',
+        ],
+      },
+      {
+        q: 'Wasser hat etwa die Dichte 1 g/cm³. Ein Körper mit 0,8 g/cm³ …',
+        correct: 'ist weniger dicht als Wasser (schwimmt eher)',
+        wrong: [
+          'ist dichter als Wasser',
+          'hat keine Masse',
+          'muss immer sinken',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Dichte ρ = m / V: Masse bezogen auf das Volumen.',
+      instruction: 'Tippe die passende Aussage:',
+      dedupeKey: `ph:k6:dichte:mc:${c.q}`,
+    })
+  },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was gehört zur Dichte? (mehrere möglich)',
+      choices: [
+        'ρ = m / V',
+        'Einheit z. B. g/cm³',
+        'Vergleich von Stoffen möglich',
+        'Dichte ist dasselbe wie Volumen allein',
+        'Ohne Masse gibt es trotzdem Dichte',
+      ],
+      correct: ['ρ = m / V', 'Einheit z. B. g/cm³', 'Vergleich von Stoffen möglich'],
+      solution: 'Formel ρ=m/V, Einheit, Stoffvergleich',
+      explanation: 'Dichte verknüpft Masse und Volumen — nicht eines davon allein.',
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+      dedupeKey: 'ph:k6:dichte:ms:grund',
+    }),
 )
 
 const geschwindigkeit: Topic['generate'] = mixedVariants(
@@ -1033,6 +1296,7 @@ const geschwindigkeit: Topic['generate'] = mixedVariants(
       value: s,
       solution: `${s} m`,
       explanation: `s = v · t = ${v} · ${t} = ${s} m.`,
+      dedupeKey: `ph:k6:v:s:${v}*${t}`,
     })
   },
   (rng) => {
@@ -1046,6 +1310,7 @@ const geschwindigkeit: Topic['generate'] = mixedVariants(
       value: v,
       solution: `${v} m/s`,
       explanation: `v = s / t = ${s} / ${t} = ${v} m/s.`,
+      dedupeKey: `ph:k6:v:v:${s}/${t}`,
     })
   },
   (rng) => {
@@ -1059,6 +1324,7 @@ const geschwindigkeit: Topic['generate'] = mixedVariants(
       value: t,
       solution: `${t} s`,
       explanation: `t = s / v = ${s} / ${v} = ${t} s.`,
+      dedupeKey: `ph:k6:v:t:${s}/${v}`,
     })
   },
   (rng) => {
@@ -1076,12 +1342,67 @@ const geschwindigkeit: Topic['generate'] = mixedVariants(
       question: 'Baue die Formel für die Strecke bei gleichförmiger Bewegung. Einen Block brauchst du nicht.',
       items: shuffled,
       correctSlots,
-      solution: 's = v × t',
+      solution: 'Formelbausteine: s = v × t',
       explanation: 'Bei gleichförmiger Bewegung gilt s = v × t (Faktoren nach = dürfen getauscht werden).',
       instruction: 'Ziehe die richtigen Blöcke in die Formelplätze. Einen Block brauchst du nicht.',
       checkMode: 'commutativeFactors',
+      dedupeKey: 'ph:k6:v:slots:s=vt',
     })
   },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Welche Formel gilt für die Geschwindigkeit bei gleichförmiger Bewegung?',
+        correct: 'v = s / t',
+        wrong: ['v = s · t', 'v = t / s', 'v = s + t'],
+      },
+      {
+        q: 'Was bedeutet gleichförmige Bewegung?',
+        correct: 'Betrag der Geschwindigkeit bleibt gleich (konstant)',
+        wrong: [
+          'Geschwindigkeit ändert sich ständig stark',
+          'Es gibt keine Zeit',
+          'Nur Kreisbahnen sind erlaubt',
+        ],
+      },
+      {
+        q: 'Welche Einheit hat die Geschwindigkeit hier typischerweise?',
+        correct: 'm/s (Meter pro Sekunde)',
+        wrong: ['nur Kilogramm', 'Ampere', 'nur Grad Celsius'],
+      },
+      {
+        q: 'Bei doppelter Zeit und gleicher Geschwindigkeit wird die Strecke …',
+        correct: 'doppelt so groß',
+        wrong: ['halb so groß', 'immer null', 'unverändert'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Gleichförmig: s = v · t bzw. v = s / t.',
+      instruction: 'Tippe die passende Aussage:',
+      dedupeKey: `ph:k6:v:mc:${c.q}`,
+    })
+  },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was gehört zur gleichförmigen Bewegung? (mehrere möglich)',
+      choices: [
+        's = v · t',
+        'v = s / t',
+        'Geschwindigkeit bleibt (betragsmäßig) gleich',
+        'Zeit spielt keine Rolle',
+        'Strecke ohne Geschwindigkeit berechnen',
+      ],
+      correct: ['s = v · t', 'v = s / t', 'Geschwindigkeit bleibt (betragsmäßig) gleich'],
+      solution: 'Formeln s=vt, v=s/t; konstante Geschwindigkeit',
+      explanation: 'Gleichförmig heißt konstante Geschwindigkeit; Strecke = Geschwindigkeit mal Zeit.',
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+      dedupeKey: 'ph:k6:v:ms:grund',
+    }),
 )
 
 /** Weg-Zeit-Diagramm: echte s–t-Grafik ablesen (Steigung / Weg zu Zeitpunkt). */
@@ -1338,6 +1659,7 @@ const thermometer: Topic['generate'] = mixedVariants(
       eps: 1,
       solution: `${c} °C`,
       explanation: `Die Quecksilbersäule (rote Säule) endet bei ${c} °C (±1 °C).`,
+      dedupeKey: `ph:k6:thermo:set:${c}`,
     })
   },
   (rng) => {
@@ -1350,12 +1672,85 @@ const thermometer: Topic['generate'] = mixedVariants(
         `${c} °C`,
       ),
       correct: `${c} °C`,
-      solution: `${c} °C`,
+      solution: `Ablesen: ${c} °C`,
       explanation: `Ablesen an der Skala: etwa ${c} °C.`,
       visualContent: thermometerSvg(c),
       instruction: 'Tippe den passenden Wert:',
+      dedupeKey: `ph:k6:thermo:read:${c}`,
     })
   },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Wozu dient ein Thermometer im Physikunterricht?',
+        correct: 'zum Messen der Temperatur',
+        wrong: [
+          'zum Messen der Stromstärke',
+          'zum Messen der Masse',
+          'zum Erzeugen von Licht',
+        ],
+      },
+      {
+        q: 'Welche Einheit liest du am schulüblichen Thermometer ab?',
+        correct: 'Grad Celsius (°C)',
+        wrong: ['Ampere (A)', 'Ohm (Ω)', 'Meter (m)'],
+      },
+      {
+        q: 'Woran erkennst du die Temperatur am Flüssigkeitsthermometer?',
+        correct: 'an der Höhe der Flüssigkeitssäule auf der Skala',
+        wrong: [
+          'an der Farbe des Gehäuses allein',
+          'am Gewicht des Thermometers',
+          'am Stromfluss durch das Glas',
+        ],
+      },
+      {
+        q: 'Körpertemperatur des Menschen liegt etwa bei …',
+        correct: '37 °C',
+        wrong: ['0 °C', '100 °C', '−20 °C'],
+      },
+      {
+        q: 'Wasser siedet bei Normaldruck ungefähr bei …',
+        correct: '100 °C',
+        wrong: ['0 °C', '37 °C', '20 °C'],
+      },
+      {
+        q: 'Wasser gefriert bei Normaldruck ungefähr bei …',
+        correct: '0 °C',
+        wrong: ['100 °C', '37 °C', '50 °C'],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Thermometer messen Temperatur in °C; Fixpunkte helfen beim Einordnen.',
+      instruction: 'Tippe die passende Aussage:',
+      dedupeKey: `ph:k6:thermo:mc:${c.q}`,
+    })
+  },
+  (_rng) =>
+    multiSelectTask({
+      question: 'Was gehört zum Thermometer-Ablesen? (mehrere möglich)',
+      choices: [
+        'Skala in °C beachten',
+        'Flüssigkeitssäule / Anzeige ablesen',
+        'Augenhöhe zur Skala halten',
+        'Stromstärke in Ampere ablesen',
+        'Widerstand in Ohm ablesen',
+      ],
+      correct: [
+        'Skala in °C beachten',
+        'Flüssigkeitssäule / Anzeige ablesen',
+        'Augenhöhe zur Skala halten',
+      ],
+      solution: 'Skala °C, Säule ablesen, parallaxenfrei',
+      explanation: 'Temperatur ablesen heißt: Anzeige auf der Celsius-Skala korrekt erfassen.',
+      instruction: 'Tippe alle zutreffenden Aussagen:',
+      dedupeKey: 'ph:k6:thermo:ms:ablesen',
+    }),
 )
 
 const kelvin: Topic['generate'] = mixedVariants(
@@ -2376,6 +2771,7 @@ const widerstand: Topic['generate'] = mixedVariants(
       value: i,
       solution: `${i} A`,
       explanation: `I = U/R = ${u}/${r} = ${i} A.`,
+      dedupeKey: `ph:k6:R:I:${u}/${r}`,
     })
   },
   (rng) => {
@@ -2384,10 +2780,11 @@ const widerstand: Topic['generate'] = mixedVariants(
       question: 'Welche Formel gilt für den ohmschen Widerstand?',
       choices: shuffleChoices(rng, [correct, 'R = U · I', 'R = I / U', 'R = U + I'], correct),
       correct,
-      solution: correct,
+      solution: 'Formelwahl: R = U / I',
       explanation: 'Widerstand = Spannung geteilt durch Stromstärke.',
       instruction: 'Tippe die Formel:',
       visualContent: circuitSymbolSvg('resistor'),
+      dedupeKey: 'ph:k6:R:mc:formel',
     })
   },
   (rng) => {
@@ -2399,6 +2796,48 @@ const widerstand: Topic['generate'] = mixedVariants(
       solution: correct,
       explanation: 'Der elektrische Widerstand wird in Ohm (Ω) angegeben.',
       instruction: 'Tippe die Einheit:',
+      dedupeKey: 'ph:k6:R:mc:einheit',
+    })
+  },
+  (rng) => {
+    const cases = [
+      {
+        q: 'Was passiert bei gleichem R, wenn die Spannung U steigt?',
+        correct: 'Die Stromstärke I steigt (I = U/R)',
+        wrong: [
+          'Die Stromstärke sinkt immer',
+          'Der Widerstand wird zu Volt',
+          'Es fließt nie Strom',
+        ],
+      },
+      {
+        q: 'Woran erkennst du ohmsches Verhalten?',
+        correct: 'U und I sind proportional, R näherungsweise konstant',
+        wrong: [
+          'Strom fließt nur ohne Spannung',
+          'R ändert sich jede Sekunde stark von allein',
+          'Es gibt keine Kennlinie',
+        ],
+      },
+      {
+        q: 'Welches Schaltzeichen steht für einen Widerstand?',
+        correct: 'Rechteck / Zickzack-Symbol im Stromkreis',
+        wrong: [
+          'nur eine Batterie',
+          'nur ein offener Schalter',
+          'ein Thermometer',
+        ],
+      },
+    ] as const
+    const c = pick(rng, [...cases])
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Ohmscher Widerstand: R = U/I, Einheit Ohm, I ~ U bei konstantem R.',
+      instruction: 'Tippe die passende Aussage:',
+      dedupeKey: `ph:k6:R:mc:${c.q}`,
     })
   },
   (_rng) =>
@@ -2419,6 +2858,7 @@ const widerstand: Topic['generate'] = mixedVariants(
       solution: 'Proportionalität U–I, konstantes R, lineare Kennlinie',
       explanation: 'Ohmsches Verhalten: I ~ U bei konstantem R.',
       instruction: 'Tippe alle zutreffenden Aussagen:',
+      dedupeKey: 'ph:k6:R:ms:ohmsch',
     }),
   (rng) => {
     const parts = ['R', '=', 'U', '/', 'I']
@@ -2435,9 +2875,10 @@ const widerstand: Topic['generate'] = mixedVariants(
       question: 'Baue die Formel für den ohmschen Widerstand. Einen Block brauchst du nicht.',
       items: shuffled,
       correctSlots,
-      solution: 'R = U / I',
+      solution: 'Formelbausteine: R = U / I',
       explanation: 'Richtige Formel: R = U / I. „· I“ gehört nicht dazu.',
       instruction: 'Ziehe die richtigen Blöcke in die Formelplätze. Einen Block brauchst du nicht.',
+      dedupeKey: 'ph:k6:R:slots:formel',
     })
   },
 )
