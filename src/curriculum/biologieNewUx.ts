@@ -21,6 +21,7 @@ import { BIOLOGIE_K8_GENERATORS as BASE_K8 } from './biologie8'
 import { BIOLOGIE_K9_GENERATORS as BASE_K9 } from './biologie9'
 import { BIOLOGIE_K10_GENERATORS as BASE_K10 } from './biologie10'
 import { BIOLOGIE_SPECIAL_GENERATORS } from './biologieSpecialTopics'
+import { BIOLOGIE_K6_SAMENPFLANZEN_GENERATORS } from './biologie6Samenpflanzen'
 import {
   BIOLOGIE_ANATOMY_GENERATORS,
   biHerzBild,
@@ -485,7 +486,8 @@ export function withSpecialTopics(
 ): Record<string, Topic['generate']> {
   const out: Record<string, Topic['generate']> = { ...base }
   for (const id of specialIds) {
-    const g = BIOLOGIE_SPECIAL_GENERATORS[id]
+    const g =
+      BIOLOGIE_SPECIAL_GENERATORS[id] ?? BIOLOGIE_K6_SAMENPFLANZEN_GENERATORS[id]
     if (g) out[id] = g
   }
   return out
@@ -508,6 +510,9 @@ export const BIOLOGIE_K6_EXPANDED = withSpecialTopics(BASE_K6, [
   'bi-k6-lb1-bluete',
   'bi-k6-lb1-baeume',
   'bi-k6-lb1-organe',
+  'bi-k6-lb1-fotosynthese',
+  'bi-k6-lb1-familien',
+  'bi-k6-lb1-bestimmung',
   'bi-k6-lb4-nahrung',
   'bi-k6-lb5-mikroskop',
 ])

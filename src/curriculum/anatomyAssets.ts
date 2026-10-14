@@ -1451,6 +1451,80 @@ export const PLANT_ORGANS_ASSET: AnatomyAsset = {
 }
 
 /**
+ * Blüte nummeriert (LadyofHats, PD) — Drop auf Bildnummern.
+ * viewBox 470×252; Schul-Subset auf Bildnummern (drawLeaders:false):
+ * 1 Narbe, 2 Griffel, 3 Fruchtknoten, 8 Kelchblatt, 11 Kronblatt, 12 Staubblatt.
+ * Slot-Zentren = SVG-Text-matrix der Ziffern (verifiziert gegen mature-flower-numbered.svg).
+ */
+export const FLOWER_PARTS_ASSET: AnatomyAsset = {
+  id: 'mature-flower-numbered',
+  imageSrc: '/anatomy/mature-flower-numbered.svg',
+  imageAlt: 'Längsschnitt einer Blüte mit nummerierten Teilen',
+  attribution:
+    'Mariana Ruiz Villarreal (LadyofHats): „Mature flower numbered“. Wikimedia Commons, Public Domain — https://commons.wikimedia.org/wiki/File:Mature_flower_numbered.svg',
+  drawLeaders: false,
+  fachwissenQuelle: 'Wikipedia: Blüte',
+  fachwissenUrl: 'https://de.wikipedia.org/wiki/Bl%C3%BCte',
+  distractors: ['Jahresring', 'Kiemendeckel', 'Okular'],
+  slots: [
+    {
+      id: 'narbe',
+      x: (249 / 470) * 100,
+      y: (18 / 252) * 100,
+      label: 'Narbe',
+      functionDe: 'Nimmt den Pollen auf',
+      wissen: 'Bestäubung beginnt, wenn Pollen auf der Narbe landet.',
+      concept: 'bio:k6:bluete:bild:narbe',
+    },
+    {
+      id: 'griffel',
+      x: (147 / 470) * 100,
+      y: (20 / 252) * 100,
+      label: 'Griffel',
+      functionDe: 'Verbindet Narbe und Fruchtknoten',
+      wissen: 'Der Pollenschlauch wächst durch den Griffel zur Samenanlage.',
+      concept: 'bio:k6:bluete:bild:griffel',
+    },
+    {
+      id: 'fruchtknoten',
+      x: (130.67 / 470) * 100,
+      y: (29.33 / 252) * 100,
+      label: 'Fruchtknoten',
+      functionDe: 'Enthält die Samenanlagen',
+      wissen: 'Nach der Befruchtung wird aus dem Fruchtknoten die Frucht.',
+      concept: 'bio:k6:bluete:bild:fruchtknoten',
+    },
+    {
+      id: 'kelch',
+      x: (167 / 470) * 100,
+      y: (216.67 / 252) * 100,
+      label: 'Kelchblatt',
+      functionDe: 'Schutz der Knospe / äußere Blütenhülle',
+      wissen: 'Kelchblätter schützen die junge Blüte oft grün und derb.',
+      concept: 'bio:k6:bluete:bild:kelch',
+    },
+    {
+      id: 'krone',
+      x: (60.65 / 470) * 100,
+      y: (91.33 / 252) * 100,
+      label: 'Kronblatt',
+      functionDe: 'Lockt Bestäuber (Farbe/Form)',
+      wissen: 'Auffällige Kronblätter signalisieren Bestäubern Nektar und Pollen.',
+      concept: 'bio:k6:bluete:bild:krone',
+    },
+    {
+      id: 'staubblatt',
+      x: (383.92 / 470) * 100,
+      y: (79.09 / 252) * 100,
+      label: 'Staubblatt',
+      functionDe: 'Bildet Pollen (Anthere)',
+      wissen: 'In den Staubbeuteln reift der Pollen — männliche Blütenteile.',
+      concept: 'bio:k6:bluete:bild:staubblatt',
+    },
+  ],
+}
+
+/**
  * Blatt an Spross (Jessekar0524, CC BY-SA 4.0) — Leader auf Blattteile.
  */
 export const LEAF_BUD_STEM_ASSET: AnatomyAsset = {

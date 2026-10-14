@@ -4,7 +4,7 @@
   "region": "Sachsen-Anhalt",
   "school": "Gymnasium",
   "subject": "Mathematik",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "changelog": "Dünne Pflicht-LBs verdichtet (Gleichungen, Winkel, Vernetzung, Zufall, Geo-Algebra). Alias auf Gym-Sachsen-Generatoren. tasksPerRound 10.",
   "official": [
     {

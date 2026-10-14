@@ -18,7 +18,7 @@ export function buildGymSachsenGeschichtePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Geschichte',
-    version: '1.9.3',
+    version: '1.9.4',
     changelog: `Längsschnitte verdichtet (K5 Mensch–Natur, K7 Legitimation, K8 Kinderarbeit) mit neuen Themen/Banken; Freigabe unverändert außer bestehendem K6. ${topics} Themen.`,
     official,
     extras: [],

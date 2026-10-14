@@ -112,13 +112,13 @@ export async function buildGymSachsenSeed(): Promise<CurriculumPack> {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Mathematik',
-    version: '1.3.1',
+    version: GYM_SACHSEN_PACK_VERSION,
     changelog:
-      'Lehrplan-Abgleich K8–12: K11/12 auf 8 GK-Lernbereiche (Matrizen, Integral, Statistik, Abstände, Anwendungen); K10 Sinus/Logarithmus/Folgen/Sinus-Kosinussatz; K9 Höhensatz/Streuung; K8 Binome/Pfadregel.',
+      'Lehrplan-Abgleich K8–12: K11/12 auf 8 GK-Lernbereiche (Matrizen, Integral, Statistik, Abstände, Anwendungen); K10 Sinus/Logarithmus/Folgen/Sinus-Kosinussatz; K9 Höhensatz/Streuung; K8 Binome/Pfadregel. Dense thin-fill für dünne Pools.',
     contentHash: packContentHash(official, extras),
     official,
     extras,
   }
 }
 
-export const GYM_SACHSEN_PACK_VERSION = '1.3.1'
+export const GYM_SACHSEN_PACK_VERSION = '1.3.2'

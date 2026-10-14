@@ -1,5 +1,6 @@
 import {
   biBlattBild,
+  biBlueteBild,
   biGelenkeBild,
   biHerzBild,
   biMikroskopBild,
@@ -27,8 +28,16 @@ import {
 import { BIOLOGIE_OBERSTUFE_GENERATORS } from './biologieOberstufe'
 import { BIOLOGIE_SPECIAL_GENERATORS } from './biologieSpecialTopics'
 import { BIOLOGIE_DENSE_K7PLUS_GENERATORS } from './biologieDenseK7Plus'
+import { BIOLOGIE_K6_SAMENPFLANZEN_GENERATORS } from './biologie6Samenpflanzen'
+import { BIOLOGIE_K6_LEHRPLAN_GAP_GENERATORS } from './biologie6LehrplanGaps'
+import { BIOLOGIE_THIN_FILL_BANKS, withThinFill } from './biologieThinFill'
+import { LEHRPLAN_TOPIC_GAP_GENERATORS } from './lehrplanTopicGaps'
 import { bankGenerate, type BioBank } from './biologieBank'
 import type { Topic } from './types'
+
+const BIOLOGIE_LEHRPLAN_TOPIC_GAPS = Object.fromEntries(
+  Object.entries(LEHRPLAN_TOPIC_GAP_GENERATORS).filter(([id]) => id.startsWith('bi-')),
+)
 
 /** Ensure every emitted task has substantive question-specific Fachwissen. */
 function withRichFachwissen(generate: Topic['generate']): Topic['generate'] {
@@ -84,8 +93,8 @@ function wrapAll(
   return out
 }
 
-/** Alle spielbaren Biologie-Generatoren (K5–12, released:false → Entwickler). */
-export const BIOLOGIE_GENERATORS: Record<string, Topic['generate']> = wrapAll({
+/** Roh-Generatoren vor Thin-Fill + Fachwissen-Wrap. */
+const BIOLOGIE_GENERATORS_RAW: Record<string, Topic['generate']> = {
   ...BIOLOGIE_K5_EXPANDED,
   ...BIOLOGIE_K6_EXPANDED,
   ...BIOLOGIE_K7_EXPANDED,
@@ -95,13 +104,21 @@ export const BIOLOGIE_GENERATORS: Record<string, Topic['generate']> = wrapAll({
   ...BIOLOGIE_OBERSTUFE_GENERATORS,
   // Dedicated Spezial banks win over any leftover overview aliases.
   ...BIOLOGIE_SPECIAL_GENERATORS,
-  // Lehrplan-Lücken K7–OS (neue Topic-IDs, released:false).
+  // Lehrplan-Lücken K6 LB1 Samenpflanzen + K7–OS (neue Topic-IDs, released:false).
+  ...BIOLOGIE_K6_SAMENPFLANZEN_GENERATORS,
+  ...BIOLOGIE_K6_LEHRPLAN_GAP_GENERATORS,
   ...BIOLOGIE_DENSE_K7PLUS_GENERATORS,
+  ...BIOLOGIE_LEHRPLAN_TOPIC_GAPS,
   // Aufbau-Bilder zuletzt — Spezialbanken + imageLabelSlots (nicht von Special überschreiben).
   'bi-k6-lb1-organe': mixedVariants(
     BIOLOGIE_SPECIAL_GENERATORS['bi-k6-lb1-organe']!,
     biPflanzenOrganeBild,
     biPflanzenOrganeBild,
+  ),
+  'bi-k6-lb1-bluete': mixedVariants(
+    BIOLOGIE_SPECIAL_GENERATORS['bi-k6-lb1-bluete']!,
+    biBlueteBild,
+    biBlueteBild,
   ),
   'bi-k6-lb5-zellen': mixedVariants(
     BIOLOGIE_K6_EXPANDED['bi-k6-lb5-zellen']!,
@@ -138,7 +155,20 @@ export const BIOLOGIE_GENERATORS: Record<string, Topic['generate']> = wrapAll({
     biBlattBild,
     biBlattBild,
   ),
-})
+}
+
+const BIOLOGIE_GENERATORS_FILLED: Record<string, Topic['generate']> = {
+  ...BIOLOGIE_GENERATORS_RAW,
+}
+for (const id of Object.keys(BIOLOGIE_THIN_FILL_BANKS)) {
+  const filled = withThinFill(id, BIOLOGIE_GENERATORS_FILLED[id])
+  if (filled) BIOLOGIE_GENERATORS_FILLED[id] = filled
+}
+
+/** Alle spielbaren Biologie-Generatoren (K5–12, released:false → Entwickler). */
+export const BIOLOGIE_GENERATORS: Record<string, Topic['generate']> = wrapAll(
+  BIOLOGIE_GENERATORS_FILLED,
+)
 
 /** Organellen: eigene Bank — nicht Alias von Zellen (Bug B). */
 const organellenBank: BioBank = {

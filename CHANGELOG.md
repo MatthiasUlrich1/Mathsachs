@@ -9,6 +9,19 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.81] – 2026-10-14
+
+### Hinzugefügt
+- **Lehrplan-Themen-Vollständigkeit:** fehlende Pflicht-Themen ergänzt (Bio K5–10 u. a.
+  Samenpflanzen/Fotosynthese/Familien/Bestimmung/Viren/Blutzucker; Physik Newton-LB +
+  JGS11/12; densify/thin-fill für Mathe/Geschichte/OS/ST/SKS).
+- **Rules:** Themen-Vollständigkeit vor thin-fill
+  (`curriculum-lernbereiche.mdc`, Qualitätsregeln).
+- Anatomie-SVGs Blüte (`flower-parts`, `mature-flower-numbered`) + Attribution.
+
+### Geändert
+- Pack-Bumps und Generator-/Bank-Verdichtung; neue Topics bleiben `released:false`.
+
 ## [0.28.80] – 2026-10-14
 
 ### Geändert

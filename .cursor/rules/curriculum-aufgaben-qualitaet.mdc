@@ -88,12 +88,18 @@ alwaysApply: false
   (z. B. „Im Unterrichtsthema hilft …“, „steht im Lehrplan“, „für Sachsen
   relevant?“). Filter/`isLehrplanMetaWissen` und Quality-Tests beachten.
 
-## Vollständigkeit
+## Vollständigkeit (Themen zuerst, dann Dichte)
 
-- Keine Lehrplan-Punkte/Themen weglassen: vorhandene Lehrpläne vollständig mit
-  Themen und **ausreichend** unique Aufgaben (Ziel: 10er-Runde, siehe
-  `curriculum-lernbereiche.mdc`).
-- Dünne Pflichtlücken nachziehen, statt Themen stillschweigend auszulassen.
+- **Jeder** im Lehrplan genannte Inhalt/Teilaspekt muss als Topic oder klar
+  benanntes Unterthema existieren — Abgleich ist Lehrplan-Punkt → Topic, nicht
+  nur Aufgabenanzahl pro bereits vorhandenem Thema.
+- Bloß Pool-Dichte („thin fill“) auf bestehenden Topics **ohne** Themenabdeckung
+  ist unzureichend.
+- Vorhandene Lehrpläne vollständig mit Themen **und** ausreichend unique Aufgaben
+  (Ziel: 10er-Runde, siehe `curriculum-lernbereiche.mdc`).
+- Fehlende Themen neu anlegen; dünne Pflichtlücken nachziehen — Themen nicht
+  stillschweigend auslassen.
+
 
 ## Freigabe
 

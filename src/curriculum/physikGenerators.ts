@@ -8,6 +8,8 @@ import { PHYSIK_J12GK_GENERATORS } from './physik12gk'
 import { PHYSIK_J11LK_GENERATORS } from './physik11lk'
 import { PHYSIK_J12LK_GENERATORS } from './physik12lk'
 import { PHYSIK_DENSE_GENERATORS } from './physikDenseBanks'
+import { PHYSIK_THIN_FILL, withSubjectThinFill } from './physikThinFill'
+import { LEHRPLAN_TOPIC_GAP_GENERATORS } from './lehrplanTopicGaps'
 import { buildGymSachsenPhysikPack } from './physikGymPack'
 import { makePhysikTopicGenerate } from './physikTopicFactory'
 import { mixedVariants } from './taskHelpers'
@@ -24,6 +26,10 @@ const HAND_WRITTEN: Record<string, Topic['generate']> = {
   ...PHYSIK_J12GK_GENERATORS,
   ...PHYSIK_J11LK_GENERATORS,
   ...PHYSIK_J12LK_GENERATORS,
+  // Lehrplan-Punkt → neue Topics (Newton K10, JGS12 Schwingungen/Atom, …)
+  ...Object.fromEntries(
+    Object.entries(LEHRPLAN_TOPIC_GAP_GENERATORS).filter(([id]) => id.startsWith('ph-')),
+  ),
 }
 
 function buildAllPhysikGenerators(): Record<string, Topic['generate']> {
@@ -52,7 +58,7 @@ function buildAllPhysikGenerators(): Record<string, Topic['generate']> {
 const PHYSIK_GENERATORS = buildAllPhysikGenerators()
 
 export function resolvePhysikGenerate(topicId: string): Topic['generate'] | undefined {
-  return PHYSIK_GENERATORS[topicId]
+  return withSubjectThinFill(topicId, PHYSIK_GENERATORS[topicId], PHYSIK_THIN_FILL)
 }
 
 export function isPlayablePhysikTopic(topicId: string): boolean {

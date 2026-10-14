@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Biologie",
-  "version": "1.9.2",
-  "changelog": "Lehrplan-522-Abgleich K7–10/OS: +18 Themen mit dichten Banken (Gefäße, Muskeln/Gelenke, Sexualität/Verantwortung, Ökosystem/Population, Mutation/Artbildung, Fotosynthese/Signalwege); weiterhin released:false. 168 Themen.",
+  "version": "1.9.4",
+  "changelog": "Lehrplan-Themenabgleich: K5 Arbeitsweisen; K6 Samenpflanzen (Fotosynthese/Familien/Bestimmung); K7 Viren; K8 Blutzucker-Regelkreis; K10 Evolutionsbelege. Neue Topics released:false. 180 Themen.",
   "official": [
     {
       "id": "biologie-klasse-5",
@@ -53,6 +53,19 @@
                 "Kennzeichen",
                 "Lebewesen",
                 "Stoffwechsel"
+              ]
+            },
+            {
+              "id": "bi-k5-lb1-arbeitsweisen",
+              "title": "Arbeitsweisen der Biologen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Beobachten",
+                "Untersuchen",
+                "Vergleichen"
               ]
             }
           ]
@@ -523,6 +536,32 @@
               ]
             },
             {
+              "id": "bi-k6-lb1-organe",
+              "title": "Spross, Blatt und Wurzel",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Wurzel",
+                "Blatt",
+                "Spross"
+              ]
+            },
+            {
+              "id": "bi-k6-lb1-fotosynthese",
+              "title": "Fotosynthese beim Laubblatt",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Fotosynthese",
+                "Chlorophyll",
+                "CO₂"
+              ]
+            },
+            {
               "id": "bi-k6-lb1-bluete",
               "title": "Blütenpflanzen – Blüte und Bestäubung",
               "pointsPerTask": 10,
@@ -536,6 +575,32 @@
               ]
             },
             {
+              "id": "bi-k6-lb1-familien",
+              "title": "Kreuz-, Lippen- und Schmetterlingsblüten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kreuzblütler",
+                "Lippenblüte",
+                "Schmetterlingsblüte"
+              ]
+            },
+            {
+              "id": "bi-k6-lb1-bestimmung",
+              "title": "Bestimmen, Blütendiagramm und Herbarium",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Bestimmungsschlüssel",
+                "Herbarium",
+                "Blütendiagramm"
+              ]
+            },
+            {
               "id": "bi-k6-lb1-baeume",
               "title": "Bäume und Holzpflanzen",
               "pointsPerTask": 10,
@@ -546,19 +611,6 @@
                 "Baum",
                 "Holz",
                 "Jahresring"
-              ]
-            },
-            {
-              "id": "bi-k6-lb1-organe",
-              "title": "Spross, Blatt und Wurzel",
-              "pointsPerTask": 10,
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Wurzel",
-                "Blatt",
-                "Spross"
               ]
             }
           ]
@@ -658,6 +710,45 @@
                 "Koralle",
                 "Nesselzelle"
               ]
+            },
+            {
+              "id": "bi-k6-lb2-ordnungen",
+              "title": "Insektenordnungen und Mundwerkzeuge",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Käfer",
+                "Hautflügler",
+                "Mundwerkzeuge"
+              ]
+            },
+            {
+              "id": "bi-k6-lb2-honigbiene",
+              "title": "Honigbiene und Tierstaat",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Königin",
+                "Arbeiterin",
+                "Schwänzeltanz"
+              ]
+            },
+            {
+              "id": "bi-k6-lb2-parasiten",
+              "title": "Parasitische Wirbellose",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Parasit",
+                "Zecke",
+                "Spulwurm"
+              ]
             }
           ]
         },
@@ -708,6 +799,32 @@
                 "Produzent",
                 "Konsument",
                 "Destruent"
+              ]
+            },
+            {
+              "id": "bi-k6-lb4-sporempflanzen",
+              "title": "Moose, Farne und Pilze im Wald",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Spore",
+                "Moos",
+                "Farn"
+              ]
+            },
+            {
+              "id": "bi-k6-lb4-waldschutz",
+              "title": "Wald: Bedeutung, Gefährdung, Schutz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Waldschaden",
+                "Nachhaltigkeit",
+                "Mischwald"
               ]
             }
           ]
@@ -881,6 +998,19 @@
                 "Prokaryot",
                 "Zellwand",
                 "Zweiteilung"
+              ]
+            },
+            {
+              "id": "bi-k7-lb1-viren",
+              "title": "Viren – Bau, Vermehrung und Bedeutung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Virus",
+                "Kapsid",
+                "Wirt"
               ]
             },
             {
@@ -1166,6 +1296,19 @@
               "keywords": [
                 "Hormon",
                 "Drüse"
+              ]
+            },
+            {
+              "id": "bi-k8-lb1-blutzucker",
+              "title": "Blutzuckerregulation und Regelkreis",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Insulin",
+                "Glucagon",
+                "Homöostase"
               ]
             }
           ]
@@ -1584,6 +1727,19 @@
                 "Artbildung",
                 "Isolation",
                 "Selektion"
+              ]
+            },
+            {
+              "id": "bi-k10-lb2-evolutionsbelege",
+              "title": "Belege für die Evolution",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Fossil",
+                "Homologie",
+                "DNA-Vergleich"
               ]
             }
           ]
@@ -2537,5 +2693,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "e8540649"
+  "contentHash": "f7d5ea2f"
 }

@@ -378,6 +378,24 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
       'Schwingungen und Wellen, Kosmos, Optik, Hertzsche Wellen, Praktikum.',
       ['Schwingung', 'Welle', 'Astronomie', 'Licht', 'Hertz'],
       [
+        area('lb1n', 'Newton’sche Gesetze und deren Anwendung', 7, [
+          topic('ph-k10-lb1n-newton', 'Newton’sche Gesetze – Überblick', [
+            'Newton',
+            'Trägheit',
+            'F=ma',
+          ]),
+          topic('ph-k10-lb1n-traegheit', 'Trägheit und Masse', ['Trägheit', 'Masse']),
+          topic('ph-k10-lb1n-fma', 'Kraft und Beschleunigung F = m·a', ['Kraft', 'Beschleunigung']),
+          topic('ph-k10-lb1n-verkehr', 'Bremsen und Sicherheit im Straßenverkehr', [
+            'Bremsweg',
+            'Gurt',
+            'Knautschzone',
+          ]),
+          topic('ph-k10-lb1n-superposition', 'Kräftezusammensetzung und schiefe Ebene', [
+            'Resultierende',
+            'Hangabtrieb',
+          ]),
+        ]),
         area('lb1', 'Mechanische Schwingungen und Wellen', 10, [
           topic('ph-k10-lb1-amplitude', 'Amplitude und Periodendauer', ['Amplitude', 'Periode']),
           topic('ph-k10-lb1-schwingung', 'Mechanische Schwingungen und Wellen', ['Schwingung', 'Welle']),

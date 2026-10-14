@@ -24,7 +24,7 @@ describe('Gymnasium Sachsen Biologie pack', () => {
     const pack = buildGymSachsenBiologiePack()
     expect(pack.id).toBe(GYM_SACHSEN_BIOLOGIE_PACK_ID)
     expect(pack.subject).toBe('Biologie')
-    expect(pack.version).toBe('1.9.2')
+    expect(pack.version).toBe('1.9.4')
     expect(pack.official.map((g) => g.id)).toEqual([
       'biologie-klasse-5',
       'biologie-klasse-6',
@@ -43,8 +43,13 @@ describe('Gymnasium Sachsen Biologie pack', () => {
       .find((g) => g.id === 'biologie-klasse-6')!
       .areas.find((a) => a.id === 'lb2')!
       .topics
-    expect(k6Lb2.map((t) => t.id)).toEqual([...BIOLOGIE_K6_WIRBELLOSE_RELEASED_IDS])
-    expect(k6Lb2.every((t) => t.released === true)).toBe(true)
+    const k6Lb2Released = k6Lb2.filter((t) => t.released === true)
+    expect(k6Lb2Released.map((t) => t.id)).toEqual([...BIOLOGIE_K6_WIRBELLOSE_RELEASED_IDS])
+    for (const id of BIOLOGIE_K6_WIRBELLOSE_RELEASED_IDS) {
+      expect(k6Lb2.map((t) => t.id)).toContain(id)
+    }
+    // Lehrplan-Ergänzungen in LB2 bleiben locked (kein released:true Flip).
+    expect(k6Lb2.some((t) => t.released === false)).toBe(true)
     const released = topics.filter((t) => t.released === true).map((t) => t.id).sort()
     expect(released).toEqual([...BIOLOGIE_RELEASED_IDS].sort())
     const lockedElsewhere = topics.filter(

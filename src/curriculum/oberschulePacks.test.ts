@@ -61,7 +61,7 @@ describe('Oberschule Sachsen Lehrplan packs', () => {
     expect(parsedHs?.region).toBe('Sachsen')
     expect(parsedHs?.school).toBe('Oberschule')
     expect(parsedHs?.subject).toBe('Mathematik')
-    expect(parsedHs?.version).toBe('1.0.3')
+    expect(parsedHs?.version).toBe('1.0.4')
     expect(parsedRs?.school).toBe('Oberschule')
   })
 
@@ -202,16 +202,15 @@ describe('Oberschule Sachsen Lehrplan packs', () => {
     }
   })
 
-  it('hydrates playable topics and marks the rest outline-only', async () => {
+  it('hydrates all official topics as playable (Lehrplan vollständig verdichtet)', async () => {
     const grades = await hydratePackGrades(hs)
     const topics = grades.flatMap((g) => g.areas.flatMap((a) => a.topics))
     const playable = topics.filter((t) => !t.outlineOnly)
     const outline = topics.filter((t) => t.outlineOnly)
     expect(playable.length).toBeGreaterThan(40)
-    expect(outline.length).toBeGreaterThan(10)
+    expect(outline.length).toBe(0)
     const task = playable[0].generate(createRng(1))
     expect(task.check(task.sampleAnswer)).toBe(true)
-    expect(outline[0].generate(createRng(1)).question).toMatch(/noch keine Übungsaufgaben/)
     expect(topics.every((t) => t.source === 'official')).toBe(true)
     expect(topics.every((t) => isPlayableOfficialTopic(t.id) === !t.outlineOnly)).toBe(true)
   })

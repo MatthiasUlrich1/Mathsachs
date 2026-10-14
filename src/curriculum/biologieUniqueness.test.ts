@@ -49,9 +49,12 @@ const SIBLING_FAMILIES: string[][] = [
   // K6–K10
   [
     'bi-k6-lb1-samenpflanzen',
-    'bi-k6-lb1-bluete',
-    'bi-k6-lb1-baeume',
     'bi-k6-lb1-organe',
+    'bi-k6-lb1-fotosynthese',
+    'bi-k6-lb1-bluete',
+    'bi-k6-lb1-familien',
+    'bi-k6-lb1-bestimmung',
+    'bi-k6-lb1-baeume',
   ],
   ['bi-k6-lb2-wirbellose', 'bi-k6-lb2-insekten', 'bi-k6-lb2-spinnen'],
   ['bi-k6-lb4-wald', 'bi-k6-lb4-nahrung'],

@@ -591,9 +591,10 @@ const spinnen: BioBank = {
 const systematikK6: BioBank = {
   quelle: 'Wikipedia: Systematik (Biologie)',
   url: 'https://de.wikipedia.org/wiki/Systematik_(Biologie)',
+  conceptPrefix: 'bio:k6:systematik',
   facts: [
     {
-      concept: 'bio:k6:woran-erkennst-du-wirbeltiere-grundsaetz',
+      concept: 'bio:k6:systematik:wirbeltier',
       prompt: 'Woran erkennst du Wirbeltiere grundsätzlich?',
       answer: 'Sie besitzen eine Wirbelsäule (bzw. Chorda/Wirbel)',
       wrong: ['Sie haben immer sechs Beine', 'Sie haben nie Augen', 'Sie leben nur im Meer'],
@@ -602,7 +603,7 @@ const systematikK6: BioBank = {
         'Wirbeltiere besitzen eine innere Wirbelsäule (bzw. Chorda/Wirbel). Dazu gehören Fische, Lurche, Kriechtiere, Vögel und Säugetiere.',
     },
     {
-      concept: 'bio:k6:welche-gruppe-ist-wirbellos',
+      concept: 'bio:k6:systematik:wirbellos-bsp',
       prompt: 'Welche Gruppe ist wirbellos?',
       answer: 'Insekten',
       wrong: ['Säugetiere', 'Vögel', 'Knochenfische'],
@@ -610,43 +611,205 @@ const systematikK6: BioBank = {
       wissen:
         'Insekten sind wirbellos (kein inneres Skelett aus Wirbelsäule). Säugetiere, Vögel und Knochenfische sind Wirbeltiere.',
     },
+    {
+      concept: 'bio:k6:systematik:vergleich-ziel',
+      prompt: 'Wozu vergleicht man Wirbeltiere und Wirbellose systematisch?',
+      answer: 'Um gemeinsame und unterscheidende Merkmale der Gruppen zu ordnen',
+      wrong: [
+        'Um Fotosynthese in Knochen zu messen',
+        'Um Jahresringe von Insekten zu zählen',
+        'Um Blütenfamilien zu ersetzen',
+      ],
+      explanation: 'Systematik ordnet Vielfalt nach Merkmalen.',
+      wissen:
+        'Systematik ordnet Tiere nach gemeinsamen und unterscheidenden Merkmalen — z. B. Wirbelsäule ja/nein, Beinzahl, Körperbedeckung — und fasst sie zu Gruppen zusammen.',
+    },
+    {
+      concept: 'bio:k6:systematik:fisch-wirbeltier',
+      prompt: 'Sind Knochenfische Wirbeltiere oder wirbellos?',
+      answer: 'Wirbeltiere — sie haben eine Wirbelsäule',
+      wrong: ['Wirbellos wie Insekten', 'Weder noch, sie sind Pflanzen', 'Nur Bakterien'],
+      explanation: 'Fische gehören zu den Wirbeltieren.',
+      wissen:
+        'Knochenfische besitzen eine Wirbelsäule und einen Schädel — sie sind Wirbeltiere, auch wenn sie im Wasser leben und Kiemen haben.',
+    },
+    {
+      concept: 'bio:k6:systematik:spinne-vs-insekt',
+      prompt: 'Welches Merkmal trennt Spinnentiere klar von Insekten?',
+      answer: 'Typisch acht Beine und keine Insekten-Fühler',
+      wrong: [
+        'Immer genau sechs Beine und Flügel',
+        'Innere Wirbelsäule aus Knochen',
+        'Fotosynthese im Panzer',
+      ],
+      explanation: 'Beinzahl und Antennen sind zentrale Unterscheidungsmerkmale.',
+      wissen:
+        'Insekten: sechs Beine, oft Fühler und Flügel. Spinnentiere: acht Beine, Cheliceren, keine Antennen — beide wirbellos, aber verschiedene Klassen.',
+    },
+    {
+      concept: 'bio:k6:systematik:weichtier',
+      prompt: 'Wohin ordnest du Schnecken und Muscheln ein?',
+      answer: 'Wirbellose Weichtiere',
+      wrong: ['Wirbeltiere mit Federkleid', 'Samenpflanzen mit Zapfen', 'Bakterien ohne Zellen'],
+      explanation: 'Weichtiere sind wirbellos.',
+      wissen:
+        'Schnecken und Muscheln sind Weichtiere: weicher Körper, oft Kalkgehäuse/Schale, keine Wirbelsäule — systematisch zu den Wirbellosen.',
+    },
+    {
+      concept: 'bio:k6:systematik:ringelwurm',
+      prompt: 'Der Regenwurm gehört systematisch zu den …',
+      answer: 'Wirbellosen (Ringelwürmer)',
+      wrong: ['Vögeln', 'Säugetieren', 'Nadelbäumen'],
+      explanation: 'Segmentierter Körper ohne Wirbelsäule.',
+      wissen:
+        'Regenwürmer sind Ringelwürmer: gegliederter Körper, keine Wirbelsäule. Sie sind wirbellos und leben oft im Boden.',
+    },
+    {
+      concept: 'bio:k6:systematik:fuenf-wirbel',
+      prompt: 'Welche fünf Großgruppen der Wirbeltiere kennst du aus Klasse 5?',
+      answer: 'Fische, Lurche, Kriechtiere, Vögel, Säugetiere',
+      wrong: [
+        'Nur Insekten, Spinnen, Würmer',
+        'Nur Bakterien und Viren',
+        'Nur Moose und Farne',
+      ],
+      explanation: 'Die klassischen fünf Wirbeltierklassen im Schulunterricht.',
+      wissen:
+        'Wirbeltiere im Überblick: Fische, Amphibien (Lurche), Reptilien (Kriechtiere), Vögel und Säugetiere — alle mit Wirbelsäule.',
+    },
+    {
+      concept: 'bio:k6:systematik:merkmalstabelle',
+      prompt: 'Was gehört in eine Merkmalstabelle zum Vergleich von Tiergruppen?',
+      answer: 'Ausgewählte Kennzeichen wie Stützsystem, Beine, Atmung, Fortpflanzung',
+      wrong: [
+        'Nur der Wochentag der Beobachtung',
+        'Nur Lieblingsfarben ohne Bezug',
+        'Nur Schulnoten',
+      ],
+      explanation: 'Vergleichbare Merkmale machen Systematik prüfbar.',
+      wissen:
+        'Systematischer Vergleich nutzt klare Merkmale: Wirbelsäule ja/nein, Beinzahl, Körperbedeckung, Atmungsorgane, Fortpflanzung — so ordnest du Arten Gruppen zu.',
+    },
+    {
+      concept: 'bio:k6:systematik:chitin',
+      prompt: 'Welches Stütz-/Schutzmerkmal teilen viele Gliederfüßer?',
+      answer: 'Äußeres Skelett aus Chitin',
+      wrong: [
+        'Innere Wirbelsäule aus Knochen',
+        'Nur Federkleid',
+        'Nur Holzjahresringe',
+      ],
+      explanation: 'Chitinpanzer bei Insekten, Spinnen, Krebsen.',
+      wissen:
+        'Gliederfüßer haben ein Außenskelett aus Chitin. Das unterscheidet sie klar von Wirbeltieren mit innerer Wirbelsäule.',
+    },
   ],
   pairs: [
     {
+      concept: 'bio:k6:systematik:paar-wirbeltier',
       term: 'Wirbeltier',
       meaning: 'Tier mit Wirbelsäule',
       wissen: 'Innere Wirbelsäule — Fische, Lurche, Kriechtiere, Vögel, Säuger.',
     },
     {
+      concept: 'bio:k6:systematik:paar-wirbellos',
       term: 'Wirbelloses Tier',
       meaning: 'Ohne Wirbelsäule',
       wissen: 'Ohne Wirbelsäule — z. B. Insekten, Spinnen, Würmer, Weichtiere.',
     },
     {
+      concept: 'bio:k6:systematik:paar-glieder',
       term: 'Gliederfüßer',
       meaning: 'Chitinpanzer und gegliederte Beine',
       wissen: 'Chitinpanzer und gegliederte Beine — Insekten und Spinnen gehören dazu.',
     },
+    {
+      concept: 'bio:k6:systematik:paar-insekt',
+      term: 'Insekt',
+      meaning: 'Wirbellos, typisch sechs Beine',
+      wissen: 'Drei Körperabschnitte, oft Flügel und Fühler.',
+    },
+    {
+      concept: 'bio:k6:systematik:paar-spinne',
+      term: 'Spinnentier',
+      meaning: 'Wirbellos, typisch acht Beine',
+      wissen: 'Keine Insekten-Fühler; oft Cheliceren.',
+    },
+    {
+      concept: 'bio:k6:systematik:paar-weichtier',
+      term: 'Weichtier',
+      meaning: 'Weicher Körper, oft Schale/Gehäuse',
+      wissen: 'Schnecken, Muscheln, Tintenfische — wirbellos.',
+    },
+    {
+      concept: 'bio:k6:systematik:paar-lurch',
+      term: 'Lurch',
+      meaning: 'Wirbeltier, oft mit Metamorphose',
+      wissen: 'Amphibien: z. B. Frosch — Wirbelsäule, oft Kiemen→Lungen.',
+    },
+    {
+      concept: 'bio:k6:systematik:paar-vogel',
+      term: 'Vogel',
+      meaning: 'Wirbeltier mit Federn',
+      wissen: 'Federn, Schnabel, Wirbelsäule — flugfähig oder flugunfähig.',
+    },
+    {
+      concept: 'bio:k6:systematik:paar-saeuger',
+      term: 'Säugetier',
+      meaning: 'Wirbeltier, oft mit Fell und Milchdrüsen',
+      wissen: 'Säuger säugen Junge; innere Wirbelsäule.',
+    },
+    {
+      concept: 'bio:k6:systematik:paar-taxonomie',
+      term: 'Systematik',
+      meaning: 'Ordnet Lebewesen nach Merkmalen und Verwandtschaft',
+      wissen: 'Vergleichbare Merkmale führen zu Gruppen (Stamm, Klasse, …).',
+    },
   ],
   trueFalse: [
     {
-      concept: 'bio:k6:spinnen-sind-insekten',
+      concept: 'bio:k6:systematik:tf-spinne-insekt',
       statement: 'Spinnen sind Insekten.',
       correct: false,
       explanation: 'Spinnen haben acht Beine und gehören zu den Spinnentieren.',
       wissen:
         'Spinnen sind Spinnentiere (acht Beine, keine Antennen). Insekten haben sechs Beine und oft Fühler — verschiedene Klassen.',
     },
+    {
+      concept: 'bio:k6:systematik:tf-fisch',
+      statement: 'Knochenfische sind Wirbeltiere.',
+      correct: true,
+      explanation: 'Sie besitzen eine Wirbelsäule.',
+      wissen:
+        'Trotz Kiemen und Wasserleben gehören Knochenfische zu den Wirbeltieren mit innerer Wirbelsäule.',
+    },
+    {
+      concept: 'bio:k6:systematik:tf-regenwurm',
+      statement: 'Regenwürmer sind Wirbeltiere.',
+      correct: false,
+      explanation: 'Regenwürmer sind wirbellose Ringelwürmer.',
+      wissen:
+        'Ohne Wirbelsäule: Ringelwürmer gehören zu den Wirbellosen, nicht zu den fünf Wirbeltierklassen.',
+    },
   ],
   multis: [
     {
-      concept: 'bio:k6:welche-merkmale-passen-zu-wirbeltieren',
+      concept: 'bio:k6:systematik:multi-wirbel',
       question: 'Welche Merkmale passen zu Wirbeltieren?',
       correct: ['Innere Wirbelsäule', 'Oft Schädel'],
       wrong: ['Immer genau sechs Beine', 'Nie Lungen oder Kiemen'],
       explanation: 'Wirbeltiere haben innere Stütze; Beinzahl variiert stark.',
       wissen:
         'Wirbeltiere: innere Wirbelsäule, oft Schädel. Beinzahl und Atmungsorgane (Kiemen/Lungen) variieren je nach Gruppe.',
+    },
+    {
+      concept: 'bio:k6:systematik:multi-wirbellos',
+      question: 'Welche Gruppen sind wirbellos?',
+      correct: ['Insekten', 'Spinnentiere', 'Weichtiere'],
+      wrong: ['Vögel', 'Säugetiere'],
+      explanation: 'Keine innere Wirbelsäule.',
+      wissen:
+        'Insekten, Spinnen und Weichtiere sind wirbellos. Vögel und Säuger haben eine Wirbelsäule.',
     },
   ],
 }

@@ -236,6 +236,18 @@ export const ST_GENERATOR_MAP: Record<string, string> = {
   'st-k1112-betrag': 'k1112-lb2-betrag-vektor',
   'st-k1112-binomial': 'k1112-lb3-binomialverteilung',
   'st-k1112-erwartung-binom': 'k1112-lb3-erwartungswert-binom',
+
+  // ——— Ehemals outline-only ———
+  'st-k7-wurzeln': 'k9-lb1-quadrat-wert',
+  'st-k8-mehrstufig': 'lb5-mehrstufig',
+  'st-k9-logarithmen': 'k10-lb4-logarithmus',
+  'st-k9-boxplot': 'k9-lb4-median',
+  'st-k10-funk-sin': 'k10-lb1-sinus-wert',
+  'st-k10-lgs3': 'k8-lb3-lgs',
+  'st-k1112-kreise-ag': 'k1112-lb3-lage-geraden',
+  'st-k1112-bedingte': 'k1112-lb3-binomialverteilung',
+  'st-k1112-normal': 'k1112-lb4-binom-sigma',
+  'st-k1112-statistik': 'k1112-lb6-hypothesentest',
 }
 
 function officialGrades(): PackGrade[] {
@@ -594,7 +606,7 @@ export function buildGymSachsenAnhaltPack(): CurriculumPack {
     region: 'Sachsen-Anhalt',
     school: 'Gymnasium',
     subject: 'Mathematik',
-    version: '1.0.3',
+    version: '1.0.4',
     changelog:
       'Dünne Pflicht-LBs verdichtet (Gleichungen, Winkel, Vernetzung, Zufall, Geo-Algebra). Alias auf Gym-Sachsen-Generatoren. tasksPerRound 10.',
     official,

@@ -9,6 +9,8 @@ import { bundledCurricula } from './bundled'
 import { topicContentId } from './contentId'
 import { ensureTopicFachwissen } from './fachwissen'
 import { ST_GENERATOR_MAP } from './gymSachsenAnhaltPack'
+import { withMathGymThinFill } from './mathGymThinFill'
+import { withMathOsThinFill } from './mathOsThinFill'
 import { SKS_GENERATOR_MAP } from './sekundarschuleSachsenAnhaltPack'
 import {
   choicePickTask,
@@ -679,6 +681,63 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-rs-k10-lbw2-opt': 'k1112-lb8-extremwert',
   'os-rs-k10-lbw2-flaeche': 'k1112-lb8-extremwert',
   'os-rs-k10-lbw2-kosten': 'lb5-gesamtpreis',
+
+  // ——— Ehemals outline-only: Lehrplan-Themen → nächster Gym-Generator (+ Thin-Fill) ———
+  'os-k5-lb1-quadrat': 'lb1-potenzieren',
+  'os-k5-lb2-vergleichen': 'lb1-vergleichen',
+  'os-k5-lb2-prozent': 'lb1-prozent',
+  'os-k5-lb3-lage': 'lb3-koordinaten-ablesen',
+  'os-k6-lb1-erweiterung': 'lb1-erweitern',
+  'os-k6-lb1-verhaeltnis': 'lb2-proportional',
+  'os-k6-lb2-arten': 'lb2-proportional',
+  'os-k6-lb2-darstellung': 'lb2-grafische-brueche',
+  'os-k6-lb3-einteilung': 'lb3-winkelarten',
+  'os-k6-lb3-parallelogramm': 'lb3-flaeche-dreieck',
+  'os-k6-lb5-probieren': 'k8-lb5-probieren',
+  'os-k6-lb5-praesentation': 'lb2-mittelwert',
+  'os-hs-k7-lb1-modelle': 'lb4-volumen-zusammengesetzt',
+  'os-hs-k7-lb2-vergleich': 'lb5-anteil-prozent',
+  'os-hs-k7-lb2-begriffe': 'lb5-anteil-prozent',
+  'os-hs-k8-lb1-skonto': 'k10-lb1-prozentuale-zunahme',
+  'os-hs-k8-lb1-diagramme': 'lb2-grafische-brueche',
+  'os-hs-k8-lb2-struktur': 'k8-lb1-zusammenfassen',
+  'os-hs-k8-lb2-formelsammlung': 'k8-lb1-term-auswerten',
+  'os-hs-k8-lb3-kreisring': 'k9-lb2-kreis-flaeche',
+  'os-hs-k8-lb3-lage': 'lb3-koordinaten-ablesen',
+  'os-hs-k8-lb4-darstellen': 'lb4-wuerfelnetz',
+  'os-hs-k8-lb4-oberflaeche': 'lb4-oberflaeche-quader',
+  'os-hs-k8-lb5-haushalt': 'lb5-gesamtpreis',
+  'os-hs-k9-lb1-umkehrung': 'k9-lb3-pythagoras-kathete',
+  'os-hs-k9-lb2-darstellen': 'lb4-wuerfelnetz',
+  'os-hs-k9-lb2-kegel': 'k7-lb3-volumen-pyramide',
+  'os-hs-k9-lb2-masse': 'k5-umrechnen-masse',
+  'os-hs-k9-lb3-funktion': 'k8-lb3-funktionswert',
+  'os-hs-k9-lb3-schnitt': 'k8-lb3-achsenabschnitt',
+  'os-hs-k9-lb4-kalkulation': 'lb5-gesamtpreis',
+  'os-rs-k7-lb2-versuch': 'lb2-haeufigkeit',
+  'os-rs-k7-lb4-masse': 'k5-umrechnen-masse',
+  'os-rs-k8-lb1-ausklammern': 'k8-lb1-zusammenfassen',
+  'os-rs-k8-lb1-formel': 'k8-lb1-term-auswerten',
+  'os-rs-k8-lb2-funktion': 'k8-lb3-funktionswert',
+  'os-rs-k8-lb2-nullstelle': 'k1112-lb1-nullstelle-linear',
+  'os-rs-k8-lb3-lage': 'lb3-koordinaten-ablesen',
+  'os-rs-k8-lb3-darstellen': 'lb4-wuerfelnetz',
+  'os-rs-k8-lb5-simulation': 'k8-lb2-laplace-bruch',
+  'os-rs-k8-lb5-baum': 'k8-lb2-laplace-bruch',
+  'os-rs-k8-lb6-kosten': 'lb5-gesamtpreis',
+  'os-rs-k9-lb1-umkehrung': 'k9-lb3-pythagoras-kathete',
+  'os-rs-k9-lb2-darstellen': 'lb4-wuerfelnetz',
+  'os-rs-k9-lb2-kegel': 'k7-lb3-volumen-pyramide',
+  'os-rs-k9-lb3-nullstellen': 'k10-lb4-quadratische-gleichung',
+  'os-rs-k9-lb3-fall': 'k10-lb4-parabel-wert',
+  'os-rs-k9-lb4-medien': 'k9-lb4-mittelwert',
+  'os-rs-k10-lb1-system': 'k8-lb3-lgs',
+  'os-rs-k10-lb2-potenz': 'k9-lb1-potenz-produkt',
+  'os-rs-k10-lb2-sinus': 'k10-lb1-sinus-wert',
+  'os-rs-k10-lb3-zufall': 'k8-lb2-laplace-bruch',
+  'os-rs-k10-lb3-simulation': 'k10-lb2-erwartungswert',
+  'os-rs-k10-lb4-wirtschaft': 'k10-lb1-zinsen',
+  'os-rs-k10-lb4-erwartung': 'k10-lb2-erwartungswert',
 }
 
 let catalog: Map<string, Topic['generate']> | null = null
@@ -690,7 +749,9 @@ export async function gymGeneratorCatalog(): Promise<Map<string, Topic['generate
     const grade = await mod.load()
     for (const area of grade.areas) {
       for (const topic of area.topics) {
-        if (!next.has(topic.id)) next.set(topic.id, topic.generate)
+        if (!next.has(topic.id)) {
+          next.set(topic.id, withMathGymThinFill(topic.id, topic.generate) ?? topic.generate)
+        }
       }
     }
   }
@@ -708,10 +769,11 @@ export function resolveOsGenerate(
   gymCatalog: Map<string, Topic['generate']>,
 ): Topic['generate'] | undefined {
   const custom = OS_CUSTOM_GENERATORS[topicId]
-  if (custom) return custom
+  if (custom) return withMathOsThinFill(topicId, custom)
   const mapped =
     OS_GENERATOR_MAP[topicId] ?? ST_GENERATOR_MAP[topicId] ?? SKS_GENERATOR_MAP[topicId]
-  return mapped ? gymCatalog.get(mapped) : undefined
+  const base = mapped ? gymCatalog.get(mapped) : undefined
+  return withMathOsThinFill(topicId, base)
 }
 
 export function isPlayableOfficialTopic(topicId: string): boolean {
@@ -719,7 +781,8 @@ export function isPlayableOfficialTopic(topicId: string): boolean {
     OS_CUSTOM_GENERATORS[topicId] ||
       OS_GENERATOR_MAP[topicId] ||
       ST_GENERATOR_MAP[topicId] ||
-      SKS_GENERATOR_MAP[topicId],
+      SKS_GENERATOR_MAP[topicId] ||
+      withMathOsThinFill(topicId, undefined),
   )
 }
 

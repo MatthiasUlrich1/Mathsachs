@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Mathematik",
-  "version": "1.3.1",
-  "changelog": "Lehrplan-Abgleich K8–12: K11/12 auf 8 GK-Lernbereiche (Matrizen, Integral, Statistik, Abstände, Anwendungen); K10 Sinus/Logarithmus/Folgen/Sinus-Kosinussatz; K9 Höhensatz/Streuung; K8 Binome/Pfadregel.",
+  "version": "1.3.2",
+  "changelog": "Lehrplan-Abgleich K8–12: K11/12 auf 8 GK-Lernbereiche (Matrizen, Integral, Statistik, Abstände, Anwendungen); K10 Sinus/Logarithmus/Folgen/Sinus-Kosinussatz; K9 Höhensatz/Streuung; K8 Binome/Pfadregel. Dense thin-fill für dünne Pools.",
   "contentHash": "fb6a914b",
   "official": [
     {

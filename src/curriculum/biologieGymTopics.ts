@@ -74,6 +74,11 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Lebewesen',
             'Stoffwechsel',
           ], { released: true }),
+          topic('bi-k5-lb1-arbeitsweisen', 'Arbeitsweisen der Biologen', [
+            'Beobachten',
+            'Untersuchen',
+            'Vergleichen',
+          ]),
         ]),
         area('lb2', 'Fische in ihren Lebensräumen', 8, [
           topic('bi-k5-lb2-fische', 'Fische – Überblick', [
@@ -256,20 +261,35 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Samen',
             'Frucht',
           ]),
+          topic('bi-k6-lb1-organe', 'Spross, Blatt und Wurzel', [
+            'Wurzel',
+            'Blatt',
+            'Spross',
+          ]),
+          topic('bi-k6-lb1-fotosynthese', 'Fotosynthese beim Laubblatt', [
+            'Fotosynthese',
+            'Chlorophyll',
+            'CO₂',
+          ]),
           topic('bi-k6-lb1-bluete', 'Blütenpflanzen – Blüte und Bestäubung', [
             'Blüte',
             'Bestäubung',
             'Narbe',
           ]),
+          topic('bi-k6-lb1-familien', 'Kreuz-, Lippen- und Schmetterlingsblüten', [
+            'Kreuzblütler',
+            'Lippenblüte',
+            'Schmetterlingsblüte',
+          ]),
+          topic('bi-k6-lb1-bestimmung', 'Bestimmen, Blütendiagramm und Herbarium', [
+            'Bestimmungsschlüssel',
+            'Herbarium',
+            'Blütendiagramm',
+          ]),
           topic('bi-k6-lb1-baeume', 'Bäume und Holzpflanzen', [
             'Baum',
             'Holz',
             'Jahresring',
-          ]),
-          topic('bi-k6-lb1-organe', 'Spross, Blatt und Wurzel', [
-            'Wurzel',
-            'Blatt',
-            'Spross',
           ]),
         ]),
         area('lb2', 'Wirbellose Tiere in ihren Lebensräumen', 16, [
@@ -308,6 +328,21 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Koralle',
             'Nesselzelle',
           ], { released: true }),
+          topic('bi-k6-lb2-ordnungen', 'Insektenordnungen und Mundwerkzeuge', [
+            'Käfer',
+            'Hautflügler',
+            'Mundwerkzeuge',
+          ]),
+          topic('bi-k6-lb2-honigbiene', 'Honigbiene und Tierstaat', [
+            'Königin',
+            'Arbeiterin',
+            'Schwänzeltanz',
+          ]),
+          topic('bi-k6-lb2-parasiten', 'Parasitische Wirbellose', [
+            'Parasit',
+            'Zecke',
+            'Spulwurm',
+          ]),
         ]),
         area('lb3', 'Systematisierung', 4, [
           topic('bi-k6-lb3-systematik', 'Wirbellose und Wirbeltiere vergleichen', [
@@ -324,6 +359,16 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Produzent',
             'Konsument',
             'Destruent',
+          ]),
+          topic('bi-k6-lb4-sporempflanzen', 'Moose, Farne und Pilze im Wald', [
+            'Spore',
+            'Moos',
+            'Farn',
+          ]),
+          topic('bi-k6-lb4-waldschutz', 'Wald: Bedeutung, Gefährdung, Schutz', [
+            'Waldschaden',
+            'Nachhaltigkeit',
+            'Mischwald',
           ]),
         ]),
         area('lb5', 'Pflanzliche und tierische Zellen', 10, [
@@ -391,6 +436,11 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Prokaryot',
             'Zellwand',
             'Zweiteilung',
+          ]),
+          topic('bi-k7-lb1-viren', 'Viren – Bau, Vermehrung und Bedeutung', [
+            'Virus',
+            'Kapsid',
+            'Wirt',
           ]),
           topic('bi-k7-lb1-hygiene', 'Hygiene und Infektionsschutz', [
             'Hygiene',
@@ -478,6 +528,11 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Thermoregulation',
           ]),
           topic('bi-k8-lb1-hormone', 'Hormonsystem', ['Hormon', 'Drüse']),
+          topic('bi-k8-lb1-blutzucker', 'Blutzuckerregulation und Regelkreis', [
+            'Insulin',
+            'Glucagon',
+            'Homöostase',
+          ]),
         ]),
         area('lb2', 'Sexualität des Menschen', 11, [
           topic('bi-k8-lb2-sexualitaet', 'Sexualität des Menschen – Überblick', [
@@ -620,6 +675,11 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Artbildung',
             'Isolation',
             'Selektion',
+          ]),
+          topic('bi-k10-lb2-evolutionsbelege', 'Belege für die Evolution', [
+            'Fossil',
+            'Homologie',
+            'DNA-Vergleich',
           ]),
         ]),
         area('lb3', 'Stammesgeschichte des Menschen', 9, [

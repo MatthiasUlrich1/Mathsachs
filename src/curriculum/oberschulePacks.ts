@@ -653,7 +653,7 @@ const wrap = (
   region: 'Sachsen',
   school: 'Oberschule',
   subject: 'Mathematik',
-  version: '1.0.3',
+  version: '1.0.4',
   changelog,
   contentHash: packContentHash(official, []),
   official,

@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.34',
+    version: '2.5.36',
     changelog:
-      'JGS 11/12 GK: alle Teilthemen auf handgeschriebene Generatoren verdrahtet (statt Title-Factory); Freigabe unverändert locked.',
+      'Lehrplan-Abgleich Themen: K10 Newtonsche Gesetze (neuer Pflicht-LB); JGS12 GK/LK Titel Quantenobjekte/Atomvorstellungen/Schwingungen; LK11 Kräfte + Praktikum + EM-Felder. Neue Topics released:false.',
     official,
     extras: [],
   }

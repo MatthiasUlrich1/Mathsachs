@@ -44,7 +44,7 @@ describe('Gymnasium Sachsen-Anhalt Mathematik pack', () => {
     expect(parsed?.region).toBe('Sachsen-Anhalt')
     expect(parsed?.school).toBe('Gymnasium')
     expect(parsed?.subject).toBe('Mathematik')
-    expect(parsed?.version).toBe('1.0.3')
+    expect(parsed?.version).toBe('1.0.4')
     expect(parsed?.extras).toEqual([])
   })
 
@@ -57,17 +57,17 @@ describe('Gymnasium Sachsen-Anhalt Mathematik pack', () => {
     expect(names).not.toContain('Arbeiten mit natürlichen Zahlen')
   })
 
-  it('maps aliases to existing Gym generators and leaves gaps unmapped', async () => {
+  it('maps all official ST topics to Gym generators (inkl. ehem. Gaps)', async () => {
     const catalog = await gymGeneratorCatalog()
     for (const [stId, gymId] of Object.entries(ST_GENERATOR_MAP)) {
       expect(catalog.has(gymId), `${stId} → ${gymId}`).toBe(true)
       expect(isPlayableOfficialTopic(stId)).toBe(true)
     }
     const outline = allOfficialStTopics().filter((t) => !ST_GENERATOR_MAP[t.id])
-    expect(outline.length).toBeGreaterThan(0)
-    expect(outline.some((t) => /Logarithm|Boxplot|Normalverteilung|bedingte/i.test(t.title))).toBe(
-      true,
-    )
+    expect(outline).toEqual([])
+    expect(ST_GENERATOR_MAP['st-k9-logarithmen']).toBe('k10-lb4-logarithmus')
+    expect(ST_GENERATOR_MAP['st-k9-boxplot']).toBe('k9-lb4-median')
+    expect(ST_GENERATOR_MAP['st-k1112-normal']).toBe('k1112-lb4-binom-sigma')
   })
 
   it('hydrates playable topics whose sample answers pass check', async () => {
@@ -104,7 +104,7 @@ describe('Gymnasium Sachsen-Anhalt Mathematik pack', () => {
     const manifest = parseManifest(
       JSON.parse(readFileSync(join(curriculaDir, 'manifest.json'), 'utf8')),
     )
-    expect(file?.version).toBe('1.0.3')
+    expect(file?.version).toBe('1.0.4')
     expect(file?.contentHash).toBe(pack.contentHash)
     expect(manifest?.packs.map((p) => p.id)).toContain(GYM_SACHSEN_ANHALT_PACK_ID)
     expect(manifest?.packs.find((p) => p.id === GYM_SACHSEN_ANHALT_PACK_ID)?.region).toBe(

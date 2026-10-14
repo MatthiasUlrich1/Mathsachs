@@ -18,6 +18,7 @@ import {
   LION_TEETH_ASSET,
   MICROSCOPE_BLANK_ASSET,
   PIG_SKULL_TEETH_ASSET,
+  FLOWER_PARTS_ASSET,
   PLANT_CELL_ASSET,
   PLANT_ORGANS_ASSET,
   SKELETON_AXIAL_ASSET,
@@ -1230,6 +1231,34 @@ export const biPflanzenOrganeBild: Topic['generate'] = mixedVariants(
   plantOrgansFunctions,
 )
 
+function flowerPartsLabel(rng: Rng) {
+  return buildLabelTask(
+    rng,
+    FLOWER_PARTS_ASSET,
+    'Beschrifte die Blütenteile. Ziehe die Begriffe auf die Nummern.',
+  )
+}
+
+function flowerPartsFunctions(rng: Rng) {
+  return buildFunctionMatch(
+    rng,
+    FLOWER_PARTS_ASSET,
+    'Ordne den Blütenteilen die passende Funktion zu.',
+  )
+}
+
+function flowerPartsFnMc(rng: Rng) {
+  return buildFunctionMc(rng, FLOWER_PARTS_ASSET)
+}
+
+/** K6 LB1 — Blüte Aufbau (Bild). */
+export const biBlueteBild: Topic['generate'] = mixedVariants(
+  flowerPartsLabel,
+  flowerPartsFunctions,
+  flowerPartsFnMc,
+  flowerPartsLabel,
+)
+
 function leafBudLabel(rng: Rng) {
   return buildLabelTask(
     rng,
@@ -1336,6 +1365,7 @@ export const BIOLOGIE_ANATOMY_GENERATORS: Record<string, Topic['generate']> = {
   'bi-k5-lb6-saeuger-gebiss': biSaeugerGebissBild,
   'bi-k5-lb6-saeuger-skelett': biSaeugerSkelett,
   'bi-k6-lb1-organe': biPflanzenOrganeBild,
+  'bi-k6-lb1-bluete': biBlueteBild,
   'bi-k6-lb5-zellen': biZellenBild,
   'bi-k6-lb5-mikroskop': biMikroskopBild,
   'bi-k7-lb1-bakterien-bau': biBakterienBauBild,

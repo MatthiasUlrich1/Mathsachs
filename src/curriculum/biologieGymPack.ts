@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.9.2',
-    changelog: `Lehrplan-522-Abgleich K7–10/OS: +18 Themen mit dichten Banken (Gefäße, Muskeln/Gelenke, Sexualität/Verantwortung, Ökosystem/Population, Mutation/Artbildung, Fotosynthese/Signalwege); weiterhin released:false. ${topics} Themen.`,
+    version: '1.9.4',
+    changelog: `Lehrplan-Themenabgleich: K5 Arbeitsweisen; K6 Samenpflanzen (Fotosynthese/Familien/Bestimmung); K7 Viren; K8 Blutzucker-Regelkreis; K10 Evolutionsbelege. Neue Topics released:false. ${topics} Themen.`,
     official,
     extras: [],
   }

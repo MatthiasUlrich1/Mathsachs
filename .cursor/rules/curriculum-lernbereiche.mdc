@@ -45,5 +45,9 @@ tasksPerRound: opts?.tasksPerRound ?? DEFAULT_TASKS_PER_ROUND
 6. **Fachwissen aufgabenbezogen:** jeder Task-`fachwissen`-Text konkret zur
    gestellten Frage/Antwort — kein generisches/leeres/Meta-Fachwissen
    (siehe `curriculum-aufgaben-qualitaet.mdc`).
-7. Vollständigkeit: Lehrplan-Themen nicht weglassen; dünne Pflichtpools nachziehen.
+7. **Themen-Vollständigkeit (verbindlich):** Jeder im Lehrplan genannte Inhalt/Teilaspekt
+   muss als Topic oder klar benanntes Unterthema existieren. Bloß Pool-Dichte
+   („thin fill“) auf bestehenden Topics **ohne** Themenabdeckung ist unzureichend.
+   Lehrplan-Punkte nicht weglassen; fehlende Themen neu anlegen, dünne Pflichtpools
+   nachziehen.
 8. Freigabe: kein `released: true` ohne explizite Anforderung (Ship/Pack).

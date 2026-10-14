@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "2.5.34",
-  "changelog": "JGS 11/12 GK: alle Teilthemen auf handgeschriebene Generatoren verdrahtet (statt Title-Factory); Freigabe unverändert locked.",
+  "version": "2.5.36",
+  "changelog": "Lehrplan-Abgleich Themen: K10 Newtonsche Gesetze (neuer Pflicht-LB); JGS12 GK/LK Titel Quantenobjekte/Atomvorstellungen/Schwingungen; LK11 Kräfte + Praktikum + EM-Felder. Neue Topics released:false.",
   "official": [
     {
       "id": "physik-klasse-6",
@@ -1589,6 +1589,75 @@
       ],
       "areas": [
         {
+          "id": "lb1n",
+          "title": "Newton’sche Gesetze und deren Anwendung",
+          "ustd": 7,
+          "topics": [
+            {
+              "id": "ph-k10-lb1n-newton",
+              "title": "Newton’sche Gesetze – Überblick",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Newton",
+                "Trägheit",
+                "F=ma"
+              ]
+            },
+            {
+              "id": "ph-k10-lb1n-traegheit",
+              "title": "Trägheit und Masse",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Trägheit",
+                "Masse"
+              ]
+            },
+            {
+              "id": "ph-k10-lb1n-fma",
+              "title": "Kraft und Beschleunigung F = m·a",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kraft",
+                "Beschleunigung"
+              ]
+            },
+            {
+              "id": "ph-k10-lb1n-verkehr",
+              "title": "Bremsen und Sicherheit im Straßenverkehr",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Bremsweg",
+                "Gurt",
+                "Knautschzone"
+              ]
+            },
+            {
+              "id": "ph-k10-lb1n-superposition",
+              "title": "Kräftezusammensetzung und schiefe Ebene",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Resultierende",
+                "Hangabtrieb"
+              ]
+            }
+          ]
+        },
+        {
           "id": "lb1",
           "title": "Mechanische Schwingungen und Wellen",
           "ustd": 10,
@@ -2399,22 +2468,61 @@
       "title": "Jahrgangsstufe 12 · Grundkurs",
       "subjectTitle": "Physik",
       "gradeTitle": "JGS 12 · Grundkurs",
-      "description": "Optik, Quantenphysik, Strahlung aus Atomhülle und Atomkern.",
+      "description": "Mechanische und elektromagnetische Schwingungen/Wellen, Optik-Praktikum, Quantenobjekte, Atomvorstellungen.",
       "searchHints": [
-        "Optik",
-        "Quantenphysik",
-        "Atom",
-        "Strahlung"
+        "Schwingung",
+        "Welle",
+        "Quantenobjekt",
+        "Atommodell"
       ],
       "areas": [
         {
           "id": "lb1",
-          "title": "Welleneigenschaften des Lichts",
-          "ustd": 8,
+          "title": "Mechanische und elektromagnetische Schwingungen und Wellen",
+          "ustd": 12,
           "topics": [
             {
+              "id": "ph-j12gk-lb1-mech-schwing",
+              "title": "Mechanische Schwingungen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Amplitude",
+                "Periodendauer",
+                "Federpendel"
+              ]
+            },
+            {
+              "id": "ph-j12gk-lb1-em-schwing",
+              "title": "Elektromagnetische Schwingungen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Schwingkreis",
+                "Kondensator",
+                "Spule"
+              ]
+            },
+            {
+              "id": "ph-j12gk-lb1-wellen",
+              "title": "Wellen: Transversal, Longitudinal, Interferenz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Transversalwelle",
+                "Interferenz",
+                "Beugung"
+              ]
+            },
+            {
               "id": "ph-j12gk-lb1-welle",
-              "title": "Licht als Welle",
+              "title": "Licht als elektromagnetische Welle",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -2436,7 +2544,7 @@
             },
             {
               "id": "ph-j12gk-lb1-interferenz",
-              "title": "Interferenz",
+              "title": "Interferenz und Beugung am Licht",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -2471,7 +2579,7 @@
         },
         {
           "id": "lb2",
-          "title": "Praktikum Optik",
+          "title": "Praktikum Optik und Schwingungen",
           "ustd": 6,
           "topics": [
             {
@@ -2487,7 +2595,7 @@
             },
             {
               "id": "ph-j12gk-lb2-optik",
-              "title": "Praktikum Optik",
+              "title": "Praktikum Optik und Schwingungen",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -2534,8 +2642,8 @@
         },
         {
           "id": "lb3",
-          "title": "Grundlagen der Quantenphysik",
-          "ustd": 10,
+          "title": "Quantenobjekte",
+          "ustd": 20,
           "topics": [
             {
               "id": "ph-j12gk-lb3-photo",
@@ -2550,13 +2658,14 @@
             },
             {
               "id": "ph-j12gk-lb3-quanten",
-              "title": "Grundlagen der Quantenphysik",
+              "title": "Quantenobjekte – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 10,
               "keywords": [
-                "Quantenphysik"
+                "Quantenobjekt",
+                "Photon"
               ]
             },
             {
@@ -2596,9 +2705,45 @@
         },
         {
           "id": "lb4",
-          "title": "Strahlung aus Atomhülle und Atomkern",
-          "ustd": 20,
+          "title": "Atomvorstellungen",
+          "ustd": 6,
           "topics": [
+            {
+              "id": "ph-j12gk-lb4-atommodell",
+              "title": "Atommodelle (Rutherford, Bohr)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Bohrmodell",
+                "Rutherford"
+              ]
+            },
+            {
+              "id": "ph-j12gk-lb4-spektrum",
+              "title": "Linienspektren und Energieniveaus",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Linienspektrum",
+                "Photon"
+              ]
+            },
+            {
+              "id": "ph-j12gk-lb4-kernhuelle",
+              "title": "Kern und Hülle",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Atomkern",
+                "Elektron"
+              ]
+            },
             {
               "id": "ph-j12gk-lb4-atomhuelle",
               "title": "Strahlung der Atomhülle",
@@ -2820,8 +2965,8 @@
         },
         {
           "id": "lb2",
-          "title": "Kinematik geradliniger Bewegungen",
-          "ustd": 12,
+          "title": "Kräfte",
+          "ustd": 18,
           "topics": [
             {
               "id": "ph-j11lk-lb2-ort",
@@ -2836,12 +2981,13 @@
             },
             {
               "id": "ph-j11lk-lb2-kinematik",
-              "title": "Kinematik geradliniger Bewegungen",
+              "title": "Kräfte und Bewegung – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 10,
               "keywords": [
+                "Kräfte",
                 "Kinematik"
               ]
             },
@@ -2877,14 +3023,7 @@
               "keywords": [
                 "Gleichung"
               ]
-            }
-          ]
-        },
-        {
-          "id": "lb3",
-          "title": "Newtonsche Gesetze und deren Anwendungen",
-          "ustd": 8,
-          "topics": [
+            },
             {
               "id": "ph-j11lk-lb3-traegheit",
               "title": "Trägheitsgesetz",
@@ -2898,13 +3037,14 @@
             },
             {
               "id": "ph-j11lk-lb3-newton",
-              "title": "Newtonsche Gesetze und deren Anwendungen",
+              "title": "Newtonsche Gesetze",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 10,
               "keywords": [
-                "Newton"
+                "Newton",
+                "Kräfte"
               ]
             },
             {
@@ -2938,6 +3078,70 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Anwendung"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lb3",
+          "title": "Kinematik und Dynamik – Praktikum",
+          "ustd": 18,
+          "topics": [
+            {
+              "id": "ph-j11lk-lb3p-planen",
+              "title": "Bewegungsexperiment planen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Versuch",
+                "Kinematik"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb3p-messen",
+              "title": "Beschleunigung und Kraft messen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Messung",
+                "Dynamik"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb3p-auswerten",
+              "title": "Diagramme auswerten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Diagramm"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb3p-fehler",
+              "title": "Messunsicherheit Mechanik",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Unsicherheit"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb3p-modell",
+              "title": "Modell und Messung vergleichen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Modell"
               ]
             }
           ]
@@ -3317,8 +3521,8 @@
         },
         {
           "id": "lb10",
-          "title": "Elektromagnetische Induktion",
-          "ustd": 15,
+          "title": "Elektromagnetische Felder",
+          "ustd": 20,
           "topics": [
             {
               "id": "ph-j11lk-lb10-fluss",
@@ -3339,7 +3543,8 @@
               "released": false,
               "tasksPerRound": 10,
               "keywords": [
-                "Induktion"
+                "Induktion",
+                "Elektromagnetische Felder"
               ]
             },
             {
@@ -3373,6 +3578,18 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Transformator"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb10-em-feld",
+              "title": "Zeitlich veränderliche EM-Felder",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Elektromagnetisches Feld",
+                "Induktion"
               ]
             }
           ]
@@ -3675,8 +3892,8 @@
         },
         {
           "id": "lb4",
-          "title": "Grundlagen der Quantenphysik",
-          "ustd": 15,
+          "title": "Quantenobjekte",
+          "ustd": 20,
           "topics": [
             {
               "id": "ph-j12lk-lb4-photo",
@@ -3691,12 +3908,13 @@
             },
             {
               "id": "ph-j12lk-lb4-quanten",
-              "title": "Grundlagen der Quantenphysik",
+              "title": "Quantenobjekte – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 10,
               "keywords": [
+                "Quantenobjekt",
                 "Quantenphysik"
               ]
             },
@@ -3737,8 +3955,8 @@
         },
         {
           "id": "lb5",
-          "title": "Grundlagen der Atomphysik",
-          "ustd": 18,
+          "title": "Atomvorstellungen",
+          "ustd": 20,
           "topics": [
             {
               "id": "ph-j12lk-lb5-bohr",
@@ -3748,18 +3966,20 @@
               "released": false,
               "tasksPerRound": 10,
               "keywords": [
-                "Bohr"
+                "Bohr",
+                "Atomvorstellung"
               ]
             },
             {
               "id": "ph-j12lk-lb5-atom",
-              "title": "Grundlagen der Atomphysik",
+              "title": "Atomvorstellungen – Überblick",
               "pointsPerTask": 10,
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 10,
               "keywords": [
-                "Atomphysik"
+                "Atomphysik",
+                "Atommodell"
               ]
             },
             {
@@ -4008,5 +4228,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "601912b0"
+  "contentHash": "6977f8e8"
 }

@@ -211,6 +211,16 @@ Assets bundled for offline practice (educational app + desktop installers). Pref
 - **License deed:** https://creativecommons.org/licenses/by/2.5/
 - **Note:** Unbeschriftet; Leader + Drop-Felder nur UI-Overlay (an Microscope-letters A–F angelehnt).
 
+## Blüte — nummerierter Längsschnitt
+
+- **File:** `mature-flower-numbered.svg`
+- **Title:** Mature flower numbered
+- **Author:** Mariana Ruiz Villarreal (LadyofHats)
+- **License:** Public Domain
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Mature_flower_numbered.svg
+- **Note:** Datei unverändert; Drop-Felder überdecken die Bildnummern.
+- **Parts used (K6 Blüte):** 1 Narbe, 2 Griffel, 3 Fruchtknoten, 8 Kelchblatt, 11 Kronblatt, 12 Staubblatt
+
 ## Pflanze — Organe Überblick
 
 - **File:** `plant-anatomy.svg`

@@ -1,4 +1,4 @@
-import { textTask } from './taskHelpers'
+import { mixedVariants, textTask } from './taskHelpers'
 import { allGeschichteTopicIds } from './geschichteGymTopics'
 import { GESCHICHTE_K5_GENERATORS } from './geschichte5'
 import { GESCHICHTE_K6_GENERATORS } from './geschichte6'
@@ -13,6 +13,7 @@ import { GESCHICHTE_DENSE_K6_LB23_GENERATORS } from './geschichteDenseK6Lb23'
 import { GESCHICHTE_DENSE_UPPER_GENERATORS } from './geschichteDenseUpper'
 import { GESCHICHTE_LAENGSSCHNITT_GENERATORS } from './geschichteLaengsschnittDense'
 import { GESCHICHTE_OVERVIEW_DENSE_GENERATORS } from './geschichteOverviewDense'
+import { GESCHICHTE_THIN_FILL } from './geschichteThinFill'
 import type { Topic } from './types'
 
 /** Alle spielbaren Geschichte-Generatoren (K5–12; K6 freigegeben, Rest Entwickler). */
@@ -61,7 +62,10 @@ export function resolveGeschichteGenerate(
 ): Topic['generate'] | undefined {
   if (!topicId.startsWith('ge-')) return undefined
   const real = GESCHICHTE_ALL_GENERATORS[topicId]
+  const fill = GESCHICHTE_THIN_FILL[topicId]
+  if (real && fill) return mixedVariants(fill, fill, fill, real)
   if (real) return real
+  if (fill) return fill
   if (STUBS[topicId]) return STUBS[topicId]
   if (title) return stubGenerate(title)
   return undefined
