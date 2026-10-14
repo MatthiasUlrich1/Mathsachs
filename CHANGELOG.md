@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.80] – 2026-10-14
+
+### Geändert
+- **imageLabelSlots:** präzisere Pointer-/Drop-Koordinaten (Lochkamera,
+  Messgeräte, Skelett, Mikroskop, Blatt, Fortpflanzung u. a.).
+- **Regel:** Slot-Pointer-Kalibrierung in
+  `curriculum-aufgaben-qualitaet.mdc` (Tip auf Struktur, Leader klar).
+
 ## [0.28.79] – 2026-10-14
 
 ### Hinzugefügt

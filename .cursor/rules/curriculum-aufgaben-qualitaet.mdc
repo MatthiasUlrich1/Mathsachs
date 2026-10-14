@@ -39,6 +39,14 @@ alwaysApply: false
 - Lizenzfelder und Quellenangabe wie im Repo üblich korrekt setzen.
 - Vorhandene **Nummerierungen/Anstriche im Bild** durch Drop-Felder **korrekt
   überdecken** (`drawLeaders: false`, Slot-Zentren auf den Markierungen).
+- **Slot-Pointer präzise:** Bei `drawLeaders: true` müssen `targetX`/`targetY`
+  (Tip) eindeutig auf die beschriftete Struktur zeigen — nicht auf Leerraum,
+  Stamm statt Krone, Kastenecke statt Bauteil, Nachbarorgan o. Ä. Drop-Felder
+  (`x`/`y`) am Rand so platzieren, dass Leader-Linien klar und ohne Kreuzchaos
+  zum Tip laufen. Koordinaten sind Prozent der Bildbox (0–100).
+- **Vor Ship visuell prüfen:** Overlay/Grid-Preview (wie in `tmp/` üblich) oder
+  Live-UI — jeder Tip muss auf dem Zielbauteil sitzen; nummerierte Diagramme:
+  Drop-Felder exakt auf den Bildnummern.
 - Qualität: Aufgabe und Antworten inhaltlich passend; Bild gut erkennbar;
   Zuordnungen eindeutig (kein Ratespiel zwischen überlappenden Organellen).
 
