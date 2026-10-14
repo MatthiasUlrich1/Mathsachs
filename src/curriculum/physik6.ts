@@ -22,6 +22,7 @@ import {
   wegZeitCompareSvg,
   wegZeitDiagramSvg,
 } from '../lib/physikSvg'
+import { matchTermsTask } from './biologieHelpers'
 import {
   choicePickTask,
   coordinateClickTask,
@@ -3464,27 +3465,40 @@ const auge: Topic['generate'] = mixedVariants(
       instruction: 'Nutze die Abbildung:',
     })
   },
-  (rng) => {
-    const ordered = [
-      { label: 'Licht vom Gegenstand', value: 0 },
-      { label: 'Pupille / Linse', value: 1 },
-      { label: 'Bild auf der Netzhaut', value: 2 },
-      { label: 'Sehnerv → Gehirn', value: 3 },
-    ]
-    const shuffled = [...ordered]
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = randInt(rng, 0, i)
-      ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
-    }
-    return dragDropSortTask({
-      question: 'Ordne den Sehvorgang (Lichtweg bis Wahrnehmung).',
-      items: shuffled,
+  (rng) =>
+    dragDropSortTask({
+      question: 'Ordne die Schritte des Sehvorgangs (früh → spät: Lichtweg bis Wahrnehmung).',
+      items: [
+        { label: 'Licht vom Gegenstand', value: 0 },
+        { label: 'Pupille / Linse', value: 1 },
+        { label: 'Bild auf der Netzhaut', value: 2 },
+        { label: 'Sehnerv → Gehirn', value: 3 },
+      ],
       correctOrder: [0, 1, 2, 3],
       solution: 'Licht → Pupille/Linse → Netzhaut → Sehnerv/Gehirn',
       explanation: 'Ohne Licht und Weg zur Netzhaut kein Sehen; das Gehirn wertet die Signale aus.',
       visualContent: augeSehSvg({ showRays: true }),
-    })
-  },
+      rng,
+    }),
+  (rng) =>
+    matchTermsTask(rng, {
+      question: 'Ordne jedem Augenteil seine Funktion zu:',
+      terms: ['Linse', 'Pupille', 'Netzhaut', 'Sehnerv'],
+      meanings: [
+        'bündelt Licht für ein scharfes Bild',
+        'regelt den Lichteinfall',
+        'dort entsteht das (umgekehrte) Bild',
+        'leitet Signale zum Gehirn',
+      ],
+      distractor: 'sendet selbst Strahlen zum Gegenstand',
+      solution: 'Linse · Pupille · Netzhaut · Sehnerv',
+      explanation: 'Jedes Teil hat eine klare Aufgabe im Sehvorgang.',
+      fachwissen: {
+        text: 'Die Linse bündelt Licht, die Pupille regelt den Einfall, auf der Netzhaut entsteht das Bild, der Sehnerv leitet Signale zum Gehirn. Zusammen ermöglichen sie Sehen.',
+        quelle: 'Wikipedia: Auge',
+        url: 'https://de.wikipedia.org/wiki/Auge',
+      },
+    }),
   (rng) => {
     const pools = [
       {
@@ -3507,14 +3521,14 @@ const auge: Topic['generate'] = mixedVariants(
         question: 'Was brauchst du, um zu sehen? (mehrere möglich)',
         choices: [
           'Licht vom Gegenstand (oder einer Quelle)',
-          'funktionierende Linse und Netzhaut',
+          'eine intakte Linse und Netzhaut',
           'völlig dunklen Raum ohne jedes Licht',
           'Weiterleitung zum Gehirn',
           'dass das Auge selbst Strahlen aussendet',
         ],
         correct: [
           'Licht vom Gegenstand (oder einer Quelle)',
-          'funktionierende Linse und Netzhaut',
+          'eine intakte Linse und Netzhaut',
           'Weiterleitung zum Gehirn',
         ],
       },

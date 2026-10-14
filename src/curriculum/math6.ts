@@ -1885,13 +1885,20 @@ const anteilVonGroesse: Topic = {
       const unit = pick(rng, ['kg', 'm', '€', 'Liter'])
       const whole = d * randInt(rng, 2, 12)
       const value = (n / d) * whole
+      const prompts = [
+        `Berechne ${n}/${d} von ${whole} ${unit}.`,
+        `Wie viel sind ${n}/${d} von ${whole} ${unit}?`,
+        `Ein Anteil von ${n}/${d} bezieht sich auf ${whole} ${unit}. Wie groß ist dieser Anteil?`,
+        `${n} von ${d} gleichen Teilen von ${whole} ${unit} — wie groß ist das Ergebnis?`,
+      ]
       return valueTask({
-        question: `Berechne ${n}/${d} von ${whole} ${unit}.`,
+        question: pick(rng, prompts),
         unit,
         answerKind: 'decimal',
         value,
         solution: `${formatDe(value)} ${unit}`,
         explanation: `Teile durch den Nenner und multipliziere mit dem Zähler: ${whole} : ${d} = ${whole / d}, dann · ${n} = ${formatDe(value)} ${unit}.`,
+        dedupeKey: `anteil:calc:${n}/${d}:${whole}:${unit}`,
       })
     },
     (rng: Rng) => {
@@ -1900,8 +1907,13 @@ const anteilVonGroesse: Topic = {
       const unit = pick(rng, ['kg', 'm', '€', 'Liter'])
       const whole = d * randInt(rng, 2, 10)
       const value = (n / d) * whole
+      const prompts = [
+        `Der farbige Teil des Streifens gehört zu ${whole} ${unit}. Welcher Wert entspricht dem eingefärbten Anteil?`,
+        `Am Anteilsstreifen zu ${whole} ${unit}: Wie groß ist nur der eingefärbte Teil?`,
+        `Lies am Streifen ab: Wie viele ${unit} sind eingefärbt (Ganzes = ${whole} ${unit})?`,
+      ]
       return visualTask({
-        question: `Der Streifen zeigt den Anteil von ${whole} ${unit}. Wie groß ist der eingefärbte Anteil?`,
+        question: pick(rng, prompts),
         unit,
         answerKind: 'decimal',
         value,
@@ -1910,8 +1922,9 @@ const anteilVonGroesse: Topic = {
         visualContent: generateFractionBarSvg({
           numerator: n,
           denominator: d,
-          showLabel: true,
+          showLabel: false,
         }),
+        dedupeKey: `anteil:bar:${n}/${d}:${whole}:${unit}`,
       })
     },
     (rng: Rng) => {
@@ -1920,8 +1933,13 @@ const anteilVonGroesse: Topic = {
       const unit = pick(rng, ['kg', '€', 'Liter'])
       const whole = d * randInt(rng, 3, 12)
       const value = (n / d) * whole
+      const prompts = [
+        `Im Kreisdiagramm ist ein Teil von ${whole} ${unit} eingefärbt. Wie groß ist dieser Anteil?`,
+        `Kreisdiagramm zu ${whole} ${unit}: Welcher Wert gehört zum farbigen Sektor?`,
+        `Nur der eingefärbte Kreissektor zählt. Ausgangswert ${whole} ${unit} — wie groß ist er?`,
+      ]
       return visualTask({
-        question: `Das Kreisdiagramm zeigt den Anteil von ${whole} ${unit}. Wie groß ist der eingefärbte Anteil?`,
+        question: pick(rng, prompts),
         unit,
         answerKind: 'decimal',
         value,
@@ -1930,8 +1948,9 @@ const anteilVonGroesse: Topic = {
         visualContent: generateFractionCircleSvg({
           numerator: n,
           denominator: d,
-          showLabel: true,
+          showLabel: false,
         }),
+        dedupeKey: `anteil:circle:${n}/${d}:${whole}:${unit}`,
       })
     },
   ),
@@ -1981,7 +2000,7 @@ const anteilProzent: Topic = {
         visualContent: generateFractionBarSvg({
           numerator: num,
           denominator: denom,
-          showLabel: true,
+          showLabel: false,
         }),
       })
     },
@@ -2002,7 +2021,7 @@ const anteilProzent: Topic = {
         visualContent: generateFractionCircleSvg({
           numerator: num,
           denominator: denom,
-          showLabel: true,
+          showLabel: false,
         }),
       })
     },

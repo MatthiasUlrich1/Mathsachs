@@ -100,6 +100,14 @@ export function taskContentIds(task: Task): string[] {
       .replace(/\?+$/g, '')
       .trim()
     if (core.length >= 12 && core !== stem) ids.add(`stemcore:${core}`)
+    // Number/unit-stripped family: „Anteil von 28 kg“ vs „12 kg“ count as same
+    // prompt shape within a round (forces template variety, not only digits).
+    const family = stem
+      .replace(/\d+([.,]\d+)?/g, '#')
+      .replace(/\b(kg|m|cm|dm|mm|€|euro|liter|l|ml|g|t|s|min|h|%|prozent)\b/gi, '§')
+      .replace(/\s+/g, ' ')
+      .trim()
+    if (family.length >= 20 && family.includes('#')) ids.add(`stemfamily:${family}`)
   }
 
   const sol = normalizeTaskText(String(task.solution ?? ''))

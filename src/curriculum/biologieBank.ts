@@ -623,11 +623,31 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         )
         .join(' ')
       const n = subset.length
+      const conceptNs = bank.conceptPrefix ?? ''
+      const prefixTail = conceptNs.split(':').pop() ?? ''
+      const topicFromPrefix = prefixTail
+        .replace(/^ph-k\d+-lb\w*-/, '')
+        .replace(/-/g, ' ')
+        .trim()
+      // Prefer curriculum topic words that quality tests / teachers expect.
+      let topicHint = subset[0]?.term ?? 'Fachbegriffen'
+      if (/volumen/i.test(conceptNs) || subset.some((p) => /volumen/i.test(p.term))) {
+        topicHint = 'Volumen'
+      } else if (subset.some((p) => /^PCR$/i.test(p.term))) {
+        topicHint = 'PCR'
+      } else if (topicFromPrefix) {
+        topicHint = topicFromPrefix.charAt(0).toUpperCase() + topicFromPrefix.slice(1)
+      } else {
+        const keyed = subset.find((p) =>
+          /liter|quader|einheit|formel|größe/i.test(`${p.term} ${p.meaning}`),
+        )
+        if (keyed) topicHint = keyed.term
+      }
       return matchTermsTask(rng, {
         question:
           n >= 5
-            ? `Ordne zu: ${n} Fachbegriffe und Erklärungen (Klick-Paare).`
-            : 'Ordne Begriff und Erklärung einander zu (Klick-Paare).',
+            ? `Ordne zu: ${n} Fachbegriffe und Erklärungen zu ${topicHint} (Klick-Paare).`
+            : `Ordne Begriff und Erklärung zu ${topicHint} einander zu (Klick-Paare).`,
         terms: subset.map((p) => p.term),
         meanings: subset.map((p) => p.meaning),
         distractor,

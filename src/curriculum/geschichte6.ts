@@ -677,7 +677,7 @@ export const romBegriffe: Topic['generate'] = mixedVariants(
 export const romAemter: Topic['generate'] = mixedVariants(
   (rng) =>
     matchTermsTask(rng, {
-      question: 'Ordne den Ämtern die Zuständigkeit zu:',
+      question: 'Ordne jedem Amt seine Funktion/Zuständigkeit zu:',
       terms: ['Konsuln', 'Prätoren', 'Ädile', 'Quästoren'],
       meanings: [
         'oberste Beamte Roms (zwei)',
@@ -694,7 +694,7 @@ export const romAemter: Topic['generate'] = mixedVariants(
     }),
   (rng) =>
     matchTermsTask(rng, {
-      question: 'Ordne weitere Ämter und Organe:',
+      question: 'Ordne jedem Amt/Organ seine Funktion zu:',
       terms: ['Zensoren', 'Volkstribune', 'Diktator', 'Senat'],
       meanings: [
         'Sittenkontrolle und Bürgerlisten',
@@ -711,7 +711,7 @@ export const romAemter: Topic['generate'] = mixedVariants(
     }),
   (rng) =>
     matchTermsTask(rng, {
-      question: 'Ordne Prinzipien der Ämterordnung:',
+      question: 'Ordne jedem Prinzip der Ämterordnung seine Bedeutung zu:',
       terms: ['Annuität', 'Kollegialität', 'Veto', 'Imperium'],
       meanings: [
         'Ämter meist nur für ein Jahr',

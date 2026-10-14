@@ -1605,7 +1605,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     { concept: "bio:k8:hormone:xpaar:adrenalin", term: "Adrenalin", meaning: "Stress- und Leistungsreaktion", wissen: "Schnelle Mobilisierung. Adrenalin bedeutet: Stress- und Leistungsreaktion. Im Unterrichtsthema hilft Adrenalin (Stress- und Leistungsreaktion), Zusammenhänge zu erklären." },
     { concept: "bio:k8:hormone:xpaar:wachstumshormon", term: "Wachstumshormon", meaning: "Fördert Wachstum", wissen: "Aus der Hirnanhangsdrüse. Wachstumshormon bedeutet: Fördert Wachstum. Im Unterrichtsthema hilft Wachstumshormon (Fördert Wachstum), Zusammenhänge zu erklären." },
     { concept: "bio:k8:hormone:xpaar:schilddruese", term: "Schilddrüse", meaning: "Stoffwechselregulation", wissen: "Hormone mit Iod. Schilddrüse bedeutet: Stoffwechselregulation. Im Unterrichtsthema hilft Schilddrüse (Stoffwechselregulation), Zusammenhänge zu erklären." },
-    { concept: "bio:k8:hormone:xpaar:rezeptor", term: "Rezeptor", meaning: "Bindungsstelle an der Zielzelle", wissen: "Nur passende Hormone wirken. Rezeptor bedeutet: Bindungsstelle an der Zielzelle. Im Unterrichtsthema hilft Rezeptor (Bindungsstelle an der Zielzelle), Zusammenhänge zu erklären." },
+    { concept: "bio:k8:hormone:xpaar:rezeptor", term: "Hormon-Rezeptor", meaning: "Bindungsstelle an der Zielzelle", wissen: "Nur passende Hormone wirken. Ein Hormon-Rezeptor ist die Bindungsstelle an der Zielzelle. Im Unterrichtsthema hilft der Hormon-Rezeptor, selektive Wirkung zu erklären." },
     { concept: "bio:k8:hormone:xpaar:feedback", term: "Feedback", meaning: "Rückkopplung der Hormonmenge", wissen: "Hält Spiegel stabil. Feedback bedeutet: Rückkopplung der Hormonmenge. Im Unterrichtsthema hilft Feedback (Rückkopplung der Hormonmenge), Zusammenhänge zu erklären." },
     { concept: "bio:k8:hormone:xpaar:pubertaetshormon", term: "Pubertätshormon", meaning: "Steuert Geschlechtsreifung", wissen: "u. a. Östrogen, Testosteron. Pubertätshormon bedeutet: Steuert Geschlechtsreifung. Im Unterrichtsthema hilft Pubertätshormon (Steuert Geschlechtsreifung), Zusammenhänge zu erklären." },
     { concept: "bio:k8:hormone:xpaar:blutzucker", term: "Blutzucker", meaning: "Glucosekonzentration im Blut", wissen: "Eng hormonell geregelt. Blutzucker bedeutet: Glucosekonzentration im Blut. Im Unterrichtsthema hilft Blutzucker (Glucosekonzentration im Blut), Zusammenhänge zu erklären." },
@@ -1691,14 +1691,14 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     },
     {
       concept: "bio:k8:hormone:xfact:rezeptor",
-      prompt: "Fachbegriff: Was bedeutet „Rezeptor“?",
+      prompt: "Fachbegriff (Hormone): Was bedeutet „Hormon-Rezeptor“?",
       answer: "Bindungsstelle an der Zielzelle",
       wrong: ["Rückkopplung der Hormonmenge","Steuert Geschlechtsreifung","Glucosekonzentration im Blut"],
-      explanation: "Nur passende Hormone wirken. Rezeptor bedeutet: Bindungsstelle an der Zielzelle. Im Unterrichtsthema hilft Rezeptor (Bindungsstelle an der Zielzelle), Zusammenhänge zu erklären.",
-      wissen: "Nur passende Hormone wirken. Rezeptor bedeutet: Bindungsstelle an der Zielzelle. Im Unterrichtsthema hilft Rezeptor (Bindungsstelle an der Zielzelle), Zusammenhänge zu erklären.",
-      gap: "Fachbegriff: ___ — Bindungsstelle an der Zielzelle",
-      gapAccepted: ["Rezeptor", "Rezeptor"],
-      flashFront: "Rezeptor",
+      explanation: "Nur passende Hormone wirken. Ein Hormon-Rezeptor ist die Bindungsstelle an der Zielzelle. Im Unterrichtsthema hilft der Hormon-Rezeptor, selektive Wirkung zu erklären.",
+      wissen: "Nur passende Hormone wirken. Ein Hormon-Rezeptor ist die Bindungsstelle an der Zielzelle. Im Unterrichtsthema hilft der Hormon-Rezeptor, selektive Wirkung zu erklären.",
+      gap: "Fachbegriff (Hormone): ___ — Bindungsstelle an der Zielzelle",
+      gapAccepted: ["Hormon-Rezeptor", "Rezeptor"],
+      flashFront: "Hormon-Rezeptor",
     },
     {
       concept: "bio:k8:hormone:xfact:feedback",
@@ -4334,7 +4334,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
   },
   "bio:k8:sinne": {
     pairs: [
-    { concept: "bio:k8:sinne:xpaar:rezeptor", term: "Rezeptor", meaning: "Nimmt Reiz auf", wissen: "Umwandlung in Erregung. Rezeptor bedeutet: Nimmt Reiz auf. Im Unterrichtsthema hilft Rezeptor (Nimmt Reiz auf), Zusammenhänge zu erklären." },
+    { concept: "bio:k8:sinne:xpaar:rezeptor", term: "Sinnesrezeptor", meaning: "Nimmt Reiz auf", wissen: "Umwandlung in Erregung. Ein Sinnesrezeptor nimmt Reize auf und wandelt sie in Erregung um. Im Unterrichtsthema hilft der Sinnesrezeptor, Wahrnehmung zu erklären." },
     { concept: "bio:k8:sinne:xpaar:reiz", term: "Reiz", meaning: "Umwelt- oder Körperänderung", wissen: "Adequat zum Sinn. Reiz bedeutet: Umwelt- oder Körperänderung. Im Unterrichtsthema hilft Reiz (Umwelt- oder Körperänderung), Zusammenhänge zu erklären." },
     { concept: "bio:k8:sinne:xpaar:erregung", term: "Erregung", meaning: "Elektrisches Signal", wissen: "Entlang der Nervenfaser. Erregung bedeutet: Elektrisches Signal. Im Unterrichtsthema hilft Erregung (Elektrisches Signal), Zusammenhänge zu erklären." },
     { concept: "bio:k8:sinne:xpaar:gehirn", term: "Gehirn", meaning: "Verarbeitet Sinneseindrücke", wissen: "Bewusste Wahrnehmung. Gehirn bedeutet: Verarbeitet Sinneseindrücke. Im Unterrichtsthema hilft Gehirn (Verarbeitet Sinneseindrücke), Zusammenhänge zu erklären." },
@@ -4350,14 +4350,14 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     facts: [
     {
       concept: "bio:k8:sinne:xfact:rezeptor",
-      prompt: "Fachbegriff: Was bedeutet „Rezeptor“?",
+      prompt: "Fachbegriff (Sinne): Was bedeutet „Sinnesrezeptor“?",
       answer: "Nimmt Reiz auf",
       wrong: ["Umwelt- oder Körperänderung","Elektrisches Signal","Verarbeitet Sinneseindrücke"],
-      explanation: "Umwandlung in Erregung. Rezeptor bedeutet: Nimmt Reiz auf. Im Unterrichtsthema hilft Rezeptor (Nimmt Reiz auf), Zusammenhänge zu erklären.",
-      wissen: "Umwandlung in Erregung. Rezeptor bedeutet: Nimmt Reiz auf. Im Unterrichtsthema hilft Rezeptor (Nimmt Reiz auf), Zusammenhänge zu erklären.",
-      gap: "Fachbegriff: ___ — Nimmt Reiz auf",
-      gapAccepted: ["Rezeptor", "Rezeptor"],
-      flashFront: "Rezeptor",
+      explanation: "Umwandlung in Erregung. Ein Sinnesrezeptor nimmt Reize auf und wandelt sie in Erregung um. Im Unterrichtsthema hilft der Sinnesrezeptor, Wahrnehmung zu erklären.",
+      wissen: "Umwandlung in Erregung. Ein Sinnesrezeptor nimmt Reize auf und wandelt sie in Erregung um. Im Unterrichtsthema hilft der Sinnesrezeptor, Wahrnehmung zu erklären.",
+      gap: "Fachbegriff (Sinne): ___ — Nimmt Reiz auf",
+      gapAccepted: ["Sinnesrezeptor", "Rezeptor"],
+      flashFront: "Sinnesrezeptor",
     },
     {
       concept: "bio:k8:sinne:xfact:reiz",
@@ -14030,6 +14030,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
   },
   "bio:kOberstufe:genetik": {
     pairs: [
+    { concept: "bio:kOberstufe:genetik:xpaar:pcr", term: "PCR", meaning: "Enzymatische Amplifikation von DNA", wissen: "PCR amplifiziert DNA-Abschnitte zyklisch mit Primer und hitzeresistenter Polymerase. Sie braucht Template, dNTPs und definierte Temperaturen. Ergebnis sind viele Kopien der Zielsequenz." },
     { concept: "bio:kOberstufe:genetik:xpaar:genexpression", term: "Genexpression", meaning: "Ablesen und Umsetzen von Genen", wissen: "Reguliert. Genexpression bedeutet: Ablesen und Umsetzen von Genen. Im Unterrichtsthema hilft Genexpression (Ablesen und Umsetzen von Genen), Zusammenhänge zu erklären." },
     { concept: "bio:kOberstufe:genetik:xpaar:transkriptionsfaktor", term: "Transkriptionsfaktor", meaning: "Steuert Genaktivität", wissen: "Bindet an DNA. Transkriptionsfaktor bedeutet: Steuert Genaktivität. Im Unterrichtsthema hilft Transkriptionsfaktor (Steuert Genaktivität), Zusammenhänge zu erklären." },
     { concept: "bio:kOberstufe:genetik:xpaar:promotor", term: "Promotor", meaning: "Startregion der Transkription", wissen: "RNA-Polymerase. Promotor bedeutet: Startregion der Transkription. Im Unterrichtsthema hilft Promotor (Startregion der Transkription), Zusammenhänge zu erklären." },
@@ -14048,6 +14049,42 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     { concept: "bio:kOberstufe:genetik:xpaar:ethik-der-genomik", term: "Ethik der Genomik", meaning: "Privatsphäre und Diskriminierung", wissen: "Regeln nötig. Ethik der Genomik bedeutet: Privatsphäre und Diskriminierung. Im Unterrichtsthema hilft Ethik der Genomik (Privatsphäre und Diskriminierung), Zusammenhänge zu erklären." },
     ],
     facts: [
+    {
+      concept: "bio:kOberstufe:genetik:xfact:pcr",
+      prompt: "Was beschreibt PCR grob?",
+      answer: "Vervielfältigung von DNA-Abschnitten",
+      wrong: ["Nur Knochenheilung", "Nur Transpiration", "Nur Impfung mit Bakterien immer"],
+      explanation: "Molekularbiologische Amplifikation ausgewählter DNA-Abschnitte.",
+      wissen:
+        "Die Polymerase-Kettenreaktion (PCR) vervielfältigt gezielt ausgewählte DNA-Abschnitte in wiederholten Temperaturzyklen. Jeder Zyklus umfasst Denaturierung, Primer-Anlagerung und Elongation durch hitzeresistente Polymerase. Anwendungen sind Diagnostik, Forensik und Gentechnik.",
+      gap: "PCR dient der gezielten ___ bestimmter DNA-Abschnitte.",
+      gapAccepted: ["Vervielfältigung", "Amplifikation", "Vermehrung"],
+      flashFront: "PCR",
+    },
+    {
+      concept: "bio:kOberstufe:genetik:xfact:pcr-zyklus",
+      prompt: "Welche Schritte gehören typischerweise zu einem PCR-Zyklus?",
+      answer: "Denaturierung, Primer-Anlagerung und Amplifikation der DNA",
+      wrong: ["Nur Translation am Ribosom", "Nur Meiose ohne Temperatur", "Nur Impfung ohne DNA"],
+      explanation: "Klassischer PCR-Temperaturzyklus.",
+      wissen:
+        "Ein PCR-Zyklus umfasst Denaturierung (DNA-Aufschmelzen), Anlagerung passender Primer und Elongation durch Polymerase. Die Wiederholung vervielfältigt die Ziel-DNA näherungsweise exponentiell.",
+      gap: "PCR-Zyklen nutzen Denaturierung, Primer-Anlagerung und ___ der DNA.",
+      gapAccepted: ["Amplifikation", "Elongation", "Vervielfältigung"],
+      flashFront: "PCR-Zyklus",
+    },
+    {
+      concept: "bio:kOberstufe:genetik:xfact:pcr-anwendung",
+      prompt: "Wofür wird PCR in Diagnostik oder Forensik genutzt?",
+      answer: "Gezielte Amplifikation knapper DNA-Proben",
+      wrong: ["Nur Knochenbruch-Heilung", "Nur Pflanzenbewässerung", "Nur Impfstoff ohne DNA-Bezug"],
+      explanation: "PCR macht wenig DNA nachweis- und analysierbar.",
+      wissen:
+        "PCR ermöglicht die Amplifikation und Vervielfältigung auch sehr kleiner DNA-Mengen mit Primer und Polymerase. Deshalb eignet sie sich für Diagnostik, Forensik und Gentechnik, wenn Ausgangsmaterial knapp ist.",
+      gap: "PCR ermöglicht die ___ knapper DNA-Proben.",
+      gapAccepted: ["Amplifikation", "Vervielfältigung", "Vermehrung"],
+      flashFront: "PCR-Anwendung",
+    },
     {
       concept: "bio:kOberstufe:genetik:xfact:genexpression",
       prompt: "Fachbegriff: Was bedeutet „Genexpression“?",

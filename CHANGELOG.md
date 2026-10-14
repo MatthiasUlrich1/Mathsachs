@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.77] – 2026-10-14
+
+### Behoben
+- **QA:** Anteil-Diagramme ohne Bruch-Spoiler (ID 2603); Auge/Ämter Prompt↔Antwort
+  (ID 7496); Round-Uniqueness (`stemfamily` + dedupe); CI nach 0.28.76
+  (Physik Volumen, ST-Pack 1.0.3, Geschichte Rom-Fachwissen, Bio Rezeptor/PCR).
+- **Regel:** `.cursor/rules/curriculum-aufgaben-qualitaet.mdc` — keine doppelten
+  Prompts in einer Runde; Inhalte weiter locked.
+
 ## [0.28.76] – 2026-10-14
 
 ### Geändert

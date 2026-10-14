@@ -10,6 +10,7 @@ import { PHYSIK_J12LK_GENERATORS } from './physik12lk'
 import { PHYSIK_DENSE_GENERATORS } from './physikDenseBanks'
 import { buildGymSachsenPhysikPack } from './physikGymPack'
 import { makePhysikTopicGenerate } from './physikTopicFactory'
+import { mixedVariants } from './taskHelpers'
 import type { Topic } from './types'
 
 const HAND_WRITTEN: Record<string, Topic['generate']> = {
@@ -36,6 +37,14 @@ function buildAllPhysikGenerators(): Record<string, Topic['generate']> {
         }
       }
     }
+  }
+  // Volumen: dense Begriffspool + Factory (Formel/Rechnung/Slots) für schulische Breite.
+  const volDense = PHYSIK_DENSE_GENERATORS['ph-k6-lb2-volumen']
+  if (volDense) {
+    out['ph-k6-lb2-volumen'] = mixedVariants(
+      volDense,
+      makePhysikTopicGenerate('ph-k6-lb2-volumen', 'Volumen bestimmen'),
+    )
   }
   return out
 }

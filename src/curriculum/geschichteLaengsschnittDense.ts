@@ -321,12 +321,36 @@ const geK6BuergerRom: BioBank = {
     ),
   ],
   pairs: [
-    p('Civitas', 'Bürgerrecht / Bürgerschaft', 'Rechtlicher Status.'),
-    p('Provincia', 'Verwaltungsgebiet außerhalb Italiens', 'Bürgerrecht konnte dorthin reichen.'),
-    p('Legion', 'Römisches Heer', 'Bürger dienten oft als Soldaten.'),
-    p('Patron', 'Schutzherr mit Klienten', 'Soziale Bindung.'),
-    p('Senat', 'Beratungsgremium der Elite', 'Politische Mitwirkung.'),
-    p('Ius', 'Recht', 'Grundlage des Bürgerstatus.'),
+    p(
+      'Civitas',
+      'Bürgerrecht / Bürgerschaft',
+      'Civitas bezeichnet den rechtlichen Bürgerstatus. Er sicherte Schutz und Teilhabe im römischen Gemeinwesen.',
+    ),
+    p(
+      'Provincia',
+      'Verwaltungsgebiet außerhalb Italiens',
+      'Provinzen lagen außerhalb Italiens und wurden verwaltet. Bürgerrecht konnte dorthin verliehen werden und band Regionen an Rom.',
+    ),
+    p(
+      'Legion',
+      'Römisches Heer',
+      'Die Legion war die Kernformation des römischen Heeres. Bürger dienten oft als Soldaten und verbanden Pflicht mit Status.',
+    ),
+    p(
+      'Patron',
+      'Schutzherr mit Klienten',
+      'Ein Patron gewährte Schutz und Förderung. Klienten schuldeten Treue — eine zentrale soziale Bindung der Republik.',
+    ),
+    p(
+      'Senat',
+      'Beratungsgremium der Elite',
+      'Der Senat beriet Magistrate und beeinflusste Politik. Politische Mitwirkung der Elite lief oft über dieses Gremium.',
+    ),
+    p(
+      'Ius',
+      'Recht',
+      'Ius meint das römische Recht als Ordnung. Es bildete die Grundlage des Bürgerstatus und des Rechtsverkehrs.',
+    ),
   ],
   trueFalse: [
     tf(
@@ -334,14 +358,14 @@ const geK6BuergerRom: BioBank = {
       'Das römische Bürgerrecht konnte auch außerhalb der Stadt Rom verliehen werden.',
       true,
       'Imperiale Ausweitung.',
-      'Rom nutzte Bürgerrecht zur Integration von Regionen und Personengruppen.',
+      'Rom nutzte Bürgerrecht zur Integration von Regionen und Personengruppen. So wurde Herrschaft über weite Gebiete abgesichert, ohne dass alle Bewohner denselben Status hatten.',
     ),
     tf(
       'ge:k6:buerger-rom:tf2',
       'Römisches Bürgerrecht bedeutete nur Vorteile ohne jede Pflicht.',
       false,
       'Pflichten gehörten dazu.',
-      'Steuern, Militär und rechtliche Verantwortung gehörten zum Bürgersein.',
+      'Steuern, Militär und rechtliche Verantwortung gehörten zum Bürgersein. Rechte und Pflichten bildeten zusammen den Status civitas romana.',
     ),
   ],
 }

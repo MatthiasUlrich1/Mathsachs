@@ -614,6 +614,9 @@ interface VisualTaskInput {
   /** SVG visual content (e.g., geometry diagram). */
   visualContent: string
   eps?: number
+  /** Round-dedupe identity (same key → treated as duplicate in a round). */
+  dedupeKey?: string
+  contentIds?: string[]
 }
 
 /** Build a task with visual SVG content (e.g., geometry diagrams). */
@@ -624,6 +627,8 @@ export const visualTask = (input: VisualTaskInput): Task => ({
   solution: input.solution,
   explanation: input.explanation,
   visualContent: input.visualContent,
+  ...withDedupe(input.dedupeKey),
+  ...withContentIds(input.contentIds),
   sampleAnswer: { kind: 'value', value: String(input.value) },
   check: (answer: UserInput) => {
     if (answer.kind !== 'value') return false
