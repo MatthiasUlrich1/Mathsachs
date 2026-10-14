@@ -1466,11 +1466,17 @@ export const FLOWER_PARTS_ASSET: AnatomyAsset = {
   fachwissenQuelle: 'Wikipedia: Blüte',
   fachwissenUrl: 'https://de.wikipedia.org/wiki/Bl%C3%BCte',
   distractors: ['Jahresring', 'Kiemendeckel', 'Okular'],
+  /**
+   * Drop-Felder mittig auf Bildnummern; target* auf die anatomische Region
+   * (drawLeaders:false — Bild hat bereits Nummern/Linien).
+   */
   slots: [
     {
       id: 'narbe',
       x: (249 / 470) * 100,
       y: (18 / 252) * 100,
+      targetX: (220 / 470) * 100,
+      targetY: (28 / 252) * 100,
       label: 'Narbe',
       functionDe: 'Nimmt den Pollen auf',
       wissen: 'Bestäubung beginnt, wenn Pollen auf der Narbe landet.',
@@ -1480,6 +1486,8 @@ export const FLOWER_PARTS_ASSET: AnatomyAsset = {
       id: 'griffel',
       x: (147 / 470) * 100,
       y: (20 / 252) * 100,
+      targetX: (165 / 470) * 100,
+      targetY: (45 / 252) * 100,
       label: 'Griffel',
       functionDe: 'Verbindet Narbe und Fruchtknoten',
       wissen: 'Der Pollenschlauch wächst durch den Griffel zur Samenanlage.',
@@ -1489,6 +1497,8 @@ export const FLOWER_PARTS_ASSET: AnatomyAsset = {
       id: 'fruchtknoten',
       x: (130.67 / 470) * 100,
       y: (29.33 / 252) * 100,
+      targetX: (175 / 470) * 100,
+      targetY: (95 / 252) * 100,
       label: 'Fruchtknoten',
       functionDe: 'Enthält die Samenanlagen',
       wissen: 'Nach der Befruchtung wird aus dem Fruchtknoten die Frucht.',
@@ -1498,6 +1508,8 @@ export const FLOWER_PARTS_ASSET: AnatomyAsset = {
       id: 'kelch',
       x: (167 / 470) * 100,
       y: (216.67 / 252) * 100,
+      targetX: (200 / 470) * 100,
+      targetY: (190 / 252) * 100,
       label: 'Kelchblatt',
       functionDe: 'Schutz der Knospe / äußere Blütenhülle',
       wissen: 'Kelchblätter schützen die junge Blüte oft grün und derb.',
@@ -1507,6 +1519,8 @@ export const FLOWER_PARTS_ASSET: AnatomyAsset = {
       id: 'krone',
       x: (60.65 / 470) * 100,
       y: (91.33 / 252) * 100,
+      targetX: (95 / 470) * 100,
+      targetY: (110 / 252) * 100,
       label: 'Kronblatt',
       functionDe: 'Lockt Bestäuber (Farbe/Form)',
       wissen: 'Auffällige Kronblätter signalisieren Bestäubern Nektar und Pollen.',
@@ -1516,6 +1530,8 @@ export const FLOWER_PARTS_ASSET: AnatomyAsset = {
       id: 'staubblatt',
       x: (383.92 / 470) * 100,
       y: (79.09 / 252) * 100,
+      targetX: (320 / 470) * 100,
+      targetY: (95 / 252) * 100,
       label: 'Staubblatt',
       functionDe: 'Bildet Pollen (Anthere)',
       wissen: 'In den Staubbeuteln reift der Pollen — männliche Blütenteile.',

@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.82] – 2026-10-14
+
+### Behoben
+- **Installer-CI:** Blüten-`imageLabelSlots` mit `targetX`/`targetY` (AnatomySlotDef),
+  damit `tsc`/Electron-Build unter Linux nicht scheitert.
+
 ## [0.28.81] – 2026-10-14
 
 ### Hinzugefügt
