@@ -124,7 +124,7 @@
                 "Primzahl",
                 "Teilbarkeit"
               ],
-              "released": false
+              "released": true
             },
             {
               "id": "lb1-rechengesetze",
@@ -138,7 +138,7 @@
                 "Distributiv",
                 "Rechenvorteil"
               ],
-              "released": false
+              "released": true
             }
           ]
         },
@@ -245,7 +245,7 @@
                 "Zähler",
                 "Nenner"
               ],
-              "released": false
+              "released": true
             },
             {
               "id": "lb2-bruch-dezimal-prozent",
@@ -259,7 +259,7 @@
                 "Umwandeln",
                 "Zehnerbruch"
               ],
-              "released": false
+              "released": true
             }
           ]
         },
@@ -417,7 +417,7 @@
                 "Ansicht",
                 "Quader"
               ],
-              "released": false
+              "released": true
             }
           ]
         },

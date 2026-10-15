@@ -420,6 +420,18 @@ export function stripBioBankSlug(text: string): string {
     .replace(/^([a-z][a-z0-9_-]*):\s+(?=\S)/, '')
     // Trailing topic slug in flash fronts: `Term (k5-lbw-saurier)` / `(lk12-lb5-systematik)`
     .replace(/\s*\((?:k\d+|lk\d+|gk\d+|ge|bi|ph|os|st|sks)[-_][^)]+\)\s*/gi, ' ')
+    // Trailing compact topic keys: `Bezugssystem (zeitrechnung)`, `Ruhe (saeugverh)`
+    .replace(/\s*\(([a-zäöüß][a-z0-9äöüß_-]{2,})\)\s*(?=$|[.!?])/gi, (_, slug: string) =>
+      isInternalTopicAbbrev(slug) ||
+      /^(zeitrechnung|steinzeit|quellen|orientierung|arbeitsweisen|baeume|wirbellose)$/i.test(slug)
+        ? ' '
+        : ` (${slug})`,
+    )
+    // Leaked „im Themenfeld krschutz“ / bare abbrev tokens
+    .replace(/\bim Themenfeld\s+([a-z]{4,14})\b/gi, (_, tok: string) =>
+      isInternalTopicAbbrev(tok) ? '' : `im Themenfeld ${tok}`,
+    )
+    .replace(/\b(krschutz|vgschutz|saeugverh|saeugsoc|saeugsinn|saeugmerk|saeugfort)\b/gi, '')
     .replace(/\s+/g, ' ')
     .trim()
 }
@@ -522,22 +534,59 @@ export function bioFactGapModeSafe(f: BioFact, mode: 'gap' | 'cloze'): boolean {
 }
 
 /**
- * Menschenlesbarer Themenbezug aus conceptPrefix — ohne Roh-IDs (ge-k5-lb…).
- * Hält Geschwister-Topics nach dem Entfernen von `[k5-…]`-Tags auseinander.
+ * True when a conceptPrefix segment is an internal short key (must never reach UI).
+ * e.g. krschutz, saeugverh, vgschutz, saeugsinn, saeugsoc — not real German phrases.
+ */
+export function isInternalTopicAbbrev(token: string): boolean {
+  const t = token.trim().toLowerCase().replace(/-/g, '')
+  if (!t || t.length < 4) return false
+  // Explicit compact bank keys
+  if (
+    /^(krschutz|vgschutz|saeugverh|saeugsoc|saeugsinn|saeugmerk|saeugfort|saeugskelett|saeuglunge|fischschutz|amphschutz)$/i.test(
+      t,
+    )
+  ) {
+    return true
+  }
+  // Glued truncated stems: short animal/topic prefix + truncated German stem
+  if (
+    /^(kr|vg|saeug|amph|fi)(schutz|verh|sinn|soc|merk|fort|angep|skelett|lunge)$/i.test(t)
+  ) {
+    return true
+  }
+  return false
+}
+
+/** Readable German theme for known compact prefixes (never emit the raw key). */
+const COMPACT_PREFIX_THEME: Record<string, string> = {
+  krschutz: 'beim Kriechtierschutz',
+  vgschutz: 'beim Vogelschutz',
+  saeugverh: 'beim Säugetierverhalten',
+  saeugsoc: 'beim Sozialverhalten der Säugetiere',
+  saeugsinn: 'bei den Säugetiersinnen',
+  saeugmerk: 'bei Säugetiermerkmalen',
+  saeugfort: 'bei der Säugetierfortpflanzung',
+  arbeit: 'bei den Arbeitsweisen der Biologen',
+  zeitrechnung: 'in der historischen Zeitrechnung',
+}
+
+/**
+ * Menschenlesbarer Themenbezug aus conceptPrefix — ohne Roh-IDs und ohne
+ * Topic-Kurzformen (krschutz, saeugverh, …). Lieber leer als ein Leak.
  */
 export function themePhraseFromPrefix(prefix?: string): string {
   if (!prefix) return ''
   const p = prefix.toLowerCase()
   if (/:meta\b|metamorphose/.test(p)) return 'bei der Metamorphose'
   if (/:merkmale\b|:merkmal\b/.test(p)) return 'als Körpermerkmal'
-  if (/:schutz\b/.test(p)) return 'im Artenschutz'
-  if (/:fortpflanzung\b/.test(p)) return 'bei der Fortpflanzung'
+  if (/:schutz\b/.test(p) || /:krschutz\b|:vgschutz\b/.test(p)) return 'im Artenschutz'
+  if (/:fortpflanzung\b|:saeugfort\b/.test(p)) return 'bei der Fortpflanzung'
   if (/:lebensraum\b/.test(p)) return 'im Lebensraum'
   if (/:aufbau\b/.test(p)) return 'im Körperbau'
   if (/:flug\b|:feder/.test(p)) return 'beim Fliegen'
-  if (/:verhalten\b/.test(p)) return 'im Verhalten'
-  if (/:sinne\b/.test(p)) return 'bei den Sinnen'
-  if (/:sozial\b/.test(p)) return 'im Sozialverhalten'
+  if (/:verhalten\b|:saeugverh\b/.test(p)) return 'im Verhalten'
+  if (/:sinne\b|:saeugsinn\b/.test(p)) return 'bei den Sinnen'
+  if (/:sozial\b|:saeugsoc\b/.test(p)) return 'im Sozialverhalten'
   if (/:angepasst\b|:anpassung\b/.test(p)) return 'bei der Angepasstheit'
   if (/:skelett\b/.test(p)) return 'am Skelett'
   if (/:lunge\b/.test(p)) return 'bei der Lunge'
@@ -545,14 +594,25 @@ export function themePhraseFromPrefix(prefix?: string): string {
   if (/:arten\b/.test(p)) return 'bei typischen Arten'
   if (/:quellen\b/.test(p)) return 'bei historischen Quellen'
   if (/:orientierung\b/.test(p)) return 'zur historischen Orientierung'
+  if (/:arbeit\b|arbeitsweisen/.test(p)) return 'bei den Arbeitsweisen der Biologen'
+  if (/zeitrechnung/.test(p)) return 'in der historischen Zeitrechnung'
   // Aus Topic-IDs wie ge-k5-lb1-orientierung nur den thematischen Schwanz nutzen
   for (const seg of [...p.split(':')].reverse()) {
     const m = seg.match(/^(?:ge|bi|ph|ma|os|st|sks)-k\d+-lb\w*-(.+)$/i)
     if (m?.[1] && m[1].length >= 3) {
-      return `im Themenfeld ${m[1].replace(/-/g, ' ')}`
+      const tail = m[1]
+      if (isInternalTopicAbbrev(tail)) {
+        const mapped = COMPACT_PREFIX_THEME[tail.replace(/-/g, '')]
+        return mapped ?? ''
+      }
+      // Nur lesbare, hyphenierte oder klar deutsche Wörter — nie Roh-Kurzformen
+      if (/^[a-zäöüß]+(?:-[a-zäöüß]+)+$/i.test(tail) || /^[a-zäöüß]{5,}$/i.test(tail)) {
+        return `im Themenfeld ${tail.replace(/-/g, ' ')}`
+      }
+      return ''
     }
   }
-  // Letztes sinnvolles Segment — keine Roh-Topic-IDs
+  // Letztes sinnvolles Segment — nur wenn menschenlesbar
   const parts = p.split(':').filter(
     (s) =>
       s &&
@@ -561,7 +621,16 @@ export function themePhraseFromPrefix(prefix?: string): string {
       !/-lb\d+/i.test(s),
   )
   const last = parts[parts.length - 1] ?? ''
-  if (last.length >= 3 && !/\d/.test(last)) {
+  if (!last || /\d/.test(last) || isInternalTopicAbbrev(last)) {
+    const mapped = COMPACT_PREFIX_THEME[last.replace(/-/g, '')]
+    return mapped ?? ''
+  }
+  if (last.length >= 5 && (/[äöüß]/.test(last) || /-[a-z]/.test(last) || /^[a-zäöüß]{5,}$/i.test(last))) {
+    // Einzelne Camel-/Kurzformen ohne Bindestrich und ohne Umlaut ablehnen,
+    // wenn sie wie Bank-Keys wirken (alles klein, ≤12, keine klaren Wortgrenzen).
+    if (!/-/.test(last) && last.length <= 12 && !/[äöüß]/.test(last) && isInternalTopicAbbrev(last)) {
+      return ''
+    }
     return `im Themenfeld ${last.replace(/-/g, ' ')}`
   }
   return ''
@@ -839,14 +908,12 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         })
         .join(' ')
       const n = subset.length
-      const conceptNs = bank.conceptPrefix ?? ''
-      const theme = themePhraseFromPrefix(conceptNs)
-      const themeBit = theme ? ` ${theme}` : ''
+      // Kein Themenfeld-Anhang — Zuordnung sparsam und ohne Prefix-Leaks.
       return matchTermsTask(rng, {
         question:
           n >= 5
-            ? `Ordne ${n} Fachbegriffe ihren Erklärungen zu${themeBit}.`
-            : `Ordne jeden Fachbegriff der passenden Erklärung zu${themeBit}.`,
+            ? `Ordne ${n} Begriffe den passenden Erklärungen zu.`
+            : `Ordne jeden Begriff der passenden Erklärung zu.`,
         terms: subset.map((p) => p.term),
         meanings: subset.map((p) => p.meaning),
         distractor,
@@ -860,8 +927,16 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         contentIds: keys,
       })
     }
-    // Zuordnung nur einmal im Mix — Abwechslung vor Pair-Match-Fließband.
+    // Zuordnung nur einmal und mit geringerem Gewicht als Fakten/MC.
     variants.push(pairMatchVariant)
+  }
+
+  // Fakten stärker gewichten als Zuordnung/TF → mehr Anwendungs-MC, weniger Drill.
+  if (bank.facts && bank.facts.length >= 4 && variants.length > 0) {
+    const factVar = variants[0]
+    if (factVar) {
+      variants.push(factVar, factVar)
+    }
   }
 
   if (bank.trueFalse?.length) {

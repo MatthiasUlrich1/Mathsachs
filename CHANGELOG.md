@@ -9,6 +9,19 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.98] – 2026-10-15
+
+### Geändert
+- **Qualität überall:** Topic-Abkürzungen (`krschutz`, `saeugverh`, …) dürfen nicht
+  mehr in Prompts/UI leaken (`themePhraseFromPrefix` + Audit `topic-abbrev`);
+  Zuordnung sparsam, mehr Interaktionsmix; Rules aktualisiert.
+- **Mathe freigegeben:** Primfaktorzerlegung, Rechengesetze, echte/unechte Brüche,
+  Bruch↔Dezimal↔Prozent, Quader Schrägbild/Netz/Ansichten (`released: true`).
+- **Bio Arbeitsweisen:** themenreine Bank (Beobachten, Vergleichen/Ordnen,
+  Experiment, Modelle, Nachweisreaktionen) — ohne Merkmale des Lebens.
+- **Geschichte Zeitrechnung:** Physik-Füller entfernt; Chronologie/Kalender/
+  v. Chr./n. Chr./Zeitstrahl verdichtet; Orthografie „Zeitrechnung“.
+
 ## [0.28.97] – 2026-10-15
 
 ### Behoben

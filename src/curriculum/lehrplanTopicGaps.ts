@@ -383,170 +383,262 @@ const bioK7Viren: BioBank = {
 const bioK5Arbeitsweisen: BioBank = {
   quelle: "Lehrplan Biologie Sachsen / Schulportal 522",
   url: "https://www.schulportal.sachsen.de/lplandb/lehrplan/522",
-  conceptPrefix: "bio:k5:arbeit",
+  conceptPrefix: "bio:k5:arbeitsweisen",
   facts: [
-
-{
-  concept: "bio:k5:arbeit:1",
-  prompt: "Was gehört zu typischen Arbeitsweisen der Biologen?",
-  answer: "Beobachten, Untersuchen und Vergleichen",
-  wrong: [
-    "Nur Auswendiglernen ohne Natur",
-    "Nur Malen von Fantasiewesen",
-    "Nur Chemie ohne Lebewesen",
-  ],
-  explanation: "Einstieg in die Fachmethode.",
-  wissen: "Biologen gewinnen Erkenntnisse durch Beobachten, gezieltes Untersuchen und Vergleichen von Organismen und nichtlebenden Objekten.",
-  gap: "Drei Arbeitsweisen: Beobachten, Untersuchen, ___.",
-  gapAccepted: ["Vergleichen"],
-},
-
-{
-  concept: "bio:k5:arbeit:2",
-  prompt: "Wozu dient ein Unterrichtsgang in der Biologie?",
-  answer: "Zum Beobachten von Lebewesen und Lebensräumen vor Ort",
-  wrong: [
-    "Zum Ersetzen aller Experimente durch Spiele",
-    "Nur zum Sport ohne Fachbezug",
-    "Nur zum Einkaufen",
-  ],
-  explanation: "Naturobjekte und Lebensräume.",
-  wissen: "Unterrichtsgänge ermöglichen Beobachten und Untersuchen in der Realität — Grundlage für Merkmale des Lebens und Artkenntnis.",
-  gap: "Vor Ort beobachtet man Lebewesen im ___.",
-  gapAccepted: ["Lebensraum"],
-},
-
-{
-  concept: "bio:k5:arbeit:3",
-  prompt: "Woran erkennst du ein Lebewesen im Vergleich zu einem Stein?",
-  answer: "z. B. Stoffwechsel, Fortpflanzung, Reizbarkeit, Wachstum",
-  wrong: [
-    "Nur an der Farbe Grau",
-    "Nur am Gewicht",
-    "Nur an der Form rund",
-  ],
-  explanation: "Merkmale des Lebens.",
-  wissen: "Lebewesen zeigen Merkmale wie Stoffwechsel, Fortpflanzung, Wachstum, Reizbarkeit und Bewegung — nichtlebende Objekte nicht.",
-  gap: "Fortpflanzung ist ein ___ des Lebens.",
-  gapAccepted: ["Merkmal", "Kennzeichen"],
-},
-
-{
-  concept: "bio:k5:arbeit:4",
-  prompt: "Was bedeutet Reizbarkeit?",
-  answer: "Lebewesen reagieren auf Einwirkungen aus der Umwelt",
-  wrong: [
-    "Steine wachsen immer",
-    "Luft hat immer Kiemen",
-    "Holz fotosynthetisiert immer",
-  ],
-  explanation: "Reaktion auf Reize.",
-  wissen: "Reizbarkeit heißt: Organismen nehmen Reize wahr und reagieren — ein zentrales Merkmal des Lebens.",
-  gap: "Auf Licht oder Berührung zu reagieren ist ___.",
-  gapAccepted: ["Reizbarkeit"],
-},
-
-{
-  concept: "bio:k5:arbeit:5",
-  prompt: "Warum vergleichen Biologen Organismen?",
-  answer: "Um Gemeinsamkeiten und Unterschiede zu erkennen",
-  wrong: [
-    "Um nur die Farbe zu vergleichen",
-    "Um nur Steine zu zählen",
-    "Um Fotosynthese zu löschen",
-  ],
-  explanation: "Vergleich als Methode.",
-  wissen: "Vergleichen hilft, Gruppen zu bilden und Angepasstheiten zu verstehen — Grundlage späterer Systematik.",
-  gap: "Vergleichen zeigt Gemeinsamkeiten und ___.",
-  gapAccepted: ["Unterschiede"],
-},
-
-{
-  concept: "bio:k5:arbeit:6",
-  prompt: "Was ist der Unterschied zwischen Beobachten und Untersuchen?",
-  answer: "Untersuchen ist gezielter, oft mit Hilfsmitteln und Fragestellung",
-  wrong: [
-    "Beobachten braucht immer ein Mikroskop",
-    "Untersuchen ist nur Raten",
-    "Beide sind identisch mit Kochen",
-  ],
-  explanation: "Methode vertiefen.",
-  wissen: "Beobachten erfasst Merkmale; Untersuchen folgt einer Frage, oft mit Lupe, Messung oder Experiment.",
-  gap: "Gezieltes Prüfen mit Fragestellung heißt ___.",
-  gapAccepted: ["Untersuchen"],
-},
-
-{
-  concept: "bio:k5:arbeit:7",
-  prompt: "Welche Rolle hat die Lupe in Klasse 5?",
-  answer: "Sie vergrößert Details für genaueres Untersuchen",
-  wrong: [
-    "Sie ersetzt die Sonne",
-    "Sie misst nur Temperatur",
-    "Sie erzeugt Elektrizität",
-  ],
-  explanation: "Einfaches optisches Hilfsmittel.",
-  wissen: "Die Lupe vergrößert Oberflächenstrukturen — z. B. Schuppen, Haut, Blüten — und trainiert genaues Beobachten.",
-  gap: "Mit der Lupe betrachtet man ___ genauer.",
-  gapAccepted: ["Details", "Strukturen"],
-},
-
-{
-  concept: "bio:k5:arbeit:8",
-  prompt: "Was gehört nicht zu den Merkmalen des Lebens?",
-  answer: "Beliebige Form allein ohne Stoffwechsel und Fortpflanzung",
-  wrong: [
-    "Stoffwechsel",
-    "Fortpflanzung",
-    "Reizbarkeit",
-  ],
-  explanation: "Form allein reicht nicht.",
-  wissen: "Nur Aussehen reicht nicht: Merkmale wie Stoffwechsel und Fortpflanzung unterscheiden Lebewesen von Objekten.",
-  gap: "Stoffwechsel ist ein ___ des Lebens.",
-  gapAccepted: ["Merkmal"],
-},
-
-{
-  concept: "bio:k5:arbeit:9",
-  prompt: "Warum stellt man Organismen und nichtlebende Objekte gegenüber?",
-  answer: "Um Merkmale des Lebens klar herauszuarbeiten",
-  wrong: [
-    "Um Biologie abzuschaffen",
-    "Um nur Physik zu üben",
-    "Um nur die Farbe zu vergleichen",
-  ],
-  explanation: "Didaktischer Kern von LB1.",
-  wissen: "Der Vergleich Lebewesen ↔ nichtlebend macht Kennzeichen des Lebens greifbar — Einstieg in die Biologie.",
-  gap: "Gegenüberstellen schärft die ___ des Lebens.",
-  gapAccepted: ["Merkmale", "Kennzeichen"],
-},
-
-{
-  concept: "bio:k5:arbeit:10",
-  prompt: "Was beschreibt Stoffwechsel grob?",
-  answer: "Aufnahme, Umwandlung und Abgabe von Stoffen und Energie",
-  wrong: [
-    "Nur das Aussehen der Schuppen",
-    "Nur die Farbe der Federn",
-    "Nur die Form des Steins",
-  ],
-  explanation: "Kernmerkmal.",
-  wissen: "Stoffwechsel umfasst Ernährung, Atmung und Ausscheidung — Energie- und Stoffumsatz der Lebewesen.",
-  gap: "Ernährung und Atmung gehören zum ___.",
-  gapAccepted: ["Stoffwechsel"],
-},
+    {
+      concept: "bio:k5:arbeitsweisen:beob1",
+      prompt: "Was unterscheidet sorgfältiges biologisches Beobachten vom bloßen Hinschauen?",
+      answer: "Man erfasst Merkmale gezielt und beschreibt sie möglichst genau",
+      wrong: [
+        "Man ändert sofort die Natur",
+        "Man rät ohne Blick auf das Objekt",
+        "Man misst nur Temperaturen ohne Blick",
+      ],
+      explanation: "Beobachten und Beschreiben sind erste Erkenntnismethoden.",
+      wissen:
+        "Beim Beobachten richtet man die Aufmerksamkeit bewusst auf Merkmale und Vorgänge. Das Beschreiben hält Wahrnehmungen in Worten oder Skizzen fest, damit andere sie nachvollziehen können.",
+      gap: "Genaues Festhalten von Wahrnehmungen heißt ___.",
+      gapAccepted: ["Beschreiben", "Beobachten und Beschreiben"],
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:beob2",
+      prompt: "Wozu dient eine Lupe beim Beobachten in Klasse 5?",
+      answer: "Sie vergrößert Feinheiten, die man mit bloßem Auge kaum sieht",
+      wrong: [
+        "Sie ersetzt ein Experiment vollständig",
+        "Sie misst die Körpertemperatur",
+        "Sie erzeugt künstliches Licht wie eine Sonne",
+      ],
+      explanation: "Optisches Hilfsmittel für genaueres Untersuchen.",
+      wissen:
+        "Mit der Lupe erkennt man z. B. Schuppen, Feinstrukturen von Federn oder Blütenteile genauer. So wird Beobachten zu einem gezielten Untersuchen.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:vergl1",
+      prompt: "Warum vergleichen und ordnen Biologen Lebewesen oder Teile davon?",
+      answer: "Um Gemeinsamkeiten und Unterschiede zu finden und Gruppen zu bilden",
+      wrong: [
+        "Um nur Farben auswendig zu lernen",
+        "Um Experimente überflüssig zu machen",
+        "Um Modelle zu verbieten",
+      ],
+      explanation: "Vergleichen und Ordnen strukturieren Beobachtungen.",
+      wissen:
+        "Vergleichen zeigt, was gleich und was verschieden ist. Ordnen bringt Merkmale in übersichtliche Gruppen — Grundlage für Bestimmung und Systematik.",
+      gap: "Gemeinsamkeiten und Unterschiede findet man durch ___.",
+      gapAccepted: ["Vergleichen"],
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:vergl2",
+      prompt: "Du sortierst Blätter nach Form und Rand. Welche Arbeitsweise übst du vor allem?",
+      answer: "Vergleichen und Ordnen",
+      wrong: ["Nur Nachweisreaktionen ohne Kriterien", "Nur Modellbau ohne Blick", "Nur Auswendiglernen von Jahreszahlen"],
+      explanation: "Kriterienbasiertes Sortieren.",
+      wissen:
+        "Beim Ordnen legst du Kriterien fest (z. B. Form, Rand, Aderung) und sortierst danach. Das schult systematisches Denken.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:exp1",
+      prompt: "Was kennzeichnet ein Experiment gegenüber dem zufälligen Ausprobieren?",
+      answer: "Eine klare Frage, geplante Durchführung und auswertbare Beobachtung",
+      wrong: [
+        "Beliebiges Tun ohne Frage",
+        "Nur Zeichnen ohne Ergebnis",
+        "Nur Lesen ohne Handlung",
+      ],
+      explanation: "Experimentieren als Erkenntnismethode.",
+      wissen:
+        "Im Experiment prüft man eine Vermutung unter möglichst klaren Bedingungen. Beobachtungen werden notiert und mit der Ausgangsfrage verglichen.",
+      gap: "Eine prüfbare Vermutung vor dem Versuch nennt man oft ___.",
+      gapAccepted: ["Hypothese", "Vermutung"],
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:exp2",
+      prompt: "Warum gehört ein Protokoll zum Experimentieren?",
+      answer: "Damit Aufbau, Durchführung und Ergebnis nachvollziehbar bleiben",
+      wrong: [
+        "Damit man den Versuch geheim hält",
+        "Damit man keine Beobachtung braucht",
+        "Damit Modelle unnötig werden",
+      ],
+      explanation: "Dokumentation der Untersuchung.",
+      wissen:
+        "Ein einfaches Protokoll enthält Frage/Ziel, Material, Durchführung, Beobachtung und kurze Deutung. So können andere den Versuch verstehen und wiederholen.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:mod1",
+      prompt: "Wozu dienen Modelle in der Biologie?",
+      answer: "Sie vereinfachen und veranschaulichen Sachverhalte, die am Original schwer erkennbar sind",
+      wrong: [
+        "Sie ersetzen jede Beobachtung in der Natur",
+        "Sie sind immer exakt wie das Original",
+        "Sie dienen nur zur Dekoration",
+      ],
+      explanation: "Modelle als Erkenntnishilfe.",
+      wissen:
+        "Modelle (z. B. Flugmodell, Fischmodell) heben Wesentliches hervor und lassen Nebensächliches weg. Man vergleicht Modell und Original und prüft Grenzen.",
+      gap: "Ein vereinfachtes Abbild zur Erklärung heißt ___.",
+      gapAccepted: ["Modell"],
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:mod2",
+      prompt: "Was muss man bei der Arbeit mit Modellen kritisch prüfen?",
+      answer: "Welche Merkmale dem Original entsprechen und welche weggelassen oder verändert sind",
+      wrong: [
+        "Ob das Modell teurer als ein Lehrbuch ist",
+        "Ob man nie beobachten darf",
+        "Ob Protokolle verboten sind",
+      ],
+      explanation: "Grenzen von Modellen reflektieren.",
+      wissen:
+        "Modelle sind nie das Original. Größe, Material oder fehlende Teile können täuschen — deshalb vergleicht man bewusst Modell und Wirklichkeit.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:nach1",
+      prompt: "Woran erkennst du Stärke mit Lugolscher Lösung (Iod-Kaliumiodid)?",
+      answer: "An einer blau-violetten bis schwarz-blauen Färbung",
+      wrong: [
+        "An einem dauerhaft durchscheinenden Fettfleck",
+        "An einer Grünfärbung wie bei Chlorophyll allein",
+        "An einem metallischen Glanz ohne Farbumschlag",
+      ],
+      explanation: "Klassischer Stärkenachweis.",
+      wissen:
+        "Lugolsche Lösung färbt stärkehaltige Proben blau-violett bis schwarz-blau. Eine Blindprobe mit bekannter Stärke hilft beim Vergleich.",
+      gap: "Stärke färbt mit Lugolscher Lösung ___.",
+      gapAccepted: ["blau-violett", "schwarz-blau", "blauviolett"],
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:nach2",
+      prompt: "Wie weist man Fett mit der Fettfleckprobe nach?",
+      answer: "Ein durchscheinender Fleck bleibt auch nach dem Trocknen sichtbar",
+      wrong: [
+        "Die Probe wird blau-violett wie bei Stärke",
+        "Es entsteht sofort ein Eiskristall",
+        "Die Probe muss metallisch glänzen",
+      ],
+      explanation: "Einfache Labortechnik in Klasse 5.",
+      wissen:
+        "Fett oder Öl hinterlässt auf Papier einen durchscheinenden Fleck, der nach dem Trocknen bleibt. Wasserflecken verschwinden eher wieder.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:lab1",
+      prompt: "Warum gelten im Biolabor Sicherheitsregeln (z. B. Pipette, Schutzbrille, kein Verkosten)?",
+      answer: "Damit Chemikalien und Geräte niemanden gefährden und Ergebnisse zuverlässig bleiben",
+      wrong: [
+        "Nur damit der Raum leerer wirkt",
+        "Nur damit man schneller raten kann",
+        "Nur weil Modelle verboten sind",
+      ],
+      explanation: "Labortechnik und Sicherheit.",
+      wissen:
+        "Nachweisreaktionen und Experimente brauchen sauberes, vorsichtiges Arbeiten. Regeln schützen Gesundheit und verhindern verfälschte Ergebnisse.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:mix1",
+      prompt: "Ein Team beobachtet Schuppen mit der Lupe, sortiert Fischarten und baut ein Schwimmmodell. Welche Arbeitsweisen stecken darin?",
+      answer: "Beobachten, Vergleichen/Ordnen und Arbeiten mit Modellen",
+      wrong: [
+        "Nur Merkmale des Lebens auswendig lernen",
+        "Nur Physik der Geschwindigkeit berechnen",
+        "Nur Jahreszahlen der Steinzeit lernen",
+      ],
+      explanation: "Methodenmix im Einstieg.",
+      wissen:
+        "Biologische Arbeitsweisen greifen ineinander: Beobachten liefert Daten, Vergleichen ordnet sie, Modelle erklären Angepasstheiten — getrennt von den Merkmalen des Lebens selbst.",
+    },
   ],
   pairs: [
-    { concept: "bio:k5:arbeit:p:beob", term: "Beobachten", meaning: "Wahrnehmen ohne sofort einzugreifen", wissen: "Erste Fachmethode." },
-    { concept: "bio:k5:arbeit:p:unters", term: "Untersuchen", meaning: "Gezieltes Prüfen mit Frage/Hilfsmittel", wissen: "Oft mit Lupe." },
-    { concept: "bio:k5:arbeit:p:vergl", term: "Vergleichen", meaning: "Gemeinsamkeiten/Unterschiede finden", wissen: "Systematik-Vorstufe." },
-    { concept: "bio:k5:arbeit:p:reiz", term: "Reizbarkeit", meaning: "Reaktion auf Umweltreize", wissen: "Merkmal des Lebens." },
-    { concept: "bio:k5:arbeit:p:stoff", term: "Stoffwechsel", meaning: "Stoff- und Energieumsatz", wissen: "Ernährung/Atmung." },
-    { concept: "bio:k5:arbeit:p:fort", term: "Fortpflanzung", meaning: "Erzeugung von Nachkommen", wissen: "Artenerhalt." },
-    { concept: "bio:k5:arbeit:p:wach", term: "Wachstum", meaning: "Zunahme an Größe/Masse", wissen: "Entwicklung." },
-    { concept: "bio:k5:arbeit:p:bew", term: "Bewegung", meaning: "Orts- oder Lageänderung", wissen: "Oft Reizantwort." },
-    { concept: "bio:k5:arbeit:p:lupe", term: "Lupe", meaning: "Einfaches Vergrößerungsgerät", wissen: "Details erkennen." },
-    { concept: "bio:k5:arbeit:p:gang", term: "Unterrichtsgang", meaning: "Lernen an Naturobjekten vor Ort", wissen: "Lebensraumbezug." },
+    {
+      concept: "bio:k5:arbeitsweisen:p:beob",
+      term: "Beobachten",
+      meaning: "Merkmale gezielt wahrnehmen",
+      wissen: "Erste Methode der Erkenntnisgewinnung.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:p:beschr",
+      term: "Beschreiben",
+      meaning: "Wahrnehmungen verständlich festhalten",
+      wissen: "Macht Beobachtungen nachvollziehbar.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:p:vergl",
+      term: "Vergleichen",
+      meaning: "Gemeinsamkeiten und Unterschiede finden",
+      wissen: "Grundlage für Ordnen und Bestimmen.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:p:ordn",
+      term: "Ordnen",
+      meaning: "Nach Kriterien in Gruppen bringen",
+      wissen: "Strukturiert Beobachtungsdaten.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:p:exp",
+      term: "Experiment",
+      meaning: "Vermutung unter geplanten Bedingungen prüfen",
+      wissen: "Zentrale Untersuchungsmethode.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:p:mod",
+      term: "Modell",
+      meaning: "Vereinfachtes Abbild zum Verstehen",
+      wissen: "Grenzen zum Original prüfen.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:p:iodo",
+      term: "Stärkenachweis",
+      meaning: "Blau-violette Färbung mit Lugolscher Lösung",
+      wissen: "Typische Nachweisreaktion.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:p:fett",
+      term: "Fettfleckprobe",
+      meaning: "Dauerhaft durchscheinender Fleck auf Papier",
+      wissen: "Einfacher Fettnachweis.",
+    },
+  ],
+  trueFalse: [
+    {
+      concept: "bio:k5:arbeitsweisen:tf1",
+      statement: "Ein Modell muss in allen Eigenschaften exakt dem Original gleichen.",
+      correct: false,
+      explanation: "Modelle vereinfachen bewusst.",
+      wissen: "Modelle lassen Nebensächliches weg und können Größe oder Material verändern — deshalb prüft man ihre Grenzen.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:tf2",
+      statement: "Beim Experimentieren gehören Frage, Durchführung und Beobachtung zusammen.",
+      correct: true,
+      explanation: "Strukturiertes Untersuchen.",
+      wissen: "Ohne Frage und Auswertung bleibt ein Versuch bloßes Ausprobieren.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:tf3",
+      statement: "Lugolsche Lösung färbt Stärke typischerweise blau-violett.",
+      correct: true,
+      explanation: "Klassischer Nachweis.",
+      wissen: "Der Farbumschlag zeigt Stärke an; Blindproben sichern den Vergleich.",
+    },
+  ],
+  sorts: [
+    {
+      concept: "bio:k5:arbeitsweisen:sort1",
+      question: "Ordne die Schritte eines einfachen Experiments zeitlich.",
+      labels: ["Frage stellen", "Versuch durchführen", "Beobachtung notieren", "Ergebnis deuten"],
+      explanation: "Vom Ziel zur Deutung.",
+      wissen: "So bleibt die Untersuchung nachvollziehbar und auswertbar.",
+    },
+  ],
+  multis: [
+    {
+      concept: "bio:k5:arbeitsweisen:ms1",
+      question: "Welche Tätigkeiten gehören zu biologischen Arbeitsweisen (mehrere richtig)?",
+      correct: ["Beobachten und Beschreiben", "Vergleichen und Ordnen", "Experimentieren"],
+      wrong: ["Nur Jahreszahlen auswendig lernen", "Nur Fantasiewesen malen ohne Bezug"],
+      explanation: "Methoden der Erkenntnisgewinnung.",
+      wissen: "Lehrplan Sachsen: Beobachten, Untersuchen/Vergleichen, Experimentieren; ergänzend Modelle und Nachweisreaktionen.",
+    },
   ],
 }
 

@@ -61,15 +61,21 @@ alwaysApply: false
   Funktionsgleichungen, Labels oder Reihenfolgen sind).
 - Bei Zuordnung/Funktionen (nur Nicht-Mathe): Frage explizit auf Zuordnung ausrichten.
 
-## Pflicht: keine internen IDs / Nummern / Tracking-Suffixe im Aufgabentext
+## Pflicht: keine internen IDs / Nummern / Tracking-Suffixe / Abkürzungen im Aufgabentext
 
 - **Verboten** in jedem sichtbaren Feld (`question` / Prompt / Stem, TF-`statement` /
-  `claim` / `front` / `sourceText`, Erklärung, Hint): interne IDs, Content-Hashes,
-  Dedup-Marker oder Tracking-Suffixe — z. B. `· Nr83801785`, `Nr123456`, Topic-IDs
-  in Klammern wie `(os-hs-…)`.
+  `claim` / `front` / `sourceText`, Erklärung, Hint, Optionen, Fachwissen): interne
+  IDs, Content-Hashes, Dedup-Marker oder Tracking-Suffixe — z. B. `· Nr83801785`,
+  `Nr123456`, Topic-IDs in Klammern wie `(os-hs-…)`.
+- **Verboten:** Topic-/Bank-Kurzformen und conceptPrefix-Leaks wie `krschutz`,
+  `saeugverh`, `saeugsoc`, `saeugsinn`, `vgschutz`, `im Themenfeld krschutz` —
+  in **allen** Fächern. Generatoren (`themePhraseFromPrefix`, Thin-Fill, Slug-
+  Strip) dürfen solche Token nie in die UI schreiben; lieber keinen Themenanhang
+  als eine Roh-Abkürzung.
 - Deduplizierung und Cross-Topic-Identität gehören **nur** in `dedupeKey` /
   `contentIds` / `contentId` (intern), nie in den Schüler-Text.
-- Regression: Audit-Regel `tracking-id` (`findTrackingIdIssues`).
+- Regression: Audit-Regeln `tracking-id` (`findTrackingIdIssues`) und
+  `topic-abbrev` (`findTopicAbbrevIssues`).
 
 ## Pflicht: prüfbarer Lehrplan-Inhalt (kein Slogan-/Stichwort-TF)
 
@@ -83,12 +89,17 @@ alwaysApply: false
 
 ## Pflicht: Interaktions-Abwechslung (kein Zuordnungs-Fließband)
 
-- Pro Thema/Runde **Mix** der vorhandenen Typen — Zuordnung (`pairMatch` /
-  `imageLabelSlots` / `dragDrop*`) ist **einer von vielen**, nicht ~80 % der Runde.
-- Vorhandene Typen nutzen: `choicePick`/MC, `multiSelect`, TF (nur volle Sätze),
-  Sort (`dragDropSort`), Slots, Cloze (Nicht-Mathe), Wert/Eingabe, `digitGrid`,
-  `numberLine`, `coordinateClick`/`coordinateDraw`, `paramSlider`, `equationSteps`,
-  `flashcardFlip`, `sourceQuote`, `causeEffect`, `iconBelong`, Grafik/`visualContent`.
+- Pro Thema/Runde **Mix** der vorhandenen Typen — **Pflicht**, nicht optional.
+- Zuordnung (`pairMatch` / `imageLabelSlots` / `dragDrop*`) nur **sparsam**
+  (Faustregel: klar unter ~30 % einer Runde, nie dominante Default-Form).
+  Wiederholte gleiche Zuordnungs-Stämme innerhalb eines Themas vermeiden.
+- Vorhandene Typen bewusst mischen: `choicePick`/MC, `multiSelect`, TF (nur volle
+  Sätze, nur Nicht-Mathe/Physik), Sort (`dragDropSort`), Slots, Cloze (Nicht-Mathe),
+  Wert/Eingabe, `digitGrid`, `numberLine`, `coordinateClick`/`coordinateDraw`,
+  `paramSlider`, `equationSteps`, `flashcardFlip`, `sourceQuote`, `causeEffect`,
+  `iconBelong`, Grafik/`visualContent`.
+- Weniger reiner Fachbegriffsdrill („Was bedeutet …?“), mehr Anwendung,
+  Zusammenhänge, Rechnung/Deutung.
 - Grafik-lastig wo sinnvoll (Physik Feldlinien/Aufbau; Bio Anatomie; Mathe Graphen/
   Geometrie — Mathe weiter **ohne** Zuordnung/Lückentext).
 - Neue Interaktionen nur wenn Katalog-Lücke und mobil tauglich.

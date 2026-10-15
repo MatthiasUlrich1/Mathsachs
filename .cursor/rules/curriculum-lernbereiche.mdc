@@ -44,8 +44,9 @@ tasksPerRound: opts?.tasksPerRound ?? DEFAULT_TASKS_PER_ROUND
    Themenbindung, kein Meta/Slogan, Schwierigkeit ≈ Klassenstufe.
    **Mathe+Physik:** kein TF, keine Zuordnung, keine Lücken — nur Rechnung/MC/
    Grafik/Eingabe; Boosts nur themenrein.
-   **Bio/Geschichte:** Abwechslung; TF nur volle prüfbare Sätze; Aufbau mit
-   Bildslots wo sinnvoll.
+   **Bio/Geschichte:** Interaktions-Abwechslung Pflicht; Zuordnung nur sparsam;
+   keine Topic-Abkürzungen im sichtbaren Text; TF nur volle prüfbare Sätze;
+   Aufbau mit Bildslots wo sinnvoll; weniger Begriffsdrill, mehr Anwendung.
 6. **Schwierigkeit ≈ Klasse:** K5/K6 einfach/altersgerecht; K7–K10 lehrplangerecht;
    OS/LK anspruchsvoll aber nicht willkürlich; keine Unter-/Überforderung.
 7. **Fachwissen aufgabenbezogen:** jeder Task-`fachwissen`-Text konkret zur

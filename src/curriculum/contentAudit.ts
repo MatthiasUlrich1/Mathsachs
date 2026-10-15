@@ -19,6 +19,7 @@ export type AuditRule =
   | 'meta-slogan'
   | 'banned-format'
   | 'tracking-id'
+  | 'topic-abbrev'
   | 'short-round'
   | 'fachwissen'
   | 'notation'
@@ -582,13 +583,32 @@ export function findAnswerKeyIssues(task: Task): string[] {
 /** Interne Tracking-Nummern (`· Nr123…`) — verboten im sichtbaren Aufgabentext. */
 const TRACKING_ID_RE = /(?:^|[\s·•])Nr\d{4,}\b/i
 
+/** Topic-/Bank-Kurzformen, die nie in der UI stehen dürfen. */
+const TOPIC_ABBREV_RE =
+  /\b(krschutz|vgschutz|saeugverh|saeugsoc|saeugsinn|saeugmerk|saeugfort)\b|im Themenfeld\s+(krschutz|vgschutz|saeug\w+|arbeit)\b/i
+
 /** Sichtbare Felder, in denen keine internen IDs stehen dürfen. */
 export function visibleTaskTexts(task: Task): string[] {
   const p = task.interactive?.props ?? {}
-  const out = [task.question ?? '', task.explanation ?? '']
+  const out = [task.question ?? '', task.explanation ?? '', task.fachwissen?.text ?? '']
   for (const key of ['statement', 'claim', 'front', 'sourceText', 'instruction'] as const) {
     const v = p[key]
     if (typeof v === 'string' && v.trim()) out.push(v)
+  }
+  if (Array.isArray(p.choices)) {
+    for (const c of p.choices) if (typeof c === 'string' && c.trim()) out.push(c)
+  }
+  if (Array.isArray(p.left)) {
+    for (const x of p.left) {
+      const label = typeof x === 'string' ? x : (x as { label?: string })?.label
+      if (typeof label === 'string' && label.trim()) out.push(label)
+    }
+  }
+  if (Array.isArray(p.right)) {
+    for (const x of p.right) {
+      const label = typeof x === 'string' ? x : (x as { label?: string })?.label
+      if (typeof label === 'string' && label.trim()) out.push(label)
+    }
   }
   return out.filter((t) => t.trim())
 }
@@ -597,6 +617,14 @@ export function findTrackingIdIssues(task: Task): string[] {
   const hits: string[] = []
   for (const t of visibleTaskTexts(task)) {
     if (TRACKING_ID_RE.test(t)) hits.push(`interne ID im Text: „${t.slice(0, 100)}“`)
+  }
+  return hits
+}
+
+export function findTopicAbbrevIssues(task: Task): string[] {
+  const hits: string[] = []
+  for (const t of visibleTaskTexts(task)) {
+    if (TOPIC_ABBREV_RE.test(t)) hits.push(`Topic-Abkürzung im Text: „${t.slice(0, 100)}“`)
   }
   return hits
 }
@@ -701,6 +729,7 @@ export function auditTopic(ref: AuditTopicRef, opts: TopicAuditOptions): { issue
     for (const d of findMetaSlogan(task, topic)) push('meta-slogan', d)
     for (const d of findBannedFormats(task, ref.subject)) push('banned-format', d)
     for (const d of findTrackingIdIssues(task)) push('tracking-id', d)
+    for (const d of findTopicAbbrevIssues(task)) push('topic-abbrev', d)
     for (const d of findFachwissenIssues(task, topic)) push('fachwissen', d)
     for (const d of findNotationIssues(task)) push('notation', d)
     for (const d of findAnswerKeyIssues(task)) push('answer-key', d)

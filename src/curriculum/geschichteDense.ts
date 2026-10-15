@@ -60,20 +60,48 @@ const k5Zeitrechnung: BioBank = {
   facts: [
     fact("zeitstrahl", "Wozu dient ein Zeitstrahl?", "Ereignisse chronologisch von früher nach später einzuordnen", ["Nur Farben zu mischen", "Wetter vorherzusagen", "Personen zu zählen"], "Ein Zeitstrahl macht Abstände und Reihenfolgen sichtbar.", "Ein Zeitstrahl macht Abstände und Reihenfolgen sichtbar. Er ist ein zentrales Orientierungsinstrument. Epochengrenzen werden so vergleichbar.", "Der ___ ordnet Ereignisse chronologisch.", ["Zeitstrahl"]),
     fact("epoche", "Was meint „Epoche“?", "Einen längeren Zeitraum mit gemeinsamen Merkmalen", ["Nur einen einzelnen Tag", "Nur eine Namensliste", "Nur ein Gebäude"], "Epochen fassen Zeiträume mit typischen Merkmalen zusammen.", "Epochen fassen Zeiträume mit typischen Merkmalen zusammen. Grenzen sind oft fließend. Historiker setzen sie zur Orientierung.", "Eine ___ fasst einen längeren Zeitraum zusammen.", ["Epoche"]),
-    fact("vc", "Was bedeutet „v. Chr.“?", "Vor Christus — Jahre vor der christlichen Zeitrechnung", ["Nach Christus", "Vor dem Computer", "Vor Charlemagne"], "„v.", "„v. Chr.“ zählt rückwärts vor Beginn der christlichen Zeitrechnung. „n. Chr.“ zählt vorwärts. Antike Daten sind oft Schätzungen.", "___ bedeutet Jahre vor der christlichen Zeitrechnung.", ["v. Chr.","vor Christus"]),
-    fact("nc", "Was bedeutet „n. Chr.“?", "Nach Christus — Jahre der christlichen Zeitrechnung", ["Vor Christus", "Nur Mondkalender", "Nur Römerjahre ohne Bezug"], "„n.", "„n. Chr.“ zählt Jahre nach dem Beginn der christlichen Zeitrechnung. Viele Kalender folgen diesem Schema. Andere Kulturen nutzen eigene Systeme.", "___ bedeutet Jahre der christlichen Zeitrechnung.", ["n. Chr.","nach Christus"]),
+    fact("vc", "Was bedeutet „v. Chr.“?", "Vor Christus — Jahre vor der christlichen Zeitrechnung", ["Nach Christus", "Vor dem Computer", "Vor Charlemagne"], "„v. Chr.“ zählt rückwärts.", "„v. Chr.“ zählt rückwärts vor Beginn der christlichen Zeitrechnung. „n. Chr.“ zählt vorwärts. Antike Daten sind oft Schätzungen.", "___ bedeutet Jahre vor der christlichen Zeitrechnung.", ["v. Chr.","vor Christus"]),
+    fact("nc", "Was bedeutet „n. Chr.“?", "Nach Christus — Jahre der christlichen Zeitrechnung", ["Vor Christus", "Nur Mondkalender", "Nur Römerjahre ohne Bezug"], "„n. Chr.“ zählt vorwärts.", "„n. Chr.“ zählt Jahre nach dem Beginn der christlichen Zeitrechnung. Viele Kalender folgen diesem Schema. Andere Kulturen nutzen eigene Systeme.", "___ bedeutet Jahre der christlichen Zeitrechnung.", ["n. Chr.","nach Christus"]),
     fact("datierung", "Warum ist Datierung eine Orientierungshilfe?", "Weil sie Ereignisse in eine gemeinsame Zeitordnung bringt", ["Weil sie Quellen überflüssig macht", "Weil sie nur Farben erklärt", "Weil sie keine Reihenfolge braucht"], "Datierung verbindet Ereignisse mit Jahren oder Epochen.", "Datierung verbindet Ereignisse mit Jahren oder Epochen. So werden Vergleiche möglich. Ohne Datierung bleibt Geschichte unübersichtlich.", "Datierung bringt Ereignisse in eine gemeinsame ___.", ["Zeitordnung","Ordnung"]),
     fact("unterschied", "Warum gibt es unterschiedliche Zeitrechnungen?", "Weil Kulturen andere Bezugspunkte und Kalender entwickelten", ["Weil Zeit überall gleich gezählt wird", "Weil es nur einen Kalender gibt", "Weil Historiker keine Zahlen nutzen"], "Kalender und Epochenbezug hängen von Kultur und Religion ab.", "Kalender und Epochenbezug hängen von Kultur und Religion ab. Historiker rechnen Systeme oft um. Das erfordert Sorgfalt.", "Unterschiedliche Zeitrechnungen entstehen durch andere ___.", ["Bezugspunkte","Kalender"]),
-    fact("rekonstruktion", "Was meint Geschichte als Rekonstruktion?", "Dass Vergangenheit aus Quellen gedeutet, nicht einfach abgebildet wird", ["Dass Geschichte nur erfunden wird", "Dass Quellen unnötig sind", "Dass Zeitstrahlen verboten sind"], "Vergangenheit ist nicht mehr direkt beobachtbar.", "Vergangenheit ist nicht mehr direkt beobachtbar. Historiker rekonstruieren sie aus Spuren. Deutungen können sich mit neuen Funden ändern.", "Geschichte ist eine ___ aus Quellen.", ["Rekonstruktion"]),
-    fact("frage", "Warum ist Fragen an die Geschichte wichtig?", "Weil klare Fragen helfen, Quellen gezielt auszuwerten", ["Weil Fragen Quellen zerstören", "Weil Geschichte ohne Fragen auskommt", "Weil nur Daten ohne Frage zählen"], "Gute historische Arbeit beginnt mit Fragen.", "Gute historische Arbeit beginnt mit Fragen. Sie steuern, wonach man in Quellen sucht. So wird Orientierung methodisch.", "Klare ___ steuern die Auswertung von Quellen.", ["Fragen"]),
+    fact("chronologie", "Was versteht man unter Chronologie?", "Die zeitliche Einordnung und Reihenfolge von Ereignissen", ["Die Messung von Geschwindigkeit in m/s", "Nur das Zählen von Personen", "Nur das Malen von Wappen"], "Chronologie ordnet, was früher und später geschah.", "Chronologie ordnet, was früher und später geschah. Sie nutzt Daten, Epochen und Zeitstrahle. Ohne Chronologie bleibt Geschichte unübersichtlich.", "Die zeitliche Reihenfolge von Ereignissen heißt ___.", ["Chronologie"]),
+    fact("kalender", "Wozu brauchen Historiker Kalender?", "Um Tage und Jahre in einem vereinbarten System zu zählen", ["Um Geschwindigkeit zu berechnen", "Um nur Temperaturen zu messen", "Um Quellen zu zerstören"], "Kalender strukturieren die Zeitrechnung.", "Kalender strukturieren die Zeitrechnung. Sonnen- und Mondkalender unterscheiden sich. Historiker müssen Systeme oft umrechnen.", "Ein ___ strukturiert die Zählung von Tagen und Jahren.", ["Kalender"]),
+    fact("jahrhundert", "Was meint „Jahrhundert“?", "Einen Zeitraum von hundert Jahren", ["Nur einen einzelnen Monat", "Nur eine Stunde", "Nur eine Minute"], "Jahrhunderte gliedern lange Zeiträume.", "Jahrhunderte gliedern lange Zeiträume. Das 1. Jahrhundert n. Chr. umfasst die Jahre 1–100. Solche Angaben helfen bei der Orientierung.", "Hundert Jahre bilden ein ___.", ["Jahrhundert"]),
+    fact("relzeit", "Warum sagt man „ungefähr 3000 v. Chr.“?", "Weil viele frühe Daten nur geschätzt oder gerundet sind", ["Weil Zeitstrahle verboten sind", "Weil Kalender unnötig sind", "Weil Chronologie nur Farben kennt"], "Frühgeschichte arbeitet oft mit Schätzungen.", "Frühgeschichte arbeitet oft mit Schätzungen. Archäologie und Datierungsmethoden liefern Annäherungen. Absolute Tagesdaten fehlen häufig.", "Frühe Angaben sind oft nur ___.", ["Schätzungen","Näherungswerte"]),
+    fact("reihenfolge", "Auf dem Zeitstrahl: Steinzeit, Antike, Mittelalter. Was stimmt?", "Die Steinzeit liegt vor der Antike, die Antike vor dem Mittelalter", ["Das Mittelalter liegt vor der Steinzeit", "Die Antike liegt nach dem Mittelalter", "Alle drei Epochen sind gleichzeitig"], "Grobe Epochenfolge der Orientierung.", "Grobe Epochenfolge der Orientierung: Vorgeschichte/Steinzeit, dann Antike, dann Mittelalter. Feinere Unterteilungen folgen später.", "Die Steinzeit liegt ___ der Antike.", ["vor"]),
+    fact("umrechnen", "Ein Ereignis wird mit „44 v. Chr.“ datiert. Was bedeutet das chronologisch?", "44 Jahre vor Beginn der christlichen Zeitrechnung", ["44 Jahre nach Christus", "Nur eine Entfernung in Metern", "Nur eine Geschwindigkeit"], "v. Chr. zählt rückwärts vom Bezugsjahr.", "v. Chr. zählt rückwärts vom Bezugsjahr. Je größer die Zahl v. Chr., desto weiter zurück liegt das Ereignis. n. Chr. zählt vorwärts.", "„44 v. Chr.“ meint 44 Jahre ___ der christlichen Zeitrechnung.", ["vor"]),
   ],
   pairs: [
     pair("p1", "Chronologie", "Zeitliche Reihenfolge", "Ordnet, was früher und später geschah."),
     pair("p2", "Epoche", "Längerer Zeitraum mit Merkmalen", "Dient der Orientierung."),
     pair("p3", "Zeitstrahl", "Grafische chronologische Ordnung", "Macht Abstände sichtbar."),
+    pair("p4", "v. Chr.", "Jahre vor der christlichen Zeitrechnung", "Zählt rückwärts vom Bezugsjahr."),
+    pair("p5", "n. Chr.", "Jahre nach Beginn der christlichen Zeitrechnung", "Zählt vorwärts."),
+    pair("p6", "Kalender", "Vereinbartes System zur Zählung von Tagen und Jahren", "Grundlage historischer Datierung."),
   ],
   trueFalse: [
     tf("t1", "Ein Zeitstrahl zeigt Ereignisse in zufälliger Reihenfolge.", false, "Ein Zeitstrahl ist chronologisch geordnet.", "Ein Zeitstrahl ist chronologisch geordnet. Zufällige Reihenfolge zerstört Orientierung. Abstände werden so sichtbar."),
+    tf("t2", "„v. Chr.“ bedeutet Jahre vor der christlichen Zeitrechnung.", true, "Die Abkürzung steht für „vor Christus“.", "Die Abkürzung steht für „vor Christus“. Die Zählung läuft rückwärts. „n. Chr.“ zählt vorwärts."),
+    tf("t3", "Geschwindigkeit (Weg pro Zeit) ist ein zentraler Begriff der historischen Zeitrechnung.", false, "Das gehört zur Physik, nicht zur Chronologie.", "Historische Zeitrechnung arbeitet mit Chronologie, Kalendern und Epochen — nicht mit v = s/t."),
+  ],
+  sorts: [
+    {
+      concept: "ge:k5:zeitrechnung:sort1",
+      question: "Ordne die Epochen von früher nach später.",
+      labels: ["Steinzeit", "Antike", "Mittelalter", "Neuzeit"],
+      explanation: "Große Orientierungslinie der europäischen Geschichte.",
+      wissen: "Diese grobe Reihenfolge hilft beim Einordnen; Grenzen sind fließend und regional unterschiedlich.",
+    },
+  ],
+  multis: [
+    {
+      concept: "ge:k5:zeitrechnung:ms1",
+      question: "Was gehört zur historischen Zeitrechnung und Chronologie (mehrere richtig)?",
+      correct: ["Zeitstrahl", "Epochen", "v. Chr. / n. Chr."],
+      wrong: ["Geschwindigkeit als Weg pro Zeit", "Ohmsches Gesetz"],
+      explanation: "Chronologie und Datierung — keine Physik.",
+      wissen: "Zeitrechnung in der Geschichte meint Kalender, Datierung und chronologische Ordnung, nicht physikalische Bewegungsgrößen.",
+    },
   ],
 }
 

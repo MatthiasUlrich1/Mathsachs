@@ -12,7 +12,9 @@ import {
   bioGapTemplateSpoils,
   bioQuestionSpoilsTerm,
   bioTextContainsAcceptedTerm,
+  isInternalTopicAbbrev,
   stripBioBankSlug,
+  themePhraseFromPrefix,
 } from './biologieBank'
 
 describe('clozeMulti / pairMatch partial scoring', () => {
@@ -302,6 +304,27 @@ describe('Biologie UX: bank slugs, pairMatch duplicates, Fachbegriff spoilers', 
       'Weichtier: Oft mit Schale.',
     )
     expect(stripBioBankSlug('baeume: Laubbaum')).toBe('Laubbaum')
+    expect(stripBioBankSlug('Ordne Begriffe im Themenfeld krschutz.')).not.toMatch(/krschutz/i)
+    expect(stripBioBankSlug('Bezugssystem (zeitrechnung)')).toBe('Bezugssystem')
+  })
+
+  it('themePhraseFromPrefix never leaks compact topic abbreviations', () => {
+    expect(isInternalTopicAbbrev('krschutz')).toBe(true)
+    expect(isInternalTopicAbbrev('saeugverh')).toBe(true)
+    expect(isInternalTopicAbbrev('geschichte')).toBe(false)
+    for (const prefix of [
+      'bio:k5:krschutz',
+      'bio:k5:vgschutz',
+      'bio:k5:saeugverh',
+      'bio:k5:saeugsoc',
+      'bio:k5:saeugsinn',
+    ]) {
+      const phrase = themePhraseFromPrefix(prefix)
+      expect(phrase).not.toMatch(/krschutz|vgschutz|saeugverh|saeugsoc|saeugsinn/i)
+      expect(phrase === '' || /[äöüß ]|Artenschutz|Verhalten|Sinnen|Sozial|Vogel|Kriech/i.test(phrase)).toBe(
+        true,
+      )
+    }
   })
 
   it('gap/cloze meaning→term does not spoil the Fachbegriff in the question', () => {

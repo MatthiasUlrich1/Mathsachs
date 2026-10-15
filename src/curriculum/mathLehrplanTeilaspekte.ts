@@ -51,6 +51,7 @@ export const maTopic1: Topic = {
   id: 'lb1-primfaktorzerlegung',
   title: 'Primfaktorzerlegung',
   keywords: ['Primfaktor', 'Zerlegung', 'Primzahl', 'Teilbarkeit'],
+  released: true,
   generate: generatePrimfaktorK5,
 }
 export const maTopic2: Topic = {
@@ -58,6 +59,7 @@ export const maTopic2: Topic = {
   id: 'lb1-rechengesetze',
   title: 'Rechengesetze und Rechenvorteile',
   keywords: ['Kommutativ', 'Assoziativ', 'Distributiv', 'Rechenvorteil'],
+  released: true,
   generate: generateRechengesetzeK5,
 }
 export const maTopic3: Topic = {
@@ -65,6 +67,7 @@ export const maTopic3: Topic = {
   id: 'lb2-echte-unechte-brueche',
   title: 'Echte und unechte Brüche',
   keywords: ['echter Bruch', 'unechter Bruch', 'gemischte Zahl', 'Zähler', 'Nenner'],
+  released: true,
   generate: generateEchteUnechteBruecheK5,
 }
 export const maTopic4: Topic = {
@@ -72,6 +75,7 @@ export const maTopic4: Topic = {
   id: 'lb2-bruch-dezimal-prozent',
   title: 'Umwandeln: Bruch, Dezimalzahl, Prozent',
   keywords: ['Prozent', 'Dezimalzahl', 'Umwandeln', 'Zehnerbruch'],
+  released: true,
   generate: generateBruchDezimalProzentK5,
 }
 export const maTopic5: Topic = {
@@ -90,6 +94,7 @@ export const maTopic6: Topic = {
   id: 'lb4-schraegbild-netz',
   title: 'Quader darstellen: Schrägbild, Netz, Ansichten',
   keywords: ['Schrägbild', 'Körpernetz', 'Grundriss', 'Ansicht', 'Quader'],
+  released: true,
   fachwissen: {
     text: 'Einen Quader kann man durch Ansichten (vorn, oben, seitlich), durch ein Netz aus sechs Rechtecken oder durch ein Schrägbild darstellen. Jede Ansicht zeigt zwei der drei Kantenlängen Länge, Breite und Höhe.',
     ...wiki('Quader', 'Quader'),
