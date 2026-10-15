@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.96] – 2026-10-15
+
+### Behoben
+- **Keine `· Nr…`-Tracking-Nummern mehr im Aufgabentext:** `withOsTopicIdentity`
+  hängt interne IDs nicht mehr an Prompt/Statement; Dedup bleibt über
+  `dedupeKey`/`contentIds`. Audit-Regel `tracking-id` + Regel in
+  `curriculum-aufgaben-qualitaet.mdc`.
+
 ## [0.28.95] – 2026-10-15
 
 ### Behoben

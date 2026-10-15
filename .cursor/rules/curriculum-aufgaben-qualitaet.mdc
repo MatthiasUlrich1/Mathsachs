@@ -61,6 +61,16 @@ alwaysApply: false
   Funktionsgleichungen, Labels oder Reihenfolgen sind).
 - Bei Zuordnung/Funktionen (nur Nicht-Mathe): Frage explizit auf Zuordnung ausrichten.
 
+## Pflicht: keine internen IDs / Nummern / Tracking-Suffixe im Aufgabentext
+
+- **Verboten** in jedem sichtbaren Feld (`question` / Prompt / Stem, TF-`statement` /
+  `claim` / `front` / `sourceText`, Erklärung, Hint): interne IDs, Content-Hashes,
+  Dedup-Marker oder Tracking-Suffixe — z. B. `· Nr83801785`, `Nr123456`, Topic-IDs
+  in Klammern wie `(os-hs-…)`.
+- Deduplizierung und Cross-Topic-Identität gehören **nur** in `dedupeKey` /
+  `contentIds` / `contentId` (intern), nie in den Schüler-Text.
+- Regression: Audit-Regel `tracking-id` (`findTrackingIdIssues`).
+
 ## Pflicht: prüfbarer Lehrplan-Inhalt (kein Slogan-/Stichwort-TF)
 
 - Jede Aufgabe muss **konkreten Lehrplan-Inhalt** prüfen: Gesetz/Formel, Rechnung,

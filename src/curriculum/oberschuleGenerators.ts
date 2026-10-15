@@ -824,50 +824,40 @@ export function outlineGenerate(title: string): Topic['generate'] {
     })
 }
 
-/** Kompakter Topic-Tag für Prompt-Keys (kein ID-Leak, kein „1x“/Antwort-Substring). */
-export function osTopicPromptTag(topicId: string, _title?: string): string {
-  let h = 2166136261
-  for (let i = 0; i < topicId.length; i++) {
-    h ^= topicId.charCodeAt(i)
-    h = Math.imul(h, 16777619)
-  }
-  // Nur Ziffern — vermeidet Notation-False-Positives („1x“) und Lemma-Treffer.
-  return `Nr${(h >>> 0) % 1_000_000_000}`
+/**
+ * Entfernt Tracking-Suffixe / interne Nummern aus sichtbarem Aufgabentext.
+ * IDs gehören nur in dedupeKey/contentIds — nie in prompt/question/stem.
+ */
+export function stripInternalPromptTracking(text: string): string {
+  return text
+    .replace(/\s*[·•]\s*Nr\d+\b/gi, '')
+    .replace(/\s*\bNr\d{4,}\b/gi, '')
+    .replace(/[ \t]+\n/g, '\n')
+    .replace(/[ \t]{2,}/g, ' ')
+    .trim()
 }
 
 /**
- * Prägt Fragen mit eindeutigem Tag; dedupeKey/contentIds topic-spezifisch
- * (sonst Cross-Topic-Dups bzw. short-rounds durch geteilte Gym-contentIds).
+ * Topic-Identität nur intern (dedupeKey/contentIds), nie im sichtbaren Prompt.
+ * Verhindert short-rounds durch geteilte Gym-contentIds über Themen hinweg.
  */
 export function withOsTopicIdentity(
   topicId: string,
-  title: string,
+  _title: string,
   gen: Topic['generate'],
 ): Topic['generate'] {
-  const idKey = osTopicPromptTag(topicId, title)
   return (rng) => {
     const task = gen(rng) as Task
-    let q = (task.question ?? '')
-      // ID-Leaks wie „(os-hs-spiegel)“ entfernen
-      .replace(/\s*\((?:os|st|sks)[-a-z0-9]+\)/gi, '')
-      .trim()
-    // Tag: bei TF in die Anführungszeichen (Audit-Key = tf:Aussage), sonst ans Ende
-    // (Generic-Stem „Ordne…“ muss am Prompt-Anfang erkennbar bleiben).
-    if (idKey && !q.includes(idKey)) {
-      // TF: Tag nur ans Ende der Aussage, wenn keine verschachtelten Anführungszeichen
-      if (/Stimmt die Aussage/i.test(q) && /[„"][^„"“”]+[“”"]/.test(q) && !/„[^”]*[„"]/.test(q)) {
-        const tagged = q.replace(/([„"])([^„"“”]+)([“”"])/, `$1$2 · ${idKey}$3`)
-        q = tagged !== q ? tagged : `${q} · ${idKey}`
-      } else {
-        q = `${q} · ${idKey}`
-      }
-    }
-    // TF-Aussagen liegen oft in props — Tag dort mitführen.
+    let q = stripInternalPromptTracking(
+      (task.question ?? '')
+        // ID-Leaks wie „(os-hs-spiegel)“ entfernen
+        .replace(/\s*\((?:os|st|sks)[-a-z0-9]+\)/gi, ''),
+    )
     const props = { ...(task.interactive?.props as Record<string, unknown> | undefined) }
     for (const key of ['statement', 'claim', 'front', 'sourceText'] as const) {
       const v = props[key]
-      if (typeof v === 'string' && v.trim() && idKey && !v.includes(idKey)) {
-        props[key] = `${v} · ${idKey}`
+      if (typeof v === 'string' && v.trim()) {
+        props[key] = stripInternalPromptTracking(v)
       }
     }
     const fromContent = (task.contentIds ?? []).filter((c) => c.trim()).join('|')

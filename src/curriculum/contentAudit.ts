@@ -18,6 +18,7 @@ export type AuditRule =
   | 'spoiler'
   | 'meta-slogan'
   | 'banned-format'
+  | 'tracking-id'
   | 'short-round'
   | 'fachwissen'
   | 'notation'
@@ -578,13 +579,38 @@ export function findAnswerKeyIssues(task: Task): string[] {
   return out
 }
 
+/** Interne Tracking-Nummern (`· Nr123…`) — verboten im sichtbaren Aufgabentext. */
+const TRACKING_ID_RE = /(?:^|[\s·•])Nr\d{4,}\b/i
+
+/** Sichtbare Felder, in denen keine internen IDs stehen dürfen. */
+export function visibleTaskTexts(task: Task): string[] {
+  const p = task.interactive?.props ?? {}
+  const out = [task.question ?? '', task.explanation ?? '', task.hint ?? '']
+  for (const key of ['statement', 'claim', 'front', 'sourceText', 'instruction'] as const) {
+    const v = p[key]
+    if (typeof v === 'string' && v.trim()) out.push(v)
+  }
+  return out.filter((t) => t.trim())
+}
+
+export function findTrackingIdIssues(task: Task): string[] {
+  const hits: string[] = []
+  for (const t of visibleTaskTexts(task)) {
+    if (TRACKING_ID_RE.test(t)) hits.push(`interne ID im Text: „${t.slice(0, 100)}“`)
+  }
+  return hits
+}
+
 export function taskPromptKey(task: Task): string {
-  const q = (task.question ?? '').trim()
+  // Tracking-Suffixe zählen nicht zur inhaltlichen Prompt-Identität.
+  const q = (task.question ?? '')
+    .replace(/\s*[·•]?\s*Nr\d+\b/gi, '')
+    .trim()
   const seq = contentWordSeq(q).join(' ')
   const vis = task.visualContent ? `§v${hashString(task.visualContent)}` : ''
-  const stmt = tfStatement(task)
+  const stmt = tfStatement(task)?.replace(/\s*[·•]?\s*Nr\d+\b/gi, '')
   if (stmt) return `tf:${contentWordSeq(stmt).join(' ')}${vis}`
-  const front = String(task.interactive?.props?.front ?? '')
+  const front = String(task.interactive?.props?.front ?? '').replace(/\s*[·•]?\s*Nr\d+\b/gi, '')
   const frontSeq = front ? contentWordSeq(front).join(' ') : ''
   if (GENERIC_STEM.test(q) || seq.length < 8) {
     return `g:${seq}§${frontSeq}§${interactiveKey(task)}${vis}`
@@ -674,15 +700,23 @@ export function auditTopic(ref: AuditTopicRef, opts: TopicAuditOptions): { issue
     for (const d of findSpoilers(task, topic)) push('spoiler', d)
     for (const d of findMetaSlogan(task, topic)) push('meta-slogan', d)
     for (const d of findBannedFormats(task, ref.subject)) push('banned-format', d)
+    for (const d of findTrackingIdIssues(task)) push('tracking-id', d)
     for (const d of findFachwissenIssues(task, topic)) push('fachwissen', d)
     for (const d of findNotationIssues(task)) push('notation', d)
     for (const d of findAnswerKeyIssues(task)) push('answer-key', d)
-    const key = taskPromptKey(task)
+    const promptKey = taskPromptKey(task)
+    // Topics mit withOsTopicIdentity (`topicId::…` in dedupeKey/contentIds): Cross-Topic-Key
+    // topic-scoped — ersetzt das frühere sichtbare „· Nr…“, ohne den Schüler-Prompt zu verändern.
+    // Bundled Gym-Mathe ohne Wrap: echte Cross-Topic-Prüfung über den Prompt allein.
+    const topicScoped =
+      (task.dedupeKey?.startsWith(`${topic.id}::`) ?? false) ||
+      (task.contentIds ?? []).some((c) => c.startsWith(`${topic.id}::`))
+    const key = topicScoped ? `${topic.id}§${promptKey}` : promptKey
     const numeric = isNumericDrill(task)
     if (!keys.has(key)) {
       keys.set(key, { question: task.question, numeric })
       // Fast gleiche Fragen im selben Thema (gleiche Wortfolge, andere Formulierung der Antwort).
-      if (!numeric && key.startsWith('q:')) {
+      if (!numeric && promptKey.startsWith('q:')) {
         const words = contentWordSeq(task.question)
         const near = `${[...new Set(words.filter((w) => !/\d/.test(w)))].sort().join(' ')}#${words.filter((w) => /\d/.test(w)).join(' ')}`
         const prev = nearSeq.get(near)
