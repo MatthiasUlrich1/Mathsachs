@@ -249,7 +249,21 @@ function markSeen(ids: string[], seen: Set<string>) {
  */
 export const MATCH_UI_TYPES = new Set(['pairMatch', 'causeEffect'])
 
+/**
+ * Grafik-/Aufbau-Interaktionen — nie soft-ablehnen; in Runden priorisieren,
+ * sobald der Generator sie liefert (Bio Anatomie, Hotspots, Slot-Beschriftung).
+ */
+export const GRAPHIC_UI_TYPES = new Set([
+  'imageLabelSlots',
+  'imageHotspot',
+  'dragDropSlots',
+])
+
 const MAX_MATCH_PER_ROUND = 1
+/** Soft-Ziel: möglichst ≥4 verschiedene Interaktionstypen pro 10er-Runde. */
+const TARGET_DISTINCT_UI = 4
+/** Soft-Cap pro UI-Typ in Pass 1, solange Vielfalt fehlt (nicht für Grafik). */
+const SOFT_MAX_SAME_UI = 2
 
 export function taskUiType(task: Task): string {
   return task.interactive?.type ?? `plain:${task.answerKind}`
@@ -259,11 +273,16 @@ export function isMatchUiType(type: string): boolean {
   return MATCH_UI_TYPES.has(type)
 }
 
+export function isGraphicUiType(type: string): boolean {
+  return GRAPHIC_UI_TYPES.has(type)
+}
+
 /**
  * Build a practice round of unique tasks (no duplicate content identities).
  * Prefer rich concept pools so `targetCount` (~10) is usually reached.
  * Early-stop only when the unique pool is truly exhausted after expansion.
  * Caps Zuordnung UIs to ≤1 and biases toward ≥4 different interaction types.
+ * Grafik/Aufbau (`imageLabelSlots` / Hotspot / Slots) werden nicht soft-gecappt.
  */
 export function buildUniqueTaskRound(
   generate: (rng: Rng) => Task,
@@ -298,11 +317,31 @@ export function buildUniqueTaskRoundWithSeeds(
   const hardRejectUi = (ui: string): boolean =>
     isMatchUiType(ui) && matchCount >= MAX_MATCH_PER_ROUND
 
+  /**
+   * Soft-Vielfalt: bekannte UIs drosseln, bis ~4 Typen da sind.
+   * Grafik nie soft-rejecten. Bei hoher failedStreak aufgeben (Rundenlänge).
+   */
+  const softRejectUi = (ui: string): boolean => {
+    if (isGraphicUiType(ui)) return false
+    if (failedStreak >= Math.floor(maxAttemptsPerSlot * 0.55)) return false
+    const distinct = uiCounts.size
+    if (distinct >= TARGET_DISTINCT_UI) return false
+    const count = uiCounts.get(ui) ?? 0
+    if (count === 0) return false
+    // Schon gesehener Typ: nur begrenzt nachziehen, solange Vielfalt fehlt.
+    const softCap =
+      ui === 'choicePick' || ui.startsWith('plain:')
+        ? SOFT_MAX_SAME_UI
+        : SOFT_MAX_SAME_UI + 1
+    return count >= softCap
+  }
+
   const acceptTask = (task: Task, seed: number, force = false): boolean => {
     const ids = taskContentIds(task)
     if (!force && overlapsSeen(ids, seen)) return false
     const ui = taskUiType(task)
     if (!force && hardRejectUi(ui)) return false
+    if (!force && softRejectUi(ui)) return false
 
     const uiN = uiCounts.get(ui) ?? 0
     markSeen(ids, seen)

@@ -174,4 +174,64 @@ describe('uniqueRound', () => {
     expect(matches.length).toBeLessThanOrEqual(1)
     expect(round.length).toBeGreaterThanOrEqual(5)
   })
+
+  it('biases toward several interaction types when the pool allows', () => {
+    let n = 0
+    const types = ['choicePick', 'flashcardFlip', 'findError', 'comparePick', 'dragDropSort'] as const
+    const generate = (): Task => {
+      n++
+      const ui = types[n % types.length]!
+      return {
+        question: `Mix ${n} ${ui}`,
+        answerKind: 'text',
+        solution: `s${n}`,
+        explanation: 'e',
+        dedupeKey: `mix-demo:${n}`,
+        contentIds: [`mix-demo:${n}`],
+        sampleAnswer: { kind: 'choicePick', choice: 'x' },
+        interactive: { type: ui, props: {} },
+        check: () => true,
+      }
+    }
+    const round = buildUniqueTaskRound(generate, createRng(7), 10, 100)
+    expect(round.length).toBe(10)
+    const distinct = new Set(round.map((t) => t.interactive?.type)).size
+    expect(distinct).toBeGreaterThanOrEqual(4)
+  })
+
+  it('does not soft-cap graphic Aufbau UIs (imageLabelSlots)', () => {
+    let n = 0
+    const generate = (): Task => {
+      n++
+      if (n % 3 !== 0) {
+        return {
+          question: `Slots ${n}`,
+          answerKind: 'text',
+          solution: `s${n}`,
+          explanation: 'e',
+          dedupeKey: `slot-demo:${n}`,
+          contentIds: [`slot-demo:${n}`],
+          sampleAnswer: { kind: 'imageLabelSlots', slots: [] },
+          interactive: {
+            type: 'imageLabelSlots',
+            props: { items: [{ label: `L${n}` }], imageSrc: `/img/${n}.png` },
+          },
+          check: () => true,
+        }
+      }
+      return valueTask({
+        question: `Other ${n}`,
+        answerKind: 'integer',
+        value: n,
+        solution: String(n),
+        explanation: 'e',
+        dedupeKey: `other:${n}`,
+        contentIds: [`other:${n}`],
+      })
+    }
+    const round = buildUniqueTaskRound(generate, createRng(3), 10, 80)
+    const slots = round.filter((t) => t.interactive?.type === 'imageLabelSlots')
+    expect(slots.length).toBeGreaterThanOrEqual(3)
+    expect(round.length).toBe(10)
+  })
 })

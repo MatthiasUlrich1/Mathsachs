@@ -200,4 +200,29 @@ describe('Geschichte generators quality', () => {
     }
     expect(saw).toBeGreaterThan(2)
   })
+
+  it('rounds mix interaction types (max 1 Zuordnung, compare/findError available)', () => {
+    for (const id of ['ge-k5-lb1-zeitrechnung', 'ge-k5-lb1-quellen', 'ge-k6-lb2-lehnswesen']) {
+      const gen = resolveGeschichteGenerate(id)!
+      const kinds = new Set<string>()
+      for (let seed = 0; seed < 80; seed++) {
+        const ui = gen(createRng(seed * 13 + 5)).interactive?.type ?? 'plain'
+        kinds.add(ui)
+      }
+      expect(
+        kinds.has('comparePick') || kinds.has('findError') || kinds.has('dragDropSort'),
+        id,
+      ).toBe(true)
+      const round = buildUniqueTaskRound(gen, createRng(21), 10, 120)
+      expect(round.length, id).toBeGreaterThanOrEqual(8)
+      const matchN = round.filter(
+        (t) => t.interactive?.type === 'pairMatch' || t.interactive?.type === 'causeEffect',
+      ).length
+      expect(matchN, id).toBeLessThanOrEqual(1)
+      const distinct = new Set(
+        round.map((t) => t.interactive?.type ?? `plain:${t.answerKind}`),
+      ).size
+      expect(distinct, id).toBeGreaterThanOrEqual(3)
+    }
+  })
 })

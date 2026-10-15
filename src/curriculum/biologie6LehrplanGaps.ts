@@ -396,8 +396,8 @@ export const k6Parasiten: BioBank = {
   pairs: [
     { term: 'Parasit', meaning: 'Nutzt Wirt und schadet ihm', wissen: 'Einseitiger Vorteil zulasten des Wirts.' },
     { term: 'Wirt', meaning: 'Organismus, der den Parasiten beherbergt', wissen: 'Wird geschädigt oder belastet.' },
-    { term: 'Ektoparasit', meaning: 'Lebt auf dem Wirt', wissen: 'z. B. Zecke, Floh.' },
-    { term: 'Endoparasit', meaning: 'Lebt im Wirt', wissen: 'z. B. Spulwurm, Bandwurm.' },
+    { term: 'Ektoparasit', meaning: 'Parasit an der Körperoberfläche des Wirts', wissen: 'z. B. Zecke, Floh.' },
+    { term: 'Endoparasit', meaning: 'Parasit im Inneren des Wirtskörpers', wissen: 'z. B. Spulwurm, Bandwurm.' },
     { term: 'Spulwurm', meaning: 'Parasitärer Rundwurm im Darm', wissen: 'Übertragung über Eier — Hygiene.' },
     { term: 'Zecke', meaning: 'Blutsaugendes Spinnentier', wissen: 'Kann Erreger übertragen.' },
     { term: 'Bandwurm', meaning: 'Endoparasit im Darm', wissen: 'Oft über ungenügend erhitztes Fleisch.' },

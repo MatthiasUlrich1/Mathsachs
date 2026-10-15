@@ -103,7 +103,7 @@ describe('content-level round uniqueness', () => {
 describe('Biologie quality bar', () => {
   // \b before LB: / LB\d — sonst False Positive in „Außerhalb: …“
   const META_FACHWISSEN =
-    /Prüfung:|Antwort prüfen|Teilpunkte|Karteikarte:|Zur Frage|Die gesuchte Antwort|Auch akzeptiert|Klassenarbeiten|gewertet|Häufige Verwechslung in Quizzes|im Unterricht\.|Systemüberblick\.|Orientierung im|Wahl:\s|Wahlbereich:|\bLB\d|\bLB:\s|Kursinhalte beachten|Schlaukopf|Klassiker \(/i
+    /Prüfung:|Antwort prüfen|Teilpunkte|Karteikarte:|Zur Frage|Die gesuchte Antwort|Auch akzeptiert|Klassenarbeiten|gewertet|Häufige Verwechslung in Quizzes|im Unterricht\.|Systemüberblick\.|Orientierung im Themenfeld|Wahl:\s|Wahlbereich:|\bLB\d|\bLB:\s|Kursinhalte beachten|Schlaukopf|Klassiker \(/i
 
   const GENERIC_FACHWISSEN =
     /^(Dieses Thema|In diesem Thema|Zum Thema|Fachlich:|Biologie ist|Die Biologie|Wikipedia: Biologie\.?$|Merke den Fachbegriff\.?$|Siehe Lehrbuch\.?$)/i
@@ -261,6 +261,42 @@ describe('Biologie quality bar', () => {
         kinds.has('dragDropSort') ||
         kinds.has('choicePick'),
     ).toBe(true)
+  })
+
+  it('thin pair/fact banks auto-mix compare/findError (systemweit)', () => {
+    const gen = BIOLOGIE_GENERATORS['bi-k5-lb4-kriechtiere-schutz']!
+    const kinds = new Set<string>()
+    for (let seed = 0; seed < 100; seed++) {
+      const task = gen(createRng(seed * 19 + 3))
+      kinds.add(task.interactive?.type ?? `plain:${task.answerKind}`)
+    }
+    expect(kinds.has('comparePick')).toBe(true)
+    expect(kinds.has('findError')).toBe(true)
+    expect(kinds.has('choicePick')).toBe(true)
+    const round = buildUniqueTaskRound(gen, createRng(11), 10, 120)
+    expect(round.length).toBe(10)
+    const distinct = new Set(
+      round.map((t) => t.interactive?.type ?? `plain:${t.answerKind}`),
+    ).size
+    expect(distinct).toBeGreaterThanOrEqual(3)
+    expect(round.filter((t) => t.interactive?.type === 'pairMatch').length).toBe(0)
+  })
+
+  it('Aufbau topics still emit imageLabelSlots in rounds', () => {
+    const gen = BIOLOGIE_GENERATORS['bi-k5-lb5-voegel-aufbau']!
+    let sawSlots = false
+    for (let seed = 0; seed < 80; seed++) {
+      if (gen(createRng(seed * 7 + 2)).interactive?.type === 'imageLabelSlots') {
+        sawSlots = true
+        break
+      }
+    }
+    expect(sawSlots).toBe(true)
+    const round = buildUniqueTaskRound(gen, createRng(5), 10, 120)
+    expect(round.length).toBeGreaterThanOrEqual(8)
+    expect(round.filter((t) => t.interactive?.type === 'pairMatch').length).toBeLessThanOrEqual(
+      1,
+    )
   })
 
   it('rounds of 10 have unique content identities', () => {

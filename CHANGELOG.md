@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.103] – 2026-10-15
+
+### Geändert
+- **Bio + Geschichte Interaktions-Mix systemweit:** `bankGenerate` synthetisiert
+  `comparePick`/`findError` aus Pairs/Facts/TF, wenn Banken nur MC/Flash/TF haben;
+  `uniqueRound` soft-bias’t ≥4 UI-Typen und cappt Zuordnung weiter auf max. 1.
+- **Aufbau/Grafik geschützt:** `imageLabelSlots` / `imageHotspot` / `dragDropSlots`
+  werden nicht soft-gecappt — Anatomie- und Beschriftungsaufgaben bleiben priorisiert.
+- Mathe/Physik unverändert (kein TF/Zuordnung/Lückentext). Keine neuen Topics freigegeben.
+
 ## [0.28.102] – 2026-10-15
 
 ### Behoben

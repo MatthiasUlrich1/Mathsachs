@@ -798,6 +798,18 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
   const prefix = bank.conceptPrefix
   const weighted: Array<{ weight: number; gen: (rng: Rng) => ReturnType<Topic['generate']> }> =
     []
+  let hasTfDerivedFindError = false
+
+  // Auto-Mix möglich aus Pairs/Facts/TF (Compare + FindError) — systemweit Bio/GE.
+  const canAutoCompare =
+    (bank.compares?.length ?? 0) === 0 &&
+    ((bank.pairs?.length ?? 0) >= 2 || (bank.facts?.length ?? 0) >= 2)
+  const canAutoFindError =
+    (bank.findErrors?.length ?? 0) === 0 &&
+    ((bank.pairs?.length ?? 0) >= 3 ||
+      (bank.facts?.length ?? 0) >= 3 ||
+      ((bank.trueFalse?.filter((t) => !t.correct).length ?? 0) >= 1 &&
+        (bank.trueFalse?.filter((t) => t.correct).length ?? 0) + (bank.pairs?.length ?? 0) >= 3))
 
   const hasAltModes =
     (bank.pairs?.length ?? 0) >= 3 ||
@@ -807,13 +819,16 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
     (bank.multis?.length ?? 0) > 0 ||
     (bank.compares?.length ?? 0) > 0 ||
     (bank.findErrors?.length ?? 0) > 0 ||
-    (bank.hotspots?.length ?? 0) > 0
+    (bank.hotspots?.length ?? 0) > 0 ||
+    canAutoCompare ||
+    canAutoFindError
 
   if (bank.facts?.length) {
     // Prefer MC / flash; gaps only sparsely. Zuordnung is NOT a default escape hatch.
-    const clozeCut = hasAltModes ? 0.03 : 0.06
-    const gapCut = hasAltModes ? 0.08 : 0.12
-    const flashCut = hasAltModes ? 0.28 : 0.34
+    // Ohne Alt-Modes: etwas mehr Flash/Gap, damit uniqueRound Vielfalt finden kann.
+    const clozeCut = hasAltModes ? 0.04 : 0.08
+    const gapCut = hasAltModes ? 0.1 : 0.16
+    const flashCut = hasAltModes ? 0.3 : 0.38
 
     const factVariant = (rng: Rng) => {
       const f = pick(rng, bank.facts!)
@@ -1020,27 +1035,65 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
       },
     })
 
-    // Auto „Finde den Fehler“ aus TF-Pool (≥1 falsch + ≥2 wahr).
+    // Auto „Finde den Fehler“ aus TF-Pool (≥1 falsch + genug wahre Aussagen).
+    // Fehlende wahre TF-Sätze mit Pair-Aussagen auffüllen (dünne Banken).
     const falses = bank.trueFalse.filter((t) => !t.correct)
     const trues = bank.trueFalse.filter((t) => t.correct)
-    if (falses.length >= 1 && trues.length >= 2) {
+    const pairTruePads = (bank.pairs ?? [])
+      .filter((p) => p.term.trim().length >= 3 && p.meaning.trim().length >= 8)
+      .map((p) => ({
+        statement: `„${p.term.trim()}“ bedeutet: ${p.meaning.trim()}.`,
+        explanation: `${p.term}: ${p.meaning}`,
+        wissen: p.wissen,
+        concept: p.concept,
+      }))
+    if (falses.length >= 1 && trues.length + pairTruePads.length >= 2) {
+      hasTfDerivedFindError = true
       weighted.push({
         weight: 1.5,
         gen: (rng) => {
           const bad = pick(rng, falses)
-          const goods = shuffle(rng, trues).slice(0, 2)
-          const statements = shuffle(rng, [
-            stripBioBankSlug(bad.statement),
-            ...goods.map((g) => stripBioBankSlug(g.statement)),
-          ])
+          const truePool = [
+            ...trues.map((g) => ({
+              statement: stripBioBankSlug(g.statement),
+              explanation: g.explanation,
+              wissen: g.wissen,
+            })),
+            ...pairTruePads.map((g) => ({
+              statement: g.statement,
+              explanation: g.explanation,
+              wissen: g.wissen,
+            })),
+          ]
           const faulty = stripBioBankSlug(bad.statement)
+          const norm = (s: string) => s.replace(/\s+/g, '').toLowerCase().replace(/[„“”"']/g, '')
+          const goods = shuffle(rng, truePool)
+            .map((g) => g.statement)
+            .filter((s) => norm(s) !== norm(faulty))
+          const picked: string[] = []
+          for (const s of goods) {
+            if (picked.some((p) => norm(p) === norm(s))) continue
+            picked.push(s)
+            if (picked.length >= 2) break
+          }
+          if (picked.length < 2) {
+            return trueFalse(rng, {
+              statement: stripBioBankSlug(bad.statement),
+              correct: false,
+              explanation: bad.explanation,
+              fachwissen: fw(bank, bad.wissen, {
+                prompt: bad.statement,
+                explanation: bad.explanation,
+              }),
+              dedupeKey: bioConceptKey(bad.concept, prefix, bad.statement),
+              contentIds: [bioConceptKey(bad.concept, prefix, bad.statement)],
+            })
+          }
+          const statements = shuffle(rng, [faulty, picked[0]!, picked[1]!])
           const key = bioConceptKey(bad.concept, prefix, `err:${bad.statement}`)
-          const theme = themePhraseFromPrefix(prefix)
-          const q = theme
-            ? `Welche Aussage ${theme} enthält einen fachlichen Fehler?`
-            : `Welche dieser drei Aussagen ist fachlich falsch?`
+          // Fester Stem — kein Themenfeld-Suffix (vermeidet Round-Dups parasit/parasiten).
           return findErrorTask({
-            question: q,
+            question: 'Welche dieser drei Aussagen ist fachlich falsch?',
             statements,
             faulty,
             solution: faulty,
@@ -1191,12 +1244,8 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         const fe = pick(rng, bank.findErrors!)
         const faulty = fe.statements[fe.faultyIndex]!
         const key = bioConceptKey(fe.concept, prefix, faulty)
-        const theme = themePhraseFromPrefix(prefix)
-        const fallbackQ = theme
-          ? `Welche Aussage ${theme} enthält einen fachlichen Fehler?`
-          : `Welche dieser Aussagen ist fachlich falsch? (${faulty.slice(0, 24)}…)`
         return findErrorTask({
-          question: fe.question ?? fallbackQ,
+          question: fe.question ?? 'Welche dieser drei Aussagen ist fachlich falsch?',
           statements: shuffle(rng, [...fe.statements]),
           faulty,
           solution: faulty,
@@ -1266,6 +1315,198 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         })
       },
     })
+  }
+
+  // Systemweiter Mix: Compare aus Pairs/Facts, wenn keine authored compares.
+  if (canAutoCompare) {
+    weighted.push({
+      weight: 1.75,
+      gen: (rng) => {
+        type Item = { term: string; meaning: string; wissen: string; concept?: string }
+        const dedupeItems = (raw: Item[]): Item[] => {
+          const seen = new Set<string>()
+          const out: Item[] = []
+          for (const it of raw) {
+            const k = it.term.toLowerCase()
+            if (seen.has(k)) continue
+            seen.add(k)
+            out.push(it)
+          }
+          return out
+        }
+        const fromPairs = dedupeItems(
+          (bank.pairs ?? [])
+            .filter((p) => p.term.trim().length >= 3 && p.meaning.trim().length >= 8)
+            .map((p) => ({
+              term: p.term.trim(),
+              meaning: p.meaning.trim(),
+              wissen: p.wissen,
+              concept: p.concept,
+            })),
+        )
+        const fromFacts = dedupeItems(
+          (bank.facts ?? [])
+            .filter((f) => {
+              const term = stripBioBankSlug(f.flashFront ?? f.gapAccepted?.[0] ?? '').trim()
+              return term.length >= 3 && f.answer.trim().length >= 8
+            })
+            .map((f) => ({
+              term: stripBioBankSlug(f.flashFront ?? f.gapAccepted?.[0] ?? 'Begriff').trim(),
+              meaning: f.answer.trim(),
+              wissen: f.wissen,
+              concept: f.concept,
+            })),
+        )
+        const pool = fromPairs.length >= 2 ? fromPairs : fromFacts
+        const a = pick(rng, pool)
+        const others = pool.filter((x) => x.meaning !== a.meaning && x.term !== a.term)
+        if (!others.length) {
+          return mcTask(rng, {
+            question: `Was bedeutet „${a.term}“?`,
+            correct: a.meaning,
+            wrong: pool.filter((x) => x.meaning !== a.meaning).map((x) => x.meaning).slice(0, 3),
+            explanation: `${a.term}: ${a.meaning}`,
+            fachwissen: fw(bank, a.wissen),
+            dedupeKey: bioConceptKey(a.concept, prefix, a.term),
+            contentIds: [bioConceptKey(a.concept, prefix, a.term)],
+          })
+        }
+        const b = pick(rng, others)
+        const correctFirst = rng() < 0.5
+        const correctBody = `${a.term} — ${a.meaning}`
+        const wrongBody = `${a.term} — ${b.meaning}`
+        const cards = correctFirst
+          ? [
+              { id: 'A', title: 'A', body: correctBody },
+              { id: 'B', title: 'B', body: wrongBody },
+            ]
+          : [
+              { id: 'A', title: 'A', body: wrongBody },
+              { id: 'B', title: 'B', body: correctBody },
+            ]
+        const correctId = correctFirst ? 'A' : 'B'
+        const key = bioConceptKey(a.concept, prefix, `cmp:${a.term}`)
+        // Stem ohne Term (Cross-Topic-Isolation); Term steht auf den Karten.
+        return comparePickTask({
+          question: 'Vergleiche: Welche Erklärung ist fachlich zutreffend?',
+          cards,
+          correctId,
+          solution: a.meaning,
+          explanation: `${a.term}: ${a.meaning}`,
+          fachwissen: fw(bank, a.wissen, {
+            term: a.term,
+            meaning: a.meaning,
+            explanation: a.wissen,
+          }),
+          dedupeKey: key,
+          contentIds: [key],
+        })
+      },
+    })
+  }
+
+  // Systemweiter Mix: FindError aus Pairs/Facts, wenn keine authored findErrors.
+  if (canAutoFindError && (bank.findErrors?.length ?? 0) === 0) {
+    if (
+      !hasTfDerivedFindError ||
+      (bank.pairs?.length ?? 0) >= 3 ||
+      (bank.facts?.length ?? 0) >= 3
+    ) {
+      weighted.push({
+        weight: hasTfDerivedFindError ? 1.2 : 1.65,
+        gen: (rng) => {
+          type Item = { term: string; meaning: string; wissen: string; concept?: string }
+          const seenTerm = new Set<string>()
+          const pool: Item[] = []
+          for (const p of bank.pairs ?? []) {
+            const term = p.term.trim()
+            const meaning = p.meaning.trim()
+            const k = term.toLowerCase()
+            if (term.length < 3 || meaning.length < 8 || seenTerm.has(k)) continue
+            seenTerm.add(k)
+            pool.push({ term, meaning, wissen: p.wissen, concept: p.concept })
+          }
+          for (const f of bank.facts ?? []) {
+            const term = stripBioBankSlug(f.flashFront ?? f.gapAccepted?.[0] ?? '').trim()
+            const meaning = f.answer.trim()
+            const k = term.toLowerCase()
+            if (term.length < 3 || meaning.length < 8 || seenTerm.has(k)) continue
+            seenTerm.add(k)
+            pool.push({ term, meaning, wissen: f.wissen, concept: f.concept })
+          }
+          const items = shuffle(rng, pool).slice(0, 3)
+          if (items.length < 3) {
+            const a = items[0] ?? pool[0]
+            if (!a) {
+              return mcTask(rng, {
+                question: 'Welcher Fachbegriff passt zur Erklärung?',
+                correct: 'Begriff',
+                wrong: ['Andere Bedeutung', 'Nicht zur Erklärung', 'Unklar'],
+                explanation: 'Pool zu dünn.',
+                fachwissen: fw(bank, 'Fachbegriff einordnen.'),
+                dedupeKey: bioConceptKey(undefined, prefix, 'ferr-fallback'),
+                contentIds: [bioConceptKey(undefined, prefix, 'ferr-fallback')],
+              })
+            }
+            return mcTask(rng, {
+              question: `Was bedeutet „${a.term}“?`,
+              correct: a.meaning,
+              wrong: pool.filter((x) => x.meaning !== a.meaning).map((x) => x.meaning).slice(0, 3),
+              explanation: `${a.term}: ${a.meaning}`,
+              fachwissen: fw(bank, a.wissen),
+              dedupeKey: bioConceptKey(a.concept, prefix, a.term),
+              contentIds: [bioConceptKey(a.concept, prefix, a.term)],
+            })
+          }
+          const [bad, g1, g2] = items as [Item, Item, Item]
+          const donor =
+            pool.find((x) => x.term !== bad.term && x.meaning !== bad.meaning) ?? g1
+          const wrongMeaning = donor.meaning
+          const faulty = `${bad.term} bedeutet: ${wrongMeaning}.`
+          const good1 = `${g1.term} bedeutet: ${g1.meaning}.`
+          const good2 = `${g2.term} bedeutet: ${g2.meaning}.`
+          const norm = (s: string) => s.replace(/\s+/g, '').toLowerCase()
+          const statementsRaw = [faulty, good1, good2]
+          const uniq = statementsRaw.filter(
+            (s, i, arr) => arr.findIndex((t) => norm(t) === norm(s)) === i,
+          )
+          if (
+            uniq.length < 3 ||
+            norm(faulty) === norm(good1) ||
+            norm(faulty) === norm(good2) ||
+            norm(wrongMeaning) === norm(bad.meaning)
+          ) {
+            return mcTask(rng, {
+              question: `Was bedeutet „${bad.term}“?`,
+              correct: bad.meaning,
+              wrong: [g1.meaning, g2.meaning, donor.meaning]
+                .filter((m) => m !== bad.meaning)
+                .slice(0, 3),
+              explanation: `${bad.term}: ${bad.meaning}`,
+              fachwissen: fw(bank, bad.wissen),
+              dedupeKey: bioConceptKey(bad.concept, prefix, bad.term),
+              contentIds: [bioConceptKey(bad.concept, prefix, bad.term)],
+            })
+          }
+          const statements = shuffle(rng, [faulty, good1, good2])
+          const key = bioConceptKey(bad.concept, prefix, `ferr:${bad.term}`)
+          return findErrorTask({
+            question: 'Welche dieser drei Aussagen ist fachlich falsch?',
+            statements,
+            faulty,
+            solution: faulty,
+            explanation: `Richtig: ${bad.term} — ${bad.meaning}.`,
+            fachwissen: fw(bank, bad.wissen, {
+              term: bad.term,
+              meaning: bad.meaning,
+              explanation: bad.wissen,
+            }),
+            dedupeKey: key,
+            contentIds: [key],
+          })
+        },
+      })
+    }
   }
 
   if (weighted.length === 0) {

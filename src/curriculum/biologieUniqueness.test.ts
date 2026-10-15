@@ -177,7 +177,7 @@ const SIBLING_FAMILIES: string[][] = [
 ]
 
 const GENERIC_STEM =
-  /^(ordne begriff und erklaerung|ordne zu|ordne zu \d+|welche aussage|richtig oder falsch|karteikarte|tippe|waehle|stimmt die aussage|welcher fachbegriff passt zur erklaerung)/i
+  /^(ordne begriff und erklaerung|ordne zu|ordne zu \d+|welche aussage|welche dieser|richtig oder falsch|karteikarte|tippe|waehle|stimmt die aussage|welcher fachbegriff passt zur erklaerung|vergleiche|welche erklaerung|finde den fehler)/i
 
 function normalizeStem(s: string): string {
   return s
