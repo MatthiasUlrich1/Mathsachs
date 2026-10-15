@@ -804,7 +804,7 @@ const systematikK6: BioBank = {
     },
     {
       concept: 'bio:k6:systematik:multi-wirbellos',
-      question: 'Welche Gruppen sind wirbellos?',
+      question: 'Kreuze alle wirbellosen Tiergruppen an (Mehrfachauswahl).',
       correct: ['Insekten', 'Spinnentiere', 'Weichtiere'],
       wrong: ['Vögel', 'Säugetiere'],
       explanation: 'Keine innere Wirbelsäule.',

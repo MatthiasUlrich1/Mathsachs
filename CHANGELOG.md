@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.100] – 2026-10-15
+
+### Behoben
+- **CI v0.28.99:** Near-Dup in K6-Systematik (MC vs. Multi-Select) und
+  Fact-Gewichtung entschärft.
+
 ## [0.28.99] – 2026-10-15
 
 ### Behoben

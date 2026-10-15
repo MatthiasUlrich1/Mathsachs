@@ -953,12 +953,10 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
     variants.push(pairMatchVariant)
   }
 
-  // Fakten stärker gewichten als Zuordnung/TF → mehr Anwendungs-MC, weniger Drill.
-  if (bank.facts && bank.facts.length >= 4 && variants.length > 0) {
+  // Fakten etwas stärker gewichten als Zuordnung — nur einmal extra (CI: keine Near-Dup-Runden).
+  if (bank.facts && bank.facts.length >= 6 && variants.length >= 3) {
     const factVar = variants[0]
-    if (factVar) {
-      variants.push(factVar, factVar)
-    }
+    if (factVar) variants.push(factVar)
   }
 
   if (bank.trueFalse?.length) {
