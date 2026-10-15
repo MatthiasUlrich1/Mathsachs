@@ -739,46 +739,6 @@ export function bioFactQuestion(
   return withTheme(base || 'Welcher Fachbegriff passt zur Erklärung', prefix)
 }
 
-/** Prefer large Zuordnungen when the Begriffspool allows (4–6, not always 3). */
-function pickPairSubset<T extends { term: string; meaning?: string }>(rng: Rng, pairs: T[]): T[] {
-  const n = pairs.length
-  if (n <= 3) return shuffle(rng, pairs)
-  let size = 3
-  if (n >= 12) size = rng() < 0.55 ? 6 : 5
-  else if (n >= 8) size = rng() < 0.5 ? 5 : 4
-  else if (n >= 5) size = 4
-
-  const shuffled = shuffle(rng, pairs)
-  // Unique left labels AND unique meanings (Audit: pairMatch.right Duplikate).
-  const unique: T[] = []
-  const seenTerm = new Set<string>()
-  const seenMeaning = new Set<string>()
-  for (const p of shuffled) {
-    const termKey = p.term.trim().toLowerCase()
-    const meaningKey = String(p.meaning ?? '')
-      .normalize('NFKC')
-      .toLowerCase()
-      .replace(/\s+/g, ' ')
-      .trim()
-    if (seenTerm.has(termKey) || (meaningKey && seenMeaning.has(meaningKey))) continue
-    seenTerm.add(termKey)
-    if (meaningKey) seenMeaning.add(meaningKey)
-    unique.push(p)
-    if (unique.length >= size) return unique
-  }
-  if (unique.length >= 3) return unique
-  // Last resort: allow meaning reuse so the match still has enough rows.
-  for (const p of shuffled) {
-    if (unique.includes(p)) continue
-    const termKey = p.term.trim().toLowerCase()
-    if (seenTerm.has(termKey)) continue
-    seenTerm.add(termKey)
-    unique.push(p)
-    if (unique.length >= Math.min(size, 3)) break
-  }
-  return unique
-}
-
 /** Drop later pairs that reuse an earlier term (case-insensitive). */
 function dedupeBioPairsByTerm(pairs: BioPair[] | undefined): BioPair[] | undefined {
   if (!pairs?.length) return pairs
@@ -993,14 +953,14 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
             (x) => x !== p && x.term.trim().length >= 4 && x.meaning.trim().length >= 12,
           )
           if (!alt) {
-            return factSlot ? factSlot.gen(rng) : mcTask(rng, {
-              question: `Was bedeutet „Begriff“?`,
-              correct: 'Platzhalter',
-              wrong: ['A', 'B', 'C'],
-              explanation: 'Platzhalter',
-              fachwissen: fw(bank, 'Platzhalter.'),
-              dedupeKey: 'bio:pair-skip',
-              contentIds: ['bio:pair-skip'],
+            return mcTask(rng, {
+              question: 'Welcher Fachbegriff passt zur Erklärung?',
+              correct: meaning || term || 'Begriff',
+              wrong: wrong.length ? wrong : ['Andere Bedeutung', 'Nicht passend', 'Unklar'],
+              explanation: `${term}: ${meaning}`,
+              fachwissen: fw(bank, p.wissen || 'Fachbegriff einordnen.'),
+              dedupeKey: key,
+              contentIds: [key],
             })
           }
           const altKey = bioConceptKey(alt.concept, prefix, alt.term)

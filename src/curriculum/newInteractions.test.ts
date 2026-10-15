@@ -54,7 +54,7 @@ describe('sourceQuote + causeEffect task helpers', () => {
     expect(partial.parts).toEqual([true, false])
   })
 
-  it('bankGenerate emits sourceQuote and causeEffect from BioBank fields', () => {
+  it('bankGenerate emits sourceQuote and what-if MC from BioBank fields (no causeEffect UI)', () => {
     const bank: BioBank = {
       quelle: 'Test',
       url: 'https://example.org',
@@ -95,13 +95,18 @@ describe('sourceQuote + causeEffect task helpers', () => {
     }
     const gen = bankGenerate(bank)
     let sawSource = false
-    let sawCause = false
+    let sawWhatIf = false
+    let sawCauseUi = false
     for (let i = 0; i < 80; i++) {
       const t = gen(createRng(i * 17 + 3))
       if (t.interactive?.type === 'sourceQuote') sawSource = true
-      if (t.interactive?.type === 'causeEffect') sawCause = true
+      if (t.interactive?.type === 'causeEffect') sawCauseUi = true
+      if (/Was passiert, wenn:/i.test(t.question) && t.interactive?.type === 'choicePick') {
+        sawWhatIf = true
+      }
     }
     expect(sawSource).toBe(true)
-    expect(sawCause).toBe(true)
+    expect(sawWhatIf).toBe(true)
+    expect(sawCauseUi).toBe(false)
   })
 })

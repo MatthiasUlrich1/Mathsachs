@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.102] – 2026-10-15
+
+### Behoben
+- **CI v0.28.101:** TypeScript in `biologieBank` (ungenutztes `pickPairSubset`,
+  `never.gen`); Test erwartet kein `causeEffect` mehr aus `bankGenerate`
+  (statt dessen „Was passiert wenn…?“ als MC).
+
 ## [0.28.101] – 2026-10-15
 
 ### Geändert
