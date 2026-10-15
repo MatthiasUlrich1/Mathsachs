@@ -9,6 +9,11 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.95] – 2026-10-15
+
+### Behoben
+- **CI v0.28.94:** TypeScript in `physikSek1RoundBoost` (immer-wahre Funktionsbedingung).
+
 ## [0.28.94] – 2026-10-15
 
 ### Behoben

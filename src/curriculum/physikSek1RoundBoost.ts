@@ -2056,7 +2056,9 @@ export function withSek1RoundBoost(
   topicId: string,
   base: Topic['generate'] | undefined,
 ): Topic['generate'] | undefined {
-  const dedicated = BOOST[topicId]
+  const dedicated = Object.prototype.hasOwnProperty.call(BOOST, topicId)
+    ? BOOST[topicId]
+    : undefined
   // Family-Pad für bekannte dünne Topics — auch zusätzlich zu schmalen Dedicated-Boosts.
   const THIN = new Set([
     'ph-k6-lb2-lichtgeschwindigkeit',
@@ -2081,12 +2083,14 @@ export function withSek1RoundBoost(
   const family = THIN.has(topicId) ? padFamily(topicId) : null
   const pad = family ? makeFamilySek1Pad(topicId, family) : undefined
   const boost =
-    dedicated && pad
+    dedicated !== undefined && pad !== undefined
       ? mixedVariants(dedicated, pad, pad)
       : (dedicated ?? pad)
-  if (!boost) return base
-  if (!base) return boost
-  return mixedVariants(base, boost, boost, pad ?? boost)
+  if (boost === undefined) return base
+  if (base === undefined) return boost
+  return pad !== undefined
+    ? mixedVariants(base, boost, boost, pad)
+    : mixedVariants(base, boost, boost)
 }
 
 export const SEK1_ROUND_BOOST_IDS = Object.keys(BOOST)
