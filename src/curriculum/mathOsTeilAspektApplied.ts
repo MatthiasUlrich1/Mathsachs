@@ -3,6 +3,7 @@
  * Ersetzt mathBankGenerate-Vokabelbanken in osStLehrplanTeilaspekte.ts.
  */
 import { formatDe, roundTo } from '../lib/num'
+import { linFactor, linStr, polyStr, signedNum } from '../lib/termFormat'
 import { pick, randInt } from '../lib/rng'
 import { appliedMc, distinctDistractors } from './mathApplied'
 import { mixedVariants, valueTask } from './taskHelpers'
@@ -96,7 +97,9 @@ export const genOsRechen: Topic['generate'] = mixedVariants(
       correct: `${b} + ${a}`,
       distractors: [`${a} − ${b}`, `${a} · ${b}`, `${a} + ${a}`, `${b} − ${a}`],
       explanation: `Kommutativgesetz der Addition: ${a} + ${b} = ${b} + ${a} = ${a + b}.`,
-      fachwissen: fw('Kommutativgesetz: Bei Addition und Multiplikation darf man die Reihenfolge der Summanden bzw. Faktoren vertauschen.'),
+      fachwissen: fw(
+        `Kommutativgesetz: Der Term ${a} + ${b} hat denselben Wert wie ${b} + ${a}. Bei Addition und Multiplikation darf man die Reihenfolge vertauschen.`,
+      ),
       dedupeKey: `os:rechen:komm:${a}:${b}`,
     })
   },
@@ -178,10 +181,23 @@ export const genOsZahlenstrahl: Topic['generate'] = mixedVariants(
     return appliedMc(rng, {
       question: `Welche Zahl liegt genau in der Mitte zwischen ${minus(-a)} und ${a}?`,
       correct: '0',
-      distractors: [String(a), String(-a), '1', String(a / 2)],
+      distractors: [String(a), minus(-a), '1', formatDe(a / 2)],
       explanation: `Die Mitte zwischen −${a} und ${a} ist 0.`,
       fachwissen: fw('Gegenzahl von a ist −a. Die Null liegt in der Mitte zwischen a und −a.'),
       dedupeKey: `os:zs:mitte:${a}`,
+    })
+  },
+  (rng) => {
+    const a = randInt(rng, -9, -2)
+    return valueTask({
+      question: `Welche Zahl liegt auf dem Zahlenstrahl ${Math.abs(a)} Einheiten links von 0?`,
+      answerKind: 'integer',
+      value: a,
+      solution: minus(a),
+      explanation: `${Math.abs(a)} Einheiten links von 0 ist ${minus(a)}.`,
+      fachwissen: fw('Links von 0 liegen die negativen Zahlen; der Abstand zur 0 ist der Betrag.'),
+      dedupeKey: `os:zs:links:${a}`,
+      contentIds: [`os:zs:links:${a}`],
     })
   },
 )
@@ -485,14 +501,31 @@ export const genOsRsSekante: Topic['generate'] = mixedVariants(
     const m = pick(rng, [-2, -1, 1, 2, 3])
     const y2 = y1 + m * (x2 - x1)
     return valueTask({
-      question: `Die Sekante durch P(${x1}|${y1}) und Q(${x2}|${y2}) hat welche Steigung m?`,
+      question: `Die Sekante durch P(${x1}|${signedNum(y1)}) und Q(${x2}|${signedNum(y2)}) hat welche Steigung m?`,
       answerKind: 'integer',
       value: m,
-      solution: String(m),
-      explanation: `m = (${y2} − ${y1}) : (${x2} − ${x1}) = ${m}.`,
+      solution: signedNum(m),
+      explanation: `m = (${signedNum(y2)} − ${signedNum(y1)}) : (${x2} − ${x1}) = ${signedNum(m)}.`,
       fachwissen: fw('Sekantensteigung m = Δy / Δx. Die Tangente ist der Grenzfall, wenn Q gegen P rückt.'),
       dedupeKey: `os:sek:${x1}:${y1}:${x2}:${y2}`,
       contentIds: [`os:sek:${x1}:${y1}:${x2}:${y2}`],
+    })
+  },
+  (rng) => {
+    const m = pick(rng, [-3, -2, -1, 1, 2, 3])
+    return appliedMc(rng, {
+      question: `Eine Sekante hat die Steigung ${signedNum(m)}. Was passiert mit der Sekante, wenn der zweite Punkt gegen den ersten rückt?`,
+      correct: 'Sie wird zur Tangente mit derselben Steigung',
+      distractors: [
+        'Die Steigung wird immer 0',
+        'Die Sekante verschwindet ohne Grenzwert',
+        'Es entsteht eine Parallele zur x-Achse',
+        'Die Steigung verdoppelt sich',
+      ],
+      explanation: 'Grenzwert der Sekantensteigung = Tangentensteigung.',
+      fachwissen: fw('Die Ableitung bzw. Tangentensteigung ist der Grenzwert der Sekantensteigungen.'),
+      dedupeKey: `os:sek:grenz:${m}`,
+      contentIds: [`os:sek:grenz:${m}`],
     })
   },
 )
@@ -534,15 +567,31 @@ export const genOsRsLeben: Topic['generate'] = mixedVariants(
       contentIds: [`os:leben:${basis}:${p}`],
     })
   },
+  (rng) => {
+    const alt = randInt(rng, 10, 30) * 40
+    const p = pick(rng, [5, 10, 15, 20])
+    const spar = roundTo((alt * p) / 100, 2)
+    return valueTask({
+      question: `Von ${alt} € Monatsausgaben entfallen ${p} % auf Lebensmittel. Wie viele Euro sind das?`,
+      answerKind: 'decimal',
+      value: spar,
+      solution: formatDe(spar),
+      unit: '€',
+      explanation: `${p} % von ${alt} € = ${formatDe(spar)} €.`,
+      fachwissen: fw('Prozentwert = Grundwert · p / 100. Lebenshaltungskosten werden oft in Prozentanteilen verglichen.'),
+      dedupeKey: `os:leben:anteil:${alt}:${p}`,
+      contentIds: [`os:leben:anteil:${alt}:${p}`],
+    })
+  },
 )
 
 /** Monotonie linear. */
 export const genOsRsMono: Topic['generate'] = mixedVariants(
   (rng) => {
-    const m = pick(rng, [-3, -2, -1, 1, 2, 3])
-    const n = randInt(rng, -4, 4)
+    const m = pick(rng, [-5, -4, -3, -2, -1, 1, 2, 3, 4, 5])
+    const n = randInt(rng, -6, 6)
     return appliedMc(rng, {
-      question: `Die Funktion f(x) = ${m}x ${n >= 0 ? '+' : '−'} ${Math.abs(n)} ist …`,
+      question: `Die Funktion f(x) = ${linStr(m, n)} ist …`,
       correct: m > 0 ? 'streng monoton steigend' : 'streng monoton fallend',
       distractors: [
         m > 0 ? 'streng monoton fallend' : 'streng monoton steigend',
@@ -550,15 +599,16 @@ export const genOsRsMono: Topic['generate'] = mixedVariants(
         'nur für x > 0 definiert',
         'konstant',
       ],
-      explanation: `Steigung m = ${m} ${m > 0 ? '> 0 ⇒ streng monoton steigend' : '< 0 ⇒ streng monoton fallend'}.`,
+      explanation: `Steigung m = ${signedNum(m)} ${m > 0 ? '> 0 ⇒ streng monoton steigend' : '< 0 ⇒ streng monoton fallend'}.`,
       fachwissen: fw('Bei linearen Funktionen f(x) = mx + n entscheidet das Vorzeichen von m über die Monotonie.'),
       dedupeKey: `os:mono:${m}:${n}`,
+      contentIds: [`os:mono:${m}:${n}`],
     })
   },
   (rng) => {
-    const m = pick(rng, [2, 3, 4, 5])
+    const m = pick(rng, [1, 2, 3, 4, 5, 6, 7, 8])
     return valueTask({
-      question: `f(x) = ${m}x − 1. Um wie viel steigt f, wenn x um 1 wächst?`,
+      question: `f(x) = ${linStr(m, -1)}. Um wie viel steigt f, wenn x um 1 wächst?`,
       answerKind: 'integer',
       value: m,
       solution: String(m),
@@ -569,13 +619,13 @@ export const genOsRsMono: Topic['generate'] = mixedVariants(
     })
   },
   (rng) => {
-    const x1 = randInt(rng, 1, 4)
-    const x2 = x1 + randInt(rng, 2, 5)
-    const y1 = randInt(rng, 0, 6)
-    const m = pick(rng, [1, 2, 3, -1, -2])
+    const x1 = randInt(rng, 1, 5)
+    const x2 = x1 + randInt(rng, 2, 6)
+    const y1 = randInt(rng, -4, 8)
+    const m = pick(rng, [1, 2, 3, 4, -1, -2, -3, -4])
     const y2 = y1 + m * (x2 - x1)
     return appliedMc(rng, {
-      question: `Die Werte (x|y) = (${x1}|${y1}) und (${x2}|${y2}) liegen auf einer Geraden. Ist f dort streng monoton steigend oder fallend?`,
+      question: `Die Werte (x|y) = (${x1}|${signedNum(y1)}) und (${x2}|${signedNum(y2)}) liegen auf einer Geraden. Ist f dort streng monoton steigend oder fallend?`,
       correct: m > 0 ? 'streng monoton steigend' : 'streng monoton fallend',
       distractors: [
         m > 0 ? 'streng monoton fallend' : 'streng monoton steigend',
@@ -583,19 +633,37 @@ export const genOsRsMono: Topic['generate'] = mixedVariants(
         'weder noch',
         'nur im Ursprung definiert',
       ],
-      explanation: `Δy/Δx = ${m} ${m > 0 ? '> 0 (steigend)' : '< 0 (fallend)'}.`,
+      explanation: `Δy/Δx = ${signedNum(m)} ${m > 0 ? '> 0 (steigend)' : '< 0 (fallend)'}.`,
       fachwissen: fw('Monotonie linearer Funktionen liest man an der Steigung m = Δy/Δx ab.'),
       dedupeKey: `os:mono:pts:${x1}:${y1}:${x2}:${y2}`,
+      contentIds: [`os:mono:pts:${x1}:${y1}:${x2}:${y2}`],
     })
   },
   (rng) => {
+    const m = pick(rng, [-5, -4, -3, -2])
+    const n = randInt(rng, 1, 8)
     return appliedMc(rng, {
-      question: 'Welche Funktion ist streng monoton fallend?',
-      correct: 'f(x) = −2x + 5',
-      distractors: ['f(x) = 2x + 5', 'f(x) = 0 · x + 3', 'f(x) = x²', 'f(x) = |x|'],
-      explanation: 'Negatives m = −2 ⇒ streng monoton fallend.',
+      question: `Welche Funktion ist streng monoton fallend?`,
+      correct: `f(x) = ${linStr(m, n)}`,
+      distractors: [`f(x) = ${linStr(-m, n)}`, `f(x) = ${linStr(0, n)}`, 'f(x) = x²', 'f(x) = |x|'],
+      explanation: `Negatives m = ${signedNum(m)} ⇒ streng monoton fallend.`,
       fachwissen: fw('f(x) = mx + n ist streng monoton fallend genau dann, wenn m < 0.'),
-      dedupeKey: 'os:mono:which-fall',
+      dedupeKey: `os:mono:which-fall:${m}:${n}`,
+      contentIds: [`os:mono:which-fall:${m}:${n}`],
+    })
+  },
+  (rng) => {
+    const m = pick(rng, [2, 3, 4, 5, 6])
+    const x = randInt(rng, 2, 8)
+    return valueTask({
+      question: `f ist streng monoton steigend mit Steigung ${m}. Um wie viel ändert sich f, wenn x von 0 auf ${x} wächst?`,
+      answerKind: 'integer',
+      value: m * x,
+      solution: String(m * x),
+      explanation: `Δf = m · Δx = ${m} · ${x} = ${m * x}.`,
+      fachwissen: fw('Bei linear monoton steigenden Funktionen ist der Zuwachs proportional zur Steigung m.'),
+      dedupeKey: `os:mono:wachs:${m}:${x}`,
+      contentIds: [`os:mono:wachs:${m}:${x}`],
     })
   },
 )
@@ -688,16 +756,16 @@ export const genOsRsAbgaben: Topic['generate'] = mixedVariants(
 export const genOsStDiff: Topic['generate'] = mixedVariants(
   (rng) => {
     const a = randInt(rng, 2, 6)
-    const b = randInt(rng, 1, 8)
+    const b = randInt(rng, 2, 8)
     // f(x) = a x² + b x  → f' = 2a x + b; Wert bei x0
     const x0 = randInt(rng, 1, 4)
     const fp = 2 * a * x0 + b
     return valueTask({
-      question: `f(x) = ${a}x² + ${b}x. Berechne f'(${x0}).`,
+      question: `f(x) = ${polyStr([[a, 'x²'], [b, 'x']])}. Berechne f'(${x0}).`,
       answerKind: 'integer',
       value: fp,
-      solution: String(fp),
-      explanation: `f'(x) = ${2 * a}x + ${b}, also f'(${x0}) = ${2 * a}·${x0} + ${b} = ${fp}.`,
+      solution: signedNum(fp),
+      explanation: `f'(x) = ${linStr(2 * a, b)}, also f'(${x0}) = ${signedNum(fp)}.`,
       fachwissen: fw(
         'Ableitung: Potenzregel (xⁿ)′ = n·xⁿ⁻¹. f′(x₀) ist die Steigung der Tangente an den Graphen im Punkt x₀.',
         'Lehrplan Gymnasium Sachsen-Anhalt',
@@ -710,15 +778,216 @@ export const genOsStDiff: Topic['generate'] = mixedVariants(
     let m = randInt(rng, -5, 5)
     while (m === 0) m = randInt(rng, -5, 5)
     return appliedMc(rng, {
-      question: `Die Tangente an f im Punkt x₀ hat die Steigung ${m}. Welcher Wert ist f'(x₀)?`,
-      correct: String(m),
-      distractors: distinctDistractors(String(m), [String(-m), String(m + 1), String(m - 1), '0', String(2 * m)]),
-      explanation: `Nach Definition ist f'(x₀) genau die Tangentensteigung, also ${m}.`,
+      question: `Die Tangente an f im Punkt x₀ hat die Steigung ${signedNum(m)}. Welcher Wert ist f'(x₀)?`,
+      correct: signedNum(m),
+      distractors: distinctDistractors(signedNum(m), [
+        signedNum(-m),
+        signedNum(m + 1),
+        signedNum(m - 1),
+        '0',
+        signedNum(2 * m),
+      ]),
+      explanation: `Nach Definition ist f'(x₀) genau die Tangentensteigung, also ${signedNum(m)}.`,
       fachwissen: fw(
         'Geometrisch ist f′(x₀) die Steigung der Tangente an y = f(x) im Punkt (x₀|f(x₀)).',
         'Lehrplan Gymnasium Sachsen-Anhalt',
       ),
       dedupeKey: `st:diff:tang:${m}`,
+      contentIds: [`st:diff:tang:${m}`],
+    })
+  },
+)
+
+/** Nullstellen linear/quadratisch (nicht Tan-Fachwissen). */
+export const genOsRsNullstellen: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const a = randInt(rng, 1, 5)
+    let r = randInt(rng, -6, 6)
+    while (r === 0) r = randInt(rng, -6, 6)
+    // f(x) = a(x - r) → Nullstelle r
+    const factor = linFactor(r)
+    return valueTask({
+      question: `f(x) = ${a === 1 ? '' : `${a}·`}${factor}. Welche Nullstelle hat f?`,
+      answerKind: 'integer',
+      value: r,
+      solution: signedNum(r),
+      explanation: `f(x) = 0 ⇒ ${factor} = 0 ⇒ x = ${signedNum(r)}.`,
+      fachwissen: fw('Nullstelle: x-Wert mit f(x) = 0. Linear: genau eine Nullstelle (außer bei konstanter 0-Funktion).'),
+      dedupeKey: `os:nullst:lin:${a}:${r}`,
+      contentIds: [`os:nullst:lin:${a}:${r}`],
+    })
+  },
+  (rng) => {
+    let p = randInt(rng, -5, 5)
+    let q = randInt(rng, -5, 5)
+    while (p === 0) p = randInt(rng, -5, 5)
+    while (q === 0 || q === p) q = randInt(rng, -5, 5)
+    return appliedMc(rng, {
+      question: `Welche Nullstellen hat f(x) = ${linFactor(p)}${linFactor(q)}?`,
+      correct: `${signedNum(p)} und ${signedNum(q)}`,
+      distractors: distinctDistractors(`${signedNum(p)} und ${signedNum(q)}`, [
+        `${signedNum(-p)} und ${signedNum(-q)}`,
+        `${signedNum(p)} und ${signedNum(-q)}`,
+        `0 und ${signedNum(p + q)}`,
+        `${signedNum(p * q)} und 0`,
+      ]),
+      explanation: `Produkt = 0 ⇒ x = ${signedNum(p)} oder x = ${signedNum(q)}.`,
+      fachwissen: fw('Satz vom Nullprodukt: Ein Produkt ist 0, wenn mindestens ein Faktor 0 ist — das liefert die Nullstellen.'),
+      dedupeKey: `os:nullst:prod:${p}:${q}`,
+      contentIds: [`os:nullst:prod:${p}:${q}`],
+    })
+  },
+  (rng) => {
+    const m = pick(rng, [1, 2, 3, 4, 5])
+    const n = randInt(rng, -8, 8)
+    // mx + n = 0 → x = -n/m
+    if (n % m !== 0) {
+      const n2 = m * randInt(rng, -4, 4)
+      return valueTask({
+        question: `Berechne die Nullstelle von f(x) = ${linStr(m, n2)}.`,
+        answerKind: 'integer',
+        value: -n2 / m,
+        solution: signedNum(-n2 / m),
+        explanation: `${linStr(m, n2)} = 0 ⇒ x = ${signedNum(-n2 / m)}.`,
+        fachwissen: fw('Bei f(x) = mx + n setzt man f(x) = 0 und löst nach x: x = −n/m (m ≠ 0).'),
+        dedupeKey: `os:nullst:mn:${m}:${n2}`,
+        contentIds: [`os:nullst:mn:${m}:${n2}`],
+      })
+    }
+    return valueTask({
+      question: `Berechne die Nullstelle von f(x) = ${linStr(m, n)}.`,
+      answerKind: 'integer',
+      value: -n / m,
+      solution: signedNum(-n / m),
+      explanation: `${linStr(m, n)} = 0 ⇒ x = ${signedNum(-n / m)}.`,
+      fachwissen: fw('Bei f(x) = mx + n setzt man f(x) = 0 und löst nach x: x = −n/m (m ≠ 0).'),
+      dedupeKey: `os:nullst:mn:${m}:${n}`,
+      contentIds: [`os:nullst:mn:${m}:${n}`],
+    })
+  },
+)
+
+/** Gerade / Strecke / Halbgerade — ohne Antwortwort im Stem. */
+export const genStGeoStrecken: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const n = randInt(rng, 3, 6)
+    return appliedMc(rng, {
+      question: `Auf einer Linie liegen ${n} markierte Punkte. Welches Objekt verbindet genau zwei davon und ist begrenzt?`,
+      correct: 'Strecke',
+      distractors: ['Gerade', 'Halbgerade', 'Kreis', 'Winkel'],
+      explanation: 'Eine Strecke hat zwei Endpunkte und endliche Länge.',
+      fachwissen: fw(
+        'Strecke: begrenzt durch zwei Endpunkte. Gerade: unbegrenzt in beide Richtungen. Halbgerade: ein Anfangspunkt, eine Richtung.',
+        'Lehrplan Gymnasium Sachsen-Anhalt',
+      ),
+      dedupeKey: `st:geo:str:${n}`,
+      contentIds: [`st:geo:str:${n}`],
+    })
+  },
+  (rng) => {
+    const pickQ = pick(rng, [
+      {
+        q: 'Welche Linie geht durch einen Punkt und ist in genau einer Richtung unbegrenzt?',
+        a: 'Halbgerade',
+        w: ['Gerade', 'Strecke', 'Kreisbogen', 'Sehne'],
+      },
+      {
+        q: 'Welche Linie ist in beide Richtungen unbegrenzt und hat keine Endpunkte?',
+        a: 'Gerade',
+        w: ['Strecke', 'Halbgerade', 'Strahlstück', 'Polygonzug'],
+      },
+      {
+        q: 'Welches Objekt hat zwei Endpunkte und eine messbare Länge?',
+        a: 'Strecke',
+        w: ['Gerade', 'Halbgerade', 'Ebene', 'Punkt'],
+      },
+    ] as const)
+    return appliedMc(rng, {
+      question: pickQ.q,
+      correct: pickQ.a,
+      distractors: [...pickQ.w],
+      explanation: `${pickQ.a} passt zur Beschreibung.`,
+      fachwissen: fw(
+        'Bezeichnung: Strecke AB, Gerade AB (oder g), Halbgerade mit Anfang A. Die Länge einer Strecke misst man mit dem Lineal.',
+        'Lehrplan Gymnasium Sachsen-Anhalt',
+      ),
+      dedupeKey: `st:geo:def:${pickQ.a}:${pickQ.q.slice(0, 20)}`,
+      contentIds: [`st:geo:def:${pickQ.a}`],
+    })
+  },
+  (rng) => {
+    const n = randInt(rng, 3, 7)
+    const strecken = (n * (n - 1)) / 2
+    return valueTask({
+      question: `Auf einer Geraden liegen ${n} Punkte. Wie viele Verbindungen zwischen je zwei dieser Punkte gibt es?`,
+      answerKind: 'integer',
+      value: strecken,
+      solution: String(strecken),
+      explanation: `Anzahl = n·(n−1)/2 = ${n}·${n - 1}/2 = ${strecken}.`,
+      fachwissen: fw(
+        'Je zwei Punkte bestimmen genau eine Strecke. Bei n Punkten auf einer Geraden: n·(n−1)/2 Strecken.',
+        'Lehrplan Gymnasium Sachsen-Anhalt',
+      ),
+      dedupeKey: `st:geo:count:${n}`,
+      contentIds: [`st:geo:count:${n}`],
+    })
+  },
+)
+
+/** Sinuswerte (ST) — themenreines Fachwissen. */
+export const genStFunkSin: Topic['generate'] = mixedVariants(
+  (rng) => {
+    const deg = pick(rng, [0, 30, 45, 60, 90])
+    const map: Record<number, string> = {
+      0: '0',
+      30: '1/2',
+      45: '√2/2',
+      60: '√3/2',
+      90: '1',
+    }
+    return appliedMc(rng, {
+      question: `Welchen Wert hat sin(${deg}°)?`,
+      correct: map[deg]!,
+      distractors: distinctDistractors(map[deg]!, ['0', '1/2', '√2/2', '√3/2', '1', '√3']),
+      explanation: `sin(${deg}°) = ${map[deg]}.`,
+      fachwissen: fw(
+        'Sinus am Einheitskreis: sin α ist die y-Koordinate des Punktes zum Winkel α. Wichtige Werte: 0°, 30°, 45°, 60°, 90°.',
+        'Lehrplan Gymnasium Sachsen-Anhalt',
+      ),
+      dedupeKey: `st:sin:${deg}`,
+      contentIds: [`st:sin:${deg}`],
+    })
+  },
+  (rng) => {
+    const a = pick(rng, [1, 2, 3])
+    return valueTask({
+      question: `Die Funktion f(x) = ${a}·sin(x) hat welche Amplitude?`,
+      answerKind: 'integer',
+      value: a,
+      solution: String(a),
+      explanation: `Bei f(x) = a·sin(x) ist die Amplitude |a| = ${a}.`,
+      fachwissen: fw(
+        'Amplitude |a| bei f(x) = a·sin(x) ist der maximale Abstand zur x-Achse. Die Periode von sin(x) ist 2π.',
+        'Lehrplan Gymnasium Sachsen-Anhalt',
+      ),
+      dedupeKey: `st:sin:amp:${a}`,
+      contentIds: [`st:sin:amp:${a}`],
+    })
+  },
+  (rng) => {
+    const deg = pick(rng, [0, 90, 180, 270])
+    const map: Record<number, string> = { 0: '0', 90: '1', 180: '0', 270: '−1' }
+    return appliedMc(rng, {
+      question: `sin(${deg}°) = ?`,
+      correct: map[deg]!,
+      distractors: distinctDistractors(map[deg]!, ['0', '1', '−1', '1/2', '√2/2']),
+      explanation: `Am Einheitskreis: sin(${deg}°) = ${map[deg]}.`,
+      fachwissen: fw(
+        'Sinus und Kosinus beschreiben periodische Vorgänge; sin hat Nullstellen bei 0°, 180°, … und Extremwerte ±1.',
+        'Lehrplan Gymnasium Sachsen-Anhalt',
+      ),
+      dedupeKey: `st:sin:kreis:${deg}`,
+      contentIds: [`st:sin:kreis:${deg}`],
     })
   },
 )
@@ -742,10 +1011,14 @@ export const OS_TEILASPEKT_APPLIED_GENERATORS: Record<string, Topic['generate']>
   'os-rs-k8-lb5-abhaengig': genOsRsAbhaengig,
   'os-rs-k8-lb6-lebenshaltung': genOsRsLeben,
   'os-rs-k9-lb3-monotonie': genOsRsMono,
+  'os-rs-k9-lb3-nullstellen': genOsRsNullstellen,
   'os-rs-k10-lb2-sinus-parameter': genOsRsSinus,
   'os-rs-k10-lb3-gewinnchance': genOsRsGewinn,
   'os-rs-k10-lb4-abgaben': genOsRsAbgaben,
   'st-k1112-differential': genOsStDiff,
+  'st-k10-funk-sin': genStFunkSin,
+  'st-k5-geo-strecken': genStGeoStrecken,
+  'sks-k5-geo-strecken': genStGeoStrecken,
   // Alias RS-Tarif
   'os-rs-k8-lb2-tarif': genOsHsTarif,
 }

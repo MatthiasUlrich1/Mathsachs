@@ -16,13 +16,26 @@ export function rewritePhysikPrompt(prompt: string): string {
   }
   const m2 = prompt.match(/Was bedeutet\s*[„"]([^„"”]+)[“"]\s*\?/i)
   if (m2) {
-    return `Welche Aussage zu „${m2[1]}“ ist fachlich richtig?`
+    const term = m2[1]!
+    if (/^Alltag\b/i.test(term)) {
+      return `Welche Alltagsbedeutung trifft auf „${term}“ zu?`
+    }
+    if (/^Modell\b/i.test(term)) {
+      return `Welche Modellaussage zu „${term}“ ist im Gültigkeitsbereich richtig?`
+    }
+    return `Welche Aussage zu „${term}“ ist fachlich richtig?`
   }
   // ohne Anführungszeichen: „Was bedeutet Schwerelosigkeit …?“
   const m3 = prompt.match(/^Was bedeutet\s+(.+?)\s*\??\s*$/i)
   if (m3) {
     const topic = m3[1]!.replace(/\s+qualitativ$/i, '').trim()
     return `Welche Aussage zu ${topic} ist fachlich richtig?`
+  }
+  // Begriffsdrill „Was ist der/die/das …?“ → Anwendung
+  const m4 = prompt.match(/^Was ist (ein|eine|der|die|das)\s+(.+?)\s*\??\s*$/i)
+  if (m4) {
+    const term = m4[2]!.replace(/\s+/g, ' ').trim()
+    return `Welche Aussage zu „${term}“ ist fachlich richtig?`
   }
   return prompt
 }

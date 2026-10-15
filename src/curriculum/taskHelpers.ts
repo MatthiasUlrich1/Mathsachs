@@ -61,7 +61,11 @@ export const valueTask = (input: ValueTaskInput): Task => ({
   question: input.question,
   unit: input.unit,
   answerKind: input.answerKind,
-  solution: input.solution,
+  // Übungsansicht zeigt `solution` ohne separates `unit` — Einheit mit ausgeben.
+  solution:
+    input.unit && !input.solution.includes(input.unit)
+      ? `${input.solution} ${input.unit}`
+      : input.solution,
   explanation: input.explanation,
   visualContent: input.visualContent,
   ...withFw(input.fachwissen),
@@ -641,7 +645,10 @@ export const visualTask = (input: VisualTaskInput): Task => ({
   question: input.question,
   unit: input.unit,
   answerKind: input.answerKind,
-  solution: input.solution,
+  solution:
+    input.unit && !input.solution.includes(input.unit)
+      ? `${input.solution} ${input.unit}`
+      : input.solution,
   explanation: input.explanation,
   visualContent: input.visualContent,
   ...withDedupe(input.dedupeKey),

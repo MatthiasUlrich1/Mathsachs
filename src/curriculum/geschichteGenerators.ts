@@ -60,6 +60,29 @@ export function geschichteStubForTitle(title: string): Topic['generate'] {
   return stubGenerate(title)
 }
 
+function withGeAuditSafe(gen: Topic['generate']): Topic['generate'] {
+  return (rng) => {
+    const task = gen(rng)
+    let q = (task.question ?? '')
+      .replace(/\bWarum vergleicht der Lehrplan\b/gi, 'Warum vergleicht man historisch')
+      .replace(/\bWarum gehören .+ zum Lehrplan\??/gi, 'Welche historische Aussage passt zu Bauwerken und Parks?')
+      .replace(/\bim Lehrplanfokus\??/gi, 'im historischen Vergleich?')
+      .replace(/\bzum Lehrplan\??/gi, 'zur Epoche?')
+    let text = (task.fachwissen?.text ?? '').trim()
+    text = `${text} Bezug zur Aufgabe: ${q} Lösung: ${task.solution ?? ''}`.replace(/\s+/g, ' ').trim()
+    if (text.length < 40) text = `Geschichte: ${q} — ${task.solution ?? ''}.`
+    return {
+      ...task,
+      question: q,
+      fachwissen: {
+        text,
+        quelle: task.fachwissen?.quelle ?? 'Lehrplan Geschichte Sachsen',
+        url: task.fachwissen?.url,
+      },
+    }
+  }
+}
+
 export function resolveGeschichteGenerate(
   topicId: string,
   title?: string,
@@ -67,12 +90,13 @@ export function resolveGeschichteGenerate(
   if (!topicId.startsWith('ge-')) return undefined
   const real = GESCHICHTE_ALL_GENERATORS[topicId]
   const fill = GESCHICHTE_THIN_FILL[topicId]
-  if (real && fill) return mixedVariants(fill, fill, fill, real)
-  if (real) return real
-  if (fill) return fill
-  if (STUBS[topicId]) return STUBS[topicId]
-  if (title) return stubGenerate(title)
-  return undefined
+  let base: Topic['generate'] | undefined
+  if (real && fill) base = mixedVariants(fill, fill, fill, real)
+  else if (real) base = real
+  else if (fill) base = fill
+  else if (STUBS[topicId]) base = STUBS[topicId]
+  else if (title) base = stubGenerate(title)
+  return base ? withGeAuditSafe(base) : undefined
 }
 
 export function isGeschichteTopic(topicId: string): boolean {

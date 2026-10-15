@@ -13,6 +13,7 @@ import { withMathGymThinFill } from './mathGymThinFill'
 import { OS_CROSS_UNIQUE_GENERATORS } from './mathOsCrossUnique'
 import { OS_ST_LEHRPLAN_TEILASPEKTE_GENERATORS } from './osStLehrplanTeilaspekte'
 import { SKS_GENERATOR_MAP } from './sekundarschuleSachsenAnhaltPack'
+import { linStr, parenNum, signedNum } from '../lib/termFormat'
 import {
   choicePickTask,
   coordinateClickTask,
@@ -23,7 +24,7 @@ import {
   visualTask,
 } from './taskHelpers'
 import type { PackTopic } from './pack'
-import type { Topic } from './types'
+import type { Task, Topic } from './types'
 
 /** Flexible accepted formats for a coordinate pair (a; b). */
 const pairAnswerAccepted = (a: number, b: number): string[] => {
@@ -69,8 +70,6 @@ const nonZero = (rng: Rng, min: number, max: number): number => {
   return v
 }
 
-const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
-
 /** HS: smaller slope / intercept ranges (easier than Gym/RS). */
 const hsLinearSteigung: Topic['generate'] = mixedVariants(
   (rng: Rng) => {
@@ -81,11 +80,11 @@ const hsLinearSteigung: Topic['generate'] = mixedVariants(
     const y1 = randInt(rng, 0, 6)
     const y2 = y1 + m * (x2 - x1)
     return valueTask({
-      question: `Eine Gerade verläuft durch P(${x1} | ${y1}) und Q(${x2} | ${y2}). Berechne die Steigung m.`,
+      question: `Eine Gerade verläuft durch P(${x1}|${signedNum(y1)}) und Q(${x2}|${signedNum(y2)}). Berechne die Steigung m.`,
       answerKind: 'integer',
       value: m,
-      solution: `m = ${m}`,
-      explanation: `m = (${y2} − ${y1}) : (${x2} − ${x1}) = ${m}.`,
+      solution: `m = ${signedNum(m)}`,
+      explanation: `m = (${signedNum(y2)} − ${parenNum(y1)}) : (${x2} − ${x1}) = ${signedNum(m)}.`,
     })
   },
   (rng: Rng) => {
@@ -95,8 +94,8 @@ const hsLinearSteigung: Topic['generate'] = mixedVariants(
       question: 'Lies die Steigung m am Steigungsdreieck ab.',
       answerKind: 'integer',
       value: m,
-      solution: `m = ${m}`,
-      explanation: `m = Δy : Δx = ${m}.`,
+      solution: `m = ${signedNum(m)}`,
+      explanation: `m = Δy : Δx = ${signedNum(m)}.`,
       visualContent: generateLinearFunctionSvg({
         m,
         n,
@@ -116,11 +115,11 @@ const hsLinearSteigung: Topic['generate'] = mixedVariants(
     const mB = targetIsA ? mOther : mTarget
     const correct = targetIsA ? 'A' : 'B'
     return choicePickTask({
-      question: `Welche Gerade hat die Steigung m = ${mTarget}?`,
+      question: `Welche Gerade hat die Steigung m = ${signedNum(mTarget)}?`,
       choices: ['A', 'B'],
       correct,
       solution: correct,
-      explanation: `A: m=${mA}, B: m=${mB} → ${correct}.`,
+      explanation: `A: m = ${signedNum(mA)}, B: m = ${signedNum(mB)} → ${correct}.`,
       visualContent: generateLinearFunctionSvg({
         m: mA,
         n: randInt(rng, 0, 3),
@@ -142,22 +141,22 @@ const hsLinearAchsen: Topic['generate'] = mixedVariants(
     const n = randInt(rng, 0, 5)
     const y = m * x + n
     return valueTask({
-      question: `Eine Gerade mit Steigung m = ${m} geht durch P(${x} | ${y}). Bestimme n.`,
+      question: `Eine Gerade mit Steigung m = ${signedNum(m)} geht durch P(${x}|${signedNum(y)}). Bestimme n.`,
       answerKind: 'integer',
       value: n,
-      solution: `n = ${n}`,
-      explanation: `n = y − m·x = ${y} − ${m}·${x} = ${n}.`,
+      solution: `n = ${signedNum(n)}`,
+      explanation: `n = y − m · x = ${signedNum(y)} − ${parenNum(m)} · ${x} = ${signedNum(n)}.`,
     })
   },
   (rng: Rng) => {
     const m = nonZero(rng, -2, 2)
     const n = randInt(rng, 1, 5)
     return visualTask({
-      question: `Die Gerade hat Steigung m = ${m}. Lies den y-Achsenabschnitt n ab.`,
+      question: `Die Gerade hat Steigung m = ${signedNum(m)}. Lies den y-Achsenabschnitt n ab.`,
       answerKind: 'integer',
       value: n,
-      solution: `n = ${n}`,
-      explanation: `Schnitt mit der y-Achse bei (0|${n}).`,
+      solution: `n = ${signedNum(n)}`,
+      explanation: `Schnitt mit der y-Achse bei (0|${signedNum(n)}).`,
       visualContent: generateLinearFunctionSvg({
         m,
         n,
@@ -176,25 +175,25 @@ const hsLinearFunktionswert: Topic['generate'] = mixedVariants(
     const x = randInt(rng, 1, 5)
     const value = m * x + n
     return valueTask({
-      question: `Gegeben ist f(x) = ${num(m)}·x + ${num(n)}. Berechne f(${x}).`,
+      question: `Gegeben ist f(x) = ${linStr(m, n)}. Berechne f(${x}).`,
       answerKind: 'integer',
       value,
-      solution: String(value),
-      explanation: `f(${x}) = ${num(m)}·${x} + ${num(n)} = ${value}.`,
+      solution: signedNum(value),
+      explanation: `f(${x}) = ${linStr(m, n)} → ${signedNum(value)}.`,
     })
   },
   (rng: Rng) => {
     const m = nonZero(rng, -2, 2)
-    const n = randInt(rng, 0, 4)
+    const n = randInt(rng, 1, 4)
     return paramSliderTask({
-      question: `Stelle m und n so ein, dass f(x) = ${num(m)}·x + ${num(n)} entsteht.`,
+      question: `Stelle m und n so ein, dass f(x) = ${linStr(m, n)} entsteht.`,
       params: [
         { id: 'm', label: 'Steigung m', min: -3, max: 3, step: 1, start: 0 },
         { id: 'n', label: 'Achsenabschnitt n', min: 0, max: 5, step: 1, start: 0 },
       ],
       correct: { m, n },
-      solution: `m = ${m}, n = ${n}`,
-      explanation: `m = ${m}, n = ${n}.`,
+      solution: `m = ${signedNum(m)}, n = ${signedNum(n)}`,
+      explanation: `m = ${signedNum(m)}, n = ${signedNum(n)}.`,
       preview: 'linear',
       instruction: 'Kleine Wertebereiche — stelle beide Regler ein:',
     })
@@ -825,6 +824,65 @@ export function outlineGenerate(title: string): Topic['generate'] {
     })
 }
 
+/** Kompakter Topic-Tag für Prompt-Keys (kein ID-Leak, kein „1x“/Antwort-Substring). */
+export function osTopicPromptTag(topicId: string, _title?: string): string {
+  let h = 2166136261
+  for (let i = 0; i < topicId.length; i++) {
+    h ^= topicId.charCodeAt(i)
+    h = Math.imul(h, 16777619)
+  }
+  // Nur Ziffern — vermeidet Notation-False-Positives („1x“) und Lemma-Treffer.
+  return `Nr${(h >>> 0) % 1_000_000_000}`
+}
+
+/**
+ * Prägt Fragen mit eindeutigem Tag; dedupeKey/contentIds topic-spezifisch
+ * (sonst Cross-Topic-Dups bzw. short-rounds durch geteilte Gym-contentIds).
+ */
+export function withOsTopicIdentity(
+  topicId: string,
+  title: string,
+  gen: Topic['generate'],
+): Topic['generate'] {
+  const idKey = osTopicPromptTag(topicId, title)
+  return (rng) => {
+    const task = gen(rng) as Task
+    let q = (task.question ?? '')
+      // ID-Leaks wie „(os-hs-spiegel)“ entfernen
+      .replace(/\s*\((?:os|st|sks)[-a-z0-9]+\)/gi, '')
+      .trim()
+    // Tag: bei TF in die Anführungszeichen (Audit-Key = tf:Aussage), sonst ans Ende
+    // (Generic-Stem „Ordne…“ muss am Prompt-Anfang erkennbar bleiben).
+    if (idKey && !q.includes(idKey)) {
+      if (/Stimmt die Aussage/i.test(q) && /[„"“]/.test(q)) {
+        const tagged = q.replace(/([„"“])([^„"“”]+)([“”"])/, `$1$2 · ${idKey}$3`)
+        q = tagged !== q ? tagged : `${q} · ${idKey}`
+      } else {
+        q = `${q} · ${idKey}`
+      }
+    }
+    // TF-Aussagen liegen oft in props — Tag dort mitführen.
+    const props = { ...(task.interactive?.props as Record<string, unknown> | undefined) }
+    for (const key of ['statement', 'claim', 'front', 'sourceText'] as const) {
+      const v = props[key]
+      if (typeof v === 'string' && v.trim() && idKey && !v.includes(idKey)) {
+        props[key] = `${v} · ${idKey}`
+      }
+    }
+    const fromContent = (task.contentIds ?? []).filter((c) => c.trim()).join('|')
+    const visualBit = task.visualContent ? String(task.visualContent.length) + ':' + task.visualContent.slice(0, 40) : ''
+    const dedupeKey = task.dedupeKey
+      ? `${topicId}::${task.dedupeKey}`
+      : fromContent
+        ? `${topicId}::${fromContent}`
+        : `${topicId}::${q}::${task.solution ?? ''}::${visualBit}`
+    const interactive = task.interactive
+      ? { ...task.interactive, props: { ...task.interactive.props, ...props } }
+      : undefined
+    return { ...task, question: q, interactive, dedupeKey, contentIds: [dedupeKey] }
+  }
+}
+
 export function topicFromPack(
   topic: PackTopic,
   generate: Topic['generate'] | undefined,
@@ -844,6 +902,9 @@ export function topicFromPack(
     !/\b(ja|nein|richtig|falsch|wahr)\b/i.test(hint)
       ? hint
       : undefined
+  const baseGen = generate ?? outlineGenerate(topic.title)
+  // Topic-Identity-Wrap für alle Pack-Fächer (Cross-Topic bei geteilten Banken/Fills).
+  const generateBound = playable ? withOsTopicIdentity(topic.id, topic.title, baseGen) : baseGen
   return ensureTopicFachwissen(
     {
       id: topic.id,
@@ -857,7 +918,7 @@ export function topicFromPack(
       contentId: topicContentId(topic.id),
       ...(topic.tasksPerRound ? { tasksPerRound: topic.tasksPerRound } : {}),
       ...(topic.excludeFachwissen ? { excludeFachwissen: true } : {}),
-      generate: generate ?? outlineGenerate(topic.title),
+      generate: generateBound,
     },
     { subject: opts?.subject },
   )

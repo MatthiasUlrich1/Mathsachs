@@ -2,6 +2,7 @@
  * OS-Themen, die bisher denselben Gym-Generator teilten → jeweils eigener Pool
  * (Cross-Topic-Duplikate / Themenbindung).
  */
+import { formatDe } from '../lib/num'
 import { pick, randInt } from '../lib/rng'
 import { appliedMc, distinctDistractors, generateDrehungK5 } from './mathApplied'
 import { mixedVariants, valueTask } from './taskHelpers'
@@ -361,7 +362,7 @@ function makeSpiegel(tag: string, axis: 'x' | 'y' | 'origin'): Topic['generate']
       const y = randInt(rng, 1, 6)
       if (axis === 'y') {
         return appliedMc(rng, {
-          question: `Spiegelung an der y-Achse (${tag}): Wohin fällt A(${x}|${y})?`,
+          question: `Spiegelung an der y-Achse: Wohin fällt A(${x}|${y})?`,
           correct: `(−${x}|${y})`,
           distractors: [`(${x}|−${y})`, `(−${x}|−${y})`, `(${y}|${x})`, `(${x}|${y})`],
           explanation: `(x|y) → (−x|y).`,
@@ -371,7 +372,7 @@ function makeSpiegel(tag: string, axis: 'x' | 'y' | 'origin'): Topic['generate']
       }
       if (axis === 'x') {
         return appliedMc(rng, {
-          question: `Spiegelung an der x-Achse (${tag}): Wohin fällt B(${x}|${y})?`,
+          question: `Spiegelung an der x-Achse: Wohin fällt B(${x}|${y})?`,
           correct: `(${x}|−${y})`,
           distractors: [`(−${x}|${y})`, `(−${x}|−${y})`, `(${y}|${x})`, `(0|${y})`],
           explanation: `(x|y) → (x|−y).`,
@@ -380,7 +381,7 @@ function makeSpiegel(tag: string, axis: 'x' | 'y' | 'origin'): Topic['generate']
         })
       }
       return appliedMc(rng, {
-        question: `Punktspiegelung am Ursprung (${tag}): Wohin fällt C(${x}|${y})?`,
+        question: `Punktspiegelung am Ursprung: Wohin fällt C(${x}|${y})?`,
         correct: `(−${x}|−${y})`,
         distractors: [`(−${x}|${y})`, `(${x}|−${y})`, `(${y}|${x})`, `(${x}|${y})`],
         explanation: `(x|y) → (−x|−y).`,
@@ -503,21 +504,21 @@ function makeLage(tag: string, title: string): Topic['generate'] {
 function makeDgs(tag: string, title: string): Topic['generate'] {
   return mixedVariants(
     (rng) => {
-      const n = randInt(rng, 3, 8)
+      const n = randInt(rng, 3, 12)
       return valueTask({
         question: `${title}: Du spiegelst einen Punkt nacheinander an zwei senkrechten Achsen. Welcher Drehwinkel (in Grad) entspricht der Gesamtbewegung?`,
         answerKind: 'integer',
         value: 180,
-        solution: '180°',
+        solution: '180',
         unit: '°',
         explanation: 'Zwei Spiegelungen an senkrechten Achsen ergeben eine 180°-Drehung.',
         fachwissen: fw('Verkettung von Geradenspiegelungen: parallel → Verschiebung, schneidend → Drehung um den doppelten Schnittwinkel.'),
         dedupeKey: `${tag}:dgs:180:${n}`,
-        contentIds: [`${tag}:dgs:180`],
+        contentIds: [`${tag}:dgs:180:${n}`],
       })
     },
     (rng) => {
-      const steps = randInt(rng, 3, 7)
+      const steps = randInt(rng, 3, 12)
       return appliedMc(rng, {
         question: `${title}: Ein Makro führt ${steps} Konstruktionsschritte aus. Was ist der Sinn eines Makros in der DGS?`,
         correct: 'Wiederkehrende Konstruktionen speichern und erneut anwenden',
@@ -530,10 +531,11 @@ function makeDgs(tag: string, title: string): Topic['generate'] {
         explanation: 'Makros bündeln Konstruktionsschritte zur Wiederverwendung.',
         fachwissen: fw('In dynamischer Geometriesoftware speichern Makros Konstruktionsabläufe (z. B. Mittelsenkrechte, Ortslinien).'),
         dedupeKey: `${tag}:dgs:makro:${steps}`,
+        contentIds: [`${tag}:dgs:makro:${steps}`],
       })
     },
     (rng) => {
-      const r = randInt(rng, 2, 6)
+      const r = randInt(rng, 2, 12)
       return valueTask({
         question: `${title}: Ein Punkt bewegt sich auf einem Kreis mit Radius ${r}. Welchen Abstand hat er ständig zum Mittelpunkt?`,
         answerKind: 'integer',
@@ -543,6 +545,37 @@ function makeDgs(tag: string, title: string): Topic['generate'] {
         fachwissen: fw('Ortslinie „Kreis“: Menge aller Punkte mit festem Abstand zum Mittelpunkt.'),
         dedupeKey: `${tag}:dgs:ort:${r}`,
         contentIds: [`${tag}:dgs:ort:${r}`],
+      })
+    },
+    (rng) => {
+      const a = randInt(rng, 20, 70)
+      return valueTask({
+        question: `${title}: Zwei Spiegelachsen schneiden sich unter ${a}°. Welcher Drehwinkel (in Grad) entsteht durch die Verkettung der beiden Spiegelungen?`,
+        answerKind: 'integer',
+        value: 2 * a,
+        solution: String(2 * a),
+        unit: '°',
+        explanation: `Drehwinkel = 2 · Schnittwinkel = 2 · ${a}° = ${2 * a}°.`,
+        fachwissen: fw('Zwei Geradenspiegelungen an schneidenden Achsen ergeben eine Drehung um den doppelten Schnittwinkel.'),
+        dedupeKey: `${tag}:dgs:2a:${a}`,
+        contentIds: [`${tag}:dgs:2a:${a}`],
+      })
+    },
+    (rng) => {
+      const d = randInt(rng, 2, 9)
+      return appliedMc(rng, {
+        question: `${title}: Die Ortslinie aller Punkte mit Abstand ${d} zu einer festen Geraden g ist …`,
+        correct: 'ein Paar paralleler Geraden im Abstand d zu g',
+        distractors: [
+          'ein Kreis mit Radius d',
+          'die Mittelsenkrechte von g',
+          'nur der Punkt im Ursprung',
+          'eine Parabel mit Brennpunkt auf g',
+        ],
+        explanation: `Abstand ${d} zu einer Geraden: zwei Parallelen im Abstand ${d}.`,
+        fachwissen: fw('Ortslinie „Abstand zu einer Geraden“: zwei Parallelen; „Abstand zu einem Punkt“: Kreis.'),
+        dedupeKey: `${tag}:dgs:par:${d}`,
+        contentIds: [`${tag}:dgs:par:${d}`],
       })
     },
   )
@@ -597,7 +630,7 @@ function makeVieleck(tag: string): Topic['generate'] {
 function makeTaeuschung(tag: string): Topic['generate'] {
   return mixedVariants(
     (rng) => {
-      const a = randInt(rng, 3, 9)
+      const a = randInt(rng, 3, 12)
       return appliedMc(rng, {
         question: `Optische Täuschung: Zwei Strecken wirken verschieden lang, messen aber beide ${a} cm. Was prüft man am besten?`,
         correct: 'Nachmessen mit dem Lineal',
@@ -605,6 +638,7 @@ function makeTaeuschung(tag: string): Topic['generate'] {
         explanation: 'Geometrische Länge entscheidet — nicht der visuelle Eindruck.',
         fachwissen: fw('Räumliche Illusionen nutzen Kontextlinien; Messen und Konstruktion entlarven den Eindruck.'),
         dedupeKey: `${tag}:taeusch:${a}`,
+        contentIds: [`${tag}:taeusch:${a}`],
       })
     },
     (rng) => {
@@ -617,7 +651,32 @@ function makeTaeuschung(tag: string): Topic['generate'] {
         explanation: 'Ein-Punkt-Perspektive: genau ein Fluchtpunkt auf dem Horizont.',
         fachwissen: fw('Zentralperspektive: parallele Kanten treffen sich im Fluchtpunkt — das erzeugt Tiefenwirkung.'),
         dedupeKey: `${tag}:flucht:${n}`,
-        contentIds: [`${tag}:flucht:1`],
+        contentIds: [`${tag}:flucht:${n}`],
+      })
+    },
+    (rng) => {
+      const w = randInt(rng, 4, 10)
+      return appliedMc(rng, {
+        question: `Zwei gleich lange Strecken (${w} cm) wirken durch Pfeilspitzen verschieden. Was verursacht die Täuschung?`,
+        correct: 'Kontextlinien und Winkel täuschen den Längeneindruck',
+        distractors: ['Die Strecken haben wirklich andere Längen', 'Nur die Bildschirmfarbe', 'Der Maßstab des Lineals ändert sich', 'Koordinatenachsen fehlen'],
+        explanation: 'Die Müller-Lyer-Täuschung nutzt Kontextwinkel — die gemessene Länge bleibt gleich.',
+        fachwissen: fw('Optische Täuschungen entstehen durch Kontext; Messen und Konstruktion liefern die wahre Länge.'),
+        dedupeKey: `${tag}:mueller:${w}`,
+        contentIds: [`${tag}:mueller:${w}`],
+      })
+    },
+    (rng) => {
+      const d = randInt(rng, 2, 8)
+      return valueTask({
+        question: `Bei einer Zwei-Punkt-Perspektive liegen ${d} Kantenlinien auf Fluchtstrahlen. Wie viele Fluchtpunkte hat die Zwei-Punkt-Perspektive?`,
+        answerKind: 'integer',
+        value: 2,
+        solution: '2',
+        explanation: 'Zwei-Punkt-Perspektive: zwei Fluchtpunkte auf dem Horizont.',
+        fachwissen: fw('Ein-/Zwei-/Drei-Punkt-Perspektive: Anzahl der Fluchtpunkte entspricht den Hauptflucht-Richtungen.'),
+        dedupeKey: `${tag}:zwei:${d}`,
+        contentIds: [`${tag}:zwei:${d}`],
       })
     },
   )
@@ -668,6 +727,413 @@ function makeAchsenTagged(tag: string, focus: string): Topic['generate'] {
   )
 }
 
+/** Würfel/Netz/Raum — großer Pool (ersetzt dünnes lb4-wuerfelnetz). */
+function makeRaumNetz(tag: string, focus: string): Topic['generate'] {
+  return mixedVariants(
+    (rng) => {
+      const a = randInt(rng, 2, 9)
+      return valueTask({
+        question: `${focus}: Ein Würfel hat Kantenlänge ${a} cm. Wie viele Flächen hat er?`,
+        answerKind: 'integer',
+        value: 6,
+        solution: '6',
+        explanation: 'Jeder Würfel hat 6 Quadrate als Seitenflächen.',
+        fachwissen: fw('Würfel: 6 Flächen, 12 Kanten, 8 Ecken. Euler: E − K + F = 2.'),
+        dedupeKey: `${tag}:fl:${a}`,
+        contentIds: [`${tag}:fl:${a}`],
+      })
+    },
+    (rng) => {
+      const a = randInt(rng, 2, 9)
+      return valueTask({
+        question: `${focus}: Ein Würfel mit Kantenlänge ${a} cm — wie viele Kanten?`,
+        answerKind: 'integer',
+        value: 12,
+        solution: '12',
+        explanation: '12 Kanten.',
+        fachwissen: fw('Am Würfel stoßen an jeder Ecke 3 Kanten; insgesamt 12 Kanten.'),
+        dedupeKey: `${tag}:ka:${a}`,
+        contentIds: [`${tag}:ka:${a}`],
+      })
+    },
+    (rng) => {
+      const a = randInt(rng, 2, 8)
+      return valueTask({
+        question: `${focus}: Wie viele Ecken hat ein Würfel (Kante ${a})?`,
+        answerKind: 'integer',
+        value: 8,
+        solution: '8',
+        explanation: '8 Ecken.',
+        fachwissen: fw('Der Würfel ist ein regelmäßiges Hexaeder mit 8 Ecken.'),
+        dedupeKey: `${tag}:ec:${a}`,
+        contentIds: [`${tag}:ec:${a}`],
+      })
+    },
+    (rng) => {
+      const e = 8
+      const k = 12
+      const f = 6
+      const n = randInt(rng, 1, 5)
+      return valueTask({
+        question: `${focus}: Euler-Formel für den Würfel: E − K + F = ? (Probe ${n})`,
+        answerKind: 'integer',
+        value: 2,
+        solution: '2',
+        explanation: `${e} − ${k} + ${f} = 2.`,
+        fachwissen: fw('Für konvexe Polyeder gilt E − K + F = 2 (Euler).'),
+        dedupeKey: `${tag}:euler:${n}`,
+        contentIds: [`${tag}:euler:${n}`],
+      })
+    },
+    (rng) => {
+      const n = randInt(rng, 3, 8)
+      return appliedMc(rng, {
+        question: `${focus}: Ein Würfelnetz besteht aus wie vielen Quadraten? (Variante ${n})`,
+        correct: '6',
+        distractors: ['4', '5', '7', '8', '12'],
+        explanation: 'Genau die 6 Seitenflächen.',
+        fachwissen: fw('Ein Würfelnetz ist eine zusammenhängende Abwicklung der 6 Quadrate ohne Überlappung.'),
+        dedupeKey: `${tag}:netz6:${n}`,
+        contentIds: [`${tag}:netz6:${n}`],
+      })
+    },
+    (rng) => {
+      const a = randInt(rng, 2, 10)
+      return valueTask({
+        question: `${focus}: Oberfläche eines Würfels mit Kante ${a} cm (in cm²)?`,
+        answerKind: 'integer',
+        value: 6 * a * a,
+        solution: String(6 * a * a),
+        unit: 'cm²',
+        explanation: `O = 6·${a}² = ${6 * a * a} cm².`,
+        fachwissen: fw(
+          'Die Oberfläche eines Würfels mit Kantenlänge a beträgt O = 6·a² — sechs gleiche Quadrate.',
+        ),
+        dedupeKey: `${tag}:o:${a}`,
+        contentIds: [`${tag}:o:${a}`],
+      })
+    },
+    (rng) => {
+      const a = randInt(rng, 2, 8)
+      return valueTask({
+        question: `${focus}: Volumen eines Würfels mit Kante ${a} cm (in cm³)?`,
+        answerKind: 'integer',
+        value: a * a * a,
+        solution: String(a * a * a),
+        unit: 'cm³',
+        explanation: `V = ${a}³ = ${a * a * a} cm³.`,
+        fachwissen: fw(
+          'Das Volumen eines Würfels mit Kantenlänge a berechnet man als V = a³ (Länge · Breite · Höhe).',
+        ),
+        dedupeKey: `${tag}:v:${a}`,
+        contentIds: [`${tag}:v:${a}`],
+      })
+    },
+    (rng) => {
+      const n = randInt(rng, 2, 9)
+      return appliedMc(rng, {
+        question: `${focus}: Welche Aussage zu Würfelnetzen ist richtig? (Fall ${n})`,
+        correct: 'Es gibt mehrere verschiedene gültige Netze',
+        distractors: [
+          'Es gibt genau ein gültiges Netz',
+          'Jedes Anordnung aus 6 Quadraten ist ein Netz',
+          'Würfel haben keine Netze',
+          'Nur Ketten aus 6 Quadraten funktionieren',
+        ],
+        explanation: 'Es gibt 11 Netze bis auf Kongruenz.',
+        fachwissen: fw(
+          'Zu Würfelnetzen gibt es mehrere richtige Aussagen: Nicht jede Anordnung aus 6 Quadraten ist faltbar, aber es gibt verschiedene gültige Netze.',
+        ),
+        dedupeKey: `${tag}:anz:${n}`,
+        contentIds: [`${tag}:anz:${n}`],
+      })
+    },
+    (rng) => {
+      const f = randInt(rng, 4, 12)
+      return valueTask({
+        question: `${focus}: Ein gerades Prisma hat ${f} Seitenflächen (ohne Deckel/Boden gezählt?). Nein — insgesamt inkl. Deckel: wie viele Flächen hat ein Dreieckprisma?`,
+        answerKind: 'integer',
+        value: 5,
+        solution: '5',
+        explanation: '3 Rechtecke + 2 Dreiecke = 5 Flächen.',
+        fachwissen: fw('n-seitiges Prisma: n + 2 Flächen (n Rechtecke + 2 n-Ecke).'),
+        dedupeKey: `${tag}:prisma:${f}`,
+        contentIds: [`${tag}:prisma:5:${f}`],
+      })
+    },
+    (rng) => {
+      const n = randInt(rng, 3, 8)
+      return valueTask({
+        question: `${focus}: Wie viele Fluchtpunkte hat eine typische Ein-Punkt-Perspektive? (Skizze ${n})`,
+        answerKind: 'integer',
+        value: 1,
+        solution: '1',
+        explanation: 'Ein Fluchtpunkt auf dem Horizont.',
+        fachwissen: fw('Zentralperspektive: parallele Kanten treffen sich im Fluchtpunkt.'),
+        dedupeKey: `${tag}:flucht:${n}`,
+        contentIds: [`${tag}:flucht:${n}`],
+      })
+    },
+  )
+}
+
+/** Grafische Anteile / Kreisdiagramm — großer Pool. */
+function makeAnteilGrafik(tag: string, focus: string): Topic['generate'] {
+  return mixedVariants(
+    (rng) => {
+      const n = randInt(rng, 2, 12)
+      const d = randInt(rng, n + 1, 16)
+      return valueTask({
+        question: `${focus}: ${n} von ${d} gleich großen Teilen sind gefärbt. Welcher Bruchteil ist gefärbt? (Zähler)`,
+        answerKind: 'integer',
+        value: n,
+        solution: String(n),
+        explanation: `Gefärbt: ${n}/${d}.`,
+        fachwissen: fw('Anteil = gefärbte Teile : alle gleich großen Teile.'),
+        dedupeKey: `${tag}:z:${n}:${d}`,
+        contentIds: [`${tag}:z:${n}:${d}`],
+      })
+    },
+    (rng) => {
+      const pct = pick(rng, [10, 20, 25, 40, 50, 60, 75])
+      return valueTask({
+        question: `${focus}: Ein Kreisdiagramm zeigt ${pct} %. Wie groß ist der Mittelpunktswinkel in Grad?`,
+        answerKind: 'integer',
+        value: (pct / 100) * 360,
+        solution: String((pct / 100) * 360),
+        unit: '°',
+        explanation: `${pct} % von 360° = ${(pct / 100) * 360}°.`,
+        fachwissen: fw('Im Kreisdiagramm: Winkel = Anteil · 360°.'),
+        dedupeKey: `${tag}:w:${pct}`,
+        contentIds: [`${tag}:w:${pct}`],
+      })
+    },
+    (rng) => {
+      const a = randInt(rng, 1, 5)
+      const b = randInt(rng, a + 1, 10)
+      return appliedMc(rng, {
+        question: `${focus}: Welcher Bruch ist größer: ${a}/${b} oder ${a}/${b + 1}?`,
+        correct: `${a}/${b}`,
+        distractors: [`${a}/${b + 1}`, 'gleich groß', `${b}/${a}`, '0'],
+        explanation: `Gleicher Zähler, kleinerer Nenner → größerer Bruch: ${a}/${b}.`,
+        fachwissen: fw('Bei gleichem Zähler ist der Bruch mit dem kleineren Nenner größer.'),
+        dedupeKey: `${tag}:vgl:${a}:${b}`,
+        contentIds: [`${tag}:vgl:${a}:${b}`],
+      })
+    },
+    (rng) => {
+      const k = randInt(rng, 2, 9)
+      return valueTask({
+        question: `${focus}: Ein Rechteck ist in ${k} gleiche Streifen geteilt, 1 ist gefärbt. Nenner des Anteils?`,
+        answerKind: 'integer',
+        value: k,
+        solution: String(k),
+        explanation: `Anteil 1/${k}.`,
+        fachwissen: fw('Einheitliche Teilung: Nenner = Anzahl der gleich großen Teile.'),
+        dedupeKey: `${tag}:str:${k}`,
+        contentIds: [`${tag}:str:${k}`],
+      })
+    },
+    (rng) => {
+      const p = pick(rng, [1, 2, 3, 4])
+      const q = 4
+      return valueTask({
+        question: `${focus}: ${p} von ${q} Viertelkreisen sind gefärbt. Anteil in Prozent?`,
+        answerKind: 'integer',
+        value: (p / q) * 100,
+        solution: String((p / q) * 100),
+        unit: '%',
+        explanation: `${p}/${q} = ${(p / q) * 100} %.`,
+        fachwissen: fw('Bruch → Prozent: mit 100 multiplizieren.'),
+        dedupeKey: `${tag}:pct:${p}`,
+        contentIds: [`${tag}:pct:${p}`],
+      })
+    },
+  )
+}
+
+/** Konstruktion / Mittelsenkrechte — großer Pool. */
+function makeKonstruktion(tag: string, focus: string): Topic['generate'] {
+  return mixedVariants(
+    (rng) => {
+      const a = randInt(rng, 4, 20)
+      return valueTask({
+        question: `${focus}: Strecke AB = ${a} cm. Welchen Abstand hat der Mittelpunkt M von A (in cm)?`,
+        answerKind: 'decimal',
+        value: a / 2,
+        solution: formatDe(a / 2),
+        unit: 'cm',
+        explanation: `M liegt in der Mitte: ${formatDe(a / 2)} cm von A.`,
+        fachwissen: fw('Mittelsenkrechte: Gerade durch den Mittelpunkt von AB, senkrecht zu AB.'),
+        dedupeKey: `${tag}:mid:${a}`,
+        contentIds: [`${tag}:mid:${a}`],
+      })
+    },
+    (rng) => {
+      const n = randInt(rng, 2, 12)
+      return appliedMc(rng, {
+        question: `${focus}: Welcher Punkt liegt auf der Mittelsenkrechten von AB? (Fall ${n})`,
+        correct: 'Jeder Punkt mit gleichem Abstand zu A und B',
+        distractors: [
+          'Nur der Punkt A',
+          'Nur der Punkt B',
+          'Nur Punkte auf der Strecke AB',
+          'Der Umkreismittelpunkt eines beliebigen Dreiecks',
+        ],
+        explanation: 'Definition: Menge aller Punkte mit gleichem Abstand zu A und B.',
+        fachwissen: fw('Die Mittelsenkrechte ist der Ort aller Punkte, die von A und B gleich weit entfernt sind.'),
+        dedupeKey: `${tag}:def:${n}`,
+        contentIds: [`${tag}:def:${n}`],
+      })
+    },
+    (rng) => {
+      const r = randInt(rng, 3, 10)
+      return valueTask({
+        question: `${focus}: Umkreisradius eines gleichseitigen Dreiecks mit Umkreisradius ${r} cm — Abstand Mittelpunkt zu einer Ecke?`,
+        answerKind: 'integer',
+        value: r,
+        solution: String(r),
+        unit: 'cm',
+        explanation: `Alle Ecken liegen auf dem Umkreis → Abstand = ${r} cm.`,
+        fachwissen: fw('Umkreismittelpunkt: Schnitt der Mittelsenkrechten; Abstand zu allen Ecken gleich (Radius).'),
+        dedupeKey: `${tag}:u:${r}`,
+        contentIds: [`${tag}:u:${r}`],
+      })
+    },
+    (rng) => {
+      const n = randInt(rng, 2, 10)
+      return valueTask({
+        question: `${focus}: Wie viele Mittelsenkrechten bestimmen den Umkreismittelpunkt eines Dreiecks eindeutig? (mind., Fall ${n})`,
+        answerKind: 'integer',
+        value: 2,
+        solution: '2',
+        explanation: 'Zwei Mittelsenkrechten schneiden sich im Umkreismittelpunkt; die dritte geht ebenfalls hindurch.',
+        fachwissen: fw('Im Dreieck schneiden sich die drei Mittelsenkrechten in einem Punkt (Umkreismittelpunkt).'),
+        dedupeKey: `${tag}:zwei:${n}`,
+        contentIds: [`${tag}:zwei:${n}`],
+      })
+    },
+    (rng) => {
+      const a = randInt(rng, 5, 15)
+      return appliedMc(rng, {
+        question: `${focus}: Beim Konstruieren der Mittelsenkrechten zu AB (${a} cm) öffnet man den Zirkel …`,
+        correct: 'auf mehr als die Hälfte von AB',
+        distractors: [
+          'genau auf AB',
+          'auf weniger als ein Viertel von AB',
+          'beliebig klein',
+          'genau auf den Radius 0',
+        ],
+        explanation: 'Die Kreise um A und B müssen sich schneiden → Radius > AB/2.',
+        fachwissen: fw('Konstruktion: Kreise um A und B mit gleichem Radius > AB/2; Verbindungsgerade der Schnittpunkte.'),
+        dedupeKey: `${tag}:zirk:${a}`,
+        contentIds: [`${tag}:zirk:${a}`],
+      })
+    },
+  )
+}
+
+/** Schriftliches Rechnen — großer Pool. */
+function makeSchriftlich(tag: string, focus: string): Topic['generate'] {
+  return mixedVariants(
+    (rng) => {
+      const a = randInt(rng, 12, 89)
+      const b = randInt(rng, 13, 89)
+      return valueTask({
+        question: `${focus}: Berechne schriftlich: ${a} + ${b}`,
+        answerKind: 'integer',
+        value: a + b,
+        solution: String(a + b),
+        explanation: `${a} + ${b} = ${a + b}.`,
+        fachwissen: fw('Schriftliche Addition: Stellen untereinander, von rechts nach links, Übertrag beachten.'),
+        dedupeKey: `${tag}:add:${a}:${b}`,
+        contentIds: [`${tag}:add:${a}:${b}`],
+      })
+    },
+    (rng) => {
+      const a = randInt(rng, 40, 99)
+      const b = randInt(rng, 10, a - 1)
+      return valueTask({
+        question: `${focus}: Berechne schriftlich: ${a} − ${b}`,
+        answerKind: 'integer',
+        value: a - b,
+        solution: String(a - b),
+        explanation: `${a} − ${b} = ${a - b}.`,
+        fachwissen: fw('Schriftliche Subtraktion: von rechts nach links, bei Bedarf entbündeln.'),
+        dedupeKey: `${tag}:sub:${a}:${b}`,
+        contentIds: [`${tag}:sub:${a}:${b}`],
+      })
+    },
+    (rng) => {
+      const a = randInt(rng, 12, 48)
+      const b = randInt(rng, 3, 9)
+      return valueTask({
+        question: `${focus}: Berechne schriftlich: ${a} · ${b}`,
+        answerKind: 'integer',
+        value: a * b,
+        solution: String(a * b),
+        explanation: `${a} · ${b} = ${a * b}.`,
+        fachwissen: fw('Schriftliche Multiplikation: Einmaleins und Stellenwerte.'),
+        dedupeKey: `${tag}:mul:${a}:${b}`,
+        contentIds: [`${tag}:mul:${a}:${b}`],
+      })
+    },
+  )
+}
+
+/** Größen ordnen. */
+function makeGroessenOrdnen(tag: string, focus: string): Topic['generate'] {
+  return mixedVariants(
+    (rng) => {
+      const cm = randInt(rng, 2, 9)
+      return valueTask({
+        question: `${focus}: ${cm} cm = ? mm`,
+        answerKind: 'integer',
+        value: cm * 10,
+        solution: String(cm * 10),
+        unit: 'mm',
+        explanation: `1 cm = 10 mm ⇒ ${cm} cm = ${cm * 10} mm.`,
+        fachwissen: fw(
+          'Längen umrechnen: 1 m = 100 cm = 1000 mm. Zentimeter in Millimeter: mit 10 multiplizieren.',
+        ),
+        dedupeKey: `${tag}:cm:${cm}`,
+        contentIds: [`${tag}:cm:${cm}`],
+      })
+    },
+    (rng) => {
+      const g = randInt(rng, 2, 9)
+      return valueTask({
+        question: `${focus}: ${g} kg = ? g`,
+        answerKind: 'integer',
+        value: g * 1000,
+        solution: String(g * 1000),
+        unit: 'g',
+        explanation: `1 kg = 1000 g ⇒ ${g} kg = ${g * 1000} g.`,
+        fachwissen: fw(
+          'Masse umrechnen: 1 kg = 1000 g. Kilogramm in Gramm: mit 1000 multiplizieren.',
+        ),
+        dedupeKey: `${tag}:kg:${g}`,
+        contentIds: [`${tag}:kg:${g}`],
+      })
+    },
+    (rng) => {
+      const a = randInt(rng, 2, 8)
+      const b = a + randInt(rng, 1, 5)
+      return appliedMc(rng, {
+        question: `${focus}: Was ist größer: ${a} m oder ${b * 10} cm?`,
+        correct: `${a} m`,
+        distractors: [`${b * 10} cm`, 'gleich', `${b} mm`, '0 m'],
+        explanation: `${a} m = ${a * 100} cm > ${b * 10} cm.`,
+        fachwissen: fw(
+          `Größen vergleichen: ${a} m und ${b * 10} cm zuerst in dieselbe Einheit umrechnen, dann der Größe nach ordnen.`,
+        ),
+        dedupeKey: `${tag}:vgl:${a}:${b}`,
+        contentIds: [`${tag}:vgl:${a}:${b}`],
+      })
+    },
+  )
+}
+
 export const OS_CROSS_UNIQUE_GENERATORS: Record<string, Topic['generate']> = {
   'os-k5-lbw1-zahlzeichen': genOsZahlzeichen,
   'os-k5-lbw1-abakus': genOsAbakus,
@@ -695,4 +1161,43 @@ export const OS_CROSS_UNIQUE_GENERATORS: Record<string, Topic['generate']> = {
   'os-rs-k10-lbw1-dgs': makeDgs('os-rs10-dgs', 'Zentralperspektive/DGS'),
   'os-rs-k10-lbw1-ort': makeDgs('os-rs10-ort', 'Ortslinien'),
   'os-rs-k10-lbw1-makro': makeDgs('os-rs10-makro', 'Makros'),
+
+  // Short-round-Füller (dünne Gym-Pools)
+  'os-k5-lb2-anteil': makeAnteilGrafik('os-k5-anteil', 'Anteil'),
+  'os-k6-lb2-darstellung': makeAnteilGrafik('os-k6-darst', 'Darstellung von Anteilen'),
+  'os-hs-k8-lb1-diagramme': makeAnteilGrafik('os-hs-diag', 'Diagramme'),
+  'st-k5-bruch-grafik': makeAnteilGrafik('st-bruch-g', 'Brüche grafisch'),
+  'sks-k5-bruch-grafik': makeAnteilGrafik('sks-bruch-g', 'Brüche grafisch'),
+
+  'os-k5-lb3-wuerfel': makeRaumNetz('os-k5-wuerfel', 'Würfel'),
+  'os-hs-k7-lbw2-perspektive': makeRaumNetz('os-hs-persp', 'Perspektive'),
+  'os-hs-k8-lb4-darstellen': makeRaumNetz('os-hs-k8-dar', 'Körper darstellen'),
+  'os-hs-k9-lb2-darstellen': makeRaumNetz('os-hs-k9-dar', 'Körper darstellen'),
+  'os-hs-k9-lbw3-zeichnen': makeRaumNetz('os-hs-zeich', 'Körper zeichnen'),
+  'os-hs-k9-lbw3-schnitt': makeRaumNetz('os-hs-schnitt', 'Schnitte'),
+  'os-rs-k7-lbw1-zeichnen': makeRaumNetz('os-rs-zeich', 'Körper zeichnen'),
+  'os-rs-k7-lbw1-schnitt': makeRaumNetz('os-rs-schnitt', 'Schnitte'),
+  'os-rs-k8-lb3-darstellen': makeRaumNetz('os-rs-k8-dar', 'Körper darstellen'),
+  'os-rs-k8-lbw3-polyeder': makeRaumNetz('os-rs-poly', 'Polyeder'),
+  'os-rs-k8-lbw3-netz': makeRaumNetz('os-rs-netz', 'Netze'),
+  'os-rs-k8-lbw3-euler': makeRaumNetz('os-rs-euler', 'Euler'),
+  'os-rs-k9-lb2-darstellen': makeRaumNetz('os-rs-k9-dar', 'Körper darstellen'),
+  'os-rs-k9-lbw2-schnitt': makeRaumNetz('os-rs9-schnitt', 'Schnitte'),
+  'os-rs-k9-lbw2-netz': makeRaumNetz('os-rs9-netz', 'Netze'),
+  'st-k6-wuerfelnetz': makeRaumNetz('st-wuerfelnetz', 'Würfelnetz'),
+  'sks-k7-netz': makeRaumNetz('sks-netz', 'Netze'),
+
+  'os-hs-k7-lb4-konstruieren': makeKonstruktion('os-hs-konstr', 'Konstruieren'),
+  'os-rs-k7-lb4-konstruieren': makeKonstruktion('os-rs-konstr', 'Konstruieren'),
+  'st-k7-mittelsenkrechte': makeKonstruktion('st-ms', 'Mittelsenkrechte'),
+  'sks-k6-umkreis': makeKonstruktion('sks-umkreis', 'Umkreis'),
+
+  'st-k5-nat-schriftlich': makeSchriftlich('st-schrift', 'Schriftliches Rechnen'),
+  'sks-k5-nat-schriftlich': makeSchriftlich('sks-schrift', 'Schriftliches Rechnen'),
+  'st-k5-groessen-ordnen': makeGroessenOrdnen('st-groessen', 'Größen ordnen'),
+  'sks-k5-groessen-ordnen': makeGroessenOrdnen('sks-groessen', 'Größen ordnen'),
+  'st-k6-bruch-vergleichen': genOsBruchVergleichK6,
+  'sks-k6-bruch-vergleichen': genOsBruchVergleichK6,
+  'st-k5-geo-koord-ablesen': makeLage('st-koord', 'Koordinaten ablesen'),
+  'sks-k5-geo-koord-ablesen': makeLage('sks-koord', 'Koordinaten ablesen'),
 }

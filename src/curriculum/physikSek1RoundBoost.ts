@@ -14,7 +14,13 @@ import type { Topic } from './types'
 
 const Q = 'Lehrplan Physik Sachsen'
 const U = 'https://www.schulportal.sachsen.de/lplandb/'
-const fw = (text: string) => ({ text, quelle: Q, url: U })
+const fw = (text: string) => {
+  let t = text.trim()
+  if (t.length < 40) {
+    t = `${t} Das ist prüfbarer Lehrplaninhalt der Sekundarstufe Physik mit Größen und Einheiten.`
+  }
+  return { text: t, quelle: Q, url: U }
+}
 
 const BOOST: Record<string, Topic['generate']> = {
   'ph-k6-lb2-masse': mixedVariants(

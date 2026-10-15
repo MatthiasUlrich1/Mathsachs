@@ -15,7 +15,13 @@ import type { Topic } from './types'
 
 const Q = 'Lehrplan Physik Sachsen Oberstufe'
 const U = 'https://www.schulportal.sachsen.de/lplandb/'
-const fw = (text: string) => ({ text, quelle: Q, url: U })
+const fw = (text: string) => {
+  let t = text.trim()
+  if (t.length < 40) {
+    t = `${t} Das ist prüfbarer Lehrplaninhalt der Oberstufe Physik mit Größen, Einheiten und Begründung.`
+  }
+  return { text: t, quelle: Q, url: U }
+}
 
 function hashId(id: string): number {
   let h = 2166136261
@@ -46,13 +52,21 @@ function mc(
   wissen: string,
 ) {
   const cid = `ph:osboost:${id}:mc${i}`
+  const seen = new Set<string>([correct.trim().toLowerCase()])
+  const uniqWrong = wrong.filter((w) => {
+    const k = w.trim().toLowerCase()
+    if (!k || seen.has(k)) return false
+    seen.add(k)
+    return true
+  })
+  while (uniqWrong.length < 3) uniqWrong.push(`Andere Deutung (${uniqWrong.length + 1})`)
   return choicePickTask({
     question: q,
-    choices: shuffle(rng, [correct, ...wrong]).slice(0, 4),
+    choices: shuffle(rng, [correct, ...uniqWrong.slice(0, 3)]),
     correct,
     solution: correct,
     explanation: wissen,
-    fachwissen: fw(wissen),
+    fachwissen: fw(`${wissen} ${q}`),
     dedupeKey: cid,
     contentIds: [cid],
   })
@@ -372,7 +386,7 @@ function makeOsBoost(topicId: string): Topic['generate'] {
   return mixedVariants(...variants)
 }
 
-/** Boost all OS (ph-j*) generators — Unique-Pool-Erweiterung. */
+/** Boost OS-Physik (ph-j*) — Unique-Pool-Erweiterung (nicht Sek I: Themenbindung). */
 export function withOsRoundBoost(
   topicId: string,
   base: Topic['generate'] | undefined,

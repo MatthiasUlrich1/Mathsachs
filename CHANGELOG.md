@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.92] – 2026-10-15
+
+### Behoben
+- **A2 Mathe OS/ST/SKS:** Cross-Topic-/Notations-/Short-Round-Audit auf 0; ENFORCED
+  in `contentQualityAllPacks` (os-hs/rs, gym-st, sks-hs/rs).
+- **Physik/Bio/Geschichte:** Audit-Härtung (Fachwissen, TF-Keys, Meta-Prompts,
+  Topic-Identity); Cross-Topic stark reduziert.
+
 ## [0.28.91] – 2026-10-15
 
 ### Behoben

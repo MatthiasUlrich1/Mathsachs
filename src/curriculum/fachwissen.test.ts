@@ -50,7 +50,7 @@ describe('Fachwissen / Wissen rubric (Issue #45)', () => {
 
   it('fills missing Fachwissen by default and respects excludeFachwissen', () => {
     const filled = ensureTopicFachwissen(stubTopic({ id: 'x', title: 'Testthema' }))
-    expect(filled.fachwissen?.text).toMatch(/Prinzip|Gesuchtes|Strategie/)
+    expect(filled.fachwissen?.text).toMatch(/Testthema|Rechnung|Lehrplaninhalt/)
 
     const kept = ensureTopicFachwissen(
       stubTopic({

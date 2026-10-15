@@ -416,10 +416,9 @@ export function physikFachwissen(topic: TopicRef): Fachwissen {
 
   return {
     text:
-      `Thema „${topic.title}“: Physikalische Größen hängen über Formeln zusammen. ` +
-      'Prinzip: (1) Gegebene und gesuchte Größe benennen. (2) Passende Formel wählen und umstellen. ' +
-      '(3) Einheiten angleichen und einsetzen. (4) Ergebnis mit Einheit und kurzer Begründung angeben. ' +
-      'So verstehst du den Zusammenhang — nicht nur ein Rezept für eine Aufgabe.',
+      `${topic.title}: Physikalische Größen hängen über Formeln und Experimente zusammen. ` +
+      'Gegebene und gesuchte Größe benennen, passende Formel wählen und umstellen, ' +
+      'Einheiten angleichen, einsetzen und das Ergebnis mit Einheit begründen.',
     ...wiki('Physik', 'Physik'),
   }
 }
@@ -553,9 +552,9 @@ export function defaultFachwissen(topic: TopicRef, subject?: string): Fachwissen
   }
   return {
     text:
-      `Zu „${topic.title}“: Lies die Aufgabe, markiere Gegebenes und Gesuchtes und wähle die passende ` +
-      'Rechen- oder Denkstrategie. Kontrolliere Zwischenschritte und die Einheit bzw. Schreibweise der Antwort. ' +
-      'Ziel ist, das Prinzip zu verstehen — dann kannst du ähnliche Aufgaben selbstständig lösen.',
+      `${topic.title}: Nutze die gegebenen Größen, wähle die passende Rechnung oder Konstruktion ` +
+      'und prüfe Zwischenschritte sowie Einheit bzw. Schreibweise der Antwort. ' +
+      'So trainierst du den konkreten Lehrplaninhalt dieses Themas an wechselnden Zahlenbeispielen.',
   }
 }
 

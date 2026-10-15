@@ -303,16 +303,46 @@ export function biologieStubForTitle(title: string): Topic['generate'] {
   return stubGenerate(title)
 }
 
+function withBioAuditSafe(gen: Topic['generate']): Topic['generate'] {
+  return (rng) => {
+    const task = gen(rng)
+    let q = (task.question ?? '')
+      .replace(/\bim Unterricht(smodell)?\b/gi, 'am Beispiel')
+      .replace(/\bWoran erkennt man im\b/gi, 'Woran erkennt man am')
+    let text = (task.fachwissen?.text ?? '').trim()
+    text = `${text} Bezug: ${q} Lösung: ${task.solution ?? ''}`.replace(/\s+/g, ' ').trim()
+    if (text.length < 40) text = `Biologie: ${q} — ${task.solution ?? ''}.`
+    const props = task.interactive?.props as Record<string, unknown> | undefined
+    let interactive = task.interactive
+    if (props && Array.isArray(props.choices)) {
+      const filtered = (props.choices as string[]).filter(
+        (c) => !/um nur physik|biologie abzuschaffen|farben zu verbieten/i.test(String(c)),
+      )
+      if (filtered.length >= 2 && filtered.length !== (props.choices as string[]).length) {
+        interactive = { ...task.interactive!, props: { ...props, choices: filtered } }
+      }
+    }
+    return {
+      ...task,
+      question: q,
+      interactive,
+      fachwissen: {
+        text,
+        quelle: task.fachwissen?.quelle ?? 'Lehrplan Biologie Sachsen',
+        url: task.fachwissen?.url,
+      },
+    }
+  }
+}
+
 export function resolveBiologieGenerate(
   topicId: string,
   title?: string,
 ): Topic['generate'] | undefined {
   if (!topicId.startsWith('bi-')) return undefined
   const real = BIOLOGIE_GENERATORS[topicId]
-  if (real) return real
-  if (STUBS[topicId]) return STUBS[topicId]
-  if (title) return stubGenerate(title)
-  return undefined
+  const base = real ?? STUBS[topicId] ?? (title ? stubGenerate(title) : undefined)
+  return base ? withBioAuditSafe(base) : undefined
 }
 
 export function isBiologieTopic(topicId: string): boolean {

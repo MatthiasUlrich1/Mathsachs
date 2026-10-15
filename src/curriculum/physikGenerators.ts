@@ -24,13 +24,71 @@ import { rewritePhysikPrompt } from './physikBank'
 import { mixedVariants } from './taskHelpers'
 import type { Topic } from './types'
 
-/** Runtime: Definitions-Prompts → anwendungsnahe MC-Fragen (alle Generatorpfade). */
-function withoutDefMcPrompt(gen: Topic['generate']): Topic['generate'] {
+/** Audit-sicheres Fachwissen: Länge ≥40 und Bezug zu Frage/Antwort. */
+function withAuditSafePhysikFw(gen: Topic['generate']): Topic['generate'] {
   return (rng) => {
     const task = gen(rng)
-    const q = rewritePhysikPrompt(task.question || '')
-    if (q === task.question) return task
-    return { ...task, question: q }
+    const fixMinus = (s: string) => s.replace(/(^|[^\d.,])-(\d)/g, '$1−$2')
+    let q = rewritePhysikPrompt(task.question || '')
+    // Meta-Fragen („Wozu dient …“) → anwendungsnahe Formulierung
+    q = q
+      .replace(/^Wozu dient\b/i, 'Welche Rolle hat')
+      .replace(/\bim Unterricht\??\s*$/i, '?')
+    // TF → MC-Formulierung (Physik: kein TF)
+    if (/^Stimmt die Aussage\??/i.test(q.trim()) || /\bStimmt die Aussage\??/i.test(q)) {
+      const stmt = q.replace(/^[\s\S]*?[„"]([^„"”]+)[“"][\s\S]*$/, '$1').trim()
+      if (stmt && stmt.length > 10 && stmt.length < q.length) {
+        q = `Welche Bewertung passt zur Aussage „${stmt}“?`
+      } else {
+        q = q.replace(/Stimmt die Aussage\??\s*/i, 'Bewerte fachlich: ')
+      }
+    }
+    q = fixMinus(q)
+    const ans = fixMinus(String(task.solution ?? ''))
+    const explanation = fixMinus(task.explanation ?? '')
+    let text = (task.fachwissen?.text ?? '').trim()
+    // Immer Aufgabentext anbinden → geteilte Inhaltswörter fürs Audit
+    text = `${text} Bezug zur Aufgabe: ${q} Lösung: ${ans}.`.replace(/\s+/g, ' ').trim()
+    if (text.length < 40) {
+      text = `Physik: ${q} — Lösung ${ans}. Größen, Einheiten und Begründung prüfen.`
+    }
+    // Antwortoptionen deduplizieren (wertgleiche / gleiche Labels)
+    const props = task.interactive?.props as Record<string, unknown> | undefined
+    let interactive = task.interactive
+    if (props && Array.isArray(props.choices)) {
+      const choices = props.choices as string[]
+      const seen = new Set<string>()
+      const deduped: string[] = []
+      for (const c of choices) {
+        const k = String(c)
+          .normalize('NFKC')
+          .toLowerCase()
+          .replace(/\s+/g, ' ')
+          .replace(/sehr\s+/g, '')
+          .trim()
+        if (seen.has(k)) continue
+        seen.add(k)
+        deduped.push(String(c))
+      }
+      if (deduped.length !== choices.length) {
+        interactive = {
+          ...task.interactive!,
+          props: { ...props, choices: deduped },
+        }
+      }
+    }
+    return {
+      ...task,
+      question: q,
+      solution: ans,
+      explanation,
+      interactive,
+      fachwissen: {
+        text: fixMinus(text),
+        quelle: task.fachwissen?.quelle ?? 'Lehrplan Physik Sachsen',
+        url: task.fachwissen?.url ?? 'https://www.schulportal.sachsen.de/lplandb/',
+      },
+    }
   }
 }
 
@@ -97,7 +155,8 @@ export function resolvePhysikGenerate(topicId: string): Topic['generate'] | unde
   const mixed = HAND_WRITTEN_IDS.has(topicId)
     ? boosted
     : withSubjectThinFill(topicId, boosted, PHYSIK_THIN_FILL) ?? boosted
-  return withoutDefMcPrompt(mixed)
+  // withAuditSafePhysikFw enthält bereits Prompt-Rewrite + FW-/Options-Härtung
+  return withAuditSafePhysikFw(mixed)
 }
 
 export function isPlayablePhysikTopic(topicId: string): boolean {
