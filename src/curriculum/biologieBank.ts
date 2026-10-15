@@ -512,8 +512,9 @@ export function bioTextContainsAcceptedTerm(
       if (tok === term) return true
       // Short tokens: exact word only (avoid "art" ⊂ "artfremde").
       if (term.length < 4) continue
-      // Light inflection: aufrecht ⊂ aufrechten, reiz ⊂ reize
-      if (tok.startsWith(term) && tok.length - term.length <= 4) return true
+      // Light inflection / compounds: Perser ⊂ Perserkriege, Ursachen ⊂ Ursachenbündel
+      const maxExtra = term.length >= 5 ? 10 : 4
+      if (tok.startsWith(term) && tok.length - term.length <= maxExtra) return true
       if (term.startsWith(tok) && term.length - tok.length <= 2 && tok.length >= 4) {
         return true
       }
@@ -1066,7 +1067,13 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
             })),
           ]
           const faulty = stripBioBankSlug(bad.statement)
-          const norm = (s: string) => s.replace(/\s+/g, '').toLowerCase().replace(/[„“”"']/g, '')
+          // Colon/quotes/spaces/genitive-s — align with contentAudit „gleiche Aussage“.
+          const norm = (s: string) =>
+            s
+              .replace(/\s+/g, '')
+              .toLowerCase()
+              .replace(/[„“”"'':：.;!?]/g, '')
+              .replace(/rechtsstaats|rechtsstaates/g, 'rechtsstaat')
           const goods = shuffle(rng, truePool)
             .map((g) => g.statement)
             .filter((s) => norm(s) !== norm(faulty))
@@ -1465,7 +1472,12 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
           const faulty = `${bad.term} bedeutet: ${wrongMeaning}.`
           const good1 = `${g1.term} bedeutet: ${g1.meaning}.`
           const good2 = `${g2.term} bedeutet: ${g2.meaning}.`
-          const norm = (s: string) => s.replace(/\s+/g, '').toLowerCase()
+          const norm = (s: string) =>
+            s
+              .replace(/\s+/g, '')
+              .toLowerCase()
+              .replace(/[„“”"'':：.;!?]/g, '')
+              .replace(/rechtsstaats|rechtsstaates/g, 'rechtsstaat')
           const statementsRaw = [faulty, good1, good2]
           const uniq = statementsRaw.filter(
             (s, i, arr) => arr.findIndex((t) => norm(t) === norm(s)) === i,

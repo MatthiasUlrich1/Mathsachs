@@ -33,6 +33,13 @@ const BANNED_MATH_UI = new Set([
 ])
 const BANNED_PHY_UI = new Set(['pairMatch', 'clozeMulti', 'flashcardFlip', 'causeEffect', 'iconBelong'])
 const DEF_WAS_BEDEUTET = /^Was bedeutet\b/i
+/** GE Thin-Fill-Allgemeinplätze — nur in Methoden-/Zeitrechnungsthemen ok. */
+const GE_GENERIC_VOCAB =
+  /Was (beschreibt|bedeutet|ist) [„""']?(Herrschaft|Gesellschaft|Wirtschaft|Religion|Kultur|Konflikt|Revolution|Kontinuität|Migration|Erinnerung)\b/i
+function geAllowsGenericMethodVocab(id: string, title: string): boolean {
+  // Nur echte Methoden-Themen — nicht Metallzeit/Polis/…
+  return /quelle|chronolog|zeitrechnung|orientierung|method|werkzeug/i.test(`${id} ${title}`)
+}
 
 /** Topics where plain integer a±b / a·b is on-topic (not a boost leak). */
 function allowsBareArith(id: string, title: string): boolean {
@@ -175,12 +182,36 @@ describe('Themenbindung alle Fächer×Klassen×LBs (smoke)', () => {
     expect(slogan, JSON.stringify(slogan.slice(0, 25), null, 2)).toEqual([])
   }, 90_000)
 
-  it('Geschichte Gym hydrate: keine Meta-Prompts', async () => {
+  it('Geschichte Gym hydrate: keine Meta-Prompts und kein generisches Thin-Fill', async () => {
     const grades = await hydratePackGrades(buildGymSachsenGeschichtePack())
     const hits = await collectHits('geschichte', grades)
     const meta = hits.filter((h) => h.issue.startsWith('meta') || h.issue.startsWith('slogan'))
     expect(meta, JSON.stringify(meta.slice(0, 25), null, 2)).toEqual([])
-  }, 90_000)
+    // User-Beispiel: „Was ist ein Konflikt?“ unter Metallzeit = Themenfremdheit
+    const offTopic: Hit[] = []
+    for (const g of grades) {
+      for (const area of g.areas) {
+        for (const topic of area.topics) {
+          if (topic.outlineOnly) continue
+          if (geAllowsGenericMethodVocab(topic.id, topic.title)) continue
+          for (let seed = 1; seed <= 8; seed++) {
+            const task = topic.generate(createRng(seed * 97 + 3))
+            const q = (task.question || '').trim()
+            if (GE_GENERIC_VOCAB.test(q)) {
+              offTopic.push({
+                pack: 'geschichte',
+                id: topic.id,
+                title: topic.title,
+                seed,
+                issue: `ge-generic-vocab: ${q.slice(0, 100)}`,
+              })
+            }
+          }
+        }
+      }
+    }
+    expect(offTopic, JSON.stringify(offTopic.slice(0, 25), null, 2)).toEqual([])
+  }, 120_000)
 
   it('Oberschule HS/RS hydrate: keine Bare-Arithmetik unter Fremdthemen', async () => {
     const hs = await hydratePackGrades(buildOberschuleHsPack())

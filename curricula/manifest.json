@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-15T19:21:41.727Z",
+  "updatedAt": "2026-10-15T20:17:08.672Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -29,10 +29,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Geschichte",
-      "version": "1.11.0",
+      "version": "1.12.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-geschichte.json",
-      "size": 162733,
-      "changelog": "Schulstoff-Überarbeitung K5–LK: Physik-Leaks aus Thin-Fill entfernt, Qualitätsbanken priorisiert, 147 Topics mit themenreinem Schulstoff (Personen/Daten/Ursachen, Chronologie); Google/Schlaukopf nur Orientierung. Kein neues released:true. 331 Themen."
+      "size": 163169,
+      "changelog": "Lehrplan-Durchgang Geschichte Gym: K5-Polis-Bank, Physik-Müll aus Schulstoff/Zeitrechnung entfernt, Thin-Fill-Mix aus, Spoiler/Themenbindung gehärtet. Kein neues released:true. 332 Themen."
     },
     {
       "id": "gym-sachsen-biologie",

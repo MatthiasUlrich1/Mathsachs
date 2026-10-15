@@ -116,8 +116,16 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
         area('lb3', 'Zusammenleben im antiken Griechenland', 8, [
           topic('ge-k5-lb3-griechenland', 'Antikes Griechenland – Überblick', [
             'Griechenland',
-            'Polis',
             'Antike',
+            'Götterwelt',
+          ]),
+          // Lehrplan K5 LB3: „Polis, Volksversammlung, Scherbengericht“ — eigenes Thema (released:false)
+          topic('ge-k5-lb3-polis', 'Die griechische Polis', [
+            'Polis',
+            'Stadtstaat',
+            'Bürger',
+            'Agora',
+            'Autonomie',
           ]),
           topic('ge-k5-lb3-athen', 'Athen und attische Demokratie', [
             'Volksversammlung',

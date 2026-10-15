@@ -9,6 +9,34 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.105] – 2026-10-15
+
+### Behoben
+- **Installer-CI contentQuality (0.28.104):** Geschichte — doppelte FindError-Option
+  bei Zeitrechnung (v. Chr.); Spoiler „Perser“ / „Ursachen“ in Prompt bei
+  Griechenland bzw. NS-Aufstieg; weitere Spoiler (Napoleon, Friedensordnungen,
+  Justiz) und Short-Rounds (Hellenismus Alexandria/Geschichten, Rom-Chronologie,
+  Längsschnitte).
+- **Themenbindung Geschichte Gym (Lehrplan ge-65):** Thin-Fill-Mix mit generischen
+  Vokabeln („Was beschreibt Konflikt?“ unter Metallzeit u. a.) abgeschaltet —
+  nur noch Qualitäts-/Schulstoffbanken; Physik-Müll-TF entfernt. Alle 332 Themen
+  spielbar, uniqueRound ≥10, contentQuality ENFORCED grün.
+- **Lehrplan-Teilaspekte verdichtet/ergänzt u. a.:** K5 Polis (`ge-k5-lb3-polis`),
+  Hellenismus-Wahl (Alexandria, Geschichten); K6 Chronologie Rom; Längsschnitte
+  Ressourcen/Gottesgnade/Kinderarbeit; Teilaspekt-Banken K5–LK (Archäologie,
+  Jetztmensch, Caesar/Augustus, Germanen, Reformation/Barock, Weimar/NS-Kontext,
+  Glasnost/Europarat u. a.).
+
+### Geändert
+- Geschichte-Pack **1.12.0** (332 Themen). Kein neues `released:true`.
+- Tests: Spoiler/Dup-Option-Regression + generisches Thin-Fill (topicFit).
+
+## [0.28.104] – 2026-10-15
+
+### Geändert
+- Geschichte Schulstoff K5–LK: Physik-Leaks aus Thin-Fill entfernt, Qualitätsbanken
+  priorisiert (Pack 1.11.0). Installer-CI danach rot wegen contentQuality — siehe 0.28.105.
+
 ## [0.28.103] – 2026-10-15
 
 ### Geändert

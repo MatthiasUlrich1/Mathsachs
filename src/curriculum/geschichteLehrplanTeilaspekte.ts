@@ -439,7 +439,7 @@ const geBank3: BioBank = {
   },
   {
     concept: "ge:k5:ohne-recht:f6",
-    prompt: "Warum vergleicht der Lehrplan Antike und Gegenwart?",
+    prompt: "Warum ist der Vergleich von attischer Demokratie und heutiger Teilhabe sinnvoll?",
     answer: "Um Unterschiede von Teilhabe und Rechten zu erkennen",
     wrong: [
       "Um identisch zu setzen",

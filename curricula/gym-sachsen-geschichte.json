@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Geschichte",
-  "version": "1.11.0",
-  "changelog": "Schulstoff-Überarbeitung K5–LK: Physik-Leaks aus Thin-Fill entfernt, Qualitätsbanken priorisiert, 147 Topics mit themenreinem Schulstoff (Personen/Daten/Ursachen, Chronologie); Google/Schlaukopf nur Orientierung. Kein neues released:true. 331 Themen.",
+  "version": "1.12.0",
+  "changelog": "Lehrplan-Durchgang Geschichte Gym: K5-Polis-Bank, Physik-Müll aus Schulstoff/Zeitrechnung entfernt, Thin-Fill-Mix aus, Spoiler/Themenbindung gehärtet. Kein neues released:true. 332 Themen.",
   "official": [
     {
       "id": "geschichte-klasse-5",
@@ -181,8 +181,23 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Griechenland",
+                "Antike",
+                "Götterwelt"
+              ]
+            },
+            {
+              "id": "ge-k5-lb3-polis",
+              "title": "Die griechische Polis",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
                 "Polis",
-                "Antike"
+                "Stadtstaat",
+                "Bürger",
+                "Agora",
+                "Autonomie"
               ]
             },
             {
@@ -4572,5 +4587,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "e4fdf536"
+  "contentHash": "c6085db9"
 }

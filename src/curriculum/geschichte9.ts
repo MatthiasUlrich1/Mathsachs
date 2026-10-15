@@ -567,8 +567,8 @@ const justiz: BioBank = {
       ['Weil Justiz nur in Demokratien vorkommt', 'Weil sich Gerichte nie verändern', 'Weil Geschichte der Justiz ohne Politik verläuft'],
       'Institutionen müssen aktiv geschützt werden.',
       'Der Vergleich zwischen Weimarer Republik und NS-Staat zeigt, dass Justiz nicht automatisch gerecht bleibt. Personal, politische Kultur und Machtverhältnisse prägen ihr Handeln. Darin liegt eine wichtige Lehre über die Verletzlichkeit des Rechtsstaats.',
-      'Der Vergleich zeigt die Verletzlichkeit des ___.',
-      ['Rechtsstaats', 'Rechtsstaates'],
+      'Der Vergleich zeigt die Verletzlichkeit einer ___ Ordnung.',
+      ['rechtsstaatlichen', 'demokratischen'],
     ),
     fact(
       'urteil',

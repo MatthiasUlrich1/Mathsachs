@@ -1,4 +1,4 @@
-import { mixedVariants, textTask } from './taskHelpers'
+import { textTask } from './taskHelpers'
 import { allGeschichteTopicIds } from './geschichteGymTopics'
 import { GESCHICHTE_K5_GENERATORS } from './geschichte5'
 import { GESCHICHTE_K6_GENERATORS } from './geschichte6'
@@ -87,9 +87,37 @@ function isPhysicsLeakTask(question: string, solution: string, wissen: string): 
   )
 }
 
+/**
+ * Universelle Methoden-/Epochen-Vokabeln aus dem alten Thin-Fill-Template —
+ * ohne Themenbezug (z. B. „Was beschreibt Konflikt?“ unter Metallzeit).
+ */
+export function isGenericHistoryVocabLeak(question: string): boolean {
+  // Universelle Füller (nicht Methodenstoff Quelle/Chronologie/Epoche).
+  return (
+    /Was (beschreibt|bedeutet|ist) [„""']?(Herrschaft|Gesellschaft|Wirtschaft|Religion|Kultur|Konflikt|Revolution|Kontinuität|Migration|Erinnerung)\b/i.test(
+      question,
+    ) || /\[ge-k\d+-lb[^\]]+\]\s*Was beschreibt/i.test(question)
+  )
+}
+
 function withGeAuditSafe(gen: Topic['generate']): Topic['generate'] {
   return (rng) => {
-    const task = gen(rng)
+    let task = gen(rng)
+    // Physik-Leaks und generische Thin-Fill-Vokabeln nie ausspielen — neu ziehen.
+    for (let i = 0; i < 16; i++) {
+      const q0 = task.question ?? ''
+      const sol0 = String(task.solution ?? '')
+      const fw0 = task.fachwissen?.text ?? ''
+      const stmt = String((task.interactive?.props as { statement?: string } | undefined)?.statement ?? '')
+      if (
+        !isPhysicsLeakTask(q0, sol0, `${fw0}\n${stmt}`) &&
+        !isGenericHistoryVocabLeak(q0) &&
+        !isGenericHistoryVocabLeak(stmt)
+      ) {
+        break
+      }
+      task = gen(rng)
+    }
     const q = scrubGeMeta(task.question ?? '')
     const props = { ...(task.interactive?.props as Record<string, unknown> | undefined) }
     for (const key of ['front', 'instruction', 'statement', 'claim', 'sourceText', 'backHint'] as const) {
@@ -119,8 +147,11 @@ export function resolveGeschichteGenerate(
   const real = GESCHICHTE_ALL_GENERATORS[topicId]
   const fill = GESCHICHTE_THIN_FILL[topicId]
   let base: Topic['generate'] | undefined
-  // Qualitätsbanken zuerst; Thin-Fill nur leicht densifizieren (1:3) und ohne Physik-Leaks.
-  if (real && fill) {
+  // Qualitätsbanken allein — kein Thin-Fill-Mix mehr (Rules: Themenbindung).
+  // Generische „Was ist ein Konflikt?“-Füller unter Metallzeit & Co. sind verboten.
+  // Thin-Fill nur als Notfall, wenn keine Qualitätsbank existiert.
+  if (real) base = real
+  else if (fill) {
     const safeFill: Topic['generate'] = (rng) => {
       for (let i = 0; i < 12; i++) {
         const t = fill(rng)
@@ -129,17 +160,16 @@ export function resolveGeschichteGenerate(
             t.question ?? '',
             String(t.solution ?? ''),
             t.fachwissen?.text ?? '',
-          )
+          ) &&
+          !isGenericHistoryVocabLeak(t.question ?? '')
         ) {
           return t
         }
       }
-      return real(rng)
+      return fill(rng)
     }
-    base = mixedVariants(real, real, real, safeFill)
-  } else if (real) base = real
-  else if (fill) base = fill
-  else if (STUBS[topicId]) base = STUBS[topicId]
+    base = safeFill
+  } else if (STUBS[topicId]) base = STUBS[topicId]
   else if (title) base = stubGenerate(title)
   return base ? withGeAuditSafe(base) : undefined
 }

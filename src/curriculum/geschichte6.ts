@@ -363,6 +363,28 @@ export const romChronologie: Topic['generate'] = mixedVariants(
         wissen:
           'Zwischen Republikbeginn und Zerstörung Karthagos liegen u. a. der Krieg um Sizilien und Hannibals Alpenzug mit der Entscheidung bei Zama.',
       },
+      {
+        q: 'Welche Reihenfolge gilt für die Konflikte mit Karthago?',
+        correct: 'Sizilien → Hannibal/Zama → Zerstörung Karthagos',
+        wrong: [
+          'Zerstörung zuerst, dann Sizilien, dann Hannibal',
+          'Hannibal vor jeder Siedlung am Tiber',
+          'Nur die Gründungssage ohne Kriege',
+        ],
+        wissen:
+          'Drei Stufen: Krieg um Sizilien (Seemacht), Hannibal über die Alpen und Zama, zuletzt Zerstörung Karthagos.',
+      },
+      {
+        q: 'Was meint „Mare Nostrum“ chronologisch?',
+        correct: 'Späte Phase: Rom als Vormacht im Mittelmeer',
+        wrong: [
+          'Nur die mythische Stadtgründung',
+          'Nur die erste Hüttensiedlung am Tiber',
+          'Das Ende jeder römischen Expansion vor Sizilien',
+        ],
+        wissen:
+          '„Mare Nostrum“ steht am Ende der Expansionslinie Stadtstaat → Italien → Westmittelmeer → Mittelmeer-Vormacht.',
+      },
     ] as const
     const c = pick(rng, cases)
     return choicePickTask({
@@ -371,6 +393,76 @@ export const romChronologie: Topic['generate'] = mixedVariants(
       correct: c.correct,
       solution: c.correct,
       explanation: 'Chronologie: Anfänge → Republik → Konflikte mit Karthago → Vormacht.',
+      instruction: 'Tippe die passende Antwort:',
+      fachwissen: fw(c.wissen),
+    })
+  },
+  (_rng) =>
+    dragDropSortTask({
+      question: 'Ordne die Mittelmeer-Vormacht chronologisch (früh → spät):',
+      items: [
+        { label: 'Konflikt um Sizilien', value: 0 },
+        { label: 'Hannibal und Zama', value: 1 },
+        { label: 'Zerstörung Karthagos', value: 2 },
+        { label: 'Mare Nostrum als Selbstbild', value: 3 },
+      ],
+      correctOrder: [0, 1, 2, 3],
+      solution: 'Sizilien → Hannibal/Zama → Zerstörung → Mare Nostrum',
+      explanation: 'Nach den Karthago-Konflikten festigt Rom die Mittelmeer-Vormacht.',
+      rng: _rng,
+      fachwissen: fw(
+        'Nach Sizilien, Hannibal/Zama und der Zerstörung Karthagos gilt das Mittelmeer den Römern als „Mare Nostrum“. Chronologie endet hier bei der Vormacht, nicht bei der Gründungssage.',
+      ),
+    }),
+  (rng) =>
+    matchTermsTask(rng, {
+      question: 'Ordne Phase und Kennzeichen der Chronologie zu:',
+      terms: ['Republikbeginn', 'Krieg um Sizilien', 'Hannibal', 'Zerstörung Karthagos'],
+      meanings: [
+        'Ende der Königszeit, Mitsprache von Volk und Senat beginnt',
+        'Rom wird Seemacht im Westmittelmeer',
+        'Alpenzug und Entscheidung bei Zama',
+        'Rivale fällt; Rom ohne großen Gegner im Westen',
+      ],
+      distractor: 'Industrialisierung im 19. Jahrhundert',
+      solution: 'Republik · Sizilien · Hannibal · Zerstörung',
+      explanation: 'Vier Stationen der LB1-Chronologie ohne moderne Epochen.',
+      fachwissen: fw(
+        'LB1-Chronologie: Republikbeginn → Sizilien (Seemacht) → Hannibal/Zama → Zerstörung Karthagos. Industrialisierung gehört nicht hierher.',
+      ),
+    }),
+  (rng) => {
+    const cases = [
+      {
+        q: 'Warum hilft eine Zeitleiste in LB1?',
+        correct: 'Sie ordnet Sage, Republik und Karthago-Konflikte nacheinander',
+        wrong: [
+          'Sie ersetzt jede Quellenkritik',
+          'Sie misst nur Temperaturen',
+          'Sie gilt nur für das 20. Jahrhundert',
+        ],
+        wissen:
+          'Chronologie macht sichtbar, was früher und später lag: von Anfängen und Republik zu den Konflikten mit Karthago und der Vormacht.',
+      },
+      {
+        q: 'Was gehört NICHT in die frühe Rom-Chronologie von LB1?',
+        correct: 'Die deutsche Reichsgründung 1871',
+        wrong: [
+          'Beginn der Republik',
+          'Krieg um Sizilien',
+          'Zerstörung Karthagos',
+        ],
+        wissen:
+          'LB1 bleibt bei Anfängen, Republik und Expansion gegen Karthago. 1871 ist ein anderes Jahrhundert.',
+      },
+    ] as const
+    const c = pick(rng, cases)
+    return choicePickTask({
+      question: c.q,
+      choices: shuffleChoices(rng, [c.correct, ...c.wrong], c.correct),
+      correct: c.correct,
+      solution: c.correct,
+      explanation: 'Chronologie trennt Epochen und hält den Fokus auf Rom LB1.',
       instruction: 'Tippe die passende Antwort:',
       fachwissen: fw(c.wissen),
     })

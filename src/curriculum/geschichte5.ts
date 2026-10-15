@@ -565,7 +565,7 @@ const griechenland: BioBank = {
     },
     {
       "concept": "ge:k5:gr:pers",
-      "prompt": "Worum ging es in den Perserkriegen?",
+      "prompt": "Worum ging es in den Kriegen gegen das Achämenidenreich im 5. Jh. v. Chr.?",
       "answer": "Griechische Poleis wehrten das Perserreich ab",
       "wrong": [
         "Entdeckung Amerikas",
@@ -576,8 +576,8 @@ const griechenland: BioBank = {
       "wissen": "Im 5. Jh. v. Chr. griff Persien an; Marathon und Salamis sind Stationen. Der Widerstand festigte Selbstbewusstsein. Danach stieg Athens Einfluss.",
       "gap": "Bei Marathon kämpften Griechen gegen ___.",
       "gapAccepted": [
-        "Perser",
-        "das Perserreich"
+        "das Perserreich",
+        "Persien"
       ]
     },
     {
@@ -1028,6 +1028,56 @@ const alexandria: BioBank = {
       "gapAccepted": [
         "Ptolemäer"
       ]
+    },
+    {
+      "concept": "ge:k5:ax:h",
+      "prompt": "Warum war der Hafen für Alexandria so wichtig?",
+      "answer": "Er verband Ägypten mit dem Mittelmeerhandel",
+      "wrong": [
+        "Weil Schiffe verboten waren",
+        "Weil Alexandria mitten in den Alpen lag",
+        "Weil nur Karawanen zählten"
+      ],
+      "explanation": "Seehandel brachte Waren, Menschen und Ideen.",
+      "wissen": "Der Hafen machte Alexandria zur Drehscheibe. Getreide, Papyrus und Ideen zirkulierten. Ohne Hafen keine Metropole dieser Art.",
+      "gap": "Der Hafen verband Alexandria mit dem ___.",
+      "gapAccepted": [
+        "Mittelmeerhandel",
+        "Mittelmeer"
+      ]
+    },
+    {
+      "concept": "ge:k5:ax:m",
+      "prompt": "Was meint Begegnungsstätte der Kulturen hier?",
+      "answer": "Verschiedene Gruppen lebten, handelten und lernten in einer Stadt",
+      "wrong": [
+        "Nur eine einzige Gruppe ohne Austausch",
+        "Nur moderne Nationalstaaten",
+        "Nur Klosterisolation"
+      ],
+      "explanation": "Hellenistische Städte mischten Bevölkerung und Wissen.",
+      "wissen": "Griechen, Ägypter und Juden prägten das Stadtbild. Religion, Sprache und Handel überschnitten sich. Genau das verlangt der Wahlbereich.",
+      "gap": "In Alexandria begegneten sich verschiedene ___.",
+      "gapAccepted": [
+        "Kulturen",
+        "Gruppen"
+      ]
+    },
+    {
+      "concept": "ge:k5:ax:w",
+      "prompt": "Welche Rolle spielten Gelehrte in Alexandria?",
+      "answer": "Sie forschten und lehrten am Museion und an der Bibliothek",
+      "wrong": [
+        "Sie verboten jedes Buch",
+        "Sie arbeiteten nur als Gladiatoren",
+        "Sie lebten nur in Sparta"
+      ],
+      "explanation": "Wissenskultur war Programm der Ptolemäer.",
+      "wissen": "Das Museion zog Gelehrte an. Mathematik, Astronomie und Literatur blühten. Prestige der Dynastie hing auch an Wissen.",
+      "gap": "Gelehrte forschten am ___ und an der Bibliothek.",
+      "gapAccepted": [
+        "Museion"
+      ]
     }
   ],
   "pairs": [
@@ -1048,6 +1098,18 @@ const alexandria: BioBank = {
       "term": "Ptolemäer",
       "meaning": "Herrscherdynastie",
       "wissen": "Griechischstämmige Könige in Ägypten."
+    },
+    {
+      "concept": "ge:k5:ax:p4",
+      "term": "Museion",
+      "meaning": "Forschungs- und Lehrstätte",
+      "wissen": "Ort hellenistischer Gelehrsamkeit."
+    },
+    {
+      "concept": "ge:k5:ax:p5",
+      "term": "Hafen",
+      "meaning": "Anbindung an den Mittelmeerhandel",
+      "wissen": "Wirtschaftliche Lebensader der Stadt."
     }
   ],
   "trueFalse": [
@@ -1057,6 +1119,34 @@ const alexandria: BioBank = {
       "correct": true,
       "explanation": "Hafen, Bibliothek und Vielfalt prägten die Stadt.",
       "wissen": "Hafen, Bibliothek und Vielfalt prägten die Stadt. Sie verband Ägypten mit dem Mittelmeer."
+    },
+    {
+      "concept": "ge:k5:ax:t2",
+      "statement": "Der Pharos von Alexandria galt als antikes Weltwunder.",
+      "correct": true,
+      "explanation": "Der Leuchtturm leitete Schiffe und zeigte Technikprestige.",
+      "wissen": "Der Pharos stand am Hafen. Er verband Sicherheit der Seefahrt mit Ruhm der Stadt."
+    },
+    {
+      "concept": "ge:k5:ax:t3",
+      "statement": "Alexandria lag isoliert ohne Hafen und ohne kulturelle Begegnung.",
+      "correct": false,
+      "explanation": "Gerade Hafen und Vielfalt machten die Stadt zur Begegnungsstätte.",
+      "wissen": "Griechen, Ägypter und andere Gruppen lebten und handelten dort. Isolation wäre das Gegenteil des hellenistischen Profils."
+    },
+    {
+      "concept": "ge:k5:ax:t4",
+      "statement": "Die Bibliothek von Alexandria stand für hellenistische Wissenskultur.",
+      "correct": true,
+      "explanation": "Sie sammelte Schriften und zog Gelehrte an.",
+      "wissen": "Wissen war Prestige der Ptolemäer. Alexandria wurde zum Symbol der Gelehrsamkeit."
+    },
+    {
+      "concept": "ge:k5:ax:t5",
+      "statement": "Alexandria war nur eine kleine Bergsiedlung ohne Handel.",
+      "correct": false,
+      "explanation": "Es war eine große Hafen- und Handelsmetropole.",
+      "wissen": "Der Hafen und die Stadtplanung machten Alexandria zur Großstadt. Handel und Wissen gehörten zusammen."
     }
   ]
 }
@@ -1150,6 +1240,57 @@ const alexGeschichten: BioBank = {
         "später",
         "nicht autobiografisch"
       ]
+    },
+    {
+      "concept": "ge:k5:ag:bild",
+      "prompt": "Warum prägen Sagen das Alexanderbild bis heute?",
+      "answer": "Sie liefern eingängige Heldenszenen statt nüchterner Quellenlage",
+      "wrong": [
+        "Weil es keine Schulen gibt",
+        "Weil Romulus sie schrieb",
+        "Weil nur Physik zählt"
+      ],
+      "explanation": "Narrative haften stärker als Quellenvorbehalte.",
+      "wissen": "Gordischer Knoten und Siwa sind bekannte Motive. Schüler sollen Ruhm und Kritik trennen. Das verlangt der Wahlbereich Geschichten.",
+      "gap": "Sagen liefern eingängige ___ über Alexander.",
+      "gapAccepted": [
+        "Heldenszenen",
+        "Motive"
+      ]
+    },
+    {
+      "concept": "ge:k5:ag:multi",
+      "prompt": "Was meint Multiperspektivität bei Alexander?",
+      "answer": "Auch die Sicht Unterworfener und Verlierer einbeziehen",
+      "wrong": [
+        "Nur Siegerreden abschreiben",
+        "Nur Jahreszahlen auswendig lernen",
+        "Nur Götterbilder zählen"
+      ],
+      "explanation": "Geschichte ist mehr als Heldenvita.",
+      "wissen": "Perser, Griechen und lokale Eliten erlebten den Feldzug unterschiedlich. Kritik fragt nach Macht und Gewalt.",
+      "gap": "Multiperspektivität bezieht auch ___ ein.",
+      "gapAccepted": [
+        "Unterworfene",
+        "Verlierer"
+      ]
+    },
+    {
+      "concept": "ge:k5:ag:zweck",
+      "prompt": "Welchen Zweck hatten panegyrische Alexanderberichte oft?",
+      "answer": "Herrscher und Feldzug zu verherrlichen",
+      "wrong": [
+        "Nur Wetterdaten zu sammeln",
+        "Nur Steuerlisten zu löschen",
+        "Nur moderne Parteiprogramme zu drucken"
+      ],
+      "explanation": "Lob dient Legitimation.",
+      "wissen": "Panegyrik stilisiert Ruhm. Quellenkritik fragt nach Absicht und Zeitpunkt. Das ist Schulstoff Quellenarbeit.",
+      "gap": "Panegyrik dient oft der ___ des Herrschers.",
+      "gapAccepted": [
+        "Verherrlichung",
+        "Legitimation"
+      ]
     }
   ],
   "pairs": [
@@ -1170,6 +1311,18 @@ const alexGeschichten: BioBank = {
       "term": "Heldenvita",
       "meaning": "Ruhm-Erzählung",
       "wissen": "Selektiv und oft panegyrisch."
+    },
+    {
+      "concept": "ge:k5:ag:p4",
+      "term": "Quellenkritik",
+      "meaning": "Prüfung von Herkunft und Absicht",
+      "wissen": "Pflicht bei stilisierten Berichten."
+    },
+    {
+      "concept": "ge:k5:ag:p5",
+      "term": "Panegyrik",
+      "meaning": "Lobrednerische Übertreibung",
+      "wissen": "Verherrlicht Herrscher und Taten."
     }
   ],
   "trueFalse": [
@@ -1179,8 +1332,43 @@ const alexGeschichten: BioBank = {
       "correct": false,
       "explanation": "Viele Berichte sind später und stilisiert.",
       "wissen": "Viele Berichte sind später und stilisiert. Legenden mischen sich mit Historischem. Quellenkritik ist Pflicht."
+    },
+    {
+      "concept": "ge:k5:ag:t2",
+      "statement": "Die Sage vom gordischen Knoten stilisiert Alexanders Entschlossenheit.",
+      "correct": true,
+      "explanation": "Die Erzählung formt ein Heldenerlebnis.",
+      "wissen": "Ob historisch genau so, ist unsicher. Die Geschichte prägt das Bild des entschlossenen Feldherrn."
+    },
+    {
+      "concept": "ge:k5:ag:t3",
+      "statement": "Quellenkritik ist bei Heldenerzählungen überflüssig.",
+      "correct": false,
+      "explanation": "Gerade stilisierte Berichte brauchen Prüfung.",
+      "wissen": "Absicht, Zeitpunkt und Übertreibung müssen geprüft werden. Multiperspektivität fragt nach den Unterworfenen."
+    },
+    {
+      "concept": "ge:k5:ag:t4",
+      "statement": "Das Orakel von Siwa stilisiert in der Überlieferung göttliche Legitimation Alexanders.",
+      "correct": true,
+      "explanation": "Die Episode stützt Herrscherideologie.",
+      "wissen": "Ob genau so geschehen, ist unsicher. Die Erzählung prägt das Bild vom gottgleichen Feldherrn."
+    },
+    {
+      "concept": "ge:k5:ag:t5",
+      "statement": "Heldengeschichten über Alexander blenden oft Gewalt und Opfer aus.",
+      "correct": true,
+      "explanation": "Ruhm-Erzählungen selektieren.",
+      "wissen": "Panegyrik hebt Siege hervor. Multiperspektivität fragt nach den Unterworfenen."
+    },
+    {
+      "concept": "ge:k5:ag:t6",
+      "statement": "Es gibt eine erhaltene Autobiografie Alexanders aus seiner Hand.",
+      "correct": false,
+      "explanation": "Erhaltene Berichte stammen von späteren Autoren.",
+      "wissen": "Hofberichte sind verloren. Spätere Historiker erhöhen Unsicherheit."
     }
-  ]
+  ],
 }
 
 export const GESCHICHTE_K5_GENERATORS: Record<string, Topic['generate']> = {

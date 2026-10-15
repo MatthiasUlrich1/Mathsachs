@@ -5,9 +5,12 @@ import { describe, expect, it } from 'vitest'
 import { createRng } from '../lib/rng'
 import { allGeschichteTopicIds } from './geschichteGymTopics'
 import {
+  isGenericHistoryVocabLeak,
   isPlayableGeschichteTopic,
   resolveGeschichteGenerate,
 } from './geschichteGenerators'
+import { findSpoilers, findDuplicateOptions } from './contentAudit'
+import type { Topic } from './types'
 import { buildUniqueTaskRound } from './uniqueRound'
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
@@ -223,6 +226,45 @@ describe('Geschichte generators quality', () => {
         round.map((t) => t.interactive?.type ?? `plain:${t.answerKind}`),
       ).size
       expect(distinct, id).toBeGreaterThanOrEqual(3)
+    }
+  })
+
+  it('CI regression: no spoiler/dup-option on Zeitrechnung, Griechenland, NS-Aufstieg', () => {
+    const ids = [
+      'ge-k5-lb1-zeitrechnung',
+      'ge-k5-lb3-griechenland',
+      'ge-k9-lb2-aufstieg-ns',
+    ]
+    for (const id of ids) {
+      const gen = resolveGeschichteGenerate(id)!
+      const topic = { id, title: id, generate: gen } as Topic
+      for (let seed = 0; seed < 100; seed++) {
+        const task = gen(createRng(seed * 997 + 13))
+        const spoil = findSpoilers(task, topic)
+        const dups = findDuplicateOptions(task)
+        expect(spoil, `${id}@${seed} ${spoil.join(';')}`).toEqual([])
+        expect(dups, `${id}@${seed} ${dups.join(';')}`).toEqual([])
+      }
+    }
+  })
+
+  it('Metallzeit and peers stay topic-pure (no generic Konflikt/Quelle Thin-Fill)', () => {
+    const ids = [
+      'ge-k5-lb2-metallzeit',
+      'ge-k5-lb2-steinzeit',
+      'ge-k5-lb2-aegypten',
+      'ge-k5-lb3-athen',
+      'ge-k9-lb2-aufstieg-ns',
+    ]
+    for (const id of ids) {
+      const gen = resolveGeschichteGenerate(id)!
+      for (let seed = 0; seed < 60; seed++) {
+        const q = gen(createRng(seed * 41 + 9)).question ?? ''
+        expect(isGenericHistoryVocabLeak(q), `${id}@${seed}: ${q}`).toBe(false)
+        expect(q, `${id}@${seed}`).not.toMatch(
+          /Was (beschreibt|bedeutet|ist) [„""']?(Konflikt|Quelle|Revolution)\b/i,
+        )
+      }
     }
   })
 })
