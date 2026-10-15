@@ -830,7 +830,7 @@ const hautNiere: BioBank = {
       ],
       explanation: 'Harnableitende Organe.',
       wissen: fw(
-        'Harnleiter transportieren Harn zur Blase; die Harnröhre leitet ihn nach außen — harnableitende Organe laut Lehrplan.',
+        'Harnleiter transportieren Harn zur Blase; die Harnröhre leitet ihn nach außen — harnableitende Organe.',
       ),
     },
     {

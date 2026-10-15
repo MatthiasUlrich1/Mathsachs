@@ -2,7 +2,7 @@
  * Physik Lehrplan-Teilaspekt-Lücken — dense banks.
  * AUTO: tmp/gen_physik_lehrplan_gaps.py
  */
-import { bankGenerate } from './biologieBank'
+import { physikBankGenerate as bankGenerate } from './physikBank'
 import type { Topic } from './types'
 
 export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generate']> = {

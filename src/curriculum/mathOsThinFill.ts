@@ -4,7 +4,6 @@
  */
 import { mathBankGenerate } from './mathBank'
 import { withMathRoundBoost } from './mathRoundBoost'
-import { mixedVariants } from './taskHelpers'
 import type { Topic } from './types'
 
 export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
@@ -23140,9 +23139,7 @@ export function withMathOsThinFill(
   base: Topic['generate'] | undefined,
 ): Topic['generate'] | undefined {
   const fill = MATH_OS_THIN_FILL[id]
-  let gen: Topic['generate'] | undefined
-  if (!fill) gen = base
-  else if (!base) gen = fill
-  else gen = mixedVariants(fill, fill, fill, base)
+  // Hand-authored/Base hat Vorrang — Thin-Fill nur als letzter Stub (kein 3:1-Mix).
+  const gen = base ?? fill
   return withMathRoundBoost(id, gen)
 }

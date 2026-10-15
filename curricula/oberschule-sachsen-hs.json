@@ -6,7 +6,7 @@
   "subject": "Mathematik",
   "version": "1.0.6",
   "changelog": "Klassen 5–9 (Hauptschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung.",
-  "contentHash": "8162e08e",
+  "contentHash": "44d75e4c",
   "official": [
     {
       "id": "os-hs-klasse-5",
@@ -1168,7 +1168,7 @@
             },
             {
               "id": "os-hs-k7-lb1-d01",
-              "title": "Lehrplan-Vertiefung LB1 (1)",
+              "title": "Flächen und Körper vertiefen (1)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1178,7 +1178,7 @@
             },
             {
               "id": "os-hs-k7-lb1-d02",
-              "title": "Lehrplan-Vertiefung LB1 (2)",
+              "title": "Flächen und Körper vertiefen (2)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1188,7 +1188,7 @@
             },
             {
               "id": "os-hs-k7-lb1-d03",
-              "title": "Lehrplan-Vertiefung LB1 (3)",
+              "title": "Flächen und Körper vertiefen (3)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1198,7 +1198,7 @@
             },
             {
               "id": "os-hs-k7-lb1-d04",
-              "title": "Lehrplan-Vertiefung LB1 (4)",
+              "title": "Flächen und Körper vertiefen (4)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1290,7 +1290,7 @@
             },
             {
               "id": "os-hs-k7-lb2-d01",
-              "title": "Lehrplan-Vertiefung LB2 (1)",
+              "title": "Anteile und Prozent vertiefen (1)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1300,7 +1300,7 @@
             },
             {
               "id": "os-hs-k7-lb2-d02",
-              "title": "Lehrplan-Vertiefung LB2 (2)",
+              "title": "Anteile und Prozent vertiefen (2)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1310,7 +1310,7 @@
             },
             {
               "id": "os-hs-k7-lb2-d03",
-              "title": "Lehrplan-Vertiefung LB2 (3)",
+              "title": "Anteile und Prozent vertiefen (3)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1320,7 +1320,7 @@
             },
             {
               "id": "os-hs-k7-lb2-d04",
-              "title": "Lehrplan-Vertiefung LB2 (4)",
+              "title": "Anteile und Prozent vertiefen (4)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1494,7 +1494,7 @@
             },
             {
               "id": "os-hs-k7-lb4-d01",
-              "title": "Lehrplan-Vertiefung LB4 (1)",
+              "title": "Vielecke und Prismen vertiefen (1)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1504,7 +1504,7 @@
             },
             {
               "id": "os-hs-k7-lb4-d02",
-              "title": "Lehrplan-Vertiefung LB4 (2)",
+              "title": "Vielecke und Prismen vertiefen (2)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1674,7 +1674,7 @@
             },
             {
               "id": "os-hs-k8-lb1-d01",
-              "title": "Lehrplan-Vertiefung LB1 (1)",
+              "title": "Wirtschaftliches Rechnen vertiefen (1)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1684,7 +1684,7 @@
             },
             {
               "id": "os-hs-k8-lb1-d02",
-              "title": "Lehrplan-Vertiefung LB1 (2)",
+              "title": "Wirtschaftliches Rechnen vertiefen (2)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1694,7 +1694,7 @@
             },
             {
               "id": "os-hs-k8-lb1-d03",
-              "title": "Lehrplan-Vertiefung LB1 (3)",
+              "title": "Wirtschaftliches Rechnen vertiefen (3)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1750,7 +1750,7 @@
             },
             {
               "id": "os-hs-k8-lb2-d01",
-              "title": "Lehrplan-Vertiefung LB2 (1)",
+              "title": "Formeln und Gleichungen vertiefen (1)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1760,7 +1760,7 @@
             },
             {
               "id": "os-hs-k8-lb2-d02",
-              "title": "Lehrplan-Vertiefung LB2 (2)",
+              "title": "Formeln und Gleichungen vertiefen (2)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1824,7 +1824,7 @@
             },
             {
               "id": "os-hs-k8-lb3-d01",
-              "title": "Lehrplan-Vertiefung LB3 (1)",
+              "title": "Kreisgeometrie vertiefen (1)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1863,7 +1863,7 @@
             },
             {
               "id": "os-hs-k8-lb4-d01",
-              "title": "Lehrplan-Vertiefung LB4 (1)",
+              "title": "Kreiszylinder vertiefen (1)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1873,7 +1873,7 @@
             },
             {
               "id": "os-hs-k8-lb4-d02",
-              "title": "Lehrplan-Vertiefung LB4 (2)",
+              "title": "Kreiszylinder vertiefen (2)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1883,7 +1883,7 @@
             },
             {
               "id": "os-hs-k8-lb4-d03",
-              "title": "Lehrplan-Vertiefung LB4 (3)",
+              "title": "Kreiszylinder vertiefen (3)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1893,7 +1893,7 @@
             },
             {
               "id": "os-hs-k8-lb4-d04",
-              "title": "Lehrplan-Vertiefung LB4 (4)",
+              "title": "Kreiszylinder vertiefen (4)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1935,7 +1935,7 @@
             },
             {
               "id": "os-hs-k8-lb5-d01",
-              "title": "Lehrplan-Vertiefung LB5 (1)",
+              "title": "Alltagsmathematik vertiefen (1)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1945,7 +1945,7 @@
             },
             {
               "id": "os-hs-k8-lb5-d02",
-              "title": "Lehrplan-Vertiefung LB5 (2)",
+              "title": "Alltagsmathematik vertiefen (2)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1955,7 +1955,7 @@
             },
             {
               "id": "os-hs-k8-lb5-d03",
-              "title": "Lehrplan-Vertiefung LB5 (3)",
+              "title": "Alltagsmathematik vertiefen (3)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1965,7 +1965,7 @@
             },
             {
               "id": "os-hs-k8-lb5-d04",
-              "title": "Lehrplan-Vertiefung LB5 (4)",
+              "title": "Alltagsmathematik vertiefen (4)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1975,7 +1975,7 @@
             },
             {
               "id": "os-hs-k8-lb5-d05",
-              "title": "Lehrplan-Vertiefung LB5 (5)",
+              "title": "Alltagsmathematik vertiefen (5)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1985,7 +1985,7 @@
             },
             {
               "id": "os-hs-k8-lb5-d06",
-              "title": "Lehrplan-Vertiefung LB5 (6)",
+              "title": "Alltagsmathematik vertiefen (6)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1995,7 +1995,7 @@
             },
             {
               "id": "os-hs-k8-lb5-d07",
-              "title": "Lehrplan-Vertiefung LB5 (7)",
+              "title": "Alltagsmathematik vertiefen (7)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2005,7 +2005,7 @@
             },
             {
               "id": "os-hs-k8-lb5-d08",
-              "title": "Lehrplan-Vertiefung LB5 (8)",
+              "title": "Alltagsmathematik vertiefen (8)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2015,7 +2015,7 @@
             },
             {
               "id": "os-hs-k8-lb5-d09",
-              "title": "Lehrplan-Vertiefung LB5 (9)",
+              "title": "Alltagsmathematik vertiefen (9)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2166,7 +2166,7 @@
             },
             {
               "id": "os-hs-k9-lb1-d01",
-              "title": "Lehrplan-Vertiefung LB1 (1)",
+              "title": "Rechtwinklige Dreiecke vertiefen (1)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2176,7 +2176,7 @@
             },
             {
               "id": "os-hs-k9-lb1-d02",
-              "title": "Lehrplan-Vertiefung LB1 (2)",
+              "title": "Rechtwinklige Dreiecke vertiefen (2)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2186,7 +2186,7 @@
             },
             {
               "id": "os-hs-k9-lb1-d03",
-              "title": "Lehrplan-Vertiefung LB1 (3)",
+              "title": "Rechtwinklige Dreiecke vertiefen (3)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2196,7 +2196,7 @@
             },
             {
               "id": "os-hs-k9-lb1-d04",
-              "title": "Lehrplan-Vertiefung LB1 (4)",
+              "title": "Rechtwinklige Dreiecke vertiefen (4)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2206,7 +2206,7 @@
             },
             {
               "id": "os-hs-k9-lb1-d05",
-              "title": "Lehrplan-Vertiefung LB1 (5)",
+              "title": "Rechtwinklige Dreiecke vertiefen (5)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2216,7 +2216,7 @@
             },
             {
               "id": "os-hs-k9-lb1-d06",
-              "title": "Lehrplan-Vertiefung LB1 (6)",
+              "title": "Rechtwinklige Dreiecke vertiefen (6)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2226,7 +2226,7 @@
             },
             {
               "id": "os-hs-k9-lb1-d07",
-              "title": "Lehrplan-Vertiefung LB1 (7)",
+              "title": "Rechtwinklige Dreiecke vertiefen (7)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2295,7 +2295,7 @@
             },
             {
               "id": "os-hs-k9-lb2-d01",
-              "title": "Lehrplan-Vertiefung LB2 (1)",
+              "title": "Körperberechnung vertiefen (1)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2305,7 +2305,7 @@
             },
             {
               "id": "os-hs-k9-lb2-d02",
-              "title": "Lehrplan-Vertiefung LB2 (2)",
+              "title": "Körperberechnung vertiefen (2)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2315,7 +2315,7 @@
             },
             {
               "id": "os-hs-k9-lb2-d03",
-              "title": "Lehrplan-Vertiefung LB2 (3)",
+              "title": "Körperberechnung vertiefen (3)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2325,7 +2325,7 @@
             },
             {
               "id": "os-hs-k9-lb2-d04",
-              "title": "Lehrplan-Vertiefung LB2 (4)",
+              "title": "Körperberechnung vertiefen (4)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2335,7 +2335,7 @@
             },
             {
               "id": "os-hs-k9-lb2-d05",
-              "title": "Lehrplan-Vertiefung LB2 (5)",
+              "title": "Körperberechnung vertiefen (5)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2410,7 +2410,7 @@
             },
             {
               "id": "os-hs-k9-lb3-d01",
-              "title": "Lehrplan-Vertiefung LB3 (1)",
+              "title": "Funktionale Zusammenhänge vertiefen (1)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2420,7 +2420,7 @@
             },
             {
               "id": "os-hs-k9-lb3-d02",
-              "title": "Lehrplan-Vertiefung LB3 (2)",
+              "title": "Funktionale Zusammenhänge vertiefen (2)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2430,7 +2430,7 @@
             },
             {
               "id": "os-hs-k9-lb3-d03",
-              "title": "Lehrplan-Vertiefung LB3 (3)",
+              "title": "Funktionale Zusammenhänge vertiefen (3)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2474,7 +2474,7 @@
             },
             {
               "id": "os-hs-k9-lb4-d01",
-              "title": "Lehrplan-Vertiefung LB4 (1)",
+              "title": "Alltagsmathematik vertiefen (1)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2484,7 +2484,7 @@
             },
             {
               "id": "os-hs-k9-lb4-d02",
-              "title": "Lehrplan-Vertiefung LB4 (2)",
+              "title": "Alltagsmathematik vertiefen (2)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2494,7 +2494,7 @@
             },
             {
               "id": "os-hs-k9-lb4-d03",
-              "title": "Lehrplan-Vertiefung LB4 (3)",
+              "title": "Alltagsmathematik vertiefen (3)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2504,7 +2504,7 @@
             },
             {
               "id": "os-hs-k9-lb4-d04",
-              "title": "Lehrplan-Vertiefung LB4 (4)",
+              "title": "Alltagsmathematik vertiefen (4)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [

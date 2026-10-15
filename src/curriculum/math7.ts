@@ -14,7 +14,6 @@ import {
 import { formatDe, roundTo } from '../lib/num'
 import {
   choicePickTask,
-  dragDropSlotsTask,
   dragDropSortTask,
   equationStepsTask,
   mixedVariants,
@@ -26,7 +25,7 @@ import {
 import type { Grade, Topic } from './types'
 import { MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE } from './mathLehrplanTeilaspekte'
 import { MATH_DICHTE_BY_GRADE } from './mathDichteFill'
-import { opKey, solveAddPath, suggestOps } from '../lib/equationSteps'
+import { opKey, solveAddPath, solveMulPath, suggestOps } from '../lib/equationSteps'
 
 /** Format a signed integer, wrapping negatives in parentheses with a real minus. */
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
@@ -268,15 +267,17 @@ const addRational: Topic = {
     url: 'https://de.wikipedia.org/wiki/Rationale_Zahl',
   },
   generate: (rng: Rng) => {
-    const a = nonZero(rng, -20, 20)
-    const b = nonZero(rng, -20, 20)
+    // Mindestens eine negative Zahl — sonst Unterforderung (reine natürliche Addition).
+    let a = nonZero(rng, -20, 20)
+    let b = nonZero(rng, -20, 20)
+    if (a > 0 && b > 0) b = -b
     const value = a + b
     return valueTask({
-      question: `Berechne: ${num(a)} + ${num(b)}`,
+      question: `Berechne mit Vorzeichen: ${num(a)} + (${num(b)})`,
       answerKind: 'integer',
       value,
       solution: formatDe(value),
-      explanation: `Addiere die beiden Zahlen unter Beachtung der Vorzeichen: ${num(a)} + ${num(b)} = ${value}.`,
+      explanation: `Addiere unter Beachtung der Vorzeichen: ${num(a)} + (${num(b)}) = ${value}.`,
     })
   },
 }
@@ -294,15 +295,18 @@ const subRational: Topic = {
     url: 'https://de.wikipedia.org/wiki/Rationale_Zahl',
   },
   generate: (rng: Rng) => {
-    const a = nonZero(rng, -20, 20)
-    const b = nonZero(rng, -20, 20)
+    let a = nonZero(rng, -20, 20)
+    let b = nonZero(rng, -20, 20)
+    // Oft Minus einer negativen Zahl — Kerngedanke K7.
+    if (rng() < 0.55) b = -Math.abs(b)
+    else if (a > 0 && b > 0) a = -a
     const value = a - b
     return valueTask({
-      question: `Berechne: ${num(a)} − ${num(b)}`,
+      question: `Berechne mit Vorzeichen: ${num(a)} − (${num(b)})`,
       answerKind: 'integer',
       value,
       solution: formatDe(value),
-      explanation: `Subtrahieren heißt die Gegenzahl addieren: ${num(a)} − ${num(b)} = ${num(a)} + ${num(-b)} = ${value}.`,
+      explanation: `Subtrahieren heißt die Gegenzahl addieren: ${num(a)} − (${num(b)}) = ${num(a)} + (${num(-b)}) = ${value}.`,
     })
   },
 }
@@ -320,12 +324,17 @@ const mulRational: Topic = {
     url: 'https://de.wikipedia.org/wiki/Vorzeichenregel',
   },
   generate: (rng: Rng) => {
-    const a = nonZero(rng, -12, 12)
-    const b = nonZero(rng, -12, 12)
+    // Mindestens ein Faktor negativ — Vorzeichenregel üben (K7, nicht K5-Multiplikation).
+    let a = nonZero(rng, -12, 12)
+    let b = nonZero(rng, -12, 12)
+    if (a > 0 && b > 0) a = -a
     const value = a * b
-    const sign = a * b >= 0 ? 'gleiche Vorzeichen ergeben ein positives' : 'verschiedene Vorzeichen ergeben ein negatives'
+    const sign =
+      a * b >= 0
+        ? 'gleiche Vorzeichen ergeben ein positives'
+        : 'verschiedene Vorzeichen ergeben ein negatives'
     return valueTask({
-      question: `Berechne: ${num(a)} · ${num(b)}`,
+      question: `Berechne mit Vorzeichenregel: ${num(a)} · ${num(b)}`,
       answerKind: 'integer',
       value,
       solution: formatDe(value),
@@ -487,12 +496,12 @@ const gleichungAdd: Topic = {
 const gleichungMul: Topic = {
   id: 'k7-lb2-gleichung-mul',
   title: 'Gleichung umstellen: a · x = b',
-  hint: 'Baue rechts vom Strich die Umformung (| : a), dann x = b : a, und tippe das Ergebnis für x.',
+  hint: 'Nutze die Buttons für Äquivalenzumformungen (beide Seiten durch a teilen).',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['Gleichung', 'lösen', 'x', 'Faktor', 'Division', 'Multiplikation', 'Terme'],
   fachwissen: {
-    text: 'Gleichungen der Form a · x = b löst du, indem du beide Seiten durch a dividierst (a ≠ 0). Rechts notierst du die Umformung „| : a“, schreibst darunter x = b : a und berechnest den Wert. Hier setzt du Operation und Terme selbst in die Plätze — anders als bei x + a = b mit Umformungs-Buttons.',
+    text: 'Gleichungen der Form a · x = b löst du, indem du beide Seiten durch a dividierst (a ≠ 0). Schreibe die Umformung „| : a“ und berechne x = b : a.',
     quelle: 'Wikipedia: Lineare Gleichung',
     url: 'https://de.wikipedia.org/wiki/Lineare_Gleichung',
   },
@@ -500,40 +509,21 @@ const gleichungMul: Topic = {
     const a = nonZero(rng, -9, 9)
     const x = nonZero(rng, -12, 12)
     const b = a * x
-    const given = `${num(a)} · x = ${num(b)}`
-    // Slots 1–2: Operation hinter |  →  : a
-    // Slots 3–7: umgestellte Gleichung → x = b : a
-    // (items by value — labels may repeat)
-    const partLabels = [':', num(a), 'x', '=', num(b), ':', num(a)]
-    const distractorLabels = ['+', '−', '·', `${num(a)} · x`].filter(
-      (d) => !partLabels.includes(d),
-    )
-    const allLabels = [...partLabels, ...distractorLabels]
-    const items = allLabels.map((label, i) => ({ label, value: i + 1 }))
-    const shuffled = [...items]
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = randInt(rng, 0, i)
-      ;[shuffled[i], shuffled[j]] = [shuffled[j]!, shuffled[i]!]
+    const start = { ax: a, b: 0, cx: 0, d: b }
+    const solutionOps = solveMulPath(a, b)
+    const buttons = suggestOps(start, rng)
+    const keys = new Set(buttons.map(opKey))
+    for (const op of solutionOps) {
+      if (!keys.has(opKey(op))) buttons.unshift(op)
     }
-    const correctSlots = partLabels.map((_, i) =>
-      shuffled.findIndex((it) => it.value === i + 1),
-    )
-    return dragDropSlotsTask({
-      question: `Stelle um nach x. Gegeben: ${given}. Baue die Operation hinter dem Strich und die umgestellte Gleichung; tippe danach x.`,
-      items: shuffled,
-      correctSlots,
-      solution: `| : ${num(a)}  →  x = ${num(b)} : ${num(a)} = ${x}`,
-      explanation: `Beide Seiten durch ${num(a)} teilen: | : ${num(a)}. Dann x = ${num(b)} : ${num(a)} = ${x}.`,
-      instruction:
-        'Tippe oder ziehe: zuerst die Umformung hinter |, dann die Zeile x = b : a. Einen Block brauchst du nicht.',
-      checkMode: 'strict',
-      worksheet: {
-        given,
-        opSlotCount: 2,
-        lineHint: 'Umgestellte Gleichung:',
-      },
-      resultValue: x,
-      resultLabel: 'x =',
+    return equationStepsTask({
+      question: `Stelle die Gleichung Schritt für Schritt um und löse nach x: ${num(a)} · x = ${num(b)}`,
+      start,
+      buttons: buttons.slice(0, 6),
+      solutionOps,
+      solution: x,
+      explanation: `Beide Seiten durch ${num(a)} teilen: x = ${num(b)} : ${num(a)} = ${x}.`,
+      instruction: 'Tippe die passende Umformung (gilt für beide Seiten), bis x allein steht:',
     })
   },
 }

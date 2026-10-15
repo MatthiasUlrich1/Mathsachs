@@ -75,7 +75,9 @@ describe('Physik topic factory — schulische Aufgaben', () => {
         expect(task.question).not.toMatch(/V\s*=\s*l/)
       } else {
         kinds.add('choice')
-        expect(task.question).toMatch(/Volumen|Formel|Einheit|Größen|Liter|Quader/)
+        expect(task.question).toMatch(
+          /Volumen|Formel|Einheit|Größen|Liter|Quader|Messzylinder|Milliliter|Überlauf|Verdrängung|Kubikmeter/,
+        )
       }
     }
     expect(kinds.has('calc')).toBe(true)

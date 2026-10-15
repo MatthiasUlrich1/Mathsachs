@@ -20,8 +20,19 @@ import { PHYSIK_THIN_FILL, withSubjectThinFill } from './physikThinFill'
 import { LEHRPLAN_TOPIC_GAP_GENERATORS } from './lehrplanTopicGaps'
 import { buildGymSachsenPhysikPack } from './physikGymPack'
 import { makePhysikTopicGenerate } from './physikTopicFactory'
+import { rewritePhysikPrompt } from './physikBank'
 import { mixedVariants } from './taskHelpers'
 import type { Topic } from './types'
+
+/** Runtime: Definitions-Prompts → anwendungsnahe MC-Fragen (alle Generatorpfade). */
+function withoutDefMcPrompt(gen: Topic['generate']): Topic['generate'] {
+  return (rng) => {
+    const task = gen(rng)
+    const q = rewritePhysikPrompt(task.question || '')
+    if (q === task.question) return task
+    return { ...task, question: q }
+  }
+}
 
 const HAND_WRITTEN: Record<string, Topic['generate']> = {
   ...PHYSIK_DENSE_GENERATORS,
@@ -83,8 +94,10 @@ export function resolvePhysikGenerate(topicId: string): Topic['generate'] | unde
     withOsRoundBoost(topicId, withSek1RoundBoost(topicId, base) ?? base) ?? base
   // curriculum-aufgaben-qualitaet: keine Cross-Topic-Vermischung —
   // Thin-Fill nur für reine Factory-Stubs, nie über Hand-/Gap-/Qualitätsbanken.
-  if (HAND_WRITTEN_IDS.has(topicId)) return boosted
-  return withSubjectThinFill(topicId, boosted, PHYSIK_THIN_FILL)
+  const mixed = HAND_WRITTEN_IDS.has(topicId)
+    ? boosted
+    : withSubjectThinFill(topicId, boosted, PHYSIK_THIN_FILL) ?? boosted
+  return withoutDefMcPrompt(mixed)
 }
 
 export function isPlayablePhysikTopic(topicId: string): boolean {

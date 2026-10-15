@@ -8665,7 +8665,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     { concept: "bio:kOberstufe:gaerung:xpaar:sauerkraut", term: "Sauerkraut", meaning: "Milchsäurebakterien", wissen: "Konservierung. Sauerkraut bedeutet: Milchsäurebakterien. Merke: Sauerkraut — Milchsäurebakterien." },
     { concept: "bio:kOberstufe:gaerung:xpaar:bierbrauen", term: "Bierbrauen", meaning: "Alkoholische Gärung", wissen: "Technik und Biologie. Bierbrauen bedeutet: Alkoholische Gärung. Merke: Bierbrauen — Alkoholische Gärung." },
     { concept: "bio:kOberstufe:gaerung:xpaar:pasteur-effekt", term: "Pasteur-Effekt", meaning: "Sauerstoff hemmt Gärung", wissen: "Stoffwechselumschaltung. Pasteur-Effekt bedeutet: Sauerstoff hemmt Gärung. Merke: Pasteur-Effekt — Sauerstoff hemmt Gärung." },
-    { concept: "bio:kOberstufe:gaerung:xpaar:vergleich-atmung", term: "Vergleich Atmung", meaning: "Viel mehr ATP mit O₂", wissen: "Lehrplanziel. Vergleich Atmung bedeutet: Viel mehr ATP mit O₂. Merke: Vergleich Atmung — Viel mehr ATP mit O₂." },
+    { concept: "bio:kOberstufe:gaerung:xpaar:vergleich-atmung", term: "Vergleich Atmung", meaning: "Viel mehr ATP mit O₂", wissen: "Vergleich Atmung bedeutet: Viel mehr ATP mit O₂. Merke: Vergleich Atmung — Viel mehr ATP mit O₂." },
     ],
     facts: [
     {
@@ -8791,8 +8791,8 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
       concept: "bio:kOberstufe:gaerung:xtf:vergleich-atmung",
       statement: "Vergleich Atmung bedeutet: Lactat als Produkt.",
       correct: false,
-      explanation: "Lehrplanziel. Vergleich Atmung bedeutet: Viel mehr ATP mit O₂. Merke: Vergleich Atmung — Viel mehr ATP mit O₂.",
-      wissen: "Lehrplanziel. Vergleich Atmung bedeutet: Viel mehr ATP mit O₂. Merke: Vergleich Atmung — Viel mehr ATP mit O₂.",
+      explanation: "Vergleich Atmung bedeutet: Viel mehr ATP mit O₂. Merke: Vergleich Atmung — Viel mehr ATP mit O₂.",
+      wissen: "Vergleich Atmung bedeutet: Viel mehr ATP mit O₂. Merke: Vergleich Atmung — Viel mehr ATP mit O₂.",
     },
     ],
   },

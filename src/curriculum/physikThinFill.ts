@@ -2,7 +2,7 @@
  * Auto-generated thin-fill (ph). Regenerate: node tmp/gen-subject-thin-fill.mjs
  * Mix 3:1 over base generators — no released:true.
  */
-import { bankGenerate } from './biologieBank'
+import { physikBankGenerate as bankGenerate } from './physikBank'
 import { mixedVariants } from './taskHelpers'
 import type { Topic } from './types'
 

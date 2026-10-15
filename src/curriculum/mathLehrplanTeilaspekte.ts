@@ -4,6 +4,14 @@
  */
 import { type BioBank } from './biologieBank'
 import { mathBankGenerate } from './mathBank'
+import {
+  generateBruchDezimalProzentK5,
+  generateEchteUnechteBruecheK5,
+  generatePeriodischeDezimalK6,
+  generatePrimfaktorK5,
+  generateRechengesetzeK5,
+  generateVergleichenOrdnenK5,
+} from './mathQualityBanks'
 import type { Topic } from './types'
 import { DEFAULT_TASKS_PER_ROUND } from './tasksPerRound'
 
@@ -140,7 +148,7 @@ export const maTopic0: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["vergleichen", "ordnen", "Zahlenstrahl", "Stellenwert"],
-  generate: mathBankGenerate(maBank0),
+  generate: generateVergleichenOrdnenK5,
 }
 
 
@@ -278,7 +286,7 @@ export const maTopic1: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["Primfaktor", "Zerlegung", "Primzahl", "Teilbarkeit"],
-  generate: mathBankGenerate(maBank1),
+  generate: generatePrimfaktorK5,
 }
 
 
@@ -418,7 +426,8 @@ export const maTopic2: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["Kommutativ", "Assoziativ", "Distributiv", "Rechenvorteil"],
-  generate: mathBankGenerate(maBank2),
+  // Themenreine Rechnung (Punkt vor Strich / Distributiv) — kein themenfremdes a+b.
+  generate: generateRechengesetzeK5,
 }
 
 
@@ -558,7 +567,7 @@ export const maTopic3: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["echter Bruch", "unechter Bruch", "gemischte Zahl", "Zähler", "Nenner"],
-  generate: mathBankGenerate(maBank3),
+  generate: generateEchteUnechteBruecheK5,
 }
 
 
@@ -698,7 +707,7 @@ export const maTopic4: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["Prozent", "Dezimalzahl", "Umwandeln", "Zehnerbruch"],
-  generate: mathBankGenerate(maBank4),
+  generate: generateBruchDezimalProzentK5,
 }
 
 
@@ -1112,7 +1121,8 @@ export const maTopic7: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["periodisch", "endlich", "Dezimalzahl", "Umwandeln"],
-  generate: mathBankGenerate(maBank7),
+  // Themenreine Klassifikation/Umwandlung — kein themenfremdes a·b.
+  generate: generatePeriodischeDezimalK6,
 }
 
 
@@ -1265,7 +1275,7 @@ const maBank9: BioBank = {
   facts: [
   {
     concept: "ma:k6:zuord:f1",
-    prompt: "Welche Darstellungsformen von Zuordnungen nennt der Lehrplan?",
+    prompt: "Welche Darstellungsformen von Zuordnungen sind üblich?",
     answer: "Wortform, Tabelle, Diagramm, Gleichung, Pfeile",
     wrong: [
       "Nur Termumformung",

@@ -4,6 +4,7 @@
  * Auto: tmp/gen_lehrplan_gap_banks.py
  */
 import { bankGenerate, type BioBank } from './biologieBank'
+import { physikBankGenerate } from './physikBank'
 import type { Topic } from './types'
 
 
@@ -1295,18 +1296,18 @@ const bioK10Evolutionsbelege: BioBank = {
 
 export const LEHRPLAN_TOPIC_GAP_GENERATORS: Record<string, Topic['generate']> = {
   // Physik K10 — Newtonsche Gesetze (fehlender Pflicht-LB)
-  'ph-k10-lb1n-newton': bankGenerate(phK10Newton),
-  'ph-k10-lb1n-traegheit': bankGenerate(phK10Newton),
-  'ph-k10-lb1n-fma': bankGenerate(phK10Newton),
-  'ph-k10-lb1n-verkehr': bankGenerate(phK10Newton),
-  'ph-k10-lb1n-superposition': bankGenerate(phK10Newton),
+  'ph-k10-lb1n-newton': physikBankGenerate(phK10Newton),
+  'ph-k10-lb1n-traegheit': physikBankGenerate(phK10Newton),
+  'ph-k10-lb1n-fma': physikBankGenerate(phK10Newton),
+  'ph-k10-lb1n-verkehr': physikBankGenerate(phK10Newton),
+  'ph-k10-lb1n-superposition': physikBankGenerate(phK10Newton),
   // Physik JGS12 GK — mechanische/EM Schwingungen & Atomvorstellungen
-  'ph-j12gk-lb1-mech-schwing': bankGenerate(phJ12Schwingungen),
-  'ph-j12gk-lb1-em-schwing': bankGenerate(phJ12Schwingungen),
-  'ph-j12gk-lb1-wellen': bankGenerate(phJ12Schwingungen),
-  'ph-j12gk-lb4-atommodell': bankGenerate(phJ12Atomvorstellungen),
-  'ph-j12gk-lb4-spektrum': bankGenerate(phJ12Atomvorstellungen),
-  'ph-j12gk-lb4-kernhuelle': bankGenerate(phJ12Atomvorstellungen),
+  'ph-j12gk-lb1-mech-schwing': physikBankGenerate(phJ12Schwingungen),
+  'ph-j12gk-lb1-em-schwing': physikBankGenerate(phJ12Schwingungen),
+  'ph-j12gk-lb1-wellen': physikBankGenerate(phJ12Schwingungen),
+  'ph-j12gk-lb4-atommodell': physikBankGenerate(phJ12Atomvorstellungen),
+  'ph-j12gk-lb4-spektrum': physikBankGenerate(phJ12Atomvorstellungen),
+  'ph-j12gk-lb4-kernhuelle': physikBankGenerate(phJ12Atomvorstellungen),
   // Bio — fehlende benannte Teilaspekte
   'bi-k5-lb1-arbeitsweisen': bankGenerate(bioK5Arbeitsweisen),
   'bi-k7-lb1-viren': bankGenerate(bioK7Viren),

@@ -2,7 +2,8 @@
  * Flaschenzug (K7 Wahl) — themenreine Bank.
  * Rules: Themenbindung, uniqueRound ≥10, Fachwissen aufgabenbezogen, kein Meta.
  */
-import { bankGenerate, type BioBank } from './biologieBank'
+import { physikBankGenerate as bankGenerate } from './physikBank'
+import { type BioBank } from './biologieBank'
 import type { Topic } from './types'
 
 const fw = (s: string) => s

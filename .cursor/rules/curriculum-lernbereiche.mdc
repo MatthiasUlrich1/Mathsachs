@@ -38,21 +38,18 @@ tasksPerRound: opts?.tasksPerRound ?? DEFAULT_TASKS_PER_ROUND
 2. `tasksPerRound` nur setzen, wenn Override nötig (Pool &lt; 10 oder bewusst höher, max. 30).
 3. Nach Pack-Änderungen Curricula exportieren (`scripts/export-curriculum-pack.ts`).
 4. Regression: `practiceRoundLength.test.ts` (Bio K5 Aufbau/Überblick).
-5. Inhaltsqualität: siehe `curriculum-aufgaben-qualitaet.mdc` (keine Chrono-Spoiler,
-   kein Lehrplan-Meta/Philosophie in Prompt/Fachwissen, themengebunden ohne
-   LB-interne Dopplung, Aufbau-Themen mit lizenzklarer Bild-Zuordnung wo sinnvoll,
-   tolerante Lücken, TF→MC statt kürzen).
-   **Mathe:** keine Zuordnung/Lückentexte — nur Rechnen/MC/Gleichungen/Grafik mit Zahlen
-   (`mathBankGenerate` / Rechen-Generatoren).
-   **Physik:** Anwendung/Rechnung/Grafik statt reiner Begriffs-MC; Feldlinien grafisch.
-   **Alle Fächer:** Abwechslung der Interaktionen; keine Slogan-/Stichwort-TF
-   („Sicherheit: Wasser und Strom.“); siehe `curriculum-aufgaben-qualitaet.mdc`.
-6. **Fachwissen aufgabenbezogen:** jeder Task-`fachwissen`-Text konkret zur
-   gestellten Frage/Antwort — kein generisches/leeres/Meta-Fachwissen
-   (siehe `curriculum-aufgaben-qualitaet.mdc`).
-7. **Themen-Vollständigkeit (verbindlich):** Jeder im Lehrplan genannte Inhalt/Teilaspekt
-   muss als Topic oder klar benanntes Unterthema existieren. Bloß Pool-Dichte
-   („thin fill“) auf bestehenden Topics **ohne** Themenabdeckung ist unzureichend.
-   Lehrplan-Punkte nicht weglassen; fehlende Themen neu anlegen, dünne Pflichtpools
-   nachziehen.
-8. Freigabe: kein `released: true` ohne explizite Anforderung (Ship/Pack).
+5. Inhaltsqualität: siehe `curriculum-aufgaben-qualitaet.mdc` — gilt für
+   **alle Fächer × alle Klassen × alle LBs** (Bio, Geschichte, Physik, Mathe, OS,
+   ST, SKS; gesperrt und sichtbar).
+   Themenbindung, kein Meta/Slogan, Schwierigkeit ≈ Klassenstufe.
+   **Mathe+Physik:** kein TF, keine Zuordnung, keine Lücken — nur Rechnung/MC/
+   Grafik/Eingabe; Boosts nur themenrein.
+   **Bio/Geschichte:** Abwechslung; TF nur volle prüfbare Sätze; Aufbau mit
+   Bildslots wo sinnvoll.
+6. **Schwierigkeit ≈ Klasse:** K5/K6 einfach/altersgerecht; K7–K10 lehrplangerecht;
+   OS/LK anspruchsvoll aber nicht willkürlich; keine Unter-/Überforderung.
+7. **Fachwissen aufgabenbezogen:** jeder Task-`fachwissen`-Text konkret zur
+   gestellten Frage/Antwort — kein generisches/leeres/Meta-Fachwissen.
+8. **Themen-Vollständigkeit (verbindlich):** Jeder Lehrplan-Teilaspekt als Topic;
+   Thin-Fill ohne Themenabdeckung reicht nicht.
+9. Freigabe: kein `released: true` ohne explizite Anforderung (Ship/Pack).

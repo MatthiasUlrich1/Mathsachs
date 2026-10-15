@@ -549,7 +549,7 @@ const geBank4: BioBank = {
       "Abschaffung aller Steuern",
       "Nur Kulturförderung",
     ],
-    explanation: "Lehrplanziel.",
+    explanation: "Fachlicher Kernpunkt.",
     wissen: "Rechte von Volk und Senat weichen faktisch dem Princeps.",
   },
   {
@@ -841,7 +841,7 @@ const geBank7: BioBank = {
   facts: [
   {
     concept: "ge:k7:amerika:f1",
-    prompt: "Was bedeutet Konquista im Lehrplankontext?",
+    prompt: "Was bedeutet Konquista in der Geschichte Amerikas?",
     answer: "Eroberung amerikanischer Reiche durch europäische Mächte",
     wrong: [
       "Nur friedlicher Handel ohne Gewalt",
@@ -1338,7 +1338,7 @@ const geBank11: BioBank = {
   },
   {
     concept: "ge:k7:konst-mon:f2",
-    prompt: "Welches Beispiel nennt der Lehrplan oft?",
+    prompt: "Welches historische Beispiel zeigt eine konstitutionelle Monarchie früh?",
     answer: "England nach der Glorious Revolution / Bill of Rights",
     wrong: [
       "Nur Pharaonenreich",
@@ -1395,7 +1395,7 @@ const geBank11: BioBank = {
       "Es löscht Staaten",
       "Es betrifft nur Kunst",
     ],
-    explanation: "Lehrplanziel.",
+    explanation: "Fachlicher Kernpunkt.",
     wissen: "England, USA, Frankreich — unterschiedliche Wege.",
   },
   {
@@ -1634,7 +1634,7 @@ const geBank13: BioBank = {
   },
   {
     concept: "ge:k8:quellen-lied:f7",
-    prompt: "Warum nennt der Lehrplan Atlas und Denkmal zusammen?",
+    prompt: "Warum gehören Geschichtsatlas und Denkmal zur Deutung von Nation?",
     answer: "Raum und Erinnerungsorte strukturieren nationales Narrativ",
     wrong: [
       "Zufällig",
@@ -1820,7 +1820,7 @@ const geBank15: BioBank = {
   },
   {
     concept: "ge:k8:wk1-verlauf:f3",
-    prompt: "Welche neue Dimension nennt der Lehrplan?",
+    prompt: "Welche neue Dimension kennzeichnet den Ersten Weltkrieg?",
     answer: "Totaler Krieg mit Heimatfront und Technik",
     wrong: [
       "Nur Kabinettskrieg ohne Gesellschaft",
@@ -2192,7 +2192,7 @@ const geBank18: BioBank = {
       "Nur Außenpolitik zählt",
       "Nur Wirtschaft ohne Politik",
     ],
-    explanation: "Lehrplanziel.",
+    explanation: "Fachlicher Kernpunkt.",
     wissen: "Selbstbehauptung 1920–1928 vs. spätere Akzeptanz des NS.",
   },
   {
@@ -2714,7 +2714,7 @@ const geBank22: BioBank = {
       "Es betrifft nur DDR",
       "Es ist nur Wirtschaftstheorie",
     ],
-    explanation: "Lehrplanziel.",
+    explanation: "Fachlicher Kernpunkt.",
     wissen: "Von Novemberrevolution zur Machtübertragung.",
   },
   ],
@@ -2986,7 +2986,7 @@ const geBank25: BioBank = {
   },
   {
     concept: "ge:lk12:instr:f2",
-    prompt: "Welches Beispiel nennt der Lehrplan typisch?",
+    prompt: "Welches Beispiel zeigt konkurrierende Geschichtsdeutungen typisch?",
     answer: "Deutungen der Französischen Revolution",
     wrong: [
       "Nur Wettergeschichte",

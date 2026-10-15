@@ -56,10 +56,10 @@ const osNull: BioBank = {
   {
     concept: "os:k5:null:6",
     prompt: "Wie schreibt man die Menge der natürlichen Zahlen oft?",
-    answer: "ℕ (mit 0 laut Lehrplan)",
+    answer: "ℕ (mit 0)",
     wrong: ["Nur ℝ", "Nur ℚ", "Nur ℤ ohne 0"],
     explanation: "Wie schreibt man die Menge der natürlichen Zahlen .",
-    wissen: "ℕ (mit 0 laut Lehrplan).",
+    wissen: "ℕ (mit 0).",
   },
   {
     concept: "os:k5:null:7",

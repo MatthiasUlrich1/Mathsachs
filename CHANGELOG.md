@@ -9,6 +9,20 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.87] – 2026-10-15
+
+### Behoben
+- **Themenpassung Mathe:** Keine themenfremden Rechenaufgaben mehr (z. B. bloßes
+  `35·3` unter „Dezimalzahlen“ oder `43+11` unter „Rechengesetze“) — Boosts und
+  Generatoren nur noch themenrein (Punkt vor Strich, endliche/periodische Dezimalen, …).
+- **Mathe + Physik:** True/False, Zuordnung und Lückentexte entfernt bzw. durch
+  Rechnung/MC/Grafik ersetzt; Physik ohne isolierte „Was bedeutet …?“-Fragen.
+- **Alle Fächer:** Schwierigkeit an Klassenstufe gebunden; kein Lehrplan-Meta/Slogan
+  in Prompt und Fachwissen; Themenbindung-Tests.
+
+### Geändert
+- Qualitätsregeln und Lernbereich-Regeln geschärft; neue Topics bleiben `released:false`.
+
 ## [0.28.86] – 2026-10-15
 
 ### Behoben

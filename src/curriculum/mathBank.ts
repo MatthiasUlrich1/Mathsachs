@@ -1,11 +1,11 @@
 /**
- * Mathematik-Banken: nur MC / TrueFalse — keine Zuordnung, keine Lückentexte.
+ * Mathematik-Banken: nur MC / Wert — keine Zuordnung, keine Lücken, kein TF.
  * siehe `.cursor/rules/curriculum-aufgaben-qualitaet.mdc`
  */
 import { type Rng } from '../lib/rng'
 import { mixedVariants, valueTask } from './taskHelpers'
 import { sanitizeBioBank, type BioBank } from './biologieBank'
-import { mcTask, pick, shuffle, trueFalse } from './biologieHelpers'
+import { mcTask, pick, shuffle } from './biologieHelpers'
 import type { Topic } from './types'
 
 function conceptKey(concept: string | undefined, prefix: string | undefined, fallback: string): string {
@@ -15,7 +15,8 @@ function conceptKey(concept: string | undefined, prefix: string | undefined, fal
 }
 
 /**
- * Mathe-sichere Bank: Facts → MC, Pairs → MC (nie Match/Cloze), optional TrueFalse.
+ * Mathe-sichere Bank: Facts → MC, Pairs → MC (nie Match/Cloze/TF).
+ * trueFalse-Einträge werden bewusst ignoriert (Mathe: kein TF).
  */
 export function mathBankGenerate(bank: BioBank): Topic['generate'] {
   bank = sanitizeBioBank(bank)
@@ -76,24 +77,7 @@ export function mathBankGenerate(bank: BioBank): Topic['generate'] {
     })
   }
 
-  if (bank.trueFalse?.length) {
-    variants.push((rng) => {
-      const t = pick(rng, bank.trueFalse!)
-      const key = conceptKey(t.concept, prefix, t.statement)
-      return trueFalse(rng, {
-        statement: t.statement,
-        correct: t.correct,
-        explanation: t.explanation,
-        fachwissen: {
-          text: t.wissen || t.explanation,
-          quelle: bank.quelle,
-          url: bank.url,
-        },
-        dedupeKey: key,
-        contentIds: [key],
-      })
-    })
-  }
+  // bank.trueFalse bewusst nicht verdrahtet — Mathe/Physik: kein TF.
 
   if (variants.length === 0) {
     return () =>

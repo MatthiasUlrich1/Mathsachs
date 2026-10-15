@@ -2,7 +2,8 @@
  * Pflicht-Hebelgesetz K7 LB1 — themenreine Bank (kein Cross-Topic-Thin-Fill).
  * released:false über Pack-Default.
  */
-import { bankGenerate, type BioBank } from './biologieBank'
+import { physikBankGenerate as bankGenerate } from './physikBank'
+import { type BioBank } from './biologieBank'
 import type { Topic } from './types'
 
 const fw = (s: string) => s

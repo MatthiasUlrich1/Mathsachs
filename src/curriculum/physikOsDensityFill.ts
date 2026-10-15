@@ -2,7 +2,7 @@
  * Physik OS Dichte-Fill (P2) — themenreine Banken, released:false Topics.
  * AUTO: tmp/gen_p2_os_density.py
  */
-import { bankGenerate } from './biologieBank'
+import { physikBankGenerate as bankGenerate } from './physikBank'
 import type { Topic } from './types'
 
 export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']> = {

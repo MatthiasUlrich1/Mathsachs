@@ -425,11 +425,13 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-k5-lb4-deckung': 'lb3-achsensymmetrie',
   'os-k5-lb4-drehung': 'lb3-achsensymmetrie',
   'os-k5-lb4-achsen': 'lb3-achsensymmetrie',
+  // Wahl K5: Kultur/Stellenwert — nicht bare Natürliche-Zahlen-Boost-Aliase.
   'os-k5-lbw1-zahlzeichen': 'lb1-runden-natuerlich',
-  'os-k5-lbw1-abakus': 'lb1-addition',
-  'os-k5-lbw1-stellenwert': 'lb1-schriftliches-rechnen',
+  'os-k5-lbw1-abakus': 'lb1-runden-natuerlich',
+  'os-k5-lbw1-stellenwert': 'lb1-runden-natuerlich',
   'os-k5-lbw2-daten': 'lb2-mittelwert',
-  'os-k5-lbw2-kombinatorik': 'lb1-multiplikation',
+  // Kombinatorik ≠ Multiplikation natürlicher Zahlen.
+  'os-k5-lbw2-kombinatorik': 'lb2-haeufigkeit',
   'os-k5-lbw2-mittel': 'lb2-mittelwert',
   'os-k5-lbw3-angebote': 'lb5-gesamtpreis',
   'os-k5-lbw3-budget': 'lb5-gesamtpreis',
@@ -624,7 +626,8 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-k6-lbw1-dgs': 'lb3-achsensymmetrie',
   'os-k6-lbw1-konstruktion': 'lb3-achsensymmetrie',
   'os-k6-lbw1-messen': 'lb3-winkelarten',
-  'os-k6-lbw2-spiele': 'lb1-multiplikation',
+  // Spiele/Raum/Stochastik — nicht Multiplikation natürlicher Zahlen.
+  'os-k6-lbw2-spiele': 'lb2-haeufigkeit',
   'os-k6-lbw2-strategie': 'k8-lb5-probieren',
   'os-k6-lbw2-wuerfel': 'lb2-haeufigkeit',
   'os-k6-lbw3-diagramm': 'lb2-mittelwert',

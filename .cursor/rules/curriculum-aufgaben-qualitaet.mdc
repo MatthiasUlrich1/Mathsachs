@@ -45,34 +45,55 @@ alwaysApply: false
   Geometrie — Mathe weiter **ohne** Zuordnung/Lückentext).
 - Neue Interaktionen nur wenn Katalog-Lücke und mobil tauglich.
 
+## Scope (verbindlich — alle Lehrpläne)
+
+Diese Qualitätsregeln gelten für **alle Fächer × alle Klassen × alle Lernbereiche**:
+Biologie, Geschichte, Physik, Mathematik, Oberschule SN, Sekundarschule ST, SKS
+(HS+RS), Gymnasium Sachsen und Sachsen-Anhalt — gesperrte (`released:false`) **und**
+sichtbare Themen. Kein Fach/LB „später“.
+
+## Schwierigkeit ≈ Klassenstufe (verbindlich, alle Fächer)
+
+- **K5/K6:** altersgerecht einfachere Zahlen/Kontexte; kein Oberstufen-Stoff
+  (keine Analysis, keine unnötigen Formalismen).
+- **K7–K10:** dem Lehrplan der Stufe entsprechend.
+- **OS/GK/LK:** anspruchsvoller, aber nicht willkürlich schwer.
+- **Verboten:** Unterforderung (z. B. `43+11` unter „Rechengesetze“) **und**
+  Überforderung (z. B. Analysis in Klasse 6).
+- Bei jeder Bank/Jedem Generator: Zahlenraum, Begriffe und Kontexte gegen die
+  Klassenstufe des Topic-IDs prüfen.
+
 ## Mathematik: nur mathematische Aufgaben (verbindlich)
 
 Für **alle Mathe-Packs** (Gymnasium Sachsen, Gymnasium Sachsen-Anhalt, Oberschule SN,
 Sekundarschule ST / SKS HS+RS) gelten zusätzlich:
 
 - **Erlaubt:** Multiple Choice mit Zahlen/Ausdrücken, Eingabe von Werten/Brüchen,
-  Gleichungen lösen, Umformen, True/False **mit Rechnung**, Grafik/Skizze **mit
-  Zahlenwerten**, Stellenwert-/Zifferngitter, Koordinatenklick mit Zahlen.
-- **Verboten:** `dragDropMatch` / Pair-Match / Begriffs-Zuordnung, `cloze` /
-  `clozeMulti` / `gap` / Lückentext, Flashcard-Begriffspaare als Ersatz für Rechnung,
-  reine Vokabel-Zuordnung („Was bedeutet …?“ ohne Rechenkontext).
-- Banken für Mathe nutzen `mathBankGenerate` (oder gleichwertige Rechen-Generatoren),
-  **nicht** das Bio-`bankGenerate` mit Gaps/Pairs.
+  Gleichungen lösen, Umformen, Grafik/Skizze **mit Zahlenwerten**, Stellenwert-/
+  Zifferngitter, Koordinatenklick mit Zahlen, Multi-Select wo fachlich sinnvoll.
+- **Verboten:** True/False (TF), `dragDropMatch` / Pair-Match / Begriffs-Zuordnung,
+  `cloze` / `clozeMulti` / `gap` / Lückentext, Flashcard-Begriffspaare als Ersatz
+  für Rechnung, reine Vokabel-Zuordnung („Was bedeutet …?“ ohne Rechenkontext).
+- Banken für Mathe nutzen `mathBankGenerate` / Rechen-Generatoren (`mathQualityBanks`),
+  **nicht** das Bio-`bankGenerate` mit Gaps/Pairs/TF.
+- **Boost/Thin-Fill:** dürfen nur **themenreine** Varianten injizieren — nie
+  universelles `Berechne a+b` über fremde Topics (`mathRoundBoost`).
 - Andere Fächer (Bio, Geschichte): Zuordnung/Gaps weiter erlaubt, soweit die übrigen
   Regeln erfüllt sind.
 
-## Physik: Anwendung / Rechnung / Grafik vor Begriffsdrill (verbindlich)
+## Physik: Anwendung / Rechnung / Grafik (verbindlich)
 
 Für **Physik-Packs** (Gymnasium Sachsen inkl. OS, und physiknahe OS-Themen):
 
-- **Bevorzugt:** Berechnungen mit Einheiten, Alltags-/Technikbezug, Experimente
+- **Erlaubt:** Berechnungen mit Einheiten, Alltags-/Technikbezug, Experimente
   (planen, auswerten, Fehler), grafische Aufgaben (Skizzen, Feldlinienbilder,
-  `imageLabelSlots`, „welche Abbildung …“, Verlauf deuten).
-- **Verboten als alleinige Aufgabenform:** isolierte Fachbegriff-/Definitions-MC
-  („Was ist …?“, „Was bedeutet …?“, Vokabel-Flash ohne physikalischen Kontext).
-- Begriffswissen nur **eingebettet** (z. B. in Rechnung, Versuch oder Grafikdeutung).
-- **Feldlinien / Felder:** grafische Deutung und Anwendungspflicht — nicht nur
-  Text-Definitionen.
+  Verlauf deuten), fachliche MC/Multi-Select, Eingabe.
+- **Verboten:** True/False (TF), Zuordnung/Pair-Match, Lückentext/Cloze/Gap als
+  alleinige Form; isolierte Fachbegriff-/Definitions-MC („Was bedeutet …?“).
+- Begriffswissen nur **eingebettet** (Rechnung, Versuch oder Grafikdeutung).
+- **Feldlinien / Felder:** grafische Deutung und Anwendungspflicht.
+- Round-Boosts (`physikOsRoundBoost` / Sek1): nur themenreine Varianten — kein
+  Cross-Topic (z. B. Ohmsches Gesetz unter „Zerfall“).
 
 ## Keine Spoiler in Diagrammen
 
@@ -124,12 +145,15 @@ Für **Physik-Packs** (Gymnasium Sachsen inkl. OS, und physiknahe OS-Themen):
 - Bei Banken: `wissen` pro Fact/Pair mit Bezug zu Prompt/Lösung pflegen;
   Safety-Nets (`expandBioWissen` / Quality-Tests) ergänzen, nicht ersetzen.
 
-## Themenbindung — keine Vermischung/Dopplung
+## Themenbindung — keine Vermischung/Dopplung (alle Fächer)
 
-- Aufgaben bleiben **klar themengebunden**.
+- Jede Aufgabe muss **eng zum Topic-Titel / Lehrplan-Teilaspekt** passen.
+- Keine themenfremden Boosts (z. B. reine Addition unter „Dezimalzahlen“ oder
+  „Rechengesetze“; Ohm unter „Zerfall“; Analysis unter K6).
 - Keine inhaltliche Vermischung oder Dopplung derselben Facts über mehrere
-  Themen **desselben Lernbereichs** (Cross-Topic-Duplikate bereinigen bzw.
-  Spezialthemen sauber trennen).
+  Themen **desselben Lernbereichs** (Cross-Topic-Duplikate bereinigen).
+- Bio/Geschichte: Abwechslung der Interaktionen; TF nur mit vollständigen
+  prüfbaren Sätzen; kein Slogan-/Meta-Stub.
 
 ## Kein Lehrplan-Meta / keine Philosophie-Fragen
 

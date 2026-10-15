@@ -22,7 +22,6 @@ import {
   wegZeitCompareSvg,
   wegZeitDiagramSvg,
 } from '../lib/physikSvg'
-import { matchTermsTask } from './biologieHelpers'
 import { phLochkameraBild } from './physikDiagram'
 import {
   choicePickTask,
@@ -540,26 +539,60 @@ const spiegel: Topic['generate'] = mixedVariants(
       dedupeKey: `ph:k6:spiegel:ms:${p.question}`,
     })
   },
-  (rng) =>
-    matchTermsTask(rng, {
-      question: 'Ordne jedem Spiegel-Begriff die passende Erklärung zu:',
-      terms: ['Lot', 'Einfallswinkel', 'Ausfallswinkel', 'virtuelles Bild'],
-      meanings: [
-        'Senkrechte zur Spiegelfläche im Auftreffpunkt',
-        'Winkel zwischen einfallendem Strahl und Lot',
-        'Winkel zwischen reflektiertem Strahl und Lot',
-        'erscheint hinter dem Spiegel, Strahlen scheinen von dort zu kommen',
-      ],
-      distractor: 'Brechung zum Lot beim Eintritt in Glas',
-      solution: 'Lot · Einfallswinkel · Ausfallswinkel · virtuelles Bild',
+  (rng) => {
+    const rows = [
+      {
+        term: 'Lot',
+        correct: 'Senkrechte zur Spiegelfläche im Auftreffpunkt',
+        wrong: [
+          'Winkel zwischen einfallendem Strahl und Lot',
+          'Winkel zwischen reflektiertem Strahl und Lot',
+          'Brechung zum Lot beim Eintritt in Glas',
+        ],
+      },
+      {
+        term: 'Einfallswinkel',
+        correct: 'Winkel zwischen einfallendem Strahl und Lot',
+        wrong: [
+          'Senkrechte zur Spiegelfläche im Auftreffpunkt',
+          'Winkel zwischen reflektiertem Strahl und Lot',
+          'Brechung zum Lot beim Eintritt in Glas',
+        ],
+      },
+      {
+        term: 'Ausfallswinkel',
+        correct: 'Winkel zwischen reflektiertem Strahl und Lot',
+        wrong: [
+          'Senkrechte zur Spiegelfläche im Auftreffpunkt',
+          'Winkel zwischen einfallendem Strahl und Lot',
+          'Brechung zum Lot beim Eintritt in Glas',
+        ],
+      },
+      {
+        term: 'virtuelles Bild',
+        correct: 'erscheint hinter dem Spiegel, Strahlen scheinen von dort zu kommen',
+        wrong: [
+          'Senkrechte zur Spiegelfläche im Auftreffpunkt',
+          'Winkel zwischen einfallendem Strahl und Lot',
+          'reelles Bild auf einem Schirm hinter dem Spiegel',
+        ],
+      },
+    ] as const
+    const row = pick(rng, [...rows])
+    return choicePickTask({
+      question: `Welche Aussage zu „${row.term}“ am ebenen Spiegel ist richtig?`,
+      choices: shuffleChoices(rng, [row.correct, ...row.wrong], row.correct),
+      correct: row.correct,
+      solution: row.correct,
       explanation: 'Winkel am Spiegel werden immer gegen das Lot gemessen; Einfall = Ausfall.',
       fachwissen: {
         text: 'Am ebenen Spiegel gilt das Reflexionsgesetz: Einfallswinkel = Ausfallswinkel, gemessen gegen das Lot. Das Spiegelbild ist virtuell.',
         quelle: 'Wikipedia: Reflexionsgesetz',
         url: 'https://de.wikipedia.org/wiki/Reflexionsgesetz',
       },
-      dedupeKey: 'ph:k6:spiegel:terms:grund',
-    }),
+      dedupeKey: `ph:k6:spiegel:terms:${row.term}`,
+    })
+  },
   (rng) => {
     const ordered = [
       { label: 'Lichtstrahl trifft auf den Spiegel', value: 0 },
@@ -3922,25 +3955,60 @@ const auge: Topic['generate'] = mixedVariants(
       visualContent: augeSehSvg({ showRays: true }),
       rng,
     }),
-  (rng) =>
-    matchTermsTask(rng, {
-      question: 'Ordne jedem Augenteil seine Funktion zu:',
-      terms: ['Linse', 'Pupille', 'Netzhaut', 'Sehnerv'],
-      meanings: [
-        'bündelt Licht für ein scharfes Bild',
-        'regelt den Lichteinfall',
-        'dort entsteht das (umgekehrte) Bild',
-        'leitet Signale zum Gehirn',
-      ],
-      distractor: 'sendet selbst Strahlen zum Gegenstand',
-      solution: 'Linse · Pupille · Netzhaut · Sehnerv',
+  (rng) => {
+    const rows = [
+      {
+        term: 'Linse',
+        correct: 'bündelt Licht für ein scharfes Bild',
+        wrong: [
+          'regelt den Lichteinfall',
+          'dort entsteht das (umgekehrte) Bild',
+          'sendet selbst Strahlen zum Gegenstand',
+        ],
+      },
+      {
+        term: 'Pupille',
+        correct: 'regelt den Lichteinfall',
+        wrong: [
+          'bündelt Licht für ein scharfes Bild',
+          'dort entsteht das (umgekehrte) Bild',
+          'leitet Signale zum Gehirn',
+        ],
+      },
+      {
+        term: 'Netzhaut',
+        correct: 'dort entsteht das (umgekehrte) Bild',
+        wrong: [
+          'bündelt Licht für ein scharfes Bild',
+          'regelt den Lichteinfall',
+          'sendet selbst Strahlen zum Gegenstand',
+        ],
+      },
+      {
+        term: 'Sehnerv',
+        correct: 'leitet Signale zum Gehirn',
+        wrong: [
+          'bündelt Licht für ein scharfes Bild',
+          'regelt den Lichteinfall',
+          'dort entsteht das (umgekehrte) Bild',
+        ],
+      },
+    ] as const
+    const row = pick(rng, [...rows])
+    return choicePickTask({
+      question: `Welche Funktion hat die ${row.term} im Auge?`,
+      choices: shuffleChoices(rng, [row.correct, ...row.wrong], row.correct),
+      correct: row.correct,
+      solution: row.correct,
       explanation: 'Jedes Teil hat eine klare Aufgabe im Sehvorgang.',
       fachwissen: {
         text: 'Die Linse bündelt Licht, die Pupille regelt den Einfall, auf der Netzhaut entsteht das Bild, der Sehnerv leitet Signale zum Gehirn. Zusammen ermöglichen sie Sehen.',
         quelle: 'Wikipedia: Auge',
         url: 'https://de.wikipedia.org/wiki/Auge',
       },
-    }),
+      dedupeKey: `ph:k6:auge:terms:${row.term}`,
+    })
+  },
   (rng) => {
     const pools = [
       {

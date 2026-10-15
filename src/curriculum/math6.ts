@@ -310,11 +310,12 @@ const multBrueche: Topic = {
     url: 'https://de.wikipedia.org/wiki/Bruchrechnung',
   },
   generate: (rng: Rng) => {
-    const a = makeFraction(randInt(rng, 1, 11), randInt(rng, 2, 12))
-    const b = makeFraction(randInt(rng, 1, 11), randInt(rng, 2, 12))
+    // Echte Brüche (Nenner > Zähler), damit die Frage nicht wie Bare-Integer „1 · 1“ wirkt.
+    const a = makeFraction(randInt(rng, 1, 8), randInt(rng, 9, 16))
+    const b = makeFraction(randInt(rng, 1, 8), randInt(rng, 9, 16))
     const result = multiply(a, b)
     return fractionTask({
-      question: `Berechne: ${format(a)} · ${format(b)}`,
+      question: `Berechne das Produkt der Brüche: ${format(a)} · ${format(b)}`,
       value: result,
       solution: format(result),
       explanation: `Multipliziere Zähler mal Zähler und Nenner mal Nenner: (${a.n} · ${b.n}) / (${a.d} · ${b.d}) = ${a.n * b.n}/${a.d * b.d}. Gekürzt: ${format(result)}.`,

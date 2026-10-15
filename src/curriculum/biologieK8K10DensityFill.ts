@@ -2688,16 +2688,16 @@ export const k10DnaEntdeckung: BioBank = {
     },
     {
       concept: "bio:k10:dnaent:wuerdigung",
-      prompt: "Was bedeutet „Leistungen von Wissenschaftlern würdigen“?",
-      answer: "Beiträge und historischen Kontext kennen, nicht nur Namen auswendig",
+      prompt: "Warum gilt Rosalind Franklins Beitrag zur DNA-Struktur als entscheidend?",
+      answer: "Ihre Röntgenbeugungsdaten stützten das Doppelhelix-Modell",
       wrong: [
-        "Nur Personen ignorieren",
-        "Nur Fehler belohnen",
-        "Nur Ergebnisse löschen",
+        "Sie widerlegte die Existenz von DNA",
+        "Sie erfand die Photosynthese",
+        "Sie entdeckte nur Proteine als Erbgut",
       ],
-      explanation: "Beiträge und historischen Kontext kennen, nicht nur Namen auswendig.",
+      explanation: "Röntgenbeugung (Foto 51) lieferte Schlüsseldaten für die Doppelhelix.",
       wissen: fw(
-        "Franklin wurde lange zu wenig genannt — heute bewusste Würdigung.",
+        "Franklins Röntgenbeugungsdaten waren zentral; Würdigung heißt Beitrag und Kontext kennen.",
       ),
       gap: "Mehrere Forscher trugen zur ___ bei.",
       gapAccepted: ["Aufklärung", "Strukturaufklärung"],
