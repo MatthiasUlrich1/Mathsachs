@@ -9,6 +9,11 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.94] – 2026-10-15
+
+### Behoben
+- **CI v0.28.93:** UTF-8-BOM in `package.json` entfernt (PostCSS/Vite JSON-Parse).
+
 ## [0.28.93] – 2026-10-15
 
 ### Behoben
