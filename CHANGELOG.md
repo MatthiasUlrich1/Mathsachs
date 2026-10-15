@@ -9,6 +9,21 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.101] – 2026-10-15
+
+### Geändert
+- **Zuordnung stark reduziert:** `bankGenerate` erzeugt kein pairMatch/causeEffect
+  mehr (Begriffspaare → Einzel-MC; Ursache–Wirkung → „Was passiert wenn…?“).
+  Pro Runde höchstens 1 Zuordnung (`pairMatch`/`causeEffect`) via `uniqueRound`.
+- **Neue Interaktionen:** `comparePick` (A vs B), `findError`, `imageHotspot`
+  inkl. UI; Bio/Geschichte-Banken nutzen Sort, Quelle, Compare, Hotspot, FindError.
+- **Wiederholung:** schärfere Answer-Dedupe; stemfamily für Quiz-Chrome; Rules
+  (max 1 Zuordnung, Mix-Ziel ≥4 Typen).
+
+### Diversifiziert
+- Bio Arbeitsweisen, Geschichte Zeitrechnung (u. a. Prozess sortieren, Fehlerfinden,
+  Hotspot, Vergleichskarten).
+
 ## [0.28.100] – 2026-10-15
 
 ### Behoben

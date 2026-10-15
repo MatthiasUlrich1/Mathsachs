@@ -8,7 +8,13 @@
  * point cannot reappear via MC, cloze, flashcard, or pairMatch in one round.
  */
 import type { Rng } from '../lib/rng'
-import { causeEffectTask, mixedVariants, sourceQuoteTask } from './taskHelpers'
+import {
+  comparePickTask,
+  findErrorTask,
+  imageHotspotTask,
+  mixedVariantsWeighted,
+  sourceQuoteTask,
+} from './taskHelpers'
 import type { Topic } from './types'
 import {
   bioFw,
@@ -16,7 +22,6 @@ import {
   flashcardBioTask,
   gapFillTask,
   iconBelongBioTask,
-  matchTermsTask,
   mcTask,
   multiPickTask,
   pick,
@@ -107,6 +112,40 @@ export type BioCauseEffect = {
   wissen: string
 }
 
+/** A vs B compare cards. */
+export type BioCompare = {
+  concept?: string
+  question: string
+  cardA: { title: string; body: string }
+  cardB: { title: string; body: string }
+  /** 'A' | 'B' */
+  correct: 'A' | 'B'
+  explanation: string
+  wissen: string
+}
+
+/** Find the faulty statement. */
+export type BioFindError = {
+  concept?: string
+  question?: string
+  /** Exactly one is false; others true. */
+  statements: string[]
+  faultyIndex: number
+  explanation: string
+  wissen: string
+}
+
+/** Tap region on schematic (percent coords). */
+export type BioHotspot = {
+  concept?: string
+  question: string
+  imageSvg: string
+  regions: Array<{ id: string; label: string; x: number; y: number; w: number; h: number }>
+  correctRegionId: string
+  explanation: string
+  wissen: string
+}
+
 export type BioBank = {
   quelle?: string
   url?: string
@@ -120,6 +159,9 @@ export type BioBank = {
   icons?: BioIcon[]
   sources?: BioSource[]
   causeEffects?: BioCauseEffect[]
+  compares?: BioCompare[]
+  findErrors?: BioFindError[]
+  hotspots?: BioHotspot[]
 }
 
 /** Thin / placeholder wissen that must never reach the UI as sole Fachwissen. */
@@ -611,7 +653,7 @@ export function themePhraseFromPrefix(prefix?: string): string {
   if (/:lunge\b/.test(p)) return 'bei der Lunge'
   if (/:atmung\b/.test(p)) return 'beim Atemvorgang'
   if (/:arten\b/.test(p)) return 'bei typischen Arten'
-  if (/:quellen\b/.test(p)) return 'bei historischen Quellen'
+  if (/quellen\b/.test(p)) return 'bei Belegen, Überresten und Traditionen'
   if (/:orientierung\b/.test(p)) return 'zur historischen Orientierung'
   if (/:arbeit\b|arbeitsweisen/.test(p)) return 'bei den Arbeitsweisen der Biologen'
   if (/zeitrechnung/.test(p)) return 'in der historischen Zeitrechnung'
@@ -794,23 +836,26 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
   // Expand Begriff/fact pools first — existing wissen strings stay untouched.
   bank = sanitizeBioBank(deepenBioBank(bank))
   const prefix = bank.conceptPrefix
-  const variants: Array<(rng: Rng) => ReturnType<Topic['generate']>> = []
+  const weighted: Array<{ weight: number; gen: (rng: Rng) => ReturnType<Topic['generate']> }> =
+    []
+
+  const hasAltModes =
+    (bank.pairs?.length ?? 0) >= 3 ||
+    (bank.sorts?.length ?? 0) > 0 ||
+    (bank.causeEffects?.length ?? 0) >= 3 ||
+    (bank.sources?.length ?? 0) > 0 ||
+    (bank.multis?.length ?? 0) > 0 ||
+    (bank.compares?.length ?? 0) > 0 ||
+    (bank.findErrors?.length ?? 0) > 0 ||
+    (bank.hotspots?.length ?? 0) > 0
 
   if (bank.facts?.length) {
-    // Prefer MC / flash / Zuordnung elsewhere; gaps only sparsely when safe.
-    // Rich banks (pairs/sort/cause/source/multi) suppress gaps further.
-    const hasAltModes =
-      (bank.pairs?.length ?? 0) >= 3 ||
-      (bank.sorts?.length ?? 0) > 0 ||
-      (bank.causeEffects?.length ?? 0) >= 3 ||
-      (bank.sources?.length ?? 0) > 0 ||
-      (bank.multis?.length ?? 0) > 0
-    const clozeCut = hasAltModes ? 0.04 : 0.08
-    const gapCut = hasAltModes ? 0.1 : 0.14
-    const flashCut = hasAltModes ? 0.32 : 0.38
+    // Prefer MC / flash; gaps only sparsely. Zuordnung is NOT a default escape hatch.
+    const clozeCut = hasAltModes ? 0.03 : 0.06
+    const gapCut = hasAltModes ? 0.08 : 0.12
+    const flashCut = hasAltModes ? 0.28 : 0.34
 
-    // One variant family for facts: randomly MC / cloze / flash — same concept key.
-    variants.push((rng) => {
+    const factVariant = (rng: Rng) => {
       const f = pick(rng, bank.facts!)
       const key = bioConceptKey(f.concept, prefix, f.prompt)
       const mode = rng()
@@ -828,7 +873,6 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
             ).slice(0, 3)
       while (wrong.length < 3) wrong.push(`Nicht: ${f.answer} (${wrong.length})`)
 
-      // Skip gap/cloze when the accepted answer already appears in template or stem.
       if (mode < clozeCut && bioFactGapModeSafe(f, 'cloze')) {
         const clozeAcc = f.clozeAccepted!.map((blank) => enrichGapAccepted(blank))
         return clozeBlanksTask({
@@ -874,7 +918,6 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         const flashQ = bioFactQuestion(f, 'flash', prefix)
         const frontBase = stripBioBankSlug(f.flashFront ?? flashQ)
         const theme = themePhraseFromPrefix(prefix)
-        // Flash-Front themenspezifisch halten (Geschwister-Topics teilen sonst nur den Term)
         const front = theme && frontBase.length < 40 ? `${frontBase} (${theme})` : frontBase
         return flashcardBioTask({
           question: flashQ,
@@ -897,206 +940,375 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         dedupeKey: key,
         contentIds: [key],
       })
-    })
-  }
-
-  if (bank.pairs && bank.pairs.length >= 3) {
-    const pairMatchVariant = (rng: Rng) => {
-      const subset = pickPairSubset(rng, bank.pairs!)
-      const distractorPool = bank.pairs!.filter((p) => !subset.includes(p))
-      const distractor =
-        distractorPool.length > 0
-          ? pick(rng, distractorPool).meaning
-          : 'Photosynthese in Mitochondrien'
-      const keys = subset.map((p) => bioConceptKey(p.concept, prefix, p.term))
-      const fwText = subset
-        .map((p) => {
-          const cleaned = stripBioMetaWissen(p.wissen)
-          const expanded = expandBioWissen(cleaned, {
-            term: p.term,
-            meaning: p.meaning,
-            explanation: cleaned,
-          })
-          // Ensure each Begriff contributes a full sentence ending in `.`
-          const base = expanded.trim()
-          if (/[.!?]$/.test(base)) return base
-          return `${p.term}: ${p.meaning}. ${base}`
-        })
-        .join(' ')
-      const n = subset.length
-      // Lesbarer Themenanhang + Anker-Begriff — nie Roh-Abkürzung; Geschwister trennen.
-      const theme = themePhraseFromPrefix(bank.conceptPrefix ?? '')
-      const anchor = [...subset.map((p) => p.term)].sort((a, b) =>
-        a.localeCompare(b, 'de'),
-      )[0]
-      const themeBit = theme ? ` ${theme}` : ''
-      const anchorBit = anchor ? ` (u. a. ${anchor})` : ''
-      return matchTermsTask(rng, {
-        question:
-          n >= 5
-            ? `Ordne ${n} Begriffe den passenden Erklärungen zu${themeBit}${anchorBit}.`
-            : `Ordne jeden Begriff der passenden Erklärung zu${themeBit}${anchorBit}.`,
-        terms: subset.map((p) => p.term),
-        meanings: subset.map((p) => p.meaning),
-        distractor,
-        solution: subset.map((p) => `${p.term} → ${p.meaning}`).join('; '),
-        explanation: subset
-          .map((p) => `${p.term}: ${stripBioMetaWissen(p.wissen)}`)
-          .join(' '),
-        fachwissen: fw(bank, fwText),
-        // Each Begriff concept blocks MC/TF/Match reuse in the same round (Bug A).
-        dedupeKey: `pair:${[...keys].sort().join('+')}`,
-        contentIds: keys,
-      })
     }
-    // Zuordnung nur einmal und mit geringerem Gewicht als Fakten/MC.
-    variants.push(pairMatchVariant)
+    // Fakten = Hauptgewicht (MC/Flash), nicht Zuordnung.
+    weighted.push({ weight: 4.2, gen: factVariant })
   }
 
-  // Fakten etwas stärker gewichten als Zuordnung — nur einmal extra (CI: keine Near-Dup-Runden).
-  if (bank.facts && bank.facts.length >= 6 && variants.length >= 3) {
-    const factVar = variants[0]
-    if (factVar) variants.push(factVar)
+  // Kein multi-Concept-pairMatch (verbrennt 4–6 IDs → Short-Rounds).
+  // Stattdessen jedes Begriffspaar als einzelne MC — erweitert den Unique-Pool.
+  if (bank.pairs && bank.pairs.length >= 2) {
+    weighted.push({
+      weight: 1.6,
+      gen: (rng) => {
+        const p = pick(rng, bank.pairs!)
+        const key = bioConceptKey(p.concept, prefix, p.term)
+        const wrong = shuffle(
+          rng,
+          bank.pairs!.filter((x) => x.meaning !== p.meaning).map((x) => x.meaning),
+        ).slice(0, 3)
+        while (wrong.length < 3) wrong.push(`Andere Bedeutung (${wrong.length})`)
+        const theme = themePhraseFromPrefix(prefix)
+        let themeBit =
+          theme && !/^im Themenfeld\b/i.test(theme) ? ` ${theme}` : ''
+        if (!themeBit && prefix) {
+          const tip = prefix.split(':').filter(Boolean).pop() ?? ''
+          // Keine Topic-ID-Leaks (bi-gk11-lb2-redox) und keine Rohkürzel.
+          if (
+            tip &&
+            tip.length >= 4 &&
+            tip.length <= 18 &&
+            !isInternalTopicAbbrev(tip) &&
+            !/^\d+$/.test(tip) &&
+            !/^(bi|ge|ph|ma|os|st|sks)-/i.test(tip) &&
+            !/-lb\d/i.test(tip) &&
+            !/\d/.test(tip)
+          ) {
+            themeBit = ` (${tip.replace(/-/g, ' ')})`
+          }
+        }
+        const term = p.term.trim()
+        const meaning = p.meaning.trim()
+        // Schlechte Thin-Fill-Paare (term „lage“, abgeschnittene meanings) überspringen.
+        if (
+          term.length < 4 ||
+          meaning.length < 12 ||
+          /[,:;]\s*$/.test(meaning) ||
+          meaning.endsWith(' ') ||
+          (term === term.toLowerCase() && term.length <= 5 && !/[äöüß-]/.test(term))
+        ) {
+          const factSlot = weighted.find((w) => w.weight >= 4)
+          if (factSlot) return factSlot.gen(rng)
+          const alt = bank.pairs!.find(
+            (x) => x !== p && x.term.trim().length >= 4 && x.meaning.trim().length >= 12,
+          )
+          if (!alt) {
+            return factSlot ? factSlot.gen(rng) : mcTask(rng, {
+              question: `Was bedeutet „Begriff“?`,
+              correct: 'Platzhalter',
+              wrong: ['A', 'B', 'C'],
+              explanation: 'Platzhalter',
+              fachwissen: fw(bank, 'Platzhalter.'),
+              dedupeKey: 'bio:pair-skip',
+              contentIds: ['bio:pair-skip'],
+            })
+          }
+          const altKey = bioConceptKey(alt.concept, prefix, alt.term)
+          const altWrong = shuffle(
+            rng,
+            bank.pairs!.filter((x) => x.meaning !== alt.meaning).map((x) => x.meaning),
+          ).slice(0, 3)
+          while (altWrong.length < 3) altWrong.push(`Andere Bedeutung (${altWrong.length})`)
+          return mcTask(rng, {
+            question: `Was bedeutet „${alt.term.trim()}“${themeBit}?`,
+            correct: alt.meaning.trim(),
+            wrong: altWrong,
+            explanation: `${alt.term}: ${alt.meaning}`,
+            fachwissen: fw(bank, alt.wissen, {
+              term: alt.term,
+              meaning: alt.meaning,
+              explanation: alt.wissen,
+            }),
+            dedupeKey: altKey,
+            contentIds: [altKey],
+          })
+        }
+        return mcTask(rng, {
+          question: `Was bedeutet „${term}“${themeBit}?`,
+          correct: meaning,
+          wrong,
+          explanation: `${term}: ${meaning}`,
+          fachwissen: fw(bank, p.wissen, {
+            term,
+            meaning,
+            explanation: p.wissen,
+          }),
+          dedupeKey: key,
+          contentIds: [key],
+        })
+      },
+    })
   }
 
   if (bank.trueFalse?.length) {
-    variants.push((rng) => {
-      const t = pick(rng, bank.trueFalse!)
-      const key = bioConceptKey(t.concept, prefix, t.statement)
-      return trueFalse(rng, {
-        statement: stripBioBankSlug(t.statement),
-        correct: t.correct,
-        explanation: t.explanation,
-        fachwissen: fw(bank, t.wissen, {
-          prompt: t.statement,
+    weighted.push({
+      weight: 0.9,
+      gen: (rng) => {
+        const t = pick(rng, bank.trueFalse!)
+        const key = bioConceptKey(t.concept, prefix, t.statement)
+        return trueFalse(rng, {
+          statement: stripBioBankSlug(t.statement),
+          correct: t.correct,
           explanation: t.explanation,
-        }),
-        dedupeKey: key,
-        contentIds: [key],
-      })
+          fachwissen: fw(bank, t.wissen, {
+            prompt: t.statement,
+            explanation: t.explanation,
+          }),
+          dedupeKey: key,
+          contentIds: [key],
+        })
+      },
     })
+
+    // Auto „Finde den Fehler“ aus TF-Pool (≥1 falsch + ≥2 wahr).
+    const falses = bank.trueFalse.filter((t) => !t.correct)
+    const trues = bank.trueFalse.filter((t) => t.correct)
+    if (falses.length >= 1 && trues.length >= 2) {
+      weighted.push({
+        weight: 1.5,
+        gen: (rng) => {
+          const bad = pick(rng, falses)
+          const goods = shuffle(rng, trues).slice(0, 2)
+          const statements = shuffle(rng, [
+            stripBioBankSlug(bad.statement),
+            ...goods.map((g) => stripBioBankSlug(g.statement)),
+          ])
+          const faulty = stripBioBankSlug(bad.statement)
+          const key = bioConceptKey(bad.concept, prefix, `err:${bad.statement}`)
+          const theme = themePhraseFromPrefix(prefix)
+          const q = theme
+            ? `Welche Aussage ${theme} enthält einen fachlichen Fehler?`
+            : `Welche dieser drei Aussagen ist fachlich falsch?`
+          return findErrorTask({
+            question: q,
+            statements,
+            faulty,
+            solution: faulty,
+            explanation: bad.explanation,
+            fachwissen: fw(bank, bad.wissen, {
+              prompt: bad.statement,
+              explanation: bad.explanation,
+            }),
+            dedupeKey: key,
+            contentIds: [key],
+          })
+        },
+      })
+    }
   }
 
   if (bank.sorts?.length) {
-    variants.push((rng) => {
-      const s = pick(rng, bank.sorts!)
-      const key = bioConceptKey(s.concept, prefix, s.question)
-      return sortChronologyTask(rng, {
-        question: s.question,
-        labels: s.labels,
-        solution: s.labels.join(' → '),
-        explanation: s.explanation,
-        fachwissen: fw(bank, s.wissen, {
-          prompt: s.question,
+    weighted.push({
+      weight: 1.8,
+      gen: (rng) => {
+        const s = pick(rng, bank.sorts!)
+        const key = bioConceptKey(s.concept, prefix, s.question)
+        return sortChronologyTask(rng, {
+          question: s.question,
+          labels: s.labels,
+          solution: s.labels.join(' → '),
           explanation: s.explanation,
-        }),
-        dedupeKey: key,
-        contentIds: [key],
-      })
+          fachwissen: fw(bank, s.wissen, {
+            prompt: s.question,
+            explanation: s.explanation,
+          }),
+          dedupeKey: key,
+          contentIds: [key],
+        })
+      },
     })
   }
 
   if (bank.multis?.length) {
-    variants.push((rng) => {
-      const m = pick(rng, bank.multis!)
-      const key = bioConceptKey(m.concept, prefix, m.question)
-      return multiPickTask(rng, {
-        question: m.question,
-        correct: m.correct,
-        wrong: m.wrong,
-        explanation: m.explanation,
-        fachwissen: fw(bank, m.wissen, {
-          prompt: m.question,
+    weighted.push({
+      weight: 1.6,
+      gen: (rng) => {
+        const m = pick(rng, bank.multis!)
+        const key = bioConceptKey(m.concept, prefix, m.question)
+        return multiPickTask(rng, {
+          question: m.question,
+          correct: m.correct,
+          wrong: m.wrong,
           explanation: m.explanation,
-          answer: m.correct.join(', '),
-        }),
-        dedupeKey: key,
-        contentIds: [key],
-      })
+          fachwissen: fw(bank, m.wissen, {
+            prompt: m.question,
+            explanation: m.explanation,
+            answer: m.correct.join(', '),
+          }),
+          dedupeKey: key,
+          contentIds: [key],
+        })
+      },
     })
   }
 
   const usableIcons = (bank.icons ?? []).filter((ic) => !isTrivialAnimalIcon(ic))
   if (usableIcons.length) {
-    variants.push((rng) => {
-      const ic = pick(rng, usableIcons)
-      const key = bioConceptKey(ic.concept, prefix, ic.question)
-      return iconBelongBioTask(rng, {
-        question: ic.question,
-        prompt: ic.prompt,
-        options: ic.options,
-        correctId: ic.correctId,
-        explanation: ic.explanation,
-        fachwissen: fw(bank, ic.wissen, {
-          prompt: ic.question,
+    weighted.push({
+      weight: 1.5,
+      gen: (rng) => {
+        const ic = pick(rng, usableIcons)
+        const key = bioConceptKey(ic.concept, prefix, ic.question)
+        return iconBelongBioTask(rng, {
+          question: ic.question,
+          prompt: ic.prompt,
+          options: ic.options,
+          correctId: ic.correctId,
           explanation: ic.explanation,
-        }),
-        dedupeKey: key,
-        contentIds: [key],
-      })
+          fachwissen: fw(bank, ic.wissen, {
+            prompt: ic.question,
+            explanation: ic.explanation,
+          }),
+          dedupeKey: key,
+          contentIds: [key],
+        })
+      },
     })
   }
 
   if (bank.sources?.length) {
-    variants.push((rng) => {
-      const s = pick(rng, bank.sources!)
-      const key = bioConceptKey(s.concept, prefix, s.question)
-      const choices = shuffle(rng, [s.correct, ...s.wrong])
-      return sourceQuoteTask({
-        question: s.question,
-        sourceText: s.sourceText,
-        sourceLabel: s.sourceLabel ?? 'Quelle',
-        sourceKind: s.sourceKind,
-        attribution: s.attribution,
-        choices,
-        correct: s.correct,
-        solution: s.correct,
-        explanation: s.explanation,
-        fachwissen: fw(bank, s.wissen, {
-          prompt: s.question,
+    weighted.push({
+      weight: 1.5,
+      gen: (rng) => {
+        const s = pick(rng, bank.sources!)
+        const key = bioConceptKey(s.concept, prefix, s.question)
+        const choices = shuffle(rng, [s.correct, ...s.wrong])
+        return sourceQuoteTask({
+          question: s.question,
+          sourceText: s.sourceText,
+          sourceLabel: s.sourceLabel ?? 'Quelle',
+          sourceKind: s.sourceKind,
+          attribution: s.attribution,
+          choices,
+          correct: s.correct,
+          solution: s.correct,
           explanation: s.explanation,
-          answer: s.correct,
-        }),
-        dedupeKey: key,
-        contentIds: [key],
-      })
+          fachwissen: fw(bank, s.wissen, {
+            prompt: s.question,
+            explanation: s.explanation,
+            answer: s.correct,
+          }),
+          dedupeKey: key,
+          contentIds: [key],
+        })
+      },
+    })
+  }
+
+  if (bank.compares?.length) {
+    weighted.push({
+      weight: 1.7,
+      gen: (rng) => {
+        const c = pick(rng, bank.compares!)
+        const key = bioConceptKey(c.concept, prefix, c.question)
+        const correctId = c.correct
+        const body = correctId === 'A' ? c.cardA.body : c.cardB.body
+        return comparePickTask({
+          question: c.question,
+          cards: [
+            { id: 'A', title: c.cardA.title, body: c.cardA.body },
+            { id: 'B', title: c.cardB.title, body: c.cardB.body },
+          ],
+          correctId,
+          solution: body,
+          explanation: c.explanation,
+          fachwissen: fw(bank, c.wissen, {
+            prompt: c.question,
+            explanation: c.explanation,
+            answer: body,
+          }),
+          dedupeKey: key,
+          contentIds: [key],
+        })
+      },
+    })
+  }
+
+  if (bank.findErrors?.length) {
+    weighted.push({
+      weight: 1.6,
+      gen: (rng) => {
+        const fe = pick(rng, bank.findErrors!)
+        const faulty = fe.statements[fe.faultyIndex]!
+        const key = bioConceptKey(fe.concept, prefix, faulty)
+        const theme = themePhraseFromPrefix(prefix)
+        const fallbackQ = theme
+          ? `Welche Aussage ${theme} enthält einen fachlichen Fehler?`
+          : `Welche dieser Aussagen ist fachlich falsch? (${faulty.slice(0, 24)}…)`
+        return findErrorTask({
+          question: fe.question ?? fallbackQ,
+          statements: shuffle(rng, [...fe.statements]),
+          faulty,
+          solution: faulty,
+          explanation: fe.explanation,
+          fachwissen: fw(bank, fe.wissen, {
+            prompt: fe.question ?? faulty,
+            explanation: fe.explanation,
+          }),
+          dedupeKey: key,
+          contentIds: [key],
+        })
+      },
+    })
+  }
+
+  if (bank.hotspots?.length) {
+    weighted.push({
+      weight: 1.6,
+      gen: (rng) => {
+        const h = pick(rng, bank.hotspots!)
+        const key = bioConceptKey(h.concept, prefix, h.question)
+        return imageHotspotTask({
+          question: h.question,
+          correctRegionId: h.correctRegionId,
+          regions: h.regions,
+          imageSvg: h.imageSvg,
+          solution:
+            h.regions.find((r) => r.id === h.correctRegionId)?.label ?? h.correctRegionId,
+          explanation: h.explanation,
+          fachwissen: fw(bank, h.wissen, {
+            prompt: h.question,
+            explanation: h.explanation,
+          }),
+          dedupeKey: key,
+          contentIds: [key],
+        })
+      },
     })
   }
 
   if (bank.causeEffects && bank.causeEffects.length >= 3) {
-    variants.push((rng) => {
-      const subset = shuffle(rng, [...bank.causeEffects!]).slice(0, Math.min(4, bank.causeEffects!.length))
-      const distractorPool = bank.causeEffects!.filter((c) => !subset.includes(c))
-      const distractor =
-        distractorPool.length > 0
-          ? pick(rng, distractorPool).effect
-          : 'Keine historische Wirkung'
-      const left = subset.map((c, i) => ({ id: `c${i}`, label: c.cause }))
-      const rightItems = shuffle(rng, [
-        ...subset.map((c, i) => ({ id: `e${i}`, label: c.effect })),
-        { id: 'xd', label: distractor },
-      ])
-      const correctLinks: Record<string, string> = {}
-      subset.forEach((_, i) => {
-        correctLinks[`c${i}`] = `e${i}`
-      })
-      const keys = subset.map((c) => bioConceptKey(c.concept, prefix, c.cause))
-      const fwText = subset.map((c) => expandBioWissen(c.wissen, { explanation: c.wissen })).join(' ')
-      return causeEffectTask({
-        question: `Ordne Ursache und Wirkung zu (${subset.length} Paare).`,
-        left,
-        right: rightItems,
-        correctLinks,
-        solution: subset.map((c) => `${c.cause} → ${c.effect}`).join('; '),
-        explanation: subset.map((c) => `${c.cause}: ${c.effect}`).join(' '),
-        fachwissen: fw(bank, fwText),
-        dedupeKey: `cause:${[...keys].sort().join('+')}`,
-        contentIds: keys,
-      })
+    // Kein causeEffect-Pair-UI (Concept-Verbrennung) — nur „Was passiert wenn…?“ als MC.
+    weighted.push({
+      weight: 1.5,
+      gen: (rng) => {
+        const ce = pick(rng, bank.causeEffects!)
+        const wrong = shuffle(
+          rng,
+          bank
+            .causeEffects!.filter((x) => x !== ce)
+            .map((x) => x.effect),
+        ).slice(0, 3)
+        while (wrong.length < 3) wrong.push(`Andere Folge (${wrong.length})`)
+        const key = bioConceptKey(ce.concept, prefix, `whatif:${ce.cause}`)
+        return mcTask(rng, {
+          question: `Was passiert, wenn: ${ce.cause}?`,
+          correct: ce.effect,
+          wrong,
+          explanation: `${ce.cause} → ${ce.effect}`,
+          fachwissen: fw(bank, ce.wissen, {
+            prompt: ce.cause,
+            explanation: ce.effect,
+            answer: ce.effect,
+          }),
+          dedupeKey: key,
+          contentIds: [key],
+        })
+      },
     })
   }
 
-  if (variants.length === 0) {
+  if (weighted.length === 0) {
     return () =>
       gapFillTask({
         question: 'Tipp „ok“ — Aufgabenbank fehlt noch.',
@@ -1109,5 +1321,5 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
       })
   }
 
-  return mixedVariants(...variants)
+  return mixedVariantsWeighted(...weighted)
 }

@@ -1,0 +1,71 @@
+.image-hotspot {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 12px 0 4px;
+  width: 100%;
+}
+
+.image-hotspot__instruction {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted, #64748b);
+  text-align: center;
+}
+
+.image-hotspot__stage {
+  position: relative;
+  width: min(100%, 420px);
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(15, 23, 42, 0.55);
+  aspect-ratio: 4 / 3;
+}
+
+.image-hotspot__img,
+.image-hotspot__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.image-hotspot__svg svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.image-hotspot__placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(160deg, #1e293b, #334155);
+}
+
+.image-hotspot__region {
+  position: absolute;
+  border: 2px dashed rgba(45, 212, 191, 0.55);
+  border-radius: 8px;
+  background: rgba(13, 148, 136, 0.12);
+  cursor: pointer;
+  padding: 0;
+}
+
+.image-hotspot__region:hover:not(:disabled) {
+  background: rgba(13, 148, 136, 0.28);
+  border-style: solid;
+}
+
+.image-hotspot__region--selected {
+  background: rgba(13, 148, 136, 0.45);
+  border-color: #5eead4;
+  border-style: solid;
+  box-shadow: 0 0 0 2px rgba(94, 234, 212, 0.35);
+}
+
+.image-hotspot__region:disabled {
+  cursor: default;
+  opacity: 0.85;
+}

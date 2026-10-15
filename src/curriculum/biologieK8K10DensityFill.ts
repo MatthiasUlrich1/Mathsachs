@@ -372,7 +372,7 @@ export const k8Hypophyse: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k8:hyp:p:lage", term: "lage", meaning: "Die Hypophyse (Hirnanhangsdrüse) sitzt unter dem Zwischenhirn und steuert viele ", wissen: "Die Hypophyse (Hirnanhangsdrüse) sitzt unter dem Zwischenhirn und steuert viele Hormondrüsen." },
+    { concept: "bio:k8:hyp:p:lage", term: "Lage der Hypophyse", meaning: "Sitzt unter dem Zwischenhirn und steuert viele Hormondrüsen", wissen: "Die Hypophyse (Hirnanhangsdrüse) sitzt unter dem Zwischenhirn und steuert viele Hormondrüsen." },
     { concept: "bio:k8:hyp:p:steuer", term: "steuer", meaning: "Steuerhormone der Hypophyse regeln z", wissen: "Steuerhormone der Hypophyse regeln z. B. Schilddrüse, Nebenniere und Keimdrüsen." },
     { concept: "bio:k8:hyp:p:nerv-hormon", term: "nerv hormon", meaning: "Beide Systeme ergänzen sich bei der Regulation von Organen und Verhalten", wissen: "Beide Systeme ergänzen sich bei der Regulation von Organen und Verhalten." },
     { concept: "bio:k8:hyp:p:hypothalamus", term: "Hypothalamus", meaning: "Hypothalamus und Hypophyse bilden eine zentrale Schnittstelle zwischen Nerven- u", wissen: "Hypothalamus und Hypophyse bilden eine zentrale Schnittstelle zwischen Nerven- und Hormonsystem." },

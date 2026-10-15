@@ -138,4 +138,40 @@ describe('uniqueRound', () => {
     expect(round.length).toBe(3)
     expect(new Set(round.map(taskFingerprint)).size).toBe(3)
   })
+
+  it('caps Zuordnung (pairMatch) to at most one per round', () => {
+    let n = 0
+    const generate = (): Task => {
+      n++
+      if (n % 2 === 1) {
+        return {
+          question: `Ordne Begriffe ${n}`,
+          answerKind: 'text',
+          solution: `s${n}`,
+          explanation: 'e',
+          dedupeKey: `pair-demo:${n}`,
+          contentIds: [`pair-demo:${n}`],
+          sampleAnswer: { kind: 'pairMatch', links: {} },
+          interactive: {
+            type: 'pairMatch',
+            props: { left: [{ id: 'L0', label: `T${n}` }], right: [] },
+          },
+          check: () => true,
+        }
+      }
+      return valueTask({
+        question: `Q${n}`,
+        answerKind: 'integer',
+        value: n,
+        solution: String(n),
+        explanation: 'e',
+        dedupeKey: `val:${n}`,
+        contentIds: [`val:${n}`],
+      })
+    }
+    const round = buildUniqueTaskRound(generate, createRng(1), 10, 80)
+    const matches = round.filter((t) => t.interactive?.type === 'pairMatch')
+    expect(matches.length).toBeLessThanOrEqual(1)
+    expect(round.length).toBeGreaterThanOrEqual(5)
+  })
 })

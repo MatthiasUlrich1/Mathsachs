@@ -292,6 +292,20 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
         explanation: "Als Gattungsbegriff klein: die Zeitrechnung.",
         wissen: "Nur am Satzanfang oder in Titeln groß; mitten im Satz heißt es „die Zeitrechnung“.",
       },
+      {
+        concept: "ge:k5:zeitrechnung:fill:tf2",
+        statement: "Bei Angaben v. Chr. bedeutet eine größere Zahl ein weiter zurückliegendes Ereignis.",
+        correct: true,
+        explanation: "v. Chr. zählt rückwärts.",
+        wissen: "100 v. Chr. liegt vor 50 v. Chr.",
+      },
+      {
+        concept: "ge:k5:zeitrechnung:fill:tf3",
+        statement: "Geschwindigkeit als Weg pro Zeit gehört zur historischen Zeitrechnung.",
+        correct: false,
+        explanation: "Das ist Physik, nicht Chronologie.",
+        wissen: "Historische Zeitrechnung meint Datierung und Epochen.",
+      },
     ],
     sorts: [
       {
@@ -300,6 +314,20 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
         labels: ["Steinzeit", "Antike", "Mittelalter", "Neuzeit"],
         explanation: "Große Orientierungslinie.",
         wissen: "Grenzen sind fließend, die Reihenfolge hilft trotzdem.",
+      },
+      {
+        concept: "ge:k5:zeitrechnung:fill:sort1",
+        question: "Ordne die Jahresangaben von früher nach später.",
+        labels: ["100 v. Chr.", "1 n. Chr.", "500 n. Chr.", "1500 n. Chr."],
+        explanation: "v. Chr. liegt vor n. Chr.; danach steigt die Zahl vorwärts.",
+        wissen: "Bei v. Chr. bedeutet eine größere Zahl ein älteres Ereignis.",
+      },
+      {
+        concept: "ge:k5:zeitrechnung:fill:sort2",
+        question: "Ordne die Schritte beim Eintragen auf einem Zeitstrahl.",
+        labels: ["Zeitraum festlegen", "Ereignisse datieren", "Positionen markieren", "Beschriften"],
+        explanation: "Erst Rahmen, dann Daten, dann Marken.",
+        wissen: "Ein Zeitstrahl macht Abstände und Reihenfolgen sichtbar.",
       },
     ],
     multis: [
@@ -310,6 +338,123 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
         wrong: ["Geschwindigkeit (Weg/Zeit)", "Beschleunigung"],
         explanation: "Nur Geschichtsbegriffe.",
         wissen: "Physikalische Bewegungsgrößen gehören nicht in dieses Thema.",
+      },
+      {
+        concept: "ge:k5:zeitrechnung:fill:ms1",
+        question: "Was hilft bei der Datierung (mehrere richtig)?",
+        correct: ["Kalender", "Jahrhundertangaben", "Epochenbegriffe"],
+        wrong: ["Nur Temperaturmessung", "Nur Stromstärke"],
+        explanation: "Historische Zeitrechnung, keine Physik.",
+        wissen: "Datierung ordnet Ereignisse in vereinbarte Zeitsysteme ein.",
+      },
+    ],
+    compares: [
+      {
+        concept: "ge:k5:zeitrechnung:fill:cmp0",
+        question: "Welche Angabe liegt früher?",
+        cardA: { title: "A", body: "44 v. Chr." },
+        cardB: { title: "B", body: "44 n. Chr." },
+        correct: "A",
+        explanation: "v. Chr. liegt vor dem Bezugsjahr, n. Chr. danach.",
+        wissen: "Die christliche Zeitrechnung teilt vor und nach dem Bezugsjahr.",
+      },
+      {
+        concept: "ge:k5:zeitrechnung:fill:cmp1",
+        question: "Was ist ein Zeitstrahl?",
+        cardA: { title: "A", body: "Grafische Ordnung von früher nach später" },
+        cardB: { title: "B", body: "Formel für Geschwindigkeit v = s/t" },
+        correct: "A",
+        explanation: "Zeitstrahl = Chronologie, keine Physikformel.",
+        wissen: "Historische Zeitrechnung nutzt Daten und Epochen, nicht Bewegungsformeln.",
+      },
+    ],
+    findErrors: [
+      {
+        concept: "ge:k5:zeitrechnung:fill:fe0",
+        statements: [
+          "Ein Zeitstrahl ordnet Ereignisse chronologisch.",
+          "„v. Chr.“ bedeutet Jahre vor der christlichen Zeitrechnung.",
+          "Chronologie berechnet die Geschwindigkeit als Weg pro Zeit.",
+        ],
+        faultyIndex: 2,
+        explanation: "Geschwindigkeit gehört zur Physik, nicht zur historischen Zeitrechnung.",
+        wissen: "Chronologie meint zeitliche Einordnung von Ereignissen.",
+      },
+      {
+        concept: "ge:k5:zeitrechnung:fill:fe1",
+        statements: [
+          "Epochen fassen längere Zeiträume mit gemeinsamen Merkmalen.",
+          "Je größer die Zahl bei v. Chr., desto näher liegt das Ereignis an heute.",
+          "Kalender strukturieren die Zählung von Tagen und Jahren.",
+        ],
+        faultyIndex: 1,
+        explanation: "Bei v. Chr. bedeutet eine größere Zahl ein weiter zurückliegendes Ereignis.",
+        wissen: "v. Chr. zählt rückwärts vom Bezugsjahr.",
+      },
+    ],
+    causeEffects: [
+      {
+        concept: "ge:k5:zeitrechnung:fill:ce0",
+        cause: "Ereignisse auf einem Zeitstrahl markieren",
+        effect: "Reihenfolge und Abstände werden sichtbar",
+        wissen: "Grafische Chronologie erleichtert Orientierung.",
+      },
+      {
+        concept: "ge:k5:zeitrechnung:fill:ce1",
+        cause: "Angabe „v. Chr.“ verwenden",
+        effect: "Das Ereignis liegt vor dem Bezugsjahr der christlichen Zeitrechnung",
+        wissen: "Zählung rückwärts.",
+      },
+      {
+        concept: "ge:k5:zeitrechnung:fill:ce2",
+        cause: "Epochenbegriffe nutzen",
+        effect: "Längere Zeiträume lassen sich grob einordnen",
+        wissen: "Epochengrenzen sind oft fließend, aber nützlich.",
+      },
+      {
+        concept: "ge:k5:zeitrechnung:fill:ce3",
+        cause: "Kalender vereinbaren",
+        effect: "Tage und Jahre werden vergleichbar gezählt",
+        wissen: "Ohne gemeinsames System sind Datierungen schwer vergleichbar.",
+      },
+    ],
+    sources: [
+      {
+        concept: "ge:k5:zeitrechnung:fill:src0",
+        question: "Wozu dient der Zeitstrahl laut Text?",
+        sourceText:
+          "Auf dem Zeitstrahl werden Ereignisse von früher nach später angeordnet. So erkennt man Reihenfolgen und ungefähre Abstände zwischen Daten.",
+        sourceLabel: "Orientierungstext",
+        sourceKind: "Schulbuch-Stil",
+        correct: "Ereignisse chronologisch anordnen",
+        wrong: [
+          "Geschwindigkeit berechnen",
+          "Nur Farben mischen",
+          "Quellen vernichten",
+        ],
+        explanation: "Zeitstrahl = chronologische Darstellung.",
+        wissen: "Datierung und Chronologie gehören zusammen.",
+      },
+    ],
+    hotspots: [
+      {
+        concept: "ge:k5:zeitrechnung:fill:hs0",
+        question: "Tippe auf den Bereich „v. Chr.“ auf dem Zeitstrahl.",
+        imageSvg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 180" role="img" aria-label="Zeitstrahl">
+          <rect width="400" height="180" fill="#0f172a"/>
+          <line x1="30" y1="90" x2="370" y2="90" stroke="#94a3b8" stroke-width="3"/>
+          <line x1="200" y1="70" x2="200" y2="110" stroke="#5eead4" stroke-width="3"/>
+          <text x="100" y="60" text-anchor="middle" fill="#e2e8f0" font-size="14">v. Chr.</text>
+          <text x="300" y="60" text-anchor="middle" fill="#e2e8f0" font-size="14">n. Chr.</text>
+          <text x="200" y="140" text-anchor="middle" fill="#5eead4" font-size="12">Bezugsjahr</text>
+        </svg>`,
+        regions: [
+          { id: "vchr", label: "v. Chr.", x: 8, y: 20, w: 35, h: 45 },
+          { id: "nchr", label: "n. Chr.", x: 57, y: 20, w: 35, h: 45 },
+        ],
+        correctRegionId: "vchr",
+        explanation: "Links vom Bezugsjahr liegt v. Chr.",
+        wissen: "Der Zeitstrahl macht die Teilung vor/nach dem Bezugsjahr sichtbar.",
       },
     ],
   }),

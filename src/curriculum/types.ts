@@ -51,6 +51,12 @@ export type UserInput =
   | { kind: 'iconBelong'; choice: string }
   /** Flashcard: must flip, then tip answer. */
   | { kind: 'flashcardFlip'; flipped: boolean; answer: string }
+  /** A vs B card compare — pick one side (or neither/both when offered). */
+  | { kind: 'comparePick'; choice: string }
+  /** Tap a hotspot region on an image/SVG (no drag labels). */
+  | { kind: 'imageHotspot'; regionId: string }
+  /** Find the faulty statement among options. */
+  | { kind: 'findError'; choice: string }
 
 /** A blank input matching the widget for a given answer kind. */
 export const emptyInput = (
@@ -79,6 +85,9 @@ export const emptyInput = (
   if (kind === 'clozeMulti') return { kind: 'clozeMulti', blanks: [] }
   if (kind === 'iconBelong') return { kind: 'iconBelong', choice: '' }
   if (kind === 'flashcardFlip') return { kind: 'flashcardFlip', flipped: false, answer: '' }
+  if (kind === 'comparePick') return { kind: 'comparePick', choice: '' }
+  if (kind === 'imageHotspot') return { kind: 'imageHotspot', regionId: '' }
+  if (kind === 'findError') return { kind: 'findError', choice: '' }
   return { kind: 'value', value: '' }
 }
 
@@ -104,6 +113,9 @@ export interface InteractiveConfig {
     | 'flashcardFlip'
     | 'sourceQuote'
     | 'causeEffect'
+    | 'comparePick'
+    | 'imageHotspot'
+    | 'findError'
   props: Record<string, any> // Component-specific props
 }
 

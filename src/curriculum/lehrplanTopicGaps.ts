@@ -629,6 +629,20 @@ const bioK5Arbeitsweisen: BioBank = {
       explanation: "Vom Ziel zur Deutung.",
       wissen: "So bleibt die Untersuchung nachvollziehbar und auswertbar.",
     },
+    {
+      concept: "bio:k5:arbeitsweisen:sort2",
+      question: "Ordne die Teile eines einfachen Versuchsprotokolls.",
+      labels: ["Fragestellung", "Durchführung", "Beobachtung", "Deutung"],
+      explanation: "Beobachtung und Deutung strikt trennen.",
+      wissen: "Im Protokoll steht zuerst, was man sieht — danach, was es bedeuten könnte.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:sort3",
+      question: "Ordne die Schritte beim Stärkenachweis.",
+      labels: ["Probe vorbereiten", "Lugolsche Lösung zugeben", "Farbumschlag beobachten", "Mit Blindprobe vergleichen"],
+      explanation: "Nachweis mit Vergleich.",
+      wissen: "Ohne Blindprobe bleibt unklar, ob die Farbe wirklich von Stärke kommt.",
+    },
   ],
   multis: [
     {
@@ -638,6 +652,156 @@ const bioK5Arbeitsweisen: BioBank = {
       wrong: ["Nur Jahreszahlen auswendig lernen", "Nur Fantasiewesen malen ohne Bezug"],
       explanation: "Methoden der Erkenntnisgewinnung.",
       wissen: "Lehrplan Sachsen: Beobachten, Untersuchen/Vergleichen, Experimentieren; ergänzend Modelle und Nachweisreaktionen.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:ms2",
+      question: "Was gehört in ein einfaches Versuchsprotokoll (mehrere richtig)?",
+      correct: ["Fragestellung", "Beobachtung", "kurze Deutung"],
+      wrong: ["Nur Fantasiezeichnung ohne Bezug", "Nur die Lieblingsfarbe der Gruppe"],
+      explanation: "Dokumentation macht Versuche nachvollziehbar.",
+      wissen: "Protokollieren trennt Wahrnehmung und Erklärung und erlaubt Wiederholung.",
+    },
+  ],
+  compares: [
+    {
+      concept: "bio:k5:arbeitsweisen:cmp1",
+      question: "Beobachtung oder Deutung — was ist die reine Beobachtung?",
+      cardA: { title: "A", body: "Die Lösung färbt sich blau-violett." },
+      cardB: { title: "B", body: "Also muss Stärke enthalten sein." },
+      correct: "A",
+      explanation: "Farbe sehen = beobachten; Stärke folgern = deuten.",
+      wissen: "Genaues Trennen von Beobachtung und Deutung ist eine Kernkompetenz beim Experimentieren.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:cmp2",
+      question: "Welches Vorgehen ist ein geplantes Experiment?",
+      cardA: { title: "A", body: "Frage stellen, Versuch planen, beobachten, auswerten" },
+      cardB: { title: "B", body: "Beliebig mischen und hoffen, dass etwas passiert" },
+      correct: "A",
+      explanation: "Experimentieren folgt einer prüfbaren Frage.",
+      wissen: "Ohne Frage und Auswertung bleibt es bloßes Ausprobieren.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:cmp3",
+      question: "Welcher Nachweis passt zur Stärke?",
+      cardA: { title: "A", body: "Lugolsche Lösung → blau-violett" },
+      cardB: { title: "B", body: "Dauerhaft durchscheinender Fettfleck" },
+      correct: "A",
+      explanation: "Fettfleckprobe weist Fett nach, nicht Stärke.",
+      wissen: "Iod-Kaliumiodid (Lugol) ist der klassische Stärkenachweis in Klasse 5.",
+    },
+  ],
+  findErrors: [
+    {
+      concept: "bio:k5:arbeitsweisen:fe1",
+      question: "Welche Aussage zu Modellen ist fachlich falsch?",
+      statements: [
+        "Beim Beobachten erfasst man Merkmale gezielt.",
+        "Ein Modell muss in allen Eigenschaften exakt dem Original gleichen.",
+        "Ein Protokoll hält Durchführung und Beobachtung fest.",
+      ],
+      faultyIndex: 1,
+      explanation: "Modelle vereinfachen bewusst — sie sind nie das Original.",
+      wissen: "Grenzen von Modellen (Größe, Material, fehlende Teile) muss man prüfen.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:fe2",
+      question: "Welche Aussage zu Beobachtung und Nachweis ist falsch?",
+      statements: [
+        "Lugolsche Lösung färbt Stärke typischerweise blau-violett.",
+        "Die Fettfleckprobe zeigt einen dauerhaft durchscheinenden Fleck.",
+        "Beobachten und Deuten sind dasselbe und müssen nicht getrennt werden.",
+      ],
+      faultyIndex: 2,
+      explanation: "Beobachtung und Deutung werden bewusst getrennt formuliert.",
+      wissen: "„Ich beobachte …“ versus „Daraus folgt …“ schult fachliches Denken.",
+    },
+  ],
+  causeEffects: [
+    {
+      concept: "bio:k5:arbeitsweisen:ce1",
+      cause: "Sorgfältiges Beobachten mit der Lupe",
+      effect: "Feinheiten werden erkennbar, die mit bloßem Auge fehlen",
+      wissen: "Optische Hilfsmittel erweitern die Wahrnehmung.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:ce2",
+      cause: "Kriterien festlegen und sortieren",
+      effect: "Gemeinsamkeiten und Gruppen werden sichtbar",
+      wissen: "Vergleichen und Ordnen strukturieren Beobachtungsdaten.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:ce3",
+      cause: "Lugolsche Lösung auf stärkehaltige Probe",
+      effect: "Blau-violetter bis schwarz-blauer Farbumschlag",
+      wissen: "Klassischer Stärkenachweis.",
+    },
+    {
+      concept: "bio:k5:arbeitsweisen:ce4",
+      cause: "Modell baut nur Wesentliches nach",
+      effect: "Zusammenhänge werden verständlicher, Details fehlen bewusst",
+      wissen: "Modelle sind Erkenntnishilfen mit Grenzen.",
+    },
+  ],
+  sources: [
+    {
+      concept: "bio:k5:arbeitsweisen:src1",
+      question: "Was beschreibt der Textabschnitt als ersten Schritt?",
+      sourceText:
+        "Biologen beobachten gezielt und beschreiben, was sie wahrnehmen. Danach vergleichen sie Merkmale und prüfen Vermutungen im Experiment.",
+      sourceLabel: "Methoden-Kurztext",
+      sourceKind: "Schulbuch-Stil",
+      correct: "Gezieltes Beobachten und Beschreiben",
+      wrong: [
+        "Sofort Modelle bauen ohne Blick",
+        "Nur Jahreszahlen lernen",
+        "Nur Fantasiewesen malen",
+      ],
+      explanation: "Der Einstieg ist Wahrnehmung, nicht Deutung.",
+      wissen: "Arbeitsweisen greifen ineinander, beginnen aber oft beim genauen Hinschauen.",
+    },
+  ],
+  icons: [
+    {
+      concept: "bio:k5:arbeitsweisen:ic1",
+      question: "Welches Symbol steht für das Experimentieren?",
+      prompt: "Arbeitsweise wählen",
+      options: [
+        { id: "exp", label: "Experiment", icon: "🔬" },
+        { id: "sort", label: "Ordnen", icon: "🗂️" },
+        { id: "mod", label: "Modell", icon: "🧩" },
+        { id: "eye", label: "Nur raten", icon: "🎲" },
+      ],
+      correctId: "exp",
+      explanation: "Das Mikroskop/Labor steht hier für geplantes Untersuchen.",
+      wissen: "Experimentieren prüft Vermutungen unter möglichst klaren Bedingungen.",
+    },
+  ],
+  hotspots: [
+    {
+      concept: "bio:k5:arbeitsweisen:hs1",
+      question: "Tippe auf den Schritt „Beobachtung notieren“ im Versuchsablauf.",
+      imageSvg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" role="img" aria-label="Versuchsablauf">
+        <rect width="400" height="220" fill="#0f172a"/>
+        <rect x="20" y="70" width="80" height="50" rx="8" fill="#1e293b" stroke="#94a3b8"/>
+        <text x="60" y="100" text-anchor="middle" fill="#e2e8f0" font-size="12">Frage</text>
+        <rect x="120" y="70" width="80" height="50" rx="8" fill="#1e293b" stroke="#94a3b8"/>
+        <text x="160" y="100" text-anchor="middle" fill="#e2e8f0" font-size="12">Versuch</text>
+        <rect x="220" y="70" width="80" height="50" rx="8" fill="#1e293b" stroke="#94a3b8"/>
+        <text x="260" y="100" text-anchor="middle" fill="#e2e8f0" font-size="12">Beobachtung</text>
+        <rect x="320" y="70" width="60" height="50" rx="8" fill="#1e293b" stroke="#94a3b8"/>
+        <text x="350" y="100" text-anchor="middle" fill="#e2e8f0" font-size="12">Deutung</text>
+        <path d="M100 95 H120 M200 95 H220 M300 95 H320" stroke="#5eead4" stroke-width="2" marker-end="url(#a)"/>
+      </svg>`,
+      regions: [
+        { id: "q", label: "Frage", x: 5, y: 28, w: 20, h: 28 },
+        { id: "v", label: "Versuch", x: 30, y: 28, w: 20, h: 28 },
+        { id: "b", label: "Beobachtung", x: 55, y: 28, w: 20, h: 28 },
+        { id: "d", label: "Deutung", x: 80, y: 28, w: 15, h: 28 },
+      ],
+      correctRegionId: "b",
+      explanation: "Beobachtung kommt nach dem Versuch und vor der Deutung.",
+      wissen: "Die Reihenfolge sichert, dass Wahrnehmungen nicht mit Erklärungen vermischt werden.",
     },
   ],
 }

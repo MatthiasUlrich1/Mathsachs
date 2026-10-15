@@ -244,20 +244,23 @@ describe('Biologie quality bar', () => {
     }
   })
 
-  it('pairMatch tasks carry concept contentIds and enough pool variety', () => {
-    const gen = BIOLOGIE_GENERATORS['bi-k6-lb2-wirbellose']!
-    const pairKeys = new Set<string>()
-    let maxLeft = 0
-    for (let seed = 0; seed < 80; seed++) {
+  it('bankGenerate prefers non-Zuordnung mix (compare/findError/sort/MC)', () => {
+    const gen = BIOLOGIE_GENERATORS['bi-k5-lb1-arbeitsweisen']!
+    const kinds = new Set<string>()
+    let pairHits = 0
+    for (let seed = 0; seed < 120; seed++) {
       const task = gen(createRng(seed * 41 + 9))
-      if (task.interactive?.type !== 'pairMatch') continue
-      expect(task.contentIds?.length ?? 0).toBeGreaterThanOrEqual(3)
-      const left = (task.interactive.props?.left as Array<{ label?: string }>) ?? []
-      maxLeft = Math.max(maxLeft, left.length)
-      for (const id of task.contentIds ?? []) pairKeys.add(id)
+      const ui = task.interactive?.type ?? `plain:${task.answerKind}`
+      kinds.add(ui)
+      if (ui === 'pairMatch' || ui === 'causeEffect') pairHits++
     }
-    expect(pairKeys.size).toBeGreaterThanOrEqual(8)
-    expect(maxLeft).toBeGreaterThanOrEqual(4)
+    expect(pairHits).toBe(0)
+    expect(
+      kinds.has('comparePick') ||
+        kinds.has('findError') ||
+        kinds.has('dragDropSort') ||
+        kinds.has('choicePick'),
+    ).toBe(true)
   })
 
   it('rounds of 10 have unique content identities', () => {

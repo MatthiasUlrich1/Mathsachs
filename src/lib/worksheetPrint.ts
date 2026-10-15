@@ -436,6 +436,39 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
       }
     }
 
+    case 'comparePick': {
+      const cards = (props.cards ?? []) as Array<{ title?: string; body?: string }>
+      const labels = cards.map((c) => `${c.title ?? ''}: ${c.body ?? ''}`.trim())
+      return {
+        ...fromVisual,
+        paperHint: instruction ?? 'Vergleiche die Karten und kreise die passende ein.',
+        options: labels,
+        answerBlank: 'A / B: ______',
+      }
+    }
+
+    case 'findError': {
+      const statements = printLabels(props.statements as string[] | undefined)
+      return {
+        ...fromVisual,
+        paperHint: instruction ?? 'Markiere die Aussage mit dem fachlichen Fehler.',
+        options: statements,
+        answerBlank: 'Fehlerhafte Aussage: ______',
+      }
+    }
+
+    case 'imageHotspot': {
+      const regions = (props.regions ?? []) as Array<{ label?: string }>
+      return {
+        ...fromVisual,
+        paperHint:
+          instruction ??
+          'Markiere in der Abbildung die richtige Stelle (auf Papier: Label notieren).',
+        options: regions.map((r) => r.label ?? '').filter(Boolean),
+        answerBlank: 'Stelle: ______',
+      }
+    }
+
     default:
       return {
         ...fromVisual,

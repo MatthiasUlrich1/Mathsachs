@@ -31,10 +31,13 @@ describe('Biologie K5 Wirbeltiere generators', () => {
       }
     }
     expect(kinds.has('choicePick')).toBe(true)
-    expect(kinds.has('pairMatch')).toBe(true)
     expect(kinds.has('clozeMulti')).toBe(true)
     expect(kinds.has('iconBelong')).toBe(true)
     expect(kinds.has('flashcardFlip')).toBe(true)
     expect(kinds.has('imageLabelSlots')).toBe(true)
+    // Zuordnung stark gedrosselt — Compare/FindError/Match als Ersatz-Mix
+    expect(
+      kinds.has('comparePick') || kinds.has('findError') || kinds.has('pairMatch'),
+    ).toBe(true)
   })
 })

@@ -870,36 +870,42 @@ export const genOsRsNullstellen: Topic['generate'] = mixedVariants(
 /** Gerade / Strecke / Halbgerade — ohne Antwortwort im Stem. */
 export const genStGeoStrecken: Topic['generate'] = mixedVariants(
   (rng) => {
-    const n = randInt(rng, 3, 6)
-    return appliedMc(rng, {
-      question: `Auf einer Linie liegen ${n} markierte Punkte. Welches Objekt verbindet genau zwei davon und ist begrenzt?`,
-      correct: 'Strecke',
-      distractors: ['Gerade', 'Halbgerade', 'Kreis', 'Winkel'],
-      explanation: 'Eine Strecke hat zwei Endpunkte und endliche Länge.',
-      fachwissen: fw(
-        'Strecke: begrenzt durch zwei Endpunkte. Gerade: unbegrenzt in beide Richtungen. Halbgerade: ein Anfangspunkt, eine Richtung.',
-        'Lehrplan Gymnasium Sachsen-Anhalt',
-      ),
-      dedupeKey: `st:geo:str:${n}`,
-      contentIds: [`st:geo:str:${n}`],
-    })
-  },
-  (rng) => {
     const pickQ = pick(rng, [
       {
         q: 'Welche Linie geht durch einen Punkt und ist in genau einer Richtung unbegrenzt?',
         a: 'Halbgerade',
         w: ['Gerade', 'Strecke', 'Kreisbogen', 'Sehne'],
+        id: 'halb',
       },
       {
         q: 'Welche Linie ist in beide Richtungen unbegrenzt und hat keine Endpunkte?',
         a: 'Gerade',
         w: ['Strecke', 'Halbgerade', 'Strahlstück', 'Polygonzug'],
+        id: 'gerade',
       },
       {
         q: 'Welches Objekt hat zwei Endpunkte und eine messbare Länge?',
         a: 'Strecke',
         w: ['Gerade', 'Halbgerade', 'Ebene', 'Punkt'],
+        id: 'strecke',
+      },
+      {
+        q: 'Auf einer Linie liegen markierte Punkte. Welches Objekt verbindet genau zwei davon und ist begrenzt?',
+        a: 'Strecke',
+        w: ['Gerade', 'Halbgerade', 'Kreis', 'Winkel'],
+        id: 'strecke',
+      },
+      {
+        q: 'Welches Objekt hat einen Anfangspunkt und verläuft nur in eine Richtung weiter?',
+        a: 'Halbgerade',
+        w: ['Gerade', 'Strecke', 'Kreis', 'Winkel'],
+        id: 'halb',
+      },
+      {
+        q: 'Welches Objekt kannst du mit dem Lineal in Zentimetern messen (endliche Länge)?',
+        a: 'Strecke',
+        w: ['Gerade', 'Halbgerade', 'Punkt', 'Ebene'],
+        id: 'strecke',
       },
     ] as const)
     return appliedMc(rng, {
@@ -908,15 +914,16 @@ export const genStGeoStrecken: Topic['generate'] = mixedVariants(
       distractors: [...pickQ.w],
       explanation: `${pickQ.a} passt zur Beschreibung.`,
       fachwissen: fw(
-        'Bezeichnung: Strecke AB, Gerade AB (oder g), Halbgerade mit Anfang A. Die Länge einer Strecke misst man mit dem Lineal.',
+        'Strecke: zwei Endpunkte, endliche Länge. Gerade: unbegrenzt in beide Richtungen. Halbgerade: ein Anfangspunkt, eine Richtung.',
         'Lehrplan Gymnasium Sachsen-Anhalt',
       ),
-      dedupeKey: `st:geo:def:${pickQ.a}:${pickQ.q.slice(0, 20)}`,
-      contentIds: [`st:geo:def:${pickQ.a}`],
+      // Eine Inhalts-ID pro Objekttyp — verhindert 8× „Strecke“ in einer Runde.
+      dedupeKey: `st:geo:def:${pickQ.id}`,
+      contentIds: [`st:geo:def:${pickQ.id}`],
     })
   },
   (rng) => {
-    const n = randInt(rng, 3, 7)
+    const n = randInt(rng, 3, 9)
     const strecken = (n * (n - 1)) / 2
     return valueTask({
       question: `Auf einer Geraden liegen ${n} Punkte. Wie viele Verbindungen zwischen je zwei dieser Punkte gibt es?`,
@@ -930,6 +937,22 @@ export const genStGeoStrecken: Topic['generate'] = mixedVariants(
       ),
       dedupeKey: `st:geo:count:${n}`,
       contentIds: [`st:geo:count:${n}`],
+    })
+  },
+  (rng) => {
+    const n = randInt(rng, 3, 8)
+    return valueTask({
+      question: `Auf einer Geraden liegen genau ${n} Punkte. Von einem fest gewählten Punkt aus: Wie viele Strecken führen zu den übrigen Punkten?`,
+      answerKind: 'integer',
+      value: n - 1,
+      solution: String(n - 1),
+      explanation: `Zu jedem der ${n - 1} übrigen Punkte führt genau eine Strecke.`,
+      fachwissen: fw(
+        'Von einem festen Punkt aus gibt es zu jedem anderen Punkt genau eine Strecke.',
+        'Lehrplan Gymnasium Sachsen-Anhalt',
+      ),
+      dedupeKey: `st:geo:fromA:${n}`,
+      contentIds: [`st:geo:fromA:${n}`],
     })
   },
 )

@@ -1713,3 +1713,149 @@ export const mixedVariants = (...generators: Array<(rng: Rng) => Task>) => {
     return generator(rng)
   }
 }
+
+/** Weighted mix — higher weight = more often (Zuordnung niedrig halten). */
+export const mixedVariantsWeighted = (
+  ...items: Array<{ weight: number; gen: (rng: Rng) => Task }>
+) => {
+  const usable = items.filter((i) => i.weight > 0 && typeof i.gen === 'function')
+  if (usable.length === 0) {
+    return mixedVariants(...items.map((i) => i.gen))
+  }
+  return (rng: Rng): Task => {
+    const total = usable.reduce((s, i) => s + i.weight, 0)
+    let r = rng() * total
+    for (const item of usable) {
+      r -= item.weight
+      if (r <= 0) return item.gen(rng)
+    }
+    return usable[usable.length - 1]!.gen(rng)
+  }
+}
+
+export type CompareCardSpec = { id: string; title: string; body: string }
+
+interface ComparePickTaskInput {
+  question: string
+  cards: CompareCardSpec[]
+  correctId: string
+  solution: string
+  explanation: string
+  fachwissen?: Fachwissen
+  instruction?: string
+  visualContent?: string
+  dedupeKey?: string
+  contentIds?: string[]
+}
+
+/** A vs B (or more) card compare. */
+export const comparePickTask = (input: ComparePickTaskInput): Task => ({
+  question: input.question,
+  answerKind: 'text',
+  solution: input.solution,
+  explanation: input.explanation,
+  visualContent: input.visualContent,
+  ...withFw(input.fachwissen),
+  ...withDedupe(input.dedupeKey),
+  ...withContentIds(input.contentIds),
+  sampleAnswer: { kind: 'comparePick', choice: input.correctId },
+  interactive: {
+    type: 'comparePick',
+    props: {
+      cards: input.cards,
+      instruction: input.instruction ?? 'Vergleiche und tippe die passende Karte.',
+    },
+  },
+  check: (answer: UserInput) =>
+    answer.kind === 'comparePick' && answer.choice === input.correctId,
+})
+
+export type HotspotRegionSpec = {
+  id: string
+  label: string
+  x: number
+  y: number
+  w: number
+  h: number
+}
+
+interface ImageHotspotTaskInput {
+  question: string
+  correctRegionId: string
+  regions: HotspotRegionSpec[]
+  solution: string
+  explanation: string
+  fachwissen?: Fachwissen
+  instruction?: string
+  imageSrc?: string
+  imageAlt?: string
+  imageSvg?: string
+  visualContent?: string
+  dedupeKey?: string
+  contentIds?: string[]
+}
+
+/** Tap the correct region on an image/SVG. */
+export const imageHotspotTask = (input: ImageHotspotTaskInput): Task => {
+  const label =
+    input.regions.find((r) => r.id === input.correctRegionId)?.label ?? input.solution
+  return {
+    question: input.question,
+    answerKind: 'text',
+    solution: label,
+    explanation: input.explanation,
+    visualContent: input.visualContent,
+    ...withFw(input.fachwissen),
+    ...withDedupe(input.dedupeKey),
+    ...withContentIds(input.contentIds),
+    sampleAnswer: { kind: 'imageHotspot', regionId: input.correctRegionId },
+    interactive: {
+      type: 'imageHotspot',
+      props: {
+        imageSrc: input.imageSrc,
+        imageAlt: input.imageAlt ?? '',
+        imageSvg: input.imageSvg,
+        regions: input.regions,
+        instruction: input.instruction ?? 'Tippe auf die richtige Stelle in der Abbildung.',
+      },
+    },
+    check: (answer: UserInput) =>
+      answer.kind === 'imageHotspot' && answer.regionId === input.correctRegionId,
+  }
+}
+
+interface FindErrorTaskInput {
+  question: string
+  statements: string[]
+  faulty: string
+  solution: string
+  explanation: string
+  fachwissen?: Fachwissen
+  instruction?: string
+  visualContent?: string
+  dedupeKey?: string
+  contentIds?: string[]
+}
+
+/** Which statement contains the error? */
+export const findErrorTask = (input: FindErrorTaskInput): Task => ({
+  question: input.question,
+  answerKind: 'text',
+  solution: input.solution,
+  explanation: input.explanation,
+  visualContent: input.visualContent,
+  ...withFw(input.fachwissen),
+  ...withDedupe(input.dedupeKey),
+  ...withContentIds(input.contentIds),
+  sampleAnswer: { kind: 'findError', choice: input.faulty },
+  interactive: {
+    type: 'findError',
+    props: {
+      statements: input.statements,
+      instruction:
+        input.instruction ?? 'Finde die Aussage mit dem fachlichen Fehler.',
+    },
+  },
+  check: (answer: UserInput) =>
+    answer.kind === 'findError' && answer.choice === input.faulty,
+})

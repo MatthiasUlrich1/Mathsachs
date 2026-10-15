@@ -89,19 +89,25 @@ alwaysApply: false
 
 ## Pflicht: Interaktions-Abwechslung (kein Zuordnungs-Fließband)
 
-- Pro Thema/Runde **Mix** der vorhandenen Typen — **Pflicht**, nicht optional.
-- Zuordnung (`pairMatch` / `imageLabelSlots` / `dragDrop*`) nur **sparsam**
-  (Faustregel: klar unter ~30 % einer Runde, nie dominante Default-Form).
-  Wiederholte gleiche Zuordnungs-Stämme innerhalb eines Themas vermeiden.
-- Vorhandene Typen bewusst mischen: `choicePick`/MC, `multiSelect`, TF (nur volle
-  Sätze, nur Nicht-Mathe/Physik), Sort (`dragDropSort`), Slots, Cloze (Nicht-Mathe),
-  Wert/Eingabe, `digitGrid`, `numberLine`, `coordinateClick`/`coordinateDraw`,
-  `paramSlider`, `equationSteps`, `flashcardFlip`, `sourceQuote`, `causeEffect`,
-  `iconBelong`, Grafik/`visualContent`.
+- Pro 10er-Runde **erzwungener Mix**: Ziel **≥4 verschiedene** Interaktionstypen;
+  `buildUniqueTaskRound` cappt Zuordnung und bias’t Vielfalt.
+- Zuordnung (`pairMatch` / `causeEffect`) ist **Ausnahme**, nicht Standard:
+  **höchstens 1** pro Runde (besser 0–1). In `bankGenerate` stark
+  heruntergewichten (Gewicht ≪ Fakten/Sort/Compare/Sort/FindError).
+- Bild-/Slot-Beschriftung (`imageLabelSlots` / `dragDropSlots`) für Anatomie/
+  Formelbau erlaubt und gemischt mit anderen Typen — nicht als reines
+  Pair-Zuordnungs-Fließband.
+- Vorhandene Typen bewusst mischen und fachübergreifend nutzen:
+  `choicePick`/MC, `multiSelect`, TF (nur volle Sätze, nur Nicht-Mathe/Physik),
+  Sort (`dragDropSort`), Cloze (Nicht-Mathe/Physik), Wert/Eingabe, `digitGrid`,
+  `numberLine`, `coordinateClick`/`coordinateDraw`, `paramSlider`, `equationSteps`,
+  `flashcardFlip`, `sourceQuote`, `iconBelong`, `comparePick` (A vs B),
+  `findError`, `imageHotspot`, Grafik/`visualContent`.
+  Ursache–Wirkung lieber als „Was passiert wenn…?“ (MC) statt als Pair-UI.
 - Weniger reiner Fachbegriffsdrill („Was bedeutet …?“), mehr Anwendung,
-  Zusammenhänge, Rechnung/Deutung.
+  Zusammenhänge, Rechnung/Deutung, Fehlerfinden, Vergleich, Prozess sortieren.
 - Grafik-lastig wo sinnvoll (Physik Feldlinien/Aufbau; Bio Anatomie; Mathe Graphen/
-  Geometrie — Mathe weiter **ohne** Zuordnung/Lückentext).
+  Geometrie — Mathe/Physik weiter **ohne** TF/Zuordnung/Lückentext).
 - Neue Interaktionen nur wenn Katalog-Lücke und mobil tauglich.
 
 ## Scope (verbindlich — alle Lehrpläne)

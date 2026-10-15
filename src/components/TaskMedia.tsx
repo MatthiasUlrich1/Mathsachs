@@ -18,6 +18,9 @@ import { IconBelong } from './IconBelong'
 import { FlashcardFlip } from './FlashcardFlip'
 import { SourceQuote } from './SourceQuote'
 import { ImageLabelSlots } from './ImageLabelSlots'
+import { ComparePick } from './ComparePick'
+import { ImageHotspot } from './ImageHotspot'
+import { FindError } from './FindError'
 import type { ParamSliderSpec } from '../curriculum/taskHelpers'
 import type { EqOp, LinEq } from '../lib/equationSteps'
 import {
@@ -119,6 +122,15 @@ export const initTaskInput = (task: Task): UserInput => {
     const links: Record<string, string> = {}
     for (const item of left) links[item.id] = ''
     return { kind: 'pairMatch', links }
+  }
+  if (task.interactive?.type === 'comparePick') {
+    return { kind: 'comparePick', choice: '' }
+  }
+  if (task.interactive?.type === 'imageHotspot') {
+    return { kind: 'imageHotspot', regionId: '' }
+  }
+  if (task.interactive?.type === 'findError') {
+    return { kind: 'findError', choice: '' }
   }
   return emptyInput(task.answerKind)
 }
@@ -517,6 +529,36 @@ export function TaskInteractive({
           instruction={interactive.props.instruction}
           placeholder={interactive.props.placeholder}
           checkHint={interactive.props.checkHint}
+          disabled={disabled}
+        />
+      )}
+      {interactive.type === 'comparePick' && (
+        <ComparePick
+          cards={interactive.props.cards ?? []}
+          value={value.kind === 'comparePick' ? value.choice || null : null}
+          onChange={(choice) => onChange({ kind: 'comparePick', choice })}
+          instruction={interactive.props.instruction}
+          disabled={disabled}
+        />
+      )}
+      {interactive.type === 'imageHotspot' && (
+        <ImageHotspot
+          imageSrc={interactive.props.imageSrc}
+          imageAlt={interactive.props.imageAlt}
+          imageSvg={interactive.props.imageSvg}
+          regions={interactive.props.regions ?? []}
+          value={value.kind === 'imageHotspot' ? value.regionId || null : null}
+          onChange={(regionId) => onChange({ kind: 'imageHotspot', regionId })}
+          instruction={interactive.props.instruction}
+          disabled={disabled}
+        />
+      )}
+      {interactive.type === 'findError' && (
+        <FindError
+          statements={interactive.props.statements ?? []}
+          value={value.kind === 'findError' ? value.choice || null : null}
+          onChange={(choice) => onChange({ kind: 'findError', choice })}
+          instruction={interactive.props.instruction}
           disabled={disabled}
         />
       )}

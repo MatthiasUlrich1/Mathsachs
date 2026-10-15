@@ -25,7 +25,9 @@ function isGenericPromptStem(stem: string): boolean {
     /^ordne (begriff|fachbegriff|term|jedem|die|den|das|\d+)/i.test(stem) ||
     /fachbegriffe ihren erkl/i.test(stem) ||
     /lebensmerkmale ihren erkl/i.test(stem) ||
+    /^tippe auf /i.test(stem) ||
     /welches schaltsymbol/i.test(stem) ||
+
     /ordne dem gezeigten schaltsymbol/i.test(stem) ||
     /ist der schalter offen oder geschlossen/i.test(stem) ||
     // Sort prompts share one stem; item labels carry uniqueness (see dragDropSort).
@@ -118,13 +120,14 @@ export function taskContentIds(task: Task): string[] {
       .replace(/\?+$/g, '')
       .trim()
     if (core.length >= 12 && core !== stem) ids.add(`stemcore:${core}`)
-    // stemfamily only for soft share/portion templates (Bio/Alltag), never for
-    // Mathe-Drills / Grafik / Konstruktion — otherwise rounds collapse to 1–5.
+    // stemfamily: collapse near-identical wording (numbers/units swapped) for
+    // soft share templates AND generic quiz chrome — never for authored
+    // numeric drills / Mathe-Parameteraufgaben.
     const isNumericDrill =
       task.answerKind === 'integer' ||
       task.answerKind === 'decimal' ||
       task.answerKind === 'fraction'
-    if (!hasAuthoredIdentity && !isNumericDrill) {
+    if (!isNumericDrill) {
       const family = stem
         .replace(/\d+([.,]\d+)?/g, '#')
         .replace(/\b(kg|m|cm|dm|mm|€|euro|liter|l|ml|g|t|s|min|h|%|prozent)\b/gi, '§')
@@ -134,7 +137,21 @@ export function taskContentIds(task: Task): string[] {
         /anteil von #|von # §|wie groß ist der (eingefärbte )?anteil|kreisdiagramm zeigt/.test(
           family,
         )
-      if (isShareTemplate && family.length >= 20 && family.includes('#')) {
+      const isQuizChrome =
+        /^(was bedeutet|was meint|welcher fachbegriff|stimmt die aussage|richtig oder falsch|karteikarte|was passiert wenn|welche aussage enthält|vergleiche|finde den fehler)/i.test(
+          family,
+        )
+      if (
+        !hasAuthoredIdentity &&
+        isShareTemplate &&
+        family.length >= 20 &&
+        family.includes('#')
+      ) {
+        ids.add(`stemfamily:${family}`)
+      }
+      // Authored concept keys already dedupe facts; quiz-chrome families still
+      // collide when generators omit contentIds (legacy / thin fillers).
+      if (!hasAuthoredIdentity && isQuizChrome && family.length >= 18) {
         ids.add(`stemfamily:${family}`)
       }
     }
@@ -152,10 +169,9 @@ export function taskContentIds(task: Task): string[] {
     !TRIVIAL_SOLUTION.test(sol) &&
     !shortChoiceLabel &&
     !numericDrill &&
-    // Authored identity already fact-dedupes short keys; distinctive phrase
-    // answers (Bio-Bedeutungen, Funktionen) must still collide across MC/flash/gap
-    // so a round never shows the same Lösung twice (biologieUniqueness).
-    (!hasAuthoredIdentity || sol.length >= 8 || sol.includes(' '))
+    // Authored identity already fact-dedupes short keys; distinctive answers
+    // (≥5, e.g. „sehsinn“/„kühlung“) still collide across MC/flash/gap.
+    (!hasAuthoredIdentity || sol.length >= 5 || sol.includes(' '))
   ) {
     // Same fact via MC / cloze / flash with different wording → same answer.
     ids.add(`ans:${sol}`)
@@ -227,9 +243,27 @@ function markSeen(ids: string[], seen: Set<string>) {
 }
 
 /**
+ * True Zuordnung (Begriff↔Erklärung / Ursache↔Wirkung) — max 1 per round.
+ * Slot-/Bildbeschriftung (Formelbau, Anatomie) bewusst nicht hart gecappt —
+ * sonst kollabieren Mathe/Physik-Runden.
+ */
+export const MATCH_UI_TYPES = new Set(['pairMatch', 'causeEffect'])
+
+const MAX_MATCH_PER_ROUND = 1
+
+export function taskUiType(task: Task): string {
+  return task.interactive?.type ?? `plain:${task.answerKind}`
+}
+
+export function isMatchUiType(type: string): boolean {
+  return MATCH_UI_TYPES.has(type)
+}
+
+/**
  * Build a practice round of unique tasks (no duplicate content identities).
  * Prefer rich concept pools so `targetCount` (~10) is usually reached.
  * Early-stop only when the unique pool is truly exhausted after expansion.
+ * Caps Zuordnung UIs to ≤1 and biases toward ≥4 different interaction types.
  */
 export function buildUniqueTaskRound(
   generate: (rng: Rng) => Task,
@@ -257,24 +291,37 @@ export function buildUniqueTaskRoundWithSeeds(
 ): SeededTask[] {
   const tasks: SeededTask[] = []
   const seen = new Set<string>()
+  const uiCounts = new Map<string, number>()
+  let matchCount = 0
   let failedStreak = 0
 
-  const tryPush = (seed: number): boolean => {
-    const task = generate(createRng(seed))
+  const hardRejectUi = (ui: string): boolean =>
+    isMatchUiType(ui) && matchCount >= MAX_MATCH_PER_ROUND
+
+  const acceptTask = (task: Task, seed: number, force = false): boolean => {
     const ids = taskContentIds(task)
-    if (overlapsSeen(ids, seen)) return false
+    if (!force && overlapsSeen(ids, seen)) return false
+    const ui = taskUiType(task)
+    if (!force && hardRejectUi(ui)) return false
+
+    const uiN = uiCounts.get(ui) ?? 0
     markSeen(ids, seen)
+    uiCounts.set(ui, uiN + 1)
+    if (isMatchUiType(ui)) matchCount++
     tasks.push({ task, seed })
     return true
+  }
+
+  const tryPush = (seed: number, force = false): boolean => {
+    const task = generate(createRng(seed))
+    return acceptTask(task, seed, force)
   }
 
   if (typeof firstSeed === 'number' && Number.isFinite(firstSeed)) {
     const seed = Math.floor(firstSeed) >>> 0
     if (!tryPush(seed)) {
       // Replay: force the requested seed even if it collides (single-task round).
-      const task = generate(createRng(seed))
-      tasks.push({ task, seed })
-      markSeen(taskContentIds(task), seen)
+      tryPush(seed, true)
     }
   }
 
@@ -284,6 +331,31 @@ export function buildUniqueTaskRoundWithSeeds(
       failedStreak = 0
     } else {
       failedStreak++
+    }
+  }
+
+  // Second pass: uniqueness + hard caps only (no soft UI bias).
+  if (tasks.length < targetCount) {
+    failedStreak = 0
+    const softOff = maxAttemptsPerSlot
+    while (tasks.length < targetCount && failedStreak < softOff) {
+      const seed = randInt(rng, 1, 0x7fffffff)
+      const task = generate(createRng(seed))
+      const ids = taskContentIds(task)
+      if (overlapsSeen(ids, seen)) {
+        failedStreak++
+        continue
+      }
+      const ui = taskUiType(task)
+      if (hardRejectUi(ui)) {
+        failedStreak++
+        continue
+      }
+      markSeen(ids, seen)
+      uiCounts.set(ui, (uiCounts.get(ui) ?? 0) + 1)
+      if (isMatchUiType(ui)) matchCount++
+      tasks.push({ task, seed })
+      failedStreak = 0
     }
   }
 

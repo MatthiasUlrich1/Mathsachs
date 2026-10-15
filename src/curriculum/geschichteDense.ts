@@ -92,6 +92,13 @@ const k5Zeitrechnung: BioBank = {
       explanation: "Große Orientierungslinie der europäischen Geschichte.",
       wissen: "Diese grobe Reihenfolge hilft beim Einordnen; Grenzen sind fließend und regional unterschiedlich.",
     },
+    {
+      concept: "ge:k5:zeitrechnung:sort2",
+      question: "Ordne die Jahresangaben von früher nach später.",
+      labels: ["200 v. Chr.", "50 v. Chr.", "100 n. Chr.", "800 n. Chr."],
+      explanation: "v. Chr. rückwärts, danach n. Chr. vorwärts.",
+      wissen: "Je größer die Zahl v. Chr., desto weiter zurück liegt das Ereignis.",
+    },
   ],
   multis: [
     {
@@ -101,6 +108,50 @@ const k5Zeitrechnung: BioBank = {
       wrong: ["Geschwindigkeit als Weg pro Zeit", "Ohmsches Gesetz"],
       explanation: "Chronologie und Datierung — keine Physik.",
       wissen: "Zeitrechnung in der Geschichte meint Kalender, Datierung und chronologische Ordnung, nicht physikalische Bewegungsgrößen.",
+    },
+  ],
+  compares: [
+    {
+      concept: "ge:k5:zeitrechnung:cmp1",
+      question: "Welche Angabe liegt früher?",
+      cardA: { title: "A", body: "100 v. Chr." },
+      cardB: { title: "B", body: "100 n. Chr." },
+      correct: "A",
+      explanation: "v. Chr. liegt vor dem Bezugsjahr.",
+      wissen: "Die christliche Zeitrechnung teilt vor und nach dem Bezugsjahr.",
+    },
+  ],
+  findErrors: [
+    {
+      concept: "ge:k5:zeitrechnung:fe1",
+      statements: [
+        "Ein Zeitstrahl ordnet Ereignisse chronologisch.",
+        "Chronologie berechnet Geschwindigkeit als Weg pro Zeit.",
+        "Epochen fassen längere Zeiträume zusammen.",
+      ],
+      faultyIndex: 1,
+      explanation: "Geschwindigkeit gehört zur Physik.",
+      wissen: "Historische Zeitrechnung meint Datierung und Reihenfolge.",
+    },
+  ],
+  causeEffects: [
+    {
+      concept: "ge:k5:zeitrechnung:ce1",
+      cause: "Ereignisse auf dem Zeitstrahl markieren",
+      effect: "Reihenfolge und Abstände werden erkennbar",
+      wissen: "Grafische Chronologie.",
+    },
+    {
+      concept: "ge:k5:zeitrechnung:ce2",
+      cause: "Angabe v. Chr. nutzen",
+      effect: "Das Ereignis liegt vor dem christlichen Bezugsjahr",
+      wissen: "Rückwärtszählung.",
+    },
+    {
+      concept: "ge:k5:zeitrechnung:ce3",
+      cause: "Kalender vereinbaren",
+      effect: "Tage und Jahre werden vergleichbar gezählt",
+      wissen: "Gemeinsames Zeitsystem.",
     },
   ],
 }

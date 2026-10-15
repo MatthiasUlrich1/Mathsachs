@@ -207,6 +207,29 @@ export function taskOptionLists(task: Task): OptionList[] {
       out.push({ label: `${ix.type}.left`, options: labelsOf(p.left) })
       out.push({ label: `${ix.type}.right`, options: labelsOf(p.right) })
       break
+    case 'comparePick':
+      out.push({
+        label: 'comparePick',
+        options: labelsOf(
+          (p.cards as Array<{ body?: string; title?: string }> | undefined)?.map(
+            (c) => c.body ?? c.title ?? '',
+          ),
+        ),
+      })
+      break
+    case 'findError':
+      out.push({ label: 'findError', options: labelsOf(p.statements) })
+      break
+    case 'imageHotspot':
+      out.push({
+        label: 'imageHotspot',
+        options: labelsOf(
+          (p.regions as Array<{ label?: string; id?: string }> | undefined)?.map(
+            (r) => r.label ?? r.id ?? '',
+          ),
+        ),
+      })
+      break
     default:
       break
   }

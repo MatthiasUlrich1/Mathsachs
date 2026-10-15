@@ -82,7 +82,19 @@ export const formatExamAnswer = (input: UserInput): string => {
     if (!input.flipped) return '(nicht umgedreht)'
     return input.answer.trim() || '—'
   }
-  return input.value.trim() || '—'
+  if (input.kind === 'comparePick') {
+    return input.choice.trim() || '—'
+  }
+  if (input.kind === 'findError') {
+    return input.choice.trim() || '—'
+  }
+  if (input.kind === 'imageHotspot') {
+    return input.regionId.trim() || '—'
+  }
+  if ('value' in input && typeof input.value === 'string') {
+    return input.value.trim() || '—'
+  }
+  return '—'
 }
 
 interface Props {

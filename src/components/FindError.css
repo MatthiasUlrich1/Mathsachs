@@ -1,0 +1,67 @@
+.find-error {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 12px 0 4px;
+  width: 100%;
+}
+
+.find-error__instruction {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted, #64748b);
+  text-align: center;
+}
+
+.find-error__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.find-error__item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: start;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 2px solid rgba(148, 163, 184, 0.35);
+  background: rgba(15, 23, 42, 0.72);
+  color: var(--text, #e2e8f0);
+  cursor: pointer;
+}
+
+.find-error__item:hover:not(:disabled) {
+  border-color: #f59e0b;
+}
+
+.find-error__item--selected {
+  border-color: transparent;
+  background: linear-gradient(135deg, #b45309, #f59e0b);
+  color: #fff;
+}
+
+.find-error__item:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.find-error__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.find-error__text {
+  font-size: 0.98rem;
+  line-height: 1.4;
+  font-weight: 600;
+}

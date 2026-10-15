@@ -1,0 +1,64 @@
+.compare-pick {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 12px 0 4px;
+  width: 100%;
+}
+
+.compare-pick__instruction {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted, #64748b);
+  text-align: center;
+}
+
+.compare-pick__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.compare-pick__card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: stretch;
+  text-align: left;
+  min-height: 7rem;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 2px solid rgba(148, 163, 184, 0.35);
+  background: rgba(15, 23, 42, 0.72);
+  color: var(--text, #e2e8f0);
+  cursor: pointer;
+}
+
+.compare-pick__card:hover:not(:disabled) {
+  border-color: var(--accent, #0d9488);
+}
+
+.compare-pick__card--selected {
+  border-color: transparent;
+  background: linear-gradient(145deg, #0f766e, #0d9488);
+  color: #fff;
+}
+
+.compare-pick__card:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.compare-pick__title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.compare-pick__body {
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
