@@ -99,8 +99,9 @@ describe('content-level round uniqueness', () => {
 })
 
 describe('Biologie quality bar', () => {
+  // \b before LB: / LB\d — sonst False Positive in „Außerhalb: …“
   const META_FACHWISSEN =
-    /Prüfung:|Antwort prüfen|Teilpunkte|Karteikarte:|Zur Frage|Die gesuchte Antwort|Auch akzeptiert|Klassenarbeiten|gewertet|Häufige Verwechslung in Quizzes|im Unterricht\.|Systemüberblick\.|Orientierung im|Wahl:\s|Wahlbereich:|LB\d|LB:\s|Kursinhalte beachten|Schlaukopf|Klassiker \(/i
+    /Prüfung:|Antwort prüfen|Teilpunkte|Karteikarte:|Zur Frage|Die gesuchte Antwort|Auch akzeptiert|Klassenarbeiten|gewertet|Häufige Verwechslung in Quizzes|im Unterricht\.|Systemüberblick\.|Orientierung im|Wahl:\s|Wahlbereich:|\bLB\d|\bLB:\s|Kursinhalte beachten|Schlaukopf|Klassiker \(/i
 
   const GENERIC_FACHWISSEN =
     /^(Dieses Thema|In diesem Thema|Zum Thema|Fachlich:|Biologie ist|Die Biologie|Wikipedia: Biologie\.?$|Merke den Fachbegriff\.?$|Siehe Lehrbuch\.?$)/i

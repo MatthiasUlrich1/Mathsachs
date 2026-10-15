@@ -18,7 +18,7 @@ describe('Gymnasium Sachsen Geschichte pack', () => {
     const pack = buildGymSachsenGeschichtePack()
     expect(pack.id).toBe(GYM_SACHSEN_GESCHICHTE_PACK_ID)
     expect(pack.subject).toBe('Geschichte')
-    expect(pack.version).toBe('1.9.4')
+    expect(pack.version).toBe('1.10.1')
     expect(pack.official.map((g) => g.id)).toEqual([
       'geschichte-klasse-5',
       'geschichte-klasse-6',
@@ -41,10 +41,22 @@ describe('Gymnasium Sachsen Geschichte pack', () => {
     expect(lb4.topics[0]!.title).not.toMatch(/Längsschnitt/)
     // Neue LB4-Unterthemen bleiben gesperrt (User gibt frei)
     expect(lb4.topics.slice(1).every((t) => t.released === false)).toBe(true)
+    const newK6TeilLocked = new Set([
+      'ge-k6-lb1-caesar-augustus',
+      'ge-k6-lb1-kaiserzeit-gesellschaft',
+      'ge-k6-lb1-germanen',
+    ])
     const k6ReleasedCore = k6.areas
       .filter((a) => a.id !== 'lb4')
       .flatMap((a) => a.topics)
+      .filter((t) => !newK6TeilLocked.has(t.id))
     expect(k6ReleasedCore.every((t) => t.released === true)).toBe(true)
+    expect(
+      k6.areas
+        .flatMap((a) => a.topics)
+        .filter((t) => newK6TeilLocked.has(t.id))
+        .every((t) => t.released === false),
+    ).toBe(true)
     const lockedElsewhere = topics.filter((t) => !t.id.startsWith('ge-k6-'))
     expect(lockedElsewhere.every((t) => t.released === false)).toBe(true)
     expect(pack.extras).toEqual([])

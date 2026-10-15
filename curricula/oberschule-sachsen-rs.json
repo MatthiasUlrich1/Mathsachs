@@ -6,7 +6,7 @@
   "subject": "Mathematik",
   "version": "1.0.5",
   "changelog": "Klassen 5–10 (Realschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung.",
-  "contentHash": "23d9b283",
+  "contentHash": "88b05efc",
   "official": [
     {
       "id": "os-rs-klasse-5",
@@ -1224,6 +1224,17 @@
               "title": "Körpernetze, Schrägbilder und senkrechte Zweitafelbilder",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-rs-k7-lb4-zweitafel",
+              "title": "Senkrechte Zweitafelprojektion: Grund- und Aufriss",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zweitafel",
+                "Grundriss",
+                "Aufriss"
+              ]
             },
             {
               "id": "os-rs-k7-lb4-volumen-prisma",

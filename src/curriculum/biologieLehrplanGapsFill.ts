@@ -3361,14 +3361,14 @@ export const k6OrganellenEnergie: BioBank = {
       statement: "Energieorganellen: Mitochondrium bedeutet: Ort der Zellatmung.",
       correct: true,
       explanation: "Ort der Zellatmung.",
-      wissen: fw("Liefert viel ATP."),
+      wissen: fw("Liefert viel ATP in der Zellatmung. Bezug: Energieorganellen."),
     },
     {
       concept: "bio:k6:orgene:tf1",
       statement: "Energieorganellen: Mitochondrium bedeutet genau: Ort der Fotosynthese.",
       correct: false,
       explanation: "Richtig ist: Ort der Zellatmung.",
-      wissen: fw("Liefert viel ATP."),
+      wissen: fw("Liefert viel ATP in der Zellatmung. Bezug: Energieorganellen."),
     },
   ],
 }

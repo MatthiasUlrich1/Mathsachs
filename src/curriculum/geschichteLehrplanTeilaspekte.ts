@@ -1113,7 +1113,8 @@ const geBank9: BioBank = {
       "Nur Berlin 1990 ohne Vorgeschichte",
     ],
     explanation: "Residenz.",
-    wissen: "Zwinger und Hofkultur machen absolutistische Repräsentation greifbar.",
+    wissen:
+      "Zwinger und Hofkultur machen absolutistische Repräsentation greifbar. Dresden ist die Residenzstadt.",
     gap: "Fachbegriff/Kern: ___ — Dresden",
     gapAccepted: ["Dresden"],
   },

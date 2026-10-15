@@ -482,6 +482,11 @@ function officialGradesRs710(): PackGrade[] {
           topic('os-rs-k7-lb4-winkelsumme', 'Innenwinkelsumme im Vieleck', ['Vieleck']),
           topic('os-rs-k7-lb4-vieleck-flaeche', 'Flächeninhalt und Umfang von Vielecken'),
           topic('os-rs-k7-lb4-darstellen', 'Körpernetze, Schrägbilder und senkrechte Zweitafelbilder'),
+          topic('os-rs-k7-lb4-zweitafel', 'Senkrechte Zweitafelprojektion: Grund- und Aufriss', [
+            'Zweitafel',
+            'Grundriss',
+            'Aufriss',
+          ]),
           topic('os-rs-k7-lb4-volumen-prisma', 'Volumen gerader Prismen', ['Prisma']),
           topic('os-rs-k7-lb4-mantel', 'Mantelfläche eines Prismas'),
           topic('os-rs-k7-lb4-oberflaeche', 'Oberflächeninhalt von Prismen und Quadern', ['Oberfläche']),

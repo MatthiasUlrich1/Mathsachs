@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.84] – 2026-10-15
+
+### Behoben
+- **Installer-CI:** Pack-Versions-Tests, released:false-Erwartungen für neue Teilaspekte,
+  kurze Neuro-Prompts, Fachwissen-Länge, META-Regex-False-Positive (`Außerhalb:`),
+  OS-Zweitafel-Topic und ST-Differential-Mapping.
+
 ## [0.28.83] – 2026-10-15
 
 ### Hinzugefügt

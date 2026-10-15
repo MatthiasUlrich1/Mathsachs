@@ -61,7 +61,7 @@ describe('Oberschule Sachsen Lehrplan packs', () => {
     expect(parsedHs?.region).toBe('Sachsen')
     expect(parsedHs?.school).toBe('Oberschule')
     expect(parsedHs?.subject).toBe('Mathematik')
-    expect(parsedHs?.version).toBe('1.0.4')
+    expect(parsedHs?.version).toBe('1.0.5')
     expect(parsedRs?.school).toBe('Oberschule')
   })
 
@@ -126,6 +126,11 @@ describe('Oberschule Sachsen Lehrplan packs', () => {
       expect(hsIds.has(osId) || rsIds.has(osId), `mapped id ${osId} missing from packs`).toBe(true)
     }
     for (const osId of Object.keys(OS_CUSTOM_GENERATORS)) {
+      // ST/SKS-Teilaspekte liegen in eigenen Packs, nicht in OS-HS/RS.
+      if (osId.startsWith('st-') || osId.startsWith('sks-')) {
+        expect(isPlayableOfficialTopic(osId), osId).toBe(true)
+        continue
+      }
       expect(hsIds.has(osId) || rsIds.has(osId), `custom id ${osId} missing from packs`).toBe(true)
       expect(isPlayableOfficialTopic(osId)).toBe(true)
     }

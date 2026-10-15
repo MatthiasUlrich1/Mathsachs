@@ -230,6 +230,8 @@ export const ST_GENERATOR_MAP: Record<string, string> = {
 
   // ——— 11/12 gA ———
   'st-k1112-ableitung': 'k1112-lb1-ableitung-stelle',
+  // Custom generator in OS_ST_LEHRPLAN_TEILASPEKTE_GENERATORS takes precedence.
+  'st-k1112-differential': 'k1112-lb1-ableitung-stelle',
   'st-k1112-nullstelle': 'k1112-lb1-nullstelle-linear',
   'st-k1112-integral': 'k1112-lb1-bestimmtes-integral',
   'st-k1112-skalar': 'k1112-lb2-skalarprodukt',

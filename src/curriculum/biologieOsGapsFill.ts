@@ -1492,7 +1492,7 @@ const gk12Neuro: BioBank = {
     },
     {
       concept: "bio:gk12:neuro:4",
-      prompt: "Synapse?",
+      prompt: "Was ist eine Synapse in der Neurophysiologie?",
       answer: "Übergang mit Transmitter",
       wrong: ["Nur Neurophysiologie ohne biologischen Bezug", "Nur Haarfarbe als Erklärung", "Nur Zahnzahl ohne Stoffwechsel"],
       explanation: "Synapse.",
@@ -1502,7 +1502,7 @@ const gk12Neuro: BioBank = {
     },
     {
       concept: "bio:gk12:neuro:5",
-      prompt: "Transmitter?",
+      prompt: "Was bewirkt ein Transmitter an der Synapse?",
       answer: "Chemischer Botenstoff",
       wrong: ["Nur Neurophysiologie ohne biologischen Bezug", "Nur Haarfarbe als Erklärung", "Nur Zahnzahl ohne Stoffwechsel"],
       explanation: "Transmitter.",

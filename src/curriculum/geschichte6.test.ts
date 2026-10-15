@@ -142,7 +142,22 @@ describe('Geschichte K6 Römische Zivilisation', () => {
     const k6 = grades.find((g) => g.id === 'geschichte-klasse-6')!
     const lb1 = k6.areas.find((a) => a.id === 'lb1')!
     expect(lb1.topics.length).toBeGreaterThanOrEqual(8)
-    expect(lb1.topics.every((t) => t.released !== false)).toBe(true)
+    // Freigegebene Rom-Themen bleiben released; neue Teilaspekte dürfen released:false sein.
+    const releasedRom = lb1.topics.filter((t) =>
+      [
+        'ge-k6-lb1-jahreszahlen',
+        'ge-k6-lb1-chronologie',
+        'ge-k6-lb1-anfaenge',
+        'ge-k6-lb1-begriffe',
+        'ge-k6-lb1-aemter',
+        'ge-k6-lb1-punische-kriege',
+        'ge-k6-lb1-weltreich',
+        'ge-k6-lb1-buergerrecht',
+        'ge-k6-lb1-rom',
+      ].includes(t.id),
+    )
+    expect(releasedRom.length).toBeGreaterThanOrEqual(8)
+    expect(releasedRom.every((t) => t.released !== false)).toBe(true)
     expect(lb1.topics.every((t) => !t.outlineOnly)).toBe(true)
     expect(lb1.topics.some((t) => t.id === 'ge-k6-lb1-jahreszahlen')).toBe(true)
     const punisch = lb1.topics.find((t) => t.id === 'ge-k6-lb1-punische-kriege')!
@@ -212,7 +227,11 @@ describe('Geschichte K6 Römische Zivilisation', () => {
       .areas.find((a) => a.id === 'lb1')!
     const weltreich = lb1.topics.find((t) => t.id === 'ge-k6-lb1-weltreich')!
     expect(weltreich.released).toBe(true)
-    expect(lb1.topics.every((t) => t.released !== false)).toBe(true)
+    expect(
+      lb1.topics
+        .filter((t) => !t.id.includes('caesar') && !t.id.includes('kaiserzeit') && !t.id.includes('germanen'))
+        .every((t) => t.released !== false),
+    ).toBe(true)
   })
 })
 

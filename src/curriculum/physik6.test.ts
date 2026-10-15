@@ -38,7 +38,9 @@ describe('Physik Klasse 6 generators', () => {
     const topics = k6!.areas.flatMap((a) => a.topics)
     expect(topics.every((t) => typeof t.contentId === 'number')).toBe(true)
     const lb1 = k6!.areas.find((a) => a.id === 'lb1')!.topics
-    expect(lb1.every((t) => t.released === true)).toBe(true)
+    // Freigegebene Licht-Themen bleiben released; neue Teilaspekte dürfen released:false sein.
+    expect(lb1.filter((t) => t.released === true).length).toBeGreaterThanOrEqual(8)
+    expect(lb1.find((t) => t.id === 'ph-k6-lb1-spiegel')?.released).toBe(true)
     expect(lb1.find((t) => t.id === 'ph-k6-lb1-spiegel')?.tasksPerRound).toBe(10)
     expect(lb1.find((t) => t.id === 'ph-k6-lb1-brechung')?.tasksPerRound).toBe(10)
     expect(lb1.find((t) => t.id === 'ph-k6-lb1-sonne-mond-erde')?.released).toBe(true)
