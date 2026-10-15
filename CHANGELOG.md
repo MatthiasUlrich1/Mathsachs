@@ -9,6 +9,11 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.97] – 2026-10-15
+
+### Behoben
+- **CI v0.28.96:** TypeScript (`Task.hint`, Test-Cast) für Installer-Build.
+
 ## [0.28.96] – 2026-10-15
 
 ### Behoben

@@ -585,7 +585,7 @@ const TRACKING_ID_RE = /(?:^|[\s·•])Nr\d{4,}\b/i
 /** Sichtbare Felder, in denen keine internen IDs stehen dürfen. */
 export function visibleTaskTexts(task: Task): string[] {
   const p = task.interactive?.props ?? {}
-  const out = [task.question ?? '', task.explanation ?? '', task.hint ?? '']
+  const out = [task.question ?? '', task.explanation ?? '']
   for (const key of ['statement', 'claim', 'front', 'sourceText', 'instruction'] as const) {
     const v = p[key]
     if (typeof v === 'string' && v.trim()) out.push(v)

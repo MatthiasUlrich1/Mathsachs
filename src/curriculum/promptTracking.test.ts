@@ -30,7 +30,7 @@ describe('keine internen Nr-Tracking-Suffixe im Prompt', () => {
         },
         contentIds: ['shared'],
       }
-      return task as Task
+      return task as unknown as Task
     })
     const task = gen(createRng(1))
     expect(task.question).toBe('Was gehört nicht zu den Merkmalen des Lebens?')
