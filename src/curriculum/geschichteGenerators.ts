@@ -16,10 +16,21 @@ import { GESCHICHTE_OVERVIEW_DENSE_GENERATORS } from './geschichteOverviewDense'
 import { GESCHICHTE_THIN_FILL } from './geschichteThinFill'
 import { GESCHICHTE_LEHRPLAN_TEILASPEKTE_GENERATORS } from './geschichteLehrplanTeilaspekte'
 import { GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS } from './geschichteDichteFillPass1'
+import { GESCHICHTE_SCHULSTOFF_DENSE_GENERATORS } from './geschichteSchulstoffDense'
 import type { Topic } from './types'
 
-/** Alle spielbaren Geschichte-Generatoren (K5–12; K6 freigegeben, Rest Entwickler). */
+/**
+ * Layer-Reihenfolge: generische Densify zuerst, themenreine Qualitäts-/Schulstoffbanken zuletzt
+ * (letzter Eintrag gewinnt bei gleichen Topic-IDs).
+ */
 const GESCHICHTE_ALL_GENERATORS: Record<string, Topic['generate']> = {
+  ...GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS,
+  ...GESCHICHTE_OVERVIEW_DENSE_GENERATORS,
+  ...GESCHICHTE_LEHRPLAN_TEILASPEKTE_GENERATORS,
+  ...GESCHICHTE_LAENGSSCHNITT_GENERATORS,
+  ...GESCHICHTE_DENSE_GENERATORS,
+  ...GESCHICHTE_DENSE_K6_LB23_GENERATORS,
+  ...GESCHICHTE_DENSE_UPPER_GENERATORS,
   ...GESCHICHTE_K5_GENERATORS,
   ...GESCHICHTE_K6_GENERATORS,
   ...GESCHICHTE_K6_REST_GENERATORS,
@@ -28,13 +39,7 @@ const GESCHICHTE_ALL_GENERATORS: Record<string, Topic['generate']> = {
   ...GESCHICHTE_K9_GENERATORS,
   ...GESCHICHTE_K10_GENERATORS,
   ...GESCHICHTE_OBERSTUFE_GENERATORS,
-  ...GESCHICHTE_DENSE_GENERATORS,
-  ...GESCHICHTE_DENSE_K6_LB23_GENERATORS,
-  ...GESCHICHTE_DENSE_UPPER_GENERATORS,
-  ...GESCHICHTE_LAENGSSCHNITT_GENERATORS,
-  ...GESCHICHTE_OVERVIEW_DENSE_GENERATORS,
-  ...GESCHICHTE_LEHRPLAN_TEILASPEKTE_GENERATORS,
-  ...GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS,
+  ...GESCHICHTE_SCHULSTOFF_DENSE_GENERATORS,
 }
 
 /** Platzhalter-Generator bis echte Geschichtsaufgaben vorliegen. */
@@ -68,8 +73,18 @@ function scrubGeMeta(s: string): string {
     .replace(/\bzum Lehrplan\??/gi, 'zur Epoche?')
     .replace(/\bLehrplan\b/gi, 'Epoche')
     .replace(/\s*\((?:ge|bi|ph|k\d+|lk\d+)[-_][^)]+\)\s*/gi, ' ')
+    // Topic-ID-Leaks aus Thin-Fill-Prompts
+    .replace(/\[ge-[^\]]+\]\s*/gi, '')
     .replace(/\s+/g, ' ')
     .trim()
+}
+
+/** Physikfremde Reste aus Thin-Fill nie an Schüler ausgeben. */
+function isPhysicsLeakTask(question: string, solution: string, wissen: string): boolean {
+  const blob = `${question}\n${solution}\n${wissen}`
+  return /Beschleunigung|Ohmsches Gesetz|Stromstärke|Geschwindigkeit \(Weg|Weg pro Zeit|v\s*=\s*s\s*\/\s*t|Halbschatten|Kernschatten|Federkraft|Gewichtskraft/i.test(
+    blob,
+  )
 }
 
 function withGeAuditSafe(gen: Topic['generate']): Topic['generate'] {
@@ -104,8 +119,25 @@ export function resolveGeschichteGenerate(
   const real = GESCHICHTE_ALL_GENERATORS[topicId]
   const fill = GESCHICHTE_THIN_FILL[topicId]
   let base: Topic['generate'] | undefined
-  if (real && fill) base = mixedVariants(fill, fill, fill, real)
-  else if (real) base = real
+  // Qualitätsbanken zuerst; Thin-Fill nur leicht densifizieren (1:3) und ohne Physik-Leaks.
+  if (real && fill) {
+    const safeFill: Topic['generate'] = (rng) => {
+      for (let i = 0; i < 12; i++) {
+        const t = fill(rng)
+        if (
+          !isPhysicsLeakTask(
+            t.question ?? '',
+            String(t.solution ?? ''),
+            t.fachwissen?.text ?? '',
+          )
+        ) {
+          return t
+        }
+      }
+      return real(rng)
+    }
+    base = mixedVariants(real, real, real, safeFill)
+  } else if (real) base = real
   else if (fill) base = fill
   else if (STUBS[topicId]) base = STUBS[topicId]
   else if (title) base = stubGenerate(title)

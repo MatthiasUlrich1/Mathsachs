@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-15T13:44:30.375Z",
+  "updatedAt": "2026-10-15T19:21:41.727Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -9,7 +9,7 @@
       "subject": "Mathematik",
       "version": "1.4.1",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen.json",
-      "size": 94111,
+      "size": 94106,
       "changelog": "Lehrplan-461-Teilaspekte ergänzt (Primfaktoren, Umwandeln %, Thales, Normalverteilung LK, …); released:false; dense Banken."
     },
     {
@@ -29,10 +29,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Geschichte",
-      "version": "1.10.2",
+      "version": "1.11.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-geschichte.json",
-      "size": 162630,
-      "changelog": "Lehrplan-65-Teilaspekte ergänzt (Archäologie Sachsen, Kaiserzeit, WK1-Verlauf, Stalinismus, Glasnost, …); dense Banken, released:false. 331 Themen."
+      "size": 162733,
+      "changelog": "Schulstoff-Überarbeitung K5–LK: Physik-Leaks aus Thin-Fill entfernt, Qualitätsbanken priorisiert, 147 Topics mit themenreinem Schulstoff (Personen/Daten/Ursachen, Chronologie); Google/Schlaukopf nur Orientierung. Kein neues released:true. 331 Themen."
     },
     {
       "id": "gym-sachsen-biologie",
