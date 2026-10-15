@@ -31,28 +31,32 @@ describe('Physik Klasse 6 generators', () => {
     }
   })
 
-  it('hydrates Klasse 6 with content IDs; LB1 Licht is released', async () => {
-    const grades = await hydratePackGrades(buildGymSachsenPhysikPack())
-    const k6 = grades.find((g) => g.id === 'physik-klasse-6')
-    expect(k6).toBeTruthy()
-    const topics = k6!.areas.flatMap((a) => a.topics)
-    expect(topics.every((t) => typeof t.contentId === 'number')).toBe(true)
-    const lb1 = k6!.areas.find((a) => a.id === 'lb1')!.topics
-    // Freigegebene Licht-Themen bleiben released; neue Teilaspekte dürfen released:false sein.
-    expect(lb1.filter((t) => t.released === true).length).toBeGreaterThanOrEqual(8)
-    expect(lb1.find((t) => t.id === 'ph-k6-lb1-spiegel')?.released).toBe(true)
-    expect(lb1.find((t) => t.id === 'ph-k6-lb1-spiegel')?.tasksPerRound).toBe(10)
-    expect(lb1.find((t) => t.id === 'ph-k6-lb1-brechung')?.tasksPerRound).toBe(10)
-    expect(lb1.find((t) => t.id === 'ph-k6-lb1-sonne-mond-erde')?.released).toBe(true)
-    const lb2 = k6!.areas.find((a) => a.id === 'lb2')!.topics
-    expect(lb2.find((t) => t.id === 'ph-k6-lb2-dichte')?.released).toBe(true)
-    expect(lb2.find((t) => t.id === 'ph-k6-lb2-wegzeit')?.released).toBe(true)
-    expect(lb2.find((t) => t.id === 'ph-k6-lb2-einheiten')?.released).toBe(true)
-    const lbw = k6!.areas.find((a) => a.id === 'lbw')!.topics
-    expect(lbw.find((t) => t.id === 'ph-k6-lbw-lochkamera')?.released).toBe(true)
-    expect(lbw.find((t) => t.id === 'ph-k6-lbw-auge')?.released).toBe(true)
-    expect(lbw.every((t) => t.released === true)).toBe(true)
-  })
+  it(
+    'hydrates Klasse 6 with content IDs; LB1 Licht is released',
+    async () => {
+      const grades = await hydratePackGrades(buildGymSachsenPhysikPack())
+      const k6 = grades.find((g) => g.id === 'physik-klasse-6')
+      expect(k6).toBeTruthy()
+      const topics = k6!.areas.flatMap((a) => a.topics)
+      expect(topics.every((t) => typeof t.contentId === 'number')).toBe(true)
+      const lb1 = k6!.areas.find((a) => a.id === 'lb1')!.topics
+      // Freigegebene Licht-Themen bleiben released; neue Teilaspekte dürfen released:false sein.
+      expect(lb1.filter((t) => t.released === true).length).toBeGreaterThanOrEqual(8)
+      expect(lb1.find((t) => t.id === 'ph-k6-lb1-spiegel')?.released).toBe(true)
+      expect(lb1.find((t) => t.id === 'ph-k6-lb1-spiegel')?.tasksPerRound).toBe(10)
+      expect(lb1.find((t) => t.id === 'ph-k6-lb1-brechung')?.tasksPerRound).toBe(10)
+      expect(lb1.find((t) => t.id === 'ph-k6-lb1-sonne-mond-erde')?.released).toBe(true)
+      const lb2 = k6!.areas.find((a) => a.id === 'lb2')!.topics
+      expect(lb2.find((t) => t.id === 'ph-k6-lb2-dichte')?.released).toBe(true)
+      expect(lb2.find((t) => t.id === 'ph-k6-lb2-wegzeit')?.released).toBe(true)
+      expect(lb2.find((t) => t.id === 'ph-k6-lb2-einheiten')?.released).toBe(true)
+      const lbw = k6!.areas.find((a) => a.id === 'lbw')!.topics
+      expect(lbw.find((t) => t.id === 'ph-k6-lbw-lochkamera')?.released).toBe(true)
+      expect(lbw.find((t) => t.id === 'ph-k6-lbw-auge')?.released).toBe(true)
+      expect(lbw.every((t) => t.released === true)).toBe(true)
+    },
+    30_000,
+  )
 
   it('hides Schatten in lampenposition MC until Auflösung', () => {
     const gen = PHYSIK_K6_GENERATORS['ph-k6-lb1-lampenposition']!

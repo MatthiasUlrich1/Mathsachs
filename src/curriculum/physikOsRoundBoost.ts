@@ -191,14 +191,42 @@ function makeOsBoost(topicId: string): Topic['generate'] {
     addMc(51, 'Gedämpfte Schwingung: Amplitude …', 'nimmt mit der Zeit ab (Energieverlust)', ['wächst unbegrenzt', 'ist immer null', 'ändert die Masse'], 'Reibung/Abstrahlungsverluste.')
   }
 
-  // --- Quantum / atom / nuclear ---
-  if (/quanten|atom|foto|photo|compton|debroglie|kern|bindung|unschaerfe|franck|hertz|grenze/.test(L)) {
-    addMc(60, 'Photonenenergie?', 'E = h·f = h·c/λ', ['E = m·g·h', 'E = ½mv² nur für Photonen', 'E = B·I'], 'Quantenhypothese.')
-    addMc(61, 'de Broglie-Wellenlänge?', 'λ = h / p', ['λ = c / nur für Schall', 'λ = m·g', 'λ = U·I'], 'Materiewellen.')
-    addMc(62, 'Bindungsenergie pro Nukleon …', 'misst die Stabilität von Kernen', ['ist die kinetische Energie der Elektronen nur', 'ist immer negativ ohne Betrag', 'gilt nur für Moleküle ohne Kern'], 'Massendefekt ↔ Energie.')
+  // --- Radiation / nuclear (must stay on-topic for topic-factory gates) ---
+  const radiationFamily =
+    /zerfall|strahl|halbwert|spaltung|radioaktiv|alpha|beta|gamma|atomhuelle/.test(L)
+  if (radiationFamily) {
+    addMc(60, 'Radioaktiver Zerfall bedeutet …', 'Kerne wandeln sich unter Aussendung von Strahlung um', ['Ohmsches Gesetz für Stromkreise', 'nur mechanische Reibung', 'keine Energieumsätze'], 'Alpha-, Beta- und Gamma-Strahlung sind typische Formen.')
+    addMc(61, 'Halbwertszeit ist …', 'die Zeit, in der die Hälfte der Kerne zerfallen ist', ['die Periodendauer einer Schwingung', 'nur die Temperatur des Kerns', 'der Widerstand R = U/I'], 'N(t) nimmt exponentiell ab.')
+    addMc(62, 'Alpha-Strahlung besteht näherungsweise aus …', 'Heliumkernen (2p+2n)', ['Elektronen nur', 'Röntgen ohne Kernbezug', 'Schallwellen'], 'Stark ionisierend, geringe Reichweite.')
+    addMc(63, 'Gamma-Strahlung ist …', 'elektromagnetische Kernstrahlung', ['ein Teilchenstrom aus Protonen', 'nur Gleichstrom', 'mechanische Welle in Luft'], 'Hohe Durchdringung.')
+    addMc(64, 'Bindungsenergie pro Nukleon …', 'misst die Stabilität von Kernen', ['ist die kinetische Energie der Elektronen nur', 'ist immer negativ ohne Betrag', 'gilt nur für Moleküle ohne Kern'], 'Massendefekt ↔ Energie.')
+    const ns = nums(id, 4, 80, 200)
+    ns.forEach((n0, i) => {
+      const half = Math.round(n0 / 2)
+      variants.push((_rng) =>
+        valueTask({
+          question: `Nach einer Halbwertszeit sind von ${n0} Kernen noch wie viele übrig (Näherung)?`,
+          answerKind: 'integer',
+          value: half,
+          solution: String(half),
+          explanation: `N ≈ N0/2 = ${n0}/2 = ${half}. Radioaktiver Zerfall.`,
+          fachwissen: fw('Halbwertszeit: die Hälfte der Kerne ist zerfallen.'),
+          dedupeKey: `ph:osboost:${id}:hwz${i}`,
+        }),
+      )
+    })
+  }
+
+  // --- Quantum / atom (ohne generisches Ohm) ---
+  const quantumFamily =
+    !radiationFamily &&
+    /quanten|atom|foto|photo|compton|debroglie|kern|bindung|unschaerfe|franck|hertz|grenze/.test(L)
+  if (quantumFamily) {
+    addMc(70, 'Photonenenergie?', 'E = h·f = h·c/λ', ['E = m·g·h', 'E = ½mv² nur für Photonen', 'E = B·I'], 'Quantenhypothese.')
+    addMc(71, 'de Broglie-Wellenlänge?', 'λ = h / p', ['λ = c / nur für Schall', 'λ = m·g', 'λ = U·I'], 'Materiewellen.')
+    addMc(72, 'Bindungsenergie pro Nukleon …', 'misst die Stabilität von Kernen', ['ist die kinetische Energie der Elektronen nur', 'ist immer negativ ohne Betrag', 'gilt nur für Moleküle ohne Kern'], 'Massendefekt ↔ Energie.')
     const fs = nums(id, 3, 1, 9)
     fs.forEach((f, i) => {
-      // E = h f with h≈6.6e-34 — use eV-scale toy: E(eV) ≈ 4*f for f in 1e14 scaled; keep school-friendly numbers
       const E = f * 2
       variants.push((_rng) =>
         valueTask({
@@ -242,76 +270,104 @@ function makeOsBoost(topicId: string): Topic['generate'] {
     addMc(81, 'Zeitdilatation: bewegte Uhren …', 'gehen aus Sicht des ruhenden Beobachters langsamer', ['gehen immer schneller', 'ändern die Ladung', 'löschen Massenerhaltung'], 'γ-Faktor.')
   }
 
-  // --- Universal physics calcs (always) for unique pool ---
-  const voltVals = nums(id, 3, 6, 24)
-  const ohmVals = nums(id + 'R', 3, 2, 8)
-  voltVals.forEach((volt, i) => {
-    const ohm = ohmVals[i]!
-    const amp = volt / ohm
+  // Universal Ohm/Mittelwert nur, wenn keine Themenfamilie greift —
+  // sonst Cross-Topic (z. B. Zerfall → Ohmsches Gesetz).
+  const hadFamily = variants.length > 0
+  if (!hadFamily && !radiationFamily && !quantumFamily) {
+    const voltVals = nums(id, 3, 6, 24)
+    const ohmVals = nums(id + 'R', 3, 2, 8)
+    voltVals.forEach((volt, i) => {
+      const ohm = ohmVals[i]!
+      const amp = volt / ohm
+      variants.push((_rng) =>
+        valueTask({
+          question: `Ohmsches Gesetz: U = ${volt} V, R = ${ohm} Ω. I = U/R in A?`,
+          answerKind: amp % 1 === 0 ? 'integer' : 'decimal',
+          value: amp,
+          eps: 0.01,
+          solution: String(amp),
+          explanation: `I = ${volt}/${ohm} = ${amp} A.`,
+          fachwissen: fw('I = U/R — oft in Messungen und Schaltungen.'),
+          dedupeKey: `ph:osboost:${id}:ohm${i}`,
+        }),
+      )
+    })
+    const triples = [0, 1, 2].map((i) => nums(id + String(i), 3, 2, 12))
+    triples.forEach((t, i) => {
+      const mean = (t[0]! + t[1]! + t[2]!) / 3
+      variants.push((_rng) =>
+        valueTask({
+          question: `Messreihe ${t.join(' · ')}. Mittelwert?`,
+          answerKind: mean % 1 === 0 ? 'integer' : 'decimal',
+          value: mean,
+          eps: 0.01,
+          solution: String(mean),
+          explanation: `Mittelwert = (${t.join(' + ')}) / 3 = ${mean}.`,
+          fachwissen: fw('Mittelwert aus Messreihe.'),
+          dedupeKey: `ph:osboost:${id}:mean${i}`,
+        }),
+      )
+    })
+  }
+  if (radiationFamily) {
     variants.push((_rng) =>
-      valueTask({
-        question: `Ohmsches Gesetz: U = ${volt} V, R = ${ohm} Ω. I = U/R in A?`,
-        answerKind: amp % 1 === 0 ? 'integer' : 'decimal',
-        value: amp,
-        eps: 0.01,
-        solution: String(amp),
-        explanation: `I = ${volt}/${ohm} = ${amp} A.`,
-        fachwissen: fw('I = U/R — oft in Messungen und Schaltungen.'),
-        dedupeKey: `ph:osboost:${id}:ohm${i}`,
+      multiSelectTask({
+        question: 'Welche Aussagen zu radioaktiver Strahlung/Zerfall sind richtig?',
+        choices: [
+          'Alpha-, Beta- und Gamma-Strahlung unterscheiden sich in Reichweite',
+          'Halbwertszeit beschreibt den Zerfall statistisch',
+          'Ohmsches Gesetz erklärt den Kernzerfall',
+          'Kerne können unter Strahlungsemission umwandeln',
+        ],
+        correct: [
+          'Alpha-, Beta- und Gamma-Strahlung unterscheiden sich in Reichweite',
+          'Halbwertszeit beschreibt den Zerfall statistisch',
+          'Kerne können unter Strahlungsemission umwandeln',
+        ],
+        solution: 'Strahlungsarten, Halbwertszeit, Kernzerfall — nicht Ohmsches Gesetz.',
+        explanation: 'Radioaktivität ist ein Kernprozess mit charakteristischen Strahlungsarten.',
+        fachwissen: fw('Radioaktiver Zerfall und Strahlungsarten.'),
+        dedupeKey: `ph:osboost:${id}:multi-nuk`,
+        contentIds: [`ph:osboost:${id}:multi-nuk`],
       }),
     )
-  })
-  const triples = [0, 1, 2].map((i) => nums(id + String(i), 3, 2, 12))
-  triples.forEach((t, i) => {
-    const mean = (t[0]! + t[1]! + t[2]!) / 3
+  } else if (!quantumFamily) {
+    addMc(
+      90,
+      'Messunsicherheit einzuschätzen bedeutet …',
+      'anzugeben, wie genau ein Wert bestimmt ist',
+      ['die Einheit zu löschen', 'nur die Gerätefarbe zu notieren', 'Ergebnisse zu erfinden'],
+      'Unsicherheit gehört zur Messung.',
+    )
+    addMc(
+      91,
+      'Ein physikalisches Modell …',
+      'vereinfacht und erklärt Beobachtungen im Gültigkeitsbereich',
+      ['ersetzt jede Messung vollständig', 'darf Daten dauerhaft widersprechen', 'braucht keine Größen'],
+      'Modelle sind begrenzt gültig.',
+    )
     variants.push((_rng) =>
-      valueTask({
-        question: `Messreihe ${t.join(' · ')}. Mittelwert?`,
-        answerKind: mean % 1 === 0 ? 'integer' : 'decimal',
-        value: mean,
-        eps: 0.01,
-        solution: String(mean),
-        explanation: `Mittelwert = (${t.join(' + ')}) / 3 = ${mean}.`,
-        fachwissen: fw('Mittelwert aus Messreihe.'),
-        dedupeKey: `ph:osboost:${id}:mean${i}`,
+      multiSelectTask({
+        question: 'Welche Aussagen zur physikalischen Auswertung sind richtig?',
+        choices: [
+          'Erhaltungssätze helfen bei Bilanzen',
+          'Diagramme können Zusammenhänge zeigen',
+          'Einheiten darf man weglassen',
+          'Messunsicherheit kann die Deutung beeinflussen',
+        ],
+        correct: [
+          'Erhaltungssätze helfen bei Bilanzen',
+          'Diagramme können Zusammenhänge zeigen',
+          'Messunsicherheit kann die Deutung beeinflussen',
+        ],
+        solution: 'Erhaltung, Diagramme, Unsicherheit — Einheiten nicht weglassen.',
+        explanation: 'Auswertung braucht Größen, Modelle und Fehlerbewusstsein.',
+        fachwissen: fw('Methodik der physikalischen Auswertung.'),
+        dedupeKey: `ph:osboost:${id}:multi`,
+        contentIds: [`ph:osboost:${id}:multi`],
       }),
     )
-  })
-  addMc(
-    90,
-    'Messunsicherheit einzuschätzen bedeutet …',
-    'anzugeben, wie genau ein Wert bestimmt ist',
-    ['die Einheit zu löschen', 'nur die Gerätefarbe zu notieren', 'Ergebnisse zu erfinden'],
-    'Unsicherheit gehört zur Messung.',
-  )
-  addMc(
-    91,
-    'Ein physikalisches Modell …',
-    'vereinfacht und erklärt Beobachtungen im Gültigkeitsbereich',
-    ['ersetzt jede Messung vollständig', 'darf Daten dauerhaft widersprechen', 'braucht keine Größen'],
-    'Modelle sind begrenzt gültig.',
-  )
-  variants.push((_rng) =>
-    multiSelectTask({
-      question: 'Welche Aussagen zur physikalischen Auswertung sind richtig?',
-      choices: [
-        'Erhaltungssätze helfen bei Bilanzen',
-        'Diagramme können Zusammenhänge zeigen',
-        'Einheiten darf man weglassen',
-        'Messunsicherheit kann die Deutung beeinflussen',
-      ],
-      correct: [
-        'Erhaltungssätze helfen bei Bilanzen',
-        'Diagramme können Zusammenhänge zeigen',
-        'Messunsicherheit kann die Deutung beeinflussen',
-      ],
-      solution: 'Erhaltung, Diagramme, Unsicherheit — Einheiten nicht weglassen.',
-      explanation: 'Auswertung braucht Größen, Modelle und Fehlerbewusstsein.',
-      fachwissen: fw('Methodik der physikalischen Auswertung.'),
-      dedupeKey: `ph:osboost:${id}:multi`,
-      contentIds: [`ph:osboost:${id}:multi`],
-    }),
-  )
+  }
 
   return mixedVariants(...variants)
 }

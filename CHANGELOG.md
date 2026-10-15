@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.86] – 2026-10-15
+
+### Behoben
+- **Installer-CI:** Exam-Flow nutzt `loadInstalledGrade` (Math-Thin-Fill konsistent);
+  kurze Bio-Prompts; Mendel/DNA-Gen-Stems getrennt; Physik-OS-Boost ohne Cross-Topic-Ohm
+  bei Zerfall/Strahlung; Fachwissen-Pad für Dichte-Fills; Hydrate-Timeouts.
+
 ## [0.28.85] – 2026-10-15
 
 ### Hinzugefügt

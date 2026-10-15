@@ -1,9 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { createRng } from '../lib/rng'
-import {
-  CURRICULUM_VERSION,
-  getCurriculumModule,
-} from '../curriculum/registry'
+import { CURRICULUM_VERSION } from '../curriculum/registry'
+import { loadInstalledGrade } from '../curriculum/loadGrade'
 import type { UserInput } from '../curriculum/types'
 import {
   buildExamLink,
@@ -23,7 +21,8 @@ import type { ExamSpec, ExamTaskRef } from './types'
 describe('exam builder → runner flow', () => {
   it('produces a shareable code that grades exactly like the teacher preview', async () => {
     const moduleId = 'mathematik-klasse-6'
-    const grade = await getCurriculumModule(moduleId)!.load()
+    // Same path as ExamBuilder / resolveExam (Math-Thin-Fill + Round-Boost).
+    const grade = await loadInstalledGrade(moduleId)
     const topics = grade.areas.flatMap((a) => a.topics)
 
     // Teacher (ExamBuilder): choose three topics with fixed proposal seeds.
@@ -88,7 +87,7 @@ describe('exam builder → runner flow', () => {
 
   it('keeps visualContent when resolving a graphical Klasse-5 exam task', async () => {
     const moduleId = 'mathematik-klasse-5'
-    const grade = await getCurriculumModule(moduleId)!.load()
+    const grade = await loadInstalledGrade(moduleId)
     const topic = grade.areas
       .flatMap((a) => a.topics)
       .find((t) => t.id === 'lb4-volumen-quader')

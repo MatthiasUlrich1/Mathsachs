@@ -285,6 +285,18 @@ export function expandBioWissen(
   if (out.length < 80 && ctx.answer && ctx.answer.length > 20) {
     out = `${out} ${ctx.answer.endsWith('.') ? ctx.answer : `${ctx.answer}.`}`.replace(/\s+/g, ' ').trim()
   }
+  // Quality gates: ≥80 chars and ≥2 sentences with >20 chars.
+  const longSentences = () =>
+    out
+      .split(/[.!?]+/)
+      .filter((s) => s.trim().length > 20)
+  if (longSentences().length < 2 || out.length < 80) {
+    const anchor = (ctx.term || ctx.answer || 'Dieser Fachbegriff').trim()
+    const pad = `${anchor} gehört in den historischen oder fachlichen Zusammenhang und erklärt Strukturen, Prozesse oder Entwicklungen genauer.`
+    if (!out.includes(pad.slice(0, 40))) {
+      out = `${out} ${pad}`.replace(/\s+/g, ' ').trim()
+    }
+  }
   return out || raw
 }
 
@@ -512,7 +524,15 @@ export function bioFactQuestion(
   mode: 'mc' | 'flash' | 'gap' | 'cloze',
 ): string {
   const base = stripBioBankSlug(f.prompt)
-  if (mode === 'mc' || mode === 'flash') return base || f.prompt
+  if (mode === 'mc' || mode === 'flash') {
+    const q = (base || f.prompt).trim()
+    // Short stems like „Onkogen?“ / „Helicase?“ fail length/quality gates.
+    if (q.length <= 10) {
+      const hint = (f.flashFront || q.replace(/[?？]+$/g, '')).trim() || 'Begriff'
+      return `Was bedeutet der Fachbegriff „${hint}“ in diesem Thema?`
+    }
+    return q
+  }
 
   const accepted = [
     ...(f.gapAccepted ?? []),

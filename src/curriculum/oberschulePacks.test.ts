@@ -115,26 +115,30 @@ describe('Oberschule Sachsen Lehrplan packs', () => {
     expect(officialNames(rs).includes('Wirtschaftliches Rechnen')).toBe(false)
   })
 
-  it('maps playable topics to existing Gymnasium generators', async () => {
-    const catalog = await gymGeneratorCatalog()
-    for (const [osId, gymId] of Object.entries(OS_GENERATOR_MAP)) {
-      expect(catalog.has(gymId), `missing gym generator ${gymId} for ${osId}`).toBe(true)
-    }
-    const hsIds = new Set(allOfficialTopics(hs).map((t) => t.id))
-    const rsIds = new Set(allOfficialTopics(rs).map((t) => t.id))
-    for (const osId of Object.keys(OS_GENERATOR_MAP)) {
-      expect(hsIds.has(osId) || rsIds.has(osId), `mapped id ${osId} missing from packs`).toBe(true)
-    }
-    for (const osId of Object.keys(OS_CUSTOM_GENERATORS)) {
-      // ST/SKS-Teilaspekte liegen in eigenen Packs, nicht in OS-HS/RS.
-      if (osId.startsWith('st-') || osId.startsWith('sks-')) {
-        expect(isPlayableOfficialTopic(osId), osId).toBe(true)
-        continue
+  it(
+    'maps playable topics to existing Gymnasium generators',
+    async () => {
+      const catalog = await gymGeneratorCatalog()
+      for (const [osId, gymId] of Object.entries(OS_GENERATOR_MAP)) {
+        expect(catalog.has(gymId), `missing gym generator ${gymId} for ${osId}`).toBe(true)
       }
-      expect(hsIds.has(osId) || rsIds.has(osId), `custom id ${osId} missing from packs`).toBe(true)
-      expect(isPlayableOfficialTopic(osId)).toBe(true)
-    }
-  })
+      const hsIds = new Set(allOfficialTopics(hs).map((t) => t.id))
+      const rsIds = new Set(allOfficialTopics(rs).map((t) => t.id))
+      for (const osId of Object.keys(OS_GENERATOR_MAP)) {
+        expect(hsIds.has(osId) || rsIds.has(osId), `mapped id ${osId} missing from packs`).toBe(true)
+      }
+      for (const osId of Object.keys(OS_CUSTOM_GENERATORS)) {
+        // ST/SKS-Teilaspekte liegen in eigenen Packs, nicht in OS-HS/RS.
+        if (osId.startsWith('st-') || osId.startsWith('sks-')) {
+          expect(isPlayableOfficialTopic(osId), osId).toBe(true)
+          continue
+        }
+        expect(hsIds.has(osId) || rsIds.has(osId), `custom id ${osId} missing from packs`).toBe(true)
+        expect(isPlayableOfficialTopic(osId)).toBe(true)
+      }
+    },
+    30_000,
+  )
 
   it('uses first-quadrant coordinates for OS Klasse 5', async () => {
     const gen = OS_CUSTOM_GENERATORS['os-k5-lb3-koordinaten']

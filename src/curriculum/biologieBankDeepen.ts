@@ -2478,7 +2478,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     facts: [
     {
       concept: "bio:k10:mendel:xfact:gen",
-      prompt: "Fachbegriff: Was bedeutet „Gen“?",
+      prompt: "In der Mendel-Genetik: Was bedeutet „Gen“?",
       answer: "Erbanlage",
       wrong: ["Ausprägungsform eines Gens","Setzt sich im Phänotyp durch","Tritt nur homogen sichtbar auf"],
       explanation: "Abschnitt der DNA. Gen bedeutet: Erbanlage. Merke: Gen — Erbanlage.",
@@ -2666,7 +2666,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     },
     {
       concept: "bio:k10:dna:xfact:gen",
-      prompt: "Fachbegriff: Was bedeutet „Gen“?",
+      prompt: "In der Molekulargenetik: Was bedeutet „Gen“?",
       answer: "Funktionale DNA-Einheit",
       wrong: ["Verdopplung der DNA","Änderung der DNA-Sequenz","DNA → RNA"],
       explanation: "Code für Merkmale/Proteine. Gen bedeutet: Funktionale DNA-Einheit. Merke: Gen — Funktionale DNA-Einheit.",
