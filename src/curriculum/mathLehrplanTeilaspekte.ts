@@ -16,7 +16,7 @@ import type { Topic } from './types'
 import { DEFAULT_TASKS_PER_ROUND } from './tasksPerRound'
 
 
-const maBank0: BioBank = {
+export const _maBank0: BioBank = {
   quelle: "Lehrplan Mathematik Gymnasium Sachsen",
   url: "https://www.schulportal.sachsen.de/lplandb/lehrplan/461",
   conceptPrefix: "ma:k5:vgl",
@@ -152,7 +152,7 @@ export const maTopic0: Topic = {
 }
 
 
-const maBank1: BioBank = {
+export const _maBank1: BioBank = {
   quelle: "Lehrplan Mathematik Gymnasium Sachsen",
   url: "https://www.schulportal.sachsen.de/lplandb/lehrplan/461",
   conceptPrefix: "ma:k5:pfz",
@@ -290,7 +290,7 @@ export const maTopic1: Topic = {
 }
 
 
-const maBank2: BioBank = {
+export const _maBank2: BioBank = {
   quelle: "Lehrplan Mathematik Gymnasium Sachsen",
   url: "https://www.schulportal.sachsen.de/lplandb/lehrplan/461",
   conceptPrefix: "ma:k5:gesetze",
@@ -431,7 +431,7 @@ export const maTopic2: Topic = {
 }
 
 
-const maBank3: BioBank = {
+export const _maBank3: BioBank = {
   quelle: "Lehrplan Mathematik Gymnasium Sachsen",
   url: "https://www.schulportal.sachsen.de/lplandb/lehrplan/461",
   conceptPrefix: "ma:k5:echt",
@@ -571,7 +571,7 @@ export const maTopic3: Topic = {
 }
 
 
-const maBank4: BioBank = {
+export const _maBank4: BioBank = {
   quelle: "Lehrplan Mathematik Gymnasium Sachsen",
   url: "https://www.schulportal.sachsen.de/lplandb/lehrplan/461",
   conceptPrefix: "ma:k5:umwand",
@@ -989,7 +989,7 @@ export const maTopic6: Topic = {
 }
 
 
-const maBank7: BioBank = {
+export const _maBank7: BioBank = {
   quelle: "Lehrplan Mathematik Gymnasium Sachsen",
   url: "https://www.schulportal.sachsen.de/lplandb/lehrplan/461",
   conceptPrefix: "ma:k6:period",

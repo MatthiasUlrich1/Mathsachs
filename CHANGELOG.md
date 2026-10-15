@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.88] – 2026-10-15
+
+### Behoben
+- **Installer-CI:** `valueTask` mit `contentIds`; Mathe-Dichte-Topics `difficulty` max. 3;
+  ungenutzte Bank-Konstanten und Unused-Locals für `tsc`.
+
 ## [0.28.87] – 2026-10-15
 
 ### Behoben

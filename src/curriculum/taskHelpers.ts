@@ -53,6 +53,7 @@ interface ValueTaskInput {
   fachwissen?: Fachwissen
   /** Round-dedupe identity (same key → treated as duplicate in a round). */
   dedupeKey?: string
+  contentIds?: string[]
 }
 
 /** Build a task whose answer is a single integer or decimal value. */
@@ -65,6 +66,7 @@ export const valueTask = (input: ValueTaskInput): Task => ({
   visualContent: input.visualContent,
   ...withFw(input.fachwissen),
   ...withDedupe(input.dedupeKey),
+  ...withContentIds(input.contentIds),
   sampleAnswer: { kind: 'value', value: String(input.value) },
   check: (answer: UserInput) => {
     if (answer.kind !== 'value') return false

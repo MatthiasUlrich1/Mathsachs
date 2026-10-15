@@ -409,7 +409,6 @@ export function densifyK8Lb2(rng: Rng, salt: number): ReturnType<Topic['generate
     })
   }
   const g = irand(rng, 1, 3)
-  const m = 6
   const correct = `${g}/6`
   return choicePickTask({
     question: `Fairer Würfel: P(Augenzahl ≤ ${g})?`,
@@ -805,7 +804,6 @@ export function densifyK1112Lb8(rng: Rng, salt: number): ReturnType<Topic['gener
   const b = irand(rng, 10, 40)
   // max of f(x)= -a x^2 + b x at x=b/(2a)
   const x = b / (2 * a)
-  const y = -a * x * x + b * x
   return choicePickTask({
     question: `f(x) = −${a}x² + ${b}x hat ein Maximum. An welcher Stelle x?`,
     choices: shuffle(rng, [
@@ -816,7 +814,7 @@ export function densifyK1112Lb8(rng: Rng, salt: number): ReturnType<Topic['gener
     ]).slice(0, 4),
     correct: String(x).replace('.', ','),
     solution: String(x).replace('.', ','),
-    explanation: `x = −b/(2a) mit a_quad=−${a} → x = ${b}/(2·${a}) = ${x}.`,
+    explanation: `Scheitel bei x = ${b}/(2·${a}) = ${x} (Parabel öffnet nach unten).`,
     fachwissen: fw('Extremstelle: f′(x)=0 (hier Scheitel).'),
     dedupeKey: `ma:dens:k1112lb8:ex:${a}:${b}:${salt}`,
     contentIds: [`ma:dens:k1112lb8:ex:${a}:${b}`],
