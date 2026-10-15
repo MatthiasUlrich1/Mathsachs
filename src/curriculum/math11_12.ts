@@ -4,7 +4,8 @@ import {
   generateVectorArrowsSvg,
 } from '../lib/geometrySvg'
 import { formatDe, roundTo } from '../lib/num'
-import { mixedVariants, valueTask, visualTask, coordinateClickTask } from './taskHelpers'
+import { linFactor, linStr, polyStr } from '../lib/termFormat'
+import { mixedVariants, valueTask, visualTask } from './taskHelpers'
 import { math1112GraphicReviews } from './graphicReviewTopics'
 import {
   k1112AbleitungExp,
@@ -33,7 +34,6 @@ import {
 } from './mathUpperDense'
 import type { Grade, Topic } from './types'
 import { MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE } from './mathLehrplanTeilaspekte'
-import { MATH_DICHTE_BY_GRADE } from './mathDichteFill'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
 const nonZero = (rng: Rng, min: number, max: number): number => {
@@ -62,11 +62,11 @@ const sq = (n: number): string => (n < 0 ? `(−${Math.abs(n)})²` : `${n}²`)
 /** Join signed numbers into a readable sum, e.g. "3 + 4 − 3". */
 const sumOf = (vals: number[]): string =>
   vals
-    .map((v, i) => (i === 0 ? `${v}` : v < 0 ? `− ${Math.abs(v)}` : `+ ${v}`))
+    .map((v, i) => (i === 0 ? minus(v) : v < 0 ? `− ${Math.abs(v)}` : `+ ${v}`))
     .join(' ')
 
 /** A single number with a real minus sign for negatives (for display). */
-const minus = (n: number): string => (n < 0 ? `−${Math.abs(n)}` : `${n}`)
+const minus = (n: number): string => (n < 0 ? `−${formatDe(-n)}` : formatDe(n))
 
 /** Format a vector tuple as "(x; y; z)" with real minus signs. */
 const vec = (v: number[]): string => `(${v.map(minus).join('; ')})`
@@ -78,7 +78,6 @@ const vec = (v: number[]): string => `(${v.map(minus).join('; ')})`
 const ableitungStelle: Topic = {
   id: 'k1112-lb1-ableitung-stelle',
   title: 'Ableitung eines Polynoms an einer Stelle',
-  hint: "Leite mit der Potenzregel ab und setze x₀ ein.",
   pointsPerTask: 10,
   difficulty: 3,
   keywords: ['Ableitung', 'Differentialrechnung', 'Steigung', 'Polynom', "f'(x)", 'Potenzregel'],
@@ -97,11 +96,11 @@ const ableitungStelle: Topic = {
       const fStr = `f(x) = ${firstTerm(a, 'x³')}${term(b, 'x²')}${term(c, 'x')} + d`
       const derivStr = `${firstTerm(3 * a, 'x²')}${term(2 * b, 'x')}${term(c, '')}`
       return valueTask({
-        question: `Gegeben ist ${fStr}. Berechne die Ableitung an der Stelle x₀ = ${x0}, also f'(${x0}).`,
+        question: `Gegeben ist ${fStr}. Berechne die Ableitung an der Stelle x₀ = ${minus(x0)}, also f'(${minus(x0)}).`,
         answerKind: 'integer',
         value,
-        solution: `f'(${x0}) = ${value}`,
-        explanation: `Ableiten mit der Potenzregel: f'(x) = ${derivStr}. Einsetzen von x₀ = ${x0}: f'(${x0}) = ${sumOf([3 * a * x0 * x0, 2 * b * x0, c])} = ${value}.`,
+        solution: `f'(${minus(x0)}) = ${minus(value)}`,
+        explanation: `Ableiten mit der Potenzregel: f'(x) = ${derivStr}. Einsetzen von x₀ = ${minus(x0)}: f'(${minus(x0)}) = ${sumOf([3 * a * x0 * x0, 2 * b * x0, c])} = ${minus(value)}.`,
       })
     },
     (rng: Rng) => {
@@ -113,14 +112,14 @@ const ableitungStelle: Topic = {
       const m = 2 * a * x0 + b
       const y0 = a * x0 * x0 + b * x0 + c
       return visualTask({
-        question: `Die rote Gerade ist die Tangente an f(x) = ${firstTerm(a, 'x²')}${term(b, 'x')}${term(c, '')} bei x₀ = ${x0}. Lies die Steigung f'(${x0}) ab bzw. berechne sie.`,
+        question: `Die rote Gerade ist die Tangente an f(x) = ${firstTerm(a, 'x²')}${term(b, 'x')}${term(c, '')} bei x₀ = ${minus(x0)}. Lies die Steigung f'(${minus(x0)}) ab bzw. berechne sie.`,
         answerKind: 'integer',
         value: m,
-        solution: `f'(${x0}) = ${m}`,
-        explanation: `f'(x) = ${firstTerm(2 * a, 'x')}${term(b, '')}. f'(${x0}) = ${m}. Die Tangente hat Steigung ${m}.`,
+        solution: `f'(${minus(x0)}) = ${minus(m)}`,
+        explanation: `f'(x) = ${firstTerm(2 * a, 'x')}${term(b, '')}. f'(${minus(x0)}) = ${minus(m)}. Die Tangente hat Steigung ${minus(m)}.`,
         visualContent: generateFunctionGraphSvg({
           f: (x) => a * x * x + b * x + c,
-          tangent: { x0, m, label: `m=${m}` },
+          tangent: { x0, m, label: `m=${minus(m)}` },
           points: [{ x: x0, y: y0, label: 'P' }],
           xRange: [-4, 4],
           yRange: [
@@ -135,42 +134,63 @@ const ableitungStelle: Topic = {
 
 const nullstelleLinear: Topic = {
   id: 'k1112-lb1-nullstelle-linear',
-  title: 'Nullstelle einer linearen Funktion',
-  hint: 'Setze die Funktion gleich null und löse nach x.',
+  title: 'Nullstellen ganzrationaler Funktionen',
   pointsPerTask: 10,
-  difficulty: 2,
-  keywords: ['Nullstelle', 'lineare Funktion', 'Gleichung', 'x-Achse', 'Schnittpunkt'],
+  difficulty: 3,
+  keywords: ['Nullstelle', 'ganzrationale Funktion', 'Ausklammern', 'Substitution', 'Satz vom Nullprodukt'],
   fachwissen: {
-    text: 'Nullstellen sind die x-Werte, bei denen der Graph einer Funktion die x-Achse schneidet (f(x) = 0). Bei linearen Funktionen gibt es genau eine Nullstelle (wenn m ≠ 0). Bei quadratischen Funktionen bis zu zwei. Nullstellen sind in der Anwendung oft die gesuchten Gleichgewichtspunkte oder Schnittpunkte.',
+    text: 'Nullstellen ganzrationaler Funktionen findet man durch Ausklammern und den Satz vom Nullprodukt (ein Produkt ist null, wenn ein Faktor null ist) oder bei biquadratischen Gleichungen x⁴ + px² + q = 0 durch Substitution z = x². Eine Funktion n-ten Grades hat höchstens n Nullstellen.',
     quelle: 'Wikipedia: Nullstelle',
     url: 'https://de.wikipedia.org/wiki/Nullstelle',
   },
   generate: mixedVariants(
     (rng: Rng) => {
-      const m = nonZero(rng, -6, 6)
-      const x0 = nonZero(rng, -8, 8)
-      const n = -m * x0 // ensures the zero is the integer x0
+      // f(x) = a·x³ − a·k²·x = a·x(x − k)(x + k)
+      const a = pick(rng, [1, 2, -1, 3])
+      const k = randInt(rng, 1, 6)
+      const askMax = rng() < 0.5
       return valueTask({
-        question: `Bestimme die Nullstelle der Funktion f(x) = ${m}x ${n < 0 ? `− ${Math.abs(n)}` : `+ ${n}`}.`,
+        question: `Bestimme die ${askMax ? 'größte' : 'kleinste'} Nullstelle von f(x) = ${firstTerm(a, 'x³')}${term(-a * k * k, 'x')}.`,
         answerKind: 'integer',
-        value: x0,
-        solution: `x = ${x0}`,
-        explanation: `Setze f(x) = 0: ${m}x ${n < 0 ? `− ${Math.abs(n)}` : `+ ${n}`} = 0, also ${m}x = ${-n}, x = ${-n} : ${m} = ${x0}.`,
+        value: askMax ? k : -k,
+        solution: `x = ${minus(askMax ? k : -k)}`,
+        explanation: `Ausklammern: f(x) = ${firstTerm(a, 'x')}(x² − ${k * k}) = 0 ⇒ x = 0 oder x² = ${k * k}, also x = ±${k}. ${askMax ? 'Größte' : 'Kleinste'} Nullstelle: ${minus(askMax ? k : -k)}.`,
+        dedupeKey: `ma:k1112:nst:aus:${a}:${k}:${askMax}`,
       })
     },
     (rng: Rng) => {
-      const m = nonZero(rng, -3, 3)
-      const x0 = nonZero(rng, -4, 4)
-      const n = -m * x0
-      return coordinateClickTask({
-        question: `Setze die Nullstelle von f(x) = ${num(m)}·x + ${num(n)} im Koordinatensystem.`,
-        x: x0,
-        y: 0,
-        solution: `(${x0}|0)`,
-        explanation: `f(x) = 0 ⇒ x = ${x0}. Die Nullstelle liegt bei (${x0}|0).`,
-        xRange: [-6, 6],
-        yRange: [-6, 6],
-        instruction: 'Tippe den Schnittpunkt mit der x-Achse:',
+      // biquadratisch: (x² − p²)(x² − q²)
+      const p = randInt(rng, 1, 3)
+      const q = randInt(rng, p + 1, 5)
+      const b = p * p + q * q
+      const c = p * p * q * q
+      return valueTask({
+        question: `Bestimme die größte Nullstelle von f(x) = x⁴ − ${minus(b)}x² + ${minus(c)}.`,
+        answerKind: 'integer',
+        value: q,
+        solution: `x = ${minus(q)}`,
+        explanation: `Substitution z = x²: z² − ${minus(b)}z + ${minus(c)} = 0 ⇒ z = ${p * p} oder z = ${q * q}. Rücksubstitution: x = ±${p} oder x = ±${minus(q)}. Größte Nullstelle: ${minus(q)}.`,
+        dedupeKey: `ma:k1112:nst:biquad:${p}:${q}`,
+      })
+    },
+    (rng: Rng) => {
+      // Anzahl verschiedener Nullstellen von (x − r)·(x² + s) bzw. (x − r)·(x² − s²)
+      const r = randInt(rng, -4, 4)
+      const s = randInt(rng, 1, 4)
+      const kind = pick(rng, ['plus', 'minus', 'doppelt'] as const)
+      const second = kind === 'plus' ? `x² + ${s * s}` : kind === 'minus' ? `x² − ${s * s}` : `x² − ${r * r}`
+      if (kind === 'doppelt' && r === 0) return nullstelleLinear.generate(rng)
+      const count = kind === 'plus' ? 1 : kind === 'minus' ? (Math.abs(r) === s ? 2 : 3) : 2
+      return valueTask({
+        question: `Wie viele verschiedene Nullstellen hat f(x) = ${linFactor(r)}·(${second})?`,
+        answerKind: 'integer',
+        value: count,
+        solution: `${count}`,
+        explanation:
+          kind === 'plus'
+            ? `Satz vom Nullprodukt: x = ${minus(r)} aus dem ersten Faktor; x² + ${s * s} = 0 hat keine reelle Lösung. Also 1 Nullstelle.`
+            : `Satz vom Nullprodukt: x = ${minus(r)} aus dem ersten Faktor, dazu x = ±${kind === 'minus' ? s : Math.abs(r)} aus dem zweiten. ${count === 2 ? `x = ${minus(r)} kommt doppelt vor, also 2 verschiedene Nullstellen.` : 'Also 3 verschiedene Nullstellen.'}`,
+        dedupeKey: `ma:k1112:nst:anzahl:${r}:${s}:${kind}`,
       })
     },
   ),
@@ -179,7 +199,6 @@ const nullstelleLinear: Topic = {
 const bestimmtesIntegral: Topic = {
   id: 'k1112-lb1-bestimmtes-integral',
   title: 'Bestimmtes Integral eines Polynoms',
-  hint: 'Bilde die Stammfunktion und setze die Grenzen ein.',
   pointsPerTask: 10,
   difficulty: 3,
   keywords: ['Integral', 'bestimmtes Integral', 'Stammfunktion', 'Integralrechnung', 'Fläche'],
@@ -198,32 +217,37 @@ const bestimmtesIntegral: Topic = {
       const fStr = `${firstTerm(a, 'x²')}${term(b, 'x')}${term(c, '')}`
       const fatF = `${firstTerm(a / 3, 'x³')}${term(b / 2, 'x²')}${term(c, 'x')}`
       return valueTask({
-        question: `Berechne das bestimmte Integral ∫₀^${q} (${fStr}) dx.`,
+        question: `Berechne das bestimmte Integral ∫₀^${minus(q)} (${fStr}) dx.`,
         answerKind: 'integer',
         value,
-        solution: `${value}`,
-        explanation: `Stammfunktion: F(x) = ${fatF}. F(${q}) − F(0) = ${sumOf([(a / 3) * q ** 3, (b / 2) * q ** 2, c * q])} = ${value}.`,
+        solution: `${minus(value)}`,
+        explanation: `Stammfunktion: F(x) = ${fatF}. F(${minus(q)}) − F(0) = ${sumOf([(a / 3) * q ** 3, (b / 2) * q ** 2, c * q])} = ${minus(value)}.`,
       })
     },
     (rng: Rng) => {
-      // Simple positive area under f(x)=k (constant) or linear for clear shading
-      const k = randInt(rng, 2, 5)
-      const q = randInt(rng, 2, 5)
-      const value = k * q
+      // Lineare Funktion über [a; b], Graph oberhalb der x-Achse
+      const m = pick(rng, [0.5, 1, 2])
+      const c = randInt(rng, 0, 3)
+      const a = randInt(rng, 0, 2)
+      const b = a + randInt(rng, 1, 3)
+      const F = (x: number) => (m / 2) * x * x + c * x
+      const value = F(b) - F(a)
+      const fStr = linStr(m, c)
       return visualTask({
-        question: `Die Fläche unter der Geraden f(x) = ${k} von 0 bis ${q} ist markiert. Berechne ∫₀^${q} ${k} dx.`,
-        answerKind: 'integer',
+        question: `Die Fläche unter dem Graphen von f(x) = ${fStr} über dem Intervall [${minus(a)}; ${minus(b)}] ist markiert. Berechne ∫ von ${minus(a)} bis ${minus(b)} f(x) dx.`,
+        answerKind: 'decimal',
         value,
-        solution: `${value}`,
-        explanation: `∫₀^${q} ${k} dx = ${k} · x |₀^${q} = ${k}·${q} = ${value} (Rechteckfläche).`,
+        solution: formatDe(value),
+        explanation: `F(x) = ${polyStr([[m / 2, 'x²'], [c, 'x']])}. F(${minus(b)}) − F(${minus(a)}) = ${formatDe(F(b))} − ${formatDe(F(a))} = ${formatDe(value)}.`,
+        dedupeKey: `ma:k1112:integral:linear:${m}:${c}:${a}:${b}`,
         visualContent: generateFunctionGraphSvg({
-          f: () => k,
-          shade: { a: 0, b: q },
-          xRange: [-1, q + 2],
-          yRange: [-1, k + 3],
+          f: (x) => m * x + c,
+          shade: { a, b },
+          xRange: [-1, b + 2],
+          yRange: [-1, m * b + c + 2],
           points: [
-            { x: 0, y: 0, label: '0' },
-            { x: q, y: 0, label: String(q) },
+            { x: a, y: 0, label: minus(a) },
+            { x: b, y: 0, label: minus(b) },
           ],
         }),
       })
@@ -238,7 +262,6 @@ const bestimmtesIntegral: Topic = {
 const skalarprodukt: Topic = {
   id: 'k1112-lb2-skalarprodukt',
   title: 'Skalarprodukt zweier Vektoren',
-  hint: 'Multipliziere komponentenweise und addiere.',
   pointsPerTask: 10,
   difficulty: 3,
   keywords: ['Skalarprodukt', 'Vektoren', 'Vektor', 'komponentenweise', 'analytische Geometrie'],
@@ -257,8 +280,8 @@ const skalarprodukt: Topic = {
         question: `Berechne das Skalarprodukt der Vektoren a = ${vec(a)} und b = ${vec(b)}.`,
         answerKind: 'integer',
         value,
-        solution: `${value}`,
-        explanation: `a · b = ${num(a[0])}·${num(b[0])} + ${num(a[1])}·${num(b[1])} + ${num(a[2])}·${num(b[2])} = ${sumOf(products)} = ${value}.`,
+        solution: `${minus(value)}`,
+        explanation: `a · b = ${num(a[0])}·${num(b[0])} + ${num(a[1])}·${num(b[1])} + ${num(a[2])}·${num(b[2])} = ${sumOf(products)} = ${minus(value)}.`,
       })
     },
     (rng: Rng) => {
@@ -270,8 +293,8 @@ const skalarprodukt: Topic = {
         question: `Die Vektoren a = (${minus(a[0])}; ${minus(a[1])}) und b = (${minus(b[0])}; ${minus(b[1])}) sind skizziert. Berechne a · b.`,
         answerKind: 'integer',
         value,
-        solution: `${value}`,
-        explanation: `a · b = ${num(a[0])}·${num(b[0])} + ${num(a[1])}·${num(b[1])} = ${value}.`,
+        solution: `${minus(value)}`,
+        explanation: `a · b = ${num(a[0])}·${num(b[0])} + ${num(a[1])}·${num(b[1])} = ${minus(value)}.`,
         visualContent: generateVectorArrowsSvg({
           vectors: [
             { x: a[0], y: a[1], label: 'a' },
@@ -427,7 +450,6 @@ export const klasse11_12: Grade = {
         k1112AbleitungExp,
         k1112Differenzenquotient,
         ...math1112GraphicReviews.filter((t) => !t.id.includes('integral')),
-        ...(MATH_DICHTE_BY_GRADE["math11_12"] ?? []).filter((x) => x.areaId === "lb1").map((x) => x.topic),
       ],
     },
     {
@@ -446,7 +468,6 @@ export const klasse11_12: Grade = {
         k1112VektorAdd,
         k1112GeradePunkt,
         k1112LageGeraden,
-        ...(MATH_DICHTE_BY_GRADE["math11_12"] ?? []).filter((x) => x.areaId === "lb3").map((x) => x.topic),
       ],
     },
     {
@@ -458,7 +479,6 @@ export const klasse11_12: Grade = {
         erwartungswertBinom,
         k1112BinomKumuliert,
         k1112BinomSigma,
-        ...(MATH_DICHTE_BY_GRADE["math11_12"] ?? []).filter((x) => x.areaId === "lb4").map((x) => x.topic),
       ],
     },
     {
@@ -470,7 +490,6 @@ export const klasse11_12: Grade = {
         k1112Stammfunktion,
         k1112FlaecheIntegral,
         ...math1112GraphicReviews.filter((t) => t.id.includes('integral')),
-        ...(MATH_DICHTE_BY_GRADE["math11_12"] ?? []).filter((x) => x.areaId === "lb5").map((x) => x.topic),
       ],
     },
     {
@@ -479,7 +498,6 @@ export const klasse11_12: Grade = {
       ustd: 12,
       topics: [k1112Stichprobenmittel, k1112Hypothesentest, k1112KonfidenzIdee,
         ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math11_12"].filter((x) => x.areaId === "lb6").map((x) => x.topic),
-        ...(MATH_DICHTE_BY_GRADE["math11_12"] ?? []).filter((x) => x.areaId === "lb6").map((x) => x.topic),
       ],
     },
     {
@@ -490,7 +508,6 @@ export const klasse11_12: Grade = {
         k1112Orthogonal,
         k1112WinkelVektoren,
         k1112AbstandPunktGerade,
-        ...(MATH_DICHTE_BY_GRADE["math11_12"] ?? []).filter((x) => x.areaId === "lb7").map((x) => x.topic),
       ],
     },
     {
@@ -501,7 +518,6 @@ export const klasse11_12: Grade = {
         k1112ExtremwertAnwendung,
         k1112SpiegelungEbene,
         k1112VolumenOptimierung,
-        ...(MATH_DICHTE_BY_GRADE["math11_12"] ?? []).filter((x) => x.areaId === "lb8").map((x) => x.topic),
       ],
     },
   ],

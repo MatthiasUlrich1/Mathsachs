@@ -140,19 +140,21 @@ export function taskContentIds(task: Task): string[] {
   }
 
   const sol = normalizeTaskText(String(task.solution ?? ''))
+  const shortChoiceLabel = /^(echt|unecht|[a-d]|ja|nein|richtig|falsch|wahr)$/i.test(sol)
+  const numericDrill =
+    task.answerKind === 'integer' ||
+    task.answerKind === 'decimal' ||
+    task.answerKind === 'fraction'
   if (
     sol &&
     sol.length >= 4 &&
     !TRIVIAL_SOLUTION.test(sol) &&
-    // Authored identity already fact-dedupes; ans: would collapse MC with
-    // shared labels („echt“/„unecht“, „A“/„B“) across distinct items.
-    !hasAuthoredIdentity &&
-    // Numeric drills: gleiche Ergebniszahl bei verschiedenen Stämmen ist ok.
-    !(
-      task.answerKind === 'integer' ||
-      task.answerKind === 'decimal' ||
-      task.answerKind === 'fraction'
-    )
+    !shortChoiceLabel &&
+    !numericDrill &&
+    // Authored identity already fact-dedupes short keys; distinctive phrase
+    // answers (Bio-Bedeutungen, Funktionen) must still collide across MC/flash/gap
+    // so a round never shows the same Lösung twice (biologieUniqueness).
+    (!hasAuthoredIdentity || sol.length >= 8 || sol.includes(' '))
   ) {
     // Same fact via MC / cloze / flash with different wording → same answer.
     ids.add(`ans:${sol}`)

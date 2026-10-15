@@ -1,4 +1,4 @@
-import { approxEqual, parseInteger, parseNumber } from '../lib/num'
+import { approxEqual, formatDe, parseInteger, parseNumber } from '../lib/num'
 import {
   equals as fracEquals,
   isReduced,
@@ -119,6 +119,8 @@ interface FractionTaskInput {
   explanation: string
   /** Require the answer to be fully reduced (for "Kürzen"). */
   requireReduced?: boolean
+  /** Question-specific Fachwissen (overrides topic-level in PracticeSession). */
+  fachwissen?: Fachwissen
   dedupeKey?: string
   contentIds?: string[]
 }
@@ -130,6 +132,7 @@ export const fractionTask = (input: FractionTaskInput): Task => ({
   answerKind: 'fraction',
   solution: input.solution,
   explanation: input.explanation,
+  ...withFw(input.fachwissen),
   ...withDedupe(input.dedupeKey),
   ...withContentIds(input.contentIds),
   sampleAnswer: {
@@ -1177,7 +1180,7 @@ interface EquationStepsTaskInput {
 export const equationStepsTask = (input: EquationStepsTaskInput): Task => ({
   question: input.question,
   answerKind: 'text',
-  solution: `x = ${input.solution}`,
+  solution: `x = ${formatDe(input.solution)}`,
   explanation: input.explanation,
   visualContent: input.visualContent,
   sampleAnswer: {
@@ -1204,8 +1207,8 @@ export const equationStepsTask = (input: EquationStepsTaskInput): Task => ({
       return eqIsSolved(end) && eqSolutionX(end) === input.solution
     }
     if (answer.kind === 'value') {
-      const n = Number(String(answer.value).replace(',', '.').trim())
-      return Number.isFinite(n) && n === input.solution
+      const n = parseNumber(String(answer.value))
+      return n !== null && n === input.solution
     }
     return false
   },

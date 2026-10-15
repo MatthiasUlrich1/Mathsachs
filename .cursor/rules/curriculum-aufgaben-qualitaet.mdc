@@ -17,6 +17,44 @@ alwaysApply: false
 - Regression: Uniqueness-Tests (`*Uniqueness*`, `uniqueRound`, Pack-Round-Tests)
   müssen grün bleiben; bei neuen Banken gezielt mitprüfen.
 
+## Pflicht: keine Doppelungen in Antwortmöglichkeiten
+
+- Innerhalb **einer** Aufgabe darf keine Antwortoption doppelt vorkommen — auch
+  nicht in leicht abgewandelter Form:
+  - gleicher Wert in anderer Schreibweise (`0,5` / `0.5` / `1/2` / `2/4` / `50 %`
+    als Anteil, `3` / `3,0`, `1 000` / `1000`),
+  - gleiche Aussage mit anderen Worten (Synonym-/Umformulierungs-Dubletten),
+  - nur Groß-/Kleinschreibung, Leerzeichen, Satzzeichen oder Anführungszeichen
+    verschieden.
+- Gilt für **MC/`choicePick`/`iconBelong`/`sourceQuote`, `multiSelect`,
+  `dragDropSort`, `dragDropSlots`, `imageLabelSlots`, `pairMatch`, Cloze-Optionen**.
+- Distraktor-Generatoren müssen normalisiert deduplizieren (Wert-Äquivalenz bei
+  Zahlen/Brüchen/Dezimalzahlen) und bei Kollision neu ziehen — nie eine Option
+  doppelt anzeigen. Regression: `answerOptionDuplicates`-Audit im Test-Suite.
+
+## Pflicht: nur echte Anwendung von Unterrichtsstoff (keine Metafragen)
+
+- Jede Aufgabe wendet **Unterrichtsstoff an** (rechnen, deuten, erkennen,
+  zuordnen, begründen am konkreten Fall) — keine Fragen *über* das Lernen,
+  den Lehrplan, das Thema, die Aufgabe oder die Methode an sich
+  („Wozu dient dieses Thema?“, „Was übt man hier?“, „Welche Strategie hilft?“).
+
+## Pflicht: keine Doppelungen von Fragen und Themen
+
+- **Innerhalb eines Themas:** keine doppelten oder fast gleichen Fragen im Pool
+  (gleicher Stamm mit anderem Satzbau, nur Zahlen-/Distraktor-Tausch bei
+  Faktenfragen zählt als gleich).
+- **Keine doppelten Themen:** zwei Topics mit gleichem/fast gleichem Titel oder
+  gleichem Fragenpool im selben Pack sind verboten — zusammenführen oder klar
+  unterschiedliche Teilaspekte abgrenzen.
+- **Über Themen hinweg:** keine gleichen oder fast gleichen Fragen in
+  verschiedenen Topics — **auch nicht über Lernbereiche oder Klassen hinweg**
+  (Cross-Topic-Duplikate). Jede Faktenfrage gehört genau zu dem Thema, zu dem sie
+  inhaltlich passt. Ausnahme nur für parametrisierte Rechen-Generatoren, deren
+  Stamm generisch ist und deren Zahlen pro Thema verschieden sind.
+- **Fragen ausschließlich themenbezogen:** jede Aufgabe muss zum Topic-Titel
+  gehören; themenfremde Füller sind verboten, auch wenn sie fachlich korrekt sind.
+
 ## Prompt ↔ Antworttyp
 
 - Die Frage muss zum Antwortformat passen (kein „Berechne …“, wenn Antworten
@@ -62,6 +100,49 @@ sichtbare Themen. Kein Fach/LB „später“.
   Überforderung (z. B. Analysis in Klasse 6).
 - Bei jeder Bank/Jedem Generator: Zahlenraum, Begriffe und Kontexte gegen die
   Klassenstufe des Topic-IDs prüfen.
+- Maßstab ist der **Lernbereich des Lehrplans** (Snapshots unter
+  `tmp/lehrplan-snapshots/`), nicht nur die Klasse — z. B. Gym SN K5 LB2:
+  Dezimalzahlen nur mit einstelligen Zahlen/Zehnerpotenzen multiplizieren/
+  dividieren; allgemeine Dezimalrechnung erst K6 LB1.
+
+## Lösungsschlüssel muss stimmen (verbindlich)
+
+- Die hinterlegte Lösung (`sampleAnswer`/`solution`) muss die eigene Prüfung
+  (`check`) bestehen; bei MC muss die richtige Option in den Optionen stehen.
+- Eindeutigkeit: genau eine Option erfüllt die Frage (außer Multi-Select);
+  Konstruktionen mit möglichen Gleichständen (z. B. „welcher Sektor …“) so bauen,
+  dass keine zweite Option ebenfalls richtig ist.
+- Regel `answer-key` im Inhalts-Audit.
+
+## Mathematische Schreibweise (verbindlich, Mathe + Physik)
+
+- Minuszeichen **U+2212 (−)**, kein Bindestrich „-“ als Vorzeichen/Rechenzeichen
+  in Aufgabentext, Optionen, Lösung und Erklärung (`formatDe`, `signedNum`,
+  `parenNum`, `addNum`). Eingaben akzeptieren −, – und -.
+- Negative Zahlen nach Rechenzeichen in Klammern: `3 · (−2)`, `5 − (−4)`,
+  `12 : (−3)`; nie `3 · −2` oder `x + −4`.
+- Keine Rohformen aus Generatoren: kein `x + (−4)` (→ `x − 4`), kein `+ 0`,
+  kein `1x`/`1·x` (→ `x`), kein `(−1)·x` (→ `−x`), kein `(x − 0)`.
+- Einheiten an Ergebnissen, wenn die Größe eine Einheit hat.
+- Audit-Regel `notation` (Muster in `contentAudit.ts` → `NOTATION_PATTERNS`).
+
+## Keine Formel-/Lösungsweg-Hinweise im Aufgabentext
+
+- Hint/Prompt nennen höchstens das **Antwortformat** (Einheit, Runden, Bruch
+  gekürzt) — keine Formel („sin(α) = Gegenkathete/Hypotenuse“), kein Gesetz,
+  keine Vorzeichenregel. Formeln gehören ins Fachwissen bzw. die Erklärung
+  nach dem Absenden.
+
+## Multi-Select-Ausnahme
+
+- Bei `multiSelect` sind mehrere richtige Optionen gewollt; doppelte oder
+  gleichwertige Optionen bleiben trotzdem verboten.
+
+## Physik: Zuordnung
+
+- Physik ohne Zuordnung/Pair-Match/Lückentext/Richtig-Falsch (siehe oben);
+  Bauteil-Beschriftung an Schaltplänen/Geräten nur als Bild-Slot mit
+  Rechen- oder Deutungsbezug, nicht als Begriffs-Vokabelliste.
 
 ## Mathematik: nur mathematische Aufgaben (verbindlich)
 
@@ -168,7 +249,9 @@ oder die Lösungsstrategie, bevor der Schüler selbst arbeitet.
 - Keine themenfremden Boosts (z. B. reine Addition unter „Dezimalzahlen“ oder
   „Rechengesetze“; Ohm unter „Zerfall“; Analysis unter K6).
 - Keine inhaltliche Vermischung oder Dopplung derselben Facts über mehrere
-  Themen **desselben Lernbereichs** (Cross-Topic-Duplikate bereinigen).
+  Themen — im selben Lernbereich, über Lernbereiche **und** über Klassen hinweg
+  (Cross-Topic-Duplikate bereinigen). Keine generischen „Vertiefung (n)“-Themen,
+  die nur Aufgaben anderer Themen wiederholen.
 - Bio/Geschichte: Abwechslung der Interaktionen; TF nur mit vollständigen
   prüfbaren Sätzen; kein Slogan-/Meta-Stub.
 

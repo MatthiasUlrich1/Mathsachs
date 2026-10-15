@@ -5,14 +5,13 @@ import {
 } from '../lib/geometrySvg'
 import { makeFraction, subtract, format, type Fraction } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
+import { addNum, linStr, parenNum, polyStr, signedNum } from '../lib/termFormat'
 import { fractionTask, mixedVariants, valueTask, visualTask, paramSliderTask, choicePickTask, coordinateClickTask } from './taskHelpers'
 import { math8GraphicReviews } from './graphicReviewTopics'
 import { k8Baumdiagramm, k8BinomischeFormel, k8ProduktregelAnzahl } from './mathUpperDense'
 import type { Grade, Topic } from './types'
 import { MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE } from './mathLehrplanTeilaspekte'
-import { MATH_DICHTE_BY_GRADE } from './mathDichteFill'
 
-const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
 const nonZero = (rng: Rng, min: number, max: number): number => {
   let v = 0
   while (v === 0) v = randInt(rng, min, max)
@@ -26,7 +25,6 @@ const nonZero = (rng: Rng, min: number, max: number): number => {
 const zusammenfassen: Topic = {
   id: 'k8-lb1-zusammenfassen',
   title: 'Terme zusammenfassen (Zahl vor x)',
-  hint: 'Fasse nur die x-Glieder zusammen.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['Term', 'zusammenfassen', 'gleichartige Glieder', 'Variable', 'x'],
@@ -42,11 +40,11 @@ const zusammenfassen: Topic = {
     const d = nonZero(rng, -9, 9)
     const coeff = a + c
     return valueTask({
-      question: `Fasse zusammen und gib die Zahl vor x an: ${num(a)}x + ${num(b)} + ${num(c)}x + ${num(d)}`,
+      question: `Fasse zusammen und gib die Zahl vor x an: ${polyStr([[a, 'x'], [b, ''], [c, 'x'], [d, '']])}`,
       answerKind: 'integer',
       value: coeff,
-      solution: `${coeff}x`,
-      explanation: `Fasse die x-Glieder zusammen: ${num(a)}x + ${num(c)}x = ${coeff}x. Die Zahl vor x ist ${coeff}.`,
+      solution: `${polyStr([[coeff, 'x']])} (Zahl vor x: ${signedNum(coeff)})`,
+      explanation: `Fasse die x-Glieder zusammen: ${polyStr([[a, 'x'], [c, 'x']])} = ${polyStr([[coeff, 'x']])}. Die Zahl vor x ist ${signedNum(coeff)}; zusammen mit den Zahlen ergibt sich ${linStr(coeff, b + d)}.`,
     })
   },
 }
@@ -54,7 +52,6 @@ const zusammenfassen: Topic = {
 const termAuswerten: Topic = {
   id: 'k8-lb1-term-auswerten',
   title: 'Term auswerten (x einsetzen)',
-  hint: 'Setze den Wert für x ein und rechne aus.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['Term', 'einsetzen', 'auswerten', 'Wert', 'x'],
@@ -69,11 +66,11 @@ const termAuswerten: Topic = {
     const x = nonZero(rng, -8, 8)
     const value = a * x + b
     return valueTask({
-      question: `Berechne den Wert des Terms ${num(a)}·x + ${num(b)} für x = ${x}.`,
+      question: `Berechne den Wert des Terms ${linStr(a, b)} für x = ${signedNum(x)}.`,
       answerKind: 'integer',
       value,
-      solution: formatDe(value),
-      explanation: `Setze x = ${x} ein: ${num(a)} · ${num(x)} + ${num(b)} = ${a * x} + ${num(b)} = ${value}.`,
+      solution: signedNum(value),
+      explanation: `Setze x = ${signedNum(x)} ein: ${signedNum(a)} · ${parenNum(x)}${addNum(b)} = ${signedNum(a * x)}${addNum(b)} = ${signedNum(value)}.`,
     })
   },
 }
@@ -81,7 +78,6 @@ const termAuswerten: Topic = {
 const gleichungLinear: Topic = {
   id: 'k8-lb1-gleichung-linear',
   title: 'Lineare Gleichung a·x + b = c',
-  hint: 'Erst b, dann den Faktor a beseitigen.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['Gleichung', 'linear', 'lösen', 'x', 'Äquivalenzumformung'],
@@ -96,11 +92,11 @@ const gleichungLinear: Topic = {
     const b = nonZero(rng, -15, 15)
     const c = a * x + b
     return valueTask({
-      question: `Löse die Gleichung nach x: ${num(a)}·x + ${num(b)} = ${c}`,
+      question: `Löse die Gleichung nach x: ${linStr(a, b)} = ${signedNum(c)}`,
       answerKind: 'integer',
       value: x,
-      solution: `x = ${x}`,
-      explanation: `Subtrahiere ${num(b)}: ${num(a)}·x = ${c} − ${num(b)} = ${a * x}. Teile durch ${num(a)}: x = ${a * x} : ${num(a)} = ${x}.`,
+      solution: `x = ${signedNum(x)}`,
+      explanation: `${b < 0 ? `Addiere ${-b}` : `Subtrahiere ${b}`}: ${polyStr([[a, 'x']])} = ${signedNum(c)}${addNum(-b)} = ${signedNum(a * x)}. Teile durch ${parenNum(a)}: x = ${signedNum(a * x)} : ${parenNum(a)} = ${signedNum(x)}.`,
     })
   },
 }
@@ -108,7 +104,6 @@ const gleichungLinear: Topic = {
 const gleichungBeidseitig: Topic = {
   id: 'k8-lb1-gleichung-beidseitig',
   title: 'Gleichung mit x auf beiden Seiten',
-  hint: 'Bringe alle x auf eine Seite.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Gleichung', 'beide Seiten', 'lösen', 'x', 'linear'],
@@ -126,11 +121,11 @@ const gleichungBeidseitig: Topic = {
     const d = (a - c) * x + b
     // a·x + b = c·x + d
     return valueTask({
-      question: `Löse die Gleichung nach x: ${num(a)}·x + ${num(b)} = ${num(c)}·x + ${num(d)}`,
+      question: `Löse die Gleichung nach x: ${linStr(a, b)} = ${linStr(c, d)}`,
       answerKind: 'integer',
       value: x,
-      solution: `x = ${x}`,
-      explanation: `Bringe die x-Glieder nach links, die Zahlen nach rechts: (${a} − ${c})·x = ${d} − ${b}, also ${a - c}·x = ${d - b}. Teile durch ${a - c}: x = ${x}.`,
+      solution: `x = ${signedNum(x)}`,
+      explanation: `Bringe die x-Glieder nach links, die Zahlen nach rechts: (${signedNum(a)} − ${parenNum(c)})·x = ${signedNum(d)} − ${parenNum(b)}, also ${polyStr([[a - c, 'x']])} = ${signedNum(d - b)}. Teile durch ${parenNum(a - c)}: x = ${signedNum(x)}.`,
     })
   },
 }
@@ -138,7 +133,6 @@ const gleichungBeidseitig: Topic = {
 const ausmultiplizieren: Topic = {
   id: 'k8-lb1-ausmultiplizieren',
   title: 'Klammer ausmultiplizieren (Wert bei x)',
-  hint: 'Multipliziere aus und setze den Wert für x ein.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Distributivgesetz', 'ausmultiplizieren', 'Klammer', 'Term'],
@@ -154,11 +148,11 @@ const ausmultiplizieren: Topic = {
     const x = nonZero(rng, -6, 6)
     const value = a * (b * x + c)
     return valueTask({
-      question: `Multipliziere aus und berechne für x = ${x}: ${num(a)}·(${num(b)}x + ${num(c)})`,
+      question: `Multipliziere aus und berechne für x = ${signedNum(x)}: ${parenNum(a)}·(${linStr(b, c)})`,
       answerKind: 'integer',
       value,
-      solution: formatDe(value),
-      explanation: `Ausmultiplizieren: ${num(a)}·(${num(b)}x + ${num(c)}) = ${a * b}x + ${num(a * c)}. Für x = ${x}: ${a * b} · ${num(x)} + ${num(a * c)} = ${a * b * x} + ${num(a * c)} = ${value}.`,
+      solution: signedNum(value),
+      explanation: `Ausmultiplizieren: ${parenNum(a)}·(${linStr(b, c)}) = ${linStr(a * b, a * c)}. Für x = ${signedNum(x)}: ${signedNum(a * b)} · ${parenNum(x)}${addNum(a * c)} = ${signedNum(a * b * x)}${addNum(a * c)} = ${signedNum(value)}.`,
     })
   },
 }
@@ -258,7 +252,6 @@ const gegenwahrscheinlichkeit: Topic = {
 const funktionswert: Topic = {
   id: 'k8-lb3-funktionswert',
   title: 'Funktionswert einer linearen Funktion',
-  hint: 'Setze den gegebenen x-Wert in die Funktion ein.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['lineare Funktion', 'Funktionswert', 'einsetzen', 'Gerade', 'f(x)'],
@@ -274,11 +267,11 @@ const funktionswert: Topic = {
       const x = nonZero(rng, -8, 8)
       const value = m * x + n
       return valueTask({
-        question: `Gegeben ist f(x) = ${num(m)}·x + ${num(n)}. Berechne f(${x}).`,
+        question: `Gegeben ist f(x) = ${linStr(m, n)}. Berechne f(${signedNum(x)}).`,
         answerKind: 'integer',
         value,
         solution: formatDe(value),
-        explanation: `Setze x = ${x} ein: f(${x}) = ${num(m)} · ${num(x)} + ${num(n)} = ${m * x} + ${num(n)} = ${value}.`,
+        explanation: `Setze x = ${signedNum(x)} ein: f(${signedNum(x)}) = ${signedNum(m)} · ${parenNum(x)}${addNum(n)} = ${signedNum(m * x)}${addNum(n)} = ${signedNum(value)}.`,
       })
     },
     (rng: Rng) => {
@@ -287,15 +280,15 @@ const funktionswert: Topic = {
       const x = nonZero(rng, -4, 4)
       const value = m * x + n
       return visualTask({
-        question: `Am Graphen von f(x) = ${num(m)}·x + ${num(n)}: Lies f(${x}) ab bzw. berechne den Funktionswert.`,
+        question: `Am Graphen von f(x) = ${linStr(m, n)}: Lies f(${signedNum(x)}) ab bzw. berechne den Funktionswert.`,
         answerKind: 'integer',
         value,
         solution: formatDe(value),
-        explanation: `f(${x}) = ${num(m)} · ${num(x)} + ${num(n)} = ${value}. Am Graphen liegt der Punkt (${x} | ${value}).`,
+        explanation: `f(${signedNum(x)}) = ${signedNum(m)} · ${parenNum(x)}${addNum(n)} = ${signedNum(value)}. Am Graphen liegt der Punkt (${signedNum(x)} | ${signedNum(value)}).`,
         visualContent: generateLinearFunctionSvg({
           m,
           n,
-          points: [{ x, y: value, label: `(${x}|?)` }],
+          points: [{ x, y: value, label: `(${signedNum(x)}|?)` }],
           interceptLabel: false,
           slopeTriangle: { fromX: 0, run: m >= 0 ? 1 : -1, showLabels: false },
         }),
@@ -312,11 +305,11 @@ const funktionswert: Topic = {
         y: i === hideIdx ? null : c.y,
       }))
       return visualTask({
-        question: `Zur linearen Funktion f(x) = ${num(m)}·x + ${num(n)} fehlt ein Wert in der Tabelle. Welcher y-Wert gehört in die Zelle mit ?`,
+        question: `Zur linearen Funktion f(x) = ${linStr(m, n)} fehlt ein Wert in der Tabelle. Welcher y-Wert gehört in die Zelle mit ?`,
         answerKind: 'integer',
         value,
         solution: formatDe(value),
-        explanation: `f(${xs[hideIdx].x}) = ${num(m)} · ${num(xs[hideIdx].x)} + ${num(n)} = ${value}.`,
+        explanation: `f(${signedNum(xs[hideIdx].x)}) = ${signedNum(m)} · ${parenNum(xs[hideIdx].x)}${addNum(n)} = ${signedNum(value)}.`,
         visualContent: generateValueTableSvg({
           cells,
           xLabel: 'x',
@@ -328,14 +321,14 @@ const funktionswert: Topic = {
       const m = nonZero(rng, -3, 3)
       const n = randInt(rng, -4, 4)
       return paramSliderTask({
-        question: `Stelle m und n so ein, dass f(x) = ${num(m)}·x + ${num(n)} entsteht.`,
+        question: `Stelle m und n so ein, dass f(x) = ${linStr(m, n)} entsteht.`,
         params: [
           { id: 'm', label: 'Steigung m', min: -4, max: 4, step: 1, start: 0 },
           { id: 'n', label: 'Achsenabschnitt n', min: -5, max: 5, step: 1, start: 0 },
         ],
         correct: { m, n },
-        solution: `m = ${m}, n = ${n}`,
-        explanation: `f(x) = ${num(m)}x + ${num(n)}.`,
+        solution: `m = ${signedNum(m)}, n = ${signedNum(n)}`,
+        explanation: `f(x) = ${linStr(m, n)}.`,
         preview: 'linear',
         instruction: 'Stelle beide Parameter am Schieberegler ein:',
       })
@@ -363,11 +356,11 @@ const steigung: Topic = {
       const y1 = randInt(rng, -10, 10)
       const y2 = y1 + m * (x2 - x1)
       return valueTask({
-        question: `Eine Gerade verläuft durch P(${x1} | ${y1}) und Q(${x2} | ${y2}). Berechne die Steigung m.`,
+        question: `Eine Gerade verläuft durch P(${signedNum(x1)} | ${signedNum(y1)}) und Q(${signedNum(x2)} | ${signedNum(y2)}). Berechne die Steigung m.`,
         answerKind: 'integer',
         value: m,
-        solution: `m = ${m}`,
-        explanation: `m = (y₂ − y₁) : (x₂ − x₁) = (${y2} − ${y1}) : (${x2} − ${x1}) = ${y2 - y1} : ${x2 - x1} = ${m}.`,
+        solution: `m = ${signedNum(m)}`,
+        explanation: `m = (y₂ − y₁) : (x₂ − x₁) = (${signedNum(y2)} − ${parenNum(y1)}) : (${signedNum(x2)} − ${parenNum(x1)}) = ${signedNum(y2 - y1)} : ${parenNum(x2 - x1)} = ${signedNum(m)}.`,
       })
     },
     (rng: Rng) => {
@@ -381,8 +374,8 @@ const steigung: Topic = {
         question: 'Lies die Steigung m am Steigungsdreieck ab (m = Δy : Δx).',
         answerKind: 'integer',
         value: m,
-        solution: `m = ${m}`,
-        explanation: `m = Δy : Δx = (${y1} − ${y0}) : ${run} = ${y1 - y0} : ${run} = ${m}.`,
+        solution: `m = ${signedNum(m)}`,
+        explanation: `m = Δy : Δx = (${signedNum(y1)} − ${parenNum(y0)}) : ${run} = ${signedNum(y1 - y0)} : ${run} = ${signedNum(m)}.`,
         visualContent: generateLinearFunctionSvg({
           m,
           n,
@@ -395,7 +388,7 @@ const steigung: Topic = {
             fromX,
             run,
             dxLabel: `Δx=${run}`,
-            dyLabel: `Δy=${y1 - y0}`,
+            dyLabel: `Δy=${signedNum(y1 - y0)}`,
           },
         }),
       })
@@ -408,11 +401,11 @@ const steigung: Topic = {
       const y1 = m * x1 + n
       const y2 = m * x2 + n
       return visualTask({
-        question: `Die Gerade geht durch P(${x1} | ${y1}) und Q(${x2} | ${y2}). Bestimme m.`,
+        question: `Die Gerade geht durch P(${signedNum(x1)} | ${signedNum(y1)}) und Q(${signedNum(x2)} | ${signedNum(y2)}). Bestimme m.`,
         answerKind: 'integer',
         value: m,
-        solution: `m = ${m}`,
-        explanation: `m = (${y2} − ${y1}) : (${x2} − ${x1}) = ${y2 - y1} : ${x2 - x1} = ${m}.`,
+        solution: `m = ${signedNum(m)}`,
+        explanation: `m = (${signedNum(y2)} − ${parenNum(y1)}) : (${signedNum(x2)} − ${parenNum(x1)}) = ${signedNum(y2 - y1)} : ${x2 - x1} = ${signedNum(m)}.`,
         visualContent: generateLinearFunctionSvg({
           m,
           n,
@@ -429,14 +422,14 @@ const steigung: Topic = {
       const m = nonZero(rng, -4, 4)
       const n = randInt(rng, -3, 3)
       return paramSliderTask({
-        question: `Stelle m und n so ein, dass f(x) = ${num(m)}·x + ${num(n)} entsteht.`,
+        question: `Stelle m und n so ein, dass f(x) = ${linStr(m, n)} entsteht.`,
         params: [
           { id: 'm', label: 'Steigung m', min: -5, max: 5, step: 1, start: 0 },
           { id: 'n', label: 'Achsenabschnitt n', min: -5, max: 5, step: 1, start: 0 },
         ],
         correct: { m, n },
-        solution: `m = ${m}, n = ${n}`,
-        explanation: `Die Gerade y = ${num(m)}x + ${num(n)} hat Steigung m = ${m} und Achsenabschnitt n = ${n}.`,
+        solution: `m = ${signedNum(m)}, n = ${signedNum(n)}`,
+        explanation: `Die Gerade y = ${linStr(m, n)} hat Steigung m = ${signedNum(m)} und Achsenabschnitt n = ${signedNum(n)}.`,
         preview: 'linear',
         instruction: 'Stelle beide Parameter am Schieberegler ein:',
       })
@@ -452,11 +445,11 @@ const steigung: Topic = {
       const mB = targetIsA ? mOther : mTarget
       const correct = targetIsA ? 'A' : 'B'
       return choicePickTask({
-        question: `Welche Gerade hat die Steigung m = ${mTarget}?`,
+        question: `Welche Gerade hat die Steigung m = ${signedNum(mTarget)}?`,
         choices: ['A', 'B'],
         correct,
         solution: correct,
-        explanation: `Gerade A: m = ${mA}, Gerade B: m = ${mB}. Gesucht war m = ${mTarget} → ${correct}.`,
+        explanation: `Gerade A: m = ${signedNum(mA)}, Gerade B: m = ${signedNum(mB)}. Gesucht war m = ${signedNum(mTarget)} → ${correct}.`,
         visualContent: generateLinearFunctionSvg({
           m: mA,
           n: nA,
@@ -490,11 +483,11 @@ const achsenabschnitt: Topic = {
       const n = nonZero(rng, -10, 10)
       const y = m * x + n
       return valueTask({
-        question: `Eine Gerade mit der Steigung m = ${m} geht durch den Punkt P(${x} | ${y}). Bestimme den y-Achsenabschnitt n.`,
+        question: `Eine Gerade mit der Steigung m = ${signedNum(m)} geht durch den Punkt P(${signedNum(x)} | ${signedNum(y)}). Bestimme den y-Achsenabschnitt n.`,
         answerKind: 'integer',
         value: n,
-        solution: `n = ${n}`,
-        explanation: `Aus y = m·x + n folgt n = y − m·x = ${y} − ${m} · ${num(x)} = ${y} − ${m * x} = ${n}.`,
+        solution: `n = ${signedNum(n)}`,
+        explanation: `Aus y = m·x + n folgt n = y − m·x = ${signedNum(y)} − ${parenNum(m)} · ${parenNum(x)} = ${signedNum(y)} − ${parenNum(m * x)} = ${signedNum(n)}.`,
       })
     },
     (rng: Rng) => {
@@ -503,11 +496,11 @@ const achsenabschnitt: Topic = {
       const x = nonZero(rng, -3, 3)
       const y = m * x + n
       return visualTask({
-        question: `Die Gerade mit Steigung m = ${m} geht durch P(${x} | ${y}). Lies den y-Achsenabschnitt n am Graphen ab.`,
+        question: `Die Gerade mit Steigung m = ${signedNum(m)} geht durch P(${signedNum(x)} | ${signedNum(y)}). Lies den y-Achsenabschnitt n am Graphen ab.`,
         answerKind: 'integer',
         value: n,
-        solution: `n = ${n}`,
-        explanation: `Schnittpunkt mit der y-Achse: (0 | ${n}), also n = ${n}. Rechnung: n = ${y} − ${m} · ${num(x)} = ${n}.`,
+        solution: `n = ${signedNum(n)}`,
+        explanation: `Schnittpunkt mit der y-Achse: (0 | ${signedNum(n)}), also n = ${signedNum(n)}. Rechnung: n = ${signedNum(y)} − ${parenNum(m)} · ${parenNum(x)} = ${signedNum(n)}.`,
         visualContent: generateLinearFunctionSvg({
           m,
           n,
@@ -521,14 +514,14 @@ const achsenabschnitt: Topic = {
       const m = nonZero(rng, -3, 3)
       const n = nonZero(rng, -4, 4)
       return paramSliderTask({
-        question: `Stelle n so ein, dass die Gerade Steigung m = ${m} und Achsenabschnitt n = ${n} hat.`,
+        question: `Stelle n so ein, dass die Gerade Steigung m = ${signedNum(m)} und Achsenabschnitt n = ${signedNum(n)} hat.`,
         params: [
           { id: 'm', label: 'Steigung m', min: -4, max: 4, step: 1, start: m },
           { id: 'n', label: 'Achsenabschnitt n', min: -5, max: 5, step: 1, start: 0 },
         ],
         correct: { m, n },
-        solution: `n = ${n}`,
-        explanation: `y-Achsenabschnitt n = ${n} (Schnitt bei (0|${n})).`,
+        solution: `n = ${signedNum(n)}`,
+        explanation: `y-Achsenabschnitt n = ${signedNum(n)} (Schnitt bei (0|${signedNum(n)})).`,
         preview: 'linear',
         instruction: 'm ist schon richtig — stelle n ein:',
       })
@@ -539,11 +532,11 @@ const achsenabschnitt: Topic = {
       const x0 = nonZero(rng, -4, 4)
       const n = -m * x0
       return coordinateClickTask({
-        question: `Die Gerade f(x) = ${num(m)}·x + ${num(n)} ist gegeben. Setze den Punkt der Nullstelle (Schnitt mit der x-Achse).`,
+        question: `Die Gerade f(x) = ${linStr(m, n)} ist gegeben. Setze den Punkt der Nullstelle (Schnitt mit der x-Achse).`,
         x: x0,
         y: 0,
-        solution: `(${x0}|0)`,
-        explanation: `Nullstelle: ${num(m)}x + ${num(n)} = 0 ⇒ x = ${x0}. Punkt (${x0}|0).`,
+        solution: `(${signedNum(x0)}|0)`,
+        explanation: `Nullstelle: ${linStr(m, n)} = 0 ⇒ x = ${signedNum(x0)}. Punkt (${signedNum(x0)}|0).`,
         xRange: [-6, 6],
         yRange: [-6, 6],
         instruction: 'Tippe die Nullstelle auf der x-Achse:',
@@ -555,7 +548,6 @@ const achsenabschnitt: Topic = {
 const lgs: Topic = {
   id: 'k8-lb3-lgs',
   title: 'Lineares Gleichungssystem (x bestimmen)',
-  hint: 'Additions- oder Einsetzungsverfahren.',
   pointsPerTask: 10,
   difficulty: 3,
   keywords: ['LGS', 'Gleichungssystem', 'zwei Gleichungen', 'lösen', 'x und y'],
@@ -576,11 +568,11 @@ const lgs: Topic = {
       const e = a * x + b * y
       const f = c * x + d * y
       return valueTask({
-        question: `Löse das Gleichungssystem und gib x an:  ${num(a)}x + ${num(b)}y = ${e}  und  ${num(c)}x + ${num(d)}y = ${f}.`,
+        question: `Löse das Gleichungssystem und gib x an:  (I) ${polyStr([[a, 'x'], [b, 'y']])} = ${signedNum(e)}  und  (II) ${polyStr([[c, 'x'], [d, 'y']])} = ${signedNum(f)}.`,
         answerKind: 'integer',
         value: x,
-        solution: `x = ${x}`,
-        explanation: `Mit dem Additionsverfahren erhält man die eindeutige Lösung x = ${x} (und y = ${y}), da die Determinante ${a}·${d} − ${b}·${c} = ${a * d - b * c} ≠ 0 ist.`,
+        solution: `x = ${signedNum(x)}`,
+        explanation: `Additionsverfahren: ${parenNum(d)}·(I) − ${parenNum(b)}·(II) lässt y wegfallen: ${polyStr([[a * d - b * c, 'x']])} = ${signedNum(e * d - f * b)}, also x = ${signedNum(x)}. Einsetzen in (I) liefert y = ${signedNum(y)}.`,
       })
     },
     (rng: Rng) => {
@@ -593,11 +585,11 @@ const lgs: Topic = {
       const n1 = y - m1 * x
       const n2 = y - m2 * x
       return visualTask({
-        question: `Die Geraden g: y = ${num(m1)}x + ${num(n1)} und h: y = ${num(m2)}x + ${num(n2)} schneiden sich. Gib die x-Koordinate des Schnittpunkts an.`,
+        question: `Die Geraden g: y = ${linStr(m1, n1)} und h: y = ${linStr(m2, n2)} schneiden sich. Gib die x-Koordinate des Schnittpunkts an.`,
         answerKind: 'integer',
         value: x,
-        solution: `x = ${x}`,
-        explanation: `Schnittpunkt S(${x} | ${y}): setze ${num(m1)}x + ${num(n1)} = ${num(m2)}x + ${num(n2)} → x = ${x}.`,
+        solution: `x = ${signedNum(x)}`,
+        explanation: `Gleichsetzen: ${linStr(m1, n1)} = ${linStr(m2, n2)} ⇒ ${polyStr([[m1 - m2, 'x']])} = ${signedNum(n2 - n1)} ⇒ x = ${signedNum(x)}. Schnittpunkt S(${signedNum(x)} | ${signedNum(y)}).`,
         visualContent: generateLinearFunctionSvg({
           m: m1,
           n: n1,
@@ -644,7 +636,6 @@ const streckfaktor: Topic = {
 const strahlensatz: Topic = {
   id: 'k8-lb4-strahlensatz',
   title: 'Strahlensatz: fehlende Länge',
-  hint: 'Stelle die Proportion auf und löse nach x.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Strahlensatz', 'Ähnlichkeit', 'Verhältnis', 'Streckenlänge'],
@@ -673,7 +664,6 @@ const strahlensatz: Topic = {
 const aehnlicheSeite: Topic = {
   id: 'k8-lb4-aehnliche-seite',
   title: 'Ähnliche Figuren: Seitenlänge',
-  hint: 'Multipliziere mit dem Ähnlichkeitsfaktor.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Ähnlichkeit', 'ähnliche Dreiecke', 'Seitenverhältnis', 'Faktor'],
@@ -704,7 +694,6 @@ const aehnlicheSeite: Topic = {
 const zahlenraetsel: Topic = {
   id: 'k8-lb5-zahlenraetsel',
   title: 'Zahlenrätsel (Gleichung aufstellen)',
-  hint: 'Übersetze in eine Gleichung und löse.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Zahlenrätsel', 'Gleichung', 'heuristisch', 'Textaufgabe', 'Rückwärtsrechnen'],
@@ -720,11 +709,11 @@ const zahlenraetsel: Topic = {
     const c = a * x + b
     const op = b >= 0 ? `addiere ${b}` : `subtrahiere ${Math.abs(b)}`
     return valueTask({
-      question: `Ich denke mir eine Zahl, multipliziere sie mit ${a} und ${op}. Das Ergebnis ist ${c}. Wie lautet die Zahl?`,
+      question: `Ich denke mir eine Zahl, multipliziere sie mit ${a} und ${op}. Das Ergebnis ist ${signedNum(c)}. Wie lautet die Zahl?`,
       answerKind: 'integer',
       value: x,
       solution: `${x}`,
-      explanation: `Gleichung: ${a}·x + ${num(b)} = ${c}. Umstellen: ${a}·x = ${c} − ${num(b)} = ${a * x}, also x = ${x}.`,
+      explanation: `Gleichung: ${linStr(a, b)} = ${signedNum(c)}. Umstellen: ${a}x = ${signedNum(c)}${addNum(-b)} = ${a * x}, also x = ${a * x} : ${a} = ${x}.`,
     })
   },
 }
@@ -732,7 +721,6 @@ const zahlenraetsel: Topic = {
 const rueckwaerts: Topic = {
   id: 'k8-lb5-rueckwaerts',
   title: 'Rückwärtsrechnen',
-  hint: 'Kehre die Rechenschritte um.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Rückwärtsrechnen', 'Umkehroperation', 'heuristisch', 'Strategie'],
@@ -759,7 +747,6 @@ const rueckwaerts: Topic = {
 const systematischProbieren: Topic = {
   id: 'k8-lb5-probieren',
   title: 'Systematisches Probieren',
-  hint: 'Probiere geordnet und notiere Zwischenergebnisse.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Probieren', 'heuristisch', 'systematisch', 'Vernetzung'],
@@ -787,7 +774,6 @@ const systematischProbieren: Topic = {
 const skizzeNutzen: Topic = {
   id: 'k8-lb5-skizze',
   title: 'Skizze und Hilfsfigur',
-  hint: 'Zeichne die Situation zuerst grob.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Skizze', 'Hilfsfigur', 'heuristisch', 'Geometrie', 'Vernetzung'],
@@ -829,7 +815,6 @@ export const klasse8: Grade = {
         gleichungBeidseitig,
         ausmultiplizieren,
         k8BinomischeFormel,
-        ...(MATH_DICHTE_BY_GRADE["math8"] ?? []).filter((x) => x.areaId === "lb1").map((x) => x.topic),
       ],
     },
     {
@@ -838,7 +823,6 @@ export const klasse8: Grade = {
       ustd: 24,
       topics: [laplaceBruch, laplaceProzent, gegenwahrscheinlichkeit, k8Baumdiagramm, k8ProduktregelAnzahl,
         ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math8"].filter((x) => x.areaId === "lb2").map((x) => x.topic),
-        ...(MATH_DICHTE_BY_GRADE["math8"] ?? []).filter((x) => x.areaId === "lb2").map((x) => x.topic),
       ],
     },
     {
@@ -851,7 +835,6 @@ export const klasse8: Grade = {
         achsenabschnitt,
         lgs,
         ...math8GraphicReviews,
-        ...(MATH_DICHTE_BY_GRADE["math8"] ?? []).filter((x) => x.areaId === "lb3").map((x) => x.topic),
       ],
     },
     {
@@ -862,7 +845,6 @@ export const klasse8: Grade = {
         streckfaktor,
         strahlensatz,
         aehnlicheSeite,
-        ...(MATH_DICHTE_BY_GRADE["math8"] ?? []).filter((x) => x.areaId === "lb4").map((x) => x.topic),
       ],
     },
     {

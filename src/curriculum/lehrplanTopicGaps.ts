@@ -451,7 +451,7 @@ const bioK5Arbeitsweisen: BioBank = {
   prompt: "Warum vergleichen Biologen Organismen?",
   answer: "Um Gemeinsamkeiten und Unterschiede zu erkennen",
   wrong: [
-    "Um Farben zu verbieten",
+    "Um nur die Farbe zu vergleichen",
     "Um nur Steine zu zählen",
     "Um Fotosynthese zu löschen",
   ],
@@ -513,7 +513,7 @@ const bioK5Arbeitsweisen: BioBank = {
   wrong: [
     "Um Biologie abzuschaffen",
     "Um nur Physik zu üben",
-    "Um Farben zu verbieten",
+    "Um nur die Farbe zu vergleichen",
   ],
   explanation: "Didaktischer Kern von LB1.",
   wissen: "Der Vergleich Lebewesen ↔ nichtlebend macht Kennzeichen des Lebens greifbar — Einstieg in die Biologie.",

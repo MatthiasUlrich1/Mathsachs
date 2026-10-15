@@ -9,6 +9,25 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.90] – 2026-10-15
+
+### Geändert
+- **Grundregeln geschärft:** keine doppelten Antwortoptionen (auch wertgleich
+  `0,5`/`1/2`); keine Cross-Topic-Doppelungen; nur themenreine Anwendung;
+  Spoiler/Meta/Slogan-Filter; Mathe/Physik ohne TF/Zuordnung/Lücke.
+- **Inhalts-Audit** dauerhaft in der Test-Suite (`contentAudit` /
+  `contentQualityAllPacks`).
+
+### Behoben
+- **Mathe Gym (A1):** Audit-Verstöße bereinigt (Fachwissen, Formate, Optionen,
+  Spoiler, Cross-Topic, Notation); generische „Vertiefung“-Dubletten entfernt.
+- **Mathe OS/ST:** Vokabel-/Lehrplan-Meta-Banken durch Rechen-/Anwendungsaufgaben
+  ersetzt; eigene Generatoren für Zahlzeichen/Abakus/Symmetrie u. a.; Strategie-Hints
+  in OS-Packs ausgefiltert.
+- **Bio Uniqueness (CI v0.28.89):** keine wiederholte Lösung mehr in einer Runde
+  (u. a. Säuger-Gebiss, Saurier Trias/Jura/Kreide); ID-Leaks `[k5-…]` aus Prompts;
+  Geschwister-Topics themenspezifisch getrennt.
+
 ## [0.28.89] – 2026-10-15
 
 ### Behoben

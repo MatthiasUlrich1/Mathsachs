@@ -4,7 +4,7 @@
  * released:false (Pack-Default / nicht freigeben).
  */
 import { type BioBank } from './biologieBank'
-import { mathBankGenerate } from './mathBank'
+import { OS_TEILASPEKT_APPLIED_GENERATORS } from './mathOsTeilAspektApplied'
 import type { Topic } from './types'
 
 
@@ -2209,27 +2209,32 @@ const stDiff: BioBank = {
 }
 
 
-export const OS_ST_LEHRPLAN_TEILASPEKTE_GENERATORS: Record<string, Topic['generate']> = {
-  "os-k5-lb1-null": mathBankGenerate(osNull),
-  "os-k5-lb1-rechengesetze": mathBankGenerate(osRechen),
-  "os-k5-lb4-verschiebungsweite": mathBankGenerate(osVerschieb),
-  "os-k6-lb1-zahlenstrahl": mathBankGenerate(osZahlenstrahl),
-  "os-k6-lb1-negative-ausblick": mathBankGenerate(osNegAusblick),
-  "os-hs-k7-lb2-chancen": mathBankGenerate(osHsChancen),
-  "os-hs-k7-lb3-zahlerweiterung": mathBankGenerate(osHsErweit),
-  "os-hs-k7-lb4-verpackung": mathBankGenerate(osHsVerpackung),
-  "os-hs-k8-lb1-kredit": mathBankGenerate(osHsKredit),
-  "os-hs-k9-lb2-formel-umstellen": mathBankGenerate(osHsFormel),
-  "os-hs-k9-lb3-tarif": mathBankGenerate(osHsTarif),
-  "os-rs-k7-lb3-venn": mathBankGenerate(osRsVenn),
-  "os-rs-k7-lb4-zweitafel": mathBankGenerate(osRsZweitafel),
-  "os-rs-k8-lb2-definitionsbereich": mathBankGenerate(osRsDef),
-  "os-rs-k8-lb3-sekante-tangente": mathBankGenerate(osRsSekante),
-  "os-rs-k8-lb5-abhaengig": mathBankGenerate(osRsAbhaengig),
-  "os-rs-k8-lb6-lebenshaltung": mathBankGenerate(osRsLeben),
-  "os-rs-k9-lb3-monotonie": mathBankGenerate(osRsMono),
-  "os-rs-k10-lb2-sinus-parameter": mathBankGenerate(osRsSinus),
-  "os-rs-k10-lb3-gewinnchance": mathBankGenerate(osRsGewinn),
-  "os-rs-k10-lb4-abgaben": mathBankGenerate(osRsAbgaben),
-  "st-k1112-differential": mathBankGenerate(stDiff),
+/** Rohbanken (Referenz) — Generatoren sind angewandt, nicht mathBankGenerate. */
+export const OS_TEILASPEKT_LEGACY_BANKS: Record<string, BioBank> = {
+  osNull,
+  osRechen,
+  osVerschieb,
+  osZahlenstrahl,
+  osNegAusblick,
+  osHsChancen,
+  osHsErweit,
+  osHsVerpackung,
+  osHsKredit,
+  osHsFormel,
+  osHsTarif,
+  osRsVenn,
+  osRsZweitafel,
+  osRsDef,
+  osRsSekante,
+  osRsAbhaengig,
+  osRsLeben,
+  osRsMono,
+  osRsSinus,
+  osRsGewinn,
+  osRsAbgaben,
+  stDiff,
 }
+
+/** Angewandte Generatoren (kein Vokabel-MC). */
+export const OS_ST_LEHRPLAN_TEILASPEKTE_GENERATORS: Record<string, Topic['generate']> =
+  OS_TEILASPEKT_APPLIED_GENERATORS

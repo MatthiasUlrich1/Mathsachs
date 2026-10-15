@@ -2667,6 +2667,8 @@ export interface PointReflectionSvgProps {
   labelVertices?: boolean
   /** Label for the center (default "S") */
   centerLabel?: string
+  /** Draw the center S (default true); false when S itself is asked for. */
+  showCenter?: boolean
 }
 
 /** Point reflection (180°) of a point across center S. */
@@ -2688,6 +2690,7 @@ export function generatePointReflectionSvg({
   yRange,
   labelVertices = true,
   centerLabel = 'S',
+  showCenter = true,
 }: PointReflectionSvgProps): string {
   const reflected = points.map((p) => pointReflectAcross(p, center))
   const allPts: Array<[number, number]> = showImage
@@ -2721,9 +2724,9 @@ export function generatePointReflectionSvg({
     })
   }
 
-  const labeled: GridLabeledPoint[] = [
-    { x: center[0], y: center[1], label: centerLabel },
-  ]
+  const labeled: GridLabeledPoint[] = showCenter
+    ? [{ x: center[0], y: center[1], label: centerLabel }]
+    : []
   if (labelVertices && points.length > 0) {
     labeled.push({ x: points[0][0], y: points[0][1], label: 'A' })
     if (showImage) {
@@ -2747,7 +2750,9 @@ export function generatePointReflectionSvg({
     padL + (center[0] - xMin) * cellSize,
     padT + (yMax - center[1]) * cellSize,
   ]
-  const ring = `<circle cx="${sx}" cy="${sy}" r="7" fill="none" stroke="#111" stroke-width="2" />`
+  const ring = showCenter
+    ? `<circle cx="${sx}" cy="${sy}" r="7" fill="none" stroke="#111" stroke-width="2" />`
+    : ''
 
   // Optional guide segments A–S–A' when image is shown
   let guides = ''

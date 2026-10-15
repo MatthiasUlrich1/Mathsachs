@@ -129,7 +129,6 @@ describe('Klasse 6 curriculum', () => {
 
   it('emits graphics or number-line for Plan B fraction/share topics', () => {
     const visualIds = [
-      'lb1-kuerzen',
       'lb1-vergleichen',
       'lb1-add-sub-brueche',
       'lb1-bruch-dezimal',
@@ -157,44 +156,49 @@ describe('Klasse 6 curriculum', () => {
     }
   })
 
-  it('lb1-kuerzen visuals are proper partial fractions matching the answer pipeline', () => {
+  it('lb1-kuerzen: inhaltlich gelöste Gleichungen/Ungleichungen sind korrekt und gekürzt', () => {
     const topic = allTopics.find((t) => t.id === 'lb1-kuerzen')
     expect(topic).toBeTruthy()
-    let visualCount = 0
+    const num = (s: string): number => {
+      const m = s.trim().match(/^(\d+)(?:\/(\d+))?$/)
+      expect(m, `keine Bruchzahl: ${s}`).toBeTruthy()
+      return Number(m![1]) / (m![2] ? Number(m![2]) : 1)
+    }
+    const reduced = (s: string) => {
+      const m = s.match(/^(\d+)\/(\d+)$/)
+      if (m) expect(gcd(Number(m[1]), Number(m[2])), `ungekürzt: ${s}`).toBe(1)
+    }
+    const kinds = new Set<string>()
     for (let seed = 1; seed <= 400; seed++) {
       const task = topic!.generate(createRng(seed))
-      const svg = task.visualContent
-      if (!svg?.includes('<svg')) continue
-      visualCount++
-
-      const explained = task.explanation.match(/(\d+) von (\d+)/)
-      expect(explained, `seed ${seed}: missing "X von Y" in explanation`).toBeTruthy()
-      const colored = Number(explained![1])
-      const total = Number(explained![2])
-
-      // Never a full whole; always needs shortening
-      expect(colored, `seed ${seed}`).toBeGreaterThan(0)
-      expect(colored, `seed ${seed}`).toBeLessThan(total)
-      expect(gcd(colored, total), `seed ${seed}: already reduced visually`).toBeGreaterThan(1)
-
-      const sol = task.solution.match(/^(\d+)\/(\d+)$/)
-      expect(sol, `seed ${seed}: solution must be a/b`).toBeTruthy()
-      const sn = Number(sol![1])
-      const sd = Number(sol![2])
-      expect(gcd(sn, sd), `seed ${seed}`).toBe(1)
-      expect(sn, `seed ${seed}: reduced must stay proper`).toBeLessThan(sd)
-      expect(sd, `seed ${seed}: no integer answers like 2/1`).toBeGreaterThan(1)
-      expect(sn * total, `seed ${seed}: value mismatch`).toBe(sd * colored)
-
-      // Segment count and fill count must match unsimplified fraction
-      const fills = [...svg.matchAll(/\bfill="([^"]+)"/g)].map((m) => m[1])
-      const empty = '#ecf0f1'
-      const segmentFills = fills.filter((f) => f !== '#f8fafc')
-      expect(segmentFills.length, `seed ${seed}: segment count`).toBe(total)
-      const filledCount = segmentFills.filter((f) => f !== empty).length
-      expect(filledCount, `seed ${seed}: colored segments`).toBe(colored)
+      const q = task.question
+      const sol = task.solution.match(/^[xav] = (\S+)$/)
+      expect(sol, `seed ${seed}: Lösung „${task.solution}“`).toBeTruthy()
+      const s = sol![1]!
+      reduced(s)
+      const x = num(s)
+      let m: RegExpMatchArray | null
+      if ((m = q.match(/^Löse inhaltlich: (\S+) \+ x = (\S+)$/))) {
+        kinds.add('add')
+        expect(num(m[1]!) + x, q).toBeCloseTo(num(m[2]!), 9)
+      } else if ((m = q.match(/^Löse inhaltlich: (\S+) − a = (\S+)$/))) {
+        kinds.add('sub')
+        expect(num(m[1]!) - x, q).toBeCloseTo(num(m[2]!), 9)
+      } else if ((m = q.match(/^Löse inhaltlich: (\d+) · v = (\S+)$/)) || (m = q.match(/^Löse inhaltlich: (\S+) = (\d+) · v$/))) {
+        kinds.add('mul')
+        const [k, prod] = q.includes('= ' + m[2] + ' · v') ? [num(m[2]!), num(m[1]!)] : [num(m[1]!), num(m[2]!)]
+        expect(k * x, q).toBeCloseTo(prod, 9)
+      } else if ((m = q.match(/^Welche Zahl erfüllt die Ungleichung (\S+) · x ([<>]) (\S+)\?$/))) {
+        kinds.add('ungl')
+        const f = num(m[1]!)
+        const holds = (v: number) => (m![2] === '<' ? f * v < f : f * v > f)
+        const choices = task.interactive?.props?.choices as string[]
+        expect(choices.filter((c) => holds(num(c))), q).toEqual([s])
+      } else {
+        throw new Error(`seed ${seed}: unbekanntes Aufgabenformat „${q}“`)
+      }
     }
-    expect(visualCount).toBeGreaterThan(80)
+    expect([...kinds].sort()).toEqual(['add', 'mul', 'sub', 'ungl'])
   })
 
   it('emits tables/graphs for Plan C assignment topics', () => {

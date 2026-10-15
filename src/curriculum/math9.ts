@@ -5,7 +5,8 @@ import {
   generateRightTriangleSvg,
 } from '../lib/geometrySvg'
 import { formatDe, roundTo } from '../lib/num'
-import { mixedVariants, valueTask, visualTask } from './taskHelpers'
+import { addNum, parenNum, polyStr, signedNum } from '../lib/termFormat'
+import { choicePickTask, mixedVariants, valueTask, visualTask } from './taskHelpers'
 import { math9GraphicReviews } from './graphicReviewTopics'
 import {
   k9Hoehensatz,
@@ -16,9 +17,7 @@ import {
 } from './mathUpperDense'
 import type { Grade, Topic } from './types'
 import { MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE } from './mathLehrplanTeilaspekte'
-import { MATH_DICHTE_BY_GRADE } from './mathDichteFill'
 
-const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
 const nonZero = (rng: Rng, min: number, max: number): number => {
   let v = 0
   while (v === 0) v = randInt(rng, min, max)
@@ -108,7 +107,6 @@ const potenzQuotient: Topic = {
 const quadratWert: Topic = {
   id: 'k9-lb1-quadrat-wert',
   title: 'Wert einer quadratischen Funktion',
-  hint: 'Setze den gegebenen x-Wert in die Funktion ein.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['quadratische Funktion', 'Parabel', 'Funktionswert', 'einsetzen'],
@@ -123,11 +121,11 @@ const quadratWert: Topic = {
     const x = nonZero(rng, -6, 6)
     const value = x * x + b * x + c
     return valueTask({
-      question: `Gegeben ist f(x) = x² + ${num(b)}·x + ${num(c)}. Berechne f(${x}).`,
+      question: `Gegeben ist f(x) = ${polyStr([[1, 'x²'], [b, 'x'], [c, '']])}. Berechne f(${signedNum(x)}).`,
       answerKind: 'integer',
       value,
-      solution: formatDe(value),
-      explanation: `Setze x = ${x} ein: ${num(x)}² + ${num(b)} · ${num(x)} + ${num(c)} = ${x * x} + ${num(b * x)} + ${num(c)} = ${value}.`,
+      solution: signedNum(value),
+      explanation: `Setze x = ${signedNum(x)} ein: ${parenNum(x)}² ${b < 0 ? '−' : '+'} ${Math.abs(b)} · ${parenNum(x)}${addNum(c)} = ${x * x}${addNum(b * x)}${addNum(c)} = ${signedNum(value)}.`,
     })
   },
 }
@@ -135,7 +133,6 @@ const quadratWert: Topic = {
 const scheitel: Topic = {
   id: 'k9-lb1-scheitel',
   title: 'Scheitelpunkt aus der Scheitelform',
-  hint: 'Lies den Scheitel aus der Scheitelform ab.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Scheitelpunkt', 'Scheitelform', 'Parabel', 'quadratische Funktion', 'Extrempunkt'],
@@ -149,11 +146,11 @@ const scheitel: Topic = {
     const e = nonZero(rng, -10, 10)
     const inner = d < 0 ? `x + ${Math.abs(d)}` : `x − ${d}`
     return valueTask({
-      question: `Die Parabel f(x) = (${inner})² + ${num(e)} liegt in Scheitelform vor. Gib die x-Koordinate des Scheitelpunkts an.`,
+      question: `Die Parabel f(x) = (${inner})²${addNum(e)} liegt in Scheitelform vor. Gib die x-Koordinate des Scheitelpunkts an.`,
       answerKind: 'integer',
       value: d,
-      solution: `x = ${d}`,
-      explanation: `In der Scheitelform f(x) = (x − d)² + e ist der Scheitel S(d | e). Hier ist d = ${d}, also x = ${d}.`,
+      solution: `x = ${signedNum(d)}`,
+      explanation: `In der Scheitelform f(x) = (x − d)² + e ist der Scheitel S(d | e). Aus (${inner})² folgt d = ${signedNum(d)}; der Scheitel ist S(${signedNum(d)} | ${signedNum(e)}).`,
     })
   },
 }
@@ -457,7 +454,7 @@ const pythagorasKathete: Topic = {
 const trigWert: Topic = {
   id: 'k9-lb3-trig-wert',
   title: 'Werte von Sinus, Kosinus, Tangens',
-  hint: 'Nutze den Taschenrechner und runde auf vier Nachkommastellen.',
+  hint: 'Runde auf vier Nachkommastellen.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Sinus', 'Kosinus', 'Tangens', 'Trigonometrie', 'sin', 'cos', 'tan', 'Winkel'],
@@ -517,42 +514,108 @@ const trigWert: Topic = {
 // Lernbereich 4 — Auswerten von Daten
 // ---------------------------------------------------------------------------
 
+const NOTEN_FAECHER = ['Mathearbeit', 'Englischtest', 'Physikkontrolle', 'Deutschaufsatz'] as const
+
 const mittelwert: Topic = {
   id: 'k9-lb4-mittelwert',
-  title: 'Arithmetisches Mittel',
+  title: 'Mittelwerte aus Häufigkeitstabellen und ihre Aussagekraft',
   pointsPerTask: 10,
-  difficulty: 1,
-  keywords: ['Mittelwert', 'Durchschnitt', 'arithmetisches Mittel', 'Kennwert', 'Daten'],
+  difficulty: 2,
+  keywords: ['Mittelwert', 'Häufigkeitstabelle', 'Median', 'Modalwert', 'Skala', 'Ausreißer'],
   fachwissen: {
-    text: 'Das arithmetische Mittel ist das bekannteste Lagemaß. Es ist allerdings anfällig für Ausreißer. Neben dem Mittelwert werden in der Statistik Median (robuster gegen Ausreißer) und Modalwert (häufigster Wert) verwendet, um verschiedene Aspekte einer Datenmenge zu beschreiben.',
-    quelle: 'Wikipedia: Arithmetisches Mittel',
-    url: 'https://de.wikipedia.org/wiki/Arithmetisches_Mittel',
+    text: 'Aus einer Häufigkeitstabelle berechnet man das arithmetische Mittel, indem man jeden Wert mit seiner Häufigkeit multipliziert, alles addiert und durch die Gesamtzahl teilt. Welcher Mittelwert sinnvoll ist, hängt von der Skala ab: bei Kategorien ohne Reihenfolge (Nominalskala) nur der Modalwert, bei Rangfolgen (Ordinalskala) auch der Median, bei Messwerten (metrische Skala) zusätzlich das arithmetische Mittel. Ausreißer verschieben das arithmetische Mittel stark, den Median kaum.',
+    quelle: 'Wikipedia: Mittelwert',
+    url: 'https://de.wikipedia.org/wiki/Mittelwert',
   },
-  generate: (rng: Rng) => {
-    const count = randInt(rng, 4, 6)
-    const numbers: number[] = []
-    for (let i = 0; i < count; i++) numbers.push(randInt(rng, 2, 40))
-    let sum = numbers.reduce((s, x) => s + x, 0)
-    const rem = sum % count
-    if (rem !== 0) {
-      numbers[count - 1] += count - rem
-      sum += count - rem
-    }
-    const mean = sum / count
-    return valueTask({
-      question: `Berechne das arithmetische Mittel von ${numbers.join(', ')}.`,
-      answerKind: 'integer',
-      value: mean,
-      solution: formatDe(mean),
-      explanation: `Summe: ${numbers.join(' + ')} = ${sum}. Teile durch ${count}: ${sum} : ${count} = ${formatDe(mean)}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const fach = pick(rng, NOTEN_FAECHER)
+      const counts = [1, 2, 3, 4, 5, 6].map((n) => (n <= 4 ? randInt(rng, 1, 8) : randInt(rng, 0, 3)))
+      const total = counts.reduce((s, c) => s + c, 0)
+      const sum = counts.reduce((s, c, i) => s + c * (i + 1), 0)
+      const value = roundTo(sum / total, 2)
+      return valueTask({
+        question: `Notenspiegel der ${fach}: ${counts.map((c, i) => `Note ${i + 1}: ${c}-mal`).join(', ')}. Berechne den Notendurchschnitt (auf zwei Nachkommastellen).`,
+        answerKind: 'decimal',
+        value,
+        eps: 0.006,
+        solution: formatDe(value),
+        explanation: `Summe der Noten: ${counts.map((c, i) => `${c} · ${i + 1}`).join(' + ')} = ${sum}. Anzahl: ${total}. Durchschnitt: ${sum} : ${total} ≈ ${formatDe(value)}.`,
+        dedupeKey: `ma:k9:mw:noten:${counts.join(',')}`,
+      })
+    },
+    (rng: Rng) => {
+      const n = pick(rng, [5, 6])
+      const mean = randInt(rng, 10, 30)
+      const known: number[] = []
+      for (let i = 0; i < n - 1; i++) known.push(randInt(rng, mean - 8, mean + 8))
+      const missing = n * mean - known.reduce((s, x) => s + x, 0)
+      if (missing < 1) return mittelwert.generate(rng)
+      return valueTask({
+        question: `Von ${n} Messwerten kennt man ${known.join(', ')}. Das arithmetische Mittel aller ${n} Werte ist ${mean}. Wie groß ist der fehlende Wert?`,
+        answerKind: 'integer',
+        value: missing,
+        solution: String(missing),
+        explanation: `Die Summe aller Werte ist ${n} · ${mean} = ${n * mean}. Bekannt sind ${known.join(' + ')} = ${known.reduce((s, x) => s + x, 0)}. Fehlend: ${n * mean} − ${known.reduce((s, x) => s + x, 0)} = ${missing}.`,
+        dedupeKey: `ma:k9:mw:fehlend:${known.join(',')}:${mean}`,
+      })
+    },
+    (rng: Rng) => {
+      for (;;) {
+        const base = Array.from({ length: 6 }, () => randInt(rng, 1800, 2600))
+        const ausreisser = randInt(rng, 9000, 15000)
+        const data = [...base, ausreisser].map((x) => Math.round(x / 100) * 100)
+        const sorted = [...data].sort((a, b) => a - b)
+        const med = sorted[3]!
+        const sum = data.reduce((s, x) => s + x, 0)
+        if (sum % 7 !== 0) continue
+        const mean = sum / 7
+        const value = mean - med
+        return valueTask({
+          question: `Monatsgehälter in einem kleinen Betrieb (in €): ${shuffleNums(rng, data).join('; ')}. Um wie viel Euro liegt das arithmetische Mittel über dem Median?`,
+          unit: '€',
+          answerKind: 'integer',
+          value,
+          solution: `${value} €`,
+          explanation: `Geordnet: ${sorted.join('; ')}. Median (4. Wert) = ${med} €. Mittel = ${sum} : 7 = ${mean} €. Differenz: ${mean} − ${med} = ${value} €. Das hohe Gehalt ${Math.max(...data)} € zieht das Mittel nach oben, der Median beschreibt das typische Gehalt besser.`,
+          dedupeKey: `ma:k9:mw:ausreisser:${sorted.join(',')}`,
+        })
+      }
+    },
+    (rng: Rng) => {
+      const cases = [
+        { daten: 'Lieblingsfarben der Klasse (rot, blau, grün …)', correct: 'nur der Modalwert', grund: 'Farben sind Kategorien ohne Reihenfolge (Nominalskala). Man kann nur den häufigsten Wert angeben.' },
+        { daten: 'Haarfarben in einer Gruppe', correct: 'nur der Modalwert', grund: 'Haarfarben lassen sich weder ordnen noch addieren (Nominalskala).' },
+        { daten: 'Platzierungen bei einem Wettlauf (1., 2., 3. …)', correct: 'Modalwert und Median', grund: 'Plätze haben eine Reihenfolge (Ordinalskala), die Abstände sind aber nicht gleich. Ein arithmetisches Mittel ist nicht sinnvoll.' },
+        { daten: 'Zufriedenheit „sehr gut, gut, mittel, schlecht“', correct: 'Modalwert und Median', grund: 'Die Stufen lassen sich ordnen (Ordinalskala), aber nicht sinnvoll addieren.' },
+        { daten: 'Körpergrößen in cm', correct: 'Modalwert, Median und arithmetisches Mittel', grund: 'Körpergrößen sind Messwerte (metrische Skala); Abstände und Summen sind sinnvoll.' },
+        { daten: 'Wartezeiten an der Kasse in Minuten', correct: 'Modalwert, Median und arithmetisches Mittel', grund: 'Zeiten sind Messwerte (metrische Skala).' },
+      ]
+      const c = pick(rng, cases)
+      return choicePickTask({
+        question: `Erhoben werden: ${c.daten}. Welche Mittelwerte kann man sinnvoll angeben?`,
+        choices: shuffleNums(rng, ['nur der Modalwert', 'Modalwert und Median', 'Modalwert, Median und arithmetisches Mittel']),
+        correct: c.correct,
+        solution: c.correct,
+        explanation: c.grund,
+        dedupeKey: `ma:k9:mw:skala:${c.daten}`,
+      })
+    },
+  ),
+}
+
+function shuffleNums<T>(rng: Rng, arr: T[]): T[] {
+  const out = [...arr]
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1))
+    ;[out[i], out[j]] = [out[j]!, out[i]!]
+  }
+  return out
 }
 
 const median: Topic = {
   id: 'k9-lb4-median',
   title: 'Median (Zentralwert)',
-  hint: 'Ordne die Werte und nimm den mittleren.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['Median', 'Zentralwert', 'Kennwert', 'Daten', 'ordnen'],
@@ -581,7 +644,6 @@ const median: Topic = {
 const modalwert: Topic = {
   id: 'k9-lb4-modalwert',
   title: 'Modalwert (häufigster Wert)',
-  hint: 'Der Modalwert kommt am häufigsten vor.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['Modalwert', 'Modus', 'häufigster Wert', 'Kennwert', 'Daten'],
@@ -620,7 +682,6 @@ const modalwert: Topic = {
 const leiterProblem: Topic = {
   id: 'k9-lb5-leiter',
   title: 'Vernetzung: Pythagoras im Sachkontext',
-  hint: 'Leiter, Wand und Boden bilden ein rechtwinkliges Dreieck.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Pythagoras', 'Sachaufgabe', 'Leiter', 'Anwendung', 'Vernetzung'],
@@ -672,7 +733,6 @@ const leiterProblem: Topic = {
 const rechteckDiagonale: Topic = {
   id: 'k9-lb5-diagonale',
   title: 'Vernetzung: Diagonale im Rechteck',
-  hint: 'Die Diagonale ist Hypotenuse im rechtwinkligen Dreieck.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Pythagoras', 'Rechteck', 'Diagonale', 'Vernetzung'],
@@ -701,7 +761,6 @@ const rechteckDiagonale: Topic = {
 const trigHoehe: Topic = {
   id: 'k9-lb5-trig-hoehe',
   title: 'Vernetzung: Höhe mit Trigonometrie',
-  hint: 'sin(α) = Gegenkathete / Hypotenuse.',
   pointsPerTask: 10,
   difficulty: 3,
   keywords: ['Trigonometrie', 'Höhe', 'Sinus', 'Vernetzung'],
@@ -760,7 +819,6 @@ export const klasse9: Grade = {
         k9PotenzfunktionWert,
         ...math9GraphicReviews,
         ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math9"].filter((x) => x.areaId === "lb1").map((x) => x.topic),
-        ...(MATH_DICHTE_BY_GRADE["math9"] ?? []).filter((x) => x.areaId === "lb1").map((x) => x.topic),
       ],
     },
     {
@@ -775,7 +833,6 @@ export const klasse9: Grade = {
       ustd: 32,
       topics: [pythagorasHypotenuse, pythagorasKathete, trigWert, k9Hoehensatz,
         ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math9"].filter((x) => x.areaId === "lb3").map((x) => x.topic),
-        ...(MATH_DICHTE_BY_GRADE["math9"] ?? []).filter((x) => x.areaId === "lb3").map((x) => x.topic),
       ],
     },
     {

@@ -11,8 +11,16 @@ import {
   generateRechengesetzeK5,
   generateVergleichenOrdnenK5,
 } from './mathQualityBanks'
-import { withMathRoundBoost } from './mathRoundBoost'
 import { MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE } from './mathLehrplanTeilaspekte'
+import { ST_GENERATOR_MAP } from './gymSachsenAnhaltPack'
+import {
+  generatorIdForTopic,
+  gymGeneratorCatalog,
+  OS_CUSTOM_GENERATORS,
+  OS_GENERATOR_MAP,
+  resolveOsGenerate,
+} from './oberschuleGenerators'
+import { SKS_GENERATOR_MAP } from './sekundarschuleSachsenAnhaltPack'
 
 describe('Mathe Themenbindung — User-Beispiele', () => {
   it('lb1-rechengesetze: gemischte Terme/Klammern, nie bloßes a+b, keine Methoden-Spoiler', () => {
@@ -64,24 +72,20 @@ describe('Mathe Themenbindung — User-Beispiele', () => {
     }
   })
 
-  it('withMathRoundBoost does not inject bare a+b into periodische-dezimal', () => {
-    const gen = withMathRoundBoost('k6-lb1-periodische-dezimal', generatePeriodischeDezimalK6)!
-    for (let seed = 1; seed <= 30; seed++) {
-      const task = gen(createRng(seed))
-      expect(task.question, `seed ${seed}`).not.toMatch(/^Berechne:\s*\d+\s*[+·]\s*\d+\s*$/)
-      expect(task.question, `seed ${seed}`).toMatch(/endlich|periodisch|Dezimal|Bruch|\//i)
-    }
-  })
-
-  it('withMathRoundBoost does not inject bare a+b into rechengesetze', () => {
-    const gen = withMathRoundBoost('lb1-rechengesetze', generateRechengesetzeK5)!
-    for (let seed = 1; seed <= 30; seed++) {
-      const task = gen(createRng(seed))
-      expect(task.question, `seed ${seed}`).not.toMatch(/^Berechne:\s*\d+\s*\+\s*\d+\s*$/)
-      expect(task.question, `seed ${seed}`).toMatch(/·|\(/)
-      expect(task.question, `seed ${seed}`).not.toMatch(
-        /Punkt vor Strich|Distributivgesetz|Nutze einen Rechenvorteil|Berechne mit Distributiv/i,
-      )
+  it('OS/ST/SKS-Themen mit Gym-Generator liefern genau dessen Aufgaben (keine themenfremden Füller)', async () => {
+    const catalog = await gymGeneratorCatalog()
+    const ids = Object.keys({ ...OS_GENERATOR_MAP, ...ST_GENERATOR_MAP, ...SKS_GENERATOR_MAP }).filter(
+      (id) => !OS_CUSTOM_GENERATORS[id],
+    )
+    expect(ids.length).toBeGreaterThan(100)
+    for (const id of ids) {
+      const gymId = generatorIdForTopic(id)!
+      const gym = catalog.get(gymId)
+      expect(gym, `${id} → ${gymId}`).toBeDefined()
+      const gen = resolveOsGenerate(id, catalog)!
+      for (let seed = 1; seed <= 15; seed++) {
+        expect(gen(createRng(seed)).question, `${id} seed ${seed}`).toBe(gym!(createRng(seed)).question)
+      }
     }
   })
 })

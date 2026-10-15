@@ -25,6 +25,7 @@ import {
   trueFalse,
 } from './biologieHelpers'
 import { deepenBioBank } from './biologieBankDeepen'
+import { isSloganStatement } from './contentAudit'
 import { enrichGapAccepted, normalizeGapAnswer } from './gapAnswerMatch'
 
 export type BioFact = {
@@ -410,10 +411,15 @@ export function withBioContentIds(
  */
 export function stripBioBankSlug(text: string): string {
   return text
+    // Bracket topic tags: `[k5-lb2-fische] …`, `[ge-k5-lb1-quellen] …`
+    .replace(/^\[[^\]]+\]\s*/g, '')
+    .replace(/\[[^\]]*k\d+[^\]]*\]\s*/gi, '')
     .replace(/\bFachbegriff\s*\([a-z0-9äöüß_-]+\)\s*:/gi, 'Fachbegriff:')
     .replace(/^\(([a-z0-9äöüß_-]+)\)\s+/i, '')
     // Theme slug prefix on flash fronts only (lowercase keys like "baeume: …").
     .replace(/^([a-z][a-z0-9_-]*):\s+(?=\S)/, '')
+    // Trailing topic slug in flash fronts: `Term (k5-lbw-saurier)`
+    .replace(/\s*\((?:k\d+|ge|bi|ph|os|st|sks)[-_][^)]+\)\s*$/i, '')
     .replace(/\s+/g, ' ')
     .trim()
 }
@@ -511,8 +517,64 @@ export function bioFactGapModeSafe(f: BioFact, mode: 'gap' | 'cloze'): boolean {
     if (!fachbegriffGap) return false
   }
 
-  const q = bioFactQuestion(f, mode)
+  const q = bioFactQuestion(f, mode, undefined)
   return !bioTextContainsAcceptedTerm(q, accepted)
+}
+
+/**
+ * Menschenlesbarer Themenbezug aus conceptPrefix — ohne Roh-IDs (ge-k5-lb…).
+ * Hält Geschwister-Topics nach dem Entfernen von `[k5-…]`-Tags auseinander.
+ */
+export function themePhraseFromPrefix(prefix?: string): string {
+  if (!prefix) return ''
+  const p = prefix.toLowerCase()
+  if (/:meta\b|metamorphose/.test(p)) return 'bei der Metamorphose'
+  if (/:merkmale\b|:merkmal\b/.test(p)) return 'als Körpermerkmal'
+  if (/:schutz\b/.test(p)) return 'im Artenschutz'
+  if (/:fortpflanzung\b/.test(p)) return 'bei der Fortpflanzung'
+  if (/:lebensraum\b/.test(p)) return 'im Lebensraum'
+  if (/:aufbau\b/.test(p)) return 'im Körperbau'
+  if (/:flug\b|:feder/.test(p)) return 'beim Fliegen'
+  if (/:verhalten\b/.test(p)) return 'im Verhalten'
+  if (/:sinne\b/.test(p)) return 'bei den Sinnen'
+  if (/:sozial\b/.test(p)) return 'im Sozialverhalten'
+  if (/:angepasst\b|:anpassung\b/.test(p)) return 'bei der Angepasstheit'
+  if (/:skelett\b/.test(p)) return 'am Skelett'
+  if (/:lunge\b/.test(p)) return 'bei der Lunge'
+  if (/:atmung\b/.test(p)) return 'beim Atemvorgang'
+  if (/:arten\b/.test(p)) return 'bei typischen Arten'
+  if (/:quellen\b/.test(p)) return 'bei historischen Quellen'
+  if (/:orientierung\b/.test(p)) return 'zur historischen Orientierung'
+  // Aus Topic-IDs wie ge-k5-lb1-orientierung nur den thematischen Schwanz nutzen
+  for (const seg of [...p.split(':')].reverse()) {
+    const m = seg.match(/^(?:ge|bi|ph|ma|os|st|sks)-k\d+-lb\w*-(.+)$/i)
+    if (m?.[1] && m[1].length >= 3) {
+      return `im Themenfeld ${m[1].replace(/-/g, ' ')}`
+    }
+  }
+  // Letztes sinnvolles Segment — keine Roh-Topic-IDs
+  const parts = p.split(':').filter(
+    (s) =>
+      s &&
+      !/^(bio|ge|ph|ma|fill|ov|xpaar|lb\w*|k\d+)$/.test(s) &&
+      !/^(ge|bi|ph|ma|os|st|sks)-k\d+/i.test(s) &&
+      !/-lb\d+/i.test(s),
+  )
+  const last = parts[parts.length - 1] ?? ''
+  if (last.length >= 3 && !/\d/.test(last)) {
+    return `im Themenfeld ${last.replace(/-/g, ' ')}`
+  }
+  return ''
+}
+
+function withTheme(question: string, prefix?: string): string {
+  const theme = themePhraseFromPrefix(prefix)
+  if (!theme) return question
+  const q = question.replace(/\?+$/, '').trim()
+  if (new RegExp(theme.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i').test(q)) return question
+  // Nur bei generischen Bedeutungsfragen — sonst Inhalt nicht verbiegen.
+  if (!/was bedeutet|was beschreibt|fachbegriff/i.test(q)) return question
+  return `${q} ${theme}?`
 }
 
 /**
@@ -522,16 +584,17 @@ export function bioFactGapModeSafe(f: BioFact, mode: 'gap' | 'cloze'): boolean {
 export function bioFactQuestion(
   f: BioFact,
   mode: 'mc' | 'flash' | 'gap' | 'cloze',
+  prefix?: string,
 ): string {
   const base = stripBioBankSlug(f.prompt)
   if (mode === 'mc' || mode === 'flash') {
     const q = (base || f.prompt).trim()
     // Short stems like „Onkogen?“ / „Helicase?“ fail length/quality gates.
     if (q.length <= 10) {
-      const hint = (f.flashFront || q.replace(/[?？]+$/g, '')).trim() || 'Begriff'
-      return `Was bedeutet der Fachbegriff „${hint}“ in diesem Thema?`
+      const hint = stripBioBankSlug(f.flashFront || q.replace(/[?？]+$/g, '')).trim() || 'Begriff'
+      return withTheme(`Was bedeutet der Fachbegriff „${hint}“`, prefix)
     }
-    return q
+    return withTheme(q, prefix)
   }
 
   const accepted = [
@@ -539,14 +602,14 @@ export function bioFactQuestion(
     ...(f.clozeAccepted?.flat() ?? []),
   ]
   if (bioQuestionSpoilsTerm(base, accepted) || bioQuestionSpoilsTerm(f.prompt, accepted)) {
-    return 'Welcher Fachbegriff passt zur Erklärung?'
+    return withTheme('Welcher Fachbegriff passt zur Erklärung', prefix)
   }
   // Fachbegriff-Lücke with meaning after the blank — never restate the term above.
   const gap = f.gap ?? f.cloze ?? ''
   if (/Fachbegriff\s*:/i.test(gap) && gap.includes('___') && accepted.length > 0) {
-    return 'Welcher Fachbegriff passt zur Erklärung?'
+    return withTheme('Welcher Fachbegriff passt zur Erklärung', prefix)
   }
-  return base || 'Welcher Fachbegriff passt zur Erklärung?'
+  return withTheme(base || 'Welcher Fachbegriff passt zur Erklärung', prefix)
 }
 
 /** Prefer large Zuordnungen when the Begriffspool allows (4–6, not always 3). */
@@ -617,7 +680,12 @@ export function sanitizeBioBank(bank: BioBank): BioBank {
       ...t,
       statement: stripBioBankSlug(t.statement),
     }))
-    .filter((t) => !isSloganOrStubClaim(t.statement))
+    .filter(
+      (t) =>
+        !isSloganOrStubClaim(t.statement) &&
+        // Strenger Audit-Filter (z. B. „Perspektive: Standpunkt der Betrachtung.“)
+        !isSloganStatement(t.statement),
+    )
   return {
     ...bank,
     facts: facts?.length ? facts : undefined,
@@ -669,7 +737,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
       if (mode < clozeCut && bioFactGapModeSafe(f, 'cloze')) {
         const clozeAcc = f.clozeAccepted!.map((blank) => enrichGapAccepted(blank))
         return clozeBlanksTask({
-          question: bioFactQuestion(f, 'cloze'),
+          question: bioFactQuestion(f, 'cloze', prefix),
           template: f.cloze!,
           accepted: clozeAcc,
           solution: clozeAcc.map((a) => a[0]).join(' / '),
@@ -683,7 +751,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         const gapAcc = enrichGapAccepted(f.gapAccepted!)
         if (f.gap!.includes('___')) {
           return clozeBlanksTask({
-            question: bioFactQuestion(f, 'gap'),
+            question: bioFactQuestion(f, 'gap', prefix),
             template: f.gap!,
             accepted: [gapAcc],
             solution: gapAcc[0]!,
@@ -694,7 +762,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
           })
         }
         return gapFillTask({
-          question: bioFactQuestion(f, 'gap'),
+          question: bioFactQuestion(f, 'gap', prefix),
           accepted: gapAcc,
           solution: gapAcc[0]!,
           explanation: f.explanation,
@@ -708,10 +776,14 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
           f.wrong?.length && f.wrong.length >= 2
             ? shuffle(rng, f.wrong).slice(0, 3)
             : wrong.slice(0, 3)
-        const flashQ = bioFactQuestion(f, 'flash')
+        const flashQ = bioFactQuestion(f, 'flash', prefix)
+        const frontBase = stripBioBankSlug(f.flashFront ?? flashQ)
+        const theme = themePhraseFromPrefix(prefix)
+        // Flash-Front themenspezifisch halten (Geschwister-Topics teilen sonst nur den Term)
+        const front = theme && frontBase.length < 40 ? `${frontBase} (${theme})` : frontBase
         return flashcardBioTask({
           question: flashQ,
-          front: stripBioBankSlug(f.flashFront ?? flashQ),
+          front,
           accepted: enrichGapAccepted([f.answer, ...(f.gapAccepted ?? [])]),
           solution: f.answer,
           explanation: f.explanation,
@@ -722,7 +794,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         })
       }
       return mcTask(rng, {
-        question: bioFactQuestion(f, 'mc'),
+        question: bioFactQuestion(f, 'mc', prefix),
         correct: f.answer,
         wrong,
         explanation: f.explanation,
@@ -758,30 +830,13 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         .join(' ')
       const n = subset.length
       const conceptNs = bank.conceptPrefix ?? ''
-      const prefixTail = conceptNs.split(':').pop() ?? ''
-      const topicFromPrefix = prefixTail
-        .replace(/^ph-k\d+-lb\w*-/, '')
-        .replace(/-/g, ' ')
-        .trim()
-      // Prefer curriculum topic words that quality tests / teachers expect.
-      let topicHint = subset[0]?.term ?? 'Fachbegriffen'
-      if (/volumen/i.test(conceptNs) || subset.some((p) => /volumen/i.test(p.term))) {
-        topicHint = 'Volumen'
-      } else if (subset.some((p) => /^PCR$/i.test(p.term))) {
-        topicHint = 'PCR'
-      } else if (topicFromPrefix) {
-        topicHint = topicFromPrefix.charAt(0).toUpperCase() + topicFromPrefix.slice(1)
-      } else {
-        const keyed = subset.find((p) =>
-          /liter|quader|einheit|formel|größe/i.test(`${p.term} ${p.meaning}`),
-        )
-        if (keyed) topicHint = keyed.term
-      }
+      const theme = themePhraseFromPrefix(conceptNs)
+      const themeBit = theme ? ` ${theme}` : ''
       return matchTermsTask(rng, {
         question:
           n >= 5
-            ? `Ordne zu: ${n} Fachbegriffe und Erklärungen zu ${topicHint} (Klick-Paare).`
-            : `Ordne Begriff und Erklärung zu ${topicHint} einander zu (Klick-Paare).`,
+            ? `Ordne ${n} Fachbegriffe ihren Erklärungen zu${themeBit}.`
+            : `Ordne jeden Fachbegriff der passenden Erklärung zu${themeBit}.`,
         terms: subset.map((p) => p.term),
         meanings: subset.map((p) => p.meaning),
         distractor,

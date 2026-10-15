@@ -1,6 +1,9 @@
+/** Typographic minus sign (U+2212) used in all displayed numbers. */
+const MINUS = '\u2212'
+
 /** Parse a user-entered number, accepting both "3,5" (German) and "3.5". */
 export const parseNumber = (raw: string): number | null => {
-  const cleaned = raw.trim().replace(/\s/g, '').replace(',', '.')
+  const cleaned = raw.trim().replace(/\s/g, '').replace(/[−–]/g, '-').replace(',', '.')
   if (cleaned === '' || !/^[-+]?\d*\.?\d+$/.test(cleaned)) return null
   const value = Number(cleaned)
   return Number.isFinite(value) ? value : null
@@ -8,7 +11,7 @@ export const parseNumber = (raw: string): number | null => {
 
 /** Parse an integer, accepting a leading sign. */
 export const parseInteger = (raw: string): number | null => {
-  const cleaned = raw.trim().replace(/\s/g, '')
+  const cleaned = raw.trim().replace(/\s/g, '').replace(/[−–]/g, '-')
   if (!/^[-+]?\d+$/.test(cleaned)) return null
   return Number(cleaned)
 }
@@ -21,10 +24,11 @@ export const roundTo = (value: number, places: number): number => {
 
 /** Format a number with German decimal comma, trimming trailing zeros. */
 export const formatDe = (value: number, maxPlaces = 4): string => {
-  const rounded = roundTo(value, maxPlaces)
+  const rounded = roundTo(value, maxPlaces) || 0
   return rounded
     .toLocaleString('de-DE', { maximumFractionDigits: maxPlaces })
     .replace(/\u00a0/g, ' ')
+    .replace(/^-/, MINUS)
 }
 
 /** Compare two numbers for equality within a small tolerance. */

@@ -53,3 +53,23 @@ tasksPerRound: opts?.tasksPerRound ?? DEFAULT_TASKS_PER_ROUND
 8. **Themen-Vollständigkeit (verbindlich):** Jeder Lehrplan-Teilaspekt als Topic;
    Thin-Fill ohne Themenabdeckung reicht nicht.
 9. Freigabe: kein `released: true` ohne explizite Anforderung (Ship/Pack).
+10. **Keine doppelten Antwortoptionen** innerhalb einer Aufgabe (MC, Multi-Select,
+    Sortier-, Drag-and-Drop-, Slot-Blöcke) — auch nicht als `0,5`/`1/2`,
+    Groß-/Kleinschreibung, Leerzeichen oder Umformulierung derselben Aussage.
+11. **Nur Anwendung von Unterrichtsstoff** — keine Metafragen über Lehrplan,
+    Thema oder Methode.
+12. **Keine Doppelungen:** keine (fast) gleichen Fragen innerhalb eines Themas,
+    keine doppelten Themen, keine (fast) gleichen Fragen in verschiedenen Themen
+    — auch nicht über Lernbereiche/Klassen hinweg. Fragen ausschließlich
+    themenbezogen.
+13. **Schreibweise Mathe/Physik:** Minuszeichen −, negative Zahlen in Klammern,
+    kein `+ 0`/`1x`/`x + (−n)`; keine Formelhinweise im Aufgabentext.
+14. **Lösungsschlüssel prüfen:** Musterlösung besteht die eigene Prüfung,
+    richtige MC-Option vorhanden und eindeutig.
+15. **Stufengerecht nach Lernbereich** (Lehrplan-Snapshot), keine Themen, die
+    Inhalte einer anderen Klasse wiederholen; keine generischen
+    „Vertiefung (n)“-Themen.
+16. Regression: `contentQualityAllPacks.test.ts` (alle Packs × viele Seeds:
+    Options-Dubletten, Cross-Topic-Duplikate, Runden-Duplikate, Spoiler, Meta/
+    Slogan, verbotene Mathe/Physik-Formate, Rundenlänge, Fachwissen) muss grün
+    bleiben — Inhalte reparieren, Tests nie abschwächen.

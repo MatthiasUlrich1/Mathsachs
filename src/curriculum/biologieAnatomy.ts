@@ -749,17 +749,19 @@ function teethTf(rng: Rng) {
 }
 
 function gebissTypenMatch(rng: Rng) {
+  const animals = [
+    { term: 'Fleischfresser-Gebiss', meaning: 'Lange Eckzähne und schneidende Reißzähne', example: 'Wolf' },
+    { term: 'Pflanzenfresser-Gebiss', meaning: 'Breite Mahlzähne, oft große Zahnlücke', example: 'Pferd' },
+    { term: 'Allesfresser-Gebiss', meaning: 'Mischung aus schneidenden und mahlenden Zähnen', example: 'Schwein' },
+  ] as const
   return matchTermsTask(rng, {
-    question: 'Ordne Gebisstypen der Säugetiere zu.',
-    terms: ['Fleischfresser-Gebiss', 'Pflanzenfresser-Gebiss', 'Allesfresser-Gebiss'],
-    meanings: [
-      'Lange Eckzähne und schneidende Reißzähne',
-      'Breite Mahlzähne, oft große Zahnlücke',
-      'Mischung aus schneidenden und mahlenden Zähnen',
-    ],
+    question: 'Ordne jedem Gebisstyp das passende Zahnmerkmal zu.',
+    terms: animals.map((a) => a.term),
+    meanings: animals.map((a) => a.meaning),
     distractor: 'Nur Barten ohne Zähne',
-    solution: 'Fleisch- / Pflanzen- / Allesfresser',
-    explanation: 'Zahnform folgt der Nahrung — Angepasstheit an die Ernährung.',
+    solution: animals.map((a) => `${a.example}: ${a.term}`).join(' · '),
+    explanation:
+      'Zahnform folgt der Nahrung: Wolf mit Fang- und Reißzähnen, Pferd mit Mahlflächen und Zahnlücke, Schwein mit Mischgebiss.',
     fachwissen: bioFw(
       'Gebisstypen: Fleischfresser mit Fang- und Reißzähnen, Pflanzenfresser mit Mahlflächen und oft Zahnlücke, Allesfresser mit Mischgebiss (z. B. Schwein, Mensch).',
       'Wikipedia: Gebiss',

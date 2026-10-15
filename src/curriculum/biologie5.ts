@@ -1768,18 +1768,16 @@ function voegelFlugMatch(rng: Rng) {
 }
 
 function saeugerGebiss(rng: Rng) {
+  const fleisch = pick(rng, ['Fuchs', 'Wolf', 'Löwe', 'Marder'])
+  const pflanze = pick(rng, ['Rind', 'Pferd', 'Kaninchen', 'Hirsch'])
+  const alles = pick(rng, ['Wildschwein', 'Braunbär', 'Igel'])
   return classifySlotsTask(rng, {
-    question: 'Ordne Gebisstyp und Ernährungsweise zu.',
+    question: 'Ordne jedes Tier nach seinem Gebiss der passenden Ernährungsweise zu.',
     slotLabels: ['Fleischfresser', 'Pflanzenfresser', 'Allesfresser'],
-    itemLabels: [
-      'Reißzähne / scharfe Backenzähne (z. B. Katze)',
-      'Breite Mahlzähne (z. B. Reh)',
-      'Gemischtes Gebiss (z. B. Mensch, Schwein)',
-    ],
+    itemLabels: [fleisch, pflanze, alles],
     correctSlots: [0, 1, 2],
-    distractors: ['Nur Barten'],
-    solution: 'Fleisch- / Pflanzen- / Allesfresser',
-    explanation: 'Gebissform zeigt die Angepasstheit an die Nahrung.',
+    solution: `${fleisch}: Fleischfresser · ${pflanze}: Pflanzenfresser · ${alles}: Allesfresser`,
+    explanation: `${fleisch} hat große Eckzähne und scharfe Reißzähne zum Packen und Zerschneiden von Fleisch. ${pflanze} hat breite Backenzähne mit Mahlflächen zum Zerreiben von Pflanzen. ${alles} hat ein Mischgebiss aus spitzen und flachen Zähnen.`,
     fachwissen: fw(
       'Säugetiere: Fell, Säugen, gleichwarm; Angepasstheit von Gliedmaßen und Gebiss an Lebensraum und Nahrung.',
     ),

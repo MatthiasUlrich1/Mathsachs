@@ -18,6 +18,7 @@ export function normalizeGapAnswer(text: string): string {
     .replace(/ü/g, 'ue')
     .replace(/ß/g, 'ss')
     .replace(/[„“”"'`´]/g, '')
+    .replace(/[−–]/g, '-')
     .replace(/[.!?…]+$/g, '')
     .replace(/\s+/g, ' ')
     .trim()

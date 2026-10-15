@@ -9,13 +9,13 @@ import {
   generateFractionGridSvg,
   generatePrismVolumeSvg,
   generateQuadAnglesSvg,
-  generateRectangleSvg,
   generateRightTriangleSvg,
   generateTriangleAnglesSvg,
   generateTriangleSvg,
   generateValueTableSvg,
   type CubeNetKind,
 } from '../lib/geometrySvg'
+import { generateExtrudedPrismSvg, generateQuadrilateralSvg } from '../lib/figureSvg'
 import {
   add,
   divide,
@@ -41,28 +41,7 @@ import {
 import { conversionTopic, FLAECHE, LAENGE } from './units'
 import type { Grade, Topic } from './types'
 import { MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE } from './mathLehrplanTeilaspekte'
-import { MATH_DICHTE_BY_GRADE } from './mathDichteFill'
-
-/**
- * Proper fraction that still needs shortening when shown as a diagram:
- * reduced answer base with n < d, expanded by k≥2 so the visual is a partial
- * amount (never a full whole / improper fill that bar/pie SVG cannot show).
- */
-function reducibleProperForVisual(rng: Rng): {
-  base: Fraction
-  n: number
-  d: number
-  g: number
-} {
-  const rawN = randInt(rng, 1, 5)
-  const rawD = randInt(rng, rawN + 1, 8)
-  const base = makeFraction(rawN, rawD)
-  // makeFraction reduces; keep proper and expand so gcd(unsimplified) > 1
-  const k = randInt(rng, 2, 4)
-  const n = base.n * k
-  const d = base.d * k
-  return { base, n, d, g: gcd(n, d) }
-}
+import { shuffleArr } from './mathApplied'
 
 /** Side-by-side fraction diagrams for comparison tasks. */
 function twoFractionVisual(a: Fraction, b: Fraction, kind: 'circle' | 'bar'): string {
@@ -81,59 +60,89 @@ function twoFractionVisual(a: Fraction, b: Fraction, kind: 'circle' | 'bar'): st
 // Lernbereich 1 — Arbeiten mit gebrochenen Zahlen
 // ---------------------------------------------------------------------------
 
+const BRUCH_NENNER = [2, 3, 4, 5, 6, 8, 10, 12] as const
+
 const kuerzen: Topic = {
   id: 'lb1-kuerzen',
-  title: 'Brüche kürzen',
-  hint: 'Gib den vollständig gekürzten Bruch ein.',
+  title: 'Gleichungen und Ungleichungen mit Brüchen inhaltlich lösen',
   pointsPerTask: 10,
-  difficulty: 1,
+  difficulty: 2,
   fachwissen: {
-    text: 'Einen Bruch kürzen bedeutet, Zähler und Nenner durch denselben Teiler zu dividieren, ohne den Wert zu ändern. Ein Bruch ist vollständig gekürzt, wenn Zähler und Nenner keinen gemeinsamen Teiler außer 1 mehr besitzen. Den größten gemeinsamen Teiler (ggT) bestimmt man durch sukzessives Teilen oder Primfaktorzerlegung.',
-    quelle: 'Wikipedia: Bruchrechnung',
-    url: 'https://de.wikipedia.org/wiki/Bruchrechnung',
+    text: 'Gleichungen wie 9/5 − a = 1 oder 7 = 14 · v löst man inhaltlich mit der Umkehraufgabe: Ein fehlender Summand ist Summe minus bekannter Summand, ein fehlender Subtrahend ist Minuend minus Differenz, ein fehlender Faktor ist Produkt geteilt durch den bekannten Faktor. Bei Ungleichungen wie 3/4 · x < 3/4 hilft die Überlegung: Multipliziert man mit einer Zahl kleiner als 1, wird das Ergebnis kleiner; mit einer Zahl größer als 1 wird es größer.',
+    quelle: 'Wikipedia: Gleichung',
+    url: 'https://de.wikipedia.org/wiki/Gleichung',
   },
   generate: mixedVariants(
     (rng: Rng) => {
-      // Proper base so “vollständig gekürzt” is never 1/1 or an integer like 2/1
-      const rawN = randInt(rng, 1, 7)
-      const rawD = randInt(rng, rawN + 1, 9)
-      const base = makeFraction(rawN, rawD)
-      const k = randInt(rng, 2, 6)
-      const n = base.n * k
-      const d = base.d * k
-      const g = gcd(n, d)
-      return fractionTask({
-        question: `Kürze den Bruch ${n}/${d} vollständig.`,
-        value: base,
-        requireReduced: true,
-        solution: `${base.n}/${base.d}`,
-        explanation: `Zähler und Nenner haben den größten gemeinsamen Teiler ${g}. Teile beide durch ${g}: ${n} : ${g} = ${base.n} und ${d} : ${g} = ${base.d}, also ${base.n}/${base.d}.`,
-      })
-    },
-    (rng: Rng) => {
-      const { base, n, d, g } = reducibleProperForVisual(rng)
-      return {
-        ...fractionTask({
-          question: 'Welcher gekürzte Bruchanteil ist im Kreisdiagramm eingefärbt?',
-          value: base,
-          requireReduced: true,
-          solution: `${base.n}/${base.d}`,
-          explanation: `${n} von ${d} Teilen sind eingefärbt (= ${n}/${d}). Mit ggT ${g} gekürzt: ${base.n}/${base.d}.`,
-        }),
-        visualContent: generateFractionCircleSvg({ numerator: n, denominator: d }),
+      for (;;) {
+        const p = makeFraction(randInt(rng, 1, 7), pick(rng, BRUCH_NENNER))
+        const x = makeFraction(randInt(rng, 1, 7), pick(rng, BRUCH_NENNER))
+        if (p.d === 1 || x.d === 1 || p.d === x.d) continue
+        const b = add(p, x)
+        return fractionTask({
+          question: `Löse inhaltlich: ${format(p)} + x = ${format(b)}`,
+          value: x,
+          solution: `x = ${format(x)}`,
+          explanation: `Gesucht ist der fehlende Summand: x = ${format(b)} − ${format(p)} = ${format(x)}. Probe: ${format(p)} + ${format(x)} = ${format(b)}.`,
+          dedupeKey: `ma:k6:gl:add:${format(p)}:${format(x)}`,
+        })
       }
     },
     (rng: Rng) => {
-      const { base, n, d, g } = reducibleProperForVisual(rng)
-      return {
-        ...fractionTask({
-          question: 'Welcher gekürzte Bruchanteil ist im Balken eingefärbt?',
-          value: base,
-          requireReduced: true,
-          solution: `${base.n}/${base.d}`,
-          explanation: `${n} von ${d} Abschnitten sind eingefärbt (= ${n}/${d}). Mit ggT ${g} gekürzt: ${base.n}/${base.d}.`,
-        }),
-        visualContent: generateFractionBarSvg({ numerator: n, denominator: d }),
+      for (;;) {
+        const d = pick(rng, BRUCH_NENNER)
+        const a = makeFraction(randInt(rng, 1, d - 1), d)
+        if (a.d === 1) continue
+        const k = randInt(rng, 1, 3)
+        const m = add(makeFraction(k, 1), a)
+        return fractionTask({
+          question: `Löse inhaltlich: ${format(m)} − a = ${k}`,
+          value: a,
+          solution: `a = ${format(a)}`,
+          explanation: `Gesucht ist die Zahl, die man von ${format(m)} subtrahieren muss, um ${k} zu erhalten: a = ${format(m)} − ${k} = ${format(a)}.`,
+          dedupeKey: `ma:k6:gl:sub:${format(m)}:${k}`,
+        })
+      }
+    },
+    (rng: Rng) => {
+      for (;;) {
+        const k = randInt(rng, 2, 15)
+        const v = makeFraction(randInt(rng, 1, 9), pick(rng, BRUCH_NENNER))
+        if (v.d === 1) continue
+        const prod = multiply(makeFraction(k, 1), v)
+        if (prod.d === 1 && prod.n === k) continue
+        const leftProduct = rng() < 0.5
+        return fractionTask({
+          question: leftProduct
+            ? `Löse inhaltlich: ${format(prod)} = ${k} · v`
+            : `Löse inhaltlich: ${k} · v = ${format(prod)}`,
+          value: v,
+          solution: `v = ${format(v)}`,
+          explanation: `Gesucht ist der fehlende Faktor: v = ${format(prod)} : ${k} = ${format(v)}. Probe: ${k} · ${format(v)} = ${format(prod)}.`,
+          dedupeKey: `ma:k6:gl:mul:${k}:${format(v)}`,
+        })
+      }
+    },
+    (rng: Rng) => {
+      for (;;) {
+        const f = makeFraction(randInt(rng, 1, 4), pick(rng, [3, 5, 7]))
+        const kleiner = rng() < 0.5
+        const proper = shuffleArr(rng, ['1/2', '2/3', '3/4', '3/5', '5/6', '4/7']).slice(0, kleiner ? 1 : 2)
+        const improper = shuffleArr(rng, ['3/2', '4/3', '5/4', '7/5', '2', '5/3']).slice(0, kleiner ? 2 : 1)
+        const correct = kleiner ? proper[0]! : improper[0]!
+        const choices = shuffleArr(rng, [...proper, ...improper, '1'])
+        if (new Set(choices).size !== choices.length) continue
+        const zeichen = kleiner ? '<' : '>'
+        return choicePickTask({
+          question: `Welche Zahl erfüllt die Ungleichung ${format(f)} · x ${zeichen} ${format(f)}?`,
+          choices,
+          correct,
+          solution: `x = ${correct}`,
+          explanation: kleiner
+            ? `Das Produkt ist kleiner als ${format(f)}, wenn man mit einer Zahl kleiner als 1 multipliziert. Bei x = 1 bleibt der Wert gleich, bei Zahlen größer als 1 wird er größer. Nur ${correct} ist kleiner als 1.`
+            : `Das Produkt ist größer als ${format(f)}, wenn man mit einer Zahl größer als 1 multipliziert. Bei x = 1 bleibt der Wert gleich, bei Zahlen kleiner als 1 wird er kleiner. Nur ${correct} ist größer als 1.`,
+          dedupeKey: `ma:k6:ungl:${format(f)}:${zeichen}:${correct}`,
+        })
       }
     },
   ),
@@ -141,33 +150,80 @@ const kuerzen: Topic = {
 
 const erweitern: Topic = {
   id: 'lb1-erweitern',
-  title: 'Brüche erweitern',
-  hint: 'Gib den gesuchten Zähler ein.',
+  title: 'Hauptnenner finden und Brüche gleichnamig machen',
   pointsPerTask: 10,
-  difficulty: 1,
+  difficulty: 2,
   fachwissen: {
-    text: 'Einen Bruch erweitern bedeutet, Zähler und Nenner mit derselben Zahl (≠ 0) zu multiplizieren. Der Wert des Bruchs ändert sich dabei nicht (man multipliziert mit k/k = 1). Erweitern wird benötigt, um Brüche auf einen gemeinsamen Nenner zu bringen und sie dadurch addieren oder vergleichen zu können.',
+    text: 'Zwei Brüche sind gleichnamig, wenn sie denselben Nenner haben. Der kleinste gemeinsame Nenner (Hauptnenner) ist das kleinste gemeinsame Vielfache (kgV) der Nenner; jeder Bruch wird dann mit dem passenden Faktor erweitert. Erst gleichnamige Brüche kann man durch Vergleich der Zähler ordnen oder addieren.',
     quelle: 'Wikipedia: Bruchrechnung',
     url: 'https://de.wikipedia.org/wiki/Bruchrechnung',
   },
-  generate: (rng: Rng) => {
-    const n = randInt(rng, 1, 6)
-    const d = randInt(rng, 2, 8)
-    const k = randInt(rng, 2, 6)
-    return valueTask({
-      question: `Erweitere den Bruch ${n}/${d} auf den Nenner ${d * k}. Wie lautet der Zähler?`,
-      answerKind: 'integer',
-      value: n * k,
-      solution: `${n * k}`,
-      explanation: `Der Nenner wird mit ${k} multipliziert (${d} · ${k} = ${d * k}). Also muss auch der Zähler mit ${k} multipliziert werden: ${n} · ${k} = ${n * k}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      for (;;) {
+        const [d1, d2] = shuffleArr(rng, [4, 6, 8, 9, 10, 12, 14, 15, 18, 20]).slice(0, 2) as [number, number]
+        if (d1 % d2 === 0 || d2 % d1 === 0) continue
+        const k = (d1 * d2) / gcd(d1, d2)
+        const n1 = randInt(rng, 1, d1 - 1)
+        const n2 = randInt(rng, 1, d2 - 1)
+        const big = Math.max(d1, d2)
+        const small = Math.min(d1, d2)
+        const multiples = Array.from({ length: k / big }, (_, i) => big * (i + 1))
+        return valueTask({
+          question: `Wie lautet der Hauptnenner von ${n1}/${d1} und ${n2}/${d2}?`,
+          answerKind: 'integer',
+          value: k,
+          solution: String(k),
+          explanation: `Vielfache von ${big}: ${multiples.join(', ')}. ${k} ist das erste Vielfache, das auch durch ${small} teilbar ist, also kgV(${d1}, ${d2}) = ${k}.`,
+          dedupeKey: `ma:k6:hn:${small}:${big}`,
+        })
+      }
+    },
+    (rng: Rng) => {
+      for (;;) {
+        const [d1, d2] = shuffleArr(rng, [3, 4, 5, 6, 8, 9, 10, 12]).slice(0, 2) as [number, number]
+        if (d1 % d2 === 0 || d2 % d1 === 0) continue
+        const k = (d1 * d2) / gcd(d1, d2)
+        const n1 = randInt(rng, 1, d1 - 1)
+        const n2 = randInt(rng, 1, d2 - 1)
+        if (gcd(n1, d1) !== 1 || gcd(n2, d2) !== 1) continue
+        return valueTask({
+          question: `Mache ${n1}/${d1} und ${n2}/${d2} gleichnamig mit dem Hauptnenner ${k}. Welchen Zähler bekommt ${n2}/${d2}?`,
+          answerKind: 'integer',
+          value: n2 * (k / d2),
+          solution: String(n2 * (k / d2)),
+          explanation: `${k} : ${d2} = ${k / d2}, also wird ${n2}/${d2} mit ${k / d2} erweitert: ${n2} · ${k / d2} = ${n2 * (k / d2)}. Ergebnis: ${n2 * (k / d2)}/${k}.`,
+          dedupeKey: `ma:k6:gleichnamig:${n1}/${d1}:${n2}/${d2}`,
+        })
+      }
+    },
+    (rng: Rng) => {
+      for (;;) {
+        const ds = shuffleArr(rng, [2, 3, 4, 5, 6, 8, 9, 10, 12]).slice(0, 3) as [number, number, number]
+        const k = (ds[0] * ds[1] / gcd(ds[0], ds[1])) * ds[2] / gcd(ds[0] * ds[1] / gcd(ds[0], ds[1]), ds[2])
+        if (k > 72 || ds.some((d) => d === k)) continue
+        const ns = ds.map((d) => {
+          let n = randInt(rng, 1, d - 1)
+          while (gcd(n, d) !== 1) n = randInt(rng, 1, d - 1)
+          return n
+        })
+        const terms = ds.map((d, i) => `${ns[i]}/${d}`)
+        return valueTask({
+          question: `Lisa will ${terms.join(' + ')} berechnen. Welchen Hauptnenner wählt sie?`,
+          answerKind: 'integer',
+          value: k,
+          solution: String(k),
+          explanation: `Der Hauptnenner ist das kgV von ${ds.join(', ')}: ${k} ist die kleinste Zahl, die durch ${ds.join(', ')} teilbar ist (${ds.map((d) => `${k} : ${d} = ${k / d}`).join(', ')}).`,
+          dedupeKey: `ma:k6:hn3:${[...ds].sort((a, b) => a - b).join(':')}`,
+        })
+      }
+    },
+  ),
 }
 
 const vergleichen: Topic = {
   id: 'lb1-vergleichen',
   title: 'Brüche vergleichen',
-  hint: 'Gib <, > oder = ein.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -177,30 +233,46 @@ const vergleichen: Topic = {
   },
   generate: mixedVariants(
     (rng: Rng) => {
-      const a = makeFraction(randInt(rng, 1, 9), randInt(rng, 2, 9))
-      const b = makeFraction(randInt(rng, 1, 9), randInt(rng, 2, 9))
-      const cmp = a.n * b.d - b.n * a.d
-      const symbol = cmp < 0 ? '<' : cmp > 0 ? '>' : '='
-      const left = a.n * b.d
-      const right = b.n * a.d
-      return textTask({
-        question: `Vergleiche: ${format(a)} ___ ${format(b)}`,
-        accepted: [symbol],
-        solution: symbol,
-        explanation: `Bringe beide Brüche auf den gemeinsamen Nenner ${a.d * b.d}: ${format(a)} = ${left}/${a.d * b.d} und ${format(b)} = ${right}/${a.d * b.d}. Da ${left} ${symbol} ${right}, gilt ${format(a)} ${symbol} ${format(b)}.`,
+      const byValue = new Map<number, Fraction>()
+      while (byValue.size < 4) {
+        const f = makeFraction(randInt(rng, 1, 11), randInt(rng, 2, 12))
+        if (f.d === 1) continue
+        byValue.set(roundTo(toDecimal(f), 9), f)
+      }
+      const list = [...byValue.entries()].sort((x, y) => y[0] - x[0])
+      const biggest = list[0]![1]
+      const smallestWanted = rng() < 0.4
+      const target = smallestWanted ? list[list.length - 1]![1] : biggest
+      const choices = shuffleArr(rng, list.map(([, f]) => format(f)))
+      return choicePickTask({
+        question: `Welcher der Brüche ist am ${smallestWanted ? 'kleinsten' : 'größten'}?`,
+        choices,
+        correct: format(target),
+        solution: format(target),
+        explanation: `Als Dezimalzahlen: ${list.map(([v, f]) => `${format(f)} ≈ ${formatDe(roundTo(v, 3))}`).join(', ')}. Am ${smallestWanted ? 'kleinsten' : 'größten'} ist ${format(target)}.`,
+        dedupeKey: `ma:k6:bruchvergl:mc:${[...choices].sort().join(',')}:${smallestWanted}`,
       })
     },
     (rng: Rng) => {
-      const a = makeFraction(randInt(rng, 1, 7), randInt(rng, 2, 8))
-      const b = makeFraction(randInt(rng, 1, 7), randInt(rng, 2, 8))
+      const properFraction = (): Fraction => {
+        for (;;) {
+          const f = makeFraction(randInt(rng, 1, 7), randInt(rng, 2, 8))
+          if (f.d > 1 && f.n < f.d) return f
+        }
+      }
+      const a = properFraction()
+      let b = properFraction()
+      if (rng() < 0.2) b = { n: a.n * 2, d: a.d * 2 }
       const cmp = a.n * b.d - b.n * a.d
-      const symbol = cmp < 0 ? '<' : cmp > 0 ? '>' : '='
+      const correct = cmp > 0 ? 'Der linke Anteil ist größer.' : cmp < 0 ? 'Der rechte Anteil ist größer.' : 'Beide Anteile sind gleich groß.'
       return {
-        ...textTask({
-          question: 'Vergleiche die beiden dargestellten Bruchanteile. Gib <, > oder = ein.',
-          accepted: [symbol],
-          solution: symbol,
-          explanation: `${format(a)} ${symbol} ${format(b)}, weil ${a.n * b.d} ${symbol} ${b.n * a.d} bei gemeinsamem Nenner ${a.d * b.d}.`,
+        ...choicePickTask({
+          question: 'Vergleiche die beiden dargestellten Bruchanteile.',
+          choices: ['Der linke Anteil ist größer.', 'Der rechte Anteil ist größer.', 'Beide Anteile sind gleich groß.'],
+          correct,
+          solution: correct,
+          explanation: `Links ${format(a)}, rechts ${format(b)}. Mit dem gemeinsamen Nenner ${a.d * b.d}: ${a.n * b.d}/${a.d * b.d} und ${b.n * a.d}/${a.d * b.d}.`,
+          dedupeKey: `ma:k6:bruchvergl:bild:${a.n}/${a.d}:${b.n}/${b.d}`,
         }),
         visualContent: twoFractionVisual(a, b, pick(rng, ['circle', 'bar'] as const)),
       }
@@ -326,7 +398,6 @@ const multBrueche: Topic = {
 const divBrueche: Topic = {
   id: 'lb1-div-brueche',
   title: 'Brüche dividieren',
-  hint: 'Dividieren heißt mit dem Kehrwert multiplizieren.',
   pointsPerTask: 10,
   difficulty: 2,
   fachwissen: {
@@ -347,62 +418,78 @@ const divBrueche: Topic = {
   },
 }
 
+/** Brüche, deren Nenner sich auf 100 oder 1000 erweitern lässt, ohne Zehntel/Halbe/Viertel (Kl. 5). */
+const ZEHNERBRUCH_NENNER = [8, 16, 20, 25, 40, 50, 125, 250] as const
+
+function zehnerErweiterung(f: Fraction): { factor: number; power: number } {
+  for (const power of [10, 100, 1000, 10000]) {
+    if (power % f.d === 0) return { factor: power / f.d, power }
+  }
+  throw new Error(`kein Zehnerbruch: ${format(f)}`)
+}
+
 const bruchZuDezimal: Topic = {
   id: 'lb1-bruch-dezimal',
-  title: 'Brüche in Dezimalzahlen umwandeln',
-  hint: 'Nutze das Komma als Dezimaltrennzeichen.',
+  title: 'Brüche und Dezimalzahlen ineinander umwandeln',
   pointsPerTask: 10,
-  difficulty: 1,
+  difficulty: 2,
   fachwissen: {
-    text: 'Jeden Bruch p/q kann man in eine Dezimalzahl umwandeln, indem man p durch q dividiert. Enthält der gekürzte Nenner nur die Primfaktoren 2 und 5, entsteht eine endliche Dezimalzahl (z. B. 3/4 = 0,75). Andernfalls entsteht eine periodische Dezimalzahl mit einem sich wiederholenden Block.',
+    text: 'Enthält der gekürzte Nenner nur die Primfaktoren 2 und 5, kann man den Bruch ohne schriftliche Division auf einen Zehnerbruch erweitern: 7/8 = 875/1000 = 0,875. Umgekehrt schreibt man eine endliche Dezimalzahl als Zehnerbruch und kürzt vollständig: 0,375 = 375/1000 = 3/8.',
     quelle: 'Wikipedia: Dezimalbruch',
     url: 'https://de.wikipedia.org/wiki/Dezimalbruch',
   },
   generate: mixedVariants(
     (rng: Rng) => {
-      const denom = pick(rng, [2, 4, 5, 8, 10, 20, 25])
-      const n = randInt(rng, 1, denom - 1)
-      const f = makeFraction(n, denom)
-      const value = toDecimal(f)
-      return valueTask({
-        question: `Wandle den Bruch ${format(f)} in eine Dezimalzahl um.`,
-        answerKind: 'decimal',
-        value,
-        solution: formatDe(value),
-        explanation: `${format(f)} bedeutet ${f.n} : ${f.d}. Erweitere auf einen Zehnerbruch oder dividiere: ${f.n} : ${f.d} = ${formatDe(value)}.`,
-      })
-    },
-    (rng: Rng) => {
-      const denom = pick(rng, [2, 4, 5, 8, 10])
-      const n = randInt(rng, 1, denom - 1)
-      const f = makeFraction(n, denom)
-      const value = toDecimal(f)
-      return numberLineTask({
-        question: `Markiere den Wert von ${format(f)} auf dem Zahlenstrahl.`,
-        min: 0,
-        max: 1,
-        step: 0.05,
-        value,
-        decimals: 2,
-        solution: formatDe(value),
-        explanation: `${format(f)} = ${f.n} : ${f.d} = ${formatDe(value)}.`,
-        eps: 0.03,
-      })
-    },
-    (rng: Rng) => {
-      const denom = pick(rng, [4, 5, 8, 10])
-      const n = randInt(rng, 1, denom - 1)
-      const f = makeFraction(n, denom)
-      const value = toDecimal(f)
-      return {
-        ...valueTask({
-          question: 'Welcher Dezimalwert entspricht dem eingefärbten Anteil?',
+      for (;;) {
+        const f = makeFraction(randInt(rng, 1, 30), pick(rng, ZEHNERBRUCH_NENNER))
+        if (f.n >= f.d || ![8, 16, 20, 25, 40, 50, 125, 250].includes(f.d)) continue
+        const { factor, power } = zehnerErweiterung(f)
+        const value = toDecimal(f)
+        return valueTask({
+          question: `Wandle ${format(f)} ohne schriftliche Division in eine Dezimalzahl um.`,
           answerKind: 'decimal',
           value,
           solution: formatDe(value),
-          explanation: `${n}/${denom} = ${formatDe(value)}.`,
-        }),
-        visualContent: generateFractionBarSvg({ numerator: n, denominator: denom }),
+          explanation: `Erweitere mit ${factor} auf den Nenner ${formatDe(power)}: ${format(f)} = ${f.n * factor}/${formatDe(power)} = ${formatDe(value)}.`,
+          dedupeKey: `ma:k6:bruchdez:${format(f)}`,
+        })
+      }
+    },
+    (rng: Rng) => {
+      for (;;) {
+        const f = makeFraction(randInt(rng, 1, 30), pick(rng, ZEHNERBRUCH_NENNER))
+        if (f.n >= f.d || ![8, 16, 20, 25, 40, 50, 125, 250].includes(f.d)) continue
+        const { power } = zehnerErweiterung(f)
+        const value = toDecimal(f)
+        const zaehler = Math.round(value * power)
+        return fractionTask({
+          question: `Schreibe ${formatDe(value)} als vollständig gekürzten Bruch.`,
+          value: f,
+          requireReduced: true,
+          solution: format(f),
+          explanation: `${formatDe(value)} = ${zaehler}/${formatDe(power)}. Kürzen durch ${gcd(zaehler, power)} ergibt ${format(f)}.`,
+          dedupeKey: `ma:k6:dezbruch:${format(f)}`,
+        })
+      }
+    },
+    (rng: Rng) => {
+      for (;;) {
+        const d = pick(rng, [8, 20, 40] as const)
+        const f = makeFraction(randInt(rng, 1, d - 1), d)
+        if (f.d !== d) continue
+        const value = toDecimal(f)
+        return numberLineTask({
+          question: `Markiere ${format(f)} auf dem Zahlenstrahl.`,
+          min: 0,
+          max: 1,
+          step: 0.025,
+          value,
+          decimals: 3,
+          solution: formatDe(value),
+          explanation: `${format(f)} = ${formatDe(value)}, denn ${f.n} · ${zehnerErweiterung(f).factor} = ${Math.round(value * zehnerErweiterung(f).power)} und ${format(f)} = ${Math.round(value * zehnerErweiterung(f).power)}/${formatDe(zehnerErweiterung(f).power)}.`,
+          eps: 0.0125,
+          dedupeKey: `ma:k6:bruchdez:zs:${format(f)}`,
+        })
       }
     },
   ),
@@ -410,68 +497,89 @@ const bruchZuDezimal: Topic = {
 
 const prozentUmwandeln: Topic = {
   id: 'lb1-prozent',
-  title: 'In Prozent umwandeln',
-  hint: 'Gib nur die Zahl vor dem Prozentzeichen ein.',
+  title: 'Brüche, Dezimalzahlen und Prozentangaben umwandeln',
   pointsPerTask: 10,
-  difficulty: 1,
+  difficulty: 2,
   fachwissen: {
-    text: 'Prozent bedeutet „von Hundert" (lateinisch: per centum). Der Prozentsatz p% entspricht dem Bruch p/100 oder der Dezimalzahl p/100. Zur Umwandlung eines Bruchs in Prozent erweitert man auf den Nenner 100 oder multipliziert den Dezimalwert mit 100. Beispiel: 3/4 = 75/100 = 75 %.',
+    text: 'Prozent bedeutet „von Hundert“: p % = p/100. Brüche wie 3/8 rechnet man über die Dezimalzahl um: 3/8 = 0,375 = 37,5 %. Bei Nennern wie 3 oder 6 entsteht eine periodische Dezimalzahl, dann rundet man: 1/3 ≈ 33,3 %. Umgekehrt schreibt man p % als Bruch p/100 und kürzt vollständig: 35 % = 35/100 = 7/20.',
     quelle: 'Wikipedia: Prozentrechnung',
     url: 'https://de.wikipedia.org/wiki/Prozentrechnung',
   },
   generate: mixedVariants(
     (rng: Rng) => {
-      const denom = pick(rng, [2, 4, 5, 10, 20, 25, 50])
-      const n = randInt(rng, 1, denom - 1)
-      const f = makeFraction(n, denom)
-      const value = roundTo(toDecimal(f) * 100, 2)
+      for (;;) {
+        const d = pick(rng, [8, 16, 40] as const)
+        const f = makeFraction(randInt(rng, 1, d - 1), d)
+        if (f.d !== d) continue
+        const value = roundTo(toDecimal(f) * 100, 3)
+        return valueTask({
+          question: `Wie viel Prozent sind ${format(f)}?`,
+          unit: '%',
+          answerKind: 'decimal',
+          value,
+          solution: `${formatDe(value)} %`,
+          explanation: `${format(f)} = ${formatDe(toDecimal(f))} (erweitern auf einen Zehnerbruch). ${formatDe(toDecimal(f))} = ${formatDe(value)}/100 = ${formatDe(value)} %.`,
+          dedupeKey: `ma:k6:proz:bruch:${format(f)}`,
+        })
+      }
+    },
+    (rng: Rng) => {
+      const f = pick(rng, [makeFraction(1, 3), makeFraction(2, 3), makeFraction(1, 6), makeFraction(5, 6), makeFraction(1, 9), makeFraction(4, 9)])
+      const value = roundTo(toDecimal(f) * 100, 1)
       return valueTask({
-        question: `Wie viel Prozent sind ${format(f)}?`,
+        question: `Wie viel Prozent sind ${format(f)}? Runde auf eine Nachkommastelle.`,
         unit: '%',
         answerKind: 'decimal',
         value,
+        eps: 0.051,
         solution: `${formatDe(value)} %`,
-        explanation: `Prozent bedeutet „von hundert". Erweitere ${format(f)} so, dass der Nenner 100 wird, oder rechne ${format(f)} · 100 = ${formatDe(value)} %.`,
+        explanation: `${f.n} : ${f.d} = ${formatDe(roundTo(toDecimal(f), 4))}… ist periodisch. In Prozent: ${formatDe(roundTo(toDecimal(f) * 100, 3))}… % ≈ ${formatDe(value)} %.`,
+        dedupeKey: `ma:k6:proz:period:${format(f)}`,
       })
     },
     (rng: Rng) => {
-      const value = randInt(rng, 1, 99)
-      const dec = value / 100
+      for (;;) {
+        const p = pick(rng, [2, 4, 5, 6, 8, 12, 15, 24, 35, 45, 55, 65, 85, 12.5, 37.5, 62.5, 87.5])
+        const f = makeFraction(Math.round(p * 10), 1000)
+        if (f.d === 1) continue
+        const raw = Number.isInteger(p) ? `${p}/100` : `${formatDe(p * 10)}/1000`
+        return fractionTask({
+          question: `Schreibe ${formatDe(p)} % als vollständig gekürzten Bruch.`,
+          value: f,
+          requireReduced: true,
+          solution: format(f),
+          explanation: `${formatDe(p)} % = ${raw}. Vollständig gekürzt: ${format(f)}.`,
+          dedupeKey: `ma:k6:proz:zubruch:${p}`,
+        })
+      }
+    },
+    (rng: Rng) => {
+      const dec = pick(rng, [0.125, 0.375, 0.045, 0.008, 1.2, 1.05, 2.5, 0.625, 0.015, 1.75])
+      const value = roundTo(dec * 100, 3)
       return valueTask({
-        question: `Wie viel Prozent ist die Dezimalzahl ${formatDe(dec)}?`,
-        unit: '%',
-        answerKind: 'decimal',
-        value,
-        solution: `${value} %`,
-        explanation: `Multipliziere die Dezimalzahl mit 100: ${formatDe(dec)} · 100 = ${value} %.`,
-      })
-    },
-    (rng: Rng) => {
-      const denom = pick(rng, [4, 5, 8, 10, 20])
-      const n = randInt(rng, 1, denom - 1)
-      const value = roundTo((n / denom) * 100, 2)
-      return visualTask({
-        question: 'Wie viel Prozent des Kreises sind eingefärbt?',
+        question: `Schreibe ${formatDe(dec)} in Prozent.`,
         unit: '%',
         answerKind: 'decimal',
         value,
         solution: `${formatDe(value)} %`,
-        explanation: `${n} von ${denom} Sektoren = ${n}/${denom} = ${formatDe(value)} %.`,
-        visualContent: generateFractionCircleSvg({ numerator: n, denominator: denom }),
+        explanation: `Das Komma rückt zwei Stellen nach rechts (· 100): ${formatDe(dec)} = ${formatDe(value)}/100 = ${formatDe(value)} %.${dec > 1 ? ' Mehr als das Ganze ergibt mehr als 100 %.' : ''}`,
+        dedupeKey: `ma:k6:proz:dez:${dec}`,
       })
     },
     (rng: Rng) => {
-      const denom = pick(rng, [4, 5, 8, 10, 20])
-      const n = randInt(rng, 1, denom - 1)
-      const value = roundTo((n / denom) * 100, 2)
+      const d = pick(rng, [8, 16] as const)
+      let n = randInt(rng, 1, d - 1)
+      while (n % 2 === 0) n = randInt(rng, 1, d - 1)
+      const value = roundTo((n / d) * 100, 3)
       return visualTask({
-        question: 'Wie viel Prozent des Streifens sind eingefärbt?',
+        question: `Der Kreis ist in ${d} gleich große Teile geteilt. Wie viel Prozent sind eingefärbt?`,
         unit: '%',
         answerKind: 'decimal',
         value,
         solution: `${formatDe(value)} %`,
-        explanation: `${n} von ${denom} Abschnitten = ${formatDe(value)} %.`,
-        visualContent: generateFractionBarSvg({ numerator: n, denominator: denom }),
+        explanation: `${n} von ${d} Teilen = ${n}/${d}. Ein Teil sind 100 % : ${d} = ${formatDe(100 / d)} %, also ${n} · ${formatDe(100 / d)} % = ${formatDe(value)} %.`,
+        visualContent: generateFractionCircleSvg({ numerator: n, denominator: d }),
+        dedupeKey: `ma:k6:proz:kreis:${n}:${d}`,
       })
     },
   ),
@@ -479,114 +587,228 @@ const prozentUmwandeln: Topic = {
 
 const dezAddSub: Topic = {
   id: 'lb1-dez-add-sub',
-  title: 'Dezimalzahlen addieren und subtrahieren',
-  hint: 'Achte auf die Ausrichtung des Kommas.',
+  title: 'Dezimalzahlen addieren und subtrahieren: Terme und Sachaufgaben',
   pointsPerTask: 10,
-  difficulty: 1,
+  difficulty: 2,
   fachwissen: {
-    text: 'Dezimalzahlen werden addiert und subtrahiert, indem man sie kommagerecht untereinanderschreibt und stellenweise rechnet. Stellen hinter dem Komma (Zehntel, Hundertstel, …) folgen dem gleichen Prinzip wie ganze Stellen. Fehlende Dezimalstellen kann man mit Nullen auffüllen, ohne den Wert zu ändern.',
+    text: 'Bei Termen mit mehreren Dezimalzahlen rechnet man von links nach rechts und schreibt jede Teilrechnung kommagerecht untereinander; fehlende Nachkommastellen füllt man mit Nullen auf. Gesuchte Summanden oder Minuenden findet man mit der Umkehraufgabe: Aus x + a = s folgt x = s − a, aus x − a = d folgt x = d + a.',
     quelle: 'Wikipedia: Dezimalzahl',
     url: 'https://de.wikipedia.org/wiki/Dezimalzahl',
   },
-  generate: (rng: Rng) => {
-    const a = randInt(rng, 10, 999) / 10
-    const b = randInt(rng, 10, 999) / 10
-    const doAdd = rng() < 0.5 || a < b
-    const value = roundTo(doAdd ? a + b : a - b, 2)
-    const op = doAdd ? '+' : '−'
-    return valueTask({
-      question: `Berechne: ${formatDe(a)} ${op} ${formatDe(b)}`,
-      answerKind: 'decimal',
-      value,
-      solution: formatDe(value),
-      explanation: `Schreibe die Zahlen kommagerecht untereinander und rechne stellenweise: ${formatDe(a)} ${op} ${formatDe(b)} = ${formatDe(value)}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const a = randInt(rng, 1001, 9999) / 100
+      const b = randInt(rng, 11, 999) / 1000
+      const c = randInt(rng, 11, 99) / 10
+      const value = roundTo(a + b - c, 3)
+      return valueTask({
+        question: `Berechne: ${formatDe(a)} + ${formatDe(b)} − ${formatDe(c)}`,
+        answerKind: 'decimal',
+        value,
+        solution: formatDe(value),
+        explanation: `${formatDe(a)} + ${formatDe(b)} = ${formatDe(roundTo(a + b, 3))}; ${formatDe(roundTo(a + b, 3))} − ${formatDe(c)} = ${formatDe(value)}.`,
+        dedupeKey: `ma:k6:dezaddsub:term:${a}:${b}:${c}`,
+      })
+    },
+    (rng: Rng) => {
+      const preise = [randInt(rng, 120, 899), randInt(rng, 120, 899), randInt(rng, 50, 499)].map((x) => x / 100)
+      const schein = pick(rng, [20, 50])
+      const summe = roundTo(preise.reduce((s, x) => s + x, 0), 2)
+      const rueck = roundTo(schein - summe, 2)
+      return valueTask({
+        question: `Lea kauft ein Heft für ${formatDe(preise[0]!)} €, einen Füller für ${formatDe(preise[1]!)} € und Radiergummis für ${formatDe(preise[2]!)} €. Sie bezahlt mit einem ${schein}-€-Schein. Wie viel Euro bekommt sie zurück?`,
+        unit: '€',
+        answerKind: 'decimal',
+        value: rueck,
+        solution: `${formatDe(rueck)} €`,
+        explanation: `Summe: ${preise.map((p) => formatDe(p)).join(' + ')} = ${formatDe(summe)} €. Rückgeld: ${schein} − ${formatDe(summe)} = ${formatDe(rueck)} €.`,
+        dedupeKey: `ma:k6:dezaddsub:geld:${preise.join(':')}:${schein}`,
+      })
+    },
+    (rng: Rng) => {
+      const x = randInt(rng, 101, 999) / 100
+      const s = randInt(rng, 1001, 4999) / 100
+      const missingFirst = rng() < 0.5
+      return valueTask({
+        question: missingFirst
+          ? `Welche Zahl muss man zu ${formatDe(x)} addieren, um ${formatDe(roundTo(x + s, 2))} zu erhalten?`
+          : `Von welcher Zahl muss man ${formatDe(x)} subtrahieren, um ${formatDe(s)} zu erhalten?`,
+        answerKind: 'decimal',
+        value: missingFirst ? s : roundTo(s + x, 2),
+        solution: formatDe(missingFirst ? s : roundTo(s + x, 2)),
+        explanation: missingFirst
+          ? `${formatDe(roundTo(x + s, 2))} − ${formatDe(x)} = ${formatDe(s)}.`
+          : `${formatDe(s)} + ${formatDe(x)} = ${formatDe(roundTo(s + x, 2))}.`,
+        dedupeKey: `ma:k6:dezaddsub:luecke:${x}:${s}:${missingFirst}`,
+      })
+    },
+  ),
 }
 
 const dezMult: Topic = {
   id: 'lb1-dez-mult',
-  title: 'Dezimalzahlen multiplizieren',
-  hint: 'Mit natürlichen Zahlen oder Zehnerpotenzen.',
+  title: 'Dezimalzahlen miteinander multiplizieren',
   pointsPerTask: 10,
-  difficulty: 1,
+  difficulty: 2,
   fachwissen: {
-    text: 'Dezimalzahlen werden wie natürliche Zahlen multipliziert; anschließend wird das Komma so gesetzt, dass die Gesamtanzahl der Nachkommastellen beider Faktoren stimmt. Beim Multiplizieren mit 10, 100, 1000 … verschiebt sich das Komma um 1, 2, 3 … Stellen nach rechts.',
+    text: 'Zwei Dezimalzahlen multipliziert man zunächst ohne Komma wie natürliche Zahlen. Das Ergebnis hat so viele Nachkommastellen wie beide Faktoren zusammen. Ist ein Faktor kleiner als 1, wird das Produkt kleiner als der andere Faktor.',
     quelle: 'Wikipedia: Dezimalzahl',
     url: 'https://de.wikipedia.org/wiki/Dezimalzahl',
   },
-  generate: (rng: Rng) => {
-    const a = randInt(rng, 11, 249) / 10
-    const factor = pick(rng, [2, 3, 4, 5, 6, 10, 100])
-    const value = roundTo(a * factor, 2)
-    const tip =
-      factor === 10 || factor === 100
-        ? `Multiplizieren mit ${factor} verschiebt das Komma um ${factor === 10 ? 'eine' : 'zwei'} Stelle(n) nach rechts.`
-        : `Rechne wie mit natürlichen Zahlen und setze am Ende das Komma richtig.`
-    return valueTask({
-      question: `Berechne: ${formatDe(a)} · ${factor}`,
-      answerKind: 'decimal',
-      value,
-      solution: formatDe(value),
-      explanation: `${tip} Ergebnis: ${formatDe(a)} · ${factor} = ${formatDe(value)}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const a10 = randInt(rng, 12, 99)
+      const b100 = randInt(rng, 2, 99)
+      const a = a10 / 10
+      const b = b100 / 100
+      const value = roundTo((a10 * b100) / 1000, 3)
+      return valueTask({
+        question: `Berechne: ${formatDe(a)} · ${formatDe(b)}`,
+        answerKind: 'decimal',
+        value,
+        solution: formatDe(value),
+        explanation: `${a10} · ${b100} = ${a10 * b100}. Die Faktoren haben zusammen 1 + 2 = 3 Nachkommastellen, also ${formatDe(value)}.`,
+        dedupeKey: `ma:k6:dezmult:${a10}:${b100}`,
+      })
+    },
+    (rng: Rng) => {
+      const preis100 = randInt(rng, 119, 489)
+      const menge10 = randInt(rng, 12, 48)
+      const value = roundTo((preis100 * menge10) / 1000, 2)
+      return valueTask({
+        question: `1 kg Äpfel kostet ${formatDe(preis100 / 100)} €. Was kosten ${formatDe(menge10 / 10)} kg? Runde auf Cent.`,
+        unit: '€',
+        answerKind: 'decimal',
+        value,
+        eps: 0.006,
+        solution: `${formatDe(value)} €`,
+        explanation: `${formatDe(preis100 / 100)} € · ${formatDe(menge10 / 10)} = ${formatDe((preis100 * menge10) / 1000)} € ≈ ${formatDe(value)} €.`,
+        dedupeKey: `ma:k6:dezmult:preis:${preis100}:${menge10}`,
+      })
+    },
+  ),
 }
 
 const dezDiv: Topic = {
   id: 'lb1-dez-div',
-  title: 'Dezimalzahlen dividieren',
-  hint: 'Durch natürliche Zahlen oder Zehnerpotenzen.',
+  title: 'Durch Dezimalzahlen dividieren',
   pointsPerTask: 10,
-  difficulty: 1,
+  difficulty: 2,
   fachwissen: {
-    text: 'Beim Dividieren einer Dezimalzahl durch eine natürliche Zahl teilt man wie bei ganzen Zahlen und setzt das Komma im Ergebnis korrekt. Beim Dividieren durch 10, 100, 1000 … verschiebt sich das Komma um 1, 2, 3 … Stellen nach links.',
+    text: 'Bei der Division durch eine Dezimalzahl verschiebt man in Dividend und Divisor das Komma um gleich viele Stellen nach rechts, bis der Divisor eine natürliche Zahl ist. Der Quotient ändert sich dabei nicht, weil beide Zahlen mit derselben Zehnerpotenz multipliziert werden.',
     quelle: 'Wikipedia: Dezimalzahl',
     url: 'https://de.wikipedia.org/wiki/Dezimalzahl',
   },
-  generate: (rng: Rng) => {
-    const divisor = pick(rng, [2, 4, 5, 10, 100])
-    const quotient = randInt(rng, 11, 199) / 10
-    const dividend = roundTo(quotient * divisor, 2)
-    const tip =
-      divisor === 10 || divisor === 100
-        ? `Dividieren durch ${divisor} verschiebt das Komma um ${divisor === 10 ? 'eine' : 'zwei'} Stelle(n) nach links.`
-        : `Teile wie bei natürlichen Zahlen und setze das Komma korrekt.`
-    return valueTask({
-      question: `Berechne: ${formatDe(dividend)} : ${divisor}`,
-      answerKind: 'decimal',
-      value: quotient,
-      solution: formatDe(quotient),
-      explanation: `${tip} Ergebnis: ${formatDe(dividend)} : ${divisor} = ${formatDe(quotient)}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const d10 = pick(rng, [2, 3, 4, 5, 6, 8, 12, 15, 25])
+      const q = randInt(rng, 3, 60)
+      const divisor = d10 / 10
+      const dividend = roundTo(q * divisor, 2)
+      return valueTask({
+        question: `Berechne: ${formatDe(dividend)} : ${formatDe(divisor)}`,
+        answerKind: 'decimal',
+        value: q,
+        solution: formatDe(q),
+        explanation: `Beide Zahlen mit 10 multiplizieren ändert den Quotienten nicht: ${formatDe(roundTo(dividend * 10, 2))} : ${d10} = ${q}.`,
+        dedupeKey: `ma:k6:dezdiv:${d10}:${q}`,
+      })
+    },
+    (rng: Rng) => {
+      const d100 = pick(rng, [4, 5, 8, 12, 15, 25, 75])
+      const q = randInt(rng, 4, 40)
+      const divisor = d100 / 100
+      const dividend = roundTo(q * divisor, 2)
+      return valueTask({
+        question: `Berechne: ${formatDe(dividend)} : ${formatDe(divisor)}`,
+        answerKind: 'decimal',
+        value: q,
+        solution: formatDe(q),
+        explanation: `Mit 100 erweitern: ${formatDe(roundTo(dividend * 100, 2))} : ${d100} = ${q}.`,
+        dedupeKey: `ma:k6:dezdiv100:${d100}:${q}`,
+      })
+    },
+    (rng: Rng) => {
+      const flasche10 = pick(rng, [2, 3, 4, 5, 7, 15])
+      const n = randInt(rng, 4, 24)
+      const gesamt = roundTo((flasche10 * n) / 10, 1)
+      return valueTask({
+        question: `Aus einem Kanister mit ${formatDe(gesamt)} l Saft werden Flaschen zu je ${formatDe(flasche10 / 10)} l gefüllt. Wie viele Flaschen werden voll?`,
+        answerKind: 'integer',
+        value: n,
+        solution: String(n),
+        explanation: `${formatDe(gesamt)} : ${formatDe(flasche10 / 10)} = ${formatDe(gesamt * 10)} : ${flasche10} = ${n}.`,
+        dedupeKey: `ma:k6:dezdiv:saft:${flasche10}:${n}`,
+      })
+    },
+  ),
 }
 
 const runden: Topic = {
   id: 'lb1-runden',
-  title: 'Dezimalzahlen runden',
-  hint: 'Ist die nächste Ziffer 5 oder größer, wird aufgerundet.',
+  title: 'Ergebnisse sinnvoll runden',
   pointsPerTask: 10,
-  difficulty: 1,
+  difficulty: 2,
   fachwissen: {
-    text: 'Dezimalzahlen rundet man auf eine bestimmte Anzahl von Nachkommastellen. Entscheidend ist die Ziffer rechts der Rundungsstelle: Ist sie 0–4, bleibt die Rundungsstelle gleich; ist sie 5–9, wird aufgerundet. Runden auf zwei Dezimalstellen entspricht dem kaufmännischen Runden auf Cent-Beträge.',
+    text: 'Viele Divisionen gehen nicht auf; dann rundet man das Ergebnis auf eine sinnvolle Stelle, bei Geldbeträgen auf Cent (zwei Nachkommastellen). Entscheidend ist die erste weggelassene Ziffer: Bei 0–4 wird abgerundet, bei 5–9 aufgerundet.',
     quelle: 'Wikipedia: Runden (Mathematik)',
     url: 'https://de.wikipedia.org/wiki/Runden_(Mathematik)',
   },
-  generate: (rng: Rng) => {
-    const value = randInt(rng, 1000, 99999) / 1000
-    const places = pick(rng, [0, 1, 2])
-    const label = places === 0 ? 'ganze Zahl' : `${places} Nachkommastelle${places > 1 ? 'n' : ''}`
-    const rounded = roundTo(value, places)
-    return valueTask({
-      question: `Runde ${formatDe(value)} auf ${places === 0 ? 'eine ganze Zahl' : label}.`,
-      answerKind: 'decimal',
-      value: rounded,
-      eps: 1e-9,
-      solution: formatDe(rounded),
-      explanation: `Schau auf die Ziffer nach der ${places === 0 ? 'Einerstelle' : `${places}. Nachkommastelle`}. Ist sie 5 oder größer, wird aufgerundet, sonst abgerundet. ${formatDe(value)} ≈ ${formatDe(rounded)}.`,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      let a = randInt(rng, 10, 99)
+      const b = pick(rng, [3, 6, 7, 9, 11, 12])
+      if (a % b === 0) a++
+      const places = pick(rng, [1, 2])
+      const rounded = roundTo(a / b, places)
+      return valueTask({
+        question: `Berechne ${a} : ${b} und runde das Ergebnis auf ${places === 1 ? 'eine Nachkommastelle' : 'zwei Nachkommastellen'}.`,
+        answerKind: 'decimal',
+        value: rounded,
+        eps: 1e-9,
+        solution: formatDe(rounded),
+        explanation: `${a} : ${b} = ${formatDe(Math.floor((a / b) * 10000) / 10000)}… ≈ ${formatDe(rounded)}.`,
+        dedupeKey: `ma:k6:runden:quot:${a}:${b}:${places}`,
+      })
+    },
+    (rng: Rng) => {
+      const preis = randInt(rng, 101, 999) / 100
+      const stueck = pick(rng, [3, 6, 7, 9])
+      const proStueck = roundTo(preis / stueck, 2)
+      return valueTask({
+        question: `Ein Pack mit ${stueck} Joghurts kostet ${formatDe(preis)} €. Wie viel kostet ein Joghurt, auf Cent gerundet?`,
+        unit: '€',
+        answerKind: 'decimal',
+        value: proStueck,
+        eps: 1e-9,
+        solution: `${formatDe(proStueck)} €`,
+        explanation: `${formatDe(preis)} € : ${stueck} = ${formatDe(Math.floor((preis / stueck) * 10000) / 10000)}… € ≈ ${formatDe(proStueck)} €.`,
+        dedupeKey: `ma:k6:runden:preis:${preis}:${stueck}`,
+      })
+    },
+    (rng: Rng) => {
+      const value = randInt(rng, 10001, 99999) / 10000
+      const places = pick(rng, [1, 2, 3])
+      const rounded = roundTo(value, places)
+      const step = 10 ** -places
+      const cands = [
+        rounded,
+        roundTo(Math.floor(value * 10 ** places) / 10 ** places, places),
+        roundTo(rounded + step, places),
+        roundTo(value, places + 1),
+        roundTo(rounded - step, places),
+      ]
+      const correct = formatDe(rounded)
+      return choicePickTask({
+        question: `Welche Zahl entsteht, wenn man ${formatDe(value)} auf ${places === 1 ? 'Zehntel' : places === 2 ? 'Hundertstel' : 'Tausendstel'} rundet?`,
+        choices: shuffleArr(rng, [...new Set(cands.map((c) => formatDe(c)))].slice(0, 4)),
+        correct,
+        solution: correct,
+        explanation: `Gerundet auf ${places === 1 ? 'Zehntel' : places === 2 ? 'Hundertstel' : 'Tausendstel'}: ${formatDe(value)} ≈ ${correct}.`,
+        dedupeKey: `ma:k6:runden:mc:${value}:${places}`,
+      })
+    },
+  ),
 }
 
 // --- NEW: Sachaufgabe Bruchrechnung ------------------------------------------
@@ -594,7 +816,6 @@ const runden: Topic = {
 const sachaufgabeBruch: Topic = {
   id: 'lb1-sachaufgabe-bruch',
   title: 'Sachaufgabe: Bruchrechnung im Alltag',
-  hint: 'Lies die Aufgabe genau. Welcher Bruch wird gesucht? Dann rechne.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Sachaufgabe', 'Bruch', 'Anteil', 'Alltag'],
@@ -637,7 +858,6 @@ const sachaufgabeBruch: Topic = {
 const proportional: Topic = {
   id: 'lb2-proportional',
   title: 'Proportionale Zuordnung (Dreisatz)',
-  hint: 'Erst auf eine Einheit zurückrechnen.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -755,7 +975,6 @@ const proportional: Topic = {
 const antiproportional: Topic = {
   id: 'lb2-antiproportional',
   title: 'Antiproportionale Zuordnung',
-  hint: 'Mehr Personen → weniger Zeit. Produktgleichheit nutzen.',
   pointsPerTask: 10,
   difficulty: 2,
   fachwissen: {
@@ -891,7 +1110,6 @@ const haeufigkeit: Topic = {
 const sachaufgabeDreisatz: Topic = {
   id: 'lb2-sachaufgabe-dreisatz',
   title: 'Sachaufgabe: Dreisatz mit Einheiten',
-  hint: 'Zuerst den Einheitspreis oder -wert bestimmen, dann umrechnen.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Sachaufgabe', 'Dreisatz', 'proportional', 'Einheiten'],
@@ -972,7 +1190,6 @@ const sachaufgabeDreisatz: Topic = {
 const winkelDreieck: Topic = {
   id: 'lb3-winkel-dreieck',
   title: 'Innenwinkelsatz im Dreieck',
-  hint: 'Die Innenwinkel im Dreieck ergeben zusammen 180°.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -1024,7 +1241,6 @@ const winkelDreieck: Topic = {
 const winkelViereck: Topic = {
   id: 'lb3-winkel-viereck',
   title: 'Winkelsumme im Viereck',
-  hint: 'Die Innenwinkel im Viereck ergeben zusammen 360°.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -1083,53 +1299,97 @@ const winkelViereck: Topic = {
 
 const umfangRechteck: Topic = {
   id: 'lb3-umfang-rechteck',
-  title: 'Umfang von Rechteck und Quadrat',
+  title: 'Umfang von Parallelogramm, Trapez, Drachen und Raute',
   pointsPerTask: 10,
-  difficulty: 1,
+  difficulty: 2,
+  keywords: ['Umfang', 'Parallelogramm', 'Trapez', 'Drachenviereck', 'Raute'],
   fachwissen: {
-    text: 'Der Umfang eines Vielecks ist die Länge seiner Begrenzungslinie, also die Summe aller Seiten. Beim Rechteck: U = 2 · (a + b). Beim Quadrat: U = 4 · a. Der Umfang hat dieselbe Einheit wie die Seiten. Im Alltag wird der Umfang z. B. für Zaun- oder Rahmenlängen benötigt.',
-    quelle: 'Wikipedia: Umfang (Geometrie)',
-    url: 'https://de.wikipedia.org/wiki/Umfang_(Geometrie)',
+    text: 'Der Umfang ist die Summe aller Seitenlängen. Im Parallelogramm sind gegenüberliegende Seiten gleich lang: U = 2 · (a + b). In der Raute sind alle vier Seiten gleich lang: U = 4 · a. Im Drachenviereck sind je zwei benachbarte Seiten gleich lang: U = 2 · (a + b). Beim Trapez addiert man alle vier Seiten: U = a + b + c + d.',
+    quelle: 'Wikipedia: Viereck',
+    url: 'https://de.wikipedia.org/wiki/Viereck',
   },
   generate: mixedVariants(
     (rng: Rng) => {
-      const square = rng() < 0.35
-      const a = randInt(rng, 4, 28)
-      const b = square ? a : randInt(rng, 4, 28)
+      const a = randInt(rng, 5, 24)
+      let b = randInt(rng, 3, 18)
+      while (b === a) b = randInt(rng, 3, 18)
       const value = 2 * (a + b)
-      return valueTask({
-        question: square
-          ? `Ein Quadrat hat die Seitenlänge ${a} cm. Berechne den Umfang.`
-          : `Ein Rechteck ist ${a} cm lang und ${b} cm breit. Berechne den Umfang.`,
+      return visualTask({
+        question: `Im Parallelogramm ABCD ist a = ${a} cm und b = ${b} cm. Berechne den Umfang.`,
         unit: 'cm',
         answerKind: 'integer',
         value,
         solution: `${value} cm`,
-        explanation: square
-          ? `Umfang = 4 · ${a} cm = ${value} cm.`
-          : `Umfang = 2 · (${a} + ${b}) cm = ${value} cm.`,
+        explanation: `Gegenüberliegende Seiten sind gleich lang (c = a, d = b): U = 2 · (${a} cm + ${b} cm) = 2 · ${a + b} cm = ${value} cm.`,
+        visualContent: generateQuadrilateralSvg({ kind: 'parallelogramm', sides: { a: `${a} cm`, b: `${b} cm` } }),
+        dedupeKey: `ma:k6:u:para:${a}:${b}`,
       })
     },
     (rng: Rng) => {
-      const square = rng() < 0.35
-      const a = randInt(rng, 4, 20)
-      const b = square ? a : randInt(rng, 4, 20)
-      const value = 2 * (a + b)
+      const a = randInt(rng, 12, 30)
+      const c = randInt(rng, 4, a - 4)
+      const b = randInt(rng, 5, 14)
+      const d = randInt(rng, 5, 14)
+      const value = a + b + c + d
       return visualTask({
-        question: square
-          ? 'Berechne den Umfang des abgebildeten Quadrats:'
-          : 'Berechne den Umfang des abgebildeten Rechtecks:',
+        question: `Ein Trapez hat die Seiten a = ${a} cm, b = ${b} cm, c = ${c} cm und d = ${d} cm. Berechne den Umfang.`,
         unit: 'cm',
         answerKind: 'integer',
         value,
         solution: `${value} cm`,
-        explanation: square
-          ? `Umfang = 4 · ${a} cm = ${value} cm.`
-          : `Umfang = 2 · (${a} + ${b}) cm = ${value} cm.`,
-        visualContent: generateRectangleSvg({
-          widthLabel: `${a} cm`,
-          heightLabel: `${b} cm`,
-        }),
+        explanation: `Im Trapez sind die Seiten im Allgemeinen verschieden lang, also werden alle vier addiert: U = ${a} + ${b} + ${c} + ${d} = ${value} cm.`,
+        visualContent: generateQuadrilateralSvg({ kind: 'trapez', sides: { a: `${a} cm`, b: `${b} cm`, c: `${c} cm`, d: `${d} cm` } }),
+        dedupeKey: `ma:k6:u:trapez:${a}:${b}:${c}:${d}`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 6, 18)
+      let b = randInt(rng, 10, 26)
+      while (b === a) b = randInt(rng, 10, 26)
+      const value = 2 * (a + b)
+      return visualTask({
+        question: `Ein Drachenviereck hat zwei Seiten der Länge ${a} cm und zwei Seiten der Länge ${b} cm. Berechne den Umfang.`,
+        unit: 'cm',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm`,
+        explanation: `Im Drachenviereck kommen beide Seitenlängen je zweimal vor: U = 2 · (${a} cm + ${b} cm) = ${value} cm.`,
+        visualContent: generateQuadrilateralSvg({ kind: 'drachen', sides: { a: `${Math.max(a, b)} cm`, b: `${Math.min(a, b)} cm` }, vertexNames: false }),
+        dedupeKey: `ma:k6:u:drachen:${a}:${b}`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 4, 25)
+      const value = 4 * a
+      const rueck = rng() < 0.5
+      return valueTask({
+        question: rueck
+          ? `Eine Raute hat den Umfang ${value} cm. Wie lang ist eine Seite?`
+          : `Eine Raute hat die Seitenlänge ${a} cm. Berechne den Umfang.`,
+        unit: 'cm',
+        answerKind: 'integer',
+        value: rueck ? a : value,
+        solution: rueck ? `${a} cm` : `${value} cm`,
+        explanation: rueck
+          ? `In der Raute sind alle vier Seiten gleich lang: a = U : 4 = ${value} cm : 4 = ${a} cm.`
+          : `In der Raute sind alle vier Seiten gleich lang: U = 4 · ${a} cm = ${value} cm.`,
+        visualContent: generateQuadrilateralSvg({ kind: 'raute', sides: { a: rueck ? 'a = ?' : `${a} cm` }, vertexNames: false }),
+        dedupeKey: `ma:k6:u:raute:${a}:${rueck}`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 6, 20)
+      const b = randInt(rng, 4, 15)
+      const U = 2 * (a + b)
+      return valueTask({
+        question: `Ein Parallelogramm hat den Umfang ${U} cm und die Seite a = ${a} cm. Wie lang ist die Seite b?`,
+        unit: 'cm',
+        answerKind: 'integer',
+        value: b,
+        solution: `${b} cm`,
+        explanation: `U = 2 · (a + b) ⇒ a + b = ${U} : 2 = ${U / 2} cm ⇒ b = ${U / 2} − ${a} = ${b} cm.`,
+        visualContent: generateQuadrilateralSvg({ kind: 'parallelogramm', sides: { a: `${a} cm`, b: 'b = ?' } }),
+        dedupeKey: `ma:k6:u:para-rueck:${a}:${b}`,
       })
     },
   ),
@@ -1137,53 +1397,77 @@ const umfangRechteck: Topic = {
 
 const flaecheRechteck: Topic = {
   id: 'lb3-flaeche-rechteck',
-  title: 'Flächeninhalt von Rechteck und Quadrat',
+  title: 'Flächeninhalt von Parallelogramm, Trapez und Drachenviereck',
   pointsPerTask: 10,
-  difficulty: 1,
+  difficulty: 2,
+  keywords: ['Flächeninhalt', 'Parallelogramm', 'Trapez', 'Drachenviereck', 'Raute', 'Rückführprinzip'],
   fachwissen: {
-    text: 'Der Flächeninhalt eines Rechtecks ist das Produkt aus Länge und Breite: A = a · b. Beim Quadrat gilt A = a². Flächeneinheiten sind Quadrate der Längeneinheiten: 1 m² = 10 000 cm². Der Flächeninhalt gibt an, wie viele Einheitsquadrate in eine Figur passen.',
+    text: 'Mit dem Rückführprinzip führt man neue Figuren auf bekannte zurück. Ein Parallelogramm lässt sich durch Abschneiden und Ansetzen eines Dreiecks in ein Rechteck verwandeln: A = a · hₐ. Zwei gleiche Trapeze ergeben ein Parallelogramm mit der Grundseite a + c: A = (a + c) · h : 2. Drachenviereck und Raute sind halb so groß wie das Rechteck aus ihren Diagonalen: A = e · f : 2.',
     quelle: 'Wikipedia: Flächeninhalt',
     url: 'https://de.wikipedia.org/wiki/Fl%C3%A4cheninhalt',
   },
   generate: mixedVariants(
     (rng: Rng) => {
-      const square = rng() < 0.35
-      const a = randInt(rng, 4, 28)
-      const b = square ? a : randInt(rng, 4, 28)
-      const value = a * b
-      return valueTask({
-        question: square
-          ? `Ein Quadrat hat die Seitenlänge ${a} cm. Berechne den Flächeninhalt.`
-          : `Ein Rechteck ist ${a} cm lang und ${b} cm breit. Berechne den Flächeninhalt.`,
+      const a = randInt(rng, 5, 22)
+      const h = randInt(rng, 3, 15)
+      const b = h + randInt(rng, 1, 5)
+      const value = a * h
+      return visualTask({
+        question: `Ein Parallelogramm hat die Seite a = ${a} cm, die Seite b = ${b} cm und die Höhe hₐ = ${h} cm auf a. Berechne den Flächeninhalt.`,
         unit: 'cm²',
         answerKind: 'integer',
         value,
         solution: `${value} cm²`,
-        explanation: square
-          ? `Fläche = ${a} · ${a} = ${value} cm².`
-          : `Fläche = ${a} · ${b} = ${value} cm².`,
+        explanation: `Für die Fläche zählt die Höhe, nicht die schräge Seite b: A = a · hₐ = ${a} cm · ${h} cm = ${value} cm².`,
+        visualContent: generateQuadrilateralSvg({ kind: 'parallelogramm', sides: { a: `${a} cm`, b: `${b} cm` }, heightLabel: `${h} cm` }),
+        dedupeKey: `ma:k6:a:para:${a}:${h}:${b}`,
       })
     },
     (rng: Rng) => {
-      const square = rng() < 0.35
-      const a = randInt(rng, 4, 18)
-      const b = square ? a : randInt(rng, 4, 18)
-      const value = a * b
+      const a = randInt(rng, 10, 28)
+      const c = randInt(rng, 3, a - 3)
+      const h = randInt(rng, 3, 14)
+      const value = roundTo(((a + c) * h) / 2, 1)
       return visualTask({
-        question: square
-          ? 'Berechne den Flächeninhalt des abgebildeten Quadrats:'
-          : 'Berechne den Flächeninhalt des abgebildeten Rechtecks:',
+        question: `Ein Trapez hat die parallelen Seiten a = ${a} cm und c = ${c} cm sowie die Höhe h = ${h} cm. Berechne den Flächeninhalt.`,
         unit: 'cm²',
-        answerKind: 'integer',
+        answerKind: 'decimal',
         value,
-        solution: `${value} cm²`,
-        explanation: square
-          ? `Fläche = ${a} · ${a} = ${value} cm².`
-          : `Fläche = ${a} · ${b} = ${value} cm².`,
-        visualContent: generateRectangleSvg({
-          widthLabel: `${a} cm`,
-          heightLabel: `${b} cm`,
-        }),
+        solution: `${formatDe(value)} cm²`,
+        explanation: `A = (a + c) · h : 2 = (${a} + ${c}) · ${h} : 2 = ${a + c} · ${h} : 2 = ${formatDe(value)} cm².`,
+        visualContent: generateQuadrilateralSvg({ kind: 'trapez', sides: { a: `${a} cm`, c: `${c} cm` }, heightLabel: `${h} cm` }),
+        dedupeKey: `ma:k6:a:trapez:${a}:${c}:${h}`,
+      })
+    },
+    (rng: Rng) => {
+      const raute = rng() < 0.4
+      const e = randInt(rng, 6, 24)
+      let f = randInt(rng, 4, 20)
+      while (f === e) f = randInt(rng, 4, 20)
+      const value = roundTo((e * f) / 2, 1)
+      return visualTask({
+        question: `${raute ? 'Eine Raute' : 'Ein Drachenviereck'} hat die Diagonalen e = ${e} cm und f = ${f} cm. Berechne den Flächeninhalt.`,
+        unit: 'cm²',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} cm²`,
+        explanation: `Die Diagonalen stehen senkrecht aufeinander; die Figur ist halb so groß wie das Rechteck mit den Seiten e und f: A = e · f : 2 = ${e} · ${f} : 2 = ${formatDe(value)} cm².`,
+        visualContent: generateQuadrilateralSvg({ kind: raute ? 'raute' : 'drachen', diagonals: { e: `e = ${e} cm`, f: `f = ${f} cm` }, vertexNames: false }),
+        dedupeKey: `ma:k6:a:diag:${raute}:${e}:${f}`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 4, 16)
+      const h = randInt(rng, 3, 14)
+      const A = a * h
+      return valueTask({
+        question: `Ein Parallelogramm hat den Flächeninhalt ${A} cm² und die Grundseite a = ${a} cm. Wie groß ist die Höhe hₐ?`,
+        unit: 'cm',
+        answerKind: 'integer',
+        value: h,
+        solution: `${h} cm`,
+        explanation: `A = a · hₐ ⇒ hₐ = A : a = ${A} cm² : ${a} cm = ${h} cm.`,
+        dedupeKey: `ma:k6:a:para-h:${a}:${h}`,
       })
     },
   ),
@@ -1237,7 +1521,6 @@ const flaecheDreieck: Topic = {
 const kongruenzSatz: Topic = {
   id: 'lb3-kongruenzsatz',
   title: 'Kongruenzsatz wählen',
-  hint: 'SSS, SWS, WSW oder SsW – welche Angabe reicht?',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Kongruenz', 'SSS', 'SWS', 'WSW', 'SsW', 'Dreieck'],
@@ -1347,7 +1630,6 @@ const kongruenzSatz: Topic = {
 const wuerfelNetz: Topic = {
   id: 'lb4-wuerfelnetz',
   title: 'Würfelnetz erkennen',
-  hint: 'Ein faltbares Netz hat sechs Quadrate ohne Überlappung beim Falten.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['Würfel', 'Körpernetz', 'Netz', 'falten'],
@@ -1393,173 +1675,261 @@ const wuerfelNetz: Topic = {
 /** Sachaufgabe Geometrie: Kombiniertes Flächen-/Umfang-Problem im Alltag. */
 const sachaufgabeGeometrie: Topic = {
   id: 'lb3-sachaufgabe-geometrie',
-  title: 'Sachaufgabe: Fläche und Umfang im Alltag',
-  hint: 'Welche Formel passt? Umfang für Strecken, Fläche für Belag/Tapete.',
+  title: 'Sachaufgabe: Dreiecke und Vierecke im Alltag',
   pointsPerTask: 10,
   difficulty: 2,
-  keywords: ['Sachaufgabe', 'Fläche', 'Umfang', 'Dreieck', 'Rechteck', 'Alltag'],
+  keywords: ['Sachaufgabe', 'Trapez', 'Parallelogramm', 'Dreieck', 'zusammengesetzte Fläche', 'Alltag'],
   fachwissen: {
-    text: 'Bei Sachaufgaben zur Geometrie ist es wichtig, zwischen Umfang (Länge der Begrenzung) und Flächeninhalt (Größe der Fläche) zu unterscheiden. Für zusammengesetzte Figuren addiert man Teilflächen oder Teilstrecken. Beim Lösen: zuerst die Skizze, dann die passende Formel, dann die Rechnung mit Einheiten.',
+    text: 'Bei Sachaufgaben zerlegt man die Fläche in bekannte Figuren (Rechteck, Dreieck, Parallelogramm, Trapez), berechnet die Teilflächen und addiert oder subtrahiert sie. Danach rechnet man mit der Sachgröße weiter, z. B. Kosten = Fläche · Preis pro m². Am Ende prüft man, ob das Ergebnis zur Frage passt (Fläche in m², Länge in m).',
     quelle: 'Wikipedia: Flächeninhalt',
     url: 'https://de.wikipedia.org/wiki/Fl%C3%A4cheninhalt',
   },
-  generate: (rng: Rng) => {
-    const a = randInt(rng, 4, 18)
-    const b = randInt(rng, 4, 18)
-    const type = pick(rng, ['zaun', 'boden', 'dreieck-garten'])
-
-    if (type === 'zaun') {
-      const wert = 2 * (a + b)
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const b = pick(rng, [6, 8, 10, 12])
+      const hw = randInt(rng, 3, 6)
+      const hd = randInt(rng, 2, 5)
+      const fenster = pick(rng, [2, 3, 4])
+      const value = roundTo(b * hw + (b * hd) / 2 - fenster, 1)
       return valueTask({
-        question: `Ein rechteckiges Blumenbeet ist ${a} m lang und ${b} m breit. Wie viel Meter Beeteinfassung wird benötigt?`,
+        question: `Eine Giebelwand besteht aus einem Rechteck (${b} m breit, ${hw} m hoch) und einem aufgesetzten Dreieck (Grundseite ${b} m, Höhe ${hd} m). Die Fenster sind zusammen ${fenster} m² groß. Wie viel m² Wand müssen gestrichen werden?`,
+        unit: 'm²',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} m²`,
+        explanation: `Rechteck: ${b} · ${hw} = ${b * hw} m². Dreieck: ${b} · ${hd} : 2 = ${formatDe((b * hd) / 2)} m². Wand ohne Fenster: ${b * hw} + ${formatDe((b * hd) / 2)} − ${fenster} = ${formatDe(value)} m².`,
+        dedupeKey: `ma:k6:sach:giebel:${b}:${hw}:${hd}:${fenster}`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 20, 40)
+      const c = randInt(rng, 10, a - 4)
+      const h = randInt(rng, 10, 25)
+      const preis = pick(rng, [3, 4, 5, 8])
+      const flaeche = ((a + c) * h) / 2
+      const value = roundTo(flaeche * preis, 2)
+      return valueTask({
+        question: `Ein trapezförmiges Gartenstück hat die parallelen Seiten ${a} m und ${c} m, ihr Abstand beträgt ${h} m. Rollrasen kostet ${preis} € pro m². Was kostet der Rasen für das ganze Stück?`,
+        unit: '€',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} €`,
+        explanation: `Fläche: (${a} + ${c}) · ${h} : 2 = ${formatDe(flaeche)} m². Kosten: ${formatDe(flaeche)} · ${preis} € = ${formatDe(value)} €.`,
+        dedupeKey: `ma:k6:sach:rasen:${a}:${c}:${h}:${preis}`,
+      })
+    },
+    (rng: Rng) => {
+      const n = randInt(rng, 6, 14)
+      const a = pick(rng, [2.5, 3, 3.5])
+      const h = pick(rng, [4.5, 5, 5.5])
+      const value = roundTo(n * a * h, 2)
+      return valueTask({
+        question: `Auf einem Parkplatz sind ${n} schräge Stellplätze markiert. Jeder hat die Form eines Parallelogramms mit der Grundseite ${formatDe(a)} m und der Höhe ${formatDe(h)} m. Wie groß ist die markierte Fläche insgesamt?`,
+        unit: 'm²',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} m²`,
+        explanation: `Ein Stellplatz: A = g · h = ${formatDe(a)} · ${formatDe(h)} = ${formatDe(roundTo(a * h, 2))} m². Alle: ${n} · ${formatDe(roundTo(a * h, 2))} = ${formatDe(value)} m².`,
+        dedupeKey: `ma:k6:sach:park:${n}:${a}:${h}`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 14, 30)
+      const c = randInt(rng, 6, a - 4)
+      const s = randInt(rng, 6, 15)
+      const tor = pick(rng, [1, 2, 3])
+      const value = a + c + 2 * s - tor
+      return valueTask({
+        question: `Eine Weide hat die Form eines gleichschenkligen Trapezes mit den parallelen Seiten ${a} m und ${c} m und den Schenkeln je ${s} m. Sie wird eingezäunt, ein Tor ist ${tor} m breit. Wie viel Meter Zaun werden gebraucht?`,
         unit: 'm',
         answerKind: 'integer',
-        value: wert,
-        solution: `${wert} m`,
-        explanation: `Umfang = 2 · (${a} + ${b}) = 2 · ${a + b} = ${wert} m.`,
+        value,
+        solution: `${value} m`,
+        explanation: `Umfang: ${a} + ${c} + 2 · ${s} = ${a + c + 2 * s} m. Ohne Tor: ${a + c + 2 * s} − ${tor} = ${value} m.`,
+        dedupeKey: `ma:k6:sach:weide:${a}:${c}:${s}:${tor}`,
       })
-    }
-    if (type === 'boden') {
-      const wert = a * b
-      return valueTask({
-        question: `Ein Zimmer ist ${a} m lang und ${b} m breit. Wie viele m² Laminat werden benötigt?`,
-        unit: 'm²',
-        answerKind: 'integer',
-        value: wert,
-        solution: `${wert} m²`,
-        explanation: `Fläche = ${a} · ${b} = ${wert} m².`,
-      })
-    }
-    // Dreieck: Grundlinie und Höhe im Alltag
-    const g2 = a
-    const h2 = b
-    const flaeche = roundTo((g2 * h2) / 2, 1)
-    return valueTask({
-      question: `Ein dreieckiges Rabatten-Beet hat die Grundseite ${g2} m und die Höhe ${h2} m. Wie groß ist seine Fläche?`,
-      unit: 'm²',
-      answerKind: 'decimal',
-      value: flaeche,
-      solution: `${formatDe(flaeche)} m²`,
-      explanation: `Dreiecks-Fläche = (Grundseite · Höhe) : 2 = (${g2} · ${h2}) : 2 = ${formatDe(flaeche)} m².`,
-    })
-  },
+    },
+  ),
 }
 
 // ---------------------------------------------------------------------------
 // Lernbereich 4 — Prismen
 // ---------------------------------------------------------------------------
 
+/** Vorderflächen für Prismen-Schrägbilder (Pixel). */
+const FACE_DREIECK: Array<[number, number]> = [[40, 225], [220, 225], [130, 105]]
+const FACE_TRAPEZ: Array<[number, number]> = [[40, 225], [250, 225], [190, 125], [100, 125]]
+const FACE_HAUS: Array<[number, number]> = [[40, 235], [200, 235], [200, 150], [120, 90], [40, 150]]
+const FACE_RECHTW: Array<[number, number]> = [[50, 225], [210, 225], [50, 105]]
+
 const volumenQuader: Topic = {
   id: 'lb4-volumen-quader',
-  title: 'Volumen von Quader und Würfel',
+  title: 'Volumen von aus Prismen zusammengesetzten Körpern',
   pointsPerTask: 10,
-  difficulty: 1,
+  difficulty: 3,
+  keywords: ['zusammengesetzter Körper', 'Prisma', 'Volumen', 'Rückführprinzip'],
   fachwissen: {
-    text: 'Das Volumen eines Quaders berechnet sich als Produkt der drei Kantenlängen: V = a · b · c. Ein Würfel ist ein Sonderfall des Quaders mit a = b = c, daher V = a³. Volumeneinheiten: 1 m³ = 1 000 dm³ (Liter) = 1 000 000 cm³.',
-    quelle: 'Wikipedia: Quader',
-    url: 'https://de.wikipedia.org/wiki/Quader',
+    text: 'Zusammengesetzte Körper zerlegt man in Prismen (Rückführprinzip), berechnet jedes Teilvolumen mit V = G · h und addiert. Ist etwas herausgeschnitten, subtrahiert man das Volumen des fehlenden Teils. Hat der ganze Körper eine gleichbleibende Vorderfläche (z. B. ein Haus mit Satteldach), ist er selbst ein Prisma: G = Rechteck + Dreieck.',
+    quelle: 'Wikipedia: Prisma (Geometrie)',
+    url: 'https://de.wikipedia.org/wiki/Prisma_(Geometrie)',
   },
   generate: mixedVariants(
     (rng: Rng) => {
-      const cube = rng() < 0.3
-      const a = randInt(rng, 4, 25)
-      const b = cube ? a : randInt(rng, 3, 20)
-      const c = cube ? a : randInt(rng, 3, 18)
-      const value = a * b * c
-      return valueTask({
-        question: cube
-          ? `Ein Würfel hat die Kantenlänge ${a} cm. Berechne sein Volumen.`
-          : `Ein Quader ist ${a} cm, ${b} cm und ${c} cm groß. Berechne sein Volumen.`,
-        unit: 'cm³',
-        answerKind: 'integer',
-        value,
-        solution: `${value} cm³`,
-        explanation: cube
-          ? `Volumen = ${a} · ${a} · ${a} = ${value} cm³.`
-          : `Volumen = Länge · Breite · Höhe = ${a} · ${b} · ${c} cm³ = ${value} cm³.`,
-      })
-    },
-    (rng: Rng) => {
-      const a = randInt(rng, 5, 18)
-      const b = randInt(rng, 4, 16)
-      const c = randInt(rng, 3, 14)
-      const value = a * b * c
+      const b = pick(rng, [4, 6, 8, 10])
+      const hw = randInt(rng, 3, 6)
+      const hd = randInt(rng, 2, 4)
+      const l = randInt(rng, 5, 12)
+      const G = b * hw + (b * hd) / 2
+      const value = G * l
       return visualTask({
-        question: 'Berechne das Volumen des abgebildeten Quaders:',
+        question: `Das Modellhaus ist ein Prisma: Die Vorderfläche besteht aus einem Rechteck (Breite ${b} cm, Wandhöhe ${hw} cm) und einem Dachdreieck mit der Höhe ${hd} cm. Das Haus ist ${l} cm lang. Berechne das Volumen.`,
         unit: 'cm³',
         answerKind: 'integer',
         value,
         solution: `${value} cm³`,
-        explanation: `Volumen = Länge · Breite · Höhe = ${a} · ${b} · ${c} cm³ = ${value} cm³.`,
-        visualContent: generateCuboidSvg({
-          lengthLabel: `${a} cm`,
-          widthLabel: `${b} cm`,
-          heightLabel: `${c} cm`,
+        explanation: `G = ${b} · ${hw} + ${b} · ${hd} : 2 = ${b * hw} + ${(b * hd) / 2} = ${G} cm². V = G · l = ${G} · ${l} = ${value} cm³.`,
+        visualContent: generateExtrudedPrismSvg({
+          face: FACE_HAUS,
+          edgeLabels: [[0, 1, `${b} cm`], [4, 0, `${hw} cm`]],
+          helper: { from: [120, 90], to: [120, 150], text: `${hd} cm` },
+          depthLabel: { at: 2, text: `${l} cm` },
+          ariaLabel: 'Haus als Prisma',
         }),
+        dedupeKey: `ma:k6:zusprisma:haus:${b}:${hw}:${hd}:${l}`,
       })
     },
     (rng: Rng) => {
-      // Decimal edge lengths (K6 vs K5)
-      const a = pick(rng, [2.5, 3.5, 4.5, 5.5, 6.5])
-      const b = pick(rng, [2, 2.5, 3, 3.5, 4])
-      const c = pick(rng, [1.5, 2, 2.5, 3])
-      const value = roundTo(a * b * c, 2)
+      const l = randInt(rng, 8, 16)
+      const b = randInt(rng, 5, 9)
+      const c = randInt(rng, 4, 7)
+      const g = pick(rng, [2, 3, 4])
+      const t = pick(rng, [1, 2, 3].filter((x) => x < c))
+      const quader = l * b * c
+      const rinne = (g * t * l) / 2
+      const value = roundTo(quader - rinne, 1)
       return valueTask({
-        question: `Ein Quader ist ${formatDe(a)} dm, ${formatDe(b)} dm und ${formatDe(c)} dm groß. Berechne sein Volumen in dm³.`,
-        unit: 'dm³',
+        question: `Ein Holzquader ist ${l} cm lang, ${b} cm breit und ${c} cm hoch. Über die ganze Länge wird oben eine Rinne gefräst; ihr Querschnitt ist ein Dreieck mit der Grundseite ${g} cm und der Tiefe ${t} cm. Wie groß ist das Restvolumen?`,
+        unit: 'cm³',
         answerKind: 'decimal',
         value,
-        solution: `${formatDe(value)} dm³`,
-        explanation: `V = ${formatDe(a)} · ${formatDe(b)} · ${formatDe(c)} = ${formatDe(value)} dm³.`,
+        solution: `${formatDe(value)} cm³`,
+        explanation: `Quader: ${l} · ${b} · ${c} = ${quader} cm³. Rinne (dreiseitiges Prisma): ${g} · ${t} : 2 · ${l} = ${formatDe(rinne)} cm³. Rest: ${quader} − ${formatDe(rinne)} = ${formatDe(value)} cm³.`,
+        dedupeKey: `ma:k6:zusprisma:rinne:${l}:${b}:${c}:${g}:${t}`,
+      })
+    },
+    (rng: Rng) => {
+      const b = pick(rng, [3, 4, 5, 6])
+      const lg = pick(rng, [6, 7, 8])
+      const hw = pick(rng, [2.5, 3])
+      const hd = pick(rng, [1, 1.5, 2])
+      const value = roundTo(b * lg * hw + (b * hd * lg) / 2, 2)
+      return valueTask({
+        question: `Eine Garage (Quader: ${b} m breit, ${lg} m lang, ${formatDe(hw)} m hoch) hat ein Satteldach in Form eines dreiseitigen Prismas: Giebelbreite ${b} m, Dachhöhe ${formatDe(hd)} m, Länge ${lg} m. Wie groß ist der umbaute Raum?`,
+        unit: 'm³',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} m³`,
+        explanation: `Quader: ${b} · ${lg} · ${formatDe(hw)} = ${formatDe(roundTo(b * lg * hw, 2))} m³. Dach: ${b} · ${formatDe(hd)} : 2 · ${lg} = ${formatDe(roundTo((b * hd * lg) / 2, 2))} m³. Zusammen: ${formatDe(value)} m³.`,
+        dedupeKey: `ma:k6:zusprisma:garage:${b}:${lg}:${hw}:${hd}`,
       })
     },
   ),
 }
 
+const PYTH_TRIPEL: Array<[number, number, number]> = [[3, 4, 5], [6, 8, 10], [5, 12, 13], [9, 12, 15], [8, 6, 10], [12, 5, 13]]
+
 const oberflaecheQuader: Topic = {
   id: 'lb4-oberflaeche-quader',
-  title: 'Oberflächeninhalt von Quadern',
+  title: 'Oberflächeninhalt gerader Prismen',
   pointsPerTask: 10,
-  difficulty: 2,
+  difficulty: 3,
+  keywords: ['Oberflächeninhalt', 'Prisma', 'Mantel', 'Körpernetz'],
   fachwissen: {
-    text: 'Die Oberfläche eines Quaders ist die Summe aller sechs Seitenflächen. Ein Quader hat drei Paare gleich großer Flächen: 2 · (a · b + a · c + b · c). Die Oberfläche gibt an, wie viel Material man für eine Verpackung oder eine Holzkiste benötigt.',
-    quelle: 'Wikipedia: Quader',
-    url: 'https://de.wikipedia.org/wiki/Quader',
+    text: 'Das Netz eines geraden Prismas besteht aus zwei deckungsgleichen Grundflächen und dem Mantel aus Rechtecken. Der Mantel ist ein Rechteck aus Umfang der Grundfläche mal Körperhöhe: M = u · h. Damit gilt O = 2 · G + M. Ein n-seitiges Prisma hat 2 n-Ecke als Grund- und Deckfläche und n Rechtecke als Seitenflächen.',
+    quelle: 'Wikipedia: Prisma (Geometrie)',
+    url: 'https://de.wikipedia.org/wiki/Prisma_(Geometrie)',
   },
   generate: mixedVariants(
     (rng: Rng) => {
-      const a = randInt(rng, 4, 20)
-      const b = randInt(rng, 3, 18)
-      const c = randInt(rng, 2, 15)
-      const value = 2 * (a * b + a * c + b * c)
-      return valueTask({
-        question: `Ein Quader ist ${a} cm, ${b} cm und ${c} cm groß. Berechne seinen Oberflächeninhalt.`,
+      const [p, q, r] = pick(rng, PYTH_TRIPEL)
+      const h = randInt(rng, 4, 15)
+      const G = (p * q) / 2
+      const M = (p + q + r) * h
+      const value = 2 * G + M
+      return visualTask({
+        question: `Die Grundfläche eines geraden Prismas ist ein rechtwinkliges Dreieck mit den Seiten ${p} cm, ${q} cm und ${r} cm (der rechte Winkel liegt zwischen ${p} cm und ${q} cm). Das Prisma ist ${h} cm lang. Berechne den Oberflächeninhalt.`,
         unit: 'cm²',
         answerKind: 'integer',
         value,
         solution: `${value} cm²`,
-        explanation: `Oberfläche = 2 · (a·b + a·c + b·c) = 2 · (${a * b} + ${a * c} + ${b * c}) cm² = 2 · ${
-          a * b + a * c + b * c
-        } cm² = ${value} cm².`,
+        explanation: `G = ${p} · ${q} : 2 = ${G} cm². M = u · h = (${p} + ${q} + ${r}) · ${h} = ${M} cm². O = 2 · G + M = ${2 * G} + ${M} = ${value} cm².`,
+        visualContent: generateExtrudedPrismSvg({
+          face: FACE_RECHTW,
+          edgeLabels: [[0, 1, `${q} cm`], [2, 0, `${p} cm`], [1, 2, `${r} cm`]],
+          depthLabel: { at: 1, text: `${h} cm` },
+          ariaLabel: 'Dreiseitiges Prisma',
+        }),
+        dedupeKey: `ma:k6:o:dreieck:${p}:${q}:${h}`,
       })
     },
     (rng: Rng) => {
-      const a = randInt(rng, 4, 14)
-      const b = randInt(rng, 3, 12)
-      const c = randInt(rng, 3, 12)
-      const value = 2 * (a * b + a * c + b * c)
+      const [x, ht, s] = pick(rng, [[3, 4, 5], [4, 3, 5], [6, 8, 10], [5, 12, 13]] as Array<[number, number, number]>)
+      const c = randInt(rng, 3, 10)
+      const a = c + 2 * x
+      const l = randInt(rng, 5, 15)
+      const G = ((a + c) * ht) / 2
+      const M = (a + c + 2 * s) * l
+      const value = 2 * G + M
       return visualTask({
-        question: 'Berechne die Oberfläche des abgebildeten Quaders:',
+        question: `Ein gerades Prisma hat als Grundfläche ein gleichschenkliges Trapez: a = ${a} cm, c = ${c} cm, Schenkel je ${s} cm, Trapezhöhe ${ht} cm. Das Prisma ist ${l} cm lang. Berechne den Oberflächeninhalt.`,
         unit: 'cm²',
         answerKind: 'integer',
         value,
         solution: `${value} cm²`,
-        explanation: `Oberfläche = 2 · (a·b + a·c + b·c) = 2 · (${a * b} + ${a * c} + ${b * c}) cm² = ${value} cm².`,
-        visualContent: generateCuboidSvg({
-          lengthLabel: `${a} cm`,
-          widthLabel: `${b} cm`,
-          heightLabel: `${c} cm`,
+        explanation: `G = (${a} + ${c}) · ${ht} : 2 = ${G} cm². M = (${a} + ${c} + ${s} + ${s}) · ${l} = ${M} cm². O = 2 · ${G} + ${M} = ${value} cm².`,
+        visualContent: generateExtrudedPrismSvg({
+          face: FACE_TRAPEZ,
+          edgeLabels: [[0, 1, `${a} cm`], [2, 3, `${c} cm`], [1, 2, `${s} cm`]],
+          helper: { from: [100, 125], to: [100, 225], text: `${ht} cm`, rightAngleAlong: [1, 0] },
+          depthLabel: { at: 1, text: `${l} cm` },
+          ariaLabel: 'Prisma mit Trapezgrundfläche',
         }),
+        dedupeKey: `ma:k6:o:trapez:${a}:${c}:${ht}:${l}`,
+      })
+    },
+    (rng: Rng) => {
+      const n = pick(rng, [3, 5, 6, 8])
+      const s = randInt(rng, 2, 9)
+      const h = randInt(rng, 5, 20)
+      const value = n * s * h
+      const name = { 3: 'gleichseitiges Dreieck', 5: 'regelmäßiges Fünfeck', 6: 'regelmäßiges Sechseck', 8: 'regelmäßiges Achteck' }[n]
+      return valueTask({
+        question: `Ein Prisma hat als Grundfläche ein ${name} mit der Seitenlänge ${s} cm und ist ${h} cm hoch. Wie groß ist seine Mantelfläche?`,
+        unit: 'cm²',
+        answerKind: 'integer',
+        value,
+        solution: `${value} cm²`,
+        explanation: `Der Mantel besteht aus ${n} gleichen Rechtecken ${s} cm × ${h} cm: M = u · h = ${n} · ${s} · ${h} = ${value} cm².`,
+        dedupeKey: `ma:k6:o:mantel:${n}:${s}:${h}`,
+      })
+    },
+    (rng: Rng) => {
+      const n = pick(rng, [3, 4, 5, 6, 8])
+      const eck = { 3: 'Dreiecke', 4: 'Vierecke', 5: 'Fünfecke', 6: 'Sechsecke', 8: 'Achtecke' } as Record<number, string>
+      const correct = `2 ${eck[n]} und ${n} Rechtecke`
+      const pool = [
+        correct,
+        `1 ${eck[n]!.replace(/e$/, '')} und ${n} Dreiecke`,
+        `2 ${eck[n]} und ${n + 2} Rechtecke`,
+        `${n} ${eck[n]} und 2 Rechtecke`,
+      ]
+      return choicePickTask({
+        question: `Aus welchen Flächen besteht das Netz eines geraden ${n}-seitigen Prismas?`,
+        choices: shuffleArr(rng, pool),
+        correct,
+        solution: correct,
+        explanation: `Grund- und Deckfläche sind zwei deckungsgleiche ${eck[n]}; jede der ${n} Grundkanten trägt eine rechteckige Seitenfläche. Ein Vieleck mit ${n} Dreiecken wäre das Netz einer Pyramide.`,
+        dedupeKey: `ma:k6:o:netz:${n}`,
       })
     },
   ),
@@ -1567,60 +1937,94 @@ const oberflaecheQuader: Topic = {
 
 const volumenPrisma: Topic = {
   id: 'lb4-volumen-prisma',
-  title: 'Volumen gerader Prismen',
+  title: 'Volumen gerader Prismen mit Dreieck- und Trapezgrundfläche',
   pointsPerTask: 10,
   difficulty: 2,
+  keywords: ['Volumen', 'Prisma', 'Grundfläche', 'Dreieck', 'Trapez'],
   fachwissen: {
-    text: 'Das Volumen eines geraden Prismas (und damit auch eines Zylinders) berechnet sich als V = G · h, wobei G der Flächeninhalt der Grundfläche und h die Höhe des Prismas ist. Diese Formel gilt für alle Prismen, unabhängig von der Form der Grundfläche (Dreieck, Viereck, Sechseck …).',
+    text: 'Für jedes gerade Prisma gilt V = G · h: Grundfläche mal Körperhöhe. Die Grundfläche berechnet man zuerst mit der passenden Flächenformel, z. B. Dreieck G = g · h_g : 2 oder Trapez G = (a + c) · h_T : 2. Liegt das Prisma, ist die Körperhöhe die Länge des Prismas.',
     quelle: 'Wikipedia: Prisma (Geometrie)',
     url: 'https://de.wikipedia.org/wiki/Prisma_(Geometrie)',
   },
   generate: mixedVariants(
     (rng: Rng) => {
-      const grund = randInt(rng, 12, 96)
-      const hoehe = randInt(rng, 4, 28)
-      const value = grund * hoehe
-      return valueTask({
-        question: `Ein gerades Prisma hat die Grundfläche ${grund} cm² und die Höhe ${hoehe} cm. Berechne sein Volumen.`,
-        unit: 'cm³',
-        answerKind: 'integer',
-        value,
-        solution: `${value} cm³`,
-        explanation: `Volumen eines Prismas = Grundfläche · Höhe = ${grund} cm² · ${hoehe} cm = ${value} cm³.`,
-      })
-    },
-    (rng: Rng) => {
-      const grund = randInt(rng, 15, 80)
-      const hoehe = randInt(rng, 5, 24)
-      const value = grund * hoehe
+      const g = randInt(rng, 4, 14)
+      const hg = randInt(rng, 3, 10)
+      const h = randInt(rng, 5, 20)
+      const G = (g * hg) / 2
+      const value = roundTo(G * h, 1)
       return visualTask({
-        question: 'Berechne das Volumen des abgebildeten Prismas (Grundfläche gegeben):',
-        unit: 'cm³',
-        answerKind: 'integer',
-        value,
-        solution: `${value} cm³`,
-        explanation: `Volumen = Grundfläche · Höhe = ${grund} cm² · ${hoehe} cm = ${value} cm³.`,
-        visualContent: generatePrismVolumeSvg({
-          baseAreaLabel: `${grund} cm²`,
-          heightLabel: `${hoehe} cm`,
-        }),
-      })
-    },
-    (rng: Rng) => {
-      const grund = pick(rng, [12.5, 18.5, 24.5, 32.5, 45.5])
-      const hoehe = pick(rng, [3.5, 4.5, 5.5, 6.5, 8])
-      const value = roundTo(grund * hoehe, 2)
-      return visualTask({
-        question: 'Berechne das Volumen (Dezimalmaße, Grundfläche gegeben):',
+        question: `Ein dreiseitiges Prisma hat als Grundfläche ein Dreieck mit g = ${g} cm und h_g = ${hg} cm. Das Prisma ist ${h} cm lang. Berechne das Volumen.`,
         unit: 'cm³',
         answerKind: 'decimal',
         value,
         solution: `${formatDe(value)} cm³`,
-        explanation: `V = ${formatDe(grund)} · ${formatDe(hoehe)} = ${formatDe(value)} cm³.`,
-        visualContent: generatePrismVolumeSvg({
-          baseAreaLabel: `${formatDe(grund)} cm²`,
-          heightLabel: `${formatDe(hoehe)} cm`,
+        explanation: `G = g · h_g : 2 = ${g} · ${hg} : 2 = ${formatDe(G)} cm². V = G · h = ${formatDe(G)} · ${h} = ${formatDe(value)} cm³.`,
+        visualContent: generateExtrudedPrismSvg({
+          face: FACE_DREIECK,
+          edgeLabels: [[0, 1, `g = ${g} cm`]],
+          helper: { from: [130, 105], to: [130, 225], text: `h_g = ${hg} cm`, rightAngleAlong: [1, 0] },
+          depthLabel: { at: 1, text: `${h} cm` },
+          ariaLabel: 'Dreiseitiges Prisma',
         }),
+        dedupeKey: `ma:k6:v:dreieck:${g}:${hg}:${h}`,
+      })
+    },
+    (rng: Rng) => {
+      const a = randInt(rng, 8, 16)
+      const c = randInt(rng, 3, a - 2)
+      const ht = randInt(rng, 3, 8)
+      const l = randInt(rng, 5, 20)
+      const G = ((a + c) * ht) / 2
+      const value = roundTo(G * l, 1)
+      return visualTask({
+        question: `Ein Prisma hat als Grundfläche ein Trapez mit a = ${a} cm, c = ${c} cm und h_T = ${ht} cm. Es ist ${l} cm lang. Berechne das Volumen.`,
+        unit: 'cm³',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} cm³`,
+        explanation: `G = (a + c) · h_T : 2 = (${a} + ${c}) · ${ht} : 2 = ${formatDe(G)} cm². V = ${formatDe(G)} · ${l} = ${formatDe(value)} cm³.`,
+        visualContent: generateExtrudedPrismSvg({
+          face: FACE_TRAPEZ,
+          edgeLabels: [[0, 1, `a = ${a} cm`], [2, 3, `c = ${c} cm`]],
+          helper: { from: [100, 125], to: [100, 225], text: `h_T = ${ht} cm`, rightAngleAlong: [1, 0] },
+          depthLabel: { at: 1, text: `${l} cm` },
+          ariaLabel: 'Prisma mit Trapezgrundfläche',
+        }),
+        dedupeKey: `ma:k6:v:trapez:${a}:${c}:${ht}:${l}`,
+      })
+    },
+    (rng: Rng) => {
+      const L = pick(rng, [20, 25, 30])
+      const w = pick(rng, [8, 10, 12])
+      const t1 = pick(rng, [1, 1.2])
+      const t2 = pick(rng, [1.8, 2, 2.5])
+      const G = roundTo(((t1 + t2) * L) / 2, 2)
+      const value = roundTo(G * w, 2)
+      return valueTask({
+        question: `Ein Schwimmbecken ist ${L} m lang und ${w} m breit. Am flachen Ende ist es ${formatDe(t1)} m tief, am tiefen Ende ${formatDe(t2)} m; der Boden fällt gleichmäßig ab. Wie viel m³ Wasser passen hinein?`,
+        unit: 'm³',
+        answerKind: 'decimal',
+        value,
+        solution: `${formatDe(value)} m³`,
+        explanation: `Der Längsschnitt ist ein Trapez: G = (${formatDe(t1)} + ${formatDe(t2)}) · ${L} : 2 = ${formatDe(G)} m². Das Becken ist ein Prisma mit der Breite als Körperhöhe: V = ${formatDe(G)} · ${w} = ${formatDe(value)} m³.`,
+        dedupeKey: `ma:k6:v:becken:${L}:${w}:${t1}:${t2}`,
+      })
+    },
+    (rng: Rng) => {
+      const g = pick(rng, [4, 6, 8, 10])
+      const hg = randInt(rng, 3, 9)
+      const h = randInt(rng, 4, 15)
+      const G = (g * hg) / 2
+      const V = G * h
+      return valueTask({
+        question: `Ein dreiseitiges Prisma mit der Grundfläche g = ${g} cm, h_g = ${hg} cm hat das Volumen ${formatDe(V)} cm³. Wie lang ist das Prisma?`,
+        unit: 'cm',
+        answerKind: 'integer',
+        value: h,
+        solution: `${h} cm`,
+        explanation: `G = ${g} · ${hg} : 2 = ${formatDe(G)} cm². Aus V = G · h folgt h = V : G = ${formatDe(V)} : ${formatDe(G)} = ${h} cm.`,
+        dedupeKey: `ma:k6:v:rueck:${g}:${hg}:${h}`,
       })
     },
   ),
@@ -2009,7 +2413,6 @@ const anteilVonGroesse: Topic = {
 const anteilProzent: Topic = {
   id: 'lb5-anteil-prozent',
   title: 'Prozent einer Größe berechnen',
-  hint: 'Prozent bedeutet „von hundert".',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -2078,9 +2481,9 @@ const anteilProzent: Topic = {
   ),
 }
 
-// Einheiten umrechnen — in Klasse 6 mit Schwerpunkt auf Flächeneinheiten.
-const flaecheUmrechnen = conversionTopic('k6', FLAECHE)
-const laengeUmrechnen = conversionTopic('k6', LAENGE)
+// Einheiten umrechnen — Klasse 6: Größen in Kommaschreibweise und gemischte Angaben.
+const flaecheUmrechnen = conversionTopic('k6', FLAECHE, { decimalAmounts: true })
+const laengeUmrechnen = conversionTopic('k6', LAENGE, { decimalAmounts: true })
 
 // ---------------------------------------------------------------------------
 // Grade — Klasse 6 (Gymnasium Mathematik, Sachsen)
@@ -2117,7 +2520,6 @@ export const klasse6: Grade = {
       ustd: 24,
       topics: [proportional, antiproportional, haeufigkeit, sachaufgabeDreisatz,
         ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math6"].filter((x) => x.areaId === "lb2").map((x) => x.topic),
-        ...(MATH_DICHTE_BY_GRADE["math6"] ?? []).filter((x) => x.areaId === "lb2").map((x) => x.topic),
       ],
     },
     {
@@ -2133,7 +2535,6 @@ export const klasse6: Grade = {
         kongruenzSatz,
         sachaufgabeGeometrie,
         ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math6"].filter((x) => x.areaId === "lb3").map((x) => x.topic),
-        ...(MATH_DICHTE_BY_GRADE["math6"] ?? []).filter((x) => x.areaId === "lb3").map((x) => x.topic),
       ],
     },
     {

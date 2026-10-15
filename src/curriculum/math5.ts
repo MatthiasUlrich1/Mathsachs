@@ -1,7 +1,8 @@
 import { pick, randInt, type Rng } from '../lib/rng'
 import { gcd, makeFraction } from '../lib/fraction'
 import { formatDe, roundTo } from '../lib/num'
-import { fractionTask, dragDropSortTask, digitGridTask, digitGridMultiplyTask, digitGridDivideTask, mixedVariants, numberLineTask, textTask, valueTask, visualTask, choicePickTask, coordinateClickTask } from './taskHelpers'
+import { fractionTask, dragDropSortTask, digitGridTask, digitGridMultiplyTask, digitGridDivideTask, mixedVariants, multiSelectTask, numberLineTask, textTask, valueTask, visualTask, choicePickTask, coordinateClickTask } from './taskHelpers'
+import { appliedMc, shuffleArr } from './mathApplied'
 import { conversionTopic, LAENGE, FLAECHE, VOLUMEN, MASSE, ZEIT } from './units'
 import {
   generateRectangleSvg,
@@ -30,7 +31,6 @@ import {
 } from '../lib/geometrySvg'
 import type { Grade, Topic } from './types'
 import { MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE } from './mathLehrplanTeilaspekte'
-import { MATH_DICHTE_BY_GRADE } from './mathDichteFill'
 
 /** Whether n is a prime number (n ≥ 2). */
 const isPrime = (n: number): boolean => {
@@ -46,7 +46,6 @@ const isPrime = (n: number): boolean => {
 const rundenNatuerlich: Topic = {
   id: 'lb1-runden-natuerlich',
   title: 'Natürliche Zahlen runden',
-  hint: 'Schau auf die Ziffer rechts von der Rundungsstelle.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -72,7 +71,6 @@ const rundenNatuerlich: Topic = {
 const addition: Topic = {
   id: 'lb1-addition',
   title: 'Addition natürlicher Zahlen',
-  hint: 'Rechne schriftlich, Stelle für Stelle.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -113,7 +111,6 @@ const addition: Topic = {
 const subtraktion: Topic = {
   id: 'lb1-subtraktion',
   title: 'Subtraktion natürlicher Zahlen',
-  hint: 'Der Minuend (vorne) ist immer größer.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -154,7 +151,7 @@ const subtraktion: Topic = {
 const multiplikation: Topic = {
   id: 'lb1-multiplikation',
   title: 'Multiplikation natürlicher Zahlen',
-  hint: 'Zerlege den zweiten Faktor nach Stellenwerten (Zehner, Einer, …) von links.',
+  hint: 'Trage Teilprodukte und Summe in die Kästchen ein.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -311,7 +308,7 @@ const divisionMitRest: Topic = {
 const schriftlicheDivision: Topic = {
   id: 'lb1-schriftliche-division',
   title: 'Schriftliche Division',
-  hint: 'Schreibe Dividend : Divisor = und trage den Quotienten ziffernweise ein. Bei Rest zusätzlich die Rest-Zeile füllen.',
+  hint: 'Trage den Quotienten ziffernweise ein; bei Rest zusätzlich die Rest-Zeile.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['schriftlich', 'Division', 'Quotient', 'Rest', 'Kästchen', 'Nullen'],
@@ -423,7 +420,6 @@ const potenzieren: Topic = {
 const teilbarkeit: Topic = {
   id: 'lb1-teilbarkeit',
   title: 'Teilbarkeit prüfen',
-  hint: 'Antworte mit „ja" oder „nein".',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -431,33 +427,67 @@ const teilbarkeit: Topic = {
     quelle: 'Wikipedia: Teilbarkeit',
     url: 'https://de.wikipedia.org/wiki/Teilbarkeit',
   },
-  generate: (rng: Rng) => {
-    const d = pick(rng, [2, 3, 4, 5, 6, 9, 10])
-    const divisible = rng() < 0.5
-    let n: number
-    if (divisible) {
-      n = d * randInt(rng, 4, 40)
-    } else {
-      n = d * randInt(rng, 4, 40) + randInt(rng, 1, d - 1)
-    }
-    const yes = n % d === 0
-    return textTask({
-      question: `Ist ${n} durch ${d} teilbar?`,
-      accepted: yes ? ['ja'] : ['nein'],
-      solution: yes ? 'ja' : 'nein',
-      explanation: yes
-        ? `${n} : ${d} = ${n / d} ohne Rest. Also ist ${n} durch ${d} teilbar.`
-        : `${n} : ${d} = ${Math.floor(n / d)} Rest ${n % d}. Also ist ${n} nicht durch ${d} teilbar.`,
-      dedupeKey: `ma:k5:teilbar:${n}:${d}`,
-      contentIds: [`ma:k5:teilbar:${n}:${d}`],
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const d = pick(rng, [3, 4, 6, 9])
+      const good = d * randInt(rng, 12, 110)
+      const bad = shuffleArr(
+        rng,
+        [1, 2, 3, 4, 5, 6, 7, 8].map((k) => good + k).filter((x) => x % d !== 0),
+      ).slice(0, 3)
+      return appliedMc(rng, {
+        question: `Welche dieser Zahlen ist durch ${d} teilbar?`,
+        correct: String(good),
+        distractors: bad.map(String),
+        explanation: `${good} : ${d} = ${good / d} ohne Rest. ${bad.map((b) => `${b} : ${d} = ${Math.floor(b / d)} Rest ${b % d}`).join('; ')}.`,
+        fachwissen: {
+          text: d === 3 || d === 9
+            ? `Eine Zahl ist genau dann durch ${d} teilbar, wenn ihre Quersumme durch ${d} teilbar ist. Beispiel: ${good} hat die Quersumme ${String(good).split('').reduce((s, c) => s + Number(c), 0)}.`
+            : d === 4
+              ? 'Eine Zahl ist genau dann durch 4 teilbar, wenn die Zahl aus ihren letzten beiden Ziffern durch 4 teilbar ist. Durch 6 ist eine Zahl teilbar, wenn sie durch 2 und durch 3 teilbar ist.'
+              : 'Eine Zahl ist durch 6 teilbar, wenn sie gerade ist (durch 2 teilbar) und ihre Quersumme durch 3 teilbar ist. Beide Bedingungen müssen gleichzeitig erfüllt sein.',
+          quelle: 'Wikipedia: Teilbarkeit',
+          url: 'https://de.wikipedia.org/wiki/Teilbarkeit',
+        },
+        dedupeKey: `ma:k5:teilbar:mc:${good}:${d}`,
+      })
+    },
+    (rng: Rng) => {
+      const d = pick(rng, [3, 4, 6, 7, 8, 9])
+      const n = d * randInt(rng, 11, 90) + randInt(rng, 1, d - 1)
+      return valueTask({
+        question: `Welcher Rest bleibt, wenn man ${n} durch ${d} teilt?`,
+        answerKind: 'integer',
+        value: n % d,
+        solution: String(n % d),
+        explanation: `${d} · ${Math.floor(n / d)} = ${d * Math.floor(n / d)}; ${n} − ${d * Math.floor(n / d)} = ${n % d}.`,
+        dedupeKey: `ma:k5:teilbar:rest:${n}:${d}`,
+      })
+    },
+    (rng: Rng) => {
+      const d = pick(rng, [2, 3, 4, 5, 6, 9, 10])
+      const start = randInt(rng, 3, 30) * 10
+      const all = shuffleArr(rng, range(start, start + 14))
+      const good = all.filter((x) => x % d === 0).slice(0, randInt(rng, 2, 3))
+      const bad = all.filter((x) => x % d !== 0).slice(0, 6 - good.length)
+      return multiSelectTask({
+        question: `Tippe alle Zahlen an, die durch ${d} teilbar sind.`,
+        choices: [...good, ...bad].map(String),
+        correct: good.map(String),
+        solution: good.sort((a, b) => a - b).join(', '),
+        explanation: `${good.map((g) => `${g} : ${d} = ${g / d}`).join('; ')}. Die übrigen Zahlen lassen einen Rest.`,
+        instruction: 'Tippe alle zutreffenden Zahlen an:',
+        dedupeKey: `ma:k5:teilbar:multi:${d}:${[...good, ...bad].sort((a, b) => a - b).join(',')}`,
+      })
+    },
+  ),
 }
+
+const range = (a: number, b: number): number[] => Array.from({ length: b - a + 1 }, (_, i) => a + i)
 
 const primzahl: Topic = {
   id: 'lb1-primzahl',
   title: 'Primzahlen erkennen',
-  hint: 'Eine Primzahl hat genau zwei Teiler: 1 und sich selbst.',
   pointsPerTask: 10,
   difficulty: 2,
   fachwissen: {
@@ -465,24 +495,79 @@ const primzahl: Topic = {
     quelle: 'Wikipedia: Primzahl',
     url: 'https://de.wikipedia.org/wiki/Primzahl',
   },
-  generate: (rng: Rng) => {
-    const n = randInt(rng, 5, 60)
-    const yes = isPrime(n)
-    let reason: string
-    if (yes) {
-      reason = `${n} ist nur durch 1 und ${n} teilbar, also eine Primzahl.`
-    } else {
-      let teiler = 2
-      while (n % teiler !== 0) teiler++
-      reason = `${n} ist durch ${teiler} teilbar (${n} = ${teiler} · ${n / teiler}), also keine Primzahl.`
-    }
-    return textTask({
-      question: `Ist ${n} eine Primzahl?`,
-      accepted: yes ? ['ja'] : ['nein'],
-      solution: yes ? 'ja' : 'nein',
-      explanation: reason,
-    })
-  },
+  generate: mixedVariants(
+    (rng: Rng) => {
+      const primes = range(11, 97).filter(isPrime)
+      const p = pick(rng, primes)
+      const composites = shuffleArr(
+        rng,
+        range(p - 12, p + 12).filter((x) => x > 9 && !isPrime(x) && x % 2 === 1),
+      ).slice(0, 3)
+      const smallest = (n: number) => range(2, n).find((t) => n % t === 0)!
+      return appliedMc(rng, {
+        question: 'Welche dieser Zahlen ist eine Primzahl?',
+        correct: String(p),
+        distractors: composites.map(String),
+        explanation: `${p} hat nur die Teiler 1 und ${p}. ${composites.map((c) => `${c} = ${smallest(c)} · ${c / smallest(c)}`).join('; ')}.`,
+        fachwissen: {
+          text: `Um zu prüfen, ob eine Zahl n eine Primzahl ist, genügt es, die Teilbarkeit durch die Primzahlen bis √n zu testen. Für Zahlen unter 100 sind das 2, 3, 5 und 7.`,
+          quelle: 'Wikipedia: Primzahl',
+          url: 'https://de.wikipedia.org/wiki/Primzahl',
+        },
+        dedupeKey: `ma:k5:prim:mc:${p}:${[...composites].sort().join(',')}`,
+      })
+    },
+    (rng: Rng) => {
+      const start = randInt(rng, 2, 8) * 10 + 1
+      const nums = range(start, start + 9)
+      const primes = nums.filter(isPrime)
+      return valueTask({
+        question: `Wie viele Primzahlen liegen zwischen ${start - 1} und ${start + 10}?`,
+        answerKind: 'integer',
+        value: primes.length,
+        solution: String(primes.length),
+        explanation: primes.length ? `Die Primzahlen sind ${primes.join(', ')}.` : 'In diesem Bereich liegt keine Primzahl.',
+        dedupeKey: `ma:k5:prim:anzahl:${start}`,
+      })
+    },
+    (rng: Rng) => {
+      const p = pick(rng, [3, 5, 7, 11, 13])
+      const q = pick(rng, [7, 11, 13, 17, 19].filter((x) => x !== p))
+      const n = p * q
+      const t = Math.min(p, q)
+      return valueTask({
+        question: `Die Zahl ${n} ist keine Primzahl. Nenne ihren kleinsten Teiler, der größer als 1 ist.`,
+        answerKind: 'integer',
+        value: t,
+        solution: String(t),
+        explanation: `${n} = ${t} · ${n / t}; durch 2${t > 3 ? ', 3' : ''}${t > 5 ? ', 5' : ''}${t > 7 ? ', 7' : ''}${t > 11 ? ', 11' : ''} ist ${n} nicht teilbar.`,
+        dedupeKey: `ma:k5:prim:teiler:${n}`,
+      })
+    },
+    (rng: Rng) => {
+      const start = randInt(rng, 1, 7) * 10
+      const nums = shuffleArr(rng, range(start + 1, start + 19)).slice(0, 6)
+      const primes = nums.filter(isPrime)
+      if (primes.length < 2 || primes.length > 4) {
+        const extra = range(start + 1, start + 19).filter((x) => isPrime(x) && !nums.includes(x))
+        while (primes.length < 2 && extra.length) {
+          const e = extra.shift()!
+          nums[nums.findIndex((x) => !isPrime(x))] = e
+          primes.push(e)
+        }
+      }
+      const correct = nums.filter(isPrime)
+      return multiSelectTask({
+        question: 'Tippe alle Primzahlen an.',
+        choices: nums.map(String),
+        correct: correct.map(String),
+        solution: [...correct].sort((a, b) => a - b).join(', '),
+        explanation: `Primzahlen: ${[...correct].sort((a, b) => a - b).join(', ')}. Die anderen Zahlen haben weitere Teiler.`,
+        instruction: 'Tippe alle zutreffenden Zahlen an:',
+        dedupeKey: `ma:k5:prim:multi:${[...nums].sort((a, b) => a - b).join(',')}`,
+      })
+    },
+  ),
 }
 
 // ---------------------------------------------------------------------------
@@ -577,7 +662,7 @@ const anteilAlsBruch: Topic = {
 const grafischeBrueche: Topic = {
   id: 'lb2-grafische-brueche',
   title: 'Brüche grafisch ablesen',
-  hint: 'Zähle die eingefärbten Teile und die Gesamtanzahl. Gib den gekürzten Bruch an.',
+  hint: 'Gib den gekürzten Bruch an.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -650,7 +735,6 @@ const grafischeBrueche: Topic = {
 const dezAddSub: Topic = {
   id: 'lb2-dez-add-sub',
   title: 'Dezimalzahlen addieren und subtrahieren',
-  hint: 'Achte auf die Ausrichtung des Kommas.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -676,23 +760,24 @@ const dezAddSub: Topic = {
 
 const dezMult: Topic = {
   id: 'lb2-dez-mult',
-  title: 'Dezimalzahl multiplizieren',
-  hint: 'Mit einstelliger Zahl oder Zehnerpotenz.',
+  title: 'Dezimalzahl mit einstelliger Zahl oder Zehnerpotenz multiplizieren',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
-    text: 'Dezimalzahlen werden wie natürliche Zahlen multipliziert; anschließend zählt man die Nachkommastellen beider Faktoren zusammen und setzt im Ergebnis das Komma entsprechend. Beim Multiplizieren mit 10, 100, 1000 … verschiebt sich das Komma um 1, 2, 3 … Stellen nach rechts.',
+    text: 'Eine Dezimalzahl multipliziert man mit einer natürlichen Zahl wie zwei natürliche Zahlen; das Ergebnis hat so viele Nachkommastellen wie die Dezimalzahl. Beim Multiplizieren mit 10, 100, 1000 … verschiebt sich das Komma um 1, 2, 3 … Stellen nach rechts.',
     quelle: 'Wikipedia: Dezimalzahl',
     url: 'https://de.wikipedia.org/wiki/Dezimalzahl',
   },
   generate: (rng: Rng) => {
-    const a = randInt(rng, 11, 249) / 10
+    let z = randInt(rng, 11, 249)
+    while (z % 10 === 0) z = randInt(rng, 11, 249)
+    const a = z / 10
     const factor = pick(rng, [2, 3, 4, 5, 6, 7, 8, 9, 10, 100, 1000])
     const value = roundTo(a * factor, 2)
     const isTen = factor === 10 || factor === 100 || factor === 1000
-    const stellen = factor === 10 ? 'eine' : factor === 100 ? 'zwei' : 'drei'
+    const stellen = factor === 10 ? 'eine Stelle' : factor === 100 ? 'zwei Stellen' : 'drei Stellen'
     const tip = isTen
-      ? `Multiplizieren mit ${factor} verschiebt das Komma um ${stellen} Stelle(n) nach rechts.`
+      ? `Multiplizieren mit ${factor} verschiebt das Komma um ${stellen} nach rechts.`
       : `Rechne wie mit natürlichen Zahlen und setze am Ende das Komma richtig.`
     return valueTask({
       question: `Berechne: ${formatDe(a)} · ${factor}`,
@@ -706,8 +791,7 @@ const dezMult: Topic = {
 
 const dezDiv: Topic = {
   id: 'lb2-dez-div',
-  title: 'Dezimalzahl dividieren',
-  hint: 'Durch einstellige Zahl oder Zehnerpotenz.',
+  title: 'Dezimalzahl durch einstellige Zahl oder Zehnerpotenz dividieren',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -717,12 +801,14 @@ const dezDiv: Topic = {
   },
   generate: (rng: Rng) => {
     const divisor = pick(rng, [2, 3, 4, 5, 6, 10, 100, 1000])
-    const quotient = randInt(rng, 11, 199) / 10
+    let z = randInt(rng, 11, 199)
+    while (z % 10 === 0) z = randInt(rng, 11, 199)
+    const quotient = z / 10
     const dividend = roundTo(quotient * divisor, 2)
     const isTen = divisor === 10 || divisor === 100 || divisor === 1000
-    const stellen = divisor === 10 ? 'eine' : divisor === 100 ? 'zwei' : 'drei'
+    const stellen = divisor === 10 ? 'eine Stelle' : divisor === 100 ? 'zwei Stellen' : 'drei Stellen'
     const tip = isTen
-      ? `Dividieren durch ${divisor} verschiebt das Komma um ${stellen} Stelle(n) nach links.`
+      ? `Dividieren durch ${divisor} verschiebt das Komma um ${stellen} nach links.`
       : `Teile wie bei natürlichen Zahlen und setze das Komma korrekt.`
     return valueTask({
       question: `Berechne: ${formatDe(dividend)} : ${divisor}`,
@@ -737,7 +823,6 @@ const dezDiv: Topic = {
 const rundenDezimal: Topic = {
   id: 'lb2-runden-dezimal',
   title: 'Dezimalzahlen runden',
-  hint: 'Ist die nächste Ziffer 5 oder größer, wird aufgerundet.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -801,7 +886,6 @@ const mittelwert: Topic = {
 const zahlenstrahl: Topic = {
   id: 'lb2-zahlenstrahl',
   title: 'Dezimalzahlen auf dem Zahlenstrahl: Mitte finden',
-  hint: 'Die Mitte zwischen zwei Zahlen ist ihr Durchschnitt: (a + b) : 2.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Zahlenstrahl', 'Mitte', 'einordnen', 'Mittelwert', 'Dezimalzahl'],
@@ -886,7 +970,6 @@ const zahlenstrahl: Topic = {
 const ordnenMitEinheiten: Topic = {
   id: 'lb2-ordnen-einheiten',
   title: 'Größen mit verschiedenen Einheiten ordnen',
-  hint: 'Rechne alle Angaben in dieselbe Einheit um, dann vergleiche.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['ordnen', 'vergleichen', 'Einheiten', 'umrechnen', 'Länge', 'Masse'],
@@ -981,7 +1064,6 @@ const ordnenMitEinheiten: Topic = {
 const winkelarten: Topic = {
   id: 'lb3-winkelarten',
   title: 'Winkelarten erkennen',
-  hint: 'spitz (<90°), recht (90°), stumpf (90°–180°), gestreckt (180°) oder überstumpf (>180°).',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -1071,13 +1153,57 @@ const winkelarten: Topic = {
         instruction: 'Tippe die passende Winkelart:',
       })
     },
+    (rng: Rng) => {
+      const kind = pick(rng, ['spitz', 'stumpf', 'überstumpf'] as const)
+      const inKind = (d: number) =>
+        kind === 'spitz' ? d < 90 : kind === 'stumpf' ? d > 90 && d < 180 : d > 180
+      const pool = shuffleArr(rng, [
+        randInt(rng, 10, 85),
+        randInt(rng, 10, 85),
+        90,
+        randInt(rng, 95, 175),
+        randInt(rng, 95, 175),
+        180,
+        randInt(rng, 185, 350),
+        randInt(rng, 185, 350),
+      ])
+      const degs = [...new Set(pool)].slice(0, 6)
+      const good = degs.filter(inKind)
+      if (good.length === 0 || good.length === degs.length) return winkelarten.generate(rng)
+      const label = (d: number) => `${d}°`
+      return multiSelectTask({
+        question: `Tippe alle ${kind === 'spitz' ? 'spitzen' : kind === 'stumpf' ? 'stumpfen' : 'überstumpfen'} Winkel an.`,
+        choices: degs.map(label),
+        correct: good.map(label),
+        solution: [...good].sort((a, b) => a - b).map(label).join(', '),
+        explanation: `${kind === 'spitz' ? 'Spitz heißt: kleiner als 90°' : kind === 'stumpf' ? 'Stumpf heißt: größer als 90° und kleiner als 180°' : 'Überstumpf heißt: größer als 180° und kleiner als 360°'}. Das trifft auf ${[...good].sort((a, b) => a - b).map(label).join(', ')} zu.`,
+        instruction: 'Tippe alle zutreffenden Winkel an:',
+        dedupeKey: `ma:k5:winkelart:multi:${kind}:${[...degs].sort((a, b) => a - b).join(',')}`,
+      })
+    },
+    (rng: Rng) => {
+      const degSet = new Set<number>()
+      while (degSet.size < 7) degSet.add(pick(rng, [randInt(rng, 5, 89), 90, randInt(rng, 91, 179), 180, randInt(rng, 181, 359)]))
+      const degs = [...degSet]
+      const kind = pick(rng, ['spitz', 'stumpf', 'recht'] as const)
+      const count = degs.filter((d) =>
+        kind === 'spitz' ? d < 90 : kind === 'stumpf' ? d > 90 && d < 180 : d === 90,
+      ).length
+      return valueTask({
+        question: `Wie viele dieser Winkel sind ${kind === 'recht' ? 'rechte Winkel' : kind}? ${degs.map((d) => `${d}°`).join('; ')}`,
+        answerKind: 'integer',
+        value: count,
+        solution: `${count}`,
+        explanation: `${kind === 'spitz' ? 'Spitz: kleiner als 90°' : kind === 'stumpf' ? 'Stumpf: zwischen 90° und 180°' : 'Recht: genau 90°'}. ${count === 0 ? 'Das trifft auf keinen der Winkel zu.' : count === 1 ? 'Das trifft auf genau einen Winkel zu.' : `Das trifft auf ${count} Winkel zu.`}`,
+        dedupeKey: `ma:k5:winkelart:zaehl:${kind}:${degs.join(',')}`,
+      })
+    },
   ),
 }
 
 const winkelErgaenzung: Topic = {
   id: 'lb3-winkel-ergaenzung',
   title: 'Winkel zu 90° oder 180° ergänzen',
-  hint: 'Vom Zielwert (90° oder 180°) den gegebenen Winkel abziehen.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -1148,8 +1274,9 @@ const pairAnswerAccepted = (a: number, b: number): string[] => {
   return [...new Set(raw)]
 }
 
-const COORD_X_RANGE: [number, number] = [-5, 8]
-const COORD_Y_RANGE: [number, number] = [-5, 8]
+/** Klasse 5 kennt noch keine negativen Zahlen (erst Kl. 7): nur der erste Quadrant. */
+const COORD_X_RANGE: [number, number] = [0, 9]
+const COORD_Y_RANGE: [number, number] = [0, 9]
 const POINT_LABELS = ['A', 'B', 'C'] as const
 
 /** Distinct integer grid points, preferably off the origin. */
@@ -1163,8 +1290,8 @@ const distinctGridPoints = (
   let guard = 0
   while (pts.length < count && guard < 200) {
     guard++
-    const x = randInt(rng, -4, 7)
-    const y = randInt(rng, -4, 7)
+    const x = randInt(rng, 0, 8)
+    const y = randInt(rng, 0, 8)
     if (opts?.avoidAxes && (x === 0 || y === 0)) continue
     const key = `${x},${y}`
     if (used.has(key)) continue
@@ -1174,48 +1301,24 @@ const distinctGridPoints = (
   return pts
 }
 
-const quadrantOf = (x: number, y: number): 'I' | 'II' | 'III' | 'IV' => {
-  if (x > 0 && y > 0) return 'I'
-  if (x < 0 && y > 0) return 'II'
-  if (x < 0 && y < 0) return 'III'
-  return 'IV'
+/** Vier aufeinanderfolgende Punktnamen, z. B. P, Q, R, S. */
+const pickLetters = (rng: Rng): [string, string, string, string] => {
+  const r = pick(rng, ['ABCD', 'EFGH', 'KLMN', 'PQRS', 'RSTU', 'UVWZ'])
+  return [r[0]!, r[1]!, r[2]!, r[3]!]
 }
 
-const QUADRANT_ACCEPTED: Record<'I' | 'II' | 'III' | 'IV', string[]> = {
-  I: ['I', '1', 'i', 'quadrant i', '1. quadrant', 'erster', '1.'],
-  II: ['II', '2', 'ii', 'quadrant ii', '2. quadrant', 'zweiter', '2.'],
-  III: ['III', '3', 'iii', 'quadrant iii', '3. quadrant', 'dritter', '3.'],
-  IV: ['IV', '4', 'iv', 'quadrant iv', '4. quadrant', 'vierter', '4.'],
-}
-
-/** Integer axis-aligned or 3-4-5 distances for coordinate distance tasks. */
+/** Waagerechte oder senkrechte Punktepaare im ersten Quadranten (Abstand durch Abzählen). */
 const pickCoordinateDistance = (
   rng: Rng,
-): { a: { x: number; y: number }; b: { x: number; y: number }; dist: number } => {
-  const kind = pick(rng, ['h', 'v', '345'] as const)
-  // Keep both endpoints inside roughly [-4, 7] for the -5..8 display grid
-  if (kind === 'h') {
-    const dist = randInt(rng, 2, 6)
-    const ax = randInt(rng, -4, 7 - dist)
-    const ay = randInt(rng, -4, 7)
-    return { a: { x: ax, y: ay }, b: { x: ax + dist, y: ay }, dist }
-  }
-  if (kind === 'v') {
-    const dist = randInt(rng, 2, 6)
-    const ax = randInt(rng, -4, 7)
-    const ay = randInt(rng, -4, 7 - dist)
-    return { a: { x: ax, y: ay }, b: { x: ax, y: ay + dist }, dist }
-  }
-  const flip = rng() < 0.5
-  const dx = flip ? 3 : 4
-  const dy = flip ? 4 : 3
-  const ax = randInt(rng, -4, 7 - dx)
-  const ay = randInt(rng, -4, 7 - dy)
-  return {
-    a: { x: ax, y: ay },
-    b: { x: ax + dx, y: ay + dy },
-    dist: 5,
-  }
+): { a: { x: number; y: number }; b: { x: number; y: number }; dist: number; horizontal: boolean } => {
+  const horizontal = rng() < 0.5
+  const dist = randInt(rng, 2, 7)
+  const s = randInt(rng, 0, 8 - dist)
+  const fixed = randInt(rng, 0, 8)
+  const [p, q] = rng() < 0.5 ? [s, s + dist] : [s + dist, s]
+  return horizontal
+    ? { a: { x: p, y: fixed }, b: { x: q, y: fixed }, dist, horizontal }
+    : { a: { x: fixed, y: p }, b: { x: fixed, y: q }, dist, horizontal }
 }
 
 const koordinatenAblesen: Topic = {
@@ -1225,7 +1328,7 @@ const koordinatenAblesen: Topic = {
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
-    text: 'Ein kartesisches Koordinatensystem besteht aus zwei senkrecht aufeinander stehenden Zahlengeraden (x-Achse waagerecht, y-Achse senkrecht), die sich im Ursprung (0|0) schneiden. Jeder Punkt der Ebene wird durch ein geordnetes Paar (x|y) beschrieben: x gibt die Lage parallel zur x-Achse an, y parallel zur y-Achse. Positive x-Werte liegen rechts vom Ursprung, positive y-Werte oberhalb.',
+    text: 'Ein Koordinatensystem besteht aus zwei senkrecht aufeinander stehenden Zahlenstrahlen (x-Achse waagerecht, y-Achse senkrecht), die sich im Ursprung (0|0) schneiden. Jeder Punkt wird durch ein geordnetes Zahlenpaar (x|y) beschrieben: Der x-Wert gibt an, wie weit man vom Ursprung nach rechts geht, der y-Wert, wie weit nach oben. Die Reihenfolge ist wichtig: (2|5) ist ein anderer Punkt als (5|2).',
     quelle: 'Wikipedia: Kartesisches Koordinatensystem',
     url: 'https://de.wikipedia.org/wiki/Kartesisches_Koordinatensystem',
   },
@@ -1244,9 +1347,7 @@ const koordinatenAblesen: Topic = {
           question: 'Lies die Koordinaten von Punkt A ab. Gib x; y an.',
           accepted,
           solution: `${p.x}; ${p.y}`,
-          explanation: `Punkt A liegt ${p.x} Einheiten ${
-            p.x >= 0 ? 'rechts' : 'links'
-          } und ${p.y} Einheiten ${p.y >= 0 ? 'oberhalb' : 'unterhalb'} des Ursprungs. Also A = (${p.x}|${p.y}).`,
+          explanation: `Vom Ursprung aus liegt A ${p.x} Einheiten nach rechts und ${p.y} Einheiten nach oben. Zuerst der x-Wert, dann der y-Wert: A = (${p.x}|${p.y}).`,
           dedupeKey: `ma:k5:coord:A:${p.x}:${p.y}`,
           contentIds: [`ma:k5:coord:A:${p.x}:${p.y}`],
         }),
@@ -1284,11 +1385,11 @@ const koordinatenAblesen: Topic = {
 const koordinatenEintragen: Topic = {
   id: 'lb3-koordinaten-eintragen',
   title: 'Punkte im Koordinatensystem zuordnen',
-  hint: 'Bei Buchstaben: A, B oder C. Bei Quadranten: I, II, III oder IV.',
+  hint: 'Antwortformat: Buchstabe A, B oder C bzw. Koordinaten als x; y.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
-    text: 'Um einen Punkt mit gegebenen Koordinaten (x|y) im Koordinatensystem zu finden, geht man vom Ursprung x Einheiten waagerecht und y Einheiten senkrecht. Die vier Quadranten werden gegen den Uhrzeigersinn nummeriert: I (rechts oben, x>0, y>0), II (links oben, x<0, y>0), III (links unten, x<0, y<0), IV (rechts unten, x>0, y<0). Punkte auf den Achsen liegen in keinem Quadranten.',
+    text: 'Um einen Punkt mit gegebenen Koordinaten (x|y) einzutragen, geht man vom Ursprung x Einheiten nach rechts und y Einheiten nach oben. Punkte mit gleichem y-Wert liegen auf einer waagerechten Linie, Punkte mit gleichem x-Wert auf einer senkrechten. Bei einem Rechteck, dessen Seiten parallel zu den Achsen liegen, haben gegenüberliegende Ecken jeweils einen Koordinatenwert gemeinsam mit den Nachbarecken.',
     quelle: 'Wikipedia: Kartesisches Koordinatensystem',
     url: 'https://de.wikipedia.org/wiki/Kartesisches_Koordinatensystem',
   },
@@ -1313,24 +1414,30 @@ const koordinatenEintragen: Topic = {
         instruction: 'Tippe den richtigen Punkt:',
       })
     },
-    // Variant 2: Quadrant tippen
+    // Variant 2: Vertauschte Koordinaten — welcher Punkt ist (x|y), welcher (y|x)?
     (rng: Rng) => {
-      const [p] = distinctGridPoints(rng, 1, { avoidAxes: true })
-      const q = quadrantOf(p.x, p.y)
+      let x = randInt(rng, 1, 8)
+      let y = randInt(rng, 1, 8)
+      while (x === y) y = randInt(rng, 1, 8)
+      const third = { x: randInt(rng, 0, 8), y: randInt(rng, 0, 8) }
+      while ((third.x === x && third.y === y) || (third.x === y && third.y === x)) third.x = (third.x + 3) % 9
+      const pts = shuffleArr(rng, [{ x, y }, { x: y, y: x }, third])
+      const labeled = pts.map((p, i) => ({ ...p, label: POINT_LABELS[i] }))
+      const target = labeled.find((p) => p.x === x && p.y === y)!
+      const swapped = labeled.find((p) => p.x === y && p.y === x)!
       return choicePickTask({
-        question: `Punkt P hat die Koordinaten (${p.x}|${p.y}). In welchem Quadranten liegt P?`,
-        choices: ['I', 'II', 'III', 'IV'],
-        correct: q,
-        solution: q,
-        explanation: `x = ${p.x} (${p.x > 0 ? 'positiv' : 'negativ'}), y = ${p.y} (${
-          p.y > 0 ? 'positiv' : 'negativ'
-        }) → Quadrant ${q}.`,
+        question: `Welcher Punkt hat die Koordinaten (${x}|${y})?`,
+        choices: ['A', 'B', 'C'],
+        correct: target.label,
+        solution: target.label,
+        explanation: `Erst ${x} nach rechts, dann ${y} nach oben: Punkt ${target.label}. Punkt ${swapped.label} liegt bei (${y}|${x}) — dort sind x und y vertauscht.`,
         visualContent: generatePointsOnGridSvg({
-          points: [{ ...p, label: 'P' }],
+          points: labeled,
           xRange: COORD_X_RANGE,
           yRange: COORD_Y_RANGE,
         }),
-        instruction: 'Tippe den Quadranten:',
+        instruction: 'Tippe den richtigen Punkt:',
+        dedupeKey: `ma:k5:coord:tausch:${x}:${y}`,
       })
     },
     // Variant 3: Punkt setzen (klicken)
@@ -1347,15 +1454,32 @@ const koordinatenEintragen: Topic = {
         instruction: 'Tippe auf die richtige Gitterstelle:',
       })
     },
-    // Variant 4: Text-only quadrant
+    // Variant 4: Vierte Ecke eines achsenparallelen Rechtecks
     (rng: Rng) => {
-      const [p] = distinctGridPoints(rng, 1, { avoidAxes: true })
-      const q = quadrantOf(p.x, p.y)
+      const x1 = randInt(rng, 0, 5)
+      const x2 = randInt(rng, x1 + 2, 8)
+      const y1 = randInt(rng, 0, 5)
+      const y2 = randInt(rng, y1 + 2, 8)
+      const corners: Array<[number, number]> = [
+        [x1, y1],
+        [x2, y1],
+        [x2, y2],
+        [x1, y2],
+      ]
+      const missing = randInt(rng, 0, 3)
+      const [mx, my] = corners[missing]!
+      const labels = ['A', 'B', 'C', 'D']
+      const given = corners
+        .map((c, i) => ({ c, l: labels[i]! }))
+        .filter((_, i) => i !== missing)
+        .map(({ c, l }) => `${l}(${c[0]}|${c[1]})`)
+        .join(', ')
       return textTask({
-        question: `Punkt P hat die Koordinaten (${p.x}|${p.y}). In welchem Quadranten liegt P? Antworte mit I, II, III oder IV.`,
-        accepted: QUADRANT_ACCEPTED[q],
-        solution: q,
-        explanation: `x = ${p.x}, y = ${p.y} → Quadrant ${q}.`,
+        question: `${given} sind drei Ecken des Rechtecks ABCD; seine Seiten verlaufen parallel zu den Achsen. Welche Koordinaten hat ${labels[missing]}? Gib x; y an.`,
+        accepted: pairAnswerAccepted(mx, my),
+        solution: `${mx}; ${my}`,
+        explanation: `${labels[missing]} liegt senkrecht über bzw. unter der Nachbarecke mit x = ${mx} und waagerecht neben der Nachbarecke mit y = ${my}. Also ${labels[missing]}(${mx}|${my}).`,
+        dedupeKey: `ma:k5:coord:rechteck:${x1}:${x2}:${y1}:${y2}:${missing}`,
       })
     },
   ),
@@ -1364,201 +1488,201 @@ const koordinatenEintragen: Topic = {
 const koordinatenAbstand: Topic = {
   id: 'lb3-koordinaten-abstand',
   title: 'Abstand zwischen Punkten',
-  hint: 'Waagerecht/senkrecht: |Δx| bzw. |Δy|. Schräg: Pythagoras (z. B. 3–4–5).',
   pointsPerTask: 10,
   difficulty: 2,
   fachwissen: {
-    text: 'Der Abstand zweier Punkte A(x₁|y₁) und B(x₂|y₂) im kartesischen Koordinatensystem ist die Länge der Strecke AB. Bei gleicher y-Koordinate ist der Abstand |x₂ − x₁|, bei gleicher x-Koordinate |y₂ − y₁|. Allgemein gilt d = √((x₂ − x₁)² + (y₂ − y₁)²) (Satz des Pythagoras). Die Einheit auf dem Raster heißt oft Längeneinheit (LE).',
+    text: 'Haben zwei Punkte denselben y-Wert, liegen sie auf einer waagerechten Linie; ihr Abstand ist der Unterschied der x-Werte (größerer minus kleinerer). Haben sie denselben x-Wert, liegen sie auf einer senkrechten Linie; ihr Abstand ist der Unterschied der y-Werte. Die Kästchenlänge des Rasters heißt Längeneinheit (LE).',
     quelle: 'Wikipedia: Kartesisches Koordinatensystem',
     url: 'https://de.wikipedia.org/wiki/Kartesisches_Koordinatensystem',
   },
   generate: mixedVariants(
-    // Variant 1: Visual A,B with connecting segment
+    // Variant 1: Punkte im Raster, Abstand abzählen
     (rng: Rng) => {
-      const { a, b, dist } = pickCoordinateDistance(rng)
+      const { a, b, dist, horizontal } = pickCoordinateDistance(rng)
+      const [p, q] = pickLetters(rng)
       const svg = generatePointsOnGridSvg({
         points: [
-          { ...a, label: 'A' },
-          { ...b, label: 'B' },
-        ],
-        connectLabels: [['A', 'B']],
-        xRange: COORD_X_RANGE,
-        yRange: COORD_Y_RANGE,
-      })
-      return {
-        ...valueTask({
-          question: 'Wie groß ist der Abstand zwischen A und B? (1 Kästchen = 1 LE)',
-          unit: 'LE',
-          answerKind: 'integer',
-          value: dist,
-          solution: `${dist}`,
-          explanation: `A(${a.x}|${a.y}), B(${b.x}|${b.y}): d = √((${b.x}−${a.x})² + (${b.y}−${a.y})²) = ${dist} LE.`,
-        }),
-        visualContent: svg,
-      }
-    },
-    // Variant 2: Same visual without drawn segment (points only)
-    (rng: Rng) => {
-      const { a, b, dist } = pickCoordinateDistance(rng)
-      const svg = generatePointsOnGridSvg({
-        points: [
-          { ...a, label: 'A' },
-          { ...b, label: 'B' },
+          { ...a, label: p },
+          { ...b, label: q },
         ],
         xRange: COORD_X_RANGE,
         yRange: COORD_Y_RANGE,
       })
+      const [lo, hi] = horizontal ? [Math.min(a.x, b.x), Math.max(a.x, b.x)] : [Math.min(a.y, b.y), Math.max(a.y, b.y)]
       return {
         ...valueTask({
-          question: 'Wie groß ist der Abstand der Punkte A und B in Längeneinheiten?',
+          question: `Wie viele Längeneinheiten sind die Punkte ${p} und ${q} voneinander entfernt? (1 Kästchen = 1 LE)`,
           unit: 'LE',
           answerKind: 'integer',
           value: dist,
           solution: `${dist} LE`,
-          explanation: `A(${a.x}|${a.y}), B(${b.x}|${b.y}): Abstand = ${dist} LE.`,
+          explanation: `${p}(${a.x}|${a.y}) und ${q}(${b.x}|${b.y}) haben denselben ${horizontal ? 'y' : 'x'}-Wert. Abzählen von ${lo} bis ${hi}: ${hi} − ${lo} = ${dist} LE.`,
+          dedupeKey: `ma:k5:abstand:bild:${a.x}:${a.y}:${b.x}:${b.y}`,
         }),
         visualContent: svg,
       }
     },
-    // Variant 3: Text — given coordinates
+    // Variant 2: Koordinaten gegeben, Abstand rechnen
     (rng: Rng) => {
-      const { a, b, dist } = pickCoordinateDistance(rng)
-      const axisAligned = a.x === b.x || a.y === b.y
+      const { a, b, dist, horizontal } = pickCoordinateDistance(rng)
+      const [lo, hi] = horizontal ? [Math.min(a.x, b.x), Math.max(a.x, b.x)] : [Math.min(a.y, b.y), Math.max(a.y, b.y)]
       return valueTask({
-        question: `A = (${a.x}|${a.y}), B = (${b.x}|${b.y}). Wie groß ist der Abstand AB?`,
+        question: `Wie weit sind die Punkte A(${a.x}|${a.y}) und B(${b.x}|${b.y}) voneinander entfernt?`,
         unit: 'LE',
         answerKind: 'integer',
         value: dist,
-        solution: `${dist}`,
-        explanation: axisAligned
-          ? a.y === b.y
-            ? `Gleiche y-Koordinate: Abstand = |${b.x} − ${a.x}| = ${dist} LE.`
-            : `Gleiche x-Koordinate: Abstand = |${b.y} − ${a.y}| = ${dist} LE.`
-          : `d = √((${b.x}−${a.x})² + (${b.y}−${a.y})²) = ${dist} LE.`,
+        solution: `${dist} LE`,
+        explanation: `Gleicher ${horizontal ? 'y' : 'x'}-Wert, also ${horizontal ? 'waagerechte' : 'senkrechte'} Strecke. Abstand = Unterschied der ${horizontal ? 'x' : 'y'}-Werte: ${hi} − ${lo} = ${dist} LE.`,
+        dedupeKey: `ma:k5:abstand:text:${a.x}:${a.y}:${b.x}:${b.y}`,
+      })
+    },
+    // Variant 3: Welcher von drei Punkten ist am weitesten von A entfernt?
+    (rng: Rng) => {
+      const horizontal = rng() < 0.5
+      const fixed = randInt(rng, 0, 8)
+      const a = randInt(rng, 2, 6)
+      const others = shuffleArr(
+        rng,
+        [0, 1, 2, 3, 4, 5, 6, 7, 8].filter((v) => v !== a),
+      )
+      const picked: number[] = []
+      for (const v of others) {
+        if (picked.every((p) => Math.abs(p - a) !== Math.abs(v - a))) picked.push(v)
+        if (picked.length === 3) break
+      }
+      const labels = ['B', 'C', 'D']
+      const pts = picked.map((v, i) => ({ l: labels[i]!, v, d: Math.abs(v - a) }))
+      const far = pts.reduce((m, p) => (p.d > m.d ? p : m))
+      const coord = (v: number) => (horizontal ? `(${v}|${fixed})` : `(${fixed}|${v})`)
+      return choicePickTask({
+        question: `Welcher Punkt ist am weitesten von A${coord(a)} entfernt? ${pts.map((p) => `${p.l}${coord(p.v)}`).join(', ')}`,
+        choices: labels,
+        correct: far.l,
+        solution: far.l,
+        explanation: `Alle Punkte haben denselben ${horizontal ? 'y' : 'x'}-Wert wie A. Abstände: ${pts.map((p) => `${p.l}: ${p.d} LE`).join(', ')}. Am weitesten entfernt ist ${far.l}.`,
+        instruction: 'Tippe den Punkt mit dem größten Abstand zu A:',
+        dedupeKey: `ma:k5:abstand:weitester:${horizontal}:${fixed}:${a}:${picked.join(',')}`,
       })
     },
   ),
 }
 
 const sampleTriangle = (): Array<[number, number]> => [
-  [1, 1],
-  [3, 1],
-  [2, 3],
+  [0, 0],
+  [2, 0],
+  [1, 2],
 ]
 
 const sampleQuad = (): Array<[number, number]> => [
-  [1, 1],
-  [3, 1],
-  [3, 2],
-  [1, 3],
+  [0, 0],
+  [2, 0],
+  [2, 1],
+  [0, 2],
 ]
+
+/** Verschiebung (dx|dy) und Lage der Figur so, dass Original und Bild im Raster 0…8 liegen. */
+const pickShift = (
+  rng: Rng,
+  opts: { allowZeroDy?: boolean } = {},
+): { points: Array<[number, number]>; dx: number; dy: number } => {
+  const base = rng() < 0.55 ? sampleTriangle() : sampleQuad()
+  const dx = randInt(rng, 1, 4) * (rng() < 0.4 ? -1 : 1)
+  const dyAbs = randInt(rng, opts.allowZeroDy ? 0 : 1, 3)
+  const dy = dyAbs * (rng() < 0.4 ? -1 : 1)
+  const ox = randInt(rng, Math.max(0, -dx), Math.min(6, 6 - dx))
+  const oy = randInt(rng, Math.max(0, -dy), Math.min(6, 6 - dy))
+  return { points: base.map(([x, y]) => [x + ox, y + oy] as [number, number]), dx, dy }
+}
+
+const shiftWords = (dx: number, dy: number): string => {
+  const h = dx > 0 ? `${dx} nach rechts` : `${-dx} nach links`
+  if (dy === 0) return h
+  return `${h} und ${Math.abs(dy)} nach ${dy > 0 ? 'oben' : 'unten'}`
+}
+
+const shiftStep = (v: number, d: number): string => (d >= 0 ? `${v} + ${d}` : `${v} − ${-d}`)
 
 const verschiebungFormen: Topic = {
   id: 'lb3-verschiebung',
   title: 'Verschiebung von Figuren',
-  hint: 'Antwortformat für Vektor und Punkt: dx; dy bzw. x; y (positiv = rechts / oben). Auch Komma oder (x|y) sind ok.',
+  hint: 'Antwortformat: x; y bzw. eine Zahl. Auch Komma oder (x|y) sind ok.',
   pointsPerTask: 10,
   difficulty: 2,
   fachwissen: {
-    text: 'Eine Verschiebung (Translation) ist eine Kongruenzabbildung, bei der jeder Punkt der Figur um denselben Vektor verschoben wird. Der Verschiebungsvektor gibt an, um wie viele Einheiten nach rechts (positive x-Richtung) bzw. nach oben (positive y-Richtung) verschoben wird; negative Werte bedeuten nach links bzw. nach unten. Die Bildfigur ist deckungsgleich zur Ausgangsfigur und gleich orientiert.',
+    text: 'Bei einer Verschiebung wird jeder Punkt einer Figur um dieselbe Strecke in dieselbe Richtung bewegt. Eine Verschiebung „3 nach rechts und 2 nach oben“ vergrößert den x-Wert jedes Punktes um 3 und den y-Wert um 2; nach links bzw. unten werden die Werte kleiner. Die Bildfigur ist deckungsgleich zur Ausgangsfigur und gleich ausgerichtet.',
     quelle: 'Wikipedia: Verschiebung (Geometrie)',
     url: 'https://de.wikipedia.org/wiki/Verschiebung_(Geometrie)',
   },
   generate: mixedVariants(
-    // Variant 1: Visual — figure + vector, ask where point A goes
+    // Variant 1: Figur im Raster, Bild von A bestimmen
     (rng: Rng) => {
-      const useTri = rng() < 0.6
-      const points = useTri ? sampleTriangle() : sampleQuad()
-      let dx = randInt(rng, 1, 4)
-      let dy = randInt(rng, 1, 3)
-      if (rng() < 0.35) dx = -dx
-      if (rng() < 0.35) dy = -dy
-      // Keep image inside a small grid
-      const ax = points[0][0]
-      const ay = points[0][1]
-      const bx = ax + dx
-      const by = ay + dy
-      if (bx < -4 || bx > 7 || by < -4 || by > 7) {
-        dx = Math.abs(dx)
-        dy = Math.abs(dy)
-      }
+      const { points, dx, dy } = pickShift(rng)
+      const [ax, ay] = points[0]!
       const tx = ax + dx
       const ty = ay + dy
-      const describe =
-        rng() < 0.5
-          ? `um ${Math.abs(dx)} nach ${dx >= 0 ? 'rechts' : 'links'} und ${Math.abs(dy)} nach ${
-              dy >= 0 ? 'oben' : 'unten'
-            }`
-          : `mit dem Vektor (${dx}|${dy})`
       const svg = generateTranslationSvg({
         points,
         dx,
         dy,
         showTranslated: false,
-        showArrows: describe.includes('Vektor'),
+        showArrows: false,
         singleVectorArrow: true,
-        xRange: [-5, 8],
-        yRange: [-5, 8],
+        xRange: [0, 9],
+        yRange: [0, 9],
         labelVertices: true,
       })
-      const accepted = pairAnswerAccepted(tx, ty)
       return {
         ...textTask({
-          question: `Die Figur wird ${describe} verschoben. Wohin wandert Punkt A? Gib die Koordinaten als x; y an.`,
-          accepted,
+          question: `Die Figur wird um ${shiftWords(dx, dy)} verschoben. Wohin wandert Punkt A? Gib die Koordinaten als x; y an.`,
+          accepted: pairAnswerAccepted(tx, ty),
           solution: `${tx}; ${ty}`,
-          explanation: `Punkt A liegt bei (${ax}|${ay}). Verschiebung um (${dx}|${dy}): neues x = ${ax} + (${dx}) = ${tx}, neues y = ${ay} + (${dy}) = ${ty}. Also (${tx}|${ty}).`,
+          explanation: `A liegt bei (${ax}|${ay}). Neuer x-Wert: ${shiftStep(ax, dx)} = ${tx}, neuer y-Wert: ${shiftStep(ay, dy)} = ${ty}. Also A'(${tx}|${ty}).`,
+          dedupeKey: `ma:k5:versch:bild:${points.join(';')}:${dx}:${dy}`,
         }),
         visualContent: svg,
       }
     },
-    // Variant 2: Visual — original + image, ask for Verschiebungsvektor
+    // Variant 2: Original und Bild gezeichnet — Verschiebungsweite ablesen
     (rng: Rng) => {
-      const useTri = rng() < 0.55
-      const points = useTri ? sampleTriangle() : sampleQuad()
-      let dx = randInt(rng, 1, 4)
-      let dy = randInt(rng, 0, 3)
-      if (rng() < 0.4) dx = -dx
-      if (rng() < 0.4 && dy !== 0) dy = -dy
+      const { points, dx, dy } = pickShift(rng, { allowZeroDy: true })
       const svg = generateTranslationSvg({
         points,
         dx,
         dy,
         showTranslated: true,
         showArrows: true,
-        xRange: [-5, 8],
-        yRange: [-5, 8],
+        xRange: [0, 9],
+        yRange: [0, 9],
         labelVertices: true,
       })
-      const accepted = pairAnswerAccepted(dx, dy)
+      const askH = dy === 0 || rng() < 0.5
+      const value = askH ? Math.abs(dx) : Math.abs(dy)
+      const dirWord = askH ? (dx > 0 ? 'rechts' : 'links') : dy > 0 ? 'oben' : 'unten'
       return {
-        ...textTask({
-          question: `Die Figur F wird auf F' verschoben. Wie lautet der Verschiebungsvektor? Gib dx; dy an (positiv = rechts / oben).`,
-          accepted,
-          solution: `${dx}; ${dy}`,
-          explanation: `Von A nach A' ändert sich x um ${dx} und y um ${dy}. Der Verschiebungsvektor ist also (${dx}|${dy}) bzw. ${dx}; ${dy}.`,
+        ...valueTask({
+          question: `Die Figur F wurde auf F' verschoben. Um wie viele Kästchen wurde sie ${askH ? 'waagerecht' : 'senkrecht'} verschoben?`,
+          answerKind: 'integer',
+          value,
+          solution: `${value} Kästchen (nach ${dirWord})`,
+          explanation: `Vergleiche A und A': Der ${askH ? 'x' : 'y'}-Wert ändert sich um ${value}. F wurde ${shiftWords(dx, dy)} verschoben.`,
+          dedupeKey: `ma:k5:versch:weite:${points.join(';')}:${dx}:${dy}:${askH}`,
         }),
         visualContent: svg,
       }
     },
-    // Variant 3: Text only — describe shift, ask for image of a point
+    // Variant 3: Nur Text — Urbild aus Bildpunkt zurückrechnen
     (rng: Rng) => {
-      const x = randInt(rng, 0, 4)
-      const y = randInt(rng, 0, 4)
-      let dx = randInt(rng, 1, 4)
-      let dy = randInt(rng, 1, 3)
-      if (rng() < 0.3) dx = -dx
-      if (rng() < 0.3) dy = -dy
-      const tx = x + dx
-      const ty = y + dy
-      const rechtsLinks = dx >= 0 ? `${dx} nach rechts` : `${-dx} nach links`
-      const obenUnten = dy >= 0 ? `${dy} nach oben` : `${-dy} nach unten`
-      const accepted = pairAnswerAccepted(tx, ty)
+      const { dx, dy } = pickShift(rng)
+      const tx = randInt(rng, Math.max(0, dx), Math.min(8, 8 + dx))
+      const ty = randInt(rng, Math.max(0, dy), Math.min(8, 8 + dy))
+      const x = tx - dx
+      const y = ty - dy
       return textTask({
-        question: `Eine Figur wird um ${rechtsLinks} und ${obenUnten} verschoben. Wohin gelangt der Punkt (${x}|${y})? Gib x; y an.`,
-        accepted,
-        solution: `${tx}; ${ty}`,
-        explanation: `Neues x = ${x} + (${dx}) = ${tx}, neues y = ${y} + (${dy}) = ${ty}. Der Bildpunkt ist (${tx}|${ty}).`,
+        question: `Nach einer Verschiebung um ${shiftWords(dx, dy)} liegt ein Punkt bei P'(${tx}|${ty}). Wo lag der Punkt P vorher? Gib x; y an.`,
+        accepted: pairAnswerAccepted(x, y),
+        solution: `${x}; ${y}`,
+        explanation: `Rückwärts verschieben, also in die Gegenrichtung: x = ${shiftStep(tx, -dx)} = ${x}, y = ${shiftStep(ty, -dy)} = ${y}. P lag bei (${x}|${y}).`,
+        dedupeKey: `ma:k5:versch:urbild:${tx}:${ty}:${dx}:${dy}`,
       })
     },
   ),
@@ -1575,25 +1699,26 @@ const AXIS_SHAPES: SymmetryShapeKind[] = [
   'parallelogram',
 ]
 
-const pickMirror = (rng: Rng): MirrorLineKind => {
-  const kind = pick(rng, ['x-axis', 'y-axis', 'y=x', 'vertical', 'horizontal'] as const)
-  if (kind === 'vertical') return { type: 'vertical', x: pick(rng, [0, 1, 2]) }
-  if (kind === 'horizontal') return { type: 'horizontal', y: pick(rng, [0, 1, 2]) }
+/** Spiegelachsen im ersten Quadranten, damit Bildpunkte keine negativen Koordinaten haben. */
+const pickMirror = (rng: Rng): Exclude<MirrorLineKind, 'x-axis' | 'y-axis'> => {
+  const kind = pick(rng, ['y=x', 'vertical', 'horizontal', 'vertical', 'horizontal'] as const)
+  if (kind === 'vertical') return { type: 'vertical', x: pick(rng, [3, 4, 5]) }
+  if (kind === 'horizontal') return { type: 'horizontal', y: pick(rng, [3, 4, 5]) }
   return kind
 }
 
 const mirrorDescribe = (mirror: MirrorLineKind): string => {
-  if (mirror === 'x-axis') return 'die x-Achse (Gerade s)'
-  if (mirror === 'y-axis') return 'die y-Achse (Gerade s)'
-  if (mirror === 'y=x') return 'die Gerade s mit y = x'
-  if (mirror.type === 'vertical') return `die Gerade s mit x = ${mirror.x}`
-  return `die Gerade s mit y = ${mirror.y}`
+  if (mirror === 'x-axis') return 'der x-Achse (Gerade s)'
+  if (mirror === 'y-axis') return 'der y-Achse (Gerade s)'
+  if (mirror === 'y=x') return 'der schrägen Geraden s durch (0|0) und (1|1)'
+  if (mirror.type === 'vertical') return `der senkrechten Geraden s durch (${mirror.x}|0)`
+  return `der waagerechten Geraden s durch (0|${mirror.y})`
 }
 
 const symmetrieAchsen: Topic = {
   id: 'lb3-achsensymmetrie',
   title: 'Achsensymmetrie erkennen',
-  hint: 'Eine Figur ist achsensymmetrisch, wenn sie an einer Geraden gespiegelt auf sich selbst fällt. Bildpunkt: x; y.',
+  hint: 'Antwortformat für den Bildpunkt: x; y.',
   pointsPerTask: 10,
   difficulty: 2,
   fachwissen: {
@@ -1626,40 +1751,47 @@ const symmetrieAchsen: Topic = {
         visualContent: svg,
       }
     },
-    // Variant 2: Is the figure axis-symmetric? (ja/nein)
+    // Variant 2: Welche der genannten Figuren sind achsensymmetrisch? (Mehrfachauswahl)
     (rng: Rng) => {
-      const shape = pick(rng, AXIS_SHAPES)
-      const yes = symmetryAxisCount(shape) > 0
-      const svg = generateSymmetryShapeSvg({ shape, showAxes: false })
-      const askByName = rng() < 0.4
-      const task = textTask({
-        question: askByName
-          ? `Ist ein ${symmetryShapeLabel(shape)} achsensymmetrisch? Antworte mit ja oder nein.`
-          : 'Ist die Figur achsensymmetrisch? Antworte mit ja oder nein.',
-        accepted: yes ? ['ja'] : ['nein'],
-        solution: yes ? 'ja' : 'nein',
-        explanation: yes
-          ? `Ja. Ein ${symmetryShapeLabel(shape)} besitzt ${symmetryAxisCount(shape)} Symmetrieachse${symmetryAxisCount(shape) === 1 ? '' : 'n'}.`
-          : `Nein. Ein ${symmetryShapeLabel(shape)} besitzt keine Spiegelachse (keine Achsensymmetrie).`,
+      const sym = AXIS_SHAPES.filter((s) => symmetryAxisCount(s) > 0)
+      const non = AXIS_SHAPES.filter((s) => symmetryAxisCount(s) === 0)
+      const chosenNon = shuffleArr(rng, non).slice(0, randInt(rng, 1, non.length))
+      const chosenSym = shuffleArr(rng, sym).slice(0, 5 - chosenNon.length)
+      const shapes = [...chosenSym, ...chosenNon]
+      const label = (s: SymmetryShapeKind) => symmetryShapeLabel(s)
+      return multiSelectTask({
+        question: 'Tippe alle Figuren an, die achsensymmetrisch sind.',
+        choices: shapes.map(label),
+        correct: chosenSym.map(label),
+        solution: chosenSym.map(label).join(', '),
+        explanation: `${chosenSym.map((s) => `${label(s)}: ${symmetryAxisCount(s)} Achse${symmetryAxisCount(s) === 1 ? '' : 'n'}`).join('; ')}. Keine Symmetrieachse: ${chosenNon.map(label).join(', ')}.`,
+        instruction: 'Tippe alle zutreffenden Figuren an:',
+        dedupeKey: `ma:k5:achsensym:multi:${[...shapes].sort().join(',')}`,
       })
-      if (askByName) return task
-      return { ...task, visualContent: svg }
     },
     // Variant 3: Reflect point A across mirror line s
     (rng: Rng) => {
       const mirror = pickMirror(rng)
-      const ax = randInt(rng, 1, 4)
-      const ay = randInt(rng, 1, 4)
-      // Keep A off the mirror when possible
-      let A: [number, number] = [ax, ay]
-      if (mirror === 'x-axis') A = [ax, Math.max(1, ay)]
-      if (mirror === 'y-axis') A = [Math.max(1, ax), ay]
-      if (mirror === 'y=x' && ax === ay) A = [ax, ay + 1]
-      if (typeof mirror === 'object' && mirror.type === 'vertical' && A[0] === mirror.x) {
-        A = [A[0] + 1, A[1]]
-      }
-      if (typeof mirror === 'object' && mirror.type === 'horizontal' && A[1] === mirror.y) {
-        A = [A[0], A[1] + 1]
+      let A: [number, number]
+      let explain: (t: [number, number]) => string
+      if (mirror === 'y=x') {
+        const ax = randInt(rng, 0, 6)
+        let ay = randInt(rng, 0, 6)
+        while (ay === ax) ay = randInt(rng, 0, 6)
+        A = [ax, ay]
+        explain = ([tx, ty]) => `An der Geraden durch (0|0) und (1|1) tauschen x- und y-Wert ihre Plätze: aus A(${ax}|${ay}) wird A'(${tx}|${ty}).`
+      } else if (mirror.type === 'vertical') {
+        const k = mirror.x
+        let ax = randInt(rng, k - 3, k + 1)
+        if (ax === k) ax = k - 1
+        A = [ax, randInt(rng, 0, 6)]
+        explain = ([tx, ty]) => `A liegt ${Math.abs(k - ax)} Kästchen ${ax < k ? 'links' : 'rechts'} von s, also liegt A' ${Math.abs(k - ax)} Kästchen ${ax < k ? 'rechts' : 'links'} von s: x = ${tx}. Der y-Wert bleibt ${ty}.`
+      } else {
+        const k = mirror.y
+        let ay = randInt(rng, k - 3, k + 1)
+        if (ay === k) ay = k - 1
+        A = [randInt(rng, 0, 6), ay]
+        explain = ([tx, ty]) => `A liegt ${Math.abs(k - ay)} Kästchen ${ay < k ? 'unter' : 'über'} s, also liegt A' ${Math.abs(k - ay)} Kästchen ${ay < k ? 'über' : 'unter'} s: y = ${ty}. Der x-Wert bleibt ${tx}.`
       }
       const [tx, ty] = reflectPointAcross(A, mirror)
       // Small triangle for context; first vertex is A
@@ -1668,8 +1800,8 @@ const symmetrieAchsen: Topic = {
         points,
         mirror,
         showImage: false,
-        xRange: [-5, 8],
-        yRange: [-5, 8],
+        xRange: [0, 10],
+        yRange: [0, 10],
         labelVertices: true,
       })
       const accepted = pairAnswerAccepted(tx, ty)
@@ -1678,228 +1810,231 @@ const symmetrieAchsen: Topic = {
           question: `Spiegle Punkt A an ${mirrorDescribe(mirror)}. Gib die Koordinaten von A' als x; y an.`,
           accepted,
           solution: `${tx}; ${ty}`,
-          explanation: `A liegt bei (${A[0]}|${A[1]}). Spiegelung an ${mirrorDescribe(mirror)} liefert A' = (${tx}|${ty}).`,
+          explanation: explain([tx, ty]),
+          dedupeKey: `ma:k5:achsensym:spiegel:${JSON.stringify(mirror)}:${A.join(',')}`,
         }),
         visualContent: svg,
       }
     },
   ),
+}
+
+/** Zentrum S und Punkt A so, dass A, A' und die kleine Kontextfigur im Raster 0…8 liegen. */
+const pickPointReflection = (rng: Rng): { A: [number, number]; S: [number, number]; img: [number, number] } => {
+  const S: [number, number] = [randInt(rng, 4, 5), randInt(rng, 4, 5)]
+  let A: [number, number]
+  do {
+    A = [S[0] + randInt(rng, -3, 2), S[1] + randInt(rng, -3, 2)]
+  } while (A[0] === S[0] && A[1] === S[1])
+  const img = pointReflectAcross(A, S) as [number, number]
+  return { A, S, img }
+}
+
+const stepWords = (from: [number, number], to: [number, number]): string => {
+  const dx = to[0] - from[0]
+  const dy = to[1] - from[1]
+  const parts: string[] = []
+  if (dx !== 0) parts.push(`${Math.abs(dx)} nach ${dx > 0 ? 'rechts' : 'links'}`)
+  if (dy !== 0) parts.push(`${Math.abs(dy)} nach ${dy > 0 ? 'oben' : 'unten'}`)
+  return parts.join(' und ')
 }
 
 const symmetriePunkt: Topic = {
   id: 'lb3-punktsymmetrie',
   title: 'Punktsymmetrie / Punktspiegelung',
-  hint: 'Punktspiegelung an S: A\' = 2S − A. Antwortformat x; y (auch Komma oder (x|y)).',
+  hint: 'Antwortformat: x; y (auch Komma oder (x|y) sind ok).',
   pointsPerTask: 10,
   difficulty: 2,
   fachwissen: {
-    text: 'Punktsymmetrie (Punktspiegelung) ist eine Kongruenzabbildung: Jeder Punkt A wird so auf A\' abgebildet, dass der Punkt S der Mittelpunkt der Strecke AA\' ist. Rechnerisch gilt A\' = 2S − A, also x\' = 2·sx − x und y\' = 2·sy − y. Eine Punktspiegelung entspricht einer Drehung um 180° um S. Figuren, die durch Punktspiegelung an einem inneren Punkt auf sich selbst fallen, heißen punktsymmetrisch.',
-    quelle: 'Wikipedia: Punktsymmetrie',
-    url: 'https://de.wikipedia.org/wiki/Punktsymmetrie',
+    text: 'Bei einer Punktspiegelung am Zentrum S liegt der Bildpunkt A\' auf der Geraden durch A und S, auf der anderen Seite von S und genauso weit von S entfernt wie A: S ist die Mitte der Strecke AA\'. Im Kästchenraster zählt man die Schritte von A nach S und geht von S aus dieselben Schritte noch einmal weiter. Eine Punktspiegelung wirkt wie eine halbe Drehung (180°) um S.',
+    quelle: 'Wikipedia: Punktspiegelung',
+    url: 'https://de.wikipedia.org/wiki/Punktspiegelung',
   },
   generate: mixedVariants(
-    // Variant 1: Visual — A and S given, find A' (image hidden)
+    // Variant 1: A und S gezeichnet, A' gesucht
     (rng: Rng) => {
-      const sx = randInt(rng, 0, 2)
-      const sy = randInt(rng, 0, 2)
-      const ax = randInt(rng, 1, 4)
-      const ay = randInt(rng, 1, 4)
-      const A: [number, number] = ax === sx && ay === sy ? [ax + 1, ay + 1] : [ax, ay]
-      const S: [number, number] = [sx, sy]
-      const [tx, ty] = pointReflectAcross(A, S)
+      const { A, S, img } = pickPointReflection(rng)
       const points: Array<[number, number]> = [A, [A[0] + 2, A[1]], [A[0] + 1, A[1] + 2]]
       const svg = generatePointReflectionSvg({
         points,
         center: S,
         showImage: false,
-        xRange: [-5, 8],
-        yRange: [-5, 8],
+        xRange: [0, 10],
+        yRange: [0, 10],
         labelVertices: true,
       })
-      const accepted = pairAnswerAccepted(tx, ty)
       return {
         ...textTask({
           question: `Spiegle Punkt A am Punkt S. Gib die Koordinaten von A' als x; y an.`,
-          accepted,
-          solution: `${tx}; ${ty}`,
-          explanation: `S = (${sx}|${sy}), A = (${A[0]}|${A[1]}). A' = 2S − A = (${2 * sx} − ${A[0]}|${2 * sy} − ${A[1]}) = (${tx}|${ty}).`,
+          accepted: pairAnswerAccepted(img[0], img[1]),
+          solution: `${img[0]}; ${img[1]}`,
+          explanation: `Von A(${A[0]}|${A[1]}) nach S(${S[0]}|${S[1]}): ${stepWords(A, S)}. Dieselben Schritte von S aus weiter führen zu A'(${img[0]}|${img[1]}).`,
+          dedupeKey: `ma:k5:punktsym:bild:${A.join(',')}:${S.join(',')}`,
         }),
         visualContent: svg,
       }
     },
-    // Variant 2: Show original + image, ask for S or for A'
+    // Variant 2: Original und Bild gezeichnet — Zentrum S bestimmen
     (rng: Rng) => {
-      const sx = randInt(rng, 0, 2)
-      const sy = randInt(rng, 0, 2)
-      const A: [number, number] = [randInt(rng, 1, 4), randInt(rng, 1, 4)]
-      if (A[0] === sx && A[1] === sy) A[0] += 1
-      const S: [number, number] = [sx, sy]
-      const [apx, apy] = pointReflectAcross(A, S)
+      const { A, S, img } = pickPointReflection(rng)
       const points: Array<[number, number]> = [A, [A[0] + 2, A[1]], [A[0] + 1, A[1] + 2]]
-      const askS = rng() < 0.5
       const svg = generatePointReflectionSvg({
         points,
         center: S,
         showImage: true,
-        xRange: [-5, 8],
-        yRange: [-5, 8],
+        showCenter: false,
+        xRange: [0, 10],
+        yRange: [0, 10],
         labelVertices: true,
-        // When asking for S, still show S label — students read from figure.
-        // For variety: when asking A', S is labeled; when asking S, both A and A' shown.
       })
-      if (askS) {
-        const accepted = pairAnswerAccepted(sx, sy)
-        return {
-          ...textTask({
-            question: `Die Figur F wird durch Punktspiegelung auf F' abgebildet. Lies die Koordinaten des Symmetriezentrums S ab (x; y).`,
-            accepted,
-            solution: `${sx}; ${sy}`,
-            explanation: `S ist der Mittelpunkt von A und A': ((${A[0]}+${apx})/2 | (${A[1]}+${apy})/2) = (${sx}|${sy}).`,
-          }),
-          visualContent: svg,
-        }
-      }
-      const accepted = pairAnswerAccepted(apx, apy)
       return {
         ...textTask({
-          question: `Die Figur wird am Punkt S punktgespiegelt. Welche Koordinaten hat A'? Gib x; y an.`,
-          accepted,
-          solution: `${apx}; ${apy}`,
-          explanation: `A' = 2S − A = (${2 * sx} − ${A[0]}|${2 * sy} − ${A[1]}) = (${apx}|${apy}).`,
+          question: `Die Figur F wurde durch eine Punktspiegelung auf F' abgebildet. In welchem Punkt liegt das Zentrum S? Gib x; y an.`,
+          accepted: pairAnswerAccepted(S[0], S[1]),
+          solution: `${S[0]}; ${S[1]}`,
+          explanation: `S ist die Mitte zwischen A(${A[0]}|${A[1]}) und A'(${img[0]}|${img[1]}): Von A nach A' geht es ${stepWords(A, img)}; die Hälfte davon ist ${stepWords(A, S)}. Also S(${S[0]}|${S[1]}).`,
+          dedupeKey: `ma:k5:punktsym:zentrum:${A.join(',')}:${S.join(',')}`,
         }),
         visualContent: svg,
       }
     },
-    // Variant 3: Text only — mirror a point across another point
+    // Variant 3: Nur Text — Urbild aus Bild und Zentrum
     (rng: Rng) => {
-      const ax = randInt(rng, -3, 4)
-      const ay = randInt(rng, -3, 4)
-      const sx = randInt(rng, -2, 2)
-      const sy = randInt(rng, -2, 2)
-      const [tx, ty] = pointReflectAcross([ax, ay], [sx, sy])
-      const accepted = pairAnswerAccepted(tx, ty)
+      const { A, S, img } = pickPointReflection(rng)
       return textTask({
-        question: `Spiegle (${ax}|${ay}) am Punkt (${sx}|${sy}). Gib x; y an.`,
-        accepted,
-        solution: `${tx}; ${ty}`,
-        explanation: `Punktspiegelung: x' = 2·${sx} − ${ax} = ${tx}, y' = 2·${sy} − ${ay} = ${ty}. Also (${tx}|${ty}).`,
+        question: `Bei einer Punktspiegelung am Zentrum S(${S[0]}|${S[1]}) entsteht der Bildpunkt P'(${img[0]}|${img[1]}). Wo liegt der ursprüngliche Punkt P? Gib x; y an.`,
+        accepted: pairAnswerAccepted(A[0], A[1]),
+        solution: `${A[0]}; ${A[1]}`,
+        explanation: `Von P' nach S: ${stepWords(img, S)}. Dieselben Schritte von S aus weiter führen zu P(${A[0]}|${A[1]}) — P und P' liegen gleich weit von S entfernt.`,
+        dedupeKey: `ma:k5:punktsym:urbild:${A.join(',')}:${S.join(',')}`,
       })
     },
   ),
 }
 
-/** Integer grid lengths and clean 3-4-5 diagonals for Strecken tasks. */
+/** Waagerechte oder senkrechte Strecken mit ganzzahliger Länge im Raster. */
 const pickIntegerSegment = (
   rng: Rng,
   bounds: { xMax: number; yMax: number } = { xMax: 8, yMax: 8 },
 ): { a: [number, number]; b: [number, number]; len: number } => {
-  const kind = pick(rng, ['h', 'v', '345'] as const)
-  if (kind === 'h') {
-    const len = randInt(rng, 2, Math.min(6, bounds.xMax - 1))
-    const ax = randInt(rng, 1, Math.max(1, bounds.xMax - len - 1))
-    const ay = randInt(rng, 1, bounds.yMax - 1)
+  if (rng() < 0.5) {
+    const len = randInt(rng, 2, Math.min(7, bounds.xMax - 1))
+    const ax = randInt(rng, 0, bounds.xMax - len)
+    const ay = randInt(rng, 0, bounds.yMax)
     return { a: [ax, ay], b: [ax + len, ay], len }
   }
-  if (kind === 'v') {
-    const len = randInt(rng, 2, Math.min(6, bounds.yMax - 1))
-    const ax = randInt(rng, 1, bounds.xMax - 1)
-    const ay = randInt(rng, 1, Math.max(1, bounds.yMax - len - 1))
-    return { a: [ax, ay], b: [ax, ay + len], len }
-  }
-  // 3-4-5 triangle — keep both ends inside [1, bounds]
-  const flip = rng() < 0.5
-  const dx = flip ? 3 : 4
-  const dy = flip ? 4 : 3
-  const ax = randInt(rng, 1, Math.max(1, bounds.xMax - dx - 1))
-  const ay = randInt(rng, 1, Math.max(1, bounds.yMax - dy - 1))
-  return { a: [ax, ay], b: [ax + dx, ay + dy], len: 5 }
+  const len = randInt(rng, 2, Math.min(7, bounds.yMax - 1))
+  const ax = randInt(rng, 0, bounds.xMax)
+  const ay = randInt(rng, 0, bounds.yMax - len)
+  return { a: [ax, ay], b: [ax, ay + len], len }
 }
 
 const streckenLaenge: Topic = {
   id: 'lb3-strecken-laenge',
   title: 'Länge von Strecken',
-  hint: '1 Kästchen = 1 Längeneinheit (cm).',
+  hint: '1 Kästchen entspricht 1 cm.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
-    text: 'Eine Strecke ist die kürzeste Verbindung zweier Punkte und hat eine bestimmte Länge. Die Länge einer Strecke AB ist der Abstand der Endpunkte A und B. Auf einem Koordinatenraster mit Kästchenlänge 1 cm misst man horizontale und vertikale Strecken durch Abzählen der Kästchen; bei schrägen Strecken gilt der Satz des Pythagoras (z. B. 3–4–5). Geraden und Halbgeraden sind unbegrenzt und haben keine endliche Länge.',
+    text: 'Eine Strecke ist die kürzeste Verbindung zweier Punkte und hat eine bestimmte Länge. Waagerechte und senkrechte Strecken misst man im Kästchenraster durch Abzählen der Kästchen. Ein Streckenzug besteht aus mehreren aneinanderhängenden Strecken; seine Länge ist die Summe der Teillängen. Geraden und Halbgeraden sind unbegrenzt und haben keine Länge.',
     quelle: 'Wikipedia: Strecke (Geometrie)',
     url: 'https://de.wikipedia.org/wiki/Strecke_(Geometrie)',
   },
   generate: mixedVariants(
-    // Variant 1: Always on Kästchenpapier
+    // Variant 1: Strecke im Kästchenraster abmessen
     (rng: Rng) => {
       const { a, b, len } = pickIntegerSegment(rng)
+      const [p, q] = pickLetters(rng)
       const svg = generateSegmentsOnGridSvg({
-        segments: [{ a, b, labelA: 'A', labelB: 'B' }],
+        segments: [{ a, b, labelA: p, labelB: q }],
         showSegments: true,
         showLengthLabels: false,
-        xRange: [-1, 9],
-        yRange: [-1, 9],
+        xRange: [0, 9],
+        yRange: [0, 9],
       })
       return {
         ...valueTask({
-          question: 'Wie lang ist die Strecke AB? (1 Kästchen = 1 cm)',
+          question: `Wie lang ist die Strecke ${p}${q}? (1 Kästchen = 1 cm)`,
           unit: 'cm',
           answerKind: 'integer',
           value: len,
           solution: `${len} cm`,
-          explanation: `Die Endpunkte sind A(${a[0]}|${a[1]}) und B(${b[0]}|${b[1]}). Länge = √((${b[0]}−${a[0]})² + (${b[1]}−${a[1]})²) = ${len} cm.`,
+          explanation: `Die Strecke ${p}${q} ist ${a[1] === b[1] ? 'waagerecht' : 'senkrecht'} und überdeckt ${len} Kästchen, also ${len} cm.`,
+          dedupeKey: `ma:k5:strecke:mess:${a.join(',')}:${b.join(',')}`,
         }),
         visualContent: svg,
       }
     },
     // Variant 2: Two segments on grid — which is longer?
     (rng: Rng) => {
-      let lenAB = randInt(rng, 2, 6)
-      let lenCD = randInt(rng, 2, 6)
-      if (lenAB === lenCD) lenCD = lenAB === 6 ? 5 : lenAB + 1
-      const longer = lenAB > lenCD ? 'AB' : 'CD'
+      const lenAB = randInt(rng, 2, 7)
+      let lenCD = randInt(rng, 2, 7)
+      if (lenAB === lenCD) lenCD = lenAB === 7 ? 6 : lenAB + 1
+      const [l1, l2, l3, l4] = pickLetters(rng)
+      const AB = `${l1}${l2}`
+      const CD = `${l3}${l4}`
+      const longer = lenAB > lenCD ? AB : CD
       const ay = randInt(rng, 5, 7)
       const cy = randInt(rng, 1, 3)
+      const ax = randInt(rng, 0, 8 - lenAB)
+      const cx = randInt(rng, 0, 8 - lenCD)
       const svg = generateSegmentsOnGridSvg({
         segments: [
-          { a: [1, ay], b: [1 + lenAB, ay], labelA: 'A', labelB: 'B' },
-          { a: [1, cy], b: [1 + lenCD, cy], labelA: 'C', labelB: 'D' },
+          { a: [ax, ay], b: [ax + lenAB, ay], labelA: l1, labelB: l2 },
+          { a: [cx, cy], b: [cx + lenCD, cy], labelA: l3, labelB: l4 },
         ],
         showSegments: true,
         showLengthLabels: false,
-        xRange: [-1, 9],
-        yRange: [-1, 9],
+        xRange: [0, 9],
+        yRange: [0, 9],
       })
       return choicePickTask({
-        question: 'Welche Strecke ist länger? (1 Kästchen = 1 cm)',
-        choices: ['AB', 'CD'],
+        question: `Welche Strecke ist länger: ${AB} oder ${CD}? (1 Kästchen = 1 cm)`,
+        choices: [AB, CD],
         correct: longer,
         solution: longer,
-        explanation: `AB ist ${lenAB} cm lang, CD ist ${lenCD} cm lang. Also ist ${longer} länger.`,
+        explanation: `${AB} ist ${lenAB} cm lang, ${CD} ist ${lenCD} cm lang. Also ist ${longer} länger.`,
         visualContent: svg,
         instruction: 'Tippe die längere Strecke:',
+        dedupeKey: `ma:k5:strecke:vergleich:${ax}:${ay}:${lenAB}:${cx}:${cy}:${lenCD}`,
       })
     },
-    // Variant 3: Text — horizontal/vertical distance described in words
+    // Variant 3: Streckenzug — Gesamtlänge
     (rng: Rng) => {
-      const horizontal = rng() < 0.5
-      const ax = randInt(rng, 0, 4)
-      const ay = randInt(rng, 0, 4)
-      const len = randInt(rng, 2, 7)
-      const bx = horizontal ? ax + len : ax
-      const by = horizontal ? ay : ay + len
-      const dir = horizontal
-        ? `${len} Einheiten nach rechts`
-        : `${len} Einheiten nach oben`
-      return valueTask({
-        question: `Punkt A liegt bei (${ax}|${ay}). Punkt B liegt ${dir} von A entfernt. Wie lang ist die Strecke AB?`,
-        unit: 'LE',
-        answerKind: 'integer',
-        value: len,
-        solution: `${len}`,
-        explanation: `B liegt bei (${bx}|${by}). Bei einer ${
-          horizontal ? 'waagerechten' : 'senkrechten'
-        } Strecke ist die Länge der Abstand der ${horizontal ? 'x' : 'y'}-Koordinaten: |${
-          horizontal ? `${bx} − ${ax}` : `${by} − ${ay}`
-        }| = ${len}.`,
+      const l1 = randInt(rng, 2, 5)
+      const l2 = randInt(rng, 2, 5)
+      const l3 = randInt(rng, 1, 4)
+      const ax = randInt(rng, 0, 8 - l1)
+      const ay = randInt(rng, 0, 8 - l2)
+      const B: [number, number] = [ax + l1, ay]
+      const C: [number, number] = [ax + l1, ay + l2]
+      const D: [number, number] = [Math.max(0, ax + l1 - l3), ay + l2]
+      const l3eff = C[0] - D[0]
+      const total = l1 + l2 + l3eff
+      const [n1, n2, n3, n4] = pickLetters(rng)
+      const svg = generateSegmentsOnGridSvg({
+        segments: [
+          { a: [ax, ay], b: B, labelA: n1, labelB: n2 },
+          { a: B, b: C, labelA: '', labelB: n3 },
+          { a: C, b: D, labelA: '', labelB: n4 },
+        ],
+        showSegments: true,
+        showLengthLabels: false,
+        xRange: [0, 9],
+        yRange: [0, 9],
       })
+      return {
+        ...valueTask({
+          question: `Wie lang ist der Streckenzug ${n1}–${n2}–${n3}–${n4} insgesamt? (1 Kästchen = 1 cm)`,
+          unit: 'cm',
+          answerKind: 'integer',
+          value: total,
+          solution: `${total} cm`,
+          explanation: `${n1}${n2} = ${l1} cm, ${n2}${n3} = ${l2} cm, ${n3}${n4} = ${l3eff} cm. Zusammen: ${l1} + ${l2} + ${l3eff} = ${total} cm.`,
+          dedupeKey: `ma:k5:strecke:zug:${ax}:${ay}:${l1}:${l2}:${l3eff}`,
+        }),
+        visualContent: svg,
+      }
     },
   ),
 }
@@ -1907,23 +2042,21 @@ const streckenLaenge: Topic = {
 const streckenMittelpunkt: Topic = {
   id: 'lb3-strecken-mittelpunkt',
   title: 'Mittelpunkt einer Strecke',
-  hint: 'Mittelpunkt M = ((x₁+x₂)/2 ; (y₁+y₂)/2). Antwortformat: x; y.',
+  hint: 'Antwortformat: x; y.',
   pointsPerTask: 10,
   difficulty: 2,
   fachwissen: {
-    text: 'Der Mittelpunkt M einer Strecke AB ist der Punkt, der von A und B denselben Abstand hat und auf der Strecke liegt. In Koordinaten gilt: M = ((x_A + x_B) : 2 | (y_A + y_B) : 2). Der Mittelpunkt halbiert die Strecke: AM = MB = ½ · AB.',
+    text: 'Der Mittelpunkt M einer Strecke AB liegt auf der Strecke und ist von A und B gleich weit entfernt; er halbiert die Strecke: AM = MB. Bei einer waagerechten Strecke liegt der x-Wert von M genau in der Mitte zwischen den x-Werten von A und B, bei einer senkrechten der y-Wert. Allgemein ist jeder Koordinatenwert von M die Mitte der entsprechenden Werte von A und B.',
     quelle: 'Wikipedia: Mittelpunkt',
     url: 'https://de.wikipedia.org/wiki/Mittelpunkt',
   },
   generate: mixedVariants(
     // Variant 1: Visual — keep both endpoints inside the drawn grid
     (rng: Rng) => {
-      const xMax = 8
-      const yMax = 8
       const halfDx = randInt(rng, 1, 3)
       const halfDy = rng() < 0.4 ? 0 : randInt(rng, 0, 2)
-      const ax = randInt(rng, 0, xMax - 2 * halfDx)
-      const ay = randInt(rng, 0, yMax - 2 * halfDy)
+      const ax = randInt(rng, 0, 8 - 2 * halfDx)
+      const ay = randInt(rng, 0, 8 - 2 * halfDy)
       const bx = ax + 2 * halfDx
       const by = ay + 2 * halfDy
       const mx = (ax + bx) / 2
@@ -1932,35 +2065,34 @@ const streckenMittelpunkt: Topic = {
         segments: [{ a: [ax, ay], b: [bx, by], labelA: 'A', labelB: 'B' }],
         showSegments: true,
         showLengthLabels: false,
-        xRange: [-1, 9],
-        yRange: [-1, 9],
+        xRange: [0, 9],
+        yRange: [0, 9],
       })
-      const accepted = pairAnswerAccepted(mx, my)
       return {
         ...textTask({
-          question:
-            'Welchen Mittelpunkt hat die Strecke AB? Gib die Koordinaten als x; y an.',
-          accepted,
+          question: 'Welchen Mittelpunkt hat die Strecke AB? Gib die Koordinaten als x; y an.',
+          accepted: pairAnswerAccepted(mx, my),
           solution: `${mx}; ${my}`,
-          explanation: `M = ((${ax}+${bx})/2 | (${ay}+${by})/2) = (${mx}|${my}).`,
+          explanation: `Von A nach B: ${stepWords([ax, ay], [bx, by])}. Die Hälfte davon von A aus: ${stepWords([ax, ay], [mx, my])} führt zu M(${mx}|${my}).`,
+          dedupeKey: `ma:k5:mitte:bild:${ax}:${ay}:${bx}:${by}`,
         }),
         visualContent: svg,
       }
     },
     // Variant 2: Text only — given coordinates
     (rng: Rng) => {
-      const ax = randInt(rng, -2, 4)
-      const ay = randInt(rng, -2, 4)
-      const bx = ax + 2 * randInt(rng, 1, 3)
-      const by = ay + 2 * randInt(rng, -2, 2)
+      const ax = randInt(rng, 0, 4)
+      const ay = randInt(rng, 2, 6)
+      const bx = ax + 2 * randInt(rng, 1, 2)
+      const by = ay + 2 * randInt(rng, -1, 1)
       const mx = (ax + bx) / 2
       const my = (ay + by) / 2
-      const accepted = pairAnswerAccepted(mx, my)
       return textTask({
         question: `A = (${ax}|${ay}), B = (${bx}|${by}). Wie lautet der Mittelpunkt der Strecke AB? Gib x; y an.`,
-        accepted,
+        accepted: pairAnswerAccepted(mx, my),
         solution: `${mx}; ${my}`,
-        explanation: `M = ((${ax}+${bx})/2 | (${ay}+${by})/2) = (${mx}|${my}).`,
+        explanation: `x-Wert: Mitte zwischen ${ax} und ${bx} ist ${mx}. y-Wert: Mitte zwischen ${ay} und ${by} ist ${my}. Also M(${mx}|${my}).`,
+        dedupeKey: `ma:k5:mitte:text:${ax}:${ay}:${bx}:${by}`,
       })
     },
   ),
@@ -1977,7 +2109,6 @@ const LINE_KIND_CHOICES = ['Strecke', 'Halbgerade', 'Gerade']
 const streckenBezeichnung: Topic = {
   id: 'lb3-strecken-bezeichnung',
   title: 'Strecke, Gerade und Halbgerade',
-  hint: 'Strecke: begrenzt; Halbgerade: ein Endpunkt; Gerade: unbegrenzt in beide Richtungen.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -2008,41 +2139,49 @@ const streckenBezeichnung: Topic = {
         contentIds: [`ma:k5:line:${kind}:diagram`],
       })
     },
-    // Variant 2: Text definition — tippen
+    // Variant 2: Strecken zwischen Punkten auf einer Geraden zählen
     (rng: Rng) => {
-      const kind = pick(rng, ['strecke', 'halbgerade', 'gerade'] as LineFigureKind[])
-      const defs =
-        kind === 'strecke'
-          ? [
-              'Wie heißt die Verbindung zweier Punkte, die durch die beiden Endpunkte begrenzt ist und eine Länge hat?',
-              'Welche Figur hat genau zwei Endpunkte und eine messbare Länge?',
-              'Begrenzte Verbindung von A nach B — wie heißt sie?',
-              'Endliche Länge, zwei Endpunkte: Welche Bezeichnung passt?',
-            ]
-          : kind === 'halbgerade'
-            ? [
-                'Wie heißt eine Linie, die bei einem Punkt beginnt und in eine Richtung unbegrenzt weitergeht?',
-                'Ein Anfangspunkt, dann unbegrenzt weiter — welche Figur?',
-                'Strahl mit Startpunkt A durch B: Wie heißt die Figur?',
-                'Genau ein Anfangspunkt, eine Richtung: Welche Bezeichnung?',
-              ]
-            : [
-                'Wie heißt eine Linie, die in beide Richtungen unbegrenzt verläuft?',
-                'Unbegrenzt in beide Richtungen — welche Figur?',
-                'Weder Anfang noch Ende: Welche Bezeichnung passt?',
-                'Zwei Pfeile an den Enden einer Linie: Was ist das?',
-              ]
-      const question = pick(rng, defs)
-      const solution = LINE_KIND_LABEL[kind]
-      return choicePickTask({
-        question,
-        choices: LINE_KIND_CHOICES,
-        correct: solution,
-        solution,
-        explanation: `Die gesuchte Bezeichnung ist: ${solution}.`,
-        instruction: 'Tippe die passende Bezeichnung:',
-        dedupeKey: `ma:k5:line:${kind}:def:${question.slice(0, 24)}`,
-        contentIds: [`ma:k5:line:${kind}:def:${question.slice(0, 40).replace(/\s+/g, '_')}`],
+      const n = randInt(rng, 3, 7)
+      const names = 'ABCDEFG'.slice(0, n).split('')
+      const value = (n * (n - 1)) / 2
+      return valueTask({
+        question: `Auf einer Geraden liegen die ${n} Punkte ${names.join(', ')}. Wie viele verschiedene Strecken haben zwei dieser Punkte als Endpunkte?`,
+        answerKind: 'integer',
+        value,
+        solution: `${value}`,
+        explanation: `Von ${names[0]} aus gibt es ${n - 1} Strecken, von ${names[1]} aus noch ${n - 2} neue usw.: ${Array.from({ length: n - 1 }, (_, i) => n - 1 - i).join(' + ')} = ${value}.`,
+        dedupeKey: `ma:k5:line:strecken-zaehlen:${n}`,
+      })
+    },
+    // Variant 3: Halbgeraden mit Anfangspunkt in den Punkten zählen
+    (rng: Rng) => {
+      const n = randInt(rng, 2, 6)
+      const value = 2 * n
+      return valueTask({
+        question: `Auf einer Geraden g sind ${n} Punkte markiert. Wie viele Halbgeraden auf g haben einen dieser Punkte als Anfangspunkt?`,
+        answerKind: 'integer',
+        value,
+        solution: `${value}`,
+        explanation: `Von jedem Punkt aus beginnen auf g genau zwei Halbgeraden (eine in jede Richtung): ${n} · 2 = ${value}.`,
+        dedupeKey: `ma:k5:line:halbgeraden-zaehlen:${n}`,
+      })
+    },
+    // Variant 4: Länge einer waagerechten oder senkrechten Strecke im Gitter
+    (rng: Rng) => {
+      const horizontal = rng() < 0.5
+      const fixed = randInt(rng, 1, 9)
+      const a = randInt(rng, 0, 6)
+      const b = a + randInt(rng, 2, 8)
+      const A = horizontal ? `(${a}|${fixed})` : `(${fixed}|${a})`
+      const B = horizontal ? `(${b}|${fixed})` : `(${fixed}|${b})`
+      return valueTask({
+        question: `Im Koordinatensystem (1 Einheit = 1 cm) liegen A${A} und B${B}. Wie lang ist die Strecke AB?`,
+        unit: 'cm',
+        answerKind: 'integer',
+        value: b - a,
+        solution: `${b - a} cm`,
+        explanation: `A und B haben dieselbe ${horizontal ? 'y' : 'x'}-Koordinate; die Länge ist der Unterschied der ${horizontal ? 'x' : 'y'}-Werte: ${b} − ${a} = ${b - a} cm.`,
+        dedupeKey: `ma:k5:line:laenge:${A}:${B}`,
       })
     },
   ),
@@ -2334,10 +2473,10 @@ const oberflaecheQuader: Topic = {
       const c = randInt(rng, 3, 12)
       const value = 2 * (a * b + a * c + b * c)
       const contexts = [
-        'Du willst einen Karton',
+        'Ein Schuhkarton',
         'Eine Geschenkbox',
-        'Ein Aquarium',
-        'Eine Kiste',
+        'Eine Schatzkiste aus Pappe',
+        'Eine Keksdose',
       ]
       const ctx = pick(rng, contexts)
       return valueTask({
@@ -2371,7 +2510,6 @@ const randomLDims = (rng: Rng) => {
 const flaecheZusammengesetzt: Topic = {
   id: 'lb4-flaeche-zusammengesetzt',
   title: 'Zusammengesetzte Flächen: Fläche berechnen',
-  hint: 'Zerlege die Figur in Rechtecke oder ziehe die Aussparung ab.',
   pointsPerTask: 12,
   difficulty: 2,
   fachwissen: {
@@ -2466,7 +2604,6 @@ const flaecheZusammengesetzt: Topic = {
 const umfangZusammengesetzt: Topic = {
   id: 'lb4-umfang-zusammengesetzt',
   title: 'Zusammengesetzte Flächen: Umfang berechnen',
-  hint: 'Addiere alle äußeren Kanten.',
   pointsPerTask: 12,
   difficulty: 2,
   fachwissen: {
@@ -2531,7 +2668,6 @@ const randomCompositeCuboid = (rng: Rng) => {
 const volumenZusammengesetzt: Topic = {
   id: 'lb4-volumen-zusammengesetzt',
   title: 'Zusammengesetzte Quader: Volumen',
-  hint: 'Zerlege in zwei Quader und addiere die Volumina – oder ziehe die Aussparung ab.',
   pointsPerTask: 12,
   difficulty: 2,
   fachwissen: {
@@ -2643,7 +2779,6 @@ const sachaufgabeGesamtpreis: Topic = {
 const sachaufgabeTeilen: Topic = {
   id: 'lb5-teilen',
   title: 'Sachaufgabe: Gerecht aufteilen',
-  hint: 'Teile die Gesamtmenge durch die Anzahl.',
   pointsPerTask: 10,
   difficulty: 1,
   fachwissen: {
@@ -2670,7 +2805,6 @@ const sachaufgabeTeilen: Topic = {
 const sachaufgabeMehrstufig: Topic = {
   id: 'lb5-mehrstufig',
   title: 'Sachaufgabe: Mehrstufige Alltagsrechnung',
-  hint: 'Löse Schritt für Schritt: Zuerst den Gesamtpreis, dann das Wechselgeld.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Sachaufgabe', 'Wechselgeld', 'Alltag', 'mehrstufig'],
@@ -2705,7 +2839,6 @@ const sachaufgabeMehrstufig: Topic = {
 const sachaufgabeFlaeche: Topic = {
   id: 'lb5-sachaufgabe-flaeche',
   title: 'Sachaufgabe: Fläche und Umfang im Alltag',
-  hint: 'Entscheide, ob Umfang oder Fläche gefragt ist.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Sachaufgabe', 'Fläche', 'Umfang', 'Garten', 'Zimmer'],
@@ -2839,7 +2972,6 @@ export const klasse5: Grade = {
         umfangZusammengesetzt,
         volumenZusammengesetzt,
         ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math5"].filter((x) => x.areaId === "lb4").map((x) => x.topic),
-        ...(MATH_DICHTE_BY_GRADE["math5"] ?? []).filter((x) => x.areaId === "lb4").map((x) => x.topic),
       ],
     },
     {

@@ -210,12 +210,58 @@ const slug: Record<string, string> = {
   Zeit: 'zeit',
 }
 
-export const conversionTopic = (idPrefix: string, q: Quantity): Topic => ({
+/**
+ * Klasse 6: Größen in Kommaschreibweise (3,45 m → cm) und gemischte Angaben
+ * (3 m 45 cm → m) — bewusst ein anderer Aufgabenpool als die ganzzahligen K5-Umrechnungen.
+ */
+export const generateConversionDecimal = (rng: Rng, q: Quantity): Task => {
+  const n = q.units.length
+  for (let attempt = 0; attempt < 80; attempt++) {
+    const i = randInt(rng, 1, n - 1)
+    const big = q.units[i]
+    if (rng() < 0.4) {
+      const small = q.units[i - 1]
+      if (small.scale === big.scale) continue
+      const factor = big.scale / small.scale
+      if (factor > q.maxRatio || factor < 10) continue
+      const whole = randInt(rng, 1, 19)
+      const rest = randInt(rng, 1, factor - 1)
+      const res = cleanValue(whole * factor + rest, factor, 4)
+      if (!res) continue
+      return valueTask({
+        question: `Schreibe in ${big.sym}: ${formatDe(whole)} ${big.sym} ${formatDe(rest)} ${small.sym} = ? ${big.sym}`,
+        unit: big.sym,
+        answerKind: 'decimal',
+        value: res.value,
+        eps: 1e-6,
+        solution: `${formatDe(res.value)} ${big.sym}`,
+        explanation: `1 ${big.sym} = ${formatDe(factor)} ${small.sym}, also sind ${formatDe(rest)} ${small.sym} = ${formatDe(roundTo(rest / factor, 4))} ${big.sym}. Zusammen: ${formatDe(whole)} + ${formatDe(roundTo(rest / factor, 4))} = ${formatDe(res.value)} ${big.sym}.`,
+        dedupeKey: `units:k6:mixed:${q.label}:${whole}:${rest}:${big.sym}`,
+      })
+    }
+    const j = randInt(rng, 0, n - 1)
+    const from = big
+    const to = q.units[j]
+    if (from.scale === to.scale) continue
+    const ratio = Math.max(from.scale, to.scale) / Math.min(from.scale, to.scale)
+    if (ratio > q.maxRatio) continue
+    const hundredths = randInt(rng, 101, 999)
+    if (hundredths % 10 === 0) continue
+    const amount = hundredths / 100
+    const res = cleanValue(hundredths * from.scale, 100 * to.scale, 4)
+    if (!res || res.value > 1_000_000) continue
+    return { ...buildTask(from, to, amount, res.value, res.decimals), dedupeKey: `units:k6:dec:${q.label}:${hundredths}:${from.sym}:${to.sym}` }
+  }
+  return generateConversion(rng, q)
+}
+
+export const conversionTopic = (idPrefix: string, q: Quantity, opts?: { decimalAmounts?: boolean }): Topic => ({
   id: `${idPrefix}-umrechnen-${slug[q.label] ?? q.label.toLowerCase()}`,
-  title: `Einheiten umrechnen: ${q.label}`,
-  hint: `Nutze den Umrechnungsfaktor zwischen den ${q.label === 'Zeit' ? 'Zeiteinheiten' : 'Einheiten'}.`,
+  title: opts?.decimalAmounts ? `Größen in Kommaschreibweise umrechnen: ${q.label}` : `Einheiten umrechnen: ${q.label}`,
   pointsPerTask: 10,
   keywords: keywordsFor[q.label] ?? [...commonKeywords, q.label],
   fachwissen: conversionFachwissen(q.label),
-  generate: (rng: Rng) => generateConversion(rng, q),
+  generate: opts?.decimalAmounts
+    ? (rng: Rng) => generateConversionDecimal(rng, q)
+    : (rng: Rng) => generateConversion(rng, q),
 })

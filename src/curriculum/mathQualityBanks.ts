@@ -2,313 +2,569 @@
  * Themenreine Mathe-Generatoren (Rechnung/MC) — K5/K6 altersgerecht.
  * Kein TF, keine Zuordnung, keine Lücken. Kein released:true.
  */
-import type { Rng } from '../lib/rng'
-import { choicePickTask, valueTask } from './taskHelpers'
-import { shuffle } from './biologieHelpers'
-import type { Topic } from './types'
+import { gcd, makeFraction } from '../lib/fraction'
+import { formatDe } from '../lib/num'
+import { pick, randInt, type Rng } from '../lib/rng'
+import { appliedMc, shuffleArr } from './mathApplied'
+import { fractionTask, mixedVariants, multiSelectTask, valueTask } from './taskHelpers'
+import type { Fachwissen, Topic } from './types'
 
-const Q = 'Lehrplan Mathematik Gymnasium Sachsen'
-const U = 'https://www.schulportal.sachsen.de/lplandb/lehrplan/461'
-const fw = (text: string) => ({ text, quelle: Q, url: U })
+const wiki = (text: string, title: string, slug: string): Fachwissen => ({
+  text,
+  quelle: `Wikipedia: ${title}`,
+  url: `https://de.wikipedia.org/wiki/${slug}`,
+})
 
-function pick<T>(rng: Rng, arr: T[]): T {
-  return arr[Math.floor(rng() * arr.length)]!
-}
+/** Zahl mit Tausender-Leerzeichen (deutsche Schreibweise großer Zahlen). */
+const big = (n: number): string => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 
-/** K5: Rechengesetze und Rechenvorteile — Punkt vor Strich, Distributiv, Vorteile. */
-export function generateRechengesetzeK5(rng: Rng): ReturnType<Topic['generate']> {
-  const mode = Math.floor(rng() * 4)
-  if (mode === 0) {
-    const a = 2 + Math.floor(rng() * 8)
-    const b = 2 + Math.floor(rng() * 8)
-    const c = 2 + Math.floor(rng() * 6)
-    const value = a + b * c
+// ---------------------------------------------------------------------------
+// K5: Rechengesetze und Rechenvorteile
+// ---------------------------------------------------------------------------
+
+const FW_ASSOZ = wiki(
+  'Kommutativgesetz (a · b = b · a) und Assoziativgesetz ((a · b) · c = a · (b · c)) erlauben, Faktoren beliebig zu vertauschen und zu gruppieren. Günstige Paare wie 4 · 25 = 100 oder 2 · 50 = 100 vereinfachen das Rechnen.',
+  'Assoziativgesetz',
+  'Assoziativgesetz',
+)
+const FW_DISTRIB = wiki(
+  'Distributivgesetz: a · (b + c) = a · b + a · c bzw. a · (b − c) = a · b − a · c. Beide Terme haben denselben Wert. So kann man einen gemeinsamen Faktor ausklammern oder eine Zahl zerlegen (z. B. 98 = 100 − 2) und vorteilhaft rechnen.',
+  'Distributivgesetz',
+  'Distributivgesetz',
+)
+const FW_REIHENFOLGE = wiki(
+  'Reihenfolge beim Rechnen: zuerst Klammern, dann Punktrechnung (· und :), zuletzt Strichrechnung (+ und −). Gleichrangige Rechenarten rechnet man von links nach rechts.',
+  'Operatorrangfolge',
+  'Operatorrangfolge',
+)
+
+export const generateRechengesetzeK5: Topic['generate'] = mixedVariants(
+  (rng: Rng) => {
+    const [p, q] = pick(rng, [
+      [4, 25],
+      [2, 50],
+      [5, 20],
+      [8, 125],
+      [4, 250],
+    ] as Array<[number, number]>)
+    const m = randInt(rng, 7, 99)
+    const order = shuffleArr(rng, [p, m, q])
+    const value = p * q * m
     return valueTask({
-      question: `Berechne: ${a} + ${b} · ${c}`,
+      question: `Berechne geschickt: ${order.join(' · ')}`,
       answerKind: 'integer',
       value,
-      solution: String(value),
-      explanation: `Zuerst ${b} · ${c} = ${b * c}. Dann ${a} + ${b * c} = ${value}.`,
-      fachwissen: fw(
-        'Bei gemischten Termen gilt Punkt vor Strich: Multiplikation/Division vor Addition/Subtraktion. Klammern haben Vorrang.',
-      ),
-      dedupeKey: `ma:k5:gesetze:pvs:${a}:${b}:${c}`,
-      contentIds: [`ma:k5:gesetze:pvs:${a}:${b}:${c}`],
+      solution: big(value),
+      explanation: `Vertauschen und zusammenfassen: (${p} · ${q}) · ${m} = ${p * q} · ${m} = ${big(value)}.`,
+      fachwissen: FW_ASSOZ,
+      dedupeKey: `ma:k5:gesetze:assoz:${order.join(',')}`,
     })
-  }
-  if (mode === 1) {
-    const a = 2 + Math.floor(rng() * 7)
-    const b = 2 + Math.floor(rng() * 8)
-    const c = 1 + Math.floor(rng() * 6)
-    const value = a * (b + c)
+  },
+  (rng: Rng) => {
+    const a = randInt(rng, 12, 48)
+    const b = randInt(rng, 11, 89)
+    const total = pick(rng, [100, 100, 1000])
+    const c = total - b
+    const value = a * total
     return valueTask({
-      question: `Berechne: ${a} · (${b} + ${c})`,
+      question: `Berechne geschickt: ${a} · ${b} + ${a} · ${c}`,
       answerKind: 'integer',
       value,
-      solution: String(value),
-      explanation: `${a}·${b} + ${a}·${c} = ${a * b} + ${a * c} = ${value}.`,
-      fachwissen: fw('Distributivgesetz: a·(b+c) = a·b + a·c — hilfreich beim Kopfrechnen.'),
-      dedupeKey: `ma:k5:gesetze:dist:${a}:${b}:${c}`,
-      contentIds: [`ma:k5:gesetze:dist:${a}:${b}:${c}`],
+      solution: big(value),
+      explanation: `${a} ausklammern: ${a} · (${b} + ${c}) = ${a} · ${total} = ${big(value)}.`,
+      fachwissen: FW_DISTRIB,
+      dedupeKey: `ma:k5:gesetze:aus:${a}:${b}:${c}`,
     })
-  }
-  if (mode === 2) {
-    const a = 3 + Math.floor(rng() * 6)
-    const tens = 20 + Math.floor(rng() * 4) * 10 // 20,30,40,50
-    const sub = 1 + Math.floor(rng() * 4)
-    const value = a * (tens - sub)
+  },
+  (rng: Rng) => {
+    const a = randInt(rng, 3, 19)
+    const round = pick(rng, [100, 1000])
+    const d = randInt(rng, 1, 4)
+    const minus = rng() < 0.6
+    const n = minus ? round - d : round + d
+    const value = a * n
     return valueTask({
-      question: `Berechne: ${a} · (${tens} − ${sub})`,
+      question: `Berechne im Kopf: ${a} · ${n}`,
       answerKind: 'integer',
       value,
-      solution: String(value),
-      explanation: `${a}·${tens} − ${a}·${sub} = ${a * tens} − ${a * sub} = ${value}.`,
-      fachwissen: fw('Rechenvorteil durch Zerlegen und Distributivgesetz.'),
-      dedupeKey: `ma:k5:gesetze:vor:${a}:${tens}:${sub}`,
-      contentIds: [`ma:k5:gesetze:vor:${a}:${tens}:${sub}`],
+      solution: big(value),
+      explanation: `${n} = ${round} ${minus ? '−' : '+'} ${d}: ${a} · ${round} ${minus ? '−' : '+'} ${a} · ${d} = ${big(a * round)} ${minus ? '−' : '+'} ${a * d} = ${big(value)}.`,
+      fachwissen: FW_DISTRIB,
+      dedupeKey: `ma:k5:gesetze:zerl:${a}:${n}`,
     })
+  },
+  (rng: Rng) => {
+    for (;;) {
+      const a = randInt(rng, 40, 200)
+      const b = randInt(rng, 2, 9)
+      const c = randInt(rng, 2, 12)
+      const d = randInt(rng, 1, 9)
+      const e = pick(rng, [2, 3, 4, 5])
+      const inner = c + d
+      if ((b * inner) % e !== 0) continue
+      const value = a - (b * inner) / e
+      if (value < 0) continue
+      return valueTask({
+        question: `Berechne: ${a} − ${b} · (${c} + ${d}) : ${e}`,
+        answerKind: 'integer',
+        value,
+        solution: String(value),
+        explanation: `Klammer: ${c} + ${d} = ${inner}. Punktrechnung von links: ${b} · ${inner} = ${b * inner}, ${b * inner} : ${e} = ${(b * inner) / e}. Strich: ${a} − ${(b * inner) / e} = ${value}.`,
+        fachwissen: FW_REIHENFOLGE,
+        dedupeKey: `ma:k5:gesetze:reihe:${a}:${b}:${c}:${d}:${e}`,
+      })
+    }
+  },
+  (rng: Rng) => {
+    for (;;) {
+      const a = randInt(rng, 3, 9)
+      const b = 10 * randInt(rng, 2, 9)
+      const c = randInt(rng, 2, 9)
+      const target = a * (b + c)
+      const cands: Array<[string, number]> = [
+        [`${a} · ${b} + ${c}`, a * b + c],
+        [`${a} + ${b} · ${c}`, a + b * c],
+        [`(${a} + ${b}) · ${c}`, (a + b) * c],
+        [`${a} · ${b} + ${b} · ${c}`, a * b + b * c],
+      ]
+      const wrong = cands.filter(([, v]) => v !== target).map(([s]) => s)
+      if (wrong.length < 3) continue
+      return appliedMc(rng, {
+        question: `Welcher Term hat denselben Wert wie ${a} · (${b} + ${c})?`,
+        correct: `${a} · ${b} + ${a} · ${c}`,
+        distractors: wrong,
+        explanation: `Distributivgesetz: Jeder Summand in der Klammer wird mit ${a} multipliziert: ${a} · ${b} + ${a} · ${c} = ${a * b} + ${a * c} = ${target}.`,
+        fachwissen: FW_DISTRIB,
+        dedupeKey: `ma:k5:gesetze:termmc:${a}:${b}:${c}`,
+      })
+    }
+  },
+)
+
+// ---------------------------------------------------------------------------
+// K6: Endliche und periodische Dezimalzahlen
+// ---------------------------------------------------------------------------
+
+const FW_ENDLICH = wiki(
+  'Ein vollständig gekürzter Bruch ergibt genau dann eine endliche Dezimalzahl, wenn sein Nenner nur die Primfaktoren 2 und 5 enthält. Kommt ein anderer Primfaktor vor (z. B. 3, 7 oder 11), ist die Dezimalzahl periodisch.',
+  'Dezimalbruch',
+  'Dezimalbruch',
+)
+const FW_PERIODE = wiki(
+  'Reinperiodische Dezimalzahlen lassen sich direkt als Bruch schreiben: 0,aaa… = a/9 und 0,abab… = ab/99. Anschließend kürzt man, falls möglich.',
+  'Periodische Dezimalzahl',
+  'Periodische_Dezimalzahl',
+)
+
+const FINITE_DENOMS = [2, 4, 5, 8, 10, 16, 20, 25, 40, 50]
+const PERIOD_DENOMS = [3, 6, 7, 9, 11, 12, 15, 18]
+
+const reducedNumerator = (rng: Rng, d: number): number => {
+  for (;;) {
+    const n = randInt(rng, 1, d - 1)
+    if (gcd(n, d) === 1) return n
   }
-  // mode 3: Klammerterm
-  const a = 2 + Math.floor(rng() * 6)
-  const b = 2 + Math.floor(rng() * 6)
-  const c = 2 + Math.floor(rng() * 5)
-  const value = (a + b) * c
-  return valueTask({
-    question: `Berechne: (${a} + ${b}) · ${c}`,
-    answerKind: 'integer',
-    value,
-    solution: String(value),
-    explanation: `Klammern zuerst: ${a}+${b}=${a + b}, dann ${a + b}·${c}=${value}.`,
-    fachwissen: fw('Klammern haben Vorrang vor Punkt- und Strichrechnung.'),
-    dedupeKey: `ma:k5:gesetze:kl:${a}:${b}:${c}`,
-    contentIds: [`ma:k5:gesetze:kl:${a}:${b}:${c}`],
-  })
 }
 
-/** K6: Endliche und periodische Dezimalzahlen — Umwandeln/Klassifizieren. */
-export function generatePeriodischeDezimalK6(rng: Rng): ReturnType<Topic['generate']> {
-  const finite = [
-    { br: '1/2', dez: '0,5', why: 'Nenner 2' },
-    { br: '1/4', dez: '0,25', why: 'Nenner 4 = 2²' },
-    { br: '1/5', dez: '0,2', why: 'Nenner 5' },
-    { br: '3/4', dez: '0,75', why: 'Nenner 4 = 2²' },
-    { br: '2/5', dez: '0,4', why: 'Nenner 5' },
-    { br: '1/8', dez: '0,125', why: 'Nenner 8 = 2³' },
-    { br: '3/5', dez: '0,6', why: 'Nenner 5' },
-    { br: '1/10', dez: '0,1', why: 'Nenner 10 = 2·5' },
-  ]
-  const period = [
-    { br: '1/3', dez: '0,333…', why: 'Nenner 3' },
-    { br: '2/3', dez: '0,666…', why: 'Nenner 3' },
-    { br: '1/6', dez: '0,1666…', why: 'Nenner 6 = 2·3' },
-    { br: '1/9', dez: '0,111…', why: 'Nenner 9 = 3²' },
-    { br: '1/7', dez: '0,142857…', why: 'Nenner 7' },
-    { br: '1/11', dez: '0,0909…', why: 'Nenner 11' },
-    { br: '5/6', dez: '0,8333…', why: 'Nenner 6 = 2·3' },
-    { br: '2/9', dez: '0,222…', why: 'Nenner 9' },
-  ]
+export const generatePeriodischeDezimalK6: Topic['generate'] = mixedVariants(
+  (rng: Rng) => {
+    const d = pick(rng, [8, 16, 20, 25, 40, 50])
+    const n = reducedNumerator(rng, d)
+    const value = n / d
+    return valueTask({
+      question: `Schreibe den Bruch ${n}/${d} als endliche Dezimalzahl.`,
+      answerKind: 'decimal',
+      value,
+      solution: formatDe(value),
+      explanation: `${n} : ${d} = ${formatDe(value)}. Der Nenner ${d} enthält nur die Primfaktoren 2 und 5, darum bricht die Division ab.`,
+      fachwissen: FW_ENDLICH,
+      dedupeKey: `ma:k6:period:wert:${n}/${d}`,
+    })
+  },
+  (rng: Rng) => {
+    const pd = pick(rng, PERIOD_DENOMS)
+    const per = `${reducedNumerator(rng, pd)}/${pd}`
+    const fins = new Set<string>()
+    while (fins.size < 3) {
+      const d = pick(rng, FINITE_DENOMS)
+      fins.add(`${reducedNumerator(rng, d)}/${d}`)
+    }
+    return appliedMc(rng, {
+      question: 'Welcher dieser Brüche ergibt eine periodische Dezimalzahl?',
+      correct: per,
+      distractors: [...fins],
+      explanation: `${per}: Der Nenner ${pd} enthält einen Primfaktor außer 2 und 5, deshalb ist die Dezimalzahl periodisch. Die Nenner der anderen Brüche bestehen nur aus 2 und 5.`,
+      fachwissen: FW_ENDLICH,
+      dedupeKey: `ma:k6:period:mc:${per}:${[...fins].sort().join(',')}`,
+    })
+  },
+  (rng: Rng) => {
+    const fracs = new Map<string, boolean>()
+    const want = randInt(rng, 2, 3)
+    while (fracs.size < 6) {
+      const finite = [...fracs.values()].filter(Boolean).length < want
+      const d = finite ? pick(rng, FINITE_DENOMS) : pick(rng, PERIOD_DENOMS)
+      fracs.set(`${reducedNumerator(rng, d)}/${d}`, finite)
+    }
+    const all = shuffleArr(rng, [...fracs.keys()])
+    const good = all.filter((f) => fracs.get(f))
+    return multiSelectTask({
+      question: 'Tippe alle Brüche an, die eine endliche Dezimalzahl ergeben.',
+      choices: all,
+      correct: good,
+      solution: good.join(', '),
+      explanation: `Endlich sind die Brüche, deren (gekürzter) Nenner nur 2 und 5 als Primfaktoren hat: ${good.join(', ')}.`,
+      instruction: 'Tippe alle zutreffenden Brüche an:',
+      fachwissen: FW_ENDLICH,
+      dedupeKey: `ma:k6:period:multi:${[...all].sort().join(',')}`,
+    })
+  },
+  (rng: Rng) => {
+    const two = rng() < 0.5
+    const digits = two ? randInt(rng, 10, 98) : randInt(rng, 1, 8)
+    if (two && digits % 11 === 0) return generatePeriodischeDezimalK6(rng)
+    const den = two ? 99 : 9
+    const f = makeFraction(digits, den)
+    const shown = two ? `0,${digits}${digits}${digits}…` : `0,${digits}${digits}${digits}${digits}…`
+    return fractionTask({
+      question: `Schreibe die periodische Dezimalzahl ${shown} als vollständig gekürzten Bruch.`,
+      value: f,
+      requireReduced: true,
+      solution: `${f.n}/${f.d}`,
+      explanation: `Periode ${digits} mit ${two ? 'zwei Ziffern' : 'einer Ziffer'}: ${shown} = ${digits}/${den}${f.d !== den ? ` = ${f.n}/${f.d}` : ''}.`,
+      fachwissen: FW_PERIODE,
+      dedupeKey: `ma:k6:period:bruch:${digits}:${den}`,
+    })
+  },
+)
 
-  const mode = Math.floor(rng() * 3)
-  if (mode === 0) {
-    const row = pick(rng, finite)
-    return choicePickTask({
-      question: `Welche Dezimalzahl entspricht ${row.br}? Ist sie endlich oder periodisch?`,
-      choices: shuffle(rng, [
-        `${row.dez} (endlich)`,
-        '0,333… (periodisch)',
-        '0,142857… (periodisch)',
-        'keine Dezimaldarstellung',
-      ]).slice(0, 4),
-      correct: `${row.dez} (endlich)`,
-      solution: `${row.dez} (endlich)`,
-      explanation: `${row.br} = ${row.dez}. ${row.why} → nach Kürzen nur 2/5 → endlich.`,
-      fachwissen: fw(
-        'Endliche Dezimalzahl: Nachkommastellen brechen ab. Gekürzter Nenner nur Primfaktoren 2 und/oder 5.',
-      ),
-      dedupeKey: `ma:k6:period:fin:${row.br}`,
-      contentIds: [`ma:k6:period:fin:${row.br}`],
+// ---------------------------------------------------------------------------
+// K5: Große natürliche Zahlen vergleichen und ordnen
+// ---------------------------------------------------------------------------
+
+const FW_STELLEN = wiki(
+  'Natürliche Zahlen vergleicht man stellenweise von links: Bei gleicher Stellenzahl entscheidet die erste Stelle, an der sich die Ziffern unterscheiden. Mehr Stellen bedeuten (ohne führende Nullen) eine größere Zahl.',
+  'Stellenwertsystem',
+  'Stellenwertsystem',
+)
+
+export const generateVergleichenOrdnenK5: Topic['generate'] = mixedVariants(
+  (rng: Rng) => {
+    const digits = shuffleArr(rng, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]).slice(0, randInt(rng, 6, 7))
+    const toNum = (arr: number[]) => Number(arr.join(''))
+    const nums = new Set<number>()
+    while (nums.size < 4) {
+      const arr = shuffleArr(rng, digits)
+      if (arr[0] === 0) continue
+      nums.add(toNum(arr))
+    }
+    const list = [...nums]
+    const askMax = rng() < 0.5
+    const target = askMax ? Math.max(...list) : Math.min(...list)
+    return appliedMc(rng, {
+      question: `Welche Zahl ist am ${askMax ? 'größten' : 'kleinsten'}?`,
+      correct: big(target),
+      distractors: list.filter((n) => n !== target).map(big),
+      explanation: `Alle Zahlen haben gleich viele Stellen. Man vergleicht von links: ${big(target)} hat an der ersten unterschiedlichen Stelle die ${askMax ? 'größte' : 'kleinste'} Ziffer.`,
+      fachwissen: FW_STELLEN,
+      dedupeKey: `ma:k5:vgl:mc:${[...list].sort().join(',')}:${askMax}`,
     })
-  }
-  if (mode === 1) {
-    const row = pick(rng, period)
-    return choicePickTask({
-      question: `Welche Aussage zu ${row.br} ist richtig?`,
-      choices: shuffle(rng, [
-        `periodische Dezimalzahl (${row.dez})`,
-        'endliche Dezimalzahl 0,5',
-        'endliche Dezimalzahl 0,25',
-        'nur als gemischte Zahl darstellbar',
-      ]).slice(0, 4),
-      correct: `periodische Dezimalzahl (${row.dez})`,
-      solution: `periodische Dezimalzahl (${row.dez})`,
-      explanation: `${row.br} ≈ ${row.dez}. ${row.why} → andere Primfaktoren → periodisch.`,
-      fachwissen: fw(
-        'Periodische Dezimalzahl: eine Zifferngruppe wiederholt sich unendlich (Periodenstrich).',
-      ),
-      dedupeKey: `ma:k6:period:per:${row.br}`,
-      contentIds: [`ma:k6:period:per:${row.br}`],
+  },
+  (rng: Rng) => {
+    const digits = shuffleArr(rng, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]).slice(0, 6)
+    const asc = [...digits].sort((a, b) => a - b)
+    const askMax = rng() < 0.5
+    let arr: number[]
+    if (askMax) arr = [...asc].reverse()
+    else {
+      arr = [...asc]
+      if (arr[0] === 0) [arr[0], arr[1]] = [arr[1]!, arr[0]!]
+    }
+    const value = Number(arr.join(''))
+    return valueTask({
+      question: `Bilde aus den Ziffern ${digits.join(', ')} (jede genau einmal) die ${askMax ? 'größte' : 'kleinste'} sechsstellige Zahl.`,
+      answerKind: 'integer',
+      value,
+      solution: big(value),
+      explanation: askMax
+        ? `Die größte Ziffer kommt an die höchste Stelle: ${big(value)}.`
+        : `Die kleinste Ziffer kommt nach vorn${asc[0] === 0 ? ', aber nicht die 0 (sonst wäre die Zahl nur fünfstellig)' : ''}: ${big(value)}.`,
+      fachwissen: FW_STELLEN,
+      dedupeKey: `ma:k5:vgl:ziffern:${[...digits].sort().join('')}:${askMax}`,
     })
-  }
-  // mode 2: Kriterium
-  const askFinite = rng() < 0.5
-  if (askFinite) {
-    const row = pick(rng, finite)
-    return choicePickTask({
-      question: `Welcher Bruch ergibt eine endliche Dezimalzahl?`,
-      choices: shuffle(rng, [row.br, '1/3', '1/7', '1/9']).slice(0, 4),
-      correct: row.br,
-      solution: row.br,
-      explanation: `${row.br}: ${row.why} — nur 2/5 im Nenner → endlich (${row.dez}).`,
-      fachwissen: fw('Kriterium: gekürzter Nenner nur 2 und/oder 5 → endlich.'),
-      dedupeKey: `ma:k6:period:crit-f:${row.br}`,
-      contentIds: [`ma:k6:period:crit-f:${row.br}`],
+  },
+  (rng: Rng) => {
+    const step = pick(rng, [1000, 10000, 100000])
+    const k = randInt(rng, 2, 98)
+    const base = k * step
+    const vor = rng() < 0.5
+    const value = vor ? base - 1 : base + 1
+    return valueTask({
+      question: `Gib den ${vor ? 'Vorgänger' : 'Nachfolger'} von ${big(base)} an.`,
+      answerKind: 'integer',
+      value,
+      solution: big(value),
+      explanation: `${vor ? 'Vorgänger: eins weniger' : 'Nachfolger: eins mehr'}: ${big(base)} ${vor ? '−' : '+'} 1 = ${big(value)}.`,
+      fachwissen: FW_STELLEN,
+      dedupeKey: `ma:k5:vgl:nachbar:${base}:${vor}`,
     })
+  },
+  (rng: Rng) => {
+    const step = pick(rng, [1000, 10000, 100000, 1000000])
+    const n = randInt(rng, 11, 99) * step + randInt(rng, 1, step - 1)
+    const unit = step === 1000 ? 'Tausender' : step === 10000 ? 'Zehntausender' : step === 100000 ? 'Hunderttausender' : 'Millionen'
+    const lower = Math.floor(n / step) * step
+    const upper = lower + step
+    const askUpper = rng() < 0.5
+    return valueTask({
+      question: `Zwischen welchen beiden benachbarten ${unit}zahlen liegt ${big(n)}? Gib die ${askUpper ? 'größere' : 'kleinere'} an.`,
+      answerKind: 'integer',
+      value: askUpper ? upper : lower,
+      solution: big(askUpper ? upper : lower),
+      explanation: `${big(lower)} < ${big(n)} < ${big(upper)}.`,
+      fachwissen: FW_STELLEN,
+      dedupeKey: `ma:k5:vgl:zwischen:${n}:${askUpper}`,
+    })
+  },
+)
+
+// ---------------------------------------------------------------------------
+// K5: Primfaktorzerlegung
+// ---------------------------------------------------------------------------
+
+const FW_PRIMFAKTOR = wiki(
+  'Jede natürliche Zahl größer als 1 lässt sich eindeutig als Produkt von Primzahlen schreiben (Primfaktorzerlegung). Man teilt dazu so lange durch die kleinste passende Primzahl, bis 1 übrig bleibt.',
+  'Primfaktorzerlegung',
+  'Primfaktorzerlegung',
+)
+
+const randomFactors = (rng: Rng): number[] => {
+  for (;;) {
+    const k = randInt(rng, 3, 5)
+    const fs = Array.from({ length: k }, () => pick(rng, [2, 2, 2, 3, 3, 5, 7, 11, 13])).sort((a, b) => a - b)
+    const n = fs.reduce((p, x) => p * x, 1)
+    if (n >= 24 && n <= 1000) return fs
   }
-  const row = pick(rng, period)
-  return choicePickTask({
-    question: `Welcher Bruch ergibt eine periodische Dezimalzahl?`,
-    choices: shuffle(rng, [row.br, '1/2', '1/4', '1/5']).slice(0, 4),
-    correct: row.br,
-    solution: row.br,
-    explanation: `${row.br}: ${row.why} → periodisch (${row.dez}).`,
-    fachwissen: fw('Andere Primfaktoren im Nenner (z. B. 3, 7, 11) → oft periodisch.'),
-    dedupeKey: `ma:k6:period:crit-p:${row.br}`,
-    contentIds: [`ma:k6:period:crit-p:${row.br}`],
-  })
 }
 
-/** K5: Natürliche Zahlen vergleichen und ordnen. */
-export function generateVergleichenOrdnenK5(rng: Rng): ReturnType<Topic['generate']> {
-  const a = 10 + Math.floor(rng() * 80)
-  let b = 10 + Math.floor(rng() * 80)
-  if (b === a) b = a + 1 + Math.floor(rng() * 5)
-  const op = a < b ? '<' : '>'
-  const correct = `${a} ${op} ${b}`
-  const wrong = [`${a} ${op === '<' ? '>' : '<'} ${b}`, `${a} = ${b}`, `${b} ${op} ${a}`]
-  return choicePickTask({
-    question: `Vergleiche: Welche Aussage zu ${a} und ${b} ist richtig?`,
-    choices: shuffle(rng, [correct, ...wrong]).slice(0, 4),
-    correct,
-    solution: correct,
-    explanation:
-      op === '<'
-        ? `${a} liegt auf dem Zahlenstrahl links von ${b}.`
-        : `${a} liegt rechts von ${b}.`,
-    fachwissen: fw(
-      'Natürliche Zahlen vergleicht man über Stellenwerte oder den Zahlenstrahl: weiter rechts = größer.',
-    ),
-    dedupeKey: `ma:k5:vgl:${a}:${b}`,
-    contentIds: [`ma:k5:vgl:${a}:${b}`],
-  })
-}
-
-/** K5: Primfaktorzerlegung — kleine Zahlen. */
-export function generatePrimfaktorK5(rng: Rng): ReturnType<Topic['generate']> {
-  const pool = [
-    { n: 12, z: '2·2·3' },
-    { n: 18, z: '2·3·3' },
-    { n: 20, z: '2·2·5' },
-    { n: 24, z: '2·2·2·3' },
-    { n: 28, z: '2·2·7' },
-    { n: 30, z: '2·3·5' },
-    { n: 36, z: '2·2·3·3' },
-    { n: 40, z: '2·2·2·5' },
-    { n: 42, z: '2·3·7' },
-    { n: 45, z: '3·3·5' },
-    { n: 48, z: '2·2·2·2·3' },
-    { n: 54, z: '2·3·3·3' },
-    { n: 56, z: '2·2·2·7' },
-    { n: 60, z: '2·2·3·5' },
-  ]
-  const row = pick(rng, pool)
-  return choicePickTask({
-    question: `Wie lautet die Primfaktorzerlegung von ${row.n}?`,
-    choices: shuffle(rng, [row.z, '2·9', `${row.n}·1`, '3·3·3']).slice(0, 4),
-    correct: row.z,
-    solution: row.z,
-    explanation: `${row.n} = ${row.z} (nur Primfaktoren).`,
-    fachwissen: fw(
-      'Primfaktorzerlegung: Produkt aus Primzahlen. Jede natürliche Zahl > 1 hat eine eindeutige Zerlegung.',
-    ),
-    dedupeKey: `ma:k5:prim:${row.n}`,
-    contentIds: [`ma:k5:prim:${row.n}`],
-  })
-}
-
-/** K5: Echte/unechte Brüche. */
-export function generateEchteUnechteBruecheK5(rng: Rng): ReturnType<Topic['generate']> {
-  const d = 2 + Math.floor(rng() * 8)
-  const n = 1 + Math.floor(rng() * (d + 4))
-  const echt = n < d
-  const label = echt ? 'echt' : n === d ? 'unecht (Wert 1)' : 'unecht'
-  return choicePickTask({
-    question: `Ist der Bruch ${n}/${d} echt oder unecht?`,
-    choices: shuffle(rng, [
-      label,
-      echt ? 'unecht' : 'echt',
-      'weder echt noch unecht',
-      'nur als Dezimalzahl',
-    ]).slice(0, 4),
-    correct: label,
-    solution: label,
-    explanation: echt
-      ? `Zähler ${n} < Nenner ${d} → echter Bruch (Wert < 1).`
-      : `Zähler ${n} ≥ Nenner ${d} → unechter Bruch.`,
-    fachwissen: fw(
-      'Echter Bruch: Zähler < Nenner. Unechter Bruch: Zähler ≥ Nenner (Wert ≥ 1).',
-    ),
-    dedupeKey: `ma:k5:echt:${n}/${d}`,
-    contentIds: [`ma:k5:echt:${n}/${d}`],
-  })
-}
-
-/** K5: Bruch ↔ Dezimal ↔ Prozent (einfache Nenner). */
-export function generateBruchDezimalProzentK5(rng: Rng): ReturnType<Topic['generate']> {
-  const rows = [
-    { br: '1/2', dez: '0,5', pct: '50 %' },
-    { br: '1/4', dez: '0,25', pct: '25 %' },
-    { br: '3/4', dez: '0,75', pct: '75 %' },
-    { br: '1/5', dez: '0,2', pct: '20 %' },
-    { br: '1/10', dez: '0,1', pct: '10 %' },
-    { br: '1/5', dez: '0,2', pct: '20 %' },
-  ]
-  const row = pick(rng, rows)
-  const mode = Math.floor(rng() * 3)
-  if (mode === 0) {
-    return choicePickTask({
-      question: `Welche Dezimalzahl entspricht ${row.br}?`,
-      choices: shuffle(rng, [row.dez, '0,3', '1,5', '0,05']).slice(0, 4),
-      correct: row.dez,
-      solution: row.dez,
-      explanation: `${row.br} = ${row.dez}.`,
-      fachwissen: fw('Bruch in Dezimalzahl: Zähler durch Nenner teilen.'),
-      dedupeKey: `ma:k5:bdp:dez:${row.br}`,
-      contentIds: [`ma:k5:bdp:dez:${row.br}`],
+export const generatePrimfaktorK5: Topic['generate'] = mixedVariants(
+  (rng: Rng) => {
+    const fs = randomFactors(rng)
+    const n = fs.reduce((p, x) => p * x, 1)
+    const show = (arr: number[]) => [...arr].sort((a, b) => a - b).join(' · ')
+    const wrong = [
+      [...fs.slice(1), fs[0] === 2 ? 3 : 2],
+      fs.slice(1),
+      [...fs, 2],
+      fs.map((x, i) => (i === fs.length - 1 ? x + 2 : x)),
+    ].filter((w) => w.reduce((p, x) => p * x, 1) !== n)
+    return appliedMc(rng, {
+      question: `Wie lautet die Primfaktorzerlegung von ${n}?`,
+      correct: show(fs),
+      distractors: wrong.map(show),
+      explanation: `${n} = ${show(fs)}. Probe: Das Produkt ergibt ${n}, und alle Faktoren sind Primzahlen.`,
+      fachwissen: FW_PRIMFAKTOR,
+      dedupeKey: `ma:k5:prim:mc:${n}`,
     })
-  }
-  if (mode === 1) {
-    return choicePickTask({
-      question: `Wie viel Prozent sind ${row.br}?`,
-      choices: shuffle(rng, [row.pct, '10 %', '40 %', '80 %']).slice(0, 4),
-      correct: row.pct,
-      solution: row.pct,
-      explanation: `${row.br} = ${row.pct}.`,
-      fachwissen: fw('Prozent: Anteil von 100. 1/2 = 50/100 = 50 %.'),
-      dedupeKey: `ma:k5:bdp:pct:${row.br}`,
-      contentIds: [`ma:k5:bdp:pct:${row.br}`],
+  },
+  (rng: Rng) => {
+    const fs = randomFactors(rng)
+    const n = fs.reduce((p, x) => p * x, 1)
+    return valueTask({
+      question: `Die Primfaktorzerlegung einer Zahl lautet ${fs.join(' · ')}. Wie heißt die Zahl?`,
+      answerKind: 'integer',
+      value: n,
+      solution: String(n),
+      explanation: `${fs.join(' · ')} = ${n}.`,
+      fachwissen: FW_PRIMFAKTOR,
+      dedupeKey: `ma:k5:prim:produkt:${fs.join('.')}`,
     })
-  }
-  return choicePickTask({
-    question: `Welcher Bruch entspricht ${row.pct}?`,
-    choices: shuffle(rng, [row.br, '1/3', '2/5', '3/5']).slice(0, 4),
-    correct: row.br,
-    solution: row.br,
-    explanation: `${row.pct} = ${row.br} = ${row.dez}.`,
-    fachwissen: fw('Prozent ↔ Bruch ↔ Dezimalzahl sind drei Darstellungen desselben Anteils.'),
-    dedupeKey: `ma:k5:bdp:br:${row.pct}`,
-    contentIds: [`ma:k5:bdp:br:${row.pct}`],
-  })
+  },
+  (rng: Rng) => {
+    const fs = randomFactors(rng)
+    const n = fs.reduce((p, x) => p * x, 1)
+    const max = Math.max(...fs)
+    return valueTask({
+      question: `Welches ist der größte Primfaktor von ${n}?`,
+      answerKind: 'integer',
+      value: max,
+      solution: String(max),
+      explanation: `${n} = ${fs.join(' · ')}. Der größte Primfaktor ist ${max}.`,
+      fachwissen: FW_PRIMFAKTOR,
+      dedupeKey: `ma:k5:prim:max:${n}`,
+    })
+  },
+)
+
+// ---------------------------------------------------------------------------
+// K5: Echte und unechte Brüche, gemischte Zahlen
+// ---------------------------------------------------------------------------
+
+const FW_GEMISCHT = wiki(
+  'Ein Bruch ist echt, wenn der Zähler kleiner als der Nenner ist (Wert kleiner als 1), sonst unecht. Unechte Brüche kann man als gemischte Zahl schreiben: 11/4 = 2 3/4, denn 11 : 4 = 2 Rest 3. Rückwärts: 2 3/4 = (2 · 4 + 3)/4.',
+  'Bruchrechnung',
+  'Bruchrechnung',
+)
+
+export const generateEchteUnechteBruecheK5: Topic['generate'] = mixedVariants(
+  (rng: Rng) => {
+    const d = randInt(rng, 2, 12)
+    const whole = randInt(rng, 1, 9)
+    const r = reducedNumerator(rng, d)
+    const n = whole * d + r
+    return fractionTask({
+      question: `Schreibe die gemischte Zahl ${whole} ${r}/${d} als unechten Bruch.`,
+      value: { n, d },
+      solution: `${n}/${d}`,
+      explanation: `${whole} Ganze = ${whole * d}/${d}. Dazu ${r}/${d}: ${whole * d + r}/${d}.`,
+      fachwissen: FW_GEMISCHT,
+      dedupeKey: `ma:k5:echt:zuunecht:${whole}:${r}:${d}`,
+    })
+  },
+  (rng: Rng) => {
+    const d = randInt(rng, 3, 12)
+    const whole = randInt(rng, 1, 9)
+    const r = reducedNumerator(rng, d)
+    const n = whole * d + r
+    const mixed = (w: number, z: number) => `${w} ${z}/${d}`
+    return appliedMc(rng, {
+      question: `Welche gemischte Zahl ist gleich ${n}/${d}?`,
+      correct: mixed(whole, r),
+      distractors: [
+        r > 1 ? mixed(whole, r - 1) : mixed(whole, r + 1),
+        mixed(whole + 1, r),
+        whole > 1 ? mixed(whole - 1, r) : mixed(whole + 2, r),
+      ],
+      explanation: `${n} : ${d} = ${whole} Rest ${r}, also ${n}/${d} = ${mixed(whole, r)}.`,
+      fachwissen: FW_GEMISCHT,
+      dedupeKey: `ma:k5:echt:zugemischt:${n}/${d}`,
+    })
+  },
+  (rng: Rng) => {
+    const fr = new Map<string, boolean>()
+    const want = randInt(rng, 2, 3)
+    while (fr.size < 6) {
+      const d = randInt(rng, 2, 12)
+      const unecht = [...fr.values()].filter(Boolean).length < want
+      const n = unecht ? randInt(rng, d + 1, 3 * d) : randInt(rng, 1, d - 1)
+      if (gcd(n, d) !== 1) continue
+      fr.set(`${n}/${d}`, unecht)
+    }
+    const all = shuffleArr(rng, [...fr.keys()])
+    const good = all.filter((f) => fr.get(f))
+    return multiSelectTask({
+      question: 'Tippe alle unechten Brüche an.',
+      choices: all,
+      correct: good,
+      solution: good.join(', '),
+      explanation: `Bei ${good.join(', ')} ist der Zähler größer als der Nenner; diese Brüche sind größer als 1.`,
+      instruction: 'Tippe alle zutreffenden Brüche an:',
+      fachwissen: FW_GEMISCHT,
+      dedupeKey: `ma:k5:echt:multi:${[...all].sort().join(',')}`,
+    })
+  },
+  (rng: Rng) => {
+    const d = randInt(rng, 3, 15)
+    const whole = randInt(rng, 2, 6)
+    return valueTask({
+      question: `Wie viele ${d}tel ergeben zusammen ${whole} Ganze?`,
+      answerKind: 'integer',
+      value: whole * d,
+      solution: `${whole * d}`,
+      explanation: `1 Ganzes = ${d}/${d}, also ${whole} Ganze = ${whole * d}/${d}.`,
+      fachwissen: FW_GEMISCHT,
+      dedupeKey: `ma:k5:echt:ganze:${d}:${whole}`,
+    })
+  },
+)
+
+// ---------------------------------------------------------------------------
+// K5: Bruch ↔ Dezimalzahl ↔ Prozent
+// ---------------------------------------------------------------------------
+
+const FW_PROZENT = wiki(
+  'Prozent bedeutet „von Hundert“: 1 % = 1/100 = 0,01. Um einen Bruch in Prozent umzurechnen, erweitert man ihn auf den Nenner 100, z. B. 7/20 = 35/100 = 35 % = 0,35.',
+  'Prozent',
+  'Prozent',
+)
+const HUNDERT_DENOMS = [2, 4, 5, 10, 20, 25, 50]
+
+const randomHundredth = (rng: Rng): { n: number; d: number; pct: number } => {
+  const d = pick(rng, HUNDERT_DENOMS)
+  const n = reducedNumerator(rng, d)
+  return { n, d, pct: (n * 100) / d }
 }
+
+export const generateBruchDezimalProzentK5: Topic['generate'] = mixedVariants(
+  (rng: Rng) => {
+    const { n, d, pct } = randomHundredth(rng)
+    return valueTask({
+      question: `Schreibe ${n}/${d} als Dezimalzahl.`,
+      answerKind: 'decimal',
+      value: pct / 100,
+      solution: formatDe(pct / 100),
+      explanation: `Auf Hundertstel erweitern: ${n}/${d} = ${pct}/100 = ${formatDe(pct / 100)}.`,
+      fachwissen: FW_PROZENT,
+      dedupeKey: `ma:k5:bdp:dez:${n}/${d}`,
+    })
+  },
+  (rng: Rng) => {
+    const { n, d, pct } = randomHundredth(rng)
+    return valueTask({
+      question: `Wie viel Prozent sind ${n}/${d}?`,
+      unit: '%',
+      answerKind: 'integer',
+      value: pct,
+      solution: `${pct} %`,
+      explanation: `${n}/${d} = ${pct}/100 = ${pct} %.`,
+      fachwissen: FW_PROZENT,
+      dedupeKey: `ma:k5:bdp:pct:${n}/${d}`,
+    })
+  },
+  (rng: Rng) => {
+    const d = pick(rng, [20, 25, 50])
+    const n = randInt(rng, 1, d - 1)
+    const ctx = pick(rng, [
+      ['Kindern einer Klasse', 'kommen', 'mit dem Fahrrad zur Schule'],
+      ['Losen in einer Lostrommel', 'sind', 'Gewinne'],
+      ['Tulpenzwiebeln', 'sind', 'aufgegangen'],
+    ] as Array<[string, string, string]>)
+    const pct = (n * 100) / d
+    return valueTask({
+      question: `Von ${d} ${ctx[0]} ${ctx[1]} ${n} ${ctx[2]}. Wie viel Prozent sind das?`,
+      unit: '%',
+      answerKind: 'integer',
+      value: pct,
+      solution: `${pct} %`,
+      explanation: `${n}/${d} = ${pct}/100 = ${pct} %.`,
+      fachwissen: FW_PROZENT,
+      dedupeKey: `ma:k5:bdp:ctx:${d}:${n}:${ctx[0]}`,
+    })
+  },
+  (rng: Rng) => {
+    const vals = new Set<number>()
+    while (vals.size < 4) vals.add(randomHundredth(rng).pct)
+    const list = [...vals]
+    const forms = shuffleArr(rng, ['bruch', 'dez', 'pct', 'dez'] as const)
+    const label = (pct: number, f: 'bruch' | 'dez' | 'pct') => {
+      if (f === 'pct') return `${pct} %`
+      if (f === 'dez') return formatDe(pct / 100)
+      const fr = makeFraction(pct, 100)
+      return `${fr.n}/${fr.d}`
+    }
+    const shown = list.map((p, i) => label(p, forms[i]!))
+    const max = Math.max(...list)
+    const correct = shown[list.indexOf(max)]!
+    return appliedMc(rng, {
+      question: 'Welcher Anteil ist am größten?',
+      correct,
+      distractors: shown.filter((s) => s !== correct),
+      explanation: `In Prozent umgerechnet: ${shown.map((s, i) => `${s} = ${list[i]} %`).join('; ')}. Am größten ist ${correct}.`,
+      fachwissen: FW_PROZENT,
+      dedupeKey: `ma:k5:bdp:max:${[...list].sort((a, b) => a - b).join(',')}`,
+    })
+  },
+)
 
 export const MATH_QUALITY_GENERATORS: Record<string, Topic['generate']> = {
   'lb1-rechengesetze': generateRechengesetzeK5,

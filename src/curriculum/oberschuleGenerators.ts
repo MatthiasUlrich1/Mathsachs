@@ -7,12 +7,11 @@ import {
 import { pick, randInt, type Rng } from '../lib/rng'
 import { bundledCurricula } from './bundled'
 import { topicContentId } from './contentId'
-import { ensureTopicFachwissen } from './fachwissen'
+import { ensureGradeFachwissen, ensureTopicFachwissen } from './fachwissen'
 import { ST_GENERATOR_MAP } from './gymSachsenAnhaltPack'
 import { withMathGymThinFill } from './mathGymThinFill'
-import { withMathOsThinFill } from './mathOsThinFill'
+import { OS_CROSS_UNIQUE_GENERATORS } from './mathOsCrossUnique'
 import { OS_ST_LEHRPLAN_TEILASPEKTE_GENERATORS } from './osStLehrplanTeilaspekte'
-import { OS_DICHTE_FILL_GENERATORS } from './osDichteFill'
 import { SKS_GENERATOR_MAP } from './sekundarschuleSachsenAnhaltPack'
 import {
   choicePickTask,
@@ -324,8 +323,8 @@ const osPrismNetz: Topic['generate'] = (rng: Rng) => {
  */
 export const OS_CUSTOM_GENERATORS: Record<string, Topic['generate']> = {
   ...OS_ST_LEHRPLAN_TEILASPEKTE_GENERATORS,
-  ...OS_DICHTE_FILL_GENERATORS,
-  // Alias: RS-Tarif nutzt dieselbe Bank wie HS-Tarif
+  ...OS_CROSS_UNIQUE_GENERATORS,
+  // Alias: RS-Tarif — eigener angewandter Generator (nicht Gym-Reuse)
   'os-rs-k8-lb2-tarif': OS_ST_LEHRPLAN_TEILASPEKTE_GENERATORS['os-hs-k9-lb3-tarif']!,
   /** Klasse 5: Koordinaten nur im 1. Quadranten (lesen + tippen + setzen). */
   'os-k5-lb3-koordinaten': mixedVariants(
@@ -772,12 +771,17 @@ export async function gymGeneratorCatalog(): Promise<Map<string, Topic['generate
   if (catalog) return catalog
   const next = new Map<string, Topic['generate']>()
   for (const mod of bundledCurricula) {
-    const grade = await mod.load()
+    if (mod.subjectTitle !== 'Mathematik') continue
+    const grade = ensureGradeFachwissen(await mod.load(), { subject: mod.subjectTitle })
     for (const area of grade.areas) {
       for (const topic of area.topics) {
-        if (!next.has(topic.id)) {
-          next.set(topic.id, withMathGymThinFill(topic.id, topic.generate) ?? topic.generate)
-        }
+        if (next.has(topic.id)) continue
+        const gen = withMathGymThinFill(topic.id, topic.generate) ?? topic.generate
+        const topicFw = topic.fachwissen
+        next.set(topic.id, topicFw ? (rng) => {
+          const task = gen(rng)
+          return task.fachwissen?.text?.trim() ? task : { ...task, fachwissen: topicFw }
+        } : gen)
       }
     }
   }
@@ -795,11 +799,10 @@ export function resolveOsGenerate(
   gymCatalog: Map<string, Topic['generate']>,
 ): Topic['generate'] | undefined {
   const custom = OS_CUSTOM_GENERATORS[topicId]
-  if (custom) return withMathOsThinFill(topicId, custom)
+  if (custom) return custom
   const mapped =
     OS_GENERATOR_MAP[topicId] ?? ST_GENERATOR_MAP[topicId] ?? SKS_GENERATOR_MAP[topicId]
-  const base = mapped ? gymCatalog.get(mapped) : undefined
-  return withMathOsThinFill(topicId, base)
+  return mapped ? gymCatalog.get(mapped) : undefined
 }
 
 export function isPlayableOfficialTopic(topicId: string): boolean {
@@ -807,8 +810,7 @@ export function isPlayableOfficialTopic(topicId: string): boolean {
     OS_CUSTOM_GENERATORS[topicId] ||
       OS_GENERATOR_MAP[topicId] ||
       ST_GENERATOR_MAP[topicId] ||
-      SKS_GENERATOR_MAP[topicId] ||
-      withMathOsThinFill(topicId, undefined),
+      SKS_GENERATOR_MAP[topicId],
   )
 }
 
@@ -829,11 +831,24 @@ export function topicFromPack(
   opts?: { subject?: string },
 ): Topic {
   const playable = Boolean(generate)
+  // Strategie-Hints („Schau auf die Ziffer…“) sind Spoiler während des Lösens —
+  // nur reine Format-Hinweise behalten (siehe contentAudit.isFormatOnlyHint).
+  const hint = topic.hint?.trim()
+  const safeHint =
+    hint &&
+    /^(Tippe|Gib|Antworte|Antwortformat|Wähle|Trage|Schreibe|Nutze das Komma|1 Kästchen|Bei Buchstaben|Stelle|Werkzeug|Ziehe|Runde auf|Ergebnis in|Einheit|Mehrfach)/i.test(
+      hint,
+    ) &&
+    !/\b(schau|achte|beachte|zerlege|zuerst|rechne|nutze|regel|gesetz|bedeutet)\b/i.test(hint) &&
+    // „ja oder nein“ / „richtig oder falsch“ gelten im Audit als Strategie-Spoiler
+    !/\b(ja|nein|richtig|falsch|wahr)\b/i.test(hint)
+      ? hint
+      : undefined
   return ensureTopicFachwissen(
     {
       id: topic.id,
       title: topic.title,
-      hint: topic.hint,
+      hint: safeHint,
       pointsPerTask: topic.pointsPerTask,
       keywords: topic.keywords,
       source: 'official',
