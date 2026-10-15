@@ -32,6 +32,7 @@ import {
   k1112WinkelVektoren,
 } from './mathUpperDense'
 import type { Grade, Topic } from './types'
+import { MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE } from './mathLehrplanTeilaspekte'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
 const nonZero = (rng: Rng, min: number, max: number): number => {
@@ -460,7 +461,9 @@ export const klasse11_12: Grade = {
       id: 'lb6',
       title: 'Beurteilende Statistik',
       ustd: 12,
-      topics: [k1112Stichprobenmittel, k1112Hypothesentest, k1112KonfidenzIdee],
+      topics: [k1112Stichprobenmittel, k1112Hypothesentest, k1112KonfidenzIdee,
+        ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math11_12"].filter((x) => x.areaId === "lb6").map((x) => x.topic),
+      ],
     },
     {
       id: 'lb7',

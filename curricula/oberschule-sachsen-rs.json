@@ -4,9 +4,9 @@
   "region": "Sachsen",
   "school": "Oberschule",
   "subject": "Mathematik",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "changelog": "Klassen 5–10 (Realschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung.",
-  "contentHash": "78f9a36f",
+  "contentHash": "23d9b283",
   "official": [
     {
       "id": "os-rs-klasse-5",
@@ -141,6 +141,26 @@
               "keywords": [
                 "Primzahl",
                 "Sieb des Eratosthenes"
+              ]
+            },
+            {
+              "id": "os-k5-lb1-null",
+              "title": "Null als kleinste natürliche Zahl",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Null",
+                "natürliche Zahlen"
+              ]
+            },
+            {
+              "id": "os-k5-lb1-rechengesetze",
+              "title": "Rechenstrategien, Rechenvorteile und Rechengesetze",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kommutativgesetz",
+                "Vorrangregeln"
               ]
             }
           ]
@@ -413,6 +433,16 @@
               "title": "Achsen- und Punktsymmetrie erkennen",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-k5-lb4-verschiebungsweite",
+              "title": "Verschiebungsrichtung und Verschiebungsweite",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Verschiebung",
+                "Vektor"
+              ]
             }
           ]
         },
@@ -522,6 +552,26 @@
               "title": "Notwendigkeit einer Zahlenbereichserweiterung, Mengenbegriff",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-k6-lb1-zahlenstrahl",
+              "title": "Gebrochene Zahlen am Zahlenstrahl veranschaulichen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zahlenstrahl",
+                "Bruch"
+              ]
+            },
+            {
+              "id": "os-k6-lb1-negative-ausblick",
+              "title": "Ausblick: negative Zahlen in Sachproblemen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Temperatur",
+                "negative Zahlen"
+              ]
             },
             {
               "id": "os-k6-lb1-kuerzen",
@@ -1084,6 +1134,16 @@
               ]
             },
             {
+              "id": "os-rs-k7-lb3-venn",
+              "title": "Zahlbereiche systematisieren (Venn-Diagramm)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Venn",
+                "Teilmenge"
+              ]
+            },
+            {
               "id": "os-rs-k7-lb3-gleichung",
               "title": "Gleichungen der Form a·x+b = c",
               "pointsPerTask": 10,
@@ -1396,6 +1456,26 @@
               "tasksPerRound": 10
             },
             {
+              "id": "os-rs-k8-lb2-definitionsbereich",
+              "title": "Definitions- und Wertebereich linearer Funktionen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Definitionsbereich",
+                "Wertebereich"
+              ]
+            },
+            {
+              "id": "os-rs-k8-lb2-tarif",
+              "title": "Tarif- und Preisvergleiche mit linearen Funktionen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Tarif",
+                "Preisvergleich"
+              ]
+            },
+            {
               "id": "os-rs-k8-lb2-lgs",
               "title": "Lineares Gleichungssystem",
               "pointsPerTask": 10,
@@ -1417,6 +1497,16 @@
               "title": "Lagebeziehungen von Kreis und Gerade, Satz des Thales",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-rs-k8-lb3-sekante-tangente",
+              "title": "Sekante und Tangente am Kreis",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Sekante",
+                "Tangente"
+              ]
             },
             {
               "id": "os-rs-k8-lb3-kreis-umfang",
@@ -1529,6 +1619,16 @@
               "title": "Mehrstufige Zufallsversuche, Baumdiagramm und Pfadregeln",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-rs-k8-lb5-abhaengig",
+              "title": "Abhängige und unabhängige Ereignisse",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "unabhängig",
+                "abhängig"
+              ]
             }
           ]
         },
@@ -1542,6 +1642,16 @@
               "title": "Lebenshaltungs- und Baukosten",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-rs-k8-lb6-lebenshaltung",
+              "title": "Lebenshaltungskosten: Miete, Energie, Versicherungen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Miete",
+                "Betriebskosten"
+              ]
             },
             {
               "id": "os-rs-k8-lb6-zinsen",
@@ -1817,6 +1927,16 @@
               "title": "Prinzip der Fallunterscheidung",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-rs-k9-lb3-monotonie",
+              "title": "Monotonieverhalten und Wertebereich quadratischer Funktionen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Monotonie",
+                "Scheitel"
+              ]
             }
           ]
         },
@@ -2064,6 +2184,16 @@
               "title": "Sinusfunktion, Periodizität, Grad- und Bogenmaß",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-rs-k10-lb2-sinus-parameter",
+              "title": "Sinusfunktion: Parameter, Amplitude und Periode",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Amplitude",
+                "Periode"
+              ]
             }
           ]
         },
@@ -2101,6 +2231,16 @@
               "title": "Simulation von Zufallsversuchen",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-rs-k10-lb3-gewinnchance",
+              "title": "Gewinnchance und Gewinnerwartung unterscheiden",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Erwartungswert",
+                "Chance"
+              ]
             }
           ]
         },
@@ -2147,6 +2287,17 @@
               "title": "Wahrscheinlichkeiten und Erwartungswerte",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-rs-k10-lb4-abgaben",
+              "title": "Abgaben von Arbeitnehmer und Arbeitgeber",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Brutto",
+                "Netto",
+                "Lohnsteuer"
+              ]
             }
           ]
         },

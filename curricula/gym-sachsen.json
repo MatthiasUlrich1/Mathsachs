@@ -4,9 +4,9 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Mathematik",
-  "version": "1.3.2",
-  "changelog": "Lehrplan-Abgleich K8–12: K11/12 auf 8 GK-Lernbereiche (Matrizen, Integral, Statistik, Abstände, Anwendungen); K10 Sinus/Logarithmus/Folgen/Sinus-Kosinussatz; K9 Höhensatz/Streuung; K8 Binome/Pfadregel. Dense thin-fill für dünne Pools.",
-  "contentHash": "fb6a914b",
+  "version": "1.4.0",
+  "changelog": "Lehrplan-461-Teilaspekte ergänzt (Primfaktoren, Umwandeln %, Thales, Normalverteilung LK, …); released:false; dense Banken.",
+  "contentHash": "8d3247cf",
   "official": [
     {
       "id": "klasse-5",
@@ -102,6 +102,48 @@
               "hint": "Eine Primzahl hat genau zwei Teiler: 1 und sich selbst.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "lb1-vergleichen-ordnen",
+              "title": "Natürliche Zahlen vergleichen und ordnen",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "vergleichen",
+                "ordnen",
+                "Zahlenstrahl",
+                "Stellenwert"
+              ],
+              "released": false
+            },
+            {
+              "id": "lb1-primfaktorzerlegung",
+              "title": "Primfaktorzerlegung",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Primfaktor",
+                "Zerlegung",
+                "Primzahl",
+                "Teilbarkeit"
+              ],
+              "released": false
+            },
+            {
+              "id": "lb1-rechengesetze",
+              "title": "Rechengesetze und Rechenvorteile",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kommutativ",
+                "Assoziativ",
+                "Distributiv",
+                "Rechenvorteil"
+              ],
+              "released": false
             }
           ]
         },
@@ -200,6 +242,35 @@
                 "Länge",
                 "Masse"
               ]
+            },
+            {
+              "id": "lb2-echte-unechte-brueche",
+              "title": "Echte und unechte Brüche",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "echter Bruch",
+                "unechter Bruch",
+                "gemischte Zahl",
+                "Zähler",
+                "Nenner"
+              ],
+              "released": false
+            },
+            {
+              "id": "lb2-bruch-dezimal-prozent",
+              "title": "Umwandeln: Bruch, Dezimalzahl, Prozent",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Prozent",
+                "Dezimalzahl",
+                "Umwandeln",
+                "Zehnerbruch"
+              ],
+              "released": false
             }
           ]
         },
@@ -284,6 +355,20 @@
               "hint": "Punktspiegelung an S: A' = 2S − A. Antwortformat x; y (auch Komma oder (x|y)).",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "lb3-drehung",
+              "title": "Drehung als Bewegung",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Drehung",
+                "Kongruenz",
+                "Bewegung",
+                "Orientierung"
+              ],
+              "released": false
             }
           ]
         },
@@ -336,6 +421,21 @@
               "hint": "Zerlege in zwei Quader und addiere die Volumina – oder ziehe die Aussparung ab.",
               "pointsPerTask": 12,
               "tasksPerRound": 10
+            },
+            {
+              "id": "lb4-schraegbild-netz",
+              "title": "Quader darstellen: Schrägbild, Netz, Ansichten",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Schrägbild",
+                "Körpernetz",
+                "Grundriss",
+                "Ansicht",
+                "Quader"
+              ],
+              "released": false
             }
           ]
         },
@@ -614,6 +714,34 @@
                 "Anteil",
                 "Alltag"
               ]
+            },
+            {
+              "id": "k6-lb1-periodische-dezimal",
+              "title": "Endliche und periodische Dezimalzahlen",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "periodisch",
+                "endlich",
+                "Dezimalzahl",
+                "Umwandeln"
+              ],
+              "released": false
+            },
+            {
+              "id": "k6-lb1-mengen",
+              "title": "Element, Menge, Teilmenge",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Menge",
+                "Element",
+                "Teilmenge",
+                "Mengendiagramm"
+              ],
+              "released": false
             }
           ]
         },
@@ -654,6 +782,21 @@
                 "proportional",
                 "Einheiten"
               ]
+            },
+            {
+              "id": "k6-lb2-zuordnung-darstellung",
+              "title": "Zuordnungen: Darstellen und Eindeutigkeit",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zuordnung",
+                "Tabelle",
+                "Diagramm",
+                "eindeutig",
+                "Pfeildarstellung"
+              ],
+              "released": false
             }
           ]
         },
@@ -723,6 +866,21 @@
                 "Rechteck",
                 "Alltag"
               ]
+            },
+            {
+              "id": "k6-lb3-besondere-linien",
+              "title": "Besondere Linien im Dreieck",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Höhe",
+                "Mittelsenkrechte",
+                "Seitenhalbierende",
+                "Winkelhalbierende",
+                "Lot"
+              ],
+              "released": false
             }
           ]
         },
@@ -776,6 +934,20 @@
                 "Netz",
                 "falten"
               ]
+            },
+            {
+              "id": "k6-lb4-kavalierperspektive",
+              "title": "Prismen in Kavalierperspektive darstellen",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kavalierperspektive",
+                "Prisma",
+                "Schrägbild",
+                "Darstellung"
+              ],
+              "released": false
             }
           ]
         },
@@ -930,6 +1102,20 @@
                 "Lot",
                 "Mittelpunkt"
               ]
+            },
+            {
+              "id": "k7-lb1-thales",
+              "title": "Satz des Thales",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Thales",
+                "Halbkreis",
+                "Rechtwinklig",
+                "Peripherie"
+              ],
+              "released": false
             }
           ]
         },
@@ -1051,6 +1237,21 @@
                 "Multiplikation",
                 "Terme"
               ]
+            },
+            {
+              "id": "k7-lb2-zahlbereiche-mengen",
+              "title": "Zahlbereiche im Mengendiagramm",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "natürliche",
+                "ganze",
+                "rationale",
+                "Mengendiagramm",
+                "Teilmenge"
+              ],
+              "released": false
             }
           ]
         },
@@ -1350,6 +1551,21 @@
                 "Kombinatorik",
                 "Möglichkeiten"
               ]
+            },
+            {
+              "id": "k8-lb2-ereignismengen",
+              "title": "Ereignisse: Vereinigung, Durchschnitt, Differenz",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Ereignis",
+                "Vereinigung",
+                "Durchschnitt",
+                "Differenz",
+                "Ergebnismenge"
+              ],
+              "released": false
             }
           ]
         },
@@ -1697,6 +1913,20 @@
               ],
               "released": true,
               "reviewOf": "k9-lb1-quadrat-wert"
+            },
+            {
+              "id": "k9-lb1-definitions-wertebereich",
+              "title": "Definitions- und Wertebereich von Funktionen",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Definitionsbereich",
+                "Wertebereich",
+                "Funktion",
+                "Potenz"
+              ],
+              "released": false
             }
           ]
         },
@@ -1819,6 +2049,20 @@
                 "Pythagoras",
                 "Höhe"
               ]
+            },
+            {
+              "id": "k9-lb3-kathetensatz",
+              "title": "Kathetensatz",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kathetensatz",
+                "Höhe",
+                "rechtwinklig",
+                "Projektion"
+              ],
+              "released": false
             }
           ]
         },
@@ -2068,6 +2312,20 @@
                 "Streuung",
                 "Erwartungswert"
               ]
+            },
+            {
+              "id": "k10-lb2-verteilungsfunktion",
+              "title": "Verteilungsfunktion diskreter Zufallsgrößen",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Verteilungsfunktion",
+                "kumuliert",
+                "Zufallsgröße",
+                "Wahrscheinlichkeit"
+              ],
+              "released": false
             }
           ]
         },
@@ -2260,6 +2518,20 @@
               ],
               "released": true,
               "reviewOf": "k10-lb4-parabel-wert"
+            },
+            {
+              "id": "k10-lb4-umkehr-verkettung",
+              "title": "Umkehrfunktionen und Verkettung",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Umkehrfunktion",
+                "Verkettung",
+                "Verknüpfung",
+                "Funktion"
+              ],
+              "released": false
             }
           ]
         },
@@ -2733,6 +3005,21 @@
                 "Statistik",
                 "Anteil"
               ]
+            },
+            {
+              "id": "k1112-lk-normalverteilung",
+              "title": "Normalverteilte Zufallsgrößen (Leistungskurs)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Normalverteilung",
+                "Gauß",
+                "σ",
+                "Dichte",
+                "LK"
+              ],
+              "released": false
             }
           ]
         },

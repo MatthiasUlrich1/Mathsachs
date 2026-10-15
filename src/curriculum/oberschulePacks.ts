@@ -77,6 +77,11 @@ export function officialGrades56(prefix: 'os-hs' | 'os-rs'): PackGrade[] {
           topic('os-k5-lb1-gleichung', 'Einfache Gleichungen und Ungleichungen inhaltlich lösen', 'Nutze die Umkehroperation oder systematisches Probieren.', ['Gleichung']),
           topic('os-k5-lb1-teilbarkeit', 'Teilbarkeit, Vielfache und Teiler', 'Antworte mit „ja“ oder „nein“.', ['Teiler', 'Vielfache']),
           topic('os-k5-lb1-primzahl', 'Teilbarkeitsregeln und Primzahlen', 'Eine Primzahl hat genau zwei Teiler: 1 und sich selbst.', ['Primzahl', 'Sieb des Eratosthenes']),
+          topic('os-k5-lb1-null', 'Null als kleinste natürliche Zahl', ['Null', 'natürliche Zahlen']),
+          topic('os-k5-lb1-rechengesetze', 'Rechenstrategien, Rechenvorteile und Rechengesetze', [
+            'Kommutativgesetz',
+            'Vorrangregeln',
+          ]),
         ]),
         area('lb2', 'Gemeine Brüche, Dezimalzahlen und Größen', 34, [
           topic('os-k5-lb2-anteil', 'Erkennen und Darstellen gemeiner Brüche und Dezimalzahlen', 'Gib den vollständig gekürzten Bruch ein.', ['Bruch', 'Anteil']),
@@ -111,6 +116,10 @@ export function officialGrades56(prefix: 'os-hs' | 'os-rs'): PackGrade[] {
           topic('os-k5-lb4-deckung', 'Zeichnen und Analysieren symmetrischer sowie deckungsgleicher Figuren'),
           topic('os-k5-lb4-drehung', 'Drehungen und Symmetrie in Mustern'),
           topic('os-k5-lb4-achsen', 'Achsen- und Punktsymmetrie erkennen'),
+          topic('os-k5-lb4-verschiebungsweite', 'Verschiebungsrichtung und Verschiebungsweite', [
+            'Verschiebung',
+            'Vektor',
+          ]),
         ]),
         area('lbw1', 'Wahlbereich 1: Wie die Menschen Zählen und Rechnen lernten', undefined, [
           topic('os-k5-lbw1-zahlzeichen', 'Zahlzeichen verschiedener Epochen und Kulturkreise'),
@@ -141,6 +150,14 @@ export function officialGrades56(prefix: 'os-hs' | 'os-rs'): PackGrade[] {
       [
         area('lb1', 'Gebrochene Zahlen', 35, [
           topic('os-k6-lb1-erweiterung', 'Notwendigkeit einer Zahlenbereichserweiterung, Mengenbegriff'),
+          topic('os-k6-lb1-zahlenstrahl', 'Gebrochene Zahlen am Zahlenstrahl veranschaulichen', [
+            'Zahlenstrahl',
+            'Bruch',
+          ]),
+          topic('os-k6-lb1-negative-ausblick', 'Ausblick: negative Zahlen in Sachproblemen', [
+            'Temperatur',
+            'negative Zahlen',
+          ]),
           topic('os-k6-lb1-kuerzen', 'Erweitern und Kürzen', 'Gib den vollständig gekürzten Bruch ein.', ['kürzen']),
           topic('os-k6-lb1-erweitern', 'Erweitern gemeiner Brüche', ['erweitern']),
           topic('os-k6-lb1-bruch-dez', 'Umwandeln gemeiner Brüche in Dezimalzahlen und umgekehrt', ['Dezimalzahl', 'periodisch']),
@@ -233,8 +250,16 @@ function officialGradesHs79(): PackGrade[] {
           topic('os-hs-k7-lb2-prozent', 'Grundaufgaben der Prozentrechnung', ['Prozent', 'Prozentsatz']),
           topic('os-hs-k7-lb2-dreisatz', 'Dreisatz bei Aufgaben mit Umweltbezug', ['Dreisatz']),
           topic('os-hs-k7-lb2-haeufigkeit', 'Zufallsversuche: Urliste, absolute und relative Häufigkeit', ['Häufigkeit']),
+          topic('os-hs-k7-lb2-chancen', 'Gleichwahrscheinliche Ergebnisse und Chancen abschätzen', [
+            'Chance',
+            'gleichwahrscheinlich',
+          ]),
         ]),
         area('lb3', 'Rationale Zahlen', 20, [
+          topic('os-hs-k7-lb3-zahlerweiterung', 'Notwendigkeit der Zahlenbereichserweiterung', [
+            'Zahlbereich',
+            'Erweiterung',
+          ]),
           topic('os-hs-k7-lb3-zahlengerade', 'Veranschaulichen auf der Zahlengeraden, Vergleichen und Ordnen'),
           topic('os-hs-k7-lb3-add', 'Rationale Zahlen addieren', ['negative Zahlen']),
           topic('os-hs-k7-lb3-sub', 'Rationale Zahlen subtrahieren'),
@@ -254,6 +279,10 @@ function officialGradesHs79(): PackGrade[] {
           topic('os-hs-k7-lb4-volumen-prisma', 'Volumen gerader Prismen', ['Prisma', 'Volumen']),
           topic('os-hs-k7-lb4-mantel', 'Grund-, Mantel- und Oberfläche von Prismen', ['Mantelfläche']),
           topic('os-hs-k7-lb4-oberflaeche', 'Oberfläche eines Quaders', ['Oberfläche']),
+          topic('os-hs-k7-lb4-verpackung', 'Materialverbrauch und Verpackungen beurteilen', [
+            'Verpackung',
+            'Materialeinsparung',
+          ]),
         ]),
         area('lbw1', 'Wahlbereich 1: Bandornamente und Parkettierungen', undefined, [
           topic('os-hs-k7-lbw1-parkett', 'Bandornamente und Parkettierungen'),
@@ -289,6 +318,11 @@ function officialGradesHs79(): PackGrade[] {
           topic('os-hs-k8-lb1-preisaenderung', 'Preiserhöhung und Preissenkung', ['Prozent']),
           topic('os-hs-k8-lb1-skonto', 'Skonto, Rabatt und Mehrwertsteuer'),
           topic('os-hs-k8-lb1-diagramme', 'Erstellen und Deuten von Säulen-, Linien- und Kreisdiagrammen'),
+          topic('os-hs-k8-lb1-kredit', 'Sparformen, Kredit und Ratenzahlung beurteilen', [
+            'Kredit',
+            'Ratenzahlung',
+            'Sparen',
+          ]),
         ]),
         area('lb2', 'Formeln und Gleichungen', 16, [
           topic('os-hs-k8-lb2-struktur', 'Struktur von Formeln erkennen und Formeln umstellen'),
@@ -356,6 +390,10 @@ function officialGradesHs79(): PackGrade[] {
           topic('os-hs-k9-lb2-zylinder', 'Volumen eines Kreiszylinders', ['Zylinder']),
           topic('os-hs-k9-lb2-masse', 'Masse unter Einbeziehung der Dichte'),
           topic('os-hs-k9-lb2-zusammengesetzt', 'Zusammengesetzte Körper'),
+          topic('os-hs-k9-lb2-formel-umstellen', 'Formeln umstellen und anwenden', [
+            'Formel',
+            'Umstellen',
+          ]),
         ]),
         area('lb3', 'Funktionale Zusammenhänge', 24, [
           topic('os-hs-k9-lb3-funktion', 'Funktion als eindeutige Zuordnung'),
@@ -364,6 +402,10 @@ function officialGradesHs79(): PackGrade[] {
           topic('os-hs-k9-lb3-achsen', 'y-Achsenabschnitt bestimmen', ['Achsenabschnitt']),
           topic('os-hs-k9-lb3-schnitt', 'Schnittpunktkoordinaten zweier Graphen'),
           topic('os-hs-k9-lb3-quadrat', 'Einblick: y = x² und y = a·x²', ['Parabel']),
+          topic('os-hs-k9-lb3-tarif', 'Tarifvergleiche mit linearen Funktionen', [
+            'Tarif',
+            'Kostenfunktion',
+          ]),
         ]),
         area('lb4', 'Mathematik im Alltag', 20, [
           topic('os-hs-k9-lb4-kalkulation', 'Kalkulationen, Materialbedarf und funktionale Zusammenhänge'),
@@ -424,6 +466,10 @@ function officialGradesRs710(): PackGrade[] {
           topic('os-rs-k7-lb3-mul', 'Rationale Zahlen multiplizieren und potenzieren'),
           topic('os-rs-k7-lb3-div', 'Rationale Zahlen dividieren'),
           topic('os-rs-k7-lb3-term', 'Rechengesetze und Termwerte', ['Term']),
+          topic('os-rs-k7-lb3-venn', 'Zahlbereiche systematisieren (Venn-Diagramm)', [
+            'Venn',
+            'Teilmenge',
+          ]),
           topic('os-rs-k7-lb3-gleichung', 'Gleichungen der Form a·x+b = c', ['Gleichung']),
           topic('os-rs-k7-lb3-gleichung-beid', 'Gleichungen der Form a·x+b = c·x+d', ['Gleichung']),
           topic('os-rs-k7-lb3-zahlenraetsel', 'Aufstellen von Gleichungen, Zahlenrätsel', ['Zahlenrätsel']),
@@ -483,10 +529,22 @@ function officialGradesRs710(): PackGrade[] {
           topic('os-rs-k8-lb2-steigung', 'Steigung aus zwei Punkten', ['Steigung']),
           topic('os-rs-k8-lb2-achsen', 'y-Achsenabschnitt bestimmen'),
           topic('os-rs-k8-lb2-nullstelle', 'Zeichnerisches und rechnerisches Ermitteln von Nullstellen'),
+          topic('os-rs-k8-lb2-definitionsbereich', 'Definitions- und Wertebereich linearer Funktionen', [
+            'Definitionsbereich',
+            'Wertebereich',
+          ]),
+          topic('os-rs-k8-lb2-tarif', 'Tarif- und Preisvergleiche mit linearen Funktionen', [
+            'Tarif',
+            'Preisvergleich',
+          ]),
           topic('os-rs-k8-lb2-lgs', 'Lineares Gleichungssystem', ['LGS', 'Gleichungssystem']),
         ]),
         area('lb3', 'Kreis und Kreiszylinder', 18, [
           topic('os-rs-k8-lb3-lage', 'Lagebeziehungen von Kreis und Gerade, Satz des Thales'),
+          topic('os-rs-k8-lb3-sekante-tangente', 'Sekante und Tangente am Kreis', [
+            'Sekante',
+            'Tangente',
+          ]),
           topic('os-rs-k8-lb3-kreis-umfang', 'Umfang eines Kreises', ['Kreis', 'Pi']),
           topic('os-rs-k8-lb3-kreis-flaeche', 'Flächeninhalt eines Kreises und Kreisrings', ['Kreis']),
           topic('os-rs-k8-lb3-darstellen', 'Netz, Ansichten und Schrägbild von Kreis- und Hohlzylinder'),
@@ -503,9 +561,17 @@ function officialGradesRs710(): PackGrade[] {
           topic('os-rs-k8-lb5-laplace', 'Wahrscheinlichkeiten und kombinatorisches Zählen', ['Wahrscheinlichkeit']),
           topic('os-rs-k8-lb5-gegen', 'Gegenwahrscheinlichkeit', ['Gegenwahrscheinlichkeit']),
           topic('os-rs-k8-lb5-baum', 'Mehrstufige Zufallsversuche, Baumdiagramm und Pfadregeln'),
+          topic('os-rs-k8-lb5-abhaengig', 'Abhängige und unabhängige Ereignisse', [
+            'unabhängig',
+            'abhängig',
+          ]),
         ]),
         area('lb6', 'Mathematik im Alltag', 12, [
           topic('os-rs-k8-lb6-kosten', 'Lebenshaltungs- und Baukosten'),
+          topic('os-rs-k8-lb6-lebenshaltung', 'Lebenshaltungskosten: Miete, Energie, Versicherungen', [
+            'Miete',
+            'Betriebskosten',
+          ]),
           topic('os-rs-k8-lb6-zinsen', 'Vergleich von Angeboten, Sparanlagen und Ratenzahlungen', ['Zinsen']),
           topic('os-rs-k8-lb6-prozent', 'Prozentrechnung in Alltagsbezügen', ['Prozent']),
         ]),
@@ -559,6 +625,10 @@ function officialGradesRs710(): PackGrade[] {
           topic('os-rs-k9-lb3-potenz-quot', 'Potenzgesetz: Quotient und Potenz einer Potenz'),
           topic('os-rs-k9-lb3-nullstellen', 'Nullstellen und Schnittpunktkoordinaten'),
           topic('os-rs-k9-lb3-fall', 'Prinzip der Fallunterscheidung'),
+          topic('os-rs-k9-lb3-monotonie', 'Monotonieverhalten und Wertebereich quadratischer Funktionen', [
+            'Monotonie',
+            'Scheitel',
+          ]),
         ]),
         area('lb4', 'Beschreibende Statistik', 16, [
           topic('os-rs-k9-lb4-medien', 'Darstellungen und Inhalte von Datenerhebungen beurteilen'),
@@ -608,12 +678,20 @@ function officialGradesRs710(): PackGrade[] {
           topic('os-rs-k10-lb2-zinseszins', 'Zinseszins: Endkapital', ['Zinseszins']),
           topic('os-rs-k10-lb2-zunahme', 'Prozentuale Zunahme', ['Prozent']),
           topic('os-rs-k10-lb2-sinus', 'Sinusfunktion, Periodizität, Grad- und Bogenmaß'),
+          topic('os-rs-k10-lb2-sinus-parameter', 'Sinusfunktion: Parameter, Amplitude und Periode', [
+            'Amplitude',
+            'Periode',
+          ]),
         ]),
         area('lb3', 'Zufallsgrößen', 12, [
           topic('os-rs-k10-lb3-zufall', 'Verwenden von Zufallsgrößen'),
           topic('os-rs-k10-lb3-erwartung', 'Erwartungswert einer Zufallsgröße', ['Erwartungswert']),
           topic('os-rs-k10-lb3-laplace', 'Wahrscheinlichkeiten bei Zufallsversuchen', ['Wahrscheinlichkeit']),
           topic('os-rs-k10-lb3-simulation', 'Simulation von Zufallsversuchen'),
+          topic('os-rs-k10-lb3-gewinnchance', 'Gewinnchance und Gewinnerwartung unterscheiden', [
+            'Erwartungswert',
+            'Chance',
+          ]),
         ]),
         area('lb4', 'Mathematik im Alltag', 28, [
           topic('os-rs-k10-lb4-wirtschaft', 'Probleme aus Umwelt und Wirtschaft, Sparen und Kredit'),
@@ -621,6 +699,11 @@ function officialGradesRs710(): PackGrade[] {
           topic('os-rs-k10-lb4-pyramide', 'Körper einschließlich Pyramiden- und Kegelstumpf', ['Pyramide']),
           topic('os-rs-k10-lb4-kugel', 'Volumen der Kugel', ['Kugel']),
           topic('os-rs-k10-lb4-erwartung', 'Wahrscheinlichkeiten und Erwartungswerte'),
+          topic('os-rs-k10-lb4-abgaben', 'Abgaben von Arbeitnehmer und Arbeitgeber', [
+            'Brutto',
+            'Netto',
+            'Lohnsteuer',
+          ]),
         ]),
         area('lbw1', 'Wahlbereich 1: Dynamisieren geometrischer Objekte', undefined, [
           topic('os-rs-k10-lbw1-dgs', 'Zentralperspektive, Ortskurven und Makros'),
@@ -653,7 +736,7 @@ const wrap = (
   region: 'Sachsen',
   school: 'Oberschule',
   subject: 'Mathematik',
-  version: '1.0.4',
+  version: '1.0.5',
   changelog,
   contentHash: packContentHash(official, []),
   official,

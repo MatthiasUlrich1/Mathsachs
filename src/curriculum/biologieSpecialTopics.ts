@@ -718,13 +718,13 @@ const verdauungsorgane: BioBank = {
         'Verdauungsenzyme spalten Nährstoffe in Bausteine, die im Dünndarm aufgenommen werden.',
     },
     {
-      concept: 'bio:k7:verdauung:niere',
-      prompt: 'Welche Aufgabe hat die Niere grob?',
-      answer: 'Filtert Blut und bildet Harn (Ausscheidung)',
-      wrong: ['Verdaut Fett im Mund', 'Erzeugt Magensäure dauerhaft', 'Pumpt Blut wie das Herz'],
-      explanation: 'Ausscheidung harnpflichtiger Stoffe.',
+      concept: 'bio:k7:verdauung:resorption',
+      prompt: 'Was bedeutet Resorption bei der Verdauung?',
+      answer: 'Aufnahme der Nährstoffbausteine ins Blut bzw. die Lymphe',
+      wrong: ['Filterung von Harn in der Niere', 'Gasaustausch in der Lunge', 'Bildung von Antikörpern'],
+      explanation: 'Vor allem im Dünndarm.',
       wissen:
-        'Nieren filtrieren Blut und scheiden harnpflichtige Stoffe aus — Ausscheidung ergänzt die Verdauung.',
+        'Nach enzymatischer Spaltung werden Bausteine im Dünndarm resorbiert und über Blut/Lymphe verteilt. Ausscheidung über Niere/Haut → eigene Themen.',
     },
   ],
   pairs: [
@@ -745,6 +745,18 @@ const verdauungsorgane: BioBank = {
       term: 'Dickdarm',
       meaning: 'Wasserentzug, Stuhlbildung',
       wissen: 'Auch Mikrobiom beteiligt.',
+    },
+    {
+      concept: 'bio:k7:verdauung:paar-enzyme',
+      term: 'Verdauungsenzym',
+      meaning: 'Spaltstoff für Nährstoffe',
+      wissen: 'z. B. Amylase, Pepsin, Lipase.',
+    },
+    {
+      concept: 'bio:k7:verdauung:paar-druese',
+      term: 'Verdauungsdrüse',
+      meaning: 'Bildet Verdauungssäfte',
+      wissen: 'Speicheldrüsen, Leber/Galle, Bauchspeicheldrüse.',
     },
   ],
   sorts: [

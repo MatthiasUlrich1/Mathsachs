@@ -15,6 +15,7 @@ import {
   k9Wurzelgleichung,
 } from './mathUpperDense'
 import type { Grade, Topic } from './types'
+import { MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE } from './mathLehrplanTeilaspekte'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
 const nonZero = (rng: Rng, min: number, max: number): number => {
@@ -743,6 +744,7 @@ export const klasse9: Grade = {
         k9Wurzelgleichung,
         k9PotenzfunktionWert,
         ...math9GraphicReviews,
+        ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math9"].filter((x) => x.areaId === "lb1").map((x) => x.topic),
       ],
     },
     {
@@ -755,7 +757,9 @@ export const klasse9: Grade = {
       id: 'lb3',
       title: 'Rechtwinklige Dreiecke',
       ustd: 32,
-      topics: [pythagorasHypotenuse, pythagorasKathete, trigWert, k9Hoehensatz],
+      topics: [pythagorasHypotenuse, pythagorasKathete, trigWert, k9Hoehensatz,
+        ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math9"].filter((x) => x.areaId === "lb3").map((x) => x.topic),
+      ],
     },
     {
       id: 'lb4',

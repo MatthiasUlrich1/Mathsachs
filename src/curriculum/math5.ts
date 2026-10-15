@@ -29,6 +29,7 @@ import {
   type LineFigureKind,
 } from '../lib/geometrySvg'
 import type { Grade, Topic } from './types'
+import { MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE } from './mathLehrplanTeilaspekte'
 
 /** Whether n is a prime number (n ≥ 2). */
 const isPrime = (n: number): boolean => {
@@ -2741,6 +2742,7 @@ export const klasse5: Grade = {
         potenzieren,
         teilbarkeit,
         primzahl,
+        ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math5"].filter((x) => x.areaId === "lb1").map((x) => x.topic),
       ],
     },
     {
@@ -2759,6 +2761,7 @@ export const klasse5: Grade = {
         mittelwert,
         zahlenstrahl,
         ordnenMitEinheiten,
+        ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math5"].filter((x) => x.areaId === "lb2").map((x) => x.topic),
       ],
     },
     {
@@ -2777,6 +2780,7 @@ export const klasse5: Grade = {
         verschiebungFormen,
         symmetrieAchsen,
         symmetriePunkt,
+        ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math5"].filter((x) => x.areaId === "lb3").map((x) => x.topic),
       ],
     },
     {
@@ -2791,6 +2795,7 @@ export const klasse5: Grade = {
         flaecheZusammengesetzt,
         umfangZusammengesetzt,
         volumenZusammengesetzt,
+        ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math5"].filter((x) => x.areaId === "lb4").map((x) => x.topic),
       ],
     },
     {

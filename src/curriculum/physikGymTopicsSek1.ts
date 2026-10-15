@@ -63,6 +63,14 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
             released: true,
             tasksPerRound: 10,
           }),
+          topic('ph-k6-lb1-lichtverschmutzung', 'Lichtverschmutzung und intelligentes Licht', [
+            'Lichtverschmutzung',
+            'Kunstlicht',
+          ]),
+          topic('ph-k6-lb1-lichtdurchlaessigkeit', 'Lichtdurchlässige und lichtundurchlässige Körper', [
+            'Lichtdurchlässig',
+            'Transparent',
+          ]),
           topic('ph-k6-lb1-ausbreitung', 'Geradlinige Ausbreitung', ['Licht', 'Strahl'], {
             released: true,
             tasksPerRound: 10,
@@ -87,16 +95,39 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
             released: true,
             tasksPerRound: 10,
           }),
+          topic('ph-k6-lb1-winkelspiegel', 'Winkelspiegel, Periskop und Kaleidoskop', [
+            'Winkelspiegel',
+            'Periskop',
+            'Kaleidoskop',
+          ]),
           topic('ph-k6-lb1-brechung', 'Brechung und Prisma', ['Brechung', 'Prisma'], {
             released: true,
             tasksPerRound: 10,
           }),
+          topic('ph-k6-lb1-sammellinse', 'Sammellinsen: Brennpunkt und Brennweite', [
+            'Sammellinse',
+            'Brennweite',
+            'Brennpunkt',
+          ]),
+          topic('ph-k6-lb1-optische-geraete', 'Einfache optische Geräte', [
+            'Lupe',
+            'Brille',
+            'Projektor',
+            'Fotoapparat',
+          ]),
+          topic('ph-k6-lb1-digitalbild', 'Digitale Bildentstehung', ['Bildsensor', 'Pixel', 'Digital']),
           topic('ph-k6-lb1-sonne-mond-erde', 'Sonne, Mond und Erde', ['Sonne', 'Mond', 'Finsternis'], {
             released: true,
             tasksPerRound: 10,
           }),
         ]),
         area('lb2', 'Eigenschaften und Bewegungen von Körpern', 14, [
+          topic('ph-k6-lb2-teilchenmodell', 'Teilchenmodell: Atome und Moleküle', [
+            'Teilchenmodell',
+            'Kohäsion',
+            'Adhäsion',
+          ]),
+          topic('ph-k6-lb2-diffusion', 'Diffusion und Brown’sche Bewegung', ['Diffusion', 'Brown']),
           topic('ph-k6-lb2-volumen', 'Volumen bestimmen', ['Volumen'], {
             released: true,
             tasksPerRound: 10,
@@ -119,6 +150,11 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
             ['Geschwindigkeit', 'Strecke'],
             { released: true, tasksPerRound: 10 },
           ),
+          topic('ph-k6-lb2-bewegungsarten', 'Bewegungsarten: Gerade, Kreis, Schwingung', [
+            'Kreisbewegung',
+            'Schwingung',
+            'Bewegungsart',
+          ]),
           topic('ph-k6-lb2-wegzeit', 'Weg-Zeit-Diagramm', ['Diagramm', 'Bewegung'], {
             released: true,
             tasksPerRound: 10,
@@ -129,12 +165,20 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
             ['Einheit', 'Geschwindigkeit'],
             { released: true, tasksPerRound: 10 },
           ),
+          topic('ph-k6-lb2-lichtgeschwindigkeit', 'Lichtgeschwindigkeit und astronomische Entfernungen', [
+            'Lichtgeschwindigkeit',
+            'Lichtjahr',
+          ]),
         ]),
         area('lb3', 'Temperatur und Zustand von Körpern', 14, [
           topic('ph-k6-lb3-thermometer', 'Temperatur ablesen', ['Temperatur', 'Thermometer'], {
             released: true,
             tasksPerRound: 10,
           }),
+          topic('ph-k6-lb3-teilchenbewegung', 'Temperatur und Teilchenbewegung', [
+            'Teilchenbewegung',
+            'Temperatur',
+          ]),
           topic('ph-k6-lb3-kelvin', 'Celsius und Kelvin', ['Kelvin', 'Celsius'], {
             released: true,
             tasksPerRound: 10,
@@ -143,6 +187,7 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
             released: true,
             tasksPerRound: 10,
           }),
+          topic('ph-k6-lb3-anomalie', 'Anomalie des Wassers', ['Anomalie', 'Dichtemaximum']),
           topic('ph-k6-lb3-aggregate', 'Aggregatzustände', ['Aggregatzustand', 'Schmelzen'], {
             released: true,
             tasksPerRound: 10,
@@ -171,6 +216,7 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
           topic('ph-k6-lb4-reiheparallel', 'Reihe und Parallel (einfach)', ['Reihe', 'Parallel'], {
             released: true,
           }),
+          topic('ph-k6-lb4-und-oder', 'UND- und ODER-Schaltung', ['UND-Schaltung', 'ODER-Schaltung']),
           topic('ph-k6-lb4-gefahren', 'Gefahren und Kurzschluss', ['Kurzschluss', 'Sicherheit'], {
             released: true,
           }),
@@ -231,8 +277,17 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
           topic('ph-k7-lb1-elektrostatik', 'Elektrostatische Kräfte', ['Elektrostatik'], {
             released: true,
           }),
+          topic('ph-k7-lb1-feldlinien', 'Feldlinienbilder magnetisch und elektrisch', [
+            'Feldlinien',
+            'Feldlinienbild',
+          ]),
         ]),
         area('lb2', 'Stromstärke und Spannung in Stromkreisen', 18, [
+          topic('ph-k7-lb2-leitung', 'Leitung in Metallen, Flüssigkeiten und Gasen', [
+            'Ionenleitung',
+            'Elektrolyt',
+            'Metallleitung',
+          ]),
           topic('ph-k7-lb2-stromstaerke', 'Stromstärke I', ['Stromstärke', 'Ampere'], {
             released: true,
           }),
@@ -285,24 +340,44 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
       [
         area('lb1', 'Mechanik der Flüssigkeiten und Gase', 12, [
           topic('ph-k8-lb1-druck', 'Druck p = F/A', ['Druck']),
+          topic('ph-k8-lb1-hydraulik', 'Hydraulik und Pascal’sches Prinzip', [
+            'Hydraulik',
+            'Pascal',
+            'Presse',
+          ]),
           topic('ph-k8-lb1-schweredruck', 'Schweredruck in Flüssigkeiten', ['Schweredruck']),
           topic('ph-k8-lb1-fluide', 'Mechanik der Flüssigkeiten und Gase', ['Druck', 'Auftrieb']),
           topic('ph-k8-lb1-auftrieb', 'Statischer Auftrieb', ['Auftrieb', 'Archimedes']),
           topic('ph-k8-lb1-schwimmen', 'Sinken, Schweben, Schwimmen', ['Schwimmen']),
           topic('ph-k8-lb1-luftdruck', 'Luftdruck', ['Luftdruck']),
+          topic('ph-k8-lb1-gasdruck', 'Druck in Gasen', ['Gasdruck', 'Kolbendruck']),
         ]),
         area('lb2', 'Thermische Energie', 15, [
           topic('ph-k8-lb2-waerme', 'Wärme und thermische Energie', ['Wärme']),
           topic('ph-k8-lb2-thermisch', 'Thermische Energie', ['Wärme', 'thermische Energie']),
           topic('ph-k8-lb2-spezwaerme', 'Spezifische Wärmekapazität', ['Wärmekapazität']),
+          topic('ph-k8-lb2-umwandlungswaerme', 'Umwandlungswärme', [
+            'Umwandlungswärme',
+            'Schmelzwärme',
+          ]),
           topic('ph-k8-lb2-leitung', 'Wärmeleitung, Strömung, Strahlung', ['Wärmeleitung']),
           topic('ph-k8-lb2-mischen', 'Mischungstemperatur', ['Mischung']),
           topic('ph-k8-lb2-klima', 'Wärme und Klima (Einblick)', ['Klima']),
+          topic('ph-k8-lb2-treibhaus', 'Klimaphysik und Treibhauseffekt', [
+            'Treibhauseffekt',
+            'Albedo',
+            'Kippelement',
+          ]),
         ]),
         area('lb3', 'Eigenschaften elektrischer Bauelemente', 15, [
           topic('ph-k8-lb3-widerstand', 'Elektrischer Widerstand', ['Widerstand']),
+          topic('ph-k8-lb3-widerstandgesetz', 'Widerstandsgesetz R = ρ·l/A', [
+            'Widerstandsgesetz',
+            'spezifischer Widerstand',
+          ]),
           topic('ph-k8-lb3-bauelemente', 'Eigenschaften elektrischer Bauelemente', ['Widerstand', 'Bauelemente']),
           topic('ph-k8-lb3-kennlinie', 'U-I-Kennlinie', ['Kennlinie']),
+          topic('ph-k8-lb3-ntc-ptc', 'NTC und PTC', ['NTC', 'PTC', 'Thermistor']),
           topic('ph-k8-lb3-ohmgesetz', 'Ohmsches Gesetz anwenden', ['Ohm']),
           topic('ph-k8-lb3-reihenschaltung', 'Widerstände in Reihe', ['Reihe', 'Widerstand']),
           topic('ph-k8-lb3-parallelschaltung', 'Widerstände parallel', ['Parallel', 'Widerstand']),
@@ -337,12 +412,32 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
           topic('ph-k9-lb1-transistor', 'Transistor (Einblick)', ['Transistor']),
           topic('ph-k9-lb1-led', 'LED', ['LED']),
           topic('ph-k9-lb1-digital', 'Digitale Grundschaltungen', ['Digital']),
+          topic('ph-k9-lb1-halbleiter', 'Halbleiter: Dotierung und pn-Übergang', [
+            'Halbleiter',
+            'Dotierung',
+            'pn-Übergang',
+          ]),
         ]),
         area('lb2', 'Energieversorgung', 18, [
           topic('ph-k9-lb2-kraftwerk', 'Kraftwerkskette', ['Kraftwerk']),
           topic('ph-k9-lb2-versorgung', 'Energieversorgung', ['Energieversorgung', 'Kraftwerk']),
           topic('ph-k9-lb2-wirkungsgrad', 'Wirkungsgrad von Anlagen', ['Wirkungsgrad']),
           topic('ph-k9-lb2-generator', 'Generatorprinzip', ['Generator']),
+          topic('ph-k9-lb2-induktion', 'Elektromagnetische Induktion', [
+            'Induktion',
+            'Faraday',
+            'Spule',
+          ]),
+          topic('ph-k9-lb2-transformator', 'Transformator und Hochspannung', [
+            'Transformator',
+            'Übersetzungsverhältnis',
+            'Hochspannung',
+          ]),
+          topic('ph-k9-lb2-kernenergie', 'Kernenergie und Kernspaltung', [
+            'Kernspaltung',
+            'Radioaktivität',
+            'Reaktor',
+          ]),
           topic('ph-k9-lb2-netz', 'Energieverteilung', ['Netz']),
           topic('ph-k9-lb2-erneuerbar', 'Erneuerbare Energien', ['Erneuerbar']),
         ]),
@@ -411,14 +506,51 @@ export function buildPhysikGymOfficialGrades(): PackGrade[] {
           topic('ph-k10-lb2-jahreszeiten', 'Jahreszeiten', ['Jahreszeiten']),
           topic('ph-k10-lb2-lichtjahr', 'Entfernungen und Lichtjahr', ['Lichtjahr']),
           topic('ph-k10-lb2-beobachtung', 'Astronomische Beobachtung', ['Beobachtung']),
+          topic('ph-k10-lb2-gravitation', 'Gravitationsgesetz', [
+            'Gravitation',
+            'Newton',
+            'Anziehung',
+          ]),
+          topic('ph-k10-lb2-kepler', 'Kepler’sche Gesetze', ['Kepler', 'Planetenbahn']),
+          topic('ph-k10-lb2-weltbild', 'Geo- und heliozentrisches Weltbild', [
+            'Kopernikus',
+            'Galilei',
+            'Weltbild',
+          ]),
+          topic('ph-k10-lb2-hrd', 'Hertzsprung-Russell-Diagramm', [
+            'HRD',
+            'Hauptreihe',
+            'Sternentwicklung',
+          ]),
         ]),
         area('lb3', 'Licht als Strahl und Welle', 9, [
           topic('ph-k10-lb3-strahl', 'Licht als Strahl', ['Strahloptik']),
           topic('ph-k10-lb3-licht', 'Licht als Strahl und Welle', ['Optik', 'Licht']),
           topic('ph-k10-lb3-brechung', 'Brechung', ['Brechung']),
+          topic('ph-k10-lb3-totalreflexion', 'Totalreflexion und Lichtleitkabel', [
+            'Totalreflexion',
+            'Lichtleitkabel',
+            'Grenzwinkel',
+          ]),
           topic('ph-k10-lb3-linse', 'Sammellinse', ['Linse']),
           topic('ph-k10-lb3-interferenz', 'Interferenz (Einblick)', ['Interferenz']),
+          topic('ph-k10-lb3-beugung', 'Beugung am Spalt und Gitter', [
+            'Beugung',
+            'Doppelspalt',
+            'Gitter',
+          ]),
+          topic('ph-k10-lb3-dispersion', 'Dispersion und Spektrum', [
+            'Dispersion',
+            'Spektrum',
+            'Farbzerlegung',
+          ]),
           topic('ph-k10-lb3-cf', 'c = λ·f', ['Wellenlänge', 'Frequenz']),
+          topic('ph-k10-lb3-em-spektrum', 'Elektromagnetisches Spektrum', [
+            'EM-Spektrum',
+            'Infrarot',
+            'Röntgen',
+            'Mobilfunk',
+          ]),
         ]),
         area('lb4', 'Hertzsche Wellen', 7, [
           topic('ph-k10-lb4-em', 'Elektromagnetische Wellen', ['EM-Welle']),

@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.83] – 2026-10-15
+
+### Hinzugefügt
+- **Lehrplan-Teilaspekte (gründlich):** Bio K7 LB3 Atmungssystem + Teilaspekt-/Gaps-Fill
+  Topics K5–OS; Physik Gaps Fill; Geschichte-/Mathe-Teilaspekte; OS/ST/SKS-Teilaspekte.
+- Neue Topics bleiben `released:false` (nicht freigeschaltet).
+
+### Geändert
+- Pack-Bumps: Bio ~1.9.7, Physik ~2.5.38, Geschichte ~1.10.1, Mathe Gym 1.4.0,
+  OS/ST-Packs; Generator-/Bank-Anbindung und Tests.
+
 ## [0.28.82] – 2026-10-14
 
 ### Behoben

@@ -9,6 +9,7 @@ import { fractionTask, mixedVariants, valueTask, visualTask, paramSliderTask, ch
 import { math8GraphicReviews } from './graphicReviewTopics'
 import { k8Baumdiagramm, k8BinomischeFormel, k8ProduktregelAnzahl } from './mathUpperDense'
 import type { Grade, Topic } from './types'
+import { MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE } from './mathLehrplanTeilaspekte'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
 const nonZero = (rng: Rng, min: number, max: number): number => {
@@ -833,7 +834,9 @@ export const klasse8: Grade = {
       id: 'lb2',
       title: 'Zufallsversuche',
       ustd: 24,
-      topics: [laplaceBruch, laplaceProzent, gegenwahrscheinlichkeit, k8Baumdiagramm, k8ProduktregelAnzahl],
+      topics: [laplaceBruch, laplaceProzent, gegenwahrscheinlichkeit, k8Baumdiagramm, k8ProduktregelAnzahl,
+        ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math8"].filter((x) => x.areaId === "lb2").map((x) => x.topic),
+      ],
     },
     {
       id: 'lb3',

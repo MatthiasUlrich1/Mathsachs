@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.36',
+    version: '2.5.38',
     changelog:
-      'Lehrplan-Abgleich Themen: K10 Newtonsche Gesetze (neuer Pflicht-LB); JGS12 GK/LK Titel Quantenobjekte/Atomvorstellungen/Schwingungen; LK11 Kräfte + Praktikum + EM-Felder. Neue Topics released:false.',
+      'Lehrplan-Teilaspekte 523: FEHLT-Topics K6–K10 + GK11 EM-Felder-LB5/Wahl + GK12 Unschärfe; dense Banks ≥10. released:false.',
     official,
     extras: [],
   }

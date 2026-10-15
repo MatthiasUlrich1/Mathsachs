@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Geschichte",
-  "version": "1.9.4",
-  "changelog": "Längsschnitte verdichtet (K5 Mensch–Natur, K7 Legitimation, K8 Kinderarbeit) mit neuen Themen/Banken; Freigabe unverändert außer bestehendem K6. 158 Themen.",
+  "version": "1.10.1",
+  "changelog": "Lehrplan-65-Teilaspekte ergänzt (Archäologie Sachsen, Kaiserzeit, WK1-Verlauf, Stalinismus, Glasnost, …); dense Banken, released:false. 184 Themen.",
   "official": [
     {
       "id": "geschichte-klasse-5",
@@ -61,6 +61,20 @@
                 "Zeitstrahl",
                 "Epoche",
                 "v. Chr."
+              ]
+            },
+            {
+              "id": "ge-k5-lb1-archaologie-sachsen",
+              "title": "Regionalgeschichte: Archäologische Funde in Sachsen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Archäologie",
+                "Sachsen",
+                "Funde",
+                "Regionalgeschichte"
               ]
             }
           ]
@@ -121,6 +135,35 @@
                 "Mesopotamien",
                 "Keilschrift"
               ]
+            },
+            {
+              "id": "ge-k5-lb2-jetztmensch",
+              "title": "Entwicklungsstufen zum Jetztmenschen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Evolution",
+                "Jetztmensch",
+                "Homo sapiens",
+                "Steinzeit"
+              ]
+            },
+            {
+              "id": "ge-k5-lb2-gesellschaftspyramide",
+              "title": "Ägypten: Gesellschaftspyramide und Schriftlichkeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Gesellschaftspyramide",
+                "Pharao",
+                "Beamte",
+                "Hieroglyphen",
+                "Pyramiden"
+              ]
             }
           ]
         },
@@ -179,6 +222,21 @@
                 "Götter",
                 "Olympia",
                 "Tempel"
+              ]
+            },
+            {
+              "id": "ge-k5-lb3-ohne-mitbestimmung",
+              "title": "Attische Demokratie: Gruppen ohne Mitbestimmung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Sklaven",
+                "Frauen",
+                "Metöken",
+                "Bürgerrecht",
+                "Demokratie"
               ]
             }
           ]
@@ -405,6 +463,51 @@
                 "Latein",
                 "Recht",
                 "Straßen"
+              ]
+            },
+            {
+              "id": "ge-k6-lb1-caesar-augustus",
+              "title": "Vom Volk und Senat zur Alleinherrschaft: Caesar und Augustus",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Caesar",
+                "Augustus",
+                "Republik",
+                "Prinzipat",
+                "Senat"
+              ]
+            },
+            {
+              "id": "ge-k6-lb1-kaiserzeit-gesellschaft",
+              "title": "Römische Gesellschaft in der Kaiserzeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Sklaven",
+                "Insula",
+                "Alltag",
+                "Wohlstand",
+                "Gesellschaft"
+              ]
+            },
+            {
+              "id": "ge-k6-lb1-germanen",
+              "title": "Römer und Germanen: Konflikt und Prägung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Germanen",
+                "Teutoburger Wald",
+                "Limes",
+                "Lehnwörter",
+                "Kulturkontakt"
               ]
             }
           ]
@@ -908,6 +1011,36 @@
                 "Glaubensspaltung",
                 "Dreißigjähriger Krieg"
               ]
+            },
+            {
+              "id": "ge-k7-lb1-amerika-hochkultur",
+              "title": "Kulturbegegnung in Amerika: Eroberung und Folgen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Konquista",
+                "Hochkultur",
+                "Indigene",
+                "Europäisierung",
+                "Kolonialismus"
+              ]
+            },
+            {
+              "id": "ge-k7-lb1-erfindungen-weltbild",
+              "title": "Erfindungen und neues Weltbild in der Frühen Neuzeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Buchdruck",
+                "Kompass",
+                "Feuerwaffen",
+                "Weltbild",
+                "Entdeckungen"
+              ]
             }
           ]
         },
@@ -965,6 +1098,21 @@
                 "Friedrich II.",
                 "August der Starke",
                 "Barock"
+              ]
+            },
+            {
+              "id": "ge-k7-lb2-august-barock",
+              "title": "Sachsen unter August dem Starken: Barock und Herrschaft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "August der Starke",
+                "Barock",
+                "Dresden",
+                "Repräsentation",
+                "Sachsen"
               ]
             }
           ]
@@ -1036,6 +1184,36 @@
                 "Napoleon",
                 "Kaisertum",
                 "Europa"
+              ]
+            },
+            {
+              "id": "ge-k7-lb3-karikatur",
+              "title": "Quellenart Karikatur",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Karikatur",
+                "Satire",
+                "Quellenkritik",
+                "Bildquelle",
+                "Meinung"
+              ]
+            },
+            {
+              "id": "ge-k7-lb3-konstitutionelle-monarchie",
+              "title": "Konstitutionelle Monarchie",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Konstitution",
+                "Monarchie",
+                "Verfassung",
+                "Parlament",
+                "Gewaltenteilung"
               ]
             }
           ]
@@ -1196,6 +1374,36 @@
                 "1871",
                 "Verfassung"
               ]
+            },
+            {
+              "id": "ge-k8-lb1-ideologien",
+              "title": "Nationalismus, Liberalismus, Konservatismus",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Nationalismus",
+                "Liberalismus",
+                "Konservatismus",
+                "Ideologie",
+                "Vormärz"
+              ]
+            },
+            {
+              "id": "ge-k8-lb1-quellen-lied-denkmal",
+              "title": "Quellen: politisches Lied, Lyrik und Denkmal",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "politisches Lied",
+                "Lyrik",
+                "Denkmal",
+                "Geschichtskultur",
+                "Erinnerung"
+              ]
             }
           ]
         },
@@ -1253,6 +1461,21 @@
                 "Verstädterung",
                 "Migration",
                 "Soziale Frage"
+              ]
+            },
+            {
+              "id": "ge-k8-lb2-vorindustrie",
+              "title": "Vorindustrieller Wandel: Handwerk und Merkantilismus",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Handwerk",
+                "Merkantilismus",
+                "Zünfte",
+                "Wirtschaft",
+                "Industrialisierung"
               ]
             }
           ]
@@ -1354,6 +1577,21 @@
                 "Julikrise",
                 "Kriegsschuld",
                 "1914"
+              ]
+            },
+            {
+              "id": "ge-k8-lb4-kriegsverlauf-wk1",
+              "title": "Erster Weltkrieg: Verlauf 1914–1918",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Weltkrieg",
+                "Stellungskrieg",
+                "Materialschlacht",
+                "Heimatfront",
+                "1918"
               ]
             }
           ]
@@ -1460,6 +1698,36 @@
                 "Sowjetrussland",
                 "Nachkriegsordnung"
               ]
+            },
+            {
+              "id": "ge-k9-lb1-oktober-stalin",
+              "title": "Oktoberrevolution und Stalinismus",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Oktoberrevolution",
+                "Lenin",
+                "Stalinismus",
+                "Sowjetunion",
+                "Diktatur"
+              ]
+            },
+            {
+              "id": "ge-k9-lb1-novemberrevolution",
+              "title": "Novemberrevolution und Weimarer Verfassung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Novemberrevolution",
+                "Weimarer Verfassung",
+                "Republik",
+                "1918",
+                "Räte"
+              ]
             }
           ]
         },
@@ -1504,6 +1772,21 @@
                 "NSDAP",
                 "Weltwirtschaftskrise",
                 "Machtübertragung"
+              ]
+            },
+            {
+              "id": "ge-k9-lb2-putsche-krisen",
+              "title": "Weimar: Putschversuche und Selbstbehauptung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kapp-Putsch",
+                "Hitler-Putsch",
+                "Krise",
+                "Republikschutz",
+                "Weimar"
               ]
             }
           ]
@@ -1773,6 +2056,21 @@
                 "Grundlagenvertrag",
                 "Entspannung"
               ]
+            },
+            {
+              "id": "ge-k10-lb2-nachkriegs-1945",
+              "title": "Nachkriegsordnung 1945–55: Entnazifizierung und Neubeginn",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Entnazifizierung",
+                "Bodenreform",
+                "Speziallager",
+                "Besatzung",
+                "Neubeginn"
+              ]
             }
           ]
         },
@@ -1817,6 +2115,36 @@
                 "Wiedervereinigung",
                 "EU",
                 "Zwei-plus-Vier"
+              ]
+            },
+            {
+              "id": "ge-k10-lb3-glasnost-perestroika",
+              "title": "Glasnost und Perestroika",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Glasnost",
+                "Perestroika",
+                "Gorbatschow",
+                "Reform",
+                "1989"
+              ]
+            },
+            {
+              "id": "ge-k10-lb3-europarat-einigung",
+              "title": "Europäische Einigung: Motive und Institutionen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Europarat",
+                "EG",
+                "EU",
+                "Einigung",
+                "Integration"
               ]
             }
           ]
@@ -1966,6 +2294,21 @@
                 "Nationalsozialismus",
                 "Ideologie",
                 "Terror"
+              ]
+            },
+            {
+              "id": "ge-gk-lb2-parteien-weimar",
+              "title": "Weimar: Parteien, Wählerschaft und antidemokratische Gesinnung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Parteien",
+                "Wählerschaft",
+                "Antidemokratisch",
+                "Weimar",
+                "Polarisierung"
               ]
             }
           ]
@@ -2194,6 +2537,21 @@
                 "Protest",
                 "Zivilgesellschaft"
               ]
+            },
+            {
+              "id": "ge-lk11-lb1-aufklaerung-ideen",
+              "title": "Aufklärungsphilosophie: Staatsideen und Revolution",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Montesquieu",
+                "Rousseau",
+                "Menschenrechte",
+                "Gewaltenteilung",
+                "Aufklärung"
+              ]
             }
           ]
         },
@@ -2238,6 +2596,21 @@
                 "Arbeiterbewegung",
                 "Migration",
                 "Imperialismus"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb2-vorindustriell-merkmale",
+              "title": "Vorindustrielle Gesellschaft: Merkmale und Umbau",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Gutswirtschaft",
+                "Zünfte",
+                "Feudallasten",
+                "Vorindustriell",
+                "Sozialstruktur"
               ]
             }
           ]
@@ -2372,6 +2745,21 @@
                 "Narrative",
                 "Geschichtspolitik"
               ]
+            },
+            {
+              "id": "ge-lk12-lb2-instrumentalisierung",
+              "title": "Instrumentalisierung von Geschichte",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Instrumentalisierung",
+                "Geschichtspolitik",
+                "Deutung",
+                "Mythos",
+                "Rezeption"
+              ]
             }
           ]
         },
@@ -2419,5 +2807,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "24cf1ce4"
+  "contentHash": "00c26ed0"
 }

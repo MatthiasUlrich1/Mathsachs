@@ -611,7 +611,7 @@ function wrap(
     region: 'Sachsen-Anhalt',
     school: 'Sekundarschule',
     subject: 'Mathematik',
-    version: '1.0.3',
+    version: '1.0.4',
     changelog,
     contentHash: packContentHash(official, []),
     official,

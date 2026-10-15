@@ -52,6 +52,11 @@ export function buildPhysikGymOberstufeGrades(): PackGrade[] {
           topic('ph-j11gk-lb1-energie', 'Erhaltung der Energie', ['Energieerhaltung']),
           topic('ph-j11gk-lb1-bilanz', 'Energiebilanz', ['Bilanz']),
           topic('ph-j11gk-lb1-reibung', 'Energie und Reibung', ['Reibung']),
+          topic('ph-j11gk-lb1-kreis', 'Gleichförmige Kreisbewegung und Radialkraft', [
+            'Kreisbewegung',
+            'Radialkraft',
+            'Zentripetal',
+          ]),
         ]),
         area('lb2', 'Anwendung der Kinematik und Dynamik', 14, [
           topic('ph-j11gk-lb2-gleichfoermig', 'Gleichförmige Bewegung', ['v']),
@@ -60,6 +65,11 @@ export function buildPhysikGymOberstufeGrades(): PackGrade[] {
           topic('ph-j11gk-lb2-kraft', 'F = m·a', ['Newton']),
           topic('ph-j11gk-lb2-diagramme', 'Bewegungsdiagramme', ['Diagramm']),
           topic('ph-j11gk-lb2-wurf', 'Senkrechter Wurf (Einblick)', ['Wurf']),
+          topic('ph-j11gk-lb2-faraday', 'Faraday-Käfig und Dipolfeld', [
+            'Faraday',
+            'Dipolfeld',
+            'Käfig',
+          ]),
         ]),
         area('lb3', 'Kondensator und Spule – Praktikum', 10, [
           topic('ph-j11gk-lb3-kondensator', 'Kondensator C = Q/U', ['Kondensator']),
@@ -72,9 +82,43 @@ export function buildPhysikGymOberstufeGrades(): PackGrade[] {
           topic('ph-j11gk-lb4-efeld', 'Elektrisches Feld', ['E-Feld']),
           topic('ph-j11gk-lb4-felder', 'Geladene Teilchen in Feldern', ['Feld', 'Ladung']),
           topic('ph-j11gk-lb4-kraft', 'F = q·E', ['Kraft']),
+          topic('ph-j11gk-lb4-ev', 'Energie im elektrischen Feld und Elektronenvolt', [
+            'Elektronenvolt',
+            'eV',
+            'Beschleunigungsspannung',
+          ]),
           topic('ph-j11gk-lb4-lorentz', 'Lorentzkraft (Einblick)', ['Lorentz']),
           topic('ph-j11gk-lb4-bahn', 'Bahnformen', ['Bahn']),
+          topic('ph-j11gk-lb4-millikan', 'Millikan-Versuch', ['Millikan', 'Elementarladung']),
+          topic('ph-j11gk-lb4-ablenkung', 'Ablenkung im Querfeld und Beschleuniger', [
+            'Querfeld',
+            'Ablenkung',
+            'Teilchenbeschleuniger',
+          ]),
           topic('ph-j11gk-lb4-anwendung', 'Technische Anwendungen', ['Anwendung']),
+        ]),
+        area('lb5', 'Elektromagnetische Felder', 8, [
+          topic('ph-j11gk-lb5-induktion', 'Induktionsgesetz und Anwendungen', [
+            'Induktion',
+            'Fluss',
+            'Lenz',
+            'Generator',
+            'Transformator',
+          ]),
+          topic('ph-j11gk-lb5-selbstinduktion', 'Selbstinduktion und Induktivität', [
+            'Selbstinduktion',
+            'Induktivität',
+            'Henry',
+          ]),
+          topic('ph-j11gk-lb5-generator', 'Generator- und Transformatorprinzip', [
+            'Generatorprinzip',
+            'Transformatorprinzip',
+          ]),
+          topic('ph-j11gk-lb5-lenz', 'Lenz’sches Gesetz und Wirbelströme', [
+            'Lenz',
+            'Wirbelstrom',
+          ]),
+          topic('ph-j11gk-lb5-fluss', 'Magnetischer Fluss Φ = B·A', ['Fluss', 'Induktion']),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
           topic('ph-j11gk-lbw-konstanten', 'Bestimmung elementarer Naturkonstanten', ['Naturkonstante']),
@@ -83,6 +127,16 @@ export function buildPhysikGymOberstufeGrades(): PackGrade[] {
           topic('ph-j11gk-lbw-sicherheit', 'Sicherheit bei Exkursionen', ['Sicherheit']),
           topic('ph-j11gk-lbw-anwendungen', 'Technische Anwendungen von Spulen und Kondensatoren', ['Anwendung']),
           topic('ph-j11gk-lbw-filter', 'Filter und Schwingkreise (Einblick)', ['Filter']),
+          topic('ph-j11gk-lbw-halbleiter', 'Leitungsvorgänge in Halbleitern', [
+            'Halbleiter',
+            'Dotierung',
+            'pn-Übergang',
+          ]),
+          topic('ph-j11gk-lbw-messen-modell', 'Messen und Modellieren', [
+            'Videoanalyse',
+            'Messschnittstelle',
+            'Modellvergleich',
+          ]),
           topic('ph-j11gk-lbw-relativitaet', 'Relativität von Zeit und Raum', ['Relativität']),
           topic('ph-j11gk-lbw-lichtgeschwindigkeit', 'Lichtgeschwindigkeit als Grenze', ['c']),
         ]),
@@ -129,6 +183,7 @@ export function buildPhysikGymOberstufeGrades(): PackGrade[] {
           topic('ph-j12gk-lb3-quanten', 'Quantenobjekte – Überblick', ['Quantenobjekt', 'Photon']),
           topic('ph-j12gk-lb3-photon', 'Photon E = h·f', ['Photon']),
           topic('ph-j12gk-lb3-dualismus', 'Welle-Teilchen-Dualismus', ['Dualismus']),
+          topic('ph-j12gk-lb3-unschaerfe', 'Unschärferelation (Einblick)', ['Unschärfe', 'Heisenberg']),
           topic('ph-j12gk-lb3-grenze', 'Klassische Grenzen', ['Klassik']),
         ]),
         area('lb4', 'Atomvorstellungen', 6, [
@@ -150,6 +205,10 @@ export function buildPhysikGymOberstufeGrades(): PackGrade[] {
           topic('ph-j12gk-lb4-halbwert', 'Halbwertszeit', ['Halbwertszeit']),
           topic('ph-j12gk-lb4-arten', 'Alpha, Beta, Gamma', ['Strahlung']),
           topic('ph-j12gk-lb4-spaltung', 'Kernspaltung und Fusion (Einblick)', ['Kernspaltung']),
+          topic('ph-j12gk-lb4-franck-hertz', 'Franck-Hertz-Versuch', [
+            'Franck-Hertz',
+            'Energieniveau',
+          ]),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
           topic('ph-j12gk-lbw-anwendungen', 'Anwendungen der Physik', ['Anwendung']),

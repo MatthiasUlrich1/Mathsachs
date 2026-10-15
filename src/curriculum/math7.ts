@@ -24,6 +24,7 @@ import {
   visualTask,
 } from './taskHelpers'
 import type { Grade, Topic } from './types'
+import { MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE } from './mathLehrplanTeilaspekte'
 import { opKey, solveAddPath, suggestOps } from '../lib/equationSteps'
 
 /** Format a signed integer, wrapping negatives in parentheses with a real minus. */
@@ -1024,7 +1025,9 @@ export const klasse7: Grade = {
       id: 'lb1',
       title: 'Geometrie in der Ebene',
       ustd: 24,
-      topics: [nebenwinkel, scheitelwinkel, winkelsummeVieleck, basiswinkel, mittelsenkrechteSchritte],
+      topics: [nebenwinkel, scheitelwinkel, winkelsummeVieleck, basiswinkel, mittelsenkrechteSchritte,
+        ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math7"].filter((x) => x.areaId === "lb1").map((x) => x.topic),
+      ],
     },
     {
       id: 'lb2',
@@ -1039,6 +1042,7 @@ export const klasse7: Grade = {
         termVorrang,
         gleichungAdd,
         gleichungMul,
+        ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math7"].filter((x) => x.areaId === "lb2").map((x) => x.topic),
       ],
     },
     {

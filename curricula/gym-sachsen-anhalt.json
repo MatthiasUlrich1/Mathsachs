@@ -4,8 +4,8 @@
   "region": "Sachsen-Anhalt",
   "school": "Gymnasium",
   "subject": "Mathematik",
-  "version": "1.0.4",
-  "changelog": "Dünne Pflicht-LBs verdichtet (Gleichungen, Winkel, Vernetzung, Zufall, Geo-Algebra). Alias auf Gym-Sachsen-Generatoren. tasksPerRound 10.",
+  "version": "1.0.5",
+  "changelog": "Lehrplan-Teilaspekt Differentialrechnung (11/12). Alias auf Gym-Sachsen-Generatoren. tasksPerRound 10.",
   "official": [
     {
       "id": "st-gym-klasse-5",
@@ -1449,6 +1449,17 @@
               "tasksPerRound": 10
             },
             {
+              "id": "st-k1112-differential",
+              "title": "Differentialrechnung: Änderungsrate und Tangente",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Ableitung",
+                "Tangente",
+                "Differenzenquotient"
+              ]
+            },
+            {
               "id": "st-k1112-nullstelle",
               "title": "Nullstelle einer linearen Funktion",
               "pointsPerTask": 10,
@@ -1539,5 +1550,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "010eae41"
+  "contentHash": "256a1454"
 }

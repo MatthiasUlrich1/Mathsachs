@@ -17,6 +17,7 @@ import {
   k10VarianzZufall,
 } from './mathUpperDense'
 import type { Grade, Topic } from './types'
+import { MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE } from './mathLehrplanTeilaspekte'
 
 // ---------------------------------------------------------------------------
 // Lernbereich 1 — Wachstumsvorgänge und periodische Vorgänge
@@ -609,7 +610,9 @@ export const klasse10: Grade = {
       id: 'lb2',
       title: 'Diskrete Zufallsgrößen',
       ustd: 16,
-      topics: [erwartungswert, erwartungswertWuerfel, k10VarianzZufall],
+      topics: [erwartungswert, erwartungswertWuerfel, k10VarianzZufall,
+        ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math10"].filter((x) => x.areaId === "lb2").map((x) => x.topic),
+      ],
     },
     {
       id: 'lb3',
@@ -629,6 +632,7 @@ export const klasse10: Grade = {
         k10Logarithmus,
         k10FolgeExplizit,
         ...math10GraphicReviews,
+        ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math10"].filter((x) => x.areaId === "lb4").map((x) => x.topic),
       ],
     },
     {

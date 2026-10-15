@@ -4,7 +4,7 @@
   "region": "Sachsen-Anhalt",
   "school": "Sekundarschule",
   "subject": "Mathematik",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "changelog": "1.0.2: Dünne Pflicht-LBs verdichtet (Gleichungen, Trig, LGS, Wachstum, Zins). Alias Gym-Sachsen.",
   "contentHash": "2b387fda",
   "official": [

@@ -71,6 +71,12 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Epoche',
             'v. Chr.',
           ]),
+          topic("ge-k5-lb1-archaologie-sachsen", "Regionalgeschichte: Archäologische Funde in Sachsen", [
+            "Archäologie",
+            "Sachsen",
+            "Funde",
+            "Regionalgeschichte",
+          ]),
         ]),
         area('lb2', 'Von der Steinzeit zur Hochkultur – Menschen organisieren ihr Zusammenleben', 12, [
           topic('ge-k5-lb2-steinzeit-hochkultur', 'Steinzeit zur Hochkultur – Überblick', [
@@ -93,6 +99,19 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Mesopotamien',
             'Keilschrift',
           ]),
+          topic("ge-k5-lb2-jetztmensch", "Entwicklungsstufen zum Jetztmenschen", [
+            "Evolution",
+            "Jetztmensch",
+            "Homo sapiens",
+            "Steinzeit",
+          ]),
+          topic("ge-k5-lb2-gesellschaftspyramide", "Ägypten: Gesellschaftspyramide und Schriftlichkeit", [
+            "Gesellschaftspyramide",
+            "Pharao",
+            "Beamte",
+            "Hieroglyphen",
+            "Pyramiden",
+          ]),
         ]),
         area('lb3', 'Zusammenleben im antiken Griechenland', 8, [
           topic('ge-k5-lb3-griechenland', 'Antikes Griechenland – Überblick', [
@@ -114,6 +133,13 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Götter',
             'Olympia',
             'Tempel',
+          ]),
+          topic("ge-k5-lb3-ohne-mitbestimmung", "Attische Demokratie: Gruppen ohne Mitbestimmung", [
+            "Sklaven",
+            "Frauen",
+            "Metöken",
+            "Bürgerrecht",
+            "Demokratie",
           ]),
         ]),
         area('lb4', 'Längsschnitt: Mensch und Natur', 2, [
@@ -203,6 +229,27 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Recht',
             'Straßen',
           ], { tasksPerRound: 10, released: true }),
+          topic("ge-k6-lb1-caesar-augustus", "Vom Volk und Senat zur Alleinherrschaft: Caesar und Augustus", [
+            "Caesar",
+            "Augustus",
+            "Republik",
+            "Prinzipat",
+            "Senat",
+          ]),
+          topic("ge-k6-lb1-kaiserzeit-gesellschaft", "Römische Gesellschaft in der Kaiserzeit", [
+            "Sklaven",
+            "Insula",
+            "Alltag",
+            "Wohlstand",
+            "Gesellschaft",
+          ]),
+          topic("ge-k6-lb1-germanen", "Römer und Germanen: Konflikt und Prägung", [
+            "Germanen",
+            "Teutoburger Wald",
+            "Limes",
+            "Lehnwörter",
+            "Kulturkontakt",
+          ]),
         ]),
         area('lb2', 'Herrschaft und Lebensformen im Mittelalter', 20, [
           topic('ge-k6-lb2-mittelalter', 'Mittelalter – Überblick', [
@@ -394,6 +441,20 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Glaubensspaltung',
             'Dreißigjähriger Krieg',
           ]),
+          topic("ge-k7-lb1-amerika-hochkultur", "Kulturbegegnung in Amerika: Eroberung und Folgen", [
+            "Konquista",
+            "Hochkultur",
+            "Indigene",
+            "Europäisierung",
+            "Kolonialismus",
+          ]),
+          topic("ge-k7-lb1-erfindungen-weltbild", "Erfindungen und neues Weltbild in der Frühen Neuzeit", [
+            "Buchdruck",
+            "Kompass",
+            "Feuerwaffen",
+            "Weltbild",
+            "Entdeckungen",
+          ]),
         ]),
         area('lb2', 'Staat und Gesellschaft im Zeitalter von Absolutismus und Aufklärung', 14, [
           topic('ge-k7-lb2-absolutismus', 'Absolutismus und Aufklärung – Überblick', [
@@ -414,6 +475,13 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Friedrich II.',
             'August der Starke',
             'Barock',
+          ]),
+          topic("ge-k7-lb2-august-barock", "Sachsen unter August dem Starken: Barock und Herrschaft", [
+            "August der Starke",
+            "Barock",
+            "Dresden",
+            "Repräsentation",
+            "Sachsen",
           ]),
         ]),
         area('lb3', 'Formen der Beschränkung der Alleinherrschaft', 18, [
@@ -440,6 +508,20 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Napoleon',
             'Kaisertum',
             'Europa',
+          ]),
+          topic("ge-k7-lb3-karikatur", "Quellenart Karikatur", [
+            "Karikatur",
+            "Satire",
+            "Quellenkritik",
+            "Bildquelle",
+            "Meinung",
+          ]),
+          topic("ge-k7-lb3-konstitutionelle-monarchie", "Konstitutionelle Monarchie", [
+            "Konstitution",
+            "Monarchie",
+            "Verfassung",
+            "Parlament",
+            "Gewaltenteilung",
           ]),
         ]),
         area('lb4', 'Längsschnitt: Legitimation von Herrschaft in der Geschichte', 4, [
@@ -499,6 +581,20 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             '1871',
             'Verfassung',
           ]),
+          topic("ge-k8-lb1-ideologien", "Nationalismus, Liberalismus, Konservatismus", [
+            "Nationalismus",
+            "Liberalismus",
+            "Konservatismus",
+            "Ideologie",
+            "Vormärz",
+          ]),
+          topic("ge-k8-lb1-quellen-lied-denkmal", "Quellen: politisches Lied, Lyrik und Denkmal", [
+            "politisches Lied",
+            "Lyrik",
+            "Denkmal",
+            "Geschichtskultur",
+            "Erinnerung",
+          ]),
         ]),
         area('lb2', 'Das Doppelgesicht des Fortschritts – Industrialisierung und die Folgen', 14, [
           topic('ge-k8-lb2-industrialisierung', 'Industrialisierung – Überblick', [
@@ -519,6 +615,13 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Verstädterung',
             'Migration',
             'Soziale Frage',
+          ]),
+          topic("ge-k8-lb2-vorindustrie", "Vorindustrieller Wandel: Handwerk und Merkantilismus", [
+            "Handwerk",
+            "Merkantilismus",
+            "Zünfte",
+            "Wirtschaft",
+            "Industrialisierung",
           ]),
         ]),
         area('lb3', 'Längsschnitt: Industrialisierung und Kinderarbeit', 6, [
@@ -554,6 +657,13 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Julikrise',
             'Kriegsschuld',
             '1914',
+          ]),
+          topic("ge-k8-lb4-kriegsverlauf-wk1", "Erster Weltkrieg: Verlauf 1914–1918", [
+            "Weltkrieg",
+            "Stellungskrieg",
+            "Materialschlacht",
+            "Heimatfront",
+            "1918",
           ]),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
@@ -597,6 +707,20 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Sowjetrussland',
             'Nachkriegsordnung',
           ]),
+          topic("ge-k9-lb1-oktober-stalin", "Oktoberrevolution und Stalinismus", [
+            "Oktoberrevolution",
+            "Lenin",
+            "Stalinismus",
+            "Sowjetunion",
+            "Diktatur",
+          ]),
+          topic("ge-k9-lb1-novemberrevolution", "Novemberrevolution und Weimarer Verfassung", [
+            "Novemberrevolution",
+            "Weimarer Verfassung",
+            "Republik",
+            "1918",
+            "Räte",
+          ]),
         ]),
         area('lb2', 'Deutschlands Weg von der Demokratie zur Diktatur', 22, [
           topic('ge-k9-lb2-demokratie-diktatur', 'Von der Demokratie zur Diktatur – Überblick', [
@@ -612,6 +736,13 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'NSDAP',
             'Weltwirtschaftskrise',
             'Machtübertragung',
+          ]),
+          topic("ge-k9-lb2-putsche-krisen", "Weimar: Putschversuche und Selbstbehauptung", [
+            "Kapp-Putsch",
+            "Hitler-Putsch",
+            "Krise",
+            "Republikschutz",
+            "Weimar",
           ]),
         ]),
         area('lb3', 'Die nationalsozialistische Diktatur – ein System von Terror und Gewalt', 12, [
@@ -714,6 +845,13 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Grundlagenvertrag',
             'Entspannung',
           ]),
+          topic("ge-k10-lb2-nachkriegs-1945", "Nachkriegsordnung 1945–55: Entnazifizierung und Neubeginn", [
+            "Entnazifizierung",
+            "Bodenreform",
+            "Speziallager",
+            "Besatzung",
+            "Neubeginn",
+          ]),
         ]),
         area('lb3', 'Politische Wandlungsprozesse in Europa', 14, [
           topic('ge-k10-lb3-wandel-europa', 'Wandlungsprozesse in Europa – Überblick', [
@@ -729,6 +867,20 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Wiedervereinigung',
             'EU',
             'Zwei-plus-Vier',
+          ]),
+          topic("ge-k10-lb3-glasnost-perestroika", "Glasnost und Perestroika", [
+            "Glasnost",
+            "Perestroika",
+            "Gorbatschow",
+            "Reform",
+            "1989",
+          ]),
+          topic("ge-k10-lb3-europarat-einigung", "Europäische Einigung: Motive und Institutionen", [
+            "Europarat",
+            "EG",
+            "EU",
+            "Einigung",
+            "Integration",
           ]),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
@@ -798,6 +950,13 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
               'Ideologie',
               'Terror',
             ]),
+          topic("ge-gk-lb2-parteien-weimar", "Weimar: Parteien, Wählerschaft und antidemokratische Gesinnung", [
+            "Parteien",
+            "Wählerschaft",
+            "Antidemokratisch",
+            "Weimar",
+            "Polarisierung",
+          ]),
           ],
         ),
         area(
@@ -895,6 +1054,13 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Protest',
             'Zivilgesellschaft',
           ]),
+          topic("ge-lk11-lb1-aufklaerung-ideen", "Aufklärungsphilosophie: Staatsideen und Revolution", [
+            "Montesquieu",
+            "Rousseau",
+            "Menschenrechte",
+            "Gewaltenteilung",
+            "Aufklärung",
+          ]),
         ]),
         area(
           'lb2',
@@ -915,6 +1081,13 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
               'Migration',
               'Imperialismus',
             ]),
+          topic("ge-lk11-lb2-vorindustriell-merkmale", "Vorindustrielle Gesellschaft: Merkmale und Umbau", [
+            "Gutswirtschaft",
+            "Zünfte",
+            "Feudallasten",
+            "Vorindustriell",
+            "Sozialstruktur",
+          ]),
           ],
         ),
         area('lbw', 'Wahlbereiche', undefined, [
@@ -969,6 +1142,13 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Identität',
             'Narrative',
             'Geschichtspolitik',
+          ]),
+          topic("ge-lk12-lb2-instrumentalisierung", "Instrumentalisierung von Geschichte", [
+            "Instrumentalisierung",
+            "Geschichtspolitik",
+            "Deutung",
+            "Mythos",
+            "Rezeption",
           ]),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [

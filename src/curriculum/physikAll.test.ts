@@ -31,7 +31,8 @@ describe('Physik Gym generators (all grades)', () => {
         expect(n, `${grade.id}/${area.id}`).toBeGreaterThanOrEqual(5)
         // Obergrenze etwas höher als Math-5–9: Pflicht-LBs mit vielen Teilaspekten
         // (z. B. JGS11 LK Kräfte = Kinematik + Newton) bleiben in einem LB.
-        expect(n, `${grade.id}/${area.id}`).toBeLessThanOrEqual(12)
+        // K6 LB1 Optik-Teilaspekte und GK11 Felder können >12 Themen brauchen.
+        expect(n, `${grade.id}/${area.id}`).toBeLessThanOrEqual(16)
       }
     }
   })
@@ -64,7 +65,24 @@ describe('Physik Gym generators (all grades)', () => {
     }
     const k6 = grades.find((g) => g.id === 'physik-klasse-6')!
     const lb1 = k6.areas.find((a) => a.id === 'lb1')!.topics
-    expect(lb1.every((t) => t.released === true)).toBe(true)
+    const releasedLb1 = new Set([
+      'ph-k6-lb1-lichtquellen',
+      'ph-k6-lb1-ausbreitung',
+      'ph-k6-lb1-schatten',
+      'ph-k6-lb1-kernschatten',
+      'ph-k6-lb1-lampenposition',
+      'ph-k6-lb1-lichtstrahl',
+      'ph-k6-lb1-spiegel',
+      'ph-k6-lb1-brechung',
+      'ph-k6-lb1-sonne-mond-erde',
+    ])
+    for (const t of lb1) {
+      if (releasedLb1.has(t.id)) {
+        expect(t.released, t.id).toBe(true)
+      } else {
+        expect(t.released, t.id).toBe(false)
+      }
+    }
     const lb2 = k6.areas.find((a) => a.id === 'lb2')!.topics
     const releasedLb2 = new Set([
       'ph-k6-lb2-volumen',

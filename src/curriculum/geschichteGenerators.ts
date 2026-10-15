@@ -14,6 +14,7 @@ import { GESCHICHTE_DENSE_UPPER_GENERATORS } from './geschichteDenseUpper'
 import { GESCHICHTE_LAENGSSCHNITT_GENERATORS } from './geschichteLaengsschnittDense'
 import { GESCHICHTE_OVERVIEW_DENSE_GENERATORS } from './geschichteOverviewDense'
 import { GESCHICHTE_THIN_FILL } from './geschichteThinFill'
+import { GESCHICHTE_LEHRPLAN_TEILASPEKTE_GENERATORS } from './geschichteLehrplanTeilaspekte'
 import type { Topic } from './types'
 
 /** Alle spielbaren Geschichte-Generatoren (K5–12; K6 freigegeben, Rest Entwickler). */
@@ -31,6 +32,7 @@ const GESCHICHTE_ALL_GENERATORS: Record<string, Topic['generate']> = {
   ...GESCHICHTE_DENSE_UPPER_GENERATORS,
   ...GESCHICHTE_LAENGSSCHNITT_GENERATORS,
   ...GESCHICHTE_OVERVIEW_DENSE_GENERATORS,
+  ...GESCHICHTE_LEHRPLAN_TEILASPEKTE_GENERATORS,
 }
 
 /** Platzhalter-Generator bis echte Geschichtsaufgaben vorliegen. */

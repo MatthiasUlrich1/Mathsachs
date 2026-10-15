@@ -574,6 +574,11 @@ function officialGrades(): PackGrade[] {
       [
         area('an-analysis', 'Grundlagen der Infinitesimalrechnung / Differential- und Integralrechnung', [
           topic('st-k1112-ableitung', 'Ableitung eines Polynoms an einer Stelle'),
+          topic('st-k1112-differential', 'Differentialrechnung: Änderungsrate und Tangente', [
+            'Ableitung',
+            'Tangente',
+            'Differenzenquotient',
+          ]),
           topic('st-k1112-nullstelle', 'Nullstelle einer linearen Funktion'),
           topic('st-k1112-integral', 'Bestimmtes Integral eines Polynoms'),
         ]),
@@ -606,9 +611,9 @@ export function buildGymSachsenAnhaltPack(): CurriculumPack {
     region: 'Sachsen-Anhalt',
     school: 'Gymnasium',
     subject: 'Mathematik',
-    version: '1.0.4',
+    version: '1.0.5',
     changelog:
-      'Dünne Pflicht-LBs verdichtet (Gleichungen, Winkel, Vernetzung, Zufall, Geo-Algebra). Alias auf Gym-Sachsen-Generatoren. tasksPerRound 10.',
+      'Lehrplan-Teilaspekt Differentialrechnung (11/12). Alias auf Gym-Sachsen-Generatoren. tasksPerRound 10.',
     official,
     extras: [],
   }

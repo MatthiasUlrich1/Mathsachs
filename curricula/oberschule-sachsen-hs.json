@@ -4,9 +4,9 @@
   "region": "Sachsen",
   "school": "Oberschule",
   "subject": "Mathematik",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "changelog": "Klassen 5–9 (Hauptschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung.",
-  "contentHash": "c3ede39b",
+  "contentHash": "d220ec06",
   "official": [
     {
       "id": "os-hs-klasse-5",
@@ -141,6 +141,26 @@
               "keywords": [
                 "Primzahl",
                 "Sieb des Eratosthenes"
+              ]
+            },
+            {
+              "id": "os-k5-lb1-null",
+              "title": "Null als kleinste natürliche Zahl",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Null",
+                "natürliche Zahlen"
+              ]
+            },
+            {
+              "id": "os-k5-lb1-rechengesetze",
+              "title": "Rechenstrategien, Rechenvorteile und Rechengesetze",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kommutativgesetz",
+                "Vorrangregeln"
               ]
             }
           ]
@@ -413,6 +433,16 @@
               "title": "Achsen- und Punktsymmetrie erkennen",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-k5-lb4-verschiebungsweite",
+              "title": "Verschiebungsrichtung und Verschiebungsweite",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Verschiebung",
+                "Vektor"
+              ]
             }
           ]
         },
@@ -522,6 +552,26 @@
               "title": "Notwendigkeit einer Zahlenbereichserweiterung, Mengenbegriff",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-k6-lb1-zahlenstrahl",
+              "title": "Gebrochene Zahlen am Zahlenstrahl veranschaulichen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zahlenstrahl",
+                "Bruch"
+              ]
+            },
+            {
+              "id": "os-k6-lb1-negative-ausblick",
+              "title": "Ausblick: negative Zahlen in Sachproblemen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Temperatur",
+                "negative Zahlen"
+              ]
             },
             {
               "id": "os-k6-lb1-kuerzen",
@@ -1043,6 +1093,16 @@
               "keywords": [
                 "Häufigkeit"
               ]
+            },
+            {
+              "id": "os-hs-k7-lb2-chancen",
+              "title": "Gleichwahrscheinliche Ergebnisse und Chancen abschätzen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Chance",
+                "gleichwahrscheinlich"
+              ]
             }
           ]
         },
@@ -1051,6 +1111,16 @@
           "title": "Rationale Zahlen",
           "ustd": 20,
           "topics": [
+            {
+              "id": "os-hs-k7-lb3-zahlerweiterung",
+              "title": "Notwendigkeit der Zahlenbereichserweiterung",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zahlbereich",
+                "Erweiterung"
+              ]
+            },
             {
               "id": "os-hs-k7-lb3-zahlengerade",
               "title": "Veranschaulichen auf der Zahlengeraden, Vergleichen und Ordnen",
@@ -1186,6 +1256,16 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Oberfläche"
+              ]
+            },
+            {
+              "id": "os-hs-k7-lb4-verpackung",
+              "title": "Materialverbrauch und Verpackungen beurteilen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Verpackung",
+                "Materialeinsparung"
               ]
             }
           ]
@@ -1336,6 +1416,17 @@
               "title": "Erstellen und Deuten von Säulen-, Linien- und Kreisdiagrammen",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-hs-k8-lb1-kredit",
+              "title": "Sparformen, Kredit und Ratenzahlung beurteilen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kredit",
+                "Ratenzahlung",
+                "Sparen"
+              ]
             }
           ]
         },
@@ -1687,6 +1778,16 @@
               "title": "Zusammengesetzte Körper",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-hs-k9-lb2-formel-umstellen",
+              "title": "Formeln umstellen und anwenden",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Formel",
+                "Umstellen"
+              ]
             }
           ]
         },
@@ -1741,6 +1842,16 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Parabel"
+              ]
+            },
+            {
+              "id": "os-hs-k9-lb3-tarif",
+              "title": "Tarifvergleiche mit linearen Funktionen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Tarif",
+                "Kostenfunktion"
               ]
             }
           ]

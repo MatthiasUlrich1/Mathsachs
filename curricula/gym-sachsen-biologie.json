@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Biologie",
-  "version": "1.9.4",
-  "changelog": "Lehrplan-Themenabgleich: K5 Arbeitsweisen; K6 Samenpflanzen (Fotosynthese/Familien/Bestimmung); K7 Viren; K8 Blutzucker-Regelkreis; K10 Evolutionsbelege. Neue Topics released:false. 180 Themen.",
+  "version": "1.9.7",
+  "changelog": "Lehrplan-Teilaspekte komplettiert: K5–K10 + OS GK/LK (Membrantransport, Enzyme, Neuro/Immun, C3/C4, LK-Atmung u. a.). released:false. 262 Themen.",
   "official": [
     {
       "id": "biologie-klasse-5",
@@ -274,6 +274,18 @@
                 "Dotter",
                 "Eiablage"
               ]
+            },
+            {
+              "id": "bi-k5-lb4-kriechtiere-schutz",
+              "title": "Kriechtiere – Schutz und Artenschutz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Artenschutz",
+                "Lebensraum"
+              ]
             }
           ]
         },
@@ -336,6 +348,44 @@
                 "Nesthocker",
                 "Nestflüchter"
               ]
+            },
+            {
+              "id": "bi-k5-lb5-voegel-schnabel",
+              "title": "Vögel – Schnabelformen und Nahrung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Schnabel",
+                "Nahrung",
+                "Angepasstheit"
+              ]
+            },
+            {
+              "id": "bi-k5-lb5-voegel-verhalten",
+              "title": "Vögel – Revier, Balz und Gesang",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Revier",
+                "Balz",
+                "Vogelgesang"
+              ]
+            },
+            {
+              "id": "bi-k5-lb5-voegel-schutz",
+              "title": "Vögel – Schutz und Artenschutz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Vogelschutz",
+                "Artenschutz"
+              ]
             }
           ]
         },
@@ -394,6 +444,57 @@
               "keywords": [
                 "Angepasstheit",
                 "Lebensraum"
+              ]
+            },
+            {
+              "id": "bi-k5-lb6-saeuger-lunge",
+              "title": "Säugetiere – Lunge und Gasaustausch",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Lunge",
+                "Lungenbläschen",
+                "Oberflächenvergrößerung",
+                "Gasaustausch"
+              ]
+            },
+            {
+              "id": "bi-k5-lb6-saeuger-verhalten",
+              "title": "Säugetiere – Verhalten beobachten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Verhalten",
+                "Beobachtung"
+              ]
+            },
+            {
+              "id": "bi-k5-lb6-saeuger-sinne",
+              "title": "Säugetiere – Sinne und Kommunikation",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Sinne",
+                "Sender-Empfänger"
+              ]
+            },
+            {
+              "id": "bi-k5-lb6-saeuger-sozial",
+              "title": "Säugetiere – Sozialverhalten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Rudel",
+                "Rangordnung",
+                "Revier"
               ]
             },
             {
@@ -749,6 +850,19 @@
                 "Zecke",
                 "Spulwurm"
               ]
+            },
+            {
+              "id": "bi-k6-lb2-insekten-atmung",
+              "title": "Insekten – Tracheenatmung und Landleben",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Tracheen",
+                "Stigmen",
+                "Trockenlufttier"
+              ]
             }
           ]
         },
@@ -767,6 +881,44 @@
               "keywords": [
                 "Vergleich",
                 "Systematik"
+              ]
+            },
+            {
+              "id": "bi-k6-lb3-skelett-vergleich",
+              "title": "Außen- und Innenskelett vergleichen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Exoskelett",
+                "Endoskelett"
+              ]
+            },
+            {
+              "id": "bi-k6-lb3-atmung-vergleich",
+              "title": "Atmungsorgane vergleichen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kiemen",
+                "Tracheen",
+                "Lungen"
+              ]
+            },
+            {
+              "id": "bi-k6-lb3-fortpflanzung-formen",
+              "title": "Fortpflanzungsformen vergleichen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "ungeschlechtlich",
+                "geschlechtlich",
+                "Zwitter"
               ]
             }
           ]
@@ -858,6 +1010,32 @@
                 "Mikroskop",
                 "Chloroplast",
                 "Vakuole"
+              ]
+            },
+            {
+              "id": "bi-k6-lb5-zelltheorie",
+              "title": "Zelltheorie und Geschichte",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zelltheorie",
+                "Hooke",
+                "Virchow"
+              ]
+            },
+            {
+              "id": "bi-k6-lb5-organellen-energie",
+              "title": "Mitochondrien und Chloroplasten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Mitochondrium",
+                "Chloroplast",
+                "ATP"
               ]
             }
           ]
@@ -1082,6 +1260,32 @@
                 "Antikörper",
                 "Impfung"
               ]
+            },
+            {
+              "id": "bi-k7-lb2-puls-blutdruck",
+              "title": "Puls und Blutdruck",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Puls",
+                "Blutdruck",
+                "Messung"
+              ]
+            },
+            {
+              "id": "bi-k7-lb2-kreislauf-gesundheit",
+              "title": "Gesunderhaltung Herz-Kreislauf",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Bewegung",
+                "Prävention",
+                "Risikofaktoren"
+              ]
             }
           ]
         },
@@ -1116,8 +1320,21 @@
               ]
             },
             {
+              "id": "bi-k7-lb3-ernaehrungsformen",
+              "title": "Ernährungsformen und Essstörungen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Ernährungsformen",
+                "Essstörungen",
+                "heterotroph"
+              ]
+            },
+            {
               "id": "bi-k7-lb3-organe",
-              "title": "Verdauungsorgane und Ausscheidung",
+              "title": "Verdauungsorgane und Resorption",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
               "released": false,
@@ -1125,7 +1342,86 @@
               "keywords": [
                 "Magen",
                 "Darm",
-                "Niere"
+                "Enzyme"
+              ]
+            },
+            {
+              "id": "bi-k7-lb3-atmung",
+              "title": "Atmungssystem – Überblick",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Atmung",
+                "Lunge",
+                "Atemwege"
+              ]
+            },
+            {
+              "id": "bi-k7-lb3-lunge",
+              "title": "Bau und Funktion der Lunge",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Lunge",
+                "Bronchien",
+                "Atemgase"
+              ]
+            },
+            {
+              "id": "bi-k7-lb3-gasaustausch",
+              "title": "Lungenbläschen und Gasaustausch",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Alveolen",
+                "Gasaustausch",
+                "Diffusion"
+              ]
+            },
+            {
+              "id": "bi-k7-lb3-atemmechanik",
+              "title": "Atemmechanik und Belastung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zwerchfell",
+                "Brustatmung",
+                "Bauchatmung",
+                "Atemfrequenz"
+              ]
+            },
+            {
+              "id": "bi-k7-lb3-haut-niere",
+              "title": "Haut und Niere als Ausscheidungsorgane",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Haut",
+                "Niere",
+                "Harn"
+              ]
+            },
+            {
+              "id": "bi-k7-lb3-organe-schutz",
+              "title": "Gesunderhaltung von Atmung und Ausscheidung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Rauchen",
+                "Hautkrebs",
+                "Organspende"
               ]
             }
           ]
@@ -1171,6 +1467,19 @@
               "keywords": [
                 "Scharniergelenk",
                 "Kugelgelenk"
+              ]
+            },
+            {
+              "id": "bi-k7-lb4-haltung",
+              "title": "Haltung und Haltungsschäden",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Haltung",
+                "Wirbelsäule",
+                "Prävention"
               ]
             }
           ]
@@ -1310,6 +1619,58 @@
                 "Glucagon",
                 "Homöostase"
               ]
+            },
+            {
+              "id": "bi-k8-lb1-auge-akkommodation",
+              "title": "Auge – Akkommodation und Adaptation",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Akkommodation",
+                "Adaptation",
+                "Gesunderhaltung"
+              ]
+            },
+            {
+              "id": "bi-k8-lb1-gehirn",
+              "title": "Gehirn, Gedächtnis und Reflexe",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Gehirn",
+                "Gedächtnis",
+                "Reflex"
+              ]
+            },
+            {
+              "id": "bi-k8-lb1-nerv-gesundheit",
+              "title": "Gesunderhaltung des Nervensystems",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Schlaf",
+                "Stress",
+                "Reizüberflutung"
+              ]
+            },
+            {
+              "id": "bi-k8-lb1-sucht",
+              "title": "Suchtgefahren",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Sucht",
+                "Suchtmittel",
+                "Prävention"
+              ]
             }
           ]
         },
@@ -1366,6 +1727,32 @@
                 "Verhütung",
                 "STI",
                 "Konsens"
+              ]
+            },
+            {
+              "id": "bi-k8-lb2-zyklus",
+              "title": "Menstruationszyklus und Hormone",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zyklus",
+                "Eisprung",
+                "Hormone"
+              ]
+            },
+            {
+              "id": "bi-k8-lb2-vielfalt",
+              "title": "Sexuelle Vielfalt, Konsens und Schutz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Vielfalt",
+                "Konsens",
+                "Jugendschutz"
               ]
             }
           ]
@@ -1571,6 +1958,58 @@
                 "Tragfähigkeit",
                 "Nische"
               ]
+            },
+            {
+              "id": "bi-k9-lb2-gewaesser",
+              "title": "See – Zonierung und Plankton",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zonierung",
+                "Plankton",
+                "Zirkulation"
+              ]
+            },
+            {
+              "id": "bi-k9-lb2-sukzession",
+              "title": "Sukzession und Verlandung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Sukzession",
+                "Verlandung",
+                "Pionier"
+              ]
+            },
+            {
+              "id": "bi-k9-lb2-faktoren",
+              "title": "Abio- und biotische Faktoren",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Toleranz",
+                "Konkurrenz",
+                "Symbiose"
+              ]
+            },
+            {
+              "id": "bi-k9-lb2-klima",
+              "title": "Treibhauseffekt und Klimawandel",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Treibhauseffekt",
+                "Klimawandel",
+                "Nachhaltigkeit"
+              ]
             }
           ]
         },
@@ -1684,6 +2123,19 @@
                 "Meiose",
                 "Allel"
               ]
+            },
+            {
+              "id": "bi-k10-lb1-humangenetik",
+              "title": "Humangenetik und Ethik",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Stammbaum",
+                "Erbkrankheit",
+                "Ethik"
+              ]
             }
           ]
         },
@@ -1740,6 +2192,32 @@
                 "Fossil",
                 "Homologie",
                 "DNA-Vergleich"
+              ]
+            },
+            {
+              "id": "bi-k10-lb2-evolutionstheorie",
+              "title": "Historische Evolutionstheorien",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Darwin",
+                "Lamarck",
+                "Selektion"
+              ]
+            },
+            {
+              "id": "bi-k10-lb2-progression",
+              "title": "Progression und Oberflächenvergrößerung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Progression",
+                "Homologie",
+                "Angepasstheit"
               ]
             }
           ]
@@ -1869,6 +2347,110 @@
                 "Gewebe",
                 "Differenzierung"
               ]
+            },
+            {
+              "id": "bi-gk11-lb1-osmose",
+              "title": "Diffusion, Osmose und Plasmolyse",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Osmose",
+                "Plasmolyse",
+                "Wasserpotenzial"
+              ]
+            },
+            {
+              "id": "bi-gk11-lb1-transport",
+              "title": "Passiver und aktiver Membrantransport",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Carrier",
+                "ATP",
+                "Endocytose"
+              ]
+            },
+            {
+              "id": "bi-gk11-lb1-wassertransport",
+              "title": "Wassertransport der Pflanze",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Transpiration",
+                "Xylem",
+                "Kohäsion"
+              ]
+            },
+            {
+              "id": "bi-gk11-lb1-mikroskop-praktikum",
+              "title": "Mikroskopisches Praktikum Zelle–Gewebe–Organ",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Mikroskop",
+                "Gewebe",
+                "Präparat"
+              ]
+            },
+            {
+              "id": "bi-gk11-lb1-genregulation",
+              "title": "Genregulation bei Eukaryoten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Promotor",
+                "Epigenetik",
+                "Transkriptionsfaktor"
+              ]
+            },
+            {
+              "id": "bi-gk11-lb1-replikation",
+              "title": "DNA-Replikation",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Semikonservativ",
+                "Okazaki",
+                "Polymerase"
+              ]
+            },
+            {
+              "id": "bi-gk11-lb1-proteinbiosynthese",
+              "title": "Proteinbiosynthese",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Transkription",
+                "Translation",
+                "Ribosom"
+              ]
+            },
+            {
+              "id": "bi-gk11-lb1-enzyme",
+              "title": "Enzyme – Spezifität und Hemmung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Enzym",
+                "Aktivierungsenergie",
+                "Hemmung"
+              ]
             }
           ]
         },
@@ -1955,6 +2537,45 @@
               "keywords": [
                 "Kohlenstoffkreislauf",
                 "Energiefluss"
+              ]
+            },
+            {
+              "id": "bi-gk11-lb3-faktoren",
+              "title": "Abio- und biotische Faktoren und Nische",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Nische",
+                "Toleranz",
+                "Konkurrenz"
+              ]
+            },
+            {
+              "id": "bi-gk11-lb3-schaedlinge",
+              "title": "Monokulturen, Schädlinge und Insektensterben",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Monokultur",
+                "Nützling",
+                "Resistenz"
+              ]
+            },
+            {
+              "id": "bi-gk11-lb3-naturschutz",
+              "title": "Naturschutz, Klima und Management",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Naturschutz",
+                "Treibhauseffekt",
+                "Renaturierung"
               ]
             }
           ]
@@ -2063,6 +2684,32 @@
                 "Gentechnik",
                 "Ethik"
               ]
+            },
+            {
+              "id": "bi-gk12-lb1-humangenetik",
+              "title": "Humangenetik und molekularbiologische Methoden",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Stammbaum",
+                "PCR",
+                "Sequenzierung"
+              ]
+            },
+            {
+              "id": "bi-gk12-lb1-gentherapie",
+              "title": "Gentherapie, Stammzellen und PID",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Gentherapie",
+                "Stammzellen",
+                "Ethik"
+              ]
             }
           ]
         },
@@ -2107,6 +2754,32 @@
                 "Krankheit",
                 "Signal"
               ]
+            },
+            {
+              "id": "bi-gk12-lb2-immun",
+              "title": "Immunbiologie – unspezifisch und spezifisch",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Antikörper",
+                "Impfung",
+                "Antigen"
+              ]
+            },
+            {
+              "id": "bi-gk12-lb2-neuro",
+              "title": "Neurophysiologie – Potenziale und Synapsen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Aktionspotenzial",
+                "Synapse",
+                "Transmitter"
+              ]
             }
           ]
         },
@@ -2149,6 +2822,45 @@
               "keywords": [
                 "Naturschutz",
                 "Hotspot"
+              ]
+            },
+            {
+              "id": "bi-gk12-lb3-verhalten",
+              "title": "Verhaltensursachen und adaptiver Wert",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Proximately",
+                "Ultimat",
+                "Fitness"
+              ]
+            },
+            {
+              "id": "bi-gk12-lb3-abgrenzung",
+              "title": "Abgrenzung nicht-naturwissenschaftlicher Auffassungen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Empirie",
+                "Falsifizierbar",
+                "Theorie"
+              ]
+            },
+            {
+              "id": "bi-gk12-lb3-molekular",
+              "title": "Molekulare Homologien und Stammbäume",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Sequenz",
+                "Phylogenie",
+                "Homologie"
               ]
             }
           ]
@@ -2268,6 +2980,84 @@
                 "Gewebe",
                 "Differenzierung"
               ]
+            },
+            {
+              "id": "bi-lk11-lb1-procyte",
+              "title": "Procyte und Eucyte",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Prokaryot",
+                "Eukaryot",
+                "Endosymbiose"
+              ]
+            },
+            {
+              "id": "bi-lk11-lb1-gewebe-zyklus",
+              "title": "Bildungsgewebe und Zellzyklus",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Meristem",
+                "Mitose",
+                "Checkpoint"
+              ]
+            },
+            {
+              "id": "bi-lk11-lb1-membran",
+              "title": "Biomembran detailliert",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Fluid-Mosaik",
+                "ER",
+                "Golgi"
+              ]
+            },
+            {
+              "id": "bi-lk11-lb1-transport",
+              "title": "Wasserpotenzial und Membrantransport",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Turgor",
+                "Plasmolyse",
+                "Endocytose"
+              ]
+            },
+            {
+              "id": "bi-lk11-lb1-genregulation",
+              "title": "Operon und eukaryotische Genregulation",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Operon",
+                "Spleißen",
+                "Epigenetik"
+              ]
+            },
+            {
+              "id": "bi-lk11-lb1-enzyme",
+              "title": "Enzymatik vertieft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Coenzym",
+                "Hemmung",
+                "Kinetik"
+              ]
             }
           ]
         },
@@ -2299,6 +3089,71 @@
                 "Chloroplast",
                 "Calvin-Zyklus"
               ]
+            },
+            {
+              "id": "bi-lk11-lb2-c3c4",
+              "title": "C3-, C4- und CAM-Pflanzen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "C4",
+                "Photorespiration",
+                "PEP-Carboxylase"
+              ]
+            },
+            {
+              "id": "bi-lk11-lb2-atmung",
+              "title": "Zellatmung vertieft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Glykolyse",
+                "Citratzyklus",
+                "Atmungskette"
+              ]
+            },
+            {
+              "id": "bi-lk11-lb2-chemosynthese",
+              "title": "Chemosynthese",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Chemoautotroph",
+                "Nitrifikation",
+                "Redox"
+              ]
+            },
+            {
+              "id": "bi-lk11-lb2-gaerung",
+              "title": "Gärung im Vergleich zur Atmung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Lactat",
+                "Ethanol",
+                "NAD+"
+              ]
+            },
+            {
+              "id": "bi-lk11-lb2-heterotroph",
+              "title": "Heterotrophe Assimilation und Verdauung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Verdauung",
+                "Resorption",
+                "Enzyme"
+              ]
             }
           ]
         },
@@ -2328,6 +3183,58 @@
               "keywords": [
                 "Population",
                 "Tragfähigkeit"
+              ]
+            },
+            {
+              "id": "bi-lk11-lb3-population-modelle",
+              "title": "Populationswachstum und Lotka-Volterra",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Logistisch",
+                "r-Stratege",
+                "K-Stratege"
+              ]
+            },
+            {
+              "id": "bi-lk11-lb3-kreislauf",
+              "title": "C- und N-Kreislauf",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Fixierung",
+                "Nitrifikation",
+                "Denitrifikation"
+              ]
+            },
+            {
+              "id": "bi-lk11-lb3-landwirtschaft",
+              "title": "Monokultur, Fußabdruck und Schädlinge",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Monokultur",
+                "Fußabdruck",
+                "IPS"
+              ]
+            },
+            {
+              "id": "bi-lk11-lb3-naturschutz",
+              "title": "Naturschutz, Klima und Renaturierung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Naturschutzgesetz",
+                "Renaturierung",
+                "Treibhauseffekt"
               ]
             }
           ]
@@ -2458,6 +3365,58 @@
                 "Gentechnik",
                 "Ethik"
               ]
+            },
+            {
+              "id": "bi-lk12-lb1-vererbung",
+              "title": "Kopplung, Blutgruppen und Rekombination",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kopplung",
+                "Crossing-over",
+                "Codominanz"
+              ]
+            },
+            {
+              "id": "bi-lk12-lb1-humangenetik",
+              "title": "Humangenetik-Techniken und Erbkrankheiten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Stammbaum",
+                "Karyogramm",
+                "PCR"
+              ]
+            },
+            {
+              "id": "bi-lk12-lb1-krebs",
+              "title": "Krebs – Onkogene und personalisierte Medizin",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Onkogen",
+                "Suppressorgen",
+                "Metastase"
+              ]
+            },
+            {
+              "id": "bi-lk12-lb1-gentechnik",
+              "title": "Gentechnik – Vektoren und Verfahren",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Vektor",
+                "Transformation",
+                "CRISPR"
+              ]
             }
           ]
         },
@@ -2499,6 +3458,32 @@
               "keywords": [
                 "Krankheit",
                 "Signal"
+              ]
+            },
+            {
+              "id": "bi-lk12-lb2-immun",
+              "title": "Immunbiologie vertieft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "HIV",
+                "Resistenz",
+                "Transplantation"
+              ]
+            },
+            {
+              "id": "bi-lk12-lb2-neuro",
+              "title": "Neurophysiologie vertieft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "EEG",
+                "Summation",
+                "Hypothalamus"
               ]
             }
           ]
@@ -2582,6 +3567,71 @@
               "keywords": [
                 "Naturschutz"
               ]
+            },
+            {
+              "id": "bi-lk12-lb4-gendrift",
+              "title": "Gendrift, Migration und Radiation",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Gendrift",
+                "Genfluss",
+                "Flaschenhals"
+              ]
+            },
+            {
+              "id": "bi-lk12-lb4-progression",
+              "title": "Progression und Spezialisierung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Homologie",
+                "Landgang",
+                "Differenzierung"
+              ]
+            },
+            {
+              "id": "bi-lk12-lb4-abgrenzung",
+              "title": "Sozialdarwinismus und Wissenschaftsabgrenzung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Sozialdarwinismus",
+                "Ethik",
+                "Rassismus"
+              ]
+            },
+            {
+              "id": "bi-lk12-lb4-phylogenie",
+              "title": "Molekulare Homologien und Stammbäume",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Clade",
+                "Phylogenie",
+                "Outgroup"
+              ]
+            },
+            {
+              "id": "bi-lk12-lb4-mensch",
+              "title": "Stammesgeschichte und kulturelle Evolution",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Bipedie",
+                "Hominini",
+                "Kultur"
+              ]
             }
           ]
         },
@@ -2624,6 +3674,19 @@
               "keywords": [
                 "Stoffkreislauf",
                 "Energiefluss"
+              ]
+            },
+            {
+              "id": "bi-lk12-lb5-stoffwechsel-vergleich",
+              "title": "Foto-/Chemosynthese, Atmung und Gärung vernetzen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Fotosynthese",
+                "Chemosynthese",
+                "Gärung"
               ]
             }
           ]
@@ -2693,5 +3756,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "f7d5ea2f"
+  "contentHash": "16b6417d"
 }

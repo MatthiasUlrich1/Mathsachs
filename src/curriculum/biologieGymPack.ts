@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.9.4',
-    changelog: `Lehrplan-Themenabgleich: K5 Arbeitsweisen; K6 Samenpflanzen (Fotosynthese/Familien/Bestimmung); K7 Viren; K8 Blutzucker-Regelkreis; K10 Evolutionsbelege. Neue Topics released:false. ${topics} Themen.`,
+    version: '1.9.7',
+    changelog: `Lehrplan-Teilaspekte komplettiert: K5–K10 + OS GK/LK (Membrantransport, Enzyme, Neuro/Immun, C3/C4, LK-Atmung u. a.). released:false. ${topics} Themen.`,
     official,
     extras: [],
   }

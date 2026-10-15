@@ -40,6 +40,7 @@ import {
 } from './taskHelpers'
 import { conversionTopic, FLAECHE, LAENGE } from './units'
 import type { Grade, Topic } from './types'
+import { MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE } from './mathLehrplanTeilaspekte'
 
 /**
  * Proper fraction that still needs shortening when shown as a diagram:
@@ -2058,13 +2059,16 @@ export const klasse6: Grade = {
         dezDiv,
         runden,
         sachaufgabeBruch,
+        ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math6"].filter((x) => x.areaId === "lb1").map((x) => x.topic),
       ],
     },
     {
       id: 'lb2',
       title: 'Zuordnungen in der Umwelt',
       ustd: 24,
-      topics: [proportional, antiproportional, haeufigkeit, sachaufgabeDreisatz],
+      topics: [proportional, antiproportional, haeufigkeit, sachaufgabeDreisatz,
+        ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math6"].filter((x) => x.areaId === "lb2").map((x) => x.topic),
+      ],
     },
     {
       id: 'lb3',
@@ -2078,13 +2082,16 @@ export const klasse6: Grade = {
         flaecheDreieck,
         kongruenzSatz,
         sachaufgabeGeometrie,
+        ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math6"].filter((x) => x.areaId === "lb3").map((x) => x.topic),
       ],
     },
     {
       id: 'lb4',
       title: 'Prismen',
       ustd: 12,
-      topics: [volumenQuader, oberflaecheQuader, volumenPrisma, flaecheKanteQuader, wuerfelNetz],
+      topics: [volumenQuader, oberflaecheQuader, volumenPrisma, flaecheKanteQuader, wuerfelNetz,
+        ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math6"].filter((x) => x.areaId === "lb4").map((x) => x.topic),
+      ],
     },
     {
       id: 'lb5',
