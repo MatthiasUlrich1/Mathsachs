@@ -10,6 +10,7 @@ import { math8GraphicReviews } from './graphicReviewTopics'
 import { k8Baumdiagramm, k8BinomischeFormel, k8ProduktregelAnzahl } from './mathUpperDense'
 import type { Grade, Topic } from './types'
 import { MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE } from './mathLehrplanTeilaspekte'
+import { MATH_DICHTE_BY_GRADE } from './mathDichteFill'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
 const nonZero = (rng: Rng, min: number, max: number): number => {
@@ -828,6 +829,7 @@ export const klasse8: Grade = {
         gleichungBeidseitig,
         ausmultiplizieren,
         k8BinomischeFormel,
+        ...(MATH_DICHTE_BY_GRADE["math8"] ?? []).filter((x) => x.areaId === "lb1").map((x) => x.topic),
       ],
     },
     {
@@ -836,19 +838,32 @@ export const klasse8: Grade = {
       ustd: 24,
       topics: [laplaceBruch, laplaceProzent, gegenwahrscheinlichkeit, k8Baumdiagramm, k8ProduktregelAnzahl,
         ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math8"].filter((x) => x.areaId === "lb2").map((x) => x.topic),
+        ...(MATH_DICHTE_BY_GRADE["math8"] ?? []).filter((x) => x.areaId === "lb2").map((x) => x.topic),
       ],
     },
     {
       id: 'lb3',
       title: 'Funktionen und lineare Gleichungssysteme',
       ustd: 32,
-      topics: [funktionswert, steigung, achsenabschnitt, lgs, ...math8GraphicReviews],
+      topics: [
+        funktionswert,
+        steigung,
+        achsenabschnitt,
+        lgs,
+        ...math8GraphicReviews,
+        ...(MATH_DICHTE_BY_GRADE["math8"] ?? []).filter((x) => x.areaId === "lb3").map((x) => x.topic),
+      ],
     },
     {
       id: 'lb4',
       title: 'Ähnlichkeit',
       ustd: 20,
-      topics: [streckfaktor, strahlensatz, aehnlicheSeite],
+      topics: [
+        streckfaktor,
+        strahlensatz,
+        aehnlicheSeite,
+        ...(MATH_DICHTE_BY_GRADE["math8"] ?? []).filter((x) => x.areaId === "lb4").map((x) => x.topic),
+      ],
     },
     {
       id: 'lb5',

@@ -25,6 +25,7 @@ import {
 } from './taskHelpers'
 import type { Grade, Topic } from './types'
 import { MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE } from './mathLehrplanTeilaspekte'
+import { MATH_DICHTE_BY_GRADE } from './mathDichteFill'
 import { opKey, solveAddPath, suggestOps } from '../lib/equationSteps'
 
 /** Format a signed integer, wrapping negatives in parentheses with a real minus. */
@@ -1027,6 +1028,7 @@ export const klasse7: Grade = {
       ustd: 24,
       topics: [nebenwinkel, scheitelwinkel, winkelsummeVieleck, basiswinkel, mittelsenkrechteSchritte,
         ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math7"].filter((x) => x.areaId === "lb1").map((x) => x.topic),
+        ...(MATH_DICHTE_BY_GRADE["math7"] ?? []).filter((x) => x.areaId === "lb1").map((x) => x.topic),
       ],
     },
     {
@@ -1043,13 +1045,21 @@ export const klasse7: Grade = {
         gleichungAdd,
         gleichungMul,
         ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math7"].filter((x) => x.areaId === "lb2").map((x) => x.topic),
+        ...(MATH_DICHTE_BY_GRADE["math7"] ?? []).filter((x) => x.areaId === "lb2").map((x) => x.topic),
       ],
     },
     {
       id: 'lb3',
       title: 'Darstellen und Berechnen von Prismen und Pyramiden',
       ustd: 20,
-      topics: [volumenPrisma, mantelPrisma, volumenPyramide, oberflaechePrisma, oberflaechePyramide],
+      topics: [
+        volumenPrisma,
+        mantelPrisma,
+        volumenPyramide,
+        oberflaechePrisma,
+        oberflaechePyramide,
+        ...(MATH_DICHTE_BY_GRADE["math7"] ?? []).filter((x) => x.areaId === "lb3").map((x) => x.topic),
+      ],
     },
     {
       id: 'lb4',

@@ -4,9 +4,9 @@
   "region": "Sachsen",
   "school": "Oberschule",
   "subject": "Mathematik",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "changelog": "Klassen 5–10 (Realschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung.",
-  "contentHash": "88b05efc",
+  "contentHash": "f8852c25",
   "official": [
     {
       "id": "os-rs-klasse-5",
@@ -162,6 +162,24 @@
                 "Kommutativgesetz",
                 "Vorrangregeln"
               ]
+            },
+            {
+              "id": "os-k5-lb1-d01",
+              "title": "Vergleichen und Ordnen vertiefen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-k5-lb1-d02",
+              "title": "Rechenvorteile vertiefen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dichte"
+              ]
             }
           ]
         },
@@ -297,6 +315,15 @@
                 "min",
                 "h",
                 "s"
+              ]
+            },
+            {
+              "id": "os-k5-lb2-d01",
+              "title": "Bruch-Dezimal-Prozent vernetzen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dichte"
               ]
             }
           ]
@@ -724,6 +751,51 @@
               "title": "Darstellung in Wort, Tabelle, Koordinatensystem und Gleichung",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-k6-lb2-d01",
+              "title": "Zuordnungen Vertiefung 1",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-k6-lb2-d02",
+              "title": "Zuordnungen Vertiefung 2",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-k6-lb2-d03",
+              "title": "Zuordnungen Vertiefung 3",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-k6-lb2-d04",
+              "title": "Zuordnungen Vertiefung 4",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-k6-lb2-d05",
+              "title": "Zuordnungen Vertiefung 5",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dichte"
+              ]
             }
           ]
         },
@@ -808,6 +880,24 @@
               "title": "Winkelsumme im Viereck",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-k6-lb3-d01",
+              "title": "Ebene Geometrie Vertiefung 1",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-k6-lb3-d02",
+              "title": "Ebene Geometrie Vertiefung 2",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dichte"
+              ]
             }
           ]
         },
@@ -848,6 +938,42 @@
               "keywords": [
                 "Prisma"
               ]
+            },
+            {
+              "id": "os-k6-lb4-d01",
+              "title": "Körper Vertiefung 1",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-k6-lb4-d02",
+              "title": "Körper Vertiefung 2",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-k6-lb4-d03",
+              "title": "Körper Vertiefung 3",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-k6-lb4-d04",
+              "title": "Körper Vertiefung 4",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dichte"
+              ]
             }
           ]
         },
@@ -886,6 +1012,24 @@
               "title": "Präsentation zu geometrischen Figuren und Körpern in der Umwelt",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-k6-lb5-d01",
+              "title": "Alltag Mathematik Vertiefung 1",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-k6-lb5-d02",
+              "title": "Alltag Mathematik Vertiefung 2",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dichte"
+              ]
             }
           ]
         },
@@ -1042,6 +1186,66 @@
               "keywords": [
                 "Zinseszins"
               ]
+            },
+            {
+              "id": "os-rs-k7-lb1-d01",
+              "title": "Lehrplan-Vertiefung LB1 (1)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb1",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb1-d02",
+              "title": "Lehrplan-Vertiefung LB1 (2)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb1",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb1-d03",
+              "title": "Lehrplan-Vertiefung LB1 (3)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb1",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb1-d04",
+              "title": "Lehrplan-Vertiefung LB1 (4)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb1",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb1-d05",
+              "title": "Lehrplan-Vertiefung LB1 (5)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb1",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb1-d06",
+              "title": "Lehrplan-Vertiefung LB1 (6)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb1",
+                "Dichte"
+              ]
             }
           ]
         },
@@ -1082,6 +1286,16 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Wahrscheinlichkeit"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb2-d01",
+              "title": "Lehrplan-Vertiefung LB2 (1)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb2",
+                "Dichte"
               ]
             }
           ]
@@ -1175,6 +1389,16 @@
               "title": "Punktkoordinaten in vier Quadranten",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-rs-k7-lb3-d01",
+              "title": "Lehrplan-Vertiefung LB3 (1)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb3",
+                "Dichte"
+              ]
             }
           ]
         },
@@ -1265,6 +1489,26 @@
               "title": "Masse unter Einbeziehung der Dichte",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-rs-k7-lb4-d01",
+              "title": "Lehrplan-Vertiefung LB4 (1)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb4",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k7-lb4-d02",
+              "title": "Lehrplan-Vertiefung LB4 (2)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb4",
+                "Dichte"
+              ]
             }
           ]
         },
@@ -1495,6 +1739,36 @@
                 "LGS",
                 "Gleichungssystem"
               ]
+            },
+            {
+              "id": "os-rs-k8-lb2-d01",
+              "title": "Lehrplan-Vertiefung LB2 (1)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb2",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k8-lb2-d02",
+              "title": "Lehrplan-Vertiefung LB2 (2)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb2",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k8-lb2-d03",
+              "title": "Lehrplan-Vertiefung LB2 (3)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb2",
+                "Dichte"
+              ]
             }
           ]
         },
@@ -1552,6 +1826,26 @@
               "keywords": [
                 "Zylinder"
               ]
+            },
+            {
+              "id": "os-rs-k8-lb3-d01",
+              "title": "Lehrplan-Vertiefung LB3 (1)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb3",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k8-lb3-d02",
+              "title": "Lehrplan-Vertiefung LB3 (2)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb3",
+                "Dichte"
+              ]
             }
           ]
         },
@@ -1593,6 +1887,26 @@
               "title": "Kongruenz als Spezialfall der Ähnlichkeit",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-rs-k8-lb4-d01",
+              "title": "Lehrplan-Vertiefung LB4 (1)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb4",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k8-lb4-d02",
+              "title": "Lehrplan-Vertiefung LB4 (2)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb4",
+                "Dichte"
+              ]
             }
           ]
         },
@@ -1640,6 +1954,16 @@
                 "unabhängig",
                 "abhängig"
               ]
+            },
+            {
+              "id": "os-rs-k8-lb5-d01",
+              "title": "Lehrplan-Vertiefung LB5 (1)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb5",
+                "Dichte"
+              ]
             }
           ]
         },
@@ -1680,6 +2004,16 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Prozent"
+              ]
+            },
+            {
+              "id": "os-rs-k8-lb6-d01",
+              "title": "Lehrplan-Vertiefung LB6 (1)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb6",
+                "Dichte"
               ]
             }
           ]
@@ -1825,6 +2159,76 @@
               "keywords": [
                 "Dachstuhl"
               ]
+            },
+            {
+              "id": "os-rs-k9-lb1-d01",
+              "title": "Lehrplan-Vertiefung LB1 (1)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb1",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb1-d02",
+              "title": "Lehrplan-Vertiefung LB1 (2)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb1",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb1-d03",
+              "title": "Lehrplan-Vertiefung LB1 (3)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb1",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb1-d04",
+              "title": "Lehrplan-Vertiefung LB1 (4)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb1",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb1-d05",
+              "title": "Lehrplan-Vertiefung LB1 (5)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb1",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb1-d06",
+              "title": "Lehrplan-Vertiefung LB1 (6)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb1",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb1-d07",
+              "title": "Lehrplan-Vertiefung LB1 (7)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb1",
+                "Dichte"
+              ]
             }
           ]
         },
@@ -1877,6 +2281,66 @@
               "title": "Zusammengesetzte Körper",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-rs-k9-lb2-d01",
+              "title": "Lehrplan-Vertiefung LB2 (1)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb2",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb2-d02",
+              "title": "Lehrplan-Vertiefung LB2 (2)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb2",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb2-d03",
+              "title": "Lehrplan-Vertiefung LB2 (3)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb2",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb2-d04",
+              "title": "Lehrplan-Vertiefung LB2 (4)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb2",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb2-d05",
+              "title": "Lehrplan-Vertiefung LB2 (5)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb2",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb2-d06",
+              "title": "Lehrplan-Vertiefung LB2 (6)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb2",
+                "Dichte"
+              ]
             }
           ]
         },
@@ -1948,6 +2412,46 @@
                 "Monotonie",
                 "Scheitel"
               ]
+            },
+            {
+              "id": "os-rs-k9-lb3-d01",
+              "title": "Lehrplan-Vertiefung LB3 (1)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb3",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb3-d02",
+              "title": "Lehrplan-Vertiefung LB3 (2)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb3",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb3-d03",
+              "title": "Lehrplan-Vertiefung LB3 (3)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb3",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb3-d04",
+              "title": "Lehrplan-Vertiefung LB3 (4)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb3",
+                "Dichte"
+              ]
             }
           ]
         },
@@ -1996,6 +2500,26 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Spannweite"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb4-d01",
+              "title": "Lehrplan-Vertiefung LB4 (1)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb4",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k9-lb4-d02",
+              "title": "Lehrplan-Vertiefung LB4 (2)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb4",
+                "Dichte"
               ]
             }
           ]
@@ -2139,6 +2663,36 @@
               "keywords": [
                 "Fläche"
               ]
+            },
+            {
+              "id": "os-rs-k10-lb1-d01",
+              "title": "Lehrplan-Vertiefung LB1 (1)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb1",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lb1-d02",
+              "title": "Lehrplan-Vertiefung LB1 (2)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb1",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lb1-d03",
+              "title": "Lehrplan-Vertiefung LB1 (3)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb1",
+                "Dichte"
+              ]
             }
           ]
         },
@@ -2204,6 +2758,16 @@
               "keywords": [
                 "Amplitude",
                 "Periode"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lb2-d01",
+              "title": "Lehrplan-Vertiefung LB2 (1)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb2",
+                "Dichte"
               ]
             }
           ]
@@ -2308,6 +2872,66 @@
                 "Brutto",
                 "Netto",
                 "Lohnsteuer"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lb4-d01",
+              "title": "Lehrplan-Vertiefung LB4 (1)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb4",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lb4-d02",
+              "title": "Lehrplan-Vertiefung LB4 (2)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb4",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lb4-d03",
+              "title": "Lehrplan-Vertiefung LB4 (3)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb4",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lb4-d04",
+              "title": "Lehrplan-Vertiefung LB4 (4)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb4",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lb4-d05",
+              "title": "Lehrplan-Vertiefung LB4 (5)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb4",
+                "Dichte"
+              ]
+            },
+            {
+              "id": "os-rs-k10-lb4-d06",
+              "title": "Lehrplan-Vertiefung LB4 (6)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lb4",
+                "Dichte"
               ]
             }
           ]

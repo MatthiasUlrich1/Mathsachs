@@ -42,6 +42,11 @@ tasksPerRound: opts?.tasksPerRound ?? DEFAULT_TASKS_PER_ROUND
    kein Lehrplan-Meta/Philosophie in Prompt/Fachwissen, themengebunden ohne
    LB-interne Dopplung, Aufbau-Themen mit lizenzklarer Bild-Zuordnung wo sinnvoll,
    tolerante Lücken, TF→MC statt kürzen).
+   **Mathe:** keine Zuordnung/Lückentexte — nur Rechnen/MC/Gleichungen/Grafik mit Zahlen
+   (`mathBankGenerate` / Rechen-Generatoren).
+   **Physik:** Anwendung/Rechnung/Grafik statt reiner Begriffs-MC; Feldlinien grafisch.
+   **Alle Fächer:** Abwechslung der Interaktionen; keine Slogan-/Stichwort-TF
+   („Sicherheit: Wasser und Strom.“); siehe `curriculum-aufgaben-qualitaet.mdc`.
 6. **Fachwissen aufgabenbezogen:** jeder Task-`fachwissen`-Text konkret zur
    gestellten Frage/Antwort — kein generisches/leeres/Meta-Fachwissen
    (siehe `curriculum-aufgaben-qualitaet.mdc`).

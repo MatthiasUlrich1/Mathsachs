@@ -1,0 +1,233 @@
+/**
+ * Pflicht-Hebelgesetz K7 LB1 — themenreine Bank (kein Cross-Topic-Thin-Fill).
+ * released:false über Pack-Default.
+ */
+import { bankGenerate, type BioBank } from './biologieBank'
+import type { Topic } from './types'
+
+const fw = (s: string) => s
+
+export const k7HebelBank: BioBank = {
+  quelle: "Wikipedia: Hebelgesetz",
+  url: "https://de.wikipedia.org/wiki/Hebelgesetz",
+  conceptPrefix: "ph:hebel",
+  facts: [
+    {
+      concept: "gesetz",
+      prompt: "Wie lautet das Hebelgesetz im Gleichgewicht?",
+      answer: "F₁ · l₁ = F₂ · l₂",
+      wrong: [
+        "F₁ = F₂ immer",
+        "l₁ + l₂ = F₁ + F₂",
+        "F₁ / l₁ = F₂ / l₂ immer",
+      ],
+      explanation: "Produkt aus Kraft und Kraftarm ist auf beiden Seiten gleich.",
+      wissen: fw("Im Gleichgewicht gilt: Kraft mal Kraftarm gleich Last mal Lastarm — F₁·l₁ = F₂·l₂."),
+      gap: "Hebelgesetz: F₁ · l₁ = ___.",
+      gapAccepted: ["F2 · l2", "F₂ · l₂", "F2*l2"],
+    },
+    {
+      concept: "drehpunkt",
+      prompt: "Was ist der Drehpunkt eines Hebels?",
+      answer: "Der Punkt, um den sich der Hebel dreht (Drehachse)",
+      wrong: [
+        "Der Schwerpunkt der Erde",
+        "Nur die Einheit Newton",
+        "Nur die Federkonstante",
+      ],
+      explanation: "Am Drehpunkt greift die Achse/Lagerung an.",
+      wissen: fw("Der Drehpunkt (Fulcrum) ist die Drehachse des Hebels."),
+      gap: "Die Drehachse heißt ___.",
+      gapAccepted: ["Drehpunkt", "Fulcrum"],
+    },
+    {
+      concept: "kraftarm",
+      prompt: "Was ist der Kraftarm?",
+      answer: "Abstand zwischen Drehpunkt und Angriffspunkt der Kraft",
+      wrong: [
+        "Nur die Masse in kg",
+        "Nur die Temperatur",
+        "Nur der elektrische Widerstand",
+      ],
+      explanation: "Länger Kraftarm → bei gleicher Last oft kleinere Kraft nötig.",
+      wissen: fw("Kraftarm l ist der senkrechte Abstand Drehpunkt–Kraftlinie."),
+      gap: "Abstand Drehpunkt–Kraft heißt ___.",
+      gapAccepted: ["Kraftarm"],
+    },
+    {
+      concept: "lastarm",
+      prompt: "Was ist der Lastarm?",
+      answer: "Abstand zwischen Drehpunkt und Angriffspunkt der Last",
+      wrong: [
+        "Nur die Lichtgeschwindigkeit",
+        "Nur die Spannung in Volt",
+        "Nur der pH-Wert",
+      ],
+      explanation: "Lastarm und Kraftarm bestimmen das Kräfteverhältnis.",
+      wissen: fw("Lastarm: Abstand Drehpunkt zur Last."),
+      gap: "Abstand Drehpunkt–Last heißt ___.",
+      gapAccepted: ["Lastarm"],
+    },
+    {
+      concept: "sparen",
+      prompt: "Wann sparst du Kraft am Hebel?",
+      answer: "Wenn der Kraftarm länger ist als der Lastarm",
+      wrong: [
+        "Wenn der Kraftarm kürzer ist",
+        "Wenn es keinen Drehpunkt gibt",
+        "Wenn die Lastarme negativ sind",
+      ],
+      explanation: "Goldene Regel: Was an Kraft gespart wird, kostet Weg.",
+      wissen: fw("Längerer Kraftarm → kleinere Kraft bei gleichem Drehmoment."),
+      gap: "Kraft sparen: ___ Kraftarm.",
+      gapAccepted: ["länger", "langer", "längeren"],
+    },
+    {
+      concept: "schere",
+      prompt: "Warum greift man bei einer Schere weit vom Drehpunkt?",
+      answer: "Längerer Kraftarm verringert die nötige Handkraft",
+      wrong: [
+        "Weil die Klinge dann magnetisch wird",
+        "Weil Ohm dann gilt",
+        "Weil Reibung verschwindet",
+      ],
+      explanation: "Schere und Zange sind Hebel im Alltag.",
+      wissen: fw("Weiter vom Gelenk greifen → größerer Kraftarm."),
+      gap: "Schere: greifen ___ vom Drehpunkt.",
+      gapAccepted: ["weit", "weiter"],
+    },
+    {
+      concept: "wippe",
+      prompt: "Zwei Kinder auf einer Wippe: Wann ist Gleichgewicht möglich?",
+      answer: "Wenn die Drehmomente F·l auf beiden Seiten gleich sind",
+      wrong: [
+        "Nur wenn beide gleich schwer und gleich weit sitzen müssen immer",
+        "Nur bei Vollmond",
+        "Nur ohne Drehpunkt",
+      ],
+      explanation: "Schwereres Kind sitzt näher am Drehpunkt.",
+      wissen: fw("Gleichgewicht: F₁·l₁ = F₂·l₂ — Masse und Abstand kombinieren."),
+      gap: "Wippe im Gleichgewicht: gleiche ___.",
+      gapAccepted: ["Drehmomente", "Momente", "F·l"],
+    },
+    {
+      concept: "sport",
+      prompt: "Beispiel Hebel im Sport?",
+      answer: "Springen/Werfen/Rudern nutzen Hebelwirkungen am Körper",
+      wrong: [
+        "Nur Fotosynthese",
+        "Nur Stromkreise",
+        "Nur Kernspaltung",
+      ],
+      explanation: "Arme, Beine, Sportgeräte wirken oft als Hebel.",
+      wissen: fw("Im Sport verstärken Hebelkräfte Bewegungen und Kräfte."),
+      gap: "Im Sport wirken Körperteile oft als ___.",
+      gapAccepted: ["Hebel"],
+    },
+    {
+      concept: "technik",
+      prompt: "Beispiel Hebel in der Technik?",
+      answer: "Brechstange, Nussknacker, Wagenheber, Kranausleger",
+      wrong: [
+        "Nur LED ohne Hebel",
+        "Nur Transformator",
+        "Nur Prisma",
+      ],
+      explanation: "Viele Werkzeuge sind Kraftwandler mit Drehpunkt.",
+      wissen: fw("Technik: Hebel wandeln Kraft und Weg um."),
+      gap: "Brechstange ist ein ___.",
+      gapAccepted: ["Hebel"],
+    },
+    {
+      concept: "einheit",
+      prompt: "In welcher Einheit misst man die Kräfte im Hebelgesetz?",
+      answer: "Newton (N)",
+      wrong: [
+        "Ohm",
+        "Celsius",
+        "Liter",
+      ],
+      explanation: "Kräfte in N, Arme in m — Produkt N·m (Drehmoment).",
+      wissen: fw("Kräfte werden in Newton angegeben."),
+      gap: "Kraft-Einheit: ___.",
+      gapAccepted: ["Newton", "N"],
+    },
+    {
+      concept: "rechnen",
+      prompt: "F₁ = 200 N, l₁ = 0,5 m, l₂ = 2 m. F₂ im Gleichgewicht?",
+      answer: "50 N",
+      wrong: [
+        "400 N",
+        "200 N",
+        "0 N",
+      ],
+      explanation: "F₂ = F₁·l₁/l₂ = 200·0,5/2 = 50 N.",
+      wissen: fw("Aus F₁·l₁ = F₂·l₂ folgt F₂ = F₁·l₁/l₂."),
+      gap: "F₂ = ___ N.",
+      gapAccepted: ["50"],
+    },
+    {
+      concept: "weg",
+      prompt: "Was kostet das Kraftsparen am Hebel typischerweise?",
+      answer: "Einen längeren Weg der Kraft",
+      wrong: [
+        "Weniger Arbeit ohne Ausnahme immer",
+        "Höhere Masse der Last",
+        "Wegfall der Gravitation",
+      ],
+      explanation: "Arbeit ≈ Kraft·Weg — ideal bleibt Arbeit gleich.",
+      wissen: fw("Längerer Kraftweg bei kleinerer Kraft (idealer Hebel)."),
+      gap: "Kraftsparen kostet ___.",
+      gapAccepted: ["Weg", "längeren Weg"],
+    },
+  ],
+  pairs: [
+    { concept: "p:gesetz", term: "Hebelgesetz", meaning: "F₁·l₁ = F₂·l₂ im Gleichgewicht", wissen: "Gleichgewicht der Drehmomente am Hebel." },
+    { concept: "p:drehpunkt", term: "Drehpunkt", meaning: "Drehachse des Hebels", wissen: "Auch Fulcrum genannt — Lagerung des Hebels." },
+    { concept: "p:kraftarm", term: "Kraftarm", meaning: "Abstand Drehpunkt–Kraft", wissen: "Längerer Kraftarm verringert oft die nötige Kraft." },
+    { concept: "p:lastarm", term: "Lastarm", meaning: "Abstand Drehpunkt–Last", wissen: "Zusammen mit der Last: Drehmoment der Lastseite." },
+    { concept: "p:drehmoment", term: "Drehmoment", meaning: "Kraft · Kraftarm", wissen: "Maß für die Drehwirkung einer Kraft am Hebel." },
+    { concept: "p:kraftwandler", term: "Kraftwandler", meaning: "Ändert Kraftgröße/Richtung", wissen: "Der Hebel ist ein klassischer Kraftwandler." },
+    { concept: "p:gleichgewicht", term: "Gleichgewicht", meaning: "Drehmomente links = rechts", wissen: "Keine resultierende Drehung um den Drehpunkt." },
+    { concept: "p:schere", term: "Schere", meaning: "Doppelhebel mit Gelenk", wissen: "Handkraft wirkt über Kraftarme auf die Schneiden." },
+    { concept: "p:brechstange", term: "Brechstange", meaning: "Langer Kraftarm, kurze Last", wissen: "Typisches Kraftsparen mit langem Hebelarm." },
+    { concept: "p:wippe", term: "Wippe", meaning: "Zweiseitiger Hebel", wissen: "Gleichgewicht über F·l auf beiden Seiten." },
+    { concept: "p:goldene", term: "Goldene Regel", meaning: "Was an Kraft gespart, kostet Weg", wissen: "Idealer Hebel: Arbeit bleibt näherungsweise gleich." },
+    { concept: "p:arm", term: "Hebelarm", meaning: "Wirksamer Abstand zum Drehpunkt", wissen: "Senkrecht zur Wirkungslinie der Kraft gemessen." },
+  ],
+  trueFalse: [
+    {
+      concept: "tf0",
+      statement: "Im Gleichgewicht gilt am Hebel F₁ · l₁ = F₂ · l₂.",
+      correct: true,
+      explanation: "Hebelgesetz.",
+      wissen: fw("Drehmomente links und rechts sind gleich — Bedingung für Gleichgewicht."),
+    },
+    {
+      concept: "tf1",
+      statement: "Ein längerer Kraftarm erfordert bei gleicher Last immer eine größere Kraft.",
+      correct: false,
+      explanation: "Längerer Kraftarm → kleinere Kraft.",
+      wissen: fw("Bei konstantem Drehmoment F·l sinkt F, wenn l wächst."),
+    },
+    {
+      concept: "tf2",
+      statement: "Schere und Zange nutzen Hebelwirkungen.",
+      correct: true,
+      explanation: "Alltagshebel mit Drehpunkt am Gelenk.",
+      wissen: fw("Werkzeuge mit Gelenk sind Kraftwandler nach dem Hebelprinzip."),
+    },
+    {
+      concept: "tf3",
+      statement: "Am Hebel kann man Kraft und Weg gleichzeitig unbegrenzt sparen.",
+      correct: false,
+      explanation: "Goldene Regel: Kraftsparen kostet Weg.",
+      wissen: fw("Idealer Hebel: kleinere Kraft bedeutet längeren Kraftweg."),
+    },
+  ],
+}
+
+export const PHYSIK_HEBEL_GENERATORS: Record<string, Topic['generate']> = {
+  'ph-k7-lb1-hebel': bankGenerate(k7HebelBank),
+  'ph-k7-lbw-hebel': bankGenerate(k7HebelBank),
+}

@@ -12,6 +12,7 @@ import { ST_GENERATOR_MAP } from './gymSachsenAnhaltPack'
 import { withMathGymThinFill } from './mathGymThinFill'
 import { withMathOsThinFill } from './mathOsThinFill'
 import { OS_ST_LEHRPLAN_TEILASPEKTE_GENERATORS } from './osStLehrplanTeilaspekte'
+import { OS_DICHTE_FILL_GENERATORS } from './osDichteFill'
 import { SKS_GENERATOR_MAP } from './sekundarschuleSachsenAnhaltPack'
 import {
   choicePickTask,
@@ -306,6 +307,7 @@ const osPrismNetz: Topic['generate'] = (rng: Rng) => {
  */
 export const OS_CUSTOM_GENERATORS: Record<string, Topic['generate']> = {
   ...OS_ST_LEHRPLAN_TEILASPEKTE_GENERATORS,
+  ...OS_DICHTE_FILL_GENERATORS,
   // Alias: RS-Tarif nutzt dieselbe Bank wie HS-Tarif
   'os-rs-k8-lb2-tarif': OS_ST_LEHRPLAN_TEILASPEKTE_GENERATORS['os-hs-k9-lb3-tarif']!,
   /** Klasse 5: Koordinaten nur im 1. Quadranten (lesen + tippen + setzen). */

@@ -33,6 +33,7 @@ import {
 } from './mathUpperDense'
 import type { Grade, Topic } from './types'
 import { MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE } from './mathLehrplanTeilaspekte'
+import { MATH_DICHTE_BY_GRADE } from './mathDichteFill'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
 const nonZero = (rng: Rng, min: number, max: number): number => {
@@ -426,6 +427,7 @@ export const klasse11_12: Grade = {
         k1112AbleitungExp,
         k1112Differenzenquotient,
         ...math1112GraphicReviews.filter((t) => !t.id.includes('integral')),
+        ...(MATH_DICHTE_BY_GRADE["math11_12"] ?? []).filter((x) => x.areaId === "lb1").map((x) => x.topic),
       ],
     },
     {
@@ -438,13 +440,26 @@ export const klasse11_12: Grade = {
       id: 'lb3',
       title: 'Vektoren, Geraden und Ebenen',
       ustd: 32,
-      topics: [skalarprodukt, betragVektor, k1112VektorAdd, k1112GeradePunkt, k1112LageGeraden],
+      topics: [
+        skalarprodukt,
+        betragVektor,
+        k1112VektorAdd,
+        k1112GeradePunkt,
+        k1112LageGeraden,
+        ...(MATH_DICHTE_BY_GRADE["math11_12"] ?? []).filter((x) => x.areaId === "lb3").map((x) => x.topic),
+      ],
     },
     {
       id: 'lb4',
       title: 'Binomialverteilte Zufallsgrößen',
       ustd: 18,
-      topics: [binomialverteilung, erwartungswertBinom, k1112BinomKumuliert, k1112BinomSigma],
+      topics: [
+        binomialverteilung,
+        erwartungswertBinom,
+        k1112BinomKumuliert,
+        k1112BinomSigma,
+        ...(MATH_DICHTE_BY_GRADE["math11_12"] ?? []).filter((x) => x.areaId === "lb4").map((x) => x.topic),
+      ],
     },
     {
       id: 'lb5',
@@ -455,6 +470,7 @@ export const klasse11_12: Grade = {
         k1112Stammfunktion,
         k1112FlaecheIntegral,
         ...math1112GraphicReviews.filter((t) => t.id.includes('integral')),
+        ...(MATH_DICHTE_BY_GRADE["math11_12"] ?? []).filter((x) => x.areaId === "lb5").map((x) => x.topic),
       ],
     },
     {
@@ -463,19 +479,30 @@ export const klasse11_12: Grade = {
       ustd: 12,
       topics: [k1112Stichprobenmittel, k1112Hypothesentest, k1112KonfidenzIdee,
         ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math11_12"].filter((x) => x.areaId === "lb6").map((x) => x.topic),
+        ...(MATH_DICHTE_BY_GRADE["math11_12"] ?? []).filter((x) => x.areaId === "lb6").map((x) => x.topic),
       ],
     },
     {
       id: 'lb7',
       title: 'Abstände und Winkel',
       ustd: 24,
-      topics: [k1112Orthogonal, k1112WinkelVektoren, k1112AbstandPunktGerade],
+      topics: [
+        k1112Orthogonal,
+        k1112WinkelVektoren,
+        k1112AbstandPunktGerade,
+        ...(MATH_DICHTE_BY_GRADE["math11_12"] ?? []).filter((x) => x.areaId === "lb7").map((x) => x.topic),
+      ],
     },
     {
       id: 'lb8',
       title: 'Weitere Anwendungen',
       ustd: 20,
-      topics: [k1112ExtremwertAnwendung, k1112SpiegelungEbene, k1112VolumenOptimierung],
+      topics: [
+        k1112ExtremwertAnwendung,
+        k1112SpiegelungEbene,
+        k1112VolumenOptimierung,
+        ...(MATH_DICHTE_BY_GRADE["math11_12"] ?? []).filter((x) => x.areaId === "lb8").map((x) => x.topic),
+      ],
     },
   ],
 }

@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Physik",
-  "version": "2.5.38",
-  "changelog": "Lehrplan-Teilaspekte 523: FEHLT-Topics K6–K10 + GK11 EM-Felder-LB5/Wahl + GK12 Unschärfe; dense Banks ≥10. released:false.",
+  "version": "2.5.42",
+  "changelog": "Thin-Fill nie über Hand-/Gap-Banks (Cross-Topic-Stop alle Klassen); K7 Hebel+Flaschenzug Qualitätsbanken. released:false.",
   "official": [
     {
       "id": "physik-klasse-6",
@@ -713,6 +713,18 @@
               "keywords": [
                 "Feder",
                 "Hooke"
+              ]
+            },
+            {
+              "id": "ph-k7-lb1-hebel",
+              "title": "Hebelgesetz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Hebel",
+                "Hebelgesetz"
               ]
             },
             {
@@ -3292,6 +3304,30 @@
               "keywords": [
                 "Klassik"
               ]
+            },
+            {
+              "id": "ph-j12gk-lb3-debroglie",
+              "title": "de-Broglie-Wellenlänge",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "de Broglie",
+                "Materiewelle"
+              ]
+            },
+            {
+              "id": "ph-j12gk-lb3-compton",
+              "title": "Compton-Effekt (Einblick)",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Compton",
+                "Photon"
+              ]
             }
           ]
         },
@@ -3564,6 +3600,42 @@
               "keywords": [
                 "Drehimpuls"
               ]
+            },
+            {
+              "id": "ph-j11lk-lb1-schwerpunkt",
+              "title": "Schwerpunktsatz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Schwerpunkt",
+                "Impuls"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb1-arbeit-energie",
+              "title": "Arbeit-Energie-Satz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Arbeit",
+                "Energie"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb1-dreh-erhaltung",
+              "title": "Drehimpulserhaltung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Drehimpuls",
+                "Erhaltung"
+              ]
             }
           ]
         },
@@ -3746,6 +3818,42 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Modell"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb3p-foto",
+              "title": "Bewegung fotografisch auswerten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Stroboskop",
+                "Messung"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb3p-kraftmesser",
+              "title": "Kraftmesser und Federkonstante",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Feder",
+                "Hooke"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb3p-luftreibung",
+              "title": "Luftreibung im Fallversuch",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Reibung",
+                "Grenzgeschwindigkeit"
               ]
             }
           ]
@@ -3996,6 +4104,18 @@
               "keywords": [
                 "Potential"
               ]
+            },
+            {
+              "id": "ph-j11lk-lb7-platten",
+              "title": "Homogenes Feld am Plattenkondensator",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kondensator",
+                "E-Feld"
+              ]
             }
           ]
         },
@@ -4195,6 +4315,30 @@
                 "Elektromagnetisches Feld",
                 "Induktion"
               ]
+            },
+            {
+              "id": "ph-j11lk-lb10-induktionsspannung",
+              "title": "Induktionsspannung berechnen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Induktion",
+                "Faraday"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb10-wirbelstrom",
+              "title": "Wirbelströme und Anwendungen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Wirbelstrom",
+                "Lenz"
+              ]
             }
           ]
         },
@@ -4256,6 +4400,18 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Unsicherheit"
+              ]
+            },
+            {
+              "id": "ph-j11lk-lb11-bericht",
+              "title": "Praktikumsbericht und Fehlerdiskussion",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Protokoll",
+                "Fehler"
               ]
             }
           ]
@@ -4418,6 +4574,42 @@
               "keywords": [
                 "Resonanz"
               ]
+            },
+            {
+              "id": "ph-j12lk-lb1-daempfung",
+              "title": "Gedämpfte Schwingung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dämpfung",
+                "Schwingung"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb1-erzwungene",
+              "title": "Erzwungene Schwingung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Erzwungen",
+                "Resonanz"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb1-energieumsatz",
+              "title": "Energieumsatz in Schwingkreisen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "LC",
+                "Energie"
+              ]
             }
           ]
         },
@@ -4554,6 +4746,42 @@
               "keywords": [
                 "Dualismus"
               ]
+            },
+            {
+              "id": "ph-j12lk-lb4-debroglie",
+              "title": "Materiewellen und Doppelspalt",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "de Broglie",
+                "Interferenz"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb4-heisenberg",
+              "title": "Heisenbergsche Unschärferelation",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Unschärfe",
+                "Heisenberg"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb4-photonengas",
+              "title": "Photonenenergie und Spektrum",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Photon",
+                "Spektrum"
+              ]
             }
           ]
         },
@@ -4617,6 +4845,42 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Emission"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb5-rutherford",
+              "title": "Rutherford-Streuung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Rutherford",
+                "Atommodell"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb5-franck-hertz",
+              "title": "Franck-Hertz-Versuch",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Franck-Hertz",
+                "Niveau"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb5-linienspektrum",
+              "title": "Linienspektren und Termschema",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Spektrum",
+                "Termschema"
               ]
             }
           ]
@@ -4691,6 +4955,18 @@
               "keywords": [
                 "Spaltung"
               ]
+            },
+            {
+              "id": "ph-j12lk-lb6-aktivitaet",
+              "title": "Aktivität und Zerfallsgesetz",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Aktivität",
+                "Zerfall"
+              ]
             }
           ]
         },
@@ -4752,6 +5028,18 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Prozess"
+              ]
+            },
+            {
+              "id": "ph-j12lk-lb7-wirkungsgrad",
+              "title": "Wirkungsgrad thermischer Maschinen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Wirkungsgrad",
+                "Carnot"
               ]
             }
           ]
@@ -4832,5 +5120,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "1d5e753b"
+  "contentHash": "6d1533ab"
 }

@@ -41,6 +41,7 @@ import {
 import { conversionTopic, FLAECHE, LAENGE } from './units'
 import type { Grade, Topic } from './types'
 import { MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE } from './mathLehrplanTeilaspekte'
+import { MATH_DICHTE_BY_GRADE } from './mathDichteFill'
 
 /**
  * Proper fraction that still needs shortening when shown as a diagram:
@@ -2068,6 +2069,7 @@ export const klasse6: Grade = {
       ustd: 24,
       topics: [proportional, antiproportional, haeufigkeit, sachaufgabeDreisatz,
         ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math6"].filter((x) => x.areaId === "lb2").map((x) => x.topic),
+        ...(MATH_DICHTE_BY_GRADE["math6"] ?? []).filter((x) => x.areaId === "lb2").map((x) => x.topic),
       ],
     },
     {
@@ -2083,6 +2085,7 @@ export const klasse6: Grade = {
         kongruenzSatz,
         sachaufgabeGeometrie,
         ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math6"].filter((x) => x.areaId === "lb3").map((x) => x.topic),
+        ...(MATH_DICHTE_BY_GRADE["math6"] ?? []).filter((x) => x.areaId === "lb3").map((x) => x.topic),
       ],
     },
     {

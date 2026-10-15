@@ -18,7 +18,7 @@ describe('Gymnasium Sachsen Geschichte pack', () => {
     const pack = buildGymSachsenGeschichtePack()
     expect(pack.id).toBe(GYM_SACHSEN_GESCHICHTE_PACK_ID)
     expect(pack.subject).toBe('Geschichte')
-    expect(pack.version).toBe('1.10.1')
+    expect(pack.version).toBe('1.10.2')
     expect(pack.official.map((g) => g.id)).toEqual([
       'geschichte-klasse-5',
       'geschichte-klasse-6',
@@ -45,6 +45,7 @@ describe('Gymnasium Sachsen Geschichte pack', () => {
       'ge-k6-lb1-caesar-augustus',
       'ge-k6-lb1-kaiserzeit-gesellschaft',
       'ge-k6-lb1-germanen',
+      'ge-k6-lbw-regional',
     ])
     const k6ReleasedCore = k6.areas
       .filter((a) => a.id !== 'lb4')

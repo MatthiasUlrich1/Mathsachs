@@ -147,6 +147,83 @@ export function isLehrplanMetaWissen(text: string): boolean {
   return LEHRPLAN_META_WISSEN.test(text)
 }
 
+/**
+ * Slogan-/Stichwort-„Aussagen“ ohne prüfbaren Lehrplan-Inhalt.
+ * z. B. „Sicherheit: Wasser und Strom.“ / „[lb1] Begriff: Zeichnung …“
+ */
+export function isSloganOrStubClaim(text: string): boolean {
+  const raw = stripBioBankSlug(text).replace(/\s+/g, ' ').trim()
+  if (!raw) return true
+  if (/^\[[\w./:-]+\]/.test(raw)) return true
+  if (
+    /Zeichnung zum Sachverhalt|Zahlenaufgabe zu|Rechenvorschrift zu|Einheit:\s*Zahlenbeispiel|Begriff:\s*Zeichnung/i.test(
+      raw,
+    )
+  ) {
+    return true
+  }
+  // Explizite Schrott-Slogans
+  if (/Wasser und Strom/i.test(raw)) return true
+
+  // „Label: Fragment.“ ohne Verb / nur Schlagworte
+  const colon = raw.match(/^([^:?]{1,48}):\s*(.+)$/)
+  if (colon) {
+    const left = colon[1]!.trim()
+    const right = colon[2]!.replace(/[.!?]+$/, '').trim()
+    const words = right.split(/\s+/).filter(Boolean)
+    // Präsens/Partizip-ähnlich: „Erbeutet …“, „Braucht …“, „leitet …“, „ist …“
+    const hasVerbLike =
+      /\b(ist|sind|war|waren|wird|werden|hat|haben|kann|können|muss|müssen|soll|darf|gilt|liegt|steigt|fällt|fließt|fliesst|bedeutet|leitet|leiten)\b/i.test(
+        right,
+      ) || /^[A-ZÄÖÜ][a-zäöüß]{2,}(t|et|en|iert|igt)\b/.test(right)
+    // Nur Nomen + „und“ ohne Verb: „Wasser und Strom“
+    const nounSlogan = words.length <= 4 && !hasVerbLike
+    if (nounSlogan) return true
+    if (words.length <= 2 && right.length <= 28) return true
+    if (
+      /^(Sicherheit|Versuch|Vergleich|Alltag|Beobachtung|Anwendung|Messidee|Energie|Modell|Thema|Hinweis|Merke)$/i.test(
+        left,
+      ) &&
+      !hasVerbLike
+    ) {
+      return true
+    }
+  }
+  // „X bedeutet: Kurzfragment.“
+  const bed = raw.match(/bedeutet:\s*(.+)$/i)
+  if (bed) {
+    const right = bed[1]!.replace(/[.!?]+$/, '').trim()
+    const words = right.split(/\s+/).filter(Boolean)
+    if (words.length <= 4 && right.length <= 42) return true
+  }
+  return false
+}
+
+/**
+ * Pair/Fact-Einträge, die nur Schlagwort-Slogans sind (enger als TF-Filter —
+ * kurze Fachantworten wie „Freie Elektronen“ bleiben erlaubt).
+ */
+export function isSloganOrStubMeaning(term: string, meaning: string): boolean {
+  const t = term.trim()
+  const m = meaning.replace(/\s+/g, ' ').trim()
+  if (!m) return true
+  if (/Wasser und Strom/i.test(m)) return true
+  if (/Zeichnung zum Sachverhalt|Zahlenaufgabe zu|Rechenvorschrift zu/i.test(`${t} ${m}`)) {
+    return true
+  }
+  // Meta-Oberbegriffe mit Stichwort-Meaning statt Lehrplan-Satz
+  if (
+    /^(Sicherheit|Versuch|Vergleich|Alltag|Beobachtung|Anwendung|Messidee|Thema|Hinweis|Merke)$/i.test(
+      t,
+    ) &&
+    m.split(/\s+/).length <= 5 &&
+    !/\b(ist|sind|wird|werden|leitet|gilt|muss|kann|gefährlich|vermeiden|beachten)\b/i.test(m)
+  ) {
+    return true
+  }
+  return false
+}
+
 export function isThinBioWissen(text: string): boolean {
   const t = text.trim()
   if (!t || t.length < 80) return true
@@ -498,18 +575,34 @@ function dedupeBioPairsByTerm(pairs: BioPair[] | undefined): BioPair[] | undefin
 
 /** Sanitize deepen/hand-authored strings so internal slugs never reach the UI. */
 export function sanitizeBioBank(bank: BioBank): BioBank {
-  return {
-    ...bank,
-    facts: bank.facts?.map((f) => ({
+  const pairs = dedupeBioPairsByTerm(bank.pairs)?.filter(
+    (p) => !isSloganOrStubMeaning(p.term, p.meaning),
+  )
+  const facts = bank.facts
+    ?.map((f) => ({
       ...f,
       prompt: stripBioBankSlug(f.prompt),
       flashFront: f.flashFront ? stripBioBankSlug(f.flashFront) : undefined,
-    })),
-    trueFalse: bank.trueFalse?.map((t) => ({
+    }))
+    .filter((f) => {
+      const termHint = f.flashFront || f.prompt.match(/„([^“]+)“/)?.[1] || ''
+      if (termHint && isSloganOrStubMeaning(termHint, f.answer)) return false
+      if (isSloganOrStubMeaning(f.answer, f.answer)) return false
+      // Thin-Fill-Prompt-Schablonen
+      if (/Zeichnung zum Sachverhalt|Zahlenaufgabe zu|Was gehoert zu/i.test(f.prompt)) return false
+      return true
+    })
+  const trueFalse = bank.trueFalse
+    ?.map((t) => ({
       ...t,
       statement: stripBioBankSlug(t.statement),
-    })),
-    pairs: dedupeBioPairsByTerm(bank.pairs),
+    }))
+    .filter((t) => !isSloganOrStubClaim(t.statement))
+  return {
+    ...bank,
+    facts: facts?.length ? facts : undefined,
+    trueFalse: trueFalse?.length ? trueFalse : undefined,
+    pairs: pairs?.length ? pairs : undefined,
   }
 }
 
@@ -682,10 +775,8 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         contentIds: keys,
       })
     }
-    // Weight Zuordnung heavily when the pool is rich — variety, not short rounds.
+    // Zuordnung nur einmal im Mix — Abwechslung vor Pair-Match-Fließband.
     variants.push(pairMatchVariant)
-    if (bank.pairs.length >= 6) variants.push(pairMatchVariant)
-    if (bank.pairs.length >= 10) variants.push(pairMatchVariant)
   }
 
   if (bank.trueFalse?.length) {

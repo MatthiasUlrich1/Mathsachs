@@ -9,6 +9,19 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.85] – 2026-10-15
+
+### Hinzugefügt
+- **Lehrplan-Dichte/Qualität (P1–P7):** Dichte-Fills und Qualitätsbanken für Bio, Physik,
+  Geschichte, Mathe und OS; Hebel-/Leitung-/Feldlinien-/Flaschenzug-Banken.
+- **Slogan-TF-Filter:** `isSloganOrStubClaim` / `isSloganOrStubMeaning` gegen Stichwort-Slogans.
+- **Rules:** curriculum-aufgaben-qualitaet / curriculum-lernbereiche (Interaktions-Mix,
+  Slogan-Verbot, PairMatch gewichtet runter).
+
+### Geändert
+- Mathe ohne Zuordnung/Lücken-Überbetonung; Physik Anwendung/Grafik; PairMatch im Mix
+  abgewogen. Neue Topics bleiben `released:false`.
+
 ## [0.28.84] – 2026-10-15
 
 ### Behoben

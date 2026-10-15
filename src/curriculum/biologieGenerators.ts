@@ -33,7 +33,9 @@ import { BIOLOGIE_K6_LEHRPLAN_GAP_GENERATORS } from './biologie6LehrplanGaps'
 import { BIOLOGIE_K7_ATMUNG_GENERATORS } from './biologieK7Atmung'
 import { BIOLOGIE_LEHRPLAN_TEILASPEKTE_GENERATORS } from './biologieLehrplanTeilaspekte'
 import { BIOLOGIE_LEHRPLAN_GAPS_FILL_GENERATORS } from './biologieLehrplanGapsFill'
+import { BIOLOGIE_K8K10_DENSITY_FILL_GENERATORS } from './biologieK8K10DensityFill'
 import { BIOLOGIE_OS_GAPS_FILL_GENERATORS } from './biologieOsGapsFill'
+import { BIOLOGIE_OS_DENSITY_FILL_GENERATORS } from './biologieOsDensityFill'
 import { BIOLOGIE_THIN_FILL_BANKS, withThinFill } from './biologieThinFill'
 import { LEHRPLAN_TOPIC_GAP_GENERATORS } from './lehrplanTopicGaps'
 import { bankGenerate, type BioBank } from './biologieBank'
@@ -115,7 +117,9 @@ const BIOLOGIE_GENERATORS_RAW: Record<string, Topic['generate']> = {
   ...BIOLOGIE_K7_ATMUNG_GENERATORS,
   ...BIOLOGIE_LEHRPLAN_TEILASPEKTE_GENERATORS,
   ...BIOLOGIE_LEHRPLAN_GAPS_FILL_GENERATORS,
+  ...BIOLOGIE_K8K10_DENSITY_FILL_GENERATORS,
   ...BIOLOGIE_OS_GAPS_FILL_GENERATORS,
+  ...BIOLOGIE_OS_DENSITY_FILL_GENERATORS,
   ...BIOLOGIE_LEHRPLAN_TOPIC_GAPS,
   // Aufbau-Bilder zuletzt — Spezialbanken + imageLabelSlots (nicht von Special überschreiben).
   'bi-k6-lb1-organe': mixedVariants(

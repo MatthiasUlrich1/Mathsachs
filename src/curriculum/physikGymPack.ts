@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.38',
+    version: '2.5.42',
     changelog:
-      'Lehrplan-Teilaspekte 523: FEHLT-Topics K6–K10 + GK11 EM-Felder-LB5/Wahl + GK12 Unschärfe; dense Banks ≥10. released:false.',
+      'Thin-Fill nie über Hand-/Gap-Banks (Cross-Topic-Stop alle Klassen); K7 Hebel+Flaschenzug Qualitätsbanken. released:false.',
     official,
     extras: [],
   }

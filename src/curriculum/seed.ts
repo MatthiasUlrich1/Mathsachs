@@ -121,4 +121,4 @@ export async function buildGymSachsenSeed(): Promise<CurriculumPack> {
   }
 }
 
-export const GYM_SACHSEN_PACK_VERSION = '1.4.0'
+export const GYM_SACHSEN_PACK_VERSION = '1.4.1'

@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.9.7',
-    changelog: `Lehrplan-Teilaspekte komplettiert: K5–K10 + OS GK/LK (Membrantransport, Enzyme, Neuro/Immun, C3/C4, LK-Atmung u. a.). released:false. ${topics} Themen.`,
+    version: '1.9.9',
+    changelog: `K8–K10 Dichte-Pass: +24 Lehrplan-Topics (u. a. K9 Blüte/Zellatmung, K10 Replikation/Proteinsynthese/Homininen). released:false. ${topics} Themen.`,
     official,
     extras: [],
   }

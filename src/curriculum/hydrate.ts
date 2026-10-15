@@ -11,6 +11,7 @@ import {
 import { resolveBiologieGenerate } from './biologieGenerators'
 import { resolveGeschichteGenerate } from './geschichteGenerators'
 import { resolvePhysikGenerate } from './physikGenerators'
+import { withMathGymThinFill } from './mathGymThinFill'
 import type { CurriculumPack, PackExtra, PackGrade, PackTask, PackTopic } from './pack'
 import { fractionTask, textTask, valueTask } from './taskHelpers'
 import type { Grade, Task, Topic, TopicArea } from './types'
@@ -147,6 +148,20 @@ export async function hydratePackGrades(pack: CurriculumPack): Promise<Grade[]> 
     let grade: Grade
     if (runtime) {
       grade = applyPackTopicMeta(await runtime.load(), official)
+      // Mathe: Thin-Fill + Unique-Runden-Boost (Rechnung/MC, keine Zuordnung)
+      if (subject === 'Mathematik') {
+        grade = {
+          ...grade,
+          areas: grade.areas.map((area) => ({
+            ...area,
+            topics: area.topics.map((topic) => ({
+              ...topic,
+              generate:
+                withMathGymThinFill(topic.id, topic.generate) ?? topic.generate,
+            })),
+          })),
+        }
+      }
     } else {
       generators ??= await gymGeneratorCatalog()
       grade = {

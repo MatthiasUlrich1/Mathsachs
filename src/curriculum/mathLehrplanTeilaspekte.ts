@@ -2,7 +2,8 @@
  * Mathematik Gym Sachsen — Lehrplan-461-Teilaspekte (Themen-Vollständigkeit).
  * Neue Topics: released:false. Dense banks für uniqueRound / tasksPerRound 10.
  */
-import { bankGenerate, type BioBank } from './biologieBank'
+import { type BioBank } from './biologieBank'
+import { mathBankGenerate } from './mathBank'
 import type { Topic } from './types'
 import { DEFAULT_TASKS_PER_ROUND } from './tasksPerRound'
 
@@ -139,7 +140,7 @@ export const maTopic0: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["vergleichen", "ordnen", "Zahlenstrahl", "Stellenwert"],
-  generate: bankGenerate(maBank0),
+  generate: mathBankGenerate(maBank0),
 }
 
 
@@ -277,7 +278,7 @@ export const maTopic1: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["Primfaktor", "Zerlegung", "Primzahl", "Teilbarkeit"],
-  generate: bankGenerate(maBank1),
+  generate: mathBankGenerate(maBank1),
 }
 
 
@@ -417,7 +418,7 @@ export const maTopic2: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["Kommutativ", "Assoziativ", "Distributiv", "Rechenvorteil"],
-  generate: bankGenerate(maBank2),
+  generate: mathBankGenerate(maBank2),
 }
 
 
@@ -557,7 +558,7 @@ export const maTopic3: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["echter Bruch", "unechter Bruch", "gemischte Zahl", "Zähler", "Nenner"],
-  generate: bankGenerate(maBank3),
+  generate: mathBankGenerate(maBank3),
 }
 
 
@@ -697,7 +698,7 @@ export const maTopic4: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["Prozent", "Dezimalzahl", "Umwandeln", "Zehnerbruch"],
-  generate: bankGenerate(maBank4),
+  generate: mathBankGenerate(maBank4),
 }
 
 
@@ -837,7 +838,7 @@ export const maTopic5: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["Drehung", "Kongruenz", "Bewegung", "Orientierung"],
-  generate: bankGenerate(maBank5),
+  generate: mathBankGenerate(maBank5),
 }
 
 
@@ -975,7 +976,7 @@ export const maTopic6: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["Schrägbild", "Körpernetz", "Grundriss", "Ansicht", "Quader"],
-  generate: bankGenerate(maBank6),
+  generate: mathBankGenerate(maBank6),
 }
 
 
@@ -1111,7 +1112,7 @@ export const maTopic7: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["periodisch", "endlich", "Dezimalzahl", "Umwandeln"],
-  generate: bankGenerate(maBank7),
+  generate: mathBankGenerate(maBank7),
 }
 
 
@@ -1253,7 +1254,7 @@ export const maTopic8: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["Menge", "Element", "Teilmenge", "Mengendiagramm"],
-  generate: bankGenerate(maBank8),
+  generate: mathBankGenerate(maBank8),
 }
 
 
@@ -1393,7 +1394,7 @@ export const maTopic9: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["Zuordnung", "Tabelle", "Diagramm", "eindeutig", "Pfeildarstellung"],
-  generate: bankGenerate(maBank9),
+  generate: mathBankGenerate(maBank9),
 }
 
 
@@ -1523,7 +1524,7 @@ export const maTopic10: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["Höhe", "Mittelsenkrechte", "Seitenhalbierende", "Winkelhalbierende", "Lot"],
-  generate: bankGenerate(maBank10),
+  generate: mathBankGenerate(maBank10),
 }
 
 
@@ -1657,7 +1658,7 @@ export const maTopic11: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["Kavalierperspektive", "Prisma", "Schrägbild", "Darstellung"],
-  generate: bankGenerate(maBank11),
+  generate: mathBankGenerate(maBank11),
 }
 
 
@@ -1793,7 +1794,7 @@ export const maTopic12: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["Thales", "Halbkreis", "Rechtwinklig", "Peripherie"],
-  generate: bankGenerate(maBank12),
+  generate: mathBankGenerate(maBank12),
 }
 
 
@@ -1935,7 +1936,7 @@ export const maTopic13: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["natürliche", "ganze", "rationale", "Mengendiagramm", "Teilmenge"],
-  generate: bankGenerate(maBank13),
+  generate: mathBankGenerate(maBank13),
 }
 
 
@@ -2079,7 +2080,7 @@ export const maTopic14: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["Ereignis", "Vereinigung", "Durchschnitt", "Differenz", "Ergebnismenge"],
-  generate: bankGenerate(maBank14),
+  generate: mathBankGenerate(maBank14),
 }
 
 
@@ -2217,7 +2218,7 @@ export const maTopic15: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["Definitionsbereich", "Wertebereich", "Funktion", "Potenz"],
-  generate: bankGenerate(maBank15),
+  generate: mathBankGenerate(maBank15),
 }
 
 
@@ -2353,7 +2354,7 @@ export const maTopic16: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["Kathetensatz", "Höhe", "rechtwinklig", "Projektion"],
-  generate: bankGenerate(maBank16),
+  generate: mathBankGenerate(maBank16),
 }
 
 
@@ -2493,7 +2494,7 @@ export const maTopic17: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["Verteilungsfunktion", "kumuliert", "Zufallsgröße", "Wahrscheinlichkeit"],
-  generate: bankGenerate(maBank17),
+  generate: mathBankGenerate(maBank17),
 }
 
 
@@ -2631,7 +2632,7 @@ export const maTopic18: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["Umkehrfunktion", "Verkettung", "Verknüpfung", "Funktion"],
-  generate: bankGenerate(maBank18),
+  generate: mathBankGenerate(maBank18),
 }
 
 
@@ -2771,7 +2772,7 @@ export const maTopic19: Topic = {
   released: false,
   tasksPerRound: DEFAULT_TASKS_PER_ROUND,
   keywords: ["Normalverteilung", "Gauß", "σ", "Dichte", "LK"],
-  generate: bankGenerate(maBank19),
+  generate: mathBankGenerate(maBank19),
 }
 
 export const MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE: Record<string, { areaId: string; topic: Topic }[]> = {

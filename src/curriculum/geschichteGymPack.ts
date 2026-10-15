@@ -18,7 +18,7 @@ export function buildGymSachsenGeschichtePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Geschichte',
-    version: '1.10.1',
+    version: '1.10.2',
     changelog: `Lehrplan-65-Teilaspekte ergänzt (Archäologie Sachsen, Kaiserzeit, WK1-Verlauf, Stalinismus, Glasnost, …); dense Banken, released:false. ${topics} Themen.`,
     official,
     extras: [],

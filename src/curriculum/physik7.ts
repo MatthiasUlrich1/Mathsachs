@@ -2885,6 +2885,7 @@ export const PHYSIK_K7_GENERATORS: Record<string, Topic['generate']> = {
   'ph-k7-lb1-kraftbegriff': kraftbegriff,
   'ph-k7-lb1-gewichtskraft': gewichtskraft,
   'ph-k7-lb1-kraefte': kraefte,
+  'ph-k7-lb1-hebel': hebel,
   'ph-k7-lb1-reibung': reibung,
   'ph-k7-lb1-magnet': magnet,
   'ph-k7-lb1-elektrostatik': elektrostatik,

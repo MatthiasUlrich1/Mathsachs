@@ -670,6 +670,16 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Suchtmittel',
             'Prävention',
           ]),
+          topic('bi-k8-lb1-vegetativ', 'Vegetatives Nervensystem', [
+            'Sympathikus',
+            'Parasympathikus',
+            'unwillkürlich',
+          ]),
+          topic('bi-k8-lb1-hypophyse', 'Hypophyse und Nerven-Hormon-Regulation', [
+            'Hypophyse',
+            'Hypothalamus',
+            'Regelkreis',
+          ]),
         ]),
         area('lb2', 'Sexualität des Menschen', 11, [
           topic('bi-k8-lb2-sexualitaet', 'Sexualität des Menschen – Überblick', [
@@ -699,6 +709,16 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Vielfalt',
             'Konsens',
             'Jugendschutz',
+          ]),
+          topic('bi-k8-lb2-schwangerschaft', 'Schwangerschaft, Geburt und Verantwortung', [
+            'Schwangerschaft',
+            'Plazenta',
+            'Geburt',
+          ]),
+          topic('bi-k8-lb2-sti', 'Sexuell übertragbare Krankheiten', [
+            'STI',
+            'HIV',
+            'Schutz',
           ]),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
@@ -740,6 +760,36 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Wurzel',
             'Xylem',
             'Phloem',
+          ]),
+          topic('bi-k9-lb1-organisation', 'Organisationsstufen des Lebendigen', [
+            'Zelle',
+            'Gewebe',
+            'Organ',
+          ]),
+          topic('bi-k9-lb1-bestimmung', 'Bestimmen, Herbarisieren, Pflanzenfamilien', [
+            'Bestimmungsschlüssel',
+            'Herbar',
+            'Pflanzenfamilie',
+          ]),
+          topic('bi-k9-lb1-bluete', 'Blüte, Bestäubung und Samenverbreitung', [
+            'Blüte',
+            'Bestäubung',
+            'Frucht',
+          ]),
+          topic('bi-k9-lb1-organellen', 'Chloroplasten und Mitochondrien', [
+            'Chloroplast',
+            'Mitochondrium',
+            'Doppelmembran',
+          ]),
+          topic('bi-k9-lb1-zellatmung', 'Zellatmung als Dissimilation', [
+            'Zellatmung',
+            'Dissimilation',
+            'ATP',
+          ]),
+          topic('bi-k9-lb1-stoffwechsel', 'Stoffwechsel: Assimilation und Dissimilation', [
+            'Assimilation',
+            'Autotrophie',
+            'Heterotrophie',
           ]),
         ]),
         area('lb2', 'Zusammenhänge im Ökosystem', 25, [
@@ -790,6 +840,11 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Klimawandel',
             'Nachhaltigkeit',
           ]),
+          topic('bi-k9-lb2-gewaesser-mensch', 'Menschlicher Einfluss auf Gewässer', [
+            'Eutrophierung',
+            'Abwasser',
+            'Naturschutz',
+          ]),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
           topic('bi-k9-lbw-wiese', 'Mikrokosmos Wiese', ['Wiese'], { tasksPerRound: 10 }),
@@ -833,6 +888,41 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Erbkrankheit',
             'Ethik',
           ]),
+          topic('bi-k10-lb1-replikation', 'Identische Replikation der DNA', [
+            'Replikation',
+            'Replikationsgabel',
+            'Polymerase',
+          ]),
+          topic('bi-k10-lb1-proteinsynthese', 'Proteinsynthese: Transkription und Translation', [
+            'Transkription',
+            'Translation',
+            'genetischer Code',
+          ]),
+          topic('bi-k10-lb1-dna-entdeckung', 'DNA-Struktur: Franklin, Watson und Crick', [
+            'Franklin',
+            'Watson',
+            'Crick',
+          ]),
+          topic('bi-k10-lb1-blutgruppen', 'Vererbung der Blutgruppen', [
+            'AB0',
+            'Rhesus',
+            'Allel',
+          ]),
+          topic('bi-k10-lb1-geschlecht', 'Vererbung des Geschlechts und Vielfalt', [
+            'XX',
+            'XY',
+            'Vielfalt',
+          ]),
+          topic('bi-k10-lb1-erbkrankheiten', 'Erbkrankheiten des Menschen', [
+            'Trisomie 21',
+            'PKU',
+            'Hämophilie',
+          ]),
+          topic('bi-k10-lb1-zuechtung', 'Klassische Züchtung und Gentechnik', [
+            'Züchtung',
+            'Gentechnik',
+            'Auslese',
+          ]),
         ]),
         area('lb2', 'Entstehung der Artenvielfalt', 16, [
           topic('bi-k10-lb2-artenvielfalt', 'Artenvielfalt und Evolution – Überblick', [
@@ -863,6 +953,16 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Homologie',
             'Angepasstheit',
           ]),
+          topic('bi-k10-lb2-spezialisierung', 'Spezialisierung und Angepasstheit', [
+            'Spezialisierung',
+            'Vogelschnabel',
+            'Bestäubung',
+          ]),
+          topic('bi-k10-lb2-verhalten', 'Verhalten: Prägung, Lernen, Reproduktionserfolg', [
+            'Prägung',
+            'Nachahmung',
+            'Reproduktionserfolg',
+          ]),
         ]),
         area('lb3', 'Stammesgeschichte des Menschen', 9, [
           topic('bi-k10-lb3-mensch', 'Stammesgeschichte des Menschen', [
@@ -873,6 +973,26 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Fossil',
             'Homologie',
             'Bipedie',
+          ]),
+          topic('bi-k10-lb3-erdzeit', 'Organismen von der Erdfrühzeit bis zur Erdneuzeit', [
+            'Erdzeitalter',
+            'Fossil',
+            'Zeit',
+          ]),
+          topic('bi-k10-lb3-menschenaffen', 'Mensch und Menschenaffen im Vergleich', [
+            'Menschenaffe',
+            'Bipedie',
+            'Werkzeug',
+          ]),
+          topic('bi-k10-lb3-homininen', 'Homininen: Australopithecus bis Homo sapiens', [
+            'Australopithecus',
+            'Homo erectus',
+            'Neandertaler',
+          ]),
+          topic('bi-k10-lb3-kultur', 'Biologische und kulturelle Evolution', [
+            'Feuer',
+            'Feldbau',
+            'Antirassismus',
           ]),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
@@ -930,7 +1050,10 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
               'Calvin-Zyklus',
             ]),
             topic('bi-gk11-lb2-atmung', 'Zellatmung und Energiebilanz', ['ATP', 'Mitochondrium']),
-          ],
+                    topic('bi-gk11-lb2-redox', 'Redoxprozesse in der Zelle', ['redox', 'lb2']),
+          topic('bi-gk11-lb2-energiebilanz', 'Energiebilanz Assimilation/Dissimilation', ['energiebilanz', 'lb2']),
+          topic('bi-gk11-lb2-kompartimente', 'Kompartimente des Stoffwechsels', ['kompartimente', 'lb2']),
+],
         ),
         area('lb3', 'Ökologie und Nachhaltigkeit', 13, [
           topic('bi-gk11-lb3-oekologie', 'Ökologie und Nachhaltigkeit', [
@@ -978,7 +1101,10 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
           ]),
           topic('bi-gk12-lb1-humangenetik', 'Humangenetik und molekularbiologische Methoden', ['Stammbaum', 'PCR', 'Sequenzierung']),
           topic('bi-gk12-lb1-gentherapie', 'Gentherapie, Stammzellen und PID', ['Gentherapie', 'Stammzellen', 'Ethik']),
-        ]),
+                  topic('bi-gk12-lb1-mendel', 'Mendel-Regeln und Erbgänge', ['mendel', 'lb1']),
+          topic('bi-gk12-lb1-molekular', 'Molekularbiologie der Vererbung', ['molekular', 'lb1']),
+          topic('bi-gk12-lb1-ethik', 'Bioethik der Gentechnik', ['ethik', 'lb1']),
+]),
         area('lb2', 'Kommunikation zwischen Zellen', 10, [
           topic('bi-gk12-lb2-kommunikation', 'Kommunikation zwischen Zellen', [
             'Signal',
@@ -1042,7 +1168,20 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             topic('bi-lk11-lb1-transport', 'Wasserpotenzial und Membrantransport', ['Turgor', 'Plasmolyse', 'Endocytose']),
             topic('bi-lk11-lb1-genregulation', 'Operon und eukaryotische Genregulation', ['Operon', 'Spleißen', 'Epigenetik']),
             topic('bi-lk11-lb1-enzyme', 'Enzymatik vertieft', ['Coenzym', 'Hemmung', 'Kinetik']),
-          ],
+                    topic('bi-lk11-lb1-kompartimente', 'Kompartimente und Membranfluss', ['kompartimente', 'lb1']),
+          topic('bi-lk11-lb1-signal', 'Zelluläre Signalaufnahme', ['signal', 'lb1']),
+          topic('bi-lk11-lb1-zyklus-kontrolle', 'Kontrolle des Zellzyklus', ['zyklus kontrolle', 'lb1']),
+          topic('bi-lk11-lb1-apoptose', 'Programmierter Zelltod', ['apoptose', 'lb1']),
+          topic('bi-lk11-lb1-stammzellen', 'Stammzellen und Potenz', ['stammzellen', 'lb1']),
+          topic('bi-lk11-lb1-gewebearten', 'Gewebearten im Vergleich', ['gewebearten', 'lb1']),
+          topic('bi-lk11-lb1-organ', 'Organbildung und Arbeitsteilung', ['organ', 'lb1']),
+          topic('bi-lk11-lb1-mikroskopie', 'Licht- und Elektronenmikroskopie', ['mikroskopie', 'lb1']),
+          topic('bi-lk11-lb1-wasser', 'Wasserhaushalt der Zelle', ['wasser', 'lb1']),
+          topic('bi-lk11-lb1-ion', 'Ionengradienten und Potenziale', ['ion', 'lb1']),
+          topic('bi-lk11-lb1-protein', 'Proteintrafficking', ['protein', 'lb1']),
+          topic('bi-lk11-lb1-cytoskelett-bewegung', 'Zytoskelett und Zellbewegung', ['cytoskelett bewegung', 'lb1']),
+          topic('bi-lk11-lb1-vergleich-pro-eu', 'Vergleich Pro- und Eucyte vertieft', ['vergleich pro eu', 'lb1']),
+],
         ),
         area(
           'lb2',
@@ -1062,7 +1201,16 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             topic('bi-lk11-lb2-chemosynthese', 'Chemosynthese', ['Chemoautotroph', 'Nitrifikation', 'Redox']),
             topic('bi-lk11-lb2-gaerung', 'Gärung im Vergleich zur Atmung', ['Lactat', 'Ethanol', 'NAD+']),
             topic('bi-lk11-lb2-heterotroph', 'Heterotrophe Assimilation und Verdauung', ['Verdauung', 'Resorption', 'Enzyme']),
-          ],
+                    topic('bi-lk11-lb2-licht', 'Lichtreaktion detailliert', ['licht', 'lb2']),
+          topic('bi-lk11-lb2-calvin', 'Calvin-Zyklus detailliert', ['calvin', 'lb2']),
+          topic('bi-lk11-lb2-photorespiration', 'Photorespiration', ['photorespiration', 'lb2']),
+          topic('bi-lk11-lb2-atmungskette', 'Atmungskette und Chemiosmose', ['atmungskette', 'lb2']),
+          topic('bi-lk11-lb2-gaerung-vergleich', 'Gärung im Vergleich zur Atmung', ['gaerung vergleich', 'lb2']),
+          topic('bi-lk11-lb2-c4-cam', 'C4 und CAM im Vergleich', ['c4 cam', 'lb2']),
+          topic('bi-lk11-lb2-energiefluss-zelle', 'Energiefluss in der Zelle', ['energiefluss zelle', 'lb2']),
+          topic('bi-lk11-lb2-redox-bilanz', 'Redoxbilanz von Stoffwechselwegen', ['redox bilanz', 'lb2']),
+          topic('bi-lk11-lb2-enzyme-regulation', 'Enzymregulation im Stoffwechsel', ['enzyme regulation', 'lb2']),
+],
         ),
         area('lb3', 'Ökologie und Nachhaltigkeit', 35, [
           topic('bi-lk11-lb3-oekologie', 'Ökologie und Nachhaltigkeit', [
@@ -1076,7 +1224,15 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
           topic('bi-lk11-lb3-kreislauf', 'C- und N-Kreislauf', ['Fixierung', 'Nitrifikation', 'Denitrifikation']),
           topic('bi-lk11-lb3-landwirtschaft', 'Monokultur, Fußabdruck und Schädlinge', ['Monokultur', 'Fußabdruck', 'IPS']),
           topic('bi-lk11-lb3-naturschutz', 'Naturschutz, Klima und Renaturierung', ['Naturschutzgesetz', 'Renaturierung', 'Treibhauseffekt']),
-        ]),
+                  topic('bi-lk11-lb3-population-wachstum', 'Populationswachstum und Modelle', ['population wachstum', 'lb3']),
+          topic('bi-lk11-lb3-konkurrenz-experiment', 'Konkurrenz und Experimente', ['konkurrenz experiment', 'lb3']),
+          topic('bi-lk11-lb3-stoffkreislaufe', 'Stoffkreisläufe C und N', ['stoffkreislaufe', 'lb3']),
+          topic('bi-lk11-lb3-energiefluss-oeko', 'Energiefluss im Ökosystem', ['energiefluss oeko', 'lb3']),
+          topic('bi-lk11-lb3-nachhaltige-nutzung', 'Nachhaltige Nutzung von Ressourcen', ['nachhaltige nutzung', 'lb3']),
+          topic('bi-lk11-lb3-klimawandel', 'Klimawandel und Ökosysteme', ['klimawandel', 'lb3']),
+          topic('bi-lk11-lb3-naturschutzstrategien', 'Naturschutzstrategien', ['naturschutzstrategien', 'lb3']),
+          topic('bi-lk11-lb3-biodiversitaet-schutz', 'Biodiversität schützen und bewerten', ['Biodiversität', 'Naturschutz']),
+]),
         area('lbw', 'Wahlbereiche', undefined, [
           topic('bi-lk11-lbw-wueste', 'Leben in der Wüste', ['Wüste'], {
             tasksPerRound: 10}),
@@ -1115,7 +1271,14 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
           topic('bi-lk12-lb1-humangenetik', 'Humangenetik-Techniken und Erbkrankheiten', ['Stammbaum', 'Karyogramm', 'PCR']),
           topic('bi-lk12-lb1-krebs', 'Krebs – Onkogene und personalisierte Medizin', ['Onkogen', 'Suppressorgen', 'Metastase']),
           topic('bi-lk12-lb1-gentechnik', 'Gentechnik – Vektoren und Verfahren', ['Vektor', 'Transformation', 'CRISPR']),
-        ]),
+                  topic('bi-lk12-lb1-epigenetik', 'Epigenetik und Genregulation', ['epigenetik', 'lb1']),
+          topic('bi-lk12-lb1-entwicklungsgenetik', 'Entwicklungsgenetik', ['entwicklungsgenetik', 'lb1']),
+          topic('bi-lk12-lb1-populationsgenetik', 'Populationsgenetik', ['populationsgenetik', 'lb1']),
+          topic('bi-lk12-lb1-krebsgenetik', 'Krebs als Generkrankung', ['krebsgenetik', 'lb1']),
+          topic('bi-lk12-lb1-genomeditierung', 'Genomeditierung Verfahren', ['genomeditierung', 'lb1']),
+          topic('bi-lk12-lb1-diagnostik', 'Molekularbiologische Diagnostik', ['diagnostik', 'lb1']),
+          topic('bi-lk12-lb1-ethik-lk', 'Ethik diskursiver Fallbeispiele', ['ethik lk', 'lb1']),
+]),
         area('lb2', 'Kommunikation zwischen Zellen', 32, [
           topic('bi-lk12-lb2-kommunikation', 'Kommunikation zwischen Zellen', [
             'Signalwege',
@@ -1127,12 +1290,21 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
           topic('bi-lk12-lb2-stoerung', 'Störungen der Zellkommunikation', ['Krankheit', 'Signal']),
           topic('bi-lk12-lb2-immun', 'Immunbiologie vertieft', ['HIV', 'Resistenz', 'Transplantation']),
           topic('bi-lk12-lb2-neuro', 'Neurophysiologie vertieft', ['EEG', 'Summation', 'Hypothalamus']),
-        ]),
+                  topic('bi-lk12-lb2-signaltransduktion', 'Signaltransduktion Kaskaden', ['signaltransduktion', 'lb2']),
+          topic('bi-lk12-lb2-hormonachsen', 'Hormonachsen und Feedback', ['hormonachsen', 'lb2']),
+          topic('bi-lk12-lb2-immun-spezifisch', 'Spezifische Immunantwort vertieft', ['immun spezifisch', 'lb2']),
+          topic('bi-lk12-lb2-immun-unspezifisch', 'Unspezifische Abwehr vertieft', ['immun unspezifisch', 'lb2']),
+          topic('bi-lk12-lb2-synapse-integration', 'Synaptische Integration', ['synapse integration', 'lb2']),
+          topic('bi-lk12-lb2-sinnesphysio', 'Sinnesphysiologie', ['sinnesphysio', 'lb2']),
+          topic('bi-lk12-lb2-stoerungen', 'Pathophysiologie der Kommunikation', ['stoerungen', 'lb2']),
+          topic('bi-lk12-lb2-pharmakologie', 'Angriffspunkte von Wirkstoffen', ['pharmakologie', 'lb2']),
+]),
         area('lb3', 'Verhalten von Tier und Mensch', 10, [
           topic('bi-lk12-lb3-verhalten', 'Verhalten von Tier und Mensch', ['Ethologie']),
           topic('bi-lk12-lb3-lernen', 'Lernen und Verhaltensanpassung', ['Lernen', 'Konditionierung']),
           topic('bi-lk12-lb3-sozial', 'Sozialverhalten und Kommunikation', ['Sozialverhalten']),
-        ]),
+                  topic('bi-lk12-lb3-ethologie-methoden', 'Methoden der Verhaltensbiologie', ['ethologie methoden', 'lb3']),
+]),
         area('lb4', 'Biodiversität und ihre Entstehung', 20, [
           topic('bi-lk12-lb4-biodiversitaet', 'Biodiversität und ihre Entstehung', [
             'Biodiversität',
@@ -1159,7 +1331,9 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Energiefluss',
           ]),
           topic('bi-lk12-lb5-stoffwechsel-vergleich', 'Foto-/Chemosynthese, Atmung und Gärung vernetzen', ['Fotosynthese', 'Chemosynthese', 'Gärung']),
-        ]),
+                  topic('bi-lk12-lb5-organisationsebenen', 'Organisationsebenen vernetzen', ['organisationsebenen', 'lb5']),
+          topic('bi-lk12-lb5-systembiologie', 'Systembiologie und Modelle', ['systembiologie', 'lb5']),
+]),
         area('lbw', 'Wahlbereiche', undefined, [
           topic('bi-lk12-lbw-allergie', 'Allergien und Autoimmunkrankheiten', ['Allergie'], {
             tasksPerRound: 10}),

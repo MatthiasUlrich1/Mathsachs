@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-15T04:36:10.760Z",
+  "updatedAt": "2026-10-15T05:36:16.323Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -7,9 +7,9 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Mathematik",
-      "version": "1.4.0",
+      "version": "1.4.1",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen.json",
-      "size": 101499,
+      "size": 144060,
       "changelog": "Lehrplan-461-Teilaspekte ergänzt (Primfaktoren, Umwandeln %, Thales, Normalverteilung LK, …); released:false; dense Banken."
     },
     {
@@ -18,10 +18,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "2.5.38",
+      "version": "2.5.42",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 164215,
-      "changelog": "Lehrplan-Teilaspekte 523: FEHLT-Topics K6–K10 + GK11 EM-Felder-LB5/Wahl + GK12 Unschärfe; dense Banks ≥10. released:false."
+      "size": 174495,
+      "changelog": "Thin-Fill nie über Hand-/Gap-Banks (Cross-Topic-Stop alle Klassen); K7 Hebel+Flaschenzug Qualitätsbanken. released:false."
     },
     {
       "id": "gym-sachsen-geschichte",
@@ -29,10 +29,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Geschichte",
-      "version": "1.10.1",
+      "version": "1.10.2",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-geschichte.json",
-      "size": 98074,
-      "changelog": "Lehrplan-65-Teilaspekte ergänzt (Archäologie Sachsen, Kaiserzeit, WK1-Verlauf, Stalinismus, Glasnost, …); dense Banken, released:false. 184 Themen."
+      "size": 162630,
+      "changelog": "Lehrplan-65-Teilaspekte ergänzt (Archäologie Sachsen, Kaiserzeit, WK1-Verlauf, Stalinismus, Glasnost, …); dense Banken, released:false. 331 Themen."
     },
     {
       "id": "gym-sachsen-biologie",
@@ -40,10 +40,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Biologie",
-      "version": "1.9.7",
+      "version": "1.9.9",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-biologie.json",
-      "size": 127685,
-      "changelog": "Lehrplan-Teilaspekte komplettiert: K5–K10 + OS GK/LK (Membrantransport, Enzyme, Neuro/Immun, C3/C4, LK-Atmung u. a.). released:false. 262 Themen."
+      "size": 162064,
+      "changelog": "K8–K10 Dichte-Pass: +24 Lehrplan-Topics (u. a. K9 Blüte/Zellatmung, K10 Replikation/Proteinsynthese/Homininen). released:false. 340 Themen."
     },
     {
       "id": "gym-sachsen-anhalt",
@@ -84,9 +84,9 @@
       "region": "Sachsen",
       "school": "Oberschule",
       "subject": "Mathematik",
-      "version": "1.0.5",
+      "version": "1.0.6",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/oberschule-sachsen-hs.json",
-      "size": 61700,
+      "size": 79495,
       "changelog": "Klassen 5–9 (Hauptschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung."
     },
     {
@@ -95,9 +95,9 @@
       "region": "Sachsen",
       "school": "Oberschule",
       "subject": "Mathematik",
-      "version": "1.0.5",
+      "version": "1.0.6",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/oberschule-sachsen-rs.json",
-      "size": 74565,
+      "size": 92370,
       "changelog": "Klassen 5–10 (Realschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung."
     }
   ]

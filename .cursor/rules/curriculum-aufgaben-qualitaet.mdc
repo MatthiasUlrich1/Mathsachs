@@ -21,7 +21,58 @@ alwaysApply: false
 
 - Die Frage muss zum Antwortformat passen (kein „Berechne …“, wenn Antworten
   Funktionsgleichungen, Labels oder Reihenfolgen sind).
-- Bei Zuordnung/Funktionen: Frage explizit auf Zuordnung/Funktionen ausrichten.
+- Bei Zuordnung/Funktionen (nur Nicht-Mathe): Frage explizit auf Zuordnung ausrichten.
+
+## Pflicht: prüfbarer Lehrplan-Inhalt (kein Slogan-/Stichwort-TF)
+
+- Jede Aufgabe muss **konkreten Lehrplan-Inhalt** prüfen: Gesetz/Formel, Rechnung,
+  Experimentbeobachtung, Beschriftung, Ursache–Wirkung, grafische Deutung.
+- **Verboten:** Pseudo-Aussagen und Slogan-TF/MC nur aus Stichworten/Überschriften
+  (z. B. „Sicherheit: Wasser und Strom.“, „Thema X: Y“, „[lb…] Begriff: Zeichnung…“).
+- True/False nur mit **vollständigem, prüfbarem Satz** (Verb, klar wahr/falsch).
+- Laufzeitfilter: `isSloganOrStubClaim` / `isSloganOrStubMeaning` in `sanitizeBioBank`
+  — Generatoren dürfen solche Stubs nicht mehr erzeugen (Thin-Fill/Gap-Skripte).
+
+## Pflicht: Interaktions-Abwechslung (kein Zuordnungs-Fließband)
+
+- Pro Thema/Runde **Mix** der vorhandenen Typen — Zuordnung (`pairMatch` /
+  `imageLabelSlots` / `dragDrop*`) ist **einer von vielen**, nicht ~80 % der Runde.
+- Vorhandene Typen nutzen: `choicePick`/MC, `multiSelect`, TF (nur volle Sätze),
+  Sort (`dragDropSort`), Slots, Cloze (Nicht-Mathe), Wert/Eingabe, `digitGrid`,
+  `numberLine`, `coordinateClick`/`coordinateDraw`, `paramSlider`, `equationSteps`,
+  `flashcardFlip`, `sourceQuote`, `causeEffect`, `iconBelong`, Grafik/`visualContent`.
+- Grafik-lastig wo sinnvoll (Physik Feldlinien/Aufbau; Bio Anatomie; Mathe Graphen/
+  Geometrie — Mathe weiter **ohne** Zuordnung/Lückentext).
+- Neue Interaktionen nur wenn Katalog-Lücke und mobil tauglich.
+
+## Mathematik: nur mathematische Aufgaben (verbindlich)
+
+Für **alle Mathe-Packs** (Gymnasium Sachsen, Gymnasium Sachsen-Anhalt, Oberschule SN,
+Sekundarschule ST / SKS HS+RS) gelten zusätzlich:
+
+- **Erlaubt:** Multiple Choice mit Zahlen/Ausdrücken, Eingabe von Werten/Brüchen,
+  Gleichungen lösen, Umformen, True/False **mit Rechnung**, Grafik/Skizze **mit
+  Zahlenwerten**, Stellenwert-/Zifferngitter, Koordinatenklick mit Zahlen.
+- **Verboten:** `dragDropMatch` / Pair-Match / Begriffs-Zuordnung, `cloze` /
+  `clozeMulti` / `gap` / Lückentext, Flashcard-Begriffspaare als Ersatz für Rechnung,
+  reine Vokabel-Zuordnung („Was bedeutet …?“ ohne Rechenkontext).
+- Banken für Mathe nutzen `mathBankGenerate` (oder gleichwertige Rechen-Generatoren),
+  **nicht** das Bio-`bankGenerate` mit Gaps/Pairs.
+- Andere Fächer (Bio, Geschichte): Zuordnung/Gaps weiter erlaubt, soweit die übrigen
+  Regeln erfüllt sind.
+
+## Physik: Anwendung / Rechnung / Grafik vor Begriffsdrill (verbindlich)
+
+Für **Physik-Packs** (Gymnasium Sachsen inkl. OS, und physiknahe OS-Themen):
+
+- **Bevorzugt:** Berechnungen mit Einheiten, Alltags-/Technikbezug, Experimente
+  (planen, auswerten, Fehler), grafische Aufgaben (Skizzen, Feldlinienbilder,
+  `imageLabelSlots`, „welche Abbildung …“, Verlauf deuten).
+- **Verboten als alleinige Aufgabenform:** isolierte Fachbegriff-/Definitions-MC
+  („Was ist …?“, „Was bedeutet …?“, Vokabel-Flash ohne physikalischen Kontext).
+- Begriffswissen nur **eingebettet** (z. B. in Rechnung, Versuch oder Grafikdeutung).
+- **Feldlinien / Felder:** grafische Deutung und Anwendungspflicht — nicht nur
+  Text-Definitionen.
 
 ## Keine Spoiler in Diagrammen
 

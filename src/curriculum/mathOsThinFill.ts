@@ -2,12 +2,13 @@
  * Auto-generated OS/ST/SKS thin-fill. Regenerate: node tmp/gen-os-thin-fill.mjs
  * No released:true.
  */
-import { bankGenerate } from './biologieBank'
+import { mathBankGenerate } from './mathBank'
+import { withMathRoundBoost } from './mathRoundBoost'
 import { mixedVariants } from './taskHelpers'
 import type { Topic } from './types'
 
 export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
-  "os-k5-lb1-quadrat": bankGenerate({
+  "os-k5-lb1-quadrat": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-k5-lb1-quadrat",
@@ -192,7 +193,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-k5-lb2-vergleichen": bankGenerate({
+  "os-k5-lb2-vergleichen": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-k5-lb2-vergleichen",
@@ -377,7 +378,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-k5-lb2-prozent": bankGenerate({
+  "os-k5-lb2-prozent": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-k5-lb2-prozent",
@@ -562,7 +563,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-k5-lb3-lage": bankGenerate({
+  "os-k5-lb3-lage": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-k5-lb3-lage",
@@ -747,7 +748,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-k6-lb1-erweiterung": bankGenerate({
+  "os-k6-lb1-erweiterung": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-k6-lb1-erweiterung",
@@ -932,7 +933,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-k6-lb1-verhaeltnis": bankGenerate({
+  "os-k6-lb1-verhaeltnis": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-k6-lb1-verhaeltnis",
@@ -1117,7 +1118,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-k6-lb2-arten": bankGenerate({
+  "os-k6-lb2-arten": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-k6-lb2-arten",
@@ -1302,7 +1303,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-k6-lb2-darstellung": bankGenerate({
+  "os-k6-lb2-darstellung": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-k6-lb2-darstellung",
@@ -1487,7 +1488,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-k6-lb3-einteilung": bankGenerate({
+  "os-k6-lb3-einteilung": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-k6-lb3-einteilung",
@@ -1672,7 +1673,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-k6-lb3-parallelogramm": bankGenerate({
+  "os-k6-lb3-parallelogramm": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-k6-lb3-parallelogramm",
@@ -1857,7 +1858,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-k6-lb5-probieren": bankGenerate({
+  "os-k6-lb5-probieren": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-k6-lb5-probieren",
@@ -2042,7 +2043,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-k6-lb5-praesentation": bankGenerate({
+  "os-k6-lb5-praesentation": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-k6-lb5-praesentation",
@@ -2227,7 +2228,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k7-lb1-modelle": bankGenerate({
+  "os-hs-k7-lb1-modelle": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k7-lb1-modelle",
@@ -2412,7 +2413,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k7-lb2-vergleich": bankGenerate({
+  "os-hs-k7-lb2-vergleich": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k7-lb2-vergleich",
@@ -2597,7 +2598,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k7-lb2-begriffe": bankGenerate({
+  "os-hs-k7-lb2-begriffe": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k7-lb2-begriffe",
@@ -2782,7 +2783,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k8-lb1-skonto": bankGenerate({
+  "os-hs-k8-lb1-skonto": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k8-lb1-skonto",
@@ -2967,7 +2968,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k8-lb1-diagramme": bankGenerate({
+  "os-hs-k8-lb1-diagramme": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k8-lb1-diagramme",
@@ -3152,7 +3153,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k8-lb2-struktur": bankGenerate({
+  "os-hs-k8-lb2-struktur": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k8-lb2-struktur",
@@ -3337,7 +3338,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k8-lb2-formelsammlung": bankGenerate({
+  "os-hs-k8-lb2-formelsammlung": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k8-lb2-formelsammlung",
@@ -3522,7 +3523,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k8-lb3-kreisring": bankGenerate({
+  "os-hs-k8-lb3-kreisring": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k8-lb3-kreisring",
@@ -3707,7 +3708,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k8-lb3-lage": bankGenerate({
+  "os-hs-k8-lb3-lage": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k8-lb3-lage",
@@ -3892,7 +3893,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k8-lb4-darstellen": bankGenerate({
+  "os-hs-k8-lb4-darstellen": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k8-lb4-darstellen",
@@ -4077,7 +4078,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k8-lb4-oberflaeche": bankGenerate({
+  "os-hs-k8-lb4-oberflaeche": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k8-lb4-oberflaeche",
@@ -4262,7 +4263,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k8-lb5-haushalt": bankGenerate({
+  "os-hs-k8-lb5-haushalt": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k8-lb5-haushalt",
@@ -4447,7 +4448,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k9-lb1-umkehrung": bankGenerate({
+  "os-hs-k9-lb1-umkehrung": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k9-lb1-umkehrung",
@@ -4632,7 +4633,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k9-lb2-darstellen": bankGenerate({
+  "os-hs-k9-lb2-darstellen": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k9-lb2-darstellen",
@@ -4817,7 +4818,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k9-lb2-kegel": bankGenerate({
+  "os-hs-k9-lb2-kegel": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k9-lb2-kegel",
@@ -5002,7 +5003,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k9-lb2-masse": bankGenerate({
+  "os-hs-k9-lb2-masse": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k9-lb2-masse",
@@ -5187,7 +5188,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k9-lb3-funktion": bankGenerate({
+  "os-hs-k9-lb3-funktion": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k9-lb3-funktion",
@@ -5372,7 +5373,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k9-lb3-schnitt": bankGenerate({
+  "os-hs-k9-lb3-schnitt": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k9-lb3-schnitt",
@@ -5557,7 +5558,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k9-lb4-kalkulation": bankGenerate({
+  "os-hs-k9-lb4-kalkulation": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k9-lb4-kalkulation",
@@ -5742,7 +5743,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-k5-lb1-division": bankGenerate({
+  "os-k5-lb1-division": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-k5-lb1-division",
@@ -5927,7 +5928,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-k5-lb2-anteil": bankGenerate({
+  "os-k5-lb2-anteil": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-k5-lb2-anteil",
@@ -6112,7 +6113,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-k5-lb3-wuerfel": bankGenerate({
+  "os-k5-lb3-wuerfel": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-k5-lb3-wuerfel",
@@ -6297,7 +6298,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-k5-lbw1-stellenwert": bankGenerate({
+  "os-k5-lbw1-stellenwert": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-k5-lbw1-stellenwert",
@@ -6482,7 +6483,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-k6-lb3-kongruenz": bankGenerate({
+  "os-k6-lb3-kongruenz": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-k6-lb3-kongruenz",
@@ -6667,7 +6668,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-k6-lb4-darstellen": bankGenerate({
+  "os-k6-lb4-darstellen": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-k6-lb4-darstellen",
@@ -6852,7 +6853,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k7-lb1-netze": bankGenerate({
+  "os-hs-k7-lb1-netze": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k7-lb1-netze",
@@ -7037,7 +7038,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k7-lb4-konstruieren": bankGenerate({
+  "os-hs-k7-lb4-konstruieren": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k7-lb4-konstruieren",
@@ -7222,7 +7223,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k7-lb4-winkelsumme": bankGenerate({
+  "os-hs-k7-lb4-winkelsumme": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k7-lb4-winkelsumme",
@@ -7407,7 +7408,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k7-lb4-netze": bankGenerate({
+  "os-hs-k7-lb4-netze": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k7-lb4-netze",
@@ -7592,7 +7593,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k7-lbw2-perspektive": bankGenerate({
+  "os-hs-k7-lbw2-perspektive": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k7-lbw2-perspektive",
@@ -7777,7 +7778,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k8-lb3-winkelsumme": bankGenerate({
+  "os-hs-k8-lb3-winkelsumme": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k8-lb3-winkelsumme",
@@ -7962,7 +7963,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k9-lbw2-opt": bankGenerate({
+  "os-hs-k9-lbw2-opt": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k9-lbw2-opt",
@@ -8147,7 +8148,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k9-lbw2-flaeche": bankGenerate({
+  "os-hs-k9-lbw2-flaeche": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k9-lbw2-flaeche",
@@ -8332,7 +8333,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k9-lbw3-zeichnen": bankGenerate({
+  "os-hs-k9-lbw3-zeichnen": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k9-lbw3-zeichnen",
@@ -8517,7 +8518,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-hs-k9-lbw3-schnitt": bankGenerate({
+  "os-hs-k9-lbw3-schnitt": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-hs-k9-lbw3-schnitt",
@@ -8702,7 +8703,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k7-lb2-versuch": bankGenerate({
+  "os-rs-k7-lb2-versuch": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k7-lb2-versuch",
@@ -8887,7 +8888,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k7-lb4-masse": bankGenerate({
+  "os-rs-k7-lb4-masse": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k7-lb4-masse",
@@ -9072,7 +9073,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k8-lb1-ausklammern": bankGenerate({
+  "os-rs-k8-lb1-ausklammern": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k8-lb1-ausklammern",
@@ -9257,7 +9258,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k8-lb1-formel": bankGenerate({
+  "os-rs-k8-lb1-formel": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k8-lb1-formel",
@@ -9442,7 +9443,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k8-lb2-funktion": bankGenerate({
+  "os-rs-k8-lb2-funktion": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k8-lb2-funktion",
@@ -9627,7 +9628,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k8-lb2-nullstelle": bankGenerate({
+  "os-rs-k8-lb2-nullstelle": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k8-lb2-nullstelle",
@@ -9812,7 +9813,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k8-lb3-lage": bankGenerate({
+  "os-rs-k8-lb3-lage": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k8-lb3-lage",
@@ -9997,7 +9998,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k8-lb3-darstellen": bankGenerate({
+  "os-rs-k8-lb3-darstellen": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k8-lb3-darstellen",
@@ -10182,7 +10183,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k8-lb5-simulation": bankGenerate({
+  "os-rs-k8-lb5-simulation": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k8-lb5-simulation",
@@ -10367,7 +10368,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k8-lb5-baum": bankGenerate({
+  "os-rs-k8-lb5-baum": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k8-lb5-baum",
@@ -10552,7 +10553,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k8-lb6-kosten": bankGenerate({
+  "os-rs-k8-lb6-kosten": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k8-lb6-kosten",
@@ -10737,7 +10738,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k9-lb1-umkehrung": bankGenerate({
+  "os-rs-k9-lb1-umkehrung": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k9-lb1-umkehrung",
@@ -10922,7 +10923,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k9-lb2-darstellen": bankGenerate({
+  "os-rs-k9-lb2-darstellen": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k9-lb2-darstellen",
@@ -11107,7 +11108,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k9-lb2-kegel": bankGenerate({
+  "os-rs-k9-lb2-kegel": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k9-lb2-kegel",
@@ -11292,7 +11293,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k9-lb3-nullstellen": bankGenerate({
+  "os-rs-k9-lb3-nullstellen": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k9-lb3-nullstellen",
@@ -11477,7 +11478,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k9-lb3-fall": bankGenerate({
+  "os-rs-k9-lb3-fall": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k9-lb3-fall",
@@ -11662,7 +11663,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k9-lb4-medien": bankGenerate({
+  "os-rs-k9-lb4-medien": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k9-lb4-medien",
@@ -11847,7 +11848,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k10-lb1-system": bankGenerate({
+  "os-rs-k10-lb1-system": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k10-lb1-system",
@@ -12032,7 +12033,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k10-lb2-potenz": bankGenerate({
+  "os-rs-k10-lb2-potenz": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k10-lb2-potenz",
@@ -12217,7 +12218,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k10-lb2-sinus": bankGenerate({
+  "os-rs-k10-lb2-sinus": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k10-lb2-sinus",
@@ -12402,7 +12403,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k10-lb3-zufall": bankGenerate({
+  "os-rs-k10-lb3-zufall": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k10-lb3-zufall",
@@ -12587,7 +12588,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k10-lb3-simulation": bankGenerate({
+  "os-rs-k10-lb3-simulation": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k10-lb3-simulation",
@@ -12772,7 +12773,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k10-lb4-wirtschaft": bankGenerate({
+  "os-rs-k10-lb4-wirtschaft": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k10-lb4-wirtschaft",
@@ -12957,7 +12958,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k10-lb4-erwartung": bankGenerate({
+  "os-rs-k10-lb4-erwartung": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k10-lb4-erwartung",
@@ -13142,7 +13143,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k7-lb4-konstruieren": bankGenerate({
+  "os-rs-k7-lb4-konstruieren": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k7-lb4-konstruieren",
@@ -13327,7 +13328,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k7-lb4-winkelsumme": bankGenerate({
+  "os-rs-k7-lb4-winkelsumme": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k7-lb4-winkelsumme",
@@ -13512,7 +13513,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k7-lb4-darstellen": bankGenerate({
+  "os-rs-k7-lb4-darstellen": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k7-lb4-darstellen",
@@ -13697,7 +13698,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k7-lbw1-zeichnen": bankGenerate({
+  "os-rs-k7-lbw1-zeichnen": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k7-lbw1-zeichnen",
@@ -13882,7 +13883,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k7-lbw1-schnitt": bankGenerate({
+  "os-rs-k7-lbw1-schnitt": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k7-lbw1-schnitt",
@@ -14067,7 +14068,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k8-lb4-aehnlich": bankGenerate({
+  "os-rs-k8-lb4-aehnlich": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k8-lb4-aehnlich",
@@ -14252,7 +14253,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k8-lb4-kongruenz": bankGenerate({
+  "os-rs-k8-lb4-kongruenz": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k8-lb4-kongruenz",
@@ -14437,7 +14438,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k8-lbw3-polyeder": bankGenerate({
+  "os-rs-k8-lbw3-polyeder": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k8-lbw3-polyeder",
@@ -14622,7 +14623,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k8-lbw3-netz": bankGenerate({
+  "os-rs-k8-lbw3-netz": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k8-lbw3-netz",
@@ -14807,7 +14808,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k8-lbw3-euler": bankGenerate({
+  "os-rs-k8-lbw3-euler": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k8-lbw3-euler",
@@ -14992,7 +14993,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k9-lbw2-schnitt": bankGenerate({
+  "os-rs-k9-lbw2-schnitt": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k9-lbw2-schnitt",
@@ -15177,7 +15178,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k9-lbw2-netz": bankGenerate({
+  "os-rs-k9-lbw2-netz": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k9-lbw2-netz",
@@ -15362,7 +15363,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k10-lb1-winkelsumme": bankGenerate({
+  "os-rs-k10-lb1-winkelsumme": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k10-lb1-winkelsumme",
@@ -15547,7 +15548,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k10-lbw2-opt": bankGenerate({
+  "os-rs-k10-lbw2-opt": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k10-lbw2-opt",
@@ -15732,7 +15733,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "os-rs-k10-lbw2-flaeche": bankGenerate({
+  "os-rs-k10-lbw2-flaeche": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:os-rs-k10-lbw2-flaeche",
@@ -15917,7 +15918,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "sks-k5-nat-schriftlich": bankGenerate({
+  "sks-k5-nat-schriftlich": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:sks-k5-nat-schriftlich",
@@ -16102,7 +16103,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "sks-k5-nat-div": bankGenerate({
+  "sks-k5-nat-div": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:sks-k5-nat-div",
@@ -16287,7 +16288,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "sks-k5-bruch-grafik": bankGenerate({
+  "sks-k5-bruch-grafik": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:sks-k5-bruch-grafik",
@@ -16472,7 +16473,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "sks-k5-groessen-ordnen": bankGenerate({
+  "sks-k5-groessen-ordnen": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:sks-k5-groessen-ordnen",
@@ -16657,7 +16658,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "sks-k5-geo-strecken": bankGenerate({
+  "sks-k5-geo-strecken": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:sks-k5-geo-strecken",
@@ -16842,7 +16843,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "sks-k5-geo-koord-ablesen": bankGenerate({
+  "sks-k5-geo-koord-ablesen": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:sks-k5-geo-koord-ablesen",
@@ -17027,7 +17028,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "sks-k6-kongruenz": bankGenerate({
+  "sks-k6-kongruenz": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:sks-k6-kongruenz",
@@ -17212,7 +17213,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "sks-k6-umkreis": bankGenerate({
+  "sks-k6-umkreis": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:sks-k6-umkreis",
@@ -17397,7 +17398,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "sks-k7-winkelsumme": bankGenerate({
+  "sks-k7-winkelsumme": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:sks-k7-winkelsumme",
@@ -17582,7 +17583,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "sks-k7-netz": bankGenerate({
+  "sks-k7-netz": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:sks-k7-netz",
@@ -17767,7 +17768,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "sks-rs-k9-aehnlich": bankGenerate({
+  "sks-rs-k9-aehnlich": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:sks-rs-k9-aehnlich",
@@ -17952,7 +17953,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "sks-rs-k9-trig-hoehe": bankGenerate({
+  "sks-rs-k9-trig-hoehe": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:sks-rs-k9-trig-hoehe",
@@ -18137,7 +18138,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "sks-rs-k9-pfad": bankGenerate({
+  "sks-rs-k9-pfad": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:sks-rs-k9-pfad",
@@ -18322,7 +18323,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "sks-rs-k10-sinus": bankGenerate({
+  "sks-rs-k10-sinus": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:sks-rs-k10-sinus",
@@ -18507,7 +18508,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "sks-rs-k10-erwartung-wuerfel": bankGenerate({
+  "sks-rs-k10-erwartung-wuerfel": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:sks-rs-k10-erwartung-wuerfel",
@@ -18692,7 +18693,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k7-wurzeln": bankGenerate({
+  "st-k7-wurzeln": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k7-wurzeln",
@@ -18877,7 +18878,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k8-mehrstufig": bankGenerate({
+  "st-k8-mehrstufig": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k8-mehrstufig",
@@ -19062,7 +19063,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k9-logarithmen": bankGenerate({
+  "st-k9-logarithmen": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k9-logarithmen",
@@ -19247,7 +19248,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k9-boxplot": bankGenerate({
+  "st-k9-boxplot": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k9-boxplot",
@@ -19432,7 +19433,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k10-funk-sin": bankGenerate({
+  "st-k10-funk-sin": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k10-funk-sin",
@@ -19617,7 +19618,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k10-lgs3": bankGenerate({
+  "st-k10-lgs3": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k10-lgs3",
@@ -19802,7 +19803,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k1112-kreise-ag": bankGenerate({
+  "st-k1112-kreise-ag": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k1112-kreise-ag",
@@ -19987,7 +19988,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k1112-bedingte": bankGenerate({
+  "st-k1112-bedingte": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k1112-bedingte",
@@ -20172,7 +20173,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k1112-normal": bankGenerate({
+  "st-k1112-normal": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k1112-normal",
@@ -20357,7 +20358,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k1112-statistik": bankGenerate({
+  "st-k1112-statistik": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k1112-statistik",
@@ -20542,7 +20543,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k5-nat-schriftlich": bankGenerate({
+  "st-k5-nat-schriftlich": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k5-nat-schriftlich",
@@ -20727,7 +20728,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k5-nat-div": bankGenerate({
+  "st-k5-nat-div": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k5-nat-div",
@@ -20912,7 +20913,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k5-bruch-grafik": bankGenerate({
+  "st-k5-bruch-grafik": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k5-bruch-grafik",
@@ -21097,7 +21098,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k5-groessen-ordnen": bankGenerate({
+  "st-k5-groessen-ordnen": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k5-groessen-ordnen",
@@ -21282,7 +21283,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k5-geo-strecken": bankGenerate({
+  "st-k5-geo-strecken": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k5-geo-strecken",
@@ -21467,7 +21468,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k5-geo-koord-ablesen": bankGenerate({
+  "st-k5-geo-koord-ablesen": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k5-geo-koord-ablesen",
@@ -21652,7 +21653,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k6-kongruenz": bankGenerate({
+  "st-k6-kongruenz": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k6-kongruenz",
@@ -21837,7 +21838,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k6-wuerfelnetz": bankGenerate({
+  "st-k6-wuerfelnetz": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k6-wuerfelnetz",
@@ -22022,7 +22023,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k7-winkelsumme": bankGenerate({
+  "st-k7-winkelsumme": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k7-winkelsumme",
@@ -22207,7 +22208,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k7-mittelsenkrechte": bankGenerate({
+  "st-k7-mittelsenkrechte": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k7-mittelsenkrechte",
@@ -22392,7 +22393,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k8-aehnlich": bankGenerate({
+  "st-k8-aehnlich": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k8-aehnlich",
@@ -22577,7 +22578,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k10-erwartung-wuerfel": bankGenerate({
+  "st-k10-erwartung-wuerfel": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k10-erwartung-wuerfel",
@@ -22762,7 +22763,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k10-varianz": bankGenerate({
+  "st-k10-varianz": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k10-varianz",
@@ -22947,7 +22948,7 @@ export const MATH_OS_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "st-k10-sinussatz": bankGenerate({
+  "st-k10-sinussatz": mathBankGenerate({
     quelle: 'Lehrplan Mathematik / Schulportal Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:fill:st-k10-sinussatz",
@@ -23139,7 +23140,9 @@ export function withMathOsThinFill(
   base: Topic['generate'] | undefined,
 ): Topic['generate'] | undefined {
   const fill = MATH_OS_THIN_FILL[id]
-  if (!fill) return base
-  if (!base) return fill
-  return mixedVariants(fill, fill, fill, base)
+  let gen: Topic['generate'] | undefined
+  if (!fill) gen = base
+  else if (!base) gen = fill
+  else gen = mixedVariants(fill, fill, fill, base)
+  return withMathRoundBoost(id, gen)
 }

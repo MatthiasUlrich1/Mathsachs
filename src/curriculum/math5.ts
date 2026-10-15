@@ -30,6 +30,7 @@ import {
 } from '../lib/geometrySvg'
 import type { Grade, Topic } from './types'
 import { MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE } from './mathLehrplanTeilaspekte'
+import { MATH_DICHTE_BY_GRADE } from './mathDichteFill'
 
 /** Whether n is a prime number (n ≥ 2). */
 const isPrime = (n: number): boolean => {
@@ -2796,6 +2797,7 @@ export const klasse5: Grade = {
         umfangZusammengesetzt,
         volumenZusammengesetzt,
         ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math5"].filter((x) => x.areaId === "lb4").map((x) => x.topic),
+        ...(MATH_DICHTE_BY_GRADE["math5"] ?? []).filter((x) => x.areaId === "lb4").map((x) => x.topic),
       ],
     },
     {

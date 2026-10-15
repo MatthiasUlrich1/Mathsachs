@@ -2,12 +2,13 @@
  * Auto-generated Gym-Mathe thin-fill. Regenerate: node tmp/gen-math-gym-thin-fill.mjs
  * No released:true.
  */
-import { bankGenerate } from './biologieBank'
+import { mathBankGenerate } from './mathBank'
+import { withMathRoundBoost } from './mathRoundBoost'
 import { mixedVariants } from './taskHelpers'
 import type { Topic } from './types'
 
 export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
-  "lb1-schriftliches-rechnen": bankGenerate({
+  "lb1-schriftliches-rechnen": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:lb1-schriftliches-rechnen",
@@ -192,7 +193,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "lb1-schriftliche-division": bankGenerate({
+  "lb1-schriftliche-division": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:lb1-schriftliche-division",
@@ -377,7 +378,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "lb2-grafische-brueche": bankGenerate({
+  "lb2-grafische-brueche": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:lb2-grafische-brueche",
@@ -562,7 +563,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "lb2-ordnen-einheiten": bankGenerate({
+  "lb2-ordnen-einheiten": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:lb2-ordnen-einheiten",
@@ -747,7 +748,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "lb3-koordinaten-ablesen": bankGenerate({
+  "lb3-koordinaten-ablesen": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:lb3-koordinaten-ablesen",
@@ -932,7 +933,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "lb3-strecken-bezeichnung": bankGenerate({
+  "lb3-strecken-bezeichnung": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:lb3-strecken-bezeichnung",
@@ -1117,7 +1118,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "lb3-kongruenzsatz": bankGenerate({
+  "lb3-kongruenzsatz": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:lb3-kongruenzsatz",
@@ -1302,7 +1303,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "lb4-wuerfelnetz": bankGenerate({
+  "lb4-wuerfelnetz": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:lb4-wuerfelnetz",
@@ -1487,7 +1488,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k7-lb1-winkelsumme-vieleck": bankGenerate({
+  "k7-lb1-winkelsumme-vieleck": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k7-lb1-winkelsumme-vieleck",
@@ -1672,7 +1673,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k7-lb1-mittelsenkrechte-schritte": bankGenerate({
+  "k7-lb1-mittelsenkrechte-schritte": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k7-lb1-mittelsenkrechte-schritte",
@@ -1857,7 +1858,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k8-lb2-zweistufig": bankGenerate({
+  "k8-lb2-zweistufig": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k8-lb2-zweistufig",
@@ -2042,7 +2043,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k8-lb4-aehnliche-seite": bankGenerate({
+  "k8-lb4-aehnliche-seite": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k8-lb4-aehnliche-seite",
@@ -2227,7 +2228,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k9-lb1-wurzelgleichung": bankGenerate({
+  "k9-lb1-wurzelgleichung": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k9-lb1-wurzelgleichung",
@@ -2412,7 +2413,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k9-lb1-quadrat-wert__grafik": bankGenerate({
+  "k9-lb1-quadrat-wert__grafik": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k9-lb1-quadrat-wert__grafik",
@@ -2597,7 +2598,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k9-lb3-hoehensatz": bankGenerate({
+  "k9-lb3-hoehensatz": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k9-lb3-hoehensatz",
@@ -2782,7 +2783,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k9-lb4-standardabweichung": bankGenerate({
+  "k9-lb4-standardabweichung": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k9-lb4-standardabweichung",
@@ -2967,7 +2968,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k9-lb5-trig-hoehe": bankGenerate({
+  "k9-lb5-trig-hoehe": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k9-lb5-trig-hoehe",
@@ -3152,7 +3153,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k10-lb1-sinus-wert": bankGenerate({
+  "k10-lb1-sinus-wert": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k10-lb1-sinus-wert",
@@ -3337,7 +3338,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k10-lb2-erwartungswert-wuerfel": bankGenerate({
+  "k10-lb2-erwartungswert-wuerfel": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k10-lb2-erwartungswert-wuerfel",
@@ -3522,7 +3523,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k10-lb2-varianz": bankGenerate({
+  "k10-lb2-varianz": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k10-lb2-varianz",
@@ -3707,7 +3708,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k10-lb3-sinussatz": bankGenerate({
+  "k10-lb3-sinussatz": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k10-lb3-sinussatz",
@@ -3892,7 +3893,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k10-lb3-kosinussatz": bankGenerate({
+  "k10-lb3-kosinussatz": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k10-lb3-kosinussatz",
@@ -4077,7 +4078,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k1112-lb1-ableitung-exp": bankGenerate({
+  "k1112-lb1-ableitung-exp": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k1112-lb1-ableitung-exp",
@@ -4262,7 +4263,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k1112-lb3-lage-geraden": bankGenerate({
+  "k1112-lb3-lage-geraden": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k1112-lb3-lage-geraden",
@@ -4447,7 +4448,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k1112-lb4-binom-kumuliert": bankGenerate({
+  "k1112-lb4-binom-kumuliert": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k1112-lb4-binom-kumuliert",
@@ -4632,7 +4633,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k1112-lb4-binom-sigma": bankGenerate({
+  "k1112-lb4-binom-sigma": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k1112-lb4-binom-sigma",
@@ -4817,7 +4818,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k1112-lb5-flaeche": bankGenerate({
+  "k1112-lb5-flaeche": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k1112-lb5-flaeche",
@@ -5002,7 +5003,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k1112-lb6-hypothesentest": bankGenerate({
+  "k1112-lb6-hypothesentest": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k1112-lb6-hypothesentest",
@@ -5187,7 +5188,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k1112-lb7-winkel": bankGenerate({
+  "k1112-lb7-winkel": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k1112-lb7-winkel",
@@ -5372,7 +5373,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k1112-lb8-extremwert": bankGenerate({
+  "k1112-lb8-extremwert": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k1112-lb8-extremwert",
@@ -5557,7 +5558,7 @@ export const MATH_GYM_THIN_FILL: Record<string, Topic['generate']> = {
     },
     ],
   }),
-  "k1112-lb8-volumen": bankGenerate({
+  "k1112-lb8-volumen": mathBankGenerate({
     quelle: 'Lehrplan Mathematik Gymnasium Sachsen',
     url: 'https://www.schulportal.sachsen.de/lplandb/',
     conceptPrefix: "math:gymfill:k1112-lb8-volumen",
@@ -5749,7 +5750,9 @@ export function withMathGymThinFill(
   base: Topic['generate'] | undefined,
 ): Topic['generate'] | undefined {
   const fill = MATH_GYM_THIN_FILL[id]
-  if (!fill) return base
-  if (!base) return fill
-  return mixedVariants(fill, fill, fill, base)
+  let gen: Topic['generate'] | undefined
+  if (!fill) gen = base
+  else if (!base) gen = fill
+  else gen = mixedVariants(fill, fill, fill, base)
+  return withMathRoundBoost(id, gen)
 }

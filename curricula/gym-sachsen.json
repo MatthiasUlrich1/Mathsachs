@@ -4,9 +4,9 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Mathematik",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "changelog": "Lehrplan-461-Teilaspekte ergänzt (Primfaktoren, Umwandeln %, Thales, Normalverteilung LK, …); released:false; dense Banken.",
-  "contentHash": "8d3247cf",
+  "contentHash": "d08002c5",
   "official": [
     {
       "id": "klasse-5",
@@ -436,6 +436,22 @@
                 "Quader"
               ],
               "released": false
+            },
+            {
+              "id": "k5-lb4-d01",
+              "title": "Lehrplan-Vertiefung LB4 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k5-lb4-d02",
+              "title": "Lehrplan-Vertiefung LB4 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
             }
           ]
         },
@@ -797,6 +813,46 @@
                 "Pfeildarstellung"
               ],
               "released": false
+            },
+            {
+              "id": "k6-lb2-d01",
+              "title": "Lehrplan-Vertiefung LB2 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k6-lb2-d02",
+              "title": "Lehrplan-Vertiefung LB2 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k6-lb2-d03",
+              "title": "Lehrplan-Vertiefung LB2 (3)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k6-lb2-d04",
+              "title": "Lehrplan-Vertiefung LB2 (4)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k6-lb2-d05",
+              "title": "Lehrplan-Vertiefung LB2 (5)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
             }
           ]
         },
@@ -880,6 +936,38 @@
                 "Winkelhalbierende",
                 "Lot"
               ],
+              "released": false
+            },
+            {
+              "id": "k6-lb3-d01",
+              "title": "Lehrplan-Vertiefung LB3 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k6-lb3-d02",
+              "title": "Lehrplan-Vertiefung LB3 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k6-lb3-d03",
+              "title": "Lehrplan-Vertiefung LB3 (3)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k6-lb3-d04",
+              "title": "Lehrplan-Vertiefung LB3 (4)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "released": false
             }
           ]
@@ -1116,6 +1204,38 @@
                 "Peripherie"
               ],
               "released": false
+            },
+            {
+              "id": "k7-lb1-d01",
+              "title": "Lehrplan-Vertiefung LB1 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k7-lb1-d02",
+              "title": "Lehrplan-Vertiefung LB1 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k7-lb1-d03",
+              "title": "Lehrplan-Vertiefung LB1 (3)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k7-lb1-d04",
+              "title": "Lehrplan-Vertiefung LB1 (4)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
             }
           ]
         },
@@ -1252,6 +1372,118 @@
                 "Teilmenge"
               ],
               "released": false
+            },
+            {
+              "id": "k7-lb2-d01",
+              "title": "Lehrplan-Vertiefung LB2 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k7-lb2-d02",
+              "title": "Lehrplan-Vertiefung LB2 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k7-lb2-d03",
+              "title": "Lehrplan-Vertiefung LB2 (3)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k7-lb2-d04",
+              "title": "Lehrplan-Vertiefung LB2 (4)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k7-lb2-d05",
+              "title": "Lehrplan-Vertiefung LB2 (5)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k7-lb2-d06",
+              "title": "Lehrplan-Vertiefung LB2 (6)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k7-lb2-d07",
+              "title": "Lehrplan-Vertiefung LB2 (7)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k7-lb2-d08",
+              "title": "Lehrplan-Vertiefung LB2 (8)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k7-lb2-d09",
+              "title": "Lehrplan-Vertiefung LB2 (9)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k7-lb2-d10",
+              "title": "Lehrplan-Vertiefung LB2 (10)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k7-lb2-d11",
+              "title": "Lehrplan-Vertiefung LB2 (11)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k7-lb2-d12",
+              "title": "Lehrplan-Vertiefung LB2 (12)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k7-lb2-d13",
+              "title": "Lehrplan-Vertiefung LB2 (13)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k7-lb2-d14",
+              "title": "Lehrplan-Vertiefung LB2 (14)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
             }
           ]
         },
@@ -1322,6 +1554,30 @@
                 "Grundfläche",
                 "Seitenfläche"
               ]
+            },
+            {
+              "id": "k7-lb3-d01",
+              "title": "Lehrplan-Vertiefung LB3 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k7-lb3-d02",
+              "title": "Lehrplan-Vertiefung LB3 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k7-lb3-d03",
+              "title": "Lehrplan-Vertiefung LB3 (3)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
             }
           ]
         },
@@ -1480,6 +1736,38 @@
                 "Term",
                 "ausmultiplizieren"
               ]
+            },
+            {
+              "id": "k8-lb1-d01",
+              "title": "Lehrplan-Vertiefung LB1 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k8-lb1-d02",
+              "title": "Lehrplan-Vertiefung LB1 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k8-lb1-d03",
+              "title": "Lehrplan-Vertiefung LB1 (3)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k8-lb1-d04",
+              "title": "Lehrplan-Vertiefung LB1 (4)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
             }
           ]
         },
@@ -1565,6 +1853,38 @@
                 "Differenz",
                 "Ergebnismenge"
               ],
+              "released": false
+            },
+            {
+              "id": "k8-lb2-d01",
+              "title": "Lehrplan-Vertiefung LB2 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k8-lb2-d02",
+              "title": "Lehrplan-Vertiefung LB2 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k8-lb2-d03",
+              "title": "Lehrplan-Vertiefung LB2 (3)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k8-lb2-d04",
+              "title": "Lehrplan-Vertiefung LB2 (4)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "released": false
             }
           ]
@@ -1678,6 +1998,54 @@
               ],
               "released": true,
               "reviewOf": "k8-lb3-funktionswert"
+            },
+            {
+              "id": "k8-lb3-d01",
+              "title": "Lehrplan-Vertiefung LB3 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k8-lb3-d02",
+              "title": "Lehrplan-Vertiefung LB3 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k8-lb3-d03",
+              "title": "Lehrplan-Vertiefung LB3 (3)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k8-lb3-d04",
+              "title": "Lehrplan-Vertiefung LB3 (4)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k8-lb3-d05",
+              "title": "Lehrplan-Vertiefung LB3 (5)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k8-lb3-d06",
+              "title": "Lehrplan-Vertiefung LB3 (6)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
             }
           ]
         },
@@ -1723,6 +2091,46 @@
                 "Seitenverhältnis",
                 "Faktor"
               ]
+            },
+            {
+              "id": "k8-lb4-d01",
+              "title": "Lehrplan-Vertiefung LB4 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k8-lb4-d02",
+              "title": "Lehrplan-Vertiefung LB4 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k8-lb4-d03",
+              "title": "Lehrplan-Vertiefung LB4 (3)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k8-lb4-d04",
+              "title": "Lehrplan-Vertiefung LB4 (4)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k8-lb4-d05",
+              "title": "Lehrplan-Vertiefung LB4 (5)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
             }
           ]
         },
@@ -1927,6 +2335,94 @@
                 "Potenz"
               ],
               "released": false
+            },
+            {
+              "id": "k9-lb1-d01",
+              "title": "Lehrplan-Vertiefung LB1 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k9-lb1-d02",
+              "title": "Lehrplan-Vertiefung LB1 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k9-lb1-d03",
+              "title": "Lehrplan-Vertiefung LB1 (3)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k9-lb1-d04",
+              "title": "Lehrplan-Vertiefung LB1 (4)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k9-lb1-d05",
+              "title": "Lehrplan-Vertiefung LB1 (5)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k9-lb1-d06",
+              "title": "Lehrplan-Vertiefung LB1 (6)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k9-lb1-d07",
+              "title": "Lehrplan-Vertiefung LB1 (7)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k9-lb1-d08",
+              "title": "Lehrplan-Vertiefung LB1 (8)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k9-lb1-d09",
+              "title": "Lehrplan-Vertiefung LB1 (9)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k9-lb1-d10",
+              "title": "Lehrplan-Vertiefung LB1 (10)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k9-lb1-d11",
+              "title": "Lehrplan-Vertiefung LB1 (11)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
             }
           ]
         },
@@ -2062,6 +2558,70 @@
                 "rechtwinklig",
                 "Projektion"
               ],
+              "released": false
+            },
+            {
+              "id": "k9-lb3-d01",
+              "title": "Lehrplan-Vertiefung LB3 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k9-lb3-d02",
+              "title": "Lehrplan-Vertiefung LB3 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k9-lb3-d03",
+              "title": "Lehrplan-Vertiefung LB3 (3)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k9-lb3-d04",
+              "title": "Lehrplan-Vertiefung LB3 (4)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k9-lb3-d05",
+              "title": "Lehrplan-Vertiefung LB3 (5)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k9-lb3-d06",
+              "title": "Lehrplan-Vertiefung LB3 (6)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k9-lb3-d07",
+              "title": "Lehrplan-Vertiefung LB3 (7)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k9-lb3-d08",
+              "title": "Lehrplan-Vertiefung LB3 (8)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "released": false
             }
           ]
@@ -2265,6 +2825,38 @@
                 "Trigonometrie",
                 "Funktionswert"
               ]
+            },
+            {
+              "id": "k10-lb1-d01",
+              "title": "Lehrplan-Vertiefung LB1 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k10-lb1-d02",
+              "title": "Lehrplan-Vertiefung LB1 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k10-lb1-d03",
+              "title": "Lehrplan-Vertiefung LB1 (3)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k10-lb1-d04",
+              "title": "Lehrplan-Vertiefung LB1 (4)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
             }
           ]
         },
@@ -2325,6 +2917,30 @@
                 "Zufallsgröße",
                 "Wahrscheinlichkeit"
               ],
+              "released": false
+            },
+            {
+              "id": "k10-lb2-d01",
+              "title": "Lehrplan-Vertiefung LB2 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k10-lb2-d02",
+              "title": "Lehrplan-Vertiefung LB2 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k10-lb2-d03",
+              "title": "Lehrplan-Vertiefung LB2 (3)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "released": false
             }
           ]
@@ -2398,6 +3014,30 @@
                 "Trigonometrie",
                 "Seite"
               ]
+            },
+            {
+              "id": "k10-lb3-d01",
+              "title": "Lehrplan-Vertiefung LB3 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k10-lb3-d02",
+              "title": "Lehrplan-Vertiefung LB3 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k10-lb3-d03",
+              "title": "Lehrplan-Vertiefung LB3 (3)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
             }
           ]
         },
@@ -2531,6 +3171,70 @@
                 "Verknüpfung",
                 "Funktion"
               ],
+              "released": false
+            },
+            {
+              "id": "k10-lb4-d01",
+              "title": "Lehrplan-Vertiefung LB4 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k10-lb4-d02",
+              "title": "Lehrplan-Vertiefung LB4 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k10-lb4-d03",
+              "title": "Lehrplan-Vertiefung LB4 (3)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k10-lb4-d04",
+              "title": "Lehrplan-Vertiefung LB4 (4)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k10-lb4-d05",
+              "title": "Lehrplan-Vertiefung LB4 (5)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k10-lb4-d06",
+              "title": "Lehrplan-Vertiefung LB4 (6)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k10-lb4-d07",
+              "title": "Lehrplan-Vertiefung LB4 (7)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k10-lb4-d08",
+              "title": "Lehrplan-Vertiefung LB4 (8)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
               "released": false
             }
           ]
@@ -2709,6 +3413,118 @@
               ],
               "released": true,
               "reviewOf": "k1112-lb1-nullstelle-linear"
+            },
+            {
+              "id": "k1112-lb1-d01",
+              "title": "Lehrplan-Vertiefung LB1 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb1-d02",
+              "title": "Lehrplan-Vertiefung LB1 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb1-d03",
+              "title": "Lehrplan-Vertiefung LB1 (3)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb1-d04",
+              "title": "Lehrplan-Vertiefung LB1 (4)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb1-d05",
+              "title": "Lehrplan-Vertiefung LB1 (5)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb1-d06",
+              "title": "Lehrplan-Vertiefung LB1 (6)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb1-d07",
+              "title": "Lehrplan-Vertiefung LB1 (7)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb1-d08",
+              "title": "Lehrplan-Vertiefung LB1 (8)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb1-d09",
+              "title": "Lehrplan-Vertiefung LB1 (9)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb1-d10",
+              "title": "Lehrplan-Vertiefung LB1 (10)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb1-d11",
+              "title": "Lehrplan-Vertiefung LB1 (11)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb1-d12",
+              "title": "Lehrplan-Vertiefung LB1 (12)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb1-d13",
+              "title": "Lehrplan-Vertiefung LB1 (13)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb1-d14",
+              "title": "Lehrplan-Vertiefung LB1 (14)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
             }
           ]
         },
@@ -2839,6 +3655,70 @@
                 "identisch",
                 "schneidend"
               ]
+            },
+            {
+              "id": "k1112-lb3-d01",
+              "title": "Lehrplan-Vertiefung LB3 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb3-d02",
+              "title": "Lehrplan-Vertiefung LB3 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb3-d03",
+              "title": "Lehrplan-Vertiefung LB3 (3)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb3-d04",
+              "title": "Lehrplan-Vertiefung LB3 (4)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb3-d05",
+              "title": "Lehrplan-Vertiefung LB3 (5)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb3-d06",
+              "title": "Lehrplan-Vertiefung LB3 (6)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb3-d07",
+              "title": "Lehrplan-Vertiefung LB3 (7)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb3-d08",
+              "title": "Lehrplan-Vertiefung LB3 (8)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
             }
           ]
         },
@@ -2898,6 +3778,38 @@
                 "Varianz",
                 "Stochastik"
               ]
+            },
+            {
+              "id": "k1112-lb4-d01",
+              "title": "Lehrplan-Vertiefung LB4 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb4-d02",
+              "title": "Lehrplan-Vertiefung LB4 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb4-d03",
+              "title": "Lehrplan-Vertiefung LB4 (3)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb4-d04",
+              "title": "Lehrplan-Vertiefung LB4 (4)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
             }
           ]
         },
@@ -2961,6 +3873,70 @@
               ],
               "released": true,
               "reviewOf": "k1112-lb1-bestimmtes-integral"
+            },
+            {
+              "id": "k1112-lb5-d01",
+              "title": "Lehrplan-Vertiefung LB5 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb5-d02",
+              "title": "Lehrplan-Vertiefung LB5 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb5-d03",
+              "title": "Lehrplan-Vertiefung LB5 (3)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb5-d04",
+              "title": "Lehrplan-Vertiefung LB5 (4)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb5-d05",
+              "title": "Lehrplan-Vertiefung LB5 (5)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb5-d06",
+              "title": "Lehrplan-Vertiefung LB5 (6)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb5-d07",
+              "title": "Lehrplan-Vertiefung LB5 (7)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb5-d08",
+              "title": "Lehrplan-Vertiefung LB5 (8)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
             }
           ]
         },
@@ -3020,6 +3996,14 @@
                 "LK"
               ],
               "released": false
+            },
+            {
+              "id": "k1112-lb6-d01",
+              "title": "Lehrplan-Vertiefung LB6 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
             }
           ]
         },
@@ -3066,6 +4050,62 @@
                 "Punkt",
                 "analytische Geometrie"
               ]
+            },
+            {
+              "id": "k1112-lb7-d01",
+              "title": "Lehrplan-Vertiefung LB7 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb7-d02",
+              "title": "Lehrplan-Vertiefung LB7 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb7-d03",
+              "title": "Lehrplan-Vertiefung LB7 (3)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb7-d04",
+              "title": "Lehrplan-Vertiefung LB7 (4)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb7-d05",
+              "title": "Lehrplan-Vertiefung LB7 (5)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb7-d06",
+              "title": "Lehrplan-Vertiefung LB7 (6)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb7-d07",
+              "title": "Lehrplan-Vertiefung LB7 (7)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
             }
           ]
         },
@@ -3111,6 +4151,46 @@
                 "Volumen",
                 "Optimierung"
               ]
+            },
+            {
+              "id": "k1112-lb8-d01",
+              "title": "Lehrplan-Vertiefung LB8 (1)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb8-d02",
+              "title": "Lehrplan-Vertiefung LB8 (2)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb8-d03",
+              "title": "Lehrplan-Vertiefung LB8 (3)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb8-d04",
+              "title": "Lehrplan-Vertiefung LB8 (4)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
+            },
+            {
+              "id": "k1112-lb8-d05",
+              "title": "Lehrplan-Vertiefung LB8 (5)",
+              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "released": false
             }
           ]
         }

@@ -3,7 +3,8 @@
  * AUTO: tmp/gen_os_st_sks_teilaspekte.py
  * released:false (Pack-Default / nicht freigeben).
  */
-import { bankGenerate, type BioBank } from './biologieBank'
+import { type BioBank } from './biologieBank'
+import { mathBankGenerate } from './mathBank'
 import type { Topic } from './types'
 
 
@@ -2209,26 +2210,26 @@ const stDiff: BioBank = {
 
 
 export const OS_ST_LEHRPLAN_TEILASPEKTE_GENERATORS: Record<string, Topic['generate']> = {
-  "os-k5-lb1-null": bankGenerate(osNull),
-  "os-k5-lb1-rechengesetze": bankGenerate(osRechen),
-  "os-k5-lb4-verschiebungsweite": bankGenerate(osVerschieb),
-  "os-k6-lb1-zahlenstrahl": bankGenerate(osZahlenstrahl),
-  "os-k6-lb1-negative-ausblick": bankGenerate(osNegAusblick),
-  "os-hs-k7-lb2-chancen": bankGenerate(osHsChancen),
-  "os-hs-k7-lb3-zahlerweiterung": bankGenerate(osHsErweit),
-  "os-hs-k7-lb4-verpackung": bankGenerate(osHsVerpackung),
-  "os-hs-k8-lb1-kredit": bankGenerate(osHsKredit),
-  "os-hs-k9-lb2-formel-umstellen": bankGenerate(osHsFormel),
-  "os-hs-k9-lb3-tarif": bankGenerate(osHsTarif),
-  "os-rs-k7-lb3-venn": bankGenerate(osRsVenn),
-  "os-rs-k7-lb4-zweitafel": bankGenerate(osRsZweitafel),
-  "os-rs-k8-lb2-definitionsbereich": bankGenerate(osRsDef),
-  "os-rs-k8-lb3-sekante-tangente": bankGenerate(osRsSekante),
-  "os-rs-k8-lb5-abhaengig": bankGenerate(osRsAbhaengig),
-  "os-rs-k8-lb6-lebenshaltung": bankGenerate(osRsLeben),
-  "os-rs-k9-lb3-monotonie": bankGenerate(osRsMono),
-  "os-rs-k10-lb2-sinus-parameter": bankGenerate(osRsSinus),
-  "os-rs-k10-lb3-gewinnchance": bankGenerate(osRsGewinn),
-  "os-rs-k10-lb4-abgaben": bankGenerate(osRsAbgaben),
-  "st-k1112-differential": bankGenerate(stDiff),
+  "os-k5-lb1-null": mathBankGenerate(osNull),
+  "os-k5-lb1-rechengesetze": mathBankGenerate(osRechen),
+  "os-k5-lb4-verschiebungsweite": mathBankGenerate(osVerschieb),
+  "os-k6-lb1-zahlenstrahl": mathBankGenerate(osZahlenstrahl),
+  "os-k6-lb1-negative-ausblick": mathBankGenerate(osNegAusblick),
+  "os-hs-k7-lb2-chancen": mathBankGenerate(osHsChancen),
+  "os-hs-k7-lb3-zahlerweiterung": mathBankGenerate(osHsErweit),
+  "os-hs-k7-lb4-verpackung": mathBankGenerate(osHsVerpackung),
+  "os-hs-k8-lb1-kredit": mathBankGenerate(osHsKredit),
+  "os-hs-k9-lb2-formel-umstellen": mathBankGenerate(osHsFormel),
+  "os-hs-k9-lb3-tarif": mathBankGenerate(osHsTarif),
+  "os-rs-k7-lb3-venn": mathBankGenerate(osRsVenn),
+  "os-rs-k7-lb4-zweitafel": mathBankGenerate(osRsZweitafel),
+  "os-rs-k8-lb2-definitionsbereich": mathBankGenerate(osRsDef),
+  "os-rs-k8-lb3-sekante-tangente": mathBankGenerate(osRsSekante),
+  "os-rs-k8-lb5-abhaengig": mathBankGenerate(osRsAbhaengig),
+  "os-rs-k8-lb6-lebenshaltung": mathBankGenerate(osRsLeben),
+  "os-rs-k9-lb3-monotonie": mathBankGenerate(osRsMono),
+  "os-rs-k10-lb2-sinus-parameter": mathBankGenerate(osRsSinus),
+  "os-rs-k10-lb3-gewinnchance": mathBankGenerate(osRsGewinn),
+  "os-rs-k10-lb4-abgaben": mathBankGenerate(osRsAbgaben),
+  "st-k1112-differential": mathBankGenerate(stDiff),
 }

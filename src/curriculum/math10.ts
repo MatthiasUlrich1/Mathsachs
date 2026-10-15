@@ -18,6 +18,7 @@ import {
 } from './mathUpperDense'
 import type { Grade, Topic } from './types'
 import { MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE } from './mathLehrplanTeilaspekte'
+import { MATH_DICHTE_BY_GRADE } from './mathDichteFill'
 
 // ---------------------------------------------------------------------------
 // Lernbereich 1 — Wachstumsvorgänge und periodische Vorgänge
@@ -604,7 +605,14 @@ export const klasse10: Grade = {
       id: 'lb1',
       title: 'Wachstumsvorgänge und periodische Vorgänge',
       ustd: 22,
-      topics: [zinsen, zinseszins, prozentualeZunahme, expWachstum, k10SinusWert],
+      topics: [
+        zinsen,
+        zinseszins,
+        prozentualeZunahme,
+        expWachstum,
+        k10SinusWert,
+        ...(MATH_DICHTE_BY_GRADE["math10"] ?? []).filter((x) => x.areaId === "lb1").map((x) => x.topic),
+      ],
     },
     {
       id: 'lb2',
@@ -612,13 +620,21 @@ export const klasse10: Grade = {
       ustd: 16,
       topics: [erwartungswert, erwartungswertWuerfel, k10VarianzZufall,
         ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math10"].filter((x) => x.areaId === "lb2").map((x) => x.topic),
+        ...(MATH_DICHTE_BY_GRADE["math10"] ?? []).filter((x) => x.areaId === "lb2").map((x) => x.topic),
       ],
     },
     {
       id: 'lb3',
       title: 'Algebraisches Lösen geometrischer Probleme',
       ustd: 20,
-      topics: [rechteckBreite, quadratSeite, rechteckBreiteUmfang, k10Sinussatz, k10Kosinussatz],
+      topics: [
+        rechteckBreite,
+        quadratSeite,
+        rechteckBreiteUmfang,
+        k10Sinussatz,
+        k10Kosinussatz,
+        ...(MATH_DICHTE_BY_GRADE["math10"] ?? []).filter((x) => x.areaId === "lb3").map((x) => x.topic),
+      ],
     },
     {
       id: 'lb4',
@@ -633,6 +649,7 @@ export const klasse10: Grade = {
         k10FolgeExplizit,
         ...math10GraphicReviews,
         ...MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE["math10"].filter((x) => x.areaId === "lb4").map((x) => x.topic),
+        ...(MATH_DICHTE_BY_GRADE["math10"] ?? []).filter((x) => x.areaId === "lb4").map((x) => x.topic),
       ],
     },
     {
