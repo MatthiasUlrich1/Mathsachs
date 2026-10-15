@@ -135,7 +135,7 @@ export function fischeRaubFriedClassify(rng: Rng): Task {
   )
   const presentedItems = order.map((i) => items[i]!)
   const labelOf = (idx: number) => presentedItems[idx]?.label ?? ''
-  const slotLabels = ['Raubfisch', 'Raubfisch', 'Friedfisch', 'Friedfisch']
+  const slotLabels = ['Raubfisch (1)', 'Raubfisch (2)', 'Friedfisch (1)', 'Friedfisch (2)']
   const findIdx = (name: string) =>
     presentedItems.findIndex((it) => it.label === name)
   const sampleSlots = [

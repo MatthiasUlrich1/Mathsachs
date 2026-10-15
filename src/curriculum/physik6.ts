@@ -2719,7 +2719,9 @@ const schaltsymbole: Topic['generate'] = mixedVariants(
       explanation: `Das gezeigte Schaltsymbol steht für: ${correct}.`,
       visualContent: circuitSymbolSvg(kind),
       instruction: 'Tippe den Namen des Symbols:',
-      dedupeKey: `ph:k6:symbole:rec:${kind}`,
+      // Gleiches Symbol = gleicher Fakt (rec/name nicht doppelt in einer Runde).
+      dedupeKey: `ph:k6:symbole:${kind}`,
+      contentIds: [`ph:k6:symbole:${kind}`],
     })
   },
   (rng) => {
@@ -2736,14 +2738,15 @@ const schaltsymbole: Topic['generate'] = mixedVariants(
       otherLabels.filter((w) => w !== w1 && w !== w2),
     )
     return choicePickTask({
-      question: 'Welches Schaltsymbol wird hier gezeigt?',
+      question: 'Ordne dem gezeigten Schaltsymbol den richtigen Namen zu.',
       choices: shuffleChoices(rng, [correct, w1, w2, w3], correct),
       correct,
       solution: correct,
       explanation: `Das abgebildete Symbol steht für „${correct}“.`,
       visualContent: circuitSymbolSvg(kind),
       instruction: 'Tippe die passende Zuordnung:',
-      dedupeKey: `ph:k6:symbole:name:${kind}`,
+      dedupeKey: `ph:k6:symbole:${kind}`,
+      contentIds: [`ph:k6:symbole:${kind}`],
     })
   },
   (rng) => {

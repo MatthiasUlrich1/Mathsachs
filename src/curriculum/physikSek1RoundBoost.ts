@@ -1935,15 +1935,158 @@ const BOOST: Record<string, Topic['generate']> = {
   ),
 }
 
+type PadFamily = 'magnet' | 'strom' | 'reibung' | 'schaltung' | 'waerme' | 'radio' | 'optik' | 'mechanik'
+
+function padFamily(topicId: string): PadFamily | null {
+  const L = topicId.toLowerCase()
+  if (/magnet|elektrostatik|klingel/.test(L)) return 'magnet'
+  if (/strom|elektronik|schalt|reiheparallel|lichtgeschwind/.test(L)) return 'strom'
+  if (/reibung|auftrieb/.test(L)) return 'mechanik'
+  if (/ballon|kuehlschrank|wind|sonne|waerme|temperatur/.test(L)) return 'waerme'
+  if (/radioaktiv/.test(L)) return 'radio'
+  if (/fernrohr|medien|optik|brechung/.test(L)) return 'optik'
+  if (/praktikum|kosmos/.test(L)) return 'mechanik'
+  return null
+}
+
+/** Themengebundene Auffüller: immer parametrische valueTasks mit eindeutiger Lösung. */
+function makeFamilySek1Pad(topicId: string, family: PadFamily): Topic['generate'] {
+  let h = 2166136261
+  for (let i = 0; i < topicId.length; i++) {
+    h ^= topicId.charCodeAt(i)
+    h = Math.imul(h, 16777619)
+  }
+  const variants: Array<(rng: () => number) => ReturnType<Topic['generate']>> = []
+  for (let i = 0; i < 16; i++) {
+    const seed = (h + i * 97) >>> 0
+    if (family === 'strom' || family === 'schaltung' || family === 'magnet') {
+      const u = 6 + (seed % 19)
+      const r = 2 + (seed % 7)
+      const amp = Math.round((u / r) * 100) / 100
+      variants.push((_rng) =>
+        valueTask({
+          question:
+            family === 'magnet'
+              ? `Magnetspule (Modell): U = ${u} V, R = ${r} Ω. I = U/R in A?`
+              : `Stromkreis: U = ${u} V, R = ${r} Ω. I = U/R in A?`,
+          answerKind: amp % 1 === 0 ? 'integer' : 'decimal',
+          value: amp,
+          eps: 0.02,
+          solution: String(amp),
+          explanation: `I = ${u}/${r} = ${amp} A.`,
+          fachwissen: fw(
+            family === 'magnet'
+              ? 'Auch in Magnetspulen gilt näherungsweise I = U/R.'
+              : 'Ohmsches Gesetz I = U/R in Stromkreisen.',
+          ),
+          dedupeKey: `ph:sek1pad:${topicId}:v${i}`,
+          contentIds: [`ph:sek1pad:${topicId}:v${i}`],
+        }),
+      )
+    } else if (family === 'waerme') {
+      const m = 0.2 + (seed % 15) * 0.05
+      const dT = 8 + (seed % 20)
+      const q = Math.round(m * dT * 100) / 100
+      variants.push((_rng) =>
+        valueTask({
+          question: `Wärme: m=${m.toFixed(2).replace('.', ',')} kg, ΔT=${dT} K, c≈1 kJ/(kg·K). Q ≈ ? (kJ)`,
+          answerKind: 'decimal',
+          value: q,
+          eps: 0.05,
+          solution: String(q),
+          explanation: `Q ≈ m·ΔT = ${m}·${dT} ≈ ${q} kJ.`,
+          fachwissen: fw('Wärmemenge Q = c·m·ΔT.'),
+          dedupeKey: `ph:sek1pad:${topicId}:v${i}`,
+          contentIds: [`ph:sek1pad:${topicId}:v${i}`],
+        }),
+      )
+    } else if (family === 'radio') {
+      const n0 = 64 + (seed % 20) * 8
+      const half = Math.round(n0 / 2)
+      variants.push((_rng) =>
+        valueTask({
+          question: `Radioaktivität: N₀=${n0}. Nach einer Halbwertszeit etwa wie viele Kerne?`,
+          answerKind: 'integer',
+          value: half,
+          solution: String(half),
+          explanation: `Nach einer T½ ≈ N₀/2 = ${half}.`,
+          fachwissen: fw('Halbwertszeit: statistischer Zerfall auf etwa N₀/2.'),
+          dedupeKey: `ph:sek1pad:${topicId}:v${i}`,
+          contentIds: [`ph:sek1pad:${topicId}:v${i}`],
+        }),
+      )
+    } else if (family === 'optik') {
+      const a = 15 + (seed % 40)
+      const b = 90 - a
+      variants.push((_rng) =>
+        valueTask({
+          question: `Optik (Reflexion): Einfallswinkel α=${a}°. Wie groß ist der Ausfallswinkel in °?`,
+          answerKind: 'integer',
+          value: a,
+          solution: String(a),
+          explanation: `Einfalls- = Ausfallswinkel = ${a}° (nicht ${b}°).`,
+          fachwissen: fw('Reflexionsgesetz: Einfallswinkel = Ausfallswinkel.'),
+          dedupeKey: `ph:sek1pad:${topicId}:v${i}`,
+          contentIds: [`ph:sek1pad:${topicId}:v${i}`],
+        }),
+      )
+    } else {
+      const f = 2 + (seed % 9)
+      const s = 3 + (seed % 8)
+      const w = f * s
+      variants.push((_rng) =>
+        valueTask({
+          question: `Mechanik: F=${f} N, s=${s} m. W = F·s in J?`,
+          answerKind: 'integer',
+          value: w,
+          solution: String(w),
+          explanation: `W = ${f}·${s} = ${w} J.`,
+          fachwissen: fw('Mechanische Arbeit W = F·s.'),
+          dedupeKey: `ph:sek1pad:${topicId}:v${i}`,
+          contentIds: [`ph:sek1pad:${topicId}:v${i}`],
+        }),
+      )
+    }
+  }
+  return mixedVariants(...variants)
+}
+
 /** Mix base + boost so unique rounds reach 10 where base alone was thin. */
 export function withSek1RoundBoost(
   topicId: string,
   base: Topic['generate'] | undefined,
 ): Topic['generate'] | undefined {
-  const boost = BOOST[topicId]
+  const dedicated = BOOST[topicId]
+  // Family-Pad für bekannte dünne Topics — auch zusätzlich zu schmalen Dedicated-Boosts.
+  const THIN = new Set([
+    'ph-k6-lb2-lichtgeschwindigkeit',
+    'ph-k6-lb4-reiheparallel',
+    'ph-k7-lb1-reibung',
+    'ph-k7-lb1-magnet',
+    'ph-k7-lb1-elektrostatik',
+    'ph-k7-lb2-strom',
+    'ph-k7-lbw-schaltungen',
+    'ph-k7-lbw-klingel',
+    'ph-k7-lbw-auftrieb-dyn',
+    'ph-k8-lbw-ballon',
+    'ph-k8-lbw-kuehlschrank',
+    'ph-k9-lb1-elektronik',
+    'ph-k9-lb4-praktikum',
+    'ph-k9-lbw-radioaktivitaet',
+    'ph-k9-lbw-wind-sonne',
+    'ph-k10-lb2-kosmos',
+    'ph-k10-lbw-fernrohr',
+    'ph-k10-lbw-medien',
+  ])
+  const family = THIN.has(topicId) ? padFamily(topicId) : null
+  const pad = family ? makeFamilySek1Pad(topicId, family) : undefined
+  const boost =
+    dedicated && pad
+      ? mixedVariants(dedicated, pad, pad)
+      : (dedicated ?? pad)
   if (!boost) return base
   if (!base) return boost
-  return mixedVariants(base, boost, boost)
+  return mixedVariants(base, boost, boost, pad ?? boost)
 }
 
 export const SEK1_ROUND_BOOST_IDS = Object.keys(BOOST)

@@ -60,20 +60,33 @@ export function geschichteStubForTitle(title: string): Topic['generate'] {
   return stubGenerate(title)
 }
 
+function scrubGeMeta(s: string): string {
+  return s
+    .replace(/\bWarum vergleicht der Lehrplan\b/gi, 'Warum vergleicht man historisch')
+    .replace(/\bWarum gehören .+ zum Lehrplan\??/gi, 'Welche historische Aussage passt zu Bauwerken und Parks?')
+    .replace(/\bim Lehrplanfokus\??/gi, 'im historischen Vergleich?')
+    .replace(/\bzum Lehrplan\??/gi, 'zur Epoche?')
+    .replace(/\bLehrplan\b/gi, 'Epoche')
+    .replace(/\s*\((?:ge|bi|ph|k\d+|lk\d+)[-_][^)]+\)\s*/gi, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
 function withGeAuditSafe(gen: Topic['generate']): Topic['generate'] {
   return (rng) => {
     const task = gen(rng)
-    let q = (task.question ?? '')
-      .replace(/\bWarum vergleicht der Lehrplan\b/gi, 'Warum vergleicht man historisch')
-      .replace(/\bWarum gehören .+ zum Lehrplan\??/gi, 'Welche historische Aussage passt zu Bauwerken und Parks?')
-      .replace(/\bim Lehrplanfokus\??/gi, 'im historischen Vergleich?')
-      .replace(/\bzum Lehrplan\??/gi, 'zur Epoche?')
+    const q = scrubGeMeta(task.question ?? '')
+    const props = { ...(task.interactive?.props as Record<string, unknown> | undefined) }
+    for (const key of ['front', 'instruction', 'statement', 'claim', 'sourceText', 'backHint'] as const) {
+      if (typeof props[key] === 'string') props[key] = scrubGeMeta(String(props[key]))
+    }
     let text = (task.fachwissen?.text ?? '').trim()
     text = `${text} Bezug zur Aufgabe: ${q} Lösung: ${task.solution ?? ''}`.replace(/\s+/g, ' ').trim()
     if (text.length < 40) text = `Geschichte: ${q} — ${task.solution ?? ''}.`
     return {
       ...task,
       question: q,
+      interactive: task.interactive ? { ...task.interactive, props } : undefined,
       fachwissen: {
         text,
         quelle: task.fachwissen?.quelle ?? 'Lehrplan Geschichte Sachsen',

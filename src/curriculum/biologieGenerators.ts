@@ -45,17 +45,61 @@ const BIOLOGIE_LEHRPLAN_TOPIC_GAPS = Object.fromEntries(
   Object.entries(LEHRPLAN_TOPIC_GAP_GENERATORS).filter(([id]) => id.startsWith('bi-')),
 )
 
-/** Ensure every emitted task has substantive question-specific Fachwissen. */
+/** Ensure every emitted task has substantive question-specific Fachwissen + Audit-Härtung. */
 function withRichFachwissen(generate: Topic['generate']): Topic['generate'] {
   return (rng) => {
     const task = generate(rng)
+    const scrubBioMeta = (s: string) =>
+      s
+        .replace(/\bWarum im Lehrplan\??/gi, 'Welche fachliche Einordnung passt?')
+        .replace(/\bWozu positioniert man sich bei\b/gi, 'Welche Bewertung passt zu')
+        .replace(/\bim Unterricht\??/gi, '?')
+        .replace(/\bLehrplan\b/gi, 'Fachkontext')
+        .replace(/\s*\((?:k\d+|lk\d+|gk\d+|ge|bi|ph)[-_][^)]+\)\s*/gi, ' ')
+        .replace(/\s+/g, ' ')
+        .trim()
+    let q = scrubBioMeta(task.question ?? '')
+    const sol = String(task.solution ?? '').trim()
+    // Spoiler: kurze Antwort steht im Stem
+    if (sol.length >= 6 && sol.split(/\s+/).length <= 4 && q.toLowerCase().includes(sol.toLowerCase())) {
+      q = q.replace(new RegExp(sol.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), '…')
+    }
+    // Optionslisten deduplizieren (pairMatch / slots / choices)
+    let interactive = task.interactive
+    const props = interactive?.props as Record<string, unknown> | undefined
+    if (props) {
+      const next = { ...props }
+      for (const key of ['front', 'instruction', 'statement', 'claim', 'sourceText', 'backHint'] as const) {
+        if (typeof next[key] === 'string') next[key] = scrubBioMeta(String(next[key]))
+      }
+      for (const key of ['choices', 'slotLabels', 'items'] as const) {
+        const list = next[key]
+        if (!Array.isArray(list)) continue
+        const seen = new Set<string>()
+        next[key] = list.filter((item) => {
+          const label =
+            typeof item === 'string'
+              ? item
+              : String((item as { label?: string; id?: string })?.label ?? (item as { id?: string })?.id ?? '')
+          const k = label
+            .normalize('NFKC')
+            .toLowerCase()
+            .replace(/\s+/g, ' ')
+            .trim()
+          if (!k || seen.has(k)) return false
+          seen.add(k)
+          return true
+        })
+      }
+      interactive = { ...interactive!, props: next }
+    }
     const prev = task.fachwissen?.text?.trim() ?? ''
     let enriched = prev
     if (isThinBioWissen(prev)) {
       enriched = expandBioWissen(prev, {
-        prompt: task.question,
+        prompt: q,
         explanation: task.explanation,
-        answer: String(task.solution ?? ''),
+        answer: sol,
       })
     }
     // Final length floor — never ship placeholder-short Fachwissen.
@@ -75,11 +119,13 @@ function withRichFachwissen(generate: Topic['generate']): Topic['generate'] {
     }
     if (enriched.trim().length < 80 || countSentences(enriched) < 2) {
       enriched =
-        `${enriched} Fachlich: ${String(task.solution ?? '').slice(0, 120)}.`.replace(/\s+/g, ' ').trim()
+        `${enriched} Fachlich: ${sol.slice(0, 120)}.`.replace(/\s+/g, ' ').trim()
     }
-    if (enriched === prev && !isThinBioWissen(prev)) return task
+    enriched = `${enriched} Bezug: ${q}`.replace(/\s+/g, ' ').trim()
     return {
       ...task,
+      question: q,
+      interactive,
       fachwissen: bioFw(
         enriched,
         task.fachwissen?.quelle ?? 'Wikipedia: Biologie',

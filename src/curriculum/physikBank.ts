@@ -12,7 +12,13 @@ export function rewritePhysikPrompt(prompt: string): string {
     /Fachbegriff\s*\(([^)]+)\):\s*Was bedeutet\s*[„"]([^„"”]+)[“"]\s*\?/i,
   )
   if (m) {
-    return `Welche Aussage zu „${m[2]}“ (${m[1]}) ist fachlich richtig?`
+    const term = m[2]!
+    // Klammerhinweis ohne Antwortformel/Spoilers (z. B. „R = ρ·l/A“)
+    let hint = m[1]!.replace(/\s+/g, ' ').trim()
+    if (hint === term || /[ρλΔ=]|·l\/A|h\s*\/\s*p/i.test(hint)) hint = ''
+    return hint
+      ? `Welche Aussage zu „${term}“ (${hint}) ist fachlich richtig?`
+      : `Welche Aussage zu „${term}“ ist fachlich richtig?`
   }
   const m2 = prompt.match(/Was bedeutet\s*[„"]([^„"”]+)[“"]\s*\?/i)
   if (m2) {
@@ -35,6 +41,11 @@ export function rewritePhysikPrompt(prompt: string): string {
   const m4 = prompt.match(/^Was ist (ein|eine|der|die|das)\s+(.+?)\s*\??\s*$/i)
   if (m4) {
     const term = m4[2]!.replace(/\s+/g, ' ').trim()
+    return `Welche Aussage zu „${term}“ ist fachlich richtig?`
+  }
+  const m5 = prompt.match(/^Was versteht man unter\s+(einem|einer|einem|dem|der|das)?\s*(.+?)\s*\??\s*$/i)
+  if (m5) {
+    const term = m5[2]!.replace(/\s+/g, ' ').trim()
     return `Welche Aussage zu „${term}“ ist fachlich richtig?`
   }
   return prompt
@@ -65,13 +76,23 @@ function sanitizePhysikBank(bank: BioBank): BioBank {
     )
 
   // Pairs → Facts mit Themenhinweis (mathBank würde sonst „Welche Aussage zu X?“ ohne Kontext).
+  // Hinweis darf die Antwortformel nicht spoilern (z. B. „Widerstandsgesetz R = ρ·l/A“).
+  const safeHint = (term: string, meaning: string) => {
+    if (!hint) return undefined
+    const h = hint.replace(/\s+/g, ' ').trim()
+    if (!h || h === term) return undefined
+    if (h.includes(meaning) || meaning.includes(h)) return term
+    if (/[ρλΔ=·]/.test(h) && /[ρλΔ=·]/.test(meaning)) return term
+    return h
+  }
   const fromPairs =
     bank.pairs?.map((p) => {
       const wissen = cleanWissen(p.wissen) ?? `${p.term}: ${p.meaning}.`
+      const h = safeHint(p.term, p.meaning)
       return {
         concept: p.concept,
-        prompt: hint
-          ? `Welche Aussage zu „${p.term}“ (${hint}) ist fachlich richtig?`
+        prompt: h
+          ? `Welche Aussage zu „${p.term}“ (${h}) ist fachlich richtig?`
           : `Welche Aussage zu „${p.term}“ ist fachlich richtig?`,
         answer: p.meaning,
         wrong: undefined as string[] | undefined,
@@ -81,21 +102,43 @@ function sanitizePhysikBank(bank: BioBank): BioBank {
     }) ?? []
 
   const facts = [
-    ...(bank.facts?.map((f) => ({
-      ...f,
-      prompt: rewritePhysikPrompt(f.prompt),
-      wissen: cleanWissen(f.wissen) ?? f.wissen,
-      explanation: cleanWissen(f.explanation) ?? f.explanation,
-      gap: undefined,
-      gapAccepted: undefined,
-      flashFront: undefined,
-    })) ?? []),
+    ...(bank.facts?.map((f) => {
+      let prompt = rewritePhysikPrompt(f.prompt)
+      const ans = String(f.answer ?? '').trim()
+      // Spoiler: Antwortwort steht im Stem (z. B. Hinweis „Photonenenergie …“)
+      if (ans.length >= 6 && prompt.toLowerCase().includes(ans.toLowerCase())) {
+        prompt = prompt.replace(new RegExp(ans.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), '…')
+      }
+      return {
+        ...f,
+        prompt,
+        wissen: cleanWissen(f.wissen) ?? f.wissen,
+        explanation: cleanWissen(f.explanation) ?? f.explanation,
+        gap: undefined,
+        gapAccepted: undefined,
+        flashFront: undefined,
+      }
+    }) ?? []),
     ...fromPairs,
   ]
+  // Gleicher Fakt nicht doppelt (pair+fact) — sonst round-dup „gleicher Fakt“.
+  const seenAns = new Set<string>()
+  const dedupedFacts = facts.filter((f) => {
+    const k = String(f.answer ?? '')
+      .normalize('NFKC')
+      .toLowerCase()
+      .replace(/\s+/g, '')
+      .replace(/[·⋅]/g, '/')
+      .replace(/∕/g, '/')
+      .trim()
+    if (!k || seenAns.has(k)) return false
+    seenAns.add(k)
+    return true
+  })
 
   return {
     ...bank,
-    facts: facts.length ? facts : undefined,
+    facts: dedupedFacts.length ? dedupedFacts : undefined,
     pairs: undefined,
     trueFalse: undefined,
   }

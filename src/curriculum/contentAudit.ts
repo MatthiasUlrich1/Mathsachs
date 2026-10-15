@@ -357,7 +357,7 @@ export function isSloganStatement(raw: string): boolean {
   const right = colon[2]!.replace(/[.!?]+$/, '').trim()
   const words = right.split(/\s+/).filter(Boolean)
   const hasVerb =
-    /\b(ist|sind|war|waren|wird|werden|wurde|wurden|hat|haben|hatte|hatten|kann|können|konnte|muss|müssen|soll|sollen|darf|gilt|galt|liegt|lag|steigt|fällt|fließt|bedeutet|bedeutete|entsteht|entstand|führt|führte|bildet|bildete|leitet|enthält|gibt|gab|erhält|erhielt|bleibt|blieb|zeigt|zeigte|regiert|regierte|herrschte|begann|endete|kam|gehört|gehörte|besteht|bestand|wirkt|wirken|dient|diente|braucht|brauchen|nimmt|nehmen|erzeugt|transportiert|schützt|steuert|verbindet|trennt|teilt|lebt|leben|frisst|fressen|atmet|atmen|wächst|wachsen|bewegt|ändert|nennt|nannte|heißt|hieß)\b/i.test(
+    /\b(ist|sind|war|waren|wird|werden|wurde|wurden|hat|haben|hatte|hatten|kann|können|konnte|muss|müssen|soll|sollen|darf|gilt|galt|liegt|lag|steigt|fällt|fließt|bedeutet|bedeutete|entsteht|entstand|führt|führte|bildet|bildete|leitet|enthält|gibt|gab|erhält|erhielt|bleibt|blieb|zeigt|zeigte|regiert|regierte|herrschte|begann|endete|kam|gehört|gehörte|besteht|bestand|wirkt|wirken|dient|diente|braucht|brauchen|nimmt|nehmen|erzeugt|transportiert|schützt|steuert|verbindet|trennt|teilt|lebt|leben|frisst|fressen|atmet|atmen|wächst|wachsen|bewegt|ändert|nennt|nannte|heißt|hieß|verdaut|verdauen|antreibt|antreiben|aufnimmt|aufnehmen|zerreißt|zerreißen|festhält|festhalten|unterstützt|unterstützen|speichert|speichern|zerkleinert|zerkleinern|hält|halten|sieht|sehen|orientiert|orientieren)\b/i.test(
       right,
     )
   return !hasVerb && words.length <= 6
@@ -503,7 +503,7 @@ export function findFachwissenIssues(task: Task, topic: Topic): string[] {
 // ---------------------------------------------------------------------------
 
 const GENERIC_STEM =
-  /^(ordne|sortiere|beschrifte|zuordnung|klick-paare|karteikarte|stimmt die aussage|richtig oder falsch|wahr oder falsch|was zeigt die abbildung|welcher bruchanteil ist|lies die koordinaten|welches netz|multipliziere schriftlich|addiere schriftlich|subtrahiere schriftlich|dividiere schriftlich|welche aussagen? (stimmen|stimmt|sind richtig|ist richtig)|was passt|tippe|wähle|ziehe|baue die formel|welches (der (drei|vier) )?netz|dividiere schriftlich|setze den punkt|markiere)/i
+  /^(ordne|sortiere|beschrifte|zuordnung|klick-paare|karteikarte|stimmt die aussage|richtig oder falsch|wahr oder falsch|was zeigt die abbildung|welches schaltsymbol|anordnung\b|beim übergang\b|was passiert zwischen|welcher bruchanteil ist|lies die koordinaten|welches netz|multipliziere schriftlich|addiere schriftlich|subtrahiere schriftlich|dividiere schriftlich|welche aussagen? (zu\b|stimmen|stimmt|sind richtig|ist richtig|fachlich)|welche (bewertung|alltagsbedeutung|modellaussage)\b|was bedeutet|was meint|fachbegriff|überblick\b|was passt|tippe|wähle|ziehe|baue die formel|welches (der (drei|vier) )?netz|dividiere schriftlich|setze den punkt|markiere)/i
 
 function interactiveKey(task: Task): string {
   const ix = task.interactive

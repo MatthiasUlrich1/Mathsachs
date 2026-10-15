@@ -12,8 +12,18 @@ import { AUDIT_PACK_NAMES, loadAuditTopics, type AuditPackName } from './content
 const SEEDS = 40
 const ROUND_SEEDS = 3
 
-/** Packs mit abgeschlossenem Qualitäts-Audit (A1 Mathe Gym, A2 Mathe OS/ST/SKS). */
-const ENFORCED: AuditPackName[] = ['gym-mathe', 'os-hs', 'os-rs', 'gym-st', 'sks-hs', 'sks-rs']
+/** Packs mit abgeschlossenem Qualitäts-Audit (A1–A8). */
+const ENFORCED: AuditPackName[] = [
+  'gym-mathe',
+  'gym-physik',
+  'gym-bio',
+  'gym-geschichte',
+  'os-hs',
+  'os-rs',
+  'gym-st',
+  'sks-hs',
+  'sks-rs',
+]
 
 const GROUPS: Record<string, AuditPackName[]> = {
   'Gymnasium Sachsen (Mathe, Physik, Biologie, Geschichte)': ['gym-mathe', 'gym-physik', 'gym-bio', 'gym-geschichte'],

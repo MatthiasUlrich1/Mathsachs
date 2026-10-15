@@ -295,17 +295,17 @@ const experiment: Topic['generate'] = mixedVariants(
   (rng) => {
     const cases = [
       {
-        q: 'Du änderst die Spannung und misst die Stromstärke. Was ist die unabhängige Variable?',
+        q: 'Du stellst U am Netzgerät ein und notierst I am Amperemeter. Was ist die unabhängige Variable?',
         correct: 'Spannung',
         wrong: ['Stromstärke', 'nur die Farbe der Drähte', 'die Uhrzeit im Labor'],
       },
       {
-        q: 'Du änderst die Spannung und misst die Stromstärke. Was ist die abhängige Variable?',
+        q: 'Du stellst U am Netzgerät ein und notierst I am Amperemeter. Was ist die abhängige Variable?',
         correct: 'Stromstärke',
         wrong: ['Spannung', 'der Widerstand als Einstellung allein', 'das Klassenzimmer'],
       },
       {
-        q: 'Beim Erwärmen änderst du die Heizzeit und misst die Temperatur. Unabhängige Variable?',
+        q: 'Beim Erwärmen stellst du die Dauer der Heizung ein und notierst die Temperatur. Unabhängige Variable?',
         correct: 'Heizzeit',
         wrong: ['Temperatur', 'nur die Masse der Luft draußen', 'der Schulname'],
       },

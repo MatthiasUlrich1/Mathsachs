@@ -237,7 +237,13 @@ function makeOsBoost(topicId: string): Topic['generate'] {
     /quanten|atom|foto|photo|compton|debroglie|kern|bindung|unschaerfe|franck|hertz|grenze/.test(L)
   if (quantumFamily) {
     addMc(70, 'Photonenenergie?', 'E = h·f = h·c/λ', ['E = m·g·h', 'E = ½mv² nur für Photonen', 'E = B·I'], 'Quantenhypothese.')
-    addMc(71, 'de Broglie-Wellenlänge?', 'λ = h / p', ['λ = c / nur für Schall', 'λ = m·g', 'λ = U·I'], 'Materiewellen.')
+    addMc(
+      71,
+      'de Broglie: Welcher Zusammenhang verknüpft Wellenlänge und Impuls?',
+      'Je größer der Impuls, desto kleiner λ (λ = h/p)',
+      ['λ wächst proportional zu p', 'λ ist unabhängig von p', 'Nur Schall hat eine de-Broglie-λ'],
+      'Materiewellen: λ = h/p.',
+    )
     addMc(72, 'Bindungsenergie pro Nukleon …', 'misst die Stabilität von Kernen', ['ist die kinetische Energie der Elektronen nur', 'ist immer negativ ohne Betrag', 'gilt nur für Moleküle ohne Kern'], 'Massendefekt ↔ Energie.')
     const fs = nums(id, 3, 1, 9)
     fs.forEach((f, i) => {
@@ -282,6 +288,52 @@ function makeOsBoost(topicId: string): Topic['generate'] {
   if (/relativ|\/c\b|lb6-c|lb6-relativ/.test(L) || L.endsWith('-c')) {
     addMc(80, 'c im Vakuum ist …', 'invariant / gleich für alle Inertialsysteme', ['abhängig von der Quellenbewegung additiv klassisch', 'nur in Wasser definiert', 'unendlich'], 'Postulat der SRT.')
     addMc(81, 'Zeitdilatation: bewegte Uhren …', 'gehen aus Sicht des ruhenden Beobachters langsamer', ['gehen immer schneller', 'ändern die Ladung', 'löschen Massenerhaltung'], 'γ-Faktor.')
+    addMc(82, 'Längenkontraktion betrifft …', 'Längen parallel zur Relativbewegung', ['nur Farben', 'nur die elektrische Ladung', 'nur Temperaturen absolut'], 'SRT: Längeneffekt.')
+    addMc(83, 'Ein Inertialsystem ist …', 'ein Bezugssystem ohne Beschleunigung (kräftefrei)', ['jedes rotierende Karussell', 'nur das Erdzentrum', 'ein System mit wechselnder Masse'], 'SRT setzt Inertialsysteme voraus.')
+    addMc(84, 'Ruhemasse eines Teilchens …', 'ist in seinem Ruhesystem definiert', ['ändert sich mit der Farbe', 'ist immer null', 'hängt nur vom Ort ab'], 'Ruhemasse vs. Energie.')
+    addMc(85, 'E = mc² verknüpft …', 'Energie und Masse', ['nur Druck und Volumen', 'nur Strom und Spannung', 'nur Wellenlänge und Farbe'], 'Masse-Energie-Äquivalenz.')
+    const betaVals = nums(id + 'b', 4, 1, 9)
+    betaVals.forEach((b, i) => {
+      const vOverC = (b / 10).toFixed(1).replace('.', ',')
+      variants.push((_rng) =>
+        choicePickTask({
+          question: `Ein Teilchen bewegt sich mit v ≈ ${vOverC}·c. Welche Aussage zur SRT passt?`,
+          choices: shuffle(_rng, [
+            'Klassische Addition der Geschwindigkeiten reicht nicht mehr aus',
+            'c hängt von der Quellenbewegung ab',
+            'Zeitdilatation tritt nur bei v = 0 auf',
+            'Masse ist immer negativ',
+          ]),
+          correct: 'Klassische Addition der Geschwindigkeiten reicht nicht mehr aus',
+          solution: 'Klassische Addition der Geschwindigkeiten reicht nicht mehr aus',
+          explanation: `Bei v ≈ ${vOverC}·c sind relativistische Effekte relevant.`,
+          fachwissen: fw('Spezielle Relativität: c konstant, Zeit/Länge relativ.'),
+          dedupeKey: `ph:osboost:${id}:beta${i}`,
+          contentIds: [`ph:osboost:${id}:beta${i}`],
+        }),
+      )
+    })
+    variants.push((_rng) =>
+      multiSelectTask({
+        question: 'Welche Aussagen zur speziellen Relativität stimmen?',
+        choices: [
+          'c im Vakuum ist für alle Inertialsysteme gleich',
+          'Bewegte Uhren gehen aus Sicht des ruhenden Beobachters langsamer',
+          'Geschwindigkeiten addiert man immer klassisch ohne Grenze',
+          'Ruheenergie hängt mit der Ruhemasse zusammen',
+        ],
+        correct: [
+          'c im Vakuum ist für alle Inertialsysteme gleich',
+          'Bewegte Uhren gehen aus Sicht des ruhenden Beobachters langsamer',
+          'Ruheenergie hängt mit der Ruhemasse zusammen',
+        ],
+        solution: 'c invariant, Zeitdilatation, E₀=mc² — keine klassische unbegrenzte Addition.',
+        explanation: 'Kernaussagen der speziellen Relativitätstheorie.',
+        fachwissen: fw('Postulate und Folgen der SRT.'),
+        dedupeKey: `ph:osboost:${id}:multi-srt`,
+        contentIds: [`ph:osboost:${id}:multi-srt`],
+      }),
+    )
   }
 
   // Universal Ohm/Mittelwert nur, wenn keine Themenfamilie greift —

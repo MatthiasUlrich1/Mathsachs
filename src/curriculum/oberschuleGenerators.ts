@@ -854,8 +854,9 @@ export function withOsTopicIdentity(
     // Tag: bei TF in die Anführungszeichen (Audit-Key = tf:Aussage), sonst ans Ende
     // (Generic-Stem „Ordne…“ muss am Prompt-Anfang erkennbar bleiben).
     if (idKey && !q.includes(idKey)) {
-      if (/Stimmt die Aussage/i.test(q) && /[„"“]/.test(q)) {
-        const tagged = q.replace(/([„"“])([^„"“”]+)([“”"])/, `$1$2 · ${idKey}$3`)
+      // TF: Tag nur ans Ende der Aussage, wenn keine verschachtelten Anführungszeichen
+      if (/Stimmt die Aussage/i.test(q) && /[„"][^„"“”]+[“”"]/.test(q) && !/„[^”]*[„"]/.test(q)) {
+        const tagged = q.replace(/([„"])([^„"“”]+)([“”"])/, `$1$2 · ${idKey}$3`)
         q = tagged !== q ? tagged : `${q} · ${idKey}`
       } else {
         q = `${q} · ${idKey}`
@@ -870,7 +871,11 @@ export function withOsTopicIdentity(
       }
     }
     const fromContent = (task.contentIds ?? []).filter((c) => c.trim()).join('|')
-    const visualBit = task.visualContent ? String(task.visualContent.length) + ':' + task.visualContent.slice(0, 40) : ''
+    const visualBit = task.visualContent
+      ? String(task.visualContent.length) + ':' + task.visualContent.slice(0, 40)
+      : ''
+    // Eine topic-spezifische Identität — mehrere contentIds (z. B. Anatomie-Slots)
+    // würden sonst die Runde vorzeitig blockieren.
     const dedupeKey = task.dedupeKey
       ? `${topicId}::${task.dedupeKey}`
       : fromContent

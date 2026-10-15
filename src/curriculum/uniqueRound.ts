@@ -26,6 +26,7 @@ function isGenericPromptStem(stem: string): boolean {
     /fachbegriffe ihren erkl/i.test(stem) ||
     /lebensmerkmale ihren erkl/i.test(stem) ||
     /welches schaltsymbol/i.test(stem) ||
+    /ordne dem gezeigten schaltsymbol/i.test(stem) ||
     /ist der schalter offen oder geschlossen/i.test(stem) ||
     // Sort prompts share one stem; item labels carry uniqueness (see dragDropSort).
     /^sortiere (die )?größen/i.test(stem) ||

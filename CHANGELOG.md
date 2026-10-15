@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.93] – 2026-10-15
+
+### Behoben
+- **A3–A8 Qualitäts-Audit:** Physik Sek I/OS, Bio, Geschichte und Cross-Topic
+  über alle Packs auf 0 Verstöße; `ENFORCED` umfasst alle Audit-Packs.
+- **Physik:** TF→MC, Short-Round-Pads, Spoiler/Notation, de-Broglie-Round-Dups.
+- **Bio/Geschichte:** Slogan-TF, Meta-Prompts in Props, Duplikat-Optionen.
+
 ## [0.28.92] – 2026-10-15
 
 ### Behoben

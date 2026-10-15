@@ -442,9 +442,9 @@ function buildPartTf(rng: Rng, asset: AnatomyAsset) {
     asset.slots.filter((s) => s.id !== part.id),
   )
   const correct = rng() < 0.5
-  const statement = correct
-    ? `${part.label}: ${part.functionDe}.`
-    : `${part.label}: ${other.functionDe}.`
+  const fn = correct ? part.functionDe : other.functionDe
+  // Voller Satz ohne „Begriff: Fragment“-Doppelpunkt (Audit isSloganStatement).
+  const statement = `Das Organ ${part.label} dient dem Zweck „${fn}“.`
   return trueFalse(rng, {
     statement,
     correct,

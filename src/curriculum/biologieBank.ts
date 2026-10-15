@@ -418,8 +418,8 @@ export function stripBioBankSlug(text: string): string {
     .replace(/^\(([a-z0-9äöüß_-]+)\)\s+/i, '')
     // Theme slug prefix on flash fronts only (lowercase keys like "baeume: …").
     .replace(/^([a-z][a-z0-9_-]*):\s+(?=\S)/, '')
-    // Trailing topic slug in flash fronts: `Term (k5-lbw-saurier)`
-    .replace(/\s*\((?:k\d+|ge|bi|ph|os|st|sks)[-_][^)]+\)\s*$/i, '')
+    // Trailing topic slug in flash fronts: `Term (k5-lbw-saurier)` / `(lk12-lb5-systematik)`
+    .replace(/\s*\((?:k\d+|lk\d+|gk\d+|ge|bi|ph|os|st|sks)[-_][^)]+\)\s*/gi, ' ')
     .replace(/\s+/g, ' ')
     .trim()
 }
@@ -613,7 +613,7 @@ export function bioFactQuestion(
 }
 
 /** Prefer large Zuordnungen when the Begriffspool allows (4–6, not always 3). */
-function pickPairSubset<T extends { term: string }>(rng: Rng, pairs: T[]): T[] {
+function pickPairSubset<T extends { term: string; meaning?: string }>(rng: Rng, pairs: T[]): T[] {
   const n = pairs.length
   if (n <= 3) return shuffle(rng, pairs)
   let size = 3
@@ -622,20 +622,30 @@ function pickPairSubset<T extends { term: string }>(rng: Rng, pairs: T[]): T[] {
   else if (n >= 5) size = 4
 
   const shuffled = shuffle(rng, pairs)
-  // Prefer unique left labels so interchangeable duplicates are rare.
+  // Unique left labels AND unique meanings (Audit: pairMatch.right Duplikate).
   const unique: T[] = []
-  const seen = new Set<string>()
+  const seenTerm = new Set<string>()
+  const seenMeaning = new Set<string>()
   for (const p of shuffled) {
-    const key = p.term.trim().toLowerCase()
-    if (seen.has(key)) continue
-    seen.add(key)
+    const termKey = p.term.trim().toLowerCase()
+    const meaningKey = String(p.meaning ?? '')
+      .normalize('NFKC')
+      .toLowerCase()
+      .replace(/\s+/g, ' ')
+      .trim()
+    if (seenTerm.has(termKey) || (meaningKey && seenMeaning.has(meaningKey))) continue
+    seenTerm.add(termKey)
+    if (meaningKey) seenMeaning.add(meaningKey)
     unique.push(p)
     if (unique.length >= size) return unique
   }
   if (unique.length >= 3) return unique
-  // Last resort: allow duplicates so the match still has enough rows.
+  // Last resort: allow meaning reuse so the match still has enough rows.
   for (const p of shuffled) {
     if (unique.includes(p)) continue
+    const termKey = p.term.trim().toLowerCase()
+    if (seenTerm.has(termKey)) continue
+    seenTerm.add(termKey)
     unique.push(p)
     if (unique.length >= Math.min(size, 3)) break
   }

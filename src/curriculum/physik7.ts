@@ -1465,9 +1465,9 @@ const umwandlung: Topic['generate'] = mixedVariants(
       question: 'Baue die Taschenlampen-Kette. Einen Block brauchst du nicht.',
       items: [
         { label: 'chemisch', value: 0 },
-        { label: '→', value: 1 },
+        { label: '→₁', value: 1 },
         { label: 'elektrisch', value: 2 },
-        { label: '→', value: 3 },
+        { label: '→₂', value: 3 },
         { label: 'Licht/Wärme', value: 4 },
         { label: 'Ampere', value: 5 },
       ],
@@ -2737,13 +2737,17 @@ const magnet: Topic['generate'] = mixedVariants(
     multiSelectTask({
       question: 'Was gilt für Magnete? (mehrere möglich)',
       choices: [
-        'N und S ziehen sich an',
-        'N und N stoßen sich ab',
-        'S und S stoßen sich ab',
+        'Ungleichnamige Pole (N und S) ziehen sich an',
+        'Gleichnamige Nordpole stoßen sich ab',
+        'Gleichnamige Südpole stoßen sich ab',
         'N und S stoßen sich immer ab',
         'Magnete haben keine Pole',
       ],
-      correct: ['N und S ziehen sich an', 'N und N stoßen sich ab', 'S und S stoßen sich ab'],
+      correct: [
+        'Ungleichnamige Pole (N und S) ziehen sich an',
+        'Gleichnamige Nordpole stoßen sich ab',
+        'Gleichnamige Südpole stoßen sich ab',
+      ],
       solution: 'Ungleichnamig anziehen, gleichnamig abstoßen.',
       explanation: 'N–S anziehen; N–N und S–S abstoßen.',
       instruction: 'Tippe alle zutreffenden Aussagen:',
