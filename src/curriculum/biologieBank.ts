@@ -568,6 +568,25 @@ const COMPACT_PREFIX_THEME: Record<string, string> = {
   saeugfort: 'bei der Säugetierfortpflanzung',
   arbeit: 'bei den Arbeitsweisen der Biologen',
   zeitrechnung: 'in der historischen Zeitrechnung',
+  // Kurze Bank-Keys (K8–K10 Density) → lesbare Phrasen, nie Rohkürzel
+  veg: 'beim vegetativen Nervensystem',
+  hyp: 'bei der Hypophyse',
+  schw: 'bei Schwangerschaft und Geburt',
+  sti: 'bei Stimme und Kehlkopf',
+  org: 'bei den Organen',
+  best: 'bei der Bestimmung',
+  blu: 'bei der Blüte',
+  orgell: 'bei den Organellen',
+  zellat: 'bei der Zellatmung',
+  stoffw: 'beim Stoffwechsel',
+  gewm: 'bei der Gewebelehre',
+  repl: 'bei der Replikation',
+  prot: 'bei der Proteinsynthese',
+  dnaent: 'bei DNA und Evolution',
+  blut: 'beim Blut',
+  gesch: 'bei der Geschlechtsentwicklung',
+  erbk: 'bei der Vererbung',
+  zuecht: 'bei der Züchtung',
 }
 
 /**
@@ -621,16 +640,13 @@ export function themePhraseFromPrefix(prefix?: string): string {
       !/-lb\d+/i.test(s),
   )
   const last = parts[parts.length - 1] ?? ''
-  if (!last || /\d/.test(last) || isInternalTopicAbbrev(last)) {
-    const mapped = COMPACT_PREFIX_THEME[last.replace(/-/g, '')]
-    return mapped ?? ''
-  }
-  if (last.length >= 5 && (/[äöüß]/.test(last) || /-[a-z]/.test(last) || /^[a-zäöüß]{5,}$/i.test(last))) {
-    // Einzelne Camel-/Kurzformen ohne Bindestrich und ohne Umlaut ablehnen,
-    // wenn sie wie Bank-Keys wirken (alles klein, ≤12, keine klaren Wortgrenzen).
-    if (!/-/.test(last) && last.length <= 12 && !/[äöüß]/.test(last) && isInternalTopicAbbrev(last)) {
-      return ''
-    }
+  const lastKey = last.replace(/-/g, '')
+  if (COMPACT_PREFIX_THEME[lastKey]) return COMPACT_PREFIX_THEME[lastKey]!
+  if (!last || /\d/.test(last) || isInternalTopicAbbrev(last)) return ''
+  // Sehr kurze Keys (veg, hyp, …) ohne Mapping nie roh ausgeben
+  if (lastKey.length <= 3) return ''
+  // Lesbare Segmente (blut, herz, fische, saeugetiere, …)
+  if (/^[a-zäöüß]+(?:-[a-zäöüß]+)*$/i.test(last) && last.length >= 4) {
     return `im Themenfeld ${last.replace(/-/g, ' ')}`
   }
   return ''
@@ -908,12 +924,18 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         })
         .join(' ')
       const n = subset.length
-      // Kein Themenfeld-Anhang — Zuordnung sparsam und ohne Prefix-Leaks.
+      // Lesbarer Themenanhang + Anker-Begriff — nie Roh-Abkürzung; Geschwister trennen.
+      const theme = themePhraseFromPrefix(bank.conceptPrefix ?? '')
+      const anchor = [...subset.map((p) => p.term)].sort((a, b) =>
+        a.localeCompare(b, 'de'),
+      )[0]
+      const themeBit = theme ? ` ${theme}` : ''
+      const anchorBit = anchor ? ` (u. a. ${anchor})` : ''
       return matchTermsTask(rng, {
         question:
           n >= 5
-            ? `Ordne ${n} Begriffe den passenden Erklärungen zu.`
-            : `Ordne jeden Begriff der passenden Erklärung zu.`,
+            ? `Ordne ${n} Begriffe den passenden Erklärungen zu${themeBit}${anchorBit}.`
+            : `Ordne jeden Begriff der passenden Erklärung zu${themeBit}${anchorBit}.`,
         terms: subset.map((p) => p.term),
         meanings: subset.map((p) => p.meaning),
         distractor,

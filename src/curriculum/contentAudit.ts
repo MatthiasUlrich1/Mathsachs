@@ -583,9 +583,9 @@ export function findAnswerKeyIssues(task: Task): string[] {
 /** Interne Tracking-Nummern (`· Nr123…`) — verboten im sichtbaren Aufgabentext. */
 const TRACKING_ID_RE = /(?:^|[\s·•])Nr\d{4,}\b/i
 
-/** Topic-/Bank-Kurzformen, die nie in der UI stehen dürfen. */
+/** Topic-/Bank-Kurzformen, die nie in der UI stehen dürfen (keine echten Wörter wie „Säugetiere“). */
 const TOPIC_ABBREV_RE =
-  /\b(krschutz|vgschutz|saeugverh|saeugsoc|saeugsinn|saeugmerk|saeugfort)\b|im Themenfeld\s+(krschutz|vgschutz|saeug\w+|arbeit)\b/i
+  /\b(krschutz|vgschutz|saeugverh|saeugsoc|saeugsinn|saeugmerk|saeugfort)\b|im Themenfeld\s+(krschutz|vgschutz|saeugverh|saeugsoc|saeugsinn|saeugmerk|saeugfort)\b/i
 
 /** Sichtbare Felder, in denen keine internen IDs stehen dürfen. */
 export function visibleTaskTexts(task: Task): string[] {

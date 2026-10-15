@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.99] – 2026-10-15
+
+### Behoben
+- **CI v0.28.98:** Topic-Abbrev-Audit ohne False Positives; Zuordnungs-Stämme
+  themen-/anker-eindeutig (Geschwister-Isolation).
+
 ## [0.28.98] – 2026-10-15
 
 ### Geändert
