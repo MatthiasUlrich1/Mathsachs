@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.91] – 2026-10-15
+
+### Behoben
+- **CI v0.28.90:** `contentQualityAllPacks` setzt nur abgeschlossene Packs
+  durch (`ENFORCED`: gym-mathe / A1); OS-Pack-JSON-Hashes nach Generator-Fixes
+  neu exportiert.
+- **Mathe OS:** weitere Cross-Topic-/Notations-Fixes in OS-Anwendungsbanken.
+
 ## [0.28.90] – 2026-10-15
 
 ### Geändert

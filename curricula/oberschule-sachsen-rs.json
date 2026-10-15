@@ -6,7 +6,7 @@
   "subject": "Mathematik",
   "version": "1.0.6",
   "changelog": "Klassen 5–10 (Realschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung.",
-  "contentHash": "073e0d1d",
+  "contentHash": "88b05efc",
   "official": [
     {
       "id": "os-rs-klasse-5",
@@ -162,24 +162,6 @@
                 "Kommutativgesetz",
                 "Vorrangregeln"
               ]
-            },
-            {
-              "id": "os-k5-lb1-d01",
-              "title": "Vergleichen und Ordnen vertiefen",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-k5-lb1-d02",
-              "title": "Rechenvorteile vertiefen",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Dichte"
-              ]
             }
           ]
         },
@@ -315,15 +297,6 @@
                 "min",
                 "h",
                 "s"
-              ]
-            },
-            {
-              "id": "os-k5-lb2-d01",
-              "title": "Bruch-Dezimal-Prozent vernetzen",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Dichte"
               ]
             }
           ]
@@ -751,51 +724,6 @@
               "title": "Darstellung in Wort, Tabelle, Koordinatensystem und Gleichung",
               "pointsPerTask": 10,
               "tasksPerRound": 10
-            },
-            {
-              "id": "os-k6-lb2-d01",
-              "title": "Zuordnungen Vertiefung 1",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-k6-lb2-d02",
-              "title": "Zuordnungen Vertiefung 2",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-k6-lb2-d03",
-              "title": "Zuordnungen Vertiefung 3",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-k6-lb2-d04",
-              "title": "Zuordnungen Vertiefung 4",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-k6-lb2-d05",
-              "title": "Zuordnungen Vertiefung 5",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Dichte"
-              ]
             }
           ]
         },
@@ -880,24 +808,6 @@
               "title": "Winkelsumme im Viereck",
               "pointsPerTask": 10,
               "tasksPerRound": 10
-            },
-            {
-              "id": "os-k6-lb3-d01",
-              "title": "Ebene Geometrie Vertiefung 1",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-k6-lb3-d02",
-              "title": "Ebene Geometrie Vertiefung 2",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Dichte"
-              ]
             }
           ]
         },
@@ -938,42 +848,6 @@
               "keywords": [
                 "Prisma"
               ]
-            },
-            {
-              "id": "os-k6-lb4-d01",
-              "title": "Körper Vertiefung 1",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-k6-lb4-d02",
-              "title": "Körper Vertiefung 2",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-k6-lb4-d03",
-              "title": "Körper Vertiefung 3",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-k6-lb4-d04",
-              "title": "Körper Vertiefung 4",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Dichte"
-              ]
             }
           ]
         },
@@ -1012,24 +886,6 @@
               "title": "Präsentation zu geometrischen Figuren und Körpern in der Umwelt",
               "pointsPerTask": 10,
               "tasksPerRound": 10
-            },
-            {
-              "id": "os-k6-lb5-d01",
-              "title": "Alltag Mathematik Vertiefung 1",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-k6-lb5-d02",
-              "title": "Alltag Mathematik Vertiefung 2",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Dichte"
-              ]
             }
           ]
         },
@@ -1186,66 +1042,6 @@
               "keywords": [
                 "Zinseszins"
               ]
-            },
-            {
-              "id": "os-rs-k7-lb1-d01",
-              "title": "Prozent- und Zinsrechnung vertiefen (1)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb1",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k7-lb1-d02",
-              "title": "Prozent- und Zinsrechnung vertiefen (2)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb1",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k7-lb1-d03",
-              "title": "Prozent- und Zinsrechnung vertiefen (3)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb1",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k7-lb1-d04",
-              "title": "Prozent- und Zinsrechnung vertiefen (4)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb1",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k7-lb1-d05",
-              "title": "Prozent- und Zinsrechnung vertiefen (5)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb1",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k7-lb1-d06",
-              "title": "Prozent- und Zinsrechnung vertiefen (6)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb1",
-                "Dichte"
-              ]
             }
           ]
         },
@@ -1286,16 +1082,6 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Wahrscheinlichkeit"
-              ]
-            },
-            {
-              "id": "os-rs-k7-lb2-d01",
-              "title": "Stochastik vertiefen (1)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb2",
-                "Dichte"
               ]
             }
           ]
@@ -1389,16 +1175,6 @@
               "title": "Punktkoordinaten in vier Quadranten",
               "pointsPerTask": 10,
               "tasksPerRound": 10
-            },
-            {
-              "id": "os-rs-k7-lb3-d01",
-              "title": "Rationale Zahlen vertiefen (1)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb3",
-                "Dichte"
-              ]
             }
           ]
         },
@@ -1489,26 +1265,6 @@
               "title": "Masse unter Einbeziehung der Dichte",
               "pointsPerTask": 10,
               "tasksPerRound": 10
-            },
-            {
-              "id": "os-rs-k7-lb4-d01",
-              "title": "Vielecke und Prismen vertiefen (1)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb4",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k7-lb4-d02",
-              "title": "Vielecke und Prismen vertiefen (2)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb4",
-                "Dichte"
-              ]
             }
           ]
         },
@@ -1739,36 +1495,6 @@
                 "LGS",
                 "Gleichungssystem"
               ]
-            },
-            {
-              "id": "os-rs-k8-lb2-d01",
-              "title": "Lineare Funktionen vertiefen (1)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb2",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k8-lb2-d02",
-              "title": "Lineare Funktionen vertiefen (2)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb2",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k8-lb2-d03",
-              "title": "Lineare Funktionen vertiefen (3)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb2",
-                "Dichte"
-              ]
             }
           ]
         },
@@ -1826,26 +1552,6 @@
               "keywords": [
                 "Zylinder"
               ]
-            },
-            {
-              "id": "os-rs-k8-lb3-d01",
-              "title": "Kreis und Zylinder vertiefen (1)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb3",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k8-lb3-d02",
-              "title": "Kreis und Zylinder vertiefen (2)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb3",
-                "Dichte"
-              ]
             }
           ]
         },
@@ -1887,26 +1593,6 @@
               "title": "Kongruenz als Spezialfall der Ähnlichkeit",
               "pointsPerTask": 10,
               "tasksPerRound": 10
-            },
-            {
-              "id": "os-rs-k8-lb4-d01",
-              "title": "Ähnlichkeit vertiefen (1)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb4",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k8-lb4-d02",
-              "title": "Ähnlichkeit vertiefen (2)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb4",
-                "Dichte"
-              ]
             }
           ]
         },
@@ -1954,16 +1640,6 @@
                 "unabhängig",
                 "abhängig"
               ]
-            },
-            {
-              "id": "os-rs-k8-lb5-d01",
-              "title": "Zufällige Ereignisse vertiefen (1)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb5",
-                "Dichte"
-              ]
             }
           ]
         },
@@ -2004,16 +1680,6 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Prozent"
-              ]
-            },
-            {
-              "id": "os-rs-k8-lb6-d01",
-              "title": "Alltagsmathematik vertiefen (1)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb6",
-                "Dichte"
               ]
             }
           ]
@@ -2159,76 +1825,6 @@
               "keywords": [
                 "Dachstuhl"
               ]
-            },
-            {
-              "id": "os-rs-k9-lb1-d01",
-              "title": "Dreiecke und Vielecke vertiefen (1)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb1",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k9-lb1-d02",
-              "title": "Dreiecke und Vielecke vertiefen (2)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb1",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k9-lb1-d03",
-              "title": "Dreiecke und Vielecke vertiefen (3)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb1",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k9-lb1-d04",
-              "title": "Dreiecke und Vielecke vertiefen (4)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb1",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k9-lb1-d05",
-              "title": "Dreiecke und Vielecke vertiefen (5)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb1",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k9-lb1-d06",
-              "title": "Dreiecke und Vielecke vertiefen (6)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb1",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k9-lb1-d07",
-              "title": "Dreiecke und Vielecke vertiefen (7)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb1",
-                "Dichte"
-              ]
             }
           ]
         },
@@ -2281,66 +1877,6 @@
               "title": "Zusammengesetzte Körper",
               "pointsPerTask": 10,
               "tasksPerRound": 10
-            },
-            {
-              "id": "os-rs-k9-lb2-d01",
-              "title": "Körper (Pyramide/Kegel/Kugel) vertiefen (1)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb2",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k9-lb2-d02",
-              "title": "Körper (Pyramide/Kegel/Kugel) vertiefen (2)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb2",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k9-lb2-d03",
-              "title": "Körper (Pyramide/Kegel/Kugel) vertiefen (3)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb2",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k9-lb2-d04",
-              "title": "Körper (Pyramide/Kegel/Kugel) vertiefen (4)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb2",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k9-lb2-d05",
-              "title": "Körper (Pyramide/Kegel/Kugel) vertiefen (5)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb2",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k9-lb2-d06",
-              "title": "Körper (Pyramide/Kegel/Kugel) vertiefen (6)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb2",
-                "Dichte"
-              ]
             }
           ]
         },
@@ -2412,46 +1948,6 @@
                 "Monotonie",
                 "Scheitel"
               ]
-            },
-            {
-              "id": "os-rs-k9-lb3-d01",
-              "title": "Quadratische Funktionen vertiefen (1)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb3",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k9-lb3-d02",
-              "title": "Quadratische Funktionen vertiefen (2)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb3",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k9-lb3-d03",
-              "title": "Quadratische Funktionen vertiefen (3)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb3",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k9-lb3-d04",
-              "title": "Quadratische Funktionen vertiefen (4)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb3",
-                "Dichte"
-              ]
             }
           ]
         },
@@ -2500,26 +1996,6 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Spannweite"
-              ]
-            },
-            {
-              "id": "os-rs-k9-lb4-d01",
-              "title": "Beschreibende Statistik vertiefen (1)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb4",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k9-lb4-d02",
-              "title": "Beschreibende Statistik vertiefen (2)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb4",
-                "Dichte"
               ]
             }
           ]
@@ -2663,36 +2139,6 @@
               "keywords": [
                 "Fläche"
               ]
-            },
-            {
-              "id": "os-rs-k10-lb1-d01",
-              "title": "LB1 vertiefen (1)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb1",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k10-lb1-d02",
-              "title": "LB1 vertiefen (2)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb1",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k10-lb1-d03",
-              "title": "LB1 vertiefen (3)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb1",
-                "Dichte"
-              ]
             }
           ]
         },
@@ -2758,16 +2204,6 @@
               "keywords": [
                 "Amplitude",
                 "Periode"
-              ]
-            },
-            {
-              "id": "os-rs-k10-lb2-d01",
-              "title": "LB2 vertiefen (1)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb2",
-                "Dichte"
               ]
             }
           ]
@@ -2872,66 +2308,6 @@
                 "Brutto",
                 "Netto",
                 "Lohnsteuer"
-              ]
-            },
-            {
-              "id": "os-rs-k10-lb4-d01",
-              "title": "LB4 vertiefen (1)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb4",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k10-lb4-d02",
-              "title": "LB4 vertiefen (2)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb4",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k10-lb4-d03",
-              "title": "LB4 vertiefen (3)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb4",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k10-lb4-d04",
-              "title": "LB4 vertiefen (4)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb4",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k10-lb4-d05",
-              "title": "LB4 vertiefen (5)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb4",
-                "Dichte"
-              ]
-            },
-            {
-              "id": "os-rs-k10-lb4-d06",
-              "title": "LB4 vertiefen (6)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "lb4",
-                "Dichte"
               ]
             }
           ]

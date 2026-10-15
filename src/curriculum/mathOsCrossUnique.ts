@@ -57,7 +57,7 @@ export const genOsZahlzeichen: Topic['generate'] = mixedVariants(
     const e = randInt(rng, 0, 9)
     const n = 100 * h + 10 * z + e
     return valueTask({
-      question: `Im Stellenwertsystem: ${h} Hunderter + ${z} Zehner + ${e} Einer. Welche Zahl ist das?`,
+      question: `Im Stellenwertsystem: ${h} Hunderter, ${z} Zehner und ${e} Einer. Welche Zahl ist das?`,
       answerKind: 'integer',
       value: n,
       solution: String(n),
@@ -217,10 +217,10 @@ export const genOsDeckung: Topic['generate'] = mixedVariants(
   (rng) => {
     const u = randInt(rng, 5, 12)
     return valueTask({
-      question: `Ein Rechteck 3 cm × 5 cm und ein dazu kongruentes Rechteck: Wie groß ist der Umfang des zweiten in cm?`,
+      question: `Ein Rechteck 3 cm × 5 cm und ein dazu kongruentes Rechteck: Wie groß ist der Umfang des zweiten?`,
       answerKind: 'integer',
       value: 16,
-      solution: '16',
+      solution: '16 cm',
       unit: 'cm',
       explanation: 'Kongruente Figuren haben gleichen Umfang: 2·(3+5) = 16 cm.',
       fachwissen: fw('Deckungsgleiche Figuren stimmen in allen Längenmaßen überein — also auch im Umfang.'),
@@ -295,48 +295,378 @@ export const genOsBruchVergleichK6: Topic['generate'] = mixedVariants(
   },
 )
 
-/** Parkett: Innenwinkel regelmäßiges n-Eck. */
-export const genOsParkett: Topic['generate'] = mixedVariants(
-  (rng) => {
-    const n = pick(rng, [3, 4, 6])
-    const w = ((n - 2) * 180) / n
-    return valueTask({
-      question: `Welchen Innenwinkel hat ein regelmäßiges ${n}-Eck (für Parkettierung wichtig)?`,
-      answerKind: 'integer',
-      value: w,
-      solution: String(w),
-      unit: '°',
-      explanation: `Innenwinkel = ((${n} − 2) · 180°) : ${n} = ${w}°.`,
-      fachwissen: fw('Parkettierung mit regelmäßigen n-Ecken gelingt, wenn sich Innenwinkel an einer Ecke zu 360° ergänzen.'),
-      dedupeKey: `os:parkett:${n}`,
-      contentIds: [`os:parkett:${n}`],
-    })
-  },
-  (rng) => {
-    const w = pick(rng, [60, 90, 120])
-    const count = 360 / w
-    return valueTask({
-      question: `An einer Ecke eines Parketts stoßen Innenwinkel von je ${w}° zusammen. Wie viele solche Winkel passen um die Ecke?`,
-      answerKind: 'integer',
-      value: count,
-      solution: String(count),
-      explanation: `360° : ${w}° = ${count}.`,
-      fachwissen: fw('Vollständige Parkettierung: Summe der Innenwinkel um einen Punkt muss 360° ergeben.'),
-      dedupeKey: `os:parkett:um:${w}`,
-      contentIds: [`os:parkett:um:${w}`],
-    })
-  },
-  (rng) => {
-    return appliedMc(rng, {
-      question: 'Mit welchem regelmäßigen n-Eck allein kann man die Ebene parkettieren?',
-      correct: 'regelmäßiges Sechseck',
-      distractors: ['regelmäßiges Fünfeck', 'regelmäßiges Achteck', 'regelmäßiges Siebeneck', 'regelmäßiges Neuneck'],
-      explanation: 'Nur Dreieck, Quadrat und regelmäßiges Sechseck parkettieren die Ebene allein.',
-      fachwissen: fw('Einfache Parkette: gleichseitiges Dreieck (60°), Quadrat (90°), regelmäßiges Sechseck (120°).'),
-      dedupeKey: 'os:parkett:welche',
-    })
-  },
-)
+/** Parkett — tag hält HS/RS auseinander. */
+function makeParkett(tag: string, context: string): Topic['generate'] {
+  return mixedVariants(
+    (rng) => {
+      const n = pick(rng, [3, 4, 6])
+      const w = ((n - 2) * 180) / n
+      return valueTask({
+        question: `${context}: Welchen Innenwinkel hat ein regelmäßiges ${n}-Eck?`,
+        answerKind: 'integer',
+        value: w,
+        solution: `${w}°`,
+        unit: '°',
+        explanation: `Innenwinkel = ((${n} − 2) · 180°) : ${n} = ${w}°.`,
+        fachwissen: fw('Parkettierung mit regelmäßigen n-Ecken gelingt, wenn sich Innenwinkel an einer Ecke zu 360° ergänzen.'),
+        dedupeKey: `${tag}:parkett:${n}`,
+        contentIds: [`${tag}:parkett:${n}`],
+      })
+    },
+    (rng) => {
+      const w = pick(rng, [60, 90, 120])
+      const count = 360 / w
+      return valueTask({
+        question: `${context}: An einer Ecke stoßen Innenwinkel von je ${w}° zusammen. Wie viele passen um die Ecke?`,
+        answerKind: 'integer',
+        value: count,
+        solution: String(count),
+        explanation: `360° : ${w}° = ${count}.`,
+        fachwissen: fw('Vollständige Parkettierung: Summe der Innenwinkel um einen Punkt muss 360° ergeben.'),
+        dedupeKey: `${tag}:parkett:um:${w}`,
+        contentIds: [`${tag}:parkett:um:${w}`],
+      })
+    },
+    (rng) =>
+      appliedMc(rng, {
+        question: `${context}: Mit welchem regelmäßigen Vieleck allein kann man die Ebene parkettieren?`,
+        correct: 'regelmäßiges Sechseck',
+        distractors: ['regelmäßiges Fünfeck', 'regelmäßiges Achteck', 'regelmäßiges Siebeneck', 'regelmäßiges Neuneck'],
+        explanation: 'Nur Dreieck, Quadrat und regelmäßiges Sechseck parkettieren die Ebene allein.',
+        fachwissen: fw('Einfache Parkette: gleichseitiges Dreieck (60°), Quadrat (90°), regelmäßiges Sechseck (120°).'),
+        dedupeKey: `${tag}:parkett:welche`,
+      }),
+    (rng) => {
+      const n = pick(rng, [3, 4, 6])
+      const need = 360 / (((n - 2) * 180) / n)
+      return valueTask({
+        question: `${context}: Wie viele regelmäßige ${n}-Ecke passen mit ihren Innenwinkeln um einen Punkt?`,
+        answerKind: 'integer',
+        value: need,
+        solution: String(need),
+        explanation: `360° : Innenwinkel = ${need}.`,
+        fachwissen: fw('Anzahl um einen Punkt = 360° geteilt durch den Innenwinkel.'),
+        dedupeKey: `${tag}:parkett:n:${n}`,
+        contentIds: [`${tag}:parkett:n:${n}`],
+      })
+    },
+  )
+}
+
+/** Spiegelung — eigene Frageformulierung je Topic. */
+function makeSpiegel(tag: string, axis: 'x' | 'y' | 'origin'): Topic['generate'] {
+  return mixedVariants(
+    (rng) => {
+      const x = randInt(rng, 1, 6)
+      const y = randInt(rng, 1, 6)
+      if (axis === 'y') {
+        return appliedMc(rng, {
+          question: `Spiegelung an der y-Achse (${tag}): Wohin fällt A(${x}|${y})?`,
+          correct: `(−${x}|${y})`,
+          distractors: [`(${x}|−${y})`, `(−${x}|−${y})`, `(${y}|${x})`, `(${x}|${y})`],
+          explanation: `(x|y) → (−x|y).`,
+          fachwissen: fw('Spiegelung an der y-Achse: x wechselt das Vorzeichen, y bleibt.'),
+          dedupeKey: `${tag}:spiegel:y:${x}:${y}`,
+        })
+      }
+      if (axis === 'x') {
+        return appliedMc(rng, {
+          question: `Spiegelung an der x-Achse (${tag}): Wohin fällt B(${x}|${y})?`,
+          correct: `(${x}|−${y})`,
+          distractors: [`(−${x}|${y})`, `(−${x}|−${y})`, `(${y}|${x})`, `(0|${y})`],
+          explanation: `(x|y) → (x|−y).`,
+          fachwissen: fw('Spiegelung an der x-Achse: y wechselt das Vorzeichen, x bleibt.'),
+          dedupeKey: `${tag}:spiegel:x:${x}:${y}`,
+        })
+      }
+      return appliedMc(rng, {
+        question: `Punktspiegelung am Ursprung (${tag}): Wohin fällt C(${x}|${y})?`,
+        correct: `(−${x}|−${y})`,
+        distractors: [`(−${x}|${y})`, `(${x}|−${y})`, `(${y}|${x})`, `(${x}|${y})`],
+        explanation: `(x|y) → (−x|−y).`,
+        fachwissen: fw('Punktspiegelung am Ursprung kehrt beide Vorzeichen um (Drehung um 180°).'),
+        dedupeKey: `${tag}:spiegel:o:${x}:${y}`,
+      })
+    },
+    (rng) => {
+      const x = randInt(rng, 2, 7)
+      return valueTask({
+        question: `A(${x}|3) wird an der ${axis === 'x' ? 'x' : 'y'}-Achse gespiegelt. Wie lautet die ${axis === 'x' ? 'y' : 'x'}-Koordinate von A'?`,
+        answerKind: 'integer',
+        value: axis === 'x' ? -3 : -x,
+        solution: axis === 'x' ? '−3' : `−${x}`,
+        explanation: axis === 'x' ? 'y wird zu −3.' : `x wird zu −${x}.`,
+        fachwissen: fw('Bei Achsenspiegelung bleibt der Abstand zur Achse gleich, die Seite wechselt.'),
+        dedupeKey: `${tag}:spiegel:coord:${axis}:${x}`,
+        contentIds: [`${tag}:spiegel:coord:${axis}:${x}`],
+      })
+    },
+  )
+}
+
+/** Winkel messen / Arten — eigene Pools. */
+function makeWinkelArten(tag: string, focus: string): Topic['generate'] {
+  return mixedVariants(
+    (rng) => {
+      const w = randInt(rng, 1, 179)
+      const art =
+        w < 90 ? 'spitz' : w === 90 ? 'recht' : w < 180 ? 'stumpf' : 'gestreckt'
+      return appliedMc(rng, {
+        question: `${focus}: Ein Winkel misst ${w}°. Welche Art ist das?`,
+        correct: art === 'spitz' ? 'spitzer Winkel' : art === 'recht' ? 'rechter Winkel' : 'stumpfer Winkel',
+        distractors: distinctDistractors(
+          art === 'spitz' ? 'spitzer Winkel' : art === 'recht' ? 'rechter Winkel' : 'stumpfer Winkel',
+          ['spitzer Winkel', 'rechter Winkel', 'stumpfer Winkel', 'gestreckter Winkel', 'voller Winkel'],
+        ),
+        explanation: `0° < spitz < 90° < stumpf < 180°. ${w}° ist ${art}.`,
+        fachwissen: fw('Winkelarten: spitz (unter 90°), recht (90°), stumpf (zwischen 90° und 180°), gestreckt (180°).'),
+        dedupeKey: `${tag}:wa:${w}`,
+      })
+    },
+    (rng) => {
+      const a = randInt(rng, 20, 70)
+      return valueTask({
+        question: `${focus}: Ein spitzer Winkel misst ${a}°. Wie groß ist sein Ergänzungswinkel zu 90°?`,
+        answerKind: 'integer',
+        value: 90 - a,
+        solution: `${90 - a}°`,
+        unit: '°',
+        explanation: `90° − ${a}° = ${90 - a}°.`,
+        fachwissen: fw('Komplementärwinkel ergänzen sich zu 90°, Supplementärwinkel zu 180°.'),
+        dedupeKey: `${tag}:komp:${a}`,
+        contentIds: [`${tag}:komp:${a}`],
+      })
+    },
+    (rng) => {
+      const a = randInt(rng, 40, 140)
+      return valueTask({
+        question: `${focus}: Winkel α = ${a}°. Wie groß ist der Nebenwinkel?`,
+        answerKind: 'integer',
+        value: 180 - a,
+        solution: `${180 - a}°`,
+        unit: '°',
+        explanation: `Nebenwinkel: 180° − ${a}° = ${180 - a}°.`,
+        fachwissen: fw('Nebenwinkel liegen an einer Geraden und ergänzen sich zu 180°.'),
+        dedupeKey: `${tag}:neben:${a}`,
+        contentIds: [`${tag}:neben:${a}`],
+      })
+    },
+  )
+}
+
+/** Lagebeziehungen / Koordinaten — getrennte Formulierungen. */
+function makeLage(tag: string, title: string): Topic['generate'] {
+  return mixedVariants(
+    (rng) => {
+      const x1 = randInt(rng, 0, 5)
+      const y1 = randInt(rng, 0, 5)
+      const x2 = x1
+      const y2 = y1 + randInt(rng, 1, 4)
+      return appliedMc(rng, {
+        question: `${title}: Die Strecke von (${x1}|${y1}) nach (${x2}|${y2}) verläuft …`,
+        correct: 'parallel zur y-Achse',
+        distractors: ['parallel zur x-Achse', 'durch den Ursprung', 'als Winkelhalbierende', 'nicht bestimmbar'],
+        explanation: `Gleiche x-Koordinaten ⇒ senkrechte Gerade (parallel zur y-Achse).`,
+        fachwissen: fw('Parallele zur y-Achse: konstantes x. Parallele zur x-Achse: konstantes y.'),
+        dedupeKey: `${tag}:lage:vy:${x1}:${y1}:${y2}`,
+      })
+    },
+    (rng) => {
+      const x = randInt(rng, 1, 6)
+      const y = randInt(rng, 1, 6)
+      return valueTask({
+        question: `${title}: Lies die y-Koordinate von P(${x}|${y}) ab.`,
+        answerKind: 'integer',
+        value: y,
+        solution: String(y),
+        explanation: `P liegt bei y = ${y}.`,
+        fachwissen: fw('Koordinaten: zuerst x (waagerecht), dann y (senkrecht).'),
+        dedupeKey: `${tag}:lage:y:${x}:${y}`,
+        contentIds: [`${tag}:lage:y:${x}:${y}`],
+      })
+    },
+    (rng) => {
+      const a = randInt(rng, 2, 8)
+      return appliedMc(rng, {
+        question: `${title}: Welche Aussage zu den Geraden y = ${a} und x = ${a} ist richtig?`,
+        correct: 'Sie schneiden einander senkrecht',
+        distractors: ['Sie sind parallel', 'Sie fallen zusammen', 'Sie schneiden sich spitz', 'Sie haben keinen Schnittpunkt'],
+        explanation: `Waagerechte und senkrechte Gerade schneiden sich rechtwinklig in (${a}|${a}).`,
+        fachwissen: fw('Eine waagerechte und eine senkrechte Gerade stehen senkrecht aufeinander.'),
+        dedupeKey: `${tag}:lage:schnitt:${a}`,
+      })
+    },
+  )
+}
+
+/** DGS / Konstruktion / Makro — themenspezifische Rechen-/Deutungsaufgaben. */
+function makeDgs(tag: string, title: string): Topic['generate'] {
+  return mixedVariants(
+    (rng) => {
+      const n = randInt(rng, 3, 8)
+      return valueTask({
+        question: `${title}: Du spiegelst einen Punkt nacheinander an zwei senkrechten Achsen. Welcher Drehwinkel (in Grad) entspricht der Gesamtbewegung?`,
+        answerKind: 'integer',
+        value: 180,
+        solution: '180°',
+        unit: '°',
+        explanation: 'Zwei Spiegelungen an senkrechten Achsen ergeben eine 180°-Drehung.',
+        fachwissen: fw('Verkettung von Geradenspiegelungen: parallel → Verschiebung, schneidend → Drehung um den doppelten Schnittwinkel.'),
+        dedupeKey: `${tag}:dgs:180:${n}`,
+        contentIds: [`${tag}:dgs:180`],
+      })
+    },
+    (rng) => {
+      const steps = randInt(rng, 3, 7)
+      return appliedMc(rng, {
+        question: `${title}: Ein Makro führt ${steps} Konstruktionsschritte aus. Was ist der Sinn eines Makros in der DGS?`,
+        correct: 'Wiederkehrende Konstruktionen speichern und erneut anwenden',
+        distractors: [
+          'Nur die Farbe von Linien ändern',
+          'Zufällige Punkte erzeugen ohne Konstruktion',
+          'Die Zoomstufe fest einstellen',
+          'Koordinatenachsen ausblenden',
+        ],
+        explanation: 'Makros bündeln Konstruktionsschritte zur Wiederverwendung.',
+        fachwissen: fw('In dynamischer Geometriesoftware speichern Makros Konstruktionsabläufe (z. B. Mittelsenkrechte, Ortslinien).'),
+        dedupeKey: `${tag}:dgs:makro:${steps}`,
+      })
+    },
+    (rng) => {
+      const r = randInt(rng, 2, 6)
+      return valueTask({
+        question: `${title}: Ein Punkt bewegt sich auf einem Kreis mit Radius ${r}. Welchen Abstand hat er ständig zum Mittelpunkt?`,
+        answerKind: 'integer',
+        value: r,
+        solution: String(r),
+        explanation: `Alle Kreispunkte haben Abstand ${r} zum Mittelpunkt — typische Ortslinie.`,
+        fachwissen: fw('Ortslinie „Kreis“: Menge aller Punkte mit festem Abstand zum Mittelpunkt.'),
+        dedupeKey: `${tag}:dgs:ort:${r}`,
+        contentIds: [`${tag}:dgs:ort:${r}`],
+      })
+    },
+  )
+}
+
+function makeVieleck(tag: string): Topic['generate'] {
+  return mixedVariants(
+    (rng) => {
+      const n = pick(rng, [5, 6, 8])
+      return valueTask({
+        question: `Regelmäßiges ${n}-Eck: Wie groß ist ein Innenwinkel in Grad?`,
+        answerKind: 'integer',
+        value: ((n - 2) * 180) / n,
+        solution: `${((n - 2) * 180) / n}°`,
+        unit: '°',
+        explanation: `((${n} − 2) · 180°) : ${n} = ${((n - 2) * 180) / n}°.`,
+        fachwissen: fw('Innenwinkelsumme im n-Eck: (n − 2) · 180°. Beim regelmäßigen n-Eck alle Innenwinkel gleich.'),
+        dedupeKey: `${tag}:vieleck:${n}`,
+        contentIds: [`${tag}:vieleck:${n}`],
+      })
+    },
+    (rng) => {
+      const n = pick(rng, [4, 5, 6, 8])
+      return valueTask({
+        question: `Wie viele Symmetrieachsen hat ein regelmäßiges ${n}-Eck?`,
+        answerKind: 'integer',
+        value: n,
+        solution: String(n),
+        explanation: `Regelmäßiges ${n}-Eck → ${n} Achsen.`,
+        fachwissen: fw('Regelmäßige n-Ecke besitzen n Achsen- und n-zählige Drehsymmetrie.'),
+        dedupeKey: `${tag}:vieleck:ach:${n}`,
+        contentIds: [`${tag}:vieleck:ach:${n}`],
+      })
+    },
+    (rng) => {
+      const n = pick(rng, [3, 4, 6])
+      return valueTask({
+        question: `Kleinster Drehwinkel (in Grad), der ein regelmäßiges ${n}-Eck auf sich abbildet?`,
+        answerKind: 'integer',
+        value: 360 / n,
+        solution: `${360 / n}°`,
+        unit: '°',
+        explanation: `360° : ${n} = ${360 / n}°.`,
+        fachwissen: fw('Drehsymmetrieordnung n: kleinster positiver Drehwinkel 360°/n.'),
+        dedupeKey: `${tag}:vieleck:dreh:${n}`,
+        contentIds: [`${tag}:vieleck:dreh:${n}`],
+      })
+    },
+  )
+}
+
+function makeTaeuschung(tag: string): Topic['generate'] {
+  return mixedVariants(
+    (rng) => {
+      const a = randInt(rng, 3, 9)
+      return appliedMc(rng, {
+        question: `Optische Täuschung: Zwei Strecken wirken verschieden lang, messen aber beide ${a} cm. Was prüft man am besten?`,
+        correct: 'Nachmessen mit dem Lineal',
+        distractors: ['Nur aus dem Augenwinkel schätzen', 'Die Farbe der Linien vergleichen', 'Den Bildschirm drehen', 'Nur die Endpunkte zählen'],
+        explanation: 'Geometrische Länge entscheidet — nicht der visuelle Eindruck.',
+        fachwissen: fw('Räumliche Illusionen nutzen Kontextlinien; Messen und Konstruktion entlarven den Eindruck.'),
+        dedupeKey: `${tag}:taeusch:${a}`,
+      })
+    },
+    (rng) => {
+      const n = randInt(rng, 2, 5)
+      return valueTask({
+        question: `In einer Scheinraum-Zeichnung erscheinen ${n} Fluchtpunkt(e). Wie viele Fluchtpunkte hat eine typische Ein-Punkt-Perspektive?`,
+        answerKind: 'integer',
+        value: 1,
+        solution: '1',
+        explanation: 'Ein-Punkt-Perspektive: genau ein Fluchtpunkt auf dem Horizont.',
+        fachwissen: fw('Zentralperspektive: parallele Kanten treffen sich im Fluchtpunkt — das erzeugt Tiefenwirkung.'),
+        dedupeKey: `${tag}:flucht:${n}`,
+        contentIds: [`${tag}:flucht:1`],
+      })
+    },
+  )
+}
+
+function makeAchsenTagged(tag: string, focus: string): Topic['generate'] {
+  return mixedVariants(
+    (rng) => {
+      const fig = pick(rng, [
+        ['Quadrat', 4],
+        ['gleichseitiges Dreieck', 3],
+        ['Rechteck (kein Quadrat)', 2],
+        ['regelmäßiges Sechseck', 6],
+      ] as const)
+      return valueTask({
+        question: `${focus}: Wie viele Symmetrieachsen hat ein ${fig[0]}?`,
+        answerKind: 'integer',
+        value: fig[1],
+        solution: String(fig[1]),
+        explanation: `${fig[0]} → ${fig[1]} Achsen.`,
+        fachwissen: fw('Achsensymmetrie: Spiegelung an einer Geraden bildet die Figur auf sich ab.'),
+        dedupeKey: `${tag}:achsen:${fig[0]}`,
+        contentIds: [`${tag}:achsen:${fig[0]}`],
+      })
+    },
+    (rng) => {
+      const n = pick(rng, [3, 4, 5, 6, 8])
+      return valueTask({
+        question: `${focus}: Regelmäßiges ${n}-Eck — Anzahl der Symmetrieachsen?`,
+        answerKind: 'integer',
+        value: n,
+        solution: String(n),
+        explanation: `n = ${n} Achsen.`,
+        fachwissen: fw('Bei regelmäßigen n-Ecken gibt es genau n Symmetrieachsen.'),
+        dedupeKey: `${tag}:achsen:n:${n}`,
+        contentIds: [`${tag}:achsen:n:${n}`],
+      })
+    },
+    (rng) =>
+      appliedMc(rng, {
+        question: `${focus}: Wie viele Symmetrieachsen hat ein Kreis?`,
+        correct: 'unendlich viele',
+        distractors: ['1', '2', '4', '0'],
+        explanation: 'Jeder Durchmesser ist Symmetrieachse.',
+        fachwissen: fw('Der Kreis ist achsensymmetrisch zu jedem Durchmesser.'),
+        dedupeKey: `${tag}:achsen:kreis`,
+      }),
+  )
+}
 
 export const OS_CROSS_UNIQUE_GENERATORS: Record<string, Topic['generate']> = {
   'os-k5-lbw1-zahlzeichen': genOsZahlzeichen,
@@ -344,12 +674,25 @@ export const OS_CROSS_UNIQUE_GENERATORS: Record<string, Topic['generate']> = {
   'os-k5-lbw1-stellenwert': genOsStellenwert,
   'os-k5-lb4-achsen': genOsAchsen,
   'os-k5-lb4-deckung': genOsDeckung,
-  'os-k5-lb4-spiegelung': genOsSpiegelung,
+  'os-k5-lb4-spiegelung': makeSpiegel('os-k5-spiegel', 'y'),
   'os-k5-lb4-drehung': generateDrehungK5,
   'os-k5-lb2-vergleichen': genOsBruchVergleichK5,
   'os-k6-lb1-vergleichen': genOsBruchVergleichK6,
-  'os-hs-k7-lbw1-parkett': genOsParkett,
-  'os-rs-k7-lbw3-parkett': genOsParkett,
-  'os-hs-k7-lbw1-spiegel': genOsSpiegelung,
-  'os-rs-k7-lbw3-symmetrie': genOsAchsen,
+  'os-k5-lb3-winkelarten': makeWinkelArten('os-k5-wa', 'Winkelarten'),
+  'os-k6-lb3-einteilung': makeWinkelArten('os-k6-einteilung', 'Dreieckseinteilung nach Winkeln'),
+  'os-k6-lbw1-messen': makeWinkelArten('os-k6-messen', 'Winkel messen am Bildschirm'),
+  'os-k5-lb3-lage': makeLage('os-k5-lage', 'Lage im Koordinatensystem'),
+  'os-hs-k8-lb3-lage': makeLage('os-hs-lage', 'Lagebeziehungen in der Ebene'),
+  'os-rs-k8-lb3-lage': makeLage('os-rs-lage', 'Lage und Schnitt von Geraden'),
+  'os-hs-k7-lbw1-parkett': makeParkett('os-hs-parkett', 'Bandornament/Parkett'),
+  'os-rs-k7-lbw3-parkett': makeParkett('os-rs-parkett', 'Parkettierung der Ebene'),
+  'os-hs-k7-lbw1-spiegel': makeSpiegel('os-hs-spiegel', 'x'),
+  'os-rs-k7-lbw3-symmetrie': makeAchsenTagged('os-rs-sym', 'Symmetrie in Parketten'),
+  'os-hs-k7-lbw2-taeuschung': makeTaeuschung('os-hs-taeusch'),
+  'os-hs-k8-lb3-vieleck': makeVieleck('os-hs-vieleck'),
+  'os-k6-lbw1-dgs': makeDgs('os-k6-dgs', 'DGS Klasse 6'),
+  'os-k6-lbw1-konstruktion': makeDgs('os-k6-konstr', 'Grundkonstruktionen am Computer'),
+  'os-rs-k10-lbw1-dgs': makeDgs('os-rs10-dgs', 'Zentralperspektive/DGS'),
+  'os-rs-k10-lbw1-ort': makeDgs('os-rs10-ort', 'Ortslinien'),
+  'os-rs-k10-lbw1-makro': makeDgs('os-rs10-makro', 'Makros'),
 }

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-15T07:00:20.160Z",
+  "updatedAt": "2026-10-15T13:15:30.979Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -9,7 +9,7 @@
       "subject": "Mathematik",
       "version": "1.4.1",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen.json",
-      "size": 144431,
+      "size": 94111,
       "changelog": "Lehrplan-461-Teilaspekte ergänzt (Primfaktoren, Umwandeln %, Thales, Normalverteilung LK, …); released:false; dense Banken."
     },
     {
@@ -86,7 +86,7 @@
       "subject": "Mathematik",
       "version": "1.0.6",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/oberschule-sachsen-hs.json",
-      "size": 79789,
+      "size": 61700,
       "changelog": "Klassen 5–9 (Hauptschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung."
     },
     {
@@ -97,7 +97,7 @@
       "subject": "Mathematik",
       "version": "1.0.6",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/oberschule-sachsen-rs.json",
-      "size": 92609,
+      "size": 74565,
       "changelog": "Klassen 5–10 (Realschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung."
     }
   ]

@@ -123,12 +123,13 @@ export const genOsVerschieb: Topic['generate'] = mixedVariants(
   (rng) => {
     const x = randInt(rng, 1, 6)
     const y = randInt(rng, 1, 6)
+    const y2 = y - 2
     return valueTask({
       question: `Punkt A(${x}|${y}) wird um den Vektor (3|−2) verschoben. Wie lautet die x-Koordinate von A'?`,
       answerKind: 'integer',
       value: x + 3,
       solution: String(x + 3),
-      explanation: `A'(${x + 3}|${y - 2}). Die x-Koordinate nimmt um 3 zu.`,
+      explanation: `A'(${x + 3}|${minus(y2)}). Die x-Koordinate nimmt um 3 zu.`,
       fachwissen: fw(
         'Bei einer Verschiebung um den Vektor (a|b) gilt A(x|y) → A′(x + a|y + b). Die Verschiebungsweite ist die Länge des Vektors √(a² + b²).',
       ),
@@ -565,6 +566,36 @@ export const genOsRsMono: Topic['generate'] = mixedVariants(
       fachwissen: fw('Bei streng monoton steigenden linearen Funktionen ist m > 0; der Zuwachs pro Einheit ist genau m.'),
       dedupeKey: `os:mono:delta:${m}`,
       contentIds: [`os:mono:delta:${m}`],
+    })
+  },
+  (rng) => {
+    const x1 = randInt(rng, 1, 4)
+    const x2 = x1 + randInt(rng, 2, 5)
+    const y1 = randInt(rng, 0, 6)
+    const m = pick(rng, [1, 2, 3, -1, -2])
+    const y2 = y1 + m * (x2 - x1)
+    return appliedMc(rng, {
+      question: `Die Werte (x|y) = (${x1}|${y1}) und (${x2}|${y2}) liegen auf einer Geraden. Ist f dort streng monoton steigend oder fallend?`,
+      correct: m > 0 ? 'streng monoton steigend' : 'streng monoton fallend',
+      distractors: [
+        m > 0 ? 'streng monoton fallend' : 'streng monoton steigend',
+        'konstant',
+        'weder noch',
+        'nur im Ursprung definiert',
+      ],
+      explanation: `Δy/Δx = ${m} ${m > 0 ? '> 0 (steigend)' : '< 0 (fallend)'}.`,
+      fachwissen: fw('Monotonie linearer Funktionen liest man an der Steigung m = Δy/Δx ab.'),
+      dedupeKey: `os:mono:pts:${x1}:${y1}:${x2}:${y2}`,
+    })
+  },
+  (rng) => {
+    return appliedMc(rng, {
+      question: 'Welche Funktion ist streng monoton fallend?',
+      correct: 'f(x) = −2x + 5',
+      distractors: ['f(x) = 2x + 5', 'f(x) = 0 · x + 3', 'f(x) = x²', 'f(x) = |x|'],
+      explanation: 'Negatives m = −2 ⇒ streng monoton fallend.',
+      fachwissen: fw('f(x) = mx + n ist streng monoton fallend genau dann, wenn m < 0.'),
+      dedupeKey: 'os:mono:which-fall',
     })
   },
 )

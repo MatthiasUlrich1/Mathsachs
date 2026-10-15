@@ -6,7 +6,7 @@
   "subject": "Mathematik",
   "version": "1.4.1",
   "changelog": "Lehrplan-461-Teilaspekte ergänzt (Primfaktoren, Umwandeln %, Thales, Normalverteilung LK, …); released:false; dense Banken.",
-  "contentHash": "6853c8e1",
+  "contentHash": "b269d4e4",
   "official": [
     {
       "id": "klasse-5",
@@ -23,28 +23,25 @@
             {
               "id": "lb1-runden-natuerlich",
               "title": "Natürliche Zahlen runden",
-              "hint": "Schau auf die Ziffer rechts von der Rundungsstelle.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb1-addition",
               "title": "Addition natürlicher Zahlen",
-              "hint": "Rechne schriftlich, Stelle für Stelle.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb1-subtraktion",
               "title": "Subtraktion natürlicher Zahlen",
-              "hint": "Der Minuend (vorne) ist immer größer.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb1-multiplikation",
               "title": "Multiplikation natürlicher Zahlen",
-              "hint": "Zerlege den zweiten Faktor nach Stellenwerten (Zehner, Einer, …) von links.",
+              "hint": "Trage Teilprodukte und Summe in die Kästchen ein.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
@@ -71,7 +68,7 @@
             {
               "id": "lb1-schriftliche-division",
               "title": "Schriftliche Division",
-              "hint": "Schreibe Dividend : Divisor = und trage den Quotienten ziffernweise ein. Bei Rest zusätzlich die Rest-Zeile füllen.",
+              "hint": "Trage den Quotienten ziffernweise ein; bei Rest zusätzlich die Rest-Zeile.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -92,14 +89,12 @@
             {
               "id": "lb1-teilbarkeit",
               "title": "Teilbarkeit prüfen",
-              "hint": "Antworte mit „ja\" oder „nein\".",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb1-primzahl",
               "title": "Primzahlen erkennen",
-              "hint": "Eine Primzahl hat genau zwei Teiler: 1 und sich selbst.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
@@ -176,35 +171,31 @@
             {
               "id": "lb2-grafische-brueche",
               "title": "Brüche grafisch ablesen",
-              "hint": "Zähle die eingefärbten Teile und die Gesamtanzahl. Gib den gekürzten Bruch an.",
+              "hint": "Gib den gekürzten Bruch an.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb2-dez-add-sub",
               "title": "Dezimalzahlen addieren und subtrahieren",
-              "hint": "Achte auf die Ausrichtung des Kommas.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb2-dez-mult",
-              "title": "Dezimalzahl multiplizieren",
-              "hint": "Mit einstelliger Zahl oder Zehnerpotenz.",
+              "title": "Dezimalzahl mit einstelliger Zahl oder Zehnerpotenz multiplizieren",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb2-dez-div",
-              "title": "Dezimalzahl dividieren",
-              "hint": "Durch einstellige Zahl oder Zehnerpotenz.",
+              "title": "Dezimalzahl durch einstellige Zahl oder Zehnerpotenz dividieren",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb2-runden-dezimal",
               "title": "Dezimalzahlen runden",
-              "hint": "Ist die nächste Ziffer 5 oder größer, wird aufgerundet.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
@@ -217,7 +208,6 @@
             {
               "id": "lb2-zahlenstrahl",
               "title": "Dezimalzahlen auf dem Zahlenstrahl: Mitte finden",
-              "hint": "Die Mitte zwischen zwei Zahlen ist ihr Durchschnitt: (a + b) : 2.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -231,7 +221,6 @@
             {
               "id": "lb2-ordnen-einheiten",
               "title": "Größen mit verschiedenen Einheiten ordnen",
-              "hint": "Rechne alle Angaben in dieselbe Einheit um, dann vergleiche.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -289,70 +278,66 @@
             {
               "id": "lb3-koordinaten-eintragen",
               "title": "Punkte im Koordinatensystem zuordnen",
-              "hint": "Bei Buchstaben: A, B oder C. Bei Quadranten: I, II, III oder IV.",
+              "hint": "Antwortformat: Buchstabe A, B oder C bzw. Koordinaten als x; y.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb3-koordinaten-abstand",
               "title": "Abstand zwischen Punkten",
-              "hint": "Waagerecht/senkrecht: |Δx| bzw. |Δy|. Schräg: Pythagoras (z. B. 3–4–5).",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb3-winkelarten",
               "title": "Winkelarten erkennen",
-              "hint": "spitz (<90°), recht (90°), stumpf (90°–180°), gestreckt (180°) oder überstumpf (>180°).",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb3-winkel-ergaenzung",
               "title": "Winkel zu 90° oder 180° ergänzen",
-              "hint": "Vom Zielwert (90° oder 180°) den gegebenen Winkel abziehen.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb3-strecken-laenge",
               "title": "Länge von Strecken",
-              "hint": "1 Kästchen = 1 Längeneinheit (cm).",
+              "hint": "1 Kästchen entspricht 1 cm.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb3-strecken-mittelpunkt",
               "title": "Mittelpunkt einer Strecke",
-              "hint": "Mittelpunkt M = ((x₁+x₂)/2 ; (y₁+y₂)/2). Antwortformat: x; y.",
+              "hint": "Antwortformat: x; y.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb3-strecken-bezeichnung",
               "title": "Strecke, Gerade und Halbgerade",
-              "hint": "Strecke: begrenzt; Halbgerade: ein Endpunkt; Gerade: unbegrenzt in beide Richtungen.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb3-verschiebung",
               "title": "Verschiebung von Figuren",
-              "hint": "Antwortformat für Vektor und Punkt: dx; dy bzw. x; y (positiv = rechts / oben). Auch Komma oder (x|y) sind ok.",
+              "hint": "Antwortformat: x; y bzw. eine Zahl. Auch Komma oder (x|y) sind ok.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb3-achsensymmetrie",
               "title": "Achsensymmetrie erkennen",
-              "hint": "Eine Figur ist achsensymmetrisch, wenn sie an einer Geraden gespiegelt auf sich selbst fällt. Bildpunkt: x; y.",
+              "hint": "Antwortformat für den Bildpunkt: x; y.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb3-punktsymmetrie",
               "title": "Punktsymmetrie / Punktspiegelung",
-              "hint": "Punktspiegelung an S: A' = 2S − A. Antwortformat x; y (auch Komma oder (x|y)).",
+              "hint": "Antwortformat: x; y (auch Komma oder (x|y) sind ok).",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
@@ -364,9 +349,9 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Drehung",
-                "Kongruenz",
-                "Bewegung",
-                "Orientierung"
+                "Drehwinkel",
+                "Drehzentrum",
+                "Bewegung"
               ],
               "released": false
             }
@@ -404,21 +389,18 @@
             {
               "id": "lb4-flaeche-zusammengesetzt",
               "title": "Zusammengesetzte Flächen: Fläche berechnen",
-              "hint": "Zerlege die Figur in Rechtecke oder ziehe die Aussparung ab.",
               "pointsPerTask": 12,
               "tasksPerRound": 10
             },
             {
               "id": "lb4-umfang-zusammengesetzt",
               "title": "Zusammengesetzte Flächen: Umfang berechnen",
-              "hint": "Addiere alle äußeren Kanten.",
               "pointsPerTask": 12,
               "tasksPerRound": 10
             },
             {
               "id": "lb4-volumen-zusammengesetzt",
               "title": "Zusammengesetzte Quader: Volumen",
-              "hint": "Zerlege in zwei Quader und addiere die Volumina – oder ziehe die Aussparung ab.",
               "pointsPerTask": 12,
               "tasksPerRound": 10
             },
@@ -435,22 +417,6 @@
                 "Ansicht",
                 "Quader"
               ],
-              "released": false
-            },
-            {
-              "id": "k5-lb4-d01",
-              "title": "Rechteck und Quader vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k5-lb4-d02",
-              "title": "Rechteck und Quader vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
               "released": false
             }
           ]
@@ -469,14 +435,12 @@
             {
               "id": "lb5-teilen",
               "title": "Sachaufgabe: Gerecht aufteilen",
-              "hint": "Teile die Gesamtmenge durch die Anzahl.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb5-mehrstufig",
               "title": "Sachaufgabe: Mehrstufige Alltagsrechnung",
-              "hint": "Löse Schritt für Schritt: Zuerst den Gesamtpreis, dann das Wechselgeld.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -489,7 +453,6 @@
             {
               "id": "lb5-sachaufgabe-flaeche",
               "title": "Sachaufgabe: Fläche und Umfang im Alltag",
-              "hint": "Entscheide, ob Umfang oder Fläche gefragt ist.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -503,7 +466,6 @@
             {
               "id": "k5-umrechnen-laenge",
               "title": "Einheiten umrechnen: Länge",
-              "hint": "Nutze den Umrechnungsfaktor zwischen den Einheiten.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -526,7 +488,6 @@
             {
               "id": "k5-umrechnen-flaeche",
               "title": "Einheiten umrechnen: Flächeninhalt",
-              "hint": "Nutze den Umrechnungsfaktor zwischen den Einheiten.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -553,7 +514,6 @@
             {
               "id": "k5-umrechnen-volumen",
               "title": "Einheiten umrechnen: Volumen",
-              "hint": "Nutze den Umrechnungsfaktor zwischen den Einheiten.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -577,7 +537,6 @@
             {
               "id": "k5-umrechnen-masse",
               "title": "Einheiten umrechnen: Masse",
-              "hint": "Nutze den Umrechnungsfaktor zwischen den Einheiten.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -600,7 +559,6 @@
             {
               "id": "k5-umrechnen-zeit",
               "title": "Einheiten umrechnen: Zeit",
-              "hint": "Nutze den Umrechnungsfaktor zwischen den Zeiteinheiten.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -636,22 +594,19 @@
           "topics": [
             {
               "id": "lb1-kuerzen",
-              "title": "Brüche kürzen",
-              "hint": "Gib den vollständig gekürzten Bruch ein.",
+              "title": "Gleichungen und Ungleichungen mit Brüchen inhaltlich lösen",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb1-erweitern",
-              "title": "Brüche erweitern",
-              "hint": "Gib den gesuchten Zähler ein.",
+              "title": "Hauptnenner finden und Brüche gleichnamig machen",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb1-vergleichen",
               "title": "Brüche vergleichen",
-              "hint": "Gib <, > oder = ein.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
@@ -672,56 +627,48 @@
             {
               "id": "lb1-div-brueche",
               "title": "Brüche dividieren",
-              "hint": "Dividieren heißt mit dem Kehrwert multiplizieren.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb1-bruch-dezimal",
-              "title": "Brüche in Dezimalzahlen umwandeln",
-              "hint": "Nutze das Komma als Dezimaltrennzeichen.",
+              "title": "Brüche und Dezimalzahlen ineinander umwandeln",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb1-prozent",
-              "title": "In Prozent umwandeln",
-              "hint": "Gib nur die Zahl vor dem Prozentzeichen ein.",
+              "title": "Brüche, Dezimalzahlen und Prozentangaben umwandeln",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb1-dez-add-sub",
-              "title": "Dezimalzahlen addieren und subtrahieren",
-              "hint": "Achte auf die Ausrichtung des Kommas.",
+              "title": "Dezimalzahlen addieren und subtrahieren: Terme und Sachaufgaben",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb1-dez-mult",
-              "title": "Dezimalzahlen multiplizieren",
-              "hint": "Mit natürlichen Zahlen oder Zehnerpotenzen.",
+              "title": "Dezimalzahlen miteinander multiplizieren",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb1-dez-div",
-              "title": "Dezimalzahlen dividieren",
-              "hint": "Durch natürliche Zahlen oder Zehnerpotenzen.",
+              "title": "Durch Dezimalzahlen dividieren",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb1-runden",
-              "title": "Dezimalzahlen runden",
-              "hint": "Ist die nächste Ziffer 5 oder größer, wird aufgerundet.",
+              "title": "Ergebnisse sinnvoll runden",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb1-sachaufgabe-bruch",
               "title": "Sachaufgabe: Bruchrechnung im Alltag",
-              "hint": "Lies die Aufgabe genau. Welcher Bruch wird gesucht? Dann rechne.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -769,14 +716,12 @@
             {
               "id": "lb2-proportional",
               "title": "Proportionale Zuordnung (Dreisatz)",
-              "hint": "Erst auf eine Einheit zurückrechnen.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb2-antiproportional",
               "title": "Antiproportionale Zuordnung",
-              "hint": "Mehr Personen → weniger Zeit. Produktgleichheit nutzen.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
@@ -789,7 +734,6 @@
             {
               "id": "lb2-sachaufgabe-dreisatz",
               "title": "Sachaufgabe: Dreisatz mit Einheiten",
-              "hint": "Zuerst den Einheitspreis oder -wert bestimmen, dann umrechnen.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -813,46 +757,6 @@
                 "Pfeildarstellung"
               ],
               "released": false
-            },
-            {
-              "id": "k6-lb2-d01",
-              "title": "Zuordnungen und Dreisatz vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k6-lb2-d02",
-              "title": "Zuordnungen und Dreisatz vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k6-lb2-d03",
-              "title": "Zuordnungen und Dreisatz vertiefen (3)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k6-lb2-d04",
-              "title": "Zuordnungen und Dreisatz vertiefen (4)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k6-lb2-d05",
-              "title": "Zuordnungen und Dreisatz vertiefen (5)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
             }
           ]
         },
@@ -864,28 +768,41 @@
             {
               "id": "lb3-winkel-dreieck",
               "title": "Innenwinkelsatz im Dreieck",
-              "hint": "Die Innenwinkel im Dreieck ergeben zusammen 180°.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb3-winkel-viereck",
               "title": "Winkelsumme im Viereck",
-              "hint": "Die Innenwinkel im Viereck ergeben zusammen 360°.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "lb3-umfang-rechteck",
-              "title": "Umfang von Rechteck und Quadrat",
+              "title": "Umfang von Parallelogramm, Trapez, Drachen und Raute",
               "pointsPerTask": 10,
-              "tasksPerRound": 10
+              "tasksPerRound": 10,
+              "keywords": [
+                "Umfang",
+                "Parallelogramm",
+                "Trapez",
+                "Drachenviereck",
+                "Raute"
+              ]
             },
             {
               "id": "lb3-flaeche-rechteck",
-              "title": "Flächeninhalt von Rechteck und Quadrat",
+              "title": "Flächeninhalt von Parallelogramm, Trapez und Drachenviereck",
               "pointsPerTask": 10,
-              "tasksPerRound": 10
+              "tasksPerRound": 10,
+              "keywords": [
+                "Flächeninhalt",
+                "Parallelogramm",
+                "Trapez",
+                "Drachenviereck",
+                "Raute",
+                "Rückführprinzip"
+              ]
             },
             {
               "id": "lb3-flaeche-dreieck",
@@ -896,7 +813,6 @@
             {
               "id": "lb3-kongruenzsatz",
               "title": "Kongruenzsatz wählen",
-              "hint": "SSS, SWS, WSW oder SsW – welche Angabe reicht?",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -910,16 +826,15 @@
             },
             {
               "id": "lb3-sachaufgabe-geometrie",
-              "title": "Sachaufgabe: Fläche und Umfang im Alltag",
-              "hint": "Welche Formel passt? Umfang für Strecken, Fläche für Belag/Tapete.",
+              "title": "Sachaufgabe: Dreiecke und Vierecke im Alltag",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
                 "Sachaufgabe",
-                "Fläche",
-                "Umfang",
+                "Trapez",
+                "Parallelogramm",
                 "Dreieck",
-                "Rechteck",
+                "zusammengesetzte Fläche",
                 "Alltag"
               ]
             },
@@ -937,38 +852,6 @@
                 "Lot"
               ],
               "released": false
-            },
-            {
-              "id": "k6-lb3-d01",
-              "title": "Dreiecke und Vierecke vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k6-lb3-d02",
-              "title": "Dreiecke und Vierecke vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k6-lb3-d03",
-              "title": "Dreiecke und Vierecke vertiefen (3)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k6-lb3-d04",
-              "title": "Dreiecke und Vierecke vertiefen (4)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
             }
           ]
         },
@@ -979,21 +862,40 @@
           "topics": [
             {
               "id": "lb4-volumen-quader",
-              "title": "Volumen von Quader und Würfel",
+              "title": "Volumen von aus Prismen zusammengesetzten Körpern",
               "pointsPerTask": 10,
-              "tasksPerRound": 10
+              "tasksPerRound": 10,
+              "keywords": [
+                "zusammengesetzter Körper",
+                "Prisma",
+                "Volumen",
+                "Rückführprinzip"
+              ]
             },
             {
               "id": "lb4-oberflaeche-quader",
-              "title": "Oberflächeninhalt von Quadern",
+              "title": "Oberflächeninhalt gerader Prismen",
               "pointsPerTask": 10,
-              "tasksPerRound": 10
+              "tasksPerRound": 10,
+              "keywords": [
+                "Oberflächeninhalt",
+                "Prisma",
+                "Mantel",
+                "Körpernetz"
+              ]
             },
             {
               "id": "lb4-volumen-prisma",
-              "title": "Volumen gerader Prismen",
+              "title": "Volumen gerader Prismen mit Dreieck- und Trapezgrundfläche",
               "pointsPerTask": 10,
-              "tasksPerRound": 10
+              "tasksPerRound": 10,
+              "keywords": [
+                "Volumen",
+                "Prisma",
+                "Grundfläche",
+                "Dreieck",
+                "Trapez"
+              ]
             },
             {
               "id": "lb4-flaeche-kante-quader",
@@ -1013,7 +915,6 @@
             {
               "id": "lb4-wuerfelnetz",
               "title": "Würfelnetz erkennen",
-              "hint": "Ein faltbares Netz hat sechs Quadrate ohne Überlappung beim Falten.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1053,14 +954,12 @@
             {
               "id": "lb5-anteil-prozent",
               "title": "Prozent einer Größe berechnen",
-              "hint": "Prozent bedeutet „von hundert\".",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
             {
               "id": "k6-umrechnen-flaeche",
-              "title": "Einheiten umrechnen: Flächeninhalt",
-              "hint": "Nutze den Umrechnungsfaktor zwischen den Einheiten.",
+              "title": "Größen in Kommaschreibweise umrechnen: Flächeninhalt",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1086,8 +985,7 @@
             },
             {
               "id": "k6-umrechnen-laenge",
-              "title": "Einheiten umrechnen: Länge",
-              "hint": "Nutze den Umrechnungsfaktor zwischen den Einheiten.",
+              "title": "Größen in Kommaschreibweise umrechnen: Länge",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1126,7 +1024,6 @@
             {
               "id": "k7-lb1-nebenwinkel",
               "title": "Nebenwinkel berechnen",
-              "hint": "Nebenwinkel ergänzen sich zu 180°.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1140,7 +1037,6 @@
             {
               "id": "k7-lb1-scheitelwinkel",
               "title": "Scheitel- und Stufenwinkel",
-              "hint": "Scheitelwinkel und Stufenwinkel sind gleich groß.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1167,7 +1063,6 @@
             {
               "id": "k7-lb1-basiswinkel",
               "title": "Basiswinkel im gleichschenkligen Dreieck",
-              "hint": "Die beiden Basiswinkel sind gleich groß.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1180,7 +1075,6 @@
             {
               "id": "k7-lb1-mittelsenkrechte-schritte",
               "title": "Mittelsenkrechte: Konstruktionsschritte",
-              "hint": "Ordne die Schritte einer Mittelsenkrechten.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1201,40 +1095,8 @@
                 "Thales",
                 "Halbkreis",
                 "Rechtwinklig",
-                "Peripherie"
+                "Umkreis"
               ],
-              "released": false
-            },
-            {
-              "id": "k7-lb1-d01",
-              "title": "Winkel und Vielecke vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k7-lb1-d02",
-              "title": "Winkel und Vielecke vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k7-lb1-d03",
-              "title": "Winkel und Vielecke vertiefen (3)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k7-lb1-d04",
-              "title": "Winkel und Vielecke vertiefen (4)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
               "released": false
             }
           ]
@@ -1247,7 +1109,6 @@
             {
               "id": "k7-lb2-add-rational",
               "title": "Rationale Zahlen addieren",
-              "hint": "Achte auf die Vorzeichen.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1261,7 +1122,6 @@
             {
               "id": "k7-lb2-sub-rational",
               "title": "Rationale Zahlen subtrahieren",
-              "hint": "Minus einer negativen Zahl heißt plus.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1275,7 +1135,6 @@
             {
               "id": "k7-lb2-mul-rational",
               "title": "Rationale Zahlen multiplizieren",
-              "hint": "Gleiche Vorzeichen → plus, verschiedene → minus.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1289,7 +1148,6 @@
             {
               "id": "k7-lb2-div-rational",
               "title": "Rationale Zahlen dividieren",
-              "hint": "Gleiche Vorzeichen → plus, verschiedene → minus.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1303,7 +1161,6 @@
             {
               "id": "k7-lb2-betrag",
               "title": "Betrag einer Zahl",
-              "hint": "Der Betrag ist immer nicht negativ.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1316,7 +1173,6 @@
             {
               "id": "k7-lb2-term-vorrang",
               "title": "Term mit Rechengesetzen auswerten",
-              "hint": "Punkt- vor Strichrechnung, Klammern zuerst.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1330,7 +1186,7 @@
             {
               "id": "k7-lb2-gleichung-add",
               "title": "Gleichung umstellen: x + a = b",
-              "hint": "Nutze die Buttons für Äquivalenzumformungen (beide Seiten gleich ändern).",
+              "hint": "Tippe die Umformungsschritte über die Buttons an.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1345,7 +1201,7 @@
             {
               "id": "k7-lb2-gleichung-mul",
               "title": "Gleichung umstellen: a · x = b",
-              "hint": "Baue rechts vom Strich die Umformung (| : a), dann x = b : a, und tippe das Ergebnis für x.",
+              "hint": "Tippe die Umformungsschritte über die Buttons an.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1372,118 +1228,6 @@
                 "Teilmenge"
               ],
               "released": false
-            },
-            {
-              "id": "k7-lb2-d01",
-              "title": "Rationale Zahlen vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k7-lb2-d02",
-              "title": "Rationale Zahlen vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k7-lb2-d03",
-              "title": "Rationale Zahlen vertiefen (3)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k7-lb2-d04",
-              "title": "Rationale Zahlen vertiefen (4)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k7-lb2-d05",
-              "title": "Rationale Zahlen vertiefen (5)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k7-lb2-d06",
-              "title": "Rationale Zahlen vertiefen (6)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k7-lb2-d07",
-              "title": "Rationale Zahlen vertiefen (7)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k7-lb2-d08",
-              "title": "Rationale Zahlen vertiefen (8)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k7-lb2-d09",
-              "title": "Rationale Zahlen vertiefen (9)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k7-lb2-d10",
-              "title": "Rationale Zahlen vertiefen (10)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k7-lb2-d11",
-              "title": "Rationale Zahlen vertiefen (11)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k7-lb2-d12",
-              "title": "Rationale Zahlen vertiefen (12)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k7-lb2-d13",
-              "title": "Rationale Zahlen vertiefen (13)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k7-lb2-d14",
-              "title": "Rationale Zahlen vertiefen (14)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
             }
           ]
         },
@@ -1494,27 +1238,28 @@
           "topics": [
             {
               "id": "k7-lb3-volumen-prisma",
-              "title": "Volumen gerader Prismen",
+              "title": "Volumen zusammengesetzter Körper mit Pyramiden",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
-                "Prisma",
+                "zusammengesetzter Körper",
+                "Pyramide",
+                "Quader",
                 "Volumen",
-                "Grundfläche",
-                "Körper"
+                "Rückführprinzip"
               ]
             },
             {
               "id": "k7-lb3-mantel-prisma",
-              "title": "Mantelfläche eines Prismas",
+              "title": "Masse von Pyramiden und Prismen",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
-                "Prisma",
-                "Mantelfläche",
-                "Mantel",
-                "Oberfläche",
-                "Umfang"
+                "Masse",
+                "Dichte",
+                "Volumen",
+                "Pyramide",
+                "Prisma"
               ]
             },
             {
@@ -1531,20 +1276,20 @@
             },
             {
               "id": "k7-lb3-oberflaeche-quader",
-              "title": "Oberfläche eines Quaders",
+              "title": "Oberflächeninhalt zusammengesetzter Körper",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
-                "Quader",
+                "zusammengesetzter Körper",
                 "Oberfläche",
-                "Oberflächeninhalt",
-                "Prisma"
+                "Pyramide",
+                "Quader",
+                "Mantel"
               ]
             },
             {
               "id": "k7-lb3-oberflaeche-pyramide",
               "title": "Oberfläche einer Pyramide",
-              "hint": "O = G + M. Bei quadratischer Grundfläche: G = a², M = 2 · a · hₛ.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1554,30 +1299,6 @@
                 "Grundfläche",
                 "Seitenfläche"
               ]
-            },
-            {
-              "id": "k7-lb3-d01",
-              "title": "Prisma und Pyramide vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k7-lb3-d02",
-              "title": "Prisma und Pyramide vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k7-lb3-d03",
-              "title": "Prisma und Pyramide vertiefen (3)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
             }
           ]
         },
@@ -1588,55 +1309,54 @@
           "topics": [
             {
               "id": "k7-lb4-mittelwert",
-              "title": "Arithmetisches Mittel",
+              "title": "Säulendiagramme lesen und auswerten",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
-                "Mittelwert",
-                "arithmetisches Mittel",
-                "Durchschnitt",
+                "Säulendiagramm",
+                "Diagramm",
                 "Daten",
+                "ablesen",
                 "Statistik"
               ]
             },
             {
               "id": "k7-lb4-median",
-              "title": "Median (Zentralwert)",
-              "hint": "Ordne die Werte und nimm den mittleren.",
+              "title": "Liniendiagramme lesen und auswerten",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
-                "Median",
-                "Zentralwert",
-                "Daten",
-                "Statistik",
-                "ordnen"
+                "Liniendiagramm",
+                "Diagramm",
+                "Temperatur",
+                "Veränderung",
+                "Statistik"
               ]
             },
             {
               "id": "k7-lb4-spannweite",
-              "title": "Spannweite berechnen",
+              "title": "Kreisdiagramme: Mittelpunktswinkel berechnen",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
-                "Spannweite",
-                "Maximum",
-                "Minimum",
-                "Daten",
+                "Kreisdiagramm",
+                "Mittelpunktswinkel",
+                "Anteil",
+                "Diagramm",
                 "Statistik"
               ]
             },
             {
               "id": "k7-lb4-rel-haeufigkeit",
-              "title": "Relative Häufigkeit in Prozent",
+              "title": "Diagramme kritisch lesen (abgeschnittene Achse)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
-                "relative Häufigkeit",
-                "Häufigkeit",
-                "Prozent",
-                "Daten",
-                "Statistik"
+                "Diagramm",
+                "abgeschnittene Achse",
+                "Manipulation",
+                "Säulendiagramm",
+                "Interpretation"
               ]
             }
           ]
@@ -1658,7 +1378,6 @@
             {
               "id": "k8-lb1-zusammenfassen",
               "title": "Terme zusammenfassen (Zahl vor x)",
-              "hint": "Fasse nur die x-Glieder zusammen.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1672,7 +1391,6 @@
             {
               "id": "k8-lb1-term-auswerten",
               "title": "Term auswerten (x einsetzen)",
-              "hint": "Setze den Wert für x ein und rechne aus.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1686,7 +1404,6 @@
             {
               "id": "k8-lb1-gleichung-linear",
               "title": "Lineare Gleichung a·x + b = c",
-              "hint": "Erst b, dann den Faktor a beseitigen.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1700,7 +1417,6 @@
             {
               "id": "k8-lb1-gleichung-beidseitig",
               "title": "Gleichung mit x auf beiden Seiten",
-              "hint": "Bringe alle x auf eine Seite.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1714,7 +1430,6 @@
             {
               "id": "k8-lb1-ausmultiplizieren",
               "title": "Klammer ausmultiplizieren (Wert bei x)",
-              "hint": "Wende das Distributivgesetz an.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1727,7 +1442,6 @@
             {
               "id": "k8-lb1-binomisch",
               "title": "Binomische Formel: (a±b)² auswerten",
-              "hint": "(a±b)² = a² ± 2ab + b².",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1736,38 +1450,6 @@
                 "Term",
                 "ausmultiplizieren"
               ]
-            },
-            {
-              "id": "k8-lb1-d01",
-              "title": "Terme und Gleichungen vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k8-lb1-d02",
-              "title": "Terme und Gleichungen vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k8-lb1-d03",
-              "title": "Terme und Gleichungen vertiefen (3)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k8-lb1-d04",
-              "title": "Terme und Gleichungen vertiefen (4)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
             }
           ]
         },
@@ -1817,7 +1499,6 @@
             {
               "id": "k8-lb2-zweistufig",
               "title": "Zweistufiger Zufallsversuch (Pfadregel)",
-              "hint": "Wahrscheinlichkeiten längs eines Pfades multiplizieren.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1830,7 +1511,6 @@
             {
               "id": "k8-lb2-abzaehlen",
               "title": "Abzählen mit der Produktregel",
-              "hint": "Anzahl der Möglichkeiten = Produkt der Stufen.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1854,38 +1534,6 @@
                 "Ergebnismenge"
               ],
               "released": false
-            },
-            {
-              "id": "k8-lb2-d01",
-              "title": "Zufallsversuche vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k8-lb2-d02",
-              "title": "Zufallsversuche vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k8-lb2-d03",
-              "title": "Zufallsversuche vertiefen (3)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k8-lb2-d04",
-              "title": "Zufallsversuche vertiefen (4)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
             }
           ]
         },
@@ -1897,7 +1545,6 @@
             {
               "id": "k8-lb3-funktionswert",
               "title": "Funktionswert einer linearen Funktion",
-              "hint": "Setze den gegebenen x-Wert in die Funktion ein.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1936,7 +1583,6 @@
             {
               "id": "k8-lb3-lgs",
               "title": "Lineares Gleichungssystem (x bestimmen)",
-              "hint": "Additions- oder Einsetzungsverfahren.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1968,7 +1614,7 @@
             {
               "id": "k8-lb3-achsenabschnitt__grafik",
               "title": "Nullstelle einer Geraden tippen",
-              "hint": "Schnittpunkt mit der x-Achse tippen.",
+              "hint": "Tippe den Schnittpunkt mit der x-Achse.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1998,54 +1644,6 @@
               ],
               "released": true,
               "reviewOf": "k8-lb3-funktionswert"
-            },
-            {
-              "id": "k8-lb3-d01",
-              "title": "Lineare Funktionen vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k8-lb3-d02",
-              "title": "Lineare Funktionen vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k8-lb3-d03",
-              "title": "Lineare Funktionen vertiefen (3)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k8-lb3-d04",
-              "title": "Lineare Funktionen vertiefen (4)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k8-lb3-d05",
-              "title": "Lineare Funktionen vertiefen (5)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k8-lb3-d06",
-              "title": "Lineare Funktionen vertiefen (6)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
             }
           ]
         },
@@ -2069,7 +1667,6 @@
             {
               "id": "k8-lb4-strahlensatz",
               "title": "Strahlensatz: fehlende Länge",
-              "hint": "Stelle die Proportion auf und löse nach x.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2082,7 +1679,6 @@
             {
               "id": "k8-lb4-aehnliche-seite",
               "title": "Ähnliche Figuren: Seitenlänge",
-              "hint": "Multipliziere mit dem Ähnlichkeitsfaktor.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2091,46 +1687,6 @@
                 "Seitenverhältnis",
                 "Faktor"
               ]
-            },
-            {
-              "id": "k8-lb4-d01",
-              "title": "Ähnlichkeit vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k8-lb4-d02",
-              "title": "Ähnlichkeit vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k8-lb4-d03",
-              "title": "Ähnlichkeit vertiefen (3)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k8-lb4-d04",
-              "title": "Ähnlichkeit vertiefen (4)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k8-lb4-d05",
-              "title": "Ähnlichkeit vertiefen (5)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
             }
           ]
         },
@@ -2142,7 +1698,6 @@
             {
               "id": "k8-lb5-zahlenraetsel",
               "title": "Zahlenrätsel (Gleichung aufstellen)",
-              "hint": "Übersetze in eine Gleichung und löse.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2156,7 +1711,6 @@
             {
               "id": "k8-lb5-rueckwaerts",
               "title": "Rückwärtsrechnen",
-              "hint": "Kehre die Rechenschritte um.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2169,7 +1723,6 @@
             {
               "id": "k8-lb5-probieren",
               "title": "Systematisches Probieren",
-              "hint": "Probiere geordnet und notiere Zwischenergebnisse.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2182,7 +1735,6 @@
             {
               "id": "k8-lb5-skizze",
               "title": "Skizze und Hilfsfigur",
-              "hint": "Zeichne die Situation zuerst grob.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2238,7 +1790,6 @@
             {
               "id": "k9-lb1-quadrat-wert",
               "title": "Wert einer quadratischen Funktion",
-              "hint": "Setze den gegebenen x-Wert in die Funktion ein.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2251,7 +1802,6 @@
             {
               "id": "k9-lb1-scheitel",
               "title": "Scheitelpunkt aus der Scheitelform",
-              "hint": "Lies den Scheitel aus der Scheitelform ab.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2265,7 +1815,6 @@
             {
               "id": "k9-lb1-wurzelgleichung",
               "title": "Einfache Wurzelgleichung",
-              "hint": "Quadriere beide Seiten; prüfe die Lösung.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2278,7 +1827,6 @@
             {
               "id": "k9-lb1-potenzfunktion",
               "title": "Wert einer Potenzfunktion",
-              "hint": "Setze x ein und potenziere.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2308,7 +1856,7 @@
             {
               "id": "k9-lb1-quadrat-wert__grafik",
               "title": "Nullstelle einer Parabel tippen",
-              "hint": "Tippe einen Schnittpunkt mit der x-Achse.",
+              "hint": "Tippe den gesuchten Punkt im Koordinatensystem an.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2334,94 +1882,6 @@
                 "Funktion",
                 "Potenz"
               ],
-              "released": false
-            },
-            {
-              "id": "k9-lb1-d01",
-              "title": "Potenzen und Funktionen vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k9-lb1-d02",
-              "title": "Potenzen und Funktionen vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k9-lb1-d03",
-              "title": "Potenzen und Funktionen vertiefen (3)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k9-lb1-d04",
-              "title": "Potenzen und Funktionen vertiefen (4)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k9-lb1-d05",
-              "title": "Potenzen und Funktionen vertiefen (5)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k9-lb1-d06",
-              "title": "Potenzen und Funktionen vertiefen (6)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k9-lb1-d07",
-              "title": "Potenzen und Funktionen vertiefen (7)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k9-lb1-d08",
-              "title": "Potenzen und Funktionen vertiefen (8)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k9-lb1-d09",
-              "title": "Potenzen und Funktionen vertiefen (9)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k9-lb1-d10",
-              "title": "Potenzen und Funktionen vertiefen (10)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k9-lb1-d11",
-              "title": "Potenzen und Funktionen vertiefen (11)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
               "released": false
             }
           ]
@@ -2519,7 +1979,7 @@
             {
               "id": "k9-lb3-trig-wert",
               "title": "Werte von Sinus, Kosinus, Tangens",
-              "hint": "Nutze den Taschenrechner und runde auf vier Nachkommastellen.",
+              "hint": "Runde auf vier Nachkommastellen.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2536,7 +1996,6 @@
             {
               "id": "k9-lb3-hoehensatz",
               "title": "Höhensatz: Höhe im rechtwinkligen Dreieck",
-              "hint": "h² = p · q (Abschnitte der Hypotenuse).",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2559,70 +2018,6 @@
                 "Projektion"
               ],
               "released": false
-            },
-            {
-              "id": "k9-lb3-d01",
-              "title": "Rechtwinklige Dreiecke vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k9-lb3-d02",
-              "title": "Rechtwinklige Dreiecke vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k9-lb3-d03",
-              "title": "Rechtwinklige Dreiecke vertiefen (3)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k9-lb3-d04",
-              "title": "Rechtwinklige Dreiecke vertiefen (4)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k9-lb3-d05",
-              "title": "Rechtwinklige Dreiecke vertiefen (5)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k9-lb3-d06",
-              "title": "Rechtwinklige Dreiecke vertiefen (6)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k9-lb3-d07",
-              "title": "Rechtwinklige Dreiecke vertiefen (7)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k9-lb3-d08",
-              "title": "Rechtwinklige Dreiecke vertiefen (8)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
             }
           ]
         },
@@ -2633,21 +2028,21 @@
           "topics": [
             {
               "id": "k9-lb4-mittelwert",
-              "title": "Arithmetisches Mittel",
+              "title": "Mittelwerte aus Häufigkeitstabellen und ihre Aussagekraft",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
                 "Mittelwert",
-                "Durchschnitt",
-                "arithmetisches Mittel",
-                "Kennwert",
-                "Daten"
+                "Häufigkeitstabelle",
+                "Median",
+                "Modalwert",
+                "Skala",
+                "Ausreißer"
               ]
             },
             {
               "id": "k9-lb4-median",
               "title": "Median (Zentralwert)",
-              "hint": "Ordne die Werte und nimm den mittleren.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2661,7 +2056,6 @@
             {
               "id": "k9-lb4-modalwert",
               "title": "Modalwert (häufigster Wert)",
-              "hint": "Der Modalwert kommt am häufigsten vor.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2675,7 +2069,6 @@
             {
               "id": "k9-lb4-spannweite",
               "title": "Spannweite einer Datenreihe",
-              "hint": "Spannweite = Maximum − Minimum.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2689,7 +2082,6 @@
             {
               "id": "k9-lb4-standardabweichung",
               "title": "Standardabweichung (kleine Datenreihe)",
-              "hint": "σ = √(Mittel der quadrierten Abweichungen vom Mittelwert).",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2709,7 +2101,6 @@
             {
               "id": "k9-lb5-leiter",
               "title": "Vernetzung: Pythagoras im Sachkontext",
-              "hint": "Leiter, Wand und Boden bilden ein rechtwinkliges Dreieck.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2723,7 +2114,6 @@
             {
               "id": "k9-lb5-diagonale",
               "title": "Vernetzung: Diagonale im Rechteck",
-              "hint": "Die Diagonale ist Hypotenuse im rechtwinkligen Dreieck.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2736,7 +2126,6 @@
             {
               "id": "k9-lb5-trig-hoehe",
               "title": "Vernetzung: Höhe mit Trigonometrie",
-              "hint": "sin(α) = Gegenkathete / Hypotenuse.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2764,15 +2153,15 @@
           "topics": [
             {
               "id": "k10-lb1-zinsen",
-              "title": "Jahreszinsen berechnen",
+              "title": "Lineares und exponentielles Wachstum unterscheiden",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
-                "Zinsen",
-                "Zinsrechnung",
-                "Kapital",
-                "Prozent",
-                "Prozentsatz"
+                "lineares Wachstum",
+                "exponentielles Wachstum",
+                "Wachstumsfaktor",
+                "Tabelle",
+                "Vergleich"
               ]
             },
             {
@@ -2790,15 +2179,15 @@
             },
             {
               "id": "k10-lb1-prozentuale-zunahme",
-              "title": "Prozentuale Zunahme",
+              "title": "Exponentielle Abnahme und Halbwertszeit",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
-                "prozentuale Zunahme",
-                "Wachstum",
-                "Prozent",
-                "Erhöhung",
-                "Zunahme"
+                "exponentielle Abnahme",
+                "Zerfall",
+                "Halbwertszeit",
+                "Abnahmefaktor",
+                "Kernzerfall"
               ]
             },
             {
@@ -2816,7 +2205,6 @@
             {
               "id": "k10-lb1-sinus-wert",
               "title": "Sinusfunktion: Funktionswert",
-              "hint": "sin(0°)=0, sin(30°)=1/2, sin(90°)=1, …",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2825,38 +2213,6 @@
                 "Trigonometrie",
                 "Funktionswert"
               ]
-            },
-            {
-              "id": "k10-lb1-d01",
-              "title": "Wachstum vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k10-lb1-d02",
-              "title": "Wachstum vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k10-lb1-d03",
-              "title": "Wachstum vertiefen (3)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k10-lb1-d04",
-              "title": "Wachstum vertiefen (4)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
             }
           ]
         },
@@ -2881,7 +2237,6 @@
             {
               "id": "k10-lb2-erwartungswert-wuerfel",
               "title": "Erwartungswert beim Würfel",
-              "hint": "Multipliziere jede Augenzahl mit 1/6 und addiere.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2895,7 +2250,6 @@
             {
               "id": "k10-lb2-varianz",
               "title": "Varianz einer Zufallsgröße",
-              "hint": "Var(X) = E(X²) − [E(X)]² bzw. Mittel der quadrierten Abweichungen.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2918,30 +2272,6 @@
                 "Wahrscheinlichkeit"
               ],
               "released": false
-            },
-            {
-              "id": "k10-lb2-d01",
-              "title": "Zufallsgrößen vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k10-lb2-d02",
-              "title": "Zufallsgrößen vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k10-lb2-d03",
-              "title": "Zufallsgrößen vertiefen (3)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
             }
           ]
         },
@@ -2952,47 +2282,46 @@
           "topics": [
             {
               "id": "k10-lb3-rechteck-breite",
-              "title": "Rechteck: Breite aus Fläche",
+              "title": "Flächeninhalt allgemeiner Dreiecke mit dem Sinus",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
-                "Rechteck",
+                "Dreieck",
                 "Flächeninhalt",
-                "algebraisch",
-                "Gleichung",
-                "Seite"
+                "Sinus",
+                "Flächeninhaltsformel",
+                "Trigonometrie"
               ]
             },
             {
               "id": "k10-lb3-quadrat-seite",
-              "title": "Quadrat: Seitenlänge aus Fläche",
+              "title": "Winkel mit dem Kosinussatz berechnen",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
-                "Quadrat",
-                "Flächeninhalt",
-                "Wurzel",
-                "Seitenlänge",
-                "algebraisch"
+                "Kosinussatz",
+                "Winkel",
+                "Dreieck",
+                "SSS",
+                "Trigonometrie"
               ]
             },
             {
               "id": "k10-lb3-rechteck-umfang",
-              "title": "Rechteck: Breite aus Umfang",
+              "title": "Berechnungen an Pyramiden und Kegeln",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
-                "Rechteck",
-                "Umfang",
-                "algebraisch",
-                "Gleichung",
-                "Seite"
+                "Pyramide",
+                "Kegel",
+                "Neigungswinkel",
+                "Mantellinie",
+                "Trigonometrie"
               ]
             },
             {
               "id": "k10-lb3-sinussatz",
-              "title": "Sinussatz: Seite berechnen",
-              "hint": "a/sin(α) = b/sin(β).",
+              "title": "Sinussatz: Seiten und Winkel berechnen",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3005,7 +2334,6 @@
             {
               "id": "k10-lb3-kosinussatz",
               "title": "Kosinussatz: Seite berechnen",
-              "hint": "c² = a² + b² − 2ab·cos(γ).",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3014,30 +2342,6 @@
                 "Trigonometrie",
                 "Seite"
               ]
-            },
-            {
-              "id": "k10-lb3-d01",
-              "title": "Geometrie algebraisch vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k10-lb3-d02",
-              "title": "Geometrie algebraisch vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k10-lb3-d03",
-              "title": "Geometrie algebraisch vertiefen (3)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
             }
           ]
         },
@@ -3048,49 +2352,48 @@
           "topics": [
             {
               "id": "k10-lb4-reinquadratisch",
-              "title": "Reinquadratische Gleichung x² = a",
-              "hint": "Nimm die positive Quadratwurzel.",
+              "title": "Zahlenfolgen: Grenzwert und Schranken",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
-                "quadratische Gleichung",
-                "Wurzel",
-                "x²",
-                "lösen",
-                "reinquadratisch"
+                "Zahlenfolge",
+                "Grenzwert",
+                "Schranke",
+                "Monotonie",
+                "Konvergenz"
               ]
             },
             {
               "id": "k10-lb4-quadratische-gleichung",
-              "title": "Quadratische Gleichung (größere Lösung)",
-              "hint": "Faktorisiere und nutze den Satz vom Nullprodukt.",
+              "title": "Tangensfunktion als Quotient von Sinus und Kosinus",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
-                "quadratische Gleichung",
-                "Nullstellen",
-                "faktorisieren",
-                "Satz von Vieta",
-                "lösen"
+                "Tangens",
+                "Sinus",
+                "Kosinus",
+                "Verknüpfung",
+                "Periode"
               ]
             },
             {
               "id": "k10-lb4-parabel-wert",
-              "title": "Funktionswert einer Parabel",
-              "hint": "Setze den gegebenen x-Wert in die Funktion ein.",
+              "title": "Eigenschaften elementarer Funktionen",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
-                "Parabel",
-                "quadratische Funktion",
-                "Funktionswert",
-                "einsetzen"
+                "Funktion",
+                "Definitionsbereich",
+                "Wertebereich",
+                "Symmetrie",
+                "Monotonie",
+                "Logarithmusfunktion",
+                "Exponentialfunktion"
               ]
             },
             {
               "id": "k10-lb4-exp-gleichung",
               "title": "Exponentialgleichung aˣ = b",
-              "hint": "Schreibe b als Potenz von a oder nutze den Logarithmus.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3103,7 +2406,6 @@
             {
               "id": "k10-lb4-logarithmus",
               "title": "Logarithmus berechnen",
-              "hint": "logₐ(b) ist der Exponent, mit dem a die Zahl b ergibt.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3115,7 +2417,6 @@
             {
               "id": "k10-lb4-folge",
               "title": "Glied einer Zahlenfolge",
-              "hint": "Setze n in die explizite Bildungsvorschrift ein.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3127,14 +2428,17 @@
             },
             {
               "id": "k10-lb4-parabel-wert__grafik",
-              "title": "Scheitel einer Parabel tippen",
-              "hint": "Tippe den Scheitel der gezeichneten Parabel.",
+              "title": "Punkt am Graphen der Umkehrfunktion tippen",
+              "hint": "Tippe den gesuchten Punkt im Koordinatensystem an.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
-                "Scheitel",
-                "Parabel",
+                "Umkehrfunktion",
+                "Spiegelung",
+                "y = x",
                 "Graph",
+                "Exponentialfunktion",
+                "Wurzelfunktion",
                 "Grafik",
                 "Interactive",
                 "k10-lb4-parabel-wert"
@@ -3144,14 +2448,15 @@
             },
             {
               "id": "k10-lb4-parabel-wert__grafik-ablesen",
-              "title": "Funktionswert am Parabelgraphen",
-              "hint": "Lies f(x₀) am Graphen ab (oder rechne nach).",
+              "title": "Exponential- und Logarithmusgraphen ablesen",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
-                "Funktionswert",
-                "Parabel",
+                "Exponentialfunktion",
+                "Logarithmusfunktion",
+                "Graph",
                 "ablesen",
+                "Funktionswert",
                 "Grafik",
                 "Interactive",
                 "k10-lb4-parabel-wert"
@@ -3172,70 +2477,6 @@
                 "Funktion"
               ],
               "released": false
-            },
-            {
-              "id": "k10-lb4-d01",
-              "title": "Funktionen vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k10-lb4-d02",
-              "title": "Funktionen vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k10-lb4-d03",
-              "title": "Funktionen vertiefen (3)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k10-lb4-d04",
-              "title": "Funktionen vertiefen (4)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k10-lb4-d05",
-              "title": "Funktionen vertiefen (5)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k10-lb4-d06",
-              "title": "Funktionen vertiefen (6)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k10-lb4-d07",
-              "title": "Funktionen vertiefen (7)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k10-lb4-d08",
-              "title": "Funktionen vertiefen (8)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
             }
           ]
         },
@@ -3246,51 +2487,54 @@
           "topics": [
             {
               "id": "k10-lb5-kapital",
-              "title": "Kapital aus Zinsen bestimmen",
+              "title": "Zinsen für Monate und Tage",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
                 "Zinsrechnung",
+                "Monatszinsen",
+                "Tageszinsen",
                 "Kapital",
-                "Zinsen",
-                "Prozentsatz",
-                "Grundwert"
+                "Zinssatz"
               ]
             },
             {
               "id": "k10-lb5-zinssatz",
-              "title": "Zinssatz bestimmen",
+              "title": "Zinssatz und Laufzeit bestimmen",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
                 "Zinsrechnung",
                 "Zinssatz",
-                "Prozentsatz",
+                "Laufzeit",
                 "Zinsen",
                 "Kapital"
               ]
             },
             {
               "id": "k10-lb5-zinsen",
-              "title": "Zinsen aus Kapital berechnen",
+              "title": "Ratenkredit: Tilgung, Zinsen und Rate",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
-                "Zinsrechnung",
-                "Zinsen",
-                "Kapital",
-                "Vernetzung"
+                "Kredit",
+                "Tilgung",
+                "Restschuld",
+                "Ratenkredit",
+                "Zinsen"
               ]
             },
             {
               "id": "k10-lb5-endkapital",
-              "title": "Endkapital nach einem Jahr",
+              "title": "Annuitätenkredit: Restschuld berechnen",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
-                "Zinsrechnung",
-                "Endkapital",
-                "Vernetzung"
+                "Kredit",
+                "Annuität",
+                "Restschuld",
+                "Tilgung",
+                "Zinseszins"
               ]
             }
           ]
@@ -3312,7 +2556,6 @@
             {
               "id": "k1112-lb1-ableitung-stelle",
               "title": "Ableitung eines Polynoms an einer Stelle",
-              "hint": "Leite mit der Potenzregel ab und setze x₀ ein.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3326,22 +2569,20 @@
             },
             {
               "id": "k1112-lb1-nullstelle-linear",
-              "title": "Nullstelle einer linearen Funktion",
-              "hint": "Setze die Funktion gleich null und löse nach x.",
+              "title": "Nullstellen ganzrationaler Funktionen",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
                 "Nullstelle",
-                "lineare Funktion",
-                "Gleichung",
-                "x-Achse",
-                "Schnittpunkt"
+                "ganzrationale Funktion",
+                "Ausklammern",
+                "Substitution",
+                "Satz vom Nullprodukt"
               ]
             },
             {
               "id": "k1112-lb1-extremum",
-              "title": "Extremstelle einer Parabel",
-              "hint": "Setze f′(x)=0 und löse.",
+              "title": "Extremstellen ganzrationaler Funktionen",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3355,7 +2596,6 @@
             {
               "id": "k1112-lb1-ableitung-exp",
               "title": "Ableitung von eˣ und ln an einer Stelle",
-              "hint": "(eˣ)′=eˣ, (ln x)′=1/x.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3369,7 +2609,6 @@
             {
               "id": "k1112-lb1-differenzenquotient",
               "title": "Differenzenquotient zweier Punkte",
-              "hint": "m = (f(x₂)−f(x₁))/(x₂−x₁).",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3382,7 +2621,6 @@
             {
               "id": "k1112-lb1-ableitung-stelle__grafik",
               "title": "Steigung der Tangente ablesen",
-              "hint": "Lies die Steigung der eingezeichneten Tangente ab.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3399,13 +2637,13 @@
             },
             {
               "id": "k1112-lb1-nullstelle-linear__grafik",
-              "title": "Nullstelle linearer Graph tippen",
-              "hint": "Tippe den Schnitt mit der x-Achse.",
+              "title": "Nullstelle am Graphen tippen",
+              "hint": "Tippe den gesuchten Punkt im Koordinatensystem an.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
                 "Nullstelle",
-                "lineare Funktion",
+                "ganzrationale Funktion",
                 "Graph",
                 "Grafik",
                 "Interactive",
@@ -3413,118 +2651,6 @@
               ],
               "released": true,
               "reviewOf": "k1112-lb1-nullstelle-linear"
-            },
-            {
-              "id": "k1112-lb1-d01",
-              "title": "Ableitungen vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb1-d02",
-              "title": "Ableitungen vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb1-d03",
-              "title": "Ableitungen vertiefen (3)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb1-d04",
-              "title": "Ableitungen vertiefen (4)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb1-d05",
-              "title": "Ableitungen vertiefen (5)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb1-d06",
-              "title": "Ableitungen vertiefen (6)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb1-d07",
-              "title": "Ableitungen vertiefen (7)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb1-d08",
-              "title": "Ableitungen vertiefen (8)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb1-d09",
-              "title": "Ableitungen vertiefen (9)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb1-d10",
-              "title": "Ableitungen vertiefen (10)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb1-d11",
-              "title": "Ableitungen vertiefen (11)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb1-d12",
-              "title": "Ableitungen vertiefen (12)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb1-d13",
-              "title": "Ableitungen vertiefen (13)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb1-d14",
-              "title": "Ableitungen vertiefen (14)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
             }
           ]
         },
@@ -3536,7 +2662,6 @@
             {
               "id": "k1112-lb2-matrix-mult",
               "title": "Matrizen multiplizieren (2×2)",
-              "hint": "Zeile · Spalte; Ergebnis ist eine Zahl je Eintrag.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3548,7 +2673,6 @@
             {
               "id": "k1112-lb2-matrix-lgs",
               "title": "LGS in Matrizenschreibweise lösen",
-              "hint": "Löse das 2×2-System; gesucht ist x.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3561,7 +2685,6 @@
             {
               "id": "k1112-lb2-matrix-add",
               "title": "Matrizen addieren (2×2)",
-              "hint": "Einträge jeweils addieren.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3573,7 +2696,6 @@
             {
               "id": "k1112-lb2-matrix-det",
               "title": "Determinante 2×2",
-              "hint": "det = a₁₁a₂₂ − a₁₂a₂₁.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3592,7 +2714,6 @@
             {
               "id": "k1112-lb2-skalarprodukt",
               "title": "Skalarprodukt zweier Vektoren",
-              "hint": "Multipliziere komponentenweise und addiere.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3620,7 +2741,6 @@
             {
               "id": "k1112-lb3-vektor-add",
               "title": "Vektoren addieren",
-              "hint": "Komponentenweise addieren.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3632,7 +2752,6 @@
             {
               "id": "k1112-lb3-gerade-punkt",
               "title": "Punkt auf einer Geraden (Parameter)",
-              "hint": "Setze den Parameter t in die Parametergleichung ein.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3645,7 +2764,6 @@
             {
               "id": "k1112-lb3-lage-geraden",
               "title": "Lagebeziehung zweier Geraden in der Ebene",
-              "hint": "Vergleiche Richtungsvektoren und einen Punkt.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3655,70 +2773,6 @@
                 "identisch",
                 "schneidend"
               ]
-            },
-            {
-              "id": "k1112-lb3-d01",
-              "title": "Vektoren vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb3-d02",
-              "title": "Vektoren vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb3-d03",
-              "title": "Vektoren vertiefen (3)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb3-d04",
-              "title": "Vektoren vertiefen (4)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb3-d05",
-              "title": "Vektoren vertiefen (5)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb3-d06",
-              "title": "Vektoren vertiefen (6)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb3-d07",
-              "title": "Vektoren vertiefen (7)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb3-d08",
-              "title": "Vektoren vertiefen (8)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
             }
           ]
         },
@@ -3756,7 +2810,6 @@
             {
               "id": "k1112-lb4-binom-kumuliert",
               "title": "Binomialverteilung: P(X ≤ k)",
-              "hint": "Summe der Einzelwahrscheinlichkeiten von 0 bis k.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3769,7 +2822,6 @@
             {
               "id": "k1112-lb4-binom-sigma",
               "title": "Standardabweichung der Binomialverteilung",
-              "hint": "σ = √(n·p·(1−p)).",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3778,38 +2830,6 @@
                 "Varianz",
                 "Stochastik"
               ]
-            },
-            {
-              "id": "k1112-lb4-d01",
-              "title": "Binomialverteilung vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb4-d02",
-              "title": "Binomialverteilung vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb4-d03",
-              "title": "Binomialverteilung vertiefen (3)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb4-d04",
-              "title": "Binomialverteilung vertiefen (4)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
             }
           ]
         },
@@ -3821,7 +2841,6 @@
             {
               "id": "k1112-lb1-bestimmtes-integral",
               "title": "Bestimmtes Integral eines Polynoms",
-              "hint": "Bilde die Stammfunktion und setze die Grenzen ein.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3835,7 +2854,6 @@
             {
               "id": "k1112-lb5-stammfunktion",
               "title": "Stammfunktion eines Polynoms",
-              "hint": "Potenzregel rückwärts: xⁿ → xⁿ⁺¹/(n+1).",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3847,7 +2865,6 @@
             {
               "id": "k1112-lb5-flaeche",
               "title": "Fläche zwischen Graph und x-Achse",
-              "hint": "Berechne |∫ₐᵇ f| wenn f das Vorzeichen nicht wechselt.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3860,7 +2877,6 @@
             {
               "id": "k1112-lb1-bestimmtes-integral__grafik",
               "title": "Fläche unter dem Graphen",
-              "hint": "Rechteckfläche bzw. Integral berechnen.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3873,70 +2889,6 @@
               ],
               "released": true,
               "reviewOf": "k1112-lb1-bestimmtes-integral"
-            },
-            {
-              "id": "k1112-lb5-d01",
-              "title": "Integrale vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb5-d02",
-              "title": "Integrale vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb5-d03",
-              "title": "Integrale vertiefen (3)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb5-d04",
-              "title": "Integrale vertiefen (4)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb5-d05",
-              "title": "Integrale vertiefen (5)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb5-d06",
-              "title": "Integrale vertiefen (6)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb5-d07",
-              "title": "Integrale vertiefen (7)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb5-d08",
-              "title": "Integrale vertiefen (8)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
             }
           ]
         },
@@ -3948,7 +2900,6 @@
             {
               "id": "k1112-lb6-stichprobenmittel",
               "title": "Stichprobenmittel berechnen",
-              "hint": "Mittelwert der Stichprobenwerte.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3960,7 +2911,6 @@
             {
               "id": "k1112-lb6-hypothesentest",
               "title": "Signifikanztest: Entscheidung",
-              "hint": "Vergleiche die Testgröße mit dem kritischen Wert.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3973,7 +2923,6 @@
             {
               "id": "k1112-lb6-konfidenz",
               "title": "Konfidenzintervall (Idee)",
-              "hint": "Schätzintervall um den Stichprobenanteil.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -3996,14 +2945,6 @@
                 "LK"
               ],
               "released": false
-            },
-            {
-              "id": "k1112-lb6-d01",
-              "title": "Statistik vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
             }
           ]
         },
@@ -4015,7 +2956,6 @@
             {
               "id": "k1112-lb7-orthogonal",
               "title": "Orthogonalität zweier Vektoren",
-              "hint": "Senkrecht ⇔ Skalarprodukt = 0.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -4028,7 +2968,6 @@
             {
               "id": "k1112-lb7-winkel",
               "title": "Winkel zwischen Vektoren (Kosinus)",
-              "hint": "cos(φ) = (a·b)/(|a|·|b|).",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -4041,7 +2980,6 @@
             {
               "id": "k1112-lb7-abstand-gerade",
               "title": "Abstand Punkt–Gerade in der Ebene",
-              "hint": "d = |ax₀+by₀+c|/√(a²+b²) für Gerade ax+by+c=0.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -4050,62 +2988,6 @@
                 "Punkt",
                 "analytische Geometrie"
               ]
-            },
-            {
-              "id": "k1112-lb7-d01",
-              "title": "Orthogonalität vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb7-d02",
-              "title": "Orthogonalität vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb7-d03",
-              "title": "Orthogonalität vertiefen (3)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb7-d04",
-              "title": "Orthogonalität vertiefen (4)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb7-d05",
-              "title": "Orthogonalität vertiefen (5)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb7-d06",
-              "title": "Orthogonalität vertiefen (6)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb7-d07",
-              "title": "Orthogonalität vertiefen (7)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
             }
           ]
         },
@@ -4117,7 +2999,6 @@
             {
               "id": "k1112-lb8-extremwert",
               "title": "Extremwert: Rechteck mit festem Umfang",
-              "hint": "Fläche A=x·(U/2−x); Maximum bei A′=0.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -4130,7 +3011,6 @@
             {
               "id": "k1112-lb8-spiegelung",
               "title": "Spiegelung eines Punktes an einer Koordinatenebene",
-              "hint": "An der xy-Ebene ändert sich das Vorzeichen von z.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -4143,7 +3023,6 @@
             {
               "id": "k1112-lb8-volumen",
               "title": "Extremwert: offener Quader",
-              "hint": "Volumen V(x) aufstellen und ableiten.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -4151,46 +3030,6 @@
                 "Volumen",
                 "Optimierung"
               ]
-            },
-            {
-              "id": "k1112-lb8-d01",
-              "title": "Extremwertaufgaben vertiefen (1)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb8-d02",
-              "title": "Extremwertaufgaben vertiefen (2)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb8-d03",
-              "title": "Extremwertaufgaben vertiefen (3)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb8-d04",
-              "title": "Extremwertaufgaben vertiefen (4)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
-            },
-            {
-              "id": "k1112-lb8-d05",
-              "title": "Extremwertaufgaben vertiefen (5)",
-              "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "released": false
             }
           ]
         }
