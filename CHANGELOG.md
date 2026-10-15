@@ -9,6 +9,21 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.89] – 2026-10-15
+
+### Behoben
+- **Keine Methoden-Spoiler im Aufgabentext:** Prompts wie
+  `Berechne (Punkt vor Strich): …`, `Berechne mit Distributivgesetz`,
+  `Nutze einen Rechenvorteil` und ähnliche Strategie-Hints entfernt
+  (Generatoren, Boosts, OS-ST). Beispiel: `Berechne: 7 + 2 · 3`.
+  Feedback „Richtige Lösung“ nach Absenden unverändert.
+- Topic-Hints ohne Lösungsstrategie (kein „Punkt vor Strich“ / Vorzeichenregeln
+  vor dem Lösen). Qualitätsregel Spoiler verschärft; Regressionstest.
+- **Rundenlänge 10:** `uniqueRound`-`stemfamily`-Dedupe kollabierte Mathe-Drills
+  (Zahlenvariation) auf 1 Aufgabe/Runde — ~101 Topics betroffen. Dedupe
+  entschärft; fehlende `contentIds`/Pools nachgezogen. Audit: 0 Topics mit
+  Rundenlänge &lt; 8 (Ziel 10, Mindestbar ≥ 8).
+
 ## [0.28.88] – 2026-10-15
 
 ### Behoben

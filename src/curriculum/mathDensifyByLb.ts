@@ -548,17 +548,41 @@ export function densifyK10Lb1(rng: Rng, salt: number): ReturnType<Topic['generat
 /** K10 LB2 — Diskrete Zufallsgrößen */
 export function densifyK10Lb2(rng: Rng, salt: number): ReturnType<Topic['generate']> {
   const vals = [1, 2, 3, 4]
-  const ps = [0.1, 0.2, 0.3, 0.4]
+  // Vier Wahrscheinlichkeiten, Summe 1 (Zehntel).
+  const pools: number[][] = [
+    [0.1, 0.2, 0.3, 0.4],
+    [0.4, 0.3, 0.2, 0.1],
+    [0.25, 0.25, 0.25, 0.25],
+    [0.1, 0.1, 0.2, 0.6],
+    [0.5, 0.2, 0.2, 0.1],
+    [0.2, 0.2, 0.2, 0.4],
+    [0.05, 0.15, 0.3, 0.5],
+    [0.3, 0.1, 0.4, 0.2],
+    [0.15, 0.35, 0.25, 0.25],
+    [0.4, 0.1, 0.1, 0.4],
+    [0.2, 0.3, 0.3, 0.2],
+    [0.1, 0.4, 0.4, 0.1],
+  ]
+  const ps = pools[(irand(rng, 0, pools.length - 1) + salt) % pools.length]!
   const E = vals.reduce((s, x, i) => s + x * ps[i]!, 0)
+  const eStr = String(Math.round(E * 100) / 100).replace('.', ',')
+  const pStr = ps.map((p) => String(p).replace('.', ',')).join('; ')
+  const wrong = shuffle(rng, [
+    eStr,
+    String(Math.round((E + 0.5) * 10) / 10).replace('.', ','),
+    String(Math.round((E - 0.5) * 10) / 10).replace('.', ','),
+    '2',
+    '4',
+  ]).filter((x, i, a) => a.indexOf(x) === i)
   return choicePickTask({
-    question: `X ∈ {1,2,3,4} mit P = (0,1; 0,2; 0,3; 0,4). Erwartungswert E(X)?`,
-    choices: shuffle(rng, ['3', '2,5', '2', '4']).slice(0, 4),
-    correct: '3',
-    solution: '3',
-    explanation: `E(X) = 1·0,1+2·0,2+3·0,3+4·0,4 = ${E}.`,
+    question: `X ∈ {1,2,3,4} mit P = (${pStr}). Erwartungswert E(X)?`,
+    choices: wrong.slice(0, 4),
+    correct: eStr,
+    solution: eStr,
+    explanation: `E(X) = 1·${ps[0]}+2·${ps[1]}+3·${ps[2]}+4·${ps[3]} = ${eStr}.`,
     fachwissen: fw('E(X) = Σ x·P(X=x).'),
-    dedupeKey: `ma:dens:k10lb2:E:${salt}:${Math.floor(rng() * 1000)}`,
-    contentIds: [`ma:dens:k10lb2:E`],
+    dedupeKey: `ma:dens:k10lb2:E:${pStr}:${salt}`,
+    contentIds: [`ma:dens:k10lb2:E:${pStr}`],
   })
 }
 
@@ -627,7 +651,7 @@ export function densifyOsK5Lb1(rng: Rng, salt: number): ReturnType<Topic['genera
     const c = 2 + irand(rng, 0, 5)
     const value = a + b * c
     return valueTask({
-      question: `Berechne (Punkt vor Strich): ${a} + ${b} · ${c}`,
+      question: `Berechne: ${a} + ${b} · ${c}`,
       answerKind: 'integer',
       value,
       solution: String(value),
@@ -642,7 +666,7 @@ export function densifyOsK5Lb1(rng: Rng, salt: number): ReturnType<Topic['genera
   const c = 1 + irand(rng, 0, 5)
   const value = a * (b + c)
   return valueTask({
-    question: `Nutze das Distributivgesetz: ${a} · (${b} + ${c}) = ?`,
+    question: `Berechne: ${a} · (${b} + ${c})`,
     answerKind: 'integer',
     value,
     solution: String(value),
@@ -766,17 +790,27 @@ export function densifyK1112Lb5(rng: Rng, salt: number): ReturnType<Topic['gener
 
 /** K11/12 LB6 — Statistik */
 export function densifyK1112Lb6(rng: Rng, salt: number): ReturnType<Topic['generate']> {
-  const vals = [2, 4, 6, 8, 10]
-  const mean = 6
+  const n = 5
+  const base = irand(rng, 1, 8) + (salt % 3)
+  const vals = Array.from({ length: n }, (_, i) => base + i * irand(rng, 1, 3))
+  const sum = vals.reduce((a, b) => a + b, 0)
+  const mean = sum / n
+  const meanStr =
+    Number.isInteger(mean) ? String(mean) : String(Math.round(mean * 10) / 10).replace('.', ',')
   return choicePickTask({
     question: `Arithmetisches Mittel von ${vals.join('; ')}?`,
-    choices: shuffle(rng, [String(mean), '5', '8', '4']).slice(0, 4),
-    correct: String(mean),
-    solution: String(mean),
-    explanation: `Summe 30 / 5 = 6.`,
+    choices: shuffle(rng, [
+      meanStr,
+      String(vals[0]),
+      String(sum),
+      String(Math.round(mean) + 1),
+    ]).slice(0, 4),
+    correct: meanStr,
+    solution: meanStr,
+    explanation: `Summe ${sum} / ${n} = ${meanStr}.`,
     fachwissen: fw('Mittelwert = Summe / Anzahl.'),
-    dedupeKey: `ma:dens:k1112lb6:m:${salt}:${Math.floor(rng() * 100)}`,
-    contentIds: [`ma:dens:k1112lb6:m`],
+    dedupeKey: `ma:dens:k1112lb6:m:${vals.join('-')}:${salt}`,
+    contentIds: [`ma:dens:k1112lb6:m:${vals.join('-')}`],
   })
 }
 
@@ -800,24 +834,54 @@ export function densifyK1112Lb7(rng: Rng, salt: number): ReturnType<Topic['gener
 
 /** K11/12 LB8 — Anwendungen */
 export function densifyK1112Lb8(rng: Rng, salt: number): ReturnType<Topic['generate']> {
-  const a = irand(rng, 2, 8)
-  const b = irand(rng, 10, 40)
-  // max of f(x)= -a x^2 + b x at x=b/(2a)
-  const x = b / (2 * a)
+  const mode = (irand(rng, 0, 2) + salt) % 3
+  if (mode === 0) {
+    const a = irand(rng, 2, 8)
+    const b = irand(rng, 10, 40)
+    const x = b / (2 * a)
+    const xs = String(Math.round(x * 100) / 100).replace('.', ',')
+    return choicePickTask({
+      question: `f(x) = −${a}x² + ${b}x hat ein Maximum. An welcher Stelle x?`,
+      choices: shuffle(rng, [xs, String(x + 1).replace('.', ','), String(b), '0']).slice(0, 4),
+      correct: xs,
+      solution: xs,
+      explanation: `Scheitel bei x = ${b}/(2·${a}) = ${xs} (Parabel öffnet nach unten).`,
+      fachwissen: fw('Extremstelle: f′(x)=0 (hier Scheitel).'),
+      dedupeKey: `ma:dens:k1112lb8:ex:${a}:${b}:${salt}`,
+      contentIds: [`ma:dens:k1112lb8:ex:${a}:${b}`],
+    })
+  }
+  if (mode === 1) {
+    const a = irand(rng, 2, 6)
+    const b = irand(rng, 8, 30)
+    const x = b / (2 * a)
+    const fmax = -a * x * x + b * x
+    const fs = String(Math.round(fmax * 100) / 100).replace('.', ',')
+    return choicePickTask({
+      question: `f(x) = −${a}x² + ${b}x. Wie groß ist der Maximalwert f(x_max)?`,
+      choices: shuffle(rng, [fs, String(b), String(a * b), '0']).slice(0, 4),
+      correct: fs,
+      solution: fs,
+      explanation: `x_max = ${b}/(2·${a}) = ${x}; f(x_max) = ${fs}.`,
+      fachwissen: fw('Maximalwert in den Scheitel einsetzen.'),
+      dedupeKey: `ma:dens:k1112lb8:fmax:${a}:${b}:${salt}`,
+      contentIds: [`ma:dens:k1112lb8:fmax:${a}:${b}`],
+    })
+  }
+  const u = irand(rng, 4, 12)
+  const v = irand(rng, 6, 20)
+  // Rechteck mit Umfang 2(u+v) — hier: Seiten x und (u-x), Fläche A=x(u-x)
+  const xmax = u / 2
+  const xs = String(xmax).replace('.', ',')
   return choicePickTask({
-    question: `f(x) = −${a}x² + ${b}x hat ein Maximum. An welcher Stelle x?`,
-    choices: shuffle(rng, [
-      String(x).replace('.', ','),
-      String(x + 1).replace('.', ','),
-      String(b),
-      '0',
-    ]).slice(0, 4),
-    correct: String(x).replace('.', ','),
-    solution: String(x).replace('.', ','),
-    explanation: `Scheitel bei x = ${b}/(2·${a}) = ${x} (Parabel öffnet nach unten).`,
-    fachwissen: fw('Extremstelle: f′(x)=0 (hier Scheitel).'),
-    dedupeKey: `ma:dens:k1112lb8:ex:${a}:${b}:${salt}`,
-    contentIds: [`ma:dens:k1112lb8:ex:${a}:${b}`],
+    question: `Aus einem Draht der Länge ${u + v} cm wird ein Rechteck gebogen (eine Seite x cm). Wann ist die Fläche maximal? (vereinfacht: x = ?)`,
+    choices: shuffle(rng, [xs, String(u), String(v), String(u + v)]).slice(0, 4),
+    correct: xs,
+    solution: xs,
+    explanation: `Bei festem Umfang ist das Quadrat flächenmaximal; hier x = ${xs} cm.`,
+    fachwissen: fw('Optimierung: Extremwert der Zielfunktion.'),
+    dedupeKey: `ma:dens:k1112lb8:opt:${u}:${v}:${salt}`,
+    contentIds: [`ma:dens:k1112lb8:opt:${u}:${v}`],
   })
 }
 

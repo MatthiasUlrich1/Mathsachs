@@ -1059,7 +1059,6 @@ export const k1112AbstandPunktGerade: Topic = {
 export const k1112ExtremwertAnwendung: Topic = {
   id: 'k1112-lb8-extremwert',
   title: 'Extremwert: Rechteck mit festem Umfang',
-  hint: 'Fläche A=x·(U/2−x); Maximum bei A′=0.',
   pointsPerTask: 10,
   difficulty: 3,
   keywords: ['Extremwertaufgabe', 'Optimierung', 'Ableitung', 'Anwendung'],
@@ -1070,14 +1069,17 @@ export const k1112ExtremwertAnwendung: Topic = {
   },
   generate: (rng: Rng) => {
     // Perimeter U=2(x+y) fixed → y=U/2-x; max area at square x=U/4
-    const half = pick(rng, [10, 12, 14, 16, 20]) // U/2
+    const half = pick(rng, [8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 36])
     const xMax = half / 2
+    const U = 2 * half
     return valueTask({
-      question: `Ein Rechteck hat den Umfang ${2 * half}. Für welche Seitenlänge x (in Längeneinheiten) wird die Fläche maximal?`,
+      question: `Ein Rechteck hat den Umfang ${U}. Für welche Seitenlänge x (in Längeneinheiten) wird die Fläche maximal?`,
       answerKind: 'integer',
       value: xMax,
       solution: `x = ${xMax}`,
       explanation: `Mit y = ${half} − x ist A(x)=x·(${half}−x). A'(x)=${half}−2x=0 ⇒ x=${xMax} (Quadrat).`,
+      dedupeKey: `ma:k1112:extrem:rect:${U}`,
+      contentIds: [`ma:k1112:extrem:rect:${U}`],
     })
   },
 }

@@ -24,7 +24,7 @@ export function generateRechengesetzeK5(rng: Rng): ReturnType<Topic['generate']>
     const c = 2 + Math.floor(rng() * 6)
     const value = a + b * c
     return valueTask({
-      question: `Berechne (Punkt vor Strich): ${a} + ${b} · ${c}`,
+      question: `Berechne: ${a} + ${b} · ${c}`,
       answerKind: 'integer',
       value,
       solution: String(value),
@@ -42,7 +42,7 @@ export function generateRechengesetzeK5(rng: Rng): ReturnType<Topic['generate']>
     const c = 1 + Math.floor(rng() * 6)
     const value = a * (b + c)
     return valueTask({
-      question: `Berechne mit Distributivgesetz: ${a} · (${b} + ${c})`,
+      question: `Berechne: ${a} · (${b} + ${c})`,
       answerKind: 'integer',
       value,
       solution: String(value),
@@ -58,7 +58,7 @@ export function generateRechengesetzeK5(rng: Rng): ReturnType<Topic['generate']>
     const sub = 1 + Math.floor(rng() * 4)
     const value = a * (tens - sub)
     return valueTask({
-      question: `Nutze einen Rechenvorteil: ${a} · ${tens - sub} = ${a} · (${tens} − ${sub}). Ergebnis?`,
+      question: `Berechne: ${a} · (${tens} − ${sub})`,
       answerKind: 'integer',
       value,
       solution: String(value),
@@ -209,10 +209,16 @@ export function generatePrimfaktorK5(rng: Rng): ReturnType<Topic['generate']> {
     { n: 18, z: '2·3·3' },
     { n: 20, z: '2·2·5' },
     { n: 24, z: '2·2·2·3' },
+    { n: 28, z: '2·2·7' },
     { n: 30, z: '2·3·5' },
     { n: 36, z: '2·2·3·3' },
+    { n: 40, z: '2·2·2·5' },
     { n: 42, z: '2·3·7' },
+    { n: 45, z: '3·3·5' },
     { n: 48, z: '2·2·2·2·3' },
+    { n: 54, z: '2·3·3·3' },
+    { n: 56, z: '2·2·2·7' },
+    { n: 60, z: '2·2·3·5' },
   ]
   const row = pick(rng, pool)
   return choicePickTask({

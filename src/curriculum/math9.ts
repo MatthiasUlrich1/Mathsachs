@@ -711,16 +711,30 @@ const trigHoehe: Topic = {
     url: 'https://de.wikipedia.org/wiki/Trigonometrie',
   },
   generate: (rng: Rng) => {
-    // Use 30°: sin 30 = 1/2 → height = hyp/2
-    const hyp = pick(rng, [10, 12, 14, 16, 20])
-    const h = hyp / 2
+    const rows = [
+      { deg: 30, hyp: 10, h: 5 },
+      { deg: 30, hyp: 12, h: 6 },
+      { deg: 30, hyp: 14, h: 7 },
+      { deg: 30, hyp: 16, h: 8 },
+      { deg: 30, hyp: 20, h: 10 },
+      { deg: 30, hyp: 8, h: 4 },
+      { deg: 30, hyp: 18, h: 9 },
+      { deg: 30, hyp: 22, h: 11 },
+      { deg: 30, hyp: 24, h: 12 },
+      { deg: 30, hyp: 26, h: 13 },
+      { deg: 30, hyp: 28, h: 14 },
+      { deg: 30, hyp: 30, h: 15 },
+    ]
+    const row = pick(rng, rows)
     return valueTask({
-      question: `Eine Schräge der Länge ${hyp} m bildet mit dem Boden 30°. Wie groß ist die Höhe am oberen Ende? (sin 30° = 1/2)`,
+      question: `Eine Schräge der Länge ${row.hyp} m bildet mit dem Boden ${row.deg}°. Wie groß ist die Höhe am oberen Ende?`,
       unit: 'm',
       answerKind: 'decimal',
-      value: h,
-      solution: `${h} m`,
-      explanation: `h = ${hyp} · sin 30° = ${hyp} · 1/2 = ${h} m.`,
+      value: row.h,
+      solution: `${row.h} m`,
+      explanation: `h = ${row.hyp} · sin ${row.deg}° = ${row.hyp} · 1/2 = ${row.h} m.`,
+      dedupeKey: `ma:k9:trig-h:${row.hyp}:${row.deg}`,
+      contentIds: [`ma:k9:trig-h:${row.hyp}:${row.deg}`],
     })
   },
 }

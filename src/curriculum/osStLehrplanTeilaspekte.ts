@@ -147,10 +147,10 @@ const osRechen: BioBank = {
   },
   {
     concept: "os:k5:rechengesetze:5",
-    prompt: "Rechenvorteil: 17 + 29 + 3?",
+    prompt: "Berechne: 17 + 29 + 3",
     answer: "17 + 3 + 29 = 49",
     wrong: ["immer nur der Reihe nach ohne Vorteil", "nur multiplizieren", "nur dividieren"],
-    explanation: "Rechenvorteil: 17 + 29 + 3.",
+    explanation: "Günstig: 17 + 3 + 29 = 49.",
     wissen: "17 + 3 + 29 = 49.",
   },
   {

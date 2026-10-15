@@ -211,7 +211,7 @@ export const math9GraphicReviews: Topic[] = [
       },
       generate: (rng: Rng) => {
         // Eine klare Nullstelle (Berührpunkt): f(x) = (x − r)²
-        const r = nonZero(rng, -3, 3)
+        const r = nonZero(rng, -5, 5)
         return coordinateClickTask({
           question: `Die Parabel f(x) = (x − ${num(r)})² berührt die x-Achse. Tippe die Nullstelle.`,
           x: r,
@@ -226,6 +226,8 @@ export const math9GraphicReviews: Topic[] = [
             xRange: [-6, 6],
             yRange: [-1, 8],
           }),
+          dedupeKey: `ma:k9:nullstelle:${r}`,
+          contentIds: [`ma:k9:nullstelle:${r}`],
         })
       },
     },

@@ -1255,9 +1255,29 @@ const kongruenzSatz: Topic = {
           why: 'Drei Seiten bestimmen ein Dreieck eindeutig (SSS).',
         },
         {
+          correct: 'SSS',
+          desc: 'Gegeben sind a = 5 cm, b = 7 cm und c = 8 cm.',
+          why: 'Drei Seiten → SSS.',
+        },
+        {
+          correct: 'SSS',
+          desc: 'Man kennt nur die drei Seitenmaße, keine Winkel.',
+          why: 'Drei Seiten → SSS.',
+        },
+        {
           correct: 'SWS',
           desc: 'Zwei Seiten und der eingeschlossene Winkel sind bekannt.',
           why: 'Zwei Seiten mit dem Winkel dazwischen reichen (SWS).',
+        },
+        {
+          correct: 'SWS',
+          desc: 'Gegeben: Seite a, eingeschlossener Winkel γ, Seite b.',
+          why: 'Seite–Winkel–Seite → SWS.',
+        },
+        {
+          correct: 'SWS',
+          desc: 'Zwei Schenkel und der Winkel zwischen ihnen sind gemessen.',
+          why: 'SWS.',
         },
         {
           correct: 'WSW',
@@ -1265,9 +1285,29 @@ const kongruenzSatz: Topic = {
           why: 'Seite mit beiden anliegenden Winkeln reicht (WSW).',
         },
         {
+          correct: 'WSW',
+          desc: 'Gegeben: Winkel α, Seite c, Winkel β (c zwischen α und β).',
+          why: 'Winkel–Seite–Winkel → WSW.',
+        },
+        {
+          correct: 'WSW',
+          desc: 'Eine Seite liegt zwischen zwei bekannten Winkeln.',
+          why: 'WSW.',
+        },
+        {
           correct: 'SsW',
           desc: 'Zwei Seiten und der Gegenwinkel der längeren Seite sind bekannt.',
           why: 'Zwei Seiten und der Winkel gegenüber der größeren Seite (SsW).',
+        },
+        {
+          correct: 'SsW',
+          desc: 'Gegeben: Seiten a < b und der Winkel β gegenüber der längeren Seite b.',
+          why: 'SsW (Winkel gegenüber der größeren Seite).',
+        },
+        {
+          correct: 'SsW',
+          desc: 'Zwei Seiten plus Winkel gegenüber der größeren von beiden.',
+          why: 'SsW.',
         },
       ] as const
       const c = pick(rng, [...cases])
@@ -1278,13 +1318,15 @@ const kongruenzSatz: Topic = {
         solution: c.correct,
         explanation: c.why,
         instruction: 'Tippe den passenden Kongruenzsatz:',
+        dedupeKey: `ma:k6:kongr:${c.correct}:${c.desc.slice(0, 40)}`,
+        contentIds: [`ma:k6:kongr:${c.correct}:${c.desc.slice(0, 40)}`],
       })
     },
     (rng: Rng) => {
       const a = randInt(rng, 3, 8)
       const b = randInt(rng, 3, 8)
       return choicePickTask({
-        question: 'Im rechtwinkligen Dreieck sind beide Katheten gegeben. Welcher Kongruenzsatz greift (inkl. rechter Winkel)?',
+        question: `Im rechtwinkligen Dreieck sind beide Katheten (a=${a}, b=${b}) gegeben. Welcher Kongruenzsatz greift (inkl. rechter Winkel)?`,
         choices: ['SSS', 'SWS', 'WSW', 'SsW'],
         correct: 'SWS',
         solution: 'SWS',
@@ -1295,6 +1337,8 @@ const kongruenzSatz: Topic = {
           cLabel: 'c',
         }),
         instruction: 'Tippe den Kongruenzsatz:',
+        dedupeKey: `ma:k6:kongr:SWS:recht:${a}:${b}`,
+        contentIds: [`ma:k6:kongr:SWS:recht:${a}:${b}`],
       })
     },
   ),
@@ -1331,6 +1375,7 @@ const wuerfelNetz: Topic = {
       o.label = String.fromCharCode(65 + i)
     })
     const correct = options.find((o) => o.kind === valid)!.label
+    const layout = options.map((o) => o.kind).join('|')
     return choicePickTask({
       question: 'Welches der drei Netze lässt sich zu einem Würfel falten?',
       choices: ['A', 'B', 'C'],
@@ -1339,6 +1384,8 @@ const wuerfelNetz: Topic = {
       explanation: `Nur Netz ${correct} ist ein gültiges Würfelnetz. Die anderen Anordnungen überlappen oder schließen sich nicht.`,
       visualContent: generateCubeNetChoicesSvg(options),
       instruction: 'Tippe den Buchstaben des faltbaren Netzes:',
+      dedupeKey: `ma:k6:wuerfelnetz:${layout}:${correct}`,
+      contentIds: [`ma:k6:wuerfelnetz:${layout}:${correct}`],
     })
   },
 }

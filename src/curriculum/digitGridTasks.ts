@@ -172,6 +172,8 @@ export const digitGridDivideTask = (input: {
   rest: number
   solution: string
   explanation: string
+  dedupeKey?: string
+  contentIds?: string[]
 }): Task => {
   const { dividend, divisor, quotient, rest } = input
   const qStr = String(quotient)
@@ -217,6 +219,10 @@ export const digitGridDivideTask = (input: {
     answerKind: 'text',
     solution: input.solution,
     explanation: input.explanation,
+    ...(input.dedupeKey?.trim() ? { dedupeKey: input.dedupeKey.trim() } : {}),
+    ...(input.contentIds?.length
+      ? { contentIds: input.contentIds.map((c) => c.trim()).filter(Boolean) }
+      : {}),
     sampleAnswer: {
       kind: 'digitGrid',
       digits: padDigits(quotient, qStr.length),

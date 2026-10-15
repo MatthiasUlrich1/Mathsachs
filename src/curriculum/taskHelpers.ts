@@ -119,6 +119,8 @@ interface FractionTaskInput {
   explanation: string
   /** Require the answer to be fully reduced (for "Kürzen"). */
   requireReduced?: boolean
+  dedupeKey?: string
+  contentIds?: string[]
 }
 
 /** Build a task whose answer is a fraction (two input fields). */
@@ -128,6 +130,8 @@ export const fractionTask = (input: FractionTaskInput): Task => ({
   answerKind: 'fraction',
   solution: input.solution,
   explanation: input.explanation,
+  ...withDedupe(input.dedupeKey),
+  ...withContentIds(input.contentIds),
   sampleAnswer: {
     kind: 'fraction',
     num: String(input.value.n),

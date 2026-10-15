@@ -15,11 +15,12 @@ import { withMathRoundBoost } from './mathRoundBoost'
 import { MATH_LEHRPLAN_TEILASPEKTE_BY_GRADE } from './mathLehrplanTeilaspekte'
 
 describe('Mathe Themenbindung — User-Beispiele', () => {
-  it('lb1-rechengesetze: Punkt vor Strich / Distributiv, nie bloßes a+b', () => {
+  it('lb1-rechengesetze: gemischte Terme/Klammern, nie bloßes a+b, keine Methoden-Spoiler', () => {
     for (let seed = 1; seed <= 40; seed++) {
       const task = generateRechengesetzeK5(createRng(seed))
       const q = task.question
-      expect(q, `seed ${seed}`).toMatch(/Punkt vor Strich|Distributiv|Rechenvorteil|·|\(/)
+      expect(q, `seed ${seed}`).toMatch(/·|\(/)
+      expect(q, `seed ${seed}`).not.toMatch(/Punkt vor Strich|Distributivgesetz|Rechenvorteil|Nutze |Wende /i)
       expect(q, `seed ${seed}`).not.toMatch(/^Berechne:\s*\d+\s*\+\s*\d+\s*$/)
       expect(q, `seed ${seed}`).not.toMatch(/^Berechne:\s*\d+\s*·\s*\d+\s*$/)
       expect(task.check(task.sampleAnswer), `seed ${seed}`).toBe(true)
@@ -77,7 +78,10 @@ describe('Mathe Themenbindung — User-Beispiele', () => {
     for (let seed = 1; seed <= 30; seed++) {
       const task = gen(createRng(seed))
       expect(task.question, `seed ${seed}`).not.toMatch(/^Berechne:\s*\d+\s*\+\s*\d+\s*$/)
-      expect(task.question, `seed ${seed}`).toMatch(/Punkt vor Strich|Distributiv|Rechenvorteil|·|\(/)
+      expect(task.question, `seed ${seed}`).toMatch(/·|\(/)
+      expect(task.question, `seed ${seed}`).not.toMatch(
+        /Punkt vor Strich|Distributivgesetz|Nutze einen Rechenvorteil|Berechne mit Distributiv/i,
+      )
     }
   })
 })

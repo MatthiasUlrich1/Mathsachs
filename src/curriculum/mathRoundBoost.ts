@@ -74,7 +74,7 @@ function makeMathBoost(topicId: string): Topic['generate'] | undefined {
       const val = a + b * c
       variants.push((_rng) =>
         valueTask({
-          question: `Berechne (Punkt vor Strich): ${a} + ${b} · ${c}`,
+          question: `Berechne: ${a} + ${b} · ${c}`,
           answerKind: 'integer',
           value: val,
           solution: String(val),
@@ -86,7 +86,7 @@ function makeMathBoost(topicId: string): Topic['generate'] | undefined {
       const dist = a * (b + c)
       variants.push((_rng) =>
         valueTask({
-          question: `Berechne mit Distributivgesetz: ${a} · (${b} + ${c})`,
+          question: `Berechne: ${a} · (${b} + ${c})`,
           answerKind: 'integer',
           value: dist,
           solution: String(dist),

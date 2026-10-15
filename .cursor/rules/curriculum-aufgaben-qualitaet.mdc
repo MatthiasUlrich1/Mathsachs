@@ -95,10 +95,26 @@ Für **Physik-Packs** (Gymnasium Sachsen inkl. OS, und physiknahe OS-Themen):
 - Round-Boosts (`physikOsRoundBoost` / Sek1): nur themenreine Varianten — kein
   Cross-Topic (z. B. Ohmsches Gesetz unter „Zerfall“).
 
-## Keine Spoiler in Diagrammen
+## Keine Spoiler (verbindlich — Prompt, Hint, Visual)
 
-- Visuals dürfen die gesuchte Zahl/den Bruch nicht als Label verraten
+**Grundregel:** Weder UI/Aufgabentext noch Visual verraten die gesuchte Antwort
+oder die Lösungsstrategie, bevor der Schüler selbst arbeitet.
+
+- **Methoden-/Strategie-Hints im Prompt verboten**, z. B.
+  „(Punkt vor Strich)“, „Berechne mit Distributivgesetz“, „Nutze einen
+  Rechenvorteil“, „Wende … an“, „Klammern zuerst“ als Aufforderung im Stem.
+  Stattdessen nur die Aufgabe stellen (`Berechne: 7 + 2 · 3`).
+- **Topic-`hint` während „answering“** darf ebenfalls keine Strategie spoilern
+  (keine Vorzeichenregeln, kein „Punkt vor Strich“, kein Gesetz nennen).
+  Format-Hinweise (Antwortformat, Einheiten) sind ok.
+- **Erklärung / Fachwissen / „Richtige Lösung“ nach Absenden** dürfen den Weg
+  und die Antwort nennen — Spoiler-Freiheit gilt für den **Aufgabentext vor
+  und während** der Eingabe, nicht für Feedback nach Submit.
+- Meta-Fragen *über* ein Gesetz („Was besagt das Distributivgesetz?“) sind ok;
+  Rechenaufgaben dürfen das Gesetz **nicht** als Lösungsweg vorgeben.
+- Visuals: gesuchte Zahl/Bruch nicht als Label verraten
   (`showLabel: false`, wenn genau dieser Wert die Antwort ist).
+- Gilt für **alle Fächer** und alle Aufgabentypen (Rechnung, MC, Gap, DragDrop, …).
 
 ## Aufbau-Themen (Bild-Zuordnung)
 
@@ -130,8 +146,9 @@ Für **Physik-Packs** (Gymnasium Sachsen inkl. OS, und physiknahe OS-Themen):
 ## Inhaltliche Qualität
 
 - Aufgabe und erwartete Antworten müssen thematisch und fachlich passen.
-- Keine Spoilers in Prompt/Visual zur gesuchten Antwort (außer bewusst als
-  Lernhilfe gekennzeichnet).
+- Spoiler-Regel oben ist verbindlich (keine Ausnahme „kurz den Weg nennen“ im
+  Prompt). Bewusste Lernhilfen nur hinter explizitem Klick (Fachwissen), nicht
+  im Stem.
 
 ## Fachwissen: immer aufgabenbezogen
 

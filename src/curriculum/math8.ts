@@ -138,7 +138,7 @@ const gleichungBeidseitig: Topic = {
 const ausmultiplizieren: Topic = {
   id: 'k8-lb1-ausmultiplizieren',
   title: 'Klammer ausmultiplizieren (Wert bei x)',
-  hint: 'Wende das Distributivgesetz an.',
+  hint: 'Multipliziere aus und setze den Wert für x ein.',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Distributivgesetz', 'ausmultiplizieren', 'Klammer', 'Term'],

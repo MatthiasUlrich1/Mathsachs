@@ -277,6 +277,20 @@ const osPieAnteil: Topic['generate'] = (rng: Rng) => {
 
 /** Prisma-Netz erkennen (gültig vs. ungültig). */
 const osPrismNetz: Topic['generate'] = (rng: Rng) => {
+  const body = pick(rng, [
+    'dreiseitigen Prisma',
+    'vierseitigen Prisma',
+    'fünfseitigen Prisma',
+    'sechsseitigen Prisma',
+    'dreiseitigen Prisma (Grundfläche Dreieck)',
+    'geraden Prisma mit Rechteckgrundfläche',
+    'Prisma mit regelmäßiger Grundfläche',
+    'geraden dreiseitigen Prisma',
+    'geraden vierseitigen Prisma',
+    'Prisma mit Dreiecksgrundflächen',
+    'Prisma mit Trapezgrundfläche',
+    'Prisma mit Parallelogramm-Grundfläche',
+  ] as const)
   const options: Array<{ kind: 'valid' | 'invalid'; label: string }> = [
     { kind: 'valid', label: 'A' },
     { kind: 'invalid', label: 'B' },
@@ -290,14 +304,17 @@ const osPrismNetz: Topic['generate'] = (rng: Rng) => {
     o.label = String.fromCharCode(65 + i)
   })
   const correct = options.find((o) => o.kind === 'valid')!.label
+  const layout = options.map((o) => o.kind[0]).join('')
   return choicePickTask({
-    question: 'Welches Netz lässt sich zu einem dreiseitigen Prisma falten?',
+    question: `Welches Netz lässt sich zu einem ${body} falten?`,
     choices: ['A', 'B', 'C'],
     correct,
     solution: correct,
     explanation: `Nur Netz ${correct} ist ein gültiges Prisma-Netz.`,
     visualContent: generatePrismNetChoicesSvg(options),
     instruction: 'Tippe den Buchstaben des faltbaren Netzes:',
+    dedupeKey: `os:netz:prism:${body}:${layout}:${correct}`,
+    contentIds: [`os:netz:prism:${body}:${layout}:${correct}`],
   })
 }
 

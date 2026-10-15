@@ -327,13 +327,15 @@ const schriftlicheDivision: Topic = {
       const q = randInt(rng, 15, 850)
       const dividend = q * divisor
       return digitGridDivideTask({
-        question: 'Dividiere schriftlich. Trage den Quotienten in die Kästchen ein:',
+        question: `Dividiere schriftlich: ${dividend} : ${divisor}. Trage den Quotienten in die Kästchen ein:`,
         dividend,
         divisor,
         quotient: q,
         rest: 0,
         solution: String(q),
         explanation: `${dividend} : ${divisor} = ${q}.`,
+        dedupeKey: `ma:k5:div:${dividend}:${divisor}`,
+        contentIds: [`ma:k5:div:${dividend}:${divisor}`],
       })
     },
     (rng: Rng) => {
@@ -343,13 +345,15 @@ const schriftlicheDivision: Topic = {
       const r = randInt(rng, 1, divisor - 1)
       const dividend = q * divisor + r
       return digitGridDivideTask({
-        question: 'Dividiere schriftlich mit Rest. Trage Quotient und Rest ein:',
+        question: `Dividiere schriftlich mit Rest: ${dividend} : ${divisor}. Trage Quotient und Rest ein:`,
         dividend,
         divisor,
         quotient: q,
         rest: r,
         solution: `${q} R ${r}`,
         explanation: `${dividend} : ${divisor} = ${q} Rest ${r}.`,
+        dedupeKey: `ma:k5:div:${dividend}:${divisor}`,
+        contentIds: [`ma:k5:div:${dividend}:${divisor}`],
       })
     },
     (rng: Rng) => {
@@ -365,7 +369,7 @@ const schriftlicheDivision: Topic = {
       const r = randInt(rng, 0, divisor - 1)
       const dividend = q * divisor + r
       return digitGridDivideTask({
-        question: 'Dividiere schriftlich (Achtung auf Nullen im Quotienten):',
+        question: `Dividiere schriftlich (Nullen im Quotienten): ${dividend} : ${divisor}.`,
         dividend,
         divisor,
         quotient: q,
@@ -375,6 +379,8 @@ const schriftlicheDivision: Topic = {
           r > 0
             ? `${dividend} : ${divisor} = ${q} Rest ${r}. Nullen im Quotienten nicht vergessen.`
             : `${dividend} : ${divisor} = ${q}. Nullen im Quotienten nicht vergessen.`,
+        dedupeKey: `ma:k5:div:${dividend}:${divisor}`,
+        contentIds: [`ma:k5:div:${dividend}:${divisor}`],
       })
     },
   ),
@@ -442,6 +448,8 @@ const teilbarkeit: Topic = {
       explanation: yes
         ? `${n} : ${d} = ${n / d} ohne Rest. Also ist ${n} durch ${d} teilbar.`
         : `${n} : ${d} = ${Math.floor(n / d)} Rest ${n % d}. Also ist ${n} nicht durch ${d} teilbar.`,
+      dedupeKey: `ma:k5:teilbar:${n}:${d}`,
+      contentIds: [`ma:k5:teilbar:${n}:${d}`],
     })
   },
 }
@@ -591,6 +599,8 @@ const grafischeBrueche: Topic = {
           requireReduced: true,
           solution: `${value.n}/${value.d}`,
           explanation: `${numerator} von ${denominator} Teilen sind eingefärbt, also ${numerator}/${denominator}. Vollständig gekürzt: ${value.n}/${value.d}.`,
+          dedupeKey: `ma:k5:grafbruch:kreis:${numerator}/${denominator}`,
+          contentIds: [`ma:k5:grafbruch:kreis:${numerator}/${denominator}`],
         }),
         visualContent: svg,
       }
@@ -608,6 +618,8 @@ const grafischeBrueche: Topic = {
           requireReduced: true,
           solution: `${value.n}/${value.d}`,
           explanation: `${numerator} von ${denominator} Abschnitten sind eingefärbt, also ${numerator}/${denominator}. Vollständig gekürzt: ${value.n}/${value.d}.`,
+          dedupeKey: `ma:k5:grafbruch:balken:${numerator}/${denominator}`,
+          contentIds: [`ma:k5:grafbruch:balken:${numerator}/${denominator}`],
         }),
         visualContent: svg,
       }
@@ -626,6 +638,8 @@ const grafischeBrueche: Topic = {
           requireReduced: true,
           solution: `${value.n}/${value.d}`,
           explanation: `${numerator} von ${denominator} Feldern sind eingefärbt, also ${numerator}/${denominator}. Vollständig gekürzt: ${value.n}/${value.d}.`,
+          dedupeKey: `ma:k5:grafbruch:raster:${numerator}/${denominator}`,
+          contentIds: [`ma:k5:grafbruch:raster:${numerator}/${denominator}`],
         }),
         visualContent: svg,
       }
@@ -946,12 +960,16 @@ const ordnenMitEinheiten: Topic = {
       sc.items.findIndex((item) => item.value === sortedItem.value)
     )
     
+    const idKey = sc.items.map((i) => i.label).sort().join('|')
     return dragDropSortTask({
       question: 'Sortiere die Größen von klein nach groß (kleinste zuerst):',
       items: sc.items,
       correctOrder,
       solution: sorted.map((i) => i.label).join(' < '),
       explanation: `Rechne alle Angaben in ${sc.unitName} um:\n${sc.items.map((i) => `${i.label} = ${formatDe(i.value)} ${sc.unitName}`).join('\n')}.\n\nSortiert von klein nach groß: ${sorted.map((i) => i.label).join(' < ')}.`,
+      dedupeKey: `ma:k5:ordnen:${idKey}`,
+      contentIds: [`ma:k5:ordnen:${idKey}`],
+      rng,
     })
   },
 }
@@ -1229,6 +1247,8 @@ const koordinatenAblesen: Topic = {
           explanation: `Punkt A liegt ${p.x} Einheiten ${
             p.x >= 0 ? 'rechts' : 'links'
           } und ${p.y} Einheiten ${p.y >= 0 ? 'oberhalb' : 'unterhalb'} des Ursprungs. Also A = (${p.x}|${p.y}).`,
+          dedupeKey: `ma:k5:coord:A:${p.x}:${p.y}`,
+          contentIds: [`ma:k5:coord:A:${p.x}:${p.y}`],
         }),
         visualContent: svg,
       }
@@ -1251,6 +1271,8 @@ const koordinatenAblesen: Topic = {
           question: `Lies die Koordinaten von Punkt ${target.label} ab. Gib x; y an.`,
           accepted,
           solution: `${target.x}; ${target.y}`,
+          dedupeKey: `ma:k5:coord:${target.label}:${target.x}:${target.y}`,
+          contentIds: [`ma:k5:coord:${target.label}:${target.x}:${target.y}`],
           explanation: `Punkt ${target.label} liegt bei (${target.x}|${target.y}).`,
         }),
         visualContent: svg,
@@ -1982,17 +2004,35 @@ const streckenBezeichnung: Topic = {
               : 'Die Figur geht in beide Richtungen mit Pfeilen weiter — das ist eine Gerade.',
         visualContent: svg,
         instruction: 'Tippe die passende Bezeichnung:',
+        dedupeKey: `ma:k5:line:${kind}:diagram`,
+        contentIds: [`ma:k5:line:${kind}:diagram`],
       })
     },
     // Variant 2: Text definition — tippen
     (rng: Rng) => {
       const kind = pick(rng, ['strecke', 'halbgerade', 'gerade'] as LineFigureKind[])
-      const question =
+      const defs =
         kind === 'strecke'
-          ? 'Wie heißt die Verbindung zweier Punkte, die durch die beiden Endpunkte begrenzt ist und eine Länge hat?'
+          ? [
+              'Wie heißt die Verbindung zweier Punkte, die durch die beiden Endpunkte begrenzt ist und eine Länge hat?',
+              'Welche Figur hat genau zwei Endpunkte und eine messbare Länge?',
+              'Begrenzte Verbindung von A nach B — wie heißt sie?',
+              'Endliche Länge, zwei Endpunkte: Welche Bezeichnung passt?',
+            ]
           : kind === 'halbgerade'
-            ? 'Wie heißt eine Linie, die bei einem Punkt beginnt und in eine Richtung unbegrenzt weitergeht?'
-            : 'Wie heißt eine Linie, die in beide Richtungen unbegrenzt verläuft?'
+            ? [
+                'Wie heißt eine Linie, die bei einem Punkt beginnt und in eine Richtung unbegrenzt weitergeht?',
+                'Ein Anfangspunkt, dann unbegrenzt weiter — welche Figur?',
+                'Strahl mit Startpunkt A durch B: Wie heißt die Figur?',
+                'Genau ein Anfangspunkt, eine Richtung: Welche Bezeichnung?',
+              ]
+            : [
+                'Wie heißt eine Linie, die in beide Richtungen unbegrenzt verläuft?',
+                'Unbegrenzt in beide Richtungen — welche Figur?',
+                'Weder Anfang noch Ende: Welche Bezeichnung passt?',
+                'Zwei Pfeile an den Enden einer Linie: Was ist das?',
+              ]
+      const question = pick(rng, defs)
       const solution = LINE_KIND_LABEL[kind]
       return choicePickTask({
         question,
@@ -2001,6 +2041,8 @@ const streckenBezeichnung: Topic = {
         solution,
         explanation: `Die gesuchte Bezeichnung ist: ${solution}.`,
         instruction: 'Tippe die passende Bezeichnung:',
+        dedupeKey: `ma:k5:line:${kind}:def:${question.slice(0, 24)}`,
+        contentIds: [`ma:k5:line:${kind}:def:${question.slice(0, 40).replace(/\s+/g, '_')}`],
       })
     },
   ),

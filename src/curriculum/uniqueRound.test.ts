@@ -106,6 +106,26 @@ describe('uniqueRound', () => {
     expect(keys.size).toBe(10)
   })
 
+  it('does not collapse number-parameterized drills via stemfamily', () => {
+    let n = 0
+    const generate = (): Task => {
+      n++
+      const a = 10 + n
+      const b = 50 + n
+      return valueTask({
+        question: `Vergleiche: Welche Aussage zu ${a} und ${b} ist richtig?`,
+        answerKind: 'integer',
+        value: a,
+        solution: `${a} < ${b}`,
+        explanation: 'e',
+        dedupeKey: `test:vgl:${a}:${b}`,
+        contentIds: [`test:vgl:${a}:${b}`],
+      })
+    }
+    const round = buildUniqueTaskRound(generate, createRng(1), 10, 40)
+    expect(round).toHaveLength(10)
+  })
+
   it('shortens the round when the generator has few variants', () => {
     const pool = [
       textTask({ question: 'A', accepted: ['a'], solution: 'a', explanation: 'e' }),

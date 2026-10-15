@@ -257,7 +257,6 @@ const basiswinkel: Topic = {
 const addRational: Topic = {
   id: 'k7-lb2-add-rational',
   title: 'Rationale Zahlen addieren',
-  hint: 'Achte auf die Vorzeichen.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['rationale Zahlen', 'Vorzeichen', 'negative Zahlen', 'addieren', 'Addition'],
@@ -273,7 +272,7 @@ const addRational: Topic = {
     if (a > 0 && b > 0) b = -b
     const value = a + b
     return valueTask({
-      question: `Berechne mit Vorzeichen: ${num(a)} + (${num(b)})`,
+      question: `Berechne: ${num(a)} + (${num(b)})`,
       answerKind: 'integer',
       value,
       solution: formatDe(value),
@@ -285,7 +284,6 @@ const addRational: Topic = {
 const subRational: Topic = {
   id: 'k7-lb2-sub-rational',
   title: 'Rationale Zahlen subtrahieren',
-  hint: 'Minus einer negativen Zahl heißt plus.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['rationale Zahlen', 'Vorzeichen', 'negative Zahlen', 'subtrahieren', 'Subtraktion'],
@@ -302,7 +300,7 @@ const subRational: Topic = {
     else if (a > 0 && b > 0) a = -a
     const value = a - b
     return valueTask({
-      question: `Berechne mit Vorzeichen: ${num(a)} − (${num(b)})`,
+      question: `Berechne: ${num(a)} − (${num(b)})`,
       answerKind: 'integer',
       value,
       solution: formatDe(value),
@@ -314,7 +312,6 @@ const subRational: Topic = {
 const mulRational: Topic = {
   id: 'k7-lb2-mul-rational',
   title: 'Rationale Zahlen multiplizieren',
-  hint: 'Gleiche Vorzeichen → plus, verschiedene → minus.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['rationale Zahlen', 'Vorzeichenregel', 'multiplizieren', 'Multiplikation', 'mal'],
@@ -334,7 +331,7 @@ const mulRational: Topic = {
         ? 'gleiche Vorzeichen ergeben ein positives'
         : 'verschiedene Vorzeichen ergeben ein negatives'
     return valueTask({
-      question: `Berechne mit Vorzeichenregel: ${num(a)} · ${num(b)}`,
+      question: `Berechne: ${num(a)} · ${num(b)}`,
       answerKind: 'integer',
       value,
       solution: formatDe(value),
@@ -346,7 +343,6 @@ const mulRational: Topic = {
 const divRational: Topic = {
   id: 'k7-lb2-div-rational',
   title: 'Rationale Zahlen dividieren',
-  hint: 'Gleiche Vorzeichen → plus, verschiedene → minus.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['rationale Zahlen', 'Vorzeichenregel', 'dividieren', 'Division', 'teilen'],
@@ -433,7 +429,7 @@ const betrag: Topic = {
 const termVorrang: Topic = {
   id: 'k7-lb2-term-vorrang',
   title: 'Term mit Rechengesetzen auswerten',
-  hint: 'Punkt- vor Strichrechnung, Klammern zuerst.',
+  hint: 'Werte den Term aus.',
   pointsPerTask: 10,
   difficulty: 1,
   keywords: ['Term', 'Rechengesetze', 'Punkt vor Strich', 'Klammer', 'auswerten'],
@@ -976,14 +972,93 @@ const mittelsenkrechteSchritte: Topic = {
     url: 'https://de.wikipedia.org/wiki/Mittelsenkrechte',
   },
   generate: (rng: Rng) => {
-    const steps = [
-      { label: 'Strecke AB zeichnen', value: 1 },
-      { label: 'Kreis um A (Radius > ½|AB|)', value: 2 },
-      { label: 'Gleicher Kreis um B', value: 3 },
-      { label: 'Schnittpunkte P und Q markieren', value: 4 },
-      { label: 'Gerade durch P und Q zeichnen', value: 5 },
+    const variants = [
+      [
+        { label: 'Strecke AB zeichnen', value: 1 },
+        { label: 'Kreis um A (Radius > ½|AB|)', value: 2 },
+        { label: 'Gleicher Kreis um B', value: 3 },
+        { label: 'Schnittpunkte P und Q markieren', value: 4 },
+        { label: 'Gerade durch P und Q zeichnen', value: 5 },
+      ],
+      [
+        { label: 'AB als Strecke einzeichnen', value: 1 },
+        { label: 'Zirkel in A, Radius größer als Hälfte von AB', value: 2 },
+        { label: 'Gleichen Radius in B ansetzen', value: 3 },
+        { label: 'Beide Schnittpunkte der Kreise markieren', value: 4 },
+        { label: 'Mittelsenkrechte als Gerade durch die Schnittpunkte', value: 5 },
+      ],
+      [
+        { label: 'Punkte A und B verbinden', value: 1 },
+        { label: 'Kreisbogen um A zeichnen', value: 2 },
+        { label: 'Kreisbogen um B mit gleichem Radius', value: 3 },
+        { label: 'Schnittpunkte der Bögen bestimmen', value: 4 },
+        { label: 'Gerade durch die Schnittpunkte legen', value: 5 },
+      ],
+      [
+        { label: 'Strecke festlegen', value: 1 },
+        { label: 'Ersten Kreis um einen Endpunkt', value: 2 },
+        { label: 'Zweiten Kreis um den anderen Endpunkt', value: 3 },
+        { label: 'Schnittpunkte notieren', value: 4 },
+        { label: 'Verbindung der Schnittpunkte = Mittelsenkrechte', value: 5 },
+      ],
+      [
+        { label: 'AB zeichnen', value: 1 },
+        { label: 'Kreis um A', value: 2 },
+        { label: 'Kreis um B (gleicher Radius)', value: 3 },
+        { label: 'P und Q als Schnittpunkte', value: 4 },
+        { label: 'Gerade PQ zeichnen', value: 5 },
+      ],
+      [
+        { label: 'Endpunkte A, B markieren und verbinden', value: 1 },
+        { label: 'Radius wählen (> ½ der Strecke)', value: 2 },
+        { label: 'Kreise um A und B mit diesem Radius', value: 3 },
+        { label: 'Obere und untere Schnittpunkte finden', value: 4 },
+        { label: 'Mittelsenkrechte durch beide Schnittpunkte', value: 5 },
+      ],
+      [
+        { label: 'Strecke AB vorbereiten', value: 1 },
+        { label: 'Bogen um A', value: 2 },
+        { label: 'Bogen um B', value: 3 },
+        { label: 'Schnittpunkte verbinden vorbereiten', value: 4 },
+        { label: 'Lotgerade durch die Schnittpunkte ziehen', value: 5 },
+      ],
+      [
+        { label: 'AB als Ausgangsstrecke', value: 1 },
+        { label: 'Kreis 1: Mittelpunkt A', value: 2 },
+        { label: 'Kreis 2: Mittelpunkt B, gleicher Radius', value: 3 },
+        { label: 'Schnittmenge der Kreise markieren', value: 4 },
+        { label: 'Gerade der Mittelsenkrechten zeichnen', value: 5 },
+      ],
+      [
+        { label: 'Strecke zeichnen', value: 1 },
+        { label: 'Ersten Zirkelschlag um A', value: 2 },
+        { label: 'Zweiten Zirkelschlag um B', value: 3 },
+        { label: 'Beide Schnittpunkte kennzeichnen', value: 4 },
+        { label: 'Verbindungslinie = Mittelsenkrechte', value: 5 },
+      ],
+      [
+        { label: 'AB festlegen', value: 1 },
+        { label: 'Kreis um A mit ausreichendem Radius', value: 2 },
+        { label: 'Kreis um B unverändertem Radius', value: 3 },
+        { label: 'Schnittpunkte P, Q', value: 4 },
+        { label: 'Gerade PQ als Mittelsenkrechte', value: 5 },
+      ],
+      [
+        { label: 'Punkte verbinden', value: 1 },
+        { label: 'Kreis um linken Punkt', value: 2 },
+        { label: 'Kreis um rechten Punkt', value: 3 },
+        { label: 'Schnittpunkte der Kreise', value: 4 },
+        { label: 'Mittelsenkrechte einzeichnen', value: 5 },
+      ],
+      [
+        { label: 'Strecke AB', value: 1 },
+        { label: 'Radius > Hälfte AB wählen', value: 2 },
+        { label: 'Beide Kreise zeichnen', value: 3 },
+        { label: 'Schnittpunkte finden', value: 4 },
+        { label: 'Gerade durch Schnittpunkte', value: 5 },
+      ],
     ]
-    // Shuffle display order
+    const steps = pick(rng, variants)
     const order = steps.map((_, i) => i)
     for (let i = order.length - 1; i > 0; i--) {
       const j = randInt(rng, 0, i)
@@ -993,6 +1068,7 @@ const mittelsenkrechteSchritte: Topic = {
     const correctOrder = items
       .map((_, i) => i)
       .sort((i, j) => items[i].value - items[j].value)
+    const idKey = steps.map((s) => s.label).join('|')
     return dragDropSortTask({
       question: 'Ordne die Konstruktionsschritte der Mittelsenkrechten von AB.',
       items,
@@ -1000,6 +1076,9 @@ const mittelsenkrechteSchritte: Topic = {
       solution: steps.map((s) => s.label).join(' → '),
       explanation:
         'Zuerst AB, dann gleiche Kreise um A und B, Schnittpunkte verbinden: das ist die Mittelsenkrechte.',
+      dedupeKey: `ma:k7:mittelsenk:${idKey.slice(0, 80)}`,
+      contentIds: [`ma:k7:mittelsenk:${idKey.slice(0, 80)}`],
+      rng,
     })
   },
 }

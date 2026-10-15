@@ -26,7 +26,17 @@ function isGenericPromptStem(stem: string): boolean {
     /fachbegriffe ihren erkl/i.test(stem) ||
     /lebensmerkmale ihren erkl/i.test(stem) ||
     /welches schaltsymbol/i.test(stem) ||
-    /ist der schalter offen oder geschlossen/i.test(stem)
+    /ist der schalter offen oder geschlossen/i.test(stem) ||
+    // Sort prompts share one stem; item labels carry uniqueness (see dragDropSort).
+    /^sortiere (die )?größen/i.test(stem) ||
+    /^sortiere von /i.test(stem) ||
+    // Körpernetz-MC: Stem oft gleich, Visual/Layout über contentIds unique.
+    /^welches (der drei )?netz/i.test(stem) ||
+    // DigitGrid / Grafik-Brüche / Koordinaten: Zahlen stecken in Interaktiv/Visual.
+    /^dividiere schriftlich/i.test(stem) ||
+    /^welcher bruchanteil ist im/i.test(stem) ||
+    /^lies die koordinaten von punkt/i.test(stem) ||
+    /^was zeigt die abbildung/i.test(stem)
   )
 }
 
@@ -87,6 +97,13 @@ export function taskContentIds(task: Task): string[] {
     if (id) ids.add(`content:${id}`)
   }
 
+  // Item-level term identities only when the task has no authored contentIds /
+  // dedupeKey. Anatomy label/match tasks already list concepts — also marking
+  // every drag label as `term:` collapses a rich pool (e.g. Vogel-Aufbau) to
+  // ≤9 unique slots and silently ships short rounds.
+  const hasAuthoredIdentity =
+    Boolean(dedupe) || (task.contentIds ?? []).some((c) => c.trim())
+
   const stem = normalizeTaskText(task.question ?? '')
   if (stem && !isGenericPromptStem(stem)) {
     ids.add(`stem:${stem}`)
@@ -100,30 +117,56 @@ export function taskContentIds(task: Task): string[] {
       .replace(/\?+$/g, '')
       .trim()
     if (core.length >= 12 && core !== stem) ids.add(`stemcore:${core}`)
-    // Number/unit-stripped family: „Anteil von 28 kg“ vs „12 kg“ count as same
-    // prompt shape within a round (forces template variety, not only digits).
-    const family = stem
-      .replace(/\d+([.,]\d+)?/g, '#')
-      .replace(/\b(kg|m|cm|dm|mm|€|euro|liter|l|ml|g|t|s|min|h|%|prozent)\b/gi, '§')
-      .replace(/\s+/g, ' ')
-      .trim()
-    if (family.length >= 20 && family.includes('#')) ids.add(`stemfamily:${family}`)
+    // stemfamily only for soft share/portion templates (Bio/Alltag), never for
+    // Mathe-Drills / Grafik / Konstruktion — otherwise rounds collapse to 1–5.
+    const isNumericDrill =
+      task.answerKind === 'integer' ||
+      task.answerKind === 'decimal' ||
+      task.answerKind === 'fraction'
+    if (!hasAuthoredIdentity && !isNumericDrill) {
+      const family = stem
+        .replace(/\d+([.,]\d+)?/g, '#')
+        .replace(/\b(kg|m|cm|dm|mm|€|euro|liter|l|ml|g|t|s|min|h|%|prozent)\b/gi, '§')
+        .replace(/\s+/g, ' ')
+        .trim()
+      const isShareTemplate =
+        /anteil von #|von # §|wie groß ist der (eingefärbte )?anteil|kreisdiagramm zeigt/.test(
+          family,
+        )
+      if (isShareTemplate && family.length >= 20 && family.includes('#')) {
+        ids.add(`stemfamily:${family}`)
+      }
+    }
   }
 
   const sol = normalizeTaskText(String(task.solution ?? ''))
-  if (sol && sol.length >= 4 && !TRIVIAL_SOLUTION.test(sol)) {
+  if (
+    sol &&
+    sol.length >= 4 &&
+    !TRIVIAL_SOLUTION.test(sol) &&
+    // Authored identity already fact-dedupes; ans: would collapse MC with
+    // shared labels („echt“/„unecht“, „A“/„B“) across distinct items.
+    !hasAuthoredIdentity &&
+    // Numeric drills: gleiche Ergebniszahl bei verschiedenen Stämmen ist ok.
+    !(
+      task.answerKind === 'integer' ||
+      task.answerKind === 'decimal' ||
+      task.answerKind === 'fraction'
+    )
+  ) {
     // Same fact via MC / cloze / flash with different wording → same answer.
     ids.add(`ans:${sol}`)
   }
 
-  // Item-level term identities only when the task has no authored contentIds /
-  // dedupeKey. Anatomy label/match tasks already list concepts — also marking
-  // every drag label as `term:` collapses a rich pool (e.g. Vogel-Aufbau) to
-  // ≤9 unique slots and silently ships short rounds.
-  const hasAuthoredIdentity =
-    Boolean(dedupe) || (task.contentIds ?? []).some((c) => c.trim())
+  const ix = task.interactive
+  // Sort tasks: identity is the item set (stem is often generic).
+  if (ix?.type === 'dragDropSort') {
+    const items = (ix.props?.items as Array<{ label?: string }> | undefined) ?? []
+    const labels = items.map((it) => normalizeTaskText(it.label ?? '')).filter(Boolean).sort()
+    if (labels.length) ids.add(`sort:${labels.join('|')}`)
+  }
+
   if (!hasAuthoredIdentity) {
-    const ix = task.interactive
     if (ix?.type === 'pairMatch') {
       const left = (ix.props?.left as Array<{ label?: string }> | undefined) ?? []
       for (const l of left) {
