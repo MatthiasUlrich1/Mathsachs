@@ -56,7 +56,10 @@ VERB = re.compile(
     r"misst|schützt|entzieht|verbindet|erzeugt|entsteht|geht|liegt|nimmt|"
     r"speichert|transportiert|meint|kennzeichnet|prägt|gewährt|organisiert|"
     r"fasst|trennt|leitet|nutzt|dokumentiert|ordnet|wirkt|hemmt|pumpt|"
-    r"steht|erkenne[nt]?|begünstigt|kontrollier\w*|bestimmt)\b",
+    r"steht|erkenne[nt]?|begünstigt|kontrollier\w*|bestimmt|"
+    r"modelliert|ändert|bleibt|schaltet|legen|legt|ermöglicht|erhöht|"
+    r"ersetzt|vermeidet|absorbiert|deutet|entsteht|bleibt|wirft|"
+    r"zurückgeworfen|aussendet|beleuchtet|unbeleuchtet)\b",
     re.I,
 )
 
