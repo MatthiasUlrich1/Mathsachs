@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.109] – 2026-10-16
+
+### Behoben
+- **Release-CI / contentQuality (v0.28.108):** Auto-Compare/FindError
+  kollidierten über `bioConceptKey` mit MC/Flash derselben Paare (Short-Rounds,
+  Near-Dups, Sibling-Stem-Sharing). Compare-Stems jetzt sortiert + Themen-Tip;
+  Mode-Suffixe `cmp:`/`ferr:` in Content-IDs; flache Physik-Filter und
+  Thin-Fill-Mix wieder nutzbar. CI-Eignung lokal verifiziert
+  (`biologieUniqueness`, `contentQualityAllPacks`).
+
 ## [0.28.108] – 2026-10-16
 
 ### Behoben

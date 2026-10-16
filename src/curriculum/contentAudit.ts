@@ -528,7 +528,7 @@ export function findFachwissenIssues(task: Task, topic: Topic): string[] {
 // ---------------------------------------------------------------------------
 
 const GENERIC_STEM =
-  /^(ordne|sortiere|beschrifte|zuordnung|klick-paare|karteikarte|stimmt die aussage|richtig oder falsch|wahr oder falsch|was zeigt die abbildung|welches schaltsymbol|anordnung\b|beim übergang\b|was passiert zwischen|welcher bruchanteil ist|lies die koordinaten|welches netz|multipliziere schriftlich|addiere schriftlich|subtrahiere schriftlich|dividiere schriftlich|welche aussagen? (zu\b|stimmen|stimmt|sind richtig|ist richtig|fachlich)|welche (bewertung|alltagsbedeutung|modellaussage)\b|was bedeutet|was meint|fachbegriff|überblick\b|was passt|tippe|wähle|ziehe|baue die formel|welches (der (drei|vier) )?netz|dividiere schriftlich|setze den punkt|markiere)/i
+  /^(ordne|sortiere|beschrifte|zuordnung|klick-paare|karteikarte|stimmt die aussage|richtig oder falsch|wahr oder falsch|was zeigt die abbildung|welches schaltsymbol|anordnung\b|beim übergang\b|was passiert zwischen|welcher bruchanteil ist|lies die koordinaten|welches netz|multipliziere schriftlich|addiere schriftlich|subtrahiere schriftlich|dividiere schriftlich|welche aussagen? (zu\b|stimmen|stimmt|sind richtig|ist richtig|fachlich)|welche karte trifft fachlich zu|welche (bewertung|alltagsbedeutung|modellaussage)\b|was bedeutet|was meint|fachbegriff|überblick\b|was passt|tippe|wähle|ziehe|baue die formel|welches (der (drei|vier) )?netz|dividiere schriftlich|setze den punkt|markiere)/i
 
 function interactiveKey(task: Task): string {
   const ix = task.interactive

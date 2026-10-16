@@ -3,12 +3,7 @@
  * Definitions-Prompts („Was bedeutet …?“) werden in Anwendungskontext umformuliert.
  * siehe `.cursor/rules/curriculum-aufgaben-qualitaet.mdc`
  */
-import {
-  isShallowGlossaryEntry,
-  redactSolutionSpoilers,
-  stripBioMetaWissen,
-  type BioBank,
-} from './biologieBank'
+import { redactSolutionSpoilers, stripBioMetaWissen, type BioBank } from './biologieBank'
 import { mathBankGenerate } from './mathBank'
 import type { Topic } from './types'
 
@@ -127,14 +122,9 @@ function sanitizePhysikBank(bank: BioBank): BioBank {
   // Gleicher Fakt nicht doppelt (pair+fact) — sonst round-dup „gleicher Fakt“.
   const seenAns = new Set<string>()
   const dedupedFacts = facts.filter((f) => {
-    const ans = String(f.answer ?? '').trim()
-    const term =
-      f.prompt.match(/[„""']([^„""']+)[“""']/)?.[1] ||
-      String(f.flashFront ?? '').trim() ||
-      ''
-    // Flache Glossar-Synonyme (Term → Mini-Definition) nicht als MC ausspielen
-    if (ans && isShallowGlossaryEntry(term || ans.slice(0, 24), ans)) return false
-    const k = ans
+    // Physik: kurze Fachantworten (Formeln, Einheiten) sind normal — kein Bio-Glossar-Filter
+    // (der leerte Banken und ließ mathBank auf „Berechne 2+3“ fallen).
+    const k = String(f.answer ?? '')
       .normalize('NFKC')
       .toLowerCase()
       .replace(/\s+/g, '')

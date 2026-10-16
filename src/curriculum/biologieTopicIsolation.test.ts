@@ -195,7 +195,7 @@ function normalizeStem(s: string): string {
 
 /** Shared UI chrome for pairMatch etc. — not topic content. */
 const GENERIC_STEM =
-  /^(ordne begriff und erklaerung|ordne zu|welche aussage|welche dieser|richtig oder falsch|karteikarte|tippe|waehle|welcher fachbegriff passt|fachbegriff was bedeutet|vergleiche|welche erklaerung|finde den fehler|stimmt die aussage)/i
+  /^(ordne begriff und erklaerung|ordne zu|welche aussage|welche dieser|welche karte trifft fachlich zu|richtig oder falsch|karteikarte|tippe|waehle|welcher fachbegriff passt|fachbegriff was bedeutet|vergleiche|welche erklaerung|finde den fehler|stimmt die aussage)/i
 
 function isContentStem(stem: string): boolean {
   if (stem.length < 12) return false

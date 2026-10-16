@@ -764,7 +764,7 @@ const bioK5Arbeitsweisen: BioBank = {
   icons: [
     {
       concept: "bio:k5:arbeitsweisen:ic1",
-      question: "Welches Symbol steht für die Arbeitsweise Experimentieren?",
+      question: "Welches Symbol steht für die Methode mit Frage, Versuch und Auswertung?",
       prompt: "Arbeitsweise wählen",
       options: [
         { id: "exp", label: "Experiment", icon: "🔬" },
@@ -780,7 +780,7 @@ const bioK5Arbeitsweisen: BioBank = {
   hotspots: [
     {
       concept: "bio:k5:arbeitsweisen:hs1",
-      question: "Tippe auf den Schritt „Beobachtung notieren“ im Versuchsablauf.",
+      question: "Tippe auf den Schritt „Wahrnehmung notieren“ im Versuchsablauf.",
       imageSvg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" role="img" aria-label="Versuchsablauf">
         <rect width="400" height="220" fill="#0f172a"/>
         <rect x="20" y="70" width="80" height="50" rx="8" fill="#1e293b" stroke="#94a3b8"/>

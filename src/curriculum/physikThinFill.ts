@@ -3,6 +3,7 @@
  * Mix 3:1 over base generators — no released:true.
  */
 import { physikBankGenerate as bankGenerate } from './physikBank'
+import { mixedVariants } from './taskHelpers'
 import type { Topic } from './types'
 
 export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
@@ -16843,14 +16844,14 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
   }),
 }
 
-/**
- * Thin-Fill nur als Notfall ohne Qualitätsbank — kein Glossar-Mix über Hand-/Gap-Banken.
- */
+/** Mix filler 3:1 over base so rounds stay dense without dropping specialty UX. */
 export function withSubjectThinFill(
   id: string,
   base: Topic['generate'] | undefined,
   fills: Record<string, Topic['generate']> = PHYSIK_THIN_FILL,
 ): Topic['generate'] | undefined {
-  if (base) return base
-  return fills[id]
+  const fill = fills[id]
+  if (!fill) return base
+  if (!base) return fill
+  return mixedVariants(fill, fill, fill, base)
 }

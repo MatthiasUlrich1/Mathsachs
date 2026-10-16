@@ -383,19 +383,20 @@ describe('Biologie UX: bank slugs, pairMatch duplicates, Fachbegriff spoilers', 
     expect(themePhraseFromPrefix('bio:k5:schnabel')).not.toMatch(/Themenfeld/i)
   })
 
-  it('does not rebrand Was-bedeutet into fake Maßnahme/Merkmal wrappers', () => {
-    // Glossar-Prompts bleiben erkennbar und werden in sanitize/factPool verworfen
+  it('rewrites Was-bedeutet into themed Schulstoff stems (shallow answers still dropped)', () => {
     expect(
       rewriteDefinitionStylePrompt('Schnabelformen: Was bedeutet „Körnerschnabel“?', {
         prefix: 'bio:k5:schnabel',
       }),
-    ).toMatch(/Was bedeutet\s*[„"]Körnerschnabel/i)
+    ).toMatch(/Was ist ein typisches Merkmal von\s*[„"]Körnerschnabel/i)
     expect(
       rewriteDefinitionStylePrompt('Vogelschutz: Was bedeutet „Nistkasten“?', {
         prefix: 'bio:k5:vgschutz',
       }),
-    ).toMatch(/Was bedeutet\s*[„"]Nistkasten/i)
-    expect(applicationPromptForTerm('Körnerschnabel', 'bio:k5:schnabel')).toMatch(/Was bedeutet/i)
+    ).toMatch(/Warum ist\s*[„"]Nistkasten[“"]\s+im Vogelschutz relevant/i)
+    expect(applicationPromptForTerm('Körnerschnabel', 'bio:k5:schnabel')).toMatch(
+      /typisches Merkmal|kennzeichnet/i,
+    )
     expect(fixGermanPromptCapitalization('was ist ein merkmal?')).toBe('Was ist ein merkmal?')
   })
 
@@ -424,10 +425,10 @@ describe('Biologie UX: bank slugs, pairMatch duplicates, Fachbegriff spoilers', 
     expect(bioQuestionSpoilsTerm(gapQ, fact.gapAccepted)).toBe(false)
 
     const mcQ = bioFactQuestion(fact, 'mc')
-    // Glossar-Stem bleibt erkennbar (wird in bankGenerate/sanitize verworfen)
-    expect(mcQ).toMatch(/Was bedeutet|Laubbaum/i)
+    expect(mcQ).toMatch(/kennzeichnet|Merkmal|Laubbaum/i)
     expect(mcQ).not.toMatch(/im Themenfeld/i)
     expect(mcQ).not.toMatch(/\(baeume\)/)
+    expect(mcQ).not.toMatch(/^Was bedeutet\b/i)
   })
 
   it('flags shallow glossary entries and glossary-style prompts', () => {
