@@ -1882,7 +1882,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k6-lb4-und-oder:fact:alltag-oder",
-      prompt: "Welche Eigenschaft hat das Alltag UND?",
+      prompt: "Woran erkennt man der Alltag ODER?",
       answer: "Zwei Türen zum Licht.", wrong: ["Symbole zeichnen.", "Verknüpfung von Bedingungen.", "Falsche Verdrahtung."],
       explanation: "Treppenhaus grob. Alltag ODER bedeutet: Zwei Türen zum Licht. Bezug: UND- und ODER-Schaltung.",
       wissen: "Treppenhaus grob. Alltag ODER bedeutet: Zwei Türen zum Licht. Bezug: UND- und ODER-Schaltung.",

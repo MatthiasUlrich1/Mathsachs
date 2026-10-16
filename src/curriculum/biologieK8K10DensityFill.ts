@@ -217,7 +217,7 @@ export const k8Hypophyse: BioBank = {
     },
     {
       concept: "bio:k8:hyp:negativ",
-      prompt: "Was kennzeichnet „negative Rückkopplung bei Hormonen“?",
+      prompt: "Welche Eigenschaft hat das dämpft?",
       answer: "Ein hoher Hormonspiegel dämpft die eigene Freisetzung.", wrong: ["Hormone verstärken sich immer ungebremst.", "Nur Reflexe im Fuß.", "Nur Fotosynthese."],
       explanation: "Ein hoher Hormonspiegel dämpft die eigene Freisetzung.",
       wissen: fw(
@@ -1143,7 +1143,7 @@ export const k9Organellen: BioBank = {
     },
     {
       concept: "bio:k9:orgell:endomembr",
-      prompt: "Was kennzeichnet „Doppelmembran evolutionär oft“?",
+      prompt: "Was bedeutet „Endosymbionten“?",
       answer: "Hinweis auf endosymbiontischen Ursprung.", wrong: ["Beweis für fehlende DNA.", "Beweis gegen Membranen.", "Nur Zufall ohne Struktur."],
       explanation: "Hinweis auf endosymbiontischen Ursprung.",
       wissen: fw(
@@ -1213,8 +1213,8 @@ export const k9Zellatmung: BioBank = {
     },
     {
       concept: "bio:k9:zellat:energie",
-      prompt: "Wozu dient die freigesetzte Energie vor allem?",
-      answer: "Es dient dazu, für Lebensfunktionen (ATP).", wrong: ["Nur zum Färben der Blätter.", "Nur zum Bilden von Steinen.", "Nur zum Löschen von Licht."],
+      prompt: "Was bedeutet „ATP“?",
+      answer: "Für Lebensfunktionen (ATP).", wrong: ["Nur zum Färben der Blätter.", "Nur zum Bilden von Steinen.", "Nur zum Löschen von Licht."],
       explanation: "Für Lebensfunktionen (ATP).",
       wissen: fw(
         "ATP treibt aktive Transporte, Bewegung, Synthesen.",
@@ -1338,8 +1338,8 @@ export const k9Stoffwechsel: BioBank = {
   facts: [
     {
       concept: "bio:k9:stoffw:aufnahme",
-      prompt: "Was kennzeichnet „Aufnahme – Transport – Abgabe“?",
-      answer: "Stoffe werden aufgenommen, im Organismus verteilt und abgegeben.", wrong: ["Die Aufnahme – Transport – Abgabe ist die Nur DNA-Replikation.", "Die Aufnahme – Transport – Abgabe ist die Nur Bestäubung.", "Es beschreibt ohne Energieversorgung stehen Transporte und Synthesen still."],
+      prompt: "Welche Eigenschaft hat das abgegeben?",
+      answer: "Stoffe werden aufgenommen, im Organismus verteilt und abgegeben.", wrong: ["Aufbau körpereigener Stoffe (z. B. Fotosynthese).", "Abbau organischer Stoffe unter Energiegewinnung.", "Organismen erzeugen organische Stoffe selbst (z. B. Fotosynthese)."],
       explanation: "Stoffe werden aufgenommen, im Organismus verteilt und abgegeben.",
       wissen: fw(
         "Bei Pflanzen: Wasser/Mineralstoffe aufnehmen, leiten, transpirieren; Gase tauschen.",
@@ -1665,8 +1665,8 @@ export const k10Replikation: BioBank = {
     },
     {
       concept: "bio:k10:repl:semi",
-      prompt: "Was kennzeichnet „semikonservativ“?",
-      answer: "Jeder Tochter-Doppelstrang enthält einen alten und einen neuen Strang.", wrong: ["Beide Stränge sind komplett neu ohne Altanteil.", "DNA wird zu RNA.", "Chromosomen verschwinden."],
+      prompt: "Was bedeutet „neuer“?",
+      answer: "Jeder Tochter-Doppelstrang enthält einen alten und einen neuen Strang", wrong: ["Beide Stränge sind komplett neu ohne Altanteil.", "DNA wird zu RNA.", "Chromosomen verschwinden."],
       explanation: "Jeder Tochter-Doppelstrang enthält einen alten und einen neuen Strang.",
       wissen: fw(
         "Klassisches Ergebnis der Meselson-Stahl-Logik.",
@@ -2253,7 +2253,7 @@ export const k10Geschlecht: BioBank = {
     },
     {
       concept: "bio:k10:gesch:inter",
-      prompt: "Was kennzeichnet „Intersexualität grob“?",
+      prompt: "Was kennzeichnet das Intersexualität grob?",
       answer: "Varianten der Geschlechtsentwicklung mit nicht eindeutigem XX/XY-Phänotyp.", wrong: ["Nur eine Haarfarbe.", "Nur eine Blutgruppe.", "Nur eine Sprache."],
       explanation: "Varianten der Geschlechtsentwicklung mit nicht eindeutigem XX/XY-Phänotyp.",
       wissen: fw(
@@ -2264,7 +2264,7 @@ export const k10Geschlecht: BioBank = {
     },
     {
       concept: "bio:k10:gesch:vererbung",
-      prompt: "Was kennzeichnet „Vererbung des Geschlechts“?",
+      prompt: "Was bedeutet „Vererbung des Geschlechts“?",
       answer: "Weitergabe der Geschlechtschromosomen nach Meiose.", wrong: ["Nur die Vererbung der Körpergröße.", "Nur die Blattform.", "Nur die Blutgruppe 0."],
       explanation: "Weitergabe der Geschlechtschromosomen nach Meiose.",
       wissen: fw(
@@ -2971,7 +2971,7 @@ export const k10Erdzeit: BioBank = {
     },
     {
       concept: "bio:k10:erdz:frueh",
-      prompt: "Was kennzeichnet die Erdfrühzeit biologisch grob?",
+      prompt: "Was bedeutet „einfache“?",
       answer: "Frühe Lebensformen, lange vor komplexen Landwirbeltieren.", wrong: ["Sofort Homo sapiens überall.", "Keine Lebewesen je.", "Nur moderne Städte."],
       explanation: "Frühe Lebensformen, lange vor komplexen Landwirbeltieren.",
       wissen: fw(
@@ -3320,7 +3320,7 @@ export const k10Homininen: BioBank = {
     },
     {
       concept: "bio:k10:homin:stammbaum",
-      prompt: "Wozu dient ein Hominidenstammbaum-Modell?",
+      prompt: "Wozu dient die Verwandtschaft?",
       answer: "Verwandtschaft und Abfolgen visualisieren.", wrong: ["Blutgruppen messen.", "pH im See messen.", "Blüten bestimmen."],
       explanation: "Verwandtschaft und Abfolgen visualisieren.",
       wissen: fw(
@@ -3423,7 +3423,7 @@ export const k10KulturEvo: BioBank = {
     },
     {
       concept: "bio:k10:kultur:feldbau",
-      prompt: "Was kennzeichnet „der Übergang zu Feldbau“?",
+      prompt: "Was bedeutet „der Übergang zu Feldbau“?",
       answer: "Von Jagd/Sammeln zu Nahrungsmittelproduktion.", wrong: ["Rückkehr zu rein mariner Lebensweise.", "Ende jeder Technik.", "Verlust der Sprache."],
       explanation: "Von Jagd/Sammeln zu Nahrungsmittelproduktion.",
       wissen: fw(

@@ -583,7 +583,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j11lk-lb1-dreh-erhaltung:p11:f",
-      prompt: "Welche Eigenschaft hat die Einheit kg·m² oder s?",
+      prompt: "Was bewirkt das Einheit kg·m²/s?",
       answer: "SI für L.", wrong: ["L = I·ω bzw. r×p.", "Massenverteilung zur Achse.", "Drehwinkel pro Zeit."],
       explanation: "Aus I·ω. Einheit kg·m²/s bedeutet: SI für L.",
       wissen: "Aus I·ω. Einheit kg·m²/s bedeutet: SI für L.",
@@ -809,7 +809,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j11lk-lb3p-kraftmesser:p10:f",
-      prompt: "Mit welchen Mitteln arbeitet der Einheiten N oder m?",
+      prompt: "Was bedeutet „Einheiten N/m“?",
       answer: "für D.", wrong: ["ΔD aus ΔF, Δs.", "F = D·s.", "Steigung im F-s-Diagramm."],
       explanation: "SI. Einheiten N/m bedeutet: für D.",
       wissen: "SI. Einheiten N/m bedeutet: für D.",

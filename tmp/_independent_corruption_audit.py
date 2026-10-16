@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-"""Independent human-reading audit: topic match, no foreign bleed, no Title mush."""
+"""Independent human-reading audit: topic match, no foreign bleed, no Title mush,
+no prompt↔gapAccepted sibling-term desync."""
 from __future__ import annotations
 
 import random
@@ -32,6 +33,14 @@ KNOWN = {
     "bio:k10:blut:ab": re.compile(r"Antigen|kodominant|A und B", re.I),
     "bio:k10:erbk:trisomie": re.compile(r"Chromosom 21|Down|dreifach|Genommutation|Trisomie", re.I),
     "bio:lk11:c3c4:10": re.compile(r"Lebensraum|Strategie|Anpassung|CO2|C3|C4|CAM", re.I),
+    "bio:k6:orgene:f11": re.compile(r"Heterotroph|organisch", re.I),
+    "bio:k6:zellth:f6": re.compile(r"Gewebe|Verband|Zellen", re.I),
+    "bio:k9:fakt:f3": re.compile(r"Potenz|Reaktionsbreite", re.I),
+}
+PROMPT_OK = {
+    "bio:k6:orgene:f11": re.compile(r"Heterotrophie", re.I),
+    "bio:k6:zellth:f6": re.compile(r"Gewebe", re.I),
+    "bio:k9:fakt:f3": re.compile(r"Ökologische Potenz|Oekologische Potenz", re.I),
 }
 
 BANNED = re.compile(
@@ -46,10 +55,62 @@ FOREIGN = [
     (re.compile(r"Hydrolase|Enzymklasse|Vmax|Kompetitiv|Lineweaver", re.I), re.compile(r"C3|C4|CAM|Anpassung|Rubisco|Calvin", re.I)),
 ]
 
+QUOTE = re.compile(r"[„\"“]([^„\"”]{2,80})[“\"”]")
+SIMPLE = re.compile(
+    r"(?:Welche Eigenschaft hat (?:die|das|den|der|ein|eine)|"
+    r"Woran erkennt man (?:die|das|den|der|ein|eine)|"
+    r"Wozu dient (?:die|das|den|der|ein|eine)|"
+    r"Was bewirkt (?:die|das|den|der|ein|eine)|"
+    r"Mit welchen Mitteln arbeitet (?:die|das|den|der|ein|eine)|"
+    r"Was kennzeichnet (?:die|das|den|der|ein|eine))\s+(.+?)\s*\??\s*$",
+    re.I,
+)
+WAS_BED = re.compile(
+    r"(?:Was bedeutet|Was beschreibt|Fachbegriff:\s*Was bedeutet)\s+[„\"“]?([^„\"”?\n]{2,80})[“\"”]?\s*\??\s*$",
+    re.I,
+)
+
 
 def decode(s: str) -> str:
     s = re.sub(r"\\u([0-9a-fA-F]{4})", lambda m: chr(int(m.group(1), 16)), s)
     return s.replace("\\n", "\n").replace('\\"', '"').replace("\\'", "'").replace("\\\\", "\\")
+
+
+def norm(s: str) -> str:
+    s = s.lower().strip()
+    s = re.sub(r"[\"„“”']", "", s)
+    s = re.sub(r"\s*\([^)]*\)\s*", " ", s)
+    s = re.sub(r"\s+", " ", s)
+    return s.strip(" .?!,;:")
+
+
+def terms_match(a: str, b: str) -> bool:
+    na, nb = norm(a), norm(b)
+    if not na or not nb:
+        return False
+    if na == nb:
+        return True
+    if len(na) >= 4 and len(nb) >= 4 and (na in nb or nb in na):
+        return True
+    return False
+
+
+def prompt_named_term(p: str) -> str | None:
+    m = QUOTE.search(p)
+    if m:
+        return m.group(1).strip()
+    m = WAS_BED.search(p.strip())
+    if m:
+        return m.group(1).strip()
+    m = SIMPLE.search(p.strip())
+    if m:
+        return m.group(1).strip().rstrip("?.!")
+    return None
+
+
+def expl_term(e: str) -> str | None:
+    m = re.match(r"^([^:]{2,60}):\s", e.strip())
+    return m.group(1).strip() if m else None
 
 
 def load() -> list[dict]:
@@ -61,11 +122,22 @@ def load() -> list[dict]:
             prompt = decode(m.group(4))
             answer = decode(m.group(6))
             wrongs = [decode(w[1]) for w in re.findall(r"(['\"])((?:\\.|[^\\\"'])*)\1", m.group(7))]
-            chunk = text[m.end() : m.end() + 500]
+            chunk = text[m.end() : m.end() + 700]
+            stop = re.search(r"\n\s*(?:\{?\s*)?concept:\s*['\"]", chunk)
+            if stop:
+                chunk = chunk[: stop.start()]
             expl = ""
             em = re.search(r"explanation:\s*(['\"])((?:\\.|[^\\\"'])*)\1", chunk)
             if em:
                 expl = decode(em.group(2))
+            gap_a: list[str] = []
+            gm = re.search(r"gapAccepted:\s*\[([\s\S]*?)\]", chunk)
+            if gm:
+                gap_a = [decode(x[1]) for x in re.findall(r"(['\"])((?:\\.|[^\\\"'])*)\1", gm.group(1))]
+            flash = ""
+            fm = re.search(r"flashFront:\s*(['\"])((?:\\.|[^\\\"'])*)\1", chunk)
+            if fm:
+                flash = decode(fm.group(2))
             items.append(
                 {
                     "file": name,
@@ -74,24 +146,88 @@ def load() -> list[dict]:
                     "answer": answer,
                     "wrong": wrongs,
                     "explanation": expl,
+                    "gapAccepted": gap_a,
+                    "flashFront": flash,
                 }
             )
     return items
 
 
-def score_item(it: dict) -> list[str]:
+def concept_term(it: dict) -> str | None:
+    """Canonical glossary term for a fact (prefer gap/flash over mushy expl prefixes)."""
+    if it.get("gapAccepted"):
+        return it["gapAccepted"][0]
+    if it.get("flashFront"):
+        return it["flashFront"]
+    # dens-style: "Bezug: Term. Term bedeutet:"
+    m = re.search(r"Bezug:\s*([^.]+?)\.\s*\1\s+bedeutet", it.get("explanation", ""), re.I)
+    if m:
+        return m.group(1).strip()
+    m = re.search(r"([A-ZÄÖÜ][^.]{1,50}?)\s+bedeutet:", it.get("explanation", ""))
+    if m:
+        return m.group(1).strip()
+    return expl_term(it.get("explanation", ""))
+
+
+def build_term_owners(items: list[dict]) -> dict[str, dict[str, str]]:
+    """Per-file map: norm(term) -> concept."""
+    by_file: dict[str, dict[str, str]] = {}
+    for it in items:
+        owners = by_file.setdefault(it["file"], {})
+        term = concept_term(it)
+        if term:
+            owners.setdefault(norm(term), it["concept"])
+    return by_file
+
+
+def score_item(it: dict, term_owners: dict[str, dict[str, str]] | None = None) -> list[str]:
     reasons: list[str] = []
-    # Ban/mush only on options — prompts like „Was beschreibt ein Pixel?“ are fine
     opts = " ".join([it["answer"], *it["wrong"]])
     if BANNED.search(opts):
         reasons.append("banned-or-title-mush")
     if it["concept"] in KNOWN and not KNOWN[it["concept"]].search(it["answer"]):
         reasons.append("known-topic-fail")
+    if it["concept"] in PROMPT_OK and not PROMPT_OK[it["concept"]].search(it["prompt"]):
+        reasons.append("prompt-term-desync")
+
+    # Sibling glossary-term swap: prompt names another concept's term
+    if term_owners is not None:
+        named = prompt_named_term(it["prompt"])
+        own = concept_term(it)
+        targets: list[str] = []
+        if own:
+            targets.append(own)
+        if it["gapAccepted"]:
+            targets.append(it["gapAccepted"][0])
+        if it.get("flashFront"):
+            targets.append(it["flashFront"])
+        # Meaning-clue prompts (os-gaps): prompt names the meaning, gapAccepted is the term.
+        # Aligned if named matches explanation OR flashFront OR gapAccepted.
+        expl_ok = bool(it.get("explanation") and terms_match(named or "", it["explanation"]))
+        if named and targets and not any(terms_match(named, t) for t in targets) and not expl_ok:
+            # Ignore tiny/stub own labels ("AP","ATP","Nicht","Andere") vs fuller prompt terms
+            if own and (
+                len(norm(own)) <= 4
+                or norm(own) in {"andere", "nicht", "bestimmt", "jedes", "keimzellen"}
+            ):
+                pass
+            elif own and terms_match(named, own):
+                pass
+            else:
+                owners = term_owners.get(it["file"], {})
+                other = owners.get(norm(named))
+                if not other:
+                    for nt, oc in owners.items():
+                        if terms_match(named, nt) and oc != it["concept"]:
+                            other = oc
+                            break
+                if other and other != it["concept"]:
+                    reasons.append("prompt-term-desync")
+
     topic = it["prompt"] + " " + it["explanation"] + " " + it["concept"]
     for foreign, topical in FOREIGN:
         if foreign.search(it["answer"]) and topical.search(topic) and not foreign.search(topic):
             reasons.append("foreign-bleed")
-    # Human minimum: non-empty topical answer
     if len(it["answer"].split()) < 3:
         reasons.append("answer-emptyish")
     if not it["answer"].strip():
@@ -101,6 +237,7 @@ def score_item(it: dict) -> list[str]:
 
 def main() -> int:
     items = load()
+    term_owners = build_term_owners(items)
     by_c = {it["concept"]: it for it in items}
     lines: list[str] = ["=== KNOWN SHOWSTOPPERS ==="]
     known_ok = 0
@@ -109,9 +246,11 @@ def main() -> int:
         if not it:
             lines.append(f"FAIL missing {cid}")
             continue
-        reasons = score_item(it)
-        ok = not reasons and bool(pat.search(it["answer"]))
-        # Extra: wrongs must not be foreign-topic for known IDs
+        reasons = score_item(it, term_owners)
+        ok = not any(
+            r in reasons
+            for r in ("foreign-bleed", "banned-or-title-mush", "known-topic-fail", "prompt-term-desync")
+        ) and bool(pat.search(it["answer"]))
         if cid == "bio:lk11:c3c4:10" and any(
             re.search(r"Hydrolase|Vmax|Kompetitiv|Enzymklasse", w, re.I) for w in it["wrong"]
         ):
@@ -135,27 +274,30 @@ def main() -> int:
         if reasons:
             lines.append(f"  reasons: {reasons}")
 
-    mismatch = [(it, score_item(it)) for it in items if score_item(it)]
-    # Filter to serious only
+    scored = [(it, score_item(it, term_owners)) for it in items]
     serious = [
         (it, rs)
-        for it, rs in mismatch
-        if any(r in rs for r in ("foreign-bleed", "banned-or-title-mush", "known-topic-fail"))
+        for it, rs in scored
+        if any(
+            r in rs
+            for r in ("foreign-bleed", "banned-or-title-mush", "known-topic-fail", "prompt-term-desync")
+        )
     ]
-    lines.append(f"\n=== CORPUS SERIOUS MISMATCH ===")
+    lines.append("\n=== CORPUS SERIOUS MISMATCH ===")
     lines.append(f"flagged: {len(serious)} / {len(items)}")
-    for it, rs in serious[:15]:
-        lines.append(f"  {it['concept']}: {rs} | A={it['answer'][:80]}")
+    for it, rs in serious[:20]:
+        lines.append(f"  {it['concept']}: {rs} | Q={it['prompt'][:60]} | A={it['answer'][:60]}")
 
-    seeds = [555666, 112358, 998877]
+    seeds = [555666, 112358, 998877, 991177]
     seed_results = []
     for seed in seeds:
         rng = random.Random(seed)
         sample = rng.sample(items, min(12, len(items)))
         ok = 0
-        lines.append(f"\n=== SEED {seed} (human topic reading) ===")
+        lines.append(f"\n=== SEED {seed} (human topic reading, strict) ===")
         for i, it in enumerate(sample, 1):
-            reasons = score_item(it)
+            reasons = score_item(it, term_owners)
+            # Strict: any reason fails (incl. answer-emptyish)
             status = "OK" if not reasons else "WEAK"
             if not reasons:
                 ok += 1
@@ -183,7 +325,8 @@ def main() -> int:
 
     out = ROOT / "tmp" / "_independent_corruption_audit.txt"
     out.write_text("\n".join(lines), encoding="utf-8")
-    print("\n".join(lines[-25:]))
+    # print summary only (avoid cp1252 crash)
+    print("\n".join(lines[-30:]).encode("ascii", "replace").decode("ascii"))
     print("report:", out)
     return code
 

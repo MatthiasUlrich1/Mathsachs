@@ -6041,8 +6041,8 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk12-lb3-ethologie-methoden:p5:f",
-      prompt: "Mit welchen Mitteln arbeitet das allopatrisch?",
-      answer: "Es beschreibt durch geografische Trennung.", wrong: ["Sie beschreibt evolutionärer Nutzen.", "Sie lernen durch Verknüpfung.", "Es beschreibt vergleichsgruppe außen."],
+      prompt: "Was bewirkt das Klassiker. Bezug?",
+      answer: "durch geografische Trennung.", wrong: ["ähnliche Funktion, andere Herkunft.", "Neugründung mit Stichprobe.", "gelerntes, weitergegebenes Verhalten."],
       explanation: "Klassiker. Bezug: allopatrisch. allopatrisch bedeutet: durch geografische Trennung.",
       wissen: "Klassiker. Bezug: allopatrisch. allopatrisch bedeutet: durch geografische Trennung.",
       flashFront: "allopatrisch",
@@ -6082,7 +6082,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb3-ethologie-methoden:p10:f",
       prompt: "Welche Eigenschaft hat das altruistisch?",
-      answer: "Es kosten für Helfer, kin-Selektion erklären.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt ähnliche Funktion, andere Herkunft.", "Es beschreibt durch geografische Trennung."],
+      answer: "Kosten für Helfer.", wrong: ["unmittelbarer Mechanismus.", "ähnliche Anpassung unabhängig.", "Raumverteidigung."],
       explanation: "Kin-Selektion erklären. Bezug: altruistisch. altruistisch bedeutet: Kosten für Helfer.",
       wissen: "Kin-Selektion erklären. Bezug: altruistisch. altruistisch bedeutet: Kosten für Helfer.",
       flashFront: "altruistisch",
@@ -6158,7 +6158,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk12-lb5-organisationsebenen:p5:f",
-      prompt: "Wozu dient das sympatrisch?",
+      prompt: "Welche Eigenschaft hat das z. B. polyploid. Bezug?",
       answer: "ohne räumliche Trennung.", wrong: ["zufällige Allelfrequenzänderung.", "Austausch zwischen Populationen.", "aufrechter Gang."],
       explanation: "z. B. polyploid. Bezug: sympatrisch. sympatrisch bedeutet: ohne räumliche Trennung.",
       wissen: "z. B. polyploid. Bezug: sympatrisch. sympatrisch bedeutet: ohne räumliche Trennung.",
@@ -6235,7 +6235,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     facts: [
     {
       concept: "bi:dens:bi-lk12-lb5-systembiologie:p0:f",
-      prompt: "Was bewirkt das altruistisch?",
+      prompt: "Was bedeutet „altruistisch“?",
       answer: "Kosten für Helfer.", wrong: ["unmittelbarer Mechanismus.", "feste Reiz-Reaktions-Kette.", "Interaktion in Gruppe."],
       explanation: "Kin-Selektion erklären. Bezug: altruistisch. altruistisch bedeutet: Kosten für Helfer.",
       wissen: "Kin-Selektion erklären. Bezug: altruistisch. altruistisch bedeutet: Kosten für Helfer.",
