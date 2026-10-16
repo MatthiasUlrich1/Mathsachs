@@ -3,6 +3,7 @@ import {
   concreteGlossaryStem,
   expandGlossaryAnswer,
   isConcreteGlossaryStem,
+  isMechanicalGlossaryOption,
   isVagueGlossaryStem,
   isWeakGlossaryOption,
   rewriteVagueGlossaryPrompt,
@@ -69,8 +70,9 @@ describe('glossaryMcRewrite Timer-caliber', () => {
       term: 'Chronologie',
       style: 'definition',
     })
-    expect(def).toMatch(/^(Sie|Er|Es)\b/i)
+    expect(def).toMatch(/^(Gemeint ist|Das ist|Sie beschreibt|Sie steht für)\b/i)
     expect(def).not.toMatch(/Darunter versteht man/i)
+    expect(def).not.toMatch(/^Sie bezeichnet\b/i)
 
     const kieme = expandGlossaryAnswer('Darunter versteht man den atemorgan für Wasser.', {
       term: 'Kieme',
@@ -80,6 +82,36 @@ describe('glossaryMcRewrite Timer-caliber', () => {
     expect(kieme).not.toMatch(/Darunter versteht man/i)
     expect(kieme).toMatch(/Atemorgan/i)
     expect(kieme).not.toMatch(/atemorgan/)
+  })
+
+  it('rebuilds mechanical Sie ist/bezeichnet wrappers into natural options', () => {
+    expect(isMechanicalGlossaryOption('Sie bezeichnet die Geradliniges Modell der Lichtausbreitung.')).toBe(
+      true,
+    )
+    expect(isMechanicalGlossaryOption('Sie ist das Körper der Selbst Licht Aussendet.')).toBe(true)
+    expect(
+      isMechanicalGlossaryOption(
+        'Sie ist das Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.',
+      ),
+    ).toBe(false)
+
+    const licht = expandGlossaryAnswer('Sie ist das Körper der Selbst Licht Aussendet.', {
+      term: 'Lichtquelle',
+      style: 'definition',
+    })
+    expect(licht).not.toMatch(/^Sie bezeichnet\b/i)
+    expect(licht).not.toMatch(/\bSelbst\b/)
+    expect(licht).not.toMatch(/\bAussendet\b/)
+    expect(licht.toLowerCase()).toMatch(/körper/)
+    expect(licht.toLowerCase()).toMatch(/aussendet/)
+
+    const modell = expandGlossaryAnswer('Geradliniges Modell der Lichtausbreitung', {
+      term: 'Lichtstrahl',
+      style: 'definition',
+    })
+    expect(modell).not.toMatch(/^Sie bezeichnet\b/i)
+    expect(modell).not.toMatch(/^Es bezeichnet\b/i)
+    expect(modell).toMatch(/[Mm]odell/)
   })
 
   it('physik/bio sanitizer entry points rewrite vague stems', () => {

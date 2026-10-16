@@ -291,6 +291,11 @@ export function capitalizeGermanPhrase(text: string): string {
     .join(' ')
 }
 
+function lowerFirst(s: string): string {
+  if (!s) return s
+  return s.charAt(0).toLowerCase() + s.slice(1)
+}
+
 function stripDarunterWrap(m: string): string {
   return m
     .replace(/^Darunter versteht man\s+/i, '')
@@ -300,11 +305,134 @@ function stripDarunterWrap(m: string): string {
     .trim()
 }
 
+/** Soften Title-Case abuse after articles/prepositions; capitalize bare nouns. */
+function softenTitleCaseBody(body: string): string {
+  const words = body.replace(/\s+/g, ' ').trim().split(' ')
+  const func = new Set([
+    ...PREPS,
+    'ein',
+    'eine',
+    'einen',
+    'einem',
+    'einer',
+    'der',
+    'die',
+    'das',
+    'den',
+    'dem',
+    'des',
+  ])
+  const forceLower = new Set([
+    'selbst',
+    'vollständig',
+    'immer',
+    'nur',
+    'nie',
+    'sich',
+    'vor',
+    'allem',
+    'anderen',
+    'typischen',
+    'politische',
+    'zeitliche',
+    'geistliche',
+    'völlig',
+    'direktes',
+    'unbeleuchteter',
+    'bedrohter',
+    'geeigneter',
+    'heimische',
+    'warmer',
+    'feuchter',
+    'geschichtlichen',
+    'aussendet',
+    'ernährt',
+    'verbessert',
+    'nutzen',
+    'meiden',
+    'sind',
+    'betroffen',
+    'folgt',
+  ])
+  return words
+    .map((w, i) => {
+      const bare = w.replace(/[^a-zäöüßA-ZÄÖÜ]/g, '')
+      const prev = i > 0 ? words[i - 1]!.replace(/[^a-zäöüß]/gi, '').toLowerCase() : ''
+
+      // Finite verbs wrongly Title-Cased mid-sentence
+      if (
+        i > 0 &&
+        /^[A-ZÄÖÜ]/.test(bare) &&
+        /^(Aussendet|Ernährt|Verbessert|Nutzen|Meiden|Folgt|Sendet|Wirft|Geht|Wird|Werden|Sind|Ist|Hat|Haben)$/i.test(
+          bare,
+        )
+      ) {
+        return lowerFirst(w)
+      }
+
+      if (i === 0) {
+        // Capitalize leading bare noun fragments: „atemorgan für …“
+        if (/^[a-zäöü]/.test(bare) && bare.length > 2 && !PREPS.has(bare.toLowerCase())) {
+          return `${bare.charAt(0).toUpperCase()}${bare.slice(1)}${w.slice(bare.length)}`
+        }
+        return w
+      }
+      if (!func.has(prev)) return w
+      if (forceLower.has(bare.toLowerCase())) return lowerFirst(w)
+      const next = words[i + 1]
+      if (
+        next &&
+        /^[A-ZÄÖÜ]/.test(next) &&
+        /(e|er|es|en|em|iges|liches|isches|ares)$/i.test(bare)
+      ) {
+        return lowerFirst(w)
+      }
+      // Article + lowercase noun → capitalize noun
+      if (
+        /^(der|die|das|den|dem|des|ein|eine|einen|einem|einer)$/i.test(prev) &&
+        /^[a-zäöü]/.test(bare) &&
+        bare.length > 2
+      ) {
+        return `${bare.charAt(0).toUpperCase()}${bare.slice(1)}${w.slice(bare.length)}`
+      }
+      return w
+    })
+    .join(' ')
+}
+
+/**
+ * Mechanical glossary wrappers (Sie bezeichnet / Sie ist das …) that must be rebuilt.
+ * Keeps rich relative-clause answers (Timer/Kieme caliber).
+ */
+export function isMechanicalGlossaryOption(opt: string): boolean {
+  const o = opt.replace(/\s+/g, ' ').trim()
+  if (!o) return false
+  if (/^(Sie|Er|Es)\s+bezeichnet\b/i.test(o)) return true
+  if (/^(Sie|Er|Es)\s+ist\s+(das|die|der|den|ein|eine|einen)\b/i.test(o)) {
+    // Rich teacher-style relative clause — keep
+    if (/,\s*(mit|durch|über|für|bei|in|an|aus)\s+(dem|der|die|den|einem|einer)\b/i.test(o)) {
+      return false
+    }
+    if (/,\s*(der|die|das)\s+\S+/i.test(o) && o.split(/\s+/).length >= 10) return false
+    return true
+  }
+  // Broken pronoun+lowercase stub: „Sie auftriebshilfe …“
+  if (
+    /^(Sie|Er|Es)\s+[a-zäöü]/i.test(o) &&
+    !PURPOSE_VERB.test(o.replace(/^(Sie|Er|Es)\s+/i, '')) &&
+    !EFFECT_VERB.test(o.replace(/^(Sie|Er|Es)\s+/i, ''))
+  ) {
+    return true
+  }
+  return false
+}
+
 /** Weak glossary option wraps that must be rebuilt (fragment / bad casing). */
 export function isWeakGlossaryOption(opt: string): boolean {
   const o = opt.replace(/\s+/g, ' ').trim()
   if (!o) return true
   if (/\\u00[0-9a-f]{2}/i.test(o)) return true
+  if (isMechanicalGlossaryOption(o)) return true
   if (/^Darunter versteht man\b/i.test(o)) {
     const rest = o.replace(/^Darunter versteht man\s+/i, '').trim()
     // „den atemorgan …“ / bare lowercase noun / short fragment
@@ -315,7 +443,7 @@ export function isWeakGlossaryOption(opt: string): boolean {
   // Short noun-only fragment without sentence opener
   if (
     o.split(/\s+/).length <= 5 &&
-    !/^(Sie|Er|Es|Man|Licht|Wärme|Energie|Der|Die|Das|Ein|Eine)\b/i.test(o)
+    !/^(Sie|Er|Es|Man|Licht|Wärme|Energie|Der|Die|Das|Ein|Eine|Gemeint|Das ist)\b/i.test(o)
   ) {
     return true
   }
@@ -323,9 +451,12 @@ export function isWeakGlossaryOption(opt: string): boolean {
 }
 
 function alreadyFullOption(m: string): boolean {
-  if (isWeakGlossaryOption(m)) return false
+  if (isWeakGlossaryOption(m) || isMechanicalGlossaryOption(m)) return false
   const words = m.split(/\s+/).length
-  if (/^(Sie|Er|Es|Man|Damit|Dabei|Hier|Das|Die|Der|Licht|Wärme|Energie)\b/i.test(m) && words >= 5) {
+  if (
+    /^(Sie|Er|Es|Man|Damit|Dabei|Hier|Das|Die|Der|Licht|Wärme|Energie|Gemeint)\b/i.test(m) &&
+    words >= 5
+  ) {
     return true
   }
   if (words >= 8) return true
@@ -333,42 +464,149 @@ function alreadyFullOption(m: string): boolean {
   return false
 }
 
+function hashPick(seed: string, n: number): number {
+  let h = 0
+  for (let i = 0; i < seed.length; i++) h = (Math.imul(31, h) + seed.charCodeAt(i)) | 0
+  return Math.abs(h) % n
+}
+
+function isLikelyAdjective(word: string): boolean {
+  return /(ig|lich|isch|iv|al|är|os|bar|sam|ig|iv)(e|er|es|en|em)?$/i.test(word) ||
+    /^(geradliniges|teilweise|völlig|äußere|widerstandsarme|zeitliche|politische|geistliche)$/i.test(
+      word,
+    )
+}
+
+function articleForHead(head: string, term: string): string {
+  const low = head.toLowerCase()
+  if (
+    /(ung|heit|keit|schaft|ion|tät|ik|enz|anz|ur|treue|freiheit|ordnung|hilfe|form|schicht|blase|linse)$/i.test(
+      low,
+    ) ||
+    (/e$/i.test(low) && !/(ee|ie)$/i.test(low) && low.length > 3)
+  ) {
+    return 'die'
+  }
+  if (
+    /(chen|lein|ment|tum|um|organ|system|modell|recht|wesen|maß|licht|gas)$/i.test(low)
+  ) {
+    return 'das'
+  }
+  if (/(er|en|el|körper|bereich|schatten|spiegel|filter|sensor|pixel|bund)$/i.test(low)) {
+    return 'der'
+  }
+  const p = pronounFor(term)
+  if (p === 'Sie') return 'die'
+  if (p === 'Er') return 'der'
+  return 'das'
+}
+
+function withNominativeNp(body: string, term: string): string {
+  let b = softenTitleCaseBody(body).replace(/\.$/, '').trim()
+  if (!b) return b
+  if (/^(der|die|das|ein|eine)\s+/i.test(b)) {
+    return b.replace(/^den\s+/i, 'der ').replace(/^dem\s+/i, 'dem ')
+  }
+  // Plural-ish bare NPs
+  if (
+    /^(maßnahmen|freiheiten|urkunden|abgaben|register|schuppen|flossen)\b/i.test(b) ||
+    (/^[A-ZÄÖÜ][a-zäöüß]+en\b/.test(b) &&
+      /maßnahmen|freiheiten|abgaben|urkunden/i.test(b))
+  ) {
+    return lowerFirst(b)
+  }
+  const words = b.split(/\s+/)
+  const head = words[0] ?? ''
+  if (isLikelyAdjective(head) && words.length >= 2) {
+    const noun = words[1]!
+    const art = articleForHead(noun, term)
+    let adj = lowerFirst(head)
+    if (/^(das|ein)$/i.test(art) && /es$/i.test(adj)) adj = adj.replace(/es$/i, 'e')
+    if (/^(die|eine)$/i.test(art) && /es$/i.test(adj)) adj = adj.replace(/es$/i, 'e')
+    return `${art} ${adj} ${words.slice(1).join(' ')}`
+  }
+  const art = articleForHead(head, term)
+  return `${art} ${b}`
+}
+
+function toAccusativeNp(np: string): string {
+  return np
+    .replace(/^der\s+/i, 'den ')
+    .replace(/^ein\s+(?![aeiouäöü])/i, 'einen ')
+}
+
+/**
+ * Natural full answer from a meaning fragment — varied stems, no default Sie-bezeichnet.
+ */
 function asDefinitionSentence(term: string, meaning: string): string {
   const pron = pronounFor(term)
-  let body = stripDarunterWrap(meaning)
-  body = capitalizeGermanPhrase(body)
+  let body = softenTitleCaseBody(stripDarunterWrap(meaning)).replace(/\.$/, '').trim()
   if (!body) return ensurePeriod(`${pron} beschreibt einen verwandten Sachverhalt`)
 
-  const concreteNp =
-    /organ|gerät|schicht|körper|hilfe|mittel|system|blase|deckel|fläche|form|larve|stadium|gewebe|zelle|knoche|muskel|nerv|sensor|pixel|spiegel|linse|widerstand|quelle|epoche|ordnung|herrschaft|recht|bund|wesen|zunft|hanse/i.test(
-      body,
+  if (PURPOSE_VERB.test(body) || EFFECT_VERB.test(body)) {
+    return ensurePeriod(`${pron} ${lowerFirst(body)}`)
+  }
+  if (
+    /^(Licht|Wärme|Energie|Man|Der|Die|Das|Ein|Eine)\b/i.test(body) &&
+    body.split(/\s+/).length >= 3
+  ) {
+    return ensurePeriod(body.charAt(0).toUpperCase() + body.slice(1))
+  }
+
+  // Date stubs: „ab 1929“
+  if (/^ab\s+\d{3,4}\b/i.test(body) || /^\d{3,4}$/.test(body)) {
+    const t = displayGlossaryTerm(term)
+    return ensurePeriod(`${t || 'Der Begriff'} meint die Entwicklung ${body}`)
+  }
+
+  // Comma lists / short slogans — keep noun capitals
+  if (/,/.test(body) && body.split(/\s+/).length <= 6) {
+    const parts = body.split(',').map((p) => {
+      const s = p.trim()
+      return s ? s.charAt(0).toUpperCase() + s.slice(1) : s
+    })
+    return ensurePeriod(`Gemeint ist: ${parts.join(', ')}`)
+  }
+
+  if (
+    body.split(/\s+/).length <= 3 &&
+    !/^(der|die|das|ein|eine)\b/i.test(body)
+  ) {
+    if (/^(ab|bei|nach|vor|um)\b/i.test(body)) {
+      const t = displayGlossaryTerm(term)
+      return ensurePeriod(`${t || 'Der Begriff'} gehört in den Zeitraum ${body}`)
+    }
+    return ensurePeriod(`Gemeint ist: ${body.charAt(0).toUpperCase()}${body.slice(1)}`)
+  }
+
+  const np = withNominativeNp(body, term)
+  if (!np) return ensurePeriod(`${pron} beschreibt einen verwandten Sachverhalt`)
+
+  // Bare plural without article
+  if (!/^(der|die|das|ein|eine)\s+/i.test(np)) {
+    const plural = /^[a-zäöü]/.test(np) ? np.charAt(0).toUpperCase() + np.slice(1) : np
+    return ensurePeriod(
+      hashPick(`${term}|${np}`, 2) === 0 ? `Gemeint sind ${plural}` : `Das sind ${plural}`,
     )
-
-  // Ensure article for NP after ist/bezeichnet — keep German noun capitalization
-  if (!/^(der|die|das|ein|eine|einen|einem|einer|etwas|das,|die,)\b/i.test(body)) {
-    const last = (body.split(/\s+/).pop() ?? '').toLowerCase()
-    const art =
-      /(ung|heit|keit|schaft|ion|tät|ik|enz|anz|ur)$/i.test(last) || /e$/i.test(last)
-        ? 'die'
-        : /(chen|lein|ment|tum|um|organ|system|recht|wesen)$/i.test(last)
-          ? 'das'
-          : 'den'
-    body = `${art} ${body}`
   }
 
-  if (concreteNp) {
-    // Accusative „den“ after „ist“ is wrong — use nominative for „ist“
-    body = body
-      .replace(/^den\s+/i, 'das ')
-      .replace(/^die\s+/i, (a) => a) // keep
-    return ensurePeriod(`${pron} ist ${body}`)
+  const pick = hashPick(`${term}|${np}`, 4)
+  switch (pick) {
+    case 0:
+      return ensurePeriod(`Gemeint ist ${np}`)
+    case 1:
+      return ensurePeriod(`Das ist ${np}`)
+    case 2:
+      return ensurePeriod(`${pron} beschreibt ${toAccusativeNp(np)}`)
+    default:
+      return ensurePeriod(`${pron} steht für ${np}`)
   }
-  return ensurePeriod(`${pron} bezeichnet ${body}`)
 }
 
 /**
  * Expand a short meaning fragment into a full, comparable answer phrase.
- * Keeps UTF-8 umlauts untouched. Never emits weak „Darunter versteht man den …“ wraps.
+ * Keeps UTF-8 umlauts untouched. Never emits weak „Darunter versteht man den …“ wraps
+ * or monotonous „Sie bezeichnet …“ / „Sie ist das …“ templates.
  */
 export function expandGlossaryAnswer(
   meaning: string,
@@ -395,35 +633,45 @@ export function expandGlossaryAnswer(
       .trim()
   }
 
-  if (alreadyFullOption(m)) return ensurePeriod(m)
-
-  // Unwrap weak Darunter wraps before rebuilding
-  if (/^Darunter versteht man\b/i.test(m) || isWeakGlossaryOption(m)) {
-    m = stripDarunterWrap(m)
+  // Unwrap mechanical / weak wraps before deciding whether already full
+  if (
+    isMechanicalGlossaryOption(m) ||
+    isWeakGlossaryOption(m) ||
+    /^Darunter versteht man\b/i.test(m)
+  ) {
+    m = softenTitleCaseBody(stripDarunterWrap(m))
   }
+
+  if (alreadyFullOption(m)) return ensurePeriod(m)
 
   const pron = pronounFor(term ?? '')
   const verbish = PURPOSE_VERB.test(m) || EFFECT_VERB.test(m)
 
   if (verbish) {
-    const rest = m.charAt(0).toLowerCase() + m.slice(1)
+    const rest = lowerFirst(m)
     return ensurePeriod(`${pron} ${rest}`)
   }
 
   if (style === 'process' && /^(Licht|Wärme|Energie|Der|Die|Das|Ein|Eine|Es|Man)\b/i.test(m)) {
-    return ensurePeriod(capitalizeGermanPhrase(m.charAt(0).toUpperCase() + m.slice(1)))
+    return ensurePeriod(m.charAt(0).toUpperCase() + m.slice(1))
   }
 
   if (style === 'purpose' || style === 'property') {
-    // Verb clause → „Sie schaltet …“; noun phrase → „Sie ist das Atemorgan …“
     if (verbish || PURPOSE_VERB.test(m) || EFFECT_VERB.test(m)) {
-      const body = m.charAt(0).toLowerCase() + m.slice(1)
-      return ensurePeriod(`${pron} ${body}`)
+      return ensurePeriod(`${pron} ${lowerFirst(m)}`)
+    }
+    // Purpose noun phrases → natural „Sie dient als …“ / definition mix
+    if (style === 'purpose' && /organ|hilfe|mittel|gerät|deckel|blase|schicht/i.test(m)) {
+      const np = withNominativeNp(m, term ?? '')
+      const pick = hashPick(`${term}|${m}|purpose`, 3)
+      if (pick === 0) return ensurePeriod(`${pron} dient als ${stripDarunterWrap(np)}`)
+      if (pick === 1) return ensurePeriod(`Das ist ${np}`)
+      return ensurePeriod(`Gemeint ist ${np}`)
     }
     return asDefinitionSentence(term ?? '', m)
   }
 
-  // definition — full parallel sentence, no Darunter wrap
+  // definition — varied natural sentences, no Darunter / Sie-bezeichnet default
   return asDefinitionSentence(term ?? '', m)
 }
 

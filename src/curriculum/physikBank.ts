@@ -10,6 +10,7 @@ import {
   expandGlossaryAnswer,
   expandGlossaryDistractor,
   isConcreteGlossaryStem,
+  isMechanicalGlossaryOption,
   isWeakGlossaryOption,
   rewriteVagueGlossaryPrompt,
   stripBankSlugPrefix,
@@ -141,15 +142,40 @@ function sanitizePhysikBank(bank: BioBank): BioBank {
         prompt = concreteGlossaryStem(term, topic, ansRaw)
       }
       const style = classifyGlossaryStyle(term || '', ansRaw, topic)
+      const meaningHint =
+        (term &&
+          (f.wissen?.match(
+            new RegExp(
+              `${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s+bedeutet:\\s*([^.]+)`,
+              'i',
+            ),
+          )?.[1] ||
+            f.explanation?.match(
+              new RegExp(
+                `${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*:\\s*([^.]+)`,
+                'i',
+              ),
+            )?.[1])) ||
+        f.gap?.match(/—\s*(.+)$/u)?.[1]?.trim() ||
+        undefined
       const expandNeeded =
         isWeakGlossaryOption(ansRaw) ||
-        (ansRaw.split(/\s+/).length <= 7 && !/^(Sie|Er|Es|Man)\s/i.test(ansRaw))
+        isMechanicalGlossaryOption(ansRaw) ||
+        (ansRaw.split(/\s+/).length <= 7 && !/^(Sie|Er|Es|Man|Gemeint|Das)\s/i.test(ansRaw))
+      const expandSource =
+        expandNeeded && meaningHint && isMechanicalGlossaryOption(ansRaw)
+          ? meaningHint.trim()
+          : ansRaw
       const answer = expandNeeded
-        ? expandGlossaryAnswer(ansRaw, { term: term || undefined, topic, style })
+        ? expandGlossaryAnswer(expandSource, { term: term || undefined, topic, style })
         : ansRaw
       const wrong = f.wrong?.map((w) => {
         const wr = String(w).trim()
-        if (!isWeakGlossaryOption(wr) && (wr.split(/\s+/).length > 7 || /^(Sie|Er|Es|Man)\s/i.test(wr))) {
+        if (
+          !isWeakGlossaryOption(wr) &&
+          !isMechanicalGlossaryOption(wr) &&
+          (wr.split(/\s+/).length > 7 || /^(Sie|Er|Es|Man|Gemeint|Das)\s/i.test(wr))
+        ) {
           return wr
         }
         return expandGlossaryDistractor(wr, topic, { term: term || undefined, style })

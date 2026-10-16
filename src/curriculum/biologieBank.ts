@@ -38,6 +38,7 @@ import {
   expandGlossaryAnswer,
   expandGlossaryDistractor,
   isConcreteGlossaryStem,
+  isMechanicalGlossaryOption,
   isWeakGlossaryOption,
   rewriteVagueGlossaryPrompt,
   stripBankSlugPrefix,
@@ -963,25 +964,51 @@ export function sanitizeBioBank(bank: BioBank): BioBank {
         prefix: bank.conceptPrefix,
         meaning: ansRaw,
       })
-      // Expand short fragments AND weak „Darunter versteht man …“ wraps.
+      // Expand short fragments, mechanical Sie-ist/bezeichnet, and Darunter wraps.
       const style = classifyGlossaryStyle(termHint.trim(), ansRaw, topicHint || undefined)
+      const termForHint = termHint.trim()
+      const meaningHint =
+        (termForHint &&
+          (f.wissen?.match(
+            new RegExp(
+              `${termForHint.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s+bedeutet:\\s*([^.]+)`,
+              'i',
+            ),
+          )?.[1] ||
+            f.explanation?.match(
+              new RegExp(
+                `${termForHint.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*:\\s*([^.]+)`,
+                'i',
+              ),
+            )?.[1])) ||
+        f.gap?.match(/—\s*(.+)$/u)?.[1]?.trim() ||
+        undefined
       const expandNeeded =
         isWeakGlossaryOption(ansRaw) ||
-        (ansRaw.split(/\s+/).length <= 7 && !/^(Sie|Er|Es|Man)\s/i.test(ansRaw))
+        isMechanicalGlossaryOption(ansRaw) ||
+        (ansRaw.split(/\s+/).length <= 7 && !/^(Sie|Er|Es|Man|Gemeint|Das)\s/i.test(ansRaw))
+      const expandSource =
+        expandNeeded && meaningHint && isMechanicalGlossaryOption(ansRaw)
+          ? meaningHint.trim()
+          : ansRaw
       const answer = expandNeeded
-        ? expandGlossaryAnswer(ansRaw, {
-            term: termHint.trim() || undefined,
+        ? expandGlossaryAnswer(expandSource, {
+            term: termForHint || undefined,
             topic: topicHint || undefined,
             style,
           })
         : ansRaw
       const wrong = f.wrong?.map((w) => {
         const wr = String(w).trim()
-        if (!isWeakGlossaryOption(wr) && (wr.split(/\s+/).length > 7 || /^(Sie|Er|Es|Man)\s/i.test(wr))) {
+        if (
+          !isWeakGlossaryOption(wr) &&
+          !isMechanicalGlossaryOption(wr) &&
+          (wr.split(/\s+/).length > 7 || /^(Sie|Er|Es|Man|Gemeint|Das)\s/i.test(wr))
+        ) {
           return wr
         }
         return expandGlossaryDistractor(wr, topicHint || undefined, {
-          term: termHint.trim() || undefined,
+          term: termForHint || undefined,
           style,
         })
       })
