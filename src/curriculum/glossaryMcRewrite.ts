@@ -24,9 +24,14 @@ export function isConcreteGlossaryStem(prompt: string): boolean {
 export function isVagueGlossaryStem(prompt: string): boolean {
   const q = stripBankSlugPrefix(prompt).replace(/\s+/g, ' ').replace(/\?+$/g, '').trim()
   return (
-    /^Was trifft\b/i.test(q) ||
+    // Glossary/meta only — not application MCs like „Welche Aussage zur SRT passt?“ / „Was trifft den 2. Hauptsatz…“.
+    /^Was trifft auf\b/i.test(q) ||
+    /^Was trifft im Thema\b/i.test(q) ||
+    /^Was trifft(?: in diesem Zusammenhang)?\s*zu$/i.test(q) ||
     /fachlich\s+richtig/i.test(q) ||
-    /^Welche Aussage\b/i.test(q) ||
+    /^Welche Aussage beschreibt(?:\s+fachlich)?\b/i.test(q) ||
+    /^Welche Aussage zu\s*[„""']/i.test(q) ||
+    /^Welche Aussage ist(?:\s+fachlich)?\s+richtig$/i.test(q) ||
     /^(?:Fachbegriff\s*)?\([^)]+\):\s*(?:Was bedeutet|Was versteht man unter)\b/i.test(q) ||
     /^(?:[^:?]{1,80}:\s*)?Was bedeutet(?: der Fachbegriff)?\s*[„""']/i.test(q) ||
     /^Was bedeutet\s+\S+$/i.test(q) ||
@@ -209,21 +214,33 @@ export function expandGlossaryAnswer(
       .trim()
   }
 
+  // Repair mangled prior expands: „Er licht geht hindurch.“
+  m = m.replace(/^(Sie|Er|Es)\s+(licht|wärme|energie)\b/i, (_, p1, n) => {
+    return n.charAt(0).toUpperCase() + n.slice(1)
+  })
+
   if (alreadyFullOption(m)) return ensurePeriod(m)
 
   const pron = pronounFor(term ?? '')
   const verbish = PURPOSE_VERB.test(m) || EFFECT_VERB.test(m)
+  const nounClause = /^(Licht|Wärme|Energie|Der|Die|Das|Ein|Eine|Es|Man)\b/i.test(m)
+
+  // Noun-led process clauses stay noun-led — never „Er licht wird …“.
+  if (nounClause) {
+    return ensurePeriod(m.charAt(0).toUpperCase() + m.slice(1))
+  }
 
   if (verbish) {
     const rest = m.charAt(0).toLowerCase() + m.slice(1)
     return ensurePeriod(`${pron} ${rest}`)
   }
 
-  if (style === 'process' && /^(Licht|Wärme|Energie|Der|Die|Das|Ein|Eine|Es|Man)\b/i.test(m)) {
-    return ensurePeriod(m.charAt(0).toUpperCase() + m.slice(1))
-  }
-
   if (style === 'purpose' || style === 'property') {
+    // Short noun phrases under property stems → Darunter-Form, not broken pronoun glue.
+    if (!PURPOSE_VERB.test(m) && !EFFECT_VERB.test(m) && m.split(/\s+/).length <= 6) {
+      const body = m.charAt(0).toLowerCase() + m.slice(1)
+      return ensurePeriod(`Darunter versteht man ${body}`)
+    }
     const body = m.charAt(0).toLowerCase() + m.slice(1)
     return ensurePeriod(`${pron} ${body}`)
   }
@@ -285,6 +302,13 @@ export function rewriteVagueGlossaryPrompt(
   m = q.match(/^Was trifft(?: im Thema\s+(.+?))?(?: in diesem Zusammenhang)?\s+zu\s*$/i)
   if (m) {
     return concreteGlossaryStem('', m[1]?.trim(), opts?.meaning)
+  }
+
+  // Welche Aussage beschreibt (fachlich) TERM?
+  m = q.match(/^Welche Aussage beschreibt(?:\s+fachlich)?\s+(.+)$/i)
+  if (m) {
+    const rest = m[1]!.replace(/\?+$/g, '').trim()
+    return concreteGlossaryStem(rest.replace(/^[„""']|[“""']$/g, ''), undefined, opts?.meaning)
   }
 
   // Fachbegriff (topic): Was bedeutet „term“?

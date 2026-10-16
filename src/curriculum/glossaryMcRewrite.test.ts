@@ -57,6 +57,14 @@ describe('glossaryMcRewrite Timer-caliber', () => {
       style: 'definition',
     })
     expect(def).toMatch(/^Darunter versteht man/i)
+
+    // Noun-led optics clauses must not become „Er licht …“.
+    expect(
+      expandGlossaryAnswer('Licht geht hindurch', { term: 'Transparent', style: 'property' }),
+    ).toMatch(/^Licht geht hindurch/i)
+    expect(
+      expandGlossaryAnswer('Er licht wird abgelenkt.', { term: 'Streuung', style: 'property' }),
+    ).toMatch(/^Licht wird abgelenkt/i)
   })
 
   it('physik/bio sanitizer entry points rewrite vague stems', () => {

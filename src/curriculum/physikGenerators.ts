@@ -21,6 +21,12 @@ import { LEHRPLAN_TOPIC_GAP_GENERATORS } from './lehrplanTopicGaps'
 import { buildGymSachsenPhysikPack } from './physikGymPack'
 import { makePhysikTopicGenerate } from './physikTopicFactory'
 import { rewritePhysikPrompt } from './physikBank'
+import {
+  expandGlossaryAnswer,
+  expandGlossaryDistractor,
+  isVagueGlossaryStem,
+  rewriteVagueGlossaryPrompt,
+} from './glossaryMcRewrite'
 import { fixGermanPromptCapitalization, redactSolutionSpoilers } from './biologieBank'
 import { mixedVariants } from './taskHelpers'
 import type { Topic, UserInput } from './types'
@@ -30,16 +36,48 @@ function withAuditSafePhysikFw(gen: Topic['generate']): Topic['generate'] {
   return (rng) => {
     const task = gen(rng)
     const fixMinus = (s: string) => s.replace(/(^|[^\d.,])-(\d)/g, '$1−$2')
-    let q = fixGermanPromptCapitalization(rewritePhysikPrompt(task.question || ''))
-    // Meta-Fragen („Wozu dient …“) → anwendungsnahe Formulierung
+    const ansRaw = String(task.solution ?? '')
+    let q = fixGermanPromptCapitalization(rewritePhysikPrompt(task.question || '', ansRaw))
+    // Legacy wrapper that re-injected meta stems — strip and re-concretize.
     q = q
-      .replace(/^Wozu dient\b/i, 'Welche Rolle hat')
+      .replace(/^Welche Aussage beschreibt fachlich\s+/i, 'Was bewirkt oder beschreibt ')
+      .replace(/^Welche Aussage beschreibt\s+/i, 'Was bewirkt oder beschreibt ')
       .replace(/\bim Unterricht\??\s*$/i, '?')
-    // Begriffsdrill → Anwendung (Audit banned-format)
-    q = q
-      .replace(/^Was versteht man unter\s+(einem|einer|einem|dem|der|das)?\s*/i, 'Welche Aussage beschreibt fachlich ')
-      .replace(/^Was bedeutet\s+/i, 'Welche Aussage beschreibt ')
-    q = redactSolutionSpoilers(q, String(task.solution ?? ''))
+    if (isVagueGlossaryStem(q) || /^Welche Aussage beschreibt(?:\s+fachlich)?\b/i.test(q)) {
+      const rewritten = rewriteVagueGlossaryPrompt(q, { meaning: ansRaw })
+      if (rewritten) q = fixGermanPromptCapitalization(rewritten)
+    }
+    // Bare trailing meta closer on otherwise concrete stems.
+    q = q.replace(/\bWas trifft zu\??\s*$/i, 'Welche Beschreibung passt dazu?')
+    // Physik banned-format: no bare definition drill — force application/role stems.
+    if (/^Was versteht man unter\b/i.test(q) || /^Was bedeutet\b/i.test(q)) {
+      const term =
+        q.match(/[„""']([^„""']+)[“""']/)?.[1] ||
+        q
+          .replace(/^Was versteht man unter\s+(einem|einer|einem|dem|der|das)?\s*/i, '')
+          .replace(/^Was bedeutet\s*/i, '')
+          .replace(/\?+$/, '')
+          .trim()
+      const meaning = ansRaw.replace(/\s+/g, ' ').trim()
+      if (term) {
+        if (/lässt|durch|opak|transparent|transluzent/i.test(`${term} ${meaning}`)) {
+          q = fixGermanPromptCapitalization(rewritePhysikPrompt(`Was bedeutet „${term}“?`, meaning))
+        } else if (
+          /schaltet|dient|vermeidet|ermöglicht|regelt|steuert|misst|schützt|hilft|begrenzt|verhindert/i.test(
+            meaning,
+          )
+        ) {
+          q = fixGermanPromptCapitalization(rewritePhysikPrompt(`Was bedeutet „${term}“?`, meaning))
+        } else {
+          q = `Was bewirkt oder beschreibt ${term.replace(/\//g, ' oder ')}?`
+        }
+      }
+      // Still a definition stem? Last resort application framing.
+      if (/^Was versteht man unter\b/i.test(q) || /^Was bedeutet\b/i.test(q)) {
+        q = `Was bewirkt oder beschreibt ${term.replace(/\//g, ' oder ')}?`
+      }
+    }
+    q = redactSolutionSpoilers(q, ansRaw)
     // Formel nicht als Rechenweg vorgeben (Spoiler)
     q = q.replace(
       /\b(mit|nach|über|gemäß|aus|durch)\s+(der\s+formel\s+)?([A-Za-zρηλΔωφτ][\w_]{0,4}\s*=\s*[A-Za-zρηλΔωφτ½√][\w_]{0,4}\s*[·*/×+−-]\s*[A-Za-zρηλΔωφτ(½√][^\s?]*)/i,
@@ -90,10 +128,40 @@ function withAuditSafePhysikFw(gen: Topic['generate']): Topic['generate'] {
       if (choices.length === 2 && lower.every((c) => tfWords.has(c))) {
         const yes = /richtig|wahr|stimmt$|ja/.test(String(task.solution ?? '').toLowerCase())
         choices = yes
-          ? ['Aussage ist fachlich zutreffend', 'Aussage ist so nicht haltbar']
-          : ['Aussage ist so nicht haltbar', 'Aussage ist fachlich zutreffend']
+          ? ['Die Aussage beschreibt den physikalischen Sachverhalt zutreffend.', 'Die Aussage hält einer fachlichen Prüfung nicht stand.']
+          : ['Die Aussage hält einer fachlichen Prüfung nicht stand.', 'Die Aussage beschreibt den physikalischen Sachverhalt zutreffend.']
         solution = choices[0]!
         props.correct = solution
+      }
+      // Expand short glossary fragments into full comparable options.
+      const termHint =
+        q.match(/[„""']([^„""']+)[“""']/)?.[1] ||
+        q.match(/(?:Wozu dienen?|Welche Eigenschaft hat|Was bewirkt oder beschreibt)\s+(.+?)(?:\s+im Thema|\?|$)/i)?.[1]?.trim()
+      choices = choices.map((c) => {
+        const s = String(c).trim()
+        if (/^[\d.,]+/.test(s) || /[=·ρλΔ]/.test(s)) return s
+        // Always repair mangled pronoun+noun glue from older expands.
+        const mangled = /^(Sie|Er|Es)\s+(licht|wärme|energie)\b/i.test(s)
+        if (
+          !mangled &&
+          (s.split(/\s+/).length > 7 || /^(Sie|Er|Es|Man|Darunter|Die |Der |Das )\b/i.test(s))
+        ) {
+          return /[.!?]$/.test(s) ? s : `${s}.`
+        }
+        const expanded =
+          s === solution || s === ansRaw
+            ? expandGlossaryAnswer(s, { term: termHint })
+            : expandGlossaryDistractor(s, undefined, { term: termHint })
+        return expanded || s
+      })
+      {
+        // Re-map solution if the correct choice text was expanded.
+        const origChoices = props.choices as string[]
+        const idx = origChoices.findIndex((c) => String(c) === ansRaw || String(c) === solution)
+        if (idx >= 0 && choices[idx]) {
+          solution = choices[idx]!
+          props.correct = solution
+        }
       }
       const seen = new Set<string>()
       const deduped: string[] = []
