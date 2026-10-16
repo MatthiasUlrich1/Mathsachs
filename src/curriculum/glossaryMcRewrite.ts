@@ -96,6 +96,8 @@ function pronounFor(term: string): 'Sie' | 'Er' | 'Es' {
     return 'Sie'
   }
   if (/(er|or|ismus|us|ling)$/i.test(low)) return 'Er'
+  // Common masculine compound heads without -er suffix
+  if (/(strahl|stoff|kreis|punkt|wert|druck|strom|schatten|spiegel)$/i.test(low)) return 'Er'
   return 'Es'
 }
 
@@ -236,13 +238,59 @@ function stripWraps(m: string): string {
     .replace(/^(Gemeint ist|Gemeint sind)\s*:?\s*/i, '')
     .replace(/^(Das ist|Das sind)\s+/i, '')
     .replace(/^(Es handelt sich um)\s+/i, '')
+    .replace(/^(Sie|Er|Es)\s+steht im Kern für Folgendes:\s*/i, '')
+    .replace(/^(Hier steht)\s+/i, '')
+    .replace(/\s+im Mittelpunkt\.?$/i, '')
     .replace(
       /^(Sie|Er|Es)\s+(bezeichnet|ist|sind|beschreibt|steht für|fungiert als|dient als|kennzeichnet|meint|umfasst|bildet|fasst)\s+/i,
       '',
     )
+    .replace(/^(Der|Die|Das)\s+\S+\s+meint:\s*/i, '')
     .replace(/\s*—\s*so bei\b.*$/i, '')
     .trim()
     .replace(/^[.\s]+|[.\s]+$/g, '')
+}
+
+/** Natural full-sentence fallback for noun/adj fragments (no Folgendes wrapper). */
+function naturalFragmentOption(term: string, fragment: string): string {
+  let body = fragment.replace(/\s+/g, ' ').trim().replace(/[.!?]+$/g, '').trim()
+  let enrich = ''
+  const em = body.match(/^(.*?),\s*und zwar gilt(?: hier)?:\s*(.+)$/i)
+  if (em) {
+    body = em[1]!.trim()
+    enrich = em[2]!.trim()
+  }
+  if (!body) body = fragment.replace(/\s+/g, ' ').trim()
+
+  const t = displayGlossaryTerm(term)
+  let out: string
+  if (t) {
+    const art = pronounFor(t) === 'Sie' ? 'Die' : pronounFor(t) === 'Er' ? 'Der' : 'Das'
+    // „ist hier:“ keeps ≥6 words for short 2-word meanings without Folgendes.
+    out =
+      body.split(/\s+/).length >= 2
+        ? `${art} ${t} ist hier: ${body}`
+        : `${art} ${t} ist kurz gesagt: ${body}`
+  } else {
+    out =
+      body.split(/\s+/).length >= 3
+        ? `Es geht um ${body}`
+        : `Es geht um diesen Inhalt: ${body}`
+  }
+  out = ensurePeriod(out)
+  if (out.split(/\s+/).length < 6) {
+    out = t
+      ? ensurePeriod(
+          `${pronounFor(t) === 'Sie' ? 'Die' : pronounFor(t) === 'Er' ? 'Der' : 'Das'} ${t} ist kurz gesagt: ${body}`,
+        )
+      : ensurePeriod(`Es geht um diesen Inhalt: ${body}`)
+  }
+
+  if (enrich && !out.toLowerCase().includes(enrich.toLowerCase().slice(0, Math.min(24, enrich.length)))) {
+    const hint = enrich.charAt(0).toLowerCase() + enrich.slice(1)
+    out = ensurePeriod(`${out.replace(/[.!?]$/, '')}, und zwar gilt: ${hint}`)
+  }
+  return out
 }
 
 function asNp(m: string): string {
@@ -259,6 +307,8 @@ export function isMechanicalGlossaryOption(opt: string): boolean {
   const o = opt.replace(/\s+/g, ' ').trim()
   if (!o) return false
   if (BANNED_OPTION.test(o)) return true
+  if (/\bsteht im Kern für Folgendes\b/i.test(o)) return true
+  if (/\bfasst(?: den Inhalt so)? zusammen:\b/i.test(o)) return true
   if (/^(Sie|Er|Es)\s+(bezeichnet|kennzeichnet|steht für|meint)\b/i.test(o)) return true
   if (/^(Sie|Er|Es)\s+ist\s+(das|die|der|den|ein|eine|einen)\b/i.test(o)) {
     // Keep rich relative-clause answers
@@ -303,7 +353,7 @@ function alreadyFullOption(m: string): boolean {
   ) {
     return false
   }
-  return /\b(ist|sind|hat|haben|wird|werden|lässt|lassen|dient|dienen|beschreibt|bedeutet|gilt|bildet|zeigt|enthält|umfasst|sendet|wirft|regelt|steuert|misst|schützt|entzieht|verbindet|erzeugt|entsteht|geht|liegt|nimmt|speichert|transportiert|unterbricht|hemmt|pumpt|wandelt|prägt|gewährt|organisiert|fasst|trennt|leitet|nutzt|dokumentiert|ordnet|wirkt)\b/i.test(
+  return /\b(ist|sind|hat|haben|wird|werden|lässt|lassen|dient|dienen|beschreibt|bedeutet|gilt|bildet|zeigt|enthält|umfasst|sendet|wirft|regelt|steuert|misst|schützt|entzieht|verbindet|erzeugt|entsteht|geht|liegt|nimmt|speichert|transportiert|unterbricht|hemmt|pumpt|wandelt|prägt|gewährt|organisiert|fasst|trennt|leitet|nutzt|dokumentiert|ordnet|wirkt|meint|folgt|braucht|brauchen|kennzeichnet)\b/i.test(
     m,
   )
 }
@@ -348,7 +398,7 @@ export function expandGlossaryAnswer(
   m = fixRelativeComma(stripWraps(m) || m)
   const pron = pronounFor(term)
   const hasVerb =
-    /\b(ist|sind|hat|haben|wird|werden|lässt|lassen|dient|bedeutet|gilt|bildet|zeigt|steht|hemmt|wirft|sendet|regelt|misst|schützt|entzieht|geht|liegt)\b/i.test(
+    /\b(ist|sind|hat|haben|wird|werden|lässt|lassen|dient|bedeutet|gilt|bildet|zeigt|zeigen|steht|hemmt|wirft|sendet|regelt|misst|schützt|entzieht|geht|liegt|folgt|braucht|brauchen|meint|kennzeichnet|enthält|umfasst|verbindet|erzeugt|entsteht|nimmt|speichert|transportiert|macht|machen|gibt|geben|führt|führen|zählt|zählen|gehört|gehören|besteht|bestehen|nennt|nennen|löst|lösen|bewegt|laufen|läuft|fließt|bleibt|kommt|sieht|trägt|hält|findet|bringt|setzt|stellt|legt|zieht|drückt|öffnet|schließt|beginnt|endet|ändert|steigt|fällt|sinkt|wächst|lebt|atmet|kämpft|herrscht|regiert|wählt|gründet|teilt|misst|prüft|beobachtet|erklärt|versteht|lernt|hilft|schützt|baut|produziert)\b/i.test(
       m,
     )
 
@@ -364,14 +414,15 @@ export function expandGlossaryAnswer(
     out = ensurePeriod(m.charAt(0).toUpperCase() + m.slice(1))
     naturalVerb = true
   } else {
-    // Preserve bank casing; force full comparable sentence
-    out = ensurePeriod(`${pron} steht im Kern für Folgendes: ${m}`)
+    // Natural definition sentence from term + meaning fragment (no Folgendes).
+    out = naturalFragmentOption(term, m)
+    naturalVerb = true
   }
 
   out = out.replace(/\b(Aussendet|Ernährt|Verbessert)\b/g, (w) => w.toLowerCase())
-  // Do not overwrite natural pronoun+verb sentences with the Folgendes template.
+  // Only rebuild when the primary path did not yield a natural sentence.
   if (!naturalVerb && (out.split(/\s+/).length < 6 || BANNED_OPTION.test(out))) {
-    out = ensurePeriod(`${pron} steht im Kern für Folgendes: ${stripWraps(meaning) || meaning}`)
+    out = naturalFragmentOption(term, stripWraps(meaning) || meaning)
   }
   if (BANNED_OPTION.test(out)) {
     const bare = ensurePeriod(fixRelativeComma(stripWraps(meaning) || meaning))

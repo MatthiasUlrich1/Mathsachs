@@ -72,11 +72,17 @@ describe('glossaryMcRewrite safe minimal', () => {
       term: 'Chronologie',
       style: 'definition',
     })
-    expect(def).toMatch(/^Sie steht im Kern für Folgendes:/i)
+    expect(def).toMatch(/^Die Chronologie ist hier:/i)
+    expect(def).toMatch(/Zeitliche Ordnung/i)
+    expect(def).not.toMatch(/steht im Kern für Folgendes/i)
+    expect(def).not.toMatch(/fasst zusammen/i)
     expect(def).not.toMatch(/Darunter versteht man/i)
     expect(def).not.toMatch(/^Sie bezeichnet\b/i)
     expect(def).not.toMatch(/— so bei/i)
     expect(isMechanicalGlossaryOption('Sie kennzeichnet die zeitliche Ordnung.')).toBe(true)
+    expect(isMechanicalGlossaryOption('Sie steht im Kern für Folgendes: Zeitliche Ordnung.')).toBe(
+      true,
+    )
 
     const bankFull = 'Sie entzieht dem Wasser Sauerstoff und dient der Atmung.'
     expect(expandGlossaryAnswer(bankFull, { term: 'Kieme', style: 'purpose' })).toBe(bankFull)
@@ -118,7 +124,9 @@ describe('glossaryMcRewrite safe minimal', () => {
     })
     expect(modell).not.toMatch(/^Sie bezeichnet\b/i)
     expect(modell).toMatch(/[Mm]odell/)
-    expect(modell).toMatch(/steht im Kern für Folgendes/i)
+    expect(modell).toMatch(/^Der Lichtstrahl ist hier:/i)
+    expect(modell).not.toMatch(/steht im Kern für Folgendes/i)
+    expect(modell).not.toMatch(/fasst zusammen/i)
     expect(modell).not.toMatch(/— so bei/i)
   })
 
