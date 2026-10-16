@@ -14,12 +14,12 @@ export const k5KriechtiereSchutz: BioBank = {
   facts: [
     {
       concept: "bio:k5:krschutz:f0",
-      prompt: "Was versteht man im Thema Kriechtierschutz auf „Artenschutz“ zu unter einem Artenschutz?",
-      answer: "Darunter versteht man maßnahmen zum Erhalt bedrohter Arten.",
+      prompt: "Was kennzeichnet Artenschutz im Thema Kriechtierschutz?",
+      answer: "Es bezeichnet den Maßnahmen zum Erhalt Bedrohter Arten.",
       wrong: [
-        "Darunter versteht man verschwinden geeigneter Habitate.",
-        "Darunter versteht man heimische Eidechse warmer Standorte.",
-        "Darunter versteht man heimische Schlange feuchter Lebensräume.",
+        "Es bezeichnet die Verschwinden Geeigneter Habitate.",
+        "Es bezeichnet die Heimische Eidechse Warmer Standorte.",
+        "Es bezeichnet die Heimische Schlange Feuchter Lebensräume.",
       ],
       explanation: "Artenschutz: Maßnahmen zum Erhalt bedrohter Arten",
       wissen: fw(
@@ -30,12 +30,12 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f1",
-      prompt: "Was versteht man im Thema Kriechtierschutz unter einem Lebensraumverlust?",
-      answer: "Darunter versteht man die verschwinden Geeigneter Habitate.",
+      prompt: "Was kennzeichnet Lebensraumverlust im Thema Kriechtierschutz?",
+      answer: "Es bezeichnet die Verschwinden Geeigneter Habitate.",
       wrong: [
-        "Darunter versteht man maßnahmen zum Erhalt Bedrohter Arten.",
-        "Darunter versteht man die heimische Eidechse Warmer Standorte.",
-        "Darunter versteht man die heimische Schlange Feuchter Lebensräume.",
+        "Es bezeichnet den Maßnahmen zum Erhalt Bedrohter Arten.",
+        "Es bezeichnet die Heimische Eidechse Warmer Standorte.",
+        "Es bezeichnet die Heimische Schlange Feuchter Lebensräume.",
       ],
       explanation: "Lebensraumverlust: Verschwinden geeigneter Habitate",
       wissen: fw(
@@ -46,12 +46,12 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f2",
-      prompt: "Was versteht man im Thema Kriechtierschutz auf „Zauneidechse“ zu unter einer Zauneidechse?",
-      answer: "Darunter versteht man heimische Eidechse warmer Standorte.",
+      prompt: "Was kennzeichnet Zauneidechse im Thema Kriechtierschutz?",
+      answer: "Sie bezeichnet die Heimische Eidechse Warmer Standorte.",
       wrong: [
-        "Darunter versteht man maßnahmen zum Erhalt bedrohter Arten.",
-        "Darunter versteht man verschwinden geeigneter Habitate.",
-        "Darunter versteht man heimische Schlange feuchter Lebensräume.",
+        "Sie bezeichnet den Maßnahmen zum Erhalt Bedrohter Arten.",
+        "Sie bezeichnet die Verschwinden Geeigneter Habitate.",
+        "Sie bezeichnet die Heimische Schlange Feuchter Lebensräume.",
       ],
       explanation: "Zauneidechse: Heimische Eidechse warmer Standorte",
       wissen: fw(
@@ -62,12 +62,12 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f3",
-      prompt: "Was versteht man im Thema Kriechtierschutz auf „Ringelnatter“ zu unter einem Ringelnatter?",
-      answer: "Darunter versteht man heimische Schlange feuchter Lebensräume.",
+      prompt: "Was kennzeichnet Ringelnatter im Thema Kriechtierschutz?",
+      answer: "Er bezeichnet die Heimische Schlange Feuchter Lebensräume.",
       wrong: [
-        "Darunter versteht man maßnahmen zum Erhalt bedrohter Arten.",
-        "Darunter versteht man verschwinden geeigneter Habitate.",
-        "Darunter versteht man heimische Eidechse warmer Standorte.",
+        "Er bezeichnet den Maßnahmen zum Erhalt Bedrohter Arten.",
+        "Er bezeichnet die Verschwinden Geeigneter Habitate.",
+        "Er bezeichnet die Heimische Eidechse Warmer Standorte.",
       ],
       explanation: "Ringelnatter: Heimische Schlange feuchter Lebensräume",
       wissen: fw(
@@ -78,12 +78,12 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f4",
-      prompt: "Was versteht man im Thema Kriechtierschutz auf „Totholz“ zu unter einem Totholz?",
-      answer: "Darunter versteht man abgestorbenes Holz als Struktur.",
+      prompt: "Was kennzeichnet Totholz im Thema Kriechtierschutz?",
+      answer: "Es bezeichnet die Abgestorbenes Holz als Struktur.",
       wrong: [
-        "Darunter versteht man maßnahmen zum Erhalt bedrohter Arten.",
-        "Darunter versteht man verschwinden geeigneter Habitate.",
-        "Darunter versteht man heimische Eidechse warmer Standorte.",
+        "Es bezeichnet den Maßnahmen zum Erhalt Bedrohter Arten.",
+        "Es bezeichnet die Verschwinden Geeigneter Habitate.",
+        "Es bezeichnet die Heimische Eidechse Warmer Standorte.",
       ],
       explanation: "Totholz: Abgestorbenes Holz als Struktur",
       wissen: fw(
@@ -94,12 +94,12 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f5",
-      prompt: "Was versteht man im Thema Kriechtierschutz unter einem Steinhaufen?",
-      answer: "Darunter versteht man die lesesteine Als Versteckstruktur.",
+      prompt: "Was kennzeichnet Steinhaufen im Thema Kriechtierschutz?",
+      answer: "Es bezeichnet die Lesesteine als Versteckstruktur.",
       wrong: [
-        "Darunter versteht man maßnahmen zum Erhalt Bedrohter Arten.",
-        "Darunter versteht man die verschwinden Geeigneter Habitate.",
-        "Darunter versteht man die heimische Eidechse Warmer Standorte.",
+        "Es bezeichnet den Maßnahmen zum Erhalt Bedrohter Arten.",
+        "Es bezeichnet die Verschwinden Geeigneter Habitate.",
+        "Es bezeichnet die Heimische Eidechse Warmer Standorte.",
       ],
       explanation: "Steinhaufen: Lesesteine als Versteckstruktur",
       wissen: fw(
@@ -110,12 +110,12 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f6",
-      prompt: "Was versteht man im Thema Kriechtierschutz auf „Wechselwarm“ zu unter einem Wechselwarm?",
-      answer: "Darunter versteht man körpertemperatur folgt der Umwelt.",
+      prompt: "Was kennzeichnet Wechselwarm im Thema Kriechtierschutz?",
+      answer: "Es ist das Körpertemperatur Folgt der Umwelt.",
       wrong: [
-        "Darunter versteht man maßnahmen zum Erhalt bedrohter Arten.",
-        "Darunter versteht man verschwinden geeigneter Habitate.",
-        "Darunter versteht man heimische Eidechse warmer Standorte.",
+        "Es bezeichnet den Maßnahmen zum Erhalt Bedrohter Arten.",
+        "Es bezeichnet die Verschwinden Geeigneter Habitate.",
+        "Es bezeichnet die Heimische Eidechse Warmer Standorte.",
       ],
       explanation: "Wechselwarm: Körpertemperatur folgt der Umwelt",
       wissen: fw(
@@ -126,12 +126,12 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f7",
-      prompt: "Was versteht man im Thema Kriechtierschutz unter einer Fragmentierung?",
-      answer: "Darunter versteht man die zerschnittene Lebensräume.",
+      prompt: "Was kennzeichnet Fragmentierung im Thema Kriechtierschutz?",
+      answer: "Sie bezeichnet die Zerschnittene Lebensräume.",
       wrong: [
-        "Darunter versteht man maßnahmen zum Erhalt Bedrohter Arten.",
-        "Darunter versteht man die verschwinden Geeigneter Habitate.",
-        "Darunter versteht man die heimische Eidechse Warmer Standorte.",
+        "Sie bezeichnet den Maßnahmen zum Erhalt Bedrohter Arten.",
+        "Sie bezeichnet die Verschwinden Geeigneter Habitate.",
+        "Sie bezeichnet die Heimische Eidechse Warmer Standorte.",
       ],
       explanation: "Fragmentierung: Zerschnittene Lebensräume",
       wissen: fw(
@@ -142,12 +142,12 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f8",
-      prompt: "Was versteht man im Thema Kriechtierschutz unter einer Habitatpflege?",
-      answer: "Darunter versteht man die pflege Geeigneter Lebensräume.",
+      prompt: "Was kennzeichnet Habitatpflege im Thema Kriechtierschutz?",
+      answer: "Sie bezeichnet die Pflege Geeigneter Lebensräume.",
       wrong: [
-        "Darunter versteht man maßnahmen zum Erhalt Bedrohter Arten.",
-        "Darunter versteht man die verschwinden Geeigneter Habitate.",
-        "Darunter versteht man die heimische Eidechse Warmer Standorte.",
+        "Sie bezeichnet den Maßnahmen zum Erhalt Bedrohter Arten.",
+        "Sie bezeichnet die Verschwinden Geeigneter Habitate.",
+        "Sie bezeichnet die Heimische Eidechse Warmer Standorte.",
       ],
       explanation: "Habitatpflege: Pflege geeigneter Lebensräume",
       wissen: fw(
@@ -158,12 +158,12 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f9",
-      prompt: "Was versteht man im Thema Kriechtierschutz unter einem Naturnaher Garten?",
-      answer: "Darunter versteht man garten Mit Wildnisstrukturen.",
+      prompt: "Was kennzeichnet Naturnaher Garten im Thema Kriechtierschutz?",
+      answer: "Es bezeichnet den Garten mit Wildnisstrukturen.",
       wrong: [
-        "Darunter versteht man maßnahmen zum Erhalt Bedrohter Arten.",
-        "Darunter versteht man die verschwinden Geeigneter Habitate.",
-        "Darunter versteht man die heimische Eidechse Warmer Standorte.",
+        "Es bezeichnet den Maßnahmen zum Erhalt Bedrohter Arten.",
+        "Es bezeichnet die Verschwinden Geeigneter Habitate.",
+        "Es bezeichnet die Heimische Eidechse Warmer Standorte.",
       ],
       explanation: "Naturnaher Garten: Garten mit Wildnisstrukturen",
       wissen: fw(
@@ -174,12 +174,12 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f10",
-      prompt: "Was versteht man im Thema Kriechtierschutz auf „Schutzgebiet“ zu unter einem Schutzgebiet?",
-      answer: "Darunter versteht man fläche mit besonderen Regeln.",
+      prompt: "Was kennzeichnet Schutzgebiet im Thema Kriechtierschutz?",
+      answer: "Es ist das Fläche mit Besonderen Regeln.",
       wrong: [
-        "Darunter versteht man maßnahmen zum Erhalt bedrohter Arten.",
-        "Darunter versteht man verschwinden geeigneter Habitate.",
-        "Darunter versteht man heimische Eidechse warmer Standorte.",
+        "Es bezeichnet den Maßnahmen zum Erhalt Bedrohter Arten.",
+        "Es bezeichnet die Verschwinden Geeigneter Habitate.",
+        "Es bezeichnet die Heimische Eidechse Warmer Standorte.",
       ],
       explanation: "Schutzgebiet: Fläche mit besonderen Regeln",
       wissen: fw(
@@ -190,12 +190,12 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f11",
-      prompt: "Was versteht man im Thema Kriechtierschutz auf „Brutruhe“ zu unter einer Brutruhe?",
-      answer: "Darunter versteht man ungestörte Phasen an Lebensräumen.",
+      prompt: "Was kennzeichnet Brutruhe im Thema Kriechtierschutz?",
+      answer: "Sie bezeichnet den Ungestörte Phasen an Lebensräumen.",
       wrong: [
-        "Darunter versteht man maßnahmen zum Erhalt bedrohter Arten.",
-        "Darunter versteht man verschwinden geeigneter Habitate.",
-        "Darunter versteht man heimische Eidechse warmer Standorte.",
+        "Sie bezeichnet den Maßnahmen zum Erhalt Bedrohter Arten.",
+        "Sie bezeichnet die Verschwinden Geeigneter Habitate.",
+        "Sie bezeichnet die Heimische Eidechse Warmer Standorte.",
       ],
       explanation: "Brutruhe: Ungestörte Phasen an Lebensräumen",
       wissen: fw(
@@ -273,12 +273,12 @@ export const k5VoegelSchnabel: BioBank = {
   facts: [
     {
       concept: "bio:k5:schnabel:f0",
-      prompt: "Was versteht man im Thema Schnabelformen auf „Körnerschnabel“ zu unter einem Körnerschnabel?",
-      answer: "Darunter versteht man kurz und kräftig zum Knacken von Samen.",
+      prompt: "Was kennzeichnet Körnerschnabel im Thema Schnabelformen?",
+      answer: "Es bezeichnet den Kurz und Kräftig zum Knacken von Samen.",
       wrong: [
-        "Darunter versteht man gebogen zum Zerreißen von Fleisch.",
-        "Darunter versteht man seiht Nahrung aus Wasser.",
-        "Darunter versteht man lang und schlank für Blütennektar.",
+        "Es bezeichnet den Gebogen zum Zerreißen von Fleisch.",
+        "Es bezeichnet den Seiht Nahrung aus Wasser.",
+        "Es bezeichnet den Lang und Schlank für Blütennektar.",
       ],
       explanation: "Körnerschnabel: Kurz und kräftig zum Knacken von Samen",
       wissen: fw(
@@ -289,12 +289,12 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f1",
-      prompt: "Was versteht man im Thema Schnabelformen auf „Hakenschnabel“ zu unter einem Hakenschnabel?",
-      answer: "Darunter versteht man gebogen zum Zerreißen von Fleisch.",
+      prompt: "Was kennzeichnet Hakenschnabel im Thema Schnabelformen?",
+      answer: "Es bezeichnet den Gebogen zum Zerreißen von Fleisch.",
       wrong: [
-        "Darunter versteht man kurz und kräftig zum Knacken von Samen.",
-        "Darunter versteht man seiht Nahrung aus Wasser.",
-        "Darunter versteht man lang und schlank für Blütennektar.",
+        "Es bezeichnet den Kurz und Kräftig zum Knacken von Samen.",
+        "Es bezeichnet den Seiht Nahrung aus Wasser.",
+        "Es bezeichnet den Lang und Schlank für Blütennektar.",
       ],
       explanation: "Hakenschnabel: Gebogen zum Zerreißen von Fleisch",
       wissen: fw(
@@ -305,12 +305,12 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f2",
-      prompt: "Was versteht man im Thema Schnabelformen auf „Filterschnabel“ zu unter einem Filterschnabel?",
-      answer: "Darunter versteht man seiht Nahrung aus Wasser.",
+      prompt: "Was kennzeichnet Filterschnabel im Thema Schnabelformen?",
+      answer: "Es bezeichnet den Seiht Nahrung aus Wasser.",
       wrong: [
-        "Darunter versteht man kurz und kräftig zum Knacken von Samen.",
-        "Darunter versteht man gebogen zum Zerreißen von Fleisch.",
-        "Darunter versteht man lang und schlank für Blütennektar.",
+        "Es bezeichnet den Kurz und Kräftig zum Knacken von Samen.",
+        "Es bezeichnet den Gebogen zum Zerreißen von Fleisch.",
+        "Es bezeichnet den Lang und Schlank für Blütennektar.",
       ],
       explanation: "Filterschnabel: Seiht Nahrung aus Wasser",
       wissen: fw(
@@ -321,12 +321,12 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f3",
-      prompt: "Was versteht man im Thema Schnabelformen auf „Nektarschnabel“ zu unter einem Nektarschnabel?",
-      answer: "Darunter versteht man lang und schlank für Blütennektar.",
+      prompt: "Was kennzeichnet Nektarschnabel im Thema Schnabelformen?",
+      answer: "Es bezeichnet den Lang und Schlank für Blütennektar.",
       wrong: [
-        "Darunter versteht man kurz und kräftig zum Knacken von Samen.",
-        "Darunter versteht man gebogen zum Zerreißen von Fleisch.",
-        "Darunter versteht man seiht Nahrung aus Wasser.",
+        "Es bezeichnet den Kurz und Kräftig zum Knacken von Samen.",
+        "Es bezeichnet den Gebogen zum Zerreißen von Fleisch.",
+        "Es bezeichnet den Seiht Nahrung aus Wasser.",
       ],
       explanation: "Nektarschnabel: Lang und schlank für Blütennektar",
       wissen: fw(
@@ -337,12 +337,12 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f4",
-      prompt: "Was versteht man im Thema Schnabelformen auf „Watvogelschnabel“ zu unter einem Watvogelschnabel?",
-      answer: "Darunter versteht man oft lang zum Stochern im Schlamm.",
+      prompt: "Was kennzeichnet Watvogelschnabel im Thema Schnabelformen?",
+      answer: "Es bezeichnet den Oft Lang zum Stochern im Schlamm.",
       wrong: [
-        "Darunter versteht man kurz und kräftig zum Knacken von Samen.",
-        "Darunter versteht man gebogen zum Zerreißen von Fleisch.",
-        "Darunter versteht man seiht Nahrung aus Wasser.",
+        "Es bezeichnet den Kurz und Kräftig zum Knacken von Samen.",
+        "Es bezeichnet den Gebogen zum Zerreißen von Fleisch.",
+        "Es bezeichnet den Seiht Nahrung aus Wasser.",
       ],
       explanation: "Watvogelschnabel: Oft lang zum Stochern im Schlamm",
       wissen: fw(
@@ -353,12 +353,12 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f5",
-      prompt: "Was versteht man im Thema Schnabelformen auf „Insektenschnabel“ zu unter einem Insektenschnabel?",
-      answer: "Darunter versteht man spitz zum präzisen Picken.",
+      prompt: "Was kennzeichnet Insektenschnabel im Thema Schnabelformen?",
+      answer: "Es bezeichnet den Spitz zum Präzisen Picken.",
       wrong: [
-        "Darunter versteht man kurz und kräftig zum Knacken von Samen.",
-        "Darunter versteht man gebogen zum Zerreißen von Fleisch.",
-        "Darunter versteht man seiht Nahrung aus Wasser.",
+        "Es bezeichnet den Kurz und Kräftig zum Knacken von Samen.",
+        "Es bezeichnet den Gebogen zum Zerreißen von Fleisch.",
+        "Es bezeichnet den Seiht Nahrung aus Wasser.",
       ],
       explanation: "Insektenschnabel: Spitz zum präzisen Picken",
       wissen: fw(
@@ -369,12 +369,12 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f6",
-      prompt: "Was versteht man im Thema Schnabelformen unter einem Spechtschnabel?",
-      answer: "Darunter versteht man meißelförmig für Holz.",
+      prompt: "Was kennzeichnet Spechtschnabel im Thema Schnabelformen?",
+      answer: "Es bezeichnet den Meißelförmig für Holz.",
       wrong: [
-        "Darunter versteht man kurz und Kräftig zum Knacken von Samen.",
-        "Darunter versteht man gebogen zum Zerreißen von Fleisch.",
-        "Darunter versteht man den seiht Nahrung Aus Wasser.",
+        "Es bezeichnet den Kurz und Kräftig zum Knacken von Samen.",
+        "Es bezeichnet den Gebogen zum Zerreißen von Fleisch.",
+        "Es bezeichnet den Seiht Nahrung aus Wasser.",
       ],
       explanation: "Spechtschnabel: Meißelförmig für Holz",
       wissen: fw(
@@ -385,12 +385,12 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f7",
-      prompt: "Was versteht man im Thema Schnabelformen unter einer Hornscheide?",
-      answer: "Darunter versteht man äußere Leichte Schnabelhaut.",
+      prompt: "Was kennzeichnet Hornscheide im Thema Schnabelformen?",
+      answer: "Sie bezeichnet den Äußere Leichte Schnabelhaut.",
       wrong: [
-        "Darunter versteht man kurz und Kräftig zum Knacken von Samen.",
-        "Darunter versteht man gebogen zum Zerreißen von Fleisch.",
-        "Darunter versteht man den seiht Nahrung Aus Wasser.",
+        "Sie bezeichnet den Kurz und Kräftig zum Knacken von Samen.",
+        "Sie bezeichnet den Gebogen zum Zerreißen von Fleisch.",
+        "Sie bezeichnet den Seiht Nahrung aus Wasser.",
       ],
       explanation: "Hornscheide: Äußere leichte Schnabelhaut",
       wissen: fw(
@@ -401,12 +401,12 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f8",
-      prompt: "Was versteht man im Thema Schnabelformen auf „Muskelmagen“ zu unter einem Muskelmagen?",
-      answer: "Darunter versteht man zerkleinert Nahrung nach dem Schnabel.",
+      prompt: "Was kennzeichnet Muskelmagen im Thema Schnabelformen?",
+      answer: "Es bezeichnet den Zerkleinert Nahrung nach dem Schnabel.",
       wrong: [
-        "Darunter versteht man kurz und kräftig zum Knacken von Samen.",
-        "Darunter versteht man gebogen zum Zerreißen von Fleisch.",
-        "Darunter versteht man seiht Nahrung aus Wasser.",
+        "Es bezeichnet den Kurz und Kräftig zum Knacken von Samen.",
+        "Es bezeichnet den Gebogen zum Zerreißen von Fleisch.",
+        "Es bezeichnet den Seiht Nahrung aus Wasser.",
       ],
       explanation: "Muskelmagen: Zerkleinert Nahrung nach dem Schnabel",
       wissen: fw(
@@ -417,12 +417,12 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f9",
-      prompt: "Was versteht man im Thema Schnabelformen auf „Nahrungsnische“ zu unter einer Nahrungsnische?",
-      answer: "Darunter versteht man typische Ressource einer Art.",
+      prompt: "Was kennzeichnet Nahrungsnische im Thema Schnabelformen?",
+      answer: "Sie bezeichnet den Typische Ressource einer Art.",
       wrong: [
-        "Darunter versteht man kurz und kräftig zum Knacken von Samen.",
-        "Darunter versteht man gebogen zum Zerreißen von Fleisch.",
-        "Darunter versteht man seiht Nahrung aus Wasser.",
+        "Sie bezeichnet den Kurz und Kräftig zum Knacken von Samen.",
+        "Sie bezeichnet den Gebogen zum Zerreißen von Fleisch.",
+        "Sie bezeichnet den Seiht Nahrung aus Wasser.",
       ],
       explanation: "Nahrungsnische: Typische Ressource einer Art",
       wissen: fw(
@@ -433,12 +433,12 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f10",
-      prompt: "Was versteht man im Thema Schnabelformen auf „Angepasstheit“ zu unter einer Angepasstheit?",
-      answer: "Darunter versteht man bau passt zur Lebensweise.",
+      prompt: "Was kennzeichnet Angepasstheit im Thema Schnabelformen?",
+      answer: "Sie bezeichnet die Bau Passt zur Lebensweise.",
       wrong: [
-        "Darunter versteht man kurz und kräftig zum Knacken von Samen.",
-        "Darunter versteht man gebogen zum Zerreißen von Fleisch.",
-        "Darunter versteht man seiht Nahrung aus Wasser.",
+        "Sie bezeichnet den Kurz und Kräftig zum Knacken von Samen.",
+        "Sie bezeichnet den Gebogen zum Zerreißen von Fleisch.",
+        "Sie bezeichnet den Seiht Nahrung aus Wasser.",
       ],
       explanation: "Angepasstheit: Bau passt zur Lebensweise",
       wissen: fw(
@@ -449,12 +449,12 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f11",
-      prompt: "Was versteht man im Thema Schnabelformen unter einem Greifvogel?",
-      answer: "Darunter versteht man die jagt Oft Wirbeltiere.",
+      prompt: "Was kennzeichnet Greifvogel im Thema Schnabelformen?",
+      answer: "Es bezeichnet die Jagt Oft Wirbeltiere.",
       wrong: [
-        "Darunter versteht man kurz und Kräftig zum Knacken von Samen.",
-        "Darunter versteht man gebogen zum Zerreißen von Fleisch.",
-        "Darunter versteht man den seiht Nahrung Aus Wasser.",
+        "Es bezeichnet den Kurz und Kräftig zum Knacken von Samen.",
+        "Es bezeichnet den Gebogen zum Zerreißen von Fleisch.",
+        "Es bezeichnet den Seiht Nahrung aus Wasser.",
       ],
       explanation: "Greifvogel: Jagt oft Wirbeltiere",
       wissen: fw(
@@ -532,12 +532,12 @@ export const k5VoegelVerhalten: BioBank = {
   facts: [
     {
       concept: "bio:k5:vgverh:f0",
-      prompt: "Was versteht man im Thema Vogelverhalten unter einem Balz?",
-      answer: "Darunter versteht man die werbeverhalten Vor der Paarung.",
+      prompt: "Was kennzeichnet Balz im Thema Vogelverhalten?",
+      answer: "Es bezeichnet die Werbeverhalten vor der Paarung.",
       wrong: [
-        "Darunter versteht man das verteidigter Lebensraum.",
-        "Darunter versteht man saisonaler Ortswechsel.",
-        "Darunter versteht man jungvogel Lange Nestabhängig.",
+        "Es bezeichnet das Verteidigter Lebensraum.",
+        "Es bezeichnet den Saisonaler Ortswechsel.",
+        "Es bezeichnet den Jungvogel Lange Nestabhängig.",
       ],
       explanation: "Balz: Werbeverhalten vor der Paarung",
       wissen: fw(
@@ -548,12 +548,12 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f1",
-      prompt: "Was versteht man im Thema Vogelverhalten unter einem Revier?",
-      answer: "Darunter versteht man das verteidigter Lebensraum.",
+      prompt: "Was kennzeichnet Revier im Thema Vogelverhalten?",
+      answer: "Er bezeichnet das Verteidigter Lebensraum.",
       wrong: [
-        "Darunter versteht man die werbeverhalten Vor der Paarung.",
-        "Darunter versteht man saisonaler Ortswechsel.",
-        "Darunter versteht man jungvogel Lange Nestabhängig.",
+        "Er bezeichnet die Werbeverhalten vor der Paarung.",
+        "Er bezeichnet den Saisonaler Ortswechsel.",
+        "Er bezeichnet den Jungvogel Lange Nestabhängig.",
       ],
       explanation: "Revier: Verteidigter Lebensraum",
       wissen: fw(
@@ -564,12 +564,12 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f2",
-      prompt: "Was versteht man im Thema Vogelverhalten unter einem Vogelzug?",
-      answer: "Darunter versteht man saisonaler Ortswechsel.",
+      prompt: "Was kennzeichnet Vogelzug im Thema Vogelverhalten?",
+      answer: "Es bezeichnet den Saisonaler Ortswechsel.",
       wrong: [
-        "Darunter versteht man die werbeverhalten Vor der Paarung.",
-        "Darunter versteht man das verteidigter Lebensraum.",
-        "Darunter versteht man jungvogel Lange Nestabhängig.",
+        "Es bezeichnet die Werbeverhalten vor der Paarung.",
+        "Es bezeichnet das Verteidigter Lebensraum.",
+        "Es bezeichnet den Jungvogel Lange Nestabhängig.",
       ],
       explanation: "Vogelzug: Saisonaler Ortswechsel",
       wissen: fw(
@@ -580,12 +580,12 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f3",
-      prompt: "Was versteht man im Thema Vogelverhalten unter einem Nesthocker?",
-      answer: "Darunter versteht man jungvogel Lange Nestabhängig.",
+      prompt: "Was kennzeichnet Nesthocker im Thema Vogelverhalten?",
+      answer: "Er bezeichnet den Jungvogel Lange Nestabhängig.",
       wrong: [
-        "Darunter versteht man die werbeverhalten Vor der Paarung.",
-        "Darunter versteht man das verteidigter Lebensraum.",
-        "Darunter versteht man saisonaler Ortswechsel.",
+        "Er bezeichnet die Werbeverhalten vor der Paarung.",
+        "Er bezeichnet das Verteidigter Lebensraum.",
+        "Er bezeichnet den Saisonaler Ortswechsel.",
       ],
       explanation: "Nesthocker: Jungvogel lange nestabhängig",
       wissen: fw(
@@ -596,12 +596,12 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f4",
-      prompt: "Was versteht man im Thema Vogelverhalten unter einem Nestflüchter?",
-      answer: "Darunter versteht man jungvogel Früh Mobil.",
+      prompt: "Was kennzeichnet Nestflüchter im Thema Vogelverhalten?",
+      answer: "Er bezeichnet den Jungvogel Früh Mobil.",
       wrong: [
-        "Darunter versteht man die werbeverhalten Vor der Paarung.",
-        "Darunter versteht man das verteidigter Lebensraum.",
-        "Darunter versteht man saisonaler Ortswechsel.",
+        "Er bezeichnet die Werbeverhalten vor der Paarung.",
+        "Er bezeichnet das Verteidigter Lebensraum.",
+        "Er bezeichnet den Saisonaler Ortswechsel.",
       ],
       explanation: "Nestflüchter: Jungvogel früh mobil",
       wissen: fw(
@@ -612,12 +612,12 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f5",
-      prompt: "Was versteht man im Thema Vogelverhalten unter einem Gesang?",
-      answer: "Darunter versteht man die akustische Kommunikation.",
+      prompt: "Was kennzeichnet Gesang im Thema Vogelverhalten?",
+      answer: "Es bezeichnet die Akustische Kommunikation.",
       wrong: [
-        "Darunter versteht man die werbeverhalten Vor der Paarung.",
-        "Darunter versteht man das verteidigter Lebensraum.",
-        "Darunter versteht man saisonaler Ortswechsel.",
+        "Es bezeichnet die Werbeverhalten vor der Paarung.",
+        "Es bezeichnet das Verteidigter Lebensraum.",
+        "Es bezeichnet den Saisonaler Ortswechsel.",
       ],
       explanation: "Gesang: Akustische Kommunikation",
       wissen: fw(
@@ -628,12 +628,12 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f6",
-      prompt: "Was versteht man im Thema Vogelverhalten unter einem Alarmruf?",
-      answer: "Darunter versteht man warnsignal bei Gefahr.",
+      prompt: "Was kennzeichnet Alarmruf im Thema Vogelverhalten?",
+      answer: "Es bezeichnet den Warnsignal bei Gefahr.",
       wrong: [
-        "Darunter versteht man die werbeverhalten Vor der Paarung.",
-        "Darunter versteht man das verteidigter Lebensraum.",
-        "Darunter versteht man saisonaler Ortswechsel.",
+        "Es bezeichnet die Werbeverhalten vor der Paarung.",
+        "Es bezeichnet das Verteidigter Lebensraum.",
+        "Es bezeichnet den Saisonaler Ortswechsel.",
       ],
       explanation: "Alarmruf: Warnsignal bei Gefahr",
       wissen: fw(
@@ -644,12 +644,12 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f7",
-      prompt: "Was versteht man im Thema Vogelverhalten unter einer Gefiederpflege?",
-      answer: "Darunter versteht man putzen und Ordnen der Federn.",
+      prompt: "Was kennzeichnet Gefiederpflege im Thema Vogelverhalten?",
+      answer: "Sie bezeichnet den Putzen und Ordnen der Federn.",
       wrong: [
-        "Darunter versteht man die werbeverhalten Vor der Paarung.",
-        "Darunter versteht man das verteidigter Lebensraum.",
-        "Darunter versteht man saisonaler Ortswechsel.",
+        "Sie bezeichnet die Werbeverhalten vor der Paarung.",
+        "Sie bezeichnet das Verteidigter Lebensraum.",
+        "Sie bezeichnet den Saisonaler Ortswechsel.",
       ],
       explanation: "Gefiederpflege: Putzen und Ordnen der Federn",
       wissen: fw(
@@ -660,12 +660,12 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f8",
-      prompt: "Was versteht man im Thema Vogelverhalten unter einem Schwarm?",
-      answer: "Darunter versteht man gruppe Gemeinsam Fliegender Vögel.",
+      prompt: "Was kennzeichnet Schwarm im Thema Vogelverhalten?",
+      answer: "Es bezeichnet den Gruppe Gemeinsam Fliegender Vögel.",
       wrong: [
-        "Darunter versteht man die werbeverhalten Vor der Paarung.",
-        "Darunter versteht man das verteidigter Lebensraum.",
-        "Darunter versteht man saisonaler Ortswechsel.",
+        "Es bezeichnet die Werbeverhalten vor der Paarung.",
+        "Es bezeichnet das Verteidigter Lebensraum.",
+        "Es bezeichnet den Saisonaler Ortswechsel.",
       ],
       explanation: "Schwarm: Gruppe gemeinsam fliegender Vögel",
       wissen: fw(
@@ -676,12 +676,12 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f9",
-      prompt: "Was versteht man im Thema Vogelverhalten unter einem Imponieren?",
-      answer: "Darunter versteht man zeigen von Stärke oder Status.",
+      prompt: "Was kennzeichnet Imponieren im Thema Vogelverhalten?",
+      answer: "Es bezeichnet den Zeigen von Stärke oder Status.",
       wrong: [
-        "Darunter versteht man die werbeverhalten Vor der Paarung.",
-        "Darunter versteht man das verteidigter Lebensraum.",
-        "Darunter versteht man saisonaler Ortswechsel.",
+        "Es bezeichnet die Werbeverhalten vor der Paarung.",
+        "Es bezeichnet das Verteidigter Lebensraum.",
+        "Es bezeichnet den Saisonaler Ortswechsel.",
       ],
       explanation: "Imponieren: Zeigen von Stärke oder Status",
       wissen: fw(
@@ -692,12 +692,12 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f10",
-      prompt: "Was versteht man im Thema Vogelverhalten unter einer Brutpflege?",
-      answer: "Darunter versteht man versorgung der Jungen.",
+      prompt: "Was kennzeichnet Brutpflege im Thema Vogelverhalten?",
+      answer: "Sie bezeichnet den Versorgung der Jungen.",
       wrong: [
-        "Darunter versteht man die werbeverhalten Vor der Paarung.",
-        "Darunter versteht man das verteidigter Lebensraum.",
-        "Darunter versteht man saisonaler Ortswechsel.",
+        "Sie bezeichnet die Werbeverhalten vor der Paarung.",
+        "Sie bezeichnet das Verteidigter Lebensraum.",
+        "Sie bezeichnet den Saisonaler Ortswechsel.",
       ],
       explanation: "Brutpflege: Versorgung der Jungen",
       wissen: fw(
@@ -708,12 +708,12 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f11",
-      prompt: "Was versteht man im Thema Vogelverhalten unter einer Nachahmung?",
-      answer: "Darunter versteht man lernen Durch Beobachten.",
+      prompt: "Was kennzeichnet Nachahmung im Thema Vogelverhalten?",
+      answer: "Sie bezeichnet den Lernen durch Beobachten.",
       wrong: [
-        "Darunter versteht man die werbeverhalten Vor der Paarung.",
-        "Darunter versteht man das verteidigter Lebensraum.",
-        "Darunter versteht man saisonaler Ortswechsel.",
+        "Sie bezeichnet die Werbeverhalten vor der Paarung.",
+        "Sie bezeichnet das Verteidigter Lebensraum.",
+        "Sie bezeichnet den Saisonaler Ortswechsel.",
       ],
       explanation: "Nachahmung: Lernen durch Beobachten",
       wissen: fw(
@@ -791,12 +791,12 @@ export const k5VoegelSchutz: BioBank = {
   facts: [
     {
       concept: "bio:k5:vgschutz:f0",
-      prompt: "Was versteht man im Thema Vogelschutz unter einem Nistkasten?",
-      answer: "Darunter versteht man die künstliche Nisthilfe.",
+      prompt: "Wozu dient Nistkasten im Thema Vogelschutz?",
+      answer: "Es künstliche Nisthilfe.",
       wrong: [
-        "Darunter versteht man das gehölzstreifen Als Lebensraum.",
-        "Darunter versteht man nasses Schlüsselhabitat.",
-        "Darunter versteht man das kollision an Glasflächen.",
+        "Es bezeichnet das Gehölzstreifen als Lebensraum.",
+        "Es bezeichnet den Nasses Schlüsselhabitat.",
+        "Es ist das Kollision an Glasflächen.",
       ],
       explanation: "Nistkasten: Künstliche Nisthilfe",
       wissen: fw(
@@ -807,12 +807,12 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f1",
-      prompt: "Was versteht man im Thema Vogelschutz unter einer Hecke?",
-      answer: "Darunter versteht man das gehölzstreifen Als Lebensraum.",
+      prompt: "Was kennzeichnet Hecke im Thema Vogelschutz?",
+      answer: "Sie bezeichnet das Gehölzstreifen als Lebensraum.",
       wrong: [
-        "Darunter versteht man die künstliche Nisthilfe.",
-        "Darunter versteht man nasses Schlüsselhabitat.",
-        "Darunter versteht man das kollision an Glasflächen.",
+        "Sie ist die Künstliche Nisthilfe.",
+        "Sie bezeichnet den Nasses Schlüsselhabitat.",
+        "Sie ist das Kollision an Glasflächen.",
       ],
       explanation: "Hecke: Gehölzstreifen als Lebensraum",
       wissen: fw(
@@ -823,12 +823,12 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f2",
-      prompt: "Was versteht man im Thema Vogelschutz unter einem Feuchtgebiet?",
-      answer: "Darunter versteht man nasses Schlüsselhabitat.",
+      prompt: "Was kennzeichnet Feuchtgebiet im Thema Vogelschutz?",
+      answer: "Es bezeichnet den Nasses Schlüsselhabitat.",
       wrong: [
-        "Darunter versteht man die künstliche Nisthilfe.",
-        "Darunter versteht man das gehölzstreifen Als Lebensraum.",
-        "Darunter versteht man das kollision an Glasflächen.",
+        "Es ist die Künstliche Nisthilfe.",
+        "Es bezeichnet das Gehölzstreifen als Lebensraum.",
+        "Es ist das Kollision an Glasflächen.",
       ],
       explanation: "Feuchtgebiet: Nasses Schlüsselhabitat",
       wissen: fw(
@@ -839,12 +839,12 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f3",
-      prompt: "Was versteht man im Thema Vogelschutz unter einem Fensteranprall?",
-      answer: "Darunter versteht man das kollision an Glasflächen.",
+      prompt: "Was kennzeichnet Fensteranprall im Thema Vogelschutz?",
+      answer: "Es ist das Kollision an Glasflächen.",
       wrong: [
-        "Darunter versteht man die künstliche Nisthilfe.",
-        "Darunter versteht man das gehölzstreifen Als Lebensraum.",
-        "Darunter versteht man nasses Schlüsselhabitat.",
+        "Es ist die Künstliche Nisthilfe.",
+        "Es bezeichnet das Gehölzstreifen als Lebensraum.",
+        "Es bezeichnet den Nasses Schlüsselhabitat.",
       ],
       explanation: "Fensteranprall: Kollision an Glasflächen",
       wissen: fw(
@@ -855,12 +855,12 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f4",
-      prompt: "Woran erkennt man Brutruhe im Thema Vogelschutz?",
-      answer: "Dabei gilt: Ungestörte Brutzeit.",
+      prompt: "Was kennzeichnet Brutruhe im Thema Vogelschutz?",
+      answer: "Sie bezeichnet den Ungestörte Brutzeit.",
       wrong: [
-        "Darunter versteht man die künstliche Nisthilfe.",
-        "Darunter versteht man das gehölzstreifen Als Lebensraum.",
-        "Darunter versteht man nasses Schlüsselhabitat.",
+        "Sie ist die Künstliche Nisthilfe.",
+        "Sie bezeichnet das Gehölzstreifen als Lebensraum.",
+        "Sie bezeichnet den Nasses Schlüsselhabitat.",
       ],
       explanation: "Brutruhe: Ungestörte Brutzeit",
       wissen: fw(
@@ -871,12 +871,12 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f5",
-      prompt: "Was versteht man im Thema Vogelschutz unter einer Winterfütterung?",
-      answer: "Darunter versteht man zusatzfutter bei Mangel.",
+      prompt: "Was kennzeichnet Winterfütterung im Thema Vogelschutz?",
+      answer: "Sie bezeichnet den Zusatzfutter bei Mangel.",
       wrong: [
-        "Darunter versteht man die künstliche Nisthilfe.",
-        "Darunter versteht man das gehölzstreifen Als Lebensraum.",
-        "Darunter versteht man nasses Schlüsselhabitat.",
+        "Sie ist die Künstliche Nisthilfe.",
+        "Sie bezeichnet das Gehölzstreifen als Lebensraum.",
+        "Sie bezeichnet den Nasses Schlüsselhabitat.",
       ],
       explanation: "Winterfütterung: Zusatzfutter bei Mangel",
       wissen: fw(
@@ -887,12 +887,12 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f6",
-      prompt: "Was versteht man im Thema Vogelschutz unter einer Insektennahrung?",
-      answer: "Darunter versteht man beute für Viele Jungvögel.",
+      prompt: "Was kennzeichnet Insektennahrung im Thema Vogelschutz?",
+      answer: "Sie bezeichnet den Beute für Viele Jungvögel.",
       wrong: [
-        "Darunter versteht man die künstliche Nisthilfe.",
-        "Darunter versteht man das gehölzstreifen Als Lebensraum.",
-        "Darunter versteht man nasses Schlüsselhabitat.",
+        "Sie ist die Künstliche Nisthilfe.",
+        "Sie bezeichnet das Gehölzstreifen als Lebensraum.",
+        "Sie bezeichnet den Nasses Schlüsselhabitat.",
       ],
       explanation: "Insektennahrung: Beute für viele Jungvögel",
       wissen: fw(
@@ -903,12 +903,12 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f7",
-      prompt: "Was versteht man im Thema Vogelschutz unter einem Schutzgebiet?",
-      answer: "Darunter versteht man die geschützte Fläche.",
+      prompt: "Wozu dient Schutzgebiet im Thema Vogelschutz?",
+      answer: "Es geschützte Fläche.",
       wrong: [
-        "Darunter versteht man die künstliche Nisthilfe.",
-        "Darunter versteht man das gehölzstreifen Als Lebensraum.",
-        "Darunter versteht man nasses Schlüsselhabitat.",
+        "Es ist die Künstliche Nisthilfe.",
+        "Es bezeichnet das Gehölzstreifen als Lebensraum.",
+        "Es bezeichnet den Nasses Schlüsselhabitat.",
       ],
       explanation: "Schutzgebiet: Geschützte Fläche",
       wissen: fw(
@@ -919,12 +919,12 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f8",
-      prompt: "Was versteht man im Thema Vogelschutz unter einem Habitatverlust?",
-      answer: "Darunter versteht man das verlust von Lebensraum.",
+      prompt: "Was kennzeichnet Habitatverlust im Thema Vogelschutz?",
+      answer: "Es bezeichnet das Verlust von Lebensraum.",
       wrong: [
-        "Darunter versteht man die künstliche Nisthilfe.",
-        "Darunter versteht man das gehölzstreifen Als Lebensraum.",
-        "Darunter versteht man nasses Schlüsselhabitat.",
+        "Es ist die Künstliche Nisthilfe.",
+        "Es bezeichnet das Gehölzstreifen als Lebensraum.",
+        "Es bezeichnet den Nasses Schlüsselhabitat.",
       ],
       explanation: "Habitatverlust: Verlust von Lebensraum",
       wissen: fw(
@@ -935,12 +935,12 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f9",
-      prompt: "Was versteht man im Thema Vogelschutz unter einem Schonzeit?",
-      answer: "Darunter versteht man die zeitlicher Schutz Vor Nutzung.",
+      prompt: "Was kennzeichnet Schonzeit im Thema Vogelschutz?",
+      answer: "Es ist die Zeitlicher Schutz vor Nutzung.",
       wrong: [
-        "Darunter versteht man die künstliche Nisthilfe.",
-        "Darunter versteht man das gehölzstreifen Als Lebensraum.",
-        "Darunter versteht man nasses Schlüsselhabitat.",
+        "Es ist die Künstliche Nisthilfe.",
+        "Es bezeichnet das Gehölzstreifen als Lebensraum.",
+        "Es bezeichnet den Nasses Schlüsselhabitat.",
       ],
       explanation: "Schonzeit: Zeitlicher Schutz vor Nutzung",
       wissen: fw(
@@ -951,12 +951,12 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f10",
-      prompt: "Was versteht man im Thema Vogelschutz unter einem Strukturvielfalt?",
-      answer: "Darunter versteht man viele Habitatstrukturen.",
+      prompt: "Was kennzeichnet Strukturvielfalt im Thema Vogelschutz?",
+      answer: "Es bezeichnet den Viele Habitatstrukturen.",
       wrong: [
-        "Darunter versteht man die künstliche Nisthilfe.",
-        "Darunter versteht man das gehölzstreifen Als Lebensraum.",
-        "Darunter versteht man nasses Schlüsselhabitat.",
+        "Es ist die Künstliche Nisthilfe.",
+        "Es bezeichnet das Gehölzstreifen als Lebensraum.",
+        "Es bezeichnet den Nasses Schlüsselhabitat.",
       ],
       explanation: "Strukturvielfalt: Viele Habitatstrukturen",
       wissen: fw(
@@ -967,12 +967,12 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f11",
-      prompt: "Was versteht man im Thema Vogelschutz unter einem Artenschutz?",
-      answer: "Darunter versteht man schutz Einzelner Arten.",
+      prompt: "Was kennzeichnet Artenschutz im Thema Vogelschutz?",
+      answer: "Es ist das Schutz Einzelner Arten.",
       wrong: [
-        "Darunter versteht man die künstliche Nisthilfe.",
-        "Darunter versteht man das gehölzstreifen Als Lebensraum.",
-        "Darunter versteht man nasses Schlüsselhabitat.",
+        "Es ist die Künstliche Nisthilfe.",
+        "Es bezeichnet das Gehölzstreifen als Lebensraum.",
+        "Es bezeichnet den Nasses Schlüsselhabitat.",
       ],
       explanation: "Artenschutz: Schutz einzelner Arten",
       wissen: fw(
@@ -1050,12 +1050,12 @@ export const k5SaeugerVerhalten: BioBank = {
   facts: [
     {
       concept: "bio:k5:saeugverh:f0",
-      prompt: "Was versteht man im Thema Säugerverhalten auf „Beobachtung“ zu unter einer Beobachtung?",
-      answer: "Darunter versteht man gezieltes Wahrnehmen von Verhalten.",
+      prompt: "Was kennzeichnet Beobachtung im Thema Säugerverhalten?",
+      answer: "Sie bezeichnet den Gezieltes Wahrnehmen von Verhalten.",
       wrong: [
-        "Darunter versteht man genetisch vorbereitetes Verhalten.",
-        "Darunter versteht man durch Erfahrung erworbenes Verhalten.",
-        "Darunter versteht man verteidigen eines Gebiets.",
+        "Sie bezeichnet den Genetisch Vorbereitetes Verhalten.",
+        "Sie bezeichnet den Durch Erfahrung Erworbenes Verhalten.",
+        "Sie bezeichnet den Verteidigen Eines Gebiets.",
       ],
       explanation: "Beobachtung: Gezieltes Wahrnehmen von Verhalten",
       wissen: fw(
@@ -1066,12 +1066,12 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f1",
-      prompt: "Was versteht man im Thema Säugerverhalten unter einem Angeboren?",
-      answer: "Darunter versteht man genetisch Vorbereitetes Verhalten.",
+      prompt: "Was kennzeichnet Angeboren im Thema Säugerverhalten?",
+      answer: "Es bezeichnet den Genetisch Vorbereitetes Verhalten.",
       wrong: [
-        "Darunter versteht man gezieltes Wahrnehmen von Verhalten.",
-        "Darunter versteht man durch Erfahrung Erworbenes Verhalten.",
-        "Darunter versteht man verteidigen Eines Gebiets.",
+        "Es bezeichnet den Gezieltes Wahrnehmen von Verhalten.",
+        "Es bezeichnet den Durch Erfahrung Erworbenes Verhalten.",
+        "Es bezeichnet den Verteidigen Eines Gebiets.",
       ],
       explanation: "Angeboren: Genetisch vorbereitetes Verhalten",
       wissen: fw(
@@ -1082,12 +1082,12 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f2",
-      prompt: "Was versteht man im Thema Säugerverhalten auf „Erlernt“ zu unter einem Erlernt?",
-      answer: "Darunter versteht man durch Erfahrung erworbenes Verhalten.",
+      prompt: "Was kennzeichnet Erlernt im Thema Säugerverhalten?",
+      answer: "Es bezeichnet den Durch Erfahrung Erworbenes Verhalten.",
       wrong: [
-        "Darunter versteht man gezieltes Wahrnehmen von Verhalten.",
-        "Darunter versteht man genetisch vorbereitetes Verhalten.",
-        "Darunter versteht man verteidigen eines Gebiets.",
+        "Es bezeichnet den Gezieltes Wahrnehmen von Verhalten.",
+        "Es bezeichnet den Genetisch Vorbereitetes Verhalten.",
+        "Es bezeichnet den Verteidigen Eines Gebiets.",
       ],
       explanation: "Erlernt: Durch Erfahrung erworbenes Verhalten",
       wissen: fw(
@@ -1098,12 +1098,12 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f3",
-      prompt: "Was versteht man im Thema Säugerverhalten unter einer Territorialität?",
-      answer: "Darunter versteht man verteidigen Eines Gebiets.",
+      prompt: "Was kennzeichnet Territorialität im Thema Säugerverhalten?",
+      answer: "Sie bezeichnet den Verteidigen Eines Gebiets.",
       wrong: [
-        "Darunter versteht man gezieltes Wahrnehmen von Verhalten.",
-        "Darunter versteht man genetisch Vorbereitetes Verhalten.",
-        "Darunter versteht man durch Erfahrung Erworbenes Verhalten.",
+        "Sie bezeichnet den Gezieltes Wahrnehmen von Verhalten.",
+        "Sie bezeichnet den Genetisch Vorbereitetes Verhalten.",
+        "Sie bezeichnet den Durch Erfahrung Erworbenes Verhalten.",
       ],
       explanation: "Territorialität: Verteidigen eines Gebiets",
       wissen: fw(
@@ -1114,12 +1114,12 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f4",
-      prompt: "Was versteht man im Thema Säugerverhalten auf „Fluchtverhalten“ zu unter einem Fluchtverhalten?",
-      answer: "Darunter versteht man reaktion auf Gefahr durch Weglaufen.",
+      prompt: "Was kennzeichnet Fluchtverhalten im Thema Säugerverhalten?",
+      answer: "Es bezeichnet den Reaktion auf Gefahr durch Weglaufen.",
       wrong: [
-        "Darunter versteht man gezieltes Wahrnehmen von Verhalten.",
-        "Darunter versteht man genetisch vorbereitetes Verhalten.",
-        "Darunter versteht man durch Erfahrung erworbenes Verhalten.",
+        "Es bezeichnet den Gezieltes Wahrnehmen von Verhalten.",
+        "Es bezeichnet den Genetisch Vorbereitetes Verhalten.",
+        "Es bezeichnet den Durch Erfahrung Erworbenes Verhalten.",
       ],
       explanation: "Fluchtverhalten: Reaktion auf Gefahr durch Weglaufen",
       wissen: fw(
@@ -1130,12 +1130,12 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f5",
-      prompt: "Was versteht man im Thema Säugerverhalten auf „Nahrungssuche“ zu unter einer Nahrungssuche?",
-      answer: "Darunter versteht man suchen und Erlangen von Futter.",
+      prompt: "Was kennzeichnet Nahrungssuche im Thema Säugerverhalten?",
+      answer: "Sie bezeichnet den Suchen und Erlangen von Futter.",
       wrong: [
-        "Darunter versteht man gezieltes Wahrnehmen von Verhalten.",
-        "Darunter versteht man genetisch vorbereitetes Verhalten.",
-        "Darunter versteht man durch Erfahrung erworbenes Verhalten.",
+        "Sie bezeichnet den Gezieltes Wahrnehmen von Verhalten.",
+        "Sie bezeichnet den Genetisch Vorbereitetes Verhalten.",
+        "Sie bezeichnet den Durch Erfahrung Erworbenes Verhalten.",
       ],
       explanation: "Nahrungssuche: Suchen und Erlangen von Futter",
       wissen: fw(
@@ -1146,12 +1146,12 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f6",
-      prompt: "Was versteht man im Thema Säugerverhalten unter einem Komfortverhalten?",
-      answer: "Darunter versteht man putzen, Ruhen, Strecken.",
+      prompt: "Was kennzeichnet Komfortverhalten im Thema Säugerverhalten?",
+      answer: "Es bezeichnet den Putzen, Ruhen, Strecken.",
       wrong: [
-        "Darunter versteht man gezieltes Wahrnehmen von Verhalten.",
-        "Darunter versteht man genetisch Vorbereitetes Verhalten.",
-        "Darunter versteht man durch Erfahrung Erworbenes Verhalten.",
+        "Es bezeichnet den Gezieltes Wahrnehmen von Verhalten.",
+        "Es bezeichnet den Genetisch Vorbereitetes Verhalten.",
+        "Es bezeichnet den Durch Erfahrung Erworbenes Verhalten.",
       ],
       explanation: "Komfortverhalten: Putzen, Ruhen, Strecken",
       wissen: fw(
@@ -1162,12 +1162,12 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f7",
-      prompt: "Was versteht man im Thema Säugerverhalten auf „Markieren“ zu unter einem Markieren?",
-      answer: "Darunter versteht man kennzeichnen mit Duft oder Kratzspuren.",
+      prompt: "Was kennzeichnet Markieren im Thema Säugerverhalten?",
+      answer: "Es bezeichnet den Kennzeichnen mit Duft oder Kratzspuren.",
       wrong: [
-        "Darunter versteht man gezieltes Wahrnehmen von Verhalten.",
-        "Darunter versteht man genetisch vorbereitetes Verhalten.",
-        "Darunter versteht man durch Erfahrung erworbenes Verhalten.",
+        "Es bezeichnet den Gezieltes Wahrnehmen von Verhalten.",
+        "Es bezeichnet den Genetisch Vorbereitetes Verhalten.",
+        "Es bezeichnet den Durch Erfahrung Erworbenes Verhalten.",
       ],
       explanation: "Markieren: Kennzeichnen mit Duft oder Kratzspuren",
       wissen: fw(
@@ -1178,12 +1178,12 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f8",
-      prompt: "Was versteht man im Thema Säugerverhalten auf „Spielverhalten“ zu unter einem Spielverhalten?",
-      answer: "Darunter versteht man übungs- und Sozialspiele Junger.",
+      prompt: "Was kennzeichnet Spielverhalten im Thema Säugerverhalten?",
+      answer: "Es bezeichnet den Übungs- und Sozialspiele Junger.",
       wrong: [
-        "Darunter versteht man gezieltes Wahrnehmen von Verhalten.",
-        "Darunter versteht man genetisch vorbereitetes Verhalten.",
-        "Darunter versteht man durch Erfahrung erworbenes Verhalten.",
+        "Es bezeichnet den Gezieltes Wahrnehmen von Verhalten.",
+        "Es bezeichnet den Genetisch Vorbereitetes Verhalten.",
+        "Es bezeichnet den Durch Erfahrung Erworbenes Verhalten.",
       ],
       explanation: "Spielverhalten: Übungs- und Sozialspiele Junger",
       wissen: fw(
@@ -1194,12 +1194,12 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f9",
-      prompt: "Was versteht man im Thema Säugerverhalten unter einem Aktivitätszeit?",
-      answer: "Darunter versteht man die tages- oder Nachtaktivität.",
+      prompt: "Was kennzeichnet Aktivitätszeit im Thema Säugerverhalten?",
+      answer: "Es bezeichnet die Tages- oder Nachtaktivität.",
       wrong: [
-        "Darunter versteht man gezieltes Wahrnehmen von Verhalten.",
-        "Darunter versteht man genetisch Vorbereitetes Verhalten.",
-        "Darunter versteht man durch Erfahrung Erworbenes Verhalten.",
+        "Es bezeichnet den Gezieltes Wahrnehmen von Verhalten.",
+        "Es bezeichnet den Genetisch Vorbereitetes Verhalten.",
+        "Es bezeichnet den Durch Erfahrung Erworbenes Verhalten.",
       ],
       explanation: "Aktivitätszeit: Tages- oder Nachtaktivität",
       wissen: fw(
@@ -1210,12 +1210,12 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f10",
-      prompt: "Was versteht man im Thema Säugerverhalten auf „Prägung“ zu unter einer Prägung?",
-      answer: "Darunter versteht man schnelles Lernen in sensiblen Phasen.",
+      prompt: "Was kennzeichnet Prägung im Thema Säugerverhalten?",
+      answer: "Sie bezeichnet den Schnelles Lernen in Sensiblen Phasen.",
       wrong: [
-        "Darunter versteht man gezieltes Wahrnehmen von Verhalten.",
-        "Darunter versteht man genetisch vorbereitetes Verhalten.",
-        "Darunter versteht man durch Erfahrung erworbenes Verhalten.",
+        "Sie bezeichnet den Gezieltes Wahrnehmen von Verhalten.",
+        "Sie bezeichnet den Genetisch Vorbereitetes Verhalten.",
+        "Sie bezeichnet den Durch Erfahrung Erworbenes Verhalten.",
       ],
       explanation: "Prägung: Schnelles Lernen in sensiblen Phasen",
       wissen: fw(
@@ -1226,12 +1226,12 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f11",
-      prompt: "Was versteht man im Thema Säugerverhalten auf „Motivation“ zu unter einer Motivation?",
-      answer: "Darunter versteht man innere Bereitschaft zu Verhalten.",
+      prompt: "Was kennzeichnet Motivation im Thema Säugerverhalten?",
+      answer: "Sie bezeichnet den Innere Bereitschaft zu Verhalten.",
       wrong: [
-        "Darunter versteht man gezieltes Wahrnehmen von Verhalten.",
-        "Darunter versteht man genetisch vorbereitetes Verhalten.",
-        "Darunter versteht man durch Erfahrung erworbenes Verhalten.",
+        "Sie bezeichnet den Gezieltes Wahrnehmen von Verhalten.",
+        "Sie bezeichnet den Genetisch Vorbereitetes Verhalten.",
+        "Sie bezeichnet den Durch Erfahrung Erworbenes Verhalten.",
       ],
       explanation: "Motivation: Innere Bereitschaft zu Verhalten",
       wissen: fw(
@@ -1309,12 +1309,12 @@ export const k5SaeugerSinne: BioBank = {
   facts: [
     {
       concept: "bio:k5:saeugsinn:f0",
-      prompt: "Was versteht man im Thema Säugersinne unter einem Sender?",
-      answer: "Darunter versteht man erzeugt Ein Signal.",
+      prompt: "Was kennzeichnet Sender im Thema Säugersinne?",
+      answer: "Er bezeichnet den Erzeugt ein Signal.",
       wrong: [
         "Er nimmt das Signal wahr.",
-        "Darunter versteht man das informationstragendes Zeichen.",
-        "Darunter versteht man wahrnehmung von Duftstoffen.",
+        "Er ist das Informationstragendes Zeichen.",
+        "Er bezeichnet den Wahrnehmung von Duftstoffen.",
       ],
       explanation: "Sender: Erzeugt ein Signal",
       wissen: fw(
@@ -1325,12 +1325,12 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f1",
-      prompt: "Was bewirkt oder beschreibt Empfänger im Thema Säugersinne?",
+      prompt: "Wozu dient Empfänger im Thema Säugersinne?",
       answer: "Er nimmt das Signal wahr.",
       wrong: [
-        "Darunter versteht man erzeugt Ein Signal.",
-        "Darunter versteht man das informationstragendes Zeichen.",
-        "Darunter versteht man wahrnehmung von Duftstoffen.",
+        "Er bezeichnet den Erzeugt ein Signal.",
+        "Er ist das Informationstragendes Zeichen.",
+        "Er bezeichnet den Wahrnehmung von Duftstoffen.",
       ],
       explanation: "Empfänger: Nimmt das Signal wahr",
       wissen: fw(
@@ -1341,12 +1341,12 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f2",
-      prompt: "Was versteht man im Thema Säugersinne unter einem Signal?",
-      answer: "Darunter versteht man das informationstragendes Zeichen.",
+      prompt: "Was kennzeichnet Signal im Thema Säugersinne?",
+      answer: "Es ist das Informationstragendes Zeichen.",
       wrong: [
-        "Darunter versteht man erzeugt Ein Signal.",
+        "Es bezeichnet den Erzeugt ein Signal.",
         "Es nimmt das Signal wahr.",
-        "Darunter versteht man wahrnehmung von Duftstoffen.",
+        "Es bezeichnet den Wahrnehmung von Duftstoffen.",
       ],
       explanation: "Signal: Informationstragendes Zeichen",
       wissen: fw(
@@ -1357,12 +1357,12 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f3",
-      prompt: "Was versteht man im Thema Säugersinne unter einem Geruchssinn?",
-      answer: "Darunter versteht man wahrnehmung von Duftstoffen.",
+      prompt: "Was kennzeichnet Geruchssinn im Thema Säugersinne?",
+      answer: "Es bezeichnet den Wahrnehmung von Duftstoffen.",
       wrong: [
-        "Darunter versteht man erzeugt Ein Signal.",
+        "Es bezeichnet den Erzeugt ein Signal.",
         "Es nimmt das Signal wahr.",
-        "Darunter versteht man das informationstragendes Zeichen.",
+        "Es ist das Informationstragendes Zeichen.",
       ],
       explanation: "Geruchssinn: Wahrnehmung von Duftstoffen",
       wissen: fw(
@@ -1373,12 +1373,12 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f4",
-      prompt: "Was versteht man im Thema Säugersinne unter einem Gehör?",
-      answer: "Darunter versteht man wahrnehmung von Schall.",
+      prompt: "Was kennzeichnet Gehör im Thema Säugersinne?",
+      answer: "Es bezeichnet den Wahrnehmung von Schall.",
       wrong: [
-        "Darunter versteht man erzeugt Ein Signal.",
+        "Es bezeichnet den Erzeugt ein Signal.",
         "Es nimmt das Signal wahr.",
-        "Darunter versteht man das informationstragendes Zeichen.",
+        "Es ist das Informationstragendes Zeichen.",
       ],
       explanation: "Gehör: Wahrnehmung von Schall",
       wissen: fw(
@@ -1389,12 +1389,12 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f5",
-      prompt: "Was versteht man im Thema Säugersinne unter einem Sehsinn?",
-      answer: "Darunter versteht man wahrnehmung von Licht und Formen.",
+      prompt: "Was kennzeichnet Sehsinn im Thema Säugersinne?",
+      answer: "Es ist das Wahrnehmung von Licht und Formen.",
       wrong: [
-        "Darunter versteht man erzeugt Ein Signal.",
+        "Es bezeichnet den Erzeugt ein Signal.",
         "Es nimmt das Signal wahr.",
-        "Darunter versteht man das informationstragendes Zeichen.",
+        "Es ist das Informationstragendes Zeichen.",
       ],
       explanation: "Sehsinn: Wahrnehmung von Licht und Formen",
       wissen: fw(
@@ -1405,12 +1405,12 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f6",
-      prompt: "Was versteht man im Thema Säugersinne unter einem Tastsinn?",
-      answer: "Darunter versteht man die wahrnehmung von Berührung.",
+      prompt: "Was kennzeichnet Tastsinn im Thema Säugersinne?",
+      answer: "Es bezeichnet die Wahrnehmung von Berührung.",
       wrong: [
-        "Darunter versteht man erzeugt Ein Signal.",
+        "Es bezeichnet den Erzeugt ein Signal.",
         "Es nimmt das Signal wahr.",
-        "Darunter versteht man das informationstragendes Zeichen.",
+        "Es ist das Informationstragendes Zeichen.",
       ],
       explanation: "Tastsinn: Wahrnehmung von Berührung",
       wissen: fw(
@@ -1421,12 +1421,12 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f7",
-      prompt: "Was versteht man im Thema Säugersinne unter einer Schnurrhaare?",
-      answer: "Darunter versteht man tastorgane am Kopf.",
+      prompt: "Wozu dient die Schnurrhaare im Thema Säugersinne?",
+      answer: "Sie tastorgane am Kopf.",
       wrong: [
-        "Darunter versteht man erzeugt Ein Signal.",
+        "Sie bezeichnet den Erzeugt ein Signal.",
         "Sie nimmt das Signal wahr.",
-        "Darunter versteht man das informationstragendes Zeichen.",
+        "Sie ist das Informationstragendes Zeichen.",
       ],
       explanation: "Schnurrhaare: Tastorgane am Kopf",
       wissen: fw(
@@ -1437,12 +1437,12 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f8",
-      prompt: "Was versteht man im Thema Säugersinne unter einem Ultraschall?",
-      answer: "Darunter versteht man sehr Hohe Schallfrequenzen.",
+      prompt: "Was kennzeichnet Ultraschall im Thema Säugersinne?",
+      answer: "Es bezeichnet den Sehr Hohe Schallfrequenzen.",
       wrong: [
-        "Darunter versteht man erzeugt Ein Signal.",
+        "Es bezeichnet den Erzeugt ein Signal.",
         "Es nimmt das Signal wahr.",
-        "Darunter versteht man das informationstragendes Zeichen.",
+        "Es ist das Informationstragendes Zeichen.",
       ],
       explanation: "Ultraschall: Sehr hohe Schallfrequenzen",
       wissen: fw(
@@ -1453,12 +1453,12 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f9",
-      prompt: "Was versteht man im Thema Säugersinne unter einer Echoortung?",
-      answer: "Darunter versteht man orientierung Über Zurückgeworfenen Schall.",
+      prompt: "Was kennzeichnet Echoortung im Thema Säugersinne?",
+      answer: "Sie bezeichnet den Orientierung über Zurückgeworfenen Schall.",
       wrong: [
-        "Darunter versteht man erzeugt Ein Signal.",
+        "Sie bezeichnet den Erzeugt ein Signal.",
         "Sie nimmt das Signal wahr.",
-        "Darunter versteht man das informationstragendes Zeichen.",
+        "Sie ist das Informationstragendes Zeichen.",
       ],
       explanation: "Echoortung: Orientierung über zurückgeworfenen Schall",
       wissen: fw(
@@ -1469,12 +1469,12 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f10",
-      prompt: "Was versteht man im Thema Säugersinne unter einem Kommunikationslaut?",
-      answer: "Darunter versteht man laut zur Information an Artgenossen.",
+      prompt: "Was kennzeichnet Kommunikationslaut im Thema Säugersinne?",
+      answer: "Es ist das Laut zur Information an Artgenossen.",
       wrong: [
-        "Darunter versteht man erzeugt Ein Signal.",
+        "Es bezeichnet den Erzeugt ein Signal.",
         "Es nimmt das Signal wahr.",
-        "Darunter versteht man das informationstragendes Zeichen.",
+        "Es ist das Informationstragendes Zeichen.",
       ],
       explanation: "Kommunikationslaut: Laut zur Information an Artgenossen",
       wissen: fw(
@@ -1485,12 +1485,12 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f11",
-      prompt: "Was versteht man im Thema Säugersinne unter einer Sinnesleistung?",
-      answer: "Darunter versteht man leistungsfähigkeit Eines Sinnes.",
+      prompt: "Was kennzeichnet Sinnesleistung im Thema Säugersinne?",
+      answer: "Sie bezeichnet den Leistungsfähigkeit Eines Sinnes.",
       wrong: [
-        "Darunter versteht man erzeugt Ein Signal.",
+        "Sie bezeichnet den Erzeugt ein Signal.",
         "Sie nimmt das Signal wahr.",
-        "Darunter versteht man das informationstragendes Zeichen.",
+        "Sie ist das Informationstragendes Zeichen.",
       ],
       explanation: "Sinnesleistung: Leistungsfähigkeit eines Sinnes",
       wissen: fw(
@@ -1568,12 +1568,12 @@ export const k5SaeugerSozial: BioBank = {
   facts: [
     {
       concept: "bio:k5:saeugsoc:f0",
-      prompt: "Was versteht man im Thema Säugersozial auf „Rudel“ zu unter einem Rudel?",
-      answer: "Darunter versteht man soziale Gruppe mancher Säuger.",
+      prompt: "Was kennzeichnet Rudel im Thema Säugersozial?",
+      answer: "Es bezeichnet den Soziale Gruppe Mancher Säuger.",
       wrong: [
-        "Darunter versteht man zusammenarbeit zum gemeinsamen Vorteil.",
-        "Darunter versteht man hierarchie in der Gruppe.",
-        "Darunter versteht man angriffs- oder Drohverhalten.",
+        "Es bezeichnet den Zusammenarbeit zum Gemeinsamen Vorteil.",
+        "Es bezeichnet die Hierarchie in der Gruppe.",
+        "Es bezeichnet den Angriffs- oder Drohverhalten.",
       ],
       explanation: "Rudel: Soziale Gruppe mancher Säuger",
       wissen: fw(
@@ -1584,12 +1584,12 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f1",
-      prompt: "Was versteht man im Thema Säugersozial auf „Kooperation“ zu unter einer Kooperation?",
-      answer: "Darunter versteht man zusammenarbeit zum gemeinsamen Vorteil.",
+      prompt: "Was kennzeichnet Kooperation im Thema Säugersozial?",
+      answer: "Sie bezeichnet den Zusammenarbeit zum Gemeinsamen Vorteil.",
       wrong: [
-        "Darunter versteht man soziale Gruppe mancher Säuger.",
-        "Darunter versteht man hierarchie in der Gruppe.",
-        "Darunter versteht man angriffs- oder Drohverhalten.",
+        "Sie bezeichnet den Soziale Gruppe Mancher Säuger.",
+        "Sie bezeichnet die Hierarchie in der Gruppe.",
+        "Sie bezeichnet den Angriffs- oder Drohverhalten.",
       ],
       explanation: "Kooperation: Zusammenarbeit zum gemeinsamen Vorteil",
       wissen: fw(
@@ -1600,12 +1600,12 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f2",
-      prompt: "Was versteht man im Thema Säugersozial auf „Rangordnung“ zu unter einer Rangordnung?",
-      answer: "Darunter versteht man hierarchie in der Gruppe.",
+      prompt: "Was kennzeichnet Rangordnung im Thema Säugersozial?",
+      answer: "Sie bezeichnet die Hierarchie in der Gruppe.",
       wrong: [
-        "Darunter versteht man soziale Gruppe mancher Säuger.",
-        "Darunter versteht man zusammenarbeit zum gemeinsamen Vorteil.",
-        "Darunter versteht man angriffs- oder Drohverhalten.",
+        "Sie bezeichnet den Soziale Gruppe Mancher Säuger.",
+        "Sie bezeichnet den Zusammenarbeit zum Gemeinsamen Vorteil.",
+        "Sie bezeichnet den Angriffs- oder Drohverhalten.",
       ],
       explanation: "Rangordnung: Hierarchie in der Gruppe",
       wissen: fw(
@@ -1616,12 +1616,12 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f3",
-      prompt: "Was versteht man im Thema Säugersozial unter einer Aggression?",
-      answer: "Darunter versteht man angriffs- oder Drohverhalten.",
+      prompt: "Was kennzeichnet Aggression im Thema Säugersozial?",
+      answer: "Sie bezeichnet den Angriffs- oder Drohverhalten.",
       wrong: [
-        "Darunter versteht man den soziale Gruppe Mancher Säuger.",
-        "Darunter versteht man zusammenarbeit zum Gemeinsamen Vorteil.",
-        "Darunter versteht man die hierarchie in der Gruppe.",
+        "Sie bezeichnet den Soziale Gruppe Mancher Säuger.",
+        "Sie bezeichnet den Zusammenarbeit zum Gemeinsamen Vorteil.",
+        "Sie bezeichnet die Hierarchie in der Gruppe.",
       ],
       explanation: "Aggression: Angriffs- oder Drohverhalten",
       wissen: fw(
@@ -1632,12 +1632,12 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f4",
-      prompt: "Was versteht man im Thema Säugersozial unter einem Revier?",
-      answer: "Darunter versteht man verteidigtes Gebiet.",
+      prompt: "Was kennzeichnet Revier im Thema Säugersozial?",
+      answer: "Er bezeichnet den Verteidigtes Gebiet.",
       wrong: [
-        "Darunter versteht man den soziale Gruppe Mancher Säuger.",
-        "Darunter versteht man zusammenarbeit zum Gemeinsamen Vorteil.",
-        "Darunter versteht man die hierarchie in der Gruppe.",
+        "Er bezeichnet den Soziale Gruppe Mancher Säuger.",
+        "Er bezeichnet den Zusammenarbeit zum Gemeinsamen Vorteil.",
+        "Er bezeichnet die Hierarchie in der Gruppe.",
       ],
       explanation: "Revier: Verteidigtes Gebiet",
       wissen: fw(
@@ -1648,12 +1648,12 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f5",
-      prompt: "Was versteht man im Thema Säugersozial auf „Sozialbindung“ zu unter einer Sozialbindung?",
-      answer: "Darunter versteht man dauerhafte Beziehung zwischen Individuen.",
+      prompt: "Was kennzeichnet Sozialbindung im Thema Säugersozial?",
+      answer: "Sie bezeichnet den Dauerhafte Beziehung Zwischen Individuen.",
       wrong: [
-        "Darunter versteht man soziale Gruppe mancher Säuger.",
-        "Darunter versteht man zusammenarbeit zum gemeinsamen Vorteil.",
-        "Darunter versteht man hierarchie in der Gruppe.",
+        "Sie bezeichnet den Soziale Gruppe Mancher Säuger.",
+        "Sie bezeichnet den Zusammenarbeit zum Gemeinsamen Vorteil.",
+        "Sie bezeichnet die Hierarchie in der Gruppe.",
       ],
       explanation: "Sozialbindung: Dauerhafte Beziehung zwischen Individuen",
       wissen: fw(
@@ -1664,12 +1664,12 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f6",
-      prompt: "Was versteht man im Thema Säugersozial auf „Imponieren“ zu unter einem Imponieren?",
-      answer: "Darunter versteht man status zeigen ohne sofortigen Kampf.",
+      prompt: "Was kennzeichnet Imponieren im Thema Säugersozial?",
+      answer: "Es bezeichnet den Status Zeigen ohne Sofortigen Kampf.",
       wrong: [
-        "Darunter versteht man soziale Gruppe mancher Säuger.",
-        "Darunter versteht man zusammenarbeit zum gemeinsamen Vorteil.",
-        "Darunter versteht man hierarchie in der Gruppe.",
+        "Es bezeichnet den Soziale Gruppe Mancher Säuger.",
+        "Es bezeichnet den Zusammenarbeit zum Gemeinsamen Vorteil.",
+        "Es bezeichnet die Hierarchie in der Gruppe.",
       ],
       explanation: "Imponieren: Status zeigen ohne sofortigen Kampf",
       wissen: fw(
@@ -1680,12 +1680,12 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f7",
-      prompt: "Was versteht man im Thema Säugersozial unter einer Unterwerfung?",
-      answer: "Darunter versteht man beschwichtigungsverhalten.",
+      prompt: "Was kennzeichnet Unterwerfung im Thema Säugersozial?",
+      answer: "Sie bezeichnet den Beschwichtigungsverhalten.",
       wrong: [
-        "Darunter versteht man den soziale Gruppe Mancher Säuger.",
-        "Darunter versteht man zusammenarbeit zum Gemeinsamen Vorteil.",
-        "Darunter versteht man die hierarchie in der Gruppe.",
+        "Sie bezeichnet den Soziale Gruppe Mancher Säuger.",
+        "Sie bezeichnet den Zusammenarbeit zum Gemeinsamen Vorteil.",
+        "Sie bezeichnet die Hierarchie in der Gruppe.",
       ],
       explanation: "Unterwerfung: Beschwichtigungsverhalten",
       wissen: fw(
@@ -1696,12 +1696,12 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f8",
-      prompt: "Was versteht man im Thema Säugersozial unter einem Gruppenjagd?",
-      answer: "Darunter versteht man das gemeinsames Beutemachen.",
+      prompt: "Was kennzeichnet Gruppenjagd im Thema Säugersozial?",
+      answer: "Es bezeichnet das Gemeinsames Beutemachen.",
       wrong: [
-        "Darunter versteht man den soziale Gruppe Mancher Säuger.",
-        "Darunter versteht man zusammenarbeit zum Gemeinsamen Vorteil.",
-        "Darunter versteht man die hierarchie in der Gruppe.",
+        "Es bezeichnet den Soziale Gruppe Mancher Säuger.",
+        "Es bezeichnet den Zusammenarbeit zum Gemeinsamen Vorteil.",
+        "Es bezeichnet die Hierarchie in der Gruppe.",
       ],
       explanation: "Gruppenjagd: Gemeinsames Beutemachen",
       wissen: fw(
@@ -1712,12 +1712,12 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f9",
-      prompt: "Was versteht man im Thema Säugersozial unter einem Alarmverhalten?",
-      answer: "Darunter versteht man die warnen der Gruppe.",
+      prompt: "Was kennzeichnet Alarmverhalten im Thema Säugersozial?",
+      answer: "Es bezeichnet die Warnen der Gruppe.",
       wrong: [
-        "Darunter versteht man den soziale Gruppe Mancher Säuger.",
-        "Darunter versteht man zusammenarbeit zum Gemeinsamen Vorteil.",
-        "Darunter versteht man die hierarchie in der Gruppe.",
+        "Es bezeichnet den Soziale Gruppe Mancher Säuger.",
+        "Es bezeichnet den Zusammenarbeit zum Gemeinsamen Vorteil.",
+        "Es bezeichnet die Hierarchie in der Gruppe.",
       ],
       explanation: "Alarmverhalten: Warnen der Gruppe",
       wissen: fw(
@@ -1728,12 +1728,12 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f10",
-      prompt: "Was versteht man im Thema Säugersozial auf „Alleinerziehend“ zu unter einem Alleinerziehend?",
-      answer: "Darunter versteht man ein Elterntier versorgt Junge.",
+      prompt: "Was kennzeichnet Alleinerziehend im Thema Säugersozial?",
+      answer: "Es bezeichnet die Elterntier Versorgt Junge.",
       wrong: [
-        "Darunter versteht man soziale Gruppe mancher Säuger.",
-        "Darunter versteht man zusammenarbeit zum gemeinsamen Vorteil.",
-        "Darunter versteht man hierarchie in der Gruppe.",
+        "Es bezeichnet den Soziale Gruppe Mancher Säuger.",
+        "Es bezeichnet den Zusammenarbeit zum Gemeinsamen Vorteil.",
+        "Es bezeichnet die Hierarchie in der Gruppe.",
       ],
       explanation: "Alleinerziehend: Ein Elterntier versorgt Junge",
       wissen: fw(
@@ -1744,12 +1744,12 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f11",
-      prompt: "Was versteht man im Thema Säugersozial auf „Gruppenleben“ zu unter einem Gruppenleben?",
-      answer: "Darunter versteht man leben in sozialer Einheit.",
+      prompt: "Was kennzeichnet Gruppenleben im Thema Säugersozial?",
+      answer: "Es bezeichnet die Leben in Sozialer Einheit.",
       wrong: [
-        "Darunter versteht man soziale Gruppe mancher Säuger.",
-        "Darunter versteht man zusammenarbeit zum gemeinsamen Vorteil.",
-        "Darunter versteht man hierarchie in der Gruppe.",
+        "Es bezeichnet den Soziale Gruppe Mancher Säuger.",
+        "Es bezeichnet den Zusammenarbeit zum Gemeinsamen Vorteil.",
+        "Es bezeichnet die Hierarchie in der Gruppe.",
       ],
       explanation: "Gruppenleben: Leben in sozialer Einheit",
       wissen: fw(
@@ -1827,12 +1827,12 @@ export const k6InsektenAtmung: BioBank = {
   facts: [
     {
       concept: "bio:k6:insatm:f0",
-      prompt: "Was versteht man im Thema Insektenatmung unter einer Trachee?",
-      answer: "Darunter versteht man den luftröhre im Insektenkörper.",
+      prompt: "Was kennzeichnet Trachee im Thema Insektenatmung?",
+      answer: "Sie ist das Luftröhre im Insektenkörper.",
       wrong: [
-        "Darunter versteht man feinste Endverzweigung der Tracheen.",
-        "Darunter versteht man die atemöffnung an der Körperseite.",
-        "Darunter versteht man die gasbewegung Ohne Pumpe Wie Lunge.",
+        "Sie bezeichnet den Feinste Endverzweigung der Tracheen.",
+        "Sie ist die Atemöffnung an der Körperseite.",
+        "Sie bezeichnet die Gasbewegung ohne Pumpe Wie Lunge.",
       ],
       explanation: "Trachee: Luftröhre im Insektenkörper",
       wissen: fw(
@@ -1843,12 +1843,12 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f1",
-      prompt: "Was versteht man im Thema Insektenatmung auf „Tracheole“ zu unter einer Tracheole?",
-      answer: "Darunter versteht man feinste Endverzweigung der Tracheen.",
+      prompt: "Was kennzeichnet Tracheole im Thema Insektenatmung?",
+      answer: "Sie bezeichnet den Feinste Endverzweigung der Tracheen.",
       wrong: [
-        "Darunter versteht man luftröhre im Insektenkörper.",
-        "Darunter versteht man atemöffnung an der Körperseite.",
-        "Darunter versteht man gasbewegung ohne Pumpe wie Lunge.",
+        "Sie ist das Luftröhre im Insektenkörper.",
+        "Sie ist die Atemöffnung an der Körperseite.",
+        "Sie bezeichnet die Gasbewegung ohne Pumpe Wie Lunge.",
       ],
       explanation: "Tracheole: Feinste Endverzweigung der Tracheen",
       wissen: fw(
@@ -1859,12 +1859,12 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f2",
-      prompt: "Was versteht man im Thema Insektenatmung auf „Stigma“ zu unter einer Stigma?",
-      answer: "Darunter versteht man atemöffnung an der Körperseite.",
+      prompt: "Was kennzeichnet Stigma im Thema Insektenatmung?",
+      answer: "Sie ist die Atemöffnung an der Körperseite.",
       wrong: [
-        "Darunter versteht man luftröhre im Insektenkörper.",
-        "Darunter versteht man feinste Endverzweigung der Tracheen.",
-        "Darunter versteht man gasbewegung ohne Pumpe wie Lunge.",
+        "Sie ist das Luftröhre im Insektenkörper.",
+        "Sie bezeichnet den Feinste Endverzweigung der Tracheen.",
+        "Sie bezeichnet die Gasbewegung ohne Pumpe Wie Lunge.",
       ],
       explanation: "Stigma: Atemöffnung an der Körperseite",
       wissen: fw(
@@ -1875,12 +1875,12 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f3",
-      prompt: "Was versteht man im Thema Insektenatmung auf „Diffusion“ zu unter einer Diffusion?",
-      answer: "Darunter versteht man gasbewegung ohne Pumpe wie Lunge.",
+      prompt: "Was kennzeichnet Diffusion im Thema Insektenatmung?",
+      answer: "Sie bezeichnet die Gasbewegung ohne Pumpe Wie Lunge.",
       wrong: [
-        "Darunter versteht man luftröhre im Insektenkörper.",
-        "Darunter versteht man feinste Endverzweigung der Tracheen.",
-        "Darunter versteht man atemöffnung an der Körperseite.",
+        "Sie ist das Luftröhre im Insektenkörper.",
+        "Sie bezeichnet den Feinste Endverzweigung der Tracheen.",
+        "Sie ist die Atemöffnung an der Körperseite.",
       ],
       explanation: "Diffusion: Gasbewegung ohne Pumpe wie Lunge",
       wissen: fw(
@@ -1891,12 +1891,12 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f4",
-      prompt: "Was versteht man im Thema Insektenatmung unter einem Chitinpanzer?",
-      answer: "Darunter versteht man die äußere Körperhülle.",
+      prompt: "Was kennzeichnet Chitinpanzer im Thema Insektenatmung?",
+      answer: "Er ist die Äußere Körperhülle.",
       wrong: [
-        "Darunter versteht man den luftröhre im Insektenkörper.",
-        "Darunter versteht man feinste Endverzweigung der Tracheen.",
-        "Darunter versteht man die atemöffnung an der Körperseite.",
+        "Er ist das Luftröhre im Insektenkörper.",
+        "Er bezeichnet den Feinste Endverzweigung der Tracheen.",
+        "Er ist die Atemöffnung an der Körperseite.",
       ],
       explanation: "Chitinpanzer: Äußere Körperhülle",
       wissen: fw(
@@ -1907,12 +1907,12 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f5",
-      prompt: "Was versteht man im Thema Insektenatmung unter einer Wasserkäferkieme?",
-      answer: "Darunter versteht man anpassung Mancher Wasserinsekten.",
+      prompt: "Was kennzeichnet Wasserkäferkieme im Thema Insektenatmung?",
+      answer: "Sie bezeichnet den Anpassung Mancher Wasserinsekten.",
       wrong: [
-        "Darunter versteht man den luftröhre im Insektenkörper.",
-        "Darunter versteht man feinste Endverzweigung der Tracheen.",
-        "Darunter versteht man die atemöffnung an der Körperseite.",
+        "Sie ist das Luftröhre im Insektenkörper.",
+        "Sie bezeichnet den Feinste Endverzweigung der Tracheen.",
+        "Sie ist die Atemöffnung an der Körperseite.",
       ],
       explanation: "Wasserkäferkieme: Anpassung mancher Wasserinsekten",
       wissen: fw(
@@ -1923,12 +1923,12 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f6",
-      prompt: "Was versteht man im Thema Insektenatmung auf „Luftvorrat“ zu unter einem Luftvorrat?",
-      answer: "Darunter versteht man mitgeführte Luftblase unter Wasser.",
+      prompt: "Was kennzeichnet Luftvorrat im Thema Insektenatmung?",
+      answer: "Es ist das Mitgeführte Luftblase unter Wasser.",
       wrong: [
-        "Darunter versteht man luftröhre im Insektenkörper.",
-        "Darunter versteht man feinste Endverzweigung der Tracheen.",
-        "Darunter versteht man atemöffnung an der Körperseite.",
+        "Es ist das Luftröhre im Insektenkörper.",
+        "Es bezeichnet den Feinste Endverzweigung der Tracheen.",
+        "Es ist die Atemöffnung an der Körperseite.",
       ],
       explanation: "Luftvorrat: Mitgeführte Luftblase unter Wasser",
       wissen: fw(
@@ -1939,12 +1939,12 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f7",
-      prompt: "Was versteht man im Thema Insektenatmung auf „Oberflächenvergrößerung“ zu unter einer Oberflächenvergrößerung?",
-      answer: "Darunter versteht man viele feine Röhren vergrößern Fläche.",
+      prompt: "Was kennzeichnet Oberflächenvergrößerung im Thema Insektenatmung?",
+      answer: "Sie ist die Viele Feine Röhren Vergrößern Fläche.",
       wrong: [
-        "Darunter versteht man luftröhre im Insektenkörper.",
-        "Darunter versteht man feinste Endverzweigung der Tracheen.",
-        "Darunter versteht man atemöffnung an der Körperseite.",
+        "Sie ist das Luftröhre im Insektenkörper.",
+        "Sie bezeichnet den Feinste Endverzweigung der Tracheen.",
+        "Sie ist die Atemöffnung an der Körperseite.",
       ],
       explanation: "Oberflächenvergrößerung: Viele feine Röhren vergrößern Fläche",
       wissen: fw(
@@ -1955,12 +1955,12 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f8",
-      prompt: "Was versteht man im Thema Insektenatmung auf „Landatmung“ zu unter einer Landatmung?",
-      answer: "Darunter versteht man atmung mit Luft über Tracheen.",
+      prompt: "Was kennzeichnet Landatmung im Thema Insektenatmung?",
+      answer: "Sie ist das Atmung mit Luft über Tracheen.",
       wrong: [
-        "Darunter versteht man luftröhre im Insektenkörper.",
-        "Darunter versteht man feinste Endverzweigung der Tracheen.",
-        "Darunter versteht man atemöffnung an der Körperseite.",
+        "Sie ist das Luftröhre im Insektenkörper.",
+        "Sie bezeichnet den Feinste Endverzweigung der Tracheen.",
+        "Sie ist die Atemöffnung an der Körperseite.",
       ],
       explanation: "Landatmung: Atmung mit Luft über Tracheen",
       wissen: fw(
@@ -1971,12 +1971,12 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f9",
-      prompt: "Was versteht man im Thema Insektenatmung unter einer Stoffwechselrate?",
-      answer: "Darunter versteht man geschwindigkeit Des Stoffwechsels.",
+      prompt: "Was kennzeichnet Stoffwechselrate im Thema Insektenatmung?",
+      answer: "Sie bezeichnet den Geschwindigkeit des Stoffwechsels.",
       wrong: [
-        "Darunter versteht man den luftröhre im Insektenkörper.",
-        "Darunter versteht man feinste Endverzweigung der Tracheen.",
-        "Darunter versteht man die atemöffnung an der Körperseite.",
+        "Sie ist das Luftröhre im Insektenkörper.",
+        "Sie bezeichnet den Feinste Endverzweigung der Tracheen.",
+        "Sie ist die Atemöffnung an der Körperseite.",
       ],
       explanation: "Stoffwechselrate: Geschwindigkeit des Stoffwechsels",
       wissen: fw(
@@ -1987,12 +1987,12 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f10",
-      prompt: "Was versteht man im Thema Insektenatmung unter einer Häutung?",
-      answer: "Darunter versteht man abstreifen Des Panzers.",
+      prompt: "Was kennzeichnet Häutung im Thema Insektenatmung?",
+      answer: "Sie bezeichnet den Abstreifen des Panzers.",
       wrong: [
-        "Darunter versteht man den luftröhre im Insektenkörper.",
-        "Darunter versteht man feinste Endverzweigung der Tracheen.",
-        "Darunter versteht man die atemöffnung an der Körperseite.",
+        "Sie ist das Luftröhre im Insektenkörper.",
+        "Sie bezeichnet den Feinste Endverzweigung der Tracheen.",
+        "Sie ist die Atemöffnung an der Körperseite.",
       ],
       explanation: "Häutung: Abstreifen des Panzers",
       wissen: fw(
@@ -2003,12 +2003,12 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f11",
-      prompt: "Was versteht man im Thema Insektenatmung auf „Gasaustausch“ zu unter einem Gasaustausch?",
-      answer: "Darunter versteht man aufnahme O₂, Abgabe CO₂.",
+      prompt: "Was kennzeichnet Gasaustausch im Thema Insektenatmung?",
+      answer: "Es bezeichnet den Aufnahme O₂, Abgabe CO₂.",
       wrong: [
-        "Darunter versteht man luftröhre im Insektenkörper.",
-        "Darunter versteht man feinste Endverzweigung der Tracheen.",
-        "Darunter versteht man atemöffnung an der Körperseite.",
+        "Es ist das Luftröhre im Insektenkörper.",
+        "Es bezeichnet den Feinste Endverzweigung der Tracheen.",
+        "Es ist die Atemöffnung an der Körperseite.",
       ],
       explanation: "Gasaustausch: Aufnahme O₂, Abgabe CO₂",
       wissen: fw(
@@ -2086,12 +2086,12 @@ export const k6SkelettVergleich: BioBank = {
   facts: [
     {
       concept: "bio:k6:skverg:f0",
-      prompt: "Was versteht man im Thema Skelettvergleich unter einem Innenskelett?",
-      answer: "Darunter versteht man stützgerüst im Körperinneren.",
+      prompt: "Was kennzeichnet Innenskelett im Thema Skelettvergleich?",
+      answer: "Es ist das Stützgerüst im Körperinneren.",
       wrong: [
-        "Darunter versteht man stütz- und Schutzpanzer Außen.",
-        "Darunter versteht man die zentrale Knochenachse.",
-        "Darunter versteht man die material Vieler Außenskelette.",
+        "Es ist das Stütz- und Schutzpanzer Außen.",
+        "Es bezeichnet die Zentrale Knochenachse.",
+        "Es bezeichnet die Material Vieler Außenskelette.",
       ],
       explanation: "Innenskelett: Stützgerüst im Körperinneren",
       wissen: fw(
@@ -2102,12 +2102,12 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f1",
-      prompt: "Was versteht man im Thema Skelettvergleich unter einem Außenskelett?",
-      answer: "Darunter versteht man stütz- und Schutzpanzer Außen.",
+      prompt: "Was kennzeichnet Außenskelett im Thema Skelettvergleich?",
+      answer: "Es ist das Stütz- und Schutzpanzer Außen.",
       wrong: [
-        "Darunter versteht man stützgerüst im Körperinneren.",
-        "Darunter versteht man die zentrale Knochenachse.",
-        "Darunter versteht man die material Vieler Außenskelette.",
+        "Es ist das Stützgerüst im Körperinneren.",
+        "Es bezeichnet die Zentrale Knochenachse.",
+        "Es bezeichnet die Material Vieler Außenskelette.",
       ],
       explanation: "Außenskelett: Stütz- und Schutzpanzer außen",
       wissen: fw(
@@ -2118,12 +2118,12 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f2",
-      prompt: "Was versteht man im Thema Skelettvergleich unter einer Wirbelsäule?",
-      answer: "Darunter versteht man die zentrale Knochenachse.",
+      prompt: "Was kennzeichnet Wirbelsäule im Thema Skelettvergleich?",
+      answer: "Sie bezeichnet die Zentrale Knochenachse.",
       wrong: [
-        "Darunter versteht man stützgerüst im Körperinneren.",
-        "Darunter versteht man stütz- und Schutzpanzer Außen.",
-        "Darunter versteht man die material Vieler Außenskelette.",
+        "Sie ist das Stützgerüst im Körperinneren.",
+        "Sie ist das Stütz- und Schutzpanzer Außen.",
+        "Sie bezeichnet die Material Vieler Außenskelette.",
       ],
       explanation: "Wirbelsäule: Zentrale Knochenachse",
       wissen: fw(
@@ -2134,12 +2134,12 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f3",
-      prompt: "Was versteht man im Thema Skelettvergleich unter einem Chitin?",
-      answer: "Darunter versteht man die material Vieler Außenskelette.",
+      prompt: "Was kennzeichnet Chitin im Thema Skelettvergleich?",
+      answer: "Es bezeichnet die Material Vieler Außenskelette.",
       wrong: [
-        "Darunter versteht man stützgerüst im Körperinneren.",
-        "Darunter versteht man stütz- und Schutzpanzer Außen.",
-        "Darunter versteht man die zentrale Knochenachse.",
+        "Es ist das Stützgerüst im Körperinneren.",
+        "Es ist das Stütz- und Schutzpanzer Außen.",
+        "Es bezeichnet die Zentrale Knochenachse.",
       ],
       explanation: "Chitin: Material vieler Außenskelette",
       wissen: fw(
@@ -2150,12 +2150,12 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f4",
-      prompt: "Was versteht man im Thema Skelettvergleich unter einem Knochen?",
-      answer: "Darunter versteht man die mineralisiertes Stützgewebe.",
+      prompt: "Was kennzeichnet Knochen im Thema Skelettvergleich?",
+      answer: "Es ist die Mineralisiertes Stützgewebe.",
       wrong: [
-        "Darunter versteht man stützgerüst im Körperinneren.",
-        "Darunter versteht man stütz- und Schutzpanzer Außen.",
-        "Darunter versteht man die zentrale Knochenachse.",
+        "Es ist das Stützgerüst im Körperinneren.",
+        "Es ist das Stütz- und Schutzpanzer Außen.",
+        "Es bezeichnet die Zentrale Knochenachse.",
       ],
       explanation: "Knochen: Mineralisiertes Stützgewebe",
       wissen: fw(
@@ -2166,12 +2166,12 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f5",
-      prompt: "Was versteht man im Thema Skelettvergleich unter einer Häutung?",
-      answer: "Darunter versteht man abstreifen Des Außenskeletts.",
+      prompt: "Was kennzeichnet Häutung im Thema Skelettvergleich?",
+      answer: "Sie bezeichnet den Abstreifen des Außenskeletts.",
       wrong: [
-        "Darunter versteht man stützgerüst im Körperinneren.",
-        "Darunter versteht man stütz- und Schutzpanzer Außen.",
-        "Darunter versteht man die zentrale Knochenachse.",
+        "Sie ist das Stützgerüst im Körperinneren.",
+        "Sie ist das Stütz- und Schutzpanzer Außen.",
+        "Sie bezeichnet die Zentrale Knochenachse.",
       ],
       explanation: "Häutung: Abstreifen des Außenskeletts",
       wissen: fw(
@@ -2182,12 +2182,12 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f6",
-      prompt: "Was versteht man im Thema Skelettvergleich unter einem Gliedmaßen?",
-      answer: "Darunter versteht man die bewegliche Anhänge zur Fortbewegung.",
+      prompt: "Was kennzeichnet Gliedmaßen im Thema Skelettvergleich?",
+      answer: "Es bezeichnet die Bewegliche Anhänge zur Fortbewegung.",
       wrong: [
-        "Darunter versteht man stützgerüst im Körperinneren.",
-        "Darunter versteht man stütz- und Schutzpanzer Außen.",
-        "Darunter versteht man die zentrale Knochenachse.",
+        "Es ist das Stützgerüst im Körperinneren.",
+        "Es ist das Stütz- und Schutzpanzer Außen.",
+        "Es bezeichnet die Zentrale Knochenachse.",
       ],
       explanation: "Gliedmaßen: Bewegliche Anhänge zur Fortbewegung",
       wissen: fw(
@@ -2198,12 +2198,12 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f7",
-      prompt: "Was versteht man im Thema Skelettvergleich unter einer Schutzfunktion?",
-      answer: "Darunter versteht man die skelett Schützt Organe.",
+      prompt: "Wozu dient die Schutzfunktion im Thema Skelettvergleich?",
+      answer: "Sie skelett schützt Organe.",
       wrong: [
-        "Darunter versteht man stützgerüst im Körperinneren.",
-        "Darunter versteht man stütz- und Schutzpanzer Außen.",
-        "Darunter versteht man die zentrale Knochenachse.",
+        "Sie ist das Stützgerüst im Körperinneren.",
+        "Sie ist das Stütz- und Schutzpanzer Außen.",
+        "Sie bezeichnet die Zentrale Knochenachse.",
       ],
       explanation: "Schutzfunktion: Skelett schützt Organe",
       wissen: fw(
@@ -2214,12 +2214,12 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f8",
-      prompt: "Was versteht man im Thema Skelettvergleich unter einer Hebelmechanik?",
-      answer: "Darunter versteht man knochen/Muskeln Als Hebel.",
+      prompt: "Was kennzeichnet Hebelmechanik im Thema Skelettvergleich?",
+      answer: "Sie bezeichnet den Knochen/Muskeln als Hebel.",
       wrong: [
-        "Darunter versteht man stützgerüst im Körperinneren.",
-        "Darunter versteht man stütz- und Schutzpanzer Außen.",
-        "Darunter versteht man die zentrale Knochenachse.",
+        "Sie ist das Stützgerüst im Körperinneren.",
+        "Sie ist das Stütz- und Schutzpanzer Außen.",
+        "Sie bezeichnet die Zentrale Knochenachse.",
       ],
       explanation: "Hebelmechanik: Knochen/Muskeln als Hebel",
       wissen: fw(
@@ -2230,12 +2230,12 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f9",
-      prompt: "Was versteht man im Thema Skelettvergleich unter einem Exoskelett?",
-      answer: "Darunter versteht man anderer Name für Außenskelett.",
+      prompt: "Was kennzeichnet Exoskelett im Thema Skelettvergleich?",
+      answer: "Es bezeichnet den Anderer Name für Außenskelett.",
       wrong: [
-        "Darunter versteht man stützgerüst im Körperinneren.",
-        "Darunter versteht man stütz- und Schutzpanzer Außen.",
-        "Darunter versteht man die zentrale Knochenachse.",
+        "Es ist das Stützgerüst im Körperinneren.",
+        "Es ist das Stütz- und Schutzpanzer Außen.",
+        "Es bezeichnet die Zentrale Knochenachse.",
       ],
       explanation: "Exoskelett: Anderer Name für Außenskelett",
       wissen: fw(
@@ -2246,12 +2246,12 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f10",
-      prompt: "Was versteht man im Thema Skelettvergleich unter einem Endoskelett?",
-      answer: "Darunter versteht man anderer Name für Innenskelett.",
+      prompt: "Was kennzeichnet Endoskelett im Thema Skelettvergleich?",
+      answer: "Es bezeichnet den Anderer Name für Innenskelett.",
       wrong: [
-        "Darunter versteht man stützgerüst im Körperinneren.",
-        "Darunter versteht man stütz- und Schutzpanzer Außen.",
-        "Darunter versteht man die zentrale Knochenachse.",
+        "Es ist das Stützgerüst im Körperinneren.",
+        "Es ist das Stütz- und Schutzpanzer Außen.",
+        "Es bezeichnet die Zentrale Knochenachse.",
       ],
       explanation: "Endoskelett: Anderer Name für Innenskelett",
       wissen: fw(
@@ -2262,12 +2262,12 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f11",
-      prompt: "Was versteht man im Thema Skelettvergleich unter einer Segmentierung?",
-      answer: "Darunter versteht man die körpergliederung in Abschnitte.",
+      prompt: "Was kennzeichnet Segmentierung im Thema Skelettvergleich?",
+      answer: "Sie ist die Körpergliederung in Abschnitte.",
       wrong: [
-        "Darunter versteht man stützgerüst im Körperinneren.",
-        "Darunter versteht man stütz- und Schutzpanzer Außen.",
-        "Darunter versteht man die zentrale Knochenachse.",
+        "Sie ist das Stützgerüst im Körperinneren.",
+        "Sie ist das Stütz- und Schutzpanzer Außen.",
+        "Sie bezeichnet die Zentrale Knochenachse.",
       ],
       explanation: "Segmentierung: Körpergliederung in Abschnitte",
       wissen: fw(
@@ -2345,14 +2345,13 @@ export const k6AtmungVergleich: BioBank = {
   facts: [
     {
       concept: "bio:k6:atmverg:f0",
-      prompt: "Was versteht man im Thema Atmungsvergleich unter einer Kieme?",
-      answer: "Darunter versteht man den atemorgan für Wasser.",
+      prompt: "Wozu dient die Kieme im Thema Atmungsvergleich?",
+      answer: "Sie ist das Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.",
       wrong: [
-        "Darunter versteht man atemorgan für Luft.",
-        "Darunter versteht man luftröhrensystem der Insekten.",
-        "Darunter versteht man die gasaustausch Über die Körperoberfläche.",
-      ],
-      explanation: "Kieme: Atemorgan für Wasser",
+        "Sie ist das Atemorgan für den Gasaustausch in der Luft.",
+        "Sie ist das Luftröhrensystem der Insekten.",
+        "Sie ist der Gasaustausch allein über die Körperoberfläche.",
+      ],explanation: "Kieme: Atemorgan für Wasser",
       wissen: fw(
         "Bei Fischen und vielen Krebsen. Bezug: Atmungsvergleich.",
       ),
@@ -2361,12 +2360,12 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f1",
-      prompt: "Was versteht man im Thema Atmungsvergleich unter einer Lunge?",
-      answer: "Darunter versteht man atemorgan für Luft.",
+      prompt: "Wozu dient die Lunge im Thema Atmungsvergleich?",
+      answer: "Sie ist das Atemorgan für Luft.",
       wrong: [
-        "Darunter versteht man den atemorgan für Wasser.",
-        "Darunter versteht man luftröhrensystem der Insekten.",
-        "Darunter versteht man die gasaustausch Über die Körperoberfläche.",
+        "Sie ist das Atemorgan für Wasser.",
+        "Sie ist das Luftröhrensystem der Insekten.",
+        "Sie ist die Gasaustausch über die Körperoberfläche.",
       ],
       explanation: "Lunge: Atemorgan für Luft",
       wissen: fw(
@@ -2377,12 +2376,12 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f2",
-      prompt: "Was versteht man im Thema Atmungsvergleich unter einer Trachee?",
-      answer: "Darunter versteht man luftröhrensystem der Insekten.",
+      prompt: "Was kennzeichnet Trachee im Thema Atmungsvergleich?",
+      answer: "Sie ist das Luftröhrensystem der Insekten.",
       wrong: [
-        "Darunter versteht man den atemorgan für Wasser.",
-        "Darunter versteht man atemorgan für Luft.",
-        "Darunter versteht man die gasaustausch Über die Körperoberfläche.",
+        "Sie ist das Atemorgan für Wasser.",
+        "Sie ist das Atemorgan für Luft.",
+        "Sie ist die Gasaustausch über die Körperoberfläche.",
       ],
       explanation: "Trachee: Luftröhrensystem der Insekten",
       wissen: fw(
@@ -2393,12 +2392,12 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f3",
-      prompt: "Was versteht man im Thema Atmungsvergleich auf „Hautatmung“ zu unter einer Hautatmung?",
-      answer: "Darunter versteht man gasaustausch über die Körperoberfläche.",
+      prompt: "Was kennzeichnet Hautatmung im Thema Atmungsvergleich?",
+      answer: "Sie ist die Gasaustausch über die Körperoberfläche.",
       wrong: [
-        "Darunter versteht man atemorgan für Wasser.",
-        "Darunter versteht man atemorgan für Luft.",
-        "Darunter versteht man luftröhrensystem der Insekten.",
+        "Sie ist das Atemorgan für Wasser.",
+        "Sie ist das Atemorgan für Luft.",
+        "Sie ist das Luftröhrensystem der Insekten.",
       ],
       explanation: "Hautatmung: Gasaustausch über die Körperoberfläche",
       wissen: fw(
@@ -2409,12 +2408,12 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f4",
-      prompt: "Was versteht man im Thema Atmungsvergleich unter einer Oberflächenvergrößerung?",
-      answer: "Darunter versteht man die vergrößerung der Austauschfläche.",
+      prompt: "Was kennzeichnet Oberflächenvergrößerung im Thema Atmungsvergleich?",
+      answer: "Sie ist die Vergrößerung der Austauschfläche.",
       wrong: [
-        "Darunter versteht man den atemorgan für Wasser.",
-        "Darunter versteht man atemorgan für Luft.",
-        "Darunter versteht man luftröhrensystem der Insekten.",
+        "Sie ist das Atemorgan für Wasser.",
+        "Sie ist das Atemorgan für Luft.",
+        "Sie ist das Luftröhrensystem der Insekten.",
       ],
       explanation: "Oberflächenvergrößerung: Vergrößerung der Austauschfläche",
       wissen: fw(
@@ -2425,12 +2424,12 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f5",
-      prompt: "Was versteht man im Thema Atmungsvergleich auf „Medium“ zu unter einem Medium?",
-      answer: "Darunter versteht man wasser oder Luft als Gasquelle.",
+      prompt: "Was kennzeichnet Medium im Thema Atmungsvergleich?",
+      answer: "Es ist die Wasser oder Luft als Gasquelle.",
       wrong: [
-        "Darunter versteht man atemorgan für Wasser.",
-        "Darunter versteht man atemorgan für Luft.",
-        "Darunter versteht man luftröhrensystem der Insekten.",
+        "Es ist das Atemorgan für Wasser.",
+        "Es ist das Atemorgan für Luft.",
+        "Es ist das Luftröhrensystem der Insekten.",
       ],
       explanation: "Medium: Wasser oder Luft als Gasquelle",
       wissen: fw(
@@ -2441,12 +2440,12 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f6",
-      prompt: "Was versteht man im Thema Atmungsvergleich unter einer Diffusion?",
-      answer: "Darunter versteht man grundprinzip Des Gasaustauschs.",
+      prompt: "Was kennzeichnet Diffusion im Thema Atmungsvergleich?",
+      answer: "Sie bezeichnet den Grundprinzip des Gasaustauschs.",
       wrong: [
-        "Darunter versteht man den atemorgan für Wasser.",
-        "Darunter versteht man atemorgan für Luft.",
-        "Darunter versteht man luftröhrensystem der Insekten.",
+        "Sie ist das Atemorgan für Wasser.",
+        "Sie ist das Atemorgan für Luft.",
+        "Sie ist das Luftröhrensystem der Insekten.",
       ],
       explanation: "Diffusion: Grundprinzip des Gasaustauschs",
       wissen: fw(
@@ -2457,12 +2456,12 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f7",
-      prompt: "Was versteht man im Thema Atmungsvergleich unter einer Feuchte Oberfläche?",
-      answer: "Darunter versteht man die erleichtert Gasdiffusion.",
+      prompt: "Was kennzeichnet Feuchte Oberfläche im Thema Atmungsvergleich?",
+      answer: "Sie bezeichnet die Erleichtert Gasdiffusion.",
       wrong: [
-        "Darunter versteht man den atemorgan für Wasser.",
-        "Darunter versteht man atemorgan für Luft.",
-        "Darunter versteht man luftröhrensystem der Insekten.",
+        "Sie ist das Atemorgan für Wasser.",
+        "Sie ist das Atemorgan für Luft.",
+        "Sie ist das Luftröhrensystem der Insekten.",
       ],
       explanation: "Feuchte Oberfläche: Erleichtert Gasdiffusion",
       wissen: fw(
@@ -2473,12 +2472,12 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f8",
-      prompt: "Was versteht man im Thema Atmungsvergleich auf „Landleben“ zu unter einem Landleben?",
-      answer: "Darunter versteht man leben außerhalb des Wassers.",
+      prompt: "Was kennzeichnet Landleben im Thema Atmungsvergleich?",
+      answer: "Es bezeichnet den Leben Außerhalb des Wassers.",
       wrong: [
-        "Darunter versteht man atemorgan für Wasser.",
-        "Darunter versteht man atemorgan für Luft.",
-        "Darunter versteht man luftröhrensystem der Insekten.",
+        "Es ist das Atemorgan für Wasser.",
+        "Es ist das Atemorgan für Luft.",
+        "Es ist das Luftröhrensystem der Insekten.",
       ],
       explanation: "Landleben: Leben außerhalb des Wassers",
       wissen: fw(
@@ -2489,12 +2488,12 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f9",
-      prompt: "Was versteht man im Thema Atmungsvergleich unter einem Wasserleben?",
-      answer: "Darunter versteht man den leben im Wasser.",
+      prompt: "Was kennzeichnet Wasserleben im Thema Atmungsvergleich?",
+      answer: "Es bezeichnet den Leben im Wasser.",
       wrong: [
-        "Darunter versteht man den atemorgan für Wasser.",
-        "Darunter versteht man atemorgan für Luft.",
-        "Darunter versteht man luftröhrensystem der Insekten.",
+        "Es ist das Atemorgan für Wasser.",
+        "Es ist das Atemorgan für Luft.",
+        "Es ist das Luftröhrensystem der Insekten.",
       ],
       explanation: "Wasserleben: Leben im Wasser",
       wissen: fw(
@@ -2505,12 +2504,12 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f10",
-      prompt: "Was versteht man im Thema Atmungsvergleich unter einer Doppelstrategie?",
-      answer: "Darunter versteht man mehrere Atemwege Parallel.",
+      prompt: "Was kennzeichnet Doppelstrategie im Thema Atmungsvergleich?",
+      answer: "Sie bezeichnet den Mehrere Atemwege Parallel.",
       wrong: [
-        "Darunter versteht man den atemorgan für Wasser.",
-        "Darunter versteht man atemorgan für Luft.",
-        "Darunter versteht man luftröhrensystem der Insekten.",
+        "Sie ist das Atemorgan für Wasser.",
+        "Sie ist das Atemorgan für Luft.",
+        "Sie ist das Luftröhrensystem der Insekten.",
       ],
       explanation: "Doppelstrategie: Mehrere Atemwege parallel",
       wissen: fw(
@@ -2521,12 +2520,12 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f11",
-      prompt: "Was versteht man im Thema Atmungsvergleich auf „Angepasstheit“ zu unter einer Angepasstheit?",
-      answer: "Darunter versteht man bau folgt dem Lebensraum.",
+      prompt: "Was kennzeichnet Angepasstheit im Thema Atmungsvergleich?",
+      answer: "Sie bezeichnet das Bau Folgt dem Lebensraum.",
       wrong: [
-        "Darunter versteht man atemorgan für Wasser.",
-        "Darunter versteht man atemorgan für Luft.",
-        "Darunter versteht man luftröhrensystem der Insekten.",
+        "Sie ist das Atemorgan für Wasser.",
+        "Sie ist das Atemorgan für Luft.",
+        "Sie ist das Luftröhrensystem der Insekten.",
       ],
       explanation: "Angepasstheit: Bau folgt dem Lebensraum",
       wissen: fw(
@@ -2604,12 +2603,12 @@ export const k6FortpflanzungFormen: BioBank = {
   facts: [
     {
       concept: "bio:k6:fortform:f0",
-      prompt: "Was versteht man im Thema Fortpflanzungsformen auf „Äußere Befruchtung“ zu unter einer Äußere Befruchtung?",
-      answer: "Darunter versteht man keimzellen treffen sich außerhalb des Körpers.",
+      prompt: "Was kennzeichnet Äußere Befruchtung im Thema Fortpflanzungsformen?",
+      answer: "Sie ist das Keimzellen Treffen Sich Außerhalb des Körpers.",
       wrong: [
-        "Darunter versteht man befruchtung im Körper.",
-        "Darunter versteht man ablage von Eiern.",
-        "Darunter versteht man geburt entwickelter Jungtiere.",
+        "Sie ist das Befruchtung im Körper.",
+        "Sie bezeichnet den Ablage von Eiern.",
+        "Sie bezeichnet die Geburt Entwickelter Jungtiere.",
       ],
       explanation: "Äußere Befruchtung: Keimzellen treffen sich außerhalb des Körpers",
       wissen: fw(
@@ -2620,12 +2619,12 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f1",
-      prompt: "Was versteht man im Thema Fortpflanzungsformen unter einer Innere Befruchtung?",
-      answer: "Darunter versteht man den befruchtung im Körper.",
+      prompt: "Was kennzeichnet Innere Befruchtung im Thema Fortpflanzungsformen?",
+      answer: "Sie ist das Befruchtung im Körper.",
       wrong: [
-        "Darunter versteht man keimzellen Treffen Sich Außerhalb Des Körpers.",
-        "Darunter versteht man ablage von Eiern.",
-        "Darunter versteht man die geburt Entwickelter Jungtiere.",
+        "Sie ist das Keimzellen Treffen Sich Außerhalb des Körpers.",
+        "Sie bezeichnet den Ablage von Eiern.",
+        "Sie bezeichnet die Geburt Entwickelter Jungtiere.",
       ],
       explanation: "Innere Befruchtung: Befruchtung im Körper",
       wissen: fw(
@@ -2636,12 +2635,12 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f2",
-      prompt: "Was versteht man im Thema Fortpflanzungsformen unter einer Eiablage?",
-      answer: "Darunter versteht man ablage von Eiern.",
+      prompt: "Was kennzeichnet Eiablage im Thema Fortpflanzungsformen?",
+      answer: "Sie bezeichnet den Ablage von Eiern.",
       wrong: [
-        "Darunter versteht man keimzellen Treffen Sich Außerhalb Des Körpers.",
-        "Darunter versteht man den befruchtung im Körper.",
-        "Darunter versteht man die geburt Entwickelter Jungtiere.",
+        "Sie ist das Keimzellen Treffen Sich Außerhalb des Körpers.",
+        "Sie ist das Befruchtung im Körper.",
+        "Sie bezeichnet die Geburt Entwickelter Jungtiere.",
       ],
       explanation: "Eiablage: Ablage von Eiern",
       wissen: fw(
@@ -2652,12 +2651,12 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f3",
-      prompt: "Was versteht man im Thema Fortpflanzungsformen unter einem Lebendgeburt?",
-      answer: "Darunter versteht man die geburt Entwickelter Jungtiere.",
+      prompt: "Was kennzeichnet Lebendgeburt im Thema Fortpflanzungsformen?",
+      answer: "Es bezeichnet die Geburt Entwickelter Jungtiere.",
       wrong: [
-        "Darunter versteht man keimzellen Treffen Sich Außerhalb Des Körpers.",
-        "Darunter versteht man den befruchtung im Körper.",
-        "Darunter versteht man ablage von Eiern.",
+        "Es ist das Keimzellen Treffen Sich Außerhalb des Körpers.",
+        "Es ist das Befruchtung im Körper.",
+        "Es bezeichnet den Ablage von Eiern.",
       ],
       explanation: "Lebendgeburt: Geburt entwickelter Jungtiere",
       wissen: fw(
@@ -2668,12 +2667,12 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f4",
-      prompt: "Was versteht man im Thema Fortpflanzungsformen unter einer Metamorphose?",
-      answer: "Darunter versteht man die gestaltwechsel der Entwicklung.",
+      prompt: "Was kennzeichnet Metamorphose im Thema Fortpflanzungsformen?",
+      answer: "Sie bezeichnet die Gestaltwechsel der Entwicklung.",
       wrong: [
-        "Darunter versteht man keimzellen Treffen Sich Außerhalb Des Körpers.",
-        "Darunter versteht man den befruchtung im Körper.",
-        "Darunter versteht man ablage von Eiern.",
+        "Sie ist das Keimzellen Treffen Sich Außerhalb des Körpers.",
+        "Sie ist das Befruchtung im Körper.",
+        "Sie bezeichnet den Ablage von Eiern.",
       ],
       explanation: "Metamorphose: Gestaltwechsel der Entwicklung",
       wissen: fw(
@@ -2684,12 +2683,12 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f5",
-      prompt: "Was versteht man im Thema Fortpflanzungsformen unter einer Brutpflege?",
-      answer: "Darunter versteht man versorgung der Nachkommen.",
+      prompt: "Was kennzeichnet Brutpflege im Thema Fortpflanzungsformen?",
+      answer: "Sie bezeichnet den Versorgung der Nachkommen.",
       wrong: [
-        "Darunter versteht man keimzellen Treffen Sich Außerhalb Des Körpers.",
-        "Darunter versteht man den befruchtung im Körper.",
-        "Darunter versteht man ablage von Eiern.",
+        "Sie ist das Keimzellen Treffen Sich Außerhalb des Körpers.",
+        "Sie ist das Befruchtung im Körper.",
+        "Sie bezeichnet den Ablage von Eiern.",
       ],
       explanation: "Brutpflege: Versorgung der Nachkommen",
       wissen: fw(
@@ -2700,12 +2699,12 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f6",
-      prompt: "Was versteht man im Thema Fortpflanzungsformen unter einem ungeschlechtlich?",
-      answer: "Darunter versteht man die vermehrung Ohne Gametenverschmelzung.",
+      prompt: "Was kennzeichnet ungeschlechtlich im Thema Fortpflanzungsformen?",
+      answer: "Es bezeichnet die Vermehrung ohne Gametenverschmelzung.",
       wrong: [
-        "Darunter versteht man keimzellen Treffen Sich Außerhalb Des Körpers.",
-        "Darunter versteht man den befruchtung im Körper.",
-        "Darunter versteht man ablage von Eiern.",
+        "Es ist das Keimzellen Treffen Sich Außerhalb des Körpers.",
+        "Es ist das Befruchtung im Körper.",
+        "Es bezeichnet den Ablage von Eiern.",
       ],
       explanation: "ungeschlechtlich: Vermehrung ohne Gametenverschmelzung",
       wissen: fw(
@@ -2716,12 +2715,12 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f7",
-      prompt: "Was versteht man im Thema Fortpflanzungsformen unter einem geschlechtlich?",
-      answer: "Darunter versteht man die vermehrung Mit Befruchtung.",
+      prompt: "Was kennzeichnet geschlechtlich im Thema Fortpflanzungsformen?",
+      answer: "Es bezeichnet die Vermehrung mit Befruchtung.",
       wrong: [
-        "Darunter versteht man keimzellen Treffen Sich Außerhalb Des Körpers.",
-        "Darunter versteht man den befruchtung im Körper.",
-        "Darunter versteht man ablage von Eiern.",
+        "Es ist das Keimzellen Treffen Sich Außerhalb des Körpers.",
+        "Es ist das Befruchtung im Körper.",
+        "Es bezeichnet den Ablage von Eiern.",
       ],
       explanation: "geschlechtlich: Vermehrung mit Befruchtung",
       wissen: fw(
@@ -2732,12 +2731,12 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f8",
-      prompt: "Was versteht man im Thema Fortpflanzungsformen auf „Larve“ zu unter einer Larve?",
-      answer: "Darunter versteht man jugendstadium mit anderer Gestalt.",
+      prompt: "Was kennzeichnet Larve im Thema Fortpflanzungsformen?",
+      answer: "Sie ist das Jugendstadium mit Anderer Gestalt.",
       wrong: [
-        "Darunter versteht man keimzellen treffen sich außerhalb des Körpers.",
-        "Darunter versteht man befruchtung im Körper.",
-        "Darunter versteht man ablage von Eiern.",
+        "Sie ist das Keimzellen Treffen Sich Außerhalb des Körpers.",
+        "Sie ist das Befruchtung im Körper.",
+        "Sie bezeichnet den Ablage von Eiern.",
       ],
       explanation: "Larve: Jugendstadium mit anderer Gestalt",
       wissen: fw(
@@ -2748,12 +2747,12 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f9",
-      prompt: "Was versteht man im Thema Fortpflanzungsformen unter einer Puppe?",
-      answer: "Darunter versteht man das ruhe-/Umwandlungsstadium.",
+      prompt: "Was kennzeichnet Puppe im Thema Fortpflanzungsformen?",
+      answer: "Sie ist das Ruhe-/Umwandlungsstadium.",
       wrong: [
-        "Darunter versteht man keimzellen Treffen Sich Außerhalb Des Körpers.",
-        "Darunter versteht man den befruchtung im Körper.",
-        "Darunter versteht man ablage von Eiern.",
+        "Sie ist das Keimzellen Treffen Sich Außerhalb des Körpers.",
+        "Sie ist das Befruchtung im Körper.",
+        "Sie bezeichnet den Ablage von Eiern.",
       ],
       explanation: "Puppe: Ruhe-/Umwandlungsstadium",
       wissen: fw(
@@ -2764,12 +2763,12 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f10",
-      prompt: "Was versteht man im Thema Fortpflanzungsformen auf „Wasserabhängigkeit“ zu unter einer Wasserabhängigkeit?",
-      answer: "Darunter versteht man fortpflanzung an Wasser gebunden.",
+      prompt: "Welche Rolle hat Wasserabhängigkeit im Thema Fortpflanzungsformen?",
+      answer: "Sie ist das Fortpflanzung an Wasser Gebunden.",
       wrong: [
-        "Darunter versteht man keimzellen treffen sich außerhalb des Körpers.",
-        "Darunter versteht man befruchtung im Körper.",
-        "Darunter versteht man ablage von Eiern.",
+        "Sie ist das Keimzellen Treffen Sich Außerhalb des Körpers.",
+        "Sie ist das Befruchtung im Körper.",
+        "Sie bezeichnet den Ablage von Eiern.",
       ],
       explanation: "Wasserabhängigkeit: Fortpflanzung an Wasser gebunden",
       wissen: fw(
@@ -2780,12 +2779,12 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f11",
-      prompt: "Was versteht man im Thema Fortpflanzungsformen auf „Landunabhängigkeit“ zu unter einer Landunabhängigkeit?",
-      answer: "Darunter versteht man fortpflanzung ohne freies Wasser.",
+      prompt: "Was kennzeichnet Landunabhängigkeit im Thema Fortpflanzungsformen?",
+      answer: "Sie bezeichnet den Fortpflanzung ohne Freies Wasser.",
       wrong: [
-        "Darunter versteht man keimzellen treffen sich außerhalb des Körpers.",
-        "Darunter versteht man befruchtung im Körper.",
-        "Darunter versteht man ablage von Eiern.",
+        "Sie ist das Keimzellen Treffen Sich Außerhalb des Körpers.",
+        "Sie ist das Befruchtung im Körper.",
+        "Sie bezeichnet den Ablage von Eiern.",
       ],
       explanation: "Landunabhängigkeit: Fortpflanzung ohne freies Wasser",
       wissen: fw(
@@ -2863,12 +2862,12 @@ export const k6Zelltheorie: BioBank = {
   facts: [
     {
       concept: "bio:k6:zellth:f0",
-      prompt: "Was versteht man im Thema Zelltheorie unter einer Zelle?",
-      answer: "Darunter versteht man die kleinste Lebende Einheit.",
+      prompt: "Was kennzeichnet Zelle im Thema Zelltheorie?",
+      answer: "Sie bezeichnet die Kleinste Lebende Einheit.",
       wrong: [
-        "Darunter versteht man lebewesen Bestehen Aus Zellen.",
-        "Darunter versteht man die organismus Aus Einer Zelle.",
-        "Darunter versteht man organismus Aus Vielen Zellen.",
+        "Sie ist das Lebewesen Bestehen aus Zellen.",
+        "Sie ist die Organismus aus einer Zelle.",
+        "Sie ist das Organismus aus Vielen Zellen.",
       ],
       explanation: "Zelle: Kleinste lebende Einheit",
       wissen: fw(
@@ -2879,12 +2878,12 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f1",
-      prompt: "Was versteht man unter einer Zelltheorie?",
-      answer: "Darunter versteht man lebewesen bestehen aus Zellen.",
+      prompt: "Welche Rolle hat Zelltheorie?",
+      answer: "Sie ist das Lebewesen Bestehen aus Zellen.",
       wrong: [
-        "Darunter versteht man kleinste lebende Einheit.",
-        "Darunter versteht man organismus aus einer Zelle.",
-        "Darunter versteht man organismus aus vielen Zellen.",
+        "Sie bezeichnet die Kleinste Lebende Einheit.",
+        "Sie ist die Organismus aus einer Zelle.",
+        "Sie ist das Organismus aus Vielen Zellen.",
       ],
       explanation: "Zelltheorie: Lebewesen bestehen aus Zellen",
       wissen: fw(
@@ -2895,12 +2894,12 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f2",
-      prompt: "Was versteht man im Thema Zelltheorie auf „Einzeller“ zu unter einem Einzeller?",
-      answer: "Darunter versteht man organismus aus einer Zelle.",
+      prompt: "Wozu dient Einzeller im Thema Zelltheorie?",
+      answer: "Er organismus aus einer Zelle.",
       wrong: [
-        "Darunter versteht man kleinste lebende Einheit.",
-        "Darunter versteht man lebewesen bestehen aus Zellen.",
-        "Darunter versteht man organismus aus vielen Zellen.",
+        "Er bezeichnet die Kleinste Lebende Einheit.",
+        "Er ist das Lebewesen Bestehen aus Zellen.",
+        "Er ist das Organismus aus Vielen Zellen.",
       ],
       explanation: "Einzeller: Organismus aus einer Zelle",
       wissen: fw(
@@ -2911,12 +2910,12 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f3",
-      prompt: "Was versteht man im Thema Zelltheorie auf „Vielzeller“ zu unter einem Vielzeller?",
-      answer: "Darunter versteht man organismus aus vielen Zellen.",
+      prompt: "Wozu dient Vielzeller im Thema Zelltheorie?",
+      answer: "Er organismus aus vielen Zellen.",
       wrong: [
-        "Darunter versteht man kleinste lebende Einheit.",
-        "Darunter versteht man lebewesen bestehen aus Zellen.",
-        "Darunter versteht man organismus aus einer Zelle.",
+        "Er bezeichnet die Kleinste Lebende Einheit.",
+        "Er ist das Lebewesen Bestehen aus Zellen.",
+        "Er ist die Organismus aus einer Zelle.",
       ],
       explanation: "Vielzeller: Organismus aus vielen Zellen",
       wissen: fw(
@@ -2927,12 +2926,12 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f4",
-      prompt: "Was bewirkt oder beschreibt Zellkern im Thema Zelltheorie?",
+      prompt: "Was bewirkt Zellkern im Thema Zelltheorie?",
       answer: "Es enthält Erbinformation bei Eukaryoten.",
       wrong: [
-        "Darunter versteht man die kleinste Lebende Einheit.",
-        "Darunter versteht man lebewesen Bestehen Aus Zellen.",
-        "Darunter versteht man die organismus Aus Einer Zelle.",
+        "Es bezeichnet die Kleinste Lebende Einheit.",
+        "Es ist das Lebewesen Bestehen aus Zellen.",
+        "Es ist die Organismus aus einer Zelle.",
       ],
       explanation: "Zellkern: Enthält Erbinformation bei Eukaryoten",
       wissen: fw(
@@ -2943,12 +2942,12 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f5",
-      prompt: "Was versteht man im Thema Zelltheorie auf „Mikroskop“ zu unter einem Mikroskop?",
-      answer: "Darunter versteht man gerät zur Sichtbarmachung von Zellen.",
+      prompt: "Wozu dient Mikroskop im Thema Zelltheorie?",
+      answer: "Es gerät zur Sichtbarmachung von Zellen.",
       wrong: [
-        "Darunter versteht man kleinste lebende Einheit.",
-        "Darunter versteht man lebewesen bestehen aus Zellen.",
-        "Darunter versteht man organismus aus einer Zelle.",
+        "Es bezeichnet die Kleinste Lebende Einheit.",
+        "Es ist das Lebewesen Bestehen aus Zellen.",
+        "Es ist die Organismus aus einer Zelle.",
       ],
       explanation: "Mikroskop: Gerät zur Sichtbarmachung von Zellen",
       wissen: fw(
@@ -2959,12 +2958,12 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f6",
-      prompt: "Was versteht man im Thema Zelltheorie unter einer Gewebe?",
-      answer: "Darunter versteht man verband Gleichartiger Zellen.",
+      prompt: "Was kennzeichnet Gewebe im Thema Zelltheorie?",
+      answer: "Sie ist das Verband Gleichartiger Zellen.",
       wrong: [
-        "Darunter versteht man die kleinste Lebende Einheit.",
-        "Darunter versteht man lebewesen Bestehen Aus Zellen.",
-        "Darunter versteht man die organismus Aus Einer Zelle.",
+        "Sie bezeichnet die Kleinste Lebende Einheit.",
+        "Sie ist das Lebewesen Bestehen aus Zellen.",
+        "Sie ist die Organismus aus einer Zelle.",
       ],
       explanation: "Gewebe: Verband gleichartiger Zellen",
       wissen: fw(
@@ -2975,12 +2974,12 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f7",
-      prompt: "Was versteht man im Thema Zelltheorie unter einem Organ?",
-      answer: "Darunter versteht man funktionseinheit Aus Geweben.",
+      prompt: "Wozu dient Organ im Thema Zelltheorie?",
+      answer: "Es funktionseinheit aus Geweben.",
       wrong: [
-        "Darunter versteht man die kleinste Lebende Einheit.",
-        "Darunter versteht man lebewesen Bestehen Aus Zellen.",
-        "Darunter versteht man die organismus Aus Einer Zelle.",
+        "Es bezeichnet die Kleinste Lebende Einheit.",
+        "Es ist das Lebewesen Bestehen aus Zellen.",
+        "Es ist die Organismus aus einer Zelle.",
       ],
       explanation: "Organ: Funktionseinheit aus Geweben",
       wissen: fw(
@@ -2991,12 +2990,12 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f8",
-      prompt: "Was versteht man im Thema Zelltheorie auf „Schleiden“ zu unter einem Schleiden?",
-      answer: "Darunter versteht man mitbegründer der pflanzlichen Zelltheorie.",
+      prompt: "Was kennzeichnet Schleiden im Thema Zelltheorie?",
+      answer: "Es bezeichnet die Mitbegründer der Pflanzlichen Zelltheorie.",
       wrong: [
-        "Darunter versteht man kleinste lebende Einheit.",
-        "Darunter versteht man lebewesen bestehen aus Zellen.",
-        "Darunter versteht man organismus aus einer Zelle.",
+        "Es bezeichnet die Kleinste Lebende Einheit.",
+        "Es ist das Lebewesen Bestehen aus Zellen.",
+        "Es ist die Organismus aus einer Zelle.",
       ],
       explanation: "Schleiden: Mitbegründer der pflanzlichen Zelltheorie",
       wissen: fw(
@@ -3007,12 +3006,12 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f9",
-      prompt: "Was versteht man im Thema Zelltheorie auf „Schwann“ zu unter einem Schwann?",
-      answer: "Darunter versteht man übertrug Zellgedanken auf Tiere.",
+      prompt: "Was kennzeichnet Schwann im Thema Zelltheorie?",
+      answer: "Es bezeichnet die Übertrug Zellgedanken auf Tiere.",
       wrong: [
-        "Darunter versteht man kleinste lebende Einheit.",
-        "Darunter versteht man lebewesen bestehen aus Zellen.",
-        "Darunter versteht man organismus aus einer Zelle.",
+        "Es bezeichnet die Kleinste Lebende Einheit.",
+        "Es ist das Lebewesen Bestehen aus Zellen.",
+        "Es ist die Organismus aus einer Zelle.",
       ],
       explanation: "Schwann: Übertrug Zellgedanken auf Tiere",
       wissen: fw(
@@ -3023,12 +3022,12 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f10",
-      prompt: "Was versteht man im Thema Zelltheorie auf „Virchow“ zu unter einem Virchow?",
-      answer: "Darunter versteht man zellen entstehen aus Zellen.",
+      prompt: "Was kennzeichnet Virchow im Thema Zelltheorie?",
+      answer: "Es ist das Zellen Entstehen aus Zellen.",
       wrong: [
-        "Darunter versteht man kleinste lebende Einheit.",
-        "Darunter versteht man lebewesen bestehen aus Zellen.",
-        "Darunter versteht man organismus aus einer Zelle.",
+        "Es bezeichnet die Kleinste Lebende Einheit.",
+        "Es ist das Lebewesen Bestehen aus Zellen.",
+        "Es ist die Organismus aus einer Zelle.",
       ],
       explanation: "Virchow: Zellen entstehen aus Zellen",
       wissen: fw(
@@ -3039,12 +3038,12 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f11",
-      prompt: "Was versteht man im Thema Zelltheorie unter einer Differenzierung?",
-      answer: "Darunter versteht man spezialisierung von Zellen.",
+      prompt: "Was kennzeichnet Differenzierung im Thema Zelltheorie?",
+      answer: "Sie ist das Spezialisierung von Zellen.",
       wrong: [
-        "Darunter versteht man die kleinste Lebende Einheit.",
-        "Darunter versteht man lebewesen Bestehen Aus Zellen.",
-        "Darunter versteht man die organismus Aus Einer Zelle.",
+        "Sie bezeichnet die Kleinste Lebende Einheit.",
+        "Sie ist das Lebewesen Bestehen aus Zellen.",
+        "Sie ist die Organismus aus einer Zelle.",
       ],
       explanation: "Differenzierung: Spezialisierung von Zellen",
       wissen: fw(
@@ -3122,12 +3121,12 @@ export const k6OrganellenEnergie: BioBank = {
   facts: [
     {
       concept: "bio:k6:orgene:f0",
-      prompt: "Was versteht man im Thema Energieorganellen unter einem Mitochondrium?",
-      answer: "Darunter versteht man die ort der Zellatmung.",
+      prompt: "Was kennzeichnet Mitochondrium im Thema Energieorganellen?",
+      answer: "Es ist die Ort der Zellatmung.",
       wrong: [
-        "Darunter versteht man die ort der Fotosynthese.",
-        "Darunter versteht man die energiewährung der Zelle.",
-        "Darunter versteht man abbau von Zucker Mit Energiegewinn.",
+        "Es bezeichnet die Ort der Fotosynthese.",
+        "Es ist die Energiewährung der Zelle.",
+        "Es bezeichnet den Abbau von Zucker mit Energiegewinn.",
       ],
       explanation: "Mitochondrium: Ort der Zellatmung",
       wissen: fw(
@@ -3138,12 +3137,12 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f1",
-      prompt: "Was versteht man im Thema Energieorganellen unter einem Chloroplast?",
-      answer: "Darunter versteht man die ort der Fotosynthese.",
+      prompt: "Was kennzeichnet Chloroplast im Thema Energieorganellen?",
+      answer: "Es bezeichnet die Ort der Fotosynthese.",
       wrong: [
-        "Darunter versteht man die ort der Zellatmung.",
-        "Darunter versteht man die energiewährung der Zelle.",
-        "Darunter versteht man abbau von Zucker Mit Energiegewinn.",
+        "Es ist die Ort der Zellatmung.",
+        "Es ist die Energiewährung der Zelle.",
+        "Es bezeichnet den Abbau von Zucker mit Energiegewinn.",
       ],
       explanation: "Chloroplast: Ort der Fotosynthese",
       wissen: fw(
@@ -3154,12 +3153,12 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f2",
-      prompt: "Was versteht man im Thema Energieorganellen unter einem ATP?",
-      answer: "Darunter versteht man die energiewährung der Zelle.",
+      prompt: "Was kennzeichnet ATP im Thema Energieorganellen?",
+      answer: "Es ist die Energiewährung der Zelle.",
       wrong: [
-        "Darunter versteht man die ort der Zellatmung.",
-        "Darunter versteht man die ort der Fotosynthese.",
-        "Darunter versteht man abbau von Zucker Mit Energiegewinn.",
+        "Es ist die Ort der Zellatmung.",
+        "Es bezeichnet die Ort der Fotosynthese.",
+        "Es bezeichnet den Abbau von Zucker mit Energiegewinn.",
       ],
       explanation: "ATP: Energiewährung der Zelle",
       wissen: fw(
@@ -3170,12 +3169,12 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f3",
-      prompt: "Was versteht man im Thema Energieorganellen auf „Zellatmung“ zu unter einer Zellatmung?",
-      answer: "Darunter versteht man abbau von Zucker mit Energiegewinn.",
+      prompt: "Was kennzeichnet Zellatmung im Thema Energieorganellen?",
+      answer: "Sie bezeichnet den Abbau von Zucker mit Energiegewinn.",
       wrong: [
-        "Darunter versteht man ort der Zellatmung.",
-        "Darunter versteht man ort der Fotosynthese.",
-        "Darunter versteht man energiewährung der Zelle.",
+        "Sie ist die Ort der Zellatmung.",
+        "Sie bezeichnet die Ort der Fotosynthese.",
+        "Sie ist die Energiewährung der Zelle.",
       ],
       explanation: "Zellatmung: Abbau von Zucker mit Energiegewinn",
       wissen: fw(
@@ -3186,12 +3185,12 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f4",
-      prompt: "Was versteht man im Thema Energieorganellen auf „Fotosynthese“ zu unter einer Fotosynthese?",
-      answer: "Darunter versteht man aufbau organischer Stoffe mit Licht.",
+      prompt: "Wozu dient die Fotosynthese im Thema Energieorganellen?",
+      answer: "Sie aufbau organischer Stoffe mit Licht.",
       wrong: [
-        "Darunter versteht man ort der Zellatmung.",
-        "Darunter versteht man ort der Fotosynthese.",
-        "Darunter versteht man energiewährung der Zelle.",
+        "Sie ist die Ort der Zellatmung.",
+        "Sie bezeichnet die Ort der Fotosynthese.",
+        "Sie ist die Energiewährung der Zelle.",
       ],
       explanation: "Fotosynthese: Aufbau organischer Stoffe mit Licht",
       wissen: fw(
@@ -3202,12 +3201,12 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f5",
-      prompt: "Was versteht man im Thema Energieorganellen auf „Doppelmembran“ zu unter einem Doppelmembran?",
-      answer: "Darunter versteht man zwei Membranen um Organell.",
+      prompt: "Wozu dient Doppelmembran im Thema Energieorganellen?",
+      answer: "Es zwei Membranen um Organell.",
       wrong: [
-        "Darunter versteht man ort der Zellatmung.",
-        "Darunter versteht man ort der Fotosynthese.",
-        "Darunter versteht man energiewährung der Zelle.",
+        "Es ist die Ort der Zellatmung.",
+        "Es bezeichnet die Ort der Fotosynthese.",
+        "Es ist die Energiewährung der Zelle.",
       ],
       explanation: "Doppelmembran: Zwei Membranen um Organell",
       wissen: fw(
@@ -3218,12 +3217,12 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f6",
-      prompt: "Was versteht man im Thema Energieorganellen unter einer Energieumwandlung?",
-      answer: "Darunter versteht man umwandlung von Energieformen.",
+      prompt: "Was kennzeichnet Energieumwandlung im Thema Energieorganellen?",
+      answer: "Sie ist das Umwandlung von Energieformen.",
       wrong: [
-        "Darunter versteht man die ort der Zellatmung.",
-        "Darunter versteht man die ort der Fotosynthese.",
-        "Darunter versteht man die energiewährung der Zelle.",
+        "Sie ist die Ort der Zellatmung.",
+        "Sie bezeichnet die Ort der Fotosynthese.",
+        "Sie ist die Energiewährung der Zelle.",
       ],
       explanation: "Energieumwandlung: Umwandlung von Energieformen",
       wissen: fw(
@@ -3234,12 +3233,12 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f7",
-      prompt: "Was versteht man im Thema Energieorganellen unter einer Cytoplasma?",
-      answer: "Darunter versteht man das zellinnenraum.",
+      prompt: "Was kennzeichnet Cytoplasma im Thema Energieorganellen?",
+      answer: "Sie bezeichnet das Zellinnenraum.",
       wrong: [
-        "Darunter versteht man die ort der Zellatmung.",
-        "Darunter versteht man die ort der Fotosynthese.",
-        "Darunter versteht man die energiewährung der Zelle.",
+        "Sie ist die Ort der Zellatmung.",
+        "Sie bezeichnet die Ort der Fotosynthese.",
+        "Sie ist die Energiewährung der Zelle.",
       ],
       explanation: "Cytoplasma: Zellinnenraum",
       wissen: fw(
@@ -3250,12 +3249,12 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f8",
-      prompt: "Was versteht man im Thema Energieorganellen unter einer Glukose?",
-      answer: "Darunter versteht man den wichtiger Energieträger.",
+      prompt: "Was kennzeichnet Glukose im Thema Energieorganellen?",
+      answer: "Sie bezeichnet den Wichtiger Energieträger.",
       wrong: [
-        "Darunter versteht man die ort der Zellatmung.",
-        "Darunter versteht man die ort der Fotosynthese.",
-        "Darunter versteht man die energiewährung der Zelle.",
+        "Sie ist die Ort der Zellatmung.",
+        "Sie bezeichnet die Ort der Fotosynthese.",
+        "Sie ist die Energiewährung der Zelle.",
       ],
       explanation: "Glukose: Wichtiger Energieträger",
       wissen: fw(
@@ -3266,12 +3265,12 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f9",
-      prompt: "Was versteht man im Thema Energieorganellen auf „Sauerstoff“ zu unter einem Sauerstoff?",
-      answer: "Darunter versteht man reaktand der aeroben Atmung.",
+      prompt: "Was kennzeichnet Sauerstoff im Thema Energieorganellen?",
+      answer: "Es ist die Reaktand der Aeroben Atmung.",
       wrong: [
-        "Darunter versteht man ort der Zellatmung.",
-        "Darunter versteht man ort der Fotosynthese.",
-        "Darunter versteht man energiewährung der Zelle.",
+        "Es ist die Ort der Zellatmung.",
+        "Es bezeichnet die Ort der Fotosynthese.",
+        "Es ist die Energiewährung der Zelle.",
       ],
       explanation: "Sauerstoff: Reaktand der aeroben Atmung",
       wissen: fw(
@@ -3282,12 +3281,12 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f10",
-      prompt: "Was versteht man im Thema Energieorganellen unter einer Autotrophie?",
-      answer: "Darunter versteht man die selbsternährung Über Assimilation.",
+      prompt: "Was kennzeichnet Autotrophie im Thema Energieorganellen?",
+      answer: "Sie bezeichnet die Selbsternährung über Assimilation.",
       wrong: [
-        "Darunter versteht man die ort der Zellatmung.",
-        "Darunter versteht man die ort der Fotosynthese.",
-        "Darunter versteht man die energiewährung der Zelle.",
+        "Sie ist die Ort der Zellatmung.",
+        "Sie bezeichnet die Ort der Fotosynthese.",
+        "Sie ist die Energiewährung der Zelle.",
       ],
       explanation: "Autotrophie: Selbsternährung über Assimilation",
       wissen: fw(
@@ -3298,12 +3297,12 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f11",
-      prompt: "Was versteht man im Thema Energieorganellen auf „Heterotrophie“ zu unter einer Heterotrophie?",
-      answer: "Darunter versteht man abhängigkeit von organischer Nahrung.",
+      prompt: "Wozu dient die Heterotrophie im Thema Energieorganellen?",
+      answer: "Sie abhängigkeit von organischer Nahrung.",
       wrong: [
-        "Darunter versteht man ort der Zellatmung.",
-        "Darunter versteht man ort der Fotosynthese.",
-        "Darunter versteht man energiewährung der Zelle.",
+        "Sie ist die Ort der Zellatmung.",
+        "Sie bezeichnet die Ort der Fotosynthese.",
+        "Sie ist die Energiewährung der Zelle.",
       ],
       explanation: "Heterotrophie: Abhängigkeit von organischer Nahrung",
       wissen: fw(
@@ -3381,12 +3380,12 @@ export const k7PulsBlutdruck: BioBank = {
   facts: [
     {
       concept: "bio:k7:puls:f0",
-      prompt: "Was versteht man im Thema Puls/Blutdruck auf „Puls“ zu unter einem Puls?",
-      answer: "Darunter versteht man spürbare Druckwelle der Arterien.",
+      prompt: "Was kennzeichnet Puls im Thema Puls/Blutdruck?",
+      answer: "Es bezeichnet den Spürbare Druckwelle der Arterien.",
       wrong: [
-        "Darunter versteht man schläge pro Minute.",
-        "Darunter versteht man druck des Blutes auf Arterienwände.",
-        "Darunter versteht man auswurfphase des Herzens.",
+        "Es bezeichnet die Schläge Pro Minute.",
+        "Es bezeichnet die Druck des Blutes auf Arterienwände.",
+        "Es bezeichnet den Auswurfphase des Herzens.",
       ],
       explanation: "Puls: Spürbare Druckwelle der Arterien",
       wissen: fw(
@@ -3397,12 +3396,12 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f1",
-      prompt: "Was versteht man im Thema Puls/Blutdruck unter einer Pulsfrequenz?",
-      answer: "Darunter versteht man die schläge Pro Minute.",
+      prompt: "Was kennzeichnet Pulsfrequenz im Thema Puls/Blutdruck?",
+      answer: "Sie bezeichnet die Schläge Pro Minute.",
       wrong: [
-        "Darunter versteht man spürbare Druckwelle der Arterien.",
-        "Darunter versteht man die druck Des Blutes auf Arterienwände.",
-        "Darunter versteht man auswurfphase Des Herzens.",
+        "Sie bezeichnet den Spürbare Druckwelle der Arterien.",
+        "Sie bezeichnet die Druck des Blutes auf Arterienwände.",
+        "Sie bezeichnet den Auswurfphase des Herzens.",
       ],
       explanation: "Pulsfrequenz: Schläge pro Minute",
       wissen: fw(
@@ -3413,12 +3412,12 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f2",
-      prompt: "Was versteht man im Thema Puls/Blutdruck auf „Blutdruck“ zu unter einem Blutdruck?",
-      answer: "Darunter versteht man druck des Blutes auf Arterienwände.",
+      prompt: "Was kennzeichnet Blutdruck im Thema Puls/Blutdruck?",
+      answer: "Es bezeichnet die Druck des Blutes auf Arterienwände.",
       wrong: [
-        "Darunter versteht man spürbare Druckwelle der Arterien.",
-        "Darunter versteht man schläge pro Minute.",
-        "Darunter versteht man auswurfphase des Herzens.",
+        "Es bezeichnet den Spürbare Druckwelle der Arterien.",
+        "Es bezeichnet die Schläge Pro Minute.",
+        "Es bezeichnet den Auswurfphase des Herzens.",
       ],
       explanation: "Blutdruck: Druck des Blutes auf Arterienwände",
       wissen: fw(
@@ -3429,12 +3428,12 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f3",
-      prompt: "Was versteht man im Thema Puls/Blutdruck unter einer Systole?",
-      answer: "Darunter versteht man auswurfphase Des Herzens.",
+      prompt: "Was kennzeichnet Systole im Thema Puls/Blutdruck?",
+      answer: "Sie bezeichnet den Auswurfphase des Herzens.",
       wrong: [
-        "Darunter versteht man spürbare Druckwelle der Arterien.",
-        "Darunter versteht man die schläge Pro Minute.",
-        "Darunter versteht man die druck Des Blutes auf Arterienwände.",
+        "Sie bezeichnet den Spürbare Druckwelle der Arterien.",
+        "Sie bezeichnet die Schläge Pro Minute.",
+        "Sie bezeichnet die Druck des Blutes auf Arterienwände.",
       ],
       explanation: "Systole: Auswurfphase des Herzens",
       wissen: fw(
@@ -3445,12 +3444,12 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f4",
-      prompt: "Was versteht man im Thema Puls/Blutdruck unter einer Diastole?",
-      answer: "Darunter versteht man die entspannungs-/Füllungsphase.",
+      prompt: "Was kennzeichnet Diastole im Thema Puls/Blutdruck?",
+      answer: "Sie bezeichnet die Entspannungs-/Füllungsphase.",
       wrong: [
-        "Darunter versteht man spürbare Druckwelle der Arterien.",
-        "Darunter versteht man die schläge Pro Minute.",
-        "Darunter versteht man die druck Des Blutes auf Arterienwände.",
+        "Sie bezeichnet den Spürbare Druckwelle der Arterien.",
+        "Sie bezeichnet die Schläge Pro Minute.",
+        "Sie bezeichnet die Druck des Blutes auf Arterienwände.",
       ],
       explanation: "Diastole: Entspannungs-/Füllungsphase",
       wissen: fw(
@@ -3461,12 +3460,12 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f5",
-      prompt: "Was versteht man im Thema Puls/Blutdruck auf „Ruhepuls“ zu unter einem Ruhepuls?",
-      answer: "Darunter versteht man puls in entspanntem Zustand.",
+      prompt: "Was kennzeichnet Ruhepuls im Thema Puls/Blutdruck?",
+      answer: "Es bezeichnet den Puls in Entspanntem Zustand.",
       wrong: [
-        "Darunter versteht man spürbare Druckwelle der Arterien.",
-        "Darunter versteht man schläge pro Minute.",
-        "Darunter versteht man druck des Blutes auf Arterienwände.",
+        "Es bezeichnet den Spürbare Druckwelle der Arterien.",
+        "Es bezeichnet die Schläge Pro Minute.",
+        "Es bezeichnet die Druck des Blutes auf Arterienwände.",
       ],
       explanation: "Ruhepuls: Puls in entspanntem Zustand",
       wissen: fw(
@@ -3477,12 +3476,12 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f6",
-      prompt: "Was versteht man im Thema Puls/Blutdruck auf „Belastungspuls“ zu unter einem Belastungspuls?",
-      answer: "Darunter versteht man puls unter körperlicher Arbeit.",
+      prompt: "Was kennzeichnet Belastungspuls im Thema Puls/Blutdruck?",
+      answer: "Es ist das Puls unter Körperlicher Arbeit.",
       wrong: [
-        "Darunter versteht man spürbare Druckwelle der Arterien.",
-        "Darunter versteht man schläge pro Minute.",
-        "Darunter versteht man druck des Blutes auf Arterienwände.",
+        "Es bezeichnet den Spürbare Druckwelle der Arterien.",
+        "Es bezeichnet die Schläge Pro Minute.",
+        "Es bezeichnet die Druck des Blutes auf Arterienwände.",
       ],
       explanation: "Belastungspuls: Puls unter körperlicher Arbeit",
       wissen: fw(
@@ -3493,12 +3492,12 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f7",
-      prompt: "Was versteht man im Thema Puls/Blutdruck unter einem mmHg?",
-      answer: "Darunter versteht man einheit Des Blutdrucks.",
+      prompt: "Was kennzeichnet mmHg im Thema Puls/Blutdruck?",
+      answer: "Es bezeichnet den Einheit des Blutdrucks.",
       wrong: [
-        "Darunter versteht man spürbare Druckwelle der Arterien.",
-        "Darunter versteht man die schläge Pro Minute.",
-        "Darunter versteht man die druck Des Blutes auf Arterienwände.",
+        "Es bezeichnet den Spürbare Druckwelle der Arterien.",
+        "Es bezeichnet die Schläge Pro Minute.",
+        "Es bezeichnet die Druck des Blutes auf Arterienwände.",
       ],
       explanation: "mmHg: Einheit des Blutdrucks",
       wissen: fw(
@@ -3509,12 +3508,12 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f8",
-      prompt: "Was versteht man im Thema Puls/Blutdruck auf „Arterie“ zu unter einer Arterie?",
-      answer: "Darunter versteht man gefäß vom Herzen weg.",
+      prompt: "Was kennzeichnet Arterie im Thema Puls/Blutdruck?",
+      answer: "Sie bezeichnet den Gefäß vom Herzen Weg.",
       wrong: [
-        "Darunter versteht man spürbare Druckwelle der Arterien.",
-        "Darunter versteht man schläge pro Minute.",
-        "Darunter versteht man druck des Blutes auf Arterienwände.",
+        "Sie bezeichnet den Spürbare Druckwelle der Arterien.",
+        "Sie bezeichnet die Schläge Pro Minute.",
+        "Sie bezeichnet die Druck des Blutes auf Arterienwände.",
       ],
       explanation: "Arterie: Gefäß vom Herzen weg",
       wissen: fw(
@@ -3525,12 +3524,12 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f9",
-      prompt: "Was versteht man im Thema Puls/Blutdruck unter einem Vitalparameter?",
-      answer: "Darunter versteht man die grundlegende Körperwerte.",
+      prompt: "Was kennzeichnet Vitalparameter im Thema Puls/Blutdruck?",
+      answer: "Er ist die Grundlegende Körperwerte.",
       wrong: [
-        "Darunter versteht man spürbare Druckwelle der Arterien.",
-        "Darunter versteht man die schläge Pro Minute.",
-        "Darunter versteht man die druck Des Blutes auf Arterienwände.",
+        "Er bezeichnet den Spürbare Druckwelle der Arterien.",
+        "Er bezeichnet die Schläge Pro Minute.",
+        "Er bezeichnet die Druck des Blutes auf Arterienwände.",
       ],
       explanation: "Vitalparameter: Grundlegende Körperwerte",
       wissen: fw(
@@ -3541,12 +3540,12 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f10",
-      prompt: "Was versteht man im Thema Puls/Blutdruck auf „Bluthochdruck“ zu unter einem Bluthochdruck?",
-      answer: "Darunter versteht man dauerhaft zu hoher Blutdruck.",
+      prompt: "Was kennzeichnet Bluthochdruck im Thema Puls/Blutdruck?",
+      answer: "Es bezeichnet den Dauerhaft zu Hoher Blutdruck.",
       wrong: [
-        "Darunter versteht man spürbare Druckwelle der Arterien.",
-        "Darunter versteht man schläge pro Minute.",
-        "Darunter versteht man druck des Blutes auf Arterienwände.",
+        "Es bezeichnet den Spürbare Druckwelle der Arterien.",
+        "Es bezeichnet die Schläge Pro Minute.",
+        "Es bezeichnet die Druck des Blutes auf Arterienwände.",
       ],
       explanation: "Bluthochdruck: Dauerhaft zu hoher Blutdruck",
       wissen: fw(
@@ -3557,12 +3556,12 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f11",
-      prompt: "Was versteht man im Thema Puls/Blutdruck unter einer Messmanschette?",
-      answer: "Darunter versteht man die hilfsmittel der Blutdruckmessung.",
+      prompt: "Wozu dient die Messmanschette im Thema Puls/Blutdruck?",
+      answer: "Sie ist das Hilfsmittel der Blutdruckmessung.",
       wrong: [
-        "Darunter versteht man spürbare Druckwelle der Arterien.",
-        "Darunter versteht man die schläge Pro Minute.",
-        "Darunter versteht man die druck Des Blutes auf Arterienwände.",
+        "Sie bezeichnet den Spürbare Druckwelle der Arterien.",
+        "Sie bezeichnet die Schläge Pro Minute.",
+        "Sie bezeichnet die Druck des Blutes auf Arterienwände.",
       ],
       explanation: "Messmanschette: Hilfsmittel der Blutdruckmessung",
       wissen: fw(
@@ -3640,12 +3639,12 @@ export const k7KreislaufGesundheit: BioBank = {
   facts: [
     {
       concept: "bio:k7:krges:f0",
-      prompt: "Was versteht man im Thema Kreislaufgesundheit unter einer Bewegung?",
-      answer: "Darunter versteht man die regelmäßige Körperliche Aktivität.",
+      prompt: "Was kennzeichnet Bewegung im Thema Kreislaufgesundheit?",
+      answer: "Sie ist die Regelmäßige Körperliche Aktivität.",
       wrong: [
-        "Darunter versteht man nährstoffreiche, Abwechslungsreiche Kost.",
-        "Darunter versteht man verzicht auf Tabakrauch.",
-        "Darunter versteht man dauerhaft Erhöhter Blutdruck.",
+        "Sie bezeichnet den Nährstoffreiche, Abwechslungsreiche Kost.",
+        "Sie bezeichnet den Verzicht auf Tabakrauch.",
+        "Sie bezeichnet den Dauerhaft Erhöhter Blutdruck.",
       ],
       explanation: "Bewegung: Regelmäßige körperliche Aktivität",
       wissen: fw(
@@ -3656,12 +3655,12 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f1",
-      prompt: "Was versteht man im Thema Kreislaufgesundheit unter einer Ausgewogene Ernährung?",
-      answer: "Darunter versteht man nährstoffreiche, Abwechslungsreiche Kost.",
+      prompt: "Was kennzeichnet Ausgewogene Ernährung im Thema Kreislaufgesundheit?",
+      answer: "Sie bezeichnet den Nährstoffreiche, Abwechslungsreiche Kost.",
       wrong: [
-        "Darunter versteht man die regelmäßige Körperliche Aktivität.",
-        "Darunter versteht man verzicht auf Tabakrauch.",
-        "Darunter versteht man dauerhaft Erhöhter Blutdruck.",
+        "Sie ist die Regelmäßige Körperliche Aktivität.",
+        "Sie bezeichnet den Verzicht auf Tabakrauch.",
+        "Sie bezeichnet den Dauerhaft Erhöhter Blutdruck.",
       ],
       explanation: "Ausgewogene Ernährung: Nährstoffreiche, abwechslungsreiche Kost",
       wissen: fw(
@@ -3672,12 +3671,12 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f2",
-      prompt: "Was versteht man im Thema Kreislaufgesundheit unter einem Nichtrauchen?",
-      answer: "Darunter versteht man verzicht auf Tabakrauch.",
+      prompt: "Was kennzeichnet Nichtrauchen im Thema Kreislaufgesundheit?",
+      answer: "Es bezeichnet den Verzicht auf Tabakrauch.",
       wrong: [
-        "Darunter versteht man die regelmäßige Körperliche Aktivität.",
-        "Darunter versteht man nährstoffreiche, Abwechslungsreiche Kost.",
-        "Darunter versteht man dauerhaft Erhöhter Blutdruck.",
+        "Es ist die Regelmäßige Körperliche Aktivität.",
+        "Es bezeichnet den Nährstoffreiche, Abwechslungsreiche Kost.",
+        "Es bezeichnet den Dauerhaft Erhöhter Blutdruck.",
       ],
       explanation: "Nichtrauchen: Verzicht auf Tabakrauch",
       wissen: fw(
@@ -3688,12 +3687,12 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f3",
-      prompt: "Was versteht man im Thema Kreislaufgesundheit unter einem Bluthochdruck?",
-      answer: "Darunter versteht man dauerhaft Erhöhter Blutdruck.",
+      prompt: "Was kennzeichnet Bluthochdruck im Thema Kreislaufgesundheit?",
+      answer: "Es bezeichnet den Dauerhaft Erhöhter Blutdruck.",
       wrong: [
-        "Darunter versteht man die regelmäßige Körperliche Aktivität.",
-        "Darunter versteht man nährstoffreiche, Abwechslungsreiche Kost.",
-        "Darunter versteht man verzicht auf Tabakrauch.",
+        "Es ist die Regelmäßige Körperliche Aktivität.",
+        "Es bezeichnet den Nährstoffreiche, Abwechslungsreiche Kost.",
+        "Es bezeichnet den Verzicht auf Tabakrauch.",
       ],
       explanation: "Bluthochdruck: Dauerhaft erhöhter Blutdruck",
       wissen: fw(
@@ -3704,12 +3703,12 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f4",
-      prompt: "Was versteht man im Thema Kreislaufgesundheit unter einer Arteriosklerose?",
-      answer: "Darunter versteht man die gefäßverkalkung/-verengung.",
+      prompt: "Was kennzeichnet Arteriosklerose im Thema Kreislaufgesundheit?",
+      answer: "Sie bezeichnet die Gefäßverkalkung/-verengung.",
       wrong: [
-        "Darunter versteht man die regelmäßige Körperliche Aktivität.",
-        "Darunter versteht man nährstoffreiche, Abwechslungsreiche Kost.",
-        "Darunter versteht man verzicht auf Tabakrauch.",
+        "Sie ist die Regelmäßige Körperliche Aktivität.",
+        "Sie bezeichnet den Nährstoffreiche, Abwechslungsreiche Kost.",
+        "Sie bezeichnet den Verzicht auf Tabakrauch.",
       ],
       explanation: "Arteriosklerose: Gefäßverkalkung/-verengung",
       wissen: fw(
@@ -3720,12 +3719,12 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f5",
-      prompt: "Was versteht man im Thema Kreislaufgesundheit auf „Cholesterin“ zu unter einem Cholesterin?",
-      answer: "Darunter versteht man blutfettstoff mit Risiko bei Überschuss.",
+      prompt: "Was kennzeichnet Cholesterin im Thema Kreislaufgesundheit?",
+      answer: "Es bezeichnet den Blutfettstoff mit Risiko bei Überschuss.",
       wrong: [
-        "Darunter versteht man regelmäßige körperliche Aktivität.",
-        "Darunter versteht man nährstoffreiche, abwechslungsreiche Kost.",
-        "Darunter versteht man verzicht auf Tabakrauch.",
+        "Es ist die Regelmäßige Körperliche Aktivität.",
+        "Es bezeichnet den Nährstoffreiche, Abwechslungsreiche Kost.",
+        "Es bezeichnet den Verzicht auf Tabakrauch.",
       ],
       explanation: "Cholesterin: Blutfettstoff mit Risiko bei Überschuss",
       wissen: fw(
@@ -3736,12 +3735,12 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f6",
-      prompt: "Was versteht man im Thema Kreislaufgesundheit unter einem Stressmanagement?",
-      answer: "Darunter versteht man umgang Mit Dauerstress.",
+      prompt: "Was kennzeichnet Stressmanagement im Thema Kreislaufgesundheit?",
+      answer: "Es bezeichnet den Umgang mit Dauerstress.",
       wrong: [
-        "Darunter versteht man die regelmäßige Körperliche Aktivität.",
-        "Darunter versteht man nährstoffreiche, Abwechslungsreiche Kost.",
-        "Darunter versteht man verzicht auf Tabakrauch.",
+        "Es ist die Regelmäßige Körperliche Aktivität.",
+        "Es bezeichnet den Nährstoffreiche, Abwechslungsreiche Kost.",
+        "Es bezeichnet den Verzicht auf Tabakrauch.",
       ],
       explanation: "Stressmanagement: Umgang mit Dauerstress",
       wissen: fw(
@@ -3752,12 +3751,12 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f7",
-      prompt: "Was versteht man im Thema Kreislaufgesundheit unter einem Herzinfarkt?",
-      answer: "Darunter versteht man verschluss Eines Herzkranzgefäßes.",
+      prompt: "Was kennzeichnet Herzinfarkt im Thema Kreislaufgesundheit?",
+      answer: "Es bezeichnet den Verschluss Eines Herzkranzgefäßes.",
       wrong: [
-        "Darunter versteht man die regelmäßige Körperliche Aktivität.",
-        "Darunter versteht man nährstoffreiche, Abwechslungsreiche Kost.",
-        "Darunter versteht man verzicht auf Tabakrauch.",
+        "Es ist die Regelmäßige Körperliche Aktivität.",
+        "Es bezeichnet den Nährstoffreiche, Abwechslungsreiche Kost.",
+        "Es bezeichnet den Verzicht auf Tabakrauch.",
       ],
       explanation: "Herzinfarkt: Verschluss eines Herzkranzgefäßes",
       wissen: fw(
@@ -3768,12 +3767,12 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f8",
-      prompt: "Was versteht man im Thema Kreislaufgesundheit unter einem Schlaganfall?",
-      answer: "Darunter versteht man durchblutungsstörung im Gehirn.",
+      prompt: "Was kennzeichnet Schlaganfall im Thema Kreislaufgesundheit?",
+      answer: "Es bezeichnet den Durchblutungsstörung im Gehirn.",
       wrong: [
-        "Darunter versteht man die regelmäßige Körperliche Aktivität.",
-        "Darunter versteht man nährstoffreiche, Abwechslungsreiche Kost.",
-        "Darunter versteht man verzicht auf Tabakrauch.",
+        "Es ist die Regelmäßige Körperliche Aktivität.",
+        "Es bezeichnet den Nährstoffreiche, Abwechslungsreiche Kost.",
+        "Es bezeichnet den Verzicht auf Tabakrauch.",
       ],
       explanation: "Schlaganfall: Durchblutungsstörung im Gehirn",
       wissen: fw(
@@ -3784,12 +3783,12 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f9",
-      prompt: "Was versteht man im Thema Kreislaufgesundheit auf „Ausdauer“ zu unter einem Ausdauer?",
-      answer: "Darunter versteht man fähigkeit zu längerer Belastung.",
+      prompt: "Was kennzeichnet Ausdauer im Thema Kreislaufgesundheit?",
+      answer: "Er bezeichnet die Fähigkeit zu Längerer Belastung.",
       wrong: [
-        "Darunter versteht man regelmäßige körperliche Aktivität.",
-        "Darunter versteht man nährstoffreiche, abwechslungsreiche Kost.",
-        "Darunter versteht man verzicht auf Tabakrauch.",
+        "Er ist die Regelmäßige Körperliche Aktivität.",
+        "Er bezeichnet den Nährstoffreiche, Abwechslungsreiche Kost.",
+        "Er bezeichnet den Verzicht auf Tabakrauch.",
       ],
       explanation: "Ausdauer: Fähigkeit zu längerer Belastung",
       wissen: fw(
@@ -3800,12 +3799,12 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f10",
-      prompt: "Was versteht man im Thema Kreislaufgesundheit auf „Risikofaktor“ zu unter einem Risikofaktor?",
-      answer: "Darunter versteht man umstand der Erkrankungswahrscheinlichkeit erhöht.",
+      prompt: "Was kennzeichnet Risikofaktor im Thema Kreislaufgesundheit?",
+      answer: "Er bezeichnet den Umstand der Erkrankungswahrscheinlichkeit Erhöht.",
       wrong: [
-        "Darunter versteht man regelmäßige körperliche Aktivität.",
-        "Darunter versteht man nährstoffreiche, abwechslungsreiche Kost.",
-        "Darunter versteht man verzicht auf Tabakrauch.",
+        "Er ist die Regelmäßige Körperliche Aktivität.",
+        "Er bezeichnet den Nährstoffreiche, Abwechslungsreiche Kost.",
+        "Er bezeichnet den Verzicht auf Tabakrauch.",
       ],
       explanation: "Risikofaktor: Umstand der Erkrankungswahrscheinlichkeit erhöht",
       wissen: fw(
@@ -3816,12 +3815,12 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f11",
-      prompt: "Was versteht man im Thema Kreislaufgesundheit unter einer Prävention?",
-      answer: "Darunter versteht man vorbeugung Durch Lebensstil.",
+      prompt: "Was kennzeichnet Prävention im Thema Kreislaufgesundheit?",
+      answer: "Sie bezeichnet den Vorbeugung durch Lebensstil.",
       wrong: [
-        "Darunter versteht man die regelmäßige Körperliche Aktivität.",
-        "Darunter versteht man nährstoffreiche, Abwechslungsreiche Kost.",
-        "Darunter versteht man verzicht auf Tabakrauch.",
+        "Sie ist die Regelmäßige Körperliche Aktivität.",
+        "Sie bezeichnet den Nährstoffreiche, Abwechslungsreiche Kost.",
+        "Sie bezeichnet den Verzicht auf Tabakrauch.",
       ],
       explanation: "Prävention: Vorbeugung durch Lebensstil",
       wissen: fw(
@@ -3899,12 +3898,12 @@ export const k7Haltung: BioBank = {
   facts: [
     {
       concept: "bio:k7:haltung:f0",
-      prompt: "Was versteht man im Thema Haltungsschäden unter einer Körperhaltung?",
-      answer: "Darunter versteht man die stellung von Rumpf und Wirbelsäule.",
+      prompt: "Was kennzeichnet Körperhaltung im Thema Haltungsschäden?",
+      answer: "Sie bezeichnet die Stellung von Rumpf und Wirbelsäule.",
       wrong: [
-        "Darunter versteht man die dauerhafte Fehlbelastung der Haltung.",
-        "Darunter versteht man die verstärkte Krümmung der Brustwirbelsäule.",
-        "Darunter versteht man die verstärkte Lendenlordose.",
+        "Sie bezeichnet die Dauerhafte Fehlbelastung der Haltung.",
+        "Sie bezeichnet die Verstärkte Krümmung der Brustwirbelsäule.",
+        "Sie bezeichnet die Verstärkte Lendenlordose.",
       ],
       explanation: "Körperhaltung: Stellung von Rumpf und Wirbelsäule",
       wissen: fw(
@@ -3915,12 +3914,12 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f1",
-      prompt: "Was versteht man im Thema Haltungsschäden unter einem Haltungsschaden?",
-      answer: "Darunter versteht man die dauerhafte Fehlbelastung der Haltung.",
+      prompt: "Was kennzeichnet Haltungsschaden im Thema Haltungsschäden?",
+      answer: "Es bezeichnet die Dauerhafte Fehlbelastung der Haltung.",
       wrong: [
-        "Darunter versteht man die stellung von Rumpf und Wirbelsäule.",
-        "Darunter versteht man die verstärkte Krümmung der Brustwirbelsäule.",
-        "Darunter versteht man die verstärkte Lendenlordose.",
+        "Es bezeichnet die Stellung von Rumpf und Wirbelsäule.",
+        "Es bezeichnet die Verstärkte Krümmung der Brustwirbelsäule.",
+        "Es bezeichnet die Verstärkte Lendenlordose.",
       ],
       explanation: "Haltungsschaden: Dauerhafte Fehlbelastung der Haltung",
       wissen: fw(
@@ -3931,12 +3930,12 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f2",
-      prompt: "Was versteht man im Thema Haltungsschäden unter einem Rundrücken?",
-      answer: "Darunter versteht man die verstärkte Krümmung der Brustwirbelsäule.",
+      prompt: "Was kennzeichnet Rundrücken im Thema Haltungsschäden?",
+      answer: "Es bezeichnet die Verstärkte Krümmung der Brustwirbelsäule.",
       wrong: [
-        "Darunter versteht man die stellung von Rumpf und Wirbelsäule.",
-        "Darunter versteht man die dauerhafte Fehlbelastung der Haltung.",
-        "Darunter versteht man die verstärkte Lendenlordose.",
+        "Es bezeichnet die Stellung von Rumpf und Wirbelsäule.",
+        "Es bezeichnet die Dauerhafte Fehlbelastung der Haltung.",
+        "Es bezeichnet die Verstärkte Lendenlordose.",
       ],
       explanation: "Rundrücken: Verstärkte Krümmung der Brustwirbelsäule",
       wissen: fw(
@@ -3947,12 +3946,12 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f3",
-      prompt: "Was versteht man im Thema Haltungsschäden unter einem Hohlkreuz?",
-      answer: "Darunter versteht man die verstärkte Lendenlordose.",
+      prompt: "Was kennzeichnet Hohlkreuz im Thema Haltungsschäden?",
+      answer: "Es bezeichnet die Verstärkte Lendenlordose.",
       wrong: [
-        "Darunter versteht man die stellung von Rumpf und Wirbelsäule.",
-        "Darunter versteht man die dauerhafte Fehlbelastung der Haltung.",
-        "Darunter versteht man die verstärkte Krümmung der Brustwirbelsäule.",
+        "Es bezeichnet die Stellung von Rumpf und Wirbelsäule.",
+        "Es bezeichnet die Dauerhafte Fehlbelastung der Haltung.",
+        "Es bezeichnet die Verstärkte Krümmung der Brustwirbelsäule.",
       ],
       explanation: "Hohlkreuz: Verstärkte Lendenlordose",
       wissen: fw(
@@ -3963,12 +3962,12 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f4",
-      prompt: "Was versteht man im Thema Haltungsschäden unter einem Muskelkorsett?",
-      answer: "Darunter versteht man die stabilisierende Rumpfmuskulatur.",
+      prompt: "Was kennzeichnet Muskelkorsett im Thema Haltungsschäden?",
+      answer: "Es bezeichnet die Stabilisierende Rumpfmuskulatur.",
       wrong: [
-        "Darunter versteht man die stellung von Rumpf und Wirbelsäule.",
-        "Darunter versteht man die dauerhafte Fehlbelastung der Haltung.",
-        "Darunter versteht man die verstärkte Krümmung der Brustwirbelsäule.",
+        "Es bezeichnet die Stellung von Rumpf und Wirbelsäule.",
+        "Es bezeichnet die Dauerhafte Fehlbelastung der Haltung.",
+        "Es bezeichnet die Verstärkte Krümmung der Brustwirbelsäule.",
       ],
       explanation: "Muskelkorsett: Stabilisierende Rumpfmuskulatur",
       wissen: fw(
@@ -3979,12 +3978,12 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f5",
-      prompt: "Was versteht man im Thema Haltungsschäden auf „Bewegungsmangel“ zu unter einem Bewegungsmangel?",
-      answer: "Darunter versteht man zu wenig körperliche Aktivität.",
+      prompt: "Was kennzeichnet Bewegungsmangel im Thema Haltungsschäden?",
+      answer: "Es ist die Zu Wenig Körperliche Aktivität.",
       wrong: [
-        "Darunter versteht man stellung von Rumpf und Wirbelsäule.",
-        "Darunter versteht man dauerhafte Fehlbelastung der Haltung.",
-        "Darunter versteht man verstärkte Krümmung der Brustwirbelsäule.",
+        "Es bezeichnet die Stellung von Rumpf und Wirbelsäule.",
+        "Es bezeichnet die Dauerhafte Fehlbelastung der Haltung.",
+        "Es bezeichnet die Verstärkte Krümmung der Brustwirbelsäule.",
       ],
       explanation: "Bewegungsmangel: Zu wenig körperliche Aktivität",
       wissen: fw(
@@ -3995,12 +3994,12 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f6",
-      prompt: "Was versteht man im Thema Haltungsschäden auf „Ergonomie“ zu unter einer Ergonomie?",
-      answer: "Darunter versteht man arbeitsplatz an den Körper anpassen.",
+      prompt: "Was kennzeichnet Ergonomie im Thema Haltungsschäden?",
+      answer: "Sie ist das Arbeitsplatz an den Körper Anpassen.",
       wrong: [
-        "Darunter versteht man stellung von Rumpf und Wirbelsäule.",
-        "Darunter versteht man dauerhafte Fehlbelastung der Haltung.",
-        "Darunter versteht man verstärkte Krümmung der Brustwirbelsäule.",
+        "Sie bezeichnet die Stellung von Rumpf und Wirbelsäule.",
+        "Sie bezeichnet die Dauerhafte Fehlbelastung der Haltung.",
+        "Sie bezeichnet die Verstärkte Krümmung der Brustwirbelsäule.",
       ],
       explanation: "Ergonomie: Arbeitsplatz an den Körper anpassen",
       wissen: fw(
@@ -4011,12 +4010,12 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f7",
-      prompt: "Was versteht man im Thema Haltungsschäden unter einer Wirbelsäule?",
-      answer: "Darunter versteht man die zentrale Stützachse.",
+      prompt: "Was kennzeichnet Wirbelsäule im Thema Haltungsschäden?",
+      answer: "Sie bezeichnet die Zentrale Stützachse.",
       wrong: [
-        "Darunter versteht man die stellung von Rumpf und Wirbelsäule.",
-        "Darunter versteht man die dauerhafte Fehlbelastung der Haltung.",
-        "Darunter versteht man die verstärkte Krümmung der Brustwirbelsäule.",
+        "Sie bezeichnet die Stellung von Rumpf und Wirbelsäule.",
+        "Sie bezeichnet die Dauerhafte Fehlbelastung der Haltung.",
+        "Sie bezeichnet die Verstärkte Krümmung der Brustwirbelsäule.",
       ],
       explanation: "Wirbelsäule: Zentrale Stützachse",
       wissen: fw(
@@ -4027,12 +4026,12 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f8",
-      prompt: "Was versteht man im Thema Haltungsschäden unter einer Bandscheibe?",
-      answer: "Darunter versteht man polster Zwischen Wirbeln.",
+      prompt: "Was kennzeichnet Bandscheibe im Thema Haltungsschäden?",
+      answer: "Sie bezeichnet den Polster Zwischen Wirbeln.",
       wrong: [
-        "Darunter versteht man die stellung von Rumpf und Wirbelsäule.",
-        "Darunter versteht man die dauerhafte Fehlbelastung der Haltung.",
-        "Darunter versteht man die verstärkte Krümmung der Brustwirbelsäule.",
+        "Sie bezeichnet die Stellung von Rumpf und Wirbelsäule.",
+        "Sie bezeichnet die Dauerhafte Fehlbelastung der Haltung.",
+        "Sie bezeichnet die Verstärkte Krümmung der Brustwirbelsäule.",
       ],
       explanation: "Bandscheibe: Polster zwischen Wirbeln",
       wissen: fw(
@@ -4043,12 +4042,12 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f9",
-      prompt: "Was versteht man im Thema Haltungsschäden unter einer Dehnung?",
-      answer: "Darunter versteht man beweglichkeitstraining.",
+      prompt: "Was kennzeichnet Dehnung im Thema Haltungsschäden?",
+      answer: "Sie bezeichnet den Beweglichkeitstraining.",
       wrong: [
-        "Darunter versteht man die stellung von Rumpf und Wirbelsäule.",
-        "Darunter versteht man die dauerhafte Fehlbelastung der Haltung.",
-        "Darunter versteht man die verstärkte Krümmung der Brustwirbelsäule.",
+        "Sie bezeichnet die Stellung von Rumpf und Wirbelsäule.",
+        "Sie bezeichnet die Dauerhafte Fehlbelastung der Haltung.",
+        "Sie bezeichnet die Verstärkte Krümmung der Brustwirbelsäule.",
       ],
       explanation: "Dehnung: Beweglichkeitstraining",
       wissen: fw(
@@ -4059,12 +4058,12 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f10",
-      prompt: "Was versteht man im Thema Haltungsschäden unter einem Krafttraining?",
-      answer: "Darunter versteht man die stärkung der Muskulatur.",
+      prompt: "Was kennzeichnet Krafttraining im Thema Haltungsschäden?",
+      answer: "Es bezeichnet die Stärkung der Muskulatur.",
       wrong: [
-        "Darunter versteht man die stellung von Rumpf und Wirbelsäule.",
-        "Darunter versteht man die dauerhafte Fehlbelastung der Haltung.",
-        "Darunter versteht man die verstärkte Krümmung der Brustwirbelsäule.",
+        "Es bezeichnet die Stellung von Rumpf und Wirbelsäule.",
+        "Es bezeichnet die Dauerhafte Fehlbelastung der Haltung.",
+        "Es bezeichnet die Verstärkte Krümmung der Brustwirbelsäule.",
       ],
       explanation: "Krafttraining: Stärkung der Muskulatur",
       wissen: fw(
@@ -4075,12 +4074,12 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f11",
-      prompt: "Was versteht man im Thema Haltungsschäden auf „Prävention“ zu unter einer Prävention?",
-      answer: "Darunter versteht man vorbeugung durch Bewegung und Haltung.",
+      prompt: "Was kennzeichnet Prävention im Thema Haltungsschäden?",
+      answer: "Sie bezeichnet die Vorbeugung durch Bewegung und Haltung.",
       wrong: [
-        "Darunter versteht man stellung von Rumpf und Wirbelsäule.",
-        "Darunter versteht man dauerhafte Fehlbelastung der Haltung.",
-        "Darunter versteht man verstärkte Krümmung der Brustwirbelsäule.",
+        "Sie bezeichnet die Stellung von Rumpf und Wirbelsäule.",
+        "Sie bezeichnet die Dauerhafte Fehlbelastung der Haltung.",
+        "Sie bezeichnet die Verstärkte Krümmung der Brustwirbelsäule.",
       ],
       explanation: "Prävention: Vorbeugung durch Bewegung und Haltung",
       wissen: fw(
@@ -4158,12 +4157,12 @@ export const k8Sucht: BioBank = {
   facts: [
     {
       concept: "bio:k8:sucht:f0",
-      prompt: "Was versteht man im Thema Suchtgefahren auf „Sucht“ zu unter einem Sucht?",
-      answer: "Darunter versteht man krankhafte Abhängigkeit von Stoff oder Verhalten.",
+      prompt: "Was kennzeichnet Sucht im Thema Suchtgefahren?",
+      answer: "Es bezeichnet den Krankhafte Abhängigkeit von Stoff oder Verhalten.",
       wrong: [
-        "Darunter versteht man substanz mit Abhängigkeitspotenzial.",
-        "Darunter versteht man gewöhnung mit Dosissteigerung.",
-        "Darunter versteht man beschwerden beim Absetzen.",
+        "Es bezeichnet den Substanz mit Abhängigkeitspotenzial.",
+        "Es bezeichnet die Gewöhnung mit Dosissteigerung.",
+        "Es bezeichnet den Beschwerden Beim Absetzen.",
       ],
       explanation: "Sucht: Krankhafte Abhängigkeit von Stoff oder Verhalten",
       wissen: fw(
@@ -4174,12 +4173,12 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f1",
-      prompt: "Was versteht man im Thema Suchtgefahren unter einem Suchtmittel?",
-      answer: "Darunter versteht man substanz Mit Abhängigkeitspotenzial.",
+      prompt: "Wozu dient Suchtmittel im Thema Suchtgefahren?",
+      answer: "Es substanz mit Abhängigkeitspotenzial.",
       wrong: [
-        "Darunter versteht man krankhafte Abhängigkeit von Stoff oder Verhalten.",
-        "Darunter versteht man die gewöhnung Mit Dosissteigerung.",
-        "Darunter versteht man beschwerden Beim Absetzen.",
+        "Es bezeichnet den Krankhafte Abhängigkeit von Stoff oder Verhalten.",
+        "Es bezeichnet die Gewöhnung mit Dosissteigerung.",
+        "Es bezeichnet den Beschwerden Beim Absetzen.",
       ],
       explanation: "Suchtmittel: Substanz mit Abhängigkeitspotenzial",
       wissen: fw(
@@ -4190,12 +4189,12 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f2",
-      prompt: "Was versteht man im Thema Suchtgefahren unter einer Toleranz?",
-      answer: "Darunter versteht man die gewöhnung Mit Dosissteigerung.",
+      prompt: "Was kennzeichnet Toleranz im Thema Suchtgefahren?",
+      answer: "Sie bezeichnet die Gewöhnung mit Dosissteigerung.",
       wrong: [
-        "Darunter versteht man krankhafte Abhängigkeit von Stoff oder Verhalten.",
-        "Darunter versteht man substanz Mit Abhängigkeitspotenzial.",
-        "Darunter versteht man beschwerden Beim Absetzen.",
+        "Sie bezeichnet den Krankhafte Abhängigkeit von Stoff oder Verhalten.",
+        "Sie bezeichnet den Substanz mit Abhängigkeitspotenzial.",
+        "Sie bezeichnet den Beschwerden Beim Absetzen.",
       ],
       explanation: "Toleranz: Gewöhnung mit Dosissteigerung",
       wissen: fw(
@@ -4206,12 +4205,12 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f3",
-      prompt: "Was versteht man im Thema Suchtgefahren unter einem Entzug?",
-      answer: "Darunter versteht man beschwerden Beim Absetzen.",
+      prompt: "Was kennzeichnet Entzug im Thema Suchtgefahren?",
+      answer: "Es bezeichnet den Beschwerden Beim Absetzen.",
       wrong: [
-        "Darunter versteht man krankhafte Abhängigkeit von Stoff oder Verhalten.",
-        "Darunter versteht man substanz Mit Abhängigkeitspotenzial.",
-        "Darunter versteht man die gewöhnung Mit Dosissteigerung.",
+        "Es bezeichnet den Krankhafte Abhängigkeit von Stoff oder Verhalten.",
+        "Es bezeichnet den Substanz mit Abhängigkeitspotenzial.",
+        "Es bezeichnet die Gewöhnung mit Dosissteigerung.",
       ],
       explanation: "Entzug: Beschwerden beim Absetzen",
       wissen: fw(
@@ -4222,12 +4221,12 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f4",
-      prompt: "Was versteht man im Thema Suchtgefahren auf „psychische Abhängigkeit“ zu unter einer psychische Abhängigkeit?",
-      answer: "Darunter versteht man starkes Verlangen und Kontrollverlust.",
+      prompt: "Was kennzeichnet psychische Abhängigkeit im Thema Suchtgefahren?",
+      answer: "Sie bezeichnet den Starkes Verlangen und Kontrollverlust.",
       wrong: [
-        "Darunter versteht man krankhafte Abhängigkeit von Stoff oder Verhalten.",
-        "Darunter versteht man substanz mit Abhängigkeitspotenzial.",
-        "Darunter versteht man gewöhnung mit Dosissteigerung.",
+        "Sie bezeichnet den Krankhafte Abhängigkeit von Stoff oder Verhalten.",
+        "Sie bezeichnet den Substanz mit Abhängigkeitspotenzial.",
+        "Sie bezeichnet die Gewöhnung mit Dosissteigerung.",
       ],
       explanation: "psychische Abhängigkeit: Starkes Verlangen und Kontrollverlust",
       wissen: fw(
@@ -4238,12 +4237,12 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f5",
-      prompt: "Was versteht man im Thema Suchtgefahren auf „körperliche Abhängigkeit“ zu unter einer körperliche Abhängigkeit?",
-      answer: "Darunter versteht man körper stellt sich auf Substanz ein.",
+      prompt: "Was kennzeichnet körperliche Abhängigkeit im Thema Suchtgefahren?",
+      answer: "Sie ist das Körper Stellt Sich auf Substanz ein.",
       wrong: [
-        "Darunter versteht man krankhafte Abhängigkeit von Stoff oder Verhalten.",
-        "Darunter versteht man substanz mit Abhängigkeitspotenzial.",
-        "Darunter versteht man gewöhnung mit Dosissteigerung.",
+        "Sie bezeichnet den Krankhafte Abhängigkeit von Stoff oder Verhalten.",
+        "Sie bezeichnet den Substanz mit Abhängigkeitspotenzial.",
+        "Sie bezeichnet die Gewöhnung mit Dosissteigerung.",
       ],
       explanation: "körperliche Abhängigkeit: Körper stellt sich auf Substanz ein",
       wissen: fw(
@@ -4254,12 +4253,12 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f6",
-      prompt: "Was versteht man im Thema Suchtgefahren unter einem Mediengebrauch?",
-      answer: "Darunter versteht man die nutzung Digitaler Angebote.",
+      prompt: "Was kennzeichnet Mediengebrauch im Thema Suchtgefahren?",
+      answer: "Es bezeichnet die Nutzung Digitaler Angebote.",
       wrong: [
-        "Darunter versteht man krankhafte Abhängigkeit von Stoff oder Verhalten.",
-        "Darunter versteht man substanz Mit Abhängigkeitspotenzial.",
-        "Darunter versteht man die gewöhnung Mit Dosissteigerung.",
+        "Es bezeichnet den Krankhafte Abhängigkeit von Stoff oder Verhalten.",
+        "Es bezeichnet den Substanz mit Abhängigkeitspotenzial.",
+        "Es bezeichnet die Gewöhnung mit Dosissteigerung.",
       ],
       explanation: "Mediengebrauch: Nutzung digitaler Angebote",
       wissen: fw(
@@ -4270,12 +4269,12 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f7",
-      prompt: "Was versteht man im Thema Suchtgefahren auf „soziale Folge“ zu unter einer soziale Folge?",
-      answer: "Darunter versteht man belastung von Beziehungen und Schule.",
+      prompt: "Was kennzeichnet soziale Folge im Thema Suchtgefahren?",
+      answer: "Sie bezeichnet die Belastung von Beziehungen und Schule.",
       wrong: [
-        "Darunter versteht man krankhafte Abhängigkeit von Stoff oder Verhalten.",
-        "Darunter versteht man substanz mit Abhängigkeitspotenzial.",
-        "Darunter versteht man gewöhnung mit Dosissteigerung.",
+        "Sie bezeichnet den Krankhafte Abhängigkeit von Stoff oder Verhalten.",
+        "Sie bezeichnet den Substanz mit Abhängigkeitspotenzial.",
+        "Sie bezeichnet die Gewöhnung mit Dosissteigerung.",
       ],
       explanation: "soziale Folge: Belastung von Beziehungen und Schule",
       wissen: fw(
@@ -4286,12 +4285,12 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f8",
-      prompt: "Was versteht man im Thema Suchtgefahren unter einer psychische Folge?",
-      answer: "Darunter versteht man die angst, Reizbarkeit, Konzentrationsprobleme.",
+      prompt: "Was kennzeichnet psychische Folge im Thema Suchtgefahren?",
+      answer: "Sie bezeichnet die Angst, Reizbarkeit, Konzentrationsprobleme.",
       wrong: [
-        "Darunter versteht man krankhafte Abhängigkeit von Stoff oder Verhalten.",
-        "Darunter versteht man substanz Mit Abhängigkeitspotenzial.",
-        "Darunter versteht man die gewöhnung Mit Dosissteigerung.",
+        "Sie bezeichnet den Krankhafte Abhängigkeit von Stoff oder Verhalten.",
+        "Sie bezeichnet den Substanz mit Abhängigkeitspotenzial.",
+        "Sie bezeichnet die Gewöhnung mit Dosissteigerung.",
       ],
       explanation: "psychische Folge: Angst, Reizbarkeit, Konzentrationsprobleme",
       wissen: fw(
@@ -4302,12 +4301,12 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f9",
-      prompt: "Was versteht man im Thema Suchtgefahren unter einer physische Folge?",
-      answer: "Darunter versteht man schäden an Organen.",
+      prompt: "Wozu dient die physische Folge im Thema Suchtgefahren?",
+      answer: "Sie schäden an Organen.",
       wrong: [
-        "Darunter versteht man krankhafte Abhängigkeit von Stoff oder Verhalten.",
-        "Darunter versteht man substanz Mit Abhängigkeitspotenzial.",
-        "Darunter versteht man die gewöhnung Mit Dosissteigerung.",
+        "Sie bezeichnet den Krankhafte Abhängigkeit von Stoff oder Verhalten.",
+        "Sie bezeichnet den Substanz mit Abhängigkeitspotenzial.",
+        "Sie bezeichnet die Gewöhnung mit Dosissteigerung.",
       ],
       explanation: "physische Folge: Schäden an Organen",
       wissen: fw(
@@ -4318,12 +4317,12 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f10",
-      prompt: "Was versteht man im Thema Suchtgefahren auf „Prävention“ zu unter einer Prävention?",
-      answer: "Darunter versteht man vorbeugung durch Wissen und Alternativen.",
+      prompt: "Was kennzeichnet Prävention im Thema Suchtgefahren?",
+      answer: "Sie bezeichnet den Vorbeugung durch Wissen und Alternativen.",
       wrong: [
-        "Darunter versteht man krankhafte Abhängigkeit von Stoff oder Verhalten.",
-        "Darunter versteht man substanz mit Abhängigkeitspotenzial.",
-        "Darunter versteht man gewöhnung mit Dosissteigerung.",
+        "Sie bezeichnet den Krankhafte Abhängigkeit von Stoff oder Verhalten.",
+        "Sie bezeichnet den Substanz mit Abhängigkeitspotenzial.",
+        "Sie bezeichnet die Gewöhnung mit Dosissteigerung.",
       ],
       explanation: "Prävention: Vorbeugung durch Wissen und Alternativen",
       wissen: fw(
@@ -4334,12 +4333,12 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f11",
-      prompt: "Was versteht man im Thema Suchtgefahren unter einer Hilfesuche?",
-      answer: "Darunter versteht man professionelle Unterstützung Nutzen.",
+      prompt: "Wozu dient die Hilfesuche im Thema Suchtgefahren?",
+      answer: "Sie professionelle Unterstützung nutzen.",
       wrong: [
-        "Darunter versteht man krankhafte Abhängigkeit von Stoff oder Verhalten.",
-        "Darunter versteht man substanz Mit Abhängigkeitspotenzial.",
-        "Darunter versteht man die gewöhnung Mit Dosissteigerung.",
+        "Sie bezeichnet den Krankhafte Abhängigkeit von Stoff oder Verhalten.",
+        "Sie bezeichnet den Substanz mit Abhängigkeitspotenzial.",
+        "Sie bezeichnet die Gewöhnung mit Dosissteigerung.",
       ],
       explanation: "Hilfesuche: Professionelle Unterstützung nutzen",
       wissen: fw(
@@ -4417,12 +4416,12 @@ export const k8AugeAkkommodation: BioBank = {
   facts: [
     {
       concept: "bio:k8:akkom:f0",
-      prompt: "Was versteht man unter einer Akkommodation?",
-      answer: "Darunter versteht man scharfstellung auf unterschiedliche Entfernungen.",
+      prompt: "Was kennzeichnet Akkommodation?",
+      answer: "Sie bezeichnet den Scharfstellung auf Unterschiedliche Entfernungen.",
       wrong: [
-        "Darunter versteht man anpassung an Helligkeit.",
-        "Darunter versteht man brechendes Element im Auge.",
-        "Darunter versteht man muskel zur Linsenverformung.",
+        "Sie bezeichnet die Anpassung an Helligkeit.",
+        "Sie bezeichnet die Brechendes Element im Auge.",
+        "Sie ist die Muskel zur Linsenverformung.",
       ],
       explanation: "Akkommodation: Scharfstellung auf unterschiedliche Entfernungen",
       wissen: fw(
@@ -4433,12 +4432,12 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f1",
-      prompt: "Was versteht man im Thema Akkommodation unter einer Adaptation?",
-      answer: "Darunter versteht man die anpassung an Helligkeit.",
+      prompt: "Was kennzeichnet Adaptation im Thema Akkommodation?",
+      answer: "Sie bezeichnet die Anpassung an Helligkeit.",
       wrong: [
-        "Darunter versteht man scharfstellung auf Unterschiedliche Entfernungen.",
-        "Darunter versteht man die brechendes Element im Auge.",
-        "Darunter versteht man die muskel zur Linsenverformung.",
+        "Sie bezeichnet den Scharfstellung auf Unterschiedliche Entfernungen.",
+        "Sie bezeichnet die Brechendes Element im Auge.",
+        "Sie ist die Muskel zur Linsenverformung.",
       ],
       explanation: "Adaptation: Anpassung an Helligkeit",
       wissen: fw(
@@ -4449,12 +4448,12 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f2",
-      prompt: "Was versteht man im Thema Akkommodation auf „Linse“ zu unter einer Linse?",
-      answer: "Darunter versteht man brechendes Element im Auge.",
+      prompt: "Was kennzeichnet Linse im Thema Akkommodation?",
+      answer: "Sie bezeichnet die Brechendes Element im Auge.",
       wrong: [
-        "Darunter versteht man scharfstellung auf unterschiedliche Entfernungen.",
-        "Darunter versteht man anpassung an Helligkeit.",
-        "Darunter versteht man muskel zur Linsenverformung.",
+        "Sie bezeichnet den Scharfstellung auf Unterschiedliche Entfernungen.",
+        "Sie bezeichnet die Anpassung an Helligkeit.",
+        "Sie ist die Muskel zur Linsenverformung.",
       ],
       explanation: "Linse: Brechendes Element im Auge",
       wissen: fw(
@@ -4465,12 +4464,12 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f3",
-      prompt: "Was versteht man im Thema Akkommodation unter einem Ziliarmuskel?",
-      answer: "Darunter versteht man die muskel zur Linsenverformung.",
+      prompt: "Was kennzeichnet Ziliarmuskel im Thema Akkommodation?",
+      answer: "Es ist die Muskel zur Linsenverformung.",
       wrong: [
-        "Darunter versteht man scharfstellung auf Unterschiedliche Entfernungen.",
-        "Darunter versteht man die anpassung an Helligkeit.",
-        "Darunter versteht man die brechendes Element im Auge.",
+        "Es bezeichnet den Scharfstellung auf Unterschiedliche Entfernungen.",
+        "Es bezeichnet die Anpassung an Helligkeit.",
+        "Es bezeichnet die Brechendes Element im Auge.",
       ],
       explanation: "Ziliarmuskel: Muskel zur Linsenverformung",
       wissen: fw(
@@ -4481,12 +4480,12 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f4",
-      prompt: "Was versteht man im Thema Akkommodation auf „Strahlengang“ zu unter einem Strahlengang?",
-      answer: "Darunter versteht man weg der Lichtstrahlen im Auge.",
+      prompt: "Was kennzeichnet Strahlengang im Thema Akkommodation?",
+      answer: "Es bezeichnet die Weg der Lichtstrahlen im Auge.",
       wrong: [
-        "Darunter versteht man scharfstellung auf unterschiedliche Entfernungen.",
-        "Darunter versteht man anpassung an Helligkeit.",
-        "Darunter versteht man brechendes Element im Auge.",
+        "Es bezeichnet den Scharfstellung auf Unterschiedliche Entfernungen.",
+        "Es bezeichnet die Anpassung an Helligkeit.",
+        "Es bezeichnet die Brechendes Element im Auge.",
       ],
       explanation: "Strahlengang: Weg der Lichtstrahlen im Auge",
       wissen: fw(
@@ -4497,12 +4496,12 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f5",
-      prompt: "Was versteht man im Thema Akkommodation unter einem Netzhaut?",
-      answer: "Darunter versteht man ort der Sinneszellen.",
+      prompt: "Was kennzeichnet Netzhaut im Thema Akkommodation?",
+      answer: "Es ist das Ort der Sinneszellen.",
       wrong: [
-        "Darunter versteht man scharfstellung auf Unterschiedliche Entfernungen.",
-        "Darunter versteht man die anpassung an Helligkeit.",
-        "Darunter versteht man die brechendes Element im Auge.",
+        "Es bezeichnet den Scharfstellung auf Unterschiedliche Entfernungen.",
+        "Es bezeichnet die Anpassung an Helligkeit.",
+        "Es bezeichnet die Brechendes Element im Auge.",
       ],
       explanation: "Netzhaut: Ort der Sinneszellen",
       wissen: fw(
@@ -4513,12 +4512,12 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f6",
-      prompt: "Was versteht man im Thema Akkommodation auf „Nahpunkt“ zu unter einem Nahpunkt?",
-      answer: "Darunter versteht man kürzeste Distanz scharfen Sehens.",
+      prompt: "Was kennzeichnet Nahpunkt im Thema Akkommodation?",
+      answer: "Es bezeichnet den Kürzeste Distanz Scharfen Sehens.",
       wrong: [
-        "Darunter versteht man scharfstellung auf unterschiedliche Entfernungen.",
-        "Darunter versteht man anpassung an Helligkeit.",
-        "Darunter versteht man brechendes Element im Auge.",
+        "Es bezeichnet den Scharfstellung auf Unterschiedliche Entfernungen.",
+        "Es bezeichnet die Anpassung an Helligkeit.",
+        "Es bezeichnet die Brechendes Element im Auge.",
       ],
       explanation: "Nahpunkt: Kürzeste Distanz scharfen Sehens",
       wissen: fw(
@@ -4529,12 +4528,12 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f7",
-      prompt: "Was versteht man im Thema Akkommodation auf „Fernpunkt“ zu unter einem Fernpunkt?",
-      answer: "Darunter versteht man weitester Punkt scharfen Sehens.",
+      prompt: "Was kennzeichnet Fernpunkt im Thema Akkommodation?",
+      answer: "Es bezeichnet den Weitester Punkt Scharfen Sehens.",
       wrong: [
-        "Darunter versteht man scharfstellung auf unterschiedliche Entfernungen.",
-        "Darunter versteht man anpassung an Helligkeit.",
-        "Darunter versteht man brechendes Element im Auge.",
+        "Es bezeichnet den Scharfstellung auf Unterschiedliche Entfernungen.",
+        "Es bezeichnet die Anpassung an Helligkeit.",
+        "Es bezeichnet die Brechendes Element im Auge.",
       ],
       explanation: "Fernpunkt: Weitester Punkt scharfen Sehens",
       wissen: fw(
@@ -4545,12 +4544,12 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f8",
-      prompt: "Was versteht man im Thema Akkommodation auf „Kurzsichtigkeit“ zu unter einer Kurzsichtigkeit?",
-      answer: "Darunter versteht man scharfes Sehen vor allem nah.",
+      prompt: "Was kennzeichnet Kurzsichtigkeit im Thema Akkommodation?",
+      answer: "Sie bezeichnet den Scharfes Sehen vor Allem Nah.",
       wrong: [
-        "Darunter versteht man scharfstellung auf unterschiedliche Entfernungen.",
-        "Darunter versteht man anpassung an Helligkeit.",
-        "Darunter versteht man brechendes Element im Auge.",
+        "Sie bezeichnet den Scharfstellung auf Unterschiedliche Entfernungen.",
+        "Sie bezeichnet die Anpassung an Helligkeit.",
+        "Sie bezeichnet die Brechendes Element im Auge.",
       ],
       explanation: "Kurzsichtigkeit: Scharfes Sehen vor allem nah",
       wissen: fw(
@@ -4561,12 +4560,12 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f9",
-      prompt: "Was versteht man im Thema Akkommodation auf „Weitsichtigkeit“ zu unter einer Weitsichtigkeit?",
-      answer: "Darunter versteht man probleme vor allem in der Nähe.",
+      prompt: "Was kennzeichnet Weitsichtigkeit im Thema Akkommodation?",
+      answer: "Sie bezeichnet die Probleme vor Allem in der Nähe.",
       wrong: [
-        "Darunter versteht man scharfstellung auf unterschiedliche Entfernungen.",
-        "Darunter versteht man anpassung an Helligkeit.",
-        "Darunter versteht man brechendes Element im Auge.",
+        "Sie bezeichnet den Scharfstellung auf Unterschiedliche Entfernungen.",
+        "Sie bezeichnet die Anpassung an Helligkeit.",
+        "Sie bezeichnet die Brechendes Element im Auge.",
       ],
       explanation: "Weitsichtigkeit: Probleme vor allem in der Nähe",
       wissen: fw(
@@ -4577,12 +4576,12 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f10",
-      prompt: "Was versteht man im Thema Akkommodation auf „Leseabstand“ zu unter einem Leseabstand?",
-      answer: "Darunter versteht man sinnvoller Abstand beim Lesen.",
+      prompt: "Was kennzeichnet Leseabstand im Thema Akkommodation?",
+      answer: "Es bezeichnet den Sinnvoller Abstand Beim Lesen.",
       wrong: [
-        "Darunter versteht man scharfstellung auf unterschiedliche Entfernungen.",
-        "Darunter versteht man anpassung an Helligkeit.",
-        "Darunter versteht man brechendes Element im Auge.",
+        "Es bezeichnet den Scharfstellung auf Unterschiedliche Entfernungen.",
+        "Es bezeichnet die Anpassung an Helligkeit.",
+        "Es bezeichnet die Brechendes Element im Auge.",
       ],
       explanation: "Leseabstand: Sinnvoller Abstand beim Lesen",
       wissen: fw(
@@ -4593,12 +4592,12 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f11",
-      prompt: "Was versteht man im Thema Akkommodation unter einer Arbeitsschutz Auge?",
-      answer: "Darunter versteht man die maßnahmen Gegen Überlastung.",
+      prompt: "Was kennzeichnet Arbeitsschutz Auge im Thema Akkommodation?",
+      answer: "Sie bezeichnet die Maßnahmen gegen Überlastung.",
       wrong: [
-        "Darunter versteht man scharfstellung auf Unterschiedliche Entfernungen.",
-        "Darunter versteht man die anpassung an Helligkeit.",
-        "Darunter versteht man die brechendes Element im Auge.",
+        "Sie bezeichnet den Scharfstellung auf Unterschiedliche Entfernungen.",
+        "Sie bezeichnet die Anpassung an Helligkeit.",
+        "Sie bezeichnet die Brechendes Element im Auge.",
       ],
       explanation: "Arbeitsschutz Auge: Maßnahmen gegen Überlastung",
       wissen: fw(
@@ -4676,12 +4675,12 @@ export const k8Gehirn: BioBank = {
   facts: [
     {
       concept: "bio:k8:gehirn:f0",
-      prompt: "Was versteht man im Thema Gehirn/Gedächtnis unter einem Großhirn?",
-      answer: "Darunter versteht man sitz Bewusster Prozesse und Cortex.",
+      prompt: "Was kennzeichnet Großhirn im Thema Gehirn/Gedächtnis?",
+      answer: "Es bezeichnet den Sitz Bewusster Prozesse und Cortex.",
       wrong: [
-        "Darunter versteht man koordination von Bewegungen.",
-        "Darunter versteht man grundlegende Lebensfunktionen.",
-        "Darunter versteht man speicherung von Informationen.",
+        "Es bezeichnet den Koordination von Bewegungen.",
+        "Es bezeichnet den Grundlegende Lebensfunktionen.",
+        "Es ist das Speicherung von Informationen.",
       ],
       explanation: "Großhirn: Sitz bewusster Prozesse und Cortex",
       wissen: fw(
@@ -4692,12 +4691,12 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f1",
-      prompt: "Was versteht man im Thema Gehirn/Gedächtnis unter einem Kleinhirn?",
-      answer: "Darunter versteht man koordination von Bewegungen.",
+      prompt: "Was kennzeichnet Kleinhirn im Thema Gehirn/Gedächtnis?",
+      answer: "Es bezeichnet den Koordination von Bewegungen.",
       wrong: [
-        "Darunter versteht man sitz Bewusster Prozesse und Cortex.",
-        "Darunter versteht man grundlegende Lebensfunktionen.",
-        "Darunter versteht man speicherung von Informationen.",
+        "Es bezeichnet den Sitz Bewusster Prozesse und Cortex.",
+        "Es bezeichnet den Grundlegende Lebensfunktionen.",
+        "Es ist das Speicherung von Informationen.",
       ],
       explanation: "Kleinhirn: Koordination von Bewegungen",
       wissen: fw(
@@ -4708,12 +4707,12 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f2",
-      prompt: "Was versteht man im Thema Gehirn/Gedächtnis unter einem Stammhirn?",
-      answer: "Darunter versteht man grundlegende Lebensfunktionen.",
+      prompt: "Welche Rolle hat Stammhirn im Thema Gehirn/Gedächtnis?",
+      answer: "Es bezeichnet den Grundlegende Lebensfunktionen.",
       wrong: [
-        "Darunter versteht man sitz Bewusster Prozesse und Cortex.",
-        "Darunter versteht man koordination von Bewegungen.",
-        "Darunter versteht man speicherung von Informationen.",
+        "Es bezeichnet den Sitz Bewusster Prozesse und Cortex.",
+        "Es bezeichnet den Koordination von Bewegungen.",
+        "Es ist das Speicherung von Informationen.",
       ],
       explanation: "Stammhirn: Grundlegende Lebensfunktionen",
       wissen: fw(
@@ -4724,12 +4723,12 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f3",
-      prompt: "Was versteht man im Thema Gehirn/Gedächtnis unter einer Gedächtnis?",
-      answer: "Darunter versteht man speicherung von Informationen.",
+      prompt: "Was kennzeichnet Gedächtnis im Thema Gehirn/Gedächtnis?",
+      answer: "Sie ist das Speicherung von Informationen.",
       wrong: [
-        "Darunter versteht man sitz Bewusster Prozesse und Cortex.",
-        "Darunter versteht man koordination von Bewegungen.",
-        "Darunter versteht man grundlegende Lebensfunktionen.",
+        "Sie bezeichnet den Sitz Bewusster Prozesse und Cortex.",
+        "Sie bezeichnet den Koordination von Bewegungen.",
+        "Sie bezeichnet den Grundlegende Lebensfunktionen.",
       ],
       explanation: "Gedächtnis: Speicherung von Informationen",
       wissen: fw(
@@ -4740,12 +4739,12 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f4",
-      prompt: "Was versteht man im Thema Gehirn/Gedächtnis unter einer Informationsspeicherung?",
-      answer: "Darunter versteht man ablegen von Erfahrungen.",
+      prompt: "Was kennzeichnet Informationsspeicherung im Thema Gehirn/Gedächtnis?",
+      answer: "Sie bezeichnet den Ablegen von Erfahrungen.",
       wrong: [
-        "Darunter versteht man sitz Bewusster Prozesse und Cortex.",
-        "Darunter versteht man koordination von Bewegungen.",
-        "Darunter versteht man grundlegende Lebensfunktionen.",
+        "Sie bezeichnet den Sitz Bewusster Prozesse und Cortex.",
+        "Sie bezeichnet den Koordination von Bewegungen.",
+        "Sie bezeichnet den Grundlegende Lebensfunktionen.",
       ],
       explanation: "Informationsspeicherung: Ablegen von Erfahrungen",
       wissen: fw(
@@ -4756,12 +4755,12 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f5",
-      prompt: "Was versteht man im Thema Gehirn/Gedächtnis unter einer Synapse?",
-      answer: "Darunter versteht man kontaktstelle Zwischen Neuronen.",
+      prompt: "Was kennzeichnet Synapse im Thema Gehirn/Gedächtnis?",
+      answer: "Sie bezeichnet den Kontaktstelle Zwischen Neuronen.",
       wrong: [
-        "Darunter versteht man sitz Bewusster Prozesse und Cortex.",
-        "Darunter versteht man koordination von Bewegungen.",
-        "Darunter versteht man grundlegende Lebensfunktionen.",
+        "Sie bezeichnet den Sitz Bewusster Prozesse und Cortex.",
+        "Sie bezeichnet den Koordination von Bewegungen.",
+        "Sie bezeichnet den Grundlegende Lebensfunktionen.",
       ],
       explanation: "Synapse: Kontaktstelle zwischen Neuronen",
       wissen: fw(
@@ -4772,12 +4771,12 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f6",
-      prompt: "Was versteht man im Thema Gehirn/Gedächtnis unter einem Neuron?",
-      answer: "Darunter versteht man die nervenzelle.",
+      prompt: "Was kennzeichnet Neuron im Thema Gehirn/Gedächtnis?",
+      answer: "Es ist die Nervenzelle.",
       wrong: [
-        "Darunter versteht man sitz Bewusster Prozesse und Cortex.",
-        "Darunter versteht man koordination von Bewegungen.",
-        "Darunter versteht man grundlegende Lebensfunktionen.",
+        "Es bezeichnet den Sitz Bewusster Prozesse und Cortex.",
+        "Es bezeichnet den Koordination von Bewegungen.",
+        "Es bezeichnet den Grundlegende Lebensfunktionen.",
       ],
       explanation: "Neuron: Nervenzelle",
       wissen: fw(
@@ -4788,12 +4787,12 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f7",
-      prompt: "Was versteht man im Thema Gehirn/Gedächtnis unter einer Hirnrinde?",
-      answer: "Darunter versteht man äußere Schicht Des Großhirns.",
+      prompt: "Was kennzeichnet Hirnrinde im Thema Gehirn/Gedächtnis?",
+      answer: "Sie ist das Äußere Schicht des Großhirns.",
       wrong: [
-        "Darunter versteht man sitz Bewusster Prozesse und Cortex.",
-        "Darunter versteht man koordination von Bewegungen.",
-        "Darunter versteht man grundlegende Lebensfunktionen.",
+        "Sie bezeichnet den Sitz Bewusster Prozesse und Cortex.",
+        "Sie bezeichnet den Koordination von Bewegungen.",
+        "Sie bezeichnet den Grundlegende Lebensfunktionen.",
       ],
       explanation: "Hirnrinde: Äußere Schicht des Großhirns",
       wissen: fw(
@@ -4804,12 +4803,12 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f8",
-      prompt: "Was versteht man im Thema Gehirn/Gedächtnis unter einem Lernprozess?",
-      answer: "Darunter versteht man die veränderung Durch Erfahrung.",
+      prompt: "Was kennzeichnet Lernprozess im Thema Gehirn/Gedächtnis?",
+      answer: "Es bezeichnet die Veränderung durch Erfahrung.",
       wrong: [
-        "Darunter versteht man sitz Bewusster Prozesse und Cortex.",
-        "Darunter versteht man koordination von Bewegungen.",
-        "Darunter versteht man grundlegende Lebensfunktionen.",
+        "Es bezeichnet den Sitz Bewusster Prozesse und Cortex.",
+        "Es bezeichnet den Koordination von Bewegungen.",
+        "Es bezeichnet den Grundlegende Lebensfunktionen.",
       ],
       explanation: "Lernprozess: Veränderung durch Erfahrung",
       wissen: fw(
@@ -4820,12 +4819,12 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f9",
-      prompt: "Was versteht man im Thema Gehirn/Gedächtnis unter einem Schlaf?",
-      answer: "Darunter versteht man die erholungs- und Konsolidierungsphase.",
+      prompt: "Was kennzeichnet Schlaf im Thema Gehirn/Gedächtnis?",
+      answer: "Es bezeichnet die Erholungs- und Konsolidierungsphase.",
       wrong: [
-        "Darunter versteht man sitz Bewusster Prozesse und Cortex.",
-        "Darunter versteht man koordination von Bewegungen.",
-        "Darunter versteht man grundlegende Lebensfunktionen.",
+        "Es bezeichnet den Sitz Bewusster Prozesse und Cortex.",
+        "Es bezeichnet den Koordination von Bewegungen.",
+        "Es bezeichnet den Grundlegende Lebensfunktionen.",
       ],
       explanation: "Schlaf: Erholungs- und Konsolidierungsphase",
       wissen: fw(
@@ -4836,12 +4835,12 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f10",
-      prompt: "Was versteht man im Thema Gehirn/Gedächtnis unter einer Lokalisation?",
-      answer: "Darunter versteht man zuordnung von Leistungen zu Regionen.",
+      prompt: "Was kennzeichnet Lokalisation im Thema Gehirn/Gedächtnis?",
+      answer: "Sie ist das Zuordnung von Leistungen zu Regionen.",
       wrong: [
-        "Darunter versteht man sitz Bewusster Prozesse und Cortex.",
-        "Darunter versteht man koordination von Bewegungen.",
-        "Darunter versteht man grundlegende Lebensfunktionen.",
+        "Sie bezeichnet den Sitz Bewusster Prozesse und Cortex.",
+        "Sie bezeichnet den Koordination von Bewegungen.",
+        "Sie bezeichnet den Grundlegende Lebensfunktionen.",
       ],
       explanation: "Lokalisation: Zuordnung von Leistungen zu Regionen",
       wissen: fw(
@@ -4852,12 +4851,12 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f11",
-      prompt: "Was versteht man im Thema Gehirn/Gedächtnis unter einem Netzwerk?",
-      answer: "Darunter versteht man die zusammenarbeit Vieler Areale.",
+      prompt: "Was kennzeichnet Netzwerk im Thema Gehirn/Gedächtnis?",
+      answer: "Es bezeichnet die Zusammenarbeit Vieler Areale.",
       wrong: [
-        "Darunter versteht man sitz Bewusster Prozesse und Cortex.",
-        "Darunter versteht man koordination von Bewegungen.",
-        "Darunter versteht man grundlegende Lebensfunktionen.",
+        "Es bezeichnet den Sitz Bewusster Prozesse und Cortex.",
+        "Es bezeichnet den Koordination von Bewegungen.",
+        "Es bezeichnet den Grundlegende Lebensfunktionen.",
       ],
       explanation: "Netzwerk: Zusammenarbeit vieler Areale",
       wissen: fw(
@@ -4935,12 +4934,12 @@ export const k8NervGesundheit: BioBank = {
   facts: [
     {
       concept: "bio:k8:nervges:f0",
-      prompt: "Was versteht man im Thema Nervengesundheit auf „Schlaf“ zu unter einem Schlaf?",
-      answer: "Darunter versteht man erholung für Gehirn und Körper.",
+      prompt: "Was kennzeichnet Schlaf im Thema Nervengesundheit?",
+      answer: "Es ist das Erholung für Gehirn und Körper.",
       wrong: [
-        "Darunter versteht man zu viele Reize gleichzeitig.",
-        "Darunter versteht man belastungsreaktion des Organismus.",
-        "Darunter versteht man absenken der Anspannung.",
+        "Es bezeichnet den Zu Viele Reize Gleichzeitig.",
+        "Es ist das Belastungsreaktion des Organismus.",
+        "Es bezeichnet die Absenken der Anspannung.",
       ],
       explanation: "Schlaf: Erholung für Gehirn und Körper",
       wissen: fw(
@@ -4951,12 +4950,12 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f1",
-      prompt: "Was versteht man im Thema Nervengesundheit auf „Reizüberflutung“ zu unter einer Reizüberflutung?",
-      answer: "Darunter versteht man zu viele Reize gleichzeitig.",
+      prompt: "Was kennzeichnet Reizüberflutung im Thema Nervengesundheit?",
+      answer: "Sie bezeichnet den Zu Viele Reize Gleichzeitig.",
       wrong: [
-        "Darunter versteht man erholung für Gehirn und Körper.",
-        "Darunter versteht man belastungsreaktion des Organismus.",
-        "Darunter versteht man absenken der Anspannung.",
+        "Sie ist das Erholung für Gehirn und Körper.",
+        "Sie ist das Belastungsreaktion des Organismus.",
+        "Sie bezeichnet die Absenken der Anspannung.",
       ],
       explanation: "Reizüberflutung: Zu viele Reize gleichzeitig",
       wissen: fw(
@@ -4967,12 +4966,12 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f2",
-      prompt: "Was versteht man im Thema Nervengesundheit unter einem Stress?",
-      answer: "Darunter versteht man den belastungsreaktion Des Organismus.",
+      prompt: "Wozu dient Stress im Thema Nervengesundheit?",
+      answer: "Es belastungsreaktion des Organismus.",
       wrong: [
-        "Darunter versteht man den erholung für Gehirn und Körper.",
-        "Darunter versteht man zu Viele Reize Gleichzeitig.",
-        "Darunter versteht man die absenken der Anspannung.",
+        "Es ist das Erholung für Gehirn und Körper.",
+        "Es bezeichnet den Zu Viele Reize Gleichzeitig.",
+        "Es bezeichnet die Absenken der Anspannung.",
       ],
       explanation: "Stress: Belastungsreaktion des Organismus",
       wissen: fw(
@@ -4983,12 +4982,12 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f3",
-      prompt: "Was versteht man im Thema Nervengesundheit unter einer Entspannung?",
-      answer: "Darunter versteht man die absenken der Anspannung.",
+      prompt: "Was kennzeichnet Entspannung im Thema Nervengesundheit?",
+      answer: "Sie bezeichnet die Absenken der Anspannung.",
       wrong: [
-        "Darunter versteht man den erholung für Gehirn und Körper.",
-        "Darunter versteht man zu Viele Reize Gleichzeitig.",
-        "Darunter versteht man den belastungsreaktion Des Organismus.",
+        "Sie ist das Erholung für Gehirn und Körper.",
+        "Sie bezeichnet den Zu Viele Reize Gleichzeitig.",
+        "Sie ist das Belastungsreaktion des Organismus.",
       ],
       explanation: "Entspannung: Absenken der Anspannung",
       wissen: fw(
@@ -4999,12 +4998,12 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f4",
-      prompt: "Was versteht man im Thema Nervengesundheit unter einem Bildschirmzeit?",
-      answer: "Darunter versteht man die dauer der Mediennutzung.",
+      prompt: "Was kennzeichnet Bildschirmzeit im Thema Nervengesundheit?",
+      answer: "Es bezeichnet die Dauer der Mediennutzung.",
       wrong: [
-        "Darunter versteht man den erholung für Gehirn und Körper.",
-        "Darunter versteht man zu Viele Reize Gleichzeitig.",
-        "Darunter versteht man den belastungsreaktion Des Organismus.",
+        "Es ist das Erholung für Gehirn und Körper.",
+        "Es bezeichnet den Zu Viele Reize Gleichzeitig.",
+        "Es ist das Belastungsreaktion des Organismus.",
       ],
       explanation: "Bildschirmzeit: Dauer der Mediennutzung",
       wissen: fw(
@@ -5015,12 +5014,12 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f5",
-      prompt: "Was versteht man im Thema Nervengesundheit unter einem Pausen?",
-      answer: "Darunter versteht man die unterbrechungen der Belastung.",
+      prompt: "Was kennzeichnet Pausen im Thema Nervengesundheit?",
+      answer: "Es bezeichnet die Unterbrechungen der Belastung.",
       wrong: [
-        "Darunter versteht man den erholung für Gehirn und Körper.",
-        "Darunter versteht man zu Viele Reize Gleichzeitig.",
-        "Darunter versteht man den belastungsreaktion Des Organismus.",
+        "Es ist das Erholung für Gehirn und Körper.",
+        "Es bezeichnet den Zu Viele Reize Gleichzeitig.",
+        "Es ist das Belastungsreaktion des Organismus.",
       ],
       explanation: "Pausen: Unterbrechungen der Belastung",
       wissen: fw(
@@ -5031,12 +5030,12 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f6",
-      prompt: "Was versteht man im Thema Nervengesundheit unter einer Bewegung?",
-      answer: "Darunter versteht man die körperliche Aktivität.",
+      prompt: "Was kennzeichnet Bewegung im Thema Nervengesundheit?",
+      answer: "Sie ist die Körperliche Aktivität.",
       wrong: [
-        "Darunter versteht man den erholung für Gehirn und Körper.",
-        "Darunter versteht man zu Viele Reize Gleichzeitig.",
-        "Darunter versteht man den belastungsreaktion Des Organismus.",
+        "Sie ist das Erholung für Gehirn und Körper.",
+        "Sie bezeichnet den Zu Viele Reize Gleichzeitig.",
+        "Sie ist das Belastungsreaktion des Organismus.",
       ],
       explanation: "Bewegung: Körperliche Aktivität",
       wissen: fw(
@@ -5047,12 +5046,12 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f7",
-      prompt: "Was versteht man im Thema Nervengesundheit unter einem Suchtgefahr?",
-      answer: "Darunter versteht man risiko Problematischer Gewohnheiten.",
+      prompt: "Was kennzeichnet Suchtgefahr im Thema Nervengesundheit?",
+      answer: "Es bezeichnet den Risiko Problematischer Gewohnheiten.",
       wrong: [
-        "Darunter versteht man den erholung für Gehirn und Körper.",
-        "Darunter versteht man zu Viele Reize Gleichzeitig.",
-        "Darunter versteht man den belastungsreaktion Des Organismus.",
+        "Es ist das Erholung für Gehirn und Körper.",
+        "Es bezeichnet den Zu Viele Reize Gleichzeitig.",
+        "Es ist das Belastungsreaktion des Organismus.",
       ],
       explanation: "Suchtgefahr: Risiko problematischer Gewohnheiten",
       wissen: fw(
@@ -5063,12 +5062,12 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f8",
-      prompt: "Was versteht man im Thema Nervengesundheit unter einer Konzentration?",
-      answer: "Darunter versteht man die fokussierte Aufmerksamkeit.",
+      prompt: "Was kennzeichnet Konzentration im Thema Nervengesundheit?",
+      answer: "Sie bezeichnet die Fokussierte Aufmerksamkeit.",
       wrong: [
-        "Darunter versteht man den erholung für Gehirn und Körper.",
-        "Darunter versteht man zu Viele Reize Gleichzeitig.",
-        "Darunter versteht man den belastungsreaktion Des Organismus.",
+        "Sie ist das Erholung für Gehirn und Körper.",
+        "Sie bezeichnet den Zu Viele Reize Gleichzeitig.",
+        "Sie ist das Belastungsreaktion des Organismus.",
       ],
       explanation: "Konzentration: Fokussierte Aufmerksamkeit",
       wissen: fw(
@@ -5079,12 +5078,12 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f9",
-      prompt: "Was versteht man im Thema Nervengesundheit unter einem Recovery?",
-      answer: "Darunter versteht man die erholung Nach Belastung.",
+      prompt: "Was kennzeichnet Recovery im Thema Nervengesundheit?",
+      answer: "Es bezeichnet die Erholung nach Belastung.",
       wrong: [
-        "Darunter versteht man den erholung für Gehirn und Körper.",
-        "Darunter versteht man zu Viele Reize Gleichzeitig.",
-        "Darunter versteht man den belastungsreaktion Des Organismus.",
+        "Es ist das Erholung für Gehirn und Körper.",
+        "Es bezeichnet den Zu Viele Reize Gleichzeitig.",
+        "Es ist das Belastungsreaktion des Organismus.",
       ],
       explanation: "Recovery: Erholung nach Belastung",
       wissen: fw(
@@ -5095,12 +5094,12 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f10",
-      prompt: "Was versteht man im Thema Nervengesundheit auf „Tagesrhythmus“ zu unter einem Tagesrhythmus?",
-      answer: "Darunter versteht man wechsel von Aktivität und Ruhe.",
+      prompt: "Was kennzeichnet Tagesrhythmus im Thema Nervengesundheit?",
+      answer: "Er bezeichnet die Wechsel von Aktivität und Ruhe.",
       wrong: [
-        "Darunter versteht man erholung für Gehirn und Körper.",
-        "Darunter versteht man zu viele Reize gleichzeitig.",
-        "Darunter versteht man belastungsreaktion des Organismus.",
+        "Er ist das Erholung für Gehirn und Körper.",
+        "Er bezeichnet den Zu Viele Reize Gleichzeitig.",
+        "Er ist das Belastungsreaktion des Organismus.",
       ],
       explanation: "Tagesrhythmus: Wechsel von Aktivität und Ruhe",
       wissen: fw(
@@ -5111,12 +5110,12 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f11",
-      prompt: "Was versteht man im Thema Nervengesundheit unter einer Selbstregulation?",
-      answer: "Darunter versteht man die steuern von Belastung und Erholung.",
+      prompt: "Was kennzeichnet Selbstregulation im Thema Nervengesundheit?",
+      answer: "Sie bezeichnet die Steuern von Belastung und Erholung.",
       wrong: [
-        "Darunter versteht man den erholung für Gehirn und Körper.",
-        "Darunter versteht man zu Viele Reize Gleichzeitig.",
-        "Darunter versteht man den belastungsreaktion Des Organismus.",
+        "Sie ist das Erholung für Gehirn und Körper.",
+        "Sie bezeichnet den Zu Viele Reize Gleichzeitig.",
+        "Sie ist das Belastungsreaktion des Organismus.",
       ],
       explanation: "Selbstregulation: Steuern von Belastung und Erholung",
       wissen: fw(
@@ -5194,12 +5193,12 @@ export const k8Zyklus: BioBank = {
   facts: [
     {
       concept: "bio:k8:zyklus:f0",
-      prompt: "Was versteht man unter einem Menstruationszyklus?",
-      answer: "Darunter versteht man monatlicher Regelkreis der Gebärmutterschleimhaut.",
+      prompt: "Was kennzeichnet Menstruationszyklus?",
+      answer: "Er bezeichnet den Monatlicher Regelkreis der Gebärmutterschleimhaut.",
       wrong: [
-        "Darunter versteht man freisetzung einer Eizelle.",
-        "Darunter versteht man reifungsphase vor dem Eisprung.",
-        "Darunter versteht man phase nach dem Eisprung.",
+        "Er ist die Freisetzung einer Eizelle.",
+        "Er bezeichnet die Reifungsphase vor dem Eisprung.",
+        "Er bezeichnet die Phase nach dem Eisprung.",
       ],
       explanation: "Menstruationszyklus: Monatlicher Regelkreis der Gebärmutterschleimhaut",
       wissen: fw(
@@ -5210,12 +5209,12 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f1",
-      prompt: "Was versteht man im Thema Menstruationszyklus unter einer Eisprung?",
-      answer: "Darunter versteht man die freisetzung Einer Eizelle.",
+      prompt: "Was kennzeichnet Eisprung im Thema Menstruationszyklus?",
+      answer: "Sie ist die Freisetzung einer Eizelle.",
       wrong: [
-        "Darunter versteht man monatlicher Regelkreis der Gebärmutterschleimhaut.",
-        "Darunter versteht man die reifungsphase Vor Dem Eisprung.",
-        "Darunter versteht man die phase Nach Dem Eisprung.",
+        "Sie bezeichnet den Monatlicher Regelkreis der Gebärmutterschleimhaut.",
+        "Sie bezeichnet die Reifungsphase vor dem Eisprung.",
+        "Sie bezeichnet die Phase nach dem Eisprung.",
       ],
       explanation: "Eisprung: Freisetzung einer Eizelle",
       wissen: fw(
@@ -5226,12 +5225,12 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f2",
-      prompt: "Was versteht man im Thema Menstruationszyklus auf „Follikelphase“ zu unter einer Follikelphase?",
-      answer: "Darunter versteht man reifungsphase vor dem Eisprung.",
+      prompt: "Was kennzeichnet Follikelphase im Thema Menstruationszyklus?",
+      answer: "Sie bezeichnet die Reifungsphase vor dem Eisprung.",
       wrong: [
-        "Darunter versteht man monatlicher Regelkreis der Gebärmutterschleimhaut.",
-        "Darunter versteht man freisetzung einer Eizelle.",
-        "Darunter versteht man phase nach dem Eisprung.",
+        "Sie bezeichnet den Monatlicher Regelkreis der Gebärmutterschleimhaut.",
+        "Sie ist die Freisetzung einer Eizelle.",
+        "Sie bezeichnet die Phase nach dem Eisprung.",
       ],
       explanation: "Follikelphase: Reifungsphase vor dem Eisprung",
       wissen: fw(
@@ -5242,12 +5241,12 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f3",
-      prompt: "Was versteht man im Thema Menstruationszyklus auf „Lutealphase“ zu unter einer Lutealphase?",
-      answer: "Darunter versteht man phase nach dem Eisprung.",
+      prompt: "Was kennzeichnet Lutealphase im Thema Menstruationszyklus?",
+      answer: "Sie bezeichnet die Phase nach dem Eisprung.",
       wrong: [
-        "Darunter versteht man monatlicher Regelkreis der Gebärmutterschleimhaut.",
-        "Darunter versteht man freisetzung einer Eizelle.",
-        "Darunter versteht man reifungsphase vor dem Eisprung.",
+        "Sie bezeichnet den Monatlicher Regelkreis der Gebärmutterschleimhaut.",
+        "Sie ist die Freisetzung einer Eizelle.",
+        "Sie bezeichnet die Reifungsphase vor dem Eisprung.",
       ],
       explanation: "Lutealphase: Phase nach dem Eisprung",
       wissen: fw(
@@ -5258,12 +5257,12 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f4",
-      prompt: "Was versteht man im Thema Menstruationszyklus unter einer Menstruation?",
-      answer: "Darunter versteht man abstoßen der Schleimhaut.",
+      prompt: "Was kennzeichnet Menstruation im Thema Menstruationszyklus?",
+      answer: "Sie bezeichnet den Abstoßen der Schleimhaut.",
       wrong: [
-        "Darunter versteht man monatlicher Regelkreis der Gebärmutterschleimhaut.",
-        "Darunter versteht man die freisetzung Einer Eizelle.",
-        "Darunter versteht man die reifungsphase Vor Dem Eisprung.",
+        "Sie bezeichnet den Monatlicher Regelkreis der Gebärmutterschleimhaut.",
+        "Sie ist die Freisetzung einer Eizelle.",
+        "Sie bezeichnet die Reifungsphase vor dem Eisprung.",
       ],
       explanation: "Menstruation: Abstoßen der Schleimhaut",
       wissen: fw(
@@ -5274,12 +5273,12 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f5",
-      prompt: "Was versteht man im Thema Menstruationszyklus unter einem Östrogen?",
-      answer: "Darunter versteht man weibliches Geschlechtshormon.",
+      prompt: "Was kennzeichnet Östrogen im Thema Menstruationszyklus?",
+      answer: "Es bezeichnet den Weibliches Geschlechtshormon.",
       wrong: [
-        "Darunter versteht man monatlicher Regelkreis der Gebärmutterschleimhaut.",
-        "Darunter versteht man die freisetzung Einer Eizelle.",
-        "Darunter versteht man die reifungsphase Vor Dem Eisprung.",
+        "Es bezeichnet den Monatlicher Regelkreis der Gebärmutterschleimhaut.",
+        "Es ist die Freisetzung einer Eizelle.",
+        "Es bezeichnet die Reifungsphase vor dem Eisprung.",
       ],
       explanation: "Östrogen: Weibliches Geschlechtshormon",
       wissen: fw(
@@ -5290,12 +5289,12 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f6",
-      prompt: "Was versteht man im Thema Menstruationszyklus unter einem Progesteron?",
-      answer: "Darunter versteht man gelbkörperhormon.",
+      prompt: "Was kennzeichnet Progesteron im Thema Menstruationszyklus?",
+      answer: "Es ist das Gelbkörperhormon.",
       wrong: [
-        "Darunter versteht man monatlicher Regelkreis der Gebärmutterschleimhaut.",
-        "Darunter versteht man die freisetzung Einer Eizelle.",
-        "Darunter versteht man die reifungsphase Vor Dem Eisprung.",
+        "Es bezeichnet den Monatlicher Regelkreis der Gebärmutterschleimhaut.",
+        "Es ist die Freisetzung einer Eizelle.",
+        "Es bezeichnet die Reifungsphase vor dem Eisprung.",
       ],
       explanation: "Progesteron: Gelbkörperhormon",
       wissen: fw(
@@ -5306,12 +5305,12 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f7",
-      prompt: "Was versteht man im Thema Menstruationszyklus auf „Gebärmutterschleimhaut“ zu unter einem Gebärmutterschleimhaut?",
-      answer: "Darunter versteht man innere Auskleidung der Gebärmutter.",
+      prompt: "Was kennzeichnet Gebärmutterschleimhaut im Thema Menstruationszyklus?",
+      answer: "Es bezeichnet den Innere Auskleidung der Gebärmutter.",
       wrong: [
-        "Darunter versteht man monatlicher Regelkreis der Gebärmutterschleimhaut.",
-        "Darunter versteht man freisetzung einer Eizelle.",
-        "Darunter versteht man reifungsphase vor dem Eisprung.",
+        "Es bezeichnet den Monatlicher Regelkreis der Gebärmutterschleimhaut.",
+        "Es ist die Freisetzung einer Eizelle.",
+        "Es bezeichnet die Reifungsphase vor dem Eisprung.",
       ],
       explanation: "Gebärmutterschleimhaut: Innere Auskleidung der Gebärmutter",
       wissen: fw(
@@ -5322,12 +5321,12 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f8",
-      prompt: "Was versteht man im Thema Menstruationszyklus unter einem Gelbkörper?",
-      answer: "Darunter versteht man die restfollikel Nach Eisprung.",
+      prompt: "Was kennzeichnet Gelbkörper im Thema Menstruationszyklus?",
+      answer: "Er bezeichnet die Restfollikel nach Eisprung.",
       wrong: [
-        "Darunter versteht man monatlicher Regelkreis der Gebärmutterschleimhaut.",
-        "Darunter versteht man die freisetzung Einer Eizelle.",
-        "Darunter versteht man die reifungsphase Vor Dem Eisprung.",
+        "Er bezeichnet den Monatlicher Regelkreis der Gebärmutterschleimhaut.",
+        "Er ist die Freisetzung einer Eizelle.",
+        "Er bezeichnet die Reifungsphase vor dem Eisprung.",
       ],
       explanation: "Gelbkörper: Restfollikel nach Eisprung",
       wissen: fw(
@@ -5338,12 +5337,12 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f9",
-      prompt: "Was versteht man im Thema Menstruationszyklus unter einer Regulation?",
-      answer: "Darunter versteht man die steuerung Durch Hypophyse und Eierstöcke.",
+      prompt: "Was kennzeichnet Regulation im Thema Menstruationszyklus?",
+      answer: "Sie bezeichnet die Steuerung durch Hypophyse und Eierstöcke.",
       wrong: [
-        "Darunter versteht man monatlicher Regelkreis der Gebärmutterschleimhaut.",
-        "Darunter versteht man die freisetzung Einer Eizelle.",
-        "Darunter versteht man die reifungsphase Vor Dem Eisprung.",
+        "Sie bezeichnet den Monatlicher Regelkreis der Gebärmutterschleimhaut.",
+        "Sie ist die Freisetzung einer Eizelle.",
+        "Sie bezeichnet die Reifungsphase vor dem Eisprung.",
       ],
       explanation: "Regulation: Steuerung durch Hypophyse und Eierstöcke",
       wissen: fw(
@@ -5354,12 +5353,12 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f10",
-      prompt: "Was versteht man im Thema Menstruationszyklus unter einer Zykluslänge?",
-      answer: "Darunter versteht man dauer Eines Zyklus.",
+      prompt: "Was kennzeichnet Zykluslänge im Thema Menstruationszyklus?",
+      answer: "Sie bezeichnet den Dauer Eines Zyklus.",
       wrong: [
-        "Darunter versteht man monatlicher Regelkreis der Gebärmutterschleimhaut.",
-        "Darunter versteht man die freisetzung Einer Eizelle.",
-        "Darunter versteht man die reifungsphase Vor Dem Eisprung.",
+        "Sie bezeichnet den Monatlicher Regelkreis der Gebärmutterschleimhaut.",
+        "Sie ist die Freisetzung einer Eizelle.",
+        "Sie bezeichnet die Reifungsphase vor dem Eisprung.",
       ],
       explanation: "Zykluslänge: Dauer eines Zyklus",
       wissen: fw(
@@ -5370,12 +5369,12 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f11",
-      prompt: "Was versteht man im Thema Menstruationszyklus unter einer Fruchtbare Tage?",
-      answer: "Darunter versteht man die zeitraum Erhöhter Empfängniswahrscheinlichkeit.",
+      prompt: "Was kennzeichnet Fruchtbare Tage im Thema Menstruationszyklus?",
+      answer: "Sie bezeichnet die Zeitraum Erhöhter Empfängniswahrscheinlichkeit.",
       wrong: [
-        "Darunter versteht man monatlicher Regelkreis der Gebärmutterschleimhaut.",
-        "Darunter versteht man die freisetzung Einer Eizelle.",
-        "Darunter versteht man die reifungsphase Vor Dem Eisprung.",
+        "Sie bezeichnet den Monatlicher Regelkreis der Gebärmutterschleimhaut.",
+        "Sie ist die Freisetzung einer Eizelle.",
+        "Sie bezeichnet die Reifungsphase vor dem Eisprung.",
       ],
       explanation: "Fruchtbare Tage: Zeitraum erhöhter Empfängniswahrscheinlichkeit",
       wissen: fw(
@@ -5453,12 +5452,12 @@ export const k8Vielfalt: BioBank = {
   facts: [
     {
       concept: "bio:k8:vielfalt:f0",
-      prompt: "Was versteht man unter einem sexuelle Vielfalt?",
-      answer: "Darunter versteht man unterschiedliche sexuelle Orientierungen.",
+      prompt: "Was kennzeichnet sexuelle Vielfalt?",
+      answer: "Es bezeichnet den Unterschiedliche Sexuelle Orientierungen.",
       wrong: [
-        "Darunter versteht man unterschiedliche Geschlechtsidentitäten und -merkmale.",
-        "Darunter versteht man anziehung zum anderen Geschlecht.",
-        "Darunter versteht man anziehung zum gleichen Geschlecht.",
+        "Es bezeichnet die Unterschiedliche Geschlechtsidentitäten und -merkmale.",
+        "Es bezeichnet den Anziehung zum Anderen Geschlecht.",
+        "Es bezeichnet den Anziehung zum Gleichen Geschlecht.",
       ],
       explanation: "sexuelle Vielfalt: Unterschiedliche sexuelle Orientierungen",
       wissen: fw(
@@ -5469,12 +5468,12 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f1",
-      prompt: "Was versteht man im Thema Sexuelle Vielfalt auf „geschlechtliche Vielfalt“ zu unter einem geschlechtliche Vielfalt?",
-      answer: "Darunter versteht man unterschiedliche Geschlechtsidentitäten und -merkmale.",
+      prompt: "Was kennzeichnet geschlechtliche Vielfalt im Thema Sexuelle Vielfalt?",
+      answer: "Es bezeichnet die Unterschiedliche Geschlechtsidentitäten und -merkmale.",
       wrong: [
-        "Darunter versteht man unterschiedliche sexuelle Orientierungen.",
-        "Darunter versteht man anziehung zum anderen Geschlecht.",
-        "Darunter versteht man anziehung zum gleichen Geschlecht.",
+        "Es bezeichnet den Unterschiedliche Sexuelle Orientierungen.",
+        "Es bezeichnet den Anziehung zum Anderen Geschlecht.",
+        "Es bezeichnet den Anziehung zum Gleichen Geschlecht.",
       ],
       explanation: "geschlechtliche Vielfalt: Unterschiedliche Geschlechtsidentitäten und -merkmale",
       wissen: fw(
@@ -5485,12 +5484,12 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f2",
-      prompt: "Was versteht man im Thema Sexuelle Vielfalt auf „Heterosexualität“ zu unter einer Heterosexualität?",
-      answer: "Darunter versteht man anziehung zum anderen Geschlecht.",
+      prompt: "Was kennzeichnet Heterosexualität im Thema Sexuelle Vielfalt?",
+      answer: "Sie bezeichnet den Anziehung zum Anderen Geschlecht.",
       wrong: [
-        "Darunter versteht man unterschiedliche sexuelle Orientierungen.",
-        "Darunter versteht man unterschiedliche Geschlechtsidentitäten und -merkmale.",
-        "Darunter versteht man anziehung zum gleichen Geschlecht.",
+        "Sie bezeichnet den Unterschiedliche Sexuelle Orientierungen.",
+        "Sie bezeichnet die Unterschiedliche Geschlechtsidentitäten und -merkmale.",
+        "Sie bezeichnet den Anziehung zum Gleichen Geschlecht.",
       ],
       explanation: "Heterosexualität: Anziehung zum anderen Geschlecht",
       wissen: fw(
@@ -5501,12 +5500,12 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f3",
-      prompt: "Was versteht man im Thema Sexuelle Vielfalt auf „Homosexualität“ zu unter einer Homosexualität?",
-      answer: "Darunter versteht man anziehung zum gleichen Geschlecht.",
+      prompt: "Was kennzeichnet Homosexualität im Thema Sexuelle Vielfalt?",
+      answer: "Sie bezeichnet den Anziehung zum Gleichen Geschlecht.",
       wrong: [
-        "Darunter versteht man unterschiedliche sexuelle Orientierungen.",
-        "Darunter versteht man unterschiedliche Geschlechtsidentitäten und -merkmale.",
-        "Darunter versteht man anziehung zum anderen Geschlecht.",
+        "Sie bezeichnet den Unterschiedliche Sexuelle Orientierungen.",
+        "Sie bezeichnet die Unterschiedliche Geschlechtsidentitäten und -merkmale.",
+        "Sie bezeichnet den Anziehung zum Anderen Geschlecht.",
       ],
       explanation: "Homosexualität: Anziehung zum gleichen Geschlecht",
       wissen: fw(
@@ -5517,12 +5516,12 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f4",
-      prompt: "Was versteht man im Thema Sexuelle Vielfalt unter einer Intersexualität?",
-      answer: "Darunter versteht man die varianten der Geschlechtsmerkmale.",
+      prompt: "Was kennzeichnet Intersexualität im Thema Sexuelle Vielfalt?",
+      answer: "Sie bezeichnet die Varianten der Geschlechtsmerkmale.",
       wrong: [
-        "Darunter versteht man unterschiedliche Sexuelle Orientierungen.",
-        "Darunter versteht man die unterschiedliche Geschlechtsidentitäten und -merkmale.",
-        "Darunter versteht man anziehung zum Anderen Geschlecht.",
+        "Sie bezeichnet den Unterschiedliche Sexuelle Orientierungen.",
+        "Sie bezeichnet die Unterschiedliche Geschlechtsidentitäten und -merkmale.",
+        "Sie bezeichnet den Anziehung zum Anderen Geschlecht.",
       ],
       explanation: "Intersexualität: Varianten der Geschlechtsmerkmale",
       wissen: fw(
@@ -5533,12 +5532,12 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f5",
-      prompt: "Was versteht man im Thema Sexuelle Vielfalt auf „Transgender“ zu unter einem Transgender?",
-      answer: "Darunter versteht man geschlechtsidentität weicht vom Zuweisungsgeschlecht ab.",
+      prompt: "Was kennzeichnet Transgender im Thema Sexuelle Vielfalt?",
+      answer: "Er bezeichnet den Geschlechtsidentität Weicht vom Zuweisungsgeschlecht Ab.",
       wrong: [
-        "Darunter versteht man unterschiedliche sexuelle Orientierungen.",
-        "Darunter versteht man unterschiedliche Geschlechtsidentitäten und -merkmale.",
-        "Darunter versteht man anziehung zum anderen Geschlecht.",
+        "Er bezeichnet den Unterschiedliche Sexuelle Orientierungen.",
+        "Er bezeichnet die Unterschiedliche Geschlechtsidentitäten und -merkmale.",
+        "Er bezeichnet den Anziehung zum Anderen Geschlecht.",
       ],
       explanation: "Transgender: Geschlechtsidentität weicht vom Zuweisungsgeschlecht ab",
       wissen: fw(
@@ -5549,12 +5548,12 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f6",
-      prompt: "Was versteht man im Thema Sexuelle Vielfalt unter einer Partnerbeziehung?",
-      answer: "Darunter versteht man das beziehungsform Zwischen Menschen.",
+      prompt: "Was kennzeichnet Partnerbeziehung im Thema Sexuelle Vielfalt?",
+      answer: "Sie ist das Beziehungsform Zwischen Menschen.",
       wrong: [
-        "Darunter versteht man unterschiedliche Sexuelle Orientierungen.",
-        "Darunter versteht man die unterschiedliche Geschlechtsidentitäten und -merkmale.",
-        "Darunter versteht man anziehung zum Anderen Geschlecht.",
+        "Sie bezeichnet den Unterschiedliche Sexuelle Orientierungen.",
+        "Sie bezeichnet die Unterschiedliche Geschlechtsidentitäten und -merkmale.",
+        "Sie bezeichnet den Anziehung zum Anderen Geschlecht.",
       ],
       explanation: "Partnerbeziehung: Beziehungsform zwischen Menschen",
       wissen: fw(
@@ -5565,12 +5564,12 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f7",
-      prompt: "Was versteht man im Thema Sexuelle Vielfalt unter einem Konsens?",
-      answer: "Darunter versteht man die freiwillige Zustimmung.",
+      prompt: "Was kennzeichnet Konsens im Thema Sexuelle Vielfalt?",
+      answer: "Es bezeichnet die Freiwillige Zustimmung.",
       wrong: [
-        "Darunter versteht man unterschiedliche Sexuelle Orientierungen.",
-        "Darunter versteht man die unterschiedliche Geschlechtsidentitäten und -merkmale.",
-        "Darunter versteht man anziehung zum Anderen Geschlecht.",
+        "Es bezeichnet den Unterschiedliche Sexuelle Orientierungen.",
+        "Es bezeichnet die Unterschiedliche Geschlechtsidentitäten und -merkmale.",
+        "Es bezeichnet den Anziehung zum Anderen Geschlecht.",
       ],
       explanation: "Konsens: Freiwillige Zustimmung",
       wissen: fw(
@@ -5581,12 +5580,12 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f8",
-      prompt: "Was versteht man im Thema Sexuelle Vielfalt unter einem Jugendschutz?",
-      answer: "Darunter versteht man den schutz Minderjähriger.",
+      prompt: "Was kennzeichnet Jugendschutz im Thema Sexuelle Vielfalt?",
+      answer: "Es ist das Schutz Minderjähriger.",
       wrong: [
-        "Darunter versteht man unterschiedliche Sexuelle Orientierungen.",
-        "Darunter versteht man die unterschiedliche Geschlechtsidentitäten und -merkmale.",
-        "Darunter versteht man anziehung zum Anderen Geschlecht.",
+        "Es bezeichnet den Unterschiedliche Sexuelle Orientierungen.",
+        "Es bezeichnet die Unterschiedliche Geschlechtsidentitäten und -merkmale.",
+        "Es bezeichnet den Anziehung zum Anderen Geschlecht.",
       ],
       explanation: "Jugendschutz: Schutz Minderjähriger",
       wissen: fw(
@@ -5597,12 +5596,12 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f9",
-      prompt: "Was versteht man im Thema Sexuelle Vielfalt auf „Medieninfluss“ zu unter einem Medieninfluss?",
-      answer: "Darunter versteht man wirkung von Internet und Sozialen Medien.",
+      prompt: "Was kennzeichnet Medieninfluss im Thema Sexuelle Vielfalt?",
+      answer: "Es bezeichnet den Wirkung von Internet und Sozialen Medien.",
       wrong: [
-        "Darunter versteht man unterschiedliche sexuelle Orientierungen.",
-        "Darunter versteht man unterschiedliche Geschlechtsidentitäten und -merkmale.",
-        "Darunter versteht man anziehung zum anderen Geschlecht.",
+        "Es bezeichnet den Unterschiedliche Sexuelle Orientierungen.",
+        "Es bezeichnet die Unterschiedliche Geschlechtsidentitäten und -merkmale.",
+        "Es bezeichnet den Anziehung zum Anderen Geschlecht.",
       ],
       explanation: "Medieninfluss: Wirkung von Internet und Sozialen Medien",
       wissen: fw(
@@ -5613,12 +5612,12 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f10",
-      prompt: "Was versteht man im Thema Sexuelle Vielfalt auf „Respekt“ zu unter einem Respekt?",
-      answer: "Darunter versteht man achtung der Würde anderer.",
+      prompt: "Was kennzeichnet Respekt im Thema Sexuelle Vielfalt?",
+      answer: "Es bezeichnet den Achtung der Würde Anderer.",
       wrong: [
-        "Darunter versteht man unterschiedliche sexuelle Orientierungen.",
-        "Darunter versteht man unterschiedliche Geschlechtsidentitäten und -merkmale.",
-        "Darunter versteht man anziehung zum anderen Geschlecht.",
+        "Es bezeichnet den Unterschiedliche Sexuelle Orientierungen.",
+        "Es bezeichnet die Unterschiedliche Geschlechtsidentitäten und -merkmale.",
+        "Es bezeichnet den Anziehung zum Anderen Geschlecht.",
       ],
       explanation: "Respekt: Achtung der Würde anderer",
       wissen: fw(
@@ -5629,12 +5628,12 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f11",
-      prompt: "Was versteht man im Thema Sexuelle Vielfalt unter einer Aufklärung?",
-      answer: "Darunter versteht man die sachliche Information.",
+      prompt: "Was kennzeichnet Aufklärung im Thema Sexuelle Vielfalt?",
+      answer: "Sie ist die Sachliche Information.",
       wrong: [
-        "Darunter versteht man unterschiedliche Sexuelle Orientierungen.",
-        "Darunter versteht man die unterschiedliche Geschlechtsidentitäten und -merkmale.",
-        "Darunter versteht man anziehung zum Anderen Geschlecht.",
+        "Sie bezeichnet den Unterschiedliche Sexuelle Orientierungen.",
+        "Sie bezeichnet die Unterschiedliche Geschlechtsidentitäten und -merkmale.",
+        "Sie bezeichnet den Anziehung zum Anderen Geschlecht.",
       ],
       explanation: "Aufklärung: Sachliche Information",
       wissen: fw(
@@ -5712,12 +5711,12 @@ export const k9Gewaesser: BioBank = {
   facts: [
     {
       concept: "bio:k9:gewaesser:f0",
-      prompt: "Was versteht man im Thema See/Zonierung unter einer Zonierung?",
-      answer: "Darunter versteht man gliederung Eines Sees in Lebenszonen.",
+      prompt: "Was kennzeichnet Zonierung im Thema See/Zonierung?",
+      answer: "Sie bezeichnet den Gliederung Eines Sees in Lebenszonen.",
       wrong: [
-        "Darunter versteht man die uferzone.",
-        "Darunter versteht man die freiwasserzone.",
-        "Darunter versteht man die bodenzone.",
+        "Sie bezeichnet die Uferzone.",
+        "Sie bezeichnet die Freiwasserzone.",
+        "Sie bezeichnet die Bodenzone.",
       ],
       explanation: "Zonierung: Gliederung eines Sees in Lebenszonen",
       wissen: fw(
@@ -5728,12 +5727,12 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f1",
-      prompt: "Was versteht man im Thema See/Zonierung unter einem Litoral?",
-      answer: "Darunter versteht man die uferzone.",
+      prompt: "Was kennzeichnet Litoral im Thema See/Zonierung?",
+      answer: "Es bezeichnet die Uferzone.",
       wrong: [
-        "Darunter versteht man gliederung Eines Sees in Lebenszonen.",
-        "Darunter versteht man die freiwasserzone.",
-        "Darunter versteht man die bodenzone.",
+        "Es bezeichnet den Gliederung Eines Sees in Lebenszonen.",
+        "Es bezeichnet die Freiwasserzone.",
+        "Es bezeichnet die Bodenzone.",
       ],
       explanation: "Litoral: Uferzone",
       wissen: fw(
@@ -5744,12 +5743,12 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f2",
-      prompt: "Was versteht man im Thema See/Zonierung unter einem Pelagial?",
-      answer: "Darunter versteht man die freiwasserzone.",
+      prompt: "Was kennzeichnet Pelagial im Thema See/Zonierung?",
+      answer: "Es bezeichnet die Freiwasserzone.",
       wrong: [
-        "Darunter versteht man gliederung Eines Sees in Lebenszonen.",
-        "Darunter versteht man die uferzone.",
-        "Darunter versteht man die bodenzone.",
+        "Es bezeichnet den Gliederung Eines Sees in Lebenszonen.",
+        "Es bezeichnet die Uferzone.",
+        "Es bezeichnet die Bodenzone.",
       ],
       explanation: "Pelagial: Freiwasserzone",
       wissen: fw(
@@ -5760,12 +5759,12 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f3",
-      prompt: "Was versteht man im Thema See/Zonierung unter einem Profundal?",
-      answer: "Darunter versteht man die bodenzone.",
+      prompt: "Was kennzeichnet Profundal im Thema See/Zonierung?",
+      answer: "Es bezeichnet die Bodenzone.",
       wrong: [
-        "Darunter versteht man gliederung Eines Sees in Lebenszonen.",
-        "Darunter versteht man die uferzone.",
-        "Darunter versteht man die freiwasserzone.",
+        "Es bezeichnet den Gliederung Eines Sees in Lebenszonen.",
+        "Es bezeichnet die Uferzone.",
+        "Es bezeichnet die Freiwasserzone.",
       ],
       explanation: "Profundal: Bodenzone",
       wissen: fw(
@@ -5776,12 +5775,12 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f4",
-      prompt: "Was versteht man im Thema See/Zonierung unter einem Phytoplankton?",
-      answer: "Darunter versteht man pflanzliches Plankton.",
+      prompt: "Was kennzeichnet Phytoplankton im Thema See/Zonierung?",
+      answer: "Es bezeichnet den Pflanzliches Plankton.",
       wrong: [
-        "Darunter versteht man gliederung Eines Sees in Lebenszonen.",
-        "Darunter versteht man die uferzone.",
-        "Darunter versteht man die freiwasserzone.",
+        "Es bezeichnet den Gliederung Eines Sees in Lebenszonen.",
+        "Es bezeichnet die Uferzone.",
+        "Es bezeichnet die Freiwasserzone.",
       ],
       explanation: "Phytoplankton: Pflanzliches Plankton",
       wissen: fw(
@@ -5792,12 +5791,12 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f5",
-      prompt: "Was versteht man im Thema See/Zonierung unter einem Zooplankton?",
-      answer: "Darunter versteht man tierisches Plankton.",
+      prompt: "Was kennzeichnet Zooplankton im Thema See/Zonierung?",
+      answer: "Es bezeichnet den Tierisches Plankton.",
       wrong: [
-        "Darunter versteht man gliederung Eines Sees in Lebenszonen.",
-        "Darunter versteht man die uferzone.",
-        "Darunter versteht man die freiwasserzone.",
+        "Es bezeichnet den Gliederung Eines Sees in Lebenszonen.",
+        "Es bezeichnet die Uferzone.",
+        "Es bezeichnet die Freiwasserzone.",
       ],
       explanation: "Zooplankton: Tierisches Plankton",
       wissen: fw(
@@ -5808,12 +5807,12 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f6",
-      prompt: "Was versteht man im Thema See/Zonierung unter einer Vollzirkulation?",
-      answer: "Darunter versteht man durchmischung der Wasserschichten.",
+      prompt: "Was kennzeichnet Vollzirkulation im Thema See/Zonierung?",
+      answer: "Sie ist das Durchmischung der Wasserschichten.",
       wrong: [
-        "Darunter versteht man gliederung Eines Sees in Lebenszonen.",
-        "Darunter versteht man die uferzone.",
-        "Darunter versteht man die freiwasserzone.",
+        "Sie bezeichnet den Gliederung Eines Sees in Lebenszonen.",
+        "Sie bezeichnet die Uferzone.",
+        "Sie bezeichnet die Freiwasserzone.",
       ],
       explanation: "Vollzirkulation: Durchmischung der Wasserschichten",
       wissen: fw(
@@ -5824,12 +5823,12 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f7",
-      prompt: "Was versteht man im Thema See/Zonierung unter einer Stagnation?",
-      answer: "Darunter versteht man die schichtung Ohne Durchmischung.",
+      prompt: "Was kennzeichnet Stagnation im Thema See/Zonierung?",
+      answer: "Sie ist die Schichtung ohne Durchmischung.",
       wrong: [
-        "Darunter versteht man gliederung Eines Sees in Lebenszonen.",
-        "Darunter versteht man die uferzone.",
-        "Darunter versteht man die freiwasserzone.",
+        "Sie bezeichnet den Gliederung Eines Sees in Lebenszonen.",
+        "Sie bezeichnet die Uferzone.",
+        "Sie bezeichnet die Freiwasserzone.",
       ],
       explanation: "Stagnation: Schichtung ohne Durchmischung",
       wissen: fw(
@@ -5840,12 +5839,12 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f8",
-      prompt: "Was versteht man im Thema See/Zonierung unter einem Sprungschicht?",
-      answer: "Darunter versteht man den temperaturgrenze im Sommer.",
+      prompt: "Was kennzeichnet Sprungschicht im Thema See/Zonierung?",
+      answer: "Es bezeichnet den Temperaturgrenze im Sommer.",
       wrong: [
-        "Darunter versteht man gliederung Eines Sees in Lebenszonen.",
-        "Darunter versteht man die uferzone.",
-        "Darunter versteht man die freiwasserzone.",
+        "Es bezeichnet den Gliederung Eines Sees in Lebenszonen.",
+        "Es bezeichnet die Uferzone.",
+        "Es bezeichnet die Freiwasserzone.",
       ],
       explanation: "Sprungschicht: Temperaturgrenze im Sommer",
       wissen: fw(
@@ -5856,12 +5855,12 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f9",
-      prompt: "Was versteht man im Thema See/Zonierung unter einer Ufervegetation?",
-      answer: "Darunter versteht man pflanzen am Gewässerrand.",
+      prompt: "Was kennzeichnet Ufervegetation im Thema See/Zonierung?",
+      answer: "Sie bezeichnet den Pflanzen am Gewässerrand.",
       wrong: [
-        "Darunter versteht man gliederung Eines Sees in Lebenszonen.",
-        "Darunter versteht man die uferzone.",
-        "Darunter versteht man die freiwasserzone.",
+        "Sie bezeichnet den Gliederung Eines Sees in Lebenszonen.",
+        "Sie bezeichnet die Uferzone.",
+        "Sie bezeichnet die Freiwasserzone.",
       ],
       explanation: "Ufervegetation: Pflanzen am Gewässerrand",
       wissen: fw(
@@ -5872,12 +5871,12 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f10",
-      prompt: "Was versteht man im Thema See/Zonierung unter einer Trophiestufe?",
-      answer: "Darunter versteht man ernährungsstufe im Nahrungsnetz.",
+      prompt: "Was kennzeichnet Trophiestufe im Thema See/Zonierung?",
+      answer: "Sie bezeichnet den Ernährungsstufe im Nahrungsnetz.",
       wrong: [
-        "Darunter versteht man gliederung Eines Sees in Lebenszonen.",
-        "Darunter versteht man die uferzone.",
-        "Darunter versteht man die freiwasserzone.",
+        "Sie bezeichnet den Gliederung Eines Sees in Lebenszonen.",
+        "Sie bezeichnet die Uferzone.",
+        "Sie bezeichnet die Freiwasserzone.",
       ],
       explanation: "Trophiestufe: Ernährungsstufe im Nahrungsnetz",
       wissen: fw(
@@ -5888,12 +5887,12 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f11",
-      prompt: "Was versteht man im Thema See/Zonierung unter einem Sauerstoffgehalt?",
-      answer: "Darunter versteht man den gelöster O₂ im Wasser.",
+      prompt: "Was kennzeichnet Sauerstoffgehalt im Thema See/Zonierung?",
+      answer: "Es bezeichnet den Gelöster O₂ im Wasser.",
       wrong: [
-        "Darunter versteht man gliederung Eines Sees in Lebenszonen.",
-        "Darunter versteht man die uferzone.",
-        "Darunter versteht man die freiwasserzone.",
+        "Es bezeichnet den Gliederung Eines Sees in Lebenszonen.",
+        "Es bezeichnet die Uferzone.",
+        "Es bezeichnet die Freiwasserzone.",
       ],
       explanation: "Sauerstoffgehalt: Gelöster O₂ im Wasser",
       wissen: fw(
@@ -5971,12 +5970,12 @@ export const k9Sukzession: BioBank = {
   facts: [
     {
       concept: "bio:k9:suks:f0",
-      prompt: "Was versteht man unter einer Sukzession?",
-      answer: "Darunter versteht man gerichtete Abfolge von Lebensgemeinschaften.",
+      prompt: "Was kennzeichnet Sukzession?",
+      answer: "Sie bezeichnet den Gerichtete Abfolge von Lebensgemeinschaften.",
       wrong: [
-        "Darunter versteht man frühe Besiedler gestörter Flächen.",
-        "Darunter versteht man relativ stabile Endgesellschaft.",
-        "Darunter versteht man neubesiedlung ohne Bodenstart.",
+        "Sie ist das Frühe Besiedler Gestörter Flächen.",
+        "Sie bezeichnet die Relativ Stabile Endgesellschaft.",
+        "Sie bezeichnet den Neubesiedlung ohne Bodenstart.",
       ],
       explanation: "Sukzession: Gerichtete Abfolge von Lebensgemeinschaften",
       wissen: fw(
@@ -5987,12 +5986,12 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f1",
-      prompt: "Was versteht man im Thema Sukzession auf „Pionierart“ zu unter einem Pionierart?",
-      answer: "Darunter versteht man frühe Besiedler gestörter Flächen.",
+      prompt: "Was kennzeichnet Pionierart im Thema Sukzession?",
+      answer: "Es ist das Frühe Besiedler Gestörter Flächen.",
       wrong: [
-        "Darunter versteht man gerichtete Abfolge von Lebensgemeinschaften.",
-        "Darunter versteht man relativ stabile Endgesellschaft.",
-        "Darunter versteht man neubesiedlung ohne Bodenstart.",
+        "Es bezeichnet den Gerichtete Abfolge von Lebensgemeinschaften.",
+        "Es bezeichnet die Relativ Stabile Endgesellschaft.",
+        "Es bezeichnet den Neubesiedlung ohne Bodenstart.",
       ],
       explanation: "Pionierart: Frühe Besiedler gestörter Flächen",
       wissen: fw(
@@ -6003,12 +6002,12 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f2",
-      prompt: "Was versteht man im Thema Sukzession unter einem Klimax?",
-      answer: "Darunter versteht man die relativ Stabile Endgesellschaft.",
+      prompt: "Was kennzeichnet Klimax im Thema Sukzession?",
+      answer: "Es bezeichnet die Relativ Stabile Endgesellschaft.",
       wrong: [
-        "Darunter versteht man gerichtete Abfolge von Lebensgemeinschaften.",
-        "Darunter versteht man das frühe Besiedler Gestörter Flächen.",
-        "Darunter versteht man neubesiedlung Ohne Bodenstart.",
+        "Es bezeichnet den Gerichtete Abfolge von Lebensgemeinschaften.",
+        "Es ist das Frühe Besiedler Gestörter Flächen.",
+        "Es bezeichnet den Neubesiedlung ohne Bodenstart.",
       ],
       explanation: "Klimax: Relativ stabile Endgesellschaft",
       wissen: fw(
@@ -6019,12 +6018,12 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f3",
-      prompt: "Was versteht man im Thema Sukzession unter einer Primärsukzession?",
-      answer: "Darunter versteht man neubesiedlung Ohne Bodenstart.",
+      prompt: "Was kennzeichnet Primärsukzession im Thema Sukzession?",
+      answer: "Sie bezeichnet den Neubesiedlung ohne Bodenstart.",
       wrong: [
-        "Darunter versteht man gerichtete Abfolge von Lebensgemeinschaften.",
-        "Darunter versteht man das frühe Besiedler Gestörter Flächen.",
-        "Darunter versteht man die relativ Stabile Endgesellschaft.",
+        "Sie bezeichnet den Gerichtete Abfolge von Lebensgemeinschaften.",
+        "Sie ist das Frühe Besiedler Gestörter Flächen.",
+        "Sie bezeichnet die Relativ Stabile Endgesellschaft.",
       ],
       explanation: "Primärsukzession: Neubesiedlung ohne Bodenstart",
       wissen: fw(
@@ -6035,12 +6034,12 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f4",
-      prompt: "Was versteht man im Thema Sukzession auf „Sekundärsukzession“ zu unter einer Sekundärsukzession?",
-      answer: "Darunter versteht man neuentwicklung nach Störung mit Boden.",
+      prompt: "Was kennzeichnet Sekundärsukzession im Thema Sukzession?",
+      answer: "Sie bezeichnet den Neuentwicklung nach Störung mit Boden.",
       wrong: [
-        "Darunter versteht man gerichtete Abfolge von Lebensgemeinschaften.",
-        "Darunter versteht man frühe Besiedler gestörter Flächen.",
-        "Darunter versteht man relativ stabile Endgesellschaft.",
+        "Sie bezeichnet den Gerichtete Abfolge von Lebensgemeinschaften.",
+        "Sie ist das Frühe Besiedler Gestörter Flächen.",
+        "Sie bezeichnet die Relativ Stabile Endgesellschaft.",
       ],
       explanation: "Sekundärsukzession: Neuentwicklung nach Störung mit Boden",
       wissen: fw(
@@ -6051,12 +6050,12 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f5",
-      prompt: "Was versteht man im Thema Sukzession unter einem Artwechsel?",
-      answer: "Darunter versteht man austausch Dominanter Arten.",
+      prompt: "Was kennzeichnet Artwechsel im Thema Sukzession?",
+      answer: "Es bezeichnet den Austausch Dominanter Arten.",
       wrong: [
-        "Darunter versteht man gerichtete Abfolge von Lebensgemeinschaften.",
-        "Darunter versteht man das frühe Besiedler Gestörter Flächen.",
-        "Darunter versteht man die relativ Stabile Endgesellschaft.",
+        "Es bezeichnet den Gerichtete Abfolge von Lebensgemeinschaften.",
+        "Es ist das Frühe Besiedler Gestörter Flächen.",
+        "Es bezeichnet die Relativ Stabile Endgesellschaft.",
       ],
       explanation: "Artwechsel: Austausch dominanter Arten",
       wissen: fw(
@@ -6067,12 +6066,12 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f6",
-      prompt: "Was versteht man im Thema Sukzession unter einer Bodenbildung?",
-      answer: "Darunter versteht man entwicklung von Bodenhorizonten.",
+      prompt: "Was kennzeichnet Bodenbildung im Thema Sukzession?",
+      answer: "Sie bezeichnet den Entwicklung von Bodenhorizonten.",
       wrong: [
-        "Darunter versteht man gerichtete Abfolge von Lebensgemeinschaften.",
-        "Darunter versteht man das frühe Besiedler Gestörter Flächen.",
-        "Darunter versteht man die relativ Stabile Endgesellschaft.",
+        "Sie bezeichnet den Gerichtete Abfolge von Lebensgemeinschaften.",
+        "Sie ist das Frühe Besiedler Gestörter Flächen.",
+        "Sie bezeichnet die Relativ Stabile Endgesellschaft.",
       ],
       explanation: "Bodenbildung: Entwicklung von Bodenhorizonten",
       wissen: fw(
@@ -6083,12 +6082,12 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f7",
-      prompt: "Was versteht man im Thema Sukzession unter einer Konkurrenz?",
-      answer: "Darunter versteht man wettbewerb Um Ressourcen.",
+      prompt: "Was kennzeichnet Konkurrenz im Thema Sukzession?",
+      answer: "Sie bezeichnet den Wettbewerb um Ressourcen.",
       wrong: [
-        "Darunter versteht man gerichtete Abfolge von Lebensgemeinschaften.",
-        "Darunter versteht man das frühe Besiedler Gestörter Flächen.",
-        "Darunter versteht man die relativ Stabile Endgesellschaft.",
+        "Sie bezeichnet den Gerichtete Abfolge von Lebensgemeinschaften.",
+        "Sie ist das Frühe Besiedler Gestörter Flächen.",
+        "Sie bezeichnet die Relativ Stabile Endgesellschaft.",
       ],
       explanation: "Konkurrenz: Wettbewerb um Ressourcen",
       wissen: fw(
@@ -6099,12 +6098,12 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f8",
-      prompt: "Was versteht man im Thema Sukzession auf „Störung“ zu unter einer Störung?",
-      answer: "Darunter versteht man ereignis das Gemeinschaften zurücksetzt.",
+      prompt: "Was kennzeichnet Störung im Thema Sukzession?",
+      answer: "Sie bezeichnet den Ereignis das Gemeinschaften Zurücksetzt.",
       wrong: [
-        "Darunter versteht man gerichtete Abfolge von Lebensgemeinschaften.",
-        "Darunter versteht man frühe Besiedler gestörter Flächen.",
-        "Darunter versteht man relativ stabile Endgesellschaft.",
+        "Sie bezeichnet den Gerichtete Abfolge von Lebensgemeinschaften.",
+        "Sie ist das Frühe Besiedler Gestörter Flächen.",
+        "Sie bezeichnet die Relativ Stabile Endgesellschaft.",
       ],
       explanation: "Störung: Ereignis das Gemeinschaften zurücksetzt",
       wissen: fw(
@@ -6115,12 +6114,12 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f9",
-      prompt: "Was versteht man im Thema Sukzession auf „Biodiversitätsverlauf“ zu unter einem Biodiversitätsverlauf?",
-      answer: "Darunter versteht man änderung der Artenzahl über Zeit.",
+      prompt: "Was kennzeichnet Biodiversitätsverlauf im Thema Sukzession?",
+      answer: "Es bezeichnet den Änderung der Artenzahl über Zeit.",
       wrong: [
-        "Darunter versteht man gerichtete Abfolge von Lebensgemeinschaften.",
-        "Darunter versteht man frühe Besiedler gestörter Flächen.",
-        "Darunter versteht man relativ stabile Endgesellschaft.",
+        "Es bezeichnet den Gerichtete Abfolge von Lebensgemeinschaften.",
+        "Es ist das Frühe Besiedler Gestörter Flächen.",
+        "Es bezeichnet die Relativ Stabile Endgesellschaft.",
       ],
       explanation: "Biodiversitätsverlauf: Änderung der Artenzahl über Zeit",
       wissen: fw(
@@ -6131,12 +6130,12 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f10",
-      prompt: "Was versteht man im Thema Sukzession auf „Moosstadium“ zu unter einem Moosstadium?",
-      answer: "Darunter versteht man frühe Phase auf Rohboden.",
+      prompt: "Was kennzeichnet Moosstadium im Thema Sukzession?",
+      answer: "Es bezeichnet den Frühe Phase auf Rohboden.",
       wrong: [
-        "Darunter versteht man gerichtete Abfolge von Lebensgemeinschaften.",
-        "Darunter versteht man frühe Besiedler gestörter Flächen.",
-        "Darunter versteht man relativ stabile Endgesellschaft.",
+        "Es bezeichnet den Gerichtete Abfolge von Lebensgemeinschaften.",
+        "Es ist das Frühe Besiedler Gestörter Flächen.",
+        "Es bezeichnet die Relativ Stabile Endgesellschaft.",
       ],
       explanation: "Moosstadium: Frühe Phase auf Rohboden",
       wissen: fw(
@@ -6147,12 +6146,12 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f11",
-      prompt: "Was versteht man im Thema Sukzession auf „Waldstadium“ zu unter einem Waldstadium?",
-      answer: "Darunter versteht man späte Phase mit Gehölzen.",
+      prompt: "Was kennzeichnet Waldstadium im Thema Sukzession?",
+      answer: "Es bezeichnet den Späte Phase mit Gehölzen.",
       wrong: [
-        "Darunter versteht man gerichtete Abfolge von Lebensgemeinschaften.",
-        "Darunter versteht man frühe Besiedler gestörter Flächen.",
-        "Darunter versteht man relativ stabile Endgesellschaft.",
+        "Es bezeichnet den Gerichtete Abfolge von Lebensgemeinschaften.",
+        "Es ist das Frühe Besiedler Gestörter Flächen.",
+        "Es bezeichnet die Relativ Stabile Endgesellschaft.",
       ],
       explanation: "Waldstadium: Späte Phase mit Gehölzen",
       wissen: fw(
@@ -6230,12 +6229,12 @@ export const k9Faktoren: BioBank = {
   facts: [
     {
       concept: "bio:k9:fakt:f0",
-      prompt: "Was versteht man im Thema Umweltfaktoren unter einem abiotischer Faktor?",
-      answer: "Darunter versteht man die unbelebte Umweltgröße.",
+      prompt: "Was kennzeichnet abiotischer Faktor im Thema Umweltfaktoren?",
+      answer: "Er bezeichnet die Unbelebte Umweltgröße.",
       wrong: [
-        "Darunter versteht man wirkung Durch Lebewesen.",
-        "Darunter versteht man die bereich Erträglicher Faktorwerte.",
-        "Darunter versteht man reaktionsbreite Einer Art.",
+        "Er ist das Wirkung durch Lebewesen.",
+        "Er bezeichnet die Bereich Erträglicher Faktorwerte.",
+        "Er bezeichnet den Reaktionsbreite einer Art.",
       ],
       explanation: "abiotischer Faktor: Unbelebte Umweltgröße",
       wissen: fw(
@@ -6246,12 +6245,12 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f1",
-      prompt: "Was versteht man im Thema Umweltfaktoren unter einem biotischer Faktor?",
-      answer: "Darunter versteht man wirkung Durch Lebewesen.",
+      prompt: "Welche Rolle hat biotischer Faktor im Thema Umweltfaktoren?",
+      answer: "Er ist das Wirkung durch Lebewesen.",
       wrong: [
-        "Darunter versteht man die unbelebte Umweltgröße.",
-        "Darunter versteht man die bereich Erträglicher Faktorwerte.",
-        "Darunter versteht man reaktionsbreite Einer Art.",
+        "Er bezeichnet die Unbelebte Umweltgröße.",
+        "Er bezeichnet die Bereich Erträglicher Faktorwerte.",
+        "Er bezeichnet den Reaktionsbreite einer Art.",
       ],
       explanation: "biotischer Faktor: Wirkung durch Lebewesen",
       wissen: fw(
@@ -6262,12 +6261,12 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f2",
-      prompt: "Was versteht man im Thema Umweltfaktoren unter einem Toleranzbereich?",
-      answer: "Darunter versteht man die bereich Erträglicher Faktorwerte.",
+      prompt: "Was kennzeichnet Toleranzbereich im Thema Umweltfaktoren?",
+      answer: "Es bezeichnet die Bereich Erträglicher Faktorwerte.",
       wrong: [
-        "Darunter versteht man die unbelebte Umweltgröße.",
-        "Darunter versteht man wirkung Durch Lebewesen.",
-        "Darunter versteht man reaktionsbreite Einer Art.",
+        "Es bezeichnet die Unbelebte Umweltgröße.",
+        "Es ist das Wirkung durch Lebewesen.",
+        "Es bezeichnet den Reaktionsbreite einer Art.",
       ],
       explanation: "Toleranzbereich: Bereich erträglicher Faktorwerte",
       wissen: fw(
@@ -6278,12 +6277,12 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f3",
-      prompt: "Was versteht man im Thema Umweltfaktoren unter einer Ökologische Potenz?",
-      answer: "Darunter versteht man reaktionsbreite Einer Art.",
+      prompt: "Was kennzeichnet Ökologische Potenz im Thema Umweltfaktoren?",
+      answer: "Sie bezeichnet den Reaktionsbreite einer Art.",
       wrong: [
-        "Darunter versteht man die unbelebte Umweltgröße.",
-        "Darunter versteht man wirkung Durch Lebewesen.",
-        "Darunter versteht man die bereich Erträglicher Faktorwerte.",
+        "Sie bezeichnet die Unbelebte Umweltgröße.",
+        "Sie ist das Wirkung durch Lebewesen.",
+        "Sie bezeichnet die Bereich Erträglicher Faktorwerte.",
       ],
       explanation: "Ökologische Potenz: Reaktionsbreite einer Art",
       wissen: fw(
@@ -6294,12 +6293,12 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f4",
-      prompt: "Was versteht man im Thema Umweltfaktoren unter einem Minimumfaktor?",
-      answer: "Darunter versteht man den knappster Begrenzender Faktor.",
+      prompt: "Was kennzeichnet Minimumfaktor im Thema Umweltfaktoren?",
+      answer: "Er bezeichnet den Knappster Begrenzender Faktor.",
       wrong: [
-        "Darunter versteht man die unbelebte Umweltgröße.",
-        "Darunter versteht man wirkung Durch Lebewesen.",
-        "Darunter versteht man die bereich Erträglicher Faktorwerte.",
+        "Er bezeichnet die Unbelebte Umweltgröße.",
+        "Er ist das Wirkung durch Lebewesen.",
+        "Er bezeichnet die Bereich Erträglicher Faktorwerte.",
       ],
       explanation: "Minimumfaktor: Knappster begrenzender Faktor",
       wissen: fw(
@@ -6310,12 +6309,12 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f5",
-      prompt: "Was versteht man im Thema Umweltfaktoren unter einem Optimum?",
-      answer: "Darunter versteht man günstigster Bereich Eines Faktors.",
+      prompt: "Was kennzeichnet Optimum im Thema Umweltfaktoren?",
+      answer: "Es bezeichnet den Günstigster Bereich Eines Faktors.",
       wrong: [
-        "Darunter versteht man die unbelebte Umweltgröße.",
-        "Darunter versteht man wirkung Durch Lebewesen.",
-        "Darunter versteht man die bereich Erträglicher Faktorwerte.",
+        "Es bezeichnet die Unbelebte Umweltgröße.",
+        "Es ist das Wirkung durch Lebewesen.",
+        "Es bezeichnet die Bereich Erträglicher Faktorwerte.",
       ],
       explanation: "Optimum: Günstigster Bereich eines Faktors",
       wissen: fw(
@@ -6326,12 +6325,12 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f6",
-      prompt: "Was versteht man im Thema Umweltfaktoren unter einer Lichtpflanze?",
-      answer: "Darunter versteht man art Mit Hohem Lichtbedarf.",
+      prompt: "Was kennzeichnet Lichtpflanze im Thema Umweltfaktoren?",
+      answer: "Sie bezeichnet den Art mit Hohem Lichtbedarf.",
       wrong: [
-        "Darunter versteht man die unbelebte Umweltgröße.",
-        "Darunter versteht man wirkung Durch Lebewesen.",
-        "Darunter versteht man die bereich Erträglicher Faktorwerte.",
+        "Sie bezeichnet die Unbelebte Umweltgröße.",
+        "Sie ist das Wirkung durch Lebewesen.",
+        "Sie bezeichnet die Bereich Erträglicher Faktorwerte.",
       ],
       explanation: "Lichtpflanze: Art mit hohem Lichtbedarf",
       wissen: fw(
@@ -6342,12 +6341,12 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f7",
-      prompt: "Was versteht man im Thema Umweltfaktoren unter einer Schattenpflanze?",
-      answer: "Darunter versteht man art an Geringe Lichtstärke Angepasst.",
+      prompt: "Was kennzeichnet Schattenpflanze im Thema Umweltfaktoren?",
+      answer: "Sie bezeichnet den Art an Geringe Lichtstärke Angepasst.",
       wrong: [
-        "Darunter versteht man die unbelebte Umweltgröße.",
-        "Darunter versteht man wirkung Durch Lebewesen.",
-        "Darunter versteht man die bereich Erträglicher Faktorwerte.",
+        "Sie bezeichnet die Unbelebte Umweltgröße.",
+        "Sie ist das Wirkung durch Lebewesen.",
+        "Sie bezeichnet die Bereich Erträglicher Faktorwerte.",
       ],
       explanation: "Schattenpflanze: Art an geringe Lichtstärke angepasst",
       wissen: fw(
@@ -6358,12 +6357,12 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f8",
-      prompt: "Was versteht man im Thema Umweltfaktoren unter einem Xerophyt?",
-      answer: "Darunter versteht man die trockenangepasste Pflanze.",
+      prompt: "Was kennzeichnet Xerophyt im Thema Umweltfaktoren?",
+      answer: "Es bezeichnet die Trockenangepasste Pflanze.",
       wrong: [
-        "Darunter versteht man die unbelebte Umweltgröße.",
-        "Darunter versteht man wirkung Durch Lebewesen.",
-        "Darunter versteht man die bereich Erträglicher Faktorwerte.",
+        "Es bezeichnet die Unbelebte Umweltgröße.",
+        "Es ist das Wirkung durch Lebewesen.",
+        "Es bezeichnet die Bereich Erträglicher Faktorwerte.",
       ],
       explanation: "Xerophyt: Trockenangepasste Pflanze",
       wissen: fw(
@@ -6374,12 +6373,12 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f9",
-      prompt: "Was versteht man im Thema Umweltfaktoren unter einem Hygrophyt?",
-      answer: "Darunter versteht man die feuchteangepasste Pflanze.",
+      prompt: "Was kennzeichnet Hygrophyt im Thema Umweltfaktoren?",
+      answer: "Es bezeichnet die Feuchteangepasste Pflanze.",
       wrong: [
-        "Darunter versteht man die unbelebte Umweltgröße.",
-        "Darunter versteht man wirkung Durch Lebewesen.",
-        "Darunter versteht man die bereich Erträglicher Faktorwerte.",
+        "Es bezeichnet die Unbelebte Umweltgröße.",
+        "Es ist das Wirkung durch Lebewesen.",
+        "Es bezeichnet die Bereich Erträglicher Faktorwerte.",
       ],
       explanation: "Hygrophyt: Feuchteangepasste Pflanze",
       wissen: fw(
@@ -6390,12 +6389,12 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f10",
-      prompt: "Was versteht man im Thema Umweltfaktoren unter einer Konkurrenz?",
-      answer: "Darunter versteht man wettbewerb Um Ressourcen.",
+      prompt: "Was kennzeichnet Konkurrenz im Thema Umweltfaktoren?",
+      answer: "Sie bezeichnet den Wettbewerb um Ressourcen.",
       wrong: [
-        "Darunter versteht man die unbelebte Umweltgröße.",
-        "Darunter versteht man wirkung Durch Lebewesen.",
-        "Darunter versteht man die bereich Erträglicher Faktorwerte.",
+        "Sie bezeichnet die Unbelebte Umweltgröße.",
+        "Sie ist das Wirkung durch Lebewesen.",
+        "Sie bezeichnet die Bereich Erträglicher Faktorwerte.",
       ],
       explanation: "Konkurrenz: Wettbewerb um Ressourcen",
       wissen: fw(
@@ -6406,12 +6405,12 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f11",
-      prompt: "Was versteht man im Thema Umweltfaktoren unter einer Räuber-Beute?",
-      answer: "Darunter versteht man die fraßbeziehung.",
+      prompt: "Was kennzeichnet Räuber-Beute im Thema Umweltfaktoren?",
+      answer: "Sie bezeichnet die Fraßbeziehung.",
       wrong: [
-        "Darunter versteht man die unbelebte Umweltgröße.",
-        "Darunter versteht man wirkung Durch Lebewesen.",
-        "Darunter versteht man die bereich Erträglicher Faktorwerte.",
+        "Sie bezeichnet die Unbelebte Umweltgröße.",
+        "Sie ist das Wirkung durch Lebewesen.",
+        "Sie bezeichnet die Bereich Erträglicher Faktorwerte.",
       ],
       explanation: "Räuber-Beute: Fraßbeziehung",
       wissen: fw(
@@ -6489,12 +6488,12 @@ export const k9Klima: BioBank = {
   facts: [
     {
       concept: "bio:k9:klima:f0",
-      prompt: "Was versteht man im Thema Klima/Ökosystem unter einer Klima?",
-      answer: "Darunter versteht man die langfristiges Wettergeschehen Einer Region.",
+      prompt: "Was kennzeichnet Klima im Thema Klima/Ökosystem?",
+      answer: "Sie bezeichnet die Langfristiges Wettergeschehen einer Region.",
       wrong: [
-        "Darunter versteht man die erwärmung Durch Spurengase.",
-        "Darunter versteht man wichtiges Treibhausgas.",
-        "Darunter versteht man die langfristige Klimaänderung.",
+        "Sie bezeichnet die Erwärmung durch Spurengase.",
+        "Sie bezeichnet den Wichtiges Treibhausgas.",
+        "Sie bezeichnet die Langfristige Klimaänderung.",
       ],
       explanation: "Klima: Langfristiges Wettergeschehen einer Region",
       wissen: fw(
@@ -6505,12 +6504,12 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f1",
-      prompt: "Was versteht man im Thema Klima/Ökosystem unter einem Treibhauseffekt?",
-      answer: "Darunter versteht man die erwärmung Durch Spurengase.",
+      prompt: "Was kennzeichnet Treibhauseffekt im Thema Klima/Ökosystem?",
+      answer: "Es bezeichnet die Erwärmung durch Spurengase.",
       wrong: [
-        "Darunter versteht man die langfristiges Wettergeschehen Einer Region.",
-        "Darunter versteht man wichtiges Treibhausgas.",
-        "Darunter versteht man die langfristige Klimaänderung.",
+        "Es bezeichnet die Langfristiges Wettergeschehen einer Region.",
+        "Es bezeichnet den Wichtiges Treibhausgas.",
+        "Es bezeichnet die Langfristige Klimaänderung.",
       ],
       explanation: "Treibhauseffekt: Erwärmung durch Spurengase",
       wissen: fw(
@@ -6521,12 +6520,12 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f2",
-      prompt: "Was versteht man im Thema Klima/Ökosystem unter einem CO₂?",
-      answer: "Darunter versteht man wichtiges Treibhausgas.",
+      prompt: "Was kennzeichnet CO₂ im Thema Klima/Ökosystem?",
+      answer: "Es bezeichnet den Wichtiges Treibhausgas.",
       wrong: [
-        "Darunter versteht man die langfristiges Wettergeschehen Einer Region.",
-        "Darunter versteht man die erwärmung Durch Spurengase.",
-        "Darunter versteht man die langfristige Klimaänderung.",
+        "Es bezeichnet die Langfristiges Wettergeschehen einer Region.",
+        "Es bezeichnet die Erwärmung durch Spurengase.",
+        "Es bezeichnet die Langfristige Klimaänderung.",
       ],
       explanation: "CO₂: Wichtiges Treibhausgas",
       wissen: fw(
@@ -6537,12 +6536,12 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f3",
-      prompt: "Was versteht man im Thema Klima/Ökosystem unter einem Klimawandel?",
-      answer: "Darunter versteht man die langfristige Klimaänderung.",
+      prompt: "Was kennzeichnet Klimawandel im Thema Klima/Ökosystem?",
+      answer: "Es bezeichnet die Langfristige Klimaänderung.",
       wrong: [
-        "Darunter versteht man die langfristiges Wettergeschehen Einer Region.",
-        "Darunter versteht man die erwärmung Durch Spurengase.",
-        "Darunter versteht man wichtiges Treibhausgas.",
+        "Es bezeichnet die Langfristiges Wettergeschehen einer Region.",
+        "Es bezeichnet die Erwärmung durch Spurengase.",
+        "Es bezeichnet den Wichtiges Treibhausgas.",
       ],
       explanation: "Klimawandel: Langfristige Klimaänderung",
       wissen: fw(
@@ -6553,12 +6552,12 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f4",
-      prompt: "Was versteht man im Thema Klima/Ökosystem unter einer Phänologie?",
-      answer: "Darunter versteht man jahreszeitliche Entwicklungszeiten.",
+      prompt: "Was kennzeichnet Phänologie im Thema Klima/Ökosystem?",
+      answer: "Sie bezeichnet den Jahreszeitliche Entwicklungszeiten.",
       wrong: [
-        "Darunter versteht man die langfristiges Wettergeschehen Einer Region.",
-        "Darunter versteht man die erwärmung Durch Spurengase.",
-        "Darunter versteht man wichtiges Treibhausgas.",
+        "Sie bezeichnet die Langfristiges Wettergeschehen einer Region.",
+        "Sie bezeichnet die Erwärmung durch Spurengase.",
+        "Sie bezeichnet den Wichtiges Treibhausgas.",
       ],
       explanation: "Phänologie: Jahreszeitliche Entwicklungszeiten",
       wissen: fw(
@@ -6569,12 +6568,12 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f5",
-      prompt: "Was versteht man im Thema Klima/Ökosystem unter einer Dürre?",
-      answer: "Darunter versteht man längerer Wassermangel.",
+      prompt: "Was kennzeichnet Dürre im Thema Klima/Ökosystem?",
+      answer: "Sie bezeichnet den Längerer Wassermangel.",
       wrong: [
-        "Darunter versteht man die langfristiges Wettergeschehen Einer Region.",
-        "Darunter versteht man die erwärmung Durch Spurengase.",
-        "Darunter versteht man wichtiges Treibhausgas.",
+        "Sie bezeichnet die Langfristiges Wettergeschehen einer Region.",
+        "Sie bezeichnet die Erwärmung durch Spurengase.",
+        "Sie bezeichnet den Wichtiges Treibhausgas.",
       ],
       explanation: "Dürre: Längerer Wassermangel",
       wissen: fw(
@@ -6585,12 +6584,12 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f6",
-      prompt: "Was versteht man im Thema Klima/Ökosystem unter einem Extremwetter?",
-      answer: "Darunter versteht man die seltene Starke Wetterereignisse.",
+      prompt: "Was kennzeichnet Extremwetter im Thema Klima/Ökosystem?",
+      answer: "Er bezeichnet die Seltene Starke Wetterereignisse.",
       wrong: [
-        "Darunter versteht man die langfristiges Wettergeschehen Einer Region.",
-        "Darunter versteht man die erwärmung Durch Spurengase.",
-        "Darunter versteht man wichtiges Treibhausgas.",
+        "Er bezeichnet die Langfristiges Wettergeschehen einer Region.",
+        "Er bezeichnet die Erwärmung durch Spurengase.",
+        "Er bezeichnet den Wichtiges Treibhausgas.",
       ],
       explanation: "Extremwetter: Seltene starke Wetterereignisse",
       wissen: fw(
@@ -6601,12 +6600,12 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f7",
-      prompt: "Was versteht man im Thema Klima/Ökosystem unter einer Habitatverschiebung?",
-      answer: "Darunter versteht man arten Wandern Mit Klimazonen.",
+      prompt: "Was kennzeichnet Habitatverschiebung im Thema Klima/Ökosystem?",
+      answer: "Sie bezeichnet den Arten Wandern mit Klimazonen.",
       wrong: [
-        "Darunter versteht man die langfristiges Wettergeschehen Einer Region.",
-        "Darunter versteht man die erwärmung Durch Spurengase.",
-        "Darunter versteht man wichtiges Treibhausgas.",
+        "Sie bezeichnet die Langfristiges Wettergeschehen einer Region.",
+        "Sie bezeichnet die Erwärmung durch Spurengase.",
+        "Sie bezeichnet den Wichtiges Treibhausgas.",
       ],
       explanation: "Habitatverschiebung: Arten wandern mit Klimazonen",
       wissen: fw(
@@ -6617,12 +6616,12 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f8",
-      prompt: "Was versteht man im Thema Klima/Ökosystem unter einem Kohlenstoffkreislauf?",
-      answer: "Darunter versteht man austausch von C Zwischen Sphären.",
+      prompt: "Was kennzeichnet Kohlenstoffkreislauf im Thema Klima/Ökosystem?",
+      answer: "Es bezeichnet den Austausch von C Zwischen Sphären.",
       wrong: [
-        "Darunter versteht man die langfristiges Wettergeschehen Einer Region.",
-        "Darunter versteht man die erwärmung Durch Spurengase.",
-        "Darunter versteht man wichtiges Treibhausgas.",
+        "Es bezeichnet die Langfristiges Wettergeschehen einer Region.",
+        "Es bezeichnet die Erwärmung durch Spurengase.",
+        "Es bezeichnet den Wichtiges Treibhausgas.",
       ],
       explanation: "Kohlenstoffkreislauf: Austausch von C zwischen Sphären",
       wissen: fw(
@@ -6633,12 +6632,12 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f9",
-      prompt: "Was versteht man im Thema Klima/Ökosystem unter einer Mitigation?",
-      answer: "Darunter versteht man minderung von Emissionen.",
+      prompt: "Was kennzeichnet Mitigation im Thema Klima/Ökosystem?",
+      answer: "Sie bezeichnet den Minderung von Emissionen.",
       wrong: [
-        "Darunter versteht man die langfristiges Wettergeschehen Einer Region.",
-        "Darunter versteht man die erwärmung Durch Spurengase.",
-        "Darunter versteht man wichtiges Treibhausgas.",
+        "Sie bezeichnet die Langfristiges Wettergeschehen einer Region.",
+        "Sie bezeichnet die Erwärmung durch Spurengase.",
+        "Sie bezeichnet den Wichtiges Treibhausgas.",
       ],
       explanation: "Mitigation: Minderung von Emissionen",
       wissen: fw(
@@ -6649,12 +6648,12 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f10",
-      prompt: "Was versteht man im Thema Klima/Ökosystem unter einer Adaptation?",
-      answer: "Darunter versteht man anpassung an Folgen.",
+      prompt: "Was kennzeichnet Adaptation im Thema Klima/Ökosystem?",
+      answer: "Sie bezeichnet den Anpassung an Folgen.",
       wrong: [
-        "Darunter versteht man die langfristiges Wettergeschehen Einer Region.",
-        "Darunter versteht man die erwärmung Durch Spurengase.",
-        "Darunter versteht man wichtiges Treibhausgas.",
+        "Sie bezeichnet die Langfristiges Wettergeschehen einer Region.",
+        "Sie bezeichnet die Erwärmung durch Spurengase.",
+        "Sie bezeichnet den Wichtiges Treibhausgas.",
       ],
       explanation: "Adaptation: Anpassung an Folgen",
       wissen: fw(
@@ -6665,12 +6664,12 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f11",
-      prompt: "Was versteht man im Thema Klima/Ökosystem unter einem Bioindikator?",
-      answer: "Darunter versteht man art die Umweltzustand Anzeigt.",
+      prompt: "Was kennzeichnet Bioindikator im Thema Klima/Ökosystem?",
+      answer: "Er bezeichnet den Art die Umweltzustand Anzeigt.",
       wrong: [
-        "Darunter versteht man die langfristiges Wettergeschehen Einer Region.",
-        "Darunter versteht man die erwärmung Durch Spurengase.",
-        "Darunter versteht man wichtiges Treibhausgas.",
+        "Er bezeichnet die Langfristiges Wettergeschehen einer Region.",
+        "Er bezeichnet die Erwärmung durch Spurengase.",
+        "Er bezeichnet den Wichtiges Treibhausgas.",
       ],
       explanation: "Bioindikator: Art die Umweltzustand anzeigt",
       wissen: fw(
@@ -6748,12 +6747,12 @@ export const k10Humangenetik: BioBank = {
   facts: [
     {
       concept: "bio:k10:humangen:f0",
-      prompt: "Was versteht man im Thema Humangenetik unter einer Stammbaumanalyse?",
-      answer: "Darunter versteht man vererbungsmuster in Familien Rekonstruieren.",
+      prompt: "Was kennzeichnet Stammbaumanalyse im Thema Humangenetik?",
+      answer: "Sie bezeichnet den Vererbungsmuster in Familien Rekonstruieren.",
       wrong: [
-        "Darunter versteht man blutgruppen A, B, AB, 0.",
-        "Darunter versteht man rh-Faktor positiv/negativ.",
-        "Darunter versteht man gen auf Autosom.",
+        "Sie bezeichnet den Blutgruppen A, B, AB, 0.",
+        "Sie bezeichnet den Rh-Faktor Positiv/negativ.",
+        "Sie bezeichnet den Gen auf Autosom.",
       ],
       explanation: "Stammbaumanalyse: Vererbungsmuster in Familien rekonstruieren",
       wissen: fw(
@@ -6764,12 +6763,12 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f1",
-      prompt: "Was versteht man im Thema Humangenetik unter einem AB0-System?",
-      answer: "Darunter versteht man blutgruppen A, B, AB, 0.",
+      prompt: "Was kennzeichnet AB0-System im Thema Humangenetik?",
+      answer: "Es bezeichnet den Blutgruppen A, B, AB, 0.",
       wrong: [
-        "Darunter versteht man vererbungsmuster in Familien Rekonstruieren.",
-        "Darunter versteht man rh-Faktor positiv/negativ.",
-        "Darunter versteht man gen auf Autosom.",
+        "Es bezeichnet den Vererbungsmuster in Familien Rekonstruieren.",
+        "Es bezeichnet den Rh-Faktor Positiv/negativ.",
+        "Es bezeichnet den Gen auf Autosom.",
       ],
       explanation: "AB0-System: Blutgruppen A, B, AB, 0",
       wissen: fw(
@@ -6780,12 +6779,12 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f2",
-      prompt: "Was versteht man im Thema Humangenetik unter einem Rhesussystem?",
-      answer: "Darunter versteht man rh-Faktor positiv/negativ.",
+      prompt: "Was kennzeichnet Rhesussystem im Thema Humangenetik?",
+      answer: "Es bezeichnet den Rh-Faktor Positiv/negativ.",
       wrong: [
-        "Darunter versteht man vererbungsmuster in Familien Rekonstruieren.",
-        "Darunter versteht man blutgruppen A, B, AB, 0.",
-        "Darunter versteht man gen auf Autosom.",
+        "Es bezeichnet den Vererbungsmuster in Familien Rekonstruieren.",
+        "Es bezeichnet den Blutgruppen A, B, AB, 0.",
+        "Es bezeichnet den Gen auf Autosom.",
       ],
       explanation: "Rhesussystem: Rh-Faktor positiv/negativ",
       wissen: fw(
@@ -6796,12 +6795,12 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f3",
-      prompt: "Was versteht man im Thema Humangenetik unter einem autosomal?",
-      answer: "Darunter versteht man gen auf Autosom.",
+      prompt: "Was kennzeichnet autosomal im Thema Humangenetik?",
+      answer: "Es bezeichnet den Gen auf Autosom.",
       wrong: [
-        "Darunter versteht man vererbungsmuster in Familien Rekonstruieren.",
-        "Darunter versteht man blutgruppen A, B, AB, 0.",
-        "Darunter versteht man rh-Faktor positiv/negativ.",
+        "Es bezeichnet den Vererbungsmuster in Familien Rekonstruieren.",
+        "Es bezeichnet den Blutgruppen A, B, AB, 0.",
+        "Es bezeichnet den Rh-Faktor Positiv/negativ.",
       ],
       explanation: "autosomal: Gen auf Autosom",
       wissen: fw(
@@ -6812,12 +6811,12 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f4",
-      prompt: "Was versteht man im Thema Humangenetik unter einem gonosomal?",
-      answer: "Darunter versteht man gen auf Geschlechtschromosom.",
+      prompt: "Was kennzeichnet gonosomal im Thema Humangenetik?",
+      answer: "Es bezeichnet den Gen auf Geschlechtschromosom.",
       wrong: [
-        "Darunter versteht man vererbungsmuster in Familien Rekonstruieren.",
-        "Darunter versteht man blutgruppen A, B, AB, 0.",
-        "Darunter versteht man rh-Faktor positiv/negativ.",
+        "Es bezeichnet den Vererbungsmuster in Familien Rekonstruieren.",
+        "Es bezeichnet den Blutgruppen A, B, AB, 0.",
+        "Es bezeichnet den Rh-Faktor Positiv/negativ.",
       ],
       explanation: "gonosomal: Gen auf Geschlechtschromosom",
       wissen: fw(
@@ -6828,12 +6827,12 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f5",
-      prompt: "Was versteht man im Thema Humangenetik unter einem Trisomie 21?",
-      answer: "Darunter versteht man drei Chromosomen 21.",
+      prompt: "Was kennzeichnet Trisomie 21 im Thema Humangenetik?",
+      answer: "Es bezeichnet den Drei Chromosomen 21.",
       wrong: [
-        "Darunter versteht man vererbungsmuster in Familien Rekonstruieren.",
-        "Darunter versteht man blutgruppen A, B, AB, 0.",
-        "Darunter versteht man rh-Faktor positiv/negativ.",
+        "Es bezeichnet den Vererbungsmuster in Familien Rekonstruieren.",
+        "Es bezeichnet den Blutgruppen A, B, AB, 0.",
+        "Es bezeichnet den Rh-Faktor Positiv/negativ.",
       ],
       explanation: "Trisomie 21: Drei Chromosomen 21",
       wissen: fw(
@@ -6844,12 +6843,12 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f6",
-      prompt: "Was versteht man im Thema Humangenetik unter einer Hämophilie?",
-      answer: "Darunter versteht man die blutgerinnungsstörung.",
+      prompt: "Was kennzeichnet Hämophilie im Thema Humangenetik?",
+      answer: "Sie bezeichnet die Blutgerinnungsstörung.",
       wrong: [
-        "Darunter versteht man vererbungsmuster in Familien Rekonstruieren.",
-        "Darunter versteht man blutgruppen A, B, AB, 0.",
-        "Darunter versteht man rh-Faktor positiv/negativ.",
+        "Sie bezeichnet den Vererbungsmuster in Familien Rekonstruieren.",
+        "Sie bezeichnet den Blutgruppen A, B, AB, 0.",
+        "Sie bezeichnet den Rh-Faktor Positiv/negativ.",
       ],
       explanation: "Hämophilie: Blutgerinnungsstörung",
       wissen: fw(
@@ -6860,12 +6859,12 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f7",
-      prompt: "Was versteht man im Thema Humangenetik unter einer Phenylketonurie?",
-      answer: "Darunter versteht man die stoffwechselstörung Durch Genmutation.",
+      prompt: "Was kennzeichnet Phenylketonurie im Thema Humangenetik?",
+      answer: "Sie bezeichnet die Stoffwechselstörung durch Genmutation.",
       wrong: [
-        "Darunter versteht man vererbungsmuster in Familien Rekonstruieren.",
-        "Darunter versteht man blutgruppen A, B, AB, 0.",
-        "Darunter versteht man rh-Faktor positiv/negativ.",
+        "Sie bezeichnet den Vererbungsmuster in Familien Rekonstruieren.",
+        "Sie bezeichnet den Blutgruppen A, B, AB, 0.",
+        "Sie bezeichnet den Rh-Faktor Positiv/negativ.",
       ],
       explanation: "Phenylketonurie: Stoffwechselstörung durch Genmutation",
       wissen: fw(
@@ -6876,12 +6875,12 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f8",
-      prompt: "Was versteht man im Thema Humangenetik unter einer pränatale Diagnostik?",
-      answer: "Darunter versteht man untersuchung Vor der Geburt.",
+      prompt: "Was kennzeichnet pränatale Diagnostik im Thema Humangenetik?",
+      answer: "Sie bezeichnet den Untersuchung vor der Geburt.",
       wrong: [
-        "Darunter versteht man vererbungsmuster in Familien Rekonstruieren.",
-        "Darunter versteht man blutgruppen A, B, AB, 0.",
-        "Darunter versteht man rh-Faktor positiv/negativ.",
+        "Sie bezeichnet den Vererbungsmuster in Familien Rekonstruieren.",
+        "Sie bezeichnet den Blutgruppen A, B, AB, 0.",
+        "Sie bezeichnet den Rh-Faktor Positiv/negativ.",
       ],
       explanation: "pränatale Diagnostik: Untersuchung vor der Geburt",
       wissen: fw(
@@ -6892,12 +6891,12 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f9",
-      prompt: "Was versteht man im Thema Humangenetik unter einer Erbkrankheit?",
-      answer: "Darunter versteht man die genetisch Bedingte Erkrankung.",
+      prompt: "Was kennzeichnet Erbkrankheit im Thema Humangenetik?",
+      answer: "Sie bezeichnet die Genetisch Bedingte Erkrankung.",
       wrong: [
-        "Darunter versteht man vererbungsmuster in Familien Rekonstruieren.",
-        "Darunter versteht man blutgruppen A, B, AB, 0.",
-        "Darunter versteht man rh-Faktor positiv/negativ.",
+        "Sie bezeichnet den Vererbungsmuster in Familien Rekonstruieren.",
+        "Sie bezeichnet den Blutgruppen A, B, AB, 0.",
+        "Sie bezeichnet den Rh-Faktor Positiv/negativ.",
       ],
       explanation: "Erbkrankheit: Genetisch bedingte Erkrankung",
       wissen: fw(
@@ -6908,12 +6907,12 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f10",
-      prompt: "Was versteht man im Thema Humangenetik unter einer Beratung?",
-      answer: "Darunter versteht man die humangenetische Aufklärung.",
+      prompt: "Was kennzeichnet Beratung im Thema Humangenetik?",
+      answer: "Sie bezeichnet die Humangenetische Aufklärung.",
       wrong: [
-        "Darunter versteht man vererbungsmuster in Familien Rekonstruieren.",
-        "Darunter versteht man blutgruppen A, B, AB, 0.",
-        "Darunter versteht man rh-Faktor positiv/negativ.",
+        "Sie bezeichnet den Vererbungsmuster in Familien Rekonstruieren.",
+        "Sie bezeichnet den Blutgruppen A, B, AB, 0.",
+        "Sie bezeichnet den Rh-Faktor Positiv/negativ.",
       ],
       explanation: "Beratung: Humangenetische Aufklärung",
       wissen: fw(
@@ -6924,12 +6923,12 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f11",
-      prompt: "Was versteht man im Thema Humangenetik unter einer Inklusion?",
-      answer: "Darunter versteht man das teilhabe Betroffener Menschen.",
+      prompt: "Was kennzeichnet Inklusion im Thema Humangenetik?",
+      answer: "Sie bezeichnet das Teilhabe Betroffener Menschen.",
       wrong: [
-        "Darunter versteht man vererbungsmuster in Familien Rekonstruieren.",
-        "Darunter versteht man blutgruppen A, B, AB, 0.",
-        "Darunter versteht man rh-Faktor positiv/negativ.",
+        "Sie bezeichnet den Vererbungsmuster in Familien Rekonstruieren.",
+        "Sie bezeichnet den Blutgruppen A, B, AB, 0.",
+        "Sie bezeichnet den Rh-Faktor Positiv/negativ.",
       ],
       explanation: "Inklusion: Teilhabe betroffener Menschen",
       wissen: fw(
@@ -7007,12 +7006,12 @@ export const k10Evolutionstheorie: BioBank = {
   facts: [
     {
       concept: "bio:k10:evoth:f0",
-      prompt: "Was versteht man im Thema Evolutionstheorie unter einem Linné?",
-      answer: "Darunter versteht man die systematiker der Binären Nomenklatur.",
+      prompt: "Was kennzeichnet Linné im Thema Evolutionstheorie?",
+      answer: "Es ist die Systematiker der Binären Nomenklatur.",
       wrong: [
-        "Darunter versteht man die frühe Evolutionstheorie Mit Vererbung Erworbener Merkmale.",
-        "Darunter versteht man die begründer der Selektionstheorie.",
-        "Darunter versteht man unterschiedlicher Fortpflanzungserfolg.",
+        "Es bezeichnet die Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.",
+        "Es bezeichnet die Begründer der Selektionstheorie.",
+        "Es bezeichnet den Unterschiedlicher Fortpflanzungserfolg.",
       ],
       explanation: "Linné: Systematiker der binären Nomenklatur",
       wissen: fw(
@@ -7023,12 +7022,12 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f1",
-      prompt: "Was versteht man im Thema Evolutionstheorie unter einem Lamarck?",
-      answer: "Darunter versteht man die frühe Evolutionstheorie Mit Vererbung Erworbener Merkmale.",
+      prompt: "Was kennzeichnet Lamarck im Thema Evolutionstheorie?",
+      answer: "Es bezeichnet die Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.",
       wrong: [
-        "Darunter versteht man die systematiker der Binären Nomenklatur.",
-        "Darunter versteht man die begründer der Selektionstheorie.",
-        "Darunter versteht man unterschiedlicher Fortpflanzungserfolg.",
+        "Es ist die Systematiker der Binären Nomenklatur.",
+        "Es bezeichnet die Begründer der Selektionstheorie.",
+        "Es bezeichnet den Unterschiedlicher Fortpflanzungserfolg.",
       ],
       explanation: "Lamarck: Frühe Evolutionstheorie mit Vererbung erworbener Merkmale",
       wissen: fw(
@@ -7039,12 +7038,12 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f2",
-      prompt: "Was versteht man im Thema Evolutionstheorie unter einem Darwin?",
-      answer: "Darunter versteht man die begründer der Selektionstheorie.",
+      prompt: "Was kennzeichnet Darwin im Thema Evolutionstheorie?",
+      answer: "Es bezeichnet die Begründer der Selektionstheorie.",
       wrong: [
-        "Darunter versteht man die systematiker der Binären Nomenklatur.",
-        "Darunter versteht man die frühe Evolutionstheorie Mit Vererbung Erworbener Merkmale.",
-        "Darunter versteht man unterschiedlicher Fortpflanzungserfolg.",
+        "Es ist die Systematiker der Binären Nomenklatur.",
+        "Es bezeichnet die Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.",
+        "Es bezeichnet den Unterschiedlicher Fortpflanzungserfolg.",
       ],
       explanation: "Darwin: Begründer der Selektionstheorie",
       wissen: fw(
@@ -7055,12 +7054,12 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f3",
-      prompt: "Was versteht man im Thema Evolutionstheorie unter einer natürliche Selektion?",
-      answer: "Darunter versteht man unterschiedlicher Fortpflanzungserfolg.",
+      prompt: "Was kennzeichnet natürliche Selektion im Thema Evolutionstheorie?",
+      answer: "Sie bezeichnet den Unterschiedlicher Fortpflanzungserfolg.",
       wrong: [
-        "Darunter versteht man die systematiker der Binären Nomenklatur.",
-        "Darunter versteht man die frühe Evolutionstheorie Mit Vererbung Erworbener Merkmale.",
-        "Darunter versteht man die begründer der Selektionstheorie.",
+        "Sie ist die Systematiker der Binären Nomenklatur.",
+        "Sie bezeichnet die Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.",
+        "Sie bezeichnet die Begründer der Selektionstheorie.",
       ],
       explanation: "natürliche Selektion: Unterschiedlicher Fortpflanzungserfolg",
       wissen: fw(
@@ -7071,12 +7070,12 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f4",
-      prompt: "Was versteht man im Thema Evolutionstheorie auf „Artbegriff“ zu unter einem Artbegriff?",
-      answer: "Darunter versteht man biologische Art als Fortpflanzungsgemeinschaft.",
+      prompt: "Was kennzeichnet Artbegriff im Thema Evolutionstheorie?",
+      answer: "Es bezeichnet die Biologische Art als Fortpflanzungsgemeinschaft.",
       wrong: [
-        "Darunter versteht man systematiker der binären Nomenklatur.",
-        "Darunter versteht man frühe Evolutionstheorie mit Vererbung erworbener Merkmale.",
-        "Darunter versteht man begründer der Selektionstheorie.",
+        "Es ist die Systematiker der Binären Nomenklatur.",
+        "Es bezeichnet die Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.",
+        "Es bezeichnet die Begründer der Selektionstheorie.",
       ],
       explanation: "Artbegriff: Biologische Art als Fortpflanzungsgemeinschaft",
       wissen: fw(
@@ -7087,12 +7086,12 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f5",
-      prompt: "Was versteht man im Thema Evolutionstheorie auf „Population“ zu unter einer Population?",
-      answer: "Darunter versteht man individuen einer Art in einem Gebiet.",
+      prompt: "Was kennzeichnet Population im Thema Evolutionstheorie?",
+      answer: "Sie bezeichnet den Individuen einer Art in einem Gebiet.",
       wrong: [
-        "Darunter versteht man systematiker der binären Nomenklatur.",
-        "Darunter versteht man frühe Evolutionstheorie mit Vererbung erworbener Merkmale.",
-        "Darunter versteht man begründer der Selektionstheorie.",
+        "Sie ist die Systematiker der Binären Nomenklatur.",
+        "Sie bezeichnet die Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.",
+        "Sie bezeichnet die Begründer der Selektionstheorie.",
       ],
       explanation: "Population: Individuen einer Art in einem Gebiet",
       wissen: fw(
@@ -7103,12 +7102,12 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f6",
-      prompt: "Was versteht man im Thema Evolutionstheorie unter einer Mutation?",
-      answer: "Darunter versteht man die änderung der Erbinformation.",
+      prompt: "Was kennzeichnet Mutation im Thema Evolutionstheorie?",
+      answer: "Sie ist die Änderung der Erbinformation.",
       wrong: [
-        "Darunter versteht man die systematiker der Binären Nomenklatur.",
-        "Darunter versteht man die frühe Evolutionstheorie Mit Vererbung Erworbener Merkmale.",
-        "Darunter versteht man die begründer der Selektionstheorie.",
+        "Sie ist die Systematiker der Binären Nomenklatur.",
+        "Sie bezeichnet die Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.",
+        "Sie bezeichnet die Begründer der Selektionstheorie.",
       ],
       explanation: "Mutation: Änderung der Erbinformation",
       wissen: fw(
@@ -7119,12 +7118,12 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f7",
-      prompt: "Was versteht man im Thema Evolutionstheorie unter einer Rekombination?",
-      answer: "Darunter versteht man neukombination von Allelen.",
+      prompt: "Was kennzeichnet Rekombination im Thema Evolutionstheorie?",
+      answer: "Sie bezeichnet den Neukombination von Allelen.",
       wrong: [
-        "Darunter versteht man die systematiker der Binären Nomenklatur.",
-        "Darunter versteht man die frühe Evolutionstheorie Mit Vererbung Erworbener Merkmale.",
-        "Darunter versteht man die begründer der Selektionstheorie.",
+        "Sie ist die Systematiker der Binären Nomenklatur.",
+        "Sie bezeichnet die Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.",
+        "Sie bezeichnet die Begründer der Selektionstheorie.",
       ],
       explanation: "Rekombination: Neukombination von Allelen",
       wissen: fw(
@@ -7135,12 +7134,12 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f8",
-      prompt: "Was versteht man im Thema Evolutionstheorie unter einer Isolation?",
-      answer: "Darunter versteht man unterbrechung Des Genflusses.",
+      prompt: "Was kennzeichnet Isolation im Thema Evolutionstheorie?",
+      answer: "Sie bezeichnet den Unterbrechung des Genflusses.",
       wrong: [
-        "Darunter versteht man die systematiker der Binären Nomenklatur.",
-        "Darunter versteht man die frühe Evolutionstheorie Mit Vererbung Erworbener Merkmale.",
-        "Darunter versteht man die begründer der Selektionstheorie.",
+        "Sie ist die Systematiker der Binären Nomenklatur.",
+        "Sie bezeichnet die Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.",
+        "Sie bezeichnet die Begründer der Selektionstheorie.",
       ],
       explanation: "Isolation: Unterbrechung des Genflusses",
       wissen: fw(
@@ -7151,12 +7150,12 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f9",
-      prompt: "Was versteht man im Thema Evolutionstheorie auf „Synthetische Theorie“ zu unter einer Synthetische Theorie?",
-      answer: "Darunter versteht man modernes Zusammenspiel der Evolutionsfaktoren.",
+      prompt: "Was kennzeichnet Synthetische Theorie im Thema Evolutionstheorie?",
+      answer: "Sie bezeichnet den Modernes Zusammenspiel der Evolutionsfaktoren.",
       wrong: [
-        "Darunter versteht man systematiker der binären Nomenklatur.",
-        "Darunter versteht man frühe Evolutionstheorie mit Vererbung erworbener Merkmale.",
-        "Darunter versteht man begründer der Selektionstheorie.",
+        "Sie ist die Systematiker der Binären Nomenklatur.",
+        "Sie bezeichnet die Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.",
+        "Sie bezeichnet die Begründer der Selektionstheorie.",
       ],
       explanation: "Synthetische Theorie: Modernes Zusammenspiel der Evolutionsfaktoren",
       wissen: fw(
@@ -7167,12 +7166,12 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f10",
-      prompt: "Was versteht man im Thema Evolutionstheorie unter einem Fitness?",
-      answer: "Darunter versteht man relativer Fortpflanzungserfolg.",
+      prompt: "Was kennzeichnet Fitness im Thema Evolutionstheorie?",
+      answer: "Es bezeichnet den Relativer Fortpflanzungserfolg.",
       wrong: [
-        "Darunter versteht man die systematiker der Binären Nomenklatur.",
-        "Darunter versteht man die frühe Evolutionstheorie Mit Vererbung Erworbener Merkmale.",
-        "Darunter versteht man die begründer der Selektionstheorie.",
+        "Es ist die Systematiker der Binären Nomenklatur.",
+        "Es bezeichnet die Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.",
+        "Es bezeichnet die Begründer der Selektionstheorie.",
       ],
       explanation: "Fitness: Relativer Fortpflanzungserfolg",
       wissen: fw(
@@ -7183,12 +7182,12 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f11",
-      prompt: "Was versteht man im Thema Evolutionstheorie unter einer Anpassung?",
-      answer: "Darunter versteht man merkmal Mit Selektionsvorteil.",
+      prompt: "Was kennzeichnet Anpassung im Thema Evolutionstheorie?",
+      answer: "Sie bezeichnet den Merkmal mit Selektionsvorteil.",
       wrong: [
-        "Darunter versteht man die systematiker der Binären Nomenklatur.",
-        "Darunter versteht man die frühe Evolutionstheorie Mit Vererbung Erworbener Merkmale.",
-        "Darunter versteht man die begründer der Selektionstheorie.",
+        "Sie ist die Systematiker der Binären Nomenklatur.",
+        "Sie bezeichnet die Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.",
+        "Sie bezeichnet die Begründer der Selektionstheorie.",
       ],
       explanation: "Anpassung: Merkmal mit Selektionsvorteil",
       wissen: fw(
@@ -7216,8 +7215,8 @@ export const k10Evolutionstheorie: BioBank = {
       prompt: "Evolutionstheorie: Welche Rolle spielte Linné?",
       answer: "Er systematisierte Arten mit binärer Nomenklatur",
       wrong: [
-        "Er entdeckte die DNA-Doppelhelix allein",
-        "Er formulierte die Selektionstheorie",
+        "Er ist das Entdeckte die DNA-Doppelhelix allein",
+        "Er ist das Formulierte die Selektionstheorie",
         "Er leugnete Arten",
       ],
       explanation: "Systematik.",
@@ -7266,12 +7265,12 @@ export const k10Progression: BioBank = {
   facts: [
     {
       concept: "bio:k10:prog:f0",
-      prompt: "Was versteht man im Thema Evolutionsprogression unter einer Oberflächenvergrößerung?",
-      answer: "Darunter versteht man die vergrößerung der Austauschfläche.",
+      prompt: "Was kennzeichnet Oberflächenvergrößerung im Thema Evolutionsprogression?",
+      answer: "Sie ist die Vergrößerung der Austauschfläche.",
       wrong: [
-        "Darunter versteht man die innere Fläche der Lunge.",
-        "Darunter versteht man gasaustausch Über die Haut.",
-        "Darunter versteht man gasaustausch Über Lungen.",
+        "Sie ist die Innere Fläche der Lunge.",
+        "Sie bezeichnet den Gasaustausch über die Haut.",
+        "Sie bezeichnet den Gasaustausch über Lungen.",
       ],
       explanation: "Oberflächenvergrößerung: Vergrößerung der Austauschfläche",
       wissen: fw(
@@ -7282,12 +7281,12 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f1",
-      prompt: "Was versteht man im Thema Evolutionsprogression auf „Lungenoberfläche“ zu unter einer Lungenoberfläche?",
-      answer: "Darunter versteht man innere Fläche der Lunge.",
+      prompt: "Was kennzeichnet Lungenoberfläche im Thema Evolutionsprogression?",
+      answer: "Sie ist die Innere Fläche der Lunge.",
       wrong: [
-        "Darunter versteht man vergrößerung der Austauschfläche.",
-        "Darunter versteht man gasaustausch über die Haut.",
-        "Darunter versteht man gasaustausch über Lungen.",
+        "Sie ist die Vergrößerung der Austauschfläche.",
+        "Sie bezeichnet den Gasaustausch über die Haut.",
+        "Sie bezeichnet den Gasaustausch über Lungen.",
       ],
       explanation: "Lungenoberfläche: Innere Fläche der Lunge",
       wissen: fw(
@@ -7298,12 +7297,12 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f2",
-      prompt: "Was versteht man im Thema Evolutionsprogression auf „Hautatmung“ zu unter einer Hautatmung?",
-      answer: "Darunter versteht man gasaustausch über die Haut.",
+      prompt: "Was kennzeichnet Hautatmung im Thema Evolutionsprogression?",
+      answer: "Sie bezeichnet den Gasaustausch über die Haut.",
       wrong: [
-        "Darunter versteht man vergrößerung der Austauschfläche.",
-        "Darunter versteht man innere Fläche der Lunge.",
-        "Darunter versteht man gasaustausch über Lungen.",
+        "Sie ist die Vergrößerung der Austauschfläche.",
+        "Sie ist die Innere Fläche der Lunge.",
+        "Sie bezeichnet den Gasaustausch über Lungen.",
       ],
       explanation: "Hautatmung: Gasaustausch über die Haut",
       wissen: fw(
@@ -7314,12 +7313,12 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f3",
-      prompt: "Was versteht man im Thema Evolutionsprogression unter einer Lungenatmung?",
-      answer: "Darunter versteht man gasaustausch Über Lungen.",
+      prompt: "Was kennzeichnet Lungenatmung im Thema Evolutionsprogression?",
+      answer: "Sie bezeichnet den Gasaustausch über Lungen.",
       wrong: [
-        "Darunter versteht man die vergrößerung der Austauschfläche.",
-        "Darunter versteht man die innere Fläche der Lunge.",
-        "Darunter versteht man gasaustausch Über die Haut.",
+        "Sie ist die Vergrößerung der Austauschfläche.",
+        "Sie ist die Innere Fläche der Lunge.",
+        "Sie bezeichnet den Gasaustausch über die Haut.",
       ],
       explanation: "Lungenatmung: Gasaustausch über Lungen",
       wissen: fw(
@@ -7330,12 +7329,12 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f4",
-      prompt: "Was versteht man im Thema Evolutionsprogression auf „Feuchtlufttier“ zu unter einem Feuchtlufttier?",
-      answer: "Darunter versteht man tier mit feuchtigkeitsabhängiger Hautatmung.",
+      prompt: "Was kennzeichnet Feuchtlufttier im Thema Evolutionsprogression?",
+      answer: "Er ist die Tier mit Feuchtigkeitsabhängiger Hautatmung.",
       wrong: [
-        "Darunter versteht man vergrößerung der Austauschfläche.",
-        "Darunter versteht man innere Fläche der Lunge.",
-        "Darunter versteht man gasaustausch über die Haut.",
+        "Er ist die Vergrößerung der Austauschfläche.",
+        "Er ist die Innere Fläche der Lunge.",
+        "Er bezeichnet den Gasaustausch über die Haut.",
       ],
       explanation: "Feuchtlufttier: Tier mit feuchtigkeitsabhängiger Hautatmung",
       wissen: fw(
@@ -7346,12 +7345,12 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f5",
-      prompt: "Was versteht man im Thema Evolutionsprogression auf „Trockenlufttier“ zu unter einem Trockenlufttier?",
-      answer: "Darunter versteht man tier mit geschützter Luftatmung.",
+      prompt: "Wozu dient Trockenlufttier im Thema Evolutionsprogression?",
+      answer: "Er tier mit geschützter Luftatmung.",
       wrong: [
-        "Darunter versteht man vergrößerung der Austauschfläche.",
-        "Darunter versteht man innere Fläche der Lunge.",
-        "Darunter versteht man gasaustausch über die Haut.",
+        "Er ist die Vergrößerung der Austauschfläche.",
+        "Er ist die Innere Fläche der Lunge.",
+        "Er bezeichnet den Gasaustausch über die Haut.",
       ],
       explanation: "Trockenlufttier: Tier mit geschützter Luftatmung",
       wissen: fw(
@@ -7362,12 +7361,12 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f6",
-      prompt: "Was versteht man im Thema Evolutionsprogression unter einem wechselwarm?",
-      answer: "Darunter versteht man körpertemperatur Folgt Umwelt.",
+      prompt: "Was kennzeichnet wechselwarm im Thema Evolutionsprogression?",
+      answer: "Es ist das Körpertemperatur Folgt Umwelt.",
       wrong: [
-        "Darunter versteht man die vergrößerung der Austauschfläche.",
-        "Darunter versteht man die innere Fläche der Lunge.",
-        "Darunter versteht man gasaustausch Über die Haut.",
+        "Es ist die Vergrößerung der Austauschfläche.",
+        "Es ist die Innere Fläche der Lunge.",
+        "Es bezeichnet den Gasaustausch über die Haut.",
       ],
       explanation: "wechselwarm: Körpertemperatur folgt Umwelt",
       wissen: fw(
@@ -7378,12 +7377,12 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f7",
-      prompt: "Was versteht man im Thema Evolutionsprogression unter einem gleichwarm?",
-      answer: "Darunter versteht man körpertemperatur Weitgehend Konstant.",
+      prompt: "Was kennzeichnet gleichwarm im Thema Evolutionsprogression?",
+      answer: "Es ist das Körpertemperatur Weitgehend Konstant.",
       wrong: [
-        "Darunter versteht man die vergrößerung der Austauschfläche.",
-        "Darunter versteht man die innere Fläche der Lunge.",
-        "Darunter versteht man gasaustausch Über die Haut.",
+        "Es ist die Vergrößerung der Austauschfläche.",
+        "Es ist die Innere Fläche der Lunge.",
+        "Es bezeichnet den Gasaustausch über die Haut.",
       ],
       explanation: "gleichwarm: Körpertemperatur weitgehend konstant",
       wissen: fw(
@@ -7394,12 +7393,12 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f8",
-      prompt: "Was versteht man im Thema Evolutionsprogression unter einer Leistungssteigerung?",
-      answer: "Darunter versteht man die zunahme Physiologischer Kapazität.",
+      prompt: "Was kennzeichnet Leistungssteigerung im Thema Evolutionsprogression?",
+      answer: "Sie bezeichnet die Zunahme Physiologischer Kapazität.",
       wrong: [
-        "Darunter versteht man die vergrößerung der Austauschfläche.",
-        "Darunter versteht man die innere Fläche der Lunge.",
-        "Darunter versteht man gasaustausch Über die Haut.",
+        "Sie ist die Vergrößerung der Austauschfläche.",
+        "Sie ist die Innere Fläche der Lunge.",
+        "Sie bezeichnet den Gasaustausch über die Haut.",
       ],
       explanation: "Leistungssteigerung: Zunahme physiologischer Kapazität",
       wissen: fw(
@@ -7410,12 +7409,12 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f9",
-      prompt: "Was versteht man im Thema Evolutionsprogression auf „Umweltunabhängigkeit“ zu unter einer Umweltunabhängigkeit?",
-      answer: "Darunter versteht man geringere Bindung an Umweltfaktoren.",
+      prompt: "Was kennzeichnet Umweltunabhängigkeit im Thema Evolutionsprogression?",
+      answer: "Sie bezeichnet den Geringere Bindung an Umweltfaktoren.",
       wrong: [
-        "Darunter versteht man vergrößerung der Austauschfläche.",
-        "Darunter versteht man innere Fläche der Lunge.",
-        "Darunter versteht man gasaustausch über die Haut.",
+        "Sie ist die Vergrößerung der Austauschfläche.",
+        "Sie ist die Innere Fläche der Lunge.",
+        "Sie bezeichnet den Gasaustausch über die Haut.",
       ],
       explanation: "Umweltunabhängigkeit: Geringere Bindung an Umweltfaktoren",
       wissen: fw(
@@ -7426,12 +7425,12 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f10",
-      prompt: "Was versteht man im Thema Evolutionsprogression auf „Progression“ zu unter einer Progression?",
-      answer: "Darunter versteht man gerichtete Steigerung von Leistungen.",
+      prompt: "Was kennzeichnet Progression im Thema Evolutionsprogression?",
+      answer: "Sie bezeichnet den Gerichtete Steigerung von Leistungen.",
       wrong: [
-        "Darunter versteht man vergrößerung der Austauschfläche.",
-        "Darunter versteht man innere Fläche der Lunge.",
-        "Darunter versteht man gasaustausch über die Haut.",
+        "Sie ist die Vergrößerung der Austauschfläche.",
+        "Sie ist die Innere Fläche der Lunge.",
+        "Sie bezeichnet den Gasaustausch über die Haut.",
       ],
       explanation: "Progression: Gerichtete Steigerung von Leistungen",
       wissen: fw(
@@ -7442,12 +7441,12 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f11",
-      prompt: "Was versteht man im Thema Evolutionsprogression auf „Organveränderung“ zu unter einer Organveränderung?",
-      answer: "Darunter versteht man umbau von Organen im Verlauf.",
+      prompt: "Wozu dient die Organveränderung im Thema Evolutionsprogression?",
+      answer: "Sie umbau von Organen im Verlauf.",
       wrong: [
-        "Darunter versteht man vergrößerung der Austauschfläche.",
-        "Darunter versteht man innere Fläche der Lunge.",
-        "Darunter versteht man gasaustausch über die Haut.",
+        "Sie ist die Vergrößerung der Austauschfläche.",
+        "Sie ist die Innere Fläche der Lunge.",
+        "Sie bezeichnet den Gasaustausch über die Haut.",
       ],
       explanation: "Organveränderung: Umbau von Organen im Verlauf",
       wissen: fw(

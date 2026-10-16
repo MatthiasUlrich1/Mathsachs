@@ -69,12 +69,12 @@ function withAuditSafePhysikFw(gen: Topic['generate']): Topic['generate'] {
         ) {
           q = fixGermanPromptCapitalization(rewritePhysikPrompt(`Was bedeutet „${term}“?`, meaning))
         } else {
-          q = `Was bewirkt oder beschreibt ${term.replace(/\//g, ' oder ')}?`
+          q = fixGermanPromptCapitalization(rewritePhysikPrompt(`Was bedeutet „${term}“?`, meaning))
         }
       }
       // Still a definition stem? Last resort application framing.
       if (/^Was versteht man unter\b/i.test(q) || /^Was bedeutet\b/i.test(q)) {
-        q = `Was bewirkt oder beschreibt ${term.replace(/\//g, ' oder ')}?`
+        q = fixGermanPromptCapitalization(rewritePhysikPrompt(`Was bedeutet „${term}“?`, meaning))
       }
     }
     q = redactSolutionSpoilers(q, ansRaw)

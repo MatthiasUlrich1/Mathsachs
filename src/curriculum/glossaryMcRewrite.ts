@@ -2,20 +2,73 @@
  * Rewrite vague glossary/meta MC stems into concrete Schüler questions
  * and expand fragment answer options into comparable full phrases.
  *
- * Quality bar (Timer/Sensor): concrete application stem + full parallel options.
- * NEVER emit „Was trifft … zu?“ / „Welche Aussage … fachlich richtig?“ as final stems.
+ * Quality bar (Timer/Sensor/Transparent):
+ * - concrete application stem (Wozu / Welche Eigenschaft / Woran / Was bewirkt /
+ *   Was kennzeichnet / Welche Rolle …) — meaning-aware, NOT meta-glossary
+ * - full parallel option sentences with proper German capitalization
+ * - NEVER emit „Was trifft …?“, „fachlich richtig“, or weak wraps like
+ *   „Darunter versteht man den <fragment>“
  *
  * Used by Physik/Bio/Geschichte bank sanitizers for locked gap/thin-fill content.
  */
 
 export type GlossaryStemStyle = 'purpose' | 'property' | 'process' | 'definition'
 
+const PREPS = new Set([
+  'zu',
+  'zur',
+  'zum',
+  'von',
+  'vom',
+  'für',
+  'im',
+  'in',
+  'am',
+  'an',
+  'auf',
+  'bei',
+  'vs',
+  'oder',
+  'und',
+  'der',
+  'die',
+  'das',
+  'den',
+  'dem',
+  'des',
+  'ein',
+  'eine',
+  'einen',
+  'einem',
+  'einer',
+  'mit',
+  'ohne',
+  'nach',
+  'gegen',
+  'über',
+  'unter',
+  'aus',
+  'als',
+  'bis',
+  'um',
+  'durch',
+  'vor',
+  'seit',
+])
+
+/** Gold definition stem that may keep „Was versteht man …“. */
+export function isAllowedVerstehtStem(prompt: string): boolean {
+  return /Was versteht man in der Geschichtswissenschaft unter einer Quelle\??$/i.test(
+    prompt.replace(/\s+/g, ' ').trim(),
+  )
+}
+
 /** Already a concrete application / role / process stem — leave alone. */
 export function isConcreteGlossaryStem(prompt: string): boolean {
   const q = prompt.replace(/\s+/g, ' ').trim()
-  // Explicitly NOT concrete: Was trifft / fachlich richtig / bare Was bedeutet
   if (isVagueGlossaryStem(q)) return false
-  return /^(Wozu|Welche Rolle|Womit|Mit welchen|Was bewirkt|Was passiert|Berechne|Wie|Warum|Weshalb|Woran|Wofür|Welcher Zusammenhang|Welche Maßnahme|Welche Eigenschaft|Was kennzeichnet|Was beschreibt die|Was ist ein typisches|Was versteht man)\b/i.test(
+  if (isAllowedVerstehtStem(q)) return true
+  return /^(Wozu|Welche Rolle|Womit|Mit welchen|Was bewirkt|Was beschreibt|Was passiert|Berechne|Wie|Warum|Weshalb|Woran|Wofür|Welcher Zusammenhang|Welche Maßnahme|Welche Eigenschaft|Was kennzeichnet|Was beschreibt die|Was ist ein typisches)\b/i.test(
     q,
   )
 }
@@ -23,6 +76,7 @@ export function isConcreteGlossaryStem(prompt: string): boolean {
 /** Vague glossary/meta stems that must be rewritten. */
 export function isVagueGlossaryStem(prompt: string): boolean {
   const q = stripBankSlugPrefix(prompt).replace(/\s+/g, ' ').replace(/\?+$/g, '').trim()
+  if (isAllowedVerstehtStem(q + '?') || isAllowedVerstehtStem(q)) return false
   return (
     // Glossary/meta only — not application MCs like „Welche Aussage zur SRT passt?“ / „Was trifft den 2. Hauptsatz…“.
     /^Was trifft auf\b/i.test(q) ||
@@ -36,7 +90,11 @@ export function isVagueGlossaryStem(prompt: string): boolean {
     /^(?:[^:?]{1,80}:\s*)?Was bedeutet(?: der Fachbegriff)?\s*[„""']/i.test(q) ||
     /^Was bedeutet\s+\S+$/i.test(q) ||
     /^Was ist fachlich richtig$/i.test(q) ||
-    /^Was ist (ein|eine|der|die|das)\s+\S+$/i.test(q)
+    /^Was ist (ein|eine|der|die|das)\s+\S+$/i.test(q) ||
+    // Meta glossary drill (except Quelle gold above)
+    /^Was versteht man\b/i.test(q) ||
+    // Generic dump template from earlier pass
+    /^Was bewirkt oder beschreibt\b/i.test(q)
   )
 }
 
@@ -85,10 +143,10 @@ function indefinitePhrase(term: string): string {
 }
 
 const PURPOSE_VERB =
-  /^(Schaltet|Dient|Dienen|Vermeidet|Ermöglicht|Regelt|Steuert|Misst|Schützt|Hilft|Unterstützt|Begrenzt|Verhindert|Reduziert|Erhöht|Verringert|Speichert|Überträgt)\b/i
+  /^(Schaltet|Dient|Dienen|Vermeidet|Ermöglicht|Regelt|Steuert|Misst|Schützt|Hilft|Unterstützt|Begrenzt|Verhindert|Reduziert|Erhöht|Verringert|Speichert|Überträgt|Entzieht|Nimmt|Bewegt|Reguliert)\b/i
 
 const EFFECT_VERB =
-  /^(Stört|Entsteht|Wird|Werden|Lässt|Lassen|Sendet|Wirft|Nimmt|Geht|Liegt|Steht|Bildet|Zeigt|Enthält|Umfasst|Kennzeichnet|Bezeichnet|Beschreibt|Bedeutet|Gilt|Lenkt|Hat|Haben|Ist|Sind|Ändert|Hängt|Folgt|Treibt)\b/i
+  /^(Stört|Entsteht|Wird|Werden|Lässt|Lassen|Sendet|Wirft|Nimmt|Geht|Liegt|Steht|Bildet|Zeigt|Enthält|Umfasst|Kennzeichnet|Bezeichnet|Beschreibt|Bedeutet|Gilt|Lenkt|Hat|Haben|Ist|Sind|Ändert|Hängt|Folgt|Treibt|Wandelt|Abbildet)\b/i
 
 export function classifyGlossaryStyle(
   term: string,
@@ -105,11 +163,17 @@ export function classifyGlossaryStyle(
     return 'property'
   }
   if (PURPOSE_VERB.test(m)) return 'purpose'
+  if (
+    /organ|gerät|mittel|hilfe|sensor|timer|deckel|blase|werkzeug|schutzschicht/i.test(t) ||
+    /organ|gerät|mittel|hilfe|schützt|steuert|misst|entzieht/i.test(m)
+  ) {
+    return 'purpose'
+  }
   if (/stört|blend/i.test(m) || /^(Licht wird|Entsteht|Wärme|Energie|Wird |Werden )/i.test(m)) {
     return 'process'
   }
   if (EFFECT_VERB.test(m)) return 'process'
-  if (/quelle|chronologie|epoche|herrschaft|gesellschaft|revolution|migration|kieme/i.test(t)) {
+  if (/quelle|chronologie|epoche|herrschaft|gesellschaft|revolution|migration/i.test(t)) {
     return 'definition'
   }
   if (m && m.split(/\s+/).length <= 5 && !PURPOSE_VERB.test(m)) return 'definition'
@@ -118,7 +182,7 @@ export function classifyGlossaryStyle(
 
 /**
  * Build a concrete MC stem from term + optional topic/meaning.
- * Never returns „Was trifft …?“.
+ * Never returns „Was trifft …?“ or generic „Was versteht man …“ (except Quelle gold).
  */
 export function concreteGlossaryStem(
   term: string,
@@ -137,12 +201,23 @@ export function concreteGlossaryStem(
   }
 
   const style = classifyGlossaryStyle(t, meaning, topicClean)
+  const m = (meaning ?? '').replace(/\s+/g, ' ').trim()
+  const low = t.toLowerCase()
 
   if (style === 'purpose') {
     let label = t
     if (/^Timer oder Sensor$/i.test(t)) label = 'Timer oder Sensoren'
+    if (/^Kieme$/i.test(t)) {
+      return topicClean
+        ? `Wozu dient die Kieme im Thema ${topicClean}?`
+        : 'Wozu dient die Kieme bei Wassertieren?'
+    }
     const base =
-      / oder /.test(label) || /\s/.test(label) ? `Wozu dienen ${label}` : `Wozu dient ${label}`
+      / oder /.test(label) || /\s/.test(label)
+        ? `Wozu dienen ${label}`
+        : /(ung|heit|keit|schaft|ion|tät|ik|enz|anz|ur)$/i.test(low) || /e$/i.test(low)
+          ? `Wozu dient die ${label}`
+          : `Wozu dient ${label}`
     return topicClean ? `${base} im Thema ${topicClean}?` : `${base}?`
   }
 
@@ -151,24 +226,44 @@ export function concreteGlossaryStem(
   }
 
   if (style === 'process') {
-    return topicClean
-      ? `Was bewirkt oder beschreibt ${t} im Thema ${topicClean}?`
-      : `Was bewirkt oder beschreibt ${t}?`
+    if (/stört|blend/i.test(m) || /blend/i.test(low)) {
+      return topicClean
+        ? `Woran erkennt man ${t} im Thema ${topicClean}?`
+        : `Woran erkennt man ${t}?`
+    }
+    if (/beschreibt|bezeichnet|bedeutet|kennzeichnet|gilt|ordnung/i.test(m)) {
+      return topicClean
+        ? `Was beschreibt ${t} im Thema ${topicClean}?`
+        : `Was beschreibt ${t}?`
+    }
+    return topicClean ? `Was bewirkt ${t} im Thema ${topicClean}?` : `Was bewirkt ${t}?`
   }
 
-  // definition
-  const low = t.toLowerCase()
-  if (low === 'quelle') {
+  // definition — meaning-aware; only Geschichts-Quelle keeps meta „Was versteht man“
+  if (
+    low === 'quelle' &&
+    /überrest|tradition|vergangenheit|geschicht/i.test(`${topicClean ?? ''} ${m}`)
+  ) {
     return 'Was versteht man in der Geschichtswissenschaft unter einer Quelle?'
   }
-  const art =
-    /(ung|heit|keit|schaft|ion|tät|ik|enz|anz|ur)$/i.test(low) || /e$/i.test(low)
-      ? 'einer'
-      : 'einem'
-  if (topicClean) {
-    return `Was versteht man im Thema ${topicClean} unter ${art} ${t}?`
+  if (/ordnung|chronologie|zeit|epoche|schicht|struktur|system/i.test(`${t} ${m}`)) {
+    return topicClean
+      ? `Was kennzeichnet ${t} im Thema ${topicClean}?`
+      : `Was kennzeichnet ${t}?`
   }
-  return `Was versteht man unter ${art} ${t}?`
+  if (/rolle|funktion|aufgabe|zweck|macht|herrschaft|recht|bund|wesen/i.test(`${t} ${m}`)) {
+    return topicClean
+      ? `Welche Rolle hat ${t} im Thema ${topicClean}?`
+      : `Welche Rolle hat ${t}?`
+  }
+  if (/mittel|maßnahme|weg|methode/i.test(`${t} ${m}`)) {
+    return topicClean
+      ? `Mit welchen Mitteln beschreibt man ${t} im Thema ${topicClean}?`
+      : `Wozu dient ${t}?`
+  }
+  return topicClean
+    ? `Was kennzeichnet ${t} im Thema ${topicClean}?`
+    : `Was kennzeichnet ${t}?`
 }
 
 function ensurePeriod(s: string): string {
@@ -177,9 +272,60 @@ function ensurePeriod(s: string): string {
   return /[.!?]$/.test(m) ? m : `${m}.`
 }
 
+/** Capitalize German content words; keep prepositions lowercase mid-phrase. */
+export function capitalizeGermanPhrase(text: string): string {
+  const parts = text.replace(/\s+/g, ' ').trim().split(' ')
+  return parts
+    .map((w, i) => {
+      const m = /^([\("„']*)(.*?)([)"“'.,;:!?]*)$/u.exec(w)
+      if (!m) return w
+      const [, lead, bare, trail] = m
+      if (!bare) return w
+      const low = bare.toLowerCase()
+      if (i > 0 && PREPS.has(low)) return `${lead}${low}${trail}`
+      if (/^[a-zäöü]/.test(bare) && bare.length > 1) {
+        return `${lead}${bare.charAt(0).toUpperCase()}${bare.slice(1)}${trail}`
+      }
+      return w
+    })
+    .join(' ')
+}
+
+function stripDarunterWrap(m: string): string {
+  return m
+    .replace(/^Darunter versteht man\s+/i, '')
+    .replace(/^(Sie|Er|Es)\s+dient dazu:\s*/i, '')
+    .replace(/^(Sie|Er|Es)\s+(bezeichnet|ist|sind)\s+/i, '')
+    .replace(/^(den|die|das|dem|des|der|ein|eine|einen|einem|einer)\s+/i, '')
+    .trim()
+}
+
+/** Weak glossary option wraps that must be rebuilt (fragment / bad casing). */
+export function isWeakGlossaryOption(opt: string): boolean {
+  const o = opt.replace(/\s+/g, ' ').trim()
+  if (!o) return true
+  if (/\\u00[0-9a-f]{2}/i.test(o)) return true
+  if (/^Darunter versteht man\b/i.test(o)) {
+    const rest = o.replace(/^Darunter versteht man\s+/i, '').trim()
+    // „den atemorgan …“ / bare lowercase noun / short fragment
+    if (/^(den|die|das|dem|der|ein|eine|einen)\s+[a-zäöü]/i.test(rest)) return true
+    if (/^[a-zäöü]/.test(rest)) return true
+    if (rest.split(/\s+/).length <= 7) return true
+  }
+  // Short noun-only fragment without sentence opener
+  if (
+    o.split(/\s+/).length <= 5 &&
+    !/^(Sie|Er|Es|Man|Licht|Wärme|Energie|Der|Die|Das|Ein|Eine)\b/i.test(o)
+  ) {
+    return true
+  }
+  return false
+}
+
 function alreadyFullOption(m: string): boolean {
+  if (isWeakGlossaryOption(m)) return false
   const words = m.split(/\s+/).length
-  if (/^(Sie|Er|Es|Man|Darunter|Damit|Dabei|Hier|Das|Die|Der)\b/i.test(m) && words >= 4) {
+  if (/^(Sie|Er|Es|Man|Damit|Dabei|Hier|Das|Die|Der|Licht|Wärme|Energie)\b/i.test(m) && words >= 5) {
     return true
   }
   if (words >= 8) return true
@@ -187,9 +333,42 @@ function alreadyFullOption(m: string): boolean {
   return false
 }
 
+function asDefinitionSentence(term: string, meaning: string): string {
+  const pron = pronounFor(term)
+  let body = stripDarunterWrap(meaning)
+  body = capitalizeGermanPhrase(body)
+  if (!body) return ensurePeriod(`${pron} beschreibt einen verwandten Sachverhalt`)
+
+  const concreteNp =
+    /organ|gerät|schicht|körper|hilfe|mittel|system|blase|deckel|fläche|form|larve|stadium|gewebe|zelle|knoche|muskel|nerv|sensor|pixel|spiegel|linse|widerstand|quelle|epoche|ordnung|herrschaft|recht|bund|wesen|zunft|hanse/i.test(
+      body,
+    )
+
+  // Ensure article for NP after ist/bezeichnet — keep German noun capitalization
+  if (!/^(der|die|das|ein|eine|einen|einem|einer|etwas|das,|die,)\b/i.test(body)) {
+    const last = (body.split(/\s+/).pop() ?? '').toLowerCase()
+    const art =
+      /(ung|heit|keit|schaft|ion|tät|ik|enz|anz|ur)$/i.test(last) || /e$/i.test(last)
+        ? 'die'
+        : /(chen|lein|ment|tum|um|organ|system|recht|wesen)$/i.test(last)
+          ? 'das'
+          : 'den'
+    body = `${art} ${body}`
+  }
+
+  if (concreteNp) {
+    // Accusative „den“ after „ist“ is wrong — use nominative for „ist“
+    body = body
+      .replace(/^den\s+/i, 'das ')
+      .replace(/^die\s+/i, (a) => a) // keep
+    return ensurePeriod(`${pron} ist ${body}`)
+  }
+  return ensurePeriod(`${pron} bezeichnet ${body}`)
+}
+
 /**
  * Expand a short meaning fragment into a full, comparable answer phrase.
- * Keeps UTF-8 umlauts untouched. Prefers Sie/Er/Es / Darunter-parallel style.
+ * Keeps UTF-8 umlauts untouched. Never emits weak „Darunter versteht man den …“ wraps.
  */
 export function expandGlossaryAnswer(
   meaning: string,
@@ -197,6 +376,8 @@ export function expandGlossaryAnswer(
 ): string {
   let m = meaning.replace(/\s+/g, ' ').trim()
   if (!m) return m
+  // Decode accidental JS unicode escapes left in source strings
+  m = m.replace(/\\u([0-9a-fA-F]{4})/g, (_, h) => String.fromCharCode(parseInt(h, 16)))
 
   const term = opts?.term?.replace(/\s+/g, ' ').trim()
   const style = opts?.style ?? classifyGlossaryStyle(term ?? '', m, opts?.topic)
@@ -214,46 +395,36 @@ export function expandGlossaryAnswer(
       .trim()
   }
 
-  // Repair mangled prior expands: „Er licht geht hindurch.“
-  m = m.replace(/^(Sie|Er|Es)\s+(licht|wärme|energie)\b/i, (_, p1, n) => {
-    return n.charAt(0).toUpperCase() + n.slice(1)
-  })
-
   if (alreadyFullOption(m)) return ensurePeriod(m)
+
+  // Unwrap weak Darunter wraps before rebuilding
+  if (/^Darunter versteht man\b/i.test(m) || isWeakGlossaryOption(m)) {
+    m = stripDarunterWrap(m)
+  }
 
   const pron = pronounFor(term ?? '')
   const verbish = PURPOSE_VERB.test(m) || EFFECT_VERB.test(m)
-  const nounClause = /^(Licht|Wärme|Energie|Der|Die|Das|Ein|Eine|Es|Man)\b/i.test(m)
-
-  // Noun-led process clauses stay noun-led — never „Er licht wird …“.
-  if (nounClause) {
-    return ensurePeriod(m.charAt(0).toUpperCase() + m.slice(1))
-  }
 
   if (verbish) {
     const rest = m.charAt(0).toLowerCase() + m.slice(1)
     return ensurePeriod(`${pron} ${rest}`)
   }
 
-  if (style === 'purpose' || style === 'property') {
-    // Short noun phrases under property stems → Darunter-Form, not broken pronoun glue.
-    if (!PURPOSE_VERB.test(m) && !EFFECT_VERB.test(m) && m.split(/\s+/).length <= 6) {
-      const body = m.charAt(0).toLowerCase() + m.slice(1)
-      return ensurePeriod(`Darunter versteht man ${body}`)
-    }
-    const body = m.charAt(0).toLowerCase() + m.slice(1)
-    return ensurePeriod(`${pron} ${body}`)
+  if (style === 'process' && /^(Licht|Wärme|Energie|Der|Die|Das|Ein|Eine|Es|Man)\b/i.test(m)) {
+    return ensurePeriod(capitalizeGermanPhrase(m.charAt(0).toUpperCase() + m.slice(1)))
   }
 
-  // definition — keep noun capitalization
-  if (/^Darunter versteht man\b/i.test(m)) return ensurePeriod(m)
-  const article = /^(den|die|das|dem|des|der|ein|eine|einen|einem|einer)\b/i.test(m)
-    ? ''
-    : /e$/i.test(m.split(/\s+/).pop() ?? '')
-      ? 'die '
-      : ''
-  const body = article ? m.charAt(0).toLowerCase() + m.slice(1) : m
-  return ensurePeriod(`Darunter versteht man ${article}${body}`)
+  if (style === 'purpose' || style === 'property') {
+    // Verb clause → „Sie schaltet …“; noun phrase → „Sie ist das Atemorgan …“
+    if (verbish || PURPOSE_VERB.test(m) || EFFECT_VERB.test(m)) {
+      const body = m.charAt(0).toLowerCase() + m.slice(1)
+      return ensurePeriod(`${pron} ${body}`)
+    }
+    return asDefinitionSentence(term ?? '', m)
+  }
+
+  // definition — full parallel sentence, no Darunter wrap
+  return asDefinitionSentence(term ?? '', m)
 }
 
 /** Expand a distractor to the same style (parallel options). */
@@ -280,7 +451,11 @@ export function rewriteVagueGlossaryPrompt(
   let q = stripBankSlugPrefix(prompt).replace(/\s+/g, ' ').trim()
   q = q.replace(/\?+$/g, '').trim()
 
-  if (isConcreteGlossaryStem(q)) return null
+  if (isAllowedVerstehtStem(q) || isAllowedVerstehtStem(`${q}?`)) {
+    return 'Was versteht man in der Geschichtswissenschaft unter einer Quelle?'
+  }
+
+  if (isConcreteGlossaryStem(q) && !isVagueGlossaryStem(q)) return null
 
   // Was trifft im Thema TOPIC auf „term“ zu?
   let m = q.match(
@@ -334,6 +509,20 @@ export function rewriteVagueGlossaryPrompt(
     /^(?:([^:?]{1,80}):\s*)?(?:Was bedeutet(?: der Fachbegriff)?|Was versteht man unter)\s*[„""']([^„""']+)[“""']\s*$/i,
   )
   if (m) return concreteGlossaryStem(m[2]!, m[1]?.trim() || undefined, opts?.meaning)
+
+  // Was versteht man im Thema TOPIC unter einer/einem TERM?
+  m = q.match(
+    /^Was versteht man(?: im Thema\s+(.+?))?\s+unter\s+(?:einem|einer|einem|dem|der|das|die|den)?\s*(.+)$/i,
+  )
+  if (m) {
+    return concreteGlossaryStem(m[2]!.trim(), m[1]?.trim(), opts?.meaning)
+  }
+
+  // Was bewirkt oder beschreibt TERM (im Thema …)?
+  m = q.match(/^Was bewirkt oder beschreibt\s+(.+?)(?:\s+im Thema\s+(.+))?$/i)
+  if (m) {
+    return concreteGlossaryStem(m[1]!.trim(), m[2]?.trim(), opts?.meaning)
+  }
 
   // Was ist fachlich richtig? (no term)
   if (/^Was ist fachlich richtig$/i.test(q) || /^Welche Aussage ist(?:\s+fachlich)?\s+richtig$/i.test(q)) {

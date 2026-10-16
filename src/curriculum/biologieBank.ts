@@ -38,6 +38,7 @@ import {
   expandGlossaryAnswer,
   expandGlossaryDistractor,
   isConcreteGlossaryStem,
+  isWeakGlossaryOption,
   rewriteVagueGlossaryPrompt,
   stripBankSlugPrefix,
 } from './glossaryMcRewrite'
@@ -962,10 +963,11 @@ export function sanitizeBioBank(bank: BioBank): BioBank {
         prefix: bank.conceptPrefix,
         meaning: ansRaw,
       })
-      // Only expand short glossary fragments — keep curated full answers intact.
+      // Expand short fragments AND weak „Darunter versteht man …“ wraps.
       const style = classifyGlossaryStyle(termHint.trim(), ansRaw, topicHint || undefined)
       const expandNeeded =
-        ansRaw.split(/\s+/).length <= 7 && !/^(Sie|Er|Es|Man|Darunter)\s/i.test(ansRaw)
+        isWeakGlossaryOption(ansRaw) ||
+        (ansRaw.split(/\s+/).length <= 7 && !/^(Sie|Er|Es|Man)\s/i.test(ansRaw))
       const answer = expandNeeded
         ? expandGlossaryAnswer(ansRaw, {
             term: termHint.trim() || undefined,
@@ -975,7 +977,9 @@ export function sanitizeBioBank(bank: BioBank): BioBank {
         : ansRaw
       const wrong = f.wrong?.map((w) => {
         const wr = String(w).trim()
-        if (wr.split(/\s+/).length > 7 || /^(Sie|Er|Es|Man|Darunter)\s/i.test(wr)) return wr
+        if (!isWeakGlossaryOption(wr) && (wr.split(/\s+/).length > 7 || /^(Sie|Er|Es|Man)\s/i.test(wr))) {
+          return wr
+        }
         return expandGlossaryDistractor(wr, topicHint || undefined, {
           term: termHint.trim() || undefined,
           style,

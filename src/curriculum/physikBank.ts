@@ -10,6 +10,7 @@ import {
   expandGlossaryAnswer,
   expandGlossaryDistractor,
   isConcreteGlossaryStem,
+  isWeakGlossaryOption,
   rewriteVagueGlossaryPrompt,
   stripBankSlugPrefix,
 } from './glossaryMcRewrite'
@@ -141,14 +142,14 @@ function sanitizePhysikBank(bank: BioBank): BioBank {
       }
       const style = classifyGlossaryStyle(term || '', ansRaw, topic)
       const expandNeeded =
-        ansRaw.split(/\s+/).length <= 7 &&
-        !/^(Sie|Er|Es|Man|Darunter)\s/i.test(ansRaw)
+        isWeakGlossaryOption(ansRaw) ||
+        (ansRaw.split(/\s+/).length <= 7 && !/^(Sie|Er|Es|Man)\s/i.test(ansRaw))
       const answer = expandNeeded
         ? expandGlossaryAnswer(ansRaw, { term: term || undefined, topic, style })
         : ansRaw
       const wrong = f.wrong?.map((w) => {
         const wr = String(w).trim()
-        if (wr.split(/\s+/).length > 7 || /^(Sie|Er|Es|Man|Darunter)\s/i.test(wr)) {
+        if (!isWeakGlossaryOption(wr) && (wr.split(/\s+/).length > 7 || /^(Sie|Er|Es|Man)\s/i.test(wr))) {
           return wr
         }
         return expandGlossaryDistractor(wr, topic, { term: term || undefined, style })
