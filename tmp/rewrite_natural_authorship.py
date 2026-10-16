@@ -201,6 +201,39 @@ HAND: dict[str, dict[str, object]] = {
         "prompt": "Wozu dient ein Versuchsprotokoll?",
         "answer": "Es dokumentiert Versuchsschritte und Messwerte so, dass andere den Versuch wiederholen können.",
     },
+    # Lurche
+    "hautatmung": {
+        "prompt": "Wozu dient die Hautatmung bei Lurchen?",
+        "answer": "Sie ermöglicht den Gasaustausch über die feuchte Haut zusätzlich zur Lunge.",
+    },
+    "lungenatmung": {
+        "prompt": "Wozu dient die Lungenatmung bei Lurchen?",
+        "answer": "Sie nimmt Sauerstoff über die Lungen auf, vor allem an Land.",
+    },
+    "laich": {
+        "prompt": "Was ist Laich bei Lurchen?",
+        "answer": "Es sind gallertig umhüllte Eigelege, die meist im Wasser abgelegt werden.",
+    },
+    "wanderung": {
+        "prompt": "Was bewirkt die Laichwanderung der Lurche?",
+        "answer": "Sie führt die Tiere zu geeigneten Laichgewässern zur Fortpflanzung.",
+    },
+    "giftstoffe": {
+        "prompt": "Wozu dienen Giftstoffe in der Haut mancher Lurche?",
+        "answer": "Sie schützen als Hautsekrete vor Fressfeinden.",
+    },
+    "kaulquappe": {
+        "prompt": "Woran erkennt man eine Kaulquappe?",
+        "answer": "Sie ist die wasserlebende Larve der Lurche mit Kiemen und Schwanz.",
+    },
+    "metamorphose": {
+        "prompt": "Was bewirkt die Metamorphose bei Lurchen?",
+        "answer": "Sie wandelt die Kaulquappe schrittweise in das landlebende erwachsene Tier um.",
+    },
+    "feuchtigkeit": {
+        "prompt": "Warum brauchen Lurche Feuchtigkeit?",
+        "answer": "Sie schützt die Haut vor Austrocknung und ermöglicht die Hautatmung.",
+    },
 }
 
 BANNED_OUT = re.compile(
