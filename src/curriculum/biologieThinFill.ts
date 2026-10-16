@@ -1399,8 +1399,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f0',
-      prompt: 'Was kennzeichnet „Zauneidechse“?',
-      answer: 'Sie ist eine Heimische Eidechse durch Sonnige Säume.', wrong: ['Sie ist eine Kleine Heimische Eidechse.', 'Die Zauneidechse ist die Beinlose Echse.', 'Die Zauneidechse ist die Ungiftige Wassernatter.'],
+      prompt: "Woran erkennt man die Zauneidechse?",
+      answer: "Sie ist eine heimische Eidechse warmer, strukturreicher Standorte und Säume.", wrong: ["Sie ist eine kleine heimische Eidechse, die oft in Wäldern und an Waldrändern lebt.", "Sie ist eine wärmeliebende Eidechse sonniger Mauern, Felsen und Steine.", "Sie ist eine beinlose Echse ohne Gift und ohne typischen Schlangenbau."],
       explanation: 'Sonnige Säume. Zauneidechse bedeutet: Heimische Eidechse.',
       wissen: 'Sonnige Säume. Zauneidechse bedeutet: Heimische Eidechse. Merke: Zauneidechse — Heimische Eidechse.',
       gap: '[k5-lb4-kriechtiere-arten] Fachbegriff: ___ — Heimische Eidechse',
@@ -1409,8 +1409,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f1',
-      prompt: 'Was kennzeichnet „Waldeidechse“?',
-      answer: 'Sie ist eine Kleine Heimische Eidechse durch Oft in Wäldern.', wrong: ['Die Waldeidechse ist die Heimische Eidechse.', 'Die Waldeidechse ist die Beinlose Echse.', 'Die Waldeidechse ist die Ungiftige Wassernatter.'],
+      prompt: "Woran erkennt man die Waldeidechse?",
+      answer: "Sie ist eine kleine heimische Eidechse, die oft in Wäldern und an Waldrändern lebt.", wrong: ["Sie ist eine giftige Viper Südeuropas und bei uns nicht überall heimisch.", "Sie ist die giftige Vipernart Mitteleuropas mit Zickzackband auf dem Rücken.", "Sie ist eine panzertragende Pflanzenfresserin; wilde heimische Arten sind selten."],
       explanation: 'Oft in Wäldern. Waldeidechse bedeutet: Kleine heimische Eidechse.',
       wissen: 'Oft in Wäldern. Waldeidechse bedeutet: Kleine heimische Eidechse. Merke: Waldeidechse — Kleine heimische Eidechse.',
       gap: '[k5-lb4-kriechtiere-arten] Fachbegriff: ___ — Kleine heimische Eidechse',
@@ -1419,8 +1419,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f2',
-      prompt: 'Was kennzeichnet „Blindschleiche“?',
-      answer: 'Sie ist eine Beinlose Echse durch Kein Gift, kein Schlangenbau.', wrong: ['Die Blindschleiche ist die Heimische Eidechse.', 'Sie ist eine Kleine Heimische Eidechse.', 'Die Blindschleiche ist die Ungiftige Wassernatter.'],
+      prompt: "Woran erkennt man die Blindschleiche?",
+      answer: "Sie ist eine beinlose Echse ohne Gift und ohne typischen Schlangenbau.", wrong: ["Sie ist eine heimische Eidechse warmer, strukturreicher Standorte und Säume.", "Sie ist eine seltene, geschützte heimische Schildkröte der Feuchtgebiete.", "Sie ist eine wärmeliebende Eidechse sonniger Mauern, Felsen und Steine."],
       explanation: 'Kein Gift, kein Schlangenbau. Blindschleiche bedeutet: Beinlose Echse.',
       wissen: 'Kein Gift, kein Schlangenbau. Blindschleiche bedeutet: Beinlose Echse. Merke: Blindschleiche — Beinlose Echse.',
       gap: '[k5-lb4-kriechtiere-arten] Fachbegriff: ___ — Beinlose Echse',
@@ -1429,8 +1429,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f3',
-      prompt: 'Was kennzeichnet „Ringelnatter“?',
-      answer: 'Er ist ein Ungiftige Wassernatter durch Oft an Gewässern.', wrong: ['Der Ringelnatter ist der Heimische Eidechse.', 'Er ist eine Kleine Heimische Eidechse.', 'Der Ringelnatter ist der Beinlose Echse.'],
+      prompt: "Woran erkennt man die Ringelnatter?",
+      answer: "Sie ist eine ungiftige Wassernatter, die oft an Gewässern jagt.", wrong: ["Sie ist eine giftige Viper Südeuropas und bei uns nicht überall heimisch.", "Sie ist eine wärmeliebende Eidechse sonniger Mauern, Felsen und Steine.", "Sie ist eine heimische Eidechse warmer, strukturreicher Standorte und Säume."],
       explanation: 'Oft an Gewässern. Ringelnatter bedeutet: Ungiftige Wassernatter.',
       wissen: 'Oft an Gewässern. Ringelnatter bedeutet: Ungiftige Wassernatter. Merke: Ringelnatter — Ungiftige Wassernatter.',
       gap: '[k5-lb4-kriechtiere-arten] Fachbegriff: ___ — Ungiftige Wassernatter',
@@ -1439,8 +1439,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f4',
-      prompt: 'Was kennzeichnet „Kreuzotter“?',
-      answer: 'Er ist eine Giftige Heimische Schlange durch Zickzackband.', wrong: ['Der Kreuzotter ist der Heimische Eidechse.', 'Er ist eine Kleine Heimische Eidechse.', 'Der Kreuzotter ist der Beinlose Echse.'],
+      prompt: "Woran erkennt man die Kreuzotter?",
+      answer: "Sie ist die giftige Vipernart Mitteleuropas mit Zickzackband auf dem Rücken.", wrong: ["Sie ist eine panzertragende Pflanzenfresserin; wilde heimische Arten sind selten.", "Sie ist eine seltene, geschützte heimische Schildkröte der Feuchtgebiete.", "Sie ist eine giftige Viper Südeuropas und bei uns nicht überall heimisch."],
       explanation: 'Zickzackband. Kreuzotter bedeutet: Giftige heimische Schlange.',
       wissen: 'Zickzackband. Kreuzotter bedeutet: Giftige heimische Schlange. Merke: Kreuzotter — Giftige heimische Schlange.',
       gap: '[k5-lb4-kriechtiere-arten] Fachbegriff: ___ — Giftige heimische Schlange',
@@ -1449,8 +1449,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f5',
-      prompt: 'Was kennzeichnet „Europäische Sumpfschildkröte“?',
-      answer: 'Sie ist eine Heimische Schildkröte durch Selten, geschützt.', wrong: ['Die Europäische Sumpfschildkröte ist die Heimische Eidechse.', 'Sie ist eine Kleine Heimische Eidechse.', 'Die Europäische Sumpfschildkröte ist die Beinlose Echse.'],
+      prompt: "Woran erkennt man die Europäische Sumpfschildkröte?",
+      answer: "Sie ist eine seltene, geschützte heimische Schildkröte der Feuchtgebiete.", wrong: ["Sie ist eine heimische Eidechse warmer, strukturreicher Standorte und Säume.", "Sie ist eine beinlose Echse ohne Gift und ohne typischen Schlangenbau.", "Sie ist eine giftige Viper Südeuropas und bei uns nicht überall heimisch."],
       explanation: 'Selten, geschützt. Europäische Sumpfschildkröte bedeutet: Heimische Schildkröte.',
       wissen: 'Selten, geschützt. Europäische Sumpfschildkröte bedeutet: Heimische Schildkröte. Merke: Europäische Sumpfschildkröte — Heimische Schildkröte.',
       gap: '[k5-lb4-kriechtiere-arten] Fachbegriff: ___ — Heimische Schildkröte',
@@ -1459,8 +1459,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f6',
-      prompt: 'Was kennzeichnet „Mauereidechse“?',
-      answer: 'Sie ist eine Wärme Liebende Eidechse durch an Felsen/Mauern.', wrong: ['Die Mauereidechse ist die Heimische Eidechse.', 'Sie ist eine Kleine Heimische Eidechse.', 'Die Mauereidechse ist die Beinlose Echse.'],
+      prompt: "Woran erkennt man die Mauereidechse?",
+      answer: "Sie ist eine wärmeliebende Eidechse sonniger Mauern, Felsen und Steine.", wrong: ["Sie ist eine seltene, geschützte heimische Schildkröte der Feuchtgebiete.", "Sie ist eine giftige Viper Südeuropas und bei uns nicht überall heimisch.", "Sie ist die giftige Vipernart Mitteleuropas mit Zickzackband auf dem Rücken."],
       explanation: 'An Felsen/Mauern. Mauereidechse bedeutet: Wärme liebende Eidechse.',
       wissen: 'An Felsen/Mauern. Mauereidechse bedeutet: Wärme liebende Eidechse. Merke: Mauereidechse — Wärme liebende Eidechse.',
       gap: '[k5-lb4-kriechtiere-arten] Fachbegriff: ___ — Wärme liebende Eidechse',
@@ -1469,8 +1469,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f7',
-      prompt: 'Was kennzeichnet „Aspisviper“?',
-      answer: 'Er ist eine Giftige Viper (Südl.) durch nicht überall heimisch. ).', wrong: ['Der Aspisviper ist der Heimische Eidechse.', 'Er ist eine Kleine Heimische Eidechse.', 'Der Aspisviper ist der Beinlose Echse.'],
+      prompt: "Woran erkennt man die Aspisviper?",
+      answer: "Sie ist eine giftige Viper Südeuropas und bei uns nicht überall heimisch.", wrong: ["Sie ist eine beinlose Echse ohne Gift und ohne typischen Schlangenbau.", "Sie ist eine kleine heimische Eidechse, die oft in Wäldern und an Waldrändern lebt.", "Sie ist die giftige Vipernart Mitteleuropas mit Zickzackband auf dem Rücken."],
       explanation: 'Nicht überall heimisch. Aspisviper bedeutet: Giftige Viper (südl.).',
       wissen: 'Nicht überall heimisch. Aspisviper bedeutet: Giftige Viper (südl.). Merke: Aspisviper — Giftige Viper (südl.).',
       gap: '[k5-lb4-kriechtiere-arten] Fachbegriff: ___ — Giftige Viper (südl.)',
@@ -1499,8 +1499,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f10',
-      prompt: 'Was kennzeichnet „Landschildkröte“?',
-      answer: 'Sie ist ein Pflanzenfressend, Panzer durch terrariumarten ≠ heimisch wild.', wrong: ['Die Landschildkröte ist die Heimische Eidechse.', 'Sie ist eine Kleine Heimische Eidechse.', 'Die Landschildkröte ist die Beinlose Echse.'],
+      prompt: "Woran erkennt man eine Landschildkröte?",
+      answer: "Sie ist eine panzertragende Pflanzenfresserin; wilde heimische Arten sind selten.", wrong: ["Sie ist eine kleine heimische Eidechse, die oft in Wäldern und an Waldrändern lebt.", "Sie ist eine giftige Viper Südeuropas und bei uns nicht überall heimisch.", "Sie ist eine ungiftige Wassernatter, die oft an Gewässern jagt."],
       explanation: 'Terrariumarten ≠ heimisch wild. Landschildkröte bedeutet: Pflanzenfressend, Panzer.',
       wissen: 'Terrariumarten ≠ heimisch wild. Landschildkröte bedeutet: Pflanzenfressend, Panzer. Merke: Landschildkröte — Pflanzenfressend, Panzer.',
       gap: '[k5-lb4-kriechtiere-arten] Fachbegriff: ___ — Pflanzenfressend, Panzer',

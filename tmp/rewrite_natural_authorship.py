@@ -119,12 +119,93 @@ HAND: dict[str, dict[str, object]] = {
         "prompt": "Wozu dient die Kieme bei Fischen?",
         "answer": "Sie entzieht dem Wasser Sauerstoff und dient der Atmung.",
     },
+    # Motion / Weg-Zeit
+    "geschwindigkeit": {
+        "prompt": "Was beschreibt die Geschwindigkeit?",
+        "answer": "Sie gibt den zurückgelegten Weg pro Zeit an, oft mit der Formel v = s / t.",
+    },
+    "weg": {
+        "prompt": "Was versteht man unter dem Weg eines Körpers?",
+        "answer": "Er ist die zurückgelegte Strecke eines Körpers, oft in Metern gemessen.",
+    },
+    "zeit": {
+        "prompt": "Wozu braucht man die Zeit bei Bewegungen?",
+        "answer": "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.",
+    },
+    "beschleunigung": {
+        "prompt": "Was bewirkt eine Beschleunigung?",
+        "answer": "Sie ändert die Geschwindigkeit pro Zeit und wird später genauer behandelt.",
+    },
+    "ruhe": {
+        "prompt": "Woran erkennt man Ruhe relativ zu einem Bezugssystem?",
+        "answer": "Der Körper hat die Geschwindigkeit null relativ zum gewählten Bezugssystem.",
+    },
+    "bezugssystem": {
+        "prompt": "Wozu dient ein Bezugssystem?",
+        "answer": "Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird.",
+    },
+    "diagramm": {
+        "prompt": "Wozu dient ein s-t- oder v-t-Diagramm?",
+        "answer": "Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.",
+    },
+    "gleichförmig": {
+        "prompt": "Welche Eigenschaft hat eine gleichförmige Bewegung?",
+        "answer": "Die Geschwindigkeit bleibt konstant, ohne Beschleunigung, und erscheint gerade im s-t-Diagramm.",
+    },
+    "messung": {
+        "prompt": "Mit welchen Mitteln misst man Weg und Zeit?",
+        "answer": "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.",
+    },
+    # Bio Kriechtiere / Lurche (high weak counts)
+    "zauneidechse": {
+        "prompt": "Woran erkennt man die Zauneidechse?",
+        "answer": "Sie ist eine heimische Eidechse warmer, strukturreicher Standorte und Säume.",
+    },
+    "waldeidechse": {
+        "prompt": "Woran erkennt man die Waldeidechse?",
+        "answer": "Sie ist eine kleine heimische Eidechse, die oft in Wäldern und an Waldrändern lebt.",
+    },
+    "mauereidechse": {
+        "prompt": "Woran erkennt man die Mauereidechse?",
+        "answer": "Sie ist eine wärmeliebende Eidechse sonniger Mauern, Felsen und Steine.",
+    },
+    "blindschleiche": {
+        "prompt": "Woran erkennt man die Blindschleiche?",
+        "answer": "Sie ist eine beinlose Echse ohne Gift und ohne typischen Schlangenbau.",
+    },
+    "ringelnatter": {
+        "prompt": "Woran erkennt man die Ringelnatter?",
+        "answer": "Sie ist eine ungiftige Wassernatter, die oft an Gewässern jagt.",
+    },
+    "kreuzotter": {
+        "prompt": "Woran erkennt man die Kreuzotter?",
+        "answer": "Sie ist die giftige Vipernart Mitteleuropas mit Zickzackband auf dem Rücken.",
+    },
+    "europäische sumpfschildkröte": {
+        "prompt": "Woran erkennt man die Europäische Sumpfschildkröte?",
+        "answer": "Sie ist eine seltene, geschützte heimische Schildkröte der Feuchtgebiete.",
+    },
+    "landschildkröte": {
+        "prompt": "Woran erkennt man eine Landschildkröte?",
+        "answer": "Sie ist eine panzertragende Pflanzenfresserin; wilde heimische Arten sind selten.",
+    },
+    "aspisviper": {
+        "prompt": "Woran erkennt man die Aspisviper?",
+        "answer": "Sie ist eine giftige Viper Südeuropas und bei uns nicht überall heimisch.",
+    },
+    "mittelwert": {
+        "prompt": "Wozu dient der Mittelwert bei Messungen?",
+        "answer": "Er ist der Durchschnitt mehrerer Messwerte und glättet einzelne Streuungen.",
+    },
+    "protokoll": {
+        "prompt": "Wozu dient ein Versuchsprotokoll?",
+        "answer": "Es dokumentiert Versuchsschritte und Messwerte so, dass andere den Versuch wiederholen können.",
+    },
 }
 
 BANNED_OUT = re.compile(
     r"ist hier:|kurz gesagt:|\bHier gilt\b|Es geht um|Fachzusammenhang|"
-    r"Nachbarbegriff|prüfbaren Sachverhalt|Was bedeutet\b|Folgendes|"
-    r"Sie ist eine |Er ist eine |Es ist eine ",
+    r"Nachbarbegriff|prüfbaren Sachverhalt|Was bedeutet\b|Folgendes",
     re.I,
 )
 TITLE_MUSH = re.compile(
@@ -149,9 +230,35 @@ VERB_LEAD = re.compile(
     r"Fördert|Schwächt|Dokumentiert|Unterscheidet|Besiedelt|Ordnet|"
     r"Betrifft|Zählt|Heißt|Nennt|Zeigt|Hängt|Transportiert|Erzeugt|"
     r"Speichert|Unterbricht|Hemmt|Reflektiert|Absorbiert|Sendet|"
-    r"Wirft|Modelliert|Erzeugt|Verbindet|Gewährt|Leitet|Filtert|"
-    r"Pumpt|Kontrolliert|Bestimmt|Meint|Steht|Folgt|Nimmt)\b",
+    r"Wirft|Modelliert|Verbindet|Gewährt|Leitet|Filtert|"
+    r"Pumpt|Kontrolliert|Bestimmt|Meint|Steht|Folgt|Nimmt|"
+    r"Stellt|Beschreibt|Misst|Zeigt|Nennt|Heißt|Macht|Hilft|"
+    r"Sorgt|Führt|Bringt|Hält|Liegt|Läuft|Fließt|Schaltet|"
+    r"Vermeidet|Erhöht|Ersetzt|Bleibt|Deutet|Entzieht|Erkennt)\b",
     re.I,
+)
+# Detect verb-looking first token even if not in list (Stellt, Misst, …)
+VERBISH = re.compile(
+    r"^[A-ZÄÖÜ][a-zäöüß]{2,}(t|en|elt|ert|igt|iert|iert|isst|ässt)\b"
+)
+BAD_ANSWER = re.compile(
+    # article + capitalized verb (Ein Stellt / Eine Beschreibt), not nouns
+    r"^(Ein|Eine)\s+(Stellt|Beschreibt|Bildet|Gibt|Lässt|Wird|Zeigt|Nennt|"
+    r"Macht|Hilft|Sorgt|Führt|Bringt|Hält|Misst|Sendet|Wirft|Ändert)\b|"
+    # casing mush: article + lowercase common nouns
+    r"\b(ist eine|ist ein)\s+(körper|bereich|modell|organ|fläche|weg)\b|"
+    r"^(Sie|Er|Es) ist (Die|Der|Das)\s+[A-ZÄÖÜ].*\bist\b|"  # Sie ist Die X ist …
+    r"\bEine Beschreibt\b|\bEin Stellt\b|"
+    r"\bdurch (Beim|In Homogener)\b|"
+    r"Sie schlangen\b|Es ist ein Bei\b",
+    re.I,
+)
+# Case-sensitive mush (re.I would match lowercase adjectives)
+TITLE_TIP = re.compile(r",\s*[A-ZÄÖÜ][a-zäöüß]+ [A-ZÄÖÜ]")
+TITLE_AFTER_IST = re.compile(
+    r"\bist eine [A-ZÄÖÜ][a-zäöüß]+ [A-ZÄÖÜ]|"
+    r"\bist ein [A-ZÄÖÜ][a-zäöüß]+ [A-ZÄÖÜ]|"
+    r"\bdurch (Oft in|Sonnige|Beim|In Homogener)\b"
 )
 
 PAIR_RE = re.compile(
@@ -295,86 +402,116 @@ def weave_tip(sentence: str, tip: str) -> str:
     return sentence
 
 
+def quality_ok(prompt: str, answer: str, wrongs: list[str]) -> bool:
+    blob = " ".join([prompt, answer, *wrongs])
+    if (
+        BANNED_OUT.search(blob)
+        or BAD_ANSWER.search(answer)
+        or TITLE_TIP.search(answer)
+        or TITLE_AFTER_IST.search(answer)
+    ):
+        return False
+    if any(
+        BAD_ANSWER.search(w) or TITLE_TIP.search(w) or TITLE_AFTER_IST.search(w) or BANNED_OUT.search(w)
+        for w in wrongs
+    ):
+        return False
+    if len(answer.split()) < 6 or not answer.strip().endswith((".", "!", "?")):
+        return False
+    if len(wrongs) < 3:
+        return False
+    if len({w.lower() for w in wrongs}) < len(wrongs):
+        return False
+    # stem must be a real question
+    if not prompt.strip().endswith("?"):
+        return False
+    if re.search(r"\b(das Weg|die Weg|der Messung)\b", prompt):
+        return False
+    if re.search(r"Was bewirkt das [A-ZÄÖÜ]", prompt):
+        return False
+    if re.search(
+        r"Das trifft auf einen anderen|verwandten Fachbegriff|anderen Vorgang mit anderer|"
+        r"Sie schlangen\b|Es ist ein Bei\b|streung beachten|nachvollziehbarkeit\)",
+        blob,
+        re.I,
+    ):
+        return False
+    # no Title-Case runs of 3+ mid words
+    if re.search(r"\b[A-ZÄÖÜ][a-zäöüß]+(?:\s+[A-ZÄÖÜ][a-zäöüß]+){2,}\b", answer):
+        rest = " ".join(answer.split()[1:])
+        if re.search(r"\b[A-ZÄÖÜ][a-zäöüß]+(?:\s+[A-ZÄÖÜ][a-zäöüß]+){2,}\b", rest):
+            return False
+    return True
+
+
 def natural_answer(term: str, meaning: str, wissen: str) -> str:
     key = norm_term(term)
     base = re.sub(r"\s*\(.*$", "", key).strip()
     tip = tip_from_wissen(wissen)
+    # never weave Title-Case tips
+    if tip and re.search(r"[A-ZÄÖÜ].*[A-ZÄÖÜ]", tip):
+        tip = tip[0].lower() + tip[1:] if tip else tip
+        tip = re.sub(
+            r"\b(Oft|Später|Relativ|Gerade|Zusammenhang|Handy|Smartphone)\b",
+            lambda m: m.group(1).lower(),
+            tip,
+        )
 
     # Full hand answer
     for k in (key, base):
         if k in HAND and "answer" in HAND[k]:
             ans = ensure_period(fix_casing(str(HAND[k]["answer"])))
-            if not BANNED_OUT.search(ans) and len(ans.split()) >= 6:
+            if not BANNED_OUT.search(ans) and not BAD_ANSWER.search(ans) and len(ans.split()) >= 6:
                 return ans
 
     core = curated_core(term, meaning)
+    # If curated_core returned a full HAND answer (with pronoun), strip for rebuild
+    if core.startswith(("Sie ", "Er ", "Es ")):
+        return ensure_period(fix_casing(core))
+
     core = fix_casing(core)
     pron = p6.pronoun(term)
 
-    if re.match(r"^(Sie|Er|Es)\b", core, re.I):
-        sent = core
-    elif VERB_LEAD.match(core):
-        # "Ist ein Körper…" / "Lässt Licht…" / "Beschreibt…"
+    # Prefer verb-led always when possible
+    if VERB_LEAD.match(core) or VERBISH.match(core):
         sent = f"{pron} {p6.lower_first(core)}"
     elif re.match(r"^(der|die|das|ein|eine)\b", core, re.I):
         sent = f"{pron} ist {core}"
-    elif re.match(r"^[A-ZÄÖÜ].*\b(wird|werden|geht|lässt|lässt)\b", core):
+    elif re.match(r"^[A-ZÄÖÜ].*\b(wird|werden|geht|lässt)\b", core):
         sent = core
     else:
-        # Noun phrase → prefer "Ein/Eine …" without forced "Sie ist eine"
-        np = p6.with_nom_np(core, term)
-        # Prefer indefinite for definition feel when definite
-        np2 = re.sub(r"^der\s+", "ein ", np, count=1, flags=re.I)
-        np2 = re.sub(r"^die\s+", "eine ", np2, count=1, flags=re.I)
-        np2 = re.sub(r"^das\s+", "ein ", np2, count=1, flags=re.I)
-        # Fix "eine Körper" / "eine Bereich" gender mush via article_for_head
-        m = re.match(r"^(ein|eine)\s+(\S+)", np2, re.I)
-        if m:
-            head = m.group(2)
-            # strip adjective
-            words = np2.split()
-            head_noun = words[1] if p6.is_likely_adj(words[0].split()[-1] if False else words[1] if len(words) > 1 else words[0]) and len(words) > 1 else words[0]
-            # simpler: recompute
-            body = re.sub(r"^(der|die|das|ein|eine)\s+", "", np, flags=re.I)
-            words = body.split()
-            if words and p6.is_likely_adj(words[0]) and len(words) >= 2:
-                noun = words[1]
-            else:
-                noun = words[0] if words else term
-            art = p6.article_for_head(noun, term)
-            indef = {"der": "ein", "die": "eine", "das": "ein"}[art]
-            np2 = f"{indef} {body}"
-        sent = ensure_period(np2[0].upper() + np2[1:] if np2 else np2)
-        # Prefer pronoun+verb when short NP
-        if len(sent.split()) < 8 and VERB_LEAD.match("Ist"):
-            sent = f"{pron} ist {np2}"
+        # Noun phrase: "Er/Sie/Es ist ein/eine …" with gender-safe article
+        body = core
+        words = body.split()
+        if words and p6.is_likely_adj(words[0]) and len(words) >= 2:
+            noun = words[1]
+        else:
+            noun = words[0] if words else term
+        art = p6.article_for_head(re.sub(r"[^A-Za-zÄÖÜäöüß]", "", noun), term)
+        indef = {"der": "ein", "die": "eine", "das": "ein"}[art]
+        # lowercase leading adj
+        if words and p6.is_likely_adj(words[0]):
+            words[0] = p6.lower_first(words[0])
+            body = " ".join(words)
+        sent = f"{pron} ist {indef} {body}"
 
     sent = fix_casing(sent)
-    # Kill remaining "ist eine + masc/neut mismatch"
-    sent = re.sub(r"\bist eine (Körper|Bereich|Modell|Organ|Schatten|Spiegel|Filter)\b", r"ist ein \1", sent, flags=re.I)
-    sent = re.sub(r"\bist ein (Lichtquelle|Reflexion|Brechung|Transparenz|Fläche|Richtung)\b", r"ist eine \1", sent, flags=re.I)
+    sent = re.sub(r"\bist eine (Körper|Bereich|Modell|Organ|Schatten|Spiegel|Filter|Weg)\b", r"ist ein \1", sent, flags=re.I)
+    sent = re.sub(r"\bist ein (Lichtquelle|Reflexion|Brechung|Transparenz|Fläche|Richtung|Messung)\b", r"ist eine \1", sent, flags=re.I)
     sent = re.sub(r"\bist eine (geradliniges|völlig|teilweise|abbildendes)\b", r"ist ein \1", sent, flags=re.I)
 
-    # Only weave tip if sentence still short / lacks concrete example
-    if len(sent.split()) < 12:
-        sent = weave_tip(p6.strip_period(sent), tip)
-    sent = ensure_period(fix_casing(sent))
-    # Final ban check — fall back to curated verb form
-    if BANNED_OUT.search(sent) or MECH_ANS.search(sent) or len(sent.split()) < 6:
-        fallback = curated_core(term, meaning)
-        if VERB_LEAD.match(fallback):
-            sent = ensure_period(f"{pron} {p6.lower_first(fallback)}")
-        else:
-            sent = ensure_period(f"{pron} kennzeichnet {p6.with_nom_np(fallback, term)}")
-            # "kennzeichnet" can be formulaic — prefer beschreibt for variety
-            if hashlib.md5(term.encode()).hexdigest()[0] in "01234567":
-                sent = sent.replace("kennzeichnet", "beschreibt", 1)
-        sent = ensure_period(fix_casing(sent))
-    # Soften "Sie ist die/der" when we have verb curated
-    sent = re.sub(r"\s{2,}", " ", sent)
-    # Remove em-dash tips that look like pads
-    sent = sent.replace(" — ", ", ")
-    return ensure_period(sent)
+    # Weave tip only if clean lowercase-ish and short
+    if tip and len(sent.split()) < 14 and not re.search(r"[A-ZÄÖÜ].*[A-ZÄÖÜ]", tip):
+        tip_l = tip[0].lower() + tip[1:] if tip else tip
+        if tip_l and tip_l.lower() not in sent.lower():
+            if "," in tip_l:
+                tip2 = re.sub(r",\s*([^,]+)$", r" oder \1", tip_l)
+                sent = f"{p6.strip_period(sent)}, zum Beispiel {tip2}"
+            elif len(tip_l.split()) <= 5:
+                sent = f"{p6.strip_period(sent)} ({tip_l})"
+
+    sent = ensure_period(re.sub(r"\s{2,}", " ", fix_casing(sent)).replace(" — ", ", "))
+    return sent
 
 
 def natural_prompt(term: str, meaning: str, concept: str) -> str:
@@ -384,63 +521,39 @@ def natural_prompt(term: str, meaning: str, concept: str) -> str:
         if k in HAND and "prompt" in HAND[k]:
             return str(HAND[k]["prompt"])
     disp = p6.display_term(term)
-    # article for stem
     art = p6.article_for_head(disp.split()[0], term)
-    # pick stem family from concept hash
+    # accusative/dative helpers for stems
+    art_acc = {"der": "den", "die": "die", "das": "das"}[art]
     h = int(hashlib.md5(concept.encode()).hexdigest()[:8], 16)
     core = curated_core(term, meaning)
-    # property / adjective meanings
-    if re.search(r"(ig|lich|isch|iv|bar)$", p6.strip_period(meaning).split()[0] if meaning else "", re.I) or base in {
-        "opak",
-        "transparent",
-        "transluzent",
-        "transparenz",
-    }:
-        stems = [
-            f"Welche Eigenschaft hat {art} {disp}?",
-            f"Woran erkennt man {art} {disp}?",
-            f"Was bewirkt {art} {disp}?",
-        ]
-    elif VERB_LEAD.match(core) and re.match(
-        r"^(Dient|Lässt|Wandelt|Schützt|Bildet|Steuert|Misst|Erfasst|Sendet|Wirft)",
+    if base == "opak":
+        return "Welche Eigenschaft hat ein opaker Körper?"
+    if base in {"transparent", "transluzent"}:
+        return f"Welche Eigenschaft hat ein {base}er Körper?"
+
+    stems = [
+        f"Was beschreibt „{disp}“?",
+        f"Woran erkennt man {art_acc} {disp}?",
+        f"Welche Eigenschaft hat {art} {disp}?",
+        f"Wozu dient {art} {disp}?",
+        f"Was bewirkt {art} {disp}?",
+        f"Mit welchen Mitteln arbeitet {art} {disp}?",
+    ]
+    # Prefer function stems when curated is clearly functional
+    if VERB_LEAD.match(core) and re.match(
+        r"^(Dient|Lässt|Wandelt|Schützt|Bildet|Steuert|Misst|Erfasst|Sendet|Wirft|Gibt)",
         core,
         re.I,
     ):
         stems = [
             f"Wozu dient {art} {disp}?",
             f"Was bewirkt {art} {disp}?",
+            f"Woran erkennt man {art_acc} {disp}?",
             f"Mit welchen Mitteln wirkt {art} {disp}?",
-            f"Woran erkennt man {art} {disp}?",
         ]
-    else:
-        stems = [
-            f"Was bewirkt {art} {disp}?",
-            f"Woran erkennt man {art} {disp}?",
-            f"Welche Eigenschaft hat {art} {disp}?",
-            f"Wozu dient {art} {disp}?",
-            f"Mit welchen Mitteln arbeitet man mit {art}m {disp}?"
-            if art == "da"
-            else f"Was beschreibt „{disp}“?",
-        ]
-    # clean awkward
-    stems = [s for s in stems if "dam " not in s and "artm " not in s]
-    stems = [
-        s.replace("dasm ", "dem ")
-        .replace("derm ", "dem ")
-        .replace("diem ", "der ")
-        for s in stems
-    ]
-    # Fix "Wozu dient die Lichtquelle" ok; "Wozu dient der Lichtstrahl" ok
-    # Fix bad "Was beschreibt" hanging
     stem = stems[h % len(stems)]
-    # Grammar fix: "mit derm" already handled; "Wozu dient Opak" → "ein opaker Körper"
-    if base == "opak":
-        stem = "Welche Eigenschaft hat ein opaker Körper?"
-    if base in {"transparent", "transluzent"}:
-        stem = f"Welche Eigenschaft hat ein {base}er Körper?"
-    # Ban meta
     if re.search(r"Was bedeutet|fachlich richtig|Was trifft", stem, re.I):
-        stem = f"Woran erkennt man {art} {disp}?"
+        stem = f"Was beschreibt „{disp}“?"
     return stem
 
 
@@ -459,25 +572,20 @@ def sibling_answers(
         key = ans.lower()
         if key in seen:
             continue
-        if BANNED_OUT.search(ans) or len(ans.split()) < 6:
+        if (
+            BANNED_OUT.search(ans)
+            or BAD_ANSWER.search(ans)
+            or TITLE_AFTER_IST.search(ans)
+            or TITLE_TIP.search(ans)
+            or re.search(r"Pflanzenfressend|terrariumarten|≠", ans)
+            or len(ans.split()) < 6
+        ):
             continue
         seen.add(key)
         out.append(ans)
         if len(out) >= n:
             break
-    alts = [
-        "Das trifft auf einen anderen Vorgang mit anderer Ursache und Wirkung zu.",
-        "Das gilt für einen verwandten Fachbegriff, der hier nicht gemeint ist.",
-        "Das beschreibt eine andere Größe aus demselben Themenfeld.",
-        "Das nennt eine Folge, die unter anderen Bedingungen eintritt.",
-    ]
-    i = 0
-    while len(out) < n and i < len(alts) * 2:
-        cand = alts[i % len(alts)]
-        i += 1
-        if cand.lower() not in seen:
-            out.append(cand)
-            seen.add(cand.lower())
+    # No meta fillers — if siblings are insufficient, caller must skip rewrite
     return out[:n]
 
 
@@ -501,19 +609,38 @@ def parse_pairs_near(text: str, fact_start: int) -> list[tuple[str, str, str]]:
     return pairs
 
 
-def needs_rewrite(prompt: str, answer: str, wrongs: list[str]) -> bool:
+def needs_rewrite(prompt: str, answer: str, wrongs: list[str], term: str = "") -> bool:
     blob = " ".join([prompt, answer, *wrongs])
-    if MECH_ANS.search(answer):
+    key = norm_term(term) if term else ""
+    base = re.sub(r"\s*\(.*$", "", key).strip()
+    if key in HAND or base in HAND:
+        # Always refresh when we have Timer-caliber hand text
+        hand = HAND.get(key) or HAND.get(base) or {}
+        if hand.get("answer") and str(hand["answer"]) not in answer:
+            return True
+    if MECH_ANS.search(answer) or MECH_ANS.search(blob):
         return True
     if BANNED_OUT.search(blob):
         return True
-    if answer.startswith("Sie ist eine ") or answer.startswith("Er ist eine ") or answer.startswith("Es ist eine "):
+    if re.match(r"^(Sie|Er|Es) ist eine\b", answer, re.I):
         return True
-    if sum(1 for w in wrongs if re.match(r"^(Sie|Er|Es) ist eine\b", w)) >= 2:
+    if sum(1 for w in wrongs if re.match(r"^(Sie|Er|Es) ist eine\b", w, re.I)) >= 2:
         return True
-    if TITLE_MUSH.search(answer):
+    if TITLE_MUSH.search(answer) or TITLE_MUSH.search(blob):
         return True
-    if re.search(r"\b(Körper, der Selbst|eine Bereich|eine Geradliniges|eine Völlig)\b", blob):
+    if re.search(
+        r"\b(Körper, der Selbst|eine Bereich|eine Geradliniges|eine Völlig|"
+        r"Weg Pro Zeit|Festgelegtes Maβ|Dauer Eines|Durchschnitt Mehrerer)\b",
+        blob,
+        re.I,
+    ):
+        return True
+    # Title-Case runs inside options
+    if re.search(r"\b[A-ZÄÖÜ][a-zäöüß]+(?:\s+[A-ZÄÖÜ][a-zäöüß]+){2,}\b", answer):
+        rest = " ".join(answer.split()[1:])
+        if re.search(r"\b[A-ZÄÖÜ][a-zäöüß]+(?:\s+[A-ZÄÖÜ][a-zäöüß]+){1,}\b", rest):
+            return True
+    if re.search(r"^Was kennzeichnet ", prompt) and re.search(r"ist eine\b", blob, re.I):
         return True
     return False
 
@@ -558,12 +685,6 @@ def process_file(
         if "lichtverschmutzung:fact:timer" in concept or "lichtdurchlaessigkeit:fact:transparent" in concept:
             continue
 
-        scanned += 1
-        if not needs_rewrite(prompt, answer, wrongs):
-            continue
-        if limit is not None and changed >= limit:
-            break
-
         pairs = parse_pairs_near(text, m.start())
         term = flash or (pairs[0][0] if pairs else concept.split(":")[-1])
         meaning, wissen = "", ""
@@ -577,19 +698,23 @@ def process_file(
         if not meaning and pairs:
             meaning, wissen = pairs[0][1], pairs[0][2]
 
+        scanned += 1
+        if not needs_rewrite(prompt, answer, wrongs, term):
+            continue
+        if limit is not None and changed >= limit:
+            break
+
         new_prompt = natural_prompt(term, meaning, concept)
         new_answer = natural_answer(term, meaning, wissen)
         new_wrongs = sibling_answers(term, pairs, 3)
         new_wrongs = [w for w in new_wrongs if w.lower() != new_answer.lower()]
-        while len(new_wrongs) < 3:
-            new_wrongs.append(
-                "Die Richtung des Lichts bleibt an jeder Grenzfläche unverändert."
-            )
-            if len(set(w.lower() for w in new_wrongs)) < len(new_wrongs):
-                new_wrongs[-1] = "Ein Körper sendet selbst kein Licht aus und bleibt unsichtbar."
         new_wrongs = new_wrongs[:3]
+        if len(new_wrongs) < 3:
+            continue  # need 3 topic-local distractors; skip rather than meta-pad
 
         if BANNED_OUT.search(new_answer) or any(BANNED_OUT.search(w) for w in new_wrongs):
+            continue
+        if not quality_ok(new_prompt, new_answer, new_wrongs):
             continue
         if new_answer == answer and new_prompt == prompt and new_wrongs == wrongs:
             continue
