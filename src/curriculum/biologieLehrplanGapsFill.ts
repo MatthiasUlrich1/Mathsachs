@@ -21,9 +21,9 @@ export const k5KriechtiereSchutz: BioBank = {
       gapAccepted: ["Artenschutz"],
     },
     { concept: "bio:k5:krschutz:f1", prompt: "Was kennzeichnet Lebensraumverlust?", answer: "Es bedeutet das Verschwinden geeigneter Habitate für viele Arten.", wrong: [
-        "Es ist eine Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen.",
-        "Es beschreibt sichert ungestörte Phasen an Nist- und Lebensräumen während der Fortpflanzung.",
         "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es ist eine heimische Eidechse warmer, strukturreicher Standorte.",
+        "Es ist eine heimische Schlange feuchter Lebensräume an Gewässern.",
       ],
       explanation: "Lebensraumverlust: Verschwinden geeigneter Habitate",
       wissen: fw(
@@ -33,9 +33,9 @@ export const k5KriechtiereSchutz: BioBank = {
       gapAccepted: ["Lebensraumverlust"],
     },
     { concept: "bio:k5:krschutz:f2", prompt: "Was kennzeichnet Zauneidechse?", answer: "Sie ist eine heimische Eidechse warmer, strukturreicher Standorte.", wrong: [
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
         "Sie bedeutet das Verschwinden geeigneter Habitate für viele Arten.",
         "Sie ist eine heimische Schlange feuchter Lebensräume an Gewässern.",
+        "Sie ist eine Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen.",
       ],
       explanation: "Zauneidechse: Heimische Eidechse warmer Standorte",
       wissen: fw(
@@ -45,9 +45,9 @@ export const k5KriechtiereSchutz: BioBank = {
       gapAccepted: ["Zauneidechse"],
     },
     { concept: "bio:k5:krschutz:f3", prompt: "Was beschreibt Ringelnatter?", answer: "Er ist eine heimische Schlange feuchter Lebensräume an Gewässern.", wrong: [
-        "Er umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
         "Er bedeutet das Verschwinden geeigneter Habitate für viele Arten.",
         "Er ist eine heimische Eidechse warmer, strukturreicher Standorte.",
+        "Er ist eine Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen.",
       ],
       explanation: "Ringelnatter: Heimische Schlange feuchter Lebensräume",
       wissen: fw(
@@ -57,9 +57,9 @@ export const k5KriechtiereSchutz: BioBank = {
       gapAccepted: ["Ringelnatter"],
     },
     { concept: "bio:k5:krschutz:f4", prompt: "Was kennzeichnet Totholz?", answer: "Es ist abgestorbenes Holz, das Als wichtige Struktur im Ökosystem dient.", wrong: [
-        "Es ist eine Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen.",
-        "Es beschreibt sichert ungestörte Phasen an Nist- und Lebensräumen während der Fortpflanzung.",
         "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bedeutet das Verschwinden geeigneter Habitate für viele Arten.",
+        "Es ist eine heimische Eidechse warmer, strukturreicher Standorte.",
       ],
       explanation: "Totholz: Abgestorbenes Holz als Struktur",
       wissen: fw(
@@ -141,9 +141,9 @@ export const k5KriechtiereSchutz: BioBank = {
       gapAccepted: ["Schutzgebiet"],
     },
     { concept: "bio:k5:krschutz:f11", prompt: "Woran erkennt man Brutruhe?", answer: "Sie beschreibt sichert ungestörte Phasen an Nist- und Lebensräumen während der Fortpflanzung.", wrong: [
+        "Sie ist eine Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen.",
         "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
         "Sie bedeutet das Verschwinden geeigneter Habitate für viele Arten.",
-        "Sie ist eine heimische Eidechse warmer, strukturreicher Standorte.",
       ],
       explanation: "Brutruhe: Ungestörte Phasen an Lebensräumen",
       wissen: fw(
@@ -153,9 +153,9 @@ export const k5KriechtiereSchutz: BioBank = {
       gapAccepted: ["Brutruhe"],
     },
     { concept: "bio:k5:krschutz:x0", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
         "Es bedeutet das Verschwinden geeigneter Habitate für viele Arten.",
         "Es ist eine heimische Eidechse warmer, strukturreicher Standorte.",
+        "Es ist eine Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen.",
       ],
       explanation: "Thermoregulation.",
       wissen: fw(
@@ -530,9 +530,9 @@ export const k5VoegelSchutz: BioBank = {
       gapAccepted: ["Nistkasten"],
     },
     { concept: "bio:k5:vgschutz:f1", prompt: "Welche Rolle hat Hecke?", answer: "Sie bietet Nahrung, Deckung und Nistplätze für viele Vogelarten.", wrong: [
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
         "Sie ist eine künstliche Nisthilfe, die Höhlenbrüter im Siedlungsraum unterstützt.",
         "Sie ist wichtig für Wat- und Wasservögel als Rast- und Brutraum.",
+        "Sie ist die Kollision von Vögeln an Glasflächen in Siedlungen.",
       ],
       explanation: "Hecke: Gehölzstreifen als Lebensraum",
       wissen: fw(
@@ -542,9 +542,9 @@ export const k5VoegelSchutz: BioBank = {
       gapAccepted: ["Hecke"],
     },
     { concept: "bio:k5:vgschutz:f2", prompt: "Was kennzeichnet Feuchtgebiet?", answer: "Es ist wichtig für Wat- und Wasservögel als Rast- und Brutraum.", wrong: [
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
         "Es ist eine künstliche Nisthilfe, die Höhlenbrüter im Siedlungsraum unterstützt.",
         "Es ist die Kollision von Vögeln an Glasflächen in Siedlungen.",
+        "Es beschreibt sichert ungestörte Phasen an Nist- und Lebensräumen während der Fortpflanzung.",
       ],
       explanation: "Feuchtgebiet: Nasses Schlüsselhabitat",
       wissen: fw(
@@ -554,9 +554,9 @@ export const k5VoegelSchutz: BioBank = {
       gapAccepted: ["Feuchtgebiet"],
     },
     { concept: "bio:k5:vgschutz:f3", prompt: "Was kennzeichnet Fensteranprall?", answer: "Es ist die Kollision von Vögeln an Glasflächen in Siedlungen.", wrong: [
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
         "Es ist eine künstliche Nisthilfe, die Höhlenbrüter im Siedlungsraum unterstützt.",
         "Es ist wichtig für Wat- und Wasservögel als Rast- und Brutraum.",
+        "Es beschreibt sichert ungestörte Phasen an Nist- und Lebensräumen während der Fortpflanzung.",
       ],
       explanation: "Fensteranprall: Kollision an Glasflächen",
       wissen: fw(
@@ -566,9 +566,9 @@ export const k5VoegelSchutz: BioBank = {
       gapAccepted: ["Fensteranprall"],
     },
     { concept: "bio:k5:vgschutz:f4", prompt: "Was kennzeichnet Brutruhe?", answer: "Sie beschreibt sichert ungestörte Phasen an Nist- und Lebensräumen während der Fortpflanzung.", wrong: [
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
         "Sie ist eine künstliche Nisthilfe, die Höhlenbrüter im Siedlungsraum unterstützt.",
         "Sie ist wichtig für Wat- und Wasservögel als Rast- und Brutraum.",
+        "Sie ist die Kollision von Vögeln an Glasflächen in Siedlungen.",
       ],
       explanation: "Brutruhe: Ungestörte Brutzeit",
       wissen: fw(
@@ -590,9 +590,9 @@ export const k5VoegelSchutz: BioBank = {
       gapAccepted: ["Winterfütterung"],
     },
     { concept: "bio:k5:vgschutz:f6", prompt: "Was beschreibt Insektennahrung?", answer: "Sie bedeutet, dass Insektenrückgang viele Vogelarten besonders trifft.", wrong: [
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
         "Sie ist eine künstliche Nisthilfe, die Höhlenbrüter im Siedlungsraum unterstützt.",
         "Sie ist wichtig für Wat- und Wasservögel als Rast- und Brutraum.",
+        "Sie ist die Kollision von Vögeln an Glasflächen in Siedlungen.",
       ],
       explanation: "Insektennahrung: Beute für viele Jungvögel",
       wissen: fw(
@@ -614,9 +614,9 @@ export const k5VoegelSchutz: BioBank = {
       gapAccepted: ["Schutzgebiet"],
     },
     { concept: "bio:k5:vgschutz:f8", prompt: "Was beschreibt Habitatverlust?", answer: "Es bedeutet das Verschwinden geeigneter Lebensräume.", wrong: [
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
         "Es ist eine künstliche Nisthilfe, die Höhlenbrüter im Siedlungsraum unterstützt.",
         "Es ist wichtig für Wat- und Wasservögel als Rast- und Brutraum.",
+        "Es ist die Kollision von Vögeln an Glasflächen in Siedlungen.",
       ],
       explanation: "Habitatverlust: Verlust von Lebensraum",
       wissen: fw(
@@ -626,9 +626,9 @@ export const k5VoegelSchutz: BioBank = {
       gapAccepted: ["Habitatverlust"],
     },
     { concept: "bio:k5:vgschutz:f9", prompt: "Was kennzeichnet Schonzeit?", answer: "Es beschreibt schützt Bestände in sensiblen Phasen; zeitlicher Schutz vor Nutzung.", wrong: [
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
         "Es ist eine künstliche Nisthilfe, die Höhlenbrüter im Siedlungsraum unterstützt.",
         "Es ist wichtig für Wat- und Wasservögel als Rast- und Brutraum.",
+        "Es ist die Kollision von Vögeln an Glasflächen in Siedlungen.",
       ],
       explanation: "Schonzeit: Zeitlicher Schutz vor Nutzung",
       wissen: fw(
@@ -920,9 +920,9 @@ export const k5SaeugerSinne: BioBank = {
   conceptPrefix: "bio:k5:saeugsinn",
   facts: [
     { concept: "bio:k5:saeugsinn:f0", prompt: "Was kennzeichnet Sender?", answer: "Er beschreibt laut oder Duft.", wrong: [
-        "Er spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Er fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Er umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Er bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Er leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Er filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Sender: Erzeugt ein Signal",
       wissen: fw(
@@ -932,9 +932,9 @@ export const k5SaeugerSinne: BioBank = {
       gapAccepted: ["Sender"],
     },
     { concept: "bio:k5:saeugsinn:f1", prompt: "Welche Rolle hat Empfänger?", answer: "Er beschreibt nimmt das Signal wahr.", wrong: [
-        "Er spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Er fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Er umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Er regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Er bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Er bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Empfänger: Nimmt das Signal wahr",
       wissen: fw(
@@ -944,9 +944,9 @@ export const k5SaeugerSinne: BioBank = {
       gapAccepted: ["Empfänger"],
     },
     { concept: "bio:k5:saeugsinn:f2", prompt: "Was kennzeichnet Signal?", answer: "Es beschreibt akustisch, optisch oder chemisch.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Signal: Informationstragendes Zeichen",
       wissen: fw(
@@ -956,9 +956,9 @@ export const k5SaeugerSinne: BioBank = {
       gapAccepted: ["Signal"],
     },
     { concept: "bio:k5:saeugsinn:f3", prompt: "Was kennzeichnet Geruchssinn?", answer: "Es beschreibt bei vielen Säugern sehr leistungsfähig.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Geruchssinn: Wahrnehmung von Duftstoffen",
       wissen: fw(
@@ -968,9 +968,9 @@ export const k5SaeugerSinne: BioBank = {
       gapAccepted: ["Geruchssinn"],
     },
     { concept: "bio:k5:saeugsinn:f4", prompt: "Was beschreibt Gehör?", answer: "Es beschreibt wichtig für Kommunikation und Gefahr.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Gehör: Wahrnehmung von Schall",
       wissen: fw(
@@ -980,9 +980,9 @@ export const k5SaeugerSinne: BioBank = {
       gapAccepted: ["Gehör"],
     },
     { concept: "bio:k5:saeugsinn:f5", prompt: "Welche Rolle hat Sehsinn?", answer: "Es beschreibt je nach Art unterschiedlich ausgeprägt.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Sehsinn: Wahrnehmung von Licht und Formen",
       wissen: fw(
@@ -992,9 +992,9 @@ export const k5SaeugerSinne: BioBank = {
       gapAccepted: ["Sehsinn"],
     },
     { concept: "bio:k5:saeugsinn:f6", prompt: "Was beschreibt Tastsinn?", answer: "Es beschreibt wahrnehmung von Berührung.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Tastsinn: Wahrnehmung von Berührung",
       wissen: fw(
@@ -1004,9 +1004,9 @@ export const k5SaeugerSinne: BioBank = {
       gapAccepted: ["Tastsinn"],
     },
     { concept: "bio:k5:saeugsinn:f7", prompt: "Wozu dient die Schnurrhaare?", answer: "Sie beschreibt erfassen Raumnahe Hindernisse.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Sie bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Schnurrhaare: Tastorgane am Kopf",
       wissen: fw(
@@ -1016,9 +1016,9 @@ export const k5SaeugerSinne: BioBank = {
       gapAccepted: ["Schnurrhaare"],
     },
     { concept: "bio:k5:saeugsinn:f8", prompt: "Was beschreibt Ultraschall?", answer: "Es beschreibt sehr hohe Schallfrequenzen.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Ultraschall: Sehr hohe Schallfrequenzen",
       wissen: fw(
@@ -1028,9 +1028,9 @@ export const k5SaeugerSinne: BioBank = {
       gapAccepted: ["Ultraschall"],
     },
     { concept: "bio:k5:saeugsinn:f9", prompt: "Welche Rolle hat Echoortung?", answer: "Sie beschreibt typisch für Fledermäuse.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Sie filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Echoortung: Orientierung über zurückgeworfenen Schall",
       wissen: fw(
@@ -1040,9 +1040,9 @@ export const k5SaeugerSinne: BioBank = {
       gapAccepted: ["Echoortung"],
     },
     { concept: "bio:k5:saeugsinn:f10", prompt: "Welche Rolle hat Kommunikationslaut?", answer: "Es beschreibt warnung, Lockruf, Revier.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Kommunikationslaut: Laut zur Information an Artgenossen",
       wissen: fw(
@@ -1052,9 +1052,9 @@ export const k5SaeugerSinne: BioBank = {
       gapAccepted: ["Kommunikationslaut"],
     },
     { concept: "bio:k5:saeugsinn:f11", prompt: "Welche Rolle hat Sinnesleistung?", answer: "Sie beschreibt an Lebensweise angepasst.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Sie bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Sinnesleistung: Leistungsfähigkeit eines Sinnes",
       wissen: fw(
@@ -1064,9 +1064,9 @@ export const k5SaeugerSinne: BioBank = {
       gapAccepted: ["Sinnesleistung"],
     },
     { concept: "bio:k5:saeugsinn:x0", prompt: "Welche Rolle hat das Sender-Empfänger-Modell?", answer: "Es beschreibt das Sender-Empfänger-Modell anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Informationsaustausch.",
       wissen: fw(
@@ -1074,9 +1074,9 @@ export const k5SaeugerSinne: BioBank = {
       ),
     },
     { concept: "bio:k5:saeugsinn:x1", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Vergleich.",
       wissen: fw(
@@ -1125,7 +1125,7 @@ export const k5SaeugerSozial: BioBank = {
     { concept: "bio:k5:saeugsoc:f0", prompt: "Welche Rolle hat Rudel?", answer: "Es beschreibt gemeinsame Jagd oder Schutz möglich.", wrong: [
         "Es ist der verteidigte Lebensraum einer Art gegen Rivalen.",
         "Es bedeutet Drohverhalten, das Konflikte oft ohne Kampf klärt.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Rudel: Soziale Gruppe mancher Säuger",
       wissen: fw(
@@ -1137,7 +1137,7 @@ export const k5SaeugerSozial: BioBank = {
     { concept: "bio:k5:saeugsoc:f1", prompt: "Was kennzeichnet Kooperation?", answer: "Sie beschreibt bei der Jagd.", wrong: [
         "Sie ist der verteidigte Lebensraum einer Art gegen Rivalen.",
         "Sie bedeutet Drohverhalten, das Konflikte oft ohne Kampf klärt.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Kooperation: Zusammenarbeit zum gemeinsamen Vorteil",
       wissen: fw(
@@ -1149,7 +1149,7 @@ export const k5SaeugerSozial: BioBank = {
     { concept: "bio:k5:saeugsoc:f2", prompt: "Was beschreibt Rangordnung?", answer: "Sie beschreibt regelt Zugang zu Ressourcen.", wrong: [
         "Sie ist der verteidigte Lebensraum einer Art gegen Rivalen.",
         "Sie bedeutet Drohverhalten, das Konflikte oft ohne Kampf klärt.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Rangordnung: Hierarchie in der Gruppe",
       wissen: fw(
@@ -1161,7 +1161,7 @@ export const k5SaeugerSozial: BioBank = {
     { concept: "bio:k5:saeugsoc:f3", prompt: "Was beschreibt Aggression?", answer: "Sie beschreibt kann Konflikte klären oder eskalieren.", wrong: [
         "Sie ist der verteidigte Lebensraum einer Art gegen Rivalen.",
         "Sie bedeutet Drohverhalten, das Konflikte oft ohne Kampf klärt.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Aggression: Angriffs- oder Drohverhalten",
       wissen: fw(
@@ -1172,8 +1172,8 @@ export const k5SaeugerSozial: BioBank = {
     },
     { concept: "bio:k5:saeugsoc:f4", prompt: "Was kennzeichnet Revier?", answer: "Er ist der verteidigte Lebensraum einer Art gegen Rivalen.", wrong: [
         "Er bedeutet Drohverhalten, das Konflikte oft ohne Kampf klärt.",
-        "Er spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Er fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Er regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Er bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Revier: Verteidigtes Gebiet",
       wissen: fw(
@@ -1185,7 +1185,7 @@ export const k5SaeugerSozial: BioBank = {
     { concept: "bio:k5:saeugsoc:f5", prompt: "Welche Rolle hat Sozialbindung?", answer: "Sie beschreibt dauerhafte Beziehung zwischen Individuen.", wrong: [
         "Sie ist der verteidigte Lebensraum einer Art gegen Rivalen.",
         "Sie bedeutet Drohverhalten, das Konflikte oft ohne Kampf klärt.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Sozialbindung: Dauerhafte Beziehung zwischen Individuen",
       wissen: fw(
@@ -1196,8 +1196,8 @@ export const k5SaeugerSozial: BioBank = {
     },
     { concept: "bio:k5:saeugsoc:f6", prompt: "Welche Rolle hat Imponieren?", answer: "Es bedeutet Drohverhalten, das Konflikte oft ohne Kampf klärt.", wrong: [
         "Es ist der verteidigte Lebensraum einer Art gegen Rivalen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Imponieren: Status zeigen ohne sofortigen Kampf",
       wissen: fw(
@@ -1209,7 +1209,7 @@ export const k5SaeugerSozial: BioBank = {
     { concept: "bio:k5:saeugsoc:f7", prompt: "Welche Rolle hat Unterwerfung?", answer: "Sie beschreibt beendet Konflikte oft.", wrong: [
         "Sie ist der verteidigte Lebensraum einer Art gegen Rivalen.",
         "Sie bedeutet Drohverhalten, das Konflikte oft ohne Kampf klärt.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Unterwerfung: Beschwichtigungsverhalten",
       wissen: fw(
@@ -1221,7 +1221,7 @@ export const k5SaeugerSozial: BioBank = {
     { concept: "bio:k5:saeugsoc:f8", prompt: "Welche Rolle hat Gruppenjagd?", answer: "Es beschreibt erhöht Erfolg bei großer Beute.", wrong: [
         "Es ist der verteidigte Lebensraum einer Art gegen Rivalen.",
         "Es bedeutet Drohverhalten, das Konflikte oft ohne Kampf klärt.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Gruppenjagd: Gemeinsames Beutemachen",
       wissen: fw(
@@ -1233,7 +1233,7 @@ export const k5SaeugerSozial: BioBank = {
     { concept: "bio:k5:saeugsoc:f9", prompt: "Woran erkennt man Alarmverhalten?", answer: "Es beschreibt warnen der Gruppe.", wrong: [
         "Es ist der verteidigte Lebensraum einer Art gegen Rivalen.",
         "Es bedeutet Drohverhalten, das Konflikte oft ohne Kampf klärt.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Alarmverhalten: Warnen der Gruppe",
       wissen: fw(
@@ -1245,7 +1245,7 @@ export const k5SaeugerSozial: BioBank = {
     { concept: "bio:k5:saeugsoc:f10", prompt: "Was beschreibt Alleinerziehend?", answer: "Es beschreibt je nach Art unterschiedlich.", wrong: [
         "Es ist der verteidigte Lebensraum einer Art gegen Rivalen.",
         "Es bedeutet Drohverhalten, das Konflikte oft ohne Kampf klärt.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Alleinerziehend: Ein Elterntier versorgt Junge",
       wissen: fw(
@@ -1257,7 +1257,7 @@ export const k5SaeugerSozial: BioBank = {
     { concept: "bio:k5:saeugsoc:f11", prompt: "Was kennzeichnet Gruppenleben?", answer: "Es beschreibt vorteile und Konkurrenz zugleich.", wrong: [
         "Es ist der verteidigte Lebensraum einer Art gegen Rivalen.",
         "Es bedeutet Drohverhalten, das Konflikte oft ohne Kampf klärt.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Gruppenleben: Leben in sozialer Einheit",
       wissen: fw(
@@ -1269,7 +1269,7 @@ export const k5SaeugerSozial: BioBank = {
     { concept: "bio:k5:saeugsoc:x0", prompt: "Woran erkennt man Begriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es ist der verteidigte Lebensraum einer Art gegen Rivalen.",
         "Es bedeutet Drohverhalten, das Konflikte oft ohne Kampf klärt.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Sozialvorteil.",
       wissen: fw(
@@ -1279,7 +1279,7 @@ export const k5SaeugerSozial: BioBank = {
     { concept: "bio:k5:saeugsoc:x1", prompt: "Was kennzeichnet eine Rangordnung?", answer: "Sie beschreibt regelt Zugang zu Ressourcen.", wrong: [
         "Sie ist der verteidigte Lebensraum einer Art gegen Rivalen.",
         "Sie bedeutet Drohverhalten, das Konflikte oft ohne Kampf klärt.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Hierarchie.",
       wissen: fw(
@@ -1326,9 +1326,9 @@ export const k6InsektenAtmung: BioBank = {
   conceptPrefix: "bio:k6:insatm",
   facts: [
     { concept: "bio:k6:insatm:f0", prompt: "Was kennzeichnet Trachee?", answer: "Sie leitet Luft zu den geweben; Luftröhre im Insektenkörper.", wrong: [
+        "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
         "Sie nimmt O₂ aus Wasser oder Luftvorrat; Anpassung mancher Wasserinsekten.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Trachee: Luftröhre im Insektenkörper",
       wissen: fw(
@@ -1339,8 +1339,8 @@ export const k6InsektenAtmung: BioBank = {
     },
     { concept: "bio:k6:insatm:f1", prompt: "Welche Rolle hat Tracheole?", answer: "Sie beschreibt nahe an den Zellen.", wrong: [
         "Sie beschreibt leitet Luft zu den geweben; Luftröhre im Insektenkörper.",
+        "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
         "Sie nimmt O₂ aus Wasser oder Luftvorrat; Anpassung mancher Wasserinsekten.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
       ],
       explanation: "Tracheole: Feinste Endverzweigung der Tracheen",
       wissen: fw(
@@ -1351,8 +1351,8 @@ export const k6InsektenAtmung: BioBank = {
     },
     { concept: "bio:k6:insatm:f2", prompt: "Was beschreibt Stigma?", answer: "Es beschreibt eintritt der Luft.", wrong: [
         "Es beschreibt leitet Luft zu den geweben; Luftröhre im Insektenkörper.",
+        "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
         "Es nimmt O₂ aus Wasser oder Luftvorrat; Anpassung mancher Wasserinsekten.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
       ],
       explanation: "Stigma: Atemöffnung an der Körperseite",
       wissen: fw(
@@ -1364,7 +1364,7 @@ export const k6InsektenAtmung: BioBank = {
     { concept: "bio:k6:insatm:f3", prompt: "Was kennzeichnet Diffusion?", answer: "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", wrong: [
         "Sie beschreibt leitet Luft zu den geweben; Luftröhre im Insektenkörper.",
         "Sie nimmt O₂ aus Wasser oder Luftvorrat; Anpassung mancher Wasserinsekten.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Diffusion: Gasbewegung ohne Pumpe wie Lunge",
       wissen: fw(
@@ -1375,8 +1375,8 @@ export const k6InsektenAtmung: BioBank = {
     },
     { concept: "bio:k6:insatm:f4", prompt: "Woran erkennt man Chitinpanzer?", answer: "Er beschreibt schützt, begrenzt aber Atmung mit.", wrong: [
         "Er beschreibt leitet Luft zu den geweben; Luftröhre im Insektenkörper.",
+        "Er ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
         "Er nimmt O₂ aus Wasser oder Luftvorrat; Anpassung mancher Wasserinsekten.",
-        "Er spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
       ],
       explanation: "Chitinpanzer: Äußere Körperhülle",
       wissen: fw(
@@ -1387,8 +1387,8 @@ export const k6InsektenAtmung: BioBank = {
     },
     { concept: "bio:k6:insatm:f5", prompt: "Welche Rolle hat Wasserkäferkieme?", answer: "Sie nimmt O₂ aus Wasser oder Luftvorrat; Anpassung mancher Wasserinsekten.", wrong: [
         "Sie beschreibt leitet Luft zu den geweben; Luftröhre im Insektenkörper.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Wasserkäferkieme: Anpassung mancher Wasserinsekten",
       wissen: fw(
@@ -1399,8 +1399,8 @@ export const k6InsektenAtmung: BioBank = {
     },
     { concept: "bio:k6:insatm:f6", prompt: "Welche Rolle hat Luftvorrat?", answer: "Es beschreibt mitgeführte Luftblase unter Wasser.", wrong: [
         "Es beschreibt leitet Luft zu den geweben; Luftröhre im Insektenkörper.",
+        "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
         "Es nimmt O₂ aus Wasser oder Luftvorrat; Anpassung mancher Wasserinsekten.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
       ],
       explanation: "Luftvorrat: Mitgeführte Luftblase unter Wasser",
       wissen: fw(
@@ -1411,8 +1411,8 @@ export const k6InsektenAtmung: BioBank = {
     },
     { concept: "bio:k6:insatm:f7", prompt: "Welche Rolle hat Oberflächenvergrößerung?", answer: "Sie beschreibt viele feine Röhren vergrößern Fläche.", wrong: [
         "Sie beschreibt leitet Luft zu den geweben; Luftröhre im Insektenkörper.",
+        "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
         "Sie nimmt O₂ aus Wasser oder Luftvorrat; Anpassung mancher Wasserinsekten.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
       ],
       explanation: "Oberflächenvergrößerung: Viele feine Röhren vergrößern Fläche",
       wissen: fw(
@@ -1423,8 +1423,8 @@ export const k6InsektenAtmung: BioBank = {
     },
     { concept: "bio:k6:insatm:f8", prompt: "Welche Rolle hat Landatmung?", answer: "Sie beschreibt typisch für Landinsekten.", wrong: [
         "Sie beschreibt leitet Luft zu den geweben; Luftröhre im Insektenkörper.",
+        "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
         "Sie nimmt O₂ aus Wasser oder Luftvorrat; Anpassung mancher Wasserinsekten.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
       ],
       explanation: "Landatmung: Atmung mit Luft über Tracheen",
       wissen: fw(
@@ -1435,8 +1435,8 @@ export const k6InsektenAtmung: BioBank = {
     },
     { concept: "bio:k6:insatm:f9", prompt: "Welche Rolle hat Stoffwechselrate?", answer: "Sie beschreibt geschwindigkeit des Stoffwechsels.", wrong: [
         "Sie beschreibt leitet Luft zu den geweben; Luftröhre im Insektenkörper.",
+        "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
         "Sie nimmt O₂ aus Wasser oder Luftvorrat; Anpassung mancher Wasserinsekten.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
       ],
       explanation: "Stoffwechselrate: Geschwindigkeit des Stoffwechsels",
       wissen: fw(
@@ -1447,8 +1447,8 @@ export const k6InsektenAtmung: BioBank = {
     },
     { concept: "bio:k6:insatm:f10", prompt: "Woran erkennt man Häutung?", answer: "Sie beschreibt tracheen wachsen mit dem Körper.", wrong: [
         "Sie beschreibt leitet Luft zu den geweben; Luftröhre im Insektenkörper.",
+        "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
         "Sie nimmt O₂ aus Wasser oder Luftvorrat; Anpassung mancher Wasserinsekten.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
       ],
       explanation: "Häutung: Abstreifen des Panzers",
       wissen: fw(
@@ -1459,8 +1459,8 @@ export const k6InsektenAtmung: BioBank = {
     },
     { concept: "bio:k6:insatm:f11", prompt: "Was kennzeichnet Gasaustausch?", answer: "Es beschreibt ziel der Tracheenatmung.", wrong: [
         "Es beschreibt leitet Luft zu den geweben; Luftröhre im Insektenkörper.",
+        "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
         "Es nimmt O₂ aus Wasser oder Luftvorrat; Anpassung mancher Wasserinsekten.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
       ],
       explanation: "Gasaustausch: Aufnahme O₂, Abgabe CO₂",
       wissen: fw(
@@ -1471,8 +1471,8 @@ export const k6InsektenAtmung: BioBank = {
     },
     { concept: "bio:k6:insatm:x0", prompt: "Woran erkennt man x0?", answer: "Es beschreibt x0 anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es beschreibt leitet Luft zu den geweben; Luftröhre im Insektenkörper.",
+        "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
         "Es nimmt O₂ aus Wasser oder Luftvorrat; Anpassung mancher Wasserinsekten.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
       ],
       explanation: "Tracheensystem.",
       wissen: fw(
@@ -1481,8 +1481,8 @@ export const k6InsektenAtmung: BioBank = {
     },
     { concept: "bio:k6:insatm:x1", prompt: "Woran erkennt man Begriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es beschreibt leitet Luft zu den geweben; Luftröhre im Insektenkörper.",
+        "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
         "Es nimmt O₂ aus Wasser oder Luftvorrat; Anpassung mancher Wasserinsekten.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
       ],
       explanation: "Direktversorgung.",
       wissen: fw(
@@ -1529,9 +1529,9 @@ export const k6SkelettVergleich: BioBank = {
   conceptPrefix: "bio:k6:skverg",
   facts: [
     { concept: "bio:k6:skverg:f0", prompt: "Was beschreibt Innenskelett?", answer: "Es beschreibt typisch für Wirbeltiere.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Innenskelett: Stützgerüst im Körperinneren",
       wissen: fw(
@@ -1541,9 +1541,9 @@ export const k6SkelettVergleich: BioBank = {
       gapAccepted: ["Innenskelett"],
     },
     { concept: "bio:k6:skverg:f1", prompt: "Was beschreibt Außenskelett?", answer: "Es beschreibt typisch für viele Gliederfüßer.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Außenskelett: Stütz- und Schutzpanzer außen",
       wissen: fw(
@@ -1553,9 +1553,9 @@ export const k6SkelettVergleich: BioBank = {
       gapAccepted: ["Außenskelett"],
     },
     { concept: "bio:k6:skverg:f2", prompt: "Was kennzeichnet Wirbelsäule?", answer: "Sie beschreibt merkmal der Wirbeltiere.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Sie filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Wirbelsäule: Zentrale Knochenachse",
       wissen: fw(
@@ -1565,9 +1565,9 @@ export const k6SkelettVergleich: BioBank = {
       gapAccepted: ["Wirbelsäule"],
     },
     { concept: "bio:k6:skverg:f3", prompt: "Was kennzeichnet Chitin?", answer: "Es beschreibt leicht und fest.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Chitin: Material vieler Außenskelette",
       wissen: fw(
@@ -1577,9 +1577,9 @@ export const k6SkelettVergleich: BioBank = {
       gapAccepted: ["Chitin"],
     },
     { concept: "bio:k6:skverg:f4", prompt: "Woran erkennt man Knochen?", answer: "Es beschreibt wächst mit und speichert Mineralstoffe.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Knochen: Mineralisiertes Stützgewebe",
       wissen: fw(
@@ -1589,9 +1589,9 @@ export const k6SkelettVergleich: BioBank = {
       gapAccepted: ["Knochen"],
     },
     { concept: "bio:k6:skverg:f5", prompt: "Was beschreibt Häutung?", answer: "Sie beschreibt nötig zum Wachstum bei Arthropoden.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Sie filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Häutung: Abstreifen des Außenskeletts",
       wissen: fw(
@@ -1601,9 +1601,9 @@ export const k6SkelettVergleich: BioBank = {
       gapAccepted: ["Häutung"],
     },
     { concept: "bio:k6:skverg:f6", prompt: "Was kennzeichnet Gliedmaßen?", answer: "Es beschreibt unterschiedlich gebaut je Lebensraum.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Gliedmaßen: Bewegliche Anhänge zur Fortbewegung",
       wissen: fw(
@@ -1613,9 +1613,9 @@ export const k6SkelettVergleich: BioBank = {
       gapAccepted: ["Gliedmaßen"],
     },
     { concept: "bio:k6:skverg:f7", prompt: "Wozu dient die Schutzfunktion?", answer: "Sie beschreibt panzer oder Rippenkorb.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Sie bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Schutzfunktion: Skelett schützt Organe",
       wissen: fw(
@@ -1625,9 +1625,9 @@ export const k6SkelettVergleich: BioBank = {
       gapAccepted: ["Schutzfunktion"],
     },
     { concept: "bio:k6:skverg:f8", prompt: "Was beschreibt Hebelmechanik?", answer: "Es wandelt Kräfte am Drehpunkt und kann Lasten mit geringerer Kraft bewegen.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Hebelmechanik: Knochen/Muskeln als Hebel",
       wissen: fw(
@@ -1637,9 +1637,9 @@ export const k6SkelettVergleich: BioBank = {
       gapAccepted: ["Hebelmechanik"],
     },
     { concept: "bio:k6:skverg:f9", prompt: "Was beschreibt Exoskelett?", answer: "Es beschreibt bei Insekten und Krebsen.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Exoskelett: Anderer Name für Außenskelett",
       wissen: fw(
@@ -1649,9 +1649,9 @@ export const k6SkelettVergleich: BioBank = {
       gapAccepted: ["Exoskelett"],
     },
     { concept: "bio:k6:skverg:f10", prompt: "Was kennzeichnet Endoskelett?", answer: "Es beschreibt anderen Name für Innenskelett.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Endoskelett: Anderer Name für Innenskelett",
       wissen: fw(
@@ -1661,9 +1661,9 @@ export const k6SkelettVergleich: BioBank = {
       gapAccepted: ["Endoskelett"],
     },
     { concept: "bio:k6:skverg:f11", prompt: "Was kennzeichnet Segmentierung?", answer: "Sie beschreibt bei Ringelwürmern und Arthropoden sichtbar.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Sie bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Segmentierung: Körpergliederung in Abschnitte",
       wissen: fw(
@@ -1673,9 +1673,9 @@ export const k6SkelettVergleich: BioBank = {
       gapAccepted: ["Segmentierung"],
     },
     { concept: "bio:k6:skverg:x0", prompt: "Was beschreibt Innenskelett?", answer: "Es ist typisch für Wirbeltiere und liegt innen als Stützstruktur.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Bauplan.",
       wissen: fw(
@@ -1683,9 +1683,9 @@ export const k6SkelettVergleich: BioBank = {
       ),
     },
     { concept: "bio:k6:skverg:x1", prompt: "Woran erkennt man Begriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Wachstum.",
       wissen: fw(
@@ -1740,8 +1740,8 @@ export const k6AtmungVergleich: BioBank = {
     },
     { concept: "bio:k6:atmverg:f1", prompt: "Wozu dient die Lunge?", answer: "Sie beschreibt atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", wrong: [
         "Sie ist die Strategie, mit der pflanzen C3, C4 oder CAM an Klima und Standort anpassen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie beschreibt entzieht dem wasser Sauerstoff und dient der Atmung.",
+        "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
       ],
       explanation: "Lunge: Atemorgan für Luft",
       wissen: fw(
@@ -1752,8 +1752,8 @@ export const k6AtmungVergleich: BioBank = {
     },
     { concept: "bio:k6:atmverg:f2", prompt: "Was beschreibt Trachee?", answer: "Sie beschreibt atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", wrong: [
         "Sie ist die Strategie, mit der pflanzen C3, C4 oder CAM an Klima und Standort anpassen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie beschreibt entzieht dem wasser Sauerstoff und dient der Atmung.",
+        "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
       ],
       explanation: "Trachee: Luftröhrensystem der Insekten",
       wissen: fw(
@@ -1764,8 +1764,8 @@ export const k6AtmungVergleich: BioBank = {
     },
     { concept: "bio:k6:atmverg:f3", prompt: "Was kennzeichnet Hautatmung?", answer: "Sie beschreibt atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", wrong: [
         "Sie ist die Strategie, mit der pflanzen C3, C4 oder CAM an Klima und Standort anpassen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie beschreibt entzieht dem wasser Sauerstoff und dient der Atmung.",
+        "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
       ],
       explanation: "Hautatmung: Gasaustausch über die Körperoberfläche",
       wissen: fw(
@@ -1776,8 +1776,8 @@ export const k6AtmungVergleich: BioBank = {
     },
     { concept: "bio:k6:atmverg:f4", prompt: "Was kennzeichnet Oberflächenvergrößerung?", answer: "Sie beschreibt atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", wrong: [
         "Sie ist die Strategie, mit der pflanzen C3, C4 oder CAM an Klima und Standort anpassen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie beschreibt entzieht dem wasser Sauerstoff und dient der Atmung.",
+        "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
       ],
       explanation: "Oberflächenvergrößerung: Vergrößerung der Austauschfläche",
       wissen: fw(
@@ -1788,8 +1788,8 @@ export const k6AtmungVergleich: BioBank = {
     },
     { concept: "bio:k6:atmverg:f5", prompt: "Welche Rolle hat Medium?", answer: "Es beschreibt atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", wrong: [
         "Es ist die Strategie, mit der pflanzen C3, C4 oder CAM an Klima und Standort anpassen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es beschreibt entzieht dem wasser Sauerstoff und dient der Atmung.",
+        "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
       ],
       explanation: "Medium: Wasser oder Luft als Gasquelle",
       wissen: fw(
@@ -1799,9 +1799,9 @@ export const k6AtmungVergleich: BioBank = {
       gapAccepted: ["Medium"],
     },
     { concept: "bio:k6:atmverg:f6", prompt: "Was kennzeichnet Diffusion?", answer: "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", wrong: [
+        "Sie beschreibt entzieht dem wasser Sauerstoff und dient der Atmung.",
         "Sie beschreibt atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.",
         "Sie ist die Strategie, mit der pflanzen C3, C4 oder CAM an Klima und Standort anpassen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
       ],
       explanation: "Diffusion: Grundprinzip des Gasaustauschs",
       wissen: fw(
@@ -1811,9 +1811,9 @@ export const k6AtmungVergleich: BioBank = {
       gapAccepted: ["Diffusion"],
     },
     { concept: "bio:k6:atmverg:f7", prompt: "Woran erkennt man Feuchte Oberfläche?", answer: "Sie beschreibt atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", wrong: [
+        "Sie beschreibt entzieht dem wasser Sauerstoff und dient der Atmung.",
+        "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
         "Sie ist die Strategie, mit der pflanzen C3, C4 oder CAM an Klima und Standort anpassen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
       ],
       explanation: "Feuchte Oberfläche: Erleichtert Gasdiffusion",
       wissen: fw(
@@ -1823,9 +1823,9 @@ export const k6AtmungVergleich: BioBank = {
       gapAccepted: ["Feuchte Oberfläche"],
     },
     { concept: "bio:k6:atmverg:f8", prompt: "Was beschreibt Landleben?", answer: "Es beschreibt atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", wrong: [
+        "Es beschreibt entzieht dem wasser Sauerstoff und dient der Atmung.",
+        "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
         "Es ist die Strategie, mit der pflanzen C3, C4 oder CAM an Klima und Standort anpassen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
       ],
       explanation: "Landleben: Leben außerhalb des Wassers",
       wissen: fw(
@@ -1835,9 +1835,9 @@ export const k6AtmungVergleich: BioBank = {
       gapAccepted: ["Landleben"],
     },
     { concept: "bio:k6:atmverg:f9", prompt: "Was beschreibt Wasserleben?", answer: "Es beschreibt atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", wrong: [
+        "Es beschreibt entzieht dem wasser Sauerstoff und dient der Atmung.",
+        "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
         "Es ist die Strategie, mit der pflanzen C3, C4 oder CAM an Klima und Standort anpassen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
       ],
       explanation: "Wasserleben: Leben im Wasser",
       wissen: fw(
@@ -1848,8 +1848,8 @@ export const k6AtmungVergleich: BioBank = {
     },
     { concept: "bio:k6:atmverg:f10", prompt: "Was kennzeichnet Doppelstrategie?", answer: "Sie beschreibt atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", wrong: [
         "Sie ist die Strategie, mit der pflanzen C3, C4 oder CAM an Klima und Standort anpassen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie beschreibt entzieht dem wasser Sauerstoff und dient der Atmung.",
+        "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
       ],
       explanation: "Doppelstrategie: Mehrere Atemwege parallel",
       wissen: fw(
@@ -1859,9 +1859,9 @@ export const k6AtmungVergleich: BioBank = {
       gapAccepted: ["Doppelstrategie"],
     },
     { concept: "bio:k6:atmverg:f11", prompt: "Was kennzeichnet Angepasstheit?", answer: "Sie ist die Strategie, mit der pflanzen C3, C4 oder CAM an Klima und Standort anpassen.", wrong: [
+        "Sie beschreibt entzieht dem wasser Sauerstoff und dient der Atmung.",
         "Sie beschreibt atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
       ],
       explanation: "Angepasstheit: Bau folgt dem Lebensraum",
       wissen: fw(
@@ -1873,7 +1873,7 @@ export const k6AtmungVergleich: BioBank = {
     { concept: "bio:k6:atmverg:x0", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es beschreibt atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.",
         "Es ist die Strategie, mit der pflanzen C3, C4 oder CAM an Klima und Standort anpassen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es beschreibt entzieht dem wasser Sauerstoff und dient der Atmung.",
       ],
       explanation: "Oberflächenvergrößerung.",
       wissen: fw(
@@ -1881,9 +1881,9 @@ export const k6AtmungVergleich: BioBank = {
       ),
     },
     { concept: "bio:k6:atmverg:x1", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
+        "Es beschreibt entzieht dem wasser Sauerstoff und dient der Atmung.",
         "Es beschreibt atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.",
-        "Es ist die Strategie, mit der pflanzen C3, C4 oder CAM an Klima und Standort anpassen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.",
       ],
       explanation: "Medium.",
       wissen: fw(
@@ -1931,8 +1931,8 @@ export const k6FortpflanzungFormen: BioBank = {
   facts: [
     { concept: "bio:k6:fortform:f0", prompt: "Welche Rolle hat Äußere Befruchtung?", answer: "Sie ist der Keimzellen treffen sich außerhalb des Körpers.", wrong: [
         "Sie umfasst Wärmen, Füttern und Schützen der Jungvögel am Nest.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Äußere Befruchtung: Keimzellen treffen sich außerhalb des Körpers",
       wissen: fw(
@@ -1944,7 +1944,7 @@ export const k6FortpflanzungFormen: BioBank = {
     { concept: "bio:k6:fortform:f1", prompt: "Welche Rolle hat Innere Befruchtung?", answer: "Sie beschreibt typisch für viele Landtiere.", wrong: [
         "Sie ist der Keimzellen treffen sich außerhalb des Körpers.",
         "Sie umfasst Wärmen, Füttern und Schützen der Jungvögel am Nest.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Innere Befruchtung: Befruchtung im Körper",
       wissen: fw(
@@ -1956,7 +1956,7 @@ export const k6FortpflanzungFormen: BioBank = {
     { concept: "bio:k6:fortform:f2", prompt: "Welche Rolle hat Eiablage?", answer: "Sie beschreibt entwicklung oft außerhalb der Mutter.", wrong: [
         "Sie ist der Keimzellen treffen sich außerhalb des Körpers.",
         "Sie umfasst Wärmen, Füttern und Schützen der Jungvögel am Nest.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Eiablage: Ablage von Eiern",
       wissen: fw(
@@ -1968,7 +1968,7 @@ export const k6FortpflanzungFormen: BioBank = {
     { concept: "bio:k6:fortform:f3", prompt: "Was kennzeichnet Lebendgeburt?", answer: "Es beschreibt bei vielen Säugern.", wrong: [
         "Es ist der Keimzellen treffen sich außerhalb des Körpers.",
         "Es umfasst Wärmen, Füttern und Schützen der Jungvögel am Nest.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Lebendgeburt: Geburt entwickelter Jungtiere",
       wissen: fw(
@@ -1980,7 +1980,7 @@ export const k6FortpflanzungFormen: BioBank = {
     { concept: "bio:k6:fortform:f4", prompt: "Woran erkennt man Metamorphose?", answer: "Sie beschreibt insekten und Lurche.", wrong: [
         "Sie ist der Keimzellen treffen sich außerhalb des Körpers.",
         "Sie umfasst Wärmen, Füttern und Schützen der Jungvögel am Nest.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Metamorphose: Gestaltwechsel der Entwicklung",
       wissen: fw(
@@ -1991,8 +1991,8 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     { concept: "bio:k6:fortform:f5", prompt: "Was kennzeichnet Brutpflege?", answer: "Sie umfasst Wärmen, Füttern und Schützen der Jungvögel am Nest.", wrong: [
         "Sie ist der Keimzellen treffen sich außerhalb des Körpers.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Brutpflege: Versorgung der Nachkommen",
       wissen: fw(
@@ -2004,7 +2004,7 @@ export const k6FortpflanzungFormen: BioBank = {
     { concept: "bio:k6:fortform:f6", prompt: "Was kennzeichnet ungeschlechtlich?", answer: "Es beschreibt teilung bei manchen Wirbellosen.", wrong: [
         "Es ist der Keimzellen treffen sich außerhalb des Körpers.",
         "Es umfasst Wärmen, Füttern und Schützen der Jungvögel am Nest.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "ungeschlechtlich: Vermehrung ohne Gametenverschmelzung",
       wissen: fw(
@@ -2016,7 +2016,7 @@ export const k6FortpflanzungFormen: BioBank = {
     { concept: "bio:k6:fortform:f7", prompt: "Woran erkennt man geschlechtlich?", answer: "Es beschreibt erhöht genetische Vielfalt.", wrong: [
         "Es ist der Keimzellen treffen sich außerhalb des Körpers.",
         "Es umfasst Wärmen, Füttern und Schützen der Jungvögel am Nest.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "geschlechtlich: Vermehrung mit Befruchtung",
       wissen: fw(
@@ -2028,7 +2028,7 @@ export const k6FortpflanzungFormen: BioBank = {
     { concept: "bio:k6:fortform:f8", prompt: "Welche Rolle hat Larve?", answer: "Sie beschreibt oft andere Lebensweise.", wrong: [
         "Sie ist der Keimzellen treffen sich außerhalb des Körpers.",
         "Sie umfasst Wärmen, Füttern und Schützen der Jungvögel am Nest.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Larve: Jugendstadium mit anderer Gestalt",
       wissen: fw(
@@ -2040,7 +2040,7 @@ export const k6FortpflanzungFormen: BioBank = {
     { concept: "bio:k6:fortform:f9", prompt: "Was kennzeichnet Puppe?", answer: "Sie beschreibt bei holometabolen Insekten.", wrong: [
         "Sie ist der Keimzellen treffen sich außerhalb des Körpers.",
         "Sie umfasst Wärmen, Füttern und Schützen der Jungvögel am Nest.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Puppe: Ruhe-/Umwandlungsstadium",
       wissen: fw(
@@ -2052,7 +2052,7 @@ export const k6FortpflanzungFormen: BioBank = {
     { concept: "bio:k6:fortform:f10", prompt: "Was kennzeichnet Wasserabhängigkeit?", answer: "Sie beschreibt fortpflanzung an Wasser gebunden.", wrong: [
         "Sie ist der Keimzellen treffen sich außerhalb des Körpers.",
         "Sie umfasst Wärmen, Füttern und Schützen der Jungvögel am Nest.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Wasserabhängigkeit: Fortpflanzung an Wasser gebunden",
       wissen: fw(
@@ -2064,7 +2064,7 @@ export const k6FortpflanzungFormen: BioBank = {
     { concept: "bio:k6:fortform:f11", prompt: "Welche Rolle hat Landunabhängigkeit?", answer: "Sie beschreibt schalenei oder innere Entwicklung.", wrong: [
         "Sie ist der Keimzellen treffen sich außerhalb des Körpers.",
         "Sie umfasst Wärmen, Füttern und Schützen der Jungvögel am Nest.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Landunabhängigkeit: Fortpflanzung ohne freies Wasser",
       wissen: fw(
@@ -2076,7 +2076,7 @@ export const k6FortpflanzungFormen: BioBank = {
     { concept: "bio:k6:fortform:x0", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es ist der Keimzellen treffen sich außerhalb des Körpers.",
         "Es umfasst Wärmen, Füttern und Schützen der Jungvögel am Nest.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Austrocknungsschutz.",
       wissen: fw(
@@ -2086,7 +2086,7 @@ export const k6FortpflanzungFormen: BioBank = {
     { concept: "bio:k6:fortform:x1", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es ist der Keimzellen treffen sich außerhalb des Körpers.",
         "Es umfasst Wärmen, Füttern und Schützen der Jungvögel am Nest.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Entwicklungsort.",
       wissen: fw(
@@ -2133,9 +2133,9 @@ export const k6Zelltheorie: BioBank = {
   conceptPrefix: "bio:k6:zellth",
   facts: [
     { concept: "bio:k6:zellth:f0", prompt: "Was kennzeichnet Zelle?", answer: "Sie beschreibt baustein aller Organismen.", wrong: [
-        "Sie beschreibt spezialisiert Zellen auf bestimmte Aufgaben bei gleicher DNA.",
         "Sie beschreibt vergrößert kleine Objekte durch Objektiv und Okular.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie beschreibt spezialisiert Zellen auf bestimmte Aufgaben bei gleicher DNA.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Zelle: Kleinste lebende Einheit",
       wissen: fw(
@@ -2147,7 +2147,7 @@ export const k6Zelltheorie: BioBank = {
     { concept: "bio:k6:zellth:f1", prompt: "Welche Rolle hat Zelltheorie?", answer: "Sie beschreibt zellen entstehen aus Zellen.", wrong: [
         "Sie beschreibt vergrößert kleine Objekte durch Objektiv und Okular.",
         "Sie beschreibt spezialisiert Zellen auf bestimmte Aufgaben bei gleicher DNA.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Zelltheorie: Lebewesen bestehen aus Zellen",
       wissen: fw(
@@ -2157,9 +2157,9 @@ export const k6Zelltheorie: BioBank = {
       gapAccepted: ["Zelltheorie"],
     },
     { concept: "bio:k6:zellth:f2", prompt: "Wozu dient Einzeller?", answer: "Er beschreibt organismus aus einer Zelle.", wrong: [
-        "Er beschreibt vergrößert kleine Objekte durch Objektiv und Okular.",
         "Er beschreibt spezialisiert Zellen auf bestimmte Aufgaben bei gleicher DNA.",
-        "Er spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Er beschreibt vergrößert kleine Objekte durch Objektiv und Okular.",
+        "Er regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Einzeller: Organismus aus einer Zelle",
       wissen: fw(
@@ -2171,7 +2171,7 @@ export const k6Zelltheorie: BioBank = {
     { concept: "bio:k6:zellth:f3", prompt: "Wozu dient Vielzeller?", answer: "Er beschreibt organismus aus vielen Zellen.", wrong: [
         "Er beschreibt vergrößert kleine Objekte durch Objektiv und Okular.",
         "Er beschreibt spezialisiert Zellen auf bestimmte Aufgaben bei gleicher DNA.",
-        "Er spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Er regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Vielzeller: Organismus aus vielen Zellen",
       wissen: fw(
@@ -2181,9 +2181,9 @@ export const k6Zelltheorie: BioBank = {
       gapAccepted: ["Vielzeller"],
     },
     { concept: "bio:k6:zellth:f4", prompt: "Was kennzeichnet Zellkern?", answer: "Es beschreibt enthält Erbinformation bei Eukaryoten.", wrong: [
-        "Es beschreibt vergrößert kleine Objekte durch Objektiv und Okular.",
         "Es beschreibt spezialisiert Zellen auf bestimmte Aufgaben bei gleicher DNA.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es beschreibt vergrößert kleine Objekte durch Objektiv und Okular.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Zellkern: Enthält Erbinformation bei Eukaryoten",
       wissen: fw(
@@ -2194,8 +2194,8 @@ export const k6Zelltheorie: BioBank = {
     },
     { concept: "bio:k6:zellth:f5", prompt: "Woran erkennt man Mikroskop?", answer: "Es beschreibt vergrößert kleine Objekte durch Objektiv und Okular.", wrong: [
         "Es beschreibt spezialisiert Zellen auf bestimmte Aufgaben bei gleicher DNA.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Mikroskop: Gerät zur Sichtbarmachung von Zellen",
       wissen: fw(
@@ -2205,9 +2205,9 @@ export const k6Zelltheorie: BioBank = {
       gapAccepted: ["Mikroskop"],
     },
     { concept: "bio:k6:zellth:f6", prompt: "Was kennzeichnet Gewebe?", answer: "Sie beschreibt baustein von Organen.", wrong: [
-        "Sie beschreibt vergrößert kleine Objekte durch Objektiv und Okular.",
         "Sie beschreibt spezialisiert Zellen auf bestimmte Aufgaben bei gleicher DNA.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie beschreibt vergrößert kleine Objekte durch Objektiv und Okular.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Gewebe: Verband gleichartiger Zellen",
       wissen: fw(
@@ -2217,9 +2217,9 @@ export const k6Zelltheorie: BioBank = {
       gapAccepted: ["Gewebe"],
     },
     { concept: "bio:k6:zellth:f7", prompt: "Wozu dient Organ?", answer: "Es beschreibt blatt oder Herz.", wrong: [
-        "Es beschreibt vergrößert kleine Objekte durch Objektiv und Okular.",
         "Es beschreibt spezialisiert Zellen auf bestimmte Aufgaben bei gleicher DNA.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es beschreibt vergrößert kleine Objekte durch Objektiv und Okular.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Organ: Funktionseinheit aus Geweben",
       wissen: fw(
@@ -2231,7 +2231,7 @@ export const k6Zelltheorie: BioBank = {
     { concept: "bio:k6:zellth:f8", prompt: "Woran erkennt man Schleiden?", answer: "Es beschreibt zellen als Grundeinheit der Pflanzen.", wrong: [
         "Es beschreibt spezialisiert Zellen auf bestimmte Aufgaben bei gleicher DNA.",
         "Es beschreibt vergrößert kleine Objekte durch Objektiv und Okular.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Schleiden: Mitbegründer der pflanzlichen Zelltheorie",
       wissen: fw(
@@ -2241,9 +2241,9 @@ export const k6Zelltheorie: BioBank = {
       gapAccepted: ["Schleiden"],
     },
     { concept: "bio:k6:zellth:f9", prompt: "Was beschreibt Schwann?", answer: "Es beschreibt zellen auch bei Tieren.", wrong: [
-        "Es beschreibt spezialisiert Zellen auf bestimmte Aufgaben bei gleicher DNA.",
         "Es beschreibt vergrößert kleine Objekte durch Objektiv und Okular.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es beschreibt spezialisiert Zellen auf bestimmte Aufgaben bei gleicher DNA.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Schwann: Übertrug Zellgedanken auf Tiere",
       wissen: fw(
@@ -2255,7 +2255,7 @@ export const k6Zelltheorie: BioBank = {
     { concept: "bio:k6:zellth:f10", prompt: "Was kennzeichnet Virchow?", answer: "Es beschreibt omnis cellula e cellula.", wrong: [
         "Es beschreibt spezialisiert Zellen auf bestimmte Aufgaben bei gleicher DNA.",
         "Es beschreibt vergrößert kleine Objekte durch Objektiv und Okular.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Virchow: Zellen entstehen aus Zellen",
       wissen: fw(
@@ -2266,8 +2266,8 @@ export const k6Zelltheorie: BioBank = {
     },
     { concept: "bio:k6:zellth:f11", prompt: "Was beschreibt Differenzierung?", answer: "Sie beschreibt spezialisiert Zellen auf bestimmte Aufgaben bei gleicher DNA.", wrong: [
         "Sie beschreibt vergrößert kleine Objekte durch Objektiv und Okular.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Differenzierung: Spezialisierung von Zellen",
       wissen: fw(
@@ -2279,7 +2279,7 @@ export const k6Zelltheorie: BioBank = {
     { concept: "bio:k6:zellth:x0", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es beschreibt spezialisiert Zellen auf bestimmte Aufgaben bei gleicher DNA.",
         "Es beschreibt vergrößert kleine Objekte durch Objektiv und Okular.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Grundprinzip.",
       wissen: fw(
@@ -2287,9 +2287,9 @@ export const k6Zelltheorie: BioBank = {
       ),
     },
     { concept: "bio:k6:zellth:x1", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
-        "Es beschreibt spezialisiert Zellen auf bestimmte Aufgaben bei gleicher DNA.",
         "Es beschreibt vergrößert kleine Objekte durch Objektiv und Okular.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es beschreibt spezialisiert Zellen auf bestimmte Aufgaben bei gleicher DNA.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Methode.",
       wissen: fw(
@@ -2338,7 +2338,7 @@ export const k6OrganellenEnergie: BioBank = {
     { concept: "bio:k6:orgene:f0", prompt: "Welche Rolle hat Mitochondrium?", answer: "Es beschreibt liefert viel ATP.", wrong: [
         "Es wandelt Lichtenergie in chemische Energie in Form von Glucose um.",
         "Es wandelt Licht in chemische Energie und chemische Energie weiter in ATP um.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Mitochondrium: Ort der Zellatmung",
       wissen: fw(
@@ -2350,7 +2350,7 @@ export const k6OrganellenEnergie: BioBank = {
     { concept: "bio:k6:orgene:f1", prompt: "Was beschreibt Chloroplast?", answer: "Es beschreibt zucker und O₂.", wrong: [
         "Es wandelt Lichtenergie in chemische Energie in Form von Glucose um.",
         "Es wandelt Licht in chemische Energie und chemische Energie weiter in ATP um.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Chloroplast: Ort der Fotosynthese",
       wissen: fw(
@@ -2362,7 +2362,7 @@ export const k6OrganellenEnergie: BioBank = {
     { concept: "bio:k6:orgene:f2", prompt: "Welche Rolle hat ATP?", answer: "Es beschreibt treibt energiebedürftige Prozesse.", wrong: [
         "Es wandelt Lichtenergie in chemische Energie in Form von Glucose um.",
         "Es wandelt Licht in chemische Energie und chemische Energie weiter in ATP um.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "ATP: Energiewährung der Zelle",
       wissen: fw(
@@ -2374,7 +2374,7 @@ export const k6OrganellenEnergie: BioBank = {
     { concept: "bio:k6:orgene:f3", prompt: "Woran erkennt man Zellatmung?", answer: "Sie beschreibt braucht oft Sauerstoff.", wrong: [
         "Sie wandelt Lichtenergie in chemische Energie in Form von Glucose um.",
         "Sie wandelt Licht in chemische Energie und chemische Energie weiter in ATP um.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Zellatmung: Abbau von Zucker mit Energiegewinn",
       wissen: fw(
@@ -2385,8 +2385,8 @@ export const k6OrganellenEnergie: BioBank = {
     },
     { concept: "bio:k6:orgene:f4", prompt: "Wozu dient die Fotosynthese im Thema Energieorganellen?", answer: "Sie wandelt Lichtenergie in chemische Energie in Form von Glucose um.", wrong: [
         "Sie wandelt Licht in chemische Energie und chemische Energie weiter in ATP um.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Fotosynthese: Aufbau organischer Stoffe mit Licht",
       wissen: fw(
@@ -2398,7 +2398,7 @@ export const k6OrganellenEnergie: BioBank = {
     { concept: "bio:k6:orgene:f5", prompt: "Wozu dient Doppelmembran?", answer: "Es beschreibt bei Mitochondrium und Chloroplast.", wrong: [
         "Es wandelt Lichtenergie in chemische Energie in Form von Glucose um.",
         "Es wandelt Licht in chemische Energie und chemische Energie weiter in ATP um.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Doppelmembran: Zwei Membranen um Organell",
       wissen: fw(
@@ -2409,8 +2409,8 @@ export const k6OrganellenEnergie: BioBank = {
     },
     { concept: "bio:k6:orgene:f6", prompt: "Was kennzeichnet Energieumwandlung?", answer: "Sie wandelt Licht in chemische Energie und chemische Energie weiter in ATP um.", wrong: [
         "Sie wandelt Lichtenergie in chemische Energie in Form von Glucose um.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Energieumwandlung: Umwandlung von Energieformen",
       wissen: fw(
@@ -2422,7 +2422,7 @@ export const k6OrganellenEnergie: BioBank = {
     { concept: "bio:k6:orgene:f7", prompt: "Welche Rolle hat Cytoplasma?", answer: "Es beschreibt ort vieler Stoffwechselwege.", wrong: [
         "Es wandelt Lichtenergie in chemische Energie in Form von Glucose um.",
         "Es wandelt Licht in chemische Energie und chemische Energie weiter in ATP um.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Cytoplasma: Zellinnenraum",
       wissen: fw(
@@ -2434,7 +2434,7 @@ export const k6OrganellenEnergie: BioBank = {
     { concept: "bio:k6:orgene:f8", prompt: "Was kennzeichnet Glukose?", answer: "Sie beschreibt produkt der Fotosynthese.", wrong: [
         "Sie wandelt Lichtenergie in chemische Energie in Form von Glucose um.",
         "Sie wandelt Licht in chemische Energie und chemische Energie weiter in ATP um.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Glukose: Wichtiger Energieträger",
       wissen: fw(
@@ -2446,7 +2446,7 @@ export const k6OrganellenEnergie: BioBank = {
     { concept: "bio:k6:orgene:f9", prompt: "Welche Rolle hat Sauerstoff?", answer: "Es beschreibt produkt der Fotosynthese.", wrong: [
         "Es wandelt Lichtenergie in chemische Energie in Form von Glucose um.",
         "Es wandelt Licht in chemische Energie und chemische Energie weiter in ATP um.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Sauerstoff: Reaktand der aeroben Atmung",
       wissen: fw(
@@ -2458,7 +2458,7 @@ export const k6OrganellenEnergie: BioBank = {
     { concept: "bio:k6:orgene:f10", prompt: "Woran erkennt man Autotrophie?", answer: "Sie beschreibt pflanzen mit Chloroplasten.", wrong: [
         "Sie wandelt Lichtenergie in chemische Energie in Form von Glucose um.",
         "Sie wandelt Licht in chemische Energie und chemische Energie weiter in ATP um.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Autotrophie: Selbsternährung über Assimilation",
       wissen: fw(
@@ -2470,7 +2470,7 @@ export const k6OrganellenEnergie: BioBank = {
     { concept: "bio:k6:orgene:f11", prompt: "Wozu dient die Heterotrophie?", answer: "Sie beschreibt tiere ohne Chloroplasten.", wrong: [
         "Sie wandelt Lichtenergie in chemische Energie in Form von Glucose um.",
         "Sie wandelt Licht in chemische Energie und chemische Energie weiter in ATP um.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Heterotrophie: Abhängigkeit von organischer Nahrung",
       wissen: fw(
@@ -2482,7 +2482,7 @@ export const k6OrganellenEnergie: BioBank = {
     { concept: "bio:k6:orgene:x0", prompt: "Was beschreibt Mitochondrium?", answer: "Es beschreibt liefert viel ATP durch Zellatmung in der inneren Membran.", wrong: [
         "Es wandelt Lichtenergie in chemische Energie in Form von Glucose um.",
         "Es wandelt Licht in chemische Energie und chemische Energie weiter in ATP um.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Energieorganellen.",
       wissen: fw(
@@ -2492,7 +2492,7 @@ export const k6OrganellenEnergie: BioBank = {
     { concept: "bio:k6:orgene:x1", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es wandelt Lichtenergie in chemische Energie in Form von Glucose um.",
         "Es wandelt Licht in chemische Energie und chemische Energie weiter in ATP um.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Stoffkreislauf.",
       wissen: fw(
@@ -2539,9 +2539,9 @@ export const k7PulsBlutdruck: BioBank = {
   conceptPrefix: "bio:k7:puls",
   facts: [
     { concept: "bio:k7:puls:f0", prompt: "Was kennzeichnet Puls?", answer: "Es ist die fühlbare Druckwelle der Herzschläge in den Arterien.", wrong: [
+        "Es ist der Druck des Blutes auf die Gefäßwände.",
         "Es beschreibt ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Puls: Spürbare Druckwelle der Arterien",
       wissen: fw(
@@ -2552,8 +2552,8 @@ export const k7PulsBlutdruck: BioBank = {
     },
     { concept: "bio:k7:puls:f1", prompt: "Was kennzeichnet Pulsfrequenz?", answer: "Sie beschreibt steigt bei Belastung.", wrong: [
         "Sie beschreibt ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie ist die fühlbare Druckwelle der Herzschläge in den Arterien.",
+        "Sie ist der Druck des Blutes auf die Gefäßwände.",
       ],
       explanation: "Pulsfrequenz: Schläge pro Minute",
       wissen: fw(
@@ -2564,8 +2564,8 @@ export const k7PulsBlutdruck: BioBank = {
     },
     { concept: "bio:k7:puls:f2", prompt: "Was kennzeichnet Blutdruck?", answer: "Es ist der Druck des Blutes auf die Gefäßwände.", wrong: [
         "Es beschreibt ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es ist die fühlbare Druckwelle der Herzschläge in den Arterien.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Blutdruck: Druck des Blutes auf Arterienwände",
       wissen: fw(
@@ -2576,8 +2576,8 @@ export const k7PulsBlutdruck: BioBank = {
     },
     { concept: "bio:k7:puls:f3", prompt: "Woran erkennt man Systole?", answer: "Sie beschreibt auswurfphase des Herzens.", wrong: [
         "Sie beschreibt ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie ist die fühlbare Druckwelle der Herzschläge in den Arterien.",
+        "Sie ist der Druck des Blutes auf die Gefäßwände.",
       ],
       explanation: "Systole: Auswurfphase des Herzens",
       wissen: fw(
@@ -2588,8 +2588,8 @@ export const k7PulsBlutdruck: BioBank = {
     },
     { concept: "bio:k7:puls:f4", prompt: "Was beschreibt Diastole?", answer: "Sie beschreibt entspannungs-/Füllungsphase.", wrong: [
         "Sie beschreibt ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie ist die fühlbare Druckwelle der Herzschläge in den Arterien.",
+        "Sie ist der Druck des Blutes auf die Gefäßwände.",
       ],
       explanation: "Diastole: Entspannungs-/Füllungsphase",
       wissen: fw(
@@ -2600,8 +2600,8 @@ export const k7PulsBlutdruck: BioBank = {
     },
     { concept: "bio:k7:puls:f5", prompt: "Was kennzeichnet Ruhepuls?", answer: "Es beschreibt vergleichswert zur Belastung.", wrong: [
         "Es beschreibt ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es ist die fühlbare Druckwelle der Herzschläge in den Arterien.",
+        "Es ist der Druck des Blutes auf die Gefäßwände.",
       ],
       explanation: "Ruhepuls: Puls in entspanntem Zustand",
       wissen: fw(
@@ -2611,9 +2611,9 @@ export const k7PulsBlutdruck: BioBank = {
       gapAccepted: ["Ruhepuls"],
     },
     { concept: "bio:k7:puls:f6", prompt: "Woran erkennt man Belastungspuls?", answer: "Es beschreibt steigt mit Sauerstoffbedarf.", wrong: [
+        "Es ist die fühlbare Druckwelle der Herzschläge in den Arterien.",
+        "Es ist der Druck des Blutes auf die Gefäßwände.",
         "Es beschreibt ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
       ],
       explanation: "Belastungspuls: Puls unter körperlicher Arbeit",
       wissen: fw(
@@ -2623,9 +2623,9 @@ export const k7PulsBlutdruck: BioBank = {
       gapAccepted: ["Belastungspuls"],
     },
     { concept: "bio:k7:puls:f7", prompt: "Was beschreibt mmHg?", answer: "Es beschreibt einheit des Blutdrucks.", wrong: [
+        "Es ist die fühlbare Druckwelle der Herzschläge in den Arterien.",
+        "Es ist der Druck des Blutes auf die Gefäßwände.",
         "Es beschreibt ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
       ],
       explanation: "mmHg: Einheit des Blutdrucks",
       wissen: fw(
@@ -2635,9 +2635,9 @@ export const k7PulsBlutdruck: BioBank = {
       gapAccepted: ["mmHg"],
     },
     { concept: "bio:k7:puls:f8", prompt: "Was kennzeichnet Arterie?", answer: "Sie führt sauerstoffreiches Blut vom Herzen zu den Organen.", wrong: [
+        "Sie ist die fühlbare Druckwelle der Herzschläge in den Arterien.",
+        "Sie ist der Druck des Blutes auf die Gefäßwände.",
         "Sie beschreibt ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
       ],
       explanation: "Arterie: Gefäß vom Herzen weg",
       wissen: fw(
@@ -2647,9 +2647,9 @@ export const k7PulsBlutdruck: BioBank = {
       gapAccepted: ["Arterie"],
     },
     { concept: "bio:k7:puls:f9", prompt: "Woran erkennt man Vitalparameter?", answer: "Er beschreibt puls und Blutdruck.", wrong: [
+        "Er ist die fühlbare Druckwelle der Herzschläge in den Arterien.",
+        "Er ist der Druck des Blutes auf die Gefäßwände.",
         "Er beschreibt ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung.",
-        "Er spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Er fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
       ],
       explanation: "Vitalparameter: Grundlegende Körperwerte",
       wissen: fw(
@@ -2659,9 +2659,9 @@ export const k7PulsBlutdruck: BioBank = {
       gapAccepted: ["Vitalparameter"],
     },
     { concept: "bio:k7:puls:f10", prompt: "Welche Rolle hat Bluthochdruck?", answer: "Es beschreibt belastet Herz und Gefäße.", wrong: [
+        "Es ist die fühlbare Druckwelle der Herzschläge in den Arterien.",
+        "Es ist der Druck des Blutes auf die Gefäßwände.",
         "Es beschreibt ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
       ],
       explanation: "Bluthochdruck: Dauerhaft zu hoher Blutdruck",
       wissen: fw(
@@ -2671,9 +2671,9 @@ export const k7PulsBlutdruck: BioBank = {
       gapAccepted: ["Bluthochdruck"],
     },
     { concept: "bio:k7:puls:f11", prompt: "Wozu dient die Messmanschette?", answer: "Sie beschreibt ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie ist die fühlbare Druckwelle der Herzschläge in den Arterien.",
+        "Sie ist der Druck des Blutes auf die Gefäßwände.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Messmanschette: Hilfsmittel der Blutdruckmessung",
       wissen: fw(
@@ -2684,8 +2684,8 @@ export const k7PulsBlutdruck: BioBank = {
     },
     { concept: "bio:k7:puls:x0", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es beschreibt ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es ist die fühlbare Druckwelle der Herzschläge in den Arterien.",
+        "Es ist der Druck des Blutes auf die Gefäßwände.",
       ],
       explanation: "Druckwelle.",
       wissen: fw(
@@ -2693,9 +2693,9 @@ export const k7PulsBlutdruck: BioBank = {
       ),
     },
     { concept: "bio:k7:puls:x1", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
+        "Es ist die fühlbare Druckwelle der Herzschläge in den Arterien.",
+        "Es ist der Druck des Blutes auf die Gefäßwände.",
         "Es beschreibt ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
       ],
       explanation: "Diagnostik.",
       wissen: fw(
@@ -2742,9 +2742,9 @@ export const k7KreislaufGesundheit: BioBank = {
   conceptPrefix: "bio:k7:krges",
   facts: [
     { concept: "bio:k7:krges:f0", prompt: "Welche Rolle hat Bewegung?", answer: "Sie beschreibt stärkt Herz und Gefäße.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Sie filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Bewegung: Regelmäßige körperliche Aktivität",
       wissen: fw(
@@ -2754,9 +2754,9 @@ export const k7KreislaufGesundheit: BioBank = {
       gapAccepted: ["Bewegung"],
     },
     { concept: "bio:k7:krges:f1", prompt: "Was beschreibt Ausgewogene Ernährung?", answer: "Sie beschreibt nährstoffreiche und abwechslungsreiche Kost.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Sie bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Ausgewogene Ernährung: Nährstoffreiche, abwechslungsreiche Kost",
       wissen: fw(
@@ -2766,9 +2766,9 @@ export const k7KreislaufGesundheit: BioBank = {
       gapAccepted: ["Ausgewogene Ernährung"],
     },
     { concept: "bio:k7:krges:f2", prompt: "Woran erkennt man Nichtrauchen?", answer: "Es beschreibt schützt Gefäße und Herz.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Nichtrauchen: Verzicht auf Tabakrauch",
       wissen: fw(
@@ -2778,9 +2778,9 @@ export const k7KreislaufGesundheit: BioBank = {
       gapAccepted: ["Nichtrauchen"],
     },
     { concept: "bio:k7:krges:f3", prompt: "Welche Rolle hat Bluthochdruck?", answer: "Es beschreibt risikofaktor für Schäden.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Bluthochdruck: Dauerhaft erhöhter Blutdruck",
       wissen: fw(
@@ -2790,9 +2790,9 @@ export const k7KreislaufGesundheit: BioBank = {
       gapAccepted: ["Bluthochdruck"],
     },
     { concept: "bio:k7:krges:f4", prompt: "Welche Rolle hat Arteriosklerose?", answer: "Sie beschreibt gefäßverkalkung/-verengung.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Sie bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Arteriosklerose: Gefäßverkalkung/-verengung",
       wissen: fw(
@@ -2802,9 +2802,9 @@ export const k7KreislaufGesundheit: BioBank = {
       gapAccepted: ["Arteriosklerose"],
     },
     { concept: "bio:k7:krges:f5", prompt: "Was kennzeichnet Cholesterin?", answer: "Es beschreibt blutfettstoff mit Risiko bei Überschuss.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Cholesterin: Blutfettstoff mit Risiko bei Überschuss",
       wissen: fw(
@@ -2814,9 +2814,9 @@ export const k7KreislaufGesundheit: BioBank = {
       gapAccepted: ["Cholesterin"],
     },
     { concept: "bio:k7:krges:f6", prompt: "Was beschreibt Stressmanagement?", answer: "Es beschreibt mindert ungünstige Belastung.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Stressmanagement: Umgang mit Dauerstress",
       wissen: fw(
@@ -2826,9 +2826,9 @@ export const k7KreislaufGesundheit: BioBank = {
       gapAccepted: ["Stressmanagement"],
     },
     { concept: "bio:k7:krges:f7", prompt: "Welche Rolle hat Herzinfarkt?", answer: "Es beschreibt verschluss eines Herzkranzgefäßes.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Herzinfarkt: Verschluss eines Herzkranzgefäßes",
       wissen: fw(
@@ -2838,9 +2838,9 @@ export const k7KreislaufGesundheit: BioBank = {
       gapAccepted: ["Herzinfarkt"],
     },
     { concept: "bio:k7:krges:f8", prompt: "Was kennzeichnet Schlaganfall?", answer: "Es beschreibt kann durch Gefäßrisiken begünstigt sein.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Schlaganfall: Durchblutungsstörung im Gehirn",
       wissen: fw(
@@ -2850,9 +2850,9 @@ export const k7KreislaufGesundheit: BioBank = {
       gapAccepted: ["Schlaganfall"],
     },
     { concept: "bio:k7:krges:f9", prompt: "Was beschreibt Ausdauer?", answer: "Er beschreibt trainierbar durch Sport.", wrong: [
-        "Er spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Er fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Er umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Er regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Er bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Er bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Ausdauer: Fähigkeit zu längerer Belastung",
       wissen: fw(
@@ -2862,9 +2862,9 @@ export const k7KreislaufGesundheit: BioBank = {
       gapAccepted: ["Ausdauer"],
     },
     { concept: "bio:k7:krges:f10", prompt: "Was kennzeichnet Risikofaktor?", answer: "Er beschreibt umstand der Erkrankungswahrscheinlichkeit erhöht.", wrong: [
-        "Er spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Er fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Er umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Er regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Er bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Er bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Risikofaktor: Umstand der Erkrankungswahrscheinlichkeit erhöht",
       wissen: fw(
@@ -2874,9 +2874,9 @@ export const k7KreislaufGesundheit: BioBank = {
       gapAccepted: ["Risikofaktor"],
     },
     { concept: "bio:k7:krges:f11", prompt: "Was kennzeichnet Prävention?", answer: "Sie beschreibt wirksamer als spätere Schäden.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Sie filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Prävention: Vorbeugung durch Lebensstil",
       wissen: fw(
@@ -2886,9 +2886,9 @@ export const k7KreislaufGesundheit: BioBank = {
       gapAccepted: ["Prävention"],
     },
     { concept: "bio:k7:krges:x0", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Lebensstil.",
       wissen: fw(
@@ -2896,9 +2896,9 @@ export const k7KreislaufGesundheit: BioBank = {
       ),
     },
     { concept: "bio:k7:krges:x1", prompt: "Woran erkennt man Begriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Folgeschäden.",
       wissen: fw(
@@ -2946,8 +2946,8 @@ export const k7Haltung: BioBank = {
   facts: [
     { concept: "bio:k7:haltung:f0", prompt: "Woran erkennt man Körperhaltung?", answer: "Sie beschreibt beeinflusst Belastung von Gelenken.", wrong: [
         "Sie beschreibt ergänzt Muskelkraft für Haltung und Bewegung im Stützapparat.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Körperhaltung: Stellung von Rumpf und Wirbelsäule",
       wissen: fw(
@@ -2958,8 +2958,8 @@ export const k7Haltung: BioBank = {
     },
     { concept: "bio:k7:haltung:f1", prompt: "Was kennzeichnet Haltungsschaden?", answer: "Es beschreibt kann Schmerzen und Einschränkungen fördern.", wrong: [
         "Es beschreibt ergänzt Muskelkraft für Haltung und Bewegung im Stützapparat.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Haltungsschaden: Dauerhafte Fehlbelastung der Haltung",
       wissen: fw(
@@ -2970,8 +2970,8 @@ export const k7Haltung: BioBank = {
     },
     { concept: "bio:k7:haltung:f2", prompt: "Was kennzeichnet Rundrücken?", answer: "Es beschreibt beispiel einer Haltungsabweichung.", wrong: [
         "Es beschreibt ergänzt Muskelkraft für Haltung und Bewegung im Stützapparat.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Rundrücken: Verstärkte Krümmung der Brustwirbelsäule",
       wissen: fw(
@@ -2982,8 +2982,8 @@ export const k7Haltung: BioBank = {
     },
     { concept: "bio:k7:haltung:f3", prompt: "Was kennzeichnet Hohlkreuz?", answer: "Es beschreibt kann die Lendenwirbelsäule belasten.", wrong: [
         "Es beschreibt ergänzt Muskelkraft für Haltung und Bewegung im Stützapparat.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Hohlkreuz: Verstärkte Lendenlordose",
       wissen: fw(
@@ -2994,8 +2994,8 @@ export const k7Haltung: BioBank = {
     },
     { concept: "bio:k7:haltung:f4", prompt: "Was beschreibt Muskelkorsett?", answer: "Es beschreibt stützt die Wirbelsäule.", wrong: [
         "Es beschreibt ergänzt Muskelkraft für Haltung und Bewegung im Stützapparat.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Muskelkorsett: Stabilisierende Rumpfmuskulatur",
       wissen: fw(
@@ -3006,8 +3006,8 @@ export const k7Haltung: BioBank = {
     },
     { concept: "bio:k7:haltung:f5", prompt: "Welche Rolle hat Bewegungsmangel?", answer: "Es beschreibt schwächt Haltungs muskulatur.", wrong: [
         "Es beschreibt ergänzt Muskelkraft für Haltung und Bewegung im Stützapparat.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Bewegungsmangel: Zu wenig körperliche Aktivität",
       wissen: fw(
@@ -3018,8 +3018,8 @@ export const k7Haltung: BioBank = {
     },
     { concept: "bio:k7:haltung:f6", prompt: "Was beschreibt Ergonomie?", answer: "Sie beschreibt arbeitsplatz an den Körpen anpassen.", wrong: [
         "Sie beschreibt ergänzt Muskelkraft für Haltung und Bewegung im Stützapparat.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Ergonomie: Arbeitsplatz an den Körper anpassen",
       wissen: fw(
@@ -3030,8 +3030,8 @@ export const k7Haltung: BioBank = {
     },
     { concept: "bio:k7:haltung:f7", prompt: "Was beschreibt Wirbelsäule?", answer: "Sie beschreibt trägt und federt Lasten.", wrong: [
         "Sie beschreibt ergänzt Muskelkraft für Haltung und Bewegung im Stützapparat.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Wirbelsäule: Zentrale Stützachse",
       wissen: fw(
@@ -3042,8 +3042,8 @@ export const k7Haltung: BioBank = {
     },
     { concept: "bio:k7:haltung:f8", prompt: "Woran erkennt man Bandscheibe?", answer: "Sie beschreibt empfindlich bei Dauerfehlbelastung.", wrong: [
         "Sie beschreibt ergänzt Muskelkraft für Haltung und Bewegung im Stützapparat.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Bandscheibe: Polster zwischen Wirbeln",
       wissen: fw(
@@ -3053,9 +3053,9 @@ export const k7Haltung: BioBank = {
       gapAccepted: ["Bandscheibe"],
     },
     { concept: "bio:k7:haltung:f9", prompt: "Woran erkennt man Dehnung?", answer: "Sie ergänzt Muskelkraft für Haltung und Bewegung im Stützapparat.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Sie filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Dehnung: Beweglichkeitstraining",
       wissen: fw(
@@ -3066,8 +3066,8 @@ export const k7Haltung: BioBank = {
     },
     { concept: "bio:k7:haltung:f10", prompt: "Was beschreibt Krafttraining?", answer: "Es beschreibt stabilisiert Gelenke und Rumpf.", wrong: [
         "Es beschreibt ergänzt Muskelkraft für Haltung und Bewegung im Stützapparat.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Krafttraining: Stärkung der Muskulatur",
       wissen: fw(
@@ -3078,8 +3078,8 @@ export const k7Haltung: BioBank = {
     },
     { concept: "bio:k7:haltung:f11", prompt: "Woran erkennt man Prävention?", answer: "Sie beschreibt besser als spätere Beschwerden.", wrong: [
         "Sie beschreibt ergänzt Muskelkraft für Haltung und Bewegung im Stützapparat.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Prävention: Vorbeugung durch Bewegung und Haltung",
       wissen: fw(
@@ -3090,8 +3090,8 @@ export const k7Haltung: BioBank = {
     },
     { concept: "bio:k7:haltung:x0", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es beschreibt ergänzt Muskelkraft für Haltung und Bewegung im Stützapparat.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Fehlbelastung.",
       wissen: fw(
@@ -3100,8 +3100,8 @@ export const k7Haltung: BioBank = {
     },
     { concept: "bio:k7:haltung:x1", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es beschreibt ergänzt Muskelkraft für Haltung und Bewegung im Stützapparat.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Prävention.",
       wissen: fw(
@@ -3149,8 +3149,8 @@ export const k8Sucht: BioBank = {
   facts: [
     { concept: "bio:k8:sucht:f0", prompt: "Was beschreibt Sucht?", answer: "Es ist die krankhafte Abhängigkeit von Stoff oder Verhalten.", wrong: [
         "Es bedeutet, professionelle Unterstützung bei Problemen gezielt zu nutzen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Sucht: Krankhafte Abhängigkeit von Stoff oder Verhalten",
       wissen: fw(
@@ -3162,7 +3162,7 @@ export const k8Sucht: BioBank = {
     { concept: "bio:k8:sucht:f1", prompt: "Wozu dient Suchtmittel?", answer: "Es beschreibt substanz mit Abhängigkeitspotenzial.", wrong: [
         "Es ist die krankhafte Abhängigkeit von Stoff oder Verhalten.",
         "Es bedeutet, professionelle Unterstützung bei Problemen gezielt zu nutzen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Suchtmittel: Substanz mit Abhängigkeitspotenzial",
       wissen: fw(
@@ -3174,7 +3174,7 @@ export const k8Sucht: BioBank = {
     { concept: "bio:k8:sucht:f2", prompt: "Was beschreibt Toleranz?", answer: "Sie beschreibt gleiche Wirkung braucht mehr Substanz.", wrong: [
         "Sie ist die krankhafte Abhängigkeit von Stoff oder Verhalten.",
         "Sie bedeutet, professionelle Unterstützung bei Problemen gezielt zu nutzen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Toleranz: Gewöhnung mit Dosissteigerung",
       wissen: fw(
@@ -3186,7 +3186,7 @@ export const k8Sucht: BioBank = {
     { concept: "bio:k8:sucht:f3", prompt: "Woran erkennt man Entzug?", answer: "Es beschreibt körperliche und psychische Symptome.", wrong: [
         "Es bedeutet, professionelle Unterstützung bei Problemen gezielt zu nutzen.",
         "Es ist die krankhafte Abhängigkeit von Stoff oder Verhalten.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Entzug: Beschwerden beim Absetzen",
       wissen: fw(
@@ -3196,9 +3196,9 @@ export const k8Sucht: BioBank = {
       gapAccepted: ["Entzug"],
     },
     { concept: "bio:k8:sucht:f4", prompt: "Was kennzeichnet psychische Abhängigkeit?", answer: "Sie bindet an den Stoff auch ohne starke körperliche Entzugserscheinungen.", wrong: [
-        "Sie ist die krankhafte Abhängigkeit von Stoff oder Verhalten.",
         "Sie bedeutet, professionelle Unterstützung bei Problemen gezielt zu nutzen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie ist die krankhafte Abhängigkeit von Stoff oder Verhalten.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "psychische Abhängigkeit: Starkes Verlangen und Kontrollverlust",
       wissen: fw(
@@ -3208,9 +3208,9 @@ export const k8Sucht: BioBank = {
       gapAccepted: ["psychische Abhängigkeit"],
     },
     { concept: "bio:k8:sucht:f5", prompt: "Was beschreibt körperliche Abhängigkeit?", answer: "Sie beschreibt entzug als Gegenreaktion.", wrong: [
-        "Sie ist die krankhafte Abhängigkeit von Stoff oder Verhalten.",
         "Sie bedeutet, professionelle Unterstützung bei Problemen gezielt zu nutzen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie ist die krankhafte Abhängigkeit von Stoff oder Verhalten.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "körperliche Abhängigkeit: Körper stellt sich auf Substanz ein",
       wissen: fw(
@@ -3222,7 +3222,7 @@ export const k8Sucht: BioBank = {
     { concept: "bio:k8:sucht:f6", prompt: "Was kennzeichnet Mediengebrauch?", answer: "Es beschreibt kann problematisch entgleisen.", wrong: [
         "Es bedeutet, professionelle Unterstützung bei Problemen gezielt zu nutzen.",
         "Es ist die krankhafte Abhängigkeit von Stoff oder Verhalten.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Mediengebrauch: Nutzung digitaler Angebote",
       wissen: fw(
@@ -3234,7 +3234,7 @@ export const k8Sucht: BioBank = {
     { concept: "bio:k8:sucht:f7", prompt: "Welche Rolle hat soziale Folge?", answer: "Sie betrifft Familie, Schule und Arbeit über den körperlichen Schaden hinaus.", wrong: [
         "Sie ist die krankhafte Abhängigkeit von Stoff oder Verhalten.",
         "Sie bedeutet, professionelle Unterstützung bei Problemen gezielt zu nutzen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "soziale Folge: Belastung von Beziehungen und Schule",
       wissen: fw(
@@ -3244,9 +3244,9 @@ export const k8Sucht: BioBank = {
       gapAccepted: ["soziale Folge"],
     },
     { concept: "bio:k8:sucht:f8", prompt: "Was beschreibt psychische Folge?", answer: "Sie beschreibt häufig bei problematischem Konsum.", wrong: [
-        "Sie bedeutet, professionelle Unterstützung bei Problemen gezielt zu nutzen.",
         "Sie ist die krankhafte Abhängigkeit von Stoff oder Verhalten.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bedeutet, professionelle Unterstützung bei Problemen gezielt zu nutzen.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "psychische Folge: Angst, Reizbarkeit, Konzentrationsprobleme",
       wissen: fw(
@@ -3256,9 +3256,9 @@ export const k8Sucht: BioBank = {
       gapAccepted: ["psychische Folge"],
     },
     { concept: "bio:k8:sucht:f9", prompt: "Wozu dient die physische Folge?", answer: "Sie beschreibt je nach Substanz unterschiedlich.", wrong: [
-        "Sie bedeutet, professionelle Unterstützung bei Problemen gezielt zu nutzen.",
         "Sie ist die krankhafte Abhängigkeit von Stoff oder Verhalten.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bedeutet, professionelle Unterstützung bei Problemen gezielt zu nutzen.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "physische Folge: Schäden an Organen",
       wissen: fw(
@@ -3270,7 +3270,7 @@ export const k8Sucht: BioBank = {
     { concept: "bio:k8:sucht:f10", prompt: "Woran erkennt man Prävention?", answer: "Sie beschreibt frühe Hilfe wirkt besser.", wrong: [
         "Sie bedeutet, professionelle Unterstützung bei Problemen gezielt zu nutzen.",
         "Sie ist die krankhafte Abhängigkeit von Stoff oder Verhalten.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Prävention: Vorbeugung durch Wissen und Alternativen",
       wissen: fw(
@@ -3281,8 +3281,8 @@ export const k8Sucht: BioBank = {
     },
     { concept: "bio:k8:sucht:f11", prompt: "Wozu dient die Hilfesuche?", answer: "Sie bedeutet, professionelle Unterstützung bei Problemen gezielt zu nutzen.", wrong: [
         "Sie ist die krankhafte Abhängigkeit von Stoff oder Verhalten.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Hilfesuche: Professionelle Unterstützung nutzen",
       wissen: fw(
@@ -3294,7 +3294,7 @@ export const k8Sucht: BioBank = {
     { concept: "bio:k8:sucht:x0", prompt: "Woran erkennt man Begriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es bedeutet, professionelle Unterstützung bei Problemen gezielt zu nutzen.",
         "Es ist die krankhafte Abhängigkeit von Stoff oder Verhalten.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Verhaltensaspekte.",
       wissen: fw(
@@ -3304,7 +3304,7 @@ export const k8Sucht: BioBank = {
     { concept: "bio:k8:sucht:x1", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es bedeutet, professionelle Unterstützung bei Problemen gezielt zu nutzen.",
         "Es ist die krankhafte Abhängigkeit von Stoff oder Verhalten.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Urteilsbildung.",
       wissen: fw(
@@ -3352,8 +3352,8 @@ export const k8AugeAkkommodation: BioBank = {
   facts: [
     { concept: "bio:k8:akkom:f0", prompt: "Was kennzeichnet Akkommodation?", answer: "Sie beschreibt linse ändert Brechkraft.", wrong: [
         "Sie ist die Probleme vor allem in der Nähe.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Akkommodation: Scharfstellung auf unterschiedliche Entfernungen",
       wissen: fw(
@@ -3364,8 +3364,8 @@ export const k8AugeAkkommodation: BioBank = {
     },
     { concept: "bio:k8:akkom:f1", prompt: "Was kennzeichnet Adaptation?", answer: "Sie beschreibt pupille und Sinneszellen wirken mit.", wrong: [
         "Sie ist die Probleme vor allem in der Nähe.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Adaptation: Anpassung an Helligkeit",
       wissen: fw(
@@ -3376,8 +3376,8 @@ export const k8AugeAkkommodation: BioBank = {
     },
     { concept: "bio:k8:akkom:f2", prompt: "Was kennzeichnet Linse?", answer: "Sie beschreibt verformbar für Nah/Fern.", wrong: [
         "Sie ist die Probleme vor allem in der Nähe.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Linse: Brechendes Element im Auge",
       wissen: fw(
@@ -3388,8 +3388,8 @@ export const k8AugeAkkommodation: BioBank = {
     },
     { concept: "bio:k8:akkom:f3", prompt: "Was beschreibt Ziliarmuskel?", answer: "Es beschreibt anspannung für Nahsehen.", wrong: [
         "Es ist die Probleme vor allem in der Nähe.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Ziliarmuskel: Muskel zur Linsenverformung",
       wissen: fw(
@@ -3400,8 +3400,8 @@ export const k8AugeAkkommodation: BioBank = {
     },
     { concept: "bio:k8:akkom:f4", prompt: "Was kennzeichnet Strahlengang?", answer: "Es beschreibt hornhaut und Linse brechen Licht.", wrong: [
         "Es ist die Probleme vor allem in der Nähe.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Strahlengang: Weg der Lichtstrahlen im Auge",
       wissen: fw(
@@ -3412,8 +3412,8 @@ export const k8AugeAkkommodation: BioBank = {
     },
     { concept: "bio:k8:akkom:f5", prompt: "Was beschreibt Netzhaut?", answer: "Es beschreibt bild muss scharf auftreffen.", wrong: [
         "Es ist die Probleme vor allem in der Nähe.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Netzhaut: Ort der Sinneszellen",
       wissen: fw(
@@ -3424,8 +3424,8 @@ export const k8AugeAkkommodation: BioBank = {
     },
     { concept: "bio:k8:akkom:f6", prompt: "Was kennzeichnet Nahpunkt?", answer: "Es beschreibt mit Alter oft weiter weg.", wrong: [
         "Es ist die Probleme vor allem in der Nähe.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Nahpunkt: Kürzeste Distanz scharfen Sehens",
       wissen: fw(
@@ -3436,8 +3436,8 @@ export const k8AugeAkkommodation: BioBank = {
     },
     { concept: "bio:k8:akkom:f7", prompt: "Was kennzeichnet Fernpunkt?", answer: "Es beschreibt bei normalsichtig im Unendlichen.", wrong: [
         "Es ist die Probleme vor allem in der Nähe.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Fernpunkt: Weitester Punkt scharfen Sehens",
       wissen: fw(
@@ -3448,8 +3448,8 @@ export const k8AugeAkkommodation: BioBank = {
     },
     { concept: "bio:k8:akkom:f8", prompt: "Woran erkennt man Kurzsichtigkeit?", answer: "Sie beschreibt bild vor der Netzhaut.", wrong: [
         "Sie ist die Probleme vor allem in der Nähe.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Kurzsichtigkeit: Scharfes Sehen vor allem nah",
       wissen: fw(
@@ -3459,9 +3459,9 @@ export const k8AugeAkkommodation: BioBank = {
       gapAccepted: ["Kurzsichtigkeit"],
     },
     { concept: "bio:k8:akkom:f9", prompt: "Was kennzeichnet Weitsichtigkeit?", answer: "Sie ist die Probleme vor allem in der Nähe.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Sie filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Weitsichtigkeit: Probleme vor allem in der Nähe",
       wissen: fw(
@@ -3472,8 +3472,8 @@ export const k8AugeAkkommodation: BioBank = {
     },
     { concept: "bio:k8:akkom:f10", prompt: "Was beschreibt Leseabstand?", answer: "Es beschreibt entlastet das Auge.", wrong: [
         "Es ist die Probleme vor allem in der Nähe.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Leseabstand: Sinnvoller Abstand beim Lesen",
       wissen: fw(
@@ -3484,8 +3484,8 @@ export const k8AugeAkkommodation: BioBank = {
     },
     { concept: "bio:k8:akkom:f11", prompt: "Woran erkennt man Arbeitsschutz Auge?", answer: "Sie beschreibt pausen und Beleuchtung.", wrong: [
         "Sie ist die Probleme vor allem in der Nähe.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Arbeitsschutz Auge: Maßnahmen gegen Überlastung",
       wissen: fw(
@@ -3496,8 +3496,8 @@ export const k8AugeAkkommodation: BioBank = {
     },
     { concept: "bio:k8:akkom:x0", prompt: "Woran erkennt man Begriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es ist die Probleme vor allem in der Nähe.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Nah/Fern.",
       wissen: fw(
@@ -3506,8 +3506,8 @@ export const k8AugeAkkommodation: BioBank = {
     },
     { concept: "bio:k8:akkom:x1", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es ist die Probleme vor allem in der Nähe.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Gesunderhaltung.",
       wissen: fw(
@@ -3554,9 +3554,9 @@ export const k8Gehirn: BioBank = {
   conceptPrefix: "bio:k8:gehirn",
   facts: [
     { concept: "bio:k8:gehirn:f0", prompt: "Was beschreibt Großhirn?", answer: "Es beschreibt wahrnehmung, Denken, Willkürmotorik.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Großhirn: Sitz bewusster Prozesse und Cortex",
       wissen: fw(
@@ -3566,9 +3566,9 @@ export const k8Gehirn: BioBank = {
       gapAccepted: ["Großhirn"],
     },
     { concept: "bio:k8:gehirn:f1", prompt: "Was beschreibt Kleinhirn?", answer: "Es beschreibt feinabstimmung und Gleichgewicht.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Kleinhirn: Koordination von Bewegungen",
       wissen: fw(
@@ -3578,9 +3578,9 @@ export const k8Gehirn: BioBank = {
       gapAccepted: ["Kleinhirn"],
     },
     { concept: "bio:k8:gehirn:f2", prompt: "Was beschreibt Stammhirn?", answer: "Es beschreibt atmung und Kreislaufregulation.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Stammhirn: Grundlegende Lebensfunktionen",
       wissen: fw(
@@ -3590,9 +3590,9 @@ export const k8Gehirn: BioBank = {
       gapAccepted: ["Stammhirn"],
     },
     { concept: "bio:k8:gehirn:f3", prompt: "Woran erkennt man Gedächtnis?", answer: "Es beschreibt kurz- und Langzeitgedächtnis.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Gedächtnis: Speicherung von Informationen",
       wissen: fw(
@@ -3602,9 +3602,9 @@ export const k8Gehirn: BioBank = {
       gapAccepted: ["Gedächtnis"],
     },
     { concept: "bio:k8:gehirn:f4", prompt: "Woran erkennt man Informationsspeicherung?", answer: "Sie beschreibt über synaptische Veränderungen.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Sie bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Informationsspeicherung: Ablegen von Erfahrungen",
       wissen: fw(
@@ -3614,9 +3614,9 @@ export const k8Gehirn: BioBank = {
       gapAccepted: ["Informationsspeicherung"],
     },
     { concept: "bio:k8:gehirn:f5", prompt: "Woran erkennt man Synapse?", answer: "Sie beschreibt kontaktstelle zwischen Neuronen.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Sie filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Synapse: Kontaktstelle zwischen Neuronen",
       wissen: fw(
@@ -3638,9 +3638,9 @@ export const k8Gehirn: BioBank = {
       gapAccepted: ["Neuron"],
     },
     { concept: "bio:k8:gehirn:f7", prompt: "Welche Rolle hat Hirnrinde?", answer: "Sie beschreibt viele höhere Leistungen.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Sie filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Hirnrinde: Äußere Schicht des Großhirns",
       wissen: fw(
@@ -3650,9 +3650,9 @@ export const k8Gehirn: BioBank = {
       gapAccepted: ["Hirnrinde"],
     },
     { concept: "bio:k8:gehirn:f8", prompt: "Welche Rolle hat Lernprozess?", answer: "Es beschreibt stärkt oder schwächt Verbindungen.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Lernprozess: Veränderung durch Erfahrung",
       wissen: fw(
@@ -3662,9 +3662,9 @@ export const k8Gehirn: BioBank = {
       gapAccepted: ["Lernprozess"],
     },
     { concept: "bio:k8:gehirn:f9", prompt: "Was kennzeichnet Schlaf?", answer: "Es beschreibt wichtig für Gedächtnis.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Schlaf: Erholungs- und Konsolidierungsphase",
       wissen: fw(
@@ -3674,9 +3674,9 @@ export const k8Gehirn: BioBank = {
       gapAccepted: ["Schlaf"],
     },
     { concept: "bio:k8:gehirn:f10", prompt: "Was kennzeichnet Lokalisation?", answer: "Sie beschreibt nicht alles ist streng getrennt.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Sie filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Lokalisation: Zuordnung von Leistungen zu Regionen",
       wissen: fw(
@@ -3686,9 +3686,9 @@ export const k8Gehirn: BioBank = {
       gapAccepted: ["Lokalisation"],
     },
     { concept: "bio:k8:gehirn:f11", prompt: "Was kennzeichnet Netzwerk?", answer: "Es beschreibt komplexe Leistungen entstehen verteilt.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Netzwerk: Zusammenarbeit vieler Areale",
       wissen: fw(
@@ -3698,9 +3698,9 @@ export const k8Gehirn: BioBank = {
       gapAccepted: ["Netzwerk"],
     },
     { concept: "bio:k8:gehirn:x0", prompt: "Welche Rolle hat das Gehirn für das Gedächtnis?", answer: "Es beschreibt das Gehirn für das Gedächtnis anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Informationsverarbeitung.",
       wissen: fw(
@@ -3708,9 +3708,9 @@ export const k8Gehirn: BioBank = {
       ),
     },
     { concept: "bio:k8:gehirn:x1", prompt: "Woran erkennt man x1?", answer: "Es beschreibt x1 anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Konsolidierung.",
       wissen: fw(
@@ -3758,8 +3758,8 @@ export const k8NervGesundheit: BioBank = {
   facts: [
     { concept: "bio:k8:nervges:f0", prompt: "Was kennzeichnet Schlaf?", answer: "Es beschreibt mangel beeinträchtigt Leistung.", wrong: [
         "Es stört bei Übermaß Schlaf, Konzentration und Erholung im Alltag.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Schlaf: Erholung für Gehirn und Körper",
       wissen: fw(
@@ -3770,8 +3770,8 @@ export const k8NervGesundheit: BioBank = {
     },
     { concept: "bio:k8:nervges:f1", prompt: "Woran erkennt man Reizüberflutung?", answer: "Sie beschreibt kann Stress und Ermüdung fördern.", wrong: [
         "Sie stört bei Übermaß Schlaf, Konzentration und Erholung im Alltag.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Reizüberflutung: Zu viele Reize gleichzeitig",
       wissen: fw(
@@ -3782,8 +3782,8 @@ export const k8NervGesundheit: BioBank = {
     },
     { concept: "bio:k8:nervges:f2", prompt: "Wozu dient Stress?", answer: "Es beschreibt kurz hilfreich, dauerhaft schädlich.", wrong: [
         "Es stört bei Übermaß Schlaf, Konzentration und Erholung im Alltag.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Stress: Belastungsreaktion des Organismus",
       wissen: fw(
@@ -3794,8 +3794,8 @@ export const k8NervGesundheit: BioBank = {
     },
     { concept: "bio:k8:nervges:f3", prompt: "Woran erkennt man Entspannung?", answer: "Sie beschreibt gegenspieler zu Dauerstress.", wrong: [
         "Sie stört bei Übermaß Schlaf, Konzentration und Erholung im Alltag.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Entspannung: Absenken der Anspannung",
       wissen: fw(
@@ -3805,9 +3805,9 @@ export const k8NervGesundheit: BioBank = {
       gapAccepted: ["Entspannung"],
     },
     { concept: "bio:k8:nervges:f4", prompt: "Was kennzeichnet Bildschirmzeit?", answer: "Es stört bei Übermaß Schlaf, Konzentration und Erholung im Alltag.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Bildschirmzeit: Dauer der Mediennutzung",
       wissen: fw(
@@ -3818,8 +3818,8 @@ export const k8NervGesundheit: BioBank = {
     },
     { concept: "bio:k8:nervges:f5", prompt: "Was beschreibt Pausen?", answer: "Es beschreibt unterbrechungen der Belastung.", wrong: [
         "Es stört bei Übermaß Schlaf, Konzentration und Erholung im Alltag.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Pausen: Unterbrechungen der Belastung",
       wissen: fw(
@@ -3830,8 +3830,8 @@ export const k8NervGesundheit: BioBank = {
     },
     { concept: "bio:k8:nervges:f6", prompt: "Woran erkennt man Bewegung?", answer: "Sie beschreibt wirkt positiv auf Stressregulation.", wrong: [
         "Sie stört bei Übermaß Schlaf, Konzentration und Erholung im Alltag.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Bewegung: Körperliche Aktivität",
       wissen: fw(
@@ -3842,8 +3842,8 @@ export const k8NervGesundheit: BioBank = {
     },
     { concept: "bio:k8:nervges:f7", prompt: "Was kennzeichnet Suchtgefahr?", answer: "Es beschreibt belastet das Nervensystem mit.", wrong: [
         "Es stört bei Übermaß Schlaf, Konzentration und Erholung im Alltag.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Suchtgefahr: Risiko problematischer Gewohnheiten",
       wissen: fw(
@@ -3854,8 +3854,8 @@ export const k8NervGesundheit: BioBank = {
     },
     { concept: "bio:k8:nervges:f8", prompt: "Was kennzeichnet Konzentration?", answer: "Sie beschreibt braucht Erholung und Reizdosierung.", wrong: [
         "Sie stört bei Übermaß Schlaf, Konzentration und Erholung im Alltag.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Konzentration: Fokussierte Aufmerksamkeit",
       wissen: fw(
@@ -3866,8 +3866,8 @@ export const k8NervGesundheit: BioBank = {
     },
     { concept: "bio:k8:nervges:f9", prompt: "Was kennzeichnet Recovery?", answer: "Es beschreibt notwendig für Leistungsfähigkeit.", wrong: [
         "Es stört bei Übermaß Schlaf, Konzentration und Erholung im Alltag.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Recovery: Erholung nach Belastung",
       wissen: fw(
@@ -3878,8 +3878,8 @@ export const k8NervGesundheit: BioBank = {
     },
     { concept: "bio:k8:nervges:f10", prompt: "Welche Rolle hat Tagesrhythmus?", answer: "Er beschreibt wechsel von Aktivität und Ruhe.", wrong: [
         "Er stört bei Übermaß Schlaf, Konzentration und Erholung im Alltag.",
-        "Er spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Er fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Er bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Er leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Tagesrhythmus: Wechsel von Aktivität und Ruhe",
       wissen: fw(
@@ -3890,8 +3890,8 @@ export const k8NervGesundheit: BioBank = {
     },
     { concept: "bio:k8:nervges:f11", prompt: "Was beschreibt Selbstregulation?", answer: "Sie beschreibt schlüssel zur Gesunderhaltung.", wrong: [
         "Sie stört bei Übermaß Schlaf, Konzentration und Erholung im Alltag.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Selbstregulation: Steuern von Belastung und Erholung",
       wissen: fw(
@@ -3902,8 +3902,8 @@ export const k8NervGesundheit: BioBank = {
     },
     { concept: "bio:k8:nervges:x0", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es stört bei Übermaß Schlaf, Konzentration und Erholung im Alltag.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Erholung.",
       wissen: fw(
@@ -3912,8 +3912,8 @@ export const k8NervGesundheit: BioBank = {
     },
     { concept: "bio:k8:nervges:x1", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es stört bei Übermaß Schlaf, Konzentration und Erholung im Alltag.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Dosierung.",
       wissen: fw(
@@ -3960,9 +3960,9 @@ export const k8Zyklus: BioBank = {
   conceptPrefix: "bio:k8:zyklus",
   facts: [
     { concept: "bio:k8:zyklus:f0", prompt: "Was kennzeichnet Menstruationszyklus?", answer: "Er beschreibt gesteuert durch Hormone.", wrong: [
-        "Er spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Er fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Er umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Er bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Er leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Er filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Menstruationszyklus: Monatlicher Regelkreis der Gebärmutterschleimhaut",
       wissen: fw(
@@ -3972,9 +3972,9 @@ export const k8Zyklus: BioBank = {
       gapAccepted: ["Menstruationszyklus"],
     },
     { concept: "bio:k8:zyklus:f1", prompt: "Welche Rolle hat Eisprung?", answer: "Sie beschreibt freisetzung einer Eizelle.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Sie bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Eisprung: Freisetzung einer Eizelle",
       wissen: fw(
@@ -3984,9 +3984,9 @@ export const k8Zyklus: BioBank = {
       gapAccepted: ["Eisprung"],
     },
     { concept: "bio:k8:zyklus:f2", prompt: "Woran erkennt man Follikelphase?", answer: "Sie beschreibt östrogene steigen typischerweise.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Sie filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Follikelphase: Reifungsphase vor dem Eisprung",
       wissen: fw(
@@ -3996,9 +3996,9 @@ export const k8Zyklus: BioBank = {
       gapAccepted: ["Follikelphase"],
     },
     { concept: "bio:k8:zyklus:f3", prompt: "Was kennzeichnet Lutealphase?", answer: "Sie beschreibt progesteron dominiert oft.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Sie filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Lutealphase: Phase nach dem Eisprung",
       wissen: fw(
@@ -4008,9 +4008,9 @@ export const k8Zyklus: BioBank = {
       gapAccepted: ["Lutealphase"],
     },
     { concept: "bio:k8:zyklus:f4", prompt: "Was beschreibt Menstruation?", answer: "Sie beschreibt beginn eines neuen Zyklus.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Sie filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Menstruation: Abstoßen der Schleimhaut",
       wissen: fw(
@@ -4020,9 +4020,9 @@ export const k8Zyklus: BioBank = {
       gapAccepted: ["Menstruation"],
     },
     { concept: "bio:k8:zyklus:f5", prompt: "Woran erkennt man Östrogen?", answer: "Es beschreibt baut Schleimhaut mit auf.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Östrogen: Weibliches Geschlechtshormon",
       wissen: fw(
@@ -4032,9 +4032,9 @@ export const k8Zyklus: BioBank = {
       gapAccepted: ["Östrogen"],
     },
     { concept: "bio:k8:zyklus:f6", prompt: "Woran erkennt man Progesteron?", answer: "Es bereitet die Gebärmutterschleimhaut auf eine mögliche Schwangerschaft vor.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Progesteron: Gelbkörperhormon",
       wissen: fw(
@@ -4044,9 +4044,9 @@ export const k8Zyklus: BioBank = {
       gapAccepted: ["Progesteron"],
     },
     { concept: "bio:k8:zyklus:f7", prompt: "Was kennzeichnet Gebärmutterschleimhaut?", answer: "Es beschreibt wird zyklisch auf- und abgebaut.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Gebärmutterschleimhaut: Innere Auskleidung der Gebärmutter",
       wissen: fw(
@@ -4056,9 +4056,9 @@ export const k8Zyklus: BioBank = {
       gapAccepted: ["Gebärmutterschleimhaut"],
     },
     { concept: "bio:k8:zyklus:f8", prompt: "Welche Rolle hat Gelbkörper?", answer: "Er ist der Restfollikel nach dem Eisprung und bildet vor allem Progesteron.", wrong: [
-        "Er spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Er fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Er umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Er regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Er bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Er bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Gelbkörper: Restfollikel nach Eisprung",
       wissen: fw(
@@ -4068,9 +4068,9 @@ export const k8Zyklus: BioBank = {
       gapAccepted: ["Gelbkörper"],
     },
     { concept: "bio:k8:zyklus:f9", prompt: "Woran erkennt man Regulation?", answer: "Sie beschreibt rückkopplung der Hormone.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Sie filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Regulation: Steuerung durch Hypophyse und Eierstöcke",
       wissen: fw(
@@ -4080,9 +4080,9 @@ export const k8Zyklus: BioBank = {
       gapAccepted: ["Regulation"],
     },
     { concept: "bio:k8:zyklus:f10", prompt: "Was beschreibt Zykluslänge?", answer: "Sie beschreibt individuell variabel um ~28 Tage.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Sie filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Zykluslänge: Dauer eines Zyklus",
       wissen: fw(
@@ -4092,9 +4092,9 @@ export const k8Zyklus: BioBank = {
       gapAccepted: ["Zykluslänge"],
     },
     { concept: "bio:k8:zyklus:f11", prompt: "Was kennzeichnet Fruchtbare Tage?", answer: "Sie beschreibt um den Eisprung.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Sie filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Fruchtbare Tage: Zeitraum erhöhter Empfängniswahrscheinlichkeit",
       wissen: fw(
@@ -4104,9 +4104,9 @@ export const k8Zyklus: BioBank = {
       gapAccepted: ["Fruchtbare Tage"],
     },
     { concept: "bio:k8:zyklus:x0", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Regulation.",
       wissen: fw(
@@ -4114,9 +4114,9 @@ export const k8Zyklus: BioBank = {
       ),
     },
     { concept: "bio:k8:zyklus:x1", prompt: "Was beschreibt Menstruationszyklus?", answer: "Es beschreibt wird durch Hormone gesteuert und bereitet die Gebärmutter vor.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Timing.",
       wissen: fw(
@@ -4163,9 +4163,9 @@ export const k8Vielfalt: BioBank = {
   conceptPrefix: "bio:k8:vielfalt",
   facts: [
     { concept: "bio:k8:vielfalt:f0", prompt: "Was kennzeichnet sexuelle Vielfalt?", answer: "Es beschreibt teil menschlicher Vielfalt.", wrong: [
-        "Es ist die Wirkung von Internet und sozialen Medien.",
         "Es beschreibt stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es ist die Wirkung von Internet und sozialen Medien.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "sexuelle Vielfalt: Unterschiedliche sexuelle Orientierungen",
       wissen: fw(
@@ -4175,9 +4175,9 @@ export const k8Vielfalt: BioBank = {
       gapAccepted: ["sexuelle Vielfalt"],
     },
     { concept: "bio:k8:vielfalt:f1", prompt: "Welche Rolle hat geschlechtliche Vielfalt?", answer: "Es beschreibt biologisch und sozial differenziert.", wrong: [
-        "Es beschreibt stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.",
         "Es ist die Wirkung von Internet und sozialen Medien.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es beschreibt stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "geschlechtliche Vielfalt: Unterschiedliche Geschlechtsidentitäten und -merkmale",
       wissen: fw(
@@ -4187,9 +4187,9 @@ export const k8Vielfalt: BioBank = {
       gapAccepted: ["geschlechtliche Vielfalt"],
     },
     { concept: "bio:k8:vielfalt:f2", prompt: "Was beschreibt Heterosexualität?", answer: "Sie beschreibt form sexueller Orientierung.", wrong: [
-        "Sie beschreibt stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.",
         "Sie ist die Wirkung von Internet und sozialen Medien.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie beschreibt stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Heterosexualität: Anziehung zum anderen Geschlecht",
       wissen: fw(
@@ -4201,7 +4201,7 @@ export const k8Vielfalt: BioBank = {
     { concept: "bio:k8:vielfalt:f3", prompt: "Woran erkennt man Homosexualität?", answer: "Sie beschreibt form sexueller Orientierung.", wrong: [
         "Sie ist die Wirkung von Internet und sozialen Medien.",
         "Sie beschreibt stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Homosexualität: Anziehung zum gleichen Geschlecht",
       wissen: fw(
@@ -4213,7 +4213,7 @@ export const k8Vielfalt: BioBank = {
     { concept: "bio:k8:vielfalt:f4", prompt: "Woran erkennt man Intersexualität im Thema Sexuelle Vielfalt?", answer: "Sie beschreibt nicht immer eindeutig weiblich/männlich.", wrong: [
         "Sie beschreibt stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.",
         "Sie ist die Wirkung von Internet und sozialen Medien.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Intersexualität: Varianten der Geschlechtsmerkmale",
       wissen: fw(
@@ -4223,9 +4223,9 @@ export const k8Vielfalt: BioBank = {
       gapAccepted: ["Intersexualität"],
     },
     { concept: "bio:k8:vielfalt:f5", prompt: "Woran erkennt man Transgender im Thema Sexuelle Vielfalt?", answer: "Er beschreibt identität ist subjektiv erlebt.", wrong: [
-        "Er ist die Wirkung von Internet und sozialen Medien.",
         "Er beschreibt stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.",
-        "Er spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Er ist die Wirkung von Internet und sozialen Medien.",
+        "Er bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Transgender: Geschlechtsidentität weicht vom Zuweisungsgeschlecht ab",
       wissen: fw(
@@ -4235,9 +4235,9 @@ export const k8Vielfalt: BioBank = {
       gapAccepted: ["Transgender"],
     },
     { concept: "bio:k8:vielfalt:f6", prompt: "Was kennzeichnet Partnerbeziehung?", answer: "Sie beschreibt beziehungsform zwischen Menschen.", wrong: [
-        "Sie ist die Wirkung von Internet und sozialen Medien.",
         "Sie beschreibt stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie ist die Wirkung von Internet und sozialen Medien.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Partnerbeziehung: Beziehungsform zwischen Menschen",
       wissen: fw(
@@ -4247,9 +4247,9 @@ export const k8Vielfalt: BioBank = {
       gapAccepted: ["Partnerbeziehung"],
     },
     { concept: "bio:k8:vielfalt:f7", prompt: "Was beschreibt Konsens im Thema Sexuelle Vielfalt?", answer: "Es beschreibt grundlage respektvoller Sexualität.", wrong: [
-        "Es beschreibt stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.",
         "Es ist die Wirkung von Internet und sozialen Medien.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es beschreibt stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Konsens: Freiwillige Zustimmung",
       wissen: fw(
@@ -4261,7 +4261,7 @@ export const k8Vielfalt: BioBank = {
     { concept: "bio:k8:vielfalt:f8", prompt: "Was beschreibt Jugendschutz?", answer: "Es beschreibt rechtliche und ethische Grenze.", wrong: [
         "Es ist die Wirkung von Internet und sozialen Medien.",
         "Es beschreibt stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Jugendschutz: Schutz Minderjähriger",
       wissen: fw(
@@ -4272,8 +4272,8 @@ export const k8Vielfalt: BioBank = {
     },
     { concept: "bio:k8:vielfalt:f9", prompt: "Was kennzeichnet Medieninfluss?", answer: "Es ist die Wirkung von Internet und sozialen Medien.", wrong: [
         "Es beschreibt stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Medieninfluss: Wirkung von Internet und Sozialen Medien",
       wissen: fw(
@@ -4283,9 +4283,9 @@ export const k8Vielfalt: BioBank = {
       gapAccepted: ["Medieninfluss"],
     },
     { concept: "bio:k8:vielfalt:f10", prompt: "Welche Rolle hat Respekt?", answer: "Es beschreibt achtung der Würde anderer.", wrong: [
-        "Es beschreibt stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.",
         "Es ist die Wirkung von Internet und sozialen Medien.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es beschreibt stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Respekt: Achtung der Würde anderer",
       wissen: fw(
@@ -4296,8 +4296,8 @@ export const k8Vielfalt: BioBank = {
     },
     { concept: "bio:k8:vielfalt:f11", prompt: "Was kennzeichnet Aufklärung?", answer: "Sie beschreibt stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.", wrong: [
         "Sie ist die Wirkung von Internet und sozialen Medien.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Aufklärung: Sachliche Information",
       wissen: fw(
@@ -4309,7 +4309,7 @@ export const k8Vielfalt: BioBank = {
     { concept: "bio:k8:vielfalt:x0", prompt: "Woran erkennt man Begriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es ist die Wirkung von Internet und sozialen Medien.",
         "Es beschreibt stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Vielfalt.",
       wissen: fw(
@@ -4317,9 +4317,9 @@ export const k8Vielfalt: BioBank = {
       ),
     },
     { concept: "bio:k8:vielfalt:x1", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
-        "Es ist die Wirkung von Internet und sozialen Medien.",
         "Es beschreibt stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es ist die Wirkung von Internet und sozialen Medien.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Medienbildung.",
       wissen: fw(
@@ -4366,9 +4366,9 @@ export const k9Gewaesser: BioBank = {
   conceptPrefix: "bio:k9:gewaesser",
   facts: [
     { concept: "bio:k9:gewaesser:f0", prompt: "Was kennzeichnet Zonierung?", answer: "Sie beschreibt ufer, Freiwasser, Boden.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Sie bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Zonierung: Gliederung eines Sees in Lebenszonen",
       wissen: fw(
@@ -4378,9 +4378,9 @@ export const k9Gewaesser: BioBank = {
       gapAccepted: ["Zonierung"],
     },
     { concept: "bio:k9:gewaesser:f1", prompt: "Was kennzeichnet Litoral?", answer: "Es beschreibt lichtreich, viele Pflanzen.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Litoral: Uferzone",
       wissen: fw(
@@ -4390,9 +4390,9 @@ export const k9Gewaesser: BioBank = {
       gapAccepted: ["Litoral"],
     },
     { concept: "bio:k9:gewaesser:f2", prompt: "Welche Rolle hat Pelagial?", answer: "Es beschreibt plankton dominiert oft.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Pelagial: Freiwasserzone",
       wissen: fw(
@@ -4402,9 +4402,9 @@ export const k9Gewaesser: BioBank = {
       gapAccepted: ["Pelagial"],
     },
     { concept: "bio:k9:gewaesser:f3", prompt: "Woran erkennt man Profundal?", answer: "Es beschreibt abbau und Sedimente.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Profundal: Bodenzone",
       wissen: fw(
@@ -4414,9 +4414,9 @@ export const k9Gewaesser: BioBank = {
       gapAccepted: ["Profundal"],
     },
     { concept: "bio:k9:gewaesser:f4", prompt: "Welche Rolle hat Phytoplankton?", answer: "Es beschreibt produzenten im Freiwasser.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Phytoplankton: Pflanzliches Plankton",
       wissen: fw(
@@ -4426,9 +4426,9 @@ export const k9Gewaesser: BioBank = {
       gapAccepted: ["Phytoplankton"],
     },
     { concept: "bio:k9:gewaesser:f5", prompt: "Was beschreibt Zooplankton?", answer: "Es beschreibt konsumenten kleiner Organismen.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Zooplankton: Tierisches Plankton",
       wissen: fw(
@@ -4438,9 +4438,9 @@ export const k9Gewaesser: BioBank = {
       gapAccepted: ["Zooplankton"],
     },
     { concept: "bio:k9:gewaesser:f6", prompt: "Welche Rolle hat Vollzirkulation?", answer: "Sie beschreibt durchmischung der Wasserschichten.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Sie bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Vollzirkulation: Durchmischung der Wasserschichten",
       wissen: fw(
@@ -4450,9 +4450,9 @@ export const k9Gewaesser: BioBank = {
       gapAccepted: ["Vollzirkulation"],
     },
     { concept: "bio:k9:gewaesser:f7", prompt: "Woran erkennt man Stagnation?", answer: "Sie beschreibt schichtung ohne Durchmischung.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Sie bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Stagnation: Schichtung ohne Durchmischung",
       wissen: fw(
@@ -4462,9 +4462,9 @@ export const k9Gewaesser: BioBank = {
       gapAccepted: ["Stagnation"],
     },
     { concept: "bio:k9:gewaesser:f8", prompt: "Was kennzeichnet Sprungschicht?", answer: "Sie trennt warmes Oberflächenwasser von kaltem Tiefenwasser in Seen ab.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Sie bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Sprungschicht: Temperaturgrenze im Sommer",
       wissen: fw(
@@ -4474,9 +4474,9 @@ export const k9Gewaesser: BioBank = {
       gapAccepted: ["Sprungschicht"],
     },
     { concept: "bio:k9:gewaesser:f9", prompt: "Woran erkennt man Ufervegetation?", answer: "Sie beschreibt struktur und Lebensraum.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Sie filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Ufervegetation: Pflanzen am Gewässerrand",
       wissen: fw(
@@ -4486,9 +4486,9 @@ export const k9Gewaesser: BioBank = {
       gapAccepted: ["Ufervegetation"],
     },
     { concept: "bio:k9:gewaesser:f10", prompt: "Was kennzeichnet Trophiestufe?", answer: "Sie beschreibt produzent bis Destruent.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Sie filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Trophiestufe: Ernährungsstufe im Nahrungsnetz",
       wissen: fw(
@@ -4498,9 +4498,9 @@ export const k9Gewaesser: BioBank = {
       gapAccepted: ["Trophiestufe"],
     },
     { concept: "bio:k9:gewaesser:f11", prompt: "Was beschreibt Sauerstoffgehalt?", answer: "Es beschreibt begrenzt viele Organismen.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Sauerstoffgehalt: Gelöster O₂ im Wasser",
       wissen: fw(
@@ -4510,9 +4510,9 @@ export const k9Gewaesser: BioBank = {
       gapAccepted: ["Sauerstoffgehalt"],
     },
     { concept: "bio:k9:gewaesser:x0", prompt: "Was kennzeichnet Zonierung eines Sees?", answer: "Es beschreibt zonierung eines Sees anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Raumstruktur.",
       wissen: fw(
@@ -4520,9 +4520,9 @@ export const k9Gewaesser: BioBank = {
       ),
     },
     { concept: "bio:k9:gewaesser:x1", prompt: "Was beschreibt Zonierung?", answer: "Es beschreibt gliedert Gewässer in ufer, Freiwasser und Bodenbereiche.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
+        "Es filtert Blut in den Nieren und bildet daraus den Primärharn.",
       ],
       explanation: "Durchmischung.",
       wissen: fw(
@@ -4570,8 +4570,8 @@ export const k9Sukzession: BioBank = {
   facts: [
     { concept: "bio:k9:suks:f0", prompt: "Welche Rolle hat Sukzession?", answer: "Sie beschreibt zeitliche Veränderung eines Ökosystems.", wrong: [
         "Sie ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Sukzession: Gerichtete Abfolge von Lebensgemeinschaften",
       wissen: fw(
@@ -4582,8 +4582,8 @@ export const k9Sukzession: BioBank = {
     },
     { concept: "bio:k9:suks:f1", prompt: "Woran erkennt man Pionierart?", answer: "Es beschreibt anspruchslos, oft schnellwüchsig.", wrong: [
         "Es ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Pionierart: Frühe Besiedler gestörter Flächen",
       wissen: fw(
@@ -4594,8 +4594,8 @@ export const k9Sukzession: BioBank = {
     },
     { concept: "bio:k9:suks:f2", prompt: "Was kennzeichnet Klimax?", answer: "Es beschreibt unter gegebenen Bedingungen.", wrong: [
         "Es ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Klimax: Relativ stabile Endgesellschaft",
       wissen: fw(
@@ -4606,8 +4606,8 @@ export const k9Sukzession: BioBank = {
     },
     { concept: "bio:k9:suks:f3", prompt: "Was kennzeichnet Primärsukzession?", answer: "Sie beschreibt auf blankem Gestein.", wrong: [
         "Sie ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Primärsukzession: Neubesiedlung ohne Bodenstart",
       wissen: fw(
@@ -4618,8 +4618,8 @@ export const k9Sukzession: BioBank = {
     },
     { concept: "bio:k9:suks:f4", prompt: "Woran erkennt man Sekundärsukzession?", answer: "Sie beschreibt neuentwicklung nach Störung mit Boden.", wrong: [
         "Sie ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Sekundärsukzession: Neuentwicklung nach Störung mit Boden",
       wissen: fw(
@@ -4630,8 +4630,8 @@ export const k9Sukzession: BioBank = {
     },
     { concept: "bio:k9:suks:f5", prompt: "Welche Rolle hat Artwechsel?", answer: "Es beschreibt im Lauf der Sukzession.", wrong: [
         "Es ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Artwechsel: Austausch dominanter Arten",
       wissen: fw(
@@ -4642,8 +4642,8 @@ export const k9Sukzession: BioBank = {
     },
     { concept: "bio:k9:suks:f6", prompt: "Welche Rolle hat Bodenbildung?", answer: "Sie beschreibt ermöglicht anspruchsvollere Pflanzen.", wrong: [
         "Sie ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Bodenbildung: Entwicklung von Bodenhorizonten",
       wissen: fw(
@@ -4653,9 +4653,9 @@ export const k9Sukzession: BioBank = {
       gapAccepted: ["Bodenbildung"],
     },
     { concept: "bio:k9:suks:f7", prompt: "Was beschreibt Konkurrenz?", answer: "Sie ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.", wrong: [
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Sie umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Sie bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Konkurrenz: Wettbewerb um Ressourcen",
       wissen: fw(
@@ -4666,8 +4666,8 @@ export const k9Sukzession: BioBank = {
     },
     { concept: "bio:k9:suks:f8", prompt: "Welche Rolle hat Störung?", answer: "Sie beschreibt sturm oder Brand.", wrong: [
         "Sie ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Störung: Ereignis das Gemeinschaften zurücksetzt",
       wissen: fw(
@@ -4678,8 +4678,8 @@ export const k9Sukzession: BioBank = {
     },
     { concept: "bio:k9:suks:f9", prompt: "Welche Rolle hat Biodiversitätsverlauf?", answer: "Es beschreibt oft Anstieg dann Umschichtung.", wrong: [
         "Es ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Biodiversitätsverlauf: Änderung der Artenzahl über Zeit",
       wissen: fw(
@@ -4690,8 +4690,8 @@ export const k9Sukzession: BioBank = {
     },
     { concept: "bio:k9:suks:f10", prompt: "Was kennzeichnet Moosstadium?", answer: "Es beschreibt pioniermoose und Flechten.", wrong: [
         "Es ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Moosstadium: Frühe Phase auf Rohboden",
       wissen: fw(
@@ -4702,8 +4702,8 @@ export const k9Sukzession: BioBank = {
     },
     { concept: "bio:k9:suks:f11", prompt: "Woran erkennt man Waldstadium?", answer: "Es beschreibt oft nahe Klimax in Mitteleuropa.", wrong: [
         "Es ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Waldstadium: Späte Phase mit Gehölzen",
       wissen: fw(
@@ -4714,8 +4714,8 @@ export const k9Sukzession: BioBank = {
     },
     { concept: "bio:k9:suks:x0", prompt: "Welche Rolle hat Sukzession?", answer: "Sie beschreibt zeitliche Veränderung eines Ökosystems.", wrong: [
         "Sie ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Entwicklung.",
       wissen: fw(
@@ -4724,8 +4724,8 @@ export const k9Sukzession: BioBank = {
     },
     { concept: "bio:k9:suks:x1", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Konkurrenz.",
       wissen: fw(
@@ -4772,9 +4772,9 @@ export const k9Faktoren: BioBank = {
   conceptPrefix: "bio:k9:fakt",
   facts: [
     { concept: "bio:k9:fakt:f0", prompt: "Was beschreibt abiotischer Faktor?", answer: "Er beschreibt temperatur, Licht, Wasser.", wrong: [
-        "Er ist der Bereich eines Faktors mit höchster Leistung des Organismus oder Enzyms.",
         "Er ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Er spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Er ist der Bereich eines Faktors mit höchster Leistung des Organismus oder Enzyms.",
+        "Er bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "abiotischer Faktor: Unbelebte Umweltgröße",
       wissen: fw(
@@ -4786,7 +4786,7 @@ export const k9Faktoren: BioBank = {
     { concept: "bio:k9:fakt:f1", prompt: "Was kennzeichnet biotischer Faktor?", answer: "Er beschreibt konkurrenz, Symbiose, Fraß.", wrong: [
         "Er ist der Bereich eines Faktors mit höchster Leistung des Organismus oder Enzyms.",
         "Er ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Er spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Er bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "biotischer Faktor: Wirkung durch Lebewesen",
       wissen: fw(
@@ -4798,7 +4798,7 @@ export const k9Faktoren: BioBank = {
     { concept: "bio:k9:fakt:f2", prompt: "Welche Rolle hat Toleranzbereich?", answer: "Es beschreibt außerhalb: Stress oder Tod.", wrong: [
         "Es ist der Bereich eines Faktors mit höchster Leistung des Organismus oder Enzyms.",
         "Es ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Toleranzbereich: Bereich erträglicher Faktorwerte",
       wissen: fw(
@@ -4810,7 +4810,7 @@ export const k9Faktoren: BioBank = {
     { concept: "bio:k9:fakt:f3", prompt: "Was kennzeichnet Ökologische Potenz?", answer: "Sie beschreibt breit oder eng.", wrong: [
         "Sie ist der Bereich eines Faktors mit höchster Leistung des Organismus oder Enzyms.",
         "Sie ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Ökologische Potenz: Reaktionsbreite einer Art",
       wissen: fw(
@@ -4822,7 +4822,7 @@ export const k9Faktoren: BioBank = {
     { concept: "bio:k9:fakt:f4", prompt: "Welche Rolle hat Minimumfaktor?", answer: "Er beschreibt knappsten begrenzender Faktor.", wrong: [
         "Er ist der Bereich eines Faktors mit höchster Leistung des Organismus oder Enzyms.",
         "Er ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Er spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Er bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Minimumfaktor: Knappster begrenzender Faktor",
       wissen: fw(
@@ -4833,8 +4833,8 @@ export const k9Faktoren: BioBank = {
     },
     { concept: "bio:k9:fakt:f5", prompt: "Was kennzeichnet Optimum?", answer: "Es ist der Bereich eines Faktors mit höchster Leistung des Organismus oder Enzyms.", wrong: [
         "Es ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Optimum: Günstigster Bereich eines Faktors",
       wissen: fw(
@@ -4844,9 +4844,9 @@ export const k9Faktoren: BioBank = {
       gapAccepted: ["Optimum"],
     },
     { concept: "bio:k9:fakt:f6", prompt: "Woran erkennt man Lichtpflanze?", answer: "Sie beschreibt wächst schlecht im Schatten.", wrong: [
-        "Sie ist der Bereich eines Faktors mit höchster Leistung des Organismus oder Enzyms.",
         "Sie ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie ist der Bereich eines Faktors mit höchster Leistung des Organismus oder Enzyms.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Lichtpflanze: Art mit hohem Lichtbedarf",
       wissen: fw(
@@ -4856,9 +4856,9 @@ export const k9Faktoren: BioBank = {
       gapAccepted: ["Lichtpflanze"],
     },
     { concept: "bio:k9:fakt:f7", prompt: "Was kennzeichnet Schattenpflanze?", answer: "Sie beschreibt verträgt starke Sonne schlecht.", wrong: [
-        "Sie ist der Bereich eines Faktors mit höchster Leistung des Organismus oder Enzyms.",
         "Sie ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie ist der Bereich eines Faktors mit höchster Leistung des Organismus oder Enzyms.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Schattenpflanze: Art an geringe Lichtstärke angepasst",
       wissen: fw(
@@ -4870,7 +4870,7 @@ export const k9Faktoren: BioBank = {
     { concept: "bio:k9:fakt:f8", prompt: "Was kennzeichnet Xerophyt?", answer: "Es beschreibt trockenangepasste Pflanze.", wrong: [
         "Es ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
         "Es ist der Bereich eines Faktors mit höchster Leistung des Organismus oder Enzyms.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Xerophyt: Trockenangepasste Pflanze",
       wissen: fw(
@@ -4882,7 +4882,7 @@ export const k9Faktoren: BioBank = {
     { concept: "bio:k9:fakt:f9", prompt: "Welche Rolle hat Hygrophyt?", answer: "Es beschreibt braucht viel Wasser.", wrong: [
         "Es ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
         "Es ist der Bereich eines Faktors mit höchster Leistung des Organismus oder Enzyms.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Hygrophyt: Feuchteangepasste Pflanze",
       wissen: fw(
@@ -4893,8 +4893,8 @@ export const k9Faktoren: BioBank = {
     },
     { concept: "bio:k9:fakt:f10", prompt: "Was beschreibt Konkurrenz?", answer: "Sie ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.", wrong: [
         "Sie ist der Bereich eines Faktors mit höchster Leistung des Organismus oder Enzyms.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Konkurrenz: Wettbewerb um Ressourcen",
       wissen: fw(
@@ -4906,7 +4906,7 @@ export const k9Faktoren: BioBank = {
     { concept: "bio:k9:fakt:f11", prompt: "Was beschreibt Räuber-Beute?", answer: "Sie beschreibt fraßbeziehung.", wrong: [
         "Sie ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
         "Sie ist der Bereich eines Faktors mit höchster Leistung des Organismus oder Enzyms.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Räuber-Beute: Fraßbeziehung",
       wissen: fw(
@@ -4916,9 +4916,9 @@ export const k9Faktoren: BioBank = {
       gapAccepted: ["Räuber-Beute"],
     },
     { concept: "bio:k9:fakt:x0", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
-        "Es ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
         "Es ist der Bereich eines Faktors mit höchster Leistung des Organismus oder Enzyms.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Umweltfaktoren.",
       wissen: fw(
@@ -4926,9 +4926,9 @@ export const k9Faktoren: BioBank = {
       ),
     },
     { concept: "bio:k9:fakt:x1", prompt: "Was beschreibt der Toleranzbereich?", answer: "Es beschreibt außerhalb: Stress oder Tod.", wrong: [
-        "Es ist der Bereich eines Faktors mit höchster Leistung des Organismus oder Enzyms.",
         "Es ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es ist der Bereich eines Faktors mit höchster Leistung des Organismus oder Enzyms.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Toleranz.",
       wissen: fw(
@@ -4976,8 +4976,8 @@ export const k9Klima: BioBank = {
   facts: [
     { concept: "bio:k9:klima:f0", prompt: "Woran erkennt man Klima?", answer: "Es beschreibt unterscheidet sich vom Tageswetter.", wrong: [
         "Es ist den Austausch von Kohlenstoff zwischen Atmosphäre, Lebewesen und Gesteinen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Klima: Langfristiges Wettergeschehen einer Region",
       wissen: fw(
@@ -4988,8 +4988,8 @@ export const k9Klima: BioBank = {
     },
     { concept: "bio:k9:klima:f1", prompt: "Woran erkennt man Treibhauseffekt?", answer: "Es beschreibt natürlich und anthropogen verstärkt.", wrong: [
         "Es ist den Austausch von Kohlenstoff zwischen Atmosphäre, Lebewesen und Gesteinen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Treibhauseffekt: Erwärmung durch Spurengase",
       wissen: fw(
@@ -5000,8 +5000,8 @@ export const k9Klima: BioBank = {
     },
     { concept: "bio:k9:klima:f2", prompt: "Was kennzeichnet CO₂?", answer: "Es beschreibt steigt durch Verbrennung fossilier Energien.", wrong: [
         "Es ist den Austausch von Kohlenstoff zwischen Atmosphäre, Lebewesen und Gesteinen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "CO₂: Wichtiges Treibhausgas",
       wissen: fw(
@@ -5012,8 +5012,8 @@ export const k9Klima: BioBank = {
     },
     { concept: "bio:k9:klima:f3", prompt: "Was beschreibt Klimawandel?", answer: "Es beschreibt langfristige Klimaänderung.", wrong: [
         "Es ist den Austausch von Kohlenstoff zwischen Atmosphäre, Lebewesen und Gesteinen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Klimawandel: Langfristige Klimaänderung",
       wissen: fw(
@@ -5024,8 +5024,8 @@ export const k9Klima: BioBank = {
     },
     { concept: "bio:k9:klima:f4", prompt: "Was kennzeichnet Phänologie?", answer: "Sie beschreibt verschiebt sich mit Erwärmung.", wrong: [
         "Sie ist den Austausch von Kohlenstoff zwischen Atmosphäre, Lebewesen und Gesteinen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Phänologie: Jahreszeitliche Entwicklungszeiten",
       wissen: fw(
@@ -5036,8 +5036,8 @@ export const k9Klima: BioBank = {
     },
     { concept: "bio:k9:klima:f5", prompt: "Welche Rolle hat Dürre?", answer: "Sie beschreibt stress für Pflanzen und Gewässer.", wrong: [
         "Sie ist den Austausch von Kohlenstoff zwischen Atmosphäre, Lebewesen und Gesteinen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Dürre: Längerer Wassermangel",
       wissen: fw(
@@ -5048,8 +5048,8 @@ export const k9Klima: BioBank = {
     },
     { concept: "bio:k9:klima:f6", prompt: "Was kennzeichnet Extremwetter?", answer: "Er beschreibt können häufiger/intensiver werden.", wrong: [
         "Er ist den Austausch von Kohlenstoff zwischen Atmosphäre, Lebewesen und Gesteinen.",
-        "Er spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Er fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Er bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Er leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Extremwetter: Seltene starke Wetterereignisse",
       wissen: fw(
@@ -5060,8 +5060,8 @@ export const k9Klima: BioBank = {
     },
     { concept: "bio:k9:klima:f7", prompt: "Was beschreibt Habitatverschiebung?", answer: "Sie beschreibt nicht alle können folgen.", wrong: [
         "Sie ist den Austausch von Kohlenstoff zwischen Atmosphäre, Lebewesen und Gesteinen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Habitatverschiebung: Arten wandern mit Klimazonen",
       wissen: fw(
@@ -5071,9 +5071,9 @@ export const k9Klima: BioBank = {
       gapAccepted: ["Habitatverschiebung"],
     },
     { concept: "bio:k9:klima:f8", prompt: "Welche Rolle hat Kohlenstoffkreislauf?", answer: "Es ist den Austausch von Kohlenstoff zwischen Atmosphäre, Lebewesen und Gesteinen.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
+        "Es bildet Lymphozyten und filtert Lymphe in den Lymphknoten.",
       ],
       explanation: "Kohlenstoffkreislauf: Austausch von C zwischen Sphären",
       wissen: fw(
@@ -5084,8 +5084,8 @@ export const k9Klima: BioBank = {
     },
     { concept: "bio:k9:klima:f9", prompt: "Woran erkennt man Mitigation?", answer: "Sie beschreibt minderung von Emissionen.", wrong: [
         "Sie ist den Austausch von Kohlenstoff zwischen Atmosphäre, Lebewesen und Gesteinen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Mitigation: Minderung von Emissionen",
       wissen: fw(
@@ -5096,8 +5096,8 @@ export const k9Klima: BioBank = {
     },
     { concept: "bio:k9:klima:f10", prompt: "Woran erkennt man Adaptation?", answer: "Sie beschreibt anpassung an Folgen.", wrong: [
         "Sie ist den Austausch von Kohlenstoff zwischen Atmosphäre, Lebewesen und Gesteinen.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Sie bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Adaptation: Anpassung an Folgen",
       wissen: fw(
@@ -5108,8 +5108,8 @@ export const k9Klima: BioBank = {
     },
     { concept: "bio:k9:klima:f11", prompt: "Was kennzeichnet Bioindikator?", answer: "Er beschreibt reagiert auf Klimaänderungen.", wrong: [
         "Er ist den Austausch von Kohlenstoff zwischen Atmosphäre, Lebewesen und Gesteinen.",
-        "Er spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Er fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Er regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Er bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "Bioindikator: Art die Umweltzustand anzeigt",
       wissen: fw(
@@ -5120,8 +5120,8 @@ export const k9Klima: BioBank = {
     },
     { concept: "bio:k9:klima:x0", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es ist den Austausch von Kohlenstoff zwischen Atmosphäre, Lebewesen und Gesteinen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Ökosystemwirkung.",
       wissen: fw(
@@ -5130,8 +5130,8 @@ export const k9Klima: BioBank = {
     },
     { concept: "bio:k9:klima:x1", prompt: "Was kennzeichnet der Unterschied zwischen Wetter und Klima?", answer: "Es beschreibt der Unterschied zwischen Wetter und Klima anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es ist den Austausch von Kohlenstoff zwischen Atmosphäre, Lebewesen und Gesteinen.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Zeitraum.",
       wissen: fw(
@@ -5179,8 +5179,8 @@ export const k10Humangenetik: BioBank = {
   facts: [
     { concept: "bio:k10:humangen:f0", prompt: "Welche Rolle hat Stammbaumanalyse?", answer: "Sie zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.", wrong: [
         "Sie ist der blutgruppen A und B und AB und 0.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Stammbaumanalyse: Vererbungsmuster in Familien rekonstruieren",
       wissen: fw(
@@ -5191,8 +5191,8 @@ export const k10Humangenetik: BioBank = {
     },
     { concept: "bio:k10:humangen:f1", prompt: "Was beschreibt AB0-System?", answer: "Es ist der blutgruppen A und B und AB und 0.", wrong: [
         "Es zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "AB0-System: Blutgruppen A, B, AB, 0",
       wissen: fw(
@@ -5204,7 +5204,7 @@ export const k10Humangenetik: BioBank = {
     { concept: "bio:k10:humangen:f2", prompt: "Woran erkennt man Rhesussystem?", answer: "Es beschreibt relevant bei Schwangerschaft.", wrong: [
         "Es zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.",
         "Es ist der blutgruppen A und B und AB und 0.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Rhesussystem: Rh-Faktor positiv/negativ",
       wissen: fw(
@@ -5216,7 +5216,7 @@ export const k10Humangenetik: BioBank = {
     { concept: "bio:k10:humangen:f3", prompt: "Was kennzeichnet autosomal?", answer: "Es beschreibt betrifft beide Geschlechter ähnlich.", wrong: [
         "Es zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.",
         "Es ist der blutgruppen A und B und AB und 0.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "autosomal: Gen auf Autosom",
       wissen: fw(
@@ -5228,7 +5228,7 @@ export const k10Humangenetik: BioBank = {
     { concept: "bio:k10:humangen:f4", prompt: "Was kennzeichnet gonosomal?", answer: "Es beschreibt gen auf Geschlechtschromosom.", wrong: [
         "Es zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.",
         "Es ist der blutgruppen A und B und AB und 0.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "gonosomal: Gen auf Geschlechtschromosom",
       wissen: fw(
@@ -5240,7 +5240,7 @@ export const k10Humangenetik: BioBank = {
     { concept: "bio:k10:humangen:f5", prompt: "Woran erkennt man Trisomie 21?", answer: "Es beschreibt genommutation mit typischem Syndrom.", wrong: [
         "Es zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.",
         "Es ist der blutgruppen A und B und AB und 0.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Trisomie 21: Drei Chromosomen 21",
       wissen: fw(
@@ -5252,7 +5252,7 @@ export const k10Humangenetik: BioBank = {
     { concept: "bio:k10:humangen:f6", prompt: "Woran erkennt man Hämophilie?", answer: "Sie beschreibt blutgerinnungsstörung.", wrong: [
         "Sie zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.",
         "Sie ist der blutgruppen A und B und AB und 0.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Hämophilie: Blutgerinnungsstörung",
       wissen: fw(
@@ -5264,7 +5264,7 @@ export const k10Humangenetik: BioBank = {
     { concept: "bio:k10:humangen:f7", prompt: "Was kennzeichnet Phenylketonurie?", answer: "Sie beschreibt stoffwechselstörung durch Genmutation.", wrong: [
         "Sie zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.",
         "Sie ist der blutgruppen A und B und AB und 0.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Phenylketonurie: Stoffwechselstörung durch Genmutation",
       wissen: fw(
@@ -5276,7 +5276,7 @@ export const k10Humangenetik: BioBank = {
     { concept: "bio:k10:humangen:f8", prompt: "Was kennzeichnet pränatale Diagnostik?", answer: "Sie beschreibt ethisch und rechtlich sensibel.", wrong: [
         "Sie zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.",
         "Sie ist der blutgruppen A und B und AB und 0.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "pränatale Diagnostik: Untersuchung vor der Geburt",
       wissen: fw(
@@ -5288,7 +5288,7 @@ export const k10Humangenetik: BioBank = {
     { concept: "bio:k10:humangen:f9", prompt: "Welche Rolle hat Erbkrankheit?", answer: "Sie beschreibt ursachen, Symptome, Therapie unterschiedlich.", wrong: [
         "Sie zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.",
         "Sie ist der blutgruppen A und B und AB und 0.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Erbkrankheit: Genetisch bedingte Erkrankung",
       wissen: fw(
@@ -5300,7 +5300,7 @@ export const k10Humangenetik: BioBank = {
     { concept: "bio:k10:humangen:f10", prompt: "Was kennzeichnet Beratung?", answer: "Sie beschreibt unterstützt informierte Entscheidungen.", wrong: [
         "Sie zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.",
         "Sie ist der blutgruppen A und B und AB und 0.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Beratung: Humangenetische Aufklärung",
       wissen: fw(
@@ -5312,7 +5312,7 @@ export const k10Humangenetik: BioBank = {
     { concept: "bio:k10:humangen:f11", prompt: "Woran erkennt man Inklusion?", answer: "Sie beschreibt ethischer Aspekt neben Diagnostik.", wrong: [
         "Sie zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.",
         "Sie ist der blutgruppen A und B und AB und 0.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Inklusion: Teilhabe betroffener Menschen",
       wissen: fw(
@@ -5323,8 +5323,8 @@ export const k10Humangenetik: BioBank = {
     },
     { concept: "bio:k10:humangen:x0", prompt: "Was kennzeichnet eine Stammbaumanalyse?", answer: "Sie zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.", wrong: [
         "Sie ist der blutgruppen A und B und AB und 0.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Sie leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "Humangenetik.",
       wissen: fw(
@@ -5334,7 +5334,7 @@ export const k10Humangenetik: BioBank = {
     { concept: "bio:k10:humangen:x1", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.",
         "Es ist der blutgruppen A und B und AB und 0.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Werteorientierung.",
       wissen: fw(
@@ -5395,7 +5395,7 @@ export const k10Evolutionstheorie: BioBank = {
     { concept: "bio:k10:evoth:f1", prompt: "Welche Rolle hat Lamarck?", answer: "Es ist die frühe Evolutionstheorie mit Vererbung erworbener Merkmale.", wrong: [
         "Es ist der Individuen einer Art in einem Gebiet.",
         "Es ist eine bleibende Veränderung der Erbinformation in der DNA.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Lamarck: Frühe Evolutionstheorie mit Vererbung erworbener Merkmale",
       wissen: fw(
@@ -5443,7 +5443,7 @@ export const k10Evolutionstheorie: BioBank = {
     { concept: "bio:k10:evoth:f5", prompt: "Was beschreibt Population?", answer: "Sie ist der Individuen einer Art in einem Gebiet.", wrong: [
         "Sie ist die frühe Evolutionstheorie mit Vererbung erworbener Merkmale.",
         "Sie ist eine bleibende Veränderung der Erbinformation in der DNA.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Population: Individuen einer Art in einem Gebiet",
       wissen: fw(
@@ -5455,7 +5455,7 @@ export const k10Evolutionstheorie: BioBank = {
     { concept: "bio:k10:evoth:f6", prompt: "Woran erkennt man Mutation?", answer: "Sie ist eine bleibende Veränderung der Erbinformation in der DNA.", wrong: [
         "Sie ist die frühe Evolutionstheorie mit Vererbung erworbener Merkmale.",
         "Sie ist der Individuen einer Art in einem Gebiet.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Mutation: Änderung der Erbinformation",
       wissen: fw(
@@ -5585,8 +5585,8 @@ export const k10Progression: BioBank = {
   facts: [
     { concept: "bio:k10:prog:f0", prompt: "Was kennzeichnet Oberflächenvergrößerung?", answer: "Sie beschreibt vergrößerung der Austauschfläche.", wrong: [
         "Sie bedeutet, dass die Körpertemperatur der Umwelt folgt.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Oberflächenvergrößerung: Vergrößerung der Austauschfläche",
       wissen: fw(
@@ -5597,8 +5597,8 @@ export const k10Progression: BioBank = {
     },
     { concept: "bio:k10:prog:f1", prompt: "Was kennzeichnet Lungenoberfläche?", answer: "Sie beschreibt steigt zu Säugern hin stark.", wrong: [
         "Sie bedeutet, dass die Körpertemperatur der Umwelt folgt.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Lungenoberfläche: Innere Fläche der Lunge",
       wissen: fw(
@@ -5609,8 +5609,8 @@ export const k10Progression: BioBank = {
     },
     { concept: "bio:k10:prog:f2", prompt: "Was kennzeichnet Hautatmung?", answer: "Sie beschreibt bei Lurchen bedeutsam.", wrong: [
         "Sie bedeutet, dass die Körpertemperatur der Umwelt folgt.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Hautatmung: Gasaustausch über die Haut",
       wissen: fw(
@@ -5621,8 +5621,8 @@ export const k10Progression: BioBank = {
     },
     { concept: "bio:k10:prog:f3", prompt: "Was kennzeichnet Lungenatmung?", answer: "Sie beschreibt dominanz bei Landwirbeltieren.", wrong: [
         "Sie bedeutet, dass die Körpertemperatur der Umwelt folgt.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Lungenatmung: Gasaustausch über Lungen",
       wissen: fw(
@@ -5633,8 +5633,8 @@ export const k10Progression: BioBank = {
     },
     { concept: "bio:k10:prog:f4", prompt: "Woran erkennt man Feuchtlufttier?", answer: "Er beschreibt tien mit feuchtigkeitsabhängiger Hautatmung.", wrong: [
         "Er bedeutet, dass die Körpertemperatur der Umwelt folgt.",
-        "Er spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Er fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Er bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.",
+        "Er bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Feuchtlufttier: Tier mit feuchtigkeitsabhängiger Hautatmung",
       wissen: fw(
@@ -5645,8 +5645,8 @@ export const k10Progression: BioBank = {
     },
     { concept: "bio:k10:prog:f5", prompt: "Wozu dient Trockenlufttier?", answer: "Er beschreibt kriechtiere und Säuger.", wrong: [
         "Er bedeutet, dass die Körpertemperatur der Umwelt folgt.",
-        "Er spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Er fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Er bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.",
+        "Er regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Trockenlufttier: Tier mit geschützter Luftatmung",
       wissen: fw(
@@ -5656,9 +5656,9 @@ export const k10Progression: BioBank = {
       gapAccepted: ["Trockenlufttier"],
     },
     { concept: "bio:k10:prog:f6", prompt: "Was kennzeichnet wechselwarm?", answer: "Es bedeutet, dass die Körpertemperatur der Umwelt folgt.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.",
+        "Es regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
+        "Es bildet die Blut-Hirn-Schranke und schützt das Gehirn vor vielen Stoffen.",
       ],
       explanation: "wechselwarm: Körpertemperatur folgt Umwelt",
       wissen: fw(
@@ -5668,9 +5668,9 @@ export const k10Progression: BioBank = {
       gapAccepted: ["wechselwarm"],
     },
     { concept: "bio:k10:prog:f7", prompt: "Wozu dient gleichwarm?", answer: "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", wrong: [
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
-        "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume.",
+        "Es bedeutet, dass die Körpertemperatur der Umwelt folgt.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
+        "Es leitet Erregungen über Synapsen von einer Nervenzelle zur nächsten.",
       ],
       explanation: "gleichwarm: Körpertemperatur weitgehend konstant",
       wissen: fw(
@@ -5681,8 +5681,8 @@ export const k10Progression: BioBank = {
     },
     { concept: "bio:k10:prog:f8", prompt: "Was kennzeichnet Leistungssteigerung?", answer: "Sie beschreibt zunahme physiologischer Kapazität.", wrong: [
         "Sie bedeutet, dass die Körpertemperatur der Umwelt folgt.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Leistungssteigerung: Zunahme physiologischer Kapazität",
       wissen: fw(
@@ -5693,8 +5693,8 @@ export const k10Progression: BioBank = {
     },
     { concept: "bio:k10:prog:f9", prompt: "Was beschreibt Umweltunabhängigkeit?", answer: "Sie beschreibt temperatur oder Feuchte.", wrong: [
         "Sie bedeutet, dass die Körpertemperatur der Umwelt folgt.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Umweltunabhängigkeit: Geringere Bindung an Umweltfaktoren",
       wissen: fw(
@@ -5705,8 +5705,8 @@ export const k10Progression: BioBank = {
     },
     { concept: "bio:k10:prog:f10", prompt: "Welche Rolle hat Progression?", answer: "Sie beschreibt gerichtete Steigerung von Leistungen.", wrong: [
         "Sie bedeutet, dass die Körpertemperatur der Umwelt folgt.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.",
+        "Sie bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Progression: Gerichtete Steigerung von Leistungen",
       wissen: fw(
@@ -5717,8 +5717,8 @@ export const k10Progression: BioBank = {
     },
     { concept: "bio:k10:prog:f11", prompt: "Wozu dient die Organveränderung?", answer: "Sie beschreibt struktur folgt neuer Funktion.", wrong: [
         "Sie bedeutet, dass die Körpertemperatur der Umwelt folgt.",
-        "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.",
+        "Sie regelt den Blutzucker über Insulin und Glucagon in der Bauchspeicheldrüse.",
       ],
       explanation: "Organveränderung: Umbau von Organen im Verlauf",
       wissen: fw(
@@ -5729,8 +5729,8 @@ export const k10Progression: BioBank = {
     },
     { concept: "bio:k10:prog:x0", prompt: "Was passiert bei x0?", answer: "Es beschreibt energie und Atmung.", wrong: [
         "Es bedeutet, dass die Körpertemperatur der Umwelt folgt.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Energie und Atmung.",
       wissen: fw(
@@ -5739,8 +5739,8 @@ export const k10Progression: BioBank = {
     },
     { concept: "bio:k10:prog:x1", prompt: "Welcher prüfbare Sachverhalt gehört zu diesem Fachbegriff?", answer: "Es beschreibt begriff anhand eines klaren fachlichen Merkmals oder Vorgangs.", wrong: [
         "Es bedeutet, dass die Körpertemperatur der Umwelt folgt.",
-        "Es spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma der Zelle.",
-        "Es fixiert CO2 direkt mit Rubisco im Calvin-Zyklus der Photosynthese.",
+        "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.",
+        "Es bildet Hormone in Drüsen und steuert so Stoffwechsel und Entwicklung.",
       ],
       explanation: "Progression.",
       wissen: fw(
