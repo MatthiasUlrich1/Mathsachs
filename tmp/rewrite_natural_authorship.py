@@ -291,6 +291,55 @@ HAND: dict[str, dict[str, object]] = {
         "prompt": "Was meint Kontinuität in der Geschichte?",
         "answer": "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.",
     },
+    # Geschichte densify — Mittelalter / Regional (K6)
+    "lehnswesen": {
+        "prompt": "Was verbindet das Lehnswesen?",
+        "answer": "Es verbindet den Treueeid des Vasallen mit der Leihe von Land.",
+    },
+    "grundherrschaft": {
+        "prompt": "Was beschreibt die Grundherrschaft?",
+        "answer": "Sie beschreibt die Herrschaft über Bauernland mit Abgaben und Diensten.",
+    },
+    "stadtrecht": {
+        "prompt": "Was gewährt das Stadtrecht einer Kommune?",
+        "answer": "Es gewährt Freiheiten wie Markt und eigene Gerichtsbarkeit.",
+    },
+    "zunft": {
+        "prompt": "Wozu dient eine Zunft?",
+        "answer": "Sie organisiert Handwerker eines Berufs und regelt Qualität sowie Marktschutz.",
+    },
+    "hanse": {
+        "prompt": "Was organisiert die Hanse?",
+        "answer": "Sie organisiert den Fernhandel an Nord- und Ostsee als Städtebund.",
+    },
+    "ostsiedlung": {
+        "prompt": "Was beschreibt die Ostsiedlung?",
+        "answer": "Sie beschreibt die mittelalterliche Expansion und Kolonisation nach Osten.",
+    },
+    "papsttum": {
+        "prompt": "Welche Rolle hat das Papsttum?",
+        "answer": "Es bildet die geistliche Spitze der lateinischen Kirche mit politischer Macht.",
+    },
+    "kloster": {
+        "prompt": "Wozu dient ein Kloster im Mittelalter?",
+        "answer": "Es vereint Gebet, Arbeit und Wissenspflege als geistliches Zentrum.",
+    },
+    "frondienst": {
+        "prompt": "Was bedeutet Frondienst?",
+        "answer": "Er beschreibt die Arbeitsleistung unfreier Bauern für den Grundherrn.",
+    },
+    "zehnten": {
+        "prompt": "Was bedeutet der Zehnten?",
+        "answer": "Er beschreibt die Abgabe an die Kirche, oft ein Zehntel der Erträge.",
+    },
+    "schriftlichkeit": {
+        "prompt": "Wozu dient Schriftlichkeit in der Herrschaft?",
+        "answer": "Sie dokumentiert Herrschaft über Urkunden und Register.",
+    },
+    "juden im mittelalter": {
+        "prompt": "Welche Lage hatten Juden im Mittelalter?",
+        "answer": "Sie lebten als Minderheit mit Sonderstatus zwischen Schutz und Verfolgung.",
+    },
 }
 
 BANNED_OUT = re.compile(
@@ -363,7 +412,8 @@ FACT_RE = re.compile(
     r"prompt:\s*(['\"])((?:\\.|[^\\\"'])*)\3\s*,\s*\n\s*"
     r"answer:\s*(['\"])((?:\\.|[^\\\"'])*)\5\s*,\s*"
     r"wrong:\s*\[([\s\S]*?)\]"
-    r"[\s\S]*?flashFront:\s*(['\"])((?:\\.|[^\\\"'])*)\8\s*,\s*\n\s*\},",
+    r"(?:[\s\S]*?flashFront:\s*(['\"])((?:\\.|[^\\\"'])*)\8)?"
+    r"[\s\S]*?\n\s*\},",
 )
 FLASH_RE = re.compile(r"flashFront:\s*(['\"])((?:\\.|[^\\\"'])*)\1")
 
@@ -572,11 +622,14 @@ def natural_answer(term: str, meaning: str, wissen: str) -> str:
     core = fix_casing(core)
     pron = p6.pronoun(term)
 
-    # Prefer verb-led always when possible — but avoid "Sie ist ein…" from "Ist ein…"
-    if re.match(r"^Ist (ein|eine)\b", core, re.I):
-        # Drop mechanical Ist-ein; rebuild as bare noun clause without Sie-ist
+    # Prefer verb-led always when possible — but avoid "Sie ist ein…" from "Ist …"
+    if re.match(r"^Ist (ein|eine|der|die|das)\b", core, re.I):
         body = re.sub(r"^Ist\s+", "", core, flags=re.I).strip()
-        sent = body[0].upper() + body[1:] if body else core
+        # Prefer verb rewrite via curated if still noun-only and short
+        if re.search(r"\b(organisiert|verbindet|beschreibt|regelt|bildet|lebt)\b", body, re.I):
+            sent = body[0].upper() + body[1:] if body else core
+        else:
+            sent = body[0].upper() + body[1:] if body else core
     elif VERB_LEAD.match(core) or VERBISH.match(core):
         sent = f"{pron} {p6.lower_first(core)}"
     elif re.match(r"^(der|die|das|ein|eine)\b", core, re.I):
@@ -778,7 +831,7 @@ def process_file(
         prompt = decode(m.group(4))
         answer = decode(m.group(6))
         wrong_raw = m.group(7)
-        flash = decode(m.group(9))
+        flash = decode(m.group(9)) if m.group(9) else ""
         wrongs = [decode(w[1]) for w in re.findall(r"(['\"])((?:\\.|[^\\\"'])*)\1", wrong_raw)]
 
         if topic and topic.lower() not in concept.lower():
@@ -798,15 +851,25 @@ def process_file(
             continue
 
         pairs = parse_pairs_near(text, m.start())
-        term = flash or (pairs[0][0] if pairs else concept.split(":")[-1])
+        # densify concepts often end with :pN:f — map to pair index
+        pair_idx = None
+        pm = re.search(r":p(\d+)(?::f)?$", concept)
+        if pm:
+            pair_idx = int(pm.group(1))
+        term = flash
         meaning, wissen = "", ""
-        for t, mm, ww in pairs:
-            if norm_term(t) == norm_term(term) or (
-                norm_term(term) and norm_term(t).startswith(norm_term(term).split()[0])
-            ):
-                meaning, wissen = mm, ww
-                term = t
-                break
+        if pair_idx is not None and 0 <= pair_idx < len(pairs):
+            term, meaning, wissen = pairs[pair_idx]
+        if not term:
+            term = pairs[0][0] if pairs else concept.split(":")[-1]
+        if not meaning:
+            for t, mm, ww in pairs:
+                if norm_term(t) == norm_term(term) or (
+                    norm_term(term) and norm_term(t).startswith(norm_term(term).split()[0])
+                ):
+                    meaning, wissen = mm, ww
+                    term = t
+                    break
         if not meaning and pairs:
             meaning, wissen = pairs[0][1], pairs[0][2]
 

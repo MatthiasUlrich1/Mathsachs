@@ -60,7 +60,8 @@ VERB = re.compile(
     r"modelliert|ändert|bleibt|schaltet|legen|legt|ermöglicht|erhöht|"
     r"ersetzt|vermeidet|absorbiert|deutet|entsteht|bleibt|wirft|"
     r"zurückgeworfen|aussendet|beleuchtet|unbeleuchtet|"
-    r"gibt|stellt|steckt|erscheint|dokumentiert|wiederholen|hat)\b",
+    r"gibt|stellt|steckt|erscheint|dokumentiert|wiederholen|hat|"
+    r"verbindet|gewährt|vereint|lebt\w*|bildet)\b",
     re.I,
 )
 
