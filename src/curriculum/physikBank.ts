@@ -161,9 +161,12 @@ function sanitizePhysikBank(bank: BioBank): BioBank {
       const expandNeeded =
         isWeakGlossaryOption(ansRaw) ||
         isMechanicalGlossaryOption(ansRaw) ||
-        (ansRaw.split(/\s+/).length <= 7 && !/^(Sie|Er|Es|Man|Gemeint|Das)\s/i.test(ansRaw))
+        (ansRaw.split(/\s+/).length <= 7 && !/^(Sie|Er|Es|Man|Das|Es handelt)\s/i.test(ansRaw))
+      // Prefer wissen/gap fragment over monotonous „Gemeint ist …“ wraps
       const expandSource =
-        expandNeeded && meaningHint && isMechanicalGlossaryOption(ansRaw)
+        expandNeeded &&
+        meaningHint &&
+        (isMechanicalGlossaryOption(ansRaw) || /^Gemeint ist\b|^Gemeint sind\b/i.test(ansRaw))
           ? meaningHint.trim()
           : ansRaw
       const answer = expandNeeded
@@ -174,7 +177,7 @@ function sanitizePhysikBank(bank: BioBank): BioBank {
         if (
           !isWeakGlossaryOption(wr) &&
           !isMechanicalGlossaryOption(wr) &&
-          (wr.split(/\s+/).length > 7 || /^(Sie|Er|Es|Man|Gemeint|Das)\s/i.test(wr))
+          (wr.split(/\s+/).length > 7 || /^(Sie|Er|Es|Man|Das|Es handelt)\s/i.test(wr))
         ) {
           return wr
         }

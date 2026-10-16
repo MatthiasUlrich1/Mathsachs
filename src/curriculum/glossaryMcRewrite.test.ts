@@ -70,9 +70,24 @@ describe('glossaryMcRewrite Timer-caliber', () => {
       term: 'Chronologie',
       style: 'definition',
     })
-    expect(def).toMatch(/^(Gemeint ist|Das ist|Sie beschreibt|Sie steht für)\b/i)
+    expect(def).toMatch(
+      /^(Es handelt sich um|Das ist|Sie beschreibt|Sie steht für|Chronologie steht für)\b/i,
+    )
     expect(def).not.toMatch(/Darunter versteht man/i)
     expect(def).not.toMatch(/^Sie bezeichnet\b/i)
+    expect(def).not.toMatch(/^Gemeint ist\b/i)
+
+    // Bank full sentences stay; short Gemeint wraps are rebuilt
+    const bankFull =
+      'Sie entzieht dem Wasser Sauerstoff und dient der Atmung.'
+    expect(expandGlossaryAnswer(bankFull, { term: 'Kieme', style: 'purpose' })).toBe(bankFull)
+    expect(isWeakGlossaryOption('Gemeint ist: Äußere Schutzschicht.')).toBe(true)
+    const rebuilt = expandGlossaryAnswer('Gemeint ist: Äußere Schutzschicht.', {
+      term: 'Schuppe',
+      style: 'definition',
+    })
+    expect(rebuilt).not.toMatch(/^Gemeint ist\b/i)
+    expect(rebuilt.split(/\s+/).length).toBeGreaterThanOrEqual(4)
 
     const kieme = expandGlossaryAnswer('Darunter versteht man den atemorgan für Wasser.', {
       term: 'Kieme',

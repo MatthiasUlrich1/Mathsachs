@@ -143,10 +143,10 @@ function indefinitePhrase(term: string): string {
 }
 
 const PURPOSE_VERB =
-  /^(Schaltet|Dient|Dienen|Vermeidet|Ermöglicht|Regelt|Steuert|Misst|Schützt|Hilft|Unterstützt|Begrenzt|Verhindert|Reduziert|Erhöht|Verringert|Speichert|Überträgt|Entzieht|Nimmt|Bewegt|Reguliert)\b/i
+  /^(Schaltet|Dient|Dienen|Vermeidet|Ermöglicht|Regelt|Steuert|Misst|Schützt|Hilft|Unterstützt|Begrenzt|Verhindert|Reduziert|Erhöht|Verringert|Speichert|Überträgt|Entzieht|Nimmt|Bewegt|Reguliert|Verbindet|Gewährt|Organisiert|Stellt|Meint|Vergleicht|Erzeugt|Bezeichnet|Beschreibt)\b/i
 
 const EFFECT_VERB =
-  /^(Stört|Entsteht|Wird|Werden|Lässt|Lassen|Sendet|Wirft|Nimmt|Geht|Liegt|Steht|Bildet|Zeigt|Enthält|Umfasst|Kennzeichnet|Bezeichnet|Beschreibt|Bedeutet|Gilt|Lenkt|Hat|Haben|Ist|Sind|Ändert|Hängt|Folgt|Treibt|Wandelt|Abbildet)\b/i
+  /^(Stört|Entsteht|Wird|Werden|Lässt|Lassen|Sendet|Wirft|Nimmt|Geht|Liegt|Steht|Bildet|Zeigt|Enthält|Umfasst|Kennzeichnet|Bezeichnet|Beschreibt|Bedeutet|Gilt|Lenkt|Hat|Haben|Ist|Sind|Ändert|Hängt|Folgt|Treibt|Wandelt|Abbildet|Stellt|Meint|Vergleicht|Gibt|Tritt|Sieht|Erzeugt|Prägt|Verbindet|Gewährt)\b/i
 
 export function classifyGlossaryStyle(
   term: string,
@@ -299,8 +299,14 @@ function lowerFirst(s: string): string {
 function stripDarunterWrap(m: string): string {
   return m
     .replace(/^Darunter versteht man\s+/i, '')
+    .replace(/^(Gemeint ist|Gemeint sind)\s*:?\s*/i, '')
+    .replace(/^(Das ist|Das sind)\s+/i, '')
+    .replace(/^(Es handelt sich um)\s+/i, '')
     .replace(/^(Sie|Er|Es)\s+dient dazu:\s*/i, '')
-    .replace(/^(Sie|Er|Es)\s+(bezeichnet|ist|sind)\s+/i, '')
+    .replace(
+      /^(Sie|Er|Es)\s+(bezeichnet|ist|sind|beschreibt|steht für|fungiert als|dient als|kennzeichnet|meint|umfasst)\s+/i,
+      '',
+    )
     .replace(/^(den|die|das|dem|des|der|ein|eine|einen|einem|einer)\s+/i, '')
     .trim()
 }
@@ -433,6 +439,8 @@ export function isWeakGlossaryOption(opt: string): boolean {
   if (!o) return true
   if (/\\u00[0-9a-f]{2}/i.test(o)) return true
   if (isMechanicalGlossaryOption(o)) return true
+  // Monotonous „Gemeint ist …“ wrappers — always rebuild into natural sentences
+  if (/^Gemeint ist:?\s*/i.test(o) || /^Gemeint sind:?\s*/i.test(o)) return true
   if (/^Darunter versteht man\b/i.test(o)) {
     const rest = o.replace(/^Darunter versteht man\s+/i, '').trim()
     // „den atemorgan …“ / bare lowercase noun / short fragment
@@ -443,24 +451,32 @@ export function isWeakGlossaryOption(opt: string): boolean {
   // Short noun-only fragment without sentence opener
   if (
     o.split(/\s+/).length <= 5 &&
-    !/^(Sie|Er|Es|Man|Licht|Wärme|Energie|Der|Die|Das|Ein|Eine|Gemeint|Das ist)\b/i.test(o)
+    !/^(Sie|Er|Es|Man|Licht|Wärme|Energie|Der|Die|Das|Ein|Eine|Es handelt|Das ist)\b/i.test(o)
   ) {
     return true
   }
   return false
 }
 
+/** True when bank text is already a natural full MC option — do not re-wrap. */
 function alreadyFullOption(m: string): boolean {
   if (isWeakGlossaryOption(m) || isMechanicalGlossaryOption(m)) return false
+  if (/^Gemeint ist\b|^Gemeint sind\b|^Darunter versteht man\b/i.test(m)) return false
   const words = m.split(/\s+/).length
+  const hasVerb =
+    /\b(ist|sind|hat|haben|wird|werden|lässt|lassen|dient|dienen|beschreibt|bezeichnet|steht|meint|handelt|verbindet|regelt|steuert|misst|schützt|entzieht|sendet|wirft|bildet|zeigt|enthält|umfasst|kennzeichnet|bedeutet|gilt|lenkt|ändert|hängt|folgt|treibt|wandelt|abbildet|schaltet|vermeidet|ermöglicht|nimmt|bewegt|reguliert|entsteht|geht|liegt|stört|fungiert|organisiert|fasst)\b/i.test(
+      m,
+    )
+  // Prefer bank-authored full sentences (Timer/Transparent caliber)
+  if (words >= 8 && hasVerb) return true
+  if (words >= 6 && /[.!?]$/.test(m) && hasVerb) return true
   if (
-    /^(Sie|Er|Es|Man|Damit|Dabei|Hier|Das|Die|Der|Licht|Wärme|Energie|Gemeint)\b/i.test(m) &&
-    words >= 5
+    /^(Sie|Er|Es|Man|Damit|Dabei|Hier|Das|Die|Der|Licht|Wärme|Energie|Es handelt)\b/i.test(m) &&
+    words >= 6 &&
+    hasVerb
   ) {
     return true
   }
-  if (words >= 8) return true
-  if (words >= 6 && /[.!?]$/.test(m)) return true
   return false
 }
 
@@ -559,13 +575,17 @@ function asDefinitionSentence(term: string, meaning: string): string {
     return ensurePeriod(`${t || 'Der Begriff'} meint die Entwicklung ${body}`)
   }
 
-  // Comma lists / short slogans — keep noun capitals
+  // Comma lists / short slogans — natural enumeration, no „Gemeint ist:“
   if (/,/.test(body) && body.split(/\s+/).length <= 6) {
     const parts = body.split(',').map((p) => {
       const s = p.trim()
       return s ? s.charAt(0).toUpperCase() + s.slice(1) : s
     })
-    return ensurePeriod(`Gemeint ist: ${parts.join(', ')}`)
+    const joined =
+      parts.length >= 3
+        ? `${parts.slice(0, -1).join(', ')} und ${parts[parts.length - 1]}`
+        : parts.join(' und ')
+    return ensurePeriod(`${pron} umfasst ${joined}`)
   }
 
   if (
@@ -576,7 +596,10 @@ function asDefinitionSentence(term: string, meaning: string): string {
       const t = displayGlossaryTerm(term)
       return ensurePeriod(`${t || 'Der Begriff'} gehört in den Zeitraum ${body}`)
     }
-    return ensurePeriod(`Gemeint ist: ${body.charAt(0).toUpperCase()}${body.slice(1)}`)
+    const t = displayGlossaryTerm(term)
+    return ensurePeriod(
+      `${t || 'Der Begriff'} steht für ${body.charAt(0).toUpperCase()}${body.slice(1)}`,
+    )
   }
 
   const np = withNominativeNp(body, term)
@@ -586,14 +609,17 @@ function asDefinitionSentence(term: string, meaning: string): string {
   if (!/^(der|die|das|ein|eine)\s+/i.test(np)) {
     const plural = /^[a-zäöü]/.test(np) ? np.charAt(0).toUpperCase() + np.slice(1) : np
     return ensurePeriod(
-      hashPick(`${term}|${np}`, 2) === 0 ? `Gemeint sind ${plural}` : `Das sind ${plural}`,
+      hashPick(`${term}|${np}`, 2) === 0
+        ? `Es handelt sich um ${plural}`
+        : `Das sind ${plural}`,
     )
   }
 
+  // Natural definition sentences — never default to „Gemeint ist …“
   const pick = hashPick(`${term}|${np}`, 4)
   switch (pick) {
     case 0:
-      return ensurePeriod(`Gemeint ist ${np}`)
+      return ensurePeriod(`Es handelt sich um ${np}`)
     case 1:
       return ensurePeriod(`Das ist ${np}`)
     case 2:
@@ -637,11 +663,16 @@ export function expandGlossaryAnswer(
   if (
     isMechanicalGlossaryOption(m) ||
     isWeakGlossaryOption(m) ||
-    /^Darunter versteht man\b/i.test(m)
+    /^Darunter versteht man\b/i.test(m) ||
+    /^Gemeint ist\b|^Gemeint sind\b/i.test(m)
   ) {
     m = softenTitleCaseBody(stripDarunterWrap(m))
   }
 
+  // Bank already authored a full parallel sentence — keep it (no re-wrap)
+  if (alreadyFullOption(meaning.replace(/\s+/g, ' ').trim())) {
+    return ensurePeriod(meaning.replace(/\s+/g, ' ').trim())
+  }
   if (alreadyFullOption(m)) return ensurePeriod(m)
 
   const pron = pronounFor(term ?? '')
@@ -666,7 +697,7 @@ export function expandGlossaryAnswer(
       const pick = hashPick(`${term}|${m}|purpose`, 3)
       if (pick === 0) return ensurePeriod(`${pron} dient als ${stripDarunterWrap(np)}`)
       if (pick === 1) return ensurePeriod(`Das ist ${np}`)
-      return ensurePeriod(`Gemeint ist ${np}`)
+      return ensurePeriod(`Es handelt sich um ${np}`)
     }
     return asDefinitionSentence(term ?? '', m)
   }
