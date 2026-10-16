@@ -44,39 +44,12 @@ const k5Quellen: BioBank = {
     fact("sachsen-fund", "Warum sind archäologische Funde in Sachsen für Orientierung wichtig?", "Weil sie regionale Vergangenheit materiell belegen", ["Weil sie nur moderne Parkplätze zeigen", "Weil Geschichte nur in Rom stattfand", "Weil Funde keine Datierung erlauben"], "Regionale Funde machen Vergangenheit vor Ort greifbar.", "Regionale Funde machen Vergangenheit vor Ort greifbar. Sie ergänzen schriftliche Quellen. Museumsbesuche helfen bei der Einordnung.", "Archäologische Funde belegen ___ Vergangenheit materiell.", ["regionale","lokale"]),
   ],
   pairs: [
-    pair(
-      "p1",
-      "Primärquelle",
-      "Ein zeitgenössisches Zeugnis, das in der Epoche des Ereignisses selbst entstanden ist",
-      "Primärquellen entstehen im Geschehen selbst und bilden die Grundlage späterer Deutungen.",
-    ),
-    pair(
-      "p2",
-      "Quellenkritik",
-      "Methodische Prüfung von Herkunft, Absicht, Glaubwürdigkeit und Aussagekraft einer Quelle",
-      "Ohne Quellenkritik drohen Fehldeutungen bei Texten, Bildern und Funden.",
-    ),
-    pair(
-      "p3",
-      "Überrest",
-      "Materielle oder schriftliche Spur, die nicht als Geschichtserzählung gedacht war",
-      "Werkzeuge, Akten und Alltagsgegenstände sind typische Überreste.",
-    ),
+    pair("p1", "Primärquelle", "Zeugnis aus der Zeit des Ereignisses", "Entsteht im Geschehen selbst."),
+    pair("p2", "Quellenkritik", "Prüfung von Herkunft und Glaubwürdigkeit", "Ohne Kritik drohen Fehldeutungen."),
+    pair("p3", "Überrest", "Spur ohne Geschichtserzählungsabsicht", "Werkzeuge und Akten sind typische Überreste."),
   ],
   trueFalse: [
     tf("t1", "Historiker prüfen Quellen auf Herkunft, Absicht und Glaubwürdigkeit.", true, "Quellenkritik ist Grundlage historischer Arbeit.", "Quellenkritik ist Grundlage historischer Arbeit. Sie gilt für Texte und Funde. Ohne sie entstehen leicht Fehlschlüsse."),
-    tf("t2", "Ein heutiges Schulbuch über die Antike ist typischerweise eine Primärquelle aus der Antike selbst.", false, "Schulbücher sind Sekundärquellen.", "Primärquellen entstehen in der Zeit des Ereignisses. Spätere Darstellungen werten sie aus."),
-    tf("t3", "Bildquellen können Absichten und Symbole enthalten und brauchen deshalb kritische Deutung.", true, "Bilder sind keine neutralen Abbilder.", "Auftraggeber und Künstler setzen Schwerpunkte; Kontext und Absicht sind zu prüfen."),
-  ],
-  multis: [
-    {
-      concept: "ge:k5:quellen:ms1",
-      question: "Was gehört zur Quellenkritik? (mehrere richtig)",
-      correct: ["Herkunft der Quelle prüfen", "Absicht und Perspektive einschätzen", "Glaubwürdigkeit und Aussagekraft abwägen"],
-      wrong: ["Nur die Schriftgröße messen", "Quellen ungeprüft wörtlich als Wahrheit nehmen"],
-      explanation: "Quellenkritik fragt wer, wann, warum und wie zuverlässig.",
-      wissen: "Quellenkritik ist das Handwerkszeug der Geschichtswissenschaft. Sie gilt für Texte, Bilder und archäologische Funde.",
-    },
   ],
 }
 
@@ -342,39 +315,12 @@ const k6Lehnswesen: BioBank = {
     fact("netz", "Was entstand durch viele Lehnsbindungen?", "Ein Netz abgestufter Herrschaftsbeziehungen", ["Ein einheitlicher Industriestaat", "Ein modernes Parteienwesen", "Ein Kaltes-Kriegs-Block"], "Könige, Herzöge und lokale Herren waren oft mehrfach gebunden.", "Könige, Herzöge und lokale Herren waren oft mehrfach gebunden. Macht war gestuft. Das erklärt mittelalterliche Politik.", "Lehnsbindungen bildeten ein ___ von Herrschaft.", ["Netz"]),
   ],
   pairs: [
-    pair(
-      "p1",
-      "Lehen",
-      "Land, Einkünfte oder Rechte, die ein Herr dem Vasallen gegen Treue und Dienst überließ",
-      "Das Lehen war der materielle Kern der Vasallität im mittelalterlichen Herrschaftssystem.",
-    ),
-    pair(
-      "p2",
-      "Vasall",
-      "Durch Treueeid gebundener Gefolgsmann mit Dienstpflichten gegenüber dem Lehnsherrn",
-      "Vasallen schuldeten Beratung und oft Heeresfolge; dafür erhielten sie Schutz und Lehen.",
-    ),
-    pair(
-      "p3",
-      "Treueeid",
-      "Öffentliches Ritual, das die gegenseitige Bindung von Herr und Vasall bekräftigte",
-      "Eidbruch galt als schweres Vergehen und gefährdete die persönliche Herrschaftsordnung.",
-    ),
+    pair("p1", "Lehen", "Gut oder Recht gegen Dienst", "Kern des Lehnswesens."),
+    pair("p2", "Vasall", "Treuepflichtiger Gefolgsmann", "Schuldete Dienst dem Herrn."),
+    pair("p3", "Treueeid", "Bekräftigt die Bindung", "Öffentlich und verbindlich."),
   ],
   trueFalse: [
     tf("t1", "Ein Lehen wurde ohne jede Gegenleistung vergeben.", false, "Gegenleistung war Treue und Dienst.", "Gegenleistung war Treue und Dienst. Ohne das fehlt der Kern des Lehnswesens. Herrschaft war vertraglich-persönlich gedacht."),
-    tf("t2", "Vasallen schuldeten dem Lehnsherrn oft Heeresfolge und Beratung.", true, "Militärische Hilfe war Kern der Gegenleistung.", "Ohne Heeresfolge fehlte dem Herrn schlagkräftige Macht im mittelalterlichen Lehnssystem."),
-    tf("t3", "Mittelalterliche Herrschaft lief ausschließlich über moderne Beamtenämter ohne persönliche Treue.", false, "Lehnswesen knüpfte Macht an Personen.", "Bindungen über Treue und Lehen prägten die Epoche stärker als ein moderner Beamtenstaat."),
-  ],
-  multis: [
-    {
-      concept: "ge:k6:lehnswesen:ms1",
-      question: "Was gehört typischerweise zum mittelalterlichen Lehnswesen? (mehrere richtig)",
-      correct: ["Lehen als Gut oder Recht", "Treueeid zwischen Herr und Vasall", "Heeresfolge und Beratung als Dienst"],
-      wrong: ["Wahlparlament aller Bauern", "Ausschließlich moderne Beamtengehälter ohne Treue"],
-      explanation: "Persönliche Bindung und gegenseitige Pflichten prägen das Lehnswesen.",
-      wissen: "Lehnswesen ordnete Herrschaft über Treue, Lehen und Dienste — ein Netz abgestufter persönlicher Bindungen.",
-    },
   ],
 }
 

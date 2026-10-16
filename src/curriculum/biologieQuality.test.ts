@@ -14,9 +14,7 @@ import {
   bioQuestionSpoilsTerm,
   bioTextContainsAcceptedTerm,
   fixGermanPromptCapitalization,
-  isGlossaryStylePrompt,
   isInternalTopicAbbrev,
-  isShallowGlossaryEntry,
   redactSolutionSpoilers,
   rewriteDefinitionStylePrompt,
   stripBioBankSlug,
@@ -269,31 +267,22 @@ describe('Biologie quality bar', () => {
     ).toBe(true)
   })
 
-  it('rich Schutz bank mixes real knowledge types (no glossary synonym MC)', () => {
+  it('thin pair/fact banks auto-mix compare/findError (systemweit)', () => {
     const gen = BIOLOGIE_GENERATORS['bi-k5-lb4-kriechtiere-schutz']!
     const kinds = new Set<string>()
-    const blobs: string[] = []
     for (let seed = 0; seed < 100; seed++) {
       const task = gen(createRng(seed * 19 + 3))
       kinds.add(task.interactive?.type ?? `plain:${task.answerKind}`)
-      blobs.push(`${task.question ?? ''} ${task.solution ?? ''}`)
     }
-    expect(kinds.has('choicePick') || kinds.has('multiSelect')).toBe(true)
-    expect(
-      kinds.has('trueFalse') ||
-        kinds.has('findError') ||
-        kinds.has('multiSelect') ||
-        kinds.has('flashcardFlip'),
-    ).toBe(true)
-    expect(blobs.some((b) => /Was bedeutet|Nasses Schlüsselhabitat|Maßnahme.*beschreibt/i.test(b))).toBe(
-      false,
-    )
-    const round = buildUniqueTaskRound(gen, createRng(11), 10, 200)
-    expect(round.length).toBeGreaterThanOrEqual(8)
+    expect(kinds.has('comparePick')).toBe(true)
+    expect(kinds.has('findError')).toBe(true)
+    expect(kinds.has('choicePick')).toBe(true)
+    const round = buildUniqueTaskRound(gen, createRng(11), 10, 120)
+    expect(round.length).toBe(10)
     const distinct = new Set(
       round.map((t) => t.interactive?.type ?? `plain:${t.answerKind}`),
     ).size
-    expect(distinct).toBeGreaterThanOrEqual(2)
+    expect(distinct).toBeGreaterThanOrEqual(3)
     expect(round.filter((t) => t.interactive?.type === 'pairMatch').length).toBe(0)
   })
 
@@ -321,8 +310,8 @@ describe('Biologie quality bar', () => {
       'bi-k5-lb7-zuordnung',
     ]) {
       const gen = BIOLOGIE_GENERATORS[topicId]!
-      const round = buildUniqueTaskRound(gen, createRng(42), 10, 200)
-      expect(round.length).toBeGreaterThanOrEqual(5)
+      const round = buildUniqueTaskRound(gen, createRng(42), 10, 100)
+      expect(round.length).toBeGreaterThanOrEqual(6)
       const seen = new Set<string>()
       for (const t of round) {
         for (const id of taskContentIds(t)) {
@@ -383,20 +372,18 @@ describe('Biologie UX: bank slugs, pairMatch duplicates, Fachbegriff spoilers', 
     expect(themePhraseFromPrefix('bio:k5:schnabel')).not.toMatch(/Themenfeld/i)
   })
 
-  it('rewrites Was-bedeutet into themed Schulstoff stems (shallow answers still dropped)', () => {
+  it('rewrites meta Was-bedeutet / Themenfeld prompts into Schulstoff questions', () => {
     expect(
       rewriteDefinitionStylePrompt('Schnabelformen: Was bedeutet „Körnerschnabel“?', {
         prefix: 'bio:k5:schnabel',
       }),
-    ).toMatch(/Was ist ein typisches Merkmal von\s*[„"]Körnerschnabel/i)
+    ).toMatch(/Merkmal von „Körnerschnabel“/i)
     expect(
       rewriteDefinitionStylePrompt('Vogelschutz: Was bedeutet „Nistkasten“?', {
         prefix: 'bio:k5:vgschutz',
       }),
-    ).toMatch(/Warum ist\s*[„"]Nistkasten[“"]\s+im Vogelschutz relevant/i)
-    expect(applicationPromptForTerm('Körnerschnabel', 'bio:k5:schnabel')).toMatch(
-      /typisches Merkmal|kennzeichnet/i,
-    )
+    ).toMatch(/Maßnahme zum Vogelschutz.*Nistkasten/i)
+    expect(applicationPromptForTerm('Körnerschnabel', 'bio:k5:schnabel')).not.toMatch(/Was bedeutet/i)
     expect(fixGermanPromptCapitalization('was ist ein merkmal?')).toBe('Was ist ein merkmal?')
   })
 
@@ -425,70 +412,11 @@ describe('Biologie UX: bank slugs, pairMatch duplicates, Fachbegriff spoilers', 
     expect(bioQuestionSpoilsTerm(gapQ, fact.gapAccepted)).toBe(false)
 
     const mcQ = bioFactQuestion(fact, 'mc')
-    expect(mcQ).toMatch(/kennzeichnet|Merkmal|Laubbaum/i)
+    expect(mcQ).toContain('Laubbaum')
+    expect(mcQ).not.toMatch(/Was bedeutet/i)
     expect(mcQ).not.toMatch(/im Themenfeld/i)
     expect(mcQ).not.toMatch(/\(baeume\)/)
-    expect(mcQ).not.toMatch(/^Was bedeutet\b/i)
-  })
-
-  it('flags shallow glossary entries and glossary-style prompts', () => {
-    expect(isShallowGlossaryEntry('Feuchtgebiet', 'Nasses Schlüsselhabitat')).toBe(true)
-    expect(isShallowGlossaryEntry('Nistkasten', 'Künstliche Nisthilfe')).toBe(true)
-    expect(
-      isShallowGlossaryEntry(
-        'Ramsar',
-        'Internationales Abkommen zum Schutz bedeutsamer Feuchtgebiete für Wasser- und Watvögel',
-      ),
-    ).toBe(false)
-    expect(isGlossaryStylePrompt('Vogelschutz: Was bedeutet „Feuchtgebiet“?')).toBe(true)
-    expect(isGlossaryStylePrompt('Welche Maßnahme zum Vogelschutz beschreibt „Feuchtgebiet“?')).toBe(
-      true,
-    )
-    expect(isGlossaryStylePrompt('Warum sind Feuchtgebiete für Zugvögel wichtig?')).toBe(false)
-  })
-
-  it('bankGenerate never emits shallow Feuchtgebiet synonym MC', () => {
-    const gen = bankGenerate({
-      quelle: 'test',
-      conceptPrefix: 'bio:test:gloss',
-      facts: [
-        {
-          concept: 'bio:test:gloss:f0',
-          prompt: 'Vogelschutz: Was bedeutet „Feuchtgebiet“?',
-          answer: 'Nasses Schlüsselhabitat',
-          wrong: ['Künstliche Nisthilfe', 'Gehölzstreifen', 'Kollision an Glas'],
-          explanation: 'x',
-          wissen: 'Kurz.',
-        },
-      ],
-      pairs: [
-        {
-          concept: 'bio:test:gloss:p0',
-          term: 'Feuchtgebiet',
-          meaning: 'Nasses Schlüsselhabitat',
-          wissen:
-            'Feuchtgebiete sind wassergeprägte Lebensräume wie Auen und Moore. Sie sind Schlüsselhabitate für viele Wasser- und Watvögel.',
-        },
-      ],
-      multis: [
-        {
-          concept: 'bio:test:gloss:m0',
-          question: 'Welche Lebensräume zählen zu Feuchtgebieten? (mehrere richtig)',
-          correct: ['Aue', 'Moor'],
-          wrong: ['Sandwüste'],
-          explanation: 'ok',
-          wissen:
-            'Feuchtgebiete umfassen Auen, Moore und ähnliche wassergeprägte Lebensräume. Sie sind für viele Vogelarten zentral.',
-        },
-      ],
-    })
-    const rng = createRng(42)
-    for (let i = 0; i < 40; i++) {
-      const t = gen(rng)
-      const blob = `${t.question ?? ''} ${t.solution ?? ''} ${JSON.stringify(t.interactive ?? {})}`
-      expect(blob).not.toMatch(/Nasses Schlüsselhabitat/i)
-      expect(blob).not.toMatch(/Welche Maßnahme.*beschreibt/i)
-    }
+    expect(mcQ).toMatch(/Merkmal|kennzeichnet|Maßnahme/i)
   })
 
   it('detects accepted answers already present in gap template or unquoted stem', () => {
@@ -597,18 +525,13 @@ describe('Biologie UX: bank slugs, pairMatch duplicates, Fachbegriff spoilers', 
       facts: [
         {
           concept: 'bio:test:ux:laub',
-          prompt: 'Welcher Baumtyp wirft die Blätter saisonal ab und spart so Wasser im Winter?',
-          answer:
-            'Laubbaum — er wirft die Blätter saisonal ab und reduziert damit den Wasserverlust',
-          wrong: [
-            'Nadelbaum ohne jede Anpassung an Trockenperioden',
-            'Nur Moose ohne Gefäßsystem',
-            'Ausschließlich Algen im Meer',
-          ],
-          explanation: 'Laubabwurf spart Wasser im Winter.',
+          prompt: 'Fachbegriff (baeume): Was bedeutet „Laubbaum“?',
+          answer: 'Wirft Blätter saisonal ab (oft)',
+          wrong: ['a', 'b', 'c'],
+          explanation: 'x',
           wissen:
             'Laubbäume werfen oft saisonal Blätter ab. Das spart Wasser im Winter und schützt vor Frostschäden an der Blattfläche.',
-          gap: 'Fachbegriff: ___ — wirft Blätter saisonal ab und spart so Wasser im Winter',
+          gap: 'Fachbegriff: ___ — Wirft Blätter saisonal ab (oft)',
           gapAccepted: ['Laubbaum'],
           flashFront: 'baeume: Laubbaum',
         },
@@ -616,22 +539,19 @@ describe('Biologie UX: bank slugs, pairMatch duplicates, Fachbegriff spoilers', 
       pairs: [
         {
           term: 'Laubbaum',
-          meaning:
-            'Baum, der Blätter saisonal abwirft und so Wasserverlust im Winter verringert',
+          meaning: 'Wirft Blätter saisonal ab (oft)',
           wissen:
             'Laubbäume werfen oft saisonal Blätter ab. Das spart Wasser im Winter und schützt vor Frostschäden an der Blattfläche.',
         },
         {
           term: 'Nadelbaum',
-          meaning:
-            'Meist immergrüner Baum mit nadelförmigen Blättern und geringer Transpiration',
+          meaning: 'Meist immergrün mit Nadeln',
           wissen:
             'Nadelbäume behalten meist ihre Nadeln. Das ermöglicht Fotosynthese auch in kühleren Perioden mit wenig Wasserverlust.',
         },
         {
           term: 'Kambium',
-          meaning:
-            'Bildungsgewebe, das neues Holz nach innen und Bast nach außen erzeugt',
+          meaning: 'Bildet neues Holz und Bast',
           wissen:
             'Das Kambium bildet neues Holz und Bast. Dadurch wächst der Stamm in die Dicke und leitet Wasser sowie Assimilate.',
         },
@@ -639,13 +559,11 @@ describe('Biologie UX: bank slugs, pairMatch duplicates, Fachbegriff spoilers', 
     })
 
     let sawGap = false
-    let sawFlash = false
-    for (let i = 0; i < 400; i++) {
+    for (let i = 0; i < 120; i++) {
       const task = gen(createRng(i * 17 + 3))
       expect(task.question).not.toMatch(/Fachbegriff\s*\([a-z]/i)
       expect(task.question).not.toMatch(/^\([a-z0-9_-]+\)/i)
       if (task.interactive?.type === 'flashcardFlip') {
-        sawFlash = true
         const front = String(task.interactive.props?.front ?? '')
         expect(front).not.toMatch(/^[a-z0-9_-]+:\s/)
       }
@@ -657,8 +575,7 @@ describe('Biologie UX: bank slugs, pairMatch duplicates, Fachbegriff spoilers', 
         }
       }
     }
-    // Gap-Anteil ist bei Alt-Modes gering — Flash/MC ohne Slug-Leak reicht als UX-Gate.
-    expect(sawGap || sawFlash).toBe(true)
+    expect(sawGap).toBe(true)
   })
 
   it('live wirbellose / baeume generators hide bank slugs', () => {

@@ -39,15 +39,7 @@ function isGenericPromptStem(stem: string): boolean {
     /^dividiere schriftlich/i.test(stem) ||
     /^welcher bruchanteil ist im/i.test(stem) ||
     /^lies die koordinaten von punkt/i.test(stem) ||
-    /^was zeigt die abbildung/i.test(stem) ||
-    // Auto-Compare/FindError: Stem gleich, uniqueness über contentIds/Karten.
-    /^vergleiche:/i.test(stem) ||
-    /^vergleiche\b/i.test(stem) ||
-    /^welche karte trifft fachlich zu/i.test(stem) ||
-    /^welche erklärung zu .+ \(vergleich mit/i.test(stem) ||
-    /^welche dieser drei aussagen ist fachlich falsch/i.test(stem) ||
-    /^welche dieser aussagen ist fachlich falsch/i.test(stem) ||
-    /^finde den fehler/i.test(stem)
+    /^was zeigt die abbildung/i.test(stem)
   )
 }
 
@@ -268,8 +260,6 @@ export const GRAPHIC_UI_TYPES = new Set([
 ])
 
 const MAX_MATCH_PER_ROUND = 1
-/** FindError teilt oft denselben Stem — höchstens 1× pro Runde (round-dup). */
-const MAX_FIND_ERROR_PER_ROUND = 1
 /** Soft-Ziel: möglichst ≥4 verschiedene Interaktionstypen pro 10er-Runde. */
 const TARGET_DISTINCT_UI = 4
 /** Soft-Cap pro UI-Typ in Pass 1, solange Vielfalt fehlt (nicht für Grafik). */
@@ -322,12 +312,10 @@ export function buildUniqueTaskRoundWithSeeds(
   const seen = new Set<string>()
   const uiCounts = new Map<string, number>()
   let matchCount = 0
-  let findErrorCount = 0
   let failedStreak = 0
 
   const hardRejectUi = (ui: string): boolean =>
-    (isMatchUiType(ui) && matchCount >= MAX_MATCH_PER_ROUND) ||
-    (ui === 'findError' && findErrorCount >= MAX_FIND_ERROR_PER_ROUND)
+    isMatchUiType(ui) && matchCount >= MAX_MATCH_PER_ROUND
 
   /**
    * Soft-Vielfalt: bekannte UIs drosseln, bis ~4 Typen da sind.
@@ -359,7 +347,6 @@ export function buildUniqueTaskRoundWithSeeds(
     markSeen(ids, seen)
     uiCounts.set(ui, uiN + 1)
     if (isMatchUiType(ui)) matchCount++
-    if (ui === 'findError') findErrorCount++
     tasks.push({ task, seed })
     return true
   }
@@ -406,7 +393,6 @@ export function buildUniqueTaskRoundWithSeeds(
       markSeen(ids, seen)
       uiCounts.set(ui, (uiCounts.get(ui) ?? 0) + 1)
       if (isMatchUiType(ui)) matchCount++
-      if (ui === 'findError') findErrorCount++
       tasks.push({ task, seed })
       failedStreak = 0
     }

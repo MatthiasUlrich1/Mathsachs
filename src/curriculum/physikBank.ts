@@ -122,8 +122,6 @@ function sanitizePhysikBank(bank: BioBank): BioBank {
   // Gleicher Fakt nicht doppelt (pair+fact) — sonst round-dup „gleicher Fakt“.
   const seenAns = new Set<string>()
   const dedupedFacts = facts.filter((f) => {
-    // Physik: kurze Fachantworten (Formeln, Einheiten) sind normal — kein Bio-Glossar-Filter
-    // (der leerte Banken und ließ mathBank auf „Berechne 2+3“ fallen).
     const k = String(f.answer ?? '')
       .normalize('NFKC')
       .toLowerCase()

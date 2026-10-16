@@ -303,18 +303,17 @@ export function rewriteDefinitionStylePrompt(
       /:(?:vg|kr|fi|amph)?schutz\b|saeug.*schutz/i.test(prefix)
     ) {
       const area = /vogel|vgschutz/i.test(ctx)
-        ? 'im Vogelschutz'
+        ? 'zum Vogelschutz'
         : /kriech|krschutz/i.test(ctx)
-          ? 'im Kriechtierschutz'
+          ? 'zum Kriechtierschutz'
           : /saeug/i.test(ctx)
-            ? 'im Säugetierschutz'
+            ? 'zum Säugetierschutz'
             : /fisch|fischschutz/i.test(ctx)
-              ? 'im Fischschutz'
+              ? 'zum Fischschutz'
               : /lurch|amph/i.test(ctx)
-                ? 'im Lurchschutz'
-                : 'im Artenschutz'
-      // Kein „Welche Maßnahme beschreibt …?“ — das war Glossar-Umetikettierung.
-      return fixGermanPromptCapitalization(`Warum ist „${term}“ ${area} relevant?`)
+                ? 'zum Lurchschutz'
+                : 'zum Artenschutz'
+      return fixGermanPromptCapitalization(`Welche Maßnahme ${area} beschreibt „${term}“?`)
     }
     if (/schnabel|nahrung|merkmal|körperbau|aufbau|anatom|feder|skelett|gebiss/i.test(ctx)) {
       return fixGermanPromptCapitalization(`Was ist ein typisches Merkmal von „${term}“?`)
@@ -323,13 +322,17 @@ export function rewriteDefinitionStylePrompt(
       const hint =
         domainHintFromPrefix(prefix) ||
         (/fortpflanz/i.test(ctx) ? 'bei der Fortpflanzung' : 'im Verhalten')
-      return fixGermanPromptCapitalization(`Welche Aussage zu „${term}“ ${hint} ist fachlich zutreffend?`)
+      return fixGermanPromptCapitalization(`Was kennzeichnet „${term}“ ${hint}?`)
     }
     if (/arbeitsweise|methode|experiment|beobachten|nachweis/i.test(ctx)) {
       return fixGermanPromptCapitalization(`Was beschreibt die Arbeitsweise „${term}“?`)
     }
-    // Neutrale Aussage-Frage — vermeidet Near-Dups „Was kennzeichnet X bei …?“
-    return fixGermanPromptCapitalization(`Welche Aussage zu „${term}“ ist fachlich zutreffend?`)
+    // Themenhinweis aus Prefix — Cross-Topic-Stems trennen, kein Meta-„Themenfeld“.
+    const hint = domainHintFromPrefix(prefix)
+    if (hint) {
+      return fixGermanPromptCapitalization(`Was kennzeichnet „${term}“ ${hint}?`)
+    }
+    return fixGermanPromptCapitalization(`Was kennzeichnet „${term}“ fachlich?`)
   }
 
   q = q.replace(/^Fachbegriff:\s*/i, '')
@@ -415,64 +418,6 @@ export function isSloganOrStubMeaning(term: string, meaning: string): boolean {
     return true
   }
   return false
-}
-
-/**
- * Flache Glossar-Einträge (Term → Mini-Synonym) — erzeugen triviale MC
- * („Feuchtgebiet“ → „Nasses Schlüsselhabitat“ mit fachfremden Distraktoren).
- * Kurze Fachantworten mit Inhalt („Freie Elektronen im Gitter“) bleiben erlaubt.
- */
-export function isShallowGlossaryEntry(term: string, meaning: string): boolean {
-  if (isSloganOrStubMeaning(term, meaning)) return true
-  const t = term.trim()
-  const m = meaning.replace(/\s+/g, ' ').trim()
-  if (!t || !m) return true
-  const words = m.split(/\s+/).filter(Boolean)
-  // Nur klare Glossar-Synonyme (Vogelschutz-Thin-Fill), keine kurzen Fachantworten.
-  if (
-    /^(nasses\s+)?schlüsselhabitat$/i.test(m) ||
-    /^künstliche\s+nisthilfe$/i.test(m) ||
-    (/habitat|nisthilfe|schlüsselhabitat/i.test(m) && words.length <= 3 && m.length <= 40)
-  ) {
-    return true
-  }
-  const tNorm = normalizeBioTerm(t)
-  const mNorm = normalizeBioTerm(m)
-  // Synonym-Echo / Stamm-Kollision (Autosomal↔Autosom, Datenschutz↔Schutz)
-  if (
-    tNorm.length >= 4 &&
-    mNorm.length >= 4 &&
-    words.length <= 4 &&
-    m.length <= 48 &&
-    tNorm !== mNorm &&
-    (mNorm.includes(tNorm) || tNorm.includes(mNorm))
-  ) {
-    return true
-  }
-  return false
-}
-
-/** Prompt ist umetikettierte Glossar-Frage (ohne echten Anwendungskontext). */
-export function isGlossaryStylePrompt(prompt: string): boolean {
-  const q = stripBioBankSlug(prompt).replace(/\s+/g, ' ').trim()
-  return (
-    /Was bedeutet\b/i.test(q) ||
-    /Was beschreibt\b.+\bfachlich\b/i.test(q) ||
-    /Welche Maßnahme\b.+\bbeschreibt\b/i.test(q) ||
-    /Was kennzeichnet\b.+(fachlich|im Artenschutz|bei Vögeln)\??$/i.test(q) ||
-    /Fachbegriff:\s*___/i.test(q) ||
-    /^[^?]{0,40}:\s*Was bedeutet\b/i.test(q)
-  )
-}
-
-/** TF/FindError-Aussagen im Stil „Term bedeutet: Kurzsynonym.“ */
-export function isGlossaryStyleStatement(statement: string): boolean {
-  const s = stripBioBankSlug(statement).replace(/\s+/g, ' ').trim()
-  const m = s.match(/bedeutet(?:\s+genau)?\s*:\s*(.+)$/i)
-  if (!m) return false
-  const rhs = (m[1] ?? '').replace(/\.+$/, '').trim()
-  const words = rhs.split(/\s+/).filter(Boolean)
-  return isShallowGlossaryEntry('x', rhs) || (words.length <= 3 && rhs.length <= 36)
 }
 
 export function isThinBioWissen(text: string): boolean {
@@ -573,30 +518,19 @@ function fw(
 
 /** Normalize concept to a stable key. */
 export function bioConceptKey(concept: string | undefined, prefix?: string, fallback = 'item'): string {
-  const norm = (s: string) =>
-    s
-      .toLowerCase()
-      .replace(/ä/g, 'ae')
-      .replace(/ö/g, 'oe')
-      .replace(/ü/g, 'ue')
-      .replace(/ß/g, 'ss')
-      .replace(/[^a-z0-9:]+/g, '-')
-      .replace(/-+/g, '-')
-      .replace(/^-|-$/g, '')
-  // Mode-Suffix (cmp/ferr/err): an Concept anhängen, sonst kollidieren
-  // Compare/FindError mit MC/Flash desselben Paars → Short-Rounds.
-  const modeSuffix =
-    fallback &&
-    fallback !== 'item' &&
-    /^(cmp|ferr|err):/i.test(fallback)
-      ? norm(fallback)
-      : ''
   const raw = (concept ?? fallback).trim()
-  const c = norm(raw)
-  if (c.startsWith('bio:')) return modeSuffix ? `${c}:${modeSuffix}` : c
+  const c = raw
+    .toLowerCase()
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ß/g, 'ss')
+    .replace(/[^a-z0-9:]+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '')
+  if (c.startsWith('bio:')) return c
   const p = (prefix ?? 'bio:topic').trim().replace(/\/$/, '')
-  const base = `${p}:${c || norm(fallback) || 'item'}`
-  return modeSuffix ? `${base}:${modeSuffix}` : base
+  return `${p}:${c || fallback}`
 }
 
 /** Reject only spoilery / baby-level icon prompts — emoji UX itself is fine. */
@@ -989,7 +923,7 @@ function dedupeBioPairsByTerm(pairs: BioPair[] | undefined): BioPair[] | undefin
 /** Sanitize deepen/hand-authored strings so internal slugs never reach the UI. */
 export function sanitizeBioBank(bank: BioBank): BioBank {
   const pairs = dedupeBioPairsByTerm(bank.pairs)?.filter(
-    (p) => !isSloganOrStubMeaning(p.term, p.meaning) && !isShallowGlossaryEntry(p.term, p.meaning),
+    (p) => !isSloganOrStubMeaning(p.term, p.meaning),
   )
   const facts = bank.facts
     ?.map((f) => {
@@ -1013,14 +947,6 @@ export function sanitizeBioBank(bank: BioBank): BioBank {
       const termHint = f.flashFront || f.prompt.match(/[„""']([^„""']+)[“""']/)?.[1] || ''
       if (termHint && isSloganOrStubMeaning(termHint, f.answer)) return false
       if (isSloganOrStubMeaning(f.answer, f.answer)) return false
-      // Flache Glossar-Synonyme raus — kurze Fachantworten mit Inhalt bleiben.
-      if (termHint && isShallowGlossaryEntry(termHint, f.answer)) return false
-      if (
-        isGlossaryStylePrompt(f.prompt) &&
-        isShallowGlossaryEntry(termHint || 'x', f.answer)
-      ) {
-        return false
-      }
       // Thin-Fill-Prompt-Schablonen
       if (/Zeichnung zum Sachverhalt|Zahlenaufgabe zu|Was gehoert zu/i.test(f.prompt)) return false
       return true
@@ -1034,8 +960,7 @@ export function sanitizeBioBank(bank: BioBank): BioBank {
       (t) =>
         !isSloganOrStubClaim(t.statement) &&
         // Strenger Audit-Filter (z. B. „Perspektive: Standpunkt der Betrachtung.“)
-        !isSloganStatement(t.statement) &&
-        !isGlossaryStyleStatement(t.statement),
+        !isSloganStatement(t.statement),
     )
   return {
     ...bank,
@@ -1054,30 +979,16 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
     []
   let hasTfDerivedFindError = false
 
-  // Pairs/Facts für Auto-Compare und Pair-MC — flache Glossar-Synonyme raus,
-  // kurze Fachantworten (ab 4 Wörtern) bleiben spielbar (Rundenlänge ≥10).
-  const richPairsEarly = (bank.pairs ?? []).filter(
-    (p) => p.meaning.trim().length >= 3 && !isShallowGlossaryEntry(p.term, p.meaning),
-  )
-  const compareFactItems = (bank.facts ?? []).filter((f) => {
-    const term = stripBioBankSlug(f.flashFront ?? f.gapAccepted?.[0] ?? '').trim()
-    const ans = f.answer.trim()
-    if (ans.length < 3) return false
-    if (term && isShallowGlossaryEntry(term, ans)) return false
-    if (!term && isShallowGlossaryEntry('x', ans)) return false
-    return true
-  })
-
   // Auto-Mix möglich aus Pairs/Facts/TF (Compare + FindError) — systemweit Bio/GE.
   const canAutoCompare =
     (bank.compares?.length ?? 0) === 0 &&
-    (richPairsEarly.length >= 2 || compareFactItems.length >= 2)
+    ((bank.pairs?.length ?? 0) >= 2 || (bank.facts?.length ?? 0) >= 2)
   const canAutoFindError =
     (bank.findErrors?.length ?? 0) === 0 &&
-    (richPairsEarly.length >= 3 ||
-      compareFactItems.length >= 3 ||
+    ((bank.pairs?.length ?? 0) >= 3 ||
+      (bank.facts?.length ?? 0) >= 3 ||
       ((bank.trueFalse?.filter((t) => !t.correct).length ?? 0) >= 1 &&
-        (bank.trueFalse?.filter((t) => t.correct).length ?? 0) + richPairsEarly.length >= 3))
+        (bank.trueFalse?.filter((t) => t.correct).length ?? 0) + (bank.pairs?.length ?? 0) >= 3))
 
   const hasAltModes =
     (bank.pairs?.length ?? 0) >= 3 ||
@@ -1098,21 +1009,8 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
     const gapCut = hasAltModes ? 0.1 : 0.16
     const flashCut = hasAltModes ? 0.3 : 0.38
 
-    const richFacts = bank.facts!.filter((f) => {
-      const term =
-        stripBioBankSlug(f.flashFront || f.prompt.match(/[„""']([^„""']+)[“""']/)?.[1] || f.gapAccepted?.[0] || '').trim()
-      const ans = f.answer.trim()
-      if (ans.length < 3) return false
-      // Nur echte Glossar-Synonyme verwerfen — kurze Fachantworten (z. B. „Wasserkanäle“) bleiben.
-      if (term && isShallowGlossaryEntry(term, ans)) return false
-      if (!term && isGlossaryStylePrompt(f.prompt) && isShallowGlossaryEntry('x', ans)) return false
-      return true
-    })
-    // Nie auf flache Glossar-Facts zurückfallen
-    const factPool = richFacts
-
     const factVariant = (rng: Rng) => {
-      const f = pick(rng, factPool)
+      const f = pick(rng, bank.facts!)
       const key = bioConceptKey(f.concept, prefix, f.prompt)
       const mode = rng()
       const factCtx = {
@@ -1125,7 +1023,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
           ? shuffle(rng, f.wrong).slice(0, 3)
           : shuffle(
               rng,
-              factPool.filter((x) => x.answer !== f.answer).map((x) => x.answer),
+              bank.facts!.filter((x) => x.answer !== f.answer).map((x) => x.answer),
             ).slice(0, 3)
       while (wrong.length < 3) wrong.push(`Nicht: ${f.answer} (${wrong.length})`)
 
@@ -1201,31 +1099,77 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         contentIds: [key],
       })
     }
-    // Fakten nur wenn gehaltvoll — sonst kein Glossar-Gewicht.
-    if (factPool.length) weighted.push({ weight: 4.2, gen: factVariant })
+    // Fakten = Hauptgewicht (MC/Flash), nicht Zuordnung.
+    weighted.push({ weight: 4.2, gen: factVariant })
   }
 
-  // Nicht-flache Pairs als MC (Schulstoff), nicht als reines Glossar-Drill.
-  const richPairs = richPairsEarly
-  if (richPairs.length >= 2) {
+  // Kein multi-Concept-pairMatch (verbrennt 4–6 IDs → Short-Rounds).
+  // Stattdessen jedes Begriffspaar als einzelne MC — erweitert den Unique-Pool.
+  if (bank.pairs && bank.pairs.length >= 2) {
     weighted.push({
-      weight: 1.4,
+      weight: 1.6,
       gen: (rng) => {
-        const p = pick(rng, richPairs)
+        const p = pick(rng, bank.pairs!)
         const key = bioConceptKey(p.concept, prefix, p.term)
         const wrong = shuffle(
           rng,
-          richPairs.filter((x) => x.meaning !== p.meaning).map((x) => x.meaning),
+          bank.pairs!.filter((x) => x.meaning !== p.meaning).map((x) => x.meaning),
         ).slice(0, 3)
-        while (wrong.length < 3) wrong.push(`Andere fachliche Einordnung (${wrong.length})`)
+        while (wrong.length < 3) wrong.push(`Andere Bedeutung (${wrong.length})`)
+        const term = p.term.trim()
+        const meaning = p.meaning.trim()
+        // Schlechte Thin-Fill-Paare (term „lage“, abgeschnittene meanings) überspringen.
+        if (
+          term.length < 4 ||
+          meaning.length < 12 ||
+          /[,:;]\s*$/.test(meaning) ||
+          meaning.endsWith(' ') ||
+          (term === term.toLowerCase() && term.length <= 5 && !/[äöüß-]/.test(term))
+        ) {
+          const factSlot = weighted.find((w) => w.weight >= 4)
+          if (factSlot) return factSlot.gen(rng)
+          const alt = bank.pairs!.find(
+            (x) => x !== p && x.term.trim().length >= 4 && x.meaning.trim().length >= 12,
+          )
+          if (!alt) {
+            return mcTask(rng, {
+              question: 'Welcher Fachbegriff passt zur Erklärung?',
+              correct: meaning || term || 'Begriff',
+              wrong: wrong.length ? wrong : ['Andere Bedeutung', 'Nicht passend', 'Unklar'],
+              explanation: `${term}: ${meaning}`,
+              fachwissen: fw(bank, p.wissen || 'Fachbegriff einordnen.'),
+              dedupeKey: key,
+              contentIds: [key],
+            })
+          }
+          const altKey = bioConceptKey(alt.concept, prefix, alt.term)
+          const altWrong = shuffle(
+            rng,
+            bank.pairs!.filter((x) => x.meaning !== alt.meaning).map((x) => x.meaning),
+          ).slice(0, 3)
+          while (altWrong.length < 3) altWrong.push(`Andere Bedeutung (${altWrong.length})`)
+          return mcTask(rng, {
+            question: applicationPromptForTerm(alt.term.trim(), prefix),
+            correct: alt.meaning.trim(),
+            wrong: altWrong,
+            explanation: `${alt.term}: ${alt.meaning}`,
+            fachwissen: fw(bank, alt.wissen, {
+              term: alt.term,
+              meaning: alt.meaning,
+              explanation: alt.wissen,
+            }),
+            dedupeKey: altKey,
+            contentIds: [altKey],
+          })
+        }
         return mcTask(rng, {
-          question: `Welche Aussage zu „${p.term.trim()}“ ist fachlich zutreffend?`,
-          correct: p.meaning.trim(),
+          question: applicationPromptForTerm(term, prefix),
+          correct: meaning,
           wrong,
-          explanation: `${p.term}: ${p.meaning}`,
+          explanation: `${term}: ${meaning}`,
           fachwissen: fw(bank, p.wissen, {
-            term: p.term,
-            meaning: p.meaning,
+            term,
+            meaning,
             explanation: p.wissen,
           }),
           dedupeKey: key,
@@ -1259,10 +1203,10 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
     // Fehlende wahre TF-Sätze mit Pair-Aussagen auffüllen (dünne Banken).
     const falses = bank.trueFalse.filter((t) => !t.correct)
     const trues = bank.trueFalse.filter((t) => t.correct)
-    const pairTruePads = richPairs
-      .filter((p) => p.term.trim().length >= 3 && p.meaning.trim().split(/\s+/).length >= 8)
+    const pairTruePads = (bank.pairs ?? [])
+      .filter((p) => p.term.trim().length >= 3 && p.meaning.trim().length >= 8)
       .map((p) => ({
-        statement: `Zu „${p.term.trim()}“ gilt fachlich: ${p.meaning.trim()}.`,
+        statement: `„${p.term.trim()}“ bedeutet: ${p.meaning.trim()}.`,
         explanation: `${p.term}: ${p.meaning}`,
         wissen: p.wissen,
         concept: p.concept,
@@ -1270,7 +1214,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
     if (falses.length >= 1 && trues.length + pairTruePads.length >= 2) {
       hasTfDerivedFindError = true
       weighted.push({
-        weight: 0.75,
+        weight: 1.5,
         gen: (rng) => {
           const bad = pick(rng, falses)
           const truePool = [
@@ -1317,9 +1261,9 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
           }
           const statements = shuffle(rng, [faulty, picked[0]!, picked[1]!])
           const key = bioConceptKey(bad.concept, prefix, `err:${bad.statement}`)
-          const hint = faulty.replace(/\s+/g, ' ').trim().slice(0, 42)
+          // Fester Stem — kein Themenfeld-Suffix (vermeidet Round-Dups parasit/parasiten).
           return findErrorTask({
-            question: `Welche Aussage ist fachlich falsch? (Bezug: ${hint}…)`,
+            question: 'Welche dieser drei Aussagen ist fachlich falsch?',
             statements,
             faulty,
             solution: faulty,
@@ -1341,25 +1285,11 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
       weight: 1.8,
       gen: (rng) => {
         const s = pick(rng, bank.sorts!)
-        const labels = s.labels ?? (s as { items?: string[] }).items ?? []
-        if (labels.length < 2) {
-          return trueFalse(rng, {
-            statement: s.question,
-            correct: true,
-            explanation: s.explanation,
-            fachwissen: fw(bank, s.wissen, {
-              prompt: s.question,
-              explanation: s.explanation,
-            }),
-            dedupeKey: bioConceptKey(s.concept, prefix, s.question),
-            contentIds: [bioConceptKey(s.concept, prefix, s.question)],
-          })
-        }
         const key = bioConceptKey(s.concept, prefix, s.question)
         return sortChronologyTask(rng, {
           question: s.question,
-          labels,
-          solution: labels.join(' → '),
+          labels: s.labels,
+          solution: s.labels.join(' → '),
           explanation: s.explanation,
           fachwissen: fw(bank, s.wissen, {
             prompt: s.question,
@@ -1560,7 +1490,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
   // Systemweiter Mix: Compare aus Pairs/Facts, wenn keine authored compares.
   if (canAutoCompare) {
     weighted.push({
-      weight: 0.85,
+      weight: 1.75,
       gen: (rng) => {
         type Item = { term: string; meaning: string; wissen: string; concept?: string }
         const dedupeItems = (raw: Item[]): Item[] => {
@@ -1575,65 +1505,34 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
           return out
         }
         const fromPairs = dedupeItems(
-          richPairsEarly.map((p) => ({
-            term: p.term.trim(),
-            meaning: p.meaning.trim(),
-            wissen: p.wissen,
-            concept: p.concept,
-          })),
+          (bank.pairs ?? [])
+            .filter((p) => p.term.trim().length >= 3 && p.meaning.trim().length >= 8)
+            .map((p) => ({
+              term: p.term.trim(),
+              meaning: p.meaning.trim(),
+              wissen: p.wissen,
+              concept: p.concept,
+            })),
         )
         const fromFacts = dedupeItems(
-          compareFactItems.map((f) => ({
-            term: stripBioBankSlug(f.flashFront ?? f.gapAccepted?.[0] ?? 'Begriff').trim(),
-            meaning: f.answer.trim(),
-            wissen: f.wissen,
-            concept: f.concept,
-          })),
+          (bank.facts ?? [])
+            .filter((f) => {
+              const term = stripBioBankSlug(f.flashFront ?? f.gapAccepted?.[0] ?? '').trim()
+              return term.length >= 3 && f.answer.trim().length >= 8
+            })
+            .map((f) => ({
+              term: stripBioBankSlug(f.flashFront ?? f.gapAccepted?.[0] ?? 'Begriff').trim(),
+              meaning: f.answer.trim(),
+              wissen: f.wissen,
+              concept: f.concept,
+            })),
         )
         const pool = fromPairs.length >= 2 ? fromPairs : fromFacts
-        if (pool.length < 2) {
-          const f = pick(rng, bank.facts ?? []) ?? bank.multis?.[0]
-          if (f && 'prompt' in f) {
-            return mcTask(rng, {
-              question: stripBioBankSlug(f.prompt),
-              correct: f.answer,
-              wrong: (f.wrong ?? ['Andere Deutung', 'Unpassend', 'Nicht zutreffend']).slice(0, 3),
-              explanation: f.explanation,
-              fachwissen: fw(bank, f.wissen),
-              dedupeKey: bioConceptKey(f.concept, prefix, f.prompt),
-              contentIds: [bioConceptKey(f.concept, prefix, f.prompt)],
-            })
-          }
-          return trueFalse(rng, {
-            statement: 'Fachliche Aussagen prüfen konkretes Wissen, keine bloßen Synonyme.',
-            correct: true,
-            explanation: 'Schulstoff statt Glossar.',
-            fachwissen: fw(bank, 'Konkretes Fachwissen statt Kurzsynonyme.'),
-            dedupeKey: bioConceptKey(undefined, prefix, 'cmp-fallback'),
-            contentIds: [bioConceptKey(undefined, prefix, 'cmp-fallback')],
-          })
-        }
         const a = pick(rng, pool)
-        const near = (x: string, y: string) => {
-          const nx = x
-            .toLowerCase()
-            .replace(/\s+/g, '')
-            .replace(/[—–-]/g, '')
-          const ny = y
-            .toLowerCase()
-            .replace(/\s+/g, '')
-            .replace(/[—–-]/g, '')
-          if (nx === ny) return true
-          // „zum ZNS“ vs „vom ZNS“ — Audit wertet als gleiche Aussage
-          if (nx.length >= 4 && ny.length >= 4 && (nx.includes(ny) || ny.includes(nx))) return true
-          return false
-        }
-        const others = pool.filter(
-          (x) => x.meaning !== a.meaning && x.term !== a.term && !near(x.meaning, a.meaning),
-        )
+        const others = pool.filter((x) => x.meaning !== a.meaning && x.term !== a.term)
         if (!others.length) {
           return mcTask(rng, {
-            question: `Welche Aussage zu „${a.term}“ ist fachlich zutreffend?`,
+            question: applicationPromptForTerm(a.term, prefix),
             correct: a.meaning,
             wrong: pool.filter((x) => x.meaning !== a.meaning).map((x) => x.meaning).slice(0, 3),
             explanation: `${a.term}: ${a.meaning}`,
@@ -1643,14 +1542,9 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
           })
         }
         const b = pick(rng, others)
-        // Stabile Term-Reihenfolge: Fokus = lex. erster Term → eine Identität
-        // pro Paar (kein Near-Dup A↔B, kein Round-Dup gleicher Frage).
-        const [t1, t2] = [a.term, b.term].sort((x, y) => x.localeCompare(y, 'de'))
-        const focus = a.term === t1 ? a : b
-        const other = focus === a ? b : a
         const correctFirst = rng() < 0.5
-        const correctBody = `${focus.term} — ${focus.meaning}`
-        const wrongBody = `${other.term} — ${other.meaning}`
+        const correctBody = `${a.term} — ${a.meaning}`
+        const wrongBody = `${a.term} — ${b.meaning}`
         const cards = correctFirst
           ? [
               { id: 'A', title: 'A', body: correctBody },
@@ -1661,24 +1555,18 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
               { id: 'B', title: 'B', body: correctBody },
             ]
         const correctId = correctFirst ? 'A' : 'B'
-        const key = bioConceptKey(focus.concept, prefix, `cmp:${t1}:${t2}`)
-        const tip =
-          (prefix ?? '')
-            .split(':')
-            .filter((s) => s && !/^(bio|ge|ph|ma|fill|ov|xpaar)$/i.test(s) && !/^k\d+$/i.test(s))
-            .pop() || 'Thema'
+        const key = bioConceptKey(a.concept, prefix, `cmp:${a.term}`)
+        // Stem ohne Term (Cross-Topic-Isolation); Term steht auf den Karten.
         return comparePickTask({
-          // Sortierte Terme + Tip: Stem unabhängig von Fokus; Cross-Topic-Isolation
-          question: `Welche Karte trifft fachlich zu (${tip}: „${t1}“ / „${t2}“)?`,
+          question: 'Vergleiche: Welche Erklärung ist fachlich zutreffend?',
           cards,
           correctId,
-          // Lösung mit Term → kein ans:-Kollision mit Pair-MC derselben Bedeutung
-          solution: `${focus.term} — ${focus.meaning}`,
-          explanation: `${focus.term}: ${focus.meaning}`,
-          fachwissen: fw(bank, focus.wissen, {
-            term: focus.term,
-            meaning: focus.meaning,
-            explanation: focus.wissen,
+          solution: a.meaning,
+          explanation: `${a.term}: ${a.meaning}`,
+          fachwissen: fw(bank, a.wissen, {
+            term: a.term,
+            meaning: a.meaning,
+            explanation: a.wissen,
           }),
           dedupeKey: key,
           contentIds: [key],
@@ -1695,7 +1583,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
       (bank.facts?.length ?? 0) >= 3
     ) {
       weighted.push({
-        weight: hasTfDerivedFindError ? 0.7 : 0.9,
+        weight: hasTfDerivedFindError ? 1.2 : 1.65,
         gen: (rng) => {
           type Item = { term: string; meaning: string; wissen: string; concept?: string }
           const seenTerm = new Set<string>()
@@ -1777,16 +1665,8 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
           }
           const statements = shuffle(rng, [faulty, good1, good2])
           const key = bioConceptKey(bad.concept, prefix, `ferr:${bad.term}`)
-          // Themen-Tag trennt Cross-Topic-Stems; kein Lösungs-Term im Stem.
-          const tip =
-            (prefix ?? '')
-              .split(':')
-              .filter((s) => s && !/^(bio|ge|ph|ma|fill|ov|xpaar)$/i.test(s) && !/^k\d+$/i.test(s))
-              .pop() || 'Thema'
           return findErrorTask({
-            // „Welche dieser …“ bleibt GENERIC_STEM (Cross-Topic-Isolation);
-            // Tip nur für Lesbarkeit, nicht als Content-Stem.
-            question: `Welche dieser Aussagen ist fachlich falsch? (${tip})`,
+            question: 'Welche dieser drei Aussagen ist fachlich falsch?',
             statements,
             faulty,
             solution: faulty,

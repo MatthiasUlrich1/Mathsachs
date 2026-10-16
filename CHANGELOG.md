@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.111] – 2026-10-16
+
+### Behoben
+- **Rollback auf v0.28.107:** Curriculum-/Quellcode-Stand von Tag `v0.28.107`
+  wiederhergestellt und als neue Version ausgeliefert. In 0.28.108–0.28.110
+  waren deutsche Umlaute (äöüÄÖÜß) und Gedankenstriche zu `?`/`???`
+  korrupt sowie Lehrplan-Inhalte (Bio/GE/Physik-Banks, Pack-Versionen,
+  Generatoren) regressiert. Freigegebene Aufgaben: wieder der Stand von 107 —
+  keine weiteren Inhalts-„Verbesserungen“ in diesem Release.
+
+
 ## [0.28.110] – 2026-10-16
 
 ### Behoben

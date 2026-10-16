@@ -317,15 +317,10 @@ const genetikOS: BioBank = {
   facts: [
     {
       concept: 'bio:kOberstufe:was-beschreibt-pcr-grob',
-      prompt: 'Wozu dient die Polymerase-Kettenreaktion (PCR) in der Molekularbiologie?',
-      answer:
-        'Sie vervielfältigt gezielt ausgewählte DNA-Abschnitte in wiederholten Temperaturzyklen (Amplifikation)',
-      wrong: [
-        'Sie übersetzt mRNA an Ribosomen in Proteine (Translation)',
-        'Sie verdaut Stärke im Darm zu Einfachzuckern',
-        'Sie ersetzt die Meiose bei der Keimzellenbildung',
-      ],
-      explanation: 'PCR amplifiziert DNA — sie ist keine Proteinbiosynthese.',
+      prompt: 'Was beschreibt PCR grob?',
+      answer: 'Vervielfältigung von DNA-Abschnitten',
+      wrong: ['Nur Knochenheilung', 'Nur Transpiration', 'Nur Impfung mit Bakterien immer'],
+      explanation: 'Molekularbiologische Amplifikation ausgewählter DNA-Abschnitte.',
       wissen:
         'Die Polymerase-Kettenreaktion (PCR) vervielfältigt gezielt ausgewählte DNA-Abschnitte in wiederholten Temperaturzyklen. Jeder Zyklus umfasst Denaturierung (Aufschmelzen bei ca. 95 °C), Anlagerung passender Primer und Elongation durch eine hitzeresistente DNA-Polymerase (z. B. Taq). Die Ziel-DNA wächst näherungsweise exponentiell; Anwendungen sind Diagnostik, Forensik und Gentechnik.',
       gap: 'PCR dient der gezielten ___ bestimmter DNA-Abschnitte.',
@@ -384,8 +379,7 @@ const genetikOS: BioBank = {
     },
     {
       term: 'PCR',
-      meaning:
-        'Enzymatische Amplifikation ausgewählter DNA-Abschnitte in Temperaturzyklen mit Primer und Polymerase',
+      meaning: 'Enzymatische Amplifikation von DNA',
       wissen:
         'PCR amplifiziert DNA-Abschnitte zyklisch mit Primer und hitzeresistenter Polymerase. Sie braucht Template, dNTPs und definierte Temperaturen. Ergebnis sind viele Kopien der Zielsequenz.',
     },

@@ -11736,10 +11736,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
   }),
 }
 
-/**
- * Mix filler 3:1 over base so rounds stay dense.
- * Flache Glossar-Synonyme werden in bankGenerate/sanitize verworfen.
- */
+/** Mix filler 3:1 over base so rounds stay dense without dropping specialty UX. */
 export function withThinFill(
   id: string,
   base: Topic['generate'] | undefined,

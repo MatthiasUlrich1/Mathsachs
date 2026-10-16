@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.10.0',
-    changelog: `Glossar-Synonym-MC entfernt (bankGenerate-Härtung); Lehrplan-Gaps mit echtem Fachwissen (u. a. Vogelschutz/Ramsar/Feuchtgebiete). Thin-Fill nur noch Notfall. ${topics} Themen.`,
+    version: '1.9.9',
+    changelog: `K8–K10 Dichte-Pass: +24 Lehrplan-Topics (u. a. K9 Blüte/Zellatmung, K10 Replikation/Proteinsynthese/Homininen). released:false. ${topics} Themen.`,
     official,
     extras: [],
   }
