@@ -46,8 +46,9 @@ BANNED = re.compile(
     r"Es beschreibt ein Zwei Membranen",
     re.I,
 )
-# Case-sensitive: Title-Case after „ist eine“
-TITLE_AFTER_IST_EINE = re.compile(r"\bist eine [A-ZÄÖÜ]")
+# Case-sensitive: Title-Case mush = two+ Title tokens after „ist eine“ / any Title after „beschreibt ein(e)“
+TITLE_AFTER_IST_EINE = re.compile(r"\bist eine [A-ZÄÖÜ][a-zäöüß]+ [A-ZÄÖÜ]")
+TITLE_AFTER_BESCHREIBT = re.compile(r"\bbeschreibt ein(?:e)? [A-ZÄÖÜ]")
 PAD_WRAPPER = re.compile(
     r"ist hier:|kurz gesagt:|\bHier gilt\b|Es geht um|der Ereignisse",
     re.I,
@@ -113,6 +114,8 @@ def judge(prompt: str, answer: str, wrongs: list[str]) -> list[str]:
         reasons.append("banned")
     if TITLE_AFTER_IST_EINE.search(blob):
         reasons.append("title-after-ist-eine")
+    if TITLE_AFTER_BESCHREIBT.search(blob):
+        reasons.append("title-after-beschreibt")
     # Hard fail: uniform Term-ist-hier / kurz gesagt / Es geht um pads
     if PAD_WRAPPER.search(blob):
         reasons.append("pad-wrapper")
@@ -154,7 +157,12 @@ def judge(prompt: str, answer: str, wrongs: list[str]) -> list[str]:
         words = o.split()
         if len(words) < 6 or not VERB.search(o) or not re.search(r"[.!?]$", o.strip()):
             reasons.append(f"weak-opt{i}")
-        if BANNED.search(o) or PAD_WRAPPER.search(o) or TITLE_AFTER_IST_EINE.search(o):
+        if (
+            BANNED.search(o)
+            or PAD_WRAPPER.search(o)
+            or TITLE_AFTER_IST_EINE.search(o)
+            or TITLE_AFTER_BESCHREIBT.search(o)
+        ):
             reasons.append(f"banned-opt{i}")
     if len(wrongs) < 3:
         reasons.append("missing-wrongs")

@@ -101,7 +101,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k6-lb1-lampenposition:f7",
       prompt: "Wozu dient ein Spiegel?",
-      answer: "Er wirft Licht an einer glatten Fläche geordnet zurück und kann Bilder erzeugen.", wrong: ["Licht geht so klar hindurch, dass man Gegenstände dahinter scharf erkennen kann.", "Sie erzeugt durch ein kleines Loch ohne Linse ein umgekehrtes Bild.", "Sie ändert die Richtung des Lichts beim Übergang in ein anderes Medium."],
+      answer: "Glatte reflektierende Fläche.", wrong: ["Körper der selbst Licht aussendet.", "Geradliniges Modell der Lichtausbreitung.", "Bereich ohne direktes Licht."],
       explanation: "Bildentstehung. Bezug: Lampenposition. Spiegel: Glatte reflektierende Fläche",
       wissen: "Bildentstehung. Bezug: Lampenposition. Spiegel bedeutet: Glatte reflektierende Fläche. Merke: Spiegel — Glatte reflektierende Fläche.",
       gap: "[ph-k6-lb1-lampenposition] ___ — Glatte reflektierende Fläche",
@@ -274,7 +274,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k6-lb1-lichtstrahl:f7",
       prompt: "Wozu dient ein Spiegel?",
-      answer: "Er wirft Licht an einer glatten Fläche geordnet zurück und kann Bilder erzeugen.", wrong: ["Licht geht so klar hindurch, dass man Gegenstände dahinter scharf erkennen kann.", "Das Auge nimmt Lichtreize auf der Netzhaut wahr und das Gehirn deutet sie.", "Sie ändert die Richtung des Lichts beim Übergang in ein anderes Medium."],
+      answer: "Glatte reflektierende Fläche.", wrong: ["Körper der selbst Licht aussendet.", "Geradliniges Modell der Lichtausbreitung.", "Bereich ohne direktes Licht."],
       explanation: "Bildentstehung. Bezug: Lichtstrahl. Spiegel: Glatte reflektierende Fläche",
       wissen: "Bildentstehung. Bezug: Lichtstrahl. Spiegel bedeutet: Glatte reflektierende Fläche. Merke: Spiegel — Glatte reflektierende Fläche.",
       gap: "[ph-k6-lb1-lichtstrahl] ___ — Glatte reflektierende Fläche",
@@ -417,7 +417,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k6-lb2-wegzeit:f4",
       prompt: "Wozu dient ein s-t- oder v-t-Diagramm?",
-      answer: "Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", wrong: ["Er ist der Durchschnitt mehrerer Messwerte und glättet einzelne Streuungen.", "Es dokumentiert Versuchsschritte und Messwerte so, dass andere den Versuch wiederholen können.", "Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird."],
+      answer: "s-t- oder v-t-Graph.", wrong: ["Weg pro Zeit.", "Zurückgelegte Strecke.", "Dauer eines Vorgangs."],
       explanation: "Zusammenhang sichtbar. Bezug: Wegzeit. Diagramm: s-t- oder v-t-Graph",
       wissen: "Zusammenhang sichtbar. Bezug: Wegzeit. Diagramm bedeutet: s-t- oder v-t-Graph. Merke: Diagramm — s-t- oder v-t-Graph.",
       gap: "[ph-k6-lb2-wegzeit] ___ — s-t- oder v-t-Graph",
@@ -590,7 +590,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k6-lb2-einheiten:f4",
       prompt: "Wozu dient ein s-t- oder v-t-Diagramm?",
-      answer: "Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", wrong: ["Er ist der Durchschnitt mehrerer Messwerte und glättet einzelne Streuungen.", "Es dokumentiert Versuchsschritte und Messwerte so, dass andere den Versuch wiederholen können.", "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit."],
+      answer: "s-t- oder v-t-Graph.", wrong: ["Weg pro Zeit.", "Zurückgelegte Strecke.", "Dauer eines Vorgangs."],
       explanation: "Zusammenhang sichtbar. Bezug: Einheiten. Diagramm: s-t- oder v-t-Graph",
       wissen: "Zusammenhang sichtbar. Bezug: Einheiten. Diagramm bedeutet: s-t- oder v-t-Graph. Merke: Diagramm — s-t- oder v-t-Graph.",
       gap: "[ph-k6-lb2-einheiten] ___ — s-t- oder v-t-Graph",
@@ -753,7 +753,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k6-lb3-ausdehnung:f3",
       prompt: "Was geschieht beim Schmelzen?",
-      answer: "Der Stoff geht bei der Schmelztemperatur vom festen in den flüssigen Zustand über.", wrong: ["Das Volumen wächst mit steigender Temperatur bei vielen Stoffen.", "Sie gibt an, wie viel Wärme pro Masse und Kelvin nötig ist, und ist stoffabhängig.", "Er beschreibt fest, flüssig oder gasförmig und hängt von Temperatur und Druck ab."],
+      answer: "Übergang fest → flüssig.", wrong: ["Maß für den Wärmezustand.", "Volumen wächst mit Temperatur.", "fest, flüssig, gasförmig."],
       explanation: "Bei Schmelztemperatur. Bezug: Ausdehnung. Schmelzen: Übergang fest → flüssig",
       wissen: "Bei Schmelztemperatur. Bezug: Ausdehnung. Schmelzen bedeutet: Übergang fest → flüssig. Merke: Schmelzen — Übergang fest → flüssig.",
       gap: "[ph-k6-lb3-ausdehnung] ___ — Übergang fest → flüssig",
@@ -813,7 +813,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k6-lb3-ausdehnung:f9",
       prompt: "Wie transportiert Wärmeleitung Energie?",
-      answer: "Sie überträgt Wärme durch Kontakt; Metalle leiten dabei besonders gut.", wrong: ["Es misst die Temperatur und braucht dazu Skalierung und Kalibrierung.", "Sie ist übertragene Energie und ist nicht dasselbe wie Temperatur.", "Sie gibt an, wie viel Wärme pro Masse und Kelvin nötig ist, und ist stoffabhängig."],
+      answer: "Übertragene Energie.", wrong: ["Maß für den Wärmezustand.", "Volumen wächst mit Temperatur.", "fest, flüssig, gasförmig."],
       explanation: "Nicht gleich Temperatur. Bezug: Ausdehnung. Wärme: Übertragene Energie",
       wissen: "Nicht gleich Temperatur. Bezug: Ausdehnung. Wärme bedeutet: Übertragene Energie. Merke: Wärme — Übertragene Energie.",
       gap: "[ph-k6-lb3-ausdehnung] ___ — Übertragene Energie",
@@ -1485,7 +1485,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k6-lbw-sehen:f7",
       prompt: "Wozu dient ein Spiegel?",
-      answer: "Er wirft Licht an einer glatten Fläche geordnet zurück und kann Bilder erzeugen.", wrong: ["Licht geht so klar hindurch, dass man Gegenstände dahinter scharf erkennen kann.", "Es entsteht ein Spektrum mit den Farben der Regenbogenreihe.", "Sie ändert die Richtung des Lichts beim Übergang in ein anderes Medium."],
+      answer: "Glatte reflektierende Fläche.", wrong: ["Körper der selbst Licht aussendet.", "Geradliniges Modell der Lichtausbreitung.", "Bereich ohne direktes Licht."],
       explanation: "Bildentstehung. Bezug: Sehen. Spiegel: Glatte reflektierende Fläche",
       wissen: "Bildentstehung. Bezug: Sehen. Spiegel bedeutet: Glatte reflektierende Fläche. Merke: Spiegel — Glatte reflektierende Fläche.",
       gap: "[ph-k6-lbw-sehen] ___ — Glatte reflektierende Fläche",
@@ -1618,7 +1618,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k6-lbw-daemmung:f3",
       prompt: "Was geschieht beim Schmelzen?",
-      answer: "Der Stoff geht bei der Schmelztemperatur vom festen in den flüssigen Zustand über.", wrong: ["Das Volumen wächst mit steigender Temperatur bei vielen Stoffen.", "Sie transportiert Wärme mit einer strömenden Flüssigkeit oder Luft, etwa bei Heizungsluft.", "Er beschreibt fest, flüssig oder gasförmig und hängt von Temperatur und Druck ab."],
+      answer: "Übergang fest → flüssig.", wrong: ["Maß für den Wärmezustand.", "Volumen wächst mit Temperatur.", "fest, flüssig, gasförmig."],
       explanation: "Bei Schmelztemperatur. Bezug: Daemmung. Schmelzen: Übergang fest → flüssig",
       wissen: "Bei Schmelztemperatur. Bezug: Daemmung. Schmelzen bedeutet: Übergang fest → flüssig. Merke: Schmelzen — Übergang fest → flüssig.",
       gap: "[ph-k6-lbw-daemmung] ___ — Übergang fest → flüssig",
@@ -1678,7 +1678,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k6-lbw-daemmung:f9",
       prompt: "Wie transportiert Wärmeleitung Energie?",
-      answer: "Sie überträgt Wärme durch Kontakt; Metalle leiten dabei besonders gut.", wrong: ["Es misst die Temperatur und braucht dazu Skalierung und Kalibrierung.", "Sie ist übertragene Energie und ist nicht dasselbe wie Temperatur.", "Sie überträgt Wärme ohne stoffliches Medium, zum Beispiel als Sonnenstrahlung."],
+      answer: "Übertragene Energie.", wrong: ["Maß für den Wärmezustand.", "Volumen wächst mit Temperatur.", "fest, flüssig, gasförmig."],
       explanation: "Nicht gleich Temperatur. Bezug: Daemmung. Wärme: Übertragene Energie",
       wissen: "Nicht gleich Temperatur. Bezug: Daemmung. Wärme bedeutet: Übertragene Energie. Merke: Wärme — Übertragene Energie.",
       gap: "[ph-k6-lbw-daemmung] ___ — Übertragene Energie",
@@ -1791,7 +1791,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k6-lbw-daemmstoff:f3",
       prompt: "Was geschieht beim Schmelzen?",
-      answer: "Der Stoff geht bei der Schmelztemperatur vom festen in den flüssigen Zustand über.", wrong: ["Das Volumen wächst mit steigender Temperatur bei vielen Stoffen.", "Sie transportiert Wärme mit einer strömenden Flüssigkeit oder Luft, etwa bei Heizungsluft.", "Er beschreibt fest, flüssig oder gasförmig und hängt von Temperatur und Druck ab."],
+      answer: "Übergang fest → flüssig.", wrong: ["Maß für den Wärmezustand.", "Volumen wächst mit Temperatur.", "fest, flüssig, gasförmig."],
       explanation: "Bei Schmelztemperatur. Bezug: Daemmstoff. Schmelzen: Übergang fest → flüssig",
       wissen: "Bei Schmelztemperatur. Bezug: Daemmstoff. Schmelzen bedeutet: Übergang fest → flüssig. Merke: Schmelzen — Übergang fest → flüssig.",
       gap: "[ph-k6-lbw-daemmstoff] ___ — Übergang fest → flüssig",
@@ -1851,7 +1851,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k6-lbw-daemmstoff:f9",
       prompt: "Wie transportiert Wärmeleitung Energie?",
-      answer: "Sie überträgt Wärme durch Kontakt; Metalle leiten dabei besonders gut.", wrong: ["Es misst die Temperatur und braucht dazu Skalierung und Kalibrierung.", "Sie überträgt Wärme ohne stoffliches Medium, zum Beispiel als Sonnenstrahlung.", "Sie ist übertragene Energie und ist nicht dasselbe wie Temperatur."],
+      answer: "Übertragene Energie.", wrong: ["Maß für den Wärmezustand.", "Volumen wächst mit Temperatur.", "fest, flüssig, gasförmig."],
       explanation: "Nicht gleich Temperatur. Bezug: Daemmstoff. Wärme: Übertragene Energie",
       wissen: "Nicht gleich Temperatur. Bezug: Daemmstoff. Wärme bedeutet: Übertragene Energie. Merke: Wärme — Übertragene Energie.",
       gap: "[ph-k6-lbw-daemmstoff] ___ — Übertragene Energie",
@@ -2004,7 +2004,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k6-lbw-farben:f7",
       prompt: "Wozu dient ein Spiegel?",
-      answer: "Er wirft Licht an einer glatten Fläche geordnet zurück und kann Bilder erzeugen.", wrong: ["Licht geht so klar hindurch, dass man Gegenstände dahinter scharf erkennen kann.", "Sie ändert die Richtung des Lichts beim Übergang in ein anderes Medium.", "Er lässt nur bestimmte Farben durch und absorbiert die übrigen."],
+      answer: "Glatte reflektierende Fläche.", wrong: ["Körper der selbst Licht aussendet.", "Geradliniges Modell der Lichtausbreitung.", "Bereich ohne direktes Licht."],
       explanation: "Bildentstehung. Bezug: Farben. Spiegel: Glatte reflektierende Fläche",
       wissen: "Bildentstehung. Bezug: Farben. Spiegel bedeutet: Glatte reflektierende Fläche. Merke: Spiegel — Glatte reflektierende Fläche.",
       gap: "[ph-k6-lbw-farben] ___ — Glatte reflektierende Fläche",
@@ -2127,7 +2127,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lb1-kraftbegriff:f2",
       prompt: "Was bewirkt Reibung?",
-      answer: "Sie hemmt die Bewegung zwischen Berührflächen und wandelt Bewegungsenergie in Wärme um.", wrong: ["Sie beschreibt Kräfte und Felder ruhender elektrischer Ladungen.", "Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", "Er verändert Betrag oder Richtung einer Kraft, etwa mit Hebel oder Flaschenzug."],
+      answer: "Kraft gegen Gleiten.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Rückstellkraft der Feder."],
       explanation: "Haft- und Gleitreibung. Bezug: Kraftbegriff. Reibung: Kraft gegen Gleiten",
       wissen: "Haft- und Gleitreibung. Bezug: Kraftbegriff. Reibung bedeutet: Kraft gegen Gleiten. Merke: Reibung — Kraft gegen Gleiten.",
       gap: "[ph-k7-lb1-kraftbegriff] ___ — Kraft gegen Gleiten",
@@ -2147,7 +2147,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lb1-kraftbegriff:f4",
       prompt: "Wozu dient ein Hebel?",
-      answer: "Er wandelt Kräfte über Hebelarme und erleichtert so das Heben oder Drehen.", wrong: ["Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", "Er wirkt der Gewichtskraft entgegen und entspricht dem Gewicht der verdrängten Flüssigkeit.", "Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt."],
+      answer: "Kraftwandler mit Drehpunkt.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Kraft gegen Gleiten."],
       explanation: "Hebelgesetz. Bezug: Kraftbegriff. Hebel: Kraftwandler mit Drehpunkt",
       wissen: "Hebelgesetz. Bezug: Kraftbegriff. Hebel bedeutet: Kraftwandler mit Drehpunkt. Merke: Hebel — Kraftwandler mit Drehpunkt.",
       gap: "[ph-k7-lb1-kraftbegriff] ___ — Kraftwandler mit Drehpunkt",
@@ -2157,7 +2157,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lb1-kraftbegriff:f5",
       prompt: "Wozu dient ein Flaschenzug?",
-      answer: "Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", wrong: ["Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g.", "Sie ist die Ursache von Beschleunigung oder Verformung und wird in Newton gemessen.", "Er verändert Betrag oder Richtung einer Kraft, etwa mit Hebel oder Flaschenzug."],
+      answer: "Umlenkung und Kraftteilung.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Kraft gegen Gleiten."],
       explanation: "Seilabschnitte. Bezug: Kraftbegriff. Flaschenzug: Umlenkung und Kraftteilung",
       wissen: "Seilabschnitte. Bezug: Kraftbegriff. Flaschenzug bedeutet: Umlenkung und Kraftteilung. Merke: Flaschenzug — Umlenkung und Kraftteilung.",
       gap: "[ph-k7-lb1-kraftbegriff] ___ — Umlenkung und Kraftteilung",
@@ -2300,7 +2300,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lb1-reibung:f2",
       prompt: "Was bewirkt Reibung?",
-      answer: "Sie hemmt die Bewegung zwischen Berührflächen und wandelt Bewegungsenergie in Wärme um.", wrong: ["Sie beschreibt Kräfte und Felder ruhender elektrischer Ladungen.", "Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", "Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g."],
+      answer: "Kraft gegen Gleiten.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Rückstellkraft der Feder."],
       explanation: "Haft- und Gleitreibung. Bezug: Reibung. Reibung: Kraft gegen Gleiten",
       wissen: "Haft- und Gleitreibung. Bezug: Reibung. Reibung bedeutet: Kraft gegen Gleiten. Merke: Reibung — Kraft gegen Gleiten.",
       gap: "[ph-k7-lb1-reibung] ___ — Kraft gegen Gleiten",
@@ -2320,7 +2320,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lb1-reibung:f4",
       prompt: "Wozu dient ein Hebel?",
-      answer: "Er wandelt Kräfte über Hebelarme und erleichtert so das Heben oder Drehen.", wrong: ["Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", "Er wirkt der Gewichtskraft entgegen und entspricht dem Gewicht der verdrängten Flüssigkeit.", "Er ist Kraft pro Fläche und wirkt in Flüssigkeiten und Gasen nach allen Seiten."],
+      answer: "Kraftwandler mit Drehpunkt.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Kraft gegen Gleiten."],
       explanation: "Hebelgesetz. Bezug: Reibung. Hebel: Kraftwandler mit Drehpunkt",
       wissen: "Hebelgesetz. Bezug: Reibung. Hebel bedeutet: Kraftwandler mit Drehpunkt. Merke: Hebel — Kraftwandler mit Drehpunkt.",
       gap: "[ph-k7-lb1-reibung] ___ — Kraftwandler mit Drehpunkt",
@@ -2330,7 +2330,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lb1-reibung:f5",
       prompt: "Wozu dient ein Flaschenzug?",
-      answer: "Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", wrong: ["Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g.", "Er verändert Betrag oder Richtung einer Kraft, etwa mit Hebel oder Flaschenzug.", "Sie ist die Ursache von Beschleunigung oder Verformung und wird in Newton gemessen."],
+      answer: "Umlenkung und Kraftteilung.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Kraft gegen Gleiten."],
       explanation: "Seilabschnitte. Bezug: Reibung. Flaschenzug: Umlenkung und Kraftteilung",
       wissen: "Seilabschnitte. Bezug: Reibung. Flaschenzug bedeutet: Umlenkung und Kraftteilung. Merke: Flaschenzug — Umlenkung und Kraftteilung.",
       gap: "[ph-k7-lb1-reibung] ___ — Umlenkung und Kraftteilung",
@@ -2992,7 +2992,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lbw-kraftwandler:f2",
       prompt: "Was bewirkt Reibung?",
-      answer: "Sie hemmt die Bewegung zwischen Berührflächen und wandelt Bewegungsenergie in Wärme um.", wrong: ["Sie beschreibt Kräfte und Felder ruhender elektrischer Ladungen.", "Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", "Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g."],
+      answer: "Kraft gegen Gleiten.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Rückstellkraft der Feder."],
       explanation: "Haft- und Gleitreibung. Bezug: Kraftwandler. Reibung: Kraft gegen Gleiten",
       wissen: "Haft- und Gleitreibung. Bezug: Kraftwandler. Reibung bedeutet: Kraft gegen Gleiten. Merke: Reibung — Kraft gegen Gleiten.",
       gap: "[ph-k7-lbw-kraftwandler] ___ — Kraft gegen Gleiten",
@@ -3012,7 +3012,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lbw-kraftwandler:f4",
       prompt: "Wozu dient ein Hebel?",
-      answer: "Er wandelt Kräfte über Hebelarme und erleichtert so das Heben oder Drehen.", wrong: ["Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", "Er verändert Betrag oder Richtung einer Kraft, etwa mit Hebel oder Flaschenzug.", "Er wirkt der Gewichtskraft entgegen und entspricht dem Gewicht der verdrängten Flüssigkeit."],
+      answer: "Kraftwandler mit Drehpunkt.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Kraft gegen Gleiten."],
       explanation: "Hebelgesetz. Bezug: Kraftwandler. Hebel: Kraftwandler mit Drehpunkt",
       wissen: "Hebelgesetz. Bezug: Kraftwandler. Hebel bedeutet: Kraftwandler mit Drehpunkt. Merke: Hebel — Kraftwandler mit Drehpunkt.",
       gap: "[ph-k7-lbw-kraftwandler] ___ — Kraftwandler mit Drehpunkt",
@@ -3022,7 +3022,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lbw-kraftwandler:f5",
       prompt: "Wozu dient ein Flaschenzug?",
-      answer: "Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", wrong: ["Er verändert Betrag oder Richtung einer Kraft, etwa mit Hebel oder Flaschenzug.", "Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g.", "Sie ist die Ursache von Beschleunigung oder Verformung und wird in Newton gemessen."],
+      answer: "Umlenkung und Kraftteilung.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Kraft gegen Gleiten."],
       explanation: "Seilabschnitte. Bezug: Kraftwandler. Flaschenzug: Umlenkung und Kraftteilung",
       wissen: "Seilabschnitte. Bezug: Kraftwandler. Flaschenzug bedeutet: Umlenkung und Kraftteilung. Merke: Flaschenzug — Umlenkung und Kraftteilung.",
       gap: "[ph-k7-lbw-kraftwandler] ___ — Umlenkung und Kraftteilung",
@@ -3165,7 +3165,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lb1-hebel:f2",
       prompt: "Was bewirkt Reibung?",
-      answer: "Sie hemmt die Bewegung zwischen Berührflächen und wandelt Bewegungsenergie in Wärme um.", wrong: ["Sie beschreibt Kräfte und Felder ruhender elektrischer Ladungen.", "Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", "Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g."],
+      answer: "Kraft gegen Gleiten.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Rückstellkraft der Feder."],
       explanation: "Haft- und Gleitreibung. Bezug: Hebel. Reibung: Kraft gegen Gleiten",
       wissen: "Haft- und Gleitreibung. Bezug: Hebel. Reibung bedeutet: Kraft gegen Gleiten. Merke: Reibung — Kraft gegen Gleiten.",
       gap: "[ph-k7-lb1-hebel] ___ — Kraft gegen Gleiten",
@@ -3185,7 +3185,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lb1-hebel:f4",
       prompt: "Wozu dient ein Hebel?",
-      answer: "Er wandelt Kräfte über Hebelarme und erleichtert so das Heben oder Drehen.", wrong: ["Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", "Er wirkt der Gewichtskraft entgegen und entspricht dem Gewicht der verdrängten Flüssigkeit.", "Er ist Kraft pro Fläche und wirkt in Flüssigkeiten und Gasen nach allen Seiten."],
+      answer: "Kraftwandler mit Drehpunkt.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Kraft gegen Gleiten."],
       explanation: "Hebelgesetz. Bezug: Hebel. Hebel: Kraftwandler mit Drehpunkt",
       wissen: "Hebelgesetz. Bezug: Hebel. Hebel bedeutet: Kraftwandler mit Drehpunkt. Merke: Hebel — Kraftwandler mit Drehpunkt.",
       gap: "[ph-k7-lb1-hebel] ___ — Kraftwandler mit Drehpunkt",
@@ -3195,7 +3195,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lb1-hebel:f5",
       prompt: "Wozu dient ein Flaschenzug?",
-      answer: "Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", wrong: ["Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g.", "Sie ist die Ursache von Beschleunigung oder Verformung und wird in Newton gemessen.", "Er wandelt Kräfte über Hebelarme und erleichtert so das Heben oder Drehen."],
+      answer: "Umlenkung und Kraftteilung.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Kraft gegen Gleiten."],
       explanation: "Seilabschnitte. Bezug: Hebel. Flaschenzug: Umlenkung und Kraftteilung",
       wissen: "Seilabschnitte. Bezug: Hebel. Flaschenzug bedeutet: Umlenkung und Kraftteilung. Merke: Flaschenzug — Umlenkung und Kraftteilung.",
       gap: "[ph-k7-lb1-hebel] ___ — Umlenkung und Kraftteilung",
@@ -3338,7 +3338,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lbw-hebel:f2",
       prompt: "Was bewirkt Reibung?",
-      answer: "Sie hemmt die Bewegung zwischen Berührflächen und wandelt Bewegungsenergie in Wärme um.", wrong: ["Sie beschreibt Kräfte und Felder ruhender elektrischer Ladungen.", "Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", "Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g."],
+      answer: "Kraft gegen Gleiten.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Rückstellkraft der Feder."],
       explanation: "Haft- und Gleitreibung. Bezug: Hebel. Reibung: Kraft gegen Gleiten",
       wissen: "Haft- und Gleitreibung. Bezug: Hebel. Reibung bedeutet: Kraft gegen Gleiten. Merke: Reibung — Kraft gegen Gleiten.",
       gap: "[ph-k7-lbw-hebel] ___ — Kraft gegen Gleiten",
@@ -3358,7 +3358,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lbw-hebel:f4",
       prompt: "Wozu dient ein Hebel?",
-      answer: "Er wandelt Kräfte über Hebelarme und erleichtert so das Heben oder Drehen.", wrong: ["Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", "Er wirkt der Gewichtskraft entgegen und entspricht dem Gewicht der verdrängten Flüssigkeit.", "Er ist Kraft pro Fläche und wirkt in Flüssigkeiten und Gasen nach allen Seiten."],
+      answer: "Kraftwandler mit Drehpunkt.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Kraft gegen Gleiten."],
       explanation: "Hebelgesetz. Bezug: Hebel. Hebel: Kraftwandler mit Drehpunkt",
       wissen: "Hebelgesetz. Bezug: Hebel. Hebel bedeutet: Kraftwandler mit Drehpunkt. Merke: Hebel — Kraftwandler mit Drehpunkt.",
       gap: "[ph-k7-lbw-hebel] ___ — Kraftwandler mit Drehpunkt",
@@ -3368,7 +3368,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lbw-hebel:f5",
       prompt: "Wozu dient ein Flaschenzug?",
-      answer: "Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", wrong: ["Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g.", "Sie ist die Ursache von Beschleunigung oder Verformung und wird in Newton gemessen.", "Er wandelt Kräfte über Hebelarme und erleichtert so das Heben oder Drehen."],
+      answer: "Umlenkung und Kraftteilung.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Kraft gegen Gleiten."],
       explanation: "Seilabschnitte. Bezug: Hebel. Flaschenzug: Umlenkung und Kraftteilung",
       wissen: "Seilabschnitte. Bezug: Hebel. Flaschenzug bedeutet: Umlenkung und Kraftteilung. Merke: Flaschenzug — Umlenkung und Kraftteilung.",
       gap: "[ph-k7-lbw-hebel] ___ — Umlenkung und Kraftteilung",
@@ -3511,7 +3511,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lbw-flasche:f2",
       prompt: "Was bewirkt Reibung?",
-      answer: "Sie hemmt die Bewegung zwischen Berührflächen und wandelt Bewegungsenergie in Wärme um.", wrong: ["Sie beschreibt Kräfte und Felder ruhender elektrischer Ladungen.", "Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", "Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g."],
+      answer: "Kraft gegen Gleiten.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Rückstellkraft der Feder."],
       explanation: "Haft- und Gleitreibung. Bezug: Flasche. Reibung: Kraft gegen Gleiten",
       wissen: "Haft- und Gleitreibung. Bezug: Flasche. Reibung bedeutet: Kraft gegen Gleiten. Merke: Reibung — Kraft gegen Gleiten.",
       gap: "[ph-k7-lbw-flasche] ___ — Kraft gegen Gleiten",
@@ -3531,7 +3531,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lbw-flasche:f4",
       prompt: "Wozu dient ein Hebel?",
-      answer: "Er wandelt Kräfte über Hebelarme und erleichtert so das Heben oder Drehen.", wrong: ["Er verändert Betrag oder Richtung einer Kraft, etwa mit Hebel oder Flaschenzug.", "Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", "Er wirkt der Gewichtskraft entgegen und entspricht dem Gewicht der verdrängten Flüssigkeit."],
+      answer: "Kraftwandler mit Drehpunkt.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Kraft gegen Gleiten."],
       explanation: "Hebelgesetz. Bezug: Flasche. Hebel: Kraftwandler mit Drehpunkt",
       wissen: "Hebelgesetz. Bezug: Flasche. Hebel bedeutet: Kraftwandler mit Drehpunkt. Merke: Hebel — Kraftwandler mit Drehpunkt.",
       gap: "[ph-k7-lbw-flasche] ___ — Kraftwandler mit Drehpunkt",
@@ -3541,7 +3541,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lbw-flasche:f5",
       prompt: "Wozu dient ein Flaschenzug?",
-      answer: "Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", wrong: ["Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g.", "Sie ist die Ursache von Beschleunigung oder Verformung und wird in Newton gemessen.", "Er wandelt Kräfte über Hebelarme und erleichtert so das Heben oder Drehen."],
+      answer: "Umlenkung und Kraftteilung.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Kraft gegen Gleiten."],
       explanation: "Seilabschnitte. Bezug: Flasche. Flaschenzug: Umlenkung und Kraftteilung",
       wissen: "Seilabschnitte. Bezug: Flasche. Flaschenzug bedeutet: Umlenkung und Kraftteilung. Merke: Flaschenzug — Umlenkung und Kraftteilung.",
       gap: "[ph-k7-lbw-flasche] ___ — Umlenkung und Kraftteilung",
@@ -4030,7 +4030,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lbw-fliegen:f2",
       prompt: "Was bewirkt Reibung?",
-      answer: "Sie hemmt die Bewegung zwischen Berührflächen und wandelt Bewegungsenergie in Wärme um.", wrong: ["Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Sie beschreibt Kräfte und Felder ruhender elektrischer Ladungen.", "Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt."],
+      answer: "Kraft gegen Gleiten.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Rückstellkraft der Feder."],
       explanation: "Haft- und Gleitreibung. Bezug: Fliegen. Reibung: Kraft gegen Gleiten",
       wissen: "Haft- und Gleitreibung. Bezug: Fliegen. Reibung bedeutet: Kraft gegen Gleiten. Merke: Reibung — Kraft gegen Gleiten.",
       gap: "[ph-k7-lbw-fliegen] ___ — Kraft gegen Gleiten",
@@ -4050,7 +4050,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lbw-fliegen:f4",
       prompt: "Wozu dient ein Hebel?",
-      answer: "Er wandelt Kräfte über Hebelarme und erleichtert so das Heben oder Drehen.", wrong: ["Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", "Er wirkt der Gewichtskraft entgegen und entspricht dem Gewicht der verdrängten Flüssigkeit.", "Er ist Kraft pro Fläche und wirkt in Flüssigkeiten und Gasen nach allen Seiten."],
+      answer: "Kraftwandler mit Drehpunkt.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Kraft gegen Gleiten."],
       explanation: "Hebelgesetz. Bezug: Fliegen. Hebel: Kraftwandler mit Drehpunkt",
       wissen: "Hebelgesetz. Bezug: Fliegen. Hebel bedeutet: Kraftwandler mit Drehpunkt. Merke: Hebel — Kraftwandler mit Drehpunkt.",
       gap: "[ph-k7-lbw-fliegen] ___ — Kraftwandler mit Drehpunkt",
@@ -4060,7 +4060,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lbw-fliegen:f5",
       prompt: "Wozu dient ein Flaschenzug?",
-      answer: "Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", wrong: ["Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g.", "Er verändert Betrag oder Richtung einer Kraft, etwa mit Hebel oder Flaschenzug.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten."],
+      answer: "Umlenkung und Kraftteilung.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Kraft gegen Gleiten."],
       explanation: "Seilabschnitte. Bezug: Fliegen. Flaschenzug: Umlenkung und Kraftteilung",
       wissen: "Seilabschnitte. Bezug: Fliegen. Flaschenzug bedeutet: Umlenkung und Kraftteilung. Merke: Flaschenzug — Umlenkung und Kraftteilung.",
       gap: "[ph-k7-lbw-fliegen] ___ — Umlenkung und Kraftteilung",
@@ -4203,7 +4203,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lbw-auftrieb-dyn:f2",
       prompt: "Was bewirkt Reibung?",
-      answer: "Sie hemmt die Bewegung zwischen Berührflächen und wandelt Bewegungsenergie in Wärme um.", wrong: ["Sie beschreibt Kräfte und Felder ruhender elektrischer Ladungen.", "Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", "Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g."],
+      answer: "Kraft gegen Gleiten.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Rückstellkraft der Feder."],
       explanation: "Haft- und Gleitreibung. Bezug: Auftrieb Dyn. Reibung: Kraft gegen Gleiten",
       wissen: "Haft- und Gleitreibung. Bezug: Auftrieb Dyn. Reibung bedeutet: Kraft gegen Gleiten. Merke: Reibung — Kraft gegen Gleiten.",
       gap: "[ph-k7-lbw-auftrieb-dyn] ___ — Kraft gegen Gleiten",
@@ -4223,7 +4223,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lbw-auftrieb-dyn:f4",
       prompt: "Wozu dient ein Hebel?",
-      answer: "Er wandelt Kräfte über Hebelarme und erleichtert so das Heben oder Drehen.", wrong: ["Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", "Er wirkt der Gewichtskraft entgegen und entspricht dem Gewicht der verdrängten Flüssigkeit.", "Er ist Kraft pro Fläche und wirkt in Flüssigkeiten und Gasen nach allen Seiten."],
+      answer: "Kraftwandler mit Drehpunkt.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Kraft gegen Gleiten."],
       explanation: "Hebelgesetz. Bezug: Auftrieb Dyn. Hebel: Kraftwandler mit Drehpunkt",
       wissen: "Hebelgesetz. Bezug: Auftrieb Dyn. Hebel bedeutet: Kraftwandler mit Drehpunkt. Merke: Hebel — Kraftwandler mit Drehpunkt.",
       gap: "[ph-k7-lbw-auftrieb-dyn] ___ — Kraftwandler mit Drehpunkt",
@@ -4233,7 +4233,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k7-lbw-auftrieb-dyn:f5",
       prompt: "Wozu dient ein Flaschenzug?",
-      answer: "Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", wrong: ["Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g.", "Kräfte sind Vektoren; ohne Richtung ist die Wirkung nicht vollständig beschrieben.", "Sie ist die Ursache von Beschleunigung oder Verformung und wird in Newton gemessen."],
+      answer: "Umlenkung und Kraftteilung.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Kraft gegen Gleiten."],
       explanation: "Seilabschnitte. Bezug: Auftrieb Dyn. Flaschenzug: Umlenkung und Kraftteilung",
       wissen: "Seilabschnitte. Bezug: Auftrieb Dyn. Flaschenzug bedeutet: Umlenkung und Kraftteilung. Merke: Flaschenzug — Umlenkung und Kraftteilung.",
       gap: "[ph-k7-lbw-auftrieb-dyn] ___ — Umlenkung und Kraftteilung",
@@ -4732,7 +4732,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k8-lbw-ballon:f3",
       prompt: "Was geschieht beim Schmelzen?",
-      answer: "Der Stoff geht bei der Schmelztemperatur vom festen in den flüssigen Zustand über.", wrong: ["Das Volumen wächst mit steigender Temperatur bei vielen Stoffen.", "Er beschreibt fest, flüssig oder gasförmig und hängt von Temperatur und Druck ab.", "Die Flüssigkeit geht bei der Siedetemperatur in den gasförmigen Zustand über."],
+      answer: "Übergang fest → flüssig.", wrong: ["Maß für den Wärmezustand.", "Volumen wächst mit Temperatur.", "fest, flüssig, gasförmig."],
       explanation: "Bei Schmelztemperatur. Bezug: Ballon. Schmelzen: Übergang fest → flüssig",
       wissen: "Bei Schmelztemperatur. Bezug: Ballon. Schmelzen bedeutet: Übergang fest → flüssig. Merke: Schmelzen — Übergang fest → flüssig.",
       gap: "[ph-k8-lbw-ballon] ___ — Übergang fest → flüssig",
@@ -4792,7 +4792,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k8-lbw-ballon:f9",
       prompt: "Wie transportiert Wärmeleitung Energie?",
-      answer: "Sie überträgt Wärme durch Kontakt; Metalle leiten dabei besonders gut.", wrong: ["Es misst die Temperatur und braucht dazu Skalierung und Kalibrierung.", "Sie ist übertragene Energie und ist nicht dasselbe wie Temperatur.", "Sie gibt an, wie viel Wärme pro Masse und Kelvin nötig ist, und ist stoffabhängig."],
+      answer: "Übertragene Energie.", wrong: ["Maß für den Wärmezustand.", "Volumen wächst mit Temperatur.", "fest, flüssig, gasförmig."],
       explanation: "Nicht gleich Temperatur. Bezug: Ballon. Wärme: Übertragene Energie",
       wissen: "Nicht gleich Temperatur. Bezug: Ballon. Wärme bedeutet: Übertragene Energie. Merke: Wärme — Übertragene Energie.",
       gap: "[ph-k8-lbw-ballon] ___ — Übertragene Energie",
@@ -4905,7 +4905,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k8-lbw-kuehlschrank:f3",
       prompt: "Was geschieht beim Schmelzen?",
-      answer: "Der Stoff geht bei der Schmelztemperatur vom festen in den flüssigen Zustand über.", wrong: ["Das Volumen wächst mit steigender Temperatur bei vielen Stoffen.", "Die gemeinsame Endtemperatur folgt aus der Energiebilanz der Anteile.", "Sie transportiert Wärme mit einer strömenden Flüssigkeit oder Luft, etwa bei Heizungsluft."],
+      answer: "Übergang fest → flüssig.", wrong: ["Maß für den Wärmezustand.", "Volumen wächst mit Temperatur.", "fest, flüssig, gasförmig."],
       explanation: "Bei Schmelztemperatur. Bezug: Kuehlschrank. Schmelzen: Übergang fest → flüssig",
       wissen: "Bei Schmelztemperatur. Bezug: Kuehlschrank. Schmelzen bedeutet: Übergang fest → flüssig. Merke: Schmelzen — Übergang fest → flüssig.",
       gap: "[ph-k8-lbw-kuehlschrank] ___ — Übergang fest → flüssig",
@@ -4965,7 +4965,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k8-lbw-kuehlschrank:f9",
       prompt: "Wie transportiert Wärmeleitung Energie?",
-      answer: "Sie überträgt Wärme durch Kontakt; Metalle leiten dabei besonders gut.", wrong: ["Es misst die Temperatur und braucht dazu Skalierung und Kalibrierung.", "Sie ist übertragene Energie und ist nicht dasselbe wie Temperatur.", "Sie transportiert Wärme mit einer strömenden Flüssigkeit oder Luft, etwa bei Heizungsluft."],
+      answer: "Übertragene Energie.", wrong: ["Maß für den Wärmezustand.", "Volumen wächst mit Temperatur.", "fest, flüssig, gasförmig."],
       explanation: "Nicht gleich Temperatur. Bezug: Kuehlschrank. Wärme: Übertragene Energie",
       wissen: "Nicht gleich Temperatur. Bezug: Kuehlschrank. Wärme bedeutet: Übertragene Energie. Merke: Wärme — Übertragene Energie.",
       gap: "[ph-k8-lbw-kuehlschrank] ___ — Übertragene Energie",
@@ -5271,7 +5271,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k9-lb1-elektronik:f5",
       prompt: "Was beschreibt „Bauelement“?",
-      answer: "Es gilt als ein elektronisches Bauteil wie Widerstand, Kondensator oder Diode im Stromkreis.", wrong: ["Sie lässt Strom vorwiegend einer Richtung.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten."],
+      answer: "Einzelteil der Schaltung.", wrong: ["Lässt Strom vorwiegend einer Richtung.", "Leuchtdiode.", "Verstärker/Schalter."],
       explanation: "R, C, Diode … Bezug: Elektronik. Bauelement: Einzelteil der Schaltung",
       wissen: "R, C, Diode … Bezug: Elektronik. Bauelement bedeutet: Einzelteil der Schaltung. Merke: Bauelement — Einzelteil der Schaltung.",
       gap: "[ph-k9-lb1-elektronik] ___ — Einzelteil der Schaltung",
@@ -5414,7 +5414,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k9-lb2-kraftwerk:f2",
       prompt: "Was bewirkt Reibung?",
-      answer: "Sie hemmt die Bewegung zwischen Berührflächen und wandelt Bewegungsenergie in Wärme um.", wrong: ["Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", "Sie beschreibt Kräfte und Felder ruhender elektrischer Ladungen.", "Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt."],
+      answer: "Kraft gegen Gleiten.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Rückstellkraft der Feder."],
       explanation: "Haft- und Gleitreibung. Bezug: Kraftwerk. Reibung: Kraft gegen Gleiten",
       wissen: "Haft- und Gleitreibung. Bezug: Kraftwerk. Reibung bedeutet: Kraft gegen Gleiten. Merke: Reibung — Kraft gegen Gleiten.",
       gap: "[ph-k9-lb2-kraftwerk] ___ — Kraft gegen Gleiten",
@@ -5434,7 +5434,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k9-lb2-kraftwerk:f4",
       prompt: "Wozu dient ein Hebel?",
-      answer: "Er wandelt Kräfte über Hebelarme und erleichtert so das Heben oder Drehen.", wrong: ["Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", "Er wirkt der Gewichtskraft entgegen und entspricht dem Gewicht der verdrängten Flüssigkeit.", "Er verändert Betrag oder Richtung einer Kraft, etwa mit Hebel oder Flaschenzug."],
+      answer: "Kraftwandler mit Drehpunkt.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Kraft gegen Gleiten."],
       explanation: "Hebelgesetz. Bezug: Kraftwerk. Hebel: Kraftwandler mit Drehpunkt",
       wissen: "Hebelgesetz. Bezug: Kraftwerk. Hebel bedeutet: Kraftwandler mit Drehpunkt. Merke: Hebel — Kraftwandler mit Drehpunkt.",
       gap: "[ph-k9-lb2-kraftwerk] ___ — Kraftwandler mit Drehpunkt",
@@ -5444,7 +5444,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k9-lb2-kraftwerk:f5",
       prompt: "Wozu dient ein Flaschenzug?",
-      answer: "Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", wrong: ["Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g.", "Sie ist die Ursache von Beschleunigung oder Verformung und wird in Newton gemessen.", "Er wandelt Kräfte über Hebelarme und erleichtert so das Heben oder Drehen."],
+      answer: "Umlenkung und Kraftteilung.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Kraft gegen Gleiten."],
       explanation: "Seilabschnitte. Bezug: Kraftwerk. Flaschenzug: Umlenkung und Kraftteilung",
       wissen: "Seilabschnitte. Bezug: Kraftwerk. Flaschenzug bedeutet: Umlenkung und Kraftteilung. Merke: Flaschenzug — Umlenkung und Kraftteilung.",
       gap: "[ph-k9-lb2-kraftwerk] ___ — Umlenkung und Kraftteilung",
@@ -6156,7 +6156,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k9-lbw-wind-sonne:f7",
       prompt: "Wozu dient ein Spiegel?",
-      answer: "Er wirft Licht an einer glatten Fläche geordnet zurück und kann Bilder erzeugen.", wrong: ["Es entsteht ein Spektrum mit den Farben der Regenbogenreihe.", "Licht geht so klar hindurch, dass man Gegenstände dahinter scharf erkennen kann.", "Sie ändert die Richtung des Lichts beim Übergang in ein anderes Medium."],
+      answer: "Glatte reflektierende Fläche.", wrong: ["Körper der selbst Licht aussendet.", "Geradliniges Modell der Lichtausbreitung.", "Bereich ohne direktes Licht."],
       explanation: "Bildentstehung. Bezug: Wind Sonne. Spiegel: Glatte reflektierende Fläche",
       wissen: "Bildentstehung. Bezug: Wind Sonne. Spiegel bedeutet: Glatte reflektierende Fläche. Merke: Spiegel — Glatte reflektierende Fläche.",
       gap: "[ph-k9-lbw-wind-sonne] ___ — Glatte reflektierende Fläche",
@@ -7194,7 +7194,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k10-lbw-fernsehen:f7",
       prompt: "Wozu dient ein Spiegel?",
-      answer: "Er wirft Licht an einer glatten Fläche geordnet zurück und kann Bilder erzeugen.", wrong: ["Licht geht so klar hindurch, dass man Gegenstände dahinter scharf erkennen kann.", "Sie erzeugt durch ein kleines Loch ohne Linse ein umgekehrtes Bild.", "Sie ändert die Richtung des Lichts beim Übergang in ein anderes Medium."],
+      answer: "Glatte reflektierende Fläche.", wrong: ["Körper der selbst Licht aussendet.", "Geradliniges Modell der Lichtausbreitung.", "Bereich ohne direktes Licht."],
       explanation: "Bildentstehung. Bezug: Fernsehen. Spiegel: Glatte reflektierende Fläche",
       wissen: "Bildentstehung. Bezug: Fernsehen. Spiegel bedeutet: Glatte reflektierende Fläche. Merke: Spiegel — Glatte reflektierende Fläche.",
       gap: "[ph-k10-lbw-fernsehen] ___ — Glatte reflektierende Fläche",
@@ -8528,7 +8528,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-j11gk-lb4-kraft:f2",
       prompt: "Was bewirkt Reibung?",
-      answer: "Sie hemmt die Bewegung zwischen Berührflächen und wandelt Bewegungsenergie in Wärme um.", wrong: ["Sie beschreibt Kräfte und Felder ruhender elektrischer Ladungen.", "Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", "Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g."],
+      answer: "Kraft gegen Gleiten.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Rückstellkraft der Feder."],
       explanation: "Haft- und Gleitreibung. Bezug: Kraft. Reibung: Kraft gegen Gleiten",
       wissen: "Haft- und Gleitreibung. Bezug: Kraft. Reibung bedeutet: Kraft gegen Gleiten. Merke: Reibung — Kraft gegen Gleiten.",
       gap: "[ph-j11gk-lb4-kraft] ___ — Kraft gegen Gleiten",
@@ -8548,7 +8548,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-j11gk-lb4-kraft:f4",
       prompt: "Wozu dient ein Hebel?",
-      answer: "Er wandelt Kräfte über Hebelarme und erleichtert so das Heben oder Drehen.", wrong: ["Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Er wirkt der Gewichtskraft entgegen und entspricht dem Gewicht der verdrängten Flüssigkeit."],
+      answer: "Kraftwandler mit Drehpunkt.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Kraft gegen Gleiten."],
       explanation: "Hebelgesetz. Bezug: Kraft. Hebel: Kraftwandler mit Drehpunkt",
       wissen: "Hebelgesetz. Bezug: Kraft. Hebel bedeutet: Kraftwandler mit Drehpunkt. Merke: Hebel — Kraftwandler mit Drehpunkt.",
       gap: "[ph-j11gk-lb4-kraft] ___ — Kraftwandler mit Drehpunkt",
@@ -8558,7 +8558,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-j11gk-lb4-kraft:f5",
       prompt: "Wozu dient ein Flaschenzug?",
-      answer: "Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.", wrong: ["Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g.", "Sie ist die Ursache von Beschleunigung oder Verformung und wird in Newton gemessen.", "Er wandelt Kräfte über Hebelarme und erleichtert so das Heben oder Drehen."],
+      answer: "Umlenkung und Kraftteilung.", wrong: ["Ursache von Beschleunigung/Verformung.", "Anziehung der Erde.", "Kraft gegen Gleiten."],
       explanation: "Seilabschnitte. Bezug: Kraft. Flaschenzug: Umlenkung und Kraftteilung",
       wissen: "Seilabschnitte. Bezug: Kraft. Flaschenzug bedeutet: Umlenkung und Kraftteilung. Merke: Flaschenzug — Umlenkung und Kraftteilung.",
       gap: "[ph-j11gk-lb4-kraft] ___ — Umlenkung und Kraftteilung",
@@ -10135,7 +10135,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-j11gk-lbw-filter:f7",
       prompt: "Wozu dient ein Spiegel?",
-      answer: "Er wirft Licht an einer glatten Fläche geordnet zurück und kann Bilder erzeugen.", wrong: ["Licht geht so klar hindurch, dass man Gegenstände dahinter scharf erkennen kann.", "Sie erzeugt durch ein kleines Loch ohne Linse ein umgekehrtes Bild.", "Sie ändert die Richtung des Lichts beim Übergang in ein anderes Medium."],
+      answer: "Glatte reflektierende Fläche.", wrong: ["Körper der selbst Licht aussendet.", "Geradliniges Modell der Lichtausbreitung.", "Bereich ohne direktes Licht."],
       explanation: "Bildentstehung. Bezug: Filter. Spiegel: Glatte reflektierende Fläche",
       wissen: "Bildentstehung. Bezug: Filter. Spiegel bedeutet: Glatte reflektierende Fläche. Merke: Spiegel — Glatte reflektierende Fläche.",
       gap: "[ph-j11gk-lbw-filter] ___ — Glatte reflektierende Fläche",
@@ -10481,7 +10481,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-j11gk-lbw-lichtgeschwindigkeit:f7",
       prompt: "Wozu dient ein Spiegel?",
-      answer: "Er wirft Licht an einer glatten Fläche geordnet zurück und kann Bilder erzeugen.", wrong: ["Sie erzeugt durch ein kleines Loch ohne Linse ein umgekehrtes Bild.", "Das Auge nimmt Lichtreize auf der Netzhaut wahr und das Gehirn deutet sie.", "Licht geht so klar hindurch, dass man Gegenstände dahinter scharf erkennen kann."],
+      answer: "Glatte reflektierende Fläche.", wrong: ["Körper der selbst Licht aussendet.", "Geradliniges Modell der Lichtausbreitung.", "Bereich ohne direktes Licht."],
       explanation: "Bildentstehung. Bezug: Lichtgeschwindigkeit. Spiegel: Glatte reflektierende Fläche",
       wissen: "Bildentstehung. Bezug: Lichtgeschwindigkeit. Spiegel bedeutet: Glatte reflektierende Fläche. Merke: Spiegel — Glatte reflektierende Fläche.",
       gap: "[ph-j11gk-lbw-lichtgeschwindigkeit] ___ — Glatte reflektierende Fläche",

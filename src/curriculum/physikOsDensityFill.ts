@@ -28,7 +28,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12gk-lb3-debroglie:p0:f",
       prompt: "Wozu dient die de-Broglie-Beziehung?",
-      answer: "Sie beschreibt λ = h/p, materie hat Wellencharakter.", wrong: ["Sie beschreibt welle dem Teilchen zugeordnet, elektron als Welle im Doppelspalt.", "Es beschreibt λ vernachlässigbar klein, alltagsmechanik ohne Interferenz.", "Es beschreibt ein Wirkungsquantum, verknüpft Energie und Frequenz bzw."],
+      answer: "λ = h/p.", wrong: ["p = m·v (nichtrelativistisch).", "Wirkungsquantum.", "Welle dem Teilchen zugeordnet."],
       explanation: "Materie hat Wellencharakter. de-Broglie-Beziehung bedeutet: λ = h/p.",
       wissen: "Materie hat Wellencharakter. de-Broglie-Beziehung bedeutet: λ = h/p.",
       flashFront: "de-Broglie-Beziehung",
@@ -36,7 +36,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12gk-lb3-debroglie:p1:f",
       prompt: "Was beschreibt „Impuls p“?",
-      answer: "Es beschreibt p = m·v (nichtrelativistisch), steuert die Wellenlänge.", wrong: ["Sie beschreibt λ = h/p, materie hat Wellencharakter.", "Es beschreibt ein Wirkungsquantum, verknüpft Energie und Frequenz bzw.", "Es beschreibt beide als Quantenobjekte, unterschiedliche Ruhemasse."],
+      answer: "p = m·v (nichtrelativistisch).", wrong: ["Wirkungsquantum.", "Welle dem Teilchen zugeordnet.", "Abstand gleicher Phasen."],
       explanation: "Steuert die Wellenlänge. Impuls p bedeutet: p = m·v (nichtrelativistisch).",
       wissen: "Steuert die Wellenlänge. Impuls p bedeutet: p = m·v (nichtrelativistisch).",
       flashFront: "Impuls p",
@@ -44,7 +44,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12gk-lb3-debroglie:p2:f",
       prompt: "Welche Eigenschaft hat die Planck-Konstante h?",
-      answer: "Es beschreibt ein Wirkungsquantum, verknüpft Energie und Frequenz bzw.", wrong: ["Sie beschreibt welle dem Teilchen zugeordnet, elektron als Welle im Doppelspalt.", "Sie begrenzt durch Wellenlänge, elektronenmikroskop nutzt kleine λ.", "Es beschreibt muster hinter Hindernis/Spalt, wellenlänge aus Geometrie."],
+      answer: "Wirkungsquantum.", wrong: ["Welle dem Teilchen zugeordnet.", "Abstand gleicher Phasen.", "Interferenz trotz Teilchen."],
       explanation: "Verknüpft Energie und Frequenz bzw. λ und p. Planck-Konstante h bedeutet: Wirkungsquantum.",
       wissen: "Verknüpft Energie und Frequenz bzw. λ und p. Planck-Konstante h bedeutet: Wirkungsquantum.",
       flashFront: "Planck-Konstante h",
@@ -68,7 +68,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12gk-lb3-debroglie:p5:f",
       prompt: "Wozu dient das Doppelspalt mit Elektronen?",
-      answer: "Es beschreibt eine Interferenz trotz Teilchen, belegt Wellencharakter.", wrong: ["Sie begrenzt durch Wellenlänge, elektronenmikroskop nutzt kleine λ.", "Es beschreibt p = m·v (nichtrelativistisch), steuert die Wellenlänge.", "Sie beschreibt λ = h/p, materie hat Wellencharakter."],
+      answer: "Interferenz trotz Teilchen.", wrong: ["Beide als Quantenobjekte.", "Lokalisiertes Wellenobjekt.", "Muster hinter Hindernis/Spalt."],
       explanation: "Belegt Wellencharakter. Doppelspalt mit Elektronen bedeutet: Interferenz trotz Teilchen.",
       wissen: "Belegt Wellencharakter. Doppelspalt mit Elektronen bedeutet: Interferenz trotz Teilchen.",
       flashFront: "Doppelspalt mit Elektronen",
@@ -76,7 +76,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12gk-lb3-debroglie:p6:f",
       prompt: "Woran erkennt man das Photon vs. Elektron?",
-      answer: "Es beschreibt beide als Quantenobjekte, unterschiedliche Ruhemasse.", wrong: ["Es beschreibt ein Wirkungsquantum, verknüpft Energie und Frequenz bzw.", "Sie beschreibt welle dem Teilchen zugeordnet, elektron als Welle im Doppelspalt.", "Sie beschreibt λ = h/p, materie hat Wellencharakter."],
+      answer: "Beide als Quantenobjekte.", wrong: ["Lokalisiertes Wellenobjekt.", "Muster hinter Hindernis/Spalt.", "λ sinkt mit steigendem Impuls."],
       explanation: "Unterschiedliche Ruhemasse. Photon vs. Elektron bedeutet: Beide als Quantenobjekte.",
       wissen: "Unterschiedliche Ruhemasse. Photon vs. Elektron bedeutet: Beide als Quantenobjekte.",
       flashFront: "Photon vs. Elektron",
@@ -84,7 +84,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12gk-lb3-debroglie:p7:f",
       prompt: "Welche Eigenschaft hat das Wellenpaket?",
-      answer: "Es beschreibt lokalisiertes Wellenobjekt, ort und Impuls gekoppelt.", wrong: ["Es beschreibt muster hinter Hindernis/Spalt, wellenlänge aus Geometrie.", "Es beschreibt λ vernachlässigbar klein, alltagsmechanik ohne Interferenz.", "Es beschreibt ein Wirkungsquantum, verknüpft Energie und Frequenz bzw."],
+      answer: "Lokalisiertes Wellenobjekt.", wrong: ["Muster hinter Hindernis/Spalt.", "λ sinkt mit steigendem Impuls.", "Begrenzt durch Wellenlänge."],
       explanation: "Ort und Impuls gekoppelt. Wellenpaket bedeutet: Lokalisiertes Wellenobjekt.",
       wissen: "Ort und Impuls gekoppelt. Wellenpaket bedeutet: Lokalisiertes Wellenobjekt.",
       flashFront: "Wellenpaket",
@@ -92,7 +92,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12gk-lb3-debroglie:p8:f",
       prompt: "Was beschreibt „Beugungsbild“?",
-      answer: "Es beschreibt muster hinter Hindernis/Spalt, wellenlänge aus Geometrie.", wrong: ["Es beschreibt p = m·v (nichtrelativistisch), steuert die Wellenlänge.", "Es beschreibt λ vernachlässigbar klein, alltagsmechanik ohne Interferenz.", "Es beschreibt ein Wirkungsquantum, verknüpft Energie und Frequenz bzw."],
+      answer: "Muster hinter Hindernis/Spalt.", wrong: ["λ sinkt mit steigendem Impuls.", "Begrenzt durch Wellenlänge.", "λ vernachlässigbar klein."],
       explanation: "Wellenlänge aus Geometrie. Beugungsbild bedeutet: Muster hinter Hindernis/Spalt.",
       wissen: "Wellenlänge aus Geometrie. Beugungsbild bedeutet: Muster hinter Hindernis/Spalt.",
       flashFront: "Beugungsbild",
@@ -100,7 +100,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12gk-lb3-debroglie:p9:f",
       prompt: "Was beschreibt „h oder p-Probe“?",
-      answer: "Sie beschreibt λ sinkt mit steigendem Impuls, schnelle Teilchen „teilchenartiger“.", wrong: ["Es beschreibt lokalisiertes Wellenobjekt, ort und Impuls gekoppelt.", "Es beschreibt ein Wirkungsquantum, verknüpft Energie und Frequenz bzw.", "Es ist der Abstand gleicher Phasen einer Welle, bei größerem p kleiner."],
+      answer: "λ sinkt mit steigendem Impuls.", wrong: ["Begrenzt durch Wellenlänge.", "λ vernachlässigbar klein.", "λ = h/p."],
       explanation: "Schnelle Teilchen „teilchenartiger“. h/p-Probe bedeutet: λ sinkt mit steigendem Impuls.",
       wissen: "Schnelle Teilchen „teilchenartiger“. h/p-Probe bedeutet: λ sinkt mit steigendem Impuls.",
       flashFront: "h/p-Probe",
@@ -108,7 +108,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12gk-lb3-debroglie:p10:f",
       prompt: "Woran erkennt man die Mikroskop-Auflösung?",
-      answer: "Sie begrenzt durch Wellenlänge, elektronenmikroskop nutzt kleine λ.", wrong: ["Es beschreibt ein Wirkungsquantum, verknüpft Energie und Frequenz bzw.", "Es beschreibt p = m·v (nichtrelativistisch), steuert die Wellenlänge.", "Sie beschreibt λ = h/p, materie hat Wellencharakter."],
+      answer: "Begrenzt durch Wellenlänge.", wrong: ["λ vernachlässigbar klein.", "λ = h/p.", "p = m·v (nichtrelativistisch)."],
       explanation: "Elektronenmikroskop nutzt kleine λ. Mikroskop-Auflösung bedeutet: Begrenzt durch Wellenlänge.",
       wissen: "Elektronenmikroskop nutzt kleine λ. Mikroskop-Auflösung bedeutet: Begrenzt durch Wellenlänge.",
       flashFront: "Mikroskop-Auflösung",
@@ -145,7 +145,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12gk-lb3-compton:p0:f",
       prompt: "Woran erkennt man das Compton-Effekt?",
-      answer: "Es beschreibt ein Photon streut an Elektron, wellenlänge nimmt zu.", wrong: ["Es beschreibt energie/Impuls erhalten, modell für Compton.", "Es beschreibt ein Spektrum vor/nach Streuung, verschobene Linie.", "Es beschreibt ein Photon mit E und p, weder klassische Welle noch Ball."],
+      answer: "Photon streut an Elektron.", wrong: ["Δλ abhängig vom Winkel.", "p = h/λ.", "Energie/Impuls erhalten."],
       explanation: "Wellenlänge nimmt zu. Compton-Effekt bedeutet: Photon streut an Elektron.",
       wissen: "Wellenlänge nimmt zu. Compton-Effekt bedeutet: Photon streut an Elektron.",
       flashFront: "Compton-Effekt",
@@ -153,7 +153,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12gk-lb3-compton:p1:f",
       prompt: "Mit welchen Mitteln arbeitet die Compton-Verschiebung?",
-      answer: "Sie beschreibt Δλ abhängig vom Winkel, stoß mit Impulsübertragung.", wrong: ["Es reicht nicht für Compton, teilchenstoß nötig.", "Es beschreibt p = h/λ, licht trägt Impuls.", "Es beschreibt ein Photon mit E und p, weder klassische Welle noch Ball."],
+      answer: "Δλ abhängig vom Winkel.", wrong: ["p = h/λ.", "Energie/Impuls erhalten.", "Ablenkung des Photons."],
       explanation: "Stoß mit Impulsübertragung. Compton-Verschiebung bedeutet: Δλ abhängig vom Winkel.",
       wissen: "Stoß mit Impulsübertragung. Compton-Verschiebung bedeutet: Δλ abhängig vom Winkel.",
       flashFront: "Compton-Verschiebung",
@@ -161,7 +161,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12gk-lb3-compton:p2:f",
       prompt: "Welche Eigenschaft hat das Photon-Impuls?",
-      answer: "Es beschreibt p = h/λ, licht trägt Impuls.", wrong: ["Es beschreibt ein Spektrum vor/nach Streuung, verschobene Linie.", "Es beschreibt energie/Impuls erhalten, modell für Compton.", "Es beschreibt eine Ablenkung des Photons, größerer Winkel → größere Δλ."],
+      answer: "p = h/λ.", wrong: ["Energie/Impuls erhalten.", "Ablenkung des Photons.", "m_e in der Formel."],
       explanation: "Licht trägt Impuls. Photon-Impuls bedeutet: p = h/λ.",
       wissen: "Licht trägt Impuls. Photon-Impuls bedeutet: p = h/λ.",
       flashFront: "Photon-Impuls",
@@ -169,7 +169,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12gk-lb3-compton:p3:f",
       prompt: "Welche Eigenschaft hat der Elastischer Stoß?",
-      answer: "Es beschreibt energie/Impuls erhalten, modell für Compton.", wrong: ["Es beschreibt eine Ablenkung des Photons, größerer Winkel → größere Δλ.", "Es beschreibt ein Photon streut an Elektron, wellenlänge nimmt zu.", "Sie beschreibt Δλ abhängig vom Winkel, stoß mit Impulsübertragung."],
+      answer: "Energie/Impuls erhalten.", wrong: ["Ablenkung des Photons.", "m_e in der Formel.", "Reicht nicht für Compton."],
       explanation: "Modell für Compton. Elastischer Stoß bedeutet: Energie/Impuls erhalten.",
       wissen: "Modell für Compton. Elastischer Stoß bedeutet: Energie/Impuls erhalten.",
       flashFront: "Elastischer Stoß",
@@ -177,7 +177,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12gk-lb3-compton:p4:f",
       prompt: "Was bewirkt der Streuwinkel?",
-      answer: "Es beschreibt eine Ablenkung des Photons, größerer Winkel → größere Δλ.", wrong: ["Es beschreibt typische Experimentenergie, messbare Verschiebung.", "Es beschreibt ein Photon streut an Elektron, wellenlänge nimmt zu.", "Es ist die Masse m_e eines Teilchens im Ruhesystem, setzt Energieskala."],
+      answer: "Ablenkung des Photons.", wrong: ["m_e in der Formel.", "Reicht nicht für Compton.", "Typische Experimentenergie."],
       explanation: "Größerer Winkel → größere Δλ. Streuwinkel bedeutet: Ablenkung des Photons.",
       wissen: "Größerer Winkel → größere Δλ. Streuwinkel bedeutet: Ablenkung des Photons.",
       flashFront: "Streuwinkel",
@@ -193,7 +193,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12gk-lb3-compton:p6:f",
       prompt: "Woran erkennt man das Wellenbild allein?",
-      answer: "Es reicht nicht für Compton, teilchenstoß nötig.", wrong: ["Es ist die Masse m_e eines Teilchens im Ruhesystem, setzt Energieskala.", "Es beschreibt p = h/λ, licht trägt Impuls.", "Es geht an Elektron."],
+      answer: "Reicht nicht für Compton.", wrong: ["Typische Experimentenergie.", "Geht an Elektron.", "Photon mit E und p."],
       explanation: "Teilchenstoß nötig. Wellenbild allein bedeutet: Reicht nicht für Compton.",
       wissen: "Teilchenstoß nötig. Wellenbild allein bedeutet: Reicht nicht für Compton.",
       flashFront: "Wellenbild allein",
@@ -201,7 +201,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12gk-lb3-compton:p7:f",
       prompt: "Woran erkennt man den Röntgenphotonen?",
-      answer: "Es beschreibt typische Experimentenergie, messbare Verschiebung.", wrong: ["Es ist die Masse m_e eines Teilchens im Ruhesystem, setzt Energieskala.", "Es beschreibt eine Ablenkung des Photons, größerer Winkel → größere Δλ.", "Es beschreibt ein Spektrum vor/nach Streuung, verschobene Linie."],
+      answer: "Typische Experimentenergie.", wrong: ["Geht an Elektron.", "Photon mit E und p.", "Spektrum vor/nach Streuung."],
       explanation: "Messbare Verschiebung. Röntgenphotonen bedeutet: Typische Experimentenergie.",
       wissen: "Messbare Verschiebung. Röntgenphotonen bedeutet: Typische Experimentenergie.",
       flashFront: "Röntgenphotonen",
@@ -209,7 +209,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12gk-lb3-compton:p8:f",
       prompt: "Mit welchen Mitteln arbeitet das Energieverlust Photon?",
-      answer: "Es geht an Elektron.", wrong: ["Es beschreibt p = h/λ, licht trägt Impuls.", "Es ist die Masse m_e eines Teilchens im Ruhesystem, setzt Energieskala.", "Es beschreibt ein Photon streut an Elektron, wellenlänge nimmt zu."],
+      answer: "Geht an Elektron.", wrong: ["Photon mit E und p.", "Spektrum vor/nach Streuung.", "Photoeffekt: Absorption."],
       explanation: "Rückstoßelektron. Energieverlust Photon bedeutet: Geht an Elektron.",
       wissen: "Rückstoßelektron. Energieverlust Photon bedeutet: Geht an Elektron.",
       flashFront: "Energieverlust Photon",
@@ -217,7 +217,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12gk-lb3-compton:p9:f",
       prompt: "Mit welchen Mitteln arbeitet das Quantenobjekt?",
-      answer: "Es beschreibt ein Photon mit E und p, weder klassische Welle noch Ball.", wrong: ["Es beschreibt eine Ablenkung des Photons, größerer Winkel → größere Δλ.", "Es ist die Masse m_e eines Teilchens im Ruhesystem, setzt Energieskala.", "Es beschreibt energie/Impuls erhalten, modell für Compton."],
+      answer: "Photon mit E und p.", wrong: ["Spektrum vor/nach Streuung.", "Photoeffekt: Absorption.", "Photon streut an Elektron."],
       explanation: "Weder klassische Welle noch Ball. Quantenobjekt bedeutet: Photon mit E und p.",
       wissen: "Weder klassische Welle noch Ball. Quantenobjekt bedeutet: Photon mit E und p.",
       flashFront: "Quantenobjekt",
@@ -225,7 +225,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12gk-lb3-compton:p10:f",
       prompt: "Wozu dient das Nachweis?",
-      answer: "Es beschreibt ein Spektrum vor/nach Streuung, verschobene Linie.", wrong: ["Sie beschreibt Δλ abhängig vom Winkel, stoß mit Impulsübertragung.", "Es ist die Masse m_e eines Teilchens im Ruhesystem, setzt Energieskala.", "Es beschreibt energie/Impuls erhalten, modell für Compton."],
+      answer: "Spektrum vor/nach Streuung.", wrong: ["Photoeffekt: Absorption.", "Photon streut an Elektron.", "Δλ abhängig vom Winkel."],
       explanation: "Verschobene Linie. Nachweis bedeutet: Spektrum vor/nach Streuung.",
       wissen: "Verschobene Linie. Nachweis bedeutet: Spektrum vor/nach Streuung.",
       flashFront: "Nachweis",
@@ -233,7 +233,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12gk-lb3-compton:p11:f",
       prompt: "Was kennzeichnet „Abgrenzung Photoeffekt“?",
-      answer: "Es ist eine Photoeffekt: Absorption durch Compton: Streuung.", wrong: ["Es ist eine Photon Streut an Elektron.", "Es ist Δλ abhängig vom Winkel.", "Das Abgrenzung Photoeffekt ist p = h/λ."],
+      answer: "Photoeffekt: Absorption.", wrong: ["Photon streut an Elektron.", "Δλ abhängig vom Winkel.", "p = h/λ."],
       explanation: "Compton: Streuung. Abgrenzung Photoeffekt bedeutet: Photoeffekt: Absorption.",
       wissen: "Compton: Streuung. Abgrenzung Photoeffekt bedeutet: Photoeffekt: Absorption.",
       flashFront: "Abgrenzung Photoeffekt",
@@ -262,7 +262,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-schwerpunkt:p0:f",
       prompt: "Was kennzeichnet „Schwerpunkt“?",
-      answer: "Es massenmittelpunkt des Systems, bewegt sich wie Punktmasse.", wrong: ["Äußere Kraft ändert Gesamtimpuls.", "Der Schwerpunkt ist der Summe M_i·v_i.", "Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird."],
+      answer: "Massenmittelpunkt des Systems.", wrong: ["äußere Kraft ändert Gesamtimpuls.", "Summe m_i·v_i.", "Keine äußeren Kräfte."],
       explanation: "Bewegt sich wie Punktmasse. Schwerpunkt bedeutet: Massenmittelpunkt des Systems.",
       wissen: "Bewegt sich wie Punktmasse. Schwerpunkt bedeutet: Massenmittelpunkt des Systems.",
       flashFront: "Schwerpunkt",
@@ -270,7 +270,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-schwerpunkt:p1:f",
       prompt: "Mit welchen Mitteln arbeitet das Schwerpunktsatz?",
-      answer: "Es beschreibt äußere Kraft ändert Gesamtimpuls, innere Kräfte heben sich auf.", wrong: ["Es beschreibt zwischen Systemteilen, ändert Gesamtimpuls nicht.", "Es beschreibt eine Impulsbilanz, vor und nach dem Stoß.", "Es beschreibt summe m_i·v_i, erhalten ohne äußere Kraft."],
+      answer: "äußere Kraft ändert Gesamtimpuls.", wrong: ["Summe m_i·v_i.", "Keine äußeren Kräfte.", "Rückstoß durch Massenaustoß."],
       explanation: "Innere Kräfte heben sich auf. Schwerpunktsatz bedeutet: äußere Kraft ändert Gesamtimpuls.",
       wissen: "Innere Kräfte heben sich auf. Schwerpunktsatz bedeutet: äußere Kraft ändert Gesamtimpuls.",
       flashFront: "Schwerpunktsatz",
@@ -278,7 +278,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-schwerpunkt:p2:f",
       prompt: "Wozu dient das Gesamtimpuls?",
-      answer: "Es beschreibt summe m_i·v_i, erhalten ohne äußere Kraft.", wrong: ["Es beschreibt keine äußeren Kräfte, schwerpunkt gleichförmig.", "Es beschreibt ein Rückstoß durch Massenaustoß.", "Es massenmittelpunkt des Systems, bewegt sich wie Punktmasse."],
+      answer: "Summe m_i·v_i.", wrong: ["Keine äußeren Kräfte.", "Rückstoß durch Massenaustoß.", "Schwerpunkt bleibt Spur."],
       explanation: "Erhalten ohne äußere Kraft. Gesamtimpuls bedeutet: Summe m_i·v_i.",
       wissen: "Erhalten ohne äußere Kraft. Gesamtimpuls bedeutet: Summe m_i·v_i.",
       flashFront: "Gesamtimpuls",
@@ -286,7 +286,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-schwerpunkt:p3:f",
       prompt: "Wozu dient das Isoliertes System?",
-      answer: "Es beschreibt keine äußeren Kräfte, schwerpunkt gleichförmig.", wrong: ["Es vektoren vor/nach Stoß, bilanz prüfen.", "Es beschreibt z. B. Reibung, Gravitation, ändert Gesamtimpuls.", "Es massenmittelpunkt des Systems, bewegt sich wie Punktmasse."],
+      answer: "Keine äußeren Kräfte.", wrong: ["Rückstoß durch Massenaustoß.", "Schwerpunkt bleibt Spur.", "Vektoren vor/nach Stoß."],
       explanation: "Schwerpunkt gleichförmig. Isoliertes System bedeutet: Keine äußeren Kräfte.",
       wissen: "Schwerpunkt gleichförmig. Isoliertes System bedeutet: Keine äußeren Kräfte.",
       flashFront: "Isoliertes System",
@@ -294,7 +294,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-schwerpunkt:p4:f",
       prompt: "Mit welchen Mitteln arbeitet das Raketenprinzip?",
-      answer: "Es beschreibt ein Rückstoß durch Massenaustoß.", wrong: ["Es beschreibt z. B. Reibung, Gravitation, ändert Gesamtimpuls.", "Es massenmittelpunkt des Systems, bewegt sich wie Punktmasse.", "Es beschreibt keine äußeren Kräfte, schwerpunkt gleichförmig."],
+      answer: "Rückstoß durch Massenaustoß.", wrong: ["Schwerpunkt bleibt Spur.", "Vektoren vor/nach Stoß.", "z. B. Reibung, Gravitation."],
       explanation: "Impulserhaltung. Raketenprinzip bedeutet: Rückstoß durch Massenaustoß.",
       wissen: "Impulserhaltung. Raketenprinzip bedeutet: Rückstoß durch Massenaustoß.",
       flashFront: "Raketenprinzip",
@@ -302,7 +302,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-schwerpunkt:p5:f",
       prompt: "Was beschreibt „Zweikörperstoß“?",
-      answer: "Es schwerpunkt bleibt Spur, relativbewegung drumherum.", wrong: ["Es beschreibt keine äußeren Kräfte, schwerpunkt gleichförmig.", "Es beschreibt ein Rückstoß durch Massenaustoß.", "Es beschreibt zwischen Systemteilen, ändert Gesamtimpuls nicht."],
+      answer: "Schwerpunkt bleibt Spur.", wrong: ["Vektoren vor/nach Stoß.", "z. B. Reibung, Gravitation.", "zwischen Systemteilen."],
       explanation: "Relativbewegung drumherum. Zweikörperstoß bedeutet: Schwerpunkt bleibt Spur.",
       wissen: "Relativbewegung drumherum. Zweikörperstoß bedeutet: Schwerpunkt bleibt Spur.",
       flashFront: "Zweikörperstoß",
@@ -310,7 +310,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-schwerpunkt:p6:f",
       prompt: "Woran erkennt man das Impulsdiagramm?",
-      answer: "Es vektoren vor/nach Stoß, bilanz prüfen.", wrong: ["Es schwerpunkt bleibt Spur, relativbewegung drumherum.", "Es beschreibt z. B. Reibung, Gravitation, ändert Gesamtimpuls.", "Es beschreibt summe m_i·v_i, erhalten ohne äußere Kraft."],
+      answer: "Vektoren vor/nach Stoß.", wrong: ["z. B. Reibung, Gravitation.", "zwischen Systemteilen.", "Inertialsystem wählen."],
       explanation: "Bilanz prüfen. Impulsdiagramm bedeutet: Vektoren vor/nach Stoß.",
       wissen: "Bilanz prüfen. Impulsdiagramm bedeutet: Vektoren vor/nach Stoß.",
       flashFront: "Impulsdiagramm",
@@ -326,7 +326,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-schwerpunkt:p8:f",
       prompt: "Woran erkennt man die Innere Kraft?",
-      answer: "Es beschreibt zwischen Systemteilen, ändert Gesamtimpuls nicht.", wrong: ["Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird.", "Es beschreibt z. B. Reibung, Gravitation, ändert Gesamtimpuls.", "Es schwerpunkt bleibt Spur, relativbewegung drumherum."],
+      answer: "zwischen Systemteilen.", wrong: ["Inertialsystem wählen.", "Impulsbilanz.", "Absprung/ Impulsübertragung."],
       explanation: "Ändert Gesamtimpuls nicht. Innere Kraft bedeutet: zwischen Systemteilen.",
       wissen: "Ändert Gesamtimpuls nicht. Innere Kraft bedeutet: zwischen Systemteilen.",
       flashFront: "Innere Kraft",
@@ -334,7 +334,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-schwerpunkt:p9:f",
       prompt: "Wozu dient ein Bezugssystem?",
-      answer: "Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird.", wrong: ["Es beschreibt z. B. Reibung, Gravitation, ändert Gesamtimpuls.", "Es beschreibt äußere Kraft ändert Gesamtimpuls, innere Kräfte heben sich auf.", "Es beschreibt keine äußeren Kräfte, schwerpunkt gleichförmig."],
+      answer: "Inertialsystem wählen.", wrong: ["Impulsbilanz.", "Absprung/ Impulsübertragung.", "Massenmittelpunkt des Systems."],
       explanation: "Schwerpunktbeschreibung klar. Bezugssystem bedeutet: Inertialsystem wählen.",
       wissen: "Schwerpunktbeschreibung klar. Bezugssystem bedeutet: Inertialsystem wählen.",
       flashFront: "Bezugssystem",
@@ -342,7 +342,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-schwerpunkt:p10:f",
       prompt: "Woran erkennt man das m1v1+m2v2?",
-      answer: "Es beschreibt eine Impulsbilanz, vor und nach dem Stoß.", wrong: ["Es beschreibt keine äußeren Kräfte, schwerpunkt gleichförmig.", "Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird.", "Es beschreibt summe m_i·v_i, erhalten ohne äußere Kraft."],
+      answer: "Impulsbilanz.", wrong: ["Absprung/ Impulsübertragung.", "Massenmittelpunkt des Systems.", "äußere Kraft ändert Gesamtimpuls."],
       explanation: "Vor und nach dem Stoß. m1v1+m2v2 bedeutet: Impulsbilanz.",
       wissen: "Vor und nach dem Stoß. m1v1+m2v2 bedeutet: Impulsbilanz.",
       flashFront: "m1v1+m2v2",
@@ -350,7 +350,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-schwerpunkt:p11:f",
       prompt: "Was bewirkt die Anwendung Sport?",
-      answer: "Es beschreibt eine Absprung/ Impulsübertragung.", wrong: ["Es vektoren vor/nach Stoß, bilanz prüfen.", "Es schwerpunkt bleibt Spur, relativbewegung drumherum.", "Es beschreibt summe m_i·v_i, erhalten ohne äußere Kraft."],
+      answer: "Absprung/ Impulsübertragung.", wrong: ["Massenmittelpunkt des Systems.", "äußere Kraft ändert Gesamtimpuls.", "Summe m_i·v_i."],
       explanation: "Körperschwerpunkt. Anwendung Sport bedeutet: Absprung/ Impulsübertragung.",
       wissen: "Körperschwerpunkt. Anwendung Sport bedeutet: Absprung/ Impulsübertragung.",
       flashFront: "Anwendung Sport",
@@ -379,7 +379,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-arbeit-energie:p0:f",
       prompt: "Wozu dient das Arbeit W?",
-      answer: "Es ist die Energieübertragung durch eine Kraft längs eines Weges, energieübertragung durch Kraft.", wrong: ["Sie beschreibt eine Zu- und Abflüsse, systemgrenzen festlegen.", "Es epot → Ekin, ohne Reibung Summe konstant.", "Es beschreibt z. B. Reibung, mechanische Energie nicht erhalten."],
+      answer: "W = F·s·cosα.", wrong: ["Ekin = ½mv².", "W = ΔEkin.", "Lageenergie im Feld."],
       explanation: "Energieübertragung durch Kraft. Arbeit W bedeutet: W = F·s·cosα.",
       wissen: "Energieübertragung durch Kraft. Arbeit W bedeutet: W = F·s·cosα.",
       flashFront: "Arbeit W",
@@ -419,7 +419,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-arbeit-energie:p5:f",
       prompt: "Mit welchen Mitteln arbeitet die Leistung P?",
-      answer: "Es beschreibt P = W/t bzw. F·v, arbeit pro Zeit.", wrong: ["Es beschreibt W = ΔEkin, nettoarbeit ändert Ekin.", "Es ist die Energieübertragung durch eine Kraft längs eines Weges, energieübertragung durch Kraft.", "Sie beschreibt eine Zu- und Abflüsse, systemgrenzen festlegen."],
+      answer: "P = W/t bzw. F·v.", wrong: ["W wegunabhängig.", "z. B. Reibung.", "Zu- und Abflüsse."],
       explanation: "Arbeit pro Zeit. Leistung P bedeutet: P = W/t bzw. F·v.",
       wissen: "Arbeit pro Zeit. Leistung P bedeutet: P = W/t bzw. F·v.",
       flashFront: "Leistung P",
@@ -427,7 +427,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-arbeit-energie:p6:f",
       prompt: "Wozu dient die Konservative Kraft?",
-      answer: "Es beschreibt W wegunabhängig, potentielle Energie definiert.", wrong: ["Es ist die Energieübertragung durch eine Kraft längs eines Weges, energieübertragung durch Kraft.", "Es beschreibt P = W/t bzw. F·v, arbeit pro Zeit.", "Es beschreibt ½kx² gespeichert, elastische Energie."],
+      answer: "W wegunabhängig.", wrong: ["z. B. Reibung.", "Zu- und Abflüsse.", "1 J = 1 N·m."],
       explanation: "Potentielle Energie definiert. Konservative Kraft bedeutet: W wegunabhängig.",
       wissen: "Potentielle Energie definiert. Konservative Kraft bedeutet: W wegunabhängig.",
       flashFront: "Konservative Kraft",
@@ -443,7 +443,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-arbeit-energie:p8:f",
       prompt: "Mit welchen Mitteln arbeitet die Energiebilanz?",
-      answer: "Sie beschreibt eine Zu- und Abflüsse, systemgrenzen festlegen.", wrong: ["Es beschreibt W wegunabhängig, potentielle Energie definiert.", "Es beschreibt negative Arbeit, wandelt mechanische Energie um.", "Sie beschreibt die Energie der Bewegung und hängt von Masse und Geschwindigkeit ab."],
+      answer: "Zu- und Abflüsse.", wrong: ["1 J = 1 N·m.", "½kx² gespeichert.", "Epot → Ekin."],
       explanation: "Systemgrenzen festlegen. Energiebilanz bedeutet: Zu- und Abflüsse.",
       wissen: "Systemgrenzen festlegen. Energiebilanz bedeutet: Zu- und Abflüsse.",
       flashFront: "Energiebilanz",
@@ -451,7 +451,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-arbeit-energie:p9:f",
       prompt: "Woran erkennt man die Einheit Joule?",
-      answer: "Sie gilt als ein festgelegtes Maß zum Vergleich von Größen, sI-Einheit der Energie.", wrong: ["Sie beschreibt eine Zu- und Abflüsse, systemgrenzen festlegen.", "Sie beschreibt die Energie der Bewegung und hängt von Masse und Geschwindigkeit ab.", "Es beschreibt negative Arbeit, wandelt mechanische Energie um."],
+      answer: "1 J = 1 N·m.", wrong: ["½kx² gespeichert.", "Epot → Ekin.", "W = F·s·cosα."],
       explanation: "SI-Einheit der Energie. Einheit Joule bedeutet: 1 J = 1 N·m.",
       wissen: "SI-Einheit der Energie. Einheit Joule bedeutet: 1 J = 1 N·m.",
       flashFront: "Einheit Joule",
@@ -459,7 +459,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-arbeit-energie:p10:f",
       prompt: "Welche Eigenschaft hat das Federarbeit?",
-      answer: "Es beschreibt ½kx² gespeichert, elastische Energie.", wrong: ["Es beschreibt W = ΔEkin, nettoarbeit ändert Ekin.", "Sie beschreibt die Energie der Bewegung und hängt von Masse und Geschwindigkeit ab.", "Sie beschreibt lageenergie im Feld, kann in Ekin übergehen."],
+      answer: "½kx² gespeichert.", wrong: ["Epot → Ekin.", "W = F·s·cosα.", "Ekin = ½mv²."],
       explanation: "Elastische Energie. Federarbeit bedeutet: ½kx² gespeichert.",
       wissen: "Elastische Energie. Federarbeit bedeutet: ½kx² gespeichert.",
       flashFront: "Federarbeit",
@@ -496,7 +496,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-dreh-erhaltung:p0:f",
       prompt: "Was kennzeichnet „Drehimpuls L“?",
-      answer: "Es beschreibt l = I·ω bzw.", wrong: ["Es ist ohne äußeres Moment konstant.", "Sie beschreibt arme anlegen erhöht ω, i verkleinern.", "Es beschreibt eine Massenverteilung zur Achse, größer bei äußerer Masse."],
+      answer: "L = I·ω bzw. r×p.", wrong: ["Massenverteilung zur Achse.", "Drehwinkel pro Zeit.", "ohne äußeres Moment konstant."],
       explanation: "Maß der Drehbewegung. Drehimpuls L bedeutet: L = I·ω bzw. r×p.",
       wissen: "Maß der Drehbewegung. Drehimpuls L bedeutet: L = I·ω bzw. r×p.",
       flashFront: "Drehimpuls L",
@@ -504,7 +504,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-dreh-erhaltung:p1:f",
       prompt: "Wozu dient das Trägheitsmoment I?",
-      answer: "Es beschreibt eine Massenverteilung zur Achse, größer bei äußerer Masse.", wrong: ["Sie gilt als ein festgelegtes Maß zum Vergleich von Größen, aus I·ω.", "Er beschreibt eine Achsenrichtung von L.", "Es beschreibt ein Flächensatz / L, etwa zentrale Kraft oder Moment ~0."],
+      answer: "Massenverteilung zur Achse.", wrong: ["Drehwinkel pro Zeit.", "ohne äußeres Moment konstant.", "M = r·F·sinφ."],
       explanation: "Größer bei äußerer Masse. Trägheitsmoment I bedeutet: Massenverteilung zur Achse.",
       wissen: "Größer bei äußerer Masse. Trägheitsmoment I bedeutet: Massenverteilung zur Achse.",
       flashFront: "Trägheitsmoment I",
@@ -512,7 +512,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-dreh-erhaltung:p2:f",
       prompt: "Wozu dient die Winkelgeschwindigkeit ω?",
-      answer: "Es beschreibt ein Drehwinkel pro Zeit.", wrong: ["Sie beschreibt ohne äußeres Moment konstant, pirouette: I↓ → ω↑.", "Es beschreibt senkrechter Abstand Kraft–Achse, für Moment entscheidend.", "Es beschreibt stabil durch L, präzession bei Moment."],
+      answer: "Drehwinkel pro Zeit.", wrong: ["ohne äußeres Moment konstant.", "M = r·F·sinφ.", "Arme anlegen erhöht ω."],
       explanation: "rad/s. Winkelgeschwindigkeit ω bedeutet: Drehwinkel pro Zeit.",
       wissen: "rad/s. Winkelgeschwindigkeit ω bedeutet: Drehwinkel pro Zeit.",
       flashFront: "Winkelgeschwindigkeit ω",
@@ -520,7 +520,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-dreh-erhaltung:p3:f",
       prompt: "Woran erkennt man die Drehimpulserhaltung?",
-      answer: "Sie beschreibt ohne äußeres Moment konstant, pirouette: I↓ → ω↑.", wrong: ["Es beschreibt ein Flächensatz / L, etwa zentrale Kraft oder Moment ~0.", "Sie beschreibt arme anlegen erhöht ω, i verkleinern.", "Es beschreibt senkrechter Abstand Kraft–Achse, für Moment entscheidend."],
+      answer: "ohne äußeres Moment konstant.", wrong: ["M = r·F·sinφ.", "Arme anlegen erhöht ω.", "stabil durch L."],
       explanation: "Pirouette: I↓ → ω↑. Drehimpulserhaltung bedeutet: ohne äußeres Moment konstant.",
       wissen: "Pirouette: I↓ → ω↑. Drehimpulserhaltung bedeutet: ohne äußeres Moment konstant.",
       flashFront: "Drehimpulserhaltung",
@@ -528,7 +528,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-dreh-erhaltung:p4:f",
       prompt: "Was kennzeichnet „Drehmoment M“?",
-      answer: "Es beschreibt M = r·F·sinφ, ändert Drehimpuls.", wrong: ["Arme anlegen erhöht ω.", "Das Drehmoment M ist stabil durch L.", "Es beschreibt ein Drehwinkel pro Zeit."],
+      answer: "M = r·F·sinφ.", wrong: ["Arme anlegen erhöht ω.", "stabil durch L.", "Senkrechter Abstand Kraft–Achse."],
       explanation: "Ändert Drehimpuls. Drehmoment M bedeutet: M = r·F·sinφ.",
       wissen: "Ändert Drehimpuls. Drehmoment M bedeutet: M = r·F·sinφ.",
       flashFront: "Drehmoment M",
@@ -544,7 +544,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-dreh-erhaltung:p6:f",
       prompt: "Wozu dient der Kreisel?",
-      answer: "Es beschreibt stabil durch L, präzession bei Moment.", wrong: ["Es beschreibt ein Flächensatz / L, etwa zentrale Kraft oder Moment ~0.", "Es beschreibt M = r·F·sinφ, ändert Drehimpuls.", "Es beschreibt ein Drehwinkel pro Zeit."],
+      answer: "stabil durch L.", wrong: ["Senkrechter Abstand Kraft–Achse.", "Achsenrichtung von L.", "Flächensatz / L."],
       explanation: "Präzession bei Moment. Kreisel bedeutet: stabil durch L.",
       wissen: "Präzession bei Moment. Kreisel bedeutet: stabil durch L.",
       flashFront: "Kreisel",
@@ -552,7 +552,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-dreh-erhaltung:p7:f",
       prompt: "Woran erkennt man das Hebelarm?",
-      answer: "Es beschreibt senkrechter Abstand Kraft–Achse, für Moment entscheidend.", wrong: ["Sie gilt als ein festgelegtes Maß zum Vergleich von Größen, aus I·ω.", "Es beschreibt M = r·F·sinφ, ändert Drehimpuls.", "Es beschreibt eine Massenverteilung zur Achse, größer bei äußerer Masse."],
+      answer: "Senkrechter Abstand Kraft–Achse.", wrong: ["Achsenrichtung von L.", "Flächensatz / L.", "exzentrisch."],
       explanation: "Für Moment entscheidend. Hebelarm bedeutet: Senkrechter Abstand Kraft–Achse.",
       wissen: "Für Moment entscheidend. Hebelarm bedeutet: Senkrechter Abstand Kraft–Achse.",
       flashFront: "Hebelarm",
@@ -560,7 +560,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-dreh-erhaltung:p8:f",
       prompt: "Welche Eigenschaft hat der Vektorcharakter?",
-      answer: "Er beschreibt eine Achsenrichtung von L.", wrong: ["Es beschreibt stabil durch L, präzession bei Moment.", "Es beschreibt eine Massenverteilung zur Achse, größer bei äußerer Masse.", "Es beschreibt L = I·ω bzw. r×p, maß der Drehbewegung."],
+      answer: "Achsenrichtung von L.", wrong: ["Flächensatz / L.", "exzentrisch.", "SI für L."],
       explanation: "Rechte-Hand-Regel. Vektorcharakter bedeutet: Achsenrichtung von L.",
       wissen: "Rechte-Hand-Regel. Vektorcharakter bedeutet: Achsenrichtung von L.",
       flashFront: "Vektorcharakter",
@@ -568,7 +568,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-dreh-erhaltung:p9:f",
       prompt: "Mit welchen Mitteln arbeitet das Planetensystem?",
-      answer: "Es beschreibt ein Flächensatz / L, etwa zentrale Kraft oder Moment ~0.", wrong: ["Es beschreibt M = r·F·sinφ, ändert Drehimpuls.", "Es beschreibt ein Drehwinkel pro Zeit.", "Sie beschreibt arme anlegen erhöht ω, i verkleinern."],
+      answer: "Flächensatz / L.", wrong: ["exzentrisch.", "SI für L.", "L = I·ω bzw. r×p."],
       explanation: "Zentrale Kraft, Moment ~0. Planetensystem bedeutet: Flächensatz / L.",
       wissen: "Zentrale Kraft, Moment ~0. Planetensystem bedeutet: Flächensatz / L.",
       flashFront: "Planetensystem",
@@ -576,7 +576,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-dreh-erhaltung:p10:f",
       prompt: "Was kennzeichnet „Stoß mit Drehimpuls“?",
-      answer: "Er ist exzentrisch durch l-Bilanz nötig.", wrong: ["Er ist eine SI für L.", "Er ist eine L = I·ω Bzw. r×p.", "Er ist eine Massenverteilung zur Achse."],
+      answer: "exzentrisch.", wrong: ["SI für L.", "L = I·ω bzw. r×p.", "Massenverteilung zur Achse."],
       explanation: "L-Bilanz nötig. Stoß mit Drehimpuls bedeutet: exzentrisch.",
       wissen: "L-Bilanz nötig. Stoß mit Drehimpuls bedeutet: exzentrisch.",
       flashFront: "Stoß mit Drehimpuls",
@@ -584,7 +584,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb1-dreh-erhaltung:p11:f",
       prompt: "Welche Eigenschaft hat die Einheit kg·m² oder s?",
-      answer: "Sie gilt als ein festgelegtes Maß zum Vergleich von Größen, aus I·ω.", wrong: ["Es beschreibt senkrechter Abstand Kraft–Achse, für Moment entscheidend.", "Es beschreibt eine Massenverteilung zur Achse, größer bei äußerer Masse.", "Es beschreibt L = I·ω bzw. r×p, maß der Drehbewegung."],
+      answer: "SI für L.", wrong: ["L = I·ω bzw. r×p.", "Massenverteilung zur Achse.", "Drehwinkel pro Zeit."],
       explanation: "Aus I·ω. Einheit kg·m²/s bedeutet: SI für L.",
       wissen: "Aus I·ω. Einheit kg·m²/s bedeutet: SI für L.",
       flashFront: "Einheit kg·m²/s",
@@ -613,7 +613,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-foto:p0:f",
       prompt: "Wozu dient die Stroboskopaufnahme?",
-      answer: "Sie beschreibt eine Mehrfachbelichtung zeitgetaktet, orte zu festen Δt.", wrong: ["Sie beschreibt mittlere Beschleunigung, bei ungleichförmiger Bewegung.", "Sie beschreibt ein Blickwinkel verzerrt, kamera senkrecht.", "Sie beschreibt frame-Rate als Δt."],
+      answer: "Mehrfachbelichtung zeitgetaktet.", wrong: ["Blitzintervall.", "Positionen messen.", "Pixel → Meter."],
       explanation: "Orte zu festen Δt. Stroboskopaufnahme bedeutet: Mehrfachbelichtung zeitgetaktet.",
       wissen: "Orte zu festen Δt. Stroboskopaufnahme bedeutet: Mehrfachbelichtung zeitgetaktet.",
       flashFront: "Stroboskopaufnahme",
@@ -621,7 +621,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-foto:p1:f",
       prompt: "Wozu dient das Δt bekannt?",
-      answer: "Es beschreibt ein Blitzintervall, zeitbasis der Auswertung.", wrong: ["Sie beschreibt mittlere Beschleunigung, bei ungleichförmiger Bewegung.", "Sie beschreibt mittlere Geschwindigkeit, zwischen zwei Marken.", "Sie beschreibt frame-Rate als Δt."],
+      answer: "Blitzintervall.", wrong: ["Positionen messen.", "Pixel → Meter.", "Mittlere Geschwindigkeit."],
       explanation: "Zeitbasis der Auswertung. Δt bekannt bedeutet: Blitzintervall.",
       wissen: "Zeitbasis der Auswertung. Δt bekannt bedeutet: Blitzintervall.",
       flashFront: "Δt bekannt",
@@ -629,7 +629,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-foto:p2:f",
       prompt: "Mit welchen Mitteln arbeitet der Wegmarken?",
-      answer: "Es positionen messen, maßstab im Bild.", wrong: ["Es beschreibt ein Blitzintervall, zeitbasis der Auswertung.", "Er beschreibt eine Ablesestreuung, mittelwert bilden.", "Es beschreibt ein Pixel → Meter, referenzlänge im Foto."],
+      answer: "Positionen messen.", wrong: ["Pixel → Meter.", "Mittlere Geschwindigkeit.", "Mittlere Beschleunigung."],
       explanation: "Maßstab im Bild. Wegmarken bedeutet: Positionen messen.",
       wissen: "Maßstab im Bild. Wegmarken bedeutet: Positionen messen.",
       flashFront: "Wegmarken",
@@ -637,7 +637,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-foto:p3:f",
       prompt: "Wozu dient das Maßstab?",
-      answer: "Es beschreibt ein Pixel → Meter, referenzlänge im Foto.", wrong: ["Es dokumentiert Versuchsschritte und Messwerte so, dass andere den Versuch wiederholen können.", "Es beschreibt ein Blitzintervall, zeitbasis der Auswertung.", "Sie beschreibt frame-Rate als Δt."],
+      answer: "Pixel → Meter.", wrong: ["Mittlere Geschwindigkeit.", "Mittlere Beschleunigung.", "aus Messpunkten."],
       explanation: "Referenzlänge im Foto. Maßstab bedeutet: Pixel → Meter.",
       wissen: "Referenzlänge im Foto. Maßstab bedeutet: Pixel → Meter.",
       flashFront: "Maßstab",
@@ -645,7 +645,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-foto:p4:f",
       prompt: "Woran erkennt man die v aus Δs oder Δt?",
-      answer: "Sie beschreibt mittlere Geschwindigkeit, zwischen zwei Marken.", wrong: ["Er beschreibt falscher Maßstab, kalibrierung prüfen.", "Es beschreibt aus Messpunkten, graphische Auswertung.", "Er beschreibt eine Ablesestreuung, mittelwert bilden."],
+      answer: "Mittlere Geschwindigkeit.", wrong: ["Mittlere Beschleunigung.", "aus Messpunkten.", "Blickwinkel verzerrt."],
       explanation: "Zwischen zwei Marken. v aus Δs/Δt bedeutet: Mittlere Geschwindigkeit.",
       wissen: "Zwischen zwei Marken. v aus Δs/Δt bedeutet: Mittlere Geschwindigkeit.",
       flashFront: "v aus Δs/Δt",
@@ -653,7 +653,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-foto:p5:f",
       prompt: "Was bewirkt die a aus Δv oder Δt?",
-      answer: "Sie beschreibt mittlere Beschleunigung, bei ungleichförmiger Bewegung.", wrong: ["Es positionen messen, maßstab im Bild.", "Es dokumentiert Versuchsschritte und Messwerte so, dass andere den Versuch wiederholen können.", "Es beschreibt ein Blitzintervall, zeitbasis der Auswertung."],
+      answer: "Mittlere Beschleunigung.", wrong: ["aus Messpunkten.", "Blickwinkel verzerrt.", "falscher Maßstab."],
       explanation: "Bei ungleichförmiger Bewegung. a aus Δv/Δt bedeutet: Mittlere Beschleunigung.",
       wissen: "Bei ungleichförmiger Bewegung. a aus Δv/Δt bedeutet: Mittlere Beschleunigung.",
       flashFront: "a aus Δv/Δt",
@@ -661,7 +661,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-foto:p6:f",
       prompt: "Welche Eigenschaft hat das s-t-Diagramm?",
-      answer: "Es beschreibt aus Messpunkten, graphische Auswertung.", wrong: ["Es beschreibt ein Blitzintervall, zeitbasis der Auswertung.", "Sie beschreibt mittlere Geschwindigkeit, zwischen zwei Marken.", "Sie beschreibt frame-Rate als Δt."],
+      answer: "aus Messpunkten.", wrong: ["Blickwinkel verzerrt.", "falscher Maßstab.", "Ablesestreuung."],
       explanation: "Graphische Auswertung. s-t-Diagramm bedeutet: aus Messpunkten.",
       wissen: "Graphische Auswertung. s-t-Diagramm bedeutet: aus Messpunkten.",
       flashFront: "s-t-Diagramm",
@@ -669,7 +669,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-foto:p7:f",
       prompt: "Woran erkennt man die Fehlerquelle Parallaxe?",
-      answer: "Sie beschreibt ein Blickwinkel verzerrt, kamera senkrecht.", wrong: ["Sie beschreibt mittlere Beschleunigung, bei ungleichförmiger Bewegung.", "Es beschreibt ein Pixel → Meter, referenzlänge im Foto.", "Es positionen messen, maßstab im Bild."],
+      answer: "Blickwinkel verzerrt.", wrong: ["falscher Maßstab.", "Ablesestreuung.", "Frame-Rate als Δt."],
       explanation: "Kamera senkrecht. Fehlerquelle Parallaxe bedeutet: Blickwinkel verzerrt.",
       wissen: "Kamera senkrecht. Fehlerquelle Parallaxe bedeutet: Blickwinkel verzerrt.",
       flashFront: "Fehlerquelle Parallaxe",
@@ -677,7 +677,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-foto:p8:f",
       prompt: "Welche Eigenschaft hat der Systematischer Fehler?",
-      answer: "Er beschreibt falscher Maßstab, kalibrierung prüfen.", wrong: ["Es beschreibt aus Messpunkten, graphische Auswertung.", "Sie beschreibt eine Mehrfachbelichtung zeitgetaktet, orte zu festen Δt.", "Sie beschreibt frame-Rate als Δt."],
+      answer: "falscher Maßstab.", wrong: ["Ablesestreuung.", "Frame-Rate als Δt.", "Bedingungen dokumentieren."],
       explanation: "Kalibrierung prüfen. Systematischer Fehler bedeutet: falscher Maßstab.",
       wissen: "Kalibrierung prüfen. Systematischer Fehler bedeutet: falscher Maßstab.",
       flashFront: "Systematischer Fehler",
@@ -685,7 +685,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-foto:p9:f",
       prompt: "Woran erkennt man den Zufälliger Fehler?",
-      answer: "Er beschreibt eine Ablesestreuung, mittelwert bilden.", wrong: ["Sie beschreibt mittlere Beschleunigung, bei ungleichförmiger Bewegung.", "Er beschreibt falscher Maßstab, kalibrierung prüfen.", "Es beschreibt aus Messpunkten, graphische Auswertung."],
+      answer: "Ablesestreuung.", wrong: ["Frame-Rate als Δt.", "Bedingungen dokumentieren.", "Mehrfachbelichtung zeitgetaktet."],
       explanation: "Mittelwert bilden. Zufälliger Fehler bedeutet: Ablesestreuung.",
       wissen: "Mittelwert bilden. Zufälliger Fehler bedeutet: Ablesestreuung.",
       flashFront: "Zufälliger Fehler",
@@ -693,7 +693,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-foto:p10:f",
       prompt: "Mit welchen Mitteln arbeitet die Videomessung?",
-      answer: "Sie beschreibt frame-Rate als Δt.", wrong: ["Es positionen messen, maßstab im Bild.", "Er beschreibt eine Ablesestreuung, mittelwert bilden.", "Sie beschreibt mittlere Geschwindigkeit, zwischen zwei Marken."],
+      answer: "Frame-Rate als Δt.", wrong: ["Bedingungen dokumentieren.", "Mehrfachbelichtung zeitgetaktet.", "Blitzintervall."],
       explanation: "Software-Tracking. Videomessung bedeutet: Frame-Rate als Δt.",
       wissen: "Software-Tracking. Videomessung bedeutet: Frame-Rate als Δt.",
       flashFront: "Videomessung",
@@ -701,7 +701,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-foto:p11:f",
       prompt: "Wozu dient ein Versuchsprotokoll?",
-      answer: "Es dokumentiert Versuchsschritte und Messwerte so, dass andere den Versuch wiederholen können.", wrong: ["Sie beschreibt mittlere Geschwindigkeit, zwischen zwei Marken.", "Sie beschreibt ein Blickwinkel verzerrt, kamera senkrecht.", "Sie beschreibt mittlere Beschleunigung, bei ungleichförmiger Bewegung."],
+      answer: "Bedingungen dokumentieren.", wrong: ["Mehrfachbelichtung zeitgetaktet.", "Blitzintervall.", "Positionen messen."],
       explanation: "Wiederholbarkeit. Protokoll bedeutet: Bedingungen dokumentieren.",
       wissen: "Wiederholbarkeit. Protokoll bedeutet: Bedingungen dokumentieren.",
       flashFront: "Protokoll",
@@ -738,7 +738,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-kraftmesser:p1:f",
       prompt: "Wozu dient die Federkonstante D?",
-      answer: "Es beschreibt eine Steigung im F-s-Diagramm, härte der Feder.", wrong: ["Sie beschreibt eine Geradenanpassung, d aus Steigung.", "Sie beschreibt mit bekannten Massen, gewichtskraft Mg.", "Sie erhöht die Zuverlässigkeit und ermöglicht einen belastbaren Mittelwert."],
+      answer: "Steigung im F-s-Diagramm.", wrong: ["mit bekannten Massen.", "nicht überdehnen.", "Offset der Anzeige."],
       explanation: "Härte der Feder. Federkonstante D bedeutet: Steigung im F-s-Diagramm.",
       wissen: "Härte der Feder. Federkonstante D bedeutet: Steigung im F-s-Diagramm.",
       flashFront: "Federkonstante D",
@@ -746,7 +746,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-kraftmesser:p2:f",
       prompt: "Woran erkennt man die Kalibrierung?",
-      answer: "Sie beschreibt mit bekannten Massen, gewichtskraft Mg.", wrong: ["Es beschreibt nicht überdehnen, plastische Verformung vermeiden.", "Sie beschreibt ΔD aus ΔF, Δs, unsicherheit angeben.", "Sie beschreibt eine Geradenanpassung, d aus Steigung."],
+      answer: "mit bekannten Massen.", wrong: ["nicht überdehnen.", "Offset der Anzeige.", "Geradenanpassung."],
       explanation: "Gewichtskraft Mg. Kalibrierung bedeutet: mit bekannten Massen.",
       wissen: "Gewichtskraft Mg. Kalibrierung bedeutet: mit bekannten Massen.",
       flashFront: "Kalibrierung",
@@ -754,7 +754,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-kraftmesser:p3:f",
       prompt: "Wozu dient der Messbereich?",
-      answer: "Es beschreibt nicht überdehnen, plastische Verformung vermeiden.", wrong: ["Sie beschreibt für D.", "Er offset der Anzeige.", "Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g."],
+      answer: "nicht überdehnen.", wrong: ["Offset der Anzeige.", "Geradenanpassung.", "G = m·g."],
       explanation: "Plastische Verformung vermeiden. Messbereich bedeutet: nicht überdehnen.",
       wissen: "Plastische Verformung vermeiden. Messbereich bedeutet: nicht überdehnen.",
       flashFront: "Messbereich",
@@ -762,7 +762,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-kraftmesser:p4:f",
       prompt: "Wozu dient der Nullpunktfehler?",
-      answer: "Er offset der Anzeige.", wrong: ["Es beschreibt nicht überdehnen, plastische Verformung vermeiden.", "Es beschreibt F = D·s, im linearen Bereich.", "Sie beschreibt für D."],
+      answer: "Offset der Anzeige.", wrong: ["Geradenanpassung.", "G = m·g.", "von Ruhelage."],
       explanation: "Tara/Nullen. Nullpunktfehler bedeutet: Offset der Anzeige.",
       wissen: "Tara/Nullen. Nullpunktfehler bedeutet: Offset der Anzeige.",
       flashFront: "Nullpunktfehler",
@@ -770,7 +770,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-kraftmesser:p5:f",
       prompt: "Welche Eigenschaft hat die Lineare Regression?",
-      answer: "Sie beschreibt eine Geradenanpassung, d aus Steigung.", wrong: ["Sie erhöht die Zuverlässigkeit und ermöglicht einen belastbaren Mittelwert.", "Sie beschreibt ΔD aus ΔF, Δs, unsicherheit angeben.", "Es beschreibt nicht überdehnen, plastische Verformung vermeiden."],
+      answer: "Geradenanpassung.", wrong: ["G = m·g.", "von Ruhelage.", "Hin- und Rückweg verschieden."],
       explanation: "D aus Steigung. Lineare Regression bedeutet: Geradenanpassung.",
       wissen: "D aus Steigung. Lineare Regression bedeutet: Geradenanpassung.",
       flashFront: "Lineare Regression",
@@ -778,7 +778,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-kraftmesser:p6:f",
       prompt: "Was beschreibt die Gewichtskraft?",
-      answer: "Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g.", wrong: ["Sie beschreibt für D.", "Es beschreibt von Ruhelage, genau messen.", "Sie beschreibt eine Hin- und Rückweg verschieden, reibung in Feder."],
+      answer: "G = m·g.", wrong: ["von Ruhelage.", "Hin- und Rückweg verschieden.", "mehrere Messpunkte."],
       explanation: "Vergleichskraft. Gewichtskraft bedeutet: G = m·g.",
       wissen: "Vergleichskraft. Gewichtskraft bedeutet: G = m·g.",
       flashFront: "Gewichtskraft",
@@ -786,7 +786,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-kraftmesser:p7:f",
       prompt: "Was beschreibt „Auslenkung s“?",
-      answer: "Es beschreibt von Ruhelage, genau messen.", wrong: ["Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g.", "Es beschreibt eine Steigung im F-s-Diagramm, härte der Feder.", "Sie beschreibt eine Geradenanpassung, d aus Steigung."],
+      answer: "von Ruhelage.", wrong: ["Hin- und Rückweg verschieden.", "mehrere Messpunkte.", "für D."],
       explanation: "Genau messen. Auslenkung s bedeutet: von Ruhelage.",
       wissen: "Genau messen. Auslenkung s bedeutet: von Ruhelage.",
       flashFront: "Auslenkung s",
@@ -794,7 +794,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-kraftmesser:p8:f",
       prompt: "Was bewirkt die Hysterese?",
-      answer: "Sie beschreibt eine Hin- und Rückweg verschieden, reibung in Feder.", wrong: ["Es beschreibt nicht überdehnen, plastische Verformung vermeiden.", "Er offset der Anzeige.", "Sie erhöht die Zuverlässigkeit und ermöglicht einen belastbaren Mittelwert."],
+      answer: "Hin- und Rückweg verschieden.", wrong: ["mehrere Messpunkte.", "für D.", "ΔD aus ΔF, Δs."],
       explanation: "Reibung in Feder. Hysterese bedeutet: Hin- und Rückweg verschieden.",
       wissen: "Reibung in Feder. Hysterese bedeutet: Hin- und Rückweg verschieden.",
       flashFront: "Hysterese",
@@ -802,7 +802,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-kraftmesser:p9:f",
       prompt: "Wozu wiederholt man Messungen?",
-      answer: "Sie erhöht die Zuverlässigkeit und ermöglicht einen belastbaren Mittelwert.", wrong: ["Es beschreibt von Ruhelage, genau messen.", "Sie beschreibt eine Geradenanpassung, d aus Steigung.", "Sie beschreibt mit bekannten Massen, gewichtskraft Mg."],
+      answer: "mehrere Messpunkte.", wrong: ["für D.", "ΔD aus ΔF, Δs.", "F = D·s."],
       explanation: "Streung erkennen. Wiederholung bedeutet: mehrere Messpunkte.",
       wissen: "Streung erkennen. Wiederholung bedeutet: mehrere Messpunkte.",
       flashFront: "Wiederholung",
@@ -810,7 +810,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-kraftmesser:p10:f",
       prompt: "Mit welchen Mitteln arbeitet der Einheiten N oder m?",
-      answer: "Sie beschreibt für D.", wrong: ["Sie erhöht die Zuverlässigkeit und ermöglicht einen belastbaren Mittelwert.", "Es beschreibt F = D·s, im linearen Bereich.", "Es beschreibt nicht überdehnen, plastische Verformung vermeiden."],
+      answer: "für D.", wrong: ["ΔD aus ΔF, Δs.", "F = D·s.", "Steigung im F-s-Diagramm."],
       explanation: "SI. Einheiten N/m bedeutet: für D.",
       wissen: "SI. Einheiten N/m bedeutet: für D.",
       flashFront: "Einheiten N/m",
@@ -818,7 +818,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-kraftmesser:p11:f",
       prompt: "Mit welchen Mitteln arbeitet die Fehlerfortpflanzung?",
-      answer: "Sie beschreibt ΔD aus ΔF, Δs, unsicherheit angeben.", wrong: ["Sie beschreibt eine Hin- und Rückweg verschieden, reibung in Feder.", "Sie beschreibt für D.", "Es beschreibt F = D·s, im linearen Bereich."],
+      answer: "ΔD aus ΔF, Δs.", wrong: ["F = D·s.", "Steigung im F-s-Diagramm.", "mit bekannten Massen."],
       explanation: "Unsicherheit angeben. Fehlerfortpflanzung bedeutet: ΔD aus ΔF, Δs.",
       wissen: "Unsicherheit angeben. Fehlerfortpflanzung bedeutet: ΔD aus ΔF, Δs.",
       flashFront: "Fehlerfortpflanzung",
@@ -847,7 +847,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-luftreibung:p0:f",
       prompt: "Welche Eigenschaft hat die Luftreibung?",
-      answer: "Sie widerstandskraft der Luft, wächst mit Geschwindigkeit.", wrong: ["Es beschreibt große Fläche, früher Grenzgeschwindigkeit.", "Es beschreibt beeinflusst F_R.", "Es wertet Messwerte in Diagrammen aus und prüft sie an der Hypothese, parameter extrahieren."],
+      answer: "Widerstandskraft der Luft.", wrong: ["F_G = F_R.", "große Fläche.", "steigt dann flacht ab."],
       explanation: "Wächst mit Geschwindigkeit. Luftreibung bedeutet: Widerstandskraft der Luft.",
       wissen: "Wächst mit Geschwindigkeit. Luftreibung bedeutet: Widerstandskraft der Luft.",
       flashFront: "Luftreibung",
@@ -855,7 +855,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-luftreibung:p1:f",
       prompt: "Woran erkennt man die Grenzgeschwindigkeit?",
-      answer: "Sie beschreibt F_G = F_R, keine Nettobeschleunigung.", wrong: ["Es beschreibt laminar/turbulent, kraftgesetz ändert sich.", "Es beschreibt oft bei schneller Bewegung, annahme prüfen.", "Es wertet Messwerte in Diagrammen aus und prüft sie an der Hypothese, parameter extrahieren."],
+      answer: "F_G = F_R.", wrong: ["große Fläche.", "steigt dann flacht ab.", "mit/ohne Widerstand."],
       explanation: "Keine Nettobeschleunigung. Grenzgeschwindigkeit bedeutet: F_G = F_R.",
       wissen: "Keine Nettobeschleunigung. Grenzgeschwindigkeit bedeutet: F_G = F_R.",
       flashFront: "Grenzgeschwindigkeit",
@@ -863,7 +863,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-luftreibung:p2:f",
       prompt: "Wozu dient das Fallschirmprinzip?",
-      answer: "Es beschreibt große Fläche, früher Grenzgeschwindigkeit.", wrong: ["Es wertet Messwerte in Diagrammen aus und prüft sie an der Hypothese, parameter extrahieren.", "Es beschreibt laminar/turbulent, kraftgesetz ändert sich.", "Sie beschreibt F_G = F_R, keine Nettobeschleunigung."],
+      answer: "große Fläche.", wrong: ["steigt dann flacht ab.", "mit/ohne Widerstand.", "laminar/turbulent."],
       explanation: "früher Grenzgeschwindigkeit. Fallschirmprinzip bedeutet: große Fläche.",
       wissen: "früher Grenzgeschwindigkeit. Fallschirmprinzip bedeutet: große Fläche.",
       flashFront: "Fallschirmprinzip",
@@ -871,7 +871,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-luftreibung:p3:f",
       prompt: "Welche Eigenschaft hat die v-t-Kurve?",
-      answer: "Sie beschreibt steigt dann flacht ab, reibung sichtbar.", wrong: ["Es beschreibt beeinflusst F_R.", "Es beschreibt oft bei schneller Bewegung, annahme prüfen.", "Es beschreibt ein Formfaktor."],
+      answer: "steigt dann flacht ab.", wrong: ["mit/ohne Widerstand.", "laminar/turbulent.", "über bekannte Höhe."],
       explanation: "Reibung sichtbar. v-t-Kurve bedeutet: steigt dann flacht ab.",
       wissen: "Reibung sichtbar. v-t-Kurve bedeutet: steigt dann flacht ab.",
       flashFront: "v-t-Kurve",
@@ -879,7 +879,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-luftreibung:p4:f",
       prompt: "Woran erkennt man den Systematischer Vergleich?",
-      answer: "Es beschreibt mit/ohne Widerstand.", wrong: ["Es beschreibt größer → mehr Widerstand, form entscheidend.", "Sie beschreibt steigt dann flacht ab, reibung sichtbar.", "Es beschreibt große Fläche, früher Grenzgeschwindigkeit."],
+      answer: "mit/ohne Widerstand.", wrong: ["laminar/turbulent.", "über bekannte Höhe.", "oft bei schneller Bewegung."],
       explanation: "Kontrollversuch. Systematischer Vergleich bedeutet: mit/ohne Widerstand.",
       wissen: "Kontrollversuch. Systematischer Vergleich bedeutet: mit/ohne Widerstand.",
       flashFront: "Systematischer Vergleich",
@@ -887,7 +887,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-luftreibung:p5:f",
       prompt: "Was beschreibt „Reynolds-Bereich“?",
-      answer: "Es beschreibt laminar/turbulent, kraftgesetz ändert sich.", wrong: ["Sie beschreibt F_G = F_R, keine Nettobeschleunigung.", "Es beschreibt über bekannte Höhe, mittlere v schätzen.", "Es beschreibt oft bei schneller Bewegung, annahme prüfen."],
+      answer: "laminar/turbulent.", wrong: ["über bekannte Höhe.", "oft bei schneller Bewegung.", "beeinflusst F_R."],
       explanation: "Kraftgesetz ändert sich. Reynolds-Bereich bedeutet: laminar/turbulent.",
       wissen: "Kraftgesetz ändert sich. Reynolds-Bereich bedeutet: laminar/turbulent.",
       flashFront: "Reynolds-Bereich",
@@ -911,7 +911,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-luftreibung:p8:f",
       prompt: "Woran erkennt man die Dichte der Luft?",
-      answer: "Es beschreibt beeinflusst F_R.", wrong: ["Es beschreibt größer → mehr Widerstand, form entscheidend.", "Es beschreibt laminar/turbulent, kraftgesetz ändert sich.", "Es beschreibt ein Formfaktor."],
+      answer: "beeinflusst F_R.", wrong: ["größer → mehr Widerstand.", "Formfaktor.", "Fit an Modell."],
       explanation: "Höhe/Temperatur. Dichte der Luft bedeutet: beeinflusst F_R.",
       wissen: "Höhe/Temperatur. Dichte der Luft bedeutet: beeinflusst F_R.",
       flashFront: "Dichte der Luft",
@@ -927,7 +927,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-luftreibung:p10:f",
       prompt: "Was bewirkt das c_W-Wert?",
-      answer: "Es beschreibt ein Formfaktor.", wrong: ["Sie widerstandskraft der Luft, wächst mit Geschwindigkeit.", "Es beschreibt laminar/turbulent, kraftgesetz ändert sich.", "Sie beschreibt steigt dann flacht ab, reibung sichtbar."],
+      answer: "Formfaktor.", wrong: ["Fit an Modell.", "Widerstandskraft der Luft.", "F_G = F_R."],
       explanation: "strömungsabhängig. c_W-Wert bedeutet: Formfaktor.",
       wissen: "strömungsabhängig. c_W-Wert bedeutet: Formfaktor.",
       flashFront: "c_W-Wert",
@@ -935,7 +935,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb3p-luftreibung:p11:f",
       prompt: "Woran erkennt man die Auswertung Diagramm?",
-      answer: "Es wertet Messwerte in Diagrammen aus und prüft sie an der Hypothese, parameter extrahieren.", wrong: ["Es beschreibt größer → mehr Widerstand, form entscheidend.", "Es beschreibt große Fläche, früher Grenzgeschwindigkeit.", "Es beschreibt laminar/turbulent, kraftgesetz ändert sich."],
+      answer: "Fit an Modell.", wrong: ["Widerstandskraft der Luft.", "F_G = F_R.", "große Fläche."],
       explanation: "Parameter extrahieren. Auswertung Diagramm bedeutet: Fit an Modell.",
       wissen: "Parameter extrahieren. Auswertung Diagramm bedeutet: Fit an Modell.",
       flashFront: "Auswertung Diagramm",
@@ -980,7 +980,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb7-platten:p2:f",
       prompt: "Welche Eigenschaft hat die Spannung U?",
-      answer: "Es ist die Ursache des Stroms und treibt Ladungen durch den Kreis.", wrong: ["Es beschreibt parallel, gleich dicht.", "Sie beschreibt eine Feld am Rand verzerrt, idealisierung begrenzt.", "Es beschreibt E bestimmen."],
+      answer: "Potenzialdifferenz.", wrong: ["kleiner → größeres E.", "parallel, gleich dicht.", "Feld am Rand verzerrt."],
       explanation: " treibt Ladung. Spannung U bedeutet: Potenzialdifferenz.",
       wissen: " treibt Ladung. Spannung U bedeutet: Potenzialdifferenz.",
       flashFront: "Spannung U",
@@ -996,7 +996,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb7-platten:p4:f",
       prompt: "Welche Eigenschaft hat der Feldlinien?",
-      answer: "Es beschreibt parallel, gleich dicht.", wrong: ["Es beschreibt F = q·E, im homogenen Feld konstant.", "Sie beschreibt eine Feld am Rand verzerrt, idealisierung begrenzt.", "Es beschreibt C = ε0·A/d."],
+      answer: "parallel, gleich dicht.", wrong: ["Feld am Rand verzerrt.", "C = ε0·A/d.", "Q = C·U."],
       explanation: "Homogenität. Feldlinien bedeutet: parallel, gleich dicht.",
       wissen: "Homogenität. Feldlinien bedeutet: parallel, gleich dicht.",
       flashFront: "Feldlinien",
@@ -1004,7 +1004,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb7-platten:p5:f",
       prompt: "Was beschreibt „Randeffekte“?",
-      answer: "Sie beschreibt eine Feld am Rand verzerrt, idealisierung begrenzt.", wrong: ["Es beschreibt C = ε0·A/d.", "Es beschreibt F = q·E, im homogenen Feld konstant.", "Er beschreibt ½CU², im Feld gespeichert."],
+      answer: "Feld am Rand verzerrt.", wrong: ["C = ε0·A/d.", "Q = C·U.", "F = q·E."],
       explanation: "Idealisierung begrenzt. Randeffekte bedeutet: Feld am Rand verzerrt.",
       wissen: "Idealisierung begrenzt. Randeffekte bedeutet: Feld am Rand verzerrt.",
       flashFront: "Randeffekte",
@@ -1036,7 +1036,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb7-platten:p9:f",
       prompt: "Mit welchen Mitteln arbeitet der Energie im Kondensator?",
-      answer: "Er beschreibt ½CU², im Feld gespeichert.", wrong: ["Es beschreibt F = q·E, im homogenen Feld konstant.", "Sie beschreibt eine Feld am Rand verzerrt, idealisierung begrenzt.", "Es beschreibt E bestimmen."],
+      answer: "½CU².", wrong: ["erhöht C.", "E bestimmen.", "zwei parallele Platten."],
       explanation: "im Feld gespeichert. Energie im Kondensator bedeutet: ½CU².",
       wissen: "im Feld gespeichert. Energie im Kondensator bedeutet: ½CU².",
       flashFront: "Energie im Kondensator",
@@ -1044,7 +1044,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb7-platten:p10:f",
       prompt: "Wozu dient Dielektrikum?",
-      answer: "Es erhöht C durch verändert Feld.", wrong: ["Das Dielektrikum ist das E Bestimmen.", "Das Dielektrikum ist zwei parallele Platten.", "Es ist eine E = U/d."],
+      answer: "erhöht C.", wrong: ["E bestimmen.", "zwei parallele Platten.", "E = U/d."],
       explanation: "verändert Feld. Dielektrikum bedeutet: erhöht C.",
       wissen: "verändert Feld. Dielektrikum bedeutet: erhöht C.",
       flashFront: "Dielektrikum",
@@ -1052,7 +1052,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb7-platten:p11:f",
       prompt: "Welche Eigenschaft hat die Messung U und d?",
-      answer: "Es beschreibt E bestimmen.", wrong: ["Er beschreibt zwei parallele Platten, näherungsweise homogenes Feld.", "Es beschreibt kleiner → größeres E, bei fester U.", "Es beschreibt F = q·E, im homogenen Feld konstant."],
+      answer: "E bestimmen.", wrong: ["zwei parallele Platten.", "E = U/d.", "Potenzialdifferenz."],
       explanation: "Versuchsidee. Messung U und d bedeutet: E bestimmen.",
       wissen: "Versuchsidee. Messung U und d bedeutet: E bestimmen.",
       flashFront: "Messung U und d",
@@ -1081,7 +1081,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb10-induktionsspannung:p0:f",
       prompt: "Was kennzeichnet „Faradaysches Gesetz“?",
-      answer: "Es beschreibt U_ind = −dΦ/dt, zeitliche Flussänderung.", wrong: ["Das Faradaysches Gesetz ist Φ = B·A·cosα.", "Das Faradaysches Gesetz ist entgegengesetzt der Ursache.", "Es ist Φ(t) = Φ0 cos(ωt)."],
+      answer: "U_ind = −dΦ/dt.", wrong: ["Φ = B·A·cosα.", "entgegengesetzt der Ursache.", "Φ(t) = Φ0 cos(ωt)."],
       explanation: "zeitliche Flussänderung. Faradaysches Gesetz bedeutet: U_ind = −dΦ/dt.",
       wissen: "zeitliche Flussänderung. Faradaysches Gesetz bedeutet: U_ind = −dΦ/dt.",
       flashFront: "Faradaysches Gesetz",
@@ -1089,7 +1089,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb10-induktionsspannung:p1:f",
       prompt: "Woran erkennt man den Magnetischer Fluss Φ?",
-      answer: "Es beschreibt Φ = B·A·cosα, durch Fläche.", wrong: ["Es beschreibt U0 = N·Φ0·ω, mehr Windungen → größer.", "Es beschreibt fläche ändern, ausziehbare Schleife.", "Er gilt als ein festgelegtes Maß zum Vergleich von Größen, 1 Wb = 1 T·m²."],
+      answer: "Φ = B·A·cosα.", wrong: ["entgegengesetzt der Ursache.", "Φ(t) = Φ0 cos(ωt).", "U0 = N·Φ0·ω."],
       explanation: "durch Fläche. Magnetischer Fluss Φ bedeutet: Φ = B·A·cosα.",
       wissen: "durch Fläche. Magnetischer Fluss Φ bedeutet: Φ = B·A·cosα.",
       flashFront: "Magnetischer Fluss Φ",
@@ -1097,7 +1097,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb10-induktionsspannung:p2:f",
       prompt: "Welche Eigenschaft hat das Vorzeichen Lenz?",
-      answer: "Sie beschreibt entgegengesetzt der Ursache.", wrong: ["Es beschreibt verstärkt U_ind.", "Sie ist der Durchschnitt mehrerer Messwerte, technische Angabe.", "Es drehen."],
+      answer: "entgegengesetzt der Ursache.", wrong: ["Φ(t) = Φ0 cos(ωt).", "U0 = N·Φ0·ω.", "verstärkt U_ind."],
       explanation: "Energiesatz. Vorzeichen Lenz bedeutet: entgegengesetzt der Ursache.",
       wissen: "Energiesatz. Vorzeichen Lenz bedeutet: entgegengesetzt der Ursache.",
       flashFront: "Vorzeichen Lenz",
@@ -1105,7 +1105,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb10-induktionsspannung:p3:f",
       prompt: "Welche Eigenschaft hat die Drehende Leiterschleife?",
-      answer: "Sie beschreibt Φ(t) = Φ0 cos(ωt).", wrong: ["Es beschreibt U_ind = −dΦ/dt, zeitliche Flussänderung.", "Es beschreibt Φ = B·A·cosα, durch Fläche.", "Es beschreibt fläche ändern, ausziehbare Schleife."],
+      answer: "Φ(t) = Φ0 cos(ωt).", wrong: ["U0 = N·Φ0·ω.", "verstärkt U_ind.", "B variieren."],
       explanation: "Wechselspannung. Drehende Leiterschleife bedeutet: Φ(t) = Φ0 cos(ωt).",
       wissen: "Wechselspannung. Drehende Leiterschleife bedeutet: Φ(t) = Φ0 cos(ωt).",
       flashFront: "Drehende Leiterschleife",
@@ -1134,7 +1134,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb10-induktionsspannung:p6:f",
       prompt: "Welche Eigenschaft hat die Flussänderung durch B?",
-      answer: "Es beschreibt B variieren.", wrong: ["Es beschreibt verstärkt U_ind.", "Sie ist der Durchschnitt mehrerer Messwerte, technische Angabe.", "Es drehen."],
+      answer: "B variieren.", wrong: ["Fläche ändern.", "Drehen.", "bei Wechselspannung."],
       explanation: "Elektromagnet. Flussänderung durch B bedeutet: B variieren.",
       wissen: "Elektromagnet. Flussänderung durch B bedeutet: B variieren.",
       flashFront: "Flussänderung durch B",
@@ -1142,7 +1142,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb10-induktionsspannung:p7:f",
       prompt: "Was beschreibt „Flussänderung durch A“?",
-      answer: "Es beschreibt fläche ändern, ausziehbare Schleife.", wrong: ["Es drehen.", "Sie beschreibt Φ(t) = Φ0 cos(ωt).", "Es beschreibt U0 = N·Φ0·ω, mehr Windungen → größer."],
+      answer: "Fläche ändern.", wrong: ["Drehen.", "bei Wechselspannung.", "U(t) sichtbar."],
       explanation: "ausziehbare Schleife. Flussänderung durch A bedeutet: Fläche ändern.",
       wissen: "ausziehbare Schleife. Flussänderung durch A bedeutet: Fläche ändern.",
       flashFront: "Flussänderung durch A",
@@ -1150,7 +1150,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb10-induktionsspannung:p8:f",
       prompt: "Wozu dient die Flussänderung durch α?",
-      answer: "Es drehen.", wrong: ["Es beschreibt fläche ändern, ausziehbare Schleife.", "Es beschreibt Φ = B·A·cosα, durch Fläche.", "Er gilt als ein festgelegtes Maß zum Vergleich von Größen, 1 Wb = 1 T·m²."],
+      answer: "Drehen.", wrong: ["bei Wechselspannung.", "U(t) sichtbar.", "für Φ."],
       explanation: "Generatorprinzip. Flussänderung durch α bedeutet: Drehen.",
       wissen: "Generatorprinzip. Flussänderung durch α bedeutet: Drehen.",
       flashFront: "Flussänderung durch α",
@@ -1166,7 +1166,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb10-induktionsspannung:p10:f",
       prompt: "Mit welchen Mitteln arbeitet das Oszilloskop?",
-      answer: "Es beschreibt U(t) sichtbar, frequenz ablesen.", wrong: ["Sie beschreibt entgegengesetzt der Ursache.", "Es beschreibt B variieren.", "Sie beschreibt Φ(t) = Φ0 cos(ωt)."],
+      answer: "U(t) sichtbar.", wrong: ["für Φ.", "U_ind = −dΦ/dt.", "Φ = B·A·cosα."],
       explanation: "Frequenz ablesen. Oszilloskop bedeutet: U(t) sichtbar.",
       wissen: "Frequenz ablesen. Oszilloskop bedeutet: U(t) sichtbar.",
       flashFront: "Oszilloskop",
@@ -1203,7 +1203,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb10-wirbelstrom:p0:f",
       prompt: "Welche Eigenschaft hat das Wirbelstrom?",
-      answer: "Es beschreibt geschlossene Strombahn in Metall, durch Induktion.", wrong: ["Sie beschreibt gute Leiter → starke Wirbel, kupfer vs.", "Es beschreibt wirbelströme im Topf, wärme direkt im Metall.", "Er beschreibt eine Induktionsänderung."],
+      answer: "geschlossene Strombahn in Metall.", wrong: ["wirkt der Ursache entgegen.", "ohne Verschleiß reiben.", "I²R in Metall."],
       explanation: "durch Induktion. Wirbelstrom bedeutet: geschlossene Strombahn in Metall.",
       wissen: "durch Induktion. Wirbelstrom bedeutet: geschlossene Strombahn in Metall.",
       flashFront: "Wirbelstrom",
@@ -1211,7 +1211,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb10-wirbelstrom:p1:f",
       prompt: "Was bewirkt die Lenzsche Regel?",
-      answer: "Es beschreibt wirkt der Ursache entgegen.", wrong: ["Es beschreibt wirbelströme im Topf, wärme direkt im Metall.", "Sie beschreibt wechselfelder dämpfen.", "Es beschreibt I²R in Metall, unerwünscht in Trafo."],
+      answer: "wirkt der Ursache entgegen.", wrong: ["ohne Verschleiß reiben.", "I²R in Metall.", "unterdrücken Wirbelströme."],
       explanation: "Bremswirkung. Lenzsche Regel bedeutet: wirkt der Ursache entgegen.",
       wissen: "Bremswirkung. Lenzsche Regel bedeutet: wirkt der Ursache entgegen.",
       flashFront: "Lenzsche Regel",
@@ -1219,7 +1219,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb10-wirbelstrom:p2:f",
       prompt: "Wozu dient die Wirbelstrombremse?",
-      answer: "Sie beschreibt ohne Verschleiß reiben.", wrong: ["Sie beschreibt unterdrücken Wirbelströme.", "Er beschreibt eine Induktionsänderung.", "Sie bremsen ohne Funken."],
+      answer: "ohne Verschleiß reiben.", wrong: ["I²R in Metall.", "unterdrücken Wirbelströme.", "Induktionsänderung."],
       explanation: "Bahn/Fahrgeschäft. Wirbelstrombremse bedeutet: ohne Verschleiß reiben.",
       wissen: "Bahn/Fahrgeschäft. Wirbelstrombremse bedeutet: ohne Verschleiß reiben.",
       flashFront: "Wirbelstrombremse",
@@ -1227,7 +1227,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb10-wirbelstrom:p3:f",
       prompt: "Wozu dient das Wärmeverlust?",
-      answer: "Es beschreibt I²R in Metall, unerwünscht in Trafo.", wrong: ["Es beschreibt wirbelströme im Topf, wärme direkt im Metall.", "Er beschreibt eine Induktionsänderung.", "Sie bremsen ohne Funken."],
+      answer: "I²R in Metall.", wrong: ["unterdrücken Wirbelströme.", "Induktionsänderung.", "Wirbelströme im Topf."],
       explanation: "unerwünscht in Trafo. Wärmeverlust bedeutet: I²R in Metall.",
       wissen: "unerwünscht in Trafo. Wärmeverlust bedeutet: I²R in Metall.",
       flashFront: "Wärmeverlust",
@@ -1235,7 +1235,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb10-wirbelstrom:p4:f",
       prompt: "Woran erkennt man die geblechte Kerne?",
-      answer: "Sie beschreibt unterdrücken Wirbelströme.", wrong: ["Sie beschreibt ohne Verschleiß reiben.", "Sie beschreibt höhere f → stärkere Effekte.", "Es beschreibt wirkt der Ursache entgegen."],
+      answer: "unterdrücken Wirbelströme.", wrong: ["Induktionsänderung.", "Wirbelströme im Topf.", "Wechselfelder dämpfen."],
       explanation: "Transformator. geblechte Kerne bedeutet: unterdrücken Wirbelströme.",
       wissen: "Transformator. geblechte Kerne bedeutet: unterdrücken Wirbelströme.",
       flashFront: "geblechte Kerne",
@@ -1243,7 +1243,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb10-wirbelstrom:p5:f",
       prompt: "Welche Eigenschaft hat der Metalldetektor?",
-      answer: "Er beschreibt eine Induktionsänderung.", wrong: ["Es beschreibt wirbelströme im Topf, wärme direkt im Metall.", "Sie bremsen ohne Funken.", "Es beschreibt I²R in Metall, unerwünscht in Trafo."],
+      answer: "Induktionsänderung.", wrong: ["Wirbelströme im Topf.", "Wechselfelder dämpfen.", "in Kupferrohr langsam."],
       explanation: "Leitfähigkeit. Metalldetektor bedeutet: Induktionsänderung.",
       wissen: "Leitfähigkeit. Metalldetektor bedeutet: Induktionsänderung.",
       flashFront: "Metalldetektor",
@@ -1267,7 +1267,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb10-wirbelstrom:p8:f",
       prompt: "Was beschreibt „Fallende Magnetscheibe“?",
-      answer: "Sie beschreibt in Kupferrohr langsam, lenz sichtbar.", wrong: ["Es beschreibt wirkt der Ursache entgegen.", "Sie beschreibt wechselfelder dämpfen.", "Sie beschreibt ohne Verschleiß reiben."],
+      answer: "in Kupferrohr langsam.", wrong: ["gute Leiter → starke Wirbel.", "höhere f → stärkere Effekte.", "Bremsen ohne Funken."],
       explanation: "Lenz sichtbar. Fallende Magnetscheibe bedeutet: in Kupferrohr langsam.",
       wissen: "Lenz sichtbar. Fallende Magnetscheibe bedeutet: in Kupferrohr langsam.",
       flashFront: "Fallende Magnetscheibe",
@@ -1283,7 +1283,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb10-wirbelstrom:p10:f",
       prompt: "Woran erkennt man die Frequenzabhängigkeit?",
-      answer: "Sie beschreibt höhere f → stärkere Effekte.", wrong: ["Es beschreibt geschlossene Strombahn in Metall, durch Induktion.", "Er beschreibt eine Induktionsänderung.", "Sie beschreibt unterdrücken Wirbelströme."],
+      answer: "höhere f → stärkere Effekte.", wrong: ["Bremsen ohne Funken.", "geschlossene Strombahn in Metall.", "wirkt der Ursache entgegen."],
       explanation: "oft. Frequenzabhängigkeit bedeutet: höhere f → stärkere Effekte.",
       wissen: "oft. Frequenzabhängigkeit bedeutet: höhere f → stärkere Effekte.",
       flashFront: "Frequenzabhängigkeit",
@@ -1291,7 +1291,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb10-wirbelstrom:p11:f",
       prompt: "Woran erkennt man die Anwendung Sicherheit?",
-      answer: "Sie bremsen ohne Funken.", wrong: ["Es beschreibt wirbelströme im Topf, wärme direkt im Metall.", "Sie beschreibt wechselfelder dämpfen.", "Es beschreibt wirkt der Ursache entgegen."],
+      answer: "Bremsen ohne Funken.", wrong: ["geschlossene Strombahn in Metall.", "wirkt der Ursache entgegen.", "ohne Verschleiß reiben."],
       explanation: "Industrie. Anwendung Sicherheit bedeutet: Bremsen ohne Funken.",
       wissen: "Industrie. Anwendung Sicherheit bedeutet: Bremsen ohne Funken.",
       flashFront: "Anwendung Sicherheit",
@@ -1320,7 +1320,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb11-bericht:p0:f",
       prompt: "Wozu formuliert man vor dem Versuch eine Hypothese?",
-      answer: "Sie stellt eine prüfbare Vermutung auf, die der Versuch bestätigen oder widerlegen kann.", wrong: ["Sie beschreibt geräte/Literatur.", "Es beschreibt ein Bezug zur Hypothese, abweichungen diskutieren.", "Er beschreibt verschiebt alle Werte."],
+      answer: "prüfbare Aussage.", wrong: ["gezielt verändert.", "gemessen.", "konstant halten."],
       explanation: "vor dem Versuch. Hypothese bedeutet: prüfbare Aussage.",
       wissen: "vor dem Versuch. Hypothese bedeutet: prüfbare Aussage.",
       flashFront: "Hypothese",
@@ -1328,7 +1328,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb11-bericht:p1:f",
       prompt: "Wozu dient die Unabhängige Variable?",
-      answer: "Sie beschreibt gezielt verändert.", wrong: ["Sie beschreibt gleiche Bedingungen.", "Es stellt den Zusammenhang als s-t- oder v-t-Graph dar.", "Sie stellt eine prüfbare Vermutung auf, die der Versuch bestätigen oder widerlegen kann."],
+      answer: "gezielt verändert.", wrong: ["gemessen.", "konstant halten.", "Δx angeben."],
       explanation: "x-Achse. Unabhängige Variable bedeutet: gezielt verändert.",
       wissen: "x-Achse. Unabhängige Variable bedeutet: gezielt verändert.",
       flashFront: "Unabhängige Variable",
@@ -1344,7 +1344,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb11-bericht:p3:f",
       prompt: "Was bewirkt die Kontrollvariable?",
-      answer: "Sie beschreibt konstant halten, fairer Vergleich.", wrong: ["Sie beschreibt gezielt verändert.", "Er beschreibt verschiebt alle Werte.", "Sie beschreibt gleiche Bedingungen."],
+      answer: "konstant halten.", wrong: ["Δx angeben.", "verschiebt alle Werte.", "streut um Mittel."],
       explanation: "fairer Vergleich. Kontrollvariable bedeutet: konstant halten.",
       wissen: "fairer Vergleich. Kontrollvariable bedeutet: konstant halten.",
       flashFront: "Kontrollvariable",
@@ -1352,7 +1352,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb11-bericht:p4:f",
       prompt: "Was bewirkt die Messunsicherheit?",
-      answer: "Sie beschreibt Δx angeben, genauigkeit der Messung.", wrong: ["Sie beschreibt gezielt verändert.", "Er beschreibt verschiebt alle Werte.", "Sie beschreibt gemessen."],
+      answer: "Δx angeben.", wrong: ["verschiebt alle Werte.", "streut um Mittel.", "zur Messgenauigkeit passen."],
       explanation: "Genauigkeit der Messung. Messunsicherheit bedeutet: Δx angeben.",
       wissen: "Genauigkeit der Messung. Messunsicherheit bedeutet: Δx angeben.",
       flashFront: "Messunsicherheit",
@@ -1360,7 +1360,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb11-bericht:p5:f",
       prompt: "Was bewirkt der systematischer Fehler?",
-      answer: "Er beschreibt verschiebt alle Werte.", wrong: ["Es stellt den Zusammenhang als s-t- oder v-t-Graph dar.", "Sie beschreibt gemessen.", "Sie beschreibt konstant halten, fairer Vergleich."],
+      answer: "verschiebt alle Werte.", wrong: ["streut um Mittel.", "zur Messgenauigkeit passen.", "Unsicherheit sichtbar."],
       explanation: "Kalibrierung. systematischer Fehler bedeutet: verschiebt alle Werte.",
       wissen: "Kalibrierung. systematischer Fehler bedeutet: verschiebt alle Werte.",
       flashFront: "systematischer Fehler",
@@ -1368,7 +1368,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb11-bericht:p6:f",
       prompt: "Wozu dient der zufälliger Fehler?",
-      answer: "Er beschreibt streut um Mittel.", wrong: ["Sie beschreibt gezielt verändert.", "Es stellt den Zusammenhang als s-t- oder v-t-Graph dar.", "Es beschreibt ein Bezug zur Hypothese, abweichungen diskutieren."],
+      answer: "streut um Mittel.", wrong: ["zur Messgenauigkeit passen.", "Unsicherheit sichtbar.", "Bezug zur Hypothese."],
       explanation: "Wiederholen. zufälliger Fehler bedeutet: streut um Mittel.",
       wissen: "Wiederholen. zufälliger Fehler bedeutet: streut um Mittel.",
       flashFront: "zufälliger Fehler",
@@ -1376,7 +1376,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb11-bericht:p7:f",
       prompt: "Mit welchen Mitteln arbeitet die Signifikante Stellen?",
-      answer: "Es beschreibt zur Messgenauigkeit passen, nicht überschätzen.", wrong: ["Sie beschreibt gemessen.", "Sie beschreibt gezielt verändert.", "Sie stellt eine prüfbare Vermutung auf, die der Versuch bestätigen oder widerlegen kann."],
+      answer: "zur Messgenauigkeit passen.", wrong: ["Unsicherheit sichtbar.", "Bezug zur Hypothese.", "gleiche Bedingungen."],
       explanation: "nicht überschätzen. Signifikante Stellen bedeutet: zur Messgenauigkeit passen.",
       wissen: "nicht überschätzen. Signifikante Stellen bedeutet: zur Messgenauigkeit passen.",
       flashFront: "Signifikante Stellen",
@@ -1392,7 +1392,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb11-bericht:p9:f",
       prompt: "Was kennzeichnet „Fazit“?",
-      answer: "Es beschreibt ein Bezug zur Hypothese, abweichungen diskutieren.", wrong: ["Das Fazit ist gleiche Bedingungen.", "Das Fazit ist das Geräte/Literatur.", "Das Fazit ist prüfbare Aussage."],
+      answer: "Bezug zur Hypothese.", wrong: ["gleiche Bedingungen.", "Geräte/Literatur.", "prüfbare Aussage."],
       explanation: "Abweichungen diskutieren. Fazit bedeutet: Bezug zur Hypothese.",
       wissen: "Abweichungen diskutieren. Fazit bedeutet: Bezug zur Hypothese.",
       flashFront: "Fazit",
@@ -1408,7 +1408,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j11lk-lb11-bericht:p11:f",
       prompt: "Was beschreibt „Quellenangabe“?",
-      answer: "Sie beschreibt geräte/Literatur.", wrong: ["Es beschreibt zur Messgenauigkeit passen, nicht überschätzen.", "Sie stellt eine prüfbare Vermutung auf, die der Versuch bestätigen oder widerlegen kann.", "Es beschreibt ein Bezug zur Hypothese, abweichungen diskutieren."],
+      answer: "Geräte/Literatur.", wrong: ["prüfbare Aussage.", "gezielt verändert.", "gemessen."],
       explanation: "Nachvollziehbarkeit. Quellenangabe bedeutet: Geräte/Literatur.",
       wissen: "Nachvollziehbarkeit. Quellenangabe bedeutet: Geräte/Literatur.",
       flashFront: "Quellenangabe",
@@ -1458,7 +1458,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-daempfung:p2:f",
       prompt: "Welche Eigenschaft hat das Schwingfall?",
-      answer: "Es beschreibt noch Überschwingen.", wrong: ["Es beschreibt ein Maß der Dämpfung, aus Amplitudenfolge.", "Sie beschreibt mit Dämpfung verknüpft, breit bei starker Dämpfung.", "Sie beschreibt A(t) fällt ab, bei schwacher Dämpfung."],
+      answer: "noch Überschwingen.", wrong: ["schnellste Rückkehr ohne Überschwingen.", "überdämpft.", "Ursache der Dämpfung."],
       explanation: "unterkritisch. Schwingfall bedeutet: noch Überschwingen.",
       wissen: "unterkritisch. Schwingfall bedeutet: noch Überschwingen.",
       flashFront: "Schwingfall",
@@ -1466,7 +1466,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-daempfung:p3:f",
       prompt: "Wozu dient der aperiodischer Grenzfall?",
-      answer: "Es beschreibt schnellste Rückkehr ohne Überschwingen.", wrong: ["Es beschreibt ein Maß der Dämpfung, aus Amplitudenfolge.", "Es beschreibt elektrische Dämpfung.", "Sie energieverlust pro Periode, amplitude sinkt."],
+      answer: "schnellste Rückkehr ohne Überschwingen.", wrong: ["überdämpft.", "Ursache der Dämpfung.", "Schwingkreisschärfe."],
       explanation: "kritisch. aperiodischer Grenzfall bedeutet: schnellste Rückkehr ohne Überschwingen.",
       wissen: "kritisch. aperiodischer Grenzfall bedeutet: schnellste Rückkehr ohne Überschwingen.",
       flashFront: "aperiodischer Grenzfall",
@@ -1474,7 +1474,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-daempfung:p4:f",
       prompt: "Was kennzeichnet „Kriechfall“?",
-      answer: "Es ist überdämpft durch keine Periode.", wrong: ["Es ist eine Ursache der Dämpfung.", "Das Kriechfall ist das Schwingkreisschärfe.", "Das Kriechfall ist das Wärme."],
+      answer: "überdämpft.", wrong: ["Ursache der Dämpfung.", "Schwingkreisschärfe.", "Wärme."],
       explanation: "keine Periode. Kriechfall bedeutet: überdämpft.",
       wissen: "keine Periode. Kriechfall bedeutet: überdämpft.",
       flashFront: "Kriechfall",
@@ -1482,7 +1482,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-daempfung:p5:f",
       prompt: "Was bewirkt die Reibung oder Widerstand?",
-      answer: "Sie beschreibt ursache der Dämpfung.", wrong: ["Es beschreibt ein Maß der Dämpfung, aus Amplitudenfolge.", "Es beschreibt schwingkreisschärfe, hohe Q = geringe Dämpfung.", "Es beschreibt elektrische Dämpfung."],
+      answer: "Ursache der Dämpfung.", wrong: ["Schwingkreisschärfe.", "Wärme.", "Maß der Dämpfung."],
       explanation: "mechanisch/elektrisch. Reibung/Widerstand bedeutet: Ursache der Dämpfung.",
       wissen: "mechanisch/elektrisch. Reibung/Widerstand bedeutet: Ursache der Dämpfung.",
       flashFront: "Reibung/Widerstand",
@@ -1498,7 +1498,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-daempfung:p7:f",
       prompt: "Was kennzeichnet „Energieverlust“?",
-      answer: "Es ist eine Wärme durch Nicht Konservativ.", wrong: ["Es ist eine Maß der Dämpfung.", "Das Energieverlust ist das Modellversuch.", "Das Energieverlust ist elektrische Dämpfung."],
+      answer: "Wärme.", wrong: ["Maß der Dämpfung.", "Modellversuch.", "elektrische Dämpfung."],
       explanation: "nicht konservativ. Energieverlust bedeutet: Wärme.",
       wissen: "nicht konservativ. Energieverlust bedeutet: Wärme.",
       flashFront: "Energieverlust",
@@ -1506,7 +1506,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-daempfung:p8:f",
       prompt: "Was kennzeichnet „Logarithmisches Dekrement“?",
-      answer: "Es beschreibt ein Maß der Dämpfung, aus Amplitudenfolge.", wrong: ["Das Logarithmisches Dekrement ist das Modellversuch.", "Das Logarithmisches Dekrement ist elektrische Dämpfung.", "Das Logarithmisches Dekrement ist mit Dämpfung verknüpft."],
+      answer: "Maß der Dämpfung.", wrong: ["Modellversuch.", "elektrische Dämpfung.", "mit Dämpfung verknüpft."],
       explanation: "aus Amplitudenfolge. Logarithmisches Dekrement bedeutet: Maß der Dämpfung.",
       wissen: "aus Amplitudenfolge. Logarithmisches Dekrement bedeutet: Maß der Dämpfung.",
       flashFront: "Logarithmisches Dekrement",
@@ -1514,7 +1514,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-daempfung:p9:f",
       prompt: "Woran erkennt man die Feder-Masse mit Reibung?",
-      answer: "Sie beschreibt eine Modellversuch, amplitude messen.", wrong: ["Sie energieverlust pro Periode, amplitude sinkt.", "Es beschreibt ein Maß der Dämpfung, aus Amplitudenfolge.", "Sie beschreibt mit Dämpfung verknüpft, breit bei starker Dämpfung."],
+      answer: "Modellversuch.", wrong: ["elektrische Dämpfung.", "mit Dämpfung verknüpft.", "Energieverlust pro Periode."],
       explanation: "Amplitude messen. Feder-Masse mit Reibung bedeutet: Modellversuch.",
       wissen: "Amplitude messen. Feder-Masse mit Reibung bedeutet: Modellversuch.",
       flashFront: "Feder-Masse mit Reibung",
@@ -1522,7 +1522,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-daempfung:p10:f",
       prompt: "Mit welchen Mitteln arbeitet das LC mit R?",
-      answer: "Es beschreibt elektrische Dämpfung.", wrong: ["Es beschreibt ein Maß der Dämpfung, aus Amplitudenfolge.", "Sie beschreibt A(t) fällt ab, bei schwacher Dämpfung.", "Sie energieverlust pro Periode, amplitude sinkt."],
+      answer: "elektrische Dämpfung.", wrong: ["mit Dämpfung verknüpft.", "Energieverlust pro Periode.", "A(t) fällt ab."],
       explanation: "Ausschwingvorgang. LC mit R bedeutet: elektrische Dämpfung.",
       wissen: "Ausschwingvorgang. LC mit R bedeutet: elektrische Dämpfung.",
       flashFront: "LC mit R",
@@ -1530,7 +1530,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-daempfung:p11:f",
       prompt: "Mit welchen Mitteln arbeitet die Resonanzbreite?",
-      answer: "Sie beschreibt mit Dämpfung verknüpft, breit bei starker Dämpfung.", wrong: ["Sie beschreibt ursache der Dämpfung.", "Es beschreibt noch Überschwingen.", "Es beschreibt ein Maß der Dämpfung, aus Amplitudenfolge."],
+      answer: "mit Dämpfung verknüpft.", wrong: ["Energieverlust pro Periode.", "A(t) fällt ab.", "noch Überschwingen."],
       explanation: "breit bei starker Dämpfung. Resonanzbreite bedeutet: mit Dämpfung verknüpft.",
       wissen: "breit bei starker Dämpfung. Resonanzbreite bedeutet: mit Dämpfung verknüpft.",
       flashFront: "Resonanzbreite",
@@ -1559,7 +1559,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-erzwungene:p0:f",
       prompt: "Was beschreibt „Erregende Kraft“?",
-      answer: "Es beschreibt periodisch von außen, frequenz f_err.", wrong: ["Sie beschreibt zwischen Erreger und Auslenkung.", "Es beschreibt übergang zur Stationarität, transiente Anteile.", "Sie beschreibt nahe Eigenfrequenz, maximale Amplitude."],
+      answer: "periodisch von außen.", wrong: ["folgt Erregerfrequenz.", "nahe Eigenfrequenz.", "zwischen Erreger und Auslenkung."],
       explanation: "Frequenz f_err. Erregende Kraft bedeutet: periodisch von außen.",
       wissen: "Frequenz f_err. Erregende Kraft bedeutet: periodisch von außen.",
       flashFront: "Erregende Kraft",
@@ -1567,7 +1567,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-erzwungene:p1:f",
       prompt: "Wozu dienen Erzwungene Schwingung?",
-      answer: "Sie folgt Erregerfrequenz durch nach Einschwingen.", wrong: ["Die Erzwungene Schwingung ist nahe Eigenfrequenz.", "Sie ist zwischen Erreger und Auslenkung.", "Sie ist eine Maximum der Auslenkung."],
+      answer: "folgt Erregerfrequenz.", wrong: ["nahe Eigenfrequenz.", "zwischen Erreger und Auslenkung.", "Maximum der Auslenkung."],
       explanation: "nach Einschwingen. Erzwungene Schwingung bedeutet: folgt Erregerfrequenz.",
       wissen: "nach Einschwingen. Erzwungene Schwingung bedeutet: folgt Erregerfrequenz.",
       flashFront: "Erzwungene Schwingung",
@@ -1575,7 +1575,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-erzwungene:p2:f",
       prompt: "Woran erkennt man die Resonanzfrequenz?",
-      answer: "Sie beschreibt nahe Eigenfrequenz, maximale Amplitude.", wrong: ["Es beschreibt A(f) Diagramm.", "Sie beschreibt maximale Energieaufnahme, etwas verschoben möglich.", "Es beschreibt resonanzkatastrophe."],
+      answer: "nahe Eigenfrequenz.", wrong: ["zwischen Erreger und Auslenkung.", "Maximum der Auslenkung.", "maximale Energieaufnahme."],
       explanation: "maximale Amplitude. Resonanzfrequenz bedeutet: nahe Eigenfrequenz.",
       wissen: "maximale Amplitude. Resonanzfrequenz bedeutet: nahe Eigenfrequenz.",
       flashFront: "Resonanzfrequenz",
@@ -1583,7 +1583,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-erzwungene:p3:f",
       prompt: "Was bewirkt die Phasenverschiebung?",
-      answer: "Sie beschreibt zwischen Erreger und Auslenkung.", wrong: ["Sie beschreibt ein Maximum der Auslenkung, bei kleiner Dämpfung scharf.", "Sie beschreibt nahe Eigenfrequenz, maximale Amplitude.", "Es beschreibt periodisch von außen, frequenz f_err."],
+      answer: "zwischen Erreger und Auslenkung.", wrong: ["Maximum der Auslenkung.", "maximale Energieaufnahme.", "Übergang zur Stationarität."],
       explanation: "frequenzabhängig. Phasenverschiebung bedeutet: zwischen Erreger und Auslenkung.",
       wissen: "frequenzabhängig. Phasenverschiebung bedeutet: zwischen Erreger und Auslenkung.",
       flashFront: "Phasenverschiebung",
@@ -1591,7 +1591,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-erzwungene:p4:f",
       prompt: "Woran erkennt man die Amplitudenresonanz?",
-      answer: "Sie beschreibt ein Maximum der Auslenkung, bei kleiner Dämpfung scharf.", wrong: ["Sie beschreibt f_err wählen, nutz- oder Vermeidungsziel.", "Sie beschreibt zwischen Erreger und Auslenkung.", "Es beschreibt periodisch von außen, frequenz f_err."],
+      answer: "Maximum der Auslenkung.", wrong: ["maximale Energieaufnahme.", "Übergang zur Stationarität.", "freie Schwingung."],
       explanation: "bei kleiner Dämpfung scharf. Amplitudenresonanz bedeutet: Maximum der Auslenkung.",
       wissen: "bei kleiner Dämpfung scharf. Amplitudenresonanz bedeutet: Maximum der Auslenkung.",
       flashFront: "Amplitudenresonanz",
@@ -1599,7 +1599,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-erzwungene:p5:f",
       prompt: "Welche Eigenschaft hat die Leistungsresonanz?",
-      answer: "Sie beschreibt maximale Energieaufnahme, etwas verschoben möglich.", wrong: ["Es beschreibt periodisch von außen, frequenz f_err.", "Sie beschreibt f_err wählen, nutz- oder Vermeidungsziel.", "Es beschreibt übergang zur Stationarität, transiente Anteile."],
+      answer: "maximale Energieaufnahme.", wrong: ["Übergang zur Stationarität.", "freie Schwingung.", "stärker → kleiner/breiter."],
       explanation: "etwas verschoben möglich. Leistungsresonanz bedeutet: maximale Energieaufnahme.",
       wissen: "etwas verschoben möglich. Leistungsresonanz bedeutet: maximale Energieaufnahme.",
       flashFront: "Leistungsresonanz",
@@ -1607,7 +1607,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-erzwungene:p6:f",
       prompt: "Woran erkennt man das Einschwingvorgang?",
-      answer: "Es beschreibt übergang zur Stationarität, transiente Anteile.", wrong: ["Es beschreibt stärker → kleiner/breiter.", "Sie beschreibt ein Maximum der Auslenkung, bei kleiner Dämpfung scharf.", "Sie beschreibt zwischen Erreger und Auslenkung."],
+      answer: "Übergang zur Stationarität.", wrong: ["freie Schwingung.", "stärker → kleiner/breiter.", "Resonanzkatastrophe."],
       explanation: "transiente Anteile. Einschwingvorgang bedeutet: Übergang zur Stationarität.",
       wissen: "transiente Anteile. Einschwingvorgang bedeutet: Übergang zur Stationarität.",
       flashFront: "Einschwingvorgang",
@@ -1615,7 +1615,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-erzwungene:p7:f",
       prompt: "Woran erkennt man die Eigenfrequenz f0?",
-      answer: "Es beschreibt freie Schwingung.", wrong: ["Es beschreibt resonanzkatastrophe.", "Sie beschreibt nahe Eigenfrequenz, maximale Amplitude.", "Es beschreibt stärker → kleiner/breiter."],
+      answer: "freie Schwingung.", wrong: ["stärker → kleiner/breiter.", "Resonanzkatastrophe.", "A(f) Diagramm."],
       explanation: "Systemparameter. Eigenfrequenz f0 bedeutet: freie Schwingung.",
       wissen: "Systemparameter. Eigenfrequenz f0 bedeutet: freie Schwingung.",
       flashFront: "Eigenfrequenz f0",
@@ -1623,7 +1623,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-erzwungene:p8:f",
       prompt: "Mit welchen Mitteln arbeitet die Dämpfung beeinflusst Peak?",
-      answer: "Es beschreibt stärker → kleiner/breiter.", wrong: ["Sie beschreibt zwischen Erreger und Auslenkung.", "Es beschreibt resonanzkatastrophe.", "Es beschreibt übergang zur Stationarität, transiente Anteile."],
+      answer: "stärker → kleiner/breiter.", wrong: ["Resonanzkatastrophe.", "A(f) Diagramm.", "f_err wählen."],
       explanation: "Kurve. Dämpfung beeinflusst Peak bedeutet: stärker → kleiner/breiter.",
       wissen: "Kurve. Dämpfung beeinflusst Peak bedeutet: stärker → kleiner/breiter.",
       flashFront: "Dämpfung beeinflusst Peak",
@@ -1639,7 +1639,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-erzwungene:p10:f",
       prompt: "Welche Eigenschaft hat das Frequenzgang?",
-      answer: "Es beschreibt A(f) Diagramm.", wrong: ["Sie beschreibt ein Maximum der Auslenkung, bei kleiner Dämpfung scharf.", "Sie beschreibt maximale Energieaufnahme, etwas verschoben möglich.", "Es beschreibt freie Schwingung."],
+      answer: "A(f) Diagramm.", wrong: ["f_err wählen.", "periodisch von außen.", "folgt Erregerfrequenz."],
       explanation: "messen. Frequenzgang bedeutet: A(f) Diagramm.",
       wissen: "messen. Frequenzgang bedeutet: A(f) Diagramm.",
       flashFront: "Frequenzgang",
@@ -1647,7 +1647,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-erzwungene:p11:f",
       prompt: "Was beschreibt „Abstimmung“?",
-      answer: "Sie beschreibt f_err wählen, nutz- oder Vermeidungsziel.", wrong: ["Es beschreibt A(f) Diagramm.", "Es beschreibt freie Schwingung.", "Es beschreibt resonanzkatastrophe."],
+      answer: "f_err wählen.", wrong: ["periodisch von außen.", "folgt Erregerfrequenz.", "nahe Eigenfrequenz."],
       explanation: "Nutz- oder Vermeidungsziel. Abstimmung bedeutet: f_err wählen.",
       wissen: "Nutz- oder Vermeidungsziel. Abstimmung bedeutet: f_err wählen.",
       flashFront: "Abstimmung",
@@ -1692,7 +1692,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-energieumsatz:p2:f",
       prompt: "Welche Eigenschaft hat das Energiependeln?",
-      answer: "Es beschreibt C ↔ L, idealer LC-Kreis.", wrong: ["Es beschreibt q0 cos(ωt+φ).", "Sie beschreibt summe beider Anteile, ohne R konstant.", "Sie beschreibt ½LI²."],
+      answer: "C ↔ L.", wrong: ["Summe beider Anteile.", "wandelt in Wärme.", "U und I um π/2."],
       explanation: "idealer LC-Kreis. Energiependeln bedeutet: C ↔ L.",
       wissen: "idealer LC-Kreis. Energiependeln bedeutet: C ↔ L.",
       flashFront: "Energiependeln",
@@ -1700,7 +1700,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-energieumsatz:p3:f",
       prompt: "Welche Eigenschaft hat die Gesamtenergie?",
-      answer: "Sie beschreibt summe beider Anteile, ohne R konstant.", wrong: ["Er beschreibt eine Frequenzselektion.", "Es beschreibt C ↔ L, idealer LC-Kreis.", "Er beschreibt ½CU²."],
+      answer: "Summe beider Anteile.", wrong: ["wandelt in Wärme.", "U und I um π/2.", "1/√(LC)."],
       explanation: "ohne R konstant. Gesamtenergie bedeutet: Summe beider Anteile.",
       wissen: "ohne R konstant. Gesamtenergie bedeutet: Summe beider Anteile.",
       flashFront: "Gesamtenergie",
@@ -1708,7 +1708,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-energieumsatz:p4:f",
       prompt: "Mit welchen Mitteln wirkt der Ohmscher Widerstand?",
-      answer: "Es wandelt in Wärme.", wrong: ["Es beschreibt U und I um π/2.", "Es beschreibt C ↔ L, idealer LC-Kreis.", "Sie beschreibt summe beider Anteile, ohne R konstant."],
+      answer: "wandelt in Wärme.", wrong: ["U und I um π/2.", "1/√(LC).", "q0 cos(ωt+φ)."],
       explanation: "Dämpfung. Ohmscher Widerstand bedeutet: wandelt in Wärme.",
       wissen: "Dämpfung. Ohmscher Widerstand bedeutet: wandelt in Wärme.",
       flashFront: "Ohmscher Widerstand",
@@ -1716,7 +1716,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-energieumsatz:p5:f",
       prompt: "Woran erkennt man den Zeitlicher Verlauf?",
-      answer: "Es beschreibt U und I um π/2.", wrong: ["Sie beschreibt aus q ableiten, maximum bei q=0.", "Es beschreibt C ↔ L, idealer LC-Kreis.", "Er beschreibt eine Frequenzselektion."],
+      answer: "U und I um π/2.", wrong: ["1/√(LC).", "q0 cos(ωt+φ).", "aus q ableiten."],
       explanation: "Phasenlage. Zeitlicher Verlauf bedeutet: U und I um π/2.",
       wissen: "Phasenlage. Zeitlicher Verlauf bedeutet: U und I um π/2.",
       flashFront: "Zeitlicher Verlauf",
@@ -1732,7 +1732,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-energieumsatz:p7:f",
       prompt: "Wozu dient die Ladung q?",
-      answer: "Es beschreibt q0 cos(ωt+φ).", wrong: ["Sie beschreibt aus q ableiten, maximum bei q=0.", "Es beschreibt C ↔ L, idealer LC-Kreis.", "Er beschreibt ½CU²."],
+      answer: "q0 cos(ωt+φ).", wrong: ["aus q ableiten.", "U(t) am C.", "durch Laden von C."],
       explanation: "harmonisch. Ladung q(t) bedeutet: q0 cos(ωt+φ).",
       wissen: "harmonisch. Ladung q(t) bedeutet: q0 cos(ωt+φ).",
       flashFront: "Ladung q(t)",
@@ -1748,7 +1748,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-energieumsatz:p9:f",
       prompt: "Was beschreibt „Messung mit Oszilloskop“?",
-      answer: "Es beschreibt U(t) am C, periode ablesen.", wrong: ["Sie beschreibt ½LI².", "Es beschreibt q0 cos(ωt+φ).", "Es beschreibt 1/√(LC)."],
+      answer: "U(t) am C.", wrong: ["durch Laden von C.", "Frequenzselektion.", "½CU²."],
       explanation: "Periode ablesen. Messung mit Oszilloskop bedeutet: U(t) am C.",
       wissen: "Periode ablesen. Messung mit Oszilloskop bedeutet: U(t) am C.",
       flashFront: "Messung mit Oszilloskop",
@@ -1756,7 +1756,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-energieumsatz:p10:f",
       prompt: "Welche Eigenschaft hat die Anfangsenergie?",
-      answer: "Sie beschreibt durch Laden von C.", wrong: ["Es wandelt in Wärme.", "Sie beschreibt aus q ableiten, maximum bei q=0.", "Sie beschreibt summe beider Anteile, ohne R konstant."],
+      answer: "durch Laden von C.", wrong: ["Frequenzselektion.", "½CU².", "½LI²."],
       explanation: "Startbedingung. Anfangsenergie bedeutet: durch Laden von C.",
       wissen: "Startbedingung. Anfangsenergie bedeutet: durch Laden von C.",
       flashFront: "Anfangsenergie",
@@ -1764,7 +1764,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb1-energieumsatz:p11:f",
       prompt: "Wozu dient die Anwendung Filter?",
-      answer: "Er beschreibt eine Frequenzselektion.", wrong: ["Es wandelt in Wärme.", "Es beschreibt C ↔ L, idealer LC-Kreis.", "Er beschreibt ½CU²."],
+      answer: "Es dient dazu, frequenzselektion.", wrong: ["Es wandelt in Wärme.", "Es beschreibt C ↔ L, idealer LC-Kreis.", "Er beschreibt ½CU²."],
       explanation: "Schwingkreise. Anwendung Filter bedeutet: Frequenzselektion.",
       wissen: "Schwingkreise. Anwendung Filter bedeutet: Frequenzselektion.",
       flashFront: "Anwendung Filter",
@@ -1801,7 +1801,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-debroglie:p1:f",
       prompt: "Welche Eigenschaft hat die Elektronenbeugung?",
-      answer: "Sie beschreibt eine Interferenz an Kristall/Spalt.", wrong: ["Es beschreibt auch Quantenobjekt.", "Es beschreibt p = h/λ, aus Beugungsmuster.", "Es beschreibt versagt im Doppelspalt, keine eindeutige Bahn."],
+      answer: "Interferenz an Kristall/Spalt.", wrong: ["Muster baut sich auf.", "Amplitude der Wahrscheinlichkeit.", "zerstört Interferenzbild."],
       explanation: "Wellencharakter. Elektronenbeugung bedeutet: Interferenz an Kristall/Spalt.",
       wissen: "Wellencharakter. Elektronenbeugung bedeutet: Interferenz an Kristall/Spalt.",
       flashFront: "Elektronenbeugung",
@@ -1809,7 +1809,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-debroglie:p2:f",
       prompt: "Mit welchen Mitteln arbeitet die Einzelteilchen-Interferenz?",
-      answer: "Sie beschreibt muster baut sich auf.", wrong: ["Sie beschreibt amplitude der Wahrscheinlichkeit.", "Sie beschreibt nötig für Interferenz.", "Es beschreibt p = h/λ, aus Beugungsmuster."],
+      answer: "Muster baut sich auf.", wrong: ["Amplitude der Wahrscheinlichkeit.", "zerstört Interferenzbild.", "auch Quantenobjekt."],
       explanation: "Wahrscheinlichkeit. Einzelteilchen-Interferenz bedeutet: Muster baut sich auf.",
       wissen: "Wahrscheinlichkeit. Einzelteilchen-Interferenz bedeutet: Muster baut sich auf.",
       flashFront: "Einzelteilchen-Interferenz",
@@ -1817,7 +1817,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-debroglie:p3:f",
       prompt: "Was bewirkt die Wellenfunktion?",
-      answer: "Sie beschreibt amplitude der Wahrscheinlichkeit.", wrong: ["Sie beschreibt eine Interferenz an Kristall/Spalt.", "Sie beschreibt nötig für Interferenz.", "Sie beschreibt viele Ereignisse, muster entsteht."],
+      answer: "Amplitude der Wahrscheinlichkeit.", wrong: ["zerstört Interferenzbild.", "auch Quantenobjekt.", "p = h/λ."],
       explanation: "|ψ|². Wellenfunktion bedeutet: Amplitude der Wahrscheinlichkeit.",
       wissen: "|ψ|². Wellenfunktion bedeutet: Amplitude der Wahrscheinlichkeit.",
       flashFront: "Wellenfunktion",
@@ -1833,7 +1833,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-debroglie:p5:f",
       prompt: "Was kennzeichnet „Photon gleichartig“?",
-      answer: "Es ist auch Quantenobjekt durch vergleich.", wrong: ["Das Photon gleichartig ist p = h/λ.", "Das Photon gleichartig ist versagt im Doppelspalt.", "Das Photon gleichartig ist nötig für Interferenz."],
+      answer: "auch Quantenobjekt.", wrong: ["p = h/λ.", "versagt im Doppelspalt.", "nötig für Interferenz."],
       explanation: "Vergleich. Photon gleichartig bedeutet: auch Quantenobjekt.",
       wissen: "Vergleich. Photon gleichartig bedeutet: auch Quantenobjekt.",
       flashFront: "Photon gleichartig",
@@ -1841,7 +1841,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-debroglie:p6:f",
       prompt: "Woran erkennt man das Impuls aus λ?",
-      answer: "Es beschreibt p = h/λ, aus Beugungsmuster.", wrong: ["Es beschreibt λ = h/p, auch für Elektronen.", "Es beschreibt auch Quantenobjekt.", "Sie beschreibt zerstört Interferenzbild."],
+      answer: "p = h/λ.", wrong: ["versagt im Doppelspalt.", "nötig für Interferenz.", "klickt lokal."],
       explanation: "aus Beugungsmuster. Impuls aus λ bedeutet: p = h/λ.",
       wissen: "aus Beugungsmuster. Impuls aus λ bedeutet: p = h/λ.",
       flashFront: "Impuls aus λ",
@@ -1857,7 +1857,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-debroglie:p8:f",
       prompt: "Welche Eigenschaft hat die Kohärenz?",
-      answer: "Sie beschreibt nötig für Interferenz.", wrong: ["Es beschreibt versagt im Doppelspalt, keine eindeutige Bahn.", "Sie beschreibt zerstört Interferenzbild.", "Es beschreibt p = h/λ, aus Beugungsmuster."],
+      answer: "nötig für Interferenz.", wrong: ["klickt lokal.", "viele Ereignisse.", "Welle und Teilchen Aspekte."],
       explanation: "Quellenbedingungen. Kohärenz bedeutet: nötig für Interferenz.",
       wissen: "Quellenbedingungen. Kohärenz bedeutet: nötig für Interferenz.",
       flashFront: "Kohärenz",
@@ -1873,7 +1873,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-debroglie:p10:f",
       prompt: "Mit welchen Mitteln arbeitet die Statistik?",
-      answer: "Sie beschreibt viele Ereignisse, muster entsteht.", wrong: ["Es beschreibt p = h/λ, aus Beugungsmuster.", "Sie beschreibt amplitude der Wahrscheinlichkeit.", "Sie beschreibt zerstört Interferenzbild."],
+      answer: "viele Ereignisse.", wrong: ["Welle und Teilchen Aspekte.", "λ = h/p.", "Interferenz an Kristall/Spalt."],
       explanation: "Muster entsteht. Statistik bedeutet: viele Ereignisse.",
       wissen: "Muster entsteht. Statistik bedeutet: viele Ereignisse.",
       flashFront: "Statistik",
@@ -1911,7 +1911,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-heisenberg:p0:f",
       prompt: "Mit welchen Mitteln arbeitet die Unschärferelation?",
-      answer: "Sie beschreibt Δx·Δp ≥ h/(4π), keine scharfen Paare.", wrong: ["Sie legt das Maß fest, in dem die Größe angegeben wird; SI-Einheiten sind bevorzugt.", "Es beschreibt impulsunschärfe, breite in p.", "Es beschreibt ein Ort und Impuls, nicht gleichzeitig scharf."],
+      answer: "Δx·Δp ≥ h/(4π).", wrong: ["Ortsunschärfe.", "Impulsunschärfe.", "nicht nur Technikfehler."],
       explanation: "keine scharfen Paare. Unschärferelation bedeutet: Δx·Δp ≥ h/(4π).",
       wissen: "keine scharfen Paare. Unschärferelation bedeutet: Δx·Δp ≥ h/(4π).",
       flashFront: "Unschärferelation",
@@ -1919,7 +1919,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-heisenberg:p1:f",
       prompt: "Was beschreibt „Δx“?",
-      answer: "Es beschreibt ortsunschärfe, breite der Verteilung.", wrong: ["Es beschreibt Δx klein → Δp groß, schnell zerfließt.", "Es beschreibt nicht nur Technikfehler.", "Es beschreibt ein Ort und Impuls, nicht gleichzeitig scharf."],
+      answer: "Ortsunschärfe.", wrong: ["Impulsunschärfe.", "nicht nur Technikfehler.", "Δx klein → Δp groß."],
       explanation: "Breite der Verteilung. Δx bedeutet: Ortsunschärfe.",
       wissen: "Breite der Verteilung. Δx bedeutet: Ortsunschärfe.",
       flashFront: "Δx",
@@ -1927,7 +1927,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-heisenberg:p2:f",
       prompt: "Woran erkennt man das Δp?",
-      answer: "Es beschreibt impulsunschärfe, breite in p.", wrong: ["Es beschreibt ein Ort und Impuls, nicht gleichzeitig scharf.", "Es beschreibt ortsunschärfe, breite der Verteilung.", "Sie legt das Maß fest, in dem die Größe angegeben wird; SI-Einheiten sind bevorzugt."],
+      answer: "Impulsunschärfe.", wrong: ["nicht nur Technikfehler.", "Δx klein → Δp groß.", "ℏ = h/(2π)."],
       explanation: "Breite in p. Δp bedeutet: Impulsunschärfe.",
       wissen: "Breite in p. Δp bedeutet: Impulsunschärfe.",
       flashFront: "Δp",
@@ -1935,7 +1935,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-heisenberg:p3:f",
       prompt: "Was beschreibt „Messung beeinflusst“?",
-      answer: "Es beschreibt nicht nur Technikfehler.", wrong: ["Es beschreibt ortsunschärfe, breite der Verteilung.", "Es beschreibt impulsunschärfe, breite in p.", "Sie licht stört Elektron, historische Heuristik."],
+      answer: "nicht nur Technikfehler.", wrong: ["Δx klein → Δp groß.", "ℏ = h/(2π).", "Ort und Impuls."],
       explanation: "prinzipiell. Messung beeinflusst bedeutet: nicht nur Technikfehler.",
       wissen: "prinzipiell. Messung beeinflusst bedeutet: nicht nur Technikfehler.",
       flashFront: "Messung beeinflusst",
@@ -1943,7 +1943,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-heisenberg:p4:f",
       prompt: "Was beschreibt „Wellenpaket eng“?",
-      answer: "Es beschreibt Δx klein → Δp groß, schnell zerfließt.", wrong: ["Es beschreibt ein Ort begrenzt, impulsverteilung breit.", "Es beschreibt impulsunschärfe, breite in p.", "Es beschreibt verwandte Unschärfe."],
+      answer: "Δx klein → Δp groß.", wrong: ["ℏ = h/(2π).", "Ort und Impuls.", "verwandte Unschärfe."],
       explanation: "schnell zerfließt. Wellenpaket eng bedeutet: Δx klein → Δp groß.",
       wissen: "schnell zerfließt. Wellenpaket eng bedeutet: Δx klein → Δp groß.",
       flashFront: "Wellenpaket eng",
@@ -1951,7 +1951,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-heisenberg:p5:f",
       prompt: "Wozu dient das h-bar?",
-      answer: "Es beschreibt ℏ = h/(2π), in Formeln.", wrong: ["Es beschreibt ein Ort und Impuls, nicht gleichzeitig scharf.", "Sie beschreibt Δx·Δp ≥ h/(4π), keine scharfen Paare.", "Es beschreibt Δx klein → Δp groß, schnell zerfließt."],
+      answer: "ℏ = h/(2π).", wrong: ["Ort und Impuls.", "verwandte Unschärfe.", "Licht stört Elektron."],
       explanation: "in Formeln. h-bar bedeutet: ℏ = h/(2π).",
       wissen: "in Formeln. h-bar bedeutet: ℏ = h/(2π).",
       flashFront: "h-bar",
@@ -1959,7 +1959,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-heisenberg:p6:f",
       prompt: "Was bewirkt die komplementäre Größen?",
-      answer: "Es beschreibt ein Ort und Impuls, nicht gleichzeitig scharf.", wrong: ["Sie legt das Maß fest, in dem die Größe angegeben wird; SI-Einheiten sind bevorzugt.", "Es beschreibt ℏ = h/(2π), in Formeln.", "Es beschreibt nicht nur Technikfehler."],
+      answer: "Ort und Impuls.", wrong: ["verwandte Unschärfe.", "Licht stört Elektron.", "Ort begrenzt."],
       explanation: "nicht gleichzeitig scharf. komplementäre Größen bedeutet: Ort und Impuls.",
       wissen: "nicht gleichzeitig scharf. komplementäre Größen bedeutet: Ort und Impuls.",
       flashFront: "komplementäre Größen",
@@ -1975,7 +1975,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-heisenberg:p8:f",
       prompt: "Welche Eigenschaft hat die Mikroskop-Gedanke?",
-      answer: "Sie licht stört Elektron, historische Heuristik.", wrong: ["Es beschreibt ein Ort begrenzt, impulsverteilung breit.", "Es beschreibt impulsunschärfe, breite in p.", "Es beschreibt Δx klein → Δp groß, schnell zerfließt."],
+      answer: "Licht stört Elektron.", wrong: ["Ort begrenzt.", "Messgerät ≠ Unschärfe allein.", "Js für h."],
       explanation: "Historische Heuristik. Mikroskop-Gedanke bedeutet: Licht stört Elektron.",
       wissen: "Historische Heuristik. Mikroskop-Gedanke bedeutet: Licht stört Elektron.",
       flashFront: "Mikroskop-Gedanke",
@@ -1983,7 +1983,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-heisenberg:p9:f",
       prompt: "Was beschreibt „Boundzustand“?",
-      answer: "Es beschreibt ein Ort begrenzt, impulsverteilung breit.", wrong: ["Es beschreibt ein Ort und Impuls, nicht gleichzeitig scharf.", "Es beschreibt ℏ = h/(2π), in Formeln.", "Sie licht stört Elektron, historische Heuristik."],
+      answer: "Ort begrenzt.", wrong: ["Messgerät ≠ Unschärfe allein.", "Js für h.", "Linienbreite."],
       explanation: "Impulsverteilung breit. Boundzustand bedeutet: Ort begrenzt.",
       wissen: "Impulsverteilung breit. Boundzustand bedeutet: Ort begrenzt.",
       flashFront: "Boundzustand",
@@ -1991,7 +1991,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-heisenberg:p10:f",
       prompt: "Wozu dient die Abgrenzung Fehler?",
-      answer: "Er messgerät ≠ Unschärfe allein.", wrong: ["Sie legt das Maß fest, in dem die Größe angegeben wird; SI-Einheiten sind bevorzugt.", "Sie beschreibt Δx·Δp ≥ h/(4π), keine scharfen Paare.", "Es beschreibt nicht nur Technikfehler."],
+      answer: "Messgerät ≠ Unschärfe allein.", wrong: ["Js für h.", "Linienbreite.", "Δx·Δp ≥ h/(4π)."],
       explanation: "Quanteneigenschaft. Abgrenzung Fehler bedeutet: Messgerät ≠ Unschärfe allein.",
       wissen: "Quanteneigenschaft. Abgrenzung Fehler bedeutet: Messgerät ≠ Unschärfe allein.",
       flashFront: "Abgrenzung Fehler",
@@ -1999,7 +1999,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-heisenberg:p11:f",
       prompt: "Wozu braucht jede Messgröße eine Einheit?",
-      answer: "Sie legt das Maß fest, in dem die Größe angegeben wird; SI-Einheiten sind bevorzugt.", wrong: ["Es beschreibt Δx klein → Δp groß, schnell zerfließt.", "Sie licht stört Elektron, historische Heuristik.", "Es beschreibt ein Ort begrenzt, impulsverteilung breit."],
+      answer: "Js für h.", wrong: ["Linienbreite.", "Δx·Δp ≥ h/(4π).", "Ortsunschärfe."],
       explanation: "Wirkung. Einheit bedeutet: Js für h.",
       wissen: "Wirkung. Einheit bedeutet: Js für h.",
       flashFront: "Einheit",
@@ -2007,7 +2007,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-heisenberg:p12:f",
       prompt: "Was kennzeichnet „Anwendung Spektrum“?",
-      answer: "Es ist eine Linienbreite durch Kurze Lebensdauer.", wrong: ["Das Anwendung Spektrum ist Δx·Δp ≥ h/(4π).", "Das Anwendung Spektrum ist das Ortsunschärfe.", "Das Anwendung Spektrum ist das Impulsunschärfe."],
+      answer: "Linienbreite.", wrong: ["Δx·Δp ≥ h/(4π).", "Ortsunschärfe.", "Impulsunschärfe."],
       explanation: "kurze Lebensdauer. Anwendung Spektrum bedeutet: Linienbreite.",
       wissen: "kurze Lebensdauer. Anwendung Spektrum bedeutet: Linienbreite.",
       flashFront: "Anwendung Spektrum",
@@ -2036,7 +2036,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-photonengas:p0:f",
       prompt: "Was kennzeichnet „E = h·f“?",
-      answer: "Es ist eine Photonenenergie durch Frequenz Proportional.", wrong: ["Das E = h·f ist das Lichtgeschwindigkeit.", "Das E = h·f ist mit λ verknüpft.", "Es ist höhere Energie als Rot."],
+      answer: "Photonenenergie.", wrong: ["Lichtgeschwindigkeit.", "mit λ verknüpft.", "höhere Energie als Rot."],
       explanation: "Frequenz proportional. E = h·f bedeutet: Photonenenergie.",
       wissen: "Frequenz proportional. E = h·f bedeutet: Photonenenergie.",
       flashFront: "E = h·f",
@@ -2044,7 +2044,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-photonengas:p1:f",
       prompt: "Was bewirkt das c = λ·f?",
-      answer: "Es beschreibt eine Lichtgeschwindigkeit, im Vakuum konstant.", wrong: ["Sie beschreibt eine Wärmestrahlung, quantelung historisch.", "Es beschreibt photodiode/Zählrohr.", "Er beschreibt viele gleiche Photonen."],
+      answer: "Lichtgeschwindigkeit.", wrong: ["mit λ verknüpft.", "höhere Energie als Rot.", "Zahl der Photonen/Zeit."],
       explanation: "im Vakuum konstant. c = λ·f bedeutet: Lichtgeschwindigkeit.",
       wissen: "im Vakuum konstant. c = λ·f bedeutet: Lichtgeschwindigkeit.",
       flashFront: "c = λ·f",
@@ -2052,7 +2052,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-photonengas:p2:f",
       prompt: "Was beschreibt „Spektralfarbe“?",
-      answer: "Sie beschreibt mit λ verknüpft, sichtbarer Bereich.", wrong: ["Sie beschreibt praktisch in Atomphysik, etwa 1 eV = 1 oder 6e-19 J.", "Sie beschreibt eine Wärmestrahlung, quantelung historisch.", "Sie photoeffekt."],
+      answer: "mit λ verknüpft.", wrong: ["höhere Energie als Rot.", "Zahl der Photonen/Zeit.", "Photoeffekt."],
       explanation: "sichtbarer Bereich. Spektralfarbe bedeutet: mit λ verknüpft.",
       wissen: "sichtbarer Bereich. Spektralfarbe bedeutet: mit λ verknüpft.",
       flashFront: "Spektralfarbe",
@@ -2060,7 +2060,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-photonengas:p3:f",
       prompt: "Was beschreibt „UV-Photon“?",
-      answer: "Es beschreibt höhere Energie als Rot, photoeffekt leichter.", wrong: ["Sie beschreibt praktisch in Atomphysik, etwa 1 eV = 1 oder 6e-19 J.", "Sie beschreibt mit λ verknüpft, sichtbarer Bereich.", "Es beschreibt eine Lichtgeschwindigkeit, im Vakuum konstant."],
+      answer: "höhere Energie als Rot.", wrong: ["Zahl der Photonen/Zeit.", "Photoeffekt.", "Wärmestrahlung."],
       explanation: "Photoeffekt leichter. UV-Photon bedeutet: höhere Energie als Rot.",
       wissen: "Photoeffekt leichter. UV-Photon bedeutet: höhere Energie als Rot.",
       flashFront: "UV-Photon",
@@ -2068,7 +2068,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-photonengas:p4:f",
       prompt: "Woran erkennt man die Intensität?",
-      answer: "Sie beschreibt eine Zahl der Photonen/Zeit, nicht Energie pro Photon.", wrong: ["Sie beschreibt eine Photon entsteht, übergang Niveau.", "Sie beschreibt eine Photon verschwindet, energie an Atom.", "Es beschreibt photodiode/Zählrohr."],
+      answer: "Zahl der Photonen/Zeit.", wrong: ["Photoeffekt.", "Wärmestrahlung.", "praktisch in Atomphysik."],
       explanation: "nicht Energie pro Photon. Intensität bedeutet: Zahl der Photonen/Zeit.",
       wissen: "nicht Energie pro Photon. Intensität bedeutet: Zahl der Photonen/Zeit.",
       flashFront: "Intensität",
@@ -2076,7 +2076,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-photonengas:p5:f",
       prompt: "Was beschreibt „Schwellenfrequenz“?",
-      answer: "Sie photoeffekt.", wrong: ["Er beschreibt viele gleiche Photonen.", "Es beschreibt höhere Energie als Rot, photoeffekt leichter.", "Sie beschreibt eine Photon verschwindet, energie an Atom."],
+      answer: "Photoeffekt.", wrong: ["Wärmestrahlung.", "praktisch in Atomphysik.", "Photon verschwindet."],
       explanation: "Materialabhängig. Schwellenfrequenz bedeutet: Photoeffekt.",
       wissen: "Materialabhängig. Schwellenfrequenz bedeutet: Photoeffekt.",
       flashFront: "Schwellenfrequenz",
@@ -2084,7 +2084,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-photonengas:p6:f",
       prompt: "Was beschreibt „Planck-Kurve“?",
-      answer: "Sie beschreibt eine Wärmestrahlung, quantelung historisch.", wrong: ["Es beschreibt eine Lichtgeschwindigkeit, im Vakuum konstant.", "Sie photoeffekt.", "Es beschreibt photodiode/Zählrohr."],
+      answer: "Wärmestrahlung.", wrong: ["praktisch in Atomphysik.", "Photon verschwindet.", "Photon entsteht."],
       explanation: "Quantelung historisch. Planck-Kurve bedeutet: Wärmestrahlung.",
       wissen: "Quantelung historisch. Planck-Kurve bedeutet: Wärmestrahlung.",
       flashFront: "Planck-Kurve",
@@ -2092,7 +2092,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-photonengas:p7:f",
       prompt: "Wozu dient die eV-Einheit?",
-      answer: "Sie beschreibt praktisch in Atomphysik, etwa 1 eV = 1 oder 6e-19 J.", wrong: ["Sie beschreibt eine Zahl der Photonen/Zeit, nicht Energie pro Photon.", "Sie photoeffekt.", "Es beschreibt eine Lichtgeschwindigkeit, im Vakuum konstant."],
+      answer: "praktisch in Atomphysik.", wrong: ["Photon verschwindet.", "Photon entsteht.", "viele gleiche Photonen."],
       explanation: "1 eV = 1,6e-19 J. eV-Einheit bedeutet: praktisch in Atomphysik.",
       wissen: "1 eV = 1,6e-19 J. eV-Einheit bedeutet: praktisch in Atomphysik.",
       flashFront: "eV-Einheit",
@@ -2100,7 +2100,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-photonengas:p8:f",
       prompt: "Welche Eigenschaft hat die Absorption?",
-      answer: "Sie beschreibt eine Photon verschwindet, energie an Atom.", wrong: ["Es beschreibt eine Lichtgeschwindigkeit, im Vakuum konstant.", "Er beschreibt viele gleiche Photonen.", "Es beschreibt höhere Energie als Rot, photoeffekt leichter."],
+      answer: "Photon verschwindet.", wrong: ["Photon entsteht.", "viele gleiche Photonen.", "Photodiode/Zählrohr."],
       explanation: "Energie an Atom. Absorption bedeutet: Photon verschwindet.",
       wissen: "Energie an Atom. Absorption bedeutet: Photon verschwindet.",
       flashFront: "Absorption",
@@ -2108,7 +2108,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-photonengas:p9:f",
       prompt: "Woran erkennt man die Emission?",
-      answer: "Sie beschreibt eine Photon entsteht, übergang Niveau.", wrong: ["Er beschreibt viele gleiche Photonen.", "Es beschreibt eine Lichtgeschwindigkeit, im Vakuum konstant.", "Sie beschreibt praktisch in Atomphysik, etwa 1 eV = 1 oder 6e-19 J."],
+      answer: "Photon entsteht.", wrong: ["viele gleiche Photonen.", "Photodiode/Zählrohr.", "Photonenenergie."],
       explanation: "Übergang Niveau. Emission bedeutet: Photon entsteht.",
       wissen: "Übergang Niveau. Emission bedeutet: Photon entsteht.",
       flashFront: "Emission",
@@ -2116,7 +2116,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-photonengas:p10:f",
       prompt: "Mit welchen Mitteln arbeitet der Laser?",
-      answer: "Er beschreibt viele gleiche Photonen.", wrong: ["Sie beschreibt eine Wärmestrahlung, quantelung historisch.", "Es beschreibt höhere Energie als Rot, photoeffekt leichter.", "Es beschreibt photodiode/Zählrohr."],
+      answer: "viele gleiche Photonen.", wrong: ["Photodiode/Zählrohr.", "Photonenenergie.", "Lichtgeschwindigkeit."],
       explanation: "kohärent. Laser bedeutet: viele gleiche Photonen.",
       wissen: "kohärent. Laser bedeutet: viele gleiche Photonen.",
       flashFront: "Laser",
@@ -2124,7 +2124,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb4-photonengas:p11:f",
       prompt: "Woran erkennt man das Nachweis?",
-      answer: "Es beschreibt photodiode/Zählrohr.", wrong: ["Sie beschreibt mit λ verknüpft, sichtbarer Bereich.", "Sie beschreibt praktisch in Atomphysik, etwa 1 eV = 1 oder 6e-19 J.", "Sie beschreibt eine Zahl der Photonen/Zeit, nicht Energie pro Photon."],
+      answer: "Photodiode/Zählrohr.", wrong: ["Photonenenergie.", "Lichtgeschwindigkeit.", "mit λ verknüpft."],
       explanation: "Energie/Anzahl. Nachweis bedeutet: Photodiode/Zählrohr.",
       wissen: "Energie/Anzahl. Nachweis bedeutet: Photodiode/Zählrohr.",
       flashFront: "Nachweis",
@@ -2153,7 +2153,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-rutherford:p0:f",
       prompt: "Was kennzeichnet „Rutherford-Versuch“?",
-      answer: "Es beschreibt α auf Goldfolie, große Winkel selten.", wrong: ["Das Rutherford-Versuch ist das Impulsübertrag.", "Das Rutherford-Versuch ist positiv konzentriert.", "Sie beschreibt eine Coulomb, bahn Hyperbel klassisch."],
+      answer: "α auf Goldfolie.", wrong: ["Kern + Hülle.", "Impulsübertrag.", "positiv konzentriert."],
       explanation: "große Winkel selten. Rutherford-Versuch bedeutet: α auf Goldfolie.",
       wissen: "große Winkel selten. Rutherford-Versuch bedeutet: α auf Goldfolie.",
       flashFront: "Rutherford-Versuch",
@@ -2161,7 +2161,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-rutherford:p1:f",
       prompt: "Wozu dient das Planetenmodell?",
-      answer: "Es beschreibt ein Kern + Hülle, aus Streuung.", wrong: ["Es beschreibt bei kleinen Abständen.", "Es beschreibt eine Stoßwahrscheinlichkeit.", "Es beschreibt α auf Goldfolie, große Winkel selten."],
+      answer: "Kern + Hülle.", wrong: ["Impulsübertrag.", "positiv konzentriert.", "kein massiver Kern."],
       explanation: "aus Streuung. Planetenmodell bedeutet: Kern + Hülle.",
       wissen: "aus Streuung. Planetenmodell bedeutet: Kern + Hülle.",
       flashFront: "Planetenmodell",
@@ -2169,7 +2169,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-rutherford:p2:f",
       prompt: "Wozu dient der Streuwinkel?",
-      answer: "Es beschreibt ein Impulsübertrag, naher Kernvorbeiflug.", wrong: ["Sie beschreibt eine Coulomb, bahn Hyperbel klassisch.", "Es beschreibt eine Stoßwahrscheinlichkeit.", "Es beschreibt ein Kern + Hülle, aus Streuung."],
+      answer: "Impulsübertrag.", wrong: ["positiv konzentriert.", "kein massiver Kern.", "Stoßwahrscheinlichkeit."],
       explanation: "naher Kernvorbeiflug. Streuwinkel bedeutet: Impulsübertrag.",
       wissen: "naher Kernvorbeiflug. Streuwinkel bedeutet: Impulsübertrag.",
       flashFront: "Streuwinkel",
@@ -2177,7 +2177,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-rutherford:p3:f",
       prompt: "Was beschreibt „Kernladung“?",
-      answer: "Sie beschreibt positiv konzentriert.", wrong: ["Es beschreibt meist eine Streuung.", "Sie beschreibt eine Weg zu Bohr.", "Es beschreibt kein massiver Kern, passt nicht."],
+      answer: "positiv konzentriert.", wrong: ["kein massiver Kern.", "Stoßwahrscheinlichkeit.", "Heliumkern."],
       explanation: "Coulomb-Abstoßung. Kernladung bedeutet: positiv konzentriert.",
       wissen: "Coulomb-Abstoßung. Kernladung bedeutet: positiv konzentriert.",
       flashFront: "Kernladung",
@@ -2193,7 +2193,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-rutherford:p5:f",
       prompt: "Was kennzeichnet „Wirkungsquerschnitt“?",
-      answer: "Es ist eine Stoßwahrscheinlichkeit durch Geometrie.", wrong: ["Das Wirkungsquerschnitt ist das Heliumkern.", "Das Wirkungsquerschnitt ist meist eine Streuung.", "Das Wirkungsquerschnitt ist das Coulomb."],
+      answer: "Stoßwahrscheinlichkeit.", wrong: ["Heliumkern.", "meist eine Streuung.", "Coulomb."],
       explanation: "Geometrie. Wirkungsquerschnitt bedeutet: Stoßwahrscheinlichkeit.",
       wissen: "Geometrie. Wirkungsquerschnitt bedeutet: Stoßwahrscheinlichkeit.",
       flashFront: "Wirkungsquerschnitt",
@@ -2201,7 +2201,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-rutherford:p6:f",
       prompt: "Was beschreibt „α-Teilchen“?",
-      answer: "Es beschreibt ein Heliumkern.", wrong: ["Sie beschreibt positiv konzentriert.", "Es beschreibt α auf Goldfolie, große Winkel selten.", "Es beschreibt ein Impulsübertrag, naher Kernvorbeiflug."],
+      answer: "Heliumkern.", wrong: ["meist eine Streuung.", "Coulomb.", "bei kleinen Abständen."],
       explanation: "Projektile. α-Teilchen bedeutet: Heliumkern.",
       wissen: "Projektile. α-Teilchen bedeutet: Heliumkern.",
       flashFront: "α-Teilchen",
@@ -2209,7 +2209,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-rutherford:p7:f",
       prompt: "Mit welchen Mitteln arbeitet das Folie dünn?",
-      answer: "Es beschreibt meist eine Streuung.", wrong: ["Sie beschreibt eine Weg zu Bohr.", "Es beschreibt eine Stoßwahrscheinlichkeit.", "Es beschreibt bei kleinen Abständen."],
+      answer: "meist eine Streuung.", wrong: ["Coulomb.", "bei kleinen Abständen.", "Hülle voluminös."],
       explanation: "Experimentbedingung. Folie dünn bedeutet: meist eine Streuung.",
       wissen: "Experimentbedingung. Folie dünn bedeutet: meist eine Streuung.",
       flashFront: "Folie dünn",
@@ -2217,7 +2217,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-rutherford:p8:f",
       prompt: "Wozu dient die 1 oder r-Potenzial?",
-      answer: "Sie beschreibt eine Coulomb, bahn Hyperbel klassisch.", wrong: ["Es beschreibt meist eine Streuung.", "Sie beschreibt positiv konzentriert.", "Es beschreibt eine Stoßwahrscheinlichkeit."],
+      answer: "Coulomb.", wrong: ["bei kleinen Abständen.", "Hülle voluminös.", "Weg zu Bohr."],
       explanation: "Bahn Hyperbel klassisch. 1/r-Potenzial bedeutet: Coulomb.",
       wissen: "Bahn Hyperbel klassisch. 1/r-Potenzial bedeutet: Coulomb.",
       flashFront: "1/r-Potenzial",
@@ -2225,7 +2225,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-rutherford:p9:f",
       prompt: "Wozu dient die Grenze klassisch?",
-      answer: "Es beschreibt bei kleinen Abständen.", wrong: ["Sie beschreibt eine Coulomb, bahn Hyperbel klassisch.", "Sie beschreibt positiv konzentriert.", "Es beschreibt eine Stoßwahrscheinlichkeit."],
+      answer: "bei kleinen Abständen.", wrong: ["Hülle voluminös.", "Weg zu Bohr.", "α auf Goldfolie."],
       explanation: "Quantenkorrektur. Grenze klassisch bedeutet: bei kleinen Abständen.",
       wissen: "Quantenkorrektur. Grenze klassisch bedeutet: bei kleinen Abständen.",
       flashFront: "Grenze klassisch",
@@ -2233,7 +2233,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-rutherford:p10:f",
       prompt: "Was beschreibt „Schluss: leerer Atomraum“?",
-      answer: "Es beschreibt hülle voluminös, kern winzig.", wrong: ["Es beschreibt ein Kern + Hülle, aus Streuung.", "Es beschreibt bei kleinen Abständen.", "Es beschreibt kein massiver Kern, passt nicht."],
+      answer: "Hülle voluminös.", wrong: ["Weg zu Bohr.", "α auf Goldfolie.", "Kern + Hülle."],
       explanation: "Kern winzig. Schluss: leerer Atomraum bedeutet: Hülle voluminös.",
       wissen: "Kern winzig. Schluss: leerer Atomraum bedeutet: Hülle voluminös.",
       flashFront: "Schluss: leerer Atomraum",
@@ -2241,7 +2241,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-rutherford:p11:f",
       prompt: "Woran erkennt man die Historie?",
-      answer: "Sie beschreibt eine Weg zu Bohr.", wrong: ["Es beschreibt ein Kern + Hülle, aus Streuung.", "Es beschreibt ein Impulsübertrag, naher Kernvorbeiflug.", "Es beschreibt ein Heliumkern."],
+      answer: "Weg zu Bohr.", wrong: ["α auf Goldfolie.", "Kern + Hülle.", "Impulsübertrag."],
       explanation: "Stufenmodell. Historie bedeutet: Weg zu Bohr.",
       wissen: "Stufenmodell. Historie bedeutet: Weg zu Bohr.",
       flashFront: "Historie",
@@ -2270,7 +2270,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-franck-hertz:p0:f",
       prompt: "Mit welchen Mitteln arbeitet das Franck-Hertz?",
-      answer: "Es elektronen stoßen in Gas, energiequanten sichtbar.", wrong: ["Es niveaudifferenzen.", "Sie beschreibt nicht kontinuierlich.", "Es beschreibt bei Rückkehr ins Grundniveau."],
+      answer: "Elektronen stoßen in Gas.", wrong: ["diskrete Stufen.", "bei Vielfachen der Stufe.", "Energie geht an Atom."],
       explanation: "Energiequanten sichtbar. Franck-Hertz bedeutet: Elektronen stoßen in Gas.",
       wissen: "Energiequanten sichtbar. Franck-Hertz bedeutet: Elektronen stoßen in Gas.",
       flashFront: "Franck-Hertz",
@@ -2286,7 +2286,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-franck-hertz:p2:f",
       prompt: "Was kennzeichnet „Strom-Minima“?",
-      answer: "Es ist bei Vielfachen der Stufe durch kennlinie.", wrong: ["Energie geht an Atom.", "Das Strom-Minima ist unter Schwelle.", "Es ist bei Rückkehr ins Grundniveau."],
+      answer: "bei Vielfachen der Stufe.", wrong: ["Energie geht an Atom.", "unter Schwelle.", "bei Rückkehr ins Grundniveau."],
       explanation: "Kennlinie. Strom-Minima bedeutet: bei Vielfachen der Stufe.",
       wissen: "Kennlinie. Strom-Minima bedeutet: bei Vielfachen der Stufe.",
       flashFront: "Strom-Minima",
@@ -2294,7 +2294,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-franck-hertz:p3:f",
       prompt: "Welche Eigenschaft hat der inelastischer Stoß?",
-      answer: "Energie geht an Atom, elektron verliert E.", wrong: ["Es niveaudifferenzen.", "Es elektronen stoßen in Gas, energiequanten sichtbar.", "Sie steuert Elektronenenergie."],
+      answer: "Energie geht an Atom.", wrong: ["unter Schwelle.", "bei Rückkehr ins Grundniveau.", "steuert Elektronenenergie."],
       explanation: "Elektron verliert E. inelastischer Stoß bedeutet: Energie geht an Atom.",
       wissen: "Elektron verliert E. inelastischer Stoß bedeutet: Energie geht an Atom.",
       flashFront: "inelastischer Stoß",
@@ -2302,7 +2302,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-franck-hertz:p4:f",
       prompt: "Wozu dient der elastischer Stoß?",
-      answer: "Es beschreibt unter Schwelle, wenig Energieverlust.", wrong: ["Sie beschreibt nicht kontinuierlich.", "Es niveaudifferenzen.", "Sie beschreibt diskrete Stufen, atom nimmt nur bestimmte Beträge."],
+      answer: "unter Schwelle.", wrong: ["bei Rückkehr ins Grundniveau.", "steuert Elektronenenergie.", "typische Füllung."],
       explanation: "wenig Energieverlust. elastischer Stoß bedeutet: unter Schwelle.",
       wissen: "wenig Energieverlust. elastischer Stoß bedeutet: unter Schwelle.",
       flashFront: "elastischer Stoß",
@@ -2310,7 +2310,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-franck-hertz:p5:f",
       prompt: "Welche Eigenschaft hat der Leuchten?",
-      answer: "Es beschreibt bei Rückkehr ins Grundniveau.", wrong: ["Energie geht an Atom, elektron verliert E.", "Sie beschreibt nicht kontinuierlich.", "Sie ist die Abweichung vom wahren Wert, zufällig oder systematisch."],
+      answer: "bei Rückkehr ins Grundniveau.", wrong: ["steuert Elektronenenergie.", "typische Füllung.", "nicht kontinuierlich."],
       explanation: "Photonen. Leuchten bedeutet: bei Rückkehr ins Grundniveau.",
       wissen: "Photonen. Leuchten bedeutet: bei Rückkehr ins Grundniveau.",
       flashFront: "Leuchten",
@@ -2326,7 +2326,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-franck-hertz:p7:f",
       prompt: "Welche Eigenschaft hat der Quecksilber oder Neon?",
-      answer: "Sie beschreibt typische Füllung, bekannte Stufen.", wrong: ["Es elektronen stoßen in Gas, energiequanten sichtbar.", "Sie beschreibt diskrete Stufen, atom nimmt nur bestimmte Beträge.", "Es beschreibt unter Schwelle, wenig Energieverlust."],
+      answer: "typische Füllung.", wrong: ["nicht kontinuierlich.", "≈ Anregungsspannung.", "Niveaudifferenzen."],
       explanation: "bekannte Stufen. Quecksilber/Neon bedeutet: typische Füllung.",
       wissen: "bekannte Stufen. Quecksilber/Neon bedeutet: typische Füllung.",
       flashFront: "Quecksilber/Neon",
@@ -2334,7 +2334,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-franck-hertz:p8:f",
       prompt: "Wozu dient die Nachweis Quantelung?",
-      answer: "Sie beschreibt nicht kontinuierlich.", wrong: ["Energie geht an Atom, elektron verliert E.", "Es beschreibt bei Rückkehr ins Grundniveau.", "Es beschreibt ≈ Anregungsspannung, aus Diagramm."],
+      answer: "nicht kontinuierlich.", wrong: ["≈ Anregungsspannung.", "Niveaudifferenzen.", "beeinflusst Kennlinie."],
       explanation: "Atomniveaus. Nachweis Quantelung bedeutet: nicht kontinuierlich.",
       wissen: "Atomniveaus. Nachweis Quantelung bedeutet: nicht kontinuierlich.",
       flashFront: "Nachweis Quantelung",
@@ -2342,7 +2342,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-franck-hertz:p9:f",
       prompt: "Woran erkennt man das Abstand der Minima?",
-      answer: "Es beschreibt ≈ Anregungsspannung, aus Diagramm.", wrong: ["Es beschreibt unter Schwelle, wenig Energieverlust.", "Es beschreibt bei Vielfachen der Stufe.", "Es beschreibt bei Rückkehr ins Grundniveau."],
+      answer: "≈ Anregungsspannung.", wrong: ["Niveaudifferenzen.", "beeinflusst Kennlinie.", "Elektronen stoßen in Gas."],
       explanation: "aus Diagramm. Abstand der Minima bedeutet: ≈ Anregungsspannung.",
       wissen: "aus Diagramm. Abstand der Minima bedeutet: ≈ Anregungsspannung.",
       flashFront: "Abstand der Minima",
@@ -2358,7 +2358,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-franck-hertz:p11:f",
       prompt: "Mit welchen Mitteln arbeitet der Fehler Raumladung?",
-      answer: "Sie ist die Abweichung vom wahren Wert, zufällig oder systematisch.", wrong: ["Es niveaudifferenzen.", "Sie beschreibt typische Füllung, bekannte Stufen.", "Sie beschreibt nicht kontinuierlich."],
+      answer: "beeinflusst Kennlinie.", wrong: ["Elektronen stoßen in Gas.", "diskrete Stufen.", "bei Vielfachen der Stufe."],
       explanation: "Diskussion. Fehler Raumladung bedeutet: beeinflusst Kennlinie.",
       wissen: "Diskussion. Fehler Raumladung bedeutet: beeinflusst Kennlinie.",
       flashFront: "Fehler Raumladung",
@@ -2387,7 +2387,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-linienspektrum:p0:f",
       prompt: "Was beschreibt „Linienspektrum“?",
-      answer: "Es beschreibt diskrete Wellenlängen.", wrong: ["Sie beschreibt helle Linie, rückkehr unter Photon.", "Es beschreibt ein Prisma/Gitter.", "Es beschreibt niedrigstes Niveau."],
+      answer: "diskrete Wellenlängen.", wrong: ["Energieniveaus zeichnen.", "dunkle Linie.", "helle Linie."],
       explanation: "Atome/Gase. Linienspektrum bedeutet: diskrete Wellenlängen.",
       wissen: "Atome/Gase. Linienspektrum bedeutet: diskrete Wellenlängen.",
       flashFront: "Linienspektrum",
@@ -2395,7 +2395,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-linienspektrum:p1:f",
       prompt: "Was kennzeichnet „Termschema“?",
-      answer: "Es beschreibt ein Energieniveaus zeichnen, pfeile = Übergänge.", wrong: ["Das Termschema ist dunkle Linie.", "Das Termschema ist helle Linie.", "Das Termschema ist sichtbares Wasserstoff."],
+      answer: "Energieniveaus zeichnen.", wrong: ["dunkle Linie.", "helle Linie.", "sichtbares Wasserstoff."],
       explanation: "Pfeile = Übergänge. Termschema bedeutet: Energieniveaus zeichnen.",
       wissen: "Pfeile = Übergänge. Termschema bedeutet: Energieniveaus zeichnen.",
       flashFront: "Termschema",
@@ -2403,7 +2403,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-linienspektrum:p2:f",
       prompt: "Welche Eigenschaft hat die Absorptionslinie?",
-      answer: "Sie beschreibt dunkle Linie, anregung durch Licht.", wrong: ["Es beschreibt erlaubte Übergänge, nicht alles möglich.", "Es beschreibt diskrete Wellenlängen.", "Sie beschreibt helle Linie, rückkehr unter Photon."],
+      answer: "dunkle Linie.", wrong: ["helle Linie.", "sichtbares Wasserstoff.", "Wellenzahlen."],
       explanation: "Anregung durch Licht. Absorptionslinie bedeutet: dunkle Linie.",
       wissen: "Anregung durch Licht. Absorptionslinie bedeutet: dunkle Linie.",
       flashFront: "Absorptionslinie",
@@ -2411,7 +2411,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-linienspektrum:p3:f",
       prompt: "Woran erkennt man die Emissionslinie?",
-      answer: "Sie beschreibt helle Linie, rückkehr unter Photon.", wrong: ["Es beschreibt ein Prisma/Gitter.", "Es beschreibt erlaubte Übergänge, nicht alles möglich.", "Sie beschreibt sichtbares Wasserstoff."],
+      answer: "helle Linie.", wrong: ["sichtbares Wasserstoff.", "Wellenzahlen.", "erlaubte Übergänge."],
       explanation: "Rückkehr unter Photon. Emissionslinie bedeutet: helle Linie.",
       wissen: "Rückkehr unter Photon. Emissionslinie bedeutet: helle Linie.",
       flashFront: "Emissionslinie",
@@ -2435,7 +2435,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-linienspektrum:p6:f",
       prompt: "Was beschreibt „Auswahlregeln“?",
-      answer: "Es beschreibt erlaubte Übergänge, nicht alles möglich.", wrong: ["Es beschreibt ein Prisma/Gitter.", "Es beschreibt niedrigstes Niveau.", "Sie beschreibt helle Linie, rückkehr unter Photon."],
+      answer: "erlaubte Übergänge.", wrong: ["niedrigstes Niveau.", "höhere Energie.", "Prisma/Gitter."],
       explanation: "nicht alles möglich. Auswahlregeln bedeutet: erlaubte Übergänge.",
       wissen: "nicht alles möglich. Auswahlregeln bedeutet: erlaubte Übergänge.",
       flashFront: "Auswahlregeln",
@@ -2443,7 +2443,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-linienspektrum:p7:f",
       prompt: "Was kennzeichnet „Grundzustand“?",
-      answer: "Es ist niedrigstes Niveau durch stabil.", wrong: ["Das Grundzustand ist höhere Energie.", "Das Grundzustand ist das Prisma/Gitter.", "Es ist eine Linien = Elemente."],
+      answer: "niedrigstes Niveau.", wrong: ["höhere Energie.", "Prisma/Gitter.", "Linien = Elemente."],
       explanation: "stabil. Grundzustand bedeutet: niedrigstes Niveau.",
       wissen: "stabil. Grundzustand bedeutet: niedrigstes Niveau.",
       flashFront: "Grundzustand",
@@ -2451,7 +2451,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-linienspektrum:p8:f",
       prompt: "Was bewirkt der angeregter Zustand?",
-      answer: "Es beschreibt höhere Energie, begrenzt lebensdauer.", wrong: ["Sie beschreibt helle Linie, rückkehr unter Photon.", "Es beschreibt ein Prisma/Gitter.", "Es wellenzahlen."],
+      answer: "höhere Energie.", wrong: ["Prisma/Gitter.", "Linien = Elemente.", "Festkörper oft breit."],
       explanation: "begrenzt lebensdauer. angeregter Zustand bedeutet: höhere Energie.",
       wissen: "begrenzt lebensdauer. angeregter Zustand bedeutet: höhere Energie.",
       flashFront: "angeregter Zustand",
@@ -2459,7 +2459,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-linienspektrum:p9:f",
       prompt: "Was kennzeichnet „Spektralapparat“?",
-      answer: "Es ist ein Prisma/Gitter durch Zerlegung.", wrong: ["Es ist eine Linien = Elemente.", "Es ist eine Festkörper Oft Breit.", "Das Spektralapparat ist diskrete Wellenlängen."],
+      answer: "Prisma/Gitter.", wrong: ["Linien = Elemente.", "Festkörper oft breit.", "diskrete Wellenlängen."],
       explanation: "Zerlegung. Spektralapparat bedeutet: Prisma/Gitter.",
       wissen: "Zerlegung. Spektralapparat bedeutet: Prisma/Gitter.",
       flashFront: "Spektralapparat",
@@ -2467,7 +2467,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-linienspektrum:p10:f",
       prompt: "Mit welchen Mitteln arbeitet die chemische Analyse?",
-      answer: "Sie linien = Elemente.", wrong: ["Es beschreibt diskrete Wellenlängen.", "Es beschreibt erlaubte Übergänge, nicht alles möglich.", "Sie beschreibt dunkle Linie, anregung durch Licht."],
+      answer: "Linien = Elemente.", wrong: ["Festkörper oft breit.", "diskrete Wellenlängen.", "Energieniveaus zeichnen."],
       explanation: "Astronomie. chemische Analyse bedeutet: Linien = Elemente.",
       wissen: "Astronomie. chemische Analyse bedeutet: Linien = Elemente.",
       flashFront: "chemische Analyse",
@@ -2475,7 +2475,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb5-linienspektrum:p11:f",
       prompt: "Was beschreibt „Kontinuum vs. Linien“?",
-      answer: "Es beschreibt festkörper oft breit, gase scharf.", wrong: ["Sie linien = Elemente.", "Es beschreibt erlaubte Übergänge, nicht alles möglich.", "Sie beschreibt sichtbares Wasserstoff."],
+      answer: "Festkörper oft breit.", wrong: ["diskrete Wellenlängen.", "Energieniveaus zeichnen.", "dunkle Linie."],
       explanation: "Gase scharf. Kontinuum vs. Linien bedeutet: Festkörper oft breit.",
       wissen: "Gase scharf. Kontinuum vs. Linien bedeutet: Festkörper oft breit.",
       flashFront: "Kontinuum vs. Linien",
@@ -2504,7 +2504,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb6-aktivitaet:p0:f",
       prompt: "Mit welchen Mitteln arbeitet die Aktivität A?",
-      answer: "Es beschreibt zerfälle pro Zeit.", wrong: ["Er beschreibt zerfallsreihe.", "Er beschreibt ein Einzelkern zufällig, große N glatt.", "Sie beschreibt biologische Wirkung extra, nicht verwechseln."],
+      answer: "Zerfälle pro Zeit.", wrong: ["Wahrscheinlichkeit/Zeit.", "N → N/2.", "Zerfallsgesetz."],
       explanation: "A = λ·N. Aktivität A bedeutet: Zerfälle pro Zeit.",
       wissen: "A = λ·N. Aktivität A bedeutet: Zerfälle pro Zeit.",
       flashFront: "Aktivität A",
@@ -2512,7 +2512,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb6-aktivitaet:p1:f",
       prompt: "Was kennzeichnet „Zerfallskonstante λ“?",
-      answer: "Es ist eine Wahrscheinlichkeit/Zeit durch Größer → Schneller.", wrong: ["Es ist eine N → N/2.", "Das Zerfallskonstante λ ist das Zerfallsgesetz.", "Das Zerfallskonstante λ ist 1 Zerfall/s."],
+      answer: "Wahrscheinlichkeit/Zeit.", wrong: ["N → N/2.", "Zerfallsgesetz.", "1 Zerfall/s."],
       explanation: "größer → schneller. Zerfallskonstante λ bedeutet: Wahrscheinlichkeit/Zeit.",
       wissen: "größer → schneller. Zerfallskonstante λ bedeutet: Wahrscheinlichkeit/Zeit.",
       flashFront: "Zerfallskonstante λ",
@@ -2520,7 +2520,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb6-aktivitaet:p2:f",
       prompt: "Woran erkennt man das Halbwertszeit T½?",
-      answer: "Es beschreibt N → N/2, t½ = ln2/λ.", wrong: ["Es beschreibt zerfälle pro Zeit.", "Es beschreibt ein Zerfallsgesetz.", "Es beschreibt 1 Zerfall/s."],
+      answer: "N → N/2.", wrong: ["Zerfallsgesetz.", "1 Zerfall/s.", "Einzelkern zufällig."],
       explanation: "T½ = ln2/λ. Halbwertszeit T½ bedeutet: N → N/2.",
       wissen: "T½ = ln2/λ. Halbwertszeit T½ bedeutet: N → N/2.",
       flashFront: "Halbwertszeit T½",
@@ -2528,7 +2528,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb6-aktivitaet:p3:f",
       prompt: "Mit welchen Mitteln arbeitet das N(t) = N0 e^?",
-      answer: "Es beschreibt ein Zerfallsgesetz.", wrong: ["Es beschreibt N → N/2, t½ = ln2/λ.", "Er beschreibt ein Einzelkern zufällig, große N glatt.", "Es beschreibt zerfälle pro Zeit."],
+      answer: "Zerfallsgesetz.", wrong: ["1 Zerfall/s.", "Einzelkern zufällig.", "Impulse zählen."],
       explanation: "exponentiell. N(t) = N0 e^(−λt) bedeutet: Zerfallsgesetz.",
       wissen: "exponentiell. N(t) = N0 e^(−λt) bedeutet: Zerfallsgesetz.",
       flashFront: "N(t) = N0 e^(−λt)",
@@ -2536,7 +2536,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb6-aktivitaet:p4:f",
       prompt: "Was bewirkt der Becquerel Bq?",
-      answer: "Es beschreibt 1 Zerfall/s.", wrong: ["Es beschreibt N → N/2, t½ = ln2/λ.", "Sie beschreibt bekannte T½, radiokarbon u.", "Er beschreibt ein Einzelkern zufällig, große N glatt."],
+      answer: "1 Zerfall/s.", wrong: ["Einzelkern zufällig.", "Impulse zählen.", "Zerfallsreihe."],
       explanation: "SI-Aktivität. Becquerel Bq bedeutet: 1 Zerfall/s.",
       wissen: "SI-Aktivität. Becquerel Bq bedeutet: 1 Zerfall/s.",
       flashFront: "Becquerel Bq",
@@ -2544,7 +2544,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb6-aktivitaet:p5:f",
       prompt: "Woran erkennt man den statistischer Charakter?",
-      answer: "Er beschreibt ein Einzelkern zufällig, große N glatt.", wrong: ["Sie beschreibt je nach Strahlungsart, alpha leicht stoppbar.", "Es beschreibt N → N/2, t½ = ln2/λ.", "Es stellt den Zusammenhang als s-t- oder v-t-Graph dar, λ aus Steigung."],
+      answer: "Einzelkern zufällig.", wrong: ["Impulse zählen.", "Zerfallsreihe.", "bekannte T½."],
       explanation: "große N glatt. statistischer Charakter bedeutet: Einzelkern zufällig.",
       wissen: "große N glatt. statistischer Charakter bedeutet: Einzelkern zufällig.",
       flashFront: "statistischer Charakter",
@@ -2552,7 +2552,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb6-aktivitaet:p6:f",
       prompt: "Welche Eigenschaft hat die Messung Zählrohr?",
-      answer: "Es beschreibt impulse zählen, rate ≈ A.", wrong: ["Es beschreibt ein Zerfallsgesetz.", "Es beschreibt N → N/2, t½ = ln2/λ.", "Es beschreibt zerfälle pro Zeit."],
+      answer: "Impulse zählen.", wrong: ["Zerfallsreihe.", "bekannte T½.", "je nach Strahlungsart."],
       explanation: "Rate ≈ A. Messung Zählrohr bedeutet: Impulse zählen.",
       wissen: "Rate ≈ A. Messung Zählrohr bedeutet: Impulse zählen.",
       flashFront: "Messung Zählrohr",
@@ -2568,7 +2568,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb6-aktivitaet:p8:f",
       prompt: "Wozu dient die Alterbestimmung?",
-      answer: "Sie beschreibt bekannte T½, radiokarbon u.", wrong: ["Sie beschreibt je nach Strahlungsart, alpha leicht stoppbar.", "Es beschreibt zerfälle pro Zeit.", "Es beschreibt impulse zählen, rate ≈ A."],
+      answer: "bekannte T½.", wrong: ["je nach Strahlungsart.", "biologische Wirkung extra.", "Gerade gegen t."],
       explanation: "Radiokarbon u. a. Alterbestimmung bedeutet: bekannte T½.",
       wissen: "Radiokarbon u. a. Alterbestimmung bedeutet: bekannte T½.",
       flashFront: "Alterbestimmung",
@@ -2576,7 +2576,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb6-aktivitaet:p9:f",
       prompt: "Wozu dient die Abschirmung?",
-      answer: "Sie beschreibt je nach Strahlungsart, alpha leicht stoppbar.", wrong: ["Er beschreibt zerfallsreihe.", "Es beschreibt zerfälle pro Zeit.", "Er beschreibt ein Einzelkern zufällig, große N glatt."],
+      answer: "je nach Strahlungsart.", wrong: ["biologische Wirkung extra.", "Gerade gegen t.", "Zerfälle pro Zeit."],
       explanation: "Alpha leicht stoppbar. Abschirmung bedeutet: je nach Strahlungsart.",
       wissen: "Alpha leicht stoppbar. Abschirmung bedeutet: je nach Strahlungsart.",
       flashFront: "Abschirmung",
@@ -2584,7 +2584,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb6-aktivitaet:p10:f",
       prompt: "Mit welchen Mitteln arbeitet die Dosis ≠ Aktivität?",
-      answer: "Sie beschreibt biologische Wirkung extra, nicht verwechseln.", wrong: ["Er beschreibt ein Einzelkern zufällig, große N glatt.", "Es beschreibt N → N/2, t½ = ln2/λ.", "Er beschreibt zerfallsreihe."],
+      answer: "biologische Wirkung extra.", wrong: ["Gerade gegen t.", "Zerfälle pro Zeit.", "Wahrscheinlichkeit/Zeit."],
       explanation: "nicht verwechseln. Dosis ≠ Aktivität bedeutet: biologische Wirkung extra.",
       wissen: "nicht verwechseln. Dosis ≠ Aktivität bedeutet: biologische Wirkung extra.",
       flashFront: "Dosis ≠ Aktivität",
@@ -2592,7 +2592,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb6-aktivitaet:p11:f",
       prompt: "Mit welchen Mitteln arbeitet das Diagramm ln N?",
-      answer: "Es stellt den Zusammenhang als s-t- oder v-t-Graph dar, λ aus Steigung.", wrong: ["Es beschreibt 1 Zerfall/s.", "Es beschreibt ein Zerfallsgesetz.", "Es beschreibt N → N/2, t½ = ln2/λ."],
+      answer: "Gerade gegen t.", wrong: ["Zerfälle pro Zeit.", "Wahrscheinlichkeit/Zeit.", "N → N/2."],
       explanation: "λ aus Steigung. Diagramm ln N bedeutet: Gerade gegen t.",
       wissen: "λ aus Steigung. Diagramm ln N bedeutet: Gerade gegen t.",
       flashFront: "Diagramm ln N",
@@ -2621,7 +2621,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb7-wirkungsgrad:p0:f",
       prompt: "Was kennzeichnet „Wirkungsgrad η“?",
-      answer: "Es ist eine Nutzen/Aufwand durch η = W/Q_zu.", wrong: ["Das Wirkungsgrad η ist 1 − T_k/T_w.", "Das Wirkungsgrad η ist absolut.", "Das Wirkungsgrad η ist kein η=100% Wärmekraft."],
+      answer: "Nutzen/Aufwand.", wrong: ["1 − T_k/T_w.", "absolut.", "kein η=100% Wärmekraft."],
       explanation: "η = W/Q_zu. Wirkungsgrad η bedeutet: Nutzen/Aufwand.",
       wissen: "η = W/Q_zu. Wirkungsgrad η bedeutet: Nutzen/Aufwand.",
       flashFront: "Wirkungsgrad η",
@@ -2629,7 +2629,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb7-wirkungsgrad:p1:f",
       prompt: "Mit welchen Mitteln arbeitet das Carnot-Wirkungsgrad?",
-      answer: "Es beschreibt 1 − T_k/T_w, obere Grenze ideal.", wrong: ["Sie beschreibt eine Reibung, Leck, η < Carnot.", "Es beschreibt ein Wärmezufuhr heiß, von Hot reservoir.", "Es beschreibt absolut, nicht °C einsetzen."],
+      answer: "1 − T_k/T_w.", wrong: ["absolut.", "kein η=100% Wärmekraft.", "Wärmezufuhr heiß."],
       explanation: "obere Grenze ideal. Carnot-Wirkungsgrad bedeutet: 1 − T_k/T_w.",
       wissen: "obere Grenze ideal. Carnot-Wirkungsgrad bedeutet: 1 − T_k/T_w.",
       flashFront: "Carnot-Wirkungsgrad",
@@ -2637,7 +2637,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb7-wirkungsgrad:p2:f",
       prompt: "Mit welchen Mitteln arbeitet der Temperaturen in K?",
-      answer: "Es beschreibt absolut, nicht °C einsetzen.", wrong: ["Es beschreibt ein Wärmezufuhr heiß, von Hot reservoir.", "Es beschreibt ein Abfall kalt, an Umgebung.", "Sie beschreibt η anders definiert, cOP statt η."],
+      answer: "absolut.", wrong: ["kein η=100% Wärmekraft.", "Wärmezufuhr heiß.", "Abfall kalt."],
       explanation: "nicht °C einsetzen. Temperaturen in K bedeutet: absolut.",
       wissen: "nicht °C einsetzen. Temperaturen in K bedeutet: absolut.",
       flashFront: "Temperaturen in K",
@@ -2645,7 +2645,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb7-wirkungsgrad:p3:f",
       prompt: "Woran erkennt man das 2. Hauptsatz?",
-      answer: "Es beschreibt kein η=100% Wärmekraft, abwärme nötig.", wrong: ["Es beschreibt zurück zum Startzustand, maschine periodisch.", "Sie beschreibt 1. Hauptsatz, w = Q_zu − Q_ab.", "Sie beschreibt maß für Zerstreuung, nimmt zu isoliert."],
+      answer: "kein η=100% Wärmekraft.", wrong: ["Wärmezufuhr heiß.", "Abfall kalt.", "zurück zum Startzustand."],
       explanation: "Abwärme nötig. 2. Hauptsatz bedeutet: kein η=100% Wärmekraft.",
       wissen: "Abwärme nötig. 2. Hauptsatz bedeutet: kein η=100% Wärmekraft.",
       flashFront: "2. Hauptsatz",
@@ -2653,7 +2653,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb7-wirkungsgrad:p4:f",
       prompt: "Wozu dient das Q_zu?",
-      answer: "Es beschreibt ein Wärmezufuhr heiß, von Hot reservoir.", wrong: ["Sie beschreibt maß für Zerstreuung, nimmt zu isoliert.", "Es beschreibt zurück zum Startzustand, maschine periodisch.", "Sie beschreibt eine Reibung, Leck, η < Carnot."],
+      answer: "Wärmezufuhr heiß.", wrong: ["Abfall kalt.", "zurück zum Startzustand.", "maß für Zerstreuung."],
       explanation: "von Hot reservoir. Q_zu bedeutet: Wärmezufuhr heiß.",
       wissen: "von Hot reservoir. Q_zu bedeutet: Wärmezufuhr heiß.",
       flashFront: "Q_zu",
@@ -2661,7 +2661,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb7-wirkungsgrad:p5:f",
       prompt: "Wozu dient das Q_ab?",
-      answer: "Es beschreibt ein Abfall kalt, an Umgebung.", wrong: ["Sie beschreibt 1. Hauptsatz, w = Q_zu − Q_ab.", "Sie beschreibt maß für Zerstreuung, nimmt zu isoliert.", "Es beschreibt absolut, nicht °C einsetzen."],
+      answer: "Abfall kalt.", wrong: ["zurück zum Startzustand.", "maß für Zerstreuung.", "Reibung, Leck."],
       explanation: "an Umgebung. Q_ab bedeutet: Abfall kalt.",
       wissen: "an Umgebung. Q_ab bedeutet: Abfall kalt.",
       flashFront: "Q_ab",
@@ -2669,7 +2669,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb7-wirkungsgrad:p6:f",
       prompt: "Mit welchen Mitteln arbeitet das Kreisprozess?",
-      answer: "Es beschreibt zurück zum Startzustand, maschine periodisch.", wrong: ["Es beschreibt absolut, nicht °C einsetzen.", "Es beschreibt 1 − T_k/T_w, obere Grenze ideal.", "Sie beschreibt eine Reibung, Leck, η < Carnot."],
+      answer: "zurück zum Startzustand.", wrong: ["maß für Zerstreuung.", "Reibung, Leck.", "Dampfkreislauf."],
       explanation: "Maschine periodisch. Kreisprozess bedeutet: zurück zum Startzustand.",
       wissen: "Maschine periodisch. Kreisprozess bedeutet: zurück zum Startzustand.",
       flashFront: "Kreisprozess",
@@ -2677,7 +2677,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb7-wirkungsgrad:p7:f",
       prompt: "Was bewirkt die Entropie?",
-      answer: "Sie beschreibt maß für Zerstreuung, nimmt zu isoliert.", wrong: ["Es beschreibt absolut, nicht °C einsetzen.", "Es beschreibt ein Abfall kalt, an Umgebung.", "Es beschreibt ein Wärmezufuhr heiß, von Hot reservoir."],
+      answer: "maß für Zerstreuung.", wrong: ["Reibung, Leck.", "Dampfkreislauf.", "η anders definiert."],
       explanation: "nimmt zu isoliert. Entropie bedeutet: maß für Zerstreuung.",
       wissen: "nimmt zu isoliert. Entropie bedeutet: maß für Zerstreuung.",
       flashFront: "Entropie",
@@ -2685,7 +2685,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb7-wirkungsgrad:p8:f",
       prompt: "Was bewirkt die reale Verluste?",
-      answer: "Sie beschreibt eine Reibung, Leck, η < Carnot.", wrong: ["Es beschreibt zurück zum Startzustand, maschine periodisch.", "Es beschreibt absolut, nicht °C einsetzen.", "Es beschreibt ein Abfall kalt, an Umgebung."],
+      answer: "Reibung, Leck.", wrong: ["Dampfkreislauf.", "η anders definiert.", "1. Hauptsatz."],
       explanation: "η < Carnot. reale Verluste bedeutet: Reibung, Leck.",
       wissen: "η < Carnot. reale Verluste bedeutet: Reibung, Leck.",
       flashFront: "reale Verluste",
@@ -2693,7 +2693,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb7-wirkungsgrad:p9:f",
       prompt: "Wozu dient ein Kraftwerk?",
-      answer: "Es erzeugt elektrische Energie aus verschiedenen Primärquellen.", wrong: ["Es beschreibt 1 − T_k/T_w, obere Grenze ideal.", "Es beschreibt kein η=100% Wärmekraft, abwärme nötig.", "Es beschreibt ein Abfall kalt, an Umgebung."],
+      answer: "Dampfkreislauf.", wrong: ["η anders definiert.", "1. Hauptsatz.", "Nutzen/Aufwand."],
       explanation: "Anschauung. Kraftwerk bedeutet: Dampfkreislauf.",
       wissen: "Anschauung. Kraftwerk bedeutet: Dampfkreislauf.",
       flashFront: "Kraftwerk",
@@ -2709,7 +2709,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     {
       concept: "ph:osdens:ph-j12lk-lb7-wirkungsgrad:p11:f",
       prompt: "Was bewirkt die Energieerhaltung?",
-      answer: "Sie beschreibt 1. Hauptsatz, w = Q_zu − Q_ab.", wrong: ["Sie beschreibt η anders definiert, cOP statt η.", "Es beschreibt absolut, nicht °C einsetzen.", "Es beschreibt ein Wärmezufuhr heiß, von Hot reservoir."],
+      answer: "1. Hauptsatz.", wrong: ["Nutzen/Aufwand.", "1 − T_k/T_w.", "absolut."],
       explanation: "W = Q_zu − Q_ab. Energieerhaltung bedeutet: 1. Hauptsatz.",
       wissen: "W = Q_zu − Q_ab. Energieerhaltung bedeutet: 1. Hauptsatz.",
       flashFront: "Energieerhaltung",

@@ -194,7 +194,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k7-lb1-humanismus:p9:f",
       prompt: "Was prägte die Napoleonische Ordnung?",
-      answer: "Sie prägte Europa durch französische Herrschaft, Reformen und Kriege um 1800.", wrong: ["Sie stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.", "Sie führte 1776 zur Unabhängigkeit der amerikanischen Kolonien von Großbritannien.", "Er bedeutet unumschränkte Fürstenmacht über Staat und Untertanen."],
+      answer: "Umgestaltung Europas.", wrong: ["Neuordnung 1814/15.", "Maschinen, Fabrik, Kapital.", "Antike als Bildungsvorbild."],
       explanation: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
       wissen: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
     },
@@ -279,7 +279,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k7-lb2-machtstuetzzen:p6:f",
       prompt: "Was prägte die Napoleonische Ordnung?",
-      answer: "Sie prägte Europa durch französische Herrschaft, Reformen und Kriege um 1800.", wrong: ["Sie führte 1776 zur Unabhängigkeit der amerikanischen Kolonien von Großbritannien.", "Er bedeutet unumschränkte Fürstenmacht über Staat und Untertanen.", "Er regelte 1814/15 die Neuordnung Europas nach den Napoleonischen Kriegen."],
+      answer: "Umgestaltung Europas.", wrong: ["Neuordnung 1814/15.", "Maschinen, Fabrik, Kapital.", "Organisation der Lohnarbeit."],
       explanation: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
       wissen: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
     },
@@ -371,7 +371,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k7-lb3-usa-mitwirkung:p4:f",
       prompt: "Was prägte die Napoleonische Ordnung?",
-      answer: "Sie prägte Europa durch französische Herrschaft, Reformen und Kriege um 1800.", wrong: ["Sie führte 1776 zur Unabhängigkeit der amerikanischen Kolonien von Großbritannien.", "Er regelte 1814/15 die Neuordnung Europas nach den Napoleonischen Kriegen.", "Sie prägte Wirtschaft und Gesellschaft durch Maschinen, Fabrik und Kapital."],
+      answer: "Umgestaltung Europas.", wrong: ["Neuordnung 1814/15.", "Maschinen, Fabrik, Kapital.", "Organisation der Lohnarbeit."],
       explanation: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
       wissen: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
     },
@@ -420,7 +420,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k7-lb3-usa-mitwirkung:p11:f",
       prompt: "Was kennzeichnet den Parlamentarismus?",
-      answer: "Er kennzeichnet Herrschaft durch ein gewähltes Parlament mit Gesetzgebungsrechten.", wrong: ["Sie forderte soziale Rechte und politische Mitbestimmung der Industriearbeiterschaft.", "Sie stürzte ab 1789 die alte Ordnung in Frankreich und verbreitete Freiheitsideen.", "Sie prägte Europa durch französische Herrschaft, Reformen und Kriege um 1800."],
+      answer: "Volksvertretung zentral.", wrong: ["Legislative/Exekutive/Judikative.", "Herrschaft durch Zustimmung.", "Unabhängigkeit 1776."],
       explanation: "Gesetzgebung. Parlamentarismus bedeutet: Volksvertretung zentral.",
       wissen: "Gesetzgebung. Parlamentarismus bedeutet: Volksvertretung zentral.",
     },
@@ -569,7 +569,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k8-lb1-reichsfeinde:p2:f",
       prompt: "Was kennzeichnet den Parlamentarismus?",
-      answer: "Er kennzeichnet Herrschaft durch ein gewähltes Parlament mit Gesetzgebungsrechten.", wrong: ["Sie beschreibt das Wachstum der Städte durch Zuzug und Industrie.", "Sie stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.", "Er betont Bildung und die Würde des Menschen nach antiken Vorbildern."],
+      answer: "Volksvertretung zentral.", wrong: ["militärische Konkurrenz.", "Stadtwachstum.", "Antike als Bildungsvorbild."],
       explanation: "Gesetzgebung. Parlamentarismus bedeutet: Volksvertretung zentral.",
       wissen: "Gesetzgebung. Parlamentarismus bedeutet: Volksvertretung zentral.",
     },
@@ -682,7 +682,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k8-lb2-soziale-frage:p3:f",
       prompt: "Was prägte die Napoleonische Ordnung?",
-      answer: "Sie prägte Europa durch französische Herrschaft, Reformen und Kriege um 1800.", wrong: ["Sie beschreibt das Wachstum der Städte durch Zuzug und Industrie.", "Er regelte 1814/15 die Neuordnung Europas nach den Napoleonischen Kriegen.", "Sie prägte Wirtschaft und Gesellschaft durch Maschinen, Fabrik und Kapital."],
+      answer: "Umgestaltung Europas.", wrong: ["Neuordnung 1814/15.", "Nation als politische Einheit.", "globale Machtausdehnung."],
       explanation: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
       wissen: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
     },
@@ -717,7 +717,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k8-lb2-soziale-frage:p8:f",
       prompt: "Was kennzeichnet den Parlamentarismus?",
-      answer: "Er kennzeichnet Herrschaft durch ein gewähltes Parlament mit Gesetzgebungsrechten.", wrong: ["Sie beschreibt die deutsche Nationalstaatsbildung in den Einigungskriegen 1864 bis 1871.", "Sie beschreibt das Wachstum der Städte durch Zuzug und Industrie.", "Sie forderte soziale Rechte und politische Mitbestimmung der Industriearbeiterschaft."],
+      answer: "Volksvertretung zentral.", wrong: ["deutsche Nationalstaatsbildung.", "militärische Konkurrenz.", "Stadtwachstum."],
       explanation: "Gesetzgebung. Parlamentarismus bedeutet: Volksvertretung zentral.",
       wissen: "Gesetzgebung. Parlamentarismus bedeutet: Volksvertretung zentral.",
     },
@@ -809,7 +809,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k8-lb4-wettruesten:p6:f",
       prompt: "Was prägte die Napoleonische Ordnung?",
-      answer: "Sie prägte Europa durch französische Herrschaft, Reformen und Kriege um 1800.", wrong: ["Sie führte 1776 zur Unabhängigkeit der amerikanischen Kolonien von Großbritannien.", "Er regelte 1814/15 die Neuordnung Europas nach den Napoleonischen Kriegen.", "Sie prägte Wirtschaft und Gesellschaft durch Maschinen, Fabrik und Kapital."],
+      answer: "Umgestaltung Europas.", wrong: ["Neuordnung 1814/15.", "Maschinen, Fabrik, Kapital.", "Organisation der Lohnarbeit."],
       explanation: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
       wissen: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
     },
@@ -844,7 +844,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k8-lb4-wettruesten:p11:f",
       prompt: "Was kennzeichnet den Parlamentarismus?",
-      answer: "Er kennzeichnet Herrschaft durch ein gewähltes Parlament mit Gesetzgebungsrechten.", wrong: ["Sie forderte soziale Rechte und politische Mitbestimmung der Industriearbeiterschaft.", "Sie stürzte ab 1789 die alte Ordnung in Frankreich und verbreitete Freiheitsideen.", "Sie prägte Europa durch französische Herrschaft, Reformen und Kriege um 1800."],
+      answer: "Volksvertretung zentral.", wrong: ["Nation als politische Einheit.", "globale Machtausdehnung.", "militärische Konkurrenz."],
       explanation: "Gesetzgebung. Parlamentarismus bedeutet: Volksvertretung zentral.",
       wissen: "Gesetzgebung. Parlamentarismus bedeutet: Volksvertretung zentral.",
     },
@@ -1000,7 +1000,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k8-lbw-migration:p3:f",
       prompt: "Was kennzeichnet den Parlamentarismus?",
-      answer: "Er kennzeichnet Herrschaft durch ein gewähltes Parlament mit Gesetzgebungsrechten.", wrong: ["Sie beschreibt die deutsche Nationalstaatsbildung in den Einigungskriegen 1864 bis 1871.", "Sie beschreibt das Wachstum der Städte durch Zuzug und Industrie.", "Sie stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt."],
+      answer: "Volksvertretung zentral.", wrong: ["deutsche Nationalstaatsbildung.", "militärische Konkurrenz.", "Antike als Bildungsvorbild."],
       explanation: "Gesetzgebung. Parlamentarismus bedeutet: Volksvertretung zentral.",
       wissen: "Gesetzgebung. Parlamentarismus bedeutet: Volksvertretung zentral.",
     },
@@ -1162,7 +1162,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k8-lbw-technikfolgen:p11:f",
       prompt: "Was prägte die Napoleonische Ordnung?",
-      answer: "Sie prägte Europa durch französische Herrschaft, Reformen und Kriege um 1800.", wrong: ["Sie stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.", "Sie führte 1776 zur Unabhängigkeit der amerikanischen Kolonien von Großbritannien.", "Er bedeutet unumschränkte Fürstenmacht über Staat und Untertanen."],
+      answer: "Umgestaltung Europas.", wrong: ["Maschinen, Fabrik, Kapital.", "globale Machtausdehnung.", "Antike als Bildungsvorbild."],
       explanation: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
       wissen: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
     },
@@ -1268,7 +1268,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k9-lb2-wahlverhalten:p11:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["erste deutsche Demokratie.", "Geldwertverfall.", "ab 1929."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -1572,7 +1572,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k9-lb2-gleichschaltung:p9:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie steuert die öffentliche Meinung durch gezielte Medien- und Massenbeeinflussung."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Unterwerfung von Institutionen."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -1678,7 +1678,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k9-lb2-terror-beginn:p9:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie steuert die öffentliche Meinung durch gezielte Medien- und Massenbeeinflussung."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Unterwerfung von Institutionen."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -1749,7 +1749,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k9-lb3-volksgemeinschaft:p4:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie steuert die öffentliche Meinung durch gezielte Medien- und Massenbeeinflussung.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -2088,7 +2088,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k9-lbw-widerstand-formen:p7:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie steuert die öffentliche Meinung durch gezielte Medien- und Massenbeeinflussung.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -2166,7 +2166,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k9-lbw-alltag-ns:p3:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie steuert die öffentliche Meinung durch gezielte Medien- und Massenbeeinflussung.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -2265,7 +2265,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k10-lb1-feindbilder:p2:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie steuert die öffentliche Meinung durch gezielte Medien- und Massenbeeinflussung.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Unterwerfung von Institutionen.", "systematischer Völkermord.", "Opposition gegen NS."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -2371,7 +2371,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k10-lb1-potsdam:p2:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie steuert die öffentliche Meinung durch gezielte Medien- und Massenbeeinflussung.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["erste deutsche Demokratie.", "Geldwertverfall.", "ab 1929."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -2477,7 +2477,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k10-lb1-blockbildung:p2:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Nachkriegsordnung der Alliierten.", "sozialistischer deutscher Staat.", "bundesdeutsche Demokratie."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -2576,7 +2576,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k10-lb1-stellvertreter:p1:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie steuert die öffentliche Meinung durch gezielte Medien- und Massenbeeinflussung.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg.", "Sie propagierte die NS-Ideologie einer einheitlichen Volkszugehörigkeit unter Ausschluss von Minderheiten."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "Unterwerfung von Institutionen.", "systematischer Völkermord."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -2689,7 +2689,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k10-lb2-sachsen-sbz:p2:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie steuert die öffentliche Meinung durch gezielte Medien- und Massenbeeinflussung.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Geldwertverfall.", "ab 1929.", "1933 Ausschaltung des Parlaments."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -2795,7 +2795,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k10-lb2-doppelstaat:p2:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie steuert die öffentliche Meinung durch gezielte Medien- und Massenbeeinflussung.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["gezielte Meinungssteuerung.", "Ost-West-Konflikt.", "Nachkriegsordnung der Alliierten."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -3176,7 +3176,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k10-lb3-transformation:p11:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["1989 in der DDR.", "1990.", "Umgang mit Vergangenheit."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -3254,7 +3254,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-k10-lbw-alltag-ddr:p7:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie steuert die öffentliche Meinung durch gezielte Medien- und Massenbeeinflussung.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -3579,7 +3579,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb1-aufklaerung-staat:p8:f",
       prompt: "Was prägte die Napoleonische Ordnung?",
-      answer: "Sie prägte Europa durch französische Herrschaft, Reformen und Kriege um 1800.", wrong: ["Sie stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.", "Sie führte 1776 zur Unabhängigkeit der amerikanischen Kolonien von Großbritannien.", "Er bedeutet unumschränkte Fürstenmacht über Staat und Untertanen."],
+      answer: "Umgestaltung Europas.", wrong: ["Neuordnung 1814/15.", "Maschinen, Fabrik, Kapital.", "Organisation der Lohnarbeit."],
       explanation: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
       wissen: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
     },
@@ -3657,7 +3657,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb1-revolutionen:p4:f",
       prompt: "Was prägte die Napoleonische Ordnung?",
-      answer: "Sie prägte Europa durch französische Herrschaft, Reformen und Kriege um 1800.", wrong: ["Sie führte 1776 zur Unabhängigkeit der amerikanischen Kolonien von Großbritannien.", "Er regelte 1814/15 die Neuordnung Europas nach den Napoleonischen Kriegen.", "Sie prägte Wirtschaft und Gesellschaft durch Maschinen, Fabrik und Kapital."],
+      answer: "Umgestaltung Europas.", wrong: ["Neuordnung 1814/15.", "Maschinen, Fabrik, Kapital.", "Organisation der Lohnarbeit."],
       explanation: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
       wissen: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
     },
@@ -3706,7 +3706,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb1-revolutionen:p11:f",
       prompt: "Was kennzeichnet den Parlamentarismus?",
-      answer: "Er kennzeichnet Herrschaft durch ein gewähltes Parlament mit Gesetzgebungsrechten.", wrong: ["Sie forderte soziale Rechte und politische Mitbestimmung der Industriearbeiterschaft.", "Sie stürzte ab 1789 die alte Ordnung in Frankreich und verbreitete Freiheitsideen.", "Sie prägte Europa durch französische Herrschaft, Reformen und Kriege um 1800."],
+      answer: "Volksvertretung zentral.", wrong: ["Legislative/Exekutive/Judikative.", "Herrschaft durch Zustimmung.", "Unabhängigkeit 1776."],
       explanation: "Gesetzgebung. Parlamentarismus bedeutet: Volksvertretung zentral.",
       wissen: "Gesetzgebung. Parlamentarismus bedeutet: Volksvertretung zentral.",
     },
@@ -3770,7 +3770,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb1-buergertum:p5:f",
       prompt: "Was prägte die Napoleonische Ordnung?",
-      answer: "Sie prägte Europa durch französische Herrschaft, Reformen und Kriege um 1800.", wrong: ["Sie stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.", "Sie führte 1776 zur Unabhängigkeit der amerikanischen Kolonien von Großbritannien.", "Er regelte 1814/15 die Neuordnung Europas nach den Napoleonischen Kriegen."],
+      answer: "Umgestaltung Europas.", wrong: ["Neuordnung 1814/15.", "Maschinen, Fabrik, Kapital.", "Organisation der Lohnarbeit."],
       explanation: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
       wissen: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
     },
@@ -3876,7 +3876,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb1-verfassungsstaat:p5:f",
       prompt: "Was kennzeichnet den Parlamentarismus?",
-      answer: "Er kennzeichnet Herrschaft durch ein gewähltes Parlament mit Gesetzgebungsrechten.", wrong: ["Sie beschreibt die deutsche Nationalstaatsbildung in den Einigungskriegen 1864 bis 1871.", "Sie beschreibt das Wachstum der Städte durch Zuzug und Industrie.", "Sie forderte soziale Rechte und politische Mitbestimmung der Industriearbeiterschaft."],
+      answer: "Volksvertretung zentral.", wrong: ["Lage der Industriearbeiter.", "deutsche Nationalstaatsbildung.", "militärische Konkurrenz."],
       explanation: "Gesetzgebung. Parlamentarismus bedeutet: Volksvertretung zentral.",
       wissen: "Gesetzgebung. Parlamentarismus bedeutet: Volksvertretung zentral.",
     },
@@ -3947,7 +3947,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb1-wirtschaft-wandel:p0:f",
       prompt: "Was prägte die Napoleonische Ordnung?",
-      answer: "Sie prägte Europa durch französische Herrschaft, Reformen und Kriege um 1800.", wrong: ["Sie beschreibt das Wachstum der Städte durch Zuzug und Industrie.", "Er regelte 1814/15 die Neuordnung Europas nach den Napoleonischen Kriegen.", "Sie prägte Wirtschaft und Gesellschaft durch Maschinen, Fabrik und Kapital."],
+      answer: "Umgestaltung Europas.", wrong: ["Neuordnung 1814/15.", "Maschinen, Fabrik, Kapital.", "Organisation der Lohnarbeit."],
       explanation: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
       wissen: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
     },
@@ -3996,7 +3996,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb1-wirtschaft-wandel:p7:f",
       prompt: "Was kennzeichnet den Parlamentarismus?",
-      answer: "Er kennzeichnet Herrschaft durch ein gewähltes Parlament mit Gesetzgebungsrechten.", wrong: ["Sie beschreibt die deutsche Nationalstaatsbildung in den Einigungskriegen 1864 bis 1871.", "Sie beschreibt das Wachstum der Städte durch Zuzug und Industrie.", "Sie forderte soziale Rechte und politische Mitbestimmung der Industriearbeiterschaft."],
+      answer: "Volksvertretung zentral.", wrong: ["Lage der Industriearbeiter.", "deutsche Nationalstaatsbildung.", "militärische Konkurrenz."],
       explanation: "Gesetzgebung. Parlamentarismus bedeutet: Volksvertretung zentral.",
       wissen: "Gesetzgebung. Parlamentarismus bedeutet: Volksvertretung zentral.",
     },
@@ -4081,7 +4081,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb1-sozialstruktur:p4:f",
       prompt: "Was prägte die Napoleonische Ordnung?",
-      answer: "Sie prägte Europa durch französische Herrschaft, Reformen und Kriege um 1800.", wrong: ["Sie führte 1776 zur Unabhängigkeit der amerikanischen Kolonien von Großbritannien.", "Er regelte 1814/15 die Neuordnung Europas nach den Napoleonischen Kriegen.", "Sie prägte Wirtschaft und Gesellschaft durch Maschinen, Fabrik und Kapital."],
+      answer: "Umgestaltung Europas.", wrong: ["Neuordnung 1814/15.", "Maschinen, Fabrik, Kapital.", "Organisation der Lohnarbeit."],
       explanation: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
       wissen: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
     },
@@ -4130,7 +4130,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb1-sozialstruktur:p11:f",
       prompt: "Was kennzeichnet den Parlamentarismus?",
-      answer: "Er kennzeichnet Herrschaft durch ein gewähltes Parlament mit Gesetzgebungsrechten.", wrong: ["Sie forderte soziale Rechte und politische Mitbestimmung der Industriearbeiterschaft.", "Sie stürzte ab 1789 die alte Ordnung in Frankreich und verbreitete Freiheitsideen.", "Sie prägte Europa durch französische Herrschaft, Reformen und Kriege um 1800."],
+      answer: "Volksvertretung zentral.", wrong: ["Legislative/Exekutive/Judikative.", "Herrschaft durch Zustimmung.", "Unabhängigkeit 1776."],
       explanation: "Gesetzgebung. Parlamentarismus bedeutet: Volksvertretung zentral.",
       wissen: "Gesetzgebung. Parlamentarismus bedeutet: Volksvertretung zentral.",
     },
@@ -4272,7 +4272,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb1-quellen-aufklaerung:p1:f",
       prompt: "Was prägte die Napoleonische Ordnung?",
-      answer: "Sie prägte Europa durch französische Herrschaft, Reformen und Kriege um 1800.", wrong: ["Er regelte 1814/15 die Neuordnung Europas nach den Napoleonischen Kriegen.", "Sie prägte Wirtschaft und Gesellschaft durch Maschinen, Fabrik und Kapital.", "Es beschreibt die militärische Konkurrenz der Großmächte vor 1914."],
+      answer: "Umgestaltung Europas.", wrong: ["Neuordnung 1814/15.", "Maschinen, Fabrik, Kapital.", "Organisation der Lohnarbeit."],
       explanation: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
       wissen: "Code civil, Rheinbund. Napoleonische Ordnung bedeutet: Umgestaltung Europas.",
     },
@@ -4321,7 +4321,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb1-quellen-aufklaerung:p8:f",
       prompt: "Was kennzeichnet den Parlamentarismus?",
-      answer: "Er kennzeichnet Herrschaft durch ein gewähltes Parlament mit Gesetzgebungsrechten.", wrong: ["Sie beschreibt die deutsche Nationalstaatsbildung in den Einigungskriegen 1864 bis 1871.", "Sie forderte soziale Rechte und politische Mitbestimmung der Industriearbeiterschaft.", "Sie stürzte ab 1789 die alte Ordnung in Frankreich und verbreitete Freiheitsideen."],
+      answer: "Volksvertretung zentral.", wrong: ["Lage der Industriearbeiter.", "deutsche Nationalstaatsbildung.", "militärische Konkurrenz."],
       explanation: "Gesetzgebung. Parlamentarismus bedeutet: Volksvertretung zentral.",
       wissen: "Gesetzgebung. Parlamentarismus bedeutet: Volksvertretung zentral.",
     },
@@ -4448,7 +4448,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb2-demokratie-modelle:p11:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Ost-West-Konflikt.", "Nachkriegsordnung der Alliierten.", "westliches Bündnis."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -4505,7 +4505,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb2-diktatur-merkmale:p4:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -4632,7 +4632,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb2-weimar-krisen:p7:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -4809,7 +4809,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb2-widerstand-ethik:p2:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -5127,7 +5127,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb3-sowjet-system:p2:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -5275,7 +5275,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb3-ddr-staat:p8:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -5706,7 +5706,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb3-wirtschaft-plan:p9:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "westliches Bündnis."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -5876,7 +5876,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb3-quellen-diktatur:p3:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -6116,7 +6116,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb4-friedensordnungen:p7:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -6180,7 +6180,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb4-uno-system:p1:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie steuert die öffentliche Meinung durch gezielte Medien- und Massenbeeinflussung.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -6441,7 +6441,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lb4-aktuelle-konflikte:p8:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -6533,7 +6533,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-gk-lbw-regional-os:p6:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -6886,7 +6886,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb1-theorie:p11:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Ost-West-Konflikt.", "Nachkriegsordnung der Alliierten.", "westliches Bündnis."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -7183,7 +7183,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb1-vergleich:p8:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -7268,7 +7268,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb1-quellen:p5:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Er errichtete 1961 die Berliner Mauer und zementierte die deutsche Teilung."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -7409,7 +7409,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb1-akteure:p10:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "Nachkriegsordnung der Alliierten.", "westliches Bündnis."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -7515,7 +7515,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb1-strukturen:p10:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "Nachkriegsordnung der Alliierten.", "westliches Bündnis."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -7565,7 +7565,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb1-alltag:p2:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -7685,7 +7685,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb1-ideen:p4:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -7826,7 +7826,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb1-gewalt:p9:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "westliches Bündnis."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -7932,7 +7932,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb1-recht:p9:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "westliches Bündnis."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -8017,7 +8017,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb1-wirtschaft:p6:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -8328,7 +8328,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb1-medien:p5:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Er errichtete 1961 die Berliner Mauer und zementierte die deutsche Teilung."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -8455,7 +8455,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb1-erinnerung:p8:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -8512,7 +8512,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb1-international:p1:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie steuert die öffentliche Meinung durch gezielte Medien- und Massenbeeinflussung.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -8625,7 +8625,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb1-regional:p2:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -8943,7 +8943,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb1-kontinuitaet:p2:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -9098,7 +9098,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb1-zaesur:p9:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "westliches Bündnis."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -9671,7 +9671,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb1-bildung:p0:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie steuert die öffentliche Meinung durch gezielte Medien- und Massenbeeinflussung.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -9847,7 +9847,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb2-theorie:p10:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "Nachkriegsordnung der Alliierten.", "westliches Bündnis."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -10144,7 +10144,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb2-vergleich:p7:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -10229,7 +10229,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb2-quellen:p4:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -10370,7 +10370,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb2-akteure:p9:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "westliches Bündnis."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -10476,7 +10476,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb2-strukturen:p9:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "westliches Bündnis."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -10526,7 +10526,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb2-alltag:p1:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie steuert die öffentliche Meinung durch gezielte Medien- und Massenbeeinflussung.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -10646,7 +10646,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb2-ideen:p3:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -10787,7 +10787,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb2-gewalt:p8:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -10893,7 +10893,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb2-recht:p8:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -10978,7 +10978,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb2-wirtschaft:p5:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Er errichtete 1961 die Berliner Mauer und zementierte die deutsche Teilung."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -11289,7 +11289,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb2-medien:p4:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -11416,7 +11416,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lb2-erinnerung:p7:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -11635,7 +11635,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk11-lbw-debatte:p8:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -11755,7 +11755,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb1-theorie:p10:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "Nachkriegsordnung der Alliierten.", "westliches Bündnis."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -12052,7 +12052,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb1-vergleich:p7:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -12137,7 +12137,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb1-quellen:p4:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -12278,7 +12278,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb1-akteure:p9:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "westliches Bündnis."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -12384,7 +12384,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb1-strukturen:p9:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "westliches Bündnis."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -12434,7 +12434,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb1-alltag:p1:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie steuert die öffentliche Meinung durch gezielte Medien- und Massenbeeinflussung.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -12554,7 +12554,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb1-ideen:p3:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -12695,7 +12695,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb1-gewalt:p8:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -12801,7 +12801,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb1-recht:p8:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -12886,7 +12886,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb1-wirtschaft:p5:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Er errichtete 1961 die Berliner Mauer und zementierte die deutsche Teilung."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -13197,7 +13197,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb1-medien:p4:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -13324,7 +13324,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb1-erinnerung:p7:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -13381,7 +13381,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb1-international:p0:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie steuert die öffentliche Meinung durch gezielte Medien- und Massenbeeinflussung.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -13494,7 +13494,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb1-regional:p1:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie steuert die öffentliche Meinung durch gezielte Medien- und Massenbeeinflussung.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -13812,7 +13812,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb1-kontinuitaet:p1:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie steuert die öffentliche Meinung durch gezielte Medien- und Massenbeeinflussung.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -13967,7 +13967,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb1-zaesur:p8:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -14186,7 +14186,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb2-theorie:p9:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "westliches Bündnis."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -14483,7 +14483,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb2-vergleich:p6:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -14568,7 +14568,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb2-quellen:p3:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -14709,7 +14709,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb2-akteure:p8:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -14815,7 +14815,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb2-strukturen:p8:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -14865,7 +14865,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb2-alltag:p0:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie steuert die öffentliche Meinung durch gezielte Medien- und Massenbeeinflussung.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -14985,7 +14985,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb2-ideen:p2:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -15126,7 +15126,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb2-gewalt:p7:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -15232,7 +15232,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb2-recht:p7:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.", "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },
@@ -15317,7 +15317,7 @@ export const GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS: Record<string, Topic['gene
     {
       concept: "ge:dens:ge-lk12-lb2-wirtschaft:p4:f",
       prompt: "Was kennzeichnet die Blockbildung nach 1945?",
-      answer: "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.", wrong: ["Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.", "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.", "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation."],
+      answer: "Lagerbildung im Kalten Krieg.", wrong: ["Konflikt über Drittstaaten.", "erste deutsche Demokratie.", "Geldwertverfall."],
       explanation: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
       wissen: "Bündnisse. Blockbildung bedeutet: Lagerbildung im Kalten Krieg.",
     },

@@ -931,8 +931,9 @@ BANNED_OUT = re.compile(
     r"Es beschreibt ein Zwei Membranen",
     re.I,
 )
-# Title-Case noun after „ist eine“ (must stay case-sensitive)
-TITLE_AFTER_IST_EINE = re.compile(r"\bist eine [A-ZÄÖÜ]")
+# Title-Case mush after „ist eine“ (two+ Title tokens) / „beschreibt eine|ein“
+TITLE_AFTER_IST_EINE = re.compile(r"\bist eine [A-ZÄÖÜ][a-zäöüß]+ [A-ZÄÖÜ]")
+TITLE_AFTER_BESCHREIBT = re.compile(r"\bbeschreibt ein(?:e)? [A-ZÄÖÜ]")
 TITLE_MUSH = re.compile(
     r"\b(der|die|das|ein|eine|einen|einem|einer)\s+"
     r"([A-ZÄÖÜ][a-zäöüß]+)(?:\s+([A-ZÄÖÜ][a-zäöüß]+)){1,}",
@@ -1186,6 +1187,7 @@ def quality_ok(prompt: str, answer: str, wrongs: list[str]) -> bool:
         or TITLE_TIP.search(answer)
         or TITLE_AFTER_IST.search(answer)
         or TITLE_AFTER_IST_EINE.search(answer)
+        or TITLE_AFTER_BESCHREIBT.search(answer)
     ):
         return False
     # Reject uniform Sie/Er/Es-ist-ein(e) answers (mechanical thin fill)
@@ -1198,6 +1200,7 @@ def quality_ok(prompt: str, answer: str, wrongs: list[str]) -> bool:
         or TITLE_TIP.search(w)
         or TITLE_AFTER_IST.search(w)
         or TITLE_AFTER_IST_EINE.search(w)
+        or TITLE_AFTER_BESCHREIBT.search(w)
         or BANNED_OUT.search(w)
         for w in wrongs
     ):
