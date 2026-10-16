@@ -33,6 +33,7 @@ import { deepenBioBank } from './biologieBankDeepen'
 import { isSloganStatement } from './contentAudit'
 import { enrichGapAccepted, normalizeGapAnswer } from './gapAnswerMatch'
 import {
+  classifyGlossaryStyle,
   concreteGlossaryStem,
   expandGlossaryAnswer,
   expandGlossaryDistractor,
@@ -284,7 +285,7 @@ export function redactSolutionSpoilers(text: string, solution: string): string {
  */
 export function rewriteDefinitionStylePrompt(
   prompt: string,
-  opts?: { term?: string; prefix?: string },
+  opts?: { term?: string; prefix?: string; meaning?: string },
 ): string {
   let q = stripBioBankSlug(stripBankSlugPrefix(prompt)).replace(/\s+/g, ' ').trim()
   q = q
@@ -298,7 +299,7 @@ export function rewriteDefinitionStylePrompt(
   }
 
   // Vague meta-MC → concrete Schülerfrage (locked gap/thin-fill).
-  const vague = rewriteVagueGlossaryPrompt(q)
+  const vague = rewriteVagueGlossaryPrompt(q, { meaning: opts?.meaning })
   if (vague) return fixGermanPromptCapitalization(vague)
 
   const quoted = q.match(
@@ -348,7 +349,7 @@ export function rewriteDefinitionStylePrompt(
     if (hint) {
       return fixGermanPromptCapitalization(`Was kennzeichnet „${term}“ ${hint}?`)
     }
-    return fixGermanPromptCapitalization(concreteGlossaryStem(term))
+    return fixGermanPromptCapitalization(concreteGlossaryStem(term, undefined, opts?.meaning))
   }
 
   q = q.replace(/^Fachbegriff:\s*/i, '')
@@ -955,23 +956,30 @@ export function sanitizeBioBank(bank: BioBank): BioBank {
         cleaned.match(/^([^:?]{1,60}):\s*(?:Was |Welche )/i)?.[1]?.trim() ||
         domainHintFromPrefix(bank.conceptPrefix).replace(/^(im|bei|an|als|zum|zur)\s+/i, '') ||
         undefined
+      const ansRaw = String(f.answer ?? '').trim()
       const prompt = rewriteDefinitionStylePrompt(cleaned, {
         term: termHint.trim() || undefined,
         prefix: bank.conceptPrefix,
+        meaning: ansRaw,
       })
       // Only expand short glossary fragments — keep curated full answers intact.
-      const ansRaw = String(f.answer ?? '').trim()
-      const expandNeeded = ansRaw.split(/\s+/).length <= 6 && !/^(Sie|Er|Es|Man)\s/i.test(ansRaw)
+      const style = classifyGlossaryStyle(termHint.trim(), ansRaw, topicHint || undefined)
+      const expandNeeded =
+        ansRaw.split(/\s+/).length <= 7 && !/^(Sie|Er|Es|Man|Darunter)\s/i.test(ansRaw)
       const answer = expandNeeded
         ? expandGlossaryAnswer(ansRaw, {
             term: termHint.trim() || undefined,
             topic: topicHint || undefined,
+            style,
           })
         : ansRaw
       const wrong = f.wrong?.map((w) => {
         const wr = String(w).trim()
-        if (wr.split(/\s+/).length > 6 || /^(Sie|Er|Es|Man)\s/i.test(wr)) return wr
-        return expandGlossaryDistractor(wr, topicHint || undefined)
+        if (wr.split(/\s+/).length > 7 || /^(Sie|Er|Es|Man|Darunter)\s/i.test(wr)) return wr
+        return expandGlossaryDistractor(wr, topicHint || undefined, {
+          term: termHint.trim() || undefined,
+          style,
+        })
       })
       return {
         ...f,

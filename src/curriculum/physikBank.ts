@@ -5,6 +5,7 @@
  */
 import { redactSolutionSpoilers, stripBioMetaWissen, type BioBank } from './biologieBank'
 import {
+  classifyGlossaryStyle,
   concreteGlossaryStem,
   expandGlossaryAnswer,
   expandGlossaryDistractor,
@@ -15,11 +16,11 @@ import {
 import { mathBankGenerate } from './mathBank'
 import type { Topic } from './types'
 
-export function rewritePhysikPrompt(prompt: string): string {
+export function rewritePhysikPrompt(prompt: string, meaning?: string): string {
   const raw = stripBankSlugPrefix(prompt).replace(/\s+/g, ' ').trim()
   if (isConcreteGlossaryStem(raw)) return raw
 
-  const rewritten = rewriteVagueGlossaryPrompt(prompt)
+  const rewritten = rewriteVagueGlossaryPrompt(prompt, { meaning })
   if (rewritten) return rewritten
 
   // Legacy Physik-spezifische Reste (Alltag / Modell), ohne „fachlich richtig“.
@@ -27,12 +28,12 @@ export function rewritePhysikPrompt(prompt: string): string {
   if (m2) {
     const term = m2[1]!
     if (/^Alltag\b/i.test(term)) {
-      return `Welche Alltagsbedeutung trifft auf „${term}“ zu?`
+      return `Welche Alltagsbedeutung hat „${term}“ in diesem Zusammenhang?`
     }
     if (/^Modell\b/i.test(term)) {
       return `Welche Modellaussage zu „${term}“ gilt im Gültigkeitsbereich?`
     }
-    return concreteGlossaryStem(term)
+    return concreteGlossaryStem(term, undefined, meaning)
   }
 
   return raw
@@ -112,10 +113,11 @@ function sanitizePhysikBank(bank: BioBank): BioBank {
           safeHint(p.term, p.meaning),
           p.wissen?.match(/Bezug:\s*([^.]+)/i)?.[1],
         )
-        const answer = expandGlossaryAnswer(p.meaning, { term: p.term, topic })
+        const style = classifyGlossaryStyle(p.term, p.meaning, topic)
+        const answer = expandGlossaryAnswer(p.meaning, { term: p.term, topic, style })
         return {
           concept: p.concept,
-          prompt: concreteGlossaryStem(p.term, topic),
+          prompt: concreteGlossaryStem(p.term, topic, p.meaning),
           answer,
           wrong: undefined as string[] | undefined,
           explanation: wissen,
@@ -126,26 +128,30 @@ function sanitizePhysikBank(bank: BioBank): BioBank {
   const facts = [
     ...(bank.facts?.map((f) => {
       const topic = humanTopic(topicFromFact(f))
-      let prompt = rewritePhysikPrompt(f.prompt)
+      const ansRaw = String(f.answer ?? '').trim()
       // Prefer concrete stem from term in flashFront / quoted prompt
       const term =
         f.flashFront?.trim() ||
         f.prompt.match(/[„""']([^„""']+)[“""']/)?.[1]?.trim() ||
         ''
+      let prompt = rewritePhysikPrompt(f.prompt, ansRaw)
       // Keep hand-authored concrete stems (e.g. Timer/Sensor gold example).
       if (term && !isConcreteGlossaryStem(prompt)) {
-        prompt = concreteGlossaryStem(term, topic)
+        prompt = concreteGlossaryStem(term, topic, ansRaw)
       }
-      const ansRaw = String(f.answer ?? '').trim()
+      const style = classifyGlossaryStyle(term || '', ansRaw, topic)
       const expandNeeded =
-        ansRaw.split(/\s+/).length <= 6 && !/^(Sie|Er|Es|Man)\s/i.test(ansRaw)
+        ansRaw.split(/\s+/).length <= 7 &&
+        !/^(Sie|Er|Es|Man|Darunter)\s/i.test(ansRaw)
       const answer = expandNeeded
-        ? expandGlossaryAnswer(ansRaw, { term: term || undefined, topic })
+        ? expandGlossaryAnswer(ansRaw, { term: term || undefined, topic, style })
         : ansRaw
       const wrong = f.wrong?.map((w) => {
         const wr = String(w).trim()
-        if (wr.split(/\s+/).length > 6 || /^(Sie|Er|Es|Man)\s/i.test(wr)) return wr
-        return expandGlossaryDistractor(wr, topic)
+        if (wr.split(/\s+/).length > 7 || /^(Sie|Er|Es|Man|Darunter)\s/i.test(wr)) {
+          return wr
+        }
+        return expandGlossaryDistractor(wr, topic, { term: term || undefined, style })
       })
       prompt = redactSolutionSpoilers(prompt, answer)
       return {
