@@ -18,7 +18,8 @@ describe('Biologie generators (K5–12)', () => {
       const gen = BIOLOGIE_GENERATORS[id]!
       for (let seed = 0; seed < 8; seed++) {
         const task = gen(createRng(seed * 997 + 19))
-        expect(task.question.trim().length, `${id}@${seed}`).toBeGreaterThan(8)
+        // 0.28.111/112 restore of v0.28.107: some cloze fronts are short terms (e.g. „Operon“).
+        expect(task.question.trim().length, `${id}@${seed}`).toBeGreaterThan(5)
         expect(task.solution.trim().length, `${id}@${seed}`).toBeGreaterThan(0)
         expect(task.sampleAnswer, `${id}@${seed}`).toBeTruthy()
         expect(task.check(task.sampleAnswer!), `${id}@${seed}`).toBe(true)

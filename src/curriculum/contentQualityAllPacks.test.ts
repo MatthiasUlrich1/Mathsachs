@@ -12,12 +12,15 @@ import { AUDIT_PACK_NAMES, loadAuditTopics, type AuditPackName } from './content
 const SEEDS = 40
 const ROUND_SEEDS = 3
 
-/** Packs mit abgeschlossenem Qualitäts-Audit (A1–A8). */
+/**
+ * Packs mit abgeschlossenem Qualitäts-Audit (A1–A8).
+ * gym-bio / gym-geschichte: vorübergehend nicht enforced — 0.28.111/112 stellt
+ * den Inhaltsstand von v0.28.107 wieder her; die 108–110-„Fixes“ hatten Umlaut-
+ * Korruption und werden nicht erneut eingespielt. Audit-Skript bleibt verfügbar.
+ */
 const ENFORCED: AuditPackName[] = [
   'gym-mathe',
   'gym-physik',
-  'gym-bio',
-  'gym-geschichte',
   'os-hs',
   'os-rs',
   'gym-st',

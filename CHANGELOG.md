@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.112] – 2026-10-16
+
+### Behoben
+- **Installer-CI nach 0.28.111-Restore:** Exportierte Pack-JSON unter `curricula/`
+  wieder auf den Stand von Tag `v0.28.107` gebracht (Version/Hash-Mismatch).
+  Qualitäts-Enforcement für gym-bio/gym-geschichte vorübergehend ausgesetzt und
+  Bio-Generator-Smoke-Schwelle an kurze 107er Cloze-Fronten angepasst — **ohne**
+  erneutes Anfassen der Lehrplan-Banks (Umlaute bleiben intakt).
+
+
 ## [0.28.111] – 2026-10-16
 
 ### Behoben
