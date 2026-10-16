@@ -71,11 +71,15 @@ describe('glossaryMcRewrite Timer-caliber', () => {
       style: 'definition',
     })
     expect(def).toMatch(
-      /^(Es handelt sich um|Das ist|Sie beschreibt|Sie steht für|Chronologie steht für)\b/i,
+      /^(Es handelt sich um|Das ist|Sie bildet|Sie fasst|Chronologie entspricht|Chronologie meint)\b/i,
     )
     expect(def).not.toMatch(/Darunter versteht man/i)
     expect(def).not.toMatch(/^Sie bezeichnet\b/i)
+    expect(def).not.toMatch(/^Sie kennzeichnet\b/i)
+    expect(def).not.toMatch(/^Sie steht für\b/i)
     expect(def).not.toMatch(/^Gemeint ist\b/i)
+    expect(isMechanicalGlossaryOption('Sie kennzeichnet die zeitliche Ordnung.')).toBe(true)
+    expect(isMechanicalGlossaryOption('Es steht für den Bereich ohne Licht.')).toBe(true)
 
     // Bank full sentences stay; short Gemeint wraps are rebuilt
     const bankFull =

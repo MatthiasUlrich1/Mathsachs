@@ -407,19 +407,29 @@ function softenTitleCaseBody(body: string): string {
 }
 
 /**
- * Mechanical glossary wrappers (Sie bezeichnet / Sie ist das …) that must be rebuilt.
- * Keeps rich relative-clause answers (Timer/Kieme caliber).
+ * Mechanical glossary wrappers that must be rebuilt.
+ * Catches Sie bezeichnet / Sie kennzeichnet / Es steht für / Sie ist das …
+ * as well as monotonous Sie beschreibt shells. Keeps rich relative-clause
+ * answers (Timer/Kieme caliber).
  */
 export function isMechanicalGlossaryOption(opt: string): boolean {
   const o = opt.replace(/\s+/g, ' ').trim()
   if (!o) return false
-  if (/^(Sie|Er|Es)\s+bezeichnet\b/i.test(o)) return true
+  const words = o.split(/\s+/).length
+  const richRel =
+    /,\s*(mit|durch|über|für|bei|in|an|aus)\s+(dem|der|die|den|einem|einer)\b/i.test(o) ||
+    (/,\s*(der|die|das)\s+\S+/i.test(o) && words >= 10)
+
+  // Monotonous meta wraps — always rebuild unless a rich relative clause
+  if (/^(Sie|Er|Es)\s+(bezeichnet|kennzeichnet|steht für|meint)\b/i.test(o)) {
+    return !richRel
+  }
+  // „Sie beschreibt …“ shells without relative clause → mechanical monotony
+  if (/^(Sie|Er|Es)\s+beschreibt\b/i.test(o) && words < 14 && !richRel) {
+    return true
+  }
   if (/^(Sie|Er|Es)\s+ist\s+(das|die|der|den|ein|eine|einen)\b/i.test(o)) {
-    // Rich teacher-style relative clause — keep
-    if (/,\s*(mit|durch|über|für|bei|in|an|aus)\s+(dem|der|die|den|einem|einer)\b/i.test(o)) {
-      return false
-    }
-    if (/,\s*(der|die|das)\s+\S+/i.test(o) && o.split(/\s+/).length >= 10) return false
+    if (richRel) return false
     return true
   }
   // Broken pronoun+lowercase stub: „Sie auftriebshilfe …“
@@ -427,6 +437,14 @@ export function isMechanicalGlossaryOption(opt: string): boolean {
     /^(Sie|Er|Es)\s+[a-zäöü]/i.test(o) &&
     !PURPOSE_VERB.test(o.replace(/^(Sie|Er|Es)\s+/i, '')) &&
     !EFFECT_VERB.test(o.replace(/^(Sie|Er|Es)\s+/i, ''))
+  ) {
+    return true
+  }
+  // Grammar glitches that must never ship
+  if (
+    /\b(die Auge|das Abstand|den Verschwinden|abbildendes Loch|Vorgang Vorgang|die Weg pro|die Stromweg|das Hemmt|die 1989)\b/i.test(
+      o,
+    )
   ) {
     return true
   }
@@ -598,7 +616,7 @@ function asDefinitionSentence(term: string, meaning: string): string {
     }
     const t = displayGlossaryTerm(term)
     return ensurePeriod(
-      `${t || 'Der Begriff'} steht für ${body.charAt(0).toUpperCase()}${body.slice(1)}`,
+      `${t || 'Der Begriff'} meint ${body.charAt(0).toUpperCase()}${body.slice(1)}`,
     )
   }
 
@@ -615,17 +633,20 @@ function asDefinitionSentence(term: string, meaning: string): string {
     )
   }
 
-  // Natural definition sentences — never default to „Gemeint ist …“
-  const pick = hashPick(`${term}|${np}`, 4)
+  // Natural definition sentences — never Gemeint/Sie-kennzeichnet/steht-für defaults
+  const t = displayGlossaryTerm(term)
+  const pick = hashPick(`${term}|${np}|def`, 5)
   switch (pick) {
     case 0:
       return ensurePeriod(`Es handelt sich um ${np}`)
     case 1:
       return ensurePeriod(`Das ist ${np}`)
     case 2:
-      return ensurePeriod(`${pron} beschreibt ${toAccusativeNp(np)}`)
+      return ensurePeriod(`${pron} bildet ${toAccusativeNp(np)}`)
+    case 3:
+      return ensurePeriod(`${t || 'Der Begriff'} entspricht ${np}`)
     default:
-      return ensurePeriod(`${pron} steht für ${np}`)
+      return ensurePeriod(`${pron} fasst ${toAccusativeNp(np)} zusammen`)
   }
 }
 
