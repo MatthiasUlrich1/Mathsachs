@@ -9,6 +9,8 @@
  * - „Bezeichnet die Bezeichnet“, „zählt inhaltlich“, „— so bei … im Thema“
  * - stock wrongs (Nachbarbegriff / Randdetail / vertauschte Ursache-Wirkung)
  * - layered wrapper mash (Sie bezeichnet die Ist …)
+ * - pad wrappers: „ist hier:“ / „ist kurz gesagt:“ / „Hier gilt:“ /
+ *   „Es geht um“ / „und zwar gilt“ / „steht im Kern für Folgendes“
  */
 
 export type GlossaryStemStyle = 'purpose' | 'property' | 'process' | 'definition'
@@ -62,7 +64,7 @@ const EFFECT_VERB =
   /^(Ist|Sind|Wird|Werden|Entsteht|Bedeutet|Gilt|Kennzeichnet|Bezeichnet|Beschreibt|Steht|Liegt|Geht|Hat|Haben|Stört)\b/i
 
 const BANNED_OPTION =
-  /Bezeichnet die Bezeichnet|zählt inhaltlich|Fachzusammenhang als zentralen|— so bei|\bNachbarbegriff\b|Randdetail ohne|vertauschte Ursache-Wirkung|bezeichnet die Ist |bezeichnet das Ist |Es das Ist|kennzeichnet das Ist|kennzeichnet die Ist|beschreibt die Ist|\?\?\?|zentralen fachlichen Kern|von Nachbarbegriffen/i
+  /Bezeichnet die Bezeichnet|zählt inhaltlich|Fachzusammenhang als zentralen|— so bei|\bNachbarbegriff\b|Randdetail ohne|vertauschte Ursache-Wirkung|bezeichnet die Ist |bezeichnet das Ist |Es das Ist|kennzeichnet das Ist|kennzeichnet die Ist|beschreibt die Ist|\?\?\?|zentralen fachlichen Kern|von Nachbarbegriffen|ist hier:|ist kurz gesagt:|\bHier gilt\b|Es geht um|und zwar gilt|steht im Kern für Folgendes|der Ereignisse|Was bedeutet/i
 
 /** Gold definition stem that may keep „Was versteht man …“. */
 export function isAllowedVerstehtStem(prompt: string): boolean {
@@ -214,6 +216,10 @@ export function concreteGlossaryStem(
     return `Welche Eigenschaft kennzeichnet ${t}?`
   }
 
+  if (/^Timer\s*\/\s*Sensor$/i.test(t) || /^Timer oder Sensor/i.test(t)) {
+    return 'Wozu dienen Timer oder Sensoren bei intelligenter Beleuchtung gegen Lichtverschmutzung?'
+  }
+
   if (
     style === 'purpose' ||
     /\b(organ|gerät|mittel|hilfe)\b/i.test(m) ||
@@ -239,8 +245,13 @@ function stripWraps(m: string): string {
     .replace(/^(Das ist|Das sind)\s+/i, '')
     .replace(/^(Es handelt sich um)\s+/i, '')
     .replace(/^(Sie|Er|Es)\s+steht im Kern für Folgendes:\s*/i, '')
+    .replace(/^Es geht um(?: diesen Inhalt)?:\s*/i, '')
+    .replace(/^(Der|Die|Das)\s+\S+(?:\s+\S+){0,6}\s+ist hier:\s*/i, '')
+    .replace(/^(Der|Die|Das)\s+\S+(?:\s+\S+){0,6}\s+ist kurz gesagt:\s*/i, '')
     .replace(/^(Hier steht)\s+/i, '')
     .replace(/\s+im Mittelpunkt\.?$/i, '')
+    .replace(/,\s*und zwar gilt(?: hier)?:\s*/gi, ', ')
+    .replace(/\s+und zwar gilt(?: hier)?:\s*/gi, ', ')
     .replace(
       /^(Sie|Er|Es)\s+(bezeichnet|ist|sind|beschreibt|steht für|fungiert als|dient als|kennzeichnet|meint|umfasst|bildet|fasst)\s+/i,
       '',
@@ -251,7 +262,56 @@ function stripWraps(m: string): string {
     .replace(/^[.\s]+|[.\s]+$/g, '')
 }
 
-/** Natural full-sentence fallback for noun/adj fragments (no Folgendes wrapper). */
+/** Capitalize German content words in an NP (keep articles/preps lower). */
+function capitalizeNpWords(phrase: string): string {
+  const keep = PREPS
+  return phrase
+    .split(/\s+/)
+    .map((w, i) => {
+      const bare = w.replace(/^[^a-zäöüßA-ZÄÖÜ]+|[^a-zäöüßA-ZÄÖÜ]+$/giu, '')
+      if (!bare) return w
+      const low = bare.toLowerCase()
+      if (i > 0 && keep.has(low)) return w.replace(bare, low)
+      if (/^[a-zäöü]/.test(bare)) {
+        return w.replace(bare, bare.charAt(0).toUpperCase() + bare.slice(1))
+      }
+      return w
+    })
+    .join(' ')
+}
+
+/** Article + NP for a meaning fragment (gender from head noun). */
+function meaningAsPredicate(body: string): string {
+  const t = fixRelativeComma(body.trim())
+  if (!t) return t
+  if (/^(der|die|das|ein|eine|einen|einem|einer|den|dem|des)\s/i.test(t)) {
+    const rest = t.replace(/^(der|die|das|ein|eine|einen|einem|einer|den|dem|des)\s+/i, '')
+    const art = t.match(/^(der|die|das|ein|eine|einen|einem|einer|den|dem|des)/i)![1]!.toLowerCase()
+    return `${art} ${capitalizeNpWords(rest)}`
+  }
+  // Verb-led clause kept as-is (caller may attach pronoun separately).
+  if (PURPOSE_VERB.test(t) || EFFECT_VERB.test(t)) return lowerFirst(t)
+  const capped = capitalizeNpWords(t)
+  const last = (capped.split(/\s+/).pop() ?? capped).toLowerCase()
+  if (/(ung|heit|keit|schaft|ion|tät|ik|enz|anz|ur)$/i.test(last) || /e$/i.test(last)) {
+    return `eine ${capped}`
+  }
+  if (
+    /(er|or|ismus|us|ling)$/i.test(last) ||
+    /(strahl|stoff|kreis|punkt|wert|druck|strom|schatten|spiegel|weg|puls)$/i.test(last)
+  ) {
+    return `ein ${capped}`
+  }
+  if (/(chen|lein|ment|tum|um|modell|organ|gebiss)$/i.test(last)) {
+    return `ein ${capped}`
+  }
+  return `eine ${capped}`
+}
+
+/**
+ * Natural full-sentence fallback for noun/adj fragments.
+ * Never emits „ist hier:“ / „kurz gesagt:“ / „Es geht um“ / „und zwar gilt“.
+ */
 function naturalFragmentOption(term: string, fragment: string): string {
   let body = fragment.replace(/\s+/g, ' ').trim().replace(/[.!?]+$/g, '').trim()
   let enrich = ''
@@ -259,47 +319,64 @@ function naturalFragmentOption(term: string, fragment: string): string {
   if (em) {
     body = em[1]!.trim()
     enrich = em[2]!.trim()
+  } else {
+    const em2 = body.match(/^(.*?);\s*(.+)$/)
+    if (em2 && em2[1]!.split(/\s+/).length >= 2) {
+      body = em2[1]!.trim()
+      enrich = em2[2]!.trim()
+    }
   }
-  if (!body) body = fragment.replace(/\s+/g, ' ').trim()
+  if (!body) body = fragment.replace(/\s+/g, ' ').trim().replace(/[.!?]+$/g, '').trim()
+  // Strip leftover pad wrappers from bank text.
+  body = body
+    .replace(/^(Der|Die|Das)\s+\S+(?:\s+\S+){0,6}\s+ist hier:\s*/i, '')
+    .replace(/^(Der|Die|Das)\s+\S+(?:\s+\S+){0,6}\s+ist kurz gesagt:\s*/i, '')
+    .replace(/^Es geht um(?: diesen Inhalt)?:\s*/i, '')
+    .replace(/,\s*und zwar gilt(?: hier)?:\s*/gi, ', ')
+    .trim()
 
   const t = displayGlossaryTerm(term)
+  const pron = t ? pronounFor(t) : 'Es'
   let out: string
-  if (t) {
-    const art = pronounFor(t) === 'Sie' ? 'Die' : pronounFor(t) === 'Er' ? 'Der' : 'Das'
-    // „ist hier:“ keeps ≥6 words for short 2-word meanings without Folgendes.
-    out =
-      body.split(/\s+/).length >= 2
-        ? `${art} ${t} ist hier: ${body}`
-        : `${art} ${t} ist kurz gesagt: ${body}`
+
+  if (PURPOSE_VERB.test(body) || EFFECT_VERB.test(body)) {
+    out = ensurePeriod(`${pron} ${lowerFirst(body)}`)
+  } else if (/\b(ist|sind|hat|haben|wird|werden|lässt|dient|bedeutet|gilt|bildet|zeigt|enthält|umfasst|sendet|wirft|regelt|steuert|misst|schützt|entsteht|geht|liegt|nimmt|steht)\b/i.test(body)) {
+    out = ensurePeriod(body.charAt(0).toUpperCase() + body.slice(1))
   } else {
-    out =
-      body.split(/\s+/).length >= 3
-        ? `Es geht um ${body}`
-        : `Es geht um diesen Inhalt: ${body}`
-  }
-  out = ensurePeriod(out)
-  if (out.split(/\s+/).length < 6) {
-    out = t
-      ? ensurePeriod(
-          `${pronounFor(t) === 'Sie' ? 'Die' : pronounFor(t) === 'Er' ? 'Der' : 'Das'} ${t} ist kurz gesagt: ${body}`,
-        )
-      : ensurePeriod(`Es geht um diesen Inhalt: ${body}`)
+    const pred = meaningAsPredicate(body)
+    out = ensurePeriod(`${pron} ist ${pred}`)
   }
 
-  if (enrich && !out.toLowerCase().includes(enrich.toLowerCase().slice(0, Math.min(24, enrich.length)))) {
-    const hint = enrich.charAt(0).toLowerCase() + enrich.slice(1)
-    out = ensurePeriod(`${out.replace(/[.!?]$/, '')}, und zwar gilt: ${hint}`)
+  if (enrich) {
+    const hint = enrich.replace(/[.!?]+$/g, '').trim()
+    if (hint && !out.toLowerCase().includes(hint.toLowerCase().slice(0, Math.min(20, hint.length)))) {
+      // Fold enrich as a plain clause — never „und zwar gilt“.
+      out = ensurePeriod(`${out.replace(/[.!?]$/, '')}, ${lowerFirst(hint)}`)
+    }
+  }
+
+  // Prefer „Die {Term} ist …“ over pads when the pronoun sentence is too short.
+  if (out.split(/\s+/).length < 6 && t) {
+    const art = pronounFor(t) === 'Sie' ? 'Die' : pronounFor(t) === 'Er' ? 'Der' : 'Das'
+    let pred = meaningAsPredicate(body)
+    pred = pred.replace(/^(ein|eine|einen)\s+/i, () =>
+      art === 'Die' ? 'die ' : art === 'Der' ? 'der ' : 'das ',
+    )
+    out = ensurePeriod(`${art} ${t} ist ${pred}`)
+  }
+  // Strip any leaked elongator pads — never invent replacements.
+  out = out.replace(/\s+der Ereignisse\.?$/i, '.')
+  out = out.replace(/\s+klar und deutlich\.?$/i, '.')
+  if (BANNED_OPTION.test(out)) {
+    const pred = meaningAsPredicate(body)
+    out = ensurePeriod(`${pron} ist ${pred}`)
   }
   return out
 }
 
 function asNp(m: string): string {
-  const t = fixRelativeComma(m.trim())
-  if (/^(der|die|das|ein|eine|einen|einem|einer|den|dem|des)\s/i.test(t)) {
-    return lowerFirst(t)
-  }
-  if (/^[A-ZÄÖÜ]/.test(t)) return `ein ${lowerFirst(t)}`
-  return t
+  return meaningAsPredicate(m)
 }
 
 /** Mechanical glossary wrappers that must be rebuilt. */
@@ -308,6 +385,9 @@ export function isMechanicalGlossaryOption(opt: string): boolean {
   if (!o) return false
   if (BANNED_OPTION.test(o)) return true
   if (/\bsteht im Kern für Folgendes\b/i.test(o)) return true
+  if (/\bist hier:|\bist kurz gesagt:|\bHier gilt\b|\bEs geht um|\bund zwar gilt|\bder Ereignisse\b/i.test(o)) {
+    return true
+  }
   if (/\bfasst(?: den Inhalt so)? zusammen:\b/i.test(o)) return true
   if (/^(Sie|Er|Es)\s+(bezeichnet|kennzeichnet|steht für|meint)\b/i.test(o)) return true
   if (/^(Sie|Er|Es)\s+ist\s+(das|die|der|den|ein|eine|einen)\b/i.test(o)) {
@@ -316,6 +396,20 @@ export function isMechanicalGlossaryOption(opt: string): boolean {
       return false
     }
     if (/,\s*(der|die|das)\s+\S+/i.test(o) && o.split(/\s+/).length >= 10) return false
+    // Gender/casing mash like „das Körper der Selbst Licht …“ stays mechanical.
+    if (
+      /\b(das Körper|die Auge|den Verschwinden|der Selbst|Selbst Licht|die Weg)\b/i.test(o) ||
+      /\bist\s+das\s+[A-ZÄÖÜ]\w+\s+der\s+[A-ZÄÖÜ]/i.test(o)
+    ) {
+      return true
+    }
+    // Plain „Sie ist eine …“ definition sentences (≥6 words) are allowed.
+    if (
+      /^(Sie|Er|Es)\s+ist\s+(ein|eine|einen|der|die|das|den)\s+[A-ZÄÖÜa-zäöü]/i.test(o) &&
+      o.split(/\s+/).length >= 6
+    ) {
+      return false
+    }
     return true
   }
   if (

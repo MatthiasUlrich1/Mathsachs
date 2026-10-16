@@ -15,8 +15,7 @@ export const k5KriechtiereSchutz: BioBank = {
     {
       concept: "bio:k5:krschutz:f0",
       prompt: "Wozu dient Artenschutz?",
-      answer: "Das Artenschutz ist hier: Maßnahmen zum Erhalt bedrohter Arten.",
-      wrong: ["Das Artenschutz ist hier: Verschwinden geeigneter Habitate.", "Das Artenschutz ist hier: Heimische Eidechse warmer Standorte.", "Das Artenschutz ist hier: Heimische Schlange feuchter Lebensräume."],
+      answer: "Es ist eine Maßnahmen zum Erhalt Bedrohter Arten.", wrong: ["Es ist eine Verschwinden Geeigneter Habitate.", "Es ist eine Heimische Eidechse Warmer Standorte.", "Es ist eine Heimische Schlange Feuchter Lebensräume."],
       explanation: "Artenschutz: Maßnahmen zum Erhalt bedrohter Arten",
       wissen: fw(
         "Schützt Bestände und Lebensräume von Kriechtieren. Bezug: Kriechtierschutz.",
@@ -27,8 +26,7 @@ export const k5KriechtiereSchutz: BioBank = {
     {
       concept: "bio:k5:krschutz:f1",
       prompt: "Was kennzeichnet „Lebensraumverlust“?",
-      answer: "Das Lebensraumverlust ist hier: Verschwinden geeigneter Habitate.",
-      wrong: ["Das Lebensraumverlust ist hier: Maßnahmen zum Erhalt bedrohter Arten.", "Das Lebensraumverlust ist hier: Heimische Eidechse warmer Standorte.", "Das Lebensraumverlust ist hier: Heimische Schlange feuchter Lebensräume."],
+      answer: "Es ist eine Verschwinden Geeigneter Habitate.", wrong: ["Es ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Es ist eine Heimische Eidechse Warmer Standorte.", "Es ist eine Heimische Schlange Feuchter Lebensräume."],
       explanation: "Lebensraumverlust: Verschwinden geeigneter Habitate",
       wissen: fw(
         "Hauptgefährdung vieler heimischer Reptilien. Bezug: Kriechtierschutz.",
@@ -39,8 +37,7 @@ export const k5KriechtiereSchutz: BioBank = {
     {
       concept: "bio:k5:krschutz:f2",
       prompt: "Was kennzeichnet „Zauneidechse“?",
-      answer: "Die Zauneidechse ist hier: Heimische Eidechse warmer Standorte.",
-      wrong: ["Die Zauneidechse ist hier: Maßnahmen zum Erhalt bedrohter Arten.", "Die Zauneidechse ist hier: Verschwinden geeigneter Habitate.", "Die Zauneidechse ist hier: Heimische Schlange feuchter Lebensräume."],
+      answer: "Sie ist eine Heimische Eidechse Warmer Standorte.", wrong: ["Sie ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Sie ist eine Verschwinden Geeigneter Habitate.", "Sie ist eine Heimische Schlange Feuchter Lebensräume."],
       explanation: "Zauneidechse: Heimische Eidechse warmer Standorte",
       wissen: fw(
         "Braucht Sonne, Verstecke und strukturreiche Flächen. Bezug: Kriechtierschutz.",
@@ -51,8 +48,7 @@ export const k5KriechtiereSchutz: BioBank = {
     {
       concept: "bio:k5:krschutz:f3",
       prompt: "Was kennzeichnet „Ringelnatter“?",
-      answer: "Der Ringelnatter ist hier: Heimische Schlange feuchter Lebensräume.",
-      wrong: ["Der Ringelnatter ist hier: Maßnahmen zum Erhalt bedrohter Arten.", "Der Ringelnatter ist hier: Verschwinden geeigneter Habitate.", "Der Ringelnatter ist hier: Heimische Eidechse warmer Standorte."],
+      answer: "Er ist eine Heimische Schlange Feuchter Lebensräume.", wrong: ["Er ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Er ist eine Verschwinden Geeigneter Habitate.", "Er ist eine Heimische Eidechse Warmer Standorte."],
       explanation: "Ringelnatter: Heimische Schlange feuchter Lebensräume",
       wissen: fw(
         "Oft an Gewässern mit Amphibienbeute. Bezug: Kriechtierschutz.",
@@ -63,8 +59,7 @@ export const k5KriechtiereSchutz: BioBank = {
     {
       concept: "bio:k5:krschutz:f4",
       prompt: "Was kennzeichnet „Totholz“?",
-      answer: "Das Totholz ist hier: Abgestorbenes Holz als Struktur.",
-      wrong: ["Das Totholz ist hier: Maßnahmen zum Erhalt bedrohter Arten.", "Das Totholz ist hier: Verschwinden geeigneter Habitate.", "Das Totholz ist hier: Heimische Eidechse warmer Standorte."],
+      answer: "Es ist eine Abgestorbenes Holz als Struktur.", wrong: ["Es ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Es ist eine Verschwinden Geeigneter Habitate.", "Es ist eine Heimische Eidechse Warmer Standorte."],
       explanation: "Totholz: Abgestorbenes Holz als Struktur",
       wissen: fw(
         "Bietet Verstecke und Wärmespeicher. Bezug: Kriechtierschutz.",
@@ -75,8 +70,7 @@ export const k5KriechtiereSchutz: BioBank = {
     {
       concept: "bio:k5:krschutz:f5",
       prompt: "Was kennzeichnet „Steinhaufen“?",
-      answer: "Das Steinhaufen ist hier: Lesesteine als Versteckstruktur.",
-      wrong: ["Das Steinhaufen ist hier: Maßnahmen zum Erhalt bedrohter Arten.", "Das Steinhaufen ist hier: Verschwinden geeigneter Habitate.", "Das Steinhaufen ist hier: Heimische Eidechse warmer Standorte."],
+      answer: "Es ist eine Lesesteine als Versteckstruktur.", wrong: ["Es ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Es ist eine Verschwinden Geeigneter Habitate.", "Es ist eine Heimische Eidechse Warmer Standorte."],
       explanation: "Steinhaufen: Lesesteine als Versteckstruktur",
       wissen: fw(
         "Wichtige Mikrohabitate für Eidechsen. Bezug: Kriechtierschutz.",
@@ -87,8 +81,7 @@ export const k5KriechtiereSchutz: BioBank = {
     {
       concept: "bio:k5:krschutz:f6",
       prompt: "Was kennzeichnet „Wechselwarm“?",
-      answer: "Das Wechselwarm ist kurz gesagt: Körpertemperatur folgt der Umwelt.",
-      wrong: ["Das Wechselwarm ist hier: Maßnahmen zum Erhalt bedrohter Arten.", "Das Wechselwarm ist hier: Verschwinden geeigneter Habitate.", "Das Wechselwarm ist hier: Heimische Eidechse warmer Standorte."],
+      answer: "Körpertemperatur folgt der Umwelt.", wrong: ["Es ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Es ist eine Verschwinden Geeigneter Habitate.", "Es ist eine Heimische Eidechse Warmer Standorte."],
       explanation: "Wechselwarm: Körpertemperatur folgt der Umwelt",
       wissen: fw(
         "Deshalb sind ungestörte Sonnenplätze nötig. Bezug: Kriechtierschutz.",
@@ -99,8 +92,7 @@ export const k5KriechtiereSchutz: BioBank = {
     {
       concept: "bio:k5:krschutz:f7",
       prompt: "Was kennzeichnet „Fragmentierung“?",
-      answer: "Die Fragmentierung ist kurz gesagt: Zerschnittene Lebensräume.",
-      wrong: ["Die Fragmentierung ist hier: Maßnahmen zum Erhalt bedrohter Arten.", "Die Fragmentierung ist hier: Verschwinden geeigneter Habitate.", "Die Fragmentierung ist hier: Heimische Eidechse warmer Standorte."],
+      answer: "Die Fragmentierung ist die Zerschnittene Lebensräume.", wrong: ["Sie ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Sie ist eine Verschwinden Geeigneter Habitate.", "Sie ist eine Heimische Eidechse Warmer Standorte."],
       explanation: "Fragmentierung: Zerschnittene Lebensräume",
       wissen: fw(
         "Straßen trennen Populationen und verursachen Verluste. Bezug: Kriechtierschutz.",
@@ -111,8 +103,7 @@ export const k5KriechtiereSchutz: BioBank = {
     {
       concept: "bio:k5:krschutz:f8",
       prompt: "Was kennzeichnet „Habitatpflege“?",
-      answer: "Die Habitatpflege ist hier: Pflege geeigneter Lebensräume.",
-      wrong: ["Die Habitatpflege ist hier: Maßnahmen zum Erhalt bedrohter Arten.", "Die Habitatpflege ist hier: Verschwinden geeigneter Habitate.", "Die Habitatpflege ist hier: Heimische Eidechse warmer Standorte."],
+      answer: "Sie ist eine Pflege Geeigneter Lebensräume.", wrong: ["Sie ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Sie ist eine Verschwinden Geeigneter Habitate.", "Sie ist eine Heimische Eidechse Warmer Standorte."],
       explanation: "Habitatpflege: Pflege geeigneter Lebensräume",
       wissen: fw(
         "Teil wirksamen Kriechtierschutzes. Bezug: Kriechtierschutz.",
@@ -123,8 +114,7 @@ export const k5KriechtiereSchutz: BioBank = {
     {
       concept: "bio:k5:krschutz:f9",
       prompt: "Was kennzeichnet „Naturnaher Garten“?",
-      answer: "Das Naturnaher Garten ist hier: Garten mit Wildnisstrukturen.",
-      wrong: ["Das Naturnaher Garten ist hier: Maßnahmen zum Erhalt bedrohter Arten.", "Das Naturnaher Garten ist hier: Verschwinden geeigneter Habitate.", "Das Naturnaher Garten ist hier: Heimische Eidechse warmer Standorte."],
+      answer: "Es ist eine Garten mit Wildnisstrukturen.", wrong: ["Es ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Es ist eine Verschwinden Geeigneter Habitate.", "Es ist eine Heimische Eidechse Warmer Standorte."],
       explanation: "Naturnaher Garten: Garten mit Wildnisstrukturen",
       wissen: fw(
         "Kann Ersatzlebensräume schaffen. Bezug: Kriechtierschutz.",
@@ -135,8 +125,7 @@ export const k5KriechtiereSchutz: BioBank = {
     {
       concept: "bio:k5:krschutz:f10",
       prompt: "Wozu dient Schutzgebiet?",
-      answer: "Das Schutzgebiet ist hier: Fläche mit besonderen Regeln.",
-      wrong: ["Das Schutzgebiet ist hier: Maßnahmen zum Erhalt bedrohter Arten.", "Das Schutzgebiet ist hier: Verschwinden geeigneter Habitate.", "Das Schutzgebiet ist hier: Heimische Eidechse warmer Standorte."],
+      answer: "Man soll fläche mit besonderen regeln.", wrong: ["Es ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Es ist eine Verschwinden Geeigneter Habitate.", "Es ist eine Heimische Eidechse Warmer Standorte."],
       explanation: "Schutzgebiet: Fläche mit besonderen Regeln",
       wissen: fw(
         "Sichert Lebensräume langfristig. Bezug: Kriechtierschutz.",
@@ -147,8 +136,7 @@ export const k5KriechtiereSchutz: BioBank = {
     {
       concept: "bio:k5:krschutz:f11",
       prompt: "Was kennzeichnet „Brutruhe“?",
-      answer: "Die Brutruhe ist hier: Ungestörte Phasen an Lebensräumen.",
-      wrong: ["Die Brutruhe ist hier: Maßnahmen zum Erhalt bedrohter Arten.", "Die Brutruhe ist hier: Verschwinden geeigneter Habitate.", "Die Brutruhe ist hier: Heimische Eidechse warmer Standorte."],
+      answer: "Sie ist eine Ungestörte Phasen an Lebensräumen.", wrong: ["Sie ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Sie ist eine Verschwinden Geeigneter Habitate.", "Sie ist eine Heimische Eidechse Warmer Standorte."],
       explanation: "Brutruhe: Ungestörte Phasen an Lebensräumen",
       wissen: fw(
         "Verringert Stress und Fluchtenergieverlust. Bezug: Kriechtierschutz.",
@@ -159,8 +147,7 @@ export const k5KriechtiereSchutz: BioBank = {
     {
       concept: "bio:k5:krschutz:x0",
       prompt: "Kriechtierschutz: Warum sind Sonnenplätze für Kriechtiere schützenswert?",
-      answer: "Wechselwarme Tiere brauchen Wärme zur Aktivität, und zwar gilt: schützt Bestände und Lebensräume von Kriechtieren.",
-      wrong: ["Weil sie gleichwarm wie Säuger sind.", "Hier gilt: Weil Wärme Federn erzeugt.", "Es geht um Weil sie nur nachts jagen."],
+      answer: "Wechselwarme Tiere brauchen Wärme zur Aktivität, schützt Bestände und Lebensräume von Kriechtieren.", wrong: ["Weil sie gleichwarm wie Säuger sind.", "Es ist eine Weil Wärme Federn erzeugt.", "Es ist eine Weil sie nur nachts jagen."],
       explanation: "Thermoregulation.",
       wissen: fw(
         "Ohne Wärmeplätze sinkt die Aktivität von Eidechsen und Schlangen stark.",
@@ -169,8 +156,7 @@ export const k5KriechtiereSchutz: BioBank = {
     {
       concept: "bio:k5:krschutz:x1",
       prompt: "Kriechtierschutz: Was hilft Zauneidechsen konkret?",
-      answer: "Es geht um Erhalt von Böschungen, Steinen und Totholz, und zwar gilt: schützt Bestände und Lebensräume von Kriechtieren.",
-      wrong: ["Es geht um diesen Inhalt: Alles versiegeln.", "Es geht um Nur dunkle Keller.", "Es geht um Alle Verstecke entfernen."],
+      answer: "Es ist eine Erhalt von Böschungen.", wrong: ["Es ist eine Alles Versiegeln.", "Es ist ein Nur dunkle Keller.", "Es ist eine Alle Verstecke entfernen."],
       explanation: "Strukturreichtum.",
       wissen: fw(
         "Strukturreiche, sonnige Flächen sichern Verstecke und Eiablage.",
@@ -218,8 +204,7 @@ export const k5VoegelSchnabel: BioBank = {
     {
       concept: "bio:k5:schnabel:f0",
       prompt: "Was kennzeichnet „Körnerschnabel“?",
-      answer: "Das Körnerschnabel ist hier: Kurz und kräftig zum Knacken von Samen.",
-      wrong: ["Das Körnerschnabel ist hier: Gebogen zum Zerreißen von Fleisch.", "Das Körnerschnabel ist hier: Seiht Nahrung aus Wasser.", "Das Körnerschnabel ist hier: Lang und schlank für Blütennektar."],
+      answer: "Es ist eine Kurz und Kräftig zum Knacken von Samen.", wrong: ["Es ist eine Gebogen zum Zerreißen von Fleisch.", "Es ist ein Seiht Nahrung aus Wasser.", "Es ist eine Lang und Schlank für Blütennektar."],
       explanation: "Körnerschnabel: Kurz und kräftig zum Knacken von Samen",
       wissen: fw(
         "Typisch für viele Finken. Bezug: Schnabelformen.",
@@ -230,8 +215,7 @@ export const k5VoegelSchnabel: BioBank = {
     {
       concept: "bio:k5:schnabel:f1",
       prompt: "Was kennzeichnet „Hakenschnabel“?",
-      answer: "Das Hakenschnabel ist hier: Gebogen zum Zerreißen von Fleisch.",
-      wrong: ["Das Hakenschnabel ist hier: Kurz und kräftig zum Knacken von Samen.", "Das Hakenschnabel ist hier: Seiht Nahrung aus Wasser.", "Das Hakenschnabel ist hier: Lang und schlank für Blütennektar."],
+      answer: "Es ist eine Gebogen zum Zerreißen von Fleisch.", wrong: ["Es ist eine Kurz und Kräftig zum Knacken von Samen.", "Es ist ein Seiht Nahrung aus Wasser.", "Es ist eine Lang und Schlank für Blütennektar."],
       explanation: "Hakenschnabel: Gebogen zum Zerreißen von Fleisch",
       wissen: fw(
         "Kennzeichen vieler Greifvögel. Bezug: Schnabelformen.",
@@ -242,8 +226,7 @@ export const k5VoegelSchnabel: BioBank = {
     {
       concept: "bio:k5:schnabel:f2",
       prompt: "Was kennzeichnet „Filterschnabel“?",
-      answer: "Das Filterschnabel ist hier: Seiht Nahrung aus Wasser.",
-      wrong: ["Das Filterschnabel ist hier: Kurz und kräftig zum Knacken von Samen.", "Das Filterschnabel ist hier: Gebogen zum Zerreißen von Fleisch.", "Das Filterschnabel ist hier: Lang und schlank für Blütennektar."],
+      answer: "Es ist ein Seiht Nahrung aus Wasser.", wrong: ["Es ist eine Kurz und Kräftig zum Knacken von Samen.", "Es ist eine Gebogen zum Zerreißen von Fleisch.", "Es ist eine Lang und Schlank für Blütennektar."],
       explanation: "Filterschnabel: Seiht Nahrung aus Wasser",
       wissen: fw(
         "z. B. bei Enten. Bezug: Schnabelformen.",
@@ -254,8 +237,7 @@ export const k5VoegelSchnabel: BioBank = {
     {
       concept: "bio:k5:schnabel:f3",
       prompt: "Was kennzeichnet „Nektarschnabel“?",
-      answer: "Das Nektarschnabel ist hier: Lang und schlank für Blütennektar.",
-      wrong: ["Das Nektarschnabel ist hier: Kurz und kräftig zum Knacken von Samen.", "Das Nektarschnabel ist hier: Gebogen zum Zerreißen von Fleisch.", "Das Nektarschnabel ist hier: Seiht Nahrung aus Wasser."],
+      answer: "Es ist eine Lang und Schlank für Blütennektar.", wrong: ["Es ist eine Kurz und Kräftig zum Knacken von Samen.", "Es ist eine Gebogen zum Zerreißen von Fleisch.", "Es ist ein Seiht Nahrung aus Wasser."],
       explanation: "Nektarschnabel: Lang und schlank für Blütennektar",
       wissen: fw(
         "z. B. Kolibri. Bezug: Schnabelformen.",
@@ -266,8 +248,7 @@ export const k5VoegelSchnabel: BioBank = {
     {
       concept: "bio:k5:schnabel:f4",
       prompt: "Was kennzeichnet „Watvogelschnabel“?",
-      answer: "Das Watvogelschnabel ist hier: Oft lang zum Stochern im Schlamm.",
-      wrong: ["Das Watvogelschnabel ist hier: Kurz und kräftig zum Knacken von Samen.", "Das Watvogelschnabel ist hier: Gebogen zum Zerreißen von Fleisch.", "Das Watvogelschnabel ist hier: Seiht Nahrung aus Wasser."],
+      answer: "Es ist eine Oft Lang zum Stochern im Schlamm.", wrong: ["Es ist eine Kurz und Kräftig zum Knacken von Samen.", "Es ist eine Gebogen zum Zerreißen von Fleisch.", "Es ist ein Seiht Nahrung aus Wasser."],
       explanation: "Watvogelschnabel: Oft lang zum Stochern im Schlamm",
       wissen: fw(
         "Erreicht versteckte Beute. Bezug: Schnabelformen.",
@@ -278,8 +259,7 @@ export const k5VoegelSchnabel: BioBank = {
     {
       concept: "bio:k5:schnabel:f5",
       prompt: "Was kennzeichnet „Insektenschnabel“?",
-      answer: "Das Insektenschnabel ist hier: Spitz zum präzisen Picken.",
-      wrong: ["Das Insektenschnabel ist hier: Kurz und kräftig zum Knacken von Samen.", "Das Insektenschnabel ist hier: Gebogen zum Zerreißen von Fleisch.", "Das Insektenschnabel ist hier: Seiht Nahrung aus Wasser."],
+      answer: "Es ist eine Spitz zum Präzisen Picken.", wrong: ["Es ist eine Kurz und Kräftig zum Knacken von Samen.", "Es ist eine Gebogen zum Zerreißen von Fleisch.", "Es ist ein Seiht Nahrung aus Wasser."],
       explanation: "Insektenschnabel: Spitz zum präzisen Picken",
       wissen: fw(
         "Viele Singvögel. Bezug: Schnabelformen.",
@@ -290,8 +270,7 @@ export const k5VoegelSchnabel: BioBank = {
     {
       concept: "bio:k5:schnabel:f6",
       prompt: "Was kennzeichnet „Spechtschnabel“?",
-      answer: "Das Spechtschnabel ist hier: Meißelförmig für Holz.",
-      wrong: ["Das Spechtschnabel ist hier: Kurz und kräftig zum Knacken von Samen.", "Das Spechtschnabel ist hier: Gebogen zum Zerreißen von Fleisch.", "Das Spechtschnabel ist hier: Seiht Nahrung aus Wasser."],
+      answer: "Es ist eine Meißelförmig für Holz.", wrong: ["Es ist eine Kurz und Kräftig zum Knacken von Samen.", "Es ist eine Gebogen zum Zerreißen von Fleisch.", "Es ist ein Seiht Nahrung aus Wasser."],
       explanation: "Spechtschnabel: Meißelförmig für Holz",
       wissen: fw(
         "Öffnet Gänge zu Insektenlarven. Bezug: Schnabelformen.",
@@ -302,8 +281,7 @@ export const k5VoegelSchnabel: BioBank = {
     {
       concept: "bio:k5:schnabel:f7",
       prompt: "Was kennzeichnet „Hornscheide“?",
-      answer: "Die Hornscheide ist hier: Äußere leichte Schnabelhaut.",
-      wrong: ["Die Hornscheide ist hier: Kurz und kräftig zum Knacken von Samen.", "Die Hornscheide ist hier: Gebogen zum Zerreißen von Fleisch.", "Die Hornscheide ist hier: Seiht Nahrung aus Wasser."],
+      answer: "Sie ist eine Äußere Leichte Schnabelhaut.", wrong: ["Sie ist eine Kurz und Kräftig zum Knacken von Samen.", "Sie ist eine Gebogen zum Zerreißen von Fleisch.", "Sie ist ein Seiht Nahrung aus Wasser."],
       explanation: "Hornscheide: Äußere leichte Schnabelhaut",
       wissen: fw(
         "Ersetzt Zähne funktionell. Bezug: Schnabelformen.",
@@ -314,8 +292,7 @@ export const k5VoegelSchnabel: BioBank = {
     {
       concept: "bio:k5:schnabel:f8",
       prompt: "Was kennzeichnet „Muskelmagen“?",
-      answer: "Das Muskelmagen ist hier: Zerkleinert Nahrung nach dem Schnabel.",
-      wrong: ["Das Muskelmagen ist hier: Kurz und kräftig zum Knacken von Samen.", "Das Muskelmagen ist hier: Gebogen zum Zerreißen von Fleisch.", "Das Muskelmagen ist hier: Seiht Nahrung aus Wasser."],
+      answer: "Es ist eine Zerkleinert Nahrung nach dem Schnabel.", wrong: ["Es ist eine Kurz und Kräftig zum Knacken von Samen.", "Es ist eine Gebogen zum Zerreißen von Fleisch.", "Es ist ein Seiht Nahrung aus Wasser."],
       explanation: "Muskelmagen: Zerkleinert Nahrung nach dem Schnabel",
       wissen: fw(
         "Oft mit Steinchen. Bezug: Schnabelformen.",
@@ -326,8 +303,7 @@ export const k5VoegelSchnabel: BioBank = {
     {
       concept: "bio:k5:schnabel:f9",
       prompt: "Was kennzeichnet „Nahrungsnische“?",
-      answer: "Die Nahrungsnische ist hier: Typische Ressource einer Art.",
-      wrong: ["Die Nahrungsnische ist hier: Kurz und kräftig zum Knacken von Samen.", "Die Nahrungsnische ist hier: Gebogen zum Zerreißen von Fleisch.", "Die Nahrungsnische ist hier: Seiht Nahrung aus Wasser."],
+      answer: "Sie ist eine Typische Ressource einer Art.", wrong: ["Sie ist eine Kurz und Kräftig zum Knacken von Samen.", "Sie ist eine Gebogen zum Zerreißen von Fleisch.", "Sie ist ein Seiht Nahrung aus Wasser."],
       explanation: "Nahrungsnische: Typische Ressource einer Art",
       wissen: fw(
         "Schnabelform erschließt sie. Bezug: Schnabelformen.",
@@ -338,8 +314,7 @@ export const k5VoegelSchnabel: BioBank = {
     {
       concept: "bio:k5:schnabel:f10",
       prompt: "Was kennzeichnet „Angepasstheit“?",
-      answer: "Die Angepasstheit ist hier: Bau passt zur Lebensweise.",
-      wrong: ["Die Angepasstheit ist hier: Kurz und kräftig zum Knacken von Samen.", "Die Angepasstheit ist hier: Gebogen zum Zerreißen von Fleisch.", "Die Angepasstheit ist hier: Seiht Nahrung aus Wasser."],
+      answer: "Sie ist eine Bau Passt zur Lebensweise.", wrong: ["Sie ist eine Kurz und Kräftig zum Knacken von Samen.", "Sie ist eine Gebogen zum Zerreißen von Fleisch.", "Sie ist ein Seiht Nahrung aus Wasser."],
       explanation: "Angepasstheit: Bau passt zur Lebensweise",
       wissen: fw(
         "Schnabel und Nahrung sind verknüpft. Bezug: Schnabelformen.",
@@ -350,8 +325,7 @@ export const k5VoegelSchnabel: BioBank = {
     {
       concept: "bio:k5:schnabel:f11",
       prompt: "Was kennzeichnet „Greifvogel“?",
-      answer: "Das Greifvogel ist hier: Jagt oft Wirbeltiere.",
-      wrong: ["Das Greifvogel ist hier: Kurz und kräftig zum Knacken von Samen.", "Das Greifvogel ist hier: Gebogen zum Zerreißen von Fleisch.", "Das Greifvogel ist hier: Seiht Nahrung aus Wasser."],
+      answer: "Es ist eine Jagt Oft Wirbeltiere.", wrong: ["Es ist eine Kurz und Kräftig zum Knacken von Samen.", "Es ist eine Gebogen zum Zerreißen von Fleisch.", "Es ist ein Seiht Nahrung aus Wasser."],
       explanation: "Greifvogel: Jagt oft Wirbeltiere",
       wissen: fw(
         "Haken und Krallen wirken zusammen. Bezug: Schnabelformen.",
@@ -362,8 +336,7 @@ export const k5VoegelSchnabel: BioBank = {
     {
       concept: "bio:k5:schnabel:x0",
       prompt: "Schnabelformen: Warum haben Vögel keine Zähne im Schnabel?",
-      answer: "Es ist der Hornschnabel greift und zerkleinert; der Magen arbeitet nach, und zwar gilt hier: Typisch für viele Finken.",
-      wrong: ["Hier gilt: Weil Vögel keine Nahrung brauchen.", "Es geht um Weil Zähne nur bei Fischen vorkommen.", "Es geht um Weil Federn Zähne ersetzen."],
+      answer: "Es ist der Hornschnabel greift und zerkleinert; der Magen arbeitet nach durch typisch für viele Finken.", wrong: ["Es ist ein Weil Vögel keine Nahrung brauchen.", "Es ist eine Weil Zähne nur bei Fischen vorkommen.", "Es ist eine Weil Federn Zähne ersetzen."],
       explanation: "Leichtbau.",
       wissen: fw(
         "Ein leichter Schnabel ohne Zähne passt zum Flug; weitere Zerkleinerung erfolgt im Muskelmagen.",
@@ -372,8 +345,7 @@ export const k5VoegelSchnabel: BioBank = {
     {
       concept: "bio:k5:schnabel:x1",
       prompt: "Schnabelformen: Was zeigt der Vergleich vieler Schnabelformen?",
-      answer: "Es geht um Angepasstheit an unterschiedliche Nahrung, und zwar gilt: typisch für viele Finken.",
-      wrong: ["Es geht um Dass alle Vögel identisch fressen.", "Hier gilt: Dass Schnäbel überflüssig sind.", "Es geht um Dass Federn die Atmung ersetzen."],
+      answer: "Es ist eine Angepasstheit an unterschiedliche Nahrung.", wrong: ["Es ist eine Dass alle Vögel identisch fressen.", "Es ist eine Dass Schnäbel überflüssig sind.", "Es ist eine Dass Federn die Atmung ersetzen."],
       explanation: "Form folgt Funktion.",
       wissen: fw(
         "Unterschiedliche Schnäbel erschließen verschiedene Nahrungsquellen.",
@@ -421,8 +393,7 @@ export const k5VoegelVerhalten: BioBank = {
     {
       concept: "bio:k5:vgverh:f0",
       prompt: "Was kennzeichnet „Balz“?",
-      answer: "Das Balz ist hier: Werbeverhalten vor der Paarung.",
-      wrong: ["Das Balz ist kurz gesagt: Verteidigter Lebensraum.", "Das Balz ist kurz gesagt: Saisonaler Ortswechsel.", "Das Balz ist hier: Jungvogel lange nestabhängig."],
+      answer: "Es ist eine Werbeverhalten vor der Paarung.", wrong: ["Das Balz ist das Verteidigter Lebensraum.", "Das Balz ist das Saisonaler Ortswechsel.", "Es ist eine Jungvogel Lange Nestabhängig."],
       explanation: "Balz: Werbeverhalten vor der Paarung",
       wissen: fw(
         "Gesang, Posieren oder Flugmanöver. Bezug: Vogelverhalten.",
@@ -433,8 +404,7 @@ export const k5VoegelVerhalten: BioBank = {
     {
       concept: "bio:k5:vgverh:f1",
       prompt: "Was kennzeichnet „Revier“?",
-      answer: "Der Revier ist kurz gesagt: Verteidigter Lebensraum.",
-      wrong: ["Der Revier ist hier: Werbeverhalten vor der Paarung.", "Der Revier ist kurz gesagt: Saisonaler Ortswechsel.", "Der Revier ist hier: Jungvogel lange nestabhängig."],
+      answer: "Der Revier ist der Verteidigter Lebensraum.", wrong: ["Er ist eine Werbeverhalten vor der Paarung.", "Der Revier ist der Saisonaler Ortswechsel.", "Er ist eine Jungvogel Lange Nestabhängig."],
       explanation: "Revier: Verteidigter Lebensraum",
       wissen: fw(
         "Sichert Nahrung und Nistplatz. Bezug: Vogelverhalten.",
@@ -445,8 +415,7 @@ export const k5VoegelVerhalten: BioBank = {
     {
       concept: "bio:k5:vgverh:f2",
       prompt: "Was kennzeichnet „Vogelzug“?",
-      answer: "Das Vogelzug ist kurz gesagt: Saisonaler Ortswechsel.",
-      wrong: ["Das Vogelzug ist hier: Werbeverhalten vor der Paarung.", "Das Vogelzug ist kurz gesagt: Verteidigter Lebensraum.", "Das Vogelzug ist hier: Jungvogel lange nestabhängig."],
+      answer: "Das Vogelzug ist das Saisonaler Ortswechsel.", wrong: ["Es ist eine Werbeverhalten vor der Paarung.", "Das Vogelzug ist das Verteidigter Lebensraum.", "Es ist eine Jungvogel Lange Nestabhängig."],
       explanation: "Vogelzug: Saisonaler Ortswechsel",
       wissen: fw(
         "Anpassung an Nahrung und Klima. Bezug: Vogelverhalten.",
@@ -457,8 +426,7 @@ export const k5VoegelVerhalten: BioBank = {
     {
       concept: "bio:k5:vgverh:f3",
       prompt: "Was kennzeichnet „Nesthocker“?",
-      answer: "Der Nesthocker ist hier: Jungvogel lange nestabhängig.",
-      wrong: ["Der Nesthocker ist hier: Werbeverhalten vor der Paarung.", "Der Nesthocker ist kurz gesagt: Verteidigter Lebensraum.", "Der Nesthocker ist kurz gesagt: Saisonaler Ortswechsel."],
+      answer: "Er ist eine Jungvogel Lange Nestabhängig.", wrong: ["Er ist eine Werbeverhalten vor der Paarung.", "Der Nesthocker ist der Verteidigter Lebensraum.", "Der Nesthocker ist der Saisonaler Ortswechsel."],
       explanation: "Nesthocker: Jungvogel lange nestabhängig",
       wissen: fw(
         "Braucht intensive Fütterung. Bezug: Vogelverhalten.",
@@ -469,8 +437,7 @@ export const k5VoegelVerhalten: BioBank = {
     {
       concept: "bio:k5:vgverh:f4",
       prompt: "Was kennzeichnet „Nestflüchter“?",
-      answer: "Der Nestflüchter ist hier: Jungvogel früh mobil.",
-      wrong: ["Der Nestflüchter ist hier: Werbeverhalten vor der Paarung.", "Der Nestflüchter ist kurz gesagt: Verteidigter Lebensraum.", "Der Nestflüchter ist kurz gesagt: Saisonaler Ortswechsel."],
+      answer: "Er ist eine Jungvogel Früh Mobil.", wrong: ["Er ist eine Werbeverhalten vor der Paarung.", "Der Nestflüchter ist der Verteidigter Lebensraum.", "Der Nestflüchter ist der Saisonaler Ortswechsel."],
       explanation: "Nestflüchter: Jungvogel früh mobil",
       wissen: fw(
         "Folgt bald den Eltern. Bezug: Vogelverhalten.",
@@ -481,8 +448,7 @@ export const k5VoegelVerhalten: BioBank = {
     {
       concept: "bio:k5:vgverh:f5",
       prompt: "Was kennzeichnet „Gesang“?",
-      answer: "Das Gesang ist kurz gesagt: Akustische Kommunikation.",
-      wrong: ["Das Gesang ist hier: Werbeverhalten vor der Paarung.", "Das Gesang ist kurz gesagt: Verteidigter Lebensraum.", "Das Gesang ist kurz gesagt: Saisonaler Ortswechsel."],
+      answer: "Das Gesang ist das Akustische Kommunikation.", wrong: ["Es ist eine Werbeverhalten vor der Paarung.", "Das Gesang ist das Verteidigter Lebensraum.", "Das Gesang ist das Saisonaler Ortswechsel."],
       explanation: "Gesang: Akustische Kommunikation",
       wissen: fw(
         "Revierkennzeichnung und Partnerwahl. Bezug: Vogelverhalten.",
@@ -493,8 +459,7 @@ export const k5VoegelVerhalten: BioBank = {
     {
       concept: "bio:k5:vgverh:f6",
       prompt: "Was kennzeichnet „Alarmruf“?",
-      answer: "Das Alarmruf ist hier: Warnsignal bei Gefahr.",
-      wrong: ["Das Alarmruf ist hier: Werbeverhalten vor der Paarung.", "Das Alarmruf ist kurz gesagt: Verteidigter Lebensraum.", "Das Alarmruf ist kurz gesagt: Saisonaler Ortswechsel."],
+      answer: "Es ist eine Warnsignal bei Gefahr.", wrong: ["Es ist eine Werbeverhalten vor der Paarung.", "Das Alarmruf ist das Verteidigter Lebensraum.", "Das Alarmruf ist das Saisonaler Ortswechsel."],
       explanation: "Alarmruf: Warnsignal bei Gefahr",
       wissen: fw(
         "Schützt Artgenossen. Bezug: Vogelverhalten.",
@@ -505,8 +470,7 @@ export const k5VoegelVerhalten: BioBank = {
     {
       concept: "bio:k5:vgverh:f7",
       prompt: "Was kennzeichnet „Gefiederpflege“?",
-      answer: "Die Gefiederpflege ist hier: Putzen und Ordnen der Federn.",
-      wrong: ["Die Gefiederpflege ist hier: Werbeverhalten vor der Paarung.", "Die Gefiederpflege ist kurz gesagt: Verteidigter Lebensraum.", "Die Gefiederpflege ist kurz gesagt: Saisonaler Ortswechsel."],
+      answer: "Sie ist eine Putzen und Ordnen der Federn.", wrong: ["Sie ist eine Werbeverhalten vor der Paarung.", "Die Gefiederpflege ist die Verteidigter Lebensraum.", "Die Gefiederpflege ist die Saisonaler Ortswechsel."],
       explanation: "Gefiederpflege: Putzen und Ordnen der Federn",
       wissen: fw(
         "Wichtig für Flug und Isolation. Bezug: Vogelverhalten.",
@@ -517,8 +481,7 @@ export const k5VoegelVerhalten: BioBank = {
     {
       concept: "bio:k5:vgverh:f8",
       prompt: "Was kennzeichnet „Schwarm“?",
-      answer: "Das Schwarm ist hier: Gruppe gemeinsam fliegender Vögel.",
-      wrong: ["Das Schwarm ist hier: Werbeverhalten vor der Paarung.", "Das Schwarm ist kurz gesagt: Verteidigter Lebensraum.", "Das Schwarm ist kurz gesagt: Saisonaler Ortswechsel."],
+      answer: "Es ist eine Gruppe Gemeinsam Fliegender Vögel.", wrong: ["Es ist eine Werbeverhalten vor der Paarung.", "Das Schwarm ist das Verteidigter Lebensraum.", "Das Schwarm ist das Saisonaler Ortswechsel."],
       explanation: "Schwarm: Gruppe gemeinsam fliegender Vögel",
       wissen: fw(
         "Kann Schutzvorteile bieten. Bezug: Vogelverhalten.",
@@ -529,8 +492,7 @@ export const k5VoegelVerhalten: BioBank = {
     {
       concept: "bio:k5:vgverh:f9",
       prompt: "Was kennzeichnet „Imponieren“?",
-      answer: "Das Imponieren ist kurz gesagt: Zeigen von Stärke oder Status.",
-      wrong: ["Das Imponieren ist hier: Werbeverhalten vor der Paarung.", "Das Imponieren ist kurz gesagt: Verteidigter Lebensraum.", "Das Imponieren ist kurz gesagt: Saisonaler Ortswechsel."],
+      answer: "Zeigen von Stärke oder Status.", wrong: ["Es ist eine Werbeverhalten vor der Paarung.", "Das Imponieren ist das Verteidigter Lebensraum.", "Das Imponieren ist das Saisonaler Ortswechsel."],
       explanation: "Imponieren: Zeigen von Stärke oder Status",
       wissen: fw(
         "Klärt Konflikte oft ohne Kampf. Bezug: Vogelverhalten.",
@@ -541,8 +503,7 @@ export const k5VoegelVerhalten: BioBank = {
     {
       concept: "bio:k5:vgverh:f10",
       prompt: "Was kennzeichnet „Brutpflege“?",
-      answer: "Die Brutpflege ist hier: Versorgung der Jungen.",
-      wrong: ["Die Brutpflege ist hier: Werbeverhalten vor der Paarung.", "Die Brutpflege ist kurz gesagt: Verteidigter Lebensraum.", "Die Brutpflege ist kurz gesagt: Saisonaler Ortswechsel."],
+      answer: "Sie ist eine Versorgung der Jungen.", wrong: ["Sie ist eine Werbeverhalten vor der Paarung.", "Die Brutpflege ist die Verteidigter Lebensraum.", "Die Brutpflege ist die Saisonaler Ortswechsel."],
       explanation: "Brutpflege: Versorgung der Jungen",
       wissen: fw(
         "Wärmen, Füttern, Schützen. Bezug: Vogelverhalten.",
@@ -553,8 +514,7 @@ export const k5VoegelVerhalten: BioBank = {
     {
       concept: "bio:k5:vgverh:f11",
       prompt: "Was kennzeichnet „Nachahmung“?",
-      answer: "Die Nachahmung ist kurz gesagt: Lernen durch Beobachten.",
-      wrong: ["Die Nachahmung ist hier: Werbeverhalten vor der Paarung.", "Die Nachahmung ist kurz gesagt: Verteidigter Lebensraum.", "Die Nachahmung ist kurz gesagt: Saisonaler Ortswechsel."],
+      answer: "Sie ist eine Lernen durch Beobachten.", wrong: ["Sie ist eine Werbeverhalten vor der Paarung.", "Die Nachahmung ist die Verteidigter Lebensraum.", "Die Nachahmung ist die Saisonaler Ortswechsel."],
       explanation: "Nachahmung: Lernen durch Beobachten",
       wissen: fw(
         "z. B. Gesangselemente. Bezug: Vogelverhalten.",
@@ -565,8 +525,7 @@ export const k5VoegelVerhalten: BioBank = {
     {
       concept: "bio:k5:vgverh:x0",
       prompt: "Vogelverhalten: Wozu dient Vogelgesang häufig?",
-      answer: "Das Vogelgesang häufig ist hier: Revierkennzeichnung und Partneranlockung, und zwar gilt: gesang, Posieren oder Flugmanöver.",
-      wrong: ["Das Vogelgesang häufig ist hier: Zur Fotosynthese.", "Das Vogelgesang häufig ist hier: Zur Milchproduktion.", "Das Vogelgesang häufig ist hier: Zur Schuppenbildung."],
+      answer: "Es ist eine Revierkennzeichnung und Partneranlockung durch Gesang, Posieren oder Flugmanöver.", wrong: ["Das Vogelgesang häufig ist das Zur Fotosynthese.", "Das Vogelgesang häufig ist das Zur Milchproduktion.", "Das Vogelgesang häufig ist das Zur Schuppenbildung."],
       explanation: "Kommunikation.",
       wissen: fw(
         "Arttypische Gesänge übertragen Informationen über Besitz und Paarungsbereitschaft.",
@@ -575,8 +534,7 @@ export const k5VoegelVerhalten: BioBank = {
     {
       concept: "bio:k5:vgverh:x1",
       prompt: "Vogelverhalten: Warum putzen Vögel ihr Gefieder?",
-      answer: "Es geht um Für Flugfähigkeit, Wärmeisolation und Hygiene, und zwar gilt: gesang, Posieren oder Flugmanöver.",
-      wrong: ["Es geht um Nur zur Zierde ohne Funktion.", "Es geht um Nur um Knochen zu ersetzen.", "Es geht um Nur um Kiemen zu reinigen."],
+      answer: "Es ist eine Für Flugfähigkeit.", wrong: ["Es ist eine Nur zur Zierde ohne Funktion.", "Es ist eine Nur um Knochen zu ersetzen.", "Es ist eine Nur um Kiemen zu reinigen."],
       explanation: "Komfortverhalten.",
       wissen: fw(
         "Intakte Federn sind für Flug und Thermoregulation entscheidend.",
@@ -624,8 +582,7 @@ export const k5VoegelSchutz: BioBank = {
     {
       concept: "bio:k5:vgschutz:f0",
       prompt: "Was kennzeichnet „Nistkasten“?",
-      answer: "Das Nistkasten ist kurz gesagt: Künstliche Nisthilfe.",
-      wrong: ["Das Nistkasten ist hier: Gehölzstreifen als Lebensraum.", "Das Nistkasten ist kurz gesagt: Nasses Schlüsselhabitat.", "Das Nistkasten ist hier: Kollision an Glasflächen."],
+      answer: "Das Nistkasten ist das Künstliche Nisthilfe.", wrong: ["Es ist ein Gehölzstreifen als Lebensraum.", "Das Nistkasten ist das Nasses Schlüsselhabitat.", "Es ist ein Kollision an Glasflächen."],
       explanation: "Nistkasten: Künstliche Nisthilfe",
       wissen: fw(
         "Unterstützt Höhlenbrüter. Bezug: Vogelschutz.",
@@ -636,8 +593,7 @@ export const k5VoegelSchutz: BioBank = {
     {
       concept: "bio:k5:vgschutz:f1",
       prompt: "Was kennzeichnet „Hecke“?",
-      answer: "Die Hecke ist hier: Gehölzstreifen als Lebensraum.",
-      wrong: ["Die Hecke ist kurz gesagt: Künstliche Nisthilfe.", "Die Hecke ist kurz gesagt: Nasses Schlüsselhabitat.", "Die Hecke ist hier: Kollision an Glasflächen."],
+      answer: "Sie ist ein Gehölzstreifen als Lebensraum.", wrong: ["Die Hecke ist die Künstliche Nisthilfe.", "Die Hecke ist die Nasses Schlüsselhabitat.", "Sie ist ein Kollision an Glasflächen."],
       explanation: "Hecke: Gehölzstreifen als Lebensraum",
       wissen: fw(
         "Nahrung, Deckung und Nistplätze. Bezug: Vogelschutz.",
@@ -648,8 +604,7 @@ export const k5VoegelSchutz: BioBank = {
     {
       concept: "bio:k5:vgschutz:f2",
       prompt: "Was kennzeichnet „Feuchtgebiet“?",
-      answer: "Das Feuchtgebiet ist kurz gesagt: Nasses Schlüsselhabitat.",
-      wrong: ["Das Feuchtgebiet ist kurz gesagt: Künstliche Nisthilfe.", "Das Feuchtgebiet ist hier: Gehölzstreifen als Lebensraum.", "Das Feuchtgebiet ist hier: Kollision an Glasflächen."],
+      answer: "Das Feuchtgebiet ist das Nasses Schlüsselhabitat.", wrong: ["Das Feuchtgebiet ist das Künstliche Nisthilfe.", "Es ist ein Gehölzstreifen als Lebensraum.", "Es ist ein Kollision an Glasflächen."],
       explanation: "Feuchtgebiet: Nasses Schlüsselhabitat",
       wissen: fw(
         "Wichtig für Wat- und Wasservögel. Bezug: Vogelschutz.",
@@ -660,8 +615,7 @@ export const k5VoegelSchutz: BioBank = {
     {
       concept: "bio:k5:vgschutz:f3",
       prompt: "Was kennzeichnet „Fensteranprall“?",
-      answer: "Das Fensteranprall ist hier: Kollision an Glasflächen.",
-      wrong: ["Das Fensteranprall ist kurz gesagt: Künstliche Nisthilfe.", "Das Fensteranprall ist hier: Gehölzstreifen als Lebensraum.", "Das Fensteranprall ist kurz gesagt: Nasses Schlüsselhabitat."],
+      answer: "Es ist ein Kollision an Glasflächen.", wrong: ["Das Fensteranprall ist das Künstliche Nisthilfe.", "Es ist ein Gehölzstreifen als Lebensraum.", "Das Fensteranprall ist das Nasses Schlüsselhabitat."],
       explanation: "Fensteranprall: Kollision an Glasflächen",
       wissen: fw(
         "Häufige Todesursache. Bezug: Vogelschutz.",
@@ -672,8 +626,7 @@ export const k5VoegelSchutz: BioBank = {
     {
       concept: "bio:k5:vgschutz:f4",
       prompt: "Was kennzeichnet „Brutruhe“?",
-      answer: "Die Brutruhe ist kurz gesagt: Ungestörte Brutzeit.",
-      wrong: ["Die Brutruhe ist kurz gesagt: Künstliche Nisthilfe.", "Die Brutruhe ist hier: Gehölzstreifen als Lebensraum.", "Die Brutruhe ist kurz gesagt: Nasses Schlüsselhabitat."],
+      answer: "Die Brutruhe ist die Ungestörte Brutzeit.", wrong: ["Die Brutruhe ist die Künstliche Nisthilfe.", "Sie ist ein Gehölzstreifen als Lebensraum.", "Die Brutruhe ist die Nasses Schlüsselhabitat."],
       explanation: "Brutruhe: Ungestörte Brutzeit",
       wissen: fw(
         "Verringert Gelegeverluste. Bezug: Vogelschutz.",
@@ -684,8 +637,7 @@ export const k5VoegelSchutz: BioBank = {
     {
       concept: "bio:k5:vgschutz:f5",
       prompt: "Was kennzeichnet „Winterfütterung“?",
-      answer: "Die Winterfütterung ist hier: Zusatzfutter bei Mangel.",
-      wrong: ["Die Winterfütterung ist kurz gesagt: Künstliche Nisthilfe.", "Die Winterfütterung ist hier: Gehölzstreifen als Lebensraum.", "Die Winterfütterung ist kurz gesagt: Nasses Schlüsselhabitat."],
+      answer: "Sie ist eine Zusatzfutter bei Mangel.", wrong: ["Die Winterfütterung ist die Künstliche Nisthilfe.", "Sie ist ein Gehölzstreifen als Lebensraum.", "Die Winterfütterung ist die Nasses Schlüsselhabitat."],
       explanation: "Winterfütterung: Zusatzfutter bei Mangel",
       wissen: fw(
         "Ergänzt, ersetzt aber keine Habitate. Bezug: Vogelschutz.",
@@ -696,8 +648,7 @@ export const k5VoegelSchutz: BioBank = {
     {
       concept: "bio:k5:vgschutz:f6",
       prompt: "Was kennzeichnet „Insektennahrung“?",
-      answer: "Die Insektennahrung ist hier: Beute für viele Jungvögel.",
-      wrong: ["Die Insektennahrung ist kurz gesagt: Künstliche Nisthilfe.", "Die Insektennahrung ist hier: Gehölzstreifen als Lebensraum.", "Die Insektennahrung ist kurz gesagt: Nasses Schlüsselhabitat."],
+      answer: "Sie ist eine Beute für Viele Jungvögel.", wrong: ["Die Insektennahrung ist die Künstliche Nisthilfe.", "Sie ist ein Gehölzstreifen als Lebensraum.", "Die Insektennahrung ist die Nasses Schlüsselhabitat."],
       explanation: "Insektennahrung: Beute für viele Jungvögel",
       wissen: fw(
         "Insektenrückgang trifft Vögel. Bezug: Vogelschutz.",
@@ -708,8 +659,7 @@ export const k5VoegelSchutz: BioBank = {
     {
       concept: "bio:k5:vgschutz:f7",
       prompt: "Wozu dient Schutzgebiet?",
-      answer: "Das Schutzgebiet ist kurz gesagt: Geschützte Fläche.",
-      wrong: ["Das Schutzgebiet ist kurz gesagt: Künstliche Nisthilfe.", "Das Schutzgebiet ist hier: Gehölzstreifen als Lebensraum.", "Das Schutzgebiet ist kurz gesagt: Nasses Schlüsselhabitat."],
+      answer: "Das Schutzgebiet ist das Geschützte Fläche.", wrong: ["Das Schutzgebiet ist das Künstliche Nisthilfe.", "Es ist ein Gehölzstreifen als Lebensraum.", "Das Schutzgebiet ist das Nasses Schlüsselhabitat."],
       explanation: "Schutzgebiet: Geschützte Fläche",
       wissen: fw(
         "Sichert Brut- und Rastplätze. Bezug: Vogelschutz.",
@@ -720,8 +670,7 @@ export const k5VoegelSchutz: BioBank = {
     {
       concept: "bio:k5:vgschutz:f8",
       prompt: "Was kennzeichnet „Habitatverlust“?",
-      answer: "Das Habitatverlust ist hier: Verlust von Lebensraum.",
-      wrong: ["Das Habitatverlust ist kurz gesagt: Künstliche Nisthilfe.", "Das Habitatverlust ist hier: Gehölzstreifen als Lebensraum.", "Das Habitatverlust ist kurz gesagt: Nasses Schlüsselhabitat."],
+      answer: "Es ist ein Verlust von Lebensraum.", wrong: ["Das Habitatverlust ist das Künstliche Nisthilfe.", "Es ist ein Gehölzstreifen als Lebensraum.", "Das Habitatverlust ist das Nasses Schlüsselhabitat."],
       explanation: "Habitatverlust: Verlust von Lebensraum",
       wissen: fw(
         "Zentrale Gefährdung. Bezug: Vogelschutz.",
@@ -732,8 +681,7 @@ export const k5VoegelSchutz: BioBank = {
     {
       concept: "bio:k5:vgschutz:f9",
       prompt: "Was kennzeichnet „Schonzeit“?",
-      answer: "Das Schonzeit ist hier: Zeitlicher Schutz vor Nutzung.",
-      wrong: ["Das Schonzeit ist kurz gesagt: Künstliche Nisthilfe.", "Das Schonzeit ist hier: Gehölzstreifen als Lebensraum.", "Das Schonzeit ist kurz gesagt: Nasses Schlüsselhabitat."],
+      answer: "Es ist eine Zeitlicher Schutz vor Nutzung.", wrong: ["Das Schonzeit ist das Künstliche Nisthilfe.", "Es ist ein Gehölzstreifen als Lebensraum.", "Das Schonzeit ist das Nasses Schlüsselhabitat."],
       explanation: "Schonzeit: Zeitlicher Schutz vor Nutzung",
       wissen: fw(
         "Schützt Bestände in sensiblen Phasen. Bezug: Vogelschutz.",
@@ -744,8 +692,7 @@ export const k5VoegelSchutz: BioBank = {
     {
       concept: "bio:k5:vgschutz:f10",
       prompt: "Was kennzeichnet „Strukturvielfalt“?",
-      answer: "Das Strukturvielfalt ist kurz gesagt: Viele Habitatstrukturen.",
-      wrong: ["Das Strukturvielfalt ist kurz gesagt: Künstliche Nisthilfe.", "Das Strukturvielfalt ist hier: Gehölzstreifen als Lebensraum.", "Das Strukturvielfalt ist kurz gesagt: Nasses Schlüsselhabitat."],
+      answer: "Das Strukturvielfalt ist das Viele Habitatstrukturen.", wrong: ["Das Strukturvielfalt ist das Künstliche Nisthilfe.", "Es ist ein Gehölzstreifen als Lebensraum.", "Das Strukturvielfalt ist das Nasses Schlüsselhabitat."],
       explanation: "Strukturvielfalt: Viele Habitatstrukturen",
       wissen: fw(
         "Fördert Artenreichtum. Bezug: Vogelschutz.",
@@ -756,8 +703,7 @@ export const k5VoegelSchutz: BioBank = {
     {
       concept: "bio:k5:vgschutz:f11",
       prompt: "Wozu dient Artenschutz?",
-      answer: "Das Artenschutz ist hier: Schutz einzelner Arten.",
-      wrong: ["Das Artenschutz ist kurz gesagt: Künstliche Nisthilfe.", "Das Artenschutz ist hier: Gehölzstreifen als Lebensraum.", "Das Artenschutz ist kurz gesagt: Nasses Schlüsselhabitat."],
+      answer: "Es ist eine Schutz Einzelner Arten.", wrong: ["Das Artenschutz ist das Künstliche Nisthilfe.", "Es ist ein Gehölzstreifen als Lebensraum.", "Das Artenschutz ist das Nasses Schlüsselhabitat."],
       explanation: "Artenschutz: Schutz einzelner Arten",
       wissen: fw(
         "Wirkt zusammen mit Habitatschutz. Bezug: Vogelschutz.",
@@ -768,8 +714,7 @@ export const k5VoegelSchutz: BioBank = {
     {
       concept: "bio:k5:vgschutz:x0",
       prompt: "Vogelschutz: Warum sind Störungen am Brutplatz schädlich?",
-      answer: "Eltern verlassen Gelege; Energie- und Brutverluste steigen, und zwar gilt: unterstützt Höhlenbrüter.",
-      wrong: ["Hier gilt: Störungen erhöhen Eizahl immer.", "Hier gilt klar: Störungen bilden Federn.", "Es geht um Störungen ersetzen Nahrung."],
+      answer: "Es ist eine Eltern Verlassen Gelege; Energie- und Brutverluste Steigen, unterstützt Höhlenbrüter.", wrong: ["Es ist ein Störungen erhöhen Eizahl immer.", "Störungen bilden Federn.", "Es ist eine Störungen ersetzen Nahrung."],
       explanation: "Brutruhe.",
       wissen: fw(
         "Wiederholtes Aufscheuchen kostet Zeit und Energie und gefährdet den Bruterfolg.",
@@ -778,8 +723,7 @@ export const k5VoegelSchutz: BioBank = {
     {
       concept: "bio:k5:vgschutz:x1",
       prompt: "Vogelschutz: Was hilft Höhlenbrütern?",
-      answer: "Es geht um Erhalt alter Bäume und geeignete Nisthilfen, und zwar gilt: unterstützt Höhlenbrüter.",
-      wrong: ["Es geht um Alle Altbäume fällen.", "Es geht um Alle Höhlen verschließen.", "Es geht um Nur versiegelte Flächen."],
+      answer: "Es ist eine Erhalt alter Bäume und geeignete Nisthilfen.", wrong: ["Es ist eine Alle Altbäume fällen.", "Es ist eine Alle Höhlen verschließen.", "Es ist ein Nur versiegelte Flächen."],
       explanation: "Nistplatzangebot.",
       wissen: fw(
         "Höhlen sind oft der begrenzende Faktor für Meisen und ähnliche Arten.",
@@ -827,8 +771,7 @@ export const k5SaeugerVerhalten: BioBank = {
     {
       concept: "bio:k5:saeugverh:f0",
       prompt: "Was kennzeichnet „Beobachtung“?",
-      answer: "Die Beobachtung ist hier: Gezieltes Wahrnehmen von Verhalten.",
-      wrong: ["Die Beobachtung ist hier: Genetisch vorbereitetes Verhalten.", "Die Beobachtung ist hier: Durch Erfahrung erworbenes Verhalten.", "Die Beobachtung ist hier: Verteidigen eines Gebiets."],
+      answer: "Sie ist eine Gezieltes Wahrnehmen von Verhalten.", wrong: ["Sie ist eine Genetisch Vorbereitetes Verhalten.", "Sie ist eine Durch Erfahrung Erworbenes Verhalten.", "Sie ist eine Verteidigen Eines Gebiets."],
       explanation: "Beobachtung: Gezieltes Wahrnehmen von Verhalten",
       wissen: fw(
         "Grundmethode der Verhaltensbiologie. Bezug: Säugerverhalten.",
@@ -839,8 +782,7 @@ export const k5SaeugerVerhalten: BioBank = {
     {
       concept: "bio:k5:saeugverh:f1",
       prompt: "Was kennzeichnet „Angeboren“?",
-      answer: "Das Angeboren ist hier: Genetisch vorbereitetes Verhalten.",
-      wrong: ["Das Angeboren ist hier: Gezieltes Wahrnehmen von Verhalten.", "Das Angeboren ist hier: Durch Erfahrung erworbenes Verhalten.", "Das Angeboren ist hier: Verteidigen eines Gebiets."],
+      answer: "Es ist eine Genetisch Vorbereitetes Verhalten.", wrong: ["Es ist eine Gezieltes Wahrnehmen von Verhalten.", "Es ist eine Durch Erfahrung Erworbenes Verhalten.", "Es ist eine Verteidigen Eines Gebiets."],
       explanation: "Angeboren: Genetisch vorbereitetes Verhalten",
       wissen: fw(
         "Läuft ohne langes Lernen ab. Bezug: Säugerverhalten.",
@@ -851,8 +793,7 @@ export const k5SaeugerVerhalten: BioBank = {
     {
       concept: "bio:k5:saeugverh:f2",
       prompt: "Was kennzeichnet „Erlernt“?",
-      answer: "Das Erlernt ist hier: Durch Erfahrung erworbenes Verhalten.",
-      wrong: ["Das Erlernt ist hier: Gezieltes Wahrnehmen von Verhalten.", "Das Erlernt ist hier: Genetisch vorbereitetes Verhalten.", "Das Erlernt ist hier: Verteidigen eines Gebiets."],
+      answer: "Es ist eine Durch Erfahrung Erworbenes Verhalten.", wrong: ["Es ist eine Gezieltes Wahrnehmen von Verhalten.", "Es ist eine Genetisch Vorbereitetes Verhalten.", "Es ist eine Verteidigen Eines Gebiets."],
       explanation: "Erlernt: Durch Erfahrung erworbenes Verhalten",
       wissen: fw(
         "Kann angepasst werden. Bezug: Säugerverhalten.",
@@ -863,8 +804,7 @@ export const k5SaeugerVerhalten: BioBank = {
     {
       concept: "bio:k5:saeugverh:f3",
       prompt: "Was kennzeichnet „Territorialität“?",
-      answer: "Die Territorialität ist hier: Verteidigen eines Gebiets.",
-      wrong: ["Die Territorialität ist hier: Gezieltes Wahrnehmen von Verhalten.", "Die Territorialität ist hier: Genetisch vorbereitetes Verhalten.", "Die Territorialität ist hier: Durch Erfahrung erworbenes Verhalten."],
+      answer: "Sie ist eine Verteidigen Eines Gebiets.", wrong: ["Sie ist eine Gezieltes Wahrnehmen von Verhalten.", "Sie ist eine Genetisch Vorbereitetes Verhalten.", "Sie ist eine Durch Erfahrung Erworbenes Verhalten."],
       explanation: "Territorialität: Verteidigen eines Gebiets",
       wissen: fw(
         "Sichert Ressourcen. Bezug: Säugerverhalten.",
@@ -875,8 +815,7 @@ export const k5SaeugerVerhalten: BioBank = {
     {
       concept: "bio:k5:saeugverh:f4",
       prompt: "Was kennzeichnet „Fluchtverhalten“?",
-      answer: "Das Fluchtverhalten ist hier: Reaktion auf Gefahr durch Weglaufen.",
-      wrong: ["Das Fluchtverhalten ist hier: Gezieltes Wahrnehmen von Verhalten.", "Das Fluchtverhalten ist hier: Genetisch vorbereitetes Verhalten.", "Das Fluchtverhalten ist hier: Durch Erfahrung erworbenes Verhalten."],
+      answer: "Es ist eine Reaktion auf Gefahr durch Weglaufen.", wrong: ["Es ist eine Gezieltes Wahrnehmen von Verhalten.", "Es ist eine Genetisch Vorbereitetes Verhalten.", "Es ist eine Durch Erfahrung Erworbenes Verhalten."],
       explanation: "Fluchtverhalten: Reaktion auf Gefahr durch Weglaufen",
       wissen: fw(
         "Erhöht Überlebenschancen. Bezug: Säugerverhalten.",
@@ -887,8 +826,7 @@ export const k5SaeugerVerhalten: BioBank = {
     {
       concept: "bio:k5:saeugverh:f5",
       prompt: "Was kennzeichnet „Nahrungssuche“?",
-      answer: "Die Nahrungssuche ist hier: Suchen und Erlangen von Futter.",
-      wrong: ["Die Nahrungssuche ist hier: Gezieltes Wahrnehmen von Verhalten.", "Die Nahrungssuche ist hier: Genetisch vorbereitetes Verhalten.", "Die Nahrungssuche ist hier: Durch Erfahrung erworbenes Verhalten."],
+      answer: "Sie ist ein Suchen und Erlangen von Futter.", wrong: ["Sie ist eine Gezieltes Wahrnehmen von Verhalten.", "Sie ist eine Genetisch Vorbereitetes Verhalten.", "Sie ist eine Durch Erfahrung Erworbenes Verhalten."],
       explanation: "Nahrungssuche: Suchen und Erlangen von Futter",
       wissen: fw(
         "Zentraler Tagesablauf. Bezug: Säugerverhalten.",
@@ -899,8 +837,7 @@ export const k5SaeugerVerhalten: BioBank = {
     {
       concept: "bio:k5:saeugverh:f6",
       prompt: "Was kennzeichnet „Komfortverhalten“?",
-      answer: "Das Komfortverhalten ist hier: Putzen, Ruhen, Strecken.",
-      wrong: ["Das Komfortverhalten ist hier: Gezieltes Wahrnehmen von Verhalten.", "Das Komfortverhalten ist hier: Genetisch vorbereitetes Verhalten.", "Das Komfortverhalten ist hier: Durch Erfahrung erworbenes Verhalten."],
+      answer: "Es ist eine Putzen, Ruhen, Strecken.", wrong: ["Es ist eine Gezieltes Wahrnehmen von Verhalten.", "Es ist eine Genetisch Vorbereitetes Verhalten.", "Es ist eine Durch Erfahrung Erworbenes Verhalten."],
       explanation: "Komfortverhalten: Putzen, Ruhen, Strecken",
       wissen: fw(
         "Erhält Körperfunktionen. Bezug: Säugerverhalten.",
@@ -911,8 +848,7 @@ export const k5SaeugerVerhalten: BioBank = {
     {
       concept: "bio:k5:saeugverh:f7",
       prompt: "Was kennzeichnet „Markieren“?",
-      answer: "Das Markieren ist hier: Kennzeichnen mit Duft oder Kratzspuren.",
-      wrong: ["Das Markieren ist hier: Gezieltes Wahrnehmen von Verhalten.", "Das Markieren ist hier: Genetisch vorbereitetes Verhalten.", "Das Markieren ist hier: Durch Erfahrung erworbenes Verhalten."],
+      answer: "Es ist eine Kennzeichnen mit Duft oder Kratzspuren.", wrong: ["Es ist eine Gezieltes Wahrnehmen von Verhalten.", "Es ist eine Genetisch Vorbereitetes Verhalten.", "Es ist eine Durch Erfahrung Erworbenes Verhalten."],
       explanation: "Markieren: Kennzeichnen mit Duft oder Kratzspuren",
       wissen: fw(
         "Kommuniziert Besitz oder Status. Bezug: Säugerverhalten.",
@@ -923,8 +859,7 @@ export const k5SaeugerVerhalten: BioBank = {
     {
       concept: "bio:k5:saeugverh:f8",
       prompt: "Was kennzeichnet „Spielverhalten“?",
-      answer: "Das Spielverhalten ist hier: Übungs- und Sozialspiele Junger.",
-      wrong: ["Das Spielverhalten ist hier: Gezieltes Wahrnehmen von Verhalten.", "Das Spielverhalten ist hier: Genetisch vorbereitetes Verhalten.", "Das Spielverhalten ist hier: Durch Erfahrung erworbenes Verhalten."],
+      answer: "Es ist ein Übungs- und Sozialspiele Junger.", wrong: ["Es ist eine Gezieltes Wahrnehmen von Verhalten.", "Es ist eine Genetisch Vorbereitetes Verhalten.", "Es ist eine Durch Erfahrung Erworbenes Verhalten."],
       explanation: "Spielverhalten: Übungs- und Sozialspiele Junger",
       wissen: fw(
         "Trainiert Fähigkeiten. Bezug: Säugerverhalten.",
@@ -935,8 +870,7 @@ export const k5SaeugerVerhalten: BioBank = {
     {
       concept: "bio:k5:saeugverh:f9",
       prompt: "Was kennzeichnet „Aktivitätszeit“?",
-      answer: "Das Aktivitätszeit ist hier: Tages- oder Nachtaktivität.",
-      wrong: ["Das Aktivitätszeit ist hier: Gezieltes Wahrnehmen von Verhalten.", "Das Aktivitätszeit ist hier: Genetisch vorbereitetes Verhalten.", "Das Aktivitätszeit ist hier: Durch Erfahrung erworbenes Verhalten."],
+      answer: "Es ist eine Tages- oder Nachtaktivität.", wrong: ["Es ist eine Gezieltes Wahrnehmen von Verhalten.", "Es ist eine Genetisch Vorbereitetes Verhalten.", "Es ist eine Durch Erfahrung Erworbenes Verhalten."],
       explanation: "Aktivitätszeit: Tages- oder Nachtaktivität",
       wissen: fw(
         "Angepasst an Beute und Feinde. Bezug: Säugerverhalten.",
@@ -947,8 +881,7 @@ export const k5SaeugerVerhalten: BioBank = {
     {
       concept: "bio:k5:saeugverh:f10",
       prompt: "Was kennzeichnet „Prägung“?",
-      answer: "Die Prägung ist kurz gesagt: Schnelles Lernen in sensiblen Phasen.",
-      wrong: ["Die Prägung ist hier: Gezieltes Wahrnehmen von Verhalten.", "Die Prägung ist hier: Genetisch vorbereitetes Verhalten.", "Die Prägung ist hier: Durch Erfahrung erworbenes Verhalten."],
+      answer: "Sie ist eine Schnelles Lernen in Sensiblen Phasen.", wrong: ["Sie ist eine Gezieltes Wahrnehmen von Verhalten.", "Sie ist eine Genetisch Vorbereitetes Verhalten.", "Sie ist eine Durch Erfahrung Erworbenes Verhalten."],
       explanation: "Prägung: Schnelles Lernen in sensiblen Phasen",
       wissen: fw(
         "z. B. Elternbindung. Bezug: Säugerverhalten.",
@@ -959,8 +892,7 @@ export const k5SaeugerVerhalten: BioBank = {
     {
       concept: "bio:k5:saeugverh:f11",
       prompt: "Was kennzeichnet „Motivation“?",
-      answer: "Die Motivation ist hier: Innere Bereitschaft zu Verhalten.",
-      wrong: ["Die Motivation ist hier: Gezieltes Wahrnehmen von Verhalten.", "Die Motivation ist hier: Genetisch vorbereitetes Verhalten.", "Die Motivation ist hier: Durch Erfahrung erworbenes Verhalten."],
+      answer: "Sie ist eine Innere Bereitschaft zu Verhalten.", wrong: ["Sie ist eine Gezieltes Wahrnehmen von Verhalten.", "Sie ist eine Genetisch Vorbereitetes Verhalten.", "Sie ist eine Durch Erfahrung Erworbenes Verhalten."],
       explanation: "Motivation: Innere Bereitschaft zu Verhalten",
       wissen: fw(
         "z. B. Hunger oder Fortpflanzung. Bezug: Säugerverhalten.",
@@ -971,8 +903,7 @@ export const k5SaeugerVerhalten: BioBank = {
     {
       concept: "bio:k5:saeugverh:x0",
       prompt: "Säugerverhalten: Warum beobachtet man Haus- und Wildtiere vergleichend?",
-      answer: "Unterschiede und Gemeinsamkeiten im Verhalten werden sichtbar, und zwar gilt hier: Grundmethode der Verhaltensbiologie.",
-      wrong: ["Hier gilt: Weil Verhalten bedeutungslos ist.", "Hier gilt: Weil nur Pflanzen Verhalten zeigen.", "Es geht um Weil Beobachtung Knochen ersetzt."],
+      answer: "Unterschiede und Gemeinsamkeiten im Verhalten werden sichtbar durch grundmethode der Verhaltensbiologie.", wrong: ["Es ist eine Weil Verhalten bedeutungslos ist.", "Es ist eine Weil nur Pflanzen Verhalten zeigen.", "Es ist eine Weil Beobachtung Knochen ersetzt."],
       explanation: "Vergleich.",
       wissen: fw(
         "Haustiere und Wildtiere zeigen angeborene und erlernte Anteile unterschiedlich stark.",
@@ -981,8 +912,7 @@ export const k5SaeugerVerhalten: BioBank = {
     {
       concept: "bio:k5:saeugverh:x1",
       prompt: "Säugerverhalten: Was leistet Markierverhalten?",
-      answer: "Es geht um Kommuniziert Revier, Status oder Fortpflanzungsbereitschaft, und zwar gilt: grundmethode der Verhaltensbiologie.",
-      wrong: ["Es geht um Ersetzt die Atmung.", "Hier gilt klar: Bildet Antikörper.", "Hier gilt klar: Erzeugt Federn."],
+      answer: "Es ist ein Kommuniziert Revier.", wrong: ["Es ist eine Ersetzt die Atmung.", "Bildet Antikörper.", "Erzeugt Federn."],
       explanation: "Duftkommunikation.",
       wissen: fw(
         "Duftmarken und Kratzspuren sind chemische oder visuelle Signale.",
@@ -1030,8 +960,7 @@ export const k5SaeugerSinne: BioBank = {
     {
       concept: "bio:k5:saeugsinn:f0",
       prompt: "Wozu dient Sender?",
-      answer: "Der Sender ist kurz gesagt: Erzeugt ein Signal.",
-      wrong: ["Der Sender ist kurz gesagt: Nimmt das Signal wahr.", "Der Sender ist kurz gesagt: Informationstragendes Zeichen.", "Der Sender ist hier: Wahrnehmung von Duftstoffen."],
+      answer: "Er erzeugt ein Signal.", wrong: ["Er nimmt das Das Signal Wahr.", "Der Sender ist der Informationstragendes Zeichen.", "Er ist eine Wahrnehmung von Duftstoffen."],
       explanation: "Sender: Erzeugt ein Signal",
       wissen: fw(
         "z. B. Laut oder Duft. Bezug: Säugersinne.",
@@ -1042,8 +971,7 @@ export const k5SaeugerSinne: BioBank = {
     {
       concept: "bio:k5:saeugsinn:f1",
       prompt: "Wozu dient Empfänger?",
-      answer: "Der Empfänger ist kurz gesagt: Nimmt das Signal wahr.",
-      wrong: ["Der Empfänger ist kurz gesagt: Erzeugt ein Signal.", "Der Empfänger ist kurz gesagt: Informationstragendes Zeichen.", "Der Empfänger ist hier: Wahrnehmung von Duftstoffen."],
+      answer: "Er nimmt das Das Signal Wahr.", wrong: ["Er erzeugt ein Signal.", "Der Empfänger ist der Informationstragendes Zeichen.", "Er ist eine Wahrnehmung von Duftstoffen."],
       explanation: "Empfänger: Nimmt das Signal wahr",
       wissen: fw(
         "Über Sinnesorgane. Bezug: Säugersinne.",
@@ -1054,8 +982,7 @@ export const k5SaeugerSinne: BioBank = {
     {
       concept: "bio:k5:saeugsinn:f2",
       prompt: "Was kennzeichnet „Signal“?",
-      answer: "Das Signal ist kurz gesagt: Informationstragendes Zeichen.",
-      wrong: ["Das Signal ist kurz gesagt: Erzeugt ein Signal.", "Das Signal ist kurz gesagt: Nimmt das Signal wahr.", "Das Signal ist hier: Wahrnehmung von Duftstoffen."],
+      answer: "Das Signal ist das Informationstragendes Zeichen.", wrong: ["Es erzeugt ein Signal.", "Es nimmt das Das Signal Wahr.", "Es ist eine Wahrnehmung von Duftstoffen."],
       explanation: "Signal: Informationstragendes Zeichen",
       wissen: fw(
         "Akustisch, optisch oder chemisch. Bezug: Säugersinne.",
@@ -1066,8 +993,7 @@ export const k5SaeugerSinne: BioBank = {
     {
       concept: "bio:k5:saeugsinn:f3",
       prompt: "Was kennzeichnet „Geruchssinn“?",
-      answer: "Das Geruchssinn ist hier: Wahrnehmung von Duftstoffen.",
-      wrong: ["Das Geruchssinn ist kurz gesagt: Erzeugt ein Signal.", "Das Geruchssinn ist kurz gesagt: Nimmt das Signal wahr.", "Das Geruchssinn ist kurz gesagt: Informationstragendes Zeichen."],
+      answer: "Es ist eine Wahrnehmung von Duftstoffen.", wrong: ["Es erzeugt ein Signal.", "Es nimmt das Das Signal Wahr.", "Das Geruchssinn ist das Informationstragendes Zeichen."],
       explanation: "Geruchssinn: Wahrnehmung von Duftstoffen",
       wissen: fw(
         "Bei vielen Säugern sehr leistungsfähig. Bezug: Säugersinne.",
@@ -1078,8 +1004,7 @@ export const k5SaeugerSinne: BioBank = {
     {
       concept: "bio:k5:saeugsinn:f4",
       prompt: "Was kennzeichnet „Gehör“?",
-      answer: "Das Gehör ist hier: Wahrnehmung von Schall.",
-      wrong: ["Das Gehör ist kurz gesagt: Erzeugt ein Signal.", "Das Gehör ist kurz gesagt: Nimmt das Signal wahr.", "Das Gehör ist kurz gesagt: Informationstragendes Zeichen."],
+      answer: "Es ist eine Wahrnehmung von Schall.", wrong: ["Es erzeugt ein Signal.", "Es nimmt das Das Signal Wahr.", "Das Gehör ist das Informationstragendes Zeichen."],
       explanation: "Gehör: Wahrnehmung von Schall",
       wissen: fw(
         "Wichtig für Kommunikation und Gefahr. Bezug: Säugersinne.",
@@ -1090,8 +1015,7 @@ export const k5SaeugerSinne: BioBank = {
     {
       concept: "bio:k5:saeugsinn:f5",
       prompt: "Was kennzeichnet „Sehsinn“?",
-      answer: "Das Sehsinn ist hier: Wahrnehmung von Licht und Formen.",
-      wrong: ["Das Sehsinn ist kurz gesagt: Erzeugt ein Signal.", "Das Sehsinn ist kurz gesagt: Nimmt das Signal wahr.", "Das Sehsinn ist kurz gesagt: Informationstragendes Zeichen."],
+      answer: "Es ist eine Wahrnehmung von Licht und Formen.", wrong: ["Es erzeugt ein Signal.", "Es nimmt das Das Signal Wahr.", "Das Sehsinn ist das Informationstragendes Zeichen."],
       explanation: "Sehsinn: Wahrnehmung von Licht und Formen",
       wissen: fw(
         "Je nach Art unterschiedlich ausgeprägt. Bezug: Säugersinne.",
@@ -1102,8 +1026,7 @@ export const k5SaeugerSinne: BioBank = {
     {
       concept: "bio:k5:saeugsinn:f6",
       prompt: "Was kennzeichnet „Tastsinn“?",
-      answer: "Das Tastsinn ist hier: Wahrnehmung von Berührung.",
-      wrong: ["Das Tastsinn ist kurz gesagt: Erzeugt ein Signal.", "Das Tastsinn ist kurz gesagt: Nimmt das Signal wahr.", "Das Tastsinn ist kurz gesagt: Informationstragendes Zeichen."],
+      answer: "Es ist eine Wahrnehmung von Berührung.", wrong: ["Es erzeugt ein Signal.", "Es nimmt das Das Signal Wahr.", "Das Tastsinn ist das Informationstragendes Zeichen."],
       explanation: "Tastsinn: Wahrnehmung von Berührung",
       wissen: fw(
         "z. B. über Schnurrhaare. Bezug: Säugersinne.",
@@ -1114,8 +1037,7 @@ export const k5SaeugerSinne: BioBank = {
     {
       concept: "bio:k5:saeugsinn:f7",
       prompt: "Was kennzeichnet „Schnurrhaare“?",
-      answer: "Die Schnurrhaare ist hier: Tastorgane am Kopf.",
-      wrong: ["Die Schnurrhaare ist kurz gesagt: Erzeugt ein Signal.", "Die Schnurrhaare ist kurz gesagt: Nimmt das Signal wahr.", "Die Schnurrhaare ist kurz gesagt: Informationstragendes Zeichen."],
+      answer: "Sie ist eine Tastorgane am Kopf.", wrong: ["Sie erzeugt ein Signal.", "Sie nimmt das Das Signal Wahr.", "Die Schnurrhaare ist die Informationstragendes Zeichen."],
       explanation: "Schnurrhaare: Tastorgane am Kopf",
       wissen: fw(
         "Erfassen Raumnahe Hindernisse. Bezug: Säugersinne.",
@@ -1126,8 +1048,7 @@ export const k5SaeugerSinne: BioBank = {
     {
       concept: "bio:k5:saeugsinn:f8",
       prompt: "Was kennzeichnet „Ultraschall“?",
-      answer: "Das Ultraschall ist hier: Sehr hohe Schallfrequenzen.",
-      wrong: ["Das Ultraschall ist kurz gesagt: Erzeugt ein Signal.", "Das Ultraschall ist kurz gesagt: Nimmt das Signal wahr.", "Das Ultraschall ist kurz gesagt: Informationstragendes Zeichen."],
+      answer: "Es ist eine Sehr Hohe Schallfrequenzen.", wrong: ["Es erzeugt ein Signal.", "Es nimmt das Das Signal Wahr.", "Das Ultraschall ist das Informationstragendes Zeichen."],
       explanation: "Ultraschall: Sehr hohe Schallfrequenzen",
       wissen: fw(
         "z. B. bei Fledermaus-Echoortung. Bezug: Säugersinne.",
@@ -1138,8 +1059,7 @@ export const k5SaeugerSinne: BioBank = {
     {
       concept: "bio:k5:saeugsinn:f9",
       prompt: "Was kennzeichnet „Echoortung“?",
-      answer: "Die Echoortung ist hier: Orientierung über zurückgeworfenen Schall.",
-      wrong: ["Die Echoortung ist kurz gesagt: Erzeugt ein Signal.", "Die Echoortung ist kurz gesagt: Nimmt das Signal wahr.", "Die Echoortung ist kurz gesagt: Informationstragendes Zeichen."],
+      answer: "Sie ist eine Orientierung über Zurückgeworfenen Schall.", wrong: ["Sie erzeugt ein Signal.", "Sie nimmt das Das Signal Wahr.", "Die Echoortung ist die Informationstragendes Zeichen."],
       explanation: "Echoortung: Orientierung über zurückgeworfenen Schall",
       wissen: fw(
         "Typisch für Fledermäuse. Bezug: Säugersinne.",
@@ -1150,8 +1070,7 @@ export const k5SaeugerSinne: BioBank = {
     {
       concept: "bio:k5:saeugsinn:f10",
       prompt: "Was kennzeichnet „Kommunikationslaut“?",
-      answer: "Das Kommunikationslaut ist hier: Laut zur Information an Artgenossen.",
-      wrong: ["Das Kommunikationslaut ist kurz gesagt: Erzeugt ein Signal.", "Das Kommunikationslaut ist kurz gesagt: Nimmt das Signal wahr.", "Das Kommunikationslaut ist kurz gesagt: Informationstragendes Zeichen."],
+      answer: "Es ist eine Laut zur Information an Artgenossen.", wrong: ["Es erzeugt ein Signal.", "Es nimmt das Das Signal Wahr.", "Das Kommunikationslaut ist das Informationstragendes Zeichen."],
       explanation: "Kommunikationslaut: Laut zur Information an Artgenossen",
       wissen: fw(
         "Warnung, Lockruf, Revier. Bezug: Säugersinne.",
@@ -1162,8 +1081,7 @@ export const k5SaeugerSinne: BioBank = {
     {
       concept: "bio:k5:saeugsinn:f11",
       prompt: "Was kennzeichnet „Sinnesleistung“?",
-      answer: "Die Sinnesleistung ist hier: Leistungsfähigkeit eines Sinnes.",
-      wrong: ["Die Sinnesleistung ist kurz gesagt: Erzeugt ein Signal.", "Die Sinnesleistung ist kurz gesagt: Nimmt das Signal wahr.", "Die Sinnesleistung ist kurz gesagt: Informationstragendes Zeichen."],
+      answer: "Sie ist eine Leistungsfähigkeit Eines Sinnes.", wrong: ["Sie erzeugt ein Signal.", "Sie nimmt das Das Signal Wahr.", "Die Sinnesleistung ist die Informationstragendes Zeichen."],
       explanation: "Sinnesleistung: Leistungsfähigkeit eines Sinnes",
       wissen: fw(
         "An Lebensweise angepasst. Bezug: Säugersinne.",
@@ -1174,8 +1092,7 @@ export const k5SaeugerSinne: BioBank = {
     {
       concept: "bio:k5:saeugsinn:x0",
       prompt: "Was kennzeichnet „das Sender-Empfänger-Modell“?",
-      answer: "Ein Sender sendet ein Signal, das ein Empfänger deutet, und zwar gilt hier: Z. B. Laut oder Duft.",
-      wrong: ["Das das Sender-Empfänger-Modell ist kurz gesagt: Dass Sinne bedeutungslos sind.", "Das das Sender-Empfänger-Modell ist hier: Dass nur Pflanzen Signale nutzen.", "Das das Sender-Empfänger-Modell ist hier: Dass Blut Signale ersetzt."],
+      answer: "Ein Sender sendet ein Signal, das Ein Empfänger Deutet durch Z. B. Laut oder Duft.", wrong: ["Dass Sinne bedeutungslos sind.", "Es ist eine Dass Nur Pflanzen Signale Nutzen.", "Es ist eine Dass Blut Signale Ersetzt."],
       explanation: "Informationsaustausch.",
       wissen: fw(
         "Verhalten und Sinne koppeln Information zwischen Individuen.",
@@ -1184,8 +1101,7 @@ export const k5SaeugerSinne: BioBank = {
     {
       concept: "bio:k5:saeugsinn:x1",
       prompt: "Säugersinne: Warum sind Hund und Katze gute Beispiele für Sinnesleistungen?",
-      answer: "Sie nutzen Geruch, Gehör und Sehen unterschiedlich stark, und zwar gilt: z. B. Laut oder Duft.",
-      wrong: ["Hier gilt: Weil sie keine Sinne haben.", "Es geht um Weil sie nur Pflanzen fressen.", "Es geht um Weil sie fliegen."],
+      answer: "Es ist eine Sie Nutzen Geruch, Gehör und Sehen unterschiedlich stark durch z. B. Laut oder Duft.", wrong: ["Es ist eine Weil sie keine Sinne haben.", "Es ist eine Weil sie nur Pflanzen fressen.", "Es ist eine Weil sie fliegen."],
       explanation: "Vergleich.",
       wissen: fw(
         "Hunde sind oft geruchsstark, Katzen nachtakzentuiert — beide kommunizieren mit Lauten und Körpersprache.",
@@ -1233,8 +1149,7 @@ export const k5SaeugerSozial: BioBank = {
     {
       concept: "bio:k5:saeugsoc:f0",
       prompt: "Was kennzeichnet „Rudel“?",
-      answer: "Das Rudel ist hier: Soziale Gruppe mancher Säuger.",
-      wrong: ["Das Rudel ist hier: Zusammenarbeit zum gemeinsamen Vorteil.", "Das Rudel ist hier: Hierarchie in der Gruppe.", "Das Rudel ist hier: Angriffs- oder Drohverhalten."],
+      answer: "Es ist ein Soziale Gruppe Mancher Säuger.", wrong: ["Es ist eine Zusammenarbeit zum Gemeinsamen Vorteil.", "Es ist eine Hierarchie in der Gruppe.", "Es ist eine Angriffs- oder Drohverhalten."],
       explanation: "Rudel: Soziale Gruppe mancher Säuger",
       wissen: fw(
         "Gemeinsame Jagd oder Schutz möglich. Bezug: Säugersozial.",
@@ -1245,8 +1160,7 @@ export const k5SaeugerSozial: BioBank = {
     {
       concept: "bio:k5:saeugsoc:f1",
       prompt: "Was kennzeichnet „Kooperation“?",
-      answer: "Die Kooperation ist hier: Zusammenarbeit zum gemeinsamen Vorteil.",
-      wrong: ["Die Kooperation ist hier: Soziale Gruppe mancher Säuger.", "Die Kooperation ist hier: Hierarchie in der Gruppe.", "Die Kooperation ist hier: Angriffs- oder Drohverhalten."],
+      answer: "Sie ist eine Zusammenarbeit zum Gemeinsamen Vorteil.", wrong: ["Sie ist ein Soziale Gruppe Mancher Säuger.", "Sie ist eine Hierarchie in der Gruppe.", "Sie ist eine Angriffs- oder Drohverhalten."],
       explanation: "Kooperation: Zusammenarbeit zum gemeinsamen Vorteil",
       wissen: fw(
         "z. B. bei der Jagd. Bezug: Säugersozial.",
@@ -1257,8 +1171,7 @@ export const k5SaeugerSozial: BioBank = {
     {
       concept: "bio:k5:saeugsoc:f2",
       prompt: "Was kennzeichnet „Rangordnung“?",
-      answer: "Die Rangordnung ist hier: Hierarchie in der Gruppe.",
-      wrong: ["Die Rangordnung ist hier: Soziale Gruppe mancher Säuger.", "Die Rangordnung ist hier: Zusammenarbeit zum gemeinsamen Vorteil.", "Die Rangordnung ist hier: Angriffs- oder Drohverhalten."],
+      answer: "Sie ist eine Hierarchie in der Gruppe.", wrong: ["Sie ist ein Soziale Gruppe Mancher Säuger.", "Sie ist eine Zusammenarbeit zum Gemeinsamen Vorteil.", "Sie ist eine Angriffs- oder Drohverhalten."],
       explanation: "Rangordnung: Hierarchie in der Gruppe",
       wissen: fw(
         "Regelt Zugang zu Ressourcen. Bezug: Säugersozial.",
@@ -1269,8 +1182,7 @@ export const k5SaeugerSozial: BioBank = {
     {
       concept: "bio:k5:saeugsoc:f3",
       prompt: "Was kennzeichnet „Aggression“?",
-      answer: "Die Aggression ist hier: Angriffs- oder Drohverhalten.",
-      wrong: ["Die Aggression ist hier: Soziale Gruppe mancher Säuger.", "Die Aggression ist hier: Zusammenarbeit zum gemeinsamen Vorteil.", "Die Aggression ist hier: Hierarchie in der Gruppe."],
+      answer: "Sie ist eine Angriffs- oder Drohverhalten.", wrong: ["Sie ist ein Soziale Gruppe Mancher Säuger.", "Sie ist eine Zusammenarbeit zum Gemeinsamen Vorteil.", "Sie ist eine Hierarchie in der Gruppe."],
       explanation: "Aggression: Angriffs- oder Drohverhalten",
       wissen: fw(
         "Kann Konflikte klären oder eskalieren. Bezug: Säugersozial.",
@@ -1281,8 +1193,7 @@ export const k5SaeugerSozial: BioBank = {
     {
       concept: "bio:k5:saeugsoc:f4",
       prompt: "Was kennzeichnet „Revier“?",
-      answer: "Der Revier ist kurz gesagt: Verteidigtes Gebiet.",
-      wrong: ["Der Revier ist hier: Soziale Gruppe mancher Säuger.", "Der Revier ist hier: Zusammenarbeit zum gemeinsamen Vorteil.", "Der Revier ist hier: Hierarchie in der Gruppe."],
+      answer: "Der Revier ist der Verteidigtes Gebiet.", wrong: ["Er ist ein Soziale Gruppe Mancher Säuger.", "Er ist eine Zusammenarbeit zum Gemeinsamen Vorteil.", "Er ist eine Hierarchie in der Gruppe."],
       explanation: "Revier: Verteidigtes Gebiet",
       wissen: fw(
         "Sichert Nahrung und Fortpflanzung. Bezug: Säugersozial.",
@@ -1293,8 +1204,7 @@ export const k5SaeugerSozial: BioBank = {
     {
       concept: "bio:k5:saeugsoc:f5",
       prompt: "Was kennzeichnet „Sozialbindung“?",
-      answer: "Die Sozialbindung ist hier: Dauerhafte Beziehung zwischen Individuen.",
-      wrong: ["Die Sozialbindung ist hier: Soziale Gruppe mancher Säuger.", "Die Sozialbindung ist hier: Zusammenarbeit zum gemeinsamen Vorteil.", "Die Sozialbindung ist hier: Hierarchie in der Gruppe."],
+      answer: "Sie ist eine Dauerhafte Beziehung Zwischen Individuen.", wrong: ["Sie ist ein Soziale Gruppe Mancher Säuger.", "Sie ist eine Zusammenarbeit zum Gemeinsamen Vorteil.", "Sie ist eine Hierarchie in der Gruppe."],
       explanation: "Sozialbindung: Dauerhafte Beziehung zwischen Individuen",
       wissen: fw(
         "z. B. Eltern-Junges. Bezug: Säugersozial.",
@@ -1305,8 +1215,7 @@ export const k5SaeugerSozial: BioBank = {
     {
       concept: "bio:k5:saeugsoc:f6",
       prompt: "Was kennzeichnet „Imponieren“?",
-      answer: "Das Imponieren ist kurz gesagt: Status zeigen ohne sofortigen Kampf.",
-      wrong: ["Das Imponieren ist hier: Soziale Gruppe mancher Säuger.", "Das Imponieren ist hier: Zusammenarbeit zum gemeinsamen Vorteil.", "Das Imponieren ist hier: Hierarchie in der Gruppe."],
+      answer: "Status zeigen ohne sofortigen Kampf.", wrong: ["Es ist ein Soziale Gruppe Mancher Säuger.", "Es ist eine Zusammenarbeit zum Gemeinsamen Vorteil.", "Es ist eine Hierarchie in der Gruppe."],
       explanation: "Imponieren: Status zeigen ohne sofortigen Kampf",
       wissen: fw(
         "Spart Verletzungsrisiko. Bezug: Säugersozial.",
@@ -1317,8 +1226,7 @@ export const k5SaeugerSozial: BioBank = {
     {
       concept: "bio:k5:saeugsoc:f7",
       prompt: "Was kennzeichnet „Unterwerfung“?",
-      answer: "Die Unterwerfung ist kurz gesagt: Beschwichtigungsverhalten.",
-      wrong: ["Die Unterwerfung ist hier: Soziale Gruppe mancher Säuger.", "Die Unterwerfung ist hier: Zusammenarbeit zum gemeinsamen Vorteil.", "Die Unterwerfung ist hier: Hierarchie in der Gruppe."],
+      answer: "Die Unterwerfung ist die Beschwichtigungsverhalten.", wrong: ["Sie ist ein Soziale Gruppe Mancher Säuger.", "Sie ist eine Zusammenarbeit zum Gemeinsamen Vorteil.", "Sie ist eine Hierarchie in der Gruppe."],
       explanation: "Unterwerfung: Beschwichtigungsverhalten",
       wissen: fw(
         "Beendet Konflikte oft. Bezug: Säugersozial.",
@@ -1329,8 +1237,7 @@ export const k5SaeugerSozial: BioBank = {
     {
       concept: "bio:k5:saeugsoc:f8",
       prompt: "Was kennzeichnet „Gruppenjagd“?",
-      answer: "Das Gruppenjagd ist kurz gesagt: Gemeinsames Beutemachen.",
-      wrong: ["Das Gruppenjagd ist hier: Soziale Gruppe mancher Säuger.", "Das Gruppenjagd ist hier: Zusammenarbeit zum gemeinsamen Vorteil.", "Das Gruppenjagd ist hier: Hierarchie in der Gruppe."],
+      answer: "Das Gruppenjagd ist das Gemeinsames Beutemachen.", wrong: ["Es ist ein Soziale Gruppe Mancher Säuger.", "Es ist eine Zusammenarbeit zum Gemeinsamen Vorteil.", "Es ist eine Hierarchie in der Gruppe."],
       explanation: "Gruppenjagd: Gemeinsames Beutemachen",
       wissen: fw(
         "Erhöht Erfolg bei großer Beute. Bezug: Säugersozial.",
@@ -1341,8 +1248,7 @@ export const k5SaeugerSozial: BioBank = {
     {
       concept: "bio:k5:saeugsoc:f9",
       prompt: "Was kennzeichnet „Alarmverhalten“?",
-      answer: "Das Alarmverhalten ist hier: Warnen der Gruppe.",
-      wrong: ["Das Alarmverhalten ist hier: Soziale Gruppe mancher Säuger.", "Das Alarmverhalten ist hier: Zusammenarbeit zum gemeinsamen Vorteil.", "Das Alarmverhalten ist hier: Hierarchie in der Gruppe."],
+      answer: "Es ist eine Warnen der Gruppe.", wrong: ["Es ist ein Soziale Gruppe Mancher Säuger.", "Es ist eine Zusammenarbeit zum Gemeinsamen Vorteil.", "Es ist eine Hierarchie in der Gruppe."],
       explanation: "Alarmverhalten: Warnen der Gruppe",
       wissen: fw(
         "Schützt Artgenossen. Bezug: Säugersozial.",
@@ -1353,8 +1259,7 @@ export const k5SaeugerSozial: BioBank = {
     {
       concept: "bio:k5:saeugsoc:f10",
       prompt: "Was kennzeichnet „Alleinerziehend“?",
-      answer: "Es ist ein Elterntier versorgt Junge.",
-      wrong: ["Das Alleinerziehend ist hier: Soziale Gruppe mancher Säuger.", "Das Alleinerziehend ist hier: Zusammenarbeit zum gemeinsamen Vorteil.", "Das Alleinerziehend ist hier: Hierarchie in der Gruppe."],
+      answer: "Es ist ein Elterntier versorgt Junge.", wrong: ["Es ist ein Soziale Gruppe Mancher Säuger.", "Es ist eine Zusammenarbeit zum Gemeinsamen Vorteil.", "Es ist eine Hierarchie in der Gruppe."],
       explanation: "Alleinerziehend: Ein Elterntier versorgt Junge",
       wissen: fw(
         "Je nach Art unterschiedlich. Bezug: Säugersozial.",
@@ -1365,8 +1270,7 @@ export const k5SaeugerSozial: BioBank = {
     {
       concept: "bio:k5:saeugsoc:f11",
       prompt: "Was kennzeichnet „Gruppenleben“?",
-      answer: "Das Gruppenleben ist kurz gesagt: Leben in sozialer Einheit.",
-      wrong: ["Das Gruppenleben ist hier: Soziale Gruppe mancher Säuger.", "Das Gruppenleben ist hier: Zusammenarbeit zum gemeinsamen Vorteil.", "Das Gruppenleben ist hier: Hierarchie in der Gruppe."],
+      answer: "Es ist eine Leben in Sozialer Einheit.", wrong: ["Es ist ein Soziale Gruppe Mancher Säuger.", "Es ist eine Zusammenarbeit zum Gemeinsamen Vorteil.", "Es ist eine Hierarchie in der Gruppe."],
       explanation: "Gruppenleben: Leben in sozialer Einheit",
       wissen: fw(
         "Vorteile und Konkurrenz zugleich. Bezug: Säugersozial.",
@@ -1377,8 +1281,7 @@ export const k5SaeugerSozial: BioBank = {
     {
       concept: "bio:k5:saeugsoc:x0",
       prompt: "Säugersozial: Welchen Vorteil kann Rudelleben haben?",
-      answer: "Es geht um Besserer Schutz und oft bessere Jagdchancen, und zwar gilt: gemeinsame Jagd oder Schutz möglich.",
-      wrong: ["Es geht um Immer Nachteil ohne Ausnahme.", "Es geht um Ersetzt die Atmung.", "Es geht um Löscht alle Sinne."],
+      answer: "Es ist eine Besserer Schutz und oft bessere Jagdchancen.", wrong: ["Es ist eine Immer Nachteil ohne Ausnahme.", "Es ist eine Ersetzt die Atmung.", "Es ist eine Löscht alle Sinne."],
       explanation: "Sozialvorteil.",
       wissen: fw(
         "Gemeinsames Verhalten kann Feinde abwehren und große Beute erlegen.",
@@ -1387,8 +1290,7 @@ export const k5SaeugerSozial: BioBank = {
     {
       concept: "bio:k5:saeugsoc:x1",
       prompt: "Säugersozial: Wozu dient eine Rangordnung?",
-      answer: "Sie regelt Konflikte und Ressourcenverteilung, und zwar gilt hier: Gemeinsame Jagd oder Schutz möglich.",
-      wrong: ["Die eine Rangordnung ist hier: Sie ersetzt Nahrung.", "Die eine Rangordnung ist kurz gesagt: Federn.", "Die eine Rangordnung ist kurz gesagt: Sie erzeugt Kiemen."],
+      answer: "Sie regelt Konflikte und Ressourcenverteilung durch gemeinsame Jagd oder Schutz möglich.", wrong: ["Sie ist eine Sie Ersetzt Nahrung.", "Die eine Rangordnung ist die Federn.", "Sie erzeugt Kiemen."],
       explanation: "Hierarchie.",
       wissen: fw(
         "Klare Ränge reduzieren ständige Kämpfe, können aber Dominanzkosten erzeugen.",
@@ -1436,8 +1338,7 @@ export const k6InsektenAtmung: BioBank = {
     {
       concept: "bio:k6:insatm:f0",
       prompt: "Was kennzeichnet „Trachee“?",
-      answer: "Die Trachee ist hier: Luftröhre im Insektenkörper.",
-      wrong: ["Die Trachee ist hier: Feinste Endverzweigung der Tracheen.", "Die Trachee ist hier: Atemöffnung an der Körperseite.", "Die Trachee ist hier: Gasbewegung ohne Pumpe wie Lunge."],
+      answer: "Sie ist ein Luftröhre im Insektenkörper.", wrong: ["Sie ist eine Feinste Endverzweigung der Tracheen.", "Sie ist eine Atemöffnung an der Körperseite.", "Sie ist eine Gasbewegung ohne Pumpe Wie Lunge."],
       explanation: "Trachee: Luftröhre im Insektenkörper",
       wissen: fw(
         "Leitet Luft zu den Geweben. Bezug: Insektenatmung.",
@@ -1448,8 +1349,7 @@ export const k6InsektenAtmung: BioBank = {
     {
       concept: "bio:k6:insatm:f1",
       prompt: "Was kennzeichnet „Tracheole“?",
-      answer: "Die Tracheole ist hier: Feinste Endverzweigung der Tracheen.",
-      wrong: ["Die Tracheole ist hier: Luftröhre im Insektenkörper.", "Die Tracheole ist hier: Atemöffnung an der Körperseite.", "Die Tracheole ist hier: Gasbewegung ohne Pumpe wie Lunge."],
+      answer: "Sie ist eine Feinste Endverzweigung der Tracheen.", wrong: ["Sie ist ein Luftröhre im Insektenkörper.", "Sie ist eine Atemöffnung an der Körperseite.", "Sie ist eine Gasbewegung ohne Pumpe Wie Lunge."],
       explanation: "Tracheole: Feinste Endverzweigung der Tracheen",
       wissen: fw(
         "Nahe an den Zellen. Bezug: Insektenatmung.",
@@ -1460,8 +1360,7 @@ export const k6InsektenAtmung: BioBank = {
     {
       concept: "bio:k6:insatm:f2",
       prompt: "Was kennzeichnet „Stigma“?",
-      answer: "Das Stigma ist hier: Atemöffnung an der Körperseite.",
-      wrong: ["Das Stigma ist hier: Luftröhre im Insektenkörper.", "Das Stigma ist hier: Feinste Endverzweigung der Tracheen.", "Das Stigma ist hier: Gasbewegung ohne Pumpe wie Lunge."],
+      answer: "Es ist eine Atemöffnung an der Körperseite.", wrong: ["Es ist ein Luftröhre im Insektenkörper.", "Es ist eine Feinste Endverzweigung der Tracheen.", "Es ist eine Gasbewegung ohne Pumpe Wie Lunge."],
       explanation: "Stigma: Atemöffnung an der Körperseite",
       wissen: fw(
         "Eintritt der Luft. Bezug: Insektenatmung.",
@@ -1472,8 +1371,7 @@ export const k6InsektenAtmung: BioBank = {
     {
       concept: "bio:k6:insatm:f3",
       prompt: "Was kennzeichnet „Diffusion“?",
-      answer: "Die Diffusion ist hier: Gasbewegung ohne Pumpe wie Lunge.",
-      wrong: ["Die Diffusion ist hier: Luftröhre im Insektenkörper.", "Die Diffusion ist hier: Feinste Endverzweigung der Tracheen.", "Die Diffusion ist hier: Atemöffnung an der Körperseite."],
+      answer: "Sie ist eine Gasbewegung ohne Pumpe Wie Lunge.", wrong: ["Sie ist ein Luftröhre im Insektenkörper.", "Sie ist eine Feinste Endverzweigung der Tracheen.", "Sie ist eine Atemöffnung an der Körperseite."],
       explanation: "Diffusion: Gasbewegung ohne Pumpe wie Lunge",
       wissen: fw(
         "Treibt O₂ und CO₂ in Tracheen. Bezug: Insektenatmung.",
@@ -1484,8 +1382,7 @@ export const k6InsektenAtmung: BioBank = {
     {
       concept: "bio:k6:insatm:f4",
       prompt: "Was kennzeichnet „Chitinpanzer“?",
-      answer: "Der Chitinpanzer ist kurz gesagt: Äußere Körperhülle.",
-      wrong: ["Der Chitinpanzer ist hier: Luftröhre im Insektenkörper.", "Der Chitinpanzer ist hier: Feinste Endverzweigung der Tracheen.", "Der Chitinpanzer ist hier: Atemöffnung an der Körperseite."],
+      answer: "Der Chitinpanzer ist der Äußere Körperhülle.", wrong: ["Er ist ein Luftröhre im Insektenkörper.", "Er ist eine Feinste Endverzweigung der Tracheen.", "Er ist eine Atemöffnung an der Körperseite."],
       explanation: "Chitinpanzer: Äußere Körperhülle",
       wissen: fw(
         "Schützt, begrenzt aber Atmung mit. Bezug: Insektenatmung.",
@@ -1496,8 +1393,7 @@ export const k6InsektenAtmung: BioBank = {
     {
       concept: "bio:k6:insatm:f5",
       prompt: "Was kennzeichnet „Wasserkäferkieme“?",
-      answer: "Die Wasserkäferkieme ist hier: Anpassung mancher Wasserinsekten.",
-      wrong: ["Die Wasserkäferkieme ist hier: Luftröhre im Insektenkörper.", "Die Wasserkäferkieme ist hier: Feinste Endverzweigung der Tracheen.", "Die Wasserkäferkieme ist hier: Atemöffnung an der Körperseite."],
+      answer: "Sie ist eine Anpassung Mancher Wasserinsekten.", wrong: ["Sie ist ein Luftröhre im Insektenkörper.", "Sie ist eine Feinste Endverzweigung der Tracheen.", "Sie ist eine Atemöffnung an der Körperseite."],
       explanation: "Wasserkäferkieme: Anpassung mancher Wasserinsekten",
       wissen: fw(
         "Nimmt O₂ aus Wasser oder Luftvorrat. Bezug: Insektenatmung.",
@@ -1508,8 +1404,7 @@ export const k6InsektenAtmung: BioBank = {
     {
       concept: "bio:k6:insatm:f6",
       prompt: "Was kennzeichnet „Luftvorrat“?",
-      answer: "Das Luftvorrat ist hier: Mitgeführte Luftblase unter Wasser.",
-      wrong: ["Das Luftvorrat ist hier: Luftröhre im Insektenkörper.", "Das Luftvorrat ist hier: Feinste Endverzweigung der Tracheen.", "Das Luftvorrat ist hier: Atemöffnung an der Körperseite."],
+      answer: "Es ist ein Mitgeführte Luftblase unter Wasser.", wrong: ["Es ist ein Luftröhre im Insektenkörper.", "Es ist eine Feinste Endverzweigung der Tracheen.", "Es ist eine Atemöffnung an der Körperseite."],
       explanation: "Luftvorrat: Mitgeführte Luftblase unter Wasser",
       wissen: fw(
         "Ermöglicht Tauchen. Bezug: Insektenatmung.",
@@ -1520,8 +1415,7 @@ export const k6InsektenAtmung: BioBank = {
     {
       concept: "bio:k6:insatm:f7",
       prompt: "Was kennzeichnet „Oberflächenvergrößerung“?",
-      answer: "Die Oberflächenvergrößerung ist hier: Viele feine Röhren vergrößern Fläche.",
-      wrong: ["Die Oberflächenvergrößerung ist hier: Luftröhre im Insektenkörper.", "Die Oberflächenvergrößerung ist hier: Feinste Endverzweigung der Tracheen.", "Die Oberflächenvergrößerung ist hier: Atemöffnung an der Körperseite."],
+      answer: "Sie ist eine Viele Feine Röhren Vergrößern Fläche.", wrong: ["Sie ist ein Luftröhre im Insektenkörper.", "Sie ist eine Feinste Endverzweigung der Tracheen.", "Sie ist eine Atemöffnung an der Körperseite."],
       explanation: "Oberflächenvergrößerung: Viele feine Röhren vergrößern Fläche",
       wissen: fw(
         "Effizienter Gasaustausch. Bezug: Insektenatmung.",
@@ -1532,8 +1426,7 @@ export const k6InsektenAtmung: BioBank = {
     {
       concept: "bio:k6:insatm:f8",
       prompt: "Was kennzeichnet „Landatmung“?",
-      answer: "Die Landatmung ist hier: Atmung mit Luft über Tracheen.",
-      wrong: ["Die Landatmung ist hier: Luftröhre im Insektenkörper.", "Die Landatmung ist hier: Feinste Endverzweigung der Tracheen.", "Die Landatmung ist hier: Atemöffnung an der Körperseite."],
+      answer: "Sie ist eine Atmung mit Luft über Tracheen.", wrong: ["Sie ist ein Luftröhre im Insektenkörper.", "Sie ist eine Feinste Endverzweigung der Tracheen.", "Sie ist eine Atemöffnung an der Körperseite."],
       explanation: "Landatmung: Atmung mit Luft über Tracheen",
       wissen: fw(
         "Typisch für Landinsekten. Bezug: Insektenatmung.",
@@ -1544,8 +1437,7 @@ export const k6InsektenAtmung: BioBank = {
     {
       concept: "bio:k6:insatm:f9",
       prompt: "Was kennzeichnet „Stoffwechselrate“?",
-      answer: "Die Stoffwechselrate ist hier: Geschwindigkeit des Stoffwechsels.",
-      wrong: ["Die Stoffwechselrate ist hier: Luftröhre im Insektenkörper.", "Die Stoffwechselrate ist hier: Feinste Endverzweigung der Tracheen.", "Die Stoffwechselrate ist hier: Atemöffnung an der Körperseite."],
+      answer: "Sie ist eine Geschwindigkeit des Stoffwechsels.", wrong: ["Sie ist ein Luftröhre im Insektenkörper.", "Sie ist eine Feinste Endverzweigung der Tracheen.", "Sie ist eine Atemöffnung an der Körperseite."],
       explanation: "Stoffwechselrate: Geschwindigkeit des Stoffwechsels",
       wissen: fw(
         "Beeinflusst Sauerstoffbedarf. Bezug: Insektenatmung.",
@@ -1556,8 +1448,7 @@ export const k6InsektenAtmung: BioBank = {
     {
       concept: "bio:k6:insatm:f10",
       prompt: "Was kennzeichnet „Häutung“?",
-      answer: "Die Häutung ist hier: Abstreifen des Panzers.",
-      wrong: ["Die Häutung ist hier: Luftröhre im Insektenkörper.", "Die Häutung ist hier: Feinste Endverzweigung der Tracheen.", "Die Häutung ist hier: Atemöffnung an der Körperseite."],
+      answer: "Sie ist eine Abstreifen des Panzers.", wrong: ["Sie ist ein Luftröhre im Insektenkörper.", "Sie ist eine Feinste Endverzweigung der Tracheen.", "Sie ist eine Atemöffnung an der Körperseite."],
       explanation: "Häutung: Abstreifen des Panzers",
       wissen: fw(
         "Tracheen wachsen mit dem Körper. Bezug: Insektenatmung.",
@@ -1568,8 +1459,7 @@ export const k6InsektenAtmung: BioBank = {
     {
       concept: "bio:k6:insatm:f11",
       prompt: "Was kennzeichnet „Gasaustausch“?",
-      answer: "Das Gasaustausch ist hier: Aufnahme O₂, Abgabe CO₂.",
-      wrong: ["Das Gasaustausch ist hier: Luftröhre im Insektenkörper.", "Das Gasaustausch ist hier: Feinste Endverzweigung der Tracheen.", "Das Gasaustausch ist hier: Atemöffnung an der Körperseite."],
+      answer: "Es ist eine Aufnahme O₂, Abgabe CO₂.", wrong: ["Es ist ein Luftröhre im Insektenkörper.", "Es ist eine Feinste Endverzweigung der Tracheen.", "Es ist eine Atemöffnung an der Körperseite."],
       explanation: "Gasaustausch: Aufnahme O₂, Abgabe CO₂",
       wissen: fw(
         "Ziel der Tracheenatmung. Bezug: Insektenatmung.",
@@ -1580,8 +1470,7 @@ export const k6InsektenAtmung: BioBank = {
     {
       concept: "bio:k6:insatm:x0",
       prompt: "Insektenatmung: Wie atmen die meisten Landinsekten?",
-      answer: "Es geht um Über Tracheen mit Stigmen, und zwar gilt: leitet Luft zu den Geweben.",
-      wrong: ["Es geht um Nur mit Säugerlungen.", "Es geht um Nur mit Fischkiemen lebenslang.", "Es geht um diesen Inhalt: Durch Fotosynthese."],
+      answer: "Es ist eine Über Tracheen mit Stigmen.", wrong: ["Es ist eine Nur mit Säugerlungen.", "Es ist eine Nur mit Fischkiemen lebenslang.", "Es ist eine Durch Fotosynthese."],
       explanation: "Tracheensystem.",
       wissen: fw(
         "Luft gelangt durch Stigmen in ein Röhrensystem bis nahe an die Zellen.",
@@ -1590,8 +1479,7 @@ export const k6InsektenAtmung: BioBank = {
     {
       concept: "bio:k6:insatm:x1",
       prompt: "Insektenatmung: Warum brauchen Insekten keine Lunge wie Säuger?",
-      answer: "Es ist das Tracheensystem bringt Luft direkt zu den Geweben, und zwar gilt: leitet Luft zu den Geweben.",
-      wrong: ["Hier gilt: Weil Insekten keinen Sauerstoff brauchen.", "Es geht um Weil Panzer Photosynthese betreibt.", "Es geht um Weil Blut immer Lungen ersetzt."],
+      answer: "Es ist das Tracheensystem bringt Luft direkt zu den Geweben, leitet Luft zu den Geweben.", wrong: ["Es ist ein Weil Insekten keinen Sauerstoff brauchen.", "Es ist eine Weil Panzer Photosynthese betreibt.", "Es ist eine Weil Blut immer Lungen ersetzt."],
       explanation: "Direktversorgung.",
       wissen: fw(
         "Im Gegensatz zu Lungenatmung entfällt ein zentraler Gasaustauschort mit Bluttransport oft weitgehend.",
@@ -1639,8 +1527,7 @@ export const k6SkelettVergleich: BioBank = {
     {
       concept: "bio:k6:skverg:f0",
       prompt: "Was kennzeichnet „Innenskelett“?",
-      answer: "Das Innenskelett ist hier: Stützgerüst im Körperinneren.",
-      wrong: ["Das Innenskelett ist hier: Stütz- und Schutzpanzer außen.", "Das Innenskelett ist kurz gesagt: Zentrale Knochenachse.", "Das Innenskelett ist hier: Material vieler Außenskelette."],
+      answer: "Es ist eine Stützgerüst im Körperinneren.", wrong: ["Es ist eine Stütz- und Schutzpanzer Außen.", "Das Innenskelett ist das Zentrale Knochenachse.", "Es ist eine Material Vieler Außenskelette."],
       explanation: "Innenskelett: Stützgerüst im Körperinneren",
       wissen: fw(
         "Typisch für Wirbeltiere. Bezug: Skelettvergleich.",
@@ -1651,8 +1538,7 @@ export const k6SkelettVergleich: BioBank = {
     {
       concept: "bio:k6:skverg:f1",
       prompt: "Was kennzeichnet „Außenskelett“?",
-      answer: "Das Außenskelett ist hier: Stütz- und Schutzpanzer außen.",
-      wrong: ["Das Außenskelett ist hier: Stützgerüst im Körperinneren.", "Das Außenskelett ist kurz gesagt: Zentrale Knochenachse.", "Das Außenskelett ist hier: Material vieler Außenskelette."],
+      answer: "Es ist eine Stütz- und Schutzpanzer Außen.", wrong: ["Es ist eine Stützgerüst im Körperinneren.", "Das Außenskelett ist das Zentrale Knochenachse.", "Es ist eine Material Vieler Außenskelette."],
       explanation: "Außenskelett: Stütz- und Schutzpanzer außen",
       wissen: fw(
         "Typisch für viele Gliederfüßer. Bezug: Skelettvergleich.",
@@ -1663,8 +1549,7 @@ export const k6SkelettVergleich: BioBank = {
     {
       concept: "bio:k6:skverg:f2",
       prompt: "Was kennzeichnet „Wirbelsäule“?",
-      answer: "Die Wirbelsäule ist kurz gesagt: Zentrale Knochenachse.",
-      wrong: ["Die Wirbelsäule ist hier: Stützgerüst im Körperinneren.", "Die Wirbelsäule ist hier: Stütz- und Schutzpanzer außen.", "Die Wirbelsäule ist hier: Material vieler Außenskelette."],
+      answer: "Die Wirbelsäule ist die Zentrale Knochenachse.", wrong: ["Sie ist eine Stützgerüst im Körperinneren.", "Sie ist eine Stütz- und Schutzpanzer Außen.", "Sie ist eine Material Vieler Außenskelette."],
       explanation: "Wirbelsäule: Zentrale Knochenachse",
       wissen: fw(
         "Merkmal der Wirbeltiere. Bezug: Skelettvergleich.",
@@ -1675,8 +1560,7 @@ export const k6SkelettVergleich: BioBank = {
     {
       concept: "bio:k6:skverg:f3",
       prompt: "Was kennzeichnet „Chitin“?",
-      answer: "Das Chitin ist hier: Material vieler Außenskelette.",
-      wrong: ["Das Chitin ist hier: Stützgerüst im Körperinneren.", "Das Chitin ist hier: Stütz- und Schutzpanzer außen.", "Das Chitin ist kurz gesagt: Zentrale Knochenachse."],
+      answer: "Es ist eine Material Vieler Außenskelette.", wrong: ["Es ist eine Stützgerüst im Körperinneren.", "Es ist eine Stütz- und Schutzpanzer Außen.", "Das Chitin ist das Zentrale Knochenachse."],
       explanation: "Chitin: Material vieler Außenskelette",
       wissen: fw(
         "Leicht und fest. Bezug: Skelettvergleich.",
@@ -1687,8 +1571,7 @@ export const k6SkelettVergleich: BioBank = {
     {
       concept: "bio:k6:skverg:f4",
       prompt: "Was kennzeichnet „Knochen“?",
-      answer: "Das Knochen ist kurz gesagt: Mineralisiertes Stützgewebe.",
-      wrong: ["Das Knochen ist hier: Stützgerüst im Körperinneren.", "Das Knochen ist hier: Stütz- und Schutzpanzer außen.", "Das Knochen ist kurz gesagt: Zentrale Knochenachse."],
+      answer: "Das Knochen ist das Mineralisiertes Stützgewebe.", wrong: ["Es ist eine Stützgerüst im Körperinneren.", "Es ist eine Stütz- und Schutzpanzer Außen.", "Das Knochen ist das Zentrale Knochenachse."],
       explanation: "Knochen: Mineralisiertes Stützgewebe",
       wissen: fw(
         "Wächst mit und speichert Mineralstoffe. Bezug: Skelettvergleich.",
@@ -1699,8 +1582,7 @@ export const k6SkelettVergleich: BioBank = {
     {
       concept: "bio:k6:skverg:f5",
       prompt: "Was kennzeichnet „Häutung“?",
-      answer: "Die Häutung ist hier: Abstreifen des Außenskeletts.",
-      wrong: ["Die Häutung ist hier: Stützgerüst im Körperinneren.", "Die Häutung ist hier: Stütz- und Schutzpanzer außen.", "Die Häutung ist kurz gesagt: Zentrale Knochenachse."],
+      answer: "Sie ist eine Abstreifen des Außenskeletts.", wrong: ["Sie ist eine Stützgerüst im Körperinneren.", "Sie ist eine Stütz- und Schutzpanzer Außen.", "Die Häutung ist die Zentrale Knochenachse."],
       explanation: "Häutung: Abstreifen des Außenskeletts",
       wissen: fw(
         "Nötig zum Wachstum bei Arthropoden. Bezug: Skelettvergleich.",
@@ -1711,8 +1593,7 @@ export const k6SkelettVergleich: BioBank = {
     {
       concept: "bio:k6:skverg:f6",
       prompt: "Was kennzeichnet „Gliedmaßen“?",
-      answer: "Das Gliedmaßen ist hier: Bewegliche Anhänge zur Fortbewegung.",
-      wrong: ["Das Gliedmaßen ist hier: Stützgerüst im Körperinneren.", "Das Gliedmaßen ist hier: Stütz- und Schutzpanzer außen.", "Das Gliedmaßen ist kurz gesagt: Zentrale Knochenachse."],
+      answer: "Es ist eine Bewegliche Anhänge zur Fortbewegung.", wrong: ["Es ist eine Stützgerüst im Körperinneren.", "Es ist eine Stütz- und Schutzpanzer Außen.", "Das Gliedmaßen ist das Zentrale Knochenachse."],
       explanation: "Gliedmaßen: Bewegliche Anhänge zur Fortbewegung",
       wissen: fw(
         "Unterschiedlich gebaut je Lebensraum. Bezug: Skelettvergleich.",
@@ -1723,8 +1604,7 @@ export const k6SkelettVergleich: BioBank = {
     {
       concept: "bio:k6:skverg:f7",
       prompt: "Wozu dient die Schutzfunktion?",
-      answer: "Die die Schutzfunktion ist kurz gesagt: Skelett schützt Organe.",
-      wrong: ["Die die Schutzfunktion ist hier: Stützgerüst im Körperinneren.", "Die die Schutzfunktion ist hier: Stütz- und Schutzpanzer außen.", "Die die Schutzfunktion ist hier: Zentrale Knochenachse."],
+      answer: "Skelett schützt Organe.", wrong: ["Sie ist eine Stützgerüst im Körperinneren.", "Sie ist eine Stütz- und Schutzpanzer Außen.", "Die die Schutzfunktion ist die Zentrale Knochenachse."],
       explanation: "Schutzfunktion: Skelett schützt Organe",
       wissen: fw(
         "Panzer oder Rippenkorb. Bezug: Skelettvergleich.",
@@ -1735,8 +1615,7 @@ export const k6SkelettVergleich: BioBank = {
     {
       concept: "bio:k6:skverg:f8",
       prompt: "Was kennzeichnet „Hebelmechanik“?",
-      answer: "Die Hebelmechanik ist hier: Knochen/Muskeln als Hebel.",
-      wrong: ["Die Hebelmechanik ist hier: Stützgerüst im Körperinneren.", "Die Hebelmechanik ist hier: Stütz- und Schutzpanzer außen.", "Die Hebelmechanik ist kurz gesagt: Zentrale Knochenachse."],
+      answer: "Sie ist eine Knochen/Muskeln als Hebel.", wrong: ["Sie ist eine Stützgerüst im Körperinneren.", "Sie ist eine Stütz- und Schutzpanzer Außen.", "Die Hebelmechanik ist die Zentrale Knochenachse."],
       explanation: "Hebelmechanik: Knochen/Muskeln als Hebel",
       wissen: fw(
         "Ermöglicht Bewegung. Bezug: Skelettvergleich.",
@@ -1747,8 +1626,7 @@ export const k6SkelettVergleich: BioBank = {
     {
       concept: "bio:k6:skverg:f9",
       prompt: "Was kennzeichnet „Exoskelett“?",
-      answer: "Das Exoskelett ist hier: Anderer Name für Außenskelett.",
-      wrong: ["Das Exoskelett ist hier: Stützgerüst im Körperinneren.", "Das Exoskelett ist hier: Stütz- und Schutzpanzer außen.", "Das Exoskelett ist kurz gesagt: Zentrale Knochenachse."],
+      answer: "Es ist eine Anderer Name für Außenskelett.", wrong: ["Es ist eine Stützgerüst im Körperinneren.", "Es ist eine Stütz- und Schutzpanzer Außen.", "Das Exoskelett ist das Zentrale Knochenachse."],
       explanation: "Exoskelett: Anderer Name für Außenskelett",
       wissen: fw(
         "Bei Insekten und Krebsen. Bezug: Skelettvergleich.",
@@ -1759,8 +1637,7 @@ export const k6SkelettVergleich: BioBank = {
     {
       concept: "bio:k6:skverg:f10",
       prompt: "Was kennzeichnet „Endoskelett“?",
-      answer: "Das Endoskelett ist hier: Anderer Name für Innenskelett.",
-      wrong: ["Das Endoskelett ist hier: Stützgerüst im Körperinneren.", "Das Endoskelett ist hier: Stütz- und Schutzpanzer außen.", "Das Endoskelett ist kurz gesagt: Zentrale Knochenachse."],
+      answer: "Es ist eine Anderer Name für Innenskelett.", wrong: ["Es ist eine Stützgerüst im Körperinneren.", "Es ist eine Stütz- und Schutzpanzer Außen.", "Das Endoskelett ist das Zentrale Knochenachse."],
       explanation: "Endoskelett: Anderer Name für Innenskelett",
       wissen: fw(
         "Bei Wirbeltieren. Bezug: Skelettvergleich.",
@@ -1771,8 +1648,7 @@ export const k6SkelettVergleich: BioBank = {
     {
       concept: "bio:k6:skverg:f11",
       prompt: "Was kennzeichnet „Segmentierung“?",
-      answer: "Die Segmentierung ist hier: Körpergliederung in Abschnitte.",
-      wrong: ["Die Segmentierung ist hier: Stützgerüst im Körperinneren.", "Die Segmentierung ist hier: Stütz- und Schutzpanzer außen.", "Die Segmentierung ist kurz gesagt: Zentrale Knochenachse."],
+      answer: "Sie ist eine Körpergliederung in Abschnitte.", wrong: ["Sie ist eine Stützgerüst im Körperinneren.", "Sie ist eine Stütz- und Schutzpanzer Außen.", "Die Segmentierung ist die Zentrale Knochenachse."],
       explanation: "Segmentierung: Körpergliederung in Abschnitte",
       wissen: fw(
         "Bei Ringelwürmern und Arthropoden sichtbar. Bezug: Skelettvergleich.",
@@ -1783,8 +1659,7 @@ export const k6SkelettVergleich: BioBank = {
     {
       concept: "bio:k6:skverg:x0",
       prompt: "Skelettvergleich: Was unterscheidet Wirbeltier- und Insektenskelett grundsätzlich?",
-      answer: "Es geht um Innenknochen versus äußerer Chitinpanzer, und zwar gilt: typisch für Wirbeltiere.",
-      wrong: ["Hier gilt: Beide sind immer identisch.", "Hier gilt: Insekten haben Wirbelsäule aus Knochen.", "Es geht um Wirbeltiere häuten den Knochenpanzer."],
+      answer: "Es ist ein Innenknochen versus äußerer Chitinpanzer.", wrong: ["Es ist eine Beide sind immer identisch.", "Es ist ein Insekten haben Wirbelsäule aus Knochen.", "Es ist ein Wirbeltiere häuten den Knochenpanzer."],
       explanation: "Bauplan.",
       wissen: fw(
         "Wirbeltiere tragen ein Innenskelett; Insekten ein Außenskelett, das gehäutet werden muss.",
@@ -1793,8 +1668,7 @@ export const k6SkelettVergleich: BioBank = {
     {
       concept: "bio:k6:skverg:x1",
       prompt: "Skelettvergleich: Warum müssen Insekten häuten?",
-      answer: "Es ist das Außenskelett dehnt sich nicht beliebig mit, und zwar gilt hier: Typisch für Wirbeltiere.",
-      wrong: ["Hier gilt: Weil Knochen wachsen müssen.", "Es geht um Weil Federn stören.", "Es geht um Weil Kiemen trocknen."],
+      answer: "Es ist das Außenskelett dehnt sich nicht beliebig mit durch typisch für Wirbeltiere.", wrong: ["Es ist eine Weil Knochen wachsen müssen.", "Es ist eine Weil Federn stören.", "Es ist eine Weil Kiemen trocknen."],
       explanation: "Wachstum.",
       wissen: fw(
         "Nach der Häutung ist der neue Panzer zunächst weich und härtet aus.",
@@ -1842,8 +1716,7 @@ export const k6AtmungVergleich: BioBank = {
     {
       concept: "bio:k6:atmverg:f0",
       prompt: "Was kennzeichnet „Kieme“?",
-      answer: "Die Kieme ist hier: Atemorgan für Wasser.",
-      wrong: ["Die Kieme ist hier: Atemorgan für Luft.", "Die Kieme ist hier: Luftröhrensystem der Insekten.", "Die Kieme ist hier: Gasaustausch über die Körperoberfläche."],
+      answer: "Sie ist ein Atemorgan für Wasser.", wrong: ["Sie ist eine Atemorgan für Luft.", "Sie ist eine Luftröhrensystem der Insekten.", "Sie ist eine Gasaustausch über die Körperoberfläche."],
       explanation: "Kieme: Atemorgan für Wasser",
       wissen: fw(
         "Bei Fischen und vielen Krebsen. Bezug: Atmungsvergleich.",
@@ -1854,8 +1727,7 @@ export const k6AtmungVergleich: BioBank = {
     {
       concept: "bio:k6:atmverg:f1",
       prompt: "Was kennzeichnet „Lunge“?",
-      answer: "Die Lunge ist hier: Atemorgan für Luft.",
-      wrong: ["Die Lunge ist hier: Atemorgan für Wasser.", "Die Lunge ist hier: Luftröhrensystem der Insekten.", "Die Lunge ist hier: Gasaustausch über die Körperoberfläche."],
+      answer: "Sie ist eine Atemorgan für Luft.", wrong: ["Sie ist ein Atemorgan für Wasser.", "Sie ist eine Luftröhrensystem der Insekten.", "Sie ist eine Gasaustausch über die Körperoberfläche."],
       explanation: "Lunge: Atemorgan für Luft",
       wissen: fw(
         "Bei vielen Landwirbeltieren. Bezug: Atmungsvergleich.",
@@ -1866,8 +1738,7 @@ export const k6AtmungVergleich: BioBank = {
     {
       concept: "bio:k6:atmverg:f2",
       prompt: "Was kennzeichnet „Trachee“?",
-      answer: "Die Trachee ist hier: Luftröhrensystem der Insekten.",
-      wrong: ["Die Trachee ist hier: Atemorgan für Wasser.", "Die Trachee ist hier: Atemorgan für Luft.", "Die Trachee ist hier: Gasaustausch über die Körperoberfläche."],
+      answer: "Sie ist eine Luftröhrensystem der Insekten.", wrong: ["Sie ist ein Atemorgan für Wasser.", "Sie ist eine Atemorgan für Luft.", "Sie ist eine Gasaustausch über die Körperoberfläche."],
       explanation: "Trachee: Luftröhrensystem der Insekten",
       wissen: fw(
         "Direkte Gewebeversorgung. Bezug: Atmungsvergleich.",
@@ -1878,8 +1749,7 @@ export const k6AtmungVergleich: BioBank = {
     {
       concept: "bio:k6:atmverg:f3",
       prompt: "Was kennzeichnet „Hautatmung“?",
-      answer: "Die Hautatmung ist hier: Gasaustausch über die Körperoberfläche.",
-      wrong: ["Die Hautatmung ist hier: Atemorgan für Wasser.", "Die Hautatmung ist hier: Atemorgan für Luft.", "Die Hautatmung ist hier: Luftröhrensystem der Insekten."],
+      answer: "Sie ist eine Gasaustausch über die Körperoberfläche.", wrong: ["Sie ist ein Atemorgan für Wasser.", "Sie ist eine Atemorgan für Luft.", "Sie ist eine Luftröhrensystem der Insekten."],
       explanation: "Hautatmung: Gasaustausch über die Körperoberfläche",
       wissen: fw(
         "z. B. bei manchen Lurchen. Bezug: Atmungsvergleich.",
@@ -1890,8 +1760,7 @@ export const k6AtmungVergleich: BioBank = {
     {
       concept: "bio:k6:atmverg:f4",
       prompt: "Was kennzeichnet „Oberflächenvergrößerung“?",
-      answer: "Die Oberflächenvergrößerung ist hier: Vergrößerung der Austauschfläche.",
-      wrong: ["Die Oberflächenvergrößerung ist hier: Atemorgan für Wasser.", "Die Oberflächenvergrößerung ist hier: Atemorgan für Luft.", "Die Oberflächenvergrößerung ist hier: Luftröhrensystem der Insekten."],
+      answer: "Sie ist eine Vergrößerung der Austauschfläche.", wrong: ["Sie ist ein Atemorgan für Wasser.", "Sie ist eine Atemorgan für Luft.", "Sie ist eine Luftröhrensystem der Insekten."],
       explanation: "Oberflächenvergrößerung: Vergrößerung der Austauschfläche",
       wissen: fw(
         "Gemeinsames Prinzip aller Atemorgane. Bezug: Atmungsvergleich.",
@@ -1902,8 +1771,7 @@ export const k6AtmungVergleich: BioBank = {
     {
       concept: "bio:k6:atmverg:f5",
       prompt: "Was kennzeichnet „Medium“?",
-      answer: "Das Medium ist hier: Wasser oder Luft als Gasquelle.",
-      wrong: ["Das Medium ist hier: Atemorgan für Wasser.", "Das Medium ist hier: Atemorgan für Luft.", "Das Medium ist hier: Luftröhrensystem der Insekten."],
+      answer: "Es ist eine Wasser oder Luft als Gasquelle.", wrong: ["Es ist ein Atemorgan für Wasser.", "Es ist eine Atemorgan für Luft.", "Es ist eine Luftröhrensystem der Insekten."],
       explanation: "Medium: Wasser oder Luft als Gasquelle",
       wissen: fw(
         "Bestimmt den Atemorgan-Typ. Bezug: Atmungsvergleich.",
@@ -1914,8 +1782,7 @@ export const k6AtmungVergleich: BioBank = {
     {
       concept: "bio:k6:atmverg:f6",
       prompt: "Was kennzeichnet „Diffusion“?",
-      answer: "Die Diffusion ist hier: Grundprinzip des Gasaustauschs.",
-      wrong: ["Die Diffusion ist hier: Atemorgan für Wasser.", "Die Diffusion ist hier: Atemorgan für Luft.", "Die Diffusion ist hier: Luftröhrensystem der Insekten."],
+      answer: "Sie ist eine Grundprinzip des Gasaustauschs.", wrong: ["Sie ist ein Atemorgan für Wasser.", "Sie ist eine Atemorgan für Luft.", "Sie ist eine Luftröhrensystem der Insekten."],
       explanation: "Diffusion: Grundprinzip des Gasaustauschs",
       wissen: fw(
         "Kurze Wege und große Fläche helfen. Bezug: Atmungsvergleich.",
@@ -1926,8 +1793,7 @@ export const k6AtmungVergleich: BioBank = {
     {
       concept: "bio:k6:atmverg:f7",
       prompt: "Was kennzeichnet „Feuchte Oberfläche“?",
-      answer: "Die Feuchte Oberfläche ist hier: Erleichtert Gasdiffusion.",
-      wrong: ["Die Feuchte Oberfläche ist hier: Atemorgan für Wasser.", "Die Feuchte Oberfläche ist hier: Atemorgan für Luft.", "Die Feuchte Oberfläche ist hier: Luftröhrensystem der Insekten."],
+      answer: "Die Feuchte Oberfläche ist die Erleichtert Gasdiffusion.", wrong: ["Sie ist ein Atemorgan für Wasser.", "Sie ist eine Atemorgan für Luft.", "Sie ist eine Luftröhrensystem der Insekten."],
       explanation: "Feuchte Oberfläche: Erleichtert Gasdiffusion",
       wissen: fw(
         "Typisch für Kiemen und Lungen innen. Bezug: Atmungsvergleich.",
@@ -1938,8 +1804,7 @@ export const k6AtmungVergleich: BioBank = {
     {
       concept: "bio:k6:atmverg:f8",
       prompt: "Was kennzeichnet „Landleben“?",
-      answer: "Das Landleben ist kurz gesagt: Leben außerhalb des Wassers.",
-      wrong: ["Das Landleben ist hier: Atemorgan für Wasser.", "Das Landleben ist hier: Atemorgan für Luft.", "Das Landleben ist hier: Luftröhrensystem der Insekten."],
+      answer: "Es ist eine Leben Außerhalb des Wassers.", wrong: ["Es ist ein Atemorgan für Wasser.", "Es ist eine Atemorgan für Luft.", "Es ist eine Luftröhrensystem der Insekten."],
       explanation: "Landleben: Leben außerhalb des Wassers",
       wissen: fw(
         "Begünstigt Lungen oder Tracheen. Bezug: Atmungsvergleich.",
@@ -1950,8 +1815,7 @@ export const k6AtmungVergleich: BioBank = {
     {
       concept: "bio:k6:atmverg:f9",
       prompt: "Was kennzeichnet „Wasserleben“?",
-      answer: "Das Wasserleben ist kurz gesagt: Leben im Wasser.",
-      wrong: ["Das Wasserleben ist hier: Atemorgan für Wasser.", "Das Wasserleben ist hier: Atemorgan für Luft.", "Das Wasserleben ist hier: Luftröhrensystem der Insekten."],
+      answer: "Es ist ein Leben im Wasser.", wrong: ["Es ist ein Atemorgan für Wasser.", "Es ist eine Atemorgan für Luft.", "Es ist eine Luftröhrensystem der Insekten."],
       explanation: "Wasserleben: Leben im Wasser",
       wissen: fw(
         "Begünstigt Kiemen. Bezug: Atmungsvergleich.",
@@ -1962,8 +1826,7 @@ export const k6AtmungVergleich: BioBank = {
     {
       concept: "bio:k6:atmverg:f10",
       prompt: "Was kennzeichnet „Doppelstrategie“?",
-      answer: "Die Doppelstrategie ist hier: Mehrere Atemwege parallel.",
-      wrong: ["Die Doppelstrategie ist hier: Atemorgan für Wasser.", "Die Doppelstrategie ist hier: Atemorgan für Luft.", "Die Doppelstrategie ist hier: Luftröhrensystem der Insekten."],
+      answer: "Sie ist eine Mehrere Atemwege Parallel.", wrong: ["Sie ist ein Atemorgan für Wasser.", "Sie ist eine Atemorgan für Luft.", "Sie ist eine Luftröhrensystem der Insekten."],
       explanation: "Doppelstrategie: Mehrere Atemwege parallel",
       wissen: fw(
         "z. B. Haut und Lunge bei Lurchen. Bezug: Atmungsvergleich.",
@@ -1974,8 +1837,7 @@ export const k6AtmungVergleich: BioBank = {
     {
       concept: "bio:k6:atmverg:f11",
       prompt: "Was kennzeichnet „Angepasstheit“?",
-      answer: "Die Angepasstheit ist kurz gesagt: Bau folgt dem Lebensraum.",
-      wrong: ["Die Angepasstheit ist hier: Atemorgan für Wasser.", "Die Angepasstheit ist hier: Atemorgan für Luft.", "Die Angepasstheit ist hier: Luftröhrensystem der Insekten."],
+      answer: "Bau folgt dem Lebensraum.", wrong: ["Sie ist ein Atemorgan für Wasser.", "Sie ist eine Atemorgan für Luft.", "Sie ist eine Luftröhrensystem der Insekten."],
       explanation: "Angepasstheit: Bau folgt dem Lebensraum",
       wissen: fw(
         "Atemorgan spiegelt Umwelt. Bezug: Atmungsvergleich.",
@@ -1986,8 +1848,7 @@ export const k6AtmungVergleich: BioBank = {
     {
       concept: "bio:k6:atmverg:x0",
       prompt: "Atmungsvergleich: Welches gemeinsame Prinzip haben Kiemen, Lungen und Tracheen?",
-      answer: "Es geht um Große feuchte Oberfläche für Diffusion, und zwar gilt: bei Fischen und vielen Krebsen.",
-      wrong: ["Es geht um Photosynthese ohne Gase.", "Es geht um Zahnwechsel als Atmung.", "Es geht um diesen Inhalt: Nur Fettlagerung."],
+      answer: "Es ist eine Große feuchte Oberfläche für Diffusion.", wrong: ["Es ist eine Photosynthese ohne Gase.", "Es ist eine Zahnwechsel als Atmung.", "Es ist eine Nur Fettlagerung."],
       explanation: "Oberflächenvergrößerung.",
       wissen: fw(
         "Alle effizienten Atemorgane vergrößern die Fläche und halten kurze Diffusionswege.",
@@ -1996,8 +1857,7 @@ export const k6AtmungVergleich: BioBank = {
     {
       concept: "bio:k6:atmverg:x1",
       prompt: "Atmungsvergleich: Warum passen Kiemen schlecht zum trockenen Landleben?",
-      answer: "Es geht um Sie trocknen aus und kollabieren ohne Wasserstütze, und zwar gilt: bei Fischen und vielen Krebsen.",
-      wrong: ["Hier gilt: Weil Wasser giftig ist.", "Hier gilt: Weil Kiemen Federn bilden.", "Hier gilt: Weil Land keine Gase hat."],
+      answer: "Es ist eine Sie trocknen aus und kollabieren ohne Wasserstütze.", wrong: ["Es ist eine Weil Wasser giftig ist.", "Es ist eine Weil Kiemen Federn bilden.", "Es ist eine Weil Land keine Gase hat."],
       explanation: "Medium.",
       wissen: fw(
         "Luftatmung braucht andere Strukturen als Wasseratmung. Bezug: Atmungsvergleich.",
@@ -2045,8 +1905,7 @@ export const k6FortpflanzungFormen: BioBank = {
     {
       concept: "bio:k6:fortform:f0",
       prompt: "Was kennzeichnet „Äußere Befruchtung“?",
-      answer: "Die Äußere Befruchtung ist hier: Keimzellen treffen sich außerhalb des Körpers.",
-      wrong: ["Die Äußere Befruchtung ist hier: Befruchtung im Körper.", "Die Äußere Befruchtung ist hier: Ablage von Eiern.", "Die Äußere Befruchtung ist hier: Geburt entwickelter Jungtiere."],
+      answer: "Sie ist eine Keimzellen Treffen Sich Außerhalb des Körpers.", wrong: ["Sie ist ein Befruchtung im Körper.", "Sie ist eine Ablage von Eiern.", "Sie ist eine Geburt Entwickelter Jungtiere."],
       explanation: "Äußere Befruchtung: Keimzellen treffen sich außerhalb des Körpers",
       wissen: fw(
         "Häufig im Wasser. Bezug: Fortpflanzungsformen.",
@@ -2057,8 +1916,7 @@ export const k6FortpflanzungFormen: BioBank = {
     {
       concept: "bio:k6:fortform:f1",
       prompt: "Was kennzeichnet „Innere Befruchtung“?",
-      answer: "Die Innere Befruchtung ist hier: Befruchtung im Körper.",
-      wrong: ["Die Innere Befruchtung ist hier: Keimzellen treffen sich außerhalb des Körpers.", "Die Innere Befruchtung ist hier: Ablage von Eiern.", "Die Innere Befruchtung ist hier: Geburt entwickelter Jungtiere."],
+      answer: "Sie ist ein Befruchtung im Körper.", wrong: ["Sie ist eine Keimzellen Treffen Sich Außerhalb des Körpers.", "Sie ist eine Ablage von Eiern.", "Sie ist eine Geburt Entwickelter Jungtiere."],
       explanation: "Innere Befruchtung: Befruchtung im Körper",
       wissen: fw(
         "Typisch für viele Landtiere. Bezug: Fortpflanzungsformen.",
@@ -2069,8 +1927,7 @@ export const k6FortpflanzungFormen: BioBank = {
     {
       concept: "bio:k6:fortform:f2",
       prompt: "Was kennzeichnet „Eiablage“?",
-      answer: "Die Eiablage ist hier: Ablage von Eiern.",
-      wrong: ["Die Eiablage ist hier: Keimzellen treffen sich außerhalb des Körpers.", "Die Eiablage ist hier: Befruchtung im Körper.", "Die Eiablage ist hier: Geburt entwickelter Jungtiere."],
+      answer: "Sie ist eine Ablage von Eiern.", wrong: ["Sie ist eine Keimzellen Treffen Sich Außerhalb des Körpers.", "Sie ist ein Befruchtung im Körper.", "Sie ist eine Geburt Entwickelter Jungtiere."],
       explanation: "Eiablage: Ablage von Eiern",
       wissen: fw(
         "Entwicklung oft außerhalb der Mutter. Bezug: Fortpflanzungsformen.",
@@ -2081,8 +1938,7 @@ export const k6FortpflanzungFormen: BioBank = {
     {
       concept: "bio:k6:fortform:f3",
       prompt: "Was kennzeichnet „Lebendgeburt“?",
-      answer: "Das Lebendgeburt ist hier: Geburt entwickelter Jungtiere.",
-      wrong: ["Das Lebendgeburt ist hier: Keimzellen treffen sich außerhalb des Körpers.", "Das Lebendgeburt ist hier: Befruchtung im Körper.", "Das Lebendgeburt ist hier: Ablage von Eiern."],
+      answer: "Es ist eine Geburt Entwickelter Jungtiere.", wrong: ["Es ist eine Keimzellen Treffen Sich Außerhalb des Körpers.", "Es ist ein Befruchtung im Körper.", "Es ist eine Ablage von Eiern."],
       explanation: "Lebendgeburt: Geburt entwickelter Jungtiere",
       wissen: fw(
         "Bei vielen Säugern. Bezug: Fortpflanzungsformen.",
@@ -2093,8 +1949,7 @@ export const k6FortpflanzungFormen: BioBank = {
     {
       concept: "bio:k6:fortform:f4",
       prompt: "Was kennzeichnet „Metamorphose“?",
-      answer: "Die Metamorphose ist hier: Gestaltwechsel der Entwicklung.",
-      wrong: ["Die Metamorphose ist hier: Keimzellen treffen sich außerhalb des Körpers.", "Die Metamorphose ist hier: Befruchtung im Körper.", "Die Metamorphose ist hier: Ablage von Eiern."],
+      answer: "Sie ist eine Gestaltwechsel der Entwicklung.", wrong: ["Sie ist eine Keimzellen Treffen Sich Außerhalb des Körpers.", "Sie ist ein Befruchtung im Körper.", "Sie ist eine Ablage von Eiern."],
       explanation: "Metamorphose: Gestaltwechsel der Entwicklung",
       wissen: fw(
         "z. B. Insekten und Lurche. Bezug: Fortpflanzungsformen.",
@@ -2105,8 +1960,7 @@ export const k6FortpflanzungFormen: BioBank = {
     {
       concept: "bio:k6:fortform:f5",
       prompt: "Was kennzeichnet „Brutpflege“?",
-      answer: "Die Brutpflege ist hier: Versorgung der Nachkommen.",
-      wrong: ["Die Brutpflege ist hier: Keimzellen treffen sich außerhalb des Körpers.", "Die Brutpflege ist hier: Befruchtung im Körper.", "Die Brutpflege ist hier: Ablage von Eiern."],
+      answer: "Sie ist eine Versorgung der Nachkommen.", wrong: ["Sie ist eine Keimzellen Treffen Sich Außerhalb des Körpers.", "Sie ist ein Befruchtung im Körper.", "Sie ist eine Ablage von Eiern."],
       explanation: "Brutpflege: Versorgung der Nachkommen",
       wissen: fw(
         "Erhöht Überleben. Bezug: Fortpflanzungsformen.",
@@ -2117,8 +1971,7 @@ export const k6FortpflanzungFormen: BioBank = {
     {
       concept: "bio:k6:fortform:f6",
       prompt: "Was kennzeichnet „ungeschlechtlich“?",
-      answer: "Das ungeschlechtlich ist hier: Vermehrung ohne Gametenverschmelzung.",
-      wrong: ["Das ungeschlechtlich ist hier: Keimzellen treffen sich außerhalb des Körpers.", "Das ungeschlechtlich ist hier: Befruchtung im Körper.", "Das ungeschlechtlich ist hier: Ablage von Eiern."],
+      answer: "Es ist eine Vermehrung ohne Gametenverschmelzung.", wrong: ["Es ist eine Keimzellen Treffen Sich Außerhalb des Körpers.", "Es ist ein Befruchtung im Körper.", "Es ist eine Ablage von Eiern."],
       explanation: "ungeschlechtlich: Vermehrung ohne Gametenverschmelzung",
       wissen: fw(
         "z. B. Teilung bei manchen Wirbellosen. Bezug: Fortpflanzungsformen.",
@@ -2129,8 +1982,7 @@ export const k6FortpflanzungFormen: BioBank = {
     {
       concept: "bio:k6:fortform:f7",
       prompt: "Was kennzeichnet „geschlechtlich“?",
-      answer: "Das geschlechtlich ist hier: Vermehrung mit Befruchtung.",
-      wrong: ["Das geschlechtlich ist hier: Keimzellen treffen sich außerhalb des Körpers.", "Das geschlechtlich ist hier: Befruchtung im Körper.", "Das geschlechtlich ist hier: Ablage von Eiern."],
+      answer: "Es ist eine Vermehrung mit Befruchtung.", wrong: ["Es ist eine Keimzellen Treffen Sich Außerhalb des Körpers.", "Es ist ein Befruchtung im Körper.", "Es ist eine Ablage von Eiern."],
       explanation: "geschlechtlich: Vermehrung mit Befruchtung",
       wissen: fw(
         "Erhöht genetische Vielfalt. Bezug: Fortpflanzungsformen.",
@@ -2141,8 +1993,7 @@ export const k6FortpflanzungFormen: BioBank = {
     {
       concept: "bio:k6:fortform:f8",
       prompt: "Was kennzeichnet „Larve“?",
-      answer: "Die Larve ist hier: Jugendstadium mit anderer Gestalt.",
-      wrong: ["Die Larve ist hier: Keimzellen treffen sich außerhalb des Körpers.", "Die Larve ist hier: Befruchtung im Körper.", "Die Larve ist hier: Ablage von Eiern."],
+      answer: "Sie ist eine Jugendstadium mit Anderer Gestalt.", wrong: ["Sie ist eine Keimzellen Treffen Sich Außerhalb des Körpers.", "Sie ist ein Befruchtung im Körper.", "Sie ist eine Ablage von Eiern."],
       explanation: "Larve: Jugendstadium mit anderer Gestalt",
       wissen: fw(
         "Oft andere Lebensweise. Bezug: Fortpflanzungsformen.",
@@ -2153,8 +2004,7 @@ export const k6FortpflanzungFormen: BioBank = {
     {
       concept: "bio:k6:fortform:f9",
       prompt: "Was kennzeichnet „Puppe“?",
-      answer: "Die Puppe ist kurz gesagt: Ruhe-/Umwandlungsstadium.",
-      wrong: ["Die Puppe ist hier: Keimzellen treffen sich außerhalb des Körpers.", "Die Puppe ist hier: Befruchtung im Körper.", "Die Puppe ist hier: Ablage von Eiern."],
+      answer: "Die Puppe ist die Ruhe-/Umwandlungsstadium.", wrong: ["Sie ist eine Keimzellen Treffen Sich Außerhalb des Körpers.", "Sie ist ein Befruchtung im Körper.", "Sie ist eine Ablage von Eiern."],
       explanation: "Puppe: Ruhe-/Umwandlungsstadium",
       wissen: fw(
         "Bei holometabolen Insekten. Bezug: Fortpflanzungsformen.",
@@ -2165,8 +2015,7 @@ export const k6FortpflanzungFormen: BioBank = {
     {
       concept: "bio:k6:fortform:f10",
       prompt: "Was kennzeichnet „Wasserabhängigkeit“?",
-      answer: "Die Wasserabhängigkeit ist hier: Fortpflanzung an Wasser gebunden.",
-      wrong: ["Die Wasserabhängigkeit ist hier: Keimzellen treffen sich außerhalb des Körpers.", "Die Wasserabhängigkeit ist hier: Befruchtung im Körper.", "Die Wasserabhängigkeit ist hier: Ablage von Eiern."],
+      answer: "Sie ist eine Fortpflanzung an Wasser Gebunden.", wrong: ["Sie ist eine Keimzellen Treffen Sich Außerhalb des Körpers.", "Sie ist ein Befruchtung im Körper.", "Sie ist eine Ablage von Eiern."],
       explanation: "Wasserabhängigkeit: Fortpflanzung an Wasser gebunden",
       wissen: fw(
         "z. B. viele Amphibien. Bezug: Fortpflanzungsformen.",
@@ -2177,8 +2026,7 @@ export const k6FortpflanzungFormen: BioBank = {
     {
       concept: "bio:k6:fortform:f11",
       prompt: "Was kennzeichnet „Landunabhängigkeit“?",
-      answer: "Die Landunabhängigkeit ist hier: Fortpflanzung ohne freies Wasser.",
-      wrong: ["Die Landunabhängigkeit ist hier: Keimzellen treffen sich außerhalb des Körpers.", "Die Landunabhängigkeit ist hier: Befruchtung im Körper.", "Die Landunabhängigkeit ist hier: Ablage von Eiern."],
+      answer: "Sie ist ein Fortpflanzung ohne Freies Wasser.", wrong: ["Sie ist eine Keimzellen Treffen Sich Außerhalb des Körpers.", "Sie ist ein Befruchtung im Körper.", "Sie ist eine Ablage von Eiern."],
       explanation: "Landunabhängigkeit: Fortpflanzung ohne freies Wasser",
       wissen: fw(
         "Schalenei oder innere Entwicklung. Bezug: Fortpflanzungsformen.",
@@ -2189,8 +2037,7 @@ export const k6FortpflanzungFormen: BioBank = {
     {
       concept: "bio:k6:fortform:x0",
       prompt: "Fortpflanzungsformen: Warum ist innere Befruchtung am Land vorteilhaft?",
-      answer: "Es geht um Keimzellen trocknen nicht so leicht aus, und zwar gilt: häufig im Wasser.",
-      wrong: ["Hier gilt: Weil Land keine Fortpflanzung braucht.", "Hier gilt: Weil Eier immer im Wasser bleiben müssen.", "Es geht um Weil Federn befruchten."],
+      answer: "Es ist ein Keimzellen trocknen nicht so leicht aus.", wrong: ["Es ist eine Weil Land keine Fortpflanzung braucht.", "Es ist eine Weil Eier immer im Wasser bleiben müssen.", "Es ist eine Weil Federn befruchten."],
       explanation: "Austrocknungsschutz.",
       wissen: fw(
         "Am Land schützt innere Befruchtung die Keimzellen vor dem Austrocknen.",
@@ -2199,8 +2046,7 @@ export const k6FortpflanzungFormen: BioBank = {
     {
       concept: "bio:k6:fortform:x1",
       prompt: "Fortpflanzungsformen: Was unterscheidet Eiablage und Lebendgeburt grob?",
-      answer: "Es geht um Entwicklung außerhalb versus Geburt entwickelter Jungen, und zwar gilt: häufig im Wasser.",
-      wrong: ["Hier gilt: Beide sind identisch immer.", "Hier gilt: Eiablage gibt es nur bei Säugern.", "Es geht um Lebendgeburt nur bei Insekten."],
+      answer: "Es ist eine Entwicklung außerhalb versus Geburt entwickelter Jungen.", wrong: ["Es ist ein Beide sind identisch immer.", "Es ist eine Eiablage gibt es nur bei Säugern.", "Es ist eine Lebendgeburt nur bei Insekten."],
       explanation: "Entwicklungsort.",
       wissen: fw(
         "Beide Strategien können mit Brutpflege kombiniert sein. Bezug: Fortpflanzungsformen.",
@@ -2248,8 +2094,7 @@ export const k6Zelltheorie: BioBank = {
     {
       concept: "bio:k6:zellth:f0",
       prompt: "Was kennzeichnet „Zelle“?",
-      answer: "Die Zelle ist hier: Kleinste lebende Einheit.",
-      wrong: ["Die Zelle ist kurz gesagt: Lebewesen bestehen aus Zellen.", "Die Zelle ist hier: Organismus aus einer Zelle.", "Die Zelle ist hier: Organismus aus vielen Zellen."],
+      answer: "Sie ist eine Kleinste Lebende Einheit.", wrong: ["Sie ist eine Lebewesen Bestehen aus Zellen.", "Sie ist eine Organismus aus einer Zelle.", "Sie ist eine Organismus aus Vielen Zellen."],
       explanation: "Zelle: Kleinste lebende Einheit",
       wissen: fw(
         "Baustein aller Organismen. Bezug: Zelltheorie.",
@@ -2260,8 +2105,7 @@ export const k6Zelltheorie: BioBank = {
     {
       concept: "bio:k6:zellth:f1",
       prompt: "Was kennzeichnet „Zelltheorie“?",
-      answer: "Die Zelltheorie ist kurz gesagt: Lebewesen bestehen aus Zellen.",
-      wrong: ["Die Zelltheorie ist hier: Kleinste lebende Einheit.", "Die Zelltheorie ist hier: Organismus aus einer Zelle.", "Die Zelltheorie ist hier: Organismus aus vielen Zellen."],
+      answer: "Sie ist eine Lebewesen Bestehen aus Zellen.", wrong: ["Sie ist eine Kleinste Lebende Einheit.", "Sie ist eine Organismus aus einer Zelle.", "Sie ist eine Organismus aus Vielen Zellen."],
       explanation: "Zelltheorie: Lebewesen bestehen aus Zellen",
       wissen: fw(
         "Zellen entstehen aus Zellen. Bezug: Zelltheorie.",
@@ -2272,8 +2116,7 @@ export const k6Zelltheorie: BioBank = {
     {
       concept: "bio:k6:zellth:f2",
       prompt: "Was kennzeichnet „Einzeller“?",
-      answer: "Der Einzeller ist hier: Organismus aus einer Zelle.",
-      wrong: ["Der Einzeller ist hier: Kleinste lebende Einheit.", "Der Einzeller ist kurz gesagt: Lebewesen bestehen aus Zellen.", "Der Einzeller ist hier: Organismus aus vielen Zellen."],
+      answer: "Er ist eine Organismus aus einer Zelle.", wrong: ["Er ist eine Kleinste Lebende Einheit.", "Er ist eine Lebewesen Bestehen aus Zellen.", "Er ist eine Organismus aus Vielen Zellen."],
       explanation: "Einzeller: Organismus aus einer Zelle",
       wissen: fw(
         "z. B. viele Protisten. Bezug: Zelltheorie.",
@@ -2284,8 +2127,7 @@ export const k6Zelltheorie: BioBank = {
     {
       concept: "bio:k6:zellth:f3",
       prompt: "Was kennzeichnet „Vielzeller“?",
-      answer: "Der Vielzeller ist hier: Organismus aus vielen Zellen.",
-      wrong: ["Der Vielzeller ist hier: Kleinste lebende Einheit.", "Der Vielzeller ist kurz gesagt: Lebewesen bestehen aus Zellen.", "Der Vielzeller ist hier: Organismus aus einer Zelle."],
+      answer: "Er ist eine Organismus aus Vielen Zellen.", wrong: ["Er ist eine Kleinste Lebende Einheit.", "Er ist eine Lebewesen Bestehen aus Zellen.", "Er ist eine Organismus aus einer Zelle."],
       explanation: "Vielzeller: Organismus aus vielen Zellen",
       wissen: fw(
         "Arbeitsteilung möglich. Bezug: Zelltheorie.",
@@ -2296,8 +2138,7 @@ export const k6Zelltheorie: BioBank = {
     {
       concept: "bio:k6:zellth:f4",
       prompt: "Wozu dient Zellkern?",
-      answer: "Das Zellkern ist kurz gesagt: Enthält Erbinformation bei Eukaryoten.",
-      wrong: ["Das Zellkern ist hier: Kleinste lebende Einheit.", "Das Zellkern ist kurz gesagt: Lebewesen bestehen aus Zellen.", "Das Zellkern ist hier: Organismus aus einer Zelle."],
+      answer: "Es enthält Erbinformation bei Eukaryoten.", wrong: ["Es ist eine Kleinste Lebende Einheit.", "Es ist eine Lebewesen Bestehen aus Zellen.", "Es ist eine Organismus aus einer Zelle."],
       explanation: "Zellkern: Enthält Erbinformation bei Eukaryoten",
       wissen: fw(
         "Steuert Zellprozesse. Bezug: Zelltheorie.",
@@ -2308,8 +2149,7 @@ export const k6Zelltheorie: BioBank = {
     {
       concept: "bio:k6:zellth:f5",
       prompt: "Was kennzeichnet „Mikroskop“?",
-      answer: "Das Mikroskop ist hier: Gerät zur Sichtbarmachung von Zellen.",
-      wrong: ["Das Mikroskop ist hier: Kleinste lebende Einheit.", "Das Mikroskop ist kurz gesagt: Lebewesen bestehen aus Zellen.", "Das Mikroskop ist hier: Organismus aus einer Zelle."],
+      answer: "Es ist eine Gerät zur Sichtbarmachung von Zellen.", wrong: ["Es ist eine Kleinste Lebende Einheit.", "Es ist eine Lebewesen Bestehen aus Zellen.", "Es ist eine Organismus aus einer Zelle."],
       explanation: "Mikroskop: Gerät zur Sichtbarmachung von Zellen",
       wissen: fw(
         "Ermöglichte die Zelltheorie. Bezug: Zelltheorie.",
@@ -2320,8 +2160,7 @@ export const k6Zelltheorie: BioBank = {
     {
       concept: "bio:k6:zellth:f6",
       prompt: "Was kennzeichnet „Gewebe“?",
-      answer: "Die Gewebe ist hier: Verband gleichartiger Zellen.",
-      wrong: ["Die Gewebe ist hier: Kleinste lebende Einheit.", "Die Gewebe ist kurz gesagt: Lebewesen bestehen aus Zellen.", "Die Gewebe ist hier: Organismus aus einer Zelle."],
+      answer: "Sie ist eine Verband Gleichartiger Zellen.", wrong: ["Sie ist eine Kleinste Lebende Einheit.", "Sie ist eine Lebewesen Bestehen aus Zellen.", "Sie ist eine Organismus aus einer Zelle."],
       explanation: "Gewebe: Verband gleichartiger Zellen",
       wissen: fw(
         "Baustein von Organen. Bezug: Zelltheorie.",
@@ -2332,8 +2171,7 @@ export const k6Zelltheorie: BioBank = {
     {
       concept: "bio:k6:zellth:f7",
       prompt: "Wozu dient Organ?",
-      answer: "Das Organ ist hier: Funktionseinheit aus Geweben.",
-      wrong: ["Das Organ ist hier: Kleinste lebende Einheit.", "Das Organ ist kurz gesagt: Lebewesen bestehen aus Zellen.", "Das Organ ist hier: Organismus aus einer Zelle."],
+      answer: "Es ist eine Funktionseinheit aus Geweben.", wrong: ["Es ist eine Kleinste Lebende Einheit.", "Es ist eine Lebewesen Bestehen aus Zellen.", "Es ist eine Organismus aus einer Zelle."],
       explanation: "Organ: Funktionseinheit aus Geweben",
       wissen: fw(
         "z. B. Blatt oder Herz. Bezug: Zelltheorie.",
@@ -2344,8 +2182,7 @@ export const k6Zelltheorie: BioBank = {
     {
       concept: "bio:k6:zellth:f8",
       prompt: "Was kennzeichnet „Schleiden“?",
-      answer: "Das Schleiden ist hier: Mitbegründer der pflanzlichen Zelltheorie.",
-      wrong: ["Das Schleiden ist hier: Kleinste lebende Einheit.", "Das Schleiden ist kurz gesagt: Lebewesen bestehen aus Zellen.", "Das Schleiden ist hier: Organismus aus einer Zelle."],
+      answer: "Es ist eine Mitbegründer der Pflanzlichen Zelltheorie.", wrong: ["Es ist eine Kleinste Lebende Einheit.", "Es ist eine Lebewesen Bestehen aus Zellen.", "Es ist eine Organismus aus einer Zelle."],
       explanation: "Schleiden: Mitbegründer der pflanzlichen Zelltheorie",
       wissen: fw(
         "Zellen als Grundeinheit der Pflanzen. Bezug: Zelltheorie.",
@@ -2356,8 +2193,7 @@ export const k6Zelltheorie: BioBank = {
     {
       concept: "bio:k6:zellth:f9",
       prompt: "Was kennzeichnet „Schwann“?",
-      answer: "Das Schwann ist hier: Übertrug Zellgedanken auf Tiere.",
-      wrong: ["Das Schwann ist hier: Kleinste lebende Einheit.", "Das Schwann ist kurz gesagt: Lebewesen bestehen aus Zellen.", "Das Schwann ist hier: Organismus aus einer Zelle."],
+      answer: "Es ist eine Übertrug Zellgedanken auf Tiere.", wrong: ["Es ist eine Kleinste Lebende Einheit.", "Es ist eine Lebewesen Bestehen aus Zellen.", "Es ist eine Organismus aus einer Zelle."],
       explanation: "Schwann: Übertrug Zellgedanken auf Tiere",
       wissen: fw(
         "Zellen auch bei Tieren. Bezug: Zelltheorie.",
@@ -2368,8 +2204,7 @@ export const k6Zelltheorie: BioBank = {
     {
       concept: "bio:k6:zellth:f10",
       prompt: "Was kennzeichnet „Virchow“?",
-      answer: "Das Virchow ist hier: Zellen entstehen aus Zellen.",
-      wrong: ["Das Virchow ist hier: Kleinste lebende Einheit.", "Das Virchow ist kurz gesagt: Lebewesen bestehen aus Zellen.", "Das Virchow ist hier: Organismus aus einer Zelle."],
+      answer: "Es ist eine Zellen Entstehen aus Zellen.", wrong: ["Es ist eine Kleinste Lebende Einheit.", "Es ist eine Lebewesen Bestehen aus Zellen.", "Es ist eine Organismus aus einer Zelle."],
       explanation: "Virchow: Zellen entstehen aus Zellen",
       wissen: fw(
         "Omnis cellula e cellula. Bezug: Zelltheorie.",
@@ -2380,8 +2215,7 @@ export const k6Zelltheorie: BioBank = {
     {
       concept: "bio:k6:zellth:f11",
       prompt: "Was kennzeichnet „Differenzierung“?",
-      answer: "Die Differenzierung ist hier: Spezialisierung von Zellen.",
-      wrong: ["Die Differenzierung ist hier: Kleinste lebende Einheit.", "Die Differenzierung ist kurz gesagt: Lebewesen bestehen aus Zellen.", "Die Differenzierung ist hier: Organismus aus einer Zelle."],
+      answer: "Sie ist eine Spezialisierung von Zellen.", wrong: ["Sie ist eine Kleinste Lebende Einheit.", "Sie ist eine Lebewesen Bestehen aus Zellen.", "Sie ist eine Organismus aus einer Zelle."],
       explanation: "Differenzierung: Spezialisierung von Zellen",
       wissen: fw(
         "Unterschiedliche Aufgaben. Bezug: Zelltheorie.",
@@ -2392,8 +2226,7 @@ export const k6Zelltheorie: BioBank = {
     {
       concept: "bio:k6:zellth:x0",
       prompt: "Zelltheorie: Was besagt die Zelltheorie in Kurzform?",
-      answer: "Alle Organismen bestehen aus Zellen; neue Zellen entstehen aus vorhandenen, und zwar gilt: baustein aller Organismen.",
-      wrong: ["Hier gilt: Lebewesen bestehen nur aus Luft.", "Es geht um Zellen entstehen spontan aus Stein.", "Hier gilt: Nur Pflanzen haben Zellen."],
+      answer: "Es ist eine Alle Organismen Bestehen aus Zellen; Neue Zellen Entstehen aus Vorhandenen durch Baustein Aller Organismen.", wrong: ["Es ist eine Lebewesen bestehen nur aus Luft.", "Es ist eine Zellen entstehen spontan aus Stein.", "Es ist eine Nur Pflanzen haben Zellen."],
       explanation: "Grundprinzip.",
       wissen: fw(
         "Die Zelltheorie verbindet Beobachtung am Mikroskop mit der Idee gemeinsamer Bausteine des Lebens.",
@@ -2402,8 +2235,7 @@ export const k6Zelltheorie: BioBank = {
     {
       concept: "bio:k6:zellth:x1",
       prompt: "Zelltheorie: Warum war das Mikroskop für die Zelltheorie entscheidend?",
-      answer: "Zellen sind meist zu klein für das bloße Auge, und zwar gilt hier: Baustein aller Organismen.",
-      wrong: ["Weil Zellen riesig wie Häuser sind.", "Es geht um Weil Mikroskope Knochen ersetzen.", "Hier gilt: Weil Licht unnötig ist."],
+      answer: "Zellen sind meist zu klein für das Bloße Auge durch Baustein Aller Organismen.", wrong: ["Weil Zellen riesig wie Häuser sind.", "Es ist eine Weil Mikroskope Knochen ersetzen.", "Es ist eine Weil Licht unnötig ist."],
       explanation: "Methode.",
       wissen: fw(
         "Erst Vergrößerung machte Zellgrenzen und -kerne sichtbar. Bezug: Zelltheorie.",
@@ -2451,8 +2283,7 @@ export const k6OrganellenEnergie: BioBank = {
     {
       concept: "bio:k6:orgene:f0",
       prompt: "Was kennzeichnet „Mitochondrium“?",
-      answer: "Das Mitochondrium ist hier: Ort der Zellatmung.",
-      wrong: ["Das Mitochondrium ist hier: Ort der Fotosynthese.", "Das Mitochondrium ist hier: Energiewährung der Zelle.", "Das Mitochondrium ist hier: Abbau von Zucker mit Energiegewinn."],
+      answer: "Es ist eine Ort der Zellatmung.", wrong: ["Es ist eine Ort der Fotosynthese.", "Es ist eine Energiewährung der Zelle.", "Es ist eine Abbau von Zucker mit Energiegewinn."],
       explanation: "Mitochondrium: Ort der Zellatmung",
       wissen: fw(
         "Liefert viel ATP. Bezug: Energieorganellen.",
@@ -2463,8 +2294,7 @@ export const k6OrganellenEnergie: BioBank = {
     {
       concept: "bio:k6:orgene:f1",
       prompt: "Was kennzeichnet „Chloroplast“?",
-      answer: "Das Chloroplast ist hier: Ort der Fotosynthese.",
-      wrong: ["Das Chloroplast ist hier: Ort der Zellatmung.", "Das Chloroplast ist hier: Energiewährung der Zelle.", "Das Chloroplast ist hier: Abbau von Zucker mit Energiegewinn."],
+      answer: "Es ist eine Ort der Fotosynthese.", wrong: ["Es ist eine Ort der Zellatmung.", "Es ist eine Energiewährung der Zelle.", "Es ist eine Abbau von Zucker mit Energiegewinn."],
       explanation: "Chloroplast: Ort der Fotosynthese",
       wissen: fw(
         "Bildet Zucker und O₂. Bezug: Energieorganellen.",
@@ -2475,8 +2305,7 @@ export const k6OrganellenEnergie: BioBank = {
     {
       concept: "bio:k6:orgene:f2",
       prompt: "Was kennzeichnet „ATP“?",
-      answer: "Das ATP ist hier: Energiewährung der Zelle.",
-      wrong: ["Das ATP ist hier: Ort der Zellatmung.", "Das ATP ist hier: Ort der Fotosynthese.", "Das ATP ist hier: Abbau von Zucker mit Energiegewinn."],
+      answer: "Es ist eine Energiewährung der Zelle.", wrong: ["Es ist eine Ort der Zellatmung.", "Es ist eine Ort der Fotosynthese.", "Es ist eine Abbau von Zucker mit Energiegewinn."],
       explanation: "ATP: Energiewährung der Zelle",
       wissen: fw(
         "Treibt energiebedürftige Prozesse. Bezug: Energieorganellen.",
@@ -2487,8 +2316,7 @@ export const k6OrganellenEnergie: BioBank = {
     {
       concept: "bio:k6:orgene:f3",
       prompt: "Was kennzeichnet „Zellatmung“?",
-      answer: "Die Zellatmung ist hier: Abbau von Zucker mit Energiegewinn.",
-      wrong: ["Die Zellatmung ist hier: Ort der Zellatmung.", "Die Zellatmung ist hier: Ort der Fotosynthese.", "Die Zellatmung ist hier: Energiewährung der Zelle."],
+      answer: "Sie ist eine Abbau von Zucker mit Energiegewinn.", wrong: ["Sie ist eine Ort der Zellatmung.", "Sie ist eine Ort der Fotosynthese.", "Sie ist eine Energiewährung der Zelle."],
       explanation: "Zellatmung: Abbau von Zucker mit Energiegewinn",
       wissen: fw(
         "Braucht oft Sauerstoff. Bezug: Energieorganellen.",
@@ -2499,8 +2327,7 @@ export const k6OrganellenEnergie: BioBank = {
     {
       concept: "bio:k6:orgene:f4",
       prompt: "Was kennzeichnet „Fotosynthese“?",
-      answer: "Die Fotosynthese ist hier: Aufbau organischer Stoffe mit Licht.",
-      wrong: ["Die Fotosynthese ist hier: Ort der Zellatmung.", "Die Fotosynthese ist hier: Ort der Fotosynthese.", "Die Fotosynthese ist hier: Energiewährung der Zelle."],
+      answer: "Sie ist eine Aufbau Organischer Stoffe mit Licht.", wrong: ["Sie ist eine Ort der Zellatmung.", "Sie ist eine Ort der Fotosynthese.", "Sie ist eine Energiewährung der Zelle."],
       explanation: "Fotosynthese: Aufbau organischer Stoffe mit Licht",
       wissen: fw(
         "In Chloroplasten. Bezug: Energieorganellen.",
@@ -2511,8 +2338,7 @@ export const k6OrganellenEnergie: BioBank = {
     {
       concept: "bio:k6:orgene:f5",
       prompt: "Was kennzeichnet „Doppelmembran“?",
-      answer: "Das Doppelmembran ist hier: Zwei Membranen um Organell.",
-      wrong: ["Das Doppelmembran ist hier: Ort der Zellatmung.", "Das Doppelmembran ist hier: Ort der Fotosynthese.", "Das Doppelmembran ist hier: Energiewährung der Zelle."],
+      answer: "Es ist eine Zwei Membranen um Organell.", wrong: ["Es ist eine Ort der Zellatmung.", "Es ist eine Ort der Fotosynthese.", "Es ist eine Energiewährung der Zelle."],
       explanation: "Doppelmembran: Zwei Membranen um Organell",
       wissen: fw(
         "Bei Mitochondrium und Chloroplast. Bezug: Energieorganellen.",
@@ -2523,8 +2349,7 @@ export const k6OrganellenEnergie: BioBank = {
     {
       concept: "bio:k6:orgene:f6",
       prompt: "Was kennzeichnet „Energieumwandlung“?",
-      answer: "Die Energieumwandlung ist hier: Umwandlung von Energieformen.",
-      wrong: ["Die Energieumwandlung ist hier: Ort der Zellatmung.", "Die Energieumwandlung ist hier: Ort der Fotosynthese.", "Die Energieumwandlung ist hier: Energiewährung der Zelle."],
+      answer: "Sie ist eine Umwandlung von Energieformen.", wrong: ["Sie ist eine Ort der Zellatmung.", "Sie ist eine Ort der Fotosynthese.", "Sie ist eine Energiewährung der Zelle."],
       explanation: "Energieumwandlung: Umwandlung von Energieformen",
       wissen: fw(
         "Licht → chemisch; chemisch → ATP. Bezug: Energieorganellen.",
@@ -2535,8 +2360,7 @@ export const k6OrganellenEnergie: BioBank = {
     {
       concept: "bio:k6:orgene:f7",
       prompt: "Was kennzeichnet „Cytoplasma“?",
-      answer: "Das Cytoplasma ist kurz gesagt: Zellinnenraum.",
-      wrong: ["Das Cytoplasma ist hier: Ort der Zellatmung.", "Das Cytoplasma ist hier: Ort der Fotosynthese.", "Das Cytoplasma ist hier: Energiewährung der Zelle."],
+      answer: "Das Cytoplasma ist das Zellinnenraum.", wrong: ["Es ist eine Ort der Zellatmung.", "Es ist eine Ort der Fotosynthese.", "Es ist eine Energiewährung der Zelle."],
       explanation: "Cytoplasma: Zellinnenraum",
       wissen: fw(
         "Ort vieler Stoffwechselwege. Bezug: Energieorganellen.",
@@ -2547,8 +2371,7 @@ export const k6OrganellenEnergie: BioBank = {
     {
       concept: "bio:k6:orgene:f8",
       prompt: "Was kennzeichnet „Glukose“?",
-      answer: "Die Glukose ist kurz gesagt: Wichtiger Energieträger.",
-      wrong: ["Die Glukose ist hier: Ort der Zellatmung.", "Die Glukose ist hier: Ort der Fotosynthese.", "Die Glukose ist hier: Energiewährung der Zelle."],
+      answer: "Die Glukose ist die Wichtiger Energieträger.", wrong: ["Sie ist eine Ort der Zellatmung.", "Sie ist eine Ort der Fotosynthese.", "Sie ist eine Energiewährung der Zelle."],
       explanation: "Glukose: Wichtiger Energieträger",
       wissen: fw(
         "Produkt der Fotosynthese. Bezug: Energieorganellen.",
@@ -2559,8 +2382,7 @@ export const k6OrganellenEnergie: BioBank = {
     {
       concept: "bio:k6:orgene:f9",
       prompt: "Was kennzeichnet „Sauerstoff“?",
-      answer: "Der Sauerstoff ist hier: Reaktand der aeroben Atmung.",
-      wrong: ["Der Sauerstoff ist hier: Ort der Zellatmung.", "Der Sauerstoff ist hier: Ort der Fotosynthese.", "Der Sauerstoff ist hier: Energiewährung der Zelle."],
+      answer: "Er ist eine Reaktand der Aeroben Atmung.", wrong: ["Er ist eine Ort der Zellatmung.", "Er ist eine Ort der Fotosynthese.", "Er ist eine Energiewährung der Zelle."],
       explanation: "Sauerstoff: Reaktand der aeroben Atmung",
       wissen: fw(
         "Produkt der Fotosynthese. Bezug: Energieorganellen.",
@@ -2571,8 +2393,7 @@ export const k6OrganellenEnergie: BioBank = {
     {
       concept: "bio:k6:orgene:f10",
       prompt: "Was kennzeichnet „Autotrophie“?",
-      answer: "Die Autotrophie ist hier: Selbsternährung über Assimilation.",
-      wrong: ["Die Autotrophie ist hier: Ort der Zellatmung.", "Die Autotrophie ist hier: Ort der Fotosynthese.", "Die Autotrophie ist hier: Energiewährung der Zelle."],
+      answer: "Sie ist eine Selbsternährung über Assimilation.", wrong: ["Sie ist eine Ort der Zellatmung.", "Sie ist eine Ort der Fotosynthese.", "Sie ist eine Energiewährung der Zelle."],
       explanation: "Autotrophie: Selbsternährung über Assimilation",
       wissen: fw(
         "Pflanzen mit Chloroplasten. Bezug: Energieorganellen.",
@@ -2583,8 +2404,7 @@ export const k6OrganellenEnergie: BioBank = {
     {
       concept: "bio:k6:orgene:f11",
       prompt: "Was kennzeichnet „Heterotrophie“?",
-      answer: "Die Heterotrophie ist hier: Abhängigkeit von organischer Nahrung.",
-      wrong: ["Die Heterotrophie ist hier: Ort der Zellatmung.", "Die Heterotrophie ist hier: Ort der Fotosynthese.", "Die Heterotrophie ist hier: Energiewährung der Zelle."],
+      answer: "Sie ist eine Abhängigkeit von Organischer Nahrung.", wrong: ["Sie ist eine Ort der Zellatmung.", "Sie ist eine Ort der Fotosynthese.", "Sie ist eine Energiewährung der Zelle."],
       explanation: "Heterotrophie: Abhängigkeit von organischer Nahrung",
       wissen: fw(
         "Tiere ohne Chloroplasten. Bezug: Energieorganellen.",
@@ -2595,8 +2415,7 @@ export const k6OrganellenEnergie: BioBank = {
     {
       concept: "bio:k6:orgene:x0",
       prompt: "Energieorganellen: Welche Organellen sind zentral für Energieumwandlung?",
-      answer: "Es geht um Mitochondrien und Chloroplasten, und zwar gilt: liefert viel ATP.",
-      wrong: ["Es geht um diesen Inhalt: Nur Zellwände.", "Es geht um Nur Vakuolen allein.", "Es geht um Nur Ribosomen ohne Stoffwechsel."],
+      answer: "Es ist eine Mitochondrien und Chloroplasten.", wrong: ["Es ist eine Nur Zellwände.", "Es ist ein Nur Vakuolen allein.", "Es ist eine Nur Ribosomen ohne Stoffwechsel."],
       explanation: "Energieorganellen.",
       wissen: fw(
         "Chloroplasten speichern Lichtenergie in Zucker; Mitochondrien setzen Energie als ATP frei.",
@@ -2605,8 +2424,7 @@ export const k6OrganellenEnergie: BioBank = {
     {
       concept: "bio:k6:orgene:x1",
       prompt: "Energieorganellen: Warum ergänzen sich Fotosynthese und Zellatmung stofflich?",
-      answer: "Die Produkte der einen sind Edukte der anderen, und zwar gilt hier: Liefert viel ATP.",
-      wrong: ["Hier gilt: Sie haben nichts gemeinsam.", "Es geht um Beide erzeugen nur Stein.", "Hier gilt: Beide brauchen keine Stoffe."],
+      answer: "Die Produkte der Einen Sind Edukte der Anderen durch Liefert Viel ATP.", wrong: ["Es ist eine Sie haben nichts gemeinsam.", "Es ist eine Beide erzeugen nur Stein.", "Es ist eine Beide brauchen keine Stoffe."],
       explanation: "Stoffkreislauf.",
       wissen: fw(
         "Fotosynthese liefert Zucker und O₂; Zellatmung verbraucht sie und liefert CO₂ und Wasser zurück.",
@@ -2654,8 +2472,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:f0",
       prompt: "Was kennzeichnet „Puls“?",
-      answer: "Das Puls ist hier: Spürbare Druckwelle der Arterien.",
-      wrong: ["Das Puls ist hier: Schläge pro Minute.", "Das Puls ist hier: Druck des Blutes auf Arterienwände.", "Das Puls ist hier: Auswurfphase des Herzens."],
+      answer: "Er ist eine Spürbare Druckwelle der Arterien.", wrong: ["Er ist eine Schläge Pro Minute.", "Er ist eine Druck des Blutes auf Arterienwände.", "Er ist eine Auswurfphase des Herzens."],
       explanation: "Puls: Spürbare Druckwelle der Arterien",
       wissen: fw(
         "Entspricht grob der Herzfrequenz. Bezug: Puls/Blutdruck.",
@@ -2666,8 +2483,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:f1",
       prompt: "Was kennzeichnet „Pulsfrequenz“?",
-      answer: "Die Pulsfrequenz ist hier: Schläge pro Minute.",
-      wrong: ["Die Pulsfrequenz ist hier: Spürbare Druckwelle der Arterien.", "Die Pulsfrequenz ist hier: Druck des Blutes auf Arterienwände.", "Die Pulsfrequenz ist hier: Auswurfphase des Herzens."],
+      answer: "Sie ist eine Schläge Pro Minute.", wrong: ["Sie ist eine Spürbare Druckwelle der Arterien.", "Sie ist eine Druck des Blutes auf Arterienwände.", "Sie ist eine Auswurfphase des Herzens."],
       explanation: "Pulsfrequenz: Schläge pro Minute",
       wissen: fw(
         "Steigt bei Belastung. Bezug: Puls/Blutdruck.",
@@ -2678,8 +2494,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:f2",
       prompt: "Was kennzeichnet „Blutdruck“?",
-      answer: "Der Blutdruck ist hier: Druck des Blutes auf Arterienwände.",
-      wrong: ["Der Blutdruck ist hier: Spürbare Druckwelle der Arterien.", "Der Blutdruck ist hier: Schläge pro Minute.", "Der Blutdruck ist hier: Auswurfphase des Herzens."],
+      answer: "Er ist eine Druck des Blutes auf Arterienwände.", wrong: ["Er ist eine Spürbare Druckwelle der Arterien.", "Er ist eine Schläge Pro Minute.", "Er ist eine Auswurfphase des Herzens."],
       explanation: "Blutdruck: Druck des Blutes auf Arterienwände",
       wissen: fw(
         "Systolisch und diastolisch. Bezug: Puls/Blutdruck.",
@@ -2690,8 +2505,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:f3",
       prompt: "Was kennzeichnet „Systole“?",
-      answer: "Die Systole ist hier: Auswurfphase des Herzens.",
-      wrong: ["Die Systole ist hier: Spürbare Druckwelle der Arterien.", "Die Systole ist hier: Schläge pro Minute.", "Die Systole ist hier: Druck des Blutes auf Arterienwände."],
+      answer: "Sie ist eine Auswurfphase des Herzens.", wrong: ["Sie ist eine Spürbare Druckwelle der Arterien.", "Sie ist eine Schläge Pro Minute.", "Sie ist eine Druck des Blutes auf Arterienwände."],
       explanation: "Systole: Auswurfphase des Herzens",
       wissen: fw(
         "Höherer Druckwert. Bezug: Puls/Blutdruck.",
@@ -2702,8 +2516,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:f4",
       prompt: "Was kennzeichnet „Diastole“?",
-      answer: "Die Diastole ist kurz gesagt: Entspannungs-/Füllungsphase.",
-      wrong: ["Die Diastole ist hier: Spürbare Druckwelle der Arterien.", "Die Diastole ist hier: Schläge pro Minute.", "Die Diastole ist hier: Druck des Blutes auf Arterienwände."],
+      answer: "Die Diastole ist die Entspannungs-/Füllungsphase.", wrong: ["Sie ist eine Spürbare Druckwelle der Arterien.", "Sie ist eine Schläge Pro Minute.", "Sie ist eine Druck des Blutes auf Arterienwände."],
       explanation: "Diastole: Entspannungs-/Füllungsphase",
       wissen: fw(
         "Niedrigerer Druckwert. Bezug: Puls/Blutdruck.",
@@ -2714,8 +2527,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:f5",
       prompt: "Was kennzeichnet „Ruhepuls“?",
-      answer: "Das Ruhepuls ist hier: Puls in entspanntem Zustand.",
-      wrong: ["Das Ruhepuls ist hier: Spürbare Druckwelle der Arterien.", "Das Ruhepuls ist hier: Schläge pro Minute.", "Das Ruhepuls ist hier: Druck des Blutes auf Arterienwände."],
+      answer: "Er ist eine Puls in Entspanntem Zustand.", wrong: ["Er ist eine Spürbare Druckwelle der Arterien.", "Er ist eine Schläge Pro Minute.", "Er ist eine Druck des Blutes auf Arterienwände."],
       explanation: "Ruhepuls: Puls in entspanntem Zustand",
       wissen: fw(
         "Vergleichswert zur Belastung. Bezug: Puls/Blutdruck.",
@@ -2726,8 +2538,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:f6",
       prompt: "Was kennzeichnet „Belastungspuls“?",
-      answer: "Das Belastungspuls ist hier: Puls unter körperlicher Arbeit.",
-      wrong: ["Das Belastungspuls ist hier: Spürbare Druckwelle der Arterien.", "Das Belastungspuls ist hier: Schläge pro Minute.", "Das Belastungspuls ist hier: Druck des Blutes auf Arterienwände."],
+      answer: "Er ist eine Puls unter Körperlicher Arbeit.", wrong: ["Er ist eine Spürbare Druckwelle der Arterien.", "Er ist eine Schläge Pro Minute.", "Er ist eine Druck des Blutes auf Arterienwände."],
       explanation: "Belastungspuls: Puls unter körperlicher Arbeit",
       wissen: fw(
         "Steigt mit Sauerstoffbedarf. Bezug: Puls/Blutdruck.",
@@ -2738,8 +2549,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:f7",
       prompt: "Was kennzeichnet „mmHg“?",
-      answer: "Das mmHg ist hier: Einheit des Blutdrucks.",
-      wrong: ["Das mmHg ist hier: Spürbare Druckwelle der Arterien.", "Das mmHg ist hier: Schläge pro Minute.", "Das mmHg ist hier: Druck des Blutes auf Arterienwände."],
+      answer: "Es ist eine Einheit des Blutdrucks.", wrong: ["Es ist eine Spürbare Druckwelle der Arterien.", "Es ist eine Schläge Pro Minute.", "Es ist eine Druck des Blutes auf Arterienwände."],
       explanation: "mmHg: Einheit des Blutdrucks",
       wissen: fw(
         "Millimeter Quecksilbersäule. Bezug: Puls/Blutdruck.",
@@ -2750,8 +2560,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:f8",
       prompt: "Was kennzeichnet „Arterie“?",
-      answer: "Die Arterie ist hier: Gefäß vom Herzen weg.",
-      wrong: ["Die Arterie ist hier: Spürbare Druckwelle der Arterien.", "Die Arterie ist hier: Schläge pro Minute.", "Die Arterie ist hier: Druck des Blutes auf Arterienwände."],
+      answer: "Sie ist ein Gefäß vom Herzen Weg.", wrong: ["Sie ist eine Spürbare Druckwelle der Arterien.", "Sie ist eine Schläge Pro Minute.", "Sie ist eine Druck des Blutes auf Arterienwände."],
       explanation: "Arterie: Gefäß vom Herzen weg",
       wissen: fw(
         "Dort ist Puls tastbar. Bezug: Puls/Blutdruck.",
@@ -2762,8 +2571,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:f9",
       prompt: "Was kennzeichnet „Vitalparameter“?",
-      answer: "Der Vitalparameter ist kurz gesagt: Grundlegende Körperwerte.",
-      wrong: ["Der Vitalparameter ist hier: Spürbare Druckwelle der Arterien.", "Der Vitalparameter ist hier: Schläge pro Minute.", "Der Vitalparameter ist hier: Druck des Blutes auf Arterienwände."],
+      answer: "Der Vitalparameter ist der Grundlegende Körperwerte.", wrong: ["Er ist eine Spürbare Druckwelle der Arterien.", "Er ist eine Schläge Pro Minute.", "Er ist eine Druck des Blutes auf Arterienwände."],
       explanation: "Vitalparameter: Grundlegende Körperwerte",
       wissen: fw(
         "u. a. Puls und Blutdruck. Bezug: Puls/Blutdruck.",
@@ -2774,8 +2582,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:f10",
       prompt: "Was kennzeichnet „Bluthochdruck“?",
-      answer: "Der Bluthochdruck ist hier: Dauerhaft zu hoher Blutdruck.",
-      wrong: ["Der Bluthochdruck ist hier: Spürbare Druckwelle der Arterien.", "Der Bluthochdruck ist hier: Schläge pro Minute.", "Der Bluthochdruck ist hier: Druck des Blutes auf Arterienwände."],
+      answer: "Er ist ein Dauerhaft zu Hoher Blutdruck.", wrong: ["Er ist eine Spürbare Druckwelle der Arterien.", "Er ist eine Schläge Pro Minute.", "Er ist eine Druck des Blutes auf Arterienwände."],
       explanation: "Bluthochdruck: Dauerhaft zu hoher Blutdruck",
       wissen: fw(
         "Belastet Herz und Gefäße. Bezug: Puls/Blutdruck.",
@@ -2786,8 +2593,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:f11",
       prompt: "Was kennzeichnet „Messmanschette“?",
-      answer: "Die Messmanschette ist hier: Hilfsmittel der Blutdruckmessung.",
-      wrong: ["Die Messmanschette ist hier: Spürbare Druckwelle der Arterien.", "Die Messmanschette ist hier: Schläge pro Minute.", "Die Messmanschette ist hier: Druck des Blutes auf Arterienwände."],
+      answer: "Sie ist eine Hilfsmittel der Blutdruckmessung.", wrong: ["Sie ist eine Spürbare Druckwelle der Arterien.", "Sie ist eine Schläge Pro Minute.", "Sie ist eine Druck des Blutes auf Arterienwände."],
       explanation: "Messmanschette: Hilfsmittel der Blutdruckmessung",
       wissen: fw(
         "Ermöglicht standardisierte Messung. Bezug: Puls/Blutdruck.",
@@ -2798,8 +2604,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:x0",
       prompt: "Puls/Blutdruck: Was misst man näherungsweise am Puls?",
-      answer: "Es ist die Herzschlagfrequenz über die arterielle Druckwelle, und zwar gilt hier: Entspricht grob der Herzfrequenz.",
-      wrong: ["Es geht um Die Leukozytenzahl exakt.", "Es geht um diesen Inhalt: Die Knochenlänge.", "Es geht um Den Blutzucker ohne Gerät."],
+      answer: "Es ist die Herzschlagfrequenz über die Arterielle Druckwelle durch Entspricht Grob der Herzfrequenz.", wrong: ["Es ist eine Die Leukozytenzahl exakt.", "Es ist die Knochenlänge.", "Es ist eine Den Blutzucker ohne Gerät."],
       explanation: "Druckwelle.",
       wissen: fw(
         "Jeder Herzschlag erzeugt eine Welle in den Arterien, die tastbar ist.",
@@ -2808,8 +2613,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:x1",
       prompt: "Puls/Blutdruck: Warum misst man Puls und Blutdruck?",
-      answer: "Es geht um Als Hinweise auf Belastung und Herz-Kreislauf-Zustand, und zwar gilt: entspricht grob der Herzfrequenz.",
-      wrong: ["Hier gilt: Um Zahnschmelz zu zählen.", "Es geht um Um Federn zu färben.", "Es geht um Um Jahresringe zu lesen."],
+      answer: "Es ist eine Als Hinweise auf Belastung und Herz-Kreislauf-Zustand.", wrong: ["Es ist eine Um Zahnschmelz zu zählen.", "Es ist eine Um Federn zu färben.", "Es ist eine Um Jahresringe zu lesen."],
       explanation: "Diagnostik.",
       wissen: fw(
         "Abweichungen können auf Fitness, Stress oder Erkrankungen hinweisen.",
@@ -2857,8 +2661,7 @@ export const k7KreislaufGesundheit: BioBank = {
     {
       concept: "bio:k7:krges:f0",
       prompt: "Was kennzeichnet „Bewegung“?",
-      answer: "Die Bewegung ist hier: Regelmäßige körperliche Aktivität.",
-      wrong: ["Die Bewegung ist hier: Nährstoffreiche, abwechslungsreiche Kost.", "Die Bewegung ist hier: Verzicht auf Tabakrauch.", "Die Bewegung ist hier: Dauerhaft erhöhter Blutdruck."],
+      answer: "Sie ist eine Regelmäßige Körperliche Aktivität.", wrong: ["Sie ist eine Nährstoffreiche, abwechslungsreiche Kost.", "Sie ist eine Verzicht auf Tabakrauch.", "Sie ist ein Dauerhaft Erhöhter Blutdruck."],
       explanation: "Bewegung: Regelmäßige körperliche Aktivität",
       wissen: fw(
         "Stärkt Herz und Gefäße. Bezug: Kreislaufgesundheit.",
@@ -2869,8 +2672,7 @@ export const k7KreislaufGesundheit: BioBank = {
     {
       concept: "bio:k7:krges:f1",
       prompt: "Was kennzeichnet „Ausgewogene Ernährung“?",
-      answer: "Die Ausgewogene Ernährung ist hier: Nährstoffreiche, abwechslungsreiche Kost.",
-      wrong: ["Die Ausgewogene Ernährung ist hier: Regelmäßige körperliche Aktivität.", "Die Ausgewogene Ernährung ist hier: Verzicht auf Tabakrauch.", "Die Ausgewogene Ernährung ist hier: Dauerhaft erhöhter Blutdruck."],
+      answer: "Sie ist eine Nährstoffreiche, abwechslungsreiche Kost.", wrong: ["Sie ist eine Regelmäßige Körperliche Aktivität.", "Sie ist eine Verzicht auf Tabakrauch.", "Sie ist ein Dauerhaft Erhöhter Blutdruck."],
       explanation: "Ausgewogene Ernährung: Nährstoffreiche, abwechslungsreiche Kost",
       wissen: fw(
         "Senkt Risikofaktoren. Bezug: Kreislaufgesundheit.",
@@ -2881,8 +2683,7 @@ export const k7KreislaufGesundheit: BioBank = {
     {
       concept: "bio:k7:krges:f2",
       prompt: "Was kennzeichnet „Nichtrauchen“?",
-      answer: "Das Nichtrauchen ist hier: Verzicht auf Tabakrauch.",
-      wrong: ["Das Nichtrauchen ist hier: Regelmäßige körperliche Aktivität.", "Das Nichtrauchen ist hier: Nährstoffreiche, abwechslungsreiche Kost.", "Das Nichtrauchen ist hier: Dauerhaft erhöhter Blutdruck."],
+      answer: "Es ist eine Verzicht auf Tabakrauch.", wrong: ["Es ist eine Regelmäßige Körperliche Aktivität.", "Es ist eine Nährstoffreiche, abwechslungsreiche Kost.", "Es ist ein Dauerhaft Erhöhter Blutdruck."],
       explanation: "Nichtrauchen: Verzicht auf Tabakrauch",
       wissen: fw(
         "Schützt Gefäße und Herz. Bezug: Kreislaufgesundheit.",
@@ -2893,8 +2694,7 @@ export const k7KreislaufGesundheit: BioBank = {
     {
       concept: "bio:k7:krges:f3",
       prompt: "Was kennzeichnet „Bluthochdruck“?",
-      answer: "Der Bluthochdruck ist hier: Dauerhaft erhöhter Blutdruck.",
-      wrong: ["Der Bluthochdruck ist hier: Regelmäßige körperliche Aktivität.", "Der Bluthochdruck ist hier: Nährstoffreiche, abwechslungsreiche Kost.", "Der Bluthochdruck ist hier: Verzicht auf Tabakrauch."],
+      answer: "Er ist ein Dauerhaft Erhöhter Blutdruck.", wrong: ["Er ist eine Regelmäßige Körperliche Aktivität.", "Er ist eine Nährstoffreiche, abwechslungsreiche Kost.", "Er ist eine Verzicht auf Tabakrauch."],
       explanation: "Bluthochdruck: Dauerhaft erhöhter Blutdruck",
       wissen: fw(
         "Risikofaktor für Schäden. Bezug: Kreislaufgesundheit.",
@@ -2905,8 +2705,7 @@ export const k7KreislaufGesundheit: BioBank = {
     {
       concept: "bio:k7:krges:f4",
       prompt: "Was kennzeichnet „Arteriosklerose“?",
-      answer: "Die Arteriosklerose ist kurz gesagt: Gefäßverkalkung/-verengung.",
-      wrong: ["Die Arteriosklerose ist hier: Regelmäßige körperliche Aktivität.", "Die Arteriosklerose ist hier: Nährstoffreiche, abwechslungsreiche Kost.", "Die Arteriosklerose ist hier: Verzicht auf Tabakrauch."],
+      answer: "Die Arteriosklerose ist die Gefäßverkalkung/-verengung.", wrong: ["Sie ist eine Regelmäßige Körperliche Aktivität.", "Sie ist eine Nährstoffreiche, abwechslungsreiche Kost.", "Sie ist eine Verzicht auf Tabakrauch."],
       explanation: "Arteriosklerose: Gefäßverkalkung/-verengung",
       wissen: fw(
         "Behindert Blutfluss. Bezug: Kreislaufgesundheit.",
@@ -2917,8 +2716,7 @@ export const k7KreislaufGesundheit: BioBank = {
     {
       concept: "bio:k7:krges:f5",
       prompt: "Was kennzeichnet „Cholesterin“?",
-      answer: "Das Cholesterin ist hier: Blutfettstoff mit Risiko bei Überschuss.",
-      wrong: ["Das Cholesterin ist hier: Regelmäßige körperliche Aktivität.", "Das Cholesterin ist hier: Nährstoffreiche, abwechslungsreiche Kost.", "Das Cholesterin ist hier: Verzicht auf Tabakrauch."],
+      answer: "Es ist eine Blutfettstoff mit Risiko bei Überschuss.", wrong: ["Es ist eine Regelmäßige Körperliche Aktivität.", "Es ist eine Nährstoffreiche, abwechslungsreiche Kost.", "Es ist eine Verzicht auf Tabakrauch."],
       explanation: "Cholesterin: Blutfettstoff mit Risiko bei Überschuss",
       wissen: fw(
         "Beeinflusst Gefäßgesundheit. Bezug: Kreislaufgesundheit.",
@@ -2929,8 +2727,7 @@ export const k7KreislaufGesundheit: BioBank = {
     {
       concept: "bio:k7:krges:f6",
       prompt: "Was kennzeichnet „Stressmanagement“?",
-      answer: "Das Stressmanagement ist hier: Umgang mit Dauerstress.",
-      wrong: ["Das Stressmanagement ist hier: Regelmäßige körperliche Aktivität.", "Das Stressmanagement ist hier: Nährstoffreiche, abwechslungsreiche Kost.", "Das Stressmanagement ist hier: Verzicht auf Tabakrauch."],
+      answer: "Es ist eine Umgang mit Dauerstress.", wrong: ["Es ist eine Regelmäßige Körperliche Aktivität.", "Es ist eine Nährstoffreiche, abwechslungsreiche Kost.", "Es ist eine Verzicht auf Tabakrauch."],
       explanation: "Stressmanagement: Umgang mit Dauerstress",
       wissen: fw(
         "Mindert ungünstige Belastung. Bezug: Kreislaufgesundheit.",
@@ -2941,8 +2738,7 @@ export const k7KreislaufGesundheit: BioBank = {
     {
       concept: "bio:k7:krges:f7",
       prompt: "Was kennzeichnet „Herzinfarkt“?",
-      answer: "Das Herzinfarkt ist hier: Verschluss eines Herzkranzgefäßes.",
-      wrong: ["Das Herzinfarkt ist hier: Regelmäßige körperliche Aktivität.", "Das Herzinfarkt ist hier: Nährstoffreiche, abwechslungsreiche Kost.", "Das Herzinfarkt ist hier: Verzicht auf Tabakrauch."],
+      answer: "Es ist eine Verschluss Eines Herzkranzgefäßes.", wrong: ["Es ist eine Regelmäßige Körperliche Aktivität.", "Es ist eine Nährstoffreiche, abwechslungsreiche Kost.", "Es ist eine Verzicht auf Tabakrauch."],
       explanation: "Herzinfarkt: Verschluss eines Herzkranzgefäßes",
       wissen: fw(
         "Schwere Folgeerkrankung. Bezug: Kreislaufgesundheit.",
@@ -2953,8 +2749,7 @@ export const k7KreislaufGesundheit: BioBank = {
     {
       concept: "bio:k7:krges:f8",
       prompt: "Was kennzeichnet „Schlaganfall“?",
-      answer: "Das Schlaganfall ist hier: Durchblutungsstörung im Gehirn.",
-      wrong: ["Das Schlaganfall ist hier: Regelmäßige körperliche Aktivität.", "Das Schlaganfall ist hier: Nährstoffreiche, abwechslungsreiche Kost.", "Das Schlaganfall ist hier: Verzicht auf Tabakrauch."],
+      answer: "Es ist eine Durchblutungsstörung im Gehirn.", wrong: ["Es ist eine Regelmäßige Körperliche Aktivität.", "Es ist eine Nährstoffreiche, abwechslungsreiche Kost.", "Es ist eine Verzicht auf Tabakrauch."],
       explanation: "Schlaganfall: Durchblutungsstörung im Gehirn",
       wissen: fw(
         "Kann durch Gefäßrisiken begünstigt sein. Bezug: Kreislaufgesundheit.",
@@ -2965,8 +2760,7 @@ export const k7KreislaufGesundheit: BioBank = {
     {
       concept: "bio:k7:krges:f9",
       prompt: "Was kennzeichnet „Ausdauer“?",
-      answer: "Der Ausdauer ist hier: Fähigkeit zu längerer Belastung.",
-      wrong: ["Der Ausdauer ist hier: Regelmäßige körperliche Aktivität.", "Der Ausdauer ist hier: Nährstoffreiche, abwechslungsreiche Kost.", "Der Ausdauer ist hier: Verzicht auf Tabakrauch."],
+      answer: "Er ist eine Fähigkeit zu Längerer Belastung.", wrong: ["Er ist eine Regelmäßige Körperliche Aktivität.", "Er ist eine Nährstoffreiche, abwechslungsreiche Kost.", "Er ist eine Verzicht auf Tabakrauch."],
       explanation: "Ausdauer: Fähigkeit zu längerer Belastung",
       wissen: fw(
         "Trainierbar durch Sport. Bezug: Kreislaufgesundheit.",
@@ -2977,8 +2771,7 @@ export const k7KreislaufGesundheit: BioBank = {
     {
       concept: "bio:k7:krges:f10",
       prompt: "Was kennzeichnet „Risikofaktor“?",
-      answer: "Der Risikofaktor ist kurz gesagt: Umstand der Erkrankungswahrscheinlichkeit erhöht.",
-      wrong: ["Der Risikofaktor ist hier: Regelmäßige körperliche Aktivität.", "Der Risikofaktor ist hier: Nährstoffreiche, abwechslungsreiche Kost.", "Der Risikofaktor ist hier: Verzicht auf Tabakrauch."],
+      answer: "Umstand der Erkrankungswahrscheinlichkeit erhöht.", wrong: ["Er ist eine Regelmäßige Körperliche Aktivität.", "Er ist eine Nährstoffreiche, abwechslungsreiche Kost.", "Er ist eine Verzicht auf Tabakrauch."],
       explanation: "Risikofaktor: Umstand der Erkrankungswahrscheinlichkeit erhöht",
       wissen: fw(
         "z. B. Rauchen, Bewegungsmangel. Bezug: Kreislaufgesundheit.",
@@ -2989,8 +2782,7 @@ export const k7KreislaufGesundheit: BioBank = {
     {
       concept: "bio:k7:krges:f11",
       prompt: "Was kennzeichnet „Prävention“?",
-      answer: "Die Prävention ist hier: Vorbeugung durch Lebensstil.",
-      wrong: ["Die Prävention ist hier: Regelmäßige körperliche Aktivität.", "Die Prävention ist hier: Nährstoffreiche, abwechslungsreiche Kost.", "Die Prävention ist hier: Verzicht auf Tabakrauch."],
+      answer: "Sie ist eine Vorbeugung durch Lebensstil.", wrong: ["Sie ist eine Regelmäßige Körperliche Aktivität.", "Sie ist eine Nährstoffreiche, abwechslungsreiche Kost.", "Sie ist eine Verzicht auf Tabakrauch."],
       explanation: "Prävention: Vorbeugung durch Lebensstil",
       wissen: fw(
         "Wirksamer als spätere Schäden. Bezug: Kreislaufgesundheit.",
@@ -3001,8 +2793,7 @@ export const k7KreislaufGesundheit: BioBank = {
     {
       concept: "bio:k7:krges:x0",
       prompt: "Kreislaufgesundheit: Welche Maßnahme unterstützt die Herz-Kreislauf-Gesundheit besonders?",
-      answer: "Es geht um Regelmäßige Bewegung und ausgewogene Ernährung, und zwar gilt: stärkt Herz und Gefäße.",
-      wrong: ["Es geht um diesen Inhalt: Dauerhaftes Rauchen.", "Es geht um diesen Inhalt: Vollständige Bewegungsvermeidung.", "Es geht um Nur Süßigkeiten als Kost."],
+      answer: "Es ist eine Regelmäßige Bewegung und ausgewogene Ernährung.", wrong: ["Es ist ein Dauerhaftes Rauchen.", "Es ist eine Vollständige Bewegungsvermeidung.", "Es ist eine Nur Süßigkeiten als Kost."],
       explanation: "Lebensstil.",
       wissen: fw(
         "Bewegung, gute Ernährung und Nichtrauchen senken Risiken für Herz-Kreislauf-Erkrankungen.",
@@ -3011,8 +2802,7 @@ export const k7KreislaufGesundheit: BioBank = {
     {
       concept: "bio:k7:krges:x1",
       prompt: "Kreislaufgesundheit: Warum ist Bluthochdruck ein Problem?",
-      answer: "Es geht um Er belastet Herz und Gefäße langfristig, und zwar gilt: stärkt Herz und Gefäße.",
-      wrong: ["Es geht um Er verbessert immer die Gefäße.", "Es geht um Er ersetzt Sport.", "Es geht um diesen Inhalt: nur kosmetisch."],
+      answer: "Es ist eine Er belastet Herz und Gefäße langfristig.", wrong: ["Es ist eine Er verbessert immer die Gefäße.", "Es ist eine Er ersetzt Sport.", "Das Bluthochdruck ein Problem ist nur kosmetisch."],
       explanation: "Folgeschäden.",
       wissen: fw(
         "Unbehandelt steigt das Risiko für Infarkt, Schlaganfall und andere Schäden.",
@@ -3060,8 +2850,7 @@ export const k7Haltung: BioBank = {
     {
       concept: "bio:k7:haltung:f0",
       prompt: "Was kennzeichnet „Körperhaltung“?",
-      answer: "Die Körperhaltung ist hier: Stellung von Rumpf und Wirbelsäule.",
-      wrong: ["Die Körperhaltung ist hier: Dauerhafte Fehlbelastung der Haltung.", "Die Körperhaltung ist hier: Verstärkte Krümmung der Brustwirbelsäule.", "Die Körperhaltung ist kurz gesagt: Verstärkte Lendenlordose."],
+      answer: "Sie ist eine Stellung von Rumpf und Wirbelsäule.", wrong: ["Sie ist eine Dauerhafte Fehlbelastung der Haltung.", "Sie ist eine Verstärkte Krümmung der Brustwirbelsäule.", "Die Körperhaltung ist die Verstärkte Lendenlordose."],
       explanation: "Körperhaltung: Stellung von Rumpf und Wirbelsäule",
       wissen: fw(
         "Beeinflusst Belastung von Gelenken. Bezug: Haltungsschäden.",
@@ -3072,8 +2861,7 @@ export const k7Haltung: BioBank = {
     {
       concept: "bio:k7:haltung:f1",
       prompt: "Was kennzeichnet „Haltungsschaden“?",
-      answer: "Das Haltungsschaden ist hier: Dauerhafte Fehlbelastung der Haltung.",
-      wrong: ["Das Haltungsschaden ist hier: Stellung von Rumpf und Wirbelsäule.", "Das Haltungsschaden ist hier: Verstärkte Krümmung der Brustwirbelsäule.", "Das Haltungsschaden ist kurz gesagt: Verstärkte Lendenlordose."],
+      answer: "Es ist eine Dauerhafte Fehlbelastung der Haltung.", wrong: ["Es ist eine Stellung von Rumpf und Wirbelsäule.", "Es ist eine Verstärkte Krümmung der Brustwirbelsäule.", "Das Haltungsschaden ist das Verstärkte Lendenlordose."],
       explanation: "Haltungsschaden: Dauerhafte Fehlbelastung der Haltung",
       wissen: fw(
         "Kann Schmerzen und Einschränkungen fördern. Bezug: Haltungsschäden.",
@@ -3084,8 +2872,7 @@ export const k7Haltung: BioBank = {
     {
       concept: "bio:k7:haltung:f2",
       prompt: "Was kennzeichnet „Rundrücken“?",
-      answer: "Das Rundrücken ist hier: Verstärkte Krümmung der Brustwirbelsäule.",
-      wrong: ["Das Rundrücken ist hier: Stellung von Rumpf und Wirbelsäule.", "Das Rundrücken ist hier: Dauerhafte Fehlbelastung der Haltung.", "Das Rundrücken ist kurz gesagt: Verstärkte Lendenlordose."],
+      answer: "Es ist eine Verstärkte Krümmung der Brustwirbelsäule.", wrong: ["Es ist eine Stellung von Rumpf und Wirbelsäule.", "Es ist eine Dauerhafte Fehlbelastung der Haltung.", "Das Rundrücken ist das Verstärkte Lendenlordose."],
       explanation: "Rundrücken: Verstärkte Krümmung der Brustwirbelsäule",
       wissen: fw(
         "Beispiel einer Haltungsabweichung. Bezug: Haltungsschäden.",
@@ -3096,8 +2883,7 @@ export const k7Haltung: BioBank = {
     {
       concept: "bio:k7:haltung:f3",
       prompt: "Was kennzeichnet „Hohlkreuz“?",
-      answer: "Das Hohlkreuz ist kurz gesagt: Verstärkte Lendenlordose.",
-      wrong: ["Das Hohlkreuz ist hier: Stellung von Rumpf und Wirbelsäule.", "Das Hohlkreuz ist hier: Dauerhafte Fehlbelastung der Haltung.", "Das Hohlkreuz ist hier: Verstärkte Krümmung der Brustwirbelsäule."],
+      answer: "Das Hohlkreuz ist das Verstärkte Lendenlordose.", wrong: ["Es ist eine Stellung von Rumpf und Wirbelsäule.", "Es ist eine Dauerhafte Fehlbelastung der Haltung.", "Es ist eine Verstärkte Krümmung der Brustwirbelsäule."],
       explanation: "Hohlkreuz: Verstärkte Lendenlordose",
       wissen: fw(
         "Kann die Lendenwirbelsäule belasten. Bezug: Haltungsschäden.",
@@ -3108,8 +2894,7 @@ export const k7Haltung: BioBank = {
     {
       concept: "bio:k7:haltung:f4",
       prompt: "Was kennzeichnet „Muskelkorsett“?",
-      answer: "Das Muskelkorsett ist kurz gesagt: Stabilisierende Rumpfmuskulatur.",
-      wrong: ["Das Muskelkorsett ist hier: Stellung von Rumpf und Wirbelsäule.", "Das Muskelkorsett ist hier: Dauerhafte Fehlbelastung der Haltung.", "Das Muskelkorsett ist hier: Verstärkte Krümmung der Brustwirbelsäule."],
+      answer: "Das Muskelkorsett ist das Stabilisierende Rumpfmuskulatur.", wrong: ["Es ist eine Stellung von Rumpf und Wirbelsäule.", "Es ist eine Dauerhafte Fehlbelastung der Haltung.", "Es ist eine Verstärkte Krümmung der Brustwirbelsäule."],
       explanation: "Muskelkorsett: Stabilisierende Rumpfmuskulatur",
       wissen: fw(
         "Stützt die Wirbelsäule. Bezug: Haltungsschäden.",
@@ -3120,8 +2905,7 @@ export const k7Haltung: BioBank = {
     {
       concept: "bio:k7:haltung:f5",
       prompt: "Was kennzeichnet „Bewegungsmangel“?",
-      answer: "Das Bewegungsmangel ist hier: Zu wenig körperliche Aktivität.",
-      wrong: ["Das Bewegungsmangel ist hier: Stellung von Rumpf und Wirbelsäule.", "Das Bewegungsmangel ist hier: Dauerhafte Fehlbelastung der Haltung.", "Das Bewegungsmangel ist hier: Verstärkte Krümmung der Brustwirbelsäule."],
+      answer: "Es ist eine Zu Wenig Körperliche Aktivität.", wrong: ["Es ist eine Stellung von Rumpf und Wirbelsäule.", "Es ist eine Dauerhafte Fehlbelastung der Haltung.", "Es ist eine Verstärkte Krümmung der Brustwirbelsäule."],
       explanation: "Bewegungsmangel: Zu wenig körperliche Aktivität",
       wissen: fw(
         "Schwächt Haltungs muskulatur. Bezug: Haltungsschäden.",
@@ -3132,8 +2916,7 @@ export const k7Haltung: BioBank = {
     {
       concept: "bio:k7:haltung:f6",
       prompt: "Was kennzeichnet „Ergonomie“?",
-      answer: "Die Ergonomie ist hier: Arbeitsplatz an den Körper anpassen.",
-      wrong: ["Die Ergonomie ist hier: Stellung von Rumpf und Wirbelsäule.", "Die Ergonomie ist hier: Dauerhafte Fehlbelastung der Haltung.", "Die Ergonomie ist hier: Verstärkte Krümmung der Brustwirbelsäule."],
+      answer: "Sie ist eine Arbeitsplatz an den Körper Anpassen.", wrong: ["Sie ist eine Stellung von Rumpf und Wirbelsäule.", "Sie ist eine Dauerhafte Fehlbelastung der Haltung.", "Sie ist eine Verstärkte Krümmung der Brustwirbelsäule."],
       explanation: "Ergonomie: Arbeitsplatz an den Körper anpassen",
       wissen: fw(
         "Verringert Fehlhaltungen. Bezug: Haltungsschäden.",
@@ -3144,8 +2927,7 @@ export const k7Haltung: BioBank = {
     {
       concept: "bio:k7:haltung:f7",
       prompt: "Was kennzeichnet „Wirbelsäule“?",
-      answer: "Die Wirbelsäule ist kurz gesagt: Zentrale Stützachse.",
-      wrong: ["Die Wirbelsäule ist hier: Stellung von Rumpf und Wirbelsäule.", "Die Wirbelsäule ist hier: Dauerhafte Fehlbelastung der Haltung.", "Die Wirbelsäule ist hier: Verstärkte Krümmung der Brustwirbelsäule."],
+      answer: "Die Wirbelsäule ist die Zentrale Stützachse.", wrong: ["Sie ist eine Stellung von Rumpf und Wirbelsäule.", "Sie ist eine Dauerhafte Fehlbelastung der Haltung.", "Sie ist eine Verstärkte Krümmung der Brustwirbelsäule."],
       explanation: "Wirbelsäule: Zentrale Stützachse",
       wissen: fw(
         "Trägt und federt Lasten. Bezug: Haltungsschäden.",
@@ -3156,8 +2938,7 @@ export const k7Haltung: BioBank = {
     {
       concept: "bio:k7:haltung:f8",
       prompt: "Was kennzeichnet „Bandscheibe“?",
-      answer: "Die Bandscheibe ist hier: Polster zwischen Wirbeln.",
-      wrong: ["Die Bandscheibe ist hier: Stellung von Rumpf und Wirbelsäule.", "Die Bandscheibe ist hier: Dauerhafte Fehlbelastung der Haltung.", "Die Bandscheibe ist hier: Verstärkte Krümmung der Brustwirbelsäule."],
+      answer: "Sie ist eine Polster Zwischen Wirbeln.", wrong: ["Sie ist eine Stellung von Rumpf und Wirbelsäule.", "Sie ist eine Dauerhafte Fehlbelastung der Haltung.", "Sie ist eine Verstärkte Krümmung der Brustwirbelsäule."],
       explanation: "Bandscheibe: Polster zwischen Wirbeln",
       wissen: fw(
         "Empfindlich bei Dauerfehlbelastung. Bezug: Haltungsschäden.",
@@ -3168,8 +2949,7 @@ export const k7Haltung: BioBank = {
     {
       concept: "bio:k7:haltung:f9",
       prompt: "Was kennzeichnet „Dehnung“?",
-      answer: "Die Dehnung ist kurz gesagt: Beweglichkeitstraining.",
-      wrong: ["Die Dehnung ist hier: Stellung von Rumpf und Wirbelsäule.", "Die Dehnung ist hier: Dauerhafte Fehlbelastung der Haltung.", "Die Dehnung ist hier: Verstärkte Krümmung der Brustwirbelsäule."],
+      answer: "Die Dehnung ist die Beweglichkeitstraining.", wrong: ["Sie ist eine Stellung von Rumpf und Wirbelsäule.", "Sie ist eine Dauerhafte Fehlbelastung der Haltung.", "Sie ist eine Verstärkte Krümmung der Brustwirbelsäule."],
       explanation: "Dehnung: Beweglichkeitstraining",
       wissen: fw(
         "Ergänzt Kraft für Haltung. Bezug: Haltungsschäden.",
@@ -3180,8 +2960,7 @@ export const k7Haltung: BioBank = {
     {
       concept: "bio:k7:haltung:f10",
       prompt: "Was kennzeichnet „Krafttraining“?",
-      answer: "Das Krafttraining ist hier: Stärkung der Muskulatur.",
-      wrong: ["Das Krafttraining ist hier: Stellung von Rumpf und Wirbelsäule.", "Das Krafttraining ist hier: Dauerhafte Fehlbelastung der Haltung.", "Das Krafttraining ist hier: Verstärkte Krümmung der Brustwirbelsäule."],
+      answer: "Es ist eine Stärkung der Muskulatur.", wrong: ["Es ist eine Stellung von Rumpf und Wirbelsäule.", "Es ist eine Dauerhafte Fehlbelastung der Haltung.", "Es ist eine Verstärkte Krümmung der Brustwirbelsäule."],
       explanation: "Krafttraining: Stärkung der Muskulatur",
       wissen: fw(
         "Stabilisiert Gelenke und Rumpf. Bezug: Haltungsschäden.",
@@ -3192,8 +2971,7 @@ export const k7Haltung: BioBank = {
     {
       concept: "bio:k7:haltung:f11",
       prompt: "Was kennzeichnet „Prävention“?",
-      answer: "Die Prävention ist hier: Vorbeugung durch Bewegung und Haltung.",
-      wrong: ["Die Prävention ist hier: Stellung von Rumpf und Wirbelsäule.", "Die Prävention ist hier: Dauerhafte Fehlbelastung der Haltung.", "Die Prävention ist hier: Verstärkte Krümmung der Brustwirbelsäule."],
+      answer: "Sie ist eine Vorbeugung durch Bewegung und Haltung.", wrong: ["Sie ist eine Stellung von Rumpf und Wirbelsäule.", "Sie ist eine Dauerhafte Fehlbelastung der Haltung.", "Sie ist eine Verstärkte Krümmung der Brustwirbelsäule."],
       explanation: "Prävention: Vorbeugung durch Bewegung und Haltung",
       wissen: fw(
         "Besser als spätere Beschwerden. Bezug: Haltungsschäden.",
@@ -3204,8 +2982,7 @@ export const k7Haltung: BioBank = {
     {
       concept: "bio:k7:haltung:x0",
       prompt: "Haltungsschäden: Wie entstehen Haltungsschäden oft?",
-      answer: "Es geht um Durch Dauerfehlbelastung und schwache Rumpfmuskulatur, und zwar gilt: beeinflusst Belastung von Gelenken.",
-      wrong: ["Es geht um Nur durch einmaliges Niesen.", "Es geht um Nur durch Haarwaschen.", "Es geht um Nur durch Impfungen."],
+      answer: "Es ist eine Durch Dauerfehlbelastung und schwache Rumpfmuskulatur.", wrong: ["Es ist eine Nur durch einmaliges Niesen.", "Es ist ein Nur durch Haarwaschen.", "Es ist eine Nur durch Impfungen."],
       explanation: "Fehlbelastung.",
       wissen: fw(
         "Langes Sitzen ohne Ausgleich und einseitige Lasten begünstigen Fehlhaltungen.",
@@ -3214,8 +2991,7 @@ export const k7Haltung: BioBank = {
     {
       concept: "bio:k7:haltung:x1",
       prompt: "Haltungsschäden: Was hilft gegen Haltungsschäden?",
-      answer: "Es geht um Regelmäßige Bewegung, kraftvolle Rumpfmuskulatur und ergonomisches Sitzen, und zwar gilt: beeinflusst Belastung von Gelenken.",
-      wrong: ["Es geht um Nur völlige Schonung ohne Bewegung.", "Es geht um Nur enge Schuhe.", "Es geht um diesen Inhalt: Nur Süßigkeiten."],
+      answer: "Es ist eine Regelmäßige Bewegung.", wrong: ["Es ist eine Nur völlige Schonung ohne Bewegung.", "Es ist eine Nur enge Schuhe.", "Es ist eine Nur Süßigkeiten."],
       explanation: "Prävention.",
       wissen: fw(
         "Sport und bewusste Haltung entlasten Wirbelsäule und Gelenke.",
@@ -3263,8 +3039,7 @@ export const k8Sucht: BioBank = {
     {
       concept: "bio:k8:sucht:f0",
       prompt: "Was kennzeichnet „Sucht“?",
-      answer: "Das Sucht ist hier: Krankhafte Abhängigkeit von Stoff oder Verhalten.",
-      wrong: ["Das Sucht ist hier: Substanz mit Abhängigkeitspotenzial.", "Das Sucht ist hier: Gewöhnung mit Dosissteigerung.", "Das Sucht ist hier: Beschwerden beim Absetzen."],
+      answer: "Es ist eine Krankhafte Abhängigkeit von Stoff oder Verhalten.", wrong: ["Es ist eine Substanz mit Abhängigkeitspotenzial.", "Es ist eine Gewöhnung mit Dosissteigerung.", "Es ist eine Beschwerden Beim Absetzen."],
       explanation: "Sucht: Krankhafte Abhängigkeit von Stoff oder Verhalten",
       wissen: fw(
         "Kontrollverlust und Fortsetzung trotz Schaden. Bezug: Suchtgefahren.",
@@ -3275,8 +3050,7 @@ export const k8Sucht: BioBank = {
     {
       concept: "bio:k8:sucht:f1",
       prompt: "Wozu dient Suchtmittel?",
-      answer: "Das Suchtmittel ist hier: Substanz mit Abhängigkeitspotenzial.",
-      wrong: ["Das Suchtmittel ist hier: Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Das Suchtmittel ist hier: Gewöhnung mit Dosissteigerung.", "Das Suchtmittel ist hier: Beschwerden beim Absetzen."],
+      answer: "Es ist eine Substanz mit Abhängigkeitspotenzial.", wrong: ["Es ist eine Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Es ist eine Gewöhnung mit Dosissteigerung.", "Es ist eine Beschwerden Beim Absetzen."],
       explanation: "Suchtmittel: Substanz mit Abhängigkeitspotenzial",
       wissen: fw(
         "z. B. Alkohol, Nikotin. Bezug: Suchtgefahren.",
@@ -3287,8 +3061,7 @@ export const k8Sucht: BioBank = {
     {
       concept: "bio:k8:sucht:f2",
       prompt: "Was kennzeichnet „Toleranz“?",
-      answer: "Die Toleranz ist hier: Gewöhnung mit Dosissteigerung.",
-      wrong: ["Die Toleranz ist hier: Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Die Toleranz ist hier: Substanz mit Abhängigkeitspotenzial.", "Die Toleranz ist hier: Beschwerden beim Absetzen."],
+      answer: "Sie ist eine Gewöhnung mit Dosissteigerung.", wrong: ["Sie ist eine Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Sie ist eine Substanz mit Abhängigkeitspotenzial.", "Sie ist eine Beschwerden Beim Absetzen."],
       explanation: "Toleranz: Gewöhnung mit Dosissteigerung",
       wissen: fw(
         "Gleiche Wirkung braucht mehr Substanz. Bezug: Suchtgefahren.",
@@ -3299,8 +3072,7 @@ export const k8Sucht: BioBank = {
     {
       concept: "bio:k8:sucht:f3",
       prompt: "Was kennzeichnet „Entzug“?",
-      answer: "Das Entzug ist hier: Beschwerden beim Absetzen.",
-      wrong: ["Das Entzug ist hier: Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Das Entzug ist hier: Substanz mit Abhängigkeitspotenzial.", "Das Entzug ist hier: Gewöhnung mit Dosissteigerung."],
+      answer: "Es ist eine Beschwerden Beim Absetzen.", wrong: ["Es ist eine Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Es ist eine Substanz mit Abhängigkeitspotenzial.", "Es ist eine Gewöhnung mit Dosissteigerung."],
       explanation: "Entzug: Beschwerden beim Absetzen",
       wissen: fw(
         "Körperliche und psychische Symptome. Bezug: Suchtgefahren.",
@@ -3311,8 +3083,7 @@ export const k8Sucht: BioBank = {
     {
       concept: "bio:k8:sucht:f4",
       prompt: "Was kennzeichnet „psychische Abhängigkeit“?",
-      answer: "Die psychische Abhängigkeit ist hier: Starkes Verlangen und Kontrollverlust.",
-      wrong: ["Die psychische Abhängigkeit ist hier: Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Die psychische Abhängigkeit ist hier: Substanz mit Abhängigkeitspotenzial.", "Die psychische Abhängigkeit ist hier: Gewöhnung mit Dosissteigerung."],
+      answer: "Sie ist eine Starkes Verlangen und Kontrollverlust.", wrong: ["Sie ist eine Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Sie ist eine Substanz mit Abhängigkeitspotenzial.", "Sie ist eine Gewöhnung mit Dosissteigerung."],
       explanation: "psychische Abhängigkeit: Starkes Verlangen und Kontrollverlust",
       wissen: fw(
         "Auch ohne starke körperliche Entzüge möglich. Bezug: Suchtgefahren.",
@@ -3323,8 +3094,7 @@ export const k8Sucht: BioBank = {
     {
       concept: "bio:k8:sucht:f5",
       prompt: "Was kennzeichnet „körperliche Abhängigkeit“?",
-      answer: "Hier gilt: Körper stellt sich auf Substanz ein.",
-      wrong: ["Die körperliche Abhängigkeit ist hier: Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Die körperliche Abhängigkeit ist hier: Substanz mit Abhängigkeitspotenzial.", "Die körperliche Abhängigkeit ist hier: Gewöhnung mit Dosissteigerung."],
+      answer: "Sie ist eine Körper stellt sich auf Substanz ein.", wrong: ["Sie ist eine Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Sie ist eine Substanz mit Abhängigkeitspotenzial.", "Sie ist eine Gewöhnung mit Dosissteigerung."],
       explanation: "körperliche Abhängigkeit: Körper stellt sich auf Substanz ein",
       wissen: fw(
         "Entzug als Gegenreaktion. Bezug: Suchtgefahren.",
@@ -3335,8 +3105,7 @@ export const k8Sucht: BioBank = {
     {
       concept: "bio:k8:sucht:f6",
       prompt: "Was kennzeichnet „Mediengebrauch“?",
-      answer: "Das Mediengebrauch ist hier: Nutzung digitaler Angebote.",
-      wrong: ["Das Mediengebrauch ist hier: Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Das Mediengebrauch ist hier: Substanz mit Abhängigkeitspotenzial.", "Das Mediengebrauch ist hier: Gewöhnung mit Dosissteigerung."],
+      answer: "Es ist eine Nutzung Digitaler Angebote.", wrong: ["Es ist eine Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Es ist eine Substanz mit Abhängigkeitspotenzial.", "Es ist eine Gewöhnung mit Dosissteigerung."],
       explanation: "Mediengebrauch: Nutzung digitaler Angebote",
       wissen: fw(
         "Kann problematisch entgleisen. Bezug: Suchtgefahren.",
@@ -3347,8 +3116,7 @@ export const k8Sucht: BioBank = {
     {
       concept: "bio:k8:sucht:f7",
       prompt: "Was kennzeichnet „soziale Folge“?",
-      answer: "Die soziale Folge ist hier: Belastung von Beziehungen und Schule.",
-      wrong: ["Die soziale Folge ist hier: Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Die soziale Folge ist hier: Substanz mit Abhängigkeitspotenzial.", "Die soziale Folge ist hier: Gewöhnung mit Dosissteigerung."],
+      answer: "Sie ist eine Belastung von Beziehungen und Schule.", wrong: ["Sie ist eine Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Sie ist eine Substanz mit Abhängigkeitspotenzial.", "Sie ist eine Gewöhnung mit Dosissteigerung."],
       explanation: "soziale Folge: Belastung von Beziehungen und Schule",
       wissen: fw(
         "Sucht wirkt über den Körper hinaus. Bezug: Suchtgefahren.",
@@ -3359,8 +3127,7 @@ export const k8Sucht: BioBank = {
     {
       concept: "bio:k8:sucht:f8",
       prompt: "Was kennzeichnet „psychische Folge“?",
-      answer: "Die psychische Folge ist hier: Angst, Reizbarkeit, Konzentrationsprobleme.",
-      wrong: ["Die psychische Folge ist hier: Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Die psychische Folge ist hier: Substanz mit Abhängigkeitspotenzial.", "Die psychische Folge ist hier: Gewöhnung mit Dosissteigerung."],
+      answer: "Sie ist eine Angst, Reizbarkeit, Konzentrationsprobleme.", wrong: ["Sie ist eine Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Sie ist eine Substanz mit Abhängigkeitspotenzial.", "Sie ist eine Gewöhnung mit Dosissteigerung."],
       explanation: "psychische Folge: Angst, Reizbarkeit, Konzentrationsprobleme",
       wissen: fw(
         "Häufig bei problematischem Konsum. Bezug: Suchtgefahren.",
@@ -3371,8 +3138,7 @@ export const k8Sucht: BioBank = {
     {
       concept: "bio:k8:sucht:f9",
       prompt: "Was kennzeichnet „physische Folge“?",
-      answer: "Die physische Folge ist hier: Schäden an Organen.",
-      wrong: ["Die physische Folge ist hier: Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Die physische Folge ist hier: Substanz mit Abhängigkeitspotenzial.", "Die physische Folge ist hier: Gewöhnung mit Dosissteigerung."],
+      answer: "Sie ist eine Schäden an Organen.", wrong: ["Sie ist eine Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Sie ist eine Substanz mit Abhängigkeitspotenzial.", "Sie ist eine Gewöhnung mit Dosissteigerung."],
       explanation: "physische Folge: Schäden an Organen",
       wissen: fw(
         "Je nach Substanz unterschiedlich. Bezug: Suchtgefahren.",
@@ -3383,8 +3149,7 @@ export const k8Sucht: BioBank = {
     {
       concept: "bio:k8:sucht:f10",
       prompt: "Was kennzeichnet „Prävention“?",
-      answer: "Die Prävention ist hier: Vorbeugung durch Wissen und Alternativen.",
-      wrong: ["Die Prävention ist hier: Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Die Prävention ist hier: Substanz mit Abhängigkeitspotenzial.", "Die Prävention ist hier: Gewöhnung mit Dosissteigerung."],
+      answer: "Sie ist eine Vorbeugung durch Wissen und Alternativen.", wrong: ["Sie ist eine Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Sie ist eine Substanz mit Abhängigkeitspotenzial.", "Sie ist eine Gewöhnung mit Dosissteigerung."],
       explanation: "Prävention: Vorbeugung durch Wissen und Alternativen",
       wissen: fw(
         "Frühe Hilfe wirkt besser. Bezug: Suchtgefahren.",
@@ -3395,8 +3160,7 @@ export const k8Sucht: BioBank = {
     {
       concept: "bio:k8:sucht:f11",
       prompt: "Wozu dient die Hilfesuche?",
-      answer: "Die die Hilfesuche ist hier: Professionelle Unterstützung nutzen.",
-      wrong: ["Die die Hilfesuche ist hier: Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Die die Hilfesuche ist hier: Substanz mit Abhängigkeitspotenzial.", "Die die Hilfesuche ist hier: Gewöhnung mit Dosissteigerung."],
+      answer: "Sie ist eine Professionelle Unterstützung Nutzen.", wrong: ["Sie ist eine Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Sie ist eine Substanz mit Abhängigkeitspotenzial.", "Sie ist eine Gewöhnung mit Dosissteigerung."],
       explanation: "Hilfesuche: Professionelle Unterstützung nutzen",
       wissen: fw(
         "Wichtig bei Kontrollverlust. Bezug: Suchtgefahren.",
@@ -3407,8 +3171,7 @@ export const k8Sucht: BioBank = {
     {
       concept: "bio:k8:sucht:x0",
       prompt: "Suchtgefahren: Warum sind Suchtgefahren auch bei Internet und sozialen Medien relevant?",
-      answer: "Es geht um Exzessive Nutzung kann Kontrolle, Schlaf und Sozialleben schädigen, und zwar gilt: kontrollverlust und Fortsetzung trotz Schaden.",
-      wrong: ["Hier gilt: Weil Medien nie wirken.", "Hier gilt: Weil nur Essen süchtig macht.", "Hier gilt: Weil Nerven immun sind."],
+      answer: "Es ist eine Exzessive Nutzung kann Kontrolle.", wrong: ["Es ist eine Weil Medien nie wirken.", "Es ist eine Weil nur Essen süchtig macht.", "Es ist eine Weil Nerven immun sind."],
       explanation: "Verhaltensaspekte.",
       wissen: fw(
         "Belohnungssysteme reagieren auf Likes und Dauerreize; problematische Muster können entstehen.",
@@ -3417,8 +3180,7 @@ export const k8Sucht: BioBank = {
     {
       concept: "bio:k8:sucht:x1",
       prompt: "Suchtgefahren: Was unterscheidet deskriptive und normative Aussagen zur Sucht?",
-      answer: "Deskriptiv beschreibt; normativ bewertet/fordert, und zwar gilt hier: Kontrollverlust und Fortsetzung trotz Schaden.",
-      wrong: ["Hier gilt klar: Beide sind identisch.", "Hier gilt: Normativ misst nur Puls.", "Es geht um Deskriptiv verbietet immer."],
+      answer: "Deskriptiv beschreibt; normativ bewertet/fordert durch kontrollverlust und Fortsetzung trotz Schaden.", wrong: ["Beide sind identisch.", "Es ist ein Normativ misst nur Puls.", "Es ist ein Deskriptiv verbietet immer."],
       explanation: "Urteilsbildung.",
       wissen: fw(
         "Fachliche Beschreibung von Folgen ist von Werturteilen über Verhalten zu trennen.",
@@ -3466,8 +3228,7 @@ export const k8AugeAkkommodation: BioBank = {
     {
       concept: "bio:k8:akkom:f0",
       prompt: "Was kennzeichnet „Akkommodation“?",
-      answer: "Die Akkommodation ist hier: Scharfstellung auf unterschiedliche Entfernungen.",
-      wrong: ["Die Akkommodation ist hier: Anpassung an Helligkeit.", "Die Akkommodation ist hier: Brechendes Element im Auge.", "Die Akkommodation ist hier: Muskel zur Linsenverformung."],
+      answer: "Sie ist eine Scharfstellung auf Unterschiedliche Entfernungen.", wrong: ["Sie ist eine Anpassung an Helligkeit.", "Sie ist eine Brechendes Element im Auge.", "Sie ist eine Muskel zur Linsenverformung."],
       explanation: "Akkommodation: Scharfstellung auf unterschiedliche Entfernungen",
       wissen: fw(
         "Linse ändert Brechkraft. Bezug: Akkommodation.",
@@ -3478,8 +3239,7 @@ export const k8AugeAkkommodation: BioBank = {
     {
       concept: "bio:k8:akkom:f1",
       prompt: "Was kennzeichnet „Adaptation“?",
-      answer: "Die Adaptation ist hier: Anpassung an Helligkeit.",
-      wrong: ["Die Adaptation ist hier: Scharfstellung auf unterschiedliche Entfernungen.", "Die Adaptation ist hier: Brechendes Element im Auge.", "Die Adaptation ist hier: Muskel zur Linsenverformung."],
+      answer: "Sie ist eine Anpassung an Helligkeit.", wrong: ["Sie ist eine Scharfstellung auf Unterschiedliche Entfernungen.", "Sie ist eine Brechendes Element im Auge.", "Sie ist eine Muskel zur Linsenverformung."],
       explanation: "Adaptation: Anpassung an Helligkeit",
       wissen: fw(
         "Pupille und Sinneszellen wirken mit. Bezug: Akkommodation.",
@@ -3490,8 +3250,7 @@ export const k8AugeAkkommodation: BioBank = {
     {
       concept: "bio:k8:akkom:f2",
       prompt: "Was kennzeichnet „Linse“?",
-      answer: "Die Linse ist hier: Brechendes Element im Auge.",
-      wrong: ["Die Linse ist hier: Scharfstellung auf unterschiedliche Entfernungen.", "Die Linse ist hier: Anpassung an Helligkeit.", "Die Linse ist hier: Muskel zur Linsenverformung."],
+      answer: "Sie ist eine Brechendes Element im Auge.", wrong: ["Sie ist eine Scharfstellung auf Unterschiedliche Entfernungen.", "Sie ist eine Anpassung an Helligkeit.", "Sie ist eine Muskel zur Linsenverformung."],
       explanation: "Linse: Brechendes Element im Auge",
       wissen: fw(
         "Verformbar für Nah/Fern. Bezug: Akkommodation.",
@@ -3502,8 +3261,7 @@ export const k8AugeAkkommodation: BioBank = {
     {
       concept: "bio:k8:akkom:f3",
       prompt: "Was kennzeichnet „Ziliarmuskel“?",
-      answer: "Das Ziliarmuskel ist hier: Muskel zur Linsenverformung.",
-      wrong: ["Das Ziliarmuskel ist hier: Scharfstellung auf unterschiedliche Entfernungen.", "Das Ziliarmuskel ist hier: Anpassung an Helligkeit.", "Das Ziliarmuskel ist hier: Brechendes Element im Auge."],
+      answer: "Es ist eine Muskel zur Linsenverformung.", wrong: ["Es ist eine Scharfstellung auf Unterschiedliche Entfernungen.", "Es ist eine Anpassung an Helligkeit.", "Es ist eine Brechendes Element im Auge."],
       explanation: "Ziliarmuskel: Muskel zur Linsenverformung",
       wissen: fw(
         "Anspannung für Nahsehen. Bezug: Akkommodation.",
@@ -3514,8 +3272,7 @@ export const k8AugeAkkommodation: BioBank = {
     {
       concept: "bio:k8:akkom:f4",
       prompt: "Was kennzeichnet „Strahlengang“?",
-      answer: "Das Strahlengang ist hier: Weg der Lichtstrahlen im Auge.",
-      wrong: ["Das Strahlengang ist hier: Scharfstellung auf unterschiedliche Entfernungen.", "Das Strahlengang ist hier: Anpassung an Helligkeit.", "Das Strahlengang ist hier: Brechendes Element im Auge."],
+      answer: "Es ist eine Weg der Lichtstrahlen im Auge.", wrong: ["Es ist eine Scharfstellung auf Unterschiedliche Entfernungen.", "Es ist eine Anpassung an Helligkeit.", "Es ist eine Brechendes Element im Auge."],
       explanation: "Strahlengang: Weg der Lichtstrahlen im Auge",
       wissen: fw(
         "Hornhaut und Linse brechen Licht. Bezug: Akkommodation.",
@@ -3526,8 +3283,7 @@ export const k8AugeAkkommodation: BioBank = {
     {
       concept: "bio:k8:akkom:f5",
       prompt: "Was kennzeichnet „Netzhaut“?",
-      answer: "Das Netzhaut ist hier: Ort der Sinneszellen.",
-      wrong: ["Das Netzhaut ist hier: Scharfstellung auf unterschiedliche Entfernungen.", "Das Netzhaut ist hier: Anpassung an Helligkeit.", "Das Netzhaut ist hier: Brechendes Element im Auge."],
+      answer: "Es ist eine Ort der Sinneszellen.", wrong: ["Es ist eine Scharfstellung auf Unterschiedliche Entfernungen.", "Es ist eine Anpassung an Helligkeit.", "Es ist eine Brechendes Element im Auge."],
       explanation: "Netzhaut: Ort der Sinneszellen",
       wissen: fw(
         "Bild muss scharf auftreffen. Bezug: Akkommodation.",
@@ -3538,8 +3294,7 @@ export const k8AugeAkkommodation: BioBank = {
     {
       concept: "bio:k8:akkom:f6",
       prompt: "Was kennzeichnet „Nahpunkt“?",
-      answer: "Der Nahpunkt ist hier: Kürzeste Distanz scharfen Sehens.",
-      wrong: ["Der Nahpunkt ist hier: Scharfstellung auf unterschiedliche Entfernungen.", "Der Nahpunkt ist hier: Anpassung an Helligkeit.", "Der Nahpunkt ist hier: Brechendes Element im Auge."],
+      answer: "Er ist eine Kürzeste Distanz Scharfen Sehens.", wrong: ["Er ist eine Scharfstellung auf Unterschiedliche Entfernungen.", "Er ist eine Anpassung an Helligkeit.", "Er ist eine Brechendes Element im Auge."],
       explanation: "Nahpunkt: Kürzeste Distanz scharfen Sehens",
       wissen: fw(
         "Mit Alter oft weiter weg. Bezug: Akkommodation.",
@@ -3550,8 +3305,7 @@ export const k8AugeAkkommodation: BioBank = {
     {
       concept: "bio:k8:akkom:f7",
       prompt: "Was kennzeichnet „Fernpunkt“?",
-      answer: "Der Fernpunkt ist hier: Weitester Punkt scharfen Sehens.",
-      wrong: ["Der Fernpunkt ist hier: Scharfstellung auf unterschiedliche Entfernungen.", "Der Fernpunkt ist hier: Anpassung an Helligkeit.", "Der Fernpunkt ist hier: Brechendes Element im Auge."],
+      answer: "Er ist eine Weitester Punkt Scharfen Sehens.", wrong: ["Er ist eine Scharfstellung auf Unterschiedliche Entfernungen.", "Er ist eine Anpassung an Helligkeit.", "Er ist eine Brechendes Element im Auge."],
       explanation: "Fernpunkt: Weitester Punkt scharfen Sehens",
       wissen: fw(
         "Bei normalsichtig im Unendlichen. Bezug: Akkommodation.",
@@ -3562,8 +3316,7 @@ export const k8AugeAkkommodation: BioBank = {
     {
       concept: "bio:k8:akkom:f8",
       prompt: "Was kennzeichnet „Kurzsichtigkeit“?",
-      answer: "Die Kurzsichtigkeit ist kurz gesagt: Scharfes Sehen vor allem nah.",
-      wrong: ["Die Kurzsichtigkeit ist hier: Scharfstellung auf unterschiedliche Entfernungen.", "Die Kurzsichtigkeit ist hier: Anpassung an Helligkeit.", "Die Kurzsichtigkeit ist hier: Brechendes Element im Auge."],
+      answer: "Sie ist eine Scharfes Sehen vor Allem Nah.", wrong: ["Sie ist eine Scharfstellung auf Unterschiedliche Entfernungen.", "Sie ist eine Anpassung an Helligkeit.", "Sie ist eine Brechendes Element im Auge."],
       explanation: "Kurzsichtigkeit: Scharfes Sehen vor allem nah",
       wissen: fw(
         "Bild vor der Netzhaut. Bezug: Akkommodation.",
@@ -3574,8 +3327,7 @@ export const k8AugeAkkommodation: BioBank = {
     {
       concept: "bio:k8:akkom:f9",
       prompt: "Was kennzeichnet „Weitsichtigkeit“?",
-      answer: "Die Weitsichtigkeit ist hier: Probleme vor allem in der Nähe.",
-      wrong: ["Die Weitsichtigkeit ist hier: Scharfstellung auf unterschiedliche Entfernungen.", "Die Weitsichtigkeit ist hier: Anpassung an Helligkeit.", "Die Weitsichtigkeit ist hier: Brechendes Element im Auge."],
+      answer: "Sie ist eine Probleme vor Allem in der Nähe.", wrong: ["Sie ist eine Scharfstellung auf Unterschiedliche Entfernungen.", "Sie ist eine Anpassung an Helligkeit.", "Sie ist eine Brechendes Element im Auge."],
       explanation: "Weitsichtigkeit: Probleme vor allem in der Nähe",
       wissen: fw(
         "Bild hinter der Netzhaut. Bezug: Akkommodation.",
@@ -3586,8 +3338,7 @@ export const k8AugeAkkommodation: BioBank = {
     {
       concept: "bio:k8:akkom:f10",
       prompt: "Was kennzeichnet „Leseabstand“?",
-      answer: "Das Leseabstand ist hier: Sinnvoller Abstand beim Lesen.",
-      wrong: ["Das Leseabstand ist hier: Scharfstellung auf unterschiedliche Entfernungen.", "Das Leseabstand ist hier: Anpassung an Helligkeit.", "Das Leseabstand ist hier: Brechendes Element im Auge."],
+      answer: "Es ist eine Sinnvoller Abstand Beim Lesen.", wrong: ["Es ist eine Scharfstellung auf Unterschiedliche Entfernungen.", "Es ist eine Anpassung an Helligkeit.", "Es ist eine Brechendes Element im Auge."],
       explanation: "Leseabstand: Sinnvoller Abstand beim Lesen",
       wissen: fw(
         "Entlastet das Auge. Bezug: Akkommodation.",
@@ -3598,8 +3349,7 @@ export const k8AugeAkkommodation: BioBank = {
     {
       concept: "bio:k8:akkom:f11",
       prompt: "Wozu dienen Arbeitsschutz Auge?",
-      answer: "Es geht um Maßnahmen gegen Überlastung.",
-      wrong: ["Es geht um Scharfstellung auf unterschiedliche Entfernungen.", "Es geht um Anpassung an Helligkeit.", "Es geht um Brechendes Element im Auge."],
+      answer: "Es ist eine Maßnahmen gegen Überlastung.", wrong: ["Es ist eine Scharfstellung auf unterschiedliche Entfernungen.", "Es ist eine Anpassung an Helligkeit.", "Es ist eine Brechendes Element im Auge."],
       explanation: "Arbeitsschutz Auge: Maßnahmen gegen Überlastung",
       wissen: fw(
         "Pausen und Beleuchtung. Bezug: Akkommodation.",
@@ -3610,8 +3360,7 @@ export const k8AugeAkkommodation: BioBank = {
     {
       concept: "bio:k8:akkom:x0",
       prompt: "Akkommodation: Was leistet die Akkommodation?",
-      answer: "Scharfes Sehen in unterschiedlicher Entfernung durch Linsenformänderung, und zwar gilt: linse ändert Brechkraft.",
-      wrong: ["Es geht um Farbwechsel der Iris allein.", "Es geht um Ersatz der Netzhaut.", "Es geht um Bildung von Tränen ohne Licht."],
+      answer: "Es ist eine Scharfes Sehen in Unterschiedlicher Entfernung durch Linsenformänderung, linse ändert Brechkraft.", wrong: ["Es ist ein Farbwechsel der Iris allein.", "Es ist eine Ersatz der Netzhaut.", "Es ist eine Bildung von Tränen ohne Licht."],
       explanation: "Nah/Fern.",
       wissen: fw(
         "Ziliarmuskel und Linse stellen die Brechkraft ein, damit das Bild auf der Netzhaut scharf ist.",
@@ -3620,8 +3369,7 @@ export const k8AugeAkkommodation: BioBank = {
     {
       concept: "bio:k8:akkom:x1",
       prompt: "Akkommodation: Was hilft bei Belastung der Augen?",
-      answer: "Es geht um Geeigneter Leseabstand, Pausen und gutes Licht, und zwar gilt: linse ändert Brechkraft.",
-      wrong: ["Es geht um Nur Dauerstarren ohne Pause.", "Es geht um Nur völlige Dunkelheit beim Lesen.", "Es geht um Nur das Auge reiben."],
+      answer: "Es ist eine Geeigneter Leseabstand.", wrong: ["Es ist eine Nur Dauerstarren ohne Pause.", "Es ist eine Nur völlige Dunkelheit beim Lesen.", "Es ist eine Nur das Auge reiben."],
       explanation: "Gesunderhaltung.",
       wissen: fw(
         "Übermäßige Naharbeit ohne Ausgleich kann ermüden; Arbeitsschutz entlastet.",
@@ -3669,8 +3417,7 @@ export const k8Gehirn: BioBank = {
     {
       concept: "bio:k8:gehirn:f0",
       prompt: "Was kennzeichnet „Großhirn“?",
-      answer: "Das Großhirn ist hier: Sitz bewusster Prozesse und Cortex.",
-      wrong: ["Das Großhirn ist hier: Koordination von Bewegungen.", "Das Großhirn ist kurz gesagt: Grundlegende Lebensfunktionen.", "Das Großhirn ist kurz gesagt: Speicherung von Informationen."],
+      answer: "Es ist eine Sitz Bewusster Prozesse und Cortex.", wrong: ["Es ist eine Koordination von Bewegungen.", "Das Großhirn ist das Grundlegende Lebensfunktionen.", "Es ist eine Speicherung von Informationen."],
       explanation: "Großhirn: Sitz bewusster Prozesse und Cortex",
       wissen: fw(
         "Wahrnehmung, Denken, Willkürmotorik. Bezug: Gehirn/Gedächtnis.",
@@ -3681,8 +3428,7 @@ export const k8Gehirn: BioBank = {
     {
       concept: "bio:k8:gehirn:f1",
       prompt: "Was kennzeichnet „Kleinhirn“?",
-      answer: "Das Kleinhirn ist hier: Koordination von Bewegungen.",
-      wrong: ["Das Kleinhirn ist hier: Sitz bewusster Prozesse und Cortex.", "Das Kleinhirn ist kurz gesagt: Grundlegende Lebensfunktionen.", "Das Kleinhirn ist kurz gesagt: Speicherung von Informationen."],
+      answer: "Es ist eine Koordination von Bewegungen.", wrong: ["Es ist eine Sitz Bewusster Prozesse und Cortex.", "Das Kleinhirn ist das Grundlegende Lebensfunktionen.", "Es ist eine Speicherung von Informationen."],
       explanation: "Kleinhirn: Koordination von Bewegungen",
       wissen: fw(
         "Feinabstimmung und Gleichgewicht. Bezug: Gehirn/Gedächtnis.",
@@ -3693,8 +3439,7 @@ export const k8Gehirn: BioBank = {
     {
       concept: "bio:k8:gehirn:f2",
       prompt: "Was kennzeichnet „Stammhirn“?",
-      answer: "Das Stammhirn ist kurz gesagt: Grundlegende Lebensfunktionen.",
-      wrong: ["Das Stammhirn ist hier: Sitz bewusster Prozesse und Cortex.", "Das Stammhirn ist hier: Koordination von Bewegungen.", "Das Stammhirn ist kurz gesagt: Speicherung von Informationen."],
+      answer: "Das Stammhirn ist das Grundlegende Lebensfunktionen.", wrong: ["Es ist eine Sitz Bewusster Prozesse und Cortex.", "Es ist eine Koordination von Bewegungen.", "Es ist eine Speicherung von Informationen."],
       explanation: "Stammhirn: Grundlegende Lebensfunktionen",
       wissen: fw(
         "Atmung und Kreislaufregulation. Bezug: Gehirn/Gedächtnis.",
@@ -3705,8 +3450,7 @@ export const k8Gehirn: BioBank = {
     {
       concept: "bio:k8:gehirn:f3",
       prompt: "Was kennzeichnet „Gedächtnis“?",
-      answer: "Das Gedächtnis ist kurz gesagt: Speicherung von Informationen.",
-      wrong: ["Das Gedächtnis ist hier: Sitz bewusster Prozesse und Cortex.", "Das Gedächtnis ist hier: Koordination von Bewegungen.", "Das Gedächtnis ist kurz gesagt: Grundlegende Lebensfunktionen."],
+      answer: "Es ist eine Speicherung von Informationen.", wrong: ["Es ist eine Sitz Bewusster Prozesse und Cortex.", "Es ist eine Koordination von Bewegungen.", "Das Gedächtnis ist das Grundlegende Lebensfunktionen."],
       explanation: "Gedächtnis: Speicherung von Informationen",
       wissen: fw(
         "Kurz- und Langzeitgedächtnis. Bezug: Gehirn/Gedächtnis.",
@@ -3717,8 +3461,7 @@ export const k8Gehirn: BioBank = {
     {
       concept: "bio:k8:gehirn:f4",
       prompt: "Was kennzeichnet „Informationsspeicherung“?",
-      answer: "Die Informationsspeicherung ist hier: Ablegen von Erfahrungen.",
-      wrong: ["Die Informationsspeicherung ist hier: Sitz bewusster Prozesse und Cortex.", "Die Informationsspeicherung ist hier: Koordination von Bewegungen.", "Die Informationsspeicherung ist kurz gesagt: Grundlegende Lebensfunktionen."],
+      answer: "Sie ist eine Ablegen von Erfahrungen.", wrong: ["Sie ist eine Sitz Bewusster Prozesse und Cortex.", "Sie ist eine Koordination von Bewegungen.", "Die Informationsspeicherung ist die Grundlegende Lebensfunktionen."],
       explanation: "Informationsspeicherung: Ablegen von Erfahrungen",
       wissen: fw(
         "Über synaptische Veränderungen. Bezug: Gehirn/Gedächtnis.",
@@ -3729,8 +3472,7 @@ export const k8Gehirn: BioBank = {
     {
       concept: "bio:k8:gehirn:f5",
       prompt: "Was kennzeichnet „Synapse“?",
-      answer: "Die Synapse ist hier: Kontaktstelle zwischen Neuronen.",
-      wrong: ["Die Synapse ist hier: Sitz bewusster Prozesse und Cortex.", "Die Synapse ist hier: Koordination von Bewegungen.", "Die Synapse ist kurz gesagt: Grundlegende Lebensfunktionen."],
+      answer: "Sie ist eine Kontaktstelle Zwischen Neuronen.", wrong: ["Sie ist eine Sitz Bewusster Prozesse und Cortex.", "Sie ist eine Koordination von Bewegungen.", "Die Synapse ist die Grundlegende Lebensfunktionen."],
       explanation: "Synapse: Kontaktstelle zwischen Neuronen",
       wissen: fw(
         "Chemische Übertragung. Bezug: Gehirn/Gedächtnis.",
@@ -3741,8 +3483,7 @@ export const k8Gehirn: BioBank = {
     {
       concept: "bio:k8:gehirn:f6",
       prompt: "Was kennzeichnet „Neuron“?",
-      answer: "Das Neuron ist kurz gesagt: Nervenzelle.",
-      wrong: ["Das Neuron ist hier: Sitz bewusster Prozesse und Cortex.", "Das Neuron ist hier: Koordination von Bewegungen.", "Das Neuron ist kurz gesagt: Grundlegende Lebensfunktionen."],
+      answer: "Das Neuron ist das Nervenzelle.", wrong: ["Es ist eine Sitz Bewusster Prozesse und Cortex.", "Es ist eine Koordination von Bewegungen.", "Das Neuron ist das Grundlegende Lebensfunktionen."],
       explanation: "Neuron: Nervenzelle",
       wissen: fw(
         "Leitet und verarbeitet Erregungen. Bezug: Gehirn/Gedächtnis.",
@@ -3753,8 +3494,7 @@ export const k8Gehirn: BioBank = {
     {
       concept: "bio:k8:gehirn:f7",
       prompt: "Was kennzeichnet „Hirnrinde“?",
-      answer: "Die Hirnrinde ist hier: Äußere Schicht des Großhirns.",
-      wrong: ["Die Hirnrinde ist hier: Sitz bewusster Prozesse und Cortex.", "Die Hirnrinde ist hier: Koordination von Bewegungen.", "Die Hirnrinde ist kurz gesagt: Grundlegende Lebensfunktionen."],
+      answer: "Sie ist eine Äußere Schicht des Großhirns.", wrong: ["Sie ist eine Sitz Bewusster Prozesse und Cortex.", "Sie ist eine Koordination von Bewegungen.", "Die Hirnrinde ist die Grundlegende Lebensfunktionen."],
       explanation: "Hirnrinde: Äußere Schicht des Großhirns",
       wissen: fw(
         "Viele höhere Leistungen. Bezug: Gehirn/Gedächtnis.",
@@ -3765,8 +3505,7 @@ export const k8Gehirn: BioBank = {
     {
       concept: "bio:k8:gehirn:f8",
       prompt: "Was kennzeichnet „Lernprozess“?",
-      answer: "Das Lernprozess ist hier: Veränderung durch Erfahrung.",
-      wrong: ["Das Lernprozess ist hier: Sitz bewusster Prozesse und Cortex.", "Das Lernprozess ist hier: Koordination von Bewegungen.", "Das Lernprozess ist kurz gesagt: Grundlegende Lebensfunktionen."],
+      answer: "Es ist eine Veränderung durch Erfahrung.", wrong: ["Es ist eine Sitz Bewusster Prozesse und Cortex.", "Es ist eine Koordination von Bewegungen.", "Das Lernprozess ist das Grundlegende Lebensfunktionen."],
       explanation: "Lernprozess: Veränderung durch Erfahrung",
       wissen: fw(
         "Stärkt oder schwächt Verbindungen. Bezug: Gehirn/Gedächtnis.",
@@ -3777,8 +3516,7 @@ export const k8Gehirn: BioBank = {
     {
       concept: "bio:k8:gehirn:f9",
       prompt: "Was kennzeichnet „Schlaf“?",
-      answer: "Das Schlaf ist hier: Erholungs- und Konsolidierungsphase.",
-      wrong: ["Das Schlaf ist hier: Sitz bewusster Prozesse und Cortex.", "Das Schlaf ist hier: Koordination von Bewegungen.", "Das Schlaf ist kurz gesagt: Grundlegende Lebensfunktionen."],
+      answer: "Es ist eine Erholungs- und Konsolidierungsphase.", wrong: ["Es ist eine Sitz Bewusster Prozesse und Cortex.", "Es ist eine Koordination von Bewegungen.", "Das Schlaf ist das Grundlegende Lebensfunktionen."],
       explanation: "Schlaf: Erholungs- und Konsolidierungsphase",
       wissen: fw(
         "Wichtig für Gedächtnis. Bezug: Gehirn/Gedächtnis.",
@@ -3789,8 +3527,7 @@ export const k8Gehirn: BioBank = {
     {
       concept: "bio:k8:gehirn:f10",
       prompt: "Was kennzeichnet „Lokalisation“?",
-      answer: "Die Lokalisation ist hier: Zuordnung von Leistungen zu Regionen.",
-      wrong: ["Die Lokalisation ist hier: Sitz bewusster Prozesse und Cortex.", "Die Lokalisation ist hier: Koordination von Bewegungen.", "Die Lokalisation ist kurz gesagt: Grundlegende Lebensfunktionen."],
+      answer: "Sie ist eine Zuordnung von Leistungen zu Regionen.", wrong: ["Sie ist eine Sitz Bewusster Prozesse und Cortex.", "Sie ist eine Koordination von Bewegungen.", "Die Lokalisation ist die Grundlegende Lebensfunktionen."],
       explanation: "Lokalisation: Zuordnung von Leistungen zu Regionen",
       wissen: fw(
         "Nicht alles ist streng getrennt. Bezug: Gehirn/Gedächtnis.",
@@ -3801,8 +3538,7 @@ export const k8Gehirn: BioBank = {
     {
       concept: "bio:k8:gehirn:f11",
       prompt: "Was kennzeichnet „Netzwerk“?",
-      answer: "Das Netzwerk ist hier: Zusammenarbeit vieler Areale.",
-      wrong: ["Das Netzwerk ist hier: Sitz bewusster Prozesse und Cortex.", "Das Netzwerk ist hier: Koordination von Bewegungen.", "Das Netzwerk ist kurz gesagt: Grundlegende Lebensfunktionen."],
+      answer: "Es ist eine Zusammenarbeit Vieler Areale.", wrong: ["Es ist eine Sitz Bewusster Prozesse und Cortex.", "Es ist eine Koordination von Bewegungen.", "Das Netzwerk ist das Grundlegende Lebensfunktionen."],
       explanation: "Netzwerk: Zusammenarbeit vieler Areale",
       wissen: fw(
         "Komplexe Leistungen entstehen verteilt. Bezug: Gehirn/Gedächtnis.",
@@ -3813,8 +3549,7 @@ export const k8Gehirn: BioBank = {
     {
       concept: "bio:k8:gehirn:x0",
       prompt: "Gehirn/Gedächtnis: Welche Rolle hat das Gehirn für das Gedächtnis?",
-      answer: "Es speichert und ruft Informationen über neuronale Netze ab, und zwar gilt: wahrnehmung, Denken, Willkürmotorik.",
-      wrong: ["Es geht um Es verdaut nur Fett.", "Es geht um Es filtert nur Urin.", "Es geht um diesen Inhalt: nur Knochen."],
+      answer: "Es speichert und ruft Informationen über neuronale Netze ab durch wahrnehmung, Denken, Willkürmotorik.", wrong: ["Es ist eine Es verdaut nur Fett.", "Es ist eine Es filtert nur Urin.", "Es ist nur Knochen."],
       explanation: "Informationsverarbeitung.",
       wissen: fw(
         "Lernen verändert Synapsenstärken; Speicherung und Abruf sind Gehirnleistungen.",
@@ -3823,8 +3558,7 @@ export const k8Gehirn: BioBank = {
     {
       concept: "bio:k8:gehirn:x1",
       prompt: "Gehirn/Gedächtnis: Warum ist Schlaf für das Gedächtnis relevant?",
-      answer: "Es geht um Er fördert Konsolidierung gelernter Inhalte, und zwar gilt: wahrnehmung, Denken, Willkürmotorik.",
-      wrong: ["Es geht um Schlaf löscht immer alles.", "Hier gilt: Schlaf ersetzt Lernen vollständig.", "Hier gilt: Schlaf ist nur für Haare."],
+      answer: "Es ist eine Er fördert Konsolidierung gelernter Inhalte.", wrong: ["Es ist eine Schlaf löscht immer alles.", "Es ist eine Schlaf ersetzt Lernen vollständig.", "Es ist eine Schlaf ist nur für Haare."],
       explanation: "Konsolidierung.",
       wissen: fw(
         "Während des Schlafs werden Gedächtnisspuren stabilisiert. Bezug: Gehirn/Gedächtnis.",
@@ -3872,8 +3606,7 @@ export const k8NervGesundheit: BioBank = {
     {
       concept: "bio:k8:nervges:f0",
       prompt: "Was kennzeichnet „Schlaf“?",
-      answer: "Das Schlaf ist hier: Erholung für Gehirn und Körper.",
-      wrong: ["Das Schlaf ist hier: Zu viele Reize gleichzeitig.", "Das Schlaf ist hier: Belastungsreaktion des Organismus.", "Das Schlaf ist hier: Absenken der Anspannung."],
+      answer: "Es ist ein Erholung für Gehirn und Körper.", wrong: ["Es ist eine Zu Viele Reize Gleichzeitig.", "Es ist ein Belastungsreaktion des Organismus.", "Es ist eine Absenken der Anspannung."],
       explanation: "Schlaf: Erholung für Gehirn und Körper",
       wissen: fw(
         "Mangel beeinträchtigt Leistung. Bezug: Nervengesundheit.",
@@ -3884,8 +3617,7 @@ export const k8NervGesundheit: BioBank = {
     {
       concept: "bio:k8:nervges:f1",
       prompt: "Was kennzeichnet „Reizüberflutung“?",
-      answer: "Die Reizüberflutung ist hier: Zu viele Reize gleichzeitig.",
-      wrong: ["Die Reizüberflutung ist hier: Erholung für Gehirn und Körper.", "Die Reizüberflutung ist hier: Belastungsreaktion des Organismus.", "Die Reizüberflutung ist hier: Absenken der Anspannung."],
+      answer: "Sie ist eine Zu Viele Reize Gleichzeitig.", wrong: ["Sie ist ein Erholung für Gehirn und Körper.", "Sie ist ein Belastungsreaktion des Organismus.", "Sie ist eine Absenken der Anspannung."],
       explanation: "Reizüberflutung: Zu viele Reize gleichzeitig",
       wissen: fw(
         "Kann Stress und Ermüdung fördern. Bezug: Nervengesundheit.",
@@ -3896,8 +3628,7 @@ export const k8NervGesundheit: BioBank = {
     {
       concept: "bio:k8:nervges:f2",
       prompt: "Was kennzeichnet „Stress“?",
-      answer: "Das Stress ist hier: Belastungsreaktion des Organismus.",
-      wrong: ["Das Stress ist hier: Erholung für Gehirn und Körper.", "Das Stress ist hier: Zu viele Reize gleichzeitig.", "Das Stress ist hier: Absenken der Anspannung."],
+      answer: "Es ist ein Belastungsreaktion des Organismus.", wrong: ["Es ist ein Erholung für Gehirn und Körper.", "Es ist eine Zu Viele Reize Gleichzeitig.", "Es ist eine Absenken der Anspannung."],
       explanation: "Stress: Belastungsreaktion des Organismus",
       wissen: fw(
         "Kurz hilfreich, dauerhaft schädlich. Bezug: Nervengesundheit.",
@@ -3908,8 +3639,7 @@ export const k8NervGesundheit: BioBank = {
     {
       concept: "bio:k8:nervges:f3",
       prompt: "Was kennzeichnet „Entspannung“?",
-      answer: "Die Entspannung ist hier: Absenken der Anspannung.",
-      wrong: ["Die Entspannung ist hier: Erholung für Gehirn und Körper.", "Die Entspannung ist hier: Zu viele Reize gleichzeitig.", "Die Entspannung ist hier: Belastungsreaktion des Organismus."],
+      answer: "Sie ist eine Absenken der Anspannung.", wrong: ["Sie ist ein Erholung für Gehirn und Körper.", "Sie ist eine Zu Viele Reize Gleichzeitig.", "Sie ist ein Belastungsreaktion des Organismus."],
       explanation: "Entspannung: Absenken der Anspannung",
       wissen: fw(
         "Gegenspieler zu Dauerstress. Bezug: Nervengesundheit.",
@@ -3920,8 +3650,7 @@ export const k8NervGesundheit: BioBank = {
     {
       concept: "bio:k8:nervges:f4",
       prompt: "Was kennzeichnet „Bildschirmzeit“?",
-      answer: "Das Bildschirmzeit ist hier: Dauer der Mediennutzung.",
-      wrong: ["Das Bildschirmzeit ist hier: Erholung für Gehirn und Körper.", "Das Bildschirmzeit ist hier: Zu viele Reize gleichzeitig.", "Das Bildschirmzeit ist hier: Belastungsreaktion des Organismus."],
+      answer: "Es ist eine Dauer der Mediennutzung.", wrong: ["Es ist ein Erholung für Gehirn und Körper.", "Es ist eine Zu Viele Reize Gleichzeitig.", "Es ist ein Belastungsreaktion des Organismus."],
       explanation: "Bildschirmzeit: Dauer der Mediennutzung",
       wissen: fw(
         "Zu viel kann Schlaf und Fokus stören. Bezug: Nervengesundheit.",
@@ -3932,8 +3661,7 @@ export const k8NervGesundheit: BioBank = {
     {
       concept: "bio:k8:nervges:f5",
       prompt: "Was kennzeichnet „Pausen“?",
-      answer: "Das Pausen ist hier: Unterbrechungen der Belastung.",
-      wrong: ["Das Pausen ist hier: Erholung für Gehirn und Körper.", "Das Pausen ist hier: Zu viele Reize gleichzeitig.", "Das Pausen ist hier: Belastungsreaktion des Organismus."],
+      answer: "Es ist eine Unterbrechungen der Belastung.", wrong: ["Es ist ein Erholung für Gehirn und Körper.", "Es ist eine Zu Viele Reize Gleichzeitig.", "Es ist ein Belastungsreaktion des Organismus."],
       explanation: "Pausen: Unterbrechungen der Belastung",
       wissen: fw(
         "Schützen Konzentration. Bezug: Nervengesundheit.",
@@ -3944,8 +3672,7 @@ export const k8NervGesundheit: BioBank = {
     {
       concept: "bio:k8:nervges:f6",
       prompt: "Was kennzeichnet „Bewegung“?",
-      answer: "Die Bewegung ist kurz gesagt: Körperliche Aktivität.",
-      wrong: ["Die Bewegung ist hier: Erholung für Gehirn und Körper.", "Die Bewegung ist hier: Zu viele Reize gleichzeitig.", "Die Bewegung ist hier: Belastungsreaktion des Organismus."],
+      answer: "Die Bewegung ist die Körperliche Aktivität.", wrong: ["Sie ist ein Erholung für Gehirn und Körper.", "Sie ist eine Zu Viele Reize Gleichzeitig.", "Sie ist ein Belastungsreaktion des Organismus."],
       explanation: "Bewegung: Körperliche Aktivität",
       wissen: fw(
         "Wirkt positiv auf Stressregulation. Bezug: Nervengesundheit.",
@@ -3956,8 +3683,7 @@ export const k8NervGesundheit: BioBank = {
     {
       concept: "bio:k8:nervges:f7",
       prompt: "Was kennzeichnet „Suchtgefahr“?",
-      answer: "Das Suchtgefahr ist hier: Risiko problematischer Gewohnheiten.",
-      wrong: ["Das Suchtgefahr ist hier: Erholung für Gehirn und Körper.", "Das Suchtgefahr ist hier: Zu viele Reize gleichzeitig.", "Das Suchtgefahr ist hier: Belastungsreaktion des Organismus."],
+      answer: "Es ist eine Risiko Problematischer Gewohnheiten.", wrong: ["Es ist ein Erholung für Gehirn und Körper.", "Es ist eine Zu Viele Reize Gleichzeitig.", "Es ist ein Belastungsreaktion des Organismus."],
       explanation: "Suchtgefahr: Risiko problematischer Gewohnheiten",
       wissen: fw(
         "Belastet das Nervensystem mit. Bezug: Nervengesundheit.",
@@ -3968,8 +3694,7 @@ export const k8NervGesundheit: BioBank = {
     {
       concept: "bio:k8:nervges:f8",
       prompt: "Was kennzeichnet „Konzentration“?",
-      answer: "Die Konzentration ist kurz gesagt: Fokussierte Aufmerksamkeit.",
-      wrong: ["Die Konzentration ist hier: Erholung für Gehirn und Körper.", "Die Konzentration ist hier: Zu viele Reize gleichzeitig.", "Die Konzentration ist hier: Belastungsreaktion des Organismus."],
+      answer: "Die Konzentration ist die Fokussierte Aufmerksamkeit.", wrong: ["Sie ist ein Erholung für Gehirn und Körper.", "Sie ist eine Zu Viele Reize Gleichzeitig.", "Sie ist ein Belastungsreaktion des Organismus."],
       explanation: "Konzentration: Fokussierte Aufmerksamkeit",
       wissen: fw(
         "Braucht Erholung und Reizdosierung. Bezug: Nervengesundheit.",
@@ -3980,8 +3705,7 @@ export const k8NervGesundheit: BioBank = {
     {
       concept: "bio:k8:nervges:f9",
       prompt: "Was kennzeichnet „Recovery“?",
-      answer: "Das Recovery ist hier: Erholung nach Belastung.",
-      wrong: ["Das Recovery ist hier: Erholung für Gehirn und Körper.", "Das Recovery ist hier: Zu viele Reize gleichzeitig.", "Das Recovery ist hier: Belastungsreaktion des Organismus."],
+      answer: "Es ist eine Erholung nach Belastung.", wrong: ["Es ist ein Erholung für Gehirn und Körper.", "Es ist eine Zu Viele Reize Gleichzeitig.", "Es ist ein Belastungsreaktion des Organismus."],
       explanation: "Recovery: Erholung nach Belastung",
       wissen: fw(
         "Notwendig für Leistungsfähigkeit. Bezug: Nervengesundheit.",
@@ -3992,8 +3716,7 @@ export const k8NervGesundheit: BioBank = {
     {
       concept: "bio:k8:nervges:f10",
       prompt: "Was kennzeichnet „Tagesrhythmus“?",
-      answer: "Der Tagesrhythmus ist hier: Wechsel von Aktivität und Ruhe.",
-      wrong: ["Der Tagesrhythmus ist hier: Erholung für Gehirn und Körper.", "Der Tagesrhythmus ist hier: Zu viele Reize gleichzeitig.", "Der Tagesrhythmus ist hier: Belastungsreaktion des Organismus."],
+      answer: "Er ist eine Wechsel von Aktivität und Ruhe.", wrong: ["Er ist ein Erholung für Gehirn und Körper.", "Er ist eine Zu Viele Reize Gleichzeitig.", "Er ist ein Belastungsreaktion des Organismus."],
       explanation: "Tagesrhythmus: Wechsel von Aktivität und Ruhe",
       wissen: fw(
         "Unterstützt Schlafqualität. Bezug: Nervengesundheit.",
@@ -4004,8 +3727,7 @@ export const k8NervGesundheit: BioBank = {
     {
       concept: "bio:k8:nervges:f11",
       prompt: "Was kennzeichnet „Selbstregulation“?",
-      answer: "Die Selbstregulation ist hier: Steuern von Belastung und Erholung.",
-      wrong: ["Die Selbstregulation ist hier: Erholung für Gehirn und Körper.", "Die Selbstregulation ist hier: Zu viele Reize gleichzeitig.", "Die Selbstregulation ist hier: Belastungsreaktion des Organismus."],
+      answer: "Sie ist eine Steuern von Belastung und Erholung.", wrong: ["Sie ist ein Erholung für Gehirn und Körper.", "Sie ist eine Zu Viele Reize Gleichzeitig.", "Sie ist ein Belastungsreaktion des Organismus."],
       explanation: "Selbstregulation: Steuern von Belastung und Erholung",
       wissen: fw(
         "Schlüssel zur Gesunderhaltung. Bezug: Nervengesundheit.",
@@ -4016,8 +3738,7 @@ export const k8NervGesundheit: BioBank = {
     {
       concept: "bio:k8:nervges:x0",
       prompt: "Nervengesundheit: Warum ist ausreichender Schlaf für das Nervensystem wichtig?",
-      answer: "Er ermöglicht Erholung und Gedächtniskonsolidierung, und zwar gilt: mangel beeinträchtigt Leistung.",
-      wrong: ["Hier gilt klar: Schlaf ist überflüssig.", "Hier gilt: Schlaf ersetzt Essen vollständig.", "Hier gilt: Schlaf bildet nur Knochen."],
+      answer: "Er ermöglicht Erholung und Gedächtniskonsolidierung durch mangel beeinträchtigt Leistung.", wrong: ["Schlaf ist überflüssig.", "Es ist eine Schlaf ersetzt Essen vollständig.", "Es ist ein Schlaf bildet nur Knochen."],
       explanation: "Erholung.",
       wissen: fw(
         "Schlafmangel mindert Aufmerksamkeit, Stimmung und Lernleistung.",
@@ -4026,8 +3747,7 @@ export const k8NervGesundheit: BioBank = {
     {
       concept: "bio:k8:nervges:x1",
       prompt: "Nervengesundheit: Was mildert Reizüberflutung?",
-      answer: "Es geht um Pausen, Reizreduktion und bewusste Mediennutzung, und zwar gilt: mangel beeinträchtigt Leistung.",
-      wrong: ["Es geht um Noch mehr parallele Reize.", "Es geht um Völliger Verzicht auf jede Pause.", "Es geht um diesen Inhalt: Nur Dauerlautstärke."],
+      answer: "Es ist eine Pausen.", wrong: ["Es ist eine Noch mehr parallele Reize.", "Es ist eine Völliger Verzicht auf jede Pause.", "Es ist eine Nur Dauerlautstärke."],
       explanation: "Dosierung.",
       wissen: fw(
         "Weniger gleichzeitige Reize entlasten Aufmerksamkeit und Stressachsen.",
@@ -4075,8 +3795,7 @@ export const k8Zyklus: BioBank = {
     {
       concept: "bio:k8:zyklus:f0",
       prompt: "Was kennzeichnet „Menstruationszyklus“?",
-      answer: "Der Menstruationszyklus ist hier: Monatlicher Regelkreis der Gebärmutterschleimhaut.",
-      wrong: ["Der Menstruationszyklus ist hier: Freisetzung einer Eizelle.", "Der Menstruationszyklus ist hier: Reifungsphase vor dem Eisprung.", "Der Menstruationszyklus ist hier: Phase nach dem Eisprung."],
+      answer: "Er ist eine Monatlicher Regelkreis der Gebärmutterschleimhaut.", wrong: ["Er ist eine Freisetzung einer Eizelle.", "Er ist eine Reifungsphase vor dem Eisprung.", "Er ist eine Phase nach dem Eisprung."],
       explanation: "Menstruationszyklus: Monatlicher Regelkreis der Gebärmutterschleimhaut",
       wissen: fw(
         "Gesteuert durch Hormone. Bezug: Menstruationszyklus.",
@@ -4087,8 +3806,7 @@ export const k8Zyklus: BioBank = {
     {
       concept: "bio:k8:zyklus:f1",
       prompt: "Was kennzeichnet „Eisprung“?",
-      answer: "Die Eisprung ist hier: Freisetzung einer Eizelle.",
-      wrong: ["Die Eisprung ist hier: Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Die Eisprung ist hier: Reifungsphase vor dem Eisprung.", "Die Eisprung ist hier: Phase nach dem Eisprung."],
+      answer: "Sie ist eine Freisetzung einer Eizelle.", wrong: ["Sie ist eine Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Sie ist eine Reifungsphase vor dem Eisprung.", "Sie ist eine Phase nach dem Eisprung."],
       explanation: "Eisprung: Freisetzung einer Eizelle",
       wissen: fw(
         "Etwa Zyklusmitte. Bezug: Menstruationszyklus.",
@@ -4099,8 +3817,7 @@ export const k8Zyklus: BioBank = {
     {
       concept: "bio:k8:zyklus:f2",
       prompt: "Was kennzeichnet „Follikelphase“?",
-      answer: "Die Follikelphase ist hier: Reifungsphase vor dem Eisprung.",
-      wrong: ["Die Follikelphase ist hier: Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Die Follikelphase ist hier: Freisetzung einer Eizelle.", "Die Follikelphase ist hier: Phase nach dem Eisprung."],
+      answer: "Sie ist eine Reifungsphase vor dem Eisprung.", wrong: ["Sie ist eine Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Sie ist eine Freisetzung einer Eizelle.", "Sie ist eine Phase nach dem Eisprung."],
       explanation: "Follikelphase: Reifungsphase vor dem Eisprung",
       wissen: fw(
         "Östrogene steigen typischerweise. Bezug: Menstruationszyklus.",
@@ -4111,8 +3828,7 @@ export const k8Zyklus: BioBank = {
     {
       concept: "bio:k8:zyklus:f3",
       prompt: "Was kennzeichnet „Lutealphase“?",
-      answer: "Die Lutealphase ist hier: Phase nach dem Eisprung.",
-      wrong: ["Die Lutealphase ist hier: Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Die Lutealphase ist hier: Freisetzung einer Eizelle.", "Die Lutealphase ist hier: Reifungsphase vor dem Eisprung."],
+      answer: "Sie ist eine Phase nach dem Eisprung.", wrong: ["Sie ist eine Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Sie ist eine Freisetzung einer Eizelle.", "Sie ist eine Reifungsphase vor dem Eisprung."],
       explanation: "Lutealphase: Phase nach dem Eisprung",
       wissen: fw(
         "Progesteron dominiert oft. Bezug: Menstruationszyklus.",
@@ -4123,8 +3839,7 @@ export const k8Zyklus: BioBank = {
     {
       concept: "bio:k8:zyklus:f4",
       prompt: "Was kennzeichnet „Menstruation“?",
-      answer: "Die Menstruation ist hier: Abstoßen der Schleimhaut.",
-      wrong: ["Die Menstruation ist hier: Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Die Menstruation ist hier: Freisetzung einer Eizelle.", "Die Menstruation ist hier: Reifungsphase vor dem Eisprung."],
+      answer: "Sie ist eine Abstoßen der Schleimhaut.", wrong: ["Sie ist eine Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Sie ist eine Freisetzung einer Eizelle.", "Sie ist eine Reifungsphase vor dem Eisprung."],
       explanation: "Menstruation: Abstoßen der Schleimhaut",
       wissen: fw(
         "Beginn eines neuen Zyklus. Bezug: Menstruationszyklus.",
@@ -4135,8 +3850,7 @@ export const k8Zyklus: BioBank = {
     {
       concept: "bio:k8:zyklus:f5",
       prompt: "Was kennzeichnet „Östrogen“?",
-      answer: "Das Östrogen ist kurz gesagt: Weibliches Geschlechtshormon.",
-      wrong: ["Das Östrogen ist hier: Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Das Östrogen ist hier: Freisetzung einer Eizelle.", "Das Östrogen ist hier: Reifungsphase vor dem Eisprung."],
+      answer: "Das Östrogen ist das Weibliches Geschlechtshormon.", wrong: ["Es ist eine Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Es ist eine Freisetzung einer Eizelle.", "Es ist eine Reifungsphase vor dem Eisprung."],
       explanation: "Östrogen: Weibliches Geschlechtshormon",
       wissen: fw(
         "Baut Schleimhaut mit auf. Bezug: Menstruationszyklus.",
@@ -4147,8 +3861,7 @@ export const k8Zyklus: BioBank = {
     {
       concept: "bio:k8:zyklus:f6",
       prompt: "Was kennzeichnet „Progesteron“?",
-      answer: "Das Progesteron ist kurz gesagt: Gelbkörperhormon.",
-      wrong: ["Das Progesteron ist hier: Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Das Progesteron ist hier: Freisetzung einer Eizelle.", "Das Progesteron ist hier: Reifungsphase vor dem Eisprung."],
+      answer: "Das Progesteron ist das Gelbkörperhormon.", wrong: ["Es ist eine Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Es ist eine Freisetzung einer Eizelle.", "Es ist eine Reifungsphase vor dem Eisprung."],
       explanation: "Progesteron: Gelbkörperhormon",
       wissen: fw(
         "Bereitet auf mögliche Schwangerschaft vor. Bezug: Menstruationszyklus.",
@@ -4159,8 +3872,7 @@ export const k8Zyklus: BioBank = {
     {
       concept: "bio:k8:zyklus:f7",
       prompt: "Was kennzeichnet „Gebärmutterschleimhaut“?",
-      answer: "Das Gebärmutterschleimhaut ist hier: Innere Auskleidung der Gebärmutter.",
-      wrong: ["Das Gebärmutterschleimhaut ist hier: Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Das Gebärmutterschleimhaut ist hier: Freisetzung einer Eizelle.", "Das Gebärmutterschleimhaut ist hier: Reifungsphase vor dem Eisprung."],
+      answer: "Es ist ein Innere Auskleidung der Gebärmutter.", wrong: ["Es ist eine Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Es ist eine Freisetzung einer Eizelle.", "Es ist eine Reifungsphase vor dem Eisprung."],
       explanation: "Gebärmutterschleimhaut: Innere Auskleidung der Gebärmutter",
       wissen: fw(
         "Wird zyklisch auf- und abgebaut. Bezug: Menstruationszyklus.",
@@ -4171,8 +3883,7 @@ export const k8Zyklus: BioBank = {
     {
       concept: "bio:k8:zyklus:f8",
       prompt: "Was kennzeichnet „Gelbkörper“?",
-      answer: "Der Gelbkörper ist hier: Restfollikel nach Eisprung.",
-      wrong: ["Der Gelbkörper ist hier: Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Der Gelbkörper ist hier: Freisetzung einer Eizelle.", "Der Gelbkörper ist hier: Reifungsphase vor dem Eisprung."],
+      answer: "Er ist eine Restfollikel nach Eisprung.", wrong: ["Er ist eine Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Er ist eine Freisetzung einer Eizelle.", "Er ist eine Reifungsphase vor dem Eisprung."],
       explanation: "Gelbkörper: Restfollikel nach Eisprung",
       wissen: fw(
         "Bildet Progesteron. Bezug: Menstruationszyklus.",
@@ -4183,8 +3894,7 @@ export const k8Zyklus: BioBank = {
     {
       concept: "bio:k8:zyklus:f9",
       prompt: "Was kennzeichnet „Regulation“?",
-      answer: "Die Regulation ist hier: Steuerung durch Hypophyse und Eierstöcke.",
-      wrong: ["Die Regulation ist hier: Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Die Regulation ist hier: Freisetzung einer Eizelle.", "Die Regulation ist hier: Reifungsphase vor dem Eisprung."],
+      answer: "Sie ist eine Steuerung durch Hypophyse und Eierstöcke.", wrong: ["Sie ist eine Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Sie ist eine Freisetzung einer Eizelle.", "Sie ist eine Reifungsphase vor dem Eisprung."],
       explanation: "Regulation: Steuerung durch Hypophyse und Eierstöcke",
       wissen: fw(
         "Rückkopplung der Hormone. Bezug: Menstruationszyklus.",
@@ -4195,8 +3905,7 @@ export const k8Zyklus: BioBank = {
     {
       concept: "bio:k8:zyklus:f10",
       prompt: "Was kennzeichnet „Zykluslänge“?",
-      answer: "Die Zykluslänge ist hier: Dauer eines Zyklus.",
-      wrong: ["Die Zykluslänge ist hier: Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Die Zykluslänge ist hier: Freisetzung einer Eizelle.", "Die Zykluslänge ist hier: Reifungsphase vor dem Eisprung."],
+      answer: "Sie ist ein Dauer Eines Zyklus.", wrong: ["Sie ist eine Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Sie ist eine Freisetzung einer Eizelle.", "Sie ist eine Reifungsphase vor dem Eisprung."],
       explanation: "Zykluslänge: Dauer eines Zyklus",
       wissen: fw(
         "Individuell variabel um ~28 Tage. Bezug: Menstruationszyklus.",
@@ -4207,8 +3916,7 @@ export const k8Zyklus: BioBank = {
     {
       concept: "bio:k8:zyklus:f11",
       prompt: "Was kennzeichnet „Fruchtbare Tage“?",
-      answer: "Die Fruchtbare Tage ist hier: Zeitraum erhöhter Empfängniswahrscheinlichkeit.",
-      wrong: ["Die Fruchtbare Tage ist hier: Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Die Fruchtbare Tage ist hier: Freisetzung einer Eizelle.", "Die Fruchtbare Tage ist hier: Reifungsphase vor dem Eisprung."],
+      answer: "Sie ist eine Zeitraum Erhöhter Empfängniswahrscheinlichkeit.", wrong: ["Sie ist eine Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Sie ist eine Freisetzung einer Eizelle.", "Sie ist eine Reifungsphase vor dem Eisprung."],
       explanation: "Fruchtbare Tage: Zeitraum erhöhter Empfängniswahrscheinlichkeit",
       wissen: fw(
         "Um den Eisprung. Bezug: Menstruationszyklus.",
@@ -4219,8 +3927,7 @@ export const k8Zyklus: BioBank = {
     {
       concept: "bio:k8:zyklus:x0",
       prompt: "Menstruationszyklus: Was steuert den Menstruationszyklus maßgeblich?",
-      answer: "Es geht um Hormone von Hypophyse und Eierstöcken im Regelkreis, und zwar gilt: gesteuert durch Hormone.",
-      wrong: ["Es geht um Nur die Atmung.", "Es geht um Nur die Hautfarbe.", "Es geht um Nur die Zahnlänge."],
+      answer: "Es ist ein Hormone von Hypophyse und Eierstöcken im Regelkreis.", wrong: ["Es ist eine Nur die Atmung.", "Es ist eine Nur die Hautfarbe.", "Es ist eine Nur die Zahnlänge."],
       explanation: "Regulation.",
       wissen: fw(
         "Rückkopplungen zwischen Steuerhormonen und Eierstockhormonen takten Aufbau, Eisprung und Abbau.",
@@ -4229,8 +3936,7 @@ export const k8Zyklus: BioBank = {
     {
       concept: "bio:k8:zyklus:x1",
       prompt: "Menstruationszyklus: Wann findet der Eisprung typischerweise statt?",
-      answer: "Es geht um Etwa in der Zyklusmitte, und zwar gilt: gesteuert durch Hormone.",
-      wrong: ["Es geht um Nur im Winter.", "Es geht um Nur nach der Menopause immer.", "Es geht um Nur im Schlaf ohne Ausnahme."],
+      answer: "Es ist eine Etwa in der Zyklusmitte.", wrong: ["Es ist ein Nur im Winter.", "Es ist ein Nur nach der Menopause immer.", "Es ist eine Nur im Schlaf ohne Ausnahme."],
       explanation: "Timing.",
       wissen: fw(
         "Die genaue Lage variiert; die fruchtbaren Tage liegen um den Eisprung.",
@@ -4278,8 +3984,7 @@ export const k8Vielfalt: BioBank = {
     {
       concept: "bio:k8:vielfalt:f0",
       prompt: "Was kennzeichnet „sexuelle Vielfalt“?",
-      answer: "Das sexuelle Vielfalt ist hier: Unterschiedliche sexuelle Orientierungen.",
-      wrong: ["Das sexuelle Vielfalt ist hier: Unterschiedliche Geschlechtsidentitäten und -merkmale.", "Das sexuelle Vielfalt ist hier: Anziehung zum anderen Geschlecht.", "Das sexuelle Vielfalt ist hier: Anziehung zum gleichen Geschlecht."],
+      answer: "Es ist eine Unterschiedliche Sexuelle Orientierungen.", wrong: ["Es ist eine Unterschiedliche Geschlechtsidentitäten und -Merkmale.", "Es ist eine Anziehung zum Anderen Geschlecht.", "Es ist eine Anziehung zum Gleichen Geschlecht."],
       explanation: "sexuelle Vielfalt: Unterschiedliche sexuelle Orientierungen",
       wissen: fw(
         "Teil menschlicher Vielfalt. Bezug: Sexuelle Vielfalt.",
@@ -4290,8 +3995,7 @@ export const k8Vielfalt: BioBank = {
     {
       concept: "bio:k8:vielfalt:f1",
       prompt: "Was kennzeichnet „geschlechtliche Vielfalt“?",
-      answer: "Das geschlechtliche Vielfalt ist hier: Unterschiedliche Geschlechtsidentitäten und -merkmale.",
-      wrong: ["Das geschlechtliche Vielfalt ist hier: Unterschiedliche sexuelle Orientierungen.", "Das geschlechtliche Vielfalt ist hier: Anziehung zum anderen Geschlecht.", "Das geschlechtliche Vielfalt ist hier: Anziehung zum gleichen Geschlecht."],
+      answer: "Es ist eine Unterschiedliche Geschlechtsidentitäten und -Merkmale.", wrong: ["Es ist eine Unterschiedliche Sexuelle Orientierungen.", "Es ist eine Anziehung zum Anderen Geschlecht.", "Es ist eine Anziehung zum Gleichen Geschlecht."],
       explanation: "geschlechtliche Vielfalt: Unterschiedliche Geschlechtsidentitäten und -merkmale",
       wissen: fw(
         "Biologisch und sozial differenziert. Bezug: Sexuelle Vielfalt.",
@@ -4302,8 +4006,7 @@ export const k8Vielfalt: BioBank = {
     {
       concept: "bio:k8:vielfalt:f2",
       prompt: "Was kennzeichnet „Heterosexualität“?",
-      answer: "Die Heterosexualität ist hier: Anziehung zum anderen Geschlecht.",
-      wrong: ["Die Heterosexualität ist hier: Unterschiedliche sexuelle Orientierungen.", "Die Heterosexualität ist hier: Unterschiedliche Geschlechtsidentitäten und -merkmale.", "Die Heterosexualität ist hier: Anziehung zum gleichen Geschlecht."],
+      answer: "Sie ist eine Anziehung zum Anderen Geschlecht.", wrong: ["Sie ist eine Unterschiedliche Sexuelle Orientierungen.", "Sie ist eine Unterschiedliche Geschlechtsidentitäten und -Merkmale.", "Sie ist eine Anziehung zum Gleichen Geschlecht."],
       explanation: "Heterosexualität: Anziehung zum anderen Geschlecht",
       wissen: fw(
         "Eine Form sexueller Orientierung. Bezug: Sexuelle Vielfalt.",
@@ -4314,8 +4017,7 @@ export const k8Vielfalt: BioBank = {
     {
       concept: "bio:k8:vielfalt:f3",
       prompt: "Was kennzeichnet „Homosexualität“?",
-      answer: "Die Homosexualität ist hier: Anziehung zum gleichen Geschlecht.",
-      wrong: ["Die Homosexualität ist hier: Unterschiedliche sexuelle Orientierungen.", "Die Homosexualität ist hier: Unterschiedliche Geschlechtsidentitäten und -merkmale.", "Die Homosexualität ist hier: Anziehung zum anderen Geschlecht."],
+      answer: "Sie ist eine Anziehung zum Gleichen Geschlecht.", wrong: ["Sie ist eine Unterschiedliche Sexuelle Orientierungen.", "Sie ist eine Unterschiedliche Geschlechtsidentitäten und -Merkmale.", "Sie ist eine Anziehung zum Anderen Geschlecht."],
       explanation: "Homosexualität: Anziehung zum gleichen Geschlecht",
       wissen: fw(
         "Eine Form sexueller Orientierung. Bezug: Sexuelle Vielfalt.",
@@ -4326,8 +4028,7 @@ export const k8Vielfalt: BioBank = {
     {
       concept: "bio:k8:vielfalt:f4",
       prompt: "Was kennzeichnet „Intersexualität“?",
-      answer: "Die Intersexualität ist hier: Varianten der Geschlechtsmerkmale.",
-      wrong: ["Die Intersexualität ist hier: Unterschiedliche sexuelle Orientierungen.", "Die Intersexualität ist hier: Unterschiedliche Geschlechtsidentitäten und -merkmale.", "Die Intersexualität ist hier: Anziehung zum anderen Geschlecht."],
+      answer: "Sie ist eine Varianten der Geschlechtsmerkmale.", wrong: ["Sie ist eine Unterschiedliche Sexuelle Orientierungen.", "Sie ist eine Unterschiedliche Geschlechtsidentitäten und -Merkmale.", "Sie ist eine Anziehung zum Anderen Geschlecht."],
       explanation: "Intersexualität: Varianten der Geschlechtsmerkmale",
       wissen: fw(
         "Nicht immer eindeutig weiblich/männlich. Bezug: Sexuelle Vielfalt.",
@@ -4338,8 +4039,7 @@ export const k8Vielfalt: BioBank = {
     {
       concept: "bio:k8:vielfalt:f5",
       prompt: "Was kennzeichnet „Transgender“?",
-      answer: "Der Transgender ist hier: Geschlechtsidentität weicht vom Zuweisungsgeschlecht ab.",
-      wrong: ["Der Transgender ist hier: Unterschiedliche sexuelle Orientierungen.", "Der Transgender ist hier: Unterschiedliche Geschlechtsidentitäten und -merkmale.", "Der Transgender ist hier: Anziehung zum anderen Geschlecht."],
+      answer: "Er ist eine Geschlechtsidentität Weicht vom Zuweisungsgeschlecht Ab.", wrong: ["Er ist eine Unterschiedliche Sexuelle Orientierungen.", "Er ist eine Unterschiedliche Geschlechtsidentitäten und -Merkmale.", "Er ist eine Anziehung zum Anderen Geschlecht."],
       explanation: "Transgender: Geschlechtsidentität weicht vom Zuweisungsgeschlecht ab",
       wissen: fw(
         "Identität ist subjektiv erlebt. Bezug: Sexuelle Vielfalt.",
@@ -4350,8 +4050,7 @@ export const k8Vielfalt: BioBank = {
     {
       concept: "bio:k8:vielfalt:f6",
       prompt: "Was kennzeichnet „Partnerbeziehung“?",
-      answer: "Die Partnerbeziehung ist hier: Beziehungsform zwischen Menschen.",
-      wrong: ["Die Partnerbeziehung ist hier: Unterschiedliche sexuelle Orientierungen.", "Die Partnerbeziehung ist hier: Unterschiedliche Geschlechtsidentitäten und -merkmale.", "Die Partnerbeziehung ist hier: Anziehung zum anderen Geschlecht."],
+      answer: "Sie ist ein Beziehungsform Zwischen Menschen.", wrong: ["Sie ist eine Unterschiedliche Sexuelle Orientierungen.", "Sie ist eine Unterschiedliche Geschlechtsidentitäten und -Merkmale.", "Sie ist eine Anziehung zum Anderen Geschlecht."],
       explanation: "Partnerbeziehung: Beziehungsform zwischen Menschen",
       wissen: fw(
         "Vielfältig gestaltet. Bezug: Sexuelle Vielfalt.",
@@ -4362,8 +4061,7 @@ export const k8Vielfalt: BioBank = {
     {
       concept: "bio:k8:vielfalt:f7",
       prompt: "Was kennzeichnet „Konsens“?",
-      answer: "Das Konsens ist kurz gesagt: Freiwillige Zustimmung.",
-      wrong: ["Das Konsens ist hier: Unterschiedliche sexuelle Orientierungen.", "Das Konsens ist hier: Unterschiedliche Geschlechtsidentitäten und -merkmale.", "Das Konsens ist hier: Anziehung zum anderen Geschlecht."],
+      answer: "Das Konsens ist das Freiwillige Zustimmung.", wrong: ["Es ist eine Unterschiedliche Sexuelle Orientierungen.", "Es ist eine Unterschiedliche Geschlechtsidentitäten und -Merkmale.", "Es ist eine Anziehung zum Anderen Geschlecht."],
       explanation: "Konsens: Freiwillige Zustimmung",
       wissen: fw(
         "Grundlage respektvoller Sexualität. Bezug: Sexuelle Vielfalt.",
@@ -4374,8 +4072,7 @@ export const k8Vielfalt: BioBank = {
     {
       concept: "bio:k8:vielfalt:f8",
       prompt: "Wozu dient Jugendschutz?",
-      answer: "Das Jugendschutz ist kurz gesagt: Schutz Minderjähriger.",
-      wrong: ["Das Jugendschutz ist hier: Unterschiedliche sexuelle Orientierungen.", "Das Jugendschutz ist hier: Unterschiedliche Geschlechtsidentitäten und -merkmale.", "Das Jugendschutz ist hier: Anziehung zum anderen Geschlecht."],
+      answer: "Das Jugendschutz ist das Schutz Minderjähriger.", wrong: ["Es ist eine Unterschiedliche Sexuelle Orientierungen.", "Es ist eine Unterschiedliche Geschlechtsidentitäten und -Merkmale.", "Es ist eine Anziehung zum Anderen Geschlecht."],
       explanation: "Jugendschutz: Schutz Minderjähriger",
       wissen: fw(
         "Rechtliche und ethische Grenze. Bezug: Sexuelle Vielfalt.",
@@ -4386,8 +4083,7 @@ export const k8Vielfalt: BioBank = {
     {
       concept: "bio:k8:vielfalt:f9",
       prompt: "Was kennzeichnet „Medieninfluss“?",
-      answer: "Das Medieninfluss ist hier: Wirkung von Internet und Sozialen Medien.",
-      wrong: ["Das Medieninfluss ist hier: Unterschiedliche sexuelle Orientierungen.", "Das Medieninfluss ist hier: Unterschiedliche Geschlechtsidentitäten und -merkmale.", "Das Medieninfluss ist hier: Anziehung zum anderen Geschlecht."],
+      answer: "Es ist eine Wirkung von Internet und Sozialen Medien.", wrong: ["Es ist eine Unterschiedliche Sexuelle Orientierungen.", "Es ist eine Unterschiedliche Geschlechtsidentitäten und -Merkmale.", "Es ist eine Anziehung zum Anderen Geschlecht."],
       explanation: "Medieninfluss: Wirkung von Internet und Sozialen Medien",
       wissen: fw(
         "Kann Meinungen verzerren. Bezug: Sexuelle Vielfalt.",
@@ -4398,8 +4094,7 @@ export const k8Vielfalt: BioBank = {
     {
       concept: "bio:k8:vielfalt:f10",
       prompt: "Was kennzeichnet „Respekt“?",
-      answer: "Das Respekt ist hier: Achtung der Würde anderer.",
-      wrong: ["Das Respekt ist hier: Unterschiedliche sexuelle Orientierungen.", "Das Respekt ist hier: Unterschiedliche Geschlechtsidentitäten und -merkmale.", "Das Respekt ist hier: Anziehung zum anderen Geschlecht."],
+      answer: "Es ist ein Achtung der Würde Anderer.", wrong: ["Es ist eine Unterschiedliche Sexuelle Orientierungen.", "Es ist eine Unterschiedliche Geschlechtsidentitäten und -Merkmale.", "Es ist eine Anziehung zum Anderen Geschlecht."],
       explanation: "Respekt: Achtung der Würde anderer",
       wissen: fw(
         "Gegen Ausgrenzung. Bezug: Sexuelle Vielfalt.",
@@ -4410,8 +4105,7 @@ export const k8Vielfalt: BioBank = {
     {
       concept: "bio:k8:vielfalt:f11",
       prompt: "Was kennzeichnet „Aufklärung“?",
-      answer: "Die Aufklärung ist kurz gesagt: Sachliche Information.",
-      wrong: ["Die Aufklärung ist hier: Unterschiedliche sexuelle Orientierungen.", "Die Aufklärung ist hier: Unterschiedliche Geschlechtsidentitäten und -merkmale.", "Die Aufklärung ist hier: Anziehung zum anderen Geschlecht."],
+      answer: "Die Aufklärung ist die Sachliche Information.", wrong: ["Sie ist eine Unterschiedliche Sexuelle Orientierungen.", "Sie ist eine Unterschiedliche Geschlechtsidentitäten und -Merkmale.", "Sie ist eine Anziehung zum Anderen Geschlecht."],
       explanation: "Aufklärung: Sachliche Information",
       wissen: fw(
         "Reduziert Vorurteile. Bezug: Sexuelle Vielfalt.",
@@ -4422,8 +4116,7 @@ export const k8Vielfalt: BioBank = {
     {
       concept: "bio:k8:vielfalt:x0",
       prompt: "Sexuelle Vielfalt: Warum gehört Vielfalt zur Sexualität des Menschen?",
-      answer: "Orientierung, Identität und Beziehungen sind nicht einheitlich, und zwar gilt hier: Teil menschlicher Vielfalt.",
-      wrong: ["Hier gilt: Weil alle Menschen identisch sind.", "Es geht um Weil Biologie Vielfalt verbietet.", "Es geht um Weil nur eine Form existiert."],
+      answer: "Orientierung, Identität und Beziehungen sind nicht einheitlich durch teil menschlicher Vielfalt.", wrong: ["Es ist eine Weil alle Menschen identisch sind.", "Es ist eine Weil Biologie Vielfalt verbietet.", "Es ist eine Weil nur eine Form existiert."],
       explanation: "Vielfalt.",
       wissen: fw(
         "Menschen unterscheiden sich in Orientierung und Identität; Respekt und Sachlichkeit sind zentral.",
@@ -4432,8 +4125,7 @@ export const k8Vielfalt: BioBank = {
     {
       concept: "bio:k8:vielfalt:x1",
       prompt: "Sexuelle Vielfalt: Welche Rolle spielen Medien bei der Meinungsbildung?",
-      answer: "Es geht um Sie können informieren, aber auch verzerren oder Druck erzeugen, und zwar gilt: teil menschlicher Vielfalt.",
-      wrong: ["Hier gilt: Medien haben nie Einfluss.", "Es geht um Medien ersetzen Gesetze immer.", "Es geht um Medien löschen Vielfalt."],
+      answer: "Es ist eine Sie können informieren.", wrong: ["Es ist eine Medien haben nie Einfluss.", "Es ist ein Medien ersetzen Gesetze immer.", "Es ist eine Medien löschen Vielfalt."],
       explanation: "Medienbildung.",
       wissen: fw(
         "Kritischer Umgang mit Darstellungen in Internet und Sozialen Medien ist Teil der Aufklärung.",
@@ -4481,8 +4173,7 @@ export const k9Gewaesser: BioBank = {
     {
       concept: "bio:k9:gewaesser:f0",
       prompt: "Was kennzeichnet „Zonierung“?",
-      answer: "Die Zonierung ist hier: Gliederung eines Sees in Lebenszonen.",
-      wrong: ["Die Zonierung ist kurz gesagt: Uferzone.", "Die Zonierung ist kurz gesagt: Freiwasserzone.", "Die Zonierung ist kurz gesagt: Bodenzone."],
+      answer: "Sie ist eine Gliederung Eines Sees in Lebenszonen.", wrong: ["Die Zonierung ist die Uferzone.", "Die Zonierung ist die Freiwasserzone.", "Die Zonierung ist die Bodenzone."],
       explanation: "Zonierung: Gliederung eines Sees in Lebenszonen",
       wissen: fw(
         "Ufer, Freiwasser, Boden. Bezug: See/Zonierung.",
@@ -4493,8 +4184,7 @@ export const k9Gewaesser: BioBank = {
     {
       concept: "bio:k9:gewaesser:f1",
       prompt: "Was kennzeichnet „Litoral“?",
-      answer: "Das Litoral ist kurz gesagt: Uferzone.",
-      wrong: ["Das Litoral ist hier: Gliederung eines Sees in Lebenszonen.", "Das Litoral ist kurz gesagt: Freiwasserzone.", "Das Litoral ist kurz gesagt: Bodenzone."],
+      answer: "Das Litoral ist das Uferzone.", wrong: ["Es ist eine Gliederung Eines Sees in Lebenszonen.", "Das Litoral ist das Freiwasserzone.", "Das Litoral ist das Bodenzone."],
       explanation: "Litoral: Uferzone",
       wissen: fw(
         "Lichtreich, viele Pflanzen. Bezug: See/Zonierung.",
@@ -4505,8 +4195,7 @@ export const k9Gewaesser: BioBank = {
     {
       concept: "bio:k9:gewaesser:f2",
       prompt: "Was kennzeichnet „Pelagial“?",
-      answer: "Das Pelagial ist kurz gesagt: Freiwasserzone.",
-      wrong: ["Das Pelagial ist hier: Gliederung eines Sees in Lebenszonen.", "Das Pelagial ist kurz gesagt: Uferzone.", "Das Pelagial ist kurz gesagt: Bodenzone."],
+      answer: "Das Pelagial ist das Freiwasserzone.", wrong: ["Es ist eine Gliederung Eines Sees in Lebenszonen.", "Das Pelagial ist das Uferzone.", "Das Pelagial ist das Bodenzone."],
       explanation: "Pelagial: Freiwasserzone",
       wissen: fw(
         "Plankton dominiert oft. Bezug: See/Zonierung.",
@@ -4517,8 +4206,7 @@ export const k9Gewaesser: BioBank = {
     {
       concept: "bio:k9:gewaesser:f3",
       prompt: "Was kennzeichnet „Profundal“?",
-      answer: "Das Profundal ist kurz gesagt: Bodenzone.",
-      wrong: ["Das Profundal ist hier: Gliederung eines Sees in Lebenszonen.", "Das Profundal ist kurz gesagt: Uferzone.", "Das Profundal ist kurz gesagt: Freiwasserzone."],
+      answer: "Das Profundal ist das Bodenzone.", wrong: ["Es ist eine Gliederung Eines Sees in Lebenszonen.", "Das Profundal ist das Uferzone.", "Das Profundal ist das Freiwasserzone."],
       explanation: "Profundal: Bodenzone",
       wissen: fw(
         "Abbau und Sedimente. Bezug: See/Zonierung.",
@@ -4529,8 +4217,7 @@ export const k9Gewaesser: BioBank = {
     {
       concept: "bio:k9:gewaesser:f4",
       prompt: "Was kennzeichnet „Phytoplankton“?",
-      answer: "Das Phytoplankton ist kurz gesagt: Pflanzliches Plankton.",
-      wrong: ["Das Phytoplankton ist hier: Gliederung eines Sees in Lebenszonen.", "Das Phytoplankton ist kurz gesagt: Uferzone.", "Das Phytoplankton ist kurz gesagt: Freiwasserzone."],
+      answer: "Das Phytoplankton ist das Pflanzliches Plankton.", wrong: ["Es ist eine Gliederung Eines Sees in Lebenszonen.", "Das Phytoplankton ist das Uferzone.", "Das Phytoplankton ist das Freiwasserzone."],
       explanation: "Phytoplankton: Pflanzliches Plankton",
       wissen: fw(
         "Produzenten im Freiwasser. Bezug: See/Zonierung.",
@@ -4541,8 +4228,7 @@ export const k9Gewaesser: BioBank = {
     {
       concept: "bio:k9:gewaesser:f5",
       prompt: "Was kennzeichnet „Zooplankton“?",
-      answer: "Das Zooplankton ist kurz gesagt: Tierisches Plankton.",
-      wrong: ["Das Zooplankton ist hier: Gliederung eines Sees in Lebenszonen.", "Das Zooplankton ist kurz gesagt: Uferzone.", "Das Zooplankton ist kurz gesagt: Freiwasserzone."],
+      answer: "Das Zooplankton ist das Tierisches Plankton.", wrong: ["Es ist eine Gliederung Eines Sees in Lebenszonen.", "Das Zooplankton ist das Uferzone.", "Das Zooplankton ist das Freiwasserzone."],
       explanation: "Zooplankton: Tierisches Plankton",
       wissen: fw(
         "Konsumenten kleiner Organismen. Bezug: See/Zonierung.",
@@ -4553,8 +4239,7 @@ export const k9Gewaesser: BioBank = {
     {
       concept: "bio:k9:gewaesser:f6",
       prompt: "Was kennzeichnet „Vollzirkulation“?",
-      answer: "Die Vollzirkulation ist hier: Durchmischung der Wasserschichten.",
-      wrong: ["Die Vollzirkulation ist hier: Gliederung eines Sees in Lebenszonen.", "Die Vollzirkulation ist kurz gesagt: Uferzone.", "Die Vollzirkulation ist kurz gesagt: Freiwasserzone."],
+      answer: "Sie ist eine Durchmischung der Wasserschichten.", wrong: ["Sie ist eine Gliederung Eines Sees in Lebenszonen.", "Die Vollzirkulation ist die Uferzone.", "Die Vollzirkulation ist die Freiwasserzone."],
       explanation: "Vollzirkulation: Durchmischung der Wasserschichten",
       wissen: fw(
         "Oft Frühjahr/Herbst. Bezug: See/Zonierung.",
@@ -4565,8 +4250,7 @@ export const k9Gewaesser: BioBank = {
     {
       concept: "bio:k9:gewaesser:f7",
       prompt: "Was kennzeichnet „Stagnation“?",
-      answer: "Die Stagnation ist hier: Schichtung ohne Durchmischung.",
-      wrong: ["Die Stagnation ist hier: Gliederung eines Sees in Lebenszonen.", "Die Stagnation ist kurz gesagt: Uferzone.", "Die Stagnation ist kurz gesagt: Freiwasserzone."],
+      answer: "Sie ist eine Schichtung ohne Durchmischung.", wrong: ["Sie ist eine Gliederung Eines Sees in Lebenszonen.", "Die Stagnation ist die Uferzone.", "Die Stagnation ist die Freiwasserzone."],
       explanation: "Stagnation: Schichtung ohne Durchmischung",
       wissen: fw(
         "Sommer/Winter typisch. Bezug: See/Zonierung.",
@@ -4577,8 +4261,7 @@ export const k9Gewaesser: BioBank = {
     {
       concept: "bio:k9:gewaesser:f8",
       prompt: "Was kennzeichnet „Sprungschicht“?",
-      answer: "Das Sprungschicht ist hier: Temperaturgrenze im Sommer.",
-      wrong: ["Das Sprungschicht ist hier: Gliederung eines Sees in Lebenszonen.", "Das Sprungschicht ist kurz gesagt: Uferzone.", "Das Sprungschicht ist kurz gesagt: Freiwasserzone."],
+      answer: "Es ist ein Temperaturgrenze im Sommer.", wrong: ["Es ist eine Gliederung Eines Sees in Lebenszonen.", "Das Sprungschicht ist das Uferzone.", "Das Sprungschicht ist das Freiwasserzone."],
       explanation: "Sprungschicht: Temperaturgrenze im Sommer",
       wissen: fw(
         "Trennt warmes Ober- und kaltes Tiefenwasser. Bezug: See/Zonierung.",
@@ -4589,8 +4272,7 @@ export const k9Gewaesser: BioBank = {
     {
       concept: "bio:k9:gewaesser:f9",
       prompt: "Was kennzeichnet „Ufervegetation“?",
-      answer: "Die Ufervegetation ist hier: Pflanzen am Gewässerrand.",
-      wrong: ["Die Ufervegetation ist hier: Gliederung eines Sees in Lebenszonen.", "Die Ufervegetation ist kurz gesagt: Uferzone.", "Die Ufervegetation ist kurz gesagt: Freiwasserzone."],
+      answer: "Sie ist eine Pflanzen am Gewässerrand.", wrong: ["Sie ist eine Gliederung Eines Sees in Lebenszonen.", "Die Ufervegetation ist die Uferzone.", "Die Ufervegetation ist die Freiwasserzone."],
       explanation: "Ufervegetation: Pflanzen am Gewässerrand",
       wissen: fw(
         "Struktur und Lebensraum. Bezug: See/Zonierung.",
@@ -4601,8 +4283,7 @@ export const k9Gewaesser: BioBank = {
     {
       concept: "bio:k9:gewaesser:f10",
       prompt: "Was kennzeichnet „Trophiestufe“?",
-      answer: "Die Trophiestufe ist hier: Ernährungsstufe im Nahrungsnetz.",
-      wrong: ["Die Trophiestufe ist hier: Gliederung eines Sees in Lebenszonen.", "Die Trophiestufe ist kurz gesagt: Uferzone.", "Die Trophiestufe ist kurz gesagt: Freiwasserzone."],
+      answer: "Sie ist eine Ernährungsstufe im Nahrungsnetz.", wrong: ["Sie ist eine Gliederung Eines Sees in Lebenszonen.", "Die Trophiestufe ist die Uferzone.", "Die Trophiestufe ist die Freiwasserzone."],
       explanation: "Trophiestufe: Ernährungsstufe im Nahrungsnetz",
       wissen: fw(
         "Produzent bis Destruent. Bezug: See/Zonierung.",
@@ -4613,8 +4294,7 @@ export const k9Gewaesser: BioBank = {
     {
       concept: "bio:k9:gewaesser:f11",
       prompt: "Was kennzeichnet „Sauerstoffgehalt“?",
-      answer: "Das Sauerstoffgehalt ist hier: Gelöster O₂ im Wasser.",
-      wrong: ["Das Sauerstoffgehalt ist hier: Gliederung eines Sees in Lebenszonen.", "Das Sauerstoffgehalt ist kurz gesagt: Uferzone.", "Das Sauerstoffgehalt ist kurz gesagt: Freiwasserzone."],
+      answer: "Es ist ein Gelöster O₂ im Wasser.", wrong: ["Es ist eine Gliederung Eines Sees in Lebenszonen.", "Das Sauerstoffgehalt ist das Uferzone.", "Das Sauerstoffgehalt ist das Freiwasserzone."],
       explanation: "Sauerstoffgehalt: Gelöster O₂ im Wasser",
       wissen: fw(
         "Begrenzt viele Organismen. Bezug: See/Zonierung.",
@@ -4625,8 +4305,7 @@ export const k9Gewaesser: BioBank = {
     {
       concept: "bio:k9:gewaesser:x0",
       prompt: "Was kennzeichnet „die Zonierung eines Sees“?",
-      answer: "Das die Zonierung eines Sees ist hier: Unterschiedliche Lebensräume von Ufer bis Boden, und zwar gilt: ufer, Freiwasser, Boden.",
-      wrong: ["Das die Zonierung eines Sees ist kurz gesagt: Dass Seen keine Zonen haben.", "Das die Zonierung eines Sees ist kurz gesagt: Dass nur Wüste zonenartig ist.", "Das die Zonierung eines Sees ist kurz gesagt: Dass Plankton Knochen bildet."],
+      answer: "Es ist eine Unterschiedliche Lebensräume von Ufer bis Boden durch Ufer, Freiwasser, Boden.", wrong: ["Dass Seen keine Zonen haben.", "Dass nur Wüste zonenartig ist.", "Dass Plankton Knochen bildet."],
       explanation: "Raumstruktur.",
       wissen: fw(
         "Licht, Temperatur und Substrat unterscheiden Litoral, Pelagial und Profundal.",
@@ -4635,8 +4314,7 @@ export const k9Gewaesser: BioBank = {
     {
       concept: "bio:k9:gewaesser:x1",
       prompt: "See/Zonierung: Wann kommt es oft zur Vollzirkulation?",
-      answer: "Wenn Temperaturunterschiede gering sind und Wind mischt, und zwar gilt hier: Ufer, Freiwasser, Boden.",
-      wrong: ["Es geht um Nur bei ewiger Sommerstagnation.", "Es geht um Nur im Vakuum.", "Es geht um Nur ohne Wasser."],
+      answer: "Wenn Temperaturunterschiede gering sind und Wind mischt durch ufer, Freiwasser, Boden.", wrong: ["Es ist eine Nur bei ewiger Sommerstagnation.", "Es ist ein Nur im Vakuum.", "Es ist ein Nur ohne Wasser."],
       explanation: "Durchmischung.",
       wissen: fw(
         "Frühjahr und Herbst ermöglichen oft den Austausch von Nährstoffen und Sauerstoff.",
@@ -4684,8 +4362,7 @@ export const k9Sukzession: BioBank = {
     {
       concept: "bio:k9:suks:f0",
       prompt: "Was kennzeichnet „Sukzession“?",
-      answer: "Die Sukzession ist hier: Gerichtete Abfolge von Lebensgemeinschaften.",
-      wrong: ["Die Sukzession ist hier: Frühe Besiedler gestörter Flächen.", "Die Sukzession ist hier: Relativ stabile Endgesellschaft.", "Die Sukzession ist hier: Neubesiedlung ohne Bodenstart."],
+      answer: "Sie ist eine Gerichtete Abfolge von Lebensgemeinschaften.", wrong: ["Sie ist ein Frühe Besiedler Gestörter Flächen.", "Sie ist eine Relativ Stabile Endgesellschaft.", "Sie ist eine Neubesiedlung ohne Bodenstart."],
       explanation: "Sukzession: Gerichtete Abfolge von Lebensgemeinschaften",
       wissen: fw(
         "Zeitliche Veränderung eines Ökosystems. Bezug: Sukzession.",
@@ -4696,8 +4373,7 @@ export const k9Sukzession: BioBank = {
     {
       concept: "bio:k9:suks:f1",
       prompt: "Was kennzeichnet „Pionierart“?",
-      answer: "Das Pionierart ist hier: Frühe Besiedler gestörter Flächen.",
-      wrong: ["Das Pionierart ist hier: Gerichtete Abfolge von Lebensgemeinschaften.", "Das Pionierart ist hier: Relativ stabile Endgesellschaft.", "Das Pionierart ist hier: Neubesiedlung ohne Bodenstart."],
+      answer: "Es ist ein Frühe Besiedler Gestörter Flächen.", wrong: ["Es ist eine Gerichtete Abfolge von Lebensgemeinschaften.", "Es ist eine Relativ Stabile Endgesellschaft.", "Es ist eine Neubesiedlung ohne Bodenstart."],
       explanation: "Pionierart: Frühe Besiedler gestörter Flächen",
       wissen: fw(
         "Anspruchslos, oft schnellwüchsig. Bezug: Sukzession.",
@@ -4708,8 +4384,7 @@ export const k9Sukzession: BioBank = {
     {
       concept: "bio:k9:suks:f2",
       prompt: "Was kennzeichnet „Klimax“?",
-      answer: "Das Klimax ist hier: Relativ stabile Endgesellschaft.",
-      wrong: ["Das Klimax ist hier: Gerichtete Abfolge von Lebensgemeinschaften.", "Das Klimax ist hier: Frühe Besiedler gestörter Flächen.", "Das Klimax ist hier: Neubesiedlung ohne Bodenstart."],
+      answer: "Es ist eine Relativ Stabile Endgesellschaft.", wrong: ["Es ist eine Gerichtete Abfolge von Lebensgemeinschaften.", "Es ist ein Frühe Besiedler Gestörter Flächen.", "Es ist eine Neubesiedlung ohne Bodenstart."],
       explanation: "Klimax: Relativ stabile Endgesellschaft",
       wissen: fw(
         "Unter gegebenen Bedingungen. Bezug: Sukzession.",
@@ -4720,8 +4395,7 @@ export const k9Sukzession: BioBank = {
     {
       concept: "bio:k9:suks:f3",
       prompt: "Was kennzeichnet „Primärsukzession“?",
-      answer: "Die Primärsukzession ist hier: Neubesiedlung ohne Bodenstart.",
-      wrong: ["Die Primärsukzession ist hier: Gerichtete Abfolge von Lebensgemeinschaften.", "Die Primärsukzession ist hier: Frühe Besiedler gestörter Flächen.", "Die Primärsukzession ist hier: Relativ stabile Endgesellschaft."],
+      answer: "Sie ist eine Neubesiedlung ohne Bodenstart.", wrong: ["Sie ist eine Gerichtete Abfolge von Lebensgemeinschaften.", "Sie ist ein Frühe Besiedler Gestörter Flächen.", "Sie ist eine Relativ Stabile Endgesellschaft."],
       explanation: "Primärsukzession: Neubesiedlung ohne Bodenstart",
       wissen: fw(
         "z. B. auf blankem Gestein. Bezug: Sukzession.",
@@ -4732,8 +4406,7 @@ export const k9Sukzession: BioBank = {
     {
       concept: "bio:k9:suks:f4",
       prompt: "Was kennzeichnet „Sekundärsukzession“?",
-      answer: "Die Sekundärsukzession ist hier: Neuentwicklung nach Störung mit Boden.",
-      wrong: ["Die Sekundärsukzession ist hier: Gerichtete Abfolge von Lebensgemeinschaften.", "Die Sekundärsukzession ist hier: Frühe Besiedler gestörter Flächen.", "Die Sekundärsukzession ist hier: Relativ stabile Endgesellschaft."],
+      answer: "Sie ist eine Neuentwicklung nach Störung mit Boden.", wrong: ["Sie ist eine Gerichtete Abfolge von Lebensgemeinschaften.", "Sie ist ein Frühe Besiedler Gestörter Flächen.", "Sie ist eine Relativ Stabile Endgesellschaft."],
       explanation: "Sekundärsukzession: Neuentwicklung nach Störung mit Boden",
       wissen: fw(
         "z. B. nach Rodung. Bezug: Sukzession.",
@@ -4744,8 +4417,7 @@ export const k9Sukzession: BioBank = {
     {
       concept: "bio:k9:suks:f5",
       prompt: "Was kennzeichnet „Artwechsel“?",
-      answer: "Das Artwechsel ist hier: Austausch dominanter Arten.",
-      wrong: ["Das Artwechsel ist hier: Gerichtete Abfolge von Lebensgemeinschaften.", "Das Artwechsel ist hier: Frühe Besiedler gestörter Flächen.", "Das Artwechsel ist hier: Relativ stabile Endgesellschaft."],
+      answer: "Es ist eine Austausch Dominanter Arten.", wrong: ["Es ist eine Gerichtete Abfolge von Lebensgemeinschaften.", "Es ist ein Frühe Besiedler Gestörter Flächen.", "Es ist eine Relativ Stabile Endgesellschaft."],
       explanation: "Artwechsel: Austausch dominanter Arten",
       wissen: fw(
         "Im Lauf der Sukzession. Bezug: Sukzession.",
@@ -4756,8 +4428,7 @@ export const k9Sukzession: BioBank = {
     {
       concept: "bio:k9:suks:f6",
       prompt: "Was kennzeichnet „Bodenbildung“?",
-      answer: "Die Bodenbildung ist hier: Entwicklung von Bodenhorizonten.",
-      wrong: ["Die Bodenbildung ist hier: Gerichtete Abfolge von Lebensgemeinschaften.", "Die Bodenbildung ist hier: Frühe Besiedler gestörter Flächen.", "Die Bodenbildung ist hier: Relativ stabile Endgesellschaft."],
+      answer: "Sie ist eine Entwicklung von Bodenhorizonten.", wrong: ["Sie ist eine Gerichtete Abfolge von Lebensgemeinschaften.", "Sie ist ein Frühe Besiedler Gestörter Flächen.", "Sie ist eine Relativ Stabile Endgesellschaft."],
       explanation: "Bodenbildung: Entwicklung von Bodenhorizonten",
       wissen: fw(
         "Ermöglicht anspruchsvollere Pflanzen. Bezug: Sukzession.",
@@ -4768,8 +4439,7 @@ export const k9Sukzession: BioBank = {
     {
       concept: "bio:k9:suks:f7",
       prompt: "Was kennzeichnet „Konkurrenz“?",
-      answer: "Die Konkurrenz ist hier: Wettbewerb um Ressourcen.",
-      wrong: ["Die Konkurrenz ist hier: Gerichtete Abfolge von Lebensgemeinschaften.", "Die Konkurrenz ist hier: Frühe Besiedler gestörter Flächen.", "Die Konkurrenz ist hier: Relativ stabile Endgesellschaft."],
+      answer: "Sie ist eine Wettbewerb um Ressourcen.", wrong: ["Sie ist eine Gerichtete Abfolge von Lebensgemeinschaften.", "Sie ist ein Frühe Besiedler Gestörter Flächen.", "Sie ist eine Relativ Stabile Endgesellschaft."],
       explanation: "Konkurrenz: Wettbewerb um Ressourcen",
       wissen: fw(
         "Verdrängt Pioniere später oft. Bezug: Sukzession.",
@@ -4780,8 +4450,7 @@ export const k9Sukzession: BioBank = {
     {
       concept: "bio:k9:suks:f8",
       prompt: "Was kennzeichnet „Störung“?",
-      answer: "Die Störung ist hier: Ereignis das Gemeinschaften zurücksetzt.",
-      wrong: ["Die Störung ist hier: Gerichtete Abfolge von Lebensgemeinschaften.", "Die Störung ist hier: Frühe Besiedler gestörter Flächen.", "Die Störung ist hier: Relativ stabile Endgesellschaft."],
+      answer: "Sie ist eine Ereignis das Gemeinschaften Zurücksetzt.", wrong: ["Sie ist eine Gerichtete Abfolge von Lebensgemeinschaften.", "Sie ist ein Frühe Besiedler Gestörter Flächen.", "Sie ist eine Relativ Stabile Endgesellschaft."],
       explanation: "Störung: Ereignis das Gemeinschaften zurücksetzt",
       wissen: fw(
         "z. B. Sturm oder Brand. Bezug: Sukzession.",
@@ -4792,8 +4461,7 @@ export const k9Sukzession: BioBank = {
     {
       concept: "bio:k9:suks:f9",
       prompt: "Was kennzeichnet „Biodiversitätsverlauf“?",
-      answer: "Das Biodiversitätsverlauf ist hier: Änderung der Artenzahl über Zeit.",
-      wrong: ["Das Biodiversitätsverlauf ist hier: Gerichtete Abfolge von Lebensgemeinschaften.", "Das Biodiversitätsverlauf ist hier: Frühe Besiedler gestörter Flächen.", "Das Biodiversitätsverlauf ist hier: Relativ stabile Endgesellschaft."],
+      answer: "Es ist eine Änderung der Artenzahl über Zeit.", wrong: ["Es ist eine Gerichtete Abfolge von Lebensgemeinschaften.", "Es ist ein Frühe Besiedler Gestörter Flächen.", "Es ist eine Relativ Stabile Endgesellschaft."],
       explanation: "Biodiversitätsverlauf: Änderung der Artenzahl über Zeit",
       wissen: fw(
         "Oft Anstieg dann Umschichtung. Bezug: Sukzession.",
@@ -4804,8 +4472,7 @@ export const k9Sukzession: BioBank = {
     {
       concept: "bio:k9:suks:f10",
       prompt: "Was kennzeichnet „Moosstadium“?",
-      answer: "Das Moosstadium ist hier: Frühe Phase auf Rohboden.",
-      wrong: ["Das Moosstadium ist hier: Gerichtete Abfolge von Lebensgemeinschaften.", "Das Moosstadium ist hier: Frühe Besiedler gestörter Flächen.", "Das Moosstadium ist hier: Relativ stabile Endgesellschaft."],
+      answer: "Es ist eine Frühe Phase auf Rohboden.", wrong: ["Es ist eine Gerichtete Abfolge von Lebensgemeinschaften.", "Es ist ein Frühe Besiedler Gestörter Flächen.", "Es ist eine Relativ Stabile Endgesellschaft."],
       explanation: "Moosstadium: Frühe Phase auf Rohboden",
       wissen: fw(
         "Pioniermoose und Flechten. Bezug: Sukzession.",
@@ -4816,8 +4483,7 @@ export const k9Sukzession: BioBank = {
     {
       concept: "bio:k9:suks:f11",
       prompt: "Was kennzeichnet „Waldstadium“?",
-      answer: "Das Waldstadium ist hier: Späte Phase mit Gehölzen.",
-      wrong: ["Das Waldstadium ist hier: Gerichtete Abfolge von Lebensgemeinschaften.", "Das Waldstadium ist hier: Frühe Besiedler gestörter Flächen.", "Das Waldstadium ist hier: Relativ stabile Endgesellschaft."],
+      answer: "Es ist eine Späte Phase mit Gehölzen.", wrong: ["Es ist eine Gerichtete Abfolge von Lebensgemeinschaften.", "Es ist ein Frühe Besiedler Gestörter Flächen.", "Es ist eine Relativ Stabile Endgesellschaft."],
       explanation: "Waldstadium: Späte Phase mit Gehölzen",
       wissen: fw(
         "Oft nahe Klimax in Mitteleuropa. Bezug: Sukzession.",
@@ -4828,8 +4494,7 @@ export const k9Sukzession: BioBank = {
     {
       concept: "bio:k9:suks:x0",
       prompt: "Sukzession: Was ist Sukzession?",
-      answer: "Es geht um Zeitliche Abfolge von Lebensgemeinschaften an einem Standort, und zwar gilt: zeitliche Veränderung eines Ökosystems.",
-      wrong: ["Es geht um Sofortiger unveränderlicher Zustand.", "Es geht um Nur Tagesrhythmik ohne Artenwechsel.", "Es geht um Nur chemische Reaktionen ohne Biologie."],
+      answer: "Es ist eine Zeitliche Abfolge von Lebensgemeinschaften an einem Standort.", wrong: ["Es ist eine Sofortiger unveränderlicher Zustand.", "Es ist eine Nur Tagesrhythmik ohne Artenwechsel.", "Es ist eine Nur chemische Reaktionen ohne Biologie."],
       explanation: "Entwicklung.",
       wissen: fw(
         "Nach Störungen oder Neubesiedlung lösen sich Gemeinschaften typischerweise ab.",
@@ -4838,8 +4503,7 @@ export const k9Sukzession: BioBank = {
     {
       concept: "bio:k9:suks:x1",
       prompt: "Sukzession: Warum verdrängen spätere Arten oft Pioniere?",
-      answer: "Es geht um Sie nutzen verbesserte Boden- und Lichtbedingungen besser, und zwar gilt: zeitliche Veränderung eines Ökosystems.",
-      wrong: ["Hier gilt: Weil Pioniere unsterblich sind.", "Hier gilt: Weil Konkurrenz nie wirkt.", "Es geht um Weil Böden verschwinden."],
+      answer: "Es ist ein Sie nutzen verbesserte Boden- und Lichtbedingungen besser.", wrong: ["Es ist eine Weil Pioniere unsterblich sind.", "Es ist eine Weil Konkurrenz nie wirkt.", "Es ist eine Weil Böden verschwinden."],
       explanation: "Konkurrenz.",
       wissen: fw(
         "Mit Bodenbildung und Beschattung ändern sich die Bedingungen zugunsten anderer Arten.",
@@ -4887,8 +4551,7 @@ export const k9Faktoren: BioBank = {
     {
       concept: "bio:k9:fakt:f0",
       prompt: "Was kennzeichnet „abiotischer Faktor“?",
-      answer: "Der abiotischer Faktor ist hier: Unbelebte Umweltgröße.",
-      wrong: ["Der abiotischer Faktor ist hier: Wirkung durch Lebewesen.", "Der abiotischer Faktor ist hier: Bereich erträglicher Faktorwerte.", "Der abiotischer Faktor ist hier: Reaktionsbreite einer Art."],
+      answer: "Der abiotischer Faktor ist der Unbelebte Umweltgröße.", wrong: ["Er ist eine Wirkung durch Lebewesen.", "Er ist eine Bereich Erträglicher Faktorwerte.", "Er ist eine Reaktionsbreite einer Art."],
       explanation: "abiotischer Faktor: Unbelebte Umweltgröße",
       wissen: fw(
         "Temperatur, Licht, Wasser. Bezug: Umweltfaktoren.",
@@ -4899,8 +4562,7 @@ export const k9Faktoren: BioBank = {
     {
       concept: "bio:k9:fakt:f1",
       prompt: "Was kennzeichnet „biotischer Faktor“?",
-      answer: "Der biotischer Faktor ist hier: Wirkung durch Lebewesen.",
-      wrong: ["Der biotischer Faktor ist hier: Unbelebte Umweltgröße.", "Der biotischer Faktor ist hier: Bereich erträglicher Faktorwerte.", "Der biotischer Faktor ist hier: Reaktionsbreite einer Art."],
+      answer: "Er ist eine Wirkung durch Lebewesen.", wrong: ["Der biotischer Faktor ist der Unbelebte Umweltgröße.", "Er ist eine Bereich Erträglicher Faktorwerte.", "Er ist eine Reaktionsbreite einer Art."],
       explanation: "biotischer Faktor: Wirkung durch Lebewesen",
       wissen: fw(
         "Konkurrenz, Symbiose, Fraß. Bezug: Umweltfaktoren.",
@@ -4911,8 +4573,7 @@ export const k9Faktoren: BioBank = {
     {
       concept: "bio:k9:fakt:f2",
       prompt: "Was kennzeichnet „Toleranzbereich“?",
-      answer: "Das Toleranzbereich ist hier: Bereich erträglicher Faktorwerte.",
-      wrong: ["Das Toleranzbereich ist kurz gesagt: Unbelebte Umweltgröße.", "Das Toleranzbereich ist hier: Wirkung durch Lebewesen.", "Das Toleranzbereich ist hier: Reaktionsbreite einer Art."],
+      answer: "Es ist eine Bereich Erträglicher Faktorwerte.", wrong: ["Das Toleranzbereich ist das Unbelebte Umweltgröße.", "Es ist eine Wirkung durch Lebewesen.", "Es ist eine Reaktionsbreite einer Art."],
       explanation: "Toleranzbereich: Bereich erträglicher Faktorwerte",
       wissen: fw(
         "Außerhalb: Stress oder Tod. Bezug: Umweltfaktoren.",
@@ -4923,8 +4584,7 @@ export const k9Faktoren: BioBank = {
     {
       concept: "bio:k9:fakt:f3",
       prompt: "Was kennzeichnet „Ökologische Potenz“?",
-      answer: "Die Ökologische Potenz ist hier: Reaktionsbreite einer Art.",
-      wrong: ["Die Ökologische Potenz ist hier: Unbelebte Umweltgröße.", "Die Ökologische Potenz ist hier: Wirkung durch Lebewesen.", "Die Ökologische Potenz ist hier: Bereich erträglicher Faktorwerte."],
+      answer: "Sie ist eine Reaktionsbreite einer Art.", wrong: ["Die Ökologische Potenz ist die Unbelebte Umweltgröße.", "Sie ist eine Wirkung durch Lebewesen.", "Sie ist eine Bereich Erträglicher Faktorwerte."],
       explanation: "Ökologische Potenz: Reaktionsbreite einer Art",
       wissen: fw(
         "Breit oder eng. Bezug: Umweltfaktoren.",
@@ -4935,8 +4595,7 @@ export const k9Faktoren: BioBank = {
     {
       concept: "bio:k9:fakt:f4",
       prompt: "Was kennzeichnet „Minimumfaktor“?",
-      answer: "Der Minimumfaktor ist hier: Knappster begrenzender Faktor.",
-      wrong: ["Der Minimumfaktor ist kurz gesagt: Unbelebte Umweltgröße.", "Der Minimumfaktor ist hier: Wirkung durch Lebewesen.", "Der Minimumfaktor ist hier: Bereich erträglicher Faktorwerte."],
+      answer: "Er ist ein Knappster Begrenzender Faktor.", wrong: ["Der Minimumfaktor ist der Unbelebte Umweltgröße.", "Er ist eine Wirkung durch Lebewesen.", "Er ist eine Bereich Erträglicher Faktorwerte."],
       explanation: "Minimumfaktor: Knappster begrenzender Faktor",
       wissen: fw(
         "Limitiert Wachstum. Bezug: Umweltfaktoren.",
@@ -4947,8 +4606,7 @@ export const k9Faktoren: BioBank = {
     {
       concept: "bio:k9:fakt:f5",
       prompt: "Was kennzeichnet „Optimum“?",
-      answer: "Das Optimum ist hier: Günstigster Bereich eines Faktors.",
-      wrong: ["Das Optimum ist kurz gesagt: Unbelebte Umweltgröße.", "Das Optimum ist hier: Wirkung durch Lebewesen.", "Das Optimum ist hier: Bereich erträglicher Faktorwerte."],
+      answer: "Es ist eine Günstigster Bereich Eines Faktors.", wrong: ["Das Optimum ist das Unbelebte Umweltgröße.", "Es ist eine Wirkung durch Lebewesen.", "Es ist eine Bereich Erträglicher Faktorwerte."],
       explanation: "Optimum: Günstigster Bereich eines Faktors",
       wissen: fw(
         "Höchste Leistungsfähigkeit. Bezug: Umweltfaktoren.",
@@ -4959,8 +4617,7 @@ export const k9Faktoren: BioBank = {
     {
       concept: "bio:k9:fakt:f6",
       prompt: "Was kennzeichnet „Lichtpflanze“?",
-      answer: "Die Lichtpflanze ist hier: Art mit hohem Lichtbedarf.",
-      wrong: ["Die Lichtpflanze ist kurz gesagt: Unbelebte Umweltgröße.", "Die Lichtpflanze ist hier: Wirkung durch Lebewesen.", "Die Lichtpflanze ist hier: Bereich erträglicher Faktorwerte."],
+      answer: "Sie ist eine Art mit Hohem Lichtbedarf.", wrong: ["Die Lichtpflanze ist die Unbelebte Umweltgröße.", "Sie ist eine Wirkung durch Lebewesen.", "Sie ist eine Bereich Erträglicher Faktorwerte."],
       explanation: "Lichtpflanze: Art mit hohem Lichtbedarf",
       wissen: fw(
         "Wächst schlecht im Schatten. Bezug: Umweltfaktoren.",
@@ -4971,8 +4628,7 @@ export const k9Faktoren: BioBank = {
     {
       concept: "bio:k9:fakt:f7",
       prompt: "Was kennzeichnet „Schattenpflanze“?",
-      answer: "Die Schattenpflanze ist hier: Art an geringe Lichtstärke angepasst.",
-      wrong: ["Die Schattenpflanze ist kurz gesagt: Unbelebte Umweltgröße.", "Die Schattenpflanze ist hier: Wirkung durch Lebewesen.", "Die Schattenpflanze ist hier: Bereich erträglicher Faktorwerte."],
+      answer: "Sie ist eine Art an Geringe Lichtstärke Angepasst.", wrong: ["Die Schattenpflanze ist die Unbelebte Umweltgröße.", "Sie ist eine Wirkung durch Lebewesen.", "Sie ist eine Bereich Erträglicher Faktorwerte."],
       explanation: "Schattenpflanze: Art an geringe Lichtstärke angepasst",
       wissen: fw(
         "Verträgt starke Sonne schlecht. Bezug: Umweltfaktoren.",
@@ -4983,8 +4639,7 @@ export const k9Faktoren: BioBank = {
     {
       concept: "bio:k9:fakt:f8",
       prompt: "Was kennzeichnet „Xerophyt“?",
-      answer: "Das Xerophyt ist kurz gesagt: Trockenangepasste Pflanze.",
-      wrong: ["Das Xerophyt ist kurz gesagt: Unbelebte Umweltgröße.", "Das Xerophyt ist hier: Wirkung durch Lebewesen.", "Das Xerophyt ist hier: Bereich erträglicher Faktorwerte."],
+      answer: "Das Xerophyt ist das Trockenangepasste Pflanze.", wrong: ["Das Xerophyt ist das Unbelebte Umweltgröße.", "Es ist eine Wirkung durch Lebewesen.", "Es ist eine Bereich Erträglicher Faktorwerte."],
       explanation: "Xerophyt: Trockenangepasste Pflanze",
       wissen: fw(
         "Spart Wasser. Bezug: Umweltfaktoren.",
@@ -4995,8 +4650,7 @@ export const k9Faktoren: BioBank = {
     {
       concept: "bio:k9:fakt:f9",
       prompt: "Was kennzeichnet „Hygrophyt“?",
-      answer: "Das Hygrophyt ist kurz gesagt: Feuchteangepasste Pflanze.",
-      wrong: ["Das Hygrophyt ist kurz gesagt: Unbelebte Umweltgröße.", "Das Hygrophyt ist hier: Wirkung durch Lebewesen.", "Das Hygrophyt ist hier: Bereich erträglicher Faktorwerte."],
+      answer: "Das Hygrophyt ist das Feuchteangepasste Pflanze.", wrong: ["Das Hygrophyt ist das Unbelebte Umweltgröße.", "Es ist eine Wirkung durch Lebewesen.", "Es ist eine Bereich Erträglicher Faktorwerte."],
       explanation: "Hygrophyt: Feuchteangepasste Pflanze",
       wissen: fw(
         "Braucht viel Wasser. Bezug: Umweltfaktoren.",
@@ -5007,8 +4661,7 @@ export const k9Faktoren: BioBank = {
     {
       concept: "bio:k9:fakt:f10",
       prompt: "Was kennzeichnet „Konkurrenz“?",
-      answer: "Die Konkurrenz ist hier: Wettbewerb um Ressourcen.",
-      wrong: ["Die Konkurrenz ist kurz gesagt: Unbelebte Umweltgröße.", "Die Konkurrenz ist hier: Wirkung durch Lebewesen.", "Die Konkurrenz ist hier: Bereich erträglicher Faktorwerte."],
+      answer: "Sie ist eine Wettbewerb um Ressourcen.", wrong: ["Die Konkurrenz ist die Unbelebte Umweltgröße.", "Sie ist eine Wirkung durch Lebewesen.", "Sie ist eine Bereich Erträglicher Faktorwerte."],
       explanation: "Konkurrenz: Wettbewerb um Ressourcen",
       wissen: fw(
         "Biotischer Faktor. Bezug: Umweltfaktoren.",
@@ -5019,8 +4672,7 @@ export const k9Faktoren: BioBank = {
     {
       concept: "bio:k9:fakt:f11",
       prompt: "Was kennzeichnet „Räuber-Beute“?",
-      answer: "Die Räuber-Beute ist kurz gesagt: Fraßbeziehung.",
-      wrong: ["Die Räuber-Beute ist kurz gesagt: Unbelebte Umweltgröße.", "Die Räuber-Beute ist hier: Wirkung durch Lebewesen.", "Die Räuber-Beute ist hier: Bereich erträglicher Faktorwerte."],
+      answer: "Die Räuber-Beute ist die Fraßbeziehung.", wrong: ["Die Räuber-Beute ist die Unbelebte Umweltgröße.", "Sie ist eine Wirkung durch Lebewesen.", "Sie ist eine Bereich Erträglicher Faktorwerte."],
       explanation: "Räuber-Beute: Fraßbeziehung",
       wissen: fw(
         "Reguliert Populationen. Bezug: Umweltfaktoren.",
@@ -5031,8 +4683,7 @@ export const k9Faktoren: BioBank = {
     {
       concept: "bio:k9:fakt:x0",
       prompt: "Umweltfaktoren: Was unterscheidet abiotische und biotische Faktoren?",
-      answer: "Es geht um Unbelebt versus durch Lebewesen vermittelt, und zwar gilt: temperatur, Licht, Wasser.",
-      wrong: ["Hier gilt klar: Beide sind identisch.", "Hier gilt: Abiotisch meint nur Tiere.", "Hier gilt: Biotisch meint nur Temperatur."],
+      answer: "Es ist eine Unbelebt versus durch Lebewesen vermittelt.", wrong: ["Beide sind identisch.", "Es ist eine Abiotisch meint nur Tiere.", "Es ist eine Biotisch meint nur Temperatur."],
       explanation: "Umweltfaktoren.",
       wissen: fw(
         "Temperatur und Licht sind abiotisch; Konkurrenz und Symbiose biotisch.",
@@ -5041,8 +4692,7 @@ export const k9Faktoren: BioBank = {
     {
       concept: "bio:k9:fakt:x1",
       prompt: "Was kennzeichnet „der Toleranzbereich“?",
-      answer: "Den Wertebereich eines Faktors, in dem die Art leben kann, und zwar gilt: temperatur, Licht, Wasser.",
-      wrong: ["Das der Toleranzbereich ist hier: Nur den Optimalwert ohne Grenzen.", "Das der Toleranzbereich ist hier: Nur den Todespunkt.", "Das der Toleranzbereich ist hier: Nur den Namen der Art."],
+      answer: "Es ist den Wertebereich eines Faktors, in dem Die Art Leben Kann durch Temperatur, Licht, Wasser.", wrong: ["Es ist eine Nur den Optimalwert ohne Grenzen.", "Es ist ein Nur den Todespunkt.", "Es ist eine Nur den Namen der Art."],
       explanation: "Toleranz.",
       wissen: fw(
         "Außerhalb des Toleranzbereichs sinkt die Leistungsfähigkeit stark.",
@@ -5090,8 +4740,7 @@ export const k9Klima: BioBank = {
     {
       concept: "bio:k9:klima:f0",
       prompt: "Was kennzeichnet „Klima“?",
-      answer: "Das Klima ist hier: Langfristiges Wettergeschehen einer Region.",
-      wrong: ["Das Klima ist hier: Erwärmung durch Spurengase.", "Das Klima ist kurz gesagt: Wichtiges Treibhausgas.", "Das Klima ist kurz gesagt: Langfristige Klimaänderung."],
+      answer: "Es ist eine Langfristiges Wettergeschehen einer Region.", wrong: ["Es ist eine Erwärmung durch Spurengase.", "Das Klima ist das Wichtiges Treibhausgas.", "Das Klima ist das Langfristige Klimaänderung."],
       explanation: "Klima: Langfristiges Wettergeschehen einer Region",
       wissen: fw(
         "Unterscheidet sich vom Tageswetter. Bezug: Klima/Ökosystem.",
@@ -5102,8 +4751,7 @@ export const k9Klima: BioBank = {
     {
       concept: "bio:k9:klima:f1",
       prompt: "Was kennzeichnet „Treibhauseffekt“?",
-      answer: "Das Treibhauseffekt ist hier: Erwärmung durch Spurengase.",
-      wrong: ["Das Treibhauseffekt ist hier: Langfristiges Wettergeschehen einer Region.", "Das Treibhauseffekt ist kurz gesagt: Wichtiges Treibhausgas.", "Das Treibhauseffekt ist kurz gesagt: Langfristige Klimaänderung."],
+      answer: "Es ist eine Erwärmung durch Spurengase.", wrong: ["Es ist eine Langfristiges Wettergeschehen einer Region.", "Das Treibhauseffekt ist das Wichtiges Treibhausgas.", "Das Treibhauseffekt ist das Langfristige Klimaänderung."],
       explanation: "Treibhauseffekt: Erwärmung durch Spurengase",
       wissen: fw(
         "Natürlich und anthropogen verstärkt. Bezug: Klima/Ökosystem.",
@@ -5114,8 +4762,7 @@ export const k9Klima: BioBank = {
     {
       concept: "bio:k9:klima:f2",
       prompt: "Was kennzeichnet „CO₂“?",
-      answer: "Das CO₂ ist kurz gesagt: Wichtiges Treibhausgas.",
-      wrong: ["Das CO₂ ist hier: Langfristiges Wettergeschehen einer Region.", "Das CO₂ ist hier: Erwärmung durch Spurengase.", "Das CO₂ ist kurz gesagt: Langfristige Klimaänderung."],
+      answer: "Das CO₂ ist das Wichtiges Treibhausgas.", wrong: ["Es ist eine Langfristiges Wettergeschehen einer Region.", "Es ist eine Erwärmung durch Spurengase.", "Das CO₂ ist das Langfristige Klimaänderung."],
       explanation: "CO₂: Wichtiges Treibhausgas",
       wissen: fw(
         "Steigt durch Verbrennung fossilier Energien. Bezug: Klima/Ökosystem.",
@@ -5126,8 +4773,7 @@ export const k9Klima: BioBank = {
     {
       concept: "bio:k9:klima:f3",
       prompt: "Was kennzeichnet „Klimawandel“?",
-      answer: "Das Klimawandel ist kurz gesagt: Langfristige Klimaänderung.",
-      wrong: ["Das Klimawandel ist hier: Langfristiges Wettergeschehen einer Region.", "Das Klimawandel ist hier: Erwärmung durch Spurengase.", "Das Klimawandel ist kurz gesagt: Wichtiges Treibhausgas."],
+      answer: "Das Klimawandel ist das Langfristige Klimaänderung.", wrong: ["Es ist eine Langfristiges Wettergeschehen einer Region.", "Es ist eine Erwärmung durch Spurengase.", "Das Klimawandel ist das Wichtiges Treibhausgas."],
       explanation: "Klimawandel: Langfristige Klimaänderung",
       wissen: fw(
         "Beeinflusst Ökosysteme. Bezug: Klima/Ökosystem.",
@@ -5138,8 +4784,7 @@ export const k9Klima: BioBank = {
     {
       concept: "bio:k9:klima:f4",
       prompt: "Was kennzeichnet „Phänologie“?",
-      answer: "Die Phänologie ist kurz gesagt: Jahreszeitliche Entwicklungszeiten.",
-      wrong: ["Die Phänologie ist hier: Langfristiges Wettergeschehen einer Region.", "Die Phänologie ist hier: Erwärmung durch Spurengase.", "Die Phänologie ist kurz gesagt: Wichtiges Treibhausgas."],
+      answer: "Die Phänologie ist die Jahreszeitliche Entwicklungszeiten.", wrong: ["Sie ist eine Langfristiges Wettergeschehen einer Region.", "Sie ist eine Erwärmung durch Spurengase.", "Die Phänologie ist die Wichtiges Treibhausgas."],
       explanation: "Phänologie: Jahreszeitliche Entwicklungszeiten",
       wissen: fw(
         "Verschiebt sich mit Erwärmung. Bezug: Klima/Ökosystem.",
@@ -5150,8 +4795,7 @@ export const k9Klima: BioBank = {
     {
       concept: "bio:k9:klima:f5",
       prompt: "Was kennzeichnet „Dürre“?",
-      answer: "Die Dürre ist kurz gesagt: Längerer Wassermangel.",
-      wrong: ["Die Dürre ist hier: Langfristiges Wettergeschehen einer Region.", "Die Dürre ist hier: Erwärmung durch Spurengase.", "Die Dürre ist kurz gesagt: Wichtiges Treibhausgas."],
+      answer: "Die Dürre ist die Längerer Wassermangel.", wrong: ["Sie ist eine Langfristiges Wettergeschehen einer Region.", "Sie ist eine Erwärmung durch Spurengase.", "Die Dürre ist die Wichtiges Treibhausgas."],
       explanation: "Dürre: Längerer Wassermangel",
       wissen: fw(
         "Stress für Pflanzen und Gewässer. Bezug: Klima/Ökosystem.",
@@ -5162,8 +4806,7 @@ export const k9Klima: BioBank = {
     {
       concept: "bio:k9:klima:f6",
       prompt: "Was kennzeichnet „Extremwetter“?",
-      answer: "Der Extremwetter ist hier: Seltene starke Wetterereignisse.",
-      wrong: ["Der Extremwetter ist hier: Langfristiges Wettergeschehen einer Region.", "Der Extremwetter ist hier: Erwärmung durch Spurengase.", "Der Extremwetter ist kurz gesagt: Wichtiges Treibhausgas."],
+      answer: "Er ist eine Seltene Starke Wetterereignisse.", wrong: ["Er ist eine Langfristiges Wettergeschehen einer Region.", "Er ist eine Erwärmung durch Spurengase.", "Der Extremwetter ist der Wichtiges Treibhausgas."],
       explanation: "Extremwetter: Seltene starke Wetterereignisse",
       wissen: fw(
         "Können häufiger/intensiver werden. Bezug: Klima/Ökosystem.",
@@ -5174,8 +4817,7 @@ export const k9Klima: BioBank = {
     {
       concept: "bio:k9:klima:f7",
       prompt: "Was kennzeichnet „Habitatverschiebung“?",
-      answer: "Die Habitatverschiebung ist hier: Arten wandern mit Klimazonen.",
-      wrong: ["Die Habitatverschiebung ist hier: Langfristiges Wettergeschehen einer Region.", "Die Habitatverschiebung ist hier: Erwärmung durch Spurengase.", "Die Habitatverschiebung ist kurz gesagt: Wichtiges Treibhausgas."],
+      answer: "Sie ist eine Arten Wandern mit Klimazonen.", wrong: ["Sie ist eine Langfristiges Wettergeschehen einer Region.", "Sie ist eine Erwärmung durch Spurengase.", "Die Habitatverschiebung ist die Wichtiges Treibhausgas."],
       explanation: "Habitatverschiebung: Arten wandern mit Klimazonen",
       wissen: fw(
         "Nicht alle können folgen. Bezug: Klima/Ökosystem.",
@@ -5186,8 +4828,7 @@ export const k9Klima: BioBank = {
     {
       concept: "bio:k9:klima:f8",
       prompt: "Was kennzeichnet „Kohlenstoffkreislauf“?",
-      answer: "Das Kohlenstoffkreislauf ist hier: Austausch von C zwischen Sphären.",
-      wrong: ["Das Kohlenstoffkreislauf ist hier: Langfristiges Wettergeschehen einer Region.", "Das Kohlenstoffkreislauf ist hier: Erwärmung durch Spurengase.", "Das Kohlenstoffkreislauf ist kurz gesagt: Wichtiges Treibhausgas."],
+      answer: "Es ist eine Austausch von C Zwischen Sphären.", wrong: ["Es ist eine Langfristiges Wettergeschehen einer Region.", "Es ist eine Erwärmung durch Spurengase.", "Das Kohlenstoffkreislauf ist das Wichtiges Treibhausgas."],
       explanation: "Kohlenstoffkreislauf: Austausch von C zwischen Sphären",
       wissen: fw(
         "Gekoppelt an Klima. Bezug: Klima/Ökosystem.",
@@ -5198,8 +4839,7 @@ export const k9Klima: BioBank = {
     {
       concept: "bio:k9:klima:f9",
       prompt: "Was kennzeichnet „Mitigation“?",
-      answer: "Die Mitigation ist hier: Minderung von Emissionen.",
-      wrong: ["Die Mitigation ist hier: Langfristiges Wettergeschehen einer Region.", "Die Mitigation ist hier: Erwärmung durch Spurengase.", "Die Mitigation ist kurz gesagt: Wichtiges Treibhausgas."],
+      answer: "Sie ist eine Minderung von Emissionen.", wrong: ["Sie ist eine Langfristiges Wettergeschehen einer Region.", "Sie ist eine Erwärmung durch Spurengase.", "Die Mitigation ist die Wichtiges Treibhausgas."],
       explanation: "Mitigation: Minderung von Emissionen",
       wissen: fw(
         "Klimaschutzmaßnahme. Bezug: Klima/Ökosystem.",
@@ -5210,8 +4850,7 @@ export const k9Klima: BioBank = {
     {
       concept: "bio:k9:klima:f10",
       prompt: "Was kennzeichnet „Adaptation“?",
-      answer: "Die Adaptation ist hier: Anpassung an Folgen.",
-      wrong: ["Die Adaptation ist hier: Langfristiges Wettergeschehen einer Region.", "Die Adaptation ist hier: Erwärmung durch Spurengase.", "Die Adaptation ist kurz gesagt: Wichtiges Treibhausgas."],
+      answer: "Sie ist eine Anpassung an Folgen.", wrong: ["Sie ist eine Langfristiges Wettergeschehen einer Region.", "Sie ist eine Erwärmung durch Spurengase.", "Die Adaptation ist die Wichtiges Treibhausgas."],
       explanation: "Adaptation: Anpassung an Folgen",
       wissen: fw(
         "z. B. Wassermanagement. Bezug: Klima/Ökosystem.",
@@ -5222,8 +4861,7 @@ export const k9Klima: BioBank = {
     {
       concept: "bio:k9:klima:f11",
       prompt: "Was kennzeichnet „Bioindikator“?",
-      answer: "Der Bioindikator ist hier: Art die Umweltzustand anzeigt.",
-      wrong: ["Der Bioindikator ist hier: Langfristiges Wettergeschehen einer Region.", "Der Bioindikator ist hier: Erwärmung durch Spurengase.", "Der Bioindikator ist kurz gesagt: Wichtiges Treibhausgas."],
+      answer: "Er ist eine Art die Umweltzustand Anzeigt.", wrong: ["Er ist eine Langfristiges Wettergeschehen einer Region.", "Er ist eine Erwärmung durch Spurengase.", "Der Bioindikator ist der Wichtiges Treibhausgas."],
       explanation: "Bioindikator: Art die Umweltzustand anzeigt",
       wissen: fw(
         "Reagiert auf Klimaänderungen. Bezug: Klima/Ökosystem.",
@@ -5234,8 +4872,7 @@ export const k9Klima: BioBank = {
     {
       concept: "bio:k9:klima:x0",
       prompt: "Klima/Ökosystem: Wie wirkt Klimawandel auf Ökosysteme?",
-      answer: "Es geht um Verschiebt Verbreitungsgebiete und verändert Artengefüge, und zwar gilt: unterscheidet sich vom Tageswetter.",
-      wrong: ["Es geht um diesen Inhalt: Gar nicht.", "Es geht um Nur auf Gesteine ohne Biologie.", "Es geht um Nur auf Schulnoten."],
+      answer: "Es ist eine Verschiebt Verbreitungsgebiete und verändert Artengefüge.", wrong: ["Es ist eine Gar Nicht.", "Es ist eine Nur auf Gesteine ohne Biologie.", "Es ist eine Nur auf Schulnoten."],
       explanation: "Ökosystemwirkung.",
       wissen: fw(
         "Temperatur und Niederschlag ändern Lebensbedingungen; manche Arten wandern oder gehen zurück.",
@@ -5244,8 +4881,7 @@ export const k9Klima: BioBank = {
     {
       concept: "bio:k9:klima:x1",
       prompt: "Klima/Ökosystem: Was ist der Unterschied zwischen Wetter und Klima?",
-      answer: "Wetter ist kurzfristig, Klima langfristig, und zwar gilt hier: Unterscheidet sich vom Tageswetter.",
-      wrong: ["Hier gilt klar: Beide sind identisch.", "Es geht um Klima dauert nur Minuten.", "Hier gilt: Wetter ist immer 30 Jahre."],
+      answer: "Wetter ist kurzfristig, Klima langfristig durch unterscheidet sich vom Tageswetter.", wrong: ["Beide sind identisch.", "Es ist eine Klima dauert nur Minuten.", "Es ist eine Wetter ist immer 30 Jahre."],
       explanation: "Zeitraum.",
       wissen: fw(
         "Klima beschreibt typische Muster über Jahrzehnte. Bezug: Klima/Ökosystem.",
@@ -5293,8 +4929,7 @@ export const k10Humangenetik: BioBank = {
     {
       concept: "bio:k10:humangen:f0",
       prompt: "Was kennzeichnet „Stammbaumanalyse“?",
-      answer: "Die Stammbaumanalyse ist hier: Vererbungsmuster in Familien rekonstruieren.",
-      wrong: ["Die Stammbaumanalyse ist hier: Blutgruppen A, B, AB, 0.", "Die Stammbaumanalyse ist kurz gesagt: Rh-Faktor positiv/negativ.", "Die Stammbaumanalyse ist hier: Gen auf Autosom."],
+      answer: "Sie ist eine Vererbungsmuster in Familien Rekonstruieren.", wrong: ["Sie ist eine Blutgruppen A, B, AB, 0.", "Die Stammbaumanalyse ist die Rh-Faktor Positiv/negativ.", "Sie ist eine Gen auf Autosom."],
       explanation: "Stammbaumanalyse: Vererbungsmuster in Familien rekonstruieren",
       wissen: fw(
         "Zeigt dominant/rezessiv und gonosomal. Bezug: Humangenetik.",
@@ -5305,8 +4940,7 @@ export const k10Humangenetik: BioBank = {
     {
       concept: "bio:k10:humangen:f1",
       prompt: "Was kennzeichnet „AB0-System“?",
-      answer: "Das AB0-System ist hier: Blutgruppen A, B, AB, 0.",
-      wrong: ["Das AB0-System ist hier: Vererbungsmuster in Familien rekonstruieren.", "Das AB0-System ist kurz gesagt: Rh-Faktor positiv/negativ.", "Das AB0-System ist hier: Gen auf Autosom."],
+      answer: "Es ist eine Blutgruppen A, B, AB, 0.", wrong: ["Es ist eine Vererbungsmuster in Familien Rekonstruieren.", "Das AB0-System ist das Rh-Faktor Positiv/negativ.", "Es ist eine Gen auf Autosom."],
       explanation: "AB0-System: Blutgruppen A, B, AB, 0",
       wissen: fw(
         "Klassisches Beispiel multipler Allele. Bezug: Humangenetik.",
@@ -5317,8 +4951,7 @@ export const k10Humangenetik: BioBank = {
     {
       concept: "bio:k10:humangen:f2",
       prompt: "Was kennzeichnet „Rhesussystem“?",
-      answer: "Das Rhesussystem ist kurz gesagt: Rh-Faktor positiv/negativ.",
-      wrong: ["Das Rhesussystem ist hier: Vererbungsmuster in Familien rekonstruieren.", "Das Rhesussystem ist hier: Blutgruppen A, B, AB, 0.", "Das Rhesussystem ist hier: Gen auf Autosom."],
+      answer: "Das Rhesussystem ist das Rh-Faktor Positiv/negativ.", wrong: ["Es ist eine Vererbungsmuster in Familien Rekonstruieren.", "Es ist eine Blutgruppen A, B, AB, 0.", "Es ist eine Gen auf Autosom."],
       explanation: "Rhesussystem: Rh-Faktor positiv/negativ",
       wissen: fw(
         "Relevant bei Schwangerschaft. Bezug: Humangenetik.",
@@ -5329,8 +4962,7 @@ export const k10Humangenetik: BioBank = {
     {
       concept: "bio:k10:humangen:f3",
       prompt: "Was kennzeichnet „autosomal“?",
-      answer: "Das autosomal ist hier: Gen auf Autosom.",
-      wrong: ["Das autosomal ist hier: Vererbungsmuster in Familien rekonstruieren.", "Das autosomal ist hier: Blutgruppen A, B, AB, 0.", "Das autosomal ist kurz gesagt: Rh-Faktor positiv/negativ."],
+      answer: "Es ist eine Gen auf Autosom.", wrong: ["Es ist eine Vererbungsmuster in Familien Rekonstruieren.", "Es ist eine Blutgruppen A, B, AB, 0.", "Das autosomal ist das Rh-Faktor Positiv/negativ."],
       explanation: "autosomal: Gen auf Autosom",
       wissen: fw(
         "Betrifft beide Geschlechter ähnlich. Bezug: Humangenetik.",
@@ -5341,8 +4973,7 @@ export const k10Humangenetik: BioBank = {
     {
       concept: "bio:k10:humangen:f4",
       prompt: "Was kennzeichnet „gonosomal“?",
-      answer: "Das gonosomal ist hier: Gen auf Geschlechtschromosom.",
-      wrong: ["Das gonosomal ist hier: Vererbungsmuster in Familien rekonstruieren.", "Das gonosomal ist hier: Blutgruppen A, B, AB, 0.", "Das gonosomal ist kurz gesagt: Rh-Faktor positiv/negativ."],
+      answer: "Es ist eine Gen auf Geschlechtschromosom.", wrong: ["Es ist eine Vererbungsmuster in Familien Rekonstruieren.", "Es ist eine Blutgruppen A, B, AB, 0.", "Das gonosomal ist das Rh-Faktor Positiv/negativ."],
       explanation: "gonosomal: Gen auf Geschlechtschromosom",
       wissen: fw(
         "Oft X-chromosomal. Bezug: Humangenetik.",
@@ -5353,8 +4984,7 @@ export const k10Humangenetik: BioBank = {
     {
       concept: "bio:k10:humangen:f5",
       prompt: "Was kennzeichnet „Trisomie 21“?",
-      answer: "Das Trisomie 21 ist hier: Drei Chromosomen 21.",
-      wrong: ["Das Trisomie 21 ist hier: Vererbungsmuster in Familien rekonstruieren.", "Das Trisomie 21 ist hier: Blutgruppen A, B, AB, 0.", "Das Trisomie 21 ist hier: Rh-Faktor positiv/negativ."],
+      answer: "Es ist eine Drei Chromosomen 21.", wrong: ["Es ist eine Vererbungsmuster in Familien Rekonstruieren.", "Es ist eine Blutgruppen A, B, AB, 0.", "Das Trisomie 21 ist das Rh-Faktor Positiv/negativ."],
       explanation: "Trisomie 21: Drei Chromosomen 21",
       wissen: fw(
         "Genommutation mit typischem Syndrom. Bezug: Humangenetik.",
@@ -5365,8 +4995,7 @@ export const k10Humangenetik: BioBank = {
     {
       concept: "bio:k10:humangen:f6",
       prompt: "Was kennzeichnet „Hämophilie“?",
-      answer: "Die Hämophilie ist kurz gesagt: Blutgerinnungsstörung.",
-      wrong: ["Die Hämophilie ist hier: Vererbungsmuster in Familien rekonstruieren.", "Die Hämophilie ist hier: Blutgruppen A, B, AB, 0.", "Die Hämophilie ist kurz gesagt: Rh-Faktor positiv/negativ."],
+      answer: "Die Hämophilie ist die Blutgerinnungsstörung.", wrong: ["Sie ist eine Vererbungsmuster in Familien Rekonstruieren.", "Sie ist eine Blutgruppen A, B, AB, 0.", "Die Hämophilie ist die Rh-Faktor Positiv/negativ."],
       explanation: "Hämophilie: Blutgerinnungsstörung",
       wissen: fw(
         "Klassisch X-chromosomal. Bezug: Humangenetik.",
@@ -5377,8 +5006,7 @@ export const k10Humangenetik: BioBank = {
     {
       concept: "bio:k10:humangen:f7",
       prompt: "Was kennzeichnet „Phenylketonurie“?",
-      answer: "Die Phenylketonurie ist hier: Stoffwechselstörung durch Genmutation.",
-      wrong: ["Die Phenylketonurie ist hier: Vererbungsmuster in Familien rekonstruieren.", "Die Phenylketonurie ist hier: Blutgruppen A, B, AB, 0.", "Die Phenylketonurie ist kurz gesagt: Rh-Faktor positiv/negativ."],
+      answer: "Sie ist eine Stoffwechselstörung durch Genmutation.", wrong: ["Sie ist eine Vererbungsmuster in Familien Rekonstruieren.", "Sie ist eine Blutgruppen A, B, AB, 0.", "Die Phenylketonurie ist die Rh-Faktor Positiv/negativ."],
       explanation: "Phenylketonurie: Stoffwechselstörung durch Genmutation",
       wissen: fw(
         "Frühdiagnostik wichtig. Bezug: Humangenetik.",
@@ -5389,8 +5017,7 @@ export const k10Humangenetik: BioBank = {
     {
       concept: "bio:k10:humangen:f8",
       prompt: "Was kennzeichnet „pränatale Diagnostik“?",
-      answer: "Die pränatale Diagnostik ist hier: Untersuchung vor der Geburt.",
-      wrong: ["Die pränatale Diagnostik ist hier: Vererbungsmuster in Familien rekonstruieren.", "Die pränatale Diagnostik ist hier: Blutgruppen A, B, AB, 0.", "Die pränatale Diagnostik ist hier: Rh-Faktor positiv/negativ."],
+      answer: "Sie ist eine Untersuchung vor der Geburt.", wrong: ["Sie ist eine Vererbungsmuster in Familien Rekonstruieren.", "Sie ist eine Blutgruppen A, B, AB, 0.", "Die pränatale Diagnostik ist die Rh-Faktor Positiv/negativ."],
       explanation: "pränatale Diagnostik: Untersuchung vor der Geburt",
       wissen: fw(
         "Ethisch und rechtlich sensibel. Bezug: Humangenetik.",
@@ -5401,8 +5028,7 @@ export const k10Humangenetik: BioBank = {
     {
       concept: "bio:k10:humangen:f9",
       prompt: "Was kennzeichnet „Erbkrankheit“?",
-      answer: "Die Erbkrankheit ist hier: Genetisch bedingte Erkrankung.",
-      wrong: ["Die Erbkrankheit ist hier: Vererbungsmuster in Familien rekonstruieren.", "Die Erbkrankheit ist hier: Blutgruppen A, B, AB, 0.", "Die Erbkrankheit ist kurz gesagt: Rh-Faktor positiv/negativ."],
+      answer: "Sie ist eine Genetisch Bedingte Erkrankung.", wrong: ["Sie ist eine Vererbungsmuster in Familien Rekonstruieren.", "Sie ist eine Blutgruppen A, B, AB, 0.", "Die Erbkrankheit ist die Rh-Faktor Positiv/negativ."],
       explanation: "Erbkrankheit: Genetisch bedingte Erkrankung",
       wissen: fw(
         "Ursachen, Symptome, Therapie unterschiedlich. Bezug: Humangenetik.",
@@ -5413,8 +5039,7 @@ export const k10Humangenetik: BioBank = {
     {
       concept: "bio:k10:humangen:f10",
       prompt: "Was kennzeichnet „Beratung“?",
-      answer: "Die Beratung ist kurz gesagt: Humangenetische Aufklärung.",
-      wrong: ["Die Beratung ist hier: Vererbungsmuster in Familien rekonstruieren.", "Die Beratung ist hier: Blutgruppen A, B, AB, 0.", "Die Beratung ist kurz gesagt: Rh-Faktor positiv/negativ."],
+      answer: "Die Beratung ist die Humangenetische Aufklärung.", wrong: ["Sie ist eine Vererbungsmuster in Familien Rekonstruieren.", "Sie ist eine Blutgruppen A, B, AB, 0.", "Die Beratung ist die Rh-Faktor Positiv/negativ."],
       explanation: "Beratung: Humangenetische Aufklärung",
       wissen: fw(
         "Unterstützt informierte Entscheidungen. Bezug: Humangenetik.",
@@ -5425,8 +5050,7 @@ export const k10Humangenetik: BioBank = {
     {
       concept: "bio:k10:humangen:f11",
       prompt: "Was kennzeichnet „Inklusion“?",
-      answer: "Die Inklusion ist hier: Teilhabe betroffener Menschen.",
-      wrong: ["Die Inklusion ist hier: Vererbungsmuster in Familien rekonstruieren.", "Die Inklusion ist hier: Blutgruppen A, B, AB, 0.", "Die Inklusion ist kurz gesagt: Rh-Faktor positiv/negativ."],
+      answer: "Sie ist ein Teilhabe Betroffener Menschen.", wrong: ["Sie ist eine Vererbungsmuster in Familien Rekonstruieren.", "Sie ist eine Blutgruppen A, B, AB, 0.", "Die Inklusion ist die Rh-Faktor Positiv/negativ."],
       explanation: "Inklusion: Teilhabe betroffener Menschen",
       wissen: fw(
         "Ethischer Aspekt neben Diagnostik. Bezug: Humangenetik.",
@@ -5437,8 +5061,7 @@ export const k10Humangenetik: BioBank = {
     {
       concept: "bio:k10:humangen:x0",
       prompt: "Humangenetik: Wozu dient eine Stammbaumanalyse?",
-      answer: "Die eine Stammbaumanalyse ist hier: Sie rekonstruiert Vererbungsmuster in Familien, und zwar gilt: zeigt dominant/rezessiv und gonosomal.",
-      wrong: ["Die eine Stammbaumanalyse ist kurz gesagt: Sie misst nur den Puls.", "Die eine Stammbaumanalyse ist hier: Sie ersetzt DNA vollständig immer.", "Die eine Stammbaumanalyse ist kurz gesagt: Sie zählt nur Zähne."],
+      answer: "Sie ist eine Sie Rekonstruiert Vererbungsmuster in Familien, zeigt dominant/rezessiv und gonosomal.", wrong: ["Sie misst das Nur den Puls.", "Sie ist ein Sie Ersetzt DNA Vollständig Immer.", "Sie zählt nur Zähne."],
       explanation: "Humangenetik.",
       wissen: fw(
         "Symbole und Generationen zeigen, ob Merkmale autosomal oder gonosomal vererbt werden.",
@@ -5447,8 +5070,7 @@ export const k10Humangenetik: BioBank = {
     {
       concept: "bio:k10:humangen:x1",
       prompt: "Humangenetik: Warum sind ethische Fragen in der Humangenetik zentral?",
-      answer: "Es geht um Diagnostik und Beratung berühren Autonomie und Teilhabe, und zwar gilt: zeigt dominant/rezessiv und gonosomal.",
-      wrong: ["Hier gilt: Weil Ethik unnötig ist.", "Hier gilt: Weil Gene keine Folgen haben.", "Hier gilt: Weil nur Pflanzen betroffen sind."],
+      answer: "Es ist eine Diagnostik und Beratung berühren Autonomie und Teilhabe.", wrong: ["Es ist eine Weil Ethik unnötig ist.", "Es ist eine Weil Gene keine Folgen haben.", "Es ist eine Weil nur Pflanzen betroffen sind."],
       explanation: "Werteorientierung.",
       wissen: fw(
         "Pränatale Diagnostik und Umgang mit Erbkrankheiten verlangen sorgfältige Abwägung.",
@@ -5496,8 +5118,7 @@ export const k10Evolutionstheorie: BioBank = {
     {
       concept: "bio:k10:evoth:f0",
       prompt: "Was kennzeichnet „Linné“?",
-      answer: "Das Linné ist hier: Systematiker der binären Nomenklatur.",
-      wrong: ["Das Linné ist hier: Frühe Evolutionstheorie mit Vererbung erworbener Merkmale.", "Das Linné ist hier: Begründer der Selektionstheorie.", "Das Linné ist kurz gesagt: Unterschiedlicher Fortpflanzungserfolg."],
+      answer: "Es ist eine Systematiker der Binären Nomenklatur.", wrong: ["Es ist eine Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.", "Es ist eine Begründer der Selektionstheorie.", "Das Linné ist das Unterschiedlicher Fortpflanzungserfolg."],
       explanation: "Linné: Systematiker der binären Nomenklatur",
       wissen: fw(
         "Ordnete Arten, ohne moderne Evolutionstheorie. Bezug: Evolutionstheorie.",
@@ -5508,8 +5129,7 @@ export const k10Evolutionstheorie: BioBank = {
     {
       concept: "bio:k10:evoth:f1",
       prompt: "Was kennzeichnet „Lamarck“?",
-      answer: "Das Lamarck ist hier: Frühe Evolutionstheorie mit Vererbung erworbener Merkmale.",
-      wrong: ["Das Lamarck ist hier: Systematiker der binären Nomenklatur.", "Das Lamarck ist hier: Begründer der Selektionstheorie.", "Das Lamarck ist kurz gesagt: Unterschiedlicher Fortpflanzungserfolg."],
+      answer: "Es ist eine Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.", wrong: ["Es ist eine Systematiker der Binären Nomenklatur.", "Es ist eine Begründer der Selektionstheorie.", "Das Lamarck ist das Unterschiedlicher Fortpflanzungserfolg."],
       explanation: "Lamarck: Frühe Evolutionstheorie mit Vererbung erworbener Merkmale",
       wissen: fw(
         "Heute so nicht haltbar. Bezug: Evolutionstheorie.",
@@ -5520,8 +5140,7 @@ export const k10Evolutionstheorie: BioBank = {
     {
       concept: "bio:k10:evoth:f2",
       prompt: "Was kennzeichnet „Darwin“?",
-      answer: "Das Darwin ist hier: Begründer der Selektionstheorie.",
-      wrong: ["Das Darwin ist hier: Systematiker der binären Nomenklatur.", "Das Darwin ist hier: Frühe Evolutionstheorie mit Vererbung erworbener Merkmale.", "Das Darwin ist kurz gesagt: Unterschiedlicher Fortpflanzungserfolg."],
+      answer: "Es ist eine Begründer der Selektionstheorie.", wrong: ["Es ist eine Systematiker der Binären Nomenklatur.", "Es ist eine Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.", "Das Darwin ist das Unterschiedlicher Fortpflanzungserfolg."],
       explanation: "Darwin: Begründer der Selektionstheorie",
       wissen: fw(
         "Natürliche Auslese erklärt Anpassung. Bezug: Evolutionstheorie.",
@@ -5532,8 +5151,7 @@ export const k10Evolutionstheorie: BioBank = {
     {
       concept: "bio:k10:evoth:f3",
       prompt: "Was kennzeichnet „natürliche Selektion“?",
-      answer: "Die natürliche Selektion ist hier: Unterschiedlicher Fortpflanzungserfolg.",
-      wrong: ["Die natürliche Selektion ist hier: Systematiker der binären Nomenklatur.", "Die natürliche Selektion ist hier: Frühe Evolutionstheorie mit Vererbung erworbener Merkmale.", "Die natürliche Selektion ist hier: Begründer der Selektionstheorie."],
+      answer: "Die natürliche Selektion ist die Unterschiedlicher Fortpflanzungserfolg.", wrong: ["Sie ist eine Systematiker der Binären Nomenklatur.", "Sie ist eine Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.", "Sie ist eine Begründer der Selektionstheorie."],
       explanation: "natürliche Selektion: Unterschiedlicher Fortpflanzungserfolg",
       wissen: fw(
         "Filtert Variation. Bezug: Evolutionstheorie.",
@@ -5544,8 +5162,7 @@ export const k10Evolutionstheorie: BioBank = {
     {
       concept: "bio:k10:evoth:f4",
       prompt: "Was kennzeichnet „Artbegriff“?",
-      answer: "Das Artbegriff ist hier: Biologische Art als Fortpflanzungsgemeinschaft.",
-      wrong: ["Das Artbegriff ist hier: Systematiker der binären Nomenklatur.", "Das Artbegriff ist hier: Frühe Evolutionstheorie mit Vererbung erworbener Merkmale.", "Das Artbegriff ist hier: Begründer der Selektionstheorie."],
+      answer: "Es ist eine Biologische Art als Fortpflanzungsgemeinschaft.", wrong: ["Es ist eine Systematiker der Binären Nomenklatur.", "Es ist eine Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.", "Es ist eine Begründer der Selektionstheorie."],
       explanation: "Artbegriff: Biologische Art als Fortpflanzungsgemeinschaft",
       wissen: fw(
         "Ein Konzept unter mehreren. Bezug: Evolutionstheorie.",
@@ -5556,8 +5173,7 @@ export const k10Evolutionstheorie: BioBank = {
     {
       concept: "bio:k10:evoth:f5",
       prompt: "Was kennzeichnet „Population“?",
-      answer: "Die Population ist hier: Individuen einer Art in einem Gebiet.",
-      wrong: ["Die Population ist hier: Systematiker der binären Nomenklatur.", "Die Population ist hier: Frühe Evolutionstheorie mit Vererbung erworbener Merkmale.", "Die Population ist hier: Begründer der Selektionstheorie."],
+      answer: "Sie ist eine Individuen einer Art in einem Gebiet.", wrong: ["Sie ist eine Systematiker der Binären Nomenklatur.", "Sie ist eine Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.", "Sie ist eine Begründer der Selektionstheorie."],
       explanation: "Population: Individuen einer Art in einem Gebiet",
       wissen: fw(
         "Evolutionsraum. Bezug: Evolutionstheorie.",
@@ -5568,8 +5184,7 @@ export const k10Evolutionstheorie: BioBank = {
     {
       concept: "bio:k10:evoth:f6",
       prompt: "Was kennzeichnet „Mutation“?",
-      answer: "Die Mutation ist hier: Änderung der Erbinformation.",
-      wrong: ["Die Mutation ist hier: Systematiker der binären Nomenklatur.", "Die Mutation ist hier: Frühe Evolutionstheorie mit Vererbung erworbener Merkmale.", "Die Mutation ist hier: Begründer der Selektionstheorie."],
+      answer: "Sie ist eine Änderung der Erbinformation.", wrong: ["Sie ist eine Systematiker der Binären Nomenklatur.", "Sie ist eine Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.", "Sie ist eine Begründer der Selektionstheorie."],
       explanation: "Mutation: Änderung der Erbinformation",
       wissen: fw(
         "Liefert Variation. Bezug: Evolutionstheorie.",
@@ -5580,8 +5195,7 @@ export const k10Evolutionstheorie: BioBank = {
     {
       concept: "bio:k10:evoth:f7",
       prompt: "Was kennzeichnet „Rekombination“?",
-      answer: "Die Rekombination ist hier: Neukombination von Allelen.",
-      wrong: ["Die Rekombination ist hier: Systematiker der binären Nomenklatur.", "Die Rekombination ist hier: Frühe Evolutionstheorie mit Vererbung erworbener Merkmale.", "Die Rekombination ist hier: Begründer der Selektionstheorie."],
+      answer: "Sie ist eine Neukombination von Allelen.", wrong: ["Sie ist eine Systematiker der Binären Nomenklatur.", "Sie ist eine Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.", "Sie ist eine Begründer der Selektionstheorie."],
       explanation: "Rekombination: Neukombination von Allelen",
       wissen: fw(
         "Erhöht Vielfalt. Bezug: Evolutionstheorie.",
@@ -5592,8 +5206,7 @@ export const k10Evolutionstheorie: BioBank = {
     {
       concept: "bio:k10:evoth:f8",
       prompt: "Was kennzeichnet „Isolation“?",
-      answer: "Die Isolation ist hier: Unterbrechung des Genflusses.",
-      wrong: ["Die Isolation ist hier: Systematiker der binären Nomenklatur.", "Die Isolation ist hier: Frühe Evolutionstheorie mit Vererbung erworbener Merkmale.", "Die Isolation ist hier: Begründer der Selektionstheorie."],
+      answer: "Sie ist eine Unterbrechung des Genflusses.", wrong: ["Sie ist eine Systematiker der Binären Nomenklatur.", "Sie ist eine Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.", "Sie ist eine Begründer der Selektionstheorie."],
       explanation: "Isolation: Unterbrechung des Genflusses",
       wissen: fw(
         "Fördert Artbildung. Bezug: Evolutionstheorie.",
@@ -5604,8 +5217,7 @@ export const k10Evolutionstheorie: BioBank = {
     {
       concept: "bio:k10:evoth:f9",
       prompt: "Was kennzeichnet „Synthetische Theorie“?",
-      answer: "Die Synthetische Theorie ist hier: Modernes Zusammenspiel der Evolutionsfaktoren.",
-      wrong: ["Die Synthetische Theorie ist hier: Systematiker der binären Nomenklatur.", "Die Synthetische Theorie ist hier: Frühe Evolutionstheorie mit Vererbung erworbener Merkmale.", "Die Synthetische Theorie ist hier: Begründer der Selektionstheorie."],
+      answer: "Sie ist eine Modernes Zusammenspiel der Evolutionsfaktoren.", wrong: ["Sie ist eine Systematiker der Binären Nomenklatur.", "Sie ist eine Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.", "Sie ist eine Begründer der Selektionstheorie."],
       explanation: "Synthetische Theorie: Modernes Zusammenspiel der Evolutionsfaktoren",
       wissen: fw(
         "Mutation, Selektion, Drift, Genfluss. Bezug: Evolutionstheorie.",
@@ -5616,8 +5228,7 @@ export const k10Evolutionstheorie: BioBank = {
     {
       concept: "bio:k10:evoth:f10",
       prompt: "Was kennzeichnet „Fitness“?",
-      answer: "Das Fitness ist kurz gesagt: Relativer Fortpflanzungserfolg.",
-      wrong: ["Das Fitness ist hier: Systematiker der binären Nomenklatur.", "Das Fitness ist hier: Frühe Evolutionstheorie mit Vererbung erworbener Merkmale.", "Das Fitness ist hier: Begründer der Selektionstheorie."],
+      answer: "Das Fitness ist das Relativer Fortpflanzungserfolg.", wrong: ["Es ist eine Systematiker der Binären Nomenklatur.", "Es ist eine Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.", "Es ist eine Begründer der Selektionstheorie."],
       explanation: "Fitness: Relativer Fortpflanzungserfolg",
       wissen: fw(
         "Maß der Angepasstheit. Bezug: Evolutionstheorie.",
@@ -5628,8 +5239,7 @@ export const k10Evolutionstheorie: BioBank = {
     {
       concept: "bio:k10:evoth:f11",
       prompt: "Was kennzeichnet „Anpassung“?",
-      answer: "Die Anpassung ist hier: Merkmal mit Selektionsvorteil.",
-      wrong: ["Die Anpassung ist hier: Systematiker der binären Nomenklatur.", "Die Anpassung ist hier: Frühe Evolutionstheorie mit Vererbung erworbener Merkmale.", "Die Anpassung ist hier: Begründer der Selektionstheorie."],
+      answer: "Sie ist eine Merkmal mit Selektionsvorteil.", wrong: ["Sie ist eine Systematiker der Binären Nomenklatur.", "Sie ist eine Frühe Evolutionstheorie mit Vererbung Erworbener Merkmale.", "Sie ist eine Begründer der Selektionstheorie."],
       explanation: "Anpassung: Merkmal mit Selektionsvorteil",
       wissen: fw(
         "Historisch entstanden. Bezug: Evolutionstheorie.",
@@ -5640,8 +5250,7 @@ export const k10Evolutionstheorie: BioBank = {
     {
       concept: "bio:k10:evoth:x0",
       prompt: "Evolutionstheorie: Was unterscheidet Darwin von Lamarck zentral?",
-      answer: "Es geht um Darwin betont Selektion vorhandener Variation; Lamarck betonte erworbene Merkmale.",
-      wrong: ["Es geht um Beide leugnen jede Veränderung.", "Hier gilt klar: Beide sind identisch.", "Es geht um Nur Linné erklärte Selektion."],
+      answer: "Es ist eine Darwin betont Selektion vorhandener Variation; Lamarck betonte erworbene Merkmale.", wrong: ["Es ist eine Beide leugnen jede Veränderung.", "Beide sind identisch.", "Es ist eine Nur Linné erklärte Selektion."],
       explanation: "Wissenschaftsgeschichte.",
       wissen: fw(
         "Die moderne Theorie baut auf Variation und Selektion, nicht auf gezielte Vererbung erworbener Übungen.",
@@ -5650,8 +5259,7 @@ export const k10Evolutionstheorie: BioBank = {
     {
       concept: "bio:k10:evoth:x1",
       prompt: "Evolutionstheorie: Welche Rolle spielte Linné?",
-      answer: "Es geht um Er systematisierte Arten mit binärer Nomenklatur, und zwar gilt: ordnete Arten, ohne moderne Evolutionstheorie.",
-      wrong: ["Es geht um Er entdeckte die DNA-Doppelhelix allein.", "Es geht um Er formulierte die Selektionstheorie.", "Es geht um Er leugnete Arten."],
+      answer: "Es ist eine Er systematisierte Arten mit binärer Nomenklatur.", wrong: ["Es ist ein Er entdeckte die DNA-Doppelhelix allein.", "Es ist eine Er formulierte die Selektionstheorie.", "Es ist eine Er leugnete Arten."],
       explanation: "Systematik.",
       wissen: fw(
         "Linnés Ordnung war Voraussetzung späterer Evolutionsvergleiche, ohne selbst moderne Selektion zu begründen.",
@@ -5699,8 +5307,7 @@ export const k10Progression: BioBank = {
     {
       concept: "bio:k10:prog:f0",
       prompt: "Was kennzeichnet „Oberflächenvergrößerung“?",
-      answer: "Die Oberflächenvergrößerung ist hier: Vergrößerung der Austauschfläche.",
-      wrong: ["Die Oberflächenvergrößerung ist hier: Innere Fläche der Lunge.", "Die Oberflächenvergrößerung ist hier: Gasaustausch über die Haut.", "Die Oberflächenvergrößerung ist hier: Gasaustausch über Lungen."],
+      answer: "Sie ist eine Vergrößerung der Austauschfläche.", wrong: ["Sie ist eine Innere Fläche der Lunge.", "Sie ist eine Gasaustausch über die Haut.", "Sie ist eine Gasaustausch über Lungen."],
       explanation: "Oberflächenvergrößerung: Vergrößerung der Austauschfläche",
       wissen: fw(
         "z. B. Lungenbläschen. Bezug: Evolutionsprogression.",
@@ -5711,8 +5318,7 @@ export const k10Progression: BioBank = {
     {
       concept: "bio:k10:prog:f1",
       prompt: "Was kennzeichnet „Lungenoberfläche“?",
-      answer: "Die Lungenoberfläche ist hier: Innere Fläche der Lunge.",
-      wrong: ["Die Lungenoberfläche ist hier: Vergrößerung der Austauschfläche.", "Die Lungenoberfläche ist hier: Gasaustausch über die Haut.", "Die Lungenoberfläche ist hier: Gasaustausch über Lungen."],
+      answer: "Sie ist eine Innere Fläche der Lunge.", wrong: ["Sie ist eine Vergrößerung der Austauschfläche.", "Sie ist eine Gasaustausch über die Haut.", "Sie ist eine Gasaustausch über Lungen."],
       explanation: "Lungenoberfläche: Innere Fläche der Lunge",
       wissen: fw(
         "Steigt zu Säugern hin stark. Bezug: Evolutionsprogression.",
@@ -5723,8 +5329,7 @@ export const k10Progression: BioBank = {
     {
       concept: "bio:k10:prog:f2",
       prompt: "Was kennzeichnet „Hautatmung“?",
-      answer: "Die Hautatmung ist hier: Gasaustausch über die Haut.",
-      wrong: ["Die Hautatmung ist hier: Vergrößerung der Austauschfläche.", "Die Hautatmung ist hier: Innere Fläche der Lunge.", "Die Hautatmung ist hier: Gasaustausch über Lungen."],
+      answer: "Sie ist eine Gasaustausch über die Haut.", wrong: ["Sie ist eine Vergrößerung der Austauschfläche.", "Sie ist eine Innere Fläche der Lunge.", "Sie ist eine Gasaustausch über Lungen."],
       explanation: "Hautatmung: Gasaustausch über die Haut",
       wissen: fw(
         "Bei Lurchen bedeutsam. Bezug: Evolutionsprogression.",
@@ -5735,8 +5340,7 @@ export const k10Progression: BioBank = {
     {
       concept: "bio:k10:prog:f3",
       prompt: "Was kennzeichnet „Lungenatmung“?",
-      answer: "Die Lungenatmung ist hier: Gasaustausch über Lungen.",
-      wrong: ["Die Lungenatmung ist hier: Vergrößerung der Austauschfläche.", "Die Lungenatmung ist hier: Innere Fläche der Lunge.", "Die Lungenatmung ist hier: Gasaustausch über die Haut."],
+      answer: "Sie ist eine Gasaustausch über Lungen.", wrong: ["Sie ist eine Vergrößerung der Austauschfläche.", "Sie ist eine Innere Fläche der Lunge.", "Sie ist eine Gasaustausch über die Haut."],
       explanation: "Lungenatmung: Gasaustausch über Lungen",
       wissen: fw(
         "Dominanz bei Landwirbeltieren. Bezug: Evolutionsprogression.",
@@ -5747,8 +5351,7 @@ export const k10Progression: BioBank = {
     {
       concept: "bio:k10:prog:f4",
       prompt: "Was kennzeichnet „Feuchtlufttier“?",
-      answer: "Der Feuchtlufttier ist hier: Tier mit feuchtigkeitsabhängiger Hautatmung.",
-      wrong: ["Der Feuchtlufttier ist hier: Vergrößerung der Austauschfläche.", "Der Feuchtlufttier ist hier: Innere Fläche der Lunge.", "Der Feuchtlufttier ist hier: Gasaustausch über die Haut."],
+      answer: "Er ist eine Tier mit Feuchtigkeitsabhängiger Hautatmung.", wrong: ["Er ist eine Vergrößerung der Austauschfläche.", "Er ist eine Innere Fläche der Lunge.", "Er ist eine Gasaustausch über die Haut."],
       explanation: "Feuchtlufttier: Tier mit feuchtigkeitsabhängiger Hautatmung",
       wissen: fw(
         "Viele Lurche. Bezug: Evolutionsprogression.",
@@ -5759,8 +5362,7 @@ export const k10Progression: BioBank = {
     {
       concept: "bio:k10:prog:f5",
       prompt: "Was kennzeichnet „Trockenlufttier“?",
-      answer: "Der Trockenlufttier ist hier: Tier mit geschützter Luftatmung.",
-      wrong: ["Der Trockenlufttier ist hier: Vergrößerung der Austauschfläche.", "Der Trockenlufttier ist hier: Innere Fläche der Lunge.", "Der Trockenlufttier ist hier: Gasaustausch über die Haut."],
+      answer: "Er ist eine Tier mit Geschützter Luftatmung.", wrong: ["Er ist eine Vergrößerung der Austauschfläche.", "Er ist eine Innere Fläche der Lunge.", "Er ist eine Gasaustausch über die Haut."],
       explanation: "Trockenlufttier: Tier mit geschützter Luftatmung",
       wissen: fw(
         "Kriechtiere und Säuger. Bezug: Evolutionsprogression.",
@@ -5771,8 +5373,7 @@ export const k10Progression: BioBank = {
     {
       concept: "bio:k10:prog:f6",
       prompt: "Was kennzeichnet „wechselwarm“?",
-      answer: "Das wechselwarm ist kurz gesagt: Körpertemperatur folgt Umwelt.",
-      wrong: ["Das wechselwarm ist hier: Vergrößerung der Austauschfläche.", "Das wechselwarm ist hier: Innere Fläche der Lunge.", "Das wechselwarm ist hier: Gasaustausch über die Haut."],
+      answer: "Körpertemperatur folgt Umwelt.", wrong: ["Es ist eine Vergrößerung der Austauschfläche.", "Es ist eine Innere Fläche der Lunge.", "Es ist eine Gasaustausch über die Haut."],
       explanation: "wechselwarm: Körpertemperatur folgt Umwelt",
       wissen: fw(
         "Geringerer Dauerenergiebedarf. Bezug: Evolutionsprogression.",
@@ -5783,8 +5384,7 @@ export const k10Progression: BioBank = {
     {
       concept: "bio:k10:prog:f7",
       prompt: "Was kennzeichnet „gleichwarm“?",
-      answer: "Das gleichwarm ist hier: Körpertemperatur weitgehend konstant.",
-      wrong: ["Das gleichwarm ist hier: Vergrößerung der Austauschfläche.", "Das gleichwarm ist hier: Innere Fläche der Lunge.", "Das gleichwarm ist hier: Gasaustausch über die Haut."],
+      answer: "Es ist eine Körpertemperatur Weitgehend Konstant.", wrong: ["Es ist eine Vergrößerung der Austauschfläche.", "Es ist eine Innere Fläche der Lunge.", "Es ist eine Gasaustausch über die Haut."],
       explanation: "gleichwarm: Körpertemperatur weitgehend konstant",
       wissen: fw(
         "Hoher Energie- und O₂-Bedarf. Bezug: Evolutionsprogression.",
@@ -5795,8 +5395,7 @@ export const k10Progression: BioBank = {
     {
       concept: "bio:k10:prog:f8",
       prompt: "Was kennzeichnet „Leistungssteigerung“?",
-      answer: "Die Leistungssteigerung ist hier: Zunahme physiologischer Kapazität.",
-      wrong: ["Die Leistungssteigerung ist hier: Vergrößerung der Austauschfläche.", "Die Leistungssteigerung ist hier: Innere Fläche der Lunge.", "Die Leistungssteigerung ist hier: Gasaustausch über die Haut."],
+      answer: "Sie ist eine Zunahme Physiologischer Kapazität.", wrong: ["Sie ist eine Vergrößerung der Austauschfläche.", "Sie ist eine Innere Fläche der Lunge.", "Sie ist eine Gasaustausch über die Haut."],
       explanation: "Leistungssteigerung: Zunahme physiologischer Kapazität",
       wissen: fw(
         "z. B. bessere O₂-Versorgung. Bezug: Evolutionsprogression.",
@@ -5807,8 +5406,7 @@ export const k10Progression: BioBank = {
     {
       concept: "bio:k10:prog:f9",
       prompt: "Was kennzeichnet „Umweltunabhängigkeit“?",
-      answer: "Die Umweltunabhängigkeit ist hier: Geringere Bindung an Umweltfaktoren.",
-      wrong: ["Die Umweltunabhängigkeit ist hier: Vergrößerung der Austauschfläche.", "Die Umweltunabhängigkeit ist hier: Innere Fläche der Lunge.", "Die Umweltunabhängigkeit ist hier: Gasaustausch über die Haut."],
+      answer: "Sie ist eine Geringere Bindung an Umweltfaktoren.", wrong: ["Sie ist eine Vergrößerung der Austauschfläche.", "Sie ist eine Innere Fläche der Lunge.", "Sie ist eine Gasaustausch über die Haut."],
       explanation: "Umweltunabhängigkeit: Geringere Bindung an Umweltfaktoren",
       wissen: fw(
         "z. B. Temperatur oder Feuchte. Bezug: Evolutionsprogression.",
@@ -5819,8 +5417,7 @@ export const k10Progression: BioBank = {
     {
       concept: "bio:k10:prog:f10",
       prompt: "Was kennzeichnet „Progression“?",
-      answer: "Die Progression ist hier: Gerichtete Steigerung von Leistungen.",
-      wrong: ["Die Progression ist hier: Vergrößerung der Austauschfläche.", "Die Progression ist hier: Innere Fläche der Lunge.", "Die Progression ist hier: Gasaustausch über die Haut."],
+      answer: "Sie ist eine Gerichtete Steigerung von Leistungen.", wrong: ["Sie ist eine Vergrößerung der Austauschfläche.", "Sie ist eine Innere Fläche der Lunge.", "Sie ist eine Gasaustausch über die Haut."],
       explanation: "Progression: Gerichtete Steigerung von Leistungen",
       wissen: fw(
         "Vergleichender Evolutionsaspekt. Bezug: Evolutionsprogression.",
@@ -5831,8 +5428,7 @@ export const k10Progression: BioBank = {
     {
       concept: "bio:k10:prog:f11",
       prompt: "Wozu dient die Organveränderung?",
-      answer: "Die die Organveränderung ist hier: Umbau von Organen im Verlauf.",
-      wrong: ["Die die Organveränderung ist hier: Vergrößerung der Austauschfläche.", "Die die Organveränderung ist hier: Innere Fläche der Lunge.", "Die die Organveränderung ist hier: Gasaustausch über die Haut."],
+      answer: "Sie ist eine Umbau von Organen im Verlauf.", wrong: ["Sie ist eine Vergrößerung der Austauschfläche.", "Sie ist eine Innere Fläche der Lunge.", "Sie ist eine Gasaustausch über die Haut."],
       explanation: "Organveränderung: Umbau von Organen im Verlauf",
       wissen: fw(
         "Struktur folgt neuer Funktion. Bezug: Evolutionsprogression.",
@@ -5843,8 +5439,7 @@ export const k10Progression: BioBank = {
     {
       concept: "bio:k10:prog:x0",
       prompt: "Evolutionsprogression: Warum brauchen gleichwarme Säuger besonders große Lungenoberflächen?",
-      answer: "Es geht um Hoher Stoffwechsel verlangt viel Sauerstoff.",
-      wrong: ["Hier gilt: Weil sie nie atmen.", "Es geht um Weil Wärme Lungen ersetzt.", "Hier gilt: Weil Fell O₂ erzeugt."],
+      answer: "Es ist ein Hoher Stoffwechsel verlangt viel Sauerstoff.", wrong: ["Es ist eine Weil sie nie atmen.", "Es ist eine Weil Wärme Lungen ersetzt.", "Es ist eine Weil Fell O₂ erzeugt."],
       explanation: "Energie und Atmung.",
       wissen: fw(
         "Gleichwarme Tiere halten Temperatur und brauchen dafür viel Energie — und effizienten Gasaustausch.",
@@ -5853,8 +5448,7 @@ export const k10Progression: BioBank = {
     {
       concept: "bio:k10:prog:x1",
       prompt: "Evolutionsprogression: Was zeigt der Vergleich Lurch–Kriechtier–Säuger bei der Atmung?",
-      answer: "Es geht um Zunehmende Bedeutung der Lunge und Oberflächenvergrößerung, und zwar gilt: z. B. Lungenbläschen.",
-      wrong: ["Es geht um Abnahme jeder Atmung.", "Es geht um Identische Kiemen lebenslang.", "Es geht um Verlust aller Lungen."],
+      answer: "Es ist eine Zunehmende Bedeutung der Lunge und Oberflächenvergrößerung.", wrong: ["Es ist eine Abnahme jeder Atmung.", "Es ist eine Identische Kiemen lebenslang.", "Es ist eine Verlust aller Lungen."],
       explanation: "Progression.",
       wissen: fw(
         "Von feuchtigkeitsgebundener Haut-/Lungenatmung zu leistungsfähiger Landlungenatmung nimmt die Unabhängigkeit zu.",

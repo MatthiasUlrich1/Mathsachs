@@ -72,13 +72,17 @@ describe('glossaryMcRewrite safe minimal', () => {
       term: 'Chronologie',
       style: 'definition',
     })
-    expect(def).toMatch(/^Die Chronologie ist hier:/i)
-    expect(def).toMatch(/Zeitliche Ordnung/i)
+    expect(def).toMatch(/zeitliche Ordnung/i)
+    expect(def).not.toMatch(/ist hier:/i)
+    expect(def).not.toMatch(/kurz gesagt:/i)
+    expect(def).not.toMatch(/Es geht um/i)
+    expect(def).not.toMatch(/und zwar gilt/i)
     expect(def).not.toMatch(/steht im Kern für Folgendes/i)
     expect(def).not.toMatch(/fasst zusammen/i)
     expect(def).not.toMatch(/Darunter versteht man/i)
     expect(def).not.toMatch(/^Sie bezeichnet\b/i)
     expect(def).not.toMatch(/— so bei/i)
+    expect(isMechanicalGlossaryOption(def)).toBe(false)
     expect(isMechanicalGlossaryOption('Sie kennzeichnet die zeitliche Ordnung.')).toBe(true)
     expect(isMechanicalGlossaryOption('Sie steht im Kern für Folgendes: Zeitliche Ordnung.')).toBe(
       true,
@@ -124,10 +128,15 @@ describe('glossaryMcRewrite safe minimal', () => {
     })
     expect(modell).not.toMatch(/^Sie bezeichnet\b/i)
     expect(modell).toMatch(/[Mm]odell/)
-    expect(modell).toMatch(/^Der Lichtstrahl ist hier:/i)
+    expect(modell).not.toMatch(/ist hier:/i)
+    expect(modell).not.toMatch(/kurz gesagt:/i)
+    expect(modell).not.toMatch(/Es geht um/i)
+    expect(modell).not.toMatch(/und zwar gilt/i)
     expect(modell).not.toMatch(/steht im Kern für Folgendes/i)
     expect(modell).not.toMatch(/fasst zusammen/i)
     expect(modell).not.toMatch(/— so bei/i)
+    expect(isMechanicalGlossaryOption('Die Religion ist hier: Glaubensvorstellungen.')).toBe(true)
+    expect(isMechanicalGlossaryOption('Es geht um Glaubensvorstellungen.')).toBe(true)
   })
 
   it('physik/bio sanitizer entry points rewrite vague stems', () => {

@@ -25,8 +25,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-redox:p0:f",
       prompt: "Was kennzeichnet „Fotosynthese“?",
-      answer: "Licht → chemische Energie, und zwar gilt hier: CO2 + H2O → Glucose + O2.",
-      wrong: ["Die Fotosynthese ist kurz gesagt: direkt RuBisCO.", "Die Fotosynthese ist hier: Glucose → Pyruvat.", "Die Fotosynthese ist kurz gesagt: nutzt Protonenfluss."],
+      answer: "Sie ist eine Licht → Chemische Energie durch CO2 + H2O → Glucose + O2.", wrong: ["Die Fotosynthese ist direkt RuBisCO.", "Sie ist eine Glucose → Pyruvat.", "Sie nutzt Protonenfluss."],
       explanation: "CO2 + H2O → Glucose + O2. Bezug: Fotosynthese. Fotosynthese bedeutet: Licht → chemische Energie.",
       wissen: "CO2 + H2O → Glucose + O2. Bezug: Fotosynthese. Fotosynthese bedeutet: Licht → chemische Energie.",
       flashFront: "Fotosynthese",
@@ -34,8 +33,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-redox:p1:f",
       prompt: "Was kennzeichnet „C3-Pflanze“?",
-      answer: "Die C3-Pflanze ist kurz gesagt: direkt RuBisCO, und zwar gilt: photorespiration möglich.",
-      wrong: ["Die C3-Pflanze ist hier: Glucose → Pyruvat.", "Die C3-Pflanze ist kurz gesagt: nutzt Protonenfluss.", "Die C3-Pflanze ist kurz gesagt: Elektronenübertragung."],
+      answer: "Sie ist direkt RuBisCO durch photorespiration möglich.", wrong: ["Sie ist eine Glucose → Pyruvat.", "Sie nutzt Protonenfluss.", "Die C3-Pflanze ist die Elektronenübertragung."],
       explanation: "Photorespiration möglich. Bezug: C3-Pflanze. C3-Pflanze bedeutet: direkt RuBisCO.",
       wissen: "Photorespiration möglich. Bezug: C3-Pflanze. C3-Pflanze bedeutet: direkt RuBisCO.",
       flashFront: "C3-Pflanze",
@@ -43,8 +41,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-redox:p2:f",
       prompt: "Was kennzeichnet „Glykolyse“?",
-      answer: "Die Glykolyse ist hier: Glucose → Pyruvat, und zwar gilt: im Cytoplasma.",
-      wrong: ["Die Glykolyse ist kurz gesagt: nutzt Protonenfluss.", "Die Glykolyse ist kurz gesagt: Elektronenübertragung.", "Die Glykolyse ist hier: O2 statt CO2 an RuBisCO."],
+      answer: "Sie ist eine Glucose → Pyruvat durch im Cytoplasma.", wrong: ["Sie nutzt Protonenfluss.", "Die Glykolyse ist die Elektronenübertragung.", "Sie ist eine O2 Statt CO2 an RuBisCO."],
       explanation: "im Cytoplasma. Bezug: Glykolyse. Glykolyse bedeutet: Glucose → Pyruvat.",
       wissen: "im Cytoplasma. Bezug: Glykolyse. Glykolyse bedeutet: Glucose → Pyruvat.",
       flashFront: "Glykolyse",
@@ -52,8 +49,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-redox:p3:f",
       prompt: "Wozu dient die ATP-Synthase?",
-      answer: "Sie nutzt Protonenfluss, und zwar gilt hier: Oxidative Phosphorylierung.",
-      wrong: ["Die ATP-Synthase ist kurz gesagt: Elektronenübertragung.", "Die ATP-Synthase ist hier: O2 statt CO2 an RuBisCO.", "Die ATP-Synthase ist hier: einseitig durch Ökosystem."],
+      answer: "Sie nutzt Protonenfluss durch oxidative Phosphorylierung.", wrong: ["Die ATP-Synthase ist die Elektronenübertragung.", "Sie ist eine O2 Statt CO2 an RuBisCO.", "Die ATP-Synthase ist einseitig durch Ökosystem."],
       explanation: "oxidative Phosphorylierung. Bezug: ATP-Synthase. ATP-Synthase bedeutet: nutzt Protonenfluss.",
       wissen: "oxidative Phosphorylierung. Bezug: ATP-Synthase. ATP-Synthase bedeutet: nutzt Protonenfluss.",
       flashFront: "ATP-Synthase",
@@ -61,8 +57,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-redox:p4:f",
       prompt: "Was kennzeichnet „Redoxreaktion“?",
-      answer: "Die Redoxreaktion ist kurz gesagt: Elektronenübertragung, und zwar gilt: stoffwechselkern.",
-      wrong: ["Die Redoxreaktion ist hier: O2 statt CO2 an RuBisCO.", "Die Redoxreaktion ist hier: einseitig durch Ökosystem.", "Die Redoxreaktion ist hier: nach Abzug Atmung."],
+      answer: "Sie ist eine Elektronenübertragung durch Stoffwechselkern.", wrong: ["Sie ist eine O2 Statt CO2 an RuBisCO.", "Die Redoxreaktion ist einseitig durch Ökosystem.", "Die Redoxreaktion ist nach Abzug Atmung."],
       explanation: "Stoffwechselkern. Bezug: Redoxreaktion. Redoxreaktion bedeutet: Elektronenübertragung.",
       wissen: "Stoffwechselkern. Bezug: Redoxreaktion. Redoxreaktion bedeutet: Elektronenübertragung.",
       flashFront: "Redoxreaktion",
@@ -70,8 +65,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-redox:p5:f",
       prompt: "Was kennzeichnet „Photorespiration“?",
-      answer: "Die Photorespiration ist hier: O2 statt CO2 an RuBisCO, und zwar gilt: verlustweg.",
-      wrong: ["Die Photorespiration ist hier: einseitig durch Ökosystem.", "Die Photorespiration ist hier: nach Abzug Atmung.", "Die Photorespiration ist hier: ATP an Membran."],
+      answer: "Sie ist eine O2 Statt CO2 an RuBisCO durch Verlustweg.", wrong: ["Die Photorespiration ist einseitig durch Ökosystem.", "Die Photorespiration ist nach Abzug Atmung.", "Sie ist eine ATP an Membran."],
       explanation: "Verlustweg. Bezug: Photorespiration. Photorespiration bedeutet: O2 statt CO2 an RuBisCO.",
       wissen: "Verlustweg. Bezug: Photorespiration. Photorespiration bedeutet: O2 statt CO2 an RuBisCO.",
       flashFront: "Photorespiration",
@@ -79,8 +73,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-redox:p6:f",
       prompt: "Was kennzeichnet „Energiefluss“?",
-      answer: "Das Energiefluss ist hier: einseitig durch Ökosystem, und zwar gilt: mit Verlusten.",
-      wrong: ["Das Energiefluss ist hier: nach Abzug Atmung.", "Das Energiefluss ist hier: ATP an Membran.", "Das Energiefluss ist kurz gesagt: Endakzeptor Atmung."],
+      answer: "Es ist einseitig durch Ökosystem durch mit Verlusten.", wrong: ["Das Energiefluss ist nach Abzug Atmung.", "Es ist eine ATP an Membran.", "Das Energiefluss ist das Endakzeptor Atmung."],
       explanation: "mit Verlusten. Bezug: Energiefluss. Energiefluss bedeutet: einseitig durch Ökosystem.",
       wissen: "mit Verlusten. Bezug: Energiefluss. Energiefluss bedeutet: einseitig durch Ökosystem.",
       flashFront: "Energiefluss",
@@ -88,8 +81,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-redox:p7:f",
       prompt: "Was kennzeichnet „Nettophotosynthese“?",
-      answer: "Die Nettophotosynthese ist hier: nach Abzug Atmung, und zwar gilt: zuwachs.",
-      wrong: ["Die Nettophotosynthese ist hier: ATP an Membran.", "Die Nettophotosynthese ist kurz gesagt: Endakzeptor Atmung.", "Die Nettophotosynthese ist kurz gesagt: CO2-Fixierung."],
+      answer: "Sie ist nach Abzug Atmung durch zuwachs.", wrong: ["Sie ist eine ATP an Membran.", "Die Nettophotosynthese ist die Endakzeptor Atmung.", "Die Nettophotosynthese ist die CO2-Fixierung."],
       explanation: "Zuwachs. Bezug: Nettophotosynthese. Nettophotosynthese bedeutet: nach Abzug Atmung.",
       wissen: "Zuwachs. Bezug: Nettophotosynthese. Nettophotosynthese bedeutet: nach Abzug Atmung.",
       flashFront: "Nettophotosynthese",
@@ -97,8 +89,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-redox:p8:f",
       prompt: "Was kennzeichnet „Oxidative Phosphorylierung“?",
-      answer: "Die Oxidative Phosphorylierung ist hier: ATP an Membran, und zwar gilt: chemiosmose.",
-      wrong: ["Die Oxidative Phosphorylierung ist hier: Endakzeptor Atmung.", "Die Oxidative Phosphorylierung ist kurz gesagt: CO2-Fixierung.", "Die Oxidative Phosphorylierung ist kurz gesagt: Nacht-Fixierung."],
+      answer: "Sie ist eine ATP an Membran durch Chemiosmose.", wrong: ["Die Oxidative Phosphorylierung ist die Endakzeptor Atmung.", "Die Oxidative Phosphorylierung ist die CO2-Fixierung.", "Die Oxidative Phosphorylierung ist die Nacht-Fixierung."],
       explanation: "Chemiosmose. Bezug: Oxidative Phosphorylierung. Oxidative Phosphorylierung bedeutet: ATP an Membran.",
       wissen: "Chemiosmose. Bezug: Oxidative Phosphorylierung. Oxidative Phosphorylierung bedeutet: ATP an Membran.",
       flashFront: "Oxidative Phosphorylierung",
@@ -106,8 +97,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-redox:p9:f",
       prompt: "Was kennzeichnet „Akzeptor O2“?",
-      answer: "Das Akzeptor O2 ist hier: Endakzeptor Atmung, und zwar gilt: bildet Wasser.",
-      wrong: ["Das Akzeptor O2 ist kurz gesagt: CO2-Fixierung.", "Das Akzeptor O2 ist kurz gesagt: Nacht-Fixierung.", "Das Akzeptor O2 ist hier: Licht → chemische Energie."],
+      answer: "Es ist eine Endakzeptor Atmung, bildet Wasser.", wrong: ["Das Akzeptor O2 ist das CO2-Fixierung.", "Das Akzeptor O2 ist das Nacht-Fixierung.", "Es ist eine Licht → Chemische Energie."],
       explanation: "bildet Wasser. Bezug: Akzeptor O2. Akzeptor O2 bedeutet: Endakzeptor Atmung.",
       wissen: "bildet Wasser. Bezug: Akzeptor O2. Akzeptor O2 bedeutet: Endakzeptor Atmung.",
       flashFront: "Akzeptor O2",
@@ -115,8 +105,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-redox:p10:f",
       prompt: "Was kennzeichnet „Calvin-Zyklus“?",
-      answer: "Der Calvin-Zyklus ist kurz gesagt: CO2-Fixierung, und zwar gilt: im Stroma.",
-      wrong: ["Der Calvin-Zyklus ist kurz gesagt: Nacht-Fixierung.", "Der Calvin-Zyklus ist hier: Licht → chemische Energie.", "Der Calvin-Zyklus ist kurz gesagt: direkt RuBisCO."],
+      answer: "Er ist eine CO2-Fixierung durch im Stroma.", wrong: ["Der Calvin-Zyklus ist der Nacht-Fixierung.", "Er ist eine Licht → Chemische Energie.", "Der Calvin-Zyklus ist direkt RuBisCO."],
       explanation: "im Stroma. Bezug: Calvin-Zyklus. Calvin-Zyklus bedeutet: CO2-Fixierung.",
       wissen: "im Stroma. Bezug: Calvin-Zyklus. Calvin-Zyklus bedeutet: CO2-Fixierung.",
       flashFront: "Calvin-Zyklus",
@@ -124,8 +113,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-redox:p11:f",
       prompt: "Was kennzeichnet „CAM“?",
-      answer: "Das CAM ist kurz gesagt: Nacht-Fixierung, und zwar gilt: wassersparend.",
-      wrong: ["Das CAM ist hier: Licht → chemische Energie.", "Das CAM ist kurz gesagt: direkt RuBisCO.", "Das CAM ist hier: Glucose → Pyruvat."],
+      answer: "Es ist eine Nacht-Fixierung durch Wassersparend.", wrong: ["Es ist eine Licht → Chemische Energie.", "Das CAM ist direkt RuBisCO.", "Es ist eine Glucose → Pyruvat."],
       explanation: "Wassersparend. Bezug: CAM. CAM bedeutet: Nacht-Fixierung.",
       wissen: "Wassersparend. Bezug: CAM. CAM bedeutet: Nacht-Fixierung.",
       flashFront: "CAM",
@@ -154,8 +142,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-energiebilanz:p0:f",
       prompt: "Was kennzeichnet „Lichtreaktion“?",
-      answer: "Die Lichtreaktion ist kurz gesagt: an Thylakoiden, und zwar gilt: aTP und NADPH.",
-      wrong: ["Die Lichtreaktion ist kurz gesagt: CO2-Pumpe.", "Die Lichtreaktion ist kurz gesagt: Acetyl-CoA oxidieren.", "Die Lichtreaktion ist hier: ATP ohne O2."],
+      answer: "Sie ist an Thylakoiden durch aTP und NADPH.", wrong: ["Die Lichtreaktion ist die CO2-Pumpe.", "Die Lichtreaktion ist die Acetyl-CoA Oxidieren.", "Sie ist eine ATP ohne O2."],
       explanation: "ATP und NADPH. Bezug: Lichtreaktion. Lichtreaktion bedeutet: an Thylakoiden.",
       wissen: "ATP und NADPH. Bezug: Lichtreaktion. Lichtreaktion bedeutet: an Thylakoiden.",
       flashFront: "Lichtreaktion",
@@ -163,8 +150,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-energiebilanz:p1:f",
       prompt: "Was kennzeichnet „C4-Pflanze“?",
-      answer: "Die C4-Pflanze ist kurz gesagt: CO2-Pumpe, und zwar gilt: heiße trockene Standorte.",
-      wrong: ["Die C4-Pflanze ist kurz gesagt: Acetyl-CoA oxidieren.", "Die C4-Pflanze ist hier: ATP ohne O2.", "Die C4-Pflanze ist kurz gesagt: Reduktionsäquivalent."],
+      answer: "Sie ist eine CO2-Pumpe durch Heiße Trockene Standorte.", wrong: ["Die C4-Pflanze ist die Acetyl-CoA Oxidieren.", "Sie ist eine ATP ohne O2.", "Die C4-Pflanze ist die Reduktionsäquivalent."],
       explanation: "heiße trockene Standorte. Bezug: C4-Pflanze. C4-Pflanze bedeutet: CO2-Pumpe.",
       wissen: "heiße trockene Standorte. Bezug: C4-Pflanze. C4-Pflanze bedeutet: CO2-Pumpe.",
       flashFront: "C4-Pflanze",
@@ -172,8 +158,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-energiebilanz:p2:f",
       prompt: "Was kennzeichnet „Citratzyklus“?",
-      answer: "Der Citratzyklus ist kurz gesagt: Acetyl-CoA oxidieren, und zwar gilt: in Matrix.",
-      wrong: ["Der Citratzyklus ist hier: ATP ohne O2.", "Der Citratzyklus ist kurz gesagt: Reduktionsäquivalent.", "Der Citratzyklus ist hier: Abbau energiereicher Stoffe."],
+      answer: "Er ist eine Acetyl-CoA Oxidieren durch in Matrix.", wrong: ["Er ist eine ATP ohne O2.", "Der Citratzyklus ist der Reduktionsäquivalent.", "Er ist eine Abbau Energiereicher Stoffe."],
       explanation: "in Matrix. Bezug: Citratzyklus. Citratzyklus bedeutet: Acetyl-CoA oxidieren.",
       wissen: "in Matrix. Bezug: Citratzyklus. Citratzyklus bedeutet: Acetyl-CoA oxidieren.",
       flashFront: "Citratzyklus",
@@ -181,8 +166,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-energiebilanz:p3:f",
       prompt: "Was kennzeichnet „Gärung“?",
-      answer: "Die Gärung ist hier: ATP ohne O2, und zwar gilt: weniger ergiebig.",
-      wrong: ["Die Gärung ist kurz gesagt: Reduktionsäquivalent.", "Die Gärung ist hier: Abbau energiereicher Stoffe.", "Die Gärung ist kurz gesagt: Elemente kreisen."],
+      answer: "Sie ist eine ATP ohne O2 durch Weniger Ergiebig.", wrong: ["Die Gärung ist die Reduktionsäquivalent.", "Sie ist eine Abbau Energiereicher Stoffe.", "Die Gärung ist die Elemente Kreisen."],
       explanation: "weniger ergiebig. Bezug: Gärung. Gärung bedeutet: ATP ohne O2.",
       wissen: "weniger ergiebig. Bezug: Gärung. Gärung bedeutet: ATP ohne O2.",
       flashFront: "Gärung",
@@ -190,8 +174,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-energiebilanz:p4:f",
       prompt: "Was kennzeichnet „NADH“?",
-      answer: "Das NADH ist kurz gesagt: Reduktionsäquivalent, und zwar gilt: trägt Elektronen.",
-      wrong: ["Das NADH ist hier: Abbau energiereicher Stoffe.", "Das NADH ist kurz gesagt: Elemente kreisen.", "Das NADH ist hier: Fotosynthese = Atmung."],
+      answer: "Es ist eine Reduktionsäquivalent, trägt Elektronen.", wrong: ["Es ist eine Abbau Energiereicher Stoffe.", "Das NADH ist das Elemente Kreisen.", "Es ist eine Fotosynthese = Atmung."],
       explanation: "trägt Elektronen. Bezug: NADH. NADH bedeutet: Reduktionsäquivalent.",
       wissen: "trägt Elektronen. Bezug: NADH. NADH bedeutet: Reduktionsäquivalent.",
       flashFront: "NADH",
@@ -199,8 +182,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-energiebilanz:p5:f",
       prompt: "Was kennzeichnet „Dissimilation“?",
-      answer: "Die Dissimilation ist hier: Abbau energiereicher Stoffe, und zwar gilt: zellatmung.",
-      wrong: ["Die Dissimilation ist kurz gesagt: Elemente kreisen.", "Die Dissimilation ist hier: Fotosynthese = Atmung.", "Die Dissimilation ist hier: ATP direkt am Substrat."],
+      answer: "Sie ist eine Abbau Energiereicher Stoffe durch Zellatmung.", wrong: ["Die Dissimilation ist die Elemente Kreisen.", "Sie ist eine Fotosynthese = Atmung.", "Sie ist eine ATP Direkt am Substrat."],
       explanation: "Zellatmung. Bezug: Dissimilation. Dissimilation bedeutet: Abbau energiereicher Stoffe.",
       wissen: "Zellatmung. Bezug: Dissimilation. Dissimilation bedeutet: Abbau energiereicher Stoffe.",
       flashFront: "Dissimilation",
@@ -208,8 +190,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-energiebilanz:p6:f",
       prompt: "Was kennzeichnet „Stoffkreislauf“?",
-      answer: "Das Stoffkreislauf ist kurz gesagt: Elemente kreisen, und zwar gilt: c, N, ….",
-      wrong: ["Das Stoffkreislauf ist hier: Fotosynthese = Atmung.", "Das Stoffkreislauf ist hier: ATP direkt am Substrat.", "Das Stoffkreislauf ist hier: Licht → chemische Energie."],
+      answer: "Es ist eine Elemente Kreisen durch C, N, ….", wrong: ["Es ist eine Fotosynthese = Atmung.", "Es ist eine ATP Direkt am Substrat.", "Es ist eine Licht → Chemische Energie."],
       explanation: "C, N, … Bezug: Stoffkreislauf. Stoffkreislauf bedeutet: Elemente kreisen.",
       wissen: "C, N, … Bezug: Stoffkreislauf. Stoffkreislauf bedeutet: Elemente kreisen.",
       flashFront: "Stoffkreislauf",
@@ -217,8 +198,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-energiebilanz:p7:f",
       prompt: "Was kennzeichnet „Kompensationspunkt“?",
-      answer: "Der Kompensationspunkt ist hier: Fotosynthese = Atmung, und zwar gilt: grenze Ertrag.",
-      wrong: ["Der Kompensationspunkt ist hier: ATP direkt am Substrat.", "Der Kompensationspunkt ist hier: Licht → chemische Energie.", "Der Kompensationspunkt ist kurz gesagt: direkt RuBisCO."],
+      answer: "Er ist eine Fotosynthese = Atmung durch Grenze Ertrag.", wrong: ["Er ist eine ATP Direkt am Substrat.", "Er ist eine Licht → Chemische Energie.", "Der Kompensationspunkt ist direkt RuBisCO."],
       explanation: "Grenze Ertrag. Bezug: Kompensationspunkt. Kompensationspunkt bedeutet: Fotosynthese = Atmung.",
       wissen: "Grenze Ertrag. Bezug: Kompensationspunkt. Kompensationspunkt bedeutet: Fotosynthese = Atmung.",
       flashFront: "Kompensationspunkt",
@@ -226,8 +206,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-energiebilanz:p8:f",
       prompt: "Was kennzeichnet „Substratkettenphosphorylierung“?",
-      answer: "Die Substratkettenphosphorylierung ist hier: ATP direkt am Substrat, und zwar gilt: glykolyse.",
-      wrong: ["Die Substratkettenphosphorylierung ist hier: Licht → chemische Energie.", "Die Substratkettenphosphorylierung ist kurz gesagt: direkt RuBisCO.", "Die Substratkettenphosphorylierung ist hier: Glucose → Pyruvat."],
+      answer: "Sie ist eine ATP Direkt am Substrat durch Glykolyse.", wrong: ["Sie ist eine Licht → Chemische Energie.", "Die Substratkettenphosphorylierung ist direkt RuBisCO.", "Sie ist eine Glucose → Pyruvat."],
       explanation: "Glykolyse. Bezug: Substratkettenphosphorylierung. Substratkettenphosphorylierung bedeutet: ATP direkt am Substrat.",
       wissen: "Glykolyse. Bezug: Substratkettenphosphorylierung. Substratkettenphosphorylierung bedeutet: ATP direkt am Substrat.",
       flashFront: "Substratkettenphosphorylierung",
@@ -235,8 +214,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-energiebilanz:p9:f",
       prompt: "Was kennzeichnet „Fotosynthese“?",
-      answer: "Licht → chemische Energie, und zwar gilt hier: CO2 + H2O → Glucose + O2.",
-      wrong: ["Die Fotosynthese ist kurz gesagt: direkt RuBisCO.", "Die Fotosynthese ist hier: Glucose → Pyruvat.", "Die Fotosynthese ist kurz gesagt: an Thylakoiden."],
+      answer: "Sie ist eine Licht → Chemische Energie durch CO2 + H2O → Glucose + O2.", wrong: ["Die Fotosynthese ist direkt RuBisCO.", "Sie ist eine Glucose → Pyruvat.", "Die Fotosynthese ist an Thylakoiden."],
       explanation: "CO2 + H2O → Glucose + O2. Bezug: Fotosynthese. Fotosynthese bedeutet: Licht → chemische Energie.",
       wissen: "CO2 + H2O → Glucose + O2. Bezug: Fotosynthese. Fotosynthese bedeutet: Licht → chemische Energie.",
       flashFront: "Fotosynthese",
@@ -244,8 +222,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-energiebilanz:p10:f",
       prompt: "Was kennzeichnet „C3-Pflanze“?",
-      answer: "Die C3-Pflanze ist kurz gesagt: direkt RuBisCO, und zwar gilt: photorespiration möglich.",
-      wrong: ["Die C3-Pflanze ist hier: Glucose → Pyruvat.", "Die C3-Pflanze ist kurz gesagt: an Thylakoiden.", "Die C3-Pflanze ist kurz gesagt: CO2-Pumpe."],
+      answer: "Sie ist direkt RuBisCO durch photorespiration möglich.", wrong: ["Sie ist eine Glucose → Pyruvat.", "Die C3-Pflanze ist an Thylakoiden.", "Die C3-Pflanze ist die CO2-Pumpe."],
       explanation: "Photorespiration möglich. Bezug: C3-Pflanze. C3-Pflanze bedeutet: direkt RuBisCO.",
       wissen: "Photorespiration möglich. Bezug: C3-Pflanze. C3-Pflanze bedeutet: direkt RuBisCO.",
       flashFront: "C3-Pflanze",
@@ -253,8 +230,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-energiebilanz:p11:f",
       prompt: "Was kennzeichnet „Glykolyse“?",
-      answer: "Die Glykolyse ist hier: Glucose → Pyruvat, und zwar gilt: im Cytoplasma.",
-      wrong: ["Die Glykolyse ist kurz gesagt: an Thylakoiden.", "Die Glykolyse ist kurz gesagt: CO2-Pumpe.", "Die Glykolyse ist kurz gesagt: Acetyl-CoA oxidieren."],
+      answer: "Sie ist eine Glucose → Pyruvat durch im Cytoplasma.", wrong: ["Die Glykolyse ist an Thylakoiden.", "Die Glykolyse ist die CO2-Pumpe.", "Die Glykolyse ist die Acetyl-CoA Oxidieren."],
       explanation: "im Cytoplasma. Bezug: Glykolyse. Glykolyse bedeutet: Glucose → Pyruvat.",
       wissen: "im Cytoplasma. Bezug: Glykolyse. Glykolyse bedeutet: Glucose → Pyruvat.",
       flashFront: "Glykolyse",
@@ -283,8 +259,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-kompartimente:p0:f",
       prompt: "Was kennzeichnet „Calvin-Zyklus“?",
-      answer: "Der Calvin-Zyklus ist kurz gesagt: CO2-Fixierung, und zwar gilt: im Stroma.",
-      wrong: ["Der Calvin-Zyklus ist kurz gesagt: Nacht-Fixierung.", "Der Calvin-Zyklus ist hier: Elektronen → O2.", "Der Calvin-Zyklus ist hier: Energie aus anorganischen Redox."],
+      answer: "Er ist eine CO2-Fixierung durch im Stroma.", wrong: ["Der Calvin-Zyklus ist der Nacht-Fixierung.", "Er ist eine Elektronen → O2.", "Er ist eine Energie aus Anorganischen Redox."],
       explanation: "im Stroma. Bezug: Calvin-Zyklus. Calvin-Zyklus bedeutet: CO2-Fixierung.",
       wissen: "im Stroma. Bezug: Calvin-Zyklus. Calvin-Zyklus bedeutet: CO2-Fixierung.",
       flashFront: "Calvin-Zyklus",
@@ -292,8 +267,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-kompartimente:p1:f",
       prompt: "Was kennzeichnet „CAM“?",
-      answer: "Das CAM ist kurz gesagt: Nacht-Fixierung, und zwar gilt: wassersparend.",
-      wrong: ["Das CAM ist hier: Elektronen → O2.", "Das CAM ist hier: Energie aus anorganischen Redox.", "Das CAM ist kurz gesagt: CO2-fixierendes Enzym."],
+      answer: "Es ist eine Nacht-Fixierung durch Wassersparend.", wrong: ["Es ist eine Elektronen → O2.", "Es ist eine Energie aus Anorganischen Redox.", "Das CAM ist das CO2-fixierendes Enzym."],
       explanation: "Wassersparend. Bezug: CAM. CAM bedeutet: Nacht-Fixierung.",
       wissen: "Wassersparend. Bezug: CAM. CAM bedeutet: Nacht-Fixierung.",
       flashFront: "CAM",
@@ -301,8 +275,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-kompartimente:p2:f",
       prompt: "Was kennzeichnet „Atmungskette“?",
-      answer: "Die Atmungskette ist hier: Elektronen → O2, und zwar gilt: protonengradient.",
-      wrong: ["Die Atmungskette ist hier: Energie aus anorganischen Redox.", "Die Atmungskette ist kurz gesagt: CO2-fixierendes Enzym.", "Die Atmungskette ist hier: Aufbau organischer Stoffe."],
+      answer: "Sie ist eine Elektronen → O2 durch Protonengradient.", wrong: ["Sie ist eine Energie aus Anorganischen Redox.", "Die Atmungskette ist die CO2-fixierendes Enzym.", "Sie ist eine Aufbau Organischer Stoffe."],
       explanation: "Protonengradient. Bezug: Atmungskette. Atmungskette bedeutet: Elektronen → O2.",
       wissen: "Protonengradient. Bezug: Atmungskette. Atmungskette bedeutet: Elektronen → O2.",
       flashFront: "Atmungskette",
@@ -310,8 +283,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-kompartimente:p3:f",
       prompt: "Was kennzeichnet „Chemosynthese“?",
-      answer: "Energie aus anorganischen Redox, und zwar gilt hier: Z. B. Nitrifizierer.",
-      wrong: ["Die Chemosynthese ist kurz gesagt: CO2-fixierendes Enzym.", "Die Chemosynthese ist hier: Aufbau organischer Stoffe.", "Die Chemosynthese ist kurz gesagt: Gesamtfixierung."],
+      answer: "Sie ist eine Energie aus Anorganischen Redox durch Z. B. Nitrifizierer.", wrong: ["Die Chemosynthese ist die CO2-fixierendes Enzym.", "Sie ist eine Aufbau Organischer Stoffe.", "Die Chemosynthese ist die Gesamtfixierung."],
       explanation: "z. B. Nitrifizierer. Bezug: Chemosynthese. Chemosynthese bedeutet: Energie aus anorganischen Redox.",
       wissen: "z. B. Nitrifizierer. Bezug: Chemosynthese. Chemosynthese bedeutet: Energie aus anorganischen Redox.",
       flashFront: "Chemosynthese",
@@ -319,8 +291,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-kompartimente:p4:f",
       prompt: "Was kennzeichnet „RuBisCO“?",
-      answer: "Das RuBisCO ist kurz gesagt: CO2-fixierendes Enzym, und zwar gilt: häufigstes Protein.",
-      wrong: ["Das RuBisCO ist hier: Aufbau organischer Stoffe.", "Das RuBisCO ist kurz gesagt: Gesamtfixierung.", "Das RuBisCO ist kurz gesagt: anaerober Abbau."],
+      answer: "Es ist eine CO2-fixierendes Enzym durch Häufigstes Protein.", wrong: ["Es ist eine Aufbau Organischer Stoffe.", "Das RuBisCO ist das Gesamtfixierung.", "Das RuBisCO ist anaerober Abbau."],
       explanation: "häufigstes Protein. Bezug: RuBisCO. RuBisCO bedeutet: CO2-fixierendes Enzym.",
       wissen: "häufigstes Protein. Bezug: RuBisCO. RuBisCO bedeutet: CO2-fixierendes Enzym.",
       flashFront: "RuBisCO",
@@ -328,8 +299,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-kompartimente:p5:f",
       prompt: "Was kennzeichnet „Assimilation“?",
-      answer: "Die Assimilation ist hier: Aufbau organischer Stoffe, und zwar gilt: fotosynthese.",
-      wrong: ["Die Assimilation ist kurz gesagt: Gesamtfixierung.", "Die Assimilation ist kurz gesagt: anaerober Abbau.", "Die Assimilation ist kurz gesagt: gibt e− ab."],
+      answer: "Sie ist eine Aufbau Organischer Stoffe durch Fotosynthese.", wrong: ["Die Assimilation ist die Gesamtfixierung.", "Die Assimilation ist anaerober Abbau.", "Sie gibt e− ab."],
       explanation: "Fotosynthese. Bezug: Assimilation. Assimilation bedeutet: Aufbau organischer Stoffe.",
       wissen: "Fotosynthese. Bezug: Assimilation. Assimilation bedeutet: Aufbau organischer Stoffe.",
       flashFront: "Assimilation",
@@ -337,8 +307,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-kompartimente:p6:f",
       prompt: "Was kennzeichnet „Bruttophotosynthese“?",
-      answer: "Die Bruttophotosynthese ist kurz gesagt: Gesamtfixierung, und zwar gilt: vor Atmung.",
-      wrong: ["Die Bruttophotosynthese ist kurz gesagt: anaerober Abbau.", "Die Bruttophotosynthese ist kurz gesagt: gibt e− ab.", "Die Bruttophotosynthese ist kurz gesagt: an Thylakoiden."],
+      answer: "Sie ist eine Gesamtfixierung durch vor Atmung.", wrong: ["Die Bruttophotosynthese ist anaerober Abbau.", "Sie gibt e− ab.", "Die Bruttophotosynthese ist an Thylakoiden."],
       explanation: "vor Atmung. Bezug: Bruttophotosynthese. Bruttophotosynthese bedeutet: Gesamtfixierung.",
       wissen: "vor Atmung. Bezug: Bruttophotosynthese. Bruttophotosynthese bedeutet: Gesamtfixierung.",
       flashFront: "Bruttophotosynthese",
@@ -346,8 +315,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-kompartimente:p7:f",
       prompt: "Was kennzeichnet „Fermentation“?",
-      answer: "Die Fermentation ist kurz gesagt: anaerober Abbau, und zwar gilt: produkte z. B. Lactat/Ethanol.",
-      wrong: ["Die Fermentation ist kurz gesagt: gibt e− ab.", "Die Fermentation ist kurz gesagt: an Thylakoiden.", "Die Fermentation ist kurz gesagt: CO2-Pumpe."],
+      answer: "Sie ist anaerober Abbau durch produkte z. B. Lactat/Ethanol.", wrong: ["Sie gibt e− ab.", "Die Fermentation ist an Thylakoiden.", "Die Fermentation ist die CO2-Pumpe."],
       explanation: "Produkte z. B. Lactat/Ethanol. Bezug: Fermentation. Fermentation bedeutet: anaerober Abbau.",
       wissen: "Produkte z. B. Lactat/Ethanol. Bezug: Fermentation. Fermentation bedeutet: anaerober Abbau.",
       flashFront: "Fermentation",
@@ -355,8 +323,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-kompartimente:p8:f",
       prompt: "Wozu dient Elektronendonator?",
-      answer: "Er gibt e− ab, und zwar gilt hier: Bei Chemosynthese oft H2S/NH3.",
-      wrong: ["Der Elektronendonator ist kurz gesagt: an Thylakoiden.", "Der Elektronendonator ist kurz gesagt: CO2-Pumpe.", "Der Elektronendonator ist kurz gesagt: Acetyl-CoA oxidieren."],
+      answer: "Er gibt e− ab durch bei Chemosynthese oft H2S/NH3.", wrong: ["Der Elektronendonator ist an Thylakoiden.", "Der Elektronendonator ist der CO2-Pumpe.", "Der Elektronendonator ist der Acetyl-CoA Oxidieren."],
       explanation: "bei Chemosynthese oft H2S/NH3. Bezug: Elektronendonator. Elektronendonator bedeutet: gibt e− ab.",
       wissen: "bei Chemosynthese oft H2S/NH3. Bezug: Elektronendonator. Elektronendonator bedeutet: gibt e− ab.",
       flashFront: "Elektronendonator",
@@ -364,8 +331,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-kompartimente:p9:f",
       prompt: "Was kennzeichnet „Lichtreaktion“?",
-      answer: "Die Lichtreaktion ist kurz gesagt: an Thylakoiden, und zwar gilt: aTP und NADPH.",
-      wrong: ["Die Lichtreaktion ist kurz gesagt: CO2-Pumpe.", "Die Lichtreaktion ist kurz gesagt: Acetyl-CoA oxidieren.", "Die Lichtreaktion ist kurz gesagt: CO2-Fixierung."],
+      answer: "Sie ist an Thylakoiden durch aTP und NADPH.", wrong: ["Die Lichtreaktion ist die CO2-Pumpe.", "Die Lichtreaktion ist die Acetyl-CoA Oxidieren.", "Die Lichtreaktion ist die CO2-Fixierung."],
       explanation: "ATP und NADPH. Bezug: Lichtreaktion. Lichtreaktion bedeutet: an Thylakoiden.",
       wissen: "ATP und NADPH. Bezug: Lichtreaktion. Lichtreaktion bedeutet: an Thylakoiden.",
       flashFront: "Lichtreaktion",
@@ -373,8 +339,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-kompartimente:p10:f",
       prompt: "Was kennzeichnet „C4-Pflanze“?",
-      answer: "Die C4-Pflanze ist kurz gesagt: CO2-Pumpe, und zwar gilt: heiße trockene Standorte.",
-      wrong: ["Die C4-Pflanze ist kurz gesagt: Acetyl-CoA oxidieren.", "Die C4-Pflanze ist kurz gesagt: CO2-Fixierung.", "Die C4-Pflanze ist kurz gesagt: Nacht-Fixierung."],
+      answer: "Sie ist eine CO2-Pumpe durch Heiße Trockene Standorte.", wrong: ["Die C4-Pflanze ist die Acetyl-CoA Oxidieren.", "Die C4-Pflanze ist die CO2-Fixierung.", "Die C4-Pflanze ist die Nacht-Fixierung."],
       explanation: "heiße trockene Standorte. Bezug: C4-Pflanze. C4-Pflanze bedeutet: CO2-Pumpe.",
       wissen: "heiße trockene Standorte. Bezug: C4-Pflanze. C4-Pflanze bedeutet: CO2-Pumpe.",
       flashFront: "C4-Pflanze",
@@ -382,8 +347,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk11-lb2-kompartimente:p11:f",
       prompt: "Was kennzeichnet „Citratzyklus“?",
-      answer: "Der Citratzyklus ist kurz gesagt: Acetyl-CoA oxidieren, und zwar gilt: in Matrix.",
-      wrong: ["Der Citratzyklus ist kurz gesagt: CO2-Fixierung.", "Der Citratzyklus ist kurz gesagt: Nacht-Fixierung.", "Der Citratzyklus ist hier: Elektronen → O2."],
+      answer: "Er ist eine Acetyl-CoA Oxidieren durch in Matrix.", wrong: ["Der Citratzyklus ist der CO2-Fixierung.", "Der Citratzyklus ist der Nacht-Fixierung.", "Er ist eine Elektronen → O2."],
       explanation: "in Matrix. Bezug: Citratzyklus. Citratzyklus bedeutet: Acetyl-CoA oxidieren.",
       wissen: "in Matrix. Bezug: Citratzyklus. Citratzyklus bedeutet: Acetyl-CoA oxidieren.",
       flashFront: "Citratzyklus",
@@ -412,8 +376,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-mendel:p0:f",
       prompt: "Was kennzeichnet „Dominant“?",
-      answer: "Setzt sich im Phänotyp durch, und zwar gilt: gegenüber rezessiv.",
-      wrong: ["Das Dominant ist kurz gesagt: verschiedene Allele.", "Das Dominant ist hier: Austausch homologer Abschnitte.", "Das Dominant ist hier: Vervielfältigung von DNA."],
+      answer: "Setzt sich im Phänotyp durch durch gegenüber rezessiv.", wrong: ["Das Dominant ist verschiedene Allele.", "Es ist eine Austausch Homologer Abschnitte.", "Es ist eine Vervielfältigung von DNA."],
       explanation: "Gegenüber rezessiv. Bezug: Dominant. Dominant bedeutet: setzt sich im Phänotyp durch.",
       wissen: "Gegenüber rezessiv. Bezug: Dominant. Dominant bedeutet: setzt sich im Phänotyp durch.",
       flashFront: "Dominant",
@@ -421,8 +384,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-mendel:p1:f",
       prompt: "Was kennzeichnet „Heterozygot“?",
-      answer: "Das Heterozygot ist kurz gesagt: verschiedene Allele.",
-      wrong: ["Das Heterozygot ist hier: Austausch homologer Abschnitte.", "Das Heterozygot ist hier: Vervielfältigung von DNA.", "Das Heterozygot ist hier: Transportvehikel für DNA."],
+      answer: "Das Heterozygot ist verschiedene Allele.", wrong: ["Es ist eine Austausch Homologer Abschnitte.", "Es ist eine Vervielfältigung von DNA.", "Es ist eine Transportvehikel für DNA."],
       explanation: "Aa. Bezug: Heterozygot. Heterozygot bedeutet: verschiedene Allele.",
       wissen: "Aa. Bezug: Heterozygot. Heterozygot bedeutet: verschiedene Allele.",
       flashFront: "Heterozygot",
@@ -430,8 +392,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-mendel:p2:f",
       prompt: "Was kennzeichnet „Crossing-over“?",
-      answer: "Der Crossing-over ist hier: Austausch homologer Abschnitte, und zwar gilt: rekombination.",
-      wrong: ["Der Crossing-over ist hier: Vervielfältigung von DNA.", "Der Crossing-over ist hier: Transportvehikel für DNA.", "Der Crossing-over ist kurz gesagt: Chromosomenbild."],
+      answer: "Er ist eine Austausch Homologer Abschnitte durch Rekombination.", wrong: ["Er ist eine Vervielfältigung von DNA.", "Er ist eine Transportvehikel für DNA.", "Der Crossing-over ist der Chromosomenbild."],
       explanation: "Rekombination. Bezug: Crossing-over. Crossing-over bedeutet: Austausch homologer Abschnitte.",
       wissen: "Rekombination. Bezug: Crossing-over. Crossing-over bedeutet: Austausch homologer Abschnitte.",
       flashFront: "Crossing-over",
@@ -439,8 +400,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-mendel:p3:f",
       prompt: "Was kennzeichnet „PCR“?",
-      answer: "Das PCR ist hier: Vervielfältigung von DNA, und zwar gilt: labortechnik.",
-      wrong: ["Das PCR ist hier: Transportvehikel für DNA.", "Das PCR ist kurz gesagt: Chromosomenbild.", "Das PCR ist hier: mRNA → Protein."],
+      answer: "Es ist eine Vervielfältigung von DNA durch Labortechnik.", wrong: ["Es ist eine Transportvehikel für DNA.", "Das PCR ist das Chromosomenbild.", "Das PCR ist mRNA → Protein."],
       explanation: "Labortechnik. Bezug: PCR. PCR bedeutet: Vervielfältigung von DNA.",
       wissen: "Labortechnik. Bezug: PCR. PCR bedeutet: Vervielfältigung von DNA.",
       flashFront: "PCR",
@@ -448,8 +408,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-mendel:p4:f",
       prompt: "Was kennzeichnet „Vektor“?",
-      answer: "Der Vektor ist hier: Transportvehikel für DNA, und zwar gilt: z. B. Plasmid.",
-      wrong: ["Der Vektor ist kurz gesagt: Chromosomenbild.", "Der Vektor ist hier: mRNA → Protein.", "Der Vektor ist kurz gesagt: Einzelbasenaustausch."],
+      answer: "Er ist eine Transportvehikel für DNA durch Z. B. Plasmid.", wrong: ["Der Vektor ist der Chromosomenbild.", "Der Vektor ist mRNA → Protein.", "Der Vektor ist der Einzelbasenaustausch."],
       explanation: "z. B. Plasmid. Bezug: Vektor. Vektor bedeutet: Transportvehikel für DNA.",
       wissen: "z. B. Plasmid. Bezug: Vektor. Vektor bedeutet: Transportvehikel für DNA.",
       flashFront: "Vektor",
@@ -457,8 +416,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-mendel:p5:f",
       prompt: "Was kennzeichnet „Karyogramm“?",
-      answer: "Das Karyogramm ist kurz gesagt: Chromosomenbild, und zwar gilt: aneuploidie sichtbar.",
-      wrong: ["Das Karyogramm ist hier: mRNA → Protein.", "Das Karyogramm ist kurz gesagt: Einzelbasenaustausch.", "Das Karyogramm ist hier: neu kombinierte DNA."],
+      answer: "Es ist eine Chromosomenbild durch Aneuploidie Sichtbar.", wrong: ["Das Karyogramm ist mRNA → Protein.", "Das Karyogramm ist das Einzelbasenaustausch.", "Das Karyogramm ist neu kombinierte DNA."],
       explanation: "Aneuploidie sichtbar. Bezug: Karyogramm. Karyogramm bedeutet: Chromosomenbild.",
       wissen: "Aneuploidie sichtbar. Bezug: Karyogramm. Karyogramm bedeutet: Chromosomenbild.",
       flashFront: "Karyogramm",
@@ -466,8 +424,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-mendel:p6:f",
       prompt: "Was kennzeichnet „Translation“?",
-      answer: "Die Translation ist hier: mRNA → Protein, und zwar gilt: am Ribosom.",
-      wrong: ["Die Translation ist kurz gesagt: Einzelbasenaustausch.", "Die Translation ist hier: neu kombinierte DNA.", "Die Translation ist kurz gesagt: erscheinendes Merkmal."],
+      answer: "Sie ist mRNA → Protein durch am Ribosom.", wrong: ["Die Translation ist die Einzelbasenaustausch.", "Die Translation ist neu kombinierte DNA.", "Die Translation ist erscheinendes Merkmal."],
       explanation: "am Ribosom. Bezug: Translation. Translation bedeutet: mRNA → Protein.",
       wissen: "am Ribosom. Bezug: Translation. Translation bedeutet: mRNA → Protein.",
       flashFront: "Translation",
@@ -475,8 +432,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-mendel:p7:f",
       prompt: "Was kennzeichnet „SNP“?",
-      answer: "Das SNP ist kurz gesagt: Einzelbasenaustausch, und zwar gilt: variabilität.",
-      wrong: ["Das SNP ist hier: neu kombinierte DNA.", "Das SNP ist kurz gesagt: erscheinendes Merkmal.", "Das SNP ist kurz gesagt: gleiche Allele."],
+      answer: "Es ist eine Einzelbasenaustausch durch Variabilität.", wrong: ["Das SNP ist neu kombinierte DNA.", "Das SNP ist erscheinendes Merkmal.", "Das SNP ist gleiche Allele."],
       explanation: "Variabilität. Bezug: SNP. SNP bedeutet: Einzelbasenaustausch.",
       wissen: "Variabilität. Bezug: SNP. SNP bedeutet: Einzelbasenaustausch.",
       flashFront: "SNP",
@@ -484,8 +440,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-mendel:p8:f",
       prompt: "Was kennzeichnet „Rekombinant“?",
-      answer: "Das Rekombinant ist hier: neu kombinierte DNA, und zwar gilt: produkt der Gentechnik.",
-      wrong: ["Das Rekombinant ist kurz gesagt: erscheinendes Merkmal.", "Das Rekombinant ist kurz gesagt: gleiche Allele.", "Das Rekombinant ist hier: Kernteilung für Wachstum."],
+      answer: "Es ist neu kombinierte DNA durch produkt der Gentechnik.", wrong: ["Das Rekombinant ist erscheinendes Merkmal.", "Das Rekombinant ist gleiche Allele.", "Es ist ein Kernteilung für Wachstum."],
       explanation: "Produkt der Gentechnik. Bezug: Rekombinant. Rekombinant bedeutet: neu kombinierte DNA.",
       wissen: "Produkt der Gentechnik. Bezug: Rekombinant. Rekombinant bedeutet: neu kombinierte DNA.",
       flashFront: "Rekombinant",
@@ -493,8 +448,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-mendel:p9:f",
       prompt: "Was kennzeichnet „Phänotyp“?",
-      answer: "Das Phänotyp ist kurz gesagt: erscheinendes Merkmal, und zwar gilt: genotyp + Umwelt.",
-      wrong: ["Das Phänotyp ist kurz gesagt: gleiche Allele.", "Das Phänotyp ist hier: Kernteilung für Wachstum.", "Das Phänotyp ist kurz gesagt: setzt sich im Phänotyp durch."],
+      answer: "Es ist erscheinendes Merkmal durch genotyp + Umwelt.", wrong: ["Das Phänotyp ist gleiche Allele.", "Es ist ein Kernteilung für Wachstum.", "Setzt sich im Phänotyp durch."],
       explanation: "Genotyp + Umwelt. Bezug: Phänotyp. Phänotyp bedeutet: erscheinendes Merkmal.",
       wissen: "Genotyp + Umwelt. Bezug: Phänotyp. Phänotyp bedeutet: erscheinendes Merkmal.",
       flashFront: "Phänotyp",
@@ -502,8 +456,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-mendel:p10:f",
       prompt: "Was kennzeichnet „Homozygot“?",
-      answer: "Das Homozygot ist kurz gesagt: gleiche Allele, und zwar gilt: aA oder aa.",
-      wrong: ["Das Homozygot ist hier: Kernteilung für Wachstum.", "Das Homozygot ist kurz gesagt: setzt sich im Phänotyp durch.", "Das Homozygot ist kurz gesagt: verschiedene Allele."],
+      answer: "Es ist gleiche Allele durch aA oder aa.", wrong: ["Es ist ein Kernteilung für Wachstum.", "Setzt sich im Phänotyp durch.", "Das Homozygot ist verschiedene Allele."],
       explanation: "AA oder aa. Bezug: Homozygot. Homozygot bedeutet: gleiche Allele.",
       wissen: "AA oder aa. Bezug: Homozygot. Homozygot bedeutet: gleiche Allele.",
       flashFront: "Homozygot",
@@ -511,8 +464,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-mendel:p11:f",
       prompt: "Was kennzeichnet „Mitose“?",
-      answer: "Die Mitose ist hier: Kernteilung für Wachstum, und zwar gilt: tochterzellen identisch.",
-      wrong: ["Die Mitose ist kurz gesagt: setzt sich im Phänotyp durch.", "Die Mitose ist kurz gesagt: verschiedene Allele.", "Die Mitose ist hier: Austausch homologer Abschnitte."],
+      answer: "Sie ist ein Kernteilung für Wachstum durch Tochterzellen Identisch.", wrong: ["Setzt sich im Phänotyp durch.", "Die Mitose ist verschiedene Allele.", "Sie ist eine Austausch Homologer Abschnitte."],
       explanation: "Tochterzellen identisch. Bezug: Mitose. Mitose bedeutet: Kernteilung für Wachstum.",
       wissen: "Tochterzellen identisch. Bezug: Mitose. Mitose bedeutet: Kernteilung für Wachstum.",
       flashFront: "Mitose",
@@ -541,8 +493,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-molekular:p0:f",
       prompt: "Was kennzeichnet „Rezessiv“?",
-      answer: "Das Rezessiv ist hier: nur homozygot sichtbar, und zwar gilt: träger möglich.",
-      wrong: ["Das Rezessiv ist kurz gesagt: Reduktionsteilung.", "Das Rezessiv ist hier: Gene auf einem Chromosom.", "Das Rezessiv ist kurz gesagt: Basenfolge bestimmen."],
+      answer: "Es ist nur homozygot sichtbar durch träger möglich.", wrong: ["Das Rezessiv ist das Reduktionsteilung.", "Es ist eine Gene auf einem Chromosom.", "Das Rezessiv ist das Basenfolge Bestimmen."],
       explanation: "Träger möglich. Bezug: Rezessiv. Rezessiv bedeutet: nur homozygot sichtbar.",
       wissen: "Träger möglich. Bezug: Rezessiv. Rezessiv bedeutet: nur homozygot sichtbar.",
       flashFront: "Rezessiv",
@@ -550,8 +501,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-molekular:p1:f",
       prompt: "Was kennzeichnet „Meiose“?",
-      answer: "Die Meiose ist kurz gesagt: Reduktionsteilung, und zwar gilt: haploide Gameten.",
-      wrong: ["Die Meiose ist hier: Gene auf einem Chromosom.", "Die Meiose ist kurz gesagt: Basenfolge bestimmen.", "Die Meiose ist kurz gesagt: präzise Gen-Schere."],
+      answer: "Sie ist eine Reduktionsteilung durch Haploide Gameten.", wrong: ["Sie ist eine Gene auf einem Chromosom.", "Die Meiose ist die Basenfolge Bestimmen.", "Die Meiose ist präzise Gen-Schere."],
       explanation: "Haploide Gameten. Bezug: Meiose. Meiose bedeutet: Reduktionsteilung.",
       wissen: "Haploide Gameten. Bezug: Meiose. Meiose bedeutet: Reduktionsteilung.",
       flashFront: "Meiose",
@@ -559,8 +509,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-molekular:p2:f",
       prompt: "Was kennzeichnet „Kopplung“?",
-      answer: "Die Kopplung ist hier: Gene auf einem Chromosom, und zwar gilt: selten unabhängig.",
-      wrong: ["Die Kopplung ist kurz gesagt: Basenfolge bestimmen.", "Die Kopplung ist kurz gesagt: präzise Gen-Schere.", "Die Kopplung ist kurz gesagt: Basentriplett."],
+      answer: "Sie ist eine Gene auf einem Chromosom durch Selten Unabhängig.", wrong: ["Die Kopplung ist die Basenfolge Bestimmen.", "Die Kopplung ist präzise Gen-Schere.", "Die Kopplung ist die Basentriplett."],
       explanation: "selten unabhängig. Bezug: Kopplung. Kopplung bedeutet: Gene auf einem Chromosom.",
       wissen: "selten unabhängig. Bezug: Kopplung. Kopplung bedeutet: Gene auf einem Chromosom.",
       flashFront: "Kopplung",
@@ -568,8 +517,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-molekular:p3:f",
       prompt: "Was kennzeichnet „Sequenzierung“?",
-      answer: "Die Sequenzierung ist kurz gesagt: Basenfolge bestimmen, und zwar gilt: diagnostik.",
-      wrong: ["Die Sequenzierung ist kurz gesagt: präzise Gen-Schere.", "Die Sequenzierung ist kurz gesagt: Basentriplett.", "Die Sequenzierung ist hier: Regulation ohne Sequenzänderung."],
+      answer: "Sie ist eine Basenfolge Bestimmen durch Diagnostik.", wrong: ["Die Sequenzierung ist präzise Gen-Schere.", "Die Sequenzierung ist die Basentriplett.", "Sie ist eine Regulation ohne Sequenzänderung."],
       explanation: "Diagnostik. Bezug: Sequenzierung. Sequenzierung bedeutet: Basenfolge bestimmen.",
       wissen: "Diagnostik. Bezug: Sequenzierung. Sequenzierung bedeutet: Basenfolge bestimmen.",
       flashFront: "Sequenzierung",
@@ -577,8 +525,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-molekular:p4:f",
       prompt: "Was kennzeichnet „CRISPR“?",
-      answer: "Das CRISPR ist kurz gesagt: präzise Gen-Schere, und zwar gilt: moderne Editierung.",
-      wrong: ["Das CRISPR ist kurz gesagt: Basentriplett.", "Das CRISPR ist hier: Regulation ohne Sequenzänderung.", "Das CRISPR ist kurz gesagt: ringförmige DNA."],
+      answer: "Es ist präzise Gen-Schere durch moderne Editierung.", wrong: ["Das CRISPR ist das Basentriplett.", "Es ist eine Regulation ohne Sequenzänderung.", "Das CRISPR ist ringförmige DNA."],
       explanation: "moderne Editierung. Bezug: CRISPR. CRISPR bedeutet: präzise Gen-Schere.",
       wissen: "moderne Editierung. Bezug: CRISPR. CRISPR bedeutet: präzise Gen-Schere.",
       flashFront: "CRISPR",
@@ -586,8 +533,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-molekular:p5:f",
       prompt: "Was kennzeichnet „Codon“?",
-      answer: "Das Codon ist kurz gesagt: Basentriplett, und zwar gilt: aminosäure-Code.",
-      wrong: ["Das Codon ist hier: Regulation ohne Sequenzänderung.", "Das Codon ist kurz gesagt: ringförmige DNA.", "Das Codon ist hier: Variante eines Gens."],
+      answer: "Es ist eine Basentriplett durch Aminosäure-Code.", wrong: ["Es ist eine Regulation ohne Sequenzänderung.", "Das Codon ist ringförmige DNA.", "Es ist eine Variante Eines Gens."],
       explanation: "Aminosäure-Code. Bezug: Codon. Codon bedeutet: Basentriplett.",
       wissen: "Aminosäure-Code. Bezug: Codon. Codon bedeutet: Basentriplett.",
       flashFront: "Codon",
@@ -595,8 +541,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-molekular:p6:f",
       prompt: "Was kennzeichnet „Epigenetik“?",
-      answer: "Die Epigenetik ist hier: Regulation ohne Sequenzänderung, und zwar gilt: z. B. Methylierung.",
-      wrong: ["Die Epigenetik ist kurz gesagt: ringförmige DNA.", "Die Epigenetik ist hier: Variante eines Gens.", "Die Epigenetik ist kurz gesagt: setzt sich im Phänotyp durch."],
+      answer: "Sie ist eine Regulation ohne Sequenzänderung durch Z. B. Methylierung.", wrong: ["Die Epigenetik ist ringförmige DNA.", "Sie ist eine Variante Eines Gens.", "Setzt sich im Phänotyp durch."],
       explanation: "z. B. Methylierung. Bezug: Epigenetik. Epigenetik bedeutet: Regulation ohne Sequenzänderung.",
       wissen: "z. B. Methylierung. Bezug: Epigenetik. Epigenetik bedeutet: Regulation ohne Sequenzänderung.",
       flashFront: "Epigenetik",
@@ -604,8 +549,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-molekular:p7:f",
       prompt: "Was kennzeichnet „Plasmid“?",
-      answer: "Das Plasmid ist kurz gesagt: ringförmige DNA, und zwar gilt: bei Bakterien/Gentechnik.",
-      wrong: ["Das Plasmid ist hier: Variante eines Gens.", "Das Plasmid ist kurz gesagt: setzt sich im Phänotyp durch.", "Das Plasmid ist kurz gesagt: verschiedene Allele."],
+      answer: "Es ist ringförmige DNA durch bei Bakterien/Gentechnik.", wrong: ["Es ist eine Variante Eines Gens.", "Setzt sich im Phänotyp durch.", "Das Plasmid ist verschiedene Allele."],
       explanation: "bei Bakterien/Gentechnik. Bezug: Plasmid. Plasmid bedeutet: ringförmige DNA.",
       wissen: "bei Bakterien/Gentechnik. Bezug: Plasmid. Plasmid bedeutet: ringförmige DNA.",
       flashFront: "Plasmid",
@@ -613,8 +557,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-molekular:p8:f",
       prompt: "Was kennzeichnet „Allel“?",
-      answer: "Das Allel ist hier: Variante eines Gens, und zwar gilt: an einem Genort.",
-      wrong: ["Das Allel ist kurz gesagt: setzt sich im Phänotyp durch.", "Das Allel ist kurz gesagt: verschiedene Allele.", "Das Allel ist hier: Austausch homologer Abschnitte."],
+      answer: "Es ist eine Variante Eines Gens durch an einem Genort.", wrong: ["Setzt sich im Phänotyp durch.", "Das Allel ist verschiedene Allele.", "Es ist eine Austausch Homologer Abschnitte."],
       explanation: "An einem Genort. Bezug: Allel. Allel bedeutet: Variante eines Gens.",
       wissen: "An einem Genort. Bezug: Allel. Allel bedeutet: Variante eines Gens.",
       flashFront: "Allel",
@@ -622,8 +565,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-molekular:p9:f",
       prompt: "Was kennzeichnet „Dominant“?",
-      answer: "Setzt sich im Phänotyp durch, und zwar gilt: gegenüber rezessiv.",
-      wrong: ["Das Dominant ist kurz gesagt: verschiedene Allele.", "Das Dominant ist hier: Austausch homologer Abschnitte.", "Das Dominant ist hier: nur homozygot sichtbar."],
+      answer: "Setzt sich im Phänotyp durch durch gegenüber rezessiv.", wrong: ["Das Dominant ist verschiedene Allele.", "Es ist eine Austausch Homologer Abschnitte.", "Das Dominant ist nur homozygot sichtbar."],
       explanation: "Gegenüber rezessiv. Bezug: Dominant. Dominant bedeutet: setzt sich im Phänotyp durch.",
       wissen: "Gegenüber rezessiv. Bezug: Dominant. Dominant bedeutet: setzt sich im Phänotyp durch.",
       flashFront: "Dominant",
@@ -631,8 +573,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-molekular:p10:f",
       prompt: "Was kennzeichnet „Heterozygot“?",
-      answer: "Das Heterozygot ist kurz gesagt: verschiedene Allele.",
-      wrong: ["Das Heterozygot ist hier: Austausch homologer Abschnitte.", "Das Heterozygot ist hier: nur homozygot sichtbar.", "Das Heterozygot ist kurz gesagt: Reduktionsteilung."],
+      answer: "Das Heterozygot ist verschiedene Allele.", wrong: ["Es ist eine Austausch Homologer Abschnitte.", "Das Heterozygot ist nur homozygot sichtbar.", "Das Heterozygot ist das Reduktionsteilung."],
       explanation: "Aa. Bezug: Heterozygot. Heterozygot bedeutet: verschiedene Allele.",
       wissen: "Aa. Bezug: Heterozygot. Heterozygot bedeutet: verschiedene Allele.",
       flashFront: "Heterozygot",
@@ -640,8 +581,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-molekular:p11:f",
       prompt: "Was kennzeichnet „Crossing-over“?",
-      answer: "Der Crossing-over ist hier: Austausch homologer Abschnitte, und zwar gilt: rekombination.",
-      wrong: ["Der Crossing-over ist hier: nur homozygot sichtbar.", "Der Crossing-over ist kurz gesagt: Reduktionsteilung.", "Der Crossing-over ist hier: Gene auf einem Chromosom."],
+      answer: "Er ist eine Austausch Homologer Abschnitte durch Rekombination.", wrong: ["Der Crossing-over ist nur homozygot sichtbar.", "Der Crossing-over ist der Reduktionsteilung.", "Er ist eine Gene auf einem Chromosom."],
       explanation: "Rekombination. Bezug: Crossing-over. Crossing-over bedeutet: Austausch homologer Abschnitte.",
       wissen: "Rekombination. Bezug: Crossing-over. Crossing-over bedeutet: Austausch homologer Abschnitte.",
       flashFront: "Crossing-over",
@@ -670,8 +610,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-ethik:p0:f",
       prompt: "Was kennzeichnet „Homozygot“?",
-      answer: "Das Homozygot ist kurz gesagt: gleiche Allele, und zwar gilt: aA oder aa.",
-      wrong: ["Das Homozygot ist hier: Kernteilung für Wachstum.", "Das Homozygot ist hier: Änderung der DNA.", "Das Homozygot ist hier: gezielter Eingriff in DNA."],
+      answer: "Es ist gleiche Allele durch aA oder aa.", wrong: ["Es ist ein Kernteilung für Wachstum.", "Es ist eine Änderung der DNA.", "Es ist gezielter Eingriff in DNA."],
       explanation: "AA oder aa. Bezug: Homozygot. Homozygot bedeutet: gleiche Allele.",
       wissen: "AA oder aa. Bezug: Homozygot. Homozygot bedeutet: gleiche Allele.",
       flashFront: "Homozygot",
@@ -679,8 +618,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-ethik:p1:f",
       prompt: "Was kennzeichnet „Mitose“?",
-      answer: "Die Mitose ist hier: Kernteilung für Wachstum, und zwar gilt: tochterzellen identisch.",
-      wrong: ["Die Mitose ist hier: Änderung der DNA.", "Die Mitose ist hier: gezielter Eingriff in DNA.", "Die Mitose ist hier: Vererbung in Familien."],
+      answer: "Sie ist ein Kernteilung für Wachstum durch Tochterzellen Identisch.", wrong: ["Sie ist eine Änderung der DNA.", "Sie ist gezielter Eingriff in DNA.", "Sie ist eine Vererbung in Familien."],
       explanation: "Tochterzellen identisch. Bezug: Mitose. Mitose bedeutet: Kernteilung für Wachstum.",
       wissen: "Tochterzellen identisch. Bezug: Mitose. Mitose bedeutet: Kernteilung für Wachstum.",
       flashFront: "Mitose",
@@ -688,8 +626,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-ethik:p2:f",
       prompt: "Was kennzeichnet „Mutation“?",
-      answer: "Die Mutation ist hier: Änderung der DNA, und zwar gilt: rohstoff der Evolution.",
-      wrong: ["Die Mutation ist hier: gezielter Eingriff in DNA.", "Die Mutation ist hier: Vererbung in Familien.", "Die Mutation ist hier: DNA → mRNA."],
+      answer: "Sie ist eine Änderung der DNA durch Rohstoff der Evolution.", wrong: ["Sie ist gezielter Eingriff in DNA.", "Sie ist eine Vererbung in Familien.", "Sie ist eine DNA → MRNA."],
       explanation: "Rohstoff der Evolution. Bezug: Mutation. Mutation bedeutet: Änderung der DNA.",
       wissen: "Rohstoff der Evolution. Bezug: Mutation. Mutation bedeutet: Änderung der DNA.",
       flashFront: "Mutation",
@@ -697,8 +634,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-ethik:p3:f",
       prompt: "Was kennzeichnet „Gentechnik“?",
-      answer: "Die Gentechnik ist hier: gezielter Eingriff in DNA, und zwar gilt: anwendung + Ethik.",
-      wrong: ["Die Gentechnik ist hier: Vererbung in Familien.", "Die Gentechnik ist hier: DNA → mRNA.", "Die Gentechnik ist hier: Reparatur/Ersatz defekter Gene."],
+      answer: "Sie ist gezielter Eingriff in DNA durch anwendung + Ethik.", wrong: ["Sie ist eine Vererbung in Familien.", "Sie ist eine DNA → MRNA.", "Sie ist eine Reparatur/Ersatz Defekter Gene."],
       explanation: "Anwendung + Ethik. Bezug: Gentechnik. Gentechnik bedeutet: gezielter Eingriff in DNA.",
       wissen: "Anwendung + Ethik. Bezug: Gentechnik. Gentechnik bedeutet: gezielter Eingriff in DNA.",
       flashFront: "Gentechnik",
@@ -706,8 +642,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-ethik:p4:f",
       prompt: "Was kennzeichnet „Stammbaum“?",
-      answer: "Das Stammbaum ist hier: Vererbung in Familien, und zwar gilt: humangenetik.",
-      wrong: ["Das Stammbaum ist hier: DNA → mRNA.", "Das Stammbaum ist hier: Reparatur/Ersatz defekter Gene.", "Das Stammbaum ist hier: schneidet DNA gezielt."],
+      answer: "Es ist eine Vererbung in Familien durch Humangenetik.", wrong: ["Es ist eine DNA → MRNA.", "Es ist eine Reparatur/Ersatz Defekter Gene.", "Das Stammbaum ist schneidet DNA gezielt."],
       explanation: "Humangenetik. Bezug: Stammbaum. Stammbaum bedeutet: Vererbung in Familien.",
       wissen: "Humangenetik. Bezug: Stammbaum. Stammbaum bedeutet: Vererbung in Familien.",
       flashFront: "Stammbaum",
@@ -715,8 +650,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-ethik:p5:f",
       prompt: "Was kennzeichnet „Transkription“?",
-      answer: "Die Transkription ist hier: DNA → mRNA, und zwar gilt: im Zellkern/Nucleoid.",
-      wrong: ["Die Transkription ist hier: Reparatur/Ersatz defekter Gene.", "Die Transkription ist hier: schneidet DNA gezielt.", "Die Transkription ist kurz gesagt: genetische Ausstattung."],
+      answer: "Sie ist eine DNA → MRNA durch im Zellkern/Nucleoid.", wrong: ["Sie ist eine Reparatur/Ersatz Defekter Gene.", "Die Transkription ist schneidet DNA gezielt.", "Die Transkription ist genetische Ausstattung."],
       explanation: "im Zellkern/Nucleoid. Bezug: Transkription. Transkription bedeutet: DNA → mRNA.",
       wissen: "im Zellkern/Nucleoid. Bezug: Transkription. Transkription bedeutet: DNA → mRNA.",
       flashFront: "Transkription",
@@ -724,8 +658,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-ethik:p6:f",
       prompt: "Was kennzeichnet „Gentherapie“?",
-      answer: "Die Gentherapie ist hier: Reparatur/Ersatz defekter Gene, und zwar gilt: ethisch sensibel.",
-      wrong: ["Die Gentherapie ist hier: schneidet DNA gezielt.", "Die Gentherapie ist kurz gesagt: genetische Ausstattung.", "Die Gentherapie ist hier: nur homozygot sichtbar."],
+      answer: "Sie ist eine Reparatur/Ersatz Defekter Gene durch Ethisch Sensibel.", wrong: ["Die Gentherapie ist schneidet DNA gezielt.", "Die Gentherapie ist genetische Ausstattung.", "Die Gentherapie ist nur homozygot sichtbar."],
       explanation: "ethisch sensibel. Bezug: Gentherapie. Gentherapie bedeutet: Reparatur/Ersatz defekter Gene.",
       wissen: "ethisch sensibel. Bezug: Gentherapie. Gentherapie bedeutet: Reparatur/Ersatz defekter Gene.",
       flashFront: "Gentherapie",
@@ -733,8 +666,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-ethik:p7:f",
       prompt: "Was kennzeichnet „Restriktionsenzym“?",
-      answer: "Das Restriktionsenzym ist hier: schneidet DNA gezielt, und zwar gilt: klonierung.",
-      wrong: ["Das Restriktionsenzym ist kurz gesagt: genetische Ausstattung.", "Das Restriktionsenzym ist hier: nur homozygot sichtbar.", "Das Restriktionsenzym ist kurz gesagt: Reduktionsteilung."],
+      answer: "Es ist schneidet DNA gezielt durch klonierung.", wrong: ["Das Restriktionsenzym ist genetische Ausstattung.", "Das Restriktionsenzym ist nur homozygot sichtbar.", "Das Restriktionsenzym ist das Reduktionsteilung."],
       explanation: "Klonierung. Bezug: Restriktionsenzym. Restriktionsenzym bedeutet: schneidet DNA gezielt.",
       wissen: "Klonierung. Bezug: Restriktionsenzym. Restriktionsenzym bedeutet: schneidet DNA gezielt.",
       flashFront: "Restriktionsenzym",
@@ -742,8 +674,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-ethik:p8:f",
       prompt: "Was kennzeichnet „Genotyp“?",
-      answer: "Das Genotyp ist kurz gesagt: genetische Ausstattung, und zwar gilt: nicht direkt sichtbar.",
-      wrong: ["Das Genotyp ist hier: nur homozygot sichtbar.", "Das Genotyp ist kurz gesagt: Reduktionsteilung.", "Das Genotyp ist hier: Gene auf einem Chromosom."],
+      answer: "Es ist genetische Ausstattung durch nicht direkt sichtbar.", wrong: ["Das Genotyp ist nur homozygot sichtbar.", "Das Genotyp ist das Reduktionsteilung.", "Es ist eine Gene auf einem Chromosom."],
       explanation: "Nicht direkt sichtbar. Bezug: Genotyp. Genotyp bedeutet: genetische Ausstattung.",
       wissen: "Nicht direkt sichtbar. Bezug: Genotyp. Genotyp bedeutet: genetische Ausstattung.",
       flashFront: "Genotyp",
@@ -751,8 +682,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-ethik:p9:f",
       prompt: "Was kennzeichnet „Rezessiv“?",
-      answer: "Das Rezessiv ist hier: nur homozygot sichtbar, und zwar gilt: träger möglich.",
-      wrong: ["Das Rezessiv ist kurz gesagt: Reduktionsteilung.", "Das Rezessiv ist hier: Gene auf einem Chromosom.", "Das Rezessiv ist kurz gesagt: gleiche Allele."],
+      answer: "Es ist nur homozygot sichtbar durch träger möglich.", wrong: ["Das Rezessiv ist das Reduktionsteilung.", "Es ist eine Gene auf einem Chromosom.", "Das Rezessiv ist gleiche Allele."],
       explanation: "Träger möglich. Bezug: Rezessiv. Rezessiv bedeutet: nur homozygot sichtbar.",
       wissen: "Träger möglich. Bezug: Rezessiv. Rezessiv bedeutet: nur homozygot sichtbar.",
       flashFront: "Rezessiv",
@@ -760,8 +690,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-ethik:p10:f",
       prompt: "Was kennzeichnet „Meiose“?",
-      answer: "Die Meiose ist kurz gesagt: Reduktionsteilung, und zwar gilt: haploide Gameten.",
-      wrong: ["Die Meiose ist hier: Gene auf einem Chromosom.", "Die Meiose ist kurz gesagt: gleiche Allele.", "Die Meiose ist hier: Kernteilung für Wachstum."],
+      answer: "Sie ist eine Reduktionsteilung durch Haploide Gameten.", wrong: ["Sie ist eine Gene auf einem Chromosom.", "Die Meiose ist gleiche Allele.", "Sie ist ein Kernteilung für Wachstum."],
       explanation: "Haploide Gameten. Bezug: Meiose. Meiose bedeutet: Reduktionsteilung.",
       wissen: "Haploide Gameten. Bezug: Meiose. Meiose bedeutet: Reduktionsteilung.",
       flashFront: "Meiose",
@@ -769,8 +698,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-gk12-lb1-ethik:p11:f",
       prompt: "Was kennzeichnet „Kopplung“?",
-      answer: "Die Kopplung ist hier: Gene auf einem Chromosom, und zwar gilt: selten unabhängig.",
-      wrong: ["Die Kopplung ist kurz gesagt: gleiche Allele.", "Die Kopplung ist hier: Kernteilung für Wachstum.", "Die Kopplung ist hier: Änderung der DNA."],
+      answer: "Sie ist eine Gene auf einem Chromosom durch Selten Unabhängig.", wrong: ["Die Kopplung ist gleiche Allele.", "Sie ist ein Kernteilung für Wachstum.", "Sie ist eine Änderung der DNA."],
       explanation: "selten unabhängig. Bezug: Kopplung. Kopplung bedeutet: Gene auf einem Chromosom.",
       wissen: "selten unabhängig. Bezug: Kopplung. Kopplung bedeutet: Gene auf einem Chromosom.",
       flashFront: "Kopplung",
@@ -799,8 +727,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-kompartimente:p0:f",
       prompt: "Was kennzeichnet „Endocytose“?",
-      answer: "Die Endocytose ist hier: Aufnahme per Vesikel, und zwar gilt: membranfluss.",
-      wrong: ["Die Endocytose ist kurz gesagt: Membransystem Synthese/Transport.", "Die Endocytose ist hier: Form und Bewegung.", "Die Endocytose ist kurz gesagt: mit Zellkern."],
+      answer: "Sie ist eine Aufnahme Per Vesikel durch Membranfluss.", wrong: ["Die Endocytose ist die Membransystem Synthese/Transport.", "Sie ist eine Form und Bewegung.", "Die Endocytose ist mit Zellkern."],
       explanation: "Membranfluss. Bezug: Endocytose. Endocytose bedeutet: Aufnahme per Vesikel.",
       wissen: "Membranfluss. Bezug: Endocytose. Endocytose bedeutet: Aufnahme per Vesikel.",
       flashFront: "Endocytose",
@@ -808,8 +735,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-kompartimente:p1:f",
       prompt: "Was kennzeichnet „ER“?",
-      answer: "Der ER ist kurz gesagt: Membransystem Synthese/Transport, und zwar gilt: rau/glatt.",
-      wrong: ["Der ER ist hier: Form und Bewegung.", "Der ER ist kurz gesagt: mit Zellkern.", "Der ER ist hier: Interphase + Mitose."],
+      answer: "Er ist eine Membransystem Synthese/Transport durch Rau/glatt.", wrong: ["Er ist eine Form und Bewegung.", "Der ER ist mit Zellkern.", "Er ist eine Interphase + Mitose."],
       explanation: "rau/glatt. Bezug: ER. ER bedeutet: Membransystem Synthese/Transport.",
       wissen: "rau/glatt. Bezug: ER. ER bedeutet: Membransystem Synthese/Transport.",
       flashFront: "ER",
@@ -817,8 +743,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-kompartimente:p2:f",
       prompt: "Was kennzeichnet „Zytoskelett“?",
-      answer: "Das Zytoskelett ist hier: Form und Bewegung, und zwar gilt: mikrotubuli/Aktin.",
-      wrong: ["Das Zytoskelett ist kurz gesagt: mit Zellkern.", "Das Zytoskelett ist hier: Interphase + Mitose.", "Das Zytoskelett ist hier: Zellen gleicher Funktion."],
+      answer: "Es ist eine Form und Bewegung durch Mikrotubuli/Aktin.", wrong: ["Das Zytoskelett ist mit Zellkern.", "Es ist eine Interphase + Mitose.", "Es ist eine Zellen Gleicher Funktion."],
       explanation: "Mikrotubuli/Aktin. Bezug: Zytoskelett. Zytoskelett bedeutet: Form und Bewegung.",
       wissen: "Mikrotubuli/Aktin. Bezug: Zytoskelett. Zytoskelett bedeutet: Form und Bewegung.",
       flashFront: "Zytoskelett",
@@ -826,8 +751,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-kompartimente:p3:f",
       prompt: "Was kennzeichnet „Eukaryot“?",
-      answer: "Das Eukaryot ist kurz gesagt: mit Zellkern, und zwar gilt: tiere/Pflanzen/Pilze.",
-      wrong: ["Das Eukaryot ist hier: Interphase + Mitose.", "Das Eukaryot ist hier: Zellen gleicher Funktion.", "Das Eukaryot ist kurz gesagt: Transportprotein."],
+      answer: "Es ist mit Zellkern durch tiere/Pflanzen/Pilze.", wrong: ["Es ist eine Interphase + Mitose.", "Es ist eine Zellen Gleicher Funktion.", "Das Eukaryot ist das Transportprotein."],
       explanation: "Tiere/Pflanzen/Pilze. Bezug: Eukaryot. Eukaryot bedeutet: mit Zellkern.",
       wissen: "Tiere/Pflanzen/Pilze. Bezug: Eukaryot. Eukaryot bedeutet: mit Zellkern.",
       flashFront: "Eukaryot",
@@ -835,8 +759,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-kompartimente:p4:f",
       prompt: "Was kennzeichnet „Zellzyklus“?",
-      answer: "Der Zellzyklus ist hier: Interphase + Mitose, und zwar gilt: checkpoints.",
-      wrong: ["Der Zellzyklus ist hier: Zellen gleicher Funktion.", "Der Zellzyklus ist kurz gesagt: Transportprotein.", "Der Zellzyklus ist kurz gesagt: biologischer Katalysator."],
+      answer: "Er ist eine Interphase + Mitose durch Checkpoints.", wrong: ["Er ist eine Zellen Gleicher Funktion.", "Der Zellzyklus ist der Transportprotein.", "Der Zellzyklus ist biologischer Katalysator."],
       explanation: "Checkpoints. Bezug: Zellzyklus. Zellzyklus bedeutet: Interphase + Mitose.",
       wissen: "Checkpoints. Bezug: Zellzyklus. Zellzyklus bedeutet: Interphase + Mitose.",
       flashFront: "Zellzyklus",
@@ -844,8 +767,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-kompartimente:p5:f",
       prompt: "Was kennzeichnet „Gewebe“?",
-      answer: "Die Gewebe ist hier: Zellen gleicher Funktion, und zwar gilt: z. B. Epithel.",
-      wrong: ["Die Gewebe ist kurz gesagt: Transportprotein.", "Die Gewebe ist kurz gesagt: biologischer Katalysator.", "Die Gewebe ist hier: Wasser durch semipermeable Membran."],
+      answer: "Sie ist eine Zellen Gleicher Funktion durch Z. B. Epithel.", wrong: ["Die Gewebe ist die Transportprotein.", "Die Gewebe ist biologischer Katalysator.", "Sie ist eine Wasser durch Semipermeable Membran."],
       explanation: "z. B. Epithel. Bezug: Gewebe. Gewebe bedeutet: Zellen gleicher Funktion.",
       wissen: "z. B. Epithel. Bezug: Gewebe. Gewebe bedeutet: Zellen gleicher Funktion.",
       flashFront: "Gewebe",
@@ -853,8 +775,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-kompartimente:p6:f",
       prompt: "Was kennzeichnet „Carrier“?",
-      answer: "Der Carrier ist kurz gesagt: Transportprotein, und zwar gilt: erleichtert/aktiviert.",
-      wrong: ["Der Carrier ist kurz gesagt: biologischer Katalysator.", "Der Carrier ist hier: Wasser durch semipermeable Membran.", "Der Carrier ist hier: gegen Gefälle mit ATP."],
+      answer: "Er ist eine Transportprotein durch Erleichtert/aktiviert.", wrong: ["Der Carrier ist biologischer Katalysator.", "Er ist eine Wasser durch Semipermeable Membran.", "Er ist gegen Gefälle mit ATP."],
       explanation: "erleichtert/aktiviert. Bezug: Carrier. Carrier bedeutet: Transportprotein.",
       wissen: "erleichtert/aktiviert. Bezug: Carrier. Carrier bedeutet: Transportprotein.",
       flashFront: "Carrier",
@@ -862,8 +783,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-kompartimente:p7:f",
       prompt: "Was kennzeichnet „Enzym“?",
-      answer: "Das Enzym ist kurz gesagt: biologischer Katalysator, und zwar gilt: senkt Aktivierungsenergie.",
-      wrong: ["Das Enzym ist hier: Wasser durch semipermeable Membran.", "Das Enzym ist hier: gegen Gefälle mit ATP.", "Das Enzym ist hier: Ort der Fotosynthese."],
+      answer: "Es ist biologischer Katalysator durch senkt Aktivierungsenergie.", wrong: ["Es ist eine Wasser durch Semipermeable Membran.", "Es ist gegen Gefälle mit ATP.", "Es ist eine Ort der Fotosynthese."],
       explanation: "senkt Aktivierungsenergie. Bezug: Enzym. Enzym bedeutet: biologischer Katalysator.",
       wissen: "senkt Aktivierungsenergie. Bezug: Enzym. Enzym bedeutet: biologischer Katalysator.",
       flashFront: "Enzym",
@@ -871,8 +791,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-kompartimente:p8:f",
       prompt: "Was kennzeichnet „Osmose“?",
-      answer: "Die Osmose ist hier: Wasser durch semipermeable Membran, und zwar gilt: richtung zum Hypertonen.",
-      wrong: ["Die Osmose ist hier: gegen Gefälle mit ATP.", "Die Osmose ist hier: Ort der Fotosynthese.", "Die Osmose ist hier: Abbau mit Enzymen."],
+      answer: "Sie ist eine Wasser durch Semipermeable Membran durch Richtung zum Hypertonen.", wrong: ["Sie ist gegen Gefälle mit ATP.", "Sie ist eine Ort der Fotosynthese.", "Sie ist eine Abbau mit Enzymen."],
       explanation: "Richtung zum Hypertonen. Bezug: Osmose. Osmose bedeutet: Wasser durch semipermeable Membran.",
       wissen: "Richtung zum Hypertonen. Bezug: Osmose. Osmose bedeutet: Wasser durch semipermeable Membran.",
       flashFront: "Osmose",
@@ -880,8 +799,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-kompartimente:p9:f",
       prompt: "Was kennzeichnet „Aktiver Transport“?",
-      answer: "Das Aktiver Transport ist hier: gegen Gefälle mit ATP, und zwar gilt: pumpen/Carrier.",
-      wrong: ["Das Aktiver Transport ist hier: Ort der Fotosynthese.", "Das Aktiver Transport ist hier: Abbau mit Enzymen.", "Das Aktiver Transport ist hier: Aufnahme per Vesikel."],
+      answer: "Es ist gegen Gefälle mit ATP durch pumpen/Carrier.", wrong: ["Es ist eine Ort der Fotosynthese.", "Es ist eine Abbau mit Enzymen.", "Es ist eine Aufnahme Per Vesikel."],
       explanation: "Pumpen/Carrier. Bezug: Aktiver Transport. Aktiver Transport bedeutet: gegen Gefälle mit ATP.",
       wissen: "Pumpen/Carrier. Bezug: Aktiver Transport. Aktiver Transport bedeutet: gegen Gefälle mit ATP.",
       flashFront: "Aktiver Transport",
@@ -889,8 +807,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-kompartimente:p10:f",
       prompt: "Was kennzeichnet „Chloroplast“?",
-      answer: "Das Chloroplast ist hier: Ort der Fotosynthese, und zwar gilt: bei Pflanzen.",
-      wrong: ["Das Chloroplast ist hier: Abbau mit Enzymen.", "Das Chloroplast ist hier: Aufnahme per Vesikel.", "Das Chloroplast ist kurz gesagt: Membransystem Synthese/Transport."],
+      answer: "Es ist eine Ort der Fotosynthese durch bei Pflanzen.", wrong: ["Es ist eine Abbau mit Enzymen.", "Es ist eine Aufnahme Per Vesikel.", "Das Chloroplast ist das Membransystem Synthese/Transport."],
       explanation: "bei Pflanzen. Bezug: Chloroplast. Chloroplast bedeutet: Ort der Fotosynthese.",
       wissen: "bei Pflanzen. Bezug: Chloroplast. Chloroplast bedeutet: Ort der Fotosynthese.",
       flashFront: "Chloroplast",
@@ -898,8 +815,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-kompartimente:p11:f",
       prompt: "Was kennzeichnet „Lysosom“?",
-      answer: "Das Lysosom ist hier: Abbau mit Enzymen, und zwar gilt: verdauung in der Zelle.",
-      wrong: ["Das Lysosom ist hier: Aufnahme per Vesikel.", "Das Lysosom ist kurz gesagt: Membransystem Synthese/Transport.", "Das Lysosom ist hier: Form und Bewegung."],
+      answer: "Es ist eine Abbau mit Enzymen durch Verdauung in der Zelle.", wrong: ["Es ist eine Aufnahme Per Vesikel.", "Das Lysosom ist das Membransystem Synthese/Transport.", "Es ist eine Form und Bewegung."],
       explanation: "Verdauung in der Zelle. Bezug: Lysosom. Lysosom bedeutet: Abbau mit Enzymen.",
       wissen: "Verdauung in der Zelle. Bezug: Lysosom. Lysosom bedeutet: Abbau mit Enzymen.",
       flashFront: "Lysosom",
@@ -928,8 +844,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-signal:p0:f",
       prompt: "Was kennzeichnet „Mitochondrium“?",
-      answer: "Das Mitochondrium ist hier: Ort der Zellatmung, und zwar gilt: aTP-Produktion.",
-      wrong: ["Das Mitochondrium ist hier: Modifikation und Versand.", "Das Mitochondrium ist kurz gesagt: enthält Chromatin.", "Das Mitochondrium ist hier: Ursprung von Mitochondrien/Chloroplasten."],
+      answer: "Es ist eine Ort der Zellatmung durch ATP-Produktion.", wrong: ["Es ist eine Modifikation und Versand.", "Es enthält Chromatin.", "Es ist eine Ursprung von Mitochondrien/Chloroplasten."],
       explanation: "ATP-Produktion. Bezug: Mitochondrium. Mitochondrium bedeutet: Ort der Zellatmung.",
       wissen: "ATP-Produktion. Bezug: Mitochondrium. Mitochondrium bedeutet: Ort der Zellatmung.",
       flashFront: "Mitochondrium",
@@ -937,8 +852,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-signal:p1:f",
       prompt: "Was kennzeichnet „Golgi-Apparat“?",
-      answer: "Das Golgi-Apparat ist hier: Modifikation und Versand, und zwar gilt: vesikel.",
-      wrong: ["Das Golgi-Apparat ist kurz gesagt: enthält Chromatin.", "Das Golgi-Apparat ist hier: Ursprung von Mitochondrien/Chloroplasten.", "Das Golgi-Apparat ist kurz gesagt: Bildungsgewebe."],
+      answer: "Es ist eine Modifikation und Versand durch Vesikel.", wrong: ["Es enthält Chromatin.", "Es ist eine Ursprung von Mitochondrien/Chloroplasten.", "Das Golgi-Apparat ist das Bildungsgewebe."],
       explanation: "Vesikel. Bezug: Golgi-Apparat. Golgi-Apparat bedeutet: Modifikation und Versand.",
       wissen: "Vesikel. Bezug: Golgi-Apparat. Golgi-Apparat bedeutet: Modifikation und Versand.",
       flashFront: "Golgi-Apparat",
@@ -946,8 +860,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-signal:p2:f",
       prompt: "Wozu dient Zellkern?",
-      answer: "Es enthält Chromatin, und zwar gilt hier: Steuerung.",
-      wrong: ["Das Zellkern ist hier: Ursprung von Mitochondrien/Chloroplasten.", "Das Zellkern ist kurz gesagt: Bildungsgewebe.", "Das Zellkern ist kurz gesagt: getrennte Reaktionsräume."],
+      answer: "Es enthält Chromatin durch steuerung.", wrong: ["Es ist eine Ursprung von Mitochondrien/Chloroplasten.", "Das Zellkern ist das Bildungsgewebe.", "Das Zellkern ist getrennte Reaktionsräume."],
       explanation: "Steuerung. Bezug: Zellkern. Zellkern bedeutet: enthält Chromatin.",
       wissen: "Steuerung. Bezug: Zellkern. Zellkern bedeutet: enthält Chromatin.",
       flashFront: "Zellkern",
@@ -955,8 +868,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-signal:p3:f",
       prompt: "Was kennzeichnet „Endosymbiose“?",
-      answer: "Die Endosymbiose ist hier: Ursprung von Mitochondrien/Chloroplasten, und zwar gilt: ehemals Bakterien.",
-      wrong: ["Die Endosymbiose ist kurz gesagt: Bildungsgewebe.", "Die Endosymbiose ist kurz gesagt: getrennte Reaktionsräume.", "Die Endosymbiose ist kurz gesagt: passiver Durchlass."],
+      answer: "Sie ist eine Ursprung von Mitochondrien/Chloroplasten durch Ehemals Bakterien.", wrong: ["Die Endosymbiose ist die Bildungsgewebe.", "Die Endosymbiose ist getrennte Reaktionsräume.", "Die Endosymbiose ist passiver Durchlass."],
       explanation: "ehemals Bakterien. Bezug: Endosymbiose. Endosymbiose bedeutet: Ursprung von Mitochondrien/Chloroplasten.",
       wissen: "ehemals Bakterien. Bezug: Endosymbiose. Endosymbiose bedeutet: Ursprung von Mitochondrien/Chloroplasten.",
       flashFront: "Endosymbiose",
@@ -964,8 +876,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-signal:p4:f",
       prompt: "Was kennzeichnet „Meristem“?",
-      answer: "Das Meristem ist kurz gesagt: Bildungsgewebe, und zwar gilt: pflanzenwachstum.",
-      wrong: ["Das Meristem ist kurz gesagt: getrennte Reaktionsräume.", "Das Meristem ist kurz gesagt: passiver Durchlass.", "Das Meristem ist hier: Fluid-Mosaik aus Lipiden/Proteinen."],
+      answer: "Es ist eine Bildungsgewebe durch Pflanzenwachstum.", wrong: ["Das Meristem ist getrennte Reaktionsräume.", "Das Meristem ist passiver Durchlass.", "Es ist eine Fluid-Mosaik aus Lipiden/Proteinen."],
       explanation: "Pflanzenwachstum. Bezug: Meristem. Meristem bedeutet: Bildungsgewebe.",
       wissen: "Pflanzenwachstum. Bezug: Meristem. Meristem bedeutet: Bildungsgewebe.",
       flashFront: "Meristem",
@@ -973,8 +884,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-signal:p5:f",
       prompt: "Was kennzeichnet „Kompartimentierung“?",
-      answer: "Die Kompartimentierung ist kurz gesagt: getrennte Reaktionsräume, und zwar gilt: effizienz.",
-      wrong: ["Die Kompartimentierung ist kurz gesagt: passiver Durchlass.", "Die Kompartimentierung ist hier: Fluid-Mosaik aus Lipiden/Proteinen.", "Die Kompartimentierung ist kurz gesagt: Protoplast löst sich von Wand."],
+      answer: "Sie ist getrennte Reaktionsräume durch effizienz.", wrong: ["Die Kompartimentierung ist passiver Durchlass.", "Sie ist eine Fluid-Mosaik aus Lipiden/Proteinen.", "Protoplast löst sich von Wand."],
       explanation: "Effizienz. Bezug: Kompartimentierung. Kompartimentierung bedeutet: getrennte Reaktionsräume.",
       wissen: "Effizienz. Bezug: Kompartimentierung. Kompartimentierung bedeutet: getrennte Reaktionsräume.",
       flashFront: "Kompartimentierung",
@@ -982,8 +892,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-signal:p6:f",
       prompt: "Was kennzeichnet „Kanalprotein“?",
-      answer: "Das Kanalprotein ist kurz gesagt: passiver Durchlass, und zwar gilt: selektiv.",
-      wrong: ["Das Kanalprotein ist hier: Fluid-Mosaik aus Lipiden/Proteinen.", "Das Kanalprotein ist kurz gesagt: Protoplast löst sich von Wand.", "Das Kanalprotein ist hier: Aufnahme per Vesikel."],
+      answer: "Es ist passiver Durchlass durch selektiv.", wrong: ["Es ist eine Fluid-Mosaik aus Lipiden/Proteinen.", "Protoplast löst sich von Wand.", "Es ist eine Aufnahme Per Vesikel."],
       explanation: "selektiv. Bezug: Kanalprotein. Kanalprotein bedeutet: passiver Durchlass.",
       wissen: "selektiv. Bezug: Kanalprotein. Kanalprotein bedeutet: passiver Durchlass.",
       flashFront: "Kanalprotein",
@@ -991,8 +900,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-signal:p7:f",
       prompt: "Was kennzeichnet „Biomembran“?",
-      answer: "Das Biomembran ist hier: Fluid-Mosaik aus Lipiden/Proteinen, und zwar gilt: selektiv permeabel.",
-      wrong: ["Das Biomembran ist kurz gesagt: Protoplast löst sich von Wand.", "Das Biomembran ist hier: Aufnahme per Vesikel.", "Das Biomembran ist kurz gesagt: Membransystem Synthese/Transport."],
+      answer: "Es ist eine Fluid-Mosaik aus Lipiden/Proteinen durch Selektiv Permeabel.", wrong: ["Protoplast löst sich von Wand.", "Es ist eine Aufnahme Per Vesikel.", "Das Biomembran ist das Membransystem Synthese/Transport."],
       explanation: "selektiv permeabel. Bezug: Biomembran. Biomembran bedeutet: Fluid-Mosaik aus Lipiden/Proteinen.",
       wissen: "selektiv permeabel. Bezug: Biomembran. Biomembran bedeutet: Fluid-Mosaik aus Lipiden/Proteinen.",
       flashFront: "Biomembran",
@@ -1000,8 +908,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-signal:p8:f",
       prompt: "Was kennzeichnet „Plasmolyse“?",
-      answer: "Protoplast löst sich von Wand, und zwar gilt: hypertones Medium.",
-      wrong: ["Die Plasmolyse ist hier: Aufnahme per Vesikel.", "Die Plasmolyse ist kurz gesagt: Membransystem Synthese/Transport.", "Die Plasmolyse ist hier: Form und Bewegung."],
+      answer: "Protoplast löst sich von Wand durch hypertones Medium.", wrong: ["Sie ist eine Aufnahme Per Vesikel.", "Die Plasmolyse ist die Membransystem Synthese/Transport.", "Sie ist eine Form und Bewegung."],
       explanation: "hypertones Medium. Bezug: Plasmolyse. Plasmolyse bedeutet: Protoplast löst sich von Wand.",
       wissen: "hypertones Medium. Bezug: Plasmolyse. Plasmolyse bedeutet: Protoplast löst sich von Wand.",
       flashFront: "Plasmolyse",
@@ -1009,8 +916,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-signal:p9:f",
       prompt: "Was kennzeichnet „Endocytose“?",
-      answer: "Die Endocytose ist hier: Aufnahme per Vesikel, und zwar gilt: membranfluss.",
-      wrong: ["Die Endocytose ist kurz gesagt: Membransystem Synthese/Transport.", "Die Endocytose ist hier: Form und Bewegung.", "Die Endocytose ist hier: Ort der Zellatmung."],
+      answer: "Sie ist eine Aufnahme Per Vesikel durch Membranfluss.", wrong: ["Die Endocytose ist die Membransystem Synthese/Transport.", "Sie ist eine Form und Bewegung.", "Sie ist eine Ort der Zellatmung."],
       explanation: "Membranfluss. Bezug: Endocytose. Endocytose bedeutet: Aufnahme per Vesikel.",
       wissen: "Membranfluss. Bezug: Endocytose. Endocytose bedeutet: Aufnahme per Vesikel.",
       flashFront: "Endocytose",
@@ -1018,8 +924,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-signal:p10:f",
       prompt: "Was kennzeichnet „ER“?",
-      answer: "Der ER ist kurz gesagt: Membransystem Synthese/Transport, und zwar gilt: rau/glatt.",
-      wrong: ["Der ER ist hier: Form und Bewegung.", "Der ER ist hier: Ort der Zellatmung.", "Der ER ist hier: Modifikation und Versand."],
+      answer: "Er ist eine Membransystem Synthese/Transport durch Rau/glatt.", wrong: ["Er ist eine Form und Bewegung.", "Er ist eine Ort der Zellatmung.", "Er ist eine Modifikation und Versand."],
       explanation: "rau/glatt. Bezug: ER. ER bedeutet: Membransystem Synthese/Transport.",
       wissen: "rau/glatt. Bezug: ER. ER bedeutet: Membransystem Synthese/Transport.",
       flashFront: "ER",
@@ -1027,8 +932,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-signal:p11:f",
       prompt: "Was kennzeichnet „Zytoskelett“?",
-      answer: "Das Zytoskelett ist hier: Form und Bewegung, und zwar gilt: mikrotubuli/Aktin.",
-      wrong: ["Das Zytoskelett ist hier: Ort der Zellatmung.", "Das Zytoskelett ist hier: Modifikation und Versand.", "Das Zytoskelett ist kurz gesagt: enthält Chromatin."],
+      answer: "Es ist eine Form und Bewegung durch Mikrotubuli/Aktin.", wrong: ["Es ist eine Ort der Zellatmung.", "Es ist eine Modifikation und Versand.", "Es enthält Chromatin."],
       explanation: "Mikrotubuli/Aktin. Bezug: Zytoskelett. Zytoskelett bedeutet: Form und Bewegung.",
       wissen: "Mikrotubuli/Aktin. Bezug: Zytoskelett. Zytoskelett bedeutet: Form und Bewegung.",
       flashFront: "Zytoskelett",
@@ -1057,8 +961,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-zyklus-kontrolle:p0:f",
       prompt: "Was kennzeichnet „Chloroplast“?",
-      answer: "Das Chloroplast ist hier: Ort der Fotosynthese, und zwar gilt: bei Pflanzen.",
-      wrong: ["Das Chloroplast ist hier: Abbau mit Enzymen.", "Das Chloroplast ist hier: ohne echten Zellkern.", "Das Chloroplast ist kurz gesagt: Pro-/Meta-/Ana-/Telophase."],
+      answer: "Es ist eine Ort der Fotosynthese durch bei Pflanzen.", wrong: ["Es ist eine Abbau mit Enzymen.", "Das Chloroplast ist ohne echten Zellkern.", "Das Chloroplast ist das Pro-/Meta-/Ana-/Telophase."],
       explanation: "bei Pflanzen. Bezug: Chloroplast. Chloroplast bedeutet: Ort der Fotosynthese.",
       wissen: "bei Pflanzen. Bezug: Chloroplast. Chloroplast bedeutet: Ort der Fotosynthese.",
       flashFront: "Chloroplast",
@@ -1066,8 +969,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-zyklus-kontrolle:p1:f",
       prompt: "Was kennzeichnet „Lysosom“?",
-      answer: "Das Lysosom ist hier: Abbau mit Enzymen, und zwar gilt: verdauung in der Zelle.",
-      wrong: ["Das Lysosom ist hier: ohne echten Zellkern.", "Das Lysosom ist kurz gesagt: Pro-/Meta-/Ana-/Telophase.", "Das Lysosom ist hier: Spezialisierung von Zellen."],
+      answer: "Es ist eine Abbau mit Enzymen durch Verdauung in der Zelle.", wrong: ["Das Lysosom ist ohne echten Zellkern.", "Das Lysosom ist das Pro-/Meta-/Ana-/Telophase.", "Es ist eine Spezialisierung von Zellen."],
       explanation: "Verdauung in der Zelle. Bezug: Lysosom. Lysosom bedeutet: Abbau mit Enzymen.",
       wissen: "Verdauung in der Zelle. Bezug: Lysosom. Lysosom bedeutet: Abbau mit Enzymen.",
       flashFront: "Lysosom",
@@ -1075,8 +977,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-zyklus-kontrolle:p2:f",
       prompt: "Was kennzeichnet „Prokaryot“?",
-      answer: "Das Prokaryot ist hier: ohne echten Zellkern, und zwar gilt: bakterien.",
-      wrong: ["Das Prokaryot ist kurz gesagt: Pro-/Meta-/Ana-/Telophase.", "Das Prokaryot ist hier: Spezialisierung von Zellen.", "Das Prokaryot ist hier: Triebkraft für Wasser."],
+      answer: "Es ist ohne echten Zellkern durch bakterien.", wrong: ["Das Prokaryot ist das Pro-/Meta-/Ana-/Telophase.", "Es ist eine Spezialisierung von Zellen.", "Es ist ein Triebkraft für Wasser."],
       explanation: "Bakterien. Bezug: Prokaryot. Prokaryot bedeutet: ohne echten Zellkern.",
       wissen: "Bakterien. Bezug: Prokaryot. Prokaryot bedeutet: ohne echten Zellkern.",
       flashFront: "Prokaryot",
@@ -1084,8 +985,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-zyklus-kontrolle:p3:f",
       prompt: "Was kennzeichnet „Mitosephasen“?",
-      answer: "Das Mitosephasen ist kurz gesagt: Pro-/Meta-/Ana-/Telophase, und zwar gilt: geordnete Teilung.",
-      wrong: ["Das Mitosephasen ist hier: Spezialisierung von Zellen.", "Das Mitosephasen ist hier: Triebkraft für Wasser.", "Das Mitosephasen ist kurz gesagt: Energie-Währung."],
+      answer: "Es ist eine Pro-/Meta-/Ana-/Telophase durch Geordnete Teilung.", wrong: ["Es ist eine Spezialisierung von Zellen.", "Es ist ein Triebkraft für Wasser.", "Das Mitosephasen ist das Energie-Währung."],
       explanation: "geordnete Teilung. Bezug: Mitosephasen. Mitosephasen bedeutet: Pro-/Meta-/Ana-/Telophase.",
       wissen: "geordnete Teilung. Bezug: Mitosephasen. Mitosephasen bedeutet: Pro-/Meta-/Ana-/Telophase.",
       flashFront: "Mitosephasen",
@@ -1093,8 +993,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-zyklus-kontrolle:p4:f",
       prompt: "Was kennzeichnet „Differenzierung“?",
-      answer: "Die Differenzierung ist hier: Spezialisierung von Zellen, und zwar gilt: gewebe/Organ.",
-      wrong: ["Die Differenzierung ist hier: Triebkraft für Wasser.", "Die Differenzierung ist kurz gesagt: Energie-Währung.", "Die Differenzierung ist hier: Ausgleich von Konzentrationsunterschieden."],
+      answer: "Sie ist eine Spezialisierung von Zellen durch Gewebe/Organ.", wrong: ["Sie ist ein Triebkraft für Wasser.", "Die Differenzierung ist die Energie-Währung.", "Sie ist eine Ausgleich von Konzentrationsunterschieden."],
       explanation: "Gewebe/Organ. Bezug: Differenzierung. Differenzierung bedeutet: Spezialisierung von Zellen.",
       wissen: "Gewebe/Organ. Bezug: Differenzierung. Differenzierung bedeutet: Spezialisierung von Zellen.",
       flashFront: "Differenzierung",
@@ -1102,8 +1001,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-zyklus-kontrolle:p5:f",
       prompt: "Was kennzeichnet „Wasserpotenzial“?",
-      answer: "Das Wasserpotenzial ist hier: Triebkraft für Wasser, und zwar gilt: ψ = ψs + ψp.",
-      wrong: ["Das Wasserpotenzial ist kurz gesagt: Energie-Währung.", "Das Wasserpotenzial ist hier: Ausgleich von Konzentrationsunterschieden.", "Das Wasserpotenzial ist hier: Innendruck der Pflanzenzelle."],
+      answer: "Es ist ein Triebkraft für Wasser durch ψ = ψS + ψP.", wrong: ["Das Wasserpotenzial ist das Energie-Währung.", "Es ist eine Ausgleich von Konzentrationsunterschieden.", "Es ist eine Innendruck der Pflanzenzelle."],
       explanation: "ψ = ψs + ψp. Bezug: Wasserpotenzial. Wasserpotenzial bedeutet: Triebkraft für Wasser.",
       wissen: "ψ = ψs + ψp. Bezug: Wasserpotenzial. Wasserpotenzial bedeutet: Triebkraft für Wasser.",
       flashFront: "Wasserpotenzial",
@@ -1111,8 +1009,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-zyklus-kontrolle:p6:f",
       prompt: "Was kennzeichnet „ATP“?",
-      answer: "Energie-Währung, und zwar gilt hier: Hydrolyse treibt Arbeit.",
-      wrong: ["Das ATP ist hier: Ausgleich von Konzentrationsunterschieden.", "Das ATP ist hier: Innendruck der Pflanzenzelle.", "Das ATP ist hier: Ort der Zellatmung."],
+      answer: "Es ist eine Energie-Währung durch Hydrolyse Treibt Arbeit.", wrong: ["Es ist eine Ausgleich von Konzentrationsunterschieden.", "Es ist eine Innendruck der Pflanzenzelle.", "Es ist eine Ort der Zellatmung."],
       explanation: "Hydrolyse treibt Arbeit. Bezug: ATP. ATP bedeutet: Energie-Währung.",
       wissen: "Hydrolyse treibt Arbeit. Bezug: ATP. ATP bedeutet: Energie-Währung.",
       flashFront: "ATP",
@@ -1120,8 +1017,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-zyklus-kontrolle:p7:f",
       prompt: "Was kennzeichnet „Diffusion“?",
-      answer: "Die Diffusion ist hier: Ausgleich von Konzentrationsunterschieden, und zwar gilt: passiv.",
-      wrong: ["Die Diffusion ist hier: Innendruck der Pflanzenzelle.", "Die Diffusion ist hier: Ort der Zellatmung.", "Die Diffusion ist hier: Modifikation und Versand."],
+      answer: "Sie ist eine Ausgleich von Konzentrationsunterschieden durch Passiv.", wrong: ["Sie ist eine Innendruck der Pflanzenzelle.", "Sie ist eine Ort der Zellatmung.", "Sie ist eine Modifikation und Versand."],
       explanation: "passiv. Bezug: Diffusion. Diffusion bedeutet: Ausgleich von Konzentrationsunterschieden.",
       wissen: "passiv. Bezug: Diffusion. Diffusion bedeutet: Ausgleich von Konzentrationsunterschieden.",
       flashFront: "Diffusion",
@@ -1129,8 +1025,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-zyklus-kontrolle:p8:f",
       prompt: "Was kennzeichnet „Turgor“?",
-      answer: "Der Turgor ist hier: Innendruck der Pflanzenzelle, und zwar gilt: stabilität.",
-      wrong: ["Der Turgor ist hier: Ort der Zellatmung.", "Der Turgor ist hier: Modifikation und Versand.", "Der Turgor ist kurz gesagt: enthält Chromatin."],
+      answer: "Er ist eine Innendruck der Pflanzenzelle durch Stabilität.", wrong: ["Er ist eine Ort der Zellatmung.", "Er ist eine Modifikation und Versand.", "Er enthält Chromatin."],
       explanation: "Stabilität. Bezug: Turgor. Turgor bedeutet: Innendruck der Pflanzenzelle.",
       wissen: "Stabilität. Bezug: Turgor. Turgor bedeutet: Innendruck der Pflanzenzelle.",
       flashFront: "Turgor",
@@ -1138,8 +1033,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-zyklus-kontrolle:p9:f",
       prompt: "Was kennzeichnet „Mitochondrium“?",
-      answer: "Das Mitochondrium ist hier: Ort der Zellatmung, und zwar gilt: aTP-Produktion.",
-      wrong: ["Das Mitochondrium ist hier: Modifikation und Versand.", "Das Mitochondrium ist kurz gesagt: enthält Chromatin.", "Das Mitochondrium ist hier: Ort der Fotosynthese."],
+      answer: "Es ist eine Ort der Zellatmung durch ATP-Produktion.", wrong: ["Es ist eine Modifikation und Versand.", "Es enthält Chromatin.", "Es ist eine Ort der Fotosynthese."],
       explanation: "ATP-Produktion. Bezug: Mitochondrium. Mitochondrium bedeutet: Ort der Zellatmung.",
       wissen: "ATP-Produktion. Bezug: Mitochondrium. Mitochondrium bedeutet: Ort der Zellatmung.",
       flashFront: "Mitochondrium",
@@ -1147,8 +1041,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-zyklus-kontrolle:p10:f",
       prompt: "Was kennzeichnet „Golgi-Apparat“?",
-      answer: "Das Golgi-Apparat ist hier: Modifikation und Versand, und zwar gilt: vesikel.",
-      wrong: ["Das Golgi-Apparat ist kurz gesagt: enthält Chromatin.", "Das Golgi-Apparat ist hier: Ort der Fotosynthese.", "Das Golgi-Apparat ist hier: Abbau mit Enzymen."],
+      answer: "Es ist eine Modifikation und Versand durch Vesikel.", wrong: ["Es enthält Chromatin.", "Es ist eine Ort der Fotosynthese.", "Es ist eine Abbau mit Enzymen."],
       explanation: "Vesikel. Bezug: Golgi-Apparat. Golgi-Apparat bedeutet: Modifikation und Versand.",
       wissen: "Vesikel. Bezug: Golgi-Apparat. Golgi-Apparat bedeutet: Modifikation und Versand.",
       flashFront: "Golgi-Apparat",
@@ -1156,8 +1049,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-zyklus-kontrolle:p11:f",
       prompt: "Wozu dient Zellkern?",
-      answer: "Es enthält Chromatin, und zwar gilt hier: Steuerung.",
-      wrong: ["Das Zellkern ist hier: Ort der Fotosynthese.", "Das Zellkern ist hier: Abbau mit Enzymen.", "Das Zellkern ist hier: ohne echten Zellkern."],
+      answer: "Es enthält Chromatin durch steuerung.", wrong: ["Es ist eine Ort der Fotosynthese.", "Es ist eine Abbau mit Enzymen.", "Das Zellkern ist ohne echten Zellkern."],
       explanation: "Steuerung. Bezug: Zellkern. Zellkern bedeutet: enthält Chromatin.",
       wissen: "Steuerung. Bezug: Zellkern. Zellkern bedeutet: enthält Chromatin.",
       flashFront: "Zellkern",
@@ -1186,8 +1078,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-apoptose:p0:f",
       prompt: "Was kennzeichnet „ER“?",
-      answer: "Der ER ist kurz gesagt: Membransystem Synthese/Transport, und zwar gilt: rau/glatt.",
-      wrong: ["Der ER ist hier: Form und Bewegung.", "Der ER ist kurz gesagt: mit Zellkern.", "Der ER ist hier: Interphase + Mitose."],
+      answer: "Er ist eine Membransystem Synthese/Transport durch Rau/glatt.", wrong: ["Er ist eine Form und Bewegung.", "Der ER ist mit Zellkern.", "Er ist eine Interphase + Mitose."],
       explanation: "rau/glatt. Bezug: ER. ER bedeutet: Membransystem Synthese/Transport.",
       wissen: "rau/glatt. Bezug: ER. ER bedeutet: Membransystem Synthese/Transport.",
       flashFront: "ER",
@@ -1195,8 +1086,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-apoptose:p1:f",
       prompt: "Was kennzeichnet „Zytoskelett“?",
-      answer: "Das Zytoskelett ist hier: Form und Bewegung, und zwar gilt: mikrotubuli/Aktin.",
-      wrong: ["Das Zytoskelett ist kurz gesagt: mit Zellkern.", "Das Zytoskelett ist hier: Interphase + Mitose.", "Das Zytoskelett ist hier: Zellen gleicher Funktion."],
+      answer: "Es ist eine Form und Bewegung durch Mikrotubuli/Aktin.", wrong: ["Das Zytoskelett ist mit Zellkern.", "Es ist eine Interphase + Mitose.", "Es ist eine Zellen Gleicher Funktion."],
       explanation: "Mikrotubuli/Aktin. Bezug: Zytoskelett. Zytoskelett bedeutet: Form und Bewegung.",
       wissen: "Mikrotubuli/Aktin. Bezug: Zytoskelett. Zytoskelett bedeutet: Form und Bewegung.",
       flashFront: "Zytoskelett",
@@ -1204,8 +1094,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-apoptose:p2:f",
       prompt: "Was kennzeichnet „Eukaryot“?",
-      answer: "Das Eukaryot ist kurz gesagt: mit Zellkern, und zwar gilt: tiere/Pflanzen/Pilze.",
-      wrong: ["Das Eukaryot ist hier: Interphase + Mitose.", "Das Eukaryot ist hier: Zellen gleicher Funktion.", "Das Eukaryot ist kurz gesagt: Transportprotein."],
+      answer: "Es ist mit Zellkern durch tiere/Pflanzen/Pilze.", wrong: ["Es ist eine Interphase + Mitose.", "Es ist eine Zellen Gleicher Funktion.", "Das Eukaryot ist das Transportprotein."],
       explanation: "Tiere/Pflanzen/Pilze. Bezug: Eukaryot. Eukaryot bedeutet: mit Zellkern.",
       wissen: "Tiere/Pflanzen/Pilze. Bezug: Eukaryot. Eukaryot bedeutet: mit Zellkern.",
       flashFront: "Eukaryot",
@@ -1213,8 +1102,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-apoptose:p3:f",
       prompt: "Was kennzeichnet „Zellzyklus“?",
-      answer: "Der Zellzyklus ist hier: Interphase + Mitose, und zwar gilt: checkpoints.",
-      wrong: ["Der Zellzyklus ist hier: Zellen gleicher Funktion.", "Der Zellzyklus ist kurz gesagt: Transportprotein.", "Der Zellzyklus ist kurz gesagt: biologischer Katalysator."],
+      answer: "Er ist eine Interphase + Mitose durch Checkpoints.", wrong: ["Er ist eine Zellen Gleicher Funktion.", "Der Zellzyklus ist der Transportprotein.", "Der Zellzyklus ist biologischer Katalysator."],
       explanation: "Checkpoints. Bezug: Zellzyklus. Zellzyklus bedeutet: Interphase + Mitose.",
       wissen: "Checkpoints. Bezug: Zellzyklus. Zellzyklus bedeutet: Interphase + Mitose.",
       flashFront: "Zellzyklus",
@@ -1222,8 +1110,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-apoptose:p4:f",
       prompt: "Was kennzeichnet „Gewebe“?",
-      answer: "Die Gewebe ist hier: Zellen gleicher Funktion, und zwar gilt: z. B. Epithel.",
-      wrong: ["Die Gewebe ist kurz gesagt: Transportprotein.", "Die Gewebe ist kurz gesagt: biologischer Katalysator.", "Die Gewebe ist hier: Wasser durch semipermeable Membran."],
+      answer: "Sie ist eine Zellen Gleicher Funktion durch Z. B. Epithel.", wrong: ["Die Gewebe ist die Transportprotein.", "Die Gewebe ist biologischer Katalysator.", "Sie ist eine Wasser durch Semipermeable Membran."],
       explanation: "z. B. Epithel. Bezug: Gewebe. Gewebe bedeutet: Zellen gleicher Funktion.",
       wissen: "z. B. Epithel. Bezug: Gewebe. Gewebe bedeutet: Zellen gleicher Funktion.",
       flashFront: "Gewebe",
@@ -1231,8 +1118,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-apoptose:p5:f",
       prompt: "Was kennzeichnet „Carrier“?",
-      answer: "Der Carrier ist kurz gesagt: Transportprotein, und zwar gilt: erleichtert/aktiviert.",
-      wrong: ["Der Carrier ist kurz gesagt: biologischer Katalysator.", "Der Carrier ist hier: Wasser durch semipermeable Membran.", "Der Carrier ist hier: gegen Gefälle mit ATP."],
+      answer: "Er ist eine Transportprotein durch Erleichtert/aktiviert.", wrong: ["Der Carrier ist biologischer Katalysator.", "Er ist eine Wasser durch Semipermeable Membran.", "Er ist gegen Gefälle mit ATP."],
       explanation: "erleichtert/aktiviert. Bezug: Carrier. Carrier bedeutet: Transportprotein.",
       wissen: "erleichtert/aktiviert. Bezug: Carrier. Carrier bedeutet: Transportprotein.",
       flashFront: "Carrier",
@@ -1240,8 +1126,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-apoptose:p6:f",
       prompt: "Was kennzeichnet „Enzym“?",
-      answer: "Das Enzym ist kurz gesagt: biologischer Katalysator, und zwar gilt: senkt Aktivierungsenergie.",
-      wrong: ["Das Enzym ist hier: Wasser durch semipermeable Membran.", "Das Enzym ist hier: gegen Gefälle mit ATP.", "Das Enzym ist hier: Ort der Fotosynthese."],
+      answer: "Es ist biologischer Katalysator durch senkt Aktivierungsenergie.", wrong: ["Es ist eine Wasser durch Semipermeable Membran.", "Es ist gegen Gefälle mit ATP.", "Es ist eine Ort der Fotosynthese."],
       explanation: "senkt Aktivierungsenergie. Bezug: Enzym. Enzym bedeutet: biologischer Katalysator.",
       wissen: "senkt Aktivierungsenergie. Bezug: Enzym. Enzym bedeutet: biologischer Katalysator.",
       flashFront: "Enzym",
@@ -1249,8 +1134,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-apoptose:p7:f",
       prompt: "Was kennzeichnet „Osmose“?",
-      answer: "Die Osmose ist hier: Wasser durch semipermeable Membran, und zwar gilt: richtung zum Hypertonen.",
-      wrong: ["Die Osmose ist hier: gegen Gefälle mit ATP.", "Die Osmose ist hier: Ort der Fotosynthese.", "Die Osmose ist hier: Abbau mit Enzymen."],
+      answer: "Sie ist eine Wasser durch Semipermeable Membran durch Richtung zum Hypertonen.", wrong: ["Sie ist gegen Gefälle mit ATP.", "Sie ist eine Ort der Fotosynthese.", "Sie ist eine Abbau mit Enzymen."],
       explanation: "Richtung zum Hypertonen. Bezug: Osmose. Osmose bedeutet: Wasser durch semipermeable Membran.",
       wissen: "Richtung zum Hypertonen. Bezug: Osmose. Osmose bedeutet: Wasser durch semipermeable Membran.",
       flashFront: "Osmose",
@@ -1258,8 +1142,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-apoptose:p8:f",
       prompt: "Was kennzeichnet „Aktiver Transport“?",
-      answer: "Das Aktiver Transport ist hier: gegen Gefälle mit ATP, und zwar gilt: pumpen/Carrier.",
-      wrong: ["Das Aktiver Transport ist hier: Ort der Fotosynthese.", "Das Aktiver Transport ist hier: Abbau mit Enzymen.", "Das Aktiver Transport ist hier: ohne echten Zellkern."],
+      answer: "Es ist gegen Gefälle mit ATP durch pumpen/Carrier.", wrong: ["Es ist eine Ort der Fotosynthese.", "Es ist eine Abbau mit Enzymen.", "Das Aktiver Transport ist ohne echten Zellkern."],
       explanation: "Pumpen/Carrier. Bezug: Aktiver Transport. Aktiver Transport bedeutet: gegen Gefälle mit ATP.",
       wissen: "Pumpen/Carrier. Bezug: Aktiver Transport. Aktiver Transport bedeutet: gegen Gefälle mit ATP.",
       flashFront: "Aktiver Transport",
@@ -1267,8 +1150,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-apoptose:p9:f",
       prompt: "Was kennzeichnet „Chloroplast“?",
-      answer: "Das Chloroplast ist hier: Ort der Fotosynthese, und zwar gilt: bei Pflanzen.",
-      wrong: ["Das Chloroplast ist hier: Abbau mit Enzymen.", "Das Chloroplast ist hier: ohne echten Zellkern.", "Das Chloroplast ist kurz gesagt: Membransystem Synthese/Transport."],
+      answer: "Es ist eine Ort der Fotosynthese durch bei Pflanzen.", wrong: ["Es ist eine Abbau mit Enzymen.", "Das Chloroplast ist ohne echten Zellkern.", "Das Chloroplast ist das Membransystem Synthese/Transport."],
       explanation: "bei Pflanzen. Bezug: Chloroplast. Chloroplast bedeutet: Ort der Fotosynthese.",
       wissen: "bei Pflanzen. Bezug: Chloroplast. Chloroplast bedeutet: Ort der Fotosynthese.",
       flashFront: "Chloroplast",
@@ -1276,8 +1158,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-apoptose:p10:f",
       prompt: "Was kennzeichnet „Lysosom“?",
-      answer: "Das Lysosom ist hier: Abbau mit Enzymen, und zwar gilt: verdauung in der Zelle.",
-      wrong: ["Das Lysosom ist hier: ohne echten Zellkern.", "Das Lysosom ist kurz gesagt: Membransystem Synthese/Transport.", "Das Lysosom ist hier: Form und Bewegung."],
+      answer: "Es ist eine Abbau mit Enzymen durch Verdauung in der Zelle.", wrong: ["Das Lysosom ist ohne echten Zellkern.", "Das Lysosom ist das Membransystem Synthese/Transport.", "Es ist eine Form und Bewegung."],
       explanation: "Verdauung in der Zelle. Bezug: Lysosom. Lysosom bedeutet: Abbau mit Enzymen.",
       wissen: "Verdauung in der Zelle. Bezug: Lysosom. Lysosom bedeutet: Abbau mit Enzymen.",
       flashFront: "Lysosom",
@@ -1285,8 +1166,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-apoptose:p11:f",
       prompt: "Was kennzeichnet „Prokaryot“?",
-      answer: "Das Prokaryot ist hier: ohne echten Zellkern, und zwar gilt: bakterien.",
-      wrong: ["Das Prokaryot ist kurz gesagt: Membransystem Synthese/Transport.", "Das Prokaryot ist hier: Form und Bewegung.", "Das Prokaryot ist kurz gesagt: mit Zellkern."],
+      answer: "Es ist ohne echten Zellkern durch bakterien.", wrong: ["Das Prokaryot ist das Membransystem Synthese/Transport.", "Es ist eine Form und Bewegung.", "Das Prokaryot ist mit Zellkern."],
       explanation: "Bakterien. Bezug: Prokaryot. Prokaryot bedeutet: ohne echten Zellkern.",
       wissen: "Bakterien. Bezug: Prokaryot. Prokaryot bedeutet: ohne echten Zellkern.",
       flashFront: "Prokaryot",
@@ -1315,8 +1195,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-stammzellen:p0:f",
       prompt: "Was kennzeichnet „Golgi-Apparat“?",
-      answer: "Das Golgi-Apparat ist hier: Modifikation und Versand, und zwar gilt: vesikel.",
-      wrong: ["Das Golgi-Apparat ist kurz gesagt: enthält Chromatin.", "Das Golgi-Apparat ist hier: Ursprung von Mitochondrien/Chloroplasten.", "Das Golgi-Apparat ist kurz gesagt: Bildungsgewebe."],
+      answer: "Es ist eine Modifikation und Versand durch Vesikel.", wrong: ["Es enthält Chromatin.", "Es ist eine Ursprung von Mitochondrien/Chloroplasten.", "Das Golgi-Apparat ist das Bildungsgewebe."],
       explanation: "Vesikel. Bezug: Golgi-Apparat. Golgi-Apparat bedeutet: Modifikation und Versand.",
       wissen: "Vesikel. Bezug: Golgi-Apparat. Golgi-Apparat bedeutet: Modifikation und Versand.",
       flashFront: "Golgi-Apparat",
@@ -1324,8 +1203,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-stammzellen:p1:f",
       prompt: "Wozu dient Zellkern?",
-      answer: "Es enthält Chromatin, und zwar gilt hier: Steuerung.",
-      wrong: ["Das Zellkern ist hier: Ursprung von Mitochondrien/Chloroplasten.", "Das Zellkern ist kurz gesagt: Bildungsgewebe.", "Das Zellkern ist kurz gesagt: getrennte Reaktionsräume."],
+      answer: "Es enthält Chromatin durch steuerung.", wrong: ["Es ist eine Ursprung von Mitochondrien/Chloroplasten.", "Das Zellkern ist das Bildungsgewebe.", "Das Zellkern ist getrennte Reaktionsräume."],
       explanation: "Steuerung. Bezug: Zellkern. Zellkern bedeutet: enthält Chromatin.",
       wissen: "Steuerung. Bezug: Zellkern. Zellkern bedeutet: enthält Chromatin.",
       flashFront: "Zellkern",
@@ -1333,8 +1211,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-stammzellen:p2:f",
       prompt: "Was kennzeichnet „Endosymbiose“?",
-      answer: "Die Endosymbiose ist hier: Ursprung von Mitochondrien/Chloroplasten, und zwar gilt: ehemals Bakterien.",
-      wrong: ["Die Endosymbiose ist kurz gesagt: Bildungsgewebe.", "Die Endosymbiose ist kurz gesagt: getrennte Reaktionsräume.", "Die Endosymbiose ist kurz gesagt: passiver Durchlass."],
+      answer: "Sie ist eine Ursprung von Mitochondrien/Chloroplasten durch Ehemals Bakterien.", wrong: ["Die Endosymbiose ist die Bildungsgewebe.", "Die Endosymbiose ist getrennte Reaktionsräume.", "Die Endosymbiose ist passiver Durchlass."],
       explanation: "ehemals Bakterien. Bezug: Endosymbiose. Endosymbiose bedeutet: Ursprung von Mitochondrien/Chloroplasten.",
       wissen: "ehemals Bakterien. Bezug: Endosymbiose. Endosymbiose bedeutet: Ursprung von Mitochondrien/Chloroplasten.",
       flashFront: "Endosymbiose",
@@ -1342,8 +1219,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-stammzellen:p3:f",
       prompt: "Was kennzeichnet „Meristem“?",
-      answer: "Das Meristem ist kurz gesagt: Bildungsgewebe, und zwar gilt: pflanzenwachstum.",
-      wrong: ["Das Meristem ist kurz gesagt: getrennte Reaktionsräume.", "Das Meristem ist kurz gesagt: passiver Durchlass.", "Das Meristem ist hier: Fluid-Mosaik aus Lipiden/Proteinen."],
+      answer: "Es ist eine Bildungsgewebe durch Pflanzenwachstum.", wrong: ["Das Meristem ist getrennte Reaktionsräume.", "Das Meristem ist passiver Durchlass.", "Es ist eine Fluid-Mosaik aus Lipiden/Proteinen."],
       explanation: "Pflanzenwachstum. Bezug: Meristem. Meristem bedeutet: Bildungsgewebe.",
       wissen: "Pflanzenwachstum. Bezug: Meristem. Meristem bedeutet: Bildungsgewebe.",
       flashFront: "Meristem",
@@ -1351,8 +1227,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-stammzellen:p4:f",
       prompt: "Was kennzeichnet „Kompartimentierung“?",
-      answer: "Die Kompartimentierung ist kurz gesagt: getrennte Reaktionsräume, und zwar gilt: effizienz.",
-      wrong: ["Die Kompartimentierung ist kurz gesagt: passiver Durchlass.", "Die Kompartimentierung ist hier: Fluid-Mosaik aus Lipiden/Proteinen.", "Die Kompartimentierung ist kurz gesagt: Protoplast löst sich von Wand."],
+      answer: "Sie ist getrennte Reaktionsräume durch effizienz.", wrong: ["Die Kompartimentierung ist passiver Durchlass.", "Sie ist eine Fluid-Mosaik aus Lipiden/Proteinen.", "Protoplast löst sich von Wand."],
       explanation: "Effizienz. Bezug: Kompartimentierung. Kompartimentierung bedeutet: getrennte Reaktionsräume.",
       wissen: "Effizienz. Bezug: Kompartimentierung. Kompartimentierung bedeutet: getrennte Reaktionsräume.",
       flashFront: "Kompartimentierung",
@@ -1360,8 +1235,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-stammzellen:p5:f",
       prompt: "Was kennzeichnet „Kanalprotein“?",
-      answer: "Das Kanalprotein ist kurz gesagt: passiver Durchlass, und zwar gilt: selektiv.",
-      wrong: ["Das Kanalprotein ist hier: Fluid-Mosaik aus Lipiden/Proteinen.", "Das Kanalprotein ist kurz gesagt: Protoplast löst sich von Wand.", "Das Kanalprotein ist hier: Aufnahme per Vesikel."],
+      answer: "Es ist passiver Durchlass durch selektiv.", wrong: ["Es ist eine Fluid-Mosaik aus Lipiden/Proteinen.", "Protoplast löst sich von Wand.", "Es ist eine Aufnahme Per Vesikel."],
       explanation: "selektiv. Bezug: Kanalprotein. Kanalprotein bedeutet: passiver Durchlass.",
       wissen: "selektiv. Bezug: Kanalprotein. Kanalprotein bedeutet: passiver Durchlass.",
       flashFront: "Kanalprotein",
@@ -1369,8 +1243,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-stammzellen:p6:f",
       prompt: "Was kennzeichnet „Biomembran“?",
-      answer: "Das Biomembran ist hier: Fluid-Mosaik aus Lipiden/Proteinen, und zwar gilt: selektiv permeabel.",
-      wrong: ["Das Biomembran ist kurz gesagt: Protoplast löst sich von Wand.", "Das Biomembran ist hier: Aufnahme per Vesikel.", "Das Biomembran ist kurz gesagt: Membransystem Synthese/Transport."],
+      answer: "Es ist eine Fluid-Mosaik aus Lipiden/Proteinen durch Selektiv Permeabel.", wrong: ["Protoplast löst sich von Wand.", "Es ist eine Aufnahme Per Vesikel.", "Das Biomembran ist das Membransystem Synthese/Transport."],
       explanation: "selektiv permeabel. Bezug: Biomembran. Biomembran bedeutet: Fluid-Mosaik aus Lipiden/Proteinen.",
       wissen: "selektiv permeabel. Bezug: Biomembran. Biomembran bedeutet: Fluid-Mosaik aus Lipiden/Proteinen.",
       flashFront: "Biomembran",
@@ -1378,8 +1251,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-stammzellen:p7:f",
       prompt: "Was kennzeichnet „Plasmolyse“?",
-      answer: "Protoplast löst sich von Wand, und zwar gilt: hypertones Medium.",
-      wrong: ["Die Plasmolyse ist hier: Aufnahme per Vesikel.", "Die Plasmolyse ist kurz gesagt: Membransystem Synthese/Transport.", "Die Plasmolyse ist hier: Form und Bewegung."],
+      answer: "Protoplast löst sich von Wand durch hypertones Medium.", wrong: ["Sie ist eine Aufnahme Per Vesikel.", "Die Plasmolyse ist die Membransystem Synthese/Transport.", "Sie ist eine Form und Bewegung."],
       explanation: "hypertones Medium. Bezug: Plasmolyse. Plasmolyse bedeutet: Protoplast löst sich von Wand.",
       wissen: "hypertones Medium. Bezug: Plasmolyse. Plasmolyse bedeutet: Protoplast löst sich von Wand.",
       flashFront: "Plasmolyse",
@@ -1387,8 +1259,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-stammzellen:p8:f",
       prompt: "Was kennzeichnet „Endocytose“?",
-      answer: "Die Endocytose ist hier: Aufnahme per Vesikel, und zwar gilt: membranfluss.",
-      wrong: ["Die Endocytose ist kurz gesagt: Membransystem Synthese/Transport.", "Die Endocytose ist hier: Form und Bewegung.", "Die Endocytose ist kurz gesagt: mit Zellkern."],
+      answer: "Sie ist eine Aufnahme Per Vesikel durch Membranfluss.", wrong: ["Die Endocytose ist die Membransystem Synthese/Transport.", "Sie ist eine Form und Bewegung.", "Die Endocytose ist mit Zellkern."],
       explanation: "Membranfluss. Bezug: Endocytose. Endocytose bedeutet: Aufnahme per Vesikel.",
       wissen: "Membranfluss. Bezug: Endocytose. Endocytose bedeutet: Aufnahme per Vesikel.",
       flashFront: "Endocytose",
@@ -1396,8 +1267,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-stammzellen:p9:f",
       prompt: "Was kennzeichnet „ER“?",
-      answer: "Der ER ist kurz gesagt: Membransystem Synthese/Transport, und zwar gilt: rau/glatt.",
-      wrong: ["Der ER ist hier: Form und Bewegung.", "Der ER ist kurz gesagt: mit Zellkern.", "Der ER ist hier: Modifikation und Versand."],
+      answer: "Er ist eine Membransystem Synthese/Transport durch Rau/glatt.", wrong: ["Er ist eine Form und Bewegung.", "Der ER ist mit Zellkern.", "Er ist eine Modifikation und Versand."],
       explanation: "rau/glatt. Bezug: ER. ER bedeutet: Membransystem Synthese/Transport.",
       wissen: "rau/glatt. Bezug: ER. ER bedeutet: Membransystem Synthese/Transport.",
       flashFront: "ER",
@@ -1405,8 +1275,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-stammzellen:p10:f",
       prompt: "Was kennzeichnet „Zytoskelett“?",
-      answer: "Das Zytoskelett ist hier: Form und Bewegung, und zwar gilt: mikrotubuli/Aktin.",
-      wrong: ["Das Zytoskelett ist kurz gesagt: mit Zellkern.", "Das Zytoskelett ist hier: Modifikation und Versand.", "Das Zytoskelett ist kurz gesagt: enthält Chromatin."],
+      answer: "Es ist eine Form und Bewegung durch Mikrotubuli/Aktin.", wrong: ["Das Zytoskelett ist mit Zellkern.", "Es ist eine Modifikation und Versand.", "Es enthält Chromatin."],
       explanation: "Mikrotubuli/Aktin. Bezug: Zytoskelett. Zytoskelett bedeutet: Form und Bewegung.",
       wissen: "Mikrotubuli/Aktin. Bezug: Zytoskelett. Zytoskelett bedeutet: Form und Bewegung.",
       flashFront: "Zytoskelett",
@@ -1414,8 +1283,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-stammzellen:p11:f",
       prompt: "Was kennzeichnet „Eukaryot“?",
-      answer: "Das Eukaryot ist kurz gesagt: mit Zellkern, und zwar gilt: tiere/Pflanzen/Pilze.",
-      wrong: ["Das Eukaryot ist hier: Modifikation und Versand.", "Das Eukaryot ist kurz gesagt: enthält Chromatin.", "Das Eukaryot ist hier: Ursprung von Mitochondrien/Chloroplasten."],
+      answer: "Es ist mit Zellkern durch tiere/Pflanzen/Pilze.", wrong: ["Es ist eine Modifikation und Versand.", "Es enthält Chromatin.", "Es ist eine Ursprung von Mitochondrien/Chloroplasten."],
       explanation: "Tiere/Pflanzen/Pilze. Bezug: Eukaryot. Eukaryot bedeutet: mit Zellkern.",
       wissen: "Tiere/Pflanzen/Pilze. Bezug: Eukaryot. Eukaryot bedeutet: mit Zellkern.",
       flashFront: "Eukaryot",
@@ -1444,8 +1312,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-gewebearten:p0:f",
       prompt: "Was kennzeichnet „Lysosom“?",
-      answer: "Das Lysosom ist hier: Abbau mit Enzymen, und zwar gilt: verdauung in der Zelle.",
-      wrong: ["Das Lysosom ist hier: ohne echten Zellkern.", "Das Lysosom ist kurz gesagt: Pro-/Meta-/Ana-/Telophase.", "Das Lysosom ist hier: Spezialisierung von Zellen."],
+      answer: "Es ist eine Abbau mit Enzymen durch Verdauung in der Zelle.", wrong: ["Das Lysosom ist ohne echten Zellkern.", "Das Lysosom ist das Pro-/Meta-/Ana-/Telophase.", "Es ist eine Spezialisierung von Zellen."],
       explanation: "Verdauung in der Zelle. Bezug: Lysosom. Lysosom bedeutet: Abbau mit Enzymen.",
       wissen: "Verdauung in der Zelle. Bezug: Lysosom. Lysosom bedeutet: Abbau mit Enzymen.",
       flashFront: "Lysosom",
@@ -1453,8 +1320,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-gewebearten:p1:f",
       prompt: "Was kennzeichnet „Prokaryot“?",
-      answer: "Das Prokaryot ist hier: ohne echten Zellkern, und zwar gilt: bakterien.",
-      wrong: ["Das Prokaryot ist kurz gesagt: Pro-/Meta-/Ana-/Telophase.", "Das Prokaryot ist hier: Spezialisierung von Zellen.", "Das Prokaryot ist hier: Triebkraft für Wasser."],
+      answer: "Es ist ohne echten Zellkern durch bakterien.", wrong: ["Das Prokaryot ist das Pro-/Meta-/Ana-/Telophase.", "Es ist eine Spezialisierung von Zellen.", "Es ist ein Triebkraft für Wasser."],
       explanation: "Bakterien. Bezug: Prokaryot. Prokaryot bedeutet: ohne echten Zellkern.",
       wissen: "Bakterien. Bezug: Prokaryot. Prokaryot bedeutet: ohne echten Zellkern.",
       flashFront: "Prokaryot",
@@ -1462,8 +1328,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-gewebearten:p2:f",
       prompt: "Was kennzeichnet „Mitosephasen“?",
-      answer: "Das Mitosephasen ist kurz gesagt: Pro-/Meta-/Ana-/Telophase, und zwar gilt: geordnete Teilung.",
-      wrong: ["Das Mitosephasen ist hier: Spezialisierung von Zellen.", "Das Mitosephasen ist hier: Triebkraft für Wasser.", "Das Mitosephasen ist kurz gesagt: Energie-Währung."],
+      answer: "Es ist eine Pro-/Meta-/Ana-/Telophase durch Geordnete Teilung.", wrong: ["Es ist eine Spezialisierung von Zellen.", "Es ist ein Triebkraft für Wasser.", "Das Mitosephasen ist das Energie-Währung."],
       explanation: "geordnete Teilung. Bezug: Mitosephasen. Mitosephasen bedeutet: Pro-/Meta-/Ana-/Telophase.",
       wissen: "geordnete Teilung. Bezug: Mitosephasen. Mitosephasen bedeutet: Pro-/Meta-/Ana-/Telophase.",
       flashFront: "Mitosephasen",
@@ -1471,8 +1336,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-gewebearten:p3:f",
       prompt: "Was kennzeichnet „Differenzierung“?",
-      answer: "Die Differenzierung ist hier: Spezialisierung von Zellen, und zwar gilt: gewebe/Organ.",
-      wrong: ["Die Differenzierung ist hier: Triebkraft für Wasser.", "Die Differenzierung ist kurz gesagt: Energie-Währung.", "Die Differenzierung ist hier: Ausgleich von Konzentrationsunterschieden."],
+      answer: "Sie ist eine Spezialisierung von Zellen durch Gewebe/Organ.", wrong: ["Sie ist ein Triebkraft für Wasser.", "Die Differenzierung ist die Energie-Währung.", "Sie ist eine Ausgleich von Konzentrationsunterschieden."],
       explanation: "Gewebe/Organ. Bezug: Differenzierung. Differenzierung bedeutet: Spezialisierung von Zellen.",
       wissen: "Gewebe/Organ. Bezug: Differenzierung. Differenzierung bedeutet: Spezialisierung von Zellen.",
       flashFront: "Differenzierung",
@@ -1480,8 +1344,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-gewebearten:p4:f",
       prompt: "Was kennzeichnet „Wasserpotenzial“?",
-      answer: "Das Wasserpotenzial ist hier: Triebkraft für Wasser, und zwar gilt: ψ = ψs + ψp.",
-      wrong: ["Das Wasserpotenzial ist kurz gesagt: Energie-Währung.", "Das Wasserpotenzial ist hier: Ausgleich von Konzentrationsunterschieden.", "Das Wasserpotenzial ist hier: Innendruck der Pflanzenzelle."],
+      answer: "Es ist ein Triebkraft für Wasser durch ψ = ψS + ψP.", wrong: ["Das Wasserpotenzial ist das Energie-Währung.", "Es ist eine Ausgleich von Konzentrationsunterschieden.", "Es ist eine Innendruck der Pflanzenzelle."],
       explanation: "ψ = ψs + ψp. Bezug: Wasserpotenzial. Wasserpotenzial bedeutet: Triebkraft für Wasser.",
       wissen: "ψ = ψs + ψp. Bezug: Wasserpotenzial. Wasserpotenzial bedeutet: Triebkraft für Wasser.",
       flashFront: "Wasserpotenzial",
@@ -1489,8 +1352,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-gewebearten:p5:f",
       prompt: "Was kennzeichnet „ATP“?",
-      answer: "Energie-Währung, und zwar gilt hier: Hydrolyse treibt Arbeit.",
-      wrong: ["Das ATP ist hier: Ausgleich von Konzentrationsunterschieden.", "Das ATP ist hier: Innendruck der Pflanzenzelle.", "Das ATP ist hier: Ort der Zellatmung."],
+      answer: "Es ist eine Energie-Währung durch Hydrolyse Treibt Arbeit.", wrong: ["Es ist eine Ausgleich von Konzentrationsunterschieden.", "Es ist eine Innendruck der Pflanzenzelle.", "Es ist eine Ort der Zellatmung."],
       explanation: "Hydrolyse treibt Arbeit. Bezug: ATP. ATP bedeutet: Energie-Währung.",
       wissen: "Hydrolyse treibt Arbeit. Bezug: ATP. ATP bedeutet: Energie-Währung.",
       flashFront: "ATP",
@@ -1498,8 +1360,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-gewebearten:p6:f",
       prompt: "Was kennzeichnet „Diffusion“?",
-      answer: "Die Diffusion ist hier: Ausgleich von Konzentrationsunterschieden, und zwar gilt: passiv.",
-      wrong: ["Die Diffusion ist hier: Innendruck der Pflanzenzelle.", "Die Diffusion ist hier: Ort der Zellatmung.", "Die Diffusion ist hier: Modifikation und Versand."],
+      answer: "Sie ist eine Ausgleich von Konzentrationsunterschieden durch Passiv.", wrong: ["Sie ist eine Innendruck der Pflanzenzelle.", "Sie ist eine Ort der Zellatmung.", "Sie ist eine Modifikation und Versand."],
       explanation: "passiv. Bezug: Diffusion. Diffusion bedeutet: Ausgleich von Konzentrationsunterschieden.",
       wissen: "passiv. Bezug: Diffusion. Diffusion bedeutet: Ausgleich von Konzentrationsunterschieden.",
       flashFront: "Diffusion",
@@ -1507,8 +1368,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-gewebearten:p7:f",
       prompt: "Was kennzeichnet „Turgor“?",
-      answer: "Der Turgor ist hier: Innendruck der Pflanzenzelle, und zwar gilt: stabilität.",
-      wrong: ["Der Turgor ist hier: Ort der Zellatmung.", "Der Turgor ist hier: Modifikation und Versand.", "Der Turgor ist kurz gesagt: enthält Chromatin."],
+      answer: "Er ist eine Innendruck der Pflanzenzelle durch Stabilität.", wrong: ["Er ist eine Ort der Zellatmung.", "Er ist eine Modifikation und Versand.", "Er enthält Chromatin."],
       explanation: "Stabilität. Bezug: Turgor. Turgor bedeutet: Innendruck der Pflanzenzelle.",
       wissen: "Stabilität. Bezug: Turgor. Turgor bedeutet: Innendruck der Pflanzenzelle.",
       flashFront: "Turgor",
@@ -1516,8 +1376,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-gewebearten:p8:f",
       prompt: "Was kennzeichnet „Mitochondrium“?",
-      answer: "Das Mitochondrium ist hier: Ort der Zellatmung, und zwar gilt: aTP-Produktion.",
-      wrong: ["Das Mitochondrium ist hier: Modifikation und Versand.", "Das Mitochondrium ist kurz gesagt: enthält Chromatin.", "Das Mitochondrium ist hier: Ursprung von Mitochondrien/Chloroplasten."],
+      answer: "Es ist eine Ort der Zellatmung durch ATP-Produktion.", wrong: ["Es ist eine Modifikation und Versand.", "Es enthält Chromatin.", "Es ist eine Ursprung von Mitochondrien/Chloroplasten."],
       explanation: "ATP-Produktion. Bezug: Mitochondrium. Mitochondrium bedeutet: Ort der Zellatmung.",
       wissen: "ATP-Produktion. Bezug: Mitochondrium. Mitochondrium bedeutet: Ort der Zellatmung.",
       flashFront: "Mitochondrium",
@@ -1525,8 +1384,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-gewebearten:p9:f",
       prompt: "Was kennzeichnet „Golgi-Apparat“?",
-      answer: "Das Golgi-Apparat ist hier: Modifikation und Versand, und zwar gilt: vesikel.",
-      wrong: ["Das Golgi-Apparat ist kurz gesagt: enthält Chromatin.", "Das Golgi-Apparat ist hier: Ursprung von Mitochondrien/Chloroplasten.", "Das Golgi-Apparat ist hier: Abbau mit Enzymen."],
+      answer: "Es ist eine Modifikation und Versand durch Vesikel.", wrong: ["Es enthält Chromatin.", "Es ist eine Ursprung von Mitochondrien/Chloroplasten.", "Es ist eine Abbau mit Enzymen."],
       explanation: "Vesikel. Bezug: Golgi-Apparat. Golgi-Apparat bedeutet: Modifikation und Versand.",
       wissen: "Vesikel. Bezug: Golgi-Apparat. Golgi-Apparat bedeutet: Modifikation und Versand.",
       flashFront: "Golgi-Apparat",
@@ -1534,8 +1392,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-gewebearten:p10:f",
       prompt: "Wozu dient Zellkern?",
-      answer: "Es enthält Chromatin, und zwar gilt hier: Steuerung.",
-      wrong: ["Das Zellkern ist hier: Ursprung von Mitochondrien/Chloroplasten.", "Das Zellkern ist hier: Abbau mit Enzymen.", "Das Zellkern ist hier: ohne echten Zellkern."],
+      answer: "Es enthält Chromatin durch steuerung.", wrong: ["Es ist eine Ursprung von Mitochondrien/Chloroplasten.", "Es ist eine Abbau mit Enzymen.", "Das Zellkern ist ohne echten Zellkern."],
       explanation: "Steuerung. Bezug: Zellkern. Zellkern bedeutet: enthält Chromatin.",
       wissen: "Steuerung. Bezug: Zellkern. Zellkern bedeutet: enthält Chromatin.",
       flashFront: "Zellkern",
@@ -1543,8 +1400,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-gewebearten:p11:f",
       prompt: "Was kennzeichnet „Endosymbiose“?",
-      answer: "Die Endosymbiose ist hier: Ursprung von Mitochondrien/Chloroplasten, und zwar gilt: ehemals Bakterien.",
-      wrong: ["Die Endosymbiose ist hier: Abbau mit Enzymen.", "Die Endosymbiose ist hier: ohne echten Zellkern.", "Die Endosymbiose ist kurz gesagt: Pro-/Meta-/Ana-/Telophase."],
+      answer: "Sie ist eine Ursprung von Mitochondrien/Chloroplasten durch Ehemals Bakterien.", wrong: ["Sie ist eine Abbau mit Enzymen.", "Die Endosymbiose ist ohne echten Zellkern.", "Die Endosymbiose ist die Pro-/Meta-/Ana-/Telophase."],
       explanation: "ehemals Bakterien. Bezug: Endosymbiose. Endosymbiose bedeutet: Ursprung von Mitochondrien/Chloroplasten.",
       wissen: "ehemals Bakterien. Bezug: Endosymbiose. Endosymbiose bedeutet: Ursprung von Mitochondrien/Chloroplasten.",
       flashFront: "Endosymbiose",
@@ -1573,8 +1429,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-organ:p0:f",
       prompt: "Was kennzeichnet „Zytoskelett“?",
-      answer: "Das Zytoskelett ist hier: Form und Bewegung, und zwar gilt: mikrotubuli/Aktin.",
-      wrong: ["Das Zytoskelett ist kurz gesagt: mit Zellkern.", "Das Zytoskelett ist hier: Interphase + Mitose.", "Das Zytoskelett ist hier: Zellen gleicher Funktion."],
+      answer: "Es ist eine Form und Bewegung durch Mikrotubuli/Aktin.", wrong: ["Das Zytoskelett ist mit Zellkern.", "Es ist eine Interphase + Mitose.", "Es ist eine Zellen Gleicher Funktion."],
       explanation: "Mikrotubuli/Aktin. Bezug: Zytoskelett. Zytoskelett bedeutet: Form und Bewegung.",
       wissen: "Mikrotubuli/Aktin. Bezug: Zytoskelett. Zytoskelett bedeutet: Form und Bewegung.",
       flashFront: "Zytoskelett",
@@ -1582,8 +1437,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-organ:p1:f",
       prompt: "Was kennzeichnet „Eukaryot“?",
-      answer: "Das Eukaryot ist kurz gesagt: mit Zellkern, und zwar gilt: tiere/Pflanzen/Pilze.",
-      wrong: ["Das Eukaryot ist hier: Interphase + Mitose.", "Das Eukaryot ist hier: Zellen gleicher Funktion.", "Das Eukaryot ist kurz gesagt: Transportprotein."],
+      answer: "Es ist mit Zellkern durch tiere/Pflanzen/Pilze.", wrong: ["Es ist eine Interphase + Mitose.", "Es ist eine Zellen Gleicher Funktion.", "Das Eukaryot ist das Transportprotein."],
       explanation: "Tiere/Pflanzen/Pilze. Bezug: Eukaryot. Eukaryot bedeutet: mit Zellkern.",
       wissen: "Tiere/Pflanzen/Pilze. Bezug: Eukaryot. Eukaryot bedeutet: mit Zellkern.",
       flashFront: "Eukaryot",
@@ -1591,8 +1445,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-organ:p2:f",
       prompt: "Was kennzeichnet „Zellzyklus“?",
-      answer: "Der Zellzyklus ist hier: Interphase + Mitose, und zwar gilt: checkpoints.",
-      wrong: ["Der Zellzyklus ist hier: Zellen gleicher Funktion.", "Der Zellzyklus ist kurz gesagt: Transportprotein.", "Der Zellzyklus ist kurz gesagt: biologischer Katalysator."],
+      answer: "Er ist eine Interphase + Mitose durch Checkpoints.", wrong: ["Er ist eine Zellen Gleicher Funktion.", "Der Zellzyklus ist der Transportprotein.", "Der Zellzyklus ist biologischer Katalysator."],
       explanation: "Checkpoints. Bezug: Zellzyklus. Zellzyklus bedeutet: Interphase + Mitose.",
       wissen: "Checkpoints. Bezug: Zellzyklus. Zellzyklus bedeutet: Interphase + Mitose.",
       flashFront: "Zellzyklus",
@@ -1600,8 +1453,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-organ:p3:f",
       prompt: "Was kennzeichnet „Gewebe“?",
-      answer: "Die Gewebe ist hier: Zellen gleicher Funktion, und zwar gilt: z. B. Epithel.",
-      wrong: ["Die Gewebe ist kurz gesagt: Transportprotein.", "Die Gewebe ist kurz gesagt: biologischer Katalysator.", "Die Gewebe ist hier: Wasser durch semipermeable Membran."],
+      answer: "Sie ist eine Zellen Gleicher Funktion durch Z. B. Epithel.", wrong: ["Die Gewebe ist die Transportprotein.", "Die Gewebe ist biologischer Katalysator.", "Sie ist eine Wasser durch Semipermeable Membran."],
       explanation: "z. B. Epithel. Bezug: Gewebe. Gewebe bedeutet: Zellen gleicher Funktion.",
       wissen: "z. B. Epithel. Bezug: Gewebe. Gewebe bedeutet: Zellen gleicher Funktion.",
       flashFront: "Gewebe",
@@ -1609,8 +1461,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-organ:p4:f",
       prompt: "Was kennzeichnet „Carrier“?",
-      answer: "Der Carrier ist kurz gesagt: Transportprotein, und zwar gilt: erleichtert/aktiviert.",
-      wrong: ["Der Carrier ist kurz gesagt: biologischer Katalysator.", "Der Carrier ist hier: Wasser durch semipermeable Membran.", "Der Carrier ist hier: gegen Gefälle mit ATP."],
+      answer: "Er ist eine Transportprotein durch Erleichtert/aktiviert.", wrong: ["Der Carrier ist biologischer Katalysator.", "Er ist eine Wasser durch Semipermeable Membran.", "Er ist gegen Gefälle mit ATP."],
       explanation: "erleichtert/aktiviert. Bezug: Carrier. Carrier bedeutet: Transportprotein.",
       wissen: "erleichtert/aktiviert. Bezug: Carrier. Carrier bedeutet: Transportprotein.",
       flashFront: "Carrier",
@@ -1618,8 +1469,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-organ:p5:f",
       prompt: "Was kennzeichnet „Enzym“?",
-      answer: "Das Enzym ist kurz gesagt: biologischer Katalysator, und zwar gilt: senkt Aktivierungsenergie.",
-      wrong: ["Das Enzym ist hier: Wasser durch semipermeable Membran.", "Das Enzym ist hier: gegen Gefälle mit ATP.", "Das Enzym ist hier: Ort der Fotosynthese."],
+      answer: "Es ist biologischer Katalysator durch senkt Aktivierungsenergie.", wrong: ["Es ist eine Wasser durch Semipermeable Membran.", "Es ist gegen Gefälle mit ATP.", "Es ist eine Ort der Fotosynthese."],
       explanation: "senkt Aktivierungsenergie. Bezug: Enzym. Enzym bedeutet: biologischer Katalysator.",
       wissen: "senkt Aktivierungsenergie. Bezug: Enzym. Enzym bedeutet: biologischer Katalysator.",
       flashFront: "Enzym",
@@ -1627,8 +1477,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-organ:p6:f",
       prompt: "Was kennzeichnet „Osmose“?",
-      answer: "Die Osmose ist hier: Wasser durch semipermeable Membran, und zwar gilt: richtung zum Hypertonen.",
-      wrong: ["Die Osmose ist hier: gegen Gefälle mit ATP.", "Die Osmose ist hier: Ort der Fotosynthese.", "Die Osmose ist hier: Abbau mit Enzymen."],
+      answer: "Sie ist eine Wasser durch Semipermeable Membran durch Richtung zum Hypertonen.", wrong: ["Sie ist gegen Gefälle mit ATP.", "Sie ist eine Ort der Fotosynthese.", "Sie ist eine Abbau mit Enzymen."],
       explanation: "Richtung zum Hypertonen. Bezug: Osmose. Osmose bedeutet: Wasser durch semipermeable Membran.",
       wissen: "Richtung zum Hypertonen. Bezug: Osmose. Osmose bedeutet: Wasser durch semipermeable Membran.",
       flashFront: "Osmose",
@@ -1636,8 +1485,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-organ:p7:f",
       prompt: "Was kennzeichnet „Aktiver Transport“?",
-      answer: "Das Aktiver Transport ist hier: gegen Gefälle mit ATP, und zwar gilt: pumpen/Carrier.",
-      wrong: ["Das Aktiver Transport ist hier: Ort der Fotosynthese.", "Das Aktiver Transport ist hier: Abbau mit Enzymen.", "Das Aktiver Transport ist hier: ohne echten Zellkern."],
+      answer: "Es ist gegen Gefälle mit ATP durch pumpen/Carrier.", wrong: ["Es ist eine Ort der Fotosynthese.", "Es ist eine Abbau mit Enzymen.", "Das Aktiver Transport ist ohne echten Zellkern."],
       explanation: "Pumpen/Carrier. Bezug: Aktiver Transport. Aktiver Transport bedeutet: gegen Gefälle mit ATP.",
       wissen: "Pumpen/Carrier. Bezug: Aktiver Transport. Aktiver Transport bedeutet: gegen Gefälle mit ATP.",
       flashFront: "Aktiver Transport",
@@ -1645,8 +1493,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-organ:p8:f",
       prompt: "Was kennzeichnet „Chloroplast“?",
-      answer: "Das Chloroplast ist hier: Ort der Fotosynthese, und zwar gilt: bei Pflanzen.",
-      wrong: ["Das Chloroplast ist hier: Abbau mit Enzymen.", "Das Chloroplast ist hier: ohne echten Zellkern.", "Das Chloroplast ist kurz gesagt: Pro-/Meta-/Ana-/Telophase."],
+      answer: "Es ist eine Ort der Fotosynthese durch bei Pflanzen.", wrong: ["Es ist eine Abbau mit Enzymen.", "Das Chloroplast ist ohne echten Zellkern.", "Das Chloroplast ist das Pro-/Meta-/Ana-/Telophase."],
       explanation: "bei Pflanzen. Bezug: Chloroplast. Chloroplast bedeutet: Ort der Fotosynthese.",
       wissen: "bei Pflanzen. Bezug: Chloroplast. Chloroplast bedeutet: Ort der Fotosynthese.",
       flashFront: "Chloroplast",
@@ -1654,8 +1501,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-organ:p9:f",
       prompt: "Was kennzeichnet „Lysosom“?",
-      answer: "Das Lysosom ist hier: Abbau mit Enzymen, und zwar gilt: verdauung in der Zelle.",
-      wrong: ["Das Lysosom ist hier: ohne echten Zellkern.", "Das Lysosom ist kurz gesagt: Pro-/Meta-/Ana-/Telophase.", "Das Lysosom ist hier: Form und Bewegung."],
+      answer: "Es ist eine Abbau mit Enzymen durch Verdauung in der Zelle.", wrong: ["Das Lysosom ist ohne echten Zellkern.", "Das Lysosom ist das Pro-/Meta-/Ana-/Telophase.", "Es ist eine Form und Bewegung."],
       explanation: "Verdauung in der Zelle. Bezug: Lysosom. Lysosom bedeutet: Abbau mit Enzymen.",
       wissen: "Verdauung in der Zelle. Bezug: Lysosom. Lysosom bedeutet: Abbau mit Enzymen.",
       flashFront: "Lysosom",
@@ -1663,8 +1509,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-organ:p10:f",
       prompt: "Was kennzeichnet „Prokaryot“?",
-      answer: "Das Prokaryot ist hier: ohne echten Zellkern, und zwar gilt: bakterien.",
-      wrong: ["Das Prokaryot ist kurz gesagt: Pro-/Meta-/Ana-/Telophase.", "Das Prokaryot ist hier: Form und Bewegung.", "Das Prokaryot ist kurz gesagt: mit Zellkern."],
+      answer: "Es ist ohne echten Zellkern durch bakterien.", wrong: ["Das Prokaryot ist das Pro-/Meta-/Ana-/Telophase.", "Es ist eine Form und Bewegung.", "Das Prokaryot ist mit Zellkern."],
       explanation: "Bakterien. Bezug: Prokaryot. Prokaryot bedeutet: ohne echten Zellkern.",
       wissen: "Bakterien. Bezug: Prokaryot. Prokaryot bedeutet: ohne echten Zellkern.",
       flashFront: "Prokaryot",
@@ -1672,8 +1517,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-organ:p11:f",
       prompt: "Was kennzeichnet „Mitosephasen“?",
-      answer: "Das Mitosephasen ist kurz gesagt: Pro-/Meta-/Ana-/Telophase, und zwar gilt: geordnete Teilung.",
-      wrong: ["Das Mitosephasen ist hier: Form und Bewegung.", "Das Mitosephasen ist kurz gesagt: mit Zellkern.", "Das Mitosephasen ist hier: Interphase + Mitose."],
+      answer: "Es ist eine Pro-/Meta-/Ana-/Telophase durch Geordnete Teilung.", wrong: ["Es ist eine Form und Bewegung.", "Das Mitosephasen ist mit Zellkern.", "Es ist eine Interphase + Mitose."],
       explanation: "geordnete Teilung. Bezug: Mitosephasen. Mitosephasen bedeutet: Pro-/Meta-/Ana-/Telophase.",
       wissen: "geordnete Teilung. Bezug: Mitosephasen. Mitosephasen bedeutet: Pro-/Meta-/Ana-/Telophase.",
       flashFront: "Mitosephasen",
@@ -1702,8 +1546,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-mikroskopie:p0:f",
       prompt: "Wozu dient Zellkern?",
-      answer: "Es enthält Chromatin, und zwar gilt hier: Steuerung.",
-      wrong: ["Das Zellkern ist hier: Ursprung von Mitochondrien/Chloroplasten.", "Das Zellkern ist kurz gesagt: Bildungsgewebe.", "Das Zellkern ist kurz gesagt: getrennte Reaktionsräume."],
+      answer: "Es enthält Chromatin durch steuerung.", wrong: ["Es ist eine Ursprung von Mitochondrien/Chloroplasten.", "Das Zellkern ist das Bildungsgewebe.", "Das Zellkern ist getrennte Reaktionsräume."],
       explanation: "Steuerung. Bezug: Zellkern. Zellkern bedeutet: enthält Chromatin.",
       wissen: "Steuerung. Bezug: Zellkern. Zellkern bedeutet: enthält Chromatin.",
       flashFront: "Zellkern",
@@ -1711,8 +1554,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-mikroskopie:p1:f",
       prompt: "Was kennzeichnet „Endosymbiose“?",
-      answer: "Die Endosymbiose ist hier: Ursprung von Mitochondrien/Chloroplasten, und zwar gilt: ehemals Bakterien.",
-      wrong: ["Die Endosymbiose ist kurz gesagt: Bildungsgewebe.", "Die Endosymbiose ist kurz gesagt: getrennte Reaktionsräume.", "Die Endosymbiose ist kurz gesagt: passiver Durchlass."],
+      answer: "Sie ist eine Ursprung von Mitochondrien/Chloroplasten durch Ehemals Bakterien.", wrong: ["Die Endosymbiose ist die Bildungsgewebe.", "Die Endosymbiose ist getrennte Reaktionsräume.", "Die Endosymbiose ist passiver Durchlass."],
       explanation: "ehemals Bakterien. Bezug: Endosymbiose. Endosymbiose bedeutet: Ursprung von Mitochondrien/Chloroplasten.",
       wissen: "ehemals Bakterien. Bezug: Endosymbiose. Endosymbiose bedeutet: Ursprung von Mitochondrien/Chloroplasten.",
       flashFront: "Endosymbiose",
@@ -1720,8 +1562,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-mikroskopie:p2:f",
       prompt: "Was kennzeichnet „Meristem“?",
-      answer: "Das Meristem ist kurz gesagt: Bildungsgewebe, und zwar gilt: pflanzenwachstum.",
-      wrong: ["Das Meristem ist kurz gesagt: getrennte Reaktionsräume.", "Das Meristem ist kurz gesagt: passiver Durchlass.", "Das Meristem ist hier: Fluid-Mosaik aus Lipiden/Proteinen."],
+      answer: "Es ist eine Bildungsgewebe durch Pflanzenwachstum.", wrong: ["Das Meristem ist getrennte Reaktionsräume.", "Das Meristem ist passiver Durchlass.", "Es ist eine Fluid-Mosaik aus Lipiden/Proteinen."],
       explanation: "Pflanzenwachstum. Bezug: Meristem. Meristem bedeutet: Bildungsgewebe.",
       wissen: "Pflanzenwachstum. Bezug: Meristem. Meristem bedeutet: Bildungsgewebe.",
       flashFront: "Meristem",
@@ -1729,8 +1570,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-mikroskopie:p3:f",
       prompt: "Was kennzeichnet „Kompartimentierung“?",
-      answer: "Die Kompartimentierung ist kurz gesagt: getrennte Reaktionsräume, und zwar gilt: effizienz.",
-      wrong: ["Die Kompartimentierung ist kurz gesagt: passiver Durchlass.", "Die Kompartimentierung ist hier: Fluid-Mosaik aus Lipiden/Proteinen.", "Die Kompartimentierung ist kurz gesagt: Protoplast löst sich von Wand."],
+      answer: "Sie ist getrennte Reaktionsräume durch effizienz.", wrong: ["Die Kompartimentierung ist passiver Durchlass.", "Sie ist eine Fluid-Mosaik aus Lipiden/Proteinen.", "Protoplast löst sich von Wand."],
       explanation: "Effizienz. Bezug: Kompartimentierung. Kompartimentierung bedeutet: getrennte Reaktionsräume.",
       wissen: "Effizienz. Bezug: Kompartimentierung. Kompartimentierung bedeutet: getrennte Reaktionsräume.",
       flashFront: "Kompartimentierung",
@@ -1738,8 +1578,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-mikroskopie:p4:f",
       prompt: "Was kennzeichnet „Kanalprotein“?",
-      answer: "Das Kanalprotein ist kurz gesagt: passiver Durchlass, und zwar gilt: selektiv.",
-      wrong: ["Das Kanalprotein ist hier: Fluid-Mosaik aus Lipiden/Proteinen.", "Das Kanalprotein ist kurz gesagt: Protoplast löst sich von Wand.", "Das Kanalprotein ist hier: Aufnahme per Vesikel."],
+      answer: "Es ist passiver Durchlass durch selektiv.", wrong: ["Es ist eine Fluid-Mosaik aus Lipiden/Proteinen.", "Protoplast löst sich von Wand.", "Es ist eine Aufnahme Per Vesikel."],
       explanation: "selektiv. Bezug: Kanalprotein. Kanalprotein bedeutet: passiver Durchlass.",
       wissen: "selektiv. Bezug: Kanalprotein. Kanalprotein bedeutet: passiver Durchlass.",
       flashFront: "Kanalprotein",
@@ -1747,8 +1586,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-mikroskopie:p5:f",
       prompt: "Was kennzeichnet „Biomembran“?",
-      answer: "Das Biomembran ist hier: Fluid-Mosaik aus Lipiden/Proteinen, und zwar gilt: selektiv permeabel.",
-      wrong: ["Das Biomembran ist kurz gesagt: Protoplast löst sich von Wand.", "Das Biomembran ist hier: Aufnahme per Vesikel.", "Das Biomembran ist kurz gesagt: Membransystem Synthese/Transport."],
+      answer: "Es ist eine Fluid-Mosaik aus Lipiden/Proteinen durch Selektiv Permeabel.", wrong: ["Protoplast löst sich von Wand.", "Es ist eine Aufnahme Per Vesikel.", "Das Biomembran ist das Membransystem Synthese/Transport."],
       explanation: "selektiv permeabel. Bezug: Biomembran. Biomembran bedeutet: Fluid-Mosaik aus Lipiden/Proteinen.",
       wissen: "selektiv permeabel. Bezug: Biomembran. Biomembran bedeutet: Fluid-Mosaik aus Lipiden/Proteinen.",
       flashFront: "Biomembran",
@@ -1756,8 +1594,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-mikroskopie:p6:f",
       prompt: "Was kennzeichnet „Plasmolyse“?",
-      answer: "Protoplast löst sich von Wand, und zwar gilt: hypertones Medium.",
-      wrong: ["Die Plasmolyse ist hier: Aufnahme per Vesikel.", "Die Plasmolyse ist kurz gesagt: Membransystem Synthese/Transport.", "Die Plasmolyse ist hier: Form und Bewegung."],
+      answer: "Protoplast löst sich von Wand durch hypertones Medium.", wrong: ["Sie ist eine Aufnahme Per Vesikel.", "Die Plasmolyse ist die Membransystem Synthese/Transport.", "Sie ist eine Form und Bewegung."],
       explanation: "hypertones Medium. Bezug: Plasmolyse. Plasmolyse bedeutet: Protoplast löst sich von Wand.",
       wissen: "hypertones Medium. Bezug: Plasmolyse. Plasmolyse bedeutet: Protoplast löst sich von Wand.",
       flashFront: "Plasmolyse",
@@ -1765,8 +1602,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-mikroskopie:p7:f",
       prompt: "Was kennzeichnet „Endocytose“?",
-      answer: "Die Endocytose ist hier: Aufnahme per Vesikel, und zwar gilt: membranfluss.",
-      wrong: ["Die Endocytose ist kurz gesagt: Membransystem Synthese/Transport.", "Die Endocytose ist hier: Form und Bewegung.", "Die Endocytose ist kurz gesagt: mit Zellkern."],
+      answer: "Sie ist eine Aufnahme Per Vesikel durch Membranfluss.", wrong: ["Die Endocytose ist die Membransystem Synthese/Transport.", "Sie ist eine Form und Bewegung.", "Die Endocytose ist mit Zellkern."],
       explanation: "Membranfluss. Bezug: Endocytose. Endocytose bedeutet: Aufnahme per Vesikel.",
       wissen: "Membranfluss. Bezug: Endocytose. Endocytose bedeutet: Aufnahme per Vesikel.",
       flashFront: "Endocytose",
@@ -1774,8 +1610,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-mikroskopie:p8:f",
       prompt: "Was kennzeichnet „ER“?",
-      answer: "Der ER ist kurz gesagt: Membransystem Synthese/Transport, und zwar gilt: rau/glatt.",
-      wrong: ["Der ER ist hier: Form und Bewegung.", "Der ER ist kurz gesagt: mit Zellkern.", "Der ER ist hier: Interphase + Mitose."],
+      answer: "Er ist eine Membransystem Synthese/Transport durch Rau/glatt.", wrong: ["Er ist eine Form und Bewegung.", "Der ER ist mit Zellkern.", "Er ist eine Interphase + Mitose."],
       explanation: "rau/glatt. Bezug: ER. ER bedeutet: Membransystem Synthese/Transport.",
       wissen: "rau/glatt. Bezug: ER. ER bedeutet: Membransystem Synthese/Transport.",
       flashFront: "ER",
@@ -1783,8 +1618,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-mikroskopie:p9:f",
       prompt: "Was kennzeichnet „Zytoskelett“?",
-      answer: "Das Zytoskelett ist hier: Form und Bewegung, und zwar gilt: mikrotubuli/Aktin.",
-      wrong: ["Das Zytoskelett ist kurz gesagt: mit Zellkern.", "Das Zytoskelett ist hier: Interphase + Mitose.", "Das Zytoskelett ist kurz gesagt: enthält Chromatin."],
+      answer: "Es ist eine Form und Bewegung durch Mikrotubuli/Aktin.", wrong: ["Das Zytoskelett ist mit Zellkern.", "Es ist eine Interphase + Mitose.", "Es enthält Chromatin."],
       explanation: "Mikrotubuli/Aktin. Bezug: Zytoskelett. Zytoskelett bedeutet: Form und Bewegung.",
       wissen: "Mikrotubuli/Aktin. Bezug: Zytoskelett. Zytoskelett bedeutet: Form und Bewegung.",
       flashFront: "Zytoskelett",
@@ -1792,8 +1626,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-mikroskopie:p10:f",
       prompt: "Was kennzeichnet „Eukaryot“?",
-      answer: "Das Eukaryot ist kurz gesagt: mit Zellkern, und zwar gilt: tiere/Pflanzen/Pilze.",
-      wrong: ["Das Eukaryot ist hier: Interphase + Mitose.", "Das Eukaryot ist kurz gesagt: enthält Chromatin.", "Das Eukaryot ist hier: Ursprung von Mitochondrien/Chloroplasten."],
+      answer: "Es ist mit Zellkern durch tiere/Pflanzen/Pilze.", wrong: ["Es ist eine Interphase + Mitose.", "Es enthält Chromatin.", "Es ist eine Ursprung von Mitochondrien/Chloroplasten."],
       explanation: "Tiere/Pflanzen/Pilze. Bezug: Eukaryot. Eukaryot bedeutet: mit Zellkern.",
       wissen: "Tiere/Pflanzen/Pilze. Bezug: Eukaryot. Eukaryot bedeutet: mit Zellkern.",
       flashFront: "Eukaryot",
@@ -1801,8 +1634,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-mikroskopie:p11:f",
       prompt: "Was kennzeichnet „Zellzyklus“?",
-      answer: "Der Zellzyklus ist hier: Interphase + Mitose, und zwar gilt: checkpoints.",
-      wrong: ["Der Zellzyklus ist kurz gesagt: enthält Chromatin.", "Der Zellzyklus ist hier: Ursprung von Mitochondrien/Chloroplasten.", "Der Zellzyklus ist kurz gesagt: Bildungsgewebe."],
+      answer: "Er ist eine Interphase + Mitose durch Checkpoints.", wrong: ["Er enthält Chromatin.", "Er ist eine Ursprung von Mitochondrien/Chloroplasten.", "Der Zellzyklus ist der Bildungsgewebe."],
       explanation: "Checkpoints. Bezug: Zellzyklus. Zellzyklus bedeutet: Interphase + Mitose.",
       wissen: "Checkpoints. Bezug: Zellzyklus. Zellzyklus bedeutet: Interphase + Mitose.",
       flashFront: "Zellzyklus",
@@ -1831,8 +1663,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-wasser:p0:f",
       prompt: "Was kennzeichnet „Prokaryot“?",
-      answer: "Das Prokaryot ist hier: ohne echten Zellkern, und zwar gilt: bakterien.",
-      wrong: ["Das Prokaryot ist kurz gesagt: Pro-/Meta-/Ana-/Telophase.", "Das Prokaryot ist hier: Spezialisierung von Zellen.", "Das Prokaryot ist hier: Triebkraft für Wasser."],
+      answer: "Es ist ohne echten Zellkern durch bakterien.", wrong: ["Das Prokaryot ist das Pro-/Meta-/Ana-/Telophase.", "Es ist eine Spezialisierung von Zellen.", "Es ist ein Triebkraft für Wasser."],
       explanation: "Bakterien. Bezug: Prokaryot. Prokaryot bedeutet: ohne echten Zellkern.",
       wissen: "Bakterien. Bezug: Prokaryot. Prokaryot bedeutet: ohne echten Zellkern.",
       flashFront: "Prokaryot",
@@ -1840,8 +1671,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-wasser:p1:f",
       prompt: "Was kennzeichnet „Mitosephasen“?",
-      answer: "Das Mitosephasen ist kurz gesagt: Pro-/Meta-/Ana-/Telophase, und zwar gilt: geordnete Teilung.",
-      wrong: ["Das Mitosephasen ist hier: Spezialisierung von Zellen.", "Das Mitosephasen ist hier: Triebkraft für Wasser.", "Das Mitosephasen ist kurz gesagt: Energie-Währung."],
+      answer: "Es ist eine Pro-/Meta-/Ana-/Telophase durch Geordnete Teilung.", wrong: ["Es ist eine Spezialisierung von Zellen.", "Es ist ein Triebkraft für Wasser.", "Das Mitosephasen ist das Energie-Währung."],
       explanation: "geordnete Teilung. Bezug: Mitosephasen. Mitosephasen bedeutet: Pro-/Meta-/Ana-/Telophase.",
       wissen: "geordnete Teilung. Bezug: Mitosephasen. Mitosephasen bedeutet: Pro-/Meta-/Ana-/Telophase.",
       flashFront: "Mitosephasen",
@@ -1849,8 +1679,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-wasser:p2:f",
       prompt: "Was kennzeichnet „Differenzierung“?",
-      answer: "Die Differenzierung ist hier: Spezialisierung von Zellen, und zwar gilt: gewebe/Organ.",
-      wrong: ["Die Differenzierung ist hier: Triebkraft für Wasser.", "Die Differenzierung ist kurz gesagt: Energie-Währung.", "Die Differenzierung ist hier: Ausgleich von Konzentrationsunterschieden."],
+      answer: "Sie ist eine Spezialisierung von Zellen durch Gewebe/Organ.", wrong: ["Sie ist ein Triebkraft für Wasser.", "Die Differenzierung ist die Energie-Währung.", "Sie ist eine Ausgleich von Konzentrationsunterschieden."],
       explanation: "Gewebe/Organ. Bezug: Differenzierung. Differenzierung bedeutet: Spezialisierung von Zellen.",
       wissen: "Gewebe/Organ. Bezug: Differenzierung. Differenzierung bedeutet: Spezialisierung von Zellen.",
       flashFront: "Differenzierung",
@@ -1858,8 +1687,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-wasser:p3:f",
       prompt: "Was kennzeichnet „Wasserpotenzial“?",
-      answer: "Das Wasserpotenzial ist hier: Triebkraft für Wasser, und zwar gilt: ψ = ψs + ψp.",
-      wrong: ["Das Wasserpotenzial ist kurz gesagt: Energie-Währung.", "Das Wasserpotenzial ist hier: Ausgleich von Konzentrationsunterschieden.", "Das Wasserpotenzial ist hier: Innendruck der Pflanzenzelle."],
+      answer: "Es ist ein Triebkraft für Wasser durch ψ = ψS + ψP.", wrong: ["Das Wasserpotenzial ist das Energie-Währung.", "Es ist eine Ausgleich von Konzentrationsunterschieden.", "Es ist eine Innendruck der Pflanzenzelle."],
       explanation: "ψ = ψs + ψp. Bezug: Wasserpotenzial. Wasserpotenzial bedeutet: Triebkraft für Wasser.",
       wissen: "ψ = ψs + ψp. Bezug: Wasserpotenzial. Wasserpotenzial bedeutet: Triebkraft für Wasser.",
       flashFront: "Wasserpotenzial",
@@ -1867,8 +1695,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-wasser:p4:f",
       prompt: "Was kennzeichnet „ATP“?",
-      answer: "Energie-Währung, und zwar gilt hier: Hydrolyse treibt Arbeit.",
-      wrong: ["Das ATP ist hier: Ausgleich von Konzentrationsunterschieden.", "Das ATP ist hier: Innendruck der Pflanzenzelle.", "Das ATP ist hier: Ort der Zellatmung."],
+      answer: "Es ist eine Energie-Währung durch Hydrolyse Treibt Arbeit.", wrong: ["Es ist eine Ausgleich von Konzentrationsunterschieden.", "Es ist eine Innendruck der Pflanzenzelle.", "Es ist eine Ort der Zellatmung."],
       explanation: "Hydrolyse treibt Arbeit. Bezug: ATP. ATP bedeutet: Energie-Währung.",
       wissen: "Hydrolyse treibt Arbeit. Bezug: ATP. ATP bedeutet: Energie-Währung.",
       flashFront: "ATP",
@@ -1876,8 +1703,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-wasser:p5:f",
       prompt: "Was kennzeichnet „Diffusion“?",
-      answer: "Die Diffusion ist hier: Ausgleich von Konzentrationsunterschieden, und zwar gilt: passiv.",
-      wrong: ["Die Diffusion ist hier: Innendruck der Pflanzenzelle.", "Die Diffusion ist hier: Ort der Zellatmung.", "Die Diffusion ist hier: Modifikation und Versand."],
+      answer: "Sie ist eine Ausgleich von Konzentrationsunterschieden durch Passiv.", wrong: ["Sie ist eine Innendruck der Pflanzenzelle.", "Sie ist eine Ort der Zellatmung.", "Sie ist eine Modifikation und Versand."],
       explanation: "passiv. Bezug: Diffusion. Diffusion bedeutet: Ausgleich von Konzentrationsunterschieden.",
       wissen: "passiv. Bezug: Diffusion. Diffusion bedeutet: Ausgleich von Konzentrationsunterschieden.",
       flashFront: "Diffusion",
@@ -1885,8 +1711,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-wasser:p6:f",
       prompt: "Was kennzeichnet „Turgor“?",
-      answer: "Der Turgor ist hier: Innendruck der Pflanzenzelle, und zwar gilt: stabilität.",
-      wrong: ["Der Turgor ist hier: Ort der Zellatmung.", "Der Turgor ist hier: Modifikation und Versand.", "Der Turgor ist kurz gesagt: enthält Chromatin."],
+      answer: "Er ist eine Innendruck der Pflanzenzelle durch Stabilität.", wrong: ["Er ist eine Ort der Zellatmung.", "Er ist eine Modifikation und Versand.", "Er enthält Chromatin."],
       explanation: "Stabilität. Bezug: Turgor. Turgor bedeutet: Innendruck der Pflanzenzelle.",
       wissen: "Stabilität. Bezug: Turgor. Turgor bedeutet: Innendruck der Pflanzenzelle.",
       flashFront: "Turgor",
@@ -1894,8 +1719,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-wasser:p7:f",
       prompt: "Was kennzeichnet „Mitochondrium“?",
-      answer: "Das Mitochondrium ist hier: Ort der Zellatmung, und zwar gilt: aTP-Produktion.",
-      wrong: ["Das Mitochondrium ist hier: Modifikation und Versand.", "Das Mitochondrium ist kurz gesagt: enthält Chromatin.", "Das Mitochondrium ist hier: Ursprung von Mitochondrien/Chloroplasten."],
+      answer: "Es ist eine Ort der Zellatmung durch ATP-Produktion.", wrong: ["Es ist eine Modifikation und Versand.", "Es enthält Chromatin.", "Es ist eine Ursprung von Mitochondrien/Chloroplasten."],
       explanation: "ATP-Produktion. Bezug: Mitochondrium. Mitochondrium bedeutet: Ort der Zellatmung.",
       wissen: "ATP-Produktion. Bezug: Mitochondrium. Mitochondrium bedeutet: Ort der Zellatmung.",
       flashFront: "Mitochondrium",
@@ -1903,8 +1727,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-wasser:p8:f",
       prompt: "Was kennzeichnet „Golgi-Apparat“?",
-      answer: "Das Golgi-Apparat ist hier: Modifikation und Versand, und zwar gilt: vesikel.",
-      wrong: ["Das Golgi-Apparat ist kurz gesagt: enthält Chromatin.", "Das Golgi-Apparat ist hier: Ursprung von Mitochondrien/Chloroplasten.", "Das Golgi-Apparat ist kurz gesagt: Bildungsgewebe."],
+      answer: "Es ist eine Modifikation und Versand durch Vesikel.", wrong: ["Es enthält Chromatin.", "Es ist eine Ursprung von Mitochondrien/Chloroplasten.", "Das Golgi-Apparat ist das Bildungsgewebe."],
       explanation: "Vesikel. Bezug: Golgi-Apparat. Golgi-Apparat bedeutet: Modifikation und Versand.",
       wissen: "Vesikel. Bezug: Golgi-Apparat. Golgi-Apparat bedeutet: Modifikation und Versand.",
       flashFront: "Golgi-Apparat",
@@ -1912,8 +1735,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-wasser:p9:f",
       prompt: "Wozu dient Zellkern?",
-      answer: "Es enthält Chromatin, und zwar gilt hier: Steuerung.",
-      wrong: ["Das Zellkern ist hier: Ursprung von Mitochondrien/Chloroplasten.", "Das Zellkern ist kurz gesagt: Bildungsgewebe.", "Das Zellkern ist hier: ohne echten Zellkern."],
+      answer: "Es enthält Chromatin durch steuerung.", wrong: ["Es ist eine Ursprung von Mitochondrien/Chloroplasten.", "Das Zellkern ist das Bildungsgewebe.", "Das Zellkern ist ohne echten Zellkern."],
       explanation: "Steuerung. Bezug: Zellkern. Zellkern bedeutet: enthält Chromatin.",
       wissen: "Steuerung. Bezug: Zellkern. Zellkern bedeutet: enthält Chromatin.",
       flashFront: "Zellkern",
@@ -1921,8 +1743,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-wasser:p10:f",
       prompt: "Was kennzeichnet „Endosymbiose“?",
-      answer: "Die Endosymbiose ist hier: Ursprung von Mitochondrien/Chloroplasten, und zwar gilt: ehemals Bakterien.",
-      wrong: ["Die Endosymbiose ist kurz gesagt: Bildungsgewebe.", "Die Endosymbiose ist hier: ohne echten Zellkern.", "Die Endosymbiose ist kurz gesagt: Pro-/Meta-/Ana-/Telophase."],
+      answer: "Sie ist eine Ursprung von Mitochondrien/Chloroplasten durch Ehemals Bakterien.", wrong: ["Die Endosymbiose ist die Bildungsgewebe.", "Die Endosymbiose ist ohne echten Zellkern.", "Die Endosymbiose ist die Pro-/Meta-/Ana-/Telophase."],
       explanation: "ehemals Bakterien. Bezug: Endosymbiose. Endosymbiose bedeutet: Ursprung von Mitochondrien/Chloroplasten.",
       wissen: "ehemals Bakterien. Bezug: Endosymbiose. Endosymbiose bedeutet: Ursprung von Mitochondrien/Chloroplasten.",
       flashFront: "Endosymbiose",
@@ -1930,8 +1751,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-wasser:p11:f",
       prompt: "Was kennzeichnet „Meristem“?",
-      answer: "Das Meristem ist kurz gesagt: Bildungsgewebe, und zwar gilt: pflanzenwachstum.",
-      wrong: ["Das Meristem ist hier: ohne echten Zellkern.", "Das Meristem ist kurz gesagt: Pro-/Meta-/Ana-/Telophase.", "Das Meristem ist hier: Spezialisierung von Zellen."],
+      answer: "Es ist eine Bildungsgewebe durch Pflanzenwachstum.", wrong: ["Das Meristem ist ohne echten Zellkern.", "Das Meristem ist das Pro-/Meta-/Ana-/Telophase.", "Es ist eine Spezialisierung von Zellen."],
       explanation: "Pflanzenwachstum. Bezug: Meristem. Meristem bedeutet: Bildungsgewebe.",
       wissen: "Pflanzenwachstum. Bezug: Meristem. Meristem bedeutet: Bildungsgewebe.",
       flashFront: "Meristem",
@@ -1960,8 +1780,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-ion:p0:f",
       prompt: "Was kennzeichnet „Eukaryot“?",
-      answer: "Das Eukaryot ist kurz gesagt: mit Zellkern, und zwar gilt: tiere/Pflanzen/Pilze.",
-      wrong: ["Das Eukaryot ist hier: Interphase + Mitose.", "Das Eukaryot ist hier: Zellen gleicher Funktion.", "Das Eukaryot ist kurz gesagt: Transportprotein."],
+      answer: "Es ist mit Zellkern durch tiere/Pflanzen/Pilze.", wrong: ["Es ist eine Interphase + Mitose.", "Es ist eine Zellen Gleicher Funktion.", "Das Eukaryot ist das Transportprotein."],
       explanation: "Tiere/Pflanzen/Pilze. Bezug: Eukaryot. Eukaryot bedeutet: mit Zellkern.",
       wissen: "Tiere/Pflanzen/Pilze. Bezug: Eukaryot. Eukaryot bedeutet: mit Zellkern.",
       flashFront: "Eukaryot",
@@ -1969,8 +1788,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-ion:p1:f",
       prompt: "Was kennzeichnet „Zellzyklus“?",
-      answer: "Der Zellzyklus ist hier: Interphase + Mitose, und zwar gilt: checkpoints.",
-      wrong: ["Der Zellzyklus ist hier: Zellen gleicher Funktion.", "Der Zellzyklus ist kurz gesagt: Transportprotein.", "Der Zellzyklus ist kurz gesagt: biologischer Katalysator."],
+      answer: "Er ist eine Interphase + Mitose durch Checkpoints.", wrong: ["Er ist eine Zellen Gleicher Funktion.", "Der Zellzyklus ist der Transportprotein.", "Der Zellzyklus ist biologischer Katalysator."],
       explanation: "Checkpoints. Bezug: Zellzyklus. Zellzyklus bedeutet: Interphase + Mitose.",
       wissen: "Checkpoints. Bezug: Zellzyklus. Zellzyklus bedeutet: Interphase + Mitose.",
       flashFront: "Zellzyklus",
@@ -1978,8 +1796,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-ion:p2:f",
       prompt: "Was kennzeichnet „Gewebe“?",
-      answer: "Die Gewebe ist hier: Zellen gleicher Funktion, und zwar gilt: z. B. Epithel.",
-      wrong: ["Die Gewebe ist kurz gesagt: Transportprotein.", "Die Gewebe ist kurz gesagt: biologischer Katalysator.", "Die Gewebe ist hier: Wasser durch semipermeable Membran."],
+      answer: "Sie ist eine Zellen Gleicher Funktion durch Z. B. Epithel.", wrong: ["Die Gewebe ist die Transportprotein.", "Die Gewebe ist biologischer Katalysator.", "Sie ist eine Wasser durch Semipermeable Membran."],
       explanation: "z. B. Epithel. Bezug: Gewebe. Gewebe bedeutet: Zellen gleicher Funktion.",
       wissen: "z. B. Epithel. Bezug: Gewebe. Gewebe bedeutet: Zellen gleicher Funktion.",
       flashFront: "Gewebe",
@@ -1987,8 +1804,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-ion:p3:f",
       prompt: "Was kennzeichnet „Carrier“?",
-      answer: "Der Carrier ist kurz gesagt: Transportprotein, und zwar gilt: erleichtert/aktiviert.",
-      wrong: ["Der Carrier ist kurz gesagt: biologischer Katalysator.", "Der Carrier ist hier: Wasser durch semipermeable Membran.", "Der Carrier ist hier: gegen Gefälle mit ATP."],
+      answer: "Er ist eine Transportprotein durch Erleichtert/aktiviert.", wrong: ["Der Carrier ist biologischer Katalysator.", "Er ist eine Wasser durch Semipermeable Membran.", "Er ist gegen Gefälle mit ATP."],
       explanation: "erleichtert/aktiviert. Bezug: Carrier. Carrier bedeutet: Transportprotein.",
       wissen: "erleichtert/aktiviert. Bezug: Carrier. Carrier bedeutet: Transportprotein.",
       flashFront: "Carrier",
@@ -1996,8 +1812,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-ion:p4:f",
       prompt: "Was kennzeichnet „Enzym“?",
-      answer: "Das Enzym ist kurz gesagt: biologischer Katalysator, und zwar gilt: senkt Aktivierungsenergie.",
-      wrong: ["Das Enzym ist hier: Wasser durch semipermeable Membran.", "Das Enzym ist hier: gegen Gefälle mit ATP.", "Das Enzym ist hier: Ort der Fotosynthese."],
+      answer: "Es ist biologischer Katalysator durch senkt Aktivierungsenergie.", wrong: ["Es ist eine Wasser durch Semipermeable Membran.", "Es ist gegen Gefälle mit ATP.", "Es ist eine Ort der Fotosynthese."],
       explanation: "senkt Aktivierungsenergie. Bezug: Enzym. Enzym bedeutet: biologischer Katalysator.",
       wissen: "senkt Aktivierungsenergie. Bezug: Enzym. Enzym bedeutet: biologischer Katalysator.",
       flashFront: "Enzym",
@@ -2005,8 +1820,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-ion:p5:f",
       prompt: "Was kennzeichnet „Osmose“?",
-      answer: "Die Osmose ist hier: Wasser durch semipermeable Membran, und zwar gilt: richtung zum Hypertonen.",
-      wrong: ["Die Osmose ist hier: gegen Gefälle mit ATP.", "Die Osmose ist hier: Ort der Fotosynthese.", "Die Osmose ist hier: Abbau mit Enzymen."],
+      answer: "Sie ist eine Wasser durch Semipermeable Membran durch Richtung zum Hypertonen.", wrong: ["Sie ist gegen Gefälle mit ATP.", "Sie ist eine Ort der Fotosynthese.", "Sie ist eine Abbau mit Enzymen."],
       explanation: "Richtung zum Hypertonen. Bezug: Osmose. Osmose bedeutet: Wasser durch semipermeable Membran.",
       wissen: "Richtung zum Hypertonen. Bezug: Osmose. Osmose bedeutet: Wasser durch semipermeable Membran.",
       flashFront: "Osmose",
@@ -2014,8 +1828,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-ion:p6:f",
       prompt: "Was kennzeichnet „Aktiver Transport“?",
-      answer: "Das Aktiver Transport ist hier: gegen Gefälle mit ATP, und zwar gilt: pumpen/Carrier.",
-      wrong: ["Das Aktiver Transport ist hier: Ort der Fotosynthese.", "Das Aktiver Transport ist hier: Abbau mit Enzymen.", "Das Aktiver Transport ist hier: ohne echten Zellkern."],
+      answer: "Es ist gegen Gefälle mit ATP durch pumpen/Carrier.", wrong: ["Es ist eine Ort der Fotosynthese.", "Es ist eine Abbau mit Enzymen.", "Das Aktiver Transport ist ohne echten Zellkern."],
       explanation: "Pumpen/Carrier. Bezug: Aktiver Transport. Aktiver Transport bedeutet: gegen Gefälle mit ATP.",
       wissen: "Pumpen/Carrier. Bezug: Aktiver Transport. Aktiver Transport bedeutet: gegen Gefälle mit ATP.",
       flashFront: "Aktiver Transport",
@@ -2023,8 +1836,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-ion:p7:f",
       prompt: "Was kennzeichnet „Chloroplast“?",
-      answer: "Das Chloroplast ist hier: Ort der Fotosynthese, und zwar gilt: bei Pflanzen.",
-      wrong: ["Das Chloroplast ist hier: Abbau mit Enzymen.", "Das Chloroplast ist hier: ohne echten Zellkern.", "Das Chloroplast ist kurz gesagt: Pro-/Meta-/Ana-/Telophase."],
+      answer: "Es ist eine Ort der Fotosynthese durch bei Pflanzen.", wrong: ["Es ist eine Abbau mit Enzymen.", "Das Chloroplast ist ohne echten Zellkern.", "Das Chloroplast ist das Pro-/Meta-/Ana-/Telophase."],
       explanation: "bei Pflanzen. Bezug: Chloroplast. Chloroplast bedeutet: Ort der Fotosynthese.",
       wissen: "bei Pflanzen. Bezug: Chloroplast. Chloroplast bedeutet: Ort der Fotosynthese.",
       flashFront: "Chloroplast",
@@ -2032,8 +1844,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-ion:p8:f",
       prompt: "Was kennzeichnet „Lysosom“?",
-      answer: "Das Lysosom ist hier: Abbau mit Enzymen, und zwar gilt: verdauung in der Zelle.",
-      wrong: ["Das Lysosom ist hier: ohne echten Zellkern.", "Das Lysosom ist kurz gesagt: Pro-/Meta-/Ana-/Telophase.", "Das Lysosom ist hier: Spezialisierung von Zellen."],
+      answer: "Es ist eine Abbau mit Enzymen durch Verdauung in der Zelle.", wrong: ["Das Lysosom ist ohne echten Zellkern.", "Das Lysosom ist das Pro-/Meta-/Ana-/Telophase.", "Es ist eine Spezialisierung von Zellen."],
       explanation: "Verdauung in der Zelle. Bezug: Lysosom. Lysosom bedeutet: Abbau mit Enzymen.",
       wissen: "Verdauung in der Zelle. Bezug: Lysosom. Lysosom bedeutet: Abbau mit Enzymen.",
       flashFront: "Lysosom",
@@ -2041,8 +1852,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-ion:p9:f",
       prompt: "Was kennzeichnet „Prokaryot“?",
-      answer: "Das Prokaryot ist hier: ohne echten Zellkern, und zwar gilt: bakterien.",
-      wrong: ["Das Prokaryot ist kurz gesagt: Pro-/Meta-/Ana-/Telophase.", "Das Prokaryot ist hier: Spezialisierung von Zellen.", "Das Prokaryot ist kurz gesagt: mit Zellkern."],
+      answer: "Es ist ohne echten Zellkern durch bakterien.", wrong: ["Das Prokaryot ist das Pro-/Meta-/Ana-/Telophase.", "Es ist eine Spezialisierung von Zellen.", "Das Prokaryot ist mit Zellkern."],
       explanation: "Bakterien. Bezug: Prokaryot. Prokaryot bedeutet: ohne echten Zellkern.",
       wissen: "Bakterien. Bezug: Prokaryot. Prokaryot bedeutet: ohne echten Zellkern.",
       flashFront: "Prokaryot",
@@ -2050,8 +1860,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-ion:p10:f",
       prompt: "Was kennzeichnet „Mitosephasen“?",
-      answer: "Das Mitosephasen ist kurz gesagt: Pro-/Meta-/Ana-/Telophase, und zwar gilt: geordnete Teilung.",
-      wrong: ["Das Mitosephasen ist hier: Spezialisierung von Zellen.", "Das Mitosephasen ist kurz gesagt: mit Zellkern.", "Das Mitosephasen ist hier: Interphase + Mitose."],
+      answer: "Es ist eine Pro-/Meta-/Ana-/Telophase durch Geordnete Teilung.", wrong: ["Es ist eine Spezialisierung von Zellen.", "Das Mitosephasen ist mit Zellkern.", "Es ist eine Interphase + Mitose."],
       explanation: "geordnete Teilung. Bezug: Mitosephasen. Mitosephasen bedeutet: Pro-/Meta-/Ana-/Telophase.",
       wissen: "geordnete Teilung. Bezug: Mitosephasen. Mitosephasen bedeutet: Pro-/Meta-/Ana-/Telophase.",
       flashFront: "Mitosephasen",
@@ -2059,8 +1868,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-ion:p11:f",
       prompt: "Was kennzeichnet „Differenzierung“?",
-      answer: "Die Differenzierung ist hier: Spezialisierung von Zellen, und zwar gilt: gewebe/Organ.",
-      wrong: ["Die Differenzierung ist kurz gesagt: mit Zellkern.", "Die Differenzierung ist hier: Interphase + Mitose.", "Die Differenzierung ist hier: Zellen gleicher Funktion."],
+      answer: "Sie ist eine Spezialisierung von Zellen durch Gewebe/Organ.", wrong: ["Die Differenzierung ist mit Zellkern.", "Sie ist eine Interphase + Mitose.", "Sie ist eine Zellen Gleicher Funktion."],
       explanation: "Gewebe/Organ. Bezug: Differenzierung. Differenzierung bedeutet: Spezialisierung von Zellen.",
       wissen: "Gewebe/Organ. Bezug: Differenzierung. Differenzierung bedeutet: Spezialisierung von Zellen.",
       flashFront: "Differenzierung",
@@ -2089,8 +1897,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-protein:p0:f",
       prompt: "Was kennzeichnet „Endosymbiose“?",
-      answer: "Die Endosymbiose ist hier: Ursprung von Mitochondrien/Chloroplasten, und zwar gilt: ehemals Bakterien.",
-      wrong: ["Die Endosymbiose ist kurz gesagt: Bildungsgewebe.", "Die Endosymbiose ist kurz gesagt: getrennte Reaktionsräume.", "Die Endosymbiose ist kurz gesagt: passiver Durchlass."],
+      answer: "Sie ist eine Ursprung von Mitochondrien/Chloroplasten durch Ehemals Bakterien.", wrong: ["Die Endosymbiose ist die Bildungsgewebe.", "Die Endosymbiose ist getrennte Reaktionsräume.", "Die Endosymbiose ist passiver Durchlass."],
       explanation: "ehemals Bakterien. Bezug: Endosymbiose. Endosymbiose bedeutet: Ursprung von Mitochondrien/Chloroplasten.",
       wissen: "ehemals Bakterien. Bezug: Endosymbiose. Endosymbiose bedeutet: Ursprung von Mitochondrien/Chloroplasten.",
       flashFront: "Endosymbiose",
@@ -2098,8 +1905,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-protein:p1:f",
       prompt: "Was kennzeichnet „Meristem“?",
-      answer: "Das Meristem ist kurz gesagt: Bildungsgewebe, und zwar gilt: pflanzenwachstum.",
-      wrong: ["Das Meristem ist kurz gesagt: getrennte Reaktionsräume.", "Das Meristem ist kurz gesagt: passiver Durchlass.", "Das Meristem ist hier: Fluid-Mosaik aus Lipiden/Proteinen."],
+      answer: "Es ist eine Bildungsgewebe durch Pflanzenwachstum.", wrong: ["Das Meristem ist getrennte Reaktionsräume.", "Das Meristem ist passiver Durchlass.", "Es ist eine Fluid-Mosaik aus Lipiden/Proteinen."],
       explanation: "Pflanzenwachstum. Bezug: Meristem. Meristem bedeutet: Bildungsgewebe.",
       wissen: "Pflanzenwachstum. Bezug: Meristem. Meristem bedeutet: Bildungsgewebe.",
       flashFront: "Meristem",
@@ -2107,8 +1913,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-protein:p2:f",
       prompt: "Was kennzeichnet „Kompartimentierung“?",
-      answer: "Die Kompartimentierung ist kurz gesagt: getrennte Reaktionsräume, und zwar gilt: effizienz.",
-      wrong: ["Die Kompartimentierung ist kurz gesagt: passiver Durchlass.", "Die Kompartimentierung ist hier: Fluid-Mosaik aus Lipiden/Proteinen.", "Die Kompartimentierung ist kurz gesagt: Protoplast löst sich von Wand."],
+      answer: "Sie ist getrennte Reaktionsräume durch effizienz.", wrong: ["Die Kompartimentierung ist passiver Durchlass.", "Sie ist eine Fluid-Mosaik aus Lipiden/Proteinen.", "Protoplast löst sich von Wand."],
       explanation: "Effizienz. Bezug: Kompartimentierung. Kompartimentierung bedeutet: getrennte Reaktionsräume.",
       wissen: "Effizienz. Bezug: Kompartimentierung. Kompartimentierung bedeutet: getrennte Reaktionsräume.",
       flashFront: "Kompartimentierung",
@@ -2116,8 +1921,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-protein:p3:f",
       prompt: "Was kennzeichnet „Kanalprotein“?",
-      answer: "Das Kanalprotein ist kurz gesagt: passiver Durchlass, und zwar gilt: selektiv.",
-      wrong: ["Das Kanalprotein ist hier: Fluid-Mosaik aus Lipiden/Proteinen.", "Das Kanalprotein ist kurz gesagt: Protoplast löst sich von Wand.", "Das Kanalprotein ist hier: Aufnahme per Vesikel."],
+      answer: "Es ist passiver Durchlass durch selektiv.", wrong: ["Es ist eine Fluid-Mosaik aus Lipiden/Proteinen.", "Protoplast löst sich von Wand.", "Es ist eine Aufnahme Per Vesikel."],
       explanation: "selektiv. Bezug: Kanalprotein. Kanalprotein bedeutet: passiver Durchlass.",
       wissen: "selektiv. Bezug: Kanalprotein. Kanalprotein bedeutet: passiver Durchlass.",
       flashFront: "Kanalprotein",
@@ -2125,8 +1929,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-protein:p4:f",
       prompt: "Was kennzeichnet „Biomembran“?",
-      answer: "Das Biomembran ist hier: Fluid-Mosaik aus Lipiden/Proteinen, und zwar gilt: selektiv permeabel.",
-      wrong: ["Das Biomembran ist kurz gesagt: Protoplast löst sich von Wand.", "Das Biomembran ist hier: Aufnahme per Vesikel.", "Das Biomembran ist kurz gesagt: Membransystem Synthese/Transport."],
+      answer: "Es ist eine Fluid-Mosaik aus Lipiden/Proteinen durch Selektiv Permeabel.", wrong: ["Protoplast löst sich von Wand.", "Es ist eine Aufnahme Per Vesikel.", "Das Biomembran ist das Membransystem Synthese/Transport."],
       explanation: "selektiv permeabel. Bezug: Biomembran. Biomembran bedeutet: Fluid-Mosaik aus Lipiden/Proteinen.",
       wissen: "selektiv permeabel. Bezug: Biomembran. Biomembran bedeutet: Fluid-Mosaik aus Lipiden/Proteinen.",
       flashFront: "Biomembran",
@@ -2134,8 +1937,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-protein:p5:f",
       prompt: "Was kennzeichnet „Plasmolyse“?",
-      answer: "Protoplast löst sich von Wand, und zwar gilt: hypertones Medium.",
-      wrong: ["Die Plasmolyse ist hier: Aufnahme per Vesikel.", "Die Plasmolyse ist kurz gesagt: Membransystem Synthese/Transport.", "Die Plasmolyse ist hier: Form und Bewegung."],
+      answer: "Protoplast löst sich von Wand durch hypertones Medium.", wrong: ["Sie ist eine Aufnahme Per Vesikel.", "Die Plasmolyse ist die Membransystem Synthese/Transport.", "Sie ist eine Form und Bewegung."],
       explanation: "hypertones Medium. Bezug: Plasmolyse. Plasmolyse bedeutet: Protoplast löst sich von Wand.",
       wissen: "hypertones Medium. Bezug: Plasmolyse. Plasmolyse bedeutet: Protoplast löst sich von Wand.",
       flashFront: "Plasmolyse",
@@ -2143,8 +1945,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-protein:p6:f",
       prompt: "Was kennzeichnet „Endocytose“?",
-      answer: "Die Endocytose ist hier: Aufnahme per Vesikel, und zwar gilt: membranfluss.",
-      wrong: ["Die Endocytose ist kurz gesagt: Membransystem Synthese/Transport.", "Die Endocytose ist hier: Form und Bewegung.", "Die Endocytose ist kurz gesagt: mit Zellkern."],
+      answer: "Sie ist eine Aufnahme Per Vesikel durch Membranfluss.", wrong: ["Die Endocytose ist die Membransystem Synthese/Transport.", "Sie ist eine Form und Bewegung.", "Die Endocytose ist mit Zellkern."],
       explanation: "Membranfluss. Bezug: Endocytose. Endocytose bedeutet: Aufnahme per Vesikel.",
       wissen: "Membranfluss. Bezug: Endocytose. Endocytose bedeutet: Aufnahme per Vesikel.",
       flashFront: "Endocytose",
@@ -2152,8 +1953,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-protein:p7:f",
       prompt: "Was kennzeichnet „ER“?",
-      answer: "Der ER ist kurz gesagt: Membransystem Synthese/Transport, und zwar gilt: rau/glatt.",
-      wrong: ["Der ER ist hier: Form und Bewegung.", "Der ER ist kurz gesagt: mit Zellkern.", "Der ER ist hier: Interphase + Mitose."],
+      answer: "Er ist eine Membransystem Synthese/Transport durch Rau/glatt.", wrong: ["Er ist eine Form und Bewegung.", "Der ER ist mit Zellkern.", "Er ist eine Interphase + Mitose."],
       explanation: "rau/glatt. Bezug: ER. ER bedeutet: Membransystem Synthese/Transport.",
       wissen: "rau/glatt. Bezug: ER. ER bedeutet: Membransystem Synthese/Transport.",
       flashFront: "ER",
@@ -2161,8 +1961,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-protein:p8:f",
       prompt: "Was kennzeichnet „Zytoskelett“?",
-      answer: "Das Zytoskelett ist hier: Form und Bewegung, und zwar gilt: mikrotubuli/Aktin.",
-      wrong: ["Das Zytoskelett ist kurz gesagt: mit Zellkern.", "Das Zytoskelett ist hier: Interphase + Mitose.", "Das Zytoskelett ist hier: Zellen gleicher Funktion."],
+      answer: "Es ist eine Form und Bewegung durch Mikrotubuli/Aktin.", wrong: ["Das Zytoskelett ist mit Zellkern.", "Es ist eine Interphase + Mitose.", "Es ist eine Zellen Gleicher Funktion."],
       explanation: "Mikrotubuli/Aktin. Bezug: Zytoskelett. Zytoskelett bedeutet: Form und Bewegung.",
       wissen: "Mikrotubuli/Aktin. Bezug: Zytoskelett. Zytoskelett bedeutet: Form und Bewegung.",
       flashFront: "Zytoskelett",
@@ -2170,8 +1969,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-protein:p9:f",
       prompt: "Was kennzeichnet „Eukaryot“?",
-      answer: "Das Eukaryot ist kurz gesagt: mit Zellkern, und zwar gilt: tiere/Pflanzen/Pilze.",
-      wrong: ["Das Eukaryot ist hier: Interphase + Mitose.", "Das Eukaryot ist hier: Zellen gleicher Funktion.", "Das Eukaryot ist hier: Ursprung von Mitochondrien/Chloroplasten."],
+      answer: "Es ist mit Zellkern durch tiere/Pflanzen/Pilze.", wrong: ["Es ist eine Interphase + Mitose.", "Es ist eine Zellen Gleicher Funktion.", "Es ist eine Ursprung von Mitochondrien/Chloroplasten."],
       explanation: "Tiere/Pflanzen/Pilze. Bezug: Eukaryot. Eukaryot bedeutet: mit Zellkern.",
       wissen: "Tiere/Pflanzen/Pilze. Bezug: Eukaryot. Eukaryot bedeutet: mit Zellkern.",
       flashFront: "Eukaryot",
@@ -2179,8 +1977,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-protein:p10:f",
       prompt: "Was kennzeichnet „Zellzyklus“?",
-      answer: "Der Zellzyklus ist hier: Interphase + Mitose, und zwar gilt: checkpoints.",
-      wrong: ["Der Zellzyklus ist hier: Zellen gleicher Funktion.", "Der Zellzyklus ist hier: Ursprung von Mitochondrien/Chloroplasten.", "Der Zellzyklus ist kurz gesagt: Bildungsgewebe."],
+      answer: "Er ist eine Interphase + Mitose durch Checkpoints.", wrong: ["Er ist eine Zellen Gleicher Funktion.", "Er ist eine Ursprung von Mitochondrien/Chloroplasten.", "Der Zellzyklus ist der Bildungsgewebe."],
       explanation: "Checkpoints. Bezug: Zellzyklus. Zellzyklus bedeutet: Interphase + Mitose.",
       wissen: "Checkpoints. Bezug: Zellzyklus. Zellzyklus bedeutet: Interphase + Mitose.",
       flashFront: "Zellzyklus",
@@ -2188,8 +1985,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-protein:p11:f",
       prompt: "Was kennzeichnet „Gewebe“?",
-      answer: "Die Gewebe ist hier: Zellen gleicher Funktion, und zwar gilt: z. B. Epithel.",
-      wrong: ["Die Gewebe ist hier: Ursprung von Mitochondrien/Chloroplasten.", "Die Gewebe ist kurz gesagt: Bildungsgewebe.", "Die Gewebe ist kurz gesagt: getrennte Reaktionsräume."],
+      answer: "Sie ist eine Zellen Gleicher Funktion durch Z. B. Epithel.", wrong: ["Sie ist eine Ursprung von Mitochondrien/Chloroplasten.", "Die Gewebe ist die Bildungsgewebe.", "Die Gewebe ist getrennte Reaktionsräume."],
       explanation: "z. B. Epithel. Bezug: Gewebe. Gewebe bedeutet: Zellen gleicher Funktion.",
       wissen: "z. B. Epithel. Bezug: Gewebe. Gewebe bedeutet: Zellen gleicher Funktion.",
       flashFront: "Gewebe",
@@ -2218,8 +2014,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-cytoskelett-bewegung:p0:f",
       prompt: "Was kennzeichnet „Mitosephasen“?",
-      answer: "Das Mitosephasen ist kurz gesagt: Pro-/Meta-/Ana-/Telophase, und zwar gilt: geordnete Teilung.",
-      wrong: ["Das Mitosephasen ist hier: Spezialisierung von Zellen.", "Das Mitosephasen ist hier: Triebkraft für Wasser.", "Das Mitosephasen ist kurz gesagt: Energie-Währung."],
+      answer: "Es ist eine Pro-/Meta-/Ana-/Telophase durch Geordnete Teilung.", wrong: ["Es ist eine Spezialisierung von Zellen.", "Es ist ein Triebkraft für Wasser.", "Das Mitosephasen ist das Energie-Währung."],
       explanation: "geordnete Teilung. Bezug: Mitosephasen. Mitosephasen bedeutet: Pro-/Meta-/Ana-/Telophase.",
       wissen: "geordnete Teilung. Bezug: Mitosephasen. Mitosephasen bedeutet: Pro-/Meta-/Ana-/Telophase.",
       flashFront: "Mitosephasen",
@@ -2227,8 +2022,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-cytoskelett-bewegung:p1:f",
       prompt: "Was kennzeichnet „Differenzierung“?",
-      answer: "Die Differenzierung ist hier: Spezialisierung von Zellen, und zwar gilt: gewebe/Organ.",
-      wrong: ["Die Differenzierung ist hier: Triebkraft für Wasser.", "Die Differenzierung ist kurz gesagt: Energie-Währung.", "Die Differenzierung ist hier: Ausgleich von Konzentrationsunterschieden."],
+      answer: "Sie ist eine Spezialisierung von Zellen durch Gewebe/Organ.", wrong: ["Sie ist ein Triebkraft für Wasser.", "Die Differenzierung ist die Energie-Währung.", "Sie ist eine Ausgleich von Konzentrationsunterschieden."],
       explanation: "Gewebe/Organ. Bezug: Differenzierung. Differenzierung bedeutet: Spezialisierung von Zellen.",
       wissen: "Gewebe/Organ. Bezug: Differenzierung. Differenzierung bedeutet: Spezialisierung von Zellen.",
       flashFront: "Differenzierung",
@@ -2236,8 +2030,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-cytoskelett-bewegung:p2:f",
       prompt: "Was kennzeichnet „Wasserpotenzial“?",
-      answer: "Das Wasserpotenzial ist hier: Triebkraft für Wasser, und zwar gilt: ψ = ψs + ψp.",
-      wrong: ["Das Wasserpotenzial ist kurz gesagt: Energie-Währung.", "Das Wasserpotenzial ist hier: Ausgleich von Konzentrationsunterschieden.", "Das Wasserpotenzial ist hier: Innendruck der Pflanzenzelle."],
+      answer: "Es ist ein Triebkraft für Wasser durch ψ = ψS + ψP.", wrong: ["Das Wasserpotenzial ist das Energie-Währung.", "Es ist eine Ausgleich von Konzentrationsunterschieden.", "Es ist eine Innendruck der Pflanzenzelle."],
       explanation: "ψ = ψs + ψp. Bezug: Wasserpotenzial. Wasserpotenzial bedeutet: Triebkraft für Wasser.",
       wissen: "ψ = ψs + ψp. Bezug: Wasserpotenzial. Wasserpotenzial bedeutet: Triebkraft für Wasser.",
       flashFront: "Wasserpotenzial",
@@ -2245,8 +2038,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-cytoskelett-bewegung:p3:f",
       prompt: "Was kennzeichnet „ATP“?",
-      answer: "Energie-Währung, und zwar gilt hier: Hydrolyse treibt Arbeit.",
-      wrong: ["Das ATP ist hier: Ausgleich von Konzentrationsunterschieden.", "Das ATP ist hier: Innendruck der Pflanzenzelle.", "Das ATP ist hier: Ort der Zellatmung."],
+      answer: "Es ist eine Energie-Währung durch Hydrolyse Treibt Arbeit.", wrong: ["Es ist eine Ausgleich von Konzentrationsunterschieden.", "Es ist eine Innendruck der Pflanzenzelle.", "Es ist eine Ort der Zellatmung."],
       explanation: "Hydrolyse treibt Arbeit. Bezug: ATP. ATP bedeutet: Energie-Währung.",
       wissen: "Hydrolyse treibt Arbeit. Bezug: ATP. ATP bedeutet: Energie-Währung.",
       flashFront: "ATP",
@@ -2254,8 +2046,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-cytoskelett-bewegung:p4:f",
       prompt: "Was kennzeichnet „Diffusion“?",
-      answer: "Die Diffusion ist hier: Ausgleich von Konzentrationsunterschieden, und zwar gilt: passiv.",
-      wrong: ["Die Diffusion ist hier: Innendruck der Pflanzenzelle.", "Die Diffusion ist hier: Ort der Zellatmung.", "Die Diffusion ist hier: Modifikation und Versand."],
+      answer: "Sie ist eine Ausgleich von Konzentrationsunterschieden durch Passiv.", wrong: ["Sie ist eine Innendruck der Pflanzenzelle.", "Sie ist eine Ort der Zellatmung.", "Sie ist eine Modifikation und Versand."],
       explanation: "passiv. Bezug: Diffusion. Diffusion bedeutet: Ausgleich von Konzentrationsunterschieden.",
       wissen: "passiv. Bezug: Diffusion. Diffusion bedeutet: Ausgleich von Konzentrationsunterschieden.",
       flashFront: "Diffusion",
@@ -2263,8 +2054,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-cytoskelett-bewegung:p5:f",
       prompt: "Was kennzeichnet „Turgor“?",
-      answer: "Der Turgor ist hier: Innendruck der Pflanzenzelle, und zwar gilt: stabilität.",
-      wrong: ["Der Turgor ist hier: Ort der Zellatmung.", "Der Turgor ist hier: Modifikation und Versand.", "Der Turgor ist kurz gesagt: enthält Chromatin."],
+      answer: "Er ist eine Innendruck der Pflanzenzelle durch Stabilität.", wrong: ["Er ist eine Ort der Zellatmung.", "Er ist eine Modifikation und Versand.", "Er enthält Chromatin."],
       explanation: "Stabilität. Bezug: Turgor. Turgor bedeutet: Innendruck der Pflanzenzelle.",
       wissen: "Stabilität. Bezug: Turgor. Turgor bedeutet: Innendruck der Pflanzenzelle.",
       flashFront: "Turgor",
@@ -2272,8 +2062,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-cytoskelett-bewegung:p6:f",
       prompt: "Was kennzeichnet „Mitochondrium“?",
-      answer: "Das Mitochondrium ist hier: Ort der Zellatmung, und zwar gilt: aTP-Produktion.",
-      wrong: ["Das Mitochondrium ist hier: Modifikation und Versand.", "Das Mitochondrium ist kurz gesagt: enthält Chromatin.", "Das Mitochondrium ist hier: Ursprung von Mitochondrien/Chloroplasten."],
+      answer: "Es ist eine Ort der Zellatmung durch ATP-Produktion.", wrong: ["Es ist eine Modifikation und Versand.", "Es enthält Chromatin.", "Es ist eine Ursprung von Mitochondrien/Chloroplasten."],
       explanation: "ATP-Produktion. Bezug: Mitochondrium. Mitochondrium bedeutet: Ort der Zellatmung.",
       wissen: "ATP-Produktion. Bezug: Mitochondrium. Mitochondrium bedeutet: Ort der Zellatmung.",
       flashFront: "Mitochondrium",
@@ -2281,8 +2070,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-cytoskelett-bewegung:p7:f",
       prompt: "Was kennzeichnet „Golgi-Apparat“?",
-      answer: "Das Golgi-Apparat ist hier: Modifikation und Versand, und zwar gilt: vesikel.",
-      wrong: ["Das Golgi-Apparat ist kurz gesagt: enthält Chromatin.", "Das Golgi-Apparat ist hier: Ursprung von Mitochondrien/Chloroplasten.", "Das Golgi-Apparat ist kurz gesagt: Bildungsgewebe."],
+      answer: "Es ist eine Modifikation und Versand durch Vesikel.", wrong: ["Es enthält Chromatin.", "Es ist eine Ursprung von Mitochondrien/Chloroplasten.", "Das Golgi-Apparat ist das Bildungsgewebe."],
       explanation: "Vesikel. Bezug: Golgi-Apparat. Golgi-Apparat bedeutet: Modifikation und Versand.",
       wissen: "Vesikel. Bezug: Golgi-Apparat. Golgi-Apparat bedeutet: Modifikation und Versand.",
       flashFront: "Golgi-Apparat",
@@ -2290,8 +2078,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-cytoskelett-bewegung:p8:f",
       prompt: "Wozu dient Zellkern?",
-      answer: "Es enthält Chromatin, und zwar gilt hier: Steuerung.",
-      wrong: ["Das Zellkern ist hier: Ursprung von Mitochondrien/Chloroplasten.", "Das Zellkern ist kurz gesagt: Bildungsgewebe.", "Das Zellkern ist kurz gesagt: getrennte Reaktionsräume."],
+      answer: "Es enthält Chromatin durch steuerung.", wrong: ["Es ist eine Ursprung von Mitochondrien/Chloroplasten.", "Das Zellkern ist das Bildungsgewebe.", "Das Zellkern ist getrennte Reaktionsräume."],
       explanation: "Steuerung. Bezug: Zellkern. Zellkern bedeutet: enthält Chromatin.",
       wissen: "Steuerung. Bezug: Zellkern. Zellkern bedeutet: enthält Chromatin.",
       flashFront: "Zellkern",
@@ -2299,8 +2086,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-cytoskelett-bewegung:p9:f",
       prompt: "Was kennzeichnet „Endosymbiose“?",
-      answer: "Die Endosymbiose ist hier: Ursprung von Mitochondrien/Chloroplasten, und zwar gilt: ehemals Bakterien.",
-      wrong: ["Die Endosymbiose ist kurz gesagt: Bildungsgewebe.", "Die Endosymbiose ist kurz gesagt: getrennte Reaktionsräume.", "Die Endosymbiose ist kurz gesagt: Pro-/Meta-/Ana-/Telophase."],
+      answer: "Sie ist eine Ursprung von Mitochondrien/Chloroplasten durch Ehemals Bakterien.", wrong: ["Die Endosymbiose ist die Bildungsgewebe.", "Die Endosymbiose ist getrennte Reaktionsräume.", "Die Endosymbiose ist die Pro-/Meta-/Ana-/Telophase."],
       explanation: "ehemals Bakterien. Bezug: Endosymbiose. Endosymbiose bedeutet: Ursprung von Mitochondrien/Chloroplasten.",
       wissen: "ehemals Bakterien. Bezug: Endosymbiose. Endosymbiose bedeutet: Ursprung von Mitochondrien/Chloroplasten.",
       flashFront: "Endosymbiose",
@@ -2308,8 +2094,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-cytoskelett-bewegung:p10:f",
       prompt: "Was kennzeichnet „Meristem“?",
-      answer: "Das Meristem ist kurz gesagt: Bildungsgewebe, und zwar gilt: pflanzenwachstum.",
-      wrong: ["Das Meristem ist kurz gesagt: getrennte Reaktionsräume.", "Das Meristem ist kurz gesagt: Pro-/Meta-/Ana-/Telophase.", "Das Meristem ist hier: Spezialisierung von Zellen."],
+      answer: "Es ist eine Bildungsgewebe durch Pflanzenwachstum.", wrong: ["Das Meristem ist getrennte Reaktionsräume.", "Das Meristem ist das Pro-/Meta-/Ana-/Telophase.", "Es ist eine Spezialisierung von Zellen."],
       explanation: "Pflanzenwachstum. Bezug: Meristem. Meristem bedeutet: Bildungsgewebe.",
       wissen: "Pflanzenwachstum. Bezug: Meristem. Meristem bedeutet: Bildungsgewebe.",
       flashFront: "Meristem",
@@ -2317,8 +2102,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-cytoskelett-bewegung:p11:f",
       prompt: "Was kennzeichnet „Kompartimentierung“?",
-      answer: "Die Kompartimentierung ist kurz gesagt: getrennte Reaktionsräume, und zwar gilt: effizienz.",
-      wrong: ["Die Kompartimentierung ist kurz gesagt: Pro-/Meta-/Ana-/Telophase.", "Die Kompartimentierung ist hier: Spezialisierung von Zellen.", "Die Kompartimentierung ist hier: Triebkraft für Wasser."],
+      answer: "Sie ist getrennte Reaktionsräume durch effizienz.", wrong: ["Die Kompartimentierung ist die Pro-/Meta-/Ana-/Telophase.", "Sie ist eine Spezialisierung von Zellen.", "Sie ist ein Triebkraft für Wasser."],
       explanation: "Effizienz. Bezug: Kompartimentierung. Kompartimentierung bedeutet: getrennte Reaktionsräume.",
       wissen: "Effizienz. Bezug: Kompartimentierung. Kompartimentierung bedeutet: getrennte Reaktionsräume.",
       flashFront: "Kompartimentierung",
@@ -2347,8 +2131,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-vergleich-pro-eu:p0:f",
       prompt: "Was kennzeichnet „Zellzyklus“?",
-      answer: "Der Zellzyklus ist hier: Interphase + Mitose, und zwar gilt: checkpoints.",
-      wrong: ["Der Zellzyklus ist hier: Zellen gleicher Funktion.", "Der Zellzyklus ist kurz gesagt: Transportprotein.", "Der Zellzyklus ist kurz gesagt: biologischer Katalysator."],
+      answer: "Er ist eine Interphase + Mitose durch Checkpoints.", wrong: ["Er ist eine Zellen Gleicher Funktion.", "Der Zellzyklus ist der Transportprotein.", "Der Zellzyklus ist biologischer Katalysator."],
       explanation: "Checkpoints. Bezug: Zellzyklus. Zellzyklus bedeutet: Interphase + Mitose.",
       wissen: "Checkpoints. Bezug: Zellzyklus. Zellzyklus bedeutet: Interphase + Mitose.",
       flashFront: "Zellzyklus",
@@ -2356,8 +2139,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-vergleich-pro-eu:p1:f",
       prompt: "Was kennzeichnet „Gewebe“?",
-      answer: "Die Gewebe ist hier: Zellen gleicher Funktion, und zwar gilt: z. B. Epithel.",
-      wrong: ["Die Gewebe ist kurz gesagt: Transportprotein.", "Die Gewebe ist kurz gesagt: biologischer Katalysator.", "Die Gewebe ist hier: Wasser durch semipermeable Membran."],
+      answer: "Sie ist eine Zellen Gleicher Funktion durch Z. B. Epithel.", wrong: ["Die Gewebe ist die Transportprotein.", "Die Gewebe ist biologischer Katalysator.", "Sie ist eine Wasser durch Semipermeable Membran."],
       explanation: "z. B. Epithel. Bezug: Gewebe. Gewebe bedeutet: Zellen gleicher Funktion.",
       wissen: "z. B. Epithel. Bezug: Gewebe. Gewebe bedeutet: Zellen gleicher Funktion.",
       flashFront: "Gewebe",
@@ -2365,8 +2147,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-vergleich-pro-eu:p2:f",
       prompt: "Was kennzeichnet „Carrier“?",
-      answer: "Der Carrier ist kurz gesagt: Transportprotein, und zwar gilt: erleichtert/aktiviert.",
-      wrong: ["Der Carrier ist kurz gesagt: biologischer Katalysator.", "Der Carrier ist hier: Wasser durch semipermeable Membran.", "Der Carrier ist hier: gegen Gefälle mit ATP."],
+      answer: "Er ist eine Transportprotein durch Erleichtert/aktiviert.", wrong: ["Der Carrier ist biologischer Katalysator.", "Er ist eine Wasser durch Semipermeable Membran.", "Er ist gegen Gefälle mit ATP."],
       explanation: "erleichtert/aktiviert. Bezug: Carrier. Carrier bedeutet: Transportprotein.",
       wissen: "erleichtert/aktiviert. Bezug: Carrier. Carrier bedeutet: Transportprotein.",
       flashFront: "Carrier",
@@ -2374,8 +2155,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-vergleich-pro-eu:p3:f",
       prompt: "Was kennzeichnet „Enzym“?",
-      answer: "Das Enzym ist kurz gesagt: biologischer Katalysator, und zwar gilt: senkt Aktivierungsenergie.",
-      wrong: ["Das Enzym ist hier: Wasser durch semipermeable Membran.", "Das Enzym ist hier: gegen Gefälle mit ATP.", "Das Enzym ist hier: Ort der Fotosynthese."],
+      answer: "Es ist biologischer Katalysator durch senkt Aktivierungsenergie.", wrong: ["Es ist eine Wasser durch Semipermeable Membran.", "Es ist gegen Gefälle mit ATP.", "Es ist eine Ort der Fotosynthese."],
       explanation: "senkt Aktivierungsenergie. Bezug: Enzym. Enzym bedeutet: biologischer Katalysator.",
       wissen: "senkt Aktivierungsenergie. Bezug: Enzym. Enzym bedeutet: biologischer Katalysator.",
       flashFront: "Enzym",
@@ -2383,8 +2163,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-vergleich-pro-eu:p4:f",
       prompt: "Was kennzeichnet „Osmose“?",
-      answer: "Die Osmose ist hier: Wasser durch semipermeable Membran, und zwar gilt: richtung zum Hypertonen.",
-      wrong: ["Die Osmose ist hier: gegen Gefälle mit ATP.", "Die Osmose ist hier: Ort der Fotosynthese.", "Die Osmose ist hier: Abbau mit Enzymen."],
+      answer: "Sie ist eine Wasser durch Semipermeable Membran durch Richtung zum Hypertonen.", wrong: ["Sie ist gegen Gefälle mit ATP.", "Sie ist eine Ort der Fotosynthese.", "Sie ist eine Abbau mit Enzymen."],
       explanation: "Richtung zum Hypertonen. Bezug: Osmose. Osmose bedeutet: Wasser durch semipermeable Membran.",
       wissen: "Richtung zum Hypertonen. Bezug: Osmose. Osmose bedeutet: Wasser durch semipermeable Membran.",
       flashFront: "Osmose",
@@ -2392,8 +2171,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-vergleich-pro-eu:p5:f",
       prompt: "Was kennzeichnet „Aktiver Transport“?",
-      answer: "Das Aktiver Transport ist hier: gegen Gefälle mit ATP, und zwar gilt: pumpen/Carrier.",
-      wrong: ["Das Aktiver Transport ist hier: Ort der Fotosynthese.", "Das Aktiver Transport ist hier: Abbau mit Enzymen.", "Das Aktiver Transport ist hier: ohne echten Zellkern."],
+      answer: "Es ist gegen Gefälle mit ATP durch pumpen/Carrier.", wrong: ["Es ist eine Ort der Fotosynthese.", "Es ist eine Abbau mit Enzymen.", "Das Aktiver Transport ist ohne echten Zellkern."],
       explanation: "Pumpen/Carrier. Bezug: Aktiver Transport. Aktiver Transport bedeutet: gegen Gefälle mit ATP.",
       wissen: "Pumpen/Carrier. Bezug: Aktiver Transport. Aktiver Transport bedeutet: gegen Gefälle mit ATP.",
       flashFront: "Aktiver Transport",
@@ -2401,8 +2179,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-vergleich-pro-eu:p6:f",
       prompt: "Was kennzeichnet „Chloroplast“?",
-      answer: "Das Chloroplast ist hier: Ort der Fotosynthese, und zwar gilt: bei Pflanzen.",
-      wrong: ["Das Chloroplast ist hier: Abbau mit Enzymen.", "Das Chloroplast ist hier: ohne echten Zellkern.", "Das Chloroplast ist kurz gesagt: Pro-/Meta-/Ana-/Telophase."],
+      answer: "Es ist eine Ort der Fotosynthese durch bei Pflanzen.", wrong: ["Es ist eine Abbau mit Enzymen.", "Das Chloroplast ist ohne echten Zellkern.", "Das Chloroplast ist das Pro-/Meta-/Ana-/Telophase."],
       explanation: "bei Pflanzen. Bezug: Chloroplast. Chloroplast bedeutet: Ort der Fotosynthese.",
       wissen: "bei Pflanzen. Bezug: Chloroplast. Chloroplast bedeutet: Ort der Fotosynthese.",
       flashFront: "Chloroplast",
@@ -2410,8 +2187,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-vergleich-pro-eu:p7:f",
       prompt: "Was kennzeichnet „Lysosom“?",
-      answer: "Das Lysosom ist hier: Abbau mit Enzymen, und zwar gilt: verdauung in der Zelle.",
-      wrong: ["Das Lysosom ist hier: ohne echten Zellkern.", "Das Lysosom ist kurz gesagt: Pro-/Meta-/Ana-/Telophase.", "Das Lysosom ist hier: Spezialisierung von Zellen."],
+      answer: "Es ist eine Abbau mit Enzymen durch Verdauung in der Zelle.", wrong: ["Das Lysosom ist ohne echten Zellkern.", "Das Lysosom ist das Pro-/Meta-/Ana-/Telophase.", "Es ist eine Spezialisierung von Zellen."],
       explanation: "Verdauung in der Zelle. Bezug: Lysosom. Lysosom bedeutet: Abbau mit Enzymen.",
       wissen: "Verdauung in der Zelle. Bezug: Lysosom. Lysosom bedeutet: Abbau mit Enzymen.",
       flashFront: "Lysosom",
@@ -2419,8 +2195,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-vergleich-pro-eu:p8:f",
       prompt: "Was kennzeichnet „Prokaryot“?",
-      answer: "Das Prokaryot ist hier: ohne echten Zellkern, und zwar gilt: bakterien.",
-      wrong: ["Das Prokaryot ist kurz gesagt: Pro-/Meta-/Ana-/Telophase.", "Das Prokaryot ist hier: Spezialisierung von Zellen.", "Das Prokaryot ist hier: Triebkraft für Wasser."],
+      answer: "Es ist ohne echten Zellkern durch bakterien.", wrong: ["Das Prokaryot ist das Pro-/Meta-/Ana-/Telophase.", "Es ist eine Spezialisierung von Zellen.", "Es ist ein Triebkraft für Wasser."],
       explanation: "Bakterien. Bezug: Prokaryot. Prokaryot bedeutet: ohne echten Zellkern.",
       wissen: "Bakterien. Bezug: Prokaryot. Prokaryot bedeutet: ohne echten Zellkern.",
       flashFront: "Prokaryot",
@@ -2428,8 +2203,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-vergleich-pro-eu:p9:f",
       prompt: "Was kennzeichnet „Mitosephasen“?",
-      answer: "Das Mitosephasen ist kurz gesagt: Pro-/Meta-/Ana-/Telophase, und zwar gilt: geordnete Teilung.",
-      wrong: ["Das Mitosephasen ist hier: Spezialisierung von Zellen.", "Das Mitosephasen ist hier: Triebkraft für Wasser.", "Das Mitosephasen ist hier: Interphase + Mitose."],
+      answer: "Es ist eine Pro-/Meta-/Ana-/Telophase durch Geordnete Teilung.", wrong: ["Es ist eine Spezialisierung von Zellen.", "Es ist ein Triebkraft für Wasser.", "Es ist eine Interphase + Mitose."],
       explanation: "geordnete Teilung. Bezug: Mitosephasen. Mitosephasen bedeutet: Pro-/Meta-/Ana-/Telophase.",
       wissen: "geordnete Teilung. Bezug: Mitosephasen. Mitosephasen bedeutet: Pro-/Meta-/Ana-/Telophase.",
       flashFront: "Mitosephasen",
@@ -2437,8 +2211,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-vergleich-pro-eu:p10:f",
       prompt: "Was kennzeichnet „Differenzierung“?",
-      answer: "Die Differenzierung ist hier: Spezialisierung von Zellen, und zwar gilt: gewebe/Organ.",
-      wrong: ["Die Differenzierung ist hier: Triebkraft für Wasser.", "Die Differenzierung ist hier: Interphase + Mitose.", "Die Differenzierung ist hier: Zellen gleicher Funktion."],
+      answer: "Sie ist eine Spezialisierung von Zellen durch Gewebe/Organ.", wrong: ["Sie ist ein Triebkraft für Wasser.", "Sie ist eine Interphase + Mitose.", "Sie ist eine Zellen Gleicher Funktion."],
       explanation: "Gewebe/Organ. Bezug: Differenzierung. Differenzierung bedeutet: Spezialisierung von Zellen.",
       wissen: "Gewebe/Organ. Bezug: Differenzierung. Differenzierung bedeutet: Spezialisierung von Zellen.",
       flashFront: "Differenzierung",
@@ -2446,8 +2219,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb1-vergleich-pro-eu:p11:f",
       prompt: "Was kennzeichnet „Wasserpotenzial“?",
-      answer: "Das Wasserpotenzial ist hier: Triebkraft für Wasser, und zwar gilt: ψ = ψs + ψp.",
-      wrong: ["Das Wasserpotenzial ist hier: Interphase + Mitose.", "Das Wasserpotenzial ist hier: Zellen gleicher Funktion.", "Das Wasserpotenzial ist kurz gesagt: Transportprotein."],
+      answer: "Es ist ein Triebkraft für Wasser durch ψ = ψS + ψP.", wrong: ["Es ist eine Interphase + Mitose.", "Es ist eine Zellen Gleicher Funktion.", "Das Wasserpotenzial ist das Transportprotein."],
       explanation: "ψ = ψs + ψp. Bezug: Wasserpotenzial. Wasserpotenzial bedeutet: Triebkraft für Wasser.",
       wissen: "ψ = ψs + ψp. Bezug: Wasserpotenzial. Wasserpotenzial bedeutet: Triebkraft für Wasser.",
       flashFront: "Wasserpotenzial",
@@ -2476,8 +2248,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-licht:p0:f",
       prompt: "Was kennzeichnet „Stoffkreislauf“?",
-      answer: "Das Stoffkreislauf ist kurz gesagt: Elemente kreisen, und zwar gilt: c, N, ….",
-      wrong: ["Das Stoffkreislauf ist hier: Fotosynthese = Atmung.", "Das Stoffkreislauf ist hier: ATP direkt am Substrat.", "Das Stoffkreislauf ist hier: Licht → chemische Energie."],
+      answer: "Es ist eine Elemente Kreisen durch C, N, ….", wrong: ["Es ist eine Fotosynthese = Atmung.", "Es ist eine ATP Direkt am Substrat.", "Es ist eine Licht → Chemische Energie."],
       explanation: "C, N, … Bezug: Stoffkreislauf. Stoffkreislauf bedeutet: Elemente kreisen.",
       wissen: "C, N, … Bezug: Stoffkreislauf. Stoffkreislauf bedeutet: Elemente kreisen.",
       flashFront: "Stoffkreislauf",
@@ -2485,8 +2256,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-licht:p1:f",
       prompt: "Was kennzeichnet „Kompensationspunkt“?",
-      answer: "Der Kompensationspunkt ist hier: Fotosynthese = Atmung, und zwar gilt: grenze Ertrag.",
-      wrong: ["Der Kompensationspunkt ist hier: ATP direkt am Substrat.", "Der Kompensationspunkt ist hier: Licht → chemische Energie.", "Der Kompensationspunkt ist kurz gesagt: direkt RuBisCO."],
+      answer: "Er ist eine Fotosynthese = Atmung durch Grenze Ertrag.", wrong: ["Er ist eine ATP Direkt am Substrat.", "Er ist eine Licht → Chemische Energie.", "Der Kompensationspunkt ist direkt RuBisCO."],
       explanation: "Grenze Ertrag. Bezug: Kompensationspunkt. Kompensationspunkt bedeutet: Fotosynthese = Atmung.",
       wissen: "Grenze Ertrag. Bezug: Kompensationspunkt. Kompensationspunkt bedeutet: Fotosynthese = Atmung.",
       flashFront: "Kompensationspunkt",
@@ -2494,8 +2264,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-licht:p2:f",
       prompt: "Was kennzeichnet „Substratkettenphosphorylierung“?",
-      answer: "Die Substratkettenphosphorylierung ist hier: ATP direkt am Substrat, und zwar gilt: glykolyse.",
-      wrong: ["Die Substratkettenphosphorylierung ist hier: Licht → chemische Energie.", "Die Substratkettenphosphorylierung ist kurz gesagt: direkt RuBisCO.", "Die Substratkettenphosphorylierung ist hier: Glucose → Pyruvat."],
+      answer: "Sie ist eine ATP Direkt am Substrat durch Glykolyse.", wrong: ["Sie ist eine Licht → Chemische Energie.", "Die Substratkettenphosphorylierung ist direkt RuBisCO.", "Sie ist eine Glucose → Pyruvat."],
       explanation: "Glykolyse. Bezug: Substratkettenphosphorylierung. Substratkettenphosphorylierung bedeutet: ATP direkt am Substrat.",
       wissen: "Glykolyse. Bezug: Substratkettenphosphorylierung. Substratkettenphosphorylierung bedeutet: ATP direkt am Substrat.",
       flashFront: "Substratkettenphosphorylierung",
@@ -2503,8 +2272,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-licht:p3:f",
       prompt: "Was kennzeichnet „Fotosynthese“?",
-      answer: "Licht → chemische Energie, und zwar gilt hier: CO2 + H2O → Glucose + O2.",
-      wrong: ["Die Fotosynthese ist kurz gesagt: direkt RuBisCO.", "Die Fotosynthese ist hier: Glucose → Pyruvat.", "Die Fotosynthese ist kurz gesagt: nutzt Protonenfluss."],
+      answer: "Sie ist eine Licht → Chemische Energie durch CO2 + H2O → Glucose + O2.", wrong: ["Die Fotosynthese ist direkt RuBisCO.", "Sie ist eine Glucose → Pyruvat.", "Sie nutzt Protonenfluss."],
       explanation: "CO2 + H2O → Glucose + O2. Bezug: Fotosynthese. Fotosynthese bedeutet: Licht → chemische Energie.",
       wissen: "CO2 + H2O → Glucose + O2. Bezug: Fotosynthese. Fotosynthese bedeutet: Licht → chemische Energie.",
       flashFront: "Fotosynthese",
@@ -2512,8 +2280,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-licht:p4:f",
       prompt: "Was kennzeichnet „C3-Pflanze“?",
-      answer: "Die C3-Pflanze ist kurz gesagt: direkt RuBisCO, und zwar gilt: photorespiration möglich.",
-      wrong: ["Die C3-Pflanze ist hier: Glucose → Pyruvat.", "Die C3-Pflanze ist kurz gesagt: nutzt Protonenfluss.", "Die C3-Pflanze ist kurz gesagt: Elektronenübertragung."],
+      answer: "Sie ist direkt RuBisCO durch photorespiration möglich.", wrong: ["Sie ist eine Glucose → Pyruvat.", "Sie nutzt Protonenfluss.", "Die C3-Pflanze ist die Elektronenübertragung."],
       explanation: "Photorespiration möglich. Bezug: C3-Pflanze. C3-Pflanze bedeutet: direkt RuBisCO.",
       wissen: "Photorespiration möglich. Bezug: C3-Pflanze. C3-Pflanze bedeutet: direkt RuBisCO.",
       flashFront: "C3-Pflanze",
@@ -2521,8 +2288,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-licht:p5:f",
       prompt: "Was kennzeichnet „Glykolyse“?",
-      answer: "Die Glykolyse ist hier: Glucose → Pyruvat, und zwar gilt: im Cytoplasma.",
-      wrong: ["Die Glykolyse ist kurz gesagt: nutzt Protonenfluss.", "Die Glykolyse ist kurz gesagt: Elektronenübertragung.", "Die Glykolyse ist hier: O2 statt CO2 an RuBisCO."],
+      answer: "Sie ist eine Glucose → Pyruvat durch im Cytoplasma.", wrong: ["Sie nutzt Protonenfluss.", "Die Glykolyse ist die Elektronenübertragung.", "Sie ist eine O2 Statt CO2 an RuBisCO."],
       explanation: "im Cytoplasma. Bezug: Glykolyse. Glykolyse bedeutet: Glucose → Pyruvat.",
       wissen: "im Cytoplasma. Bezug: Glykolyse. Glykolyse bedeutet: Glucose → Pyruvat.",
       flashFront: "Glykolyse",
@@ -2530,8 +2296,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-licht:p6:f",
       prompt: "Wozu dient die ATP-Synthase?",
-      answer: "Sie nutzt Protonenfluss, und zwar gilt hier: Oxidative Phosphorylierung.",
-      wrong: ["Die ATP-Synthase ist kurz gesagt: Elektronenübertragung.", "Die ATP-Synthase ist hier: O2 statt CO2 an RuBisCO.", "Die ATP-Synthase ist hier: einseitig durch Ökosystem."],
+      answer: "Sie nutzt Protonenfluss durch oxidative Phosphorylierung.", wrong: ["Die ATP-Synthase ist die Elektronenübertragung.", "Sie ist eine O2 Statt CO2 an RuBisCO.", "Die ATP-Synthase ist einseitig durch Ökosystem."],
       explanation: "oxidative Phosphorylierung. Bezug: ATP-Synthase. ATP-Synthase bedeutet: nutzt Protonenfluss.",
       wissen: "oxidative Phosphorylierung. Bezug: ATP-Synthase. ATP-Synthase bedeutet: nutzt Protonenfluss.",
       flashFront: "ATP-Synthase",
@@ -2539,8 +2304,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-licht:p7:f",
       prompt: "Was kennzeichnet „Redoxreaktion“?",
-      answer: "Die Redoxreaktion ist kurz gesagt: Elektronenübertragung, und zwar gilt: stoffwechselkern.",
-      wrong: ["Die Redoxreaktion ist hier: O2 statt CO2 an RuBisCO.", "Die Redoxreaktion ist hier: einseitig durch Ökosystem.", "Die Redoxreaktion ist hier: nach Abzug Atmung."],
+      answer: "Sie ist eine Elektronenübertragung durch Stoffwechselkern.", wrong: ["Sie ist eine O2 Statt CO2 an RuBisCO.", "Die Redoxreaktion ist einseitig durch Ökosystem.", "Die Redoxreaktion ist nach Abzug Atmung."],
       explanation: "Stoffwechselkern. Bezug: Redoxreaktion. Redoxreaktion bedeutet: Elektronenübertragung.",
       wissen: "Stoffwechselkern. Bezug: Redoxreaktion. Redoxreaktion bedeutet: Elektronenübertragung.",
       flashFront: "Redoxreaktion",
@@ -2548,8 +2312,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-licht:p8:f",
       prompt: "Was kennzeichnet „Photorespiration“?",
-      answer: "Die Photorespiration ist hier: O2 statt CO2 an RuBisCO, und zwar gilt: verlustweg.",
-      wrong: ["Die Photorespiration ist hier: einseitig durch Ökosystem.", "Die Photorespiration ist hier: nach Abzug Atmung.", "Die Photorespiration ist hier: ATP an Membran."],
+      answer: "Sie ist eine O2 Statt CO2 an RuBisCO durch Verlustweg.", wrong: ["Die Photorespiration ist einseitig durch Ökosystem.", "Die Photorespiration ist nach Abzug Atmung.", "Sie ist eine ATP an Membran."],
       explanation: "Verlustweg. Bezug: Photorespiration. Photorespiration bedeutet: O2 statt CO2 an RuBisCO.",
       wissen: "Verlustweg. Bezug: Photorespiration. Photorespiration bedeutet: O2 statt CO2 an RuBisCO.",
       flashFront: "Photorespiration",
@@ -2557,8 +2320,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-licht:p9:f",
       prompt: "Was kennzeichnet „Energiefluss“?",
-      answer: "Das Energiefluss ist hier: einseitig durch Ökosystem, und zwar gilt: mit Verlusten.",
-      wrong: ["Das Energiefluss ist hier: nach Abzug Atmung.", "Das Energiefluss ist hier: ATP an Membran.", "Das Energiefluss ist kurz gesagt: Elemente kreisen."],
+      answer: "Es ist einseitig durch Ökosystem durch mit Verlusten.", wrong: ["Das Energiefluss ist nach Abzug Atmung.", "Es ist eine ATP an Membran.", "Das Energiefluss ist das Elemente Kreisen."],
       explanation: "mit Verlusten. Bezug: Energiefluss. Energiefluss bedeutet: einseitig durch Ökosystem.",
       wissen: "mit Verlusten. Bezug: Energiefluss. Energiefluss bedeutet: einseitig durch Ökosystem.",
       flashFront: "Energiefluss",
@@ -2566,8 +2328,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-licht:p10:f",
       prompt: "Was kennzeichnet „Nettophotosynthese“?",
-      answer: "Die Nettophotosynthese ist hier: nach Abzug Atmung, und zwar gilt: zuwachs.",
-      wrong: ["Die Nettophotosynthese ist hier: ATP an Membran.", "Die Nettophotosynthese ist kurz gesagt: Elemente kreisen.", "Die Nettophotosynthese ist hier: Fotosynthese = Atmung."],
+      answer: "Sie ist nach Abzug Atmung durch zuwachs.", wrong: ["Sie ist eine ATP an Membran.", "Die Nettophotosynthese ist die Elemente Kreisen.", "Sie ist eine Fotosynthese = Atmung."],
       explanation: "Zuwachs. Bezug: Nettophotosynthese. Nettophotosynthese bedeutet: nach Abzug Atmung.",
       wissen: "Zuwachs. Bezug: Nettophotosynthese. Nettophotosynthese bedeutet: nach Abzug Atmung.",
       flashFront: "Nettophotosynthese",
@@ -2575,8 +2336,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-licht:p11:f",
       prompt: "Was kennzeichnet „Oxidative Phosphorylierung“?",
-      answer: "Die Oxidative Phosphorylierung ist hier: ATP an Membran, und zwar gilt: chemiosmose.",
-      wrong: ["Die Oxidative Phosphorylierung ist hier: Elemente kreisen.", "Die Oxidative Phosphorylierung ist hier: Fotosynthese = Atmung.", "Die Oxidative Phosphorylierung ist hier: ATP direkt am Substrat."],
+      answer: "Sie ist eine ATP an Membran durch Chemiosmose.", wrong: ["Die Oxidative Phosphorylierung ist die Elemente Kreisen.", "Sie ist eine Fotosynthese = Atmung.", "Sie ist eine ATP Direkt am Substrat."],
       explanation: "Chemiosmose. Bezug: Oxidative Phosphorylierung. Oxidative Phosphorylierung bedeutet: ATP an Membran.",
       wissen: "Chemiosmose. Bezug: Oxidative Phosphorylierung. Oxidative Phosphorylierung bedeutet: ATP an Membran.",
       flashFront: "Oxidative Phosphorylierung",
@@ -2605,8 +2365,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-calvin:p0:f",
       prompt: "Was kennzeichnet „Bruttophotosynthese“?",
-      answer: "Die Bruttophotosynthese ist kurz gesagt: Gesamtfixierung, und zwar gilt: vor Atmung.",
-      wrong: ["Die Bruttophotosynthese ist kurz gesagt: anaerober Abbau.", "Die Bruttophotosynthese ist kurz gesagt: gibt e− ab.", "Die Bruttophotosynthese ist kurz gesagt: an Thylakoiden."],
+      answer: "Sie ist eine Gesamtfixierung durch vor Atmung.", wrong: ["Die Bruttophotosynthese ist anaerober Abbau.", "Sie gibt e− ab.", "Die Bruttophotosynthese ist an Thylakoiden."],
       explanation: "vor Atmung. Bezug: Bruttophotosynthese. Bruttophotosynthese bedeutet: Gesamtfixierung.",
       wissen: "vor Atmung. Bezug: Bruttophotosynthese. Bruttophotosynthese bedeutet: Gesamtfixierung.",
       flashFront: "Bruttophotosynthese",
@@ -2614,8 +2373,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-calvin:p1:f",
       prompt: "Was kennzeichnet „Fermentation“?",
-      answer: "Die Fermentation ist kurz gesagt: anaerober Abbau, und zwar gilt: produkte z. B. Lactat/Ethanol.",
-      wrong: ["Die Fermentation ist kurz gesagt: gibt e− ab.", "Die Fermentation ist kurz gesagt: an Thylakoiden.", "Die Fermentation ist kurz gesagt: CO2-Pumpe."],
+      answer: "Sie ist anaerober Abbau durch produkte z. B. Lactat/Ethanol.", wrong: ["Sie gibt e− ab.", "Die Fermentation ist an Thylakoiden.", "Die Fermentation ist die CO2-Pumpe."],
       explanation: "Produkte z. B. Lactat/Ethanol. Bezug: Fermentation. Fermentation bedeutet: anaerober Abbau.",
       wissen: "Produkte z. B. Lactat/Ethanol. Bezug: Fermentation. Fermentation bedeutet: anaerober Abbau.",
       flashFront: "Fermentation",
@@ -2623,8 +2381,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-calvin:p2:f",
       prompt: "Wozu dient Elektronendonator?",
-      answer: "Er gibt e− ab, und zwar gilt hier: Bei Chemosynthese oft H2S/NH3.",
-      wrong: ["Der Elektronendonator ist kurz gesagt: an Thylakoiden.", "Der Elektronendonator ist kurz gesagt: CO2-Pumpe.", "Der Elektronendonator ist kurz gesagt: Acetyl-CoA oxidieren."],
+      answer: "Er gibt e− ab durch bei Chemosynthese oft H2S/NH3.", wrong: ["Der Elektronendonator ist an Thylakoiden.", "Der Elektronendonator ist der CO2-Pumpe.", "Der Elektronendonator ist der Acetyl-CoA Oxidieren."],
       explanation: "bei Chemosynthese oft H2S/NH3. Bezug: Elektronendonator. Elektronendonator bedeutet: gibt e− ab.",
       wissen: "bei Chemosynthese oft H2S/NH3. Bezug: Elektronendonator. Elektronendonator bedeutet: gibt e− ab.",
       flashFront: "Elektronendonator",
@@ -2632,8 +2389,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-calvin:p3:f",
       prompt: "Was kennzeichnet „Lichtreaktion“?",
-      answer: "Die Lichtreaktion ist kurz gesagt: an Thylakoiden, und zwar gilt: aTP und NADPH.",
-      wrong: ["Die Lichtreaktion ist kurz gesagt: CO2-Pumpe.", "Die Lichtreaktion ist kurz gesagt: Acetyl-CoA oxidieren.", "Die Lichtreaktion ist hier: ATP ohne O2."],
+      answer: "Sie ist an Thylakoiden durch aTP und NADPH.", wrong: ["Die Lichtreaktion ist die CO2-Pumpe.", "Die Lichtreaktion ist die Acetyl-CoA Oxidieren.", "Sie ist eine ATP ohne O2."],
       explanation: "ATP und NADPH. Bezug: Lichtreaktion. Lichtreaktion bedeutet: an Thylakoiden.",
       wissen: "ATP und NADPH. Bezug: Lichtreaktion. Lichtreaktion bedeutet: an Thylakoiden.",
       flashFront: "Lichtreaktion",
@@ -2641,8 +2397,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-calvin:p4:f",
       prompt: "Was kennzeichnet „C4-Pflanze“?",
-      answer: "Die C4-Pflanze ist kurz gesagt: CO2-Pumpe, und zwar gilt: heiße trockene Standorte.",
-      wrong: ["Die C4-Pflanze ist kurz gesagt: Acetyl-CoA oxidieren.", "Die C4-Pflanze ist hier: ATP ohne O2.", "Die C4-Pflanze ist kurz gesagt: Reduktionsäquivalent."],
+      answer: "Sie ist eine CO2-Pumpe durch Heiße Trockene Standorte.", wrong: ["Die C4-Pflanze ist die Acetyl-CoA Oxidieren.", "Sie ist eine ATP ohne O2.", "Die C4-Pflanze ist die Reduktionsäquivalent."],
       explanation: "heiße trockene Standorte. Bezug: C4-Pflanze. C4-Pflanze bedeutet: CO2-Pumpe.",
       wissen: "heiße trockene Standorte. Bezug: C4-Pflanze. C4-Pflanze bedeutet: CO2-Pumpe.",
       flashFront: "C4-Pflanze",
@@ -2650,8 +2405,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-calvin:p5:f",
       prompt: "Was kennzeichnet „Citratzyklus“?",
-      answer: "Der Citratzyklus ist kurz gesagt: Acetyl-CoA oxidieren, und zwar gilt: in Matrix.",
-      wrong: ["Der Citratzyklus ist hier: ATP ohne O2.", "Der Citratzyklus ist kurz gesagt: Reduktionsäquivalent.", "Der Citratzyklus ist hier: Abbau energiereicher Stoffe."],
+      answer: "Er ist eine Acetyl-CoA Oxidieren durch in Matrix.", wrong: ["Er ist eine ATP ohne O2.", "Der Citratzyklus ist der Reduktionsäquivalent.", "Er ist eine Abbau Energiereicher Stoffe."],
       explanation: "in Matrix. Bezug: Citratzyklus. Citratzyklus bedeutet: Acetyl-CoA oxidieren.",
       wissen: "in Matrix. Bezug: Citratzyklus. Citratzyklus bedeutet: Acetyl-CoA oxidieren.",
       flashFront: "Citratzyklus",
@@ -2659,8 +2413,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-calvin:p6:f",
       prompt: "Was kennzeichnet „Gärung“?",
-      answer: "Die Gärung ist hier: ATP ohne O2, und zwar gilt: weniger ergiebig.",
-      wrong: ["Die Gärung ist kurz gesagt: Reduktionsäquivalent.", "Die Gärung ist hier: Abbau energiereicher Stoffe.", "Die Gärung ist kurz gesagt: Elemente kreisen."],
+      answer: "Sie ist eine ATP ohne O2 durch Weniger Ergiebig.", wrong: ["Die Gärung ist die Reduktionsäquivalent.", "Sie ist eine Abbau Energiereicher Stoffe.", "Die Gärung ist die Elemente Kreisen."],
       explanation: "weniger ergiebig. Bezug: Gärung. Gärung bedeutet: ATP ohne O2.",
       wissen: "weniger ergiebig. Bezug: Gärung. Gärung bedeutet: ATP ohne O2.",
       flashFront: "Gärung",
@@ -2668,8 +2421,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-calvin:p7:f",
       prompt: "Was kennzeichnet „NADH“?",
-      answer: "Das NADH ist kurz gesagt: Reduktionsäquivalent, und zwar gilt: trägt Elektronen.",
-      wrong: ["Das NADH ist hier: Abbau energiereicher Stoffe.", "Das NADH ist kurz gesagt: Elemente kreisen.", "Das NADH ist hier: Fotosynthese = Atmung."],
+      answer: "Es ist eine Reduktionsäquivalent, trägt Elektronen.", wrong: ["Es ist eine Abbau Energiereicher Stoffe.", "Das NADH ist das Elemente Kreisen.", "Es ist eine Fotosynthese = Atmung."],
       explanation: "trägt Elektronen. Bezug: NADH. NADH bedeutet: Reduktionsäquivalent.",
       wissen: "trägt Elektronen. Bezug: NADH. NADH bedeutet: Reduktionsäquivalent.",
       flashFront: "NADH",
@@ -2677,8 +2429,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-calvin:p8:f",
       prompt: "Was kennzeichnet „Dissimilation“?",
-      answer: "Die Dissimilation ist hier: Abbau energiereicher Stoffe, und zwar gilt: zellatmung.",
-      wrong: ["Die Dissimilation ist kurz gesagt: Elemente kreisen.", "Die Dissimilation ist hier: Fotosynthese = Atmung.", "Die Dissimilation ist hier: ATP direkt am Substrat."],
+      answer: "Sie ist eine Abbau Energiereicher Stoffe durch Zellatmung.", wrong: ["Die Dissimilation ist die Elemente Kreisen.", "Sie ist eine Fotosynthese = Atmung.", "Sie ist eine ATP Direkt am Substrat."],
       explanation: "Zellatmung. Bezug: Dissimilation. Dissimilation bedeutet: Abbau energiereicher Stoffe.",
       wissen: "Zellatmung. Bezug: Dissimilation. Dissimilation bedeutet: Abbau energiereicher Stoffe.",
       flashFront: "Dissimilation",
@@ -2686,8 +2437,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-calvin:p9:f",
       prompt: "Was kennzeichnet „Stoffkreislauf“?",
-      answer: "Das Stoffkreislauf ist kurz gesagt: Elemente kreisen, und zwar gilt: c, N, ….",
-      wrong: ["Das Stoffkreislauf ist hier: Fotosynthese = Atmung.", "Das Stoffkreislauf ist hier: ATP direkt am Substrat.", "Das Stoffkreislauf ist kurz gesagt: Gesamtfixierung."],
+      answer: "Es ist eine Elemente Kreisen durch C, N, ….", wrong: ["Es ist eine Fotosynthese = Atmung.", "Es ist eine ATP Direkt am Substrat.", "Das Stoffkreislauf ist das Gesamtfixierung."],
       explanation: "C, N, … Bezug: Stoffkreislauf. Stoffkreislauf bedeutet: Elemente kreisen.",
       wissen: "C, N, … Bezug: Stoffkreislauf. Stoffkreislauf bedeutet: Elemente kreisen.",
       flashFront: "Stoffkreislauf",
@@ -2695,8 +2445,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-calvin:p10:f",
       prompt: "Was kennzeichnet „Kompensationspunkt“?",
-      answer: "Der Kompensationspunkt ist hier: Fotosynthese = Atmung, und zwar gilt: grenze Ertrag.",
-      wrong: ["Der Kompensationspunkt ist hier: ATP direkt am Substrat.", "Der Kompensationspunkt ist kurz gesagt: Gesamtfixierung.", "Der Kompensationspunkt ist kurz gesagt: anaerober Abbau."],
+      answer: "Er ist eine Fotosynthese = Atmung durch Grenze Ertrag.", wrong: ["Er ist eine ATP Direkt am Substrat.", "Der Kompensationspunkt ist der Gesamtfixierung.", "Der Kompensationspunkt ist anaerober Abbau."],
       explanation: "Grenze Ertrag. Bezug: Kompensationspunkt. Kompensationspunkt bedeutet: Fotosynthese = Atmung.",
       wissen: "Grenze Ertrag. Bezug: Kompensationspunkt. Kompensationspunkt bedeutet: Fotosynthese = Atmung.",
       flashFront: "Kompensationspunkt",
@@ -2704,8 +2453,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-calvin:p11:f",
       prompt: "Was kennzeichnet „Substratkettenphosphorylierung“?",
-      answer: "Die Substratkettenphosphorylierung ist hier: ATP direkt am Substrat, und zwar gilt: glykolyse.",
-      wrong: ["Die Substratkettenphosphorylierung ist kurz gesagt: Gesamtfixierung.", "Die Substratkettenphosphorylierung ist kurz gesagt: anaerober Abbau.", "Die Substratkettenphosphorylierung ist kurz gesagt: gibt e− ab."],
+      answer: "Sie ist eine ATP Direkt am Substrat durch Glykolyse.", wrong: ["Die Substratkettenphosphorylierung ist die Gesamtfixierung.", "Die Substratkettenphosphorylierung ist anaerober Abbau.", "Sie gibt e− ab."],
       explanation: "Glykolyse. Bezug: Substratkettenphosphorylierung. Substratkettenphosphorylierung bedeutet: ATP direkt am Substrat.",
       wissen: "Glykolyse. Bezug: Substratkettenphosphorylierung. Substratkettenphosphorylierung bedeutet: ATP direkt am Substrat.",
       flashFront: "Substratkettenphosphorylierung",
@@ -2734,8 +2482,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-photorespiration:p0:f",
       prompt: "Was kennzeichnet „Nettophotosynthese“?",
-      answer: "Die Nettophotosynthese ist hier: nach Abzug Atmung, und zwar gilt: zuwachs.",
-      wrong: ["Die Nettophotosynthese ist hier: ATP an Membran.", "Die Nettophotosynthese ist kurz gesagt: Endakzeptor Atmung.", "Die Nettophotosynthese ist kurz gesagt: CO2-Fixierung."],
+      answer: "Sie ist nach Abzug Atmung durch zuwachs.", wrong: ["Sie ist eine ATP an Membran.", "Die Nettophotosynthese ist die Endakzeptor Atmung.", "Die Nettophotosynthese ist die CO2-Fixierung."],
       explanation: "Zuwachs. Bezug: Nettophotosynthese. Nettophotosynthese bedeutet: nach Abzug Atmung.",
       wissen: "Zuwachs. Bezug: Nettophotosynthese. Nettophotosynthese bedeutet: nach Abzug Atmung.",
       flashFront: "Nettophotosynthese",
@@ -2743,8 +2490,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-photorespiration:p1:f",
       prompt: "Was kennzeichnet „Oxidative Phosphorylierung“?",
-      answer: "Die Oxidative Phosphorylierung ist hier: ATP an Membran, und zwar gilt: chemiosmose.",
-      wrong: ["Die Oxidative Phosphorylierung ist hier: Endakzeptor Atmung.", "Die Oxidative Phosphorylierung ist kurz gesagt: CO2-Fixierung.", "Die Oxidative Phosphorylierung ist kurz gesagt: Nacht-Fixierung."],
+      answer: "Sie ist eine ATP an Membran durch Chemiosmose.", wrong: ["Die Oxidative Phosphorylierung ist die Endakzeptor Atmung.", "Die Oxidative Phosphorylierung ist die CO2-Fixierung.", "Die Oxidative Phosphorylierung ist die Nacht-Fixierung."],
       explanation: "Chemiosmose. Bezug: Oxidative Phosphorylierung. Oxidative Phosphorylierung bedeutet: ATP an Membran.",
       wissen: "Chemiosmose. Bezug: Oxidative Phosphorylierung. Oxidative Phosphorylierung bedeutet: ATP an Membran.",
       flashFront: "Oxidative Phosphorylierung",
@@ -2752,8 +2498,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-photorespiration:p2:f",
       prompt: "Was kennzeichnet „Akzeptor O2“?",
-      answer: "Das Akzeptor O2 ist hier: Endakzeptor Atmung, und zwar gilt: bildet Wasser.",
-      wrong: ["Das Akzeptor O2 ist kurz gesagt: CO2-Fixierung.", "Das Akzeptor O2 ist kurz gesagt: Nacht-Fixierung.", "Das Akzeptor O2 ist hier: Elektronen → O2."],
+      answer: "Es ist eine Endakzeptor Atmung, bildet Wasser.", wrong: ["Das Akzeptor O2 ist das CO2-Fixierung.", "Das Akzeptor O2 ist das Nacht-Fixierung.", "Es ist eine Elektronen → O2."],
       explanation: "bildet Wasser. Bezug: Akzeptor O2. Akzeptor O2 bedeutet: Endakzeptor Atmung.",
       wissen: "bildet Wasser. Bezug: Akzeptor O2. Akzeptor O2 bedeutet: Endakzeptor Atmung.",
       flashFront: "Akzeptor O2",
@@ -2761,8 +2506,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-photorespiration:p3:f",
       prompt: "Was kennzeichnet „Calvin-Zyklus“?",
-      answer: "Der Calvin-Zyklus ist kurz gesagt: CO2-Fixierung, und zwar gilt: im Stroma.",
-      wrong: ["Der Calvin-Zyklus ist kurz gesagt: Nacht-Fixierung.", "Der Calvin-Zyklus ist hier: Elektronen → O2.", "Der Calvin-Zyklus ist hier: Energie aus anorganischen Redox."],
+      answer: "Er ist eine CO2-Fixierung durch im Stroma.", wrong: ["Der Calvin-Zyklus ist der Nacht-Fixierung.", "Er ist eine Elektronen → O2.", "Er ist eine Energie aus Anorganischen Redox."],
       explanation: "im Stroma. Bezug: Calvin-Zyklus. Calvin-Zyklus bedeutet: CO2-Fixierung.",
       wissen: "im Stroma. Bezug: Calvin-Zyklus. Calvin-Zyklus bedeutet: CO2-Fixierung.",
       flashFront: "Calvin-Zyklus",
@@ -2770,8 +2514,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-photorespiration:p4:f",
       prompt: "Was kennzeichnet „CAM“?",
-      answer: "Das CAM ist kurz gesagt: Nacht-Fixierung, und zwar gilt: wassersparend.",
-      wrong: ["Das CAM ist hier: Elektronen → O2.", "Das CAM ist hier: Energie aus anorganischen Redox.", "Das CAM ist kurz gesagt: CO2-fixierendes Enzym."],
+      answer: "Es ist eine Nacht-Fixierung durch Wassersparend.", wrong: ["Es ist eine Elektronen → O2.", "Es ist eine Energie aus Anorganischen Redox.", "Das CAM ist das CO2-fixierendes Enzym."],
       explanation: "Wassersparend. Bezug: CAM. CAM bedeutet: Nacht-Fixierung.",
       wissen: "Wassersparend. Bezug: CAM. CAM bedeutet: Nacht-Fixierung.",
       flashFront: "CAM",
@@ -2779,8 +2522,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-photorespiration:p5:f",
       prompt: "Was kennzeichnet „Atmungskette“?",
-      answer: "Die Atmungskette ist hier: Elektronen → O2, und zwar gilt: protonengradient.",
-      wrong: ["Die Atmungskette ist hier: Energie aus anorganischen Redox.", "Die Atmungskette ist kurz gesagt: CO2-fixierendes Enzym.", "Die Atmungskette ist hier: Aufbau organischer Stoffe."],
+      answer: "Sie ist eine Elektronen → O2 durch Protonengradient.", wrong: ["Sie ist eine Energie aus Anorganischen Redox.", "Die Atmungskette ist die CO2-fixierendes Enzym.", "Sie ist eine Aufbau Organischer Stoffe."],
       explanation: "Protonengradient. Bezug: Atmungskette. Atmungskette bedeutet: Elektronen → O2.",
       wissen: "Protonengradient. Bezug: Atmungskette. Atmungskette bedeutet: Elektronen → O2.",
       flashFront: "Atmungskette",
@@ -2788,8 +2530,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-photorespiration:p6:f",
       prompt: "Was kennzeichnet „Chemosynthese“?",
-      answer: "Energie aus anorganischen Redox, und zwar gilt hier: Z. B. Nitrifizierer.",
-      wrong: ["Die Chemosynthese ist kurz gesagt: CO2-fixierendes Enzym.", "Die Chemosynthese ist hier: Aufbau organischer Stoffe.", "Die Chemosynthese ist kurz gesagt: Gesamtfixierung."],
+      answer: "Sie ist eine Energie aus Anorganischen Redox durch Z. B. Nitrifizierer.", wrong: ["Die Chemosynthese ist die CO2-fixierendes Enzym.", "Sie ist eine Aufbau Organischer Stoffe.", "Die Chemosynthese ist die Gesamtfixierung."],
       explanation: "z. B. Nitrifizierer. Bezug: Chemosynthese. Chemosynthese bedeutet: Energie aus anorganischen Redox.",
       wissen: "z. B. Nitrifizierer. Bezug: Chemosynthese. Chemosynthese bedeutet: Energie aus anorganischen Redox.",
       flashFront: "Chemosynthese",
@@ -2797,8 +2538,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-photorespiration:p7:f",
       prompt: "Was kennzeichnet „RuBisCO“?",
-      answer: "Das RuBisCO ist kurz gesagt: CO2-fixierendes Enzym, und zwar gilt: häufigstes Protein.",
-      wrong: ["Das RuBisCO ist hier: Aufbau organischer Stoffe.", "Das RuBisCO ist kurz gesagt: Gesamtfixierung.", "Das RuBisCO ist kurz gesagt: anaerober Abbau."],
+      answer: "Es ist eine CO2-fixierendes Enzym durch Häufigstes Protein.", wrong: ["Es ist eine Aufbau Organischer Stoffe.", "Das RuBisCO ist das Gesamtfixierung.", "Das RuBisCO ist anaerober Abbau."],
       explanation: "häufigstes Protein. Bezug: RuBisCO. RuBisCO bedeutet: CO2-fixierendes Enzym.",
       wissen: "häufigstes Protein. Bezug: RuBisCO. RuBisCO bedeutet: CO2-fixierendes Enzym.",
       flashFront: "RuBisCO",
@@ -2806,8 +2546,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-photorespiration:p8:f",
       prompt: "Was kennzeichnet „Assimilation“?",
-      answer: "Die Assimilation ist hier: Aufbau organischer Stoffe, und zwar gilt: fotosynthese.",
-      wrong: ["Die Assimilation ist kurz gesagt: Gesamtfixierung.", "Die Assimilation ist kurz gesagt: anaerober Abbau.", "Die Assimilation ist kurz gesagt: gibt e− ab."],
+      answer: "Sie ist eine Aufbau Organischer Stoffe durch Fotosynthese.", wrong: ["Die Assimilation ist die Gesamtfixierung.", "Die Assimilation ist anaerober Abbau.", "Sie gibt e− ab."],
       explanation: "Fotosynthese. Bezug: Assimilation. Assimilation bedeutet: Aufbau organischer Stoffe.",
       wissen: "Fotosynthese. Bezug: Assimilation. Assimilation bedeutet: Aufbau organischer Stoffe.",
       flashFront: "Assimilation",
@@ -2815,8 +2554,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-photorespiration:p9:f",
       prompt: "Was kennzeichnet „Bruttophotosynthese“?",
-      answer: "Die Bruttophotosynthese ist kurz gesagt: Gesamtfixierung, und zwar gilt: vor Atmung.",
-      wrong: ["Die Bruttophotosynthese ist kurz gesagt: anaerober Abbau.", "Die Bruttophotosynthese ist kurz gesagt: gibt e− ab.", "Die Bruttophotosynthese ist hier: nach Abzug Atmung."],
+      answer: "Sie ist eine Gesamtfixierung durch vor Atmung.", wrong: ["Die Bruttophotosynthese ist anaerober Abbau.", "Sie gibt e− ab.", "Die Bruttophotosynthese ist nach Abzug Atmung."],
       explanation: "vor Atmung. Bezug: Bruttophotosynthese. Bruttophotosynthese bedeutet: Gesamtfixierung.",
       wissen: "vor Atmung. Bezug: Bruttophotosynthese. Bruttophotosynthese bedeutet: Gesamtfixierung.",
       flashFront: "Bruttophotosynthese",
@@ -2824,8 +2562,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-photorespiration:p10:f",
       prompt: "Was kennzeichnet „Fermentation“?",
-      answer: "Die Fermentation ist kurz gesagt: anaerober Abbau, und zwar gilt: produkte z. B. Lactat/Ethanol.",
-      wrong: ["Die Fermentation ist kurz gesagt: gibt e− ab.", "Die Fermentation ist hier: nach Abzug Atmung.", "Die Fermentation ist hier: ATP an Membran."],
+      answer: "Sie ist anaerober Abbau durch produkte z. B. Lactat/Ethanol.", wrong: ["Sie gibt e− ab.", "Die Fermentation ist nach Abzug Atmung.", "Sie ist eine ATP an Membran."],
       explanation: "Produkte z. B. Lactat/Ethanol. Bezug: Fermentation. Fermentation bedeutet: anaerober Abbau.",
       wissen: "Produkte z. B. Lactat/Ethanol. Bezug: Fermentation. Fermentation bedeutet: anaerober Abbau.",
       flashFront: "Fermentation",
@@ -2833,8 +2570,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-photorespiration:p11:f",
       prompt: "Wozu dient Elektronendonator?",
-      answer: "Er gibt e− ab, und zwar gilt hier: Bei Chemosynthese oft H2S/NH3.",
-      wrong: ["Der Elektronendonator ist hier: nach Abzug Atmung.", "Der Elektronendonator ist hier: ATP an Membran.", "Der Elektronendonator ist kurz gesagt: Endakzeptor Atmung."],
+      answer: "Er gibt e− ab durch bei Chemosynthese oft H2S/NH3.", wrong: ["Der Elektronendonator ist nach Abzug Atmung.", "Er ist eine ATP an Membran.", "Der Elektronendonator ist der Endakzeptor Atmung."],
       explanation: "bei Chemosynthese oft H2S/NH3. Bezug: Elektronendonator. Elektronendonator bedeutet: gibt e− ab.",
       wissen: "bei Chemosynthese oft H2S/NH3. Bezug: Elektronendonator. Elektronendonator bedeutet: gibt e− ab.",
       flashFront: "Elektronendonator",
@@ -2863,8 +2599,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-atmungskette:p0:f",
       prompt: "Was kennzeichnet „Kompensationspunkt“?",
-      answer: "Der Kompensationspunkt ist hier: Fotosynthese = Atmung, und zwar gilt: grenze Ertrag.",
-      wrong: ["Der Kompensationspunkt ist hier: ATP direkt am Substrat.", "Der Kompensationspunkt ist hier: Licht → chemische Energie.", "Der Kompensationspunkt ist kurz gesagt: direkt RuBisCO."],
+      answer: "Er ist eine Fotosynthese = Atmung durch Grenze Ertrag.", wrong: ["Er ist eine ATP Direkt am Substrat.", "Er ist eine Licht → Chemische Energie.", "Der Kompensationspunkt ist direkt RuBisCO."],
       explanation: "Grenze Ertrag. Bezug: Kompensationspunkt. Kompensationspunkt bedeutet: Fotosynthese = Atmung.",
       wissen: "Grenze Ertrag. Bezug: Kompensationspunkt. Kompensationspunkt bedeutet: Fotosynthese = Atmung.",
       flashFront: "Kompensationspunkt",
@@ -2872,8 +2607,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-atmungskette:p1:f",
       prompt: "Was kennzeichnet „Substratkettenphosphorylierung“?",
-      answer: "Die Substratkettenphosphorylierung ist hier: ATP direkt am Substrat, und zwar gilt: glykolyse.",
-      wrong: ["Die Substratkettenphosphorylierung ist hier: Licht → chemische Energie.", "Die Substratkettenphosphorylierung ist kurz gesagt: direkt RuBisCO.", "Die Substratkettenphosphorylierung ist hier: Glucose → Pyruvat."],
+      answer: "Sie ist eine ATP Direkt am Substrat durch Glykolyse.", wrong: ["Sie ist eine Licht → Chemische Energie.", "Die Substratkettenphosphorylierung ist direkt RuBisCO.", "Sie ist eine Glucose → Pyruvat."],
       explanation: "Glykolyse. Bezug: Substratkettenphosphorylierung. Substratkettenphosphorylierung bedeutet: ATP direkt am Substrat.",
       wissen: "Glykolyse. Bezug: Substratkettenphosphorylierung. Substratkettenphosphorylierung bedeutet: ATP direkt am Substrat.",
       flashFront: "Substratkettenphosphorylierung",
@@ -2881,8 +2615,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-atmungskette:p2:f",
       prompt: "Was kennzeichnet „Fotosynthese“?",
-      answer: "Licht → chemische Energie, und zwar gilt hier: CO2 + H2O → Glucose + O2.",
-      wrong: ["Die Fotosynthese ist kurz gesagt: direkt RuBisCO.", "Die Fotosynthese ist hier: Glucose → Pyruvat.", "Die Fotosynthese ist kurz gesagt: nutzt Protonenfluss."],
+      answer: "Sie ist eine Licht → Chemische Energie durch CO2 + H2O → Glucose + O2.", wrong: ["Die Fotosynthese ist direkt RuBisCO.", "Sie ist eine Glucose → Pyruvat.", "Sie nutzt Protonenfluss."],
       explanation: "CO2 + H2O → Glucose + O2. Bezug: Fotosynthese. Fotosynthese bedeutet: Licht → chemische Energie.",
       wissen: "CO2 + H2O → Glucose + O2. Bezug: Fotosynthese. Fotosynthese bedeutet: Licht → chemische Energie.",
       flashFront: "Fotosynthese",
@@ -2890,8 +2623,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-atmungskette:p3:f",
       prompt: "Was kennzeichnet „C3-Pflanze“?",
-      answer: "Die C3-Pflanze ist kurz gesagt: direkt RuBisCO, und zwar gilt: photorespiration möglich.",
-      wrong: ["Die C3-Pflanze ist hier: Glucose → Pyruvat.", "Die C3-Pflanze ist kurz gesagt: nutzt Protonenfluss.", "Die C3-Pflanze ist kurz gesagt: Elektronenübertragung."],
+      answer: "Sie ist direkt RuBisCO durch photorespiration möglich.", wrong: ["Sie ist eine Glucose → Pyruvat.", "Sie nutzt Protonenfluss.", "Die C3-Pflanze ist die Elektronenübertragung."],
       explanation: "Photorespiration möglich. Bezug: C3-Pflanze. C3-Pflanze bedeutet: direkt RuBisCO.",
       wissen: "Photorespiration möglich. Bezug: C3-Pflanze. C3-Pflanze bedeutet: direkt RuBisCO.",
       flashFront: "C3-Pflanze",
@@ -2899,8 +2631,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-atmungskette:p4:f",
       prompt: "Was kennzeichnet „Glykolyse“?",
-      answer: "Die Glykolyse ist hier: Glucose → Pyruvat, und zwar gilt: im Cytoplasma.",
-      wrong: ["Die Glykolyse ist kurz gesagt: nutzt Protonenfluss.", "Die Glykolyse ist kurz gesagt: Elektronenübertragung.", "Die Glykolyse ist hier: O2 statt CO2 an RuBisCO."],
+      answer: "Sie ist eine Glucose → Pyruvat durch im Cytoplasma.", wrong: ["Sie nutzt Protonenfluss.", "Die Glykolyse ist die Elektronenübertragung.", "Sie ist eine O2 Statt CO2 an RuBisCO."],
       explanation: "im Cytoplasma. Bezug: Glykolyse. Glykolyse bedeutet: Glucose → Pyruvat.",
       wissen: "im Cytoplasma. Bezug: Glykolyse. Glykolyse bedeutet: Glucose → Pyruvat.",
       flashFront: "Glykolyse",
@@ -2908,8 +2639,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-atmungskette:p5:f",
       prompt: "Wozu dient die ATP-Synthase?",
-      answer: "Sie nutzt Protonenfluss, und zwar gilt hier: Oxidative Phosphorylierung.",
-      wrong: ["Die ATP-Synthase ist kurz gesagt: Elektronenübertragung.", "Die ATP-Synthase ist hier: O2 statt CO2 an RuBisCO.", "Die ATP-Synthase ist hier: einseitig durch Ökosystem."],
+      answer: "Sie nutzt Protonenfluss durch oxidative Phosphorylierung.", wrong: ["Die ATP-Synthase ist die Elektronenübertragung.", "Sie ist eine O2 Statt CO2 an RuBisCO.", "Die ATP-Synthase ist einseitig durch Ökosystem."],
       explanation: "oxidative Phosphorylierung. Bezug: ATP-Synthase. ATP-Synthase bedeutet: nutzt Protonenfluss.",
       wissen: "oxidative Phosphorylierung. Bezug: ATP-Synthase. ATP-Synthase bedeutet: nutzt Protonenfluss.",
       flashFront: "ATP-Synthase",
@@ -2917,8 +2647,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-atmungskette:p6:f",
       prompt: "Was kennzeichnet „Redoxreaktion“?",
-      answer: "Die Redoxreaktion ist kurz gesagt: Elektronenübertragung, und zwar gilt: stoffwechselkern.",
-      wrong: ["Die Redoxreaktion ist hier: O2 statt CO2 an RuBisCO.", "Die Redoxreaktion ist hier: einseitig durch Ökosystem.", "Die Redoxreaktion ist hier: nach Abzug Atmung."],
+      answer: "Sie ist eine Elektronenübertragung durch Stoffwechselkern.", wrong: ["Sie ist eine O2 Statt CO2 an RuBisCO.", "Die Redoxreaktion ist einseitig durch Ökosystem.", "Die Redoxreaktion ist nach Abzug Atmung."],
       explanation: "Stoffwechselkern. Bezug: Redoxreaktion. Redoxreaktion bedeutet: Elektronenübertragung.",
       wissen: "Stoffwechselkern. Bezug: Redoxreaktion. Redoxreaktion bedeutet: Elektronenübertragung.",
       flashFront: "Redoxreaktion",
@@ -2926,8 +2655,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-atmungskette:p7:f",
       prompt: "Was kennzeichnet „Photorespiration“?",
-      answer: "Die Photorespiration ist hier: O2 statt CO2 an RuBisCO, und zwar gilt: verlustweg.",
-      wrong: ["Die Photorespiration ist hier: einseitig durch Ökosystem.", "Die Photorespiration ist hier: nach Abzug Atmung.", "Die Photorespiration ist hier: ATP an Membran."],
+      answer: "Sie ist eine O2 Statt CO2 an RuBisCO durch Verlustweg.", wrong: ["Die Photorespiration ist einseitig durch Ökosystem.", "Die Photorespiration ist nach Abzug Atmung.", "Sie ist eine ATP an Membran."],
       explanation: "Verlustweg. Bezug: Photorespiration. Photorespiration bedeutet: O2 statt CO2 an RuBisCO.",
       wissen: "Verlustweg. Bezug: Photorespiration. Photorespiration bedeutet: O2 statt CO2 an RuBisCO.",
       flashFront: "Photorespiration",
@@ -2935,8 +2663,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-atmungskette:p8:f",
       prompt: "Was kennzeichnet „Energiefluss“?",
-      answer: "Das Energiefluss ist hier: einseitig durch Ökosystem, und zwar gilt: mit Verlusten.",
-      wrong: ["Das Energiefluss ist hier: nach Abzug Atmung.", "Das Energiefluss ist hier: ATP an Membran.", "Das Energiefluss ist kurz gesagt: Endakzeptor Atmung."],
+      answer: "Es ist einseitig durch Ökosystem durch mit Verlusten.", wrong: ["Das Energiefluss ist nach Abzug Atmung.", "Es ist eine ATP an Membran.", "Das Energiefluss ist das Endakzeptor Atmung."],
       explanation: "mit Verlusten. Bezug: Energiefluss. Energiefluss bedeutet: einseitig durch Ökosystem.",
       wissen: "mit Verlusten. Bezug: Energiefluss. Energiefluss bedeutet: einseitig durch Ökosystem.",
       flashFront: "Energiefluss",
@@ -2944,8 +2671,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-atmungskette:p9:f",
       prompt: "Was kennzeichnet „Nettophotosynthese“?",
-      answer: "Die Nettophotosynthese ist hier: nach Abzug Atmung, und zwar gilt: zuwachs.",
-      wrong: ["Die Nettophotosynthese ist hier: ATP an Membran.", "Die Nettophotosynthese ist kurz gesagt: Endakzeptor Atmung.", "Die Nettophotosynthese ist hier: Fotosynthese = Atmung."],
+      answer: "Sie ist nach Abzug Atmung durch zuwachs.", wrong: ["Sie ist eine ATP an Membran.", "Die Nettophotosynthese ist die Endakzeptor Atmung.", "Sie ist eine Fotosynthese = Atmung."],
       explanation: "Zuwachs. Bezug: Nettophotosynthese. Nettophotosynthese bedeutet: nach Abzug Atmung.",
       wissen: "Zuwachs. Bezug: Nettophotosynthese. Nettophotosynthese bedeutet: nach Abzug Atmung.",
       flashFront: "Nettophotosynthese",
@@ -2953,8 +2679,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-atmungskette:p10:f",
       prompt: "Was kennzeichnet „Oxidative Phosphorylierung“?",
-      answer: "Die Oxidative Phosphorylierung ist hier: ATP an Membran, und zwar gilt: chemiosmose.",
-      wrong: ["Die Oxidative Phosphorylierung ist hier: Endakzeptor Atmung.", "Die Oxidative Phosphorylierung ist hier: Fotosynthese = Atmung.", "Die Oxidative Phosphorylierung ist hier: ATP direkt am Substrat."],
+      answer: "Sie ist eine ATP an Membran durch Chemiosmose.", wrong: ["Die Oxidative Phosphorylierung ist die Endakzeptor Atmung.", "Sie ist eine Fotosynthese = Atmung.", "Sie ist eine ATP Direkt am Substrat."],
       explanation: "Chemiosmose. Bezug: Oxidative Phosphorylierung. Oxidative Phosphorylierung bedeutet: ATP an Membran.",
       wissen: "Chemiosmose. Bezug: Oxidative Phosphorylierung. Oxidative Phosphorylierung bedeutet: ATP an Membran.",
       flashFront: "Oxidative Phosphorylierung",
@@ -2962,8 +2687,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-atmungskette:p11:f",
       prompt: "Was kennzeichnet „Akzeptor O2“?",
-      answer: "Das Akzeptor O2 ist hier: Endakzeptor Atmung, und zwar gilt: bildet Wasser.",
-      wrong: ["Das Akzeptor O2 ist hier: Fotosynthese = Atmung.", "Das Akzeptor O2 ist hier: ATP direkt am Substrat.", "Das Akzeptor O2 ist hier: Licht → chemische Energie."],
+      answer: "Es ist eine Endakzeptor Atmung, bildet Wasser.", wrong: ["Es ist eine Fotosynthese = Atmung.", "Es ist eine ATP Direkt am Substrat.", "Es ist eine Licht → Chemische Energie."],
       explanation: "bildet Wasser. Bezug: Akzeptor O2. Akzeptor O2 bedeutet: Endakzeptor Atmung.",
       wissen: "bildet Wasser. Bezug: Akzeptor O2. Akzeptor O2 bedeutet: Endakzeptor Atmung.",
       flashFront: "Akzeptor O2",
@@ -2992,8 +2716,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-gaerung-vergleich:p0:f",
       prompt: "Was kennzeichnet „Fermentation“?",
-      answer: "Die Fermentation ist kurz gesagt: anaerober Abbau, und zwar gilt: produkte z. B. Lactat/Ethanol.",
-      wrong: ["Die Fermentation ist kurz gesagt: gibt e− ab.", "Die Fermentation ist kurz gesagt: an Thylakoiden.", "Die Fermentation ist kurz gesagt: CO2-Pumpe."],
+      answer: "Sie ist anaerober Abbau durch produkte z. B. Lactat/Ethanol.", wrong: ["Sie gibt e− ab.", "Die Fermentation ist an Thylakoiden.", "Die Fermentation ist die CO2-Pumpe."],
       explanation: "Produkte z. B. Lactat/Ethanol. Bezug: Fermentation. Fermentation bedeutet: anaerober Abbau.",
       wissen: "Produkte z. B. Lactat/Ethanol. Bezug: Fermentation. Fermentation bedeutet: anaerober Abbau.",
       flashFront: "Fermentation",
@@ -3001,8 +2724,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-gaerung-vergleich:p1:f",
       prompt: "Wozu dient Elektronendonator?",
-      answer: "Er gibt e− ab, und zwar gilt hier: Bei Chemosynthese oft H2S/NH3.",
-      wrong: ["Der Elektronendonator ist kurz gesagt: an Thylakoiden.", "Der Elektronendonator ist kurz gesagt: CO2-Pumpe.", "Der Elektronendonator ist kurz gesagt: Acetyl-CoA oxidieren."],
+      answer: "Er gibt e− ab durch bei Chemosynthese oft H2S/NH3.", wrong: ["Der Elektronendonator ist an Thylakoiden.", "Der Elektronendonator ist der CO2-Pumpe.", "Der Elektronendonator ist der Acetyl-CoA Oxidieren."],
       explanation: "bei Chemosynthese oft H2S/NH3. Bezug: Elektronendonator. Elektronendonator bedeutet: gibt e− ab.",
       wissen: "bei Chemosynthese oft H2S/NH3. Bezug: Elektronendonator. Elektronendonator bedeutet: gibt e− ab.",
       flashFront: "Elektronendonator",
@@ -3010,8 +2732,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-gaerung-vergleich:p2:f",
       prompt: "Was kennzeichnet „Lichtreaktion“?",
-      answer: "Die Lichtreaktion ist kurz gesagt: an Thylakoiden, und zwar gilt: aTP und NADPH.",
-      wrong: ["Die Lichtreaktion ist kurz gesagt: CO2-Pumpe.", "Die Lichtreaktion ist kurz gesagt: Acetyl-CoA oxidieren.", "Die Lichtreaktion ist hier: ATP ohne O2."],
+      answer: "Sie ist an Thylakoiden durch aTP und NADPH.", wrong: ["Die Lichtreaktion ist die CO2-Pumpe.", "Die Lichtreaktion ist die Acetyl-CoA Oxidieren.", "Sie ist eine ATP ohne O2."],
       explanation: "ATP und NADPH. Bezug: Lichtreaktion. Lichtreaktion bedeutet: an Thylakoiden.",
       wissen: "ATP und NADPH. Bezug: Lichtreaktion. Lichtreaktion bedeutet: an Thylakoiden.",
       flashFront: "Lichtreaktion",
@@ -3019,8 +2740,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-gaerung-vergleich:p3:f",
       prompt: "Was kennzeichnet „C4-Pflanze“?",
-      answer: "Die C4-Pflanze ist kurz gesagt: CO2-Pumpe, und zwar gilt: heiße trockene Standorte.",
-      wrong: ["Die C4-Pflanze ist kurz gesagt: Acetyl-CoA oxidieren.", "Die C4-Pflanze ist hier: ATP ohne O2.", "Die C4-Pflanze ist kurz gesagt: Reduktionsäquivalent."],
+      answer: "Sie ist eine CO2-Pumpe durch Heiße Trockene Standorte.", wrong: ["Die C4-Pflanze ist die Acetyl-CoA Oxidieren.", "Sie ist eine ATP ohne O2.", "Die C4-Pflanze ist die Reduktionsäquivalent."],
       explanation: "heiße trockene Standorte. Bezug: C4-Pflanze. C4-Pflanze bedeutet: CO2-Pumpe.",
       wissen: "heiße trockene Standorte. Bezug: C4-Pflanze. C4-Pflanze bedeutet: CO2-Pumpe.",
       flashFront: "C4-Pflanze",
@@ -3028,8 +2748,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-gaerung-vergleich:p4:f",
       prompt: "Was kennzeichnet „Citratzyklus“?",
-      answer: "Der Citratzyklus ist kurz gesagt: Acetyl-CoA oxidieren, und zwar gilt: in Matrix.",
-      wrong: ["Der Citratzyklus ist hier: ATP ohne O2.", "Der Citratzyklus ist kurz gesagt: Reduktionsäquivalent.", "Der Citratzyklus ist hier: Abbau energiereicher Stoffe."],
+      answer: "Er ist eine Acetyl-CoA Oxidieren durch in Matrix.", wrong: ["Er ist eine ATP ohne O2.", "Der Citratzyklus ist der Reduktionsäquivalent.", "Er ist eine Abbau Energiereicher Stoffe."],
       explanation: "in Matrix. Bezug: Citratzyklus. Citratzyklus bedeutet: Acetyl-CoA oxidieren.",
       wissen: "in Matrix. Bezug: Citratzyklus. Citratzyklus bedeutet: Acetyl-CoA oxidieren.",
       flashFront: "Citratzyklus",
@@ -3037,8 +2756,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-gaerung-vergleich:p5:f",
       prompt: "Was kennzeichnet „Gärung“?",
-      answer: "Die Gärung ist hier: ATP ohne O2, und zwar gilt: weniger ergiebig.",
-      wrong: ["Die Gärung ist kurz gesagt: Reduktionsäquivalent.", "Die Gärung ist hier: Abbau energiereicher Stoffe.", "Die Gärung ist kurz gesagt: Elemente kreisen."],
+      answer: "Sie ist eine ATP ohne O2 durch Weniger Ergiebig.", wrong: ["Die Gärung ist die Reduktionsäquivalent.", "Sie ist eine Abbau Energiereicher Stoffe.", "Die Gärung ist die Elemente Kreisen."],
       explanation: "weniger ergiebig. Bezug: Gärung. Gärung bedeutet: ATP ohne O2.",
       wissen: "weniger ergiebig. Bezug: Gärung. Gärung bedeutet: ATP ohne O2.",
       flashFront: "Gärung",
@@ -3046,8 +2764,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-gaerung-vergleich:p6:f",
       prompt: "Was kennzeichnet „NADH“?",
-      answer: "Das NADH ist kurz gesagt: Reduktionsäquivalent, und zwar gilt: trägt Elektronen.",
-      wrong: ["Das NADH ist hier: Abbau energiereicher Stoffe.", "Das NADH ist kurz gesagt: Elemente kreisen.", "Das NADH ist hier: Fotosynthese = Atmung."],
+      answer: "Es ist eine Reduktionsäquivalent, trägt Elektronen.", wrong: ["Es ist eine Abbau Energiereicher Stoffe.", "Das NADH ist das Elemente Kreisen.", "Es ist eine Fotosynthese = Atmung."],
       explanation: "trägt Elektronen. Bezug: NADH. NADH bedeutet: Reduktionsäquivalent.",
       wissen: "trägt Elektronen. Bezug: NADH. NADH bedeutet: Reduktionsäquivalent.",
       flashFront: "NADH",
@@ -3055,8 +2772,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-gaerung-vergleich:p7:f",
       prompt: "Was kennzeichnet „Dissimilation“?",
-      answer: "Die Dissimilation ist hier: Abbau energiereicher Stoffe, und zwar gilt: zellatmung.",
-      wrong: ["Die Dissimilation ist kurz gesagt: Elemente kreisen.", "Die Dissimilation ist hier: Fotosynthese = Atmung.", "Die Dissimilation ist hier: ATP direkt am Substrat."],
+      answer: "Sie ist eine Abbau Energiereicher Stoffe durch Zellatmung.", wrong: ["Die Dissimilation ist die Elemente Kreisen.", "Sie ist eine Fotosynthese = Atmung.", "Sie ist eine ATP Direkt am Substrat."],
       explanation: "Zellatmung. Bezug: Dissimilation. Dissimilation bedeutet: Abbau energiereicher Stoffe.",
       wissen: "Zellatmung. Bezug: Dissimilation. Dissimilation bedeutet: Abbau energiereicher Stoffe.",
       flashFront: "Dissimilation",
@@ -3064,8 +2780,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-gaerung-vergleich:p8:f",
       prompt: "Was kennzeichnet „Stoffkreislauf“?",
-      answer: "Das Stoffkreislauf ist kurz gesagt: Elemente kreisen, und zwar gilt: c, N, ….",
-      wrong: ["Das Stoffkreislauf ist hier: Fotosynthese = Atmung.", "Das Stoffkreislauf ist hier: ATP direkt am Substrat.", "Das Stoffkreislauf ist hier: Licht → chemische Energie."],
+      answer: "Es ist eine Elemente Kreisen durch C, N, ….", wrong: ["Es ist eine Fotosynthese = Atmung.", "Es ist eine ATP Direkt am Substrat.", "Es ist eine Licht → Chemische Energie."],
       explanation: "C, N, … Bezug: Stoffkreislauf. Stoffkreislauf bedeutet: Elemente kreisen.",
       wissen: "C, N, … Bezug: Stoffkreislauf. Stoffkreislauf bedeutet: Elemente kreisen.",
       flashFront: "Stoffkreislauf",
@@ -3073,8 +2788,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-gaerung-vergleich:p9:f",
       prompt: "Was kennzeichnet „Kompensationspunkt“?",
-      answer: "Der Kompensationspunkt ist hier: Fotosynthese = Atmung, und zwar gilt: grenze Ertrag.",
-      wrong: ["Der Kompensationspunkt ist hier: ATP direkt am Substrat.", "Der Kompensationspunkt ist hier: Licht → chemische Energie.", "Der Kompensationspunkt ist kurz gesagt: anaerober Abbau."],
+      answer: "Er ist eine Fotosynthese = Atmung durch Grenze Ertrag.", wrong: ["Er ist eine ATP Direkt am Substrat.", "Er ist eine Licht → Chemische Energie.", "Der Kompensationspunkt ist anaerober Abbau."],
       explanation: "Grenze Ertrag. Bezug: Kompensationspunkt. Kompensationspunkt bedeutet: Fotosynthese = Atmung.",
       wissen: "Grenze Ertrag. Bezug: Kompensationspunkt. Kompensationspunkt bedeutet: Fotosynthese = Atmung.",
       flashFront: "Kompensationspunkt",
@@ -3082,8 +2796,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-gaerung-vergleich:p10:f",
       prompt: "Was kennzeichnet „Substratkettenphosphorylierung“?",
-      answer: "Die Substratkettenphosphorylierung ist hier: ATP direkt am Substrat, und zwar gilt: glykolyse.",
-      wrong: ["Die Substratkettenphosphorylierung ist hier: Licht → chemische Energie.", "Die Substratkettenphosphorylierung ist kurz gesagt: anaerober Abbau.", "Die Substratkettenphosphorylierung ist kurz gesagt: gibt e− ab."],
+      answer: "Sie ist eine ATP Direkt am Substrat durch Glykolyse.", wrong: ["Sie ist eine Licht → Chemische Energie.", "Die Substratkettenphosphorylierung ist anaerober Abbau.", "Sie gibt e− ab."],
       explanation: "Glykolyse. Bezug: Substratkettenphosphorylierung. Substratkettenphosphorylierung bedeutet: ATP direkt am Substrat.",
       wissen: "Glykolyse. Bezug: Substratkettenphosphorylierung. Substratkettenphosphorylierung bedeutet: ATP direkt am Substrat.",
       flashFront: "Substratkettenphosphorylierung",
@@ -3091,8 +2804,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-gaerung-vergleich:p11:f",
       prompt: "Was kennzeichnet „Fotosynthese“?",
-      answer: "Licht → chemische Energie, und zwar gilt hier: CO2 + H2O → Glucose + O2.",
-      wrong: ["Die Fotosynthese ist kurz gesagt: anaerober Abbau.", "Die Fotosynthese ist kurz gesagt: gibt e− ab.", "Die Fotosynthese ist kurz gesagt: an Thylakoiden."],
+      answer: "Sie ist eine Licht → Chemische Energie durch CO2 + H2O → Glucose + O2.", wrong: ["Die Fotosynthese ist anaerober Abbau.", "Sie gibt e− ab.", "Die Fotosynthese ist an Thylakoiden."],
       explanation: "CO2 + H2O → Glucose + O2. Bezug: Fotosynthese. Fotosynthese bedeutet: Licht → chemische Energie.",
       wissen: "CO2 + H2O → Glucose + O2. Bezug: Fotosynthese. Fotosynthese bedeutet: Licht → chemische Energie.",
       flashFront: "Fotosynthese",
@@ -3121,8 +2833,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-c4-cam:p0:f",
       prompt: "Was kennzeichnet „Oxidative Phosphorylierung“?",
-      answer: "Die Oxidative Phosphorylierung ist hier: ATP an Membran, und zwar gilt: chemiosmose.",
-      wrong: ["Die Oxidative Phosphorylierung ist hier: Endakzeptor Atmung.", "Die Oxidative Phosphorylierung ist kurz gesagt: CO2-Fixierung.", "Die Oxidative Phosphorylierung ist kurz gesagt: Nacht-Fixierung."],
+      answer: "Sie ist eine ATP an Membran durch Chemiosmose.", wrong: ["Die Oxidative Phosphorylierung ist die Endakzeptor Atmung.", "Die Oxidative Phosphorylierung ist die CO2-Fixierung.", "Die Oxidative Phosphorylierung ist die Nacht-Fixierung."],
       explanation: "Chemiosmose. Bezug: Oxidative Phosphorylierung. Oxidative Phosphorylierung bedeutet: ATP an Membran.",
       wissen: "Chemiosmose. Bezug: Oxidative Phosphorylierung. Oxidative Phosphorylierung bedeutet: ATP an Membran.",
       flashFront: "Oxidative Phosphorylierung",
@@ -3130,8 +2841,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-c4-cam:p1:f",
       prompt: "Was kennzeichnet „Akzeptor O2“?",
-      answer: "Das Akzeptor O2 ist hier: Endakzeptor Atmung, und zwar gilt: bildet Wasser.",
-      wrong: ["Das Akzeptor O2 ist kurz gesagt: CO2-Fixierung.", "Das Akzeptor O2 ist kurz gesagt: Nacht-Fixierung.", "Das Akzeptor O2 ist hier: Elektronen → O2."],
+      answer: "Es ist eine Endakzeptor Atmung, bildet Wasser.", wrong: ["Das Akzeptor O2 ist das CO2-Fixierung.", "Das Akzeptor O2 ist das Nacht-Fixierung.", "Es ist eine Elektronen → O2."],
       explanation: "bildet Wasser. Bezug: Akzeptor O2. Akzeptor O2 bedeutet: Endakzeptor Atmung.",
       wissen: "bildet Wasser. Bezug: Akzeptor O2. Akzeptor O2 bedeutet: Endakzeptor Atmung.",
       flashFront: "Akzeptor O2",
@@ -3139,8 +2849,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-c4-cam:p2:f",
       prompt: "Was kennzeichnet „Calvin-Zyklus“?",
-      answer: "Der Calvin-Zyklus ist kurz gesagt: CO2-Fixierung, und zwar gilt: im Stroma.",
-      wrong: ["Der Calvin-Zyklus ist kurz gesagt: Nacht-Fixierung.", "Der Calvin-Zyklus ist hier: Elektronen → O2.", "Der Calvin-Zyklus ist hier: Energie aus anorganischen Redox."],
+      answer: "Er ist eine CO2-Fixierung durch im Stroma.", wrong: ["Der Calvin-Zyklus ist der Nacht-Fixierung.", "Er ist eine Elektronen → O2.", "Er ist eine Energie aus Anorganischen Redox."],
       explanation: "im Stroma. Bezug: Calvin-Zyklus. Calvin-Zyklus bedeutet: CO2-Fixierung.",
       wissen: "im Stroma. Bezug: Calvin-Zyklus. Calvin-Zyklus bedeutet: CO2-Fixierung.",
       flashFront: "Calvin-Zyklus",
@@ -3148,8 +2857,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-c4-cam:p3:f",
       prompt: "Was kennzeichnet „CAM“?",
-      answer: "Das CAM ist kurz gesagt: Nacht-Fixierung, und zwar gilt: wassersparend.",
-      wrong: ["Das CAM ist hier: Elektronen → O2.", "Das CAM ist hier: Energie aus anorganischen Redox.", "Das CAM ist kurz gesagt: CO2-fixierendes Enzym."],
+      answer: "Es ist eine Nacht-Fixierung durch Wassersparend.", wrong: ["Es ist eine Elektronen → O2.", "Es ist eine Energie aus Anorganischen Redox.", "Das CAM ist das CO2-fixierendes Enzym."],
       explanation: "Wassersparend. Bezug: CAM. CAM bedeutet: Nacht-Fixierung.",
       wissen: "Wassersparend. Bezug: CAM. CAM bedeutet: Nacht-Fixierung.",
       flashFront: "CAM",
@@ -3157,8 +2865,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-c4-cam:p4:f",
       prompt: "Was kennzeichnet „Atmungskette“?",
-      answer: "Die Atmungskette ist hier: Elektronen → O2, und zwar gilt: protonengradient.",
-      wrong: ["Die Atmungskette ist hier: Energie aus anorganischen Redox.", "Die Atmungskette ist kurz gesagt: CO2-fixierendes Enzym.", "Die Atmungskette ist hier: Aufbau organischer Stoffe."],
+      answer: "Sie ist eine Elektronen → O2 durch Protonengradient.", wrong: ["Sie ist eine Energie aus Anorganischen Redox.", "Die Atmungskette ist die CO2-fixierendes Enzym.", "Sie ist eine Aufbau Organischer Stoffe."],
       explanation: "Protonengradient. Bezug: Atmungskette. Atmungskette bedeutet: Elektronen → O2.",
       wissen: "Protonengradient. Bezug: Atmungskette. Atmungskette bedeutet: Elektronen → O2.",
       flashFront: "Atmungskette",
@@ -3166,8 +2873,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-c4-cam:p5:f",
       prompt: "Was kennzeichnet „Chemosynthese“?",
-      answer: "Energie aus anorganischen Redox, und zwar gilt hier: Z. B. Nitrifizierer.",
-      wrong: ["Die Chemosynthese ist kurz gesagt: CO2-fixierendes Enzym.", "Die Chemosynthese ist hier: Aufbau organischer Stoffe.", "Die Chemosynthese ist kurz gesagt: Gesamtfixierung."],
+      answer: "Sie ist eine Energie aus Anorganischen Redox durch Z. B. Nitrifizierer.", wrong: ["Die Chemosynthese ist die CO2-fixierendes Enzym.", "Sie ist eine Aufbau Organischer Stoffe.", "Die Chemosynthese ist die Gesamtfixierung."],
       explanation: "z. B. Nitrifizierer. Bezug: Chemosynthese. Chemosynthese bedeutet: Energie aus anorganischen Redox.",
       wissen: "z. B. Nitrifizierer. Bezug: Chemosynthese. Chemosynthese bedeutet: Energie aus anorganischen Redox.",
       flashFront: "Chemosynthese",
@@ -3175,8 +2881,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-c4-cam:p6:f",
       prompt: "Was kennzeichnet „RuBisCO“?",
-      answer: "Das RuBisCO ist kurz gesagt: CO2-fixierendes Enzym, und zwar gilt: häufigstes Protein.",
-      wrong: ["Das RuBisCO ist hier: Aufbau organischer Stoffe.", "Das RuBisCO ist kurz gesagt: Gesamtfixierung.", "Das RuBisCO ist kurz gesagt: anaerober Abbau."],
+      answer: "Es ist eine CO2-fixierendes Enzym durch Häufigstes Protein.", wrong: ["Es ist eine Aufbau Organischer Stoffe.", "Das RuBisCO ist das Gesamtfixierung.", "Das RuBisCO ist anaerober Abbau."],
       explanation: "häufigstes Protein. Bezug: RuBisCO. RuBisCO bedeutet: CO2-fixierendes Enzym.",
       wissen: "häufigstes Protein. Bezug: RuBisCO. RuBisCO bedeutet: CO2-fixierendes Enzym.",
       flashFront: "RuBisCO",
@@ -3184,8 +2889,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-c4-cam:p7:f",
       prompt: "Was kennzeichnet „Assimilation“?",
-      answer: "Die Assimilation ist hier: Aufbau organischer Stoffe, und zwar gilt: fotosynthese.",
-      wrong: ["Die Assimilation ist kurz gesagt: Gesamtfixierung.", "Die Assimilation ist kurz gesagt: anaerober Abbau.", "Die Assimilation ist kurz gesagt: gibt e− ab."],
+      answer: "Sie ist eine Aufbau Organischer Stoffe durch Fotosynthese.", wrong: ["Die Assimilation ist die Gesamtfixierung.", "Die Assimilation ist anaerober Abbau.", "Sie gibt e− ab."],
       explanation: "Fotosynthese. Bezug: Assimilation. Assimilation bedeutet: Aufbau organischer Stoffe.",
       wissen: "Fotosynthese. Bezug: Assimilation. Assimilation bedeutet: Aufbau organischer Stoffe.",
       flashFront: "Assimilation",
@@ -3193,8 +2897,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-c4-cam:p8:f",
       prompt: "Was kennzeichnet „Bruttophotosynthese“?",
-      answer: "Die Bruttophotosynthese ist kurz gesagt: Gesamtfixierung, und zwar gilt: vor Atmung.",
-      wrong: ["Die Bruttophotosynthese ist kurz gesagt: anaerober Abbau.", "Die Bruttophotosynthese ist kurz gesagt: gibt e− ab.", "Die Bruttophotosynthese ist kurz gesagt: an Thylakoiden."],
+      answer: "Sie ist eine Gesamtfixierung durch vor Atmung.", wrong: ["Die Bruttophotosynthese ist anaerober Abbau.", "Sie gibt e− ab.", "Die Bruttophotosynthese ist an Thylakoiden."],
       explanation: "vor Atmung. Bezug: Bruttophotosynthese. Bruttophotosynthese bedeutet: Gesamtfixierung.",
       wissen: "vor Atmung. Bezug: Bruttophotosynthese. Bruttophotosynthese bedeutet: Gesamtfixierung.",
       flashFront: "Bruttophotosynthese",
@@ -3202,8 +2905,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-c4-cam:p9:f",
       prompt: "Was kennzeichnet „Fermentation“?",
-      answer: "Die Fermentation ist kurz gesagt: anaerober Abbau, und zwar gilt: produkte z. B. Lactat/Ethanol.",
-      wrong: ["Die Fermentation ist kurz gesagt: gibt e− ab.", "Die Fermentation ist kurz gesagt: an Thylakoiden.", "Die Fermentation ist hier: ATP an Membran."],
+      answer: "Sie ist anaerober Abbau durch produkte z. B. Lactat/Ethanol.", wrong: ["Sie gibt e− ab.", "Die Fermentation ist an Thylakoiden.", "Sie ist eine ATP an Membran."],
       explanation: "Produkte z. B. Lactat/Ethanol. Bezug: Fermentation. Fermentation bedeutet: anaerober Abbau.",
       wissen: "Produkte z. B. Lactat/Ethanol. Bezug: Fermentation. Fermentation bedeutet: anaerober Abbau.",
       flashFront: "Fermentation",
@@ -3211,8 +2913,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-c4-cam:p10:f",
       prompt: "Wozu dient Elektronendonator?",
-      answer: "Er gibt e− ab, und zwar gilt hier: Bei Chemosynthese oft H2S/NH3.",
-      wrong: ["Der Elektronendonator ist kurz gesagt: an Thylakoiden.", "Der Elektronendonator ist hier: ATP an Membran.", "Der Elektronendonator ist kurz gesagt: Endakzeptor Atmung."],
+      answer: "Er gibt e− ab durch bei Chemosynthese oft H2S/NH3.", wrong: ["Der Elektronendonator ist an Thylakoiden.", "Er ist eine ATP an Membran.", "Der Elektronendonator ist der Endakzeptor Atmung."],
       explanation: "bei Chemosynthese oft H2S/NH3. Bezug: Elektronendonator. Elektronendonator bedeutet: gibt e− ab.",
       wissen: "bei Chemosynthese oft H2S/NH3. Bezug: Elektronendonator. Elektronendonator bedeutet: gibt e− ab.",
       flashFront: "Elektronendonator",
@@ -3220,8 +2921,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-c4-cam:p11:f",
       prompt: "Was kennzeichnet „Lichtreaktion“?",
-      answer: "Die Lichtreaktion ist kurz gesagt: an Thylakoiden, und zwar gilt: aTP und NADPH.",
-      wrong: ["Die Lichtreaktion ist hier: ATP an Membran.", "Die Lichtreaktion ist kurz gesagt: Endakzeptor Atmung.", "Die Lichtreaktion ist kurz gesagt: CO2-Fixierung."],
+      answer: "Sie ist an Thylakoiden durch aTP und NADPH.", wrong: ["Sie ist eine ATP an Membran.", "Die Lichtreaktion ist die Endakzeptor Atmung.", "Die Lichtreaktion ist die CO2-Fixierung."],
       explanation: "ATP und NADPH. Bezug: Lichtreaktion. Lichtreaktion bedeutet: an Thylakoiden.",
       wissen: "ATP und NADPH. Bezug: Lichtreaktion. Lichtreaktion bedeutet: an Thylakoiden.",
       flashFront: "Lichtreaktion",
@@ -3250,8 +2950,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-energiefluss-zelle:p0:f",
       prompt: "Was kennzeichnet „Substratkettenphosphorylierung“?",
-      answer: "Die Substratkettenphosphorylierung ist hier: ATP direkt am Substrat, und zwar gilt: glykolyse.",
-      wrong: ["Die Substratkettenphosphorylierung ist hier: Licht → chemische Energie.", "Die Substratkettenphosphorylierung ist kurz gesagt: direkt RuBisCO.", "Die Substratkettenphosphorylierung ist hier: Glucose → Pyruvat."],
+      answer: "Sie ist eine ATP Direkt am Substrat durch Glykolyse.", wrong: ["Sie ist eine Licht → Chemische Energie.", "Die Substratkettenphosphorylierung ist direkt RuBisCO.", "Sie ist eine Glucose → Pyruvat."],
       explanation: "Glykolyse. Bezug: Substratkettenphosphorylierung. Substratkettenphosphorylierung bedeutet: ATP direkt am Substrat.",
       wissen: "Glykolyse. Bezug: Substratkettenphosphorylierung. Substratkettenphosphorylierung bedeutet: ATP direkt am Substrat.",
       flashFront: "Substratkettenphosphorylierung",
@@ -3259,8 +2958,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-energiefluss-zelle:p1:f",
       prompt: "Was kennzeichnet „Fotosynthese“?",
-      answer: "Licht → chemische Energie, und zwar gilt hier: CO2 + H2O → Glucose + O2.",
-      wrong: ["Die Fotosynthese ist kurz gesagt: direkt RuBisCO.", "Die Fotosynthese ist hier: Glucose → Pyruvat.", "Die Fotosynthese ist kurz gesagt: nutzt Protonenfluss."],
+      answer: "Sie ist eine Licht → Chemische Energie durch CO2 + H2O → Glucose + O2.", wrong: ["Die Fotosynthese ist direkt RuBisCO.", "Sie ist eine Glucose → Pyruvat.", "Sie nutzt Protonenfluss."],
       explanation: "CO2 + H2O → Glucose + O2. Bezug: Fotosynthese. Fotosynthese bedeutet: Licht → chemische Energie.",
       wissen: "CO2 + H2O → Glucose + O2. Bezug: Fotosynthese. Fotosynthese bedeutet: Licht → chemische Energie.",
       flashFront: "Fotosynthese",
@@ -3268,8 +2966,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-energiefluss-zelle:p2:f",
       prompt: "Was kennzeichnet „C3-Pflanze“?",
-      answer: "Die C3-Pflanze ist kurz gesagt: direkt RuBisCO, und zwar gilt: photorespiration möglich.",
-      wrong: ["Die C3-Pflanze ist hier: Glucose → Pyruvat.", "Die C3-Pflanze ist kurz gesagt: nutzt Protonenfluss.", "Die C3-Pflanze ist kurz gesagt: Elektronenübertragung."],
+      answer: "Sie ist direkt RuBisCO durch photorespiration möglich.", wrong: ["Sie ist eine Glucose → Pyruvat.", "Sie nutzt Protonenfluss.", "Die C3-Pflanze ist die Elektronenübertragung."],
       explanation: "Photorespiration möglich. Bezug: C3-Pflanze. C3-Pflanze bedeutet: direkt RuBisCO.",
       wissen: "Photorespiration möglich. Bezug: C3-Pflanze. C3-Pflanze bedeutet: direkt RuBisCO.",
       flashFront: "C3-Pflanze",
@@ -3277,8 +2974,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-energiefluss-zelle:p3:f",
       prompt: "Was kennzeichnet „Glykolyse“?",
-      answer: "Die Glykolyse ist hier: Glucose → Pyruvat, und zwar gilt: im Cytoplasma.",
-      wrong: ["Die Glykolyse ist kurz gesagt: nutzt Protonenfluss.", "Die Glykolyse ist kurz gesagt: Elektronenübertragung.", "Die Glykolyse ist hier: O2 statt CO2 an RuBisCO."],
+      answer: "Sie ist eine Glucose → Pyruvat durch im Cytoplasma.", wrong: ["Sie nutzt Protonenfluss.", "Die Glykolyse ist die Elektronenübertragung.", "Sie ist eine O2 Statt CO2 an RuBisCO."],
       explanation: "im Cytoplasma. Bezug: Glykolyse. Glykolyse bedeutet: Glucose → Pyruvat.",
       wissen: "im Cytoplasma. Bezug: Glykolyse. Glykolyse bedeutet: Glucose → Pyruvat.",
       flashFront: "Glykolyse",
@@ -3286,8 +2982,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-energiefluss-zelle:p4:f",
       prompt: "Wozu dient die ATP-Synthase?",
-      answer: "Sie nutzt Protonenfluss, und zwar gilt hier: Oxidative Phosphorylierung.",
-      wrong: ["Die ATP-Synthase ist kurz gesagt: Elektronenübertragung.", "Die ATP-Synthase ist hier: O2 statt CO2 an RuBisCO.", "Die ATP-Synthase ist hier: einseitig durch Ökosystem."],
+      answer: "Sie nutzt Protonenfluss durch oxidative Phosphorylierung.", wrong: ["Die ATP-Synthase ist die Elektronenübertragung.", "Sie ist eine O2 Statt CO2 an RuBisCO.", "Die ATP-Synthase ist einseitig durch Ökosystem."],
       explanation: "oxidative Phosphorylierung. Bezug: ATP-Synthase. ATP-Synthase bedeutet: nutzt Protonenfluss.",
       wissen: "oxidative Phosphorylierung. Bezug: ATP-Synthase. ATP-Synthase bedeutet: nutzt Protonenfluss.",
       flashFront: "ATP-Synthase",
@@ -3295,8 +2990,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-energiefluss-zelle:p5:f",
       prompt: "Was kennzeichnet „Redoxreaktion“?",
-      answer: "Die Redoxreaktion ist kurz gesagt: Elektronenübertragung, und zwar gilt: stoffwechselkern.",
-      wrong: ["Die Redoxreaktion ist hier: O2 statt CO2 an RuBisCO.", "Die Redoxreaktion ist hier: einseitig durch Ökosystem.", "Die Redoxreaktion ist hier: nach Abzug Atmung."],
+      answer: "Sie ist eine Elektronenübertragung durch Stoffwechselkern.", wrong: ["Sie ist eine O2 Statt CO2 an RuBisCO.", "Die Redoxreaktion ist einseitig durch Ökosystem.", "Die Redoxreaktion ist nach Abzug Atmung."],
       explanation: "Stoffwechselkern. Bezug: Redoxreaktion. Redoxreaktion bedeutet: Elektronenübertragung.",
       wissen: "Stoffwechselkern. Bezug: Redoxreaktion. Redoxreaktion bedeutet: Elektronenübertragung.",
       flashFront: "Redoxreaktion",
@@ -3304,8 +2998,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-energiefluss-zelle:p6:f",
       prompt: "Was kennzeichnet „Photorespiration“?",
-      answer: "Die Photorespiration ist hier: O2 statt CO2 an RuBisCO, und zwar gilt: verlustweg.",
-      wrong: ["Die Photorespiration ist hier: einseitig durch Ökosystem.", "Die Photorespiration ist hier: nach Abzug Atmung.", "Die Photorespiration ist hier: ATP an Membran."],
+      answer: "Sie ist eine O2 Statt CO2 an RuBisCO durch Verlustweg.", wrong: ["Die Photorespiration ist einseitig durch Ökosystem.", "Die Photorespiration ist nach Abzug Atmung.", "Sie ist eine ATP an Membran."],
       explanation: "Verlustweg. Bezug: Photorespiration. Photorespiration bedeutet: O2 statt CO2 an RuBisCO.",
       wissen: "Verlustweg. Bezug: Photorespiration. Photorespiration bedeutet: O2 statt CO2 an RuBisCO.",
       flashFront: "Photorespiration",
@@ -3313,8 +3006,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-energiefluss-zelle:p7:f",
       prompt: "Was kennzeichnet „Energiefluss“?",
-      answer: "Das Energiefluss ist hier: einseitig durch Ökosystem, und zwar gilt: mit Verlusten.",
-      wrong: ["Das Energiefluss ist hier: nach Abzug Atmung.", "Das Energiefluss ist hier: ATP an Membran.", "Das Energiefluss ist kurz gesagt: Endakzeptor Atmung."],
+      answer: "Es ist einseitig durch Ökosystem durch mit Verlusten.", wrong: ["Das Energiefluss ist nach Abzug Atmung.", "Es ist eine ATP an Membran.", "Das Energiefluss ist das Endakzeptor Atmung."],
       explanation: "mit Verlusten. Bezug: Energiefluss. Energiefluss bedeutet: einseitig durch Ökosystem.",
       wissen: "mit Verlusten. Bezug: Energiefluss. Energiefluss bedeutet: einseitig durch Ökosystem.",
       flashFront: "Energiefluss",
@@ -3322,8 +3014,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-energiefluss-zelle:p8:f",
       prompt: "Was kennzeichnet „Nettophotosynthese“?",
-      answer: "Die Nettophotosynthese ist hier: nach Abzug Atmung, und zwar gilt: zuwachs.",
-      wrong: ["Die Nettophotosynthese ist hier: ATP an Membran.", "Die Nettophotosynthese ist kurz gesagt: Endakzeptor Atmung.", "Die Nettophotosynthese ist kurz gesagt: CO2-Fixierung."],
+      answer: "Sie ist nach Abzug Atmung durch zuwachs.", wrong: ["Sie ist eine ATP an Membran.", "Die Nettophotosynthese ist die Endakzeptor Atmung.", "Die Nettophotosynthese ist die CO2-Fixierung."],
       explanation: "Zuwachs. Bezug: Nettophotosynthese. Nettophotosynthese bedeutet: nach Abzug Atmung.",
       wissen: "Zuwachs. Bezug: Nettophotosynthese. Nettophotosynthese bedeutet: nach Abzug Atmung.",
       flashFront: "Nettophotosynthese",
@@ -3331,8 +3022,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-energiefluss-zelle:p9:f",
       prompt: "Was kennzeichnet „Oxidative Phosphorylierung“?",
-      answer: "Die Oxidative Phosphorylierung ist hier: ATP an Membran, und zwar gilt: chemiosmose.",
-      wrong: ["Die Oxidative Phosphorylierung ist hier: Endakzeptor Atmung.", "Die Oxidative Phosphorylierung ist kurz gesagt: CO2-Fixierung.", "Die Oxidative Phosphorylierung ist hier: ATP direkt am Substrat."],
+      answer: "Sie ist eine ATP an Membran durch Chemiosmose.", wrong: ["Die Oxidative Phosphorylierung ist die Endakzeptor Atmung.", "Die Oxidative Phosphorylierung ist die CO2-Fixierung.", "Sie ist eine ATP Direkt am Substrat."],
       explanation: "Chemiosmose. Bezug: Oxidative Phosphorylierung. Oxidative Phosphorylierung bedeutet: ATP an Membran.",
       wissen: "Chemiosmose. Bezug: Oxidative Phosphorylierung. Oxidative Phosphorylierung bedeutet: ATP an Membran.",
       flashFront: "Oxidative Phosphorylierung",
@@ -3340,8 +3030,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-energiefluss-zelle:p10:f",
       prompt: "Was kennzeichnet „Akzeptor O2“?",
-      answer: "Das Akzeptor O2 ist hier: Endakzeptor Atmung, und zwar gilt: bildet Wasser.",
-      wrong: ["Das Akzeptor O2 ist kurz gesagt: CO2-Fixierung.", "Das Akzeptor O2 ist hier: ATP direkt am Substrat.", "Das Akzeptor O2 ist hier: Licht → chemische Energie."],
+      answer: "Es ist eine Endakzeptor Atmung, bildet Wasser.", wrong: ["Das Akzeptor O2 ist das CO2-Fixierung.", "Es ist eine ATP Direkt am Substrat.", "Es ist eine Licht → Chemische Energie."],
       explanation: "bildet Wasser. Bezug: Akzeptor O2. Akzeptor O2 bedeutet: Endakzeptor Atmung.",
       wissen: "bildet Wasser. Bezug: Akzeptor O2. Akzeptor O2 bedeutet: Endakzeptor Atmung.",
       flashFront: "Akzeptor O2",
@@ -3349,8 +3038,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-energiefluss-zelle:p11:f",
       prompt: "Was kennzeichnet „Calvin-Zyklus“?",
-      answer: "Der Calvin-Zyklus ist kurz gesagt: CO2-Fixierung, und zwar gilt: im Stroma.",
-      wrong: ["Der Calvin-Zyklus ist hier: ATP direkt am Substrat.", "Der Calvin-Zyklus ist hier: Licht → chemische Energie.", "Der Calvin-Zyklus ist kurz gesagt: direkt RuBisCO."],
+      answer: "Er ist eine CO2-Fixierung durch im Stroma.", wrong: ["Er ist eine ATP Direkt am Substrat.", "Er ist eine Licht → Chemische Energie.", "Der Calvin-Zyklus ist direkt RuBisCO."],
       explanation: "im Stroma. Bezug: Calvin-Zyklus. Calvin-Zyklus bedeutet: CO2-Fixierung.",
       wissen: "im Stroma. Bezug: Calvin-Zyklus. Calvin-Zyklus bedeutet: CO2-Fixierung.",
       flashFront: "Calvin-Zyklus",
@@ -3379,8 +3067,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-redox-bilanz:p0:f",
       prompt: "Wozu dient Elektronendonator?",
-      answer: "Er gibt e− ab, und zwar gilt hier: Bei Chemosynthese oft H2S/NH3.",
-      wrong: ["Der Elektronendonator ist kurz gesagt: an Thylakoiden.", "Der Elektronendonator ist kurz gesagt: CO2-Pumpe.", "Der Elektronendonator ist kurz gesagt: Acetyl-CoA oxidieren."],
+      answer: "Er gibt e− ab durch bei Chemosynthese oft H2S/NH3.", wrong: ["Der Elektronendonator ist an Thylakoiden.", "Der Elektronendonator ist der CO2-Pumpe.", "Der Elektronendonator ist der Acetyl-CoA Oxidieren."],
       explanation: "bei Chemosynthese oft H2S/NH3. Bezug: Elektronendonator. Elektronendonator bedeutet: gibt e− ab.",
       wissen: "bei Chemosynthese oft H2S/NH3. Bezug: Elektronendonator. Elektronendonator bedeutet: gibt e− ab.",
       flashFront: "Elektronendonator",
@@ -3388,8 +3075,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-redox-bilanz:p1:f",
       prompt: "Was kennzeichnet „Lichtreaktion“?",
-      answer: "Die Lichtreaktion ist kurz gesagt: an Thylakoiden, und zwar gilt: aTP und NADPH.",
-      wrong: ["Die Lichtreaktion ist kurz gesagt: CO2-Pumpe.", "Die Lichtreaktion ist kurz gesagt: Acetyl-CoA oxidieren.", "Die Lichtreaktion ist hier: ATP ohne O2."],
+      answer: "Sie ist an Thylakoiden durch aTP und NADPH.", wrong: ["Die Lichtreaktion ist die CO2-Pumpe.", "Die Lichtreaktion ist die Acetyl-CoA Oxidieren.", "Sie ist eine ATP ohne O2."],
       explanation: "ATP und NADPH. Bezug: Lichtreaktion. Lichtreaktion bedeutet: an Thylakoiden.",
       wissen: "ATP und NADPH. Bezug: Lichtreaktion. Lichtreaktion bedeutet: an Thylakoiden.",
       flashFront: "Lichtreaktion",
@@ -3397,8 +3083,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-redox-bilanz:p2:f",
       prompt: "Was kennzeichnet „C4-Pflanze“?",
-      answer: "Die C4-Pflanze ist kurz gesagt: CO2-Pumpe, und zwar gilt: heiße trockene Standorte.",
-      wrong: ["Die C4-Pflanze ist kurz gesagt: Acetyl-CoA oxidieren.", "Die C4-Pflanze ist hier: ATP ohne O2.", "Die C4-Pflanze ist kurz gesagt: Reduktionsäquivalent."],
+      answer: "Sie ist eine CO2-Pumpe durch Heiße Trockene Standorte.", wrong: ["Die C4-Pflanze ist die Acetyl-CoA Oxidieren.", "Sie ist eine ATP ohne O2.", "Die C4-Pflanze ist die Reduktionsäquivalent."],
       explanation: "heiße trockene Standorte. Bezug: C4-Pflanze. C4-Pflanze bedeutet: CO2-Pumpe.",
       wissen: "heiße trockene Standorte. Bezug: C4-Pflanze. C4-Pflanze bedeutet: CO2-Pumpe.",
       flashFront: "C4-Pflanze",
@@ -3406,8 +3091,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-redox-bilanz:p3:f",
       prompt: "Was kennzeichnet „Citratzyklus“?",
-      answer: "Der Citratzyklus ist kurz gesagt: Acetyl-CoA oxidieren, und zwar gilt: in Matrix.",
-      wrong: ["Der Citratzyklus ist hier: ATP ohne O2.", "Der Citratzyklus ist kurz gesagt: Reduktionsäquivalent.", "Der Citratzyklus ist hier: Abbau energiereicher Stoffe."],
+      answer: "Er ist eine Acetyl-CoA Oxidieren durch in Matrix.", wrong: ["Er ist eine ATP ohne O2.", "Der Citratzyklus ist der Reduktionsäquivalent.", "Er ist eine Abbau Energiereicher Stoffe."],
       explanation: "in Matrix. Bezug: Citratzyklus. Citratzyklus bedeutet: Acetyl-CoA oxidieren.",
       wissen: "in Matrix. Bezug: Citratzyklus. Citratzyklus bedeutet: Acetyl-CoA oxidieren.",
       flashFront: "Citratzyklus",
@@ -3415,8 +3099,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-redox-bilanz:p4:f",
       prompt: "Was kennzeichnet „Gärung“?",
-      answer: "Die Gärung ist hier: ATP ohne O2, und zwar gilt: weniger ergiebig.",
-      wrong: ["Die Gärung ist kurz gesagt: Reduktionsäquivalent.", "Die Gärung ist hier: Abbau energiereicher Stoffe.", "Die Gärung ist kurz gesagt: Elemente kreisen."],
+      answer: "Sie ist eine ATP ohne O2 durch Weniger Ergiebig.", wrong: ["Die Gärung ist die Reduktionsäquivalent.", "Sie ist eine Abbau Energiereicher Stoffe.", "Die Gärung ist die Elemente Kreisen."],
       explanation: "weniger ergiebig. Bezug: Gärung. Gärung bedeutet: ATP ohne O2.",
       wissen: "weniger ergiebig. Bezug: Gärung. Gärung bedeutet: ATP ohne O2.",
       flashFront: "Gärung",
@@ -3424,8 +3107,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-redox-bilanz:p5:f",
       prompt: "Was kennzeichnet „NADH“?",
-      answer: "Das NADH ist kurz gesagt: Reduktionsäquivalent, und zwar gilt: trägt Elektronen.",
-      wrong: ["Das NADH ist hier: Abbau energiereicher Stoffe.", "Das NADH ist kurz gesagt: Elemente kreisen.", "Das NADH ist hier: Fotosynthese = Atmung."],
+      answer: "Es ist eine Reduktionsäquivalent, trägt Elektronen.", wrong: ["Es ist eine Abbau Energiereicher Stoffe.", "Das NADH ist das Elemente Kreisen.", "Es ist eine Fotosynthese = Atmung."],
       explanation: "trägt Elektronen. Bezug: NADH. NADH bedeutet: Reduktionsäquivalent.",
       wissen: "trägt Elektronen. Bezug: NADH. NADH bedeutet: Reduktionsäquivalent.",
       flashFront: "NADH",
@@ -3433,8 +3115,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-redox-bilanz:p6:f",
       prompt: "Was kennzeichnet „Dissimilation“?",
-      answer: "Die Dissimilation ist hier: Abbau energiereicher Stoffe, und zwar gilt: zellatmung.",
-      wrong: ["Die Dissimilation ist kurz gesagt: Elemente kreisen.", "Die Dissimilation ist hier: Fotosynthese = Atmung.", "Die Dissimilation ist hier: ATP direkt am Substrat."],
+      answer: "Sie ist eine Abbau Energiereicher Stoffe durch Zellatmung.", wrong: ["Die Dissimilation ist die Elemente Kreisen.", "Sie ist eine Fotosynthese = Atmung.", "Sie ist eine ATP Direkt am Substrat."],
       explanation: "Zellatmung. Bezug: Dissimilation. Dissimilation bedeutet: Abbau energiereicher Stoffe.",
       wissen: "Zellatmung. Bezug: Dissimilation. Dissimilation bedeutet: Abbau energiereicher Stoffe.",
       flashFront: "Dissimilation",
@@ -3442,8 +3123,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-redox-bilanz:p7:f",
       prompt: "Was kennzeichnet „Stoffkreislauf“?",
-      answer: "Das Stoffkreislauf ist kurz gesagt: Elemente kreisen, und zwar gilt: c, N, ….",
-      wrong: ["Das Stoffkreislauf ist hier: Fotosynthese = Atmung.", "Das Stoffkreislauf ist hier: ATP direkt am Substrat.", "Das Stoffkreislauf ist hier: Licht → chemische Energie."],
+      answer: "Es ist eine Elemente Kreisen durch C, N, ….", wrong: ["Es ist eine Fotosynthese = Atmung.", "Es ist eine ATP Direkt am Substrat.", "Es ist eine Licht → Chemische Energie."],
       explanation: "C, N, … Bezug: Stoffkreislauf. Stoffkreislauf bedeutet: Elemente kreisen.",
       wissen: "C, N, … Bezug: Stoffkreislauf. Stoffkreislauf bedeutet: Elemente kreisen.",
       flashFront: "Stoffkreislauf",
@@ -3451,8 +3131,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-redox-bilanz:p8:f",
       prompt: "Was kennzeichnet „Kompensationspunkt“?",
-      answer: "Der Kompensationspunkt ist hier: Fotosynthese = Atmung, und zwar gilt: grenze Ertrag.",
-      wrong: ["Der Kompensationspunkt ist hier: ATP direkt am Substrat.", "Der Kompensationspunkt ist hier: Licht → chemische Energie.", "Der Kompensationspunkt ist kurz gesagt: direkt RuBisCO."],
+      answer: "Er ist eine Fotosynthese = Atmung durch Grenze Ertrag.", wrong: ["Er ist eine ATP Direkt am Substrat.", "Er ist eine Licht → Chemische Energie.", "Der Kompensationspunkt ist direkt RuBisCO."],
       explanation: "Grenze Ertrag. Bezug: Kompensationspunkt. Kompensationspunkt bedeutet: Fotosynthese = Atmung.",
       wissen: "Grenze Ertrag. Bezug: Kompensationspunkt. Kompensationspunkt bedeutet: Fotosynthese = Atmung.",
       flashFront: "Kompensationspunkt",
@@ -3460,8 +3139,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-redox-bilanz:p9:f",
       prompt: "Was kennzeichnet „Substratkettenphosphorylierung“?",
-      answer: "Die Substratkettenphosphorylierung ist hier: ATP direkt am Substrat, und zwar gilt: glykolyse.",
-      wrong: ["Die Substratkettenphosphorylierung ist hier: Licht → chemische Energie.", "Die Substratkettenphosphorylierung ist kurz gesagt: direkt RuBisCO.", "Die Substratkettenphosphorylierung ist kurz gesagt: gibt e− ab."],
+      answer: "Sie ist eine ATP Direkt am Substrat durch Glykolyse.", wrong: ["Sie ist eine Licht → Chemische Energie.", "Die Substratkettenphosphorylierung ist direkt RuBisCO.", "Sie gibt e− ab."],
       explanation: "Glykolyse. Bezug: Substratkettenphosphorylierung. Substratkettenphosphorylierung bedeutet: ATP direkt am Substrat.",
       wissen: "Glykolyse. Bezug: Substratkettenphosphorylierung. Substratkettenphosphorylierung bedeutet: ATP direkt am Substrat.",
       flashFront: "Substratkettenphosphorylierung",
@@ -3469,8 +3147,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-redox-bilanz:p10:f",
       prompt: "Was kennzeichnet „Fotosynthese“?",
-      answer: "Licht → chemische Energie, und zwar gilt hier: CO2 + H2O → Glucose + O2.",
-      wrong: ["Die Fotosynthese ist kurz gesagt: direkt RuBisCO.", "Die Fotosynthese ist kurz gesagt: gibt e− ab.", "Die Fotosynthese ist kurz gesagt: an Thylakoiden."],
+      answer: "Sie ist eine Licht → Chemische Energie durch CO2 + H2O → Glucose + O2.", wrong: ["Die Fotosynthese ist direkt RuBisCO.", "Sie gibt e− ab.", "Die Fotosynthese ist an Thylakoiden."],
       explanation: "CO2 + H2O → Glucose + O2. Bezug: Fotosynthese. Fotosynthese bedeutet: Licht → chemische Energie.",
       wissen: "CO2 + H2O → Glucose + O2. Bezug: Fotosynthese. Fotosynthese bedeutet: Licht → chemische Energie.",
       flashFront: "Fotosynthese",
@@ -3478,8 +3155,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-redox-bilanz:p11:f",
       prompt: "Was kennzeichnet „C3-Pflanze“?",
-      answer: "Die C3-Pflanze ist kurz gesagt: direkt RuBisCO, und zwar gilt: photorespiration möglich.",
-      wrong: ["Die C3-Pflanze ist kurz gesagt: gibt e− ab.", "Die C3-Pflanze ist kurz gesagt: an Thylakoiden.", "Die C3-Pflanze ist kurz gesagt: CO2-Pumpe."],
+      answer: "Sie ist direkt RuBisCO durch photorespiration möglich.", wrong: ["Sie gibt e− ab.", "Die C3-Pflanze ist an Thylakoiden.", "Die C3-Pflanze ist die CO2-Pumpe."],
       explanation: "Photorespiration möglich. Bezug: C3-Pflanze. C3-Pflanze bedeutet: direkt RuBisCO.",
       wissen: "Photorespiration möglich. Bezug: C3-Pflanze. C3-Pflanze bedeutet: direkt RuBisCO.",
       flashFront: "C3-Pflanze",
@@ -3508,8 +3184,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-enzyme-regulation:p0:f",
       prompt: "Was kennzeichnet „Akzeptor O2“?",
-      answer: "Das Akzeptor O2 ist hier: Endakzeptor Atmung, und zwar gilt: bildet Wasser.",
-      wrong: ["Das Akzeptor O2 ist kurz gesagt: CO2-Fixierung.", "Das Akzeptor O2 ist kurz gesagt: Nacht-Fixierung.", "Das Akzeptor O2 ist hier: Elektronen → O2."],
+      answer: "Es ist eine Endakzeptor Atmung, bildet Wasser.", wrong: ["Das Akzeptor O2 ist das CO2-Fixierung.", "Das Akzeptor O2 ist das Nacht-Fixierung.", "Es ist eine Elektronen → O2."],
       explanation: "bildet Wasser. Bezug: Akzeptor O2. Akzeptor O2 bedeutet: Endakzeptor Atmung.",
       wissen: "bildet Wasser. Bezug: Akzeptor O2. Akzeptor O2 bedeutet: Endakzeptor Atmung.",
       flashFront: "Akzeptor O2",
@@ -3517,8 +3192,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-enzyme-regulation:p1:f",
       prompt: "Was kennzeichnet „Calvin-Zyklus“?",
-      answer: "Der Calvin-Zyklus ist kurz gesagt: CO2-Fixierung, und zwar gilt: im Stroma.",
-      wrong: ["Der Calvin-Zyklus ist kurz gesagt: Nacht-Fixierung.", "Der Calvin-Zyklus ist hier: Elektronen → O2.", "Der Calvin-Zyklus ist hier: Energie aus anorganischen Redox."],
+      answer: "Er ist eine CO2-Fixierung durch im Stroma.", wrong: ["Der Calvin-Zyklus ist der Nacht-Fixierung.", "Er ist eine Elektronen → O2.", "Er ist eine Energie aus Anorganischen Redox."],
       explanation: "im Stroma. Bezug: Calvin-Zyklus. Calvin-Zyklus bedeutet: CO2-Fixierung.",
       wissen: "im Stroma. Bezug: Calvin-Zyklus. Calvin-Zyklus bedeutet: CO2-Fixierung.",
       flashFront: "Calvin-Zyklus",
@@ -3526,8 +3200,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-enzyme-regulation:p2:f",
       prompt: "Was kennzeichnet „CAM“?",
-      answer: "Das CAM ist kurz gesagt: Nacht-Fixierung, und zwar gilt: wassersparend.",
-      wrong: ["Das CAM ist hier: Elektronen → O2.", "Das CAM ist hier: Energie aus anorganischen Redox.", "Das CAM ist kurz gesagt: CO2-fixierendes Enzym."],
+      answer: "Es ist eine Nacht-Fixierung durch Wassersparend.", wrong: ["Es ist eine Elektronen → O2.", "Es ist eine Energie aus Anorganischen Redox.", "Das CAM ist das CO2-fixierendes Enzym."],
       explanation: "Wassersparend. Bezug: CAM. CAM bedeutet: Nacht-Fixierung.",
       wissen: "Wassersparend. Bezug: CAM. CAM bedeutet: Nacht-Fixierung.",
       flashFront: "CAM",
@@ -3535,8 +3208,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-enzyme-regulation:p3:f",
       prompt: "Was kennzeichnet „Atmungskette“?",
-      answer: "Die Atmungskette ist hier: Elektronen → O2, und zwar gilt: protonengradient.",
-      wrong: ["Die Atmungskette ist hier: Energie aus anorganischen Redox.", "Die Atmungskette ist kurz gesagt: CO2-fixierendes Enzym.", "Die Atmungskette ist hier: Aufbau organischer Stoffe."],
+      answer: "Sie ist eine Elektronen → O2 durch Protonengradient.", wrong: ["Sie ist eine Energie aus Anorganischen Redox.", "Die Atmungskette ist die CO2-fixierendes Enzym.", "Sie ist eine Aufbau Organischer Stoffe."],
       explanation: "Protonengradient. Bezug: Atmungskette. Atmungskette bedeutet: Elektronen → O2.",
       wissen: "Protonengradient. Bezug: Atmungskette. Atmungskette bedeutet: Elektronen → O2.",
       flashFront: "Atmungskette",
@@ -3544,8 +3216,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-enzyme-regulation:p4:f",
       prompt: "Was kennzeichnet „Chemosynthese“?",
-      answer: "Energie aus anorganischen Redox, und zwar gilt hier: Z. B. Nitrifizierer.",
-      wrong: ["Die Chemosynthese ist kurz gesagt: CO2-fixierendes Enzym.", "Die Chemosynthese ist hier: Aufbau organischer Stoffe.", "Die Chemosynthese ist kurz gesagt: Gesamtfixierung."],
+      answer: "Sie ist eine Energie aus Anorganischen Redox durch Z. B. Nitrifizierer.", wrong: ["Die Chemosynthese ist die CO2-fixierendes Enzym.", "Sie ist eine Aufbau Organischer Stoffe.", "Die Chemosynthese ist die Gesamtfixierung."],
       explanation: "z. B. Nitrifizierer. Bezug: Chemosynthese. Chemosynthese bedeutet: Energie aus anorganischen Redox.",
       wissen: "z. B. Nitrifizierer. Bezug: Chemosynthese. Chemosynthese bedeutet: Energie aus anorganischen Redox.",
       flashFront: "Chemosynthese",
@@ -3553,8 +3224,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-enzyme-regulation:p5:f",
       prompt: "Was kennzeichnet „RuBisCO“?",
-      answer: "Das RuBisCO ist kurz gesagt: CO2-fixierendes Enzym, und zwar gilt: häufigstes Protein.",
-      wrong: ["Das RuBisCO ist hier: Aufbau organischer Stoffe.", "Das RuBisCO ist kurz gesagt: Gesamtfixierung.", "Das RuBisCO ist kurz gesagt: anaerober Abbau."],
+      answer: "Es ist eine CO2-fixierendes Enzym durch Häufigstes Protein.", wrong: ["Es ist eine Aufbau Organischer Stoffe.", "Das RuBisCO ist das Gesamtfixierung.", "Das RuBisCO ist anaerober Abbau."],
       explanation: "häufigstes Protein. Bezug: RuBisCO. RuBisCO bedeutet: CO2-fixierendes Enzym.",
       wissen: "häufigstes Protein. Bezug: RuBisCO. RuBisCO bedeutet: CO2-fixierendes Enzym.",
       flashFront: "RuBisCO",
@@ -3562,8 +3232,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-enzyme-regulation:p6:f",
       prompt: "Was kennzeichnet „Assimilation“?",
-      answer: "Die Assimilation ist hier: Aufbau organischer Stoffe, und zwar gilt: fotosynthese.",
-      wrong: ["Die Assimilation ist kurz gesagt: Gesamtfixierung.", "Die Assimilation ist kurz gesagt: anaerober Abbau.", "Die Assimilation ist kurz gesagt: gibt e− ab."],
+      answer: "Sie ist eine Aufbau Organischer Stoffe durch Fotosynthese.", wrong: ["Die Assimilation ist die Gesamtfixierung.", "Die Assimilation ist anaerober Abbau.", "Sie gibt e− ab."],
       explanation: "Fotosynthese. Bezug: Assimilation. Assimilation bedeutet: Aufbau organischer Stoffe.",
       wissen: "Fotosynthese. Bezug: Assimilation. Assimilation bedeutet: Aufbau organischer Stoffe.",
       flashFront: "Assimilation",
@@ -3571,8 +3240,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-enzyme-regulation:p7:f",
       prompt: "Was kennzeichnet „Bruttophotosynthese“?",
-      answer: "Die Bruttophotosynthese ist kurz gesagt: Gesamtfixierung, und zwar gilt: vor Atmung.",
-      wrong: ["Die Bruttophotosynthese ist kurz gesagt: anaerober Abbau.", "Die Bruttophotosynthese ist kurz gesagt: gibt e− ab.", "Die Bruttophotosynthese ist kurz gesagt: an Thylakoiden."],
+      answer: "Sie ist eine Gesamtfixierung durch vor Atmung.", wrong: ["Die Bruttophotosynthese ist anaerober Abbau.", "Sie gibt e− ab.", "Die Bruttophotosynthese ist an Thylakoiden."],
       explanation: "vor Atmung. Bezug: Bruttophotosynthese. Bruttophotosynthese bedeutet: Gesamtfixierung.",
       wissen: "vor Atmung. Bezug: Bruttophotosynthese. Bruttophotosynthese bedeutet: Gesamtfixierung.",
       flashFront: "Bruttophotosynthese",
@@ -3580,8 +3248,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-enzyme-regulation:p8:f",
       prompt: "Was kennzeichnet „Fermentation“?",
-      answer: "Die Fermentation ist kurz gesagt: anaerober Abbau, und zwar gilt: produkte z. B. Lactat/Ethanol.",
-      wrong: ["Die Fermentation ist kurz gesagt: gibt e− ab.", "Die Fermentation ist kurz gesagt: an Thylakoiden.", "Die Fermentation ist kurz gesagt: CO2-Pumpe."],
+      answer: "Sie ist anaerober Abbau durch produkte z. B. Lactat/Ethanol.", wrong: ["Sie gibt e− ab.", "Die Fermentation ist an Thylakoiden.", "Die Fermentation ist die CO2-Pumpe."],
       explanation: "Produkte z. B. Lactat/Ethanol. Bezug: Fermentation. Fermentation bedeutet: anaerober Abbau.",
       wissen: "Produkte z. B. Lactat/Ethanol. Bezug: Fermentation. Fermentation bedeutet: anaerober Abbau.",
       flashFront: "Fermentation",
@@ -3589,8 +3256,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-enzyme-regulation:p9:f",
       prompt: "Wozu dient Elektronendonator?",
-      answer: "Er gibt e− ab, und zwar gilt hier: Bei Chemosynthese oft H2S/NH3.",
-      wrong: ["Der Elektronendonator ist kurz gesagt: an Thylakoiden.", "Der Elektronendonator ist kurz gesagt: CO2-Pumpe.", "Der Elektronendonator ist kurz gesagt: Endakzeptor Atmung."],
+      answer: "Er gibt e− ab durch bei Chemosynthese oft H2S/NH3.", wrong: ["Der Elektronendonator ist an Thylakoiden.", "Der Elektronendonator ist der CO2-Pumpe.", "Der Elektronendonator ist der Endakzeptor Atmung."],
       explanation: "bei Chemosynthese oft H2S/NH3. Bezug: Elektronendonator. Elektronendonator bedeutet: gibt e− ab.",
       wissen: "bei Chemosynthese oft H2S/NH3. Bezug: Elektronendonator. Elektronendonator bedeutet: gibt e− ab.",
       flashFront: "Elektronendonator",
@@ -3598,8 +3264,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-enzyme-regulation:p10:f",
       prompt: "Was kennzeichnet „Lichtreaktion“?",
-      answer: "Die Lichtreaktion ist kurz gesagt: an Thylakoiden, und zwar gilt: aTP und NADPH.",
-      wrong: ["Die Lichtreaktion ist kurz gesagt: CO2-Pumpe.", "Die Lichtreaktion ist kurz gesagt: Endakzeptor Atmung.", "Die Lichtreaktion ist kurz gesagt: CO2-Fixierung."],
+      answer: "Sie ist an Thylakoiden durch aTP und NADPH.", wrong: ["Die Lichtreaktion ist die CO2-Pumpe.", "Die Lichtreaktion ist die Endakzeptor Atmung.", "Die Lichtreaktion ist die CO2-Fixierung."],
       explanation: "ATP und NADPH. Bezug: Lichtreaktion. Lichtreaktion bedeutet: an Thylakoiden.",
       wissen: "ATP und NADPH. Bezug: Lichtreaktion. Lichtreaktion bedeutet: an Thylakoiden.",
       flashFront: "Lichtreaktion",
@@ -3607,8 +3272,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb2-enzyme-regulation:p11:f",
       prompt: "Was kennzeichnet „C4-Pflanze“?",
-      answer: "Die C4-Pflanze ist kurz gesagt: CO2-Pumpe, und zwar gilt: heiße trockene Standorte.",
-      wrong: ["Die C4-Pflanze ist kurz gesagt: Endakzeptor Atmung.", "Die C4-Pflanze ist kurz gesagt: CO2-Fixierung.", "Die C4-Pflanze ist kurz gesagt: Nacht-Fixierung."],
+      answer: "Sie ist eine CO2-Pumpe durch Heiße Trockene Standorte.", wrong: ["Die C4-Pflanze ist die Endakzeptor Atmung.", "Die C4-Pflanze ist die CO2-Fixierung.", "Die C4-Pflanze ist die Nacht-Fixierung."],
       explanation: "heiße trockene Standorte. Bezug: C4-Pflanze. C4-Pflanze bedeutet: CO2-Pumpe.",
       wissen: "heiße trockene Standorte. Bezug: C4-Pflanze. C4-Pflanze bedeutet: CO2-Pumpe.",
       flashFront: "C4-Pflanze",
@@ -3637,8 +3301,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-population-wachstum:p0:f",
       prompt: "Was kennzeichnet „Ökosystem“?",
-      answer: "Das Ökosystem ist hier: Biozönose + Biotop, und zwar gilt: offen für Energie.",
-      wrong: ["Das Ökosystem ist kurz gesagt: Lebensraum.", "Das Ökosystem ist kurz gesagt: Trophische Beziehung.", "Das Ökosystem ist kurz gesagt: gerichtete Veränderung."],
+      answer: "Es ist eine Biozönose + Biotop durch Offen für Energie.", wrong: ["Das Ökosystem ist das Lebensraum.", "Das Ökosystem ist das Trophische Beziehung.", "Das Ökosystem ist gerichtete Veränderung."],
       explanation: "offen für Energie. Bezug: Ökosystem. Ökosystem bedeutet: Biozönose + Biotop.",
       wissen: "offen für Energie. Bezug: Ökosystem. Ökosystem bedeutet: Biozönose + Biotop.",
       flashFront: "Ökosystem",
@@ -3646,8 +3309,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-population-wachstum:p1:f",
       prompt: "Was kennzeichnet „Biotop“?",
-      answer: "Das Biotop ist kurz gesagt: Lebensraum, und zwar gilt: abiotische Faktoren.",
-      wrong: ["Das Biotop ist kurz gesagt: Trophische Beziehung.", "Das Biotop ist kurz gesagt: gerichtete Veränderung.", "Das Biotop ist hier: wenige, gepflegte Nachkommen."],
+      answer: "Es ist ein Lebensraum durch Abiotische Faktoren.", wrong: ["Das Biotop ist das Trophische Beziehung.", "Das Biotop ist gerichtete Veränderung.", "Das Biotop ist wenige, gepflegte Nachkommen."],
       explanation: "abiotische Faktoren. Bezug: Biotop. Biotop bedeutet: Lebensraum.",
       wissen: "abiotische Faktoren. Bezug: Biotop. Biotop bedeutet: Lebensraum.",
       flashFront: "Biotop",
@@ -3655,8 +3317,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-population-wachstum:p2:f",
       prompt: "Was kennzeichnet „Räuber-Beute“?",
-      answer: "Die Räuber-Beute ist kurz gesagt: Trophische Beziehung, und zwar gilt: reguliert Dichten.",
-      wrong: ["Die Räuber-Beute ist kurz gesagt: gerichtete Veränderung.", "Die Räuber-Beute ist hier: wenige, gepflegte Nachkommen.", "Die Räuber-Beute ist hier: C zwischen Sphären."],
+      answer: "Sie ist eine Trophische Beziehung, reguliert Dichten.", wrong: ["Die Räuber-Beute ist gerichtete Veränderung.", "Die Räuber-Beute ist wenige, gepflegte Nachkommen.", "Sie ist eine C Zwischen Sphären."],
       explanation: "Reguliert Dichten. Bezug: Räuber-Beute. Räuber-Beute bedeutet: Trophische Beziehung.",
       wissen: "Reguliert Dichten. Bezug: Räuber-Beute. Räuber-Beute bedeutet: Trophische Beziehung.",
       flashFront: "Räuber-Beute",
@@ -3664,8 +3325,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-population-wachstum:p3:f",
       prompt: "Was kennzeichnet „Sukzession“?",
-      answer: "Die Sukzession ist kurz gesagt: gerichtete Veränderung, und zwar gilt: zu Klimax hin.",
-      wrong: ["Die Sukzession ist hier: wenige, gepflegte Nachkommen.", "Die Sukzession ist hier: C zwischen Sphären.", "Die Sukzession ist hier: Vielfalt der Arten/Gene/Ökosysteme."],
+      answer: "Sie ist gerichtete Veränderung durch zu Klimax hin.", wrong: ["Die Sukzession ist wenige, gepflegte Nachkommen.", "Sie ist eine C Zwischen Sphären.", "Sie ist eine Vielfalt der Arten/Gene/Ökosysteme."],
       explanation: "zu Klimax hin. Bezug: Sukzession. Sukzession bedeutet: gerichtete Veränderung.",
       wissen: "zu Klimax hin. Bezug: Sukzession. Sukzession bedeutet: gerichtete Veränderung.",
       flashFront: "Sukzession",
@@ -3673,8 +3333,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-population-wachstum:p4:f",
       prompt: "Was kennzeichnet „K-Stratege“?",
-      answer: "Die K-Stratege ist hier: wenige, gepflegte Nachkommen, und zwar gilt: stabile Habitate.",
-      wrong: ["Die K-Stratege ist hier: C zwischen Sphären.", "Die K-Stratege ist hier: Vielfalt der Arten/Gene/Ökosysteme.", "Die K-Stratege ist kurz gesagt: Lebensraum zerschnitten."],
+      answer: "Sie ist wenige, gepflegte Nachkommen durch stabile Habitate.", wrong: ["Sie ist eine C Zwischen Sphären.", "Sie ist eine Vielfalt der Arten/Gene/Ökosysteme.", "Die K-Stratege ist die Lebensraum Zerschnitten."],
       explanation: "stabile Habitate. Bezug: K-Stratege. K-Stratege bedeutet: wenige, gepflegte Nachkommen.",
       wissen: "stabile Habitate. Bezug: K-Stratege. K-Stratege bedeutet: wenige, gepflegte Nachkommen.",
       flashFront: "K-Stratege",
@@ -3682,8 +3341,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-population-wachstum:p5:f",
       prompt: "Was kennzeichnet „Kohlenstoffkreislauf“?",
-      answer: "Das Kohlenstoffkreislauf ist hier: C zwischen Sphären, und zwar gilt: fotosynthese/Atmung/Verbrennung.",
-      wrong: ["Das Kohlenstoffkreislauf ist hier: Vielfalt der Arten/Gene/Ökosysteme.", "Das Kohlenstoffkreislauf ist kurz gesagt: Lebensraum zerschnitten.", "Das Kohlenstoffkreislauf ist hier: weniger Energie oben."],
+      answer: "Es ist eine C Zwischen Sphären durch Fotosynthese/Atmung/Verbrennung.", wrong: ["Es ist eine Vielfalt der Arten/Gene/Ökosysteme.", "Das Kohlenstoffkreislauf ist das Lebensraum Zerschnitten.", "Das Kohlenstoffkreislauf ist weniger Energie oben."],
       explanation: "Fotosynthese/Atmung/Verbrennung. Bezug: Kohlenstoffkreislauf. Kohlenstoffkreislauf bedeutet: C zwischen Sphären.",
       wissen: "Fotosynthese/Atmung/Verbrennung. Bezug: Kohlenstoffkreislauf. Kohlenstoffkreislauf bedeutet: C zwischen Sphären.",
       flashFront: "Kohlenstoffkreislauf",
@@ -3691,8 +3349,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-population-wachstum:p6:f",
       prompt: "Was kennzeichnet „Biodiversität“?",
-      answer: "Die Biodiversität ist hier: Vielfalt der Arten/Gene/Ökosysteme, und zwar gilt: stabilisierend.",
-      wrong: ["Die Biodiversität ist kurz gesagt: Lebensraum zerschnitten.", "Die Biodiversität ist hier: weniger Energie oben.", "Die Biodiversität ist hier: Wiederherstellung von Habitaten."],
+      answer: "Sie ist eine Vielfalt der Arten/Gene/Ökosysteme durch Stabilisierend.", wrong: ["Die Biodiversität ist die Lebensraum Zerschnitten.", "Die Biodiversität ist weniger Energie oben.", "Sie ist eine Wiederherstellung von Habitaten."],
       explanation: "stabilisierend. Bezug: Biodiversität. Biodiversität bedeutet: Vielfalt der Arten/Gene/Ökosysteme.",
       wissen: "stabilisierend. Bezug: Biodiversität. Biodiversität bedeutet: Vielfalt der Arten/Gene/Ökosysteme.",
       flashFront: "Biodiversität",
@@ -3700,8 +3357,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-population-wachstum:p7:f",
       prompt: "Was kennzeichnet „Fragmentierung“?",
-      answer: "Die Fragmentierung ist kurz gesagt: Lebensraum zerschnitten, und zwar gilt: genfluss sinkt.",
-      wrong: ["Die Fragmentierung ist hier: weniger Energie oben.", "Die Fragmentierung ist hier: Wiederherstellung von Habitaten.", "Die Fragmentierung ist kurz gesagt: Lebensgemeinschaft."],
+      answer: "Sie ist eine Lebensraum Zerschnitten, genfluss sinkt.", wrong: ["Die Fragmentierung ist weniger Energie oben.", "Sie ist eine Wiederherstellung von Habitaten.", "Die Fragmentierung ist die Lebensgemeinschaft."],
       explanation: "Genfluss sinkt. Bezug: Fragmentierung. Fragmentierung bedeutet: Lebensraum zerschnitten.",
       wissen: "Genfluss sinkt. Bezug: Fragmentierung. Fragmentierung bedeutet: Lebensraum zerschnitten.",
       flashFront: "Fragmentierung",
@@ -3709,8 +3365,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-population-wachstum:p8:f",
       prompt: "Was kennzeichnet „Energiepyramide“?",
-      answer: "Die Energiepyramide ist hier: weniger Energie oben, und zwar gilt: 10%-Regel grob.",
-      wrong: ["Die Energiepyramide ist hier: Wiederherstellung von Habitaten.", "Die Energiepyramide ist kurz gesagt: Lebensgemeinschaft.", "Die Energiepyramide ist hier: um begrenzte Ressourcen."],
+      answer: "Sie ist weniger Energie oben durch 10%-Regel grob.", wrong: ["Sie ist eine Wiederherstellung von Habitaten.", "Die Energiepyramide ist die Lebensgemeinschaft.", "Die Energiepyramide ist um begrenzte Ressourcen."],
       explanation: "10%-Regel grob. Bezug: Energiepyramide. Energiepyramide bedeutet: weniger Energie oben.",
       wissen: "10%-Regel grob. Bezug: Energiepyramide. Energiepyramide bedeutet: weniger Energie oben.",
       flashFront: "Energiepyramide",
@@ -3718,8 +3373,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-population-wachstum:p9:f",
       prompt: "Was kennzeichnet „Renaturierung“?",
-      answer: "Die Renaturierung ist hier: Wiederherstellung von Habitaten, und zwar gilt: naturschutzmaßnahme.",
-      wrong: ["Die Renaturierung ist kurz gesagt: Lebensgemeinschaft.", "Die Renaturierung ist hier: um begrenzte Ressourcen.", "Die Renaturierung ist hier: Biozönose + Biotop."],
+      answer: "Sie ist eine Wiederherstellung von Habitaten durch Naturschutzmaßnahme.", wrong: ["Die Renaturierung ist die Lebensgemeinschaft.", "Die Renaturierung ist um begrenzte Ressourcen.", "Sie ist eine Biozönose + Biotop."],
       explanation: "Naturschutzmaßnahme. Bezug: Renaturierung. Renaturierung bedeutet: Wiederherstellung von Habitaten.",
       wissen: "Naturschutzmaßnahme. Bezug: Renaturierung. Renaturierung bedeutet: Wiederherstellung von Habitaten.",
       flashFront: "Renaturierung",
@@ -3727,8 +3381,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-population-wachstum:p10:f",
       prompt: "Was kennzeichnet „Biozönose“?",
-      answer: "Die Biozönose ist kurz gesagt: Lebensgemeinschaft, und zwar gilt: wechselwirkungen.",
-      wrong: ["Die Biozönose ist hier: um begrenzte Ressourcen.", "Die Biozönose ist hier: Biozönose + Biotop.", "Die Biozönose ist kurz gesagt: Lebensraum."],
+      answer: "Sie ist eine Lebensgemeinschaft durch Wechselwirkungen.", wrong: ["Die Biozönose ist um begrenzte Ressourcen.", "Sie ist eine Biozönose + Biotop.", "Die Biozönose ist die Lebensraum."],
       explanation: "Wechselwirkungen. Bezug: Biozönose. Biozönose bedeutet: Lebensgemeinschaft.",
       wissen: "Wechselwirkungen. Bezug: Biozönose. Biozönose bedeutet: Lebensgemeinschaft.",
       flashFront: "Biozönose",
@@ -3736,8 +3389,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-population-wachstum:p11:f",
       prompt: "Was kennzeichnet „Konkurrenz“?",
-      answer: "Die Konkurrenz ist hier: um begrenzte Ressourcen, und zwar gilt: intra-/interspezifisch.",
-      wrong: ["Die Konkurrenz ist hier: Biozönose + Biotop.", "Die Konkurrenz ist kurz gesagt: Lebensraum.", "Die Konkurrenz ist kurz gesagt: Trophische Beziehung."],
+      answer: "Sie ist um begrenzte Ressourcen durch intra-/interspezifisch.", wrong: ["Sie ist eine Biozönose + Biotop.", "Die Konkurrenz ist die Lebensraum.", "Die Konkurrenz ist die Trophische Beziehung."],
       explanation: "intra-/interspezifisch. Bezug: Konkurrenz. Konkurrenz bedeutet: um begrenzte Ressourcen.",
       wissen: "intra-/interspezifisch. Bezug: Konkurrenz. Konkurrenz bedeutet: um begrenzte Ressourcen.",
       flashFront: "Konkurrenz",
@@ -3766,8 +3418,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-konkurrenz-experiment:p0:f",
       prompt: "Was kennzeichnet „Population“?",
-      answer: "Die Population ist hier: Individuen einer Art, und zwar gilt: am Ort.",
-      wrong: ["Die Population ist kurz gesagt: ökologische Rolle.", "Die Population ist hier: Zusammenleben zum Vorteil.", "Die Population ist hier: max. nachhaltige Dichte."],
+      answer: "Sie ist eine Individuen einer Art durch am Ort.", wrong: ["Die Population ist ökologische Rolle.", "Sie ist eine Zusammenleben zum Vorteil.", "Die Population ist max. nachhaltige Dichte."],
       explanation: "am Ort. Bezug: Population. Population bedeutet: Individuen einer Art.",
       wissen: "am Ort. Bezug: Population. Population bedeutet: Individuen einer Art.",
       flashFront: "Population",
@@ -3775,8 +3426,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-konkurrenz-experiment:p1:f",
       prompt: "Was kennzeichnet „Nische“?",
-      answer: "Die Nische ist kurz gesagt: ökologische Rolle, und zwar gilt: ansprüche + Beziehungen.",
-      wrong: ["Die Nische ist hier: Zusammenleben zum Vorteil.", "Die Nische ist hier: max. nachhaltige Dichte.", "Die Nische ist kurz gesagt: zeigt Umweltzustand."],
+      answer: "Sie ist ökologische Rolle durch ansprüche + Beziehungen.", wrong: ["Sie ist eine Zusammenleben zum Vorteil.", "Die Nische ist max. nachhaltige Dichte.", "Sie zeigt Umweltzustand."],
       explanation: "Ansprüche + Beziehungen. Bezug: Nische. Nische bedeutet: ökologische Rolle.",
       wissen: "Ansprüche + Beziehungen. Bezug: Nische. Nische bedeutet: ökologische Rolle.",
       flashFront: "Nische",
@@ -3784,8 +3434,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-konkurrenz-experiment:p2:f",
       prompt: "Was kennzeichnet „Symbiose“?",
-      answer: "Die Symbiose ist hier: Zusammenleben zum Vorteil, und zwar gilt: mutualismus.",
-      wrong: ["Die Symbiose ist hier: max. nachhaltige Dichte.", "Die Symbiose ist kurz gesagt: zeigt Umweltzustand.", "Die Symbiose ist hier: N2 → Ammonium."],
+      answer: "Sie ist eine Zusammenleben zum Vorteil durch Mutualismus.", wrong: ["Die Symbiose ist max. nachhaltige Dichte.", "Sie zeigt Umweltzustand.", "Sie ist ein N2 → Ammonium."],
       explanation: "Mutualismus. Bezug: Symbiose. Symbiose bedeutet: Zusammenleben zum Vorteil.",
       wissen: "Mutualismus. Bezug: Symbiose. Symbiose bedeutet: Zusammenleben zum Vorteil.",
       flashFront: "Symbiose",
@@ -3793,8 +3442,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-konkurrenz-experiment:p3:f",
       prompt: "Was kennzeichnet „Tragfähigkeit“?",
-      answer: "Die Tragfähigkeit ist hier: max. nachhaltige Dichte, und zwar gilt: k-Wert.",
-      wrong: ["Die Tragfähigkeit ist kurz gesagt: zeigt Umweltzustand.", "Die Tragfähigkeit ist hier: N2 → Ammonium.", "Die Tragfähigkeit ist hier: Nutzung ohne Zukunftsraub."],
+      answer: "Sie ist max. nachhaltige Dichte durch k-Wert.", wrong: ["Sie zeigt Umweltzustand.", "Sie ist ein N2 → Ammonium.", "Sie ist eine Nutzung ohne Zukunftsraub."],
       explanation: "K-Wert. Bezug: Tragfähigkeit. Tragfähigkeit bedeutet: max. nachhaltige Dichte.",
       wissen: "K-Wert. Bezug: Tragfähigkeit. Tragfähigkeit bedeutet: max. nachhaltige Dichte.",
       flashFront: "Tragfähigkeit",
@@ -3802,8 +3450,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-konkurrenz-experiment:p4:f",
       prompt: "Wozu dient Bioindikator?",
-      answer: "Er zeigt Umweltzustand, und zwar gilt hier: Z. B. Flechten.",
-      wrong: ["Der Bioindikator ist hier: N2 → Ammonium.", "Der Bioindikator ist hier: Nutzung ohne Zukunftsraub.", "Der Bioindikator ist kurz gesagt: überproportionaler Einfluss."],
+      answer: "Er zeigt Umweltzustand durch z. B. Flechten.", wrong: ["Er ist ein N2 → Ammonium.", "Er ist eine Nutzung ohne Zukunftsraub.", "Der Bioindikator ist überproportionaler Einfluss."],
       explanation: "z. B. Flechten. Bezug: Bioindikator. Bioindikator bedeutet: zeigt Umweltzustand.",
       wissen: "z. B. Flechten. Bezug: Bioindikator. Bioindikator bedeutet: zeigt Umweltzustand.",
       flashFront: "Bioindikator",
@@ -3811,8 +3458,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-konkurrenz-experiment:p5:f",
       prompt: "Was kennzeichnet „Stickstofffixierung“?",
-      answer: "Die Stickstofffixierung ist hier: N2 → Ammonium, und zwar gilt: durch Bakterien.",
-      wrong: ["Die Stickstofffixierung ist hier: Nutzung ohne Zukunftsraub.", "Die Stickstofffixierung ist kurz gesagt: überproportionaler Einfluss.", "Die Stickstofffixierung ist hier: Optimum und Grenzen."],
+      answer: "Sie ist ein N2 → Ammonium durch durch Bakterien.", wrong: ["Sie ist eine Nutzung ohne Zukunftsraub.", "Die Stickstofffixierung ist überproportionaler Einfluss.", "Sie ist eine Optimum und Grenzen."],
       explanation: "durch Bakterien. Bezug: Stickstofffixierung. Stickstofffixierung bedeutet: N2 → Ammonium.",
       wissen: "durch Bakterien. Bezug: Stickstofffixierung. Stickstofffixierung bedeutet: N2 → Ammonium.",
       flashFront: "Stickstofffixierung",
@@ -3820,8 +3466,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-konkurrenz-experiment:p6:f",
       prompt: "Was kennzeichnet „Nachhaltigkeit“?",
-      answer: "Die Nachhaltigkeit ist hier: Nutzung ohne Zukunftsraub, und zwar gilt: drei Säulen.",
-      wrong: ["Die Nachhaltigkeit ist kurz gesagt: überproportionaler Einfluss.", "Die Nachhaltigkeit ist hier: Optimum und Grenzen.", "Die Nachhaltigkeit ist hier: Biozönose + Biotop."],
+      answer: "Sie ist eine Nutzung ohne Zukunftsraub durch Drei Säulen.", wrong: ["Die Nachhaltigkeit ist überproportionaler Einfluss.", "Sie ist eine Optimum und Grenzen.", "Sie ist eine Biozönose + Biotop."],
       explanation: "drei Säulen. Bezug: Nachhaltigkeit. Nachhaltigkeit bedeutet: Nutzung ohne Zukunftsraub.",
       wissen: "drei Säulen. Bezug: Nachhaltigkeit. Nachhaltigkeit bedeutet: Nutzung ohne Zukunftsraub.",
       flashFront: "Nachhaltigkeit",
@@ -3829,8 +3474,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-konkurrenz-experiment:p7:f",
       prompt: "Was kennzeichnet „Schlüsselart“?",
-      answer: "Das Schlüsselart ist kurz gesagt: überproportionaler Einfluss, und zwar gilt: schutzpriorität.",
-      wrong: ["Das Schlüsselart ist hier: Optimum und Grenzen.", "Das Schlüsselart ist hier: Biozönose + Biotop.", "Das Schlüsselart ist kurz gesagt: Lebensraum."],
+      answer: "Es ist überproportionaler Einfluss durch schutzpriorität.", wrong: ["Es ist eine Optimum und Grenzen.", "Es ist eine Biozönose + Biotop.", "Das Schlüsselart ist das Lebensraum."],
       explanation: "Schutzpriorität. Bezug: Schlüsselart. Schlüsselart bedeutet: überproportionaler Einfluss.",
       wissen: "Schutzpriorität. Bezug: Schlüsselart. Schlüsselart bedeutet: überproportionaler Einfluss.",
       flashFront: "Schlüsselart",
@@ -3838,8 +3482,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-konkurrenz-experiment:p8:f",
       prompt: "Was kennzeichnet „Toleranzkurve“?",
-      answer: "Die Toleranzkurve ist hier: Optimum und Grenzen, und zwar gilt: abiotische Faktoren.",
-      wrong: ["Die Toleranzkurve ist hier: Biozönose + Biotop.", "Die Toleranzkurve ist kurz gesagt: Lebensraum.", "Die Toleranzkurve ist kurz gesagt: Trophische Beziehung."],
+      answer: "Sie ist eine Optimum und Grenzen durch Abiotische Faktoren.", wrong: ["Sie ist eine Biozönose + Biotop.", "Die Toleranzkurve ist die Lebensraum.", "Die Toleranzkurve ist die Trophische Beziehung."],
       explanation: "abiotische Faktoren. Bezug: Toleranzkurve. Toleranzkurve bedeutet: Optimum und Grenzen.",
       wissen: "abiotische Faktoren. Bezug: Toleranzkurve. Toleranzkurve bedeutet: Optimum und Grenzen.",
       flashFront: "Toleranzkurve",
@@ -3847,8 +3490,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-konkurrenz-experiment:p9:f",
       prompt: "Was kennzeichnet „Ökosystem“?",
-      answer: "Das Ökosystem ist hier: Biozönose + Biotop, und zwar gilt: offen für Energie.",
-      wrong: ["Das Ökosystem ist kurz gesagt: Lebensraum.", "Das Ökosystem ist kurz gesagt: Trophische Beziehung.", "Das Ökosystem ist hier: Individuen einer Art."],
+      answer: "Es ist eine Biozönose + Biotop durch Offen für Energie.", wrong: ["Das Ökosystem ist das Lebensraum.", "Das Ökosystem ist das Trophische Beziehung.", "Es ist eine Individuen einer Art."],
       explanation: "offen für Energie. Bezug: Ökosystem. Ökosystem bedeutet: Biozönose + Biotop.",
       wissen: "offen für Energie. Bezug: Ökosystem. Ökosystem bedeutet: Biozönose + Biotop.",
       flashFront: "Ökosystem",
@@ -3856,8 +3498,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-konkurrenz-experiment:p10:f",
       prompt: "Was kennzeichnet „Biotop“?",
-      answer: "Das Biotop ist kurz gesagt: Lebensraum, und zwar gilt: abiotische Faktoren.",
-      wrong: ["Das Biotop ist kurz gesagt: Trophische Beziehung.", "Das Biotop ist hier: Individuen einer Art.", "Das Biotop ist kurz gesagt: ökologische Rolle."],
+      answer: "Es ist ein Lebensraum durch Abiotische Faktoren.", wrong: ["Das Biotop ist das Trophische Beziehung.", "Es ist eine Individuen einer Art.", "Das Biotop ist ökologische Rolle."],
       explanation: "abiotische Faktoren. Bezug: Biotop. Biotop bedeutet: Lebensraum.",
       wissen: "abiotische Faktoren. Bezug: Biotop. Biotop bedeutet: Lebensraum.",
       flashFront: "Biotop",
@@ -3865,8 +3506,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-konkurrenz-experiment:p11:f",
       prompt: "Was kennzeichnet „Räuber-Beute“?",
-      answer: "Die Räuber-Beute ist kurz gesagt: Trophische Beziehung, und zwar gilt: reguliert Dichten.",
-      wrong: ["Die Räuber-Beute ist hier: Individuen einer Art.", "Die Räuber-Beute ist kurz gesagt: ökologische Rolle.", "Die Räuber-Beute ist hier: Zusammenleben zum Vorteil."],
+      answer: "Sie ist eine Trophische Beziehung, reguliert Dichten.", wrong: ["Sie ist eine Individuen einer Art.", "Die Räuber-Beute ist ökologische Rolle.", "Sie ist eine Zusammenleben zum Vorteil."],
       explanation: "Reguliert Dichten. Bezug: Räuber-Beute. Räuber-Beute bedeutet: Trophische Beziehung.",
       wissen: "Reguliert Dichten. Bezug: Räuber-Beute. Räuber-Beute bedeutet: Trophische Beziehung.",
       flashFront: "Räuber-Beute",
@@ -3895,8 +3535,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-stoffkreislaufe:p0:f",
       prompt: "Was kennzeichnet „Biozönose“?",
-      answer: "Die Biozönose ist kurz gesagt: Lebensgemeinschaft, und zwar gilt: wechselwirkungen.",
-      wrong: ["Die Biozönose ist hier: um begrenzte Ressourcen.", "Die Biozönose ist hier: Nutzen auf Kosten des Wirts.", "Die Biozönose ist kurz gesagt: viele Nachkommen."],
+      answer: "Sie ist eine Lebensgemeinschaft durch Wechselwirkungen.", wrong: ["Die Biozönose ist um begrenzte Ressourcen.", "Sie ist eine Nutzen auf Kosten des Wirts.", "Die Biozönose ist viele Nachkommen."],
       explanation: "Wechselwirkungen. Bezug: Biozönose. Biozönose bedeutet: Lebensgemeinschaft.",
       wissen: "Wechselwirkungen. Bezug: Biozönose. Biozönose bedeutet: Lebensgemeinschaft.",
       flashFront: "Biozönose",
@@ -3904,8 +3543,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-stoffkreislaufe:p1:f",
       prompt: "Was kennzeichnet „Konkurrenz“?",
-      answer: "Die Konkurrenz ist hier: um begrenzte Ressourcen, und zwar gilt: intra-/interspezifisch.",
-      wrong: ["Die Konkurrenz ist hier: Nutzen auf Kosten des Wirts.", "Die Konkurrenz ist kurz gesagt: viele Nachkommen.", "Die Konkurrenz ist hier: Rückstrahlung von IR."],
+      answer: "Sie ist um begrenzte Ressourcen durch intra-/interspezifisch.", wrong: ["Sie ist eine Nutzen auf Kosten des Wirts.", "Die Konkurrenz ist viele Nachkommen.", "Sie ist eine Rückstrahlung von IR."],
       explanation: "intra-/interspezifisch. Bezug: Konkurrenz. Konkurrenz bedeutet: um begrenzte Ressourcen.",
       wissen: "intra-/interspezifisch. Bezug: Konkurrenz. Konkurrenz bedeutet: um begrenzte Ressourcen.",
       flashFront: "Konkurrenz",
@@ -3913,8 +3551,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-stoffkreislaufe:p2:f",
       prompt: "Was kennzeichnet „Parasitismus“?",
-      answer: "Der Parasitismus ist hier: Nutzen auf Kosten des Wirts, und zwar gilt: nicht sofort tödlich.",
-      wrong: ["Der Parasitismus ist kurz gesagt: viele Nachkommen.", "Der Parasitismus ist hier: Rückstrahlung von IR.", "Der Parasitismus ist kurz gesagt: Nährstoffüberladung."],
+      answer: "Er ist eine Nutzen auf Kosten des Wirts durch Nicht Sofort Tödlich.", wrong: ["Der Parasitismus ist viele Nachkommen.", "Er ist eine Rückstrahlung von IR.", "Der Parasitismus ist der Nährstoffüberladung."],
       explanation: "nicht sofort tödlich. Bezug: Parasitismus. Parasitismus bedeutet: Nutzen auf Kosten des Wirts.",
       wissen: "nicht sofort tödlich. Bezug: Parasitismus. Parasitismus bedeutet: Nutzen auf Kosten des Wirts.",
       flashFront: "Parasitismus",
@@ -3922,8 +3559,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-stoffkreislaufe:p3:f",
       prompt: "Was kennzeichnet „r-Stratege“?",
-      answer: "Die r-Stratege ist kurz gesagt: viele Nachkommen, und zwar gilt: instabile Habitate.",
-      wrong: ["Die r-Stratege ist hier: Rückstrahlung von IR.", "Die r-Stratege ist kurz gesagt: Nährstoffüberladung.", "Die r-Stratege ist kurz gesagt: eingebracht, problematisch."],
+      answer: "Sie ist viele Nachkommen durch instabile Habitate.", wrong: ["Sie ist eine Rückstrahlung von IR.", "Die r-Stratege ist die Nährstoffüberladung.", "Die r-Stratege ist eingebracht, problematisch."],
       explanation: "instabile Habitate. Bezug: r-Stratege. r-Stratege bedeutet: viele Nachkommen.",
       wissen: "instabile Habitate. Bezug: r-Stratege. r-Stratege bedeutet: viele Nachkommen.",
       flashFront: "r-Stratege",
@@ -3931,8 +3567,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-stoffkreislaufe:p4:f",
       prompt: "Was kennzeichnet „Treibhauseffekt“?",
-      answer: "Das Treibhauseffekt ist hier: Rückstrahlung von IR, und zwar gilt: natürlich + anthropogen.",
-      wrong: ["Das Treibhauseffekt ist kurz gesagt: Nährstoffüberladung.", "Das Treibhauseffekt ist kurz gesagt: eingebracht, problematisch.", "Das Treibhauseffekt ist hier: Position in Nahrungskette."],
+      answer: "Es ist eine Rückstrahlung von IR durch Natürlich + Anthropogen.", wrong: ["Das Treibhauseffekt ist das Nährstoffüberladung.", "Das Treibhauseffekt ist eingebracht, problematisch.", "Es ist eine Position in Nahrungskette."],
       explanation: "natürlich + anthropogen. Bezug: Treibhauseffekt. Treibhauseffekt bedeutet: Rückstrahlung von IR.",
       wissen: "natürlich + anthropogen. Bezug: Treibhauseffekt. Treibhauseffekt bedeutet: Rückstrahlung von IR.",
       flashFront: "Treibhauseffekt",
@@ -3940,8 +3575,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-stoffkreislaufe:p5:f",
       prompt: "Was kennzeichnet „Eutrophierung“?",
-      answer: "Die Eutrophierung ist kurz gesagt: Nährstoffüberladung, und zwar gilt: gewässer kippen.",
-      wrong: ["Die Eutrophierung ist kurz gesagt: eingebracht, problematisch.", "Die Eutrophierung ist hier: Position in Nahrungskette.", "Die Eutrophierung ist kurz gesagt: Räuber-Beute-Modell."],
+      answer: "Sie ist eine Nährstoffüberladung durch Gewässer Kippen.", wrong: ["Die Eutrophierung ist eingebracht, problematisch.", "Sie ist eine Position in Nahrungskette.", "Die Eutrophierung ist die Räuber-Beute-Modell."],
       explanation: "Gewässer kippen. Bezug: Eutrophierung. Eutrophierung bedeutet: Nährstoffüberladung.",
       wissen: "Gewässer kippen. Bezug: Eutrophierung. Eutrophierung bedeutet: Nährstoffüberladung.",
       flashFront: "Eutrophierung",
@@ -3949,8 +3583,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-stoffkreislaufe:p6:f",
       prompt: "Was kennzeichnet „Invasive Art“?",
-      answer: "Das Invasive Art ist hier: eingebracht, problematisch, und zwar gilt: verdrängt heimische.",
-      wrong: ["Das Invasive Art ist hier: Position in Nahrungskette.", "Das Invasive Art ist kurz gesagt: Räuber-Beute-Modell.", "Das Invasive Art ist hier: Individuen einer Art."],
+      answer: "Es ist eingebracht, problematisch durch verdrängt heimische.", wrong: ["Es ist eine Position in Nahrungskette.", "Das Invasive Art ist das Räuber-Beute-Modell.", "Es ist eine Individuen einer Art."],
       explanation: "verdrängt heimische. Bezug: Invasive Art. Invasive Art bedeutet: eingebracht, problematisch.",
       wissen: "verdrängt heimische. Bezug: Invasive Art. Invasive Art bedeutet: eingebracht, problematisch.",
       flashFront: "Invasive Art",
@@ -3958,8 +3591,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-stoffkreislaufe:p7:f",
       prompt: "Was kennzeichnet „Trophiestufe“?",
-      answer: "Die Trophiestufe ist hier: Position in Nahrungskette, und zwar gilt: produzent → Konsument.",
-      wrong: ["Die Trophiestufe ist kurz gesagt: Räuber-Beute-Modell.", "Die Trophiestufe ist hier: Individuen einer Art.", "Die Trophiestufe ist kurz gesagt: ökologische Rolle."],
+      answer: "Sie ist eine Position in Nahrungskette durch Produzent → Konsument.", wrong: ["Die Trophiestufe ist die Räuber-Beute-Modell.", "Sie ist eine Individuen einer Art.", "Die Trophiestufe ist ökologische Rolle."],
       explanation: "Produzent → Konsument. Bezug: Trophiestufe. Trophiestufe bedeutet: Position in Nahrungskette.",
       wissen: "Produzent → Konsument. Bezug: Trophiestufe. Trophiestufe bedeutet: Position in Nahrungskette.",
       flashFront: "Trophiestufe",
@@ -3967,8 +3599,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-stoffkreislaufe:p8:f",
       prompt: "Was kennzeichnet „Lotka-Volterra“?",
-      answer: "Das Lotka-Volterra ist kurz gesagt: Räuber-Beute-Modell, und zwar gilt: schwingungen idealisiert.",
-      wrong: ["Das Lotka-Volterra ist hier: Individuen einer Art.", "Das Lotka-Volterra ist kurz gesagt: ökologische Rolle.", "Das Lotka-Volterra ist hier: Zusammenleben zum Vorteil."],
+      answer: "Es ist ein Räuber-Beute-Modell durch Schwingungen Idealisiert.", wrong: ["Es ist eine Individuen einer Art.", "Das Lotka-Volterra ist ökologische Rolle.", "Es ist eine Zusammenleben zum Vorteil."],
       explanation: "Schwingungen idealisiert. Bezug: Lotka-Volterra. Lotka-Volterra bedeutet: Räuber-Beute-Modell.",
       wissen: "Schwingungen idealisiert. Bezug: Lotka-Volterra. Lotka-Volterra bedeutet: Räuber-Beute-Modell.",
       flashFront: "Lotka-Volterra",
@@ -3976,8 +3607,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-stoffkreislaufe:p9:f",
       prompt: "Was kennzeichnet „Population“?",
-      answer: "Die Population ist hier: Individuen einer Art, und zwar gilt: am Ort.",
-      wrong: ["Die Population ist kurz gesagt: ökologische Rolle.", "Die Population ist hier: Zusammenleben zum Vorteil.", "Die Population ist kurz gesagt: Lebensgemeinschaft."],
+      answer: "Sie ist eine Individuen einer Art durch am Ort.", wrong: ["Die Population ist ökologische Rolle.", "Sie ist eine Zusammenleben zum Vorteil.", "Die Population ist die Lebensgemeinschaft."],
       explanation: "am Ort. Bezug: Population. Population bedeutet: Individuen einer Art.",
       wissen: "am Ort. Bezug: Population. Population bedeutet: Individuen einer Art.",
       flashFront: "Population",
@@ -3985,8 +3615,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-stoffkreislaufe:p10:f",
       prompt: "Was kennzeichnet „Nische“?",
-      answer: "Die Nische ist kurz gesagt: ökologische Rolle, und zwar gilt: ansprüche + Beziehungen.",
-      wrong: ["Die Nische ist hier: Zusammenleben zum Vorteil.", "Die Nische ist kurz gesagt: Lebensgemeinschaft.", "Die Nische ist hier: um begrenzte Ressourcen."],
+      answer: "Sie ist ökologische Rolle durch ansprüche + Beziehungen.", wrong: ["Sie ist eine Zusammenleben zum Vorteil.", "Die Nische ist die Lebensgemeinschaft.", "Die Nische ist um begrenzte Ressourcen."],
       explanation: "Ansprüche + Beziehungen. Bezug: Nische. Nische bedeutet: ökologische Rolle.",
       wissen: "Ansprüche + Beziehungen. Bezug: Nische. Nische bedeutet: ökologische Rolle.",
       flashFront: "Nische",
@@ -3994,8 +3623,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-stoffkreislaufe:p11:f",
       prompt: "Was kennzeichnet „Symbiose“?",
-      answer: "Die Symbiose ist hier: Zusammenleben zum Vorteil, und zwar gilt: mutualismus.",
-      wrong: ["Die Symbiose ist kurz gesagt: Lebensgemeinschaft.", "Die Symbiose ist hier: um begrenzte Ressourcen.", "Die Symbiose ist hier: Nutzen auf Kosten des Wirts."],
+      answer: "Sie ist eine Zusammenleben zum Vorteil durch Mutualismus.", wrong: ["Die Symbiose ist die Lebensgemeinschaft.", "Die Symbiose ist um begrenzte Ressourcen.", "Sie ist eine Nutzen auf Kosten des Wirts."],
       explanation: "Mutualismus. Bezug: Symbiose. Symbiose bedeutet: Zusammenleben zum Vorteil.",
       wissen: "Mutualismus. Bezug: Symbiose. Symbiose bedeutet: Zusammenleben zum Vorteil.",
       flashFront: "Symbiose",
@@ -4024,8 +3652,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-energiefluss-oeko:p0:f",
       prompt: "Was kennzeichnet „Biotop“?",
-      answer: "Das Biotop ist kurz gesagt: Lebensraum, und zwar gilt: abiotische Faktoren.",
-      wrong: ["Das Biotop ist kurz gesagt: Trophische Beziehung.", "Das Biotop ist kurz gesagt: gerichtete Veränderung.", "Das Biotop ist hier: wenige, gepflegte Nachkommen."],
+      answer: "Es ist ein Lebensraum durch Abiotische Faktoren.", wrong: ["Das Biotop ist das Trophische Beziehung.", "Das Biotop ist gerichtete Veränderung.", "Das Biotop ist wenige, gepflegte Nachkommen."],
       explanation: "abiotische Faktoren. Bezug: Biotop. Biotop bedeutet: Lebensraum.",
       wissen: "abiotische Faktoren. Bezug: Biotop. Biotop bedeutet: Lebensraum.",
       flashFront: "Biotop",
@@ -4033,8 +3660,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-energiefluss-oeko:p1:f",
       prompt: "Was kennzeichnet „Räuber-Beute“?",
-      answer: "Die Räuber-Beute ist kurz gesagt: Trophische Beziehung, und zwar gilt: reguliert Dichten.",
-      wrong: ["Die Räuber-Beute ist kurz gesagt: gerichtete Veränderung.", "Die Räuber-Beute ist hier: wenige, gepflegte Nachkommen.", "Die Räuber-Beute ist hier: C zwischen Sphären."],
+      answer: "Sie ist eine Trophische Beziehung, reguliert Dichten.", wrong: ["Die Räuber-Beute ist gerichtete Veränderung.", "Die Räuber-Beute ist wenige, gepflegte Nachkommen.", "Sie ist eine C Zwischen Sphären."],
       explanation: "Reguliert Dichten. Bezug: Räuber-Beute. Räuber-Beute bedeutet: Trophische Beziehung.",
       wissen: "Reguliert Dichten. Bezug: Räuber-Beute. Räuber-Beute bedeutet: Trophische Beziehung.",
       flashFront: "Räuber-Beute",
@@ -4042,8 +3668,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-energiefluss-oeko:p2:f",
       prompt: "Was kennzeichnet „Sukzession“?",
-      answer: "Die Sukzession ist kurz gesagt: gerichtete Veränderung, und zwar gilt: zu Klimax hin.",
-      wrong: ["Die Sukzession ist hier: wenige, gepflegte Nachkommen.", "Die Sukzession ist hier: C zwischen Sphären.", "Die Sukzession ist hier: Vielfalt der Arten/Gene/Ökosysteme."],
+      answer: "Sie ist gerichtete Veränderung durch zu Klimax hin.", wrong: ["Die Sukzession ist wenige, gepflegte Nachkommen.", "Sie ist eine C Zwischen Sphären.", "Sie ist eine Vielfalt der Arten/Gene/Ökosysteme."],
       explanation: "zu Klimax hin. Bezug: Sukzession. Sukzession bedeutet: gerichtete Veränderung.",
       wissen: "zu Klimax hin. Bezug: Sukzession. Sukzession bedeutet: gerichtete Veränderung.",
       flashFront: "Sukzession",
@@ -4051,8 +3676,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-energiefluss-oeko:p3:f",
       prompt: "Was kennzeichnet „K-Stratege“?",
-      answer: "Die K-Stratege ist hier: wenige, gepflegte Nachkommen, und zwar gilt: stabile Habitate.",
-      wrong: ["Die K-Stratege ist hier: C zwischen Sphären.", "Die K-Stratege ist hier: Vielfalt der Arten/Gene/Ökosysteme.", "Die K-Stratege ist kurz gesagt: Lebensraum zerschnitten."],
+      answer: "Sie ist wenige, gepflegte Nachkommen durch stabile Habitate.", wrong: ["Sie ist eine C Zwischen Sphären.", "Sie ist eine Vielfalt der Arten/Gene/Ökosysteme.", "Die K-Stratege ist die Lebensraum Zerschnitten."],
       explanation: "stabile Habitate. Bezug: K-Stratege. K-Stratege bedeutet: wenige, gepflegte Nachkommen.",
       wissen: "stabile Habitate. Bezug: K-Stratege. K-Stratege bedeutet: wenige, gepflegte Nachkommen.",
       flashFront: "K-Stratege",
@@ -4060,8 +3684,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-energiefluss-oeko:p4:f",
       prompt: "Was kennzeichnet „Kohlenstoffkreislauf“?",
-      answer: "Das Kohlenstoffkreislauf ist hier: C zwischen Sphären, und zwar gilt: fotosynthese/Atmung/Verbrennung.",
-      wrong: ["Das Kohlenstoffkreislauf ist hier: Vielfalt der Arten/Gene/Ökosysteme.", "Das Kohlenstoffkreislauf ist kurz gesagt: Lebensraum zerschnitten.", "Das Kohlenstoffkreislauf ist hier: weniger Energie oben."],
+      answer: "Es ist eine C Zwischen Sphären durch Fotosynthese/Atmung/Verbrennung.", wrong: ["Es ist eine Vielfalt der Arten/Gene/Ökosysteme.", "Das Kohlenstoffkreislauf ist das Lebensraum Zerschnitten.", "Das Kohlenstoffkreislauf ist weniger Energie oben."],
       explanation: "Fotosynthese/Atmung/Verbrennung. Bezug: Kohlenstoffkreislauf. Kohlenstoffkreislauf bedeutet: C zwischen Sphären.",
       wissen: "Fotosynthese/Atmung/Verbrennung. Bezug: Kohlenstoffkreislauf. Kohlenstoffkreislauf bedeutet: C zwischen Sphären.",
       flashFront: "Kohlenstoffkreislauf",
@@ -4069,8 +3692,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-energiefluss-oeko:p5:f",
       prompt: "Was kennzeichnet „Biodiversität“?",
-      answer: "Die Biodiversität ist hier: Vielfalt der Arten/Gene/Ökosysteme, und zwar gilt: stabilisierend.",
-      wrong: ["Die Biodiversität ist kurz gesagt: Lebensraum zerschnitten.", "Die Biodiversität ist hier: weniger Energie oben.", "Die Biodiversität ist hier: Wiederherstellung von Habitaten."],
+      answer: "Sie ist eine Vielfalt der Arten/Gene/Ökosysteme durch Stabilisierend.", wrong: ["Die Biodiversität ist die Lebensraum Zerschnitten.", "Die Biodiversität ist weniger Energie oben.", "Sie ist eine Wiederherstellung von Habitaten."],
       explanation: "stabilisierend. Bezug: Biodiversität. Biodiversität bedeutet: Vielfalt der Arten/Gene/Ökosysteme.",
       wissen: "stabilisierend. Bezug: Biodiversität. Biodiversität bedeutet: Vielfalt der Arten/Gene/Ökosysteme.",
       flashFront: "Biodiversität",
@@ -4078,8 +3700,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-energiefluss-oeko:p6:f",
       prompt: "Was kennzeichnet „Fragmentierung“?",
-      answer: "Die Fragmentierung ist kurz gesagt: Lebensraum zerschnitten, und zwar gilt: genfluss sinkt.",
-      wrong: ["Die Fragmentierung ist hier: weniger Energie oben.", "Die Fragmentierung ist hier: Wiederherstellung von Habitaten.", "Die Fragmentierung ist kurz gesagt: Lebensgemeinschaft."],
+      answer: "Sie ist eine Lebensraum Zerschnitten, genfluss sinkt.", wrong: ["Die Fragmentierung ist weniger Energie oben.", "Sie ist eine Wiederherstellung von Habitaten.", "Die Fragmentierung ist die Lebensgemeinschaft."],
       explanation: "Genfluss sinkt. Bezug: Fragmentierung. Fragmentierung bedeutet: Lebensraum zerschnitten.",
       wissen: "Genfluss sinkt. Bezug: Fragmentierung. Fragmentierung bedeutet: Lebensraum zerschnitten.",
       flashFront: "Fragmentierung",
@@ -4087,8 +3708,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-energiefluss-oeko:p7:f",
       prompt: "Was kennzeichnet „Energiepyramide“?",
-      answer: "Die Energiepyramide ist hier: weniger Energie oben, und zwar gilt: 10%-Regel grob.",
-      wrong: ["Die Energiepyramide ist hier: Wiederherstellung von Habitaten.", "Die Energiepyramide ist kurz gesagt: Lebensgemeinschaft.", "Die Energiepyramide ist hier: um begrenzte Ressourcen."],
+      answer: "Sie ist weniger Energie oben durch 10%-Regel grob.", wrong: ["Sie ist eine Wiederherstellung von Habitaten.", "Die Energiepyramide ist die Lebensgemeinschaft.", "Die Energiepyramide ist um begrenzte Ressourcen."],
       explanation: "10%-Regel grob. Bezug: Energiepyramide. Energiepyramide bedeutet: weniger Energie oben.",
       wissen: "10%-Regel grob. Bezug: Energiepyramide. Energiepyramide bedeutet: weniger Energie oben.",
       flashFront: "Energiepyramide",
@@ -4096,8 +3716,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-energiefluss-oeko:p8:f",
       prompt: "Was kennzeichnet „Renaturierung“?",
-      answer: "Die Renaturierung ist hier: Wiederherstellung von Habitaten, und zwar gilt: naturschutzmaßnahme.",
-      wrong: ["Die Renaturierung ist kurz gesagt: Lebensgemeinschaft.", "Die Renaturierung ist hier: um begrenzte Ressourcen.", "Die Renaturierung ist hier: Nutzen auf Kosten des Wirts."],
+      answer: "Sie ist eine Wiederherstellung von Habitaten durch Naturschutzmaßnahme.", wrong: ["Die Renaturierung ist die Lebensgemeinschaft.", "Die Renaturierung ist um begrenzte Ressourcen.", "Sie ist eine Nutzen auf Kosten des Wirts."],
       explanation: "Naturschutzmaßnahme. Bezug: Renaturierung. Renaturierung bedeutet: Wiederherstellung von Habitaten.",
       wissen: "Naturschutzmaßnahme. Bezug: Renaturierung. Renaturierung bedeutet: Wiederherstellung von Habitaten.",
       flashFront: "Renaturierung",
@@ -4105,8 +3724,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-energiefluss-oeko:p9:f",
       prompt: "Was kennzeichnet „Biozönose“?",
-      answer: "Die Biozönose ist kurz gesagt: Lebensgemeinschaft, und zwar gilt: wechselwirkungen.",
-      wrong: ["Die Biozönose ist hier: um begrenzte Ressourcen.", "Die Biozönose ist hier: Nutzen auf Kosten des Wirts.", "Die Biozönose ist kurz gesagt: Lebensraum."],
+      answer: "Sie ist eine Lebensgemeinschaft durch Wechselwirkungen.", wrong: ["Die Biozönose ist um begrenzte Ressourcen.", "Sie ist eine Nutzen auf Kosten des Wirts.", "Die Biozönose ist die Lebensraum."],
       explanation: "Wechselwirkungen. Bezug: Biozönose. Biozönose bedeutet: Lebensgemeinschaft.",
       wissen: "Wechselwirkungen. Bezug: Biozönose. Biozönose bedeutet: Lebensgemeinschaft.",
       flashFront: "Biozönose",
@@ -4114,8 +3732,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-energiefluss-oeko:p10:f",
       prompt: "Was kennzeichnet „Konkurrenz“?",
-      answer: "Die Konkurrenz ist hier: um begrenzte Ressourcen, und zwar gilt: intra-/interspezifisch.",
-      wrong: ["Die Konkurrenz ist hier: Nutzen auf Kosten des Wirts.", "Die Konkurrenz ist kurz gesagt: Lebensraum.", "Die Konkurrenz ist kurz gesagt: Trophische Beziehung."],
+      answer: "Sie ist um begrenzte Ressourcen durch intra-/interspezifisch.", wrong: ["Sie ist eine Nutzen auf Kosten des Wirts.", "Die Konkurrenz ist die Lebensraum.", "Die Konkurrenz ist die Trophische Beziehung."],
       explanation: "intra-/interspezifisch. Bezug: Konkurrenz. Konkurrenz bedeutet: um begrenzte Ressourcen.",
       wissen: "intra-/interspezifisch. Bezug: Konkurrenz. Konkurrenz bedeutet: um begrenzte Ressourcen.",
       flashFront: "Konkurrenz",
@@ -4123,8 +3740,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-energiefluss-oeko:p11:f",
       prompt: "Was kennzeichnet „Parasitismus“?",
-      answer: "Der Parasitismus ist hier: Nutzen auf Kosten des Wirts, und zwar gilt: nicht sofort tödlich.",
-      wrong: ["Der Parasitismus ist kurz gesagt: Lebensraum.", "Der Parasitismus ist kurz gesagt: Trophische Beziehung.", "Der Parasitismus ist kurz gesagt: gerichtete Veränderung."],
+      answer: "Er ist eine Nutzen auf Kosten des Wirts durch Nicht Sofort Tödlich.", wrong: ["Der Parasitismus ist der Lebensraum.", "Der Parasitismus ist der Trophische Beziehung.", "Der Parasitismus ist gerichtete Veränderung."],
       explanation: "nicht sofort tödlich. Bezug: Parasitismus. Parasitismus bedeutet: Nutzen auf Kosten des Wirts.",
       wissen: "nicht sofort tödlich. Bezug: Parasitismus. Parasitismus bedeutet: Nutzen auf Kosten des Wirts.",
       flashFront: "Parasitismus",
@@ -4153,8 +3769,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-nachhaltige-nutzung:p0:f",
       prompt: "Was kennzeichnet „Nische“?",
-      answer: "Die Nische ist kurz gesagt: ökologische Rolle, und zwar gilt: ansprüche + Beziehungen.",
-      wrong: ["Die Nische ist hier: Zusammenleben zum Vorteil.", "Die Nische ist hier: max. nachhaltige Dichte.", "Die Nische ist kurz gesagt: zeigt Umweltzustand."],
+      answer: "Sie ist ökologische Rolle durch ansprüche + Beziehungen.", wrong: ["Sie ist eine Zusammenleben zum Vorteil.", "Die Nische ist max. nachhaltige Dichte.", "Sie zeigt Umweltzustand."],
       explanation: "Ansprüche + Beziehungen. Bezug: Nische. Nische bedeutet: ökologische Rolle.",
       wissen: "Ansprüche + Beziehungen. Bezug: Nische. Nische bedeutet: ökologische Rolle.",
       flashFront: "Nische",
@@ -4162,8 +3777,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-nachhaltige-nutzung:p1:f",
       prompt: "Was kennzeichnet „Symbiose“?",
-      answer: "Die Symbiose ist hier: Zusammenleben zum Vorteil, und zwar gilt: mutualismus.",
-      wrong: ["Die Symbiose ist hier: max. nachhaltige Dichte.", "Die Symbiose ist kurz gesagt: zeigt Umweltzustand.", "Die Symbiose ist hier: N2 → Ammonium."],
+      answer: "Sie ist eine Zusammenleben zum Vorteil durch Mutualismus.", wrong: ["Die Symbiose ist max. nachhaltige Dichte.", "Sie zeigt Umweltzustand.", "Sie ist ein N2 → Ammonium."],
       explanation: "Mutualismus. Bezug: Symbiose. Symbiose bedeutet: Zusammenleben zum Vorteil.",
       wissen: "Mutualismus. Bezug: Symbiose. Symbiose bedeutet: Zusammenleben zum Vorteil.",
       flashFront: "Symbiose",
@@ -4171,8 +3785,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-nachhaltige-nutzung:p2:f",
       prompt: "Was kennzeichnet „Tragfähigkeit“?",
-      answer: "Die Tragfähigkeit ist hier: max. nachhaltige Dichte, und zwar gilt: k-Wert.",
-      wrong: ["Die Tragfähigkeit ist kurz gesagt: zeigt Umweltzustand.", "Die Tragfähigkeit ist hier: N2 → Ammonium.", "Die Tragfähigkeit ist hier: Nutzung ohne Zukunftsraub."],
+      answer: "Sie ist max. nachhaltige Dichte durch k-Wert.", wrong: ["Sie zeigt Umweltzustand.", "Sie ist ein N2 → Ammonium.", "Sie ist eine Nutzung ohne Zukunftsraub."],
       explanation: "K-Wert. Bezug: Tragfähigkeit. Tragfähigkeit bedeutet: max. nachhaltige Dichte.",
       wissen: "K-Wert. Bezug: Tragfähigkeit. Tragfähigkeit bedeutet: max. nachhaltige Dichte.",
       flashFront: "Tragfähigkeit",
@@ -4180,8 +3793,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-nachhaltige-nutzung:p3:f",
       prompt: "Wozu dient Bioindikator?",
-      answer: "Er zeigt Umweltzustand, und zwar gilt hier: Z. B. Flechten.",
-      wrong: ["Der Bioindikator ist hier: N2 → Ammonium.", "Der Bioindikator ist hier: Nutzung ohne Zukunftsraub.", "Der Bioindikator ist kurz gesagt: überproportionaler Einfluss."],
+      answer: "Er zeigt Umweltzustand durch z. B. Flechten.", wrong: ["Er ist ein N2 → Ammonium.", "Er ist eine Nutzung ohne Zukunftsraub.", "Der Bioindikator ist überproportionaler Einfluss."],
       explanation: "z. B. Flechten. Bezug: Bioindikator. Bioindikator bedeutet: zeigt Umweltzustand.",
       wissen: "z. B. Flechten. Bezug: Bioindikator. Bioindikator bedeutet: zeigt Umweltzustand.",
       flashFront: "Bioindikator",
@@ -4189,8 +3801,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-nachhaltige-nutzung:p4:f",
       prompt: "Was kennzeichnet „Stickstofffixierung“?",
-      answer: "Die Stickstofffixierung ist hier: N2 → Ammonium, und zwar gilt: durch Bakterien.",
-      wrong: ["Die Stickstofffixierung ist hier: Nutzung ohne Zukunftsraub.", "Die Stickstofffixierung ist kurz gesagt: überproportionaler Einfluss.", "Die Stickstofffixierung ist hier: Optimum und Grenzen."],
+      answer: "Sie ist ein N2 → Ammonium durch durch Bakterien.", wrong: ["Sie ist eine Nutzung ohne Zukunftsraub.", "Die Stickstofffixierung ist überproportionaler Einfluss.", "Sie ist eine Optimum und Grenzen."],
       explanation: "durch Bakterien. Bezug: Stickstofffixierung. Stickstofffixierung bedeutet: N2 → Ammonium.",
       wissen: "durch Bakterien. Bezug: Stickstofffixierung. Stickstofffixierung bedeutet: N2 → Ammonium.",
       flashFront: "Stickstofffixierung",
@@ -4198,8 +3809,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-nachhaltige-nutzung:p5:f",
       prompt: "Was kennzeichnet „Nachhaltigkeit“?",
-      answer: "Die Nachhaltigkeit ist hier: Nutzung ohne Zukunftsraub, und zwar gilt: drei Säulen.",
-      wrong: ["Die Nachhaltigkeit ist kurz gesagt: überproportionaler Einfluss.", "Die Nachhaltigkeit ist hier: Optimum und Grenzen.", "Die Nachhaltigkeit ist hier: Biozönose + Biotop."],
+      answer: "Sie ist eine Nutzung ohne Zukunftsraub durch Drei Säulen.", wrong: ["Die Nachhaltigkeit ist überproportionaler Einfluss.", "Sie ist eine Optimum und Grenzen.", "Sie ist eine Biozönose + Biotop."],
       explanation: "drei Säulen. Bezug: Nachhaltigkeit. Nachhaltigkeit bedeutet: Nutzung ohne Zukunftsraub.",
       wissen: "drei Säulen. Bezug: Nachhaltigkeit. Nachhaltigkeit bedeutet: Nutzung ohne Zukunftsraub.",
       flashFront: "Nachhaltigkeit",
@@ -4207,8 +3817,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-nachhaltige-nutzung:p6:f",
       prompt: "Was kennzeichnet „Schlüsselart“?",
-      answer: "Das Schlüsselart ist kurz gesagt: überproportionaler Einfluss, und zwar gilt: schutzpriorität.",
-      wrong: ["Das Schlüsselart ist hier: Optimum und Grenzen.", "Das Schlüsselart ist hier: Biozönose + Biotop.", "Das Schlüsselart ist kurz gesagt: Lebensraum."],
+      answer: "Es ist überproportionaler Einfluss durch schutzpriorität.", wrong: ["Es ist eine Optimum und Grenzen.", "Es ist eine Biozönose + Biotop.", "Das Schlüsselart ist das Lebensraum."],
       explanation: "Schutzpriorität. Bezug: Schlüsselart. Schlüsselart bedeutet: überproportionaler Einfluss.",
       wissen: "Schutzpriorität. Bezug: Schlüsselart. Schlüsselart bedeutet: überproportionaler Einfluss.",
       flashFront: "Schlüsselart",
@@ -4216,8 +3825,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-nachhaltige-nutzung:p7:f",
       prompt: "Was kennzeichnet „Toleranzkurve“?",
-      answer: "Die Toleranzkurve ist hier: Optimum und Grenzen, und zwar gilt: abiotische Faktoren.",
-      wrong: ["Die Toleranzkurve ist hier: Biozönose + Biotop.", "Die Toleranzkurve ist kurz gesagt: Lebensraum.", "Die Toleranzkurve ist kurz gesagt: Trophische Beziehung."],
+      answer: "Sie ist eine Optimum und Grenzen durch Abiotische Faktoren.", wrong: ["Sie ist eine Biozönose + Biotop.", "Die Toleranzkurve ist die Lebensraum.", "Die Toleranzkurve ist die Trophische Beziehung."],
       explanation: "abiotische Faktoren. Bezug: Toleranzkurve. Toleranzkurve bedeutet: Optimum und Grenzen.",
       wissen: "abiotische Faktoren. Bezug: Toleranzkurve. Toleranzkurve bedeutet: Optimum und Grenzen.",
       flashFront: "Toleranzkurve",
@@ -4225,8 +3833,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-nachhaltige-nutzung:p8:f",
       prompt: "Was kennzeichnet „Ökosystem“?",
-      answer: "Das Ökosystem ist hier: Biozönose + Biotop, und zwar gilt: offen für Energie.",
-      wrong: ["Das Ökosystem ist kurz gesagt: Lebensraum.", "Das Ökosystem ist kurz gesagt: Trophische Beziehung.", "Das Ökosystem ist kurz gesagt: gerichtete Veränderung."],
+      answer: "Es ist eine Biozönose + Biotop durch Offen für Energie.", wrong: ["Das Ökosystem ist das Lebensraum.", "Das Ökosystem ist das Trophische Beziehung.", "Das Ökosystem ist gerichtete Veränderung."],
       explanation: "offen für Energie. Bezug: Ökosystem. Ökosystem bedeutet: Biozönose + Biotop.",
       wissen: "offen für Energie. Bezug: Ökosystem. Ökosystem bedeutet: Biozönose + Biotop.",
       flashFront: "Ökosystem",
@@ -4234,8 +3841,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-nachhaltige-nutzung:p9:f",
       prompt: "Was kennzeichnet „Biotop“?",
-      answer: "Das Biotop ist kurz gesagt: Lebensraum, und zwar gilt: abiotische Faktoren.",
-      wrong: ["Das Biotop ist kurz gesagt: Trophische Beziehung.", "Das Biotop ist kurz gesagt: gerichtete Veränderung.", "Das Biotop ist kurz gesagt: ökologische Rolle."],
+      answer: "Es ist ein Lebensraum durch Abiotische Faktoren.", wrong: ["Das Biotop ist das Trophische Beziehung.", "Das Biotop ist gerichtete Veränderung.", "Das Biotop ist ökologische Rolle."],
       explanation: "abiotische Faktoren. Bezug: Biotop. Biotop bedeutet: Lebensraum.",
       wissen: "abiotische Faktoren. Bezug: Biotop. Biotop bedeutet: Lebensraum.",
       flashFront: "Biotop",
@@ -4243,8 +3849,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-nachhaltige-nutzung:p10:f",
       prompt: "Was kennzeichnet „Räuber-Beute“?",
-      answer: "Die Räuber-Beute ist kurz gesagt: Trophische Beziehung, und zwar gilt: reguliert Dichten.",
-      wrong: ["Die Räuber-Beute ist kurz gesagt: gerichtete Veränderung.", "Die Räuber-Beute ist kurz gesagt: ökologische Rolle.", "Die Räuber-Beute ist hier: Zusammenleben zum Vorteil."],
+      answer: "Sie ist eine Trophische Beziehung, reguliert Dichten.", wrong: ["Die Räuber-Beute ist gerichtete Veränderung.", "Die Räuber-Beute ist ökologische Rolle.", "Sie ist eine Zusammenleben zum Vorteil."],
       explanation: "Reguliert Dichten. Bezug: Räuber-Beute. Räuber-Beute bedeutet: Trophische Beziehung.",
       wissen: "Reguliert Dichten. Bezug: Räuber-Beute. Räuber-Beute bedeutet: Trophische Beziehung.",
       flashFront: "Räuber-Beute",
@@ -4252,8 +3857,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-nachhaltige-nutzung:p11:f",
       prompt: "Was kennzeichnet „Sukzession“?",
-      answer: "Die Sukzession ist kurz gesagt: gerichtete Veränderung, und zwar gilt: zu Klimax hin.",
-      wrong: ["Die Sukzession ist kurz gesagt: ökologische Rolle.", "Die Sukzession ist hier: Zusammenleben zum Vorteil.", "Die Sukzession ist hier: max. nachhaltige Dichte."],
+      answer: "Sie ist gerichtete Veränderung durch zu Klimax hin.", wrong: ["Die Sukzession ist ökologische Rolle.", "Sie ist eine Zusammenleben zum Vorteil.", "Die Sukzession ist max. nachhaltige Dichte."],
       explanation: "zu Klimax hin. Bezug: Sukzession. Sukzession bedeutet: gerichtete Veränderung.",
       wissen: "zu Klimax hin. Bezug: Sukzession. Sukzession bedeutet: gerichtete Veränderung.",
       flashFront: "Sukzession",
@@ -4282,8 +3886,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-klimawandel:p0:f",
       prompt: "Was kennzeichnet „Konkurrenz“?",
-      answer: "Die Konkurrenz ist hier: um begrenzte Ressourcen, und zwar gilt: intra-/interspezifisch.",
-      wrong: ["Die Konkurrenz ist hier: Nutzen auf Kosten des Wirts.", "Die Konkurrenz ist kurz gesagt: viele Nachkommen.", "Die Konkurrenz ist hier: Rückstrahlung von IR."],
+      answer: "Sie ist um begrenzte Ressourcen durch intra-/interspezifisch.", wrong: ["Sie ist eine Nutzen auf Kosten des Wirts.", "Die Konkurrenz ist viele Nachkommen.", "Sie ist eine Rückstrahlung von IR."],
       explanation: "intra-/interspezifisch. Bezug: Konkurrenz. Konkurrenz bedeutet: um begrenzte Ressourcen.",
       wissen: "intra-/interspezifisch. Bezug: Konkurrenz. Konkurrenz bedeutet: um begrenzte Ressourcen.",
       flashFront: "Konkurrenz",
@@ -4291,8 +3894,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-klimawandel:p1:f",
       prompt: "Was kennzeichnet „Parasitismus“?",
-      answer: "Der Parasitismus ist hier: Nutzen auf Kosten des Wirts, und zwar gilt: nicht sofort tödlich.",
-      wrong: ["Der Parasitismus ist kurz gesagt: viele Nachkommen.", "Der Parasitismus ist hier: Rückstrahlung von IR.", "Der Parasitismus ist kurz gesagt: Nährstoffüberladung."],
+      answer: "Er ist eine Nutzen auf Kosten des Wirts durch Nicht Sofort Tödlich.", wrong: ["Der Parasitismus ist viele Nachkommen.", "Er ist eine Rückstrahlung von IR.", "Der Parasitismus ist der Nährstoffüberladung."],
       explanation: "nicht sofort tödlich. Bezug: Parasitismus. Parasitismus bedeutet: Nutzen auf Kosten des Wirts.",
       wissen: "nicht sofort tödlich. Bezug: Parasitismus. Parasitismus bedeutet: Nutzen auf Kosten des Wirts.",
       flashFront: "Parasitismus",
@@ -4300,8 +3902,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-klimawandel:p2:f",
       prompt: "Was kennzeichnet „r-Stratege“?",
-      answer: "Die r-Stratege ist kurz gesagt: viele Nachkommen, und zwar gilt: instabile Habitate.",
-      wrong: ["Die r-Stratege ist hier: Rückstrahlung von IR.", "Die r-Stratege ist kurz gesagt: Nährstoffüberladung.", "Die r-Stratege ist kurz gesagt: eingebracht, problematisch."],
+      answer: "Sie ist viele Nachkommen durch instabile Habitate.", wrong: ["Sie ist eine Rückstrahlung von IR.", "Die r-Stratege ist die Nährstoffüberladung.", "Die r-Stratege ist eingebracht, problematisch."],
       explanation: "instabile Habitate. Bezug: r-Stratege. r-Stratege bedeutet: viele Nachkommen.",
       wissen: "instabile Habitate. Bezug: r-Stratege. r-Stratege bedeutet: viele Nachkommen.",
       flashFront: "r-Stratege",
@@ -4309,8 +3910,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-klimawandel:p3:f",
       prompt: "Was kennzeichnet „Treibhauseffekt“?",
-      answer: "Das Treibhauseffekt ist hier: Rückstrahlung von IR, und zwar gilt: natürlich + anthropogen.",
-      wrong: ["Das Treibhauseffekt ist kurz gesagt: Nährstoffüberladung.", "Das Treibhauseffekt ist kurz gesagt: eingebracht, problematisch.", "Das Treibhauseffekt ist hier: Position in Nahrungskette."],
+      answer: "Es ist eine Rückstrahlung von IR durch Natürlich + Anthropogen.", wrong: ["Das Treibhauseffekt ist das Nährstoffüberladung.", "Das Treibhauseffekt ist eingebracht, problematisch.", "Es ist eine Position in Nahrungskette."],
       explanation: "natürlich + anthropogen. Bezug: Treibhauseffekt. Treibhauseffekt bedeutet: Rückstrahlung von IR.",
       wissen: "natürlich + anthropogen. Bezug: Treibhauseffekt. Treibhauseffekt bedeutet: Rückstrahlung von IR.",
       flashFront: "Treibhauseffekt",
@@ -4318,8 +3918,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-klimawandel:p4:f",
       prompt: "Was kennzeichnet „Eutrophierung“?",
-      answer: "Die Eutrophierung ist kurz gesagt: Nährstoffüberladung, und zwar gilt: gewässer kippen.",
-      wrong: ["Die Eutrophierung ist kurz gesagt: eingebracht, problematisch.", "Die Eutrophierung ist hier: Position in Nahrungskette.", "Die Eutrophierung ist kurz gesagt: Räuber-Beute-Modell."],
+      answer: "Sie ist eine Nährstoffüberladung durch Gewässer Kippen.", wrong: ["Die Eutrophierung ist eingebracht, problematisch.", "Sie ist eine Position in Nahrungskette.", "Die Eutrophierung ist die Räuber-Beute-Modell."],
       explanation: "Gewässer kippen. Bezug: Eutrophierung. Eutrophierung bedeutet: Nährstoffüberladung.",
       wissen: "Gewässer kippen. Bezug: Eutrophierung. Eutrophierung bedeutet: Nährstoffüberladung.",
       flashFront: "Eutrophierung",
@@ -4327,8 +3926,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-klimawandel:p5:f",
       prompt: "Was kennzeichnet „Invasive Art“?",
-      answer: "Das Invasive Art ist hier: eingebracht, problematisch, und zwar gilt: verdrängt heimische.",
-      wrong: ["Das Invasive Art ist hier: Position in Nahrungskette.", "Das Invasive Art ist kurz gesagt: Räuber-Beute-Modell.", "Das Invasive Art ist hier: Individuen einer Art."],
+      answer: "Es ist eingebracht, problematisch durch verdrängt heimische.", wrong: ["Es ist eine Position in Nahrungskette.", "Das Invasive Art ist das Räuber-Beute-Modell.", "Es ist eine Individuen einer Art."],
       explanation: "verdrängt heimische. Bezug: Invasive Art. Invasive Art bedeutet: eingebracht, problematisch.",
       wissen: "verdrängt heimische. Bezug: Invasive Art. Invasive Art bedeutet: eingebracht, problematisch.",
       flashFront: "Invasive Art",
@@ -4336,8 +3934,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-klimawandel:p6:f",
       prompt: "Was kennzeichnet „Trophiestufe“?",
-      answer: "Die Trophiestufe ist hier: Position in Nahrungskette, und zwar gilt: produzent → Konsument.",
-      wrong: ["Die Trophiestufe ist kurz gesagt: Räuber-Beute-Modell.", "Die Trophiestufe ist hier: Individuen einer Art.", "Die Trophiestufe ist kurz gesagt: ökologische Rolle."],
+      answer: "Sie ist eine Position in Nahrungskette durch Produzent → Konsument.", wrong: ["Die Trophiestufe ist die Räuber-Beute-Modell.", "Sie ist eine Individuen einer Art.", "Die Trophiestufe ist ökologische Rolle."],
       explanation: "Produzent → Konsument. Bezug: Trophiestufe. Trophiestufe bedeutet: Position in Nahrungskette.",
       wissen: "Produzent → Konsument. Bezug: Trophiestufe. Trophiestufe bedeutet: Position in Nahrungskette.",
       flashFront: "Trophiestufe",
@@ -4345,8 +3942,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-klimawandel:p7:f",
       prompt: "Was kennzeichnet „Lotka-Volterra“?",
-      answer: "Das Lotka-Volterra ist kurz gesagt: Räuber-Beute-Modell, und zwar gilt: schwingungen idealisiert.",
-      wrong: ["Das Lotka-Volterra ist hier: Individuen einer Art.", "Das Lotka-Volterra ist kurz gesagt: ökologische Rolle.", "Das Lotka-Volterra ist hier: Zusammenleben zum Vorteil."],
+      answer: "Es ist ein Räuber-Beute-Modell durch Schwingungen Idealisiert.", wrong: ["Es ist eine Individuen einer Art.", "Das Lotka-Volterra ist ökologische Rolle.", "Es ist eine Zusammenleben zum Vorteil."],
       explanation: "Schwingungen idealisiert. Bezug: Lotka-Volterra. Lotka-Volterra bedeutet: Räuber-Beute-Modell.",
       wissen: "Schwingungen idealisiert. Bezug: Lotka-Volterra. Lotka-Volterra bedeutet: Räuber-Beute-Modell.",
       flashFront: "Lotka-Volterra",
@@ -4354,8 +3950,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-klimawandel:p8:f",
       prompt: "Was kennzeichnet „Population“?",
-      answer: "Die Population ist hier: Individuen einer Art, und zwar gilt: am Ort.",
-      wrong: ["Die Population ist kurz gesagt: ökologische Rolle.", "Die Population ist hier: Zusammenleben zum Vorteil.", "Die Population ist hier: max. nachhaltige Dichte."],
+      answer: "Sie ist eine Individuen einer Art durch am Ort.", wrong: ["Die Population ist ökologische Rolle.", "Sie ist eine Zusammenleben zum Vorteil.", "Die Population ist max. nachhaltige Dichte."],
       explanation: "am Ort. Bezug: Population. Population bedeutet: Individuen einer Art.",
       wissen: "am Ort. Bezug: Population. Population bedeutet: Individuen einer Art.",
       flashFront: "Population",
@@ -4363,8 +3958,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-klimawandel:p9:f",
       prompt: "Was kennzeichnet „Nische“?",
-      answer: "Die Nische ist kurz gesagt: ökologische Rolle, und zwar gilt: ansprüche + Beziehungen.",
-      wrong: ["Die Nische ist hier: Zusammenleben zum Vorteil.", "Die Nische ist hier: max. nachhaltige Dichte.", "Die Nische ist hier: um begrenzte Ressourcen."],
+      answer: "Sie ist ökologische Rolle durch ansprüche + Beziehungen.", wrong: ["Sie ist eine Zusammenleben zum Vorteil.", "Die Nische ist max. nachhaltige Dichte.", "Die Nische ist um begrenzte Ressourcen."],
       explanation: "Ansprüche + Beziehungen. Bezug: Nische. Nische bedeutet: ökologische Rolle.",
       wissen: "Ansprüche + Beziehungen. Bezug: Nische. Nische bedeutet: ökologische Rolle.",
       flashFront: "Nische",
@@ -4372,8 +3966,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-klimawandel:p10:f",
       prompt: "Was kennzeichnet „Symbiose“?",
-      answer: "Die Symbiose ist hier: Zusammenleben zum Vorteil, und zwar gilt: mutualismus.",
-      wrong: ["Die Symbiose ist hier: max. nachhaltige Dichte.", "Die Symbiose ist hier: um begrenzte Ressourcen.", "Die Symbiose ist hier: Nutzen auf Kosten des Wirts."],
+      answer: "Sie ist eine Zusammenleben zum Vorteil durch Mutualismus.", wrong: ["Die Symbiose ist max. nachhaltige Dichte.", "Die Symbiose ist um begrenzte Ressourcen.", "Sie ist eine Nutzen auf Kosten des Wirts."],
       explanation: "Mutualismus. Bezug: Symbiose. Symbiose bedeutet: Zusammenleben zum Vorteil.",
       wissen: "Mutualismus. Bezug: Symbiose. Symbiose bedeutet: Zusammenleben zum Vorteil.",
       flashFront: "Symbiose",
@@ -4381,8 +3974,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-klimawandel:p11:f",
       prompt: "Was kennzeichnet „Tragfähigkeit“?",
-      answer: "Die Tragfähigkeit ist hier: max. nachhaltige Dichte, und zwar gilt: k-Wert.",
-      wrong: ["Die Tragfähigkeit ist hier: um begrenzte Ressourcen.", "Die Tragfähigkeit ist hier: Nutzen auf Kosten des Wirts.", "Die Tragfähigkeit ist kurz gesagt: viele Nachkommen."],
+      answer: "Sie ist max. nachhaltige Dichte durch k-Wert.", wrong: ["Die Tragfähigkeit ist um begrenzte Ressourcen.", "Sie ist eine Nutzen auf Kosten des Wirts.", "Die Tragfähigkeit ist viele Nachkommen."],
       explanation: "K-Wert. Bezug: Tragfähigkeit. Tragfähigkeit bedeutet: max. nachhaltige Dichte.",
       wissen: "K-Wert. Bezug: Tragfähigkeit. Tragfähigkeit bedeutet: max. nachhaltige Dichte.",
       flashFront: "Tragfähigkeit",
@@ -4411,8 +4003,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-naturschutzstrategien:p0:f",
       prompt: "Was kennzeichnet „Räuber-Beute“?",
-      answer: "Die Räuber-Beute ist kurz gesagt: Trophische Beziehung, und zwar gilt: reguliert Dichten.",
-      wrong: ["Die Räuber-Beute ist kurz gesagt: gerichtete Veränderung.", "Die Räuber-Beute ist hier: wenige, gepflegte Nachkommen.", "Die Räuber-Beute ist hier: C zwischen Sphären."],
+      answer: "Sie ist eine Trophische Beziehung, reguliert Dichten.", wrong: ["Die Räuber-Beute ist gerichtete Veränderung.", "Die Räuber-Beute ist wenige, gepflegte Nachkommen.", "Sie ist eine C Zwischen Sphären."],
       explanation: "Reguliert Dichten. Bezug: Räuber-Beute. Räuber-Beute bedeutet: Trophische Beziehung.",
       wissen: "Reguliert Dichten. Bezug: Räuber-Beute. Räuber-Beute bedeutet: Trophische Beziehung.",
       flashFront: "Räuber-Beute",
@@ -4420,8 +4011,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-naturschutzstrategien:p1:f",
       prompt: "Was kennzeichnet „Sukzession“?",
-      answer: "Die Sukzession ist kurz gesagt: gerichtete Veränderung, und zwar gilt: zu Klimax hin.",
-      wrong: ["Die Sukzession ist hier: wenige, gepflegte Nachkommen.", "Die Sukzession ist hier: C zwischen Sphären.", "Die Sukzession ist hier: Vielfalt der Arten/Gene/Ökosysteme."],
+      answer: "Sie ist gerichtete Veränderung durch zu Klimax hin.", wrong: ["Die Sukzession ist wenige, gepflegte Nachkommen.", "Sie ist eine C Zwischen Sphären.", "Sie ist eine Vielfalt der Arten/Gene/Ökosysteme."],
       explanation: "zu Klimax hin. Bezug: Sukzession. Sukzession bedeutet: gerichtete Veränderung.",
       wissen: "zu Klimax hin. Bezug: Sukzession. Sukzession bedeutet: gerichtete Veränderung.",
       flashFront: "Sukzession",
@@ -4429,8 +4019,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-naturschutzstrategien:p2:f",
       prompt: "Was kennzeichnet „K-Stratege“?",
-      answer: "Die K-Stratege ist hier: wenige, gepflegte Nachkommen, und zwar gilt: stabile Habitate.",
-      wrong: ["Die K-Stratege ist hier: C zwischen Sphären.", "Die K-Stratege ist hier: Vielfalt der Arten/Gene/Ökosysteme.", "Die K-Stratege ist kurz gesagt: Lebensraum zerschnitten."],
+      answer: "Sie ist wenige, gepflegte Nachkommen durch stabile Habitate.", wrong: ["Sie ist eine C Zwischen Sphären.", "Sie ist eine Vielfalt der Arten/Gene/Ökosysteme.", "Die K-Stratege ist die Lebensraum Zerschnitten."],
       explanation: "stabile Habitate. Bezug: K-Stratege. K-Stratege bedeutet: wenige, gepflegte Nachkommen.",
       wissen: "stabile Habitate. Bezug: K-Stratege. K-Stratege bedeutet: wenige, gepflegte Nachkommen.",
       flashFront: "K-Stratege",
@@ -4438,8 +4027,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-naturschutzstrategien:p3:f",
       prompt: "Was kennzeichnet „Kohlenstoffkreislauf“?",
-      answer: "Das Kohlenstoffkreislauf ist hier: C zwischen Sphären, und zwar gilt: fotosynthese/Atmung/Verbrennung.",
-      wrong: ["Das Kohlenstoffkreislauf ist hier: Vielfalt der Arten/Gene/Ökosysteme.", "Das Kohlenstoffkreislauf ist kurz gesagt: Lebensraum zerschnitten.", "Das Kohlenstoffkreislauf ist hier: weniger Energie oben."],
+      answer: "Es ist eine C Zwischen Sphären durch Fotosynthese/Atmung/Verbrennung.", wrong: ["Es ist eine Vielfalt der Arten/Gene/Ökosysteme.", "Das Kohlenstoffkreislauf ist das Lebensraum Zerschnitten.", "Das Kohlenstoffkreislauf ist weniger Energie oben."],
       explanation: "Fotosynthese/Atmung/Verbrennung. Bezug: Kohlenstoffkreislauf. Kohlenstoffkreislauf bedeutet: C zwischen Sphären.",
       wissen: "Fotosynthese/Atmung/Verbrennung. Bezug: Kohlenstoffkreislauf. Kohlenstoffkreislauf bedeutet: C zwischen Sphären.",
       flashFront: "Kohlenstoffkreislauf",
@@ -4447,8 +4035,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-naturschutzstrategien:p4:f",
       prompt: "Was kennzeichnet „Biodiversität“?",
-      answer: "Die Biodiversität ist hier: Vielfalt der Arten/Gene/Ökosysteme, und zwar gilt: stabilisierend.",
-      wrong: ["Die Biodiversität ist kurz gesagt: Lebensraum zerschnitten.", "Die Biodiversität ist hier: weniger Energie oben.", "Die Biodiversität ist hier: Wiederherstellung von Habitaten."],
+      answer: "Sie ist eine Vielfalt der Arten/Gene/Ökosysteme durch Stabilisierend.", wrong: ["Die Biodiversität ist die Lebensraum Zerschnitten.", "Die Biodiversität ist weniger Energie oben.", "Sie ist eine Wiederherstellung von Habitaten."],
       explanation: "stabilisierend. Bezug: Biodiversität. Biodiversität bedeutet: Vielfalt der Arten/Gene/Ökosysteme.",
       wissen: "stabilisierend. Bezug: Biodiversität. Biodiversität bedeutet: Vielfalt der Arten/Gene/Ökosysteme.",
       flashFront: "Biodiversität",
@@ -4456,8 +4043,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-naturschutzstrategien:p5:f",
       prompt: "Was kennzeichnet „Fragmentierung“?",
-      answer: "Die Fragmentierung ist kurz gesagt: Lebensraum zerschnitten, und zwar gilt: genfluss sinkt.",
-      wrong: ["Die Fragmentierung ist hier: weniger Energie oben.", "Die Fragmentierung ist hier: Wiederherstellung von Habitaten.", "Die Fragmentierung ist kurz gesagt: Lebensgemeinschaft."],
+      answer: "Sie ist eine Lebensraum Zerschnitten, genfluss sinkt.", wrong: ["Die Fragmentierung ist weniger Energie oben.", "Sie ist eine Wiederherstellung von Habitaten.", "Die Fragmentierung ist die Lebensgemeinschaft."],
       explanation: "Genfluss sinkt. Bezug: Fragmentierung. Fragmentierung bedeutet: Lebensraum zerschnitten.",
       wissen: "Genfluss sinkt. Bezug: Fragmentierung. Fragmentierung bedeutet: Lebensraum zerschnitten.",
       flashFront: "Fragmentierung",
@@ -4465,8 +4051,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-naturschutzstrategien:p6:f",
       prompt: "Was kennzeichnet „Energiepyramide“?",
-      answer: "Die Energiepyramide ist hier: weniger Energie oben, und zwar gilt: 10%-Regel grob.",
-      wrong: ["Die Energiepyramide ist hier: Wiederherstellung von Habitaten.", "Die Energiepyramide ist kurz gesagt: Lebensgemeinschaft.", "Die Energiepyramide ist hier: um begrenzte Ressourcen."],
+      answer: "Sie ist weniger Energie oben durch 10%-Regel grob.", wrong: ["Sie ist eine Wiederherstellung von Habitaten.", "Die Energiepyramide ist die Lebensgemeinschaft.", "Die Energiepyramide ist um begrenzte Ressourcen."],
       explanation: "10%-Regel grob. Bezug: Energiepyramide. Energiepyramide bedeutet: weniger Energie oben.",
       wissen: "10%-Regel grob. Bezug: Energiepyramide. Energiepyramide bedeutet: weniger Energie oben.",
       flashFront: "Energiepyramide",
@@ -4474,8 +4059,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-naturschutzstrategien:p7:f",
       prompt: "Was kennzeichnet „Renaturierung“?",
-      answer: "Die Renaturierung ist hier: Wiederherstellung von Habitaten, und zwar gilt: naturschutzmaßnahme.",
-      wrong: ["Die Renaturierung ist kurz gesagt: Lebensgemeinschaft.", "Die Renaturierung ist hier: um begrenzte Ressourcen.", "Die Renaturierung ist hier: Nutzen auf Kosten des Wirts."],
+      answer: "Sie ist eine Wiederherstellung von Habitaten durch Naturschutzmaßnahme.", wrong: ["Die Renaturierung ist die Lebensgemeinschaft.", "Die Renaturierung ist um begrenzte Ressourcen.", "Sie ist eine Nutzen auf Kosten des Wirts."],
       explanation: "Naturschutzmaßnahme. Bezug: Renaturierung. Renaturierung bedeutet: Wiederherstellung von Habitaten.",
       wissen: "Naturschutzmaßnahme. Bezug: Renaturierung. Renaturierung bedeutet: Wiederherstellung von Habitaten.",
       flashFront: "Renaturierung",
@@ -4483,8 +4067,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-naturschutzstrategien:p8:f",
       prompt: "Was kennzeichnet „Biozönose“?",
-      answer: "Die Biozönose ist kurz gesagt: Lebensgemeinschaft, und zwar gilt: wechselwirkungen.",
-      wrong: ["Die Biozönose ist hier: um begrenzte Ressourcen.", "Die Biozönose ist hier: Nutzen auf Kosten des Wirts.", "Die Biozönose ist kurz gesagt: viele Nachkommen."],
+      answer: "Sie ist eine Lebensgemeinschaft durch Wechselwirkungen.", wrong: ["Die Biozönose ist um begrenzte Ressourcen.", "Sie ist eine Nutzen auf Kosten des Wirts.", "Die Biozönose ist viele Nachkommen."],
       explanation: "Wechselwirkungen. Bezug: Biozönose. Biozönose bedeutet: Lebensgemeinschaft.",
       wissen: "Wechselwirkungen. Bezug: Biozönose. Biozönose bedeutet: Lebensgemeinschaft.",
       flashFront: "Biozönose",
@@ -4492,8 +4075,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-naturschutzstrategien:p9:f",
       prompt: "Was kennzeichnet „Konkurrenz“?",
-      answer: "Die Konkurrenz ist hier: um begrenzte Ressourcen, und zwar gilt: intra-/interspezifisch.",
-      wrong: ["Die Konkurrenz ist hier: Nutzen auf Kosten des Wirts.", "Die Konkurrenz ist kurz gesagt: viele Nachkommen.", "Die Konkurrenz ist kurz gesagt: Trophische Beziehung."],
+      answer: "Sie ist um begrenzte Ressourcen durch intra-/interspezifisch.", wrong: ["Sie ist eine Nutzen auf Kosten des Wirts.", "Die Konkurrenz ist viele Nachkommen.", "Die Konkurrenz ist die Trophische Beziehung."],
       explanation: "intra-/interspezifisch. Bezug: Konkurrenz. Konkurrenz bedeutet: um begrenzte Ressourcen.",
       wissen: "intra-/interspezifisch. Bezug: Konkurrenz. Konkurrenz bedeutet: um begrenzte Ressourcen.",
       flashFront: "Konkurrenz",
@@ -4501,8 +4083,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-naturschutzstrategien:p10:f",
       prompt: "Was kennzeichnet „Parasitismus“?",
-      answer: "Der Parasitismus ist hier: Nutzen auf Kosten des Wirts, und zwar gilt: nicht sofort tödlich.",
-      wrong: ["Der Parasitismus ist kurz gesagt: viele Nachkommen.", "Der Parasitismus ist kurz gesagt: Trophische Beziehung.", "Der Parasitismus ist kurz gesagt: gerichtete Veränderung."],
+      answer: "Er ist eine Nutzen auf Kosten des Wirts durch Nicht Sofort Tödlich.", wrong: ["Der Parasitismus ist viele Nachkommen.", "Der Parasitismus ist der Trophische Beziehung.", "Der Parasitismus ist gerichtete Veränderung."],
       explanation: "nicht sofort tödlich. Bezug: Parasitismus. Parasitismus bedeutet: Nutzen auf Kosten des Wirts.",
       wissen: "nicht sofort tödlich. Bezug: Parasitismus. Parasitismus bedeutet: Nutzen auf Kosten des Wirts.",
       flashFront: "Parasitismus",
@@ -4510,8 +4091,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-naturschutzstrategien:p11:f",
       prompt: "Was kennzeichnet „r-Stratege“?",
-      answer: "Die r-Stratege ist kurz gesagt: viele Nachkommen, und zwar gilt: instabile Habitate.",
-      wrong: ["Die r-Stratege ist kurz gesagt: Trophische Beziehung.", "Die r-Stratege ist kurz gesagt: gerichtete Veränderung.", "Die r-Stratege ist hier: wenige, gepflegte Nachkommen."],
+      answer: "Sie ist viele Nachkommen durch instabile Habitate.", wrong: ["Die r-Stratege ist die Trophische Beziehung.", "Die r-Stratege ist gerichtete Veränderung.", "Die r-Stratege ist wenige, gepflegte Nachkommen."],
       explanation: "instabile Habitate. Bezug: r-Stratege. r-Stratege bedeutet: viele Nachkommen.",
       wissen: "instabile Habitate. Bezug: r-Stratege. r-Stratege bedeutet: viele Nachkommen.",
       flashFront: "r-Stratege",
@@ -4540,8 +4120,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-landwirtschaft:p0:f",
       prompt: "Was kennzeichnet „Symbiose“?",
-      answer: "Die Symbiose ist hier: Zusammenleben zum Vorteil, und zwar gilt: mutualismus.",
-      wrong: ["Die Symbiose ist hier: max. nachhaltige Dichte.", "Die Symbiose ist kurz gesagt: zeigt Umweltzustand.", "Die Symbiose ist hier: N2 → Ammonium."],
+      answer: "Sie ist eine Zusammenleben zum Vorteil durch Mutualismus.", wrong: ["Die Symbiose ist max. nachhaltige Dichte.", "Sie zeigt Umweltzustand.", "Sie ist ein N2 → Ammonium."],
       explanation: "Mutualismus. Bezug: Symbiose. Symbiose bedeutet: Zusammenleben zum Vorteil.",
       wissen: "Mutualismus. Bezug: Symbiose. Symbiose bedeutet: Zusammenleben zum Vorteil.",
       flashFront: "Symbiose",
@@ -4549,8 +4128,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-landwirtschaft:p1:f",
       prompt: "Was kennzeichnet „Tragfähigkeit“?",
-      answer: "Die Tragfähigkeit ist hier: max. nachhaltige Dichte, und zwar gilt: k-Wert.",
-      wrong: ["Die Tragfähigkeit ist kurz gesagt: zeigt Umweltzustand.", "Die Tragfähigkeit ist hier: N2 → Ammonium.", "Die Tragfähigkeit ist hier: Nutzung ohne Zukunftsraub."],
+      answer: "Sie ist max. nachhaltige Dichte durch k-Wert.", wrong: ["Sie zeigt Umweltzustand.", "Sie ist ein N2 → Ammonium.", "Sie ist eine Nutzung ohne Zukunftsraub."],
       explanation: "K-Wert. Bezug: Tragfähigkeit. Tragfähigkeit bedeutet: max. nachhaltige Dichte.",
       wissen: "K-Wert. Bezug: Tragfähigkeit. Tragfähigkeit bedeutet: max. nachhaltige Dichte.",
       flashFront: "Tragfähigkeit",
@@ -4558,8 +4136,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-landwirtschaft:p2:f",
       prompt: "Wozu dient Bioindikator?",
-      answer: "Er zeigt Umweltzustand, und zwar gilt hier: Z. B. Flechten.",
-      wrong: ["Der Bioindikator ist hier: N2 → Ammonium.", "Der Bioindikator ist hier: Nutzung ohne Zukunftsraub.", "Der Bioindikator ist kurz gesagt: überproportionaler Einfluss."],
+      answer: "Er zeigt Umweltzustand durch z. B. Flechten.", wrong: ["Er ist ein N2 → Ammonium.", "Er ist eine Nutzung ohne Zukunftsraub.", "Der Bioindikator ist überproportionaler Einfluss."],
       explanation: "z. B. Flechten. Bezug: Bioindikator. Bioindikator bedeutet: zeigt Umweltzustand.",
       wissen: "z. B. Flechten. Bezug: Bioindikator. Bioindikator bedeutet: zeigt Umweltzustand.",
       flashFront: "Bioindikator",
@@ -4567,8 +4144,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-landwirtschaft:p3:f",
       prompt: "Was kennzeichnet „Stickstofffixierung“?",
-      answer: "Die Stickstofffixierung ist hier: N2 → Ammonium, und zwar gilt: durch Bakterien.",
-      wrong: ["Die Stickstofffixierung ist hier: Nutzung ohne Zukunftsraub.", "Die Stickstofffixierung ist kurz gesagt: überproportionaler Einfluss.", "Die Stickstofffixierung ist hier: Optimum und Grenzen."],
+      answer: "Sie ist ein N2 → Ammonium durch durch Bakterien.", wrong: ["Sie ist eine Nutzung ohne Zukunftsraub.", "Die Stickstofffixierung ist überproportionaler Einfluss.", "Sie ist eine Optimum und Grenzen."],
       explanation: "durch Bakterien. Bezug: Stickstofffixierung. Stickstofffixierung bedeutet: N2 → Ammonium.",
       wissen: "durch Bakterien. Bezug: Stickstofffixierung. Stickstofffixierung bedeutet: N2 → Ammonium.",
       flashFront: "Stickstofffixierung",
@@ -4576,8 +4152,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-landwirtschaft:p4:f",
       prompt: "Was kennzeichnet „Nachhaltigkeit“?",
-      answer: "Die Nachhaltigkeit ist hier: Nutzung ohne Zukunftsraub, und zwar gilt: drei Säulen.",
-      wrong: ["Die Nachhaltigkeit ist kurz gesagt: überproportionaler Einfluss.", "Die Nachhaltigkeit ist hier: Optimum und Grenzen.", "Die Nachhaltigkeit ist hier: Biozönose + Biotop."],
+      answer: "Sie ist eine Nutzung ohne Zukunftsraub durch Drei Säulen.", wrong: ["Die Nachhaltigkeit ist überproportionaler Einfluss.", "Sie ist eine Optimum und Grenzen.", "Sie ist eine Biozönose + Biotop."],
       explanation: "drei Säulen. Bezug: Nachhaltigkeit. Nachhaltigkeit bedeutet: Nutzung ohne Zukunftsraub.",
       wissen: "drei Säulen. Bezug: Nachhaltigkeit. Nachhaltigkeit bedeutet: Nutzung ohne Zukunftsraub.",
       flashFront: "Nachhaltigkeit",
@@ -4585,8 +4160,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-landwirtschaft:p5:f",
       prompt: "Was kennzeichnet „Schlüsselart“?",
-      answer: "Das Schlüsselart ist kurz gesagt: überproportionaler Einfluss, und zwar gilt: schutzpriorität.",
-      wrong: ["Das Schlüsselart ist hier: Optimum und Grenzen.", "Das Schlüsselart ist hier: Biozönose + Biotop.", "Das Schlüsselart ist kurz gesagt: Lebensraum."],
+      answer: "Es ist überproportionaler Einfluss durch schutzpriorität.", wrong: ["Es ist eine Optimum und Grenzen.", "Es ist eine Biozönose + Biotop.", "Das Schlüsselart ist das Lebensraum."],
       explanation: "Schutzpriorität. Bezug: Schlüsselart. Schlüsselart bedeutet: überproportionaler Einfluss.",
       wissen: "Schutzpriorität. Bezug: Schlüsselart. Schlüsselart bedeutet: überproportionaler Einfluss.",
       flashFront: "Schlüsselart",
@@ -4594,8 +4168,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-landwirtschaft:p6:f",
       prompt: "Was kennzeichnet „Toleranzkurve“?",
-      answer: "Die Toleranzkurve ist hier: Optimum und Grenzen, und zwar gilt: abiotische Faktoren.",
-      wrong: ["Die Toleranzkurve ist hier: Biozönose + Biotop.", "Die Toleranzkurve ist kurz gesagt: Lebensraum.", "Die Toleranzkurve ist kurz gesagt: Trophische Beziehung."],
+      answer: "Sie ist eine Optimum und Grenzen durch Abiotische Faktoren.", wrong: ["Sie ist eine Biozönose + Biotop.", "Die Toleranzkurve ist die Lebensraum.", "Die Toleranzkurve ist die Trophische Beziehung."],
       explanation: "abiotische Faktoren. Bezug: Toleranzkurve. Toleranzkurve bedeutet: Optimum und Grenzen.",
       wissen: "abiotische Faktoren. Bezug: Toleranzkurve. Toleranzkurve bedeutet: Optimum und Grenzen.",
       flashFront: "Toleranzkurve",
@@ -4603,8 +4176,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-landwirtschaft:p7:f",
       prompt: "Was kennzeichnet „Ökosystem“?",
-      answer: "Das Ökosystem ist hier: Biozönose + Biotop, und zwar gilt: offen für Energie.",
-      wrong: ["Das Ökosystem ist kurz gesagt: Lebensraum.", "Das Ökosystem ist kurz gesagt: Trophische Beziehung.", "Das Ökosystem ist kurz gesagt: gerichtete Veränderung."],
+      answer: "Es ist eine Biozönose + Biotop durch Offen für Energie.", wrong: ["Das Ökosystem ist das Lebensraum.", "Das Ökosystem ist das Trophische Beziehung.", "Das Ökosystem ist gerichtete Veränderung."],
       explanation: "offen für Energie. Bezug: Ökosystem. Ökosystem bedeutet: Biozönose + Biotop.",
       wissen: "offen für Energie. Bezug: Ökosystem. Ökosystem bedeutet: Biozönose + Biotop.",
       flashFront: "Ökosystem",
@@ -4612,8 +4184,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-landwirtschaft:p8:f",
       prompt: "Was kennzeichnet „Biotop“?",
-      answer: "Das Biotop ist kurz gesagt: Lebensraum, und zwar gilt: abiotische Faktoren.",
-      wrong: ["Das Biotop ist kurz gesagt: Trophische Beziehung.", "Das Biotop ist kurz gesagt: gerichtete Veränderung.", "Das Biotop ist hier: wenige, gepflegte Nachkommen."],
+      answer: "Es ist ein Lebensraum durch Abiotische Faktoren.", wrong: ["Das Biotop ist das Trophische Beziehung.", "Das Biotop ist gerichtete Veränderung.", "Das Biotop ist wenige, gepflegte Nachkommen."],
       explanation: "abiotische Faktoren. Bezug: Biotop. Biotop bedeutet: Lebensraum.",
       wissen: "abiotische Faktoren. Bezug: Biotop. Biotop bedeutet: Lebensraum.",
       flashFront: "Biotop",
@@ -4621,8 +4192,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-landwirtschaft:p9:f",
       prompt: "Was kennzeichnet „Räuber-Beute“?",
-      answer: "Die Räuber-Beute ist kurz gesagt: Trophische Beziehung, und zwar gilt: reguliert Dichten.",
-      wrong: ["Die Räuber-Beute ist kurz gesagt: gerichtete Veränderung.", "Die Räuber-Beute ist hier: wenige, gepflegte Nachkommen.", "Die Räuber-Beute ist hier: Zusammenleben zum Vorteil."],
+      answer: "Sie ist eine Trophische Beziehung, reguliert Dichten.", wrong: ["Die Räuber-Beute ist gerichtete Veränderung.", "Die Räuber-Beute ist wenige, gepflegte Nachkommen.", "Sie ist eine Zusammenleben zum Vorteil."],
       explanation: "Reguliert Dichten. Bezug: Räuber-Beute. Räuber-Beute bedeutet: Trophische Beziehung.",
       wissen: "Reguliert Dichten. Bezug: Räuber-Beute. Räuber-Beute bedeutet: Trophische Beziehung.",
       flashFront: "Räuber-Beute",
@@ -4630,8 +4200,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-landwirtschaft:p10:f",
       prompt: "Was kennzeichnet „Sukzession“?",
-      answer: "Die Sukzession ist kurz gesagt: gerichtete Veränderung, und zwar gilt: zu Klimax hin.",
-      wrong: ["Die Sukzession ist hier: wenige, gepflegte Nachkommen.", "Die Sukzession ist hier: Zusammenleben zum Vorteil.", "Die Sukzession ist hier: max. nachhaltige Dichte."],
+      answer: "Sie ist gerichtete Veränderung durch zu Klimax hin.", wrong: ["Die Sukzession ist wenige, gepflegte Nachkommen.", "Sie ist eine Zusammenleben zum Vorteil.", "Die Sukzession ist max. nachhaltige Dichte."],
       explanation: "zu Klimax hin. Bezug: Sukzession. Sukzession bedeutet: gerichtete Veränderung.",
       wissen: "zu Klimax hin. Bezug: Sukzession. Sukzession bedeutet: gerichtete Veränderung.",
       flashFront: "Sukzession",
@@ -4639,8 +4208,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-landwirtschaft:p11:f",
       prompt: "Was kennzeichnet „K-Stratege“?",
-      answer: "Die K-Stratege ist hier: wenige, gepflegte Nachkommen, und zwar gilt: stabile Habitate.",
-      wrong: ["Die K-Stratege ist hier: Zusammenleben zum Vorteil.", "Die K-Stratege ist hier: max. nachhaltige Dichte.", "Die K-Stratege ist kurz gesagt: zeigt Umweltzustand."],
+      answer: "Sie ist wenige, gepflegte Nachkommen durch stabile Habitate.", wrong: ["Sie ist eine Zusammenleben zum Vorteil.", "Die K-Stratege ist max. nachhaltige Dichte.", "Sie zeigt Umweltzustand."],
       explanation: "stabile Habitate. Bezug: K-Stratege. K-Stratege bedeutet: wenige, gepflegte Nachkommen.",
       wissen: "stabile Habitate. Bezug: K-Stratege. K-Stratege bedeutet: wenige, gepflegte Nachkommen.",
       flashFront: "K-Stratege",
@@ -4669,8 +4237,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-epigenetik:p0:f",
       prompt: "Was kennzeichnet „Mitose“?",
-      answer: "Die Mitose ist hier: Kernteilung für Wachstum, und zwar gilt: tochterzellen identisch.",
-      wrong: ["Die Mitose ist hier: Änderung der DNA.", "Die Mitose ist hier: gezielter Eingriff in DNA.", "Die Mitose ist hier: Vererbung in Familien."],
+      answer: "Sie ist ein Kernteilung für Wachstum durch Tochterzellen Identisch.", wrong: ["Sie ist eine Änderung der DNA.", "Sie ist gezielter Eingriff in DNA.", "Sie ist eine Vererbung in Familien."],
       explanation: "Tochterzellen identisch. Bezug: Mitose. Mitose bedeutet: Kernteilung für Wachstum.",
       wissen: "Tochterzellen identisch. Bezug: Mitose. Mitose bedeutet: Kernteilung für Wachstum.",
       flashFront: "Mitose",
@@ -4678,8 +4245,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-epigenetik:p1:f",
       prompt: "Was kennzeichnet „Mutation“?",
-      answer: "Die Mutation ist hier: Änderung der DNA, und zwar gilt: rohstoff der Evolution.",
-      wrong: ["Die Mutation ist hier: gezielter Eingriff in DNA.", "Die Mutation ist hier: Vererbung in Familien.", "Die Mutation ist hier: DNA → mRNA."],
+      answer: "Sie ist eine Änderung der DNA durch Rohstoff der Evolution.", wrong: ["Sie ist gezielter Eingriff in DNA.", "Sie ist eine Vererbung in Familien.", "Sie ist eine DNA → MRNA."],
       explanation: "Rohstoff der Evolution. Bezug: Mutation. Mutation bedeutet: Änderung der DNA.",
       wissen: "Rohstoff der Evolution. Bezug: Mutation. Mutation bedeutet: Änderung der DNA.",
       flashFront: "Mutation",
@@ -4687,8 +4253,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-epigenetik:p2:f",
       prompt: "Was kennzeichnet „Gentechnik“?",
-      answer: "Die Gentechnik ist hier: gezielter Eingriff in DNA, und zwar gilt: anwendung + Ethik.",
-      wrong: ["Die Gentechnik ist hier: Vererbung in Familien.", "Die Gentechnik ist hier: DNA → mRNA.", "Die Gentechnik ist hier: Reparatur/Ersatz defekter Gene."],
+      answer: "Sie ist gezielter Eingriff in DNA durch anwendung + Ethik.", wrong: ["Sie ist eine Vererbung in Familien.", "Sie ist eine DNA → MRNA.", "Sie ist eine Reparatur/Ersatz Defekter Gene."],
       explanation: "Anwendung + Ethik. Bezug: Gentechnik. Gentechnik bedeutet: gezielter Eingriff in DNA.",
       wissen: "Anwendung + Ethik. Bezug: Gentechnik. Gentechnik bedeutet: gezielter Eingriff in DNA.",
       flashFront: "Gentechnik",
@@ -4696,8 +4261,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-epigenetik:p3:f",
       prompt: "Was kennzeichnet „Stammbaum“?",
-      answer: "Das Stammbaum ist hier: Vererbung in Familien, und zwar gilt: humangenetik.",
-      wrong: ["Das Stammbaum ist hier: DNA → mRNA.", "Das Stammbaum ist hier: Reparatur/Ersatz defekter Gene.", "Das Stammbaum ist hier: schneidet DNA gezielt."],
+      answer: "Es ist eine Vererbung in Familien durch Humangenetik.", wrong: ["Es ist eine DNA → MRNA.", "Es ist eine Reparatur/Ersatz Defekter Gene.", "Das Stammbaum ist schneidet DNA gezielt."],
       explanation: "Humangenetik. Bezug: Stammbaum. Stammbaum bedeutet: Vererbung in Familien.",
       wissen: "Humangenetik. Bezug: Stammbaum. Stammbaum bedeutet: Vererbung in Familien.",
       flashFront: "Stammbaum",
@@ -4705,8 +4269,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-epigenetik:p4:f",
       prompt: "Was kennzeichnet „Transkription“?",
-      answer: "Die Transkription ist hier: DNA → mRNA, und zwar gilt: im Zellkern/Nucleoid.",
-      wrong: ["Die Transkription ist hier: Reparatur/Ersatz defekter Gene.", "Die Transkription ist hier: schneidet DNA gezielt.", "Die Transkription ist kurz gesagt: genetische Ausstattung."],
+      answer: "Sie ist eine DNA → MRNA durch im Zellkern/Nucleoid.", wrong: ["Sie ist eine Reparatur/Ersatz Defekter Gene.", "Die Transkription ist schneidet DNA gezielt.", "Die Transkription ist genetische Ausstattung."],
       explanation: "im Zellkern/Nucleoid. Bezug: Transkription. Transkription bedeutet: DNA → mRNA.",
       wissen: "im Zellkern/Nucleoid. Bezug: Transkription. Transkription bedeutet: DNA → mRNA.",
       flashFront: "Transkription",
@@ -4714,8 +4277,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-epigenetik:p5:f",
       prompt: "Was kennzeichnet „Gentherapie“?",
-      answer: "Die Gentherapie ist hier: Reparatur/Ersatz defekter Gene, und zwar gilt: ethisch sensibel.",
-      wrong: ["Die Gentherapie ist hier: schneidet DNA gezielt.", "Die Gentherapie ist kurz gesagt: genetische Ausstattung.", "Die Gentherapie ist hier: nur homozygot sichtbar."],
+      answer: "Sie ist eine Reparatur/Ersatz Defekter Gene durch Ethisch Sensibel.", wrong: ["Die Gentherapie ist schneidet DNA gezielt.", "Die Gentherapie ist genetische Ausstattung.", "Die Gentherapie ist nur homozygot sichtbar."],
       explanation: "ethisch sensibel. Bezug: Gentherapie. Gentherapie bedeutet: Reparatur/Ersatz defekter Gene.",
       wissen: "ethisch sensibel. Bezug: Gentherapie. Gentherapie bedeutet: Reparatur/Ersatz defekter Gene.",
       flashFront: "Gentherapie",
@@ -4723,8 +4285,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-epigenetik:p6:f",
       prompt: "Was kennzeichnet „Restriktionsenzym“?",
-      answer: "Das Restriktionsenzym ist hier: schneidet DNA gezielt, und zwar gilt: klonierung.",
-      wrong: ["Das Restriktionsenzym ist kurz gesagt: genetische Ausstattung.", "Das Restriktionsenzym ist hier: nur homozygot sichtbar.", "Das Restriktionsenzym ist kurz gesagt: Reduktionsteilung."],
+      answer: "Es ist schneidet DNA gezielt durch klonierung.", wrong: ["Das Restriktionsenzym ist genetische Ausstattung.", "Das Restriktionsenzym ist nur homozygot sichtbar.", "Das Restriktionsenzym ist das Reduktionsteilung."],
       explanation: "Klonierung. Bezug: Restriktionsenzym. Restriktionsenzym bedeutet: schneidet DNA gezielt.",
       wissen: "Klonierung. Bezug: Restriktionsenzym. Restriktionsenzym bedeutet: schneidet DNA gezielt.",
       flashFront: "Restriktionsenzym",
@@ -4732,8 +4293,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-epigenetik:p7:f",
       prompt: "Was kennzeichnet „Genotyp“?",
-      answer: "Das Genotyp ist kurz gesagt: genetische Ausstattung, und zwar gilt: nicht direkt sichtbar.",
-      wrong: ["Das Genotyp ist hier: nur homozygot sichtbar.", "Das Genotyp ist kurz gesagt: Reduktionsteilung.", "Das Genotyp ist hier: Gene auf einem Chromosom."],
+      answer: "Es ist genetische Ausstattung durch nicht direkt sichtbar.", wrong: ["Das Genotyp ist nur homozygot sichtbar.", "Das Genotyp ist das Reduktionsteilung.", "Es ist eine Gene auf einem Chromosom."],
       explanation: "Nicht direkt sichtbar. Bezug: Genotyp. Genotyp bedeutet: genetische Ausstattung.",
       wissen: "Nicht direkt sichtbar. Bezug: Genotyp. Genotyp bedeutet: genetische Ausstattung.",
       flashFront: "Genotyp",
@@ -4741,8 +4301,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-epigenetik:p8:f",
       prompt: "Was kennzeichnet „Rezessiv“?",
-      answer: "Das Rezessiv ist hier: nur homozygot sichtbar, und zwar gilt: träger möglich.",
-      wrong: ["Das Rezessiv ist kurz gesagt: Reduktionsteilung.", "Das Rezessiv ist hier: Gene auf einem Chromosom.", "Das Rezessiv ist kurz gesagt: Basenfolge bestimmen."],
+      answer: "Es ist nur homozygot sichtbar durch träger möglich.", wrong: ["Das Rezessiv ist das Reduktionsteilung.", "Es ist eine Gene auf einem Chromosom.", "Das Rezessiv ist das Basenfolge Bestimmen."],
       explanation: "Träger möglich. Bezug: Rezessiv. Rezessiv bedeutet: nur homozygot sichtbar.",
       wissen: "Träger möglich. Bezug: Rezessiv. Rezessiv bedeutet: nur homozygot sichtbar.",
       flashFront: "Rezessiv",
@@ -4750,8 +4309,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-epigenetik:p9:f",
       prompt: "Was kennzeichnet „Meiose“?",
-      answer: "Die Meiose ist kurz gesagt: Reduktionsteilung, und zwar gilt: haploide Gameten.",
-      wrong: ["Die Meiose ist hier: Gene auf einem Chromosom.", "Die Meiose ist kurz gesagt: Basenfolge bestimmen.", "Die Meiose ist hier: Kernteilung für Wachstum."],
+      answer: "Sie ist eine Reduktionsteilung durch Haploide Gameten.", wrong: ["Sie ist eine Gene auf einem Chromosom.", "Die Meiose ist die Basenfolge Bestimmen.", "Sie ist ein Kernteilung für Wachstum."],
       explanation: "Haploide Gameten. Bezug: Meiose. Meiose bedeutet: Reduktionsteilung.",
       wissen: "Haploide Gameten. Bezug: Meiose. Meiose bedeutet: Reduktionsteilung.",
       flashFront: "Meiose",
@@ -4759,8 +4317,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-epigenetik:p10:f",
       prompt: "Was kennzeichnet „Kopplung“?",
-      answer: "Die Kopplung ist hier: Gene auf einem Chromosom, und zwar gilt: selten unabhängig.",
-      wrong: ["Die Kopplung ist kurz gesagt: Basenfolge bestimmen.", "Die Kopplung ist hier: Kernteilung für Wachstum.", "Die Kopplung ist hier: Änderung der DNA."],
+      answer: "Sie ist eine Gene auf einem Chromosom durch Selten Unabhängig.", wrong: ["Die Kopplung ist die Basenfolge Bestimmen.", "Sie ist ein Kernteilung für Wachstum.", "Sie ist eine Änderung der DNA."],
       explanation: "selten unabhängig. Bezug: Kopplung. Kopplung bedeutet: Gene auf einem Chromosom.",
       wissen: "selten unabhängig. Bezug: Kopplung. Kopplung bedeutet: Gene auf einem Chromosom.",
       flashFront: "Kopplung",
@@ -4768,8 +4325,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-epigenetik:p11:f",
       prompt: "Was kennzeichnet „Sequenzierung“?",
-      answer: "Die Sequenzierung ist kurz gesagt: Basenfolge bestimmen, und zwar gilt: diagnostik.",
-      wrong: ["Die Sequenzierung ist hier: Kernteilung für Wachstum.", "Die Sequenzierung ist hier: Änderung der DNA.", "Die Sequenzierung ist hier: gezielter Eingriff in DNA."],
+      answer: "Sie ist eine Basenfolge Bestimmen durch Diagnostik.", wrong: ["Sie ist ein Kernteilung für Wachstum.", "Sie ist eine Änderung der DNA.", "Sie ist gezielter Eingriff in DNA."],
       explanation: "Diagnostik. Bezug: Sequenzierung. Sequenzierung bedeutet: Basenfolge bestimmen.",
       wissen: "Diagnostik. Bezug: Sequenzierung. Sequenzierung bedeutet: Basenfolge bestimmen.",
       flashFront: "Sequenzierung",
@@ -4798,8 +4354,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-entwicklungsgenetik:p0:f",
       prompt: "Was kennzeichnet „Crossing-over“?",
-      answer: "Der Crossing-over ist hier: Austausch homologer Abschnitte, und zwar gilt: rekombination.",
-      wrong: ["Der Crossing-over ist hier: Vervielfältigung von DNA.", "Der Crossing-over ist hier: Transportvehikel für DNA.", "Der Crossing-over ist kurz gesagt: Chromosomenbild."],
+      answer: "Er ist eine Austausch Homologer Abschnitte durch Rekombination.", wrong: ["Er ist eine Vervielfältigung von DNA.", "Er ist eine Transportvehikel für DNA.", "Der Crossing-over ist der Chromosomenbild."],
       explanation: "Rekombination. Bezug: Crossing-over. Crossing-over bedeutet: Austausch homologer Abschnitte.",
       wissen: "Rekombination. Bezug: Crossing-over. Crossing-over bedeutet: Austausch homologer Abschnitte.",
       flashFront: "Crossing-over",
@@ -4807,8 +4362,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-entwicklungsgenetik:p1:f",
       prompt: "Was kennzeichnet „PCR“?",
-      answer: "Das PCR ist hier: Vervielfältigung von DNA, und zwar gilt: labortechnik.",
-      wrong: ["Das PCR ist hier: Transportvehikel für DNA.", "Das PCR ist kurz gesagt: Chromosomenbild.", "Das PCR ist hier: mRNA → Protein."],
+      answer: "Es ist eine Vervielfältigung von DNA durch Labortechnik.", wrong: ["Es ist eine Transportvehikel für DNA.", "Das PCR ist das Chromosomenbild.", "Das PCR ist mRNA → Protein."],
       explanation: "Labortechnik. Bezug: PCR. PCR bedeutet: Vervielfältigung von DNA.",
       wissen: "Labortechnik. Bezug: PCR. PCR bedeutet: Vervielfältigung von DNA.",
       flashFront: "PCR",
@@ -4816,8 +4370,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-entwicklungsgenetik:p2:f",
       prompt: "Was kennzeichnet „Vektor“?",
-      answer: "Der Vektor ist hier: Transportvehikel für DNA, und zwar gilt: z. B. Plasmid.",
-      wrong: ["Der Vektor ist kurz gesagt: Chromosomenbild.", "Der Vektor ist hier: mRNA → Protein.", "Der Vektor ist kurz gesagt: Einzelbasenaustausch."],
+      answer: "Er ist eine Transportvehikel für DNA durch Z. B. Plasmid.", wrong: ["Der Vektor ist der Chromosomenbild.", "Der Vektor ist mRNA → Protein.", "Der Vektor ist der Einzelbasenaustausch."],
       explanation: "z. B. Plasmid. Bezug: Vektor. Vektor bedeutet: Transportvehikel für DNA.",
       wissen: "z. B. Plasmid. Bezug: Vektor. Vektor bedeutet: Transportvehikel für DNA.",
       flashFront: "Vektor",
@@ -4825,8 +4378,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-entwicklungsgenetik:p3:f",
       prompt: "Was kennzeichnet „Karyogramm“?",
-      answer: "Das Karyogramm ist kurz gesagt: Chromosomenbild, und zwar gilt: aneuploidie sichtbar.",
-      wrong: ["Das Karyogramm ist hier: mRNA → Protein.", "Das Karyogramm ist kurz gesagt: Einzelbasenaustausch.", "Das Karyogramm ist hier: neu kombinierte DNA."],
+      answer: "Es ist eine Chromosomenbild durch Aneuploidie Sichtbar.", wrong: ["Das Karyogramm ist mRNA → Protein.", "Das Karyogramm ist das Einzelbasenaustausch.", "Das Karyogramm ist neu kombinierte DNA."],
       explanation: "Aneuploidie sichtbar. Bezug: Karyogramm. Karyogramm bedeutet: Chromosomenbild.",
       wissen: "Aneuploidie sichtbar. Bezug: Karyogramm. Karyogramm bedeutet: Chromosomenbild.",
       flashFront: "Karyogramm",
@@ -4834,8 +4386,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-entwicklungsgenetik:p4:f",
       prompt: "Was kennzeichnet „Translation“?",
-      answer: "Die Translation ist hier: mRNA → Protein, und zwar gilt: am Ribosom.",
-      wrong: ["Die Translation ist kurz gesagt: Einzelbasenaustausch.", "Die Translation ist hier: neu kombinierte DNA.", "Die Translation ist kurz gesagt: erscheinendes Merkmal."],
+      answer: "Sie ist mRNA → Protein durch am Ribosom.", wrong: ["Die Translation ist die Einzelbasenaustausch.", "Die Translation ist neu kombinierte DNA.", "Die Translation ist erscheinendes Merkmal."],
       explanation: "am Ribosom. Bezug: Translation. Translation bedeutet: mRNA → Protein.",
       wissen: "am Ribosom. Bezug: Translation. Translation bedeutet: mRNA → Protein.",
       flashFront: "Translation",
@@ -4843,8 +4394,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-entwicklungsgenetik:p5:f",
       prompt: "Was kennzeichnet „SNP“?",
-      answer: "Das SNP ist kurz gesagt: Einzelbasenaustausch, und zwar gilt: variabilität.",
-      wrong: ["Das SNP ist hier: neu kombinierte DNA.", "Das SNP ist kurz gesagt: erscheinendes Merkmal.", "Das SNP ist kurz gesagt: gleiche Allele."],
+      answer: "Es ist eine Einzelbasenaustausch durch Variabilität.", wrong: ["Das SNP ist neu kombinierte DNA.", "Das SNP ist erscheinendes Merkmal.", "Das SNP ist gleiche Allele."],
       explanation: "Variabilität. Bezug: SNP. SNP bedeutet: Einzelbasenaustausch.",
       wissen: "Variabilität. Bezug: SNP. SNP bedeutet: Einzelbasenaustausch.",
       flashFront: "SNP",
@@ -4852,8 +4402,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-entwicklungsgenetik:p6:f",
       prompt: "Was kennzeichnet „Rekombinant“?",
-      answer: "Das Rekombinant ist hier: neu kombinierte DNA, und zwar gilt: produkt der Gentechnik.",
-      wrong: ["Das Rekombinant ist kurz gesagt: erscheinendes Merkmal.", "Das Rekombinant ist kurz gesagt: gleiche Allele.", "Das Rekombinant ist hier: Kernteilung für Wachstum."],
+      answer: "Es ist neu kombinierte DNA durch produkt der Gentechnik.", wrong: ["Das Rekombinant ist erscheinendes Merkmal.", "Das Rekombinant ist gleiche Allele.", "Es ist ein Kernteilung für Wachstum."],
       explanation: "Produkt der Gentechnik. Bezug: Rekombinant. Rekombinant bedeutet: neu kombinierte DNA.",
       wissen: "Produkt der Gentechnik. Bezug: Rekombinant. Rekombinant bedeutet: neu kombinierte DNA.",
       flashFront: "Rekombinant",
@@ -4861,8 +4410,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-entwicklungsgenetik:p7:f",
       prompt: "Was kennzeichnet „Phänotyp“?",
-      answer: "Das Phänotyp ist kurz gesagt: erscheinendes Merkmal, und zwar gilt: genotyp + Umwelt.",
-      wrong: ["Das Phänotyp ist kurz gesagt: gleiche Allele.", "Das Phänotyp ist hier: Kernteilung für Wachstum.", "Das Phänotyp ist hier: Änderung der DNA."],
+      answer: "Es ist erscheinendes Merkmal durch genotyp + Umwelt.", wrong: ["Das Phänotyp ist gleiche Allele.", "Es ist ein Kernteilung für Wachstum.", "Es ist eine Änderung der DNA."],
       explanation: "Genotyp + Umwelt. Bezug: Phänotyp. Phänotyp bedeutet: erscheinendes Merkmal.",
       wissen: "Genotyp + Umwelt. Bezug: Phänotyp. Phänotyp bedeutet: erscheinendes Merkmal.",
       flashFront: "Phänotyp",
@@ -4870,8 +4418,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-entwicklungsgenetik:p8:f",
       prompt: "Was kennzeichnet „Homozygot“?",
-      answer: "Das Homozygot ist kurz gesagt: gleiche Allele, und zwar gilt: aA oder aa.",
-      wrong: ["Das Homozygot ist hier: Kernteilung für Wachstum.", "Das Homozygot ist hier: Änderung der DNA.", "Das Homozygot ist hier: gezielter Eingriff in DNA."],
+      answer: "Es ist gleiche Allele durch aA oder aa.", wrong: ["Es ist ein Kernteilung für Wachstum.", "Es ist eine Änderung der DNA.", "Es ist gezielter Eingriff in DNA."],
       explanation: "AA oder aa. Bezug: Homozygot. Homozygot bedeutet: gleiche Allele.",
       wissen: "AA oder aa. Bezug: Homozygot. Homozygot bedeutet: gleiche Allele.",
       flashFront: "Homozygot",
@@ -4879,8 +4426,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-entwicklungsgenetik:p9:f",
       prompt: "Was kennzeichnet „Mitose“?",
-      answer: "Die Mitose ist hier: Kernteilung für Wachstum, und zwar gilt: tochterzellen identisch.",
-      wrong: ["Die Mitose ist hier: Änderung der DNA.", "Die Mitose ist hier: gezielter Eingriff in DNA.", "Die Mitose ist hier: Austausch homologer Abschnitte."],
+      answer: "Sie ist ein Kernteilung für Wachstum durch Tochterzellen Identisch.", wrong: ["Sie ist eine Änderung der DNA.", "Sie ist gezielter Eingriff in DNA.", "Sie ist eine Austausch Homologer Abschnitte."],
       explanation: "Tochterzellen identisch. Bezug: Mitose. Mitose bedeutet: Kernteilung für Wachstum.",
       wissen: "Tochterzellen identisch. Bezug: Mitose. Mitose bedeutet: Kernteilung für Wachstum.",
       flashFront: "Mitose",
@@ -4888,8 +4434,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-entwicklungsgenetik:p10:f",
       prompt: "Was kennzeichnet „Mutation“?",
-      answer: "Die Mutation ist hier: Änderung der DNA, und zwar gilt: rohstoff der Evolution.",
-      wrong: ["Die Mutation ist hier: gezielter Eingriff in DNA.", "Die Mutation ist hier: Austausch homologer Abschnitte.", "Die Mutation ist hier: Vervielfältigung von DNA."],
+      answer: "Sie ist eine Änderung der DNA durch Rohstoff der Evolution.", wrong: ["Sie ist gezielter Eingriff in DNA.", "Sie ist eine Austausch Homologer Abschnitte.", "Sie ist eine Vervielfältigung von DNA."],
       explanation: "Rohstoff der Evolution. Bezug: Mutation. Mutation bedeutet: Änderung der DNA.",
       wissen: "Rohstoff der Evolution. Bezug: Mutation. Mutation bedeutet: Änderung der DNA.",
       flashFront: "Mutation",
@@ -4897,8 +4442,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-entwicklungsgenetik:p11:f",
       prompt: "Was kennzeichnet „Gentechnik“?",
-      answer: "Die Gentechnik ist hier: gezielter Eingriff in DNA, und zwar gilt: anwendung + Ethik.",
-      wrong: ["Die Gentechnik ist hier: Austausch homologer Abschnitte.", "Die Gentechnik ist hier: Vervielfältigung von DNA.", "Die Gentechnik ist hier: Transportvehikel für DNA."],
+      answer: "Sie ist gezielter Eingriff in DNA durch anwendung + Ethik.", wrong: ["Sie ist eine Austausch Homologer Abschnitte.", "Sie ist eine Vervielfältigung von DNA.", "Sie ist eine Transportvehikel für DNA."],
       explanation: "Anwendung + Ethik. Bezug: Gentechnik. Gentechnik bedeutet: gezielter Eingriff in DNA.",
       wissen: "Anwendung + Ethik. Bezug: Gentechnik. Gentechnik bedeutet: gezielter Eingriff in DNA.",
       flashFront: "Gentechnik",
@@ -4927,8 +4471,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-populationsgenetik:p0:f",
       prompt: "Was kennzeichnet „Kopplung“?",
-      answer: "Die Kopplung ist hier: Gene auf einem Chromosom, und zwar gilt: selten unabhängig.",
-      wrong: ["Die Kopplung ist kurz gesagt: Basenfolge bestimmen.", "Die Kopplung ist kurz gesagt: präzise Gen-Schere.", "Die Kopplung ist kurz gesagt: Basentriplett."],
+      answer: "Sie ist eine Gene auf einem Chromosom durch Selten Unabhängig.", wrong: ["Die Kopplung ist die Basenfolge Bestimmen.", "Die Kopplung ist präzise Gen-Schere.", "Die Kopplung ist die Basentriplett."],
       explanation: "selten unabhängig. Bezug: Kopplung. Kopplung bedeutet: Gene auf einem Chromosom.",
       wissen: "selten unabhängig. Bezug: Kopplung. Kopplung bedeutet: Gene auf einem Chromosom.",
       flashFront: "Kopplung",
@@ -4936,8 +4479,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-populationsgenetik:p1:f",
       prompt: "Was kennzeichnet „Sequenzierung“?",
-      answer: "Die Sequenzierung ist kurz gesagt: Basenfolge bestimmen, und zwar gilt: diagnostik.",
-      wrong: ["Die Sequenzierung ist kurz gesagt: präzise Gen-Schere.", "Die Sequenzierung ist kurz gesagt: Basentriplett.", "Die Sequenzierung ist hier: Regulation ohne Sequenzänderung."],
+      answer: "Sie ist eine Basenfolge Bestimmen durch Diagnostik.", wrong: ["Die Sequenzierung ist präzise Gen-Schere.", "Die Sequenzierung ist die Basentriplett.", "Sie ist eine Regulation ohne Sequenzänderung."],
       explanation: "Diagnostik. Bezug: Sequenzierung. Sequenzierung bedeutet: Basenfolge bestimmen.",
       wissen: "Diagnostik. Bezug: Sequenzierung. Sequenzierung bedeutet: Basenfolge bestimmen.",
       flashFront: "Sequenzierung",
@@ -4945,8 +4487,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-populationsgenetik:p2:f",
       prompt: "Was kennzeichnet „CRISPR“?",
-      answer: "Das CRISPR ist kurz gesagt: präzise Gen-Schere, und zwar gilt: moderne Editierung.",
-      wrong: ["Das CRISPR ist kurz gesagt: Basentriplett.", "Das CRISPR ist hier: Regulation ohne Sequenzänderung.", "Das CRISPR ist kurz gesagt: ringförmige DNA."],
+      answer: "Es ist präzise Gen-Schere durch moderne Editierung.", wrong: ["Das CRISPR ist das Basentriplett.", "Es ist eine Regulation ohne Sequenzänderung.", "Das CRISPR ist ringförmige DNA."],
       explanation: "moderne Editierung. Bezug: CRISPR. CRISPR bedeutet: präzise Gen-Schere.",
       wissen: "moderne Editierung. Bezug: CRISPR. CRISPR bedeutet: präzise Gen-Schere.",
       flashFront: "CRISPR",
@@ -4954,8 +4495,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-populationsgenetik:p3:f",
       prompt: "Was kennzeichnet „Codon“?",
-      answer: "Das Codon ist kurz gesagt: Basentriplett, und zwar gilt: aminosäure-Code.",
-      wrong: ["Das Codon ist hier: Regulation ohne Sequenzänderung.", "Das Codon ist kurz gesagt: ringförmige DNA.", "Das Codon ist hier: Variante eines Gens."],
+      answer: "Es ist eine Basentriplett durch Aminosäure-Code.", wrong: ["Es ist eine Regulation ohne Sequenzänderung.", "Das Codon ist ringförmige DNA.", "Es ist eine Variante Eines Gens."],
       explanation: "Aminosäure-Code. Bezug: Codon. Codon bedeutet: Basentriplett.",
       wissen: "Aminosäure-Code. Bezug: Codon. Codon bedeutet: Basentriplett.",
       flashFront: "Codon",
@@ -4963,8 +4503,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-populationsgenetik:p4:f",
       prompt: "Was kennzeichnet „Epigenetik“?",
-      answer: "Die Epigenetik ist hier: Regulation ohne Sequenzänderung, und zwar gilt: z. B. Methylierung.",
-      wrong: ["Die Epigenetik ist kurz gesagt: ringförmige DNA.", "Die Epigenetik ist hier: Variante eines Gens.", "Die Epigenetik ist kurz gesagt: setzt sich im Phänotyp durch."],
+      answer: "Sie ist eine Regulation ohne Sequenzänderung durch Z. B. Methylierung.", wrong: ["Die Epigenetik ist ringförmige DNA.", "Sie ist eine Variante Eines Gens.", "Setzt sich im Phänotyp durch."],
       explanation: "z. B. Methylierung. Bezug: Epigenetik. Epigenetik bedeutet: Regulation ohne Sequenzänderung.",
       wissen: "z. B. Methylierung. Bezug: Epigenetik. Epigenetik bedeutet: Regulation ohne Sequenzänderung.",
       flashFront: "Epigenetik",
@@ -4972,8 +4511,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-populationsgenetik:p5:f",
       prompt: "Was kennzeichnet „Plasmid“?",
-      answer: "Das Plasmid ist kurz gesagt: ringförmige DNA, und zwar gilt: bei Bakterien/Gentechnik.",
-      wrong: ["Das Plasmid ist hier: Variante eines Gens.", "Das Plasmid ist kurz gesagt: setzt sich im Phänotyp durch.", "Das Plasmid ist kurz gesagt: verschiedene Allele."],
+      answer: "Es ist ringförmige DNA durch bei Bakterien/Gentechnik.", wrong: ["Es ist eine Variante Eines Gens.", "Setzt sich im Phänotyp durch.", "Das Plasmid ist verschiedene Allele."],
       explanation: "bei Bakterien/Gentechnik. Bezug: Plasmid. Plasmid bedeutet: ringförmige DNA.",
       wissen: "bei Bakterien/Gentechnik. Bezug: Plasmid. Plasmid bedeutet: ringförmige DNA.",
       flashFront: "Plasmid",
@@ -4981,8 +4519,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-populationsgenetik:p6:f",
       prompt: "Was kennzeichnet „Allel“?",
-      answer: "Das Allel ist hier: Variante eines Gens, und zwar gilt: an einem Genort.",
-      wrong: ["Das Allel ist kurz gesagt: setzt sich im Phänotyp durch.", "Das Allel ist kurz gesagt: verschiedene Allele.", "Das Allel ist hier: Austausch homologer Abschnitte."],
+      answer: "Es ist eine Variante Eines Gens durch an einem Genort.", wrong: ["Setzt sich im Phänotyp durch.", "Das Allel ist verschiedene Allele.", "Es ist eine Austausch Homologer Abschnitte."],
       explanation: "An einem Genort. Bezug: Allel. Allel bedeutet: Variante eines Gens.",
       wissen: "An einem Genort. Bezug: Allel. Allel bedeutet: Variante eines Gens.",
       flashFront: "Allel",
@@ -4990,8 +4527,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-populationsgenetik:p7:f",
       prompt: "Was kennzeichnet „Dominant“?",
-      answer: "Setzt sich im Phänotyp durch, und zwar gilt: gegenüber rezessiv.",
-      wrong: ["Das Dominant ist kurz gesagt: verschiedene Allele.", "Das Dominant ist hier: Austausch homologer Abschnitte.", "Das Dominant ist hier: Vervielfältigung von DNA."],
+      answer: "Setzt sich im Phänotyp durch durch gegenüber rezessiv.", wrong: ["Das Dominant ist verschiedene Allele.", "Es ist eine Austausch Homologer Abschnitte.", "Es ist eine Vervielfältigung von DNA."],
       explanation: "Gegenüber rezessiv. Bezug: Dominant. Dominant bedeutet: setzt sich im Phänotyp durch.",
       wissen: "Gegenüber rezessiv. Bezug: Dominant. Dominant bedeutet: setzt sich im Phänotyp durch.",
       flashFront: "Dominant",
@@ -4999,8 +4535,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-populationsgenetik:p8:f",
       prompt: "Was kennzeichnet „Heterozygot“?",
-      answer: "Das Heterozygot ist kurz gesagt: verschiedene Allele.",
-      wrong: ["Das Heterozygot ist hier: Austausch homologer Abschnitte.", "Das Heterozygot ist hier: Vervielfältigung von DNA.", "Das Heterozygot ist hier: Transportvehikel für DNA."],
+      answer: "Das Heterozygot ist verschiedene Allele.", wrong: ["Es ist eine Austausch Homologer Abschnitte.", "Es ist eine Vervielfältigung von DNA.", "Es ist eine Transportvehikel für DNA."],
       explanation: "Aa. Bezug: Heterozygot. Heterozygot bedeutet: verschiedene Allele.",
       wissen: "Aa. Bezug: Heterozygot. Heterozygot bedeutet: verschiedene Allele.",
       flashFront: "Heterozygot",
@@ -5008,8 +4543,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-populationsgenetik:p9:f",
       prompt: "Was kennzeichnet „Crossing-over“?",
-      answer: "Der Crossing-over ist hier: Austausch homologer Abschnitte, und zwar gilt: rekombination.",
-      wrong: ["Der Crossing-over ist hier: Vervielfältigung von DNA.", "Der Crossing-over ist hier: Transportvehikel für DNA.", "Der Crossing-over ist hier: Gene auf einem Chromosom."],
+      answer: "Er ist eine Austausch Homologer Abschnitte durch Rekombination.", wrong: ["Er ist eine Vervielfältigung von DNA.", "Er ist eine Transportvehikel für DNA.", "Er ist eine Gene auf einem Chromosom."],
       explanation: "Rekombination. Bezug: Crossing-over. Crossing-over bedeutet: Austausch homologer Abschnitte.",
       wissen: "Rekombination. Bezug: Crossing-over. Crossing-over bedeutet: Austausch homologer Abschnitte.",
       flashFront: "Crossing-over",
@@ -5017,8 +4551,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-populationsgenetik:p10:f",
       prompt: "Was kennzeichnet „PCR“?",
-      answer: "Das PCR ist hier: Vervielfältigung von DNA, und zwar gilt: labortechnik.",
-      wrong: ["Das PCR ist hier: Transportvehikel für DNA.", "Das PCR ist hier: Gene auf einem Chromosom.", "Das PCR ist kurz gesagt: Basenfolge bestimmen."],
+      answer: "Es ist eine Vervielfältigung von DNA durch Labortechnik.", wrong: ["Es ist eine Transportvehikel für DNA.", "Es ist eine Gene auf einem Chromosom.", "Das PCR ist das Basenfolge Bestimmen."],
       explanation: "Labortechnik. Bezug: PCR. PCR bedeutet: Vervielfältigung von DNA.",
       wissen: "Labortechnik. Bezug: PCR. PCR bedeutet: Vervielfältigung von DNA.",
       flashFront: "PCR",
@@ -5026,8 +4559,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-populationsgenetik:p11:f",
       prompt: "Was kennzeichnet „Vektor“?",
-      answer: "Der Vektor ist hier: Transportvehikel für DNA, und zwar gilt: z. B. Plasmid.",
-      wrong: ["Der Vektor ist hier: Gene auf einem Chromosom.", "Der Vektor ist kurz gesagt: Basenfolge bestimmen.", "Der Vektor ist kurz gesagt: präzise Gen-Schere."],
+      answer: "Er ist eine Transportvehikel für DNA durch Z. B. Plasmid.", wrong: ["Er ist eine Gene auf einem Chromosom.", "Der Vektor ist der Basenfolge Bestimmen.", "Der Vektor ist präzise Gen-Schere."],
       explanation: "z. B. Plasmid. Bezug: Vektor. Vektor bedeutet: Transportvehikel für DNA.",
       wissen: "z. B. Plasmid. Bezug: Vektor. Vektor bedeutet: Transportvehikel für DNA.",
       flashFront: "Vektor",
@@ -5056,8 +4588,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-krebsgenetik:p0:f",
       prompt: "Was kennzeichnet „Mutation“?",
-      answer: "Die Mutation ist hier: Änderung der DNA, und zwar gilt: rohstoff der Evolution.",
-      wrong: ["Die Mutation ist hier: gezielter Eingriff in DNA.", "Die Mutation ist hier: Vererbung in Familien.", "Die Mutation ist hier: DNA → mRNA."],
+      answer: "Sie ist eine Änderung der DNA durch Rohstoff der Evolution.", wrong: ["Sie ist gezielter Eingriff in DNA.", "Sie ist eine Vererbung in Familien.", "Sie ist eine DNA → MRNA."],
       explanation: "Rohstoff der Evolution. Bezug: Mutation. Mutation bedeutet: Änderung der DNA.",
       wissen: "Rohstoff der Evolution. Bezug: Mutation. Mutation bedeutet: Änderung der DNA.",
       flashFront: "Mutation",
@@ -5065,8 +4596,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-krebsgenetik:p1:f",
       prompt: "Was kennzeichnet „Gentechnik“?",
-      answer: "Die Gentechnik ist hier: gezielter Eingriff in DNA, und zwar gilt: anwendung + Ethik.",
-      wrong: ["Die Gentechnik ist hier: Vererbung in Familien.", "Die Gentechnik ist hier: DNA → mRNA.", "Die Gentechnik ist hier: Reparatur/Ersatz defekter Gene."],
+      answer: "Sie ist gezielter Eingriff in DNA durch anwendung + Ethik.", wrong: ["Sie ist eine Vererbung in Familien.", "Sie ist eine DNA → MRNA.", "Sie ist eine Reparatur/Ersatz Defekter Gene."],
       explanation: "Anwendung + Ethik. Bezug: Gentechnik. Gentechnik bedeutet: gezielter Eingriff in DNA.",
       wissen: "Anwendung + Ethik. Bezug: Gentechnik. Gentechnik bedeutet: gezielter Eingriff in DNA.",
       flashFront: "Gentechnik",
@@ -5074,8 +4604,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-krebsgenetik:p2:f",
       prompt: "Was kennzeichnet „Stammbaum“?",
-      answer: "Das Stammbaum ist hier: Vererbung in Familien, und zwar gilt: humangenetik.",
-      wrong: ["Das Stammbaum ist hier: DNA → mRNA.", "Das Stammbaum ist hier: Reparatur/Ersatz defekter Gene.", "Das Stammbaum ist hier: schneidet DNA gezielt."],
+      answer: "Es ist eine Vererbung in Familien durch Humangenetik.", wrong: ["Es ist eine DNA → MRNA.", "Es ist eine Reparatur/Ersatz Defekter Gene.", "Das Stammbaum ist schneidet DNA gezielt."],
       explanation: "Humangenetik. Bezug: Stammbaum. Stammbaum bedeutet: Vererbung in Familien.",
       wissen: "Humangenetik. Bezug: Stammbaum. Stammbaum bedeutet: Vererbung in Familien.",
       flashFront: "Stammbaum",
@@ -5083,8 +4612,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-krebsgenetik:p3:f",
       prompt: "Was kennzeichnet „Transkription“?",
-      answer: "Die Transkription ist hier: DNA → mRNA, und zwar gilt: im Zellkern/Nucleoid.",
-      wrong: ["Die Transkription ist hier: Reparatur/Ersatz defekter Gene.", "Die Transkription ist hier: schneidet DNA gezielt.", "Die Transkription ist kurz gesagt: genetische Ausstattung."],
+      answer: "Sie ist eine DNA → MRNA durch im Zellkern/Nucleoid.", wrong: ["Sie ist eine Reparatur/Ersatz Defekter Gene.", "Die Transkription ist schneidet DNA gezielt.", "Die Transkription ist genetische Ausstattung."],
       explanation: "im Zellkern/Nucleoid. Bezug: Transkription. Transkription bedeutet: DNA → mRNA.",
       wissen: "im Zellkern/Nucleoid. Bezug: Transkription. Transkription bedeutet: DNA → mRNA.",
       flashFront: "Transkription",
@@ -5092,8 +4620,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-krebsgenetik:p4:f",
       prompt: "Was kennzeichnet „Gentherapie“?",
-      answer: "Die Gentherapie ist hier: Reparatur/Ersatz defekter Gene, und zwar gilt: ethisch sensibel.",
-      wrong: ["Die Gentherapie ist hier: schneidet DNA gezielt.", "Die Gentherapie ist kurz gesagt: genetische Ausstattung.", "Die Gentherapie ist hier: nur homozygot sichtbar."],
+      answer: "Sie ist eine Reparatur/Ersatz Defekter Gene durch Ethisch Sensibel.", wrong: ["Die Gentherapie ist schneidet DNA gezielt.", "Die Gentherapie ist genetische Ausstattung.", "Die Gentherapie ist nur homozygot sichtbar."],
       explanation: "ethisch sensibel. Bezug: Gentherapie. Gentherapie bedeutet: Reparatur/Ersatz defekter Gene.",
       wissen: "ethisch sensibel. Bezug: Gentherapie. Gentherapie bedeutet: Reparatur/Ersatz defekter Gene.",
       flashFront: "Gentherapie",
@@ -5101,8 +4628,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-krebsgenetik:p5:f",
       prompt: "Was kennzeichnet „Restriktionsenzym“?",
-      answer: "Das Restriktionsenzym ist hier: schneidet DNA gezielt, und zwar gilt: klonierung.",
-      wrong: ["Das Restriktionsenzym ist kurz gesagt: genetische Ausstattung.", "Das Restriktionsenzym ist hier: nur homozygot sichtbar.", "Das Restriktionsenzym ist kurz gesagt: Reduktionsteilung."],
+      answer: "Es ist schneidet DNA gezielt durch klonierung.", wrong: ["Das Restriktionsenzym ist genetische Ausstattung.", "Das Restriktionsenzym ist nur homozygot sichtbar.", "Das Restriktionsenzym ist das Reduktionsteilung."],
       explanation: "Klonierung. Bezug: Restriktionsenzym. Restriktionsenzym bedeutet: schneidet DNA gezielt.",
       wissen: "Klonierung. Bezug: Restriktionsenzym. Restriktionsenzym bedeutet: schneidet DNA gezielt.",
       flashFront: "Restriktionsenzym",
@@ -5110,8 +4636,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-krebsgenetik:p6:f",
       prompt: "Was kennzeichnet „Genotyp“?",
-      answer: "Das Genotyp ist kurz gesagt: genetische Ausstattung, und zwar gilt: nicht direkt sichtbar.",
-      wrong: ["Das Genotyp ist hier: nur homozygot sichtbar.", "Das Genotyp ist kurz gesagt: Reduktionsteilung.", "Das Genotyp ist hier: Gene auf einem Chromosom."],
+      answer: "Es ist genetische Ausstattung durch nicht direkt sichtbar.", wrong: ["Das Genotyp ist nur homozygot sichtbar.", "Das Genotyp ist das Reduktionsteilung.", "Es ist eine Gene auf einem Chromosom."],
       explanation: "Nicht direkt sichtbar. Bezug: Genotyp. Genotyp bedeutet: genetische Ausstattung.",
       wissen: "Nicht direkt sichtbar. Bezug: Genotyp. Genotyp bedeutet: genetische Ausstattung.",
       flashFront: "Genotyp",
@@ -5119,8 +4644,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-krebsgenetik:p7:f",
       prompt: "Was kennzeichnet „Rezessiv“?",
-      answer: "Das Rezessiv ist hier: nur homozygot sichtbar, und zwar gilt: träger möglich.",
-      wrong: ["Das Rezessiv ist kurz gesagt: Reduktionsteilung.", "Das Rezessiv ist hier: Gene auf einem Chromosom.", "Das Rezessiv ist kurz gesagt: Basenfolge bestimmen."],
+      answer: "Es ist nur homozygot sichtbar durch träger möglich.", wrong: ["Das Rezessiv ist das Reduktionsteilung.", "Es ist eine Gene auf einem Chromosom.", "Das Rezessiv ist das Basenfolge Bestimmen."],
       explanation: "Träger möglich. Bezug: Rezessiv. Rezessiv bedeutet: nur homozygot sichtbar.",
       wissen: "Träger möglich. Bezug: Rezessiv. Rezessiv bedeutet: nur homozygot sichtbar.",
       flashFront: "Rezessiv",
@@ -5128,8 +4652,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-krebsgenetik:p8:f",
       prompt: "Was kennzeichnet „Meiose“?",
-      answer: "Die Meiose ist kurz gesagt: Reduktionsteilung, und zwar gilt: haploide Gameten.",
-      wrong: ["Die Meiose ist hier: Gene auf einem Chromosom.", "Die Meiose ist kurz gesagt: Basenfolge bestimmen.", "Die Meiose ist kurz gesagt: präzise Gen-Schere."],
+      answer: "Sie ist eine Reduktionsteilung durch Haploide Gameten.", wrong: ["Sie ist eine Gene auf einem Chromosom.", "Die Meiose ist die Basenfolge Bestimmen.", "Die Meiose ist präzise Gen-Schere."],
       explanation: "Haploide Gameten. Bezug: Meiose. Meiose bedeutet: Reduktionsteilung.",
       wissen: "Haploide Gameten. Bezug: Meiose. Meiose bedeutet: Reduktionsteilung.",
       flashFront: "Meiose",
@@ -5137,8 +4660,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-krebsgenetik:p9:f",
       prompt: "Was kennzeichnet „Kopplung“?",
-      answer: "Die Kopplung ist hier: Gene auf einem Chromosom, und zwar gilt: selten unabhängig.",
-      wrong: ["Die Kopplung ist kurz gesagt: Basenfolge bestimmen.", "Die Kopplung ist kurz gesagt: präzise Gen-Schere.", "Die Kopplung ist hier: Änderung der DNA."],
+      answer: "Sie ist eine Gene auf einem Chromosom durch Selten Unabhängig.", wrong: ["Die Kopplung ist die Basenfolge Bestimmen.", "Die Kopplung ist präzise Gen-Schere.", "Sie ist eine Änderung der DNA."],
       explanation: "selten unabhängig. Bezug: Kopplung. Kopplung bedeutet: Gene auf einem Chromosom.",
       wissen: "selten unabhängig. Bezug: Kopplung. Kopplung bedeutet: Gene auf einem Chromosom.",
       flashFront: "Kopplung",
@@ -5146,8 +4668,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-krebsgenetik:p10:f",
       prompt: "Was kennzeichnet „Sequenzierung“?",
-      answer: "Die Sequenzierung ist kurz gesagt: Basenfolge bestimmen, und zwar gilt: diagnostik.",
-      wrong: ["Die Sequenzierung ist kurz gesagt: präzise Gen-Schere.", "Die Sequenzierung ist hier: Änderung der DNA.", "Die Sequenzierung ist hier: gezielter Eingriff in DNA."],
+      answer: "Sie ist eine Basenfolge Bestimmen durch Diagnostik.", wrong: ["Die Sequenzierung ist präzise Gen-Schere.", "Sie ist eine Änderung der DNA.", "Sie ist gezielter Eingriff in DNA."],
       explanation: "Diagnostik. Bezug: Sequenzierung. Sequenzierung bedeutet: Basenfolge bestimmen.",
       wissen: "Diagnostik. Bezug: Sequenzierung. Sequenzierung bedeutet: Basenfolge bestimmen.",
       flashFront: "Sequenzierung",
@@ -5155,8 +4676,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-krebsgenetik:p11:f",
       prompt: "Was kennzeichnet „CRISPR“?",
-      answer: "Das CRISPR ist kurz gesagt: präzise Gen-Schere, und zwar gilt: moderne Editierung.",
-      wrong: ["Das CRISPR ist hier: Änderung der DNA.", "Das CRISPR ist hier: gezielter Eingriff in DNA.", "Das CRISPR ist hier: Vererbung in Familien."],
+      answer: "Es ist präzise Gen-Schere durch moderne Editierung.", wrong: ["Es ist eine Änderung der DNA.", "Es ist gezielter Eingriff in DNA.", "Es ist eine Vererbung in Familien."],
       explanation: "moderne Editierung. Bezug: CRISPR. CRISPR bedeutet: präzise Gen-Schere.",
       wissen: "moderne Editierung. Bezug: CRISPR. CRISPR bedeutet: präzise Gen-Schere.",
       flashFront: "CRISPR",
@@ -5185,8 +4705,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-genomeditierung:p0:f",
       prompt: "Was kennzeichnet „PCR“?",
-      answer: "Das PCR ist hier: Vervielfältigung von DNA, und zwar gilt: labortechnik.",
-      wrong: ["Das PCR ist hier: Transportvehikel für DNA.", "Das PCR ist kurz gesagt: Chromosomenbild.", "Das PCR ist hier: mRNA → Protein."],
+      answer: "Es ist eine Vervielfältigung von DNA durch Labortechnik.", wrong: ["Es ist eine Transportvehikel für DNA.", "Das PCR ist das Chromosomenbild.", "Das PCR ist mRNA → Protein."],
       explanation: "Labortechnik. Bezug: PCR. PCR bedeutet: Vervielfältigung von DNA.",
       wissen: "Labortechnik. Bezug: PCR. PCR bedeutet: Vervielfältigung von DNA.",
       flashFront: "PCR",
@@ -5194,8 +4713,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-genomeditierung:p1:f",
       prompt: "Was kennzeichnet „Vektor“?",
-      answer: "Der Vektor ist hier: Transportvehikel für DNA, und zwar gilt: z. B. Plasmid.",
-      wrong: ["Der Vektor ist kurz gesagt: Chromosomenbild.", "Der Vektor ist hier: mRNA → Protein.", "Der Vektor ist kurz gesagt: Einzelbasenaustausch."],
+      answer: "Er ist eine Transportvehikel für DNA durch Z. B. Plasmid.", wrong: ["Der Vektor ist der Chromosomenbild.", "Der Vektor ist mRNA → Protein.", "Der Vektor ist der Einzelbasenaustausch."],
       explanation: "z. B. Plasmid. Bezug: Vektor. Vektor bedeutet: Transportvehikel für DNA.",
       wissen: "z. B. Plasmid. Bezug: Vektor. Vektor bedeutet: Transportvehikel für DNA.",
       flashFront: "Vektor",
@@ -5203,8 +4721,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-genomeditierung:p2:f",
       prompt: "Was kennzeichnet „Karyogramm“?",
-      answer: "Das Karyogramm ist kurz gesagt: Chromosomenbild, und zwar gilt: aneuploidie sichtbar.",
-      wrong: ["Das Karyogramm ist hier: mRNA → Protein.", "Das Karyogramm ist kurz gesagt: Einzelbasenaustausch.", "Das Karyogramm ist hier: neu kombinierte DNA."],
+      answer: "Es ist eine Chromosomenbild durch Aneuploidie Sichtbar.", wrong: ["Das Karyogramm ist mRNA → Protein.", "Das Karyogramm ist das Einzelbasenaustausch.", "Das Karyogramm ist neu kombinierte DNA."],
       explanation: "Aneuploidie sichtbar. Bezug: Karyogramm. Karyogramm bedeutet: Chromosomenbild.",
       wissen: "Aneuploidie sichtbar. Bezug: Karyogramm. Karyogramm bedeutet: Chromosomenbild.",
       flashFront: "Karyogramm",
@@ -5212,8 +4729,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-genomeditierung:p3:f",
       prompt: "Was kennzeichnet „Translation“?",
-      answer: "Die Translation ist hier: mRNA → Protein, und zwar gilt: am Ribosom.",
-      wrong: ["Die Translation ist kurz gesagt: Einzelbasenaustausch.", "Die Translation ist hier: neu kombinierte DNA.", "Die Translation ist kurz gesagt: erscheinendes Merkmal."],
+      answer: "Sie ist mRNA → Protein durch am Ribosom.", wrong: ["Die Translation ist die Einzelbasenaustausch.", "Die Translation ist neu kombinierte DNA.", "Die Translation ist erscheinendes Merkmal."],
       explanation: "am Ribosom. Bezug: Translation. Translation bedeutet: mRNA → Protein.",
       wissen: "am Ribosom. Bezug: Translation. Translation bedeutet: mRNA → Protein.",
       flashFront: "Translation",
@@ -5221,8 +4737,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-genomeditierung:p4:f",
       prompt: "Was kennzeichnet „SNP“?",
-      answer: "Das SNP ist kurz gesagt: Einzelbasenaustausch, und zwar gilt: variabilität.",
-      wrong: ["Das SNP ist hier: neu kombinierte DNA.", "Das SNP ist kurz gesagt: erscheinendes Merkmal.", "Das SNP ist kurz gesagt: gleiche Allele."],
+      answer: "Es ist eine Einzelbasenaustausch durch Variabilität.", wrong: ["Das SNP ist neu kombinierte DNA.", "Das SNP ist erscheinendes Merkmal.", "Das SNP ist gleiche Allele."],
       explanation: "Variabilität. Bezug: SNP. SNP bedeutet: Einzelbasenaustausch.",
       wissen: "Variabilität. Bezug: SNP. SNP bedeutet: Einzelbasenaustausch.",
       flashFront: "SNP",
@@ -5230,8 +4745,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-genomeditierung:p5:f",
       prompt: "Was kennzeichnet „Rekombinant“?",
-      answer: "Das Rekombinant ist hier: neu kombinierte DNA, und zwar gilt: produkt der Gentechnik.",
-      wrong: ["Das Rekombinant ist kurz gesagt: erscheinendes Merkmal.", "Das Rekombinant ist kurz gesagt: gleiche Allele.", "Das Rekombinant ist hier: Kernteilung für Wachstum."],
+      answer: "Es ist neu kombinierte DNA durch produkt der Gentechnik.", wrong: ["Das Rekombinant ist erscheinendes Merkmal.", "Das Rekombinant ist gleiche Allele.", "Es ist ein Kernteilung für Wachstum."],
       explanation: "Produkt der Gentechnik. Bezug: Rekombinant. Rekombinant bedeutet: neu kombinierte DNA.",
       wissen: "Produkt der Gentechnik. Bezug: Rekombinant. Rekombinant bedeutet: neu kombinierte DNA.",
       flashFront: "Rekombinant",
@@ -5239,8 +4753,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-genomeditierung:p6:f",
       prompt: "Was kennzeichnet „Phänotyp“?",
-      answer: "Das Phänotyp ist kurz gesagt: erscheinendes Merkmal, und zwar gilt: genotyp + Umwelt.",
-      wrong: ["Das Phänotyp ist kurz gesagt: gleiche Allele.", "Das Phänotyp ist hier: Kernteilung für Wachstum.", "Das Phänotyp ist hier: Änderung der DNA."],
+      answer: "Es ist erscheinendes Merkmal durch genotyp + Umwelt.", wrong: ["Das Phänotyp ist gleiche Allele.", "Es ist ein Kernteilung für Wachstum.", "Es ist eine Änderung der DNA."],
       explanation: "Genotyp + Umwelt. Bezug: Phänotyp. Phänotyp bedeutet: erscheinendes Merkmal.",
       wissen: "Genotyp + Umwelt. Bezug: Phänotyp. Phänotyp bedeutet: erscheinendes Merkmal.",
       flashFront: "Phänotyp",
@@ -5248,8 +4761,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-genomeditierung:p7:f",
       prompt: "Was kennzeichnet „Homozygot“?",
-      answer: "Das Homozygot ist kurz gesagt: gleiche Allele, und zwar gilt: aA oder aa.",
-      wrong: ["Das Homozygot ist hier: Kernteilung für Wachstum.", "Das Homozygot ist hier: Änderung der DNA.", "Das Homozygot ist hier: gezielter Eingriff in DNA."],
+      answer: "Es ist gleiche Allele durch aA oder aa.", wrong: ["Es ist ein Kernteilung für Wachstum.", "Es ist eine Änderung der DNA.", "Es ist gezielter Eingriff in DNA."],
       explanation: "AA oder aa. Bezug: Homozygot. Homozygot bedeutet: gleiche Allele.",
       wissen: "AA oder aa. Bezug: Homozygot. Homozygot bedeutet: gleiche Allele.",
       flashFront: "Homozygot",
@@ -5257,8 +4769,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-genomeditierung:p8:f",
       prompt: "Was kennzeichnet „Mitose“?",
-      answer: "Die Mitose ist hier: Kernteilung für Wachstum, und zwar gilt: tochterzellen identisch.",
-      wrong: ["Die Mitose ist hier: Änderung der DNA.", "Die Mitose ist hier: gezielter Eingriff in DNA.", "Die Mitose ist hier: Vererbung in Familien."],
+      answer: "Sie ist ein Kernteilung für Wachstum durch Tochterzellen Identisch.", wrong: ["Sie ist eine Änderung der DNA.", "Sie ist gezielter Eingriff in DNA.", "Sie ist eine Vererbung in Familien."],
       explanation: "Tochterzellen identisch. Bezug: Mitose. Mitose bedeutet: Kernteilung für Wachstum.",
       wissen: "Tochterzellen identisch. Bezug: Mitose. Mitose bedeutet: Kernteilung für Wachstum.",
       flashFront: "Mitose",
@@ -5266,8 +4777,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-genomeditierung:p9:f",
       prompt: "Was kennzeichnet „Mutation“?",
-      answer: "Die Mutation ist hier: Änderung der DNA, und zwar gilt: rohstoff der Evolution.",
-      wrong: ["Die Mutation ist hier: gezielter Eingriff in DNA.", "Die Mutation ist hier: Vererbung in Familien.", "Die Mutation ist hier: Vervielfältigung von DNA."],
+      answer: "Sie ist eine Änderung der DNA durch Rohstoff der Evolution.", wrong: ["Sie ist gezielter Eingriff in DNA.", "Sie ist eine Vererbung in Familien.", "Sie ist eine Vervielfältigung von DNA."],
       explanation: "Rohstoff der Evolution. Bezug: Mutation. Mutation bedeutet: Änderung der DNA.",
       wissen: "Rohstoff der Evolution. Bezug: Mutation. Mutation bedeutet: Änderung der DNA.",
       flashFront: "Mutation",
@@ -5275,8 +4785,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-genomeditierung:p10:f",
       prompt: "Was kennzeichnet „Gentechnik“?",
-      answer: "Die Gentechnik ist hier: gezielter Eingriff in DNA, und zwar gilt: anwendung + Ethik.",
-      wrong: ["Die Gentechnik ist hier: Vererbung in Familien.", "Die Gentechnik ist hier: Vervielfältigung von DNA.", "Die Gentechnik ist hier: Transportvehikel für DNA."],
+      answer: "Sie ist gezielter Eingriff in DNA durch anwendung + Ethik.", wrong: ["Sie ist eine Vererbung in Familien.", "Sie ist eine Vervielfältigung von DNA.", "Sie ist eine Transportvehikel für DNA."],
       explanation: "Anwendung + Ethik. Bezug: Gentechnik. Gentechnik bedeutet: gezielter Eingriff in DNA.",
       wissen: "Anwendung + Ethik. Bezug: Gentechnik. Gentechnik bedeutet: gezielter Eingriff in DNA.",
       flashFront: "Gentechnik",
@@ -5284,8 +4793,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-genomeditierung:p11:f",
       prompt: "Was kennzeichnet „Stammbaum“?",
-      answer: "Das Stammbaum ist hier: Vererbung in Familien, und zwar gilt: humangenetik.",
-      wrong: ["Das Stammbaum ist hier: Vervielfältigung von DNA.", "Das Stammbaum ist hier: Transportvehikel für DNA.", "Das Stammbaum ist kurz gesagt: Chromosomenbild."],
+      answer: "Es ist eine Vererbung in Familien durch Humangenetik.", wrong: ["Es ist eine Vervielfältigung von DNA.", "Es ist eine Transportvehikel für DNA.", "Das Stammbaum ist das Chromosomenbild."],
       explanation: "Humangenetik. Bezug: Stammbaum. Stammbaum bedeutet: Vererbung in Familien.",
       wissen: "Humangenetik. Bezug: Stammbaum. Stammbaum bedeutet: Vererbung in Familien.",
       flashFront: "Stammbaum",
@@ -5314,8 +4822,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-diagnostik:p0:f",
       prompt: "Was kennzeichnet „Sequenzierung“?",
-      answer: "Die Sequenzierung ist kurz gesagt: Basenfolge bestimmen, und zwar gilt: diagnostik.",
-      wrong: ["Die Sequenzierung ist kurz gesagt: präzise Gen-Schere.", "Die Sequenzierung ist kurz gesagt: Basentriplett.", "Die Sequenzierung ist hier: Regulation ohne Sequenzänderung."],
+      answer: "Sie ist eine Basenfolge Bestimmen durch Diagnostik.", wrong: ["Die Sequenzierung ist präzise Gen-Schere.", "Die Sequenzierung ist die Basentriplett.", "Sie ist eine Regulation ohne Sequenzänderung."],
       explanation: "Diagnostik. Bezug: Sequenzierung. Sequenzierung bedeutet: Basenfolge bestimmen.",
       wissen: "Diagnostik. Bezug: Sequenzierung. Sequenzierung bedeutet: Basenfolge bestimmen.",
       flashFront: "Sequenzierung",
@@ -5323,8 +4830,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-diagnostik:p1:f",
       prompt: "Was kennzeichnet „CRISPR“?",
-      answer: "Das CRISPR ist kurz gesagt: präzise Gen-Schere, und zwar gilt: moderne Editierung.",
-      wrong: ["Das CRISPR ist kurz gesagt: Basentriplett.", "Das CRISPR ist hier: Regulation ohne Sequenzänderung.", "Das CRISPR ist kurz gesagt: ringförmige DNA."],
+      answer: "Es ist präzise Gen-Schere durch moderne Editierung.", wrong: ["Das CRISPR ist das Basentriplett.", "Es ist eine Regulation ohne Sequenzänderung.", "Das CRISPR ist ringförmige DNA."],
       explanation: "moderne Editierung. Bezug: CRISPR. CRISPR bedeutet: präzise Gen-Schere.",
       wissen: "moderne Editierung. Bezug: CRISPR. CRISPR bedeutet: präzise Gen-Schere.",
       flashFront: "CRISPR",
@@ -5332,8 +4838,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-diagnostik:p2:f",
       prompt: "Was kennzeichnet „Codon“?",
-      answer: "Das Codon ist kurz gesagt: Basentriplett, und zwar gilt: aminosäure-Code.",
-      wrong: ["Das Codon ist hier: Regulation ohne Sequenzänderung.", "Das Codon ist kurz gesagt: ringförmige DNA.", "Das Codon ist hier: Variante eines Gens."],
+      answer: "Es ist eine Basentriplett durch Aminosäure-Code.", wrong: ["Es ist eine Regulation ohne Sequenzänderung.", "Das Codon ist ringförmige DNA.", "Es ist eine Variante Eines Gens."],
       explanation: "Aminosäure-Code. Bezug: Codon. Codon bedeutet: Basentriplett.",
       wissen: "Aminosäure-Code. Bezug: Codon. Codon bedeutet: Basentriplett.",
       flashFront: "Codon",
@@ -5341,8 +4846,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-diagnostik:p3:f",
       prompt: "Was kennzeichnet „Epigenetik“?",
-      answer: "Die Epigenetik ist hier: Regulation ohne Sequenzänderung, und zwar gilt: z. B. Methylierung.",
-      wrong: ["Die Epigenetik ist kurz gesagt: ringförmige DNA.", "Die Epigenetik ist hier: Variante eines Gens.", "Die Epigenetik ist kurz gesagt: setzt sich im Phänotyp durch."],
+      answer: "Sie ist eine Regulation ohne Sequenzänderung durch Z. B. Methylierung.", wrong: ["Die Epigenetik ist ringförmige DNA.", "Sie ist eine Variante Eines Gens.", "Setzt sich im Phänotyp durch."],
       explanation: "z. B. Methylierung. Bezug: Epigenetik. Epigenetik bedeutet: Regulation ohne Sequenzänderung.",
       wissen: "z. B. Methylierung. Bezug: Epigenetik. Epigenetik bedeutet: Regulation ohne Sequenzänderung.",
       flashFront: "Epigenetik",
@@ -5350,8 +4854,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-diagnostik:p4:f",
       prompt: "Was kennzeichnet „Plasmid“?",
-      answer: "Das Plasmid ist kurz gesagt: ringförmige DNA, und zwar gilt: bei Bakterien/Gentechnik.",
-      wrong: ["Das Plasmid ist hier: Variante eines Gens.", "Das Plasmid ist kurz gesagt: setzt sich im Phänotyp durch.", "Das Plasmid ist kurz gesagt: verschiedene Allele."],
+      answer: "Es ist ringförmige DNA durch bei Bakterien/Gentechnik.", wrong: ["Es ist eine Variante Eines Gens.", "Setzt sich im Phänotyp durch.", "Das Plasmid ist verschiedene Allele."],
       explanation: "bei Bakterien/Gentechnik. Bezug: Plasmid. Plasmid bedeutet: ringförmige DNA.",
       wissen: "bei Bakterien/Gentechnik. Bezug: Plasmid. Plasmid bedeutet: ringförmige DNA.",
       flashFront: "Plasmid",
@@ -5359,8 +4862,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-diagnostik:p5:f",
       prompt: "Was kennzeichnet „Allel“?",
-      answer: "Das Allel ist hier: Variante eines Gens, und zwar gilt: an einem Genort.",
-      wrong: ["Das Allel ist kurz gesagt: setzt sich im Phänotyp durch.", "Das Allel ist kurz gesagt: verschiedene Allele.", "Das Allel ist hier: Austausch homologer Abschnitte."],
+      answer: "Es ist eine Variante Eines Gens durch an einem Genort.", wrong: ["Setzt sich im Phänotyp durch.", "Das Allel ist verschiedene Allele.", "Es ist eine Austausch Homologer Abschnitte."],
       explanation: "An einem Genort. Bezug: Allel. Allel bedeutet: Variante eines Gens.",
       wissen: "An einem Genort. Bezug: Allel. Allel bedeutet: Variante eines Gens.",
       flashFront: "Allel",
@@ -5368,8 +4870,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-diagnostik:p6:f",
       prompt: "Was kennzeichnet „Dominant“?",
-      answer: "Setzt sich im Phänotyp durch, und zwar gilt: gegenüber rezessiv.",
-      wrong: ["Das Dominant ist kurz gesagt: verschiedene Allele.", "Das Dominant ist hier: Austausch homologer Abschnitte.", "Das Dominant ist hier: Vervielfältigung von DNA."],
+      answer: "Setzt sich im Phänotyp durch durch gegenüber rezessiv.", wrong: ["Das Dominant ist verschiedene Allele.", "Es ist eine Austausch Homologer Abschnitte.", "Es ist eine Vervielfältigung von DNA."],
       explanation: "Gegenüber rezessiv. Bezug: Dominant. Dominant bedeutet: setzt sich im Phänotyp durch.",
       wissen: "Gegenüber rezessiv. Bezug: Dominant. Dominant bedeutet: setzt sich im Phänotyp durch.",
       flashFront: "Dominant",
@@ -5377,8 +4878,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-diagnostik:p7:f",
       prompt: "Was kennzeichnet „Heterozygot“?",
-      answer: "Das Heterozygot ist kurz gesagt: verschiedene Allele.",
-      wrong: ["Das Heterozygot ist hier: Austausch homologer Abschnitte.", "Das Heterozygot ist hier: Vervielfältigung von DNA.", "Das Heterozygot ist hier: Transportvehikel für DNA."],
+      answer: "Das Heterozygot ist verschiedene Allele.", wrong: ["Es ist eine Austausch Homologer Abschnitte.", "Es ist eine Vervielfältigung von DNA.", "Es ist eine Transportvehikel für DNA."],
       explanation: "Aa. Bezug: Heterozygot. Heterozygot bedeutet: verschiedene Allele.",
       wissen: "Aa. Bezug: Heterozygot. Heterozygot bedeutet: verschiedene Allele.",
       flashFront: "Heterozygot",
@@ -5386,8 +4886,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-diagnostik:p8:f",
       prompt: "Was kennzeichnet „Crossing-over“?",
-      answer: "Der Crossing-over ist hier: Austausch homologer Abschnitte, und zwar gilt: rekombination.",
-      wrong: ["Der Crossing-over ist hier: Vervielfältigung von DNA.", "Der Crossing-over ist hier: Transportvehikel für DNA.", "Der Crossing-over ist kurz gesagt: Chromosomenbild."],
+      answer: "Er ist eine Austausch Homologer Abschnitte durch Rekombination.", wrong: ["Er ist eine Vervielfältigung von DNA.", "Er ist eine Transportvehikel für DNA.", "Der Crossing-over ist der Chromosomenbild."],
       explanation: "Rekombination. Bezug: Crossing-over. Crossing-over bedeutet: Austausch homologer Abschnitte.",
       wissen: "Rekombination. Bezug: Crossing-over. Crossing-over bedeutet: Austausch homologer Abschnitte.",
       flashFront: "Crossing-over",
@@ -5395,8 +4894,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-diagnostik:p9:f",
       prompt: "Was kennzeichnet „PCR“?",
-      answer: "Das PCR ist hier: Vervielfältigung von DNA, und zwar gilt: labortechnik.",
-      wrong: ["Das PCR ist hier: Transportvehikel für DNA.", "Das PCR ist kurz gesagt: Chromosomenbild.", "Das PCR ist kurz gesagt: Basenfolge bestimmen."],
+      answer: "Es ist eine Vervielfältigung von DNA durch Labortechnik.", wrong: ["Es ist eine Transportvehikel für DNA.", "Das PCR ist das Chromosomenbild.", "Das PCR ist das Basenfolge Bestimmen."],
       explanation: "Labortechnik. Bezug: PCR. PCR bedeutet: Vervielfältigung von DNA.",
       wissen: "Labortechnik. Bezug: PCR. PCR bedeutet: Vervielfältigung von DNA.",
       flashFront: "PCR",
@@ -5404,8 +4902,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-diagnostik:p10:f",
       prompt: "Was kennzeichnet „Vektor“?",
-      answer: "Der Vektor ist hier: Transportvehikel für DNA, und zwar gilt: z. B. Plasmid.",
-      wrong: ["Der Vektor ist kurz gesagt: Chromosomenbild.", "Der Vektor ist kurz gesagt: Basenfolge bestimmen.", "Der Vektor ist kurz gesagt: präzise Gen-Schere."],
+      answer: "Er ist eine Transportvehikel für DNA durch Z. B. Plasmid.", wrong: ["Der Vektor ist der Chromosomenbild.", "Der Vektor ist der Basenfolge Bestimmen.", "Der Vektor ist präzise Gen-Schere."],
       explanation: "z. B. Plasmid. Bezug: Vektor. Vektor bedeutet: Transportvehikel für DNA.",
       wissen: "z. B. Plasmid. Bezug: Vektor. Vektor bedeutet: Transportvehikel für DNA.",
       flashFront: "Vektor",
@@ -5413,8 +4910,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-diagnostik:p11:f",
       prompt: "Was kennzeichnet „Karyogramm“?",
-      answer: "Das Karyogramm ist kurz gesagt: Chromosomenbild, und zwar gilt: aneuploidie sichtbar.",
-      wrong: ["Das Karyogramm ist kurz gesagt: Basenfolge bestimmen.", "Das Karyogramm ist kurz gesagt: präzise Gen-Schere.", "Das Karyogramm ist kurz gesagt: Basentriplett."],
+      answer: "Es ist eine Chromosomenbild durch Aneuploidie Sichtbar.", wrong: ["Das Karyogramm ist das Basenfolge Bestimmen.", "Das Karyogramm ist präzise Gen-Schere.", "Das Karyogramm ist das Basentriplett."],
       explanation: "Aneuploidie sichtbar. Bezug: Karyogramm. Karyogramm bedeutet: Chromosomenbild.",
       wissen: "Aneuploidie sichtbar. Bezug: Karyogramm. Karyogramm bedeutet: Chromosomenbild.",
       flashFront: "Karyogramm",
@@ -5443,8 +4939,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-ethik-lk:p0:f",
       prompt: "Was kennzeichnet „Gentechnik“?",
-      answer: "Die Gentechnik ist hier: gezielter Eingriff in DNA, und zwar gilt: anwendung + Ethik.",
-      wrong: ["Die Gentechnik ist hier: Vererbung in Familien.", "Die Gentechnik ist hier: DNA → mRNA.", "Die Gentechnik ist hier: Reparatur/Ersatz defekter Gene."],
+      answer: "Sie ist gezielter Eingriff in DNA durch anwendung + Ethik.", wrong: ["Sie ist eine Vererbung in Familien.", "Sie ist eine DNA → MRNA.", "Sie ist eine Reparatur/Ersatz Defekter Gene."],
       explanation: "Anwendung + Ethik. Bezug: Gentechnik. Gentechnik bedeutet: gezielter Eingriff in DNA.",
       wissen: "Anwendung + Ethik. Bezug: Gentechnik. Gentechnik bedeutet: gezielter Eingriff in DNA.",
       flashFront: "Gentechnik",
@@ -5452,8 +4947,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-ethik-lk:p1:f",
       prompt: "Was kennzeichnet „Stammbaum“?",
-      answer: "Das Stammbaum ist hier: Vererbung in Familien, und zwar gilt: humangenetik.",
-      wrong: ["Das Stammbaum ist hier: DNA → mRNA.", "Das Stammbaum ist hier: Reparatur/Ersatz defekter Gene.", "Das Stammbaum ist hier: schneidet DNA gezielt."],
+      answer: "Es ist eine Vererbung in Familien durch Humangenetik.", wrong: ["Es ist eine DNA → MRNA.", "Es ist eine Reparatur/Ersatz Defekter Gene.", "Das Stammbaum ist schneidet DNA gezielt."],
       explanation: "Humangenetik. Bezug: Stammbaum. Stammbaum bedeutet: Vererbung in Familien.",
       wissen: "Humangenetik. Bezug: Stammbaum. Stammbaum bedeutet: Vererbung in Familien.",
       flashFront: "Stammbaum",
@@ -5461,8 +4955,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-ethik-lk:p2:f",
       prompt: "Was kennzeichnet „Transkription“?",
-      answer: "Die Transkription ist hier: DNA → mRNA, und zwar gilt: im Zellkern/Nucleoid.",
-      wrong: ["Die Transkription ist hier: Reparatur/Ersatz defekter Gene.", "Die Transkription ist hier: schneidet DNA gezielt.", "Die Transkription ist kurz gesagt: genetische Ausstattung."],
+      answer: "Sie ist eine DNA → MRNA durch im Zellkern/Nucleoid.", wrong: ["Sie ist eine Reparatur/Ersatz Defekter Gene.", "Die Transkription ist schneidet DNA gezielt.", "Die Transkription ist genetische Ausstattung."],
       explanation: "im Zellkern/Nucleoid. Bezug: Transkription. Transkription bedeutet: DNA → mRNA.",
       wissen: "im Zellkern/Nucleoid. Bezug: Transkription. Transkription bedeutet: DNA → mRNA.",
       flashFront: "Transkription",
@@ -5470,8 +4963,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-ethik-lk:p3:f",
       prompt: "Was kennzeichnet „Gentherapie“?",
-      answer: "Die Gentherapie ist hier: Reparatur/Ersatz defekter Gene, und zwar gilt: ethisch sensibel.",
-      wrong: ["Die Gentherapie ist hier: schneidet DNA gezielt.", "Die Gentherapie ist kurz gesagt: genetische Ausstattung.", "Die Gentherapie ist hier: nur homozygot sichtbar."],
+      answer: "Sie ist eine Reparatur/Ersatz Defekter Gene durch Ethisch Sensibel.", wrong: ["Die Gentherapie ist schneidet DNA gezielt.", "Die Gentherapie ist genetische Ausstattung.", "Die Gentherapie ist nur homozygot sichtbar."],
       explanation: "ethisch sensibel. Bezug: Gentherapie. Gentherapie bedeutet: Reparatur/Ersatz defekter Gene.",
       wissen: "ethisch sensibel. Bezug: Gentherapie. Gentherapie bedeutet: Reparatur/Ersatz defekter Gene.",
       flashFront: "Gentherapie",
@@ -5479,8 +4971,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-ethik-lk:p4:f",
       prompt: "Was kennzeichnet „Restriktionsenzym“?",
-      answer: "Das Restriktionsenzym ist hier: schneidet DNA gezielt, und zwar gilt: klonierung.",
-      wrong: ["Das Restriktionsenzym ist kurz gesagt: genetische Ausstattung.", "Das Restriktionsenzym ist hier: nur homozygot sichtbar.", "Das Restriktionsenzym ist kurz gesagt: Reduktionsteilung."],
+      answer: "Es ist schneidet DNA gezielt durch klonierung.", wrong: ["Das Restriktionsenzym ist genetische Ausstattung.", "Das Restriktionsenzym ist nur homozygot sichtbar.", "Das Restriktionsenzym ist das Reduktionsteilung."],
       explanation: "Klonierung. Bezug: Restriktionsenzym. Restriktionsenzym bedeutet: schneidet DNA gezielt.",
       wissen: "Klonierung. Bezug: Restriktionsenzym. Restriktionsenzym bedeutet: schneidet DNA gezielt.",
       flashFront: "Restriktionsenzym",
@@ -5488,8 +4979,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-ethik-lk:p5:f",
       prompt: "Was kennzeichnet „Genotyp“?",
-      answer: "Das Genotyp ist kurz gesagt: genetische Ausstattung, und zwar gilt: nicht direkt sichtbar.",
-      wrong: ["Das Genotyp ist hier: nur homozygot sichtbar.", "Das Genotyp ist kurz gesagt: Reduktionsteilung.", "Das Genotyp ist hier: Gene auf einem Chromosom."],
+      answer: "Es ist genetische Ausstattung durch nicht direkt sichtbar.", wrong: ["Das Genotyp ist nur homozygot sichtbar.", "Das Genotyp ist das Reduktionsteilung.", "Es ist eine Gene auf einem Chromosom."],
       explanation: "Nicht direkt sichtbar. Bezug: Genotyp. Genotyp bedeutet: genetische Ausstattung.",
       wissen: "Nicht direkt sichtbar. Bezug: Genotyp. Genotyp bedeutet: genetische Ausstattung.",
       flashFront: "Genotyp",
@@ -5497,8 +4987,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-ethik-lk:p6:f",
       prompt: "Was kennzeichnet „Rezessiv“?",
-      answer: "Das Rezessiv ist hier: nur homozygot sichtbar, und zwar gilt: träger möglich.",
-      wrong: ["Das Rezessiv ist kurz gesagt: Reduktionsteilung.", "Das Rezessiv ist hier: Gene auf einem Chromosom.", "Das Rezessiv ist kurz gesagt: Basenfolge bestimmen."],
+      answer: "Es ist nur homozygot sichtbar durch träger möglich.", wrong: ["Das Rezessiv ist das Reduktionsteilung.", "Es ist eine Gene auf einem Chromosom.", "Das Rezessiv ist das Basenfolge Bestimmen."],
       explanation: "Träger möglich. Bezug: Rezessiv. Rezessiv bedeutet: nur homozygot sichtbar.",
       wissen: "Träger möglich. Bezug: Rezessiv. Rezessiv bedeutet: nur homozygot sichtbar.",
       flashFront: "Rezessiv",
@@ -5506,8 +4995,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-ethik-lk:p7:f",
       prompt: "Was kennzeichnet „Meiose“?",
-      answer: "Die Meiose ist kurz gesagt: Reduktionsteilung, und zwar gilt: haploide Gameten.",
-      wrong: ["Die Meiose ist hier: Gene auf einem Chromosom.", "Die Meiose ist kurz gesagt: Basenfolge bestimmen.", "Die Meiose ist kurz gesagt: präzise Gen-Schere."],
+      answer: "Sie ist eine Reduktionsteilung durch Haploide Gameten.", wrong: ["Sie ist eine Gene auf einem Chromosom.", "Die Meiose ist die Basenfolge Bestimmen.", "Die Meiose ist präzise Gen-Schere."],
       explanation: "Haploide Gameten. Bezug: Meiose. Meiose bedeutet: Reduktionsteilung.",
       wissen: "Haploide Gameten. Bezug: Meiose. Meiose bedeutet: Reduktionsteilung.",
       flashFront: "Meiose",
@@ -5515,8 +5003,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-ethik-lk:p8:f",
       prompt: "Was kennzeichnet „Kopplung“?",
-      answer: "Die Kopplung ist hier: Gene auf einem Chromosom, und zwar gilt: selten unabhängig.",
-      wrong: ["Die Kopplung ist kurz gesagt: Basenfolge bestimmen.", "Die Kopplung ist kurz gesagt: präzise Gen-Schere.", "Die Kopplung ist kurz gesagt: Basentriplett."],
+      answer: "Sie ist eine Gene auf einem Chromosom durch Selten Unabhängig.", wrong: ["Die Kopplung ist die Basenfolge Bestimmen.", "Die Kopplung ist präzise Gen-Schere.", "Die Kopplung ist die Basentriplett."],
       explanation: "selten unabhängig. Bezug: Kopplung. Kopplung bedeutet: Gene auf einem Chromosom.",
       wissen: "selten unabhängig. Bezug: Kopplung. Kopplung bedeutet: Gene auf einem Chromosom.",
       flashFront: "Kopplung",
@@ -5524,8 +5011,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-ethik-lk:p9:f",
       prompt: "Was kennzeichnet „Sequenzierung“?",
-      answer: "Die Sequenzierung ist kurz gesagt: Basenfolge bestimmen, und zwar gilt: diagnostik.",
-      wrong: ["Die Sequenzierung ist kurz gesagt: präzise Gen-Schere.", "Die Sequenzierung ist kurz gesagt: Basentriplett.", "Die Sequenzierung ist hier: gezielter Eingriff in DNA."],
+      answer: "Sie ist eine Basenfolge Bestimmen durch Diagnostik.", wrong: ["Die Sequenzierung ist präzise Gen-Schere.", "Die Sequenzierung ist die Basentriplett.", "Sie ist gezielter Eingriff in DNA."],
       explanation: "Diagnostik. Bezug: Sequenzierung. Sequenzierung bedeutet: Basenfolge bestimmen.",
       wissen: "Diagnostik. Bezug: Sequenzierung. Sequenzierung bedeutet: Basenfolge bestimmen.",
       flashFront: "Sequenzierung",
@@ -5533,8 +5019,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-ethik-lk:p10:f",
       prompt: "Was kennzeichnet „CRISPR“?",
-      answer: "Das CRISPR ist kurz gesagt: präzise Gen-Schere, und zwar gilt: moderne Editierung.",
-      wrong: ["Das CRISPR ist kurz gesagt: Basentriplett.", "Das CRISPR ist hier: gezielter Eingriff in DNA.", "Das CRISPR ist hier: Vererbung in Familien."],
+      answer: "Es ist präzise Gen-Schere durch moderne Editierung.", wrong: ["Das CRISPR ist das Basentriplett.", "Es ist gezielter Eingriff in DNA.", "Es ist eine Vererbung in Familien."],
       explanation: "moderne Editierung. Bezug: CRISPR. CRISPR bedeutet: präzise Gen-Schere.",
       wissen: "moderne Editierung. Bezug: CRISPR. CRISPR bedeutet: präzise Gen-Schere.",
       flashFront: "CRISPR",
@@ -5542,8 +5027,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb1-ethik-lk:p11:f",
       prompt: "Was kennzeichnet „Codon“?",
-      answer: "Das Codon ist kurz gesagt: Basentriplett, und zwar gilt: aminosäure-Code.",
-      wrong: ["Das Codon ist hier: gezielter Eingriff in DNA.", "Das Codon ist hier: Vererbung in Familien.", "Das Codon ist hier: DNA → mRNA."],
+      answer: "Es ist eine Basentriplett durch Aminosäure-Code.", wrong: ["Es ist gezielter Eingriff in DNA.", "Es ist eine Vererbung in Familien.", "Es ist eine DNA → MRNA."],
       explanation: "Aminosäure-Code. Bezug: Codon. Codon bedeutet: Basentriplett.",
       wissen: "Aminosäure-Code. Bezug: Codon. Codon bedeutet: Basentriplett.",
       flashFront: "Codon",
@@ -5572,8 +5056,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-signaltransduktion:p0:f",
       prompt: "Was kennzeichnet „Hormonsystem“?",
-      answer: "Das Hormonsystem ist kurz gesagt: langsame Steuerung, und zwar gilt: über Blut.",
-      wrong: ["Das Hormonsystem ist hier: Isolierung der Axone.", "Das Hormonsystem ist kurz gesagt: vom ZNS.", "Das Hormonsystem ist hier: Aufnahme und Verdau."],
+      answer: "Es ist langsame Steuerung durch über Blut.", wrong: ["Es ist eine Isolierung der Axone.", "Das Hormonsystem ist vom ZNS.", "Es ist eine Aufnahme und Verdau."],
       explanation: "über Blut. Bezug: Hormonsystem. Hormonsystem bedeutet: langsame Steuerung.",
       wissen: "über Blut. Bezug: Hormonsystem. Hormonsystem bedeutet: langsame Steuerung.",
       flashFront: "Hormonsystem",
@@ -5581,8 +5064,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-signaltransduktion:p1:f",
       prompt: "Was kennzeichnet „Myelin“?",
-      answer: "Das Myelin ist hier: Isolierung der Axone, und zwar gilt: schnellere Leitung.",
-      wrong: ["Das Myelin ist kurz gesagt: vom ZNS.", "Das Myelin ist hier: Aufnahme und Verdau.", "Das Myelin ist kurz gesagt: beendet Signal."],
+      answer: "Es ist eine Isolierung der Axone durch Schnellere Leitung.", wrong: ["Das Myelin ist vom ZNS.", "Es ist eine Aufnahme und Verdau.", "Das Myelin ist beendet Signal."],
       explanation: "schnellere Leitung. Bezug: Myelin. Myelin bedeutet: Isolierung der Axone.",
       wissen: "schnellere Leitung. Bezug: Myelin. Myelin bedeutet: Isolierung der Axone.",
       flashFront: "Myelin",
@@ -5590,8 +5072,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-signaltransduktion:p2:f",
       prompt: "Was kennzeichnet „Motorische Bahn“?",
-      answer: "Das Motorische Bahn ist hier: vom ZNS, und zwar gilt: efferenzen.",
-      wrong: ["Das Motorische Bahn ist hier: Aufnahme und Verdau.", "Das Motorische Bahn ist hier: beendet Signal.", "Das Motorische Bahn ist hier: schnell, unspezifisch."],
+      answer: "Es ist vom ZNS durch efferenzen.", wrong: ["Es ist eine Aufnahme und Verdau.", "Das Motorische Bahn ist beendet Signal.", "Das Motorische Bahn ist schnell, unspezifisch."],
       explanation: "Efferenzen. Bezug: Motorische Bahn. Motorische Bahn bedeutet: vom ZNS.",
       wissen: "Efferenzen. Bezug: Motorische Bahn. Motorische Bahn bedeutet: vom ZNS.",
       flashFront: "Motorische Bahn",
@@ -5599,8 +5080,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-signaltransduktion:p3:f",
       prompt: "Was kennzeichnet „Phagozytose“?",
-      answer: "Die Phagozytose ist hier: Aufnahme und Verdau, und zwar gilt: makrophagen.",
-      wrong: ["Die Phagozytose ist kurz gesagt: beendet Signal.", "Die Phagozytose ist kurz gesagt: schnell, unspezifisch.", "Die Phagozytose ist kurz gesagt: erste Begegnung."],
+      answer: "Sie ist eine Aufnahme und Verdau durch Makrophagen.", wrong: ["Die Phagozytose ist beendet Signal.", "Die Phagozytose ist schnell, unspezifisch.", "Die Phagozytose ist erste Begegnung."],
       explanation: "Makrophagen. Bezug: Phagozytose. Phagozytose bedeutet: Aufnahme und Verdau.",
       wissen: "Makrophagen. Bezug: Phagozytose. Phagozytose bedeutet: Aufnahme und Verdau.",
       flashFront: "Phagozytose",
@@ -5608,8 +5088,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-signaltransduktion:p4:f",
       prompt: "Was kennzeichnet „Neurotransmitterabbau“?",
-      answer: "Das Neurotransmitterabbau ist kurz gesagt: beendet Signal, und zwar gilt: enzyme/Wiederaufnahme.",
-      wrong: ["Das Neurotransmitterabbau ist kurz gesagt: schnell, unspezifisch.", "Das Neurotransmitterabbau ist kurz gesagt: erste Begegnung.", "Das Neurotransmitterabbau ist kurz gesagt: übersteigerte Reaktion."],
+      answer: "Es ist beendet Signal durch enzyme/Wiederaufnahme.", wrong: ["Das Neurotransmitterabbau ist schnell, unspezifisch.", "Das Neurotransmitterabbau ist erste Begegnung.", "Das Neurotransmitterabbau ist übersteigerte Reaktion."],
       explanation: "Enzyme/Wiederaufnahme. Bezug: Neurotransmitterabbau. Neurotransmitterabbau bedeutet: beendet Signal.",
       wissen: "Enzyme/Wiederaufnahme. Bezug: Neurotransmitterabbau. Neurotransmitterabbau bedeutet: beendet Signal.",
       flashFront: "Neurotransmitterabbau",
@@ -5617,8 +5096,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-signaltransduktion:p5:f",
       prompt: "Was kennzeichnet „angeborene Immunität“?",
-      answer: "Die angeborene Immunität ist hier: schnell, unspezifisch, und zwar gilt: barrieren, Phagozytose.",
-      wrong: ["Die angeborene Immunität ist hier: erste Begegnung.", "Die angeborene Immunität ist hier: übersteigerte Reaktion.", "Die angeborene Immunität ist kurz gesagt: Übertragungsstelle."],
+      answer: "Sie ist schnell, unspezifisch durch barrieren, Phagozytose.", wrong: ["Die angeborene Immunität ist erste Begegnung.", "Die angeborene Immunität ist übersteigerte Reaktion.", "Die angeborene Immunität ist die Übertragungsstelle."],
       explanation: "Barrieren, Phagozytose. Bezug: angeborene Immunität. angeborene Immunität bedeutet: schnell, unspezifisch.",
       wissen: "Barrieren, Phagozytose. Bezug: angeborene Immunität. angeborene Immunität bedeutet: schnell, unspezifisch.",
       flashFront: "angeborene Immunität",
@@ -5626,8 +5104,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-signaltransduktion:p6:f",
       prompt: "Was kennzeichnet „Primärantwort“?",
-      answer: "Das Primärantwort ist kurz gesagt: erste Begegnung, und zwar gilt: langsamer.",
-      wrong: ["Das Primärantwort ist kurz gesagt: übersteigerte Reaktion.", "Das Primärantwort ist kurz gesagt: Übertragungsstelle.", "Das Primärantwort ist kurz gesagt: intrazelluläre Weiterleitung."],
+      answer: "Es ist erste Begegnung durch langsamer.", wrong: ["Das Primärantwort ist übersteigerte Reaktion.", "Das Primärantwort ist das Übertragungsstelle.", "Das Primärantwort ist intrazelluläre Weiterleitung."],
       explanation: "langsamer. Bezug: Primärantwort. Primärantwort bedeutet: erste Begegnung.",
       wissen: "langsamer. Bezug: Primärantwort. Primärantwort bedeutet: erste Begegnung.",
       flashFront: "Primärantwort",
@@ -5635,8 +5112,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-signaltransduktion:p7:f",
       prompt: "Was kennzeichnet „Allergie“?",
-      answer: "Die Allergie ist kurz gesagt: übersteigerte Reaktion, und zwar gilt: auf harmlose Antigene.",
-      wrong: ["Die Allergie ist kurz gesagt: Übertragungsstelle.", "Die Allergie ist kurz gesagt: intrazelluläre Weiterleitung.", "Die Allergie ist kurz gesagt: schützt ZNS."],
+      answer: "Sie ist übersteigerte Reaktion durch auf harmlose Antigene.", wrong: ["Die Allergie ist die Übertragungsstelle.", "Die Allergie ist intrazelluläre Weiterleitung.", "Sie schützt ZNS."],
       explanation: "auf harmlose Antigene. Bezug: Allergie. Allergie bedeutet: übersteigerte Reaktion.",
       wissen: "auf harmlose Antigene. Bezug: Allergie. Allergie bedeutet: übersteigerte Reaktion.",
       flashFront: "Allergie",
@@ -5644,8 +5120,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-signaltransduktion:p8:f",
       prompt: "Was kennzeichnet „Synapse“?",
-      answer: "Die Synapse ist kurz gesagt: Übertragungsstelle, und zwar gilt: chemisch/elektrisch.",
-      wrong: ["Die Synapse ist kurz gesagt: intrazelluläre Weiterleitung.", "Die Synapse ist kurz gesagt: schützt ZNS.", "Die Synapse ist kurz gesagt: zum ZNS."],
+      answer: "Sie ist eine Übertragungsstelle durch Chemisch/elektrisch.", wrong: ["Die Synapse ist intrazelluläre Weiterleitung.", "Sie schützt ZNS.", "Die Synapse ist zum ZNS."],
       explanation: "chemisch/elektrisch. Bezug: Synapse. Synapse bedeutet: Übertragungsstelle.",
       wissen: "chemisch/elektrisch. Bezug: Synapse. Synapse bedeutet: Übertragungsstelle.",
       flashFront: "Synapse",
@@ -5653,8 +5128,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-signaltransduktion:p9:f",
       prompt: "Was kennzeichnet „Second Messenger“?",
-      answer: "Der Second Messenger ist hier: intrazelluläre Weiterleitung, und zwar gilt: z. B. cAMP.",
-      wrong: ["Der Second Messenger ist kurz gesagt: schützt ZNS.", "Der Second Messenger ist hier: zum ZNS.", "Der Second Messenger ist hier: langsame Steuerung."],
+      answer: "Er ist intrazelluläre Weiterleitung durch z. B. cAMP.", wrong: ["Er schützt ZNS.", "Der Second Messenger ist zum ZNS.", "Der Second Messenger ist langsame Steuerung."],
       explanation: "z. B. cAMP. Bezug: Second Messenger. Second Messenger bedeutet: intrazelluläre Weiterleitung.",
       wissen: "z. B. cAMP. Bezug: Second Messenger. Second Messenger bedeutet: intrazelluläre Weiterleitung.",
       flashFront: "Second Messenger",
@@ -5662,8 +5136,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-signaltransduktion:p10:f",
       prompt: "Wozu dient die Blut-Hirn-Schranke?",
-      answer: "Sie schützt ZNS, und zwar gilt hier: Selektiv.",
-      wrong: ["Die Blut-Hirn-Schranke ist kurz gesagt: zum ZNS.", "Die Blut-Hirn-Schranke ist kurz gesagt: langsame Steuerung.", "Die Blut-Hirn-Schranke ist hier: Isolierung der Axone."],
+      answer: "Sie schützt ZNS durch selektiv.", wrong: ["Die Blut-Hirn-Schranke ist zum ZNS.", "Die Blut-Hirn-Schranke ist langsame Steuerung.", "Sie ist eine Isolierung der Axone."],
       explanation: "selektiv. Bezug: Blut-Hirn-Schranke. Blut-Hirn-Schranke bedeutet: schützt ZNS.",
       wissen: "selektiv. Bezug: Blut-Hirn-Schranke. Blut-Hirn-Schranke bedeutet: schützt ZNS.",
       flashFront: "Blut-Hirn-Schranke",
@@ -5671,8 +5144,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-signaltransduktion:p11:f",
       prompt: "Wozu dienen Sensorische Bahn?",
-      answer: "Das Sensorische Bahn ist hier: zum ZNS, und zwar gilt: afferenzen.",
-      wrong: ["Das Sensorische Bahn ist hier: langsame Steuerung.", "Das Sensorische Bahn ist hier: Isolierung der Axone.", "Das Sensorische Bahn ist hier: vom ZNS."],
+      answer: "Es ist zum ZNS durch afferenzen.", wrong: ["Das Sensorische Bahn ist langsame Steuerung.", "Es ist eine Isolierung der Axone.", "Das Sensorische Bahn ist vom ZNS."],
       explanation: "Afferenzen. Bezug: Sensorische Bahn. Sensorische Bahn bedeutet: zum ZNS.",
       wissen: "Afferenzen. Bezug: Sensorische Bahn. Sensorische Bahn bedeutet: zum ZNS.",
       flashFront: "Sensorische Bahn",
@@ -5701,8 +5173,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-hormonachsen:p0:f",
       prompt: "Was kennzeichnet „Feedback“?",
-      answer: "Das Feedback ist kurz gesagt: Rückkopplung, und zwar gilt: homöostase.",
-      wrong: ["Das Feedback ist kurz gesagt: schnelle Antwort.", "Das Feedback ist kurz gesagt: Botenstoff Immunsystem.", "Das Feedback ist hier: Kaskade der angeborenen Abwehr."],
+      answer: "Es ist eine Rückkopplung durch Homöostase.", wrong: ["Das Feedback ist schnelle Antwort.", "Das Feedback ist das Botenstoff Immunsystem.", "Es ist eine Kaskade der Angeborenen Abwehr."],
       explanation: "Homöostase. Bezug: Feedback. Feedback bedeutet: Rückkopplung.",
       wissen: "Homöostase. Bezug: Feedback. Feedback bedeutet: Rückkopplung.",
       flashFront: "Feedback",
@@ -5710,8 +5181,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-hormonachsen:p1:f",
       prompt: "Was kennzeichnet „Reflex“?",
-      answer: "Das Reflex ist kurz gesagt: schnelle Antwort, und zwar gilt: ohne Bewusstsein.",
-      wrong: ["Das Reflex ist kurz gesagt: Botenstoff Immunsystem.", "Das Reflex ist hier: Kaskade der angeborenen Abwehr.", "Das Reflex ist kurz gesagt: löst Immunantwort aus."],
+      answer: "Es ist schnelle Antwort durch ohne Bewusstsein.", wrong: ["Das Reflex ist das Botenstoff Immunsystem.", "Es ist eine Kaskade der Angeborenen Abwehr.", "Löst Immunantwort aus."],
       explanation: "ohne Bewusstsein. Bezug: Reflex. Reflex bedeutet: schnelle Antwort.",
       wissen: "ohne Bewusstsein. Bezug: Reflex. Reflex bedeutet: schnelle Antwort.",
       flashFront: "Reflex",
@@ -5719,8 +5189,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-hormonachsen:p2:f",
       prompt: "Was kennzeichnet „Zytokin“?",
-      answer: "Das Zytokin ist kurz gesagt: Botenstoff Immunsystem, und zwar gilt: koordination.",
-      wrong: ["Das Zytokin ist hier: Kaskade der angeborenen Abwehr.", "Das Zytokin ist kurz gesagt: löst Immunantwort aus.", "Das Zytokin ist kurz gesagt: spezifisch, Gedächtnis."],
+      answer: "Es ist eine Botenstoff Immunsystem durch Koordination.", wrong: ["Es ist eine Kaskade der Angeborenen Abwehr.", "Löst Immunantwort aus.", "Das Zytokin ist spezifisch, Gedächtnis."],
       explanation: "Koordination. Bezug: Zytokin. Zytokin bedeutet: Botenstoff Immunsystem.",
       wissen: "Koordination. Bezug: Zytokin. Zytokin bedeutet: Botenstoff Immunsystem.",
       flashFront: "Zytokin",
@@ -5728,8 +5197,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-hormonachsen:p3:f",
       prompt: "Was kennzeichnet „Komplementsystem“?",
-      answer: "Das Komplementsystem ist hier: Kaskade der angeborenen Abwehr, und zwar gilt: löslich.",
-      wrong: ["Das Komplementsystem ist kurz gesagt: löst Immunantwort aus.", "Das Komplementsystem ist kurz gesagt: spezifisch, Gedächtnis.", "Das Komplementsystem ist kurz gesagt: erneute Begegnung."],
+      answer: "Es ist eine Kaskade der Angeborenen Abwehr durch Löslich.", wrong: ["Löst Immunantwort aus.", "Das Komplementsystem ist spezifisch, Gedächtnis.", "Das Komplementsystem ist erneute Begegnung."],
       explanation: "löslich. Bezug: Komplementsystem. Komplementsystem bedeutet: Kaskade der angeborenen Abwehr.",
       wissen: "löslich. Bezug: Komplementsystem. Komplementsystem bedeutet: Kaskade der angeborenen Abwehr.",
       flashFront: "Komplementsystem",
@@ -5737,8 +5205,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-hormonachsen:p4:f",
       prompt: "Was kennzeichnet „Antigen“?",
-      answer: "Löst Immunantwort aus, und zwar gilt: meist Fremdstoff.",
-      wrong: ["Das Antigen ist kurz gesagt: spezifisch, Gedächtnis.", "Das Antigen ist kurz gesagt: erneute Begegnung.", "Das Antigen ist hier: Angriff auf Körperzellen."],
+      answer: "Löst Immunantwort aus durch meist Fremdstoff.", wrong: ["Das Antigen ist spezifisch, Gedächtnis.", "Das Antigen ist erneute Begegnung.", "Es ist eine Angriff auf Körperzellen."],
       explanation: "meist Fremdstoff. Bezug: Antigen. Antigen bedeutet: löst Immunantwort aus.",
       wissen: "meist Fremdstoff. Bezug: Antigen. Antigen bedeutet: löst Immunantwort aus.",
       flashFront: "Antigen",
@@ -5746,8 +5213,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-hormonachsen:p5:f",
       prompt: "Was kennzeichnet „adaptive Immunität“?",
-      answer: "Die adaptive Immunität ist hier: spezifisch, Gedächtnis, und zwar gilt: b/T-Zellen.",
-      wrong: ["Die adaptive Immunität ist hier: erneute Begegnung.", "Die adaptive Immunität ist hier: Angriff auf Körperzellen.", "Die adaptive Immunität ist hier: Botenstoff an Synapse."],
+      answer: "Sie ist spezifisch, Gedächtnis durch b/T-Zellen.", wrong: ["Die adaptive Immunität ist erneute Begegnung.", "Sie ist eine Angriff auf Körperzellen.", "Sie ist eine Botenstoff an Synapse."],
       explanation: "B/T-Zellen. Bezug: adaptive Immunität. adaptive Immunität bedeutet: spezifisch, Gedächtnis.",
       wissen: "B/T-Zellen. Bezug: adaptive Immunität. adaptive Immunität bedeutet: spezifisch, Gedächtnis.",
       flashFront: "adaptive Immunität",
@@ -5755,8 +5221,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-hormonachsen:p6:f",
       prompt: "Was kennzeichnet „Sekundärantwort“?",
-      answer: "Das Sekundärantwort ist kurz gesagt: erneute Begegnung, und zwar gilt: schnell und stark.",
-      wrong: ["Das Sekundärantwort ist hier: Angriff auf Körperzellen.", "Das Sekundärantwort ist hier: Botenstoff an Synapse.", "Das Sekundärantwort ist kurz gesagt: langsame Steuerung."],
+      answer: "Es ist erneute Begegnung durch schnell und stark.", wrong: ["Es ist eine Angriff auf Körperzellen.", "Es ist eine Botenstoff an Synapse.", "Das Sekundärantwort ist langsame Steuerung."],
       explanation: "schnell und stark. Bezug: Sekundärantwort. Sekundärantwort bedeutet: erneute Begegnung.",
       wissen: "schnell und stark. Bezug: Sekundärantwort. Sekundärantwort bedeutet: erneute Begegnung.",
       flashFront: "Sekundärantwort",
@@ -5764,8 +5229,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-hormonachsen:p7:f",
       prompt: "Was kennzeichnet „Autoimmunität“?",
-      answer: "Die Autoimmunität ist hier: Angriff auf Körperzellen, und zwar gilt: toleranzbruch.",
-      wrong: ["Die Autoimmunität ist hier: Botenstoff an Synapse.", "Die Autoimmunität ist kurz gesagt: langsame Steuerung.", "Die Autoimmunität ist hier: Isolierung der Axone."],
+      answer: "Sie ist eine Angriff auf Körperzellen durch Toleranzbruch.", wrong: ["Sie ist eine Botenstoff an Synapse.", "Die Autoimmunität ist langsame Steuerung.", "Sie ist eine Isolierung der Axone."],
       explanation: "Toleranzbruch. Bezug: Autoimmunität. Autoimmunität bedeutet: Angriff auf Körperzellen.",
       wissen: "Toleranzbruch. Bezug: Autoimmunität. Autoimmunität bedeutet: Angriff auf Körperzellen.",
       flashFront: "Autoimmunität",
@@ -5773,8 +5237,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-hormonachsen:p8:f",
       prompt: "Was kennzeichnet „Transmitter“?",
-      answer: "Der Transmitter ist hier: Botenstoff an Synapse, und zwar gilt: z. B. Acetylcholin.",
-      wrong: ["Der Transmitter ist kurz gesagt: langsame Steuerung.", "Der Transmitter ist hier: Isolierung der Axone.", "Der Transmitter ist kurz gesagt: vom ZNS."],
+      answer: "Er ist eine Botenstoff an Synapse durch Z. B. Acetylcholin.", wrong: ["Der Transmitter ist langsame Steuerung.", "Er ist eine Isolierung der Axone.", "Der Transmitter ist vom ZNS."],
       explanation: "z. B. Acetylcholin. Bezug: Transmitter. Transmitter bedeutet: Botenstoff an Synapse.",
       wissen: "z. B. Acetylcholin. Bezug: Transmitter. Transmitter bedeutet: Botenstoff an Synapse.",
       flashFront: "Transmitter",
@@ -5782,8 +5245,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-hormonachsen:p9:f",
       prompt: "Was kennzeichnet „Hormonsystem“?",
-      answer: "Das Hormonsystem ist kurz gesagt: langsame Steuerung, und zwar gilt: über Blut.",
-      wrong: ["Das Hormonsystem ist hier: Isolierung der Axone.", "Das Hormonsystem ist kurz gesagt: vom ZNS.", "Das Hormonsystem ist kurz gesagt: Rückkopplung."],
+      answer: "Es ist langsame Steuerung durch über Blut.", wrong: ["Es ist eine Isolierung der Axone.", "Das Hormonsystem ist vom ZNS.", "Das Hormonsystem ist das Rückkopplung."],
       explanation: "über Blut. Bezug: Hormonsystem. Hormonsystem bedeutet: langsame Steuerung.",
       wissen: "über Blut. Bezug: Hormonsystem. Hormonsystem bedeutet: langsame Steuerung.",
       flashFront: "Hormonsystem",
@@ -5791,8 +5253,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-hormonachsen:p10:f",
       prompt: "Was kennzeichnet „Myelin“?",
-      answer: "Das Myelin ist hier: Isolierung der Axone, und zwar gilt: schnellere Leitung.",
-      wrong: ["Das Myelin ist kurz gesagt: vom ZNS.", "Das Myelin ist kurz gesagt: Rückkopplung.", "Das Myelin ist kurz gesagt: schnelle Antwort."],
+      answer: "Es ist eine Isolierung der Axone durch Schnellere Leitung.", wrong: ["Das Myelin ist vom ZNS.", "Das Myelin ist das Rückkopplung.", "Das Myelin ist schnelle Antwort."],
       explanation: "schnellere Leitung. Bezug: Myelin. Myelin bedeutet: Isolierung der Axone.",
       wissen: "schnellere Leitung. Bezug: Myelin. Myelin bedeutet: Isolierung der Axone.",
       flashFront: "Myelin",
@@ -5800,8 +5261,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-hormonachsen:p11:f",
       prompt: "Was kennzeichnet „Motorische Bahn“?",
-      answer: "Das Motorische Bahn ist hier: vom ZNS, und zwar gilt: efferenzen.",
-      wrong: ["Das Motorische Bahn ist kurz gesagt: Rückkopplung.", "Das Motorische Bahn ist hier: schnelle Antwort.", "Das Motorische Bahn ist hier: Botenstoff Immunsystem."],
+      answer: "Es ist vom ZNS durch efferenzen.", wrong: ["Das Motorische Bahn ist das Rückkopplung.", "Das Motorische Bahn ist schnelle Antwort.", "Das Motorische Bahn ist das Botenstoff Immunsystem."],
       explanation: "Efferenzen. Bezug: Motorische Bahn. Motorische Bahn bedeutet: vom ZNS.",
       wissen: "Efferenzen. Bezug: Motorische Bahn. Motorische Bahn bedeutet: vom ZNS.",
       flashFront: "Motorische Bahn",
@@ -5830,8 +5290,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-spezifisch:p0:f",
       prompt: "Wozu dient die Blut-Hirn-Schranke?",
-      answer: "Sie schützt ZNS, und zwar gilt hier: Selektiv.",
-      wrong: ["Die Blut-Hirn-Schranke ist kurz gesagt: zum ZNS.", "Die Blut-Hirn-Schranke ist kurz gesagt: präsentiert Peptide.", "Die Blut-Hirn-Schranke ist kurz gesagt: langlebig spezifisch."],
+      answer: "Sie schützt ZNS durch selektiv.", wrong: ["Die Blut-Hirn-Schranke ist zum ZNS.", "Die Blut-Hirn-Schranke ist präsentiert Peptide.", "Die Blut-Hirn-Schranke ist langlebig spezifisch."],
       explanation: "selektiv. Bezug: Blut-Hirn-Schranke. Blut-Hirn-Schranke bedeutet: schützt ZNS.",
       wissen: "selektiv. Bezug: Blut-Hirn-Schranke. Blut-Hirn-Schranke bedeutet: schützt ZNS.",
       flashFront: "Blut-Hirn-Schranke",
@@ -5839,8 +5298,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-spezifisch:p1:f",
       prompt: "Wozu dienen Sensorische Bahn?",
-      answer: "Das Sensorische Bahn ist hier: zum ZNS, und zwar gilt: afferenzen.",
-      wrong: ["Das Sensorische Bahn ist hier: präsentiert Peptide.", "Das Sensorische Bahn ist hier: langlebig spezifisch.", "Das Sensorische Bahn ist hier: bindet spezifisch Antigen."],
+      answer: "Es ist zum ZNS durch afferenzen.", wrong: ["Das Sensorische Bahn ist präsentiert Peptide.", "Das Sensorische Bahn ist langlebig spezifisch.", "Das Sensorische Bahn ist bindet spezifisch Antigen."],
       explanation: "Afferenzen. Bezug: Sensorische Bahn. Sensorische Bahn bedeutet: zum ZNS.",
       wissen: "Afferenzen. Bezug: Sensorische Bahn. Sensorische Bahn bedeutet: zum ZNS.",
       flashFront: "Sensorische Bahn",
@@ -5848,8 +5306,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-spezifisch:p2:f",
       prompt: "Was kennzeichnet „MHC“?",
-      answer: "Das MHC ist kurz gesagt: präsentiert Peptide, und zwar gilt: erkennung fremd/selbst.",
-      wrong: ["Das MHC ist kurz gesagt: langlebig spezifisch.", "Das MHC ist hier: bindet spezifisch Antigen.", "Das MHC ist kurz gesagt: aktive Immunisierung."],
+      answer: "Es ist präsentiert Peptide durch erkennung fremd/selbst.", wrong: ["Das MHC ist langlebig spezifisch.", "Das MHC ist bindet spezifisch Antigen.", "Das MHC ist aktive Immunisierung."],
       explanation: "Erkennung fremd/selbst. Bezug: MHC. MHC bedeutet: präsentiert Peptide.",
       wissen: "Erkennung fremd/selbst. Bezug: MHC. MHC bedeutet: präsentiert Peptide.",
       flashFront: "MHC",
@@ -5857,8 +5314,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-spezifisch:p3:f",
       prompt: "Was kennzeichnet „Gedächtniszelle“?",
-      answer: "Die Gedächtniszelle ist kurz gesagt: langlebig spezifisch, und zwar gilt: impfschutz.",
-      wrong: ["Die Gedächtniszelle ist hier: bindet spezifisch Antigen.", "Die Gedächtniszelle ist kurz gesagt: aktive Immunisierung.", "Die Gedächtniszelle ist kurz gesagt: befällt T-Helferzellen."],
+      answer: "Sie ist langlebig spezifisch durch impfschutz.", wrong: ["Die Gedächtniszelle ist bindet spezifisch Antigen.", "Die Gedächtniszelle ist aktive Immunisierung.", "Die Gedächtniszelle ist befällt T-Helferzellen."],
       explanation: "Impfschutz. Bezug: Gedächtniszelle. Gedächtniszelle bedeutet: langlebig spezifisch.",
       wissen: "Impfschutz. Bezug: Gedächtniszelle. Gedächtniszelle bedeutet: langlebig spezifisch.",
       flashFront: "Gedächtniszelle",
@@ -5866,8 +5322,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-spezifisch:p4:f",
       prompt: "Was kennzeichnet „Antikörper“?",
-      answer: "Der Antikörper ist hier: bindet spezifisch Antigen, und zwar gilt: von B-Zellen.",
-      wrong: ["Der Antikörper ist kurz gesagt: aktive Immunisierung.", "Der Antikörper ist kurz gesagt: befällt T-Helferzellen.", "Der Antikörper ist kurz gesagt: elektrisches Signal."],
+      answer: "Er ist bindet spezifisch Antigen durch von B-Zellen.", wrong: ["Der Antikörper ist aktive Immunisierung.", "Der Antikörper ist befällt T-Helferzellen.", "Der Antikörper ist elektrisches Signal."],
       explanation: "von B-Zellen. Bezug: Antikörper. Antikörper bedeutet: bindet spezifisch Antigen.",
       wissen: "von B-Zellen. Bezug: Antikörper. Antikörper bedeutet: bindet spezifisch Antigen.",
       flashFront: "Antikörper",
@@ -5875,8 +5330,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-spezifisch:p5:f",
       prompt: "Was kennzeichnet „Impfung“?",
-      answer: "Die Impfung ist kurz gesagt: aktive Immunisierung, und zwar gilt: gedächtnis ohne Krankheit.",
-      wrong: ["Die Impfung ist kurz gesagt: befällt T-Helferzellen.", "Die Impfung ist kurz gesagt: elektrisches Signal.", "Die Impfung ist kurz gesagt: bindet Signalstoff."],
+      answer: "Sie ist aktive Immunisierung durch gedächtnis ohne Krankheit.", wrong: ["Die Impfung ist befällt T-Helferzellen.", "Die Impfung ist elektrisches Signal.", "Die Impfung ist bindet Signalstoff."],
       explanation: "Gedächtnis ohne Krankheit. Bezug: Impfung. Impfung bedeutet: aktive Immunisierung.",
       wissen: "Gedächtnis ohne Krankheit. Bezug: Impfung. Impfung bedeutet: aktive Immunisierung.",
       flashFront: "Impfung",
@@ -5884,8 +5338,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-spezifisch:p6:f",
       prompt: "Was kennzeichnet „HIV“?",
-      answer: "Das HIV ist kurz gesagt: befällt T-Helferzellen, und zwar gilt: immunschwäche.",
-      wrong: ["Das HIV ist kurz gesagt: elektrisches Signal.", "Das HIV ist kurz gesagt: bindet Signalstoff.", "Das HIV ist kurz gesagt: Rückkopplung."],
+      answer: "Es ist befällt T-Helferzellen durch immunschwäche.", wrong: ["Das HIV ist elektrisches Signal.", "Das HIV ist bindet Signalstoff.", "Das HIV ist das Rückkopplung."],
       explanation: "Immunschwäche. Bezug: HIV. HIV bedeutet: befällt T-Helferzellen.",
       wissen: "Immunschwäche. Bezug: HIV. HIV bedeutet: befällt T-Helferzellen.",
       flashFront: "HIV",
@@ -5893,8 +5346,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-spezifisch:p7:f",
       prompt: "Was kennzeichnet „Aktionspotenzial“?",
-      answer: "Das Aktionspotenzial ist kurz gesagt: elektrisches Signal, und zwar gilt: alles-oder-nichts.",
-      wrong: ["Das Aktionspotenzial ist kurz gesagt: bindet Signalstoff.", "Das Aktionspotenzial ist kurz gesagt: Rückkopplung.", "Das Aktionspotenzial ist kurz gesagt: schnelle Antwort."],
+      answer: "Es ist elektrisches Signal durch alles-oder-nichts.", wrong: ["Das Aktionspotenzial ist bindet Signalstoff.", "Das Aktionspotenzial ist das Rückkopplung.", "Das Aktionspotenzial ist schnelle Antwort."],
       explanation: "Alles-oder-nichts. Bezug: Aktionspotenzial. Aktionspotenzial bedeutet: elektrisches Signal.",
       wissen: "Alles-oder-nichts. Bezug: Aktionspotenzial. Aktionspotenzial bedeutet: elektrisches Signal.",
       flashFront: "Aktionspotenzial",
@@ -5902,8 +5354,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-spezifisch:p8:f",
       prompt: "Was kennzeichnet „Rezeptor“?",
-      answer: "Der Rezeptor ist kurz gesagt: bindet Signalstoff, und zwar gilt: spezifisch.",
-      wrong: ["Der Rezeptor ist kurz gesagt: Rückkopplung.", "Der Rezeptor ist kurz gesagt: schnelle Antwort.", "Der Rezeptor ist kurz gesagt: Botenstoff Immunsystem."],
+      answer: "Er ist bindet Signalstoff durch spezifisch.", wrong: ["Der Rezeptor ist der Rückkopplung.", "Der Rezeptor ist schnelle Antwort.", "Der Rezeptor ist der Botenstoff Immunsystem."],
       explanation: "spezifisch. Bezug: Rezeptor. Rezeptor bedeutet: bindet Signalstoff.",
       wissen: "spezifisch. Bezug: Rezeptor. Rezeptor bedeutet: bindet Signalstoff.",
       flashFront: "Rezeptor",
@@ -5911,8 +5362,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-spezifisch:p9:f",
       prompt: "Was kennzeichnet „Feedback“?",
-      answer: "Das Feedback ist kurz gesagt: Rückkopplung, und zwar gilt: homöostase.",
-      wrong: ["Das Feedback ist kurz gesagt: schnelle Antwort.", "Das Feedback ist kurz gesagt: Botenstoff Immunsystem.", "Das Feedback ist kurz gesagt: schützt ZNS."],
+      answer: "Es ist eine Rückkopplung durch Homöostase.", wrong: ["Das Feedback ist schnelle Antwort.", "Das Feedback ist das Botenstoff Immunsystem.", "Es schützt ZNS."],
       explanation: "Homöostase. Bezug: Feedback. Feedback bedeutet: Rückkopplung.",
       wissen: "Homöostase. Bezug: Feedback. Feedback bedeutet: Rückkopplung.",
       flashFront: "Feedback",
@@ -5920,8 +5370,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-spezifisch:p10:f",
       prompt: "Was kennzeichnet „Reflex“?",
-      answer: "Das Reflex ist kurz gesagt: schnelle Antwort, und zwar gilt: ohne Bewusstsein.",
-      wrong: ["Das Reflex ist kurz gesagt: Botenstoff Immunsystem.", "Das Reflex ist kurz gesagt: schützt ZNS.", "Das Reflex ist kurz gesagt: zum ZNS."],
+      answer: "Es ist schnelle Antwort durch ohne Bewusstsein.", wrong: ["Das Reflex ist das Botenstoff Immunsystem.", "Es schützt ZNS.", "Das Reflex ist zum ZNS."],
       explanation: "ohne Bewusstsein. Bezug: Reflex. Reflex bedeutet: schnelle Antwort.",
       wissen: "ohne Bewusstsein. Bezug: Reflex. Reflex bedeutet: schnelle Antwort.",
       flashFront: "Reflex",
@@ -5929,8 +5378,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-spezifisch:p11:f",
       prompt: "Was kennzeichnet „Zytokin“?",
-      answer: "Das Zytokin ist kurz gesagt: Botenstoff Immunsystem, und zwar gilt: koordination.",
-      wrong: ["Das Zytokin ist kurz gesagt: schützt ZNS.", "Das Zytokin ist kurz gesagt: zum ZNS.", "Das Zytokin ist kurz gesagt: präsentiert Peptide."],
+      answer: "Es ist eine Botenstoff Immunsystem durch Koordination.", wrong: ["Es schützt ZNS.", "Das Zytokin ist zum ZNS.", "Das Zytokin ist präsentiert Peptide."],
       explanation: "Koordination. Bezug: Zytokin. Zytokin bedeutet: Botenstoff Immunsystem.",
       wissen: "Koordination. Bezug: Zytokin. Zytokin bedeutet: Botenstoff Immunsystem.",
       flashFront: "Zytokin",
@@ -5959,8 +5407,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-unspezifisch:p0:f",
       prompt: "Was kennzeichnet „Myelin“?",
-      answer: "Das Myelin ist hier: Isolierung der Axone, und zwar gilt: schnellere Leitung.",
-      wrong: ["Das Myelin ist kurz gesagt: vom ZNS.", "Das Myelin ist hier: Aufnahme und Verdau.", "Das Myelin ist kurz gesagt: beendet Signal."],
+      answer: "Es ist eine Isolierung der Axone durch Schnellere Leitung.", wrong: ["Das Myelin ist vom ZNS.", "Es ist eine Aufnahme und Verdau.", "Das Myelin ist beendet Signal."],
       explanation: "schnellere Leitung. Bezug: Myelin. Myelin bedeutet: Isolierung der Axone.",
       wissen: "schnellere Leitung. Bezug: Myelin. Myelin bedeutet: Isolierung der Axone.",
       flashFront: "Myelin",
@@ -5968,8 +5415,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-unspezifisch:p1:f",
       prompt: "Was kennzeichnet „Motorische Bahn“?",
-      answer: "Das Motorische Bahn ist hier: vom ZNS, und zwar gilt: efferenzen.",
-      wrong: ["Das Motorische Bahn ist hier: Aufnahme und Verdau.", "Das Motorische Bahn ist hier: beendet Signal.", "Das Motorische Bahn ist hier: schnell, unspezifisch."],
+      answer: "Es ist vom ZNS durch efferenzen.", wrong: ["Es ist eine Aufnahme und Verdau.", "Das Motorische Bahn ist beendet Signal.", "Das Motorische Bahn ist schnell, unspezifisch."],
       explanation: "Efferenzen. Bezug: Motorische Bahn. Motorische Bahn bedeutet: vom ZNS.",
       wissen: "Efferenzen. Bezug: Motorische Bahn. Motorische Bahn bedeutet: vom ZNS.",
       flashFront: "Motorische Bahn",
@@ -5977,8 +5423,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-unspezifisch:p2:f",
       prompt: "Was kennzeichnet „Phagozytose“?",
-      answer: "Die Phagozytose ist hier: Aufnahme und Verdau, und zwar gilt: makrophagen.",
-      wrong: ["Die Phagozytose ist kurz gesagt: beendet Signal.", "Die Phagozytose ist kurz gesagt: schnell, unspezifisch.", "Die Phagozytose ist kurz gesagt: erste Begegnung."],
+      answer: "Sie ist eine Aufnahme und Verdau durch Makrophagen.", wrong: ["Die Phagozytose ist beendet Signal.", "Die Phagozytose ist schnell, unspezifisch.", "Die Phagozytose ist erste Begegnung."],
       explanation: "Makrophagen. Bezug: Phagozytose. Phagozytose bedeutet: Aufnahme und Verdau.",
       wissen: "Makrophagen. Bezug: Phagozytose. Phagozytose bedeutet: Aufnahme und Verdau.",
       flashFront: "Phagozytose",
@@ -5986,8 +5431,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-unspezifisch:p3:f",
       prompt: "Was kennzeichnet „Neurotransmitterabbau“?",
-      answer: "Das Neurotransmitterabbau ist kurz gesagt: beendet Signal, und zwar gilt: enzyme/Wiederaufnahme.",
-      wrong: ["Das Neurotransmitterabbau ist kurz gesagt: schnell, unspezifisch.", "Das Neurotransmitterabbau ist kurz gesagt: erste Begegnung.", "Das Neurotransmitterabbau ist kurz gesagt: übersteigerte Reaktion."],
+      answer: "Es ist beendet Signal durch enzyme/Wiederaufnahme.", wrong: ["Das Neurotransmitterabbau ist schnell, unspezifisch.", "Das Neurotransmitterabbau ist erste Begegnung.", "Das Neurotransmitterabbau ist übersteigerte Reaktion."],
       explanation: "Enzyme/Wiederaufnahme. Bezug: Neurotransmitterabbau. Neurotransmitterabbau bedeutet: beendet Signal.",
       wissen: "Enzyme/Wiederaufnahme. Bezug: Neurotransmitterabbau. Neurotransmitterabbau bedeutet: beendet Signal.",
       flashFront: "Neurotransmitterabbau",
@@ -5995,8 +5439,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-unspezifisch:p4:f",
       prompt: "Was kennzeichnet „angeborene Immunität“?",
-      answer: "Die angeborene Immunität ist hier: schnell, unspezifisch, und zwar gilt: barrieren, Phagozytose.",
-      wrong: ["Die angeborene Immunität ist hier: erste Begegnung.", "Die angeborene Immunität ist hier: übersteigerte Reaktion.", "Die angeborene Immunität ist kurz gesagt: Übertragungsstelle."],
+      answer: "Sie ist schnell, unspezifisch durch barrieren, Phagozytose.", wrong: ["Die angeborene Immunität ist erste Begegnung.", "Die angeborene Immunität ist übersteigerte Reaktion.", "Die angeborene Immunität ist die Übertragungsstelle."],
       explanation: "Barrieren, Phagozytose. Bezug: angeborene Immunität. angeborene Immunität bedeutet: schnell, unspezifisch.",
       wissen: "Barrieren, Phagozytose. Bezug: angeborene Immunität. angeborene Immunität bedeutet: schnell, unspezifisch.",
       flashFront: "angeborene Immunität",
@@ -6004,8 +5447,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-unspezifisch:p5:f",
       prompt: "Was kennzeichnet „Primärantwort“?",
-      answer: "Das Primärantwort ist kurz gesagt: erste Begegnung, und zwar gilt: langsamer.",
-      wrong: ["Das Primärantwort ist kurz gesagt: übersteigerte Reaktion.", "Das Primärantwort ist kurz gesagt: Übertragungsstelle.", "Das Primärantwort ist kurz gesagt: intrazelluläre Weiterleitung."],
+      answer: "Es ist erste Begegnung durch langsamer.", wrong: ["Das Primärantwort ist übersteigerte Reaktion.", "Das Primärantwort ist das Übertragungsstelle.", "Das Primärantwort ist intrazelluläre Weiterleitung."],
       explanation: "langsamer. Bezug: Primärantwort. Primärantwort bedeutet: erste Begegnung.",
       wissen: "langsamer. Bezug: Primärantwort. Primärantwort bedeutet: erste Begegnung.",
       flashFront: "Primärantwort",
@@ -6013,8 +5455,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-unspezifisch:p6:f",
       prompt: "Was kennzeichnet „Allergie“?",
-      answer: "Die Allergie ist kurz gesagt: übersteigerte Reaktion, und zwar gilt: auf harmlose Antigene.",
-      wrong: ["Die Allergie ist kurz gesagt: Übertragungsstelle.", "Die Allergie ist kurz gesagt: intrazelluläre Weiterleitung.", "Die Allergie ist kurz gesagt: schützt ZNS."],
+      answer: "Sie ist übersteigerte Reaktion durch auf harmlose Antigene.", wrong: ["Die Allergie ist die Übertragungsstelle.", "Die Allergie ist intrazelluläre Weiterleitung.", "Sie schützt ZNS."],
       explanation: "auf harmlose Antigene. Bezug: Allergie. Allergie bedeutet: übersteigerte Reaktion.",
       wissen: "auf harmlose Antigene. Bezug: Allergie. Allergie bedeutet: übersteigerte Reaktion.",
       flashFront: "Allergie",
@@ -6022,8 +5463,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-unspezifisch:p7:f",
       prompt: "Was kennzeichnet „Synapse“?",
-      answer: "Die Synapse ist kurz gesagt: Übertragungsstelle, und zwar gilt: chemisch/elektrisch.",
-      wrong: ["Die Synapse ist kurz gesagt: intrazelluläre Weiterleitung.", "Die Synapse ist kurz gesagt: schützt ZNS.", "Die Synapse ist kurz gesagt: zum ZNS."],
+      answer: "Sie ist eine Übertragungsstelle durch Chemisch/elektrisch.", wrong: ["Die Synapse ist intrazelluläre Weiterleitung.", "Sie schützt ZNS.", "Die Synapse ist zum ZNS."],
       explanation: "chemisch/elektrisch. Bezug: Synapse. Synapse bedeutet: Übertragungsstelle.",
       wissen: "chemisch/elektrisch. Bezug: Synapse. Synapse bedeutet: Übertragungsstelle.",
       flashFront: "Synapse",
@@ -6031,8 +5471,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-unspezifisch:p8:f",
       prompt: "Was kennzeichnet „Second Messenger“?",
-      answer: "Der Second Messenger ist hier: intrazelluläre Weiterleitung, und zwar gilt: z. B. cAMP.",
-      wrong: ["Der Second Messenger ist kurz gesagt: schützt ZNS.", "Der Second Messenger ist hier: zum ZNS.", "Der Second Messenger ist hier: präsentiert Peptide."],
+      answer: "Er ist intrazelluläre Weiterleitung durch z. B. cAMP.", wrong: ["Er schützt ZNS.", "Der Second Messenger ist zum ZNS.", "Der Second Messenger ist präsentiert Peptide."],
       explanation: "z. B. cAMP. Bezug: Second Messenger. Second Messenger bedeutet: intrazelluläre Weiterleitung.",
       wissen: "z. B. cAMP. Bezug: Second Messenger. Second Messenger bedeutet: intrazelluläre Weiterleitung.",
       flashFront: "Second Messenger",
@@ -6040,8 +5479,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-unspezifisch:p9:f",
       prompt: "Wozu dient die Blut-Hirn-Schranke?",
-      answer: "Sie schützt ZNS, und zwar gilt hier: Selektiv.",
-      wrong: ["Die Blut-Hirn-Schranke ist kurz gesagt: zum ZNS.", "Die Blut-Hirn-Schranke ist kurz gesagt: präsentiert Peptide.", "Die Blut-Hirn-Schranke ist hier: Isolierung der Axone."],
+      answer: "Sie schützt ZNS durch selektiv.", wrong: ["Die Blut-Hirn-Schranke ist zum ZNS.", "Die Blut-Hirn-Schranke ist präsentiert Peptide.", "Sie ist eine Isolierung der Axone."],
       explanation: "selektiv. Bezug: Blut-Hirn-Schranke. Blut-Hirn-Schranke bedeutet: schützt ZNS.",
       wissen: "selektiv. Bezug: Blut-Hirn-Schranke. Blut-Hirn-Schranke bedeutet: schützt ZNS.",
       flashFront: "Blut-Hirn-Schranke",
@@ -6049,8 +5487,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-unspezifisch:p10:f",
       prompt: "Wozu dienen Sensorische Bahn?",
-      answer: "Das Sensorische Bahn ist hier: zum ZNS, und zwar gilt: afferenzen.",
-      wrong: ["Das Sensorische Bahn ist hier: präsentiert Peptide.", "Das Sensorische Bahn ist hier: Isolierung der Axone.", "Das Sensorische Bahn ist hier: vom ZNS."],
+      answer: "Es ist zum ZNS durch afferenzen.", wrong: ["Das Sensorische Bahn ist präsentiert Peptide.", "Es ist eine Isolierung der Axone.", "Das Sensorische Bahn ist vom ZNS."],
       explanation: "Afferenzen. Bezug: Sensorische Bahn. Sensorische Bahn bedeutet: zum ZNS.",
       wissen: "Afferenzen. Bezug: Sensorische Bahn. Sensorische Bahn bedeutet: zum ZNS.",
       flashFront: "Sensorische Bahn",
@@ -6058,8 +5495,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-immun-unspezifisch:p11:f",
       prompt: "Was kennzeichnet „MHC“?",
-      answer: "Das MHC ist kurz gesagt: präsentiert Peptide, und zwar gilt: erkennung fremd/selbst.",
-      wrong: ["Das MHC ist hier: Isolierung der Axone.", "Das MHC ist kurz gesagt: vom ZNS.", "Das MHC ist hier: Aufnahme und Verdau."],
+      answer: "Es ist präsentiert Peptide durch erkennung fremd/selbst.", wrong: ["Es ist eine Isolierung der Axone.", "Das MHC ist vom ZNS.", "Es ist eine Aufnahme und Verdau."],
       explanation: "Erkennung fremd/selbst. Bezug: MHC. MHC bedeutet: präsentiert Peptide.",
       wissen: "Erkennung fremd/selbst. Bezug: MHC. MHC bedeutet: präsentiert Peptide.",
       flashFront: "MHC",
@@ -6088,8 +5524,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-synapse-integration:p0:f",
       prompt: "Was kennzeichnet „Reflex“?",
-      answer: "Das Reflex ist kurz gesagt: schnelle Antwort, und zwar gilt: ohne Bewusstsein.",
-      wrong: ["Das Reflex ist kurz gesagt: Botenstoff Immunsystem.", "Das Reflex ist hier: Kaskade der angeborenen Abwehr.", "Das Reflex ist kurz gesagt: löst Immunantwort aus."],
+      answer: "Es ist schnelle Antwort durch ohne Bewusstsein.", wrong: ["Das Reflex ist das Botenstoff Immunsystem.", "Es ist eine Kaskade der Angeborenen Abwehr.", "Löst Immunantwort aus."],
       explanation: "ohne Bewusstsein. Bezug: Reflex. Reflex bedeutet: schnelle Antwort.",
       wissen: "ohne Bewusstsein. Bezug: Reflex. Reflex bedeutet: schnelle Antwort.",
       flashFront: "Reflex",
@@ -6097,8 +5532,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-synapse-integration:p1:f",
       prompt: "Was kennzeichnet „Zytokin“?",
-      answer: "Das Zytokin ist kurz gesagt: Botenstoff Immunsystem, und zwar gilt: koordination.",
-      wrong: ["Das Zytokin ist hier: Kaskade der angeborenen Abwehr.", "Das Zytokin ist kurz gesagt: löst Immunantwort aus.", "Das Zytokin ist kurz gesagt: spezifisch, Gedächtnis."],
+      answer: "Es ist eine Botenstoff Immunsystem durch Koordination.", wrong: ["Es ist eine Kaskade der Angeborenen Abwehr.", "Löst Immunantwort aus.", "Das Zytokin ist spezifisch, Gedächtnis."],
       explanation: "Koordination. Bezug: Zytokin. Zytokin bedeutet: Botenstoff Immunsystem.",
       wissen: "Koordination. Bezug: Zytokin. Zytokin bedeutet: Botenstoff Immunsystem.",
       flashFront: "Zytokin",
@@ -6106,8 +5540,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-synapse-integration:p2:f",
       prompt: "Was kennzeichnet „Komplementsystem“?",
-      answer: "Das Komplementsystem ist hier: Kaskade der angeborenen Abwehr, und zwar gilt: löslich.",
-      wrong: ["Das Komplementsystem ist kurz gesagt: löst Immunantwort aus.", "Das Komplementsystem ist kurz gesagt: spezifisch, Gedächtnis.", "Das Komplementsystem ist kurz gesagt: erneute Begegnung."],
+      answer: "Es ist eine Kaskade der Angeborenen Abwehr durch Löslich.", wrong: ["Löst Immunantwort aus.", "Das Komplementsystem ist spezifisch, Gedächtnis.", "Das Komplementsystem ist erneute Begegnung."],
       explanation: "löslich. Bezug: Komplementsystem. Komplementsystem bedeutet: Kaskade der angeborenen Abwehr.",
       wissen: "löslich. Bezug: Komplementsystem. Komplementsystem bedeutet: Kaskade der angeborenen Abwehr.",
       flashFront: "Komplementsystem",
@@ -6115,8 +5548,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-synapse-integration:p3:f",
       prompt: "Was kennzeichnet „Antigen“?",
-      answer: "Löst Immunantwort aus, und zwar gilt: meist Fremdstoff.",
-      wrong: ["Das Antigen ist kurz gesagt: spezifisch, Gedächtnis.", "Das Antigen ist kurz gesagt: erneute Begegnung.", "Das Antigen ist hier: Angriff auf Körperzellen."],
+      answer: "Löst Immunantwort aus durch meist Fremdstoff.", wrong: ["Das Antigen ist spezifisch, Gedächtnis.", "Das Antigen ist erneute Begegnung.", "Es ist eine Angriff auf Körperzellen."],
       explanation: "meist Fremdstoff. Bezug: Antigen. Antigen bedeutet: löst Immunantwort aus.",
       wissen: "meist Fremdstoff. Bezug: Antigen. Antigen bedeutet: löst Immunantwort aus.",
       flashFront: "Antigen",
@@ -6124,8 +5556,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-synapse-integration:p4:f",
       prompt: "Was kennzeichnet „adaptive Immunität“?",
-      answer: "Die adaptive Immunität ist hier: spezifisch, Gedächtnis, und zwar gilt: b/T-Zellen.",
-      wrong: ["Die adaptive Immunität ist hier: erneute Begegnung.", "Die adaptive Immunität ist hier: Angriff auf Körperzellen.", "Die adaptive Immunität ist hier: Botenstoff an Synapse."],
+      answer: "Sie ist spezifisch, Gedächtnis durch b/T-Zellen.", wrong: ["Die adaptive Immunität ist erneute Begegnung.", "Sie ist eine Angriff auf Körperzellen.", "Sie ist eine Botenstoff an Synapse."],
       explanation: "B/T-Zellen. Bezug: adaptive Immunität. adaptive Immunität bedeutet: spezifisch, Gedächtnis.",
       wissen: "B/T-Zellen. Bezug: adaptive Immunität. adaptive Immunität bedeutet: spezifisch, Gedächtnis.",
       flashFront: "adaptive Immunität",
@@ -6133,8 +5564,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-synapse-integration:p5:f",
       prompt: "Was kennzeichnet „Sekundärantwort“?",
-      answer: "Das Sekundärantwort ist kurz gesagt: erneute Begegnung, und zwar gilt: schnell und stark.",
-      wrong: ["Das Sekundärantwort ist hier: Angriff auf Körperzellen.", "Das Sekundärantwort ist hier: Botenstoff an Synapse.", "Das Sekundärantwort ist kurz gesagt: langsame Steuerung."],
+      answer: "Es ist erneute Begegnung durch schnell und stark.", wrong: ["Es ist eine Angriff auf Körperzellen.", "Es ist eine Botenstoff an Synapse.", "Das Sekundärantwort ist langsame Steuerung."],
       explanation: "schnell und stark. Bezug: Sekundärantwort. Sekundärantwort bedeutet: erneute Begegnung.",
       wissen: "schnell und stark. Bezug: Sekundärantwort. Sekundärantwort bedeutet: erneute Begegnung.",
       flashFront: "Sekundärantwort",
@@ -6142,8 +5572,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-synapse-integration:p6:f",
       prompt: "Was kennzeichnet „Autoimmunität“?",
-      answer: "Die Autoimmunität ist hier: Angriff auf Körperzellen, und zwar gilt: toleranzbruch.",
-      wrong: ["Die Autoimmunität ist hier: Botenstoff an Synapse.", "Die Autoimmunität ist kurz gesagt: langsame Steuerung.", "Die Autoimmunität ist hier: Isolierung der Axone."],
+      answer: "Sie ist eine Angriff auf Körperzellen durch Toleranzbruch.", wrong: ["Sie ist eine Botenstoff an Synapse.", "Die Autoimmunität ist langsame Steuerung.", "Sie ist eine Isolierung der Axone."],
       explanation: "Toleranzbruch. Bezug: Autoimmunität. Autoimmunität bedeutet: Angriff auf Körperzellen.",
       wissen: "Toleranzbruch. Bezug: Autoimmunität. Autoimmunität bedeutet: Angriff auf Körperzellen.",
       flashFront: "Autoimmunität",
@@ -6151,8 +5580,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-synapse-integration:p7:f",
       prompt: "Was kennzeichnet „Transmitter“?",
-      answer: "Der Transmitter ist hier: Botenstoff an Synapse, und zwar gilt: z. B. Acetylcholin.",
-      wrong: ["Der Transmitter ist kurz gesagt: langsame Steuerung.", "Der Transmitter ist hier: Isolierung der Axone.", "Der Transmitter ist kurz gesagt: vom ZNS."],
+      answer: "Er ist eine Botenstoff an Synapse durch Z. B. Acetylcholin.", wrong: ["Der Transmitter ist langsame Steuerung.", "Er ist eine Isolierung der Axone.", "Der Transmitter ist vom ZNS."],
       explanation: "z. B. Acetylcholin. Bezug: Transmitter. Transmitter bedeutet: Botenstoff an Synapse.",
       wissen: "z. B. Acetylcholin. Bezug: Transmitter. Transmitter bedeutet: Botenstoff an Synapse.",
       flashFront: "Transmitter",
@@ -6160,8 +5588,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-synapse-integration:p8:f",
       prompt: "Was kennzeichnet „Hormonsystem“?",
-      answer: "Das Hormonsystem ist kurz gesagt: langsame Steuerung, und zwar gilt: über Blut.",
-      wrong: ["Das Hormonsystem ist hier: Isolierung der Axone.", "Das Hormonsystem ist kurz gesagt: vom ZNS.", "Das Hormonsystem ist hier: Aufnahme und Verdau."],
+      answer: "Es ist langsame Steuerung durch über Blut.", wrong: ["Es ist eine Isolierung der Axone.", "Das Hormonsystem ist vom ZNS.", "Es ist eine Aufnahme und Verdau."],
       explanation: "über Blut. Bezug: Hormonsystem. Hormonsystem bedeutet: langsame Steuerung.",
       wissen: "über Blut. Bezug: Hormonsystem. Hormonsystem bedeutet: langsame Steuerung.",
       flashFront: "Hormonsystem",
@@ -6169,8 +5596,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-synapse-integration:p9:f",
       prompt: "Was kennzeichnet „Myelin“?",
-      answer: "Das Myelin ist hier: Isolierung der Axone, und zwar gilt: schnellere Leitung.",
-      wrong: ["Das Myelin ist kurz gesagt: vom ZNS.", "Das Myelin ist hier: Aufnahme und Verdau.", "Das Myelin ist kurz gesagt: schnelle Antwort."],
+      answer: "Es ist eine Isolierung der Axone durch Schnellere Leitung.", wrong: ["Das Myelin ist vom ZNS.", "Es ist eine Aufnahme und Verdau.", "Das Myelin ist schnelle Antwort."],
       explanation: "schnellere Leitung. Bezug: Myelin. Myelin bedeutet: Isolierung der Axone.",
       wissen: "schnellere Leitung. Bezug: Myelin. Myelin bedeutet: Isolierung der Axone.",
       flashFront: "Myelin",
@@ -6178,8 +5604,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-synapse-integration:p10:f",
       prompt: "Was kennzeichnet „Motorische Bahn“?",
-      answer: "Das Motorische Bahn ist hier: vom ZNS, und zwar gilt: efferenzen.",
-      wrong: ["Das Motorische Bahn ist hier: Aufnahme und Verdau.", "Das Motorische Bahn ist hier: schnelle Antwort.", "Das Motorische Bahn ist hier: Botenstoff Immunsystem."],
+      answer: "Es ist vom ZNS durch efferenzen.", wrong: ["Es ist eine Aufnahme und Verdau.", "Das Motorische Bahn ist schnelle Antwort.", "Das Motorische Bahn ist das Botenstoff Immunsystem."],
       explanation: "Efferenzen. Bezug: Motorische Bahn. Motorische Bahn bedeutet: vom ZNS.",
       wissen: "Efferenzen. Bezug: Motorische Bahn. Motorische Bahn bedeutet: vom ZNS.",
       flashFront: "Motorische Bahn",
@@ -6187,8 +5612,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-synapse-integration:p11:f",
       prompt: "Was kennzeichnet „Phagozytose“?",
-      answer: "Die Phagozytose ist hier: Aufnahme und Verdau, und zwar gilt: makrophagen.",
-      wrong: ["Die Phagozytose ist kurz gesagt: schnelle Antwort.", "Die Phagozytose ist kurz gesagt: Botenstoff Immunsystem.", "Die Phagozytose ist hier: Kaskade der angeborenen Abwehr."],
+      answer: "Sie ist eine Aufnahme und Verdau durch Makrophagen.", wrong: ["Die Phagozytose ist schnelle Antwort.", "Die Phagozytose ist die Botenstoff Immunsystem.", "Sie ist eine Kaskade der Angeborenen Abwehr."],
       explanation: "Makrophagen. Bezug: Phagozytose. Phagozytose bedeutet: Aufnahme und Verdau.",
       wissen: "Makrophagen. Bezug: Phagozytose. Phagozytose bedeutet: Aufnahme und Verdau.",
       flashFront: "Phagozytose",
@@ -6217,8 +5641,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-sinnesphysio:p0:f",
       prompt: "Wozu dienen Sensorische Bahn?",
-      answer: "Das Sensorische Bahn ist hier: zum ZNS, und zwar gilt: afferenzen.",
-      wrong: ["Das Sensorische Bahn ist hier: präsentiert Peptide.", "Das Sensorische Bahn ist hier: langlebig spezifisch.", "Das Sensorische Bahn ist hier: bindet spezifisch Antigen."],
+      answer: "Es ist zum ZNS durch afferenzen.", wrong: ["Das Sensorische Bahn ist präsentiert Peptide.", "Das Sensorische Bahn ist langlebig spezifisch.", "Das Sensorische Bahn ist bindet spezifisch Antigen."],
       explanation: "Afferenzen. Bezug: Sensorische Bahn. Sensorische Bahn bedeutet: zum ZNS.",
       wissen: "Afferenzen. Bezug: Sensorische Bahn. Sensorische Bahn bedeutet: zum ZNS.",
       flashFront: "Sensorische Bahn",
@@ -6226,8 +5649,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-sinnesphysio:p1:f",
       prompt: "Was kennzeichnet „MHC“?",
-      answer: "Das MHC ist kurz gesagt: präsentiert Peptide, und zwar gilt: erkennung fremd/selbst.",
-      wrong: ["Das MHC ist kurz gesagt: langlebig spezifisch.", "Das MHC ist hier: bindet spezifisch Antigen.", "Das MHC ist kurz gesagt: aktive Immunisierung."],
+      answer: "Es ist präsentiert Peptide durch erkennung fremd/selbst.", wrong: ["Das MHC ist langlebig spezifisch.", "Das MHC ist bindet spezifisch Antigen.", "Das MHC ist aktive Immunisierung."],
       explanation: "Erkennung fremd/selbst. Bezug: MHC. MHC bedeutet: präsentiert Peptide.",
       wissen: "Erkennung fremd/selbst. Bezug: MHC. MHC bedeutet: präsentiert Peptide.",
       flashFront: "MHC",
@@ -6235,8 +5657,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-sinnesphysio:p2:f",
       prompt: "Was kennzeichnet „Gedächtniszelle“?",
-      answer: "Die Gedächtniszelle ist kurz gesagt: langlebig spezifisch, und zwar gilt: impfschutz.",
-      wrong: ["Die Gedächtniszelle ist hier: bindet spezifisch Antigen.", "Die Gedächtniszelle ist kurz gesagt: aktive Immunisierung.", "Die Gedächtniszelle ist kurz gesagt: befällt T-Helferzellen."],
+      answer: "Sie ist langlebig spezifisch durch impfschutz.", wrong: ["Die Gedächtniszelle ist bindet spezifisch Antigen.", "Die Gedächtniszelle ist aktive Immunisierung.", "Die Gedächtniszelle ist befällt T-Helferzellen."],
       explanation: "Impfschutz. Bezug: Gedächtniszelle. Gedächtniszelle bedeutet: langlebig spezifisch.",
       wissen: "Impfschutz. Bezug: Gedächtniszelle. Gedächtniszelle bedeutet: langlebig spezifisch.",
       flashFront: "Gedächtniszelle",
@@ -6244,8 +5665,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-sinnesphysio:p3:f",
       prompt: "Was kennzeichnet „Antikörper“?",
-      answer: "Der Antikörper ist hier: bindet spezifisch Antigen, und zwar gilt: von B-Zellen.",
-      wrong: ["Der Antikörper ist kurz gesagt: aktive Immunisierung.", "Der Antikörper ist kurz gesagt: befällt T-Helferzellen.", "Der Antikörper ist kurz gesagt: elektrisches Signal."],
+      answer: "Er ist bindet spezifisch Antigen durch von B-Zellen.", wrong: ["Der Antikörper ist aktive Immunisierung.", "Der Antikörper ist befällt T-Helferzellen.", "Der Antikörper ist elektrisches Signal."],
       explanation: "von B-Zellen. Bezug: Antikörper. Antikörper bedeutet: bindet spezifisch Antigen.",
       wissen: "von B-Zellen. Bezug: Antikörper. Antikörper bedeutet: bindet spezifisch Antigen.",
       flashFront: "Antikörper",
@@ -6253,8 +5673,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-sinnesphysio:p4:f",
       prompt: "Was kennzeichnet „Impfung“?",
-      answer: "Die Impfung ist kurz gesagt: aktive Immunisierung, und zwar gilt: gedächtnis ohne Krankheit.",
-      wrong: ["Die Impfung ist kurz gesagt: befällt T-Helferzellen.", "Die Impfung ist kurz gesagt: elektrisches Signal.", "Die Impfung ist kurz gesagt: bindet Signalstoff."],
+      answer: "Sie ist aktive Immunisierung durch gedächtnis ohne Krankheit.", wrong: ["Die Impfung ist befällt T-Helferzellen.", "Die Impfung ist elektrisches Signal.", "Die Impfung ist bindet Signalstoff."],
       explanation: "Gedächtnis ohne Krankheit. Bezug: Impfung. Impfung bedeutet: aktive Immunisierung.",
       wissen: "Gedächtnis ohne Krankheit. Bezug: Impfung. Impfung bedeutet: aktive Immunisierung.",
       flashFront: "Impfung",
@@ -6262,8 +5681,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-sinnesphysio:p5:f",
       prompt: "Was kennzeichnet „HIV“?",
-      answer: "Das HIV ist kurz gesagt: befällt T-Helferzellen, und zwar gilt: immunschwäche.",
-      wrong: ["Das HIV ist kurz gesagt: elektrisches Signal.", "Das HIV ist kurz gesagt: bindet Signalstoff.", "Das HIV ist kurz gesagt: Rückkopplung."],
+      answer: "Es ist befällt T-Helferzellen durch immunschwäche.", wrong: ["Das HIV ist elektrisches Signal.", "Das HIV ist bindet Signalstoff.", "Das HIV ist das Rückkopplung."],
       explanation: "Immunschwäche. Bezug: HIV. HIV bedeutet: befällt T-Helferzellen.",
       wissen: "Immunschwäche. Bezug: HIV. HIV bedeutet: befällt T-Helferzellen.",
       flashFront: "HIV",
@@ -6271,8 +5689,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-sinnesphysio:p6:f",
       prompt: "Was kennzeichnet „Aktionspotenzial“?",
-      answer: "Das Aktionspotenzial ist kurz gesagt: elektrisches Signal, und zwar gilt: alles-oder-nichts.",
-      wrong: ["Das Aktionspotenzial ist kurz gesagt: bindet Signalstoff.", "Das Aktionspotenzial ist kurz gesagt: Rückkopplung.", "Das Aktionspotenzial ist kurz gesagt: schnelle Antwort."],
+      answer: "Es ist elektrisches Signal durch alles-oder-nichts.", wrong: ["Das Aktionspotenzial ist bindet Signalstoff.", "Das Aktionspotenzial ist das Rückkopplung.", "Das Aktionspotenzial ist schnelle Antwort."],
       explanation: "Alles-oder-nichts. Bezug: Aktionspotenzial. Aktionspotenzial bedeutet: elektrisches Signal.",
       wissen: "Alles-oder-nichts. Bezug: Aktionspotenzial. Aktionspotenzial bedeutet: elektrisches Signal.",
       flashFront: "Aktionspotenzial",
@@ -6280,8 +5697,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-sinnesphysio:p7:f",
       prompt: "Was kennzeichnet „Rezeptor“?",
-      answer: "Der Rezeptor ist kurz gesagt: bindet Signalstoff, und zwar gilt: spezifisch.",
-      wrong: ["Der Rezeptor ist kurz gesagt: Rückkopplung.", "Der Rezeptor ist kurz gesagt: schnelle Antwort.", "Der Rezeptor ist kurz gesagt: Botenstoff Immunsystem."],
+      answer: "Er ist bindet Signalstoff durch spezifisch.", wrong: ["Der Rezeptor ist der Rückkopplung.", "Der Rezeptor ist schnelle Antwort.", "Der Rezeptor ist der Botenstoff Immunsystem."],
       explanation: "spezifisch. Bezug: Rezeptor. Rezeptor bedeutet: bindet Signalstoff.",
       wissen: "spezifisch. Bezug: Rezeptor. Rezeptor bedeutet: bindet Signalstoff.",
       flashFront: "Rezeptor",
@@ -6289,8 +5705,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-sinnesphysio:p8:f",
       prompt: "Was kennzeichnet „Feedback“?",
-      answer: "Das Feedback ist kurz gesagt: Rückkopplung, und zwar gilt: homöostase.",
-      wrong: ["Das Feedback ist kurz gesagt: schnelle Antwort.", "Das Feedback ist kurz gesagt: Botenstoff Immunsystem.", "Das Feedback ist hier: Kaskade der angeborenen Abwehr."],
+      answer: "Es ist eine Rückkopplung durch Homöostase.", wrong: ["Das Feedback ist schnelle Antwort.", "Das Feedback ist das Botenstoff Immunsystem.", "Es ist eine Kaskade der Angeborenen Abwehr."],
       explanation: "Homöostase. Bezug: Feedback. Feedback bedeutet: Rückkopplung.",
       wissen: "Homöostase. Bezug: Feedback. Feedback bedeutet: Rückkopplung.",
       flashFront: "Feedback",
@@ -6298,8 +5713,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-sinnesphysio:p9:f",
       prompt: "Was kennzeichnet „Reflex“?",
-      answer: "Das Reflex ist kurz gesagt: schnelle Antwort, und zwar gilt: ohne Bewusstsein.",
-      wrong: ["Das Reflex ist kurz gesagt: Botenstoff Immunsystem.", "Das Reflex ist hier: Kaskade der angeborenen Abwehr.", "Das Reflex ist kurz gesagt: zum ZNS."],
+      answer: "Es ist schnelle Antwort durch ohne Bewusstsein.", wrong: ["Das Reflex ist das Botenstoff Immunsystem.", "Es ist eine Kaskade der Angeborenen Abwehr.", "Das Reflex ist zum ZNS."],
       explanation: "ohne Bewusstsein. Bezug: Reflex. Reflex bedeutet: schnelle Antwort.",
       wissen: "ohne Bewusstsein. Bezug: Reflex. Reflex bedeutet: schnelle Antwort.",
       flashFront: "Reflex",
@@ -6307,8 +5721,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-sinnesphysio:p10:f",
       prompt: "Was kennzeichnet „Zytokin“?",
-      answer: "Das Zytokin ist kurz gesagt: Botenstoff Immunsystem, und zwar gilt: koordination.",
-      wrong: ["Das Zytokin ist hier: Kaskade der angeborenen Abwehr.", "Das Zytokin ist kurz gesagt: zum ZNS.", "Das Zytokin ist kurz gesagt: präsentiert Peptide."],
+      answer: "Es ist eine Botenstoff Immunsystem durch Koordination.", wrong: ["Es ist eine Kaskade der Angeborenen Abwehr.", "Das Zytokin ist zum ZNS.", "Das Zytokin ist präsentiert Peptide."],
       explanation: "Koordination. Bezug: Zytokin. Zytokin bedeutet: Botenstoff Immunsystem.",
       wissen: "Koordination. Bezug: Zytokin. Zytokin bedeutet: Botenstoff Immunsystem.",
       flashFront: "Zytokin",
@@ -6316,8 +5729,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-sinnesphysio:p11:f",
       prompt: "Was kennzeichnet „Komplementsystem“?",
-      answer: "Das Komplementsystem ist hier: Kaskade der angeborenen Abwehr, und zwar gilt: löslich.",
-      wrong: ["Das Komplementsystem ist kurz gesagt: zum ZNS.", "Das Komplementsystem ist kurz gesagt: präsentiert Peptide.", "Das Komplementsystem ist kurz gesagt: langlebig spezifisch."],
+      answer: "Es ist eine Kaskade der Angeborenen Abwehr durch Löslich.", wrong: ["Das Komplementsystem ist zum ZNS.", "Das Komplementsystem ist präsentiert Peptide.", "Das Komplementsystem ist langlebig spezifisch."],
       explanation: "löslich. Bezug: Komplementsystem. Komplementsystem bedeutet: Kaskade der angeborenen Abwehr.",
       wissen: "löslich. Bezug: Komplementsystem. Komplementsystem bedeutet: Kaskade der angeborenen Abwehr.",
       flashFront: "Komplementsystem",
@@ -6346,8 +5758,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-stoerungen:p0:f",
       prompt: "Was kennzeichnet „Motorische Bahn“?",
-      answer: "Das Motorische Bahn ist hier: vom ZNS, und zwar gilt: efferenzen.",
-      wrong: ["Das Motorische Bahn ist hier: Aufnahme und Verdau.", "Das Motorische Bahn ist hier: beendet Signal.", "Das Motorische Bahn ist hier: schnell, unspezifisch."],
+      answer: "Es ist vom ZNS durch efferenzen.", wrong: ["Es ist eine Aufnahme und Verdau.", "Das Motorische Bahn ist beendet Signal.", "Das Motorische Bahn ist schnell, unspezifisch."],
       explanation: "Efferenzen. Bezug: Motorische Bahn. Motorische Bahn bedeutet: vom ZNS.",
       wissen: "Efferenzen. Bezug: Motorische Bahn. Motorische Bahn bedeutet: vom ZNS.",
       flashFront: "Motorische Bahn",
@@ -6355,8 +5766,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-stoerungen:p1:f",
       prompt: "Was kennzeichnet „Phagozytose“?",
-      answer: "Die Phagozytose ist hier: Aufnahme und Verdau, und zwar gilt: makrophagen.",
-      wrong: ["Die Phagozytose ist kurz gesagt: beendet Signal.", "Die Phagozytose ist kurz gesagt: schnell, unspezifisch.", "Die Phagozytose ist kurz gesagt: erste Begegnung."],
+      answer: "Sie ist eine Aufnahme und Verdau durch Makrophagen.", wrong: ["Die Phagozytose ist beendet Signal.", "Die Phagozytose ist schnell, unspezifisch.", "Die Phagozytose ist erste Begegnung."],
       explanation: "Makrophagen. Bezug: Phagozytose. Phagozytose bedeutet: Aufnahme und Verdau.",
       wissen: "Makrophagen. Bezug: Phagozytose. Phagozytose bedeutet: Aufnahme und Verdau.",
       flashFront: "Phagozytose",
@@ -6364,8 +5774,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-stoerungen:p2:f",
       prompt: "Was kennzeichnet „Neurotransmitterabbau“?",
-      answer: "Das Neurotransmitterabbau ist kurz gesagt: beendet Signal, und zwar gilt: enzyme/Wiederaufnahme.",
-      wrong: ["Das Neurotransmitterabbau ist kurz gesagt: schnell, unspezifisch.", "Das Neurotransmitterabbau ist kurz gesagt: erste Begegnung.", "Das Neurotransmitterabbau ist kurz gesagt: übersteigerte Reaktion."],
+      answer: "Es ist beendet Signal durch enzyme/Wiederaufnahme.", wrong: ["Das Neurotransmitterabbau ist schnell, unspezifisch.", "Das Neurotransmitterabbau ist erste Begegnung.", "Das Neurotransmitterabbau ist übersteigerte Reaktion."],
       explanation: "Enzyme/Wiederaufnahme. Bezug: Neurotransmitterabbau. Neurotransmitterabbau bedeutet: beendet Signal.",
       wissen: "Enzyme/Wiederaufnahme. Bezug: Neurotransmitterabbau. Neurotransmitterabbau bedeutet: beendet Signal.",
       flashFront: "Neurotransmitterabbau",
@@ -6373,8 +5782,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-stoerungen:p3:f",
       prompt: "Was kennzeichnet „angeborene Immunität“?",
-      answer: "Die angeborene Immunität ist hier: schnell, unspezifisch, und zwar gilt: barrieren, Phagozytose.",
-      wrong: ["Die angeborene Immunität ist hier: erste Begegnung.", "Die angeborene Immunität ist hier: übersteigerte Reaktion.", "Die angeborene Immunität ist kurz gesagt: Übertragungsstelle."],
+      answer: "Sie ist schnell, unspezifisch durch barrieren, Phagozytose.", wrong: ["Die angeborene Immunität ist erste Begegnung.", "Die angeborene Immunität ist übersteigerte Reaktion.", "Die angeborene Immunität ist die Übertragungsstelle."],
       explanation: "Barrieren, Phagozytose. Bezug: angeborene Immunität. angeborene Immunität bedeutet: schnell, unspezifisch.",
       wissen: "Barrieren, Phagozytose. Bezug: angeborene Immunität. angeborene Immunität bedeutet: schnell, unspezifisch.",
       flashFront: "angeborene Immunität",
@@ -6382,8 +5790,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-stoerungen:p4:f",
       prompt: "Was kennzeichnet „Primärantwort“?",
-      answer: "Das Primärantwort ist kurz gesagt: erste Begegnung, und zwar gilt: langsamer.",
-      wrong: ["Das Primärantwort ist kurz gesagt: übersteigerte Reaktion.", "Das Primärantwort ist kurz gesagt: Übertragungsstelle.", "Das Primärantwort ist kurz gesagt: intrazelluläre Weiterleitung."],
+      answer: "Es ist erste Begegnung durch langsamer.", wrong: ["Das Primärantwort ist übersteigerte Reaktion.", "Das Primärantwort ist das Übertragungsstelle.", "Das Primärantwort ist intrazelluläre Weiterleitung."],
       explanation: "langsamer. Bezug: Primärantwort. Primärantwort bedeutet: erste Begegnung.",
       wissen: "langsamer. Bezug: Primärantwort. Primärantwort bedeutet: erste Begegnung.",
       flashFront: "Primärantwort",
@@ -6391,8 +5798,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-stoerungen:p5:f",
       prompt: "Was kennzeichnet „Allergie“?",
-      answer: "Die Allergie ist kurz gesagt: übersteigerte Reaktion, und zwar gilt: auf harmlose Antigene.",
-      wrong: ["Die Allergie ist kurz gesagt: Übertragungsstelle.", "Die Allergie ist kurz gesagt: intrazelluläre Weiterleitung.", "Die Allergie ist kurz gesagt: schützt ZNS."],
+      answer: "Sie ist übersteigerte Reaktion durch auf harmlose Antigene.", wrong: ["Die Allergie ist die Übertragungsstelle.", "Die Allergie ist intrazelluläre Weiterleitung.", "Sie schützt ZNS."],
       explanation: "auf harmlose Antigene. Bezug: Allergie. Allergie bedeutet: übersteigerte Reaktion.",
       wissen: "auf harmlose Antigene. Bezug: Allergie. Allergie bedeutet: übersteigerte Reaktion.",
       flashFront: "Allergie",
@@ -6400,8 +5806,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-stoerungen:p6:f",
       prompt: "Was kennzeichnet „Synapse“?",
-      answer: "Die Synapse ist kurz gesagt: Übertragungsstelle, und zwar gilt: chemisch/elektrisch.",
-      wrong: ["Die Synapse ist kurz gesagt: intrazelluläre Weiterleitung.", "Die Synapse ist kurz gesagt: schützt ZNS.", "Die Synapse ist kurz gesagt: zum ZNS."],
+      answer: "Sie ist eine Übertragungsstelle durch Chemisch/elektrisch.", wrong: ["Die Synapse ist intrazelluläre Weiterleitung.", "Sie schützt ZNS.", "Die Synapse ist zum ZNS."],
       explanation: "chemisch/elektrisch. Bezug: Synapse. Synapse bedeutet: Übertragungsstelle.",
       wissen: "chemisch/elektrisch. Bezug: Synapse. Synapse bedeutet: Übertragungsstelle.",
       flashFront: "Synapse",
@@ -6409,8 +5814,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-stoerungen:p7:f",
       prompt: "Was kennzeichnet „Second Messenger“?",
-      answer: "Der Second Messenger ist hier: intrazelluläre Weiterleitung, und zwar gilt: z. B. cAMP.",
-      wrong: ["Der Second Messenger ist kurz gesagt: schützt ZNS.", "Der Second Messenger ist hier: zum ZNS.", "Der Second Messenger ist hier: präsentiert Peptide."],
+      answer: "Er ist intrazelluläre Weiterleitung durch z. B. cAMP.", wrong: ["Er schützt ZNS.", "Der Second Messenger ist zum ZNS.", "Der Second Messenger ist präsentiert Peptide."],
       explanation: "z. B. cAMP. Bezug: Second Messenger. Second Messenger bedeutet: intrazelluläre Weiterleitung.",
       wissen: "z. B. cAMP. Bezug: Second Messenger. Second Messenger bedeutet: intrazelluläre Weiterleitung.",
       flashFront: "Second Messenger",
@@ -6418,8 +5822,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-stoerungen:p8:f",
       prompt: "Wozu dient die Blut-Hirn-Schranke?",
-      answer: "Sie schützt ZNS, und zwar gilt hier: Selektiv.",
-      wrong: ["Die Blut-Hirn-Schranke ist kurz gesagt: zum ZNS.", "Die Blut-Hirn-Schranke ist kurz gesagt: präsentiert Peptide.", "Die Blut-Hirn-Schranke ist kurz gesagt: langlebig spezifisch."],
+      answer: "Sie schützt ZNS durch selektiv.", wrong: ["Die Blut-Hirn-Schranke ist zum ZNS.", "Die Blut-Hirn-Schranke ist präsentiert Peptide.", "Die Blut-Hirn-Schranke ist langlebig spezifisch."],
       explanation: "selektiv. Bezug: Blut-Hirn-Schranke. Blut-Hirn-Schranke bedeutet: schützt ZNS.",
       wissen: "selektiv. Bezug: Blut-Hirn-Schranke. Blut-Hirn-Schranke bedeutet: schützt ZNS.",
       flashFront: "Blut-Hirn-Schranke",
@@ -6427,8 +5830,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-stoerungen:p9:f",
       prompt: "Wozu dienen Sensorische Bahn?",
-      answer: "Das Sensorische Bahn ist hier: zum ZNS, und zwar gilt: afferenzen.",
-      wrong: ["Das Sensorische Bahn ist hier: präsentiert Peptide.", "Das Sensorische Bahn ist hier: langlebig spezifisch.", "Das Sensorische Bahn ist hier: vom ZNS."],
+      answer: "Es ist zum ZNS durch afferenzen.", wrong: ["Das Sensorische Bahn ist präsentiert Peptide.", "Das Sensorische Bahn ist langlebig spezifisch.", "Das Sensorische Bahn ist vom ZNS."],
       explanation: "Afferenzen. Bezug: Sensorische Bahn. Sensorische Bahn bedeutet: zum ZNS.",
       wissen: "Afferenzen. Bezug: Sensorische Bahn. Sensorische Bahn bedeutet: zum ZNS.",
       flashFront: "Sensorische Bahn",
@@ -6436,8 +5838,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-stoerungen:p10:f",
       prompt: "Was kennzeichnet „MHC“?",
-      answer: "Das MHC ist kurz gesagt: präsentiert Peptide, und zwar gilt: erkennung fremd/selbst.",
-      wrong: ["Das MHC ist kurz gesagt: langlebig spezifisch.", "Das MHC ist kurz gesagt: vom ZNS.", "Das MHC ist hier: Aufnahme und Verdau."],
+      answer: "Es ist präsentiert Peptide durch erkennung fremd/selbst.", wrong: ["Das MHC ist langlebig spezifisch.", "Das MHC ist vom ZNS.", "Es ist eine Aufnahme und Verdau."],
       explanation: "Erkennung fremd/selbst. Bezug: MHC. MHC bedeutet: präsentiert Peptide.",
       wissen: "Erkennung fremd/selbst. Bezug: MHC. MHC bedeutet: präsentiert Peptide.",
       flashFront: "MHC",
@@ -6445,8 +5846,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-stoerungen:p11:f",
       prompt: "Was kennzeichnet „Gedächtniszelle“?",
-      answer: "Die Gedächtniszelle ist kurz gesagt: langlebig spezifisch, und zwar gilt: impfschutz.",
-      wrong: ["Die Gedächtniszelle ist kurz gesagt: vom ZNS.", "Die Gedächtniszelle ist hier: Aufnahme und Verdau.", "Die Gedächtniszelle ist kurz gesagt: beendet Signal."],
+      answer: "Sie ist langlebig spezifisch durch impfschutz.", wrong: ["Die Gedächtniszelle ist vom ZNS.", "Sie ist eine Aufnahme und Verdau.", "Die Gedächtniszelle ist beendet Signal."],
       explanation: "Impfschutz. Bezug: Gedächtniszelle. Gedächtniszelle bedeutet: langlebig spezifisch.",
       wissen: "Impfschutz. Bezug: Gedächtniszelle. Gedächtniszelle bedeutet: langlebig spezifisch.",
       flashFront: "Gedächtniszelle",
@@ -6475,8 +5875,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-pharmakologie:p0:f",
       prompt: "Was kennzeichnet „Zytokin“?",
-      answer: "Das Zytokin ist kurz gesagt: Botenstoff Immunsystem, und zwar gilt: koordination.",
-      wrong: ["Das Zytokin ist hier: Kaskade der angeborenen Abwehr.", "Das Zytokin ist kurz gesagt: löst Immunantwort aus.", "Das Zytokin ist kurz gesagt: spezifisch, Gedächtnis."],
+      answer: "Es ist eine Botenstoff Immunsystem durch Koordination.", wrong: ["Es ist eine Kaskade der Angeborenen Abwehr.", "Löst Immunantwort aus.", "Das Zytokin ist spezifisch, Gedächtnis."],
       explanation: "Koordination. Bezug: Zytokin. Zytokin bedeutet: Botenstoff Immunsystem.",
       wissen: "Koordination. Bezug: Zytokin. Zytokin bedeutet: Botenstoff Immunsystem.",
       flashFront: "Zytokin",
@@ -6484,8 +5883,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-pharmakologie:p1:f",
       prompt: "Was kennzeichnet „Komplementsystem“?",
-      answer: "Das Komplementsystem ist hier: Kaskade der angeborenen Abwehr, und zwar gilt: löslich.",
-      wrong: ["Das Komplementsystem ist kurz gesagt: löst Immunantwort aus.", "Das Komplementsystem ist kurz gesagt: spezifisch, Gedächtnis.", "Das Komplementsystem ist kurz gesagt: erneute Begegnung."],
+      answer: "Es ist eine Kaskade der Angeborenen Abwehr durch Löslich.", wrong: ["Löst Immunantwort aus.", "Das Komplementsystem ist spezifisch, Gedächtnis.", "Das Komplementsystem ist erneute Begegnung."],
       explanation: "löslich. Bezug: Komplementsystem. Komplementsystem bedeutet: Kaskade der angeborenen Abwehr.",
       wissen: "löslich. Bezug: Komplementsystem. Komplementsystem bedeutet: Kaskade der angeborenen Abwehr.",
       flashFront: "Komplementsystem",
@@ -6493,8 +5891,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-pharmakologie:p2:f",
       prompt: "Was kennzeichnet „Antigen“?",
-      answer: "Löst Immunantwort aus, und zwar gilt: meist Fremdstoff.",
-      wrong: ["Das Antigen ist kurz gesagt: spezifisch, Gedächtnis.", "Das Antigen ist kurz gesagt: erneute Begegnung.", "Das Antigen ist hier: Angriff auf Körperzellen."],
+      answer: "Löst Immunantwort aus durch meist Fremdstoff.", wrong: ["Das Antigen ist spezifisch, Gedächtnis.", "Das Antigen ist erneute Begegnung.", "Es ist eine Angriff auf Körperzellen."],
       explanation: "meist Fremdstoff. Bezug: Antigen. Antigen bedeutet: löst Immunantwort aus.",
       wissen: "meist Fremdstoff. Bezug: Antigen. Antigen bedeutet: löst Immunantwort aus.",
       flashFront: "Antigen",
@@ -6502,8 +5899,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-pharmakologie:p3:f",
       prompt: "Was kennzeichnet „adaptive Immunität“?",
-      answer: "Die adaptive Immunität ist hier: spezifisch, Gedächtnis, und zwar gilt: b/T-Zellen.",
-      wrong: ["Die adaptive Immunität ist hier: erneute Begegnung.", "Die adaptive Immunität ist hier: Angriff auf Körperzellen.", "Die adaptive Immunität ist hier: Botenstoff an Synapse."],
+      answer: "Sie ist spezifisch, Gedächtnis durch b/T-Zellen.", wrong: ["Die adaptive Immunität ist erneute Begegnung.", "Sie ist eine Angriff auf Körperzellen.", "Sie ist eine Botenstoff an Synapse."],
       explanation: "B/T-Zellen. Bezug: adaptive Immunität. adaptive Immunität bedeutet: spezifisch, Gedächtnis.",
       wissen: "B/T-Zellen. Bezug: adaptive Immunität. adaptive Immunität bedeutet: spezifisch, Gedächtnis.",
       flashFront: "adaptive Immunität",
@@ -6511,8 +5907,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-pharmakologie:p4:f",
       prompt: "Was kennzeichnet „Sekundärantwort“?",
-      answer: "Das Sekundärantwort ist kurz gesagt: erneute Begegnung, und zwar gilt: schnell und stark.",
-      wrong: ["Das Sekundärantwort ist hier: Angriff auf Körperzellen.", "Das Sekundärantwort ist hier: Botenstoff an Synapse.", "Das Sekundärantwort ist kurz gesagt: langsame Steuerung."],
+      answer: "Es ist erneute Begegnung durch schnell und stark.", wrong: ["Es ist eine Angriff auf Körperzellen.", "Es ist eine Botenstoff an Synapse.", "Das Sekundärantwort ist langsame Steuerung."],
       explanation: "schnell und stark. Bezug: Sekundärantwort. Sekundärantwort bedeutet: erneute Begegnung.",
       wissen: "schnell und stark. Bezug: Sekundärantwort. Sekundärantwort bedeutet: erneute Begegnung.",
       flashFront: "Sekundärantwort",
@@ -6520,8 +5915,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-pharmakologie:p5:f",
       prompt: "Was kennzeichnet „Autoimmunität“?",
-      answer: "Die Autoimmunität ist hier: Angriff auf Körperzellen, und zwar gilt: toleranzbruch.",
-      wrong: ["Die Autoimmunität ist hier: Botenstoff an Synapse.", "Die Autoimmunität ist kurz gesagt: langsame Steuerung.", "Die Autoimmunität ist hier: Isolierung der Axone."],
+      answer: "Sie ist eine Angriff auf Körperzellen durch Toleranzbruch.", wrong: ["Sie ist eine Botenstoff an Synapse.", "Die Autoimmunität ist langsame Steuerung.", "Sie ist eine Isolierung der Axone."],
       explanation: "Toleranzbruch. Bezug: Autoimmunität. Autoimmunität bedeutet: Angriff auf Körperzellen.",
       wissen: "Toleranzbruch. Bezug: Autoimmunität. Autoimmunität bedeutet: Angriff auf Körperzellen.",
       flashFront: "Autoimmunität",
@@ -6529,8 +5923,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-pharmakologie:p6:f",
       prompt: "Was kennzeichnet „Transmitter“?",
-      answer: "Der Transmitter ist hier: Botenstoff an Synapse, und zwar gilt: z. B. Acetylcholin.",
-      wrong: ["Der Transmitter ist kurz gesagt: langsame Steuerung.", "Der Transmitter ist hier: Isolierung der Axone.", "Der Transmitter ist kurz gesagt: vom ZNS."],
+      answer: "Er ist eine Botenstoff an Synapse durch Z. B. Acetylcholin.", wrong: ["Der Transmitter ist langsame Steuerung.", "Er ist eine Isolierung der Axone.", "Der Transmitter ist vom ZNS."],
       explanation: "z. B. Acetylcholin. Bezug: Transmitter. Transmitter bedeutet: Botenstoff an Synapse.",
       wissen: "z. B. Acetylcholin. Bezug: Transmitter. Transmitter bedeutet: Botenstoff an Synapse.",
       flashFront: "Transmitter",
@@ -6538,8 +5931,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-pharmakologie:p7:f",
       prompt: "Was kennzeichnet „Hormonsystem“?",
-      answer: "Das Hormonsystem ist kurz gesagt: langsame Steuerung, und zwar gilt: über Blut.",
-      wrong: ["Das Hormonsystem ist hier: Isolierung der Axone.", "Das Hormonsystem ist kurz gesagt: vom ZNS.", "Das Hormonsystem ist hier: Aufnahme und Verdau."],
+      answer: "Es ist langsame Steuerung durch über Blut.", wrong: ["Es ist eine Isolierung der Axone.", "Das Hormonsystem ist vom ZNS.", "Es ist eine Aufnahme und Verdau."],
       explanation: "über Blut. Bezug: Hormonsystem. Hormonsystem bedeutet: langsame Steuerung.",
       wissen: "über Blut. Bezug: Hormonsystem. Hormonsystem bedeutet: langsame Steuerung.",
       flashFront: "Hormonsystem",
@@ -6547,8 +5939,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-pharmakologie:p8:f",
       prompt: "Was kennzeichnet „Myelin“?",
-      answer: "Das Myelin ist hier: Isolierung der Axone, und zwar gilt: schnellere Leitung.",
-      wrong: ["Das Myelin ist kurz gesagt: vom ZNS.", "Das Myelin ist hier: Aufnahme und Verdau.", "Das Myelin ist kurz gesagt: beendet Signal."],
+      answer: "Es ist eine Isolierung der Axone durch Schnellere Leitung.", wrong: ["Das Myelin ist vom ZNS.", "Es ist eine Aufnahme und Verdau.", "Das Myelin ist beendet Signal."],
       explanation: "schnellere Leitung. Bezug: Myelin. Myelin bedeutet: Isolierung der Axone.",
       wissen: "schnellere Leitung. Bezug: Myelin. Myelin bedeutet: Isolierung der Axone.",
       flashFront: "Myelin",
@@ -6556,8 +5947,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-pharmakologie:p9:f",
       prompt: "Was kennzeichnet „Motorische Bahn“?",
-      answer: "Das Motorische Bahn ist hier: vom ZNS, und zwar gilt: efferenzen.",
-      wrong: ["Das Motorische Bahn ist hier: Aufnahme und Verdau.", "Das Motorische Bahn ist hier: beendet Signal.", "Das Motorische Bahn ist hier: Botenstoff Immunsystem."],
+      answer: "Es ist vom ZNS durch efferenzen.", wrong: ["Es ist eine Aufnahme und Verdau.", "Das Motorische Bahn ist beendet Signal.", "Das Motorische Bahn ist das Botenstoff Immunsystem."],
       explanation: "Efferenzen. Bezug: Motorische Bahn. Motorische Bahn bedeutet: vom ZNS.",
       wissen: "Efferenzen. Bezug: Motorische Bahn. Motorische Bahn bedeutet: vom ZNS.",
       flashFront: "Motorische Bahn",
@@ -6565,8 +5955,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-pharmakologie:p10:f",
       prompt: "Was kennzeichnet „Phagozytose“?",
-      answer: "Die Phagozytose ist hier: Aufnahme und Verdau, und zwar gilt: makrophagen.",
-      wrong: ["Die Phagozytose ist kurz gesagt: beendet Signal.", "Die Phagozytose ist kurz gesagt: Botenstoff Immunsystem.", "Die Phagozytose ist hier: Kaskade der angeborenen Abwehr."],
+      answer: "Sie ist eine Aufnahme und Verdau durch Makrophagen.", wrong: ["Die Phagozytose ist beendet Signal.", "Die Phagozytose ist die Botenstoff Immunsystem.", "Sie ist eine Kaskade der Angeborenen Abwehr."],
       explanation: "Makrophagen. Bezug: Phagozytose. Phagozytose bedeutet: Aufnahme und Verdau.",
       wissen: "Makrophagen. Bezug: Phagozytose. Phagozytose bedeutet: Aufnahme und Verdau.",
       flashFront: "Phagozytose",
@@ -6574,8 +5963,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb2-pharmakologie:p11:f",
       prompt: "Was kennzeichnet „Neurotransmitterabbau“?",
-      answer: "Das Neurotransmitterabbau ist kurz gesagt: beendet Signal, und zwar gilt: enzyme/Wiederaufnahme.",
-      wrong: ["Das Neurotransmitterabbau ist kurz gesagt: Botenstoff Immunsystem.", "Das Neurotransmitterabbau ist hier: Kaskade der angeborenen Abwehr.", "Das Neurotransmitterabbau ist kurz gesagt: löst Immunantwort aus."],
+      answer: "Es ist beendet Signal durch enzyme/Wiederaufnahme.", wrong: ["Das Neurotransmitterabbau ist das Botenstoff Immunsystem.", "Es ist eine Kaskade der Angeborenen Abwehr.", "Löst Immunantwort aus."],
       explanation: "Enzyme/Wiederaufnahme. Bezug: Neurotransmitterabbau. Neurotransmitterabbau bedeutet: beendet Signal.",
       wissen: "Enzyme/Wiederaufnahme. Bezug: Neurotransmitterabbau. Neurotransmitterabbau bedeutet: beendet Signal.",
       flashFront: "Neurotransmitterabbau",
@@ -6604,8 +5992,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb3-ethologie-methoden:p0:f",
       prompt: "Was kennzeichnet „Konvergenz“?",
-      answer: "Die Konvergenz ist hier: ähnliche Anpassung unabhängig, und zwar gilt: ähnlicher Selektionsdruck.",
-      wrong: ["Die Konvergenz ist kurz gesagt: Raumverteidigung.", "Die Konvergenz ist kurz gesagt: evolutionärer Nutzen.", "Die Konvergenz ist kurz gesagt: Lernen durch Verknüpfung."],
+      answer: "Sie ist ähnliche Anpassung unabhängig durch ähnlicher Selektionsdruck.", wrong: ["Die Konvergenz ist die Raumverteidigung.", "Die Konvergenz ist evolutionärer Nutzen.", "Sie ist eine Lernen durch Verknüpfung."],
       explanation: "ähnlicher Selektionsdruck. Bezug: Konvergenz. Konvergenz bedeutet: ähnliche Anpassung unabhängig.",
       wissen: "ähnlicher Selektionsdruck. Bezug: Konvergenz. Konvergenz bedeutet: ähnliche Anpassung unabhängig.",
       flashFront: "Konvergenz",
@@ -6613,8 +6000,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb3-ethologie-methoden:p1:f",
       prompt: "Was kennzeichnet „Territorialität“?",
-      answer: "Die Territorialität ist kurz gesagt: Raumverteidigung, und zwar gilt: ressourcen.",
-      wrong: ["Die Territorialität ist kurz gesagt: evolutionärer Nutzen.", "Die Territorialität ist kurz gesagt: Lernen durch Verknüpfung.", "Die Territorialität ist kurz gesagt: Fortpflanzungserfolg."],
+      answer: "Sie ist eine Raumverteidigung durch Ressourcen.", wrong: ["Die Territorialität ist evolutionärer Nutzen.", "Sie ist eine Lernen durch Verknüpfung.", "Die Territorialität ist die Fortpflanzungserfolg."],
       explanation: "Ressourcen. Bezug: Territorialität. Territorialität bedeutet: Raumverteidigung.",
       wissen: "Ressourcen. Bezug: Territorialität. Territorialität bedeutet: Raumverteidigung.",
       flashFront: "Territorialität",
@@ -6622,8 +6008,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb3-ethologie-methoden:p2:f",
       prompt: "Was kennzeichnet „Ultimate Ursache“?",
-      answer: "Die Ultimate Ursache ist hier: evolutionärer Nutzen, und zwar gilt: fitness.",
-      wrong: ["Die Ultimate Ursache ist kurz gesagt: Lernen durch Verknüpfung.", "Die Ultimate Ursache ist kurz gesagt: Fortpflanzungserfolg.", "Die Ultimate Ursache ist hier: durch geografische Trennung."],
+      answer: "Sie ist evolutionärer Nutzen durch fitness.", wrong: ["Sie ist eine Lernen durch Verknüpfung.", "Die Ultimate Ursache ist die Fortpflanzungserfolg.", "Die Ultimate Ursache ist durch geografische Trennung."],
       explanation: "Fitness. Bezug: Ultimate Ursache. Ultimate Ursache bedeutet: evolutionärer Nutzen.",
       wissen: "Fitness. Bezug: Ultimate Ursache. Ultimate Ursache bedeutet: evolutionärer Nutzen.",
       flashFront: "Ultimate Ursache",
@@ -6631,8 +6016,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb3-ethologie-methoden:p3:f",
       prompt: "Was kennzeichnet „Konditionierung“?",
-      answer: "Lernen durch Verknüpfung, und zwar gilt: klassisch/operant.",
-      wrong: ["Die Konditionierung ist kurz gesagt: Fortpflanzungserfolg.", "Die Konditionierung ist hier: durch geografische Trennung.", "Die Konditionierung ist hier: ähnliche Funktion, andere Herkunft."],
+      answer: "Sie ist eine Lernen durch Verknüpfung durch Klassisch/operant.", wrong: ["Die Konditionierung ist die Fortpflanzungserfolg.", "Die Konditionierung ist durch geografische Trennung.", "Sie ist ähnliche Funktion, andere Herkunft."],
       explanation: "klassisch/operant. Bezug: Konditionierung. Konditionierung bedeutet: Lernen durch Verknüpfung.",
       wissen: "klassisch/operant. Bezug: Konditionierung. Konditionierung bedeutet: Lernen durch Verknüpfung.",
       flashFront: "Konditionierung",
@@ -6640,8 +6024,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb3-ethologie-methoden:p4:f",
       prompt: "Was kennzeichnet „Fitness“?",
-      answer: "Das Fitness ist kurz gesagt: Fortpflanzungserfolg, und zwar gilt: relativ.",
-      wrong: ["Das Fitness ist hier: durch geografische Trennung.", "Das Fitness ist hier: ähnliche Funktion, andere Herkunft.", "Das Fitness ist hier: Neugründung mit Stichprobe."],
+      answer: "Es ist eine Fortpflanzungserfolg durch Relativ.", wrong: ["Das Fitness ist durch geografische Trennung.", "Es ist ähnliche Funktion, andere Herkunft.", "Es ist eine Neugründung mit Stichprobe."],
       explanation: "relativ. Bezug: Fitness. Fitness bedeutet: Fortpflanzungserfolg.",
       wissen: "relativ. Bezug: Fitness. Fitness bedeutet: Fortpflanzungserfolg.",
       flashFront: "Fitness",
@@ -6649,8 +6032,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb3-ethologie-methoden:p5:f",
       prompt: "Was kennzeichnet „allopatrisch“?",
-      answer: "Das allopatrisch ist hier: durch geografische Trennung, und zwar gilt: klassiker.",
-      wrong: ["Das allopatrisch ist hier: ähnliche Funktion, andere Herkunft.", "Das allopatrisch ist hier: Neugründung mit Stichprobe.", "Das allopatrisch ist hier: gelerntes, weitergegebenes Verhalten."],
+      answer: "Es ist durch geografische Trennung durch klassiker.", wrong: ["Es ist ähnliche Funktion, andere Herkunft.", "Es ist eine Neugründung mit Stichprobe.", "Das allopatrisch ist gelerntes, weitergegebenes Verhalten."],
       explanation: "Klassiker. Bezug: allopatrisch. allopatrisch bedeutet: durch geografische Trennung.",
       wissen: "Klassiker. Bezug: allopatrisch. allopatrisch bedeutet: durch geografische Trennung.",
       flashFront: "allopatrisch",
@@ -6658,8 +6040,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb3-ethologie-methoden:p6:f",
       prompt: "Was kennzeichnet „Analogie“?",
-      answer: "Die Analogie ist hier: ähnliche Funktion, andere Herkunft, und zwar gilt: konvergenz.",
-      wrong: ["Die Analogie ist hier: Neugründung mit Stichprobe.", "Die Analogie ist hier: gelerntes, weitergegebenes Verhalten.", "Die Analogie ist kurz gesagt: Vergleichsgruppe außen."],
+      answer: "Sie ist ähnliche Funktion, andere Herkunft durch konvergenz.", wrong: ["Sie ist eine Neugründung mit Stichprobe.", "Die Analogie ist gelerntes, weitergegebenes Verhalten.", "Die Analogie ist die Vergleichsgruppe Außen."],
       explanation: "Konvergenz. Bezug: Analogie. Analogie bedeutet: ähnliche Funktion, andere Herkunft.",
       wissen: "Konvergenz. Bezug: Analogie. Analogie bedeutet: ähnliche Funktion, andere Herkunft.",
       flashFront: "Analogie",
@@ -6667,8 +6048,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb3-ethologie-methoden:p7:f",
       prompt: "Was kennzeichnet „Gründereffekt“?",
-      answer: "Das Gründereffekt ist hier: Neugründung mit Stichprobe, und zwar gilt: seltenes Allel.",
-      wrong: ["Das Gründereffekt ist hier: gelerntes, weitergegebenes Verhalten.", "Das Gründereffekt ist kurz gesagt: Vergleichsgruppe außen.", "Das Gründereffekt ist hier: Kosten für Helfer."],
+      answer: "Es ist eine Neugründung mit Stichprobe durch Seltenes Allel.", wrong: ["Das Gründereffekt ist gelerntes, weitergegebenes Verhalten.", "Das Gründereffekt ist das Vergleichsgruppe Außen.", "Es ist ein Kosten für Helfer."],
       explanation: "seltenes Allel. Bezug: Gründereffekt. Gründereffekt bedeutet: Neugründung mit Stichprobe.",
       wissen: "seltenes Allel. Bezug: Gründereffekt. Gründereffekt bedeutet: Neugründung mit Stichprobe.",
       flashFront: "Gründereffekt",
@@ -6676,8 +6056,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb3-ethologie-methoden:p8:f",
       prompt: "Was kennzeichnet „Kultur“?",
-      answer: "Die Kultur ist hier: gelerntes, weitergegebenes Verhalten, und zwar gilt: beim Menschen stark.",
-      wrong: ["Die Kultur ist kurz gesagt: Vergleichsgruppe außen.", "Die Kultur ist hier: Kosten für Helfer.", "Die Kultur ist kurz gesagt: unmittelbarer Mechanismus."],
+      answer: "Sie ist gelerntes, weitergegebenes Verhalten durch beim Menschen stark.", wrong: ["Die Kultur ist die Vergleichsgruppe Außen.", "Sie ist ein Kosten für Helfer.", "Die Kultur ist unmittelbarer Mechanismus."],
       explanation: "beim Menschen stark. Bezug: Kultur. Kultur bedeutet: gelerntes, weitergegebenes Verhalten.",
       wissen: "beim Menschen stark. Bezug: Kultur. Kultur bedeutet: gelerntes, weitergegebenes Verhalten.",
       flashFront: "Kultur",
@@ -6685,8 +6064,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb3-ethologie-methoden:p9:f",
       prompt: "Was kennzeichnet „Outgroup“?",
-      answer: "Das Outgroup ist kurz gesagt: Vergleichsgruppe außen, und zwar gilt: wurzelung.",
-      wrong: ["Das Outgroup ist hier: Kosten für Helfer.", "Das Outgroup ist kurz gesagt: unmittelbarer Mechanismus.", "Das Outgroup ist hier: ähnliche Anpassung unabhängig."],
+      answer: "Es ist eine Vergleichsgruppe Außen durch Wurzelung.", wrong: ["Es ist ein Kosten für Helfer.", "Das Outgroup ist unmittelbarer Mechanismus.", "Das Outgroup ist ähnliche Anpassung unabhängig."],
       explanation: "Wurzelung. Bezug: Outgroup. Outgroup bedeutet: Vergleichsgruppe außen.",
       wissen: "Wurzelung. Bezug: Outgroup. Outgroup bedeutet: Vergleichsgruppe außen.",
       flashFront: "Outgroup",
@@ -6694,8 +6072,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb3-ethologie-methoden:p10:f",
       prompt: "Was kennzeichnet „altruistisch“?",
-      answer: "Das altruistisch ist hier: Kosten für Helfer, und zwar gilt: kin-Selektion erklären.",
-      wrong: ["Das altruistisch ist kurz gesagt: unmittelbarer Mechanismus.", "Das altruistisch ist hier: ähnliche Anpassung unabhängig.", "Das altruistisch ist kurz gesagt: Raumverteidigung."],
+      answer: "Es ist ein Kosten für Helfer durch Kin-Selektion Erklären.", wrong: ["Das altruistisch ist unmittelbarer Mechanismus.", "Das altruistisch ist ähnliche Anpassung unabhängig.", "Das altruistisch ist das Raumverteidigung."],
       explanation: "Kin-Selektion erklären. Bezug: altruistisch. altruistisch bedeutet: Kosten für Helfer.",
       wissen: "Kin-Selektion erklären. Bezug: altruistisch. altruistisch bedeutet: Kosten für Helfer.",
       flashFront: "altruistisch",
@@ -6703,8 +6080,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb3-ethologie-methoden:p11:f",
       prompt: "Was kennzeichnet „Proximate Ursache“?",
-      answer: "Die Proximate Ursache ist hier: unmittelbarer Mechanismus, und zwar gilt: hormone/Nerven.",
-      wrong: ["Die Proximate Ursache ist hier: ähnliche Anpassung unabhängig.", "Die Proximate Ursache ist kurz gesagt: Raumverteidigung.", "Die Proximate Ursache ist hier: evolutionärer Nutzen."],
+      answer: "Sie ist unmittelbarer Mechanismus durch hormone/Nerven.", wrong: ["Die Proximate Ursache ist ähnliche Anpassung unabhängig.", "Die Proximate Ursache ist die Raumverteidigung.", "Die Proximate Ursache ist evolutionärer Nutzen."],
       explanation: "Hormone/Nerven. Bezug: Proximate Ursache. Proximate Ursache bedeutet: unmittelbarer Mechanismus.",
       wissen: "Hormone/Nerven. Bezug: Proximate Ursache. Proximate Ursache bedeutet: unmittelbarer Mechanismus.",
       flashFront: "Proximate Ursache",
@@ -6733,8 +6109,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-organisationsebenen:p0:f",
       prompt: "Was kennzeichnet „sexuelle Selektion“?",
-      answer: "Die sexuelle Selektion ist hier: Partnerwahl treibt Merkmale, und zwar gilt: balz, Geweih.",
-      wrong: ["Die sexuelle Selektion ist kurz gesagt: Informationsaustausch.", "Die sexuelle Selektion ist kurz gesagt: ohne Lernen.", "Die sexuelle Selektion ist hier: sensible Phase."],
+      answer: "Sie ist eine Partnerwahl Treibt Merkmale durch Balz, Geweih.", wrong: ["Die sexuelle Selektion ist die Informationsaustausch.", "Die sexuelle Selektion ist ohne Lernen.", "Die sexuelle Selektion ist sensible Phase."],
       explanation: "Balz, Geweih. Bezug: sexuelle Selektion. sexuelle Selektion bedeutet: Partnerwahl treibt Merkmale.",
       wissen: "Balz, Geweih. Bezug: sexuelle Selektion. sexuelle Selektion bedeutet: Partnerwahl treibt Merkmale.",
       flashFront: "sexuelle Selektion",
@@ -6742,8 +6117,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-organisationsebenen:p1:f",
       prompt: "Was kennzeichnet „Kommunikation“?",
-      answer: "Die Kommunikation ist kurz gesagt: Informationsaustausch, und zwar gilt: optisch/akustisch/chemisch.",
-      wrong: ["Die Kommunikation ist kurz gesagt: ohne Lernen.", "Die Kommunikation ist kurz gesagt: sensible Phase.", "Die Kommunikation ist kurz gesagt: unterschiedlicher Erfolg."],
+      answer: "Sie ist eine Informationsaustausch durch Optisch/akustisch/chemisch.", wrong: ["Die Kommunikation ist ohne Lernen.", "Die Kommunikation ist sensible Phase.", "Die Kommunikation ist unterschiedlicher Erfolg."],
       explanation: "optisch/akustisch/chemisch. Bezug: Kommunikation. Kommunikation bedeutet: Informationsaustausch.",
       wissen: "optisch/akustisch/chemisch. Bezug: Kommunikation. Kommunikation bedeutet: Informationsaustausch.",
       flashFront: "Kommunikation",
@@ -6751,8 +6125,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-organisationsebenen:p2:f",
       prompt: "Was kennzeichnet „Angeborenes Verhalten“?",
-      answer: "Ohne Lernen, und zwar gilt: instinkt/Erbkoordination.",
-      wrong: ["Das Angeborenes Verhalten ist hier: sensible Phase.", "Das Angeborenes Verhalten ist hier: unterschiedlicher Erfolg.", "Das Angeborenes Verhalten ist hier: ohne räumliche Trennung."],
+      answer: "Es ist eine Ohne Lernen durch Instinkt/Erbkoordination.", wrong: ["Das Angeborenes Verhalten ist sensible Phase.", "Das Angeborenes Verhalten ist unterschiedlicher Erfolg.", "Das Angeborenes Verhalten ist ohne räumliche Trennung."],
       explanation: "Instinkt/Erbkoordination. Bezug: Angeborenes Verhalten. Angeborenes Verhalten bedeutet: ohne Lernen.",
       wissen: "Instinkt/Erbkoordination. Bezug: Angeborenes Verhalten. Angeborenes Verhalten bedeutet: ohne Lernen.",
       flashFront: "Angeborenes Verhalten",
@@ -6760,8 +6133,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-organisationsebenen:p3:f",
       prompt: "Was kennzeichnet „Prägung“?",
-      answer: "Die Prägung ist kurz gesagt: sensible Phase, und zwar gilt: irreversibel oft.",
-      wrong: ["Die Prägung ist kurz gesagt: unterschiedlicher Erfolg.", "Die Prägung ist hier: ohne räumliche Trennung.", "Die Prägung ist kurz gesagt: zufällige Allelfrequenzänderung."],
+      answer: "Sie ist sensible Phase durch irreversibel oft.", wrong: ["Die Prägung ist unterschiedlicher Erfolg.", "Die Prägung ist ohne räumliche Trennung.", "Die Prägung ist zufällige Allelfrequenzänderung."],
       explanation: "irreversibel oft. Bezug: Prägung. Prägung bedeutet: sensible Phase.",
       wissen: "irreversibel oft. Bezug: Prägung. Prägung bedeutet: sensible Phase.",
       flashFront: "Prägung",
@@ -6769,8 +6141,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-organisationsebenen:p4:f",
       prompt: "Was kennzeichnet „Selektion“?",
-      answer: "Die Selektion ist kurz gesagt: unterschiedlicher Erfolg, und zwar gilt: natürlich/sexuell.",
-      wrong: ["Die Selektion ist hier: ohne räumliche Trennung.", "Die Selektion ist kurz gesagt: zufällige Allelfrequenzänderung.", "Die Selektion ist hier: Austausch zwischen Populationen."],
+      answer: "Sie ist unterschiedlicher Erfolg durch natürlich/sexuell.", wrong: ["Die Selektion ist ohne räumliche Trennung.", "Die Selektion ist zufällige Allelfrequenzänderung.", "Sie ist eine Austausch Zwischen Populationen."],
       explanation: "natürlich/sexuell. Bezug: Selektion. Selektion bedeutet: unterschiedlicher Erfolg.",
       wissen: "natürlich/sexuell. Bezug: Selektion. Selektion bedeutet: unterschiedlicher Erfolg.",
       flashFront: "Selektion",
@@ -6778,8 +6149,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-organisationsebenen:p5:f",
       prompt: "Was kennzeichnet „sympatrisch“?",
-      answer: "Das sympatrisch ist hier: ohne räumliche Trennung, und zwar gilt: z. B. polyploid.",
-      wrong: ["Das sympatrisch ist kurz gesagt: zufällige Allelfrequenzänderung.", "Das sympatrisch ist hier: Austausch zwischen Populationen.", "Das sympatrisch ist kurz gesagt: aufrechter Gang."],
+      answer: "Es ist ohne räumliche Trennung durch z. B. polyploid.", wrong: ["Das sympatrisch ist zufällige Allelfrequenzänderung.", "Es ist eine Austausch Zwischen Populationen.", "Das sympatrisch ist aufrechter Gang."],
       explanation: "z. B. polyploid. Bezug: sympatrisch. sympatrisch bedeutet: ohne räumliche Trennung.",
       wissen: "z. B. polyploid. Bezug: sympatrisch. sympatrisch bedeutet: ohne räumliche Trennung.",
       flashFront: "sympatrisch",
@@ -6787,8 +6157,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-organisationsebenen:p6:f",
       prompt: "Was kennzeichnet „Gendrift“?",
-      answer: "Das Gendrift ist kurz gesagt: zufällige Allelfrequenzänderung, und zwar gilt: kleine Populationen.",
-      wrong: ["Das Gendrift ist hier: Austausch zwischen Populationen.", "Das Gendrift ist kurz gesagt: aufrechter Gang.", "Das Gendrift ist hier: ähnliche Anpassung unabhängig."],
+      answer: "Es ist zufällige Allelfrequenzänderung durch kleine Populationen.", wrong: ["Es ist eine Austausch Zwischen Populationen.", "Das Gendrift ist aufrechter Gang.", "Das Gendrift ist ähnliche Anpassung unabhängig."],
       explanation: "kleine Populationen. Bezug: Gendrift. Gendrift bedeutet: zufällige Allelfrequenzänderung.",
       wissen: "kleine Populationen. Bezug: Gendrift. Gendrift bedeutet: zufällige Allelfrequenzänderung.",
       flashFront: "Gendrift",
@@ -6796,8 +6165,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-organisationsebenen:p7:f",
       prompt: "Was kennzeichnet „Genfluss“?",
-      answer: "Das Genfluss ist hier: Austausch zwischen Populationen, und zwar gilt: homogenisiert.",
-      wrong: ["Das Genfluss ist kurz gesagt: aufrechter Gang.", "Das Genfluss ist hier: ähnliche Anpassung unabhängig.", "Das Genfluss ist kurz gesagt: Raumverteidigung."],
+      answer: "Es ist eine Austausch Zwischen Populationen durch Homogenisiert.", wrong: ["Das Genfluss ist aufrechter Gang.", "Das Genfluss ist ähnliche Anpassung unabhängig.", "Das Genfluss ist das Raumverteidigung."],
       explanation: "homogenisiert. Bezug: Genfluss. Genfluss bedeutet: Austausch zwischen Populationen.",
       wissen: "homogenisiert. Bezug: Genfluss. Genfluss bedeutet: Austausch zwischen Populationen.",
       flashFront: "Genfluss",
@@ -6805,8 +6173,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-organisationsebenen:p8:f",
       prompt: "Was kennzeichnet „Bipedie“?",
-      answer: "Die Bipedie ist kurz gesagt: aufrechter Gang, und zwar gilt: homininen.",
-      wrong: ["Die Bipedie ist hier: ähnliche Anpassung unabhängig.", "Die Bipedie ist kurz gesagt: Raumverteidigung.", "Die Bipedie ist kurz gesagt: evolutionärer Nutzen."],
+      answer: "Sie ist aufrechter Gang durch homininen.", wrong: ["Die Bipedie ist ähnliche Anpassung unabhängig.", "Die Bipedie ist die Raumverteidigung.", "Die Bipedie ist evolutionärer Nutzen."],
       explanation: "Homininen. Bezug: Bipedie. Bipedie bedeutet: aufrechter Gang.",
       wissen: "Homininen. Bezug: Bipedie. Bipedie bedeutet: aufrechter Gang.",
       flashFront: "Bipedie",
@@ -6814,8 +6181,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-organisationsebenen:p9:f",
       prompt: "Was kennzeichnet „Konvergenz“?",
-      answer: "Die Konvergenz ist hier: ähnliche Anpassung unabhängig, und zwar gilt: ähnlicher Selektionsdruck.",
-      wrong: ["Die Konvergenz ist kurz gesagt: Raumverteidigung.", "Die Konvergenz ist kurz gesagt: evolutionärer Nutzen.", "Die Konvergenz ist hier: Partnerwahl treibt Merkmale."],
+      answer: "Sie ist ähnliche Anpassung unabhängig durch ähnlicher Selektionsdruck.", wrong: ["Die Konvergenz ist die Raumverteidigung.", "Die Konvergenz ist evolutionärer Nutzen.", "Sie ist eine Partnerwahl Treibt Merkmale."],
       explanation: "ähnlicher Selektionsdruck. Bezug: Konvergenz. Konvergenz bedeutet: ähnliche Anpassung unabhängig.",
       wissen: "ähnlicher Selektionsdruck. Bezug: Konvergenz. Konvergenz bedeutet: ähnliche Anpassung unabhängig.",
       flashFront: "Konvergenz",
@@ -6823,8 +6189,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-organisationsebenen:p10:f",
       prompt: "Was kennzeichnet „Territorialität“?",
-      answer: "Die Territorialität ist kurz gesagt: Raumverteidigung, und zwar gilt: ressourcen.",
-      wrong: ["Die Territorialität ist kurz gesagt: evolutionärer Nutzen.", "Die Territorialität ist hier: Partnerwahl treibt Merkmale.", "Die Territorialität ist kurz gesagt: Informationsaustausch."],
+      answer: "Sie ist eine Raumverteidigung durch Ressourcen.", wrong: ["Die Territorialität ist evolutionärer Nutzen.", "Sie ist eine Partnerwahl Treibt Merkmale.", "Die Territorialität ist die Informationsaustausch."],
       explanation: "Ressourcen. Bezug: Territorialität. Territorialität bedeutet: Raumverteidigung.",
       wissen: "Ressourcen. Bezug: Territorialität. Territorialität bedeutet: Raumverteidigung.",
       flashFront: "Territorialität",
@@ -6832,8 +6197,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-organisationsebenen:p11:f",
       prompt: "Was kennzeichnet „Ultimate Ursache“?",
-      answer: "Die Ultimate Ursache ist hier: evolutionärer Nutzen, und zwar gilt: fitness.",
-      wrong: ["Die Ultimate Ursache ist hier: Partnerwahl treibt Merkmale.", "Die Ultimate Ursache ist kurz gesagt: Informationsaustausch.", "Die Ultimate Ursache ist kurz gesagt: ohne Lernen."],
+      answer: "Sie ist evolutionärer Nutzen durch fitness.", wrong: ["Sie ist eine Partnerwahl Treibt Merkmale.", "Die Ultimate Ursache ist die Informationsaustausch.", "Die Ultimate Ursache ist ohne Lernen."],
       explanation: "Fitness. Bezug: Ultimate Ursache. Ultimate Ursache bedeutet: evolutionärer Nutzen.",
       wissen: "Fitness. Bezug: Ultimate Ursache. Ultimate Ursache bedeutet: evolutionärer Nutzen.",
       flashFront: "Ultimate Ursache",
@@ -6862,8 +6226,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-systembiologie:p0:f",
       prompt: "Was kennzeichnet „altruistisch“?",
-      answer: "Das altruistisch ist hier: Kosten für Helfer, und zwar gilt: kin-Selektion erklären.",
-      wrong: ["Das altruistisch ist kurz gesagt: unmittelbarer Mechanismus.", "Das altruistisch ist kurz gesagt: feste Reiz-Reaktions-Kette.", "Das altruistisch ist hier: Interaktion in Gruppe."],
+      answer: "Es ist ein Kosten für Helfer durch Kin-Selektion Erklären.", wrong: ["Das altruistisch ist unmittelbarer Mechanismus.", "Das altruistisch ist feste Reiz-Reaktions-Kette.", "Es ist eine Interaktion in Gruppe."],
       explanation: "Kin-Selektion erklären. Bezug: altruistisch. altruistisch bedeutet: Kosten für Helfer.",
       wissen: "Kin-Selektion erklären. Bezug: altruistisch. altruistisch bedeutet: Kosten für Helfer.",
       flashFront: "altruistisch",
@@ -6871,8 +6234,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-systembiologie:p1:f",
       prompt: "Was kennzeichnet „Proximate Ursache“?",
-      answer: "Die Proximate Ursache ist hier: unmittelbarer Mechanismus, und zwar gilt: hormone/Nerven.",
-      wrong: ["Die Proximate Ursache ist hier: feste Reiz-Reaktions-Kette.", "Die Proximate Ursache ist hier: Interaktion in Gruppe.", "Die Proximate Ursache ist hier: Entstehung neuer Arten."],
+      answer: "Sie ist unmittelbarer Mechanismus durch hormone/Nerven.", wrong: ["Die Proximate Ursache ist feste Reiz-Reaktions-Kette.", "Sie ist eine Interaktion in Gruppe.", "Sie ist eine Entstehung Neuer Arten."],
       explanation: "Hormone/Nerven. Bezug: Proximate Ursache. Proximate Ursache bedeutet: unmittelbarer Mechanismus.",
       wissen: "Hormone/Nerven. Bezug: Proximate Ursache. Proximate Ursache bedeutet: unmittelbarer Mechanismus.",
       flashFront: "Proximate Ursache",
@@ -6880,8 +6242,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-systembiologie:p2:f",
       prompt: "Was kennzeichnet „Sprungreflex“?",
-      answer: "Das Sprungreflex ist kurz gesagt: feste Reiz-Reaktions-Kette, und zwar gilt: schlüsselreiz.",
-      wrong: ["Das Sprungreflex ist hier: Interaktion in Gruppe.", "Das Sprungreflex ist hier: Entstehung neuer Arten.", "Das Sprungreflex ist kurz gesagt: gemeinsame Herkunft."],
+      answer: "Es ist feste Reiz-Reaktions-Kette durch schlüsselreiz.", wrong: ["Es ist eine Interaktion in Gruppe.", "Es ist eine Entstehung Neuer Arten.", "Das Sprungreflex ist gemeinsame Herkunft."],
       explanation: "Schlüsselreiz. Bezug: Sprungreflex. Sprungreflex bedeutet: feste Reiz-Reaktions-Kette.",
       wissen: "Schlüsselreiz. Bezug: Sprungreflex. Sprungreflex bedeutet: feste Reiz-Reaktions-Kette.",
       flashFront: "Sprungreflex",
@@ -6889,8 +6250,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-systembiologie:p3:f",
       prompt: "Was kennzeichnet „Sozialverhalten“?",
-      answer: "Das Sozialverhalten ist hier: Interaktion in Gruppe, und zwar gilt: kommunikation.",
-      wrong: ["Das Sozialverhalten ist hier: Entstehung neuer Arten.", "Das Sozialverhalten ist kurz gesagt: gemeinsame Herkunft.", "Das Sozialverhalten ist kurz gesagt: starke Verkleinerung."],
+      answer: "Es ist eine Interaktion in Gruppe durch Kommunikation.", wrong: ["Es ist eine Entstehung Neuer Arten.", "Das Sozialverhalten ist gemeinsame Herkunft.", "Das Sozialverhalten ist starke Verkleinerung."],
       explanation: "Kommunikation. Bezug: Sozialverhalten. Sozialverhalten bedeutet: Interaktion in Gruppe.",
       wissen: "Kommunikation. Bezug: Sozialverhalten. Sozialverhalten bedeutet: Interaktion in Gruppe.",
       flashFront: "Sozialverhalten",
@@ -6898,8 +6258,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-systembiologie:p4:f",
       prompt: "Was kennzeichnet „Artbildung“?",
-      answer: "Die Artbildung ist hier: Entstehung neuer Arten, und zwar gilt: isolation nötig.",
-      wrong: ["Die Artbildung ist kurz gesagt: gemeinsame Herkunft.", "Die Artbildung ist kurz gesagt: starke Verkleinerung.", "Die Artbildung ist hier: Auffächerung in Nischen."],
+      answer: "Sie ist eine Entstehung Neuer Arten durch Isolation Nötig.", wrong: ["Die Artbildung ist gemeinsame Herkunft.", "Die Artbildung ist starke Verkleinerung.", "Sie ist ein Auffächerung in Nischen."],
       explanation: "Isolation nötig. Bezug: Artbildung. Artbildung bedeutet: Entstehung neuer Arten.",
       wissen: "Isolation nötig. Bezug: Artbildung. Artbildung bedeutet: Entstehung neuer Arten.",
       flashFront: "Artbildung",
@@ -6907,8 +6266,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-systembiologie:p5:f",
       prompt: "Was kennzeichnet „Homologie“?",
-      answer: "Die Homologie ist kurz gesagt: gemeinsame Herkunft, und zwar gilt: stammbaum.",
-      wrong: ["Die Homologie ist kurz gesagt: starke Verkleinerung.", "Die Homologie ist hier: Auffächerung in Nischen.", "Die Homologie ist kurz gesagt: Verwandtschaftshypothese."],
+      answer: "Sie ist gemeinsame Herkunft durch stammbaum.", wrong: ["Die Homologie ist starke Verkleinerung.", "Sie ist ein Auffächerung in Nischen.", "Die Homologie ist die Verwandtschaftshypothese."],
       explanation: "Stammbaum. Bezug: Homologie. Homologie bedeutet: gemeinsame Herkunft.",
       wissen: "Stammbaum. Bezug: Homologie. Homologie bedeutet: gemeinsame Herkunft.",
       flashFront: "Homologie",
@@ -6916,8 +6274,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-systembiologie:p6:f",
       prompt: "Was kennzeichnet „Flaschenhalseffekt“?",
-      answer: "Das Flaschenhalseffekt ist kurz gesagt: starke Verkleinerung, und zwar gilt: vielfalt sinkt.",
-      wrong: ["Das Flaschenhalseffekt ist hier: Auffächerung in Nischen.", "Das Flaschenhalseffekt ist kurz gesagt: Verwandtschaftshypothese.", "Das Flaschenhalseffekt ist hier: Partnerwahl treibt Merkmale."],
+      answer: "Es ist starke Verkleinerung, vielfalt sinkt.", wrong: ["Es ist ein Auffächerung in Nischen.", "Das Flaschenhalseffekt ist das Verwandtschaftshypothese.", "Es ist eine Partnerwahl Treibt Merkmale."],
       explanation: "Vielfalt sinkt. Bezug: Flaschenhalseffekt. Flaschenhalseffekt bedeutet: starke Verkleinerung.",
       wissen: "Vielfalt sinkt. Bezug: Flaschenhalseffekt. Flaschenhalseffekt bedeutet: starke Verkleinerung.",
       flashFront: "Flaschenhalseffekt",
@@ -6925,8 +6282,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-systembiologie:p7:f",
       prompt: "Was kennzeichnet „Adaptive Radiation“?",
-      answer: "Die Adaptive Radiation ist hier: Auffächerung in Nischen, und zwar gilt: nach Chance.",
-      wrong: ["Die Adaptive Radiation ist kurz gesagt: Verwandtschaftshypothese.", "Die Adaptive Radiation ist hier: Partnerwahl treibt Merkmale.", "Die Adaptive Radiation ist kurz gesagt: Informationsaustausch."],
+      answer: "Sie ist ein Auffächerung in Nischen durch nach Chance.", wrong: ["Die Adaptive Radiation ist die Verwandtschaftshypothese.", "Sie ist eine Partnerwahl Treibt Merkmale.", "Die Adaptive Radiation ist die Informationsaustausch."],
       explanation: "nach Chance. Bezug: Adaptive Radiation. Adaptive Radiation bedeutet: Auffächerung in Nischen.",
       wissen: "nach Chance. Bezug: Adaptive Radiation. Adaptive Radiation bedeutet: Auffächerung in Nischen.",
       flashFront: "Adaptive Radiation",
@@ -6934,8 +6290,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-systembiologie:p8:f",
       prompt: "Was kennzeichnet „phylogenetischer Baum“?",
-      answer: "Das phylogenetischer Baum ist kurz gesagt: Verwandtschaftshypothese, und zwar gilt: aus Merkmalen/DNA.",
-      wrong: ["Das phylogenetischer Baum ist hier: Partnerwahl treibt Merkmale.", "Das phylogenetischer Baum ist kurz gesagt: Informationsaustausch.", "Das phylogenetischer Baum ist kurz gesagt: ohne Lernen."],
+      answer: "Es ist eine Verwandtschaftshypothese durch aus Merkmalen/DNA.", wrong: ["Es ist eine Partnerwahl Treibt Merkmale.", "Das phylogenetischer Baum ist das Informationsaustausch.", "Das phylogenetischer Baum ist ohne Lernen."],
       explanation: "aus Merkmalen/DNA. Bezug: phylogenetischer Baum. phylogenetischer Baum bedeutet: Verwandtschaftshypothese.",
       wissen: "aus Merkmalen/DNA. Bezug: phylogenetischer Baum. phylogenetischer Baum bedeutet: Verwandtschaftshypothese.",
       flashFront: "phylogenetischer Baum",
@@ -6943,8 +6298,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-systembiologie:p9:f",
       prompt: "Was kennzeichnet „sexuelle Selektion“?",
-      answer: "Die sexuelle Selektion ist hier: Partnerwahl treibt Merkmale, und zwar gilt: balz, Geweih.",
-      wrong: ["Die sexuelle Selektion ist kurz gesagt: Informationsaustausch.", "Die sexuelle Selektion ist kurz gesagt: ohne Lernen.", "Die sexuelle Selektion ist hier: Kosten für Helfer."],
+      answer: "Sie ist eine Partnerwahl Treibt Merkmale durch Balz, Geweih.", wrong: ["Die sexuelle Selektion ist die Informationsaustausch.", "Die sexuelle Selektion ist ohne Lernen.", "Sie ist ein Kosten für Helfer."],
       explanation: "Balz, Geweih. Bezug: sexuelle Selektion. sexuelle Selektion bedeutet: Partnerwahl treibt Merkmale.",
       wissen: "Balz, Geweih. Bezug: sexuelle Selektion. sexuelle Selektion bedeutet: Partnerwahl treibt Merkmale.",
       flashFront: "sexuelle Selektion",
@@ -6952,8 +6306,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-systembiologie:p10:f",
       prompt: "Was kennzeichnet „Kommunikation“?",
-      answer: "Die Kommunikation ist kurz gesagt: Informationsaustausch, und zwar gilt: optisch/akustisch/chemisch.",
-      wrong: ["Die Kommunikation ist kurz gesagt: ohne Lernen.", "Die Kommunikation ist hier: Kosten für Helfer.", "Die Kommunikation ist kurz gesagt: unmittelbarer Mechanismus."],
+      answer: "Sie ist eine Informationsaustausch durch Optisch/akustisch/chemisch.", wrong: ["Die Kommunikation ist ohne Lernen.", "Sie ist ein Kosten für Helfer.", "Die Kommunikation ist unmittelbarer Mechanismus."],
       explanation: "optisch/akustisch/chemisch. Bezug: Kommunikation. Kommunikation bedeutet: Informationsaustausch.",
       wissen: "optisch/akustisch/chemisch. Bezug: Kommunikation. Kommunikation bedeutet: Informationsaustausch.",
       flashFront: "Kommunikation",
@@ -6961,8 +6314,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk12-lb5-systembiologie:p11:f",
       prompt: "Was kennzeichnet „Angeborenes Verhalten“?",
-      answer: "Ohne Lernen, und zwar gilt: instinkt/Erbkoordination.",
-      wrong: ["Das Angeborenes Verhalten ist hier: Kosten für Helfer.", "Das Angeborenes Verhalten ist hier: unmittelbarer Mechanismus.", "Das Angeborenes Verhalten ist hier: feste Reiz-Reaktions-Kette."],
+      answer: "Es ist eine Ohne Lernen durch Instinkt/Erbkoordination.", wrong: ["Es ist ein Kosten für Helfer.", "Das Angeborenes Verhalten ist unmittelbarer Mechanismus.", "Das Angeborenes Verhalten ist feste Reiz-Reaktions-Kette."],
       explanation: "Instinkt/Erbkoordination. Bezug: Angeborenes Verhalten. Angeborenes Verhalten bedeutet: ohne Lernen.",
       wissen: "Instinkt/Erbkoordination. Bezug: Angeborenes Verhalten. Angeborenes Verhalten bedeutet: ohne Lernen.",
       flashFront: "Angeborenes Verhalten",
@@ -6991,8 +6343,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-biodiversitaet-schutz:p0:f",
       prompt: "Was kennzeichnet „Biodiversität“?",
-      answer: "Die Biodiversität ist hier: Vielfalt der Arten/Gene/Ökosysteme, und zwar gilt: stabilisierend.",
-      wrong: ["Die Biodiversität ist hier: Region hoher Artenvielfalt.", "Die Biodiversität ist kurz gesagt: Gefährdungskategorien.", "Die Biodiversität ist hier: Vernetzung von Lebensräumen."],
+      answer: "Sie ist eine Vielfalt der Arten/Gene/Ökosysteme durch Stabilisierend.", wrong: ["Sie ist eine Region Hoher Artenvielfalt.", "Die Biodiversität ist die Gefährdungskategorien.", "Sie ist eine Vernetzung von Lebensräumen."],
       explanation: "stabilisierend. Biodiversität bedeutet: Vielfalt der Arten/Gene/Ökosysteme.",
       wissen: "stabilisierend. Biodiversität bedeutet: Vielfalt der Arten/Gene/Ökosysteme.",
       flashFront: "Biodiversität",
@@ -7000,8 +6351,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-biodiversitaet-schutz:p1:f",
       prompt: "Was kennzeichnet „Hotspot“?",
-      answer: "Das Hotspot ist hier: Region hoher Artenvielfalt, und zwar gilt: schutzpriorität.",
-      wrong: ["Das Hotspot ist kurz gesagt: Gefährdungskategorien.", "Das Hotspot ist hier: Vernetzung von Lebensräumen.", "Das Hotspot ist hier: Wiederherstellung von Habitaten."],
+      answer: "Es ist eine Region Hoher Artenvielfalt durch Schutzpriorität.", wrong: ["Das Hotspot ist das Gefährdungskategorien.", "Es ist eine Vernetzung von Lebensräumen.", "Es ist eine Wiederherstellung von Habitaten."],
       explanation: "Schutzpriorität. Hotspot bedeutet: Region hoher Artenvielfalt.",
       wissen: "Schutzpriorität. Hotspot bedeutet: Region hoher Artenvielfalt.",
       flashFront: "Hotspot",
@@ -7009,8 +6359,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-biodiversitaet-schutz:p2:f",
       prompt: "Was kennzeichnet „Rote Liste“?",
-      answer: "Die Rote Liste ist kurz gesagt: Gefährdungskategorien, und zwar gilt: bewertung.",
-      wrong: ["Die Rote Liste ist hier: Vernetzung von Lebensräumen.", "Die Rote Liste ist hier: Wiederherstellung von Habitaten.", "Die Rote Liste ist kurz gesagt: Schutzgebietssystem."],
+      answer: "Sie ist eine Gefährdungskategorien durch Bewertung.", wrong: ["Sie ist eine Vernetzung von Lebensräumen.", "Sie ist eine Wiederherstellung von Habitaten.", "Die Rote Liste ist die Schutzgebietssystem."],
       explanation: "Bewertung. Rote Liste bedeutet: Gefährdungskategorien.",
       wissen: "Bewertung. Rote Liste bedeutet: Gefährdungskategorien.",
       flashFront: "Rote Liste",
@@ -7018,8 +6367,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-biodiversitaet-schutz:p3:f",
       prompt: "Was kennzeichnet „Biotopverbund“?",
-      answer: "Das Biotopverbund ist hier: Vernetzung von Lebensräumen, und zwar gilt: genfluss.",
-      wrong: ["Das Biotopverbund ist hier: Wiederherstellung von Habitaten.", "Das Biotopverbund ist kurz gesagt: Schutzgebietssystem.", "Das Biotopverbund ist kurz gesagt: zeigt Zustand an."],
+      answer: "Es ist eine Vernetzung von Lebensräumen durch Genfluss.", wrong: ["Es ist eine Wiederherstellung von Habitaten.", "Das Biotopverbund ist das Schutzgebietssystem.", "Es zeigt Zustand an."],
       explanation: "Genfluss. Biotopverbund bedeutet: Vernetzung von Lebensräumen.",
       wissen: "Genfluss. Biotopverbund bedeutet: Vernetzung von Lebensräumen.",
       flashFront: "Biotopverbund",
@@ -7027,8 +6375,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-biodiversitaet-schutz:p4:f",
       prompt: "Was kennzeichnet „Renaturierung“?",
-      answer: "Die Renaturierung ist hier: Wiederherstellung von Habitaten, und zwar gilt: maßnahme.",
-      wrong: ["Die Renaturierung ist kurz gesagt: Schutzgebietssystem.", "Die Renaturierung ist kurz gesagt: zeigt Zustand an.", "Die Renaturierung ist kurz gesagt: Zerschnittene Habitate."],
+      answer: "Sie ist eine Wiederherstellung von Habitaten durch Maßnahme.", wrong: ["Die Renaturierung ist die Schutzgebietssystem.", "Sie zeigt Zustand an.", "Die Renaturierung ist die Zerschnittene Habitate."],
       explanation: "Maßnahme. Renaturierung bedeutet: Wiederherstellung von Habitaten.",
       wissen: "Maßnahme. Renaturierung bedeutet: Wiederherstellung von Habitaten.",
       flashFront: "Renaturierung",
@@ -7036,8 +6383,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-biodiversitaet-schutz:p5:f",
       prompt: "Was kennzeichnet „FFH“?",
-      answer: "Das FFH ist kurz gesagt: Schutzgebietssystem, und zwar gilt: europa.",
-      wrong: ["Das FFH ist kurz gesagt: zeigt Zustand an.", "Das FFH ist kurz gesagt: Zerschnittene Habitate.", "Das FFH ist kurz gesagt: eingebracht problematisch."],
+      answer: "Es ist eine Schutzgebietssystem durch Europa.", wrong: ["Es zeigt Zustand an.", "Das FFH ist das Zerschnittene Habitate.", "Das FFH ist eingebracht problematisch."],
       explanation: "Europa. FFH bedeutet: Schutzgebietssystem.",
       wissen: "Europa. FFH bedeutet: Schutzgebietssystem.",
       flashFront: "FFH",
@@ -7045,8 +6391,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-biodiversitaet-schutz:p6:f",
       prompt: "Wozu dient Indikatorart?",
-      answer: "Es zeigt Zustand an, und zwar gilt hier: Monitoring.",
-      wrong: ["Das Indikatorart ist kurz gesagt: Zerschnittene Habitate.", "Das Indikatorart ist kurz gesagt: eingebracht problematisch.", "Das Indikatorart ist kurz gesagt: ohne Zukunftsraub."],
+      answer: "Es zeigt Zustand an durch monitoring.", wrong: ["Das Indikatorart ist das Zerschnittene Habitate.", "Das Indikatorart ist eingebracht problematisch.", "Das Indikatorart ist ohne Zukunftsraub."],
       explanation: "Monitoring. Indikatorart bedeutet: zeigt Zustand an.",
       wissen: "Monitoring. Indikatorart bedeutet: zeigt Zustand an.",
       flashFront: "Indikatorart",
@@ -7054,8 +6399,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-biodiversitaet-schutz:p7:f",
       prompt: "Was kennzeichnet „Fragmentierung“?",
-      answer: "Die Fragmentierung ist kurz gesagt: Zerschnittene Habitate, und zwar gilt: problem.",
-      wrong: ["Die Fragmentierung ist kurz gesagt: eingebracht problematisch.", "Die Fragmentierung ist kurz gesagt: ohne Zukunftsraub.", "Die Fragmentierung ist hier: Nutzen für Menschen."],
+      answer: "Sie ist eine Zerschnittene Habitate durch Problem.", wrong: ["Die Fragmentierung ist eingebracht problematisch.", "Die Fragmentierung ist ohne Zukunftsraub.", "Sie ist ein Nutzen für Menschen."],
       explanation: "Problem. Fragmentierung bedeutet: Zerschnittene Habitate.",
       wissen: "Problem. Fragmentierung bedeutet: Zerschnittene Habitate.",
       flashFront: "Fragmentierung",
@@ -7063,8 +6407,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-biodiversitaet-schutz:p8:f",
       prompt: "Was kennzeichnet „Invasive Art“?",
-      answer: "Das Invasive Art ist hier: eingebracht problematisch, und zwar gilt: verdrängung.",
-      wrong: ["Das Invasive Art ist hier: ohne Zukunftsraub.", "Das Invasive Art ist hier: Nutzen für Menschen.", "Das Invasive Art ist kurz gesagt: systematisches Beobachten."],
+      answer: "Es ist eingebracht problematisch durch verdrängung.", wrong: ["Das Invasive Art ist ohne Zukunftsraub.", "Es ist ein Nutzen für Menschen.", "Das Invasive Art ist systematisches Beobachten."],
       explanation: "Verdrängung. Invasive Art bedeutet: eingebracht problematisch.",
       wissen: "Verdrängung. Invasive Art bedeutet: eingebracht problematisch.",
       flashFront: "Invasive Art",
@@ -7072,8 +6415,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-biodiversitaet-schutz:p9:f",
       prompt: "Was kennzeichnet „Nachhaltigkeit“?",
-      answer: "Die Nachhaltigkeit ist kurz gesagt: ohne Zukunftsraub, und zwar gilt: nutzung.",
-      wrong: ["Die Nachhaltigkeit ist hier: Nutzen für Menschen.", "Die Nachhaltigkeit ist kurz gesagt: systematisches Beobachten.", "Die Nachhaltigkeit ist hier: Vielfalt der Arten/Gene/Ökosysteme."],
+      answer: "Sie ist ohne Zukunftsraub durch nutzung.", wrong: ["Sie ist ein Nutzen für Menschen.", "Die Nachhaltigkeit ist systematisches Beobachten.", "Sie ist eine Vielfalt der Arten/Gene/Ökosysteme."],
       explanation: "Nutzung. Nachhaltigkeit bedeutet: ohne Zukunftsraub.",
       wissen: "Nutzung. Nachhaltigkeit bedeutet: ohne Zukunftsraub.",
       flashFront: "Nachhaltigkeit",
@@ -7081,8 +6423,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-biodiversitaet-schutz:p10:f",
       prompt: "Was kennzeichnet „Ökosystemdienstleistung“?",
-      answer: "Die Ökosystemdienstleistung ist hier: Nutzen für Menschen, und zwar gilt: argument Schutz.",
-      wrong: ["Die Ökosystemdienstleistung ist kurz gesagt: systematisches Beobachten.", "Die Ökosystemdienstleistung ist hier: Vielfalt der Arten/Gene/Ökosysteme.", "Die Ökosystemdienstleistung ist hier: Region hoher Artenvielfalt."],
+      answer: "Sie ist ein Nutzen für Menschen durch Argument Schutz.", wrong: ["Die Ökosystemdienstleistung ist systematisches Beobachten.", "Sie ist eine Vielfalt der Arten/Gene/Ökosysteme.", "Sie ist eine Region Hoher Artenvielfalt."],
       explanation: "Argument Schutz. Ökosystemdienstleistung bedeutet: Nutzen für Menschen.",
       wissen: "Argument Schutz. Ökosystemdienstleistung bedeutet: Nutzen für Menschen.",
       flashFront: "Ökosystemdienstleistung",
@@ -7090,8 +6431,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     {
       concept: "bi:dens:bi-lk11-lb3-biodiversitaet-schutz:p11:f",
       prompt: "Was kennzeichnet „Monitoring“?",
-      answer: "Systematisches Beobachten, und zwar gilt: datenbasis.",
-      wrong: ["Das Monitoring ist hier: Vielfalt der Arten/Gene/Ökosysteme.", "Das Monitoring ist hier: Region hoher Artenvielfalt.", "Das Monitoring ist kurz gesagt: Gefährdungskategorien."],
+      answer: "Es ist eine Systematisches Beobachten durch Datenbasis.", wrong: ["Es ist eine Vielfalt der Arten/Gene/Ökosysteme.", "Es ist eine Region Hoher Artenvielfalt.", "Das Monitoring ist das Gefährdungskategorien."],
       explanation: "Datenbasis. Monitoring bedeutet: systematisches Beobachten.",
       wissen: "Datenbasis. Monitoring bedeutet: systematisches Beobachten.",
       flashFront: "Monitoring",
