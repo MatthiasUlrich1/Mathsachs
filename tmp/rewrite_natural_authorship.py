@@ -234,6 +234,63 @@ HAND: dict[str, dict[str, object]] = {
         "prompt": "Warum brauchen Lurche Feuchtigkeit?",
         "answer": "Sie schützt die Haut vor Austrocknung und ermöglicht die Hautatmung.",
     },
+    # Geschichte shared core (geschichteThinFill — same 10–14 terms in every bank)
+    "quelle": {
+        "prompt": "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
+        "answer": "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.",
+    },
+    "chronologie": {
+        "prompt": "Was leistet die Chronologie in der Geschichte?",
+        "answer": "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.",
+    },
+    "epoche": {
+        "prompt": "Woran erkennt man eine Epoche?",
+        "answer": "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.",
+    },
+    "herrschaft": {
+        "prompt": "Was beschreibt Herrschaft in der Geschichte?",
+        "answer": "Sie beschreibt, wer politische Macht ausübt und Entscheidungen trifft.",
+    },
+    "gesellschaft": {
+        "prompt": "Was umfasst eine Gesellschaft historisch?",
+        "answer": "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten.",
+    },
+    "wirtschaft": {
+        "prompt": "Was regelt die Wirtschaft in historischen Zusammenhängen?",
+        "answer": "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.",
+    },
+    "religion": {
+        "prompt": "Welche Rolle spielt Religion in der Geschichte?",
+        "answer": "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.",
+    },
+    "kultur": {
+        "prompt": "Was umfasst Kultur historisch?",
+        "answer": "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.",
+    },
+    "konflikt": {
+        "prompt": "Was kennzeichnet einen historischen Konflikt?",
+        "answer": "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.",
+    },
+    "revolution": {
+        "prompt": "Woran erkennt man eine Revolution?",
+        "answer": "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.",
+    },
+    "staat": {
+        "prompt": "Wozu dient ein Staat historisch?",
+        "answer": "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.",
+    },
+    "migration": {
+        "prompt": "Was beschreibt Migration in der Geschichte?",
+        "answer": "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.",
+    },
+    "erinnerung": {
+        "prompt": "Was meint Erinnerung im Umgang mit Geschichte?",
+        "answer": "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.",
+    },
+    "kontinuität": {
+        "prompt": "Was meint Kontinuität in der Geschichte?",
+        "answer": "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.",
+    },
 }
 
 BANNED_OUT = re.compile(
@@ -246,11 +303,13 @@ TITLE_MUSH = re.compile(
     r"([A-ZÄÖÜ][a-zäöüß]+)(?:\s+([A-ZÄÖÜ][a-zäöüß]+)){1,}",
 )
 MECH_ANS = re.compile(
-    r"^(Sie|Er|Es) ist eine\b|"
+    r"^(Sie|Er|Es) ist (eine|ein)\b|"
     r"\bdurch (Beim|In|Bei|Mit)\b|"
+    r"\bdurch [A-ZÄÖÜ][a-zäöüß]*(?:/[a-z]+)?(?:,|\.|$)|"  # durch Kritisch / durch Oft
     r"\bSelbst Licht Aussendet\b|"
     r"\bGeradliniges Modell\b.*\bdurch in\b|"
-    r"\bLicht geht durch durch\b",
+    r"\bLicht geht durch durch\b|"
+    r"\bWas kennzeichnet [„\"]",
     re.I,
 )
 VERB_LEAD = re.compile(
@@ -444,6 +503,11 @@ def quality_ok(prompt: str, answer: str, wrongs: list[str]) -> bool:
         or TITLE_AFTER_IST.search(answer)
     ):
         return False
+    # Reject uniform Sie/Er/Es-ist-ein(e) answers (mechanical thin fill)
+    if re.match(r"^(Sie|Er|Es) ist (eine|ein)\b", answer, re.I):
+        return False
+    if sum(1 for w in wrongs if re.match(r"^(Sie|Er|Es) ist (eine|ein)\b", w, re.I)) >= 2:
+        return False
     if any(
         BAD_ANSWER.search(w) or TITLE_TIP.search(w) or TITLE_AFTER_IST.search(w) or BANNED_OUT.search(w)
         for w in wrongs
@@ -501,19 +565,27 @@ def natural_answer(term: str, meaning: str, wissen: str) -> str:
     # If curated_core returned a full HAND answer (with pronoun), strip for rebuild
     if core.startswith(("Sie ", "Er ", "Es ")):
         return ensure_period(fix_casing(core))
+    # Noun-led curated ("Ein Überrest…") — keep as full sentence, no Sie-ist wrap
+    if re.match(r"^(Ein|Eine|Der|Die|Das)\b", core):
+        return ensure_period(fix_casing(core))
 
     core = fix_casing(core)
     pron = p6.pronoun(term)
 
-    # Prefer verb-led always when possible
-    if VERB_LEAD.match(core) or VERBISH.match(core):
+    # Prefer verb-led always when possible — but avoid "Sie ist ein…" from "Ist ein…"
+    if re.match(r"^Ist (ein|eine)\b", core, re.I):
+        # Drop mechanical Ist-ein; rebuild as bare noun clause without Sie-ist
+        body = re.sub(r"^Ist\s+", "", core, flags=re.I).strip()
+        sent = body[0].upper() + body[1:] if body else core
+    elif VERB_LEAD.match(core) or VERBISH.match(core):
         sent = f"{pron} {p6.lower_first(core)}"
     elif re.match(r"^(der|die|das|ein|eine)\b", core, re.I):
         sent = f"{pron} ist {core}"
     elif re.match(r"^[A-ZÄÖÜ].*\b(wird|werden|geht|lässt)\b", core):
         sent = core
     else:
-        # Noun phrase: "Er/Sie/Es ist ein/eine …" with gender-safe article
+        # Noun phrase: prefer verb-ish curated over raw Sie-ist-eine
+        # Skip rather than emit mechanical Sie-ist-eine if meaning is too thin
         body = core
         words = body.split()
         if words and p6.is_likely_adj(words[0]) and len(words) >= 2:
@@ -522,10 +594,10 @@ def natural_answer(term: str, meaning: str, wissen: str) -> str:
             noun = words[0] if words else term
         art = p6.article_for_head(re.sub(r"[^A-Za-zÄÖÜäöüß]", "", noun), term)
         indef = {"der": "ein", "die": "eine", "das": "ein"}[art]
-        # lowercase leading adj
         if words and p6.is_likely_adj(words[0]):
             words[0] = p6.lower_first(words[0])
             body = " ".join(words)
+        # Still allow as last resort, but quality_ok / MECH gate may reject
         sent = f"{pron} ist {indef} {body}"
 
     sent = fix_casing(sent)
@@ -647,17 +719,15 @@ def needs_rewrite(prompt: str, answer: str, wrongs: list[str], term: str = "") -
     key = norm_term(term) if term else ""
     base = re.sub(r"\s*\(.*$", "", key).strip()
     if key in HAND or base in HAND:
-        # Always refresh when we have Timer-caliber hand text
-        hand = HAND.get(key) or HAND.get(base) or {}
-        if hand.get("answer") and str(hand["answer"]) not in answer:
-            return True
+        # Always refresh HAND terms (answers + sibling distractors stay in sync)
+        return True
     if MECH_ANS.search(answer) or MECH_ANS.search(blob):
         return True
     if BANNED_OUT.search(blob):
         return True
-    if re.match(r"^(Sie|Er|Es) ist eine\b", answer, re.I):
+    if re.match(r"^(Sie|Er|Es) ist (eine|ein)\b", answer, re.I):
         return True
-    if sum(1 for w in wrongs if re.match(r"^(Sie|Er|Es) ist eine\b", w, re.I)) >= 2:
+    if sum(1 for w in wrongs if re.match(r"^(Sie|Er|Es) ist (eine|ein)\b", w, re.I)) >= 2:
         return True
     if TITLE_MUSH.search(answer) or TITLE_MUSH.search(blob):
         return True
@@ -713,9 +783,18 @@ def process_file(
 
         if topic and topic.lower() not in concept.lower():
             continue
-        if concept in GOLD_CONCEPTS:
-            continue
+        # Hard-protect optics Timer/Sensor/Transparent only
         if "lichtverschmutzung:fact:timer" in concept or "lichtdurchlaessigkeit:fact:transparent" in concept:
+            continue
+        if concept in {
+            "ph:gap:ph-k6-lb1-lichtverschmutzung:fact:timer-sensor",
+            "ph:gap:ph-k6-lb1-lichtverschmutzung:fact:richtlinie",
+            "ph:gap:ph-k6-lb1-lichtverschmutzung:fact:blendung",
+            "ph:gap:ph-k6-lb1-lichtverschmutzung:fact:dunkelheit",
+            "ph:gap:ph-k6-lb1-lichtdurchlaessigkeit:fact:transparent",
+            "ph:gap:ph-k6-lb1-lichtdurchlaessigkeit:fact:transluzent",
+            "ph:gap:ph-k6-lb1-lichtdurchlaessigkeit:fact:opak",
+        }:
             continue
 
         pairs = parse_pairs_near(text, m.start())
