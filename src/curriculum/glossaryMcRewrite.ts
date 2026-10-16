@@ -273,6 +273,17 @@ function ensurePeriod(s: string): string {
 }
 
 /** Capitalize German content words; keep prepositions lowercase mid-phrase. */
+const FORCE_LOWER_WORDS = new Set([
+  'man',
+  'manchen',
+  'manche',
+  'etwas',
+  'nichts',
+  'niemand',
+  'jemand',
+  'sich',
+])
+
 export function capitalizeGermanPhrase(text: string): string {
   const parts = text.replace(/\s+/g, ' ').trim().split(' ')
   return parts
@@ -282,7 +293,7 @@ export function capitalizeGermanPhrase(text: string): string {
       const [, lead, bare, trail] = m
       if (!bare) return w
       const low = bare.toLowerCase()
-      if (i > 0 && PREPS.has(low)) return `${lead}${low}${trail}`
+      if (i > 0 && (PREPS.has(low) || FORCE_LOWER_WORDS.has(low))) return `${lead}${low}${trail}`
       if (/^[a-zäöü]/.test(bare) && bare.length > 1) {
         return `${lead}${bare.charAt(0).toUpperCase()}${bare.slice(1)}${trail}`
       }
@@ -335,6 +346,7 @@ function softenTitleCaseBody(body: string): string {
     'nur',
     'nie',
     'sich',
+    'man',
     'vor',
     'allem',
     'anderen',
