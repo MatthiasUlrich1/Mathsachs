@@ -4,9 +4,9 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Mathematik",
-  "version": "1.4.1",
-  "changelog": "Lehrplan-461-Teilaspekte ergänzt (Primfaktoren, Umwandeln %, Thales, Normalverteilung LK, …); released:false; dense Banken.",
-  "contentHash": "99d59d97",
+  "version": "1.4.2",
+  "changelog": "ID 1498 freigegeben: Natürliche Zahlen vergleichen und ordnen (K5 LB1).",
+  "contentHash": "24aeba7e",
   "official": [
     {
       "id": "klasse-5",
@@ -110,7 +110,7 @@
                 "Zahlenstrahl",
                 "Stellenwert"
               ],
-              "released": false
+              "released": true
             },
             {
               "id": "lb1-primfaktorzerlegung",

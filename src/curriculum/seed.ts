@@ -114,11 +114,11 @@ export async function buildGymSachsenSeed(): Promise<CurriculumPack> {
     subject: 'Mathematik',
     version: GYM_SACHSEN_PACK_VERSION,
     changelog:
-      'Lehrplan-461-Teilaspekte ergänzt (Primfaktoren, Umwandeln %, Thales, Normalverteilung LK, …); released:false; dense Banken.',
+      'ID 1498 freigegeben: Natürliche Zahlen vergleichen und ordnen (K5 LB1).',
     contentHash: packContentHash(official, extras),
     official,
     extras,
   }
 }
 
-export const GYM_SACHSEN_PACK_VERSION = '1.4.1'
+export const GYM_SACHSEN_PACK_VERSION = '1.4.2'

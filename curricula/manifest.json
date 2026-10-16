@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-15T20:17:08.672Z",
+  "updatedAt": "2026-10-16T05:51:28.031Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -7,10 +7,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Mathematik",
-      "version": "1.4.1",
+      "version": "1.4.2",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen.json",
-      "size": 94106,
-      "changelog": "Lehrplan-461-Teilaspekte ergänzt (Primfaktoren, Umwandeln %, Thales, Normalverteilung LK, …); released:false; dense Banken."
+      "size": 94051,
+      "changelog": "ID 1498 freigegeben: Natürliche Zahlen vergleichen und ordnen (K5 LB1)."
     },
     {
       "id": "gym-sachsen-physik",

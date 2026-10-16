@@ -44,6 +44,7 @@ export const maTopic0: Topic = {
   id: 'lb1-vergleichen-ordnen',
   title: 'Natürliche Zahlen vergleichen und ordnen',
   keywords: ['vergleichen', 'ordnen', 'Zahlenstrahl', 'Stellenwert'],
+  released: true,
   generate: generateVergleichenOrdnenK5,
 }
 export const maTopic1: Topic = {

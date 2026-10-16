@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.106] – 2026-10-16
+
+### Geändert
+- **Mathe freigegeben (ID 1498):** Natürliche Zahlen vergleichen und ordnen
+  (`lb1-vergleichen-ordnen`, K5 LB1). Mathe-Pack **1.4.2**.
+
 ## [0.28.105] – 2026-10-15
 
 ### Behoben
